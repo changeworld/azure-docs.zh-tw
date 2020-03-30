@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77050013"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 發佈 Azure 媒體服務內容 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [休息](media-services-rest-deliver-streaming-content.md)
 > * [入口網站](media-services-portal-publish.md)
 > 
 > 
@@ -33,7 +33,7 @@ ms.locfileid: "77050013"
 
 您也可以使用隨選串流定位器來建置指向可漸進式下載之 MP4 檔案的 URL。  
 
-本文章說明如何建立隨選串流定位器以發佈資產及建置 Smooth、MPEG DASH 和 HLS 串流 URL。 它也會說明如何建立漸進式下載 Url。
+本文章說明如何建立隨選串流定位器以發佈資產及建置 Smooth、MPEG DASH 和 HLS 串流 URL。 它還演示如何構建漸進式下載 URL。
 
 [下列章節](#types) 說明列舉類型，REST 呼叫中會使用這些類型的值。   
 
@@ -62,7 +62,7 @@ ms.locfileid: "77050013"
 ### <a name="create-an-access-policy"></a>建立存取原則
 
 >[!NOTE]
->對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
+>對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限 (例如要長時間維持就地的定位器原則 (非上載原則))，請使用相同的原則識別碼。 有關詳細資訊，請參閱[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 要求：
 
@@ -169,7 +169,7 @@ URL： **Path** + 資產檔案 MP4 名稱
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>列舉類型
+## <a name="enum-types"></a><a id="types"></a>列舉類型
     [Flags]
     public enum AccessPermissions
     {
@@ -196,5 +196,5 @@ URL： **Path** + 資產檔案 MP4 名稱
 ## <a name="see-also"></a>另請參閱
 [媒體服務作業 REST API 概觀](media-services-rest-how-to-use.md)
 
-[設定資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)
+[配置資產交付策略](media-services-rest-configure-asset-delivery-policy.md)
 

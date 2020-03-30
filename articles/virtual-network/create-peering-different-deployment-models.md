@@ -17,10 +17,10 @@ ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023254"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>建立虛擬網路對等互連 - 不同部署模型、相同訂用帳戶
@@ -39,50 +39,50 @@ ms.locfileid: "77023254"
 
 此教學課程將同一個區域中的虛擬網路視為對等。 您也可以針對不同[支援區域](virtual-network-manage-peering.md#cross-region)中的虛擬網路進行對等互連。 建議您在對等互連虛擬網路之前，先熟悉[對等互連的需求和限制條件](virtual-network-manage-peering.md#requirements-and-constraints)。
 
-您可以使用 Azure 入口網站、Azure [命令列介面](#cli) (CLI)、Azure [PowerShell](#powershell) 或 Azure Resource Manager 範本，建立虛擬網路對等互連。 按一下任何先前的工具連結，直接前往使用您所選工具建立虛擬網路對等互連的步驟。
+可以使用 Azure 門戶、Azure[命令列介面](#cli)（CLI）、Azure [PowerShell](#powershell)或 Azure 資源管理器範本創建虛擬網路對等互連。 按一下任何先前的工具連結，直接前往使用您所選工具建立虛擬網路對等互連的步驟。
 
 ## <a name="create-peering---azure-portal"></a>建立對等互連 - Azure 入口網站
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 您登入時使用的帳戶必須擁有必要的權限，才能建立虛擬網路對等互連。 如需權限清單，請參閱[虛擬網路對等互連權限](virtual-network-manage-peering.md#requirements-and-constraints)。
-2. 依序按一下 [新增]、[網路] 及 [虛擬網路]。
-3. 在 [建立虛擬網路] 刀鋒視窗上，輸入或選取下列設定的值，然後按一下 [建立]：
+1. 登錄到 Azure[門戶](https://portal.azure.com)。 您登入時使用的帳戶必須擁有必要的權限，才能建立虛擬網路對等互連。 如需權限清單，請參閱[虛擬網路對等互連權限](virtual-network-manage-peering.md#requirements-and-constraints)。
+2. 依序按一下 [新增]****、[網路]**** 及 [虛擬網路]****。
+3. 在 [建立虛擬網路]**** 刀鋒視窗上，輸入或選取下列設定的值，然後按一下 [建立]****：
     - **名稱**：*myVnet1*
-    - **位址空間**：*10.0.0.0/16*
-    - **子網路名稱**：*預設值*
-    - **子網路位址範圍**：*10.0.0.0/24*
-    - **訂用帳戶**︰選取您的訂用帳戶
-    - **資源群組**：選取 [新建] 並輸入 *myResourceGroup*
-    - **位置**：*美國東部*
-4. 按一下 [+ 新增]。 在 [搜尋 Marketplace] 方塊中，輸入*虛擬網路*。 當搜尋結果中出現虛擬網路時，按一下 [虛擬網路]。
-5. 在 [虛擬網路] 刀鋒視窗中，於 [選取部署模型] 方塊中選取 [傳統]，然後按一下 [建立]。
-6. 在 [建立虛擬網路] 刀鋒視窗上，輸入或選取下列設定的值，然後按一下 [建立]：
+    - **位址空間**： *10.0.0.0/16*
+    - **子網名稱**：*預設值*
+    - **子網位址範圍**： *10.0.0.0/24*
+    - **訂閱**：選擇訂閱
+    - **資源群組**：選取 [新建]**** 並輸入 *myResourceGroup*
+    - **地點**：*美國東部*
+4. 按一下 [+ 新增]****。 在 [搜尋 Marketplace]**** 方塊中，輸入*虛擬網路*。 當搜尋結果中出現虛擬網路時，按一下 [虛擬網路]****。
+5. 在 [虛擬網路]**** 刀鋒視窗中，於 [選取部署模型]**** 方塊中選取 [傳統]****，然後按一下 [建立]****。
+6. 在 [建立虛擬網路]**** 刀鋒視窗上，輸入或選取下列設定的值，然後按一下 [建立]****：
     - **名稱**： *myVnet2*
-    - **位址空間**：*10.1.0.0/16*
-    - **子網路名稱**：*預設值*
-    - **子網路位址範圍**：*10.1.0.0/24*
-    - **訂用帳戶**︰選取您的訂用帳戶
-    - **資源群組**：選取 [使用現有] 並選取 *myResourceGroup*
-    - **位置**：*美國東部*
-7. 在入口網站頂端的 [搜尋資源] 方塊中，輸入 *myResourceGroup*。 當搜尋結果中出現 **MyResourceGroup** 時，按一下該項目。 **myresourcegroup** 資源群組的刀鋒視窗隨即出現。 資源群組包含在前述步驟中建立的兩個虛擬網路。
-8. 按一下 [myVNet1]。
-9. 在顯示的 [myVnet1] 刀鋒視窗，從刀鋒視窗左側的垂直選項清單中按一下 [對等互連]。
-10. 在顯示的 [myVnet1 - 對等互連] 刀鋒視窗中，按一下 [+ 新增]
-11. 在顯示的 [新增對等互連] 刀鋒視窗中，輸入或選取下列選項，然後按一下 [確定]：
+    - **位址空間**： *10.1.0.0/16*
+    - **子網名稱**：*預設值*
+    - **子網位址範圍**： *10.1.0.0/24*
+    - **訂閱**：選擇訂閱
+    - **資源組**：選擇 **"使用現有**資源"並選擇 *"我的資源組*"
+    - **地點**：*美國東部*
+7. 在入口網站頂端的 [搜尋資源]**** 方塊中，輸入 *myResourceGroup*。 當搜尋結果中出現 **MyResourceGroup** 時，按一下該項目。 **myresourcegroup** 資源群組的刀鋒視窗隨即出現。 資源群組包含在前述步驟中建立的兩個虛擬網路。
+8. 按一下 [myVNet1]****。
+9. 在顯示的 [myVnet1]**** 刀鋒視窗，從刀鋒視窗左側的垂直選項清單中按一下 [對等互連]****。
+10. 在顯示的 [myVnet1 - 對等互連]**** 刀鋒視窗中，按一下 [+ 新增]****
+11. 在顯示的 [新增對等互連]**** 刀鋒視窗中，輸入或選取下列選項，然後按一下 [確定]****：
      - **名稱**：*myVnet1ToMyVnet2*
-     - **虛擬網路部署模型**︰選取 [傳統]。
-     - **訂用帳戶**︰選取您的訂用帳戶
-     - **虛擬網路**：按一下 [選擇虛擬網路]，然後按一下 [myVnet2]。
-     - **允許虛擬網路存取**：確定已選取 [啟用]。
+     - **虛擬網路部署模型**︰選取 [傳統]****。
+     - **訂閱**：選擇訂閱
+     - **虛擬網路**：按一下 [選擇虛擬網路]****，然後按一下 [myVnet2]****。
+     - **允許虛擬網路存取**：確定已選取 [啟用]****。
     本教學課程中不會使用其他設定。 若要了解所有對等互連設定，請閱讀[管理虛擬網路對等互連](virtual-network-manage-peering.md#create-a-peering)。
-12. 按一下上一個步驟中的 [確定] 後，[新增對等互連] 刀鋒視窗隨即關閉，而且您會再次看到 [myVnet1 - 對等互連] 刀鋒視窗。 幾秒之後，您建立的對等互連會出現在刀鋒視窗中。 您所建立之 **myVnet1ToMyVnet2** 對等互連的 [對等互連狀態] 資料行中會列出 [已連線]。
+12. 按一下上一個步驟中的 [確定]**** 後，[新增對等互連]**** 刀鋒視窗隨即關閉，而且您會再次看到 [myVnet1 - 對等互連]**** 刀鋒視窗。 幾秒之後，您建立的對等互連會出現在刀鋒視窗中。 您所建立之 **myVnet1ToMyVnet2** 對等互連的 [對等互連狀態]**** 資料行中會列出 [已連線]****。
 
     現在已建立對等互連。 您在任何一個虛擬網路中建立的任何 Azure 資源現在能夠透過其 IP 位址彼此通訊。 如果您使用虛擬網路的預設 Azure 名稱解析，則虛擬網路中的資源無法跨虛擬網路解析名稱。 如果您想要跨對等互連中的虛擬網路解析名稱，您必須建立自己的 DNS 伺服器。 了解如何設定[使用自己的 DNS 伺服器進行名稱解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 13. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
 14. **選擇性︰** 若要刪除您在本教學課程中建立的資源，請完成本文之[刪除資源](#delete-portal)一節中的步驟。
 
-## <a name="cli"></a>建立對等互連 - Azure CLI
+## <a name="create-peering---azure-cli"></a><a name="cli"></a>建立對等互連 - Azure CLI
 
-使用 Azure 傳統 CLI 與 Azure CLI 完成下列步驟。 您可以從 Azure Cloud Shell 完成這些步驟，只需在下列任一步驟中選取 [試用] 按鈕，或安裝[傳統 CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) 與 [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 並在您的本機電腦上執行命令。
+使用 Azure 傳統 CLI 與 Azure CLI 完成下列步驟。 您可以從 Azure Cloud Shell 完成這些步驟，只需在下列任一步驟中選取 [試用]**** 按鈕，或安裝[傳統 CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) 與 [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 並在您的本機電腦上執行命令。
 
 1. 如果使用 Cloud Shell，請跳至步驟 2，因為 Cloud Shel l會自動將您登入 Azure。 開啟命令工作階段，然後使用 `azure login` 命令來登入 Azure。
 2. 輸入 `azure config mode asm` 命令來以「服務管理」模式執行 CLI。
@@ -143,9 +143,9 @@ ms.locfileid: "77023254"
 7. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
 8. **選擇性︰** 若要刪除您在本教學課程中所建立的資源，請完成本文之[刪除資源](#delete-cli)中的步驟。
 
-## <a name="powershell"></a>建立對等互連 - PowerShell
+## <a name="create-peering---powershell"></a><a name="powershell"></a>建立對等互連 - PowerShell
 
-1. 安裝最新版的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure)和[Az](https://www.powershellgallery.com/packages/Az/)模組。 如果您不熟悉 Azure PowerShell，請參閱 [Azure PowerShell 概觀](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+1. 安裝最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure)和[Az](https://www.powershellgallery.com/packages/Az/)模組。 如果您不熟悉 Azure PowerShell，請參閱 [Azure PowerShell 概觀](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 啟動 PowerShell 工作階段。
 3. 在 PowerShell 中，輸入 `Add-AzureAccount` 命令來登入 Azure。 您登入時使用的帳戶必須擁有必要的權限，才能建立虛擬網路對等互連。 如需權限清單，請參閱[虛擬網路對等互連權限](virtual-network-manage-peering.md#requirements-and-constraints)。
 4. 若要使用 PowerShell 來建立虛擬網路 (傳統)，您必須建立一個新的或修改現有的網路組態檔。 了解如何[匯出、更新及匯入網路組態檔](virtual-networks-using-network-configuration-file.md)。 就本教學課程中使用的虛擬網路而言，此檔案應該包含下列 **VirtualNetworkSite** 元素：
@@ -206,17 +206,17 @@ ms.locfileid: "77023254"
 9. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
 10. **選擇性︰** 若要刪除您在本教學課程中所建立的資源，請完成本文之[刪除資源](#delete-powershell)中的步驟。
 
-## <a name="delete"></a>刪除資源
+## <a name="delete-resources"></a><a name="delete"></a>刪除資源
 
 當您完成本教學課程時，您可能會想刪除您在教學課程中建立的資源，以免產生使用費。 刪除資源群組同時會刪除其內含的所有資源。
 
-### <a name="delete-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure 入口網站
 
-1. 在入口網站的搜尋方塊中，輸入 **myResourceGroup**。 在搜尋結果中按一下 [myResourceGroup]。
-2. 在 [myResourceGroup] 刀鋒視窗中，按一下 [刪除] 圖示。
-3. 若要確認刪除動作，請在 [輸入資源群組名稱] 方塊中輸入 **myResourceGroup**，然後按一下 [刪除]。
+1. 在門戶搜索框中，輸入**我的資源組**。 在搜尋結果中，按一下 **"我的資源組**"。
+2. 在 **"我的資源組**"邊欄選項卡上，按一下 **"刪除**"圖示。
+3. 要確認刪除，請在 **"鍵入資源組名稱"** 框中輸入 **"資源組**"，然後按一下"**刪除**"。
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. 使用 Azure CLI 來以下列命令刪除虛擬網路 (Resource Manager)：
 
@@ -232,7 +232,7 @@ ms.locfileid: "77023254"
     azure network vnet delete --vnet myVnet2 --quiet
     ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>電源外殼
 
 1. 輸入下列命令來刪除虛擬網路 (Resource Manager)：
 

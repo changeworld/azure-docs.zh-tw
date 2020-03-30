@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79381564"
 ---
-請務必讓您的虛擬機器（VM）在您執行的應用程式中保持安全。 保護 VM 可包含一或多項 Azure 服務和功能，其中涵蓋保護 VM 的存取權及保護資料的儲存體。 本文提供可讓您保護 VM 和應用程式的資訊。
+對於運行的應用程式，確保虛擬機器 （VM） 的安全非常重要。 保護 VM 可包含一或多項 Azure 服務和功能，其中涵蓋保護 VM 的存取權及保護資料的儲存體。 本文提供可讓您保護 VM 和應用程式的資訊。
 
 ## <a name="antimalware"></a>反惡意程式碼
 
-現今雲端環境的威脅型態非常多變，因此為了符合法規和達到安全性需求，在維護有效保護機制方面增加許多壓力。 [適用於 Azure 的 Microsoft Antimalware](../articles/security/fundamentals/antimalware.md) 是即時保護功能，有助於識別和移除病毒、間諜軟體和其他惡意軟體。 您可設定警示，在已知惡意或非必要軟體嘗試自行安裝或在您的 VM 上執行時通知您。 執行 Linux 或 Windows Server 2008 的 Vm 不支援此方式。
+現今雲端環境的威脅型態非常多變，因此為了符合法規和達到安全性需求，在維護有效保護機制方面增加許多壓力。 [適用於 Azure 的 Microsoft Antimalware](../articles/security/fundamentals/antimalware.md) 是即時保護功能，有助於識別和移除病毒、間諜軟體和其他惡意軟體。 您可設定警示，在已知惡意或非必要軟體嘗試自行安裝或在您的 VM 上執行時通知您。 運行 Linux 或 Windows 伺服器 2008 的 VM 不支援它。
 
 ## <a name="azure-security-center"></a>Azure 資訊安全中心
 
 [Azure 資訊安全中心](../articles/security-center/security-center-intro.md)可協助您保護 VM、偵測威脅並採取相應的措施。 資訊安全中心能提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理，協助偵測原先可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
 
-資訊安全中心的即時存取可套用至您的 VM 部署，以鎖定 Azure Vm 的輸入流量、降低暴露于攻擊的風險，並在需要時輕鬆地連接到 Vm。 已啟用 Just-In-Time 且使用者要求存取 VM 時，資訊安全中心會檢查使用者擁有此 VM 的哪些權限。 如果其擁有正確權限，則要求會通過核准，且資訊安全中心會將網路安全性群組 (NSG) 自動設定為在有限的時間內允許輸入流量進入選取的連接埠。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 
+安全中心的及時訪問可以應用於 VM 部署，以鎖定 Azure VM 的入站流量，減少攻擊風險，同時在需要時輕鬆訪問 VM。 已啟用 Just-In-Time 且使用者要求存取 VM 時，資訊安全中心會檢查使用者擁有此 VM 的哪些權限。 如果其擁有正確權限，則要求會通過核准，且資訊安全中心會將網路安全性群組 (NSG) 自動設定為在有限的時間內允許輸入流量進入選取的連接埠。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 
 
 ## <a name="encryption"></a>加密
 
-受控磁片會提供兩種加密方法。 在 OS 層級的加密 Azure 磁碟加密，在平台層級加密，這是伺服器端加密。
+為託管磁片提供了兩種加密方法。 作業系統級別的加密（即 Azure 磁片加密）和平臺級別的加密（即伺服器端加密）。
 
 ### <a name="server-side-encryption"></a>伺服器端加密
 
-Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資料加密。 伺服器端加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 Azure 受控磁片中的資料會使用256位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最強區塊密碼之一）以透明的方式進行加密，且符合 FIPS 140-2 規範。
+預設情況下，Azure 託管磁片在將資料保存到雲中時自動加密資料。 伺服器端加密可保護您的資料，並説明您履行組織安全性和合規性承諾。 Azure 託管磁片中的資料使用 256 位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)進行透明加密，這是可用的最強的塊密碼之一，並且符合 FIPS 140-2 標準。
 
-加密不會影響受控磁片的效能。 加密不會產生額外的費用。
+加密不會影響託管磁片的性能。 加密沒有額外費用。
 
-您可以依賴平臺管理的金鑰來加密受控磁片，也可以使用您自己的金鑰來管理加密。 如果您選擇使用自己的金鑰來管理加密，您可以指定*客戶管理的金鑰*，以用於加密和解密受控磁片中的所有資料。 
+您可以依賴平臺管理的金鑰來加密託管磁片，也可以使用自己的金鑰管理加密。 如果選擇使用自己的金鑰管理加密，則可以指定*客戶託管金鑰*，用於加密和解密託管磁片中的所有資料。 
 
-若要深入瞭解伺服器端加密，請參閱適用于[Windows](../articles/virtual-machines/windows/disk-encryption.md)或[Linux](../articles/virtual-machines/linux/disk-encryption.md)的文章。
+要瞭解有關伺服器端加密的詳細資訊，請參閱[Windows](../articles/virtual-machines/windows/disk-encryption.md)或[Linux](../articles/virtual-machines/linux/disk-encryption.md)的文章。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
@@ -47,7 +47,7 @@ Azure 受控磁片預設會在將資料保存到雲端時，自動將您的資�
 
 祕密和憑證均可模型化為資源並由 [Key Vault](../articles/key-vault/key-vault-whatis.md) 提供。 您可以使用 Azure PowerShell 來建立適用於 [Windows VM](../articles/virtual-machines/windows/key-vault-setup.md) 的金鑰保存庫以及適用於 [Linux VM](../articles/virtual-machines/linux/key-vault-setup.md) 的 Azure CLI。 您也可以建立用於加密的金鑰。
 
-金鑰保存庫存取原則可分別授與金鑰、祕密和憑證的權限。 例如，您可以只提供金鑰存取權給使用者，但不提供密碼的權限。 不過，金鑰、密碼或憑證的存取權限是在保存庫層級。 換句話說，[金鑰保存庫存取原則](../articles/key-vault/key-vault-secure-your-key-vault.md)不支援物件層級權限。
+金鑰保存庫存取原則可分別授與金鑰、祕密和憑證的權限。 例如，您可以只提供金鑰存取權給使用者，但不提供密碼的權限。 不過，金鑰、密碼或憑證的存取權限是在保存庫層級。 換句話說，[金鑰保存庫訪問策略](../articles/key-vault/key-vault-secure-your-key-vault.md)不支持對象級別許可權。
 
 當您連線到 VM 時，您應該使用公開金鑰加密來提供更安全的登入方式。 此程序包括使用安全殼層 (SSH) 命令 (而非使用者名稱和密碼) 來驗證自己的公用和私密金鑰交換。 密碼很容易遭受暴力密碼破解攻擊，尤其是在網際網路對向 VM (例如 Web 伺服器) 上。 您可以利用安全殼層 (SSH) 金鑰組，在 Azure 上建立使用 SSH 金鑰來進行驗證的 [Linux VM](../articles/virtual-machines/linux/mac-create-ssh-keys.md)，進而免除登入密碼的需求。 您也可以使用 SSH 金鑰從 [Windows VM](../articles/virtual-machines/linux/ssh-from-windows.md) 連線至 Linux VM。
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 中適用於 Azure 資源的受控識別功能
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-使用[角色型存取控制 (RBAC)](../articles/role-based-access-control/overview.md)，可讓您區隔小組內的職責，而僅授予使用者在 VM 上執行作業所需的存取權。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](../articles/role-based-access-control/role-assignments-portal.md) 或 [Azure PowerShell](https://docs.microsoft.com/cli/azure/role)，在 [Azure 入口網站](../articles/role-based-access-control/role-assignments-powershell.md)中設定 VM 的存取控制。
+使用[角色型存取控制 (RBAC)](../articles/role-based-access-control/overview.md)，可讓您區隔小組內的職責，而僅授予使用者在 VM 上執行作業所需的存取權。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md)，在 [Azure 入口網站](../articles/role-based-access-control/role-assignments-portal.md)中設定 VM 的存取控制。
 
 
 ## <a name="next-steps"></a>後續步驟

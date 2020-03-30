@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：重設線路對等互連
+title: Azure 快速路由：重置電路對等互連
 description: 如何停用和啟用 ExpressRoute 線路對等互連。
 services: expressroute
 author: charwen
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/13/2018
 ms.author: charwen
 ms.openlocfilehash: 9f32eb439872de9e4687d046745c03bafd86b2fa
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941744"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重設 ExpressRoute 線路對等互連
@@ -20,7 +20,7 @@ ms.locfileid: "75941744"
 
 有數個案例可能會讓您覺得重設 ExpressRoute 對等互連很實用。
 * 測試您的災害復原設計和實作。 例如，您有兩個 ExpressRoute 線路。 您可以停用一個線路的對等互連，並強制將網路流量容錯移轉至另一個線路。
-* 在 Azure 私用對等互連或 ExpressRoute 線路的 Microsoft 對等互連上啟用雙向轉送偵測（BFD）。 如果您的 ExpressRoute 線路是在 1 2018 年8月之後建立，則在 Azure 私用對等互連上預設會啟用 BFD，如果您的 ExpressRoute 線路是在 10 2020 年1月之後建立的， 如果您的線路是在那之前建立的，則不會啟用 BFD。 您可以藉由停用對等互連並重新啟用它來啟用 BFD。 
+* 在 Azure 專用對等互連或 ExpressRoute 電路的 Microsoft 對等互連上啟用雙向轉發檢測 （BFD）。 如果 ExpressRoute 電路是在 2018 年 8 月 1 日之後創建的，則預設情況下在 Azure 專用對等互連上啟用 BFD;如果 2020 年 1 月 10 日之後創建了 ExpressRoute 電路，則在 Microsoft 對等互連上啟用 BFD。 如果您的線路是在那之前建立的，則不會啟用 BFD。 您可以藉由停用對等互連並重新啟用它來啟用 BFD。 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -50,7 +50,7 @@ ms.locfileid: "75941744"
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. 識別您想要停用或啟用的對等互連。 「對等互連」是一個陣列。 在下列範例中，Peerings[0] 是 Azure 私用對等互連，而 Peerings[1] 是 Microsoft 對等互連。
+5. 識別您想要停用或啟用的對等互連。 「對等互連」** 是一個陣列。 在下列範例中，Peerings[0] 是 Azure 私用對等互連，而 Peerings[1] 是 Microsoft 對等互連。
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -143,5 +143,5 @@ ms.locfileid: "75941744"
 
 ## <a name="next-steps"></a>後續步驟
 如果您需要協助以進行 ExpressRoute 問題的疑難排解，請參閱下列文章：
-* [驗證 ExpressRoute 連線能力](expressroute-troubleshooting-expressroute-overview.md)
+* [驗證快速路由連接](expressroute-troubleshooting-expressroute-overview.md)
 * [網路效能疑難排解](expressroute-troubleshooting-network-performance.md)

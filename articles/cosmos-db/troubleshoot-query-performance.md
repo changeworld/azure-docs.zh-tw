@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Cosmos DB 時針對查詢問題進行疑難排解
-description: 瞭解如何識別、診斷和疑難排解 Azure Cosmos DB SQL 查詢問題。
+title: 使用 Azure 宇宙 DB 時解決查詢問題
+description: 瞭解如何識別、診斷和排除 Azure Cosmos DB SQL 查詢問題。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
@@ -8,86 +8,91 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131386"
 ---
-# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 時針對查詢問題進行疑難排解
+# <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure 宇宙 DB 時解決查詢問題
 
-本文會逐步解說在 Azure Cosmos DB 中針對查詢進行疑難排解的一般建議方法。 雖然本檔中所述的步驟不應視為潛在查詢問題的「全部攔截」，但我們在此納入了最常見的效能秘訣。 您應該使用本檔做為疑難排解 Azure Cosmos DB core （SQL） API 中緩慢或昂貴查詢的起點。 您也可以使用[診斷記錄](cosmosdb-monitor-resource-logs.md)來識別速度變慢或耗用大量輸送量的查詢。
+本文介紹了一種常規推薦的方法，用於在 Azure Cosmos DB 中排除查詢故障。 儘管您不應將本文中概述的步驟視為針對潛在查詢問題的完整防禦，但此處包含了最常見的性能提示。 應使用本文作為在 Azure Cosmos DB 核心 （SQL） API 中解決慢速或昂貴查詢的起始位置。 您還可以使用[診斷日誌](cosmosdb-monitor-resource-logs.md)來標識速度慢或消耗大量輸送量的查詢。
 
-您可以廣泛地分類 Azure Cosmos DB 中的查詢優化：優化可減少查詢的要求單位（RU）費用，以及只會降低延遲的優化。 藉由減少查詢的 RU 費用，您幾乎也會降低延遲。
+您可以在 Azure Cosmos DB 中對查詢優化進行廣泛分類： 
 
-本檔將使用可使用[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集重新建立的範例。
+- 減少查詢請求單元 （RU） 費用的優化
+- 僅減少延遲的優化
+
+如果減少查詢的 RU 費用，幾乎肯定會減少延遲。
+
+本文提供了可以使用[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集重新創建的示例。
 
 ## <a name="important"></a>重要事項
 
-- 若要獲得最佳效能，請遵循[效能秘訣](performance-tips.md)。
-    > [!NOTE] 
-    > 建議使用 Windows 64 位主機處理來改善效能。 SQL SDK 包含原生 Microsoft.azure.documents.serviceinterop.dll，可在本機剖析和優化查詢，而且只有在 Windows x64 平臺上才支援。 針對 linux 和無法使用 Microsoft.azure.documents.serviceinterop.dll 的其他不支援平臺，將會對閘道進行額外的網路呼叫，以取得優化的查詢。 
-- Cosmos DB 查詢不支援最小專案計數。
-    - 程式碼應處理從0到最大專案計數的任何頁面大小
-    - 頁面中的專案數可以和變更，而不會有任何通知。
-- 查詢應該會有空白頁面，而且可以隨時出現。 
-    - 在 Sdk 中公開空白頁面的原因是，它可讓您更有機會取消查詢。 它也可以清楚指出 SDK 正在進行多個網路呼叫。
-    - 空白頁面可能會顯示在現有的工作負載中，因為實體分割區會在 Cosmos DB 中分割。 第一個分割區現在有0個結果，這會導致空白頁面。
-    - 空白頁面是由後端搶佔查詢所造成，因為查詢在後端會花費超過一段固定的時間來抓取檔。 如果 Cosmos DB 比查詢，它會傳回接續 token，讓查詢繼續進行。 
-- 請務必完全清空查詢。 查看 SDK 範例，並在 `FeedIterator.HasMoreResults` 上使用 while 迴圈來清空整個查詢。
+- 為了獲得最佳性能，請遵循[性能提示](performance-tips.md)。
+    > [!NOTE]
+    > 為提高性能，我們建議處理 Windows 64 位主機。 SQL SDK 包括一個本機 ServiceInterop.dll，用於在本地解析和優化查詢。 服務 Interop.dll 僅在 Windows x64 平臺上受支援。 對於 Linux 和其他不支援的平臺，其中 ServiceInterop.dll 不可用，將對閘道進行額外的網路調用以獲取優化的查詢。
+- Azure Cosmos 資料庫查詢不支援最小項計數。
+    - 代碼應處理任何頁面大小，從零到最大專案計數。
+    - 頁面中的專案數可以更改，恕不另行通知。
+- 查詢需要空頁，並且可以隨時顯示。
+    - 空頁在 SDK 中公開，因為該曝光允許更多機會取消查詢。 它還清楚地表明，SDK 正在執行多個網路調用。
+    - 空頁可以出現在現有工作負荷中，因為物理分區在 Azure Cosmos DB 中拆分。 第一個分區的結果為零，這將導致頁空。
+    - 空頁是由後端搶佔查詢引起的，因為查詢在後端檢索文檔需要超過一些固定時間。 如果 Azure Cosmos DB 搶佔查詢，它將返回一個延續權杖，允許查詢繼續。
+- 請確保完全耗盡查詢。 查看 SDK 示例，並使用`while`迴圈`FeedIterator.HasMoreResults`來耗盡整個查詢。
 
-### <a name="obtaining-query-metrics"></a>取得查詢計量：
+## <a name="get-query-metrics"></a>獲取查詢指標
 
-在 Azure Cosmos DB 中優化查詢時，第一個步驟一律會[取得查詢的查詢計量](profile-sql-api-query.md)。 這些也可透過 Azure 入口網站取得，如下所示：
+在 Azure Cosmos DB 中優化查詢時，第一步始終是[獲取查詢的查詢指標](profile-sql-api-query.md)。 這些指標也可通過 Azure 門戶獲得：
 
-[![取得查詢計量](./media/troubleshoot-query-performance/obtain-query-metrics.png)](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+[![獲取查詢指標](./media/troubleshoot-query-performance/obtain-query-metrics.png)](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
-取得查詢計量之後，請將抓取的檔計數與查詢的輸出檔案計數進行比較。 使用此比較來識別下方要參考的相關區段。
+獲取查詢指標後，將檢索的文檔計數與查詢的輸出文檔計數進行比較。 使用此比較可以確定本文中要審閱的相關部分。
 
-抓取的檔計數是查詢載入所需的檔數目。 輸出檔案計數是查詢結果所需的檔數目。 如果抓取的檔計數明顯高於輸出檔案計數，則查詢中至少有一個部分無法利用索引，而且需要進行掃描。
+檢索的文檔計數是查詢需要載入的文檔數。 輸出文檔計數是查詢結果所需的文檔數。 如果檢索的文檔計數明顯高於輸出文檔計數，則查詢中至少有一部分無法使用索引，需要執行掃描。
 
-您可以參考下一節，以瞭解適用于您案例的相關查詢優化：
+請參閱以下各節以瞭解方案的相關查詢優化。
 
 ### <a name="querys-ru-charge-is-too-high"></a>查詢的 RU 費用過高
 
-#### <a name="retrieved-document-count-is-significantly-greater-than-output-document-count"></a>抓取的檔計數明顯大於輸出檔案計數
+#### <a name="retrieved-document-count-is-significantly-higher-than-output-document-count"></a>檢索的文檔計數明顯高於輸出文檔計數
 
-- [在編制索引原則中包含必要的路徑](#include-necessary-paths-in-the-indexing-policy)
+- [在索引策略中包括必要的路徑。](#include-necessary-paths-in-the-indexing-policy)
 
-- [瞭解哪些系統函數會使用索引](#understand-which-system-functions-utilize-the-index)
+- [瞭解哪些系統函數使用索引。](#understand-which-system-functions-use-the-index)
 
-- [同時具有篩選準則和 ORDER BY 子句的查詢](#queries-with-both-a-filter-and-an-order-by-clause)
+- [修改同時具有篩選器和 ORDER BY 子句的查詢。](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
-- [使用子查詢優化聯結運算式](#optimize-join-expressions-by-using-a-subquery)
-
-<br>
-
-#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>抓取的檔計數大約等於輸出檔案計數
-
-- [避免跨分割區查詢](#avoid-cross-partition-queries)
-
-- [多個屬性的篩選](#filters-on-multiple-properties)
-
-- [同時具有篩選準則和 ORDER BY 子句的查詢](#queries-with-both-a-filter-and-an-order-by-clause)
+- [使用子查詢優化 JOIN 運算式。](#optimize-join-expressions-by-using-a-subquery)
 
 <br>
 
-### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>查詢的 RU 費用是可接受的，但延遲仍然太高
+#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>檢索的文檔計數大致等於輸出文檔計數
 
-- [改善鄰近性](#improve-proximity)
+- [避免跨分區查詢。](#avoid-cross-partition-queries)
 
-- [增加布建的輸送量](#increase-provisioned-throughput)
+- [優化具有多個屬性篩選器的查詢。](#optimize-queries-that-have-filters-on-multiple-properties)
 
-- [增加 MaxConcurrency](#increase-maxconcurrency)
+- [修改同時具有篩選器和 ORDER BY 子句的查詢。](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
-- [增加 MaxBufferedItemCount](#increase-maxbuffereditemcount)
+<br>
 
-## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>抓取的檔計數超過輸出檔案計數的查詢
+### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>查詢的 RU 電荷是可以接受的，但延遲仍然過高
 
- 抓取的檔計數是查詢載入所需的檔數目。 輸出檔案計數是查詢結果所需的檔數目。 如果抓取的檔計數明顯高於輸出檔案計數，則查詢中至少有一個部分無法利用索引，而且需要進行掃描。
+- [提高接近性。](#improve-proximity)
 
- 以下是索引未完全提供的掃描查詢範例。
+- [增加預配輸送量。](#increase-provisioned-throughput)
+
+- [增加最大貨幣。](#increase-maxconcurrency)
+
+- [增加最大緩衝專案計數。](#increase-maxbuffereditemcount)
+
+## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>檢索的文檔計數超過輸出文檔計數的查詢
+
+ 檢索的文檔計數是查詢需要載入的文檔數。 輸出文檔計數是查詢結果所需的文檔數。 如果檢索的文檔計數明顯高於輸出文檔計數，則查詢中至少有一部分無法使用索引，需要執行掃描。
+
+下面是一個未完全由索引提供的掃描查詢示例：
 
 查詢：
 
@@ -97,7 +102,7 @@ FROM c
 WHERE UPPER(c.description) = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
  ```
 
-查詢計量：
+查詢指標：
 
 ```
 Retrieved Document Count                 :          60,951
@@ -123,15 +128,15 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-抓取的檔計數（60951）明顯大於輸出檔案計數（7），因此此查詢需要執行掃描。 在此情況下，系統函數[UPPER （）](sql-query-upper.md)不會使用索引。
+檢索的文檔計數 （60，951） 明顯高於輸出文檔計數 （7），因此此查詢需要執行掃描。 在這種情況下，系統函數[UPPER（）](sql-query-upper.md)不使用索引。
 
-## <a name="include-necessary-paths-in-the-indexing-policy"></a>在編制索引原則中包含必要的路徑
+### <a name="include-necessary-paths-in-the-indexing-policy"></a>在索引策略中包括必要的路徑
 
-您的索引編制原則應涵蓋 `WHERE` 子句、`ORDER BY` 子句、`JOIN`和大部分系統函數中包含的任何屬性。 在索引原則中指定的路徑應符合（區分大小寫） JSON 檔中的屬性。
+索引策略應涵蓋子句、`WHERE``ORDER BY``JOIN`子句和大多數系統函數中包含的任何屬性。 索引策略中指定的路徑應與 JSON 文檔中的屬性匹配（區分大小寫）。
 
-如果我們在[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集上執行簡單的查詢，當 `WHERE` 子句中的屬性編制索引時，我們會看到較低的 RU 費用。
+如果在[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集上運行簡單查詢，則當子句中的屬性編制索引時，`WHERE`觀察到 RU 費用要低得多：
 
-### <a name="original"></a>原始
+#### <a name="original"></a>原始
 
 查詢：
 
@@ -139,7 +144,7 @@ Client Side Metrics
 SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 ```
 
-編制索引原則：
+索引策略：
 
 ```json
 {
@@ -158,11 +163,11 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 }
 ```
 
-**RU 費用：** 409.51 RUs
+**RU 充電：** 409.51 RU
 
-### <a name="optimized"></a>最佳化的
+#### <a name="optimized"></a>最佳化的
 
-已更新的編制索引原則：
+更新了索引策略：
 
 ```json
 {
@@ -177,37 +182,37 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 }
 ```
 
-**RU 費用：** 2.98 RUs
+**RU 充電：** 2.98 RU
 
-您可以隨時將其他屬性新增至索引編制原則，而不會影響寫入可用性或效能。 如果您將新的屬性加入至索引，則使用這個屬性的查詢會立即使用新的可用索引。 查詢會在建立時使用新的索引。 因此，查詢結果可能會不一致，因為索引重建正在進行中。 如果新的屬性已編制索引，則在索引重建期間，只會影響使用現有索引的查詢不會受到影響。 您可以[追蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
+您可以隨時向索引策略添加屬性，而不會影響寫入可用性或性能。 如果向索引添加新屬性，則使用 該屬性的查詢將立即使用新的可用索引。 查詢將在生成新索引時使用。 因此，在索引重建進行中，查詢結果可能不一致。 如果對新屬性進行索引，則在索引重建期間，僅使用現有索引的查詢不會受到影響。 您可以[跟蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
 
-## <a name="understand-which-system-functions-utilize-the-index"></a>瞭解哪些系統函數會使用索引
+### <a name="understand-which-system-functions-use-the-index"></a>瞭解哪些系統函數使用索引
 
-如果運算式可以轉譯成一個範圍內的字串值，就可以利用索引；否則，不能這麼做。
+如果運算式可以轉換為字串值範圍，則可以使用索引。 否則，它不能。
 
-以下是可利用索引的字串函式清單：
+下面是可以使用索引的字串函數的清單：
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
-- SUBSTRING(str_expr, num_expr, num_expr) = str_expr，但僅限第一個 num_expr 為 0 的時候
+- SUBSTRING（str_expr、num_expr、num_expr） = str_expr，但前提是第一個num_expr為 0
 
-某些不使用索引且必須載入每份檔的一般系統函數如下：
+以下是一些不使用索引且必須載入每個文檔的常見系統函數：
 
-| **系統函數**                     | **優化的想法**             |
+| **系統功能**                     | **優化思路**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | 使用 Azure 搜尋服務進行全文檢索搜尋                        |
-| 上/下                             | 不使用系統函數來每次進行比較來將資料正規化，而是改為在插入時將大小寫標準化。 然後，```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` 之類的查詢就會變成 ```SELECT * FROM c WHERE c.name = 'BOB'``` |
-| 數學函數（非匯總） | 如果您需要經常計算查詢中的值，請考慮將此值儲存為 JSON 檔中的屬性。 |
+| CONTAINS                                | 使用 Azure 搜索進行全文檢索搜尋。                        |
+| 上/下                             | 而不是使用系統函數來正常化資料進行比較，而是在插入時正常化套管。 類似```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'```的查詢```SELECT * FROM c WHERE c.name = 'BOB'```變為 。 |
+| 數學函數（非聚合） | 如果需要在查詢中頻繁計算值，請考慮將該值存儲為 JSON 文檔中的屬性。 |
 
 ------
 
-雖然系統不會使用索引，但查詢的其他部分仍然可以利用索引。
+查詢的其他部分可能仍使用索引，即使系統功能不。
 
-## <a name="queries-with-both-a-filter-and-an-order-by-clause"></a>同時具有篩選準則和 ORDER BY 子句的查詢
+### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>修改同時具有篩選器和 ORDER BY 子句的查詢
 
-具有篩選準則和 `ORDER BY` 子句的查詢通常會利用範圍索引，如果可以從複合索引提供服務，則會更有效率。 除了修改索引編制原則以外，您還應該將複合索引中的所有屬性加入至 `ORDER BY` 子句。 此查詢修改會確保它利用複合索引。  您可以藉由對[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集執行查詢來觀察影響。
+儘管具有篩選器和`ORDER BY`子句的查詢通常使用範圍索引，但如果可以從複合索引中提供它們，則它們的效率會更高。 除了修改索引策略外，還應將複合索引中的所有屬性添加到子`ORDER BY`句。 對查詢的此更改將確保它使用複合索引。  您可以通過對[營養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)資料集執行查詢來觀察影響：
 
-### <a name="original"></a>原始
+#### <a name="original"></a>原始
 
 查詢：
 
@@ -215,7 +220,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
 ```
 
-編制索引原則：
+索引策略：
 
 ```json
 {
@@ -231,19 +236,19 @@ SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts 
 }
 ```
 
-**RU 費用：** 44.28 RUs
+**RU 充電：** 44.28 RU
 
-### <a name="optimized"></a>最佳化的
+#### <a name="optimized"></a>最佳化的
 
-已更新的查詢（同時包含 `ORDER BY` 子句中的兩個屬性）：
+更新的查詢（包括子句中的`ORDER BY`兩個屬性）：
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup = “Soups, Sauces, and Gravies”
+WHERE c.foodGroup = "Soups, Sauces, and Gravies"
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
-已更新的編制索引原則：
+更新了索引策略：
 
 ```json
 {  
@@ -271,12 +276,12 @@ ORDER BY c.foodGroup, c._ts ASC
 
 ```
 
-**RU 費用：** 8.86 RUs
+**RU 充電：** 8.86 RU
 
-## <a name="optimize-join-expressions-by-using-a-subquery"></a>使用子查詢優化聯結運算式
-多重值子查詢可以將述詞推送至每個 select-many 運算式之後，而不是在 `WHERE` 子句中的所有交叉聯結之後，藉以優化 `JOIN` 運算式。
+### <a name="optimize-join-expressions-by-using-a-subquery"></a>使用子查詢優化 JOIN 運算式
+多值子查詢可以通過在每個選擇多`JOIN`運算式之後推送謂詞來優化運算式，而不是在`WHERE`子句中的所有交叉聯接之後。
 
-請考慮以下查詢：
+請考量這項查詢：
 
 ```sql
 SELECT Count(1) AS Count
@@ -288,13 +293,13 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**RU 費用：** 167.62 RUs
+**RU 充電：** 167.62 RU
 
-在此查詢中，索引會比對具有名稱 "嬰兒 formula"、nutritionValue 大於0且提供大於1之標記的任何檔。 此處的 `JOIN` 運算式會在套用任何篩選之前，針對每個相符的檔，執行標記、nutrients 和 servings 陣列之所有專案的交叉乘積。 `WHERE` 子句接著會在每個 `<c, t, n, s>` 元組上套用篩選述詞。
+對於此查詢，索引將匹配任何標籤上的名稱為"嬰兒配方奶粉"、營養值大於 0 且服務量大於 1 的文檔。 此處`JOIN`的運算式將在應用任何篩選器之前為每個匹配文檔執行所有標記、營養和服務陣列項的交叉產品。 然後`WHERE`，子句將在每個`<c, t, n, s>`元組上應用篩選器謂詞。
 
-比方說，如果相符的檔在三個數組的每一個都有10個專案，它會擴展為 1 x 10 x 10 x 10 （也就是1000）元組。 在這裡使用子查詢可以協助篩選出聯結的陣列專案，然後再與下一個運算式聯結。
+例如，如果匹配的文檔在三個數組中每個陣列中有 10 個專案，它將擴展到 1 x 10 x 10 x 10（即 1，000 個）tup。 此處使用子查詢有助於在加入下一個運算式之前篩選出聯接的陣列項。
 
-此查詢相當於上述其中一項，但使用子查詢：
+此查詢等效于前一個查詢，但使用子查詢：
 
 ```sql
 SELECT Count(1) AS Count
@@ -304,35 +309,35 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**RU 費用：** 22.17 RUs
+**RU 充電：** 22.17 RU
 
-假設標記陣列中只有一個專案符合篩選準則，而且 nutrients 和 servings 陣列都有五個專案。 然後，`JOIN` 運算式會展開為 1 x 1 x 5 x 5 = 25 個專案，而不是第一個查詢中的1000個專案。
+假設標記陣列中只有一個專案與篩選器匹配，並且營養和服務陣列有五個專案。 運算式`JOIN`將擴展到 1 x 1 x 5 x 5 = 25 項，而第一個查詢中的 1，000 項。
 
-## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>抓取的檔計數等於輸出檔案計數的查詢
+## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>檢索的文檔計數等於輸出文檔計數的查詢
 
-如果抓取的檔計數大約等於輸出檔案計數，則表示查詢不需要掃描許多不必要的檔。 對於許多查詢，例如使用 TOP 關鍵字的查詢，抓取的檔計數可能會超過輸出檔案計數1。 這應該不會造成問題。
+如果檢索的文檔計數大致等於輸出文檔計數，則查詢不必掃描許多不必要的文檔。 對於許多查詢（如使用 TOP 關鍵字的查詢），檢索的文檔計數可能超過輸出文檔計數 1。 你不需要擔心這個。
 
-## <a name="avoid-cross-partition-queries"></a>避免跨分割區查詢
+### <a name="avoid-cross-partition-queries"></a>避免跨分區查詢
 
-Azure Cosmos DB 會使用[分割](partitioning-overview.md)區來調整個別容器，因為要求單位和資料儲存體需求也會隨之增加。 每個實體分割區都有個別且獨立的索引。 如果您的查詢具有符合容器分割區索引鍵的相等篩選準則，您就只需要檢查相關的分割區索引。 此優化會減少查詢所需的 RU 總數。
+Azure Cosmos DB 使用[分區](partitioning-overview.md)來縮放單個容器，因為請求單位和資料存儲需求增加。 每個物理分區都有一個單獨的索引。 如果查詢具有與容器分區鍵匹配的相等篩選器，則只需檢查相關分區的索引。 此優化減少了查詢所需的總 R。
 
-如果您有大量布建的 RU （超過30000）或儲存大量的資料（大約超過 100 GB），您可能會有夠大的容器，以查看查詢 RU 費用的大幅縮減。
+如果預配的 RU 數量很大（超過 30，000 個）或存儲了大量資料（超過 100 GB），則可能有足夠的容器，可以顯著減少查詢 RU 費用。
 
-例如，如果我們建立具有分割區索引鍵 foodGroup 的容器，下列查詢只需要檢查單一實體分割區：
+例如，如果創建具有分區金鑰 foodGroup 的容器，則以下查詢只需檢查單個物理分區：
 
 ```sql
 SELECT * FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-這些查詢也會藉由在查詢中包含分割區索引鍵來進行優化：
+這些查詢還將通過在查詢中添加分區鍵進行優化：
 
 ```sql
 SELECT * FROM c
 WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
-對於資料分割索引鍵具有範圍篩選的查詢，或沒有資料分割索引鍵上的任何篩選，將需要「展開傳送」，並檢查每個實體分割區的結果索引。
+分區鍵上具有範圍篩選器的查詢，或者分區鍵上沒有任何篩選器的查詢，將需要檢查每個物理分區的索引的結果：
 
 ```sql
 SELECT * FROM c
@@ -344,11 +349,11 @@ SELECT * FROM c
 WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-## <a name="filters-on-multiple-properties"></a>多個屬性的篩選
+### <a name="optimize-queries-that-have-filters-on-multiple-properties"></a>優化具有多個屬性篩選器的查詢
 
-當具有多個屬性篩選的查詢通常會使用範圍索引時，如果可以從複合索引提供服務，它們就會更有效率。 對於少量的資料，這項優化並不會有重大影響。 但對於大量資料而言，它可能很有用。 每個複合索引最多隻能優化一個非相等的篩選準則。 如果您的查詢有多個不相等的篩選準則，您應該挑選其中一個將會利用複合索引。 其餘部分將繼續利用範圍索引。 不相等的篩選準則必須定義于複合索引中的最後一個。 [深入瞭解複合索引](index-policy.md#composite-indexes)
+儘管具有多個屬性篩選器的查詢通常使用範圍索引，但如果可以從複合索引中提供篩選器，則它們的效率會更高。 對於少量資料，此優化不會產生重大影響。 然而，對於大量資料來說，它可能是有用的。 每個複合索引最多隻能優化一個非相等篩選器。 如果查詢有多個非相等篩選器，請選擇其中一個將使用複合索引的篩選器。 其餘將繼續使用範圍索引。 非相等性篩選器必須最後在複合索引中定義。 [瞭解有關複合索引的更多](index-policy.md#composite-indexes)。
 
-以下是一些可使用複合索引優化的查詢範例：
+下面是一些可以使用複合索引進行優化的查詢示例：
 
 ```sql
 SELECT * FROM c
@@ -360,7 +365,7 @@ SELECT * FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 ```
 
-以下是相關的複合索引：
+下面是相關的複合索引：
 
 ```json
 {  
@@ -387,29 +392,29 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 }
 ```
 
-## <a name="optimizations-that-reduce-query-latency"></a>可減少查詢延遲的優化：
+## <a name="optimizations-that-reduce-query-latency"></a>減少查詢延遲的優化
 
-在許多情況下，RU 費用可能是可接受的，但查詢延遲仍然太高。 下列各節概述減少查詢延遲的秘訣。 如果您在相同的資料集上多次執行相同的查詢，每次都會有相同的 RU 費用。 但查詢的延遲可能會因查詢執行而異。
+在許多情況下，當查詢延遲仍然過高時，RU 費用可能是可以接受的。 以下各節概述了減少查詢延遲的提示。 如果在同一資料集上多次運行同一查詢，則每次將具有相同的 RU 費用。 但是查詢延遲可能因查詢執行而異。
 
-## <a name="improve-proximity"></a>改善鄰近性
+### <a name="improve-proximity"></a>提高鄰近度
 
-從與 Azure Cosmos DB 帳戶不同的區域執行的查詢，其延遲會高於在相同區域內執行的情況。 例如，如果您在桌上型電腦上執行程式碼，您應該預期延遲超過數十個或數百個（或更多）毫秒，大於 Azure Cosmos DB 的相同 Azure 區域內的虛擬機器。 [在 Azure Cosmos DB 中，全域散發資料](distribute-data-globally.md)很簡單，以確保您可以將資料帶到更接近應用程式的範圍。
+從與 Azure Cosmos DB 帳戶不同的區域運行的查詢的延遲將高於在同一區域內運行的查詢。 例如，如果在桌上型電腦上運行代碼，則預計延遲比查詢來自與 Azure Cosmos DB 位於同一 Azure 區域中的虛擬機器的延遲高出數十毫秒或數百毫秒。 在[Azure Cosmos DB 中全域分發資料](distribute-data-globally.md)非常簡單，以確保資料更接近應用。
 
-## <a name="increase-provisioned-throughput"></a>增加布建的輸送量
+### <a name="increase-provisioned-throughput"></a>增加預配輸送量
 
-在 Azure Cosmos DB 中，您布建的輸送量會以要求單位（RU）來測量。 假設您有一個使用 5 RU 輸送量的查詢。 例如，如果您布建 1000 RU 的，您就能夠每秒執行該查詢200次。 如果您嘗試在沒有足夠的可用輸送量時執行查詢，Azure Cosmos DB 會傳回 HTTP 429 錯誤。 任何目前的 Core （SQL） API sdk 都會在等候短暫的時間之後自動重試此查詢。 節流的要求需要較長的時間，因此增加布建的輸送量可以改善查詢延遲。 您可以在 Azure 入口網站的 [計量] 分頁中，觀察[節流要求的總數](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
+在 Azure Cosmos DB 中，預配輸送量以請求單位 （R） 為單位進行測量。 假設您的查詢消耗了 5 個 R 的輸送量。 例如，如果預配 1，000 個 R，則可以每秒運行該查詢 200 次。 如果嘗試在沒有足夠的可用輸送量時執行查詢，Azure Cosmos DB 將返回 HTTP 429 錯誤。 任何當前核心 （SQL） API SDK 將在短暫等待後自動重試此查詢。 限制請求需要更長的時間，因此增加預配輸送量可以提高查詢延遲。 您可以在 Azure 門戶的 **"指標"** 邊欄選項卡上觀察[受限制的請求總數](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
 
-## <a name="increase-maxconcurrency"></a>增加 MaxConcurrency
+### <a name="increase-maxconcurrency"></a>增加最大貨幣
 
-平行查詢是以平行方式查詢多個分割區來工作。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，如果所有其他系統條件維持不變，則將 MaxConcurrency 調整為數據分割數目的機率最大，可以達到最高效能的查詢。 如果您不知道分割區數目，可以將 MaxConcurrency （或舊版 sdk 中的 MaxDegreesOfParallelism）設定為較高的數位，然後系統會選擇最小值（資料分割數目、使用者提供的輸入）做為平行處理原則的最大程度。
+並行查詢通過並行查詢多個分區來工作。 但是，單個分區集合中的資料相對於查詢進行串列提取。 因此，如果將 MaxConcurrency 設置為分區數，則只要所有其他系統條件保持不變，則最有可能實現性能最優的查詢。 如果您不知道分區的數量，則可以將 MaxConcurrency（或舊 SDK 版本中的 MaxAtoinsParallelism）設置為高數位。 系統將選擇最小（分區數，使用者提供的輸入）作為最大並行度。
 
-## <a name="increase-maxbuffereditemcount"></a>增加 MaxBufferedItemCount
+### <a name="increase-maxbuffereditemcount"></a>增加最大緩衝專案計數
 
-查詢的設計目的是要在用戶端處理目前的結果批次時預先提取結果。 預先擷取有助於改善查詢的整體延遲。 設定 MaxBufferedItemCount 會限制預先提取的結果數目。 藉由將此值設定為預期傳回的結果數目（或較大的數位），查詢可以從預先提取取得最大效益。 將此值設定為-1 可讓系統自動決定要緩衝的專案數。
+查詢旨在在用戶端處理當前結果批次處理時預提取結果。 預提取有助於提高查詢的總體延遲。 設置 MaxBufferedItemCount 會限制預獲取結果的數量。 如果將此值設置為返回的預期結果數（或較高的數位），則查詢可以從預提取中獲得最大好處。 如果將此值設置為 -1，系統將自動確定要緩衝的項數。
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列檔，以瞭解如何測量每個查詢的 ru、取得執行統計資料來微調查詢等等：
+有關如何測量每個查詢的 R，獲取用於調整查詢的執行統計資訊的資訊，請參閱以下文章，以及詳細資訊：
 
-* [使用 .NET SDK 取得 SQL 查詢執行計量](profile-sql-api-query.md)
+* [使用 .NET SDK 獲取 SQL 查詢執行指標](profile-sql-api-query.md)
 * [使用 Azure Cosmos DB 調整查詢效能](sql-api-sql-query-metrics.md)
 * [.NET SDK 的效能秘訣](performance-tips.md)

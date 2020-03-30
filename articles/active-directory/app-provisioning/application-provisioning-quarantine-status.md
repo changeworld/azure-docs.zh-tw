@@ -1,6 +1,6 @@
 ---
-title: 應用程式布建狀態為隔離 |Microsoft Docs
-description: 當您已設定應用程式來自動布建使用者時，請瞭解隔離的布建狀態是什麼，以及如何將它清除。
+title: 隔離的應用程式預配狀態 |微軟文檔
+description: 為自動使用者預配配置應用程式後，請瞭解隔離預配狀態的含義以及如何清除它。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,59 +16,61 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d689bb5f76eef36b784a3285749a7d250144fd7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154622"
 ---
-# <a name="application-provisioning-in-quarantine-status"></a>隔離狀態中的應用程式布建
+# <a name="application-provisioning-in-quarantine-status"></a>隔離狀態中的應用程式預配
 
-Azure AD 布建服務會監視您設定的健康情況，並將狀況不良的應用程式置於「隔離」狀態。 如果對目標系統進行的大部分或所有呼叫一直因為錯誤而失敗（例如，不正確系統管理員認證），則布建工作會標示為在隔離中。
+Azure AD 預配服務監視配置的運行狀況，並將不正常的應用置於"隔離"狀態。 如果針對目標系統所做的大多數或所有調用始終由於錯誤（例如不正確管理員憑據）而失敗，則預配作業將標記為隔離區。
 
-在隔離時，增量迴圈的頻率會逐漸縮減為每天一次。 在修正所有錯誤並啟動下一個同步處理週期之後，會從隔離中移除布建作業。 如果布建作業持續隔離超過四周，則會停用布建作業（停止執行）。
+在隔離期間，增量迴圈的頻率逐漸降低為每天一次。 修復所有錯誤並啟動下一個同步週期後，將從隔離區中刪除預配作業。 如果預配作業在隔離區中停留超過四周，則預配作業將禁用（停止運行）。
 
-## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>如何? 知道我的應用程式是否處於隔離的情況？
+## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>如何知道我的申請是否處於隔離狀態？
 
-有三種方式可檢查應用程式是否處於隔離中：
+有三種方法可以檢查應用程式是否處於隔離狀態：
   
-- 在 Azure 入口網站中，流覽至**Azure Active Directory** > **企業應用程式** > &lt;*應用程式名稱* **&gt; > 布**建，然後滾動至底部的進度列。  
+- 在 Azure 門戶中，導航到**Azure 活動目錄** > **企業** > &lt;*應用程式名稱*&gt; > **預配**，然後滾動到底部的進度列。  
 
-  ![顯示隔離狀態的布建狀態列](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
+  ![顯示隔離狀態的預配狀態列](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- 使用 Microsoft Graph 要求[Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) ，以程式設計方式取得布建作業的狀態：
+- 在 Azure 門戶中，導航到**Azure 活動目錄** > **稽核記錄**>"**活動：隔離**"和"檢查隔離歷史記錄"上的篩選器。 雖然上述進度列中的視圖顯示預配當前是否處於隔離狀態，但稽核記錄允許您查看應用程式的隔離歷史記錄。 
+
+- 使用 Microsoft 圖形請求[獲取同步作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http)以程式設計方式獲取預配作業的狀態：
 
         `GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/`
 
-- 檢查您的電子郵件。 當應用程式放入隔離時，系統會傳送一次性通知電子郵件。 如果隔離原因變更，則會傳送更新的電子郵件，顯示隔離的新原因。 如果您沒有看到電子郵件：
+- 請檢查您的電子郵件。 將應用程式置於隔離區時，將發送一次性通知電子郵件。 如果隔離原因發生更改，將發送更新的電子郵件，顯示隔離的新原因。 如果您沒有看到電子郵件：
 
-  - 請確定您已在應用程式的布建設定中指定有效的**通知電子郵件**。
-  - 請確定 [通知電子郵件] 收件匣上沒有垃圾郵件篩選。
-  - 請確定您未取消電子郵件的訂閱。
+  - 請確保在為應用程式的預配配置中指定了有效的**通知電子郵件**。
+  - 確保通知電子郵件收件匣中沒有垃圾郵件篩選。
+  - 請確保您沒有取消訂閱電子郵件。
 
-## <a name="why-is-my-application-in-quarantine"></a>為什麼我的應用程式在隔離中？
+## <a name="why-is-my-application-in-quarantine"></a>為什麼我的申請是在隔離中？
 
-取得布建作業狀態的 Microsoft Graph 要求會顯示以下的隔離原因：
+Microsoft Graph 請求獲取預配作業的狀態，顯示隔離的以下原因：
 
-- `EncounteredQuarantineException` 指出提供的認證無效。 布建服務無法建立來源系統與目標系統之間的連接。
+- `EncounteredQuarantineException`表示提供了無效憑據。 預配服務無法在源系統和目標系統之間建立連接。
 
-- `EncounteredEscrowProportionThreshold` 指出布建已超過 [證書閾值]。 當超過60% 的布建事件失敗時，就會發生這種狀況。
+- `EncounteredEscrowProportionThreshold`表示預配超過託管閾值。 當超過 60% 的預配事件失敗時，將發生此情況。
 
-- `QuarantineOnDemand` 表示我們偵測到您的應用程式發生問題，並已手動將其設定為隔離。
+- `QuarantineOnDemand`表示我們檢測到您的應用程式出現問題，並手動將其設置為隔離。
 
-## <a name="how-do-i-get-my-application-out-of-quarantine"></a>如何? 讓我的應用程式不隔離嗎？
+## <a name="how-do-i-get-my-application-out-of-quarantine"></a>如何將申請從隔離區獲取？
 
-首先，請解決導致應用程式置於隔離中的問題。
+首先，解決導致應用程式被置於隔離區的問題。
 
-- 請檢查應用程式的布建設定，以確定您已[輸入有效的系統管理員認證](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)。 Azure AD 必須能夠與目標應用程式建立信任關係。 請確定您已輸入有效的認證，且您的帳戶具有必要的許可權。
+- 檢查應用程式的預配設置，以確保您[輸入了有效的管理員憑據](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)。 Azure AD 必須能夠與目標應用程式建立信任。 確保您已輸入有效憑據，並且您的帳戶具有必要的許可權。
 
-- 請參閱布建[記錄](../reports-monitoring/concept-provisioning-logs.md)以進一步調查造成隔離的錯誤，並解決錯誤。 前往 [**活動**] 區段中的 [ **Azure Active Directory** &gt;**企業應用程式**&gt; 布建**記錄（預覽）** ]，以存取 Azure 入口網站中的布建記錄。
+- 查看[預配日誌](../reports-monitoring/concept-provisioning-logs.md)以進一步調查導致隔離的錯誤並解決錯誤。 通過訪問"**活動"** 部分中的**Azure 活動目錄**&gt;**企業應用**&gt;**預配日誌（預覽）** 來訪問 Azure 門戶中的預配日誌。
 
-解決問題之後，請重新開機布建作業。 應用程式布建設定的某些變更（例如屬性對應或範圍篩選器）將會自動重新開機布建。 應用程式 [布建 **] 頁面上**的進度列會指出布建上次啟動的時間。 如果您需要手動重新開機布建工作，請使用下列其中一種方法：  
+解決問題後，重新開機預配作業。 對應用程式預配設置的某些更改（如屬性對應或範圍篩選器）將自動重新開機您的預配。 應用程式**預配**頁上的進度列指示上次開始預配時。 如果需要手動重新開機預配作業，請使用以下方法之一：  
 
-- 使用 Azure 入口網站重新開機布建作業。 在應用程式布**建頁面的**[**設定**] 底下，選取 [**清除狀態並重新啟動同步**處理]，**並將**[布建**狀態**] 設定為 此動作會完全重新開機布建服務，這可能需要一些時間。 完整的初始週期會再次執行，這會清除 escrows、從隔離中移除應用程式，並清除任何浮水印。
+- 使用 Azure 門戶重新開機預配作業。 在 **"設置"** 下的應用程式**預配**頁上，選擇 **"清除狀態並重新啟動同步**"並將**預配狀態**設置為 **"打開**"。 此操作將完全重新開機預配服務，這可能需要一些時間。 完整的初始週期將再次運行，這將清除埃斯庫，從隔離中刪除應用程式，並清除任何浮水印。
 
-- 使用 Microsoft Graph[重新開機](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)布建作業。 您將可完全掌控重新開機的內容。 您可以選擇清除 [escrows] （以重新開機會回報隔離狀態的 [託管] 計數器）、[清除隔離] （以移除應用程式的隔離），或 [清除浮水印]。 使用下列要求：
+- 使用 Microsoft 圖形[重新開機預配作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 您將完全控制重新開機的內容。 您可以選擇清除代管（重新開機累積到隔離狀態的代管計數器）、清除隔離（從隔離區中刪除應用程式）或清除浮水印。 使用下列要求：
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

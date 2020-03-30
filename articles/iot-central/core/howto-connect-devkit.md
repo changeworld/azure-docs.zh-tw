@@ -1,107 +1,107 @@
 ---
 title: 將 DevKit 裝置連線到 Azure IoT 中心應用程式 | Microsoft Docs
-description: 身為裝置開發人員，請瞭解如何使用 IoT 隨插即用（預覽）將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式。
+description: 作為設備開發人員，瞭解如何使用 IoT 隨插即用（預覽）將 MXChip IoT DevKit 設備連接到 Azure IoT 中央應用程式。
 author: liydu
 ms.author: liydu
 ms.date: 12/03/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 929651264cc900e38ca24d4a2ea703a3c586aedd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0a393ae8629f1742002344ee717a6719269a6722
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024563"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158539"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式
 
-本文說明如何將 MXChip IoT DevKit （DevKit）裝置連線到 Azure IoT Central 應用程式。 裝置會使用適用于 DevKit 裝置的認證 IoT 隨插即用（預覽）模型，設定其與 IoT Central 的連接。
+本文介紹如何將 MXChip IoT DevKit （DevKit） 設備連接到 Azure IoT 中央應用程式。 設備使用 DevKit 設備的經認證的 IoT 隨插即用（預覽）型號來配置其與 IoT 中心的連接。
 
-在此操作說明文章中，您會：
+在本"如何"一文中，您：
 
-- 從您的 IoT Central 應用程式取得連接詳細資料。
-- 準備裝置，並將它連線到您的 IoT Central 應用程式。
-- 在 IoT Central 中，從裝置中查看遙測和屬性。
+- 從 IoT 中央應用程式獲取連接詳細資訊。
+- 準備設備並將其連接到 IoT 中心應用程式。
+- 查看 IoT 中心中的設備的遙測和屬性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟，您需要下列資源：
 
-- [DevKit 裝置](https://aka.ms/iot-devkit-purchase)。
-- IoT Central 的應用程式。 您可以依照[建立 IoT Central 應用程式](./quick-deploy-iot-central.md)中的步驟進行。
+- [DevKit 設備](https://aka.ms/iot-devkit-purchase)。
+- IoT 中心應用程式。 您可以按照[創建 IoT 中央應用程式](./quick-deploy-iot-central.md)中的步驟操作。
 
-## <a name="get-device-connection-details"></a>取得裝置連線詳細資料
+## <a name="get-device-connection-details"></a>獲取設備連接詳細資訊
 
-1. 在您的 Azure IoT Central 應用程式中，選取 [**裝置範本**] 索引標籤，然後選取 [ **+ 新增**]。 在 [**使用預先設定的裝置範本**] 區段中，選取 [ **MXChip IoT DevKit**]。
+1. 在 Azure IoT 中心應用程式中，選擇 **"設備範本"** 選項卡並選擇 **"新建**"。 在"**使用預配置的設備範本**"一節中，選擇**MXChip IoT 開發人員工具組**。
 
-    ![適用于 MXChip IoT DevKit 的裝置範本](media/howto-connect-devkit/device-template.png)
+    ![MXChip IoT 開發工具組的設備範本](media/howto-connect-devkit/device-template.png)
 
-1. 選取 **[下一步]：自訂**，然後**建立**。
+1. 選擇 **"下一步"：自訂**，然後**創建**。
 
-1. 選取 [**裝置**] 索引標籤。在 [裝置] 清單中，選取 [ **MXChip IoT DevKit** ]，然後選取 [ **+ 新增**] 以從範本建立新的裝置。
+1. 選擇 **"設備"** 選項卡。在設備清單中，選擇**MXChip IoT DevKit，** 然後選擇 **"新建"** 以從範本創建新設備。
 
-    ![新增裝置](media/howto-connect-devkit/new-device.png)
+    ![新設備](media/howto-connect-devkit/new-device.png)
 
-1. 在快顯視窗中，將 [**裝置識別碼**] 輸入為 `SampleDevKit` 和 [**裝置名稱**] 做為 [`MXChip IoT DevKit - Sample`]。 請確定**模擬**選項為 [關閉]。 然後選取 [建立]。
+1. 在快顯視窗中，將**裝置識別碼**輸入`SampleDevKit`為 **，設備名稱**為`MXChip IoT DevKit - Sample`。 確保 **"類比"** 選項已關閉。 然後選擇 **"創建**"。
 
-    ![裝置識別碼和名稱](media/howto-connect-devkit/device-id-name.png)
+    ![裝置識別碼 和名稱](media/howto-connect-devkit/device-id-name.png)
 
-1. 選取您建立的裝置，然後選取 **[連線]** 。 記下 [**識別碼範圍**]、[**裝置識別碼**] 和 [**主要金鑰**]。 您稍後會在本操作說明文章中需要這些值。
+1. 選擇您創建的設備，然後選擇 **"連接**"。 記下**ID 範圍**、設備**ID**和**主鍵**。 在這篇"如何"一文的後面部分，您需要這些值。
 
-    ![裝置連接資訊](media/howto-connect-devkit/device-connection-info.png)
+    ![設備連接資訊](media/howto-connect-devkit/device-connection-info.png)
 
-## <a name="prepare-the-device"></a>準備裝置
+## <a name="prepare-the-device"></a>準備設備
 
-1. 從 GitHub 下載適用于 DevKit 裝置的最新[預先建立的 Azure IoT Central 隨插即用（預覽）固件](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin)。
+1. 從 GitHub 下載 DevKit 設備的最新[預構建的 Azure IoT 中央隨插即用（預覽）固件](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin)。
 
-1. 使用 USB 纜線將 DevKit 裝置連接到開發電腦。 在 Windows 中，檔案總管視窗會在對應到 DevKit 裝置上儲存體的磁碟機上開啟。 例如，此磁碟機可能會稱為 **AZ3166 (D:)** 。
+1. 使用 USB 纜線將 DevKit 裝置連接到開發電腦。 在 Windows 中，檔案總管視窗會在對應到 DevKit 裝置上儲存體的磁碟機上開啟。 例如，此磁碟機可能會稱為 **AZ3166 (D:)**。
 
-1. 將 [ **iotc_devkit] bin**檔案拖曳至 [磁片磁碟機] 視窗。 複製完成時，使用新的韌體重新啟動裝置。
+1. 將**iotc_devkit.bin**檔拖到磁碟機視窗中。 複製完成時，使用新的韌體重新啟動裝置。
 
     > [!NOTE]
-    > 如果您在畫面上看到錯誤，例如**沒有 wi-fi**，這是因為 DevKit 尚未連線到 WiFi。
+    > 如果您在螢幕上看到錯誤（如**無 Wi-Fi），** 這是因為 DevKit 尚未連接到 WiFi。
 
-1. 在 [DevKit] 上，按住**按鈕 b**，按下並放開 [**重設**] 按鈕，然後放開**按鈕 B**。裝置現在處於「存取點」模式。 若要確認，此畫面會顯示「IoT DevKit-AP」和設定入口網站的 IP 位址。
+1. 在 DevKit 上，按住**按鈕 B**，按下並釋放 **"重置"** 按鈕，然後釋放**按鈕 B**。設備現在處於存取點模式。 要確認，螢幕將顯示"IoT DevKit - AP"和配置門戶 IP 位址。
 
-1. 在您的電腦或平板電腦上，連接到裝置螢幕上顯示的 WiFi 網路名稱。 WiFi 網路的開頭為**AZ-** 後面接著 MAC 位址。 當您連接到此網路時，您無法存取網際網路。 這是預期的狀態，而且您在設定裝置時，只會短時間連線到此網路。
+1. 在電腦或平板電腦上，連接到設備螢幕上顯示的 WiFi 網路名稱。 WiFi 網路以**AZ 開頭，** 後跟 MAC 位址。 當您連接到此網路時，您沒有互聯網接入。 此狀態是預期的，並且僅在配置設備時連接到此網路很短的時間。
 
-1. 開啟網頁瀏覽器並巡覽至 [http://192.168.0.1/](http://192.168.0.1/)。 以下網頁隨即顯示：
+1. 打開 Web 瀏覽器並導航[http://192.168.0.1/](http://192.168.0.1/)到 。 以下網頁隨即顯示：
 
-    ![Config UI](media/howto-connect-devkit/config-ui.png)
+    ![配置 UI](media/howto-connect-devkit/config-ui.png)
 
     在網頁上，輸入：
 
-    - 您的 WiFi 網路（SSID）的名稱。
+    - WiFi 網路 （SSID） 的名稱。
     - 您的 WiFi 網路密碼。
-    - 連線詳細資料：輸入您先前所記下的 [**裝置識別碼**]、[**識別碼範圍**] 和 [ **SAS 主要金鑰**]。
+    - 連接詳細資訊：輸入您以前記下**的裝置識別碼、ID****範圍**和**SAS 主金鑰**。
 
     > [!NOTE]
-    > 目前，IoT DevKit 只能連線到 2.4 GHz 的 Wi-fi，由於硬體限制，不支援 5 GHz。
+    > 目前，IoT DevKit 只能連接到 2.4 GHz Wi-Fi，由於硬體限制，不支援 5 GHz。
 
-1. 選擇 [**設定裝置**]，DevKit 裝置會重新開機並執行應用程式：
+1. 選擇 **"配置設備**"，DevKit 設備重新開機並運行應用程式：
 
     ![重新開機 UI](media/howto-connect-devkit/reboot-ui.png)
 
-    [DevKit] 畫面會顯示應用程式正在執行的確認：
+    DevKit 螢幕顯示應用程式正在運行的確認：
 
-    ![DevKit 執行中](media/howto-connect-devkit/devkit-running.png)
+    ![正在運行的 DevKit](media/howto-connect-devkit/devkit-running.png)
 
-DevKit 會先在 IoT Central 應用程式中註冊新裝置，然後開始傳送資料。
+DevKit 首先在 IoT 中央應用程式中註冊新設備，然後開始發送資料。
 
 ## <a name="view-the-telemetry"></a>檢視遙測資料
 
-在此步驟中，您會在 Azure IoT Central 應用程式中查看遙測。
+在此步驟中，您可以在 Azure IoT 中央應用程式中查看遙測資料。
 
-在您的 IoT Central 應用程式中，選取 [**裝置**] 索引標籤，選取您新增的裝置。 在 [**總覽**] 索引標籤中，您可以看到來自 DevKit 裝置的遙測：
+在 IoT 集中應用程式中，選擇 **"設備"** 選項卡，選擇您添加的設備。 在 **"概述"** 選項卡中，您可以看到來自 DevKit 設備的遙測資料：
 
-![IoT Central 裝置總覽](media/howto-connect-devkit/mxchip-overview-page.png)
+![IoT 中央設備概述](media/howto-connect-devkit/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
-若要檢查程式碼或修改並編譯它，請移至程式[代碼範例](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)。
+要查看代碼或修改和編譯代碼，請轉到[代碼示例](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何將 DevKit 裝置連線到您的 Azure IoT Central 應用程式，建議的下一個步驟是瞭解如何為您自己的 IoT 裝置[設定自訂裝置範本](./howto-set-up-template.md)。
+現在，您已經瞭解如何將 DevKit 設備連接到 Azure IoT 中央應用程式，建議的下一步是瞭解如何為自己的 IoT 設備[設置自訂設備範本](./howto-set-up-template.md)。

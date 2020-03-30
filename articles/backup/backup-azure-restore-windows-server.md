@@ -1,15 +1,15 @@
 ---
-title: 將 Azure 中的資料還原至 Windows server
-description: 在本文中，您將瞭解如何將儲存在 Azure 中的資料還原至具有 Microsoft Azure 復原服務（MARS）代理程式的 Windows server 或 Windows 電腦。
+title: 將 Azure 中的資料還原到 Windows 伺服器
+description: 在本文中，瞭解如何使用 Microsoft Azure 恢復服務 （MARS） 代理將存儲在 Azure 中的資料還原到 Windows 伺服器或 Windows 電腦。
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 25ca8eecaeb615f071340188a23fae7978ddb75c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409808"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure Resource Manager 部署模型將檔案還原至 Windows
 
@@ -36,34 +36,34 @@ ms.locfileid: "79248043"
 
     傳統型應用程式應該會出現在搜尋結果中。
 
-2. 按一下 [復原資料] 以啟動精靈。
+2. 按一下 [復原資料]**** 以啟動精靈。
 
     ![Azure 備份的螢幕擷取畫面，已反白顯示復原資料](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 在 [開始使用] 頁面中，若要將資料還原至同一台伺服器或電腦，請選取 [這台伺服器 ( **)]`<server name>`**  > [下一步]。
+3. 在 **"入門"** 頁上，要將資料還原到同一伺服器或電腦，請選擇 **"此伺服器`<server name>`"（）** > **下一個**。
 
     ![復原資料精靈 [開始使用] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. 在 **選取復原模式** 頁面上，選擇 **個別檔案和資料夾**  **> 下一步**。
+4. 在 [選取復原模式]**** 頁面中，選擇 [個別檔案與資料夾]**[下一步]** > ****。
 
     ![復原資料精靈 [選取復原模式] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > 若要執行還原個別檔案與資料夾的選項，必須具備 .NET Framework 4.5.2 或更新版本。 如果您未看見 [個別檔案與資料夾] 選項，您必須先將 .NET Framework 升級至 4.5.2 版或更新版本，再重新嘗試。
+   > 若要執行還原個別檔案與資料夾的選項，必須具備 .NET Framework 4.5.2 或更新版本。 如果您未看見 [個別檔案與資料夾]**** 選項，您必須先將 .NET Framework 升級至 4.5.2 版或更新版本，再重新嘗試。
  
    > [!TIP]
-   > [個別檔案及資料夾] 選項可讓您快速存取復原點資料。 這很適合用來復原個別檔案 (大小總計不得超過 80 GB)，並在復原期間提供最多 6 MBps 的傳輸或複製速度。 [磁碟區] 選項會復原指定磁碟區中的所有備份資料。 此選項可提供更快的傳輸速度 (最多 60 MBps)，適合用來復原大型資料或整個磁碟區。
+   > "**單個檔和資料夾"** 選項允許快速訪問復原點資料。 這很適合用來復原個別檔案 (大小總計不得超過 80 GB)，並在復原期間提供最多 6 MBps 的傳輸或複製速度。 [磁碟區]**** 選項會復原指定磁碟區中的所有備份資料。 此選項可提供更快的傳輸速度 (最多 60 MBps)，適合用來復原大型資料或整個磁碟區。
 
-5. 在 [選取磁碟區和日期] 頁面中，選取包含您要還原之檔案和資料夾的磁碟區。
+5. 在 [選取磁碟區和日期]**** 頁面中，選取包含您要還原之檔案和資料夾的磁碟區。
 
-    在日曆上，選取復原點。 **粗體**的日期表示至少有一個復原點可用。 如果單一日期內有多個復原點可用，可以從 [時間] 下拉式功能表選擇特定的復原點。
+    在日曆上，選取復原點。 **粗體**的日期表示至少有一個復原點可用。 如果單一日期內有多個復原點可用，可以從 [時間]**** 下拉式功能表選擇特定的復原點。
 
     ![復原資料精靈 [選取磁碟區和日期] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. 選擇要還原的復原點之後，請選取 [裝載]。
+6. 選擇要還原的復原點之後，請選取 [裝載]****。
 
     Azure 備份會掛接本機復原點，並且使用它做為復原磁碟區。
 
-7. 在 [**流覽及復原檔案]** 頁面上，選取 **[流覽]** 以開啟 [Windows Explorer]，然後尋找您想要的檔案和資料夾。
+7. 在 **"流覽和恢復檔**"頁上，選擇 **"流覽**以打開 Windows 資源管理器"，然後查找所需的檔和資料夾。
 
     ![復原資料精靈 [瀏覽及復原檔案] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
@@ -71,12 +71,12 @@ ms.locfileid: "79248043"
 
     ![Windows 檔案總管的螢幕擷取畫面，已反白顯示複本](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-9. 當您完成時，請在 [瀏覽及復原檔案] 頁面中，選取 [卸載]。 然後選取 [是] 確認要卸載磁碟區。
+9. 當您完成時，請在 [瀏覽及復原檔案]**** 頁面中，選取 [卸載]****。 然後選取 [是]**** 確認要卸載磁碟區。
 
     ![復原資料精靈 [瀏覽及復原檔案] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果您沒有選取 [卸載]，復原磁碟區會保持掛接 6 個小時 (從掛接後開始計算)。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
+    > 如果您沒有選取 [卸載]****，復原磁碟區會保持掛接 6 個小時 (從掛接後開始計算)。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用「立即還原」將資料還原至其他電腦
@@ -85,48 +85,48 @@ ms.locfileid: "79248043"
 
 這些步驟包括以下術語：
 
-* *來源電腦* – 建立備份且目前無法使用的原始電腦。
-* – 復原資料時的目標電腦。
+* *源電腦*= 從中獲取備份的原始電腦，並且當前不可用。
+* ** – 復原資料時的目標電腦。
 * *範例保存庫* – 來源電腦和目標電腦註冊所在的復原服務保存庫。
 
 > [!NOTE]
-> 備份無法還原到執行舊版作業系統的目標電腦。 例如，從 Windows 7 電腦取得的備份可以在 Windows 7 （或更新版本）的電腦上還原。 從 Windows 8 電腦建立的備份無法還原至 Windows 7 電腦。
+> 備份無法還原到執行舊版作業系統的目標電腦。 例如，可以從 Windows 7 電腦（或更高版本）電腦上還原從 Windows 7 電腦獲取的備份。 從 Windows 8 電腦建立的備份無法還原至 Windows 7 電腦。
 >
 >
 
-1. 在目標電腦上開啟 [Microsoft Azure 備份] 嵌入式管理單元。
+1. 在目的電腦上打開**Microsoft Azure 備份**管理單元。
 
 2. 確定目標電腦和來源電腦均已註冊到相同的復原服務保存庫。
 
-3. 選取 [復原資料] 以開啟 [復原資料精靈]。
+3. 選取 [復原資料]**** 以開啟 [復原資料精靈]****。
 
     ![Azure 備份的螢幕擷取畫面，已反白顯示復原資料](./media/backup-azure-restore-windows-server/recover.png)
 
-4. 在 [開始使用] 頁面中，選取 [其他伺服器]。
+4. 在 [開始使用]**** 頁面中，選取 [其他伺服器]****。
 
     ![復原資料精靈 [開始使用] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. 提供與範例保存庫相對應的保存庫認證檔，然後選取 [下一步]。
+5. 提供與範例保存庫相對應的保存庫認證檔，然後選取 [下一步]****。
 
     如果保存庫認證檔無效 (或已過期)，請從 Azure 入口網站中的「範例保存庫」下載新的保存庫認證檔。 在您提供有效的保存庫認證檔之後，就會顯示對應的備份保存庫名稱。
 
-6. 在 [選取備份伺服器] 頁面中，從顯示的電腦清單選取來源電腦，並提供複雜密碼。 然後選取 [下一步]。
+6. 在 [選取備份伺服器]**** 頁面中，從顯示的電腦清單選取來源電腦，並提供複雜密碼。 然後選擇 **"下一步**"。
 
     ![復原資料精靈 [選取備份伺服器] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. 在 [選取復原模式] 頁面中，選取 [個別檔案與資料夾] > [下一步]。
+7. 在 [選取復原模式]**** 頁面中，選取 [個別檔案與資料夾]**** > [下一步]****。
 
     ![復原資料精靈 [選取復原模式] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. 在 [選取磁碟區和日期] 頁面中，選取包含您要還原之檔案和資料夾的磁碟區。
+8. 在 [選取磁碟區和日期]**** 頁面中，選取包含您要還原之檔案和資料夾的磁碟區。
 
-    在日曆上，選取復原點。 **粗體**的日期表示至少有一個復原點可用。 如果單一日期內有多個復原點可用，可以從 [時間] 下拉式功能表選擇特定的復原點。
+    在日曆上，選取復原點。 **粗體**的日期表示至少有一個復原點可用。 如果單一日期內有多個復原點可用，可以從 [時間]**** 下拉式功能表選擇特定的復原點。
 
     ![復原資料精靈 [選取磁碟區和日期] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
-9. 選取 [掛接] 以掛接本機的復原點，做為目標電腦的復原磁碟區。
+9. 選取 [掛接]**** 以掛接本機的復原點，做為目標電腦的復原磁碟區。
 
-10. 在 [**流覽及復原檔案]** 頁面上，選取 **[流覽]** 以開啟 [Windows Explorer]，然後尋找您想要的檔案和資料夾。
+10. 在 **"流覽和恢復檔"** 頁上，選擇 **"流覽**以打開 Windows 資源管理器"，然後查找所需的檔和資料夾。
 
     ![復原資料精靈 [瀏覽及復原檔案] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
@@ -134,14 +134,16 @@ ms.locfileid: "79248043"
 
     ![Windows 檔案總管的螢幕擷取畫面，已反白顯示複本](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. 當您完成時，請在 [瀏覽及復原檔案] 頁面中，選取 [卸載]。 然後選取 [是] 確認要卸載磁碟區。
+12. 當您完成時，請在 [瀏覽及復原檔案]**** 頁面中，選取 [卸載]****。 然後選取 [是]**** 確認要卸載磁碟區。
 
     ![復原資料精靈 [瀏覽及復原檔案] 頁面的螢幕擷取畫面](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果您沒有選取 [卸載]，復原磁碟區會保持掛接 6 個小時 (從掛接後開始計算)。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
+    > 如果您沒有選取 [卸載]****，復原磁碟區會保持掛接 6 個小時 (從掛接後開始計算)。 不過，如果是進行中的檔案複製，掛接時間可延長至高達 24 小時。 當磁碟區處於掛接狀態時，不會執行任何備份作業。 掛接磁碟區時，任何排定要執行的備份作業都會在復原磁碟區卸載之後執行。
     >
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已復原檔案和資料夾，接下來您可以 [管理您的備份](backup-azure-manage-windows-server.md)。
+* 現在您已復原檔案和資料夾，接下來您可以 [管理您的備份](backup-azure-manage-windows-server.md)。
+
+* 查找[有關備份檔案和資料夾的常見問題](backup-azure-file-folder-backup-faq.md)。

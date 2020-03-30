@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 訂用帳戶對應建立資源集區
-description: 說明如何透過 Azure 訂用帳戶對應來建立您的 AVS 私人雲端的資源集區
+title: 使用 Azure 訂閱映射創建資源池
 titleSuffix: Azure VMware Solution by CloudSimple
+description: 描述如何通過 Azure 訂閱映射為私有雲創建資源池
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab7549650e4e20d27d3ad11a96d77ba943797f88
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 474ef03d482288b6bf7b5a8b1c224349a8e2d3a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014958"
 ---
-# <a name="create-resource-pools-for-your-avs-private-cloud-with-azure-subscription-mapping"></a>使用 Azure 訂用帳戶對應來建立您的 AVS 私人雲端資源集區
-Azure 訂用帳戶對應可讓您從可用的 vSphere 資源集區，為您的 AVS 私人雲端建立資源集區。 在 AVS 入口網站中，您可以查看及管理您的 AVS 私人雲端的 Azure 訂用帳戶。
+# <a name="create-resource-pools-for-your-private-cloud-with-azure-subscription-mapping"></a>使用 Azure 訂閱映射為私有雲創建資源池
+Azure 訂閱映射允許您從可用的 vSphere 資源池為私有雲創建資源池。 在 CloudSimple 門戶中，您可以查看和管理私有雲的 Azure 訂閱。
 
 > [!NOTE]
-> 對應資源集區也會對應任何子資源集區。 如果已經對應了任何子資源集區，就無法對應父資源集區。
+> 映射資源池還會映射任何子資源池。 如果已映射任何子資源池，則無法映射父資源池。
 
-1. [存取 AVS 入口網站](access-cloudsimple-portal.md)。
-2. 開啟 [**資源**] 頁面，然後選取 [Azure 訂用帳戶**對應**]。  
-3. 按一下 [**編輯 Azure 訂**用帳戶對應]。  
-4. 若要對應可用的資源集區，請在左側選取它們，然後按一下向右箭號。 
-5. 若要移除對應，請選取右側的對應，然後按一下向左箭號。 
+1. [訪問雲簡單門戶](access-cloudsimple-portal.md)。
+2. 打開 **"資源"** 頁並選擇**Azure 訂閱映射**。  
+3. 按一下 **"編輯 Azure 訂閱映射**"。  
+4. 要映射可用資源池，請在左側選擇它們，然後按一下右側箭頭。 
+5. 要刪除映射，請在右側選擇它們，然後按一下左側箭頭。 
 
     ![Azure 訂用帳戶](media/resources-azure-mapping.png)
 
-6. 按一下 [確定]。
+6. 按一下 [確定]****。

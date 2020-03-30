@@ -1,33 +1,33 @@
 ---
-title: 在 gMSA 帳戶下執行 Azure Service Fabric 服務
-description: 瞭解如何在 Service Fabric 的 Windows 獨立叢集上，以群組管理的服務帳戶（gMSA）執行服務。
+title: 在 gMSA 帳戶下運行 Azure 服務交換矩陣服務
+description: 瞭解如何在服務結構 Windows 獨立群集上以組託管服務帳戶 （gMSA） 方式運行服務。
 author: dkkapur
 ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
 ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988391"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>以群組受控服務帳戶身分執行服務
 
-在 Windows Server 獨立叢集上，您可以使用*RunAs*原則，以*群組受管理的服務帳戶*（gMSA）來執行服務。  根據預設，Service Fabric 應用程式會在 `Fabric.exe` 進程執行所在的帳戶下執行。 即使在共用主控環境中，以不同帳戶執行應用程式能避免彼此干擾。 使用 gMSA，就不需將密碼或加密的密碼儲存於應用程式資訊清單中。  您也可以利用 [Active Directory 使用者或群組](service-fabric-run-service-as-ad-user-or-group.md)身分執行服務。
+在 Windows Server 獨立群集上，可以使用*RunAs*策略將服務作為*組託管服務帳戶*（gMSA） 運行。  預設情況下，Service Fabric 應用程式在`Fabric.exe`進程運行的帳戶下運行。 即使在共用主控環境中，以不同帳戶執行應用程式能避免彼此干擾。 使用 gMSA，就不需將密碼或加密的密碼儲存於應用程式資訊清單中。  您也可以利用 [Active Directory 使用者或群組](service-fabric-run-service-as-ad-user-or-group.md)身分執行服務。
 
-下列範例顯示如何建立名為*svc-Test $* 的 gMSA 帳戶、如何將該受管理的服務帳戶部署至叢集節點，以及如何設定使用者主體。
+下面的示例演示如何創建名為*svc-Test$* 的 gMSA 帳戶，如何將託管服務帳戶部署到叢集節點，以及如何配置使用者主體。
 
 > [!NOTE]
-> 使用 gMSA 搭配獨立的 Service Fabric 叢集需要在您的網域內 Active Directory 內部部署（而不是 Azure Active Directory （Azure AD））。
+> 將 gMSA 與獨立的 Service Fabric 群集一起使用需要在域內本地（而不是 Azure 活動目錄 （Azure AD））內本地使用活動目錄。
 
 先決條件：
 
 - 網域需要一個 KDS 根金鑰。
-- 網域中必須至少有一個 Windows Server 2012 （或 R2） DC。
+- 域中必須至少有一個 Windows 伺服器 2012（或 R2） DC。
 
-1. 讓 Active Directory 網域系統管理員使用 `New-ADServiceAccount` Cmdlet 建立群組管理的服務帳戶，並確定 `PrincipalsAllowedToRetrieveManagedPassword` 包含所有的 Service Fabric 叢集節點。 `AccountName`、`DnsHostName` 和 `ServicePrincipalName` 必須是唯一的。
+1. 讓 Active Directory 域管理員使用`New-ADServiceAccount`Cmdlet 創建組託管服務帳戶，並確保`PrincipalsAllowedToRetrieveManagedPassword`包含所有服務結構叢集節點。 `AccountName`、`DnsHostName` 和 `ServicePrincipalName` 必須是唯一的。
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
@@ -41,7 +41,7 @@ ms.locfileid: "76988391"
     Test-AdServiceAccount svc-Test$
     ```
 
-3. 設定使用者主體，並設定 `RunAsPolicy` 來參考[使用者](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas)。
+3. 配置使用者主體，並將`RunAsPolicy`配置為引用[使用者](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas)。
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -65,7 +65,7 @@ ms.locfileid: "76988391"
 > 如果您將 RunAs 原則套用到服務，而服務資訊清單宣告具有 HTTP 通訊協定的端點資源，您就必須指定 **SecurityAccessPolicy**。  如需詳細資訊，請參閱[為 HTTP 和 HTTPS 端點指派安全性存取原則](service-fabric-assign-policy-to-endpoint.md)。
 >
 
-下列文章將引導您完成接下來的步驟：
+以下文章將指導您完成以下步驟：
 
 - [了解應用程式模型](service-fabric-application-model.md)
 - [在服務資訊清單中指定資源](service-fabric-service-manifest-resources.md)

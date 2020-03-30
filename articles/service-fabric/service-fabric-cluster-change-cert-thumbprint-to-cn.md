@@ -1,13 +1,13 @@
 ---
-title: 將叢集更新為使用憑證一般名稱
+title: 更新群集以使用證書通用名稱
 description: 了解如何切換 Service Fabric 叢集，將原本使用憑證指紋的叢集改為使用憑證通用名稱。
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610194"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>將叢集從憑證指紋變更為通用名稱
@@ -91,7 +91,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 > 擴展集祕密不支援將相同的資源識別碼用於兩個不同的祕密，因為每個祕密都是已設定版本的唯一資源。 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>從入口網站下載及更新範本
-憑證已安裝在基礎擴展集，不過您還需要更新 Service Fabric 叢集，才能使用該憑證和憑證的通用名稱。  現在，請下載叢集部署所需的範本。  登入[Azure 入口網站](https://portal.azure.com)，然後流覽至裝載叢集的資源群組。  在 [設定] 中，選取 [部署]。  選取最新的部署，然後按一下 [檢視範本]。
+憑證已安裝在基礎擴展集，不過您還需要更新 Service Fabric 叢集，才能使用該憑證和憑證的通用名稱。  現在，請下載叢集部署所需的範本。  登錄到 Azure[門戶](https://portal.azure.com)並導航到託管群集的資源組。  在 [設定]**** 中，選取 [部署]****。  選取最新的部署，然後按一下 [檢視範本]****。
 
 ![檢視範本][image1]
 
@@ -116,9 +116,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     },
     ```
 
-    也請考慮移除*certificateThumbprint*，它可能不會再于 Resource Manager 範本中加以參考。
+    此外，請考慮刪除*證書 Thumbprint，* 它可能不再在資源管理器範本中引用。
 
-2. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在 **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate**，新增 `"commonNames": ["[parameters('certificateCommonName')]"],` 和移除 `"thumbprint": "[parameters('certificateThumbprint')]",`。
+2. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在**虛擬機器組態檔**->**擴展設定檔**->**擴展**->**屬性**->**settings**設置->**證書**中，添加`"commonNames": ["[parameters('certificateCommonName')]"],`和刪除`"thumbprint": "[parameters('certificateThumbprint')]",`。
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {
@@ -179,7 +179,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
         ...
     ```
 
-如需其他資訊[，請參閱部署使用憑證一般名稱的 Service Fabric 叢集，而不是指紋。](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)
+有關其他資訊[，請參閱部署使用證書通用名稱而不是指紋的服務結構群集。](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)
 
 ## <a name="deploy-the-updated-template"></a>部署更新的範本
 完成變更之後，重新部署更新的範本。
@@ -192,7 +192,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 了解[叢集安全性](service-fabric-cluster-security.md)。
+* 瞭解[群集安全性](service-fabric-cluster-security.md)。
 * 了解如何[變換叢集憑證](service-fabric-cluster-rollover-cert-cn.md)
 * [更新及管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)
 

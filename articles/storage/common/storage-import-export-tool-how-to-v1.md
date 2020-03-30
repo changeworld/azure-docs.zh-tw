@@ -9,10 +9,10 @@ ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75975659"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>使用 Azure 匯入/匯出工具 (傳統部署模型)

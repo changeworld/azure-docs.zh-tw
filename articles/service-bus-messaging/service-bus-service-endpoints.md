@@ -1,6 +1,6 @@
 ---
-title: 虛擬網路服務端點-Azure 服務匯流排
-description: 本文提供如何將 Microsoft 服務端點新增至虛擬網路的相關資訊。
+title: 為 Azure 服務匯流排配置虛擬網路服務終結點
+description: 本文提供有關如何向虛擬網路添加 Microsoft.ServiceBus 服務終結點的資訊。
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -10,42 +10,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 212cd96571561362003e7dcbd89efc5d2c54ab48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9dbf65522d5c85e1054ed3f1f6ca9f86180e7f7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980810"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454976"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>搭配 Azure 服務匯流排使用虛擬網路服務端點
+# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>為 Azure 服務匯流排配置虛擬網路服務終結點
 
-將服務匯流排與[虛擬網路（VNet）服務端點][vnet-sep]整合，可讓您從系結至虛擬網路的工作負載（例如虛擬機器）安全地存取訊息功能，而兩端的網路流量路徑都受到保護。
+服務匯流排與[虛擬網路 （VNet） 服務終結點][vnet-sep]的集成使得對綁定到虛擬網路的工作負載（如虛擬機器）的消息傳遞功能進行安全訪問，並且網路流量路徑在兩端都受到保護。
 
 一旦設定為繫結到至少一個虛擬網路子網路服務端點，個別的服務匯流排命名空間除了授權的虛擬網路以外，無法再接受任何位置的流量。 從虛擬網路的觀點而言，將服務匯流排命名空間繫結至服務端點，會設定從虛擬網路子網路到傳訊服務的隔離網路通道。
 
 結果是繫結至子網路的工作負載與個別服務匯流排命名空間之間的私人和隔離關係，儘管傳訊服務端點的可觀察網路位址是在公用 IP 範圍中。
 
->[!WARNING]
-> 實作虛擬網路整合可以防止其他 Azure 服務與服務匯流排互動。
->
-> 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
->
-> 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
-> - Azure 串流分析
-> - 與 Azure 事件方格的整合
-> - Azure IoT 中樞路由
-> - Azure IoT Device Explorer
->
-> 虛擬網路上必須有下列 Microsoft 服務
-> - Azure App Service
-> - Azure Functions
-
 > [!IMPORTANT]
 > 唯有[進階層](service-bus-premium-messaging.md)服務匯流排命名空間支援虛擬網路。
-
-## <a name="enable-service-endpoints-with-service-bus"></a>以服務匯流排啟用服務端點
-
-請務必留意，使用 VNet 服務端點搭配服務匯流排時，應避免在混合了標準層和進階層服務匯流排命名空間的應用程式中啟用這些端點。 因為標準層不支援 VNet，所以端點僅限於進階層命名空間。
+> 
+> 將 VNet 服務終結點與服務匯流排一起使用時，不應在混合標準層和高級服務匯流排命名空間的應用程式中啟用這些終結點。 因為標準層不支援 VNet。 終結點僅限於高級層命名空間。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet 整合所實現的進階安全性案例 
 
@@ -57,14 +40,38 @@ ms.locfileid: "75980810"
 
 ## <a name="binding-service-bus-to-virtual-networks"></a>將服務匯流排繫結至虛擬網路
 
-「虛擬網路規則」是防火牆安全性功能，可控制 Azure 服務匯流排伺服器是否接受來自特定虛擬網路子網路的連線。
+「虛擬網路規則」** 是防火牆安全性功能，可控制 Azure 服務匯流排伺服器是否接受來自特定虛擬網路子網路的連線。
 
-將服務匯流排命名空間繫結至虛擬網路是一個雙步驟的程序。 您必須先在虛擬網路子網上建立**虛擬網路服務端點**，並針對「Microsoft 服務匯流排」啟用它，如[服務端點總覽][vnet-sep]中所述。 一旦您新增服務端點，您就可使用「虛擬網路規則」將服務匯流排命名空間與它繫結。
+將服務匯流排命名空間繫結至虛擬網路是一個雙步驟的程序。 您首先需要在虛擬網路子網上創建**虛擬網路服務終結點**，並為**Microsoft**啟用[它。][vnet-sep] 一旦您新增服務端點，您就可使用「虛擬網路規則」**** 將服務匯流排命名空間與它繫結。
 
 虛擬網路規則是服務匯流排命名空間與虛擬網路子網路的關聯。 當此規則存在時，繫結至子網路的所有工作負載都會獲得授與服務匯流排命名空間的存取權。 服務匯流排本身永遠不會建立輸出連線，不需要獲得存取權，因此永遠不會因為啟用這項規則而獲得授與子網路的存取權。
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>利用 Azure Resource Manager 範本來建立虛擬網路規則
+## <a name="use-azure-portal"></a>使用 Azure 入口網站
+本節介紹如何使用 Azure 門戶添加虛擬網路服務終結點。 要限制訪問，您需要集成此事件中心命名空間的虛擬網路服務終結點。
 
+1. 導航到[Azure 門戶](https://portal.azure.com)中的**服務匯流排命名空間**。
+2. 在左側功能表上，選擇 **"網路**"選項。 預設情況下，選擇"**所有網路**"選項。 您的命名空間接受來自任何 IP 位址的連接。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+
+    ![防火牆 - 選擇的所有網路選項](./media/service-endpoints/firewall-all-networks-selected.png)
+1. 選擇頁面頂部的 **"選定網路"** 選項。
+2. 在頁面的 **"虛擬網路**"部分中，選擇 **"添加現有虛擬網路**"。 
+
+    ![添加現有虛擬網路](./media/service-endpoints/add-vnet-menu.png)
+3. 從虛擬網路清單中選擇虛擬網路，然後選擇**子網**。 在將虛擬網路添加到清單中之前，必須啟用服務終結點。 如果未啟用服務終結點，門戶將提示您啟用它。
+   
+   ![選擇子網](./media/service-endpoints/select-subnet.png)
+
+4. 在為**Microsoft**啟用子網的服務終結點後，您應該會看到以下成功消息。 選擇**頁面底部的"添加**"以添加網路。 
+
+    ![選取子網路並啟用端點](./media/service-endpoints/subnet-service-endpoint-enabled.png)
+
+    > [!NOTE]
+    > 如果無法啟用服務終結點，則可以使用資源管理器範本忽略缺少的虛擬網路服務終結點。 在入口網站上無法使用這項功能。
+6. 選擇 **"在**工具列上保存"以保存設置。 等待幾分鐘，確認顯示在門戶通知中。 應禁用 **"保存**"按鈕。 
+
+    ![保存網路](./media/service-endpoints/save-vnet.png)
+
+## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 下列 Resource Manager 範本可讓您將虛擬網路規則新增至現有的服務匯流排命名空間。
 
 範本參數：
@@ -73,7 +80,7 @@ ms.locfileid: "75980810"
 * **virtualNetworkingSubnetId**：虛擬網路子網路的完整 Resource Manager 路徑，例如，`/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 適用於虛擬網路的預設子網路。
 
 > [!NOTE]
-> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。
+> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"**。
 > 在建立「虛擬網路」或「防火牆」規則時，我們必須將 ***"defaultAction"***
 > 
 > 從
@@ -178,6 +185,7 @@ ms.locfileid: "75980810"
             }
           ],
           "ipRules":[<YOUR EXISTING IP RULES>],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -186,7 +194,7 @@ ms.locfileid: "75980810"
   }
 ```
 
-若要部署範本，請遵循[Azure Resource Manager][lnk-deploy]的指示。
+若要部署範本，請依照 [Azure Resource Manager][lnk-deploy] 適用的指示執行。
 
 ## <a name="next-steps"></a>後續步驟
 

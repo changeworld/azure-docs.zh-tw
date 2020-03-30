@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5d8fd578c5539c83e37a232d8425ad8bdf22129b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243532"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125057"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -89,7 +89,7 @@ Azure Blob 儲存體和 Azure 檔案共用中的待用資料可以在伺服器�
 
 #### <a name="transparent-data-encryption"></a>透明資料加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) 即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 和 [Azure SQL 資料倉儲](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)資料檔案，該金鑰儲存在資料庫開機記錄中，以在復原期間使用。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可用來使用資料庫加密金鑰 (DEK) 即時加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) 和 [Azure SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)資料檔案，該金鑰儲存在資料庫開機記錄中，以在復原期間使用。
 
 TDE 會使用 AES 和三重資料加密標準 (3DES) 加密演算法來保護資料和記錄檔。 資料庫檔案的加密會在頁面層級執行。 已加密資料庫中的頁面會在寫入磁碟之前進行加密，並會在讀入記憶體時進行解密。 現在預設會在新建立的 Azure SQL 資料庫上啟用 TDE。
 
@@ -105,7 +105,7 @@ CLE 具有內建函式，可供您使用對稱或非對稱金鑰、憑證的公�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 資料庫加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) 是 Microsoft 之全域散發的多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是 Microsoft 的全球分散式多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的待用加密
 
@@ -207,5 +207,5 @@ Key Vault 讓組織不需要設定、修補及維護硬體安全模組 (HSM) 和
 - [Azure 網路安全性概觀](network-overview.md)
 - [Azure 資料庫安全性概觀](database-security-overview.md)
 - [Azure 虛擬機器安全性概觀](virtual-machines-overview.md)
-- [待用資料加密](encryption-atrest.md)
+- [靜態資料加密](encryption-atrest.md)
 - [資料安全性與加密的最佳做法](data-encryption-best-practices.md)

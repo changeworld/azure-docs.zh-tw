@@ -1,81 +1,81 @@
 ---
-title: 自訂 Azure IoT Central UI |Microsoft Docs
-description: 如何自訂 Azure IoT central 應用程式的主題和說明連結
+title: 自訂 Azure IoT 中央 UI |微軟文檔
+description: 如何為 Azure IoT 中央應用程式自訂主題和説明連結
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018426"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157969"
 ---
-# <a name="customize-the-azure-iot-central-ui"></a>自訂 Azure IoT Central UI
+# <a name="customize-the-azure-iot-central-ui"></a>自訂 Azure IoT 中央 UI
 
-本文說明如何以系統管理員的身分，藉由套用自訂主題和修改說明連結，以指向您自己的自訂說明資源，以自訂應用程式的 UI。 
+本文介紹作為管理員，如何通過應用自訂主題和修改説明連結以指向您自己的自訂説明資源來自訂應用程式的 UI。 
 
 
 
-下列螢幕擷取畫面顯示使用標準主題的頁面：
+以下螢幕截圖顯示了使用標準主題的頁面：
 
-![標準 IoT Central 主題](./media/howto-customize-ui/standard-ui.png)
+![標準 IoT 中心主題](./media/howto-customize-ui/standard-ui.png)
 
-下列螢幕擷取畫面顯示的頁面使用自訂的螢幕擷取畫面，並反白顯示自訂的 UI 元素：
+以下螢幕截圖顯示了使用自訂螢幕截圖的頁面，其中突出顯示了自訂 UI 元素：
 
-![自訂 IoT Central 主題](./media/howto-customize-ui/themed-ui.png)
+![自訂 IoT 中心主題](./media/howto-customize-ui/themed-ui.png)
 
-## <a name="create-theme"></a>建立主題
+## <a name="create-theme"></a>創建主題
 
-若要建立自訂主題，請流覽至 [**管理**] 區段中的 [**自訂您的應用程式**] 頁面：
+要創建自訂主題，請導航到 **"管理**"部分中的 **"自訂應用程式**"頁：
 
-![IoT Central 主題](./media/howto-customize-ui/themes.png)
+![IoT 中心主題](./media/howto-customize-ui/themes.png)
 
-在此頁面上，您可以自訂應用程式的下列層面：
+在此頁上，您可以自訂應用程式的以下方面：
 
-### <a name="application-logo"></a>應用程式標誌
+### <a name="application-logo"></a>應用程式徽標
 
-具有透明背景的 PNG 影像，不超過 1 MB。 此標誌會顯示在 IoT Central 應用程式標題列的左邊。
+具有透明背景的 PNG 圖像，不超過 1 MB。 此徽標顯示在 IoT 中央應用程式標題列的左側。
 
-如果您的標誌影像包含應用程式的名稱，您可以隱藏應用程式名稱文字。 如需詳細資訊，請參閱[管理您的應用程式](howto-administer.md#change-application-name-and-url)。
+如果徽標圖像包含應用程式的名稱，則可以隱藏應用程式名稱文本。 有關詳細資訊，請參閱[管理應用程式](howto-administer.md#change-application-name-and-url)。
 
-### <a name="browser-icon-favicon"></a>瀏覽器圖示（favicon）
+### <a name="browser-icon-favicon"></a>瀏覽器圖示（圖示）
 
-具有透明背景的 PNG 影像，不超過 32 x 32 圖元。 網頁瀏覽器可以在網址列、歷程記錄、書簽和瀏覽器索引標籤中使用此影像。
+具有透明背景的 PNG 圖像，不超過 32 x 32 圖元。 Web 瀏覽器可以在網址列、歷史記錄、書簽和瀏覽器選項卡中使用此圖像。
 
-### <a name="browser-colors"></a>瀏覽器色彩
+### <a name="browser-colors"></a>瀏覽器顏色
 
-您可以變更頁首的色彩，以及用於 accenting 按鈕和其他反白顯示的色彩。 使用 `##ff6347`格式的六個字元的十六進位色彩值。 如需**十六進位值**色彩標記法的詳細資訊，請參閱[HTML 色彩](https://www.w3schools.com/html/html_colors.asp)。
-
-> [!NOTE]
-> 您一律可以還原為 [**自訂您的應用程式**] 頁面上的預設選項。
-
-### <a name="changes-for-operators"></a>運算子的變更
-
-如果系統管理員建立自訂主題，則應用程式的操作員和其他使用者將無法再于 [**設定**] 中選擇主題。
-
-## <a name="replace-help-links"></a>取代說明連結
-
-若要將自訂說明資訊提供給操作員和其他使用者，您可以修改 **[應用程式**說明] 功能表上的連結。
-
-若要修改說明連結，請流覽至 [**管理**] 區段中的 [**自訂**說明] 頁面：
-
-![自訂 IoT Central 說明連結](./media/howto-customize-ui/help-links.png)
-
-您也可以將新專案新增至 [說明] 功能表，並移除預設專案：
-
-![自訂 IoT Central 說明](./media/howto-customize-ui/custom-help.png)
+您可以更改頁面標題的顏色以及用於重音按鈕和其他高光的顏色。 在格式`##ff6347`中使用六個字元的十六進位顏色值。 有關**HEX 值**顏色標記法的詳細資訊，請參閱[HTML 顏色](https://www.w3schools.com/html/html_colors.asp)。
 
 > [!NOTE]
-> 您一律可以還原為 [**自訂**說明] 頁面上的預設 [說明] 連結。
+> 您可以隨時恢復到 **"自訂應用程式**"頁上的預設選項。
+
+### <a name="changes-for-operators"></a>運算子的更改
+
+如果管理員創建自訂主題，則應用程式的操作員和其他使用者無法再在 **"設置"** 中選擇主題。
+
+## <a name="replace-help-links"></a>替換説明連結
+
+要向操作員和其他使用者提供自訂説明資訊，可以修改應用程式**説明**功能表上的連結。
+
+要修改説明連結，請導航到 **"管理**"部分中的 **"自訂説明**"頁：
+
+![自訂 IoT 中心説明連結](./media/howto-customize-ui/help-links.png)
+
+您還可以向説明功能表添加新條目並刪除預設條目：
+
+![自訂 IoT 中心説明](./media/howto-customize-ui/custom-help.png)
+
+> [!NOTE]
+> 您可以隨時恢復到 **"自訂説明**"頁上的預設説明連結。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何在 IoT Central 應用程式中自訂 UI，以下是一些建議的後續步驟：
+現在，您已經瞭解如何在 IoT Central 應用程式中自訂 UI，下面是一些建議的後續步驟：
 
 - [管理您的應用程式](./howto-administer.md)
-- [將磚新增至儀表板](howto-add-tiles-to-your-dashboard.md)
+- [將圖格新增至您的儀表板](howto-add-tiles-to-your-dashboard.md)

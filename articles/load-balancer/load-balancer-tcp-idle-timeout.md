@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 中設定負載平衡器 TCP 閒置超時
+title: 在 Azure 中配置負載等化器 TCP 空閒超時
 titleSuffix: Azure Load Balancer
-description: 在本文中，您將瞭解如何設定 Azure Load Balancer TCP 閒置超時。
+description: 在本文中，瞭解如何配置 Azure 負載等化器 TCP 空閒超時。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 39cd5b5d6e9d6007994ccc29732186ec6a8bdc2e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79284131"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456823"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>設定 Azure Load Balancer 的 TCP 閒置逾時設定
 
@@ -28,20 +28,20 @@ ms.locfileid: "79284131"
 
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組版本 5.4.1 或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-## <a name="tcp-idle-timeout"></a>TCP 閒置超時
-在預設組態中，Azure Load Balancer 的閒置逾時設定是 4 分鐘。 如果閒置期間超過逾時值，即無法保證仍能維持用戶端與雲端服務之間的 TCP 或 HTTP 工作階段。
+## <a name="tcp-idle-timeout"></a>TCP 空閒超時
+Azure 負載等化器的空閒超時設置為 4 分鐘到 30 分鐘。 預設情況下，它設置為 4 分鐘。 如果閒置期間超過逾時值，即無法保證仍能維持用戶端與雲端服務之間的 TCP 或 HTTP 工作階段。
 
 當連線關閉時，用戶端應用程式可能會收到以下錯誤訊息：「基礎連線已關閉：應該保持運作的連接卻被伺服器關閉。」
 
-常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱這些 [.NET 文章](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 啟用 Keep-Alive 之後，就會在連線無活動期間傳送封包。 Keep-alive 封包可確保不會達到閒置的超時值，且連接會長時間維持。
+常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱這些 [.NET 文章](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 啟用 Keep-Alive 之後，就會在連線無活動期間傳送封包。 保持活動資料包可確保不達到空閒超時值並長時間維護連接。
 
-此設定僅適用于輸入連接。 若要避免失去連線，請將 TCP 保持連線設定為小於閒置的超時設定，或增加閒置的超時值。 為了支援這些案例，已新增可設定的閒置超時支援。 您現在可以設定 4 至 30 分鐘的持續時間。
+該設置僅適用于入站連接。 為避免丟失連接，請以小於空閒超時設置的間隔配置 TCP 保持活動狀態，或增加空閒超時值。 為了支援這些方案，添加了對可配置空閒超時的支援。
 
-TCP keep-alive 適用于電池壽命不是條件約束的情況。 不建議用於行動應用程式。 在行動裝置應用程式中使用 TCP Keep-Alive 可能會更快耗盡裝置電池電力。
+TCP 保持活動適用于電池壽命不是約束的情況。 不建議移動應用程式使用。 在行動裝置應用程式中使用 TCP Keep-Alive 可能會更快耗盡裝置電池電力。
 
 ![TCP 逾時](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-下列各節說明如何變更公用 IP 和負載平衡器資源的閒置超時設定。
+以下各節介紹如何更改公共 IP 和負載等化器資源的空閒超時設置。
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>將執行個體層級公用 IP 的 TCP 逾時值設定為 15 分鐘
 
@@ -53,9 +53,9 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 `IdleTimeoutInMinutes` 是選擇性的。 若未設定，則預設的逾時為 4 分鐘。 可接受的逾時範圍為 4 到 30 分鐘。
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>將負載平衡規則的 TCP 超時設定為15分鐘
+## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>將負載平衡規則的 TCP 超時設置為 15 分鐘
 
-若要設定負載平衡器的閒置超時，請在負載平衡規則上設定 ' IdleTimeoutInMinutes '。 例如：
+要設置負載等化器的空閒超時，在負載平衡規則上設置"空閒超時 In分鐘"。 例如：
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"

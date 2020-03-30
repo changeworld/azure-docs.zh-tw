@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986099"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自動化中的 Az 模組支援
@@ -18,7 +18,7 @@ Azure 自動化支援在您的 Runbook 中使用 [Azure Powershell Az 模組](/p
 
 ## <a name="considerations"></a>考量
 
-在 Azure 自動化中使用 Az 模組時有許多要考量的事項。 Runbook 和模組可以由您的自動化帳戶中較高層級的解決方案使用。 編輯 Runbook 或升級模組可能會導致 Runbook 的問題。 您應該在匯入新的 `Az` 模組之前，在個別自動化帳戶中小心地測試所有 Runbook 和解決方案。 對模組的任何修改都可能會對[啟動/停止](automation-solution-vm-management.md)解決方案造成負面影響。 我們不建議在包含任何解決方案的自動化帳戶中改變模組和 runbook。 此行為不是 Az 模組的特定項目。 將任何變更導入到您的自動化帳戶時，應該將此行為列入考量。
+在 Azure 自動化中使用 Az 模組時有許多要考量的事項。 Runbook 和模組可以由您的自動化帳戶中較高層級的解決方案使用。 編輯 Runbook 或升級模組可能會導致 Runbook 的問題。 您應該在匯入新的 `Az` 模組之前，在個別自動化帳戶中小心地測試所有 Runbook 和解決方案。 對模組的任何修改都會對[開始/停止](automation-solution-vm-management.md)解決方案產生負面影響。 我們不建議在包含任何解決方案的自動化帳戶中更改模組和運行簿。 此行為不是 Az 模組的特定項目。 將任何變更導入到您的自動化帳戶時，應該將此行為列入考量。
 
 在您的自動化帳戶中匯入 `Az` 模組，不會自動在 Runbook 使用的 PowerShell 工作階段中匯入模組。 模組會在下列情況下匯入到 PowerShell 工作階段：
 
@@ -49,11 +49,11 @@ Azure 自動化支援在您的 Runbook 中使用 [Azure Powershell Az 模組](/p
 
 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 模組是其他 `Az.*` 模組的相依項目。 基於這個原因，此模組必須在您匯入其他任何模組之前，先匯入到您的自動化帳戶。
 
-從您的自動化帳戶中，選取 [共用資源] 下的 [模組]。 按一下 [瀏覽資源庫] 來開啟 [瀏覽資源庫] 頁面。  在搜尋列中，輸入模組名稱 (例如`Az.Accounts`)。 在 [PowerShell 模組] 頁面上，按一下 [匯入] 將模組匯入到您的自動化帳戶。
+從您的自動化帳戶中，選擇**共用資源**下的**模組**。 按一下 [瀏覽資源庫]**** 來開啟 [瀏覽資源庫]**** 頁面。  在搜尋列中，輸入模組名稱 (例如`Az.Accounts`)。 在 [PowerShell 模組] 頁面上，按一下 [匯入]**** 將模組匯入到您的自動化帳戶。
 
 ![從自動化帳戶匯入模組](media/az-modules/import-module.png)
 
-此匯入程序也可以透過在 [PowerShell 資源庫](https://www.powershellgallery.com)搜尋模組來完成。 一旦您找到模組，請選取它，並且在 [Azure 自動化] 索引標籤下按一下 [部署至 Azure 自動化]。
+此匯入程序也可以透過在 [PowerShell 資源庫](https://www.powershellgallery.com)搜尋模組來完成。 一旦您找到模組，請選取它，並且在 [Azure 自動化]**** 索引標籤下按一下 [部署至 Azure 自動化]****。
 
 ![直接從資源庫匯入模組](media/az-modules/import-gallery.png)
 
@@ -65,7 +65,7 @@ Azure 自動化支援在您的 Runbook 中使用 [Azure Powershell Az 模組](/p
 
 ## <a name="after-migration-details"></a>移轉後詳細資料
 
-完成移轉之後，不要再使用帳戶上的 `AzureRM` 模組來啟動 Runbook。 也建議您不要匯入或更新此帳戶上的 `AzureRM` 模組。 從此刻開始，請將此帳戶視為已遷移至 `Az`，並且僅使用 `Az` 模組操作。 建立新的自動化帳戶時，現有 `AzureRM` 模組仍然會安裝，且撰寫的教學課程 Runbook 仍然會包含 `AzureRM` Cmdlet。 這些 runbook 不應執行。
+完成移轉之後，不要再使用帳戶上的 `AzureRM` 模組來啟動 Runbook。 也建議您不要匯入或更新此帳戶上的 `AzureRM` 模組。 從此刻開始，請將此帳戶視為已遷移至 `Az`，並且僅使用 `Az` 模組操作。 建立新的自動化帳戶時，現有 `AzureRM` 模組仍然會安裝，且撰寫的教學課程 Runbook 仍然會包含 `AzureRM` Cmdlet。 不應運行這些 Runbook。
 
 ## <a name="next-steps"></a>後續步驟
 

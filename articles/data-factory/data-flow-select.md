@@ -1,65 +1,131 @@
 ---
-title: 對應資料流程選取轉換
-description: Azure Data Factory 對應資料流程選取轉換
+title: 映射資料流程 選擇轉換
+description: Azure 資料工廠映射資料流程 選擇轉換
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/08/2020
-ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.date: 03/18/2020
+ms.openlocfilehash: cfa15f5424dcd5d52b03fb65afe051444127f5ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934172"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065306"
 ---
-# <a name="mapping-data-flow-select-transformation"></a>對應資料流程選取轉換
+# <a name="select-transformation-in-mapping-data-flow"></a>在映射資料流程中選擇轉換
 
+使用選擇轉換重命名、刪除或重新排序列。 此轉換不會更改行資料，而是選擇向下游傳播的列。 
 
-將此轉換用於資料行選擇性（減少資料行數目）、別名資料行和資料流程名稱，以及重新排序資料行。
+在選擇轉換中，使用者可以指定固定映射、使用模式執行基於規則的映射或啟用自動映射。 固定映射和基於規則的映射都可以在同一選擇轉換中使用。 如果列與定義的映射之一不匹配，則將刪除該列。
 
-## <a name="how-to-use-select-transformation"></a>如何使用選取轉換
-選取的轉換可讓您設定整個資料流的別名，或在該資料流中的資料行指派不同的名稱 (別名)，之後可在資料流程中參考這些新名稱。 這項轉換可用於自我聯結的案例。 在 ADF 資料流程中實作自我聯結的方式是選取資料流、使用「新分支」設定資料流的分支，然後立即加入「選取」轉換。 該資料流現在會有新的名稱可供您聯結回原始的資料流，以便建立自我聯結：
+## <a name="fixed-mapping"></a>固定映射
 
-![自我聯結](media/data-flow/selfjoin.png "自我聯結")
+如果投影中定義的列少於 50 列，則預設情況下所有定義的列都將具有固定映射。 固定映射採用定義的傳入列，並將其映射為確切名稱。
 
-在上圖中，選取轉換位於最上層。 這是原始資料流的別名「OrigSourceBatting」。 在下方反白顯示的聯結轉換中，您可以看到我們使用這個選取別名資料流程做為右手聯結，讓我們能夠在內部聯結的左側 & 右邊參考相同的索引鍵。
-
-選取也可以用來取消選取資料流程中的資料行。 例如，如果在接收中定義 6 個資料行，但是您只想要挑選其中 3 個進行轉換，然後流向接收，您可以使用選取轉換僅選取 3 個。
-
-![選取轉換](media/data-flow/newselect1.png "選取別名")
-
-## <a name="options"></a>選項
-* 「選取」的預設設定是包含所有內送的資料行，並保留這些原始名稱。 您可以設定 Select 轉換的名稱，為資料流設定別名。
-* 若要設定個別資料行的別名，請取消選取「全部選取」並使用下方的資料行對應。
-* 選擇 [略過重複專案]，以排除輸入或輸出中繼資料的重復資料行。
-
-![略過重複專案](media/data-flow/select-skip-dup.png "略過重複專案")
-
-* 當您選擇略過重複專案時，結果會顯示在 [檢查] 索引標籤中。 ADF 會保留第一次出現的資料行，而您會看到該相同資料行後續出現的每一次都已從您的流程中移除。
+![固定映射](media/data-flow/fixedmapping.png "固定映射")
 
 > [!NOTE]
-> 若要清除對應規則，請按 [**重設**] 按鈕。
+> 不能使用固定映射映射或重命名漂移列
 
-## <a name="mapping"></a>對應
-根據預設，[選取] 轉換會自動對應所有資料行，而這些資料行會在輸出上傳遞所有傳入的資料行到相同的名稱。 在 [選取設定] 中設定的輸出資料流程名稱會定義資料流程的新別名名稱。 如果您保留選取 [自動對應] 的集合，則可以使用相同的所有資料行來為整個資料流程加上別名。
+### <a name="mapping-hierarchical-columns"></a>映射分層列
 
-![選取轉換規則](media/data-flow/rule2.png "以規則為基礎的對應")
+固定映射可用於將分層列的子列映射到頂級列。 如果您有定義的層次結構，請使用列下拉清單來選擇子列。 選擇轉換將創建一個新列，該列的值和資料類型為子列。
 
-如果您想要別名、移除、重新命名或重新排序資料行，您必須先關閉「自動對應」。 根據預設，您會看到為您輸入的預設規則，稱為「所有輸入資料行」。 如果您想要一律允許所有傳入的資料行對應到其輸出上的相同名稱，您可以將此規則保留在原處。
+![分層映射](media/data-flow/select-hierarchy.png "分層映射")
 
-不過，如果您想要新增自訂規則，您將按一下 [新增對應]。 欄位對應會為您提供要對應和別名的傳入和傳出資料行名稱清單。 選擇 [以規則為基礎的對應] 來建立模式比對規則。
+## <a name="rule-based-mapping"></a>規則型對應
 
-## <a name="rule-based-mapping"></a>以規則為基礎的對應
-當您選擇以規則為基礎的對應時，您會指示 ADF 評估相符的運算式，以符合傳入模式規則並定義外寄功能變數名稱。 您可以新增欄位和以規則為基礎之對應的任意組合。 然後，ADF 會根據來源的傳入中繼資料，在執行時間產生功能變數名稱。 您可以在 debug 和使用 [資料預覽] 窗格期間, 查看所產生欄位的名稱。
+如果要同時映射許多列或向下游傳遞漂移列，請使用基於規則的映射使用列模式定義映射。 根據`name`、、`type``stream`和`position`列匹配。 可以具有固定映射和基於規則的映射的任意組合。 預設情況下，所有大於 50 列的預測將預設為基於規則的映射，該映射與每列匹配並輸出輸入的名稱。 
 
-如需模式比對的詳細資訊，請[參閱資料行模式檔](concepts-data-flow-column-pattern.md)。
+要添加基於規則的映射，請按一下 **"添加映射"** 並選擇**基於規則的映射**。
 
-### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>使用以規則為基礎的對應來參數化選取轉換
-您可以使用以規則為基礎的對應，將 [選取轉換] 中的欄位對應參數化。 使用關鍵字 ```name``` 來根據參數檢查傳入的資料行名稱。 例如，如果您有一個稱為的資料流程參數 ```mycolumn``` 您可以建立單一的 Select 轉換規則，一律以這種方式將任何您設定 ```mycolumn``` 的資料行名稱對應到功能變數名稱：
+![基於規則的映射](media/data-flow/rule2.png "規則型對應")
 
-```name == $mycolumn```
+每個基於規則的映射都需要兩個輸入：要匹配的條件以及每個映射列的名稱。 這兩個值都是通過[運算式產生器](concepts-data-flow-expression-builder.md)輸入的。 在左側運算式框中，輸入布林匹配條件。 在正確的運算式框中，指定匹配列將映射到的內容。
+
+![基於規則的映射](media/data-flow/rule-based-mapping.png "規則型對應")
+
+使用`$$`語法引用匹配列的輸入名稱。 以上面的圖像為例，假設使用者希望匹配名稱短于六個字元的所有字串列。 如果命名`test`了一個傳入列，則`$$ + '_short'`運算式將重命名該列`test_short`。 如果這是唯一存在的映射，則不符合條件的所有列都將從輸出的資料中刪除。
+
+模式匹配漂移列和定義的列。 要查看規則映射的已定義的列，請按一下規則旁邊的眼鏡圖示。 使用資料預覽驗證輸出。
+
+### <a name="regex-mapping"></a>雷格克斯映射
+
+如果按一下向下的 V 形圖示，則可以指定正則運算式映射條件。 正則運算式映射條件與匹配指定正則運算式條件的所有列名稱匹配。 這可以與基於規則的標準映射結合使用。
+
+![基於規則的映射](media/data-flow/regex-matching.png "規則型對應")
+
+上述示例與 RegEx 模式`(r)`或包含小寫 r 的任何列名稱匹配。 與基於標準規則的映射類似，使用`$$`語法使用右側的條件會更改所有匹配列。
+
+如果列名稱中有多個正則運算式匹配項，則可以使用"n"引用哪個匹配項`$n`引用特定匹配項。 例如，"$2"是指列名中的第二個匹配項。
+
+### <a name="rule-based-hierarchies"></a>基於規則的層次結構
+
+如果定義的投影具有層次結構，則可以使用基於規則的映射來映射層次結構子列。 指定要映射的匹配條件和要映射的子列的複雜列。 每個匹配的子列都將使用右側指定的"名稱為"規則進行輸出。
+
+![基於規則的映射](media/data-flow/rule-based-hierarchy.png "規則型對應")
+
+上述示例與複雜列的所有子列`a`匹配。 `a`包含兩個子列`b`和`c`。 輸出架構將包括兩列`b`，並且`c`"名稱為"條件為`$$`。
+
+### <a name="parameterization"></a>參數化
+
+您可以使用基於規則的映射對列名稱進行參數化。 使用 關鍵字```name```將傳入列名稱與參數匹配。 例如，如果您有一個資料流程參數```mycolumn```，則可以創建與等於 的任何列名稱匹配的規則。 ```mycolumn``` 您可以將匹配列重命名為硬編碼字串（如"業務金鑰"）並顯式引用它。 在此示例中，匹配條件是```name == $mycolumn```，名稱條件是"業務金鑰"。 
+
+## <a name="auto-mapping"></a>自動映射
+
+添加選擇轉換時，可以通過切換 **"自動映射**"滑塊啟用自動映射。 使用自動映射，選擇轉換映射所有傳入列（不包括重複列），其名稱與其輸入的名稱相同。 這將包括漂移列，這意味著輸出資料可能包含架構中未定義的列。 有關漂移列的詳細資訊，請參閱[架構漂移](concepts-data-flow-schema-drift.md)。
+
+![自動映射](media/data-flow/automap.png "自動映射")
+
+打開自動映射後，選擇轉換將遵循跳過重複設置，並為現有列提供新的別名。 在同一流和自聯接方案中執行多個聯接或查找時，別名非常有用。 
+
+## <a name="duplicate-columns"></a>重複列
+
+預設情況下，選擇轉換將刪除輸入和輸出投影中的重複列。 重複的輸入列通常來自聯接和查找轉換，其中列名稱在聯接的每一側重複。 如果將兩個不同的輸入列映射到同一名稱，則可能會出現重複的輸出列。 通過切換核取方塊，選擇是刪除還是傳遞重複列。
+
+![跳過重複項](media/data-flow/select-skip-dup.png "跳過重複項")
+
+## <a name="ordering-of-columns"></a>列的順序
+
+映射的順序確定輸出列的順序。 如果多次映射輸入列，則僅遵守第一個映射。 對於任何重複的列刪除，將保留第一個匹配項。
+
+## <a name="data-flow-script"></a>資料流程指令碼
+
+### <a name="syntax"></a>語法
+
+```
+<incomingStream>
+    select(mapColumn(
+        each(<hierarchicalColumn>, match(<matchCondition>), <nameCondition> = $$), ## hierarchical rule-based matching
+        <fixedColumn>, ## fixed mapping, no rename
+        <renamedFixedColumn> = <fixedColumn>, ## fixed mapping, rename
+        each(match(<matchCondition>), <nameCondition> = $$), ## rule-based mapping
+        each(patternMatch(<regexMatching>), <nameCondition> = $$) ## regex mapping
+    ),
+    skipDuplicateMapInputs: { true | false },
+    skipDuplicateMapOutputs: { true | false }) ~> <selectTransformationName>
+```
+
+### <a name="example"></a>範例
+
+下面是選擇映射及其資料流程腳本的示例：
+
+![選擇腳本示例](media/data-flow/select-script-example.png "選擇腳本示例")
+
+```
+DerivedColumn1 select(mapColumn(
+        each(a, match(true())),
+        movie,
+        title1 = title,
+        each(match(name == 'Rating')),
+        each(patternMatch(`(y)`),
+            $1 + 'regex' = $$)
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> Select1
+```
 
 ## <a name="next-steps"></a>後續步驟
-* 使用 [選取] 來重新命名、重新排列和建立別名資料行之後，請使用 [[接收] 轉換](data-flow-sink.md)，將您的資料放入資料存放區中。
+* 使用 Select 重命名、重新排序和別名列後，使用["接收器"轉換](data-flow-sink.md)將資料放入資料存儲中。

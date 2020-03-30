@@ -1,5 +1,5 @@
 ---
-title: Azure Batch 集區刪除開始事件
+title: Azure 批次處理池刪除開始事件
 description: Batch 集區刪除開始事件的參考。 集區刪除作業開始時，就會發出此事件。
 services: batch
 author: LauraBrenner
@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: 24a68c6656bd13f0c353d53870a51cdc940fd141
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022200"
 ---
 # <a name="pool-delete-start-event"></a>集區刪除開始事件
@@ -32,4 +32,4 @@ ms.locfileid: "77022200"
 
 |元素|類型|注意|
 |-------------|----------|-----------|
-|`id`|String|集區的識別碼。|
+|`id`|String|池的 ID。|

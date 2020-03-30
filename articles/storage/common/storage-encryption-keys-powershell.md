@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 來設定客戶管理的金鑰
+title: 使用 PowerShell 配置客戶管理的金鑰
 titleSuffix: Azure Storage
-description: 瞭解如何使用 PowerShell 來設定客戶管理的金鑰，以進行 Azure 儲存體加密。 客戶管理的金鑰可讓您建立、輪替、停用及撤銷存取控制。
+description: 瞭解如何使用 PowerShell 配置客戶管理的金鑰以進行 Azure 存儲加密。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,24 +10,24 @@ ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d7e4843bfbd622ad99cad4d9048e91a0cb49b1c1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 264dbbaedca5a28c8741d699a683b3e2b2385383
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136239"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061146"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>使用 PowerShell 以 Azure Key Vault 設定客戶管理的金鑰
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>使用 PowerShell 使用 Azure 金鑰保存庫配置客戶管理的金鑰
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文說明如何使用 PowerShell 以客戶管理的金鑰來設定 Azure Key Vault。 若要瞭解如何使用 Azure CLI 建立金鑰保存庫，請參閱[快速入門：使用 PowerShell 從 Azure Key Vault 設定和取出秘密](../../key-vault/quick-create-powershell.md)。
+本文演示如何使用 PowerShell 使用客戶管理的金鑰配置 Azure 金鑰保存庫。 若要瞭解如何使用 Azure CLI 創建金鑰保存庫，請參閱[快速入門：使用 PowerShell 從 Azure 金鑰保存庫設置和檢索機密](../../key-vault/quick-create-powershell.md)。
 
-## <a name="assign-an-identity-to-the-storage-account"></a>將身分識別指派給儲存體帳戶
+## <a name="assign-an-identity-to-the-storage-account"></a>將標識分配給存儲帳戶
 
-若要為您的儲存體帳戶啟用客戶管理的金鑰，請先將系統指派的受控識別指派給儲存體帳戶。 您將使用此受控識別來授與儲存體帳戶存取金鑰保存庫的許可權。
+要為存儲帳戶啟用客戶管理的金鑰，請先將系統分配的託管標識分配給存儲帳戶。 您將使用此託管標識授予訪問金鑰保存庫的存儲帳戶許可權。
 
-若要使用 PowerShell 指派受控識別，請呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount)。 請記得以您自己的值取代括弧中的預留位置值。
+要使用 PowerShell 分配託管標識，請調用[Set-AzStorage 帳戶](/powershell/module/az.storage/set-azstorageaccount)。 請記住將括弧中的預留位置值替換為您自己的值。
 
 ```powershell
 $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -35,13 +35,13 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-如需有關使用 PowerShell 來設定系統指派的受控識別的詳細資訊，請參閱[使用 powershell 在 AZURE VM 上設定 azure 資源的受控](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)識別。
+有關使用 PowerShell 配置系統分配的託管標識的詳細資訊，請參閱[使用 PowerShell 在 Azure VM 上配置 Azure 資源的託管標識](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)。
 
-## <a name="create-a-new-key-vault"></a>建立新的金鑰保存庫
+## <a name="create-a-new-key-vault"></a>創建新金鑰保存庫
 
-若要使用 PowerShell 建立新的金鑰保存庫，請呼叫[AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。 您用來儲存 Azure 儲存體加密客戶管理金鑰的金鑰保存庫，必須啟用兩個金鑰保護設定： [虛**刪除**] 和 [不要**清除**]。
+要使用 PowerShell 創建新金鑰保存庫，請致電[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。 用於存儲 Azure 存儲加密的客戶管理金鑰的金鑰保存庫必須啟用兩個金鑰保護設置，**即"虛刪除****"和"不清除**"。
 
-請記得以您自己的值取代括弧中的預留位置值。
+請記住將括弧中的預留位置值替換為您自己的值。
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
@@ -51,13 +51,13 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-若要瞭解如何使用 PowerShell 啟用「虛**刪除**」和「不要**清除**」現有的金鑰保存庫，請參閱[如何搭配使用虛刪除與 powershell](../../key-vault/key-vault-soft-delete-powershell.md)中的 < 啟用虛**刪除**和**啟用清除保護**的章節。
+要瞭解如何使用 PowerShell 在現有金鑰保存庫中啟用 **"虛刪除****"和"不清除"，** 請參閱標題為"**啟用虛刪除**和**啟用清除保護**"的部分，瞭解如何[使用 PowerShell 使用虛刪除](../../key-vault/key-vault-soft-delete-powershell.md)。
 
-## <a name="configure-the-key-vault-access-policy"></a>設定 key vault 存取原則
+## <a name="configure-the-key-vault-access-policy"></a>配置金鑰保存庫訪問策略
 
-接下來，設定金鑰保存庫的存取原則，讓儲存體帳戶有權存取它。 在此步驟中，您將使用先前指派給儲存體帳戶的受控識別。
+接下來，為金鑰保存庫配置訪問策略，以便存儲帳戶具有訪問它的許可權。 在此步驟中，您將使用以前分配給存儲帳戶的託管標識。
 
-若要設定金鑰保存庫的存取原則，請呼叫[set-set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+要設置金鑰保存庫的訪問策略，請調用[Set-AzKeyVault 訪問策略](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
 
 ```powershell
 Set-AzKeyVaultAccessPolicy `
@@ -68,17 +68,17 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="create-a-new-key"></a>建立新的金鑰
 
-接下來，在金鑰保存庫中建立新的金鑰。 若要建立新的金鑰，請呼叫[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+接下來，在金鑰保存庫中創建一個新金鑰。 要創建新金鑰，請調用[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
 
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>使用客戶管理的金鑰設定加密
+## <a name="configure-encryption-with-customer-managed-keys"></a>使用客戶管理的金鑰配置加密
 
-根據預設，Azure 儲存體加密會使用 Microsoft 管理的金鑰。 在此步驟中，請將您的 Azure 儲存體帳戶設定為使用客戶管理的金鑰，並指定要與儲存體帳戶建立關聯的金鑰。
+預設情況下，Azure 存儲加密使用 Microsoft 管理的金鑰。 在此步驟中，將 Azure 存儲帳戶配置為使用客戶管理的金鑰，並指定要與存儲帳戶關聯的金鑰。
 
-呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount)以更新儲存體帳戶的加密設定，如下列範例所示。 包含 **-KeyvaultEncryption**選項，可為儲存體帳戶啟用客戶管理的金鑰。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+調用[Set-AzStorage 帳戶](/powershell/module/az.storage/set-azstorageaccount)以更新存儲帳戶的加密設定，如以下示例所示。 包括 **-Keyvault 加密**選項，用於為存儲帳戶啟用客戶管理的金鑰。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -91,24 +91,24 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>更新金鑰版本
 
-當您建立新版本的金鑰時，您必須更新儲存體帳戶，才能使用新版本。 首先，呼叫[AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey)以取得最新版本的金鑰。 然後呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount) ，將儲存體帳戶的加密設定更新為使用新版本的金鑰，如上一節所示。
+創建金鑰的新版本時，需要更新存儲帳戶才能使用新版本。 首先，調用[Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey)獲取金鑰的最新版本。 然後調用[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)更新存儲帳戶的加密設定以使用金鑰的新版本，如上一節所示。
 
-## <a name="use-a-different-key"></a>使用不同的金鑰
+## <a name="use-a-different-key"></a>使用其他鍵
 
-若要變更用於 Azure 儲存體加密的金鑰，請呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount) ，如使用[客戶管理的金鑰設定加密](#configure-encryption-with-customer-managed-keys)中所示，並提供新的金鑰名稱和版本。 如果新的金鑰位於不同的金鑰保存庫中，請同時更新金鑰保存庫 URI。
+要更改用於 Azure 存儲加密的金鑰，請調用[Set-AzStorageAccount，](/powershell/module/az.storage/set-azstorageaccount)如[使用客戶管理的金鑰配置加密](#configure-encryption-with-customer-managed-keys)並提供新的金鑰名稱和版本。 如果新金鑰位於其他金鑰保存庫中，則還要更新金鑰保存庫 URI。
 
 ## <a name="revoke-customer-managed-keys"></a>撤銷客戶管理的金鑰
 
-如果您認為金鑰可能遭到入侵，您可以藉由移除 key vault 存取原則來撤銷客戶管理的金鑰。 若要撤銷客戶管理的金鑰，請呼叫[set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy)命令，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+如果您認為金鑰可能已洩露，則可以通過刪除金鑰保存庫訪問策略來撤銷客戶管理的金鑰。 要撤銷客戶管理的金鑰，請調用[刪除-AzKeyVaultAccessPolicy 命令](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy)，如以下示例所示。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
     -ObjectId $storageAccount.Identity.PrincipalId `
 ```
 
-## <a name="disable-customer-managed-keys"></a>停用客戶管理的金鑰
+## <a name="disable-customer-managed-keys"></a>禁用客戶管理的金鑰
 
-當您停用客戶管理的金鑰時，您的儲存體帳戶會再次使用 Microsoft 管理的金鑰進行加密。 若要停用客戶管理的金鑰，請使用 `-StorageEncryption` 選項呼叫[new-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount) ，如下列範例所示。 請記得以您自己的值取代括弧中的預留位置值，並使用先前範例中所定義的變數。
+禁用客戶管理的金鑰時，您的存儲帳戶將再次使用 Microsoft 管理的金鑰進行加密。 要禁用客戶管理的金鑰，請使用`-StorageEncryption`選項調用[Set-AzStorage 帳戶](/powershell/module/az.storage/set-azstorageaccount)，如以下示例所示。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -118,5 +118,5 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="next-steps"></a>後續步驟
 
-- [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
-- [什麼是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+- [靜態資料的 Azure 存儲加密](storage-service-encryption.md)
+- [什麼是 Azure 金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？

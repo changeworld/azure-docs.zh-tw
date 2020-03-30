@@ -1,7 +1,7 @@
 ---
 title: 建立採用 IPv6 的公用負載平衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 透過此學習路徑，開始使用 Azure CLI 來建立具有 IPv6 的公用負載平衡器。
+description: 使用此學習路徑，開始使用 Azure CLI 使用 IPv6 創建公共負載等化器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045420"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 建立採用 IPv6 的公用負載平衡器
 
 >[!NOTE] 
->本文說明可讓基本負載平衡器同時提供 IPv4 和 IPv6 連線能力的入門 IPv6 功能。 [Ipv6 For Azure vnet](../virtual-network/ipv6-overview.md)現已提供完整的 ipv6 連線能力，其整合了 ipv6 連線與您的虛擬網路，並包含 Ipv6 網路安全性群組規則、ipv6 使用者定義的路由、ipv6 基本和標準負載平衡等主要功能。  適用于 azure Vnet 的 IPv6 是 Azure 中的 IPv6 應用程式建議標準。 請參閱[適用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
+>本文介紹了一個介紹性的 IPv6 功能，允許基本負載等化器同時提供 IPv4 和 IPv6 連接。 適用于[Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md)集成了 IPv6 連接，包括 IPv6 網路安全性群組規則、IPv6 使用者定義的路由、IPv6 基本和標準負載平衡等關鍵功能。  Azure VNET 的 IPv6 是 Azure 中 IPv6 應用程式的建議標準。 [有關 Azure VNET 電源殼部署，請參閱 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器可藉由在負載平衡器集合中，將連入流量分散於雲端服務或虛擬機器中狀況良好的服務執行個體之間，來提供高可用性。 負載平衡器也會在多個連接埠或多個 IP 位址 (或兩者) 上顯示這些服務。
 
@@ -282,7 +282,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     ```
 
     > [!WARNING]
-    > 此範例使用純文字的 VM 使用者名稱和密碼。 當您以純文字使用這些認證時，請務必謹慎。 如需在 PowerShell 中更安全處理認證的做法，請參閱 [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet。
+    > 此範例使用純文字的 VM 使用者名稱和密碼。 當您以純文字使用這些認證時，請務必謹慎。 有關 PowerShell 中處理憑據的更安全的方法，請參閱[`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx)Cmdlet。
 
 2. 建立可用性設定組：
 

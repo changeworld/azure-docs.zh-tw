@@ -2,13 +2,13 @@
 title: 匯入容器映像
 description: 藉由使用 Azure API 將容器映像匯入到 Azure 容器登錄，不需要執行 Docker 命令。
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: e649447d7b9280dbebef1ae332c1f25910f5a516
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 03/16/2020
+ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456315"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051930"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>將容器映像匯入到容器登錄
 
@@ -24,19 +24,19 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 
 匯入到 Azure 容器登錄的映像相較於使用 Docker CLI 命令，具有下列優點：
 
-* 因為您的用戶端環境不需要本機 Docker 安裝，所以可以匯入任何容器映像，無論支援的作業系統類型是什麼。
+* 由於用戶端環境不需要本地 Docker 安裝，因此導入任何容器映射，而不管支援的作業系統類型如何。
 
 * 當您匯入多架構映像 (例如，官方 Docker 映像) 時，會複製資訊清單中指定和所有架構與平台的映像。
 
-為了匯入容器映像，本文會要求您在 Azure Cloud Shell 或在本機執行 Azure CLI (建議使用 2.0.55 版或更新版本)。 執行 `az --version` 找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+為了匯入容器映像，本文會要求您在 Azure Cloud Shell 或在本機執行 Azure CLI (建議使用 2.0.55 版或更新版本)。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
 > [!NOTE]
-> 如果您需要將相同的容器映像散佈到多個 Azure 區域，Azure Container Registry 也支援[異地複寫](container-registry-geo-replication.md)。 藉由異地複寫登錄 (需要進階 SKU)，您可以使用來自單一登錄的相同映像和標記名稱，為多個區域提供服務。
+> 如果您需要將相同的容器映像散佈到多個 Azure 區域，Azure Container Registry 也支援[異地複寫](container-registry-geo-replication.md)。 通過地理複製註冊表（需要高級服務層），可以從單個註冊表中為多個具有相同圖像和標記名稱的區域提供服務。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-如果您還沒有 Azure 容器登錄，請建立登錄。 如需相關步驟，請參閱[快速入門：使用 Azure CLI 建立私人容器](container-registry-get-started-azure-cli.md)登錄。
+如果您還沒有 Azure 容器登錄，請建立登錄。 有關步驟，請參閱[快速入門：使用 Azure CLI 創建專用容器註冊表](container-registry-get-started-azure-cli.md)。
 
 若要將映像匯入到 Azure 容器登錄，您的身分識別必須具有目標登錄的寫入權限 (至少是「參與者」角色)。 請參閱 [Azure Container Registry 角色和權限](container-registry-roles.md)。 
 
@@ -44,22 +44,30 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 
 ### <a name="import-from-docker-hub"></a>從 Docker Hub 匯入
 
-例如，使用[az acr import][az-acr-import]命令，將多架構 `hello-world:latest` 映射從 Docker Hub 匯入到名為*myregistry*的登錄。 因為 `hello-world` 是來自 Docker Hub 的官方映像，此映像在預設 `library` 存放庫中。 在 `--source` 映像參數的值中包含存放庫名稱，以及選擇性包含標記。 (您可以選擇性依據其資訊清單摘要來識別映像，而不是依據標記，如此可確保映像的特定版本。)
+例如，使用 [az acr import][az-acr-import] 命令將多架構 `hello-world:latest` 映像從 Docker Hub 匯入到名為 *myregistry* 的登錄。 因為 `hello-world` 是來自 Docker Hub 的官方映像，此映像在預設 `library` 存放庫中。 在 `--source` 映像參數的值中包含存放庫名稱，以及選擇性包含標記。 (您可以選擇性依據其資訊清單摘要來識別映像，而不是依據標記，如此可確保映像的特定版本。)
  
 ```azurecli
-az acr import --name myregistry --source docker.io/library/hello-world:latest --image hello-world:latest
+az acr import \
+  --name myregistry \
+  --source docker.io/library/hello-world:latest \
+  --image hello-world:latest
 ```
 
 您可以藉由執行 `az acr repository show-manifests` 命令，確認與此映像相關聯的多個資訊清單：
 
 ```azurecli
-az acr repository show-manifests --name myregistry --repository hello-world
+az acr repository show-manifests \
+  --name myregistry \
+  --repository hello-world
 ```
 
 下列範例會從 Docker Hub 中的 `tensorflow` 存放庫匯入公用映像：
 
 ```azurecli
-az acr import --name myregistry --source docker.io/tensorflow/tensorflow:latest-gpu --image tensorflow:latest-gpu
+az acr import \
+  --name myregistry \
+  --source docker.io/tensorflow/tensorflow:latest-gpu \
+  --image tensorflow:latest-gpu
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>從 Microsoft 容器登錄匯入
@@ -67,7 +75,10 @@ az acr import --name myregistry --source docker.io/tensorflow/tensorflow:latest-
 例如，從 Microsoft 容器登錄中的 `windows` 存放庫匯入Windows Server Core 映像。
 
 ```azurecli
-az acr import --name myregistry --source mcr.microsoft.com/windows/servercore:latest --image servercore:latest
+az acr import \
+--name myregistry \
+--source mcr.microsoft.com/windows/servercore:latest \
+--image servercore:latest
 ```
 
 ## <a name="import-from-another-azure-container-registry"></a>從其他 Azure 容器登錄匯入
@@ -80,24 +91,33 @@ az acr import --name myregistry --source mcr.microsoft.com/windows/servercore:la
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>從相同訂用帳戶中的登錄匯入
 
-例如，將 `aci-helloworld:latest` 映像從來源登錄 mysourceregistry 匯入到相同 Azure 訂用帳戶中的 myregistry。
+例如，將 `aci-helloworld:latest` 映像從來源登錄 mysourceregistry** 匯入到相同 Azure 訂用帳戶中的 myregistry**。
 
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld:latest --image hello-world:latest
+az acr import \
+  --name myregistry \
+  --source mysourceregistry.azurecr.io/aci-helloworld:latest \
+  --image aci-helloworld:latest
 ```
 
 下列範例會依據資訊清單摘要 (SHA-256 雜湊，表示為 `sha256:...`) 來匯入映像，而非依據標記：
 
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
+az acr import \
+  --name myregistry \
+  --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
 ```
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>從不同的訂用帳戶匯入登錄
 
-在下列範例中，mysourceregistry 位於與 myregistry 相同 Active Directory 租用戶中的不同訂用帳戶。 提供來源登錄的資源識別碼與 `--registry`。 請注意，`--source` 參數只會指定來源存放庫和映像名稱，不會提供登錄登入伺服器名稱。
- 
+在下列範例中，mysourceregistry** 位於與 myregistry** 相同 Active Directory 租用戶中的不同訂用帳戶。 提供來源登錄的資源識別碼與 `--registry`。 請注意，參數`--source`僅指定源存儲庫和標記，而不是註冊表登錄伺服器名稱。
+
 ```azurecli
-az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
+az acr import \
+  --name myregistry \
+  --source samples/aci-helloworld:latest \
+  --image aci-hello-world:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>使用服務主體認證從登錄匯入
@@ -105,7 +125,12 @@ az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --imag
 若要從您無法使用 Active Directory 權限存取的登錄匯入，您可以使用服務主體認證 (如果有的話)。 提供 Active Directory [服務主體](container-registry-auth-service-principal.md)的 appID 和密碼，該服務主體具有來源登錄的 ACRPull 存取權。 在建置系統和其他必須將映像匯入到登錄的自動化系統時，使用服務主體將有其效用。
 
 ```azurecli
-az acr import --name myregistry --source sourceregistry.azurecr.io/sourcerepo/sourceimage:tag --image targetimage:tag --username <SP_App_ID> –-password <SP_Passwd>
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>從非 Azure 私人容器登錄匯入
@@ -113,12 +138,17 @@ az acr import --name myregistry --source sourceregistry.azurecr.io/sourcerepo/so
 藉由指定可以啟用登錄提取存取權的認證，從私人登錄匯入映像。 例如，從私人 Docker 登錄提取映像： 
 
 ```azurecli
-az acr import --name myregistry --source docker.io/sourcerepo/sourceimage:tag --image sourceimage:tag --username <username> --password <password>
+az acr import \
+  --name myregistry \
+  --source docker.io/sourcerepo/sourceimage:tag \
+  --image sourceimage:tag \
+  --username <username> \
+  --password <password>
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您會了解從公用登錄或其他私人登錄將容器映像匯入到 Azure 容器登錄。 如需其他影像匯入選項，請參閱[az acr import][az-acr-import]命令參考。 
+在本文中，您會了解從公用登錄或其他私人登錄將容器映像匯入到 Azure 容器登錄。 如需其他映像匯入選項，請參閱 [az acr import][az-acr-import] 命令參考。 
 
 
 <!-- LINKS - Internal -->

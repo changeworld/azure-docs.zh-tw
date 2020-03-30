@@ -1,24 +1,24 @@
 ---
 title: 定義輸出值的多個實例
-description: 在 Azure Resource Manager 範本中使用複製作業，以在從部署傳回值時反復執行多次。
+description: 在 Azure 資源管理器範本中使用複製操作在從部署傳回值時多次反覆運算。
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: db5c548c7bd4c60357d3656b1273b0192c497459
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3889260d02f438274c80e99e99136515499443e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624770"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153381"
 ---
-# <a name="output-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的輸出反復專案
+# <a name="output-iteration-in-arm-templates"></a>ARM 範本中的輸出反覆運算
 
-本文說明如何為 Azure Resource Manager 範本中的輸出建立一個以上的值。 藉由將**copy**元素新增至範本的 [輸出] 區段，您可以在部署期間動態傳回數個專案。
+本文介紹如何在 Azure 資源管理器 （ARM） 範本中為輸出創建多個值。 通過將**複製**元素添加到範本的輸出部分，可以在部署期間動態返回多個項。
 
-您也可以使用 [複製[資源](copy-resources.md)]、[資源中的屬性](copy-properties.md)和[變數](copy-variables.md)。
+還可以將 copy 與[資源](copy-resources.md)、[資源中的屬性](copy-properties.md)和[變數](copy-variables.md)一起使用。
 
-## <a name="outputs-iteration"></a>輸出反復專案
+## <a name="outputs-iteration"></a>輸出反覆運算
 
-Copy 元素具有下列一般格式：
+複製元素具有以下常規格式：
 
 ```json
 "copy": [
@@ -29,11 +29,11 @@ Copy 元素具有下列一般格式：
 ]
 ```
 
-**Count**屬性會指定您想要的輸出值反覆運算次數。
+**count**屬性指定所需的輸出值的反覆運算次數。
 
-**輸入**屬性會指定您想要重複的屬性。 您會建立從**輸入**屬性中的值所構造的元素陣列。 它可以是單一屬性（例如字串）或具有數個屬性的物件。
+**輸入**屬性指定要重複的屬性。 創建從**輸入**屬性中的值構造的元素陣列。 它可以是單個屬性（如字串），也可以是具有多個屬性的物件。
 
-下列範例會建立變數數目的儲存體帳戶，並傳回每個儲存體帳戶的端點：
+以下示例創建可變數量的存儲帳戶，並為每個存儲帳戶返回終結點：
 
 ```json
 {
@@ -77,7 +77,7 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-上述範本會傳回具有下列值的陣列：
+前面的範本返回具有以下值的陣列：
 
 ```json
 [
@@ -86,7 +86,7 @@ Copy 元素具有下列一般格式：
 ]
 ```
 
-下一個範例會從新的儲存體帳戶傳回三個屬性。
+下一個示例從新的存儲帳戶返回三個屬性。
 
 ```json
 {
@@ -134,7 +134,7 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-上述範例會傳回具有下列值的陣列：
+前面的示例返回具有以下值的陣列：
 
 ```json
 [
@@ -153,11 +153,11 @@ Copy 元素具有下列一般格式：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如須逐步瀏覽教學課程，請參閱[教學課程：使用 Resource Manager 範本建立多個資源執行個體](template-tutorial-create-multiple-instances.md)。
-* 如需 copy 元素的其他用法，請參閱：
-  * [Azure Resource Manager 範本中的資源反復專案](copy-resources.md)
-  * [Azure Resource Manager 範本中的屬性反復專案](copy-properties.md)
-  * [Azure Resource Manager 範本中的變數反復專案](copy-variables.md)
-* 若要了解範本區段的相關資訊，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要了解如何部署範本，請參閱 [使用 Azure 資源管理員範本部署應用程式](deploy-powershell.md)。
+* 要流覽教程，請參閱[教程：使用 ARM 範本創建多個資源實例](template-tutorial-create-multiple-instances.md)。
+* 有關複製元素的其他用途，請參閱：
+  * [ARM 範本中的資源反覆運算](copy-resources.md)
+  * [ARM 範本中的屬性反覆運算](copy-properties.md)
+  * [ARM 範本中的可變反覆運算](copy-variables.md)
+* 如果要瞭解範本的各個部分，請參閱[創作 ARM 範本](template-syntax.md)。
+* 要瞭解如何部署範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)。
 

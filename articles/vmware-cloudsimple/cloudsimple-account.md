@@ -1,6 +1,6 @@
 ---
-title: AVS 帳戶管理-Azure
-description: 瞭解如何管理 AVS 帳戶
+title: 雲簡單帳戶管理 - Azure
+description: 瞭解有關管理雲簡單帳戶
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f00ea9590dfa81703ec76b1e866c72f7ff41176a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025107"
 ---
 # <a name="account-management-overview"></a>帳戶管理概觀
 
-當您建立您的 AVS 服務時，它會在 AVS 上建立帳戶。 此帳戶會與服務所在的 Azure 訂用帳戶相關聯。 訂用帳戶中具有「**擁有**者」和「**參與者**」角色的所有使用者都可以存取 AVS 入口網站。 與 AVS 服務相關聯的 Azure 訂用帳戶識別碼和租使用者識別碼可在 [[帳戶] 頁面](account.md)上找到。
+當您創建雲簡單服務時，它會在 CloudSimple 上創建一個帳戶。  該帳戶與服務所在的 Azure 訂閱相關聯。  訂閱中具有**擁有者**和**參與者**角色的所有使用者都有權訪問 CloudSimple 門戶。  與 CloudSimple 服務關聯的 Azure 訂閱 ID 和租戶 ID 將在["帳戶"頁上](account.md)找到。
 
-## <a name="additional-alert-emails"></a>其他警示電子郵件
+## <a name="additional-alert-emails"></a>其他警報電子郵件
 
-您可以在 AVS 中設定電子郵件識別碼來接收警示：
+您可以在雲簡單中配置電子郵件 ID 以接收警報：
 
 * 與您的服務相關
-* 自動處理
+* 用於自動處理
 
-## <a name="avs-operator-access"></a>AVS 操作員存取
+## <a name="cloudsimple-operator-access"></a>雲簡單操作員訪問
 
-您可以控制服務營運人員的 AVS 入口網站存取權。 當您提交支援票證時，服務作業人員會登入入口網站。 服務作業會修正任何回報的問題，而採取的動作會在 audit 記錄中提供。
+您可以控制對服務操作人員的 CloudSimple 門戶的訪問。  當您提交支援票證時，服務操作人員登錄到門戶。  服務操作將修復報告的任何問題，所執行的操作可在稽核記錄中提供。
 
-## <a name="users"></a>使用者人數
+## <a name="users"></a>使用者
 
-訂用帳戶中**具有擁有者和** **參與者**角色的所有使用者都可以存取 AVS 入口網站。 當您存取入口網站時，會在 AVS 帳戶上建立使用者。 您可以從 [帳戶] 頁面停用特定使用者對 AVS 入口網站的存取權。
+訂閱中具有**擁有者**和**參與者**角色的所有使用者都有權訪問 CloudSimple 門戶。  訪問門戶時，使用者是在 CloudSimple 帳戶上創建的。  您可以在"帳戶"頁中禁用特定使用者的雲簡單門戶訪問。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [查看帳戶摘要](account.md)
-* [View 使用者清單](users.md)
+* [查看使用者清單](users.md)

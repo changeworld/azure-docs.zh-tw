@@ -1,5 +1,5 @@
 ---
-title: 教學課程： LucidChart 的使用者布建-Azure AD
+title: 教程：LucidChart 的使用者預配 - Azure AD
 description: 了解如何設定 Azure Active Directory 將使用者帳戶自動佈建和取消佈建至 LucidChart。
 services: active-directory
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5d946c6e257c7676178f9bc3c234f66ba6fe622
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057323"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>教學課程︰設定 LucidChart 來自動佈建使用者
 
 本教學課程旨在說明您需要在 LucidChart 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 LucidChart。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -46,7 +46,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 * 建議將單一 Azure AD 使用者指派給 LucidChart，以測試佈建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者指派給 LucidChart 時，您必須在 [指派] 對話方塊中選取 [使用者] 角色，或另一個有效的應用程式特有角色 (如果有的話)。 [預設存取] 角色不適用於佈建，系統會略過這些使用者。
+* 將使用者指派給 LucidChart 時，您必須在 [指派] 對話方塊中選取 [使用者]**** 角色，或另一個有效的應用程式特有角色 (如果有的話)。 [預設存取]**** 角色不適用於佈建，系統會略過這些使用者。
 
 ## <a name="configuring-user-provisioning-to-lucidchart"></a>設定將使用者佈建至 LucidChart
 
@@ -57,42 +57,42 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>在 Azure AD 中設定將使用者帳戶自動佈建至 LucidChart
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory > 企業應用程式 > 所有應用程式] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory > 企業應用程式 > 所有應用程式]**** 區段。
 
-2. 如果您已將 LucidChart 設定為單一登入，請使用 [搜尋] 欄位搜尋您的 LucidChart 執行個體。 否則，請選取 [新增]，並在應用程式庫中搜尋 [LucidChart]。 從搜尋結果中選取 LucidChart，並將它新增至您的應用程式清單。
+2. 如果您已將 LucidChart 設定為單一登入，請使用 [搜尋] 欄位搜尋您的 LucidChart 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [LucidChart]****。 從搜尋結果中選取 LucidChart，並將它新增至您的應用程式清單。
 
-3. 選取您的 LucidChart 執行個體，然後選取 [佈建] 索引標籤。
+3. 選取您的 LucidChart 執行個體，然後選取 [佈建]**** 索引標籤。
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將**預配模式**設置為 **"自動**"。
 
     ![LucidChart 佈建](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. 在 [管理員認證] 區段下，輸入您的 LucidChart 帳戶所產生的 [祕密權杖] \(您可以在帳戶下找到權杖：[小組] > [API 整合] > [SCIM])。
+5. 在 [管理員認證]**** 區段下，輸入您的 LucidChart 帳戶所產生的 [祕密權杖]**** \(您可以在帳戶下找到權杖：[小組]**** > [API 整合]**** > [SCIM]****)。
 
     ![LucidChart 佈建](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
-6. 在 Azure 入口網站中，按一下 [測試連線]，以確保 Azure AD 可以連線至您的 LucidChart 應用程式。 如果連線失敗，請確定您的 LucidChart 帳戶具有管理員權限，然後再試一次步驟 5。
+6. 在 Azure 入口網站中，按一下 [測試連線]****，以確保 Azure AD 可以連線至您的 LucidChart 應用程式。 如果連線失敗，請確定您的 LucidChart 帳戶具有管理員權限，然後再試一次步驟 5。
 
-7. 在 [通知電子郵件] 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
+7. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-8. Haga clic en **Guardar**.
+8. 按一下 [儲存]****。
 
-9. 在 [對應] 區段下，選取 [同步處理 Azure Active Directory 使用者至 LucidChart]。
+9. 在 [對應] 區段下，選取 [同步處理 Azure Active Directory 使用者至 LucidChart]****。
 
-10. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 LucidChart 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 LucidChart 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
+10. 在 [屬性對應]**** 區段中，檢閱從 Azure AD 同步至 LucidChart 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 LucidChart 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
-11. 若要對 LucidChart 啟用 Azure AD 佈建服務，請在 [設定]區段中，將 [佈建狀態] 變更為 [開啟]
+11. 若要對 LucidChart 啟用 Azure AD 佈建服務，請在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-12. Haga clic en **Guardar**.
+12. 按一下 [儲存]****。
 
-此作業會對 [使用者和群組] 區段中指派給 LucidChart 的任何使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述佈建服務所執行的所有動作。
+此作業會對 [使用者和群組] 區段中指派給 LucidChart 的任何使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述佈建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

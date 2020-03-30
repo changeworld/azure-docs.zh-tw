@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database 資源限制 |Microsoft Docs
-description: 本文概述單一資料庫和彈性集區的 Azure SQL Database 資源限制。 它也提供抵達或超過那些資源限制時所會發生之情況的相關資訊。
+title: Azure SQL 資料庫資源限制 |微軟文檔
+description: 本文概述了單個資料庫和彈性池的 Azure SQL 資料庫資源限制。 它也提供抵達或超過那些資源限制時所會發生之情況的相關資訊。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79255921"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067255"
 ---
-# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database 資源限制和資源管理
+# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL 資料庫資源限制和資源治理
 
-此文章針對管理單一資料庫和彈性集區的 SQL Database 伺服器，提供 SQL Database 資源限制的概觀。 其中提供當達到或超過這些資源限制時，會發生什麼情況的資訊，並說明用來強制執行這些限制的資源治理機制。
+此文章針對管理單一資料庫和彈性集區的 SQL Database 伺服器，提供 SQL Database 資源限制的概觀。 它提供有關命中或超出這些資源限制時會發生什麼情況的資訊，並描述了用於強制實施這些限制的資源治理機制。
 
 > [!NOTE]
 > 如需受控執行個體限制，請參閱[適用於受控執行個體的 SQL Database 資源限制](sql-database-managed-instance-resource-limits.md)。
@@ -44,93 +44,111 @@ ms.locfileid: "79255921"
 > - 管理作業以及涉及列舉伺服器中資料庫入口網站檢視點的轉譯作業，皆增加延遲狀況。
 
 > [!NOTE]
-> 若要取得更多 DTU/eDTU 配額、vCore 配額或超過預設數量的伺服器，請在 Azure 入口網站中提交新的支援要求。 如需詳細資訊，請參閱[Azure SQL Database 的要求配額增加](quota-increase-request.md)。
+> 要獲取比預設數量更多的 DTU/eDTU 配額、vCore 配額或更多伺服器，請在 Azure 門戶中提交新的支援請求。 有關詳細資訊，請參閱請求[Azure SQL 資料庫的配額增加](quota-increase-request.md)。
 
 ### <a name="storage-size"></a>儲存體大小
 
-針對單一資料庫資源儲存體大小，請參閱以[DTU 為基礎的資源限制](sql-database-dtu-resource-limits-single-databases.md)或以[vCore 為基礎的資源限制](sql-database-vcore-resource-limits-single-databases.md)，以瞭解每個定價層的儲存體大小限制。
+對於單個資料庫資源存儲大小，請參閱基於[DTU 的資源限制](sql-database-dtu-resource-limits-single-databases.md)或[基於 vCore 的資源限制](sql-database-vcore-resource-limits-single-databases.md)，以表示每個定價層的存儲大小限制。
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>達到資料庫資源限制時，會發生什麼事？
 
 ### <a name="compute-dtus-and-edtus--vcores"></a>計算 (DTU 和 eDTU / 虛擬核心)
 
-當資料庫計算使用率（以 Dtu 和 Edtu 或虛擬核心測量）變得很高時，查詢延遲會增加，而且查詢甚至可以準時完成。在這些情況下，查詢可能會由服務排入佇列，並提供資源以供執行，因為資源會變成可用。
+當資料庫計算利用率（由 DT 和 eDUS 或 vCore 來衡量）變得高時，查詢延遲會增加，查詢甚至會超時。在這些情況下，查詢可能由服務排隊，並在資源空閒時提供執行資源。
 遇到高計算使用率時，緩和選項包括：
 
 - 提高資料庫或彈性集區的計算大小，以提供更多計算資源給資料庫。 請參閱[調整單一資料庫資源](sql-database-single-database-scale.md)和[調整彈性集區資源](sql-database-elastic-pool-scale.md)。
-- 將查詢最佳化，以降低每個查詢的資源使用率。 如需詳細資訊，請參閱[查詢微調/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
+- 優化查詢以減少每個查詢的資源利用率。 如需詳細資訊，請參閱[查詢微調/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 
-當使用的資料庫空間達到大小上限，若資料庫的插入和更新作業會增加資料大小，動作即會失敗，且用戶端會收到[錯誤訊息](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)。 SELECT 和 DELETE 子句會繼續成功。
+當使用的資料庫空間達到大小上限，若資料庫的插入和更新作業會增加資料大小，動作即會失敗，且用戶端會收到[錯誤訊息](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)。 選擇和刪除語句繼續成功。
 
 遇到高空間使用率時，緩和選項包括：
 
-- 增加資料庫或彈性集區的大小上限，或新增更多儲存體。 請參閱[調整單一資料庫資源](sql-database-single-database-scale.md)和[調整彈性集區資源](sql-database-elastic-pool-scale.md)。
+- 增加資料庫或彈性池的最大大小，或添加更多存儲。 請參閱[調整單一資料庫資源](sql-database-single-database-scale.md)和[調整彈性集區資源](sql-database-elastic-pool-scale.md)。
 - 如果資料庫在彈性集區，也可以將資料庫移出集區，如此便不會與其他資料庫共用儲存空間。
 - 壓縮資料庫以回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](sql-database-file-space-management.md)。
 
 ### <a name="sessions-and-workers-requests"></a>工作階段和背景工作角色 (要求)
 
-會話和背景工作角色的最大數目取決於服務層級和計算大小（Dtu/Edtu 或虛擬核心。 達到工作階段或背景工作角色的限制時，會拒絕新要求，而且用戶端會收到錯誤訊息。 雖然應用程式能控制可用的連線數目，但並行背景工作角色的數目通常難以預估及控制。 在尖峰負載期間，如果達到資料庫資源限制，而背景工作角色因為較長的執行查詢、大型封鎖鏈或過度查詢平行處理原則而進行匯總，這就更是如此。
+會話和輔助工作的最大數量由服務層和計算大小（DTUs/eDT或 vCore）決定。 達到工作階段或背景工作角色的限制時，會拒絕新要求，而且用戶端會收到錯誤訊息。 雖然應用程式能控制可用的連線數目，但並行背景工作角色的數目通常難以預估及控制。 在達到資料庫資源限制且由於運行較長的查詢、大型阻塞鏈或查詢並行性過大而堆積在高峰負載期間尤其如此。
 
 當工作階段或背景工作角色出現高使用率時，緩和選項包括：
 
 - 提高資料庫或彈性集區的服務層級或計算大小。 請參閱[調整單一資料庫資源](sql-database-single-database-scale.md)和[調整彈性集區資源](sql-database-elastic-pool-scale.md)。
 - 如果背景工作角色的使用率增加是爭用計算資源所造成，則可將查詢最佳化，以減少每個查詢的資源使用率。 如需詳細資訊，請參閱[查詢微調/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
+- 減小[MAXDOP（](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines)最大並行度）設置。
+- 優化查詢工作負載，以減少查詢阻塞的次數和持續時間。
+
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>按使用者工作負載和內部進程消耗資源
+
+每個資料庫中按使用者工作負載進行的 CPU 和記憶體消耗報告在[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)和[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) `avg_cpu_percent`視圖`avg_memory_usage_percent`、中和列中。 對於彈性池，池級資源消耗報告在[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中。 使用者工作負載 CPU 限定也會通過`cpu_percent`Azure 監視器指標報告，用於池級別的[單個資料庫](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[彈性池](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)。
+
+Azure SQL 資料庫需要計算資源來實現核心服務功能，如高可用性和災害復原、資料庫備份和恢復、監視、查詢存儲、自動調優等。系統使用[資源治理](#resource-governance)機制為這些內部進程預留了一定有限部分的資源，使其餘資源可用於使用者工作負荷。 當內部進程不使用計算資源時，系統會向使用者工作負載提供這些資源。
+
+在[系統dm_db_resource_stats和sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)視圖、輸入[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current)`avg_instance_cpu_percent`和`avg_instance_memory_percent`列中報告承載單個資料庫或彈性池的 SQL Server 實例上的使用者工作負載和內部進程的總 CPU 和記憶體消耗。 此資料還通過`sqlserver_process_core_percent`和`sqlserver_process_memory_percent`Azure 監視器指標報告池級別的[單個資料庫](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[彈性池](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)。
+
+[系統dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database)和[sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)視圖中報告了按使用者工作負載和內部進程劃分的最新資源消耗的更詳細細分。 有關這些視圖中引用的資源池和工作負載組的詳細資訊，請參閱[資源治理](#resource-governance)。 這些視圖報告使用者工作負荷的資源利用率以及關聯資源池和工作負荷組中的特定內部進程。
+
+在效能監控和故障排除的上下文中，考慮**使用者 CPU 限定**`avg_cpu_percent` `cpu_percent`（、 ） 以及使用者工作負載和內部進程 （） 的總 CPU`avg_instance_cpu_percent``sqlserver_process_core_percent`**消耗**（）非常重要。
+
+**使用者 CPU 限定**量按每個服務目標中使用者工作負載限制的百分比計算。 **100% 的使用者 CPU 利用率**表示使用者工作負載已達到服務目標的限制。 但是，當**總 CPU 限定**率達到 70-100% 範圍時，即使報告的**使用者 CPU 限定**率仍明顯低於 100%，使用者工作負載輸送量也會展平，查詢延遲也會增加。 當使用較小的服務目標，適度分配計算資源，但使用者工作負載相對密集時，就會發生這種情況，例如[在密集的彈性池](sql-database-elastic-pool-resource-management.md)中。 當內部進程暫時需要額外的資源時，例如創建資料庫的新副本時，也會發生較小的服務目標。"
+
+當**總 CPU 限定**量高時，緩解選項與前面所述選項相同，包括服務目標增加和/或使用者工作負載優化。
 
 ## <a name="resource-governance"></a>資源管理
 
-若要強制執行資源限制，Azure SQL Database 會使用以 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)、修改和擴充的資源治理執行，在 Azure 中執行 SQL Server 資料庫服務。 在服務中的每個 SQL Server 實例上，都有多個[資源](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)集區和[工作負載群組](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)，並將資源限制設定在集區和群組層級，以提供[平衡的資料庫即服務](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 使用者工作負載和內部工作負載會分類成不同的資源集區和工作負載群組。 主要和可讀取次要複本（包括異地複本）上的使用者工作負載會分類為 `SloSharedPool1` 資源集區和 `UserPrimaryGroup.DBId[N]` 工作負載群組，其中 `N` 代表資料庫識別碼值。 此外，有多個資源集區和工作負載群組適用于各種內部工作負載。
+為了實施資源限制，Azure SQL 資料庫使用基於 SQL Server[資源調控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)的資源治理實現，該實現進行了修改並擴展，以在 Azure 中運行 SQL Server 資料庫服務。 在服務中的每個 SQL Server 實例上，有多個[資源池](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)和[工作負載組](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)，在池和組級別設置資源限制，以提供[平衡的資料庫即服務](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 使用者工作負荷和內部工作負荷分為單獨的資源池和工作負載組。 主副本和可讀輔助副本（包括地理副本）上的使用者工作負荷被分類到`SloSharedPool1`資源池和`UserPrimaryGroup.DBId[N]`工作負載組中，其中`N`代表資料庫 ID 值。 此外，還有多個資源池和工作負載組用於各種內部工作負荷。
 
-除了使用 Resource Governor 來治理 SQL Server 程式內的資源之外，Azure SQL Database 也會使用適用于進程層級資源治理的 Windows[工作物件](https://docs.microsoft.com/windows/win32/procthread/job-objects)，以及用於儲存配額管理的 Windows[檔案伺服器 Resource Manager （FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) 。
+除了使用資源調控器來管理 SQL Server 進程中的資源外，Azure SQL 資料庫還使用 Windows[工作物件](https://docs.microsoft.com/windows/win32/procthread/job-objects)進行進程級資源治理，使用 Windows[檔案伺服器資源管理員 （FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview)進行存儲配額管理。
 
-Azure SQL Database 的資源管理本質上是階層式的。 從上到下，限制會在 OS 層級和儲存磁片區層級強制執行，使用作業系統資源管理機制和 Resource Governor，然後使用 Resource Governor，然後在工作負載群組層級使用Resource Governor。 目前資料庫或彈性集區的資源管理限制會顯示在 [ [dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ] 視圖中。 
+Azure SQL 資料庫資源治理本質上是階層式。 從上到下，使用作業系統資源治理機制和資源調控器在作業系統級別和存儲卷級別實施限制，然後在資源池級別使用資源調控器，然後在使用工作負載組級別執行限制資源調控器。 當前資料庫或彈性池有效的資源治理限制在[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)視圖中顯示。 
 
 ### <a name="data-io-governance"></a>資料 IO 治理
 
-資料 IO 治理是 Azure SQL Database 中用來針對資料庫的資料檔案限制讀取和寫入實體 IO 的進程。 系統會針對每個服務等級設定 IOPS 限制，以將「雜訊鄰近」的效果降到最低，以提供多租使用者服務中的資源配置公平，並維持在基礎硬體和存放裝置的功能中。
+資料 IO 治理是 Azure SQL 資料庫中用於限制資料庫資料檔案的讀取和寫入物理 IO 的過程。 為每個服務等級設置 IOPS 限制，以儘量減少"嘈雜鄰居"效果，在多租戶服務中提供資源配置公平性，並保持在底層硬體和存儲的功能範圍內。
 
-針對單一資料庫，工作負載群組限制會針對資料庫套用至所有儲存體 IO，而資源集區限制則適用于相同 SQL Server 實例上所有資料庫的所有儲存 IO，包括 `tempdb` 資料庫。 彈性集區的工作負載群組限制適用于集區中的每個資料庫，而資源集區限制則適用于整個彈性集區，包括 `tempdb` 資料庫，這會在集區中的所有資料庫之間共用。 一般而言，工作負載對資料庫（單一或集區）可能無法達到資源集區限制，因為工作負載群組限制低於資源集區限制，並會更快限制 IOPS/輸送量。 不過，合併的工作負載可能會因為相同 SQL Server 實例上的多個資料庫而達到集區限制。
+對於單個資料庫，工作負載組限制應用於針對資料庫的所有存儲 IO，而資源池限制適用于同一 SQL Server 實例上的所有資料庫（包括`tempdb`資料庫）上的所有存儲 IO。 對於彈性池，工作負載組限制適用于池中的每個資料庫，而資源池限制適用于整個彈性池，包括`tempdb`在池中的所有資料庫之間共用的資料庫。 通常，針對資料庫（單個或池）的工作負載可能無法實現資源池限制，因為工作負載組限制低於資源池限制，並且更快地限制 IOPS/輸送量。 但是，組合工作負載可能會針對同一 SQL Server 實例上的多個資料庫達到池限制。
 
-例如，如果查詢在沒有任何 IO 資源管理的情況下產生 1000 IOPS，但工作負載群組的最大 IOPS 限制設定為 900 IOPS，則查詢將無法產生超過900個 IOPS。 不過，如果資源集區的最大 IOPS 限制設定為 1500 IOPS，而且與資源集區相關聯之所有工作負載群組的 IO 總數超過 1500 IOPS，則相同查詢的 IO 可能會降到低於工作組的 900 IOPS 限制。
+例如，如果查詢生成 1000 IOPS 而不進行任何 IO 資源治理，但工作負載組的最大 IOPS 限制設置為 900 IOPS，則查詢將無法生成超過 900 個 IOPS。 但是，如果資源池的最大 IOPS 限制設置為 1500 IOPS，並且與資源池關聯的所有工作負荷組的總 IO 超過 1500 IOPS，則同一查詢的 IO 可能會減少到 900 IOPS 的工作組限制之下。
 
-[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) view 傳回的 IOPS 和輸送量最小/最大值會作為限制/上限，而不是保證。 此外，資源管理不保證任何特定的儲存體延遲。 針對指定的使用者工作負載，最佳可達成的延遲、IOPS 和輸送量，不僅取決於 IO 資源治理限制，同時也會混合使用的 IO 大小，以及基礎儲存體的功能。 SQL Server 使用不同于 512 KB 和 4 MB 的 Io 大小。 基於強制執行 IOPS 限制的目的，每個 IO 不論其大小為何都會進行計算，但具有 Azure 儲存體中資料檔案的資料庫除外。 在此情況下，大於 256 KB 的 IOs 會計算為多個 256 KB Io，以配合 Azure 儲存體 IO 帳戶處理。
+[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)視圖返回的 IOPS 和輸送量最小/最大值充當限制/上限，而不是保證。 此外，資源治理不保證任何特定的存儲延遲。 給定使用者工作負載的最佳可實現延遲、IOPS 和輸送量不僅取決於 IO 資源治理限制，還取決於使用的 IO 大小組合以及基礎存儲的功能。 SQL Server 使用大小在 512 KB 和 4 MB 之間不同的 I。 為了實施 IOPS 限制，除 Azure 存儲中具有資料檔案的資料庫外，都會考慮每個 IO 的大小。 在這種情況下，大於 256 KB 的 IO 將記為多個 256 KB IO，以便與 Azure 存儲 IO 核算保持一致。
 
-針對在 Azure 儲存體中使用資料檔案的基本、標準和一般用途資料庫，如果資料庫沒有足夠的資料檔案可累積提供此 IOPS 數，或如果資料未平均分散到多個檔案，或基礎 blob 的效能層級限制低於資源治理限制的 IOPS/輸送量，則 `primary_group_max_io` 值可能無法達到。 同樣地，使用經常交易認可所產生的小型記錄 Io，由於基礎 Azure 儲存體 blob 上的 IOPS 限制，工作負載可能無法達到 `primary_max_log_rate` 值。
+對於在 Azure 存儲中使用資料檔案的基本、標準和通用資料庫，如果資料庫沒有足夠的資料`primary_group_max_io`檔來累積提供此數量的 IOPS，或者如果資料在檔之間分佈不均勻，或者如果基礎 blob 的性能層將 IOPS/輸送量限制在資源治理限制以下，則可能無法實現該值。 同樣，由於基礎 Azure 存儲 Blob 上的 IOPS 限制，`primary_max_log_rate`因此工作負荷可能無法實現小日誌 I。
 
-系統會以最大資源治理限制的百分比來計算資源使用率值（例如 `avg_data_io_percent` 和 `avg_log_write_percent`）。 [dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [sys.databases resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中回報。 因此，當資源管理以外的因素限制 IOPS/輸送量時，您可以查看 IOPS/輸送量簡維，並隨著工作負載增加而增加延遲，即使回報的資源使用率低於100% 也一樣。 
+在[sys.dm_db_resource_stats、sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)視圖中報告的資源利用率值（如[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)`avg_data_io_percent`和`avg_log_write_percent`）按最大資源治理限制的百分比計算。 因此，當資源治理以外的因素限制 IOPS/輸送量時，即使報告的資源利用率保持在 100% 以下，IOPS/輸送量也會隨著工作負載的增加而展平和延遲增加。 
 
-若要查看每個資料庫檔案的讀取和寫入 IOPS、輸送量和延遲，請使用[dm_io_virtual_file_stats （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)函數。 此函式會針對資料庫呈現所有 IO，包括不是 `avg_data_io_percent`的背景 IO，但會使用基礎儲存體的 IOPS 和輸送量，而且可能會影響觀察到的儲存延遲。 此函式也會在 [`io_stall_queued_read_ms`] 和 [`io_stall_queued_write_ms`] 資料行中，針對讀取和寫入，分別呈現 IO 資源治理可能引進的額外延遲。
+要查看每個資料庫檔案的讀取和寫入 IOPS、輸送量和延遲，請使用[sys.dm_io_virtual_file_stats（）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)函數。 此函數針對資料庫顯示所有 IO，包括未計入`avg_data_io_percent`的背景 IO，而是使用 IOPS 和基礎存儲的輸送量，並可能影響觀察到的存儲延遲。 該函數還顯示 IO 資源治理可能為讀取和寫入分別引入`io_stall_queued_read_ms``io_stall_queued_write_ms`的額外延遲。
 
-### <a name="transaction-log-rate-governance"></a>交易記錄速率治理
+### <a name="transaction-log-rate-governance"></a>事務日誌速率治理
 
-交易記錄速率治理是 Azure SQL Database 中的程式，用來限制大量插入、選取 INTO 和索引組建等工作負載的高內嵌速率。 這些限制會在次秒層級追蹤並強制執行，以產生記錄檔記錄的速率、限制輸送量，而不論可能針對資料檔案發出多少 Io。  交易記錄產生速率目前已線性相應增加至與硬體相依的點，而且記錄速率上限為 96 MB/s，並具有 vCore 購買模型。 
+事務日誌速率治理是 Azure SQL 資料庫中用於限制工作負載（如批量插入、SELECT INTO 和索引生成）的高引入率的過程。 這些限制在次秒級別跟蹤和強制執行到日誌記錄生成速率，從而限制輸送量，而不管有多少 I 可以針對資料檔案發出。  事務日誌生成速率當前線性擴展到依賴于硬體的點，vCore 購買模型允許的最大日誌速率為 96 MB/s。 
 
 > [!NOTE]
-> 實際的實體 IOs 到交易記錄檔不受管理或限制。
+> 事務日誌檔的實際物理 I 不受控制或限制。
 
-記錄速率的設定可讓您在各種情況下達成和持續，而整體系統可以維持其功能，並將對使用者負載的影響降至最低。 記錄速率治理可確保交易記錄備份保留在已發佈的復原能力 Sla 內。  這種治理也會防止次要複本上有過多的待處理專案。
+日誌速率的設置可以在各種方案中實現和維持，而整個系統可以保持其功能，從而將使用者負載的影響降至最低。 日誌速率治理可確保事務記錄備份保持在已發佈的可恢復性 SL 範圍內。  此治理還可防止輔助副本上過多的積壓工作。
 
-產生記錄檔記錄時，系統會評估每個作業並評估是否應延遲，以維持最大所需的記錄速率（每秒 MB/秒）。 當記錄檔記錄排清至儲存體時，不會新增延遲，而是在產生記錄速率時套用記錄速率治理。
+生成日誌記錄時，將評估和評估每個操作是否應延遲以保持所需的最大日誌速率（MB/s/秒）。 當將日誌記錄刷新到存儲時，不會添加延遲，而是在日誌速率生成過程中應用日誌速率治理。
 
-在執行時間加諸的實際記錄產生速率可能也會受到意見反應機制的影響，暫時減少允許的記錄檔速率，讓系統能夠穩定。 記錄檔空間管理，避免遇到記錄空間不足的情況，以及可用性群組複寫機制，可以暫時降低整體系統限制。
+運行時施加的實際日誌生成速率也可能受回饋機制的影響，從而暫時降低允許的日誌速率，以便系統能夠穩定下來。 日誌檔空間管理，避免運行在日誌空間條件不足和可用性組複製機制可以暫時減少整體系統限制。
 
-記錄速率管理員流量成形是透過下列等候類型（在[dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公開）來呈現：
+日誌速率調速器流量整形通過以下等待類型（在[系統dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公開） 浮出水面：
 
 | 等候類型 | 注意 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 資料庫限制 |
-| POOL_LOG_RATE_GOVERNOR | 集區限制 |
-| INSTANCE_LOG_RATE_GOVERNOR | 實例層級限制 |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 意見反應控制，Premium/Business Critical 中的可用性群組實體複寫未趕上 |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 意見反應控制，限制速率以避免發生記錄空間不足的狀況 |
+| POOL_LOG_RATE_GOVERNOR | 池限制 |
+| INSTANCE_LOG_RATE_GOVERNOR | 實例級別限制 |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 回饋控制，高級/業務關鍵版中的可用性組物理複製不跟上 |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 回饋控制，限制速率以避免日誌空間不足的情況 |
 |||
 
-當遇到阻礙所需擴充性的記錄速率限制時，請考慮下列選項：
-- 相應增加為較高的服務層級，以取得最大 96 MB/秒的記錄速率。 
-- 如果載入的資料是暫時性的（例如 ETL 進程中的暫存資料），則可以將它載入至 tempdb （這是最低限度記錄）。 
-- 針對分析案例，載入叢集資料行存放區涵蓋的資料表。 這會減少因為壓縮而需要的記錄速率。 這項技術會增加 CPU 使用率，而且僅適用于從叢集資料行存放區索引獲益的資料集。 
+遇到妨礙所需可伸縮性的日誌速率限制時，請考慮以下選項：
+- 向上擴展到更高的服務等級，以獲得最大 96 MB/s 的日誌速率，或切換到其他服務層。 [超大規模](sql-database-service-tier-hyperscale.md)服務層提供 100 MB/s 的日誌速率，而不考慮所選服務等級。
+- 如果正在載入的資料是暫時性的（例如 ETL 進程中暫存資料），則可以將其載入到 tempdb（記錄最小）。 
+- 對於分析方案，載入到群集列存儲覆蓋表。 這降低了由於壓縮而導致的所需日誌速率。 此技術確實提高了 CPU 利用率，並且僅適用于受益于群集列存儲索引的資料集。 
 
 ## <a name="next-steps"></a>後續步驟
 

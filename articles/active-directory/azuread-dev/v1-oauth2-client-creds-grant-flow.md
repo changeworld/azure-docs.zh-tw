@@ -2,33 +2,29 @@
 title: 使用 OAuth2.0 進行 Azure AD 服務對服務驗證 | Microsoft Docs
 description: 本文說明如何使用 HTTP 訊息，以利用 OAuth2.0 用戶端認證授與流程實作服務對服務驗證。
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 24c9c4385f23b68e9a3efb65d2582457219fa10d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2d1eaec80c8925eb7b38af848e29e944f1ebf69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164119"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154537"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用用戶端認證 (共用密碼或憑證) 的服務對服務呼叫
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (「機密用戶端」) 在呼叫另一個 Web 服務時，使用它自己的認證來進行驗證，而不是模擬使用者。 在此案例中，用戶端通常是中介層 Web 服務、精靈服務或網站。 對於較高層級的保證，Azure AD 也可讓呼叫服務使用憑證 (而非共用密碼) 做為認證。
+OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (「機密用戶端」**) 在呼叫另一個 Web 服務時，使用它自己的認證來進行驗證，而不是模擬使用者。 在此案例中，用戶端通常是中介層 Web 服務、精靈服務或網站。 對於較高層級的保證，Azure AD 也可讓呼叫服務使用憑證 (而非共用密碼) 做為認證。
 
 ## <a name="client-credentials-grant-flow-diagram"></a>用戶端認證授與流程圖
 下圖說明用戶端認證授與流程在 Azure Active Directory (Azure AD) 中的作用方式。
@@ -59,12 +55,12 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | grant_type |required |指定要求的授與類型。 在用戶端認證授與流程中，值必須是 **client_credentials**。 |
-| client_id |required |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下應用程式。 client_id 是*應用程式 ID* |
-| client_secret |required |輸入在 Azure AD 中針對呼叫端 Web 服務或精靈應用程式所註冊的金鑰。 若要建立金鑰，請在 Azure 入口網站中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，按一下應用程式，接著依序按一下 [設定] 和 [金鑰]，並新增金鑰。  在提供此祕密時對其進行 URL 編碼。 |
-| resource |required |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下服務應用程式，接著按一下 [設定] 和 [屬性]。 |
+| client_id |required |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]****，並按一下 [應用程式註冊]****，再按一下應用程式。 client_id 是*應用程式 ID* |
+| client_secret |required |輸入在 Azure AD 中針對呼叫端 Web 服務或精靈應用程式所註冊的金鑰。 若要建立金鑰，請在 Azure 入口網站中按一下 [Azure Active Directory]****，並按一下 [應用程式註冊]****，按一下應用程式，接著依序按一下 [設定]**** 和 [金鑰]****，並新增金鑰。  在提供此祕密時對其進行 URL 編碼。 |
+| resource |required |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]****，並按一下 [應用程式註冊]****，再按一下服務應用程式，接著按一下 [設定]**** 和 [屬性]****。 |
 
 #### <a name="example"></a>範例
-下列 HTTP POST 會要求提供 [ Web 服務的](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)存取權杖 https://service.contoso.com/。 `client_id` 會識別要求存取權杖的 Web 服務。
+下列 HTTP POST 會要求提供 `https://service.contoso.com/` Web 服務的[存取權杖](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 `client_id` 會識別要求存取權杖的 Web 服務。
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -80,15 +76,15 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | grant_type |required |指定要求的回應類型。 在用戶端認證授與流程中，值必須是 **client_credentials**。 |
-| client_id |required |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下應用程式。 client_id 是*應用程式 ID* |
+| client_id |required |指定呼叫端 Web 服務的 Azure AD 用戶端識別碼。 若要尋找呼叫應用程式的用戶端識別碼，請在 [Azure 入口網站](https://portal.azure.com)中按一下 [Azure Active Directory]****，並按一下 [應用程式註冊]****，再按一下應用程式。 client_id 是*應用程式 ID* |
 | client_assertion_type |required |值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |required | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 請參閱[憑證認證](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以了解如何註冊您的憑證與判斷提示的格式。|
-| resource | required |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]，並按一下 [應用程式註冊]，再按一下服務應用程式，接著按一下 [設定] 和 [屬性]。 |
+| resource | required |輸入接收端 Web 服務的應用程式識別碼 URI。 若要尋找應用程式識別碼 URI，請在 Azure 入口網站中，按一下 [Azure Active Directory]****，並按一下 [應用程式註冊]****，再按一下服務應用程式，接著按一下 [設定]**** 和 [屬性]****。 |
 
 請注意，在透過共用密碼要求的情況中，參數幾乎相同，不同之處在於使用下列兩個參數來取代 client_secret 參數：client_assertion_type 和 client_assertion。
 
 #### <a name="example"></a>範例
-下列 HTTP POST 會使用憑證要求提供 https://service.contoso.com/ Web 服務的存取權杖。 `client_id` 會識別要求存取權杖的 Web 服務。
+下列 HTTP POST 會使用憑證要求提供 `https://service.contoso.com/` Web 服務的存取權杖。 `client_id` 會識別要求存取權杖的 Web 服務。
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -105,7 +101,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | 參數 | 描述 |
 | --- | --- |
 | access_token |所要求的存取權杖。 呼叫端 Web 服務可以使用此權杖來向接收端 Web 服務進行驗證。 |
-| token_type |表示權杖類型值。 Azure AD 唯一支援的類型是 [持有人]。 如需持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| token_type |表示權杖類型值。 Azure AD 唯一支援的類型是 [持有人] ****。 有關無記名權杖的詳細資訊，請參閱[OAuth 2.0 授權框架：無記名權杖使用 （RFC 6750）。](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |存取權杖的有效期 (以秒為單位)。 |
 | expires_on |存取權杖的到期時間。 日期會表示為從 1970-01-01T0:0:0Z UTC 至到期時間的秒數。 這個值用來判斷快取權杖的存留期。 |
 | not_before |存取權杖自此時間開始可使用。 日期會表示為從 1970-01-01T0:0:0Z UTC 至權杖的有效時間。|
@@ -125,5 +121,5 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 ```
 
 ## <a name="see-also"></a>另請參閱
-* [Azure AD 中的 OAuth 2.0](v1-protocols-oauth-code.md)
+* [Azure AD 的 OAuth 2.0](v1-protocols-oauth-code.md)
 * [使用共用密碼的服務對服務呼叫的 C# 中的範例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)和[使用憑證的服務對服務呼叫的 C# 中範例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

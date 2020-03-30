@@ -1,7 +1,7 @@
 ---
-title: 多元羅吉斯回歸：模組參考
+title: 多類邏輯回歸：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的多元羅吉斯回歸模組來建立羅吉斯回歸模型，以用來預測多個值。
+description: 瞭解如何在 Azure 機器學習中使用多類邏輯回歸模組創建可用於預測多個值的邏輯回歸模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,59 +9,59 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ca446b0ab67a8a202c1f4d505262660ac55f42db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920428"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456160"
 ---
-# <a name="multiclass-logistic-regression-module"></a>多元羅吉斯回歸模組
+# <a name="multiclass-logistic-regression-module"></a>多類邏輯回歸模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文介紹 Azure 機器學習設計器（預覽）中的模組。
 
-您可以使用此模組來建立羅吉斯回歸模型，以用來預測多個值。
+使用此模組可以創建可用於預測多個值的邏輯回歸模型。
 
-使用羅吉斯回歸的分類是一種受監督的學習方法，因此需要加上標籤的資料集。 您可以藉由提供模型和標示的資料集做為模組的輸入（例如[訓練模型](./train-model.md)）來定型模型。 定型的模型接著可用來預測新輸入範例的值。
+使用邏輯回歸分類是一種受監督的學習方法，因此需要標記的資料集。 通過提供模型和標記的資料集作為輸入模組（如[訓練模型](./train-model.md)）來訓練模型。 然後，訓練模型可用於預測新輸入示例的值。
 
-Azure Machine Learning 也會提供[兩個類別的羅吉斯回歸](./two-class-logistic-regression.md)模組，其適用于二元或二分變數的分類。
+Azure 機器學習還提供[雙類邏輯回歸](./two-class-logistic-regression.md)模組，該模組適用于二進位或二分變數的分類。
 
-## <a name="about-multiclass-logistic-regression"></a>關於多元羅吉斯回歸
+## <a name="about-multiclass-logistic-regression"></a>關於多類邏輯回歸
 
-羅吉斯回歸是統計資料中已知的方法，用來預測結果的機率，而且常用於分類工作。 此演算法會藉由將資料與羅吉斯函式進行調整，來預測事件發生的機率。 
+邏輯回歸是統計中用於預測結果概率的已知方法，在分類任務中很受歡迎。 該演算法通過將資料擬合到物流函數來預測事件發生的概率。 
 
-在多元羅吉斯回歸中，分類器可以用來預測多個結果。
+在多類邏輯回歸中，分類器可用於預測多個結果。
 
-## <a name="configure-a-multiclass-logistic-regression"></a>設定多元羅吉斯回歸
+## <a name="configure-a-multiclass-logistic-regression"></a>配置多類邏輯回歸
 
-1. 將**多元羅吉斯回歸**模組新增至管線。
+1. 將**多類邏輯回歸**模組添加到管道中。
 
-2. 藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。
+2. 通過設置 **"創建培訓師模式"** 選項，指定如何訓練模型。
 
-    + **單一參數**：如果您知道要如何設定模型，請使用此選項，並提供一組特定值做為引數。
+    + **單一參數**：如果您知道如何配置模型，並提供一組特定的值作為參數，請使用此選項。
 
-    + **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。  
+    + **參數範圍**：如果不確定最佳參數，並且想要運行參數掃描，請選擇此選項。 選擇要反覆運算的值範圍，[調諧模型 Hyper 參數](tune-model-hyperparameters.md)反覆運算您提供的所有可能組合設置，以確定生成最佳結果的超參數。  
 
-3. **優化容錯**，指定優化工具聚合的臨界值。 換句話說，如果反覆運算之間的改進少於臨界值，此演算法會停止，並傳回目前的模型。
+3. **優化容差**，指定優化器收斂的閾值。 換句話說，如果反覆運算之間的改進少於臨界值，此演算法會停止，並傳回目前的模型。
 
-4. **L1 正規化權數**， **L2 正規化權數**：輸入用於正規化參數 L1 和 L2 的值。 非零值建議用於兩者。
+4. **L1 正化權重****，L2 正化權重**：鍵入用於正則參數 L1 和 L2 的值。 非零值建議用於兩者。
 
-    正規化是一種防止過度學習的方法，penalizing 具有極端係數值的模型。 正規化的運作方式是將與係數值相關聯的負面影響加入假設的錯誤中。 具有極端係數值的精確模型會懲罰更多，但具有較保守值的較不精確模型會懲罰較少。
+    正規化是一種通過懲罰具有極端係數值的模型來防止過度學習的方法。 正規化的工作原理是將與係數值相關的懲罰添加到假設的錯誤中。 具有極端係數值的準確模型將受到更多懲罰，但具有更保守值的較不精確的模型將受到的懲罰更少。
 
-     L1 與 L2 regularization 有不同的效果，並使用。 L1 可以套用到疏鬆的模型，使用高維度資料時，這是很有用。 相較之下，L2 regularization 是不是疏鬆的資料。  此演算法支援 L1 和 L2 正規化值的線性組合：也就是說，如果 `x = L1` 和 `y = L2`，`ax + by = c` 會定義正規化詞彙的線性範圍。
+     L1 與 L2 regularization 有不同的效果，並使用。 L1 可以套用到疏鬆的模型，使用高維度資料時，這是很有用。 相較之下，L2 regularization 是不是疏鬆的資料。  此演算法支援 L1 和 L2 正規化值的線性組合：`x = L1`即`y = L2`，`ax + by = c`如果 和 定義正規化術語的線性範圍。
 
-     L1 和 L2 詞彙的不同線性組合已設計成羅吉斯回歸模型，例如[彈性網路正規化](https://wikipedia.org/wiki/Elastic_net_regularization)。
+     為邏輯回歸模型設計了不同的線性組合L1和L2術語，如[彈性淨正則](https://wikipedia.org/wiki/Elastic_net_regularization)化。
 
-6. **亂數字種子**：如果您希望結果可在執行時重複使用，請輸入整數值做為演算法的種子。 否則，系統時鐘值會當做種子使用，這在相同管線的執行中可能會產生稍微不同的結果。
+6. **亂數種子**：鍵入一個整數值，以用作演算法的種子，如果希望結果在運行中可重複。 否則，系統時鐘值將用作種子，這可能會在同一管道的運行中產生略有不同的結果。
 
-8. 連接已加上標籤的資料集，以及其中一個訓練模組：
+8. 連接標記的資料集和其中一個訓練模組：
 
-    + 如果您將 [**建立訓練員模式]** 設定為 [**單一參數**]，請使用 [[定型模型](./train-model.md)] 模組。
+    + 如果將 **"創建訓練器模式"** 設置為 **"單一參數**"，請使用[訓練器模型](./train-model.md)模組。
 
-9. 執行管道。
+9. 提交管道。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure 機器學習[可用的模組集](module-reference.md)。 

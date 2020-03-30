@@ -4,7 +4,6 @@ description: 有關如何讓應用程式 AppSource 取得 Azure Active Directory
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: conceptual
@@ -13,12 +12,13 @@ ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8b966df3f0ca59edbaa304212f05daffeb9ef17d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154877"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何讓 AppSource 取得 Azure Active Directory 認證
 
@@ -30,14 +30,14 @@ ms.locfileid: "77164756"
 
 ## <a name="guides-and-code-samples"></a>指南與程式碼範例
 
-如果您想要瞭解如何使用 Open ID connect 來整合您的應用程式與 Azure AD，請遵循[Azure Active Directory 開發人員指南](v1-overview.md#get-started "開始使用適用于開發人員的 Azure AD")中的指南和程式碼範例。
+如果要瞭解如何使用開放 ID 連接將應用程式與 Azure AD 集成，請按照[Azure 活動目錄開發人員指南](v1-overview.md#get-started "入門（開發人員）使用 Azure AD")中的指南和代碼示例進行操作。
 
 ## <a name="multi-tenant-applications"></a>多租用戶應用程式
 
-「多租用戶應用程式」是一個應用程式，可接受來自具備 Azure AD 之公司或組織的使用者單一登入，而不需個別的執行個體、設定或部署。 AppSource 建議應用程式實行多重租用，以啟用*單鍵*免費試用體驗。
+「多租用戶應用程式」** 是一個應用程式，可接受來自具備 Azure AD 之公司或組織的使用者單一登入，而不需個別的執行個體、設定或部署。 AppSource 建議應用程式實行多重租用，以啟用*單鍵*免費試用體驗。
 
 若要在您的應用程式上啟用多重租用，請依照下列步驟執行：
-1. 在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)中，將應用程式註冊資訊上的 `Multi-Tenanted` 屬性設為 `Yes`。 預設會將在 Azure 入口網站中建立的應用程式設為[單一租用戶](#single-tenant-applications)。
+1. 在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)中，將應用程式註冊資訊上的 `Multi-Tenanted` 屬性設為 `Yes`。 預設會將在 Azure 入口網站中建立的應用程式設為[單一租用戶](#single-tenant-applications)**。
 1. 更新您的程式碼，以將要求傳送給 `common` 端點。 若要這樣做，請將端點從 `https://login.microsoftonline.com/{yourtenant}` 更新為 `https://login.microsoftonline.com/common*`。
 1. 針對某些平台 (例如 ASP.NET)，您還需要更新程式碼以接受多個簽發者。
 
@@ -45,21 +45,21 @@ ms.locfileid: "77164756"
 
 ### <a name="single-tenant-applications"></a>單一租用戶應用程式
 
-「單一租用戶應用程式」是一個應用程式，僅接受來自所定義之 Azure AD 執行個體的使用者登入。 將每個使用者以來賓帳戶的身分新增至應用程式註冊所在的 Azure AD 執行個體之後，外部使用者 (包括來自其他組織的公司或學校帳戶，或個人帳戶) 就可以登入單一租用戶應用程式。 
+「單一租用戶應用程式」** 是一個應用程式，僅接受來自所定義之 Azure AD 執行個體的使用者登入。 將每個使用者以來賓帳戶的身分新增至應用程式註冊所在的 Azure AD 執行個體之後，外部使用者 (包括來自其他組織的公司或學校帳戶，或個人帳戶) 就可以登入單一租用戶應用程式。 
 
 您可以透過 [Azure AD B2B 共同作業](../b2b/what-is-b2b.md)將使用者以來賓帳戶的身分新增至 Azure AD，而且能[以程式設計方式](../../active-directory-b2c/code-samples.md)執行此動作。 使用 B2B 時，使用者可以建立不需邀請即可登入的自助入口網站。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業註冊的自助入口網站](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)。
 
-單一租用戶應用程式可以啟用「與我連絡」體驗，但如果您想要啟用 AppSource 建議的單鍵/免費試用體驗，可改為在您的應用程式上啟用多重租用。
+單一租用戶應用程式可以啟用「與我連絡」** 體驗，但如果您想要啟用 AppSource 建議的單鍵/免費試用體驗，可改為在您的應用程式上啟用多重租用。
 
 ## <a name="appsource-trial-experiences"></a>AppSource 試用體驗
 
 ### <a name="free-trial-customer-led-trial-experience"></a>免費試用 (客戶導向的試用體驗)
 
-客戶導向的試用是 AppSource 建議的體驗，因為它可讓您單鍵存取至您的應用程式。 下列範例顯示此體驗的樣子：
+客戶導向的試用是 AppSource 建議的體驗，因為它可讓您單鍵存取至您的應用程式。 下面的示例顯示了此體驗的外觀：
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>使用者會在 AppSource 網站中尋找您的應用程式</li><li>選取 [免費試用] 選項</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>使用者會在 AppSource 網站中尋找您的應用程式</li><li>選擇"免費試用"選項</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource 將使用者重新導向至網站中的 URL</li><li>您的網站會自動啟動<i>單一登入</i>流程 (在頁面載入時)</li></ul></td>
     <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>使用者已重新導向至 Microsoft 登入頁面</li><li>使用者提供認證以登入</li></ul></td>
 </tr>
@@ -72,11 +72,11 @@ ms.locfileid: "77164756"
 
 ### <a name="contact-me-partner-led-trial-experience"></a>與我連絡 (合作夥伴導向的試用體驗)
 
-您可以在需要手動或長期操作來佈建使用者/公司時，使用合作夥伴試用體驗，例如，您的應用程式需要佈建虛擬機器、資料庫執行個體，或需要很多時間完成的作業。 在此情況下，當使用者選取 [要求試用] 按鈕並填妥表單之後，AppSource 就會將使用者的連絡資訊傳送給您。 當您接收到此資訊之後，接著要佈建環境，並將如何存取試用體驗的指示傳送給使用者：<br/><br/>
+您可以在需要手動或長期操作來佈建使用者/公司時，使用合作夥伴試用體驗，例如，您的應用程式需要佈建虛擬機器、資料庫執行個體，或需要很多時間完成的作業。 在此情況下，當使用者選取 [要求試用]**** 按鈕並填妥表單之後，AppSource 就會將使用者的連絡資訊傳送給您。 當您接收到此資訊之後，接著要佈建環境，並將如何存取試用體驗的指示傳送給使用者：<br/><br/>
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>使用者會在 AppSource 網站中尋找您的應用程式</li><li>選取 [與我連絡] 選項</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>使用者會在 AppSource 網站中尋找您的應用程式</li><li>選擇"與我聯繫"選項</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>將連絡人資訊填入表單</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
@@ -117,7 +117,7 @@ ms.locfileid: "77164756"
 
 對於 Azure AD 整合，我們使用 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) \(英文\) 搭配社群來提供支援。
 
-我們強烈建議您先在 Stack Overflow 上詢問您的問題，並瀏覽現有的問題，以查看先前是否有人已提出您的問題。 請確定您的問題或意見已標記 [`[azure-active-directory]` 和 `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)。
+我們強烈建議您先在 Stack Overflow 上詢問您的問題，並瀏覽現有的問題，以查看先前是否有人已提出您的問題。 請確保您的問題或評論帶有[`[azure-active-directory]`和`[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)。
 
 使用下列意見區段來提供意見反應，並協助我們改善及設計我們的內容。
 

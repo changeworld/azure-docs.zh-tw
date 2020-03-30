@@ -1,7 +1,7 @@
 ---
 title: 設定 Azure Load Balancer 分配模式
 titleSuffix: Azure Load Balancer
-description: 在本文中，您可以開始設定 Azure Load Balancer 的分配模式，以支援來源 IP 親和性。
+description: 在本文中，開始配置 Azure 負載等化器的分發模式以支援源 IP 關聯。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023526"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>設定 Azure Load Balancer 的分配模式
@@ -26,57 +26,57 @@ ms.locfileid: "77023526"
 
 ## <a name="hash-based-distribution-mode"></a>雜湊型分配模式
 
-Azure Load Balancer 的預設分配模式是五個元組的雜湊。 
+Azure Load Balancer 的預設分散模式是 5 Tuple 雜湊。 
 
-元組是由下列各項所組成：
-* **來源 IP**
+元組由以下部分組成：
+* **源 IP**
 * **來源連接埠**
 * **目的地 IP**
 * **目的地連接埠**
 * **通訊協定類型**
 
-雜湊是用來將流量對應至可用的伺服器。 此演算法只會在傳輸會話內提供粘性。 相同會話中的封包會被導向至負載平衡端點後面的相同資料中心 IP。 當用戶端從相同的來源 IP 啟動新的會話時，來源埠會變更，並導致流量移至不同的資料中心端點。
+雜湊用於將流量映射到可用的伺服器。 該演算法僅在傳輸會話中提供粘性。 同一會話中的資料包被定向到負載均衡終結點後面的同一資料中心 IP。 當用戶端從同一源 IP 啟動新會話時，源埠會更改並導致流量轉到其他資料中心終結點。
 
-![五個元組雜湊式散發模式](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+![基於五元雜湊的分佈模式](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## <a name="source-ip-affinity-mode"></a>來源 IP 同質性模式
 
-您也可以使用來源 IP 親和性分配模式來設定負載平衡器。 這個分配模式也稱為工作階段同質性或用戶端 IP 同質性。 此模式會使用兩個元組（來源 IP 和目的地 IP）或三個元組（來源 IP、目的地 IP 及通訊協定類型）的雜湊，將流量對應至可用的伺服器。 藉由使用來源 IP 親和性，從相同用戶端電腦啟動的連線會移至相同的資料中心端點。
+也可以使用源 IP 關聯分佈模式配置負載等化器。 這個分配模式也稱為工作階段同質性或用戶端 IP 同質性。 該模式使用雙組（源 IP 和目標 IP）或三元組（源 IP、目標 IP 和協定類型）雜湊值將流量映射到可用伺服器。 通過使用源 IP 關聯，從同一用戶端電腦啟動的連接將轉到同一資料中心終結點。
 
-下圖說明兩個元組的設定。 請注意兩個元組如何透過負載平衡器執行至虛擬機器1（VM1）。 然後，VM2 和 VM3 會備份 VM1。
+下圖說明瞭雙組配置。 請注意雙組組如何通過負載等化器運行到虛擬機器 1 （VM1）。 然後，VM2 和 VM3 會備份 VM1。
 
-![雙元組會話親和性分配模式](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![雙組會話關聯分佈模式](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
 來源 IP 同質性模式可解決 Azure Load Balancer 與「遠端桌面閘道」(RD 閘道) 之間的不相容性。 藉由使用此模式，您將可以在單一雲端服務中建置「RD 閘道」伺服器陣列。
 
 另一個使用案例是媒體上傳。 這會透過 UDP 來上傳資料，但會透過 TCP 來存取控制層：
 
-* 用戶端會對負載平衡的公用位址啟動 TCP 會話，並將其導向至特定的 DIP。 通道會保持作用中來監視連線健康情況。
-* 來自相同用戶端電腦的新 UDP 會話會啟動至相同的負載平衡公用端點。 該連線會被導向到與先前 TCP 連線相同的 DIP 端點。 媒體上傳既能以高輸送量的方式執行，同時又可透過 TCP.維護控制通道。
+* 用戶端啟動到負載平衡公共位址的 TCP 會話，並定向到特定的 DIP。 通道會保持作用中來監視連線健康情況。
+* 從同一用戶端電腦啟動新的 UDP 會話到同一負載均衡的公共終結點。 該連線會被導向到與先前 TCP 連線相同的 DIP 端點。 媒體上傳既能以高輸送量的方式執行，同時又可透過 TCP.維護控制通道。
 
 > [!NOTE]
 > 當藉由移除或新增虛擬機器來變更負載平衡集時，系統會重新計算用戶端要求的分配。 您無法確定來自現有用戶端的新連線最後都會抵達相同的伺服器。 此外，使用來源 IP 同質性分配模式可能會導致流量的分配不相等。 在 Proxy 後方執行的用戶端可能會被視為一個獨特的用戶端應用程式。
 
 ## <a name="configure-source-ip-affinity-settings"></a>設定來源 IP 同質性設定
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
-您可以藉由修改入口網站中的負載平衡規則來變更散發模式的設定。
+您可以通過修改門戶中的負載平衡規則來更改分發模式的配置。
 
-1. 登入 Azure 入口網站，然後按一下 [**資源群組**]，找出包含您想要變更之負載平衡器的資源群組。
-2. 在 [負載平衡器總覽] 畫面中，按一下 [**設定**] 底下的 [**負載平衡規則**]。
-3. 在 [負載平衡規則] 畫面中，按一下您想要變更分配模式的負載平衡規則。
-4. 在規則下，變更 [**會話持續**性] 下拉式方塊會變更散發模式。  有下列選項可供使用：
+1. 登錄到 Azure 門戶，然後通過按一下資源組找到包含要更改的負載等化器**的資源組**。
+2. 在負載平衡器概覽螢幕中，按一下 **"設置**"下的**負載平衡規則**。
+3. 在負載平衡規則螢幕中，按一下要更改分佈模式的負載平衡規則。
+4. 在規則下，通過更改 **"會話持久性**下拉"框來更改分發模式。  有下列選項可供使用：
     
-    * **無（以雜湊為基礎）** -指定來自相同用戶端的後續要求可能會由任何虛擬機器處理。
-    * **用戶端 ip （來源 IP 親和性 2-元組）** -指定來自相同用戶端 ip 位址的後續要求將由相同的虛擬機器處理。
-    * **用戶端 ip 和通訊協定（來源 IP 親和性 3-元組）** -指定來自相同用戶端 ip 位址和通訊協定組合的後續要求會由相同的虛擬機器處理。
+    * **無（基於雜湊）** - 指定來自同一用戶端的連續請求可能由任何虛擬機器處理。
+    * **用戶端 IP（源 IP 關聯 2 組）** - 指定來自同一用戶端 IP 位址的連續請求將由同一虛擬機器處理。
+    * **用戶端 IP 和協定（源 IP 關聯 3 組）** - 指定來自同一用戶端 IP 位址和協定組合的連續請求將由同一虛擬機器處理。
 
-5. 選擇 [散發模式]，然後按一下 [**儲存**]。
+5. 選擇分發模式，然後按一下"**保存**"。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-對於使用 Resource Manager 部署的虛擬機器，請使用 PowerShell 來變更現有負載平衡規則的負載平衡器發佈設定。 下列命令會更新分配模式： 
+對於使用資源管理器部署的虛擬機器，請使用 PowerShell 更改現有負載平衡規則上的負載平衡器分配設置。 以下命令更新分發模式： 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -90,7 +90,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-為所需的負載平衡量設定 `LoadBalancerDistribution` 元素的值。 針對兩個元組（來源 IP 和目的地 IP）負載平衡指定 sourceIP。 針對三個元組（來源 IP、目的地 IP 及通訊協定類型）負載平衡指定 sourceIPProtocol。 針對五個元組負載平衡的預設行為指定 [無]。
+為所需的負載平衡量`LoadBalancerDistribution`設置元素的值。 為雙元組（源 IP 和目標 IP）負載平衡指定源 IP。 為三元組（源 IP、目標 IP 和協定類型）負載平衡指定源 IP 協定。 為五元負載平衡的預設行為指定無。
 
 使用下列設定來擷取端點負載平衡器分配模式組態：
 
@@ -114,7 +114,7 @@ Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Pro
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-當 `LoadBalancerDistribution` 元素不存在時，Azure Load Balancer 會使用預設的五個元組演算法。
+當`LoadBalancerDistribution`元素不存在時，Azure 負載等化器使用預設的五元組演算法。
 
 ### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>在負載平衡端點集上設定分配模式
 
@@ -179,7 +179,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-如先前所述，請將兩個元組親和性的 `LoadBalancerDistribution` 專案設定為 sourceIP、針對三個元組親和性 sourceIPProtocol，或無親和性（五個元組親和性）。
+如前所述，將`LoadBalancerDistribution`元素設置為源IP，用於雙元關聯、源 IP 協定為三元關聯，或無無關聯（五元關聯）。
 
 #### <a name="response"></a>回應
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure VPN 閘道 VNet 對 VNet 連線將 VNet 連線到另一個 VNet： PowerShell
+title: 使用 Azure VPN 閘道 VNet 到 VNet 連接將 VNet 連接到另一個 VNet：PowerShell
 description: 使用 VNet 對 VNet 連線和 PowerShell，將虛擬網路連在一起。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75860515"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
@@ -21,14 +21,14 @@ ms.locfileid: "75860515"
 本文中的步驟適用於 Resource Manager 部署模型並使用 PowerShell。 您也可從下列清單中選取不同的選項，以使用不同的部署工具或部署模型來建立此組態：
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure 門戶](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [電源外殼](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 入口網站 (傳統)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [連線不同的部署模型 - Azure 入口網站](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [連線不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 
-## <a name="about"></a>關於連線 VNet
+## <a name="about-connecting-vnets"></a><a name="about"></a>關於連線 VNet
 
 VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連線方式。
 
@@ -44,7 +44,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 建議您使用 VNet 對等互連來進行 VNet 連線。 VNet 對等互連不會使用 VPN 閘道，且具有不同的條件約束。 此外，[VNet 對等互連價格](https://azure.microsoft.com/pricing/details/virtual-network)與 [VNet 對 VNet VPN 閘道價格](https://azure.microsoft.com/pricing/details/vpn-gateway)的計算方式不同。 如需詳細資訊，請參閱 [VNet 對等互連](../virtual-network/virtual-network-peering-overview.md)。
 
-## <a name="why"></a>為何要建立 VNet 對 VNet 連線？
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>為何要建立 VNet 對 VNet 連線？
 
 基於下列原因，建議您使用 VNet 對 VNet 連線來進行虛擬網路連線：
 
@@ -58,7 +58,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 您可以將 VNet 對 VNet 通訊與多站台組態結合。 這可讓您建立結合了跨單位連線與內部虛擬網路連線的網路拓撲。
 
-## <a name="steps"></a>我應該使用哪些 VNet 對 VNet 步驟？
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>我應該使用哪些 VNet 對 VNet 步驟？
 
 在本文中，您會看到兩組不同的步驟。 一組步驟適用於[位於相同訂用帳戶中的 VNet](#samesub)，一組步驟適用於[位於不同訂用帳戶中的 VNet](#difsub)。
 主要差異在於設定位於不同訂用帳戶之 VNet 的連線時，您必須使用個別的 PowerShell 工作階段。 
@@ -73,7 +73,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
   ![v2v 圖表](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="samesub"></a>如何連接相同訂用帳戶中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何連接相同訂用帳戶中的 VNet
 
 ### <a name="before-you-begin"></a>開始之前
 
@@ -83,13 +83,13 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 * 如果您偏好在本機安裝最新版的 Azure PowerShell 模組，請參閱[如何安裝與設定 Azure PowerShell](/powershell/azure/overview)。
 
-### <a name="Step1"></a>步驟 1 - 規劃 IP 位址範圍
+### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>步驟 1 - 規劃 IP 位址範圍
 
 在下列步驟中，您會建立兩個虛擬網路，以及它們各自的閘道子網路和組態。 接著建立這兩個 VNet 之間的 VPN 連線。 請務必規劃您的網路組態的 IP 位址範圍。 請記住，您必須先確定您的 VNet 範圍或區域網路範圍沒有以任何方式重疊。 在這些範例中，我們不會包含 DNS 伺服器。 如果您想要了解虛擬網路的名稱解析，請參閱[名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 我們會在範例中使用下列值：
 
-**TestVNet1 的值︰**
+**TestVNet1 的值：**
 
 * VNet 名稱︰TestVNet1
 * 資源群組︰TestRG1
@@ -105,7 +105,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 * Connection(1to5)：VNet1toVNet5 (適用於不同訂用帳戶中的 Vnet)
 * ConnectionType：VNet2VNet
 
-**TestVNet4 的值︰**
+**TestVNet4 的值：**
 
 * VNet 名稱︰TestVNet4
 * TestVNet2：10.41.0.0/16 和 10.42.0.0/16
@@ -121,7 +121,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 * ConnectionType：VNet2VNet
 
 
-### <a name="Step2"></a>步驟 2 - 建立及設定 TestVNet1
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>步驟 2 - 建立及設定 TestVNet1
 
 1. 指定您的訂用帳戶設定。
 
@@ -166,7 +166,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. 建立 TestVNet1 的子網路設定。 此範例會建立一個名為 TestVNet1 的虛擬網路和三個子網路：一個名為 GatewaySubnet、一個名為 FrontEnd，另一個名為 Backend。 替代值時，務必一律將您的閘道子網路特定命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。 基於這個理由，它不會透過下列變數來指派。
+4. 建立 TestVNet1 的子網路設定。 此範例會建立一個名為 TestVNet1 的虛擬網路和三個子網路：一個名為 GatewaySubnet、一個名為 FrontEnd，另一個名為 Backend。 替代值時，務必一律將您的閘道子網路特定命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。 因此，不會通過下面的變數分配它。
 
    下列範例會使用您先前設定的變數。 在此範例中，閘道子網路使用 /27。 雖然您可以建立小至 /29 的閘道子網路，我們建議您選取至少 /28 或 /27，建立包含更多位址的較大子網路。 這將允許足夠的位址，以容納您未來可能需要的其他組態。
 
@@ -292,7 +292,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```
 4. 確認您的連線。 請參閱 [如何驗證您的連線](#verify)一節。
 
-## <a name="difsub"></a>如何連接不同訂用帳戶中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>如何連接不同訂用帳戶中的 VNet
 
 在此案例中，您會連接 TestVNet1 和 TestVNet5。 TestVNet1 和 TestVNet5 位於不同的訂用帳戶中。 訂用帳戶不需與相同的 Active Directory 租用戶相關聯。
 
@@ -471,13 +471,13 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
 
-## <a name="verify"></a>驗證連線
+## <a name="how-to-verify-a-connection"></a><a name="verify"></a>驗證連線
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="faq"></a>VNet 對 VNet 常見問題集
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 對 VNet 常見問題集
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 

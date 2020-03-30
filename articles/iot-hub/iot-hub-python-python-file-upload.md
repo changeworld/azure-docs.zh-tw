@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110741"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞（Python）將檔案從裝置上傳至雲端
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心 （Python） 將檔從設備上載到雲
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "77110741"
 
 * 使用 Python 用戶端透過 IoT 中樞上傳檔案。
 
-將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範 IoT 中樞的基本裝置到雲端訊息功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
+將[遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)快速入門演示了 IoT 中心的基本設備到雲消息傳遞功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
 
 > [!NOTE]
 > IoT 中樞 Python SDK 目前僅支援上傳諸如 **.txt** 檔案等以字元為基礎的檔案。
@@ -37,13 +37,13 @@ ms.locfileid: "77110741"
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 > [!NOTE]
-> 本指南使用已淘汰的 V1 Python SDK，因為尚未在新的 V2 SDK 中執行檔案上傳功能。
+> 本指南使用已棄用的 V1 Python SDK，因為檔上傳功能尚未在新的 V2 SDK 中實現。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* 請確定您的防火牆已開啟埠8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 在某些公司和教育網路環境中，可能會封鎖此埠。 如需有關此問題的詳細資訊和解決方法，請參閱[連接到 IoT 中樞（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定，該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -64,7 +64,7 @@ ms.locfileid: "77110741"
 
 3. 使用文字編輯器，在工作資料夾中建立 **FileUpload.py** 檔案。
 
-4. 在 `import`FileUpload.py**檔案開頭處新增下列** 陳述式和變數。 
+4. 在 **FileUpload.py** 檔案開頭處新增下列 `import` 陳述式和變數。 
 
     ```python
     import time
