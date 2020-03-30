@@ -1,6 +1,6 @@
 ---
-title: 可用的自訂系統管理員角色許可權-Azure AD |Microsoft Docs
-description: 委派身分識別管理的自訂系統管理員角色許可權。
+title: 可用的自訂管理員角色許可權 - Azure AD |微軟文檔
+description: 用於委派標識管理的自訂管理員角色許可權。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,160 +14,160 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025155"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 中的應用程式註冊子類型和許可權
+# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure 活動目錄中的應用程式註冊子類型和許可權
 
-本文包含 Azure Active Directory （Azure AD）中自訂角色定義目前可用的應用程式註冊許可權。
+本文包含 Azure 活動目錄 （Azure AD） 中自訂角色定義的當前可用應用註冊許可權。
 
-## <a name="permissions-for-managing-single-directory-applications"></a>管理單一目錄應用程式的許可權
+## <a name="permissions-for-managing-single-directory-applications"></a>管理單目錄應用程式的許可權
 
-選擇自訂角色的許可權時，您可以選擇僅授與管理單一目錄應用程式的存取權。 單一目錄應用程式僅適用于已註冊應用程式之 Azure AD 組織中的使用者。 單一目錄應用程式的定義，是將**支援的帳戶類型**設定為 [僅限此組織目錄中的帳戶]。 在圖形 API 中，單一目錄應用程式的 signInAudience 屬性設定為 "AzureADMyOrg"。
+為自訂角色選擇許可權時，您可以選擇授予僅管理單目錄應用程式的存取權限。 單目錄應用程式僅對註冊應用程式的 Azure AD 組織中的使用者可用。 單目錄應用程式定義為**將受支援的帳戶類型**設置為"僅在此組織目錄中的帳戶"。 在圖形 API 中，單目錄應用程式將符號 InAudience 屬性設置為"AzureADMyOrg"。
 
-若要授與僅管理單一目錄應用程式的存取權，請使用下列許可權搭配**myOrganization**的子類型。 例如，microsoft 目錄/myOrganization/basic/update。
+要授予僅管理單目錄應用程式的存取權限，請使用以下許可權與子類型**應用程式。** 例如，microsoft.directory/應用程式.my組織/基本/更新。
 
-如需一般詞彙子類型、許可權和屬性集平均值的說明，請參閱[自訂角色總覽](roles-custom-overview.md)。 下列是應用程式註冊特有的資訊。
+有關常規術語子類型、許可權和屬性集的含義的說明，請參閱[自訂角色概述](roles-custom-overview.md)。 以下資訊特定于應用程式註冊。
 
-### <a name="create-and-delete"></a>建立和刪除
+### <a name="create-and-delete"></a>創建和刪除
 
-有兩種許可權可以授與建立應用程式註冊的能力，每個都有不同的行為：
+有兩種許可權可用於授予創建應用程式註冊的許可權，每個許可權具有不同的行為：
 
-#### <a name="microsoftdirectoryapplicationscreateasowner"></a>microsoft 目錄/應用程式/createAsOwner
+#### <a name="microsoftdirectoryapplicationscreateasowner"></a>微軟.目錄/應用程式/創建擁有者
 
-指派此許可權會導致建立者新增為所建立應用程式註冊的第一個擁有者，而所建立的應用程式註冊將計入建立者的250建立物件配額中。
+分配此許可權會導致建立者被添加為已創建應用註冊的第一個擁有者，並且創建的應用註冊將計入建立者的 250 個創建物件配額。
 
-#### <a name="microsoftdirectoryapplicationscreate"></a>microsoft 目錄/應用程式/建立
+#### <a name="microsoftdirectoryapplicationscreate"></a>微軟.目錄/應用程式/創建
 
-指派此許可權會導致建立者不會被新增為所建立應用程式註冊的第一個擁有者，而建立的應用程式註冊將不會算在建立者的250建立物件配額中。 請謹慎使用此許可權，因為在達到目錄層級配額之前，不會讓受託人建立應用程式註冊。 如果同時指派這兩個許可權，則會優先使用此許可權。
+分配此許可權會導致建立者未添加為已創建應用註冊的第一個擁有者，並且創建的應用註冊不會計入建立者創建的 250 個創建物件配額。 請謹慎使用此許可權，因為在命中目錄級配額之前，不會阻止受讓人創建應用註冊。 如果同時分配了兩個許可權，則此許可權優先。
 
-如果同時指派這兩個許可權，將會優先使用/create 許可權。 雖然/createAsOwner 許可權不會自動新增 creator 做為第一個擁有者，但在使用圖形 Api 或 PowerShell Cmdlet 時，可以在建立應用程式註冊期間指定擁有者。
+如果同時分配了兩個許可權，則 /create 許可權將優先。 儘管 /createAsOwner 許可權不會自動將建立者添加為第一個擁有者，但在創建應用註冊期間，可以使用圖形 API 或 PowerShell Cmdlet 指定擁有者。
 
-建立許可權授與**新註冊**命令的存取權。
+創建授予對 **"新建註冊"** 命令的許可權。
 
-[這些許可權會授與新註冊入口網站命令的存取權](./media/roles-create-custom/new-custom-role.png)
+[這些許可權授予對"新註冊"門戶命令的存取權限](./media/roles-create-custom/new-custom-role.png)
 
-有兩個許可權可授與刪除應用程式註冊的能力：
+有兩種許可權可用於授予刪除應用註冊的許可權：
 
-#### <a name="microsoftdirectoryapplicationsdelete"></a>microsoft 目錄/應用程式/刪除
+#### <a name="microsoftdirectoryapplicationsdelete"></a>微軟.目錄/應用程式/刪除
 
-授與刪除應用程式註冊的能力，而不考慮子類型。也就是單一租使用者和多租使用者應用程式。
+授予刪除應用註冊的能力，而不考慮子類型;即單租戶和多租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationdelete"></a>microsoft 目錄/應用程式. myOrganization/delete
+#### <a name="microsoftdirectoryapplicationsmyorganizationdelete"></a>微軟.目錄/應用程式.my組織/刪除
 
-授與刪除應用程式註冊的能力，限制只有您的組織或單一租使用者應用程式（myOrganization 子類型）中的帳戶才能存取。
+授予刪除僅限於組織中的帳戶或單租戶應用程式（my組織子類型）的應用註冊的許可權。
 
-![這些許可權會授與 [刪除應用程式註冊] 命令的存取權](./media/roles-custom-available-permissions/delete-app-registration.png)
+![這些許可權授予對"刪除應用註冊"命令的存取權限](./media/roles-custom-available-permissions/delete-app-registration.png)
 
 > [!NOTE]
-> 指派包含建立許可權的角色時，必須在目錄範圍中建立角色指派。 在資源範圍指派的 create 許可權不會授與建立應用程式註冊的能力。
+> 分配包含創建許可權的角色時，必須在目錄作用域中分配角色。 在資源作用域中分配的創建許可權不會授予創建應用註冊的許可權。
 
 ### <a name="read"></a>讀取
 
-根據預設，組織中的所有成員使用者都可以讀取應用程式註冊資訊。 不過，來賓使用者和應用程式服務主體則不能。 如果您打算將角色指派給來賓使用者或應用程式，您必須包含適當的 [讀取] 許可權。
+預設情況下，組織中的所有成員使用者可以讀取應用註冊資訊。 但是，來賓使用者和應用程式服務主體不能。 如果計畫將角色指派給來賓使用者或應用程式，則必須包含相應的讀取權限。
 
-#### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>microsoft 目錄/應用程式/allProperties/讀取
+#### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>微軟.目錄/應用程式/所有屬性/讀取
 
-能夠讀取屬性以外的單一租使用者和多租使用者應用程式的所有屬性，而無法在任何情況下讀取，例如認證。
+能夠讀取在憑據等任何情況下無法讀取的屬性之外的單租戶和多租戶應用程式的所有屬性。
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>myOrganization/allProperties/read
+#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>微軟.目錄/應用程式.my組織/所有屬性/讀取
 
-授與的許可權與 microsoft 目錄/應用程式/allProperties/讀取相同，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/allProperties/read 相同的許可權，但僅適用于單租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationsownersread"></a>microsoft 目錄/應用程式/擁有者/讀取
+#### <a name="microsoftdirectoryapplicationsownersread"></a>微軟.目錄/應用程式/擁有者/讀取
 
-授與讀取單一租使用者和多租使用者應用程式上擁有者屬性的能力。 授與 [應用程式註冊擁有者] 頁面上所有欄位的存取權：
+授予在單租戶和多租戶應用程式上讀取擁有者屬性的能力。 授予對應用程式註冊擁有者頁面上所有欄位的存取權限：
 
-![此許可權可授與應用程式註冊擁有者頁面的存取權](./media/roles-custom-available-permissions/app-registration-owners.png)
+![此許可權授予對應用註冊擁有者頁面的存取權限](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsstandardread"></a>microsoft 目錄/應用程式/標準/讀取
+#### <a name="microsoftdirectoryapplicationsstandardread"></a>微軟.目錄/應用程式/標準/讀取
 
-授與讀取標準應用程式註冊屬性的存取權。 這包括跨應用程式註冊頁面的屬性。
+授予對讀取標準應用程式註冊屬性的存取權限。 這包括跨應用程式註冊頁的屬性。
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>myOrganization/standard/read
+#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>微軟.目錄/應用程式.my組織/標準/讀取
 
-授與 microsoft 的相同許可權。目錄/應用程式/標準/讀取，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/標準/讀取相同的許可權，但僅適用于單租戶應用程式。
 
 ### <a name="update"></a>更新
 
-#### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft 目錄/應用程式/allProperties/更新
+#### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>微軟.目錄/應用程式/所有屬性/更新
 
-能夠更新單一目錄和多目錄應用程式上的所有屬性。
+能夠更新單目錄和多目錄應用程式上的所有屬性。
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>myOrganization/allProperties/update
+#### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/應用程式.my組織/所有屬性/更新
 
-授與與 microsoft 目錄/應用程式/allProperties/更新相同的許可權，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/allProperties/更新相同的許可權，但僅適用于單租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft 目錄/應用程式/物件/更新
+#### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>微軟.目錄/應用程式/觀眾/更新
 
-能夠在單一目錄和多目錄應用程式上更新支援的帳戶類型（signInAudience）屬性。
+能夠在單目錄和多目錄應用程式上更新受支援的帳戶類型（signInAudience）屬性。
 
-![此許可權會在驗證頁面上授與應用程式註冊支援的帳戶類型屬性的存取權](./media/roles-custom-available-permissions/supported-account-types.png)
+![此許可權授予對身份驗證頁上應用註冊支援的帳戶類型屬性的存取權限](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>microsoft 目錄/應用程式 myOrganization/物件/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>微軟.目錄/應用程式.my組織/觀眾/更新
 
-授與 microsoft 目錄/應用程式/物件/更新的相同許可權，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/訪問/更新相同的許可權，但僅適用于單租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>microsoft 目錄/應用程式/驗證/更新
+#### <a name="microsoftdirectoryapplicationsauthenticationupdate"></a>微軟.目錄/應用程式/身份驗證/更新
 
-能夠在單一租使用者和多租使用者應用程式上更新回復 URL、登出 URL、隱含流程和發行者網域屬性。 除了支援的帳戶類型以外，授與應用程式註冊驗證頁面上所有欄位的存取權：
+能夠在單租戶和多租戶應用程式上更新回復 URL、登出 URL、隱式流和發行者域屬性。 授予對應用程式註冊身份驗證頁上所有欄位的存取權限，但受支援的帳戶類型除外：
 
-![授與應用程式註冊驗證的存取權，但不支援帳戶類型](./media/roles-custom-available-permissions/supported-account-types.png)
+![授予對應用註冊身份驗證（但不支援的帳戶類型）的存取權限](./media/roles-custom-available-permissions/supported-account-types.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>microsoft 目錄/應用程式. myOrganization/驗證/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>微軟.目錄/應用程式.my組織/認證/更新
 
-授與的許可權與 microsoft 目錄/應用程式/驗證/更新相同，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/身份驗證/更新相同的許可權，但僅適用于單租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>microsoft 目錄/應用程式/基本/更新
+#### <a name="microsoftdirectoryapplicationsbasicupdate"></a>微軟.目錄/應用程式/基本/更新
 
-能夠在單一租使用者和多租使用者應用程式上更新名稱、標誌、首頁 URL、服務條款 URL 及隱私權聲明 URL 屬性。 授與應用程式注冊商標頁面上所有欄位的存取權：
+能夠更新單租戶和多租戶應用程式的名稱、徽標、主頁 URL、服務條款 URL 和隱私權聲明 URL 屬性。 授予對應用程式註冊品牌頁面上所有欄位的存取權限：
 
-![此許可權可授與應用程式注冊商標頁面的存取權](./media/roles-custom-available-permissions/app-registration-branding.png)
+![此許可權授予對應用註冊品牌頁面的存取權限](./media/roles-custom-available-permissions/app-registration-branding.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>microsoft 目錄/應用程式 myOrganization/基本/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>微軟.目錄/應用程式.my組織/基本/更新
 
-授與的許可權與 microsoft 目錄/應用程式/基本/更新相同，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/基本/更新相同的許可權，但僅適用于單租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>microsoft 目錄/應用程式/認證/更新
+#### <a name="microsoftdirectoryapplicationscredentialsupdate"></a>微軟.目錄/應用程式/憑據/更新
 
-能夠在單一租使用者和多租使用者應用程式上更新憑證和用戶端秘密屬性。 授與應用程式註冊憑證 & 秘密頁面上所有欄位的存取權：
+能夠更新單租戶和多租戶應用程式上的證書和用戶端機密屬性。 授予對應用程式註冊證書上所有欄位的訪問，&機密頁上：
 
-![此許可權會授與應用程式註冊憑證 & 秘密頁面的存取權](./media/roles-custom-available-permissions/app-registration-secrets.png)
+![此許可權授予對應用註冊證書&機密頁的訪問](./media/roles-custom-available-permissions/app-registration-secrets.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>myOrganization/認證/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>微軟.目錄/應用程式.my組織/憑據/更新
 
-會授與 microsoft 目錄/應用程式/認證/更新相同的許可權，但僅適用于單一目錄應用程式。
+授予與 Microsoft.directory/應用程式/憑據/更新相同的許可權，但僅適用于單目錄應用程式。
 
-#### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft 目錄/應用程式/擁有者/更新
+#### <a name="microsoftdirectoryapplicationsownersupdate"></a>微軟.目錄/應用程式/擁有者/更新
 
-能夠在單一租使用者和多租使用者上更新擁有者屬性。 授與 [應用程式註冊擁有者] 頁面上所有欄位的存取權：
+能夠在單租戶和多租戶上更新擁有者屬性。 授予對應用程式註冊擁有者頁面上所有欄位的存取權限：
 
-![此許可權可授與應用程式註冊擁有者頁面的存取權](./media/roles-custom-available-permissions/app-registration-owners.png)
+![此許可權授予對應用註冊擁有者頁面的存取權限](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>myOrganization/擁有者/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>微軟.目錄/應用程式.my組織/擁有者/更新
 
-授與的許可權與 microsoft 目錄/應用程式/擁有者/更新相同，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/擁有者/更新相同的許可權，但僅適用于單租戶應用程式。
 
-#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>microsoft 目錄/應用程式/許可權/更新
+#### <a name="microsoftdirectoryapplicationspermissionsupdate"></a>微軟.目錄/應用程式/許可權/更新
 
-能夠更新委派的許可權、應用程式許可權、授權的用戶端應用程式、所需的許可權，以及授與單一租使用者和多租使用者應用程式的同意屬性。 並未授與執行同意的能力。 授與應用程式註冊 API 許可權上所有欄位的存取權，並公開 API 頁面：
+能夠更新單租戶和多租戶應用程式的委派許可權、應用程式許可權、授權用戶端應用程式、所需許可權和授予同意屬性。 不授予執行同意的許可權。 授予對應用程式註冊 API 許可權和公開 API 頁上所有欄位的許可權：
 
-![此許可權可授與應用程式註冊 API 許可權頁面的存取權](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
+![此許可權授予對應用註冊 API 許可權頁的許可權](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
 
-![此許可權會授與應用程式註冊公開 API 頁面的存取權](./media/roles-custom-available-permissions/app-registration-expose-api.png)
+![此許可權授予對應用註冊的許可權 公開 API 頁](./media/roles-custom-available-permissions/app-registration-expose-api.png)
 
-#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>myOrganization/許可權/更新
+#### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>微軟.目錄/應用程式.my組織/許可權/更新
 
-授與 microsoft 目錄/應用程式/許可權/更新的相同許可權，但僅適用于單一租使用者應用程式。
+授予與 Microsoft.directory/應用程式/許可權/更新相同的許可權，但僅適用于單租戶應用程式。
 
-## <a name="required-license-plan"></a>必要的授權方案
+## <a name="required-license-plan"></a>所需的許可證計畫
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用[Azure 入口網站、Azure AD PowerShell 和圖形 API](roles-create-custom.md)來建立自訂角色
-- [查看自訂角色的指派](roles-view-assignments.md)
+- 使用 Azure[門戶、Azure AD 電源外殼和圖形 API](roles-create-custom.md)創建自訂角色
+- [查看自訂角色的分配](roles-view-assignments.md)

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007710"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 報告延遲
@@ -41,7 +41,7 @@ ms.locfileid: "74007710"
 > **延遲 (第 95 個百分位數)** 指的是報告 95% 記錄所花費的時間，**延遲 (第 99 個百分位數)** 指的則是報告 99% 記錄所花費的時間。 
 >
 
-| 報告 | 延遲 (第 95 個百分位數) |延遲 (第 99 個百分位數)|
+| Report | 延遲 (第 95 個百分位數) |延遲 (第 99 個百分位數)|
 | :-- | --- | --- |
 | 稽核記錄 | 2 分鐘  | 5 分鐘  |
 | 登入 | 2 分鐘  | 5 分鐘 |
@@ -59,18 +59,18 @@ ms.locfileid: "74007710"
 
 下表列出安全性報告的延遲資訊。
 
-| 報告 | 最小值 | 平均值 | 最大值 |
+| Report | 最小值 | Average | 最大值 |
 | :-- | --- | --- | --- |
-| 有風險的使用者          | 5 分鐘   | 15 Minuten  | 2 小時  |
-| 有風險的登入         | 5 分鐘   | 15 Minuten  | 2 小時  |
+| 有風險的使用者          | 5 分鐘   | 15 分鐘  | 2 小時  |
+| 有風險的登入         | 5 分鐘   | 15 分鐘  | 2 小時  |
 
 ## <a name="risk-detections"></a>風險偵測
 
-Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個偵測到的可疑動作都會儲存在名為**風險偵測**的記錄中。
+Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個檢測到的可疑操作都存儲在稱為**風險檢測**的記錄中。
 
-下表列出風險偵測的延遲資訊。
+下表列出了風險檢測的延遲資訊。
 
-| 報告 | 最小值 | 平均值 | 最大值 |
+| Report | 最小值 | Average | 最大值 |
 | :-- | --- | --- | --- |
 | 從匿名 IP 位址登入 |5 分鐘 |15 分鐘 |2 小時 |
 | 從不熟悉的位置登入 |5 分鐘 |15 分鐘 |2 小時 |
@@ -82,6 +82,6 @@ Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure AD 報告概觀](overview-reports.md)
+* [Azure AD 報告概述](overview-reports.md)
 * [以程式設計方式存取 Azure AD 報告](concept-reporting-api.md)
-* [Azure Active Directory 風險偵測](concept-risk-events.md)
+* [Azure 活動目錄風險檢測](concept-risk-events.md)

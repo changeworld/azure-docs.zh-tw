@@ -1,5 +1,5 @@
 ---
-title: Web 服務參數-Azure Machine Learning Studio （傳統） |Microsoft Docs
+title: Web 服務參數 - Azure 機器學習工作室（經典） |微軟文檔
 description: 如何使用 Azure Machine Learning Web 服務參數來修改模型在 Web 服務受到存取時的行為。
 services: machine-learning
 author: xiaoharper
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204404"
 ---
-# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure Machine Learning Studio （傳統） web 服務參數
+# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 機器學習工作室（經典）Web 服務參數
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-藉由發行包含可設定參數模組的試驗，來建立 Azure Machine Learning Web 服務。 在某些情況下，您可能想要在執行 Web 服務時之際，變更模組的行為。 「Web 服務參數」可讓您執行這項工作。 
+藉由發行包含可設定參數模組的試驗，來建立 Azure Machine Learning Web 服務。 在某些情況下，您可能想要在執行 Web 服務時之際，變更模組的行為。 「Web 服務參數」** 可讓您執行這項工作。 
 
-常見的範例是設定匯[入資料][reader]模組，讓已發佈之 web 服務的使用者可以在存取 web 服務時，指定不同的資料來源。 或設定[匯出資料][writer]模組，以便能夠指定不同的目的地。 一些其他範例包括變更[特徵雜湊][feature-hashing]模組的位數，或針對以[篩選為基礎的特徵選取][filter-based-feature-selection]模組所需的功能數目。 
+常見的範例是設定[匯入資料][reader]模組，讓已發佈之 Web 服務的使用者可以在存取 Web 服務時，指定不同的資料來源。 或者，設定[匯出資料][writer]模組，以便能夠指定不同的目的地。 部分其他範例包括變更[特徵雜湊][feature-hashing]模組的位元數，或變更[以篩選器為基礎的特徵選取][filter-based-feature-selection]模組的所需特徵數。 
 
 您可以設定 Web 服務參數，並使其與實驗中的一個或多個模組參數產生關聯，而且您可以指定它們是必要還是選用參數。 然後 Web 服務的使用者就可以在呼叫 Web 服務時，提供這些參數的值。 
 
@@ -41,38 +41,38 @@ ms.locfileid: "79204404"
 Web 服務的 API 文件會包含 Web 服務使用者在存取 Web 服務時，如何以程式設計方式指定 Web 服務參數的資訊。
 
 > [!NOTE]
-> 傳統 web 服務的 API 檔是透過 Machine Learning Studio （傳統）中 web 服務**儀表板**中的 [ **api 說明頁面**] 連結來提供。 新的 Web 服務的 API 文件則是透過 [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) 入口網站中 Web 服務的 [取用] 和 [Swagger API] 頁面提供。
+> 經典 Web 服務的 API 文檔通過機器學習工作室中的 Web 服務**DASHBOARD**中的**API 説明頁面**連結（經典）提供。 新的 Web 服務的 API 文件則是透過 [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) 入口網站中 Web 服務的 [取用]**** 和 [Swagger API]**** 頁面提供。
 > 
 > 
 
 ## <a name="example"></a>範例
-例如，假設我們有一個[匯出資料][writer]模組的實驗，可將資訊傳送至 Azure blob 儲存體。 我們將會定義名為 Blob path 的 Web 服務參數，以在服務被存取時允許 Web 服務使用者將路徑變更至 Blob 儲存體。
+舉例來說，假設我們有一個[匯出資料][writer]模組實驗，該模組會傳送資訊給 Azure Blob 儲存體。 我們將會定義名為 Blob path 的 Web 服務參數，以在服務被存取時允許 Web 服務使用者將路徑變更至 Blob 儲存體。
 
-1. 在 [Machine Learning Studio （傳統）] 中，按一下 [[匯出資料][writer]] 模組來選取它。 其屬性會顯示在試驗畫布右邊的 [屬性] 窗格中。
+1. 在機器學習工作室（經典版）中，按一下["匯出資料][writer]"模組以選擇它。 其屬性會顯示在試驗畫布右邊的 [屬性] 窗格中。
 2. 指定儲存體類型：
    
    * 在 **[請指定資料目的地]** 底下，選取 [Azure Blob 儲存體]。
    * 在 **[請指定驗證類型]** 底下，選取 [帳戶]。
    * 輸入 Azure Blob 儲存體的帳戶資訊。 
 
-3. 按一下 **[以容器參數為開頭的 Blob 路徑]** 右邊的圖示。 它看起來像這樣：
+3.  按一下 **[以容器參數為開頭的 Blob 路徑]** 右邊的圖示。 它看起來像這樣：
    
    ![Web 服務參數圖示](./media/web-service-parameters/icon.png)
    
    選取 [設為 Web 服務參數]。
    
-   就會在 **[屬性] 窗格底部的 [Web 服務參數]** 底下新增一個名為 [以容器為開頭的 Blob 路徑] 項目。 這是現在與此[匯出資料][writer]模組參數相關聯的 Web 服務參數。
+   就會在 **[屬性] 窗格底部的 [Web 服務參數]** 底下新增一個名為 [以容器為開頭的 Blob 路徑] 項目。 這就是現在與此[匯出資料][writer]模組參數關聯的「Web 服務參數」。
 4. 若要重新命名 Web 服務參數，請按一下名稱，輸入 Blob path，然後按 **Enter** 鍵。 
 5. 若要為 Web 服務參數提供預設值，請按一下名稱右邊的圖示，選取 [提供預設值]，輸入值 (例如 container1/output1.csv)，然後按 **Enter** 鍵。
    
    ![Web 服務參數](./media/web-service-parameters/parameter.png)
-6. 按一下 **[執行]** 。 
-7. 按一下 [部署 Web 服務]，然後選取 [部署 Web 服務 [傳統]] 或 [部署 Web 服務 [新]] 可部署 Web 服務。
+6. 按一下 [執行]****。 
+7. 按一下 [部署 Web 服務]****，然後選取 [部署 Web 服務 [傳統]]**** 或 [部署 Web 服務 [新]]**** 可部署 Web 服務。
 
 > [!NOTE] 
-> 若要部署新的 Web 服務，您必須在要部署 Web 服務的訂用帳戶中具備足夠的權限。 如需詳細資訊，請參閱[使用 Azure Machine Learning Web 服務入口網站管理 Web 服務](manage-new-webservice.md)。 
+> 若要部署新的 Web 服務，您必須在要部署 Web 服務的訂用帳戶中具備足夠的權限。 有關詳細資訊，請參閱[使用 Azure 機器學習 Web 服務門戶管理 Web 服務](manage-new-webservice.md)。 
 
-Web 服務的使用者現在可以在存取 web 服務時，為[匯出資料][writer]模組指定新的目的地。
+Web 服務的使用者現在即可在存取 Web 服務時，為[匯出資料][writer]模組指定新的目的地。
 
 ## <a name="more-information"></a>詳細資訊
 如需更詳細的範例，請參閱 [Machine Learning Blog](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服務參數](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)項目。

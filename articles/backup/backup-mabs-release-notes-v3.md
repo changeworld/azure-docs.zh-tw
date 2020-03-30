@@ -1,14 +1,14 @@
 ---
 title: Microsoft Azure 備份伺服器 v3 版本資訊
-description: 本文提供 Microsoft Azure 備份 Server （MABS） v3 的已知問題和因應措施的相關資訊。
+description: 本文提供有關 Microsoft Azure 備份伺服器 （MABS） v3 的已知問題和解決方法的資訊。
 ms.topic: conceptual
 ms.date: 11/22/2018
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
 ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172267"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器版本資訊
@@ -73,4 +73,4 @@ ms.locfileid: "74172267"
 
 ## <a name="next-steps"></a>後續步驟
 
-[MABS V3 的新功能](backup-mabs-whats-new-mabs.md)
+[MABS V3 中的新增功能](backup-mabs-whats-new-mabs.md)

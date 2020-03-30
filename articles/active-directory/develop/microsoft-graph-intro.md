@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph API |Microsoft Docs
-description: Microsoft Graph API 是一個 RESTful 的 Web API，可讓您存取 Microsoft Cloud 服務資源。
+title: 微軟圖形 API |微軟文檔
+description: Microsoft 圖形 API 是一種 RESTful Web API，使您能夠訪問 Microsoft 雲服務資源。
 author: davidmu1
 services: active-directory
 manager: CelesteDG
@@ -12,49 +12,49 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136495"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Microsoft Graph API 是一個 RESTful 的 Web API，可讓您存取 Microsoft Cloud 服務資源。 註冊應用程式並取得使用者或服務的驗證權杖之後，您就可以對 Microsoft Graph API 提出要求。 如需詳細資訊，請參閱[Microsoft Graph 的總覽](https://docs.microsoft.com/graph/overview)。
+Microsoft 圖形 API 是一種 RESTful Web API，使您能夠訪問 Microsoft 雲服務資源。 註冊應用並獲取使用者或服務的身份驗證權杖後，可以向 Microsoft 圖形 API 發出請求。 有關詳細資訊，請參閱[微軟圖形概述](https://docs.microsoft.com/graph/overview)。
 
-Microsoft Graph 會公開 REST Api 和用戶端程式庫，以存取下列 Microsoft 365 服務上的資料：
-- Office 365 服務： Delve、Excel、Microsoft 預約、Microsoft 團隊、OneDrive、OneNote、Outlook/Exchange、Planner 和 SharePoint
-- 企業行動力與安全性服務：先進的威脅分析、先進的威脅防護、Azure Active Directory、Identity Manager 和 Intune
-- Windows 10 服務：活動、裝置、通知
+Microsoft Graph 公開 REST API 和用戶端庫以訪問以下 Microsoft 365 服務的資料：
+- Office 365 服務：Delve、Excel、微軟預訂、微軟團隊、OneDrive、OneNote、Outlook/Exchange、規劃器和 SharePoint
+- 企業移動和安全服務：高級威脅分析、高級威脅防護、Azure 活動目錄、標識管理器和 Intune
+- Windows 10 服務：活動、設備、通知
 - Dynamics 365 Business Central
 
 ## <a name="versions"></a>版本
 
-Microsoft Graph 目前支援兩種版本： v1.0 和搶鮮版（Beta）。 V1.0 版本包含正式推出的 Api。 針對所有生產環境應用程式使用 v1.0 版。 搶鮮版（Beta）包含目前處於預覽狀態的 Api。 因為我們可能會引進搶鮮版（Beta） Api 的重大變更，所以我們建議您只使用搶鮮版（Beta）版本來測試開發中的應用程式;請勿在您的生產應用程式中使用搶鮮版（Beta） Api。 如需詳細資訊，請參閱[Microsoft Graph 的版本控制、支援和重大變更原則](https://docs.microsoft.com/graph/versioning-and-support)。
+Microsoft Graph 目前支援兩個版本：v1.0 和 Beta。 v1.0 版本包括一般可用的 API。 對所有生產應用使用 v1.0 版本。 測試版包括當前處於預覽狀態的 API。 由於我們可能會對 Beta API 引入重大更改，因此建議您僅使用測試版來測試正在開發中的應用;請勿在生產應用中使用 Beta API。 有關詳細資訊，請參閱[Microsoft 圖形的版本控制、支援和中斷更改策略](https://docs.microsoft.com/graph/versioning-and-support)。
 
-若要開始使用搶鮮版（Beta） Api，請參閱[Microsoft Graph Beta 版端點參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
+要開始使用測試版 API，請參閱[Microsoft 圖形測試版終結點參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
 
-若要開始使用 v1.0 Api，請參閱[Microsoft Graph REST API v1.0 參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
+要開始使用 v1.0 API，請參閱[Microsoft 圖形 REST API v1.0 引用](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
 
 ## <a name="get-started"></a>開始使用
 
-若要讀取或寫入資源（例如使用者或電子郵件訊息），您可以建立如下所示的要求：
+要讀取或寫入資源（如使用者或電子郵件），請構造如下所示的請求：
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-如需有關已建立的要求之元素的詳細資訊，請參閱[使用 MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api)
+有關構造請求元素的詳細資訊，請參閱[使用 Microsoft 圖形 API](https://docs.microsoft.com/graph/use-the-api)
 
-您可以使用快速入門範例來示範如何存取 Microsoft Graph API 的威力。 可用的範例可使用一種驗證來存取兩項服務： Microsoft 帳戶和 Outlook。 每個快速入門會從 Microsoft 帳戶使用者的設定檔存取訊號，並顯示其行事曆中的事件。
-快速入門包含四個步驟：
-- 選取您的平臺
-- 取得您的應用程式識別碼（用戶端識別碼）
+快速入門示例可用於向您展示如何訪問 Microsoft 圖形 API 的強大功能。 可用的示例訪問兩個服務，其中一個身份驗證：Microsoft 帳戶和 Outlook。 每個快速入門都會從 Microsoft 帳戶使用者的設定檔中訪問資訊，並顯示其日曆中的事件。
+快速入門包括四個步驟：
+- 選擇您的平臺
+- 獲取應用 ID（用戶端 ID）
 - 建置範例
-- 登入並查看行事曆上的事件
+- 登錄並查看日曆上的事件
 
-當您完成快速入門時，您會有一個已準備好要執行的應用程式。 如需詳細資訊，請參閱[Microsoft Graph 快速入門常見問題](https://docs.microsoft.com/graph/quick-start-faq)。 若要開始使用範例，請參閱[Microsoft Graph 快速入門](https://developer.microsoft.com/graph/quick-start)。
+完成快速入門後，您有一個可以運行的應用。 有關詳細資訊，請參閱 Microsoft[圖形快速入門常見問題解答](https://docs.microsoft.com/graph/quick-start-faq)。 要開始使用示例，請參閱[Microsoft 圖形快速入門](https://developer.microsoft.com/graph/quick-start)。
 
 ## <a name="tools"></a>工具
 
-Microsoft Graph Explorer 是一個 web 型工具，可讓您使用 Microsoft Graph Api 來建立及測試要求。 您可以在下列位置存取 Microsoft Graph Explorer： `https://developer.microsoft.com/graph/graph-explorer`。
+Microsoft 圖形資源管理器是一個基於 Web 的工具，您可以使用它使用 Microsoft 圖形 API 生成和測試請求。 您可以在以下處訪問 Microsoft 圖形`https://developer.microsoft.com/graph/graph-explorer`資源管理器。
 
-Postman 是一種工具，您也可以使用 Microsoft Graph Api 來建立和測試要求。 您可以下載 Postman，網址為： `https://www.getpostman.com/`。 若要與 Postman 中的 Microsoft Graph 互動，您可以使用 Postman 中的 Microsoft Graph 集合。 如需詳細資訊，請參閱搭配[使用 Postman 與 MICROSOFT GRAPH API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。
+Postman 是一種工具，您還可以使用 Microsoft 圖形 API 生成和測試請求。 您可以在以下位置下載郵遞員`https://www.getpostman.com/`。 要在 Postman 中與 Microsoft 圖形進行交互，請使用 Postman 中的 Microsoft 圖形集合。 有關詳細資訊，請參閱使用[Postman 與 Microsoft 圖形 API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。

@@ -1,7 +1,7 @@
 ---
-title: 會話親和性問題疑難排解
+title: 排除會話關聯問題
 titleSuffix: Azure Application Gateway
-description: 本文提供有關如何針對 Azure 應用程式閘道中的會話親和性問題進行疑難排解的資訊
+description: 本文提供有關如何在 Azure 應用程式閘道中解決會話關聯問題的資訊
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -9,200 +9,200 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74047977"
 ---
-# <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>針對 Azure 應用程式閘道會話親和性問題進行疑難排解
+# <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>解決 Azure 應用程式閘道會話關聯問題
 
-瞭解如何診斷和解決 Azure 應用程式閘道的會話親和性問題。
+瞭解如何使用 Azure 應用程式閘道診斷和解決會話關聯問題。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 
 當您想要在同一個後端保留使用者工作階段時，以 Cookie 為基礎的工作階段親和性非常有用。 使用受閘道管理的 Cookie，應用程式閘道即可將來自使用者工作階段的後續流量導向至同一部伺服器進行處理。 當使用者工作階段的工作階段狀態儲存在伺服器本機時，這項功能很重要。
 
 ## <a name="possible-problem-causes"></a>可能的問題原因
 
-維護以 cookie 為基礎的會話親和性的問題，可能會因為下列主要原因而發生：
+維護基於 Cookie 的會話相關性時可能會出現以下原因：
 
-- 未啟用 [以 Cookie 為基礎的親和性] 設定
-- 您的應用程式無法處理以 cookie 為基礎的親和性
-- 應用程式使用以 cookie 為基礎的親和性，但要求仍在後端伺服器之間跳躍
+- 未啟用"基於 Cookie 的關聯"設置
+- 您的應用程式無法處理基於 Cookie 的關聯
+- 應用程式使用基於 Cookie 的關聯，但請求仍在後端伺服器之間來回回跳
 
-### <a name="check-whether-the-cookie-based-affinity-setting-is-enabled"></a>檢查是否已啟用 [以 Cookie 為基礎的親和性] 設定
+### <a name="check-whether-the-cookie-based-affinity-setting-is-enabled"></a>檢查是否啟用了"基於 Cookie 的關聯"設置
 
-有時候，當您忘記啟用「以 Cookie 為基礎的親和性」設定時，可能會發生會話親和性問題。 若要判斷您是否已在 Azure 入口網站的 [HTTP 設定] 索引標籤上啟用 [以 Cookie 為基礎的親和性] 設定，請遵循下列指示：
+有時，當您忘記啟用"基於 Cookie 的關聯"設置時，可能會出現會話關聯問題。 要確定是否已在 Azure 門戶中的 HTTP 設置選項卡上啟用"基於 Cookie 的關聯"設置，請按照以下說明操作：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
 
-2. 在**左側流覽**窗格中，按一下 [**所有資源**]。 按一下 [所有資源] 分頁中的應用程式閘道名稱。 如果您選取的訂用帳戶中已有數個資源，您可以在 [**依名稱篩選**...] 中輸入應用程式閘道名稱。 輕鬆地存取應用程式閘道。
+2. 在**左側導航**窗格中，按一下 **"所有資源**"。 按一下"所有資源"邊欄選項卡中的應用程式閘道名稱。 如果所選訂閱中已具有多個資源，則可以**按名稱在篩選器**中輸入應用程式閘道名稱... 輕鬆地存取應用程式閘道。
 
-3. 在 [**設定**] 底下選取 [ **HTTP 設定**] 索引標籤。
+3. 在 **"設置"** 下選擇**HTTP 設置**選項卡。
 
-   ![疑難排解-會話-親和性-問題-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
+   ![疑難排解會話-關聯問題-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
-4. 按一下右側的 [ **appGatewayBackendHttpSettings** ]，以檢查您是否已選取 [**啟用**以 Cookie 為基礎的親和性]。
+4. 按一下右側**的 AppGatewayBackendHttpSettings，** 檢查您是否選擇了基於 Cookie 的關聯 **。**
 
-   ![疑難排解-會話-親和性-問題-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
+   ![疑難排解會話-關聯問題-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
 
 
 
-您也可以使用下列其中一種方法，在 "**backendHttpSettingsCollection**" 下檢查 "**cookiebasedaffinity 為 enabled**" 的值是否已設定為*Enabled*：
+您還可以使用以下方法之一，檢查 **"Cookie 基於相關性**"的值設置為"**後端HttpSettingsCollection"** 下*啟用*的值：
 
-- 在 PowerShell 中執行[AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)
-- 使用 Azure Resource Manager 範本查看 JSON 檔案
+- 在 PowerShell 中運行[獲取應用閘道後端設置](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)
+- 使用 Azure 資源管理器範本查看 JSON 檔
 
 ```
 "cookieBasedAffinity": "Enabled", 
 ```
 
-### <a name="the-application-cannot-handle-cookie-based-affinity"></a>應用程式無法處理以 cookie 為基礎的親和性
+### <a name="the-application-cannot-handle-cookie-based-affinity"></a>應用程式無法處理基於 Cookie 的關聯
 
 #### <a name="cause"></a>原因
 
-應用程式閘道只能使用 cookie 來執行以會話為基礎的親和性。
+應用程式閘道只能通過使用 Cookie 執行基於會話的關聯。
 
 #### <a name="workaround"></a>因應措施
 
-如果應用程式無法處理以 cookie 為基礎的親和性，您就必須使用外部或內部的 azure 負載平衡器或其他協力廠商解決方案。
+如果應用程式無法處理基於 Cookie 的關聯，則必須使用外部或內部 Azure 負載等化器或其他協力廠商解決方案。
 
-### <a name="application-is-using-cookie-based-affinity-but-requests-still-bouncing-between-back-end-servers"></a>應用程式使用以 cookie 為基礎的親和性，但要求仍在後端伺服器之間跳躍
+### <a name="application-is-using-cookie-based-affinity-but-requests-still-bouncing-between-back-end-servers"></a>應用程式使用基於 Cookie 的關聯，但請求仍在後端伺服器之間來回回跳
 
 #### <a name="symptom"></a>徵狀
 
-您已啟用以 Cookie 為基礎的親和性設定，當您使用 Internet Explorer 中的簡短名稱 URL 存取應用程式閘道時（例如： [http://website](http://website/) ，要求仍會在後端伺服器之間跳動。
+當您使用 Internet Explorer 中的短名稱 URL 訪問應用程式閘道時，您啟用了基於 Cookie 的關聯設置，[http://website](http://website/)例如：
 
-若要找出此問題，請遵循下列指示：
+要識別此問題，請按照說明操作：
 
-1. 在連接到應用程式閘道背後應用程式的「用戶端」上進行 web 偵錯工具追蹤（在此範例中，我們使用 Fiddler）。
-    **秘訣**如果您不知道如何使用 Fiddler，請核取底部的 [**我要收集網路流量並使用 web 偵錯工具進行分析**] 選項。
+1. 在連接到應用程式閘道後面的應用程式的"用戶端"上獲取 Web 調試器跟蹤（本示例中我們使用 Fiddler）。
+    **提示**如果您不知道如何使用 Fiddler，請在底部選中"**我想收集網路流量並使用 Web 調試器對其進行分析**"選項。
 
-2. 檢查並分析會話記錄，以判斷用戶端提供的 cookie 是否有 ARRAffinity 詳細資料。 如果您在 cookie 集合中找不到 ARRAffinity 詳細資料，例如 "**ARRAffinity =** *ARRAffinityValue*"，這表示用戶端不會使用由應用程式閘道所提供的 ARRA cookie 來進行回復。
-    例如︰
+2. 檢查並分析會話日誌，以確定用戶端提供的 Cookie 是否具有 ARRAffinity 詳細資訊。 如果您在 Cookie 集中找不到 ARRAffinity 詳細資訊，例如 **"ARRAffinity®** *ARRAffinityValue"，* 則意味著用戶端沒有使用由應用程式閘道提供的 ARRA Cookie 進行回復。
+    例如：
 
-    ![疑難排解-會話-親和性-問題-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
+    ![疑難排解會話-關聯問題-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-    ![疑難排解-會話-親和性-問題-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
+    ![疑難排解會話-關聯問題-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
-應用程式會繼續嘗試在每個要求上設定 cookie，直到收到回復為止。
+應用程式繼續嘗試在每個請求上設置 Cookie，直到收到回復。
 
 #### <a name="cause"></a>原因
 
-發生此問題的原因是 Internet Explorer 和其他瀏覽器不能儲存或使用簡短名稱 URL 的 cookie。
+出現此問題的原因是 Internet Explorer 和其他瀏覽器可能無法存儲或使用帶有短名稱 URL 的 Cookie。
 
 #### <a name="resolution"></a>解決方案
 
-若要修正此問題，建議使用 FQDN 來存取應用程式閘道。 例如，使用[http://website.com](https://website.com/)或[http://appgw.website.com](http://appgw.website.com/) 。
+若要修正此問題，建議使用 FQDN 來存取應用程式閘道。 例如，使用[http://website.com](https://website.com/)或[http://appgw.website.com](http://appgw.website.com/)。
 
-## <a name="additional-logs-to-troubleshoot"></a>要疑難排解的其他記錄檔
+## <a name="additional-logs-to-troubleshoot"></a>要疑難排解的其他日誌
 
-您可以收集其他記錄並加以分析，以針對以 cookie 為基礎的會話親和性相關的問題進行疑難排解
+您可以收集其他日誌並對其進行分析，以排除與基於 Cookie 的會話相關性相關的問題
 
-### <a name="analyze-application-gateway-logs"></a>分析應用程式閘道記錄
+### <a name="analyze-application-gateway-logs"></a>分析應用程式閘道日誌
 
-若要收集應用程式閘道記錄，請遵循下列指示：
+要收集應用程式閘道日誌，請按照說明操作：
 
 透過 Azure 入口網站啟用記錄功能
 
-1. 在  [Azure 入口網站](https://portal.azure.com/)中，尋找您的資源，然後按一下 **診斷記錄**]。
+1. 在[Azure 門戶](https://portal.azure.com/)中，查找資源，然後按一下 **"診斷日誌**"。
 
-   針對應用程式閘道，有三個可用的記錄：存取記錄、效能記錄、防火牆記錄
+   對於應用程式閘道，有三個日誌可用：訪問日誌、性能日誌、防火牆日誌
 
-2. 若要開始收集資料，請按一下 [**開啟診斷**]。
+2. 要開始收集資料，請按一下"**打開診斷**"。
 
-   ![疑難排解-會話-親和性-問題-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
+   ![疑難排解會話-關聯問題-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
-3. [診斷設定] 刀鋒視窗中提供診斷記錄的設定。 在此範例中，Log Analytics 會儲存記錄。 按一下 [ **Log Analytics** ] 底下的 **[設定]** 以設定您的工作區。 您也可以使用事件中樞和儲存體帳戶來儲存診斷記錄。
+3. [診斷設定]**** 刀鋒視窗中提供診斷記錄的設定。 在此範例中，Log Analytics 會儲存記錄。 按一下"**日誌分析**下**配置**"以設置工作區。 您也可以使用事件中樞和儲存體帳戶來儲存診斷記錄。
 
-   ![疑難排解-會話-親和性-問題-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
+   ![疑難排解會話-關聯問題-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. 確認設定，然後按一下 [**儲存**]。
+4. 確認設置，然後按一下"**保存**"。
 
-   ![疑難排解-會話-親和性-問題-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
+   ![疑難排解會話-關聯問題-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
-#### <a name="view-and-analyze-the-application-gateway-access-logs"></a>查看和分析應用程式閘道存取記錄
+#### <a name="view-and-analyze-the-application-gateway-access-logs"></a>查看和分析應用程式閘道訪問日誌
 
-1. 在 應用程式閘道資源 視圖的 Azure 入口網站中，選取 **監視** 區段中的 **診斷記錄**。
+1. 在應用程式閘道資源檢視下的 Azure 門戶中，在 **"監視**"部分中選擇**診斷日誌**。
 
-   ![疑難排解-會話-親和性-問題-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
+   ![疑難排解會話-關聯問題-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. 在右側的下拉式清單中，選取 [**記錄類別**] 底下的 [**ApplicationGatewayAccessLog**]。  
+2. 在右側，在**日誌類別**下拉清單中選擇"**應用程式閘道訪問日誌**"。  
 
-   ![疑難排解-會話-親和性-問題-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
+   ![疑難排解會話-關聯問題-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
-3. 在 [應用程式閘道存取記錄檔] 清單中，按一下您想要分析和匯出的記錄檔，然後匯出 JSON 檔案。
+3. 在"應用程式閘道訪問日誌"清單中，按一下要分析並匯出的日誌，然後匯出 JSON 檔。
 
-4. 將您在步驟3中匯出的 JSON 檔案轉換成 CSV 檔案，並在 Excel、Power BI 或任何其他資料視覺效果工具中加以查看。
+4. 將步驟 3 中匯出的 JSON 檔轉換為 CSV 檔，並在 Excel、Power BI 或任何其他資料視覺化檢視中查看這些檔。
 
-5. 檢查下列資料：
+5. 檢查以下資料：
 
-- **ClientIP**–這是來自連接用戶端的用戶端 IP 位址。
-- **ClientPort** -這是從連線用戶端要求的來源埠。
-- **RequestQuery** –這表示接收要求的目的地伺服器。
-- **伺服器路由**：收到要求的後端集區實例。
-- **X-AzureApplicationGateway-LOG-ID**：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 例如： X-Start-azureapplicationgateway-CACHE-命中 = 0 & SERVER 路由 = 10.0.2.4。
+- **用戶端 IP**= 這是來自連接用戶端的用戶端 IP 位址。
+- **用戶端埠**- 這是來自請求的連接用戶端的源埠。
+- **請求查詢**– 這指示收到請求的目標伺服器。
+- **伺服器路由**：收到請求的後端池實例。
+- **X-AzureApplicationGateway-LOG-ID**：要求所使用的相互關聯識別碼。 它可以用來針對後端伺服器上的流量問題進行疑難排解。 例如：X-Azure 應用程式閘道-CACHE-HIT=0&伺服器-路由=10.0.2.4。
 
   - **SERVER-STATUS**：應用程式閘道從後端收到的 HTTP 回應碼。
 
-  ![疑難排解-會話-親和性-問題-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
+  ![疑難排解會話-關聯問題-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
-如果您看到兩個專案來自相同的 ClientIP 和用戶端埠，而且它們會傳送至相同的後端伺服器，這表示應用程式閘道正確設定。
+如果您看到兩個專案來自同一個用戶端IP 和用戶端埠，並且它們發送到同一後端伺服器，則意味著應用程式閘道配置正確。
 
-如果您看到兩個專案來自相同的 ClientIP 和用戶端埠，而且它們會傳送至不同的後端伺服器，這表示要求會在後端伺服器之間跳躍，請選取 [**應用程式正在使用以 cookie 為基礎的親和性，但要求仍然在後端伺服器之間跳動**]，以進行疑難排解。
+如果您看到兩個專案來自同一個 ClientIP 和用戶端埠，並且它們發送到不同的後端伺服器，這意味著請求在後端伺服器之間跳轉，請選擇"**應用程式使用基於 Cookie 的關聯，但請求仍在後端伺服器之間反彈**"，請在底部進行故障排除。
 
-### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>使用 web 偵錯工具來捕捉和分析 HTTP 或 HTTPS 流量
+### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>使用 Web 調試器捕獲和分析 HTTP 或 HTTPS 流量
 
-Web 偵錯工具（例如 Fiddler）可透過捕捉網際網路和測試電腦之間的網路流量，協助您進行 web 應用程式的偵錯工具。 這些工具可讓您在瀏覽器接收/傳送時，檢查傳入和傳出的資料。 在此範例中，Fiddler 的 HTTP replay 選項可協助您針對 web 應用程式的用戶端問題進行疑難排解，特別是針對驗證類型的問題。
+像 Fiddler 這樣的 Web 調試工具可以通過捕獲 Internet 和測試電腦之間的網路流量來説明您調試 Web 應用程式。 這些工具使您能夠在瀏覽器接收/發送傳入和傳出資料時檢查傳入和傳出資料。 在此示例中，Fiddler 具有 HTTP 重播選項，可説明您解決 Web 應用程式的用戶端問題，尤其是身份驗證類型問題。
 
-使用您選擇的 web 偵錯工具。 在此範例中，我們將使用 Fiddler 來捕獲和分析 HTTP 或 HTTPs 流量，請遵循下列指示：
+使用您選擇的 Web 調試器。 在此示例中，我們將使用 Fiddler 捕獲和分析 HTTP 或 HTTPs 流量，請按照說明操作：
 
-1. 在 <https://www.telerik.com/download/fiddler>下載 Fiddler 工具。
+1. 下載 Fiddler 工具<https://www.telerik.com/download/fiddler>。
 
     > [!NOTE]
-    > 如果捕獲電腦已安裝 .NET 4，請選擇 [Fiddler4]。 否則，請選擇 [Fiddler2]。
+    > 如果捕獲電腦安裝了 .NET 4，請選擇 Fiddler4。 否則，請選擇 Fiddler2。
 
-2. 以滑鼠右鍵按一下安裝程式可執行檔，然後以系統管理員身分執行安裝。
+2. 按右鍵安裝程式可執行檔，並作為管理員運行以進行安裝。
 
-    ![疑難排解-會話-親和性-問題-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
+    ![疑難排解會話-關聯問題-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
-3. 當您開啟 Fiddler 時，它應該會自動開始捕捉流量（請注意，左下角的 [捕捉]）。 按 F12 開始或停止流量捕捉。
+3. 打開 Fiddler 時，它應自動開始捕獲流量（請注意左下角的捕獲）。 按 F12 可啟動或停止流量捕獲。
 
-    ![疑難排解-會話-親和性-問題-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
+    ![疑難排解會話-關聯問題-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. 最可能的情況是，您會對解密的 HTTPS 流量感興趣，而且您可以選取 **工具** > **Fiddler 選項**，然後核取 **解密 HTTPs 流量** 方塊，以啟用 HTTPs 解密。
+4. 最有可能的是，您將對解密的 HTTPS 流量感興趣，並且您可以通過選擇**工具** > **Fiddler 選項**來啟用 HTTPS 解密，並選中"解密**HTTPS 流量**"核取方塊。
 
-    ![疑難排解-會話-親和性-問題-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
+    ![疑難排解會話-關聯問題-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
-5. 在重現問題之前，您可以按一下 [ **X** ] （圖示） > [**全部移除**]，以移除先前不相關的會話： 
+5. 您可以通過按一下**X（** 圖示）>**刪除所有**會話（如下圖所示）來重現問題之前刪除以前的不相關的會話： 
 
-    ![疑難排解-會話-親和性-問題-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
+    ![疑難排解會話-關聯問題-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. 重現此問題之後，**請選取** 檔案 > **儲存** > **所有會話 ...** ，以儲存檔案以供審查 
+6. 重現問題後，通過選擇"**File** > **檔保存** > **所有會話"** 來保存檔以供審閱。 . 
 
-    ![疑難排解-會話親和性-問題-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
+    ![疑難排解會話-關聯問題-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
-7. 檢查並分析會話記錄，以判斷問題所在。
+7. 檢查並分析會話日誌以確定問題是什麼。
 
     例如：
 
-- **範例 A：** 您會找到從用戶端傳送要求的會話記錄檔，並移至應用程式閘道的公用 IP 位址，請按一下此記錄來查看詳細資料。  在右側，底部方塊中的資料是應用程式閘道傳回給用戶端的位置。 選取 [原始] 索引標籤，並判斷用戶端是否收到「**Set-Cookie： ARRAffinity =** *ARRAffinityValue*」。 如果沒有 cookie，就不會設定會話親和性，或應用程式閘道不會將 cookie 套用回用戶端。
+- **示例 A：** 您找到一個會話日誌，該會話日誌請求是從用戶端發送的，並且該日誌轉到應用程式閘道的公共 IP 位址，按一下此日誌以查看詳細資訊。  在右側，底部框中的資料是應用程式閘道返回到用戶端的內容。 選擇"RAW"選項卡並確定用戶端是否收到"**設置-Cookie：ARRAffinity=** *ARRAffinity值*"。 如果沒有 Cookie，則未設置會話相關性，或者應用程式閘道未將 Cookie 應用回用戶端。
 
    > [!NOTE]
-   > 這個 ARRAffinity 值是 cookie 識別碼，應用程式閘道為要傳送至特定後端伺服器的用戶端設定。
+   > 此 ARRAffinity 值是 Cookie-id，應用程式閘道為用戶端設置以發送到特定的後端伺服器。
 
-   ![疑難排解-會話-親和性-問題-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![疑難排解會話-關聯問題-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
-- **範例 B：** 下一個會話記錄檔後面接著上一個，就是用戶端回應應用程式閘道，這已設定 ARRAAFFINITY。 如果 ARRAffinity cookie 識別碼相符，封包應該傳送到先前使用的相同後端伺服器。 請檢查接下來幾行的 HTTP 通訊，以查看用戶端的 ARRAffinity cookie 是否已變更。
+- **示例 B：** 下一個會話日誌後跟前一個日誌是用戶端回應回應用程式閘道，該閘道已設置 ARRAAFFINITY。 如果 ARRAffinity Cookie-id 匹配，則資料包應發送到以前使用的同一後端伺服器。 檢查接下來的幾行 HTTP 通信，查看用戶端的 ARRAffinity Cookie 是否正在更改。
 
-   ![疑難排解-會話-親和性-問題-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
+   ![疑難排解會話-關聯問題-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
-> 針對相同的通訊會話，cookie 不應變更。 勾選右側的上方方塊，選取 [Cookie] 索引標籤，以查看用戶端是否使用 cookie，並將其傳回應用程式閘道。 如果不是，則用戶端瀏覽器不會保留及使用 cookie 進行交談。 有時，用戶端可能位於。
+> 對於同一通信會話，Cookie 不應更改。 選中右側的頂部框，選擇"Cookies"選項卡以查看用戶端是否使用 Cookie 並將其發送回應用程式閘道。 如果沒有，用戶端瀏覽器不會保留和使用 Cookie 進行對話。 有時，用戶端可能會撒謊。
 
  
 

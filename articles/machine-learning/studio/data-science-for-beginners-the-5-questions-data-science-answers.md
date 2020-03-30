@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204438"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>適用於初學者的資料科學影片 1：資料科學可以回答的 5 個問題
-從頂尖資料科學家所提供之「適用於初學者的資料科學」的五個簡短影片中快速認識資料科學。 無論您是對從事資料科學有興趣，或您是和資料科學家一起工作，這些影片都能為您提供基本但很有用的知識。
+從頂尖資料科學家所提供之「適用於初學者的資料科學」** 的五個簡短影片中快速認識資料科學。 無論您是對從事資料科學有興趣，或您是和資料科學家一起工作，這些影片都能為您提供基本但很有用的知識。
 
 第一段影片是關於資料科學可以回答何種問題。 若要充分運用這系列影片，請觀賞所有影片。 [瀏覽影片清單](#other-videos-in-this-series)
 <br>
@@ -28,16 +28,16 @@ ms.locfileid: "79204438"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
-是一個資料科學的快速簡介，總共大約 25 分鐘。 查看全部五支影片：
+** 是一個資料科學的快速簡介，總共大約 25 分鐘。 查看全部五支影片：
 
 * 影片 1：資料科學可以回答的 5 個問題
 * 影片 2： [您的資料已經可以進行資料科學了嗎？](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-* 影片3：[詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *（4分17秒）*
-* 影片4：[使用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *（7分42秒）*
-* 影片5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *（3分18秒）*
+* 影片 3：[詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* 影片 4：[利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+* 影片 5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>文字記錄：資料科學可以回答的 5 個問題
-大家好！ 歡迎觀賞「適用於初學者的資料科學」系列影片。
+大家好！ 歡迎觀賞「適用於初學者的資料科學」 ** 系列影片。
 
 資料科學可能令人卻步，因此我將在此處介紹基本概念，而且不會用到任何方程式或電腦程式設計術語。
 
@@ -45,7 +45,7 @@ ms.locfileid: "79204438"
 
 資料科學使用數字和名稱 (也就是類別或標籤) 來預測問題的答案。
 
-您可能會很驚訝，但是「資料科學只能回答下列五種問題」：
+您可能會很驚訝，但是「資料科學只能回答下列五種問題」 **：
 
 * 這是 A 或 B 嗎？
 * 這很奇怪嗎？
@@ -78,12 +78,12 @@ ms.locfileid: "79204438"
 
 ![異常偵測演算法：這很奇怪嗎？](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-如果您有一張信用卡，就已經從異常偵測中受益。 信用卡公司會分析您的購買模式，以便他們可以警告您可能發生詐騙事件。 「奇怪」的費用可能是在您通常不會去購物的商店中所產生的購物，或是購買異常昂貴的商品。
+如果您有信用卡，您已經受益于異常檢測。 信用卡公司會分析您的購買模式，以便他們可以警告您可能發生詐騙事件。 「奇怪」的費用可能是在您通常不會去購物的商店中所產生的購物，或是購買異常昂貴的商品。
 
 這個問題適用於很多方面。 例如：
 
 * 如果您的車輛上配有壓力計，您可能就想知道：這個壓力計的讀數正常嗎？
-* 如果您正在監視網際網路，您會想要知道：這是來自網際網路的訊息一般嗎？
+* 如果你正在監視互聯網，你會想知道：這條來自互聯網的消息是典型的嗎？
 
 異常偵測會標記未預期或異常的事件或行為。 它提供在何處尋找問題的線索。
 
@@ -102,7 +102,7 @@ ms.locfileid: "79204438"
 ## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>「問題 4︰這是如何組織的？」使用叢集演算法
 現在，最後這兩個問題屬於更進階的問題。
 
-有時您會想要了解資料集的結構 - 這是如何組織的？ 針對此問題，您沒有已經知道結果的範例。
+有時您會想要了解資料集的結構 - 這是如何組織的？ 對於這個問題，您沒有已經知道結果的示例。
 
 有很多方法可以梳理出資料結構。 其中一個方法就是叢集。 它會將資料正常分割為「團塊」，以便更容易進行解譯。 透過叢集，就不會有正確的答案。
 
@@ -135,5 +135,5 @@ ms.locfileid: "79204438"
 這就是「資料科學可以回答的 5 個問題」。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
+* [嘗試機器學習工作室（經典）的第一個資料科學實驗](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

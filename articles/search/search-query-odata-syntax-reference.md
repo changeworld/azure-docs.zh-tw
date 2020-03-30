@@ -1,7 +1,7 @@
 ---
-title: OData 運算式語法參考
+title: OData 運算式語法引用
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜尋查詢中 OData 運算式的正式文法和語法規格。
+description: Azure 認知搜索查詢中 OData 運算式的正式語法和語法規范。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,28 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793241"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 認知搜尋的 OData 運算式語法參考
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>用於 Azure 認知搜索的 OData 運算式語法引用
 
-Azure 認知搜尋會使用[OData 運算式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)做為整個 API 中的參數。 最常見的情況是，OData 運算式會用於 `$orderby` 和 `$filter` 參數。 這些運算式可能很複雜，其中包含多個子句、函數和運算子。 不過，即使是屬性路徑之類的簡單 OData 運算式，也會用於 Azure 認知搜尋 REST API 的許多部分。 例如，路徑運算式是用來參考 API 中所有位置的複雜欄位子欄位，例如在[建議工具](index-add-suggesters.md)中列出子欄位、[計分函數](index-add-scoring-profiles.md)、`$select` 參數，甚至是[在 Lucene 查詢中回復搜尋](query-lucene-syntax.md).
+Azure 認知搜索在整個 API 中使用[OData 運算式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作為參數。 最常見的是，OData 運算式用於`$orderby`和`$filter`參數。 這些運算式可能很複雜，包含多個子句、函數和運算子。 但是，Azure 認知搜索 REST API 的許多部分甚至使用簡單的 OData 運算式（如屬性路徑）。 例如，路徑運算式用於引用 API 中任何位置的複雜欄位的子欄位，例如在[建議器](index-add-suggesters.md)、[評分函數](index-add-scoring-profiles.md)、`$select`參數中列出子欄位時，甚至在[Lucene 查詢中輸入搜索](query-lucene-syntax.md)。
 
-本文說明所有使用正式文法的 OData 運算式形式。 另外還有一個[互動式圖表](#syntax-diagram)，可協助您以視覺化方式流覽文法。
+本文使用正式語法介紹所有這些形式的 OData 運算式。 還有一個[互動式圖](#syntax-diagram)，以説明直觀地探索語法。
 
-## <a name="formal-grammar"></a>正式文法
+## <a name="formal-grammar"></a>正式語法
 
-我們可以使用 EBNF （[延伸巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）文法來描述 Azure 認知搜尋所支援的 OData 語言子集。 規則會以「由上而下」列出，從最複雜的運算式開始，再將其細分為更基本的運算式。 最上方是對應至 Azure 認知搜尋之特定參數的文法規則 REST API：
+我們可以使用 EBNF（[擴展 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）語法描述 Azure 認知搜索支援的 OData 語言的子集。 規則按"自上而下"列出，從最複雜的運算式開始，然後將它們分解為更原始的運算式。 頂部是對應于 Azure 認知搜索 REST API 的特定參數的語法規則：
 
-- [`$filter`](search-query-odata-filter.md)，由 `filter_expression` 規則所定義。
-- [`$orderby`](search-query-odata-orderby.md)，由 `order_by_expression` 規則所定義。
-- [`$select`](search-query-odata-select.md)，由 `select_expression` 規則所定義。
-- 欄位路徑，由 `field_path` 規則所定義。 在整個 API 中都會使用欄位路徑。 它們可以參考索引的最上層欄位，或是具有一或多個[複雜欄位](search-howto-complex-data-types.md)祖系的子欄位。
+- [`$filter`](search-query-odata-filter.md)，由`filter_expression`規則定義。
+- [`$orderby`](search-query-odata-orderby.md)，由`order_by_expression`規則定義。
+- [`$select`](search-query-odata-select.md)，由`select_expression`規則定義。
+- 欄位路徑，`field_path`由規則定義。 欄位路徑在整個 API 中使用。 它們可以引用索引的頂級欄位，也可以引用具有一個或多個[複雜欄位](search-howto-complex-data-types.md)祖先的子欄位。
 
-在 EBNF 是可流覽的[語法圖表](https://en.wikipedia.org/wiki/Syntax_diagram)之後，可讓您以互動方式流覽文法和其規則之間的關聯性。
+EBNF 後是一個可流覽的[語法圖](https://en.wikipedia.org/wiki/Syntax_diagram)，允許您以對話模式探索語法及其規則之間的關係。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>語法圖表
+## <a name="syntax-diagram"></a>語法圖
 
-若要以視覺化方式探索 Azure 認知搜尋所支援的 OData 語言文法，請嘗試互動式語法圖：
+要直觀地流覽 Azure 認知搜索支援的 OData 語言語法，請嘗試互動式語法圖：
 
 > [!div class="nextstepaction"]
-> [Azure 認知搜尋的 OData 語法圖表](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure 認知搜索的 OData 語法圖](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
-- [Azure 認知搜尋中的篩選](search-filters.md)
-- [搜尋檔&#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 認知搜索中的篩選器](search-filters.md)
+- [搜索文檔&#40;Azure 認知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene 查詢語法](query-lucene-syntax.md)
-- [Azure 認知搜尋中的簡單查詢語法](query-simple-syntax.md)
+- [Azure 認知搜索中的簡單查詢語法](query-simple-syntax.md)

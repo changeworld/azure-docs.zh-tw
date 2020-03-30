@@ -1,76 +1,76 @@
 ---
-title: 評估新 Azure 原則的影響
-description: 瞭解在 Azure 環境中引進新的原則定義時，所要遵循的流程。
+title: 評估新的 Azure 策略的影響
+description: 瞭解在 Azure 環境中引入新策略定義時應遵循的過程。
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74463518"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>評估新 Azure 原則的影響
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>評估新的 Azure 策略的影響
 
-Azure 原則是一種功能強大的工具，可讓您管理 Azure 資源以符合商業標準，並滿足合規性需求。 當人員、進程或管線建立或更新資源時，Azure 原則審查要求。 當原則定義效果是[Append](./effects.md#deny)或[DeployIfNotExists](./effects.md#deployifnotexists)時，原則會改變要求或將其加入其中。 當原則定義效果為[Audit](./effects.md#audit)或[AuditIfNotExists](./effects.md#auditifnotexists)時，原則會導致建立活動記錄專案。 當原則定義的效果為 [[拒絕](./effects.md#deny)] 時，原則就會停止建立或修改要求。
+Azure 策略是管理 Azure 資源以符合業務標準和滿足合規性需求的強大工具。 當人員、流程或管道創建或更新資源時，Azure 策略會審核請求。 當策略定義效果為["追加"](./effects.md#deny)或["部署不存在"時](./effects.md#deployifnotexists)，策略將變更要求或添加到請求中。 當策略定義效果為["審核](./effects.md#audit)["或"審核不存在"時](./effects.md#auditifnotexists)，策略會導致創建活動日誌條目。 當策略定義效果為["拒絕"](./effects.md#deny)時，策略將停止請求的創建或更改。
 
-當您知道已正確定義原則時，這些結果就會完全符合預期。 不過，請務必驗證新的原則是否如預期運作，再允許它變更或封鎖工作。 驗證必須確保只會將預期的資源判定為不符合規範，而且不會在結果中不正確地包含符合規範的資源（也稱為「_假肯定_」）。
+當您知道策略定義正確時，這些結果完全如預期的那樣。 但是，在允許新策略更改或阻止工作之前，驗證新策略的工作方式非常重要。 驗證必須確保僅確定預期資源不符合要求，並且結果中未錯誤地包含任何符合要求的資源（稱為_誤報_）。
 
-驗證新原則定義的建議方法是遵循下列步驟：
+驗證新策略定義的推薦方法是按照以下步驟操作：
 
-- 緊密定義原則
-- 審核您現有的資源
-- Audit 新的或已更新的資源要求
-- 將原則部署至資源
+- 嚴格定義策略
+- 審核現有資源
+- 審核新的或更新的資源請求
+- 將策略部署到資源
 - 連續監視
 
-## <a name="tightly-define-your-policy"></a>緊密定義原則
+## <a name="tightly-define-your-policy"></a>嚴格定義策略
 
-請務必瞭解如何將商務原則實作為原則定義，以及 Azure 資源與其他 Azure 服務的關聯性。 此步驟是藉由[識別需求](../tutorials/create-custom-policy-definition.md#identify-requirements)和[判斷資源屬性](../tutorials/create-custom-policy-definition.md#determine-resource-properties)來完成。
-但請務必查看您的商務原則的狹窄定義以外的範圍。 您的原則狀態例如「所有虛擬機器必須 ...」嗎？ 使用 Vm 的其他 Azure 服務（例如 HDInsight 或 AKS）呢？ 定義原則時，我們必須考慮此原則如何影響其他服務所使用的資源。
+瞭解業務策略如何作為策略定義實現以及 Azure 資源與其他 Azure 服務的關係非常重要。 此步驟是通過[確定需求](../tutorials/create-custom-policy-definition.md#identify-requirements)並確定[資源屬性來實現的](../tutorials/create-custom-policy-definition.md#determine-resource-properties)。
+但是，除了業務策略的狹義定義之外，還要看到這一點也很重要。 例如，您的策略狀態是否"所有虛擬機器都必須..."？ 使用 VM 的其他 Azure 服務（如 HDInsight 或 AKS）如何？ 定義策略時，必須考慮此策略如何影響其他服務使用的資源。
 
-基於這個理由，您的原則定義應該嚴格地定義，並著重于資源和您需要評估相容性的屬性。
+因此，策略定義應同樣嚴格定義，並側重于需要評估的資源和屬性，以便盡可能符合性。
 
-## <a name="audit-existing-resources"></a>審核現有的資源
+## <a name="audit-existing-resources"></a>審核現有資源
 
-在想要使用新的原則定義來管理新的或更新的資源之前，最好先查看它如何評估有限的現有資源子集，例如測試資源群組。 在您的原則指派上使用[強制模式](./assignment-structure.md#enforcement-mode)
-_停_用（DoNotEnforce），以防止觸發或建立活動記錄專案的[效果](./effects.md)。
+在使用新的策略定義管理新資源或更新資源之前，最好瞭解它如何評估有限的現有資源子集，如測試資源組。 在策略分配上使用_禁用_（DoNot強制）[強制模式](./assignment-structure.md#enforcement-mode)
+，以防止創建觸發或創建活動日誌條目[。](./effects.md)
 
-此步驟讓您有機會評估現有資源上新原則的相容性結果，而不會影響工作流程。 檢查是否沒有符合規範的資源標示為不符合規範（_誤報_），而且所有您預期不相容的資源都會標示為正確。
-資源的初始子集如預期般驗證之後，就會慢慢地將評估擴展到所有現有的資源。
+此步驟為您提供了評估新有關現有資源策略的合規性結果的機會，而不會影響工作流。 檢查未將任何合規資源標記為不合規 （_誤報_）， 以及預期不合規的所有資源是否都已正確標記。
+資源的初始子集按預期驗證後，將評估緩慢擴展到所有現有資源。
 
-以這種方式評估現有的資源也可讓您在完整執行新原則之前，先補救不符合規範的資源。 這項清除作業可以手動完成，或在原則定義效果為_DeployIfNotExists_時透過[補救](../how-to/remediate-resources.md)工作進行。
+以這種方式評估現有資源也提供了在全面實施新政策之前修復不合規資源的機會。 如果策略定義效果為 _"DeployIfNot 存在"，_ 則可以手動或通過[修正任務](../how-to/remediate-resources.md)進行此清理。
 
-## <a name="audit-new-or-updated-resources"></a>審核新的或更新的資源
+## <a name="audit-new-or-updated-resources"></a>審核新資源或更新資源
 
-當您驗證新的原則定義在現有資源上正確報告後，就可以在建立或更新資源時查看原則的影響。 如果原則定義支援效果參數化，請使用[Audit](./effects.md#audit)。 此設定可讓您監視資源的建立和更新，以瞭解新的原則定義是否會針對不符合規範的資源觸發 Azure 活動記錄中的專案，而不會影響現有的工作或要求。
+驗證新策略定義正確報告現有資源後，是時候查看創建或更新資源時策略的影響了。 如果策略定義支援效果參數化，請使用[審核](./effects.md#audit)。 此配置允許您監視資源的創建和更新，以查看新策略定義是否觸發 Azure 活動日誌中不符合的資源的條目，而不會影響現有工作或請求。
 
-建議您更新並建立符合原則定義的新資源，以查看是否正確地在預期的情況之下觸發_審核_效果。 在不應受觸發_Audit_效果的新原則定義影響的資源要求的 lookout 上。
-這些受影響的資源是另一個_誤報_範例，必須先在原則定義中修正，才能進行完整的執行。
+建議更新和創建與您的策略定義匹配的新資源，以查看在預期時正確觸發_審核_效果。 留意不應受觸發_審核_效果的新策略定義影響的資源請求。
+這些受影響的資源是_誤報_的另一個示例，必須在完全實現之前在策略定義中修復。
 
-在此測試階段變更原則定義的情況下，建議您先使用現有資源的審核來開始驗證程式。 針對新的或更新的資源， _false 肯定_的原則定義變更可能也會影響現有的資源。
+如果策略定義在此測試階段發生更改，建議從審核現有資源開始驗證過程。 對新資源或更新資源進行_誤報_的策略定義的更改也可能對現有資源產生影響。
 
-## <a name="deploy-your-policy-to-resources"></a>將原則部署至資源
+## <a name="deploy-your-policy-to-resources"></a>將策略部署到資源
 
-當您使用現有的資源和新的或已更新的資源要求來完成新原則定義的驗證之後，就會開始執行原則的程式。 建議您先建立新原則定義的原則指派給所有資源的子集，例如資源群組。 驗證初始部署之後，將原則的範圍擴充為更廣泛且更廣泛的層級，例如訂用帳戶和管理群組。 這項擴充的達成方式是移除指派，並在目標範圍建立新的，直到它指派給新的原則定義所涵蓋的資源的完整範圍為止。
+使用現有資源以及新的或更新的資源請求完成新策略定義的驗證後，將開始實施該策略的過程。 建議首先為所有資源（如資源組）的子集創建新策略定義的策略分配。 驗證初始部署後，將策略的範圍擴展到更廣泛和更廣泛的級別，如訂閱和管理組。 此擴展是通過刪除分配並在目標作用域創建新分配來實現的，直到分配給新策略定義要涵蓋的全部資源範圍。
 
-在推出期間，如果資源位於應該豁免新原則定義的位置，請以下列其中一種方式解決這些問題：
+在推出期間，如果資源位於應不受新策略定義的限制，請通過以下方式之一解決這些問題：
 
-- 將原則定義更新為更明確，以減少非預期的影響
-- 變更原則指派的範圍（藉由移除並建立新的指派）
-- 將資源群組新增至原則指派的排除清單
+- 更新策略定義以更明確，以減少意外影響
+- 更改策略分配的範圍（通過刪除和創建新分配）
+- 將資源組添加到策略分配的排除清單中
 
-對範圍（層級或排除）所做的任何變更都應該完整驗證，並與您的安全性和合規性組織溝通，以確保涵蓋範圍沒有任何缺口。
+對範圍的任何更改（級別或排除）都應經過充分驗證，並與您的安全和合規性組織溝通，以確保在覆蓋範圍上沒有差距。
 
-## <a name="monitor-your-policy-and-compliance"></a>監視您的原則與合規性
+## <a name="monitor-your-policy-and-compliance"></a>監控您的政策和合規性
 
-執行和指派原則定義並不是最後一個步驟。 持續監視您新原則定義的資源[相容性](../how-to/get-compliance-data.md)層級，並設定適當的[Azure 監視器警示和通知](../../../azure-monitor/platform/alerts-overview.md)，以瞭解何時識別不符合規範的裝置。 此外，也建議您依照排程評估原則定義和相關指派，以驗證原則定義是否符合商務原則和合規性需求。 如果不再需要原則，則應該將其移除。 當基礎 Azure 資源演變並新增屬性和功能時，原則也需要及時更新。
+實施和分配策略定義不是最後一步。 持續監視資源符合新策略定義的[合規性](../how-to/get-compliance-data.md)級別，並設置相應的[Azure 監視器警報和通知](../../../azure-monitor/platform/alerts-overview.md)，以便識別不符合的設備。 還建議按計劃評估策略定義和相關分配，以驗證策略定義是否滿足業務策略和合規性需求。 如果不再需要，應刪除策略。 策略還需要隨著基礎 Azure 資源的發展以及添加新屬性和功能而不時更新。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[原則定義結構](./definition-structure.md)。
-- 瞭解[原則指派結構](./assignment-structure.md)。
-- 瞭解如何以程式設計[方式建立原則](../how-to/programmatically-create.md)。
-- 瞭解如何[取得合規性資料](../how-to/get-compliance-data.md)。
-- 瞭解如何[補救不符合規範的資源](../how-to/remediate-resources.md)。
-- 透過[使用 Azure 管理群組來組織資源](../../management-groups/overview.md)來檢閱何謂管理群組。
+- 瞭解[策略定義結構](./definition-structure.md)。
+- 瞭解[策略分配結構](./assignment-structure.md)。
+- 瞭解如何[以程式設計方式創建策略](../how-to/programmatically-create.md)。
+- 瞭解如何[獲取合規性資料](../how-to/get-compliance-data.md)。
+- 瞭解如何[修復不合規資源](../how-to/remediate-resources.md)。
+- 使用[Azure 管理組查看](../../management-groups/overview.md)管理組的內容。請組織資源。

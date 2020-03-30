@@ -1,6 +1,6 @@
 ---
-title: azcopy 作業顯示 |Microsoft Docs
-description: 本文提供 azcopy 作業 show 命令的參考資訊。
+title: 茲抄工作顯示 |微軟文檔
+description: 本文為 azcopy 作業顯示命令提供了參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,48 +9,48 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034127"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy 作業顯示
 
-顯示給定作業識別碼的詳細資訊。
+顯示給定作業 ID 的詳細資訊。
 
-## <a name="synopsis"></a>摘要
+## <a name="synopsis"></a>概要
 
-如果只有在沒有旗標的情況下提供作業識別碼，則會傳回作業的進度摘要。
+如果僅提供沒有標誌的作業 ID，則返回作業的進度摘要。
 
-當您執行此命令時所顯示的位元組計數和完成百分比，只會反映作業中完成的檔案。 它們不會反映部分完成的檔案。
+運行此命令時顯示的位元組計數和完成百分比僅反映作業中完成的檔。 它們不反映部分已完成的檔。
 
-如果已設定 `with-status` 旗標，則會顯示作業中具有指定值的傳輸清單。
+如果設置了`with-status`標誌，則將顯示具有給定值的作業中的傳輸清單。
 
 ```azcopy
 azcopy jobs show [jobID] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>相關的概念性文章
+## <a name="related-conceptual-articles"></a>相關概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 存儲傳輸資料](storage-use-azcopy-blobs.md)
 - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 |選項|描述|
 |--|--|
-|-h, --help|顯示 show 命令的說明內容。|
-|--with-status string|僅列出具有此狀態的作業傳輸，可用的值： [已啟動]、[成功]、[失敗]|
+|-h, --help|顯示顯示命令的説明內容。|
+|--帶狀態字串|僅列出具有此狀態的作業的轉移，可用值：已啟動、成功、失敗|
 
-## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
+## <a name="options-inherited-from-parent-commands"></a>從父命令繼承的選項
 
 |選項|描述|
 |---|---|
-|--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
-|--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
+|--蓋-mbps uint32|以每秒百萬位元表示傳輸速率上限。 逐時輸送量可能與上限略有不同。 如果此選項設置為零，或者省略此選項，則輸送量不會上限。|
+|--輸出類型字串|命令輸出的格式。 選項包括：文本，json。 預設值為"文本"。|
 
 ## <a name="see-also"></a>另請參閱
 

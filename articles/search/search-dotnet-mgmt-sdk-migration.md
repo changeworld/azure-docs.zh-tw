@@ -1,5 +1,5 @@
 ---
-title: 升級至 Azure 搜尋服務 .NET Management SDK 第2版
+title: 升級到 Azure 搜索 .NET 管理 SDK 版本 2
 titleSuffix: Azure Cognitive Search
 description: 從舊版升級至 Azure 搜尋服務 .NET 管理 SDK 第 2 版。 了解新功能與需要哪些程式碼變更。
 manager: nitinme
@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847543"
 ---
-# <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升級 Azure 搜尋服務 .NET Management SDK 的版本
+# <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升級 Azure 搜索 .NET 管理 SDK 的版本
 
 > [!Important]
-> 此內容仍在結構中。 3\.0 版的 Azure 搜尋服務 Management .NET SDK 可在 NuGet 上取得。 我們正致力於更新此遷移指南，以說明如何升級至新版本。 
+> 此內容仍在建設中。 Azure 搜索管理 .NET SDK 的版本 3.0 在 NuGet 上提供。 我們正在努力更新此遷移指南，以解釋如何升級到新版本。 
 >
 
 如果您使用 1.0.2 版或更舊版本的 [Azure 搜尋服務 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)，本文會協助您將應用程式升級為使用第 2 版。
@@ -33,7 +33,7 @@ Azure 搜尋服務 .NET 管理 SDK 第 2 版和舊版 SDK (特別是 2015-08-19 
 
 * `Services.CreateOrUpdate` 和其非同步版本現在會自動輪詢佈建 `SearchService`，且在服務佈建完成之前不會傳回。 這可讓您不必自行撰寫這類輪詢程式碼。
 * 如果您仍要手動輪詢服務佈建，則可以使用新的 `Services.BeginCreateOrUpdate` 方法，也可以使用它的其中一個非同步版本。
-* 新方法 `Services.Update` 和其非同步版本都已新增至 SDK。 這些方法會使用 HTTP PATCH 來支援累加式的服務更新。 例如，您現在可以將僅包含所需 `SearchService` 和 `partitionCount` 屬性 `replicaCount` 的執行個體傳遞給這些方法，來調整服務。 目前仍支援呼叫 `Services.Get`、修改傳回的 `SearchService`，並將其傳遞至 `Services.CreateOrUpdate` 的舊方法，但您不再必須使用此方法。 
+* 新方法 `Services.Update` 和其非同步版本都已新增至 SDK。 這些方法會使用 HTTP PATCH 來支援累加式的服務更新。 例如，您現在可以將僅包含所需 `partitionCount` 和 `replicaCount` 屬性 `SearchService` 的執行個體傳遞給這些方法，來調整服務。 目前仍支援呼叫 `Services.Get`、修改傳回的 `SearchService`，並將其傳遞至 `Services.CreateOrUpdate` 的舊方法，但您不再必須使用此方法。 
 
 <a name="UpgradeSteps"></a>
 
@@ -47,4 +47,4 @@ Azure 搜尋服務 .NET 管理 SDK 第 2 版和舊版 SDK (特別是 2015-08-19 
 一旦您已修正任何建置錯誤，您就可以變更您的應用程式以視需要利用新的功能。 [第 2 版的新功能](#WhatsNew)會詳述 SDK 的新功能。
 
 ## <a name="next-steps"></a>後續步驟
-歡迎您提供 SDK 的意見反應。 如果您遇到問題，請將您的問題張貼到[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必使用 "[search]" 標示您的問題標題。
+歡迎您提供 SDK 的意見反應。 如果您遇到問題，請將您的問題發佈到[堆疊溢位](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請確保使用"[搜索]"標記您的問題標題。

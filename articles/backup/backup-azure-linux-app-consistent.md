@@ -1,14 +1,14 @@
 ---
-title: Linux Vm 的應用程式一致備份
+title: Linux VM 的應用程式一致性備份
 description: 在 Azure 建立 Linux 虛擬機器的應用程式一致備份。 本文說明如何設定指令碼架構，備份以 Azure 部署的 Linux VM。 本文另包含疑難排解資訊。
 ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173014"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的應用程式一致備份
@@ -19,7 +19,7 @@ ms.locfileid: "74173014"
 
 此架構讓您在擷取 VM 快照集時可選擇執行自訂前置指令碼和後置指令碼。 前置指令碼會在您擷取 VM 快照集的前一刻執行，而後置指令碼會緊接在您擷取 VM 快照集之後執行。 前置指令碼和後置指令碼讓您在擷取 VM 快照集時，能夠彈性地控制應用程式與環境。
 
-前置指令碼會叫用原生應用程式 API 以停止 IO，並將記憶體中的內容排清到磁碟。 這些動作能確保快照集符合應用程式一致性。 後置腳本使用原生應用程式 Api 來解除凍結 IOs，讓應用程式能夠在 VM 快照集後繼續正常作業。
+前置指令碼會叫用原生應用程式 API 以停止 IO，並將記憶體中的內容排清到磁碟。 這些動作能確保快照集符合應用程式一致性。 腳本後使用本機應用程式 API 解凍 I，從而使應用程式能夠在 VM 快照後恢復正常操作。
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>設定前指令碼和後置指令碼的步驟
 
@@ -42,8 +42,8 @@ ms.locfileid: "74173014"
    > 如果需求不符，指令碼將不會執行，因而導致檔案系統毀損和不一致的備份。
    >
 
-5. 如以下所述設定 VMSnapshotScriptPluginConfig.json：
-    - **pluginName**：將此欄位保留原狀，否則您的指令碼可能無法如預期般運作。
+5. 如以下所述設定 VMSnapshotScriptPluginConfig.json****：
+    - **外掛程式名稱**：保持此欄位原樣，否則腳本可能無法按預期工作。
 
     - **preScriptLocation** ：在要備份的 VM 上提供前置指令碼完整路徑。
 
@@ -57,13 +57,13 @@ ms.locfileid: "74173014"
 
     - **postScriptNoOfRetries**：設定在終止前如果發生任何錯誤，應重試後置指令碼的次數。 零表示只嘗試一次，若系統故障則不重試。
 
-    - **timeoutInSeconds**：指定前置腳本和後置腳本的個別超時（最大值可以是1800）。
+    - **超時In秒**：為預腳本和後腳本指定單個超時（最大值可以是 1800）。
 
-    - **continueBackupOnFailure**：如果您在前置或後置指令碼失敗時想要 Azure 備份回復使用檔案系統一致/損毀一致備份，請將這個值設定為 true。 若將此設定為 false，則當指令碼失敗會使備份失敗 (但當您有無論此設定為何都會回復為損毁一致備份的單磁碟 VM 時除外)。
+    - **continueBackupOnFailure**：如果您在前置或後置指令碼失敗時想要 Azure 備份回復使用檔案系統一致/損毀一致備份，請將這個值設定為 true****。 若將此設定為 false****，則當指令碼失敗會使備份失敗 (但當您有無論此設定為何都會回復為損毁一致備份的單磁碟 VM 時除外)。
 
-    - **fsFreezeEnabled**：指定當您在擷取 VM 快照時是否應該呼叫 Linux fsfreeze，以確保檔案系統一致性。 我們建議您將這個設定保持為 true，除非您的應用程式在已停用的 fsfreeze 上具有相依性。
+    - **fsFreezeEnabled**：指定當您在擷取 VM 快照時是否應該呼叫 Linux fsfreeze，以確保檔案系統一致性。 我們建議您將這個設定保持為 true****，除非您的應用程式在已停用的 fsfreeze 上具有相依性。
 
-    - **ScriptsExecutionPollTimeSeconds**：設定在每次輪詢與腳本執行之間，延伸模組必須進入睡眠狀態的時間。 例如，如果值為2，延伸模組會檢查前置/後置腳本執行是否每2秒完成一次。 其可接受的最小和最大值分別為1和5。 此值應嚴格為整數。
+    - **腳本執行時間秒**：設置擴展在每個輪詢到腳本執行之間的睡眠時間。 例如，如果值為 2，則擴展將檢查腳本執行前/後是否每 2 秒完成一次。 它可以採取的最小值和最大值分別為 1 和 5。 該值應嚴格為整數。
 
 6. 此指令碼架構現在已設定完成。 如果已經設定 VM 備份，則下次備份會叫用指令碼，並觸發應用程式一致備份。 如果未設定 VM 備份，則使用[將 Azure 虛擬機器備份到復原服務保存庫](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)來設定。
 
@@ -75,14 +75,14 @@ ms.locfileid: "74173014"
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |前置指令碼傳回錯誤，所以備份可能無法應用程式一致。| 查看您指令碼的失敗記錄來修正此問題。|  
 |Post-ScriptExecutionFailed |後置指令碼傳回可能會影響應用程式狀態的錯誤。 |查看您指令碼的失敗記錄並檢查應用程式狀態來修正此問題。 |
-| Pre-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json 組態檔中指定的位置找不到前置指令碼。 |確定前置指令碼會出現在組態檔中所指定的路徑，以確保應用程式一致的備份。|
-| Post-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json 組態檔中指定的位置找不到後置指令碼。 |確定後置指令碼會出現在組態檔中所指定的路徑，以確保應用程式一致的備份。|
-| IncorrectPluginhostFile |VmSnapshotLinux 延伸模組隨附的 Pluginhost 檔案已損毀，因此前置指令碼和後置指令碼無法執行，且備份為應用程式不一致。| 解除安裝 VmSnapshotLinux 延伸模組，它會自動與下一次備份重新安裝以解決問題。 |
-| IncorrectJSONConfigFile | VMSnapshotScriptPluginConfig.json 檔不正確，所以前置指令碼和後置指令碼無法執行，且備份為應用程式不一致。 | 從 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下載副本並再設定一次。 |
+| Pre-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json**** 組態檔中指定的位置找不到前置指令碼。 |確定前置指令碼會出現在組態檔中所指定的路徑，以確保應用程式一致的備份。|
+| Post-ScriptNotFound |在 VMSnapshotScriptPluginConfig.json**** 組態檔中指定的位置找不到後置指令碼。 |確定後置指令碼會出現在組態檔中所指定的路徑，以確保應用程式一致的備份。|
+| IncorrectPluginhostFile |VmSnapshotLinux 延伸模組隨附的 Pluginhost**** 檔案已損毀，因此前置指令碼和後置指令碼無法執行，且備份為應用程式不一致。| 解除安裝 VmSnapshotLinux**** 延伸模組，它會自動與下一次備份重新安裝以解決問題。 |
+| IncorrectJSONConfigFile | VMSnapshotScriptPluginConfig.json**** 檔不正確，所以前置指令碼和後置指令碼無法執行，且備份為應用程式不一致。 | 從 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下載副本並再設定一次。 |
 | InsufficientPermissionforPre-Script | 針對執行指令碼，「根」使用者應該是檔案擁有者，且檔案應具有 “700” 權限 (也就是應只有擁有者具有「讀取」、「寫入」和「執行」權限)。 | 請確定「根」使用者是指令碼檔案的「擁有者」，且只有擁有者具有「讀取」、「寫入」和「執行」權限。 |
 | InsufficientPermissionforPost-Script | 針對執行指令碼，根使用者應該是檔案擁有者，且檔案應具有 “700” 權限 (也就是應只有擁有者具有「讀取」、「寫入」和「執行」權限)。 | 請確定「根」使用者是指令碼檔案的「擁有者」，且只有擁有者具有「讀取」、「寫入」和「執行」權限。 |
-| Pre-ScriptTimeout | 執行應用程式一致備份前置指令碼逾時。 | 請檢查指令碼，並增加位於 /etc/azure 的 VMSnapshotScriptPluginConfig.json 檔案中的逾時。 |
-| Post-ScriptTimeout | 執行應用程式一致備份後置指令碼逾時。 | 請檢查指令碼，並增加位於 /etc/azure 的 VMSnapshotScriptPluginConfig.json 檔案中的逾時。 |
+| Pre-ScriptTimeout | 執行應用程式一致備份前置指令碼逾時。 | 請檢查指令碼，並增加位於 /etc/azure 的 VMSnapshotScriptPluginConfig.json 檔案中的逾時********。 |
+| Post-ScriptTimeout | 執行應用程式一致備份後置指令碼逾時。 | 請檢查指令碼，並增加位於 /etc/azure 的 VMSnapshotScriptPluginConfig.json 檔案中的逾時********。 |
 
 ## <a name="next-steps"></a>後續步驟
 

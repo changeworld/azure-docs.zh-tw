@@ -1,5 +1,5 @@
 ---
-title: 針對活動記錄中遺漏的資料進行疑難排解 |Microsoft Docs
+title: 排除活動日誌中缺少的資料的故障 |微軟文檔
 description: 為您提供 Azure Active Directory 活動記錄中遺漏資料的解決方案。
 services: active-directory
 documentationcenter: ''
@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014280"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>對 Azure Active Directory 活動記錄中的遺漏資料進行疑難排解 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>我在 Azure 入口網站中找不到近期動作的稽核記錄
 
-### <a name="symptoms"></a>徵兆
+### <a name="symptoms"></a>徵狀
 
 我在 Azure 入口網站中執行某些動作，並預期要在 `Activity logs > Audit Logs` 刀鋒視窗中查看這些動作的稽核記錄，但卻找不到。
 
@@ -38,7 +38,7 @@ ms.locfileid: "74014280"
 
 動作不會立即出現在活動記錄中。 下表列舉出我們活動記錄的延遲數據。 
 
-| 報告 | &nbsp; | 延遲 (P95) | 延遲 (P99) |
+| Report | &nbsp; | 延遲 (P95) | 延遲 (P99) |
 |--------|--------|---------------|---------------|
 | 目錄稽核 | &nbsp; | 2 分鐘 | 5 分鐘 |
 | 登入活動 | &nbsp; | 2 分鐘 | 5 分鐘 | 
@@ -49,7 +49,7 @@ ms.locfileid: "74014280"
 
 ## <a name="i-cant-find-recent-user-sign-ins-in-the-azure-active-directory-sign-ins-activity-log"></a>在 Azure Active Directory 登入活動記錄中找不到最近的使用者登入
 
-### <a name="symptoms"></a>徵兆
+### <a name="symptoms"></a>徵狀
 
 我最近曾登入 Azure 入口網站，而預期應會在 `Activity logs > Sign-ins` 刀鋒視窗中看到這些動作的登入記錄，但卻找不到。
 
@@ -59,7 +59,7 @@ ms.locfileid: "74014280"
 
 動作不會立即出現在活動記錄中。 下表列舉出我們活動記錄的延遲數據。 
 
-| 報告 | &nbsp; | 延遲 (P95) | 延遲 (P99) |
+| Report | &nbsp; | 延遲 (P95) | 延遲 (P99) |
 |--------|--------|---------------|---------------|
 | 目錄稽核 | &nbsp; | 2 分鐘 | 5 分鐘 |
 | 登入活動 | &nbsp; | 2 分鐘 | 5 分鐘 | 
@@ -70,7 +70,7 @@ ms.locfileid: "74014280"
 
 ## <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>我無法在 Azure 入口網站中檢視超過 30 天的報告資料
 
-### <a name="symptoms"></a>徵兆
+### <a name="symptoms"></a>徵狀
 
 我無法從 Azure 入口網站檢視超過 30 天的登入和稽核資料。 原因為何？ 
 
@@ -80,7 +80,7 @@ ms.locfileid: "74014280"
 
 視您的授權而定，Azure Active Directory 動作會儲存下列期間的活動報告︰
 
-| 報告           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Report           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | 目錄稽核  | &nbsp; |   7 天     | 30 天             | 30 天             |
 | 登入活動 | &nbsp; | 無法使用。 您可以從個別使用者設定檔刀鋒視窗中存取您自己 7 天內的登入資料 | 30 天 | 30 天             |
@@ -94,6 +94,6 @@ ms.locfileid: "74014280"
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure AD 報告保留](reference-reports-data-retention.md)。
-* [Azure Active Directory 報告延遲](reference-reports-latencies.md)。
-* [Azure Active Directory 報告常見問題集](reports-faq.md)。
+* [Azure 活動目錄報告延遲](reference-reports-latencies.md)。
+* [Azure 活動目錄報告常見問題 。](reports-faq.md)
 

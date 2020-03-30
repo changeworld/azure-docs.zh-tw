@@ -1,5 +1,5 @@
 ---
-title: 使用C++用戶端程式庫列出 Azure 儲存體資源
+title: 使用C++用戶端庫列出 Azure 存儲資源
 description: 了解如何使用 Microsoft Azure Storage Client Library for C++ 中的列表 API 來列舉容器、Blob、佇列、資料表和實體。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
 ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74269456"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>以 C++ 列出 Azure 儲存體資源
@@ -34,7 +34,7 @@ Storage Client Library 提供各種方法來列出或查詢 Azure 儲存體中�
 
 ## <a name="asynchronous-versus-synchronous"></a>同步與非同步
 
-因為 Storage Client Library for C++ 的建置基礎為 [C++ REST 程式庫](https://github.com/Microsoft/cpprestsdk)，所以我們原本就使用 [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) 支援非同步作業。 例如︰
+因為 Storage Client Library for C++ 的建置基礎為 [C++ REST 程式庫](https://github.com/Microsoft/cpprestsdk)，所以我們原本就使用 [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) 支援非同步作業。 例如：
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -60,7 +60,7 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 分段列表作業的回應包含：
 
 * *_segment*，其中包含針對列表 API 的單一呼叫所傳回的結果集。
-* continuation_token，其會傳遞給下一個呼叫，以便取得下一頁的結果。 沒有可傳回的結果時，接續 Token 為 null。
+* continuation_token**，其會傳遞給下一個呼叫，以便取得下一頁的結果。 沒有可傳回的結果時，接續 Token 為 null。
 
 例如，列出容器中所有 Blob 的典型呼叫可能如下列程式碼片段所示。 此程式碼可在我們的 [範例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中取得：
 
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-請注意，一個頁面傳回的結果數目可由每個 API 的多載中的參數 max_results 所控制，例如：
+請注意，一個頁面傳回的結果數目可由每個 API 的多載中的參數 max_results** 所控制，例如：
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -95,9 +95,9 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-如果您未指定 max_results 參數，則會在單一頁面中傳回多達 5000 筆結果的預設最大值。
+如果您未指定 max_results** 參數，則會在單一頁面中傳回多達 5000 筆結果的預設最大值。
 
-也請注意，對 Azure 資料表儲存體的查詢可能不會傳回任何記錄，或傳回少於您指定之 max_results 參數值的記錄 (即使接續 Token 不是空的)。 其中一個原因可能是查詢無法在五秒內完成。 只要接續 Token 不是空的，查詢就應該繼續進行，而您的程式碼不得假設區段結果的大小。
+也請注意，對 Azure 資料表儲存體的查詢可能不會傳回任何記錄，或傳回少於您指定之 max_results** 參數值的記錄 (即使接續 Token 不是空的)。 其中一個原因可能是查詢無法在五秒內完成。 只要接續 Token 不是空的，查詢就應該繼續進行，而您的程式碼不得假設區段結果的大小。
 
 大多數案例的建議編碼模式為分段列表，可以提供明確的列表或查詢進度，以及服務回應每個要求的方式。 尤其是 C++ 應用程式或服務，列表進度的較低層級控制項有助於控制記憶體和效能。
 
@@ -143,7 +143,7 @@ do
 } while (!token.empty());
 ```
 
-指定區段的 max_results 參數，即可平衡要求數目與記憶體使用量，以符合您的應用程式的效能考量。
+指定區段的 max_results** 參數，即可平衡要求數目與記憶體使用量，以符合您的應用程式的效能考量。
 
 此外，如果您使用分段列表 API，但以「窮盡」樣式將資料儲存在本機集合中，也強烈建議您重整您的程式碼，以便仔細地將資料大規模儲存在本機集合中。
 
@@ -197,8 +197,8 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 如需 Azure Storage Client Library for C++ 的詳細資訊，請參閱下列資源。
 
 * [如何使用 C++ 的 Blob 儲存體](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [如何使用 C++ 的資料表儲存體](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [如何使用C++表存儲](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [如何使用 C++ 的佇列儲存體](../storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage Client Library for C++ API 文件。](https://azure.github.io/azure-storage-cpp/)
 * [Azure 儲存體團隊部落格](https://blogs.msdn.com/b/windowsazurestorage/)
-* [Azure 儲存體文件](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure 存儲文檔](https://azure.microsoft.com/documentation/services/storage/)

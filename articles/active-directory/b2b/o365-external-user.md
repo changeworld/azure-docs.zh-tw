@@ -1,5 +1,5 @@
 ---
-title: Office 365 外部共用和 B2B 共同作業-Azure AD
+title: Office 365 外部共用和 B2B 協作 - Azure AD
 description: 討論如何使用 O365 和 Azure Active Directory B2B 共同作業來與外部夥伴共用資源。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272278"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 外部共用與 Azure Active Directory B2B 共同作業
@@ -34,7 +34,7 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 
 - 授權需求不同。 對於每個付費的 Azure AD 授權，您最多可讓 5 位來賓使用者存取您的付費 Azure AD 功能。 若要深入了解授權，請參閱 [Azure AD B2B 授權](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)以及[＜SharePoint Online 外部共用概觀＞中的「什麼是外部使用者？」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share)。
 
-若要使用 Azure AD B2B 共同作業來管理 OneDrive/SharePoint Online 中的外部共用，請將 OneDrive/SharePoint Online 外部共用設定設為 [只允許與您組織目錄中現有的外部使用者共用]。 使用者可以移至外部共用網站，並從系統管理員新增的外部共同作業者之間選擇。 系統管理員可以透過 B2B 共同作業邀請 API 來新增外部共同作業者。
+若要使用 Azure AD B2B 共同作業來管理 OneDrive/SharePoint Online 中的外部共用，請將 OneDrive/SharePoint Online 外部共用設定設為 [只允許與您組織目錄中現有的外部使用者共用]****。 使用者可以移至外部共用網站，並從系統管理員新增的外部共同作業者之間選擇。 系統管理員可以透過 B2B 共同作業邀請 API 來新增外部共同作業者。
 
 
 ![OneDrive/SharePoint Online 外部共用設定](media/o365-external-user/odsp-sharing-setting.png)
@@ -48,5 +48,5 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 * [何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
 * [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
 * [委派 B2B 共同作業邀請](delegate-invitations.md)
-* [動態群組和 B2B 共同作業](use-dynamic-groups.md)
-* [疑難排解 Azure Active Directory B2B 共同作業](troubleshoot.md)
+* [動態群組與 B2B 共同作業](use-dynamic-groups.md)
+* [針對 Azure Active Directory B2B 共同作業問題進行疑難排解](troubleshoot.md)

@@ -1,63 +1,63 @@
 ---
 title: 使用 Azure 監視器監視 Azure 備份
-description: 使用 Azure 監視器監視 Azure 備份工作負載並建立自訂警示。
+description: 監視 Azure 備份工作負荷，並使用 Azure 監視器創建自訂警報。
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 547cef66be9902468f4e2755c31e5f586eccad5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79459509"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure 監視器進行大規模監視
 
-Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backup-azure-monitoring-built-in-monitor.md)。 這些功能不需要任何額外的管理基礎結構即可供使用。 但在下列案例中，這項內建服務會受到限制：
+Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backup-azure-monitoring-built-in-monitor.md)。 這些功能不需要任何額外的管理基礎結構即可供使用。 但是，在以下情況下，這種內置服務是有限的：
 
-- 如果您在訂用帳戶之間監視多個復原服務保存庫中的資料
-- 如果慣用的通知通道*不*是電子郵件
-- 如果使用者想要更多案例的警示
-- 如果您想要從 Azure 中的內部部署元件（例如 System Center Data Protection Manager）中查看資訊，而入口網站未顯示在 [[**備份作業**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)] 或 [[**備份警示**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)] 中
+- 如果監視來自多個恢復服務保存庫的資料（跨訂閱）
+- 如果首選通知通道*不是*電子郵件
+- 如果使用者希望警報更多方案
+- 如果要查看來自本機群組件（如 Azure 中的系統中心資料保護管理器）的資訊，門戶不會在[**備份作業**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)或[**備份警報中**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)顯示這些資訊
 
-## <a name="using-log-analytics-workspace"></a>使用 Log Analytics 工作區
+## <a name="using-log-analytics-workspace"></a>使用日誌分析工作區
 
-### <a name="create-alerts-by-using-log-analytics"></a>使用 Log Analytics 建立警示
+### <a name="create-alerts-by-using-log-analytics"></a>使用日誌分析創建警報
 
-在 Azure 監視器中，您可以在 Log Analytics 工作區中建立自己的警示。 在工作區中，您可以使用*Azure 動作群組*來選取您慣用的通知機制。
+在 Azure 監視器中，可以在日誌分析工作區中創建自己的警報。 在工作區中，使用*Azure 操作組*選擇首選通知機制。
 
 > [!IMPORTANT]
-> 如需建立此查詢之成本的相關資訊，請參閱[Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
+> 有關創建此查詢的成本的資訊，請參閱 Azure[監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
-開啟 Log Analytics 工作區的 [**記錄**] 區段，並撰寫查詢您自己的記錄。 當您選取 [**新增警示規則**] 時，[Azure 監視器警示建立] 頁面隨即開啟，如下圖所示。
+打開日誌分析工作區的**日誌**部分，並為您自己的日誌創建查詢。 選擇 **"新警報規則**"時，將打開 Azure 監視器警報創建頁，如下圖所示。
 
-![在 Log Analytics 工作區中建立警示](media/backup-azure-monitoring-laworkspace/custom-alert.png)
+![在日誌分析工作區中創建警報](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-這裡的資源已標示為 Log Analytics 工作區，並提供動作群組整合。
+此處，資源已標記為日誌分析工作區，並提供操作組集成。
 
-![Log Analytics 警示-建立頁面](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
+![日誌分析警報創建頁面](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
-#### <a name="alert-condition"></a>警示條件
+#### <a name="alert-condition"></a>警示準則
 
-警示的定義特性是它的觸發條件。 選取 [**條件**]，以在 [**記錄**] 頁面上自動載入 Kusto 查詢，如下圖所示。 您可以在這裡編輯條件，以符合您的需求。 如需詳細資訊，請參閱[範例 Kusto 查詢](#sample-kusto-queries)。
+警報的定義特徵是其觸發條件。 選擇 **"條件**"可在 **"日誌"** 頁上自動載入 Kusto 查詢，如下圖所示。 在這裡，您可以編輯條件以滿足您的需要。 有關詳細資訊，請參閱示例[Kusto 查詢](#sample-kusto-queries)。
 
-![設定警示條件](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
+![設置警示準則](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-如有必要，您可以編輯 Kusto 查詢。 選擇 [閾值]、[期間] 和 [頻率]。 閾值會決定何時會引發警示。 期間是執行查詢的時間範圍。 例如，如果臨界值大於0，則期間為5分鐘，而頻率為5分鐘，則規則會每隔5分鐘執行一次查詢，並檢查前5分鐘。 如果結果數目大於0，您就會收到所選動作群組的通知。
+如有必要，可以編輯 Kusto 查詢。 選擇閾值、週期和頻率。 閾值確定何時引發警報。 期間是執行查詢的時間視窗。 例如，如果閾值大於 0，則週期為 5 分鐘，頻率為 5 分鐘，則規則每 5 分鐘運行一次查詢，查看前 5 分鐘。 如果結果數大於 0，則通過選定的操作組通知您。
 
-#### <a name="alert-action-groups"></a>警示動作群組
+#### <a name="alert-action-groups"></a>警報操作組
 
-使用動作群組來指定通知通道。 若要查看可用的通知機制，請在 [**動作群組**] 底下，選取 [**新建**]。
+使用操作組指定通知通道。 要查看可用的通知機制，請在 **"操作組"** 下，選擇 **"創建新**"。
 
-![[新增動作群組] 視窗中的可用通知機制](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
+!["添加操作組"視窗中的可用通知機制](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
 
-您可以單獨滿足 Log Analytics 中的所有警示和監視需求，也可以使用 Log Analytics 來補充內建通知。
+您可以僅滿足日誌分析中的所有警報和監視要求，也可以使用日誌分析來補充內置通知。
 
-如需詳細資訊，請參閱[使用 Azure 監視器建立、查看和記錄管理警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)和[在 Azure 入口網站中建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+有關詳細資訊，請參閱使用[Azure 監視器創建、查看和管理日誌警報](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)，並在 Azure[門戶中創建和管理操作組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
 
-### <a name="sample-kusto-queries"></a>範例 Kusto 查詢
+### <a name="sample-kusto-queries"></a>庫斯托查詢示例
 
-預設圖形會提供您可在其中建立警示之基本案例的 Kusto 查詢。 您也可以修改查詢，以取得您想要收到警示的資料。 在 [**記錄**] 頁面中貼上下列範例 Kusto 查詢，然後在查詢上建立警示：
+預設圖形為您提供庫sto查詢的基本方案，您可以在其中生成警報。 您還可以修改查詢以獲取有關要收到警報的資料。 在 **"日誌"** 頁中粘貼以下示例 Kusto 查詢，然後在查詢上創建警報：
 
 - 所有成功的備份作業
 
@@ -107,7 +107,7 @@ Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backu
     on BackupItemUniqueId
     ````
 
-- 所有成功的 Azure 備份代理程式作業
+- 所有成功的 Azure 備份代理作業
 
     ````Kusto
     AddonAzureBackupJobs
@@ -123,7 +123,7 @@ Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backu
     on BackupItemUniqueId
     ````
 
-- 每個備份專案使用的備份儲存體
+- 每個備份專案消耗的備份存儲
 
     ````Kusto
     CoreAzureBackup
@@ -145,52 +145,52 @@ Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backu
 
 ### <a name="diagnostic-data-update-frequency"></a>診斷資料更新頻率
 
-保存庫中的診斷資料會抽出至 Log Analytics 工作區，並有一些延遲。 每個事件從復原服務保存庫推送後的*20 到30分鐘*都會抵達 Log Analytics 工作區。 以下是延遲的進一步詳細資料：
+從保存庫的診斷資料被泵送到日誌分析工作區，並帶有一些滯後性。 每個事件在從恢復服務保存庫推送*20 到 30 分鐘後*到達日誌分析工作區。 以下是有關延遲的進一步詳細資訊：
 
-- 在所有解決方案中，備份服務的內建警示會在建立後立即推送。 因此，它們通常會在20到30分鐘後出現在 Log Analytics 工作區中。
-- 在所有解決方案中，隨選備份作業和還原作業會在*完成*時立即推送。
-- 對於 SQL 備份以外的所有解決方案，排程的備份作業會在*完成*時立即推送。
-- 針對 SQL 備份，因為記錄備份可能每隔15分鐘發生一次，所以所有已完成的排程備份作業（包括記錄）的資訊每隔6小時會進行批次處理和推送。
-- 在所有解決方案中，其他資訊（例如備份專案、原則、復原點、儲存體等等）都會一次推送至少*一次。*
-- 備份設定的變更（例如變更原則或編輯原則）會觸發所有相關備份資訊的推送。
+- 在所有解決方案中，備份服務的內置警報在創建後立即推送。 因此，它們通常在 20 到 30 分鐘後顯示在日誌分析工作區中。
+- 在所有解決方案中，按需備份作業和恢復作業一*旦完成*，就會推送。
+- 對於除 SQL 備份之外的所有解決方案，計畫備份作業在完成後立即推送 *。*
+- 對於 SQL 備份，由於記錄備份可以每 15 分鐘進行一次，因此每 6 小時批次處理並推送所有已完成的計畫備份作業（包括日誌）的資訊。
+- 在所有解決方案中，其他資訊（如備份項、策略、復原點、存儲等）每天至少推送*一次。*
+- 備份配置的更改（如更改策略或編輯策略）會觸發所有相關備份資訊的推送。
 
-## <a name="using-the-recovery-services-vaults-activity-logs"></a>使用復原服務保存庫的活動記錄
+## <a name="using-the-recovery-services-vaults-activity-logs"></a>使用恢復服務保存庫的活動日誌
 
 > [!CAUTION]
-> 下列步驟只適用于*AZURE VM 備份。* 您無法將這些步驟用於 Azure 備份代理程式、Azure 中的 SQL 備份或 Azure 檔案儲存體等解決方案。
+> 以下步驟僅適用于*Azure VM 備份。* 不能將這些步驟用於解決方案，如 Azure 備份代理、Azure 中的 SQL 備份或 Azure 檔。
 
-您也可以使用活動記錄來取得事件的通知，例如備份成功。 若要開始，請遵循下列步驟：
+您還可以使用活動日誌來獲取有關備份成功等事件的通知。 首先，請按照以下步驟操作：
 
 1. 登入 Azure 入口網站。
-1. 開啟相關的復原服務保存庫。
-1. 在保存庫的 [屬性] 中，開啟 [**活動記錄**] 區段。
+1. 打開相關的恢復服務保存庫。
+1. 在保存庫的屬性中，打開**活動日誌**部分。
 
-若要識別適當的記錄並建立警示：
+要標識適當的日誌並創建警報，請進行以下工作：
 
-1. 藉由套用下圖所示的篩選器，確認您收到成功備份的活動記錄。 視需要變更**Timespan**值，以查看記錄。
+1. 通過應用下圖中顯示的篩選器，驗證您正在接收成功備份的活動日誌。 根據需要更改**時間跨度**值以查看記錄。
 
-   ![篩選以尋找 Azure VM 備份的活動記錄](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
+   ![篩選以查找 Azure VM 備份的活動日誌](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. 選取作業名稱以查看相關的詳細資料。
-1. 選取 [**新增警示規則**] 以開啟 [**建立規則**] 頁面。
-1. 遵循[使用 Azure 監視器建立、查看和管理活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)中的步驟來建立警示。
+1. 選擇操作名稱以查看相關詳細資訊。
+1. 選擇 **"新建警報規則**"以打開 **"創建規則"** 頁。
+1. 使用 Azure 監視器，按照[創建、查看和管理活動日誌警報](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)中的步驟創建警報。
 
    ![新增警示規則](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-這裡的資源是復原服務保存庫本身。 針對您想要透過活動記錄收到通知的所有保存庫，重複相同的步驟。 條件不會有閾值、期間或頻率，因為此警示是以事件為基礎。 一旦產生相關的活動記錄檔，就會引發警示。
+此處的資源是恢復服務保存庫本身。 對要通過活動日誌通知的所有保存庫重複相同的步驟。 條件沒有閾值、週期或頻率，因為此警報基於事件。 生成相關活動日誌後，將立即發出警報。
 
-## <a name="using-log-analytics-to-monitor-at-scale"></a>使用 Log Analytics 大規模監視
+## <a name="using-log-analytics-to-monitor-at-scale"></a>使用日誌分析進行大規模監視
 
-您可以在 Azure 監視器中，從活動記錄和 Log Analytics 工作區中查看建立的所有警示。 只要開啟左側的 [**警示**] 窗格即可。
+您可以查看 Azure 監視器中活動日誌和日誌分析工作區創建的所有警報。 只需打開左側的 **"警報"** 窗格。
 
-雖然您可以透過活動記錄取得通知，但我們強烈建議使用 Log Analytics 而非活動記錄大規模進行監視。 原因如下：
+儘管您可以通過活動日誌接收通知，但我們強烈建議使用日誌分析而不是活動日誌進行大規模監視。 原因如下：
 
-- **有限案例**：透過活動記錄的通知僅適用于 Azure VM 備份。 必須為每個復原服務保存庫設定通知。
-- **定義符合**：排程的備份活動不符合最新的活動記錄定義。 相反地，它會與[資源記錄](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)對齊。 當流經活動記錄通道的資料變更時，這種對齊方式會導致非預期的效果。
-- **活動記錄通道的問題**：在復原服務保存庫中，從 Azure 備份抽出的活動記錄會遵循新的模型。 可惜的是，這項變更會影響 Azure Government、Azure 德國和 Azure 中國世紀的活動記錄產生。 如果這些雲端服務的使用者在 Azure 監視器中，從活動記錄建立或設定任何警示，則不會觸發警示。 此外，在所有 Azure 公用區域中，如果使用者將復原[服務活動記錄收集到 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)，這些記錄就不會出現。
+- **有限方案**：通過活動日誌的通知僅適用于 Azure VM 備份。 必須為每個恢復服務保存庫設置通知。
+- **定義擬合**：計畫的備份活動與活動日誌的最新定義不相符。 相反，它與[資源日誌](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)對齊。 當流經活動日誌通道的資料發生更改時，此對齊會導致意外影響。
+- **活動日誌通道的問題**：在恢復服務保存庫中，從 Azure 備份中泵送的活動日誌遵循新模型。 遺憾的是，此更改會影響 Azure 政府、Azure 德國和 Azure 中國 21Vianet 中活動日誌的生成。 如果這些雲服務的使用者從 Azure 監視器中的活動日誌創建或配置任何警報，則不會觸發警報。 此外，在所有 Azure 公共區域中，如果使用者[將恢復服務活動日誌收集到日誌分析工作區](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)中，則這些日誌不會顯示。
 
-針對 Azure 備份保護的所有工作負載，使用 Log Analytics 工作區進行大規模監視和警示。
+使用日誌分析工作區對受 Azure 備份保護的所有工作負荷進行大規模監視和警報。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要建立自訂查詢，請參閱[Log Analytics 資料模型](backup-azure-reports-data-model.md)。
+要創建自訂查詢，請參閱[日誌分析資料模型](backup-azure-reports-data-model.md)。

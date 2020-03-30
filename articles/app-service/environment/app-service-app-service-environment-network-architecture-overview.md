@@ -1,6 +1,6 @@
 ---
 title: 網路架構 v1
-description: App Service 環境網路拓撲的架構總覽。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: 應用服務環境網路拓撲的體系結構概述。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,17 +8,17 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243844"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境的網路架構概觀
-App Service 環境一律會在[虛擬網路][virtualnetwork]的子網內建立-在 App Service 環境中執行的應用程式可以與位於相同虛擬網路拓撲內的私人端點通訊。  因為客戶可能會鎖定其虛擬網路基礎結構的組件，所以請務必了解與 App Service 環境發生的網路通訊流程類型。
+App Service 環境一律建立於[虛擬網路][virtualnetwork] - 的子網路內，而在 App Service 環境中執行的應用程式可以與相同虛擬網路拓撲內的私用端點通訊。  因為客戶可能會鎖定其虛擬網路基礎結構的組件，所以請務必了解與 App Service 環境發生的網路通訊流程類型。
 
 ## <a name="general-network-flow"></a>一般網路流程
-當 App Service 環境 (ASE) 針對應用程式使用公開虛擬 IP 位址 (VIP) 時，所有傳入的流量都會到達該公用 VIP。  這包括應用程式的 HTTP 和 HTTPS 流量，以及 FTP 的其他流量、遠端偵錯功能和 Azure 管理作業。  如需公用 VIP 上可用特定埠（必要和選擇性）的完整清單，請參閱[控制 App Service 環境輸入流量][controllinginboundtraffic]的文章。 
+當 App Service 環境 (ASE) 針對應用程式使用公開虛擬 IP 位址 (VIP) 時，所有傳入的流量都會到達該公用 VIP。  這包括應用程式的 HTTP 和 HTTPS 流量，以及 FTP 的其他流量、遠端偵錯功能和 Azure 管理作業。  如需公用 VIP 上可用特定連接埠 (必要和選擇性) 的完整清單，請參閱有關[控制輸入流量][controllinginboundtraffic]至 App Service 環境的文章。 
 
 App Service 環境也支援執行僅繫結至虛擬網路內部位址，也稱為 ILB (內部負載平衡器) 位址的應用程式。  在已啟用 ILB 的 ASE 上，應用程式的 HTTP 和 HTTPS 流量以及遠端偵錯呼叫會送達 ILB 位址。  針對大部分的 ILB-ASE 組態，FTP/FTPS 流量也會送達 ILB 位址。  不過，Azure 管理作業仍會流向公用 VIP (屬於已啟用 ILB 的 ASE) 上的連接埠 454/455。
 
@@ -35,9 +35,9 @@ App Service 環境可以與各種私用客戶端點進行通訊。  例如，在
 
 App Service 環境也會與管理和操作 App Service 環境所需的 SQL 資料庫和 Azure 儲存體資源進行通訊。  App Service 環境與之通訊的一些 SQL 和儲存體資源位於與 App Service 環境相同的區域中，有些則位於遠端 Azure 區域中。  因此，一律需要到網際網路的輸出連線，App Service 環境才能正常運作。 
 
-因為在子網路中部署 App Service 環境，所以可以使用網路安全性群組來控制對子網路的輸入流量。  如需如何控制 App Service 環境之輸入流量的詳細資訊，請參閱下列[文章][controllinginboundtraffic]。
+因為在子網路中部署 App Service 環境，所以可以使用網路安全性群組來控制對子網路的輸入流量。  如需如何控制對 App Service 環境之輸入流量的詳細資料，請參閱下列[文章][controllinginboundtraffic]。
 
-如需如何允許來自 App Service 環境之輸出網際網路連線的詳細資訊，請參閱下列有關使用[Express Route][ExpressRoute]的文章。  本文所述的相同方法適用於使用站對連線以及使用強制通道時。
+如需如何允許來自 App Service 環境之輸出網際網路連線的詳細資料，請參閱下列有關使用 [Express Route][ExpressRoute] 的文章。  本文所述的相同方法適用於使用站對連線以及使用強制通道時。
 
 ## <a name="outbound-network-addresses"></a>輸出網路位址
 App Service 環境進行輸出呼叫時，IP 位址一律會與輸出呼叫相關聯。  使用的特定 IP 位址取決於所呼叫的端點位於虛擬網路拓撲內部還是外部。
@@ -73,9 +73,9 @@ App Service 環境進行輸出呼叫時，IP 位址一律會與輸出呼叫相�
 即使不同 App Service 環境之間的呼叫會視為「網際網路」呼叫，當兩個 App Service 環境同時位於相同的 Azure 區域時，網路流量會維持在 Azure 區域網路上，而不會實際在公用網際網路流動。  因此，您可以使用第二個 App Service 環境的子網路上的網路安全性群組，僅允許來自第一個 App Service (其傳入 IP 位址為 192.23.1.2) 的傳入呼叫，因而確保 App Service 環境之間的通訊安全。
 
 ## <a name="additional-links-and-information"></a>其他連結和資訊
-如需 App Service 環境使用的輸入埠，以及使用網路安全性群組來控制輸入流量的詳細資料，請參閱[這裡][controllinginboundtraffic]。
+如需 App Service 環境所使用輸入連接埠以及使用網路安全性群組來控制輸入流量的詳細資料，請參閱[這裡][controllinginboundtraffic]。
 
-如需使用使用者定義的路由來授與 App Service 環境之輸出網際網路存取權的詳細資訊，請參閱這[篇文章][ExpressRoute]。 
+如需利用使用者定義路徑來授與到 App Service 環境之輸出網際網路存取的詳細資料，請參閱本[文章][ExpressRoute]。 
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/

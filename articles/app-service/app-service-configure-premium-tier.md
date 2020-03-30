@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672218"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>設定 Azure App Service 的 PremiumV2 層
 
 新 **PremiumV2** 定價層提供更快速的處理器、SSD 儲存體，而且記憶體與核心的比例是現有定價層的兩倍。 有此效能優勢，您可在較少的執行個體上執行應用程式來節省成本。 在本文中，您將了解如何在 **PremiumV2** 層建立應用程式，或將應用程式相應增加為 **PremiumV2** 層。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要將應用程式相應增加為 **PremiumV2**，您必須讓 Azure App Service 應用程式在低於 **PremiumV2** 的定價層中執行，而且該應用程式必須在支援 PremiumV2 的 App Service 部署中執行。
 
@@ -39,16 +39,16 @@ az appservice list-locations --sku P1V2
 
 App Service 應用程式的定價層會定義在其執行所在的 [App Service 方案](overview-hosting-plans.md)中。 您可以單獨建立 App Service 方案，或在應用程式建立期間加以建立。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>中設定 App Service 方案時，請選取 [定價層]。 
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>中設定 App Service 方案時，請選取 [定價層]****。 
 
-選取 [生產]，然後選取 [P1V2]、[P2V2] 或 [P3V2]，然後按一下 [套用]。
+選取 [生產]****，然後選取 [P1V2]****、[P2V2]**** 或 [P3V2]****，然後按一下 [套用]****。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > 如果您沒有看到 **P1V2**、**P2V2** 和 **P3V2** 選項，或是選項呈現灰色，則 **PremiumV2** 可能無法在包含 App Service 方案的基礎 App Service 部署中使用。 如需詳細資訊，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
 
-## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>將現有應用程式擴大為 PremiumV2 層
+## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>將現有應用程式相應增加為 PremiumV2 層
 
 在將現有應用程式相應增加為 **PremiumV2** 層之前，請確定 **PremiumV2** 可供使用。 如需資訊，請參閱 [PremiumV2 可用性](#availability)。 如果無法使用，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
 
@@ -56,11 +56,11 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>中，開啟您的 App Service 應用程式頁面。
 
-在 App Service 應用程式頁面的左側導覽中，選取 [相應增加 (App Service 方案)]。
+在 App Service 應用程式頁面的左側導覽中，選取 [相應增加 (App Service 方案)]****。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-選取 [生產]，然後選取 [P1V2]、[P2V2] 或 [P3V2]，然後按一下 [套用]。
+選取 [生產]****，然後選取 [P1V2]****、[P2V2]**** 或 [P3V2]****，然後按一下 [套用]****。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -70,11 +70,11 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
 ### <a name="if-you-get-an-error"></a>如果您收到錯誤
 
-如果基礎 App Service 部署不支援 PremiumV2，則某些 App Service 方案會無法擴大為 PremiumV2 層。  如需詳細資訊，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
+如果基礎 App Service 部署不支援 PremiumV2，則某些 App Service 方案會無法相應增加為 PremiumV2 層。  如需詳細資訊，請參閱[從不支援的資源群組與區域組合中相應增加](#unsupported)。
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>從不支援的資源群組與區域組合中擴大
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>從不支援的資源群組與區域組合中相應增加
 
 如果您的應用程式在無法使用 **PremiumV2** 的 App Service 部署中執行；或是，如果您的應用程式在目前不支援 **PremiumV2** 的區 域中執行，則您必須重新部署應用程式，才能利用 **PremiumV2** 的優勢。  您有兩個選擇：
 
@@ -83,7 +83,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    在 [複製應用程式] 頁面上，您可以使用 **PremiumV2** 在您想要的區域中建立 App Service 方案，並指定您要複製的應用程式設定和組態。
+    在 [複製應用程式]**** 頁面上，您可以使用 **PremiumV2** 在您想要的區域中建立 App Service 方案，並指定您要複製的應用程式設定和組態。
 
 ## <a name="automate-with-scripts"></a>使用指令碼進行自動化
 
@@ -91,7 +91,7 @@ App Service 應用程式的定價層會定義在其執行所在的 [App Service 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-下列命令會在 P1V2 建立 App Service 方案。 您可以在 Cloud Shell 中執行該命令。 `--sku` 選項包括 P1V2、P2V2 和 P3V2。
+下列命令會在 P1V2__ 建立 App Service 方案。 您可以在 Cloud Shell 中執行該命令。 `--sku` 選項包括 P1V2、P2V2__ 和 P3V2__。
 
 ```azurecli-interactive
 az appservice plan create \
@@ -104,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-下列命令會在 P1V2 建立 App Service 方案。 `-WorkerSize` 選項包括 [小型]、[中型] 和 [大型]。
+下列命令會在 P1V2__ 建立 App Service 方案。 `-WorkerSize` 選項包括 [小型]__、[中型]__ 和 [大型]__。
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
@@ -113,7 +113,7 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
     -Tier "PremiumV2" `
     -WorkerSize "Small"
 ```
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 
 [在 Azure 中相應增加應用程式的規模](manage-scale-up.md)  
 [手動或自動調整執行個體計數](../monitoring-and-diagnostics/insights-how-to-scale.md)

@@ -1,7 +1,7 @@
 ---
-title: OData 比較運算子參考
+title: O資料比較運算子參考
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋查詢中使用 OData 比較運算子（eq、ne、gt、lt、ge 和 le）的語法和參考檔。
+description: 用於在 Azure 認知搜索查詢中使用 OData 比較運算子（eq、ne、gt、lt、ge 和 le）的語法和參考文檔。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,36 +20,36 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113216"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 認知搜尋中的 OData 比較運算子-`eq`、`ne`、`gt`、`lt`、`ge`和 `le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 認知搜索中的 OData`eq`比較`ne`運算子`gt` `lt`- `ge`、、、、、、、、、、、和`le`
 
-Azure 認知搜尋的[OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)中最基本的作業，就是將欄位與指定的值進行比較。 有兩種可能的比較類型--相等比較和範圍比較。 您可以使用下列運算子來比較欄位與常數值：
+Azure 認知搜索中的[OData 篩選器運算式](query-odata-filter-orderby-syntax.md)中最基本的操作是將欄位與給定值進行比較。 兩種類型的比較是可能的 - 相等比較和範圍比較。 可以使用以下運算子將欄位與常量值進行比較：
 
-等號比較運算子：
+相等運算子：
 
-- `eq`：測試欄位是否**等於**常數值
-- `ne`：測試欄位是否**不等於**常數值
+- `eq`：測試欄位是否**等於**常量值
+- `ne`：測試欄位**是否不等於**常量值
 
 範圍運算子：
 
-- `gt`：測試欄位是否**大於**常數值
-- `lt`：測試欄位是否**小於**常數值
-- `ge`：測試欄位是否**大於或等於**常數值
-- `le`：測試欄位是否**小於或等於**常數值
+- `gt`：測試欄位是否**大於**常量值
+- `lt`：測試欄位是否**小於**常量值
+- `ge`： 測試欄位是否**大於或等於**常量值
+- `le`： 測試欄位是否**小於或等於**常量值
 
-您可以搭配使用範圍運算子與[邏輯運算子](search-query-odata-logical-operators.md)，測試欄位是否在特定的值範圍內。 請參閱本文稍後的[範例](#examples)。
+可以將範圍運算子與[邏輯運算子](search-query-odata-logical-operators.md)結合使用，以測試欄位是否在特定值範圍內。 請參閱本文後面的[示例](#examples)。
 
 > [!NOTE]
-> 如果您想要的話，可以將常數值放在運算子的左邊，並在右邊加上功能變數名稱。 若為範圍運算子，比較的意義會相反。 例如，如果常數值位於左邊，`gt` 會測試常數值是否大於欄位。 您也可以使用比較運算子來比較函數的結果（例如 `geo.distance`）與值。 對於布耳函數（例如 `search.ismatch`），比較結果與 `true` 或 `false` 是選擇性的。
+> 如果您願意，可以將常量值放在運算子的左側，將欄位名稱放在右側。 對於範圍運算子，比較的含義是相反的。 例如，如果常量值位於左側，`gt`則將測試常量值是否大於欄位。 您還可以使用比較運算子將函數的結果（如`geo.distance`）與值進行比較。 對於布耳函數（如`search.ismatch`），將結果與`true``false`或 進行比較是可選的。
 
 ## <a name="syntax"></a>語法
 
-下列 EBNF （[Extended 巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義使用比較運算子之 OData 運算式的文法。
+以下 EBNF （[擴展 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)） 定義了使用比較運算子的 OData 運算式的語法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -63,57 +63,57 @@ variable_or_function ::= variable | function_call
 comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 ```
 
-也提供互動式語法圖：
+還提供互動式語法圖：
 
 > [!div class="nextstepaction"]
-> [Azure 認知搜尋的 OData 語法圖表](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [Azure 認知搜索的 OData 語法圖](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> 如需完整的 EBNF，請參閱[Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)。
+> 有關完整的 EBNF，請參閱[Azure 認知搜索的 OData 運算式語法引用](search-query-odata-syntax-reference.md)。
 
-比較運算式有兩種形式。 兩者之間唯一的差異在於常數是否出現在運算子的左邊或右邊。 運算子另一端的運算式必須是**變數**或函式呼叫。 變數可以是功能變數名稱，或[lambda 運算式](search-query-odata-collection-operators.md)案例中的範圍變數。
+有兩種形式的比較運算式。 它們之間的唯一區別是常量是否出現在運算子的左側或右側。 運算子另一側的運算式必須是**變數**或函式呼叫。 變數可以是欄位名稱，也可以是[lambda 運算式](search-query-odata-collection-operators.md)中的範圍變數。
 
 ## <a name="data-types-for-comparisons"></a>用於比較的資料類型
 
-比較運算子兩邊的資料類型必須相容。 例如，如果左側是 `Edm.DateTimeOffset`類型的欄位，則右側必須是日期時間常數。 數值資料類型更具彈性。 您可以使用任何其他數數值型別的常數來比較任何數數值型別的變數和函式，但有一些限制，如下表所述。
+比較運算子兩側的資料類型必須相容。 例如，如果左側是類型的`Edm.DateTimeOffset`欄位，則右側必須是日期-時間常量。 數位資料類型更靈活。 您可以將任何數數值型別的變數和函數與任何其他數數值型別的常量進行比較，並有幾個限制，如下表所述。
 
-| 變數或函數類型 | 常數數值型別 | 限制 |
+| 變數或函數類型 | 常量數值型別 | 限制 |
 | --- | --- | --- |
-| `Edm.Double` | `Edm.Double` | 比較會受到[`NaN`的特殊規則](#special-case-nan) |
-| `Edm.Double` | `Edm.Int64` | 常數會轉換成 `Edm.Double`，因而導致大量值的精確度遺失 |
+| `Edm.Double` | `Edm.Double` | 比較受[特殊規則的約束： `NaN` ](#special-case-nan) |
+| `Edm.Double` | `Edm.Int64` | 常量轉換為`Edm.Double`，導致大量值的精度損失 |
 | `Edm.Double` | `Edm.Int32` | n/a |
-| `Edm.Int64` | `Edm.Double` | 不允許 `NaN`、`-INF`或 `INF` 的比較 |
+| `Edm.Int64` | `Edm.Double` | 不允許與`NaN``-INF`比較`INF`。 |
 | `Edm.Int64` | `Edm.Int64` | n/a |
-| `Edm.Int64` | `Edm.Int32` | 在比較之前，常數會轉換成 `Edm.Int64` |
-| `Edm.Int32` | `Edm.Double` | 不允許 `NaN`、`-INF`或 `INF` 的比較 |
+| `Edm.Int64` | `Edm.Int32` | 常量在比較`Edm.Int64`前轉換為 |
+| `Edm.Int32` | `Edm.Double` | 不允許與`NaN``-INF`比較`INF`。 |
 | `Edm.Int32` | `Edm.Int64` | n/a |
 | `Edm.Int32` | `Edm.Int32` | n/a |
 
-如需不允許的比較（例如將類型 `Edm.Int64` 的欄位與 `NaN`的比較），Azure 認知搜尋 REST API 會傳回「HTTP 400：不正確的要求」錯誤。
+對於不允許的比較，例如將類型`Edm.Int64`欄位與`NaN`比較 Azure 認知搜索 REST API 將返回"HTTP 400：錯誤請求"錯誤。
 
 > [!IMPORTANT]
-> 雖然數數值型別比較有彈性，但我們強烈建議您在篩選中撰寫比較，讓常數值與比較的變數或函數具有相同的資料類型。 混合浮點和整數值時，這一點特別重要，因為可能會失去精確度的隱含轉換。
+> 即使數數值型別比較是靈活的，我們強烈建議在篩選器中編寫比較，以便常量值與要比較它的變數或函數的資料類型相同。 這在混合浮點和整數值時尤其重要，因為其中可能存在失去精度的隱式轉換。
 
 <a name="special-case-nan"></a>
 
-### <a name="special-cases-for-null-and-nan"></a>`null` 和 `NaN` 的特殊案例
+### <a name="special-cases-for-null-and-nan"></a>和 的`null`特殊情況`NaN`
 
-使用比較運算子時，請務必記住，Azure 認知搜尋中的所有非集合欄位都可能 `null`。 下表顯示比較運算式的所有可能結果，其中任一端可以 `null`：
+使用比較運算子時，請務必記住，Azure 認知搜索中的所有非集合欄位都`null`可能是 。 下表顯示了比較運算式的所有可能結果，其中任一方可以是`null`：
 
-| 運算子 | 只有欄位或變數 `null` 時才會產生結果 | 只有常數 `null` 時才會產生結果 | 當欄位或變數和常數都 `null` 時的結果 |
+| 運算子 | 當只有欄位或變數時，結果`null` | 當只有常量時，結果`null` | 當欄位或變數和常量都`null` |
 | --- | --- | --- | --- |
-| `gt` | `false` | HTTP 400：不正確的要求錯誤 | HTTP 400：不正確的要求錯誤 |
-| `lt` | `false` | HTTP 400：不正確的要求錯誤 | HTTP 400：不正確的要求錯誤 |
-| `ge` | `false` | HTTP 400：不正確的要求錯誤 | HTTP 400：不正確的要求錯誤 |
-| `le` | `false` | HTTP 400：不正確的要求錯誤 | HTTP 400：不正確的要求錯誤 |
+| `gt` | `false` | HTTP 400： 錯誤請求錯誤 | HTTP 400： 錯誤請求錯誤 |
+| `lt` | `false` | HTTP 400： 錯誤請求錯誤 | HTTP 400： 錯誤請求錯誤 |
+| `ge` | `false` | HTTP 400： 錯誤請求錯誤 | HTTP 400： 錯誤請求錯誤 |
+| `le` | `false` | HTTP 400： 錯誤請求錯誤 | HTTP 400： 錯誤請求錯誤 |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 
-總而言之，`null` 只等於其本身，而且不小於或大於任何其他值。
+總之，`null`僅等於自身，並且不小於或大於任何其他值。
 
-如果您的索引具有 `Edm.Double` 類型的欄位，而且您將 `NaN` 值上傳至這些欄位，則在撰寫篩選器時，您將需要考慮這一點。 Azure 認知搜尋會實作為處理 `NaN` 值的 IEEE 754 標準，而與這類值的比較會產生不明顯的結果，如下表所示。
+如果您的索引具有類型`Edm.Double`欄位，並且將值上載`NaN`到這些欄位，則在編寫篩選器時需要考慮這一點。 Azure 認知搜索實現 IEEE 754`NaN`標準來處理值，與此類值的比較會產生非明顯結果，如下表所示。
 
-| 運算子 | 當至少有一個運算元 `NaN` 時的結果 |
+| 運算子 | 當至少一個運算元是`NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -122,41 +122,41 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `eq` | `false` |
 | `ne` | `true` |
 
-總而言之，`NaN` 不等於任何值，包括其本身。
+總之，`NaN`不等於任何值，包括本身。
 
 ### <a name="comparing-geo-spatial-data"></a>比較地理空間資料
 
-您無法直接比較 `Edm.GeographyPoint` 類型的欄位與常數值，但是您可以使用 `geo.distance` 函數。 此函式會傳回 `Edm.Double`類型的值，因此您可以將它與數值常數做比較，以根據來自常數地理空間座標的距離進行篩選。 請參閱下列[範例](#examples)。
+不能將類型的`Edm.GeographyPoint`欄位與常量值直接進行比較，但可以使用 函數`geo.distance`。 此函數返回類型`Edm.Double`值，因此您可以將其與數值常量進行比較，以便根據與常量地理空間座標的距離進行篩選。 請參閱下面的[示例](#examples)。
 
 ### <a name="comparing-string-data"></a>比較字串資料
 
-您可以使用 `eq` 和 `ne` 運算子，在篩選中比較字串中的完全相符專案。 這些比較會區分大小寫。
+可以使用 和`eq``ne`運算子在篩選器中比較字串，以便進行精確匹配。 這些比較區分大小寫。
 
 ## <a name="examples"></a>範例
 
-比對檔，其中 `Rating` 欄位介於3到5（含）之間：
+匹配`Rating`欄位介於 3 和 5 之間的文檔，包括：
 
     Rating ge 3 and Rating le 5
 
-符合指定緯度和經度的 `Location` 欄位小於2公里的檔：
+與`Location`給定緯度和經度小於 2 公里的欄位匹配文檔：
 
     geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
 
-符合 `LastRenovationDate` 欄位大於或等於2015年1月1日午夜 UTC 的檔：
+匹配`LastRenovationDate`欄位大於或等於 2015 年 1 月 1 日午夜 UTC 的文檔：
 
     LastRenovationDate ge 2015-01-01T00:00:00.000Z
 
-符合不 `null``Details/Sku` 欄位的檔：
+匹配欄位不是`null`的文檔`Details/Sku`：
 
     Details/Sku ne null
 
-比對檔，其中至少有一個房間的類型為 "Deluxe 室"，其中 `Rooms/Type` 欄位的字串完全符合篩選準則：
+匹配至少有一個房間鍵入"豪華房"的酒店的文檔，其中`Rooms/Type`欄位的字串與篩選器完全符合：
 
     Rooms/any(room: room/Type eq 'Deluxe Room')
 
 ## <a name="next-steps"></a>後續步驟  
 
-- [Azure 認知搜尋中的篩選](search-filters.md)
-- [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)
-- [Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)
-- [搜尋檔&#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 認知搜索中的篩選器](search-filters.md)
+- [Azure 認知搜索的 OData 運算式語言概述](query-odata-filter-orderby-syntax.md)
+- [用於 Azure 認知搜索的 OData 運算式語法引用](search-query-odata-syntax-reference.md)
+- [搜索文檔&#40;Azure 認知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

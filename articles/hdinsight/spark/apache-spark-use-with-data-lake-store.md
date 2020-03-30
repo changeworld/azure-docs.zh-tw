@@ -1,6 +1,6 @@
 ---
-title: 使用 HDInsight Apache Spark 分析 Azure Data Lake Storage Gen1
-description: 執行 Apache Spark 作業來分析儲存在 Azure Data Lake Storage Gen1 中的資料
+title: 使用 HDInsight 阿帕奇火花分析 Azure 資料存儲第 1 代
+description: 運行 Apache Spark 作業以分析存儲在 Azure 資料湖存儲第 1 代中的資料
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818174"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 叢集分析 Data Lake Storage Gen1 中的資料
 
-在本文中，您會使用與 HDInsight Spark 叢集搭配使用的[Jupyter Notebook](https://jupyter.org/) ，來執行從 Data Lake Storage 帳戶讀取資料的作業。
+在本文中，您可以使用帶有 HDInsight Spark 群集的[Jupyter 筆記本](https://jupyter.org/)來運行從資料湖存儲帳戶讀取資料的作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure Data Lake Storage Gen1 帳戶。 請遵循[利用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 的指示。
+* Azure Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 的指示。
 
 * 以 Data Lake Storage Gen1 作為儲存體的 Azure HDInsight Spark 叢集。 請遵循[快速入門：在 HDInsight 中設定叢集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)中的指示。
 
@@ -56,18 +56,18 @@ ms.locfileid: "73818174"
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>搭配 Data Lake Storage Gen1 使用 HDInsight Spark 叢集
 
-1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 的 [開始面板] 中，按一下 Apache Spark 叢集的磚（如果您已將它釘選到開始面板）。 您也可以按一下 [瀏覽全部] > [HDInsight 叢集] 來瀏覽至您的叢集。
+1. 從[Azure 門戶](https://portal.azure.com/)（從起始板）按一下 Apache Spark 群集的磁貼（如果將其固定到啟動板）。 您還可以在 **"流覽所有** > **HDInsight 群集**"下導航到群集。
 
-2. 在 Spark 叢集刀鋒視窗中按一下 [快速連結]，然後在 [叢集儀表板] 刀鋒視窗中按一下 [Jupyter Notebook]。 出現提示時，輸入叢集的系統管理員認證。
+2. 在 Spark 叢集刀鋒視窗中按一下 [快速連結]****，然後在 [叢集儀表板]**** 刀鋒視窗中按一下 [Jupyter Notebook]****。 出現提示時，輸入叢集的系統管理員認證。
 
    > [!NOTE]  
    > 您也可以在瀏覽器中開啟下列 URL，來連接到您的叢集的 Jupyter Notebook。 使用您叢集的名稱取代 **CLUSTERNAME** ：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. 建立新的 Notebook。 按一下 [新增]，然後按一下 [PySpark]。
+3. 建立新的 Notebook。 按一下 [新增]****，然後按一下 [PySpark]****。
 
-    ![建立新的 Jupyter 筆記本](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "建立新的 Jupyter Notebook")
+    ![建立新的 Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "建立新的 Jupyter Notebook")
 
 4. 您使用 PySpark 核心建立 Notebook，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 和 Hive 內容。 首先，您可以匯入此案例所需的類型。 方法是將下列程式碼片段貼到儲存格中，然後按下 **SHIFT + ENTER**。
 
@@ -75,7 +75,7 @@ ms.locfileid: "73818174"
 
     每當您在 Jupyter 中執行作業時，網頁瀏覽器視窗標題將會顯示 Notebook 標題和 **(忙碌)** 狀態。 您也會在右上角的 **PySpark** 文字旁看到一個實心圓。 工作完成後，實心圓將變成空心圓。
 
-     ![Jupyter 筆記本作業的狀態](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook 工作的狀態")
+     ![Jupyter Notebook 工作的狀態](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook 工作的狀態")
 
 5. 使用您複製到 Data Lake Storage Gen1 帳戶的 **HVAC.csv** 檔案，將範例資料載入到暫存資料表中。 您可以使用下列 URL 模式來存取 Data Lake Storage 帳戶中的資料。
 
@@ -108,7 +108,7 @@ ms.locfileid: "73818174"
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. 由於您使用的是 PySpark 核心，因此現在可直接在您剛才使用 **magic 建立的暫存資料表**hvac`%%sql` 上執行 SQL 查詢。 如需 `%%sql` magic 及 PySpark 核心提供的其他 magic 的詳細資訊，請參閱 [使用 Apache Spark HDInsight 叢集之 Jupyter Notebook 上可用的核心](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
+6. 由於您使用的是 PySpark 核心，因此現在可直接在您剛才使用 `%%sql` magic 建立的暫存資料表 **hvac** 上執行 SQL 查詢。 如需 `%%sql` magic 及 PySpark 核心提供的其他 magic 的詳細資訊，請參閱 [使用 Apache Spark HDInsight 叢集之 Jupyter Notebook 上可用的核心](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -121,7 +121,7 @@ ms.locfileid: "73818174"
 
      ![查詢結果的區域圖](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查詢結果的區域圖")
 
-8. 應用程式執行完畢之後，您應該要關閉 Notebook 來釋放資源。 若要這樣做，請從 Notebook 的 [檔案] 功能表中，按一下 [關閉並停止]。 這樣就能夠結束並關閉 Notebook。
+8. 應用程式執行完畢之後，您應該要關閉 Notebook 來釋放資源。 若要這樣做，請從 Notebook 的 [檔案]**** 功能表中，按一下 [關閉並停止]****。 這樣就能夠結束並關閉 Notebook。
 
 
 ## <a name="next-steps"></a>後續步驟

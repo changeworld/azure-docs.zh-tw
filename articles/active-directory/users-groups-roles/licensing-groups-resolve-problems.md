@@ -1,5 +1,5 @@
 ---
-title: 解決群組授權指派問題-Azure Active Directory |Microsoft Docs
+title: 解決組許可證分配問題 - Azure 活動目錄 |微軟文檔
 description: 當您使用 Azure Active Directory 以群組為基礎的授權時，如何識別及解決授權指派問題
 services: active-directory
 keywords: Azure AD 授權
@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025704"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>識別及解決 Azure Active Directory 中群組的授權指派問題
@@ -30,25 +30,25 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 當您使用以群組為基礎的授權時，可能會發生相同錯誤，但是當 Azure AD 服務指派授權時，則會在背景中發生錯誤。 基於這個原因，無法立即向您通知這些錯誤。 而是會記錄在使用者物件上，然後透過系統管理入口網站報告。 授權使用者的原意永遠不會遺失，但會記錄為錯誤狀態，供未來調查和解決。
 
-## <a name="find-license-assignment-errors"></a>尋找授權指派錯誤
+## <a name="find-license-assignment-errors"></a>查找許可證分配錯誤
 
-### <a name="to-find-users-in-an-error-state-in-a-group"></a>若要在群組中尋找處於錯誤狀態的使用者
+### <a name="to-find-users-in-an-error-state-in-a-group"></a>在組中查找處於錯誤狀態的使用者
 
-1. 開啟群組至其 [總覽] 頁面，然後選取 [**授權**]。 如果有任何使用者處於錯誤狀態，則會顯示通知。
+1. 將組打開到其概覽頁面並選擇 **"許可證**"。 如果有任何使用者處於錯誤狀態，則會出現通知。
 
-   ![群組和錯誤通知訊息](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![組和錯誤通知訊息](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
 1. 選取這份通知，以開啟所有受影響的使用者清單。 您可以分別選取每個使用者以查看詳細資料。
 
-   ![群組授權錯誤狀態的使用者清單](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![處於組許可錯誤狀態的使用者清單](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-1. 若要尋找包含至少一個錯誤的所有群組，在 [Azure Active Directory] 刀鋒視窗上選取 [授權]，然後選取 [概觀]。 值得您注意的群組會顯示資訊方塊。
+1. 若要尋找包含至少一個錯誤的所有群組，在 [Azure Active Directory]**** 刀鋒視窗上選取 [授權]****，然後選取 [概觀]****。 值得您注意的群組會顯示資訊方塊。
 
-   ![錯誤狀態中群組的總覽和相關資訊](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![有關處於錯誤狀態的組的概述和資訊](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
 1. 選取方塊以查看具有錯誤的所有群組的清單。 您可以選取每個群組以查看詳細資訊。
 
-   ![錯誤的總覽和群組清單](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![有錯誤的組概述和清單](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 下列幾節描述每個潛在問題及其解決方法。
 
@@ -56,9 +56,9 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 **問題：** 群組中指定的其中一項產品沒有足夠的可用授權。 您需要為產品購買更多授權，或從其他使用者或群組釋放未使用的授權。
 
-若要查看有多少授權可用，請移至 [Azure Active Directory] > [授權] > [所有產品]。
+要查看有多少許可證可用，請轉到 Azure**活動目錄** > **許可證** > **所有產品**。
 
-若要查看哪些使用者及群組在取用授權，請選取產品。 在 [授權的使用者] 底下，您會看到已直接或透過一或多個群組而被指派授權的所有使用者的清單。 在 [授權的群組] 底下，您會看到已被指派該產品的所有群組。
+若要查看哪些使用者及群組在取用授權，請選取產品。 在 [授權的使用者]**** 底下，您會看到已直接或透過一或多個群組而被指派授權的所有使用者的清單。 在 [授權的群組]**** 底下，您會看到已被指派該產品的所有群組。
 
 **PowerShell：** PowerShell Cmdlet 會將此錯誤報告為 _CountViolation_。
 
@@ -87,11 +87,11 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 ## <a name="usage-location-isnt-allowed"></a>不允許使用位置
 
-**問題：** 由於當地法律和法規，無法在所有位置使用某些 Microsoft 服務。 您必須為使用者指定 [使用位置] 屬性，才可以將授權指派給使用者。 您可以在 Azure 入口網站的 [使用者] > [設定檔] > [設定] 區段之下指定此位置。
+**問題：** 由於當地法律和法規，無法在所有位置使用某些 Microsoft 服務。 您必須為使用者指定 [使用位置]**** 屬性，才可以將授權指派給使用者。 您可以在 Azure 門戶中的 **"使用者** > **設定檔** > **設置"** 部分下指定位置。
 
 當 Azure AD 嘗試將群組授權指派給不支援其使用位置的使用者時，將會失敗並對該使用者記錄錯誤。
 
-若要解決此問題，請從授權群組中移除不受支援位置的使用者。 或者，如果目前的使用位置值不代表實際使用者的位置，您可以進行修改，以便下一次正確指派授權 (如果支援新的位置)。
+要解決此問題，請從許可組中刪除不支援的位置的使用者。 或者，如果目前的使用位置值不代表實際使用者的位置，您可以進行修改，以便下一次正確指派授權 (如果支援新的位置)。
 
 **PowerShell：** PowerShell Cmdlet 會將此錯誤報告為 _ProhibitedInUsageLocationViolation_。
 
@@ -111,18 +111,18 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 為受影響的使用者解決任何 Proxy 位址問題之後，請務必在群組上強制執行授權處理，以確保現在可以套用授權。
 
-## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Azure AD Mail 和 ProxyAddresses 屬性變更
+## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Azure AD 郵件和代理位址屬性更改
 
-**問題：** 更新使用者或群組的授權指派時，您可能會看到某些使用者的 Azure AD Mail 和 ProxyAddresses 屬性已變更。
+**問題：** 在更新使用者或組的許可證分配時，您可能會看到某些使用者的 Azure AD 郵件和代理位址屬性已更改。
 
-更新使用者的授權指派會導致觸發 proxy 位址計算，這可能會變更使用者屬性。 若要瞭解變更的確切原因並解決問題，請參閱這篇文章[中的 proxyAddresses 屬性如何填入 Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)。
+更新使用者上的許可證分配會導致觸發代理位址計算，從而更改使用者屬性。 要瞭解更改的確切原因並解決問題，請參閱本文，介紹[如何在 Azure AD 中填充代理位址屬性](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)。
 
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>Audit 記錄中的 LicenseAssignmentAttributeConcurrencyException
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>許可證分配屬性 屬性 在稽核記錄中例外
 
-**問題：** 使用者已 LicenseAssignmentAttributeConcurrencyException 審核記錄中的授權指派。
-當以群組為基礎的授權嘗試對使用者處理相同授權的並行授權指派時，此例外狀況會記錄在使用者上。 這通常發生于使用者是多個具有相同指派授權之群組的成員時。 AZure AD 將會重試處理使用者授權，並會解決此問題。 客戶不需要採取任何動作來修正此問題。
+**問題：** 使用者具有稽核記錄中許可證分配屬性屬性屬性屬性異常。
+當基於組的許可嘗試處理同一許可證的併發許可證分配給使用者時，此異常將記錄在使用者上。 當使用者是具有相同分配許可證的多個組的成員時，通常會發生這種情況。 AZure AD 將重試處理使用授權，並將解決此問題。 客戶無需執行任何操作即可解決此問題。
 
-## <a name="more-than-one-product-license-assigned-to-a-group"></a>已指派一個以上的產品授權給群組
+## <a name="more-than-one-product-license-assigned-to-a-group"></a>分配給組的多個產品許可證
 
 您可以將一個以上的產品授權指派給群組。 例如，您可以將 Office 365 企業版 E3 和 Enterprise Mobility + Security 指派給群組，以便輕鬆地為使用者啟用所有已納入的服務。
 
@@ -130,28 +130,28 @@ Azure AD 會嘗試將群組中指定的所有授權指派給每位使用者。 �
 
 您可以看到未被指派授權的使用者，並查看此問題所影響的產品。
 
-## <a name="when-a-licensed-group-is-deleted"></a>刪除授權群組時
+## <a name="when-a-licensed-group-is-deleted"></a>刪除許可組時
 
 您必須移除指派給群組的所有授權，才能刪除該群組。 不過，移除群組中所有使用者的授權可能需要一些時間。 從群組中移除授權指派時，如果使用者已指派了相依的授權，或者存在禁止移除授權的 Proxy 位址衝突問題，則可能會出現故障。 如果使用者的授權相依於由於刪除群組而被移除的授權，則對使用者的授權指派將從繼承轉換到直接。
 
 例如，請考慮已指派 Office 365 E3/E5 且啟用商務用 Skype 服務方案的群組。 另外，假設該群組的一些成員直接指派了音訊會議授權。 刪除群組時，群組型授權將嘗試移除所有使用者的 Office 365 E3/E5。 因為音訊會議依賴商務用 Skype，因此對於指派了音訊會議的任何使用者，群組型授權會將 Office 365 E3/E5 授權轉換為直接授權指派。
 
-## <a name="manage-licenses-for-products-with-prerequisites"></a>管理具有必要條件之產品的授權
+## <a name="manage-licenses-for-products-with-prerequisites"></a>管理具有先決條件的產品許可證
 
-您可能擁有的某些 Microsoft Online 產品是「附加元件」。 附加元件規定使用者或群組啟用必要條件服務方案，才能指派授權給他們。 使用以群組為基礎的授權時，系統會要求必要條件和附加元件服務方案必須出現在相同的群組中。 這是為了確保新增至群組的所有使用者都可以收到完整有效的產品。 讓我們思考一下以下的範例：
+您可能擁有的某些 Microsoft Online 產品是「附加元件」**。 附加元件規定使用者或群組啟用必要條件服務方案，才能指派授權給他們。 使用以群組為基礎的授權時，系統會要求必要條件和附加元件服務方案必須出現在相同的群組中。 這是為了確保新增至群組的所有使用者都可以收到完整有效的產品。 讓我們思考一下以下的範例：
 
 「Microsoft 工作場所分析」是附加元件產品。 它包含具有相同名稱的單一服務方案。 只有在同時指派下列其中一個必要條件時，我們才能將此服務方案指派給使用者或群組：
 
 - Exchange Online (方案 1)
 - Exchange Online (方案 2)
 
-如果我們嘗試將此產品本身指派給群組，入口網站會傳回通知訊息。 如果我們選取專案詳細資料，就會顯示下列錯誤訊息：
+如果我們嘗試將此產品自己分配給組，門戶將返回通知訊息。 如果我們選擇專案詳細資訊，它將顯示以下錯誤訊息：
 
-  「授權操作失敗。 請先確定群組具備必要服務，再新增或移除相依的服務。 **Microsoft Workplace Analytics 服務也需要啟用 Exchange Online （方案2）。** 」
+  許可證操作失敗。 請先確定群組具備必要服務，再新增或移除相依的服務。 **微軟工作場所分析服務要求啟用線上交換（計畫 2）。**
 
 若要將此附加元件授權指派給群組，我們必須確定群組中也包含必要條件服務方案。 例如，我們可能更新已經包含完整 Office 365 E3 產品的現有群組，然後在其中新增附加元件產品。
 
-也可以建立獨立群組，而其中只包含至少可讓附加元件運作的必要產品。 它只能用來授權所選使用者的附加元件產品。 根據上一個範例，您會將下列產品指派給相同的群組：
+也可以建立獨立群組，而其中只包含至少可讓附加元件運作的必要產品。 它可用於僅許可載入項產品的選定使用者。 根據前面的示例，您將將以下產品分配給同一組：
 
 - 僅啟用 Exchange Online (方案 2) 服務方案的 Office 365 企業版 E3
 - Microsoft 工作場所分析
@@ -161,25 +161,25 @@ Azure AD 會嘗試將群組中指定的所有授權指派給每位使用者。 �
 > [!TIP]
 > 您可以針對每個必要條件服務方案建立多個群組。 比方說，如果您對使用者同時使用 Office 365 企業版 E1 和 Office 365 企業版 E3，則可以建立兩個群組來授權 Microsoft 工作場所分析：一個使用 E1 作為必要條件，另一個使用 E3 作為必要條件。 這可讓您將附加元件散發給 E1 和 E3 使用者，而不會耗用額外的授權。
 
-## <a name="force-group-license-processing-to-resolve-errors"></a>強制群組授權處理以解決錯誤
+## <a name="force-group-license-processing-to-resolve-errors"></a>強制組許可證處理以解決錯誤
 
 根據您為了解決錯誤所採取的步驟而定，可能需要手動觸發處理群組來更新使用者狀態。
 
-比方說，如果您移除使用者的直接授權指派來釋出一些授權，則必須觸發處理先前未能完整授權所有使用者成員的群組。 若要重新處理群組，請移至群組窗格，開啟 [授權]，然後選取工具列上的 [重新處理]按鈕。
+比方說，如果您移除使用者的直接授權指派來釋出一些授權，則必須觸發處理先前未能完整授權所有使用者成員的群組。 若要重新處理群組，請移至群組窗格，開啟 [授權]****，然後選取工具列上的 [重新處理]**** 按鈕。
 
 ## <a name="force-user-license-processing-to-resolve-errors"></a>強制使用授權處理以解決錯誤
 
 根據您為了解決錯誤所採取的步驟而定，可能需要手動觸發處理使用者來更新使用者狀態。
 
-例如，在為受影響的使用者解決重複的 Proxy 位址問題之後，您必須觸發處理該使用者。 若要重新處理使用者，請移至使用者窗格，開啟 [授權]，然後選取工具列上的 [重新處理]按鈕。
+例如，在為受影響的使用者解決重複的 Proxy 位址問題之後，您必須觸發處理該使用者。 若要重新處理使用者，請移至使用者窗格，開啟 [授權]****，然後選取工具列上的 [重新處理]**** 按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解透過群組管理授權的其他案例，請閱讀下列各項：
 
 * [什麼是 Azure Active Directory 中以群組為基礎的授權？](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [將授權指派給 Azure Active Directory 中的群組 (英文)](licensing-groups-assign.md)
+* [將授權指派給 Azure Active Directory 中的群組](licensing-groups-assign.md)
 * [如何將個別授權使用者移轉至 Azure Active Directory 中以群組為基礎的授權](licensing-groups-migrate-users.md)
 * [如何使用 Azure Active Directory 中的群組型授權在產品授權之間移轉使用者](licensing-groups-change-licenses.md)
-* [Azure Active Directory 群組型授權其他案例](licensing-group-advanced.md)
+* [Azure Active Directory 群組型授權其他案例 (英文)](licensing-group-advanced.md)
 * [Azure Active Directory 群組型授權的 PowerShell 範例](licensing-ps-examples.md)

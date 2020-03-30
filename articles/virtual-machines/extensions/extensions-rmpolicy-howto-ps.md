@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 原則來限制 VM 延伸模組安裝
+title: 使用 Azure 策略限制 VM 擴展安裝
 description: 使用 Azure 原則來限制延伸模組部署。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073103"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure 原則來限制 Windows VM 上的延伸模組安裝
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>測試原則
 
-若要測試原則，請嘗試使用「VM 存取」延伸模組。 下列情況應該會失敗，並出現「原則不允許資源 ' Set-azvmaccessextension： Resource ' Myvmaccess」訊息 '」訊息。
+若要測試原則，請嘗試使用「VM 存取」延伸模組。 以下消息"設置-AzVMAccess擴展：策略不允許資源'myVMAccess"）失敗。
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中擴充 Windows VM 的 OS 磁片磁碟機
+title: 在 Azure 中擴展 Windows VM 的操作系統磁碟機
 description: 使用 Resource Manager 部署模型中的 Azure PowerShell，擴充虛擬機器的 OS 磁碟機大小。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033507"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
@@ -31,7 +31,7 @@ ms.locfileid: "74033507"
 
 
 > [!IMPORTANT]
-> 調整 Azure 虛擬機器的 OS 磁片大小需要解除配置虛擬機器。
+> 調整 Azure 虛擬機器的 OS 磁片大小需要處理虛擬機器。
 >
 > 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
 > 
@@ -135,7 +135,7 @@ ms.locfileid: "74033507"
 以下為受控和非受控磁碟的完整指令碼，供您參考：
 
 
-**受控磁碟**
+**託管磁片**
 
 ```Powershell
 Connect-AzAccount
@@ -166,7 +166,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>調整資料磁碟大小
 
-本文主要著重於擴充 VM 的 OS 磁碟，但指令碼也可用於擴充連結到 VM 的資料磁碟。 例如，若要擴充連接至 VM 的第一個資料磁碟，請將 `OSDisk` 的 `StorageProfile` 物件取代成 `DataDisks` 陣列，並使用數值索引取得第一個連接的資料磁碟的參考，如下所示︰
+本文主要著重於擴充 VM 的 OS 磁碟，但指令碼也可用於擴充連結到 VM 的資料磁碟。 例如，若要擴充連接至 VM 的第一個資料磁碟，請將 `StorageProfile` 的 `OSDisk` 物件取代成 `DataDisks` 陣列，並使用數值索引取得第一個連接的資料磁碟的參考，如下所示︰
 
 **受控磁碟**
 
@@ -176,7 +176,7 @@ $disk.DiskSizeGB = 1023
 ```
 
 
-**非受控磁碟**
+**非託管磁片**
 
 ```powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
@@ -193,7 +193,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 (Get-AzDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
 
-**非受控磁碟**
+**非託管磁片**
 
 ```powershell
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023

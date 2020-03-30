@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: bdc9a8079c46a05e5045d72cd6d7b07a9a457899
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456959"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用範本建立內部負載平衡器
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure 門戶](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [電源外殼](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [範本](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -36,7 +36,7 @@ ms.locfileid: "74215280"
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>使用按一下即部署來部署範本
 
-公用儲存機制中可用的範例範本會使用一個包含預設值的參數檔案，這些預設值可用來產生上述案例。 若要使用「按一下即部署」來部署此範本，請依循[此連結](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，按一下 [部署至 Azure]，視情況取代預設參數值，再依循入口網站中的指示。
+公用儲存機制中可用的範例範本會使用一個包含預設值的參數檔案，這些預設值可用來產生上述案例。 若要使用「按一下即部署」來部署此範本，請依循[此連結](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，按一下 [部署至 Azure]****，視情況取代預設參數值，再依循入口網站中的指示。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署範本
 
@@ -45,7 +45,7 @@ ms.locfileid: "74215280"
 1. 如果您從未用過 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) ，並遵循其中的所有指示登入 Azure，然後選取您的訂用帳戶。
 2. 將參數檔案下載至本機磁碟。
 3. 編輯並儲存檔案。
-4. 執行**new-azresourcegroupdeployment** Cmdlet，以使用範本建立資源群組。
+4. 運行**New-AzResourceGroup 部署**Cmdlet 以使用範本創建資源組。
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -57,10 +57,10 @@ ms.locfileid: "74215280"
 
 若要使用 Azure CLI 部署範本，請依照下列步驟執行。
 
-1. 如果您從未使用過 Azure CLI，請參閱 [安裝和設定 Azure CLI](../cli-install-nodejs.md) ，並依照指示進行，直到選取您的 Azure 帳戶和訂用帳戶。
-2. 執行 **azure config mode** 命令，以切換為 Azure 資源管理員模式，如下所示。
+1. 如果您從未使用過 Azure CLI，請參閱[安裝和配置 Azure CLI，](../cli-install-nodejs.md)並按照說明操作，以選擇 Azure 帳戶和訂閱。
+2. 轉到[https://shell.azure.com](https://shell.azure.com)在瀏覽器中打開雲外殼。 執行 **azure config mode** 命令，以切換為資源管理員模式，如下所示。
 
-    ```azurecli-interactive
+    ```console
     azure config mode arm
     ```
 
@@ -71,7 +71,7 @@ ms.locfileid: "74215280"
 3. 開啟參數檔案，選取其內容，然後將該內容儲存至您電腦中的一個檔案。 在此範例中，我們將參數檔案儲存為 *parameters.json*。
 4. 執行 **azure group deployment create** 命令，使用先前下載並修改的範本和參數檔案來部署新的內部負載平衡器。 輸出後顯示的清單可說明所使用的參數。
 
-    ```azurecli
+    ```console
     azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
     ```
 

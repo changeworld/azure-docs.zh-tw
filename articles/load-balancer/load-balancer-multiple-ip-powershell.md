@@ -1,7 +1,7 @@
 ---
 title: 在多個 IP 設定上進行負載平衡 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 在本文中，您將瞭解如何使用 Azure CLI，在主要和次要 IP 設定間進行負載平衡。
+description: 在本文中，瞭解使用 Azure CLI 在主 IP 和輔助 IP 配置之間負載平衡。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075971"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多個 IP 組態上進行負載平衡
 
 > [!div class="op_single_selector"]
 > * [入口網站](load-balancer-multiple-ip.md)
-> * [CLI](load-balancer-multiple-ip-cli.md)
-> * [PowerShell](load-balancer-multiple-ip-powershell.md)
+> * [Cli](load-balancer-multiple-ip-cli.md)
+> * [電源外殼](load-balancer-multiple-ip-powershell.md)
 
 
 本文說明如何對次要網路介面 (NIC) 上的多個 IP 位址使用 Azure Load Balancer。 在此案例中，我們有兩部執行 Windows 的 VM，每部各有一個主要和次要 NIC。 每個次要 NIC 都有兩個 IP 組態。 每部 VM 都裝載 contoso.com 和 fabrikam.com 兩個網站。 每個網站繫結到次要 NIC 上的其中一個 IP 組態。 我們使用 Azure Load Balancer 來公開兩個前端 IP 位址，每個網站各使用其中一個，以將流量分散給網站的個別 IP 組態。 此案例會在兩個前端以及兩個後端集區 IP 位址使用相同的連接埠號碼。
@@ -143,4 +143,4 @@ ms.locfileid: "74075971"
 
 ## <a name="next-steps"></a>後續步驟
 - 若要深入了解如何在 Azure 中合併負載平衡服務，請參閱[在 Azure 中使用負載平衡服務](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 瞭解如何在 Azure 中使用不同類型的記錄來管理[Azure 監視器記錄中的](../load-balancer/load-balancer-monitor-log.md)負載平衡器，並針對 Azure Load Balancer 進行疑難排解。
+- 瞭解如何在 Azure 中使用不同類型的日誌來管理[Azure 負載等化器的 Azure 監視器日誌中的負載等化器](../load-balancer/load-balancer-monitor-log.md)。

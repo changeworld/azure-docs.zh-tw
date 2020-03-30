@@ -1,25 +1,25 @@
 ---
 title: 使用 REST API 來還原 Azure VM
-description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure 虛擬機器備份的還原作業。
+description: 在本文中，瞭解如何使用 REST API 管理 Azure 虛擬機器備份的還原操作。
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173376"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
-一旦使用 Azure 備份完成 Azure 虛擬機器的備份，就可以從相同的備份複本還原整個 Azure 虛擬機器或磁片或檔案。 本文說明如何使用 REST API 還原 Azure VM 或磁碟。
+完成使用 Azure 備份的 Azure 虛擬機器的備份後，可以從同一備份副本還原整個 Azure 虛擬機器或磁片或檔。 本文說明如何使用 REST API 還原 Azure VM 或磁碟。
 
 對於任何還原作業，您必須先識別相關的復原點。
 
 ## <a name="select-recovery-point"></a>選取復原點
 
-使用[列出復原點 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)，可以列出備份項目可用的復原點。 這是一項具備所有相關值的簡單 GET 作業。
+使用[列出復原點 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)，可以列出備份項目可用的復原點。 這是一項具備所有相關值的簡單 GET** 作業。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -27,17 +27,17 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 `{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"。
 
-GET URI 具備所有必要參數。 不需要額外的要求內文
+*GET* URI 具備所有必要參數。 不需要額外的要求內文
 
 ### <a name="responses"></a>回應
 
-|名稱  |在系統提示您進行確認時，輸入  |描述  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 確定     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [確定]  |
 
 #### <a name="example-response"></a>範例回應
 
-一旦提交 GET URI，就會傳回 200 (確定) 回應。
+一旦提交 GET** URI，就會傳回 200 (確定) 回應。
 
 ```http
 HTTP/1.1 200 OK
@@ -117,7 +117,7 @@ X-Powered-By: ASP.NET
 
 ## <a name="restore-disks"></a>還原磁碟
 
-如果需要自訂從備份資料建立 VM，您只要將磁碟還原至所選的儲存體帳戶，並根據需求從這些磁碟建立 VM。 儲存體帳戶應與復原服務保存庫位於相同的區域中，且不得區域備援。 磁片和已備份 VM （"vmconfig.json"）的設定將會儲存在指定的儲存體帳戶中。
+如果需要自訂從備份資料建立 VM，您只要將磁碟還原至所選的儲存體帳戶，並根據需求從這些磁碟建立 VM。 儲存體帳戶應與復原服務保存庫位於相同的區域中，且不得區域備援。 磁片以及備份的 VM（"vmconfig.json"）的配置將存儲在給定的存儲帳戶中。
 
 觸發還原磁碟為 *POST* 要求。 若要深入了解還原磁碟作業，請參閱[「觸發還原」REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)。
 
@@ -125,13 +125,13 @@ X-Powered-By: ASP.NET
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"，而 `{recoveryPointId}` 是`{name}`上述[復原點的 ](#example-response) 欄位。
+`{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"，而 `{recoveryPointId}` 是[上述](#example-response)復原點的 `{name}` 欄位。
 
 ### <a name="create-request-body"></a>建立要求本文
 
 若要觸發從 Azure VM 備份還原磁碟，以下是要求本文的元件。
 
-|名稱  |在系統提示您進行確認時，輸入  |描述  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -159,19 +159,19 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
 還原磁碟的觸發為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |在系統提示您進行確認時，輸入  |描述  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
 #### <a name="example-responses"></a>範例回應
 
-一旦提交 POST URI 以供觸發還原磁碟，初始回應為 202 (已接受) 以及位置標頭或 Azure-async-header。
+一旦提交 POST** URI 以供觸發還原磁碟，初始回應為 202 (已接受) 以及位置標頭或 Azure-async-header。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -191,7 +191,7 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-然後，使用位置標頭或 Azure-AsyncOperation 標頭搭配簡單的 GET 命令，追蹤所產生的作業。
+然後，使用位置標頭或 Azure-AsyncOperation 標頭搭配簡單的 *GET* 命令，來追蹤所產生的作業。
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13

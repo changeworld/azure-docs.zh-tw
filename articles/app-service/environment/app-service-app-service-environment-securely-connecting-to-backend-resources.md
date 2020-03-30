@@ -1,6 +1,6 @@
 ---
 title: 連接到後端 v1
-description: 了解如何安全地從 App Service 環境連接到後端資源。 本檔僅為使用舊版 v1 ASE 的客戶提供。
+description: 了解如何安全地從 App Service 環境連接到後端資源。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
 author: stefsch
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.topic: article
@@ -8,22 +8,22 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687303"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>安全地從 App Service 環境連線到後端資源
-由於一律**會在 Azure Resource Manager**虛擬網路**或**傳統部署模型[虛擬網路][virtualnetwork]中建立 App Service 環境，來自 App Service 環境到其他後端資源的輸出連線可以獨佔方式透過虛擬網路流動。  在 2016 年 6 月所進行的最新變更之後，ASE 也可以部署到使用公用位址範圍或 RFC1918 位址空間 (也就是私人位址) 的虛擬網路。  
+因為 App Service 環境一律會在 Azure Resource Manager 虛擬網路或者**** 傳統式部署模型****[虛擬網路][virtualnetwork]兩者之一中建立，從 App Service 環境傳出至其他後端資源的連線可以獨佔方式透過虛擬網路傳送。  在 2016 年 6 月所進行的最新變更之後，ASE 也可以部署到使用公用位址範圍或 RFC1918 位址空間 (也就是私人位址) 的虛擬網路。  
 
 例如，SQL Server 可能會在已鎖定連接埠 1433 的虛擬機器叢集上執行。  此端點可能已納入 ACL，只允許從相同虛擬網路上的其他資源進行存取。  
 
-另一個範例是，敏感性端點可能會在內部部署執行，並透過[站對站][SiteToSite]或[azure ExpressRoute][ExpressRoute]連線連接至 Azure。  因此，只有虛擬網路中連接到站台對站台或 ExpressRoute 通道的資源能夠存取內部部署端點。
+另一個例子則是，敏感性端點可能會執行內部部署並透過[站台對站台][SiteToSite]或 [Azure ExpressRoute][ExpressRoute] 連線至 Azure。  因此，只有虛擬網路中連接到站台對站台或 ExpressRoute 通道的資源能夠存取內部部署端點。
 
 在上述這些案例中，在 App Service 環境上執行的應用程式將能夠安全地連接到各種伺服器和資源。  從 App Service 環境中執行之應用程式送至相同虛擬網路中私密端點 (或連接到相同的虛擬網路) 的輸出流量，只會透過虛擬網路傳送。  送至私密端點的輸出流量不會透過公用網際網路傳送。
 
-從 App Service 環境輸出至虛擬網路內端點的流量有一點值得注意。  App Service 環境無法連線到與 App Service 環境位於「相同」 子網路的虛擬機器端點。  只要 App Service 環境是部署到保留給 App Service 環境專用的子網路中，這通常應該不致於構成問題。
+從 App Service 環境輸出至虛擬網路內端點的流量有一點值得注意。  App Service 環境無法連線到與 App Service 環境位於「相同」 **** 子網路的虛擬機器端點。  只要 App Service 環境是部署到保留給 App Service 環境專用的子網路中，這通常應該不致於構成問題。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,7 +41,7 @@ App Service 環境需要針對虛擬網路設定的有效 DNS 基礎結構。  �
 
 有兩種方法可限制送至此端點的流量：
 
-* [網路存取控制清單][NetworkAccessControlLists]（網路 acl）
+* [網路存取控制清單][NetworkAccessControlLists] (網路 ACL)
 * [網路安全性群組][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>利用網路 ACL 限制存取
@@ -77,9 +77,9 @@ App Service 環境需要針對虛擬網路設定的有效 DNS 基礎結構。  �
 ![預設網路安全性規則][DefaultNetworkSecurityRules]
 
 ## <a name="getting-started"></a>開始使用
-若要開始使用 App Service 環境，請參閱 [App Service 環境簡介][IntroToAppServiceEnvironment]
+若要開始使用 App Service Environment，請參閱 [App Service Environment 簡介][IntroToAppServiceEnvironment]
 
-如需控制 App Service 環境之輸入流量的詳細資訊，請參閱[控制 App Service 環境的輸入流量][ControlInboundASE]
+如需控制 App Service 環境輸入流量的詳細資訊，請參閱[控制 App Service 環境的輸入流量][ControlInboundASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

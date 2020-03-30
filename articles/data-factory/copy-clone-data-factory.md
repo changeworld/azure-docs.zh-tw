@@ -12,10 +12,10 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: bafe70655f05b5dda32f51393591f82b4b5625f1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678120"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>如何複製或重製 Azure Data Factory 中的資料處理站
@@ -36,11 +36,11 @@ ms.locfileid: "73678120"
 
 1. 前提是您必須從 Azure 入口網站建立您的目標資料處理站。
 
-1. 如果您的來源 factory 中有 SelfHosted IntegrationRuntime，您必須在目標處理站中使用相同的名稱來 precreate 它。 如果您想要在不同的工廠之間共用 SelfHosted 的 IRs，可以使用[這裡](source-control.md#best-practices-for-git-integration)發佈的模式。
+1. 如果在源工廠中具有自託管集成運行時，則需要在目標工廠中以相同名稱預創建它。 如果要在不同的工廠之間共用自託管的 I，則可以使用[此處](source-control.md#best-practices-for-git-integration)發佈的模式。
 
 1. 若您處於 GIT 模式，每次您從入口網站發行時，處理站的 Resource Manager 範本都會儲存到 GIT 中 (存放庫的 adf_publish 分支)。
 
-1. 針對其他案例，您可以按一下入口網站中的 [匯出 Resource Manager 範本] 按鈕，以下載 Resource Manager 範本。
+1. 針對其他案例，您可以按一下入口網站中的 [匯出 Resource Manager 範本]**** 按鈕，以下載 Resource Manager 範本。
 
 1. 下載 Resource Manager 範本之後，您可以透過標準 Resource Manager 範本部署方法來部署它。
 

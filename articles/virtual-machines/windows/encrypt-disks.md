@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中將 Windows VM 上的磁片加密
+title: 加密 Azure 中 Windows VM 上的磁片
 description: 使用 Azure PowerShell 將 Windows VM 上的虛擬磁碟加密以增強安全性
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033536"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>將 Windows VM 上的虛擬磁碟加密
-如需強化虛擬機器 (VM) 安全性與法規遵循，可以將 Azure 中的虛擬磁碟加密。 磁碟會使用 Azure Key Vault 中受保護的密碼編譯金鑰進行加密。 您可控制這些密碼編譯金鑰，並可稽核其使用情況。 本文說明如何使用 Azure PowerShell 將 Windows VM 上的虛擬磁碟加密。 您也可以將[Linux 虛擬機器加密](../linux/disk-encryption-overview.md)。
+如需強化虛擬機器 (VM) 安全性與法規遵循，可以將 Azure 中的虛擬磁碟加密。 磁碟會使用 Azure Key Vault 中受保護的密碼編譯金鑰進行加密。 您可控制這些密碼編譯金鑰，並可稽核其使用情況。 本文說明如何使用 Azure PowerShell 將 Windows VM 上的虛擬磁碟加密。 您也可以[加密Linux虛擬機器](../linux/disk-encryption-overview.md)。
 
  
 
@@ -38,7 +38,7 @@ Windows VM 上的虛擬磁碟在待用時是使用 BitLocker 進行加密。 將
 1. 虛擬磁碟會使用所提供的密碼編譯金鑰進行加密。
 
 
-## <a name="requirements-and-limitations"></a>需求和限制
+## <a name="requirements-and-limitations"></a>需求與限制
 
 磁碟加密支援的案例和需求：
 
@@ -60,11 +60,11 @@ Windows VM 上的虛擬磁碟在待用時是使用 BitLocker 進行加密。 將
 
 
 ## <a name="create-an-azure-key-vault-and-keys"></a>建立 Azure Key Vault 和金鑰
-開始之前，請確定已安裝最新版的 Azure PowerShell 模組。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 在下列命令範例中，將所有的範例參數取代為您自己的名稱、位置和金鑰值，例如 *myResourceGroup*、*myKeyVault*、*myVM*等等。
+開始之前，請確定已安裝最新版的 Azure PowerShell 模組。 有關詳細資訊，請參閱[如何安裝和配置 Azure PowerShell](/powershell/azure/overview)。 在下列命令範例中，將所有的範例參數取代為您自己的名稱、位置和金鑰值，例如 *myResourceGroup*、*myKeyVault*、*myVM*等等。
 
 建立 Azure 金鑰保存庫的第一個步驟是儲存您的密碼編譯金鑰。 Azure Key Vault 可儲存讓您安全地在應用程式和服務中實作的金鑰、祕密或密碼。 針對虛擬磁碟加密，您將需要建立 Key Vault 來儲存用來將虛擬磁碟加密或解密的密碼編譯金鑰。 
 
-請使用 [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider) \(英文\) 來啟用您 Azure 訂用帳戶內的 Azure Key Vault 提供者，然後使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) \(英文\) 來建立資源群組。 下列範例會在 *East US* 位置建立名為 *myResourceGroup* 的資源群組：
+請使用 [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider) \(英文\) 來啟用您 Azure 訂用帳戶內的 Azure Key Vault 提供者，然後使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) \(英文\) 來建立資源群組。 下列範例會在 *美國東部* 位置建立名為 *myResourceGroup* 的資源群組：
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"

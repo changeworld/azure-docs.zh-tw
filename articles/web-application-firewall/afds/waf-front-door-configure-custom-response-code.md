@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Front WAF 設定自訂回應
-description: 瞭解如何在 Web 應用程式防火牆（WAF）封鎖要求時設定自訂回應碼和訊息。
+title: 使用 Azure 前門配置 WAF 的自訂回應
+description: 瞭解如何在 Web 應用程式防火牆 （WAF） 阻止請求時配置自訂回應代碼和消息。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,15 +9,15 @@ ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185352"
 ---
-# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>設定 Azure Web 應用程式防火牆的自訂回應
+# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>為 Azure Web 應用程式防火牆配置自訂回應
 
-根據預設，當 Azure Web 應用程式防火牆（WAF）與 Azure Front 門板因符合規則而封鎖要求時，會傳回403狀態碼，並**顯示 [要求已封鎖**] 訊息。 本文說明如何在 WAF 封鎖要求時，設定自訂回應狀態碼和回應訊息。
+預設情況下，當 Azure Web 應用程式防火牆 （WAF） 與 Azure 前門由於匹配的規則而阻止請求時，它將返回一個 403 狀態碼，該**請求被阻止**消息。 本文介紹當 WAF 阻止請求時，如何配置自訂回應狀態碼和回應訊息。
 
 ## <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
 Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
@@ -42,15 +42,15 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-在 Azure 中，您可以將相關資源配置到資源群組。 在此範例中，您會使用[remove-azresourcegroup](/powershell/module/Az.resources/new-Azresourcegroup)來建立資源群組。
+在 Azure 中，您可以將相關資源配置到資源群組。 在此示例中，使用[New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)創建資源組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
 ```
 
-## <a name="create-a-new-waf-policy-with-custom-response"></a>使用自訂回應建立新的 WAF 原則 
+## <a name="create-a-new-waf-policy-with-custom-response"></a>使用自訂回應創建新的 WAF 策略 
 
-以下範例說明如何建立新的 WAF 原則，並將自訂回應狀態碼設定為405，並封鎖訊息給**您。** 使用[新的-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
+下面是創建新的 WAF 策略的示例，自訂回應狀態碼設置為 405，**並且將阻止**您收到消息。 使用[新阿茲門沃夫政策](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
 
 ```azurepowershell
 # WAF policy setting
@@ -63,7 +63,7 @@ New-AzFrontDoorWafPolicy `
 -CustomBlockResponseBody "<html><head><title>You are blocked.</title></head><body></body></html>"
 ```
 
-使用[AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy)修改現有 WAF 原則的自訂回應碼或回應主體設定。
+使用[Update-AzFrontDoorFireWall 策略](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy)修改現有 WAF 策略的自訂回應代碼或回應正文設置。
 
 ```azurepowershell
 # modify WAF response code
@@ -84,4 +84,4 @@ Update-AzFrontDoorFireWallPolicy `
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 深入瞭解[使用 Azure Front 的 Web 應用程式防火牆](../afds/afds-overview.md)
+- 使用 Azure 前門瞭解有關[Web 應用程式防火牆的資訊](../afds/afds-overview.md)

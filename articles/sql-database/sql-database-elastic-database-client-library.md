@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: ae26f669ddbe2cc2c5b6e25a9c1c0229e88dc2e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823915"
 ---
 # <a name="building-scalable-cloud-databases"></a>建置可調整的雲端資料庫
@@ -25,7 +25,7 @@ ms.locfileid: "73823915"
 若要下載：
 
 * Java 版本的程式庫，請參閱 [Maven 中央存放庫](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)。
-* .NET 版本的程式庫，請參閱 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
+* 庫的 .NET 版本，請參閱[NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
 ## <a name="documentation"></a>文件
 
@@ -36,7 +36,7 @@ ms.locfileid: "73823915"
 5. [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)
 6. [多分區查詢](sql-database-elastic-scale-multishard-querying.md)
 7. [使用彈性資料庫工具加入分區](sql-database-elastic-scale-add-a-shard.md)
-8. [使用彈性資料庫工具和資料列層級安全性的多租用戶應用程式](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+8. [具有彈性資料庫工具和行級安全性的多租戶應用程式](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 9. [升級用戶端程式庫應用程式](sql-database-elastic-scale-upgrade-client-library.md) 
 10. [彈性查詢概觀](sql-database-elastic-query-overview.md)
 11. [彈性資料庫工具字彙](sql-database-elastic-scale-glossary.md)
@@ -48,12 +48,12 @@ ms.locfileid: "73823915"
 
 ## <a name="client-capabilities"></a>用戶端功能
 
-使用分區化 來相應放大應用程式，對開發人員和系統管理員而言都是一項挑戰。 用戶端程式庫藉由提供工具讓開發人員和系統管理員管理相應放大的資料庫，簡化了管理工作。 在典型的範例中，有許多稱為「分區」的資料庫要管理。 客戶共置於同一資料庫，而每位客戶 (單一租用戶配置) 一個資料庫。 用戶端程式庫包含下列功能：
+使用分區化 ** 來相應放大應用程式，對開發人員和系統管理員而言都是一項挑戰。 用戶端程式庫藉由提供工具讓開發人員和系統管理員管理相應放大的資料庫，簡化了管理工作。 在典型的範例中，有許多稱為「分區」的資料庫要管理。 客戶共置於同一資料庫，而每位客戶 (單一租用戶配置) 一個資料庫。 用戶端程式庫包含下列功能：
 
 - **分區對應管理**︰建立了稱為「分區對應管理員」的特殊資料庫。 分區對應管理可讓應用程式管理其分區的中繼資料。 開發人員可利用此功能將資料庫註冊為分區 (描述個別分區化索引鍵或索引鍵範圍至這些資料庫的對應)，並隨著資料庫的數量和組成發展來維護此中繼資料，以反映容量變更。 若沒有彈性資料庫用戶端程式庫，實作分區化時您必須花費大量時間撰寫管理程式碼。 如需詳細資訊，請參閱 [分區對應管理](sql-database-elastic-scale-shard-map-management.md)。
 
 - **資料相依路由**：想像有一個要求進入應用程式。 以要求的分區化索引鍵值為基礎，應用程式必須根據索引鍵值判斷正確的資料庫。 接著，它會開啟資料庫連線來處理要求。 資料相依路由可讓您輕鬆地呼叫一次應用程式的分區對應，就能開啟連接。 資料相依路由是基礎結構程式碼的另一個領域，現在由彈性資料庫用戶端程式庫中的功能所涵蓋。 如需詳細資訊，請參閱 [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)。
-- **多分區查詢 (MSQ)** ：當要求牽涉到數個 (或所有) 分區時，多分區查詢就派上用場。 多分區查詢在所有分區或一組分區上執行相同的 T-SQL 程式碼。 使用 UNION ALL 語意可將參與分區的結果合併成整體的結果集。 經由用戶端程式庫公開的功能可處理許多工作，包括：連接管理、執行緒管理、錯誤處理和中繼結果處理。 MSQ 可以查詢多達數百個分區。 如需詳細資訊，請參閱 [多分區查詢](sql-database-elastic-scale-multishard-querying.md)。
+- **多分區查詢 (MSQ)**：當要求牽涉到數個 (或所有) 分區時，多分區查詢就派上用場。 多分區查詢在所有分區或一組分區上執行相同的 T-SQL 程式碼。 使用 UNION ALL 語意可將參與分區的結果合併成整體的結果集。 經由用戶端程式庫公開的功能可處理許多工作，包括：連接管理、執行緒管理、錯誤處理和中繼結果處理。 MSQ 可以查詢多達數百個分區。 如需詳細資訊，請參閱 [多分區查詢](sql-database-elastic-scale-multishard-querying.md)。
 
 一般而言，使用彈性資料庫工具的客戶在提交分區內作業，而不是有其本身語意的跨分區作業時，就可以獲得完整的 T-SQL 功能。
 

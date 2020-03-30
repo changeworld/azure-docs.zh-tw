@@ -1,7 +1,7 @@
 ---
-title: 情感分析使用案例
+title: 情緒分析用例
 titleSuffix: ML Studio (classic) - Azure
-description: 如何使用適用于文字前置處理、N 字母或功能雜湊的模組，在 Azure Machine Learning Studio （傳統）中建立文字分析模型
+description: 如何使用用於文本預處理、N-gram 或功能雜湊的模組在 Azure 機器學習工作室（經典）中創建文本分析模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,17 +11,17 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2018
 ms.openlocfilehash: 89fc5196977f53e040e1a6553b46ca57f39b18b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217888"
 ---
-# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio 中建立情感分析模型（傳統）
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>在 Azure 機器學習工作室中創建情緒分析模型（經典）
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-您可以使用 Azure Machine Learning Studio （傳統）來建立和讓文字分析模型。 這些模型可協助您解決問題，例如，文件分類或情緒分析問題。
+您可以使用 Azure 機器學習工作室（經典版）構建和操作文本分析模型。 這些模型可協助您解決問題，例如，文件分類或情緒分析問題。
 
 在文字分析實驗中，您通常需要︰
 
@@ -31,7 +31,7 @@ ms.locfileid: "79217888"
 4. 評分和驗證模型
 5. 模型部署到生產環境
 
-在本教學課程中，您會在使用 Amazon Book 評論資料集逐步解說情感分析模型時，瞭解這些步驟（請參閱這份研究白皮書「生平、Bollywood boom-boxes and、使用者馬上 box and Blenders：情感分類的網域調整」，John Blitzer，Mark Dredze 和 Fernando Pereira;計算語言（ACL）（2007）的關聯。此資料集包含審核分數（1-2 或4-5）和自由格式的文字。 目標是要預測評論分數︰低 (1-2) 或高 (4-5)。
+在本教程中，您將在使用 Amazon 書評資料集流覽情緒分析模型時學習這些步驟（請參閱 John Blitzer 的本研究論文"傳記、寶萊塢、動臂箱和攪拌機：情緒分類的域適應"，馬克·德雷澤和費爾南多·佩雷拉;計算語言學協會 （ACL），2007 年。此資料集由審核分數（1-2 或 4-5）和自由格式文本組成。 目標是要預測評論分數︰低 (1-2) 或高 (4-5)。
 
 您可以在 Azure AI 資源庫找到本教學課程中涵蓋的實驗︰
 
@@ -68,7 +68,7 @@ ms.locfileid: "79217888"
 ## <a name="step-3-train-classification-or-regression-model"></a>步驟 3：定型分類或迴歸模型
 現在文字已轉換為數值特徵資料行。 資料集仍包含上一階段中的字串資料行，因此我們使用「選取資料集中的資料行」來排除它們。
 
-接著使用 [二元羅吉斯迴歸](https://msdn.microsoft.com/library/azure/dn905994.aspx) 預測我們的目標︰高或低的評論分數。 此時，文字分析問題已轉換成一般分類問題。 您可以使用 Azure Machine Learning Studio （傳統）中提供的工具來改善模型。 例如，您可以試驗不同的分類器以了解它們所提供結果的精確度，或使用超參數調整改善精確度。
+接著使用 [二元羅吉斯迴歸](https://msdn.microsoft.com/library/azure/dn905994.aspx) 預測我們的目標︰高或低的評論分數。 此時，文字分析問題已轉換成一般分類問題。 您可以使用 Azure 機器學習工作室（經典）中提供的工具來改進模型。 例如，您可以試驗不同的分類器以了解它們所提供結果的精確度，或使用超參數調整改善精確度。
 
 ![定型和評分](./media/text-analytics-module-tutorial/scoring-text.png)
 

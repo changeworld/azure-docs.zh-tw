@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （雲端服務）開始使用佇列儲存體
+title: 使用視覺化工作室（雲服務）開始使用佇列存儲
 description: 在使用 Visual Studio 已連接服務連接到儲存體帳戶之後，如何在 Visual Studio 雲端服務專案中開始使用 Azure 佇列儲存體
 services: storage
 author: ghogen
@@ -14,26 +14,26 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298788"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>開始使用 Azure 佇列儲存體和 Visual Studio 已連接服務 (雲端服務專案)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>總覽
-本文描述當您在雲端服務專案中建立或參考 Azure 儲存體帳戶之後，如何在 Visual Studio 中使用 [加入已連接服務] 對話方塊，開始使用 Azure 佇列儲存體。
+本文描述當您在雲端服務專案中建立或參考 Azure 儲存體帳戶之後，如何在 Visual Studio 中使用 [加入已連接服務]**** 對話方塊，開始使用 Azure 佇列儲存體。
 
-我們將會示範如何在程式碼中建立佇列。 我們也將顯示如何執行基本的佇列作業，例如新增、修改、讀取和讀取佇列訊息。 這些範例均以 C# 程式碼撰寫，並使用 [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+我們將會示範如何在程式碼中建立佇列。 我們也將顯示如何執行基本的佇列作業，例如新增、修改、讀取和讀取佇列訊息。 這些示例以 C# 代碼編寫，並使用[.NET 的 Microsoft Azure 存儲用戶端庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 [ **新增連接的服務** ] 作業會安裝適當的 NuGet 封裝，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案組態檔。
 
 * 如需以程式碼處理佇列的詳細資訊，請參閱 [以 .NET 開始使用 Azure 佇列儲存體](../storage/queues/storage-dotnet-how-to-use-queues.md) 。
 * 如需 Azure 儲存體的一般資訊，請參閱 [儲存體文件](https://azure.microsoft.com/documentation/services/storage/) 。
 * 如需 Azure 雲端服務的一般資訊，請參閱 [雲端服務文件](https://azure.microsoft.com/documentation/services/cloud-services/) 。
-* 如需 ASP.NET 應用程式設計的詳細資訊，請參閱 [ASP.NET](https://www.asp.net) 。
+* 若需要如何編寫 ASP.NET 應用程式的詳細資訊，請參閱 [ASP.NET](https://www.asp.net) 。
 
 Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方都可利用 HTTP 或 HTTPS 並透過驗證的呼叫來存取這些訊息。 單一佇列訊息的大小上限為 64 KB，而一個佇列可以包含數百萬個訊息，以儲存體帳戶的總容量為限。
 
@@ -58,7 +58,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**注意：** 請在下列範例中的程式碼前面使用上述所有程式碼。
+**注：** 在以下示例中的代碼前面使用上述所有代碼。
 
 ## <a name="create-a-queue-in-code"></a>在程式碼中建立佇列
 若要在程式碼中建立佇列，請加入 **CreateIfNotExists**呼叫。
@@ -78,7 +78,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
     messageQueue.AddMessage(message);
 
 ## <a name="read-a-message-in-a-queue"></a>讀取佇列中的訊息
-透過呼叫 **PeekMessage** 方法，您可以在佇列前面查看訊息，而無需將它從佇列中移除。
+您可以通過調用**PeekMessage**方法查看佇列前面的消息，而無需將其從佇列中刪除。
 
     // Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
@@ -86,7 +86,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 ## <a name="read-and-remove-a-message-in-a-queue"></a>讀取並移除佇列中的訊息
 您的程式碼可以使用兩個步驟將訊息從佇列中移除 (清除佇列)。
 
-1. 呼叫 **GetMessage** 以取得佇列中的下一個訊息。 從 **GetMessage** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。
+1. 調用**GetMessage**獲取佇列中的下一條消息。 從**GetMessage**返回的消息將對此佇列中讀取消息的任何其他代碼不可見。 依預設，此訊息會維持 30 秒的不可見狀態。
 2. 若要完成從佇列中移除訊息，請呼叫 **DeleteMessage**。
 
 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 下列程式碼會在處理完訊息之後立即呼叫 **DeleteMessage** 。
@@ -104,9 +104,9 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 自訂從佇列中擷取訊息的方法有兩種。
 
 * 您可以取得一批訊息 (最多 32 個)。
-* 您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。 下列程式碼範例將使用 **GetMessages** 方法，在一次呼叫中取得 20 個訊息。 接著它會使用 **foreach** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。 請注意，系統會針對所有訊息同時開始計時 5 分鐘，所以從呼叫 **GetMessages**開始的 5 分鐘後，任何尚未刪除的訊息都會重新出現。
+* 您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。 下列程式碼範例將使用 **GetMessages** 方法，在一次呼叫中取得 20 個訊息。 接著它會使用 **foreach** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。 請注意，所有郵件的 5 分鐘開始，因此在調用**GetMessages**後 5 分鐘後，任何未刪除的消息都將再次可見。
 
-以下為範例：
+以下是範例：
 
     foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
     {
@@ -130,7 +130,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>搭配使用 Async-Await 模式和通用 Azure 佇列 API
-這個範例示範如何搭配使用 Async-Await 模式和通用 Azure 佇列 API。 此範例會呼叫每個指定方法的非同步版本，這可從每個方法的 **Async** 字尾看出。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在 .NET 中使用 Async-Await 模式的詳細資訊，請參閱 [Async 和 Await (C# 和 Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配使用 Async-Await 模式和通用 Azure 佇列 API。 該示例調用每個給定方法的非同步版本，這可以通過每種方法的**Async**後修復來看到。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 有關在 .NET 中使用 Async-Await 模式的更多詳細資訊，請參閱[非同步和等待（C# 和視覺化基本）](https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Create a message to put in the queue
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");

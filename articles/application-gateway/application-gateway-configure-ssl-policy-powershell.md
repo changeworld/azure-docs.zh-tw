@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 設定 SSL 原則
+title: 使用 PowerShell 配置 SSL 策略
 titleSuffix: Azure Application Gateway
 description: 本文提供在 Azure 應用程式閘道上設定 SSL 原則的指示
 services: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075238"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>在應用程式閘道上設定 SSL 原則版本和加密套件
 
-了解如何在應用程式閘道上設定 SSL 原則版本和加密套件。 您可以從預先定義的原則清單中選取，其中包含 SSL 原則版本和已啟用加密套件的不同設定。 您也可以根據您的需求定義[自訂 SSL 原則](#configure-a-custom-ssl-policy)。
+了解如何在應用程式閘道上設定 SSL 原則版本和加密套件。 您可以從預先定義的原則清單中選取，其中包含 SSL 原則版本和已啟用加密套件的不同設定。 您還可以根據您的要求定義自訂 SSL[策略](#configure-a-custom-ssl-policy)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -116,7 +116,7 @@ CipherSuites:
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> 設定自訂 SSL 原則時，必須選取 TLS_RSA_WITH_AES_256_CBC_SHA256。 應用程式閘道會使用此加密套件進行後端管理。 您可以將它與其他任何套件搭配使用，但也必須選取此選項。 
+> 配置自訂 SSL 策略時必須選擇TLS_RSA_WITH_AES_256_CBC_SHA256。 應用程式閘道使用此密碼套件進行後端管理。 您可以將此套件與任何其他套件結合使用，但也必須選擇此套件。 
 
 ```powershell
 # get an application gateway resource

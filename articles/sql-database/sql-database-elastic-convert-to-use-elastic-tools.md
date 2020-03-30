@@ -1,5 +1,5 @@
 ---
-title: 轉換現有的資料庫以擴增 | Microsoft Docs
+title: 轉換現有的資料庫以相應放大 | Microsoft Docs
 description: 建立分區對應管理員來轉換分區化資料庫，以使用彈性資料庫工具
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: c776f4ac09626f0abd1eb754cde391a1c5447627
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421216"
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到擴增的資料庫
+# <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到相應放大的資料庫
 
 使用 Azure SQL Database 資料庫工具 (例如 [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md))，輕鬆地管理現有相應放大的分區化資料庫。 請先轉換現有的資料庫，才能使用[分區對應管理員](sql-database-elastic-scale-shard-map-management.md)。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 
 若要移轉現有的分區化資料庫︰
 
@@ -63,7 +63,7 @@ $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<passw
 選取要建立的分區對應類型。 請依據資料庫結構進行選擇︰
 
 1. 每個資料庫有一個租用戶 (相關詞彙，請參閱 [詞彙](sql-database-elastic-scale-glossary.md))。
-2. 每個資料庫有多個租用戶 (兩種類型)︰
+2. 每個資料庫的多個租用戶 (兩種類型)︰
    1. 清單對應
    2. 範圍對應
 
@@ -75,7 +75,7 @@ $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<passw
 
 ![範圍對應][2]
 
-或者，您可以使用「清單對應」來實作多租用戶資料庫模型，以將多個租用戶指派給個別資料庫。 例如，DB1 是用來儲存租用戶 ID 1 和 5 的相關資訊，而 DB2 是用來儲存租用戶 7 和租用戶 10 的資料。
+或者，您可以使用「清單對應」** 來實作多租用戶資料庫模型，以將多個租用戶指派給個別資料庫。 例如，DB1 是用來儲存租用戶 ID 1 和 5 的相關資訊，而 DB2 是用來儲存租用戶 7 和租用戶 10 的資料。
 
 ![單一資料庫上的多個租用戶][3]
 
@@ -100,7 +100,7 @@ $ShardMap = New-ListShardMap -KeyType $([int]) -ListShardMapName 'ListShardMap' 
 $ShardMap = New-RangeShardMap -KeyType $([int]) -RangeShardMapName 'RangeShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>選項3：列出個別資料庫上的對應
+### <a name="option-3-list-mappings-on-an-individual-database"></a>選項 3：列出單個資料庫的映射
 
 設定此模式也需要建立清單對應，如步驟 2，選項 1 所示。
 
@@ -149,7 +149,7 @@ Get-Shards -ShardMap $ShardMap
 Get-Mappings -ShardMap $ShardMap
 ```
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>總結
 
 一旦完成安裝後，您就可以開始使用彈性資料庫用戶端程式庫。 您也可以使用[資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)和[多分區查詢](sql-database-elastic-scale-multishard-querying.md)。
 

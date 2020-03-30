@@ -1,5 +1,5 @@
 ---
-title: 使用作業瀏覽器 & 工作檢視-Azure Data Lake Analytics
+title: 使用作業瀏覽器&工作檢視 - Azure 資料湖分析
 description: 本文說明如何使用適用於 Azure Data Lake Analytics 作業的作業瀏覽器和作業檢視。
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309942"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>使用適用於 Azure Data Lake Analytics 的作業瀏覽器和作業檢視
@@ -19,7 +19,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
 
 依預設，Azure Data Lake Analytics 服務會封存作業 30 天。 您可以藉由設定自訂的到期原則，從 Azure 入口網站設定有效期限。 期限到期後，您將無法存取作業資訊。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 請參閱[適用於 Visual Studio 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)。
 
 ## <a name="open-the-job-browser"></a>開啟作業瀏覽器
@@ -32,7 +32,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
 
 作業檢視包含︰
 
-* 作業摘要
+* 工作摘要
   
     重新整理作業檢視，以查看執行中作業的最新資訊。
   
@@ -54,7 +54,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     
       ![Azure Data Lake Analytics 作業階段狀態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
-    * 作業結果︰成功或失敗。 作業在每個階段都可能會失敗。
+    * 作業的結果︰成功或失敗。 作業在每個階段都可能會失敗。
     * 總持續時間︰提交時間和結束時間之間的時鐘時間 (持續時間)。
     * 總計算時間︰每個頂點執行時間的總和，您可以將其視為只有在一個頂點中執行作業的時間。 如需頂點的詳細資訊，請參閱頂點總計。
     * 提交/開始/結束時間︰Data Lake Analytics 服務接收作業提交/開始執行作業/成功與否結束作業的時間。
@@ -88,7 +88,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     * 12.90 秒/頂點︰這個階段頂點的平均執行時間。 此圖中的計算方式是加總 (每個頂點執行時間) / (頂點總計數)。 這表示如果您可以指派平行處理原則中執行的所有頂點，整個階段會在 12.90 秒內完成。 這也表示如果在這個階段中的所有工作都是循序完成，成本會是頂點數量乘以平均回應時間。
     * 已寫入 850,895 個資料列︰在這個階段中寫入的資料列總計數。
     * R/W︰在這個階段中讀取/寫入的資料量 (位元組)。
-    * 色彩：階段會使用色彩以表示不同的頂點狀態。
+    * 色彩︰階段會使用色彩以表示不同的頂點狀態。
       
       * 綠色表示頂點已成功。
       * 橙色表示頂點已重試。 重試的頂點失敗後，系統會自動重試一次並且如果成功，則整體階段便成功完成。 如果頂點重試但仍失敗，色彩會變成紅色，整個作業也跟著失敗。
@@ -109,9 +109,9 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
   * 頂點排程執行︰已排程頂點的總時間。
   * 讀取的最小/平均/最大頂點資料︰最小/平均/最大的每一個頂點讀取資料。
   * 持續時間︰階段花費的時鐘時間，您需要載入設定檔以查看此值。
-  * 作業播放
+  * 工作播放
     
-      Data Lake Analytics 執行作業，並封存執行作業資訊的頂點，例如頂點啟動、停止和失敗的時間，以及重試的方式等。所有的資訊會自動記錄於查詢存放區中，並儲存在其作業設定檔。 您可以透過作業檢視中的「載入設定檔」來下載作業設定檔，並在下載作業設定檔之後檢視作業播放。
+      資料湖分析運行作業並存檔運行作業資訊的頂點，例如當頂點啟動、停止、失敗以及如何重試這些邊點等。所有資訊都自動記錄在查詢存儲中並存儲在其作業設定檔中。 您可以透過作業檢視中的「載入設定檔」來下載作業設定檔，並在下載作業設定檔之後檢視作業播放。
     
       作業播放是叢集中所進行作業的概括視覺效果。 作業播放可讓您觀看作業執行進度，並在很短的時間內 (通常少於 30 秒) 以視覺化方式偵測出效能異常和瓶頸。
   * 作業熱度圖顯示 
@@ -131,12 +131,12 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     * 輸入/輸出輸送量︰每個階段輸入/輸出輸送量的熱度圖，您可以藉此確認您的作業是否為 I/O 界限作業。
 * 中繼資料作業
   
-    您可以在 U-SQL 指令碼中執行某些中繼資料作業，例如建立資料庫、捨棄資料表等。這些作業會在編譯之後顯示於中繼資料作業。 您可以在這裡找到判斷提示、建立實體並捨棄實體。
+    您可以在 U-SQL 腳本中執行某些中繼資料操作，例如創建資料庫、刪除表等。編譯後，這些操作將顯示在中繼資料操作中。 您可以在這裡找到判斷提示、建立實體並捨棄實體。
   
     ![Azure Data Lake Analytics 作業檢視中繼資料作業](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * 狀態記錄
   
-    狀態記錄為也會以視覺化方式呈現在作業摘要中，但您可以在此取得更多詳細資料。 您可以找到詳細的資訊，例如作業何時已進行準備、排入佇列、開始執行以及結束。 此外您也可以找到作業已編譯的次數 (CcsAttempts:1)，作業實際分派到叢集中的時間 (詳細資料︰將作業分派到叢集) 等等。
+    狀態記錄為也會以視覺化方式呈現在作業摘要中，但您可以在此取得更多詳細資料。 您可以找到詳細的資訊，例如作業何時已進行準備、排入佇列、開始執行以及結束。 此外您也可以找到作業已編譯的次數 (CcsAttempts: 1)，作業實際分派到叢集中的時間 (詳細資料︰將作業分派到叢集) 等等。
   
     ![Azure Data Lake Analytics 作業檢視狀態記錄](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
 * 診斷
@@ -163,7 +163,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     您可以透過資源找到儲存於查詢存放區中的作業編譯輸出。 比方說，您可以在這裡找到用來顯示作業圖形的 “algebra.xml”、您已註冊的組件等。
 * 頂點執行檢視
   
-    它會顯示頂點執行詳細資料。 作業設定檔會封存每個頂點執行記錄檔，例如讀取/寫入的總資料、執行階段、狀態等。透過這個檢視，您可以取得作業如何執行的詳細資料。 如需詳細資訊，請參閱[在適用於 Visual Studio 的 Data Lake 工具中使用頂點執行檢視](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+    它會顯示頂點執行詳細資料。 作業設定檔存檔每個頂點執行日誌，如總數據讀取/寫入、運行時、狀態等。通過此視圖，您可以獲取有關作業如何運行的更多詳細資訊。 如需詳細資訊，請參閱[在適用於 Visual Studio 的 Data Lake 工具中使用頂點執行檢視](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
 
 ## <a name="next-steps"></a>後續步驟
 * 若要記錄診斷資訊，請參閱 [為 Azure Data Lake Analytics 存取診斷記錄](data-lake-analytics-diagnostic-logs.md)

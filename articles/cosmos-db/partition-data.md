@@ -1,16 +1,16 @@
 ---
 title: Azure Cosmos DB 中的資料分割和水平調整
-description: 瞭解資料分割在 Azure Cosmos DB 中的運作方式、如何設定資料分割和分割區索引鍵，以及如何為您的應用程式選擇正確的分割區索引鍵。
+description: 瞭解分區在 Azure Cosmos DB 中的工作原理、如何配置分區和分區金鑰以及如何為應用程式選擇正確的分區金鑰。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246613"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料分割和水平調整
@@ -19,28 +19,28 @@ ms.locfileid: "79246613"
 
 ## <a name="logical-partitions"></a>邏輯分割區
 
-邏輯分割區是由具有相同分割區索引鍵的一組專案所組成。 例如，在所有專案都包含 `City` 屬性的容器中，您可以使用 `City` 做為容器的分割區索引鍵。 具有 `City`之特定值的專案群組，例如 `London`、`Paris`和 `NYC`，會形成不同的邏輯分割區。 刪除基礎資料時，您不必擔心刪除資料分割。
+邏輯分區由一組具有相同分區鍵的項組成。 例如，在所有項都包含`City`屬性的容器中，可以使用`City`作為容器的分區鍵。 具有`City`特定值（如`London`）`Paris`和`NYC`的項組形成不同的邏輯分區。 刪除基礎資料時，不必擔心刪除分區。
 
-在 Azure Cosmos DB 中，容器是延展性的基本單位。 新增至容器的資料，以及您在容器上布建的輸送量，會自動（水準）分割在一組邏輯分割區上。 資料和輸送量會根據您為 Azure Cosmos 容器指定的分割區索引鍵進行分割。 如需詳細資訊，請參閱[建立 Azure Cosmos 容器](how-to-create-container.md)。
+在 Azure Cosmos DB 中，容器是延展性的基本單位。 添加到容器的資料以及您在容器上預配的輸送量將自動（水準）跨一組邏輯分區進行分區。 資料和輸送量根據為 Azure Cosmos 容器指定的分區鍵進行分區。 有關詳細資訊，請參閱創建[Azure Cosmos 容器](how-to-create-container.md)。
 
-邏輯分割區也會定義資料庫交易的範圍。 您可以使用[具有快照集隔離的交易](database-transactions-optimistic-concurrency.md)來更新邏輯分割區內的專案。 將新的專案新增至容器時，系統會以透明的方式建立新的邏輯分割區。
+邏輯分區還定義資料庫事務的範圍。 可以使用[具有快照隔離的事務](database-transactions-optimistic-concurrency.md)來更新邏輯分區中的項。 將新專案添加到容器時，系統會透明地創建新的邏輯分區。
 
 ## <a name="physical-partitions"></a>實體分割區
 
-Azure Cosmos 容器的調整方式是將資料和輸送量分散到大量的邏輯分割區。 就內部而言，一或多個邏輯分割區會對應至由一組複本（也稱為[*複本集*](global-dist-under-the-hood.md)）所組成的實體分割區。 每個複本集都裝載 Azure Cosmos 資料庫引擎的實例。 複本集可讓儲存在實體分割區中的資料持久、高可用性且一致。 實體分割區支援儲存體和要求單位（ru）的最大數量。 組成實體分割區的每個複本都會繼承資料分割的儲存配額。 實體分割區的所有複本會共同支援配置給實體分割區的輸送量。 
+通過跨大量邏輯分區分發資料和輸送量，可以縮放 Azure Cosmos 容器。 在內部，一個或多個邏輯分區映射到由一組副本組成的物理分區，也稱為[*複本集*](global-dist-under-the-hood.md)。 每個複本集都承載 Azure Cosmos 資料庫引擎的實例。 複本集使存儲在物理分區中的資料持久、高度可用且一致。 物理分區支援最大數量的存儲和請求單位 （R）。 組成物理分區的每個副本都繼承分區的存儲配額。 物理分區的所有副本都統一支援分配給物理分區的輸送量。 
 
 下圖顯示如何將邏輯分割區對應至全域散發的實體分割區：
 
-![示範 Azure Cosmos DB 資料分割的影像](./media/partition-data/logical-partitions.png)
+![演示 Azure 宇宙資料庫分區的圖像](./media/partition-data/logical-partitions.png)
 
-為容器布建的輸送量會平均分散于實體分割區。 不會平均散發輸送量要求的資料分割索引鍵設計，可能會建立「經常性」的磁碟分割。 熱分割區可能會導致速率限制，並以不有效率的方式使用布建的輸送量，以及更高的成本。
+為容器預配的輸送量在物理分區之間平均分配。 不均勻分配輸送量請求的分區金鑰設計可能會創建"熱"分區。 熱分區可能會導致速率限制和預配輸送量的使用效率低下，以及更高的成本。
 
-與邏輯分割區不同，實體分割區是系統的內部實作。 您無法控制實體分割區的大小、位置或計數，也無法控制邏輯分割區與實體分割區之間的對應。 不過，您可以[選擇正確的邏輯分割](partitioning-overview.md#choose-partitionkey)區索引鍵，以控制邏輯分區的數目，以及資料、工作負載和輸送量的散發。
+與邏輯分割區不同，實體分割區是系統的內部實作。 您無法控制物理分區的大小、位置或計數，也不能控制邏輯分區和物理分區之間的映射。 但是，您可以通過[選擇正確的邏輯分區鍵](partitioning-overview.md#choose-partitionkey)來控制邏輯分區的數量以及資料、工作負載和輸送量的分佈。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[選擇分割](partitioning-overview.md#choose-partitionkey)區索引鍵。
-* 了解 [Azure Cosmos DB 中佈建的輸送量](request-units.md)。
-* 了解 [Azure Cosmos DB 中的全域分散](distribute-data-globally.md)。
+* 瞭解如何[選擇分區鍵](partitioning-overview.md#choose-partitionkey)。
+* 瞭解[Azure 宇宙 DB 中的預配輸送量](request-units.md)。
+* 瞭解[Azure 宇宙 DB 中的全域分發](distribute-data-globally.md)。
 * 了解如何[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。
 * 了解如何[在 Azure Cosmos 資料庫上佈建輸送量](how-to-provision-database-throughput.md)。

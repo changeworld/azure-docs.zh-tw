@@ -1,5 +1,5 @@
 ---
-title: Stackify 回溯 Azure Linux 代理程式擴充功能
+title: 堆疊回溯 Azure Linux 代理擴展
 description: 將 Stackify Retrace Linux 代理程式部署在 Linux 虛擬機器上。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253789"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理程式擴充功能
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Stackify 提供可追蹤您應用程式詳細資料的產品，幫助您快速找到問題並修正。 對於開發人員小組而言，Retrace 是適用於多重環境、完全整合且效能強大的應用程式， 結合了每個開發小組都需要的多種工具。
 
@@ -198,4 +198,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | 停用錯誤 | 服務移除失敗 |
 | 120 | 解除安裝發生錯誤 | 服務停止失敗 |
 
-如果您需要更多協助，請連絡 Stackify 支援部門： https://support.stackify.com。
+如果您需要更多協助，請連絡 Stackify 支援部門：https://support.stackify.com。

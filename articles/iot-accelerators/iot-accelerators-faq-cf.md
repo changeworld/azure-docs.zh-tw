@@ -1,6 +1,6 @@
 ---
 title: 連線處理站解決方案的常見問題集 - Azure | Microsoft Docs
-description: 本文會回答連線處理站解決方案加速器的常見問題。 它包含 GitHub 存放庫的連結。
+description: 本文回答了連接工廠解決方案加速器的常見問題。 它包括指向 GitHub 存儲庫的連結。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826286"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
@@ -31,7 +31,7 @@ ms.locfileid: "73826286"
 
 * 基礎結構
 * 規格
-* Technology
+* 技術
 * 處理序
 
 ### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Microsoft 為什麼選擇 OPC UA 作為連線的處理站解決方案加速器？
@@ -42,7 +42,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 您有兩個選項可新增 IP 位址：
 
-* 使用`Simulation/Factory/Add-SimulationPublicIp.ps1`儲存機制[中的 PowerShell 指令碼 ](https://github.com/Azure/azure-iot-connected-factory)。 傳遞您的部署名稱做為參數。 對於本機部署，請使用 `<your username>ConnFactoryLocal`。 指令碼會列印出虛擬機器的 IP 位址。
+* 使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 指令碼 `Simulation/Factory/Add-SimulationPublicIp.ps1`。 傳遞您的部署名稱做為參數。 對於本機部署，請使用 `<your username>ConnFactoryLocal`。 指令碼會列印出虛擬機器的 IP 位址。
 
 * 在 Azure 入口網站中，找出您部署的資源群組。 除了本機部署以外，您指定作為解決方案或部署的名稱就是資源群組的名稱。 對於使用組建指令碼的本機部署，資源群組的名稱是 `<your username>ConnFactoryLocal`。 現在請將新的**公用 IP 位址**資源新增至資源群組。
 
@@ -59,7 +59,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>如何登入模擬虛擬機器？
 
-只有在您已使用`build.ps1`儲存機制[中的 PowerShell 指令碼 ](https://github.com/Azure/azure-iot-connected-factory) 部署您的解決方案時，才可支援登入模擬虛擬機器。
+只有在您已使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 指令碼 `build.ps1` 部署您的解決方案時，才可支援登入模擬虛擬機器。
 
 如果您已從 www.azureiotsolutions.com 部署解決方案，則無法登入虛擬機器。 您無法登入是因為會隨機產生密碼，而且您無法重設密碼。
 
@@ -76,7 +76,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 1. 若要檢查哪些容器正在作用中，請執行：`docker ps`。
 1. 若要停止所有模擬容器，請執行：`./stopsimulation`。
 1. 若要啟動所有模擬容器：
-    * 匯出具有名稱 **IOTHUB_CONNECTIONSTRING** 的殼層變數。 使用 **檔案中的**IotHubOwnerConnectionString`<name of your deployment>.config.user` 設定值。 例如：
+    * 匯出具有名稱 **IOTHUB_CONNECTIONSTRING** 的殼層變數。 使用 `<name of your deployment>.config.user` 檔案中的 **IotHubOwnerConnectionString** 設定值。 例如：
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -86,11 +86,11 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>如何更新虛擬機器中的模擬？
 
-如果您已對模擬進行任何變更，您可以使用 `build.ps1` 命令，使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 指令碼 `updatedimulation`。 此指令碼可建置所有模擬元件，停止虛擬機器中的模擬，並上傳、安裝，並啟動這些元件。
+如果您已對模擬進行任何變更，您可以使用 `updatedimulation` 命令，使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 指令碼 `build.ps1`。 此指令碼可建置所有模擬元件，停止虛擬機器中的模擬，並上傳、安裝，並啟動這些元件。
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>如何找出我的解決方案所使用之 IoT 中樞的連接字串？
 
-如果您已透過`build.ps1`儲存機制[中的 ](https://github.com/Azure/azure-iot-connected-factory) 指令碼部署解決方案，連接字串是 **檔案中的**IotHubOwnerConnectionString`<name of your deployment>.config.user` 值。
+如果您已透過[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 指令碼部署解決方案，連接字串是 `<name of your deployment>.config.user` 檔案中的 **IotHubOwnerConnectionString** 值。
 
 您也可以使用 Azure 入口網站尋找連接字串。 在您部署之資源群組中的 IoT 中樞資源中，找出連接字串設定。
 
@@ -115,7 +115,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何從模擬元件取得記錄資料？
 
-模擬中的所有元件會將資訊記錄到記錄檔中。 這些檔案可在虛擬機器中的資料夾 `home/docker/Logs` 中找到。 若要擷取記錄，您可以使用`Simulation/Factory/Get-SimulationLogs.ps1`儲存機制[中的 PowerShell 指令碼 ](https://github.com/Azure/azure-iot-connected-factory)。
+模擬中的所有元件會將資訊記錄到記錄檔中。 這些檔案可在虛擬機器中的資料夾 `home/docker/Logs` 中找到。 若要擷取記錄，您可以使用[儲存機制](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 指令碼 `Simulation/Factory/Get-SimulationLogs.ps1`。
 
 此指令碼需要登入虛擬機器。 您可能需要提供認證才可登入。 請參閱[如何登入模擬虛擬機器？](#how-do-i-sign-in-to-the-simulation-vm)以尋找認證。
 
@@ -146,9 +146,9 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 當您使用連線處理站 GitHub 存放庫中的 `build.ps1` 指令碼進行部署時，請將建置視窗中的 `$env:MapApiQueryKey` 環境變數設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 系統隨後會自動啟用互動式地圖。
 
-您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]，您可以在此找到 [應用程式設定] 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]，並重新啟動 App Service。
+您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]****，您可以在此找到 [應用程式設定]**** 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]****，並重新啟動 App Service。
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>如何? 建立 Azure 地圖服務帳戶？
+### <a name="how-do-i-create-an-azure-maps-account"></a>如何創建 Azure 地圖帳戶？
 
 請參閱[如何管理 Azure 地圖服務帳戶和金鑰](../azure-maps/how-to-manage-account-keys.md)。
 
@@ -158,7 +158,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>在進行本機偵錯時，如何啟用互動式地圖？
 
-若要在進行本機偵錯時啟用互動式地圖，請將部署根目錄中 `MapApiQueryKey` 和 `local.user.config` 檔案的 `<yourdeploymentname>.user.config` 設定值，設定為您先前複製的 **QueryKey** 值。
+若要在進行本機偵錯時啟用互動式地圖，請將部署根目錄中 `local.user.config` 和 `<yourdeploymentname>.user.config` 檔案的 `MapApiQueryKey` 設定值，設定為您先前複製的 **QueryKey** 值。
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>如何在儀表板首頁使用不同的影像？
 
@@ -168,7 +168,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 從非 OPC UA 裝置將遙測資料傳送到連線的處理站：
 
-1. 在 [ 檔案中，](iot-accelerators-connected-factory-configure.md)於連線的處理站拓撲內設定新的站台`ContosoTopologyDescription.json`。
+1. 在 `ContosoTopologyDescription.json` 檔案中，[於連線的處理站拓撲內設定新的站台](iot-accelerators-connected-factory-configure.md)。
 
 1. 使用連線處理站相容的 JSON 格式內嵌遙測資料：
 

@@ -1,6 +1,6 @@
 ---
-title: 強式身分識別基礎的四個步驟-Azure AD
-description: 本主題說明混合式身分識別客戶可採取的四個步驟，以建立強身份識別基礎。
+title: 強大的身份基礎的四個步驟 - Azure AD
+description: 本主題介紹混合標識客戶為構建強大的身份基礎而可以採取的四個步驟。
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -14,259 +14,259 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74206787"
 ---
-# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>具有 Azure Active Directory 的強身份識別基礎的四個步驟
+# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure 活動目錄建立強大的標識基礎的四個步驟
 
-管理應用程式和資料的存取權不會再依賴傳統的網路安全性界限策略，例如周邊網路和防火牆，因為應用程式可以快速地移至雲端。 現在，組織必須信任其身分識別解決方案，以控制誰和誰可以存取組織的應用程式和資料。 有更多組織允許員工攜帶自己的裝置來工作，並將其裝置從任何可連線到網際網路的地方使用。 在組織選擇執行的身分識別解決方案中，確保這些裝置符合規範且安全已成為一項重要考慮。 在現今的數位工作場所，身分識別是任何移至雲端之組織的[主要控制平面](https://www.microsoft.com/security/technology/identity-access-management?rtc=1)。
+由於應用快速向雲移動，管理對應用和資料的訪問不能再依賴于傳統的網路安全邊界策略，如周邊網路和防火牆。 現在，組織必須信任其身份解決方案，以控制對組織應用和資料具有存取權限的人員和內容。 越來越多的組織允許員工自帶設備工作，並從任何可以連接到 Internet 的地方使用設備。 確保這些設備符合要求和安全已成為組織選擇實施的標識解決方案中的一個重要考慮因素。 在當今的數位工作場所中，身份是任何遷移到雲的組織[的主要控制平面](https://www.microsoft.com/security/technology/identity-access-management?rtc=1)。
 
-在採用 Azure Active Directory （Azure AD）混合式身分識別解決方案時，組織會取得高階功能的存取權，透過自動化、委派、自助式和單一登入功能來解除生產力。 它可讓您的工作者從任何需要執行工作的地方存取公司資源，同時讓您的 IT 小組能夠適當地存取適當的資源來建立安全的產能，藉此管理該存取權。
+在採用 Azure 活動目錄 （Azure AD） 混合標識解決方案時，組織可以訪問高級功能，這些功能通過自動化、委派、自助服務和單一登入功能來解鎖工作效率。 它允許您的員工從需要工作的地方訪問公司資源，同時允許您的 IT 團隊通過確保合適的人員能夠正確訪問正確的資源來建立安全生產力來管理這種訪問。
 
-根據我們的學習，此最佳做法檢查清單可協助您快速部署建議的動作，以在您的組織中建立*強大*的身分識別基礎：
+根據我們的學習，此最佳實踐清單將説明您快速部署建議的操作，在您的組織中建立*牢固的*身份基礎：
 
-* 輕鬆連接到應用程式
-* 自動為每位使用者建立一個身分識別
-* 安全地強化您的使用者
-* 讓您的見解
+* 輕鬆連接到應用
+* 自動為每個使用者建立一個標識
+* 為您的使用者安全提供支援
+* 操作您的見解
 
-## <a name="step-1---connect-to-apps-easily"></a>步驟 1-輕鬆連接到應用程式
+## <a name="step-1---connect-to-apps-easily"></a>步驟 1 - 輕鬆連接到應用
 
-藉由將您的應用程式與 Azure AD 連線，您可以藉由啟用單一登入（SSO）並進行使用者布建，來改善使用者生產力和安全性。 藉由在單一位置管理您的應用程式，Azure AD，您可以將系統管理負擔降至最低，並針對您的安全性和合規性政策達成單一控制點。
+通過將應用與 Azure AD 連接，可以通過啟用單一登入 （SSO） 並執行使用者預配來提高最終使用者的工作效率和安全性。 通過在單個位置 Azure AD 管理應用，可以最大限度地減少管理開銷，並為安全和合規性策略實現單一控制點。
 
-本節涵蓋的選項可讓您管理使用者對應用程式的存取、啟用內部應用程式的安全遠端存取，以及將您的應用程式遷移至 Azure AD 的優點。
+本節介紹用於管理使用者訪問應用、啟用對內部應用的安全遠端存取以及將應用遷移到 Azure AD 的好處的選項。
 
-### <a name="make-apps-available-to-your-users-seamlessly"></a>讓您的使用者順暢地使用應用程式
+### <a name="make-apps-available-to-your-users-seamlessly"></a>無縫為使用者提供應用
 
-Azure AD 可讓系統管理員[將應用程式新增](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)至[Azure 入口網站](https://portal.azure.com/)中的企業應用程式資源庫。 將應用程式新增至 [企業應用程式] 資源庫，可讓您更輕鬆地將應用程式設定為使用 Azure AD 做為身分識別提供者。 此外，它也可讓您使用條件式存取原則來管理使用者對應用程式的存取權，並設定應用程式的單一登入（SSO），讓使用者不必重複輸入密碼，而且會自動登入內部部署和以雲端為基礎的應用程式。
+Azure AD 使管理員能夠將[應用程式添加到](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) [Azure 門戶](https://portal.azure.com/)中的企業應用程式庫。 將應用程式添加到企業應用程式庫可以更輕鬆地將應用程式佈建為使用 Azure AD 作為標識提供程式。 它還允許您使用條件訪問策略管理使用者對應用程式的訪問，並將單一登入 （SSO） 配置為應用程式，以便使用者不必重複輸入其密碼，並自動登入到本地和基於雲的應用程式。
 
-一旦將應用程式新增至 Azure AD 資源庫之後，使用者就可以查看指派給他們的應用程式，並視需要搜尋並要求其他應用程式。 Azure AD 提供[數種方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)讓使用者存取其應用程式：
+將應用程式添加到 Azure AD 庫後，使用者可以查看分配給它們的應用，並根據需要搜索和請求其他應用。 Azure AD 為使用者提供[了幾種](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)訪問其應用的方法：
 
-* 存取面板/我的應用程式
+* 訪問面板/我的應用程式
 * Office 365 應用程式啟動器
 * 直接登入同盟應用程式
 * 直接登入連結
 
-若要深入瞭解使用者對應用程式的存取，請參閱這篇文章中的**步驟 3--讓您的使用者**更容易。
+要瞭解有關使用者訪問應用的更多資訊，請參閱本文**中的步驟 3 -- 增強使用者的能力**。
 
-### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>將應用程式從 Active Directory 同盟服務遷移至 Azure AD
+### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>將應用從活動目錄聯合服務遷移到 Azure AD
 
-將單一登入設定從 Active Directory 同盟服務（ADFS）遷移至 Azure AD 可提供安全性的額外功能、更一致的管理性和共同作業。 為獲得最佳結果，建議您將應用程式從 AD FS 遷移至 Azure AD。 將您的應用程式驗證和授權帶入 Azure AD 可提供下列優點：
+將單一登入配置從活動目錄聯合服務 （ADFS） 遷移到 Azure AD 可實現安全性、更一致的可管理性和協作性的其他功能。 為獲得最佳結果，我們建議您將應用從 AD FS 遷移到 Azure AD。 將應用程式身份驗證和授權引入 Azure AD 可為您提供以下好處：
 
 * 管理成本
 * 管理風險
 * 提高生產力
-* 解決合規性與治理
+* 解決合規性和治理問題
 
-若要深入瞭解，請參閱將[您的應用程式遷移至 Azure Active Directory](https://aka.ms/migrateapps/whitepaper)白皮書。
+要瞭解更多資訊，請參閱[將應用程式遷移到 Azure 活動目錄](https://aka.ms/migrateapps/whitepaper)的白皮書。
 
-### <a name="enable-secure-remote-access-to-apps"></a>啟用對應用程式的安全遠端存取
+### <a name="enable-secure-remote-access-to-apps"></a>啟用對應用的安全遠端存取
 
-[Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)提供簡單的解決方案，讓組織將內部部署應用程式發佈至雲端，以供需要以安全方式存取內部應用程式的遠端使用者使用。 單一登入 Azure AD 之後，使用者可以透過外部 Url 或內部應用程式入口網站來存取雲端和內部部署應用程式。
+[Azure AD 應用程式代理](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)為組織提供了一個簡單的解決方案，以便為需要以安全方式訪問內部應用的遠端使用者將本地應用發佈到雲。 對 Azure AD 進行單個登錄後，使用者可以通過外部 URL 或內部應用程式門戶訪問雲和本地應用程式。
 
-Azure AD 應用程式 Proxy 提供下列優點：
+Azure AD 應用程式代理具有以下優點：
 
 * 將 Azure AD 擴充至內部部署資源
   * 雲端級別安全性和保護
-  * 可輕鬆啟用的功能，例如條件式存取和多重要素驗證
-* 周邊網路中沒有任何元件（例如 VPN 和傳統的反向 proxy 解決方案）
+  * 易於啟用的條件訪問和多重要素驗證等功能
+* 周邊網路中沒有元件，如 VPN 和傳統反向代理解決方案
 * 沒有所需的輸入連線
-* 雲端和內部部署中跨裝置、資源和應用程式的單一登入（SSO）
-* 讓終端使用者隨時隨地都能享有生產力
+* 雲和本地中的設備、資源和應用的單一登入 （SSO）
+* 使最終使用者隨時隨地高效工作
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>使用 Microsoft Cloud App Security 探索影子 IT
+### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>使用 Microsoft 雲應用安全性發現影子 IT
 
-在現代化企業中，IT 部門通常不知道使用者用來執行工作的所有雲端應用程式。 當 IT 系統管理員詢問他們認為員工使用多少雲端應用程式時，平均為30或40。 實際上，您組織中的員工會使用超過1000個不同的應用程式。 80% 的員工使用未獲批准的應用程式，但沒有人已審核，而且可能不符合您的安全性與合規性原則。
+現代企業 IT 部門通常不會知道使用者用來執行其工作的所有雲端應用程式。 當 IT 管理員被問到他們認為員工使用多少雲應用時，他們平均說 30 或 40 個雲應用。 實際上，組織中的員工平均使用超過 1，000 個單獨的應用。 80% 的員工使用未經批准的應用，但沒有人審查過這些應用，並且可能不符合您的安全和合規性政策。
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) （MCAS）可協助您找出有用的應用程式，讓使用者可以批准並新增至企業應用程式庫，讓使用者受益于 SSO 和條件式存取等功能。
+[Microsoft 雲應用安全](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)（MCAS） 可以説明您識別受 IT 可能會批准並添加到企業應用程式庫的使用者歡迎的有用應用，以便使用者從 SSO 和條件訪問等功能中受益。
 
-<em>「**Cloud App Security**可協助我們確保我們的人員可以使用雲端和 SaaS 應用程式，以支援有助於保護 Accenture 的基本安全性原則。」</em> --- [John Blasi，管理總監，資訊安全性，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>**"雲應用安全**可説明我們確保我們的員工正確使用我們的雲和 SaaS 應用程式，以支援有助於保護埃森哲的基本安全性原則。</em> --- [約翰·布拉西，埃森哲資訊安全董事總經理](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-除了偵測影子 IT 之外，MCAS 也可以判斷應用程式的風險層級，防止未經授權存取公司資料、可能的資料洩漏，以及應用程式中的其他固有安全性風險。
+除了檢測影子 IT 之外，MCAS 還可以確定應用的風險級別，防止未經授權訪問公司資料、可能資料洩露以及應用程式固有的其他安全風險。
 
-## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>步驟 2-自動為每位使用者建立一個身分識別
+## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>步驟 2 - 自動為每個使用者建立一個標識
 
-將內部部署和雲端式目錄一起帶入 Azure AD 混合式身分識別解決方案，可讓您在雲端中布建現有的身分識別，以重複使用現有的內部部署 Active Directory 投資。 解決方案會同步處理內部部署身分識別與 Azure AD，同時讓內部部署 Active Directory 以任何現有的治理解決方案執行，做為身分識別的主要來源。 Microsoft 的 Azure AD 混合式身分識別解決方案涵蓋內部部署和雲端式的功能，並建立通用的使用者身分識別，以便驗證和授權所有資源（不論其位置為何）。
+在 Azure AD 混合標識解決方案中整合本地目錄和基於雲的目錄，將允許您通過在雲中預配現有標識來重用現有的本地活動目錄投資。 該解決方案與 Azure AD 同步本地標識，而 IT 使本地活動目錄與任何現有治理解決方案一起運行，作為標識的主要真實來源。 Microsoft 的 Azure AD 混合標識解決方案跨越本地和基於雲的功能，創建通用使用者標識，以便對所有資源進行身份驗證和授權，而不管它們位於何處。
 
-整合您的內部部署目錄與 Azure AD 可讓您的使用者更具生產力，並藉由提供通用身分識別來存取雲端和內部部署資源，以避免使用者跨應用程式和服務使用多個帳戶。 使用多個帳戶是終端使用者和 IT 的痛苦點。 從使用者的觀點來看，擁有多個帳戶表示必須記住多個密碼。 為了避免這種情況，許多使用者會針對每個帳戶重複使用相同的密碼，這在安全性的觀點上是不正確的。 從 IT 的觀點來看，重複使用通常會導致更多的密碼重設和技術服務人員成本，以及終端使用者抱怨。
+將本地目錄與 Azure AD 集成，可提高使用者工作效率，並通過提供用於訪問雲和本地資源的通用標識，防止使用者跨應用和服務使用多個帳戶。 對於最終使用者和 IT 來說，使用多個帳戶都是一個難題。 從最終使用者的角度來看，擁有多個帳戶意味著必須記住多個密碼。 為了避免這種情況，許多使用者為每個帳戶重用相同的密碼，從安全形度來看，這是不好的。 從 IT 角度來看，重用通常會導致更多的密碼重設和説明台成本以及最終使用者投訴。
 
-Azure AD Connect 是用來將內部部署身分識別同步至 Azure AD 的工具，然後可以用來存取雲端應用程式。 一旦識別 Azure AD 之後，即可布建至 SaaS 應用程式（例如 Salesforce 或 Concur）。
+Azure AD 連接是用於將本地標識同步到 Azure AD 的工具，然後可用於訪問雲應用程式。 標識在 Azure AD 中後，它們可以預配到 SaaS 應用程式（如 Salesforce 或 Concur）。
 
-在本節中，我們會列出針對雲端提供高可用性、新式驗證，以及減少內部部署使用量的建議。
+在本節中，我們列出了為雲提供高可用性、現代身份驗證和減少本地佔用空間的建議。
 
 > [!NOTE]
-> 如果您想要深入瞭解 Azure AD Connect，請參閱[什麼是 Azure AD Connect 同步？](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
+> 如果要瞭解有關 Azure AD 連接的更多內容，請參閱[什麼是 Azure AD 連接同步？](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
 
-### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>設定 Azure AD Connect 的預備伺服器，並讓它保持在最新狀態
+### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>為 Azure AD 連接設置暫存伺服器，並使其保持最新
 
-Azure AD Connect 在布建流程中扮演重要角色。 如果同步處理伺服器因任何原因而離線，內部部署的變更將不會在雲端中更新，並會對使用者造成存取問題。 請務必定義容錯移轉策略，讓系統管理員能夠在同步處理伺服器離線後快速繼續同步處理。
+Azure AD 連接在預配過程中扮演著關鍵角色。 如果同步伺服器由於任何原因離線，則對本地的更改將不會在雲中更新，並導致使用者訪問問題。 請務必定義容錯移轉策略，允許管理員在同步伺服器離線後快速恢復同步。
 
-若要在您的主要 Azure AD Connect 伺服器離線時提供高可用性，建議您為 Azure AD Connect 部署個別的[預備伺服器](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server)。 部署伺服器可讓系統管理員透過簡單的設定交換器，將預備伺服器「升級」到生產環境。 在預備模式中設定待命伺服器也可讓您測試和部署新的設定變更，並在解除委任舊的伺服器時引進新的伺服器。
+為了在主 Azure AD Connect 伺服器離線時提供高可用性，建議為 Azure AD Connect 部署單獨的[暫存伺服器](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server)。 部署伺服器允許管理員通過簡單的配置開關將暫存伺服器"提升"到生產。 在暫存模式下配置待命伺服器還允許您測試和部署新的配置更改，並在舊伺服器停用時引入新伺服器。
 
 > [!TIP]
-> Azure AD Connect 會定期更新。 因此，強烈建議您將預備伺服器保持在最新的階段，以利用每個新版本所提供的效能改進、bug 修正和新功能。
+> Azure AD 連接會定期更新。 因此，強烈建議您保持暫存伺服器的電流，以便利用每個新版本提供的性能改進、錯誤修復和新功能。
 
-### <a name="enable-cloud-authentication"></a>啟用雲端驗證
+### <a name="enable-cloud-authentication"></a>啟用雲身份驗證
 
-具有內部部署 Active Directory 的組織應該使用 Azure AD Connect，將其目錄延伸至 Azure AD，並設定適當的驗證方法。 為您的組織[選擇正確的驗證方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)，是將應用程式移至雲端的第一步。 這是很重要的元件，因為它會控制對所有雲端資料和資源的存取。
+具有本地活動目錄的組織應使用 Azure AD 連接將其目錄擴展到 Azure AD 並配置適當的身份驗證方法。 為組織[選擇正確的身份驗證方法是](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)將應用遷移到雲的第一步。 它是一個關鍵元件，因為它控制對所有雲資料和資源的訪問。
 
-在 Azure AD 中啟用內部部署目錄物件的雲端驗證最簡單且建議的方法，是啟用[密碼雜湊同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)處理（PHS）。 或者，某些組織可能會考慮啟用[傳遞驗證](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)（PTA）。
+為 Azure AD 中的本地目錄物件啟用雲身份驗證的最簡單和推薦的方法是啟用[密碼雜湊同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)（PHS）。 或者，某些組織可能會考慮啟用[直通身份驗證](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)（PTA）。
 
-無論您選擇 PHS 或 PTA，別忘了啟用[無縫單一登入](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)，以允許使用者在您的公司網路上使用 Windows 7 和8部裝置時，不需要在應用程式中經常輸入其使用者名稱和密碼，即可存取雲端應用程式。 若無單一登入，使用者必須記住應用程式特定的密碼，並登入每個應用程式。 同樣地，IT 人員也需要為每個應用程式建立和更新使用者帳戶，例如 Office 365、Box 和 Salesforce。 使用者必須記住他們的密碼，再加上登入每個應用程式的時間。 為整個企業提供標準化的單一登入機制，對於最佳使用者體驗、降低風險、回報和治理的能力非常重要。
+無論您選擇小靈通還是 PTA，不要忘記啟用[無縫單一登入](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)功能，以允許使用者在使用公司網路上的 Windows 7 和 8 設備時，無需在應用中不斷輸入使用者名和密碼即可訪問雲應用。 如果沒有單一登入，使用者必須記住特定于應用程式的密碼並登錄到每個應用程式。 同樣，IT 人員需要為每個應用程式（如 Office 365、Box 和 Salesforce）創建和更新使用者帳戶。 使用者需要記住其密碼，以及花時間登錄到每個應用程式。 為整個企業提供標準化的單一登入機制對於最佳使用者體驗、降低風險、報告能力和治理至關重要。
 
-對於已經使用 AD FS 或其他內部部署驗證提供者的組織而言，隨著身分識別提供者移至 Azure AD 會降低複雜性並提升可用性。 除非您有使用同盟的特定使用案例，我們建議您從同盟驗證遷移至 PHS 和無縫 SSO 或 PTA 和無縫 SSO，以享有降低的內部部署使用量和雲端所提供的彈性的優點改良的使用者體驗。 如需詳細資訊，請參閱[從同盟遷移至密碼雜湊同步處理以進行 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync)。
+對於已經使用 AD FS 或其他本地身份檢查器提供者的組織，遷移到 Azure AD 作為標識提供程式可以減少複雜性並提高可用性。 除非您有使用聯合的特定用例，否則我們建議您從識別身分同盟遷移到小靈通和無縫 SSO 或 PTA 和無縫 SSO，以享受減少本地佔用空間的優勢以及雲提供的靈活性改進的使用者體驗。 有關詳細資訊，請參閱[Azure 活動目錄從聯合遷移到密碼雜湊同步](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync)。
 
-### <a name="enable-automatic-deprovisioning-of-accounts"></a>啟用自動解除布建帳戶
+### <a name="enable-automatic-deprovisioning-of-accounts"></a>啟用自動取消預配帳戶
 
-針對您的應用程式啟用自動布建和解除布建，是在多個系統上管理身分識別生命週期的最佳策略。 Azure AD 支援將使用者帳戶[自動化、以原則為基礎的布建和](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)解除布建到各種熱門的 SaaS 應用程式（例如 ServiceNow 和 Salesforce），以及其他可執行[SCIM 2.0 通訊協定](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)的專案。 不同于需要自訂程式碼或手動上傳 CSV 檔案的傳統布建解決方案，布建服務會裝載在雲端中，而且功能預先整合的連接器可以使用 Azure 入口網站進行設定和管理。 自動解除布建的一個主要優點是，它會在離開組織時，立即從關鍵 SaaS 應用程式移除使用者的身分識別，以協助保護您的組織。
+為應用程式啟用自動預配和取消預配是管理跨多個系統標識生命週期的最佳策略。 Azure AD 支援[自動、基於策略的預配和取消預配](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)使用者帳戶，以各種流行的 SaaS 應用程式（如 ServiceNow 和 Salesforce）以及實現[SCIM 2.0 協定](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)的其他應用程式進行預配和取消預配。 與需要自訂代碼或手動上載 CSV 檔的傳統預配解決方案不同，預配服務託管在雲中，並具有可以使用 Azure 門戶進行設置和管理的預集成連接器。 自動取消預配的一個關鍵好處是，它有助於保護組織的安全，當使用者在離開組織時立即從關鍵的 SaaS 應用中刪除他們的身份。
 
 如需深入了解自動化使用者佈建，請參閱 [自動化使用 Azure Active Directory 對於 SaaS 應用程式的使用者佈建和解除佈建](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 
-## <a name="step-3---empower-your-users-securely"></a>步驟 3-讓您的使用者安全地進行
+## <a name="step-3---empower-your-users-securely"></a>第 3 步 - 安全地為使用者提供支援
 
-在現今的數位工作場所，請務必平衡安全性與生產力。 不過，終端使用者常常會在安全性措施上推送，以降低其生產力和雲端應用程式的存取權。 為了協助解決這個情況，Azure AD 提供自助功能，讓使用者維持生產力，同時將系統管理負擔降到最低。
+在當今的數位工作場所中，在安全性與生產力之間取得平衡非常重要。 但是，最終使用者通常會拒絕採取安全措施，降低工作效率和對雲應用的訪問。 為了説明解決這個問題，Azure AD 提供了自助服務功能，使使用者能夠保持工作效率，同時最大限度地減少管理開銷。
 
-本節列出的建議可讓您的使用者在保持不間斷的狀態下，移除組織中的摩擦。
+本節列出了通過增強使用者能力來消除組織摩擦的建議，同時保持警惕。
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>為所有使用者啟用自助式密碼重設
+### <a name="enable-self-service-password-reset-for-all-users"></a>為所有使用者啟用自助服務密碼重設
 
-Azure 的[自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)（SSPR）提供一個簡單的方法，讓 IT 系統管理員能夠在不需要系統管理員介入的情況下，重設和解除鎖定其密碼或帳戶。 系統包含詳細的報告，可追蹤使用者何時存取系統與通知來警示您誤用或濫用。
+Azure 的[自助服務密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)（SSPR） 為 IT 管理員提供了一種簡單的方法，允許使用者重置和解鎖其密碼或帳戶，而無需管理員干預。 系統包含詳細的報告，可追蹤使用者何時存取系統與通知來警示您誤用或濫用。
 
-根據預設，Azure AD 可以在執行密碼重設時解除鎖定帳戶。 不過，當您啟用[內部部署 Azure AD Connect 整合](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)時，您也可以選擇分隔這兩項作業，讓使用者可以解除鎖定其帳戶，而不需要重設密碼。
+根據預設，Azure AD 可以在執行密碼重設時解除鎖定帳戶。 但是，當您[在本地](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)啟用 Azure AD Connect 集成時，您還可以選擇分隔這兩個操作，這使使用者能夠解鎖其帳戶，而無需重置密碼。
 
-### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>確保所有使用者都已註冊 MFA 和 SSPR
+### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>確保所有使用者都註冊了 MFA 和 SSPR
 
-Azure 提供的報告可供您和您的組織使用，以確保使用者已註冊 MFA 和 SSPR。 尚未註冊的使用者可能必須在此程式中獲得教育。
+Azure 提供可供您和您的組織使用的報表，以確保使用者註冊 MFA 和 SSPR。 尚未註冊的使用者可能需要接受有關該過程的教育。
 
-MFA 登[入報告](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)包含 mfa 使用量的相關資訊，並可讓您深入瞭解 mfa 在您組織中的運作方式。 存取 Azure AD 的登入活動（以及審核和風險偵測）對於疑難排解、使用方式分析和辯論調查很重要。
+MFA[登錄報告](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)包含有關 MFA 使用方式的資訊，並讓您深入瞭解 MFA 在組織中的工作方式。 訪問 Azure AD 的登錄活動（以及審核和風險檢測）對於故障排除、使用方式分析和取證調查至關重要。
 
-同樣地，您也可以使用「[自助式密碼管理」報告](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)來判斷誰（或尚未註冊 SSPR）。
+同樣，[自助服務密碼管理報告](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)可用於確定誰已註冊（或尚未）註冊 SSPR。
 
-### <a name="self-service-app-management"></a>自助應用程式管理
+### <a name="self-service-app-management"></a>自助服務應用管理
 
-在您的使用者可以從其存取面板自行探索應用程式之前，您必須啟用您想要允許使用者自行探索並要求存取權的任何應用程式的[自助式應用程式存取權](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)。 自助應用程式存取是一種絕佳的方式，可讓使用者自行探索應用程式，並選擇性地允許商務群組核准這些應用程式的存取權。 您可以允許商務群組從其存取面板直接管理指派給這些使用者的[密碼單一登入應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app)的認證。
+在使用者可以從訪問面板中自行發現應用程式之前，您需要啟用[自助服務應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)對您希望允許使用者自行發現和請求訪問的任何應用程式的存取權限。 自助服務應用程式訪問是允許使用者自行發現應用程式以及允許業務組批准對這些應用程式的訪問的好方法。 您可以允許業務組直接從訪問面板管理分配給這些使用者的憑據，以便使用[密碼單簽名應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app)。
 
 ### <a name="self-service-group-management"></a>自助式群組管理
 
-使用群組時，將使用者指派給應用程式是最佳的對應，因為它們可提供極大的彈性和大規模管理的能力：
+在使用組時，最好映射將使用者分配給應用程式，因為它們具有極大的靈活性和大規模管理能力：
 
-* 以屬性為基礎的使用動態群組成員資格
-* 委派給應用程式擁有者
+* 使用動態組成員身份基於屬性
+* 委派給應用擁有者
 
-Azure AD 可讓您使用安全性群組和 Office 365 群組來管理資源的存取權。 這些群組可以由可核准或拒絕成員資格要求並委派群組成員資格控制的群組擁有者來管理。 這項功能稱為[自助式群組管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)，可讓未獲派系統管理角色的群組擁有者建立和管理群組，而不需要依賴系統管理員來處理其要求，藉此節省時間。
+Azure AD 可讓您使用安全性群組和 Office 365 群組來管理資源的存取權。 這些組可以由組擁有者管理，該擁有者可以批准或拒絕成員身份請求和委派組成員身份控制。 此功能稱為[自助服務組管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)，它允許未分配管理角色的組擁有者創建和管理組，而無需依賴管理員來處理其請求，從而節省時間。
 
-## <a name="step-4---operationalize-your-insights"></a>步驟 4-讓您的見解
+## <a name="step-4---operationalize-your-insights"></a>第 4 步 - 操作您的見解
 
-安全性相關事件和相關警示的審核和記錄是有效原則的重要元件，可確保使用者保持生產力，而且您的組織是安全的。 安全性記錄和報告可協助回答下列問題：
+審核和記錄與安全相關的事件和相關警報是高效策略的重要組成部分，可確保使用者保持高效工作，並確保您的組織安全。 安全性記錄檔和報告可以説明回答以下問題：
 
-* 您使用的是您所支付的費用嗎？
-* 我的租使用者中是否有任何可疑或惡意的情況？
-* 安全性事件期間受到影響的物件為何？
+* 您是否在使用您支付的報酬？
+* 我的租戶中是否發生了可疑或惡意事件？
+* 誰在安全事件中受到影響？
 
-安全性記錄和報告會提供可疑活動的電子記錄，並協助您偵測可能指出從外部嘗試或成功滲透網路以及內部攻擊的模式。 您可以使用審核來監視使用者活動、記載法規合規性、進行法庭分析等等。 警示會提供安全性事件通知。
+安全性記錄和報告會提供可疑活動的電子記錄，並協助您偵測可能指出從外部嘗試或成功滲透網路以及內部攻擊的模式。 您可以使用審核來監視使用者活動、記錄法規遵從性、進行取證分析等。 警示會提供安全性事件通知。
 
-### <a name="assign-least-privileged-admin-roles-for-operations"></a>指派最低許可權管理員角色以進行作業
+### <a name="assign-least-privileged-admin-roles-for-operations"></a>為操作分配最低特權的管理員角色
 
-當您考慮到作業的方法時，有幾個要考慮的管理層級。 第一個層級會將系統管理負擔放在您的全域管理員。 一律使用全域管理員角色，可能適用于較小的公司。 但針對具有技術支援人員和負責特定工作之系統管理員的大型組織，指派全域管理員的角色可能會造成安全性風險，因為它可讓這些人員能夠管理高於和高於的工作他們應該能夠執行的工作。
+在考慮操作方法時，需要考慮幾個級別的管理。 第一個級別將管理負擔置於全域管理員身上。 始終使用全域管理員角色，可能適用于較小的公司。 但對於具有説明台人員和負責特定任務的管理員的大型組織，分配全域管理員的角色可能會帶來安全風險，因為它使這些人員能夠管理超出和超越的任務他們應該能做什麼。
 
-在此情況下，您應該考慮下一個層級的系統管理。 使用 Azure AD，您可以將終端使用者指定為「受限的系統管理員」，以在較低許可權的角色中管理工作。 例如，您可以將「[安全性讀取](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader)者」角色指派給技術支援人員，讓他們能夠以唯讀存取權來管理安全性相關的功能。 或者，將[驗證系統管理員](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator)角色指派給個人，讓他們能夠重設非密碼認證或讀取和設定 Azure 服務健康狀態，是合理的做法。
+在這種情況下，應考慮下一級別的管理。 使用 Azure AD，可以將最終使用者指定為"受限管理員"，他們可以以較低許可權的角色管理工作。 例如，您可以為説明台人員分配[安全讀取器](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader)角色，以為他們提供通過唯讀訪問管理安全相關功能的能力。 或者，將[身份驗證管理員](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator)角色指派給個人以授予他們重置非密碼憑據或讀取和配置 Azure 服務運行狀況的能力可能很有意義。
 
-若要深入瞭解，請參閱[Azure Active Directory 中的系統管理員角色許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。
+要瞭解詳細資訊，請參閱[Azure 活動目錄中的管理員角色許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。
 
-### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視混合式元件（Azure AD Connect 同步處理、AD FS）
+### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD 連接運行狀況監視混合元件（Azure AD 連接同步、AD FS）
 
-Azure AD Connect 和 AD FS 是很重要的元件，可能會中斷生命週期管理和驗證，而且最終會導致中斷。 因此，您應該部署 Azure AD Connect Health，以便監視和報告這些元件。
+Azure AD 連接和 AD FS 是關鍵元件，可能會中斷生命週期管理和身份驗證，最終導致中斷。 因此，應部署 Azure AD 連接運行狀況，以便監視和報告這些元件。
 
-若要深入瞭解，請參閱[使用 Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)的 [讀取監視器] AD FS。
+要瞭解更多資訊，請轉到[使用 Azure AD 連接運行狀況讀取監視器 AD FS。](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
 
-### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>使用 Azure 監視器收集資料記錄以進行分析
+### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>使用 Azure 監視器收集用於分析的資料日誌
 
-[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)是適用于所有 Azure AD 記錄的統一監視入口網站，可提供深入解析、先進分析和智慧型機器學習。 透過 Azure 監視器，您可以在入口網站中使用計量和記錄，並透過 Api 取用，以深入瞭解資源的狀態和效能。 它會在入口網站中啟用單一的玻璃體驗，同時透過支援傳統協力廠商 SIEM 系統的 Api 和資料匯出選項，啟用各種產品整合。 Azure 監視器也能讓您設定警示規則，以取得通知，或對影響資源的問題採取自動化動作。
+[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)是所有 Azure AD 日誌的統一監視門戶，可提供深入的見解、高級分析和智慧型機器學習。 使用 Azure 監視器，您可以在門戶中並通過 API 使用指標和日誌，以更好地瞭解資源的狀態和性能。 它在門戶內實現單一玻璃體驗，同時通過支援傳統協力廠商 SIEM 系統的資料匯出選項實現廣泛的產品集成。 Azure 監視器還使您能夠配置警報規則以獲得通知，或對影響資源的問題執行自動操作。
 
 ![Azure 監視器](./media/four-steps/image1.png)
 
-### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>為您的領導和每天建立自訂儀表板
+### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>為您的領導和日常工作創建自訂儀表板
 
-沒有 SIEM 解決方案的組織可以下載 Azure AD 的[Power BI 內容套件](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack)。 Power BI 內容套件包含預先建立的報表，可協助您瞭解您的使用者如何採用及使用 Azure AD 功能，讓您深入瞭解目錄中的所有活動。 您也可以建立自己的[自訂儀表板](https://docs.microsoft.com/power-bi/service-dashboards)，並與您的領導小組共用，以報告每日活動。 儀表板是一種很好的方式，可以監視您的業務，並一目了然地查看所有最重要的計量。 儀表板上的視覺效果可能來自一或多個基礎資料集，以及來自一或多個基礎報表。 儀表板結合了內部部署和雲端資料，不論資料位於何處，都能提供合併的視圖。
+沒有 SIEM 解決方案的組織可以下載 Azure AD[的 Power BI 內容包](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack)。 Power BI 內容包包含預先構建的報告，可説明您瞭解使用者如何採用和使用 Azure AD 功能，從而使您能夠深入瞭解目錄中的所有活動。 您還可以創建自己的[自訂儀表板](https://docs.microsoft.com/power-bi/service-dashboards)，並與領導團隊共用以報告日常活動。 儀表板是監視您的業務並一目了然地查看所有最重要的指標的好方法。 儀表板上的視覺效果可能來自一或多個基礎資料集，以及來自一或多份基礎報表。 儀表板將內部部署和雲端的資料結合在一起，提供不受資料位置限制的合併檢視。
 
-![Power BI 自訂儀表板](./media/four-steps/image2.png)
+![電源 BI 自訂儀表板](./media/four-steps/image2.png)
 
-### <a name="understand-your-support-call-drivers"></a>瞭解您的支援電話驅動程式
+### <a name="understand-your-support-call-drivers"></a>瞭解您的支援呼叫驅動程式
 
-當您依照本文所述的方式執行混合式身分識別解決方案時，您最終應該會注意到您的支援電話已減少。 藉由執行 Azure 的自助式密碼重設來減輕忘記密碼和帳戶鎖定等常見問題，同時啟用自助式應用程式存取可讓使用者自行探索並要求存取應用程式，而不需要信賴您的 IT 人員。
+實現本文中概述的混合標識解決方案時，最終應注意到支援呼叫的減少。 通過實施 Azure 的自助服務密碼重設，緩解忘記密碼和帳戶鎖定等常見問題，同時啟用自助服務應用程式訪問允許使用者自行發現應用程式並請求訪問應用程式，而無需依賴您的 IT 員工。
 
-如果您不認為支援呼叫減少，建議您在嘗試確認是否已正確設定 SSPR 或自助應用程式存取權，或是否有任何其他可系統化的新問題時，分析您的支援呼叫驅動程式由.
+如果您未觀察到支援呼叫的減少，我們建議您分析支援呼叫驅動程式，以嘗試確認 SSPR 或自助服務應用程式訪問是否配置正確，或者是否有任何可以系統地出現任何其他新問題解決。
 
-*「在我們的數位轉型旅程中，我們需要可靠的身分識別和存取管理提供者，以促進我們、合作夥伴和雲端服務提供者之間順暢且安全的整合，以提供有效的生態系統;Azure AD 是提供我們所需功能和可見度的最佳選擇，讓我們能夠偵測和回應風險。」* --- [Yazan Almasri，全域資訊安全總監，Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"在我們的數位化轉型之旅中，我們需要一個可靠的身份和訪問管理供應商，以促進我們、合作夥伴和雲服務提供者之間的無縫安全集成，從而實現有效的生態系統;Azure AD 是提供我們所需的功能和可見度的最佳選項，使我們能夠檢測和回應風險。* --- [亞贊·阿爾馬斯裡，阿拉梅斯全球資訊安全總監](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
-### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>監視您的應用程式使用方式以驅動見解
+### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>監控應用使用方式，推動洞察
 
-除了探索影子 IT 外，使用[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)監視組織中的應用程式使用量，可以協助您的組織在移動時充分利用雲端應用程式的承諾。 它可以讓您透過改良的活動可見度來控制您的資產，並提升雲端應用程式的重要資料保護。 使用 MCAS 監視組織中的應用程式使用量，可協助您回答下列問題：
+除了發現影子 IT 之外，使用[Microsoft 雲應用安全性](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)監視整個組織的應用使用方式還可以説明您組織充分利用雲應用程式的承諾。 通過提高對活動的可見度，並增強對雲應用程式關鍵資料的保護，它可以説明您控制資產。 使用 MCAS 監視組織中的應用使用方式可以説明您回答以下問題：
 
-* 員工使用哪些待批准應用程式來儲存資料？
-* 機密資料在何處和何時會儲存在雲端？
-* 誰正在存取雲端中的敏感性資料？
+* 員工使用哪些未經批准的應用來存儲資料？
+* 敏感性資料存儲在雲中的何時何地？
+* 誰在雲中訪問敏感性資料？
 
-*「有了 Cloud App Security，我們可以快速找出異常並採取動作」。* --- [Eric LePenske，資深經理，資訊安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"借助雲應用安全性，我們可以快速發現異常並採取行動。* --- [埃裡克·勒彭斯克，埃森哲資訊安全高級經理](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>總結
 
-執行混合式身分識別解決方案有許多層面，但這四個步驟的檢查清單可協助您快速完成身分識別基礎結構，讓使用者更具生產力且更安全。
+實現混合標識解決方案有許多方面，但此四步檢查表將説明您快速完成身份基礎結構，使使用者能夠提高工作效率和安全性。
 
-* 輕鬆連接到應用程式
-* 自動為每位使用者建立一個身分識別
-* 安全地強化您的使用者
-* 讓您的見解
+* 輕鬆連接到應用
+* 自動為每個使用者建立一個標識
+* 為您的使用者安全提供支援
+* 操作您的見解
 
-我們希望這份檔是為您的組織建立強身份識別基礎的實用藍圖。
+我們希望本文檔是為您的組織建立牢固的身份基礎的有用路線圖。
 
-## <a name="identity-checklist"></a>身分識別檢查清單
+## <a name="identity-checklist"></a>身份清單
 
-我們建議您在開始旅程到組織中更穩固的身分識別基礎時，列印下列檢查清單以供參考。
+我們建議您在開始組織中更穩固的身份基礎時列印以下清單供參考。
 
-### <a name="today"></a>目前
+### <a name="today"></a>Today
 
-|完成了嗎？|item|
+|完成了嗎？|Item|
 |:-|:-|
-||試驗群組的自助式密碼重設（SSPR）|
-||使用 Azure AD Connect Health 監視混合式元件|
-||指派最低許可權管理員角色以進行操作|
-||使用 Microsoft Cloud App Security 探索影子 IT|
-||使用 Azure 監視器收集資料記錄以進行分析|
+||針對組的試用自助服務密碼重設 （SSPR）|
+||使用 Azure AD 連接運行狀況監視混合元件|
+||為操作分配最低特權的管理員角色|
+||使用 Microsoft 雲應用安全性發現影子 IT|
+||使用 Azure 監視器收集資料日誌進行分析|
 
 ### <a name="next-two-weeks"></a>接下來的兩周
 
-|完成了嗎？|item|
+|完成了嗎？|Item|
 |:-|:-|
-||讓您的使用者可以使用應用程式|
-||適用于所選 SaaS 應用程式的試驗 Azure AD 布建|
-||設定 Azure AD Connect 的預備伺服器，並讓它保持在最新狀態|
-||開始將應用程式從 ADFS 遷移至 Azure AD|
-||為您的領導和每天建立自訂儀表板|
+||使應用可供使用者使用|
+||為選擇的 SaaS 應用進行試用 Azure AD 預配|
+||為 Azure AD 連接設置暫存伺服器，並使其保持最新|
+||開始將應用從 ADFS 遷移到 Azure AD|
+||為您的領導和日常工作創建自訂儀表板|
 
 ### <a name="next-month"></a>下個月
 
-|完成了嗎？|item|
+|完成了嗎？|Item|
 |:-|:-|
-||監視您的應用程式使用方式以驅動見解|
-||試驗安全的應用程式遠端存取|
-||確保所有使用者都已註冊 MFA 和 SSPR|
-||啟用雲端驗證|
+||監控應用使用方式，推動洞察|
+||試用安全遠端存取應用|
+||確保所有使用者都註冊了 MFA 和 SSPR|
+||啟用雲身份驗證|
 
-### <a name="next-three-months"></a>接下來三個月
+### <a name="next-three-months"></a>接下來的三個月
 
-|完成了嗎？|item|
+|完成了嗎？|Item|
 |:-|:-|
-||啟用自助式應用程式管理|
-||啟用自助式群組管理|
-||監視您的應用程式使用方式以驅動見解|
-||瞭解您的支援電話驅動程式|
+||啟用自助服務應用管理|
+||啟用自助服務組管理|
+||監控應用使用方式，推動洞察|
+||瞭解您的支援呼叫驅動程式|
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 Azure Active Directory 的功能來增加您的安全狀態，以及此五步驟檢查清單-用[來保護身分識別基礎結構的五個步驟](https://aka.ms/securitysteps)。
+瞭解如何使用 Azure 活動目錄的功能和以下五個步驟檢查表（[保護身份基礎結構的五個步驟](https://aka.ms/securitysteps)）來增強安全狀態。
 
-瞭解 Azure AD 中的身分識別功能如何藉由提供解決方案和功能來協助您加速轉換到雲端管控的管理，讓組織能夠快速採用並將其身分識別管理從傳統內部部署系統移至 Azure AD- [Azure AD 如何為內部部署工作負載提供雲端控管的管理](https://aka.ms/cloudgoverned)。
+瞭解 Azure AD 中的標識功能如何通過提供解決方案和功能，使組織能夠快速採用其標識管理並將其從傳統的本地系統移動到 Azure AD - [Azure AD 如何為本地工作負載提供雲治理管理](https://aka.ms/cloudgoverned)，從而説明您加快向雲治理管理的過渡。

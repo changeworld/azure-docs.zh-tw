@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73684950"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解用戶端如何將權杖傳遞到 Azure 媒體服務金鑰傳遞服務
@@ -29,7 +29,7 @@ ms.locfileid: "73684950"
 
 - 透過 HTTP 授權標頭。
     > [!NOTE]
-    > 根據 OAuth 2.0 規格，系統會預期 "Bearer" 前置詞。 某個範例播放程式的權杖設定已裝載於 Azure 媒體播放器[示範頁面](https://ampdemo.azureedge.net/) \(英文\) 上。 若要設定影片來源，請選擇 [AES (JWT 權杖)] 或 [AES (SWT 權杖)]。 權杖會透過授權標頭來傳遞。
+    > 根據 OAuth 2.0 規格，系統會預期 "Bearer" 前置詞。 某個範例播放程式的權杖設定已裝載於 Azure 媒體播放器[示範頁面](https://ampdemo.azureedge.net/) \(英文\) 上。 若要設定影片來源，請選擇 [AES (JWT 權杖)]**** 或 [AES (SWT 權杖)]****。 權杖會透過授權標頭來傳遞。
 
 - 透過新增含有 “token=tokenvalue” 的 URL 查詢參數。  
     > [!NOTE]

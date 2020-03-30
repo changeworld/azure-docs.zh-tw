@@ -10,10 +10,10 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
 ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838846"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>詢問您可以使用資料回答的問題
@@ -28,7 +28,7 @@ ms.locfileid: "73838846"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
-是一個資料科學的快速簡介，包含五個簡短影片。
+** 是一個資料科學的快速簡介，包含五個簡短影片。
 
 * 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * 影片 2： [您的資料已經可以進行資料科學了嗎？](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -44,11 +44,11 @@ ms.locfileid: "73838846"
 如果您已先觀賞過本系列中的前兩個影片，則可從這個影片中獲得更多資訊：「5 個資訊科學可以回答的問題」和「已備妥資料來進行資料科學嗎？」
 
 ## <a name="ask-a-sharp-question"></a>詢問明確的問題
-我們已經討論過資料科學是一個程序，可使用名稱 (亦稱為類別或標籤) 和數字來預測問題的答案， 但不能只是任意的問題，它必須是「明確的問題」。
+我們已經討論過資料科學是一個程序，可使用名稱 (亦稱為類別或標籤) 和數字來預測問題的答案， 但不能只是任意的問題，它必須是「明確的問題」**。
 
 含糊不清的問題不需要使用名稱或數字來回答。 必須是明確的問題。
 
-假設您找到一個神燈，其中的精靈將如實回答您詢問的任何問題。 但這是一個 mischievous 的 genie，他們會試著將它們的答案設為不清楚，而令人困惑。 您想要將其釘選到有問題的無懈可擊，讓他們無法協助，但告訴您想要知道的內容。
+假設您找到一個神燈，其中的精靈將如實回答您詢問的任何問題。 但這是一個調皮的精靈，他們會儘量讓他們的答案變得模糊和混亂，因為他們可以逃脫。 你想用一個如此密閉的問題來固定他們，以至於他們忍不住告訴你你想知道什麼。
 
 如果您詢問了含糊不清的問題，例如「我的股票會發生什麼事？」，精靈可能會回答「價格將有所變化」。 這是如實的回答，但不是很有幫助。
 
@@ -70,9 +70,9 @@ ms.locfileid: "73838846"
 ## <a name="reformulate-your-question"></a>重新制訂您的問題
 有時候您可以重寫問題，以取得更有用的答案。
 
-「這個資料點是 A 或 B？ 」的問題會預測某個項目的類別 (或名稱或標籤)。 我們使用「分類演算法」來回答問題。
+「這個資料點是 A 或 B？ 」的問題會預測某個項目的類別 (或名稱或標籤)。 我們使用「分類演算法」 ** 來回答問題。
 
-「多少？ 」或「有多少？ 」這類問題會預測數量。 我們使用「迴歸演算法」來回答問題。
+「多少？ 」或「有多少？ 」這類問題會預測數量。 我們使用「迴歸演算法」 ** 來回答問題。
 
 為了解我們如何轉換這些問題，讓我們看看下列問題：「這位讀者對哪一個新聞報導最感興趣？ 」 它要求從多個可能性中預測單一選擇 (換句話說，就是「這是 A 或 B 或 C 或 D？ 」)，並會使用分類演算法。
 
@@ -88,8 +88,8 @@ ms.locfileid: "73838846"
 
 我們談論了一些基本原則，讓您在詢問可使用資料回答的問題時使用。
 
-請務必查看「適用于初學者的資料科學」的其他影片，Microsoft Azure Machine Learning Studio （傳統）。
+請務必查看 Microsoft Azure 機器學習工作室（經典）中的"初學者資料科學"中的其他視頻。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
+* [嘗試機器學習工作室（經典）的第一個資料科學實驗](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

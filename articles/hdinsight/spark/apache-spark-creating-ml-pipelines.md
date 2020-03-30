@@ -1,6 +1,6 @@
 ---
-title: 建立 Apache Spark 機器學習管線-Azure HDInsight
-description: 使用 Apache Spark 機器學習程式庫，在 Azure HDInsight 中建立資料管線。
+title: 創建阿帕奇火花機器學習管道 - Azure HDInsight
+description: 使用 Apache Spark 機器學習庫在 Azure HDInsight 中創建資料管道。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494658"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>建立 Apache Spark 機器學習服務管線
 
-Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 封裝 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是 DataFrame 上建立的一組高階 API。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
+Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 包[`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html)是一組基於 DataFrame 構建的高級 API。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
 
 機器學習服務 (ML) 管線是將多個機器學習服務演算法結合在一起的完整工作流程。 需要許多步驟以進行處理並從資料學習，需要一連串的演算法。 管線定義機器學習服務流程的階段和順序。 在 MLlib 中，管線階段會以 PipelineStages 的特定順序表示，其中 Transformer 和 Estimator 會各自執行工作。
 
@@ -29,7 +29,7 @@ Transformer 或 Estimator 的每個無狀態執行個體皆有自己唯一的識
 
 ## <a name="pipeline-example"></a>管線範例
 
-為了示範機器學習服務管線的實際應用情況，此範例針對您的 HDInsight 叢集 (Azure 儲存體或 Data Lake Storage)，使用在預設儲存體中預先載入的 `HVAC.csv` 資料檔案範例。 若要檢視檔案的內容，請瀏覽至 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目錄。 `HVAC.csv` 包含一系列各種建築物中 HVAC (暖氣、通風和空調) 系統的目標和實際溫度。 目標是在資料上定型模型，並為指定的建築物產生預測溫度。
+為了示範機器學習服務管線的實際應用情況，此範例針對您的 HDInsight 叢集 (Azure 儲存體或 Data Lake Storage)，使用在預設儲存體中預先載入的 `HVAC.csv` 資料檔案範例。 若要檢視檔案的內容，請瀏覽至 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目錄。 `HVAC.csv` 包含一系列各種建築物中 HVAC (暖氣、通風和空調**) 系統的目標和實際溫度。 目標是在資料上定型模型，並為指定的建築物產生預測溫度。
 
 下列程式碼：
 
@@ -78,7 +78,7 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-此範例管線有三個階段：`Tokenizer` 和 `HashingTF` (皆為 Transformer)，以及 `Logistic Regression` (Estimator)。  呼叫 `training` 時，`pipeline.fit(training)` DataFrame 中的擷取和剖析資料會流經管線。
+此範例管線有三個階段：`Tokenizer` 和 `HashingTF` (皆為 Transformer)，以及 `Logistic Regression` (Estimator)。  呼叫 `pipeline.fit(training)` 時，`training` DataFrame 中的擷取和剖析資料會流經管線。
 
 1. 第一階段，`Tokenizer`，將 `SystemInfo` 輸入資料行 (包含系統識別碼和存留期值) 分割成 `words` 輸出資料行。 這個新的 `words` 資料行會新增至 DataFrame。 
 2. 第二階段，`HashingTF`，將新的 `words` 資料行轉換至功能向量。 這個新的 `features` 資料行會新增至 DataFrame。 前兩個階段為 Transformer。 
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-若要查看由 `words` 和 `features` Transformer 新增的新 `Tokenizer` 和 `HashingTF` 資料行，以及 `LogisticRegression` Estimator 的範例，請在原始的 DataFrame 上執行 `PipelineModel.transform()` 方法。 在實際執行程式碼中，下一步是傳入測試 DataFrame 以驗證定型。
+若要查看由 `Tokenizer` 和 `HashingTF` Transformer 新增的新 `words` 和 `features` 資料行，以及 `LogisticRegression` Estimator 的範例，請在原始的 DataFrame 上執行 `PipelineModel.transform()` 方法。 在實際執行程式碼中，下一步是傳入測試 DataFrame 以驗證定型。
 
 ```python
 peek = model.transform(training)

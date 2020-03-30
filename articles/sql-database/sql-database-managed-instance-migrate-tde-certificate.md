@@ -1,5 +1,5 @@
 ---
-title: 遷移 TDE 憑證受控實例
+title: 遷移 TDE 證書 - 託管實例
 description: 將使用透明資料加密保護資料庫之資料庫加密金鑰的憑證，移轉到 Azure SQL Database 受控執行個體
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
 ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74555391"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>將受 TDE 保護之資料庫的憑證移轉到 Azure SQL Database 受控執行個體
@@ -30,35 +30,35 @@ ms.locfileid: "74555391"
 如需使用完全受控服務以進行受 TDE 保護資料庫和對應憑證順暢移轉的替代選項，請參閱[如何使用 Azure 資料庫移轉服務，將您的內部部署資料庫移轉到受控執行個體](../dms/tutorial-sql-server-to-managed-instance.md)。
 
 > [!IMPORTANT]
-> 移轉的憑證僅適用於還原受 TDE 保護的資料庫。 還原完成後，已遷移的憑證會由不同的保護裝置（服務管理的憑證或金鑰保存庫中的非對稱金鑰）取代，視您在實例上設定的透明資料加密類型而定。
+> 移轉的憑證僅適用於還原受 TDE 保護的資料庫。 還原完成後，遷移的證書將被不同的保護器替換，該保護器由服務託管證書或金鑰保存庫中的非對稱金鑰替換，具體取決於您在實例上設置的透明資料加密的類型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟，您必須符合下列先決條件︰
 
 - [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) 命令列工具會安裝在內部部署伺服器或其他電腦上，可以存取匯出為檔案的憑證。 Pvk2Pfx 工具屬於[企業 Windows 驅動程式套件](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)，這是一個獨立式命令列環境。
 - 已安裝 [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) 5.0 版或更新版本。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 請確定您具有下列項目：
 
-- [已安裝並更新](https://docs.microsoft.com/powershell/azure/install-az-ps)Azure PowerShell 模組。
-- [Az .sql module](https://www.powershellgallery.com/packages/Az.Sql)。
+- Azure PowerShell 模組[已安裝並更新](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- [Az.Sql 模組](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
 
-在 PowerShell 中執行下列命令，以安裝/更新模組：
+在 PowerShell 中運行以下命令以安裝/更新模組：
 
 ```azurepowershell
 Install-Module -Name Az.Sql
 Update-Module -Name Az.Sql
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -70,7 +70,7 @@ Update-Module -Name Az.Sql
 
 ### <a name="export-certificate-from-the-source-sql-server"></a>從來源 SQL Server 匯出憑證
 
-請使用下列步驟，透過 SQL Server Management Studio 來匯出憑證，並將其轉換成 pfx 格式。 在整個步驟中，系統會對憑證、檔案名稱與路徑使用一般名稱 TDE_Cert 和 full_path。 應該以實際名稱加以取代。
+請使用下列步驟，透過 SQL Server Management Studio 來匯出憑證，並將其轉換成 pfx 格式。 在整個步驟中，系統會對憑證、檔案名稱與路徑使用一般名稱 TDE_Cert** 和 full_path**。 應該以實際名稱加以取代。
 
 1. 請在 SSMS 中，開啟新的查詢視窗，並連線至來源 SQL Server。
 
@@ -129,7 +129,7 @@ Update-Module -Name Az.Sql
 
 ## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>使用 Azure PowerShell Cmdlet 將憑證上傳到 Azure SQL Database 受控執行個體
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 1. 在 PowerShell 中開始準備步驟：
 
@@ -156,9 +156,9 @@ Update-Module -Name Az.Sql
        -ManagedInstanceName "<managedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-您必須先使用 *.pfx*檔案來[設定 Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) 。
+您需要首先使用 *.pfx*檔[設置 Azure 金鑰保存庫](/azure/key-vault/key-vault-manage-with-cli2)。
 
 1. 在 PowerShell 中開始準備步驟：
 

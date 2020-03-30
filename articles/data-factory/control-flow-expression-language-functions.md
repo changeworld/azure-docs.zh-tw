@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory 中的運算式和函數
-description: 本文提供您可以用來建立 data factory 實體之運算式和函式的相關資訊。
+title: Azure 資料工廠中的運算式和函數
+description: 本文提供有關可用於創建資料工廠實體的運算式和函數的資訊。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533132"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory 中的運算式和函式
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](v1/data-factory-functions-variables.md)
-> * [目前的版本](control-flow-expression-language-functions.md)
+> * [版本 1](v1/data-factory-functions-variables.md)
+> * [當前版本](control-flow-expression-language-functions.md)
 
 本文提供 Azure Data Factory 支援之運算式和函式的詳細資料。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "74533132"
 |"\@\@"|傳回包含 '\@' 的 1 個字元字串。|  
 |" \@"|傳回包含 '\@' 的 2 個字元字串。|  
   
- 使用稱為「字串插補」的功能，運算式也可以出現在字串內，其中運算式會包含在 `@{ ... }` 內。 例如：`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
+ 使用稱為「字串插補」** 的功能，運算式也可以出現在字串內，其中運算式會包含在 `@{ ... }` 內。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
  使用字串插補時，結果一律為字串。 假設我將 `myNumber` 定義為 `42`，將 `myString` 定義為 `foo`：  
   
@@ -56,8 +56,8 @@ ms.locfileid: "74533132"
 |----------------|------------|  
 |"\@pipeline().parameters.myString"| 傳回 `foo` 做為字串。|  
 |"\@{pipeline().parameters.myString}"| 傳回 `foo` 做為字串。|  
-|"\@pipeline().parameters.myNumber"| 傳回 `42` 做為「編號」。|  
-|"\@{pipeline().parameters.myNumber}"| 傳回 `42` 做為「字串」。|  
+|"\@pipeline().parameters.myNumber"| 傳回 `42` 做為「編號」**。|  
+|"\@{pipeline().parameters.myNumber}"| 傳回 `42` 做為「字串」**。|  
 |"Answer is: @{pipeline().parameters.myNumber}"| 傳回字串 `Answer is: 42`。|  
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| 傳回字串 `Answer is: 42`|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| 傳回字串 `Answer is: @{pipeline().parameters.myNumber}`。|  
@@ -65,7 +65,7 @@ ms.locfileid: "74533132"
 ## <a name="examples"></a>範例
 
 ### <a name="a-dataset-with-a-parameter"></a>具有參數的資料集
-在以下範例中，BlobDataset 會採用一個名為 **path** 的參數。 它的值是用來設定**folderPath**屬性的值，方法是使用運算式： `dataset().path`。 
+在以下範例中，BlobDataset 會採用一個名為 **path** 的參數。 其值用於使用運算式：為**資料夾 Path**屬性設置值`dataset().path`。 
 
 ```json
 {
@@ -139,10 +139,10 @@ ms.locfileid: "74533132"
 }
 ```
 ### <a name="tutorial"></a>教學課程
-本[教學](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)課程將逐步引導您瞭解如何在管線和活動之間，以及活動之間傳遞參數。
+[本教程](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)將介紹如何在管道和活動之間以及活動之間傳遞參數。
 
   
-## <a name="functions"></a>Functions
+## <a name="functions"></a>函式
 
 您可以在運算式內呼叫函式。 下列各節提供可在運算式中使用之函式的相關資訊。  
 
@@ -155,15 +155,15 @@ ms.locfileid: "74533132"
 | --------------- | ---- |
 | [concat](control-flow-expression-language-functions.md#concat) | 結合兩個或多個字串，並傳回合併的字串。 |
 | [endsWith](control-flow-expression-language-functions.md#endswith) | 檢查字串是否以指定的子字串結束。 |
-| [guid](control-flow-expression-language-functions.md#guid) | 以字串形式產生全域唯一識別碼 (GUID)。 |
-| [indexOf](control-flow-expression-language-functions.md#indexof) | 傳回子字串的起始位置。 |
+| [Guid](control-flow-expression-language-functions.md#guid) | 以字串形式產生全域唯一識別碼 (GUID)。 |
+| [索引](control-flow-expression-language-functions.md#indexof) | 傳回子字串的起始位置。 |
 | [lastIndexOf](control-flow-expression-language-functions.md#lastindexof) | 傳回子字串最後一次出現的起始位置。 |
-| [replace](control-flow-expression-language-functions.md#replace) | 使用指定字串取代子字串，並傳回已更新的字串。 |
-| [分割](control-flow-expression-language-functions.md#split) | 根據原始字串中指定的分隔符號字元，從較大型字串傳回包含以逗號分隔之子字串的陣列。 |
-| [startsWith](control-flow-expression-language-functions.md#startswith) | 檢查字串是否以特定的子字串開始。 |
+| [取代](control-flow-expression-language-functions.md#replace) | 使用指定字串取代子字串，並傳回已更新的字串。 |
+| [分裂](control-flow-expression-language-functions.md#split) | 根據原始字串中指定的分隔符號字元，從較大型字串傳回包含以逗號分隔之子字串的陣列。 |
+| [開始與](control-flow-expression-language-functions.md#startswith) | 檢查字串是否以特定的子字串開始。 |
 | [substring](control-flow-expression-language-functions.md#substring) | 傳回字串中的字元 (從指定的位置起始)。 |
-| [toLower](control-flow-expression-language-functions.md#toLower) | 傳回小寫格式的字串。 |
-| [toUpper](control-flow-expression-language-functions.md#toUpper) | 傳回大寫格式的字串。 |
+| [到下](control-flow-expression-language-functions.md#toLower) | 傳回小寫格式的字串。 |
+| [到上](control-flow-expression-language-functions.md#toUpper) | 傳回大寫格式的字串。 |
 | [修剪](control-flow-expression-language-functions.md#trim) | 移除字串的開頭和尾端空白字元，並傳回更新後的字串。 |
 
 ## <a name="collection-functions"></a>集合函式
@@ -172,16 +172,16 @@ ms.locfileid: "74533132"
 
 | 集合函式 | Task |
 | ------------------- | ---- |
-| [contains](control-flow-expression-language-functions.md#contains) | 檢查集合是否具有特定項目。 |
-| [empty](control-flow-expression-language-functions.md#empty) | 檢查集合是否是空的。 |
-| [first](control-flow-expression-language-functions.md#first) | 傳回集合中的第一個項目。 |
-| [intersection](control-flow-expression-language-functions.md#intersection) | 在指定的多個集合中，傳回「只有」共同項目的集合。 |
-| [join](control-flow-expression-language-functions.md#join) | 傳回具有陣列中「所有」項目 (以指定的字元隔開) 的字串。 |
-| [last](control-flow-expression-language-functions.md#last) | 傳回集合中的最後一個項目。 |
-| [length](control-flow-expression-language-functions.md#length) | 傳回字串或陣列中的項目數目。 |
-| [skip](control-flow-expression-language-functions.md#skip) | 移除集合前端的項目，並傳回「其他所有」項目。 |
-| [take](control-flow-expression-language-functions.md#take) | 傳回集合中的前端項目。 |
-| [union](control-flow-expression-language-functions.md#union) | 傳回具有指定集合中「所有」項目的集合。 | 
+| [包含](control-flow-expression-language-functions.md#contains) | 檢查集合是否具有特定項目。 |
+| [空](control-flow-expression-language-functions.md#empty) | 檢查集合是否是空的。 |
+| [第一](control-flow-expression-language-functions.md#first) | 傳回集合中的第一個項目。 |
+| [交叉 口](control-flow-expression-language-functions.md#intersection) | 在指定的多個集合中，傳回「只有」** 共同項目的集合。 |
+| [加入](control-flow-expression-language-functions.md#join) | 傳回具有陣列中「所有」** 項目 (以指定的字元隔開) 的字串。 |
+| [最後](control-flow-expression-language-functions.md#last) | 傳回集合中的最後一個項目。 |
+| [長度](control-flow-expression-language-functions.md#length) | 傳回字串或陣列中的項目數目。 |
+| [跳](control-flow-expression-language-functions.md#skip) | 移除集合前端的項目，並傳回「其他所有」** 項目。 |
+| [採取](control-flow-expression-language-functions.md#take) | 傳回集合中的前端項目。 |
+| [聯盟](control-flow-expression-language-functions.md#union) | 傳回具有指定集合中「所有」** 項目的集合。 | 
 
 ## <a name="logical-functions"></a>邏輯函式  
 
@@ -189,65 +189,65 @@ ms.locfileid: "74533132"
   
 | 邏輯比較函式 | Task |
 | --------------------------- | ---- |
-| [and](control-flow-expression-language-functions.md#and) | 檢查是否所有運算式都是 True。 |
+| [和](control-flow-expression-language-functions.md#and) | 檢查是否所有運算式都是 True。 |
 | [equals](control-flow-expression-language-functions.md#equals) | 檢查兩個值是否相等。 |
 | [greater](control-flow-expression-language-functions.md#greater) | 檢查第一個值是否大於第二個值。 |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | 檢查第一個值是否大於或等於第二個值。 |
 | [if](control-flow-expression-language-functions.md#if) | 檢查運算式是 True 或 False。 根據結果，傳回指定的值。 |
-| [less](control-flow-expression-language-functions.md#less) | 檢查第一個值是否小於第二個值。 |
+| [少](control-flow-expression-language-functions.md#less) | 檢查第一個值是否小於第二個值。 |
 | [lessOrEquals](control-flow-expression-language-functions.md#lessOrEquals) | 檢查第一個值是否小於或等於第二個值。 |
-| [not](control-flow-expression-language-functions.md#not) | 檢查運算式是否為 False。 |
-| [or](control-flow-expression-language-functions.md#or) | 檢查是否至少有一個運算式是 True。 |
+| [否](control-flow-expression-language-functions.md#not) | 檢查運算式是否為 False。 |
+| [或](control-flow-expression-language-functions.md#or) | 檢查是否至少有一個運算式是 True。 |
   
-## <a name="conversion-functions"></a>轉換函式  
+## <a name="conversion-functions"></a>轉換函數  
 
  這些函式是用來在每個原生類型語言之間轉換︰  
--   string
+-   字串
 -   integer
--   float
--   布林值
+-   FLOAT
+-   boolean
 -   陣列
 -   字典
 
 | 轉換函式 | Task |
 | ------------------- | ---- |
-| [array](control-flow-expression-language-functions.md#array) | 從單一指定輸入傳回的陣列。 關於多個輸入的資訊，請參閱 [createArray](control-flow-expression-language-functions.md#createArray)。 |
-| [base64](control-flow-expression-language-functions.md#base64) | 傳回字串的 base64 編碼版本。 |
+| [陣 列](control-flow-expression-language-functions.md#array) | 從單一指定輸入傳回的陣列。 有關多個輸入，請參閱[創建Array](control-flow-expression-language-functions.md#createArray)。 |
+| [基地64](control-flow-expression-language-functions.md#base64) | 傳回字串的 base64 編碼版本。 |
 | [base64ToBinary](control-flow-expression-language-functions.md#base64ToBinary) | 傳回 base64 編碼字串的二進位版本。 |
 | [base64ToString](control-flow-expression-language-functions.md#base64ToString) | 傳回 base64 編碼字串的字串版本。 |
-| [binary](control-flow-expression-language-functions.md#binary) | 傳回輸入值的二進位版本。 |
+| [二 進 制](control-flow-expression-language-functions.md#binary) | 傳回輸入值的二進位版本。 |
 | [bool](control-flow-expression-language-functions.md#bool) | 傳回輸入值的布林值版本。 |
 | [coalesce](control-flow-expression-language-functions.md#coalesce) | 從一個或多個參數中傳回第一個非 Null 值。 |
-| [createArray](control-flow-expression-language-functions.md#createArray) | 從多個輸入傳回陣列。 |
-| [dataUri](control-flow-expression-language-functions.md#dataUri) | 傳回輸入值的資料 URI。 |
+| [創建Array](control-flow-expression-language-functions.md#createArray) | 從多個輸入傳回陣列。 |
+| [資料裡](control-flow-expression-language-functions.md#dataUri) | 傳回輸入值的資料 URI。 |
 | [dataUriToBinary](control-flow-expression-language-functions.md#dataUriToBinary) | 傳回資料 URI 的二進位版本。 |
 | [dataUriToString](control-flow-expression-language-functions.md#dataUriToString) | 傳回資料 URI 的字串版本。 |
 | [decodeBase64](control-flow-expression-language-functions.md#decodeBase64) | 傳回 base64 編碼字串的字串版本。 |
 | [decodeDataUri](control-flow-expression-language-functions.md#decodeDataUri) | 傳回資料 URI 的二進位版本。 |
 | [decodeUriComponent](control-flow-expression-language-functions.md#decodeUriComponent) | 傳回以已解碼版本取代逸出字元的字串。 |
 | [encodeUriComponent](control-flow-expression-language-functions.md#encodeUriComponent) | 傳回以逸出字元取代 URL 中 Unsafe 字元的字串。 |
-| [float](control-flow-expression-language-functions.md#float) | 傳回輸入值的浮點數。 |
-| [int](control-flow-expression-language-functions.md#int) | 傳回字串的整數版本。 |
-| [json](control-flow-expression-language-functions.md#json) | 傳回字串或 XML 的 JavaScript 物件標記法 (JSON) 類型值或物件。 |
+| [浮動](control-flow-expression-language-functions.md#float) | 傳回輸入值的浮點數。 |
+| [Int](control-flow-expression-language-functions.md#int) | 傳回字串的整數版本。 |
+| [Json](control-flow-expression-language-functions.md#json) | 傳回字串或 XML 的 JavaScript 物件標記法 (JSON) 類型值或物件。 |
 | [字串](control-flow-expression-language-functions.md#string) | 傳回輸入值的字串版本。 |
 | [uriComponent](control-flow-expression-language-functions.md#uriComponent) | 藉由以逸出字元取代 URL 中的 Unsafe 字元，傳回輸入值的 URI 編碼版本。 |
 | [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | 傳回 URI 編碼字串的二進位版本。 |
 | [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | 傳回 URI 編碼字串的字串版本。 |
 | [xml](control-flow-expression-language-functions.md#xml) | 傳回字串的 SML 版本。 |
-| [xpath](control-flow-expression-language-functions.md#xpath) | 檢查 XML 中是否有符合 XPath (XML 路徑語言) 運算式的節點或值，並傳回符合的節點或值。 |
+| [Xpath](control-flow-expression-language-functions.md#xpath) | 檢查 XML 中是否有符合 XPath (XML 路徑語言) 運算式的節點或值，並傳回符合的節點或值。 |
 
-## <a name="math-functions"></a>數學函式  
+## <a name="math-functions"></a>數學函數  
  這些函式可用於任一類型的數字︰**整數**和**浮點數**。  
 
 | 數學函式 | Task |
 | ------------- | ---- |
 | [新增](control-flow-expression-language-functions.md#add) | 傳回兩個數字相加的結果。 |
 | [div](control-flow-expression-language-functions.md#div) | 傳回兩個數字相除的結果。 |
-| [max](control-flow-expression-language-functions.md#max) | 從數字集合或陣列中傳回最大值。 |
-| [min](control-flow-expression-language-functions.md#min) | 從數字集合或陣列中傳回最小值。 |
-| [mod](control-flow-expression-language-functions.md#mod) | 傳回兩數相除的餘數。 |
+| [麥克斯](control-flow-expression-language-functions.md#max) | 從數字集合或陣列中傳回最大值。 |
+| [分鐘](control-flow-expression-language-functions.md#min) | 從數字集合或陣列中傳回最小值。 |
+| [國防部](control-flow-expression-language-functions.md#mod) | 傳回兩數相除的餘數。 |
 | [mul](control-flow-expression-language-functions.md#mul) | 傳回將兩數相乘的乘積。 |
-| [rand](control-flow-expression-language-functions.md#rand) | 從指定範圍傳回隨機整數。 |
+| [蘭德](control-flow-expression-language-functions.md#rand) | 從指定範圍傳回隨機整數。 |
 | [range](control-flow-expression-language-functions.md#range) | 傳回從指定整數開始的整數陣列。 |
 | [sub](control-flow-expression-language-functions.md#sub) | 傳回第一個數字減去第二個數字的結果。 |
   
@@ -255,17 +255,17 @@ ms.locfileid: "74533132"
 
 | 日期或時間函式 | Task |
 | --------------------- | ---- |
-| [addDays](control-flow-expression-language-functions.md#addDays) | 將天數加入時間戳記。 |
+| [添加天數](control-flow-expression-language-functions.md#addDays) | 將天數加入時間戳記。 |
 | [addHours](control-flow-expression-language-functions.md#addHours) | 將時數加入時間戳記。 |
 | [addMinutes](control-flow-expression-language-functions.md#addMinutes) | 將分鐘數加入時間戳記。 |
 | [addSeconds](control-flow-expression-language-functions.md#addSeconds) | 將秒數加入時間戳記。 |
-| [addToTime](control-flow-expression-language-functions.md#addToTime) | 將時間單位數字加入時間戳記。 另請參閱 [getFutureTime](control-flow-expression-language-functions.md#getFutureTime)。 |
+| [addToTime](control-flow-expression-language-functions.md#addToTime) | 將時間單位數字加入時間戳記。 另請參閱[獲取未來時間](control-flow-expression-language-functions.md#getFutureTime)。 |
 | [convertFromUtc](control-flow-expression-language-functions.md#convertFromUtc) | 將時間戳記從國際標準時間 (UTC) 轉換為目標時區。 |
 | [convertTimeZone](control-flow-expression-language-functions.md#convertTimeZone) | 將時間戳記從來源時區轉換為目標時區。 |
 | [convertToUtc](control-flow-expression-language-functions.md#convertToUtc) | 將時間戳記從來源時區轉換為國際標準時間 (UTC)。 |
-| [dayOfMonth](control-flow-expression-language-functions.md#dayOfMonth) | 傳回時間戳記中的當月日期元件。 |
-| [dayOfWeek](control-flow-expression-language-functions.md#dayOfWeek) | 傳回時間戳記中的星期幾元件。 |
-| [dayOfYear](control-flow-expression-language-functions.md#dayOfYear) | 傳回時間戳記中一年的第幾天元件。 |
+| [月日](control-flow-expression-language-functions.md#dayOfMonth) | 傳回時間戳記中的當月日期元件。 |
+| [週一](control-flow-expression-language-functions.md#dayOfWeek) | 傳回時間戳記中的星期幾元件。 |
+| [一天](control-flow-expression-language-functions.md#dayOfYear) | 傳回時間戳記中一年的第幾天元件。 |
 | [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 傳回時間戳記中的日期。 |
 | [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 傳回目前時間戳記加上指定時間單位的結果。 另請參閱 [addToTime](control-flow-expression-language-functions.md#addToTime)。 |
 | [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 傳回目前時間戳記減去指定時間單位的結果。 另請參閱 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime)。 |
@@ -273,16 +273,16 @@ ms.locfileid: "74533132"
 | [startOfHour](control-flow-expression-language-functions.md#startOfHour) | 傳回時間戳記中小時的起始點。 |
 | [startOfMonth](control-flow-expression-language-functions.md#startOfMonth) | 傳回時間戳記中月份的起始點。 |
 | [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) | 從時間戳記減去時間單位數字。 另請參閱 [getPastTime](control-flow-expression-language-functions.md#getPastTime)。 |
-| [ticks](control-flow-expression-language-functions.md#ticks) | 傳回指定時間戳記的 `ticks` 屬性值。 |
+| [刻度](control-flow-expression-language-functions.md#ticks) | 傳回指定時間戳記的 `ticks` 屬性值。 |
 | [utcNow](control-flow-expression-language-functions.md#utcNow) | 傳回目前的時間戳記作為字串。 |
 
-## <a name="function-reference"></a>函數參考
+## <a name="function-reference"></a>函數引用
 
-本節依字母順序列出所有可用的函數。
+本節按字母順序列出所有可用函數。
 
 <a name="add"></a>
 
-### <a name="add"></a>新增
+### <a name="add"></a>add
 
 傳回兩個數字相加的結果。
 
@@ -290,17 +290,17 @@ ms.locfileid: "74533132"
 add(<summand_1>, <summand_2>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*summand_1*>, <*summand_2*> | 是 | 整數、浮點數或混合 | 要相加的數字 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | -----| ----------- |
-| <*result-sum*> | 整數或浮點數 | 指定數字相加的結果 |
+| <*結果和*> | 整數或浮點數 | 指定數字相加的結果 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會相加指定的數字：
 
@@ -320,19 +320,19 @@ add(1, 1.5)
 addDays('<timestamp>', <days>, '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*days*> | 是 | 整數 | 要加入的天數 (正數或負數) |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*天*> | 是 | 整數  | 要加入的天數 (正數或負數) |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 時間戳記加上指定的天數  |
+| <*更新時間戳記*> | String | 時間戳記加上指定的天數  |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會在指定的時間戳記中加上 10 天：
 
@@ -342,7 +342,7 @@ addDays('2018-03-15T13:00:00Z', 10)
 
 並傳回此結果：`"2018-03-25T00:00:0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會從指定的時間戳記中減去五天：
 
@@ -362,19 +362,19 @@ addDays('2018-03-15T00:00:00Z', -5)
 addHours('<timestamp>', <hours>, '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*hours*> | 是 | 整數 | 要加入的時數 (正數或負數) |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*小時*> | 是 | 整數  | 要加入的時數 (正數或負數) |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 時間戳記加上指定的時數  |
+| <*更新時間戳記*> | String | 時間戳記加上指定的時數  |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會在指定的時間戳記中加上 10 小時：
 
@@ -384,7 +384,7 @@ addHours('2018-03-15T00:00:00Z', 10)
 
 並傳回此結果：`"2018-03-15T10:00:0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會從指定的時間戳記中減去五小時：
 
@@ -404,19 +404,19 @@ addHours('2018-03-15T15:00:00Z', -5)
 addMinutes('<timestamp>', <minutes>, '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*minutes*> | 是 | 整數 | 要加入的分鐘數 (正數或負數) |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*分鐘*> | 是 | 整數  | 要加入的分鐘數 (正數或負數) |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 時間戳記加上指定的分鐘數 |
+| <*更新時間戳記*> | String | 時間戳記加上指定的分鐘數 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會在指定的時間戳記中加上 10 分鐘：
 
@@ -426,7 +426,7 @@ addMinutes('2018-03-15T00:10:00Z', 10)
 
 並傳回此結果：`"2018-03-15T00:20:00.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會從指定的時間戳記中減去五分鐘：
 
@@ -446,19 +446,19 @@ addMinutes('2018-03-15T00:20:00Z', -5)
 addSeconds('<timestamp>', <seconds>, '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*seconds*> | 是 | 整數 | 要加入的秒數 (正數或負數) |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*秒*> | 是 | 整數  | 要加入的秒數 (正數或負數) |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 時間戳記加上指定的秒數  |
+| <*更新時間戳記*> | String | 時間戳記加上指定的秒數  |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會在指定的時間戳記中加上 10 秒鐘：
 
@@ -468,7 +468,7 @@ addSeconds('2018-03-15T00:00:00Z', 10)
 
 並傳回此結果：`"2018-03-15T00:00:10.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會在指定的時間戳記中減去 5 秒鐘：
 
@@ -489,20 +489,20 @@ addSeconds('2018-03-15T00:00:30Z', -5)
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*interval*> | 是 | 整數 | 要加入的指定時間單位數字 |
-| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*區間*> | 是 | 整數  | 要加入的指定時間單位數字 |
+| <*時間單位*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 時間戳記加上指定的時間單位數字  |
+| <*更新時間戳記*> | String | 時間戳記加上指定的時間單位數字  |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會在指定的時間戳記中加上 1 天：
 
@@ -512,7 +512,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 
 並傳回此結果：`"2018-01-02T00:00:00.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會在指定的時間戳記中加上 1 天：
 
@@ -524,7 +524,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 <a name="and"></a>
 
-### <a name="and"></a>與
+### <a name="and"></a>和
 
 檢查是否所有運算式都是 True。
 在所有運算式都是 True 時，傳回 True，或至少有一個運算式為 False 時傳回 False。
@@ -533,17 +533,17 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 and(<expression1>, <expression2>, ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要檢查的運算式 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | -----| ----------- |
-| True 或 False | Boolean | 所有運算式都是 True 時，即傳回 True。 至少一個運算式為 False 時，則傳回 False。 |
+| true 或 false | Boolean | 所有運算式都是 True 時，即傳回 True。 至少一個運算式為 False 時，則傳回 False。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 這些範例會檢查指定的布林值是否都是 True：
 
@@ -559,7 +559,7 @@ and(false, false)
 * 第二個範例：一個運算式為 False，所以會傳回 `false`。
 * 第一個範例：兩個運算式都是 False，所以會傳回 `false`。
 
-*範例 2*
+*示例 2*
 
 這些範例會檢查指定的運算式是否都是 True：
 
@@ -586,17 +586,17 @@ and(equals(1, 2), equals(1, 3))
 array('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 建立陣列的字串 |
+| <*價值*> | 是 | String | 建立陣列的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [<*value*>] | 陣列 | 包含單一指定輸入的陣列 |
+| [<*值*>] | Array | 包含單一指定輸入的陣列 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從 "hello" 字串建立陣列：
 
@@ -616,17 +616,17 @@ array('hello')
 base64('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 輸入字串 |
+| <*價值*> | 是 | String | 輸入字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*base64-string*> | String | 輸入字串的 base64 編碼版本 |
+| <*基64字串*> | String | 輸入字串的 base64 編碼版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將 "hello" 字串轉換為 base64 編碼的字串：
 
@@ -646,17 +646,17 @@ base64('hello')
 base64ToBinary('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的 base64 編碼字串 |
+| <*價值*> | 是 | String | 要轉換的 base64 編碼字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*binary-for-base64-string*> | String | base64 編碼字串的二進位版本 |
+| <*二進位換基64字串*> | String | base64 編碼字串的二進位版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將 "aGVsbG8=" base64 編碼的字串轉換為二進位字串：
 
@@ -680,17 +680,17 @@ base64ToBinary('aGVsbG8=')
 base64ToString('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要解碼的 base64 編碼字串 |
+| <*價值*> | 是 | String | 要解碼的 base64 編碼字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | String | 傳回 base64 編碼字串的字串版本 |
+| <*解碼基64字串*> | String | 傳回 base64 編碼字串的字串版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將 "aGVsbG8=" base64 編碼的字串轉換為單純字串：
 
@@ -702,7 +702,7 @@ base64ToString('aGVsbG8=')
 
 <a name="binary"></a>
 
-### <a name="binary"></a>binary
+### <a name="binary"></a>BINARY
 
 傳回字串的二進位版本。
 
@@ -710,17 +710,17 @@ base64ToString('aGVsbG8=')
 binary('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的字串 |
+| <*價值*> | 是 | String | 要轉換的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*binary-for-input-value*> | String | 指定字串的二進位版本 |
+| <*二進位表示輸入值*> | String | 指定字串的二進位版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將 "hello" 字串轉換為二進位字串：
 
@@ -742,17 +742,17 @@ binary('hello')
 bool(<value>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要轉換的值 |
+| <*價值*> | 是 | 任意 | 要轉換的值 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 指定值的布林值版本 |
+| true 或 false | Boolean | 指定值的布林值版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會將指定的值轉換為布林值：
 
@@ -777,17 +777,17 @@ bool(0)
 coalesce(<object_1>, <object_2>, ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>, ... | 是 | 任何類型，可以是混合類型 | 要檢查是否有 Null 的一個或多個項目 |
+| <*object_1* object_1>，<object_2>... *object_2* | 是 | 任何類型，可以是混合類型 | 要檢查是否有 Null 的一個或多個項目 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | 任意 | 第一個不是 Null 的項目或值。 如果所有參數都是 Null，則此函式會傳回 Null。 |
+| <*第一個非空專案*> | 任意 | 第一個不是 Null 的項目或值。 如果所有參數都是 Null，則此函式會傳回 Null。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會從指定值傳回第一個非 Null 的值，或是，如果所有值都是 Null，則傳回 Null：
 
@@ -813,17 +813,17 @@ coalesce(null, null, null)
 concat('<text1>', '<text2>', ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*text1*>, <*text2*>, ... | 是 | String | 要結合的至少兩個字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*text1text2...* > | String | 從合併輸入字串中建立的字串 |
+| <*文本1文本2...*> | String | 從合併輸入字串中建立的字串 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會合併 "Hello" 和 "World" 字串：
 
@@ -848,22 +848,22 @@ contains([<collection>], '<value>')
 
 具體而言，此函數會用在這些集合類型上：
 
-* 要尋找「子字串」的「字串」
-* 要尋找「值」的「陣列」
-* 要尋找「索引碼」的「字典」
+* 要尋找「子字串」** 的「字串」**
+* 要尋找「值」** 的「陣列」**
+* 要尋找「索引碼」** 的「字典」**
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 字串、陣列或字典 | 要檢查的集合 |
-| <*value*> | 是 | 個別的字串、陣列或字典 | 要尋找的項目 |
+| <*收集*> | 是 | 字串、陣列或字典 | 要檢查的集合 |
+| <*價值*> | 是 | 個別的字串、陣列或字典 | 要尋找的項目 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 找到項目時，傳回 True。 找不到項目時，傳回 False。 |
+| true 或 false | Boolean | 找到項目時，傳回 True。 找不到項目時，傳回 False。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會檢查字串 "hello world" 是否有子字串 "world"，並傳回 True：
 
@@ -871,7 +871,7 @@ contains([<collection>], '<value>')
 contains('hello world', 'world')
 ```
 
-*範例 2*
+*示例 2*
 
 此範例會檢查字串 "hello world" 是否有子字串 "universe"，並傳回 False：
 
@@ -889,19 +889,19 @@ contains('hello world', 'universe')
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*destinationTimeZone*> | 是 | String | 目標時區的名稱。 如需時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*目的地時區*> | 是 | String | 目標時區的名稱。 有關時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能需要從時區名稱中刪除任何標點符號。 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | String | 轉換為目標時區的時間戳記 |
+| <*轉換時間戳記*> | String | 轉換為目標時區的時間戳記 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會將時間戳記轉換為指定的時區：
 
@@ -911,7 +911,7 @@ convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 
 並傳回此結果：`"2018-01-01T00:00:00.0000000"`
 
-*範例 2*
+*示例 2*
 
 此範例會將時間戳記轉換為指定的時區和格式：
 
@@ -931,20 +931,20 @@ convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*sourceTimeZone*> | 是 | String | 來源時區的名稱。 如需時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*destinationTimeZone*> | 是 | String | 目標時區的名稱。 如需時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*源時區*> | 是 | String | 來源時區的名稱。 有關時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能需要從時區名稱中刪除任何標點符號。 |
+| <*目的地時區*> | 是 | String | 目標時區的名稱。 有關時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能需要從時區名稱中刪除任何標點符號。 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | String | 轉換為目標時區的時間戳記 |
+| <*轉換時間戳記*> | String | 轉換為目標時區的時間戳記 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會將來源時區轉換為目標時區：
 
@@ -954,7 +954,7 @@ convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 
 並傳回此結果：`"2018-01-01T00:00:00.0000000"`
 
-*範例 2*
+*示例 2*
 
 此範例會將時區轉換為指定的時區和格式：
 
@@ -974,19 +974,19 @@ convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*sourceTimeZone*> | 是 | String | 來源時區的名稱。 如需時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*源時區*> | 是 | String | 來源時區的名稱。 有關時區名稱，請參閱[Microsoft 時區索引值](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)，但您可能需要從時區名稱中刪除任何標點符號。 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | String | 轉換為 UTC 的時間戳記 |
+| <*轉換時間戳記*> | String | 轉換為 UTC 的時間戳記 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會將時間戳記轉換為 UTC：
 
@@ -996,7 +996,7 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 
 並傳回此結果：`"2018-01-01T08:00:00.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會將時間戳記轉換為 UTC：
 
@@ -1017,17 +1017,17 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 createArray('<object1>', '<object2>', ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*>, ... | 是 | 任何類型，但不能是混合 | 用來建立陣列的至少兩個項目 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [<*object1*>, <*object2*>, ...] | 陣列 | 從所有輸入項目建立的陣列 |
+| [<*物件1*>，<*物件2*>，...] | Array | 從所有輸入項目建立的陣列 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從以下輸入建立陣列：
 
@@ -1047,17 +1047,17 @@ createArray('h', 'e', 'l', 'l', 'o')
 dataUri('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的字串 |
+| <*價值*> | 是 | String | 要轉換的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*data-uri*> | String | 輸入字串的資料 URI |
+| <*資料-uri*> | String | 輸入字串的資料 URI |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會針對 "hello" 字串建立資料 URI：
 
@@ -1079,17 +1079,17 @@ dataUri('hello')
 dataUriToBinary('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的資料 URI |
+| <*價值*> | 是 | String | 要轉換的資料 URI |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*binary-for-data-uri*> | String | 資料 URI 的二進位版本 |
+| <*二進位資料-uri*> | String | 資料 URI 的二進位版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此資料 URI 的二進位版本：
 
@@ -1114,17 +1114,17 @@ dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dataUriToString('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的資料 URI |
+| <*價值*> | 是 | String | 要轉換的資料 URI |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*string-for-data-uri*> | String | 資料 URI 的字串版本 |
+| <*字串表示資料-uri*> | String | 資料 URI 的字串版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此資料 URI 的字串：
 
@@ -1144,17 +1144,17 @@ dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dayOfMonth('<timestamp>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*day-of-month*> | 整數 | 在指定時間戳記中的當月日期 |
+| <*每月一天*> | 整數  | 在指定時間戳記中的當月日期 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會傳回此時間戳記中的當月日期數字：
 
@@ -1174,17 +1174,17 @@ dayOfMonth('2018-03-15T13:27:36Z')
 dayOfWeek('<timestamp>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*day-of-week*> | 整數 | 在指定時間戳記上那一週的第幾天，其中星期日是 0、星期一是 1，依此類推 |
+| <*星期一*> | 整數  | 在指定時間戳記上那一週的第幾天，其中星期日是 0、星期一是 1，依此類推 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從此時間戳記傳回當週的第幾天：
 
@@ -1204,17 +1204,17 @@ dayOfWeek('2018-03-15T13:27:36Z')
 dayOfYear('<timestamp>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*day-of-year*> | 整數 | 在指定時間戳記上那一年的第幾天 |
+| <*一年天*> | 整數  | 在指定時間戳記上那一年的第幾天 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從此時間戳記傳回一年的第幾天：
 
@@ -1236,17 +1236,17 @@ dayOfYear('2018-03-15T13:27:36Z')
 decodeBase64('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要解碼的 base64 編碼字串 |
+| <*價值*> | 是 | String | 要解碼的 base64 編碼字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | String | 傳回 base64 編碼字串的字串版本 |
+| <*解碼基64字串*> | String | 傳回 base64 編碼字串的字串版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立 base64 編碼字串的字串：
 
@@ -1268,17 +1268,17 @@ decodeBase64('aGVsbG8=')
 decodeDataUri('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要解碼的資料 URI 字串 |
+| <*價值*> | 是 | String | 要解碼的資料 URI 字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*binary-for-data-uri*> | String | 資料 URI 字串的二進位版本 |
+| <*二進位資料-uri*> | String | 資料 URI 字串的二進位版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會傳回此資料 URI 的二進位版本：
 
@@ -1303,17 +1303,17 @@ decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 decodeUriComponent('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 其逸出字元需要解碼的字串 |
+| <*價值*> | 是 | String | 其逸出字元需要解碼的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*decoded-uri*> | String | 更新後的字串，其中逸出字元已解碼 |
+| <*解碼-uri*> | String | 更新後的字串，其中逸出字元已解碼 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會以已解碼的版本取代此字串中的逸出字元：
 
@@ -1334,18 +1334,18 @@ decodeUriComponent('http%3A%2F%2Fcontoso.com')
 div(<dividend>, <divisor>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*dividend*> | 是 | 整數或浮點數 | 要除以「除數」的數字 |
-| <*divisor*> | 是 | 整數或浮點數 | 要除「被除數」的數字，但不能為 0 |
+| <*股利*> | 是 | 整數或浮點數 | 要除以「除數」** 的數字 |
+| <*因數*> | 是 | 整數或浮點數 | 劃分*股息*但不能為 0 的數位 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | 整數 | 第一個數字除以第二個數字的整數結果 |
+| <*商- 結果*> | 整數  | 第一個數字除以第二個數字的整數結果 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這兩個範例會將第一個數字除以第二個數字：
 
@@ -1368,17 +1368,17 @@ div(11, 5)
 encodeUriComponent('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換成 URI 編碼格式的字串 |
+| <*價值*> | 是 | String | 要轉換成 URI 編碼格式的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*encoded-uri*> | String | 具有逸出字元的 URI 編碼字串 |
+| <*編碼-uri*> | String | 具有逸出字元的 URI 編碼字串 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此字串的 URI 編碼版本：
 
@@ -1400,17 +1400,17 @@ empty('<collection>')
 empty([<collection>])
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 字串、陣列或物件 | 要檢查的集合 |
+| <*收集*> | 是 | 字串、陣列或物件 | 要檢查的集合 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 若集合是空的，傳回 True。 若不是空的，傳回 False。 |
+| true 或 false | Boolean | 若集合是空的，傳回 True。 若不是空的，傳回 False。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會檢查指定的集合是否是空的：
 
@@ -1436,18 +1436,18 @@ empty('abc')
 endsWith('<text>', '<searchText>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 要檢查的字串 |
-| <*searchText*> | 是 | String | 要尋找的結尾子字串 |
+| <*文本*> | 是 | String | 要檢查的字串 |
+| <*搜索文本*> | 是 | String | 要尋找的結尾子字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False  | Boolean | 找到結尾子字串時，傳回 True。 找不到項目時，傳回 False。 |
+| true 或 false  | Boolean | 找到結尾子字串時，傳回 True。 找不到項目時，傳回 False。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會檢查 "hello world" 字串是否以 "world" 字串結尾：
 
@@ -1457,7 +1457,7 @@ endsWith('hello world', 'world')
 
 並傳回此結果：`true`
 
-*範例 2*
+*示例 2*
 
 此範例會檢查 "hello world" 字串是否以 "universe" 字串結尾：
 
@@ -1478,17 +1478,17 @@ endsWith('hello world', 'universe')
 equals('<object1>', '<object2>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*> | 是 | 各種類型 | 要比較的值、運算式或物件 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 當兩個項目相等時，傳回 True。 當兩個項目不相等時，傳回 False。 |
+| true 或 false | Boolean | 當兩個項目相等時，傳回 True。 當兩個項目不相等時，傳回 False。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會檢查指定的輸入是否相等。
 
@@ -1513,17 +1513,17 @@ first('<collection>')
 first([<collection>])
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 字串或陣列 | 要從中尋找第一個項目的集合 |
+| <*收集*> | 是 | 字串或陣列 | 要從中尋找第一個項目的集合 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | 任意 | 集合中的第一個項目 |
+| <*第一個集合項*> | 任意 | 集合中的第一個項目 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會尋找以下集合中第一個項目：
 
@@ -1539,7 +1539,7 @@ first(createArray(0, 1, 2))
 
 <a name="float"></a>
 
-### <a name="float"></a>float
+### <a name="float"></a>FLOAT
 
 將浮點數的字串版本轉換為實際浮點數。
 
@@ -1547,17 +1547,17 @@ first(createArray(0, 1, 2))
 float('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 具有有效浮點數要轉換的字串 |
+| <*價值*> | 是 | String | 具有有效浮點數要轉換的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*float-value*> | Float | 所指定字串的浮點數 |
+| <*浮點值*> | Float | 所指定字串的浮點數 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此浮點數的字串版本：
 
@@ -1577,18 +1577,18 @@ float('10.333')
 formatDateTime('<timestamp>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*reformatted-timestamp*> | String | 所指定格式的更新時間戳記 |
+| <*重新格式化時間戳記*> | String | 所指定格式的更新時間戳記 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將時間戳記轉換為指定格式：
 
@@ -1608,19 +1608,19 @@ formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 getFutureTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | 是 | 整數 | 要加入的指定時間單位數字 |
-| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*區間*> | 是 | 整數  | 要加入的指定時間單位數字 |
+| <*時間單位*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 目前時間戳記加上指定的時間單位數字 |
+| <*更新時間戳記*> | String | 目前時間戳記加上指定的時間單位數字 |
 ||||
 
-*範例 1*
+*示例 1*
 
 假設目前的時間戳記是 "2018-03-01T00:00:00.0000000Z"。
 此範例會在時間戳記中加上 5 天：
@@ -1631,7 +1631,7 @@ getFutureTime(5, 'Day')
 
 並傳回此結果：`"2018-03-06T00:00:00.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 假設目前的時間戳記是 "2018-03-01T00:00:00.0000000Z"。
 此範例會加上五天，並將結果轉換為 "D" 格式：
@@ -1652,19 +1652,19 @@ getFutureTime(5, 'Day', 'D')
 getPastTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | 是 | 整數 | 要減去的指定時間單位數字 |
-| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*區間*> | 是 | 整數  | 要減去的指定時間單位數字 |
+| <*時間單位*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 目前時間戳記減去指定的時間單位數字 |
+| <*更新時間戳記*> | String | 目前時間戳記減去指定的時間單位數字 |
 ||||
 
-*範例 1*
+*示例 1*
 
 假設目前的時間戳記是 "2018-02-01T00:00:00.0000000Z"。
 此範例會從此時間戳記中減去五天：
@@ -1675,7 +1675,7 @@ getPastTime(5, 'Day')
 
 並傳回此結果：`"2018-01-27T00:00:00.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 假設目前的時間戳記是 "2018-02-01T00:00:00.0000000Z"。
 此範例會減去五天，並將結果轉換為 "D" 格式：
@@ -1698,18 +1698,18 @@ greater(<value>, <compareTo>)
 greater('<value>', '<compareTo>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 整數、浮點數或字串 | 要檢查其是否大於第二個值的第一個值 |
-| <*compareTo*> | 是 | 個別的整數、浮點數或字串 | 比較值 |
+| <*價值*> | 是 | 整數、浮點數或字串 | 要檢查其是否大於第二個值的第一個值 |
+| <*比較到*> | 是 | 個別的整數、浮點數或字串 | 比較值 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 當第一個值大於第二個值時，傳回 True。 當第一個值等於或小於第二個值時，傳回 False。 |
+| true 或 false | Boolean | 當第一個值大於第二個值時，傳回 True。 當第一個值等於或小於第二個值時，傳回 False。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 以下範例會檢查第一個值是否大於第二個值：
 
@@ -1735,18 +1735,18 @@ greaterOrEquals(<value>, <compareTo>)
 greaterOrEquals('<value>', '<compareTo>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 整數、浮點數或字串 | 要檢查其是否大於或等於第二個值的第一個值 |
-| <*compareTo*> | 是 | 個別的整數、浮點數或字串 | 比較值 |
+| <*價值*> | 是 | 整數、浮點數或字串 | 要檢查其是否大於或等於第二個值的第一個值 |
+| <*比較到*> | 是 | 個別的整數、浮點數或字串 | 比較值 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 當第一個值大於或等於第二個值時，傳回 True。 當第一個值小於第二個值時，傳回 False。 |
+| true 或 false | Boolean | 當第一個值大於或等於第二個值時，傳回 True。 當第一個值小於第二個值時，傳回 False。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 以下範例會檢查第一個值是否大於或等於第二個值：
 
@@ -1762,7 +1762,7 @@ greaterOrEquals('apple', 'banana')
 
 <a name="guid"></a>
 
-### <a name="guid"></a>GUID
+### <a name="guid"></a>guid
 
 以字串形式產生唯一識別碼 (GUID)，例如 "c2ecc88d-88c8-4096-912c-d6f2e2b138ce"：
 
@@ -1776,17 +1776,17 @@ guid()
 guid('<format>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | String | 所傳回 GUID 的單一[格式規範](https://msdn.microsoft.com/library/97af8hh4)。 預設格式為 "D"，但您可以使用 "N"、"D"、"B"、"P" 或 "X"。 |
+| <*格式*> | 否 | String | 所傳回 GUID 的單一[格式規範](https://msdn.microsoft.com/library/97af8hh4)。 預設格式為 "D"，但您可以使用 "N"、"D"、"B"、"P" 或 "X"。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*GUID-value*> | String | 隨機產生的 GUID |
+| <*GUID 值*> | String | 隨機產生的 GUID |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會產生相同 GUID，不過格式是 32 個以連字號分隔的數字，並以括號括住：
 
@@ -1807,19 +1807,19 @@ guid('P')
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要檢查的運算式 |
-| <*valueIfTrue*> | 是 | 任意 | 運算式為 True 時要傳回的值 |
-| <*valueIfFalse*> | 是 | 任意 | 運算式為 False 時要傳回的值 |
+| <*表達*> | 是 | Boolean | 要檢查的運算式 |
+| <*值IfTrue*> | 是 | 任意 | 運算式為 True 時要傳回的值 |
+| <*值if假*> | 是 | 任意 | 運算式為 False 時要傳回的值 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | 任意 | 根據運算式為 True 或 False，傳回的指定值 |
+| <*指定傳回值*> | 任意 | 根據運算式為 True 或 False，傳回的指定值 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會傳回 `"yes"`，因為指定的運算式傳回 True。
 否則，此範例會傳回 `"no"`：
@@ -1839,18 +1839,18 @@ if(equals(1, 1), 'yes', 'no')
 indexOf('<text>', '<searchText>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 具有子字串要尋找的字串 |
-| <*searchText*> | 是 | String | 要尋找的子字串 |
+| <*文本*> | 是 | String | 具有子字串要尋找的字串 |
+| <*搜索文本*> | 是 | String | 要尋找的子字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*index-value*>| 整數 | 所指定子字串的起始位置或索引值。 <p>如果找不到該字串，傳回數字 -1。 |
+| <*索引值*>| 整數  | 所指定子字串的起始位置或索引值。 <p>如果找不到該字串，傳回數字 -1。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會在 "hello world" 字串中，尋找 "world" 子字串的起始索引值：
 
@@ -1870,17 +1870,17 @@ indexOf('hello world', 'world')
 int('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的字串 |
+| <*價值*> | 是 | String | 要轉換的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*integer-result*> | 整數 | 所指定字串的整數版本 |
+| <*整數結果*> | 整數  | 所指定字串的整數版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立字串 "10" 的整數版本：
 
@@ -1900,17 +1900,17 @@ int('10')
 json('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串或 XML | 要轉換的字串或 XML |
+| <*價值*> | 是 | 字串或 XML | 要轉換的字串或 XML |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*JSON-result*> | JSON 原生類型或物件 | 所指定字串或 XML 的 JSON 原生類型值或物件。 如果字串為 Null，函式會傳回空物件。 |
+| <*JSON 結果*> | JSON 原生類型或物件 | 所指定字串或 XML 的 JSON 原生類型值或物件。 如果字串為 Null，函式會傳回空物件。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會將此字串轉換為 JSON 值：
 
@@ -1920,7 +1920,7 @@ json('[1, 2, 3]')
 
 並傳回此結果：`[1, 2, 3]`
 
-*範例 2*
+*示例 2*
 
 此範例會將此字串轉換為 JSON：
 
@@ -1936,7 +1936,7 @@ json('{"fullName": "Sophia Owen"}')
 }
 ```
 
-*範例 3*
+*示例 3*
 
 此範例會將此 XML 轉換為 JSON：
 
@@ -1963,7 +1963,7 @@ json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> 
 
 ### <a name="intersection"></a>交集
 
-在指定的多個集合中，傳回「只有」共同項目的集合。
+在指定的多個集合中，傳回「只有」** 共同項目的集合。
 項目若要出現在結果中，必須出現在所有傳遞至此函式的集合中。
 如果一個或多個項目有相同的名稱，則具有該名稱的最後一個項目會出現在結果中。
 
@@ -1972,17 +1972,17 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>, ... | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「只有」共同項目的集合 |
+| <*collection1*>, <*collection2*>, ... | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「只有」** 共同項目的集合 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*common-items*> | 個別的陣列或物件 | 在指定的多個集合中，「只有」共同項目的集合 |
+| <*公共專案*> | 個別的陣列或物件 | 在指定的多個集合中，「只有」共同項目的集合 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從以下陣列中找出共同項目：
 
@@ -1990,30 +1990,30 @@ intersection('<collection1>', '<collection2>', ...)
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-並傳回的「只有」這些項目的陣列：`[1, 2]`
+並傳回的「只有」** 這些項目的陣列：`[1, 2]`
 
 <a name="join"></a>
 
 ### <a name="join"></a>Join
 
-傳回具有陣列中所有項目的字串，並以「分隔符號」將每個字元隔開。
+傳回具有陣列中所有項目的字串，並以「分隔符號」** 將每個字元隔開。
 
 ```
 join([<collection>], '<delimiter>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 陣列 | 要將其項目聯結的陣列 |
-| <*delimiter*> | 是 | String | 在結果字串中，要出現在每個字元之間的分隔符號 |
+| <*收集*> | 是 | Array | 要將其項目聯結的陣列 |
+| <*分隔符號*> | 是 | String | 在結果字串中，要出現在每個字元之間的分隔符號 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | 從指定陣列中所有項目建立的結果字串 |
+| <*char1*><*分隔符號*><*char2*><*分隔符號*>... | String | 從指定陣列中所有項目建立的結果字串 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從此陣列中所有項目建立字串，並以指定字元作為分隔符號：
 
@@ -2034,17 +2034,17 @@ last('<collection>')
 last([<collection>])
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 字串或陣列 | 要從中尋找最後一個項目的集合 |
+| <*收集*> | 是 | 字串或陣列 | 要從中尋找最後一個項目的集合 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*last-collection-item*> | 個別的字串或陣列 | 集合中的最後一個項目 |
+| <*最後收集項*> | 個別的字串或陣列 | 集合中的最後一個項目 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會尋找以下集合中最後一個項目：
 
@@ -2069,18 +2069,18 @@ last(createArray(0, 1, 2, 3))
 lastIndexOf('<text>', '<searchText>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 具有子字串要尋找的字串 |
-| <*searchText*> | 是 | String | 要尋找的子字串 |
+| <*文本*> | 是 | String | 具有子字串要尋找的字串 |
+| <*搜索文本*> | 是 | String | 要尋找的子字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*ending-index-value*> | 整數 | 指定的子字串最後一次出現的起始位置或索引值。 <p>如果找不到該字串，傳回數字 -1。 |
+| <*結束索引值*> | 整數  | 指定的子字串最後一次出現的起始位置或索引值。 <p>如果找不到該字串，傳回數字 -1。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會在 "hello world" 字串中，尋找 "world" 子字串最後一次出現的起始索引值：
 
@@ -2092,7 +2092,7 @@ lastIndexOf('hello world', 'world')
 
 <a name="length"></a>
 
-### <a name="length"></a>length
+### <a name="length"></a>長度
 
 傳回集合中的項目數目。
 
@@ -2101,17 +2101,17 @@ length('<collection>')
 length([<collection>])
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 字串或陣列 | 要計算其項目數的集合 |
+| <*收集*> | 是 | 字串或陣列 | 要計算其項目數的集合 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*length-or-count*> | 整數 | 集合中的項目數目 |
+| <*長度或計數*> | 整數  | 集合中的項目數目 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會計算以下集合中的項目數：
 
@@ -2134,18 +2134,18 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 整數、浮點數或字串 | 要檢查其是否小於第二個值的第一個值 |
-| <*compareTo*> | 是 | 個別的整數、浮點數或字串 | 比較項目 |
+| <*價值*> | 是 | 整數、浮點數或字串 | 要檢查其是否小於第二個值的第一個值 |
+| <*比較到*> | 是 | 個別的整數、浮點數或字串 | 比較項目 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 當第一個值小於第二個值時，傳回 True。 當第一個值等於或大於第二個值時，傳回 False。 |
+| true 或 false | Boolean | 當第一個值小於第二個值時，傳回 True。 當第一個值等於或大於第二個值時，傳回 False。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 以下範例會檢查第一個值是否小於第二個值。
 
@@ -2171,18 +2171,18 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 整數、浮點數或字串 | 要檢查其是否小於或等於第二個值的第一個值 |
-| <*compareTo*> | 是 | 個別的整數、浮點數或字串 | 比較項目 |
+| <*價值*> | 是 | 整數、浮點數或字串 | 要檢查其是否小於或等於第二個值的第一個值 |
+| <*比較到*> | 是 | 個別的整數、浮點數或字串 | 比較項目 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False  | Boolean | 當第一個值小於或等於第二個值時，傳回 True。 當第一個值大於第二個值時，傳回 False。 |
+| true 或 false  | Boolean | 當第一個值小於或等於第二個值時，傳回 True。 當第一個值大於第二個值時，傳回 False。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 以下範例會檢查第一個值是否小於或等於第二個值。
 
@@ -2207,18 +2207,18 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | 是 | 整數、浮點數或兩者並存 | 您需要其中最大值的數字集合 |
-| [<*number1*>, <*number2*>, ...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最大值的數字陣列 |
+| [<*號*1>，<*號*2>，...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最大值的數字陣列 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*max-value*> | 整數或浮點數 | 所指定陣列或數字集合中的最大值 |
+| <*最大值*> | 整數或浮點數 | 所指定陣列或數字集合中的最大值 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會從數字集合和陣列中取得最大值：
 
@@ -2231,7 +2231,7 @@ max(createArray(1, 2, 3))
 
 <a name="min"></a>
 
-### <a name="min"></a>分
+### <a name="min"></a>Min
 
 從數字集合或陣列中傳回最小值。
 
@@ -2240,18 +2240,18 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | 是 | 整數、浮點數或兩者並存 | 您需要其中最小值的數字集合 |
-| [<*number1*>, <*number2*>, ...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最小值的數字陣列 |
+| [<*號*1>，<*號*2>，...] | 是 | 陣列 - 整數、浮點數或兩者並存 | 您需要其中最小值的數字陣列 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*min-value*> | 整數或浮點數 | 所指定數字集合或陣列中的最小值 |
+| <*最小值*> | 整數或浮點數 | 所指定數字集合或陣列中的最小值 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會取得數字集合和陣列中的最小值：
 
@@ -2273,18 +2273,18 @@ min(createArray(1, 2, 3))
 mod(<dividend>, <divisor>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*dividend*> | 是 | 整數或浮點數 | 要除以「除數」的數字 |
-| <*divisor*> | 是 | 整數或浮點數 | 要除「被除數」的數字，但不能為 0。 |
+| <*股利*> | 是 | 整數或浮點數 | 要除以「除數」** 的數字 |
+| <*因數*> | 是 | 整數或浮點數 | 要除「被除數」** 的數字，但不能為 0。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*modulo-result*> | 整數或浮點數 | 第一個數字除以第二個數字的餘數 |
+| <*莫杜洛結果*> | 整數或浮點數 | 第一個數字除以第二個數字的餘數 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將第一個數字除以第二個數字：
 
@@ -2304,18 +2304,18 @@ mod(3, 2)
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | 是 | 整數或浮點數 | 要與「被乘數 2」 相乘的數字 |
-| <*multiplicand2*> | 是 | 整數或浮點數 | 要與「被乘數 1」 相乘的數字 |
+| <*多頁*> | 是 | 整數或浮點數 | 要與「被乘數 2」** 相乘的數字 |
+| <*多頁*> | 是 | 整數或浮點數 | 要與「被乘數 1」** 相乘的數字 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*product-result*> | 整數或浮點數 | 第一個數字與第二個數字相乘的乘積 |
+| <*產品結果*> | 整數或浮點數 | 第一個數字與第二個數字相乘的乘積 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這些範例會將第一個數字與第二個數字相乘：
 
@@ -2340,17 +2340,17 @@ mul(1.5, 2)
 not(<expression>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要檢查的運算式 |
+| <*表達*> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 運算式為 False 時，傳回 True。 運算式為 True 時，傳回 False。 |
+| true 或 false | Boolean | 運算式為 False 時，傳回 True。 運算式為 True 時，傳回 False。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 這些範例會檢查指定的運算式是否為 False：
 
@@ -2364,7 +2364,7 @@ not(true)
 * 第一個範例：運算式為 False，所以函數傳回 `true`。
 * 第一個範例：運算式為 True，所以函數傳回 `false`。
 
-*範例 2*
+*示例 2*
 
 這些範例會檢查指定的運算式是否為 False：
 
@@ -2389,17 +2389,17 @@ not(equals(1, 1))
 or(<expression1>, <expression2>, ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要檢查的運算式 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False | Boolean | 至少有一個運算式是 True 時，傳回 True。 所有運算式都是 False 時，即傳回 False。 |
+| true 或 false | Boolean | 至少有一個運算式是 True 時，傳回 True。 所有運算式都是 False 時，即傳回 False。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 這些範例會檢查是否至少有一個運算式是 True：
 
@@ -2413,7 +2413,7 @@ or(false, false)
 * 第一個範例：至少有一個運算式為 True，所以函數傳回 `true`。
 * 第二個範例：兩個運算式都是 False，所以函式傳回 `false`。
 
-*範例 2*
+*示例 2*
 
 這些範例會檢查是否至少有一個運算式是 True：
 
@@ -2437,18 +2437,18 @@ or(equals(1, 2), equals(1, 3))
 rand(<minValue>, <maxValue>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | 是 | 整數 | 範圍中的最小整數 |
-| <*maxValue*> | 是 | 整數 | 在範圍中，在函式所能傳回最大整數後面的整數 |
+| <*最小值*> | 是 | 整數  | 範圍中的最小整數 |
+| <*最大值*> | 是 | 整數  | 在範圍中，在函式所能傳回最大整數後面的整數 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*random-result*> | 整數 | 從指定範圍傳回的隨機整數 |
+| <*隨機結果*> | 整數  | 從指定範圍傳回的隨機整數 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從指定範圍取得隨機整數，但不包含最大值：
 
@@ -2468,18 +2468,18 @@ rand(1, 5)
 range(<startIndex>, <count>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | 是 | 整數 | 整數值，可將陣列當做第一個專案來啟動 |
-| <*count*> | 是 | 整數 | 陣列中的整數數量 |
+| <*啟動索引*> | 是 | 整數  | 將陣列作為第一項啟動的整數值 |
+| <*計數*> | 是 | 整數  | 陣列中的整數數量 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [<*range-result*>] | 陣列 | 從指定索引開始的整數陣列 |
+| [<*range-result*>] | Array | 從指定索引開始的整數陣列 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立從指定索引開始的整數陣列，且其中有指定數量的整數：
 
@@ -2499,19 +2499,19 @@ range(1, 4)
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 有子字串要取代的字串 |
-| <*oldText*> | 是 | String | 要取代的子字串 |
-| <*newText*> | 是 | String | 取代字串 |
+| <*文本*> | 是 | String | 有子字串要取代的字串 |
+| <*舊文本*> | 是 | String | 要取代的子字串 |
+| <*新文本*> | 是 | String | 取代字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-text*> | String | 取代子字串後的更新字串 <p>如果找不到子字串，則傳回原始字串。 |
+| <*更新文本*> | String | 取代子字串後的更新字串 <p>如果找不到子字串，則傳回原始字串。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會尋找 "the old string" 中的 "old" 字串，然後以"new" 取代 "old"：
 
@@ -2525,24 +2525,24 @@ replace('the old string', 'old', 'new')
 
 ### <a name="skip"></a>skip
 
-移除集合前端的項目，並傳回「其他所有」項目。
+移除集合前端的項目，並傳回「其他所有」** 項目。
 
 ```
 skip([<collection>], <count>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 陣列 | 您想要從中移除項目的集合 |
-| <*count*> | 是 | 整數 | 正整數，表示要移除的前端項目數量 |
+| <*收集*> | 是 | Array | 您想要從中移除項目的集合 |
+| <*計數*> | 是 | 整數  | 正整數，表示要移除的前端項目數量 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [<*updated-collection*>] | 陣列 | 移除指定項目之後的更新集合 |
+| [<*updated-collection*>] | Array | 移除指定項目之後的更新集合 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從指定陣列的前端移除一個項目，也就是數字 0：
 
@@ -2556,24 +2556,24 @@ skip(createArray(0, 1, 2, 3), 1)
 
 ### <a name="split"></a>split
 
-根據原始字串中指定的分隔符號，傳回包含以逗號分隔之子字串的陣列。
+返回包含子字串的陣列，該子字串以逗號分隔，基於原始字串中的指定分隔符號字元。
 
 ```
 split('<text>', '<delimiter>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 要根據原始字串中指定的分隔符號分隔成子字串的字串 |
-| <*delimiter*> | 是 | String | 原始字串中用來作為分隔符號的字元 |
+| <*文本*> | 是 | String | 要根據原始字串中指定的分隔符號分隔成子字串的字串 |
+| <*分隔符號*> | 是 | String | 原始字串中用來作為分隔符號的字元 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| [<*substring1*>,<*substring2*>,...] | 陣列 | 包含來自原始字串並以逗號分隔之子字串的陣列 |
+| [<*substring1*>,<*substring2*>,...] | Array | 包含來自原始字串並以逗號分隔之子字串的陣列 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 這個範例會根據指定來作為分隔符號的字元，建立包含來自指定字串之子字串的陣列：
 
@@ -2593,18 +2593,18 @@ split('a_b_c', '_')
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 指定的時間戳記，但以當天的零小時標記開始 |
+| <*更新時間戳記*> | String | 指定的時間戳記，但以當天的零小時標記開始 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會尋找此時間戳記中當天的起始點：
 
@@ -2624,18 +2624,18 @@ startOfDay('2018-03-15T13:30:30Z')
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 指定的時間戳記，但以小時的零分鐘標記開始 |
+| <*更新時間戳記*> | String | 指定的時間戳記，但以小時的零分鐘標記開始 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會尋找此時間戳記中小時的起始點：
 
@@ -2655,18 +2655,18 @@ startOfHour('2018-03-15T13:30:30Z')
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 指定的時間戳記，但以當月第一天的零小時標記開始 |
+| <*更新時間戳記*> | String | 指定的時間戳記，但以當月第一天的零小時標記開始 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會傳回此時間戳記中月份的起始點：
 
@@ -2688,18 +2688,18 @@ startOfMonth('2018-03-15T13:30:30Z')
 startsWith('<text>', '<searchText>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 要檢查的字串 |
-| <*searchText*> | 是 | String | 要尋找的起始字串 |
+| <*文本*> | 是 | String | 要檢查的字串 |
+| <*搜索文本*> | 是 | String | 要尋找的起始字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| True 或 False  | Boolean | 找到起始子字串時，傳回 True。 找不到項目時，傳回 False。 |
+| true 或 false  | Boolean | 找到起始子字串時，傳回 True。 找不到項目時，傳回 False。 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會檢查 "hello world" 字串是否以 "hello" 子字串開始：
 
@@ -2709,7 +2709,7 @@ startsWith('hello world', 'hello')
 
 並傳回此結果：`true`
 
-*範例 2*
+*示例 2*
 
 此範例會檢查 "hello world" 字串是否以 "greetings" 子字串開始：
 
@@ -2721,7 +2721,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>字串
 
 傳回值的字串版本。
 
@@ -2729,17 +2729,17 @@ startsWith('hello world', 'greetings')
 string(<value>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 任意 | 要轉換的值 |
+| <*價值*> | 是 | 任意 | 要轉換的值 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*string-value*> | String | 指定值的字串版本 |
+| <*字串值*> | String | 指定值的字串版本 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會建立此數字的字串版本：
 
@@ -2749,7 +2749,7 @@ string(10)
 
 並傳回此結果：`"10"`
 
-*範例 2*
+*示例 2*
 
 此範例會為指定的 JSON 物件建立字串，並使用反斜線字元 (\\) 作為雙引號 (") 的逸出字元。
 
@@ -2769,18 +2769,18 @@ string( { "name": "Sophie Owen" } )
 sub(<minuend>, <subtrahend>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*minuend*> | 是 | 整數或浮點數 | 要從中減去「減數」的數字 |
-| <*subtrahend*> | 是 | 整數或浮點數 | 從「被減數」中減去的數字 |
+| <*米努恩德*> | 是 | 整數或浮點數 | 要從中減去「減數」** 的數字 |
+| <*次拉洪德*> | 是 | 整數或浮點數 | 從「被減數」** 中減去的數字 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*result*> | 整數或浮點數 | 從第一個數字減去第二個數字的結果 |
+| <*結果*> | 整數或浮點數 | 從第一個數字減去第二個數字的結果 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從第一個數字減去第二個數字：
 
@@ -2801,19 +2801,19 @@ sub(10.3, .3)
 substring('<text>', <startIndex>, <length>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 您需要其中字元的字串 |
-| <*startIndex*> | 是 | 整數 | 要當做開始位置或索引值使用的正數，等於或大於0 |
-| <*length*> | 是 | 整數 | 子字串中您需要的字元數正數 |
+| <*文本*> | 是 | String | 您需要其中字元的字串 |
+| <*啟動索引*> | 是 | 整數  | 等於或大於 0 的正數，您要用作起始位置或索引值 |
+| <*長度*> | 是 | 整數  | 子字串中您需要的字元數正數 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*substring-result*> | String | 具有指定字元數目的子字串，並以來源字串中的指定索引位置起始 |
+| <*子字串結果*> | String | 具有指定字元數目的子字串，並以來源字串中的指定索引位置起始 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從指定字串建立 5 個字元的子字串，並且從索引值 6 起始：
 
@@ -2834,20 +2834,20 @@ substring('hello world', 6, 5)
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*interval*> | 是 | 整數 | 要減去的指定時間單位數字 |
-| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*時間 戳*> | 是 | String | 包含時間戳記的字串 |
+| <*區間*> | 是 | 整數  | 要減去的指定時間單位數字 |
+| <*時間單位*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | String | 時間戳記減去指定的時間單位數字 |
+| <*更新時間戳記*> | String | 時間戳記減去指定的時間單位數字 |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會從此時間戳記中減去一天：
 
@@ -2857,7 +2857,7 @@ subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 
 並傳回此結果：`"2018-01-01T00:00:00:0000000Z"`
 
-*範例 2*
+*示例 2*
 
 此範例會從此時間戳記中減去一天：
 
@@ -2878,18 +2878,18 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | 字串或陣列 | 您需要其中項目的集合 |
-| <*count*> | 是 | 整數 | 正整數，表示您需要的前端項目數量 |
+| <*收集*> | 是 | 字串或陣列 | 您需要其中項目的集合 |
+| <*計數*> | 是 | 整數  | 正整數，表示您需要的前端項目數量 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
 | <*subset*> 或 [<*subset*>] | 個別的字串或陣列 | 從原始集合前端取得指定項目數量的字串或陣列 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從這些集合的前端取得指定數目的項目：
 
@@ -2908,20 +2908,20 @@ take(createArray(0, 1, 2, 3, 4), 3)
 ### <a name="ticks"></a>刻度
 
 傳回指定時間戳記的 `ticks` 屬性值。
-一「刻度」是 100 奈秒的間隔。
+一「刻度」** 是 100 奈秒的間隔。
 
 ```
 ticks('<timestamp>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | String | 時間戳記的字串 |
+| <*時間 戳*> | 是 | String | 時間戳記的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*ticks-number*> | 整數 | 自指定時間戳記以來的刻度數目 |
+| <*刻度數*> | 整數  | 自指定時間戳記以來的刻度數目 |
 ||||
 
 <a name="toLower"></a>
@@ -2934,17 +2934,17 @@ ticks('<timestamp>')
 toLower('<text>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 要以小寫格式傳回的字串 |
+| <*文本*> | 是 | String | 要以小寫格式傳回的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*lowercase-text*> | String | 小寫格式的原始字串 |
+| <*小寫文本*> | String | 小寫格式的原始字串 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將此字串轉換為小寫：
 
@@ -2964,17 +2964,17 @@ toLower('Hello World')
 toUpper('<text>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 要以大寫格式傳回的字串 |
+| <*文本*> | 是 | String | 要以大寫格式傳回的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*uppercase-text*> | String | 大寫格式的原始字串 |
+| <*大寫文本*> | String | 大寫格式的原始字串 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會將此字串轉換為大寫：
 
@@ -2994,17 +2994,17 @@ toUpper('Hello World')
 trim('<text>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | String | 要為其移除開頭和尾端空白字元的字串 |
+| <*文本*> | 是 | String | 要為其移除開頭和尾端空白字元的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updatedText*> | String | 不含開頭或尾端空白字元的原始字串更新版本 |
+| <*更新文本*> | String | 不含開頭或尾端空白字元的原始字串更新版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會從 " Hello World  " 字串中移除開頭和尾端空白字元：
 
@@ -3018,7 +3018,7 @@ trim(' Hello World  ')
 
 ### <a name="union"></a>union
 
-傳回具有指定集合中「所有」項目的集合。
+傳回具有指定集合中「所有」** 項目的集合。
 出現在結果中的項目，可以出現在任何傳遞至此函式的集合中。 如果一個或多個項目有相同的名稱，則具有該名稱的最後一個項目會出現在結果中。
 
 ```
@@ -3026,19 +3026,19 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>, ...  | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「所有」項目的集合 |
+| <*collection1*>, <*collection2*>, ...  | 是 | 陣列或物件，但不可以兩者並存 | 您想要其中「所有」** 項目的集合 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*updatedCollection*> | 個別的陣列或物件 | 具有指定集合中所有項目的集合 - 不含重複值 |
+| <*更新集合*> | 個別的陣列或物件 | 具有指定集合中所有項目的集合 - 不含重複值 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
-此範例會從以下集合取得「所有」項目：
+此範例會從以下集合取得「所有」** 項目：
 
 ```
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
@@ -3058,17 +3058,17 @@ union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 uriComponent('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換成 URI 編碼格式的字串 |
+| <*價值*> | 是 | String | 要轉換成 URI 編碼格式的字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*encoded-uri*> | String | 具有逸出字元的 URI 編碼字串 |
+| <*編碼-uri*> | String | 具有逸出字元的 URI 編碼字串 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此字串的 URI 編碼版本：
 
@@ -3088,17 +3088,17 @@ uriComponent('https://contoso.com')
 uriComponentToBinary('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要轉換的 URI 編碼字串 |
+| <*價值*> | 是 | String | 要轉換的 URI 編碼字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*binary-for-encoded-uri*> | String | URI 編碼字串的二進位版本。 二進位內容是以 base64 編碼，而且由 `$content` 表示。 |
+| <*二進位編碼-uri*> | String | URI 編碼字串的二進位版本。 二進位內容是以 base64 編碼，而且由 `$content` 表示。 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此 URI 編碼字串的二進位版本：
 
@@ -3123,17 +3123,17 @@ uriComponentToBinary('http%3A%2F%2Fcontoso.com')
 uriComponentToString('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 要解碼的 URI 編碼字串 |
+| <*價值*> | 是 | String | 要解碼的 URI 編碼字串 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*decoded-uri*> | String | URI 編碼字串的已解碼版本 |
+| <*解碼-uri*> | String | URI 編碼字串的已解碼版本 |
 ||||
 
-<bpt id="p1">*</bpt>Example<ept id="p1">*</ept>
+*範例*
 
 此範例會建立此 URI 編碼字串的已解碼字串版本：
 
@@ -3155,17 +3155,17 @@ utcNow('<format>')
 
 您可以選擇性地以 <*format*> 參數指定不同格式。
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*格式*> | 否 | String | [單一格式規範](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*current-timestamp*> | String | 目前的日期和時間 |
+| <*目前時間戳*> | String | 目前的日期和時間 |
 ||||
 
-*範例 1*
+*示例 1*
 
 假設今天是 2018 年 4 月 15 日下午 1:00:00。
 此範例會取得目前的時間戳記：
@@ -3176,7 +3176,7 @@ utcNow()
 
 並傳回此結果：`"2018-04-15T13:00:00.0000000Z"`
 
-*範例 2*
+*示例 2*
 
 假設今天是 2018 年 4 月 15 日下午 1:00:00。
 此範例會使用選擇性的 "D" 格式取得目前時間戳記：
@@ -3197,17 +3197,17 @@ utcNow('D')
 xml('<value>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | String | 其中有 JSON 物件要轉換的字串 <p>JSON 物件必須只能有一個根屬性，且不可以是陣列。 <br>使用反斜線字元 (\\) 作為雙引號 (") 的逸出字元。 |
+| <*價值*> | 是 | String | 其中有 JSON 物件要轉換的字串 <p>JSON 物件必須只能有一個根屬性，且不可以是陣列。 <br>使用反斜線字元 (\\) 作為雙引號 (") 的逸出字元。 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | Object | 所指定字串或 JSON 物件的編碼 XML |
+| <*xml 版本*> | Object | 所指定字串或 JSON 物件的編碼 XML |
 ||||
 
-*範例 1*
+*示例 1*
 
 此範例會為包含 JSON 物件的此字串建立 XML 版本：
 
@@ -3219,7 +3219,7 @@ xml('<value>')
 <name>Sophia Owen</name>
 ```
 
-*範例 2*
+*示例 2*
 
 假設您有此 JSON 物件：
 
@@ -3255,20 +3255,20 @@ xml('<value>')
 xpath('<xml>', '<xpath>')
 ```
 
-| 參數 | 必要項 | Type | 描述 |
+| 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | 是 | 任意 | XML 字串，將對其搜尋是否有符合 XPath 運算式的值或節點 |
-| <*xpath*> | 是 | 任意 | 用來尋找相符 XML 節點或值的 XPath 運算式 |
+| <*Xml*> | 是 | 任意 | XML 字串，將對其搜尋是否有符合 XPath 運算式的值或節點 |
+| <*Xpath*> | 是 | 任意 | 用來尋找相符 XML 節點或值的 XPath 運算式 |
 |||||
 
-| 傳回值 | Type | 描述 |
+| 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*xml-node*> | XML | 只有單一節點符合指定的 XPath 運算式時會傳回 XML 節點 |
-| <*value*> | 任意 | 只有單一值符合指定的 XPath 運算式時，會傳回 XML 節點的值 |
-| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | 陣列 | 陣列，其中有符合指定 XPath 運算式的 XML 節點或值 |
+| <*xml 節點*> | XML | 只有單一節點符合指定的 XPath 運算式時會傳回 XML 節點 |
+| <*價值*> | 任意 | 只有單一值符合指定的 XPath 運算式時，會傳回 XML 節點的值 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 陣列，其中有符合指定 XPath 運算式的 XML 節點或值 |
 ||||
 
-*範例 1*
+*示例 1*
 
 以範例 1 為基礎，此範例會尋找符合 `<count></count>` 節點的節點，並使用 `sum()` 函式將這些節點值相加：
 
@@ -3276,15 +3276,15 @@ xpath('<xml>', '<xpath>')
 
 並傳回此結果：`30`
 
-*範例 2*
+*示例 2*
 
 在此範例中，有兩個運算式會在指定的引數中 (其中包含具有命名空間的 XML) 尋找符合 `<location></location>` 節點的節點。 此運算式使用反斜線字元 (\\) 作為雙引號 (") 的逸出字元。
 
-* 運算式 1
+* *運算式 1*
 
   `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 
-* 運算式2
+* *運算式 2*
 
   `xpath(xml(body('Http')), '/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]')`
 
@@ -3308,7 +3308,7 @@ xpath('<xml>', '<xpath>')
 <location xmlns="https://contoso.com">Paris</location>
 ```
 
-*範例 3*
+*示例 3*
 
 以範例 3 為基礎，此範例會尋找 `<location></location>` 節點中的值：
 

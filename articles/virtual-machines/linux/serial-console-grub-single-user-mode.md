@@ -1,5 +1,5 @@
 ---
-title: 適用于 GRUB 和單一使用者模式的 Azure 序列主控台
+title: 用於 GRUB 和單使用者模式的 Azure 串列主控台
 description: 針對 Azure 虛擬機器中的 grub 使用序列主控台。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035045"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
@@ -125,7 +125,7 @@ Ubuntu 映像不需要 root 密碼。 如果系統開機進入單一使用者模
 1. 將 `GRUB_TIMEOUT` 值變更為非零值
 1. 在您慣用的文字編輯器中開啟 `/etc/default/grub`
 1. 將 `GRUB_HIDDEN_TIMEOUT=1` 行變成註解
-1. 執行 `sudo update-grub`
+1. 執行 
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 中的單一使用者模式
 Ubuntu 會在無法正常開機時讓您進入單一使用者模式。 若要手動進入單一使用者模式，請依下列指示執行：
@@ -155,12 +155,12 @@ SLES 12 SP3 以上版本的新版映像允許在系統開機進入緊急模式�
 SLES 中的 GRUB 存取要求必須透過 YaST 設定開機載入程式。 若要這樣做，請依照下列指示執行：
 
 1. ssh 到您的 SLES VM 並執行 `sudo yast bootloader`。 使用 `tab` 鍵、`enter` 鍵與方向鍵來瀏覽功能表。 
-1. 瀏覽到 `Kernel Parameters` `Use serial console`。 
+1. 瀏覽到 `Kernel Parameters``Use serial console`。 
 1. 將 `serial --unit=0 --speed=9600 --parity=no` 加到 Console 引數中
 
 1. 按 F10 以儲存您的設定並結束
 1. 若要進入 GRUBM，請將您的 VM 重新開機並在開機順序期間按任意鍵以讓 GRUB 維持顯示在畫面上
-    - GRUB 的預設逾時是 1 秒。 您可以透過變更 `GRUB_TIMEOUT` 中的 `/etc/default/grub` 變數以變更此時間長度
+    - GRUB 的預設逾時是 1 秒。 您可以透過變更 `/etc/default/grub` 中的 `GRUB_TIMEOUT` 變數以變更此時間長度
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
@@ -183,7 +183,7 @@ Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請使用 `sudo reboot`
 依照上述適用於 RHEL 的指示來在 Oracle Linux 中啟用單一使用者模式。
 
 ## <a name="next-steps"></a>後續步驟
-* 主要序列主控台 Linux 文件頁面在[這裡](serial-console.md)。
+* 主串列主控台Linux文檔頁面[位於此處](serial-console.md)。
 * 使用「序列主控台」來進行[NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)
-* 序列主控台也適用於 [Windows](../windows/serial-console.md) VM
+* 「序列主控台」也適用於 [Windows](../windows/serial-console.md) VM
 * 深入了解[開機診斷](boot-diagnostics.md)

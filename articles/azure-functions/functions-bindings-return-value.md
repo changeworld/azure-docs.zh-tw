@@ -1,32 +1,32 @@
 ---
-title: 使用來自 Azure 函式的傳回值
-description: 瞭解如何管理 Azure Functions 的傳回值
+title: 使用 Azure 函數的傳回值
+description: 瞭解如何管理 Azure 函數的傳回值
 author: craigshoemaker
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74480577"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函數傳回值
 
-本文說明傳回值在函式內的運作方式。
+本文介紹了傳回值如何在函數內工作。
 
-在具有傳回值的語言中，您可以將函式[輸出](./functions-triggers-bindings.md#binding-direction)系結系結至傳回值：
+在具有傳回值的語言中，可以將函數[輸出綁定](./functions-triggers-bindings.md#binding-direction)綁定到傳回值：
 
 * 在 C# 類別庫中，將輸出繫結屬性套用至方法傳回值。
-* 在 JAVA 中，將輸出系結注釋套用至函式方法。
-* 在其他語言中，將 function.json`name`*中的* 屬性設定為 `$return`。
+* 在 JAVA 中，將輸出綁定注釋應用於函數方法。
+* 在其他語言中，將 function.json** 中的 `name` 屬性設定為 `$return`。
 
 如果有多個輸出繫結，請只對其中一個使用傳回值。
 
 在 C# 和 C# 指令碼中，傳送資料到輸出繫結的方式可以是 `out` 參數和[收集器物件](functions-reference-csharp.md#writing-multiple-output-values)。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下是使用輸出繫結傳回值的 C# 程式碼，接著則是非同步範例：
 
@@ -52,9 +52,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
 
-以下是 function.json 檔案中的輸出繫結：
+以下是 function.json** 檔案中的輸出繫結：
 
 ```json
 {
@@ -85,9 +85,9 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
+# <a name="f"></a>[F#](#tab/fsharp)
 
-以下是 function.json 檔案中的輸出繫結：
+以下是 function.json** 檔案中的輸出繫結：
 
 ```json
 {
@@ -107,9 +107,9 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
-以下是 function.json 檔案中的輸出繫結：
+以下是 function.json** 檔案中的輸出繫結：
 
 ```json
 {
@@ -130,9 +130,9 @@ module.exports = function (context, input) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-以下是 function.json 檔案中的輸出繫結：
+以下是 function.json** 檔案中的輸出繫結：
 
 ```json
 {
@@ -153,9 +153,9 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-以下是針對輸出系結使用傳回值的 JAVA 程式碼：
+下面是使用輸出綁定的傳回值的 JAVA 代碼：
 
 ```java
 @FunctionName("QueueTrigger")
@@ -176,4 +176,4 @@ public static String run(
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [處理 Azure Functions 系結錯誤](./functions-bindings-errors.md)
+> [處理 Azure 函數綁定錯誤](./functions-bindings-errors.md)

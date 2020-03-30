@@ -1,5 +1,5 @@
 ---
-title: 設定 Azure VM 的 WinRM 存取
+title: 為 Azure VM 設置 WinRM 存取權限
 description: 設定 WinRM 存取給 Resource Manager 部署模型中建立的 Azure 虛擬機器使用。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
 ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74067321"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>在 Azure Resource Manager 中設定虛擬機器的 WinRM 存取
@@ -82,7 +82,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 Microsoft.Compute 資源提供者在佈建 VM 時，需要金鑰保存庫內密碼的 URL。 這可讓 Microsoft.Compute 資源提供者下載密碼，並在 VM 上建立對等憑證。
 
 > [!NOTE]
-> 密碼的 URL 也必須包含版本。 範例 URL 看起來像 HTTPs：\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> 密碼的 URL 也必須包含版本。 示例 URL 如下所示 HTTPs：\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>範本
 您可以使用下列程式碼取得範本中的 URL 連結
@@ -90,7 +90,7 @@ Microsoft.Compute 資源提供者在佈建 VM 時，需要金鑰保存庫內密�
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
 #### <a name="powershell"></a>PowerShell
-您可以使用下列 PowerShell 命令取得此 URL
+您可以使用下列 PowerShell 命令取得此 URL 
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 

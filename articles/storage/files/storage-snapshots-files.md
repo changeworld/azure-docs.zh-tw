@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72333186"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 檔案的共用快照集概觀 
@@ -28,7 +28,7 @@ Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照�
 ### <a name="general-backup-purposes"></a>一般備份用途
 建立檔案共用之後，您可以定期建立檔案共用的共用快照集，以供資料備份之用。 定期建立的共用快照集，有助於維護先前版本的檔案，因應未來的稽核需求或災害復原之需。
 
-## <a name="capabilities"></a>容量
+## <a name="capabilities"></a>功能
 共用快照集是某個時間點的唯讀資料複本。 您可以使用 REST API 來建立、刪除及管理快照集。 用戶端程式庫、Azure CLI 和 Azure 入口網站亦提供相同的功能。 
 
 您可以使用 REST API 和 SMB 兩者來檢視共用的快照集。 您可以擷取目錄或檔案的版本清單，也可以將特定版本當作磁碟機直接掛接 (僅適用於 Windows - 請參閱[限制](#limits))。 
@@ -37,7 +37,7 @@ Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照�
 
 共用快照集功能會於檔案共用層級提供。 擷取會於個別的檔案層級提供，以允許還原個別檔案。 您可以使用 SMB、REST API、入口網站、用戶端程式庫或 PowerShell/CLI 工具來還原完整的檔案共用。
 
-檔案共用的共用快照集和其基底檔案共用相同。 唯一的差別在於，**DateTime** 值會附加至共用 URI，以表示建立共用快照集的時間。 例如，如果檔案共用 URI 為 http://storagesample.core.file.windows.net/myshare ，則共用快照集 URI 會類似於：
+檔案共用的共用快照集和其基底檔案共用相同。 唯一的差別在於，**DateTime** 值會附加至共用 URI，以表示建立共用快照集的時間。 例如，如果檔案共用 URI 為 http://storagesample.core.file.windows.net/myshare，則共用快照集 URI 會類似於：
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -57,7 +57,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 快照集不計入 5 TB 的共用限制。 共用快照集佔用的空間總數沒有限制。 但儲存體帳戶限制依然有效。
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 200 個共用快照集之後，必須先刪除舊的共用快照集，才能建立新的共用快照集。 
 
 建立共用快照集的同時呼叫數目沒有限制。 特定檔案共用之共用快照集耗用的空間數量沒有限制。 
@@ -71,7 +71,7 @@ Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 20
 
 複製過後共用快照集會保持不變，不過系統會將先前共用快照集提供的資料複本覆寫到基底檔案共用。 所有還原的檔案都算是「變更內容」。
 
-您可以使用不同的名稱，將共用快照集內的檔案複製到不同的目的地。 產生的目的地檔案會是一個可寫入的檔案，而不是共用快照集。 在此情況下，您的基底檔案共用會保持不變。
+您可以將共用快照中的檔案複製到具有不同名稱的不同目標。 產生的目的地檔案會是一個可寫入的檔案，而不是共用快照集。 在這種情況下，您的基本檔共用將保持不變。
 
 使用某個複本覆寫目的地檔案時，與原始目的地檔案相關聯的所有共用快照集都會保持不變。
 
@@ -84,7 +84,7 @@ Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 20
 
 ## <a name="next-steps"></a>後續步驟
 - 在下列位置使用共用快照集：
-    - [PowerShell](storage-how-to-use-files-powershell.md)
-    - [CLI](storage-how-to-use-files-cli.md)
+    - [電源外殼](storage-how-to-use-files-powershell.md)
+    - [Cli](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
     - [共用快照集常見問題集](storage-files-faq.md#share-snapshots)

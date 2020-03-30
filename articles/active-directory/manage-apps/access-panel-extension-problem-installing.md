@@ -1,5 +1,5 @@
 ---
-title: 安裝應用程式存取面板瀏覽器延伸模組-Azure AD
+title: 安裝應用程式訪問面板瀏覽器延伸 - Azure AD
 description: 修正在安裝存取面板的瀏覽器擴充功能時所遇到的常見錯誤。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275865"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安裝存取面板的瀏覽器擴充功能
@@ -49,12 +49,12 @@ ms.locfileid: "74275865"
 
 2.  選取密碼型 SSO 應用程式。
 
-3.  當系統提示您時，選取 [立即安裝]。  
+3.  當系統提示您時，選取 [立即安裝]****。  
     系統會將您導向至所選取瀏覽器的下載連結。 
     
-4.  選取 [新增]。
+4.  選取 [加入]****。
 
-5.  如果您看到系統提示，請 [啟用] 或 [允許] 擴充功能。
+5.  如果您看到系統提示，請 [啟用]**** 或 [允許]**** 擴充功能。
 
 6.  在安裝完成後，請重新啟動瀏覽器。
 
@@ -64,33 +64,33 @@ ms.locfileid: "74275865"
 
 - [Chrome 擴充功能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Microsoft Edge 延伸模組](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
-- [Firefox 延伸模組](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
+- [火狐擴展](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用 My Apps 安全登入擴充功能
 * 如果您是使用 `https://myapps.microsoft.com` 以外的 My Apps URL，請執行下列作業來設定您的預設 URL：
-   1. 在尚未登入擴充功能時，以滑鼠右鍵按一下擴充功能圖示。
-   2. 在功能表上，選取 [My Apps URL]。
+   1. 在尚未** 登入擴充功能時，以滑鼠右鍵按一下擴充功能圖示。
+   2. 在功能表上，選取 [My Apps URL]****。
    3. 選取預設 URL。
    4. 選取擴充功能圖示。
-   5. 若要登入擴充功能，請選取 [登入以開始使用]。
+   5. 若要登入擴充功能，請選取 [登入以開始使用]****。
 
 * 若要直接從瀏覽器登入應用程式，請執行下列作業：
-   1. 安裝擴充功能後，請選取 [登入以開始使用] 來登入擴充功能。
+   1. 安裝擴充功能後，請選取 [登入以開始使用]**** 來登入擴充功能。
    2. 使用登入 URL 來登入應用程式。  
        登入 URL 通常是顯示登入表單之應用程式的 URL。
       該擴充功能應該會變更狀態，並讓您知道有密碼可用。
    3. 若要登入，請選取擴充功能圖示。
 
 * 若要從擴充功能啟動應用程式，請執行下列動作：
-   1. 安裝擴充功能後，請選取 [登入以開始使用] 來登入擴充功能。
+   1. 安裝擴充功能後，請選取 [登入以開始使用]**** 來登入擴充功能。
    2. 選取擴充功能圖示將其功能表開啟。
    3. 在 My Apps 入口網站中搜尋可用的應用程式。
    4. 在搜尋結果清單中，選取應用程式。  
-       您所使用的最後三個應用程式會顯示在 [最近使用的] 捷徑清單中。
+       您所使用的最後三個應用程式會顯示在 [最近使用的]**** 捷徑清單中。
        
 * 若要遠端使用公司內部 URL，請執行下列作業：
-    1. 在您的租用戶上[設定應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) \(英文\)
-    2. 透過應用程式 Proxy [發佈應用程式](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) \(英文\) 和 URL
+    1. [在租戶上配置應用程式代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
+    2. 通過[應用程式代理髮布應用程式](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)和 URL
     3. 安裝延伸模組，然後藉由選取 [登入以開始使用] 來登入該延伸模組
     4. 即使在遠端，您還是可以立即瀏覽至公司內部 URL
 
@@ -105,7 +105,7 @@ ms.locfileid: "74275865"
 
 -   您已設定了 [Active Directory 網域服務](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，並且已將使用者的電腦加入網域。
 
--   若要編輯群組原則物件 (GPO)，您必須擁有「編輯設定」權限。 根據預設，系統會將此權限授與下列安全性群組的成員：網域系統管理員、企業系統管理員及群組原則建立者擁有者。
+-   若要編輯群組原則物件 (GPO)，您必須擁有「編輯設定」** 權限。 根據預設，系統會將此權限授與下列安全性群組的成員：網域系統管理員、企業系統管理員及群組原則建立者擁有者。
 
 如需設定群組原則並將它部署到使用者的逐步指示，請參閱[使用群組原則部署適用於 Internet Explorer 的存取面板擴充功能](deploy-access-panel-browser-extension.md)。
 
@@ -128,4 +128,4 @@ ms.locfileid: "74275865"
 -   Fiddler 追蹤
 
 ## <a name="next-steps"></a>後續步驟
-[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](what-is-single-sign-on.md)
+[什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](what-is-single-sign-on.md)

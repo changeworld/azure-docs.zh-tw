@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rohink
 ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250929"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理員端點
 
-Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在不同資料中心執行的應用程式部署。 您可以在流量管理員中將每個應用程式部署設定為「端點」。 當流量管理員收到 DNS 要求時，它會選擇可用的端點在 DNS 回應中傳回。 流量管理員會根據目前的端點狀態和流量路由方法來選擇。 如需詳細資訊，請參閱 [流量管理員的運作方式](traffic-manager-how-it-works.md)。
+Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在不同資料中心執行的應用程式部署。 您可以在流量管理員中將每個應用程式部署設定為「端點」。 當流量管理員收到 DNS 要求時，它會選擇可用的端點在 DNS 回應中傳回。 流量管理員會根據目前的端點狀態和流量路由方法來選擇。 有關詳細資訊，請參閱[流量管理器的工作原理](traffic-manager-how-it-works.md)。
 
 流量管理員支援三種類型的端點：
 
 * **Azure 端點** 用於在 Azure 中裝載的服務。
-* **外部端點**適用于 IPv4/IPv6 位址、fqdn 或裝載于 Azure 外部的服務（可以是內部部署或具有不同的主控提供者）。
-* **巢狀端點** 用於合併流量管理員端點，以建立更有彈性的流量路由配置，進而支援更大型且更複雜部署的需求。
+* **外部端點**適用於 IPv4/IPv6 位址、FQDN，或是裝載於 Azure 外部的服務 (可以是內部部署或搭配不同主機服務提供者的服務)。
+* **嵌套終結點**用於組合流量管理器設定檔以創建更靈活的流量路由方案，以支援更大、更複雜的部署的需求。
 
 在單一流量管理員設定檔中結合不同類型的端點的方式不受限。 每個設定檔可以包含任意混合的端點類型。
 
@@ -44,11 +44,11 @@ Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在�
 
 PublicIPAddress 資源是 Azure Resource Manager 資源。 它們不存在於傳統部署模型中。 因此，僅在流量管理員的 Azure Resource Manager 經驗中才支援。 透過 Resource Manager 和傳統部署模型可支援其他端點類型。
 
-使用 Azure 端點時，流量管理員會偵測 Web 應用程式何時停止和啟動。 此狀態會反映在端點狀態中。 如需詳細資訊，請參閱[流量管理員端點監視](traffic-manager-monitoring.md#endpoint-and-profile-status)。 當基礎服務停止時，流量管理員不會執行端點健康情況檢查或將流量導向端點。 已停止的執行個體不會產生流量管理員計費事件。 重新啟動服務時，計費會繼續，端點也能夠接收流量。 這項偵測並不適用於 PublicIpAddress 端點。
+使用 Azure 終結點時，流量管理器將檢測 Web 應用何時停止和啟動。 此狀態會反映在端點狀態中。 如需詳細資訊，請參閱[流量管理員端點監視](traffic-manager-monitoring.md#endpoint-and-profile-status)。 當基礎服務停止時，流量管理員不會執行端點健康情況檢查或將流量導向端點。 已停止的執行個體不會產生流量管理員計費事件。 重新啟動服務時，計費會繼續，端點也能夠接收流量。 這項偵測並不適用於 PublicIpAddress 端點。
 
 ## <a name="external-endpoints"></a>外部端點
 
-外部端點會用於 IPv4/IPv6 位址、Fqdn 或 Azure 外部的服務。 使用 IPv4/IPv6 位址端點可讓流量管理員無需端點的 DNS 名稱便能檢查端點的健康情況。 如此一來，流量管理員便可以在於回應中傳回該端點時，回應具有 A/AAAA 記錄的查詢。 Azure 外部的服務可以包含在內部部署託管或具有不同提供者的服務。 外部端點可以單獨使用，或在相同的流量管理員設定檔中與 Azure 端點結合使用 (指定為 IPv4 或 IPv6 位址的端點除外，因為它們只能作為外部端點)。 結合 Azure 端點與外部端點可以解決各種情況：
+外部終結點用於 IPv4/IPv6 位址、FQDN 或 Azure 外部服務。 使用 IPv4/IPv6 位址端點可讓流量管理員無需端點的 DNS 名稱便能檢查端點的健康情況。 如此一來，流量管理員便可以在於回應中傳回該端點時，回應具有 A/AAAA 記錄的查詢。 Azure 外部的服務可以包含在內部部署託管或具有不同提供者的服務。 外部端點可以單獨使用，或在相同的流量管理員設定檔中與 Azure 端點結合使用 (指定為 IPv4 或 IPv6 位址的端點除外，因為它們只能作為外部端點)。 結合 Azure 端點與外部端點可以解決各種情況：
 
 * 使用 Azure 以主動-主動或主動-被動容錯移轉模式，為現有的內部部署應用程式提供提升的備援性。 
 * 將流量路由至沒有與其相關聯之 DNS 名稱的端點。 此外，透過移除執行第二個 DNS 查詢以取得回傳 DNS 名稱之 IP 位址的需求，來減少整體的 DNS 查詢延遲。
@@ -93,18 +93,18 @@ PublicIPAddress 資源是 Azure Resource Manager 資源。 它們不存在於傳
 
 ## <a name="faqs"></a>常見問題集
 
-* [我可以搭配多個訂用帳戶的端點使用流量管理員嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+* [可以將流量管理員用於來自多個訂用帳戶的端點嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 
-* [我可以將流量管理員用於雲端服務的「預備」位置嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+* [我是否可以將流量管理器與雲服務"暫存"插槽一起使用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
 
 * [流量管理員是否支援 IPv6 端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
 
-* [我可以在相同的區域中使用具有多個 Web 應用程式的流量管理員嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+* [可以使用流量管理員搭配相同區域中的多個 Web 應用程式嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [如何? 將我的流量管理員設定檔的 Azure 端點移至不同的資源群組嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
+* [如何將流量管理員設定檔的 Azure 端點移至不同的資源群組？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解 [流量管理員的運作方式](traffic-manager-how-it-works.md)。
+* 瞭解[流量管理器的工作原理](traffic-manager-how-it-works.md)。
 * 了解「流量管理員」的 [端點監視和自動容錯移轉](traffic-manager-monitoring.md)。
 * 了解「流量管理員」的 [流量路由方法](traffic-manager-routing-methods.md)。

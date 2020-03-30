@@ -1,6 +1,6 @@
 ---
-title: Azure 應用程式閘道中的 WebSocket 支援
-description: 應用程式閘道可跨所有閘道大小對 WebSocket 提供原生支援。 沒有使用者可設定的設定。
+title: Azure 應用程式閘道中的 Web 通訊端支援
+description: 應用程式閘道可跨所有閘道大小對 WebSocket 提供原生支援。 沒有使用者可配置的設置。
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
@@ -8,10 +8,10 @@ services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74130342"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>應用程式閘道中的 WebSocket 支援概觀
@@ -22,17 +22,17 @@ ms.locfileid: "74130342"
 
 您可以在連接埠 80 或 443 上繼續使用標準 HTTP 接聽程式來接收 WebSocket 流量。 WebSocket 流量接著會使用應用程式閘道規則中指定的適當後端集區，來導向到已啟用 WebSocket 的後端伺服器。 後端伺服器必須回應應用程式閘道探查，[健康情況探查概觀](application-gateway-probe-overview.md)一節中會有所說明。 應用程式閘道健康情況探查僅限使用 HTTP/HTTPS。 每一部後端伺服器都必須回應 HTTP 探查，應用程式閘道才能將 WebSocket 流量路由傳送至伺服器。
 
-它用於應用程式，可從快速的即時通訊（例如聊天、儀表板和遊戲應用程式）獲益。
+它用於受益於快速且即時通訊的應用程式，例如聊天、儀表板和遊戲應用程式。
 
-## <a name="how-does-websocket-work"></a>WebSocket 的運作方式
+## <a name="how-does-websocket-work"></a>WebSocket 的工作原理
 
-若要建立 WebSocket 連線，會在用戶端與伺服器之間交換特定的 HTTP 型交握。 如果成功，則會使用先前建立的 TCP 連線，將應用層通訊協定從 HTTP 「升級」至 Websocket。 一旦發生這種情況，HTTP 就完全消失了;這兩個端點都可以使用 WebSocket 通訊協定來傳送或接收資料，直到 WebSocket 連線關閉為止。 
+要建立 WebSocket 連接，用戶端和伺服器之間將交換基於 HTTP 的特定握手。 如果成功，應用程式層通訊協定會從 HTTP「升級」為 WebSocket，使用先前建立的 TCP 連線。 當發生這種情形時，HTTP 會完全退場；端點使用 WebSocket 通訊協定傳送或接收資料，直到 WebSocket 連線關閉為止。 
 
-![websocket](./media/application-gateway-websocket/websocket.png)
+![網筒](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>接聽程式組態元素
 
-現有的 HTTP 接聽程式可用來支援 WebSocket 流量。 以下是來自範例範本檔案中 httpListeners 元素的程式碼片段。 您必須同時擁有 HTTP 和 HTTPS 接聽程式才能支援 WebSocket 和保護 WebSocket 流量。 同樣地，您可以使用入口網站或 Azure PowerShell 在埠80/443 上建立具有接聽程式的應用程式閘道，以支援 WebSocket 流量。
+現有的 HTTP 接聽程式可用來支援 WebSocket 流量。 以下是來自範例範本檔案中 httpListeners 元素的程式碼片段。 您必須同時擁有 HTTP 和 HTTPS 接聽程式才能支援 WebSocket 和保護 WebSocket 流量。 同樣，您可以使用門戶或 Azure PowerShell 創建具有埠 80/443 上的攔截器的應用程式閘道，以支援 WebSocket 流量。
 
 ```json
 "httpListeners": [
@@ -68,7 +68,7 @@ ms.locfileid: "74130342"
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting 和路由規則組態
 
-若後端集區具有已啟用 WebSocket 的伺服器，使用 backendAddressPool 加以定義。 backendHttpSetting 是以後端連接埠 80 和 443 加以定義。 HTTP 設定中的要求超時值也適用于 WebSocket 會話。 路由規則中不需要進行任何變更，這是用來將適當的接聽程式系結至對應的後端位址集區。 
+若後端集區具有已啟用 WebSocket 的伺服器，使用 backendAddressPool 加以定義。 backendHttpSetting 是以後端連接埠 80 和 443 加以定義。 HTTP 設置中的請求超時值也適用于 WebSocket 會話。 路由規則不需要更改，該規則用於將相應的攔截器綁定到相應的後端位址集區。 
 
 ```json
 "requestRoutingRules": [{

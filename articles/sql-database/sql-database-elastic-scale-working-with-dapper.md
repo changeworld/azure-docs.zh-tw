@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 83d24d45d7628a2e02068c8757fa6568d6d3fc37
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823466"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>搭配使用彈性資料庫用戶端程式庫與 Dapper
@@ -23,7 +23,7 @@ ms.locfileid: "73823466"
 
 **範例程式碼**： [Azure SQL Database - Dapper 整合的彈性資料庫工具](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
-整合 **Dapper** 和 **DapperExtensions** 與 Azure SQL Database 的彈性資料庫用戶端程式庫很容易。 將新的 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 物件的建立和開啟作業變更為使用[用戶端程式庫](https://msdn.microsoft.com/library/azure/dn807226.aspx)的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn765902.aspx) 呼叫，您的應用程式即可使用資料相依路由。 這會使應用程式中的變更侷限於建立和開啟新連線的位置。 
+整合 **Dapper** 和 **DapperExtensions** 與 Azure SQL Database 的彈性資料庫用戶端程式庫很容易。 將新的 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 物件的建立和開啟作業變更為使用[用戶端程式庫](https://msdn.microsoft.com/library/azure/dn765902.aspx)的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 呼叫，您的應用程式即可使用資料相依路由。 這會使應用程式中的變更侷限於建立和開啟新連線的位置。 
 
 ## <a name="dapper-overview"></a>Dapper 概觀
 **Dapper** 是物件關聯式對應程式。 它可將應用程式的 .NET 物件對應到關聯式資料庫 (反之亦然) 。 範例程式碼的第一部分說明如何整合彈性資料庫用戶端程式庫與 Dapper 應用程式。 範例程式碼的第二部分說明如何在同時使用 Dapper 和 DapperExtensions 時進行整合。  
@@ -136,7 +136,7 @@ Dapper 隨附其他延伸模組的生態系統，可在開發資料庫應用程�
     }
 
 ### <a name="handling-transient-faults"></a>處理暫時性錯誤
-Microsoft 模式和作法小組已發佈[暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/hh680934.aspx)，以協助應用程式開發人員緩和在雲端執行時所遇到的常見暫時性錯誤狀況。 如需詳細資訊，請參閱 [堅持，是所有成功的秘方：使用暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/dn440719.aspx)。
+Microsoft 模式和作法小組已發佈[暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/hh680934.aspx)，以協助應用程式開發人員緩和在雲端執行時所遇到的常見暫時性錯誤狀況。 如需詳細資訊，請參閱[堅持，是所有成功的秘方：使用暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/dn440719.aspx)。
 
 此程式碼範例依賴暫時性錯誤程式庫來防止暫時性錯誤。 
 

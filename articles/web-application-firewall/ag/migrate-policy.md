@@ -1,6 +1,6 @@
 ---
-title: 遷移 Azure 應用程式閘道的 WAF 原則
-description: 瞭解如何使用 Azure PowerShell 遷移 Azure Web 應用程式防火牆原則。
+title: 遷移 Azure 應用程式閘道的 WAF 策略
+description: 瞭解如何使用 Azure PowerShell 遷移 Azure Web 應用程式防火牆策略。
 services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
@@ -8,26 +8,26 @@ ms.service: web-application-firewall
 ms.date: 11/19/2019
 ms.author: ant
 ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74174599"
 ---
-# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 遷移 Web 應用程式防火牆原則
+# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 遷移 Web 應用程式防火牆策略
 
-此腳本可讓您輕鬆地從 WAF config 或僅限自訂規則的 WAF 原則轉換為完整的 WAF 原則。 您可能會在入口網站中看到一則警告，指出 [*遷移至 WAF 原則*]，或者您可能想要新的公開預覽 WAF 功能，例如 Geomatch 自訂規則、每個網站和每個 URI WAF 原則，或 bot 緩和規則集。 若要使用這些功能的任何一項，您需要與應用程式閘道相關聯的完整 WAF 原則。 
+此腳本可輕鬆從 WAF 配置或僅自訂規則 WAF 策略轉換為完整的 WAF 策略。 您可能會在門戶中看到一條警告，指出*遷移到 WAF 策略*，或者您可能希望新的公共預覽 WAF 功能，如 Geomatch 自訂規則、每個網站和每個 URI WAF 策略或自動程式緩解規則集。 要使用這些功能中的任何一個，您需要與應用程式閘道關聯的完整 WAF 策略。 
 
-如需建立新 WAF 原則的詳細資訊，請參閱[建立應用程式閘道的 Web 應用程式防火牆原則](create-waf-policy-ag.md)。 如需有關遷移的詳細資訊，請參閱[遷移至 WAF 原則](create-waf-policy-ag.md#migrate-to-waf-policy)。
+有關創建新 WAF 策略的詳細資訊，請參閱[為應用程式閘道創建 Web 應用程式防火牆策略](create-waf-policy-ag.md)。 有關遷移的資訊，請參閱遷移到[WAF 策略](create-waf-policy-ag.md#migrate-to-waf-policy)。
 
-## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>使用遷移腳本遷移至 WAF 原則
+## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>使用遷移腳本遷移到 WAF 策略
 
-使用下列步驟來執行遷移腳本： 
+使用以下步驟運行遷移腳本： 
 
-1. 開啟下列 cloud shell 視窗，或從入口網站中開啟一個。
-2. 將腳本複製到 cloud shell 視窗中，並加以執行。
-3. 此腳本會要求訂用帳戶識別碼、資源組名、與 WAF 設定相關聯之應用程式閘道的名稱，以及要建立的新 WAF 原則名稱。 一旦您輸入這些輸入，腳本就會執行並建立新的 WAF 原則
-4. 將新的 WAF 原則與您的應用程式閘道產生關聯。 移至入口網站中的 [WAF] 原則，然後選取 [**相關聯的應用程式閘道**] 索引標籤。選取 [**關聯應用程式閘道**]，然後選取要與 WAF 原則建立關聯的應用程式閘道。
+1. 打開以下雲外殼視窗，或從門戶中打開一個雲殼視窗。
+2. 將腳本複製到雲外殼視窗中並運行它。
+3. 腳本要求訂閱 ID、資源組名稱、WAF 配置關聯的應用程式閘道的名稱以及要創建的新 WAF 策略的名稱。 輸入這些輸入後，腳本將運行並創建新的 WAF 策略
+4. 將新的 WAF 策略與您的應用程式閘道相關聯。 轉到門戶中的 WAF 策略並選擇 **"關聯應用程式閘道**"選項卡。選擇 **"關聯應用程式閘道**"，然後選擇應用程式閘道將 WAF 策略關聯到。
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -212,4 +212,4 @@ Main
 ```
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[Web 應用程式防火牆 CRS 規則群組與規則](application-gateway-crs-rulegroups-rules.md)。
+瞭解有關[Web 應用程式防火牆 CRS 規則組和規則](application-gateway-crs-rulegroups-rules.md)的更多內容。

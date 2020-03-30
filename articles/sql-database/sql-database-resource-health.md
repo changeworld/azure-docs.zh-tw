@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資源健康狀態來監視資料庫健全狀況
+title: 使用 Azure 資源運行狀況監視資料庫運行狀況
 description: 使用 Azure 資源健康情況監視 SQL Database 的健康情況，可協助您進行診斷，並在 Azure 問題影響您的 SQL 資源時取得支援。
 services: sql-database
 ms.service: sql-database
@@ -12,19 +12,19 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
 ms.openlocfilehash: 9e19e904b47d69444b491dd88ffe49ff812aafc3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79208878"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用資源健康情況對 Azure SQL Database 的連線問題進行疑難排解
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 SQL Database 的[資源健康情況](../service-health/resource-health-overview.md#get-started)可協助您進行診斷，並在 Azure 問題影響您的資源時取得支援。 它會通知您資源的目前及過去的健康狀態，並協助您解決問題。 資源健康狀態會在您需要解決 Azure 服務問題時提供技術支援。
 
-![概觀](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
+![總覽](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 
 ## <a name="health-checks"></a>健康情況檢查
 
@@ -34,25 +34,25 @@ SQL Database 的[資源健康情況](../service-health/resource-health-overview.
 
 ### <a name="available"></a>可用
 
-若狀態為 [可用]，表示資源健康情況未偵測到因 SQL 資源的系統錯誤而造成的登入失敗。
+若狀態為 [可用]****，表示資源健康情況未偵測到因 SQL 資源的系統錯誤而造成的登入失敗。
 
 ![可用](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
 ### <a name="degraded"></a>已降級
 
-若狀態為 [已降級]，表示資源健康情況大多偵測到成功的登入，但也有一些失敗。 這些很可能是暫時性的登入錯誤。 若要減少暫時性登入錯誤所導致的連線問題影響，請在程式碼中實作[重試邏輯](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)。
+**降級**狀態意味著資源運行狀況檢測到大多數成功登錄，但也檢測到一些失敗。 這些很可能是暫時性的登入錯誤。 若要減少暫時性登入錯誤所導致的連線問題影響，請在程式碼中實作[重試邏輯](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)。
 
 ![已降級](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
 ### <a name="unavailable"></a>無法使用
 
-若狀態為 [無法使用]，表示資源健康情況偵測到持續性的 SQL 資源登入失敗。 如果您的資源長時間處於此狀態，請連絡支援人員。
+若狀態為 [無法使用]****，表示資源健康情況偵測到持續性的 SQL 資源登入失敗。 如果您的資源長時間處於此狀態，請連絡支援人員。
 
 ![無法使用](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
 ### <a name="unknown"></a>Unknown
 
-[不明] 健康狀態表示資源健康狀態超過 10 分鐘未收到此資源的相關資訊。 雖然此狀態並非資源狀態的明確指示，卻是疑難排解程序中的重要資料點。 如果資源如預期般執行，幾分鐘後資源的狀態會變更為 [可用]。 如果您遇到資源問題，[不明] 健康狀態可能暗示資源受到平台事件影響。
+[不明]**** 健康狀態表示資源健康狀態超過 10 分鐘未收到此資源的相關資訊。 雖然此狀態並非資源狀態的明確指示，卻是疑難排解程序中的重要資料點。 如果資源如預期般執行，幾分鐘後資源的狀態會變更為 [可用]。 如果您遇到資源問題，[不明] 健康狀態可能暗示資源受到平台事件影響。
 
 ![Unknown](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 

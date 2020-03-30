@@ -1,5 +1,5 @@
 ---
-title: 使用 REST Azure AD 在 Azure VM 上設定受控識別
+title: 使用 REST 配置 Azure VM 上的託管標識 - Azure AD
 description: 逐步說明如何 CURL 進行 REST API 呼叫，在 Azure VM 上設定系統和使用者指派的受控識別。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244156"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>使用 REST API 呼叫在 Azure VM 上設定 Azure 資源受控識別
@@ -35,10 +35,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)** 。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 如果您使用的是 Windows，請安裝[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)，或使用 Azure 入口網站中的 [Azure Cloud Shell](../../cloud-shell/overview.md)。
-- 如果您使用的是[適用於 Linux 的 Windows 子系統](/cli/azure/install-azure-cli)或 [Linux 散發作業系統](https://msdn.microsoft.com/commandline/wsl/about)，請[安裝 Azure CLI 本機主控台](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)。
+- 如果您使用的是[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)或 [Linux 散發作業系統](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)，請[安裝 Azure CLI 本機主控台](/cli/azure/install-azure-cli)。
 - 如果您使用的是 Azure CLI 本機主控台，請登入 Azure ，登入時請使用與您想要用於管理系統或使用者指派受控識別的 Azure 訂用帳戶相關聯的帳戶，搭配使用 `az login` 登入。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -51,7 +51,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 若要建立已啟用系統指派受控識別的 Azure VM，您的帳戶需要[虛擬機器參與者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)角色指派。  不需要其他 Azure AD 目錄角色指派。
 
-1. 使用 [az group create](../../azure-resource-manager/management/overview.md#terminology)，為您的 VM 和其相關資源建立[資源群組](/cli/azure/group/#az-group-create)。 如果您已經有想要使用的資源群組，您可以略過此步驟：
+1. 使用 [az group create](/cli/azure/group/#az-group-create)，為您的 VM 和其相關資源建立[資源群組](../../azure-resource-manager/management/overview.md#terminology)。 如果您已經有想要使用的資源群組，您可以略過此步驟：
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -69,7 +69,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ``` 
 
-4. 使用 CURL 呼叫 Azure Resource Manager REST 端點來建立虛擬機器。 下列範例會建立具有系統指派的受控識別 (如同在要求本文中由  *值所識別) 且名為 myVM*`"identity":{"type":"SystemAssigned"}` 的虛擬機器。 將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+4. 使用 CURL 呼叫 Azure Resource Manager REST 端點來建立虛擬機器。 下列範例會建立具有系統指派的受控識別 (如同在要求本文中由 `"identity":{"type":"SystemAssigned"}` 值所識別) 且名為 myVM** 的虛擬機器。 將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -83,10 +83,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
    
-   **要求本文**
+   **請求正文**
 
    ```JSON
      {
@@ -156,7 +156,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ```
 
-2. 使用下列 CURL 命令呼叫 Azure Resource Manager REST 端點，以便在您的虛擬機器上啟用系統指派的受控識別 (如同在要求本文中由 myVMSS`{"identity":{"type":"SystemAssigned"}`*虛擬機器的* 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+2. 使用下列 CURL 命令呼叫 Azure Resource Manager REST 端點，以便在您的虛擬機器上啟用系統指派的受控識別 (如同在要求本文中由 myVMSS** 虛擬機器的 `{"identity":{"type":"SystemAssigned"}` 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
    
    > [!IMPORTANT]
    > 若要確保您不會刪除虛擬機器指派的任何現有使用者指派識別，需要使用下列 CURL 命令來列出使用者指派的受控識別：`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`。 如有任何使用者指派的受控識別是指派給回應中 `identity` 值識別的虛擬機器，請跳至步驟 3，此步驟將說明如何保留使用者指派的受控識別，同時在虛擬機器上啟用系統指派的受控識別。
@@ -172,10 +172,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
    
-   **要求本文**
+   **請求正文**
     
    ```JSON
     {  
@@ -204,10 +204,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {  
@@ -239,10 +239,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {  
@@ -266,7 +266,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ```
 
-2. 使用 CURL 呼叫 Azure Resource Manager REST 端點來停用系統指派的受控識別，以便更新虛擬機器。  下列範例會停用系統指派受控識別 (如同在要求本文中由 myVM`{"identity":{"type":"None"}}`*虛擬機器中的* 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+2. 使用 CURL 呼叫 Azure Resource Manager REST 端點來停用系統指派的受控識別，以便更新虛擬機器。  下列範例會停用系統指派受控識別 (如同在要求本文中由 myVM** 虛擬機器中的 `{"identity":{"type":"None"}}` 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
 
    > [!IMPORTANT]
    > 若要確保您不會刪除虛擬機器指派的任何現有使用者指派識別，需要使用下列 CURL 命令來列出使用者指派的受控識別：`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`。 如有任何使用者指派的受控識別是指派給回應中 `identity` 值識別的虛擬機器，請跳至步驟 3，此步驟將說明如何保留使用者指派的受控識別，同時在虛擬機器上停用系統指派的受控識別。
@@ -282,10 +282,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {  
@@ -295,7 +295,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
     }
    ```
 
-   若要從具有使用者指派受控識別的虛擬機器移除系統指派的受控識別，請從 `SystemAssigned` 值移除 `{"identity":{"type:" "}}`，但同時保留 `UserAssigned` 值和 `userAssignedIdentities` 字典值 (如果您使用 **API 版本 2018-06-01**)。 如果您使用 **API 版本 2017-12-01** 或先前版本，則請保留 `identityIds` 陣列。
+   若要從具有使用者指派受控識別的虛擬機器移除系統指派的受控識別，請從 `{"identity":{"type:" "}}` 值移除 `SystemAssigned`，但同時保留 `UserAssigned` 值和 `userAssignedIdentities` 字典值 (如果您使用 **API 版本 2018-06-01**)。 如果您使用 **API 版本 2017-12-01** 或先前版本，則請保留 `identityIds` 陣列。
 
 ## <a name="user-assigned-managed-identity"></a>使用者指派的受控識別
 
@@ -323,9 +323,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ``` 
 
-4. 使用以下找到的指示建立使用者指派的受控識別：[建立使用者指派的受控識別](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)。
+4. 使用此處找到的說明創建使用者分配的託管[標識：創建使用者分配的託管標識](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)。
 
-5. 使用 CURL 呼叫 Azure Resource Manager REST 端點來建立虛擬機器。 下列範例會使用使用者指派的受控識別 *(如同在要求本文中由* 值所識別)，在資源群組 myResourceGroup 中建立名為 myVM`ID1``"identity":{"type":"UserAssigned"}` 的虛擬機器。 將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+5. 使用 CURL 呼叫 Azure Resource Manager REST 端點來建立虛擬機器。 下列範例會使用使用者指派的受控識別 `ID1` (如同在要求本文中由 `"identity":{"type":"UserAssigned"}` 值所識別)，在資源群組 myResourceGroup** 中建立名為 myVM** 的虛擬機器。 將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
  
    **API 版本 2018-06-01**
 
@@ -341,10 +341,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {  
@@ -422,10 +422,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -515,11 +515,11 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |---------|---------|
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。
 
-    如果您已將任何使用者或系統指派的受控識別指派給回應中的 `identity` 值所識別的 VM，請跳至步驟5，其中說明如何保留系統指派的受控識別，同時在您的 VM 上新增使用者指派的受控識別。
+    如果回應中`identity`的值中標識的任何使用者或系統分配的託管標識分配給 VM，請跳到步驟 5，其中演示如何在 VM 上添加使用者分配的託管標識時保留系統分配的託管標識。
 
 4. 若沒有任何使用者指派的受控識別指派給您的虛擬機器，請使用下列 CURL 命令呼叫 Azure Resource Manager REST 端點，將第一個使用者指派的受控識別指派給虛擬機器。
 
-   下列範例會將使用者指派的受控識別 `ID1` 指派給資源群組myResourceGroup 中名為 myVM 的虛擬機器。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+   下列範例會將使用者指派的受控識別 `ID1` 指派給資源群組myResourceGroup ** 中名為 myVM** 的虛擬機器。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
 
    **API 版本 2018-06-01**
 
@@ -534,10 +534,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
  
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -566,10 +566,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -602,10 +602,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -641,10 +641,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -682,7 +682,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。
  
    若您有指派給虛擬機器的受控識別，則會在 `identity` 值的回應中列出。
@@ -705,10 +705,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -737,10 +737,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
    |要求標頭  |描述  |
    |---------|---------|
-   |*Content-Type*     | 必要。 設定為 `application/json`。        |
+   |*內容類型*     | 必要。 設定為 `application/json`。        |
    |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        | 
 
-   **要求本文**
+   **請求正文**
 
    ```JSON
     {
@@ -767,10 +767,10 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |要求標頭  |描述  |
 |---------|---------|
-|*Content-Type*     | 必要。 設定為 `application/json`。        |
+|*內容類型*     | 必要。 設定為 `application/json`。        |
 |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
-**要求本文**
+**請求正文**
 
 ```JSON
 {
@@ -794,10 +794,10 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |要求標頭  |描述  |
 |---------|---------|
-|*Content-Type*     | 必要。 設定為 `application/json`。        |
+|*內容類型*     | 必要。 設定為 `application/json`。        |
 |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。| 
 
-**要求本文**
+**請求正文**
 
 ```JSON
 {

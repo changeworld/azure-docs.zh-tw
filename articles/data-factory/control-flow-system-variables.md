@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 中的系統變數
+title: Azure 資料工廠中的系統變數
 description: 本文描述 Azure Data Factory 支援的系統變數。 定義 Data Factory 實體時，可以在運算式中使用這些變數。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 0a5237336530d30c3801b13b910171e236e87a23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679281"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory 支援的系統變數
@@ -24,7 +24,7 @@ ms.locfileid: "73679281"
 ## <a name="pipeline-scope"></a>管線範圍
 您可以在管線 JSON 中的任何位置參考這些系統變數。
 
-| 變數名稱 | 說明 |
+| 變數名稱 | 描述 |
 | --- | --- |
 | @pipeline().DataFactory |管線執行在其中執行的資料處理站名稱 |
 | @pipeline().Pipeline |管線的名稱 |
@@ -37,16 +37,16 @@ ms.locfileid: "73679281"
 ## <a name="schedule-trigger-scope"></a>排程觸發程序範圍
 如果觸發程序的類型為："ScheduleTrigger"，則可以在管線 JSON 中的任何位置參考這些系統變數。
 
-| 變數名稱 | 說明 |
+| 變數名稱 | 描述 |
 | --- | --- |
 | @trigger().scheduledTime |排定觸發程序叫用管線執行的時間。 例如，對於每隔 5 分鐘就觸發的觸發程序，此變數分別會傳回 `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z` 和 `2017-06-01T22:30:00Z`。|
-| @trigger().startTime |觸發程序「實際」觸發以叫用管線執行的時間。 例如，對於每隔 5 分鐘就觸發的觸發程序，此變數可能會傳回分別像是 `2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z` 和 `2017-06-01T22:30:00.9935483Z` 的項目。 （注意：時間戳記預設為 ISO 8601 格式）|
+| @trigger().startTime |觸發程序「實際」**** 觸發以叫用管線執行的時間。 例如，對於每隔 5 分鐘就觸發的觸發程序，此變數可能會傳回分別像是 `2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z` 和 `2017-06-01T22:30:00.9935483Z` 的項目。 （注意：預設情況下，時間戳記為 ISO 8601 格式）|
 
 ## <a name="tumbling-window-trigger-scope"></a>輪轉視窗觸發程序範圍
 如果觸發程序的類型為："TumblingWindowTrigger"，則可以在管線 JSON 中的任何位置參考這些系統變數。
-（注意：時間戳記預設為 ISO 8601 格式）
+（注意：預設情況下，時間戳記為 ISO 8601 格式）
 
-| 變數名稱 | 說明 |
+| 變數名稱 | 描述 |
 | --- | --- |
 | @trigger().outputs.windowStartTime |排定觸發程序叫用管線執行的開始時間範圍。 如果輪轉視窗觸發程序的頻率為「每小時」，則這可能是一小時開頭的時間。|
 | @trigger().outputs.windowEndTime |排定觸發程序叫用管線執行的結束時間範圍。 如果輪轉視窗觸發程序的頻率為「每小時」，則這可能是一小時結束的時間。|

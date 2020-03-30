@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255531"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料
@@ -23,7 +23,7 @@ DistCp 提供各種不同的命令列參數，我們強烈建議您閱讀這篇�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen2 功能 (階層命名空間) 的現有 Azure 儲存體帳戶**。
 * **啟用 Data Lake Storage Gen2 功能的 Azure 儲存體帳戶**。 如需如何建立的指示，請參閱[建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)
 * 已在儲存體帳戶 (已啟用階層命名空間) 中建立的**檔案系統**。
@@ -71,9 +71,9 @@ HDInsight 叢集隨附 DistCp 公用程式，可用來將不同來源的資料�
 
 以下是一些您可以使用的指引。
 
-* **步驟1：判斷可供「預設」 YARN 應用程式佇列使用的記憶體總計**-第一個步驟是判斷可供「預設」 YARN 應用程式佇列使用的記憶體。 您可以在與叢集相關聯的 Ambari 入口網站中取得這項資訊。 瀏覽至 YARN，檢視 [設定] 索引標籤以查看可供「預設」應用程式佇列使用的 YARN 記憶體。 這是您 DistCp 作業 (也就是實際的 MapReduce 作業) 可用的記憶體總計。
+* **第 1 步：確定"預設"YARN 應用佇列可用的總記憶體**- 第一步是確定"預設"YARN 應用佇列可用的記憶體。 您可以在與叢集相關聯的 Ambari 入口網站中取得這項資訊。 瀏覽至 YARN，檢視 [設定] 索引標籤以查看可供「預設」應用程式佇列使用的 YARN 記憶體。 這是您 DistCp 作業 (也就是實際的 MapReduce 作業) 可用的記憶體總計。
 
-* **步驟 2︰計算對應程式數目** - **m** 的值等於 YARN 記憶體總計除以 YARN 容器大小的商數。 Ambari 入口網站中也提供 YARN 容器大小的資訊。 流覽至 YARN，並查看 [[]] 索引標籤。YARN 容器大小會顯示在此視窗中。 計算對應程式數目 (**m**) 的方程式是
+* **步驟 2︰計算對應程式數目** - **m** 的值等於 YARN 記憶體總計除以 YARN 容器大小的商數。 Ambari 入口網站中也提供 YARN 容器大小的資訊。 導航到 YARN 並查看"配置"選項卡。YARN 容器大小顯示在此視窗中。 計算對應程式數目 (**m**) 的方程式是
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -85,7 +85,7 @@ HDInsight 叢集隨附 DistCp 公用程式，可用來將不同來源的資料�
 
         YARN memory = 4 * 96GB = 384GB
 
-* **對應程式數目**：從 Ambari 入口網站，您可以判斷 D14 叢集節點的 YARN 容器大小為 3072 MB。 因此，對應程式數目為︰
+* **映射器數**：從 Ambari 門戶中，您確定 D14 叢集節點的 YARN 容器大小為 3，072 MB。 因此，對應程式數目為︰
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

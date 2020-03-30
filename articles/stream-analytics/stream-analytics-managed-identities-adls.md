@@ -1,5 +1,5 @@
 ---
-title: 驗證要 Azure Data Lake Storage Gen1 的 Azure 串流分析
+title: 將 Azure 流分析驗證為 Azure 資料存儲第 1 代
 description: 本文說明如何使用受控識別向 Azure Data Lake Storage Gen1 輸出驗證 Azure 串流分析作業。
 author: mamccrea
 ms.author: mamccrea
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254374"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用受控識別來驗證 Azure Data Lake Storage Gen1 的串流分析
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用託管標識對 Azure 資料存儲第 1 代進行身份驗證流分析
 
 Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受控識別驗證。 身分識別是在 Azure Active Directory 中註冊的受控應用程式，代表了指定的串流分析作業，並可用來向指定的資源驗證。 受控識別消除了以使用者為基礎的驗證方法限制，比如因為密碼改變或使用者權杖每 90 天到期一次而需要重新驗證。 此外，受控識別有助於進行輸出至 Azure Data Lake Storage Gen1 的串流分析作業部署自動化。
 
@@ -24,11 +24,11 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-1. 一開始先建立新的串流分析作業，或在 Azure 入口網站中開啟現有作業。 從位於畫面左側的功能表列中，選取位於 [**設定**] 底下的 [**受控識別**]。
+1. 一開始先建立新的串流分析作業，或在 Azure 入口網站中開啟現有作業。 從位於螢幕左側的功能表列中，選擇位於 **"配置**"下的**託管標識**。
 
-   ![設定串流分析受控識別](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![配置流分析託管標識](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 從右側顯示的視窗中，選取 [**使用系統指派的受控識別**]。 按一下 [**儲存**至服務主體]，以取得 Azure Active Directory 中串流分析作業的身分識別。 Azure 會負責管理新建立的身分識別生命週期。 當串流分析作業刪除時，Azure 會自動刪除已與其建立關聯的身分識別 (亦即服務主體)。
+2. 從右側顯示的視窗選擇 **"使用系統分配的託管標識**"。 按一下 **"保存到**服務主體"以查看 Azure 活動目錄中流分析作業的標識。 Azure 會負責管理新建立的身分識別生命週期。 當串流分析作業刪除時，Azure 會自動刪除已與其建立關聯的身分識別 (亦即服務主體)。
 
    當組態儲存時，服務主體的物件識別碼 (OID) 會列為主體識別碼，如下所示：
 
@@ -36,29 +36,29 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
  
    服務主體與串流分析作業的名稱相同。 例如，如果您作業的名稱是 **MyASAJob**，建立的服務主體名稱也會是 **MyASAJob**。
 
-3. 在 ADLS Gen1 輸出接收的 [輸出屬性] 視窗中，按一下 [驗證模式] 下拉式選單，然後選取 [受控識別]。
+3. 在 ADLS Gen1 輸出接收器的輸出屬性視窗中，按一下身份驗證模式下拉，然後選擇 [託管標識]。
 
-4. 填寫其餘屬性。 若要深入了解如何建立 ADLS 輸出，請參閱[使用串流分析建立 Data Lake Store 輸出](../data-lake-store/data-lake-store-stream-analytics.md)。 當您完成後，請按一下 [儲存]。
+4. 填寫其餘屬性。 若要深入了解如何建立 ADLS 輸出，請參閱[使用串流分析建立 Data Lake Store 輸出](../data-lake-store/data-lake-store-stream-analytics.md)。 當您完成後，請按一下 [儲存]****。
 
    ![設定 Azure Data Lake Storage](./media/stream-analytics-managed-identities-adls/stream-analytics-configure-adls.png)
  
-5. 瀏覽到 ADLS Gen1 的 [概觀] 頁面，然後按一下 [資料總管]。
+5. 瀏覽到 ADLS Gen1 的 [概觀] 頁面，然後按一下 [資料總管]****。
 
    ![設定 Data Lake Storage 概觀](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-overview.png)
 
-6. 在 [資料總管] 窗格中選取 [存取]，然後在 [存取] 窗格中按一下 [新增]。
+6. 在 [資料總管] 窗格中選取 [存取]****，然後在 [存取] 窗格中按一下 [新增]****。
 
    ![設定 Data Lake Store 存取](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
 
-7. 在 [選取使用者或群組] 窗格的文字方塊中，鍵入服務主體的名稱。 請記住，服務主體的名稱也是對應串流分析作業的名稱。 當您開始鍵入主體名稱時，名稱就會顯示在文字方塊的下方。 選擇您想要的服務主體名稱，然後按一下 [選取]。
+7. 在 [選取使用者或群組]**** 窗格的文字方塊中，鍵入服務主體的名稱。 請記住，服務主體的名稱也是對應串流分析作業的名稱。 當您開始鍵入主體名稱時，名稱就會顯示在文字方塊的下方。 選擇您想要的服務主體名稱，然後按一下 [選取]****。
 
    ![選取服務主體名稱](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. 在 [權限] 窗格中，選取 [寫入] 和 [執行] 權限，並將其指派至 [此資料夾及所有子系]。 然後按一下 [確定]。
+8. 在 [權限]**** 窗格中，選取 [寫入]**** 和 [執行]**** 權限，並將其指派至 [此資料夾及所有子系]****。 然後按一下 [確定]****。
 
    ![選取寫入和執行權限](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
-9. 服務主體會列在 [存取] 窗格 [指派的權限] 底下，如下所示。 您現在可以返回並啟動您的串流分析作業。
+9. 服務主體會列在 [存取]**** 窗格 [指派的權限]**** 底下，如下所示。 您現在可以返回並啟動您的串流分析作業。
 
    ![入口網站中的串流分析存取清單](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
@@ -66,23 +66,23 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>適用於 Visual Studio 的串流分析工具
 
-1. 在 JobConfig.json 中，將 [使用系統指派的身分識別] 設定為 [True]。
+1. 在 JobConfig.json 中，將 [使用系統指派的身分識別]**** 設定為 [True]****。
 
    ![串流分析作業組態受控識別](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. 在 ADLS Gen1 輸出接收的 [輸出屬性] 視窗中，按一下 [驗證模式] 下拉式選單，然後選取 [受控識別]。
+2. 在 ADLS Gen1 輸出接收器的輸出屬性視窗中，按一下身份驗證模式下拉，然後選擇 [託管標識]。
 
    ![ADLS 輸出受控識別](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
-3. 填寫其餘的屬性，然後按一下 [儲存]。
+3. 填寫其餘的屬性，然後按一下 [儲存]****。
 
-4. 按一下查詢編輯器中的 [提交至 Azure]。
+4. 按一下查詢編輯器中的 [提交至 Azure]****。
 
    當您提交作業時，工具可做兩件事：
 
    * 在 Azure Active Directory 中自動建立串流分析作業的身分識別服務主體。 Azure 會負責管理新建立的身分識別生命週期。 當串流分析作業刪除時，Azure 會自動刪除已與其建立關聯的身分識別 (亦即服務主體)。
 
-   * 為作業中使用的 ADLS Gen1 前置詞路徑自動設定 [寫入] 和 [執行] 權限，並將其指派至此資料夾及所有子系。
+   * 為作業中使用的 ADLS Gen1 前置詞路徑自動設定 [寫入]**** 和 [執行]**** 權限，並將其指派至此資料夾及所有子系。
 
 5. 您可以使用[串流分析 CI.CD Nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) 1.5.0 版或更新版本，在組建電腦 (Visual Studio 外部) 上產生具有下列屬性的 Resource Manager 範本。 請依照下一節中的 Resource Manager 範本部署步驟來取得服務主體，並透過 PowerShell 授與服務主體的存取權。
 
@@ -173,14 +173,14 @@ Azure 串流分析支援向 Azure Data Lake Storage (ADLS) Gen1 輸出進行受�
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   若要深入瞭解上述 PowerShell 命令，請參閱[AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry)檔。
+   要瞭解有關上述 PowerShell 命令的詳細資訊，請參閱[集-AzDataLakeStoreItemAclentry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry)文檔。
 
 ## <a name="limitations"></a>限制
-此功能不支援下列各項：
+此功能不支援以下內容：
 
-1. **多租使用者存取**：針對指定的串流分析作業所建立的服務主體將位於建立作業的 Azure Active Directory 租使用者上，且不能用於位於不同 Azure Active Directory 租使用者上的資源。 因此，您只能在與您的 Azure 串流分析作業相同 Azure Active Directory 租使用者內的 ADLS Gen 1 資源上使用 MSI。 
+1. **多租戶訪問**：為給定的流分析作業創建的服務主體將駐留在創建作業的 Azure 活動目錄租戶上，並且不能針對駐留在其他 Azure 活動目錄租戶上的資源使用。 因此，您只能在與 Azure 流分析作業位於同一 Azure 活動目錄租戶中的 ADLS 第 1 代資源上使用 MSI。 
 
-2. **[使用者指派](../active-directory/managed-identities-azure-resources/overview.md)** 的身分識別：不受支援。 這表示使用者不能輸入自己的服務主體，以供其串流分析作業使用。 服務主體是由 Azure 串流分析所產生。
+2. **[不支援使用者分配的身份](../active-directory/managed-identities-azure-resources/overview.md)**： 這意味著使用者無法輸入自己的服務主體，以便其流分析作業使用。 服務主體由 Azure 流分析生成。
 
 ## <a name="next-steps"></a>後續步驟
 

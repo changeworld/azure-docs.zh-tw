@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM 代理程式總覽
+title: Azure Linux VM 代理概述
 description: 了解如何安裝和設定 Linux 代理程式 (waagent)，來管理虛擬機器與 Azure 網狀架構控制器之間的互動。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073859"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解與使用 Azure Linux 代理程式
@@ -59,8 +59,8 @@ Microsoft Azure Linux 代理程式 (waagent) 管理 Linux 與 FreeBSD 佈建，�
   * 在 System Center Virtual Machine Manager 2012 R2 環境中執行時偵測和啟動 Linux 的 VMM 代理程式
 * **VM 延伸模組**
   
-  * 將 Microsoft 和合作夥伴所撰寫的元件插入 Linux VM (IaaS)，以啟用軟體和設定自動化
-  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) 上的虛擬機器擴充功能參考實作
+  * 將 Microsoft 和合作夥伴所撰寫的元件插入 Linux VM (IaaS)，以啟用軟體和設定自動化 
+  * VM 擴展引用實現[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>通訊
 資訊經由兩個管道從平台流向代理程式：
@@ -72,7 +72,7 @@ Microsoft Azure Linux 代理程式 (waagent) 管理 Linux 與 FreeBSD 佈建，�
 下列系統已經過測試，且已知可與 Azure Linux 代理程式一同運作：
 
 > [!NOTE]
-> 這份清單可能與 Microsoft Azure 平台上官方的支援系統清單不同，如下所述：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> 此清單可能與 Microsoft Azure 平臺上受支援系統的官方清單不同，如下所示：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -106,7 +106,7 @@ Linux 代理程式需要一些系統封裝才能正確運作：
 如需了解進階安裝選項，例如從來源安裝或安裝到自訂的位置或前置詞，請參閱 [GitHub 上 Azure Linux 代理程式存放庫](https://github.com/Azure/WALinuxAgent)中的文件。
 
 ## <a name="command-line-options"></a>命令列選項
-### <a name="flags"></a>旗標
+### <a name="flags"></a>Flags
 * verbose：提高指定命令的詳細程度
 * force：略過某些命令的互動式確認
 
@@ -243,14 +243,14 @@ Default: 10
 ```
 產生密碼雜湊時使用的隨機 salt 長度。
 
-**ResourceDisk.Format：**  
+**資源磁片格式：**  
 ```
 Type: Boolean  
 Default: y
 ```
 如果設定，當使用者在 "ResourceDisk.Filesystem" 中要求的檔案系統類型不是 "ntfs" 時，waagent 會格式化並掛接平台所提供的資源磁碟。 磁碟上將會有 Linux (83) 類型的單一磁碟分割。 如果可順利掛接此磁碟分割，則不會格式化。
 
-**ResourceDisk.Filesystem：**  
+**資源磁片.檔案系統：**  
 ```
 Type: String  
 Default: ext4
@@ -278,7 +278,7 @@ Default: n
 ```
 如果設定，則會在資源磁碟上建立交換檔 (/swapfile) 並加入至系統交換空間。
 
-**ResourceDisk.SwapSizeMB：**  
+**資源磁片.交換大小：**  
 ```
 Type: Integer  
 Default: 0
@@ -337,12 +337,12 @@ Ubuntu 雲端映像會利用 [cloud-init](https://launchpad.net/ubuntu/+source/c
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
-  * **ResourceDisk.MountPoint**
-  * **ResourceDisk.EnableSwap**
+  * **資源磁片.安裝點**
+  * **資源磁片.啟用交換**
   * **ResourceDisk.SwapSizeMB**
 
 * 如需詳細資訊，請參閱下列資源，以便在佈建期間，於 Ubuntu 雲端映像上設定資源磁碟掛接點和交換空間：
   
   * [Ubuntu Wiki：設定交換資料分割](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [將自訂資料插入 Azure 虛擬機器](../windows/classic/inject-custom-data.md)
+  * [將自訂資料注入 Azure 虛擬機器](../windows/classic/inject-custom-data.md)
 

@@ -1,5 +1,5 @@
 ---
-title: 針對 Windows VM 擴充功能失敗進行疑難排解
+title: 解決 Windows VM 擴展故障
 description: 了解如何針對 Azure Windows VM 擴充功能的失敗進行疑難排解
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
 ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073662"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>針對 Azure Windows VM 擴充功能的失敗進行疑難排解
@@ -27,7 +27,7 @@ ms.locfileid: "74073662"
 ## <a name="viewing-extension-status"></a>檢視擴充功能狀態
 Azure Resource Manager 範本可以從 Azure PowerShell 執行。 一旦執行範本之後，就可以從 Azure 資源總管或命令列工具檢視延伸模組狀態。
 
-下列是一個範例：
+範例如下：
 
 Azure PowerShell：
 

@@ -16,14 +16,14 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72801949"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流程設計工具建立進階編碼工作流程  
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 **工作流程設計工具**是 Windows 傳統型工具，用來設計和建立自訂工作流程，以便用於**媒體編碼器高階工作流程**進行編碼。
 藉由使用工作流程設計工具的強大功能，您可以設計和建立複雜的工作流程，在 **Media Encoder Premium** 中執行。  
 
@@ -41,7 +41,7 @@ ms.locfileid: "72801949"
 
 建立工作流程檔案後，此檔案可上傳做為資產，然後用來編碼媒體檔案。 如需如何使用 **.NET** 以 **Media Encoder Premium Workflow** 進行編碼的相關資訊，請參閱[使用 Media Encoder Premium Workflow 進行進階編碼](media-services-encode-with-premium-workflow.md)。
 
-## <a id="existing_workflows"></a>修改現有的工作流程
+## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>修改現有的工作流程
 可以使用設計工具來修改預設的 [已發佈工作流程](media-services-workflow-designer.md#existing_workflows) 。 您可在 [這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)取得預設的工作流程檔案。 資料夾也包含這些檔案的說明。
 
 下列影片示範如何使用設計工具。
@@ -81,7 +81,7 @@ ms.locfileid: "72801949"
 
 ## <a name="need-help"></a>需要協助嗎？
 
-您可以流覽至 [[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)] 來開啟支援票證
+您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
 
 ## <a name="next-step"></a>後續步驟
 檢閱媒體服務學習路徑。

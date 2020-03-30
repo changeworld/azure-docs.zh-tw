@@ -1,5 +1,5 @@
 ---
-title: 彈性調整常見問題
+title: 彈性縮放常見問題解答
 description: 有關 Azure SQL Database 彈性延展的常見問題集。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823647"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>彈性資料庫工具常見問題集 (FAQ)
@@ -50,10 +50,10 @@ ms.locfileid: "73823647"
 
 ## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>是否可以在分區集中針對個別的分區使用不同的 SQL Database 版本
 
-可以，分區是個別的資料庫，因此可以有一個分區是「高階」版，另一個是「標準」版。 此外，在分區存留期間，分區的版本可以多次擴大或縮減。
+可以，分區是個別的資料庫，因此可以有一個分區是「高階」版，另一個是「標準」版。 此外，在分區存留期間，分區的版本可以多次相應增加或相應減少。
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>分割合併工具是否會在分割或合併作業期間佈建 (或刪除) 資料庫
 
-不會。 如果是「分割」 作業，目標資料庫必須有適當的結構描述，而且必須向分區對應管理員登錄。  如果是「合併」 作業，您必須從分區對應管理員刪除分區，然後再刪除資料庫。
+否。 如果是「分割」 **** 作業，目標資料庫必須有適當的結構描述，而且必須向分區對應管理員登錄。  如果是「合併」 **** 作業，您必須從分區對應管理員刪除分區，然後再刪除資料庫。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

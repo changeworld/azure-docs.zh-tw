@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure DevTest Labs 中的成本與擁有權
-description: 本文提供的資訊可協助您針對成本進行優化，並在您的環境中調整擁有權。
+title: 在 Azure 開發人員測試實驗室中管理成本和擁有權
+description: 本文提供的資訊可説明您優化成本並協調整個環境的擁有權。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74561668"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>治理 Azure DevTest Labs 基礎結構 - 管理成本和擁有權
@@ -28,8 +28,8 @@ ms.locfileid: "74561668"
 ### <a name="question"></a>問題
 如何在 DevTest Labs 環境內進行成本最佳化？
 
-### <a name="answer"></a>答案
-有多個 DevTest Labs 的內建功能，可協助您進行成本最佳化。 請參閱[成本管理、閾值](devtest-lab-configure-cost-management.md)[及原則](devtest-lab-set-lab-policy.md)文章，以限制使用者的活動。 
+### <a name="answer"></a>Answer
+有多個 DevTest Labs 的內建功能，可協助您進行成本最佳化。 請參閱[成本管理、閾值](devtest-lab-configure-cost-management.md) [及原則](devtest-lab-set-lab-policy.md)文章，以限制使用者的活動。 
 
 當您針對開發和測試工作負載運用 DevTest Labs 時，您可以考慮使用 [Enterprise 開發/測試訂用帳戶權益](https://azure.microsoft.com/offers/ms-azr-0148p/)作為 Enterprise 合約的一部分。 或者，如果您是隨用隨付的客戶，您可能要考慮[隨用隨付開發/測試供應項目](https://azure.microsoft.com/offers/ms-azr-0023p/)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74561668"
 ### <a name="question"></a>問題
 如何為我的 DevTest Labs 環境定義角色型存取控制，以確保 IT 可以治理，而開發人員/測試同時還能執行其工作？ 
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 有一個廣泛的模式，但詳細資料取決於您的組織。
 
 中央 IT 應該只擁有必要項目，並讓專案和應用程式小組能夠擁有所需的控制層級。 一般而言，這表示中央 IT 擁有訂用帳戶並會處理核心 IT 函式，例如網路設定。 這組適用於訂用帳戶的**擁有者**應該很小。 這些擁有者可以在需要時提名其他擁有者，或套用訂用帳戶層級的原則，例如「沒有公用 IP」。

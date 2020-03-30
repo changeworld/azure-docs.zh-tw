@@ -1,5 +1,6 @@
 ---
 title: Azure Key Vault 虛刪除 | Microsoft Docs
+description: Azure 金鑰保存庫中的虛刪除允許您恢復已刪除的金鑰保存庫和金鑰保存庫物件，如金鑰、機密和證書。
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 31d3556609737212ee1257015d12e9e0621ea4ee
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9c72b2ea71da94215fc9193ffdf3906449ec5571
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197380"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457367"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 虛刪除概觀
 
@@ -23,7 +24,7 @@ Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物件，�
 
 ## <a name="supporting-interfaces"></a>支援的介面
 
-虛刪除功能最初是透過[REST](/rest/api/keyvault/)、 [CLI](key-vault-soft-delete-cli.md)、 [PowerShell](key-vault-soft-delete-powershell.md)和[.net/C# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet)介面提供。
+虛刪除功能最初可通過[REST、CLI、PowerShell](key-vault-soft-delete-cli.md)和[PowerShell](key-vault-soft-delete-powershell.md) [.NET/C++ 介面](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet)提供。 [REST](/rest/api/keyvault/)
 
 ## <a name="scenarios"></a>案例
 
@@ -35,29 +36,29 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 ### <a name="soft-delete-behavior"></a>虛刪除行為
 
-啟用虛刪除時，標示為已刪除資源的資源會保留一段指定的時間（預設為90天）。 此服務進一步提供復原已刪除物件的機制 (基本上是復原刪除作業)。
+啟用虛刪除後，標記為已刪除資源的資源將保留指定時間段（預設情況下為 90 天）。 此服務進一步提供復原已刪除物件的機制 (基本上是復原刪除作業)。
 
-建立新的金鑰保存庫時，預設會開啟虛刪除。 您可以建立金鑰保存庫，而不需要透過[Azure CLI](key-vault-soft-delete-cli.md)或[Azure Powershell](key-vault-soft-delete-powershell.md)進行虛刪除。 一旦在金鑰保存庫上啟用虛刪除，即無法停用
+創建新金鑰保存庫時，虛刪除預設處於打開狀態。 您可以通過[Azure CLI](key-vault-soft-delete-cli.md)或[Azure Powershell](key-vault-soft-delete-powershell.md)創建金鑰保存庫，而無需虛刪除。 在金鑰保存庫上啟用虛刪除後，無法禁用
 
-預設的保留期限為90天，但在建立金鑰保存庫期間，您可以透過 Azure 入口網站，將保留原則間隔設定為從7到90天的值。 清除保護保留原則會使用相同的間隔。 設定之後，就無法變更保留原則間隔。
+預設保留期為 90 天，但在創建金鑰保存庫期間，可以通過 Azure 門戶將保留原則間隔設置為 7 到 90 天的值。 清除保護保留原則使用相同的間隔。 設置後，無法更改保留原則間隔。
 
-在達到保留期限之前，您無法重複使用已虛刪除的金鑰保存庫名稱。
+在保留期結束之前，不能重用已虛刪除的金鑰保存庫的名稱。
 
-### <a name="purge-protection"></a>清除保護 
+### <a name="purge-protection"></a>淨化保護 
 
-[清除保護] 是選擇性的 Key Vault 行為，**預設不會啟用**。 您可以透過[CLI](key-vault-soft-delete-cli.md#enabling-purge-protection)或[Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection)來開啟它。
+清除保護是可選的金鑰保存庫行為，**預設情況下不會啟用**。 它可以通過[CLI](key-vault-soft-delete-cli.md#enabling-purge-protection)或[Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection)打開。
 
-開啟 [清除保護] 時，除非已達到保留期限，否則無法清除 [已刪除] 狀態的保存庫或物件。 虛刪除的保存庫和物件仍然可以復原，確保會遵循保留原則。 
+啟用清除保護時，在保留期結束之前，無法清除處於已刪除狀態的保存庫或物件。 虛刪除的保存庫和物件仍然可以恢復，確保遵循保留原則。 
 
-預設的保留期限為90天，但可以透過 Azure 入口網站將保留原則間隔設定為從7到90天的值。 一旦設定保留原則間隔並加以儲存，就無法對該保存庫進行變更。 
+預設保留期為 90 天，但可以通過 Azure 門戶將保留原則間隔設置為 7 到 90 天的值。 設置並保存保留原則間隔後，無法更改該保存庫。 
 
 ### <a name="permitted-purge"></a>允許的清除作業
 
 在 Proxy 資源上可透過 POST 作業永久刪除、清除 Key Vault，而這需要特殊權限。 一般而言，只有訂用帳戶擁有者可以清除 Key Vault。 POST 作業會對該保存庫觸發立即性且無法復原的刪除作業。 
 
-例外狀況為：
-- 當 Azure 訂用帳戶已標示為*undeletable*時。 在此情況下，只有此服務可接著執行實際的刪除作業，而且會以排程的程序執行。 
-- 在保存庫本身啟用--enable-清除保護旗標時。 在此情況下，Key Vault 會從原始祕密物件標示為要刪除的那天算起，等待 90 天後才永久刪除該物件。
+例外情況包括：
+- 當 Azure 訂閱被標記為*不可刪除時*。 在此情況下，只有此服務可接著執行實際的刪除作業，而且會以排程的程序執行。 
+- 在保存庫本身上啟用啟用 -啟用-清除保護標誌時。 在此情況下，Key Vault 會從原始祕密物件標示為要刪除的那天算起，等待 90 天後才永久刪除該物件。
 
 ### <a name="key-vault-recovery"></a>Key Vault 復原
 
@@ -65,7 +66,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 ### <a name="key-vault-object-recovery"></a>Key Vault 物件復原
 
-刪除金鑰保存庫物件（例如金鑰）時，服務會將物件置於已刪除狀態，使其無法存取任何抓取作業。 此狀態下的 Key Vault 物件只能列出、復原或強制/永久刪除。 
+刪除金鑰保存庫物件（如金鑰）後，服務將物件置於已刪除狀態，從而使任何檢索操作都無法訪問該物件。 此狀態下的 Key Vault 物件只能列出、復原或強制/永久刪除。 
 
 同時，Key Vault 會根據刪除的 Key Vault 或 Key Vault 物件來排程基礎資料的刪除，並在預定的保留間隔後執行。 在保留間隔期間，也會保留與保存庫相對應的 DNS 記錄。
 
@@ -94,5 +95,5 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 下列兩個指南提供使用虛刪除的主要使用方式案例。
 
 - [如何透過 PowerShell 使用金鑰保存庫虛刪除](key-vault-soft-delete-powershell.md) 
-- [如何透過 CLI 使用金鑰保存庫虛刪除](key-vault-soft-delete-cli.md)
+- [如何以 CLI 使用金鑰保存庫虛刪除](key-vault-soft-delete-cli.md)
 

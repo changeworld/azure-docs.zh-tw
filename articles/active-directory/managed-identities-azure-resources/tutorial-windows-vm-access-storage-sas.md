@@ -1,5 +1,5 @@
 ---
-title: 教學課程`:` 使用受控識別來存取使用 SAS 認證的 Azure 儲存體-Azure AD
+title: 教程`:`使用託管標識使用 SAS 憑據訪問 Azure 存儲 - Azure AD
 description: 本教學課程說明如何使用 Windows VM 系統指派的受控識別，以利用 SAS 認證 (而非儲存體帳戶來存取金鑰) 來存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232167"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Windows VM 系統指派的受控識別，透過 SAS 認證來存取 Azure 儲存體
@@ -32,10 +32,10 @@ ms.locfileid: "74232167"
 
 > [!div class="checklist"]
 > * 建立儲存體帳戶
-> * 在 Resource Manager 中將 VM 存取權授與儲存體帳戶 SAS 
+> * 在資源管理員中將 VM 存取權限授與儲存體帳戶 SAS 
 > * 使用 VM 身分識別取得存取權杖，並將其用於從資源管理員取出 SAS 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -45,12 +45,12 @@ ms.locfileid: "74232167"
 
 如果您還沒有帳戶，您現在將建立一個儲存體帳戶。 您也可以略過此步驟，並將存取現有儲存體帳戶 SAS 認證的權利，授予 VM 系統指派的受控識別。 
 
-1. 按一下 Azure 入口網站左上角的 [+/建立新服務] 按鈕。
-2. 按一下 [儲存體]，然後按一下 [儲存體帳戶]，就會顯示新的 [建立儲存體帳戶] 面板。
+1. 按一下 Azure 入口網站左上角的 [+/建立新服務]**** 按鈕。
+2. 按一下 [儲存體]****，然後按一下 [儲存體帳戶]****，就會顯示新的 [建立儲存體帳戶] 面板。
 3. 輸入儲存體帳戶的名稱，您稍後將會使用它。  
-4. [部署模型] 和 [帳戶類型] 應該分別設定為「資源管理員」和「一般用途」。 
-5. 確定 [訂用帳戶] 和 [資源群組] 符合您在上一個步驟中建立 VM 時指定的值。
-6. 按一下頁面底部的 [新增]。
+4. [部署模型]**** 和 [帳戶類型]**** 應該分別設定為「資源管理員」和「一般用途」。 
+5. 確定 [訂用帳戶]**** 和 [資源群組]**** 符合您在上一個步驟中建立 VM 時指定的值。
+6. 按一下 **[建立]**。
 
     ![建立新的儲存體帳戶](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -59,9 +59,9 @@ ms.locfileid: "74232167"
 稍後我們將上傳和下載檔案到新的儲存體帳戶。 由於檔案需要 Blob 儲存體，我們需要建立 Blob 容器，用來儲存檔案。
 
 1. 巡覽回到您新建立的儲存體帳戶。
-2. 按一下左側面板 [Blob 服務] 下的 [容器] 連結。
-3. 按一下頁面上方的 [+ 容器]，[新的容器] 面板隨即會滑出。
-4. 指定容器的名稱，選取存取層級，然後按一下 [確定]。 稍後在教學課程中將會用到您指定的名稱。 
+2. 按一下左側面板 [Blob 服務] 下的 [容器]**** 連結。
+3. 按一下頁面上方的 [+ 容器]****，[新的容器] 面板隨即會滑出。
+4. 指定容器的名稱，選取存取層級，然後按一下 [確定]****。 稍後在教學課程中將會用到您指定的名稱。 
 
     ![建立儲存體容器](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
@@ -70,23 +70,23 @@ ms.locfileid: "74232167"
 Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用受控識別從 Resource Manager 擷取儲存體 SAS，然後使用該 SAS 存取儲存體。  在此步驟中，您會將存取儲存體帳戶 SAS 的權利，授予 VM 系統指派的受控識別。   
 
 1. 巡覽回到您新建立的儲存體帳戶。   
-2. 按一下左側面板中的 [存取控制 (IAM)] 連結。  
-3. 按一下頁面頂端的 [+ 新增角色指派]，以新增虛擬機器的新角色指派。
-4. 在頁面右側中，將 [角色] 設定為 [儲存體帳戶參與者]。  
-5. 在下一個下拉式清單中，將 [存取權指派給] 設定為資源 [虛擬機器]。  
-6. 接下來，請確保 [訂用帳戶] 下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組] 設定為 [所有資源群組]。  
-7. 最後，在 [選取] 的下拉式清單中，選擇您的 Windows 虛擬機器，然後按一下 [儲存]。 
+2. 按一下左側面板中的 [存取控制 (IAM)]**** 連結。  
+3. 按一下頁面頂端的 [+ 新增角色指派]****，以新增虛擬機器的新角色指派。
+4. 在頁面右側中，將 [角色]**** 設定為 [儲存體帳戶參與者]。  
+5. 在下一個下拉式清單中，將 [存取權指派對象為]**** 設定為資源 [虛擬機器]。  
+6. 接下來，請確保 [訂用帳戶]**** 下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組]**** 設定為 [所有資源群組]。  
+7. 最後，在 [選取]**** 的下拉式清單中，選擇您的 Windows 虛擬機器，然後按一下 [儲存]****。 
 
     ![替代映像文字](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的身分識別取得存取權杖，並使用它來呼叫 Azure Resource Manager 
 
-在教學課程的其餘部分中，我們將從稍早建立的 VM 繼續進行。
+其餘課程要從稍早建立的 VM 繼續進行。
 
 在這部分的課程中，需要用到 Azure Resource Manager PowerShell Cmdlet。  如果您沒有安裝它，請[下載最新版本](https://docs.microsoft.com/powershell/azure/overview)之後再繼續。
 
-1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]，移至您的 Windows 虛擬機器，然後在 [概觀] 頁面中，按一下頂端的 [連線]。
-2. 輸入您建立 Windows VM 時新增的**使用者名稱**和**密碼**。 
+1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]****，移至您的 Windows 虛擬機器，然後在 [概觀]**** 頁面中，按一下頂端的 [連線]****。
+2. 輸入創建 Windows **Password** VM 時為其添加的**使用者名和密碼**。 
 3. 現在您已經建立虛擬機器的**遠端桌面連線**，請在遠端工作階段中開啟 PowerShell。 
 4. 使用 Powershell 的 Invoke-WebRequest，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。
 
@@ -112,7 +112,7 @@ Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用�
 
 現在請使用上一節中取出的存取權杖，使用 PowerShell 對資源管理員進行呼叫，以建立儲存體 SAS 認證。 擁有 SAS 認證後，便可以呼叫儲存體作業。
 
-對於此要求，我們會使用下列 HTTP 要求參數建立 SAS 認證：
+針對此要求，我們將使用下列 HTTP 要求參數來建立 SAS 認證：
 
 ```JSON
 {

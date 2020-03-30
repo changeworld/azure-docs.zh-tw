@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: seodc18
 ms.date: 03/04/2019
 ms.openlocfilehash: 34316b13c93ca2739e87262dd09dcbaf38186b16
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204472"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下載的資訊圖︰機器學習服務基本概念和演算法範例
@@ -23,9 +23,9 @@ ms.locfileid: "79204472"
 
 下載這個機器學習服務基本概念的簡易資訊圖概觀，以了解用來回答機器學習服務常見問題的常用演算法。 演算法範例可協助機器學習服務初學者了解適用的演算法及其用途。
 
-## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio 中常用的演算法（傳統）
+## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>機器學習工作室中流行的演算法（經典）
 
-[Azure Machine Learning Studio （傳統）](https://studio.azureml.net/)隨附用於預測性分析的大型演算法程式庫。 此資訊圖識別四種熱門的演算法系列：回歸、異常偵測、叢集和分類，並提供[Azure AI 資源庫](https://gallery.azure.ai/)中的工作範例連結。 該資源庫包含範例實驗和教學課程，會示範如何在許多真實解決方案中套用這些演算法。
+[Azure 機器學習工作室（經典版）](https://studio.azureml.net/)附帶了用於預測分析的大型演算法庫。 此資訊圖示識了四個流行的演算法系列 - 回歸、異常檢測、聚類和分類 ， 並提供指向[Azure AI 庫中](https://gallery.azure.ai/)的工作示例的連結。 該資源庫包含範例實驗和教學課程，會示範如何在許多真實解決方案中套用這些演算法。
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>下載具有演算法範例的資訊圖
 
@@ -35,9 +35,9 @@ ms.locfileid: "79204472"
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>適用於初學者與進階使用者的演算法詳細說明
 
-* 如需不同類型機器學習服務演算法、使用方式，以及如何為您的解決方案選擇正確的方法的詳細討論，請參閱[如何選擇適用于 Microsoft Azure Machine Learning Studio 的演算法（傳統）](algorithm-choice.md)。
-* 如需 Machine Learning Studio （傳統）中可用的所有機器學習演算法的清單，請參閱 Machine Learning Studio （傳統）演算法和模組說明中的 [[初始化模型][initialize-model]]。
-* 如需 Machine Learning Studio （傳統）中的演算法和模組的完整字母清單，請參閱 Machine Learning Studio （傳統）演算法和模組說明中的[Machine Learning Studio （傳統）模組的 a-z 清單][a-z-list]。
+* 有關不同類型的機器學習演算法、如何使用演算法以及如何為解決方案選擇正確的演算法的深入討論，請參閱[如何為 Microsoft Azure 機器學習工作室（經典）選擇演算法](algorithm-choice.md)。
+* 有關機器學習工作室（經典）中所有機器學習演算法的類別清單，請參閱機器學習工作室（經典）演算法和模組説明中的[初始化模型][initialize-model]。
+* 有關機器學習工作室（經典）中的演算法和模組的完整按字母順序排列的清單，請參閱機器學習工作室（經典）演算法和模組説明中的[機器學習工作室（經典）模組的 A-Z 清單][a-z-list]。
 * 如需 Azure AI 資源庫和其中許多由社群所產生之可用資源的概觀，請參閱[在 Azure AI 資源庫中共用及探索資源](gallery-how-to-use-contribute-publish.md)。
 
 

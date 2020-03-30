@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 建立自訂探查
+title: 使用 PowerShell 創建自訂探測器
 titleSuffix: Azure Application Gateway
 description: 了解如何在資源管理員中使用 PowerShell 建立應用程式閘道的自訂探查
 services: application-gateway
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075265"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用 Azure 資源管理員的 PowerShell 建立 Azure 應用程式閘道的自訂探查
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](application-gateway-create-probe-portal.md)
+> * [Azure 門戶](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure 傳統 PowerShell](application-gateway-create-probe-classic-ps.md)
+> * [Azure 經典電源外殼](application-gateway-create-probe-classic-ps.md)
 
 在本文中，您會使用 PowerShell 將自訂探查新增到現有的應用程式閘道。 對於具有特定健康狀態檢查頁面的應用程式，或是在預設 Web 應用程式上不提供成功回應的應用程式，自訂探查非常實用。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74075265"
    Get-AzSubscription
    ```
 
-1. 選擇要使用哪一個 Azure 訂用帳戶。
+1. 選擇其中一個要使用的 Azure 訂用帳戶。
 
    ```powershell
    Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
@@ -56,7 +56,7 @@ ms.locfileid: "74075265"
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Azure Resource Manager 需要所有的資源群組指定一個位置。 此位置用來作為該資源群組中資源的預設位置。 請確定所有用來建立應用程式閘道的命令都使用同一個資源群組。
+Azure 資源管理員需要所有的資源群組指定一個位置。 此位置用來作為該資源群組中資源的預設位置。 請確定所有用來建立應用程式閘道的命令都使用同一個資源群組。
 
 在上述範例中，我們建立名為 **appgw-RG** 的資源群組，位置為**美國西部**。
 
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>建立前端組態的公用 IP 位址
 
-在美國西部區域的 **appgw-rg** 資源群組中建立公用 IP 資源 **publicIP01**。 此範例使用公用 IP 位址做為應用程式閘道的前端 IP 位址。  應用程式閘道需要公用 IP 位址才能具有動態建立的 DNS 名稱，因此在公用 IP 位址建立期間無法指定 `-DomainNameLabel`。
+在資源組**appgw-rg**中為美國西部區域創建公共 IP 資源**公共 IP01。** 此範例使用公用 IP 位址做為應用程式閘道的前端 IP 位址。  應用程式閘道需要公用 IP 位址才能具有動態建立的 DNS 名稱，因此在公用 IP 位址建立期間無法指定 `-DomainNameLabel`。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -90,11 +90,11 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 | **元件** | **描述** |
 |---|---|
 | **閘道 IP 設定** | 應用程式閘道的 IP 設定。|
-| **後端集區** | 這是應用程式伺服器的 IP 位址、FQDN 或 NIC 的集區，此應用程式伺服器負責裝載 Web 應用程式|
-| **健康狀態探查** | 用於監視後端集區成員健康狀態的自訂探查|
-| **HTTP 設定** | 包括連接埠、通訊協定、以 Cookie 為依據的親和性、探查和逾時等設定的集合。  這些設定會決定流量路由傳送到後端集區成員的方式|
+| **後端池** | 這是應用程式伺服器的 IP 位址、FQDN 或 NIC 的集區，此應用程式伺服器負責裝載 Web 應用程式|
+| **健康探頭** | 用於監視後端集區成員健康狀態的自訂探查|
+| **HTTP 設置** | 包括連接埠、通訊協定、以 Cookie 為依據的親和性、探查和逾時等設定的集合。  這些設定會決定流量路由傳送到後端集區成員的方式|
 | **前端連接埠** | 應用程式閘道接聽流量的連接埠|
-| **接聽程式** | 通訊協定、前端 IP 設定以及前端連接埠的組合。 這是用於接聽傳入要求的項目。
+| **聽眾** | 通訊協定、前端 IP 設定以及前端連接埠的組合。 這是用於接聽傳入要求的項目。
 |**規則**| 根據 HTTP 設定，將流量路由傳送至適當的後端。|
 
 ```powershell
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>後續步驟
 
-請瀏覽：[設定 SSL 卸載](application-gateway-ssl-arm.md)了解如何設定 SSL 卸載
+通過訪問瞭解如何配置 SSL 卸載：[配置 SSL 卸載](application-gateway-ssl-arm.md)
 

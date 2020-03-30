@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 47dc1a84fbc80925e5b65db8c03683f9f026271b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2d7ea5618f4c0e8b6d348ea6c34127492b3e1096
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194983"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457401"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -40,9 +40,9 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 以下是設定防火牆和虛擬網路所需的步驟。 不論您是使用 PowerShell、Azure CLI 或 Azure 入口網站，都適用這些步驟。
 
 1. 啟用[金鑰保存庫記錄](key-vault-logging.md)，以查看詳細的存取記錄。 當防火牆和虛擬網路規則防止存取金鑰保存庫時，這有助於進行診斷。 (此步驟為選擇性步驟，但強烈建議執行。)
-2. 針對目標虛擬網路和子網路中啟用 [金鑰保存庫的服務端點]。
+2. 針對目標虛擬網路和子網路中啟用 [金鑰保存庫的服務端點]****。
 3. 設定金鑰保存庫的防火牆和虛擬網路規則，以限制從特定的虛擬網路、子網路和 IPv4 位址範圍存取該金鑰保存庫。
-4. 如果有任何信任的 Microsoft 服務必須存取此金鑰保存庫，啟用此選項，讓 [信任的 Azure 服務] 連線能夠至 Key Vault。
+4. 如果有任何信任的 Microsoft 服務必須存取此金鑰保存庫，啟用此選項，讓 [信任的 Azure 服務]**** 連線能夠至 Key Vault。
 
 如需詳細資訊，請參閱[設定 Azure Key Vault 防火牆和虛擬網路](key-vault-network-security.md)。
 
@@ -54,19 +54,19 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 > 請留意下列組態限制：
 > * 最多允許 127 條虛擬網路規則和 127 條 IPv4 規則。 
 > * 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 而是，使用個別 IP 位址規則設定這些範圍。
-> * 只有公用 IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 RFC 1918 中所定義)。 私人網路包括以**10.** 、 **172.16.-31**和**192.168**為開頭的位址。 
+> * 只有公用 IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 RFC 1918 中所定義)。 私人網路絡包括以**10、172.16-31**和**192.168**開頭的位址。 **10.** 
 > * 目前僅支援 IPv4 位址。
 
 ## <a name="trusted-services"></a>信任的服務
 
-以下是已啟用 [允許信任的服務] 選項的情況下，允許存取金鑰保存庫的信任服務清單。
+以下是已啟用 [允許信任的服務]**** 選項的情況下，允許存取金鑰保存庫的信任服務清單。
 
-|信任的服務|支援的使用案例|
+|信任的服務|支援的使用方案|
 | --- | --- |
 |Azure 虛擬機器部署服務|[Deploy Certificates to VMs from customer-managed Key Vault (將憑證從客戶管理的 Key Vault 部署到 VM)](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
 |Azure Resource Manager 範本部署服務|[在部署期間傳遞安全值](../azure-resource-manager/templates/key-vault-parameter.md)。|
 |Azure Disk Encryption 磁碟區加密服務|允許在虛擬機器部署期間，存取 BitLocker 金鑰 (Windows VM) 或 DM 複雜密碼 (Linux VM) 和金鑰加密金鑰。 這可啟用 [Azure 磁碟加密](../security/fundamentals/encryption-overview.md)。|
-|Azure 備份|使用 [Azure 備份](../backup/backup-introduction-to-azure-backup.md)，在 Azure 虛擬機器備份期間，允許相關金鑰和祕密的備份和還原。|
+|Azure 備份|允許在 Azure 虛擬機器備份期間使用[Azure 備份](../backup/backup-introduction-to-azure-backup.md)備份和還原相關金鑰和機密。|
 |Exchange Online 和 SharePoint Online|允許使用[客戶金鑰](/microsoft-365/compliance/customer-key-overview)存取 Azure 儲存體服務加密的客戶金鑰。|
 |Azure 資訊保護|允許存取 [Azure 資訊保護](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租用戶金鑰|
 |Azure App Service|[透過 Key Vault 部署 Azure Web 應用程式憑證](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
@@ -74,11 +74,11 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |Azure 儲存體|[使用 Azure Key Vault 中客戶管理的金鑰進行儲存體服務加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|使用客戶管理的金鑰[在 Azure Data Lake Store 中加密資料](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[快速、簡單且可共同作業的 Apache Spark 型分析服務](../azure-databricks/what-is-azure-databricks.md)|
-|Azure API 管理|[使用 MSI 從 Key Vault 部署自訂網域的憑證](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
-|Azure Data Factory|[從 Data Factory 的 Key Vault 中提取資料存放區認證](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure 事件中心|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Azure 服務匯流排|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
-
+|Azure API 管理|[使用 MSI 從金鑰保存庫部署自訂域的證書](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure Data Factory|[從資料工廠獲取金鑰保存庫中的資料存儲憑據](https://go.microsoft.com/fwlink/?linkid=2109491)|
+|Azure 事件中心|[允許訪問客戶管理金鑰方案的金鑰保存庫](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
+|Azure 服務匯流排|[允許訪問客戶管理金鑰方案的金鑰保存庫](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
+|Azure 匯入/匯出| [在 Azure 金鑰保存庫中使用客戶管理的金鑰以進行導入/匯出服務](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
 
 > [!NOTE]
 > 您必須將相關 Key Vault 存取原則設定為允許對應的服務取得 Key Vault 的存取權。

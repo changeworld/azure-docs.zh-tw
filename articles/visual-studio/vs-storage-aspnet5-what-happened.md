@@ -1,5 +1,5 @@
 ---
-title: 我的 ASP.NET 5 專案（Visual Studio 連接服務）發生了什麼事
+title: 我的ASP.NET 5 專案（視覺化工作室連接的服務）發生了什麼
 description: 說明使用 Visual Studio 已連接服務連接到 Visual Studio ASP.NET 5 專案中的 Azure 儲存體帳戶後，會發生什麼事
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300010"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>我的 ASP.NET 5 專案 (Visual Studio Azure 儲存體連接的服務) 發生什麼狀況？
@@ -31,7 +31,7 @@ Azure 儲存體 NuGet 封裝已加入至 Visual Studio 專案。
 * **Microsoft.WindowsAzure.Configuration**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
-* **System.Data**
+* **系統.資料**
 * **System.Spatial**
 
 另外也加入了 NuGet 封裝 **Microsoft.Framework.Configuration.Json** 。

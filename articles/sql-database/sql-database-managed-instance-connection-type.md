@@ -1,6 +1,6 @@
 ---
-title: 受控實例連線類型
-description: 瞭解受控實例連線類型
+title: 託管實例連線類型
+description: 瞭解託管實例連線類型
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,43 +10,43 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.openlocfilehash: 46223d1701b930d93de7c49c1e216a41045dda16
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819465"
 ---
-# <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Database 受控實例連線類型
+# <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL 資料庫託管實例連線類型
 
-本文說明用戶端如何根據連線類型，連接到 Azure SQL Database 受控實例。 以下提供變更連線類型的腳本範例，以及變更預設連線設定的相關考慮。
+本文介紹用戶端如何連接到 Azure SQL 資料庫託管實例，具體取決於連線類型。 下面提供了用於更改連線類型的腳本示例，以及與更改預設連接設置相關的注意事項。
 
 ## <a name="connection-types"></a>連線類型
 
-Azure SQL Database 受控實例支援下列兩種連線類型：
+Azure SQL 資料庫託管實例支援以下兩種連線類型：
 
-- **重新導向 (建議使用)：** 用戶端直接與裝載資料庫的節點建立連線。 若要使用 [重新導向] 啟用連線，您必須開啟防火牆和網路安全性群組（NSG），以允許在埠1433和11000-11999 上進行存取。 封包會直接移至資料庫，因此使用 [透過 Proxy 重新導向] 會改善延遲和輸送量效能。
-- **Proxy （預設值）：** 在此模式中，所有連接都使用 proxy 閘道元件。 若要啟用連線，只需要開啟私人網路的埠1433和公用連接的埠3342。 視工作負載的本質而定，選擇此模式可能會導致延遲提高和輸送量降低。 為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用 [重新導向] 連線原則，而不要採用 [Proxy] 連線原則。
+- **重新導向 (建議使用)：** 用戶端直接與裝載資料庫的節點建立連線。 要使用重定向啟用連接，必須打開防火牆和網路安全性群組 （NSG） 才能允許在埠 1433 和 11000-11999 上訪問。 資料包直接轉到資料庫，因此使用重定向通過代理有延遲和輸送量性能改進。
+- **代理（預設）：** 在此模式下，所有連接都使用代理閘道元件。 要啟用連接，只需打開私人網路絡埠 1433，需要打開用於公共連接的埠 3342。 視工作負載的本質而定，選擇此模式可能會導致延遲提高和輸送量降低。 為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用 [重新導向] 連線原則，而不要採用 [Proxy] 連線原則。
 
-## <a name="redirect-connection-type"></a>重新導向連線類型
+## <a name="redirect-connection-type"></a>重定向連線類型
 
-[重新導向連線類型] 表示在 TCP 會話建立至 SQL 引擎之後，用戶端會話會從負載平衡器取得虛擬叢集節點的目的地虛擬 IP。 後續的封包會直接流向虛擬叢集節點，略過閘道。 下圖說明此流量。
+重定向連線類型意味著在 TCP 會話建立到 SQL 引擎後，用戶端會話從負載等化器獲取虛擬叢集節點的目標虛擬 IP。 後續資料包直接流向虛擬叢集節點，繞過閘道。 下圖說明此流量。
 
-![重新導向 .png](media/sql-database-managed-instance-connection-types/redirect.png)
+![重定向.png](media/sql-database-managed-instance-connection-types/redirect.png)
 
 > [!IMPORTANT]
-> 重新導向連線類型目前僅適用于私人端點。 無論連線類型設定為何，透過公用端點的連線都會透過 proxy。
+> 重定向連線類型當前僅適用于專用終結點。 無論連線類型設置如何，通過公共終結點的連接都將通過代理。
 
-## <a name="proxy-connection-type"></a>Proxy 連線類型
+## <a name="proxy-connection-type"></a>代理連線類型
 
-Proxy 連線類型表示會使用閘道建立 TCP 會話，且所有後續封包都會流經它。 下圖說明此流量。
+代理連線類型意味著使用閘道建立 TCP 會話，並且所有後續資料包都流經它。 下圖說明此流量。
 
-![proxy .png](media/sql-database-managed-instance-connection-types/proxy.png)
+![代理.png](media/sql-database-managed-instance-connection-types/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>使用 PowerShell 變更連線類型設定的腳本
+## <a name="script-to-change-connection-type-settings-using-powershell"></a>使用 PowerShell 更改連線類型設置的腳本
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-下列 PowerShell 腳本顯示如何將受控實例的連線類型變更為 [重新導向]。
+以下 PowerShell 腳本演示如何將託管實例的連線類型更改為重定向。
 
 ```powershell
 Install-Module -Name Az
@@ -65,6 +65,6 @@ $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 
 ## <a name="next-steps"></a>後續步驟
 
-- [將資料庫還原到受控實例](sql-database-managed-instance-get-started-restore.md)
-- 瞭解如何[在受控實例上設定公用端點](sql-database-managed-instance-public-endpoint-configure.md)
-- 瞭解[受控實例連線架構](sql-database-managed-instance-connectivity-architecture.md)
+- [將資料庫還原到託管實例](sql-database-managed-instance-get-started-restore.md)
+- 瞭解如何[在託管實例上配置公共終結點](sql-database-managed-instance-public-endpoint-configure.md)
+- 瞭解[託管實例連接體系結構](sql-database-managed-instance-connectivity-architecture.md)
