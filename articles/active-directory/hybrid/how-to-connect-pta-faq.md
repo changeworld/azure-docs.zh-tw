@@ -16,12 +16,12 @@ ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 59bf7ae5914f5cc886d95f25b36abccfdf09c4a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331275"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 傳遞驗證：常見問題集
 
@@ -41,18 +41,18 @@ ms.locfileid: "79096051"
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[條件式存取](../active-directory-conditional-access-azure-portal.md)是否能與傳遞驗證搭配運作？
 
-是。 所有條件式存取功能（包括 Azure 多重要素驗證）都會使用傳遞驗證。
+是。 所有條件訪問功能（包括 Azure 多重要素驗證）都使用直通身份驗證。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>傳遞驗證支援以「替代識別碼」而非「userPrincipalName」來作為使用者名稱嗎？
-使用非 UPN 值登入（例如替代電子郵件）目前正針對傳遞驗證（PTA）和密碼雜湊同步處理（PHS）在私人預覽中進行測試。
+使用非 UPN 值（如備用電子郵件）登錄，目前正在在專用預覽版中測試直通身份驗證 （PTA） 和密碼雜湊同步 （PHS）。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密碼雜湊同步處理是否會作為傳遞驗證的遞補？
 
 否。 傳遞驗證_不會_自動容錯移轉至密碼雜湊同步處理。 若要避免使用者登入失敗，您應該為傳遞驗證設定[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
 
-## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>當我從密碼雜湊同步處理切換至傳遞驗證時，會發生什麼事？
+## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>當我從密碼雜湊同步切換到傳遞身份驗證時會發生什麼情況？
 
-當您使用 Azure AD Connect 將登入方法從密碼雜湊同步處理切換至傳遞驗證時，傳遞驗證會成為您的使用者在受控網域中的主要登入方法。 請注意，先前由密碼雜湊同步處理同步處理的所有使用者密碼雜湊，仍會儲存在 Azure AD 上。
+當您使用 Azure AD Connect 將登錄方法從密碼雜湊同步切換到傳遞身份驗證時，傳遞身份驗證將成為託管域中使用者的主要登錄方法。 請注意，以前通過密碼雜湊同步同步的所有使用者的密碼雜湊仍存儲在 Azure AD 上。
 
 ## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在傳遞驗證代理程式所在的同一部伺服器上安裝 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md) 連接器？
 
@@ -75,7 +75,7 @@ ms.locfileid: "79096051"
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>傳遞驗證代理程式會透過連接埠 80 和 443 進行哪些方面的通訊？
 
 - 驗證代理程式會透過連接埠 443 對所有功能作業進行 HTTPS 要求。
-- 驗證代理程式會透過連接埠 80 提出 HTTP 要求，以下載 SSL 憑證撤銷清單 (CRL)。
+- 身份驗證代理通過埠 80 發出 HTTP 要求以下載 TLS/SSL 憑證吊銷清單 （CRL）。
 
      >[!NOTE]
      >最近的更新減少了此功能所需的連接埠數目。 如果您有舊版的 Azure AD Connect 或驗證代理程式，請將下列連接埠保持開放：5671、8080、9090、9091、9350、9352、10100-10120。
@@ -85,7 +85,7 @@ ms.locfileid: "79096051"
 是。 如果您的內部部署環境啟用了 Web Proxy 自動探索 (WPAD)，則驗證代理程式會自動嘗試在網路上找出並使用 Web Proxy 伺服器。
 
 如果您的環境中沒有 WPAD，您可以新增 Proxy 資訊 (如下所示)，以允許傳遞驗證代理程式與 Azure AD 進行通訊：
-- 在伺服器上安裝傳遞驗證代理程式之前，請先在 Internet Explorer 中設定 Proxy 資訊。 這可讓您完成驗證代理程式的安裝，但它在管理入口網站中仍將顯示為 [非作用中]。
+- 在伺服器上安裝傳遞驗證代理程式之前，請先在 Internet Explorer 中設定 Proxy 資訊。 這可讓您完成驗證代理程式的安裝，但它在管理入口網站中仍將顯示為 [非作用中]****。
 - 在伺服器上，瀏覽至 "C:\Program Files\Microsoft Azure AD Connect Authentication Agent"。
 - 編輯 "AzureADConnectAuthenticationAgentService" 組態檔，並新增以下幾行 (請將 "http\://contosoproxy.com:8080" 取代為您實際的 Proxy 位址)：
 
@@ -111,9 +111,9 @@ ms.locfileid: "79096051"
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何移除「傳遞驗證代理程式」？
 
-「傳遞驗證代理程式」只要正在執行，就會維持作用中並持續處理使用者登入要求。 如果您想要將「驗證代理程式」解除安裝，請移至 [控制台] -> [程式集] -> [程式和功能]，然後將 [Microsoft Azure AD Connect 驗證代理程式] 和 [Microsoft Azure AD Connect 代理程式更新程式] 程式都解除安裝。
+「傳遞驗證代理程式」只要正在執行，就會維持作用中並持續處理使用者登入要求。 如果您想要將「驗證代理程式」解除安裝，請移至 [控制台] -> [程式集] -> [程式和功能]****，然後將 [Microsoft Azure AD Connect 驗證代理程式]**** 和 [Microsoft Azure AD Connect 代理程式更新程式]**** 程式都解除安裝。
 
-如果您在完成上述步驟後查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)上的 [傳遞驗證] 刀鋒視窗，您將會看到「驗證代理程式」顯示為 [非作用中]。 這是 _預期行為_ 。 幾天後，「驗證代理程式」就會自動從清單中卸除。
+如果您在完成上述步驟後查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)上的 [傳遞驗證] 刀鋒視窗，您將會看到「驗證代理程式」顯示為 [非作用中]****。 這是 _預期行為_ 。 幾天後，「驗證代理程式」就會自動從清單中卸除。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>我已使用 AD FS 登入 Azure AD。 要如何改為使用傳遞驗證？
 
@@ -144,11 +144,11 @@ ms.locfileid: "79096051"
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>是否可以在不同於 Azure AD Connect 執行所在伺服器的某個伺服器上安裝第一個傳遞驗證代理程式？
 
-不行，「不」支援這種情況。
+不行，「不」__ 支援這種情況。
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>為何必須要有僅限雲端的全域管理員帳戶才能啟用傳遞驗證？
 
-建議您使用僅限雲端的全域管理員帳戶來啟用或停用傳遞驗證。 了解如何[新增僅限雲端管理員帳戶 (英文)](../active-directory-users-create-azure-portal.md)。 這樣可確保您不會被租用戶封鎖。
+建議您使用僅限雲端的全域管理員帳戶來啟用或停用傳遞驗證。 瞭解如何[添加僅雲全域管理員帳戶](../active-directory-users-create-azure-portal.md)。 這樣可確保您不會被租用戶封鎖。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>如何停用傳遞驗證？
 

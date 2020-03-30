@@ -1,5 +1,5 @@
 ---
-title: B2B 共同作業 API 和自訂-Azure Active Directory
+title: B2B 協作 API 和自訂 - Azure 活動目錄
 description: Azure Active Directory B2B 共同作業讓企業合作夥伴選擇性地存取您的公司應用程式，以支援公司間的關係
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263461"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 共同作業 API 和自訂
@@ -80,7 +80,7 @@ API 可以在下列授權模型中執行：
 
 在僅應用程式模式中，應用程式需要 User.Invite.All 範圍，邀請才能成功。
 
-如需詳細資訊，請參閱： https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+如需詳細資訊，請參閱：https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
@@ -105,7 +105,7 @@ New-AzureADMSInvitation
 * **UserState** 指出邀請為 **PendingAcceptance** 或 **Accepted**。
 * **UserStateChangedOn** 顯示最近 **UserState** 屬性變更的時間戳記。
 
-您可以使用 [篩選] 選項，依 **UserState** 篩選結果。 以下範例示範如何篩選結果，只顯示具有待決邀請的使用者。 此範例也顯示 **Format-list** 選項，其可讓您指定要顯示的屬性。 
+您可以使用 [篩選]**** 選項，依 **UserState** 篩選結果。 以下範例示範如何篩選結果，只顯示具有待決邀請的使用者。 此範例也顯示 **Format-list** 選項，其可讓您指定要顯示的屬性。 
  
 
 ```powershell
@@ -117,7 +117,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 ## <a name="see-also"></a>另請參閱
 
-請查看 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 中的邀請 API 參考。
+在 中[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)查看邀請 API 引用。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,47 +1,47 @@
 ---
-title: 建立 Azure Red Hat OpenShift 4.3 叢集 |Microsoft Docs
-description: 使用 Azure Red Hat OpenShift 4.3 建立叢集
+title: 創建 Azure 紅帽開放移位 4.3 群集 |微軟文檔
+description: 使用 Azure 紅帽開放Shift 4.3 創建群集
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
-keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 23d7c950396c36925ce50d746195916292d360ad
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+keywords: aro， 開移， 阿茲阿羅， 紅帽子， cli
+ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79201037"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349426"
 ---
-# <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>建立、存取和管理 Azure Red Hat OpenShift 4.3 叢集
+# <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>創建、訪問和管理 Azure 紅帽 OpenShift 4.3 群集
 
 > [!IMPORTANT]
-> 請注意，Azure Red Hat OpenShift 4.3 目前僅適用于美國東部的個人預覽版。 私人預覽接受僅限邀請。 請務必先註冊您的訂用帳戶，再嘗試啟用此功能： [Azure Red Hat OpenShift 私人預覽註冊](https://aka.ms/aro-preview-register)
+> 請注意，Azure 紅帽 OpenShift 4.3 目前僅在美國東部提供私人預覽版。 專用預覽接受僅通過邀請。 在嘗試啟用此功能之前，請務必註冊訂閱[：Azure 紅帽開放移位專用預覽註冊](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
-> 預覽功能是自助服務，並依原樣提供，並會在服務等級協定（SLA）和有限擔保中予以排除。 因此，這些功能不適用於生產用途。
+> 預覽功能是自助服務，提供時和可用，不在服務等級協定 （SLA） 和有限保修中。 因此，這些功能不適合生產用途。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-建立 Azure Red Hat OpenShift 4.3 叢集時，您需要下列各項：
+創建 Azure 紅帽 OpenShift 4.3 群集需要以下內容：
 
-- Azure CLI 2.0.72 或更高版本
+- Azure CLI 版本 2.0.72 或更高版本
   
-- ' Az aro ' 延伸模組
+- "az aro"擴展
 
-- 一個虛擬網路，其中包含兩個空白子網，每個都不會附加網路安全性群組。  您的叢集將會部署到這些子網。
+- 包含兩個空子網的虛擬網路，每個子網沒有附加網路安全性群組。  群集將部署到這些子網中。
 
-- 叢集 AAD 應用程式（用戶端識別碼和密碼）和服務主體，或足夠的 AAD 許可權，可 `az aro create` 自動為您建立 AAD 應用程式和服務主體。
+- 群集 AAD 應用程式（用戶端 ID 和機密）和服務主體，或用於`az aro create`自動為您創建 AAD 應用程式和服務主體的足夠 AAD 許可權。
 
-- RP 服務主體和叢集服務主體必須具有叢集虛擬網路上的「參與者」角色。  如果您在虛擬網路上有「使用者存取系統管理員」角色，`az aro create` 會自動為您設定角色指派。
+- RP 服務主體和叢集服務主體必須在群集虛擬網路上具有"參與者"角色。  如果在虛擬網路上具有"使用者訪問管理員"角色，`az aro create`將自動為您設置角色指派。
 
-### <a name="install-the-az-aro-extension"></a>安裝 ' az aro ' 延伸模組
-`az aro` 延伸模組可讓您直接從命令列使用 Azure CLI 建立、存取和刪除 Azure Red Hat OpenShift 叢集。
+### <a name="install-the-az-aro-extension"></a>安裝"az aro"擴展
+擴展`az aro`允許您使用 Azure CLI 直接從命令列創建、訪問和刪除 Azure 紅帽 OpenShift 群集。
 
 > [!Note] 
-> `az aro` 延伸模組貨幣為預覽狀態。 在未來版本中可能會變更或移除。
-> 若要加入 `az aro` 延伸模組預覽，您必須註冊 `Microsoft.RedHatOpenShift` 資源提供者。
+> 擴展`az aro`在預覽中是最新的。 它可能在將來的版本中更改或刪除它。
+> 要加入宣告擴展預覽，`az aro`您需要註冊`Microsoft.RedHatOpenShift`資來源提供者。
 > 
 >    ```console
 >    az provider register -n Microsoft.RedHatOpenShift --wait
@@ -53,13 +53,13 @@ ms.locfileid: "79201037"
    az login
    ```
 
-2. 執行下列命令來安裝 `az aro` 延伸模組：
+2. 運行以下命令以安裝`az aro`擴展：
 
    ```console
    az extension add -n aro --index https://az.aroapp.io/preview
    ```
 
-3. 確認已註冊 ARO 延伸模組。
+3. 驗證 ARO 擴展已註冊。
 
    ```console
    az -v
@@ -69,9 +69,9 @@ ms.locfileid: "79201037"
    ...
    ```
   
-### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>建立包含兩個空白子網的虛擬網路
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>創建包含兩個空子網的虛擬網路
 
-請遵循下列步驟來建立包含兩個空白子網的虛擬網路。
+按照以下步驟創建包含兩個空子網的虛擬網路。
 
 1. 設定下列變數。
 
@@ -79,9 +79,17 @@ ms.locfileid: "79201037"
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
+   PULL_SECRET="<optional-pull-secret>"
    ```
+   >[!NOTE]
+   > 可選的拉取金鑰使群集能夠訪問紅帽容器註冊表以及其他內容。
+   >
+   > 通過導航和按一下https://cloud.redhat.com/openshift/install/azure/installer-provisioned *"複製拉取秘密*"來訪問您的拉取金鑰。
+   >
+   > 您需要登錄到您的紅帽帳戶，或使用您的業務電子郵件創建新的紅帽帳戶並接受條款及條件。
+ 
 
-2. 建立叢集的資源群組。
+2. 為群集創建資源組。
 
    ```console
    az group create -g "$RESOURCEGROUP" -l $LOCATION
@@ -97,7 +105,7 @@ ms.locfileid: "79201037"
      >/dev/null
    ```
 
-4. 將兩個空白子網新增至您的虛擬網路。
+4. 向虛擬網路添加兩個空子網。
 
    ```console
     for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
@@ -111,7 +119,7 @@ ms.locfileid: "79201037"
    done
    ```
 
-5. 在您的虛擬網路和子網上停用私人連結服務的網路原則。 這是 ARO 服務存取和管理叢集的必要條件。
+5. 禁用虛擬網路和子網上的專用鏈路服務的網路原則。 這是 ARO 服務訪問和管理群集的要求。
 
    ```console
    az network vnet subnet update \
@@ -124,7 +132,7 @@ ms.locfileid: "79201037"
 
 ## <a name="create-a-cluster"></a>建立叢集
 
-執行下列命令來建立叢集。
+運行以下命令以創建群集。
 
 ```console
 az aro create \
@@ -132,21 +140,22 @@ az aro create \
   -n "$CLUSTER" \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
-  --worker-subnet "$CLUSTER-worker"
+  --worker-subnet "$CLUSTER-worker" \
+  --pull-secret "$PULL_SECRET"
 ```
 
 >[!NOTE]
-> 建立叢集通常需要大約35分鐘的時間。
+> 創建群集通常需要大約 35 分鐘。
 
-## <a name="access-the-cluster-console"></a>存取叢集主控台
+## <a name="access-the-cluster-console"></a>訪問群集主控台
 
-您可以在 Azure Red Hat OpenShift 4.3 叢集資源下找到叢集主控台 URL （格式 `https://console-openshift-console.apps.<random>.<location>.aroapp.io/`）。 執行下列命令以查看資源：
+您可以在 Azure 紅帽 OpenShift 4.3 群集資源下找到群集主控台 URL（表單`https://console-openshift-console.apps.<random>.<location>.aroapp.io/`）。 運行以下命令以查看資源：
 
 ```console
 az aro list -o table
 ```
 
-您可以使用 `kubeadmin` 使用者來登入叢集。  執行下列命令來尋找 `kubeadmin` 使用者的密碼：
+您可以使用`kubeadmin`使用者登錄到群集。  運行以下命令以查找`kubeadmin`使用者的密碼：
 
 ```dotnetcli
 az aro list-credentials -g "$RESOURCEGROUP" -n "$CLUSTER"
@@ -154,7 +163,7 @@ az aro list-credentials -g "$RESOURCEGROUP" -n "$CLUSTER"
 
 ## <a name="delete-a-cluster"></a>刪除叢集
 
-執行下列命令來刪除叢集。
+運行以下命令以刪除群集。
 
 ```console
 az aro delete -g "$RESOURCEGROUP" -n "$CLUSTER"

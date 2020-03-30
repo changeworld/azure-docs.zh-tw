@@ -1,116 +1,110 @@
 ---
 title: 包含檔案
 description: 包含檔案
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
-manager: evansma
-editor: ''
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 08/13/2019
-ms.author: v-qiwe
+ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 831e3330126d82795cece128c28cb96b7199d69a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f2446a924ceed37c51779efc9d9e94c0252a2067
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825563"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80321818"
 ---
-[**試用**產品] 索引標籤可讓您設定示範（或「試用產品」），讓客戶可以在承諾購買之前先試用您的供應專案。 若要深入瞭解，請參閱[什麼是試用產品？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)一文。 如果您不想再為供應專案提供試用產品，請回到 [供應專案**設定**] 頁面，然後取消核取 [**啟用試用**產品]。
+通過 **"測試磁碟機**"選項卡，您可以設置演示（或"試駕"），使客戶能夠在承諾購買之前試用您的產品/服務。 在文章"[什麼是試駕"中瞭解更多資訊。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) 如果您不想再為產品/服務提供試駕，請返回 **"產品/服務設置**"頁面並取消選中**啟用試駕**。
 
-### <a name="technical-configuration"></a>技術設定
-下列是可用的試用產品類型，每個都有自己的技術設定需求。
+### <a name="technical-configuration"></a>技術配置
+提供以下類型的測試磁碟機，每種磁碟機都有自己的技術配置要求。
 
-- [Azure Resource Manager](#technical-configuration-for-azure-resource-manager-test-drive)
+- [Azure 資源管理器](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [邏輯應用程式](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) （不需要技術設定）
+- [電源 BI（](#technical-configuration-not-required-for-power-bi-test-drives)不需要技術配置）
 
-#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品的技術設定
+#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure 資源管理器測試磁碟機的技術配置
 
-部署範本，其中包含組成您解決方案的所有 Azure 資源。 符合此案例的產品只會使用 Azure 資源。 深入瞭解如何設定 Azure Resource Manager 的[試用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)產品。
+包含構成解決方案的所有 Azure 資源的部署範本。 適合此方案的產品僅使用 Azure 資源。 詳細瞭解如何設置 Azure[資源管理器測試磁碟機](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
 
-- **區域**（必要）：目前有26個 Azure 支援的區域，可供使用您的試用產品。 一般來說，您會想要讓試用產品在您預期最大客戶數目的區域中使用，以便他們可以選取最接近的區域，以獲得最佳效能。 您必須確定您的訂用帳戶可以在您所選取的每個區域中部署所需的所有資源。
+- **區域**（必需）：目前有 26 個 Azure 支援的區域，可以在其中提供您的試駕。 通常，您需要在預期客戶數量最多的區域提供試駕，以便他們選擇最接近的區域以獲得最佳性能。 您需要確保允許訂閱部署所選擇的每個區域所需的所有資源。
 
-- **實例**：選取類型（經常性存取或非經常性存取）和可用的實例數目，這會乘以供應專案可用的區域數目。
+- **實例**：選擇類型（熱或冷）和可用實例數，這些實例將乘以產品/服務可用的區域數。
 
-經常性 **：此**類型的實例已部署，並會在每個選取的區域等待存取。 客戶可以立即存取試用產品的*熱*實例，而不必等待部署。 缺點是，這些執行個體一直在您的 Azure 訂用帳戶中執行，因此將會產生可觀的運作成本。 強烈建議至少有一個*熱*實例，因為大部分的客戶不想等候完整部署，因此如果沒有可用的*熱*實例，客戶使用量就會有下降。
+**熱**：這種類型的實例已部署，並等待每個選定區域的訪問。 客戶可以立即訪問測試磁碟機*的熱*實例，而無需等待部署。 缺點是，這些執行個體一直在您的 Azure 訂用帳戶中執行，因此將會產生可觀的運作成本。 強烈建議至少使用一個*熱*實例，因為大多數客戶不希望等待完全部署，如果沒有*熱*實例，則會導致客戶使用量下降。
 
-**冷**：這種類型的實例代表每個區域可能部署的實例總數。 冷實例需要整個試用產品 Resource Manager 範本，以便在客戶要求試用產品時進行部署，因此*冷*實例的載入速度會比*熱*實例慢很多。 取捨是您只需要支付試用產品的持續時間，而*不*一定會在您的 Azure 訂用帳戶上執行，就像使用*熱*實例一樣。
+**冷**：這種類型的實例表示每個區域可能部署的實例總數。 冷實例要求在整個測試磁碟機資源管理器範本在客戶請求試駕時進行部署，因此*冷*實例的載入速度比*熱*實例慢得多。 權衡是，您只需要在試駕期間付費，它*並不總是*像*使用熱*實例那樣在 Azure 訂閱上運行。
 
-- **試用產品 Azure Resource Manager 範本**：上傳包含 Azure Resource Manager 範本的 .zip。  若要深入瞭解如何建立 Azure Resource Manager 範本，請參閱[使用 Azure 入口網站建立和部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)的快速入門文章。
+- **試用 Azure 資源管理器範本**：上載包含 Azure 資源管理器範本的 .zip。  在快速入門文章"[使用 Azure 門戶創建和部署 Azure 資源管理器範本"](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)中瞭解有關創建 Azure 資源管理器範本詳細資訊。
 
-- **試用產品持續時間**（必要）：輸入試用產品將維持作用中狀態的時間長度（以小時為單位）。 在此持續時間過後，試用產品將會自動終止。 此持續時間可能只會由整數小時數來設定（例如 "2" 小時，"1.5" 無效）。
+- **試駕持續時間**（必需）：輸入試駕將保持活動狀態的時間長度（以小時數計）。 在此持續時間過後，試用產品將會自動終止。 此持續時間只能由整個小時數設置（例如"2"小時，"1.5"無效）。
 
-#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 試用產品的技術設定
+#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 試駕的技術配置
 
-Microsoft 可以藉由使用這種類型的試用產品來裝載和維護服務布建和部署，藉此降低設定試用產品的複雜性。 無論試用產品是以商業中心、客戶參與或營運物件為目標，此類型的託管試用產品的設定都相同。
+Microsoft 可以通過託管和維護使用此類測試磁碟機的服務預配和部署來消除設置測試磁碟機的複雜性。 無論試駕是面向業務中心、客戶參與還是運營受眾，此類託管試駕的配置都是相同的。
 
-- **最大並行試用**產品（必要）：設定一次可以使用試用產品的客戶數目上限。 當試用產品在使用中時，每個並行使用者都會取用 Dynamics 365 授權，因此您必須確保您有足夠的授權可支援所設定的上限。 建議值為 3-5 個。
+- **最大併發測試磁碟機**（必需）：設置一次可以使用試駕的最大客戶數。 每個併發使用者將在測試磁碟機處於活動狀態時使用 Dynamics 365 許可證，因此您需要確保有足夠的許可證來支援最大限制集。 建議值為 3-5 個。
 
-- **試用產品持續時間**（必要）：藉由定義時數來輸入試用產品保持作用中狀態的時間長度。 過了數小時之後，會話就會結束，而且不再使用您的其中一個授權。 我們建議的值為2-24 小時，視您的供應專案複雜度而定。 此持續時間可能只會由整數小時數來設定（例如 "2" 小時，"1.5" 無效）。  使用者可以要求新的會話（如果工作時間已用盡），並想要再次存取試用產品。
+- **試駕持續時間**（必需）：通過定義小時數輸入試駕將保持活動狀態的時間長度。 在此多小時後，會話將結束，不再使用您的許可證之一。 根據產品/服務的複雜性，我們建議值為 2-24 小時。 此持續時間只能由整個小時數設置（例如"2"小時，"1.5"無效）。  如果使用者時間已用完，並且希望再次訪問試駕，使用者可以請求新的會話。
 
-- **實例 url** （必要）：客戶將開始其試用產品的 URL。 一般來說，您的 Dynamics 365 實例 URL 會在安裝範例資料的情況下執行應用程式（例如 https://testdrive.crm.dynamics.com)。
+- **實例 URL（** 必需）：客戶將開始其試駕的 URL。 通常，使用安裝示例資料（例如`https://testdrive.crm.dynamics.com`），運行應用的 Dynamics 365 實例的 URL。
 
-- **實例 WEB API url** （必要）：藉由登入您的 Microsoft 365 帳戶並流覽至 **設定** \&Gt，抓取 Dynamics 365 實例的 Web API url。**自訂**\&gt;**開發人員資源**\&gt;**實例 WEB API （服務根 URL）** ，複製此處找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
+- **實例 Web API URL（** 必需）：通過登錄到 Microsoft 365 帳戶並導航到 **"設置**\&"gt，檢索 Dynamics 365 實例的 Web API URL;**自訂**\&gt;**開發人員資源**\&gt;**實例 Web API（服務根 URL），** 複製此處找到的 URL（例如`https://testdrive.crm.dynamics.com/api/data/v9.0`）。
 
-- **角色名稱**（必要）：提供您在自訂 Dynamics 365 試用產品中定義的安全性角色名稱。 這會在其試用產品（例如，測試磁片磁碟機-角色）期間指派給使用者。
+- **角色名稱**（必需）：提供您在自訂 Dynamics 365 試駕中定義的安全形色名稱。 這將在使用者試駕期間（例如，測試-磁碟機角色）分配給使用者。
 
-#### <a name="technical-configuration-for-logic-app-test-drive"></a>邏輯應用程式試用產品的技術設定
+#### <a name="technical-configuration-for-logic-app-test-drive"></a>邏輯應用試駕的技術配置
 
-任何自訂產品都應該使用此類型的試用產品部署範本，其中包含各種複雜的解決方案架構。 如需設定邏輯應用程式試用產品的詳細資訊，請造訪 GitHub 上的[作業](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)和[客戶參與](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
+任何自訂產品都應使用這種類型的試駕部署範本，該範本包含各種複雜的解決方案體系結構。 有關設置邏輯應用測試磁碟機的詳細資訊，請訪問 GitHub 上的[操作](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)[和客戶參與度](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
 
-- **區域**（必要，單一選取下拉式清單）：目前有26個 Azure 支援的區域可供使用您的試用產品。 邏輯應用程式的資源將會部署在您選取的區域中。 如果您的邏輯應用程式有任何自訂資源儲存在特定區域中，請確定已在此處選取該區域。 若要這麼做，最佳方式是在入口網站中的 Azure 訂用帳戶本機上完整部署邏輯應用程式，並確認其正常運作，然後再進行此選取。
+- **區域**（必需，單選下拉清單）：目前有 26 個 Azure 支援的區域，可以在其中提供您的試駕。 邏輯應用的資源將部署在您選擇的區域中。 如果邏輯應用在特定區域中存儲了任何自訂資源，請確保在此處選擇該區域。 執行此操作的最佳方法是在門戶中的 Azure 訂閱中本地完全部署邏輯應用，並在進行此選擇之前驗證其是否正常工作。
 
-- **最大並行試用**產品（必要）：設定一次可以使用試用產品的客戶數目上限。 這些試用產品已部署，讓客戶可以立即存取它們，而不需要等候部署。
+- **最大併發測試磁碟機**（必需）：設置一次可以使用試駕的最大客戶數。 這些測試磁碟機已部署，使客戶能夠立即訪問它們，而無需等待部署。
 
-- **試用產品持續時間**（必要）：輸入試用產品將維持作用中狀態的時間長度（以小時為單位）。 試用產品會在此時間週期結束後自動終止。
+- **試駕持續時間**（必需）：輸入試駕將保持活動狀態的時間長度（以小時數計）。 此時間段結束後，試駕將自動終止。
 
-- **Azure 資源組名**（必要）：輸入您的邏輯應用程式試用產品儲存所在的[Azure 資源組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名。
+- **Azure 資源組名稱**（必需）：輸入邏輯應用測試磁碟機保存的[Azure 資源組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名稱。
 
-- **Azure 邏輯應用程式名稱**（必要）：輸入將試用產品指派給使用者的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
+- **Azure 邏輯應用名稱**（必需）：輸入將測試磁碟機分配給使用者的邏輯應用的名稱。 此邏輯應用必須保存在上面的 Azure 資源組中。
 
-- 取消布建**邏輯應用程式名稱**（必要）：輸入在客戶完成後取消布建試用產品的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
+- **取消預配邏輯應用名稱**（必需）：輸入邏輯應用的名稱，該應用在客戶完成後取消配置試駕。 此邏輯應用必須保存在上面的 Azure 資源組中。
 
-#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>不需要 Power BI 試用產品的技術設定
+#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI 測試磁碟機不需要技術配置
 
-想要示範互動式 Power BI 視覺效果的產品可以使用內嵌連結來共用自訂的儀表板作為其試用產品，而不需要進一步的技術設定。 深入瞭解如何設定[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)範本應用程式。
+想要演示互動式 Power BI 視覺物件的產品可以使用嵌入式連結共用自訂儀表板作為試駕，無需進一步的技術配置。 詳細瞭解如何設置[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)範本應用。
 
-### <a name="deployment-subscription-details"></a>部署訂用帳戶詳細資料
+### <a name="deployment-subscription-details"></a>部署訂閱詳細資訊
 
-若要代表您部署試用產品，請建立並提供另一個唯一的 Azure 訂用帳戶。 （不需要用於 Power BI 試用產品）。
+為了代表您部署測試磁碟機，請創建並提供單獨的唯一 Azure 訂閱。 （電源 BI 測試磁碟機不需要）。
 
-- **Azure 訂**用帳戶識別碼（Azure Resource Manager 和邏輯應用程式的必要）：輸入訂用帳戶識別碼，以授與存取權給您的 azure 帳戶服務，以進行資源使用量報告和計費。 我們建議您考慮[建立個別的 Azure 訂](https://docs.microsoft.com/azure/billing/billing-create-subscription)用帳戶，以用於試用產品（如果您還沒有的話）。 您可以藉由登入[Azure 入口網站](https://portal.azure.com/)並流覽至左側功能表的 [**訂閱**] 索引標籤，來尋找您的 AZURE 訂用帳戶識別碼。 選取此索引標籤會顯示您的訂用帳戶識別碼（例如 "a83645ac-1234-5ab6-6789-1h234g764ghty"）。
+- **Azure 訂閱 ID（Azure**資源管理器和邏輯應用需要）：輸入訂閱 ID 以授予對 Azure 帳戶服務的存取權限，以便進行資源使用方式報告和計費。 如果尚未創建，我們建議您考慮[創建單獨的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)以用於測試磁碟機。 您可以通過登錄到[Azure 門戶](https://portal.azure.com/)並導航到左側功能表的 **"訂閱"** 選項卡來查找 Azure 訂閱 ID。 選擇該選項卡將顯示您的訂閱 ID（例如"a83645ac-1234-5ab6-6789-1h234g764ghty"）。
 
-- **Azure AD 租使用者識別碼**（必要）：輸入您的 AZURE ACTIVE DIRECTORY （AD）[租使用者識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要尋找此識別碼，請登入[Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [**屬性**]，然後尋找列出的**目錄識別碼**（例如50c464d3-4930-494c-963c-1e951d15360e）。 您也可以在下列位置使用您的功能變數名稱 URL 來查詢組織的租使用者識別碼： [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
+- **Azure AD 租戶 ID（** 必需）：輸入 Azure 活動目錄 （AD）[租戶 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 要查找此 ID，請登錄到[Azure 門戶](https://portal.azure.com/)，選擇左側功能表中的"活動目錄"選項卡，選擇 **"屬性**"，然後查找列出的**目錄 ID**號（例如 50c464d3-4930-494c-963c-1e951d15360e）。 您還可以使用功能變數名稱 URL 在 ：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)查找組織的租戶 ID。
 
-- **Azure AD 租使用者名稱**（動態365所需）：輸入您的 AZURE ACTIVE DIRECTORY （AD）名稱。 若要尋找此名稱，請登入[Azure 入口網站](https://portal.azure.com/)，在右上角，您的租使用者名稱會列在 [您的帳戶名稱] 底下。
+- **Azure AD 租戶名稱**（動態 365 需要）：輸入 Azure 活動目錄 （AD） 名稱。 要查找此名稱，請登錄到[Azure 門戶](https://portal.azure.com/)，在右上角，租戶名稱將列在您的帳戶名稱下。
 
-- **Azure AD 應用程式識別碼**（必要）：輸入您的 AZURE ACTIVE DIRECTORY （AD）[應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要尋找此識別碼，請登入[Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [**應用程式註冊**]，然後尋找所列的**應用程式識別碼**編號（例如50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 應用 ID（** 必需）：輸入 Azure 活動目錄 （AD）[應用程式 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 要查找此 ID，請登錄到[Azure 門戶](https://portal.azure.com/)，選擇左側功能表中的"活動目錄"選項卡，選擇**應用註冊**，然後查找列出的應用程式**ID**號（例如 50c464d3-4930-494c-963c-1e951d15360e）。
 
-- **Azure AD 應用程式用戶端密碼**（必要）：輸入您的 Azure AD 應用程式[用戶端密碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要尋找此值，請登入[Azure 入口網站](https://portal.azure.com/)。 選取左側功能表中的 [ **Azure Active Directory** ] 索引標籤，選取 [**應用程式註冊**]，然後選取您的試用產品應用程式。 接下來，依序選取 [**憑證和秘密**]、[**新增用戶端密碼**]、[描述]、[**永不** **過期**]，然後選擇 [**新增**]。 請務必向下複製值。 （在執行此動作之前，請不要離開頁面，否則您將無法存取此值。）
+- **Azure AD 應用用戶端機密**（必需）：輸入 Azure AD 應用程式[用戶端金鑰](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 要查找此值，請登錄到 Azure[門戶](https://portal.azure.com/)。 選擇左側功能表中的**Azure 活動目錄**選項卡，選擇**應用註冊**，然後選擇試駕應用。 接下來，選擇**證書和機密**，選擇 **"新建用戶端機密**"，輸入說明，選擇 **"從不在過期**"下，然後選擇"**添加**"。 **Never** 請確保向下複製該值。 （執行此操作之前不要離開頁面，否則您將無法訪問該值。
 
-繼續進行下一節之前，請記得先**儲存**！
+在繼續下一節之前，請記住**保存**！
 
-### <a name="test-drive-listings-optional"></a>試用產品清單（選擇性）
+### <a name="test-drive-listings-optional"></a>試駕清單（可選）
 
-在 [**試用**產品] 索引標籤下找到的 [**試用產品清單**] 選項會顯示您的試用產品可供使用的語言（和市場），目前的英文（美國）是唯一可用的位置。 此外，此頁面會顯示特定語言清單的狀態，以及它所加入的日期/時間。 您必須為每個語言/市場定義試用產品的詳細資料（描述、使用者手冊、影片等等）。
+**"試駕****"選項卡下的"試駕清單**"選項顯示您的試駕可用的語言（和市場），當前英語（美國）是唯一可用的位置。 此外，此頁顯示特定于語言的清單的狀態以及添加該清單的日期/時間。 您需要為每個語言/市場定義試駕詳細資訊（說明、使用者手冊、視頻等）。
 
-- **描述**（必要）：描述您的試用產品、要示範的專案、要進行實驗的目標、探索的功能，以及可協助使用者決定是否要取得您供應專案的任何相關資訊。 最多可以在此欄位中輸入3000個字元的文字。 
+- **說明**（必需）：描述您的試駕、演示的內容、供使用者試驗的目標、要流覽的功能以及任何相關資訊，以説明使用者確定是否獲取您的產品/服務。 此欄位中最多可輸入 3，000 個字元的文本。 
 
-- **存取訊號**（Azure Resource Manager 和邏輯試用產品所需）：說明客戶必須知道才能存取和使用此試用產品的內容。 逐步解說使用您的供應專案的案例，以及客戶在整個試用產品中存取功能的確切方式。 最多可以在此欄位中輸入10000個字元的文字。
+- **訪問資訊**（Azure 資源管理器和邏輯測試磁碟機所需的資訊）：解釋客戶需要瞭解哪些內容才能訪問和使用此測試磁碟機。 演練使用產品/服務的方案，以及客戶在整個試駕中訪問功能的準確情況。 此欄位中最多可輸入 10，000 個字元的文本。
 
-- **使用者手冊**（必要）：您的試用產品體驗的深入逐步解說。 使用者手冊應涵蓋您想要讓客戶從試用產品中取得的確切內容，並做為參考，以取得他們可能會遇到的任何問題。 檔案必須是 PDF 格式，並在上傳後命名為（最多255個字元）。
+- **使用者手冊**（必需）：對試駕體驗的深入演練。 《使用者手冊》應準確介紹您希望客戶從體驗試駕中獲得什麼，並作為他們可能存在的任何問題的參考。 檔必須採用 PDF 格式，並在上載後命名（最多 255 個字元）。
 
-- 影片 **：新增**影片（選擇性）：您可以將影片上傳到 YouTube 或 Vimeo，並在這裡參考連結和縮圖影像（533 x 324 圖元），讓客戶可以查看資訊的逐步解說，以協助他們更瞭解試用產品，包括如何成功使用供應專案的功能，並瞭解強調其優點的案例。
-  - **名稱**（必要）
-  - **URL （僅限 YouTube 或 Vimeo）** （必要）
-  - **縮圖（533 x 324px）** ：影像檔案必須是 PNG 格式。
+- **視頻：添加視頻**（可選）：視頻可以上傳到 YouTube 或 Vimeo，並在此處引用連結和縮略圖圖像 （533 x 324 圖元），以便客戶可以查看流覽資訊，説明他們更好地瞭解試駕，包括如何成功使用您的產品/服務的功能，並瞭解突出其優勢的方案。
+  - **名稱**（必需）
+  - **網址（僅限 YouTube 或 Vimeo）（** 必填）
+  - **縮略圖 （533 x 324px）**： 影像檔必須採用 PNG 格式。
 
-完成這些欄位之後，請選取 [**儲存**]。
+完成這些欄位後選擇 **"保存**"。

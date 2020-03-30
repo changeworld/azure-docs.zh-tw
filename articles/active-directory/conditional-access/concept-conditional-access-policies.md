@@ -1,136 +1,136 @@
 ---
-title: 建立條件式存取原則-Azure Active Directory
-description: 有哪些選項可用來建立條件式存取原則，以及它們的意義為何？
+title: 構建條件訪問策略 - Azure 活動目錄
+description: 生成條件訪問策略的所有選項有哪些？
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671933"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295314"
 ---
-# <a name="building-a-conditional-access-policy"></a>建立條件式存取原則
+# <a name="building-a-conditional-access-policy"></a>構建條件訪問策略
 
-如[什麼是條件式存取](overview.md)一文所述，條件式存取原則是**指派**和**存取控制**的 if then 語句。 條件式存取原則會將信號結合在一起，以做出決策，並強制執行組織原則。
+如文章"[什麼是條件訪問"](overview.md)中所述，條件訪問策略是 **"分配**"和"**訪問"控制項**的 if-then 語句。 條件訪問策略將信號彙集在一起，以做出決策，並強制實施組織策略。
 
-組織如何建立這些原則？ 需要什麼？
+組織如何創建這些策略？ 需要什麼？
 
-![條件式存取（信號 + 決策 + 強制 = 原則）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+![條件訪問（信號 + 決策 + 執行 + 策略）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
 ## <a name="assignments"></a>指派
 
-指派部分會控制條件式存取原則的人員、目標和位置。
+分配部分控制條件訪問策略的人員、內容和位置。
 
 ### <a name="users-and-groups"></a>使用者和群組
 
-[使用者和群組](concept-conditional-access-users-groups.md)會指派原則將包含或排除的人員。 此指派可包括所有使用者、特定使用者群組、目錄角色或外部來賓使用者。 
+[使用者和組](concept-conditional-access-users-groups.md)分配策略將包含或排除誰。 此分配可以包括所有使用者、特定使用者組、目錄角色或外部來賓使用者。 
 
 ### <a name="cloud-apps-or-actions"></a>雲端應用程式或動作
 
-[雲端應用程式或動作](concept-conditional-access-cloud-apps.md)可以包含或排除將受限於原則的雲端應用程式或使用者動作。
+[雲應用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除受該政策約束的雲應用程式或使用者操作。
 
 ### <a name="conditions"></a>條件
 
-原則可以包含多個[條件](concept-conditional-access-conditions.md)。
+策略可以包含多個[條件](concept-conditional-access-conditions.md)。
 
 #### <a name="sign-in-risk"></a>登入風險
 
-針對具有[Azure AD Identity Protection](../identity-protection/overview.md)的組織，產生的風險偵測可能會影響您的條件式存取原則。
+對於具有[Azure AD 標識保護](../identity-protection/overview.md)的組織，在那裡生成的風險檢測可能會影響條件訪問策略。
 
 #### <a name="device-platforms"></a>裝置平台
 
-具有多個裝置作業系統平臺的組織可能會想要在不同的平臺上強制執行特定原則。 
+具有多個設備作業系統平臺的組織可能希望在不同的平臺上強制實施特定策略。 
 
-用來計算裝置平臺的資訊來自未經驗證的來源，例如可以變更的使用者代理字串。
+用於計算裝置平臺的資訊來自未經驗證的源，如可以更改的使用者代理字串。
 
 #### <a name="locations"></a>位置
 
-位置資料是由 IP 地理位置資料所提供。 系統管理員可以選擇定義位置，並選擇將其標示為信任的部分，如同其組織的網路位置。
+位置資料由 IP 地理位置資料提供。 管理員可以選擇定義位置，並選擇將某些位置標記為受信任的位置，例如為其組織的網路位置標記為受信任位置。
 
 #### <a name="client-apps"></a>用戶端應用程式
 
-根據預設，條件式存取原則適用于支援新式驗證的瀏覽器應用程式、行動應用程式和桌面用戶端。 
+預設情況下，條件訪問策略適用于支援現代身份驗證的瀏覽器應用、移動應用和桌面用戶端。 
 
-此指派條件可讓條件式存取原則以不使用新式驗證的特定用戶端應用程式為目標。 這些應用程式包括 Exchange ActiveSync 用戶端、未使用新式驗證的舊版 Office 應用程式，以及 IMAP、MAPI、POP 和 SMTP 等郵件通訊協定。
+此分配條件允許條件訪問策略針對不使用現代身份驗證的特定用戶端應用程式。 這些應用程式包括 Exchange ActiveSync 用戶端、不使用現代身份驗證的舊 Office 應用程式以及 IMAP、MAPI、POP 和 SMTP 等郵件協定。
 
 #### <a name="device-state"></a>裝置狀態
 
-此控制項用來排除已加入混合式 Azure AD 或在 Intune 中標示為相容的裝置。 您可以執行此排除動作來封鎖未受管理的裝置。 
+此控制項用於排除混合 Azure AD 聯接或在 Intune 中標記為符合要求的設備。 可以執行此排除來阻止非託管設備。 
 
 ## <a name="access-controls"></a>存取控制
 
-條件式存取原則的存取控制部分會控制強制執行原則的方式。
+存取控制條件訪問策略的部分控制策略的強制執行方式。
 
 ### <a name="grant"></a>授與
 
-[Grant](concept-conditional-access-grant.md)提供系統管理員強制執行原則的方法，讓他們可以封鎖或授與存取權。
+[授予](concept-conditional-access-grant.md)為管理員提供了一種策略實施方法，他們可以阻止或授予存取權限。
 
 #### <a name="block-access"></a>封鎖存取
 
-封鎖存取會這麼做，它會在指定的指派下封鎖存取。 封鎖控制項的功能強大，而且應該以適當的知識絕大部分是。
+阻止訪問這樣做，它將阻止在指定的分配下的訪問。 塊控制功能強大，應具有適當的知識。
 
 #### <a name="grant-access"></a>授與存取權
 
-授與控制項可以觸發一個或多個控制項的強制執行。 
+授予控制項可以觸發一個或多個控制項的強制執行。 
 
 - 需要多重要素驗證（Azure 多重要素驗證）
-- 需要裝置標記為相容（Intune）
+- 要求將設備標記為符合（Intune）
 - 需要已加入混合式 Azure AD 的裝置
 - 需要已核准的用戶端應用程式
 - 需要應用程式保護原則
 
-系統管理員可以選擇使用下列選項來要求其中一個先前的控制項或所有選取的控制項。 多個控制項的預設值是 [全部要求]。
+管理員可以選擇使用以下選項要求以前的控制項之一或所有選定的控制項。 多個控制項的預設值是要求全部。
 
-- 需要所有選取的控制項（控制項和控制項）
-- 需要其中一個選取的控制項（控制項或控制項）
+- 要求所有選定的控制項（控制和控制）
+- 需要其中一個選定的控制項（控制項或控制項）
 
 ### <a name="session"></a>工作階段
 
 [會話控制項](concept-conditional-access-session.md)可以限制體驗 
 
 - 使用應用程式強制執行限制
-   - 目前僅適用于 Exchange Online 和 SharePoint Online。
-      - 會傳遞裝置資訊，以允許控制授與完整或有限存取權的體驗。
-- 使用條件式存取應用程式控制
-   - 使用來自 Microsoft Cloud App Security 的信號來執行如下動作： 
-      - 封鎖下載、剪下、複製及列印敏感性檔。
-      - 監視風險會話行為。
-      - 需要標記敏感性檔案。
-- 登入頻率
-   - 能夠變更新式驗證的預設登入頻率。
-- 持續性瀏覽器會話
-   - 可讓使用者在關閉並重新開啟其瀏覽器視窗之後，保持登入狀態。
+   - 目前僅適用于"線上交換"和"線上共用點"。
+      - 傳遞設備資訊，以控制授予完全或有限存取權限的經驗。
+- 使用條件訪問應用控制項
+   - 使用來自 Microsoft 雲應用安全的信號執行諸如： 
+      - 阻止敏感文檔的下載、剪切、複製和列印。
+      - 監視危險的會話行為。
+      - 需要標記敏感檔。
+- 登錄頻率
+   - 能夠更改現代身份驗證的預設登錄頻率。
+- 持久瀏覽器會話
+   - 允許使用者在關閉和重新打開瀏覽器視窗後保持登錄狀態。
 
-## <a name="simple-policies"></a>簡單原則
+## <a name="simple-policies"></a>簡單的策略
 
-條件式存取原則至少必須包含下列各項才能強制執行：
+條件訪問策略必須至少包含以下要強制執行：
 
-- 原則的**名稱**。
+- 策略**的名稱。**
 - **指派**
-   - 要套用原則的**使用者和/或群組**。
-   - 要套用原則的**雲端應用程式或動作**。
+   - 要將策略應用於**的使用者和/或組**。
+   - 要將策略應用到的**雲應用或操作**。
 - **存取控制**
-   - **授**與或**封鎖**控制項
+   - **授予**或**阻止**控制項
 
-![空白的條件式存取原則](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
+![空白條件訪問策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-常見的[條件式存取原則](concept-conditional-access-policy-common.md)一文包含一些我們認為對大部分組織很有用的原則。
+文章["通用條件訪問"策略](concept-conditional-access-policy-common.md)包括我們認為對大多陣列織有用的一些策略。
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
+[使用條件訪問"如果"工具類比登錄行為](troubleshoot-conditional-access-what-if.md)
 
-[規劃以雲端為基礎的 Azure 多因素驗證部署](../authentication/howto-mfa-getstarted.md)
+[規劃雲端式 Azure Multi-Factor Authentication 部署](../authentication/howto-mfa-getstarted.md) \(部分機器翻譯\)
 
-[使用 Intune 管理裝置合規性](/intune/device-compliance-get-started)
+[管理設備符合 Intune](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security 和條件式存取](/cloud-app-security/proxy-intro-aad)
+[微軟雲應用安全和條件訪問](/cloud-app-security/proxy-intro-aad)

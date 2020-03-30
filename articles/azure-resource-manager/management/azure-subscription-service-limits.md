@@ -1,46 +1,59 @@
 ---
 title: Azure 訂用帳戶限制與配額
-description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
+description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含有關如何增加限制和最大值的資訊。
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: f7fefecddaf50feda247dd711505aef1b4f206f0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.openlocfilehash: 325f7b3d03435945779c1f42e13681dcfd9604b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274524"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334796"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
 本文件列出一些最常見的 Microsoft Azure 限制，有時也稱為配額。
 
-若要深入瞭解 Azure 定價，請參閱[azure 定價總覽](https://azure.microsoft.com/pricing/)。 在這裡，您可以使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)來預估成本。 您也可以移至特定服務（例如[Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)）的定價詳細資料頁面。 如需協助您管理成本的祕訣，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../billing/billing-getting-started.md)。
+要瞭解有關 Azure 定價的詳細資訊，請參閱[Azure 定價概述](https://azure.microsoft.com/pricing/)。 在那裡，您可以使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)估計您的成本。 您還可以轉到特定服務的定價詳細資訊頁面，例如[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 如需協助您管理成本的祕訣，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../billing/billing-getting-started.md)。
 
 ## <a name="managing-limits"></a>管理限制
 
-如果您想要將限制或配額提升到預設限制以上，請免費[開啟線上客戶支援要求](../templates/error-resource-quota.md)。 限制無法高於下表所示的最大限制值。 如果沒有上限資料行，則資源沒有可調整的限制。
+> [!NOTE]
+> 某些服務具有可調節的限制。
+>
+> 當服務沒有可調整的限制時，下表將使用標頭**限制**。 在這些情況下，預設值和最大限制相同。
+>
+> 當可以調整限制時，表包括**預設限制**和**最大限制**標頭。 限制可以高於預設限制，但不能高於最大限制。
+>
+> 如果要將限制或配額提高到預設限制以上，[請免費打開線上客戶支援請求](../templates/error-resource-quota.md)。
 
-[免費試用](https://azure.microsoft.com/offers/ms-azr-0044p)訂用帳戶不符合限制或配額增加的資格。 如果您有[免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)，則可以升級到[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)訂用帳戶。 如需詳細資訊，請參閱將[Azure 免費試用訂用帳戶升級為隨用隨付訂](../../billing/billing-upgrade-azure-subscription.md)用帳戶和[免費試用訂](https://azure.microsoft.com/free/free-account-faq)用帳戶常見問題。
+[免費試用訂閱](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配額增加的條件。 如果您有[免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)，則可以升級到[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)訂用帳戶。 有關詳細資訊，請參閱將[Azure 免費試用版訂閱升級到即用即付訂閱](../../billing/billing-upgrade-azure-subscription.md)和[免費試用訂閱常見問題解答](https://azure.microsoft.com/free/free-account-faq)。
 
-某些限制是在區域層級管理。
+某些限制在區域一級管理。
 
-讓我們以 vCPU 配額為例。 若要要求增加對個 vcpu 支援的配額，您必須決定要在哪些區域中使用多少個 vcpu。 然後，針對您想要的數量和區域，對 Azure 資源群組 vCPU 配額提出特定要求。 如果您需要在西歐使用30個 vcpu 來執行應用程式，您會在西歐特別要求30個 vcpu。 您的 vCPU 配額不會在任何其他區域中增加，只有西歐具有 30 vCPU 的配額。
+讓我們以 vCPU 配額為例。 要請求增加配額，支援 vCPU，您必須決定要在哪些區域中使用多少個 vCPU。 然後，針對所需的數量和區域對 Azure 資源組 vCPU 配額發出特定請求。 如果您需要在西歐使用 30 個 vCPU 來運行應用程式，則特別在西歐請求 30 個 vCPU。 您的 vCPU 配額在任何其他區域不會增加 -只有西歐有 30 vCPU 配額。
 
-因此，在任何一個區域中決定您的工作負載所需的 Azure 資源群組配額。 然後在您要部署的每個區域中要求該金額。 如需如何判斷您目前的特定區域配額的說明，請參閱[解決資源配額的錯誤](../templates/error-resource-quota.md)。
+因此，請確定 Azure 資源組配額必須適用于任何一個區域中的工作負荷。 然後，在要部署到的每個區域中請求該金額。 有關如何確定特定區域的當前配額的説明，請參閱[解決資源配額的錯誤](../templates/error-resource-quota.md)。
 
 ## <a name="general-limits"></a>一般限制
 
-如需資源名稱的限制，請參閱[Azure 資源的命名規則和限制](resource-name-rules.md)。
+有關資源名稱的限制，請參閱[Azure 資源的命名規則和限制](resource-name-rules.md)。
 
 如需 Resource Manager API 讀取和寫入限制的相關資訊，請參閱[對 Resource Manager 要求進行節流](request-limits-and-throttling.md)。
 
+### <a name="management-group-limits"></a>管理組限制
+
+以下限制適用于[管理組](../../governance/management-groups/overview.md)。
+
+[!INCLUDE [management-group-limits](../../../includes/management-group-limits.md)]
+
 ### <a name="subscription-limits"></a>訂用帳戶限制
 
-當您使用 Azure Resource Manager 和 Azure 資源群組時，適用下列限制。
+使用 Azure 資源管理器和 Azure 資源組時，將應用以下限制。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-### <a name="resource-group-limits"></a>資源群組限制
+### <a name="resource-group-limits"></a>資源組限制
 
 [!INCLUDE [azure-resource-groups-limits](../../../includes/azure-resource-groups-limits.md)]
 
@@ -66,17 +79,17 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [redis-cache-service-limits](../../../includes/redis-cache-service-limits.md)]
 
-## <a name="azure-cloud-services-limits"></a>Azure 雲端服務限制
+## <a name="azure-cloud-services-limits"></a>Azure 雲服務限制
 
 [!INCLUDE [azure-cloud-services-limits](../../../includes/azure-cloud-services-limits.md)]
 
-## <a name="azure-cognitive-search-limits"></a>Azure 認知搜尋限制
+## <a name="azure-cognitive-search-limits"></a>Azure 認知搜索限制
 
 定價層會決定搜尋服務的容量和限制。 層級包括：
 
-* 與其他 Azure 訂閱者共用的**免費**多租使用者服務，適用于評估和小型開發專案。
-* 可針對規模較小的生產工作負載提供專用的計算資源，以及針對高可用性的查詢工作負載提供最多 3 個複本。
-* **標準**（包括 S1、S2、S3 及 s3 高密度）適用于較大型的生產工作負載。 標準層中有多個層級，因此您可以選擇最符合您工作負載設定檔的資源設定。
+* 與其他 Azure 訂閱者共用**的免費**多租戶服務用於評估和小型開發專案。
+* **** 可針對規模較小的生產工作負載提供專用的計算資源，以及針對高可用性的查詢工作負載提供最多 3 個複本。
+* **標準**（包括 S1、S2、S3 和 S3 高密度）適用于更大的生產工作負載。 標準層中存在多個級別，因此您可以選擇最適合工作負荷設定檔的資源配置。
 
 **每一訂用帳戶的限制**
 
@@ -86,7 +99,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [azure-search-limits-per-service](../../../includes/azure-search-limits-per-service.md)]
 
-若要深入瞭解更細微層級的限制，例如檔案大小、每秒的查詢數、金鑰、要求和回應，請參閱[Azure 認知搜尋中的服務限制](../../search/search-limits-quotas-capacity.md)。
+要瞭解有關更精細級別限制（如文檔大小、每秒查詢、鍵、請求和回應）的更多限制，請參閱[Azure 認知搜索 中的服務限制](../../search/search-limits-quotas-capacity.md)。
 
 ## <a name="azure-cognitive-services-limits"></a>Azure 認知服務限制
 
@@ -94,9 +107,9 @@ ms.locfileid: "79274524"
 
 ## <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB 限制
 
-如 Azure Cosmos DB 限制，請參閱[Azure Cosmos DB 的限制](../../cosmos-db/concepts-limits.md)。
+有關 Azure 宇宙資料庫限制，請參閱[Azure 宇宙 DB 中的限制](../../cosmos-db/concepts-limits.md)。
 
-## <a name="azure-data-explorer-limits"></a>Azure 資料總管限制
+## <a name="azure-data-explorer-limits"></a>Azure 資料資源管理器限制
 
 [!INCLUDE [azure-data-explorer-limits](../../../includes/data-explorer-limits.md)]
 
@@ -108,17 +121,17 @@ ms.locfileid: "79274524"
 
 如需適用於 PostgreSQL 的 Azure 資料庫限制詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫中的限制](../../postgresql/concepts-limits.md)。
 
-## <a name="azure-functions-limits"></a>Azure Functions 限制
+## <a name="azure-functions-limits"></a>Azure 函數限制
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes Service 限制
+## <a name="azure-kubernetes-service-limits"></a>Azure 庫伯內斯服務限制
 
 [!INCLUDE [container-service-limits](../../../includes/container-service-limits.md)]
 
-## <a name="azure-machine-learning-limits"></a>Azure Machine Learning 限制
+## <a name="azure-machine-learning-limits"></a>Azure 機器學習限制
 
-您可以在 [ [Azure Machine Learning 配額] 頁面](../../machine-learning/how-to-manage-quotas.md)中找到 Azure Machine Learning 計算配額的最新值
+Azure 機器學習計算配額的最新值可在[Azure 機器學習配額頁](../../machine-learning/how-to-manage-quotas.md)中找到
 
 ## <a name="azure-maps-limits"></a>Azure 地圖服務限制
 
@@ -134,7 +147,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-action-groups.md)]
 
-### <a name="log-queries-and-language"></a>記錄查詢和語言
+### <a name="log-queries-and-language"></a>日誌查詢和語言
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-log-queries.md)]
 
@@ -150,7 +163,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="azure-signalr-service-limits"></a>Azure SignalR Service 限制
+## <a name="azure-signalr-service-limits"></a>Azure 信號R 服務限制
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
 
@@ -162,9 +175,9 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [azure-batch-limits](../../../includes/azure-batch-limits.md)]
 
-## <a name="classic-deployment-model-limits"></a>傳統部署模型限制
+## <a name="classic-deployment-model-limits"></a>經典部署模型限制
 
-如果您使用傳統部署模型，而不是 Azure Resource Manager 部署模型，則適用下列限制。
+如果使用經典部署模型而不是 Azure 資源管理器部署模型，則適用以下限制。
 
 [!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
@@ -174,11 +187,11 @@ ms.locfileid: "79274524"
 
 ## <a name="container-registry-limits"></a>Container Registry 登入
 
-下表詳述「基本」、「標準」和「進階」[服務層級](../../container-registry/container-registry-skus.md)的功能和限制。
+下表詳細介紹了基本、標準和高級[服務層的功能](../../container-registry/container-registry-skus.md)和限制。
 
 [!INCLUDE [container-registry-limits](../../../includes/container-registry-limits.md)]
 
-## <a name="content-delivery-network-limits"></a>內容傳遞網路限制
+## <a name="content-delivery-network-limits"></a>內容交付網路限制
 
 [!INCLUDE [cdn-limits](../../../includes/cdn-limits.md)]
 
@@ -202,7 +215,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
-## <a name="event-grid-limits"></a>事件方格限制
+## <a name="event-grid-limits"></a>事件網格限制
 
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
 
@@ -210,11 +223,11 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
 
-## <a name="identity-manager-limits"></a>Identity Manager 限制
+## <a name="identity-manager-limits"></a>身份管理器限制
 
 [!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
-## <a name="iot-central-limits"></a>IoT Central 限制
+## <a name="iot-central-limits"></a>IoT 中心限制
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
 ## <a name="iot-hub-limits"></a>IoT 中樞限制
@@ -245,11 +258,11 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [azure-virtual-network-limits](../../../includes/azure-virtual-network-limits.md)]
 
-### <a name="expressroute-limits"></a>ExpressRoute 限制
+### <a name="expressroute-limits"></a>快速路由限制
 
 [!INCLUDE [expressroute-limits](../../../includes/expressroute-limits.md)]
 
-### <a name="virtual-wan-limits"></a>虛擬 WAN 限制
+### <a name="virtual-wan-limits"></a>虛擬廣域網路限制
 
 [!INCLUDE [virtual-wan-limits](../../../includes/virtual-wan-limits.md)]
 
@@ -270,7 +283,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
 
-### <a name="azure-bastion-limits"></a>Azure 防禦限制
+### <a name="azure-bastion-limits"></a>Azure 堡壘限制
 
 [!INCLUDE [Azure Bastion limits](../../../includes/bastion-limits.md)]
 
@@ -286,7 +299,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [azure-front-door-service-limits](../../../includes/front-door-limits.md)]
 
-## <a name="notification-hubs-limits"></a>通知中樞限制
+## <a name="notification-hubs-limits"></a>通知中心限制
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
 
@@ -304,18 +317,18 @@ ms.locfileid: "79274524"
 
 ## <a name="sql-database-limits"></a>SQL Database 限制
 
-如 SQL Database 限制，請參閱[單一資料庫的 SQL Database 資源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md)、彈性集區和集區[資料庫的 SQL Database 資源](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)限制，以及[受控實例的 SQL Database 資源限制](../../sql-database/sql-database-managed-instance-resource-limits.md)。
+有關 SQL 資料庫限制，請參閱[單個資料庫的 SQL 資料庫資源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md)、[彈性池和池資料庫的 SQL 資料庫資源限制](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)以及[託管實例的 SQL 資料庫資源限制](../../sql-database/sql-database-managed-instance-resource-limits.md)。
 
 ## <a name="sql-data-warehouse-limits"></a>SQL 資料倉儲限制
 
-如 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有關 SQL 資料倉儲限制，請參閱[SQL 資料倉儲資源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>儲存體限制
 
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
-如需標準儲存體帳戶限制的詳細資訊，請參閱[標準儲存體帳戶的擴充性目標](../../storage/common/scalability-targets-standard-account.md)。
+有關標準存儲帳戶限制的詳細資訊，請參閱[標準存儲帳戶的可伸縮性目標](../../storage/common/scalability-targets-standard-account.md)。
 
 ### <a name="storage-resource-provider-limits"></a>儲存體資源提供者限制
 
@@ -327,7 +340,7 @@ ms.locfileid: "79274524"
 
 ### <a name="azure-files-limits"></a>Azure 檔案的限制
 
-如需 Azure 檔案儲存體限制的詳細資訊，請參閱[Azure 檔案儲存體擴充性和效能目標](../../storage/files/storage-files-scale-targets.md)。
+有關 Azure 檔限制的詳細資訊，請參閱[Azure 檔可伸縮性和性能目標](../../storage/files/storage-files-scale-targets.md)。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -348,7 +361,7 @@ ms.locfileid: "79274524"
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-如需詳細資訊，請參閱[虛擬機器大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有關詳細資訊，請參閱[虛擬機器大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ### <a name="managed-virtual-machine-disks"></a>受控虛擬機器磁碟
 
@@ -376,25 +389,25 @@ ms.locfileid: "79274524"
 
 ### <a name="virtual-machines-limits---azure-resource-manager"></a>虛擬機器限制 - Azure 資源管理員
 
-當您使用 Azure Resource Manager 和 Azure 資源群組時，適用下列限制。
+使用 Azure 資源管理器和 Azure 資源組時，將應用以下限制。
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../../../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-### <a name="shared-image-gallery-limits"></a>共用映射資源庫限制
+### <a name="shared-image-gallery-limits"></a>共用圖像庫限制
 
-使用共用映射庫部署資源時，每個訂用帳戶都有限制：
+使用共用映射庫部署資源（每個訂閱）有限制：
 
-- 100共用映射資源庫，每個訂用帳戶，每個區域
-- 1000每個區域每個訂用帳戶的映射定義
-- 10000映射版本，每個訂用帳戶，每個區域
+- 每個區域每個訂閱 100 個共用圖像庫
+- 每個區域每個訂閱 1，000 個圖像定義
+- 每個區域每個訂閱 10，000 個映射版本
 
-## <a name="virtual-machine-scale-sets-limits"></a>虛擬機器擴展集限制
+## <a name="virtual-machine-scale-sets-limits"></a>虛擬機器規模設置限制
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ## <a name="see-also"></a>另請參閱
 
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure 雲端服務的大小](../../cloud-services/cloud-services-sizes-specs.md)
+* [Azure 的虛擬機器和雲服務大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure 雲服務的大小](../../cloud-services/cloud-services-sizes-specs.md)
 * [Azure 資源的命名規則和限制](resource-name-rules.md)

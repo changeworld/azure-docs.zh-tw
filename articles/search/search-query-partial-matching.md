@@ -1,50 +1,50 @@
 ---
-title: 符合模式和特殊字元
+title: 匹配圖案和特殊字元
 titleSuffix: Azure Cognitive Search
-description: 使用萬用字元和前置詞查詢，以符合 Azure 認知搜尋查詢要求中的整個或部分詞彙。 包含特殊字元的難以比對模式可以使用完整查詢語法和自訂分析器來加以解析。
+description: 使用萬用字元和首碼查詢在 Azure 認知搜索查詢請求中匹配整個或部分術語。 可以使用完整的查詢語法和自訂分析器解決包含特殊字元的難以匹配的模式。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ec1422d03cce78bdd8206f6687a78b63ddf989dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289306"
 ---
-# <a name="match-on-patterns-and-special-characters-dashes"></a>符合模式和特殊字元（虛線）
+# <a name="match-on-patterns-and-special-characters-dashes"></a>匹配圖案和特殊字元（破折號）
 
-對於包含特殊字元的查詢（`-, *, (, ), /, \, =`），或針對以較大詞彙中的部分詞彙為基礎的查詢模式，通常需要額外的設定步驟，以確保索引包含正確格式的預期內容。 
+對於包含特殊字元 （）`-, *, (, ), /, \, =`的查詢，或基於較大術語中的部分術語的查詢模式，通常需要執行其他配置步驟，以確保索引以正確的格式包含預期內容。 
 
-根據預設，電話號碼（例如 `+1 (425) 703-6214`）會標記為 `"1"`、`"425"`、`"703"`、`"6214"`。 如您所見，搜尋 `"3-62"`，包含虛線的部分詞彙將會失敗，因為該內容實際上不存在於索引中。 
+預設情況下，類似`+1 (425) 703-6214``"1"`的電話號碼被標記為 ， `"425"`， `"703"` `"6214"`。 可以想像，在 包含破折`"3-62"`號的部分術語上搜索將失敗，因為索引中實際上不存在該內容。 
 
-當您需要搜尋部分字串或特殊字元時，您可以使用自訂分析器（在較簡單的 token 化規則下操作）來覆寫預設分析器，保留整個詞彙，當查詢字串包含某個詞彙或特殊的部分時，則為必要項長度. 回頭執行，此方法看起來像這樣：
+當您需要搜索部分字串或特殊字元時，可以使用自訂分析器覆蓋預設分析器，該分析器在更簡單的標記規則下運行，保留整個術語，當查詢字串包含術語或特殊字元的一部分時，需要保留整個術語字元。 退後一步，該方法如下所示：
 
-+ 選擇預先定義的分析器，或定義會產生所需輸出的自訂分析器
-+ 將分析器指派給欄位
-+ 建立索引並測試
++ 選擇預定義的分析儀或定義生成所需輸出的自訂分析器
++ 將分析器分配給欄位
++ 生成索引和測試
 
-這篇文章會引導您完成這些工作。 這裡所述的方法在其他案例中很有用：萬用字元和正則運算式查詢也需要整個詞彙做為模式比對的基礎。 
+本文將引導您完成這些任務。 此處描述的方法在其他方案中很有用：萬用字元和正則運算式查詢也需要整個術語作為模式匹配的基礎。 
 
 > [!TIP]
-> 評估 analyers 是一種反復的程式，需要經常重建索引。 您可以使用 Postman、用於[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)、[刪除索引](https://docs.microsoft.com/rest/api/searchservice/delete-index)、[載入檔](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)和[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)的 REST api，讓此步驟更容易。 針對載入檔，要求本文應該包含您想要測試的小型代表資料集（例如，具有電話號碼或產品代碼的欄位）。 使用這些 Api 在相同的 Postman 集合中，您可以快速地迴圈執行這些步驟。
+> 評估解譯器是一個反覆運算過程，需要頻繁的索引重建。 您可以使用 Postman、[用於創建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)的 REST API、[刪除索引](https://docs.microsoft.com/rest/api/searchservice/delete-index)、[載入文檔](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)和[搜索文檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)，使此步驟更加簡單。 對於 Load 文檔，請求正文應包含要測試的小型代表性資料集（例如，包含電話號碼或產品代碼的欄位）。 使用同一 Postman 集合中的這些 API，您可以快速迴圈完成這些步驟。
 
-## <a name="choosing-an-analyzer"></a>選擇分析器
+## <a name="choosing-an-analyzer"></a>選擇分析儀
 
-選擇會產生整個詞彙標記的分析器時，下列分析器是常見的選擇：
+選擇生成整期權杖的分析器時，以下分析器是常見的選擇：
 
 | 分析器 | 行為 |
 |----------|-----------|
-| [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | 整個欄位的內容會標記為單一詞彙。 |
-| [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | 僅分隔空白字元。 包含破折號或其他字元的詞彙會被視為單一標記。 |
-| [自訂分析器](index-add-custom-analyzers.md) | 使用建立自訂分析器可讓您指定 tokenizer 和權杖篩選器。 先前的分析器必須以相同的方式使用。 自訂分析器可讓您挑選要使用的 token 化工具和權杖篩選器。 <br><br>建議的組合是使用[較低案例標記篩選](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)的[關鍵字 tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) 。 預先定義的[關鍵字分析器](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)本身並不會有任何大寫的文字，這可能會導致查詢失敗。 自訂分析器會提供一個機制，讓您新增小寫標記篩選器。 |
+| [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | 整個欄位的內容被標記為單個術語。 |
+| [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | 僅在空白上分隔。 包含破折號或其他字元的術語被視為單個權杖。 |
+| [自訂分析器](index-add-custom-analyzers.md) | （推薦）通過創建自訂分析器，可以同時指定標記器和權杖篩選器。 以前的分析儀必須原樣使用。 自訂分析器允許您選擇要使用的標記器和權杖篩選器。 <br><br>建議的組合是具有[小寫標記篩選器的](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)[關鍵字標記器](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)。 就其本身而言，預定義的[關鍵字分析器](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)不會小寫任何大寫文本，這可能導致查詢失敗。 自訂分析器為您提供了添加小寫權杖篩選器的機制。 |
 
-如果您使用 Web API 測試控管（例如 Postman），您可以加入[測試分析器 REST 呼叫](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)來檢查 token 化的輸出。 假設現有的索引和包含破折號或部分詞彙的欄位，您可以嘗試各種不同的分析器，以查看所發出的權杖。  
+如果使用像 Postman 這樣的 Web API 測試控管，則可以添加[測試分析器 REST 調用](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)以檢查權杖化輸出。 給定現有索引和包含破折號或部分術語的欄位，您可以嘗試針對特定術語的各種分析器以查看發出的權杖。  
 
-1. 檢查標準分析器，以查看預設如何將詞彙標記化。
+1. 檢查標準分析器，瞭解預設情況下術語如何標記。
 
    ```json
    {
@@ -53,7 +53,7 @@ ms.locfileid: "75989614"
    }
     ```
 
-1. 評估回應，以瞭解如何在索引內標記文字。 請注意，每個詞彙的大小寫都是小寫並加以分解。
+1. 評估回應以查看文本在索引中的標記方式。 請注意每個術語如何小寫和分解。
 
     ```json
     {
@@ -79,7 +79,7 @@ ms.locfileid: "75989614"
         ]
     }
     ```
-1. 修改要求以使用 `whitespace` 或 `keyword` 分析器：
+1. 修改使用`whitespace`或`keyword`分析器的請求：
 
     ```json
     {
@@ -88,7 +88,7 @@ ms.locfileid: "75989614"
     }
     ```
 
-1. 現在回應是由大寫的單一 token 所組成，並保留以破折號做為字串的一部分。 如果您需要搜尋某個模式或部分詞彙，則查詢引擎現在具有尋找相符項的基礎。
+1. 現在，回應由單個權杖（大寫）組成，其中保留破折號作為字串的一部分。 如果需要搜索模式或部分術語，查詢引擎現在具有查找匹配項的基礎。
 
 
     ```json
@@ -105,15 +105,15 @@ ms.locfileid: "75989614"
     }
     ```
 > [!Important]
-> 請注意，查詢剖析器在建立查詢樹狀結構時，通常會在搜尋運算式中以小寫的詞彙區分。 如果您使用的分析器不是小寫的文字輸入，而且您沒有收到預期的結果，這可能是原因。 解決方案是新增 lwower 案例權杖篩選器。
+> 請注意，在生成查詢樹時，查詢解析器通常是搜索運算式中的小寫術語。 如果使用的分析器不小寫文本輸入，並且未獲得預期結果，這可能是原因。 解決方案是添加一個 lwower 大小寫權杖篩選器。
 
 ## <a name="analyzer-definitions"></a>分析器定義
  
-無論您正在評估分析器或使用特定設定繼續進行，都必須在欄位定義上指定分析器，如果您不是使用內建的分析器，也可能設定分析器本身。 交換分析器時，您通常需要重建索引（drop、rebuild 和 reload）。 
+無論您是在評估分析器還是推進特定配置，都需要在欄位定義上指定分析器，並且如果您不使用內置分析器，則可能需要配置分析器本身。 交換分析器時，通常需要重新生成索引（刪除、重新創建和重新載入）。 
 
-### <a name="use-built-in-analyzers"></a>使用內建分析器
+### <a name="use-built-in-analyzers"></a>使用內置分析儀
 
-內建或預先定義的分析器可以在欄位定義的 `analyzer` 屬性上依名稱指定，不需要在索引中進行其他設定。 下列範例示範如何在欄位上設定 `whitespace` 分析器。
+內置或預定義的分析器可以在欄位定義的`analyzer`屬性上按名稱指定，索引中不需要其他配置。 下面的示例演示如何在`whitespace`欄位上設置分析器。
 
 ```json
     {
@@ -125,18 +125,18 @@ ms.locfileid: "75989614"
       "analyzer": "whitespace"
     }
 ```
-如需所有可用內建分析器的詳細資訊，請參閱[預先定義的分析器清單](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
+有關所有可用的內置分析器的詳細資訊，請參閱[預定義分析器清單](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
 
 ### <a name="use-custom-analyzers"></a>使用自訂分析器
 
-如果您使用的是[自訂分析器](index-add-custom-analyzers.md)，請在索引中，使用 tokenizer，tokenfilter 的使用者定義組合來定義它，並提供可能的設定。 接下來，在欄位定義上參考它，就如同您在內建的分析器一樣。
+如果使用[自訂分析器](index-add-custom-analyzers.md)，請使用使用者定義的權杖器、權杖篩選器和可能的配置設置組合在索引中定義它。 接下來，在欄位定義上引用它，就像內置分析器一樣。
 
-當目標是整個詞彙的 token 化時，建議使用包含**關鍵字 tokenizer**和**小寫標記篩選準則**的自訂分析器。
+當目標是整個期限標記化時，建議使用由**關鍵字標記器**和**小寫權杖篩選器**組成的自訂分析器。
 
-+ 關鍵字 tokenizer 會針對整個欄位內容建立單一 token。
-+ 小寫標記篩選會將大寫字母轉換成小寫文字。 查詢剖析器通常會以小寫的形式輸入任何大寫文字。 小寫會 homogenizes 具有 token 化詞彙的輸入。
++ 關鍵字標記器為欄位的整個內容創建單個權杖。
++ 小寫權杖篩選器將大寫字母轉換為小寫文本。 查詢解析器通常小寫任何大寫文本輸入。 下部同質化使用標記化術語使輸入均勻化。
 
-下列範例說明可提供關鍵字 tokenizer 和小寫標記篩選的自訂分析器。
+下面的示例演示了提供關鍵字標記器和小寫權杖篩選器的自訂分析器。
 
 ```json
 {
@@ -151,7 +151,7 @@ ms.locfileid: "75989614"
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -168,15 +168,15 @@ ms.locfileid: "75989614"
 ```
 
 > [!NOTE]
-> 系統會知道 `keyword_v2` tokenizer 和 `lowercase` token 篩選器，並使用其預設設定，這就是為什麼您可以依名稱參考它們，而不需要先定義它們。
+> `keyword_v2`系統知道權杖器`lowercase`和權杖篩選器，並使用它們的預設配置，因此無需首先定義它們即可按名稱引用它們。
 
 ## <a name="tips-and-best-practices"></a>祕訣和最佳作法
 
 ### <a name="tune-query-performance"></a>微調查詢效能
 
-如果您執行建議的設定，其中包含 keyword_v2 tokenizer 和小寫的權杖篩選器，您可能會注意到查詢效能降低的原因，是因為您的索引中現有的權杖有額外的權杖篩選器處理。 
+如果實現建議配置，包括keyword_v2權杖器和小寫權杖篩選器，您可能會注意到查詢性能下降，因為索引中現有權杖處理了額外的權杖篩選器。 
 
-下列範例會新增[EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) ，以加快前置詞比對的速度。 會針對包含下列字元的2-25 個字元組合產生額外的權杖：（不只是 MS、MSF、MSFT、MSFT/、MSFT/S、MSFT/SQ、MSFT/SQL）。 您可以想像，額外的 token 化會產生較大的索引。
+下面的示例添加[EdgeNGramTokenFilter，](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)以使首碼匹配得更快。 其他權杖以 2-25 個字元組合生成，包括字元：不僅 MS、MSF、MSFT、MSFT/、MSFT/S、MSFT/SQ、MSFT/SQ、MSFT/SQL）。 可以想像，額外的標記化會導致更大的索引。
 
 ```json
 {
@@ -191,7 +191,7 @@ ms.locfileid: "75989614"
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -215,13 +215,13 @@ ms.locfileid: "75989614"
 ]
 ```
 
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>使用不同的分析器進行索引編制和查詢處理
+### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>使用不同的分析器進行索引和查詢處理
 
-在編制索引期間和查詢執行期間，會呼叫分析器。 兩者都使用相同的分析器，但是您可以為每個工作負載設定自訂分析器。 分析器覆寫是在 `analyzers` 區段的[索引定義](https://docs.microsoft.com/rest/api/searchservice/create-index)中指定，然後在特定欄位上參考。 
+分析器在索引期間和查詢執行期間調用。 兩者使用相同的分析器是很常見的，但您可以為每個工作負載配置自訂分析器。 分析器覆蓋在`analyzers`節中的[索引定義](https://docs.microsoft.com/rest/api/searchservice/create-index)中指定，然後引用到特定欄位。 
 
-只有在編制索引期間才需要自訂分析時，您可以套用自訂分析器，只針對查詢編制索引並繼續使用標準 Lucene 分析器（或其他分析器）。
+當僅在索引期間需要自訂分析時，您可以將自訂分析器應用於僅索引，並繼續使用標準 Lucene 分析器（或其他分析器）進行查詢。
 
-若要指定角色特定分析，您可以在欄位上設定每一個的屬性，設定 `indexAnalyzer` 和 `searchAnalyzer`，而不是預設的 `analyzer` 屬性。
+要指定特定于角色的分析，可以為每個屬性設置欄位的屬性，設置`indexAnalyzer``searchAnalyzer`而不是預設`analyzer`屬性。
 
 ```json
 "name": "featureCode",
@@ -229,9 +229,9 @@ ms.locfileid: "75989614"
 "searchAnalyzer":"standard",
 ```
 
-### <a name="duplicate-fields-for-different-scenarios"></a>不同案例的重複欄位
+### <a name="duplicate-fields-for-different-scenarios"></a>不同方案的重複欄位
 
-另一個選項會利用每個欄位的分析器指派，針對不同的案例進行優化。 具體而言，您可能會定義 "featureCode" 和 "featureCodeRegex"，以支援第一個的一般全文檢索搜尋，以及第二個的先進模式比對。
+另一個選項利用每場分析器分配來針對不同的方案進行優化。 具體而言，您可以定義"功能代碼"和"功能代碼Regex"，以支援在第一個搜索時的常規全文檢索搜尋，並在第二個搜索時支援高級模式匹配。
 
 ```json
 {
@@ -252,9 +252,9 @@ ms.locfileid: "75989614"
 
 ## <a name="next-steps"></a>後續步驟
 
-本文說明分析器如何影響查詢問題，以及如何解決查詢問題。 在下一個步驟中，請仔細查看分析器對編制索引和查詢處理的影響。 特別是，請考慮使用「分析文字 API」來傳回已標記的輸出，讓您可以確切查看分析器為您的索引建立的內容。
+本文介紹了分析器如何同時導致查詢問題和解決查詢問題。 作為下一步，請仔細查看分析器對索引和查詢處理的影響。 特別是，請考慮流量分析文本 API 返回標記化輸出，以便您可以準確查看分析器為索引創建的內容。
 
 + [語言分析器](search-language-support.md)
-+ [Azure 認知搜尋中的文字處理分析器](search-analyzers.md)
-+ [分析文字 API （REST）](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
-+ [全文檢索搜尋的運作方式（查詢架構）](search-lucene-query-architecture.md)
++ [Azure 認知搜索中文本處理分析器](search-analyzers.md)
++ [分析文本 API （REST）](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [全文檢索搜尋的工作原理（查詢體系結構）](search-lucene-query-architecture.md)

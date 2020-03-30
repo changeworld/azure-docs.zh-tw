@@ -1,19 +1,18 @@
 ---
-title: API 必要條件 |Azure Marketplace
+title: API 先決條件 |Azure 應用商店
 description: 使用 Cloud Partner 入口網站 API 的先決條件。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d3c2d89d3c3561e86047529e5b284e4481fc1652
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288558"
 ---
 <a name="api-prerequisites"></a>API 先決條件
 ================
@@ -35,21 +34,21 @@ ms.locfileid: "73819695"
 使用下列步驟新增服務主體：
 
 1. 登入 Cloud Partner 入口網站。 
-2. 按一下功能表列左側的 [使用者]，然後選擇 [新增使用者]。
+2. 按一下功能表列左側的 [使用者]****，然後選擇 [新增使用者]****。
 
    ![將使用者新增至入口網站](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
-3. 從 [類型] 下拉式清單中，選取 [服務主體]，並新增下列詳細資料：
+3. 從 [類型]**** 下拉式清單中，選取 [服務主體]****，並新增下列詳細資料：
 
 -   服務主體的**易記名稱**，例如 `spAccount`。
--   **應用程式識別碼**。 若要尋找此識別碼，請前往 [Azure 入口網站](https://portal.azure.com)，按一下 [Azure Active Directory]，選擇 [應用程式註冊]，然後按一下您的應用程式。
--   Azure AD 租用戶的**租用戶識別碼**也稱為**目錄識別碼**。 您可以在 [Azure 入口網站](https://portal.azure.com) [Azure Active Directory] 頁面中 [屬性] 底下找到此識別碼。
--   服務主體物件的**物件識別碼**。 您可以從 Azure 入口網站中取得此識別碼。 移至 [Azure Active Directory]，選擇 [應用程式註冊]，按一下您的應用程式，然後按一下 [本機目錄中受控的應用程式] 底下的應用程式名稱。 接著，移至 [屬性] 頁面，尋找物件識別碼。 請確定您不會抓取初始位於您的應用程式，而是在受管理的應用程式中的物件識別碼的物件識別碼。
+-   **應用程式識別碼**。 若要尋找此識別碼，請前往 [Azure 入口網站](https://portal.azure.com)，按一下 [Azure Active Directory]****，選擇 [應用程式註冊]****，然後按一下您的應用程式。
+-   Azure AD 租用戶的**租用戶識別碼**也稱為**目錄識別碼**。 您可以在 [Azure 入口網站](https://portal.azure.com) [Azure Active Directory] 頁面中 [屬性]**** 底下找到此識別碼。
+-   服務主體物件的**物件識別碼**。 您可以從 Azure 入口網站中取得此識別碼。 移至 [Azure Active Directory]****，選擇 [應用程式註冊]****，按一下您的應用程式，然後按一下 [本機目錄中受控的應用程式]**** 底下的應用程式名稱。 接著，移至 [屬性]**** 頁面，尋找物件識別碼。 請確定您不會抓取初始位於您的應用程式，而是在受管理的應用程式中的物件識別碼的物件識別碼。
 -   與帳戶相關聯的**角色**，將用於 RBAC。
 
      ![將受控應用程式新增至入口網站](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-1. 按一下 [新增]，將服務主體新增至您的帳戶。
+1. 按一下 [新增]****，將服務主體新增至您的帳戶。
 
    ![新增服務主體](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 

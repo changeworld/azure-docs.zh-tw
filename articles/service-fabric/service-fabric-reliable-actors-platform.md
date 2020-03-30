@@ -1,19 +1,19 @@
 ---
-title: Service Fabric 上的 Reliable Actors
+title: 服務結構上的可靠參與者
 description: 說明 Reliable Actors 如何在 Reliable Services 上分層，以及如何使用 Service Fabric 平台的功能。
 author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282298"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Acto 如何使用 Service Fabric 平台
-本文說明 Reliable Actors 在 Azure Service Fabric 平台上的運作方式。 Reliable Actors 會在名為*動作項目服務*的具狀態可靠服務實作上裝載的架構中執行。 動作項目服務包含管理生命週期和您的動作項目用於發送之訊息所需的所有元件︰
+本文說明 Reliable Actors 在 Azure Service Fabric 平台上的運作方式。 可靠執行元件運行在一個框架中，該框架託管在稱為*執行元件服務的*有狀態可靠服務的實現中。 動作項目服務包含管理生命週期和您的動作項目用於發送之訊息所需的所有元件︰
 
 * 動作項目執行階段會管理生命週期、記憶體回收，並強制執行單一執行緒存取。
 * 動作項目服務遠端處理接聽程式會接受對動作項目進行的遠端存取呼叫，並將它們傳送到發送器，以路由傳送到適當的動作項目執行個體。
@@ -89,9 +89,9 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 
 ## <a name="next-steps"></a>後續步驟
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
-* [動作項目生命週期與記憶體回收](service-fabric-reliable-actors-lifecycle.md)
+* [參與者生命週期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [動作項目 API 參考文件](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
-* [.NET 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

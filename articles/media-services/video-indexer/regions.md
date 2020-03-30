@@ -1,7 +1,7 @@
 ---
 title: 影片索引器可使用的區域 - Azure
 titleSuffix: Azure Media Services
-description: 本文討論可使用 Azure 媒體服務影片索引子的 Azure 區域。
+description: 本文介紹 Azure 媒體服務視頻索引子可用的 Azure 區域。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6ba6f189f4290bb2751adf9b44135eeda7266ca0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892748"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382744"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>影片索引器所在的 Azure 區域
 
@@ -23,9 +23,9 @@ ms.locfileid: "74892748"
 
 ## <a name="locations"></a>位置
 
-必須為 **location** 參數指定 Azure 區域代碼名稱作為其值。 如果您要在預覽模式中使用影片索引器，應該放置 *"trial"* 作為值。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中執行下面這一行：
+必須為 **location** 參數指定 Azure 區域代碼名稱作為其值。 如果您要在預覽模式中使用影片索引器，應該放置 *"trial"* 作為值。 否則，若要取得您帳戶所在且應該路由傳送呼叫之 Azure 區域的代碼名稱，您可以在 [Azure CLI](/cli/azure) 中執行下面這一行：
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 

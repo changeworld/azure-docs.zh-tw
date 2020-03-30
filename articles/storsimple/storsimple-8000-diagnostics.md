@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298752"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 診斷工具針對 8000 系列裝置問題進行疑難排解
 
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>網路測試
 
-這項測試會驗證網路介面、連接埠、DNS 和 NTP 伺服器連線的狀態、SSL 憑證、儲存體帳戶認證、更新伺服器的連線能力，以及 StorSimple 裝置上的 Web Proxy 連線能力。
+此測試驗證網路介面、埠、DNS 和 NTP 伺服器連接、TLS/SSL 憑證、存儲帳戶憑據、與補救伺服器的連接以及 StorSimple 設備上的 Web 代理連接的狀態。
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>僅啟用 DATA0 時的網路測試輸出範例
 
@@ -333,7 +333,7 @@ hcs_startup                                   Stopped hcs_startup
 * DNS 伺服器組態無效，裝置可以透過 DNS 伺服器來連線。
 * NTP 伺服器連線能力也正常。
 * 連接埠 80 和 443 已開啟。 但已封鎖連接埠 9354。 根據[系統網路需求](storsimple-system-requirements.md)，您必須開啟此連接埠，服務匯流排通訊才能進行。
-* SSL 憑證有效。
+* TLS/SSL 認證有效。
 * 裝置可以連線至儲存體帳戶︰_myss8000storageacct_。
 * 更新伺服器的連線能力有效。
 * 此裝置上未設定 Web Proxy。

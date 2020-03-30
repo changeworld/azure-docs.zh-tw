@@ -1,19 +1,18 @@
 ---
-title: 建立或修改供應專案 |Azure Marketplace
+title: 創建或修改產品/服務 |Azure 應用商店
 description: 用於建立新的或更新以及現有的供應項目的 API。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288609"
 ---
 <a name="create-or-modify-an-offer"></a>建立或修改供應項目
 =========================
@@ -26,17 +25,17 @@ ms.locfileid: "73819708"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**         |  **說明**                      |  **資料類型**  |
+|  **名稱**         |  **描述**                      |  **資料類型**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  發行者識別碼，例如 `contoso` |   字串 |
-| offerId           |  供應項目識別碼                     |   字串        |
-| api-version       |  最新版的 API            |   日期           |
+| publisherId       |  發行者識別碼，例如 `contoso` |   String |
+| offerId           |  供應項目識別碼                     |   String        |
+| api-version       |  API 的最新版本            |   Date           |
 |  |  |  |
 
 <a name="header"></a>頁首
 ------
 
-|  **名稱**        |  **值**               |
+|  **名稱**        |  **價值**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授權    | `Bearer YOUR_TOKEN`      |
@@ -245,13 +244,13 @@ ms.locfileid: "73819708"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼**  |  **說明**                                                                            |
+| **代碼**  |  **描述**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | `OK`。 已成功處理要求，並已成功修改供應項目。           |
-|  201      | `Created`。 已成功處理要求，並已成功建立供應項目。   |
-|  400      | `Bad/Malformed request`。 錯誤回應本文可能會提供更多資訊。            |
-|  403      | `Forbidden`。 用戶端沒有所要求命名空間的存取權。                     |
-|  404      | `Not found`。 用戶端所參考的實體不存在。                           |
+|  200      | `OK`. 已成功處理要求，並已成功修改供應項目。           |
+|  201      | `Created`. 已成功處理要求，並已成功建立供應項目。   |
+|  400      | `Bad/Malformed request`. 錯誤回應本文可能會提供更多資訊。            |
+|  403      | `Forbidden`. 用戶端沒有所要求命名空間的存取權。                     |
+|  404      | `Not found`. 用戶端所參考的實體不存在。                           |
 |  412      | 伺服器不符合其中一個申請者在要求中指定的先決條件。 用戶端應該檢查與要求一起傳送的 ETAG。 |
 |  |  |
 

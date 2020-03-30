@@ -1,42 +1,41 @@
 ---
-title: Azure 應用程式供應專案 Marketplace 索引標籤
+title: Azure 應用程式提供應用商店選項卡
 description: 使用 [Marketplace] 索引標籤來識別 Azure 應用程式供應項目的行銷資產。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281760"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure 應用程式 Marketplace 索引標籤
 
-使用 [Marketplace] 索引標籤來說明 Azure 應用程式並提供行銷資產。 此索引標籤包含下列表單：總覽、行銷成品、潛在客戶管理和法律。
+使用 [Marketplace] 索引標籤來說明 Azure 應用程式並提供行銷資產。 此選項卡包括以下表單：概述、市場行銷專案、潛在客戶管理和法律。
 
 ## <a name="overview-form"></a>概觀表單
 
-「概觀」表單中包含下一個螢幕擷取畫面所示的必要欄位和選擇性欄位。 必要欄位由星號 (*) 標示。
+[概觀] 表單包含下一個螢幕擷取畫面所示的必要欄位和選擇性欄位。 必要欄位由星號 (*) 標示。
 
 ![概觀表單](./media/azureapp-marketplace-overview.png)
 
-下表說明要用於建立供應項目店面的設定。   以星號附加的欄位是必要的。
+下表說明要用於建立供應項目店面的設定。   需要附加星號的欄位。
 
-|      欄位         |    說明    |
+|      欄位         |    描述    |
 |  ---------------   |  ---------------  |
 | **標題\***        | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。 長度上限是 50 個字元。 |
-| **摘要\***      | 供應項目的簡短摘要。 長度上限是 100 個字元。           |
+| **總結\***      | 供應項目的簡短摘要。 長度上限是 100 個字元。           |
 | **長摘要\*** | 供應項目的完整摘要 (雖然可能與摘要相同)。 長度上限是 256 個字元。           |
-| **說明\***  | 供應項目的說明。 長度上限是 3000 個字元。 允許簡單的 HTML 格式，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;&lt;ol&gt; 和標題標記。  |
-| **行銷識別碼\*** | 與本供應項目相關聯的唯一不重複網址，通常會包含您的組織與解決方案名稱，長度上限是 50 個字元。 為您的服務選擇簡短、易讀的行銷識別碼。 這將用於此供應項目的市集 URL。 例如，如果您的發行者識別碼是 "contoso"，而您的行銷識別碼是 "sampleApp"，則您在 Azure Marketplace 中供應專案的 URL 將會是 https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
-| **預覽訂用帳戶識別碼\*** | 可新增從 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些由清單列出的訂用帳戶在正式發行之前，將可取得供應專案的存取權。          |
-| **實用連結**    | （選擇性）您可以為供應專案的使用者提供各種資源的連結，例如支援、檔、論壇等。 建議您至少在檔中加入一個連結。            |
-| **建議的類別（最多5個）\*** | 選取一到五個類別。 選取的類別係用來將您提供的供應項目對應至 Azure Marketplace 和 Azure 入口網站中提供的產品類別。 這些類別會顯示在瀏覽頁面和您的產品詳細資料頁面上。 |
+| **描述\***  | 供應項目的說明。 長度上限是 3000 個字元。 允許簡單的 HTML 格式，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;&lt;ol&gt; 和標題標記。  |
+| **行銷識別碼\*** | 與本供應項目相關聯的唯一不重複網址，通常會包含您的組織與解決方案名稱，長度上限是 50 個字元。 為您的服務選擇簡短、易讀的行銷識別碼。 這將用於此供應項目的市集 URL。 例如，如果您的發行者 ID 是"contoso"，而行銷識別碼為"示例App"，則 Azure 應用商店中產品/服務的 URL 將為https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **預覽訂閱代碼\*** | 可新增從 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些白名單的訂閱將有權訪問您的產品/服務，而優惠在發佈後，在發佈後，在發佈之前，在預覽版中可用。          |
+| **實用連結**    | 或者，您可以為產品/服務的使用者（如支援、文檔、論壇等）提供指向各種資源的連結。 建議您至少向文檔添加一個連結。            |
+| **建議類別（最多 5 個）\*** | 選擇一到五個類別。 選取的類別係用來將您提供的供應項目對應至 Azure Marketplace 和 Azure 入口網站中提供的產品類別。 這些類別會顯示在瀏覽頁面和您的產品詳細資料頁面上。 |
 |  |  |
 
 
@@ -48,15 +47,15 @@ ms.locfileid: "73827568"
 
 下表說明行銷成品。
 
-|      欄位         |    說明    |
+|      欄位         |    描述    |
 |  ---------------   |  ---------------  |
-| **小型\***        | 小型標誌：以 PNG 格式40x40 圖元     |
-| **中型\***       | 中標誌：以 PNG 格式90x90 圖元    |
-| **大型\***        | 大型標誌：以 PNG 格式115x115 圖元   |
-| **寬\***         | 寬標誌：以 PNG 格式255x115 圖元    |
-| **主圖**           | 選擇性主圖示志：以 PNG 格式815x290 圖元。 **注意：** 主圖圖示上傳之後，即無法刪除。 |
-| **螢幕擷取畫面 (最多 5 個)** |        螢幕擷取畫面會顯示在您的產品詳細資料頁面上， 相當適合用來以視覺方式傳達應用程式的功能及其運作方式。 例如，可以顯示架構圖表或是使用案例圖例。 螢幕擷取畫面是選擇性的，每個 SKU 限制為 5 個。 若要新增螢幕擷取畫面：<ul><li>選取 [+ 新增螢幕擷取畫面] 以開啟 [螢幕擷取畫面] 視窗</li><li>**名稱** - 輸入名稱/標題 (長度上限是 100 個字元)。</li><li>**上傳** - 上傳映像。 它必須是 PNG 格式，而大小為 533x324 像素。</li></ul>           |
-| **新增影片**      | （選擇性）影片會顯示在您的產品詳細資料頁面上。 相當適合用來以視覺方式傳達應用程式的功能及其運作方式。 若要新增影片： <ul><li>選取 [+ 新增影片] 以開啟 [影片] 視窗</li><li>**名稱** - 輸入名稱/標題 (長度上限是 100 個字元)。</li><li>**連結**-輸入裝載影片之網站的 URL （YouTube 或 Vimeo）</li><li>**縮圖**-上傳縮圖。 它必須是 PNG 格式，而大小為 533x324 像素。</li></ul>          |
+| **小型\***        | 小徽標：40x40 圖元，採用 PNG 格式     |
+| **中型\***       | 中等徽標：90x90 圖元，採用 PNG 格式    |
+| **大\***        | 大徽標：115x115 圖元，採用 PNG 格式   |
+| **寬\***         | 寬徽標：255x115 圖元，採用 PNG 格式    |
+| **主圖**           | 可選的英雄徽標：815x290 圖元，採用 PNG 格式。 **注：** 英雄圖示在上載後無法刪除。 |
+| **螢幕擷取畫面 (最多 5 個)** |        螢幕擷取畫面會顯示在您的產品詳細資料頁面上， 相當適合用來以視覺方式傳達應用程式的功能及其運作方式。 例如，可以顯示架構圖表或是使用案例圖例。 螢幕擷取畫面是選擇性的，每個 SKU 限制為 5 個。 若要新增螢幕擷取畫面：<ul><li>選取 [+ 新增螢幕擷取畫面]**** 以開啟 [螢幕擷取畫面] 視窗</li><li>**名稱** - 輸入名稱/標題 (長度上限是 100 個字元)。</li><li>**上傳** - 上傳映像。 它必須是 PNG 格式，而大小為 533x324 像素。</li></ul>           |
+| **新增影片**      | 可選，視頻將顯示在您的產品詳細資訊頁面上。 相當適合用來以視覺方式傳達應用程式的功能及其運作方式。 若要新增影片： <ul><li>選取 [+ 新增影片]**** 以開啟 [影片] 視窗</li><li>**名稱** - 輸入名稱/標題 (長度上限是 100 個字元)。</li><li>**連結**- 輸入託管視頻的網站的網址（YouTube 或 Vimeo）</li><li>**縮略圖**- 上傳縮略圖。 它必須是 PNG 格式，而大小為 533x324 像素。</li></ul>          |
 |  |  |
 
 
@@ -66,7 +65,7 @@ ms.locfileid: "73827568"
 
 ![Marketplace 供應項目搜尋結果](./media/azureapp-marketplace-example-browse.png)
 
-下圖顯示當客戶在搜尋結果中按一下供應專案的磚之後，供應專案在 Marketplace 中的顯示方式。
+下圖顯示了客戶在搜尋結果中按一下產品/服務磁貼後，產品/服務在應用商店中的顯示方式。
 
 ![Marketplace 供應項目搜尋結果詳細資料](./media/azureapp-marketplace-example-details.png)
 
@@ -98,7 +97,7 @@ Cloud Partner 入口網站中所上傳的所有標誌都應該遵循指導方針
 主圖標誌為選用項。
 
 >[!IMPORTANT]
->當主圖示志上傳之後，您就無法加以刪除。
+>上載英雄徽標後，無法將其刪除。
 
 請針對主圖標誌使用下列指引：
 
@@ -115,19 +114,19 @@ Cloud Partner 入口網站中所上傳的所有標誌都應該遵循指導方針
 ![選取潛在客戶管理目的地](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->選取資訊圖示，即可看到此訊息：「選取將儲存您潛在客戶的系統。 [在這裡](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)瞭解如何連接到您的 CRM 系統。
+>選擇資訊圖示以查看此消息："選擇將存儲潛在客戶的系統。 在此處瞭解如何連接到 CRM[系統。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)
 
 如需詳細資訊，請參閱[設定潛在客戶](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)。
 
 
 ## <a name="legal"></a>法律
 
-使用法律形式為每個供應項目提供所需的法律文件。
+使用 [法律聲明] 表單來提供每個供應項目所需的法律聲明文件。
 
 請提供下列資訊：
 
-- **隱私權原則 URL\*** -輸入應用程式隱私權原則的連結。
-- **使用規定\*** -輸入應用程式的使用條款。 客戶必須先接受這些條款，才能試用您的應用程式。
+- **隱私政策 URL\* ** - 輸入指向應用隱私政策的連結。
+- **使用\*條款**- 輸入應用的使用條款。 客戶必須先接受這些條款，才能試用您的應用程式。
 
 ![法律形式](./media/azureapp-marketplace-legal.png)
 

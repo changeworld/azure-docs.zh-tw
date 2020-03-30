@@ -11,16 +11,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 49959ff12744f28e930959c43a449800c76818f5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 1db7009096635fc1279ce8a8358e0d8131209722
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969818"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372592"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
->藉由複製並貼上此 URL，取得何時要重新流覽此頁面以進行更新的通知： `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` 至您的 RSS 摘要讀取器。
+>通過複製和粘貼此 URL：`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`到 RSS 源閱讀器，獲得有關何時重新訪問此頁面以進行更新的通知。
 
 為了讓您隨時掌握最新的開發訊息，本文提供下列相關資訊：
 
@@ -32,70 +32,70 @@ ms.locfileid: "78969818"
 ## <a name="known-issues"></a>已知問題
 
 > [!NOTE]
-> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作（例如，轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+> 您可以使用 Azure[門戶](https://portal.azure.com/)管理 v3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、獲取有關訪問 API 的資訊。 對於所有其他管理工作（例如，轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref) [、CLI](https://aka.ms/ams-v3-cli-ref)或受支援的[SDK](media-services-apis-overview.md#sdks)之一。
 
 如需詳細資訊，請參閱[從媒體服務 v2 移至 v3 的移轉指導](migrate-from-v2-to-v3.md#known-issues)。
  
 ## <a name="january-2020"></a>2020 年 1 月
 
-### <a name="improvements-in-media-processors"></a>媒體處理器的改良功能
+### <a name="improvements-in-media-processors"></a>媒體處理器的改進
 
-- 改善影片分析中交錯式來源的支援–這類內容現在已正確地解除交錯，然後才傳送到推斷引擎。
-- 當產生具有「最佳」模式的縮圖時，編碼器現在會搜尋超過30秒，以選取未單色的畫面格。
+- 改進了視頻分析中對隔行掃描源的支援 - 此類內容現在在發送到推理引擎之前已正確取消隔行掃描。
+- 使用"最佳"模式生成縮略圖時，編碼器現在搜索超過 30 秒以選擇非單色的幀。
 
-### <a name="azure-government-cloud-updates"></a>Azure Government 雲端更新
+### <a name="azure-government-cloud-updates"></a>Azure 政府雲更新
 
-媒體服務下列 Azure Government 區域中的 Batchai： *USGov 亞利桑那*州和*USGov 德克薩斯州*。
+媒體服務 GA'ed 在以下 Azure 政府區域： *USGov 亞利桑那州*和美國*德克薩斯州 USGov*.
 
 ## <a name="december-2019"></a>2019 年 12 月
 
-已新增*來源的 CDN 支援-協助預先提取*標頭用於即時和影片隨選串流;適用于具有 Akamai CDN 直接合約的客戶。 原始-協助 CDN 預先提取功能牽涉到 Akamai CDN 與 Azure 媒體服務來源之間的下列 HTTP 標頭交換：
+添加了對*源-輔助預取*標頭的 CDN 支援，用於即時和視頻點播流;適用于與 Akamai CDN 有直接合同的客戶。 源-輔助 CDN-預獲取功能涉及 Akamai CDN 和 Azure 媒體服務源之間的以下 HTTP 標頭交換：
 
 |HTTP 標頭|值|傳送者|接收者|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-來源-協助-預先啟用 | 1（預設值）或0 |CDN|來源|表示 CDN 已啟用預先提取|
-|CDN-來源-協助-預先提取路徑| 範例： <br/>片段（影片 = 1400000000，格式 = mpd-時間-cmaf）|來源|CDN|提供 CDN 的預先提取路徑|
-|CDN-來源-協助預先提取-要求|1（預先提取要求）或0（一般要求）|CDN|來源|若要指出來自 CDN 的要求是預先提取|
+|CDN-原點-輔助-預取啟用 | 1（預設）或 0 |CDN|來源|指示 CDN 已啟用預取|
+|CDN-原點-輔助-預取路徑| 範例： <br/>片段（視頻=1400000000，格式=mpd-time-cmaf）|來源|CDN|提供 CDN 的預取路徑|
+|CDN-原點-輔助-預取-請求|1（預取請求）或 0（常規請求）|CDN|來源|指示來自 CDN 的請求是預取|
 
-若要查看作用中的部分標頭交換，您可以嘗試下列步驟：
+要查看標頭交換的一部分，可以嘗試以下步驟：
 
-1. 使用 Postman 或捲曲來發出要求，以媒體服務來源的音訊或影片區段或片段。 請務必在要求中新增標頭 CDN-原始協助工具：1。
-2. 在回應中，您應該會看到標頭的「CDN-來源-協助-預先提取路徑」，其值為相對路徑。
+1. 使用 Postman 或捲曲向媒體服務源發出音訊或視頻片段或片段的請求。 請確保在請求中添加標頭 CDN-原源-輔助-預取啟用：1。
+2. 在回應中，您應該看到以相對路徑為值的標頭 CDN-原源-輔助-預取路徑。
 
 ## <a name="november-2019"></a>2019 年 11 月
 
-### <a name="live-transcription-preview"></a>即時轉譯預覽
+### <a name="live-transcription-preview"></a>即時轉錄預覽
 
-即時轉譯現在處於公開預覽狀態，並可在美國西部2區域中使用。
+即時轉錄現已公開預覽，可在美國西部 2 區域使用。
 
-即時轉譯是設計來與即時事件搭配使用，做為附加元件功能。  傳遞和標準或高階編碼即時事件皆可支援。  啟用這項功能時，服務會使用認知服務的[語音轉換文字](../../cognitive-services/speech-service/speech-to-text.md)功能，將傳入音訊中的單字轉譯成文字。 然後，這段文字會提供給傳遞，以及以 MPEG-2 和 HLS 通訊協定進行的影片和音訊。 計費是以新的附加元件計量為基礎，當即時事件處於「執行中」狀態時，這會額外收費。  如需即時轉譯和計費的詳細資訊，請參閱[即時](live-transcription.md)轉譯
+即時轉錄設計為與即時事件結合使用，作為附加功能。  在傳遞和標準編碼或高級編碼即時事件上都支援它。  啟用此功能後，該服務將使用認知服務的["語音到文本](../../cognitive-services/speech-service/speech-to-text.md)"功能將傳入音訊中的口語轉錄為文本。 然後，在 MPEG-DASH 和 HLS 協定中，此文本與視頻和音訊一起提供。 計費基於新的附加儀錶，該表是即時事件處於"運行"狀態時的額外費用。  有關即時轉錄和計費的詳細資訊，請參閱[即時轉錄](live-transcription.md)
 
 > [!NOTE]
-> 目前，即時轉譯僅以美國西部2區域中的預覽功能形式提供。 它目前僅支援英文（en-us）的口頭文字轉譯。
+> 目前，即時轉錄僅在美國西部 2 區域作為預覽功能提供。 它支援在這個時候以英語轉錄口語（ en-us）。
 
 ### <a name="content-protection"></a>內容保護
 
-在9月的有限區域中發行的權杖重新執行*防護*功能現在已在所有區域推出。
-媒體服務客戶現在可以設定相同權杖可用來要求金鑰或授權的次數限制。 如需詳細資訊，請參閱權杖重新執行[防護](content-protection-overview.md#token-replay-prevention)。
+9 月份在有限區域發佈的*權杖重播預防*功能現已在所有區域提供。
+媒體服務客戶現在可以對同一權杖可用於請求金鑰或許可證的次數設置限制。 有關詳細資訊，請參閱[權杖重播預防](content-protection-overview.md#token-replay-prevention)。
 
-### <a name="new-recommended-live-encoder-partners"></a>新建議的即時編碼器合作夥伴
+### <a name="new-recommended-live-encoder-partners"></a>新的推薦即時編碼器合作夥伴
 
-已針對 RTMP 即時串流新增下列建議的新合作夥伴編碼器支援：
+添加了對 RTMP 即時流的以下新推薦合作夥伴編碼器的支援：
 
-- [Cambria Live 4。3](https://www.capellasystems.net/products/cambria-live/)
-- [GoPro Hero7/8 和最大動作攝影機](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [坎布里亞現場 4.3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 和最大動作攝像機](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
 - [Restream.io](https://restream.io/)
 
-### <a name="file-encoding-enhancements"></a>檔案編碼增強功能
+### <a name="file-encoding-enhancements"></a>檔編碼增強功能
 
-- 現在提供新的內容感知編碼預設值。 它會使用內容感知編碼來產生一組對齊 GOP 的 Mp4。 針對任何輸入內容，此服務會執行輸入內容的初始輕量分析。 它會使用這些結果來判斷以彈性串流傳遞的最佳層級、適當的位元速率和解析度設定。 此預設值特別適用于低複雜度和中等複雜度的影片，其中輸出檔案是以較低的位元速率，但品質仍然可以讓檢視器獲得良好的體驗。 輸出會包含具有影片和音訊交錯的有案檔案。 如需詳細資訊，請參閱[OPEN API 規格](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
-- 改善媒體編碼器標準中重新 sizer 的效能和多執行緒處理。 在特定情況下，客戶應該會看到 5-40% VOD 編碼之間的效能提升。 以多個位元速率編碼的低複雜性內容將會看到最高效能的增加。 
-- 標準編碼現在會在使用以時間為基礎的 GOP 設定時，為 VOD 編碼期間的變數畫面播放速率（VFR）內容保留一般的 GOP 節奏。  這表示客戶提交混合的畫面播放速率內容，會因 15-30 fps 而有所不同。例如，現在應該會看到輸出到彈性位元速率串流的檔案時，計算出一般的 GOP 距離。 這可改善在傳遞 HLS 或虛線時，在曲目之間順暢切換的能力。 
--  改善可變畫面播放速率（VFR）來源內容的 AV 同步處理
+- 新的內容感知編碼預設現已可用。 它通過使用內容感知編碼生成一組與 GOP 對齊的 MP4。 給定任何輸入內容，服務對輸入內容執行初始羽量級分析。 它使用這些結果來確定通過自我調整流道傳送的最佳圖層數、適當的位元速率和解析度設置。 此預設對於低複雜性和中等複雜性視頻特別有效，其中輸出檔案位元速率較低，但品質仍可為觀看者提供良好的體驗。 輸出將包含帶有視頻和音訊交錯的 MP4 檔。 有關詳細資訊，請參閱打開的[API 規範](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
+- 標準編碼器中重新分型器的性能和多執行緒性改進。 在特定情況下，客戶應看到 5-40% VOD 編碼之間的性能提升。 編碼為多個位元速率的低複雜內容的性能將最高。 
+- 標準編碼現在保持在 VOD 編碼期間可變畫面播放速率 （VFR） 內容的常規 GOP 節奏，使用基於時間的 GOP 設置。  這意味著，提交混合畫面播放速率內容（例如，在 15-30 fps 之間變化）的客戶現在應該看到在輸出自我調整位元速率流 MP4 檔時計算的常規 GOP 距離。 這將提高通過 HLS 或 DASH 交付時在軌道之間無縫切換的能力。 
+-  改進了可變畫面播放速率 （VFR） 源內容的 AV 同步
 
-### <a name="video-indexer-video-analytics"></a>影片索引子，影片分析
+### <a name="video-indexer-video-analytics"></a>視頻索引子，視頻分析
 
-- 使用 VideoAnalyzer 預設值解壓縮的主要畫面格，現在會在影片的原始解析度中，而不是調整大小。 高解析度的主要畫面格會提供原始品質影像，並可讓您使用 Microsoft 電腦視覺所提供的影像型人工智慧模型，並自訂視覺服務，從您的影片取得更多見解。
+- 使用 VideoAnalyzer 預設提取的關鍵幀現在採用視頻的原始解析度，而不是調整大小。 高解析度關鍵幀提取可為您提供原始品質圖像，並允許您利用 Microsoft 電腦視覺和自訂視覺服務提供的基於圖像的人工智慧模型，從視頻中獲得更多見解。
 
 ## <a name="september-2019"></a>2019 年 9 月
 
@@ -103,99 +103,99 @@ ms.locfileid: "78969818"
 
 #### <a name="live-linear-encoding-of-live-events"></a>即時事件的即時線性編碼
 
-媒體服務 v3 宣佈即時事件即時線性編碼24小時 x 365 天的預覽。
+媒體服務 v3 宣佈預覽 24 小時 x 365 天的即時線性編碼的即時事件。
 
 ###  <a name="media-services-v2"></a>媒體服務 v2  
 
-#### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
+#### <a name="deprecation-of-media-processors"></a>媒體處理器的棄用
 
-我們宣佈*Azure 媒體索引子*和*Azure 媒體索引子 2 Preview*已淘汰。 如需停用日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代這些舊版媒體處理器。
+我們宣佈棄用 Azure*媒體索引子*和*Azure 媒體索引子 2 預覽*。 有關停用日期，請參閱[舊元件](../previous/legacy-components.md)主題。 [Azure 媒體服務視頻索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)將替換這些舊媒體處理器。
 
-如需詳細資訊，請參閱[從 Azure 媒體索引子遷移和 Azure 媒體索引子2，到 Azure 媒體服務影片索引子](../previous/migrate-indexer-v1-v2.md)。
+有關詳細資訊，請參閱從[Azure 媒體索引子和 Azure 媒體索引子 2 遷移到 Azure 媒體服務視頻索引子](../previous/migrate-indexer-v1-v2.md)。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
 ###  <a name="media-services-v3"></a>媒體服務 v3  
 
-#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>南非地區配對已開放媒體服務 
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>南非區域對對媒體服務開放 
 
-媒體服務現在可以在南非北部和南非西部區域中使用。
+媒體服務現已在南非北部和南非西部地區提供。
 
-如需詳細資訊，請參閱[媒體服務 v3 所在的雲端和區域](azure-clouds-regions.md)。
+有關詳細資訊，請參閱[媒體服務 v3 存在的雲和區域](azure-clouds-regions.md)。
 
 ###  <a name="media-services-v2"></a>媒體服務 v2  
 
-#### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
+#### <a name="deprecation-of-media-processors"></a>媒體處理器的棄用
 
-我們宣佈淘汰*Windows Azure 媒體編碼器*（WAME）和*Azure 媒體編碼器*（AME）媒體處理器，這是即將淘汰的。 如需停用日期，請參閱此[舊版元件](../previous/legacy-components.md)主題。
+我們宣佈棄用正在停用的*Windows Azure 媒體編碼器*（WAME） 和*Azure 媒體編碼器*（AME） 媒體處理器。 有關停用日期，請參閱此[遺留元件](../previous/legacy-components.md)主題。
 
-如需詳細資訊，請參閱[將 WAME 遷移至媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101334)並[將 AME 遷移至媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+有關詳細資訊，請參閱[將 WAME 遷移到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101334)並將[AME 遷移到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101335)。
  
 ## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="content-protection"></a>內容保護
 
-當串流以權杖限制保護的內容時，終端使用者必須取得在金鑰傳遞要求中傳送的權杖。 「*權杖*重新執行防護」功能可讓媒體服務客戶設定相同權杖可用來要求金鑰或授權的次數限制。 如需詳細資訊，請參閱權杖重新執行[防護](content-protection-overview.md#token-replay-prevention)。
+當資料流受權杖限制保護的內容時，最終使用者需要獲取作為金鑰傳遞請求的一部分發送的權杖。 *權杖重播防止*功能允許媒體服務客戶對同一權杖可用於請求金鑰或許可證的次數設置限制。 有關詳細資訊，請參閱[權杖重播預防](content-protection-overview.md#token-replay-prevention)。
 
-從7月起，預覽功能僅適用于美國中部和美國西部。
+截至 7 月，預覽功能僅在美國中部和美國中西部提供。
 
 ## <a name="june-2019"></a>2019 年 6 月
 
-### <a name="video-subclipping"></a>影片子剪輯
+### <a name="video-subclipping"></a>視頻子剪輯
 
-您現在可以在使用[作業](https://docs.microsoft.com/rest/api/media/jobs)進行編碼時，修剪或子剪輯影片。 
+現在，您可以使用[作業](https://docs.microsoft.com/rest/api/media/jobs)對其進行編碼時修剪或子剪輯視頻。 
 
-這項功能適用于使用 [ [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ] 預設值或 [ [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) ] 預設建立的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。 
+此功能適用于使用[內置標準編碼預設預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)或[標準編碼預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)構建的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。 
 
-請參閱範例：
+請參閱示例：
 
-* [使用 .NET 子剪輯影片](subclip-video-dotnet-howto.md)
-* [使用 REST 子剪輯影片](subclip-video-rest-howto.md)
+* [使用 .NET 對視頻進行子剪輯](subclip-video-dotnet-howto.md)
+* [使用 REST 對視頻進行子剪輯](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure 監視器媒體服務診斷記錄和計量的支援
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure 監視器支援媒體服務診斷日誌和指標
 
-您現在可以使用 Azure 監視器來查看媒體服務所發出的遙測資料。
+現在可以使用 Azure 監視器查看媒體服務發出的遙測資料。
 
-* 使用 Azure 監視器診斷記錄來監視由媒體服務金鑰傳遞端點傳送的要求。 
-* 監視媒體服務[串流端點](streaming-endpoint-concept.md)所發出的計量。   
+* 使用 Azure 監視器診斷日誌監視媒體服務金鑰傳遞終結點發送的請求。 
+* 監視媒體服務[流終結點發出的指標](streaming-endpoint-concept.md)。   
 
-如需詳細資訊，請參閱[監視媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)。
+有關詳細資訊，請參閱[監視媒體服務指標和診斷日誌](media-services-metrics-diagnostic-logs.md)。
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>動態封裝中的多音訊追蹤支援 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>動態包裝中支援多聲道 
 
-當串流具有多個編解碼器和語言的多個音訊追蹤的資產時，[動態封裝](dynamic-packaging-overview.md)現在支援 HLS 輸出（第4版或更高版本）的多個音軌。
+當具有多個音軌和語言的流式處理資產時，[動態打包](dynamic-packaging-overview.md)現在支援 HLS 輸出的多聲道（版本 4 或以上）。
 
-### <a name="korea-regional-pair-is-open-for-media-services"></a>韓國地區配對已開放供媒體服務 
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韓國區域對對媒體服務開放 
 
-媒體服務現于韓國中部和南韓南部地區提供。 
+媒體服務現已在韓國中部和韓國南部地區提供。 
 
-如需詳細資訊，請參閱[媒體服務 v3 所在的雲端和區域](azure-clouds-regions.md)。
+有關詳細資訊，請參閱[媒體服務 v3 存在的雲和區域](azure-clouds-regions.md)。
 
 ### <a name="performance-improvements"></a>效能改善
 
-已新增包含媒體服務效能改進的更新。
+添加了包含媒體服務性能改進的更新。
 
-* 已更新支援處理的檔案大小上限。 請參閱[配額和限制](limits-quotas-constraints.md)。
+* 已更新支援處理的最大檔案大小。 請參閱，[配額和限制](limits-quotas-constraints.md)。
 * [編碼速度改進](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-presets"></a>新的預設
+### <a name="new-presets"></a>新預設
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)已新增至內建分析器預設值。
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)已新增至內建的編碼器預設值。 如需詳細資訊，請參閱[內容感知編碼](content-aware-encoding.md)。 
+* [FaceDetector 預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)已添加到內置分析儀預設中。
+* [內容感知編碼實驗](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)已添加到內置編碼器預設中。 有關詳細資訊，請參閱[內容感知編碼](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動態封裝現在支援杜比 Atmos。 如需詳細資訊，請參閱[動態封裝所支援的音訊編解碼器](dynamic-packaging-overview.md#audio-codecs)。
+動態包裝現在支援杜比全景聲。 有關詳細資訊，請參閱[動態打包支援的音訊編解碼器](dynamic-packaging-overview.md#audio-codecs)。
 
-您現在可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 如需詳細資訊，請參閱[將篩選與串流定位器產生關聯](filters-concept.md#associating-filters-with-streaming-locator)。
+您現在可以指定適用于流式處理器的資產或帳戶篩選器的清單。 有關詳細資訊，請參閱[將篩選器與流式處理器相關聯](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-Azure 國家雲端現在支援媒體服務 v3。 尚未在所有雲端中提供所有功能。 如需詳細資訊，請參閱[存在 Azure 媒體服務 v3 的雲端和區域](azure-clouds-regions.md)。
+媒體服務 v3 現在支援 Azure 國家雲。 尚未在所有雲端中提供所有功能。 如需詳細資訊，請參閱[存在 Azure 媒體服務 v3 的雲端和區域](azure-clouds-regions.md)。
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已被新增至適用於媒體服務的 Azure 事件格線結構描述。
 
@@ -262,7 +262,7 @@ CLI 2.0 模組現已適用於 [Azure 媒體服務 v3 GA](https://docs.microsoft.
 
 - ```--preset-names``` 引數已取代為 ```--preset```。 現在您一次只能設定 1 個輸出/預設 (以新增更多必須執行 ```az ams transform output add``` 的項目)。 此外，您可傳遞自訂 JSON 的路徑以設定自訂 StandardEncoderPreset。
 - 傳遞要移除的輸出索引即可執行 ```az ams transform output remove```。
-- 已在 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 和 ```az ams transform create``` 命令中新增 ```az ams transform output add``` 引數。
+- 已在 ```az ams transform create``` 和 ```az ams transform output add``` 命令中新增 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 引數。
 
 ## <a name="october-2018---ga"></a>2018 年 10 月 - GA
 
@@ -341,7 +341,7 @@ Azure CLI 2.0 模組即將推出，內含所有功能的操作 (包括即時、�
 
 ### <a name="net-sdk"></a>.NET SDK
 
-.NET SDK 中有下列功能：
+.NET SDK 中存在以下功能：
 
 * **轉換**和**工作**，可編碼或分析媒體內容。 如需範例，請參閱[串流處理檔案](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **串流定位器**，用於將內容發佈及串流處理到終端使用者裝置

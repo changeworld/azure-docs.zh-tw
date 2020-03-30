@@ -4,31 +4,31 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 2/14/2020
 ms.author: rohink
-ms.openlocfilehash: b674f8e31eb61328f60bb24866f73d02653b655f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3fbbb9d491eef202309c9e64f9a5a839a5d4516d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495445"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335070"
 ---
-**公用 DNS 區域**
+**公共 DNS 區域**
 
-| 資源 | 預設限制 |
+| 資源 | 限制 |
 | --- | --- |
-| 每個訂用帳戶的公用 DNS 區域 |250 <sup>1</sup> |
-| 每個公用 DNS 區域的記錄集 |10000 <sup>1</sup> |
-| 公用 DNS 區域中每個記錄集的記錄 |20 |
-| 單一 Azure 資源的別名記錄數目 |20|
-| 每個訂用帳戶的私人 DNS 區域 |1000|
-| 每個私人 DNS 區域的記錄集 |25000|
-| 私人 DNS 區域的每個記錄集記錄 |20|
-| 每個私人 DNS 區域的虛擬網路連結 |1000|
-| 已啟用自動註冊的每個私人 DNS 區域的虛擬網路連結 |100|
-| 已啟用自動註冊的虛擬網路可連結的私人 DNS 區域數目 |1|
-| 虛擬網路可以連結的私人 DNS 區域數目 |1000|
-| 虛擬機器可傳送至 Azure DNS 解析程式的 DNS 查詢數（每秒） |500 <sup>2</sup> |
-| 每個虛擬機器的 DNS 查詢佇列（擱置回應）數目上限 |200 <sup>2</sup> |
+| 每個訂閱的公共 DNS 區域 |250 <sup>1</sup> |
+| 每個公共 DNS 區域的記錄集 |10，000 <sup>1</sup> |
+| 公共 DNS 區域中設置的記錄 |20 |
+| 單個 Azure 資源的別名記錄數 |20|
+| 每個訂閱的專用 DNS 區域 |1000|
+| 每個專用 DNS 區域的記錄集 |25000|
+| 為專用 DNS 地區設定的記錄 |20|
+| 每個專用 DNS 區域的虛擬網路連結 |1000|
+| 啟用自動註冊的專用 DNS 區域的虛擬網路連結 |100|
+| 虛擬網路可以通過啟用自動註冊連接到的專用 DNS 區域數 |1|
+| 虛擬網路可以連結的專用 DNS 區域數 |1000|
+| 虛擬機器每秒可以發送到 Azure DNS 解析器的 DNS 查詢數 |500 <sup>2</sup> |
+| 每個虛擬機器排隊（掛起回應）的最大 DNS 查詢數 |200 <sup>2</sup> |
 
-<sup>1</sup>如果您需要增加這些限制，請聯絡 Azure 支援。
+<sup>1</sup>如果需要增加這些限制，請與 Azure 支援部門聯繫。
 
-<sup>2</sup>這些限制會套用至每個個別的虛擬機器，而不會套用至虛擬網路層級。 超過這些限制的 DNS 查詢會被捨棄。
+<sup>2</sup>這些限制應用於每個單獨的虛擬機器，而不是在虛擬網路級別。 將刪除超出這些限制的 DNS 查詢。

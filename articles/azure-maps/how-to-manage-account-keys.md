@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 入口網站中管理您的 Azure 地圖服務帳戶 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Azure 入口網站來管理您的 Microsoft Azure Maps 帳戶。
-author: farah-alyasari
-ms.author: v-faalya
+title: 在 Azure 門戶中管理 Azure 地圖帳戶 |微軟 Azure 地圖
+description: 在本文中，您將學習如何使用 Azure 門戶來管理 Microsoft Azure 地圖帳戶。
+author: philmea
+ms.author: philmea
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335541"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure 地圖服務帳戶
 
@@ -23,27 +23,27 @@ ms.locfileid: "77209965"
 
 ## <a name="create-a-new-account"></a>建立新帳戶
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
-2. 選取 Azure 入口網站中左上角的 [建立資源]。
+2. 選取 Azure 入口網站中左上角的 [建立資源]****。
 
-3. 搜尋並選取 [地圖服務]。 然後選取 [建立]。
+3. 搜尋並選取 [地圖服務]****。 然後選擇 **"創建**"。
 
 4. 輸入新帳戶的資訊。
 
-[![在 Azure 入口網站中輸入 Azure 地圖服務帳戶資訊](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+[![在 Azure 門戶中輸入 Azure 地圖帳戶資訊](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>刪除帳戶
 
-您可以從 Azure 入口網站刪除帳戶。 瀏覽至帳戶概觀頁面，然後選取 [刪除]。
+您可以從 Azure 入口網站刪除帳戶。 瀏覽至帳戶概觀頁面，然後選取 [刪除]****。
 
-[![在 Azure 入口網站中刪除您的 Azure 地圖服務帳戶](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
+[![刪除 Azure 門戶中的 Azure 地圖帳戶](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 接著，您會看到確認頁面。 您可以藉由鍵入帳戶名稱來確認刪除該帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 Azure 地圖服務設定驗證，並瞭解如何取得 Azure 地圖服務的訂用帳戶金鑰：
+使用 Azure 映射設置身份驗證並瞭解如何獲取 Azure 地圖訂閱金鑰：
 > [!div class="nextstepaction"]
 > [管理驗證](how-to-manage-authentication.md)
 

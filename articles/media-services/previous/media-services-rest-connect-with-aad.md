@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774969"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295432"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>使用 Azure AD 驗證搭配 REST 存取媒體服務 API
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 使用 Azure AD 驗證搭配 Azure 媒體服務時，您可以下列其中一種方式進行驗證：
 
@@ -47,10 +47,10 @@ ms.locfileid: "76774969"
 > [!IMPORTANT]
 > 目前，媒體服務支援 Azure 存取控制服務驗證模型。 不過，存取控制驗證將在 2018 年 6 月 1 日被取代。 建議您儘速移轉至 Azure AD 驗證模型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
+- [使用 Azure 門戶創建 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
 - 請先複習[使用 Azure AD 驗證存取 Azure 媒體服務 API 概觀](media-services-use-aad-auth-to-access-ams-api.md)一文。
 - 安裝 [Postman](https://www.getpostman.com/) \(英文\) REST 用戶端，來執行在本文中示範的 REST API。 
 
@@ -58,11 +58,11 @@ ms.locfileid: "76774969"
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>從 Azure 入口網站取得驗證資訊
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 
 若要存取 Media Services API，您必須收集下列資料點。
 
-|設定|範例|說明|
+|設定|範例|描述|
 |---|-------|-----|
 |Azure Active Directory 租用戶網域|microsoft.onmicrosoft.com|Azure AD 即 Secure Token Service (STS) 端點會透過以下格式建立：<https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Azure AD 會核發存取資源所需的 JWT (存取權杖)。|
 |REST API 端點|<https://amshelloworld.restv2.westus.media.azure.net/api/>|您的應用程式中發出之所有媒體服務 REST API 呼叫，都是針對此端點。|
@@ -75,22 +75,22 @@ ms.locfileid: "76774969"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至您的 AMS 執行個體。
-3. 選取 **API 存取**。
-4. 按一下 [使用服務主體連線到 Azure 媒體服務 API]。
+3. 選擇**API 訪問**。
+4. 按一下 [使用服務主體連線到 Azure 媒體服務 API]****。
 
     ![API 存取](./media/connect-with-rest/connect-with-rest01.png)
 
 5. 選取現有的 **Azure AD 應用程式**或建立新的 Azure AD 應用程式 (如下所示)。
 
     > [!NOTE]
-    > Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存取之媒體服務帳戶的「參與者」或「擁有者」角色。 如果您收到例外狀況指出「遠端伺服器傳回錯誤：(401) 未授權」，請參閱[存取控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
+    > 要使 Azure 媒體 REST 請求成功，調用使用者必須具有它嘗試訪問的媒體服務帳戶**的參與者或****擁有者**角色。 如果您收到例外狀況指出「遠端伺服器傳回錯誤：(401) 未授權」，請參閱[存取控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
 
     如果您需要建立新的 AD 應用程式，請依照下列步驟操作：
     
-   1. 按下 [新建]。
+   1. 按下 [新建]****。
    2. 輸入名稱。
-   3. 再按一次 [新建]。
-   4. 按下 [儲存]。
+   3. 再按一次 [新建]****。
+   4. 按下 [儲存] ****。
 
       ![API 存取](./media/connect-with-rest/new-app.png)
 
@@ -105,13 +105,13 @@ ms.locfileid: "76774969"
 
 7. 取得應用程式的**金鑰** (用戶端秘密)。 
 
-   1. 按一下 [管理應用程式] 按鈕 (請注意，用戶端識別碼資訊位於**應用程式識別碼**底下)。 
-   2. 按 [金鑰]。
+   1. 按一下 [管理應用程式]**** 按鈕 (請注意，用戶端識別碼資訊位於**應用程式識別碼**底下)。 
+   2. 按 [金鑰]****。
     
        ![API 存取](./media/connect-with-rest/manage-app.png)
-   3. 產生應用程式金鑰 (用戶端秘密)，方法是填入 **DESCRIPTION** 和 **EXPIRES**，然後按 [儲存]。
+   3. 產生應用程式金鑰 (用戶端秘密)，方法是填入 **DESCRIPTION** 和 **EXPIRES**，然後按 [儲存]****。
     
-       一旦按下 [儲存] 按鈕後，隨即出現金鑰值。 離開刀鋒視窗之前，請複製金鑰值。
+       一旦按下 [儲存]**** 按鈕後，隨即出現金鑰值。 離開刀鋒視窗之前，請複製金鑰值。
 
    ![API 存取](./media/connect-with-rest/connect-with-rest03.png)
 
@@ -125,34 +125,34 @@ ms.locfileid: "76774969"
 本節示範如何使用 **Postman** 來執行 REST API，從而傳回 JWT 持有人權杖 (存取權杖)。 若要呼叫任何媒體服務 REST API，您必須將「授權」標頭新增至呼叫，並將 "Bearer *your_access_token*" 的值新增至每個呼叫 (如本教學課程的下一節所示)。 
 
 1. 開啟 **Postman**。
-2. 選取 [POST]。
+2. 選取 [POST] ****。
 3. 輸入 URL，其中包含您的租用戶名稱，且使用下列格式：租用戶名稱結尾應為 **.onmicrosoft.com**，且 URL 結尾應為 **oauth2/token**： 
 
-    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
+    `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
-4. 選取 [標頭] 索引標籤。
+4. 選取 [標頭]**** 索引標籤。
 5. 使用「索引鍵/值」資料格線輸入**標頭**資訊。 
 
     ![資料格線](./media/connect-with-rest/headers-data-grid.png)
 
-    或者，按一下 Postman 視窗右邊的 [大量編輯] 連結，並將下列程式碼貼上。
+    或者，按一下 Postman 視窗右邊的 [大量編輯]**** 連結，並將下列程式碼貼上。
 
         Content-Type:application/x-www-form-urlencoded
         Keep-Alive:true
 
-6. 按 [主體] 索引標籤。
+6. 按 [主體]**** 索引標籤。
 7. 使用「索引鍵/值」資料格線 (取代用戶端識別碼和祕密值) 輸入主體資訊。 
 
     ![資料格線](./media/connect-with-rest/data-grid.png)
 
-    或者，按一下 Postman 視窗右邊的 [大量編輯]，並將下列主體貼上 (取代用戶端識別碼和祕密值)：
+    或者，按一下 Postman 視窗右邊的 [大量編輯]****，並將下列主體貼上 (取代用戶端識別碼和祕密值)：
 
         grant_type:client_credentials
         client_id:{Your Client ID that you got from your Azure AD Application}
         client_secret:{Your client secret that you got from your Azure AD Application's Keys}
         resource:https://rest.media.azure.net
 
-8. 按 [傳送]。
+8. 按 [傳送]****。
 
     ![取得權杖](./media/connect-with-rest/connect-with-rest04.png)
 
@@ -163,21 +163,21 @@ ms.locfileid: "76774969"
 本節示範如何使用 **Postman** 存取**資產** API。
 
 1. 開啟 **Postman**。
-2. 選取 [GET]。
+2. 選取 [GET] ****。
 3. 貼上 REST API 端點 (例如 https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
-4. 選取 [授權] 索引標籤。 
-5. 選取 [持有人權杖]。
+4. 選取 [授權]**** 索引標籤。 
+5. 選取 [持有人權杖]****。
 6. 將上一節中建立的權杖貼上。
 
     ![取得權杖](./media/connect-with-rest/connect-with-rest05.png)
 
     > [!NOTE]
-    > Mac 與 PC 之間的 Postman UX 可能有所不同。 如果 Mac 版本 [驗證] 區段下拉式清單中沒有「持有人權杖」選項，您應該在 Mac 用戶端上手動新增 [授權] 標頭。
+    > Mac 與 PC 之間的 Postman UX 可能有所不同。 如果 Mac 版本 [驗證]**** 區段下拉式清單中沒有「持有人權杖」選項，您應該在 Mac 用戶端上手動新增 [授權]**** 標頭。
 
    ![授權標頭](./media/connect-with-rest/auth-header.png)
 
-7. 選取 [標頭]。
-5. 按一下 Postman 視窗右邊的 [大量編輯] 連結。
+7. 選取 [標頭]****。
+5. 按一下 Postman 視窗右邊的 [大量編輯]**** 連結。
 6. 將下列標頭貼上：
 
         x-ms-version:2.19
@@ -186,7 +186,7 @@ ms.locfileid: "76774969"
         DataServiceVersion:3.0
         MaxDataServiceVersion:3.0
 
-7. 按 [傳送]。
+7. 按 [傳送]****。
 
 傳回的回應會包含您帳戶中的資產。
 

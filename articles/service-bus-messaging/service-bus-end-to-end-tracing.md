@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排端對端追蹤與診斷 | Microsoft Docs
-description: 概述服務匯流排用戶端診斷和端對端追蹤（用戶端透過所有與處理相關的服務）。
+description: 服務匯流排用戶端診斷和端到端跟蹤概述（用戶端通過處理涉及的所有服務。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: a184e76faa89199d3e13ece3e17f94f73d995a12
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294191"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>透過服務匯流排傳訊進行分散式追蹤與相互關聯
 
@@ -30,12 +30,12 @@ ms.locfileid: "76760261"
 Microsoft Azure 服務匯流排傳訊已定義產生者與取用者應用來傳遞此類追蹤內容的裝載屬性。
 該通訊協定是以 [HTTP 關聯性通訊協定](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) \(英文\) 為基礎。
 
-| 屬性名稱        | 說明                                                 |
+| 屬性名稱        | 描述                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 產生者針對佇列之外部呼叫的唯一識別碼。 請參閱 [HTTP 通訊協定中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) \(英文\) 以了解邏輯依據、考量及格式 |
 |  Correlation-Context | 作業內容，系統會將它傳播至涉及作業處理的所有服務。 如需詳細資訊，請參閱 [HTTP 通訊協定中的 Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) \(英文\) |
 
-## <a name="service-bus-net-client-auto-tracing"></a>服務匯流排 .NET 用戶端自動追蹤
+## <a name="service-bus-net-client-autotracing"></a>服務匯流排 .NET 用戶端自動跟蹤
 
 從 3.0.0 版開始，[適用於 .NET 的 Microsoft Azure 服務匯流排用戶端](/dotnet/api/microsoft.azure.servicebus.queueclient)會提供追蹤檢測點，可由追蹤系統或用戶端程式碼片段連結。
 該檢測允許從用戶端追蹤針對服務匯流排傳訊服務的所有呼叫。 若訊息處理是透過[訊息處理常式模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)完成，則訊息處理也會進行檢測處理
@@ -84,6 +84,12 @@ async Task ProcessAsync(Message message)
 於訊息處理期間回報的巢狀追蹤和例外狀況，也會具有相互關聯屬性的戳記，以代表它們是 `RequestTelemetry` 的「子系」。
 
 如果您在訊息處理期間對支援的外部元件進行呼叫，系統也會自動對它們進行追蹤及相互關聯。 請參閱[使用 Application Insights .NET SDK 追蹤自訂作業](../azure-monitor/app/custom-operations-tracking.md)以了解手動追蹤及相互關聯。
+
+如果您運行除應用程式見解 SDK 之外的任何外部代碼，則在查看應用程式見解日誌時，希望看到**較長的持續時間**。 
+
+![應用程式見解日誌中的持續時間更長](./media/service-bus-end-to-end-tracing/longer-duration.png)
+
+這並不意味著接收消息時出現延遲。 在這種情況下，由於消息作為參數傳遞到 SDK 代碼，消息已收到。 而且，應用見解日誌 （**Process**） 中**的名稱**標記指示消息現在由外來事件處理代碼處理。 此問題與 Azure 無關。 相反，這些指標是指外部代碼的效率，因為消息已經從服務匯流排接收。 請參閱[GitHub 上的此檔](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)，查看從服務匯流排收到消息後生成和分配**進程**標記的位置。 
 
 ### <a name="tracking-without-tracing-system"></a>在沒有追蹤系統下進行追蹤
 如果您的追蹤系統不支援自動「服務匯流排」呼叫追蹤，您可以研究如何將該支援新增至追蹤系統或應用程式中。 本節說明由服務匯流排 .NET 用戶端所傳送的診斷事件。  
@@ -139,9 +145,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 在此範例中，接聽程式會記錄每個服務匯流排作業的持續期間、結果、唯一識別碼，以及開始時間。
 
-#### <a name="events"></a>活動
+#### <a name="events"></a>事件
 
-針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們會提供作業的結果，並以 Activity 屬性的形式提供開始時間和持續期間。
+針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們提供操作的結果，以及作為活動屬性的開始時間和持續時間。
 
 每個裝載都會為接聽程式提供作業的內容，它會複寫 API 傳入參數和傳回值。 'Stop' 事件裝載具有 'Start' 事件裝載的所有屬性，因此您可以完全忽略 'Start' 事件。
 

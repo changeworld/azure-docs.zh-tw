@@ -1,38 +1,37 @@
 ---
-title: Azure Marketplace 的 Cloud Partner 入口網站中的 [虛擬機器支援] 索引標籤
+title: Azure 應用商店的雲合作夥伴門戶中的虛擬機器支援選項卡
 description: 說明用來建立 Microsoft Azure Marketplace 虛擬機器供應項目的支援索引標籤。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: fcf7a51e69e901ae04b29c4fb621d401d170d2f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288847"
 ---
 # <a name="virtual-machine-support-tab"></a>虛擬機器支援索引標籤
 
-[新增供應項目] 頁面中的 [支援] 索引標籤可協助提供供應項目所需的技術及使用者支援資源。  其劃分成三個部分：**工程**、**客戶支援**以及**支援 URL**。
+[新增供應項目]**** 頁面中的 [支援]**** 索引標籤可協助提供供應項目所需的技術及使用者支援資源。  其劃分成三個部分：**工程**、**客戶支援**以及**支援 URL**。
 
 ![虛擬機器新增供應項目表單上的支援索引標籤](./media/publishvm_012.png)
 
-## <a name="field-values"></a>域值
+## <a name="field-values"></a>欄位值
 
 下表說明這些欄位的用途和內容。 必要欄位由星號 (*) 標示。
 
-|         欄位                 |       說明                                                        |
+|         欄位                 |       描述                                                        |
 |        -------                |       ------------                                                       |
 | *工程連絡人*     | Microsoft 與貴組織的技術連絡人 | 
-| **名稱\***                | 負責技術/工程支援的人員或群組名稱     |
+| **名字\***                | 負責技術/工程支援的人員或群組名稱     |
 | **電子郵件\***               | 此技術連絡人的電子郵件地址                                      |
 | **電話\***               | 此技術連絡人的電話號碼                                           |
 | *客戶支援*        | 接收客戶在 Azure 中開啟的支援票證 |
-| **名稱\***                | 負責客戶支援的人員或群組名稱                  |
+| **名字\***                | 負責客戶支援的人員或群組名稱                  |
 | **電子郵件\***               | 客戶支援部門的電子郵件地址                                            |
 | **電話\***               | 客戶支援部門的電話號碼                                            |
 | *支援 URL*            | 當您的客戶開啟支援票證時，Microsoft 會使用這些支援網站 |
@@ -43,4 +42,4 @@ ms.locfileid: "73808809"
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，如果您尚未 doen，請完成[虛擬機器技術資產](./cpp-create-technical-assets.md)。
+接下來，如果您尚未這樣做，請最終確定[虛擬機器技術資產](./cpp-create-technical-assets.md)。

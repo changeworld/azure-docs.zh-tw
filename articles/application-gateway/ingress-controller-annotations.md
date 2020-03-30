@@ -1,43 +1,43 @@
 ---
-title: 應用程式閘道輸入控制器注釋
-description: 本文提供應用程式閘道輸入控制器特定附注的相關檔。
+title: 應用程式閘道入口控制器注釋
+description: 本文提供有關特定于應用程式閘道入口控制器的注釋的文檔。
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279958"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335814"
 ---
-# <a name="annotations-for-application-gateway-ingress-controller"></a>應用程式閘道輸入控制器的注釋 
+# <a name="annotations-for-application-gateway-ingress-controller"></a>應用程式閘道入口控制器的注釋 
 
-## <a name="introductions"></a>作
+## <a name="introductions"></a>介紹
 
-Kubernetes 輸入資源可以用任意索引鍵/值組來標注。 AGIC 相依于程式應用程式閘道功能的注釋，無法透過輸入 YAML 進行設定。 輸入注釋會套用至所有從輸入資源衍生的 HTTP 設定、後端集區和接聽程式。
+庫伯內斯入口資源可以使用任意鍵/值對進行進一步調整。 AGIC 依靠注釋來對應用程式閘道功能進行程式設計，這些功能無法通過入口 YAML 進行配置。 入口注釋應用於所有 HTTP 設置、後端池和從入口資源派生的攔截器。
 
-## <a name="list-of-supported-annotations"></a>支援的批註清單
+## <a name="list-of-supported-annotations"></a>受支援的注釋清單
 
-對於要由 AGIC 觀察的輸入資源，必須以 `kubernetes.io/ingress.class: azure/application-gateway`**標注**。 只有 AGIC 才會使用有問題的輸入資源。
+要由 AGIC 觀察入口資源，必須用`kubernetes.io/ingress.class: azure/application-gateway`進行**注注**。 只有這樣，AGIC 才能處理有問題的入口資源。
 
-| 注釋索引鍵 | 值類型 | 預設值 | 允許的值
+| 注釋鍵 | 值類型 | 預設值 | 允許的值
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
-| [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |
+| [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining](#connection-draining) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32` （秒） | `30` | |
+| [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32`（秒） | `30` | |
 | [appgw.ingress.kubernetes.io/cookie-based-affinity](#cookie-based-affinity) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32` （秒） | `30` | |
+| [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32`（秒） | `30` | |
 | [appgw.ingress.kubernetes.io/use-private-ip](#use-private-ip) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/backend-protocol](#backend-protocol) | `string` | `http` | `http`, `https` |
 
-## <a name="backend-path-prefix"></a>後端路徑前置詞
+## <a name="backend-path-prefix"></a>後端路徑首碼
 
-此批註可讓輸入資源中指定的後端路徑以此注釋中指定的前置詞重寫。 這可讓使用者公開服務，其端點與用來在輸入資源中公開服務的端點名稱不同。
+此注釋允許用此注釋中指定的首碼重寫入口資源中指定的後端路徑。 這允許使用者公開終結點不同于用於在入口資源中公開服務的終結點名稱的服務。
 
 ### <a name="usage"></a>使用量
 
@@ -65,14 +65,14 @@ spec:
           serviceName: go-server-service
           servicePort: 80
 ```
-在上述範例中，我們已使用注釋 `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` 定義名為 `go-server-ingress-bkprefix` 的輸入資源。 批註會告訴應用程式閘道建立 HTTP 設定，其中會有路徑前置詞覆寫，`/hello` 要 `/test/`。
+在上面的示例中，我們定義了一個帶有注釋`go-server-ingress-bkprefix``appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"`的入口資源。 注釋告訴應用程式閘道創建 HTTP 設置，該設置將具有路徑首碼覆蓋到`/hello``/test/`的路徑。
 
 > [!NOTE] 
-> 在上述範例中，我們只定義了一個規則。 不過，注釋適用于整個輸入資源，因此，如果使用者已定義多個規則，則會針對每個指定的路徑設定後端路徑前置詞。 因此，如果使用者想要不同的規則使用不同的路徑前置詞（即使是針對相同的服務），他們必須定義不同的輸入資源。
+> 在上面的示例中，我們只定義了一個規則。 但是，注釋適用于整個入口資源，因此，如果使用者定義了多個規則，則將為指定的每個路徑設置後端路徑首碼。 因此，如果使用者想要具有不同路徑首碼的不同規則（即使對於同一服務），則需要定義不同的入口資源。
 
-## <a name="ssl-redirect"></a>SSL 重新導向
+## <a name="tls-redirect"></a>TLS 重定向
 
-應用程式閘道[可以設定](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview)為將 HTTP url 自動重新導向至其 HTTPS 對應專案。 當此批註存在且已正確設定 TLS 時，Kubernetes 輸入控制器將會使用重新導向設定來建立[路由規則](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration)，並將變更套用至您的應用程式閘道。 建立的重新導向將會是 HTTP `301 Moved Permanently`。
+可以將應用程式閘道[配置為](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview)自動將 HTTP URL 重定向到其 HTTPS 對應方。 當存在此注釋且 TLS 配置正確時，Kubernetes 入口控制器將創建[一個帶有重定向配置的路由規則](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration)，並將更改應用於應用程式閘道。 創建的重定向將為 HTTP `301 Moved Permanently`。
 
 ### <a name="usage"></a>使用量
 
@@ -105,10 +105,10 @@ spec:
           servicePort: 80
 ```
 
-## <a name="connection-draining"></a>清空連接
+## <a name="connection-draining"></a>連接排水
 
-`connection-draining`：此批註可讓使用者指定是否要啟用連接清空。
-`connection-draining-timeout`：此批註可讓使用者指定超時時間，之後應用程式閘道會終止對清空後端端點的要求。
+`connection-draining`：此注釋允許使用者指定是否啟用連接耗盡。
+`connection-draining-timeout`：此注釋允許使用者指定超時，之後應用程式閘道將終止對排水後端終結點的請求。
 
 ### <a name="usage"></a>使用量
 
@@ -139,9 +139,9 @@ spec:
           servicePort: 80
 ```
 
-## <a name="cookie-based-affinity"></a>以 Cookie 為基礎的相似性
+## <a name="cookie-based-affinity"></a>基於 Cookie 的關聯
 
-此批註可讓指定是否啟用以 cookie 為基礎的親和性。
+此注釋允許指定是否啟用基於 Cookie 的關聯。
 
 ### <a name="usage"></a>使用量
 
@@ -172,7 +172,7 @@ spec:
 
 ## <a name="request-timeout"></a>要求逾時
 
-此批註可讓您指定要求超時（以秒為單位），在這之後，如果未收到回應，應用程式閘道將會讓要求失敗。
+此注釋允許指定請求超時，在幾秒鐘內，應用程式閘道將在未收到回應時使請求失敗。
 
 ### <a name="usage"></a>使用量
 
@@ -201,13 +201,13 @@ spec:
           servicePort: 80
 ```
 
-## <a name="use-private-ip"></a>使用私人 IP
+## <a name="use-private-ip"></a>使用專用 IP
 
-此批註可讓我們指定是否要在應用程式閘道的私人 IP 上公開此端點。
+此注釋允許我們指定是否在應用程式閘道的專用 IP 上公開此終結點。
 
 > [!NOTE]
-> * 應用程式閘道不支援相同埠上的多個 Ip （例如：80/443）。 具有批註 `appgw.ingress.kubernetes.io/use-private-ip: "false"` 的輸入和 `HTTP` 上 `appgw.ingress.kubernetes.io/use-private-ip: "true"` 的其他會導致 AGIC 在更新應用程式閘道時失敗。
-> * 對於沒有私人 IP 的應用程式閘道，將會忽略具有 `appgw.ingress.kubernetes.io/use-private-ip: "true"` 的會輸入。 這會反映在這些會輸入的控制器記錄和輸入事件中，並 `NoPrivateIP` 警告。
+> * 應用程式閘道不支援同一端口上的多個 IP（例如：80/443）。 帶注釋`appgw.ingress.kubernetes.io/use-private-ip: "false"`的入口和其他帶`appgw.ingress.kubernetes.io/use-private-ip: "true"`on`HTTP`的入口將導致 AGIC 在更新應用程式閘道時失敗。
+> * 對於沒有專用 IP 的應用程式閘道，將忽略帶有`appgw.ingress.kubernetes.io/use-private-ip: "true"`入口的入口。 這將反映在帶有`NoPrivateIP`警告的入口的控制器日誌和入口事件中。
 
 
 ### <a name="usage"></a>使用量
@@ -235,13 +235,13 @@ spec:
           servicePort: 80
 ```
 
-## <a name="backend-protocol"></a>後端通訊協定
+## <a name="backend-protocol"></a>後端協定
 
-此批註可讓我們指定應用程式閘道在與 pod 交談時應該使用的通訊協定。 支援的通訊協定： `http`、`https`
+此注釋允許我們指定應用程式閘道在與 Pods 對話時應使用的協定。 支援的協定： `http``https`
 
 > [!NOTE]
-> * 雖然應用程式閘道支援自我簽署憑證，但目前只有在 pod 使用由知名 CA 簽署的憑證時，AGIC 才支援 `https`。
-> * 請務必不要在 pod 上使用埠80搭配 HTTPS 和埠443搭配 HTTP。
+> * 雖然應用程式閘道支援自簽章憑證，但當前 AGIC 僅在 Pod`https`使用由知名 CA 簽名的證書時支援。
+> * 確保不要將埠 80 與 HTTPS 一起使用，並且埠 443 與 POD 上的 HTTP 一起使用。
 
 ### <a name="usage"></a>使用量
 ```yaml

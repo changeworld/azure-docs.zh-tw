@@ -1,19 +1,18 @@
 ---
-title: API 考慮 |Azure Marketplace
+title: API 注意事項 |Azure 應用商店
 description: 使用 Marketplace API 時的版本設定、錯誤處理與授權問題。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 07cdb5e44dde0ca655191111d0a23dbab85b4cb2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4e04f521ed2023dfb9cd562549cb2e1bcd319b8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819732"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288626"
 ---
 # <a name="api-considerations"></a>API 考量
 
@@ -36,7 +35,7 @@ ms.locfileid: "73819732"
     }
 ```            
 
-<a name="errors"></a>錯誤數
+<a name="errors"></a>Errors
 ------
 
 API 會以對應的 HTTP 狀態碼與選擇性的額外資訊 (在回應中序列化為 JSON) 回應錯誤。

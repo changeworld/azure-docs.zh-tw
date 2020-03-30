@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678249"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>執行 Azure Data Factory 中的 wait 活動
+# <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 資料工廠中執行等待活動
 在管線中使用 Wait (等待) 活動時，管線便會等待一段指定的時間，然後再繼續執行後續的活動。 
 
 ## <a name="syntax"></a>語法
@@ -36,11 +36,11 @@ ms.locfileid: "73678249"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 說明 | 允許的值 | 必要
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-名稱 | `Wait` 活動的名稱。 | 字串 | 是
-類型 | 必須設為 **Wait**。 | 字串 | 是
-waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | Integer | 是
+NAME | `Wait` 活動的名稱。 | String | 是
+type | 必須設為 **Wait**。 | String | 是
+waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | 整數  | 是
 
 ## <a name="example"></a>範例
 
@@ -102,9 +102,9 @@ waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | Intege
 請參閱 Data Factory 支援的其他控制流程活動： 
 
 - [If 條件活動](control-flow-if-condition-activity.md)
-- [執行管線活動](control-flow-execute-pipeline-activity.md)
-- [For Each 活動](control-flow-for-each-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [執行管道活動](control-flow-execute-pipeline-activity.md)
+- [對於每個活動](control-flow-for-each-activity.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [Web 活動](control-flow-web-activity.md)
 - [Until 活動](control-flow-until-activity.md)

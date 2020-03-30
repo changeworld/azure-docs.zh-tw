@@ -1,172 +1,172 @@
 ---
-title: 管理 Azure Logic Apps 中的整合服務環境
-description: 檢查網路健康狀態，並管理整合服務環境（ISE）中的邏輯應用程式、連線、自訂連接器和整合帳戶，以進行 Azure Logic Apps
+title: 在 Azure 邏輯應用中管理整合服務環境
+description: 檢查 Azure 邏輯應用的整合服務環境 （ISE） 中的網路運行狀況並管理邏輯應用、連接、自訂連接器和集成帳戶
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284196"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中管理您的整合服務環境（ISE）
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 邏輯應用中管理整合服務環境 （ISE）
 
-本文說明如何針對您的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)執行管理工作，例如：
+本文演示如何為[整合服務環境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)執行管理工作，例如：
 
-* 管理您 ISE 中的資源，例如邏輯應用程式、連線、整合帳戶和連接器。
-* 檢查 ISE 的網路健全狀況。
-* 新增容量、重新開機 ISE，或刪除您的 ISE，請遵循本主題中的步驟。 若要將這些成品新增至您的 ISE，請參閱[將構件新增至您的整合服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)。
+* 管理 ISE 中的邏輯應用、連接、集成帳戶和連接器等資源。
+* 檢查 ISE 的網路運行狀況。
+* 添加容量、重新開機 ISE 或刪除 ISE，請按照本主題中的步驟操作。 要將這些專案添加到 ISE，請參閱[向整合服務環境添加工件](../logic-apps/add-artifacts-integration-service-environment-ise.md)。
 
 ## <a name="view-your-ise"></a>查看您的 ISE
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
-1. 在入口網站的搜尋方塊中，輸入「整合服務環境」，然後選取 [**整合服務環境**]。
+1. 在門戶的搜索框中，輸入"整合服務環境"，然後選擇**整合服務環境**。
 
-   ![尋找整合服務環境](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
+   ![查找整合服務環境](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
 
-1. 從 [結果] 清單中，選取您的整合服務環境。
+1. 從結果清單中選擇整合服務環境。
 
    ![選取整合服務環境](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
 
-1. 繼續閱讀下一節，以尋找 ISE 中的邏輯應用程式、連線、連接器或整合帳戶。
+1. 繼續下一節，在 ISE 中查找邏輯應用、連接、連接器或集成帳戶。
 
 <a name="check-network-health"></a>
 
-## <a name="check-network-health"></a>檢查網路健全狀況
+## <a name="check-network-health"></a>檢查網路運行狀況
 
-在您的 ISE 功能表的 [**設定**] 底下，選取 [**網路健康**情況]。 此窗格會顯示子網的健全狀況狀態，以及其他服務的輸出相依性。
+在 ISE 功能表上，**在"設置"** 下，選擇 **"網路運行狀況**"。 此窗格顯示子網的運行狀況和其他服務的出站依賴項。
 
-![檢查網路健全狀況](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
+![檢查網路運行狀況](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
 
 <a name="find-logic-apps"></a>
 
-## <a name="manage-your-logic-apps"></a>管理您的邏輯應用程式
+## <a name="manage-your-logic-apps"></a>管理邏輯應用
 
-您可以查看和管理 ISE 中的邏輯應用程式。
+您可以查看和管理 ISE 中的邏輯應用。
 
-1. 在您的 ISE 功能表的 [**設定**] 底下，選取 [**邏輯應用程式**]。
+1. 在 ISE 功能表上，**在"設置"** 下，選擇 **"邏輯應用**"。
 
-   ![查看邏輯應用程式](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![查看邏輯應用](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. 若要移除您在 ISE 中不再需要的邏輯應用程式，請選取那些邏輯應用程式，然後選取 [**刪除**]。 若要確認您想要刪除，請選取 **[是]** 。
+1. 要刪除 ISE 中不再需要的邏輯應用，請選擇這些邏輯應用，然後選擇 **"刪除**"。 要確認要刪除，請選擇"**是**"。
 
 <a name="find-api-connections"></a>
 
-## <a name="manage-api-connections"></a>管理 API 連線
+## <a name="manage-api-connections"></a>管理 API 連接
 
-您可以查看和管理在 ISE 中執行的邏輯應用程式所建立的連線。
+您可以查看和管理由 ISE 中運行的邏輯應用創建的連接。
 
-1. 在您的 ISE 功能表的 [**設定**] 底下，選取 [ **API**連線]。
+1. 在 ISE 功能表上，**在"設置"** 下，選擇**API 連接**。
 
-   ![查看 API 連線](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+   ![查看 API 連接](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
 
-1. 若要移除您在 ISE 中不再需要的連線，請選取這些連接，然後選取 [**刪除**]。 若要確認您想要刪除，請選取 **[是]** 。
+1. 要刪除 ISE 中不再需要的連接，請選擇這些連接，然後選擇 **"刪除**"。 要確認要刪除，請選擇"**是**"。
 
 <a name="manage-api-connectors"></a>
 
 ## <a name="manage-ise-connectors"></a>管理 ISE 連接器
 
-您可以查看和管理部署至 ISE 的 API 連接器。
+您可以查看和管理部署到 ISE 的 API 連接器。
 
-1. 在您的 ISE 功能表的 [**設定**] 底下，選取 [**受控連接器**]。
+1. 在 ISE 功能表上，**在"設置"** 下，選擇 **"託管連接器**"。
 
-   ![查看受管理的連接器](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+   ![查看託管連接器](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
 
-1. 若要移除您不想在 ISE 中使用的連接器，請選取這些連接器，然後選取 [**刪除**]。 若要確認您想要刪除，請選取 **[是]** 。
+1. 要刪除 ISE 中不希望可用的連接器，請選擇這些連接器，然後選擇 **"刪除**"。 要確認要刪除，請選擇"**是**"。
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>管理自訂連接器
 
-您可以查看和管理您部署到 ISE 的自訂連接器。
+您可以查看和管理部署到 ISE 的自訂連接器。
 
-1. 在您的 ISE 功能表的 [**設定**] 底下，選取 [**自訂連接器**]。
+1. 在 ISE 功能表上，**在"設置"** 下，選擇 **"自訂連接器**"。
 
    ![尋找自訂連接器](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. 若要移除您在 ISE 中不再需要的自訂連接器，請選取這些連接器，然後選取 [**刪除**]。 若要確認您想要刪除，請選取 **[是]** 。
+1. 要刪除 ISE 中不再需要的自訂連接器，請選擇這些連接器，然後選擇 **"刪除**"。 要確認要刪除，請選擇"**是**"。
 
 <a name="find-integration-accounts"></a>
 
 ## <a name="manage-integration-accounts"></a>管理整合帳戶
 
-1. 在您的 ISE 功能表的 [**設定**] 下，選取 [**整合帳戶**]。
+1. 在 ISE 功能表上，**在"設置"** 下，選擇 **"集成帳戶**"。
 
    ![尋找整合帳戶](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
 
-1. 若要在不再需要的情況下從 ISE 中移除整合帳戶，請選取那些整合帳戶，然後選取 [**刪除**]。
+1. 要在不再需要時從 ISE 中刪除集成帳戶，請選擇這些集成帳戶，然後選擇 **"刪除**"。
 
 <a name="add-capacity"></a>
 
 ## <a name="add-ise-capacity"></a>新增 ISE 容量
 
-Premium ISE 基礎單位具有固定容量，因此如果您需要更多輸送量，可以在建立期間或之後新增更多縮放單位。 開發人員 SKU 不包含新增縮放單位的功能。
+高級 ISE 基本單位具有固定容量，因此，如果您需要更多輸送量，可以在創建期間或之後添加更多縮放單位。 開發人員 SKU 不包括添加縮放單位的功能。
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 ISE。
+1. 在[Azure 門戶](https://portal.azure.com)中，轉到 ISE。
 
-1. 若要查看 ISE 的使用量和效能計量，請在 ISE 功能表上選取 **[總覽**]。
+1. 要查看 ISE 的使用方式和性能指標，請在 ISE 功能表上選擇 **"概述**"。
 
    ![查看 ISE 的使用方式](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
 
-1. 在 [**設定**] 下，選取 [**相應**放大]。在 [**設定**] 窗格中，從下列選項中選取：
+1. 在 **"設置"** 下，選擇 **"橫向縮小**"。在 **"配置"** 窗格中，從以下選項中進行選擇：
 
-   * [**手動調整**](#manual-scale)：根據您要使用的處理單位數目進行調整。
-   * [**自訂自動**](#custom-autoscale)調整：根據效能計量進行選擇，方法是選取各種準則，並指定符合該準則的臨界值條件。
+   * [**手動縮放**](#manual-scale)：根據要使用的處理單位數進行縮放。
+   * [**自訂自動縮放**](#custom-autoscale)：通過從各種條件中選擇並指定滿足該條件的閾值條件，根據性能指標進行縮放。
 
-   ![選取您想要的縮放類型](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![選擇所需的縮放類型](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 
 ### <a name="manual-scale"></a>手動調整
 
-1. 選取 [**手動調整**] 之後，針對 [**其他容量**]，選取您想要使用的縮放單位數。
+1. 選擇 **"手動縮放**"後，選擇 **"額外容量**"，選擇要使用的縮放單位數。
 
-   ![選取您想要的縮放類型](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
+   ![選擇所需的縮放類型](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
-1. 完成時，選取 [儲存]。
+1. 完成時，選取 [儲存]****。
 
 <a name="custom-autoscale"></a>
 
-### <a name="custom-autoscale"></a>自訂自動調整
+### <a name="custom-autoscale"></a>自訂自動縮放
 
-1. 在您選取 [**自訂自動**調整] 之後，針對 [**自動調整設定名稱**]，提供您的設定名稱，並選擇性地選取設定所屬的 Azure 資源群組。
+1. 選擇 **"自訂自動縮放**"後，自動**縮放設置名稱**為 "為設置提供名稱"，並可以選擇選擇該設置所屬的 Azure 資源組。
 
-   ![提供自動調整設定的名稱，然後選取 [資源群組]](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+   ![提供自動縮放設置的名稱並選擇資源組](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
-1. 針對 [**預設**條件]，選取 [**根據度量調整規模**] 或 [**調整為特定實例計數**]。
+1. 對於 **"預設條件**"，選擇 **"基於指標縮放"** 或 **"縮放"到特定實例計數**。
 
-   * 如果您選擇 [實例型]，請輸入處理單位的數位，這是介於0到10之間的值。
+   * 如果選擇基於實例，請輸入處理單位的數位，該數位的值為 0 到 10。
 
-   * 如果您選擇 [以計量為基礎]，請遵循下列步驟：
+   * 如果選擇基於指標，請按照以下步驟操作：
 
-     1. 在 [**規則**] 區段中，選取 [**新增規則**]。
+     1. 在 **"規則"** 部分中，選擇 **"添加規則**"。
 
-     1. 在 [**調整規則**] 窗格上，設定規則引發時要採取的準則和動作。
+     1. 在 **"縮放規則"** 窗格中，設置規則引發時要執行的操作。
 
-     1. 針對 [**實例限制**]，請指定下列值：
+     1. 對於**實例限制**，請指定以下值：
 
-        * **最小值**：要使用的處理單位數目下限
-        * **最大值**：要使用的處理單位數目上限
-        * **預設值**：如果在讀取資源計量時發生任何問題，而且目前的容量低於預設容量，則自動調整會相應放大為預設的處理單位數。 不過，如果目前容量超過預設容量，自動調整就不會相應縮小。
+        * **最小**：要使用的最小處理單元數
+        * **最大值**： 要使用的處理單元的最大數量
+        * **預設值**：如果在讀取資源指標時發生任何問題，並且當前容量低於預設容量，則自動縮放將擴展到預設的處理單位數。 但是，如果當前容量超過預設容量，自動縮放不會擴展。
 
-1. 若要新增另一個條件，請選取 [**新增調整條件**]。
+1. 要添加其他條件，請選擇 **"添加縮放條件**"。
 
-1. 當您完成自動調整規模設定後，請儲存您的變更。
+1. 完成自動縮放設置後，請保存更改。
 
 <a name="restart-ISE"></a>
 
 ## <a name="restart-ise"></a>重新開機 ISE
 
-如果您變更 DNS 伺服器或 DNS 伺服器設定，就必須重新開機 ISE，讓 ISE 能夠收取這些變更。 重新開機 Premium SKU ISE 不會導致停機，因為回收期間一次重新開機一個的冗余和元件。 不過，開發人員 SKU ISE 會遇到停機時間，因為沒有任何重複的複本存在。 如需詳細資訊，請參閱[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
+如果更改 DNS 伺服器或 DNS 伺服器設置，必須重新開機 ISE，以便 ISE 可以選取這些更改。 重新開機高級 SKU ISE 不會由於冗余和元件在回收期間一次重新開機一個而導致停機。 但是，開發人員 SKU ISE 會因為不存在冗余而遇到停機。 有關詳細資訊，請參閱[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
 
-1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 ISE。
+1. 在[Azure 門戶](https://portal.azure.com)中，轉到 ISE。
 
-1. 在 ISE 功能表上，選取 **[總覽**]。 在 [總覽] 工具列上，**重新開機**。
+1. 在 ISE 功能表上，選擇 **"概述**"。 在"概述"工具列上，**重新開機**。
 
    ![重新開機整合服務環境](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 
@@ -174,10 +174,10 @@ Premium ISE 基礎單位具有固定容量，因此如果您需要更多輸送�
 
 ## <a name="delete-ise"></a>刪除 ISE
 
-刪除您不再需要的 ISE 或包含 ISE 的 Azure 資源群組之前，請確認您在包含這些資源的 Azure 資源群組或 Azure 虛擬網路上沒有任何原則或鎖定，因為這些專案可能會封鎖刪除。
+在刪除不再需要的 ISE 或包含 ISE 的 Azure 資源組之前，請檢查 Azure 資源組或 Azure 虛擬網路上的策略或鎖是否沒有，因為這些專案可以阻止刪除。
 
-刪除 ISE 之後，您可能必須等候最多9小時，然後再嘗試刪除您的 Azure 虛擬網路或子網。
+刪除 ISE 後，可能需要等待長達 9 小時才能嘗試刪除 Azure 虛擬網路或子網。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [將資源新增至整合服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [向整合服務環境添加資源](../logic-apps/add-artifacts-integration-service-environment-ise.md)

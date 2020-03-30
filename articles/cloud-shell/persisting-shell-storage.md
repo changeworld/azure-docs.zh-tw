@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cloud Shell 中保存檔案 |Microsoft Docs
+title: Azure 雲殼中的持久檔 |微軟文檔
 description: 逐步解說 Azure Cloud Shell 如何保存檔案。
 services: azure
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297591"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中保存檔案
 Cloud Shell 會運用 Azure 檔案儲存體在工作階段間保存檔案。 在初始啟動時，Cloud Shell 會提示您關聯新的或現有的檔案共用，以在工作階段間保存檔案。
@@ -28,7 +28,7 @@ Cloud Shell 會運用 Azure 檔案儲存體在工作階段間保存檔案。 在
 > Bash 和 PowerShell 會共用相同的檔案共用。 只有一個檔案共用可以與 Cloud Shell 中的自動掛接相關聯。
 
 > [!NOTE]
-> Cloud shell 儲存體帳戶不支援 Azure 儲存體防火牆。
+> 雲外殼存儲帳戶不支援 Azure 存儲防火牆。
 
 ## <a name="create-new-storage"></a>建立新的儲存體
 
@@ -39,30 +39,30 @@ Cloud Shell 會運用 Azure 檔案儲存體在工作階段間保存檔案。 在
 
 ![訂用帳戶設定](media/persisting-shell-storage/basic-storage.png)
 
-檔案共用會在您的 `clouddrive` 目錄中掛接為 `$Home`。 這是一次性的動作，後續的工作階段會自動掛接檔案共用。 
+檔案共用會在您的 `$Home` 目錄中掛接為 `clouddrive`。 這是一次性的動作，後續的工作階段會自動掛接檔案共用。 
 
 檔案共用也包含為您建立的 5 GB 映像，此映像會自動保存 `$Home` 目錄中的資料。 這適用於 Bash 和 PowerShell。
 
 ## <a name="use-existing-resources"></a>使用現有的資源
 
-您可以使用進階選項來建立與現有資源的關聯。 選取 Cloud Shell 區域時，您也必須選取在同一個區域中共置的備份儲存體帳戶。 例如，如果您指派的區域是「美國西部」，則您也必須將位於美國西部的檔案共用關聯在一起。
+您可以使用進階選項來建立與現有資源的關聯。 選取 Cloud Shell 區域時，您也必須選取在同一個區域中共置的備份儲存體帳戶。 例如，如果您指定的區域是西美國，則必須關聯駐留在美國西部的檔共用。
 
-當儲存體設定提示出現時，請選取 [顯示進階設定] 以檢視其他選項。 已填入的儲存體選項會篩選本地備援儲存體 (LRS)、異地備援儲存體 (GRS) 和區域備援儲存體 (ZRS) 帳戶。 
+當儲存體設定提示出現時，請選取 [顯示進階設定]**** 以檢視其他選項。 已填入的儲存體選項會篩選本地備援儲存體 (LRS)、異地備援儲存體 (GRS) 和區域備援儲存體 (ZRS) 帳戶。 
 
 > [!NOTE]
 > 建議使用 GRS 或 ZRS 儲存體帳戶，如此您的備份檔案共用能獲得更多復原能力。 備援類型取決於您的目標和偏好的價格。 [深入了解 Azure 儲存體帳戶的複寫選項](https://docs.microsoft.com/azure/storage/common/storage-redundancy)。
 
 ![資源群組設定](media/persisting-shell-storage/advanced-storage.png)
 
-## <a name="securing-storage-access"></a>保護儲存體存取
+## <a name="securing-storage-access"></a>保護存儲訪問
 為了安全起見，每位使用者都應該佈建自己的儲存體帳戶。  若要進行角色型存取控制 (RBAC)，使用者在儲存體帳戶層級必須具備參與者權限或更高的存取權限。
 
-Cloud Shell 在指定的訂用帳戶內，使用儲存體帳戶中的 Azure 檔案共用。 由於繼承的許可權，擁有訂用帳戶的足夠存取權限的使用者將能夠存取所有儲存體帳戶，以及訂用帳戶中包含的檔案共用。
+雲外殼在指定的訂閱中使用存儲帳戶中的 Azure 檔共用。 由於繼承了許可權，具有對訂閱具有足夠存取權限的使用者將能夠訪問訂閱中包含的所有存儲帳戶和檔共用。
 
-使用者應該藉由設定儲存體帳戶或訂用帳戶層級的許可權，來鎖定其檔案的存取權。
+使用者應通過在存儲帳戶或訂閱級別設置許可權來鎖定對其檔的訪問。
 
 ## <a name="supported-storage-regions"></a>支援的儲存體區域
-若要尋找您目前的區域，您可以在 Bash 中執行 `env`，並找出 `ACC_LOCATION`的變數，或從 PowerShell 執行 `$env:ACC_LOCATION`。 檔案共用會收到為您建立以便保存 `$Home` 目錄的 5 GB 映像。
+要查找目前範圍，您可以在 Bash`env`中運行並找到變數`ACC_LOCATION`，或者從 PowerShell`$env:ACC_LOCATION`運行 。 檔案共用會收到為您建立以便保存 `$Home` 目錄的 5 GB 映像。
 
 Cloud Shell 電腦存在於下列區域：
 
@@ -72,15 +72,15 @@ Cloud Shell 電腦存在於下列區域：
 |歐洲|北歐、西歐|
 |亞太地區|印度中部、東南亞|
 
-客戶應選擇主要區域，除非他們的待用資料必須儲存在特定區域中。 如果有這類需求，就應該使用次要儲存體區域。
+客戶應選擇主要區域，除非他們要求其靜止資料存儲在特定區域中。 如果他們有這樣的要求，則應使用輔助存儲區域。
 
-### <a name="secondary-storage-regions"></a>次要儲存體區域
-如果使用次要儲存體區域，相關聯的 Azure 儲存體帳戶會位於與您要掛接的 Cloud Shell 機不同的區域中。 例如，Jane 可以將她的儲存體帳戶設定為位於加拿大東部（次要地區），但她掛接到的機器仍然位於主要區域中。 她的待用資料位於加拿大，但在美國進行處理。
+### <a name="secondary-storage-regions"></a>輔助存儲區域
+如果使用輔助存儲區域，則關聯的 Azure 存儲帳戶位於另一個區域中，作為要將它們裝載到的雲外殼電腦。 例如，Jane 可以將存儲帳戶設置為位於加拿大東部，一個次要區域，但她安裝到的機器仍位於主區域。 她的資料位於加拿大，但在美國處理。
 
 > [!NOTE]
-> 如果使用次要區域，Cloud Shell 的檔案存取和啟動時間可能會較慢。
+> 如果使用次要區域，則雲外殼的檔訪問和啟動時間可能會變慢。
 
-使用者可以在 PowerShell 中執行 `(Get-CloudDrive | Get-AzStorageAccount).Location`，以查看其檔案共用的位置。
+使用者可以在 PowerShell 中運行`(Get-CloudDrive | Get-AzStorageAccount).Location`以查看其檔共用的位置。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>使用 Azure 資源原則限制資源建立
 您在 Cloud Shell 中建立的儲存體帳戶都會標記 `ms-resource-usage:azure-cloud-shell`。 如果您想要禁止使用者在 Cloud Shell 中建立儲存體帳戶，請建立這個特定標籤所觸發之[標籤的 Azure 資源原則](../azure-policy/json-samples.md)。
@@ -88,15 +88,16 @@ Cloud Shell 電腦存在於下列區域：
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell 儲存體的運作方式 
 Cloud Shell 透過下列兩種方法來保存檔案： 
 * 建立 `$Home` 目錄的磁碟映像，以保存該目錄內的所有內容。 此磁碟映像會在您指定的檔案共用中儲存為 `acc_<User>.img` (位於 `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`)，並自動同步變更。 
-* 在您的 `clouddrive` 目錄中，將指定的檔案共用掛接為 `$Home`，以便直接與檔案共用互動。 `/Home/<User>/clouddrive` 對應至 `fileshare.storage.windows.net/fileshare`。
+* 在您的 `$Home` 目錄中，將指定的檔案共用掛接為 `clouddrive`，以便直接與檔案共用互動。 `/Home/<User>/clouddrive` 對應至 `fileshare.storage.windows.net/fileshare`。
  
 > [!NOTE]
 > `$Home` 目錄中的所有檔案 (例如 SSH 金鑰) 會都保存於已掛接檔案共用中儲存的使用者磁碟映像中。 當您在 `$Home` 目錄和已掛接的檔案共用中保存資訊時，請套用最佳做法。
 
-## <a name="clouddrive-commands"></a>clouddrive 命令
+## <a name="clouddrive-commands"></a>雲驅動命令
 
 ### <a name="use-the-clouddrive-command"></a>使用 `clouddrive` 命令
-在 Cloud Shell 中，您可以執行稱為 `clouddrive`的命令，讓您手動更新掛接至 Cloud Shell 的檔案共用。
+在雲外殼中，可以運行名為 的命令`clouddrive`，它使您能夠手動更新裝載到雲外殼的檔共用。
+
 ![執行 "clouddrive" 命令](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
@@ -121,7 +122,7 @@ justin@Azure:~$
 #### <a name="prerequisites-for-manual-mounting"></a>手動掛接的先決條件
 您可以使用 `clouddrive mount` 命令來更新與 Cloud Shell 關聯的檔案共用。
 
-如果您要掛接現有的檔案共用，儲存體帳戶必須位在所選的 Cloud Shell 區域中： 執行 `env` 並檢查 `ACC_LOCATION`來取出位置。
+如果您要掛接現有的檔案共用，儲存體帳戶必須位在所選的 Cloud Shell 區域中： 通過運行`env`和檢查 檢索`ACC_LOCATION`位置。
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 
@@ -164,9 +165,9 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-注意：如果您需要在檔案中定義函式，並從 PowerShell Cmdlet 呼叫它，則必須包含點運算子。 例如： .\MyFunctions.ps1
+注意：如果需要在檔中定義函數並從 PowerShell Cmdlet 調用它，則必須包括點運算子。 例如： .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>後續步驟
 [Cloud Shell 快速入門](quickstart.md) <br>
 [了解 Microsoft Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
-[了解儲存體標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[瞭解存儲標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

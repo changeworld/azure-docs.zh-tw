@@ -1,6 +1,6 @@
 ---
 title: IoT 安全性架構
-description: Azure IoT 解決方案的安全性架構指導方針和考慮
+description: Azure IoT 解決方案的安全體系結構指南和注意事項
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: e4e6a60f893108f8fa58d84dabb50c88afcf774c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73929616"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>物聯網 (IoT) 安全性架構

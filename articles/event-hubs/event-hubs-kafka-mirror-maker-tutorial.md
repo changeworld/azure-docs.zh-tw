@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6d1596cf0a50ed5dcb896896282178b6fc12c1a1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6dc902b6a26c175713381b4fce88934dca3f409e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283577"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>使用 Kafka MirrorMaker 搭配適用於 Apache Kafka 的事件中樞
 
@@ -24,7 +24,7 @@ ms.locfileid: "72555102"
    ![具有事件中樞的 Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
-> 您可以在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 上取得此範例
+> 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 上取得此範例
 
 
 在本教學課程中，您會了解如何：
@@ -36,20 +36,20 @@ ms.locfileid: "72555102"
 > * 執行 Kafka MirrorMaker
 
 ## <a name="introduction"></a>簡介
-新式雲端規模應用程式的一個主要考量在於能夠更新、改善，以及變更基礎結構，而不會中斷服務。 本教學課程示範啟用 Kafka 的事件中樞及 Kafka MirrorMaker 如何在事件中樞服務中「鏡像」Kafka 輸入資料流，以將現有的 Kafka 管線整合到 Azure 中。 
+新式雲端規模應用程式的一個主要考量在於能夠更新、改善，以及變更基礎結構，而不會中斷服務。 本教程演示如何事件中心和 Kafka 鏡像製造商如何通過在事件中心服務中"鏡像"Kafka 輸入流將現有的 Kafka 管道集成到 Azure 中。 
 
 Azure 事件中樞 Kafka 端點可讓您使用 Kafka 通訊協定 (亦即 Kafka 用戶端) 連線到 Azure 事件中樞。 幾乎不需要變更 Kafka 應用程式，您就可以連線到 Azure 事件中樞，並享受 Azure 生態系統的優點。 啟用 Kafka 的事件中樞目前支援 Kafka 1.0 版和更新版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列項目︰
 
 * 請參閱[適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)一文。 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * 在 Ubuntu 上，執行 `apt-get install default-jdk` 來安裝 JDK。
     * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
-* [下載](https://maven.apache.org/download.cgi)並[安裝 ](https://maven.apache.org/install.html) Maven 二進位封存檔
+* [下載](https://maven.apache.org/download.cgi)並[安裝](https://maven.apache.org/install.html)Maven 二進位存檔
     * 在 Ubuntu 上，您可以執行 `apt-get install maven` 來安裝 Maven。
 * [Git](https://www.git-scm.com/downloads)
     * 在 Ubuntu 上，您可以執行 `sudo apt-get install git` 來安裝 Git。
@@ -73,11 +73,11 @@ cd azure-event-hubs-for-kafka/tutorials/mirror-maker
 
 ## <a name="configure-kafka-mirrormaker"></a>設定 Kafka MirrorMaker
 
-Kafka MirrorMaker 可以「鏡像」資料流。 假設有來源和目的地 Kafka 叢集，MirrorMaker 可確保來源和目的地叢集都會收到傳送至來源叢集的所有訊息。 此範例示範如何使用啟用 Kafka 的目的地事件中樞來鏡像 Kafka 來源叢集。 此案例可用來將資料從現有的 Kafka 管線傳送至事件中樞，而不會中斷資料流程。 
+Kafka MirrorMaker 可以「鏡像」資料流。 假設有來源和目的地 Kafka 叢集，MirrorMaker 可確保來源和目的地叢集都會收到傳送至來源叢集的所有訊息。 此示例演示如何鏡像具有目標事件中心的源 Kafka 群集。 此案例可用來將資料從現有的 Kafka 管線傳送至事件中樞，而不會中斷資料流程。 
 
 如需有關 Kafka MirrorMaker 的詳細資訊，請參閱 [Kafka 鏡像/MirrorMaker 指南](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)。
 
-若要設定 Kafka MirrorMaker，請為它提供一個 Kafka 叢集作為其取用者/來源，並提供一個啟用 Kafka 的事件中樞作為其生產者/目的地。
+要配置 Kafka 鏡像製造商，請為其提供 Kafka 群集作為其消費者/源，並將事件中心作為其生產者/目標。
 
 #### <a name="consumer-configuration"></a>取用者設定
 
@@ -116,15 +116,15 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 --producer.config mirror-eventhub.config --whitelist=".*"
 ```
 
-若要確認事件會到達啟用 Kafka 的事件中樞，請查看 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)中的連入統計資料，或對事件中樞執行取用者。
+要驗證事件是否到達事件中心，請參閱[Azure 門戶](https://azure.microsoft.com/features/azure-portal/)中的入口統計資訊，或針對事件中心運行消費者。
 
 在 MirrorMaker 執行時，Kafka 叢集和啟用 Kafka 的鏡像事件中樞服務都會收到傳送到來源 Kafka 叢集的所有事件。 您可以使用 MirrorMaker 和事件中樞 Kafka 端點，將現有的 Kafka 管線移轉至受控 Azure 事件中樞服務，而不會變更現有的叢集或中斷任何進行中的資料流程。
 
 ## <a name="samples"></a>範例
-請參閱 GitHub 上的下列範例：
+請參閱 GitHub 上的以下示例：
 
-- [本教學課程在 GitHub 上的範例程式碼](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
-- [在 Azure 容器實例上執行的 Azure 事件中樞 Kafka MirrorMaker](https://github.com/djrosanova/EventHubsMirrorMaker)
+- [有關 GitHub 的本教程的示例代碼](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [在 Azure 容器實例上運行的 Azure 事件中心卡夫卡鏡像製造商](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -140,10 +140,10 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 
 - [了解事件中樞](event-hubs-what-is-event-hubs.md)
 - [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何建立已啟用 Kafka 的事件中樞](event-hubs-create-kafka-enabled.md)
+- [如何創建事件中心](event-hubs-create.md)
 - [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [將 Apache Spark 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-spark-tutorial.md)
-- [將 Apache Flink 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-flink-tutorial.md)
-- [整合 Kafka Connect 與已啟用 Kafka 的事件中樞](event-hubs-kafka-connect-tutorial.md)
-- [將 Akka Streams 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
+- [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
+- [將卡夫卡連接與事件中心集成](event-hubs-kafka-connect-tutorial.md)
+- [將 Akka 流連接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)

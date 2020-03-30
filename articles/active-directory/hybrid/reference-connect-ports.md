@@ -16,12 +16,12 @@ ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611937a709152823ddc1b88b1a0befe4161217cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253633"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331097"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>混合式身分識別所需的連接埠和通訊協定
 下列文件是關於實作混合式身分識別解決方案之連接埠和通訊協定的技術參考。 請使用下圖並參閱對應的資料表。
@@ -35,30 +35,30 @@ ms.locfileid: "79253633"
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |在目的地樹系的 DNS 查閱。 |
 | Kerberos |88 (TCP/UDP) |AD 樹系的 Kerberos 驗證。 |
-| MS-RPC |135（TCP） |繫結至 AD 樹系時，用於 Azure AD Connect 精靈的初始設定期間，也可以用於密碼同步處理期間。 |
+| MS-RPC |135 （TCP） |繫結至 AD 樹系時，用於 Azure AD Connect 精靈的初始設定期間，也可以用於密碼同步處理期間。 |
 | LDAP |389 (TCP/UDP) |用於從 AD 匯入資料。 資料會使用「Kerberos 簽章及密封」加密。 |
-| SMB | 445（TCP） |由無縫 SSO 用於在 AD 樹系中建立電腦帳戶。 |
-| LDAP/SSL |636 (TCP/UDP) |用於從 AD 匯入資料。 資料的傳輸經過簽署和加密。 只有使用 SSL 時才會使用。 |
-| RPC |49152-65535 （隨機高 RPC 埠）（TCP） |繫結至 AD 樹系時，用於 Azure AD Connect 的初始設定期間，以及用於密碼同步處理期間。 如需詳細資訊，請參閱 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
-|WinRM  | 5985（TCP） |僅適用于使用 gMSA by Azure AD Connect Wizard 安裝 AD FS 時|
-|AD DS Web 服務 | 9389（TCP） |僅適用于使用 gMSA by Azure AD Connect Wizard 安裝 AD FS 時 |
+| SMB | 445 （TCP） |由無縫 SSO 用於在 AD 樹系中建立電腦帳戶。 |
+| LDAP/SSL |636 (TCP/UDP) |用於從 AD 匯入資料。 資料的傳輸經過簽署和加密。 僅在使用 TLS 時使用。 |
+| RPC |49152- 65535（隨機高 RPC 埠）（TCP） |繫結至 AD 樹系時，用於 Azure AD Connect 的初始設定期間，以及用於密碼同步處理期間。 如需詳細資訊，請參閱 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
+|WinRM  | 5985 （TCP） |僅當通過 Azure AD 連接嚮導安裝帶有 gMSA 的 AD FS 時才使用|
+|AD DS Web 服務 | 9389 （TCP） |僅當通過 Azure AD 連接嚮導安裝帶有 gMSA 的 AD FS 時才使用 |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect 和 Azure AD
 此表說明 Azure AD Connect 伺服器與 Azure AD 之間通訊所需的連接埠和通訊協定。
 
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTP |80（TCP） |用於下載 CRL (憑證撤銷清單) 以驗證 SSL 憑證。 |
+| HTTP |80 （TCP） |用於下載 CRL（憑證撤銷清單）以驗證 TLS/SSL 憑證。 |
 | HTTPS |443（TCP） |用來與 Azure AD 同步處理。 |
 
-如需您必須在防火牆中開啟的 Url 和 IP 位址清單，請參閱[Office 365 url 和 ip 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)和[疑難排解 Azure AD Connect 連線能力](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard)。
+有關需要在防火牆中打開的 URL 和 IP 位址的清單，請參閱[Office 365 URL 和 IP 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)以及[排除 Azure AD 連接連接的疑難排解](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard)。
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>表 3 - Azure AD Connect 和 AD FS 同盟伺服器/WAP
 此表說明 Azure AD Connect 伺服器與 AD FS 同盟/WAP 伺服器之間通訊所需的連接埠和通訊協定。  
 
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTP |80（TCP） |用於下載 CRL (憑證撤銷清單) 以驗證 SSL 憑證。 |
+| HTTP |80 （TCP） |用於下載 CRL（憑證撤銷清單）以驗證 TLS/SSL 憑證。 |
 | HTTPS |443（TCP） |用來與 Azure AD 同步處理。 |
 | WinRM |5985 |WinRM 接聽程式 |
 
@@ -105,9 +105,9 @@ ms.locfileid: "79253633"
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
 | HTTPS |443（TCP） |輸出 |
-| Azure 服務匯流排 |5671（TCP） |輸出 |
+| Azure 服務匯流排 |5671 （TCP） |輸出 |
 
-最新版本的代理程式不再需要 Azure 服務匯流排埠5671。 最新的 Azure AD Connect Health 代理程式版本只需要端口443。
+Azure 服務匯流排埠 5671 不再需要最新版本的代理。 最新的 Azure AD 連接運行狀況代理版本僅需要端口 443。
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b - 適用於 (AD FS/Sync) 和 Azure AD 之 Azure AD Connect Health 代理程式的端點
 如需端點的清單，請參閱 [Azure AD Connect Health 代理程式的＜需求＞一節](how-to-connect-health-agent-install.md#requirements)。

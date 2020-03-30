@@ -1,20 +1,18 @@
 ---
-title: AppSource 套件準備 |Azure Marketplace
+title: 應用程式源套裝軟體準備 |Azure 應用商店
 description: 說明如何準備及建置 AppSource 套件。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 76f8cbd6cb16b585a7dbda7b2ffa5eeeeb1b68d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280604"
 ---
 # <a name="appsource-package-preparation"></a>AppSource 套件準備
 
@@ -32,7 +30,7 @@ ms.locfileid: "73806107"
 
 Package Deployer 的套件是 AppSource 套件的一部分。
 
-若要建立 Package Deployer 的套件，請使用下列指示：[https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完成時，您的套件將包含下列資產：
+要為包部署器創建包，請使用以下說明： [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完成時，您的套件將包含下列資產：
 
 1. 套件資料夾：包含所有的解決方案、組態資料、一般檔案，以及您套件的內容。 _注意：在接下來的範例中，我們假設套件資料夾名為 "PkgFolder"_
 2. dll：包含套件自訂程式碼的組件。 _注意：在接下來的範例中，我們假設此檔案名為 "MicrosoftSample.dll"。_
@@ -74,14 +72,14 @@ Package Deployer 的套件是 AppSource 套件的一部分。
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
-## <a name="b-create-an-appsource-package"></a>b.這是另一個 C# 主控台應用程式。 建立 AppSource 套件
+## <a name="b-create-an-appsource-package"></a>b. 建立 AppSource 套件
 
 AppSource 套件需要一些額外的檔案。
 
 1. jpg (32x32 解析度)
 2. html (HTML 格式的檔案)
 3. **Content_Types.xml** (同上)
-4. xml
+4. Xml
 
 以下是 input.xml 的範例程式碼。 請參閱下表中的定義。
 
@@ -112,7 +110,7 @@ AppSource 套件需要一些額外的檔案。
 |SolutionAnchorName |Package Deployer 中用於解決方案資產顯示名稱和描述的解決方案 zip 檔案名稱。|
 | StartDate| 這是方案套件提供使用的日期。 格式為 MM/DD/YYYY|
 |EndDate|這是方案套件將停止使用的日期。 格式為 MM/DD/YYYY |
-|SupportedCountries |這是以逗號分隔的國家/地區清單，其中應會顯示此套件。 請連絡線上服務，以取得一份所有目前的國家/地區代碼的清單。 在撰寫本文時，清單是：AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
+|SupportedCountries |這是應看到此包的國家/地區（由逗號分隔的清單）。 請連絡線上服務，以取得一份所有目前的國家/地區代碼的清單。 在撰寫本文時，清單是：AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
 |LearnMoreLink | 此套件的詳細資訊頁面 URL。 |
 |Locales|針對您要在慣用方案 UX 中支援之每種 UX 語言的此節點的執行個體。 此節點包含描述每種語言之地區設定、標誌和字詞的子系|
 |地區設定：PackageLocale.Code|此節點之語言的 LCID。 範例：美式英文為 1033|
@@ -128,10 +126,10 @@ AppSource 套件需要一些額外的檔案。
 
 1. zip (稍早建立)
 2. **Content_Types.xml**
-3. xml
+3. Xml
 4. png
 5. html
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 
-將檔案重新命名為適合您的應用程式的名稱。 我們希望您包含公司名稱和應用程式名稱。 例如： **_Microsoft_SamplePackage.zip**。
+將檔案重新命名為適合您的應用程式的名稱。 我們希望您包含公司名稱和應用程式名稱。 例如：**_Microsoft_SamplePackage.zip**。

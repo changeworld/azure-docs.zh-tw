@@ -1,23 +1,22 @@
 ---
-title: Azure 和 Dynamics 365 諮詢服務供應專案 |Azure Marketplace
+title: Azure 和動態 365 諮詢服務服務優惠 |Azure 應用商店
 description: 在「Cloud Partner 入口網站」中定義和發佈 Azure 或 Dynamcis 365 諮詢服務供應項目的指南。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: evansma
-ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.author: dsindona
+ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278530"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 與 Dynamcis 365 諮詢服務供應項目
 
-本文說明如何將諮詢服務供應項目發佈至 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> 或 <a href="https://appsource.microsoft.com">AppSource</a>。 以 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、 <a href="https://powerbi.microsoft.com">Power BI</a>和<a href="https://powerapps.microsoft.com">Power Apps</a>為基礎的解決方案可以列在 AppSource 上。 以其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服務</a>為基礎的其他供應項目可以在 Azure Marketplace 中列出。
+本文說明如何將諮詢服務供應項目發佈至 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> 或 <a href="https://appsource.microsoft.com">AppSource</a>。 基於微軟<a href="https://dynamics.microsoft.com">動態365、Power</a> <a href="https://powerbi.microsoft.com">BI</a>和<a href="https://powerapps.microsoft.com">電源應用</a>的解決方案可以列在AppSource上。 以其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服務</a>為基礎的其他供應項目可以在 Azure Marketplace 中列出。
 
 ## <a name="publishing-benefits"></a>發佈的優點
 
@@ -35,16 +34,16 @@ ms.locfileid: "78268303"
 - [諮詢服務必要條件](./cpp-consulting-service-prerequisites.md)列出發佈諮詢服務的需求，適用於：
  
     - Microsoft Azure
-    - Dynamics 365 Customer Engagement 
-    - Dynamics 365 財務 & 作業 
+    - 動態 365 客戶互動 
+    - 動態 365 財務&運營 
     - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
     - Power Apps
     - Power Automate
 - [建立新供應項目](./cpp-consulting-service-create-offer.md)，列出使用 Cloud Partner 入口網站建立諮詢服務供應項目所需的步驟：
-    - [定義供應項目設定](./cpp-consulting-service-define-offer-settings.md)。
-    - [輸入店面詳細資料，以及是否要在 Azure Marketplace 或 AppSource 中發佈。](./cpp-consulting-service-storefront-details.md)
+    - [定義優惠設置](./cpp-consulting-service-define-offer-settings.md)。
+    - [輸入網店詳細資訊以及是在 Azure 應用商店中發佈還是在 AppSource 上發佈。](./cpp-consulting-service-storefront-details.md)
 - [發佈您的供應項目](./cpp-consulting-service-publish-offer.md)說明如何提交供應項目進行發佈。
 
 ## <a name="next-steps"></a>後續步驟

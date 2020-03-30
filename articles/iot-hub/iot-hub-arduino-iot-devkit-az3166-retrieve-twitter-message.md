@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60779743"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>搖一搖以獲取推文 -- 使用 Azure Functions 擷取 Twitter 訊息
@@ -29,8 +29,8 @@ ms.locfileid: "60779743"
 
 有效的 Azure 訂用帳戶。 如果沒有，您可以透過下列這些方法之一來註冊：
 
-* 啟動 [30 天免費試用 Microsoft Azure 帳戶](https://azure.microsoft.com/free/)
-* 如果您是 MSDN 或 Visual Studio 訂閱者，請認領您的 [Azure 點數](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+* 啟動[免費試用 Microsoft Azure 帳戶](https://azure.microsoft.com/free/)
+* 如果您是 MSDN 或 Visual Studio 訂閱者，請聲明[Azure 積分](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
 ## <a name="open-the-project-folder"></a>開啟專案資料夾
 
@@ -49,10 +49,10 @@ ms.locfileid: "60779743"
 
 ### <a name="open-the-arduino-examples-folder"></a>開啟 Arduino 範例資料夾
 
-展開左側的 [ARDUINO 範例]  區段，瀏覽至 [MXCHIP AZ3166 的範例] > [AzureIoT]  ，然後選取 [ShakeShake]  。 新的 VS Code 視窗隨即開啟，其中顯示專案資料夾。 如果您看不到 MXCHIP AZ3166 區段，請確定裝置已正確連接並重新啟動 Visual Studio Code。  
+展開左側的 [ARDUINO 範例]**** 區段，瀏覽至 [MXCHIP AZ3166 的範例] > [AzureIoT]****，然後選取 [ShakeShake]****。 新的 VS Code 視窗隨即開啟，其中顯示專案資料夾。 如果您看不到 MXCHIP AZ3166 區段，請確定裝置已正確連接並重新啟動 Visual Studio Code。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-您也可以從命令選擇區開啟範例專案。 按一下  `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 來開啟命令選擇區中，輸入**Arduino**，然後尋找並選取**Arduino:** 。
+您也可以從命令選擇區開啟範例專案。 請按一下 `Ctrl+Shift+P` (macOS：`Cmd+Shift+P`) 以開啟命令選擇區，輸入 **Arduino**，然後尋找並選取 [Arduino：範例]****。
 
 ## <a name="provision-azure-services"></a>佈建 Azure 服務
 
@@ -92,7 +92,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 1. 使用 `Ctrl+P` 來執行 `task device-upload`。
 
-2. 終端機會提示您進入設定模式。 方法如下：
+2. 終端機會提示您進入設定模式。 若要這樣做：
 
    * 按住 A 按鈕
 
@@ -157,7 +157,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure Functions 應用程式。 Azure Functions 應用程式所包含的邏輯可用來連線至 Twitter 的 API 並擷取推文。 接著，它會將推文的文字包裝成 C2D (雲端到裝置) 訊息，並將該訊息傳回給裝置。
 
-## <a name="optional-use-your-own-twitter-bearer-token"></a>選用：使用您自己的 Twitter 持有人權杖
+## <a name="optional-use-your-own-twitter-bearer-token"></a>選擇性：使用您自己的 Twitter 持有人權杖
 
 為了進行測試，此專案範例會使用預先設定的 Twitter 持有人權杖。 不過，每個 Twitter 帳戶都有[速率限制](https://dev.twitter.com/rest/reference/get/search/tweets)。 如果您要考慮使用您自己的權杖，請遵循下列步驟：
 
@@ -167,11 +167,11 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
 
 3. 使用[某些公用程式](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)從這兩個金鑰產生 Twitter 持有人權杖。
 
-4. 中[Azure 入口網站](https://portal.azure.com/){: target ="_blank"}，進入**資源群組**並尋找 Azure 函式 (類型：App Service) 您"Shake，Shake"專案。 此名稱一律會包含 'shake...' 字串。
+4. 在 [Azure 入口網站](https://portal.azure.com/){:target="_blank"} 中，進入 [資源群組]**** 並找出您 "Shake, Shake" 專案的 Azure Functions (類型：App Service)。 此名稱一律會包含 'shake...' 字串。
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
-5. 使用您自己的權杖在 [Functions > shakeshake-cs]  內更新 `run.csx` 的程式碼：
+5. 使用您自己的權杖在 [Functions > shakeshake-cs]**** 內更新 `run.csx` 的程式碼：
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";
@@ -179,7 +179,7 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
   
    ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. 儲存檔案，然後按一下 [執行]  。
+6. 儲存檔案，然後按一下 [執行]****。
 
 ## <a name="problems-and-feedback"></a>問題與意見反應
 

@@ -1,49 +1,49 @@
 ---
-title: Azure Web 應用程式防火牆監視和記錄
-description: 瞭解具有 FrontDoor 監視和記錄功能的 Web 應用程式防火牆（WAF）
+title: Azure Web 應用程式防火牆監視和日誌記錄
+description: 通過前門監控和日誌記錄瞭解 Web 應用程式防火牆 （WAF）
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 3446df6effd85a07beb463c1caa40c5826a9e019
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4488fadf5db3b32049b5dce4bbee1fa76c320e96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934701"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284138"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web 應用程式防火牆監視和記錄 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web 應用程式防火牆監視和日誌記錄 
 
-Azure Web 應用程式防火牆（WAF）監視和記錄是透過記錄和與 Azure 監視器和 Azure 監視器記錄檔的整合提供。
+Azure Web 應用程式防火牆 （WAF） 監視和日誌記錄是通過日誌記錄和與 Azure 監視器和 Azure 監視器日誌集成提供的。
 
-## <a name="azure-monitor"></a>Azure Monitor
+## <a name="azure-monitor"></a>Azure 監視器
 
-具有 FrontDoor 記錄的 WAF 會與[Azure 監視器](../../azure-monitor/overview.md)整合。 Azure 監視器可讓您追蹤診斷資訊，包括 WAF 警示和記錄。 您可以在入口網站的 [**診斷**] 索引標籤底下，或直接透過 Azure 監視器服務，設定 WAF 監視。
+具有前門日誌的 WAF 與[Azure 監視器](../../azure-monitor/overview.md)集成。 Azure 監視器允許您跟蹤診斷資訊，包括 WAF 警報和日誌。 您可以在 **"診斷"** 選項卡下的門戶前門資源中或通過 Azure 監視器服務直接配置 WAF 監視。
 
-從 Azure 入口網站，移至 [Front 門板] [資源類型]。 從左側的 [**監視**]/[**計量**] 索引標籤中，您可以新增**WebApplicationFirewallRequestCount**來追蹤符合 WAF 規則的要求數目。 您可以根據動作類型和規則名稱來建立自訂篩選器。
+從 Azure 門戶轉到前門資源類型。 從左側的 **"監視**/**指標"** 選項卡中，可以添加**Web 應用程式防火牆請求計數**以跟蹤與 WAF 規則匹配的請求數。 可以基於操作類型和規則名稱創建自訂篩選器。
 
-![WAFMetrics](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
+![WAFMetric](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
 
-## <a name="logs-and-diagnostics"></a>記錄和診斷
+## <a name="logs-and-diagnostics"></a>日誌和診斷
 
-WAF 與 Front 門會針對它偵測到的每個威脅提供詳細的報告。 記錄會與 Azure 診斷記錄整合，而且警示會以 JSON 格式來記錄。 這些記錄可以與 [Azure 監視器記錄](../../azure-monitor/insights/azure-networking-analytics.md)整合。
+帶前門的 WAF 提供有關其檢測到的每個威脅的詳細報告。 記錄會與 Azure 診斷記錄整合，而且警示會以 JSON 格式來記錄。 這些記錄可以與 [Azure 監視器記錄](../../azure-monitor/insights/azure-networking-analytics.md)整合。
 
-![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
+![瓦夫迪亞格](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-FrontdoorAccessLog 會記錄轉送至客戶後端的所有要求。 FrontdoorWebApplicationFirewallLog 會記錄符合 WAF 規則的任何要求。
+前門訪問日誌記錄轉發到客戶後端的所有請求。 前門Web應用程式防火牆日誌記錄任何與WAF規則匹配的請求。
 
-下列範例查詢會取得已封鎖要求的 WAF 記錄：
+以下依例查詢獲取阻止請求上的 WAF 日誌：
 
 ``` WAFlogQuery
 AzureDiagnostics
 | where ResourceType == "FRONTDOORS" and Category == "FrontdoorWebApplicationFirewallLog"
-| where action_s == "Block"
+| where action_name_s == "Block"
 
 ```
 
-以下是 WAF 記錄中已記錄要求的範例：
+下面是 WAF 日誌中記錄的請求的示例：
 
 ``` WAFlogQuerySample
 {
@@ -66,7 +66,7 @@ AzureDiagnostics
 
 ``` 
 
-下列範例查詢會取得 AccessLogs 專案：
+以下依例查詢獲取 AccessLogs 條目：
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -74,7 +74,7 @@ AzureDiagnostics
 
 ```
 
-以下是存取記錄檔中所記錄的要求範例：
+下面是訪問日誌中記錄的請求的示例：
 
 ``` AccessLogSample
 {
@@ -105,4 +105,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[Front](../../frontdoor/front-door-overview.md)。
+- 瞭解有關[前門](../../frontdoor/front-door-overview.md)的更多。

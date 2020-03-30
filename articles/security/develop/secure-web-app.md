@@ -1,7 +1,7 @@
 ---
-title: 開發安全的 web 應用程式 |Microsoft Docs
-description: 這個簡單的範例應用程式會在您于 Azure 上開發時, 實行可改善應用程式和組織安全性狀態的安全性最佳作法。
-keywords: na
+title: 開發安全的 Web 應用程式 |微軟文檔
+description: 此簡單示例應用實現了安全最佳實踐，在 Azure 上開發時可改進應用程式和組織的安全狀態。
+keywords: NA
 services: security
 documentationcenter: na
 author: isaiah-msft
@@ -16,78 +16,81 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934922"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385209"
 ---
-# <a name="develop-a-secure-web-app"></a>開發安全的 web 應用程式
+# <a name="develop-a-secure-web-app"></a>開發安全的 Web 應用程式
 
-這個範例是簡單的 Python 應用程式, 它會顯示一個網頁, 其中包含在 Azure 上開發應用程式的安全性資源連結。 當您在 Azure 上開發應用程式時, 應用程式會實行安全性最佳作法, 協助改善您的應用程式和組織的安全性狀態。
+此示例是一個簡單的 Python 應用，它顯示一個網頁，其中包含指向在 Azure 上開發應用的安全資源的連結。 該應用程式實現了安全最佳實踐，這些最佳實踐可説明改進應用程式和組織在 Azure 上開發應用時的安全狀況。
 
-您應遵循本文中所述的步驟, 以確保應用程式元件已正確設定。 資料庫、Azure App Service、Azure Key Vault 實例和 Azure 應用程式閘道實例會彼此相依。
+您應該按順序按照本文中描述的步驟操作，以確保正確配置應用程式元件。 資料庫、Azure 應用服務、Azure 金鑰保存庫實例和 Azure 應用程式閘道實例彼此依賴。
 
-部署腳本會設定基礎結構。 執行部署腳本之後, 您必須在 Azure 入口網站中進行一些手動設定, 以將元件和服務連結在一起。
+部署腳本設置基礎結構。 運行部署腳本後，需要在 Azure 門戶中執行一些手動設定，以將元件和服務連結在一起。
 
-範例應用程式的目標是在 Azure 上開發應用程式的初學者, 而他們想要在其應用程式中執行安全性措施。
+示例應用面向在 Azure 上開發應用程式，希望在其應用程式中實施安全措施的初學者。
 
-在開發和部署此應用程式時, 您將瞭解如何:
+在開發和部署此應用程式時，您將學習如何：
 
-- 建立 Azure Key Vault 實例, 並從中儲存和取出秘密。
-- 部署適用於 PostgreSQL 的 Azure 資料庫、設定安全密碼及授權存取。
-- 在適用于 Linux 的 Azure Web Apps 上執行 Alpine Linux 容器, 並啟用適用于 Azure 資源的受控識別。
-- 使用[OWASP 前10大規則集](https://coreruleset.org/)的防火牆建立並設定 Azure 應用程式閘道實例。
-- 使用 Azure 服務, 啟用傳輸中和待用資料的加密。
+- 創建 Azure 金鑰保存庫實例，存儲和檢索其機密。
+- 為 PostgreSQL 部署 Azure 資料庫，設置安全密碼並授權訪問它。
+- 在 Azure Web 應用上為 Linux 運行阿爾卑斯 Linux 容器，並為 Azure 資源啟用託管標識。
+- 使用使用[OWASP 前 10 個規則集](https://coreruleset.org/)的防火牆創建和配置 Azure 應用程式閘道實例。
+- 使用 Azure 服務對傳輸中和靜態的資料進行加密。
 
-在您開發並部署此應用程式之後, 您將會設定下列範例 web 應用程式, 以及所述的設定和安全性量值。
+開發和部署此應用後，您將設置以下示例 Web 應用以及描述的配置和安全措施。
 
-![範例 web 應用程式](./media/secure-web-app/demo-app.png)
+![示例 Web 應用](./media/secure-web-app/demo-app.png)
 
 ## <a name="architecture"></a>架構
-應用程式是典型的多層式應用程式, 具有三個層級。 整合了監視和密碼管理元件的前端、後端和資料庫層, 如下所示:
+
+該應用程式是一個典型的n層應用程式，具有三層。 此處顯示了集成了監視和金鑰管理元件的前端、後端和資料庫層：
 
 ![應用程式架構](./media/secure-web-app/architecture.png)
 
-架構是由下列元件所組成:
+該體系結構由以下元件組成：
 
-- [Azure 應用程式閘道](../../application-gateway/index.yml)。 提供應用程式架構的閘道和防火牆。
-- [Linux 上的 Azure Web Apps](../../app-service/containers/app-service-linux-intro.md)。 提供容器執行時間, 以在 Linux 環境中執行 Python 應用程式。
-- [Azure Key Vault](../../key-vault/index.yml)。 會儲存並加密我們的應用程式密碼, 並管理其周圍的存取原則建立。
-- [適用於 PostgreSQL 的 Azure 資料庫](https://azure.microsoft.com/services/postgresql/)。 安全地儲存應用程式的資料。
-- [Azure 資訊安全中心](../../security-center/index.yml)和[Azure 應用程式深入](../../azure-monitor/app/app-insights-overview.md)解析。 提供應用程式作業的監視和警示。
+- [Azure 應用程式閘道](../../application-gateway/index.yml)。 為我們的應用程式體系結構提供閘道和防火牆。
+- [Linux 上的 Azure Web 應用程式](../../app-service/containers/app-service-linux-intro.md)。 提供在 Linux 環境中運行 Python 應用的容器運行時。
+- [Azure 金鑰保存庫](../../key-vault/index.yml)。 存儲和加密應用的機密，並管理圍繞其創建訪問策略。
+- [用於 PostgreSQL](https://azure.microsoft.com/services/postgresql/)的 Azure 資料庫 。 安全地存儲我們應用的資料。
+- [Azure 安全中心和](../../security-center/index.yml) [Azure 應用程式見解](../../azure-monitor/app/app-insights-overview.md)。 提供有關應用程式操作的監視和警報。
 
 ## <a name="threat-model"></a>威脅模型
-威脅模型化是識別企業和應用程式潛在安全性威脅的程式, 然後確保適當的風險降低計畫已就緒。
 
-這個範例使用[Microsoft Threat Modeling Tool](threat-modeling-tool.md)來執行安全範例應用程式的威脅模型化。 藉由將元件和資料流程的圖表化, 您可以及早識別開發程式中的問題和威脅。 這可節省時間和金錢。
+威脅建模是識別業務和應用程式的潛在安全威脅，然後確保制定適當的緩解計畫的過程。
 
-這是範例應用程式的威脅模型:
+此示例使用[Microsoft 威脅建模工具](threat-modeling-tool.md)為安全示例應用實現威脅建模。 通過繪製元件和資料流程圖，可以在開發過程的早期識別問題和威脅。 這樣可以節省時間和金錢。
+
+這是示例應用的威脅模型：
 
 ![威脅模型](./media/secure-web-app/threat-model.png)
 
-下列螢幕擷取畫面顯示威脅模型化工具所產生的一些範例威脅和潛在弱點。 威脅模型概述公開的攻擊面, 並提示開發人員思考如何減輕問題。
+以下螢幕截圖中顯示了威脅建模工具生成的一些示例威脅和潛在漏洞。 威脅模型概述了暴露的攻擊面，並提示開發人員考慮如何緩解問題。
 
 ![威脅模型輸出](./media/secure-web-app/threat-model-output.png)
 
-例如, 藉由淨化使用者輸入以及在適用於 PostgreSQL 的 Azure 資料庫中使用預存函式, 可減輕前述威脅模型輸出中的 SQL 插入式攻擊。 這項緩和措施可防止在資料讀取和寫入期間執行任意查詢。
+例如，通過清理使用者輸入和使用 Azure 資料庫中的存儲函數進行 PostgreSQL 來緩解上述威脅模型輸出中的 SQL 注入。 此緩解措施可防止在資料讀取和寫入期間任意執行查詢。
 
-開發人員藉由減少威脅模型輸出中的每個威脅, 來改善系統的整體安全性。
+開發人員通過緩解威脅模型輸出中的每個威脅來提高系統的整體安全性。
 
 ## <a name="deployment"></a>部署
-下列選項可讓您在 Azure App Service 上執行 Linux:
 
-- 從 Azure 上預先建立的 Microsoft 容器清單中, 選擇已使用支援技術 (Python、Ruby、PHP、JAVA、node.js、.NET Core) 建立的容器。
-- 使用自訂建立的容器。 選取您自己的容器登錄作為映射的來源, 並根據支援 HTTP 的許多可用技術來建立。
+以下選項允許您在 Azure 應用服務上運行 Linux：
 
-在此範例中, 您將執行部署腳本, 將 webapp 部署到 App Service 並建立資源。
+- 從 Azure 上已構建的預構建 Microsoft 容器清單中選擇一個容器，該容器已使用支援技術（Python、Ruby、PHP、JAVA、Node.js、.NET Core）創建。
+- 使用自訂容器。 選擇您自己的容器註冊表作為映射的源，並基於支援 HTTP 的許多可用技術進行構建。
 
-應用程式可以使用如下所示的不同部署模型:
+在此示例中，您將運行部署腳本，該腳本將 Webapp 部署到應用服務並創建資源。
+
+該應用程式可以使用如下所示的不同部署模型：
 
 ![部署資料流程圖](./media/secure-web-app/deployment.png)
 
-有許多方式可以在 Azure 上部署應用程式, 包括:
+在 Azure 上部署應用的方法有很多種，包括：
 
 - Azure 資源管理員範本
 - PowerShell
@@ -95,110 +98,121 @@ ms.locfileid: "68934922"
 - Azure 入口網站
 - Azure DevOps
 
-使用此應用程式:
+此應用程式使用：
 
-- [Docker](https://docs.docker.com/)來建立及建立容器映射。
-- 部署的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 。
-- [Docker Hub](https://hub.docker.com/)作為容器登錄。
+- [Docker](https://docs.docker.com/)創建和生成容器映射。
+- 用於部署的[Azure CLI。](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Docker 集線器](https://hub.docker.com/)作為容器註冊表。
 
 ## <a name="security-considerations"></a>安全性考量
 
 ### <a name="network"></a>網路
-範例應用程式會使用端對端 SSL 加密來傳輸流入和流出網路的資料。 閘道是以自我簽署憑證進行設定。
-> [!IMPORTANT]
-> 本示範中使用自我簽署憑證。 在生產環境中, 您應該從已驗證的憑證授權單位單位 (CA) 取得憑證。
 
-應用程式防火牆也會在網路流量中偵測到惡意流量時, 檢查傳入流量和警示管理員。
-應用程式閘道可降低在威脅模型中發現的 DDoS 和 SQL 插入式威脅的可能性。
+示例應用對流入和流出網路的傳輸中資料使用端到端 SSL 加密。 閘道配置了自簽章憑證。
+> [!IMPORTANT]
+> 此演示使用自簽章憑證。 在生產環境中，應從經過驗證的憑證授權單位 （CA） 獲取證書。
+
+當網路流量檢測到惡意流量時，應用程式防火牆還會檢查傳入流量並提醒管理員。
+應用程式閘道可降低威脅模型中發現的 DDoS 和 SQL 注入威脅的可能性。
 
 ### <a name="identity"></a>身分識別
-若要登入入口網站, 範例應用程式會針對獲指派資源存取權的 Azure Active Directory (Azure AD) 系統管理員使用多重要素驗證。
-範例應用程式會使用受控識別來取得從 Azure Key Vault 讀取和取出秘密的許可權, 以確保應用程式不需要硬編碼認證和權杖來讀取秘密。 Azure AD 會自動建立服務主體, 讓應用程式在使用受控識別時, 需要讀取和修改秘密。
 
-適用于 Azure 資源和 MFA 的受控識別, 讓敵人更難在系統中取得許可權並提升其許可權。 威脅模型中指出此威脅。
-應用程式會使用 OAuth, 此功能可讓在 OAuth 應用程式中註冊的使用者登入應用程式。
+要登錄到門戶，示例應用對已分配對資源的存取權限的 Azure 活動目錄 （Azure AD） 管理員使用多重要素驗證。
+示例應用使用託管標識從 Azure 金鑰保存庫獲取讀取和檢索機密的許可權，確保應用不需要硬編碼憑據和權杖即可讀取機密。 Azure AD 會自動創建應用在使用託管標識時需要讀取和修改機密的服務主體。
 
-### <a name="storage"></a>存放區
-適用於 PostgreSQL 的 Azure 資料庫會自動將于 postgresql 資料庫中的資料加密。 資料庫會授權 App Service 的 IP 位址, 如此一來, 只有已部署的 App Service web 應用程式才能使用正確的驗證認證來存取資料庫資源。
+Azure 資源和 MFA 的託管標識使對手更難獲得特權並升級其在系統中的許可權。 威脅模型指出了這種威脅。
+該應用程式使用 OAuth，它允許使用者在 OAuth 應用程式中註冊登錄到應用程式。
+
+### <a name="storage"></a>存放裝置
+
+PostgreSQL 資料庫中的資料由 PostgreSQL 的 Azure 資料庫自動加密靜態資料。 資料庫授權應用服務 IP 位址，以便只有已部署的應用服務 Web 應用才能使用正確的身份驗證憑據訪問資料庫資源。
 
 ### <a name="logging-and-auditing"></a>記錄與稽核
-應用程式會使用 Application Insights 來執行記錄, 以追蹤所發生的計量、記錄和例外狀況。 此記錄會提供足夠的應用程式中繼資料, 以通知開發人員和營運小組成員應用程式的狀態。 它也會在發生安全性事件時, 提供足夠的資料來回溯。
+
+應用通過使用應用程式見解來跟蹤發生的指標、日誌和異常，從而實現日誌記錄。 此日誌記錄提供了足夠的應用中繼資料，可通知開發人員和操作團隊成員有關應用的狀態。 它還提供了足夠的資料，以便在發生安全事件時回溯。
 
 ## <a name="cost-considerations"></a>成本考量
-如果您還沒有 Azure 帳戶, 可以建立一個免費帳戶。 前往[免費帳戶頁面](https://azure.microsoft.com/free/)以開始使用、瞭解免費 Azure 帳戶可執行檔工作, 以及學習哪些產品免費12個月。
 
-若要使用安全性功能來部署範例應用程式中的資源, 您必須支付一些 premium 功能。 當應用程式調整規模, 且 Azure 所提供的免費層和試用版需要升級以符合應用程式需求時, 您的成本可能會增加。 使用 Azure[定價計算機](https://azure.microsoft.com/pricing/calculator/)來預估您的成本。
+如果還沒有 Azure 帳戶，則可以創建一個免費帳戶。 轉到[免費帳戶頁面](https://azure.microsoft.com/free/)即可開始，瞭解可以使用免費 Azure 帳戶做什麼，並瞭解哪些產品在 12 個月內是免費的。
+
+要使用安全功能部署示例應用中的資源，您需要為某些高級功能付費。 隨著應用的擴展以及 Azure 提供的免費層和試用版需要升級以滿足應用程式要求，您的成本可能會增加。 使用 Azure[定價計算機](https://azure.microsoft.com/pricing/calculator/)估計成本。
 
 ## <a name="deploy-the-solution"></a>部署解決方案
-### <a name="prerequisites"></a>先決條件
-若要讓應用程式啟動並執行, 您需要安裝下列工具:
 
-- 用來修改和查看應用程式程式碼的程式碼編輯器。[Visual Studio Code](https://code.visualstudio.com/)是一個開放原始碼選項。
-- 在您的開發電腦上[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latest,) 。
-- 系統上的[Git](https://git-scm.com/) 。 Git 是用來在本機複製原始程式碼。
-- [jq](https://stedolan.github.io/jq/), 這是用來以方便使用的方式查詢 JSON 的 UNIX 工具。
+### <a name="prerequisites"></a>Prerequisites
 
-您需要 Azure 訂用帳戶, 才能部署範例應用程式的資源。 如果您沒有 Azure 訂用帳戶, 您可以[建立免費帳戶](https://azure.microsoft.com/free/)來測試範例應用程式。
+要啟動和運行應用程式，您需要安裝這些工具：
 
-安裝這些工具之後, 您就可以開始在 Azure 上部署應用程式。
+- 用於修改和查看應用程式代碼的代碼編輯器。[視覺化工作室代碼](https://code.visualstudio.com/)是一個開源選項。
+- [開發電腦上的 Azure CLI。](/cli/azure/install-azure-cli)
+- [Git](https://git-scm.com/)在你的系統上。 Git 用於在本地克隆原始程式碼。
+- [jq，](https://stedolan.github.io/jq/)一種以方便使用方式查詢JSON的UNIX工具。
+
+您需要 Azure 訂閱來部署示例應用的資源。 如果沒有 Azure 訂閱，則可以[創建一個免費帳戶](https://azure.microsoft.com/free/)來測試示例應用。
+
+安裝這些工具後，即可在 Azure 上部署應用。
 
 ### <a name="environment-setup"></a>環境設定
-執行部署腳本來設定環境和訂用帳戶:
 
-1. 若要複製原始程式碼存放庫, 請使用下列 Git 命令:
+運行部署腳本以設置環境和訂閱：
 
-   ``` git
+1. 要克隆原始程式碼存儲庫，請使用此 Git 命令：
+
+   ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
-2. 若要移入目錄, 請使用下列命令:
 
-   ```
+2. 要進入目錄，請使用以下命令：
+
+   ```shell
    cd tutorial-project/scripts
    ```
 
-3. [腳本] 資料夾中有一些檔案是您所使用的平臺 (Windows 或 Linux) 所特有。 由於已安裝 Azure CLI, 請在命令提示字元中執行下列 CLI 命令以登入 Azure 帳戶:
+3. 腳本資料夾中有特定于您正在使用的平臺（Windows 或 Linux）的檔。 安裝 Azure CLI 後，請通過運行此 Azure CLI 命令在命令提示符下登錄到 Azure 帳戶：
 
-   ``` azurecli
+   ```azurecli-interactive
    az login
    ```
 
-瀏覽器將會開啟, 並使用您的認證登入。 登入之後, 您可以從命令提示字元開始部署資源。
+瀏覽器將打開，使用您的憑據登錄。 登錄後，可以從命令提示符開始部署資源。
 
-部署腳本`deploy-powershell.ps1`和`deploy-bash.sh`包含部署整個應用程式的程式碼。
-若要部署方案:
+部署腳本`deploy-powershell.ps1`並`deploy-bash.sh`包含部署整個應用程式的代碼。
+要部署解決方案：
 
-1. 如果您在 PowerShell 上執行`deploy-powershell.ps1`檔案, 請輸入`./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME`將區域和資源組名取代為適當的 Azure 區域, 並使用資源群組的名稱
-2. 如果您在 Linux 上執行`deploy-bash.sh`檔案, 請輸入`/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, 您可能必須輸入來建立檔案可執行檔`chmod +x deploy-bash.sh`
+1. 如果在 PowerShell 上運行`deploy-powershell.ps1`檔，則鍵入`./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME`將區域和資源組名稱替換為合適的 Azure 區域和資源組的名稱
+2. 如果您在 Linux 上通過鍵入`deploy-bash.sh``/deploy-bash.sh REGION RESOURCE_GROUP_NAME`來運行該檔，則可能需要通過鍵入使檔可執行`chmod +x deploy-bash.sh`
 
-下列範例會展示主要元件的程式碼片段。 您可以藉由執行部署檔案, 個別部署範例或與其余元件。
+以下示例演示了關鍵元件的程式碼片段。 您可以通過運行部署檔單獨部署示例，也可以與元件的其餘部分一起部署這些示例。
 
 ### <a name="implementation-guidance"></a>實作指引
-部署腳本是一個可以細分成四個階段的腳本。 每個階段都會部署並設定[架構圖](#architecture)中的 Azure 資源。
 
-四個階段為:
+部署腳本是一個腳本，可以分解為四個階段。 每個階段部署和配置[體系結構關係圖](#architecture)中的 Azure 資源。
 
-- 部署 Azure Key Vault。
-- 部署適用於 PostgreSQL 的 Azure 資料庫。
-- 在 Linux 上部署 Azure Web Apps。
-- 使用 web 應用程式防火牆部署應用程式閘道。
+四個階段是：
 
-每個階段都是使用先前部署的資源中的設定, 以前面的一項為基礎。
+- 部署 Azure 金鑰保存庫。
+- 為 PostgreSQL 部署 Azure 資料庫。
+- 在 Linux 上部署 Azure Web 應用。
+- 使用 Web 應用程式防火牆部署應用程式閘道。
 
-若要完成執行步驟, 請確定您已安裝 [[必要條件](#prerequisites)] 底下列出的工具。
+每個階段都使用以前部署的資源中的配置在前一個階段構建。
 
-#### <a name="deploy-azure-key-vault"></a>部署 Azure Key Vault
-在本節中, 您會建立及部署用來儲存秘密和憑證的 Azure Key Vault 實例。
+要完成實施步驟，請確保已安裝"[先決條件](#prerequisites)"下列出的工具。
 
-完成部署之後, 您會有一個部署在 Azure 上的 Azure Key Vault 實例。
+#### <a name="deploy-azure-key-vault"></a>部署 Azure 金鑰保存庫
 
-若要使用 Azure CLI 部署 Azure Key Vault:
+在本節中，創建和部署用於存儲機密和證書的 Azure 金鑰保存庫實例。
 
-1. 宣告 Azure Key Vault 的變數。
-2. 註冊 Azure Key Vault 提供者。
-3. 建立實例的資源群組。
-4. 在步驟3中建立的資源群組中建立 Azure Key Vault 實例。
+完成部署後，在 Azure 上部署了 Azure 金鑰保存庫實例。
 
-   ``` azurecli
+要使用 Azure CLI 部署 Azure 金鑰保存庫，請使用：
+
+1. 聲明 Azure 金鑰保存庫的變數。
+2. 註冊 Azure 金鑰保存庫提供程式。
+3. 為實例創建資源組。
+4. 在步驟 3 中創建的資源組中創建 Azure 金鑰保存庫實例。
+
+   ```powershell-interactive
 
     function Get-Hash() {
         return (New-Guid).Guid.Split('-')[4]
@@ -233,24 +247,26 @@ ms.locfileid: "68934922"
        --verbose
 
    ```
-最佳做法是在使用 Key Vault 來存取資源的應用程式中, 使用適用于 Azure 資源的受控識別。 當 Key Vault 的存取金鑰不是以程式碼或在設定中儲存時, 您的安全性狀態就會增加。
 
-#### <a name="deploy-azure-database-for-postgresql"></a>部署適用於 PostgreSQL 的 Azure 資料庫
-適用於 PostgreSQL 的 Azure 資料庫以下列方式運作, 請先建立資料庫伺服器, 然後建立用來儲存架構和資料的資料庫。
+最佳做法是在使用金鑰保存庫訪問資源的應用中對 Azure 資源使用託管標識。 當金鑰保存庫的訪問金鑰未存儲在代碼或配置中時，您的安全狀態會提高。
 
-完成部署之後, 您會有一個在 Azure 上執行的于 postgresql 伺服器和資料庫。
+#### <a name="deploy-azure-database-for-postgresql"></a>為 PostgreSQL 部署 Azure 資料庫
 
-若要使用 Azure CLI 部署適用於 PostgreSQL 的 Azure 資料庫:
+PostgreSQL 的 Azure 資料庫的工作方式如下，首先創建資料庫伺服器，然後創建用於存儲架構和資料的資料庫。
 
-1. 使用 Azure CLI 和您的 Azure 訂用帳戶設定來開啟終端機。
-2. 產生用來存取資料庫的安全使用者名稱和密碼組合。 (這些應該儲存在使用它們的應用程式 Azure Key Vault 中)。
-3. 建立于 postgresql 伺服器實例。
-4. 在您于步驟3建立的伺服器實例上建立資料庫。
-5. 在於 postgresql 實例上執行于 postgresql 腳本。
+完成部署後，在 Azure 上運行 PostgreSQL 伺服器和資料庫。
 
-下列程式碼會從上述的 [部署 KeyVault] 步驟中, 依賴儲存在 Azure KeyVault 中的 PGUSERNAME 和 PGPASSWORD 秘密。
+要使用 Azure CLI 部署後格雷SQL的 Azure 資料庫，請使用：
 
-   ``` azurecli
+1. 使用 Azure CLI 和 Azure 訂閱設置打開終端。
+2. 生成用於訪問資料庫的安全使用者名和密碼組合。 （這些應存儲在 Azure 金鑰保存庫中，用於使用它們的應用。
+3. 創建 PostgreSQL 伺服器實例。
+4. 在步驟 3 中創建的伺服器實例上創建資料庫。
+5. 在 PostgreSQL 實例上運行 PostgreSQL 腳本。
+
+以下代碼依賴于上面部署 KeyVault 步驟中存儲在 Azure KeyVault 中的 PGUSERNAME 和 PGPASSWORD 機密。
+
+   ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
    $pgPassword = $(az keyvault secret show --name PGPASSWORD --vault-name $kvName --query value) -replace '"',''
 
@@ -291,31 +307,31 @@ ms.locfileid: "68934922"
        --verbose
    ```
 
-在您部署資料庫之後, 您必須將其認證和連接字串儲存在 Azure Key Vault 中。
-在 [腳本] 資料夾中, 有`functions.sql`一個檔案包含 PL/pgSQL 程式碼, 當您執行時, 它會建立預存函式。 執行此檔案會參數化輸入, 以限制 SQL 插入。
+部署資料庫後，需要將其憑據和連接字串存儲在 Azure 金鑰保存庫中。
+在腳本資料夾中，有一個`functions.sql`檔包含 PL/pgSQL 代碼，在運行時創建存儲的函數。 運行此檔參數化輸入以限制 SQL 注入。
 
-于 postgresql 是與名`psql`為的工具配套使用, 用來連接到資料庫。 若要`functions.sql`執行, 您必須從本機電腦連接到適用於 PostgreSQL 的 Azure 資料庫實例, 並從該處執行。 Psql 工具的安裝包含在每個作業系統上的預設安裝中, 以供于 postgresql 之用。
-如需詳細資訊, 請參閱[Psql 檔](https://www.postgresql.org/docs/9.3/app-psql.html)。
+PostgreSQL 與一個稱為用於`psql`連接到資料庫的工具捆綁在一起。 要運行`functions.sql`，需要從本地電腦連接到 PostgreSQL 實例的 Azure 資料庫，並從那裡運行它。 psql 工具的安裝包含在每個作業系統 PostgreSQL 的預設安裝中。
+有關詳細資訊，請參閱[psql 文檔](https://www.postgresql.org/docs/9.3/app-psql.html)。
 
-Azure Cloud Shell 也包含`psql`工具。 您可以藉由選取 Cloud Shell 圖示, 直接從 Azure 入口網站使用 Cloud Shell。
+Azure 雲外殼還包括該工具`psql`。 您可以通過選擇雲外殼圖示直接從 Azure 門戶使用雲外殼。
 
-若要啟用于 postgresql 實例的遠端存取, 您必須在於 postgresql 中授權該 IP 位址。
-若要啟用此存取權, 請前往 [連線**安全性**] 索引標籤, 選取 [**新增用戶端 IP**], 然後儲存新的設定。
+要啟用對 PostgreSQL 實例的遠端存取，您需要在 PostgreSQL 中授權 IP 位址。
+通過訪問**連接安全**選項卡、選擇 **"添加用戶端 IP**"以及保存新設置來啟用此存取權限。
 
 ![授權用戶端 IP](./media/secure-web-app/add-client-ip-postgres.png)
 
-如果您使用 Cloud Shell 而不是本機 psql 工具, 請選取 [**允許存取 Azure 服務**], 並將其值變更為 [**開啟**], 以允許您的 Cloud Shell 存取。
+如果使用雲外殼而不是本地 psql 工具，請選擇"**允許訪問 Azure 服務**"並將其值更改為**ON**以允許雲外殼訪問。
 
-接著, 從 Azure 入口網站上于 postgresql 實例的 [**連接**字串] 索引標籤中, 執行下列 psql 命令, 並連接到實例。
-以資料庫的 [連接字串] 分頁中的參數取代空的大括弧, 並將 [密碼] 從 [Azure Key Vault]。
+然後，通過運行以下 psql 命令與 Azure 門戶上的 PostgreSQL 實例**的連接字串**選項卡的連接字串參數連接到實例。
+將空大括弧替換為資料庫的連接字串邊欄選項卡中的參數，用 Azure 金鑰保存庫的密碼替換密碼。
 
-```sql
+```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
-確定連線到資料庫之後, 請執行下列 PL/pgSQL 腳本。 此腳本會建立用來將資料插入資料庫中的預存函數。
+在確保已連接到資料庫後，請運行以下 PL/pgSQL 腳本。 該腳本創建用於將資料插入資料庫的存儲函數。
 
-```sql
+```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO visitor(
@@ -332,7 +348,6 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-
 CREATE OR REPLACE FUNCTION insert_azure_document(title VARCHAR(40), url VARCHAR(100), category VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO azure_document(
@@ -348,29 +363,29 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
+有關如何為 PostgreSQL 設置 SSL 和憑證授權單位 （CA） 驗證的詳細資訊，請參閱[為 PostgreSQL 在 Azure 資料庫中配置 SSL 連線](/azure/postgresql/concepts-ssl-connection-security)。
 
-如需有關如何設定于 postgresql 的 SSL 和憑證授權單位單位 (CA) 驗證的詳細資訊, 請參閱[在適用於 PostgreSQL 的 Azure 資料庫中設定 ssl 連線能力](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
+容器中包含根憑證。 獲取證書的步驟包括：
 
-容器中包含根憑證。 取得憑證所採取的步驟如下:
+1. 從[憑證授權單位](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)下載證書檔。
+2. [在您的電腦上下載並安裝 OpenSSL。](/azure/postgresql/concepts-ssl-connection-security)
+3. 解碼證書檔：
 
-1. 從[憑證授權單位](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)單位下載憑證檔案。
-2. [在您的電腦上下載並安裝 OpenSSL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
-3. 將憑證檔案解碼:
-
-   ```powershell
+   ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-若要深入瞭解如何設定于 postgresql 的 SSL 安全性, 請參閱[設定 Ssl 連接安全性](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
+在此處配置[SSL 連線安全性](/azure/postgresql/concepts-ssl-connection-security)，請在此處閱讀有關如何為 PostgreSQL 配置 SSL 安全性的更多內容。
 
-#### <a name="deploy-azure-web-apps-on-linux"></a>在 Linux 上部署 Azure Web Apps
-您可以在 Azure App Service 上輕鬆地建立 Linux 服務, 因為 Azure 提供一組預先建立的容器和映射, 適用于 Python、Ruby、 C#和 JAVA 等廣泛使用的語言。 Azure 也支援自訂容器, 可讓幾乎所有程式設計語言都能在 Azure App Service 平臺上執行。
+#### <a name="deploy-azure-web-apps-on-linux"></a>在 Linux 上部署 Azure Web 應用
 
-正在部署的應用程式是簡單的 Python 應用程式, 可在最新的 Ubuntu Linux 散發套件上執行。 它會分別連接到先前各節中建立的 Azure Key Vault 和于 postgresql 實例, 以取得認證管理和資料儲存。
+在 Azure 應用服務的基礎上輕鬆構建 Linux 服務，因為 Azure 為廣泛使用的語言（如 Python、Ruby、C# 和 JAVA）提供了一組預構建的容器和映射。 Azure 還支援自訂容器，它允許在 Azure 應用服務平臺上運行幾乎所有程式設計語言。
 
-下列 Docker 檔案會在應用程式的根資料夾中提供:
+正在部署的應用程式是一個簡單的Python應用程式，運行在最新的UbuntuLinux發行版本。 它分別連接到在前幾節中為憑據管理和資料存儲創建的 Azure 金鑰保存庫和 PostgreSQL 實例。
 
-``` docker
+以下 Docker 檔在應用程式的根資料夾中提供：
+
+```dockerfile
 # Docker file for the basic web app
 # Using the latest Alpine Linux
 
@@ -421,17 +436,17 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-上述 Dockerfile 是用來建立裝載于之 Azure Container Registry `mcr.microsoft.com/samples/basic-linux-app`上的容器。
+上面的 Dockerfile 用於生成託管在 Azure 容器註冊表上的`mcr.microsoft.com/samples/basic-linux-app`容器。
 
-下列程式碼:
+以下代碼：
 
-1. 宣告 App Service 實例的變數和名稱。
-2. 建立 App Service 方案的資源群組。
-3. 在 Linux 容器實例上布建 Azure Web Apps。
-4. 啟用 web 應用程式容器的記錄功能。
-5. 在容器的應用程式設定中設定一些應用程式設定。
+1. 聲明應用服務實例的變數和名稱。
+2. 為應用服務方案創建資源組。
+3. 在 Linux 容器實例上設置 Azure Web 應用。
+4. 啟用 Web 應用容器的日誌記錄。
+5. 在容器的應用設置中設置一些應用配置。
 
-   ```
+   ```powershell-interactive
    Write-Host "Retrieving the Azure Key Vault URL"
    $kvURI = $(az keyvault show --name $kvName --query properties.vaultUri)
 
@@ -500,36 +515,36 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
            --end-ip-address $outboundIps[$i] `
            --verbose
    }
-
    ```
 
-此腳本會為 App Service 實例建立指派的身分識別, 以便與 MSI 搭配使用以與 Azure Key Vault 進行互動, 而不需要在程式碼或設定中硬編碼密碼。
+此腳本為應用服務實例創建分配的身份，該標識可與 MSI 一起使用，與 Azure 金鑰保存庫進行交互，而不會在代碼或配置中使用硬編碼機密。
 
-移至入口網站中的 Azure Key Vault 實例, 在 [存取原則] 索引標籤上授權指派的身分識別。選取 [**新增存取原則**]。 在 [**選取主體**] 底下, 搜尋類似于所建立 App Service 實例名稱的應用程式名稱。
-附加至應用程式的服務主體應該是可見的。 選取它並 [儲存存取原則] 頁面, 如下列螢幕擷取畫面所示。
+轉到門戶中的 Azure 金鑰保存庫實例，以授權訪問策略選項卡上分配的標識。選擇 **"添加新訪問策略**"。 在**Select 主體**下，搜索與創建的應用服務實例的名稱類似的應用程式名稱。
+附加到應用程式的服務主體應可見。 選擇它並保存訪問策略頁，如下圖所示。
 
-因為應用程式只需要取得金鑰, 請選取 [密碼] 選項中的 [**取得**] 許可權, 以允許存取, 同時降低授與的許可權。
+由於應用程式只需要檢索金鑰，因此在機密選項中選擇 **"獲取**"許可權，允許訪問，同時減少授予的許可權。
 
 ![Key Vault 存取原則](./media/secure-web-app/kv-access-policy.png)
 
-*建立 Key Vault 存取原則*
+*創建金鑰保存庫訪問策略*
 
-儲存存取原則, 然後在 [**存取原則**] 索引標籤上儲存新的變更, 以更新原則。
+保存訪問策略，然後在 **"訪問策略"** 選項卡上保存新更改以更新策略。
 
-#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>部署已啟用 web 應用程式防火牆的應用程式閘道
-在 web 應用程式中, 不建議您直接將服務公開給網際網路上的外部世界。
-負載平衡和防火牆規則可讓您更安全地控制連入流量, 並協助您進行管理。
+#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>在啟用了 Web 應用程式防火牆後部署應用程式閘道
 
-若要部署應用程式閘道實例:
+在 Web 應用中，不建議您在互聯網上直接向外部世界公開服務。
+負載平衡和防火牆規則為傳入流量提供了更多的安全性和控制，並説明您對其進行管理。
 
-1. 建立資源群組以存放應用程式閘道。
-2. 布建要附加至閘道的虛擬網路。
-3. 為虛擬網路中的閘道建立子網。
-4. 布建公用 IP 位址。
-5. 布建應用程式閘道。
-6. 在閘道上啟用 web 應用程式防火牆。
+要部署應用程式閘道實例：
 
-   ``` azurecli
+1. 創建資源組以容納應用程式閘道。
+2. 預配虛擬網路以附加到閘道。
+3. 為虛擬網路中的閘道創建子網。
+4. 預配公共 IP 位址。
+5. 預配應用程式閘道。
+6. 在閘道上啟用 Web 應用程式防火牆。
+
+   ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
        --name $certName `
        --policy `@policy.json `
@@ -554,17 +569,17 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
    Export-PfxCertificate -PFXData $pfxFile -FilePath $certPath -Password $signPassword
    ```
 
-上述腳本:
+前面的腳本：
 
-1. 在 Azure 上建立新的自我簽署憑證。
-2. 下載自我簽署憑證做為 base64 編碼的檔案。
-3. 產生自我簽署憑證的密碼。
-4. 將憑證匯出為以密碼簽署的 PFX 檔案。
-5. 將憑證的密碼儲存在 Azure Key Vault 中。
+1. 在 Azure 上創建新的自簽章憑證。
+2. 將自簽章憑證下載為 base64 編碼檔。
+3. 為自簽章憑證生成密碼。
+4. 將證書匯出為使用密碼簽名的 PFX 檔。
+5. 將證書的密碼存儲在 Azure 金鑰保存庫中。
 
-這一節會部署應用程式閘道:
+本節部署應用程式閘道：
 
-```powershell
+```powershell-interactive
 # Create a virtual network required by the gateway
 Write-Host "Creating the Azure Virtual Network: $($vnetName)"
 az network vnet create --name $vnetName `
@@ -662,312 +677,319 @@ az network application-gateway http-settings update --gateway-name $gwName `
     --verbose
 ```
 
-完成部署之後, 您會有已啟用 web 應用程式防火牆的應用程式閘道。
+完成部署後，您有一個啟用了 Web 應用程式防火牆的應用程式閘道。
 
-閘道實例會針對 HTTPS 公開端口443。 此設定可確保我們的應用程式只能透過 HTTPS 在埠443上存取。
+閘道實例公開 HTTPS 埠 443。 此配置可確保我們的應用只能通過 HTTPS 在埠 443 上訪問。
 
-封鎖未使用的埠並限制受攻擊面的風險, 是安全性最佳作法。
+阻止未使用的埠和限制攻擊面暴露是一種安全最佳做法。
 
-#### <a name="add-network-security-groups-to-the-app-service-instance"></a>將網路安全性群組新增至 App Service 實例
+#### <a name="add-network-security-groups-to-the-app-service-instance"></a>將網路安全性群組添加到應用服務實例
 
-App Service 實例可以與虛擬網路整合。 此整合可讓您設定網路安全性群組原則, 以管理應用程式的傳入和傳出流量。
+應用服務實例可以與虛擬網路集成。 此集成允許使用管理應用傳入和傳出流量的網路安全性群組策略配置它們。
 
-1. 若要啟用這項功能, 請在 [Azure App 服務實例] 分頁的 [**設定**] 底下, 選取 [**網路**]。 在右窗格的 [ **VNet 整合**] 底下, 選取 [**按一下這裡進行設定**]。
+1. 要啟用此功能，請在 Azure 應用服務實例邊欄選項卡上，**在"設置"** 下選擇 **"網路**"。 在右側窗格中，在**VNet 集成**下，選擇 **"按一下此處配置**"。
 
-   ![新增虛擬網路整合](./media/secure-web-app/app-vnet-menu.png)
+   ![新的虛擬網路集成](./media/secure-web-app/app-vnet-menu.png)
 
-    *App Service 的新虛擬網路整合*
-1. 在下一個頁面上, 選取 [**新增 VNET (預覽)** ]。
+    *應用服務的新虛擬網路集成*
 
-1. 在下一個功能表中, 選取以開頭`hello-vnet`的部署中建立的虛擬網路。 您可以建立新的子網, 或選取現有的子網。
-   在此情況下, 請建立新的子網。 將 [**位址範圍**] 設定為 [ **10.0.3.0/24** ], 並將子網命名為**應用程式子網**。
+1. 在下一頁上，選擇 **"添加 VNET（預覽）"。**
 
-   ![App Service 虛擬網路設定](./media/secure-web-app/app-vnet-config.png)
+1. 在下一個功能表上，選擇在以`hello-vnet`開始的部署中創建的虛擬網路。 您可以創建新子網或選擇現有子網。
+   在這種情況下，創建一個新的子網。 將**位址範圍**設置為**10.0.3.0/24，** 並命名子**網應用子網**。
 
-    *App Service 的虛擬網路設定*
+   ![應用服務虛擬網路配置](./media/secure-web-app/app-vnet-config.png)
 
-現在您已啟用虛擬網路整合, 您可以將網路安全性群組新增至我們的應用程式。
+    *應用服務的虛擬網路配置*
 
-1. 使用 [搜尋] 方塊, 搜尋 [**網路安全性群組**]。 在結果中選取 [**網路安全性群組**]。
+現在，您已經啟用了虛擬網路集成，您可以將網路安全性群組添加到我們的應用。
 
-    ![搜尋網路安全性群組](./media/secure-web-app/nsg-search-menu.png)
+1. 使用搜索框，搜索**網路安全性群組**。 在結果中選擇**網路安全性群組**。
 
-    *搜尋網路安全性群組*
+    ![搜索網路安全性群組](./media/secure-web-app/nsg-search-menu.png)
 
-2. 在下一個功能表上, 選取 [**新增**]。 輸入 NSG 的**名稱**及其所在的**資源群組**。 此 NSG 將會套用至應用程式閘道的子網。
+    *搜索網路安全性群組*
 
-    ![建立 NSG](./media/secure-web-app/nsg-create-new.png)
+2. 在下一個功能表上，選擇 **"添加**"。 輸入應位於的 NSG**和資源組****的名稱**。 此 NSG 將應用於應用程式閘道的子網。
 
-    *建立 NSG*
+    ![創建 NSG](./media/secure-web-app/nsg-create-new.png)
 
-3. 建立 NSG 之後, 請選取它。 在其分頁的 [**設定**] 底下, 選取 [**輸入安全性規則**]。 設定這些設定, 以允許透過埠443進入應用程式閘道的連線。
+    *創建 NSG*
 
-   ![設定 NSG](./media/secure-web-app/nsg-gateway-config.png)
+3. 創建 NSG 後，選擇它。 在其邊欄選項卡中，在 **"設置"** 下，選擇 **"入站安全規則**"。 配置這些設置以允許通過埠 443 進入應用程式閘道的連接。
 
-   *設定 NSG*
+   ![配置 NSG](./media/secure-web-app/nsg-gateway-config.png)
 
-4. 在 [閘道 NSG] 的輸出規則中, 新增規則以允許對 App Service 實例的輸出連線, 方法是建立以服務`AppService`標籤為目標的規則:
+   *配置 NSG*
 
-   ![新增 NSG 的輸出規則](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
+4. 在閘道 NSG 的出站規則中，通過創建以服務標記`AppService`為目標的規則，添加允許出站連接到應用服務實例的規則：
 
-   *新增 NSG 的輸出規則*
+   ![添加 NSG 的出站規則](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
-    新增另一個輸出規則, 以允許閘道將輸出規則傳送到虛擬網路。
+   *添加 NSG 的出站規則*
 
-   ![新增另一個輸出規則](./media/secure-web-app/nsg-outbound-vnet.png)
+    添加另一個出站規則，允許閘道將出站規則發送到虛擬網路。
 
-    *新增另一個輸出規則*
+   ![添加其他出站規則](./media/secure-web-app/nsg-outbound-vnet.png)
 
-5. 在 NSG 的 [子網] 分頁上, 選取 [**關聯**], 選取部署中所建立的虛擬網路, 然後選取名為**gw-subnet**的閘道子網。 NSG 會套用至子網。
+    *添加其他出站規則*
 
-6. 建立另一個 NSG, 如同在先前的步驟中, 這次適用于 App Service 實例。 為它命名。 新增埠443的輸入規則, 如同您針對應用程式閘道 NSG 所做的一樣。
+5. 在 NSG 的子網邊欄選項卡上，選擇 **"關聯**"，選擇在部署中創建的虛擬網路，然後選擇名為**gw-子網的**閘道子網 。 NSG 應用於子網。
 
-   如果您將 App Service 實例部署在 App Service 環境實例上 (這不是此應用程式的情況), 您可以在 App Service NSG 的輸入安全性群組上開啟埠 454-455, 以新增輸入規則以允許 Azure 服務健康狀態探查。 設定如下:
+6. 創建另一個 NSG，如前面的步驟中，此時為應用服務實例。 給它一個名字。 添加埠 443 的入站規則，就像對應用程式閘道 NSG 所做的那樣。
 
-   ![新增 Azure 服務健康狀態探查的規則](./media/secure-web-app/nsg-create-healthprobes.png)
+   如果在應用服務環境實例上部署了應用服務實例（此應用不是這種情況，則可以通過打開應用服務 NSG 的入站安全性群組上的埠 454-455 來添加入站規則以允許 Azure 服務運行狀況探測。 配置：
 
-    *新增 Azure 服務健康狀態探查的規則 (僅 App Service 環境)*
+   ![添加 Azure 服務運行狀況探測的規則](./media/secure-web-app/nsg-create-healthprobes.png)
 
-7. 在 [輸出安全性規則] 中, 建立新的輸出安全性規則, 以允許 App Service 實例與于 postgresql 資料庫進行通訊。 如下所示加以設定:
+    *添加 Azure 服務運行狀況探測的規則（僅限應用服務環境）*
 
-   ![允許輸出于 postgresql 連接的規則](./media/secure-web-app/nsg-outbound-postgresql.png)
+7. 在出站安全規則中，創建一個新的出站安全規則，允許應用服務實例與 PostgreSQL 資料庫進行通信。 像這樣配置它：
 
-   *新增規則以允許輸出于 postgresql 連線*
+   ![允許出站後 SQL 連接的規則](./media/secure-web-app/nsg-outbound-postgresql.png)
 
-若要限制受攻擊面, 請修改 App Service 網路設定, 只允許應用程式閘道存取應用程式。
-若要這麼做, 請前往 [App Service 網路] 索引標籤, 選取 [ **IP 限制**] 索引標籤, 然後建立允許僅允許應用程式閘道 IP 直接存取服務的允許規則。
+   *添加規則以允許出站 PostgreSQL 連接*
 
-您可以從其 [總覽] 頁面取得閘道的 IP 位址。 在 [ **Ip 位址 CIDR** ] 索引標籤上, 以下列格式輸入`<GATEWAY_IP_ADDRESS>/32`ip 位址:。
+要限制攻擊面，請修改應用服務網路設置，以僅允許應用程式閘道訪問應用程式。
+通過進入應用服務網路選項卡、選擇 **"IP 限制"** 選項卡以及創建只允許應用程式閘道的 IP 直接存取服務的允許規則來執行此操作。
+
+可以從閘道的概述頁檢索閘道的 IP 位址。 在**IP 位址 CIDR**選項卡上，輸入此格式的`<GATEWAY_IP_ADDRESS>/32`IP 位址： 。
 
 ![僅允許閘道](./media/secure-web-app/app-allow-gw-only.png)
 
-*僅允許閘道 IP 存取 App Service*
+*僅允許閘道 IP 訪問應用服務*
 
+#### <a name="implement-azure-active-directory-oauth"></a>實現 Azure 活動目錄 OAuth
 
-#### <a name="implement-azure-active-directory-oauth"></a>執行 OAuth Azure Active Directory
+在示例 Web 應用頁上分發的 Azure 文檔是我們應用中可能需要保護的資源。 可以使用 Azure 活動目錄 （Azure AD） 使用不同的身份驗證流實現 Web、桌面和移動應用的身份驗證。
+該應用程式使用**與 Microsoft 登錄**，允許應用讀取已添加到單租戶 Azure AD 使用者清單中的使用者的設定檔。
 
-在範例 web 應用程式頁面上散發的 Azure 檔是我們的應用程式中可能需要保護的資源。 您可以使用 Azure Active Directory (Azure AD), 透過不同的驗證流程來為 web、桌面和行動應用程式執行驗證。
-應用程式會使用**與 Microsoft 的登**入, 讓應用程式能夠讀取已新增至單一租使用者 Azure AD 使用者清單中的使用者設定檔。
+在 Azure 門戶中，將應用配置為使用所需的憑據：
 
-在 Azure 入口網站中, 將應用程式設定為使用所需的認證:
+1. 選擇**Azure 活動目錄**，或使用搜索框搜索它。
 
-1. 選取 [ **Azure Active Directory**], 或使用 [搜尋] 方塊進行搜尋。
+2. 選擇**新註冊**：
 
-2. 選取 [**新增註冊**]:
+   ![創建註冊](./media/secure-web-app/ad-auth-create.png)
 
-   ![建立註冊](./media/secure-web-app/ad-auth-create.png)
+   *創建 Azure AD 應用註冊*
 
-   *建立 Azure AD 應用程式註冊*
+3. 在下一頁上，輸入應用名稱。 在 **"支援帳戶類型**"下，**選擇"僅在此組織目錄中的帳戶**"。
+    在**重定向 URI**下，輸入應用將運行的基本域加上帶有權杖終結點的一個域。 例如 *：GATEWAY_HASH*.cloudapp.net/token。
 
-3. 在下一個頁面上, 輸入應用程式名稱。 在 [**支援的帳戶類型**] 底下, 選取 [**僅此組織目錄中的帳戶**]。
-    在 [重新**導向 URI**] 底下, 輸入應用程式將在其上執行的基底網域, 再加上一個具有權杖端點的主域。 例如: *GATEWAY_HASH*. cloudapp.net/token。
+   ![配置 Azure AD 應用註冊](./media/secure-web-app/ad-auth-type.png)
 
-   ![設定 Azure AD 應用程式註冊](./media/secure-web-app/ad-auth-type.png)
+   *配置 Azure AD 應用註冊*
 
-   *設定 Azure AD 應用程式註冊*
+4. 將顯示顯示已註冊應用及其資訊的螢幕。 您需要將此資訊添加到 Azure 金鑰保存庫實例中。
+   1. 複製應用程式（用戶端）ID 並將其保存在金鑰保存庫中為`CLIENTID`。
+   2. 複製您在上一步中輸入的重定向 URI 並將其另存為`REDIRECTURI`。
+   3. 複製 Azure AD 預設目錄名稱（其格式*名稱*.microsoftonline.com，並將其保存在金鑰保存庫中為`TENANT`。
+   4. 轉到以前創建的 Azure AD 應用的 **"證書&機密**"選項卡，然後選擇 **"新建用戶端機密**"，如下圖所示。 設置到期日期，然後複製生成的值並將其保存在金鑰保存庫中為`CLIENTSECRET`。
 
-4. 您會看到一個畫面, 其中顯示已註冊的應用程式及其資訊。 您必須將此資訊新增至 Azure Key Vault 實例。
-   1. 複製應用程式 (用戶端) 識別碼, 並將它儲存`CLIENTID`在 Key Vault 中。
-   2. 複製您在上一個步驟中輸入的 [重新導向 URI], `REDIRECTURI`並將它儲存為。
-   3. 複製 Azure AD 預設目錄名稱, 格式為 microsoftonline.com, 並將它儲存在 Key Vault `TENANT`中。
-   4. 移至您先前建立之 Azure AD 應用程式的 [**憑證 & 秘密**] 索引標籤, 然後選取 [**新增用戶端密碼**], 如下列螢幕擷取畫面所示。 設定到期日, 然後複製產生的值, 並將其儲存在 Key Vault `CLIENTSECRET`中。
+      ![Azure AD 授權金鑰](./media/secure-web-app/ad-auth-secrets.png)
 
-      ![Azure AD 授權密碼](./media/secure-web-app/ad-auth-secrets.png)
+      *Azure AD 授權金鑰*
 
-      *Azure AD 授權密碼*
+   5. 使用任何命令列/連線工具生成安全的隨機金鑰。 將其另存到金鑰保管`FLASKSECRETKEY`庫中。 應用程式框架使用此金鑰創建會話。
+        要瞭解如何生成金鑰，請參閱["跳蚤會話](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)"。
 
-   5. 使用任何命令列/線上工具來產生安全的隨機秘密金鑰。 將它儲存到 Key Vault `FLASKSECRETKEY`做為。 應用程式架構會使用此金鑰來建立會話。
-        若要瞭解如何產生秘密金鑰, 請參閱[Flask 會話](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)。
+5. 配置登錄後，需要將使用者添加到 Azure AD 連結，以允許他們登錄到資源。 要添加它們，請轉到 Azure AD 中的 **"使用者"** 選項卡，選擇 **"所有使用者**"，然後選擇 **"新使用者**"或 **"新來賓使用者**"。 對於測試，您可以添加來賓使用者並邀請使用者進入目錄。 或者，如果應用正在運行的域已過驗證，則可以添加新使用者。 在此示例中，只能註冊在 Azure AD 租戶中註冊的使用者才能進行訪問。 有關多租戶登錄訪問的資訊，請參閱文檔。
 
-5. 設定登入之後, 您必須將使用者新增至 Azure AD 連結, 讓他們能夠登入資源。 若要新增它們, 請移至 Azure AD 中的 [**使用者**] 索引標籤, 選取 [**所有使用者**], 然後選取 [**新增使用者**] 或 [**新增來賓使用者**]。 若要進行測試, 您可以新增來賓使用者, 並將使用者邀請到目錄中。 或者, 如果應用程式執行所在的網域已通過驗證, 您可以新增使用者。 在此範例中, 只有在 Azure AD 租使用者中註冊的使用者可以註冊以進行存取。 如需多租使用者登入存取的詳細資訊, 請參閱檔集。
+   ![將使用者添加到預設域](./media/secure-web-app/ad-auth-add-user.png)
 
-   ![將使用者新增至預設網域](./media/secure-web-app/ad-auth-add-user.png)
+   *將使用者添加到預設的 Azure 活動目錄域*
 
-   *將使用者新增至預設 Azure Active Directory 網域*
+將 Azure AD 配置和機密添加到金鑰保存庫後，可以使用 Azure OAuth 身份驗證將使用者身份驗證到應用中。
+在應用代碼中，這由 Azure 活動目錄身份驗證庫 （ADAL） 處理。
 
-將 Azure AD 設定和密碼新增至 Key Vault 之後, 使用者即可使用 Azure OAuth 驗證向應用程式進行驗證。
-在應用程式程式碼中, 這是由 Azure Active Directory Authentication Library (ADAL) 處理。
+在金鑰保存庫中包含機密並應用程式可以訪問機密和資料庫後，可以通過閘道的應用程式 URL （，https://GATEWAY_HASH.cloudapp.net)可以從其邊欄選項卡獲取）訪問應用程式服務。
 
-在 Key Vault 秘密之後, 且應用程式可以存取秘密和資料庫之後, 即可透過閘道的應用程式 URL (https://GATEWAY_HASH.cloudapp.net), 您可以從其分頁取得) 來連線應用程式服務。
-
-如果您在登入 Azure AD 時收到錯誤訊息, 指出「使用者未在您嘗試登入的目錄中註冊」, 您需要新增使用者。 若要新增使用者, 請移至 Azure AD 的 [**使用者**] 索引標籤, 然後輸入使用者的詳細資料或邀請使用者, 輸入其電子郵件地址作為 [**邀請來賓**] 分頁中 Azure AD 的來賓使用者, 藉以手動新增使用者。
+如果在登錄到 Azure AD 時，會收到一個錯誤，指出"使用者未在嘗試登錄的目錄中註冊"，則需要添加該使用者。 要添加使用者，請轉到 Azure AD 的 **"使用者"** 選項卡，並通過輸入使用者的詳細資訊手動添加使用者，或者通過在 **"邀請來賓"** 邊欄選項卡中輸入以來賓使用者身份的使用者電子郵件地址來邀請使用者加入 Azure AD。
 
 #### <a name="deploy-application-insights"></a>部署 Application Insights
-現在應用程式已部署且正常運作, 您需要處理在應用程式中發生的錯誤, 以及記錄和追蹤資料收集。
-記錄和追蹤資料收集可讓您查看應用程式中所發生的 audit 事件。
+現在，應用已部署並工作，您需要處理應用中發生的錯誤以及日誌記錄和跟蹤資料收集。
+日誌記錄和跟蹤資料收集提供了對應用中發生的審核事件的視圖。
 
-Application Insights 是一項服務, 會收集可由使用者或系統產生的記錄檔。
+應用程式見解是收集使用者或系統可以生成的日誌的服務。
 
-若要建立 Application Insights 實例:
+要創建應用程式見解實例，
 
-1. 使用 Azure 入口網站中的 [搜尋] 方塊來搜尋**Application Insights** 。
-2. 選取 [Application Insights]。 提供此處顯示的詳細資料, 以建立實例。
+1. 使用 Azure 門戶中的搜索框搜索**應用程式見解**。
+2. 選取 [Application Insights] ****。 提供此處顯示的詳細資訊以創建實例。
 
-   ![建立 Application Insights 實例](./media/secure-web-app/app-insights-data.png)
+   ![創建應用程式見解實例](./media/secure-web-app/app-insights-data.png)
 
-部署完成之後, 您會有一個 Application Insights 實例。
+部署完成後，您有一個應用程式見解實例。
 
-建立 Application Insights 實例之後, 您必須讓應用程式知道可讓它將記錄傳送至雲端的檢測金鑰。 若要這麼做, 請在 Azure 為 Application Insights 提供的應用程式程式庫中抓取 Application Insights 金鑰並加以使用。 最佳做法是將金鑰和秘密儲存在 Azure Key Vault 中, 以確保其安全。
+創建應用程式見解實例後，需要使應用瞭解允許其向雲發送日誌的檢測金鑰。 為此，請檢索應用程式見解金鑰，並在 Azure 為應用程式見解提供的應用程式庫中使用它。 最佳做法是在 Azure 金鑰保存庫中存儲金鑰和機密，以確保它們的安全。
 
-針對基本範例應用程式, 在您建立 Application Insights 實例之後, 您必須讓應用程式知道可讓它將記錄傳送至雲端的檢測金鑰。
-在 Key Vault 中, 設定`APPINSIGHTSKEY`密碼並將其值設定為檢測金鑰。 這麼做可讓應用程式將記錄和計量傳送至 Application Insights。
+對於基本示例應用，在創建應用程式見解實例後，需要使應用瞭解允許其向雲發送日誌的檢測金鑰。
+在金鑰保存庫中，設置`APPINSIGHTSKEY`機密並將其值設置為檢測金鑰。 這樣做允許應用向應用程式見解發送日誌和指標。
 
-#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>執行 Azure Active Directory 的多重要素驗證
-系統管理員必須確保入口網站中的訂用帳戶帳戶受到保護。 此訂用帳戶容易遭受攻擊, 因為它會管理您所建立的資源。 若要保護訂用帳戶, 請在訂用帳戶的 [ **Azure Active Directory** ] 索引標籤上啟用多重要素驗證。
+#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>實現 Azure 活動目錄的多重要素驗證
 
-Azure AD 會根據套用至符合特定準則的使用者或使用者群組的原則進行操作。
-Azure 會建立預設原則, 指定系統管理員需要雙因素驗證來登入入口網站。
-啟用此原則之後, 系統可能會提示您登出, 然後重新登入 Azure 入口網站。
+管理員需要確保門戶中的訂閱帳戶受到保護。 訂閱容易受到攻擊，因為它管理您創建的資源。 為了保護訂閱，請在訂閱的**Azure 活動目錄**選項卡上啟用多重要素驗證。
 
-若要啟用管理登入的 MFA:
+Azure AD 基於應用於符合特定條件的使用者或使用者組的策略進行操作。
+Azure 創建一個預設策略，指定管理員需要雙重身份驗證才能登錄到門戶。
+啟用此策略後，系統可能會提示您登出並重新登錄到 Azure 門戶。
 
-1. 移至 Azure 入口網站中的 [ **Azure Active Directory** ] 索引標籤
-2. 在 [安全性] 類別底下, 選取 [條件式存取]。 您會看到這個畫面:
+要為管理員登錄啟用 MFA：：
 
-   ![條件式存取-原則](./media/secure-web-app/ad-mfa-conditional-add.png)
+1. 轉到 Azure 門戶中的**Azure 活動目錄**選項卡
+2. 在安全類別下，選擇條件訪問。 您會看到這個畫面：
 
-如果您無法建立新的原則:
+   ![條件訪問 - 策略](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-1. 移至 [ **MFA** ] 索引標籤。
-2. 選取 [Azure AD Premium**免費試用**] 連結以訂閱免費試用版。
+如果無法創建新策略：
 
-   ![Azure AD Premium 免費試用](./media/secure-web-app/ad-trial-premium.png)
+1. 轉到**MFA**選項卡。
+2. 選擇 Azure AD 高級**免費試用版**連結以訂閱免費試用版。
 
-返回 [條件式存取] 畫面。
+   ![Azure AD 高級免費試用版](./media/secure-web-app/ad-trial-premium.png)
 
-1. 選取 [新增原則] 索引標籤。
+返回到條件訪問螢幕。
+
+1. 選擇新的策略選項卡。
 2. 輸入原則名稱。
-3. 選取您想要啟用 MFA 的使用者或群組。
-4. 在 [**存取控制**] 底下, 選取 [**授**與] 索引標籤, 然後選取 [**需要多重要素驗證**] \ (以及其他設定, 如果需要的話)。
+3. 選擇要為其啟用 MFA 的使用者或組。
+4. 在 **"訪問"控制項**下，選擇"**授予**"選項卡，然後選擇 **"需要多重要素驗證**"（如果需要，則選擇其他設置）。
 
    ![需要 MFA](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-您可以選取畫面頂端的核取方塊來啟用原則, 或在 [**條件式存取**] 索引標籤上執行此動作。當原則啟用時, 使用者需要 MFA 才能登入入口網站。
+您可以通過選擇螢幕頂部的核取方塊來啟用策略，也可以在 **"條件訪問**"選項卡上啟用策略。啟用策略後，使用者需要 MFA 才能登錄到門戶。
 
-所有 Azure 系統管理員都需要使用 MFA 的基準原則。 您可以立即在入口網站中啟用它。 啟用此原則可能會使目前的會話無效, 並強制您重新登入。
+有一個基線策略，它要求所有 Azure 管理員使用 MFA。 您可以立即在門戶中啟用它。 啟用此策略可能會使當前會話無效，並迫使您再次登錄。
 
-如果未啟用基準原則:
-1.  選取 [**需要系統管理員的 MFA**]。
-2.  選取 [**立即使用原則**]。
+如果未啟用基線策略：
 
-   ![選取 [立即使用原則]](./media/secure-web-app/ad-mfa-conditional-enable.png)
+1. 為**管理員選擇"需要 MFA"。**
+2. **選擇立即使用策略**。
 
-#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>使用 Azure Sentinel 來監視應用程式和資源
+   ![立即選擇使用策略](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
-隨著應用程式成長, 就難以匯總從資源接收的所有安全性信號和計量, 並使其以動作導向的方式發揮作用。
+#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>使用 Azure 哨兵監視應用和資源
 
-Azure Sentinel 的設計是用來收集資料、偵測可能的威脅類型, 以及提供安全性事件的可見度。
-雖然它會等待手動操作, 但 Azure Sentinel 可以依賴預先撰寫的操作手冊來啟動警示和事件管理流程。
+隨著應用程式的增長，很難聚合從資源接收的所有安全信號和指標，並使它們以面向操作的方式有用。
 
-範例應用程式是由 Azure Sentinel 可以監視的數個資源所組成。
-若要設定 Azure Sentinel, 您必須先建立 Log Analytics 工作區, 以儲存從各種資源收集而來的所有資料。
+Azure Sentinel 旨在收集資料、檢測可能的威脅類型，並提供安全事件的可見度。
+在等待手動干預時，Azure Sentinel 可以依賴預先編寫的行動手冊來啟動警報和事件管理過程。
 
-若要建立此工作區:
+示例應用由 Azure Sentinel 可以監視的多個資源組成。
+要設置 Azure Sentinel，首先需要創建日誌分析工作區，該工作區存儲從各種資源收集的所有資料。
 
-1. 在 Azure 入口網站的 搜尋 方塊中, 搜尋**Log Analytics**。 選取 [Log Analytics 工作區]。
+要創建此工作區，
 
-   ![搜尋 Log Analytics 工作區](./media/secure-web-app/sentinel-log-analytics.png)
+1. 在 Azure 門戶中的搜索框中，搜索**日誌分析**。 選取 [Log Analytics 工作區]****。
 
-    *搜尋 Log Analytics 工作區*
+   ![搜索日誌分析工作區](./media/secure-web-app/sentinel-log-analytics.png)
 
-2. 在下一個頁面上, 選取 [**新增**], 然後提供工作區的名稱、資源群組和位置。
+    *搜索日誌分析工作區*
+
+2. 在下一頁上，選擇 **"添加**"，然後為工作區提供名稱、資源組和位置。
    ![建立 Log Analytics 工作區](./media/secure-web-app/sentinel-log-analytics-create.png)
 
-   *建立 Log Analytics 工作區*
+   *創建日誌分析工作區*
 
-3. 使用 [搜尋] 方塊來搜尋**Azure Sentinel**。
+3. 使用搜索框搜索 Azure**哨兵**。
 
    ![搜尋 Azure Sentinel](./media/secure-web-app/sentinel-add.png)
 
-    *搜尋 Azure Sentinel*
+    *搜索 Azure 哨兵*
 
-4. 選取 [**新增**], 然後選取您稍早建立的 Log Analytics 工作區。
+4. 選擇 **"添加**"，然後選擇之前創建的日誌分析工作區。
 
-   ![新增 Log Analytics 工作區](./media/secure-web-app/sentinel-workspace-add.png)
+   ![添加日誌分析工作區](./media/secure-web-app/sentinel-workspace-add.png)
 
-    *新增 Log Analytics 工作區*
+    *添加日誌分析工作區*
 
-5. 在 [ **Azure Sentinel-資料連線器**] 頁面的[設定] 下, 選取 [**資料連線器**]。 您會看到一組 Azure 服務, 您可以連結到 Log Analytics 儲存體實例, 以便在 Azure Sentinel 中進行分析。
+5. 在**Azure 哨兵 - 資料連線器**頁上，在**配置**下，選擇 **"資料連線器**"。 您將看到一系列 Azure 服務，可以連結到 Azure Sentinel 中的日誌分析存儲實例進行分析。
 
-   ![Log Analytics 資料連線器](./media/secure-web-app/sentinel-connectors.png)
+   ![日誌分析資料連接器](./media/secure-web-app/sentinel-connectors.png)
 
-    *將資料連線器新增至 Azure Sentinel*
+    *向 Azure 哨兵添加資料連線器*
 
-   例如, 若要連接應用程式閘道, 請執行下列步驟:
+   例如，要連接應用程式閘道，請執行以下步驟：
 
-   1. 開啟 [Azure 應用程式閘道實例] 分頁。
-   2. 在 [監視] 下方，選取 [診斷設定]。
-   3. 選取 [**新增診斷設定**]。
+   1. 打開 Azure 應用程式閘道實例邊欄選項卡。
+   2. 在 [監視]**** 下方，選取 [診斷設定]****。
+   3. 選擇 **"添加診斷設置**"。
 
-      ![新增應用程式閘道診斷](./media/secure-web-app/sentinel-gateway-connector.png)
+      ![添加應用程式閘道診斷](./media/secure-web-app/sentinel-gateway-connector.png)
 
-      *新增應用程式閘道診斷*
+      *添加應用程式閘道診斷*
 
-   4. 在 [**診斷設定**] 頁面上, 選取您所建立的 Log Analytics 工作區, 然後選取您想要收集並傳送至 Azure Sentinel 的所有計量。 選取 [ **儲存**]。
+   4. 在 **"診斷設置"** 頁上，選擇您創建的日誌分析工作區，然後選擇要收集的所有指標並將其發送到 Azure Sentinel。 選取 [儲存]****。
 
-        ![Azure Sentinel 連接器設定](./media/secure-web-app/sentinel-connector-settings.png)
+        ![Azure 哨兵連接器設置](./media/secure-web-app/sentinel-connector-settings.png)
 
-        *Azure Sentinel 連接器設定*
+        *Azure 哨兵連接器設置*
 
-  資源中的計量位於 Azure Sentinel 中, 您可以在其中查詢和調查它們。
+  來自資源的指標位於 Azure Sentinel 中，您可以在其中查詢和調查它們。
 
-   在 Azure Key Vault 的診斷設定、公用 IP 位址、適用於 PostgreSQL 的 Azure 資料庫, 以及支援您帳戶中診斷記錄的任何服務中, 新增相同的計量。
+   在 Azure 金鑰保存庫、公共 IP 位址、PostgreSQL Azure 資料庫以及帳戶中支援診斷日誌的任何服務的診斷設置中添加相同的指標。
 
-設定計量之後, Azure Sentinel 有要分析的資料。
+設置指標後，Azure Sentinel 具有要分析的資料。
 
 ## <a name="evaluate-and-verify"></a>評估和驗證
-開發和部署架構之後, 您必須確定程式碼和部署的服務符合安全性標準。 以下是您可以用來驗證軟體的一些步驟:
+
+開發和部署體系結構後，需要確保代碼和部署的服務符合安全標準。 以下是驗證軟體的一些步驟：
 
 - 靜態程式碼分析
 - 弱點掃描
-- 尋找和修正應用程式相依性中的弱點
+- 查找和修復應用程式依賴項中的漏洞
 
-這些是用於安全開發之最佳作法的基本組建區塊。
+這些是安全開發最佳實踐的基本構建基塊。
 
 ### <a name="static-code-analysis"></a>靜態程式碼分析
-針對範例應用程式, 使用靜態分析工具進行驗證時, 需要使用污點檢查和資料流程分析等技術, 來尋找應用程式代碼中的弱點。 Python 靜態分析工具可讓您更安心地保護應用程式的安全。
 
-**Linting**
+對於示例應用，使用靜態分析工具進行驗證涉及使用污點檢查和資料流程分析等技術查找應用代碼中的漏洞。 Python 靜態分析工具讓您更有信心你的應用是安全的。
 
-PyFlakes 是 Python linting 程式庫, 可協助您從應用程式移除無作用的程式碼和未使用的函式, 如下所示:
+**進行 Lint 檢查**
 
-![PyFlakes](./media/secure-web-app/pyflakes.png)
+PyFlakes 是 Python 林丁庫，可説明您從應用中刪除死代碼和未使用的函數，如下所示：
 
-Linting 提供提示和可能的變更, 讓您的程式碼更簡潔且更容易在執行時間發生錯誤。
+![皮片](./media/secure-web-app/pyflakes.png)
+
+林亭提供了提示和可能的更改，這些提示和可能更改可以使代碼更簡潔，在運行時不易出錯。
 
 **PyLint**
 
-PyLint 為此專案提供最大的值。 它會執行程式碼標準檢查、錯誤檢查和重構秘訣, 以確保在伺服器上執行的程式碼是安全的。 藉由使用 PyLint 來更新您的程式碼, 您可以消除 bug 並改善 PyLint 評等, 如下圖所示。
+PyLint 為這個專案提供了最大的價值。 它執行代碼標準檢查、錯誤檢查和重構提示，以確保在伺服器上運行的代碼是安全的。 通過使用 PyLint 更新代碼，您可以消除錯誤並改進 PyLint 評級，如下圖顯示。
 
-![PyLint 之前](./media/secure-web-app/before-pylint.png)
+![皮林特之前](./media/secure-web-app/before-pylint.png)
 
-*PyLint 之前*
+*皮林特之前*
 
-修正 linting 工具所找到的部分程式碼錯誤之後, 您就有更多的信心讓程式碼不容易發生錯誤。 修正錯誤可大幅降低將程式碼部署到生產環境時可能發生的安全性風險。
+修復林廷工具發現的某些代碼錯誤後，您更有信心代碼不容易出錯。 修復錯誤可顯著降低將代碼部署到生產環境時可能出現的安全風險。
 
-![Pylint 之後](./media/secure-web-app/after-pylint.png)
+![皮林特之後](./media/secure-web-app/after-pylint.png)
 
-*PyLint 之後*
+*皮林特之後*
 
 ### <a name="vulnerability-scanning"></a>弱點掃描
-[OWASP 的 ZAP](https://www.zaproxy.org/)工具是一個開放原始碼 web 應用程式弱點掃描器, 可用來檢查範例應用程式的弱點。 在範例應用程式上執行此工具, 會顯示一些可能的錯誤和攻擊媒介。
+
+[OWASP 的 ZAP](https://www.zaproxy.org/)工具是一個開源 Web 應用程式漏洞掃描程式，可用於檢查示例應用是否存在漏洞。 在示例應用上運行該工具會顯示一些可能的錯誤和攻擊媒介。
 
 ![ZAP 工具](./media/secure-web-app/zap-tool.png)
 
 *ZAP 工具*
 
-### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>尋找並修正應用程式相依性中的弱點
-若要尋找並修正應用程式相依性, 您可以使用[OWASP 的](https://www.owasp.org/index.php/OWASP_Dependency_Check)相依性檢查。
+### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>查找和修復應用依賴項中的漏洞
 
-安全性是檢查相依性的類似應用程式。 您可以在[GitHub](https://github.com/pyupio/safety)上找到它。 安全掃描在已知的弱點資料庫中找到的弱點。
+要查找和修復應用程式依賴項，可以使用[OWASP 的依賴項檢查](https://www.owasp.org/index.php/OWASP_Dependency_Check)。
+
+安全性是檢查依賴項的類似應用程式。 你可以在[GitHub](https://github.com/pyupio/safety)上找到它。 安全掃描在已知漏洞資料庫中發現的漏洞。
 
 ![安全性](./media/secure-web-app/pysafety.png)
 
-*安全性*
+*安全*
 
 ## <a name="next-steps"></a>後續步驟
-下列文章可協助您設計、開發和部署安全的應用程式。
+
+以下文章可説明您設計、開發和部署安全應用程式。
 
 - [設計](secure-design.md)
-- [開發](secure-develop.md)
+- [發展](secure-develop.md)
 - [部署](secure-deploy.md)

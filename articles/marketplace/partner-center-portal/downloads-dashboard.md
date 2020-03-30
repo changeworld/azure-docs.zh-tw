@@ -1,41 +1,40 @@
 ---
-title: 在合作夥伴中心的商業 Marketplace 分析下載儀表板
-description: 瞭解如何存取您 marketplace 供應專案的下載要求。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: 在合作夥伴中心的商業市場分析中下載儀表板
+description: 瞭解如何訪問市場優惠的下載請求。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 5d3142192f5fa9914218721dadb34870d613fbc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 85006460c899e5a4e80bebf4fb1dac0736c0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286093"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>下載商業 Marketplace 分析中的儀表板
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>在商業市場分析中下載儀表板
 
-本文提供合作夥伴中心下載儀表板的相關資訊。 此儀表板會顯示您過去30天內的下載要求清單。
+本文提供有關合作夥伴中心中的"下載"儀表板的資訊。 此儀表板顯示過去 30 天的下載請求清單。
 
-若要存取 [下載] 儀表板，請開啟商業 Marketplace 下的 [ **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ] 儀表板。
+要訪問"下載"儀表板，請打開"商業應用商店下**[的分析"](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** 儀表板。
 
 >[!NOTE]
-> 如需分析術語的詳細定義，請參閱[商業 Marketplace 分析的常見問題和術語](./faq-terminology.md)。
+> 有關分析術語的詳細定義，請參閱[商業市場分析的常見問題和術語](./faq-terminology.md)。
 
 ## <a name="downloads-dashboard"></a>下載儀表板
 
-[**分析**] 功能表的 [**下載**] 儀表板會顯示包含超過1000個客戶或訂單資料列之任何下載的要求。
+**"分析**"功能表的 **"下載"** 儀表板顯示包含 1000 多行客戶或訂單資料的任何下載的請求。
 
-每當您要求下載的資料超過1000列時，您會收到快顯通知和電子郵件，其中包含 [**下載**] 儀表板的連結。 這些資料下載將會在30天的期間內推出，然後予以移除。
+每當請求下載包含 1000 行以上資料時，您都會收到一個彈出式通知和電子郵件，其中包含指向 **"下載"** 儀表板的連結。 這些資料下載將在 30 天內可用，然後刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需合作夥伴中心商業 Marketplace 中可用分析報告的總覽，請參閱[合作夥伴中心的商用 Marketplace 分析](./analytics.md)。
-- 如需摘要說明您供應專案 marketplace 活動之匯總資料的圖形、趨勢和值，請參閱[商業 marketplace 分析中的摘要儀表板](./summary-dashboard.md)。
-- 如需以圖形化和可下載格式顯示訂單的相關資訊，請參閱[商用 Marketplace 分析中的訂單儀表板](./orders-dashboard.md)。
-- 若為虛擬機器（VM）提供使用量和計量付費計量，請參閱[商業 Marketplace 分析中的使用量儀表板](./usage-dashboard.md)。
-- 如需客戶的詳細資訊，包括成長趨勢，請參閱[商業 Marketplace 分析中的客戶儀表板](./customer-dashboard.md)。
-- 若要查看有關 Azure Marketplace 和 AppSource 供應專案的客戶意見反應的匯總觀點，請參閱[商業 Marketplace 分析中的評等和評論儀表板](./ratings-reviews.md)。
-- 如需有關商業 Marketplace 分析的常見問題，以及完整的資料詞彙字典，請參閱[商業 marketplace 分析的常見問題和術語](./faq-terminology.md)。
+- 有關合作夥伴中心商業市場中可用的分析報告的概述，請參閱[合作夥伴中心商業市場的分析](./analytics.md)。
+- 有關匯總產品/服務市場活動的匯總資料的圖表、趨勢和值，請參閱[商業市場分析中的摘要儀表板](./summary-dashboard.md)。
+- 有關您的訂單以圖形和可下載格式的資訊，請參閱[商業市場分析中的訂單儀表板](./orders-dashboard.md)。
+- 有關虛擬機器 （VM） 提供使用方式和按流量計費指標，請參閱[商業應用商店分析中的使用方式儀表板](./usage-dashboard.md)。
+- 有關客戶的詳細資訊（包括增長趨勢），請參閱[商業市場分析中的客戶儀表板](./customer-dashboard.md)。
+- 要查看 Azure 應用商店和 AppSource 上產品/服務的客戶回函的合併視圖，請參閱[商業應用商店分析中的評級和審核儀表板](./ratings-reviews.md)。
+- 有關商業市場分析和資料術語綜合詞典的常見問題，請參閱[商業市場分析的常見問題和術語](./faq-terminology.md)。
