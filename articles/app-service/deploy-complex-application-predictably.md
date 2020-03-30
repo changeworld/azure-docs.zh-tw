@@ -1,15 +1,15 @@
 ---
-title: 以可預測的 ARM 部署應用程式
-description: 瞭解如何使用 Azure 資源管理範本和 PowerShell 腳本，以可預測的方式將多個 Azure App Service 應用程式部署為單一單位。
+title: 使用 ARM 可預測地部署應用
+description: 瞭解如何使用 Azure 資源管理範本和 PowerShell 腳本將多個 Azure 應用服務應用部署為單個單元，並以可預測的方式部署應用。
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75967388"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>透過可預測方式在 Azure 中佈建和部署微服務
@@ -42,7 +42,7 @@ ms.locfileid: "75967388"
 如需詳細資訊，請參閱 [搭配使用 Azure PowerShell 與 Azure 資源管理員](../powershell-azure-resource-manager.md)
 
 ### <a name="azure-resource-explorer"></a>Azure 資源總管
-此[預覽工具](https://resources.azure.com)可讓您瀏覽您的訂用帳戶與個別資源中的所有資源群組的 JSON 定義。 在此工具中，您可以編輯資源的 JSON 定義、刪除整個階層的資源，以及建立新的資源。  此工具中立即提供的資訊對範本撰寫非常有説明，因為它會顯示您需要為特定資源類型設定哪些屬性、正確的值等等。您甚至可以在[Azure 入口網站](https://portal.azure.com/)中建立資源群組，然後在 [explorer] 工具中檢查其 JSON 定義，以協助您建立資源群組。
+此[預覽工具](https://resources.azure.com)可讓您瀏覽您的訂用帳戶與個別資源中的所有資源群組的 JSON 定義。 在此工具中，您可以編輯資源的 JSON 定義、刪除整個階層的資源，以及建立新的資源。  此工具中隨時提供的資訊對於範本創作非常有用，因為它顯示了您需要為特定類型的資源設置哪些屬性、正確的值等。您甚至可以在[Azure 門戶](https://portal.azure.com/)中創建資源組，然後在資源管理器工具中檢查其 JSON 定義，以説明您臨時化資源組。
 
 ### <a name="deploy-to-azure-button"></a>部署至 Azure 按鈕
 如果您使用 GitHub 進行原始檔控制，則可以將 [部署至 Azure 按鈕](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) 放入 README.MD，而此檔案會啟用 Azure 的轉換金鑰部署 UI。 雖然您可以針對任何簡單應用程式執行這項作業，但是您可以將 azuredeploy.json 檔案放在存放庫根目錄中，以擴充此項來啟用部署整個資源群組。 此 JSON 檔案包含資源群組範本，將供 [部署至 Azure] 按鈕用來建立資源群組。 如需範例，請參閱將在本教學課程中使用的 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 範例。
@@ -55,13 +55,13 @@ ms.locfileid: "75967388"
 3. 您會進入 [deploy-to-azure](https://deploy.azure.com) 網站，並要求您輸入部署參數。 請注意，大部分的欄位都會填入儲存機制名稱以及一些隨機字串。 您可以視需要變更所有欄位，但唯一必須輸入的項目是 SQL Server 管理登入和密碼，然後按 [ **下一步**]。
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
-4. 接著，按一下 [ **部署** ] 啟動部署程序。 程序執行並完成之後，請按一下 http://todoapp XXXX.azurewebsites.net 連結來瀏覽已部署的應用程式。 
+4. 接著，按一下 [ **部署** ] 啟動部署程序。 程序執行並完成之後，請按一下 http://todoappXXXX**.azurewebsites.net 連結來瀏覽已部署的應用程式。 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
    在您第一次瀏覽至 UI 時，UI 會比較慢，因為應用程式剛剛啟動，但確信它是功能完整的應用程式。
-5. 回到 [部署] 頁面，並按一下 [管理] 連結，以在 Azure 入口網站中查看新的應用程式。
-6. 在 [ **Essentials** ] 下拉式清單中，按一下 [資源群組] 連結。 另請注意應用程式已連線至 [外部專案] 下的 GitHub 存放庫。 
+5. 回到 [部署] 頁面，並按一下 [管理] **** 連結，以在 Azure 入口網站中查看新的應用程式。
+6. 在 [ **Essentials** ] 下拉式清單中，按一下 [資源群組] 連結。 另請注意應用程式已連線至 [外部專案]**** 下的 GitHub 存放庫。 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. 在資源群組刀鋒視窗中，請注意，資源群組中已經有兩個應用程式和一個 SQL Database。
@@ -182,11 +182,11 @@ ms.locfileid: "75967388"
 ## <a name="deploy-the-resource-group-template-yourself"></a>自行部署資源群組範本
 [ **部署至 Azure** ] 按鈕不錯，但是，只有在已將 azuredeploy.json 推送至 GitHub 時，它才可讓您在 azuredeploy.json 中部署資源群組範本。 Azure .NET SDK 也提供工具，讓您直接從本機電腦部署任何 JSON 範本檔案。 若要這樣做，請遵循下面的步驟：
 
-1. 在 Visual Studio 中，按一下 [檔案] > [新增] > [專案]。
-2. 按一下 [Visual C#] > [雲端] > [Azure 資源群組]，然後按一下 [確定]。
+1. 在視覺化工作室中，按一下 **"檔** > **新專案** > **"。**
+2. 按一下**視覺化 C#** > **雲** > **Azure 資源組**，然後按一下"**確定**"。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
-3. 在 [選取 Azure 範本] 中，選取 [空白範本]，然後按一下 [確定]。
+3. 在 [選取 Azure 範本]**** 中，選取 [空白範本]****，然後按一下 [確定]****。
 4. 將 azuredeploy.json 拖曳至新專案的 [ **樣本** ] 資料夾。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
@@ -194,7 +194,7 @@ ms.locfileid: "75967388"
 6. 按一下 [ **加入資源**]，將一些標準 Application Insight 資源加入 JSON 檔案，但此作業僅供示範之用。 如果您只想部署 JSON 檔案，請跳至部署步驟。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
-7. 選取 [Web Apps 的 Application Insights]，並確定已選取現有 App Service 方案和應用程式，然後按一下 [新增]。
+7. 選取 [Web Apps 的 Application Insights]****，並確定已選取現有 App Service 方案和應用程式，然後按一下 [新增]****。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
@@ -209,18 +209,18 @@ ms.locfileid: "75967388"
 11. 找到 `location` 和 `isEnabled` 屬性，並如下所示設定它們。 請對其他三個警示 (紫色燈泡) 執行相同的動作。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. 您現在可以開始進行部署。 以滑鼠右鍵按一下專案，然後選取  **部署** > **New 部署ment**。
+12. 您現在可以開始進行部署。 按右鍵專案並選擇 **"部署** > **新部署**"。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. 登入 Azure 帳戶 (如果您尚未這樣做)。
-14. 在您的訂用帳戶中選取現有的資源群組，或選取 **azuredeploy.json**，然後按一下 [編輯參數] 建立新的資源群組。
+14. 在您的訂用帳戶中選取現有的資源群組，或選取 **azuredeploy.json**，然後按一下 [編輯參數]**** 建立新的資源群組。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
     您現在可以透過好用的資料表編輯範本檔案中定義的所有參數。 定義預設值的參數已經有其預設值，而定義允許值清單的參數則會顯示為下拉式清單。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. 填入所有空的參數，並在 [repoUrl](https://github.com/azure-appservice-samples/ToDoApp.git) 中使用 **GitHub repo address for ToDoApp**。 然後按一下 [ **儲存**]。
+15. 填入所有空的參數，並在 [repoUrl](https://github.com/azure-appservice-samples/ToDoApp.git) 中使用 **GitHub repo address for ToDoApp**。 然後按一下 [儲存]****。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
@@ -228,7 +228,7 @@ ms.locfileid: "75967388"
     > 自動調整是**標準**層級或更高層級所提供的功能，而計劃層級警示是**基本**層級或更高層級所提供的功能，您需要將 **sku** 參數設為**標準**或**進階**，才能看到所有新的 App Insights 資源都已啟動。
     > 
     > 
-16. 按一下 [ **部署**]。 如果您選取 [儲存密碼]，則會將密碼**以純文字形式**儲存至參數檔。 否則，系統會在部署過程要求您輸入資料庫密碼。
+16. 按一下 ****[部署]。 如果您選取 [儲存密碼]****，則會將密碼**以純文字形式**儲存至參數檔。 否則，系統會在部署過程要求您輸入資料庫密碼。
 
 這樣就大功告成了！ 現在，您只需要移至 [Azure 入口網站](https://portal.azure.com/)和 [Azure 資源總管工具](https://resources.azure.com)，即可查看已新增 JSON 已部署應用程式中的新警示和自動調整設定。
 
@@ -244,15 +244,15 @@ ms.locfileid: "75967388"
 
 最後一個 Cmdlet ( `New-AzureResourceGroup`) 是實際執行動作的 Cmdlet。 所有這些動作都是在告訴您，在工具的協助下，透過可預測方式部署您的雲端應用程式相當簡單。 每次對具有相同參數檔案的相同範本執行 Cmdlet 時，結果都會相同。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 在 DevOps 中，重複性和可預測性是任何成功部署包含微服務之高級別應用程式的關鍵。 在本教學課程中，您已使用 Azure 資源管理員範本將雙微服務應用程式部署至 Azure 以做為單一資源群組。 希望這可讓您了解如何開始將 Azure 中的應用程式轉換成範本，而且可以透過可預測方式進行佈建和部署。 
 
 <a name="resources"></a>
 
-## <a name="more-resources"></a>更多資源
+## <a name="more-resources"></a>其他資源
 * [Azure 資源管理員範本語言](../azure-resource-manager/templates/template-syntax.md)
-* [編寫 Azure 資源管理員範本](../azure-resource-manager/templates/template-syntax.md)
-* [Azure 資源管理員範本函式](../azure-resource-manager/templates/template-functions.md)
+* [編寫 Azure 資源管理器範本](../azure-resource-manager/templates/template-syntax.md)
+* [Azure 資源管理器範本函數](../azure-resource-manager/templates/template-functions.md)
 * [使用 Azure 資源管理員範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)
 * [搭配使用 Azure PowerShell 與 Azure 資源管理員](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Azure 中的資源群組部署疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)
@@ -265,6 +265,6 @@ ms.locfileid: "75967388"
 * [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
 * [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
 * [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
-* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
+* [微軟.網站/網站](/azure/templates/microsoft.web/sites)
 * [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
-* [Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)
+* [微軟.見解/自動縮放設置](/azure/templates/microsoft.insights/autoscalesettings)

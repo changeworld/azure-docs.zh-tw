@@ -1,69 +1,69 @@
 ---
-title: 設定 Linux ASP.NET Core 應用程式
-description: 瞭解如何為您的應用程式設定預先建立的 ASP.NET Core 容器。 本文說明最常見的設定工作。
+title: 配置 Linux ASP.NET核心應用程式
+description: 瞭解如何為應用配置預構建ASP.NET核心容器。 本文說明最常見的設定工作。
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
 ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255918"
 ---
-# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Linux ASP.NET Core 應用程式
+# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>為 Azure 應用服務配置 Linux ASP.NET核心應用
 
-ASP.NET Core 應用程式必須部署為已編譯的二進位檔。 Visual Studio 發佈工具會建立解決方案，然後直接部署已編譯的二進位檔，而 App Service 部署引擎會先部署程式碼存放庫，然後再編譯二進位檔。
+ASP.NET核心應用必須部署為已編譯的二進位檔案。 Visual Studio 發佈工具生成解決方案，然後直接部署已編譯的二進位檔案，而 App Service 部署引擎首先部署代碼存儲庫，然後編譯二進位檔案。
 
-本指南提供在 App Service 中使用內建 Linux 容器 ASP.NET Core 開發人員的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循[ASP.NET Core 快速入門](quickstart-dotnetcore.md)和[ASP.NET Core SQL Database 教學](tutorial-dotnetcore-sqldb-app.md)課程。
+本指南為在應用服務中使用內置 Linux 容器的ASP.NET核心開發人員提供了關鍵概念和說明。 如果您從未使用過 Azure 應用服務，請先使用 SQL 資料庫教程ASP.NET[核心快速入門](quickstart-dotnetcore.md)[和ASP.NET核心。](tutorial-dotnetcore-sqldb-app.md)
 
-## <a name="show-net-core-version"></a>顯示 .NET Core 版本
+## <a name="show-net-core-version"></a>顯示 .NET 核心版本
 
-若要顯示目前的 .NET Core 版本，請在[Cloud Shell](https://shell.azure.com)中執行下列命令：
+要顯示當前 .NET Core 版本，可在[雲殼](https://shell.azure.com)中運行以下命令：
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-若要顯示所有支援的 .NET Core 版本，請在[Cloud Shell](https://shell.azure.com)中執行下列命令：
+要顯示所有受支援的 .NET Core 版本，可在[雲外殼](https://shell.azure.com)中運行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
 ```
 
-## <a name="set-net-core-version"></a>設定 .NET Core 版本
+## <a name="set-net-core-version"></a>設置 .NET 核心版本
 
-在[Cloud Shell](https://shell.azure.com)中執行下列命令，將 .net Core 版本設定為2.1：
+在[雲殼](https://shell.azure.com)中運行以下命令，將 .NET Core 版本設置為 2.1：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="customize-build-automation"></a>自訂群組建自動化
+## <a name="customize-build-automation"></a>自訂構建自動化
 
-如果您使用 Git 或已開啟組建自動化的 zip 套件來部署應用程式，App Service 組建自動化會逐步執行下列順序：
+如果使用打開的 Git 或 zip 包部署應用，應用服務將構建自動化步驟，執行以下順序：
 
-1. 如果 `PRE_BUILD_SCRIPT_PATH`指定，請執行自訂腳本。
-1. 執行 `dotnet restore` 以還原 NuGet 相依性。
-1. 執行 `dotnet publish` 以建立用於生產的二進位檔。
-1. 如果 `POST_BUILD_SCRIPT_PATH`指定，請執行自訂腳本。
+1. 如果由`PRE_BUILD_SCRIPT_PATH`指定，則運行自訂腳本。
+1. 運行`dotnet restore`以還原 NuGet 依賴項。
+1. 運行`dotnet publish`以生成用於生產的二進位檔案。
+1. 如果由`POST_BUILD_SCRIPT_PATH`指定，則運行自訂腳本。
 
-`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是預設為空白的環境變數。 若要執行預先建立的命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建立後命令，請定義 `POST_BUILD_COMMAND`。
+`PRE_BUILD_COMMAND`和`POST_BUILD_COMMAND`是預設情況下為空的環境變數。 要運行預生成命令，請定義`PRE_BUILD_COMMAND`。 要運行生成後命令，請定義`POST_BUILD_COMMAND`。
 
-下列範例會指定一系列命令的兩個變數，並以逗號分隔。
+下面的示例指定一系列命令的兩個變數，這些命令用逗號分隔。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-如需其他環境變數以自訂群組建自動化，請參閱[Oryx configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+有關自訂生成自動化的其他環境變數，請參閱[Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
 
-如需有關 App Service 如何在 Linux 中執行和建立 ASP.NET Core 應用程式的詳細資訊，請參閱[Oryx 檔：如何偵測和建立 .Net Core 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
+有關應用服務如何在 Linux 中運行和構建ASP.NET核心應用的詳細資訊，請參閱[Oryx 文檔：如何檢測和構建 .NET Core 應用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
 
 ## <a name="access-environment-variables"></a>存取環境變數
 
-在 App Service 中，您可以於應用程式的程式碼外部[設定應用程式設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然後，您可以使用標準 ASP.NET Core 相依性插入模式，在任何類別中存取這些物件：
+在 App Service 中，您可以於應用程式的程式碼外部[設定應用程式設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然後，您可以使用標準ASP.NET核心依賴項注入模式在任何類中訪問它們：
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -90,11 +90,11 @@ namespace SomeNamespace
 }
 ```
 
-例如，如果您在 App Service 和*appsettings*中設定具有相同名稱的應用程式設定，則 App Service 值的優先順序會高於*appsettings. json*值。 本機*appsettings*可讓您在本機上對應用程式進行調試，但 App Service 值可讓您在產品中使用生產環境設定來執行應用程式。 連接字串的工作方式相同。 如此一來，您就可以在程式碼存放庫之外保留應用程式秘密，並存取適當的值，而不需要變更您的程式碼。
+如果在應用服務和應用*設置.json*中配置具有相同名稱的應用設置，則應用服務值優先于*appsettings.json*值。 本地*應用設置.json*值允許您在本地調試應用，但應用服務值允許您在具有生產設置的產品中運行應用。 連接字串的工作方式相同。 這樣，您可以將應用程式機密保存在代碼存儲庫之外，並在不更改代碼的情況下訪問適當的值。
 
-## <a name="get-detailed-exceptions-page"></a>取得詳細例外狀況頁面
+## <a name="get-detailed-exceptions-page"></a>獲取詳細的異常頁面
 
-當您的 ASP.NET 應用程式在 Visual Studio 偵錯工具中產生例外狀況時，瀏覽器會顯示詳細的例外狀況頁面，但在 App Service 該頁面會由一般**HTTP 500**錯誤取代，或在**處理您的要求時發生錯誤。** 訊息。 若要在 App Service 中顯示詳細的例外狀況頁面，請在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將 `ASPNETCORE_ENVIRONMENT` 應用程式設定新增至您的應用程式。
+當ASP.NET應用在 Visual Studio 調試器中生成異常時，瀏覽器將顯示一個詳細的異常頁，但在 App Service 中，該頁面將被泛型**HTTP 500**錯誤替換，或者**在處理請求時發生錯誤。** 訊息。 要在應用服務中顯示詳細的異常頁，通過在`ASPNETCORE_ENVIRONMENT`<a target="_blank" href="https://shell.azure.com" >雲外殼</a>中運行以下命令，將應用設置添加到應用。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -102,13 +102,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>偵測 HTTPS 工作階段
 
-在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要知道使用者要求是否已加密，請在*Startup.cs*中設定轉送的標頭中介軟體：
+在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果應用邏輯需要知道使用者請求是否加密，*請Startup.cs*配置轉發的標頭中介軟體：
 
-- 使用[ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)設定中介軟體，以轉送 `Startup.ConfigureServices`中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
-- 將私人 IP 位址範圍新增至已知的網路，讓中介軟體可以信任 App Service 負載平衡器。
-- 呼叫其他中介軟體之前，請先在 `Startup.Configure` 中叫用[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法。
+- 請使用 [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 來設定中介軟體以轉送 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
+- 將私人 IP 位址範圍添加到已知網路，以便中介軟體可以信任應用服務負載等化器。
+- 在調用其他中介軟體之前，在`Startup.Configure`中調用[使用前眉](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法。
 
-將這三個元素全部放在一起，您的程式碼看起來如下列範例所示：
+將所有三個元素放在一起，代碼如下所示：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -135,26 +135,26 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-如需詳細資訊，請參閱[設定 ASP.NET Core 以使用 proxy 伺服器和負載平衡](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)器。
+如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)。
 
-## <a name="deploy-multi-project-solutions"></a>部署多專案方案
+## <a name="deploy-multi-project-solutions"></a>部署多專案解決方案
 
-當您使用根目錄中的 *.csproj*檔案將 ASP.NET 存放庫部署至部署引擎時，引擎會部署專案。 當您使用根目錄中的 *.sln*檔案部署 ASP.NET 存放庫時，引擎會挑選第一個找到的網站或 Web 應用程式專案做為 App Service 應用程式。 引擎可能無法挑選您想要的專案。
+將ASP.NET存儲庫部署到根目錄中包含 *.csproj*檔的部署引擎時，引擎將部署該專案。 在根目錄中部署包含 *.sln*檔的ASP.NET存儲庫時，引擎將選取它找到的第一個 Web 網站或 Web 應用程式專案作為應用服務應用。 發動機可能不選擇您想要的專案。
 
-若要部署多專案方案，您可以用兩種不同的方式指定要在 App Service 中使用的專案：
+要部署多專案解決方案，可以通過兩種不同的方式指定要在應用服務中使用的專案：
 
-### <a name="using-deployment-file"></a>使用 deployment 檔案
+### <a name="using-deployment-file"></a>使用 .部署檔
 
-將*部署*檔案新增至存放庫根目錄，並新增下列程式碼：
+將 *.部署*檔添加到存儲庫根，並添加以下代碼：
 
 ```
 [config]
 project = <project-name>/<project-name>.csproj
 ```
 
-### <a name="using-app-settings"></a>使用應用程式設定
+### <a name="using-app-settings"></a>使用應用設置
 
-在<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>中，執行下列 CLI 命令，以將應用程式設定新增至您的 App Service 應用程式。 以適當的值取代 *\<應用程式名稱 >* 、 *\<資源群組名稱 >* 和 *\<專案名稱 >* 。
+在<a target="_blank" href="https://shell.azure.com">Azure 雲外殼中</a>，通過運行以下 CLI 命令向應用服務應用添加應用設置。 將*\<應用名稱>、**\<資源組名稱>* 和*\<專案名稱>* 替換為相應的值。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -173,7 +173,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：使用 SQL Database ASP.NET Core 應用程式](tutorial-dotnetcore-sqldb-app.md)
+> [教程：使用 SQL 資料庫ASP.NET核心應用](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [App Service Linux 常見問題集](app-service-linux-faq.md)

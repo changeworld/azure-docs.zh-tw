@@ -1,5 +1,5 @@
 ---
-title: 將資料從 Azure 儲存體 blob 複製到 Data Lake Storage Gen1
+title: 將資料從 Azure 存儲 blob 複製到資料湖存儲第 1 代
 description: 使用 AdlCopy 工具將資料從 Azure 儲存體 Blob 複製到 Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638862"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>將資料從 Azure 儲存體 Blob 複製到 Azure Data Lake Storage Gen1
@@ -21,24 +21,24 @@ ms.locfileid: "75638862"
 >
 >
 
-Data Lake Storage Gen1 提供命令列工具[AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358)，可從下列來源複製資料：
+資料存儲湖存儲 Gen1 提供了一個命令列工具[AdlCopy，](https://www.microsoft.com/download/details.aspx?id=50358)用於從以下來源複製資料：
 
-* 從 Azure 儲存體 blob 到 Data Lake Storage Gen1。 您無法使用 AdlCopy 將資料從 Data Lake Storage Gen1 複製到 Azure 儲存體 blob。
-* 在兩個 Data Lake Storage Gen1 帳戶之間。
+* 從 Azure 存儲 blob 到資料湖存儲第 1 代。 不能使用 AdlCopy 將資料從資料存儲第 1 代複製到 Azure 存儲 Blob。
+* 在兩個數據存儲湖存儲第 1 代帳戶之間。
 
 此外，您可以兩個不同的模式使用 AdlCopy 工具：
 
 * **單獨使用**，此工具會使用 Data Lake Storage Gen1 資源來執行工作。
 * **使用 Data Lake Analytics 帳戶**，指派給 Data Lake Analytics 帳戶的單位可用來執行複製作業。 當您想要以可預測的方式執行複製工作時，可能會想使用此選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
-* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* 具有一些資料的**Azure 儲存體 blob**容器。
-* **Data Lake Storage Gen1 帳戶**。 如需建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* **Data Lake Analytics 帳戶（選擇性）** -請參閱[開始使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) ，以取得如何建立 Data Lake Analytics 帳戶的指示。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 存儲 blob**包含某些資料的容器。
+* **資料存儲湖存儲第 1 代帳戶**。 有關如何創建一個說明的說明，請參閱[開始使用 Azure 資料存儲第 1 代](data-lake-store-get-started-portal.md)
+* **資料湖分析帳戶（可選）** - 有關如何創建資料湖分析帳戶的說明，請參閱[Azure 資料湖分析](../data-lake-analytics/data-lake-analytics-get-started-portal.md)入門。
 * **AdlCopy 工具**。 安裝[AdlCopy 工具](https://www.microsoft.com/download/details.aspx?id=50358)。
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy 工具的語法
@@ -49,13 +49,13 @@ Data Lake Storage Gen1 提供命令列工具[AdlCopy](https://www.microsoft.com/
 
 以下將說明語法中的參數：
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 | --- | --- |
 | 來源 |指定來源資料在 Azure 儲存體 Blob 中的位置。 來源可以是 Blob 容器、Blob 或其他 Data Lake Storage Gen1 帳戶。 |
 | Dest |指定要複製的 Data Lake Storage Gen1 目的地。 |
 | SourceKey |指定 Azure 儲存體 Blob 來源的儲存體存取金鑰。 這只有在來源是 Blob 容器或 Blob 時才是必要的。 |
-| 帳戶 |**選擇性**。 如果您想要使用 Azure Data Lake Analytics 帳戶來執行複製工作，請使用此選項。 如果您在語法中使用 /Account 選項，但未指定 Data Lake Analytics 帳戶，AdlCopy 就會使用預設帳戶來執行工作。 此外，如果您使用此選項，就必須加入來源 (Azure 儲存體 Blob) 和目的地 (Azure Data Lake Storage Gen1) 做為 Data Lake Analytics 帳戶的資料來源。 |
-| 單位數 |指定將針對複製工作使用的 Data Lake Analytics 單位數目。 如果您使用 **/Account** 選項來指定 Data Lake Analytics 帳戶，則此為必要選項。 |
+| 帳戶 |**選擇項**。 如果您想要使用 Azure Data Lake Analytics 帳戶來執行複製工作，請使用此選項。 如果您在語法中使用 /Account 選項，但未指定 Data Lake Analytics 帳戶，AdlCopy 就會使用預設帳戶來執行工作。 此外，如果您使用此選項，就必須加入來源 (Azure 儲存體 Blob) 和目的地 (Azure Data Lake Storage Gen1) 做為 Data Lake Analytics 帳戶的資料來源。 |
+| 單位 |指定將針對複製工作使用的 Data Lake Analytics 單位數目。 如果您使用 **/Account** 選項來指定 Data Lake Analytics 帳戶，則此為必要選項。 |
 | 模式 |指定用來指示要複製哪些 Blob 或檔案的 regex 模式。 AdlCopy 使用區分大小寫的比對。 未指定模式時的預設模式是複製所有專案。 不支援指定多個檔案模式。 |
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>使用 AdlCopy (獨立) 從 Azure 儲存體 Blob 複製資料
@@ -88,7 +88,7 @@ Data Lake Storage Gen1 提供命令列工具[AdlCopy](https://www.microsoft.com/
 
         AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-### <a name="performance-considerations"></a>效能注意事項
+### <a name="performance-considerations"></a>效能考量
 
 如果您從 Azure Blob 儲存體帳戶複製，Blob 儲存體端在複製期間可能會進行節流。 這會降低複製作業的效能。 若要深入了解 Azure Blob 儲存體的限制，請參閱 [Azure 訂用帳戶和服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md)中的 Azure 儲存體限制。
 
@@ -121,9 +121,9 @@ Data Lake Storage Gen1 提供命令列工具[AdlCopy](https://www.microsoft.com/
 
         AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
 
-### <a name="performance-considerations"></a>效能注意事項
+### <a name="performance-considerations"></a>效能考量
 
-使用 AdlCopy 作為獨立工具時，會在共用的 Azure 管理資源上執行複製。 您在此環境中的可達到的效能取決於系統負載和可用的資源。 這個模式最適合臨時的少量傳輸。 使用 AdlCopy 作為獨立工具時不需要調整參數。
+使用 AdlCopy 作為獨立工具時，副本將運行在共用的 Azure 託管資源上。 您在此環境中的可達到的效能取決於系統負載和可用的資源。 這個模式最適合臨時的少量傳輸。 使用 AdlCopy 作為獨立工具時不需要調整參數。
 
 ## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>使用 AdlCopy (利用 Data Lake Analytics 帳戶) 複製資料
 
@@ -148,7 +148,7 @@ Data Lake Storage Gen1 提供命令列工具[AdlCopy](https://www.microsoft.com/
 
     AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
 
-### <a name="performance-considerations"></a>效能注意事項
+### <a name="performance-considerations"></a>效能考量
 
 複製 TB 規模的資料時，使用 AdlCopy 搭配您自己的 Azure Data Lake Analytics 帳戶可達到更好和更可預測的效能。 應該調整的參數為用於複製作業的 Azure Data Lake Analytics 單位數目。 增加單位數目可提高複製作業的效能。 每個要複製的檔案最多可使用一個單位。 指定的單位數目超過要複製的檔案數目時，將不會提高效能。
 
@@ -172,11 +172,11 @@ Data Lake Storage Gen1 提供命令列工具[AdlCopy](https://www.microsoft.com/
 
 ## <a name="considerations-for-using-adlcopy"></a>使用 AdlCopy 的考量
 
-* AdlCopy (適用於 1.0.5 版) 支援從共同擁有超過數千個檔案和資料夾的來源複製資料。 不過，如果您在複製大型資料集時遇到問題，您可以將檔案/資料夾散發到不同的子資料夾，並改為使用這些子資料夾的路徑做為來源。
+* AdlCopy (適用於 1.0.5 版) 支援從共同擁有超過數千個檔案和資料夾的來源複製資料。 但是，如果在複製大型資料集時遇到問題，可以將檔/資料夾分發到不同的子資料夾中，並將路徑用作源。
 
 ## <a name="performance-considerations-for-using-adlcopy"></a>使用 AdlCopy 時的效能考量
 
-AdlCopy 支援複製包含數千個檔案和資料夾的資料。 不過，如果您在複製大型資料集時遇到問題，您可以將檔案/資料夾散發到較小的子資料夾。 AdlCopy 適用於臨時複製。 如果您嘗試反覆地複製資料，請考慮使用 [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)，它能夠完整地管理複製作業。
+AdlCopy 支援複製包含數千個檔案和資料夾的資料。 但是，如果在複製大型資料集時遇到問題，可以將檔/資料夾分發到較小的子資料夾中。 AdlCopy 適用於臨時複製。 如果您嘗試反覆地複製資料，請考慮使用 [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)，它能夠完整地管理複製作業。
 
 ## <a name="release-notes"></a>版本資訊
 

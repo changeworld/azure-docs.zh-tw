@@ -1,6 +1,6 @@
 ---
 title: 動態資料遮罩
-description: 動態資料遮罩會對 SQL Database 和 Azure Synapse 的非特殊許可權使用者遮罩敏感性資料，以限制其暴露程度
+description: 動態資料遮罩通過遮罩敏感性資料暴露到 SQL 資料庫和 Azure Synapse 的非特權使用者來限制其暴露
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,13 +14,13 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
 ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192909"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse 分析的動態資料遮罩
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>用於 Azure SQL 資料庫和 Azure 突觸分析的動態資料掩蔽
 
 SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用者無法看見機密資料。 
 
@@ -28,9 +28,9 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 例如，客服中心服務代表可透過信用卡號碼的幾個數字來識別來電者，但這些資料項目不應完全公開給服務代表。 可以定義遮罩規則，以針對任何查詢的結果集中任何信用卡號碼的末四碼以外的所有數字進行遮罩處理。 在另一個範例中，可以定義適當的資料遮罩來保護個人識別資訊 (PII) 資料，以便開發人員在生產環境中進行疑難排解用途的查詢，且不會違反法務規定。
 
-## <a name="dynamic-data-masking-basics"></a>動態資料遮罩基本概念
+## <a name="dynamic-data-masking-basics"></a>動態資料遮罩基礎知識
 
-您可以在 Azure 入口網站的 SQL Database [組態] 刀鋒視窗或 [設定] 刀鋒視窗中，選取 [動態資料遮罩] 作業，來設定動態資料遮罩原則。 您無法使用 Azure Synapse 的入口網站來設定這項功能（請使用 Powershell 或 REST API）
+您可以在 Azure 入口網站的 SQL Database [組態] 刀鋒視窗或 [設定] 刀鋒視窗中，選取 [動態資料遮罩] 作業，來設定動態資料遮罩原則。 無法使用 Azure 突觸門戶設置此功能（請使用電源殼或 REST API）
 
 ### <a name="dynamic-data-masking-permissions"></a>動態資料遮罩權限
 
@@ -44,9 +44,9 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 | 遮罩函數 | 遮罩邏輯 |
 | --- | --- |
-| **預設值** |**根據指定欄位的資料類型進行完整遮罩**<br/><br/>• 如果字串資料類型的欄位大小少於 4 個字元 (nchar、ntext、nvarchar)，請使用 XXXX 或更少 X。<br/>• 針對數值資料類型 (bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real)，使用零值。<br/>• 針對日期/時間資料類型 (date、datetime2、datetime、datetimeoffset、smalldatetime、time)，使用 01-01-1900 時間。<br/>• 對於 SQL 變數，會使用目前類型的預設值。<br/>•針對 XML，會使用 \<遮罩/> 的檔。<br/>• 針對特殊資料類型 (時間戳記、資料表、hierarchyid、GUID、二進位值、影像、varbinary spatial 類型)，使用空值。 |
+| **預設** |**根據指定欄位的資料類型完全遮罩**<br/><br/>• 如果字串資料類型的欄位大小少於 4 個字元 (nchar、ntext、nvarchar)，請使用 XXXX 或更少 X。<br/>• 針對數值資料類型 (bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real)，使用零值。<br/>• 針對日期/時間資料類型 (date、datetime2、datetime、datetimeoffset、smalldatetime、time)，使用 01-01-1900 時間。<br/>• 對於 SQL 變數，會使用目前類型的預設值。<br/>• 對於 XML，使用文檔\<遮罩/>。<br/>• 針對特殊資料類型 (時間戳記、資料表、hierarchyid、GUID、二進位值、影像、varbinary spatial 類型)，使用空值。 |
 | **信用卡** |**遮罩方法會公開指定欄位的末四碼**，並新增常數字串做為信用卡格式的前置詞。<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **電子郵件** |**遮罩方法會公開第一個字母並以 XXX.com 取代網域**，使用的常數字串前置詞會以電子郵件地址為格式。<br/><br/>aXX@XXXX.com |
+| **電子郵件** |**掩蔽方法，它公開第一個字母，並使用**電子郵件地址形式的常量字串首碼用XXX.com替換域。<br/><br/>aXX@XXXX.com |
 | **隨機數字** |**遮罩方法會產生一個隨機數字**，其根據為選取的界限與實際資料類型。 如果指定的邊界相等，則遮罩函數是常數。<br/><br/>![導覽窗格](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
 | **自訂文字** |**遮罩方法會公開第一個和最後一個字元**，並在中間新增自訂填補字串。 如果原始字串小於公開的前置詞和後置詞，則只會使用填補字串。 <br/>prefix[padding]suffix<br/><br/>![導覽窗格](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
@@ -54,9 +54,9 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 ### <a name="recommended-fields-to-mask"></a>要遮罩處理的建議欄位
 
-DDM 建議引擎會將您資料庫中的特定欄位標示為潛在敏感性欄位，而這類欄位可能適合進行遮罩處理。 在入口網站的 [動態資料遮罩] 刀鋒視窗中，您會看到您的資料庫的建議資料行。 您只需要對一或多個資料行按一下 [新增遮罩]，然後按一下 [儲存]，以對這些欄位套用遮罩。
+DDM 建議引擎會將您資料庫中的特定欄位標示為潛在敏感性欄位，而這類欄位可能適合進行遮罩處理。 在入口網站的 [動態資料遮罩] 刀鋒視窗中，您會看到您的資料庫的建議資料行。 您只需要對一或多個資料行按一下 [新增遮罩]****，然後按一下 [儲存]****，以對這些欄位套用遮罩。
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell Cmdlet 為您的資料庫設定動態資料遮罩
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell Cmdlet 為資料庫設置動態資料掩蔽
 
 請參閱 [Azure SQL Database Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。
 

@@ -1,27 +1,27 @@
 ---
-title: 在 Windows 上設定 Azure Service Fabric Linux 叢集
+title: 在 Windows 上設置 Azure 服務結構 Linux 群集
 description: 本文說明如何設定在 Windows 開發電腦上執行的 Service Fabric Linux 叢集。 這特別適用於跨平台開發。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
 ms.openlocfilehash: 806e77a928d25e30aed24147525f74507bc32795
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462988"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>在 Windows 開發人員電腦上設定 Linux Service Fabric 叢集
 
 本文件涵蓋如何在 Windows 開發電腦上設定本機 Linux Service Fabric。 設定本機 Linux 叢集，對快速測試以 Linux 叢集為目標但在 Windows 電腦上開發的應用程式而言，會很有用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 以 Linux 為基礎的 Service Fabric 叢集無法在 Windows 上原生執行。 為執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM
 * 最新版 [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Docker 必須在 Linux 模式上執行
+* Docker 必須在 Linux 模式下運行
 
 >[!TIP]
 > * 您可以遵循官方 Docker [文件](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)中所述的步驟，在 Windows 上安裝 Docker。 
@@ -64,7 +64,7 @@ ms.locfileid: "75462988"
     >例如，新增 `RUN apt-get install nodejs -y` 將允許以客體可執行檔形式支援 `nodejs` 應用程式。
     
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定版本，請造訪 [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 頁面。
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 有關特定修訂，請訪問 Docker[中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
 
 3. 若要從 `Dockerfile` 建置可重複使用的映像，請開啟終端機並 `cd` 到直接保留的 `Dockerfile`，然後執行：
 
@@ -89,7 +89,7 @@ ms.locfileid: "75462988"
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. 叢集會在短時間內啟動，您可以使用下列命令來檢視記錄，或跳到儀表板檢視叢集健康情況 [http://localhost:19080](http://localhost:19080)：
+5. 群集需要很短的時間才能啟動，您可以使用以下命令查看日誌，也可以跳轉到儀表板以查看群集運行狀況[http://localhost:19080](http://localhost:19080)：
 
     ```powershell 
     docker logs sftestcluster

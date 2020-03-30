@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174176"
 ---
 #### <a name="to-download-hotfixes"></a>下載 Hofix
 
 請執行下列步驟，從 Microsoft Update Catalog 下載軟體更新。
 
-1. 啟動 Internet Explorer 並瀏覽至 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
-2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]  。
+1. 啟動 Internet 資源管理器並[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)導航到 。
+2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝] **** 。
 
     ![安裝目錄](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號 (例如 **4037264**)，然後按一下 [搜尋]  。
+3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號 (例如 **4037264**)，然後按一下 [搜尋]****。
    
     Hotfix 清單隨即出現，例如**適用於 StorSimple 8000 系列的累積軟體套件組合更新 5.0**。
    
     ![搜尋目錄](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. 按一下 [下載]  。 指定或「瀏覽」  至您想要儲存下載項目的本機位置。 按一下要下載到指定位置和資料夾的檔案。 資料夾也可以複製到裝置可連線的網路共用位置。
+4. 按一下 [下載]**** 指定或「瀏覽」 **** 至您想要儲存下載項目的本機位置。 按一下要下載到指定位置和資料夾的檔案。 資料夾也可以複製到裝置可連線的網路共用位置。
 5. 搜尋上表所列的任何其他 Hotfix (**4037266**)，並將對應檔案下載到上表所列的特定資料夾。
 
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "67174176"
 執行下列步驟來安裝及驗證一般模式 Hotfix。 如果您已使用 Azure 入口網站安裝這些 Hotfix，請直接跳到[安裝及驗證維護模式 Hotfix](#to-install-and-verify-maintenance-mode-hotfixes)。
 
 1. 若要安裝 Hotfix，請存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請依照[使用 PuTTy 連接到序列主控台](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的詳細指示執行作業。 在命令提示字元中，按 **Enter**鍵。
-2. 選取選項 1 [以完整存取權登入]  。 建議您先在被動控制站上安裝此 Hotfix。
+2. 選取選項 1 [以完整存取權登入]****。 建議您先在被動控制站上安裝此 Hotfix。
 3. 若要安裝 Hotfix，請在命令提示字元中輸入：
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -175,7 +175,7 @@ ms.locfileid: "67174176"
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. 使用 `Get-HcsUpdateStatus` 命令監視安裝進度。 當 `RunInProgress` 變成 `False` 時，代表更新完成。
-4. 安裝完成之後，維護模式 Hotfix 安裝所在的控制器將會重新開機。 利用 [以完整存取權登入]  的選項 1 登入，並驗證磁碟韌體版本。 輸入：
+4. 安裝完成之後，維護模式 Hotfix 安裝所在的控制器將會重新開機。 利用 [以完整存取權登入]**** 的選項 1 登入，並驗證磁碟韌體版本。 輸入：
    
    `Get-HcsFirmwareVersion`
    

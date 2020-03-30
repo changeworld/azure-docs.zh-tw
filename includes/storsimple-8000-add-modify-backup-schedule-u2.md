@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174168"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>若要加入或修改 StorSimple 備份排程
 
-1. 請移至 StorSimple 裝置，並按一下 [備份原則]  。
+1. 請移至 StorSimple 裝置，並按一下 [備份原則]****。
 
-2. 在表格式的原則清單中，選取並按一下您想要修改的原則。 以滑鼠右鍵按一下可叫用內容功能表，然後選取 [新增排程]  。
+2. 在表格式的原則清單中，選取並按一下您想要修改的原則。 以滑鼠右鍵按一下可叫用內容功能表，然後選取 [新增排程]****。
 
     ![管理排程](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
-3. 在 [新增排程]  刀鋒視窗中，修改快照集類型、備份頻率、保留期，以及開始日期和時間。 按一下 [新增]  。
+3. 在 [新增排程]**** 刀鋒視窗中，修改快照集類型、備份頻率、保留期，以及開始日期和時間。 按一下 **[新增]**。
 
     ![管理排程](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 

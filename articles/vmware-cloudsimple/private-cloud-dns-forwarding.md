@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案-從私人雲端轉送至內部部署的 DNS
-description: 說明如何讓您的 CloudSimple 私用雲端 DNS 伺服器向前查閱內部部署資源
+title: Azure VMware 解決方案 - 從私有雲轉發到本地的 DNS
+description: 描述如何使雲簡單私有雲 DNS 伺服器轉發本地資源
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 02/29/2020
@@ -9,49 +9,49 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961123"
 ---
-# <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>啟用 CloudSimple 私人雲端 DNS 伺服器，以將內部部署資源的 DNS 查閱轉送至您的 DNS 伺服器
+# <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>啟用雲簡單私有雲 DNS 伺服器，將本地資源的 DNS 查找轉發到 DNS 伺服器
 
-私人雲端 DNS 伺服器可以將任何內部部署資源的 DNS 查閱轉送到您的 DNS 伺服器。  啟用查閱可讓私用雲端 vSphere 元件查閱內部部署環境中執行的任何服務，並使用完整功能變數名稱（FQDN）與其通訊。
+私有雲 DNS 伺服器可以將任何本地資源的 DNS 查找轉發到您的 DNS 伺服器。  啟用查找允許私有雲 vSphere 元件查找在本地環境中運行的任何服務，並使用完全限定的功能變數名稱 （FQDN） 與其通信。
 
 ## <a name="scenarios"></a>案例 
 
-針對您的內部部署 DNS 伺服器轉送 DNS 查閱，可讓您在下列案例中使用私用雲端：
+通過轉發本地 DNS 伺服器的 DNS 查詢，您可以針對以下方案使用私有雲：
 
-* 使用私人雲端作為內部部署 VMware 解決方案的嚴重損壞修復設定
-* 使用內部部署 Active Directory 做為私人雲端 vSphere 的身分識別來源
-* 使用 HCX 將虛擬機器從內部部署遷移至私用雲端
+* 將私有雲用作本地 VMware 解決方案的災害復原設置
+* 將本地活動目錄用作私有雲 vSphere 的身份源
+* 使用 HCX 將虛擬機器從本地遷移到私有雲
 
 ## <a name="before-you-begin"></a>開始之前
 
-從您的私人雲端網路到內部部署網路必須有網路連線，DNS 轉送才能正常執行。  您可以使用下列內容設定網路連接：
+從私有雲網路到本地網路，必須存在網路連接，以便 DNS 轉發工作。  您可以使用：
 
-* [使用 ExpressRoute 從內部部署連接到 CloudSimple](on-premises-connection.md)
-* [設定站對站 VPN 閘道](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [使用 ExpressRoute 從本地連接到雲簡單](on-premises-connection.md)
+* [佈建網站到網站 VPN 閘道](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
 
-必須在此連線上開啟防火牆埠，DNS 轉送才能正常執行。  使用的埠是 TCP 通訊埠53或 UDP 埠53。
+必須在此連接上打開防火牆埠，DNS 轉發才能正常工作。  使用的埠是 TCP 埠 53 或 UDP 埠 53。
 
 > [!NOTE]
-> 如果您使用站對站 VPN，您的內部部署 DNS 伺服器子網必須新增為內部部署首碼的一部分。
+> 如果使用網站到網站 VPN，則必須將本地 DNS 伺服器子網添加為本地首碼的一部分。
 
-## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>要求從私人雲端轉送至內部部署的 DNS
+## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>請求 DNS 從私有雲轉發到本地
 
-若要啟用從私人雲端轉送至內部部署的 DNS，請提交[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並提供下列資訊。
+要啟用 DNS 從私有雲轉發到本地，請提交[支援請求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並提供以下資訊。
 
 * 問題類型：**技術**
-* 訂用帳戶： **CloudSimple 服務部署所在的訂**用帳戶
-* 服務：**依 CloudSimple 的 VMware 解決方案**
-* 問題類型：**諮詢或如何? ...**
-* 問題子類型：**需要與 NW 的協助**
-* 在 [詳細資料] 窗格中，提供您內部部署網域的功能變數名稱。
-* 在 [詳細資料] 窗格中，提供您的內部部署 DNS 伺服器清單，以從私人雲端轉送查閱。
+* 訂閱：**部署雲簡單服務的訂閱**
+* 服務 **：VMware 解決方案（按雲簡單）**
+* 問題類型：**諮詢或如何...**
+* 問題子類型：**需要使用 NW 的説明**
+* 在詳細資訊窗格中提供本地域的功能變數名稱。
+* 在詳細資訊窗格中提供本地 DNS 伺服器的清單，其中查詢將從私有雲轉發到該伺服器。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入瞭解內部部署防火牆設定](on-premises-firewall-configuration.md)
-* [內部部署 DNS 伺服器設定](on-premises-dns-setup.md)
+* [瞭解有關本地防火牆配置的更多資訊](on-premises-firewall-configuration.md)
+* [本地 DNS 伺服器配置](on-premises-dns-setup.md)

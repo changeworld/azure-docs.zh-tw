@@ -1,13 +1,13 @@
 ---
 title: 使用可靠的集合
-description: 瞭解在 Azure Service Fabric 應用程式中使用可靠集合的最佳做法。
+description: 瞭解在 Azure 服務結構應用程式中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645968"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠的集合
@@ -132,7 +132,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>定義不可變的資料類型，以防止程式設計人員犯錯。
-在理想情況下，我們希望編譯器能夠在您不小心產生了會變更您認為是不可變之物件狀態的程式碼時報告錯誤。 但是 C# 編譯器做不到這一點。 所以，為避免潛在的程式設計人員錯誤，我們強烈建議您將可靠集合所使用的類型定義為不可變的類型。 具體來說，這表示您要堅持核心值類型 (例如數字 [Int32、UInt64 等等]、DateTime、Guid、TimeSpan 等等)。 您也可以使用 String。 最好避免使用集合屬性，因為將其序列化和還原序列化經常會降低效能。 不過，如果您想要使用集合屬性，強烈建議您使用 .NET 的不可變集合程式庫 ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/))。 您可以從 https://nuget.org 下載此文件庫。我們也建議您盡可能密封類別，並將欄位設為唯讀。
+在理想情況下，我們希望編譯器能夠在您不小心產生了會變更您認為是不可變之物件狀態的程式碼時報告錯誤。 但是 C# 編譯器做不到這一點。 所以，為避免潛在的程式設計人員錯誤，我們強烈建議您將可靠集合所使用的類型定義為不可變的類型。 具體來說，這表示您要堅持核心值類型 (例如數字 [Int32、UInt64 等等]、DateTime、Guid、TimeSpan 等等)。 您也可以使用 String。 最好避免使用集合屬性，因為將其序列化和還原序列化經常會降低效能。 不過，如果您想要使用集合屬性，強烈建議您使用 .NET 的不可變集合程式庫 ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/))。 此庫可從 下載https://nuget.org。我們還建議盡可能密封類並使欄位為唯讀。
 
 以下的 UserInfo 類型會示範如何利用上述建議定義不可變的類型。
 
@@ -196,9 +196,9 @@ public struct ItemId
 
 > [!WARNING]
 > 雖然您可以修改索引鍵的結構描述，但您必須確保索引鍵雜湊程式碼和 equals 演算法是穩定的。 如果您變更這些演算法其中一個的運作方式，您就再也無法在可靠的字典內查詢索引鍵。
-> .NET 字串可用來做為索引鍵，但使用字串本身做為索引鍵--請勿使用 GetHashCode 的結果做為索引鍵。
+> .NET 字串可用作鍵，但使用字串本身作為鍵--不要使用 String 的結果。
 
-或者，您也可以執行通稱為兩階段升級的功能。 透過兩階段升級，您可以將服務從 V1 升級至 V2： V2 包含知道如何處理新架構變更的程式碼，但這段程式碼不會執行。 當 V2 程式碼讀取 V1 資料時，它會在其上操作並寫入 V1 資料。 然後，在跨所有升級網域的升級都完成之後，您就可以通知執行中的 V2 執行個體，升級已完成。 （表示這種情況的其中一種方式是要推出設定升級; 這就是讓這項功能成為兩階段升級）。現在，V2 實例可以讀取 V1 資料、將其轉換成 V2 資料、對其進行操作，並將其寫出為 V2 資料。 當其他執行個體讀取 V2 資料時，不需要轉換它，只要操作並寫出 V2 資料即可。
+或者，您也可以執行通稱為兩階段升級的功能。 通過兩階段升級，您可以將服務從 V1 升級到 V2：V2 包含知道如何處理新架構更改但此代碼未執行的代碼。 當 V2 程式碼讀取 V1 資料時，它會在其上操作並寫入 V1 資料。 然後，在跨所有升級網域的升級都完成之後，您就可以通知執行中的 V2 執行個體，升級已完成。 （發出信號的一個方法是推出配置升級;這就是進行兩階段升級的原因。現在，V2 實例可以讀取 V1 資料、將其轉換為 V2 資料、對它進行操作，並將其寫入 V2 資料。 當其他執行個體讀取 V2 資料時，不需要轉換它，只要操作並寫出 V2 資料即可。
 
 ## <a name="next-steps"></a>後續步驟
 若要了解如何建立正向相容的資料合約，請參閱[正向相容的資料合約](https://msdn.microsoft.com/library/ms731083.aspx) \(機器翻譯\)。

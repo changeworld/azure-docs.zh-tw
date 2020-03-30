@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199728"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>監視和管理憑證建立
 適用對象：Azure
 
-支援下列 
+搜尋 
 
 本文中所述的情節/作業如下：
 
@@ -333,7 +333,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 |方法|要求 URI|
 |------------|-----------------|
-|DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|刪除|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>要求
 DELETE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
@@ -414,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|元素名稱|必要項|類型|版本|描述|
+|元素名稱|必要|類型|版本|描述|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|是|陣列|\<簡介版本 >|作為 base64 字串陣列的 X509 憑證鏈結。|
+|x5c|是|array|\<簡介版本 >|作為 base64 字串陣列的 X509 憑證鏈結。|
 
 ### <a name="response"></a>回應
 
@@ -477,4 +477,4 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1?api-version
 ```
 
 ## <a name="see-also"></a>另請參閱
-- [關於金鑰、密碼與憑證](about-keys-secrets-and-certificates.md)
+- [關於金鑰、機密和證書](about-keys-secrets-and-certificates.md)

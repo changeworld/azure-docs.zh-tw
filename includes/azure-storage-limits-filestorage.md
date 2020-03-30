@@ -9,18 +9,18 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67503396"
 ---
-進階檔案會使用名為唯一的儲存體帳戶**FileStorage**。 此帳戶類型被設計用於具有高 IOPS 工作負載，以一致的低延遲高輸送量。 進階檔案儲存體的延展性與佈建的共用大小。
+高級檔使用一個稱為**檔存儲**的唯一存儲帳戶。 此帳戶類型專為具有高 IOPS、高輸送量且始終低延遲的工作負載而設計。 高級檔存儲隨預配共用大小進行擴展。
 
-|領域  |目標  |
+|區域  |目標  |
 |---------|---------|
-|最大可佈建大小     |100 TiB     |
-|共用   |無限  |
+|最大預配大小     |100 TiB     |
+|共用   |無限制  |
 |IOPS     |100,000    |
-|輸入|4,136 MiB/s     |
-|輸出|6,204 MiB/s |
+|輸入|4，136 米/斯     |
+|輸出|6，204 米/斯 |

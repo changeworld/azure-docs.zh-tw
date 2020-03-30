@@ -1,5 +1,5 @@
 ---
-title: 搭配 Azure Cosmos DB Gremlin API 使用圖形大量執行程式 .NET 程式庫
+title: 使用圖形大容量執行器 .NET 庫與 Azure 宇宙 DB Gremlin API
 description: 了解如何使用大量執行程式程式庫將圖形資料大量匯入 Azure Cosmos DB Gremlin API 容器中。
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442175"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>在 Azure Cosmos DB Gremlin API 中使用圖形大量執行程式 .NET 程式庫執行大量作業
@@ -113,9 +113,9 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>範例應用程式
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 * 啟用 Azure 開發工作負載的 Visual Studio 2019。 您可以使用免費的 [Visual Studio 2019 Community 版本](https://visualstudio.microsoft.com/downloads/)展開工作。
-* Azure 訂用帳戶。 您可以[在這裡建立免費的 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，您可以透過[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 建立 Cosmos 資料庫帳戶，而不需要 Azure 訂用帳戶。
+* Azure 訂用帳戶。 您可以在此處創建[一個免費的 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，您可以透過[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 建立 Cosmos 資料庫帳戶，而不需要 Azure 訂用帳戶。
 * 透過**無限制集合**建立 Azure Cosmos DB Gremlin API 資料庫。 本指南將說明如何開始使用 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)。
 * Git。 如需詳細資訊，請參閱 [Git 下載頁面](https://git-scm.com/downloads)。
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 此存放庫包含使用下列檔案的 GraphBulkExecutor 範例：
 
-檔案|說明
+檔案|描述
 ---|---
 `App.config`|應用程式和資料庫特有的參數指定於此處。 此檔案應先修改為連線至目的地資料庫和集合。
 `Program.cs`| 此檔案包含建立 `DocumentClient` 集合、處理清除項目和傳送大量執行程式要求時所依據的邏輯。
@@ -136,11 +136,11 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 在 `App.config` 檔案中，可提供的組態值如下：
 
-設定|說明
+設定|描述
 ---|---
 `EndPointUrl`|這是 **您的 .NET SDK 端點** (位於您 Azure Cosmos DB Gremlin API 資料庫帳戶中的 [概觀] 刀鋒視窗中)。 其格式為 `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|這是您的 Azure Cosmos DB 帳戶下所列的主要或次要金鑰。 請深入了解[保護 Azure Cosmos DB 資料的存取](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)
-`DatabaseName`，`CollectionName`|這些是**目標資料庫和集合名稱**。 當 `ShouldCleanupOnStart` 設定為 `true` 時，這些值將連同 `CollectionThroughput` 用來卸除資料庫和集合，並建立新的資料庫和集合。 同樣地，如果 `ShouldCleanupOnFinish` 設定為 `true`，則會在擷取結束時用這些值來刪除資料庫。 請注意，目標集合必須是**無限制集合**。
+`DatabaseName`, `CollectionName`|這些是**目標資料庫和集合名稱**。 當 `ShouldCleanupOnStart` 設定為 `true` 時，這些值將連同 `CollectionThroughput` 用來卸除資料庫和集合，並建立新的資料庫和集合。 同樣地，如果 `ShouldCleanupOnFinish` 設定為 `true`，則會在擷取結束時用這些值來刪除資料庫。 請注意，目標集合必須是**無限制集合**。
 `CollectionThroughput`|如果 `ShouldCleanupOnStart` 選項設定為 `true`，則會使用此值建立新的集合。
 `ShouldCleanupOnStart`|這將會在程式執行前卸除資料庫帳戶和集合，然後使用 `DatabaseName`、`CollectionName` 和 `CollectionThroughput` 值建立新的帳戶和集合。
 `ShouldCleanupOnFinish`|這將會在程式執行後，卸除具有指定 `DatabaseName` 和 `CollectionName` 的資料庫帳戶和集合。

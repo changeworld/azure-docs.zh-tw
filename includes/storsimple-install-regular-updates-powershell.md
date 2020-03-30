@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: dc50f94ae9b207961a71480c2fc172e88db79cf4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174012"
 ---
 #### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>透過 Windows PowerShell for StorSimple 安裝一般更新
-1. 開啟裝置序列主控台，然後選取選項 1 [使用完整存取權登入]  。 輸入密碼。 預設密碼為 *Password1*。 
+1. 開啟裝置序列主控台，然後選取選項 1 [使用完整存取權登入] ****。 輸入密碼。 預設密碼為 *Password1*。 
 2. 在命令提示字元中，輸入：
    
      `Get-HcsUpdateAvailability`

@@ -1,6 +1,6 @@
 ---
-title: 從現有的伺服器建立設定-Azure 自動化
-description: 瞭解如何從現有的伺服器建立 Azure 自動化的設定。
+title: 從現有伺服器創建配置 - Azure 自動化
+description: 瞭解如何從 Azure 自動化的現有伺服器創建配置。
 keywords: dsc,powershell,設定,安裝
 services: automation
 ms.service: automation
@@ -11,40 +11,40 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d888c8fd3bf7cd44c37e7225618bd197f419d275
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76030136"
 ---
-# <a name="create-configurations-from-existing-servers"></a>從現有的伺服器建立設定
+# <a name="create-configurations-from-existing-servers"></a>從現有伺服器創建配置
 
-> 適用于： Windows PowerShell 5。1
+> 適用于： Windows 電源外殼 5.1
 
-從現有的伺服器建立設定可能是一項頗具挑戰性的工作。
-您可能不想要*所有*的設定，只是您關心的設定。
-就算如此，您也必須知道設定的套用順序，才能成功套用設定。
+從現有伺服器創建配置可能是一項具有挑戰性的任務。
+您可能不希望*所有*設置，只想要您關心的設置。
+即便如此，您也需要知道必須按何種順序應用設置才能成功應用配置。
 
 > [!NOTE]
-> 本文是指由開放原始碼社區維護的解決方案。
-> 支援僅以 GitHub 共同作業的形式提供，而不是來自 Microsoft。
+> 本文引用由開源社區維護的解決方案。
+> 支援僅以 GitHub 協作的形式提供，而不是從 Microsoft 獲得。
 
-## <a name="community-project-reversedsc"></a>社區專案： ReverseDSC
+## <a name="community-project-reversedsc"></a>社區專案：反向DSC
 
-已建立名為[ReverseDSC](https://github.com/microsoft/reversedsc)的社區維護解決方案，以在此區域中開始使用 SharePoint。
+已創建名為[ReverseDSC](https://github.com/microsoft/reversedsc)的社區維護解決方案，以在此區域工作，開始 SharePoint。
 
-此解決方案會以[SharePointDSC 資源](https://github.com/powershell/sharepointdsc)為基礎，並加以擴充，以協調現有 SharePoint 伺服器的[收集資訊](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)。
-最新版本有多個[提取模式](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes)，可決定要包含的資訊層級。
+該解決方案基於[SharePointDSC 資源](https://github.com/powershell/sharepointdsc)，並將其擴展以協調從現有 SharePoint 伺服器[收集資訊](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)。
+最新版本具有多種[提取模式](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes)，用於確定要包括的資訊級別。
 
-使用此解決方案的結果是產生與 SharePointDSC 設定腳本搭配使用的設定[資料](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。
+使用該解決方案的結果是生成要與 SharePointDSC 配置腳本一起使用的[配置資料](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。
 
-一旦產生資料檔案之後，您就可以使用它們來搭配[DSC 設定腳本](/powershell/scripting/dsc/overview/overview)來產生 mof 檔案，並將[mof 檔案上傳到 Azure 自動化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然後從[內部部署](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[在 Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)註冊您的伺服器，以提取設定。
+生成資料檔案後，可以使用[DSC 配置腳本](/powershell/scripting/dsc/overview/overview)生成 MOF 檔案並將[MOF 檔案上載到 Azure 自動化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
+然後從[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)或[Azure 註冊](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)伺服器以提取配置。
 
-若要試用 ReverseDSC，請造訪[PowerShell 資源庫](https://www.powershellgallery.com/packages/ReverseDSC/)並下載解決方案，或按一下 [專案網站] 以查看[檔](https://github.com/Microsoft/sharepointDSC.reverse)。
+要嘗試反向DSC，請訪問[PowerShell 庫](https://www.powershellgallery.com/packages/ReverseDSC/)並下載解決方案，或按一下"專案網站"查看[文檔](https://github.com/Microsoft/sharepointDSC.reverse)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Windows PowerShell Desired State Configuration 概觀](/powershell/scripting/dsc/overview/overview)
+- [Windows PowerShell 預期狀態設定概觀](/powershell/scripting/dsc/overview/overview)
 - [DSC 資源](/powershell/scripting/dsc/resources/resources)
-- [設定本機設定管理員](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [配置本地組態管理員](/powershell/scripting/dsc/managing-nodes/metaconfig)

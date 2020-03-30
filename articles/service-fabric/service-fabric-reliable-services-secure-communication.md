@@ -1,20 +1,20 @@
 ---
-title: 安全的服務遠端處理通訊C#
+title: 與 C 的安全服務遠端通訊#
 description: 了解如何針對在 Azure Service Fabric 叢集中執行的 C# 可靠服務，保護以服務遠端為基礎的通訊。
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609616"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保護 C# 服務中的服務遠端通訊
 > [!div class="op_single_selector"]
-> * [Windows 上的 C# ](service-fabric-reliable-services-secure-communication.md)
+> * [C# 在 Windows 上](service-fabric-reliable-services-secure-communication.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >

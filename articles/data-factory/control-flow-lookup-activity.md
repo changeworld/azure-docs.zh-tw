@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440495"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 中的查閱活動
@@ -53,11 +53,11 @@ ms.locfileid: "75440495"
 
 ## <a name="type-properties"></a>類型屬性
 
-名稱 | 說明 | 類型 | 必要項？
+名稱 | 描述 | 類型 | 必要項？
 ---- | ----------- | ---- | --------
 資料集 | 提供查閱的資料集參考。 如需詳細資料，請參閱每個對應連接器文章中的＜**資料集屬性**＞一節。 | 索引鍵/值組 | 是
-source | 包含資料集特定的來源屬性，與複製活動來源相同。 如需詳細資料，請參閱每個對應連接器文章中的＜**複製活動屬性**＞一節。 | 索引鍵/值組 | 是
-firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列。 | Boolean | 不會。 預設值為 `true`。
+source | 包含資料集特定的來源屬性，與複製活動來源相同。 從每個相應連接器文章中的 **"複製活動"屬性**部分獲取詳細資訊。 | 索引鍵/值組 | 是
+firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列。 | Boolean | 否。 預設值為 `true`。
 
 > [!NOTE]
 > 
@@ -69,7 +69,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 
 查閱結果會在活動執行結果的 `output` 區段中傳回。
 
-* **當 `firstRowOnly` 設為 `true` (預設值)** ，輸出格式如下列程式碼所示。 查閱結果就在固定的 `firstRow` 索引鍵底下。 若要在後續活動中使用結果，請使用 `@{activity('MyLookupActivity').output.firstRow.TableName}` 模式。
+* **當 `firstRowOnly` 設為 `true` (預設值)**，輸出格式如下列程式碼所示。 查閱結果就在固定的 `firstRow` 索引鍵底下。 若要在後續活動中使用結果，請使用 `@{activity('MyLookupActivity').output.firstRow.TableName}` 模式。
 
     ```json
     {
@@ -81,7 +81,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
     }
     ```
 
-* **當 `firstRowOnly` 設為 `false`** ，輸出格式如下列程式碼所示。 `count` 欄位會指出傳回多少筆記錄。 詳細的值會顯示在固定 `value` 陣列下。 在這種情況下，查閱活動後面會接著 [Foreach 活動](control-flow-for-each-activity.md)。 您可以使用 `@activity('MyLookupActivity').output.value` 模式，將 `value` 陣列傳遞至 ForEach 活動的 `items` 欄位。 若要存取 `value` 陣列中的元素，請使用下列語法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 例如 `@{activity('lookupActivity').output.value[0].tablename}`。
+* **當 `firstRowOnly` 設為 `false`**，輸出格式如下列程式碼所示。 `count` 欄位會指出傳回多少筆記錄。 詳細的值會顯示在固定 `value` 陣列下。 在這種情況下，查閱活動後面會接著 [Foreach 活動](control-flow-for-each-activity.md)。 您可以使用 `@activity('MyLookupActivity').output.value` 模式，將 `value` 陣列傳遞至 ForEach 活動的 `items` 欄位。 若要存取 `value` 陣列中的元素，請使用下列語法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 例如 `@{activity('lookupActivity').output.value[0].tablename}`。
 
     ```json
     {
@@ -107,7 +107,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 ### <a name="pipeline"></a>管線
 這個管線包含兩個活動：「查閱」和「複製」。 
 
-- 查閱活動會設定為使用 **LookupDataset**，它會參考 Azure Blob 儲存體中的位置。 查閱活動會從這個位置的 JSON 檔案讀取 SQL 資料表的名稱。 
+- 查找活動配置為使用**查找資料集**，它引用 Azure Blob 存儲中的位置。 查閱活動會從這個位置的 JSON 檔案讀取 SQL 資料表的名稱。 
 - 複製活動會使用查閱活動的輸出，亦即 SQL 資料表的名稱。 **SourceDataset** 中的 **tableName** 屬性會設定為使用查閱活動的輸出。 複製活動會將資料從 SQL 資料表複製到 Azure Blob 儲存體 中的位置。 此位置會由 **SinkDataset** 屬性指定。 
 
 ```json
@@ -189,7 +189,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 ```
 
 ### <a name="source-dataset-for-copy-activity"></a>複製活動的**來源**資料集
-**來源**資料集會使用查閱活動的輸出，亦即 SQL 資料表的名稱。 複製活動會將資料從此 SQL 資料表複製到 Azure Blob 儲存體 中的位置。 此位置會由**接收**資料集指定。 
+**源**資料集使用查找活動的輸出，這是 SQL 表的名稱。 複製活動會將資料從此 SQL 資料表複製到 Azure Blob 儲存體 中的位置。 此位置會由**接收**資料集指定。 
 
 ```json
 {
@@ -305,5 +305,5 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 
 - [執行管線活動](control-flow-execute-pipeline-activity.md)
 - [ForEach 活動](control-flow-for-each-activity.md)
-- [GetMetadata 活動](control-flow-get-metadata-activity.md)
-- [Web 活動](control-flow-web-activity.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
+- [網路活動](control-flow-web-activity.md)

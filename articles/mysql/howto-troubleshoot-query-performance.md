@@ -1,17 +1,17 @@
 ---
-title: 針對查詢效能進行疑難排解-適用於 MySQL 的 Azure 資料庫
-description: 瞭解如何使用說明，針對適用於 MySQL 的 Azure 資料庫中的查詢效能進行疑難排解。
+title: 故障排除查詢性能 - MySQL 的 Azure 資料庫
+description: 瞭解如何使用 EXPLAIN 在 MySQL 的 Azure 資料庫中對查詢性能進行故障排除。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 5bfefe3215558a94396e729a318e0746a4fb3aec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764792"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067830"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 剖析適用於 MySQL 的 Azure 資料庫中的查詢效能
 **EXPLAIN** 是可最佳化查詢的便利工具。 EXPLAIN 陳述式可用來取得關於 SQL 陳述式如何執行的資訊。 下列輸出顯示 EXPLAIN 陳述式的執行範例。
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-在此範例中您可以看到，*key* 的值為 NULL。 此輸出表示 MySQL 找不到任何查詢的最佳化索引，因此執行了完整資料表掃描。 我們將在 [識別碼] 資料行上新增索引，以最佳化此查詢。
+在此範例中您可以看到，*key* 的值為 NULL。 此輸出表示 MySQL 找不到任何查詢的最佳化索引，因此執行了完整資料表掃描。 我們將在 [識別碼]**** 資料行上新增索引，以最佳化此查詢。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -120,7 +120,7 @@ possible_keys: covered
 如上述 EXPLAIN 所示，MySQL 此時會使用涵蓋性索引，而避免建立暫存資料表。 
 
 ## <a name="combined-index"></a>結合的索引
-結合的索引包含多個資料行的值，可被視為依串連的索引資料行值排序的資料列陣列。 這個方法在**GROUP BY**語句中可能很有用。
+結合的索引包含多個資料行的值，可被視為依串連的索引資料行值排序的資料列陣列。此方法適用於 **GROUP BY** 陳述式。
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -163,7 +163,7 @@ possible_keys: NULL
  
 ## <a name="conclusion"></a>結論
  
-使用 EXPLAIN 和不同類型的索引可大幅提升效能。 在資料表上擁有索引不一定表示 MySQL 可以將它用於您的查詢。 請務必使用 EXPLAIN 驗證您的假設，並使用索引將查詢最佳化。
+使用 EXPLAIN 和不同類型的索引可大幅提升效能。 在表上設置索引並不一定意味著 MySQL 能夠將其用於查詢。 請務必使用 EXPLAIN 驗證您的假設，並使用索引將查詢最佳化。
 
 
 ## <a name="next-steps"></a>後續步驟

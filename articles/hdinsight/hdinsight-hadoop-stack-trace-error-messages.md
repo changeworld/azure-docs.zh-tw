@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75680242"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Apache Hadoop 疑難排解文章索引
@@ -21,12 +21,12 @@ ms.locfileid: "75680242"
 
 ## <a name="out-of-memory-error"></a>記憶體不足錯誤
 
-* [修正 HDInsight 中的 Apache Hive 記憶體不足錯誤](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：從 Hive 查詢修正記憶體不足錯誤（OOM）。 此客戶案例包括跨許多大型資料表的查詢。
+* [修復 HDInsight 中記憶體不足的 Apache Hive 錯誤](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：修復來自 Hive 查詢的記憶體不足錯誤 （OOM）。 此客戶案例包括跨許多大型資料表的查詢。
 
 ## <a name="apache-hive-query-performance"></a>Apache Hive 查詢效能
 
-* 將[HDInsight 中 Apache Hadoop 的 Apache Hive 查詢優化](hdinsight-hadoop-optimize-hive-query.md)：本文涵蓋一些您可以套用至 hive 查詢的最常見 hive 效能優化方法。
-* [使用 Azure HDInsight 對 Apache Hive 進行疑難排解](hdinsight-troubleshoot-hive.md)。
+* [在 HDInsight 中優化 Apache Hadoop 的 Apache Hive 查詢](hdinsight-hadoop-optimize-hive-query.md)：本文介紹一些最常見的 Hive 性能優化方法，可以應用於 Hive 查詢。
+* [使用 Azure HDInsight 對 Apache 蜂巢進行故障排除](hdinsight-troubleshoot-hive.md)。
 
 ## <a name="more-troubleshooting-articles"></a>更多疑難排解文章
 

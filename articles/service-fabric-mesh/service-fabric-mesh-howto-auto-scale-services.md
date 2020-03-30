@@ -1,5 +1,5 @@
 ---
-title: 自動調整在 Azure 中執行的應用程式 Service Fabric 網格
+title: 自動縮放在 Azure 服務結構網格中運行的應用
 description: 深入了解如何設定 Service Fabric Mesh 應用程式服務的自動調整原則。
 author: dkkapur
 ms.topic: conceptual
@@ -7,14 +7,14 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461968"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>建立 Service Fabric Mesh 應用程式的自動調整原則
-將應用程式部署到 Service Fabric 網格的主要優點之一，是您可以輕鬆地相應縮小或相應放大您的服務。這應該用來處理服務的不同負載量，或改善可用性。 您可以手動相應縮小或相應放大您的服務，或設定自動調整原則。
+將應用程式部署到 Service Fabric 網格的主要優點之一是使您能夠輕鬆地將服務擴展到或外擴展。這應用於處理服務上不同數量的負載，或提高可用性。 您可以手動相應縮小或相應放大您的服務，或設定自動調整原則。
 
 [自動調整](service-fabric-mesh-scalability.md#autoscaling-service-instances)可讓您以動態方式調整服務執行個體的數目 (水平調整)。 自動調整提供絕佳的彈性，並且可以根據 CPU 或記憶體使用率來佈建或移除服務執行個體。
 

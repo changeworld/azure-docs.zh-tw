@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Sentinel 進行設定的 IoT 指南 Azure 資訊安全中心（預覽） |Microsoft Docs
-description: 說明如何設定 Azure Sentinel，以從您的 Azure 資訊安全中心 IoT 解決方案接收資料。
+title: Azure IoT 安全中心指南，用於使用 Azure 哨兵進行配置（預覽）*微軟文檔
+description: 說明如何配置 Azure Sentinel 以從 Azure 安全中心接收 IoT 解決方案的資料。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -14,68 +14,68 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303540"
 ---
 > [!IMPORTANT]
-> Azure Sentinel 中的 IoT 資料連線器 Azure 資訊安全中心目前為公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中 IoT 資料連線器的 Azure 安全中心當前處於公共預覽版中。
+> 此功能在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>將您的資料從 IoT Azure 資訊安全中心連線到 Azure Sentinel （預覽） 
+# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>將資料從 IoT 的 Azure 安全中心連接到 Azure 哨兵（預覽） 
 
-在本指南中，您將瞭解如何將 IoT 資料的 Azure 資訊安全中心連線至 Azure Sentinel。  
+在本指南中，瞭解如何將 IoT 資料的 Azure 安全中心連接到 Azure Sentinel。  
 
 > [!div class="checklist"]
 > * Prerequisites 
 > * 連線設定
-> * Log Analytics 警示視圖 
+> * 日誌分析警示檢視 
 
-從 IoT 的 Azure 資訊安全中心連接警示，並直接將它們串流至 Azure Sentinel。
+連接來自 IoT 的 Azure 安全中心的警報，並將它們直接資料流到 Azure Sentinel 中。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - 您必須具有工作區**讀取**和**寫入**許可權。
-- 您必須在相關 IoT 中樞上**啟用** **IoT 的 Azure 資訊安全中心**。
-- 您必須同時擁有您想要連線之**Azure IoT 中樞**的 [**讀取**] 和 [**寫入**] 許可權。
-- 您也必須擁有**Azure IoT 中樞資源群組**的 [**讀取**] 和 [**寫入**] 許可權。
+- **必須在相關 IoT**中心上**啟用**IoT 的 Azure 安全中心。
+- 您必須同時具有要連接的**Azure IoT 中心的****讀取**和**寫入**許可權。
+- 還必須對**Azure IoT 中心資源組**具有**讀取**和**寫入**許可權。
 
 > [!NOTE]
-> 您必須擁有在訂用帳戶上執行的 Azure 資訊安全中心標準層授權，才能傳送一般 Azure 資源警示。 使用 IoT Azure 資訊安全中心所需的免費層授權時，只會將 IoT 相關警示的 Azure 資訊安全中心轉送至 Azure Sentinel。 
+> 您必須在訂閱上運行 Azure 安全中心標準層許可才能發送常規 Azure 資源警報。 由於 IoT 的 Azure 安全中心需要免費的層許可，因此只有針對 IoT 相關警報的 Azure 安全中心將轉發到 Azure Sentinel。 
 
-## <a name="connect-to-azure-security-center-for-iot"></a>連線到 IoT 的 Azure 資訊安全中心
+## <a name="connect-to-azure-security-center-for-iot"></a>連接到適用于 IoT 的 Azure 安全中心
 
-1. 在 Azure Sentinel 中，選取 [**資料連線器**]，然後按一下 [**適用于 IoT 的 Azure 資訊安全中心**] 磚。
-1. 在右窗格的底部，按一下 [**開啟連接器] 頁面**。 
-1. 按一下每個 IoT 中樞訂用帳戶旁邊的 **[連線]** ，您要將警示和裝置警示串流至 Azure Sentinel。 
-    - 如果未在該中樞上啟用 IoT 的 Azure 資訊安全中心，您會看到啟用警告訊息。 按一下 [**啟用**] 連結，以啟動並啟用服務。 
-1. 您可以決定是否要讓來自 IoT Azure 資訊安全中心的警示在 Azure Sentinel 中自動產生事件。 在 [**建立事件**] 底下，選取 [**啟用**] 以啟用規則，自動從產生的警示建立事件。  您可以在 [**分析** **] > [** 作用中規則] 底下變更或編輯此規則。
+1. 在 Azure 哨兵中，選擇**資料連線器**，然後按一下 IoT 的**Azure 安全中心**磁貼。
+1. 從右側窗格的底部，按一下 **"打開連接器"頁**。 
+1. 按一下 **"連接**"，按一下每個 IoT 中心訂閱旁邊的，其警報和設備警報要資料流到 Azure Sentinel 中。 
+    - 如果未在該集線器上啟用 IoT 的 Azure 安全中心，您將看到啟用警告訊息。 按一下 **"啟用**"連結以啟動和啟用服務。 
+1. 您可以決定是否希望來自 IoT 的 Azure 安全中心的警報在 Azure Sentinel 中自動建置事件。 在 **"創建事件****"下，選擇"啟用**"以使規則能夠自動從生成的警報創建事件。  此規則可以在 **"分析** > **活動"** 規則下更改或編輯。
 
 > [!NOTE]
->進行連線變更之後，可能需要10秒以上的時間來重新整理中樞清單。 
+>更改連接後，刷新中心清單可能需要 10 秒或更長時間。 
 
-## <a name="log-analytics-alert-display"></a>Log Analytics 警示顯示
+## <a name="log-analytics-alert-display"></a>日誌分析警報顯示
 
-若要在 Log Analytics 中使用相關的架構來顯示 IoT 警示的 Azure 資訊安全中心：
+要使用日誌分析中的相關架構來顯示 IoT 警報的 Azure 安全中心：：
 
-1. 開啟 **記錄** > **SecurityInsights** > **SecurityAlert**，或搜尋**SecurityAlert**。 
-2. 使用下列 kql 篩選器篩選，僅查看 IoT 產生警示的 Azure 資訊安全中心：
+1. 打開**日誌** > **安全見解** > **安全警報**， 或搜索**安全警報**. 
+2. 篩選器，以便僅查看使用以下 kql 篩選器生成 IoT 警報的 Azure 安全中心：
 
 ```kusto
 SecurityAlert | where ProductName == "Azure Security Center for IoT"
 ``` 
 
-### <a name="service-notes"></a>服務注意事項
+### <a name="service-notes"></a>服務說明
 
-連接 IoT 中樞之後，中樞資料會在大約15分鐘後於 Azure Sentinel 中提供。
+連接 IoT 中心後，中心資料大約在 15 分鐘後在 Azure Sentinel 中可用。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本檔中，您已瞭解如何將 IoT Azure 資訊安全中心連線至 Azure Sentinel。 若要深入瞭解威脅偵測和安全性資料存取，請參閱下列文章：
+在本文檔中，您學習了如何將 IoT 的 Azure 安全中心連接到 Azure Sentinel。 要瞭解有關威脅檢測和安全資料訪問的更多詳細資訊，請參閱以下文章：
 
-- 瞭解如何使用 Azure Sentinel 來[查看您的資料和潛在威脅](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)。
+- 瞭解如何使用 Azure Sentinel[來查看資料以及潛在威脅](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)。
 
-- 瞭解如何[存取您的 IoT 安全性資料](how-to-security-data-access.md)
+- 瞭解如何訪問[IoT 安全資料](how-to-security-data-access.md)

@@ -1,5 +1,5 @@
 ---
-title: 教學課程：註冊應用程式
+title: 教程：註冊應用程式
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure 入口網站在 Azure Active Directory B2C 中註冊 Web 應用程式。
 services: active-directory-b2c
@@ -12,15 +12,15 @@ ms.date: 10/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183086"
 ---
-# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中註冊應用程式
+# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure 活動目錄 B2C 中註冊應用程式
 
-您的[應用程式](application-types.md)必須先在您管理的租使用者中註冊，才可以與 Azure Active Directory B2C （Azure AD B2C）互動。 本教學課程示範如何使用 Azure 入口網站註冊 Web 應用程式。
+在[應用程式](application-types.md)可以與 Azure 活動目錄 B2C（Azure AD B2C）交互之前，它們必須註冊到您管理的租戶中。 本教學課程示範如何使用 Azure 入口網站註冊 Web 應用程式。
 
 在本文中，您將學會如何：
 
@@ -30,9 +30,9 @@ ms.locfileid: "78183086"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-如果您尚未建立自己的 [Azure AD B2C 租用戶](tutorial-create-tenant.md)，請立即建立一個。 您可以使用現有的 Azure AD B2C 租用戶。
+如果尚未創建自己的[Azure AD B2C 租戶](tutorial-create-tenant.md)，請立即創建一個。 您可以使用現有的 Azure AD B2C 租用戶。
 
 ## <a name="register-a-web-application"></a>註冊 Web 應用程式
 
@@ -40,70 +40,70 @@ ms.locfileid: "78183086"
 
 #### <a name="applications"></a>[應用程式](#tab/applications/)
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
-1. 在 Azure 入口網站中，搜尋並選取  **Azure AD B2C**。
-1. 選取 [應用程式]，然後選取 [新增]。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 在門戶工具列中選擇**目錄 + 訂閱**圖示，然後選擇包含 Azure AD B2C 租戶的目錄。
+1. 在 Azure 門戶中，搜索並選擇**Azure AD B2C**。
+1. 選擇 **"應用程式**"，然後選擇 **"添加**"。
 1. 輸入應用程式的名稱。 例如，*webapp1*。
-1. 針對 [包含 Web 應用程式/Web API] 和 [允許隱含流程]，選取 [是]。
-1. 針對**回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 例如，您可以將它設定為在本機接聽 `https://localhost:44316`。 如果還不知道連接埠號碼，您可以輸入預留位置值，之後再變更。
+1. 針對 [包含 Web 應用程式/Web API]**** 和 [允許隱含流程]****，選取 [是]****。
+1. 針對**回覆 URL**，請輸入 Azure AD B2C 應傳回您的應用程式所要求任何權杖的端點。 例如，您可以將其設置為在 本地偵聽`https://localhost:44316`。 如果還不知道連接埠號碼，您可以輸入預留位置值，之後再變更。
 
-    基於此教學課程的測試目的，您可以將它設定為 `https://jwt.ms`，以顯示要檢查之權杖的內容。 在本教學課程中，請將 [**回復 URL** ] 設定為 `https://jwt.ms`。
+    出於測試目的（如本教程），您可以將其`https://jwt.ms`設置為顯示要檢查的權杖的內容。 對於本教程，將 **"答覆"URL** `https://jwt.ms`設置為 。
 
-    下列限制適用于回復 Url：
+    以下限制適用于回復 URL：
 
-    * 回復 URL 的開頭必須是配置 `https`。
-    * 回復 URL 會區分大小寫。 其大小寫必須符合您執行中應用程式之 URL 路徑的大小寫。 例如，如果您的應用程式包含作為其路徑 `.../abc/response-oidc`的一部分，請勿在回復 URL 中指定 `.../ABC/response-oidc`。 由於網頁瀏覽器會將路徑視為區分大小寫，因此如果將與 `.../abc/response-oidc` 相關聯的 cookie 重新導向至不相符的 `.../ABC/response-oidc` URL，可能會予以排除。
+    * 答覆 URL 必須以方案`https`開頭。
+    * 答覆 URL 區分大小寫。 其大小寫必須與正在運行的應用程式的 URL 路徑的情況匹配。 例如，如果應用程式包含作為其路徑`.../abc/response-oidc`的一部分，請不要在答覆 URL`.../ABC/response-oidc`中指定。 由於 Web 瀏覽器將路徑視為區分大小寫的，因此，`.../abc/response-oidc`如果重定向到案例不匹配`.../ABC/response-oidc`的 URL，可能會排除與路徑關聯的 Cookie。
 
-1. 選取 [**建立**] 以完成應用程式註冊。
+1. 選擇 **"創建**"以完成應用程式註冊。
 
 #### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
-1. 在 Azure 入口網站中，搜尋並選取  **Azure AD B2C**。
-1. 選取 [應用程式註冊 (預覽)]，然後選取 [新增註冊]。
-1. 輸入應用程式的 [名稱]。 例如，*webapp1*。
-1. 選取**任何組織目錄中的帳戶或任何識別提供者**。
-1. 在 [重新**導向 URI**] 底下，選取 [ **Web**]，然後在 [URL] 文字方塊中輸入 `https://jwt.ms`。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 在門戶工具列中選擇**目錄 + 訂閱**圖示，然後選擇包含 Azure AD B2C 租戶的目錄。
+1. 在 Azure 門戶中，搜索並選擇**Azure AD B2C**。
+1. 選取 [應用程式註冊 (預覽)]****，然後選取 [新增註冊]****。
+1. 輸入應用程式的 [名稱]****。 例如，*webapp1*。
+1. 選擇**任何組織目錄中的帳戶或任何標識提供程式**。
+1. 在**重定向 URI**下，選擇**Web** `https://jwt.ms` ，然後在 URL 文字方塊中輸入。
 
-    重新導向 URI 是由授權伺服器（在此案例中為 Azure AD B2C，在此範例中為）完成與使用者的互動之後，以及在成功授權時傳送存取權杖或授權碼給使用者的端點。 在生產應用程式中，它通常是您的應用程式執行所在的可公開存取端點，例如 `https://contoso.com/auth-response`。 基於此教學課程的測試目的，您可以將它設定為 [`https://jwt.ms`]，這是 Microsoft 所擁有的 web 應用程式，它會顯示權杖的已解碼內容（權杖的內容永遠不會離開您的瀏覽器）。 在應用程式開發期間，您可以新增應用程式在本機接聽的端點，例如 `https://localhost:5000`。 您可以隨時在已註冊的應用程式中新增及修改重新導向 Uri。
+    重定向 URI 是授權伺服器（本例中為 Azure AD B2C）將使用者發送到的終結點，並在成功授權後向其發送訪問權杖或授權代碼。 在生產應用程式中，它通常是應用運行的公開訪問終結點，如`https://contoso.com/auth-response`。 出於測試目的（如本教程），您可以將其設置為`https://jwt.ms`，Microsoft 擁有的 Web 應用程式顯示權杖的解碼內容（權杖的內容永遠不會離開瀏覽器）。 在應用開發期間，您可以添加應用程式在本地偵聽的終結點，如`https://localhost:5000`。 您可以隨時在已註冊的應用程式中添加和修改重定向 URI。
 
-    下列限制適用于重新導向 Uri：
+    以下限制適用于重定向 URI：
 
-    * 回復 URL 的開頭必須是配置 `https`。
-    * 回復 URL 會區分大小寫。 其大小寫必須符合您執行中應用程式之 URL 路徑的大小寫。 例如，如果您的應用程式包含作為其路徑 `.../abc/response-oidc`的一部分，請勿在回復 URL 中指定 `.../ABC/response-oidc`。 由於網頁瀏覽器會將路徑視為區分大小寫，因此如果將與 `.../abc/response-oidc` 相關聯的 cookie 重新導向至不相符的 `.../ABC/response-oidc` URL，可能會予以排除。
+    * 答覆 URL 必須以方案`https`開頭。
+    * 答覆 URL 區分大小寫。 其大小寫必須與正在運行的應用程式的 URL 路徑的情況匹配。 例如，如果應用程式包含作為其路徑`.../abc/response-oidc`的一部分，請不要在答覆 URL`.../ABC/response-oidc`中指定。 由於 Web 瀏覽器將路徑視為區分大小寫的，因此，`.../abc/response-oidc`如果重定向到案例不匹配`.../ABC/response-oidc`的 URL，可能會排除與路徑關聯的 Cookie。
 
-1. 在 [權限] 下，選取 [對 openid 與 offline_access 權限授與管理員同意] 核取方塊。
-1. 選取 [註冊]。
+1. 在 [權限]**** 下，選取 [對 openid 與 offline_access 權限授與管理員同意]** 核取方塊。
+1. 選取 [註冊]****。
 
-應用程式註冊完成後，請啟用隱含授與流程：
+完成應用程式註冊後，啟用隱式授予流：
 
-1. 在 [管理] 底下，選取 [驗證]。
-1. 選取 [試用全新體驗] (若顯示的話)。
-1. 在 [隱含授與] 底下，同時選取 [存取權杖] 和 [識別碼權杖] 核取方塊。
-1. 選取 [儲存]。
+1. 在 [管理]**** 底下，選取 [驗證]****。
+1. 選取 [試用全新體驗]**** (若顯示的話)。
+1. 在**隱式授予**下，選擇 **"訪問權杖**"和 **"ID 權杖"** 核取方塊。
+1. 選取 [儲存]****。
 
 * * *
 
 ## <a name="create-a-client-secret"></a>建立用戶端密碼
 
-如果您的應用程式交換存取權杖的授權碼，您必須建立應用程式密碼。
+如果應用程式為訪問權杖交換授權代碼，則需要創建應用程式金鑰。
 
 #### <a name="applications"></a>[應用程式](#tab/applications/)
 
-1. 在 [ **Azure AD B2C 應用**程式] 頁面中，選取您建立的應用程式，例如*webapp1*。
-1. 選取 [**金鑰**]，然後選取 [**產生金鑰**]。
-1. 選取 [儲存] 以檢視金鑰。 請記下 [應用程式金鑰] 值。 您會使用此值做為應用程式代碼中的應用程式密碼。
+1. 在**Azure AD B2C - 應用程式**頁中，選擇您創建的應用程式，例如*Webapp1*。
+1. 選擇**鍵**，然後選擇 **"生成鍵**"。
+1. 選取 [儲存]**** 以檢視金鑰。 請記下 [應用程式金鑰]**** 值。 在應用程式代碼中使用此值作為應用程式機密。
 
 #### <a name="app-registrations-preview"></a>[應用程式註冊 (預覽)](#tab/app-reg-preview/)
 
-1. 在 [ **Azure AD B2C-應用程式註冊（預覽）** ] 頁面中，選取您建立的應用程式，例如*webapp1*。
-1. 在 [管理] 下，選取 [憑證和密碼]。
-1. 選取 [新增用戶端密碼]。
-1. 在 [描述] 方塊中，輸入用戶端密碼的描述。 例如，*clientsecret1*。
-1. 在 [到期] 下，選取密碼有效的持續時間，然後選取 [新增]。
-1. 記錄密碼的**值**。 您會使用此值做為應用程式代碼中的應用程式密碼。
+1. 在**Azure AD B2C - 應用註冊（預覽）** 頁中，選擇您創建的應用程式，例如*Webapp1*。
+1. 在 [管理]**** 下，選取 [憑證和密碼]****。
+1. 選取 [新增用戶端密碼]****。
+1. 在 [描述]**** 方塊中，輸入用戶端密碼的描述。 例如，*clientsecret1*。
+1. 在 [到期]**** 下，選取密碼有效的持續時間，然後選取 [新增]****。
+1. 記錄密碼的**值**。 在應用程式代碼中使用此值作為應用程式機密。
 
 * * *
 
@@ -115,7 +115,7 @@ ms.locfileid: "78183086"
 > * 註冊 Web 應用程式
 > * 建立用戶端密碼
 
-接下來，瞭解如何建立使用者流程，讓您的使用者註冊、登入及管理其設定檔。
+接下來，瞭解如何創建使用者流，使使用者能夠註冊、登錄和管理其設定檔。
 
 > [!div class="nextstepaction"]
-> [在 Azure Active Directory B2C > 中建立使用者流程](tutorial-create-user-flows.md)
+> [在 Azure 活動目錄 B2C >中創建使用者流](tutorial-create-user-flows.md)

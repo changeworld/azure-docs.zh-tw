@@ -1,6 +1,6 @@
 ---
-title: 設定 Azure 檔案同步
-description: 設定 Azure 檔案同步。共同的文字區塊，在遷移檔之間共用。
+title: 配置 Azure 檔同步
+description: 配置 Azure 檔同步。在遷移文檔之間共用的通用文字區塊。
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 53d7af6b43ff24ab12501570385162759f4c7633
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209580"
 ---
-這個步驟會將您在先前步驟中已在 Windows Server 上設定的所有資源和資料夾結合在一起。
+此步驟將您在之前的步驟中在 Windows Server 上設置的所有資源和資料夾結合在一起。
 
-* 登入 [Azure 入口網站](https://portal.azure.com)。
-* 找出您的儲存體同步服務資源。
-* 在儲存體同步服務資源內，為每個 Azure 檔案共用建立新的*同步群組*。 在 Azure 檔案同步的術語中，Azure 檔案共用會成為您在建立同步處理群組時所描述的同步拓撲中的*雲端端點*。 當您建立同步群組時，請為它提供一個熟悉的名稱，讓您能夠辨識這裡同步處理哪一組檔案。 請確定您使用相符的名稱來參考 Azure 檔案共用。
-* 建立同步群組後，您會看到它出現在同步群組清單中的資料列。 按一下 [名稱] （連結）以顯示同步處理群組的內容。 您會在 [雲端端點] 底下看到您的 Azure 檔案共用。
-* 找出 [ *+ 新增伺服器端點*] 命令按鈕。 您已布建之本機伺服器上的資料夾，將成為此*伺服器端點*的路徑。
+* 登錄到[Azure 門戶](https://portal.azure.com)。
+* 查找存儲同步服務資源。
+* 在每個 Azure 檔共用的存儲同步服務資源中創建新*的同步組*。 在 Azure 檔同步術語中，Azure 檔共用將成為您通過創建同步組描述的同步拓撲中的*雲終結點*。 創建同步組時，請為它指定一個熟悉的名稱，以便在此處識別同步的檔集。 請確保引用具有匹配名稱的 Azure 檔共用。
+* 創建同步組後，您將看到同步組清單中顯示的行。 按一下名稱（連結）以顯示同步組的內容。 您將在"雲終結點"下看到 Azure 檔共用。
+* 找到命令按鈕以 *= 添加伺服器終結點*。 預配的本機伺服器上的資料夾將成為此*伺服器終結點*的路徑。

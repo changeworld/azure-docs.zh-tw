@@ -1,16 +1,16 @@
 ---
-title: 使用在 Linux 上建立您的第一個 Azure Service Fabric 應用程式C#
+title: 使用 C 在 Linux 上創建第一個 Azure 服務結構應用#
 description: 了解如何使用 C# 和 .NET Core 2.0 建立和部署 Service Fabric 應用程式。
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458132"
 ---
-# <a name="create-your-first-azure-service-fabric-application"></a>建立您的第一個 Azure Service Fabric 應用程式
+# <a name="create-your-first-azure-service-fabric-application"></a>建立第一個 Azure Service Fabric 應用程式
 > [!div class="op_single_selector"]
 > * [Java - Linux (預覽)](service-fabric-create-your-first-linux-application-with-java.md)
 > * [C# - Linux (預覽)](service-fabric-create-your-first-linux-application-with-csharp.md)
@@ -19,7 +19,7 @@ ms.locfileid: "75458132"
 
 Service Fabric 提供了在 Linux 上建置服務的 .NET Core 和 Java SDK。 在本教學課程中，我們會探討如何建立適用於 Linux 的應用程式以及在 NET Core 2.0 上使用 C# 建置服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始之前，請確定您已 [設定 Linux 開發環境](service-fabric-get-started-linux.md)。 如果您使用 Mac OS X，您可以 [使用 Vagrant 在虛擬機器中設定 Linux 一整體環境](service-fabric-get-started-mac.md)。
 
 您也要安裝 [Service Fabric CLI](service-fabric-cli.md)
@@ -86,7 +86,7 @@ Service Fabric Yeoman 範本包含建置指令碼，可用來從終端機建置�
 
 這些命令的參數可以在應用程式套件內產生的資訊清單中找到。
 
-部署應用程式後，開啟瀏覽器並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。 接著展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
+部署應用程式後，開啟瀏覽器並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。 接著展開 [應用程式]**** 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
 
 > [!IMPORTANT]
 > 若要將應用程式部署到 Azure 中的安全 Linux 叢集，您需要設定憑證來向 Service Fabric 執行階段驗證您的應用程式。 這樣做就能讓您的 Reliable Services 服務可與基礎 Service Fabric 執行階段 API 進行通訊。 若要深入了解，請參閱[將 Reliable Services 應用程式設定為在 Linux 叢集上執行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
@@ -97,7 +97,7 @@ Service Fabric Yeoman 範本包含建置指令碼，可用來從終端機建置�
 
 1. 使用監看式公用程式執行指令碼，以查看動作項目服務的輸出。
 
-   如果是 MAC OS X，您需要執行下列其他命令，將 myactorsvcTestClient 資料夾複製到容器內的相同位置。
+   在 MAC OS X 的情況下，您需要通過運行以下附加命令將 myactorsvcTestClient 資料夾複製到容器內的同一位置。
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home
@@ -112,18 +112,18 @@ Service Fabric Yeoman 範本包含建置指令碼，可用來從終端機建置�
 2. 在 Service Fabric Explorer 中，找出裝載動作項目服務主要複本的節點。 在以下的螢幕擷取畫面中是節點 3。
 
     ![在 Service Fabric Explorer 中尋找主要複本][sfx-primary]
-3. 按一下您在上一個步驟中找到的節點，然後從 [動作] 功能表選取 [停用 (重新啟動)] 。 這個動作會重新啟動本機叢集中的其中一個節點，強制容錯移轉至在另一個節點上執行的次要複本。 當您執行這個動作時，請留意測試用戶端的輸出，並注意儘管是容錯移轉，計數器仍會繼續增加。
+3. 按一下您在上一個步驟中找到的節點，然後從 [動作] 功能表選取 [停用 (重新啟動)] **** 。 這個動作會重新啟動本機叢集中的其中一個節點，強制容錯移轉至在另一個節點上執行的次要複本。 當您執行這個動作時，請留意測試用戶端的輸出，並注意儘管是容錯移轉，計數器仍會繼續增加。
 
 ## <a name="adding-more-services-to-an-existing-application"></a>將更多服務新增至現有的應用程式
 
 若要將其他服務新增至已使用 `yo` 建立的應用程式，請執行下列步驟︰
 1. 將目錄變更為現有應用程式的根目錄。  例如，如果 `MyApplication` 是 Yeoman 所建立的應用程式，則為 `cd ~/YeomanSamples/MyApplication`。
-2. `yo azuresfcsharp:AddService`執行 
+2. 執行 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Service Fabric CLI 與 Service Fabric 叢集互動](service-fabric-cli.md)
-* 了解 [Service Fabric 支援選項](service-fabric-support.md)
+* 瞭解[服務交換矩陣支援選項](service-fabric-support.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)
 
 <!-- Images -->

@@ -1,37 +1,37 @@
 ---
-title: 使用 Azure DevOps 持續更新函式應用程式程式碼
-description: 瞭解如何設定以 Azure Functions 為目標的 Azure DevOps 管線。
+title: 使用 Azure DevOps 不斷更新函數應用代碼
+description: 瞭解如何設置以 Azure 函數為目標的 Azure DevOps 管道。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255762"
 ---
-# <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 的持續傳遞
+# <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 連續傳遞
 
-您可以使用[Azure Pipelines](/azure/devops/pipelines/)，將您的函式自動部署至 Azure Functions 應用程式。
+可以使用[Azure 管道](/azure/devops/pipelines/)自動將函數部署到 Azure 函數應用。
 
-您有兩個選項可定義您的管線：
+您有兩個選項用於定義管道：
 
-- **YAML**檔案： YAML 檔案描述管線。 檔案可能會有 [組建步驟] 區段和 [發行] 區段。 YAML 檔案必須與應用程式位於相同的存放庫中。
-- **範本**：範本是建立或部署您的應用程式的現成工作。
+- **YAML 檔**：YAML 檔描述管道。 該檔可能具有生成步驟部分和發佈部分。 YAML 檔必須與應用處于同一回購中。
+- **範本**：範本是生成或部署應用的現成任務。
 
-## <a name="yaml-based-pipeline"></a>YAML 為基礎的管線
+## <a name="yaml-based-pipeline"></a>基於 YAML 的管道
 
-若要建立以 YAML 為基礎的管線，請先建立您的應用程式，然後再部署應用程式。
+要創建基於 YAML 的管道，請先生成應用，然後部署應用。
 
-### <a name="build-your-app"></a>建置應用程式
+### <a name="build-your-app"></a>建置您的應用程式
 
-在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品是用來在 Azure 中部署函數應用程式。
+如何在 Azure 管道中構建應用取決於應用的程式設計語言。 每種語言都有創建部署專案的特定生成步驟。 部署專案用於在 Azure 中部署函數應用。
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-您可以使用下列範例來建立 YAML 檔案，以建立 .NET 應用程式：
+可以使用以下示例創建 YAML 檔來生成 .NET 應用：
 
 ```yaml
 pool:
@@ -60,9 +60,9 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
-您可以使用下列範例來建立 YAML 檔案，以建立 JavaScript 應用程式：
+可以使用以下示例創建 YAML 檔來構建 JavaScript 應用：
 
 ```yaml
 pool:
@@ -90,9 +90,9 @@ steps:
 
 # <a name="python"></a>[Python](#tab/python)
 
-您可以使用下列其中一個範例來建立 YAML 檔案，以建立特定 Python 版本的應用程式。 Python 僅支援在 Linux 上執行的函數應用程式。
+可以使用以下示例之一創建 YAML 檔，為特定的 Python 版本構建應用。 Python 僅支援在 Linux 上運行的函數應用程式。
 
-**版本3。7**
+**版本 3.7**
 
 ```yaml
 pool:
@@ -121,7 +121,7 @@ steps:
     artifactName: 'drop'
 ```
 
-**版本3。6**
+**版本 3.6**
 
 ```yaml
 pool:
@@ -150,9 +150,9 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[電源外殼](#tab/powershell)
 
-您可以使用下列範例來建立 YAML 檔案，以封裝 PowerShell 應用程式。 PowerShell 僅支援 Windows Azure Functions。
+您可以使用以下示例創建 YAML 檔來打包 PowerShell 應用。 僅支援 Windows Azure 功能的 PowerShell。
 
 ```yaml
 pool:
@@ -174,11 +174,11 @@ steps:
 
 ### <a name="deploy-your-app"></a>部署您的應用程式
 
-您必須在 YAML 檔案中包含下列其中一個 YAML 範例，視裝載作業系統而定。
+您必須在 YAML 檔中包括以下 YAML 示例之一，具體取決於託管作業系統。
 
-#### <a name="windows-function-app"></a>Windows 函數應用程式
+#### <a name="windows-function-app"></a>視窗功能應用
 
-您可以使用下列程式碼片段來部署 Windows 函數應用程式：
+您可以使用以下程式碼片段部署 Windows 函數應用：
 
 ```yaml
 steps:
@@ -193,9 +193,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux 函數應用程式
+#### <a name="linux-function-app"></a>Linux函數應用程式
 
-您可以使用下列程式碼片段來部署 Linux 函數應用程式：
+您可以使用以下程式碼片段部署 Linux 函數應用：
 
 ```yaml
 steps:
@@ -211,61 +211,61 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-## <a name="template-based-pipeline"></a>以範本為基礎的管線
+## <a name="template-based-pipeline"></a>基於範本的管道
 
-Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應用程式。
+Azure DevOps 中的範本是生成或部署應用的任務的預定義組。
 
-### <a name="build-your-app"></a>建置應用程式
+### <a name="build-your-app"></a>建置您的應用程式
 
-在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品用來更新 Azure 中的函數應用程式。
+如何在 Azure 管道中構建應用取決於應用的程式設計語言。 每種語言都有創建部署專案的特定生成步驟。 部署專案用於在 Azure 中更新函數應用。
 
-若要使用內建的組建範本，當您建立新的組建管線時，請選取 **[使用傳統編輯器**]，利用設計工具範本來建立管線。
+要使用內置生成範本，請在創建新生成管道時選擇 **"使用經典編輯器**使用設計器範本創建管道"。
 
-![選取 [Azure Pipelines 傳統編輯器]](media/functions-how-to-azure-devops/classic-editor.png)
+![選擇 Azure 管道經典編輯器](media/functions-how-to-azure-devops/classic-editor.png)
 
-設定程式碼來源之後，請搜尋 Azure Functions 組建範本。 選取符合您應用程式語言的範本。
+配置代碼源後，搜索 Azure 函數生成範本。 選擇與您的應用語言匹配的範本。
 
-![選取 Azure Functions 組建範本](media/functions-how-to-azure-devops/build-templates.png)
+![選擇 Azure 函數生成範本](media/functions-how-to-azure-devops/build-templates.png)
 
-在某些情況下，組建成品具有特定的資料夾結構。 您可能需要選取 [**保存路徑的根資料夾名稱**] 核取方塊。
+在某些情況下，生成工件具有特定的資料夾結構。 您可能需要選擇 **"準備結束根資料夾名稱以存檔路徑**"核取方塊。
 
-![要在根資料夾名稱前面加上的選項](media/functions-how-to-azure-devops/prepend-root-folder.png)
+![準備根資料夾名稱的選項](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
-#### <a name="javascript-apps"></a>JavaScript 應用程式
+#### <a name="javascript-apps"></a>JavaScript 應用
 
-如果您的 JavaScript 應用程式相依于 Windows 原生模組，您必須將代理程式組件區版本更新為**HOSTED VS2017**。
+如果您的 JavaScript 應用依賴于 Windows 本機模組，則必須將代理池版本更新為**託管 VS2017**。
 
-![更新代理程式組件區版本](media/functions-how-to-azure-devops/change-agent.png)
+![更新代理池版本](media/functions-how-to-azure-devops/change-agent.png)
 
 ### <a name="deploy-your-app"></a>部署您的應用程式
 
-當您建立新的發行管線時，請搜尋 Azure Functions 發行 範本。
+創建新發佈管道時，搜索 Azure 函數發佈範本。
 
-![搜尋 Azure Functions 版本範本](media/functions-how-to-azure-devops/release-template.png)
+![搜索 Azure 函數發佈範本](media/functions-how-to-azure-devops/release-template.png)
 
-發行範本中不支援部署至部署位置。
+發佈範本不支援部署到部署槽。
 
-## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 建立組建管線
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 創建生成管道
 
-若要在 Azure 中建立組建管線，請使用 `az functionapp devops-pipeline create`[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 建立組建管線以建立和發行您的存放庫中所做的任何程式碼變更。 命令會產生新的 YAML 檔案，以定義組建和發行管線，然後將其認可至您的存放庫。 此命令的必要條件取決於您的程式碼位置。
+要在 Azure 中創建生成管道，`az functionapp devops-pipeline create`請使用[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 創建生成管道是為了生成和釋放在回購中所做的任何代碼更改。 該命令生成一個新的 YAML 檔，該檔定義生成和發佈管道，然後將其提交到您的回購中。 此命令的先決條件取決於代碼的位置。
 
-- 如果您的程式碼位於 GitHub：
+- 如果代碼在 GitHub 中：
 
-    - 您必須擁有訂用帳戶的**寫入**許可權。
+    - 您必須具有訂閱的**寫入**許可權。
 
-    - 您必須是 Azure DevOps 中的專案系統管理員。
+    - 您必須是 Azure DevOps 中的專案管理員。
 
-    - 您必須具有許可權，才能建立具有足夠許可權的 GitHub 個人存取權杖（PAT）。 如需詳細資訊，請參閱[GITHUB PAT 許可權需求。](https://aka.ms/azure-devops-source-repos)
+    - 您必須具有創建具有足夠許可權的 GitHub 個人訪問權杖 （PAT） 的許可權。 有關詳細資訊，請參閱[GitHub PAT 許可權要求。](https://aka.ms/azure-devops-source-repos)
 
-    - 您必須有許可權可認可 GitHub 存放庫中的主要分支，才能認可自動產生的 YAML 檔案。
+    - 您必須具有向 GitHub 存儲庫中的主分支提交的許可權，以便提交自動生成的 YAML 檔。
 
-- 如果您的程式碼位於 Azure Repos：
+- 如果代碼位於 Azure 存儲庫中：
 
-    - 您必須擁有訂用帳戶的**寫入**許可權。
+    - 您必須具有訂閱的**寫入**許可權。
 
-    - 您必須是 Azure DevOps 中的專案系統管理員。
+    - 您必須是 Azure DevOps 中的專案管理員。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[Azure Functions 總覽](functions-overview.md)。
-- 請參閱[Azure DevOps 總覽](/azure/devops/pipelines/)。
+- 查看[Azure 函數概述](functions-overview.md)。
+- 查看[Azure DevOps 概述](/azure/devops/pipelines/)。

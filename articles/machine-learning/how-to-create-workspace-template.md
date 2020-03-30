@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure Resource Manager 範本建立工作區
+title: 使用 Azure 資源管理器範本創建工作區
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Resource Manager 範本來建立新的 Azure Machine Learning 工作區。
+description: 瞭解如何使用 Azure 資源管理器範本創建新的 Azure 機器學習工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,30 @@ author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 9403cc05ed5b31f3b76c16c4232506e2ddc5da2d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402911"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
 
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本來建立 Azure Machine Learning 的工作區
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 資源管理器範本為 Azure 機器學習創建工作區
 
-在本文中，您將瞭解使用 Azure Resource Manager 範本建立 Azure Machine Learning 工作區的數種方式。 Resource Manager 範本可讓您輕鬆地以單一、協調的作業建立資源。 範本是 JSON 文件，其定義部署所需的資源。 它也可以指定部署參數。 參數用來在使用範本時提供輸入值。
+在本文中，您將瞭解使用 Azure 資源管理器範本創建 Azure 機器學習工作區的多種方法。 Resource Manager 範本可讓您輕鬆地以單一、協調的作業建立資源。 範本是 JSON 文件，其定義部署所需的資源。 它也可以指定部署參數。 參數用來在使用範本時提供輸入值。
 
 如需詳細資訊，請參閱 [使用 Azure Resource Manager 範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 如果您沒有帳戶，請試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂閱**。 如果沒有，請嘗試[Azure 機器學習的免費或付費版本](https://aka.ms/AMLFree)。
 
 * 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="resource-manager-template"></a>Resource Manager 範本
 
-下列 Resource Manager 範本可以用來建立 Azure Machine Learning 工作區和相關聯的 Azure 資源：
+以下資源管理器範本可用於創建 Azure 機器學習工作區和關聯的 Azure 資源：
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 
@@ -63,9 +63,9 @@ ms.locfileid: "78402911"
     其他服務的名稱會隨機產生。
 
 > [!TIP]
-> 雖然與此檔相關聯的範本會建立新的 Azure Container Registry，但您也可以建立新的工作區，而不需要建立容器登錄。 當您執行需要 container registry 的作業時，將會建立一個。 例如，定型或部署模型。
+> 與本文檔關聯的範本創建新的 Azure 容器註冊表時，還可以創建新工作區，而無需創建容器註冊表。 當您執行需要容器註冊表的操作時，將創建一個操作。 例如，訓練或部署模型。
 >
-> 您也可以在 [Azure Resource Manager] 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。
+> 您還可以在 Azure 資源管理器範本中引用現有容器註冊表或存儲帳戶，而不是創建新容器註冊表或存儲帳戶。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -75,13 +75,13 @@ ms.locfileid: "78402911"
 * [使用 Azure Resource Manager 範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.MachineLearningServices resource 類型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-### <a name="advanced-template"></a>Advanced 範本
+### <a name="advanced-template"></a>高級範本
 
-下列範例範本示範如何建立具有三個設定的工作區：
+以下示例範本演示如何創建具有三個設置的工作區：
 
-* 啟用工作區的高機密性設定
-* 啟用工作區的加密
-* 使用現有的 Azure Key Vault
+* 為工作區啟用高機密性設置
+* 為工作區啟用加密
+* 使用現有的 Azure 金鑰保存庫
 
 ```json
 {
@@ -263,13 +263,13 @@ ms.locfileid: "78402911"
 }
 ```
 
-若要取得 Key Vault 的識別碼，以及此範本所需的金鑰 URI，您可以使用 Azure CLI。 下列命令是使用 Azure CLI 取得 Key Vault 資源識別碼和 URI 的範例：
+要獲取金鑰保存庫的 ID 以及此範本所需的金鑰 URI，可以使用 Azure CLI。 以下命令是使用 Azure CLI 獲取金鑰保存庫資源識別碼 和 URI 的示例：
 
 ```azurecli-interactive
 az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
 ```
 
-此命令會傳回類似下列文字的值。 第一個值是識別碼，而第二個是 URI：
+此命令返回類似于以下文本的值。 第一個值是 ID，第二個值是 URI：
 
 ```text
 [
@@ -280,13 +280,13 @@ az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您看見 [編輯範本] 畫面時，貼入此文件的範本。
-1. 選取 [儲存] 以使用範本。 提供下列資訊，並同意列出的條款及條件：
+1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您看見 [編輯範本]____ 畫面時，貼入此文件的範本。
+1. 選取 [儲存]____ 以使用範本。 提供下列資訊，並同意列出的條款及條件：
 
-   * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
-   * 資源群組：選取或建立包含服務的資源群組。
-   * 工作區名稱：要用於將建立之 Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
-   * 位置：選取將建立資源的位置。
+   * 訂閱：選擇要用於這些資源的 Azure 訂閱。
+   * 資源組：選擇或創建資源組以包含服務。
+   * 工作區名稱：要用於要創建的 Azure 機器學習工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
+   * 位置：選擇將創建資源的位置。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -320,31 +320,31 @@ az group deployment create \
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="resource-provider-errors"></a>資源提供者錯誤
+### <a name="resource-provider-errors"></a>資來源提供者錯誤
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 存取原則和 Azure Resource Manager 範本
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure 金鑰保存庫訪問策略和 Azure 資源管理器範本
 
-當您使用 Azure Resource Manager 範本來建立工作區和相關聯的資源（包括 Azure Key Vault）時，會多次。 例如，使用範本多次，並以相同的參數作為持續整合和部署管線的一部分。
+使用 Azure 資源管理器範本創建工作區和相關資源（包括 Azure 金鑰保存庫）時，請多次使用。 例如，在持續集成和部署管道中多次使用具有相同參數的範本。
 
-大部分透過範本的資源建立作業都是等冪的，但 Key Vault 會在每次使用範本時清除存取原則。 清除存取原則會中斷對使用它之任何現有工作區的 Key Vault 存取。 例如，Azure Notebooks VM 的停止/建立功能可能會失敗。  
+通過範本創建資源的大多數操作都是冪等的，但每次使用範本時，金鑰保存庫都會清除訪問策略。 清除訪問策略會破壞對正在使用它的任何現有工作區的金鑰保存庫的訪問。 例如，停止/創建 Azure 筆記本 VM 的功能可能會失敗。  
 
-若要避免這個問題，建議您採用下列其中一種方法：
+為了避免此問題，我們建議採用以下方法之一：
 
-* 不要針對相同的參數多次部署範本。 或刪除現有的資源，然後再使用此範本重新建立它們。
+* 不要多次為相同的參數部署範本。 或者在使用範本重新創建現有資源之前刪除這些資源。
 
-* 檢查 Key Vault 的存取原則，然後使用這些原則來設定範本的 `accessPolicies` 屬性。 若要查看存取原則，請使用下列 Azure CLI 命令：
+* 檢查金鑰保存庫訪問策略，然後使用這些策略設置範本`accessPolicies`的屬性。 要查看訪問策略，請使用以下 Azure CLI 命令：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    如需使用範本之 `accessPolicies` 區段的詳細資訊，請參閱[AccessPolicyEntry 物件參考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    有關使用範本`accessPolicies`部分的詳細資訊，請參閱[AccessPolicyentry 物件引用](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
-* 檢查 Key Vault 資源是否已存在。 如果有，請不要透過範本重新建立它。 例如，若要使用現有的 Key Vault，而不是建立新的，請對範本進行下列變更：
+* 檢查金鑰保存庫資源是否已存在。 如果是，請不要通過範本重新創建它。 例如，要使用現有的金鑰保存庫而不是創建新金鑰保存庫，請使用以下更改範本：
 
-    * **新增**可接受現有 KEY VAULT 資源識別碼的參數：
+    * **添加**接受現有金鑰保存庫資源的 ID 的參數：
 
         ```json
         "keyVaultId":{
@@ -355,7 +355,7 @@ az group deployment create \
         }
       ```
 
-    * **移除**建立 Key Vault 資源的區段：
+    * **刪除**創建金鑰保存庫資源的部分：
 
         ```json
         {
@@ -375,7 +375,7 @@ az group deployment create \
         },
         ```
 
-    * 從工作區的 [`dependsOn`] 區段中**移除**`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 此外，也請**變更**工作區的 [`properties`] 區段中的 [`keyVault`] 專案，以參考 `keyVaultId` 參數：
+    * **Remove**從工作區`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",``dependsOn`部分刪除行。 此外**Change**，更改`keyVault`工作區`properties`部分中的條目以傳址參數`keyVaultId`：
 
         ```json
         {
@@ -403,9 +403,9 @@ az group deployment create \
         }
         ```
 
-    這些變更之後，您可以在執行範本時指定現有 Key Vault 資源的識別碼。 然後範本會將工作區的 `keyVault` 屬性設定為其識別碼，以重複使用 Key Vault。
+    進行這些更改後，您可以在運行範本時指定現有金鑰保存庫資源的 ID。 然後，範本將通過將工作區`keyVault`的屬性設置為其 ID 來重用金鑰保存庫。
 
-    若要取得 Key Vault 的識別碼，您可以參考原始範本執行的輸出，或使用 Azure CLI。 下列命令是使用 Azure CLI 取得 Key Vault 資源識別碼的範例：
+    要獲取金鑰保存庫的 ID，可以引用運行的原始範本的輸出或使用 Azure CLI。 以下命令是使用 Azure CLI 獲取金鑰保存庫資源識別碼 的示例：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
@@ -419,5 +419,5 @@ az group deployment create \
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Resource Manager 範本和 Resource Manager REST API 部署資源](../azure-resource-manager/templates/deploy-rest.md)。
-* [透過 Visual Studio 建立與部署 Azure 資源群組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
+* [使用資源管理器範本和資源管理器 REST API 部署資源](../azure-resource-manager/templates/deploy-rest.md)。
+* [通過視覺化工作室創建和部署 Azure 資源組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。

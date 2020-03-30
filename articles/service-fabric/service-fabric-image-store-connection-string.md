@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric 映射存放區連接字串
-description: 瞭解映射存放區連接字串，包括其對 Service Fabric 叢集的使用和應用程式。
+title: Azure 服務結構映射存儲連接字串
+description: 瞭解映射存儲連接字串，包括其用途和對 Service Fabric 群集的應用程式。
 author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
 ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645662"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>了解 ImageStoreConnectionString 設定
 
-在某些文件中，我們簡單介紹 "ImageStoreConnectionString" 參數存在而不描述它真正的意義。 在流覽[使用 PowerShell 部署和移除應用程式][10]之類的文章之後，您所做的就像是複製/貼上值，如目標叢集的叢集資訊清單中所示。 因此，您必須可設定每個叢集的設定，但當您透過[Azure 入口網站][11]建立叢集時，沒有任何選項可進行此設定，而且一律為 "Fabric： ImageStore"。 那麼這項設定的目的是什麼？
+在某些文件中，我們簡單介紹 "ImageStoreConnectionString" 參數存在而不描述它真正的意義。 在瀏覽過[使用 PowerShell 部署和移除應用程式][10]類似的文章後，看起來您所要做的是複製/貼上值，如目標叢集的叢集資訊清單中所示。 所以每個叢集的設定必須是可設定，但當您透過 [Azure 入口網站][11]建立叢集時，沒有設定此設定的選項，而一律是 "fabric:ImageStore"。 那麼這項設定的目的是什麼？
 
 ![叢集資訊清單][img_cm]
 
@@ -36,7 +36,7 @@ Service Fabric 由許多不同的小組以內部 Microsoft 耗用量的平台開
 
 在開發期間會針對本機一整體叢集使用檔案系統提供者而非映像存放區服務，以稍微加速啟動叢集。 差別通常很小，但它在開發期間對於大部分人是有用的最佳化。 可以使用其他存放裝置提供者類型部署本機一整體叢集，但通常沒有理由這麼做，因為開發/測試工作流程將保持不變，不論提供者為何。 Azure 儲存體提供者的存在，只是要為在映像存放區服務提供者導入之前部署的舊叢集提供舊版支援。
 
-此外，檔案系統提供者或 Azure 儲存體提供者均不應作為在多個叢集之間共用映像存放區的方法 - 這會導致叢集組態資料損毀，因為每個叢集都可以將衝突的資料寫入至映像存放區。 若要在多個叢集之間共用已布建的應用程式封裝，請改用[sfpkg][12]檔案，這可以使用下載 URI 上傳到任何外部存放區。
+此外，檔案系統提供者或 Azure 儲存體提供者均不應作為在多個叢集之間共用映像存放區的方法 - 這會導致叢集組態資料損毀，因為每個叢集都可以將衝突的資料寫入至映像存放區。 若要在多個叢集之間共用已佈建的應用程式套件，請改用 [sfpkg][12] 檔案，此檔案可透過下載 URI 上傳至任何外部存放區。
 
 因此，當 ImageStoreConnectionString 可設定時，您只要使用預設設定即可。 透過 Visual Studio 發佈至 Azure 時，參數會自動針對您進行相對應的設定。 針對以程式設計方式部署至 Azure 中裝載的叢集，連接字串一律是 "fabric:ImageStore"。 但是當有疑問時，其值一律能夠藉由 [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest)[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx) 或 [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) 擷取叢集資訊清單來驗證。 內部部署測試與生產叢集也應該一律設定為使用映像存放區服務提供者。
 

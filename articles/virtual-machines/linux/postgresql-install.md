@@ -1,5 +1,5 @@
 ---
-title: 在 Linux VM 上設定于 postgresql
+title: 在 Linux VM 上設置 PostgreSQL
 description: 了解如何在 Azure 中的 Linux 虛擬機器上安裝和設定 PostgreSQL
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75747792"
 ---
-# <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安裝及設定 PostgreSQL
+# <a name="install-and-configure-postgresql-on-azure"></a>安裝和設定 Azure 上的 PostgreSQL
 PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它包含企業用功能，例如完整的 ACID 的相容性、可靠的交易式程序，以及多版本的並行控制。 它也支援標準，例如 ANSI SQL 和 SQL/MED (包括 Oracle、MySQL、MongoDB 和許多其他項目的外部資料包裝函式)。 其高度可擴充性支援超過 12 種程序性語言、GIN 和 GiST 索引、空間資料支援和多個類似 NoSQL 的功能，適用於 JSON 或以索引鍵-值為基礎的應用程式。
 
 在本文中，您將學習如何在執行 Linux 的 Azure 虛擬機器上安裝和設定 PostgreSQL。
@@ -63,7 +63,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果您想要建立可建立的所有專案，包括檔（HTML 和 man 頁面）和其他模組（`contrib`），請改為執行下列命令：
+5. 如果要構建可以構建的所有內容，包括文檔（HTML 和人頁）和其他模組 （），`contrib`請改為運行以下命令：
    
         # gmake install-world
    
@@ -90,7 +90,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
    > 基於安全性理由，PostgreSQL 會使用非根使用者初始化、啟動或關閉資料庫。
    > 
    > 
-4. 輸入下列命令以編輯 bash_profile 檔。 這幾行將會加入至 bash_profile 檔案的結尾：
+4. 輸入下列命令以編輯 bash_profile** 檔。 這幾行將會加入至 bash_profile** 檔案的結尾：
    
         cat >> ~/.bash_profile <<EOF
         export PGPORT=1999
@@ -104,7 +104,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
         alias rm='rm -i'
         alias ll='ls -lh'
         EOF
-5. 執行 bash_profile 檔案：
+5. 執行 bash_profile** 檔案：
    
         $ source .bash_profile
 6. 利用下列命令驗證安裝：
@@ -135,7 +135,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
     # cp linux /etc/init.d/postgresql
 
-修改 /etc/init.d/postgresql 檔案中的兩個變數。 前置詞設為 PostgreSQL 的安裝路徑： **/opt/pgsql**。 PGDATA 設為 PostgreSQL 的資料儲存路徑： **/opt/pgsql_data**。
+修改 /etc/init.d/postgresql 檔案中的兩個變數。 前置詞設為 PostgreSQL 的安裝路徑： **/opt/pgsql**。 PGDATA 設為 PostgreSQL 的資料儲存路徑：**/opt/pgsql_data**。
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -230,7 +230,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新資料表中的資料
-使用下列命令更新資料表中的資料。 在此情況下，Sandy 已確認他們正在參與，所以我們會將 RSVP 從 "N" 變更為 "Y"：
+使用下列命令更新資料表中的資料。 對於這一個，桑迪已經確認他們參加，所以我們將RSVP從"N"更改為"Y"：
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

@@ -1,6 +1,6 @@
 ---
-title: 將維護設定移至另一個 Azure 區域
-description: 瞭解如何將 VM 維護設定移至另一個 Azure 區域
+title: 將維護配置移動到其他 Azure 區域
+description: 瞭解如何將 VM 維護配置移動到其他 Azure 區域
 services: virtual-machines
 author: shants123
 ms.service: virtual-machines
@@ -9,66 +9,66 @@ ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: fe03bead238d3fb7bda3ee685bd5587c3e0dbc58
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304455"
 ---
-# <a name="move-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定移至另一個區域
+# <a name="move-a-maintenance-control-configuration-to-another-region"></a>將維護控制配置移到其他區域
 
-請遵循這篇文章，將維護控制設定移至不同的 Azure 區域。 基於許多原因，您可能會想要移動設定。 例如，若要利用新的區域，可在特定區域中部署可用的功能或服務，以符合內部原則和治理需求，或為了回應容量規劃。
+請按照本文將維護控制配置移動到其他 Azure 區域。 出於多種原因，您可能需要移動配置。 例如，利用新區域、部署特定區域中可用的功能或服務、滿足內部策略和治理要求或回應容量規劃。
 
-維護控制（使用自訂維護設定）可讓您控制如何將平臺更新套用至[Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)和[Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) Vm，以及 Azure 專用主機。 跨區域移動維護控制的案例有好幾種：
+通過自訂維護配置進行維護控制，可以控制平臺更新如何應用於[Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)和[Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 以及 Azure 專用主機。 有幾個跨區域移動維護控制的方案：
 
-- 若要移動維護控制設定，而不是與設定相關聯的資源，請遵循這篇文章中的指示。
-- 若要移動與維護設定相關聯的資源，而不是設定本身，請遵循[這些指示](move-region-maintenance-configuration-resources.md)。
-- 若要移動維護設定和其相關聯的資源，請先依照這篇文章中的指示進行。 然後，遵循[這些指示](move-region-maintenance-configuration-resources.md)。
+- 要移動維護控制配置（而不是與配置關聯的資源），請按照本文中的說明操作。
+- 要移動與維護配置關聯的資源，而不是配置本身，請按照[這些說明操作](move-region-maintenance-configuration-resources.md)。
+- 要移動維護配置及其關聯的資源，請先按照本文中的說明操作。 然後，按照[這些說明](move-region-maintenance-configuration-resources.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始移動維護控制設定之前：
+在開始移動維護控制配置之前：
 
-- 維護設定會與 Azure Vm 或 Azure 專用主機相關聯。 開始之前，請確定 VM/主機資源存在於新的區域中。
+- 維護配置與 Azure VM 或 Azure 專用主機相關聯。 在開始之前，請確保 VM/主機資源存在於新區域中。
 - 識別碼： 
-    - 現有的維護控制設定。
-    - 現有設定目前所在的資源群組。 
-    - 移至新區域之後，將新增設定的資源群組。 
-    - 與您要移動的維護設定相關聯的資源。
-    - 檢查新區域中的資源是否與目前維護設定相關聯。 這些設定在新區域中的名稱可能會與舊的不同，但這不是必要的。
+    - 現有的維護控制配置。
+    - 現有配置當前駐留在其中的資源組。 
+    - 移動到新區域後要向其添加配置的資源組。 
+    - 與要移動的維護配置關聯的資源。
+    - 檢查新區域中的資源與當前維護配置關聯的資源相同。 配置在新區域中可以具有與舊區域相同的名稱，但這不是必需的。
 
 ## <a name="prepare-and-move"></a>準備和移動 
 
-1. 取得每個訂用帳戶中的所有維護設定。 執行 CLI [az 維護 configuration list](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list)命令以進行這種動作，將 $subId 取代為您的訂用帳戶識別碼。
+1. 檢索每個訂閱中的所有維護配置。 運行 CLI [az 維護配置清單](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list)命令以執行此操作，將$subId替換為訂閱 ID。
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
     ```
-2. 檢查訂用帳戶內的設定記錄傳回的資料表清單。 範例如下。 您的清單會包含您的特定環境值。
+2. 查看訂閱中配置記錄的返回表清單。 範例如下。 您的清單將包含特定環境的值。
 
-    **名稱** | **位置** | **資源群組**
+    **名稱** | **位置** | **資源組**
     --- | --- | ---
-    略過維護 | eastus2 | 設定-資源-群組
-    IgniteDemoConfig | eastus2 | 設定-資源-群組
-    defaultMaintenanceConfiguration-eastus | eastus | 測試-設定
+    跳過維護 | eastus2 | 配置資源組
+    點火演示 | eastus2 | 配置資源組
+    預設維護配置 -eastus | eastus | 測試組態
     
 
-3. 儲存您的清單以供參考。 當您移動設定時，它可協助您確認所有專案都已移動。
-4. 做為參考，請將每個設定/資源群組對應至新區域中的新資源群組。
-5. 使用[PowerShell](../virtual-machines/maintenance-control-powershell.md#create-a-maintenance-configuration)或[CLI](../virtual-machines/maintenance-control-cli.md#create-a-maintenance-configuration)，在新的區域中建立新的維護設定。
-6. 使用[PowerShell](../virtual-machines/maintenance-control-powershell.md#assign-the-configuration)或[CLI](../virtual-machines/maintenance-control-cli.md#assign-the-configuration)，將設定與新區域中的資源建立關聯。
+3. 保存清單以供參考。 移動配置時，它可以説明您驗證所有內容是否已移動。
+4. 作為參考，將每個配置/資源組映射到新區域中的新資源組。
+5. 使用[PowerShell](../virtual-machines/maintenance-control-powershell.md#create-a-maintenance-configuration)（或[CLI](../virtual-machines/maintenance-control-cli.md#create-a-maintenance-configuration)） 在新區域創建新的維護配置。
+6. 使用[PowerShell](../virtual-machines/maintenance-control-powershell.md#assign-the-configuration)或[CLI](../virtual-machines/maintenance-control-cli.md#assign-the-configuration)將配置與新區域中的資源相關聯。
 
 
 ## <a name="verify-the-move"></a>驗證移動
 
-移動設定之後，請將新區域中的設定和資源與您準備的資料表清單進行比較。
+移動配置後，將新區域中的配置和資源與您準備的表清單進行比較。
 
 
-## <a name="clean-up-source-resources"></a>清除來源資源
+## <a name="clean-up-source-resources"></a>清理源資源
 
-移動之後，請考慮刪除來源區域、 [PowerShell](../virtual-machines/maintenance-control-powershell.md#remove-a-maintenance-configuration)或[CLI](../virtual-machines/maintenance-control-cli.md#delete-a-maintenance-configuration)中已移動的維護設定。
+移動後，請考慮刪除源區域[PowerShell](../virtual-machines/maintenance-control-powershell.md#remove-a-maintenance-configuration)或[CLI](../virtual-machines/maintenance-control-cli.md#delete-a-maintenance-configuration)中的移動維護配置。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您需要移動與維護設定相關聯的資源，請遵循[這些指示](move-region-maintenance-configuration-resources.md)。 
+如果需要移動與維護配置關聯的資源，請按照[這些說明](move-region-maintenance-configuration-resources.md)操作。 

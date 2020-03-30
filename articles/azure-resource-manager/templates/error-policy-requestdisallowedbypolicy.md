@@ -1,15 +1,15 @@
 ---
 title: RequestDisallowedByPolicy 錯誤
-description: 描述使用 Azure Resource Manager 部署資源時，RequestDisallowedByPolicy 錯誤的原因。
+description: 描述使用 Azure 資源管理器部署資源時請求禁止 By 策略錯誤的原因。
 author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477664"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 資源原則產生的 RequestDisallowedByPolicy 錯誤
@@ -51,7 +51,7 @@ ms.locfileid: "75477664"
 az policy definition show --name regionPolicyAssignment
 ```
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 對於安全性或合規性，您的訂用帳戶管理員可能會指派原則來限制資源的部署方式。 例如，您的訂用帳戶可能有一個原則，會阻止建立公用 IP 位址、網路安全性群組、使用者定義的路由或路由表。 **徵狀**一節中的錯誤訊息會顯示原則的名稱。
 若要解決這個問題，請檢閱資源原則，並決定如何部署符合那些原則的資源。
@@ -59,4 +59,4 @@ az policy definition show --name regionPolicyAssignment
 如需詳細資訊，請參閱下列文章：
 
 - [什麼是 Azure 原則？](../../governance/policy/overview.md)
-- [建立和管理原則來強制執行合規性](../../governance/policy/tutorials/create-and-manage.md)
+- [創建和管理原則以強制實施合規性](../../governance/policy/tutorials/create-and-manage.md)

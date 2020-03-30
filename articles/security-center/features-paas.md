@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心支援的 Azure PaaS 資源功能。
-description: 此頁面會顯示支援的 Azure PaaS 資源的 Azure 資訊安全中心功能可用性。
+title: Azure 安全中心功能，用於支援的 Azure PaaS 資源。
+description: 此頁顯示受支援的 Azure PaaS 資源 Azure 安全中心功能的可用性。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209359"
 ---
-# Azure PaaS 服務的功能涵蓋範圍<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Azure PaaS 服務的功能覆蓋範圍<a name="paas-services"></a>
 
-下表顯示支援的 Azure PaaS 資源的 Azure 資訊安全中心功能可用性。
+下表顯示了受支援的 Azure PaaS 資源 Azure 安全中心功能的可用性。
 
-|Service|建議（免費）|安全性警示（標準）|弱點評估（標準）|
+|服務|建議（免費）|安全警報（標準）|漏洞評估（標準）|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure 自動化帳戶|✔|-|-|
@@ -37,22 +37,22 @@ ms.locfileid: "78209359"
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
 |Azure Data Lake 儲存體|✔|-|-|
-|適用於 MySQL 的 Azure 資料庫 *|✔|✔|-|
-|適用於 PostgreSQL 的 Azure 資料庫 *|✔|✔|-|
-|Azure 事件中樞命名空間|✔|-|-|
+|MySQL® 的 Azure 資料庫*|✔|✔|-|
+|Azure 資料庫用於 PostgreSQL*|✔|✔|-|
+|Azure 事件中心命名空間|✔|-|-|
 |Azure Functions 應用程式|✔|-|-|
 |Azure 金鑰保存庫|✔|✔ *|-|
 |Azure Kubernetes Service|✔|✔|-|
-|Azure 負載平衡器|✔|-|-|
+|Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
 |Azure SQL 資料庫|✔|✔|✔|
 |Azure 服務匯流排命名空間|✔|-|-|
-|Azure Service Fabric 帳戶|✔|-|-|
+|Azure 服務結構帳戶|✔|-|-|
 |Azure 儲存體帳戶|✔|-|-|
 |Azure 串流分析|✔|-|-|
-|Azure 訂閱|✔ * *|✔|-|
-|Azure 虛擬網路</br> （包括子網、Nic 和網路安全性群組）|✔|-|-|
+|Azure 訂閱|✔ **|✔|-|
+|Azure 虛擬網路</br> （包括子網、NIC 和網路安全性群組）|✔|-|-|
 
-\* 預覽版目前支援這些功能。
+\*預覽版當前支援這些功能。
 
-\*\* Azure Active Directory （Azure AD）建議僅適用于標準訂閱。
+\*\*Azure 活動目錄 （Azure AD） 建議僅適用于標準訂閱。

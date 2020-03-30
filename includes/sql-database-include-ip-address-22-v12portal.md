@@ -11,35 +11,35 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174058"
 ---
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
 
-2. 在左側的清單中，選取 [所有服務]  。
+2. 在左側的清單中，選取 [所有服務]****。
 
-3. 捲動並選取 [SQL Server]  。
+3. 捲動並選取 [SQL Server]****。
 
     ![在入口網站中尋找您的 Azure SQL Database 伺服器][b21-FindServerInPortal]
 5. 在篩選文字方塊中開始輸入您的伺服器名稱。 即會顯示您的資料列。
 
 6. 選取伺服器的資料列。 即會顯示您伺服器的刀鋒視窗。
 
-7. 在伺服器刀鋒視窗中，選取 [設定]  。
+7. 在伺服器刀鋒視窗中，選取 [設定]****。
 
-8. 選取 [防火牆]  。
+8. 選取 [防火牆]****。
 
     ![選取 [設定] > [防火牆]][b31-SettingsFirewallNavig]
-9. 選取 [新增用戶端 IP]  。 在第一個文字方塊中替新規則輸入名稱。
+9. 選取 [新增用戶端 IP]****。 在第一個文字方塊中替新規則輸入名稱。
 
 10. 輸入低和高 IP 位址值作為要啟用的範圍。
 
     * 將低值結尾設為 **.0**、高值結尾設為 **.255** 會比較方便。
 
-11. 選取 [ **儲存**]。
+11. 選取 [儲存]****。
 
 <!-- Image references. -->
 

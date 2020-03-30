@@ -1,24 +1,24 @@
 ---
-title: 視圖定義成品參考
-description: 提供 Azure 受控應用程式視圖定義成品的範例。 檔案名為 viewDefinition. json。
+title: 查看定義專案引用
+description: 為 Azure 託管應用程式提供視圖定義專案的示例。 檔案名是 viewDefinition.json。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651198"
 ---
-# <a name="reference-view-definition-artifact"></a>參考：視圖定義成品
+# <a name="reference-view-definition-artifact"></a>參考：查看定義專案
 
-本文是 Azure 受控應用程式中*viewDefinition*的參考。 如需撰寫 views 設定的詳細資訊，請參閱[View definition](concepts-view-definition.md)成品。
+本文是 Azure 託管應用程式中*viewDefinition.json*專案引用。 有關創作視圖配置的詳細資訊，請參閱[查看定義專案](concepts-view-definition.md)。
 
 ## <a name="view-definition"></a>檢視定義
 
-下列 JSON 顯示 Azure 受控應用程式的*viewDefinition json*檔案範例：
+以下 JSON 顯示了 Azure 託管應用程式的*viewDefinition.json*檔示例：
 
 ```json
 {
@@ -87,6 +87,6 @@ ms.locfileid: "75651198"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：使用自訂動作和資源建立受控應用程式](tutorial-create-managed-app-with-custom-provider.md)
-- [參考：使用者介面專案成品](reference-createuidefinition-artifact.md)
-- [參考：部署範本成品](reference-main-template-artifact.md)
+- [教程：使用自訂操作和資源創建託管應用程式](tutorial-create-managed-app-with-custom-provider.md)
+- [參考：使用者介面元素專案](reference-createuidefinition-artifact.md)
+- [參考：部署範本專案](reference-main-template-artifact.md)

@@ -1,37 +1,37 @@
 ---
-title: 在 Azure Red Hat OpenShift 叢集中執行具有特殊許可權的容器 |Microsoft Docs
-description: 執行具有特殊許可權的容器，以監視安全性和合規性。
+title: 在 Azure 紅帽 OpenShift 群集中運行特權容器 |微軟文檔
+description: 運行特權容器以監視安全性和合規性。
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
-keywords: aro、openshift、aquasec、twistlock、red hat
+keywords: aro， 開移， 水賽， 扭鎖， 紅帽子
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271368"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 叢集中執行具特殊權限的容器
 
-您無法在 Azure Red Hat OpenShift 叢集上執行任何特殊許可權容器。
-允許在 ARO 叢集上執行兩個安全性監視和合規性解決方案。
-本檔說明安全性產品廠商的一般 OpenShift 部署檔差異。
+不能在 Azure 紅帽 OpenShift 群集上運行任意特權容器。
+允許在 ARO 群集上運行兩個安全監視和合規性解決方案。
+本文檔介紹與安全產品供應商的通用 OpenShift 部署文檔的差異。
 
 
-請先閱讀這些指示，再遵循廠商的指示。
-下列產品特定步驟中的章節標題會直接參考廠商檔中的章節標題。
+在按照供應商的說明操作之前，請通讀這些說明。
+以下特定于產品步驟中的節標題直接引用供應商文檔中的節標題。
 
 ## <a name="before-you-begin"></a>開始之前
 
-大部分安全性產品的檔假設您擁有叢集系統管理員許可權。
-客戶管理員在 Azure Red Hat OpenShift 中沒有擁有權限。 修改全叢集資源所需的許可權有限。
+大多數安全產品的文檔假定您具有群集管理許可權。
+客戶管理員在 Azure 紅帽 OpenShift 中沒有擁有權限。 修改群集範圍資源所需的許可權是有限的。
 
-首先，藉由執行 `oc get scc`，確保使用者以客戶系統管理員的身分登入叢集。 屬於 customer admin 群組成員的所有使用者都有權在叢集上查看安全性內容條件約束（SCCs）。
+首先，通過運行`oc get scc`，確保使用者以客戶管理員身份登錄到群集。 作為客戶管理組成員的所有使用者都有權查看群集上的安全上下文約束 （SCC）。
 
-接下來，請確定 `3.11.154``oc` 二進位版本。
+接下來，確保`oc`二進位版本為`3.11.154`。
 ```
 oc version
 oc v3.11.154
@@ -43,40 +43,40 @@ openshift v3.11.154
 kubernetes v1.11.0+d4cacc0
 ```
 
-## <a name="product-specific-steps-for-aqua-security"></a>淺綠色安全性的產品特定步驟
-您可以在青色[安全性部署檔](https://docs.aquasec.com/docs/openshift-red-hat)中找到即將修改的基本指示。 這裡的步驟將與綠色部署檔搭配執行。
+## <a name="product-specific-steps-for-aqua-security"></a>針對水安全的產品特定步驟
+將要修改的基本說明可以在[Aqua 安全部署文檔中](https://docs.aquasec.com/docs/openshift-red-hat)找到。 此處的步驟將與 Aqua 部署文檔一起運行。
 
-第一個步驟是標注將更新的必要 SCCs。 這些批註會防止叢集的同步處理 Pod 還原這些 SSCs 的任何變更。
+第一步是對要更新所需的 SCC 進行批號。 這些注釋阻止群集的同步 Pod 還原對這些 SSC 的任何更改。
 
 ```
 oc annotate scc hostaccess openshift.io/reconcile-protect=true
 oc annotate scc privileged openshift.io/reconcile-protect=true
 ```
 
-### <a name="step-1-prepare-prerequisites"></a>步驟1：準備必要條件
-請記得以 ARO 客戶系統管理員的身分登入叢集，而不是叢集系統管理員角色。
+### <a name="step-1-prepare-prerequisites"></a>第 1 步：準備先決條件
+請記住以 ARO 客戶管理員而不是群集管理員角色登錄到群集。
 
-建立專案和服務帳戶。
+創建專案和服務帳戶。
 ```
 oc new-project aqua-security
 oc create serviceaccount aqua-account -n aqua-security
 ```
 
-請使用下列命令，將客戶-系統管理員-叢集角色指派給青色帳戶，而不是指派叢集讀取器角色。
+使用以下命令將客戶管理員群集角色指派給 Aqua 帳戶，而不是分配群集讀取器角色。
 ```
 oc adm policy add-cluster-role-to-user customer-admin-cluster system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user privileged system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua-security:aqua-account
 ```
 
-繼續遵循步驟1中的其餘指示。  這些指示說明如何設定淺綠色登錄的密碼。
+繼續按照步驟 1 中的剩餘說明操作。  這些說明描述了為 Aqua 註冊表設置機密。
 
-### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>步驟2：部署淺綠色伺服器、資料庫和閘道
-請遵循綠色檔中提供的步驟來安裝淺 yaml。
+### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>第 2 步：部署水族伺服器、資料庫和閘道
+按照 Aqua 文檔中提供的步驟安裝水主控台.
 
-修改提供的 `aqua-console.yaml`。  移除標示為、`kind: ClusterRole` 和 `kind: ClusterRoleBinding`的前兩個物件。  這些資源將不會建立，因為客戶管理員目前沒有許可權可修改 `ClusterRole` 和 `ClusterRoleBinding` 物件。
+修改提供的`aqua-console.yaml`。  刪除標記為 的前兩個物件，`kind: ClusterRole`和`kind: ClusterRoleBinding`。  不會創建這些資源，因為客戶管理員此時沒有修改`ClusterRole`和`ClusterRoleBinding`物件的許可權。
 
-第二個修改將會指向 `aqua-console.yaml`的 `kind: Route` 部分。 取代 `aqua-console.yaml` 檔案中 `kind: Route` 物件的下列 yaml。
+第二個修改將到`kind: Route`的`aqua-console.yaml`部分。 替換`kind: Route``aqua-console.yaml`檔中物件的以下 yaml。
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -98,52 +98,52 @@ spec:
   wildcardPolicy: None
 ```
 
-依照其餘指示進行。
+按照其餘說明操作。
 
-### <a name="step-3-login-to-the-aqua-server"></a>步驟3：登入淺綠色伺服器
-這一節不會以任何方式修改。  請遵循淺綠色檔。
+### <a name="step-3-login-to-the-aqua-server"></a>第 3 步：登錄到水族伺服器
+此部分不會以任何方式修改。  請遵循 Aqua 文檔。
 
-使用下列命令來取得淺綠色的主控台位址。
+使用以下命令獲取 Aqua 主控台位址。
 ```
 oc get route aqua-web -n aqua-security
 ```
 
-### <a name="step-4-deploy-aqua-enforcers"></a>步驟4：部署淺青色 Enforcers
-部署 enforcers 時，請設定下欄欄位：
+### <a name="step-4-deploy-aqua-enforcers"></a>第 4 步：部署水上強制器
+部署執行者時設置以下欄位：
 
 | 欄位          | 值         |
 | -------------- | ------------- |
 | 協調器   | OpenShift     |
-| ServiceAccount | 青色-帳戶  |
-| 隨附此逐步解說的專案        | 淺綠色-安全性 |
+| ServiceAccount | 水帳戶  |
+| 隨附此逐步解說的專案        | 水上安全 |
 
-## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的產品特定步驟
+## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>棱鏡雲/Twistlock 的產品特定步驟
 
-您可以在[Prisma 雲端部署檔](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)中找到我們要修改的基本指示。
+我們將修改的基本說明可在[Prisma 雲部署文檔中](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)找到
 
-請先依照 < Install Prisma Cloud 》和 < 下載 Prisma 雲端軟體一節中所述的方式，安裝 `twistcli` 工具。
+首先安裝"安裝`twistcli`棱鏡雲"和"下載棱鏡雲軟體"部分中所述的工具。
 
-建立新的 OpenShift 專案
+創建新的 OpenShift 專案
 ```
 oc new-project twistlock
 ```
 
-略過選擇性區段「將 Prisma 的雲端映射推送至私人登錄」。 它無法在 Azure Red Hat Openshift 上使用。 請改用線上登錄。
+跳過可選部分"將棱鏡雲映射推送到專用註冊表"。 它不會在 Azure 紅帽開放移位上工作。 改用連線註冊表。
 
-您可以遵循官方檔，同時套用下面所述的更正。
-從 [安裝主控台] 區段開始。
+您可以按照官方文檔操作，同時應用下面描述的更正。
+從"安裝主控台"部分開始。
 
 ### <a name="install-console"></a>安裝主控台
 
-在步驟 2 `oc create -f twistlock_console.yaml` 期間，您會在建立命名空間時收到錯誤。
-您可以放心地忽略它，先前已使用 `oc new-project` 命令建立命名空間。
+在`oc create -f twistlock_console.yaml`步驟 2 中，創建命名空間時將收到錯誤。
+您可以安全地忽略它，命名空間以前已使用 命令`oc new-project`創建。
 
-針對儲存體類型使用 `azure-disk`。
+用於`azure-disk`存儲類型。
 
-### <a name="create-an-external-route-to-console"></a>建立主控台的外部路由
+### <a name="create-an-external-route-to-console"></a>創建到主控台的外部路由
 
-如果您偏好使用 oc 命令，可以遵循檔或下列指示。
-將下列路由定義複製到您電腦上 twistlock_route 名為 yaml 的檔案中。
+如果您更喜歡 oc 命令，您可以按照文檔或下面的說明進行操作。
+將以下路由定義複製到電腦上的名為 twistlock_route.yaml 的檔
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -164,20 +164,20 @@ spec:
     weight: 100
   wildcardPolicy: None
 ```
-然後執行：
+然後運行：
 ```
 oc create -f twistlock_route.yaml
 ```
 
-您可以使用下列命令取得指派給 Twistlock 主控台的 URL： `oc get route twistlock-console -n twistlock`
+您可以使用以下命令獲取分配給 Twistlock 主控台的 URL：`oc get route twistlock-console -n twistlock`
 
-### <a name="configure-console"></a>設定主控台
+### <a name="configure-console"></a>配置主控台
 
-遵循 Twistlock 檔。
+請遵循 Twistlock 文檔。
 
-### <a name="install-defender"></a>安裝 Defender
+### <a name="install-defender"></a>安裝防禦器
 
-在步驟 2 `oc create -f defender.yaml` 期間，您會在建立叢集角色和叢集角色系結時收到錯誤。
-您可以忽略它們。
+在`oc create -f defender.yaml`步驟 2 中，在創建群集角色和群集角色綁定時，您將收到錯誤。
+因此您可以忽略。
 
-防禦者只會部署在計算節點上。 您不需要使用節點選取器來限制它們。
+防禦者將只部署在計算節點上。 您不必使用節點選擇器來限制它們。

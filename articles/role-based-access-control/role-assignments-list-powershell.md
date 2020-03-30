@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure RBAC 和 Azure PowerShell 列出角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure PowerShell，判斷使用者、群組、服務主體或受控識別可以存取哪些資源。
+description: 瞭解如何確定使用者、組、服務主體或託管標識可以使用基於 Azure 角色的存取控制 （RBAC） 和 Azure PowerShell 訪問哪些資源。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,28 +15,28 @@ ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931142"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 列出角色指派
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文說明如何使用 Azure PowerShell 列出角色指派。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]本文介紹如何使用 Azure PowerShell 列出角色指派。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 如果您的組織具有外包管理功能給使用[Azure 委派資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服務提供者，該服務提供者所授權的角色指派將不會顯示在這裡。
+> 如果您的組織將管理功能外包給使用[Azure 委派資源的](../lighthouse/concepts/azure-delegated-resource-management.md)服務提供者，則該服務提供者授權的角色指派將不會在此處顯示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](/azure/cloud-shell/overview)
+- [Azure 雲外殼](/azure/cloud-shell/overview)或[Azure PowerShell](/powershell/azure/install-az-ps)中的 PowerShell
 
-## <a name="list-role-assignments-for-the-current-subscription"></a>列出目前訂用帳戶的角色指派
+## <a name="list-role-assignments-for-the-current-subscription"></a>列出當前訂閱的角色指派
 
-若要取得目前訂用帳戶中所有角色指派的清單（包括從根和管理群組繼承的角色指派），最簡單的方式是使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment) ，而不需要任何參數。
+獲取當前訂閱中所有角色指派的清單（包括來自根組和管理組的繼承角色指派）的最簡單方法是使用沒有任何參數的[Get-AzRole 分配](/powershell/module/az.resources/get-azroleassignment)。
 
 ```azurepowershell
 Get-AzRoleAssignment
@@ -70,7 +70,7 @@ CanDelegate        : False
 
 ## <a name="list-role-assignments-for-a-subscription"></a>列出訂用帳戶的角色指派
 
-若要列出訂用帳戶範圍中的所有角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)。 若要取得訂用帳戶識別碼，您可以在 Azure 入口網站的 [**訂閱**] 分頁上找到它，或者您可以使用[get-azsubscription](/powershell/module/Az.Accounts/Get-AzSubscription)。
+要在訂閱範圍內列出所有角色指派，請使用[獲取-AzRole 分配](/powershell/module/az.resources/get-azroleassignment)。 要獲取訂閱 ID，可以在 Azure 門戶中的 **"訂閱"** 邊欄選項卡上找到它，也可以使用[獲取訂閱](/powershell/module/Az.Accounts/Get-AzSubscription)。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -108,7 +108,7 @@ Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | F
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>列出資源群組的角色指派
 
-若要列出資源群組範圍中的所有角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)。
+要列出資源組作用域中的所有角色指派，請使用[獲取-AzRole 分配](/powershell/module/az.resources/get-azroleassignment)。
 
 ```azurepowershell
 Get-AzRoleAssignment -ResourceGroupName <resource_group_name>
@@ -132,7 +132,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 
 ## <a name="list-role-assignments-for-a-management-group"></a>列出管理群組的角色指派
 
-若要列出管理群組範圍的所有角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)。 若要取得管理群組識別碼，您可以在 **管理群組**] 分頁的 [Azure 入口網站中找到，也可以使用[AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)。
+要列出管理組作用域中的所有角色指派，請使用[獲取-AzRole 分配](/powershell/module/az.resources/get-azroleassignment)。 要獲取管理組 ID，可以在 Azure 門戶中的 **"管理組**"邊欄選項卡上找到它，也可以使用[Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -150,17 +150,17 @@ PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGr
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="list-role-assignments-for-a-managed-identity"></a>列出受控識別的角色指派
+## <a name="list-role-assignments-for-a-managed-identity"></a>列出託管標識的角色指派
 
-1. 取得系統指派或使用者指派受控識別的物件識別碼。 
+1. 獲取系統分配或使用者分配的託管標識的物件識別碼。 
 
-    若要取得使用者指派受控識別的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。
+    要獲取使用者分配的託管標識的物件識別碼，可以使用[Get-AzADService 委託 。](/powershell/module/az.resources/get-azadserviceprincipal)
 
     ```azurepowershell
     Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
     ```
 
-1. 若要列出角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)。
+1. 要列出角色指派，請使用[獲取-AzRole 分配](/powershell/module/az.resources/get-azroleassignment)。
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId <objectid>
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 Azure PowerShell 新增或移除角色指派](role-assignments-powershell.md)
+- [使用 Azure RBAC 和 Azure PowerShell 添加或刪除角色指派](role-assignments-powershell.md)

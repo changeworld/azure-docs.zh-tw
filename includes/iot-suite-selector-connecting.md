@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174415"
 ---
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "67174415"
 * 回應從解決方案中的**裝置**頁面觸發的動作。
 * 回應從解決方案中的**裝置**頁面傳送的設定變更。
 
-若要完成此教學課程，您需要一個有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 < [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+若要完成此教學課程，您需要一個有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="before-you-start"></a>開始之前
 
@@ -47,7 +47,7 @@ ms.locfileid: "67174415"
 
 您在本教學課程中建立的 **Chiller** 裝置會將資料傳送給[遠端監視](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)解決方案加速器的執行個體。 如果您尚未在您的 Azure 帳戶中佈建遠端監視解決方案加速器，請參閱[部署遠端監視解決方案加速器](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
 
-當遠端監視解決方案的部署程序完成之後，請按一下 [啟動]  ，以在瀏覽器中開啟解決方案儀表板。
+遠端監視解決方案的部署過程完成後，按一下 **"啟動"** 以在瀏覽器中打開解決方案儀表板。
 
 ![解決方案儀表板](media/iot-suite-selector-connecting/dashboard.png)
 
@@ -58,17 +58,17 @@ ms.locfileid: "67174415"
 
 對於連線到解決方案加速器的裝置，該裝置必須使用有效的認證向 IoT 中樞識別自己。 當您將裝置新增至解決方案時，會有機會儲存包含這些認證的裝置連接字串。 稍後在本教學課程中，您會將裝置連接字串包含在您的用戶端應用程式中。
 
-若要新增至遠端監視解決方案的裝置，請完成下列步驟在**Device Explorer**方案中的頁面：
+要將設備添加到遠端監視解決方案，請在解決方案中的 **"設備資源管理器"** 頁上完成以下步驟：
 
-1. 選擇 **+ 新增裝置**，然後選擇**實際**作為**裝置類型**:
+1. 選擇 **= 新設備**，然後選擇 **"真實****"作為裝置類型**：
 
     ![新增真實裝置](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. 輸入 **Physical-chiller** 作為裝置識別碼。 選擇 [對稱金鑰]  和 [自動產生金鑰]  選項：
+1. 輸入 **Physical-chiller** 作為裝置識別碼。 選擇 [對稱金鑰]**** 和 [自動產生金鑰]**** 選項：
 
     ![選擇裝置選項](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. 選擇 [套用]  。 然後記下**裝置識別碼**、**主要金鑰**和**連接字串主要金鑰**值：
+1. 選擇 [套用]****。 然後記下**裝置識別碼**、**主要金鑰**和**連接字串主要金鑰**值：
 
     ![擷取認證](media/iot-suite-selector-connecting/credentials.png)
 

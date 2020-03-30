@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174424"
 ---
-以下是支援的作業系統清單，這些系統適用於連線至您裝置的用戶端或主機。 內部測試這些作業系統版本。
+以下是支援的作業系統清單，這些系統適用於連線至您裝置的用戶端或主機。 這些作業系統版本在內部進行了測試。
 
 | **作業系統/平台** | **版本** |
 | --- | --- |

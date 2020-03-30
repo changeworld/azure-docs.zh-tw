@@ -1,6 +1,6 @@
 ---
-title: 如何將 blob 新增至物件-Azure 數位 Twins |Microsoft Docs
-description: 瞭解如何在 Azure 數位 Twins 中將 blob 新增至使用者、裝置和空間。
+title: 如何向物件添加 Blob - Azure 數位孿生 |微軟文檔
+description: 瞭解如何向 Azure 數位孿生中的使用者、設備和空間添加 blob。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75929679"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>在 Azure Digital Twins 中將 Blob 新增到物件
@@ -36,7 +36,7 @@ Azure Digital Twins 支援將 Blob 連結到裝置、空間和使用者。 Blob 
 
 四個主要 JSON 結構描述是：
 
-[![JSON 架構](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
+[![JSON 結構描述](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 JSON blob 中繼資料符合下列模型：
 
@@ -51,18 +51,18 @@ JSON blob 中繼資料符合下列模型：
   }
 ```
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | --- | --- | --- |
-| **parentId** | String | 與 Blob 相關聯的父實體 (空間、裝置或使用者) |
-| **name** |String | Blob 的人類易記名稱 |
-| **type** | String | Blob 的類型 - 不能使用 *type* 與 *typeId*  |
-| **typeId** | 整數 | Blob 類型識別碼 - 不能使用 *type* 與 *typeId* |
+| **父 Id** | String | 與 Blob 相關聯的父實體 (空間、裝置或使用者) |
+| **名稱** |String | Blob 的人類易記名稱 |
+| **型別** | String | Blob 的類型 - 不能使用 *type* 與 *typeId*  |
+| **typeId** | 整數  | Blob 類型識別碼 - 不能使用 *type* 與 *typeId* |
 | **subtype** | String | Blob 子類型 - 不能使用 *subtype* 與 *subtypeId* |
-| **subtypeId** | 整數 | Blob 的子類型識別碼 - 不能使用 *subtype* 與 *subtypeId* |
-| **description** | String | 自訂的 Blob 描述 |
+| **subtypeId** | 整數  | Blob 的子類型識別碼 - 不能使用 *subtype* 與 *subtypeId* |
+| **描述** | String | 自訂的 Blob 描述 |
 | **sharing** | String | 是否可以共用 blob - enum [`None`, `Tree`, `Global`] |
 
-Blob 中繼資料一律會當做**內容類型**`application/json` 或 `.json` 檔案的第一個區塊提供。 檔案資料是在第二個區塊中提供的，可以是任何支援的 MIME 類型。
+一律提供 Blob 中繼資料作為 **Content-Type 為 ** `application/json` 的第一個區塊，或作為 `.json` 檔案。 檔案資料是在第二個區塊中提供的，可以是任何支援的 MIME 類型。
 
 Swagger 文件會完整詳細說明這些模型結構描述。
 
@@ -106,22 +106,22 @@ Swagger 文件會完整詳細說明這些模型結構描述。
 }
 ```
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 | --- | --- | --- |
 | **id** | String | Blob 的專屬識別碼 |
-| **name** |String | Blob 的人類易記名稱 |
-| **parentId** | String | 與 Blob 相關聯的父實體 (空間、裝置或使用者) |
-| **type** | String | Blob 的類型 - 不能使用 *type* 與 *typeId*  |
-| **typeId** | 整數 | Blob 類型識別碼 - 不能使用 *type* 與 *typeId* |
+| **名稱** |String | Blob 的人類易記名稱 |
+| **父 Id** | String | 與 Blob 相關聯的父實體 (空間、裝置或使用者) |
+| **型別** | String | Blob 的類型 - 不能使用 *type* 與 *typeId*  |
+| **typeId** | 整數  | Blob 類型識別碼 - 不能使用 *type* 與 *typeId* |
 | **subtype** | String | Blob 子類型 - 不能使用 *subtype* 與 *subtypeId* |
-| **subtypeId** | 整數 | Blob 的子類型識別碼 - 不能使用 *subtype* 與 *subtypeId* |
+| **subtypeId** | 整數  | Blob 的子類型識別碼 - 不能使用 *subtype* 與 *subtypeId* |
 | **sharing** | String | 是否可以共用 blob - enum [`None`, `Tree`, `Global`] |
-| **description** | String | 自訂的 Blob 描述 |
+| **描述** | String | 自訂的 Blob 描述 |
 | **contentInfos** | Array | 指定非結構化的中繼資料資訊，包括版本 |
-| **fullName** | String | Blob 的完整名稱 |
+| **全名** | String | Blob 的完整名稱 |
 | **spacePaths** | String | 空間路徑 |
 
-Blob 中繼資料一律會當做**內容類型**`application/json` 或 `.json` 檔案的第一個區塊提供。 檔案資料是在第二個區塊中提供的，可以是任何支援的 MIME 類型。
+一律提供 Blob 中繼資料作為 **Content-Type 為 ** `application/json` 的第一個區塊，或作為 `.json` 檔案。 檔案資料是在第二個區塊中提供的，可以是任何支援的 MIME 類型。
 
 ### <a name="blob-multipart-request-examples"></a>Blob 多部分要求範例
 
@@ -196,9 +196,9 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | 要與 Blob 產生關聯的空間其識別碼 |
 | PATH_TO_FILE | 文字檔案的路徑 |
 
-[![捲曲範例](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
+[![cURL 示例](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
-成功的 POST 會傳回新 blob 的識別碼。
+成功的開空而回新 Blob 的 ID。
 
 ## <a name="api-endpoints"></a>API 端點
 
@@ -208,7 +208,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 
 您可以將 blob 連結到裝置。 下圖顯示管理 API 的 Swagger 參考文件。 其中指定裝置相關 API 端點以供 Blob 取用，以及任何要傳入的必要路徑參數。
 
-[![裝置 blob](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
+[![裝置 Blob](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 例如，若要更新或建立 Blob 並將 Blob 連結到裝置，請發出已驗證的 HTTP PATCH 要求至：
 
@@ -226,7 +226,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 您也可以江 Blob 連結道空間。 下圖列出負責處理 Blob 的所有空間 API 端點。 也會列出要傳入這些端點的任何路徑參數。
 
-[![空間 blob](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
+[![空間 Blob](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 例如，若要傳回連結到空間的 Blob，請發出已驗證的 HTTP GET 要求至：
 
@@ -242,11 +242,11 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 相同端點的 PATCH 要求會更新中繼資料描述，並建立 Blob 的版本。 HTTP 要求是透過 PATCH 方法搭配任何必要的中繼與多部分表單資料來發出。
 
-### <a name="users"></a>使用者人數
+### <a name="users"></a>使用者
 
 您可以將 Blob 連結到使用者模型 (例如，與個人檔案的圖片建立關聯)。 下圖顯示相關使用者 API 端點和任何必要的路徑參數，例如 `id`：
 
-[![使用者 blob](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
+[![使用者 Blob](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 例如，若要擷取連結至使用者的 Blob，請發出已驗證的 HTTP GET 要求，並搭配任何必要的表單資料：
 
@@ -278,9 +278,9 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
      * `multipart/mixed`
      * `multipart/form-data`
 
-  此外，請確認每個*多部分區塊*都有適當的對應**內容類型**。
+  此外，驗證每個*多部分塊*是否具有相應的**內容類型**。
 
-* 當您將多個 blob 指派給[空間智慧圖形](concepts-objectmodel-spatialgraph.md)中的相同資源時，會發生第二個常見的錯誤：
+* 當在[空間智慧圖](concepts-objectmodel-spatialgraph.md)中將多個 Blob 分配給同一資源時，會出現第二個常見錯誤：
 
   ```JSON
   {
@@ -292,11 +292,11 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
   ```
 
   > [!NOTE]
-  > **Message**屬性會根據資源而有所不同。 
+  > **消息**屬性將因資源而異。 
 
-  空間圖形中的每個資源都只能附加一個 blob （屬於每種類型）。 
+  空間圖中的每個資源只能附加一個 blob（每種 blob）。 
 
-  若要解決此錯誤，請使用適當的 API HTTP 修補程式作業來更新現有的 blob。 這麼做會將現有的 blob 資料取代成所需的資料。
+  要解決此錯誤，請使用相應的 API HTTP PATCH 操作更新現有 Blob。 這樣做將替換現有 blob 資料與所需的資料。
 
 ## <a name="next-steps"></a>後續步驟
 

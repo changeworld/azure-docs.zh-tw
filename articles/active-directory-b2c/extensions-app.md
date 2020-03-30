@@ -11,15 +11,15 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 547b625996a65999c32c1b73699e3b408be01de3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188591"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：擴充功能應用程式
 
-建立 Azure AD B2C 目錄時，會自動在新的目錄內建立名為 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 的應用程式。 此應用程式稱為 **b2c-extensions-app**，會顯示在應用程式註冊中。 它是由 Azure AD B2C 服務用來儲存使用者和自訂屬性的相關資訊。 如果將應用程式刪除，Azure AD B2C 就無法正確運作，並會影響您的生產環境。
+建立 Azure AD B2C 目錄時，會自動在新的目錄內建立名為 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 的應用程式。 此應用程式稱為 **b2c-extensions-app**，會顯示在應用程式註冊** 中。 它是由 Azure AD B2C 服務用來儲存使用者和自訂屬性的相關資訊。 如果將應用程式刪除，Azure AD B2C 就無法正確運作，並會影響您的生產環境。
 
 > [!IMPORTANT]
 > 除非您打算立即刪除租用戶，否則請勿刪除 b2c-extensions-app。 若將應用程式刪除超過 30 天，使用者資訊就會永久遺失。
@@ -28,15 +28,15 @@ ms.locfileid: "78188591"
 
 若要驗證 b2c-extensions-app 是否存在：
 
-1. 在您的 Azure AD B2C 租用戶中，按一下左側導覽功能表中的 [所有服務]。
-1. 搜尋並開啟 [應用程式註冊]。
+1. 在您的 Azure AD B2C 租用戶中，按一下左側導覽功能表中的 [所有服務]****。
+1. 搜尋並開啟 [應用程式註冊]****。
 1. 尋找以 **b2c-extensions-app** 開頭的應用程式
 
 ## <a name="recover-the-extensions-app"></a>復原擴充功能應用程式
 
 如果您不小心刪除 b2c-extensions-app，會有 30 天可進行復原。 您可以使用圖形 API 來還原應用程式：
 
-1. 瀏覽至 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。
+1. 流覽到[https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。
 1. 針對您需要還原已刪除應用程式的 Azure AD B2C 目錄，以全域系統管理員身分登入站台。 此全域系統管理員必須有類似下列的電子郵件地址：`username@{yourTenant}.onmicrosoft.com`。
 1. 針對 URL `https://graph.windows.net/myorganization/deletedApplications` 發出 HTTP GET，其中 api-version=1.6。 此作業會列出過去 30 天內所有已刪除的應用程式。
 1. 在名稱開頭為 'b2c-extension-app' 的清單中尋找應用程式，並複製其 `objectid` 屬性值。

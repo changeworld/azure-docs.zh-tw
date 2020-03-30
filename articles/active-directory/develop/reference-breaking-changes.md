@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185810"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050178"
 ---
 # <a name="whats-new-for-authentication"></a>驗證有什麼新功能？ 
 
@@ -40,96 +40,118 @@ ms.locfileid: "77185810"
 
 ## <a name="upcoming-changes"></a>即將推出的變更
 
-未排定在這個時候推出任何變更。  如需或即將進入生產階段的變更，請參閱下方。 
+未排定在這個時候推出任何變更。  有關正在生產或即將投產的更改，請參閱下文。 
+
+## <a name="march-2020"></a>2020 年 3 月 
+
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>使用者密碼將限制為 256 個字元。
+
+**生效日期**：2020年3月13日
+
+**受影響的端點**：v1.0 和 v2.0
+
+**協定影響**：所有使用者流。 
+
+從 2020 年 3 月 13 日起，密碼長度超過 256 個字元登錄到 Azure AD 的使用者（相對於 ADFS 等聯合 IDP）將無法登錄，並被要求重置其密碼。  管理員可能會收到説明重置使用者密碼的請求。 
+
+登錄日誌中的錯誤將是 AADSTS 50052：無效密碼超過最大值長度
+
+消息：`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+補救：
+
+使用者無法登錄，因為他們的密碼超過允許的最大長度。 他們應該聯繫他們的管理員重置密碼。 如果為其租戶啟用了 SSPR，則可以按照"忘記密碼"連結重置密碼。
+
+
 
 ## <a name="february-2020"></a>2020 年 2 月 
 
-### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>將會從登入端點將空的片段附加至每個 HTTP 重新導向。 
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>空片段將追加到從登錄終結點重定向的每個 HTTP。 
 
 **生效日期**：2020年2月8日
 
-**受影響的端點**：1.0 和 2.0 版
+**受影響的端點**：v1.0 和 v2.0
 
-**受影響的通訊協定**：使用 response_type = 查詢的 OAuth 和 OIDC 流程-這涵蓋了在某些情況下的[授權碼流程](v2-oauth2-auth-code-flow.md)，以及[隱含流程](v2-oauth2-implicit-grant-flow.md)。 
+**受影響的協定**：使用response_type_查詢的 OAuth 和 OIDC 流 - 這在某些情況下涵蓋了[授權代碼流](v2-oauth2-auth-code-flow.md)和[隱式流](v2-oauth2-implicit-grant-flow.md)。 
 
-當驗證回應透過 HTTP 重新導向從 login.microsoftonline.com 傳送至應用程式時，服務會將空的片段附加至回復 URL。  這可確保瀏覽器抹除驗證要求中任何現有的片段，藉此防止重新導向攻擊的類別。  沒有任何應用程式應該依賴此行為。 
+當身份驗證回應通過 HTTP 重定向從 login.microsoftonline.com 發送到應用程式時，服務將附加一個空片段到答覆 URL。  這通過確保瀏覽器擦除身份驗證請求中的任何現有片段來防止一類重定向攻擊。  任何應用都不應依賴于此行為。 
 
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>將會更嚴格地強制執行張貼表單的語義-空格，而且將會忽略引號
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>POST 表單語義將更嚴格地強制 - 空格和引號將被忽略
 
 **生效日期**：2019年9月2日
 
-**受影響的端點**：1.0 和 2.0 版
+**受影響的端點**：v1.0 和 v2.0
 
-**受影響的通訊協定**：使用隨處張貼（[用戶端認證](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授權碼兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、 [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、 [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)，以及重新整理[權杖兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)）
+**協定影響**：使用 POST 的任何地方（[用戶端憑據](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授權代碼兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)[、ROPC、OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)和[刷新權杖兌換](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)） [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
 
-從9/2 開始，使用 POST 方法的驗證要求將會使用更嚴格的 HTTP 標準進行驗證。  具體而言，不會再從要求表單值中移除空格和雙引號（"）。 這些變更不應該中斷任何現有的用戶端，而且會確保每次都能可靠地處理傳送至 Azure AD 的要求。 在未來（請參閱上文）中，我們打算另外拒絕重複的參數，並忽略要求內的 BOM。 
+從 9/2 開始，將使用 POST 方法的身份驗證請求將使用更嚴格的 HTTP 標準進行驗證。  具體而言，空格和雙引號 （"） 將不再從請求表單值中刪除。 這些更改不會破壞任何現有用戶端，並且將確保每次可靠地處理髮送到 Azure AD 的請求。 將來（見上文）我們計畫另外拒絕重複的參數，並在請求中忽略 BOM。 
 
 範例：
 
-目前，`?e=    "f"&g=h` 的剖析方式與 `?e=f&g=h` 相同，因此 `e` == `f`。  透過這項變更，現在會進行剖析，讓 `e` == `    "f"`-這不太可能是有效的引數，而且要求現在會失敗。 
+今天，`?e=    "f"&g=h`被`?e=f&g=h`解析為 - 所以`e` == `f`.  通過此更改，現在將對其進行分析，以便`e` == `    "f"`- 這不太可能是一個有效的參數，並且請求現在將失敗。 
 
 
 ## <a name="july-2019"></a>2019 年 7 月
 
-### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>只有在資源租使用者中有用戶端應用程式時，才會發出單一租使用者應用程式的應用程式權杖
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>僅當資源租戶中存在用戶端應用時，才會頒發適用于單租戶應用程式的僅限應用權杖
 
 **生效日期**：2019年7月26日
 
-**受影響的端點**：[1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)和 [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) 兩者
+**受影響的終結點**： [v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)和[v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
-**受影響的通訊協定**：[用戶端認證（僅限應用程式權杖）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**協定受影響的**：[用戶端憑據（僅限應用權杖）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-安全性變更會在7月26日生效，變更應用程式專用權杖（透過用戶端認證授與）的發行方式。 先前，允許應用程式取得權杖以呼叫其他任何應用程式，而不論租使用者中的存在與否，或同意該應用程式的角色。  此行為已更新，因此，如果資源（有時稱為 Web Api）設為單一租使用者（預設值），則用戶端應用程式必須存在於資源租使用者內。  請注意，用戶端和 API 之間的現有同意仍不是必要的，而且應用程式仍應執行自己的授權檢查，以確保有 `roles` 宣告，並包含 API 的預期值。
+安全更改于 7 月 26 日生效，該更改更改更改了僅應用權杖（通過用戶端憑據授予）的頒發方式。 以前，應用程式允許權杖調用任何其他應用，而不管該應用程式同意在租戶中存在什麼角色。  此行為已更新，以便對於設置為單租戶的資源（有時稱為 Web API）（預設值），用戶端應用程式必須存在於資源租戶中。  請注意，用戶端和 API 之間的現有同意仍不需要，應用仍應執行自己的授權檢查，以確保`roles`聲明存在並包含 API 的預期值。
 
-此案例的錯誤訊息目前指出： 
+此方案的錯誤訊息當前顯示： 
 
 `The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
 
-若要解決此問題，請使用系統管理員同意體驗，在您的租使用者中建立用戶端應用程式服務主體，或手動建立。  此需求可確保租使用者已提供應用程式許可權，以在租使用者內操作。  
+若要解決此問題，請使用管理同意體驗在租戶中創建用戶端應用程式服務主體，或手動創建它。  此要求可確保租戶已授予應用程式在租戶內操作的許可權。  
 
 #### <a name="example-request"></a>範例要求
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` 在此範例中，資源租使用者（授權單位）為 contoso.com，資源應用程式是 Contoso 租使用者稱為 `gateway.contoso.com/api` 的單一租使用者應用程式，而且用戶端應用程式會 `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`。  如果用戶端應用程式在 Contoso.com 內具有服務主體，則此要求可以繼續。  不過，如果沒有，則要求將會失敗，並出現上述錯誤。  
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`在此示例中，資源租戶（許可權）contoso.com，資源應用是為 Contoso 租戶調用`gateway.contoso.com/api`的單租戶應用，而用戶端應用為`14c88eee-b3e2-4bb0-9233-f5e3053b3a28`。  如果用戶端應用在Contoso.com內具有服務主體，則此請求可以繼續。  但是，如果沒有，則請求將失敗，並出現上述錯誤。  
 
-不過，如果 Contoso 閘道應用程式是多租使用者應用程式，則無論用戶端應用程式在 Contoso.com 內擁有服務主體，要求都會繼續。  
+但是，如果 Contoso 閘道應用是多租戶應用程式，則無論用戶端應用在Contoso.com內具有服務主體，請求都將繼續。  
 
-### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重新導向 Uri 現在可以包含查詢字串參數
+### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重定向 URI 現在可以包含查詢字串參數
 
-**生效日期**：2019 年 7 月 22 日
+**生效日期**：2019年7月22日
 
-**受影響的端點**：1.0 和 2.0 版
+**受影響的端點**：v1.0 和 v2.0
 
-**受影響的通訊協定**：所有流程
+**協定影響**：所有流
 
-根據[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)，Azure AD 應用程式現在可以向靜態查詢參數（例如 OAuth 2.0 要求的 https://contoso.com/oauth2?idp=microsoft) ）註冊並使用重新導向（回復） uri。  動態重新導向 Uri 仍然禁止，因為它們代表安全性風險，這不能用來在驗證要求中保留狀態資訊-因此，請使用 `state` 參數。
+根據[RFC 6749，Azure](https://tools.ietf.org/html/rfc6749#section-3.1.2)AD 應用程式現在可以註冊和使用具有靜態查詢參數（如`https://contoso.com/oauth2?idp=microsoft`） 的重定向（回復）URI的 OAuth 2.0 請求。  動態重定向 URI 仍然被禁止，因為它們表示安全風險，並且不能用於跨身份驗證請求保留狀態資訊 - 為此，請使用 參數`state`。
 
-靜態查詢參數受限於重新導向 URI 的字串比對，如同重新導向 URI 的任何其他部分-如果未註冊符合 URI 解碼 redirect_uri 的字串，則會拒絕要求。  如果在應用程式註冊中找到 URI，則會使用整個字串來重新導向使用者，包括靜態查詢參數。 
+靜態查詢參數與重定向 URI 的任何其他部分一樣，需要重新定向 URI 的字串匹配 - 如果未註冊與 URI 解碼redirect_uri匹配的字串，則請求將被拒絕。  如果在應用註冊中找到 URI，則整個字串將用於重定向使用者，包括靜態查詢參數。 
 
-請注意，在這段時間（2019年7月底），Azure 入口網站中的應用程式註冊 UX 仍會封鎖查詢參數。  不過，您可以手動編輯應用程式資訊清單，以加入查詢參數，並在您的應用程式中進行測試。  
+請注意，此時（2019 年 7 月底），Azure 門戶中的應用註冊 UX 仍阻止查詢參數。  但是，您可以手動編輯應用程式清單以添加查詢參數並在應用中測試此參數。  
 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-### <a name="looping-clients-will-be-interrupted"></a>迴圈用戶端將會中斷
+### <a name="looping-clients-will-be-interrupted"></a>迴圈用戶端將中斷
 
 **生效日期**：2019年3月25日
 
-**受影響的端點**：1.0 和 2.0 版
+**受影響的端點**：v1.0 和 v2.0
 
-**受影響的通訊協定**：所有流程
+**協定影響**：所有流
 
-用戶端應用程式有時可能會行為失常，在短時間內發出數百個相同的登入要求。  這些要求不一定會成功，但它們都是針對 IDP 帶來不良的使用者體驗和更高的工作負載，進而增加所有使用者的延遲，並降低 IDP 的可用性。  這些應用程式會在正常使用範圍外運作，而且應該更新為正確的行為。  
+用戶端應用程式有時會行為不端，在短時間內發出數百個相同的登錄請求。  這些請求可能成功，也可能不成功，但它們都會導致 IDP 使用者體驗不佳和工作負載增加，增加所有使用者的延遲並降低 IDP 的可用性。  這些應用程式在正常使用範圍之外運行，應更新以正確運行。  
 
-發出重複要求多次的用戶端將會收到 `invalid_grant` 錯誤： `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
+多次發出重複請求的用戶端將發送錯誤`invalid_grant`： `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
 
-大部分的用戶端都不需要變更行為來避免這個錯誤。  只有設定不正確的用戶端（沒有權杖快取或出現提示迴圈的那些）會受到此錯誤影響。  用戶端會根據下列因素，在本機（透過 cookie）追蹤每個實例：
+大多數用戶端不需要更改行為以避免此錯誤。  只有配置錯誤的用戶端（沒有權杖緩存的用戶端或已顯示提示迴圈的用戶端）才會受到此錯誤的影響。  用戶端按本地（通過 Cookie）本地跟蹤用戶端：以下因素：
 
-* 使用者提示（如果有的話）
+* 使用者提示（如果有）
 
-* 要求的範圍或資源
+* 正在請求的範圍或資源
 
 * 用戶端識別碼
 
@@ -137,9 +159,9 @@ ms.locfileid: "77185810"
 
 * 回應類型和模式
 
-在短時間（5分鐘）內建立多個要求（15 +）的應用程式將會收到 `invalid_grant` 錯誤，說明它們正在進行迴圈。  所要求的權杖具有足夠的長時間存留期（預設為10分鐘，最低為60分鐘），因此不需要在這段時間內重複要求。  
+在短時間內（5 分鐘）發出多個請求 （15+） 的應用將收到一個錯誤`invalid_grant`，說明它們正在迴圈。  請求的權杖具有足夠長的存留期（預設情況下最少 10 分鐘，預設值為 60 分鐘），因此在此時間段內重複請求是不必要的。  
 
-所有應用程式都應該藉由顯示互動式提示來處理 `invalid_grant`，而不是以無訊息方式要求權杖。  為了避免此錯誤，用戶端應確保它們能夠正確地快取所接收的權杖。
+所有應用都應`invalid_grant`通過顯示互動式提示符來處理，而不是默默請求權杖。  為了避免此錯誤，用戶端應確保正確緩存接收的權杖。
 
 
 ## <a name="october-2018"></a>2018 年 10 月
@@ -148,9 +170,9 @@ ms.locfileid: "77185810"
 
 **生效日期**：2018 年 11 月 15 日
 
-**受影響的端點**：1.0 和 2.0 版
+**受影響的端點**：v1.0 和 v2.0
 
-**受影響的通訊協定**：[程式碼流程](v2-oauth2-auth-code-flow.md)
+**受影響的通訊協定**：[碼流程](v2-oauth2-auth-code-flow.md)
 
 從 2018 年 11 月 15 日起，Azure AD 將不再接受將先前使用的驗證碼用於應用程式。 這項安全性變更有助於讓 Azure AD 與 OAuth 規格一致，且將會對 v1 和 v2 端點強制執行。
 
@@ -164,9 +186,9 @@ ms.locfileid: "77185810"
 
 **日期**：2018 年 5 月 1 日
 
-**受影響的端點**：1.0 和 2.0 版
+**受影響的端點**：v1.0 和 v2.0
 
-**受影響的通訊協定**：隱含流程和代理者[流程](v2-oauth2-on-behalf-of-flow.md)
+**受影響的協定**：隱式流和[代表流](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日以後，id_tokens 無法用來作為新應用程式 OBO 流程中的判斷提示。 應該改為使用存取權杖來保護 API，即使是在相同應用程式的用戶層與中介層之間也是一樣。 在 2018 年 5 月 1 日以前註冊的應用程式會持續運作，並且可以用 id_tokens 交換存取權杖；不過，此模式並不是最佳做法。
 

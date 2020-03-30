@@ -1,5 +1,5 @@
 ---
-title: 定義宣告轉換技術設定檔
+title: 定義索賠轉換技術設定檔
 titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔。
 services: active-directory-b2c
@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189781"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔
@@ -102,13 +102,13 @@ TransformationClaimType="collection" />
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 [`true`]。 |
+| 包括索賠解決索賠處理  | 否 | 對於輸入和輸出聲明，指定[索賠解析](claim-resolver-overview.md)是否包含在技術設定檔中。 可能的值：`true`或`false` （預設值）。 如果要在技術設定檔中使用聲明解析器，則將此解決方案設置為`true`。 |
 
 ## <a name="use-a-validation-technical-profile"></a>使用驗證技術設定檔
 
-宣告轉換技術設定檔可用來驗證資訊。 在下列範例中，名稱為 [LocalAccountSignUpWithLogonEmail](self-asserted-technical-profile.md) 的**自我判斷技術設定檔**會要求使用者輸入兩次電子郵件，然後呼叫名稱為 [Validate-Email](validation-technical-profile.md) 的**驗證技術設定檔**，以驗證電子郵件。 **Validate-Email** 技術設定檔會呼叫宣告轉換 **AssertEmailAreEqual**，以比較兩個宣告 **email** 和 **emailRepeat**，如果根據指定的比較不相等，則會擲回例外狀況。
+宣告轉換技術設定檔可用來驗證資訊。 在下列範例中，名稱為 **LocalAccountSignUpWithLogonEmail** 的[自我判斷技術設定檔](self-asserted-technical-profile.md)會要求使用者輸入兩次電子郵件，然後呼叫名稱為 **Validate-Email** 的[驗證技術設定檔](validation-technical-profile.md)，以驗證電子郵件。 **Validate-Email** 技術設定檔會呼叫宣告轉換 **AssertEmailAreEqual**，以比較兩個宣告 **email** 和 **emailRepeat**，如果根據指定的比較不相等，則會擲回例外狀況。
 
 ```XML
 <ClaimsTransformations>

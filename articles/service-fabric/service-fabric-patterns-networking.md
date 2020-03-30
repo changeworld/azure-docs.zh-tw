@@ -1,30 +1,30 @@
 ---
-title: Azure Service Fabric 的網路模式
+title: Azure 服務結構的網路模式
 description: 描述 Service Fabric 常見的網路功能模式，以及如何使用 Azure 網路功能建立叢集。
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466283"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 網路功能模式
 您可以將 Azure Service Fabric 叢集與其他的 Azure 網路功能整合起來。 本文說明如何建立使用下列功能的叢集︰
 
 - [現有虛擬網路或子網路](#existingvnet)
-- [靜態公用 IP 位址](#staticpublicip)
+- [靜態公共 IP 位址](#staticpublicip)
 - [僅內部負載平衡器](#internallb)
 - [內部與外部負載平衡器](#internalexternallb)
 
 Service Fabric 會在標準的虛擬機器擴展集內執行。 能在虛擬機器擴展集內使用的功能，就能在 Service Fabric 叢集內使用。 虛擬機器擴展集和 Service Fabric 之 Azure Resource Manager 範本中的網路區段完全相同。 在部署至現有虛擬網路後，即可輕鬆地納入其他網路功能，例如 Azure ExpressRoute、Azure VPN 閘道、網路安全性群組和虛擬網路對等互連。
 
-### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>允許 Service Fabric 資源提供者查詢您的叢集
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>允許服務結構資來源提供者查詢群集
 
 Service Fabric 有一個方面是其他網路功能所沒有的。 [Azure 入口網站](https://portal.azure.com)在內部會使用 Service Fabric 資源提供者來呼叫叢集，以取得節點和應用程式的相關資訊。 Service Fabric 資源提供者對管理端點上的 HTTP 閘道連接埠 (預設為連接埠 19080) 需具備可公開存取的輸入存取權。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 會使用此管理端點來管理您的叢集。 Service Fabric 資源提供者也會使用此連接埠來查詢您叢集的相關資訊，以顯示在 Azure 入口網站中。 
 
-如果無法從 Service Fabric 資源提供者存取連接埠 19080，入口網站中會出現「找不到節點」之類的訊息，而且您的節點和應用程式清單會顯示為空白。 如果您想在 Azure 入口網站看到您的叢集，負載平衡器必須公開公用 IP 位址，且您的網路安全性群組必須允許連入的連接埠 19080 流量。 如果您的設定不符合這些需求，Azure 入口網站就不會顯示叢集的狀態。
+如果無法從 Service Fabric 資源提供者存取連接埠 19080，入口網站中會出現「找不到節點」** 之類的訊息，而且您的節點和應用程式清單會顯示為空白。 如果您想在 Azure 入口網站看到您的叢集，負載平衡器必須公開公用 IP 位址，且您的網路安全性群組必須允許連入的連接埠 19080 流量。 如果您的設定不符合這些需求，Azure 入口網站就不會顯示叢集的狀態。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,7 +38,7 @@ Service Fabric 有一個方面是其他網路功能所沒有的。 [Azure 入口
 
 ### <a name="existing-virtual-network"></a>現有的虛擬網路
 
-在下列範例中，我們會從 **ExistingRG** 資源群組中名為 ExistingRG-vnet 的現有虛擬網路來開始。 子網路名為 default。 這些預設資源會在您使用 Azure 入口網站來建立標準虛擬機器 (VM) 時建立。 您可以建立虛擬網路和子網路而不建立 VM，但將叢集新增至現有虛擬網路的主要目標是要提供對其他 VM 的網路連線能力。 建立 VM 可為現有虛擬網路一般是如何使用的提供良好範例。 如果 Service Fabric 叢集只使用內部負載平衡器而不使用公用 IP 位址，您可以使用 VM 和其公用 IP 來做為安全的「跳躍箱」。
+在下列範例中，我們會從 **ExistingRG** 資源群組中名為 ExistingRG-vnet 的現有虛擬網路來開始。 子網路名為 default。 這些預設資源會在您使用 Azure 入口網站來建立標準虛擬機器 (VM) 時建立。 您可以建立虛擬網路和子網路而不建立 VM，但將叢集新增至現有虛擬網路的主要目標是要提供對其他 VM 的網路連線能力。 建立 VM 可為現有虛擬網路一般是如何使用的提供良好範例。 如果 Service Fabric 叢集只使用內部負載平衡器而不使用公用 IP 位址，您可以使用 VM 和其公用 IP 來做為安全的「跳躍箱」**。
 
 ### <a name="static-public-ip-address"></a>靜態公用 IP 位址
 
@@ -191,7 +191,7 @@ DnsSettings              : {
     }
     ```
 
-2. 移除 `dnsName` 參數 (靜態 IP 位址已經有一個)。
+2. 移除 `dnsName` 參數  (靜態 IP 位址已經有一個)。
 
     ```json
     /*
@@ -259,7 +259,7 @@ DnsSettings              : {
                     ],
     ```
 
-7. 在 `Microsoft.ServiceFabric/clusters` 資源中，將 `managementEndpoint` 變更為靜態 IP 位址的 DNS FQDN。 如果您使用安全的叢集，請務必將 http:// 變更為 https:// (請注意，此步驟僅適用於 Service Fabric 叢集。 如果您使用虛擬機器擴展集，請略過此步驟)。
+7. 在 `Microsoft.ServiceFabric/clusters` 資源中，將 `managementEndpoint` 變更為靜態 IP 位址的 DNS FQDN。 如果您使用安全的叢集，請務必將 http://** 變更為 https://** (請注意，此步驟僅適用於 Service Fabric 叢集。 如果您使用虛擬機器擴展集，請略過此步驟)。
 
     ```json
                     "fabricSettings": [],
@@ -279,14 +279,14 @@ DnsSettings              : {
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
-在部署後，您會看到負載平衡器繫結至另一個資源群組中的公用靜態 IP 位址。 Service Fabric 用戶端連線端點和 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 端點會指向靜態 IP 位址的 DNS FQDN。
+在部署後，您會看到負載平衡器繫結至另一個資源群組中的公用靜態 IP 位址。 服務結構用戶端連接終結點和服務[結構資源管理器](service-fabric-visualizing-your-cluster.md)終結點指向靜態 IP 位址的 DNS FQDN。
 
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>僅內部負載平衡器
 
-此案例使用僅內部負載平衡器取代預設 Service Fabric 範本中的外部負載平衡器。 如需 Azure 入口網站和 Service Fabric 資源提供者的含意，請參閱稍[早的文章](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)。
+此案例使用僅內部負載平衡器取代預設 Service Fabric 範本中的外部負載平衡器。 有關 Azure 門戶和服務結構資來源提供者的影響[，請參閱本文前面部分](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)。
 
-1. 移除 `dnsName` 參數 (不需要此參數)。
+1. 移除 `dnsName` 參數  (不需要此參數)。
 
     ```json
     /*
@@ -361,7 +361,7 @@ DnsSettings              : {
                     ],
     ```
 
-6. 在 `Microsoft.ServiceFabric/clusters` 資源中，變更 `managementEndpoint` 以指向內部負載平衡器位址。 如果您使用安全的叢集，請務必將 http:// **變更為 https://** (請注意，此步驟僅適用於 Service Fabric 叢集。 如果您使用虛擬機器擴展集，請略過此步驟)。
+6. 在 `Microsoft.ServiceFabric/clusters` 資源中，變更 `managementEndpoint` 以指向內部負載平衡器位址。 如果使用安全群集，請確保*將HTTP://* 更改為*HTTPs://*。 (請注意，此步驟僅適用於 Service Fabric 叢集。 如果您使用虛擬機器擴展集，請略過此步驟)。
 
     ```json
                     "fabricSettings": [],
@@ -382,11 +382,11 @@ DnsSettings              : {
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>內部與外部負載平衡器
 
-在此案例中，您會從現有的單一節點類型外部負載平衡器來開始，然後新增同一節點類型的內部負載平衡器。 連結到後端位址集區的後端連接埠只能指派給單一負載平衡器。 選擇要讓哪個負載平衡器擁有您的應用程式連接埠，哪個負載平衡器擁有管理端點 (連接埠 19000 和 19080)。 如果您將管理端點放在內部負載平衡器上，請記住[本文稍早](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)所討論的 Service Fabric 資源提供者限制。 在我們使用的範例中，管理端點會留在外部負載平衡器。 您也會新增連接埠 80 應用程式連接埠，並將它放在內部負載平衡器。
+在此案例中，您會從現有的單一節點類型外部負載平衡器來開始，然後新增同一節點類型的內部負載平衡器。 連結到後端位址集區的後端連接埠只能指派給單一負載平衡器。 選擇要讓哪個負載平衡器擁有您的應用程式連接埠，哪個負載平衡器擁有管理端點 (連接埠 19000 和 19080)。 如果將管理終結點放在內部負載等化器上，請記住[本文前面](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)討論的 Service Fabric 資來源提供者限制。 在我們使用的範例中，管理端點會留在外部負載平衡器。 您也會新增連接埠 80 應用程式連接埠，並將它放在內部負載平衡器。
 
 在雙節點類型的叢集中，一個節點類型位於外部負載平衡器。 另一個節點類型則位於內部負載平衡器。 若要使用雙節點類型的叢集，請在入口網站中建立雙節點類型的範本 (隨附兩個負載平衡器)，並將第二個負載平衡器切換至內部負載平衡器。 如需詳細資訊，請參閱[僅內部負載平衡器](#internallb)一節。
 
-1. 新增靜態內部負載平衡器 IP 位址參數 (如需使用動態 IP 位址的相關注意事項，請參閱本文前面幾節)。
+1. 新增靜態內部負載平衡器 IP 位址參數  (如需使用動態 IP 位址的相關注意事項，請參閱本文前面幾節)。
 
     ```json
             "internalLBAddress": {
@@ -596,9 +596,9 @@ DnsSettings              : {
 
 在部署後，您會看到資源群組中有兩個負載平衡器。 如果您瀏覽負載平衡器，您會看到公用 IP 位址和指派給公用 IP 位址的管理端點 (連接埠 19000 和 19080)。 您也會看到靜態內部 IP 位址和指派給內部負載平衡器的應用程式端點 (連接埠 80)。 這兩個負載平衡器會使用相同的虛擬機器擴展集後端集區。
 
-## <a name="notes-for-production-workloads"></a>生產工作負載的相關注意事項
+## <a name="notes-for-production-workloads"></a>生產工作負載說明
 
-上述 GitHub 範本是設計用來與 Azure Standard Load Balancer （SLB）（基本 SKU）的預設 SKU 搭配使用。 此 SLB 沒有 SLA，因此針對生產工作負載，應使用標準 SKU。 如需詳細資訊，請參閱[Azure Standard Load Balancer 總覽](/azure/load-balancer/load-balancer-standard-overview)。 任何使用 SLB 標準 SKU 的 Service Fabric 叢集都必須確保每個節點類型都有規則允許埠443上的輸出流量。 這是完成叢集設定的必要步驟，而且沒有這類規則的任何部署將會失敗。 在上述「僅限內部」負載平衡器的範例中，必須將額外的外部負載平衡器新增至範本，並提供允許埠443輸出流量的規則。
+上述 GitHub 範本旨在與 Azure 標準負載等化器 （SLB） 的基本 SKU 的預設 SKU 配合使用。 此 SLB 沒有 SLA，因此對於生產工作負載，應使用標準 SKU。 有關此的詳細資訊，請參閱[Azure 標準負載等化器概述](/azure/load-balancer/load-balancer-standard-overview)。 使用 SLB 的標準 SKU 的任何服務結構群集都需要確保每個節點類型都有允許埠 443 上的出站流量的規則。 這是完成群集設置所必需的，沒有此類規則的任何部署都將失敗。 在上述"僅內部"負載等化器示例中，必須向範本中添加額外的外部負載等化器，並帶有允許埠 443 的出站流量的規則。
 
 ## <a name="next-steps"></a>後續步驟
 [建立叢集](service-fabric-cluster-creation-via-arm.md)

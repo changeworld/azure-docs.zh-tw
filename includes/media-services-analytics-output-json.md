@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174393"
 ---
 此作業會產生 JSON 輸出檔案，其中包含有關偵測到並進行追蹤之臉部的中繼資料。 中繼資料包括指出臉部位置的座標，以及指出正在追蹤該個人的臉部識別碼。 臉部識別碼很容易在正面臉部長時間於畫面中遺失或重疊的情況下重設，導致某些人員被指派多個識別碼。
@@ -24,7 +24,7 @@ ms.locfileid: "67174393"
 | Offset |這是時間戳記的時間位移。 在版本 1.0 的影片 API 中，這永遠會是 0。 在我們於未來將支援的案例中，此值可能會變更。 |
 | width、hight |輸出視訊畫面的高度和高度 (以像素為單位)。|
 | framerate |影片的每秒畫面格數。 |
-| [fragments](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 |
+| [碎片](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 |
 
 ### <a name="fragments-json-elements"></a>Fragments JSON 元素
 
@@ -32,7 +32,7 @@ ms.locfileid: "67174393"
 |---|---|
 | start |第一個事件的開始時間 (以「刻度」為單位)。 |
 | duration |片段的長度 (以「刻度」為單位)。 |
-| index | (僅適用於 Azure Media Redactor) 定義目前事件的畫面索引。 |
+| 索引 | (僅適用於 Azure Media Redactor) 定義目前事件的畫面索引。 |
 | interval |片段內每個事件項目的間隔 (以「刻度」為單位)。 |
 | 活動 |每個事件皆包含在該持續時間內所偵測到並進行追蹤的臉部。 它是包含事件的陣列。 外部陣列代表一個單位的時間間隔。 內部陣列包含在那個時間點所發生的 0 或多個事件。 空白的括號 [] 代表沒有偵測到臉部。 |
 | id |正在被追蹤之臉部的識別碼。 如果該臉部變成無法被偵測，這個號碼可能會在無意中變更。 特定的人員在整個影片中應該要擁有相同的識別碼，但由於偵測演算法的限制 (例如受到阻擋等情況)，使我們無法保證識別碼相同。 |

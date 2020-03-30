@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174430"
 ---
 您也可以監視裝置的效能來檢視計量，並在某些情況下針對裝置問題進行疑難排解。
 
 請在 Azure 入口網站中採取下列步驟，以建立所選裝置計量的圖表。
 
-1. 對於您在 Azure 入口網站中的資源，請移至 [監視] > [計量]  ，然後選取 [新增計量]  。
+1. 對於您在 Azure 入口網站中的資源，請移至 [監視] > [計量]****，然後選取 [新增計量]****。
 
     ![新增計量](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
@@ -23,7 +23,7 @@ ms.locfileid: "67174430"
 
     ![目前的資源](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    若要指定另一個資源，請選取資源。 在 [選取資源]  刀鋒視窗中，選取訂用帳戶、資源群組、資源類型，以及您要顯示的度量的特定資源，然後選取 [套用]  。
+    若要指定另一個資源，請選取資源。 在 [選取資源]**** 刀鋒視窗中，選取訂用帳戶、資源群組、資源類型，以及您要顯示的度量的特定資源，然後選取 [套用]****。
 
     ![選擇另一個資源](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "67174430"
     |容量度量                     |描述  |
     |-------------------------------------|-------------|
     |**可用容量**               | 指的是可以寫入裝置的資料大小。 換句話說，這是在裝置上可取得的容量。 <br></br>您可以藉由刪除在裝置和雲端都有複本的本機複本，以釋放裝置容量。        |
-    |**容量總計**                   | 指的是裝置上可寫入資料的位元組總計。 這也稱為本機快取大小總計。 <br></br> 您現在可藉由新增資料磁碟來增加現有虛擬裝置的容量。 透過 VM 的 Hypervisor 管理新增資料磁碟，然後將您的 VM 重新開機。 閘道裝置的本機存放集區會擴充，以適應新增的資料磁碟。 <br></br>如需詳細資訊，請移至[為 HYPER-V 虛擬機器新增硬碟](https://www.youtube.com/watch?v=EWdqUw9tTe4)。 |
+    |**總容量**                   | 指的是裝置上可寫入資料的位元組總計。 這也稱為本機快取大小總計。 <br></br> 您現在可藉由新增資料磁碟來增加現有虛擬裝置的容量。 透過 VM 的 Hypervisor 管理新增資料磁碟，然後將您的 VM 重新開機。 閘道裝置的本機存放集區會擴充，以適應新增的資料磁碟。 <br></br>如需詳細資訊，請移至[為 HYPER-V 虛擬機器新增硬碟](https://www.youtube.com/watch?v=EWdqUw9tTe4)。 |
     
     |交易度量              | 描述         |
     |-------------------------------------|---------|
@@ -51,11 +51,11 @@ ms.locfileid: "67174430"
 
     ![檢視圖表](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
 
-5. 如果您選取的計量有多個執行個體，則可使用分割選項。 選取 [套用分割]  ，然後選取您要查看明細的值。
+5. 如果您選取的計量有多個執行個體，則可使用分割選項。 選取 [套用分割]****，然後選取您要查看明細的值。
 
     ![套用分割](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
 
-6. 如果您目前想查看少數幾個執行個體的明細，您可以篩選資料。 例如，在此案例中，如果您想要僅看到裝置上兩個連線網路介面的網路輸送量，您可以篩選這些介面。 選取 [新增篩選]  並指定要篩選的網路介面名稱。
+6. 如果您目前想查看少數幾個執行個體的明細，您可以篩選資料。 例如，在此案例中，如果您想要僅看到裝置上兩個連線網路介面的網路輸送量，您可以篩選這些介面。 選取 [新增篩選]**** 並指定要篩選的網路介面名稱。
 
     ![新增篩選](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194452"
 ---
 # <a name="certificate-creation-methods"></a>憑證建立方式
@@ -32,7 +32,7 @@ ms.locfileid: "78194452"
 1. 在上圖中，您的應用程式即將建立憑證，內部程序首先會在金鑰保存庫中建立金鑰。
 2. Key Vault 將憑證簽署要求 (CSR) 傳回應用程式
 3. 您的應用程式將 CSR 傳遞給您選擇的 CA。
-4. 您選擇的 CA 會以 X509 憑證回應。
+4. 您選擇的 CA 使用 X509 證書進行回應。
 5. 您的應用程式合併 CA 回覆的 X509 憑證，完成新憑證的建立。
 
 -   **利用已知簽發者提供者建立憑證：** 若要使用這個方法，您必須完成一次性的簽發者物件建立工作。 在您的金鑰保存庫中建立簽發者物件後，您就可以在 KV 憑證的原則中參考其名稱。 建立這類 KV 憑證的要求會在保存庫中建立金鑰組，並使用所參考簽發者物件中的資訊與簽發者提供者服務通訊，以取得 x509 憑證。 x509 憑證是從簽發者服務所擷取，並與金鑰組合併以完成 KV 憑證建立工作。  
@@ -42,10 +42,10 @@ ms.locfileid: "78194452"
 以下說明與可對應至上圖中綠字的步驟。
 
 1. 在上圖中，您的應用程式即將建立憑證，內部程序首先會在金鑰保存庫中建立金鑰。
-2. Key Vault 將 TLS/SSL 憑證要求傳送給 CA。
+2. 金鑰保存庫向 CA 發送 TLS/SSL 憑證請求。
 3. 您的應用程式會以迴圈和等待流程來輪詢 Key Vault，直到憑證完成。 Key Vault 收到含 x509 憑證的 CA 回應時，憑證建立工作即完成。
-4. CA 會使用 TLS/SSL x.509 憑證來回應 Key Vault 的 TLS/SSL 憑證要求。
-5. 您的新憑證建立會隨著 CA 的 TLS/SSL x.509 憑證合併而完成。
+4. CA 使用 TLS/SSL X.509 憑證回應金鑰保存庫的 TLS/SSL 憑證請求。
+5. 您的新證書創建隨著 CA 的 TLS/SSL X.509 憑證的合併而完成。
 
 ## <a name="asynchronous-process"></a>非同步流程
 KV 憑證的建立是非同步流程。 此作業會建立 KV 憑證要求，並傳回 http 狀態碼 202 (已接受)。 透過輪詢該作業所建立的擱置中物件，即可追蹤要求的狀態。 擱置中物件的完整 URI 會在 LOCATION 標頭中傳回。  

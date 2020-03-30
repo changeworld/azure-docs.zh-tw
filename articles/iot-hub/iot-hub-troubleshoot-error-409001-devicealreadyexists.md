@@ -1,6 +1,6 @@
 ---
-title: 疑難排解 Azure IoT 中樞錯誤 409001 DeviceAlreadyExists
-description: 瞭解如何修正錯誤 409001 DeviceAlreadyExists
+title: 故障排除 Azure IoT 中心錯誤 409001 設備已存在
+description: 瞭解如何修復錯誤 409001 設備已存在
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,24 +9,24 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 93ab2ecc8e820c461a7c79082ac1d50c24f0ba8b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960785"
 ---
 # <a name="409001-devicealreadyexists"></a>409001 DeviceAlreadyExists
 
-本文說明**409001 DeviceAlreadyExists**錯誤的原因和解決方案。
+本文介紹了**409001 設備存在**錯誤的原因和解決方案。
 
 ## <a name="symptoms"></a>徵狀
 
-嘗試在 IoT 中樞中註冊裝置時，要求會失敗，並出現錯誤**409001 DeviceAlreadyExists**。
+嘗試在 IoT 中心註冊設備時，請求失敗，錯誤**409001 設備已存在**。
 
 ## <a name="cause"></a>原因
 
-IoT 中樞內已有裝置具有相同的裝置識別碼。 
+IoT 中心中已有具有相同裝置識別碼 的設備。 
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
-請使用不同的裝置識別碼，然後再試一次。
+請使用其他裝置識別碼，然後重試。

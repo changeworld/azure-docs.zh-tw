@@ -1,18 +1,18 @@
 ---
-title: 模擬 Azure Service Fabric 應用程式中的錯誤
-description: 深入瞭解如何強化您的 Azure Service Fabric 服務，以避免正常且性失誤性的失敗。
+title: 類比 Azure 服務結構應用中的故障
+description: 瞭解如何強化 Azure 服務交換矩陣服務，防止正常和不正常的失敗。
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645985"
 ---
-# <a name="simulate-failures-during-service-workloads"></a>模擬服務工作負載期間的失敗
+# <a name="simulate-failures-during-service-workloads"></a>模擬服務工作負載期間的失敗案例
 Azure Service Fabric 中的可測試性案例讓開發人員在處理個別錯誤時無需擔心。 不過還是有些案例，可能會需要明確的用戶端工作負載和失敗交錯。 用戶端工作負載和錯誤的交錯，可確保服務在發生失敗時確實執行某些動作。 假設可測試性提供的控制層級，可能是工作負載執行的精確時間點。 此應用程式中不同狀態的錯誤引發可以找到錯誤，並提升品質。
 
 ## <a name="sample-custom-scenario"></a>範例自訂案例
