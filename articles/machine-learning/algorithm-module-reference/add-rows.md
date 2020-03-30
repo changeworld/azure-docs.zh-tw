@@ -1,7 +1,7 @@
 ---
-title: 加入資料列：模組參考
+title: 添加行：模組引用
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [加入資料列] 模組來串連兩個資料集。
+description: 瞭解如何在 Azure 機器學習中使用"添加行"模組串聯兩個資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918490"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477726"
 ---
-# <a name="add-rows-module"></a>新增資料列模組
+# <a name="add-rows-module"></a>添加行模組
 
-本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
+本文介紹 Azure 機器學習設計器（預覽）中的模組。
 
-使用此模組來串連兩個資料集。 在串連中，第二個資料集的資料列會加入至第一個資料集的結尾。  
+使用此模組可以串聯兩個資料集。 在串聯中，第二個資料集的行將添加到第一個資料集的末尾。  
   
 資料列串連在如下的案例中很有用：  
   
@@ -28,18 +28,18 @@ ms.locfileid: "77918490"
   
 + 您已使用不同的資料集，想要合併資料集來建立最終資料集。  
 
-## <a name="how-to-use-add-rows"></a>如何使用加入資料列  
+## <a name="how-to-use-add-rows"></a>如何使用"添加行"  
 
-若要串連兩個資料集中的資料列，資料列必須有完全相同的架構。 這表示資料行中的資料行數目和相同的資料類型。
+要從兩個資料集串聯行，這些行必須具有相同的架構。 這意味著列數相同，列中的資料類型相同。
 
-1.  將 [**加入資料列**] 模組拖曳至管線中，您可以在 [**資料轉換**] 下找到它。
+1.  將 **"添加行"** 模組拖動到管道中，您可以在 **"資料轉換**"下找到它。
 
 2. 連接至兩個輸入連接埠的資料集。 您想要附加的資料集應該連接到第二個 (右) 的連接埠。 
   
-3.  執行管道。 輸出資料集中的資料列數目應該等於這兩個輸入資料集的資料列總和。
+3.  提交管道。 輸出資料集中的行數應等於兩個輸入資料集的行總和。
 
-    如果您將相同的資料集加入至 [**加入資料列**] 模組的兩個輸入，則資料集會重複。 
+    如果將同一資料集添加到 **"添加行"** 模組的兩個輸入，則資料集將重複。 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure 機器學習[可用的模組集](module-reference.md)。 

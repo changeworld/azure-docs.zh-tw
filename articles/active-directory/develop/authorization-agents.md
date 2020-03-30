@@ -1,6 +1,6 @@
 ---
-title: 授權代理程式和如何啟用它們 |Azure
-description: 瞭解不同的授權代理程式 Microsoft 驗證程式庫（MSAL）可讓您的 Android app 使用，以及如何加以啟用。
+title: 授權代理以及如何啟用它們 |蔚藍
+description: 瞭解 Microsoft 身份驗證庫 （MSAL） 允許您的 Android 應用使用的不同授權代理以及如何啟用它們。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,81 +13,81 @@ ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085325"
 ---
 # <a name="authorization-agents-android"></a>授權代理程式 (Android)
 
-本文說明 Microsoft 驗證程式庫（MSAL）允許您的應用程式使用的不同授權代理程式，以及如何加以啟用。
+本文介紹了 Microsoft 身份驗證庫 （MSAL） 允許應用使用的不同授權代理以及如何啟用它們。
 
-選擇授權代理程式的特定策略是選擇性的，而且代表可自訂的其他功能。 大部分的應用程式會使用 MSAL 預設值（請參閱[瞭解 ANDROID MSAL 設定檔](msal-configuration.md)以查看各種預設值）。
+為授權代理選擇特定策略是可選的，表示應用可以自訂的其他功能。 大多數應用將使用 MSAL 預設值（請參閱[瞭解 Android MSAL 設定檔](msal-configuration.md)以查看各種預設值）。
 
-MSAL 支援使用 `WebView`或系統瀏覽器的授權。  下圖顯示如何使用 `WebView`或具有 CustomTabs 或不含 CustomTabs 的系統瀏覽器：
+MSAL 支援使用`WebView`或 系統瀏覽器進行授權。  下圖顯示了使用 使用`WebView`的 或帶有自訂選項卡的系統瀏覽器或沒有自訂選項卡的系統瀏覽器的外觀：
 
-![MSAL 登入範例](./media/authorization-agents/sign-in-ui.jpg)
+![MSAL 登錄示例](./media/authorization-agents/sign-in-ui.jpg)
 
-## <a name="single-sign-in-implications"></a>單一登入的含意
+## <a name="single-sign-in-implications"></a>單一登入影響
 
-根據預設，與 MSAL 整合的應用程式會使用系統瀏覽器的自訂索引標籤來進行授權。 不同于網站，自訂索引標籤會與預設的系統瀏覽器共用 cookie jar，讓使用 web 或其他與自訂索引標籤整合的原生應用程式更少登入。
+預設情況下，與 MSAL 集成的應用程式使用系統瀏覽器的自訂選項卡進行授權。 與 WebViews 不同，自訂選項卡與預設系統瀏覽器共用一個 Cookie jar，從而與已與自訂選項卡集成的 Web 或其他本機應用共用較少的登錄。
 
-如果應用程式使用 `WebView` 策略，而不將 Microsoft Authenticator 或公司入口網站支援整合到其應用程式中，則使用者在裝置上或原生應用程式與 web 應用程式之間不會有單一登入（SSO）體驗。
+如果應用程式在不將`WebView`Microsoft 身份驗證器或公司門戶支援集成到其應用中的情況下使用策略，則使用者在整個設備或本機應用和 Web 應用之間將不會具有單一登入 （SSO） 體驗。
 
-如果應用程式使用具有 Microsoft Authenticator 或公司入口網站支援的 MSAL，則使用者若有使用其中一個應用程式的作用中登入，就可以在應用程式之間擁有單一登入體驗。
+如果應用程式使用 MSAL 與 Microsoft 身份驗證器或公司門戶支援，則如果使用者對其中一個應用程式具有活動登錄，則使用者可以跨應用程式獲得 SSO 體驗。
 
 ## <a name="webview"></a>WebView
 
-若要使用應用程式內建的 Web 工作，請將下列這一行放在傳遞給 MSAL 的應用程式設定 JSON 中：
+要使用應用內 WebView，請使用傳遞給 MSAL 的應用配置 JSON 中的以下行：
 
 ```json
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-使用應用程式內 `WebView`時，使用者會直接登入應用程式。 權杖會保留在應用程式的沙箱中，而且無法在應用程式的 cookie jar 外使用。 因此，除非應用程式與驗證器或公司入口網站整合，否則使用者不能在應用程式之間擁有 SSO 體驗。
+使用應用`WebView`內時，使用者直接登錄到應用。 權杖保存在應用的沙箱中，在應用的 Cookie jar 外部不可用。 因此，除非應用程式與身份驗證器或公司門戶集成，否則使用者無法跨應用程式獲得 SSO 體驗。
 
-不過，`WebView` 確實提供了自訂登入 UI 外觀與風格的功能。 如需如何進行這項自訂的詳細資訊，請參閱[Android 網站](https://developer.android.com/reference/android/webkit/WebView)。
+但是，`WebView`確實提供了自訂登錄 UI 的外觀的功能。 有關如何執行此操作自訂的更多，請參閱[Android WebViews。](https://developer.android.com/reference/android/webkit/WebView)
 
-## <a name="default-browser-plus-custom-tabs"></a>預設瀏覽器加上自訂索引標籤
+## <a name="default-browser-plus-custom-tabs"></a>預設瀏覽器加上自訂選項卡
 
-根據預設，MSAL 會使用瀏覽器和[自訂](https://developer.chrome.com/multidevice/android/customtabs)索引標籤策略。 您可以使用自訂設定檔中的下列 JSON 設定，明確指出此策略，以防止未來版本中的變更 `DEFAULT`：
+預設情況下，MSAL 使用瀏覽器和[自訂選項卡](https://developer.chrome.com/multidevice/android/customtabs)策略。 通過在自訂設定檔中使用以下 JSON 配置，可以顯式指示`DEFAULT`此策略，以防止將來版本中的更改：
 
 ```json
 "authorization_user_agent" : "BROWSER"
 ```
 
-使用此方法，透過裝置的瀏覽器提供 SSO 體驗。 MSAL 會使用共用的 cookie jar，讓其他原生應用程式或 web 應用程式使用 MSAL 所設定的保存會話 cookie，在裝置上達成 SSO。
+使用此方法通過設備的瀏覽器提供 SSO 體驗。 MSAL 使用共用 Cookie jar，它允許其他本機應用或 Web 應用使用 MSAL 設置的持久性會話 Cookie 在設備上實現 SSO。
 
-## <a name="browser-selection-heuristic"></a>瀏覽器選取啟發學習法
+## <a name="browser-selection-heuristic"></a>瀏覽器選擇啟發式
 
-由於 MSAL 無法指定要在每個廣泛的 Android 手機陣列上使用的確切瀏覽器套件，MSAL 會執行一個瀏覽器選取啟發學習法，以嘗試提供最佳的跨裝置 SSO。
+由於 MSAL 不可能指定在每個廣泛的 Android 手機上使用的確切瀏覽器包，因此 MSAL 實現了瀏覽器選擇啟發式，試圖提供最佳的跨設備 SSO。
 
-MSAL 會抓取裝置上安裝的完整瀏覽器清單，以選取要使用的瀏覽器。 此清單會依照封裝管理員傳回的順序，間接反映使用者的喜好設定。 例如，如果設定了預設瀏覽器，就是清單中的第一個專案。 系統會挑選清單中的_第一個_瀏覽器，不論它是否支援自訂索引標籤。 如果瀏覽器支援自訂索引標籤，MSAL 將會啟動 [自訂] 索引標籤。自訂索引標籤可讓您更接近應用程式內 `WebView`，並允許基本 UI 自訂。 若要深入瞭解，請參閱[Android 中的自訂](https://developer.chrome.com/multidevice/android/customtabs)索引標籤。
+MSAL 檢索設備上安裝的瀏覽器的完整清單，以選擇要使用的瀏覽器。 該清單按包管理器返回的順序排列，該順序間接反映使用者的首選項。 例如，預設瀏覽器（如果已設置）是清單中的第一個條目。 無論清單中_的第一個_瀏覽器是否支援自訂選項卡，都將選擇該瀏覽器。 如果瀏覽器支援自訂選項卡，MSAL 將啟動自訂選項卡。 自訂選項卡的外觀和感覺更接近應用`WebView`內，並允許基本的 UI 自訂。 有關詳細資訊[，請參閱 Android 中的自訂選項卡](https://developer.chrome.com/multidevice/android/customtabs)。
 
-如果裝置上沒有瀏覽器套件，MSAL 會使用應用程式內 `WebView`。
+如果設備上沒有瀏覽器包，MSAL 將使用應用`WebView`內 。
 
-瀏覽器清單中的瀏覽器順序是由作業系統決定。 其順序是從最慣用到最少。 如果裝置預設設定未變更，則應針對每個登入啟動相同的瀏覽器，以確保 SSO 體驗。
+瀏覽器清單中的瀏覽器順序由作業系統決定。 這是從最首選到最少的順序。 如果未更改設備預設設置，則應為每個登錄啟動相同的瀏覽器，以確保 SSO 體驗。
 
 > [!NOTE]
-> 如果另一個瀏覽器設為預設值，MSAL 就不一定會優先于 Chrome。 例如，在已預先安裝 Chrome 和另一個瀏覽器的裝置上，MSAL 會使用使用者已設定為預設值的瀏覽器。
+> 如果另一個瀏覽器設置為預設瀏覽器，MSAL 不再始終喜歡 Chrome。 例如，在已預先安裝 Chrome 瀏覽器和其他瀏覽器的設備上，MSAL 將使用使用者設置為預設的瀏覽器。
 
 ### <a name="tested-browsers"></a>測試的瀏覽器
 
-下列瀏覽器已經過測試，可以查看是否正確地重新導向至設定檔中所指定的 `"redirect_uri"`：
+已測試以下瀏覽器以查看它們是否正確重定向到設定檔中`"redirect_uri"`指定的瀏覽器：
 
-| | 內建瀏覽器 | Chrome | Opera  | Microsoft Edge | UC 瀏覽器 | Firefox |
+| | 內置瀏覽器 | Chrome | Opera  | Microsoft Edge | UC 瀏覽器 | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| 結點4（API 17） | 傳遞 | 傳遞 |不適用 |不適用 |不適用 |不適用 |
-| Samsung S7 （API 25） | 密碼 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
-| Huawei （API 26） |pass * * | 傳遞 | 失敗 | 傳遞 | 傳遞 |傳遞 |
-| Vivo （API 26） |傳遞|傳遞|傳遞|傳遞|傳遞|失敗|
-| 圖元2（API 26） |傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
-| Oppo | 傳遞 | 不適用 * * * |不適用  |不適用 |不適用 | 不適用|
-| OnePlus （API 25） |傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
-| 結點（API 28） |傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
+| 連結 4 （API 17） | 傳遞 | 傳遞 |不適用 |不適用 |不適用 |不適用 |
+| 三星S7 （API 25） | 通行證* | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
+| 華為（API 26） |通過* | 傳遞 | 失敗 | 傳遞 | 傳遞 |傳遞 |
+| 維沃 （API 26） |傳遞|傳遞|傳遞|傳遞|傳遞|失敗|
+| 圖元 2 （API 26） |傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
+| 奧波 | 傳遞 | 不適用* |不適用  |不適用 |不適用 | 不適用|
+| 一加 （API 25） |傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
+| 連結 （API 28） |傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
 |MI | 傳遞 | 傳遞 | 傳遞 | 傳遞 | 失敗 |傳遞 |
 
-\* Samsung 的內建瀏覽器是 Samsung Internet。  
-\* * Huawei 的內建瀏覽器為 Huawei 瀏覽器。  
-在 Oppo 裝置設定內無法變更預設瀏覽器。
+*三星的內置瀏覽器是三星互聯網。  
+*華為的內置瀏覽器是華為瀏覽器。  
+無法在 Oppo 設備設置中更改預設瀏覽器。

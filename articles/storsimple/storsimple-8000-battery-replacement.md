@@ -1,5 +1,5 @@
 ---
-title: 更換 Microsoft Azure StorSimple 8000 系列裝置上的電池
+title: 更換微軟 Azure StorSimple 8000 系列設備上的電池
 description: 描述如何取下、更換和維護 StorSimple 裝置上的備份電池模組。
 author: alkohli
 ms.service: storsimple
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255011"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更換 StorSimple 裝置上的備份電池模組
 
-## <a name="overview"></a>概觀
-Microsoft Azure StorSimple 裝置上的主要機箱電源和冷卻模組 (PCM) 具有額外的電池組。 這個電池組會提供電源，以便如果主要機箱失去 AC 電源，StorSimple 裝置可以儲存資料。 這個電池組稱為 *備份電池模組*。 備份電池模組僅針對 StorSimple 裝置中的主要機箱而存在 (EBOD 機箱未包含備份電池模組) 。
+## <a name="overview"></a>總覽
+Microsoft Azure StorSimple 裝置上的主要機箱電源和冷卻模組 (PCM) 具有額外的電池組。 這個電池組會提供電源，以便如果主要機箱失去 AC 電源，StorSimple 裝置可以儲存資料。 這個電池組稱為 [備用電池模組]**。 備份電池模組僅針對 StorSimple 裝置中的主要機箱而存在 (EBOD 機箱未包含備份電池模組) 。
 
 本教學課程說明如何：
 
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple 裝置上的主要機箱電源和冷卻模組 (PCM) �
 StorSimple 裝置的備份電池模組是現場可置換裝置。 在 PCM 中安裝它之前，電池模組應該儲存在其原始包裝中。 執行下列步驟以取下備份電池。
 
 #### <a name="to-remove-the-backup-battery-module"></a>若要取下備份電池模組
-1. 在 Azure 入口網站中，移至您的 StorSimple 裝置管理員服務刀鋒視窗。 移至 [裝置]，然後從裝置清單選取您的裝置。 瀏覽至 [監視器] > [硬體健康情況]。 在 [共用元件] 下，查看電池狀態。
+1. 在 Azure 入口網站中，移至您的 StorSimple 裝置管理員服務刀鋒視窗。 移至 [裝置]****，然後從裝置清單選取您的裝置。 導航到**監視器** > **硬體運行狀況**。 在 [共用元件]**** 底下，查看電池的狀態。
 2. 識別電池故障的 PCM。 圖 1 顯示 StorSimple 裝置的背面。
    
     ![裝置主要機箱模組的後擋板](./media/storsimple-battery-replacement/IC740994.png)
@@ -76,12 +76,12 @@ StorSimple 裝置的備份電池模組是現場可置換裝置。 在 PCM 中安
 1. 以適當的方向將備份電池模組放入 PCM 中。
 2. 全力按壓電池模組把手以固定連接器。
 3. 依照 [更換 StorSimple 裝置上的電源和冷卻模組](storsimple-8000-power-cooling-module-replacement.md)中的指導方針，更換主要機箱的 PCM。
-4. 在更換完成之後，請移至您的裝置，然後在 Azure 入口網站移至 [監視器] > [硬體健康情況]。 確認電池的狀態，以確定安裝成功。 綠色狀態表示電池狀況良好。
+4. 更換完成後，轉到設備，然後在 Azure 門戶中轉到**監視** > **硬體運行狀況**。 確認電池的狀態，以確定安裝成功。 綠色狀態表示電池狀況良好。
 
 ## <a name="maintain-the-backup-battery-module"></a>維護備份電池模組
 在 StorSimple 裝置中，備份電池模組會在停電期間提供電源給控制器。 它可讓 StorSimple 裝置在以控制方式關閉之前儲存重要資料。 由於 PCM 中有兩個完全充電的電池，系統可以處理兩個連續停電事件。
 
-在 Azure 入口網站中，[監視器] 刀鋒視窗下的 [硬體健康情況] 指出電池是否故障，或電力何時即將用光。 在 [共用元件] 下，電池狀態是以 [PCM 1 中的電池] 或 [PCM 0 中的電池] 指出。 此刀鋒視窗會顯示 [降級] 狀態，表示電力即將用光，或顯示 [故障]，表示電力已用光。
+在 Azure 入口網站中，[監視器]**** 刀鋒視窗下的 [硬體健康情況]**** 指出電池是否故障，或電力何時即將用光。 電池狀態是由 [共用元件]**** 下的 [PCM 0 中的電池]**** 或 [PCM 1 中的電池]**** 指出。 此刀鋒視窗會顯示 [降級]**** 狀態，表示電力即將用光，或顯示 [故障]****，表示電力已用光。
 
 > [!NOTE]
 > 當電池只需充電時，可以報告 [ **故障** ]。

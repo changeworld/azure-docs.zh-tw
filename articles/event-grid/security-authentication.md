@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid 安全性與驗證
-description: 本文說明驗證事件方格資源存取權的不同方式（WebHook、訂閱、自訂主題）
+description: 本文介紹對事件網格資源（WebHook、訂閱、自訂主題）的身份驗證訪問的不同方法
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
 ms.openlocfilehash: 0b7c5b42ac6291c6687337ba8d6a9d35830b9bda
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281011"
 ---
-# <a name="authenticating-access-to-event-grid-resources"></a>驗證對事件方格資源的存取
+# <a name="authenticating-access-to-event-grid-resources"></a>驗證對事件網格資源的存取權限
 
 Azure Event Grid 有三種驗證方法：
 
@@ -35,18 +35,18 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 
 如果您使用任何其他類型的端點 (例如以 HTTP 觸發程序為基礎的 Azure 函式)，則您的端點程式碼必須參與和「事件方格」的驗證交握。 「事件方格」支援兩種驗證訂用帳戶的方式。
 
-1. **ValidationCode 交握（以程式設計方式）** ：如果您控制端點的原始程式碼，則建議使用這個方法。 建立事件訂閱時，「事件方格」會傳送一個訂閱驗證事件給您的端點。 此事件的結構描述類似於任何其他「事件方格」事件。 此事件的資料部分包含 `validationCode` 屬性。 您的應用程式會確認該驗證要求是針對預期的事件訂閱，然後將驗證碼傳回給「事件方格」。 所有「事件方格」版本都支援此交握機制。
+1. **驗證代碼握手（程式設計）：** 如果控制終結點的原始程式碼，建議使用此方法。 建立事件訂閱時，「事件方格」會傳送一個訂閱驗證事件給您的端點。 此事件的結構描述類似於任何其他「事件方格」事件。 此事件的資料部分包含 `validationCode` 屬性。 您的應用程式會確認該驗證要求是針對預期的事件訂閱，然後將驗證碼傳回給「事件方格」。 所有「事件方格」版本都支援此交握機制。
 
-2. **ValidationURL 交握（手動）** ：在某些情況下，您無法存取端點的原始程式碼來執行 ValidationCode 交握。 例如，如果您使用第三方服務 (例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/))，就無法透過程式設計方式以驗證碼回應。
+2. **驗證URL握手（手動）：** 在某些情況下，您無法訪問終結點的原始程式碼來實現驗證代碼握手。 例如，如果您使用第三方服務 (例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/))，就無法透過程式設計方式以驗證碼回應。
 
    從 2018-05-01-preview 版開始，「事件方格」支援手動驗證交握。 如果您是以採用 API 2018-05-01-preview 版或更新版本的 SDK 或工具來建立事件訂閱，「事件方格」就會在訂閱驗證事件的資料部分中一併傳送 `validationUrl` 屬性。 若要完成交握，請在事件資料中找出該 URL，然後手動將 GET 要求傳送給它。 您可以使用 REST 用戶端或您的網頁瀏覽器。
 
-   提供的 URL 有效期限為5分鐘。 在那段時間，事件訂閱的佈建狀態為 `AwaitingManualAction`。 如果您未在5分鐘內完成手動驗證，則布建狀態會設定為 [`Failed`]。 您必須再次建立事件訂閱，才能開始進行手動驗證。
+   提供的 URL 有效期為 5 分鐘。 在那段時間，事件訂閱的佈建狀態為 `AwaitingManualAction`。 如果在 5 分鐘內未完成手動驗證，則預配狀態設置為`Failed`。 您必須再次建立事件訂閱，才能開始進行手動驗證。
 
-    此驗證機制也需要 webhook 端點傳回 HTTP 狀態碼200，讓它知道驗證事件的 POST 已接受，然後才可以進入手動驗證模式。 換句話說，如果端點傳回200，但不會以程式設計方式傳回驗證回應，則會將模式轉換成手動驗證模式。 如果在5分鐘內取得驗證 URL，驗證交握會被視為成功。
+    此身份驗證機制還要求 Webhook 終結點返回 HTTP 狀態碼 200，以便知道驗證事件的 POST 已接受，然後才能將其置於手動驗證模式。 換句話說，如果終結點返回 200，但不以程式設計方式返回驗證回應，則模式將轉換為手動驗證模式。 如果在 5 分鐘內驗證 URL 上有 GET，則驗證握手將被視為成功。
 
 > [!NOTE]
-> 不支援使用自我簽署憑證進行驗證。 請改用憑證授權單位單位（CA）所簽署的憑證。
+> 不支援使用自簽章憑證進行驗證。 改用憑證授權單位 （CA） 的已簽章憑證。
 
 ### <a name="validation-details"></a>驗證詳細資料
 
@@ -85,17 +85,17 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 }
 ```
 
-您必須傳回「HTTP 200 正常」回應狀態碼。 「HTTP 202 已接受」無法辨識為有效的「事件方格」訂閱驗證回應。 Http 要求必須在30秒內完成。 如果作業未在30秒內完成，則會取消作業，而且它可能會在5秒後 rerun。 如果所有嘗試都失敗，則會將它視為驗證交握錯誤。
+您必須傳回「HTTP 200 正常」回應狀態碼。 「HTTP 202 已接受」無法辨識為有效的「事件方格」訂閱驗證回應。 HTTP 請求必須在 30 秒內完成。 如果操作未在 30 秒內完成，則該操作將被取消，並且可能在 5 秒後重新嘗試。 如果所有嘗試都失敗，則它將被視為驗證握手錯誤。
 
-或者，您可以藉由將 GET 要求傳送至驗證 URL，以手動方式驗證訂用帳戶。 事件訂用帳戶會保持擱置狀態，直到通過驗證為止。 驗證 Url 會使用埠553。 如果您的防火牆規則封鎖埠553，則可能需要更新規則，才能成功進行手動交握。
+或者，您可以藉由將 GET 要求傳送至驗證 URL，以手動方式驗證訂用帳戶。 事件訂用帳戶會保持擱置狀態，直到通過驗證為止。 驗證 Url 使用埠 553。 如果您的防火牆規則阻止埠 553，則可能需要更新規則才能成功手動握手。
 
 如需有關處理訂閱驗證交握的範例，請參閱 [C# 範例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs) \(英文\)。
 
 ### <a name="checklist"></a>檢查清單
 
-在事件訂閱建立期間，如果您看到錯誤訊息，例如「嘗試驗證提供的端點 HTTPs：\//your-endpoint-here 失敗。 如需詳細資訊，請流覽 HTTPs：\//aka.ms/esvalidation」，這表示驗證交握失敗。 若要解決此錯誤，請執行以下幾方面的驗證：
+在創建事件訂閱期間，如果您看到一條錯誤訊息，如"嘗試驗證提供的終結點 HTTPs：/\/您的終結點-此處失敗。 有關詳細資訊，請訪問 HTTPs：\//aka.ms/esvalidation"，它指示驗證握手失敗。 若要解決此錯誤，請執行以下幾方面的驗證：
 
-* 您是否控制在目標端點中執行的應用程式程式碼？ 例如，如果您要撰寫以 HTTP 觸發程序為基礎的 Azure 函式，您是否能夠存取應用程式的程式碼而加以變更？
+* 您是否控制在目標終結點中運行的應用程式代碼？ 例如，如果您要撰寫以 HTTP 觸發程序為基礎的 Azure 函式，您是否能夠存取應用程式的程式碼而加以變更？
 * 如果您有應用程式程式碼的存取權，請實作以 ValidationCode 為基礎的交握機制，如上述範例所示。
 
 * 如果您沒有應用程式程式碼的存取權 (例如，如果您使用支援 Webhook 的第三方服務)，您可以使用手動交握機制。 請確定您使用的 API 版本是 2018-05-01-preview 或更新版本 (安裝事件方格的 Azure CLI 擴充功能)，才能接收驗證事件中的 validationUrl。 若要完成手動驗證交握，請取得 `validationUrl` 屬性的值，並在網頁瀏覽器中瀏覽該 URL。 如果驗證成功，您應該會在網頁瀏覽器中看到驗證已成功的訊息。 您會看到事件訂閱的 provisioningState 為「成功」。 
@@ -104,12 +104,12 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 
 #### <a name="azure-ad"></a>Azure AD
 
-您可以使用 Azure Active Directory 來驗證並授權事件方格，將事件發佈到您的端點，藉此保護您的 webhook 端點。 您必須建立 Azure Active Directory 應用程式、在應用程式授權事件方格中建立角色和服務主體，並設定事件訂用帳戶以使用 Azure AD 應用程式。 [瞭解如何使用事件方格設定 AAD](secure-webhook-delivery.md)。
+可以使用 Azure 活動目錄對 Webhook 終結點進行身份驗證並授權事件網格將事件發佈到終結點，從而保護您的 Webhook 終結點。 您需要創建 Azure 活動目錄應用程式，在授權事件網格的應用程式中創建角色和服務原則，並將事件訂閱配置為使用 Azure AD 應用程式。 [瞭解如何使用事件網格配置 AAD。](secure-webhook-delivery.md)
 
 #### <a name="query-parameters"></a>查詢參數
 您可以在建立事件訂閱時將查詢參數新增至 Webhook URL，以保護您的 Webhook 端點。 將這些查詢參數中的其中一個設定為祕密，例如[存取權杖](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用秘密來辨識事件是否來自「事件方格」且具有有效的權限。 事件格線會在傳遞至 Webhook 的每個事件中包含這些查詢參數。
 
-編輯事件訂閱時，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 中使用 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 參數，否則不會顯示或傳回查詢參數。
+編輯事件訂閱時，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 參數，否則不會顯示或傳回查詢參數。
 
 最後請務必注意，Azure Event Grid 只支援 HTTPS Webhook 端點。
 
@@ -188,7 +188,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-由「事件方格」服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保它會在待用時加密。 此外，事件或資料保留的最長時間為24小時，遵循[事件方格重試原則](delivery-and-retry.md)。 事件方格會在24小時或事件存留時間之後自動刪除所有事件或資料，以較少者為准。
+事件網格服務寫入磁片的所有事件或資料都由 Microsoft 管理的金鑰加密，確保它在靜態時加密。 此外，事件或資料保留的最長時間段為 24 小時，符合[事件網格重試策略](delivery-and-retry.md)。 事件網格將在 24 小時後自動刪除所有事件或資料，或者事件存留時間（以較少者為准）。
 
 ## <a name="next-steps"></a>後續步驟
 

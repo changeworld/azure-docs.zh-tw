@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器的多個 IP 位址 - PowerShell | Microsoft Docs
-description: 瞭解如何使用 PowerShell 將多個 IP 位址指派給虛擬機器。 |Resource Manager
+description: 瞭解如何使用 PowerShell 將多個 IP 位址分配給虛擬機器。 |資源管理器
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -17,10 +17,10 @@ ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
 ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279568"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 對虛擬機器指派多個 IP 位址
@@ -33,7 +33,7 @@ ms.locfileid: "79279568"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>建立有多個 IP 位址的 VM
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>建立有多個 IP 位址的 VM
 
 後續步驟說明如何使用多個 IP 位址建立範例 VM，如案例中所述。 請依據您的實作需求來變更變數值。
 
@@ -95,9 +95,9 @@ ms.locfileid: "79279568"
     -SecurityRules $NSGRule
     ```
 
-6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回 *False* 和可用位址的清單。 
+6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果不可用，輸出將返回*False*和可用地址清單。 
 
-    在下列命令中，將 \<取代為**唯一的名稱 > 取代為要使用的唯一 DNS 名稱。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
+    在以下命令中，**使用\<要使用的唯一 DNS 名稱替換唯一名稱>。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
 
     ```powershell
     
@@ -162,7 +162,7 @@ ms.locfileid: "79279568"
    ```
 
    >[!NOTE]
-   >雖然在本文中是將所有組態都指派給一個 NIC，但您也可以指派多個 IP 組態給連結到 VM 的每個 NIC。 閱讀[建立具有多個 NIC 的 VM](../virtual-machines/windows/multiple-nics.md) 文章以了解如何建立具有多個 NIC 的 VM。
+   >雖然在本文中是將所有組態都指派給一個 NIC，但您也可以指派多個 IP 組態給連結到 VM 的每個 NIC。 要瞭解如何創建具有多個 NIC 的 VM，請閱讀"[創建具有多個 NIC 的 VM"](../virtual-machines/windows/multiple-nics.md)一文。
 
 9. 輸入下列命令來建立 VM：
 
@@ -195,7 +195,7 @@ ms.locfileid: "79279568"
 
 10. 完成本文的[將 IP 位址新增至 VM 作業系統](#os-config)一節中適用於您的作業系統的步驟，將私人 IP 位址新增至 VM 作業系統。 請勿將公用 IP 位址新增至作業系統。
 
-## <a name="add"></a>將 IP 位址新增至 VM
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>將 IP 位址新增至 VM
 
 您可以完成後續步驟，將私人和公用 IP 位址新增至 Azure 網路介面。 下列各節中的範例假設您已經有一個 VM，其具有本文中的[案例](#scenario)所述的三項 IP 組態，您不需要進行設定。
 
@@ -245,7 +245,7 @@ ms.locfileid: "79279568"
 
    **新增私人 IP 位址**
 
-   若要將私人 IP 位址新增至 NIC，您必須建立 IP 組態。 下列命令會建立具有靜態 IP 位址 10.0.0.7 的組態。 指定靜態 IP 位址時，它必須是子網路未使用的位址。 建議您先輸入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令來測試地址，確定它為可用。 如果 IP 位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回 False 和可用位址的清單。
+   若要將私人 IP 位址新增至 NIC，您必須建立 IP 組態。 下列命令會建立具有靜態 IP 位址 10.0.0.7 的組態。 指定靜態 IP 位址時，它必須是子網路未使用的位址。 建議您先輸入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令來測試地址，確定它為可用。 如果 IP 位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回 False** 和可用位址的清單。
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -276,7 +276,7 @@ ms.locfileid: "79279568"
    -AllocationMethod Static
    ```
 
-   若要建立具有靜態私人 IP 位址和相關 *myPublicIp3* 公用 IP 位址資源的新 IP 組態，請輸入下列命令︰
+   要使用靜態私人 IP 位址和關聯的*myPublicIp3*公共 IP 位址資源創建新的 IP 配置，請輸入以下命令：
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -305,7 +305,7 @@ ms.locfileid: "79279568"
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   由於 IpConfig 3 的 *PublicIpAddress* 欄是空白，目前沒有與其相關聯的公用 IP 位址資源。 您可以將現有的公用 IP 位址資源新增至 IpConfig-3，或輸入下列命令以建立一個︰
+   由於 IpConfig 3** 的 **PublicIpAddress** 欄是空白，目前沒有與其相關聯的公用 IP 位址資源。 您可以將現有的公用 IP 位址資源新增至 IpConfig-3，或輸入下列命令以建立一個︰
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `

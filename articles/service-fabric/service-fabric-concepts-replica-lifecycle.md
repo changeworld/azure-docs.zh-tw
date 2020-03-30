@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 中的複本和實例
-description: 深入瞭解 Service Fabric 中的複本和實例，包括其生命週期和功能的總覽。
+title: Azure 服務結構中的副本和實例
+description: 瞭解 Service Fabric 中的副本和實例，包括其生命週期和功能概述。
 author: appi101
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258560"
 ---
 # <a name="replicas-and-instances"></a>複本和執行個體 
@@ -37,7 +37,7 @@ ms.locfileid: "79258560"
 在已卸除狀態中，執行個體不會於節點上執行。 此時，Service Fabric 會維護此執行個體相關的中繼資料 (最終也會刪除)。
 
 > [!NOTE]
-> 使用 **中的**ForceRemove`Remove-ServiceFabricReplica` 選項，便可能由任何狀態轉換為已卸除狀態。
+> 使用 `Remove-ServiceFabricReplica` 中的 **ForceRemove** 選項，便可能由任何狀態轉換為已卸除狀態。
 >
 
 ## <a name="replicas-of-stateful-services"></a>具狀態服務的複本
@@ -101,17 +101,17 @@ Service Fabric 會視需要開啟關閉的複本，例如在節點上完成升�
 >
 
 > [!NOTE]
-> 使用 **中的**ForceRemove`Remove-ServiceFabricReplica` 選項，便可能由任何狀態轉換為已卸除狀態。
+> 使用 `Remove-ServiceFabricReplica` 中的 **ForceRemove** 選項，便可能由任何狀態轉換為已卸除狀態。
 >
 
 ## <a name="replica-role"></a>複本角色 
 複本角色可決定其在複本集中的功能：
 
-- **主要 (P)** ：複本集中會有一個主要複本負責執行讀取與寫入作業。 
-- **ActiveSecondary (S)** ：這些是從主要複本接收狀態更新、套用更新並傳送認知的複本。 複本集內有多個作用中次要複本。 這些次要複本的數目會決定服務可處理的錯誤數目。
-- **IdleSecondary (I)** ：這些複本正由主要複本建立中。 它們需要先接收來自主要複本的狀態，才能夠升階至作用中次要複本。 
-- **無 (N)** ：這些複本在複本集沒有責任。
-- **未知 (U)** ：這是複本在從 Service Fabric 接收任何 **ChangeRole** API 呼叫前的初始角色。
+- **主要 (P)**：複本集中會有一個主要複本負責執行讀取與寫入作業。 
+- **ActiveSecondary (S)**：這些是從主要複本接收狀態更新、套用更新並傳送認知的複本。 複本集內有多個作用中次要複本。 這些次要複本的數目會決定服務可處理的錯誤數目。
+- **IdleSecondary (I)**：這些複本正由主要複本建立中。 它們需要先接收來自主要複本的狀態，才能夠升階至作用中次要複本。 
+- **無 (N)**：這些複本在複本集沒有責任。
+- **未知 (U)**：這是複本在從 Service Fabric 接收任何 **ChangeRole** API 呼叫前的初始角色。
 
 下圖說明複本角色轉換及一些轉換會發生的範例情節：
 

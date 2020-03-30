@@ -1,46 +1,46 @@
 ---
-title: Azure 藍圖函式
-description: 描述可用於 Azure 藍圖定義和指派中藍圖成品的函式。
+title: Azure 藍圖功能
+description: 描述可用於 Azure 藍圖定義和分配中的藍圖工件的函數。
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280673"
 ---
-# <a name="functions-for-use-with-azure-blueprints"></a>搭配 Azure 藍圖使用的函數
+# <a name="functions-for-use-with-azure-blueprints"></a>與 Azure 藍圖一起使用的函數
 
-Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可與藍圖定義和藍圖成品搭配使用。 除了透過藍圖參數取得動態值之外，Resource Manager 範本成品也支援 Resource Manager 函數的完整使用。
+Azure 藍圖提供了使藍圖定義更具動態功能的功能。 這些函數用於藍圖定義和藍圖工件。 資源管理器範本專案除了支援通過藍圖參數獲取動態值外，還支援充分利用資源管理器函數。
 
-支援下列功能：
+支援以下功能：
 
-- [成品](#artifacts)
+- [工件](#artifacts)
 - [concat](#concat)
-- [parameters](#parameters)
-- [resourceGroup](#resourcegroup)
+- [參數](#parameters)
+- [資源組](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [訂用帳戶](#subscription)
+- [訂閱](#subscription)
 
 ## <a name="artifacts"></a>構件
 
 `artifacts(artifactName)`
 
-傳回已填入藍圖成品輸出之屬性的物件。
+返回使用該藍圖工件輸出填充的屬性的物件。
 
 > [!NOTE]
-> `artifacts()` 函式無法從 Resource Manager 範本中使用。 在使用 Azure PowerShell 或 REST API 作為[藍圖即程式碼](https://github.com/Azure/azure-blueprints/blob/master/README.md)的一部分來管理藍圖時，函數只能用於藍圖定義 JSON 或成品 JSON 中。
+> 無法`artifacts()`從資源管理器範本內部使用該函數。 該函數只能在藍圖定義 JSON 或工件 JSON 中使用，當使用 Azure PowerShell 或 REST API 作為[藍圖作為代碼](https://github.com/Azure/azure-blueprints/blob/master/README.md)的一部分時，才可以使用該函數。
 
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| artifactName |是 |字串 |藍圖成品的名稱。 |
+| 專案名稱 |是 |字串 |藍圖工件的名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
-輸出屬性的物件。 **輸出**屬性取決於所參考的藍圖成品類型。 所有類型都遵循以下格式：
+輸出屬性的物件。 **輸出**屬性取決於要引用的藍圖工件的類型。 所有類型都遵循以下格式：
 
 ```json
 {
@@ -48,7 +48,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 }
 ```
 
-#### <a name="policy-assignment-artifact"></a>原則指派成品
+#### <a name="policy-assignment-artifact"></a>策略分配專案
 
 ```json
 {
@@ -60,11 +60,11 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager 範本成品
+#### <a name="resource-manager-template-artifact"></a>資源管理器範本專案
 
-傳回之物件的**輸出**屬性會定義在 Resource Manager 範本內，並由部署傳回。
+返回物件的**輸出**屬性在資源管理器範本中定義，並由部署返回。
 
-#### <a name="role-assignment-artifact"></a>角色指派成品
+#### <a name="role-assignment-artifact"></a>角色指派專案
 
 ```json
 {
@@ -78,7 +78,7 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 
 ### <a name="example"></a>範例
 
-具有識別碼_myTemplateArtifact_的 Resource Manager 範本成品，其中包含下列範例輸出屬性：
+包含以下示例輸出屬性的 ID _myTemplate 工件_的資源管理器範本專案：
 
 ```json
 {
@@ -104,15 +104,15 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 }
 ```
 
-從_myTemplateArtifact_範例中取出資料的一些範例包括：
+從_myTemplateArtifact_示例檢索資料的一些示例包括：
 
 | 運算是 | 類型 | 值 |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[「第一」、「第二」\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | 頭 |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | String | 「我的字串值」 |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty"： "my value"，"anotherProperty"： true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | 「我的價值」 |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["第一"，"第二"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "第一" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "我的字串值" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | [ "我的財產"："我的價值"，"另一個財產"：真實 | |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "我的價值" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
@@ -126,15 +126,15 @@ Azure 藍圖提供讓藍圖定義更具動態功能的函式。 這些函式可�
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | string1 |是 |字串 |串連的第一個值。 |
-| 其他引數 |否 |字串 |串連的順序中的其他值 |
+| 其他引數 |否 |字串 |按順序排列的附加值 |
 
 ### <a name="return-value"></a>傳回值
 
-串連值的字串。
+串聯值的字串。
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，它只適用于字串。
+Azure 藍圖功能不同于 Azure 資源管理器範本功能，因為它僅適用于字串。
 
 ### <a name="example"></a>範例
 
@@ -144,7 +144,7 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 
 `parameters(parameterName)`
 
-傳回藍圖參數值。 指定的參數名稱必須在藍圖定義或藍圖成品中定義。
+返回藍圖參數值。 指定的參數名稱必須在藍圖定義或藍圖工件中定義。
 
 ### <a name="parameters"></a>參數
 
@@ -154,15 +154,15 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 
 ### <a name="return-value"></a>傳回值
 
-指定之藍圖或藍圖成品參數的值。
+指定藍圖或藍圖工件參數的值。
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，它只適用于藍圖參數。
+Azure 藍圖功能不同于 Azure 資源管理器範本功能，因為它僅適用于藍圖參數。
 
 ### <a name="example"></a>範例
 
-在藍圖定義中定義參數_principalIds_ ：
+在藍圖定義中定義參數_主體 Id：_
 
 ```json
 {
@@ -184,7 +184,7 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 }
 ```
 
-然後使用_principalIds_作為藍圖成品中 `parameters()` 的引數：
+然後使用_主體 Id_作為藍圖工`parameters()`件中的參數：
 
 ```json
 {
@@ -218,13 +218,13 @@ Azure 藍圖函式與 Azure Resource Manager 範本函式不同之處在于，�
 
 ### <a name="remarks"></a>備註
 
-Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGroup()` 函數不能用在訂用帳戶層級成品或藍圖定義中。 它只能用於屬於資源群組成品一部分的藍圖成品。
+Azure 藍圖功能不同于 Azure 資源管理器範本功能。 該`resourceGroup()`函數不能用於訂閱級專案或藍圖定義。 它只能用於作為資源組工件的一部分的藍圖工件。
 
-`resourceGroup()` 函數的常見用法是在與資源群組成品相同的位置中建立資源。
+`resourceGroup()`函數的常見用途是創建與資源組專案位於同一位置的資源。
 
 ### <a name="example"></a>範例
 
-若要使用資源群組的位置，請在藍圖定義或指派期間設定為另一個成品的位置，並在藍圖定義中宣告資源群組預留位置物件。 在此範例中， _NetworkingPlaceholder_是資源群組預留位置的名稱。
+要使用資源組的位置（在藍圖定義中設置或在分配期間作為另一個專案的位置），請聲明藍圖定義中的資源組預留位置物件。 在此示例中，_網路位置擁有者_是資源組預留位置的名稱。
 
 ```json
 {
@@ -240,7 +240,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 }
 ```
 
-然後在以資源群組預留位置物件為目標的藍圖成品內容中，使用 `resourceGroup()` 函數。 在此範例中，會將範本成品部署至_NetworkingPlaceholder_資源群組，並將_NetworkingPlaceholder_資源群組位置動態填入的參數_resourceLocation_提供給範本。 _NetworkingPlaceholder_資源群組的位置可能已在藍圖定義上以靜態方式定義，或在指派期間以動態方式定義。 不論是哪一種情況，範本成品都會以參數的形式提供，並使用它將資源部署到正確的位置。
+然後在以資源`resourceGroup()`組預留位置物件的藍圖專案上下文中使用 函數。 在此示例中，範本專案部署到_網路位置擁有者_資源組中，並提供參數_資源位置位置_動態填充與_網路位置擁有者_資源組位置到範本。 _網路位置擁有者_資源組的位置可以在藍圖定義上靜態定義，也可以在分配期間動態定義。 在這兩種情況下，範本專案都作為參數提供該資訊，並用它來將資源部署到正確的位置。
 
 ```json
 {
@@ -265,13 +265,13 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 
 `resourceGroups(placeholderName)`
 
-傳回物件，表示指定的資源群組成品。 不同于需要成品內容的 `resourceGroup()`，此函式是在不在該資源群組的內容中時，用來取得特定資源群組預留位置的屬性。
+返回表示指定資源組專案的物件。 與`resourceGroup()`需要工件上下文的 不同，此函數用於獲取特定資源組預留位置的屬性，而該屬性不在該資源組的上下文中。
 
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| placeholderName |是 |字串 |要傳回之資源群組成品的預留位置名稱。 |
+| 預留位置名稱 |是 |字串 |要返回的資源組專案名。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -286,7 +286,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 
 ### <a name="example"></a>範例
 
-若要使用資源群組的位置，請在藍圖定義或指派期間設定為另一個成品的位置，並在藍圖定義中宣告資源群組預留位置物件。 在此範例中， _NetworkingPlaceholder_是資源群組預留位置的名稱。
+要使用資源組的位置（在藍圖定義中設置或在分配期間作為另一個專案的位置），請聲明藍圖定義中的資源組預留位置物件。 在此示例中，_網路位置擁有者_是資源組預留位置的名稱。
 
 ```json
 {
@@ -302,7 +302,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 }
 ```
 
-然後，從任何藍圖成品的內容使用 `resourceGroups()` 函式，以取得資源群組預留位置物件的參考。 在此範例中，範本成品會部署在_NetworkingPlaceholder_資源群組之外，並提供在範本中以_NetworkingPlaceholder_資源群組位置動態填入的參數_artifactLocation_ 。 _NetworkingPlaceholder_資源群組的位置可能已在藍圖定義上以靜態方式定義，或在指派期間以動態方式定義。 不論是哪一種情況，範本成品都會以參數的形式提供，並使用它將資源部署到正確的位置。
+然後，`resourceGroups()`使用任何藍圖工件上下文中的函數來獲取對資源組預留位置物件的引用。 在此示例中，範本專案部署在_網路位置擁有者_資源組之外，並提供參數_工件位置，_ 使用 _"網路位置"_ 資源組位置動態填充到範本。 _網路位置擁有者_資源組的位置可以在藍圖定義上靜態定義，也可以在分配期間動態定義。 在這兩種情況下，範本專案都作為參數提供該資訊，並用它來將資源部署到正確的位置。
 
 ```json
 {
@@ -327,7 +327,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 
 `subscription()`
 
-傳回目前藍圖指派之訂用帳戶的詳細資料。
+返回有關當前藍圖分配訂閱的詳細資訊。
 
 ### <a name="return-value"></a>傳回值
 
@@ -344,7 +344,7 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 
 ### <a name="example"></a>範例
 
-使用訂用帳戶的 [顯示名稱] 和 [`concat()`] 函_式，建立當做參數名稱_傳遞至範本成品的命名慣例。
+使用訂閱的顯示名稱和`concat()`函數創建作為參數_資源_傳遞給範本工件的命名約定。
 
 ```json
 {
@@ -367,9 +367,9 @@ Azure 藍圖功能與 Azure Resource Manager 範本函式不同。 `resourceGrou
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[藍圖生命週期](../concepts/lifecycle.md)。
+- 瞭解[藍圖生命週期](../concepts/lifecycle.md)。
 - 了解如何使用[靜態與動態參數](../concepts/parameters.md)。
 - 了解如何自訂[藍圖排序順序](../concepts/sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](../concepts/resource-locking.md)。
-- 了解如何[更新現有的指派](../how-to/update-existing-assignments.md)。
-- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。
+- 瞭解如何[更新現有作業](../how-to/update-existing-assignments.md)。
+- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。

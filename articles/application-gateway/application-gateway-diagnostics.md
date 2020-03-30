@@ -1,5 +1,5 @@
 ---
-title: 後端健康情況和診斷記錄
+title: 後端運行狀況和診斷日誌
 titleSuffix: Azure Application Gateway
 description: 了解如何啟用和管理應用程式閘道的存取記錄和效能記錄
 services: application-gateway
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279152"
 ---
-# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>應用程式閘道的後端健康情況和診斷記錄
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>應用程式閘道的後端運行狀況和診斷日誌
 
-您可以透過下列方式監視 Azure 應用程式閘道資源：
+您可以通過以下方式監視 Azure 應用程式閘道資源：
 
 * [後端健康情況](#back-end-health)：應用程式閘道提供透過 Azure 入口網站和 PowerShell 監視後端集區中伺服器健康情況的功能。 您也可以透過效能診斷記錄找到後端集區的健康情況。
 
 * [記錄](#diagnostic-logging)：記錄能夠儲存效能、存取和其他資料，或從資源取用記錄以便進行監視。
 
-* [計量](application-gateway-metrics.md)：應用程式閘道有數個計量，可協助您確認系統是否如預期般執行。
+* [指標](application-gateway-metrics.md)：應用程式閘道具有多個指標，可説明您驗證系統是否按預期運行。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,17 +34,17 @@ ms.locfileid: "79279152"
 後端健康情況報表會將應用程式閘道健康情況探查的輸出反映到後端執行個體。 當探查成功且後端可以接收流量，則視為狀況良好。 否則，視為狀況不良。
 
 > [!IMPORTANT]
-> 如果應用程式閘道子網上有網路安全性群組（NSG），請開啟 v1 Sku 的埠範圍65503-65534，並針對輸入流量在應用程式閘道子網上的 v2 Sku 65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 它們受到 Azure 憑證的保護 (鎖定)。 若沒有適當的憑證，外部實體 (包括這些閘道的客戶) 將無法對這些端點起始任何變更。
+> 如果應用程式閘道子網上有一個網路安全性群組 （NSG），則 v1 SKU 的開放埠範圍為 65503-65534，對於入站流量，應用程式閘道子網上的 v2 SKU 為 65200-65535。 Azure 基礎結構通訊需要此連接埠範圍。 它們受到 Azure 憑證的保護 (鎖定)。 若沒有適當的憑證，外部實體 (包括這些閘道的客戶) 將無法對這些端點起始任何變更。
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>透過入口網站檢視後端健康情況
 
-入口網站中會自動提供後端的健康情況。 在現有的應用程式閘道中，選取 [監視] >  [後端健康情況]。
+入口網站中會自動提供後端的健康情況。 在現有應用程式閘道中，選擇 **"監視** > **後端運行狀況**"。
 
-後端集區中的每個成員均會列於此頁面中 (無論是 NIC、IP 或 FQDN)。 後端集區名稱、連接埠、後端 HTTP 設定名稱和健康情況均會顯示。 健康情況的有效值為「狀況良好」、「狀況不良」和「未知」。
+後端集區中的每個成員均會列於此頁面中 (無論是 NIC、IP 或 FQDN)。 後端集區名稱、連接埠、後端 HTTP 設定名稱和健康情況均會顯示。 運行狀況的有效值為 **"健康**、**不健康**"和 **"未知**"。
 
 > [!NOTE]
-> 如果您看到後端健康情況為 [未知]，請確定 NSG 規則、使用者定義的路由 (UDR) 或虛擬網路中的自訂 DNS 並未封鎖對後端的存取。
+> 如果您看到後端健康情況為 [未知]****，請確定 NSG 規則、使用者定義的路由 (UDR) 或虛擬網路中的自訂 DNS 並未封鎖對後端的存取。
 
 ![後端健康情況][10]
 
@@ -91,13 +91,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 }
 ```
 
-## <a name="diagnostic-logging"></a>診斷記錄
+## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>診斷日誌
 
 您可以在 Azure 中使用不同類型的記錄來管理和針對應用程式閘道進行疑難排解。 您可以透過入口網站存取其中一些記錄。 可以從 Azure Blob 儲存體擷取所有記錄，並且在不同的工具中進行檢視 (例如 [Azure 監視器記錄](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI)。 您可以從下列清單進一步了解不同類型的記錄：
 
 * **活動記錄**：您可以使用 [Azure 活動記錄](../monitoring-and-diagnostics/insights-debugging-with-events.md) (之前稱為「作業記錄和稽核記錄」) 來檢視提交至您的 Azure 訂用帳戶的所有作業及其狀態。 預設會收集活動記錄，您可在 Azure 入口網站中檢視它們。
-* **存取記錄**：您可以使用此記錄來查看應用程式閘道存取模式，並分析重要資訊。 這包括呼叫端的 IP、要求的 URL、回應延遲、傳回碼，以及傳入和傳出的位元組。每300秒會收集一次存取記錄檔。 此記錄檔包含每個應用程式閘道執行個體的一筆記錄。 應用程式閘道執行個體是由 instanceId 屬性識別。
-* **效能記錄**：您可以使用此記錄來檢視應用程式閘道執行個體的執行情況。 此記錄會擷取每個執行個體的效能資訊，包括提供的要求總數、輸送量 (以位元組為單位)、提供的總要求數、失敗的要求計數、狀況良好和狀況不良的後端執行個體計數。 每隔 60 秒會收集一次效能記錄。 效能記錄僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的[計量](application-gateway-metrics.md)。
+* **訪問日誌**：您可以使用此日誌查看應用程式閘道訪問模式並分析重要資訊。 這包括調用方的 IP、請求的 URL、回應延遲、返回代碼和進出位元組。每 300 秒收集一次訪問日誌。 此記錄檔包含每個應用程式閘道執行個體的一筆記錄。 應用程式閘道執行個體是由 instanceId 屬性識別。
+* **效能記錄**：您可以使用此記錄來檢視應用程式閘道執行個體的執行情況。 此記錄會擷取每個執行個體的效能資訊，包括提供的要求總數、輸送量 (以位元組為單位)、提供的總要求數、失敗的要求計數、狀況良好和狀況不良的後端執行個體計數。 每隔 60 秒會收集一次效能記錄。 性能日誌僅適用于 v1 SKU。 對於 v2 SKU，對效能資料使用[指標](application-gateway-metrics.md)。
 * **防火牆記錄**：您可以使用此記錄，檢視透過應用程式閘道的偵測或防止模式 (依 Web 應用程式防火牆的設定) 所記錄的要求。
 
 > [!NOTE]
@@ -106,8 +106,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 您有三個選項可用來排序您的記錄：
 
 * **儲存體帳戶**：如果記錄會儲存一段較長的持續期間，並在需要時加以檢閱，則最好針對記錄使用儲存體帳戶。
-* **事件中樞**：事件中樞是與其他安全性資訊和事件管理（SIEM）工具整合的絕佳選項，可在您的資源上取得警示。
-* **Azure 監視器記錄**： Azure 監視器記錄最適合用來進行應用程式的一般即時監視，或查看趨勢。
+* **事件中心**：事件中心是與其他安全資訊和事件管理 （SIEM） 工具集成以獲取有關資源警報的絕佳選項。
+* **Azure 監視器日誌**：Azure 監視器日誌最適合用於應用程式的總體即時監視或查看趨勢。
 
 ### <a name="enable-logging-through-powershell"></a>透過 PowerShell 啟用記錄功能
 
@@ -132,7 +132,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>透過 Azure 入口網站啟用記錄功能
 
-1. 在 Azure 入口網站中，尋找您的資源，然後選取 **診斷設定**。
+1. 在 Azure 門戶中，查找資源並選擇 **"診斷設置**"。
 
    應用程式閘道有三個記錄：
 
@@ -140,23 +140,23 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 效能記錄檔
    * 防火牆記錄檔
 
-2. 若要開始收集資料，請選取 [**開啟診斷**]。
+2. 要開始收集資料，請選擇 **"打開診斷**"。
 
    ![開啟診斷][1]
 
-3. [診斷設定] 頁面中提供診斷記錄的設定。 在此範例中，Log Analytics 會儲存記錄。 您也可以使用事件中樞和儲存體帳戶來儲存診斷記錄。
+3. [診斷設定]**** 頁面中提供診斷記錄的設定。 在此範例中，Log Analytics 會儲存記錄。 您也可以使用事件中樞和儲存體帳戶來儲存診斷記錄。
 
    ![啟動設定程序][2]
 
-5. 輸入設定的名稱，確認設定，然後選取 [**儲存**]。
+5. 鍵入設置的名稱，確認設置，然後選擇 **"保存**"。
 
 ### <a name="activity-log"></a>活動記錄檔
 
-根據預設，Azure 會產生活動記錄。 記錄會在 Azure 的事件記錄存放區中保留 90 天。 閱讀[檢視事件和活動記錄](../monitoring-and-diagnostics/insights-debugging-with-events.md)一文，深入了解這些記錄。
+根據預設，Azure 會產生活動記錄。 記錄會在 Azure 的事件記錄存放區中保留 90 天。 通過閱讀["查看事件"和"活動日誌](../monitoring-and-diagnostics/insights-debugging-with-events.md)"一文，瞭解有關這些日誌的更多內容。
 
 ### <a name="access-log"></a>存取記錄檔
 
-只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個存取都會以 JSON 格式記錄，如下列 v1 範例所示：
+只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個訪問都以 JSON 格式記錄，如以下 v1 示例所示：
 
 |值  |描述  |
 |---------|---------|
@@ -173,8 +173,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sentBytes| 傳送的封包大小，單位為位元組。|
 |timeTaken| 處理要求並傳送其回應所花費的時間長度，單位為毫秒。 算法是從應用程式閘道收到 HTTP 要求的回應第一個位元組的時間，到回應傳送作業完成時的時間間隔。 請務必注意，timeTaken 欄位通常包含要求和回應封包在網路上傳輸的時間。 |
 |sslEnabled| 與後端集區的通訊是否使用 SSL。 有效值為 on 和 off。|
-|主機| 要求已傳送到後端伺服器的主機名稱。 如果即將覆寫後端主機名稱，此名稱將會反映這一點。|
-|originalHost| 應用程式閘道從用戶端接收要求的主機名稱。|
+|主機| 請求已發送到後端伺服器的主機名稱。 如果後端主機名稱被重寫，此名稱將反映這一點。|
+|原始主機| 應用程式閘道從用戶端接收請求的主機名稱。|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -200,7 +200,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     }
 }
 ```
-對於應用程式閘道和 WAF v2，記錄檔會顯示更多詳細資訊：
+對於應用程式閘道和 WAF v2，日誌顯示更多資訊：
 
 |值  |描述  |
 |---------|---------|
@@ -214,14 +214,14 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |httpVersion     | 要求的 HTTP 版本。        |
 |receivedBytes     | 接收的封包大小，單位為位元組。        |
 |sentBytes| 傳送的封包大小，單位為位元組。|
-|timeTaken| 處理要求所花費的時間長度（以**秒為單位**），以及要傳送的回應。 算法是從應用程式閘道收到 HTTP 要求的回應第一個位元組的時間，到回應傳送作業完成時的時間間隔。 請務必注意，timeTaken 欄位通常包含要求和回應封包在網路上傳輸的時間。 |
+|timeTaken| 處理請求所需的時間長度（以**秒**為單位），併發送其回應。 算法是從應用程式閘道收到 HTTP 要求的回應第一個位元組的時間，到回應傳送作業完成時的時間間隔。 請務必注意，timeTaken 欄位通常包含要求和回應封包在網路上傳輸的時間。 |
 |sslEnabled| 與後端集區的通訊是否使用 SSL。 有效值為 on 和 off。|
-|sslCipher| 用於 SSL 通訊的加密套件（如果已啟用 SSL）。|
-|sslProtocol| 使用的 SSL/TLS 通訊協定（如果已啟用 SSL）。|
-|serverRouted| 應用程式閘道將要求路由至的後端伺服器。|
+|sslCipher| 用於 SSL 通信的密碼套件（如果啟用了 SSL）。|
+|sslProtocol| 正在使用的 SSL/TLS 協定（如果啟用了 SSL）。|
+|伺服器路由| 應用程式閘道將請求路由到的後端伺服器。|
 |serverStatus| 後端伺服器的 HTTP 狀態碼。|
-|serverResponseLatency| 後端伺服器回應的延遲。|
-|主機| 要求的主機標頭中所列的位址。|
+|伺服器回應延遲| 來自後端伺服器的回應延遲。|
+|主機| 在請求的主機標頭中列出的位址。|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -253,7 +253,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="performance-log"></a>效能記錄檔
 
-只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的[計量](application-gateway-metrics.md)。 會記錄下列資料：
+只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 對於 v2 SKU，對效能資料使用[指標](application-gateway-metrics.md)。 會記錄下列資料：
 
 
 |值  |描述  |
@@ -303,7 +303,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |ruleSetVersion     | 規則集版本。 可用值為 2.2.9 和 3.0。     |
 |ruleId     | 觸發事件的規則識別碼。        |
 |message     | 方便使用的觸發事件訊息。 詳細資料區段中會提供詳細資料。        |
-|動作     |  對要求採取的動作。 可用的值會相符並遭到封鎖。      |
+|動作     |  對要求採取的動作。 可用值是匹配和阻止的。      |
 |site     | 將產生此網站的記錄。 目前只列出 Global，因為規則為全域。|
 |詳細資料     | 觸發事件的詳細資料。        |
 |details.message     | 規則的描述。        |
@@ -311,7 +311,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |details.file     | 包含規則的組態檔。        |
 |details.line     | 觸發事件的組態檔中的行號。       |
 |hostname   | 應用程式閘道的主機名稱或 IP 位址。    |
-|transactionId  | 指定交易的唯一識別碼，可協助將同一個要求中發生的多個規則違規組成群組。   |
+|transactionId  | 給定事務的唯一 ID，可説明對同一請求中發生的多個規則衝突進行分組。   |
 
 ```json
 {
@@ -348,7 +348,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 您可以使用下列任何方法，檢視和分析活動記錄資料：
 
 * **Azure 工具**：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
-* **Power BI**：如果還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，您可以免費試用。 藉由使用[Power BI 範本應用程式](https://docs.microsoft.com/power-bi/service-template-apps-overview)，您可以分析您的資料。
+* **Power BI：** 如果您還沒有[Power BI](https://powerbi.microsoft.com/pricing)帳戶，您可以免費試用它。 通過使用[Power BI 範本應用](https://docs.microsoft.com/power-bi/service-template-apps-overview)，可以分析資料。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>檢視及分析存取、效能和防火牆記錄
 
@@ -368,7 +368,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ## <a name="next-steps"></a>後續步驟
 
 * 利用 [Azure 監視器記錄](../azure-monitor/insights/azure-networking-analytics.md)將計數器和事件記錄視覺化。
-* [使用 Power BI 將您的 Azure 活動記錄視覺化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)部落格文章。
+* [使用 Power BI 博客文章視覺化 Azure 活動日誌](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)。
 * [在 Power BI 和其他工具中檢視和分析 Azure 活動記錄](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)部落格文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

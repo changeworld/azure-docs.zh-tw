@@ -10,26 +10,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246158"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管道及活動
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](v1/data-factory-create-pipelines.md)
-> * [目前的版本](concepts-pipelines-activities.md)
+> * [版本 1](v1/data-factory-create-pipelines.md)
+> * [當前版本](concepts-pipelines-activities.md)
 
 本文協助您了解 Azure Data Factory 中的管線和活動，並使用這些項目來為您的資料移動和資料處理案例建構端對端的資料導向工作流程。
 
-## <a name="overview"></a>概觀
-資料處理站可以有一或多個管線。 管線是一起執行某個工作的活動所組成的邏輯群組。 例如，管線可能包含一組內嵌和清除記錄資料的活動，然後啟動對應資料流程來分析記錄資料。 管線可讓您以集合而不是個別的方式來管理活動。 您會部署和排程管線，而不是獨立的活動。
+## <a name="overview"></a>總覽
+資料處理站可以有一或多個管線。 管線是一起執行某個工作的活動所組成的邏輯群組。 例如，管道可以包含一組引入和清理日誌資料的活動，然後啟動映射資料流程以分析日誌資料。 管道允許您將活動作為一個集而不是每個單獨的集進行管理。 您可以獨立部署和計畫管道，而不是活動。
 
-管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到「Azure Blob 儲存體」。 然後，使用「資料流程」活動或 Databricks 筆記本活動來處理資料，並將其從 blob 儲存體轉換成 Azure Synapse 分析集區，並在其中建立商業智慧報表解決方案。
+管線中的活動會定義要在資料上執行的動作。 例如，您可以使用複製活動將資料從內部部署 SQL Server 複製到「Azure Blob 儲存體」。 然後，使用資料流程活動或 Databricks 筆記本活動來處理資料並將其轉換為 Azure Synapse 分析池，在此基礎上構建了商業智慧報告解決方案。
 
-Data Factory 有三個活動群組：[資料移動活動](copy-activity-overview.md)、[資料轉換活動](transform-data.md)，以及[控制活動](control-flow-web-activity.md)。 一個活動可以接受零個或多個輸入[資料集](concepts-datasets-linked-services.md)，並且會產生一個或多個輸出[資料集](concepts-datasets-linked-services.md)。 下圖顯示 Data Factory 中管線、活動及資料集之間的關聯性：
+資料工廠有三個組的活動：[資料移動活動](copy-activity-overview.md)、[資料轉換活動](transform-data.md)[和控制活動](control-flow-web-activity.md)。 活動可以獲取零個或多個輸入[資料集](concepts-datasets-linked-services.md)，並生成一個或多個輸出[資料集](concepts-datasets-linked-services.md)。 下圖顯示 Data Factory 中管線、活動及資料集之間的關聯性：
 
 ![資料集、活動及管道之間的關聯性](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -48,41 +48,41 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 
 資料轉換活動 | 計算環境
 ---------------------------- | -------------------
-[資料流程](control-flow-execute-data-flow-activity.md) | Azure Databricks 由 Azure Data Factory 管理
-[Azure Function](control-flow-azure-function-activity.md) | Azure Functions
-[Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
+[資料流程](control-flow-execute-data-flow-activity.md) | Azure 資料實體由 Azure 資料工廠管理
+[Azure 函數](control-flow-azure-function-activity.md) | Azure Functions
+[蜂巢](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
-[MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
+[Mapreduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop 串流](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Machine Learning 活動︰批次執行和更新資源](transform-data-using-machine-learning.md) | Azure VM
 [預存程序](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 資料倉儲或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自訂活動](transform-data-using-dotnet-custom-activity.md) | Azure Batch
-[Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
-[Databricks Jar 活動](transform-data-databricks-jar.md) | Azure Databricks
-[Databricks Python 活動](transform-data-databricks-python.md) | Azure Databricks
+[資料磚筆記本](transform-data-databricks-notebook.md) | Azure Databricks
+[資料磚 Jar 活動](transform-data-databricks-jar.md) | Azure Databricks
+[資料磚 Python 活動](transform-data-databricks-python.md) | Azure Databricks
 
 如需詳細資訊，請參閱[資料轉換活動](transform-data.md)一文。
 
-## <a name="control-flow-activities"></a>控制流程活動
+## <a name="control-flow-activities"></a>控制流量活動
 支援下列的控制流程活動：
 
 控制活動 | 描述
 ---------------- | -----------
-[附加變數](control-flow-append-variable-activity.md) | 將值新增至現有的陣列變數。
-[執行管線](control-flow-execute-pipeline-activity.md) | 「執行管道」活動可讓 Data Factory 管道叫用另一個管道。
-[Filter](control-flow-filter-activity.md) | 將篩選運算式套用至輸入陣列
-[針對每個](control-flow-for-each-activity.md) | ForEach 活動可定義管道中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
+[追加變數](control-flow-append-variable-activity.md) | 向現有陣列變數添加值。
+[執行管道](control-flow-execute-pipeline-activity.md) | 「執行管道」活動可讓 Data Factory 管道叫用另一個管道。
+[篩選器](control-flow-filter-activity.md) | 將篩選器運算式應用於輸入陣列
+[對於每個](control-flow-for-each-activity.md) | ForEach 活動可定義管道中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
 [取得中繼資料](control-flow-get-metadata-activity.md) | GetMetadata 活動可用來取出 Azure Data Factory 中任何資料的中繼資料。
-[If Condition 活動](control-flow-if-condition-activity.md) | 「If 條件」可用於根據評估為 true 或 false 的條件來分支。 If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。
+[If 條件活動](control-flow-if-condition-activity.md) | 「If 條件」可用於根據評估為 true 或 false 的條件來分支。 If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。
 [查閱活動](control-flow-lookup-activity.md) | 「查閱活動」可用來讀取或查閱任何外部來源的記錄/資料表名稱/值。 此輸出可供後續活動進一步參考。
-[設定變數](control-flow-set-variable-activity.md) | 設定現有變數的值。
+[Set Variable](control-flow-set-variable-activity.md) | 設置現有變數的值。
 [Until 活動](control-flow-until-activity.md) | 實作 Do-Until 迴圈，類似於程式設計語言中的 Do-Until 迴圈結構。 它會以迴圈的方式執行一系列活動，直到與該活動相關聯的條件評估為 true 為止。 您可以在 Data Factory 中針對 until 活動指定逾時的值。
-[驗證活動](control-flow-validation-activity.md) | 確保管線只有在參考資料集存在、符合指定的準則，或已達到超時時，才會繼續執行。
-[Wait 活動](control-flow-wait-activity.md) | 在管線中使用 Wait (等待) 活動時，管線便會等待一段指定的時間，然後再繼續執行後續的活動。
+[驗證活動](control-flow-validation-activity.md) | 確保管道僅在存在參考資料集、滿足指定條件或已達到超時時繼續執行。
+[等待活動](control-flow-wait-activity.md) | 在管線中使用 Wait (等待) 活動時，管線便會等待一段指定的時間，然後再繼續執行後續的活動。
 [Web 活動](control-flow-web-activity.md) | 使用 Web 活動可以從 Data Factory 管線呼叫自訂的 REST 端點。 您可以傳遞資料集和連結服務，以供活動取用和存取。
-[Webhook 活動](control-flow-webhook-activity.md) | 使用 webhook 活動，呼叫端點並傳遞回呼 URL。 管線執行會等候回呼被叫用，然後再繼續進行下一個活動。
+[Webhook 活動](control-flow-webhook-activity.md) | 使用 Webhook 活動調用終結點並傳遞回檔 URL。 管道運行等待調用回檔，然後再繼續下一個活動。
 
 ## <a name="pipeline-json"></a>管線 JSON
 以 JSON 格式定義管道的方式如下：
@@ -111,8 +111,8 @@ NAME | 管線的名稱。 指定代表管線所執行之動作的名稱。 <br/>
 description | 指定說明管線用途的文字。 | String | 否
 活動 | [ **活動** ] 區段內可以有一或多個已定義的活動。 如需活動 JSON 元素的詳細資料，請參閱[活動 JSON](#activity-json) 一節。 | Array | 是
 參數 | **parameters** 區段可以在管道內定義一或多個參數，讓管道變得更有彈性而可重複使用。 | 清單 | 否
-並行 | 管線可以擁有的並存執行數目上限。 根據預設，沒有最大值。 若達到並行限制，則其他管線執行會排入佇列，直到先前的工作完成為止 | Number | 否 
-註釋 | 與管線相關聯的標記清單 | Array | 否
+並行 | 管道可以具有的最大併發運行數。 預設情況下，沒有最大值。 如果達到併發限制，則其他管道運行將排隊，直到較早的管道完成 | Number | 否 
+註解 | 與管道關聯的標記清單 | Array | 否
 
 ## <a name="activity-json"></a>活動 JSON
 [ **活動** ] 區段內可以有一或多個已定義的活動。 主要有兩種類型的活動：執行和控制活動。
@@ -184,8 +184,8 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
 JSON 名稱 | 描述 | 允許的值 | 必要
 --------- | ----------- | -------------- | --------
 timeout | 指定活動執行的逾時。 | Timespan | 否。 預設逾時為 7 天。
-retry | 重試次數上限 | 整數 | 否。 預設值為 0
-retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數 | 否。 預設值為30秒
+retry | 重試次數上限 | 整數  | 否。 預設值為 0
+retryIntervalInSeconds | 重試嘗試之間的延遲 (秒) | 整數  | 否。 預設值為 30 秒
 secureOutput | 設定為 true 時，活動的輸出會被視為安全，且不會記錄到監視。 | Boolean | 否。 預設值為 false。
 
 ### <a name="control-activity"></a>控制活動
@@ -209,9 +209,9 @@ Tag | 描述 | 必要
 --- | ----------- | --------
 NAME | 活動的名稱。 指定代表活動所執行之動作的名稱。<br/><ul><li>字元數目上限︰55</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元：“.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\” | 是</li><ul>
 description | 說明活動用途的文字 | 是
-type | 活動的類型。 如需了解不同類型的活動，請參閱[資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)和[控制活動](#control-flow-activities)各節。 | 是
+type | 活動的類型。 有關不同類型的[活動，請參閱資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)[和控制活動](#control-flow-activities)部分。 | 是
 typeProperties | typeProperties 區段中的屬性視每一種活動而定。 若要查看活動的類型屬性，請按一下先前小節中的活動連結。 | 否
-dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何相依於先前活動。 如需詳細資訊，請參閱[活動相依性](#activity-dependency)。 | 否
+dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何相依於先前活動。 有關詳細資訊，請參閱[活動依賴項](#activity-dependency)。 | 否
 
 ### <a name="activity-dependency"></a>活動相依性
 「活動相依性」可定義後續活動如何相依於先前活動，根據條件以決定是否繼續執行下一項工作。 一個活動可以根據不同的相依性條件，而相依於一或多個先前活動。
@@ -311,7 +311,7 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
 
 - 在活動區段中，只會有一個 **type** 設為 **Copy** 的活動。
 - 活動的輸入設定為 **InputDataset**，活動的輸出則設定為 **OutputDataset**。 若要了解如何以 JSON 定義資料集，請參閱[資料集](concepts-datasets-linked-services.md)一文。
-- 在 **typeProperties** 區段中，來源類型指定為 **BlobSource**，接收類型指定為 **SqlSink**。 在[資料移動活動](#data-movement-activities)區段中，按一下要作為來源或接收的資料存放區，以深入了解如何將資料移入/移出該資料存放區。
+- 在 **typeProperties** 區段中，來源類型指定為 **BlobSource**，接收類型指定為 **SqlSink**。 在["資料移動活動](#data-movement-activities)"部分中，按一下要用作源或接收器的資料存儲，瞭解有關將資料移至/從該資料存儲移動到/從該資料存儲的詳細資訊。
 
 如需有關建立此管道的完整逐步解說，請參閱[快速入門：建立資料處理站](quickstart-create-data-factory-powershell.md)。
 
@@ -374,7 +374,7 @@ dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何�
 
 若要讓觸發程序啟動管道執行，您必須在觸發程序定義中包含特定管道的管道參考。 管道和觸發程序具有 n-m 關聯性。 多個觸發程序可以啟動單一管道，而相同的觸發程序可以啟動多個管道。 定義觸發程序之後，您必須啟動觸發程序，才會開始觸發管道。 如需觸發程序的詳細資訊，請參閱[管道執行和觸發程序](concepts-pipeline-execution-triggers.md)一文。
 
-例如，假設您有一個排程器觸發程式「觸發 A」，我想要啟動管線「MyCopyPipeline」。 您可以如下列範例所示來定義觸發程序：
+例如，假設您有一個計畫程式觸發器，"觸發器 A"，我希望啟動我的管道，"MyCopyPipeline"。 您可以如下列範例所示來定義觸發程序：
 
 ### <a name="trigger-a-definition"></a>觸發程序 A 定義
 

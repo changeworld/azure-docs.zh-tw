@@ -1,7 +1,7 @@
 ---
 title: 管理並行存取
 titleSuffix: Azure Storage
-description: 瞭解如何管理 Blob、佇列、資料表和檔案服務的平行存取。
+description: 瞭解如何管理 Blob、佇列、表和檔服務的併發性。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,31 +11,31 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255297"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>管理 Microsoft Azure 儲存體中的並行存取
 
-新式以網際網路為基礎的應用程式通常會有多個使用者同時查看和更新資料。 這使得應用程式開發人員不得不認真思考如何為其使用者提供可預測的使用經驗，尤其是有多個使用者可更新相同資料的案例。 開發人員通常會考量三個主要的資料並行存取策略：  
+基於 Internet 的現代應用程式通常有多個使用者同時查看和更新資料。 這使得應用程式開發人員不得不認真思考如何為其使用者提供可預測的使用經驗，尤其是有多個使用者可更新相同資料的案例。 開發人員通常會考量三個主要的資料並行存取策略：  
 
 1. 開放式並行存取 – 執行更新的應用程式將在其更新的過程中，驗證在應用程式上次讀取資料後，該資料是否有所變更。 例如，如果兩個檢視 wiki 頁面的使用者對相同的頁面進行更新，則 wiki 平台必須確定第二個更新並未覆寫第一個更新，並確定兩個使用者都了解其更新是否成功。 此策略最常用在 Web 應用程式中。
-2. 封閉式並行存取 – 要執行更新的應用程式會鎖定物件以防止其他使用者更新資料，直到鎖定解除為止。 例如，在主要/從屬資料複寫案例中，只有主要複本會執行更新。 master 通常會在資料上保存一段長時間的獨佔鎖定，以確保沒有其他人可以更新它。
+2. 封閉式並行存取 – 要執行更新的應用程式會鎖定物件以防止其他使用者更新資料，直到鎖定解除為止。 例如，在主/從屬資料複製方案中，只有主資料/從屬資料複製方案中，只有主資料/從屬資料複製將執行更新，則主資料通常會在資料上長時間持有獨佔鎖，以確保其他人無法更新它。
 3. 最後寫入為準 – 此方法會直接允許任何更新作業的執行，而不會先驗證在應用程式第一次讀取資料後，是否有任何其他應用程式更新過該資料。 此策略 (或非正式策略) 通常用在因資料分割的方式而不可能有多個使用者存取相同資料的情況中。 在處理暫時性資料串流的情況中，也可以利用此策略。  
 
 本文將概略說明 Azure 儲存體平台如何為這三種並行存取策略提供絕佳支援，以簡化開發工作。  
 
-## <a name="azure-storage-simplifies-cloud-development"></a>Azure 儲存體簡化雲端開發
+## <a name="azure-storage-simplifies-cloud-development"></a>Azure 存儲簡化了雲開發
 
 Azure 儲存體服務對這三種策略都可支援，但此服務依其設計主要是要支援增強式一致性模型，以確保在儲存體服務認可資料插入或更新作業時，所有對該資料的進一步存取都可看見最新的更新，因此這項服務在為開放式和封閉式並行存取提供完整支援的能力上是有差別的。 使用最終一致性模型的儲存體平台在一個使用者執行寫入與其他使用者可看見更新資料的時間上會有延遲，因而會使用戶端應用程式的開發複雜化，以防止使用者受到不一致的影響。  
 
 除了選取適當的並行存取策略以外，開發人員也應注意儲存體平台隔離變更的方式，尤其是在不同交易間對相同物件的變更。 Azure 儲存體服務會使用快照隔離，讓讀取作業與寫入作業在單一資料分割內同時執行。 不同於其他隔離層級，快照隔離可確保所有讀取皆可看見資料的一致快照，即使在更新執行時亦然 – 基本上是藉由在更新交易進行處理時傳回最新的認可值。  
 
-## <a name="managing-concurrency-in-blob-storage"></a>管理 Blob 儲存體中的平行存取
+## <a name="managing-concurrency-in-blob-storage"></a>在 Blob 存儲中管理併發
 
-您可以選擇使用開放式或封閉式平行存取模型來管理 Blob 服務中的 blob 和容器的存取權。 如果您未明確指定策略，依預設會採用「最後寫入為準」。  
+您可以選擇使用樂觀或悲觀的併發模型來管理對 Blob 服務中的 Blob 和容器的訪問。 如果您未明確指定策略，依預設會採用「最後寫入為準」。  
 
 ### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Blob 和容器的開放式並行存取
 
@@ -49,7 +49,7 @@ Azure 儲存體服務對這三種策略都可支援，但此服務依其設計�
 4. 如果 Blob 目前的 ETag 值與要求中的 **If-Match** 條件式標頭內的 ETag 不是相同版本，服務會將 412 錯誤傳回至用戶端。 這會向用戶端指出在用戶端擷取 Blob 後，有另一個程序更新過該 Blob。
 5. 如果 Blob 目前的 ETag 值與要求中的 **If-Match** 條件式標頭內的 ETag 是相同版本，服務將會執行要求的作業，並更新 Blob 目前的 ETag 值，以顯示它已建立新版本。  
 
-下列 C# 程式碼片段 (使用用戶端儲存體程式庫 4.2.0) 所顯示的簡易範例，說明如何根據從先前擷取或插入之 Blob 的屬性中存取的 ETag 值，來建構 **If-Match AccessCondition** 。 接著它會在更新 blob 時使用 **AccessCondition** 物件：**AccessCondition** 物件會將 **If-Match** 標頭新增至要求。 如果另一個處理常式已更新 blob，則 Blob 服務會傳回 HTTP 412 （先決條件失敗）狀態訊息。 此處可下載完整的範例： [使用 Azure 儲存體管理並行存取](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
+下列 C# 程式碼片段 (使用用戶端儲存體程式庫 4.2.0) 所顯示的簡易範例，說明如何根據從先前擷取或插入之 Blob 的屬性中存取的 ETag 值，來建構 **If-Match AccessCondition** 。 接著它會在更新 blob 時使用 **AccessCondition** 物件：**AccessCondition** 物件會將 **If-Match** 標頭新增至要求。 如果另一個進程更新了 Blob，Blob 服務將返回 HTTP 412（先決條件失敗）狀態訊息。 此處可下載完整的範例： [使用 Azure 儲存體管理並行存取](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -84,7 +84,7 @@ catch (StorageException ex)
 }  
 ```
 
-Azure 儲存體也包含其他條件式標頭的支援，例如**if-Modified-自**起 **，如果是**，則為，如果是，則為，如果是- **None-Match**和其組合，則為。 如需詳細資訊，請參閱[指定 Blob 服務作業的條件式標頭](https://msdn.microsoft.com/library/azure/dd179371.aspx)。  
+Azure 存儲還包括對其他條件標頭的支援，如**If-修改-自因**、**未修改-自和** **If-None 匹配**，以及它們的組合。 有關詳細資訊，請參閱為[Blob 服務操作指定條件標頭](https://msdn.microsoft.com/library/azure/dd179371.aspx)。  
 
 下表彙總了在要求中接受條件式標頭 (例如 **If-Match** ) 以及在回應中傳回 ETag 值的容器作業。  
 
@@ -127,11 +127,11 @@ Azure 儲存體也包含其他條件式標頭的支援，例如**if-Modified-自
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Blob 的封閉式並行存取
 
-若要鎖定 Blob 以進行獨佔使用，您可以取得其 [租用](https://msdn.microsoft.com/library/azure/ee691972.aspx) 。 您取得租用時，可指定需要租用的時間長度：這可以是 15 至 60 秒，也可以是無限期 (等於獨佔鎖定)。 您可以更新有限租用而加以延伸，而且您可以在用完任何租用後加以釋放。 Blob 服務會在有限租用到期時自動加以釋放。  
+若要鎖定 Blob 以進行獨佔使用，您可以取得其 [租用](https://msdn.microsoft.com/library/azure/ee691972.aspx) 。 您取得租用時，可指定需要租用的時間長度：這可以是 15 至 60 秒，也可以是無限期 (等於獨佔鎖定)。 您可以更新有限租用而加以延伸，而且您可以在用完任何租用後加以釋放。 Blob 服務在到期時自動釋放有限的租約。  
 
 租用可讓不同的同步處理策略獲得支援，包括獨佔寫入/共用讀取、獨佔寫入/獨佔讀取和共用寫入/獨佔讀取。 只要有租用存在，儲存體服務就會強制執行獨佔寫入 (放置、設定和刪除作業)，但要確保讀取作業的獨佔性，開發人員必須確定所有的用戶端應用程式都使用同一個租用識別碼，並確定同一時間只有一個用戶端具有有效的租用識別碼。 未包含租用識別碼的讀取作業將會導致共用讀取。  
 
-下列 C# 程式碼片段說明對某個 Blob 取得獨佔租用 30 秒、更新該 Blob 的內容，然後釋放租用的範例。 當您嘗試取得新的租用時，如果 blob 上已經有有效的租用，Blob 服務會傳回「HTTP （409）衝突」狀態結果。 下列程式碼片段在要求更新儲存體服務中的 Blob 時，使用 **AccessCondition** 物件封裝租用資訊。  此處可下載完整的範例： [使用 Azure 儲存體管理並行存取](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+下列 C# 程式碼片段說明對某個 Blob 取得獨佔租用 30 秒、更新該 Blob 的內容，然後釋放租用的範例。 如果在嘗試獲取新租約時 Blob 上已有有效的租約，Blob 服務將返回"HTTP （409） 衝突"狀態結果。 下列程式碼片段在要求更新儲存體服務中的 Blob 時，使用 **AccessCondition** 物件封裝租用資訊。  此處可下載完整的範例： [使用 Azure 儲存體管理並行存取](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -160,7 +160,7 @@ catch (StorageException ex)
 }  
 ```
 
-如果您直接嘗試對已租用的 Blob 執行寫入作業，而未傳送租用識別碼，要求將會失敗，並出現 412 錯誤。 請注意，如果在呼叫 **UploadText** 方法之前租用已過期，但您仍傳送租用識別碼，要求也會失敗，並出現 **412** 錯誤。 如需管理租用到期時間和租用識別碼的詳細資訊，請參閱 [租用 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST 文件。  
+如果您直接嘗試對已租用的 Blob 執行寫入作業，而未傳送租用識別碼，要求將會失敗，並出現 412 錯誤。 請注意，如果在呼叫 **UploadText** 方法之前租用已過期，但您仍傳送租用識別碼，要求也會失敗，並出現 **412** 錯誤。 有關管理租約到期時間和租賃指示號的詳細資訊，請參閱[租約 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST 文檔。  
 
 下列 Blob 作業可使用租用來管理封閉式並行存取：  
 
@@ -201,9 +201,9 @@ catch (StorageException ex)
 * [租用容器](https://msdn.microsoft.com/library/azure/jj159103.aspx)
 * [租用 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-table-storage"></a>管理資料表儲存體中的平行存取
+## <a name="managing-concurrency-in-table-storage"></a>在表存儲中管理併發
 
-當您使用實體時，表格服務會使用開放式平行存取檢查作為預設行為，與您必須明確選擇來執行開放式平行存取檢查的 Blob 服務不同。 資料表和 Blob 服務的另一個差異在於，您只能管理實體的並行行為，而您可以使用 Blob 服務來管理容器和 blob 的平行存取。  
+使用實體時，表服務使用樂觀併發檢查作為預設行為，與 Blob 服務不同，其中必須明確選取執行樂觀併發檢查。 表和 Blob 服務之間的另一個區別是，您只能管理實體的併發行為，而使用 Blob 服務可以管理容器和 Blob 的併發。  
 
 若要使用開放式並行存取，並檢查在您從資料表儲存體服務中擷取實體後是否有其他程序修改了該實體，您可以使用您在資料表服務傳回實體時所接收的 ETag 值。 此程序大致如下：  
 
@@ -213,7 +213,7 @@ catch (StorageException ex)
 4. 如果實體目前的 ETag 值與要求中的必要 **If-Match** 標頭內的 ETag 不同，服務會將 412 錯誤傳回至用戶端。 這會向用戶端指出在用戶端擷取實體後，有另一個程序更新過該實體。
 5. 如果實體目前的 ETag 值與要求中的必要 **If-Match** 標頭內的 ETag 相同，或是 **If-Match** 標頭包含萬用字元 (*)，服務將會執行要求的作業，並更新實體目前的 ETag 值，以顯示它已更新。  
 
-請注意，與 Blob 服務不同的是，表格服務要求用戶端必須在更新要求中包含**if-match**標頭。 但如果用戶端將要求中的 **If-Match** 標頭設為萬用字元 (*)，則有可能強制執行非條件式更新 (「最後寫入為準」策略)，並略過並行存取檢查。  
+請注意，與 Blob 服務不同，表服務要求用戶端在更新要求中包含**If-Match**標頭。 但如果用戶端將要求中的 **If-Match** 標頭設為萬用字元 (*)，則有可能強制執行非條件式更新 (「最後寫入為準」策略)，並略過並行存取檢查。  
 
 下列 C# 程式碼片段說明先前建立或擷取的客戶實體更新了其電子郵件地址。 初始插入或擷取作業將 ETag 值儲存在客戶物件中，且因為範例在執行取代作業時使用了相同的物件執行個體，因此自動將 ETag 值傳回至資料表服務，使服務能夠檢查是否有並行存取違規。 如果有其他程序更新了資料表儲存體中的實體，服務將會傳回 HTTP 412 (預先指定的條件失敗) 狀態訊息。  此處可下載完整的範例： [使用 Azure 儲存體管理並行存取](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 
@@ -252,7 +252,7 @@ customer.ETag = "*";
 | 插入或取代實體 |是 |否 |
 | 插入或合併實體 |是 |否 |
 
-請注意，**插入或取代實體**和**插入或合併實體**作業並「不會」執行任何並行存取檢查，因為這些作業不會將 ETag 值傳送至資料表服務。  
+請注意，**插入或取代實體**和**插入或合併實體**作業並「不會」** 執行任何並行存取檢查，因為這些作業不會將 ETag 值傳送至資料表服務。  
 
 一般而言，使用資料表的開發人員在開發可擴充的應用程式時，應該會採用開放式並行存取。 如果需要封閉式鎖定，開發人員在存取資料表時可採用的方法之一，是為每個資料表指派一個指定 Blob，在且在操作資料表之前嘗試租用 Blob。 要使用此方法，應用程式必須確定所有資料存取路徑都在操作資料表之前取得租用。 您也應注意，最短租用時間為 15 秒，您應謹慎考量這一點以維持擴充性。  
 
@@ -271,7 +271,7 @@ customer.ETag = "*";
 * [佇列服務 REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [取得訊息](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="managing-concurrency-in-azure-files"></a>管理 Azure 檔案儲存體中的平行存取
+## <a name="managing-concurrency-in-azure-files"></a>在 Azure 檔中管理併發
 
 檔案服務可使用兩種不同的通訊協定端點來存取 – SMB 和 REST。 REST 服務不支援開放式鎖定或封閉式鎖定，且所有更新都將遵循「最後寫入為準」策略。 裝載檔案共用的 SMB 用戶端可利用檔案系統鎖定機制，來管理對共用檔案的存取 – 包括執行封閉式鎖定的功能。 SMB 用戶端在開啟檔案時，會同時指定檔案存取和共用模式。 將 [檔案存取] 選項設為 [寫入] 或 [讀取/寫入]，並將 [檔案共用] 模式設為 [無]，會使檔案被 SMB 用戶端鎖定，直到檔案關閉為止。 如果嘗試對已由 SMB 用戶端鎖定的檔案執行 REST 作業，REST 服務將會傳回狀態碼 409 (衝突) 和錯誤碼 SharingViolation。  
 

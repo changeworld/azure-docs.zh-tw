@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254478"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 1.1
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文說明透過本機 Web UI 和透過 Azure 入口網站在 StorSimple Virtual Array 上安裝 Update 1.1 時所需的步驟。
 
@@ -46,7 +46,7 @@ ms.locfileid: "79254478"
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-11.md)]
 
-安裝完成後，請移至 StorSimple 裝置管理員服務。 選取 [裝置]，然後選取並按一下您剛剛更新的裝置。 移至 [設定] > [管理] > [裝置更新]。 顯示的軟體版本應該是 **10.0.10307.0**。
+安裝完成後，請移至 StorSimple 裝置管理員服務。 選取 [裝置]****，然後選取並按一下您剛剛更新的裝置。 移至 [設定] > [管理] > [裝置更新]****。 顯示的軟體版本應該是 **10.0.10307.0**。
 
 ![更新之後的軟體版本](./media/storsimple-virtual-array-install-update-11/azupdate17m2.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "79254478"
 * 安裝更新或 Hotfix
 
 > [!IMPORTANT] 
-> **只有在執行 Update 1 （10.0.10296.0）時，才繼續進行此更新。如果您執行的是更新0.6，請先在裝置上[安裝 update 1](storsimple-virtual-array-install-update-1.md) ，然後再套用更新1.1。**
+> **僅當運行更新 1 （10.0.10296.0） 時，才繼續此更新。如果運行更新 0.6，請先在設備上[安裝更新 1，](storsimple-virtual-array-install-update-1.md)然後應用更新 1.1。**
 
 ### <a name="download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
@@ -66,17 +66,17 @@ ms.locfileid: "79254478"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
-1. 啟動 Internet Explorer 並瀏覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
+1. 啟動 Internet 資源管理器並[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)導航到 。
 
-2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]。
+2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]****。
 
-3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號。 輸入 **4337628** (適用於 Update 1.1)，然後按一下 [搜尋]。
+3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號。 輸入 **4337628** (適用於 Update 1.1)，然後按一下 [搜尋]****。
    
     此時會顯示 Hotfix 清單，例如 **StorSimple Virtual Array Update 1.1**。
    
     ![搜尋目錄](./media/storsimple-virtual-array-install-update-11/download1.png)
 
-4. 按一下 [下載]。
+4. 按一下 [下載]****
 
 5. 將兩個檔案下載至資料夾。 您也可以將資料夾複製到裝置可連線的網路共用位置。
 
@@ -99,11 +99,11 @@ ms.locfileid: "79254478"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
-1. 在本機 Web UI 中，移至 [維護] >  [軟體更新]。 記下您在執行的軟體版本。 **只有在執行 Update 1 （10.0.10296.0）時，才繼續進行此更新。如果您執行的是更新0.6，請先在裝置上[安裝 update 1](storsimple-virtual-array-install-update-1.md) ，然後再套用更新1.1。**
+1. 在本地 Web UI 中，轉到**維護** > **軟體更新**。 記下您在執行的軟體版本。 **僅當運行更新 1 （10.0.10296.0） 時，才繼續此更新。如果運行更新 0.6，請先在設備上[安裝更新 1，](storsimple-virtual-array-install-update-1.md)然後應用更新 1.1。**
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. 在 [更新檔案路徑]中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
+2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]****。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "79254478"
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. 重新啟動完成後，您就會進入 [登入] 頁面。 若要確認裝置軟體是否已更新，請在本機 Web UI 中，移至 [維護] >  [軟體更新]。 顯示的軟體版本應該是 **10.0.0.0.0.10307** (適用於 Update 1.1)。
+5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 要驗證設備軟體是否已更新，請轉到**維護** > **軟體更新**。 顯示的軟體版本應該是 **10.0.0.0.0.10307** (適用於 Update 1.1)。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10307**，而相同版本在 Azure 入口網站則會回報為 **10.0.10307.0**。

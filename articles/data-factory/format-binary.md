@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory 中的二進位格式
-description: 本主題描述如何在 Azure Data Factory 中處理二進位格式。
+title: Azure 資料工廠中的二進位格式
+description: 本主題介紹如何在 Azure 資料工廠中處理二進位格式。
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,34 +10,34 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
 ms.openlocfilehash: 8ebb4f0d1a06a7bf29dc46cd696b6acfd2527095
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260692"
 ---
-# <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory 中的二進位格式
+# <a name="binary-format-in-azure-data-factory"></a>Azure 資料工廠中的二進位格式
 
-下列連接器支援二進位格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、[檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
+支援以下連接器的二進位格式[：Amazon S3、Azure](connector-amazon-simple-storage-service.md) [Blob、Azure](connector-azure-blob-storage.md)[資料存儲湖存儲第 1 代](connector-azure-data-lake-store.md)[、Azure 資料存儲湖存儲第 2 代](connector-azure-data-lake-storage.md)[、Azure 檔存儲](connector-azure-file-storage.md)、[檔案系統](connector-file-system.md)[、FTP、Google](connector-ftp.md)[雲存儲](connector-google-cloud-storage.md)[、HDFS、HTTP](connector-hdfs.md)和[SFTP。](connector-sftp.md) [HTTP](connector-http.md)
 
-您可以在[複製活動](copy-activity-overview.md)、 [GetMetadata 活動](control-flow-get-metadata-activity.md)或[刪除活動](delete-activity.md)中使用二進位資料集。 使用二進位資料集時，ADF 不會剖析檔案內容，而是將它視為一樣。 
+您可以在[複製活動](copy-activity-overview.md)、[獲取中繼資料活動](control-flow-get-metadata-activity.md)或刪除[活動](delete-activity.md)中使用二進位資料集。 使用二進位資料集時，ADF 不會解析檔內容，而是將其視為""。 
 
 >[!NOTE]
->在複製活動中使用二進位資料集時，您只能從二進位資料集複製到二進位資料集。
+>在複製活動中使用二進位資料集時，只能從二進位資料集複製到二進位資料集。
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供二進位資料集所支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供二進位資料集支援的屬性清單。
 
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | 資料集的類型屬性必須設定為**Binary**。 | 是      |
-| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在 `location`之下都有自己的位置類型和支援的屬性。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
-| compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type | 用來讀取/寫入二進位檔案的壓縮編解碼器。 <br>允許的值為**bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**。 表示在儲存檔案時使用。<br>請注意，使用複製活動來解壓縮 ZipDeflate 檔案並寫入檔案型接收資料存放區時，檔案將會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/`。 | 否       |
-| 層級 | 壓縮比例。 適用于複製活動接收器中使用資料集時。<br>允許的值為**最佳**或**最快**。<br>- **最快：** 即使未以最佳方式壓縮所產生的檔案，壓縮作業還是應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| type             | 資料集的類型屬性必須設置為**二進位**。 | 是      |
+| location         | 檔的位置設置。 每個基於檔的連接器都有自己的位置類型和受支援的屬性。 `location` **請參閱連接器文章 ->資料集屬性部分的詳細資訊**。 | 是      |
+| compression | 用於配置檔案壓縮的屬性組。 如果要在活動執行期間執行壓縮/解壓縮，請配置此部分。 | 否 |
+| type | 用於讀取/寫入二進位檔案的壓縮編解碼器。 <br>允許的值是 bzip2、gzip、deflate、ZipDeflate 。 **bzip2** **gzip** **deflate** **ZipDeflate** 保存檔時使用。<br>注意當使用複製活動來解壓縮 ZipDeflate 檔並寫入基於檔的接收器資料存儲時，檔將提取到資料夾： `<path specified in dataset>/<folder named as source zip file>/`。 | 否       |
+| 層級 | 壓縮比。 在複製活動接收器中使用資料集時應用。<br>允許的值是**最佳**值或**最快**值。<br>- **最快：** 壓縮操作應儘快完成，即使生成的檔未以最佳方式壓縮也是如此。<br>- **最佳**： 壓縮操作應以最佳方式壓縮，即使操作需要更長的時間才能完成。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
-以下是 Azure Blob 儲存體上的二進位資料集範例：
+下面是 Azure Blob 存儲上的二進位資料集的示例：
 
 ```json
 {
@@ -64,31 +64,31 @@ ms.locfileid: "79260692"
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供二進位來源和接收所支援的屬性清單。
+如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供二進位源和接收器支援的屬性清單。
 
 >[!NOTE]
->在複製活動中使用二進位資料集時，您只能從二進位資料集複製到二進位資料集。
+>在複製活動中使用二進位資料集時，只能從二進位資料集複製到二進位資料集。
 
-### <a name="binary-as-source"></a>二進位做為來源
+### <a name="binary-as-source"></a>二進位作為源
 
-複製活動***\*來源\**** 區段中支援下列屬性。
-
-| 屬性      | 描述                                                  | 必要 |
-| ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的類型屬性必須設定為**BinarySource**。 | 是      |
-| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在 `storeSettings`之下都有自己支援的讀取設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
-
-### <a name="binary-as-sink"></a>作為接收器的二進位
-
-複製活動***\*接收\**** 區段中支援下列屬性。
+複製活動***\*源\**** 部分支援以下屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的類型屬性必須設定為**BinarySink**。 | 是      |
-| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在 `storeSettings`之下都有它自己的支援寫入設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
+| type          | 複製活動源的類型屬性必須設置為**二進位源**。 | 是      |
+| 商店設置 | 有關如何從資料存儲讀取資料的一組屬性。 每個基於檔的連接器在 下`storeSettings`都有自己的受支援的讀取設置。 **請參閱連接器文章 -> 複製活動屬性部分的詳細資訊**。 | 否       |
+
+### <a name="binary-as-sink"></a>二進位作為接收器
+
+複製活動***\*接收器\**** 部分支援以下屬性。
+
+| 屬性      | 描述                                                  | 必要 |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | 複製活動源的類型屬性必須設置為**BinarySink**。 | 是      |
+| 商店設置 | 有關如何將資料寫入資料存儲的一組屬性。 每個基於檔的連接器在 下`storeSettings`都有自己的支援的寫入設置。 **請參閱連接器文章 -> 複製活動屬性部分的詳細資訊**。 | 否       |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [複製活動概觀](copy-activity-overview.md)
-- [GetMetadata 活動](control-flow-get-metadata-activity.md)
+- [複製活動概述](copy-activity-overview.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
 - [刪除活動](delete-activity.md)

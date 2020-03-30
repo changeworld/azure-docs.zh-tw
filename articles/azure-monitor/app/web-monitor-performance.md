@@ -5,22 +5,22 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275616"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
 
-確認應用程式的運作狀況良好，以及迅速找出任何失敗。 [Application Insights][start]會告訴您任何效能問題和例外狀況，並協助您找出並診斷根本原因。
+確認應用程式的運作狀況良好，以及迅速找出任何失敗。 [Application Insights][start] 能指出任何效能問題和例外狀況，以及協助您尋找及診斷根本原因。
 
 Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、WCF 服務。 這些服務可以裝載在內部部署、虛擬機器上，或作為 Microsoft Azure 網站。 
 
 用戶端方面，Application Insights 可從網頁及各種裝置 (包括 iOS、Android 和 Windows 市集應用程式) 上取得遙測。
 
-## <a name="setup"></a>設定效能監視
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>設定效能監視
 如果您尚未將 Application Insights 新增至專案中 (亦即專案沒有 ApplicationInsights.config)，請選擇以下任一種方法來開始使用：
 
 * [ASP.NET Web 應用程式](../../azure-monitor/app/asp-net.md)
@@ -29,7 +29,7 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 * [Java EE Web 應用程式](../../azure-monitor/app/java-get-started.md)
   * [加入相依性監視](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>探索效能度量
+## <a name="exploring-performance-metrics"></a><a name="view"></a>探索效能度量
 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您為應用程式設定的 Application Insights 資源。 概觀刀鋒視窗會顯示基本的效能資料：
 
 按一下任一圖表可查看詳細資料，也能查看較長期的結果。 例如，按一下 [要求] 磚，然後選取時間範圍：
@@ -43,7 +43,7 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 > [!NOTE]
 > **取消核取所有度量** 可查看所有可供選擇的項目。 度量分為多個群組；當您選取群組的任何成員時，只有該群組的其他成員會出現。
 
-## <a name="metrics"></a>這具有哪些意義？ 效能磚和報告
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>這具有哪些意義？ 效能磚和報告
 您可以取用多種效能計量。 我們從預設顯示在應用程式分頁中的度量開始討論。
 
 ### <a name="requests"></a>Requests
@@ -94,16 +94,16 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 請小心注意系統要求您輸入臨界值時所使用的單位。
 
-*我看不到 [新增警示] 按鈕。* 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
+*我看不到"添加警報"按鈕。* 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
 
-## <a name="diagnosis"></a>診斷問題
+## <a name="diagnosing-issues"></a><a name="diagnosis"></a>診斷問題
 以下是幾個尋找及診斷效能問題的訣竅：
 
-* 設定[web 測試][availability]，以在您的網站關閉或回應錯誤或緩慢時收到警示。 
+* 設定 [Web 測試][availability]，以在網站故障、回應異常或過於緩慢時收到警示。 
 * 比較要求計數與其他度量，了解失敗或回應過慢的情況是否與負載有關。
-* 在您的程式碼中[插入和搜尋追蹤語句][diagnostic]，以協助找出問題。
-* 使用[即時計量資料流][livestream]監視操作中的 Web 應用程式。
-* 使用[快照偵錯工具][snapshot]來捕獲 .net 應用程式的狀態。
+* 在程式碼中[插入及搜尋追蹤陳述式][diagnostic]有助於找出問題所在。
+* 使用[即時計量資料流][livestream]監視作業中的 Web 應用程式。
+* 使用[快照調試器][snapshot]捕獲 .NET 應用程式的狀態。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>使用效能調查體驗尋找及修正效能瓶頸
 
@@ -130,14 +130,14 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 ![取得客戶/詳細資料，7 天範圍的時段中三個持續時間高峰](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>後續步驟
-[Web 測試][availability]-將 web 要求定期傳送給您的應用程式，從世界各地開始。
+## <a name="next-steps"></a><a name="next"></a>後續步驟
+[Web 測試][availability] - 定期從全世界傳送 Web 要求給應用程式。
 
-[捕捉及搜尋診斷追蹤][diagnostic]-插入追蹤呼叫並透過結果進行篩，以找出問題。
+[擷取及搜尋診斷追蹤][diagnostic] - 插入追蹤呼叫並詳查結果，以便找出問題所在。
 
-[使用方式追蹤][usage]-瞭解使用者如何使用您的應用程式。
+[流量追蹤][usage] - 了解使用者使用應用程式的情況。
 
-[疑難排解][qna]-和 Q & A
+[疑難排解][qna] - 以及問答集
 
 
 

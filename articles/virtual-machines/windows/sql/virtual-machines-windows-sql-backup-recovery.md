@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249772"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 備份和還原
@@ -39,7 +39,7 @@ ms.locfileid: "79249772"
 
 下列各節會更詳細地說明每一種選項。 本文的最後一節會以功能矩陣的形式提供摘要。
 
-## <a id="automated"></a> 自動備份
+## <a name="automated-backup"></a><a id="automated"></a>自動備份
 
 自動備份可為在 Azure 的 Windows VM 中執行的 SQL Server Standard 與 Enterprise 版提供自動備份服務。 此服務是由 [SQL Server IaaS 代理程式延伸模組](virtual-machines-windows-sql-server-agent-extension.md)提供的，並會自動在 Azure 入口網站中安裝於 SQL Server Windows 虛擬機器映像上。
 
@@ -55,10 +55,10 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 如需如何針對 SQL VM 設定自動備份的詳細資訊，請參閱下列其中一篇文章：
 
-- **SQL Server 2016/2017**：[適用于 Azure 虛擬機器的自動備份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
+- **SQL 伺服器 2016/2017**： [Azure 虛擬機器的自動備份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**：[SQL Server 2014 虛擬機器的自動備份](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a>適用于 SQL Vm 的 Azure 備份
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>用於 SQL VM 的 Azure 備份
 
 [Azure 備份](/azure/backup/)針對在 Azure VM 中執行的 SQL Server 提供企業級備份功能。 所有備份都會儲存在復原服務保存庫儲存中，並在那裡進行管理。 此解決方案能提供數項特別適用於企業的優點：
 
@@ -68,7 +68,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 - **集中管理和監視**：從 Azure 中的單一儀表板集中管理所有備份，包括 Azure 備份支援的其他工作負載。
 - **原則驅動的備份和保留**：針對定期備份建立標準備份原則。 建立保留原則以維護備份長達數年的時間。
 - **支援 SQL Always On**：偵測和保護 SQL Server Always On 設定，並接受備份的可用性群組備份喜好設定。
-- **15 分鐘復原點目標 (RPO)** ：設定最多以 15 分鐘為間隔的 SQL 交易記錄備份。
+- **15 分鐘復原點目標 (RPO)**：設定最多以 15 分鐘為間隔的 SQL 交易記錄備份。
 - **還原時間點**：使用入口網站將資料庫復原至特定時間點，而不必手動還原多個完整、差異和記錄備份。
 - **彙總的失敗電子郵件警示**：設定針對任何失敗的彙總電子郵件通知。
 - **角色型存取控制**：決定有哪些人員可透過入口網站管理備份或還原作業。
@@ -77,9 +77,9 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 > [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-適用于 SQL Vm 的此 Azure 備份解決方案已正式運作。 如需詳細資訊，請參閱[將 SQL Server 資料庫備份至 Azure](../../../backup/backup-azure-sql-database.md)。
+此適用于 SQL VM 的 Azure 備份解決方案通常可用。 如需詳細資訊，請參閱[將 SQL Server 資料庫備份至 Azure](../../../backup/backup-azure-sql-database.md)。
 
-## <a id="manual"></a> 手動備份
+## <a name="manual-backup"></a><a id="manual"></a> 手動備份
 
 如果您想要在 SQL VM 上手動管理備份和還原作業，根據使用的 SQL Server 版本而定，會有數個選項可供您使用。 如需備份和還原的概觀，請根據您的 SQL Server 版本參閱下列其中一篇文章：
 
@@ -143,7 +143,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 | 備份至 VM 上的已連接磁碟 |   |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 可集中自訂的備份報告 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 彙總的失敗電子郵件警示 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| 根據 Azure 監視器記錄自訂監視 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| 基於 Azure 監視器日誌自訂監視 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 使用 SSMS 或 Transact-SQL 指令碼監視備份作業 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 使用 SSMS 或 Transact-SQL 指令碼還原資料庫 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

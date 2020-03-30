@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Factory 從 Web 資料表移動資料
+title: 使用 Azure 資料工廠從 Web 表移動資料
 description: 了解如何使用 Azure Data Factory，來移動網頁上資料表的資料。
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265710"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 Web 資料表的資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](data-factory-web-table-connector.md)
+> * [版本 1](data-factory-web-table-connector.md)
 > * [第 2 版 (目前的版本)](../connector-web-table.md)
 
 > [!NOTE]
@@ -54,14 +54,14 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從內部部署的 Cassandra 資料存放區移動資料。 
 
-- 若要建立管線，最簡單的方式就是使用**複製精靈**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。 
-- 您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立內含複製活動之管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 創建管道的最簡單方法是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。 
+- 您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**，代表複製作業的輸入和輸出資料。 
-3. 建立**管線**，其中含有以一個資料集作為輸入、一個資料集作為輸出的複製活動。 
+2. 創建**資料集**以表示複製操作的輸入和輸出資料。 
+3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。 
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來從 Web 資料表複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Web 資料表複製到 Azure Blob](#json-example-copy-data-from-web-table-to-azure-blob) 一節。 
 
@@ -96,15 +96,15 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
-每個資料集類型的 **typeProperties** 區段都不同，可提供資料存放區中的資料位置資訊。 **WebTable** 類型資料集的 typeProperties 區段有下列屬性
+**TypeProperties**部分對於每種類型的資料集都不同，並提供有關資料存儲中資料位置的資訊。 **WebTable** 類型資料集的 typeProperties 區段有下列屬性
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type |資料集的類型。 必須設定為 **WebTable** |是 |
 | path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
-| 索引 |資源中資料表的索引。 如需如何取得 HTML 網頁中資料表索引的步驟，請參閱 [取得 HTML 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page) 一節。 |是 |
+| 索引 |資源中資料表的索引。 有關在 HTML 頁中獲取表索引的步驟，請參閱[獲取 HTML 頁部分中的表索引](#get-index-of-a-table-in-an-html-page)。 |是 |
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -138,9 +138,9 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 
 1. [Web](#linked-service-properties)類型的連結服務。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-3. [WebTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
-4. [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
-5. 具有使用 [WebSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
+3. [WebTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)類型的輸出[資料集](data-factory-create-datasets.md)。
+5. 具有使用 [WebSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
 
 範例會每隔一小時就把 Web 資料表的資料複製到 Azure blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -163,7 +163,7 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 }
 ```
 
-**Azure 儲存體連結服務**
+**Azure 存儲連結服務**
 
 ```json
 {
@@ -181,7 +181,7 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 **WebTable 輸入資料集** 將 **external** 設定為 **true**，等於是通知 Data Factory 服務：這是 Data Factory 外部的資料集而且不是由 Data Factory 中的活動所產生。
 
 > [!NOTE]
-> 如需如何取得 HTML 網頁中資料表索引的步驟，請參閱 [取得 HTML 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page) 一節。  
+> 有關在 HTML 頁中獲取表索引的步驟，請參閱[獲取 HTML 頁部分中的表索引](#get-index-of-a-table-in-an-html-page)。  
 >
 >
 
@@ -231,7 +231,7 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 
 
 
-**具有複製活動的管線**
+**具有複製活動的管道**
 
 此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中，**source** 類型設為 **WebSource**，而 **sink** 類型設為 **BlobSink**。
 
@@ -284,22 +284,22 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>取得 HTML 網頁中資料表的索引
-1. 啟動 **Excel 2016**，然後切換到 [資料] 索引標籤。  
-2. 按一下工具列上的 [開新查詢]、指向 [從其他來源]，然後按一下 [從 Web]。
+1. 啟動 **Excel 2016**，然後切換到 [資料]**** 索引標籤。  
+2. 按一下工具列上的 [開新查詢]****、指向 [從其他來源]****，然後按一下 [從 Web]****。
 
     ![Power Query 功能表](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. 在 [從 Web] 對話方塊中，輸入您要在連結服務 JSON 中使用的 **URL** (例如： https://en.wikipedia.org/wiki/)，以及您為資料集指定的路徑 (例如：AFI%27s_100_Years...100_Movies)，然後按一下 [確定]。
+3. 在 [從 Web]**** 對話方塊中，輸入您要在連結服務 JSON 中使用的 **URL** (例如：https://en.wikipedia.org/wiki/)，以及您為資料集指定的路徑 (例如：AFI%27s_100_Years...100_Movies)，然後按一下 [確定]****。
 
     ![[從 Web] 對話方塊](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    此範例使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. 當您看到 [存取 Web 內容] 對話方塊時，選取右側的 **URL**、**驗證方式**，然後按一下 [連線]。
+    此範例使用的 URL：https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. 當您看到 [存取 Web 內容]**** 對話方塊時，選取右側的 **URL**、**驗證方式**，然後按一下 [連線]****。
 
    ![[存取 Web 內容] 對話方塊](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. 按一下樹狀檢視中的某個**資料表**項目來查看資料表內容，然後按一下底部的 [編輯] 按鈕。  
+5. 按一下樹狀檢視中的某個**資料表**項目來查看資料表內容，然後按一下底部的 [編輯]**** 按鈕。  
 
    ![[導覽器] 對話方塊](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
-6. 在 [查詢編輯器] 視窗中，按一下工具列上的 [進階編輯器] 按鈕。
+6. 在 [查詢編輯器]**** 視窗中，按一下工具列上的 [進階編輯器]**** 按鈕。
 
     ![[進階編輯器] 按鈕](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
 7. 在 [進階編輯器] 對話方塊中，「Source」旁的數字就是索引。

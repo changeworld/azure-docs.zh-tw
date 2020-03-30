@@ -1,29 +1,29 @@
 ---
-title: 原則指派結構的詳細資料
-description: 描述 Azure 原則用來將原則定義和參數關聯至資源進行評估的原則指派定義。
+title: 策略分配結構的詳細資訊
+description: 描述 Azure 策略用於將策略定義和參數與資源相關聯以便評估的策略分配定義。
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265294"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure 原則指派結構
 
-Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或計畫。 原則指派可以在指派時決定該資源群組的參數值，讓您可以重複使用原則定義，以滿足相同的資源屬性，並具有不同的合規性需求。
+Azure 策略使用策略分配來定義分配哪些策略或計畫的資源。 策略分配可以在分配時確定該資源組的參數值，從而可以重用具有不同合規性需求的相同資源屬性的策略定義。
 
-您可以使用 JSON 來建立原則指派。 原則指派包含的元素：
+您可以使用 JSON 創建策略分配。 策略分配包含以下元素：
 
 - 顯示名稱
 - description
 - 中繼資料
 - 強制模式
-- 原則定義
+- 策略定義
 - 參數
 
-例如，下列 JSON 會以動態參數顯示_DoNotEnforce_模式中的原則指派：
+例如，以下 JSON 顯示了具有動態參數的_DoNotEnforce_模式下的策略分配：
 
 ```json
 {
@@ -47,34 +47,34 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 }
 ```
 
-所有 Azure 原則範例都位於[Azure 原則的範例](../samples/index.md)。
+所有 Azure 策略示例都在[Azure 策略示例](../samples/index.md)中。
 
 ## <a name="display-name-and-description"></a>顯示名稱和描述
 
-您可以使用**displayName**和**description**來識別原則指派，並提供與特定資源集搭配使用的內容。 **displayName** 的長度上限為 _128_ 個字元，**description** 的長度上限則為 _512_ 個字元。
+您可以使用**顯示名稱**和**說明**來標識策略分配，並提供上下文供其與特定資源集一起使用。 **displayName** 的長度上限為 _128_ 個字元，**description** 的長度上限則為 _512_ 個字元。
 
-## <a name="enforcement-mode"></a>強制模式
+## <a name="enforcement-mode"></a>執行模式
 
-**EnforcementMode**屬性可讓客戶在現有資源上測試原則結果，而不需要在[Azure 活動記錄](../../../azure-monitor/platform/platform-logs-overview.md)中起始原則效果或觸發專案。 此案例通常稱為「What If」，並與安全的部署做法一致。 **enforcementMode**與[停用](./effects.md#disabled)的效果不同，因為這會導致根本無法評估資源。
+**強制Mode**屬性使客戶能夠在不啟動策略效果或觸發[Azure 活動日誌](../../../azure-monitor/platform/platform-logs-overview.md)中的條目的情況下測試對現有資源的策略的結果。 此方案通常稱為"假設"，並符合安全部署實踐。 **強制模式**與[禁用](./effects.md#disabled)效果不同，因為該效果完全防止資源評估發生。
 
-此屬性具有下列值：
+此屬性具有以下值：
 
-|[模式] |JSON 值 |類型 |手動修復 |活動記錄專案 |描述 |
+|[模式] |JSON 值 |類型 |手動修復 |活動日誌條目 |描述 |
 |-|-|-|-|-|-|
-|啟用 |預設 |字串 |是 |是 |在資源建立或更新期間，會強制執行原則效果。 |
-|已停用 |DoNotEnforce |字串 |是 |否 | 在資源建立或更新期間不會強制執行原則效果。 |
+|啟用 |預設 |字串 |是 |是 |策略效果在資源創建或更新期間強制執行。 |
+|已停用 |不強制 |字串 |是 |否 | 策略效果在資源創建或更新期間未強制執行。 |
 
-如果未在原則或計畫定義中指定**enforcementMode** ，則會使用_預設_值。 即使**enforcementMode**設為_DoNotEnforce_，也可以針對[deployIfNotExists](./effects.md#deployifnotexists)原則啟動[補救](../how-to/remediate-resources.md)工作。
+如果在策略或計畫定義中未指定**強制模式**，則使用值 _"預設_"。 可以啟動部署["不存在](./effects.md#deployifnotexists)"策略的[修正任務](../how-to/remediate-resources.md)，即使**強制模式**設置為 _"不強制_"。
 
-## <a name="policy-definition-id"></a>原則定義識別碼
+## <a name="policy-definition-id"></a>策略定義 ID
 
-此欄位必須是原則定義或計畫定義的完整路徑名稱。
-`policyDefinitionId` 是字串，而不是陣列。 如果經常同時指派多個原則，建議您改用[計畫](./definition-structure.md#initiatives)。
+此欄位必須是策略定義或計畫定義的完整路徑名稱。
+`policyDefinitionId`是字串，而不是陣列。 建議，如果多個策略通常一起分配，則使用[一項計畫](./definition-structure.md#initiatives)。
 
 ## <a name="parameters"></a>參數
 
-原則指派的這個區段會提供[原則定義或計畫定義](./definition-structure.md#parameters)中定義之參數的值。
-這種設計可讓您以不同的資源重複使用原則或計畫定義，但檢查不同的商業價值或結果。
+策略分配的此部分為[策略定義或計畫定義](./definition-structure.md#parameters)中定義的參數提供了值。
+通過此設計，可以使用不同的資源重用策略或計畫定義，但檢查不同的業務價值或結果。
 
 ```json
 "parameters": {
@@ -87,12 +87,12 @@ Azure 原則會使用原則指派來定義哪些資源已指派哪些原則或�
 }
 ```
 
-在此範例中，先前在原則定義中定義的參數會 `prefix` 並 `suffix`。 此特定原則指派會將 `prefix` 設定為**DeptA** ，並 `suffix` 至 **-LC**。 相同的原則定義可重複用於不同部門的一組不同參數，減少原則定義的重複程度和複雜度，同時提供彈性。
+在此示例中，策略定義中以前定義的參數是`prefix`和`suffix`。 此特定策略分配集`prefix`到**部門**A`suffix`和 **-LC**。 同一策略定義可重用為不同部門設置不同的參數集，從而減少策略定義的重複和複雜性，同時提供靈活性。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[原則定義結構](./definition-structure.md)。
-- 瞭解如何以程式設計[方式建立原則](../how-to/programmatically-create.md)。
-- 瞭解如何[取得合規性資料](../how-to/get-compliance-data.md)。
-- 瞭解如何[補救不符合規範的資源](../how-to/remediate-resources.md)。
-- 透過[使用 Azure 管理群組來組織資源](../../management-groups/overview.md)來檢閱何謂管理群組。
+- 瞭解[策略定義結構](./definition-structure.md)。
+- 瞭解如何[以程式設計方式創建策略](../how-to/programmatically-create.md)。
+- 瞭解如何[獲取合規性資料](../how-to/get-compliance-data.md)。
+- 瞭解如何[修復不合規資源](../how-to/remediate-resources.md)。
+- 使用[Azure 管理組查看](../../management-groups/overview.md)管理組的內容。請組織資源。
