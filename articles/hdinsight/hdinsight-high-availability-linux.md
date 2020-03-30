@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198934"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中 Apache Hadoop 叢集的可用性和可靠性
@@ -33,7 +33,7 @@ Hadoop 藉由在叢集中的多個節點間複寫服務和資料，以達到高�
 
 為了確保 Hadoop 服務的高可用性，HDInsight 提供兩個前端節點。 這兩個前端節點會同時為作用中和在 HDInsight 叢集中執行。 有些服務 (例如 Apache HDFS 或 Apache Hadoop YARN) 在任何指定的時間都只能在一個前端節點上處於「作用中」。 HiveServer2 或 Hive MetaStore 等其他服務可同時在這兩個前端節點上作用。
 
-若要取得叢集中不同節點類型的主機名稱，請使用[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)。
+要獲取群集中不同節點類型的主機名稱，請使用[Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)。
 
 > [!IMPORTANT]  
 > 請勿將數值與節點 (不論是主要或次要) 相關聯。 數值只是用來為每個節點提供唯一名稱。
@@ -44,7 +44,7 @@ Nimbus 節點是 Apache Storm 叢集隨附的節點。 Nimbus 節點會透過在
 
 ### <a name="apache-zookeeper-nodes"></a>Apache ZooKeeper 節點
 
-[ZooKeeper](https://zookeeper.apache.org/) 節點用於前端節點上主要服務的前置選擇。 它們也可用來確保服務、資料（背景工作）節點和閘道知道主要服務在哪一個前端節點上為作用中狀態。 根據預設，HDInsight 會提供三個 ZooKeeper 節點。
+[ZooKeeper](https://zookeeper.apache.org/) 節點用於前端節點上主要服務的前置選擇。 它們還用於確保服務、資料（輔助節點）節點和閘道知道主服務在哪個頭節點處於活動狀態。 根據預設，HDInsight 會提供三個 ZooKeeper 節點。
 
 ### <a name="worker-nodes"></a>背景工作節點
 
@@ -52,7 +52,7 @@ Nimbus 節點是 Apache Storm 叢集隨附的節點。 Nimbus 節點會透過在
 
 ### <a name="edge-node"></a>邊緣節點
 
-邊緣節點不會主動參與叢集內的資料分析。 開發人員或資料科學家在使用 Hadoop 時，會使用它。 邊緣節點和叢集中的其他節點一樣，存在於相同的 Azure 虛擬網路中，也可直接存取其他所有節點。 使用邊緣節點時，不需從關鍵 Hadoop 服務或分析作業取走資源。
+邊緣節點不積極參與群集中的資料分析。 開發人員或資料科學家在使用 Hadoop 時使用它。 邊緣節點和叢集中的其他節點一樣，存在於相同的 Azure 虛擬網路中，也可直接存取其他所有節點。 使用邊緣節點時，不需從關鍵 Hadoop 服務或分析作業取走資源。
 
 目前，HDInsight 上的 ML 服務是唯一可依預設提供邊緣節點的叢集類型。 對於 HDInsight 上的 ML 服務來說，邊緣節點是用來在提交至叢集進行分散式處理之前，在本機節點上測試 R 程式碼使用。
 
@@ -60,15 +60,15 @@ Nimbus 節點是 Apache Storm 叢集隨附的節點。 Nimbus 節點會透過在
 
 ## <a name="accessing-the-nodes"></a>存取節點
 
-您可以透過公用閘道，經由網際網路存取叢集。 存取權僅限於連接到前端節點，如果有的話，則會有邊緣節點。 在前端節點上執行之服務的存取不會受到具有多個前端節點的影響。 公用閘道會將要求路由至託管已要求服務的前端節點。 例如，如果 Apache Ambari 目前裝載在次要前端節點上，閘道就會將針對 Ambari 的連入要求路由傳送至該節點。
+您可以透過公用閘道，經由網際網路存取叢集。 訪問僅限於連接到頭節點，如果存在，則連接到邊緣節點。 對頭節點上運行的服務的訪問不受具有多個頭節點的影響。 公用閘道會將要求路由至託管已要求服務的前端節點。 例如，如果 Apache Ambari 目前裝載在次要前端節點上，閘道就會將針對 Ambari 的連入要求路由傳送至該節點。
 
-公用網關的存取權僅限於埠443（HTTPS）、22和23。
+通過公共閘道的訪問僅限於埠 443 （HTTPS）、22 和 23。
 
-|Port |描述 |
+|連接埠 |描述 |
 |---|---|
-|443|用來存取裝載于前端節點上的 Ambari 和其他 web UI 或 REST Api。|
-|22|用來以 SSH 存取主要前端節點或邊緣節點。|
-|23|用來存取具有 SSH 的次要前端節點。 例如，`ssh username@mycluster-ssh.azurehdinsight.net` 會連線到名為 **mycluster** 之叢集的主要前端節點。|
+|443|用於訪問安巴里和其他託管在頭節點上的 Web UI 或 REST API。|
+|22|用於使用 SSH 訪問主頭節點或邊緣節點。|
+|23|用於使用 SSH 訪問輔助頭節點。 例如，`ssh username@mycluster-ssh.azurehdinsight.net` 會連線到名為 **mycluster** 之叢集的主要前端節點。|
 
 如需使用 SSH 的詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 文件。
 
@@ -85,7 +85,7 @@ export clusterName="CLUSTERNAME"
 curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 ```
 
-此命令會傳回類似下列的值，其中包含要與 `oozie` 命令搭配使用的內部 URL：
+此命令返回類似于以下內容的值，該值包含要與`oozie`命令一起使用的內部 URL：
 
 ```output
 "oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
@@ -95,13 +95,13 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 ### <a name="accessing-other-node-types"></a>存取其他節點類型
 
-您可以使用下列方法，連接到無法直接透過網際網路存取的節點：
+您可以使用以下方法連接到無法通過互聯網直接存取的節點：
 
 |方法 |描述 |
 |---|---|
 |SSH|使用 SSH 連線到前端節點之後，您便可以接著從前端節點使用 SSH 來連線到叢集中的其他節點。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 文件。|
-|SSH 通道|如果您需要存取裝載在其中一個節點上的 web 服務，但未公開到網際網路，您必須使用 SSH 通道。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)文件。|
-|Azure 虛擬網路|如果您的 HDInsight 叢集是「Azure 虛擬網路」的一部分，則任何在相同「虛擬網路」上的資源都可直接存取該叢集內的所有節點。 如需詳細資訊，請參閱[規劃 HDInsight 的虛擬網路](hdinsight-plan-virtual-network-deployment.md)檔。|
+|SSH隧道|如果需要訪問託管在未暴露到 Internet 的節點之一上的 Web 服務，則必須使用 SSH 隧道。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)文件。|
+|Azure 虛擬網路|如果您的 HDInsight 叢集是「Azure 虛擬網路」的一部分，則任何在相同「虛擬網路」上的資源都可直接存取該叢集內的所有節點。 有關詳細資訊，請參閱[為 HDInsight 文檔規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)。|
 
 ## <a name="how-to-check-on-a-service-status"></a>如何檢查服務狀態
 
@@ -109,64 +109,64 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-可以在 `https://CLUSTERNAME.azurehdinsight.net` 檢視 Ambari Web UI。 將 **CLUSTERNAME** 取代為您叢集的名稱。 如果出現提示，請輸入叢集的 HTTP 使用者認證。 預設 HTTP 使用者名稱為 **admin** ，密碼是您在建立叢集時輸入的密碼。
+可以在 `https://CLUSTERNAME.azurehdinsight.net` 檢視 Ambari Web UI。 將**CLUSTERNAME**替換為群集的名稱。 如果出現提示，請輸入叢集的 HTTP 使用者認證。 預設 HTTP 使用者名稱為 **admin** ，密碼是您在建立叢集時輸入的密碼。
 
 當您來到 Ambari 頁面上時，會在該頁面的左邊列出已安裝的服務。
 
-![Apache Ambari 已安裝的服務](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![阿帕奇·安巴里安裝服務](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
-服務旁可能會出現一系列圖示以表示狀態。 可以使用在頁面頂端的 [警示] 連結，檢視與服務相關的任何警示。  Ambari 提供數個預先定義的警示。
+服務旁可能會出現一系列圖示以表示狀態。 可以使用在頁面頂端的 [警示] **** 連結，檢視與服務相關的任何警示。  Ambari 提供了多個預定義的警報。
 
-下列警示可協助監視叢集的可用性：
+以下警報有助於監視群集的可用性：
 
 | 警示名稱                               | 描述                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 度量監視狀態                    | 此警示會指出計量監視器進程的狀態，由監視狀態腳本決定。                                                                                   |
-| Ambari 代理程式的心跳                   | 如果伺服器已失去與代理程式的連線，就會觸發此警示。                                                                                                                        |
-| ZooKeeper 伺服器進程                 | 如果無法判斷 ZooKeeper 伺服器進程是否已啟動並在網路上接聽，就會觸發此主機層級警示。                                                               |
-| IOCache 中繼資料伺服器狀態           | 如果無法判斷 IOCache 的中繼資料伺服器是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                            |
-| JournalNode Web UI                       | 如果無法連線到 JournalNode Web UI，就會觸發此主機層級警示。                                                                                                                 |
-| Spark2 Thrift 伺服器                     | 如果無法判斷 Spark2 Thrift 伺服器是否已啟動，則會觸發此主機層級警示。                                                                                                |
-| 歷程記錄伺服器進程                   | 如果無法建立記錄伺服器進程以在網路上啟動及接聽，就會觸發此主機層級警示。                                                                |
-| 歷程記錄伺服器 Web UI                    | 如果無法連線到歷程記錄伺服器 Web UI，就會觸發此主機層級警示。                                                                                                              |
-| `ResourceManager` Web UI                   | 如果無法連線到 `ResourceManager` Web UI，就會觸發此主機層級警示。                                                                                                             |
-| NodeManager 健全狀況摘要               | 如果有狀況不良的 NodeManagers，就會觸發此服務層級警示                                                                                                                    |
-| 應用程式時間軸 Web UI                      | 如果無法連線到應用程式時間軸伺服器 Web UI，就會觸發此主機層級警示。                                                                                                         |
-| DataNode 健全狀況摘要                  | 如果有狀況不良的 Datanode，就會觸發此服務層級警示                                                                                                                       |
-| NameNode Web UI                          | 如果無法連線到 NameNode Web UI，就會觸發此主機層級警示。                                                                                                                    |
-| ZooKeeper 容錯移轉控制器進程    | 如果無法確認 ZooKeeper 容錯移轉控制器進程是否已啟動並在網路上接聽，就會觸發此主機層級警示。                                                   |
-| Oozie 伺服器 Web UI                      | 如果無法連線到 Oozie 伺服器 Web UI，就會觸發此主機層級警示。                                                                                                                |
-| Oozie 伺服器狀態                      | 如果無法判斷 Oozie 伺服器是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                                      |
-| Hive 中繼存放區進程                   | 如果無法判斷 Hive 中繼存放區進程在網路上啟動和接聽，就會觸發此主機層級警示。                                                                 |
-| HiveServer2 流程                      | 如果無法判斷 HiveServer 是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                                        |
-| WebHCat 伺服器狀態                    | 如果 `templeton` 伺服器狀態的狀況不良，則會觸發此主機層級警示。                                                                                                            |
-| 可用的 ZooKeeper 伺服器百分比      | 如果叢集中的下層 ZooKeeper 伺服器數目大於設定的重大閾值，就會觸發此警示。 它會匯總 ZooKeeper 流程檢查的結果。     |
-| Spark2 Livy 伺服器                       | 如果無法判斷 Livy2 伺服器是否已啟動，則會觸發此主機層級警示。                                                                                                        |
-| Spark2 歷程記錄伺服器                    | 如果無法判斷 Spark2 歷程記錄伺服器是否已啟動，就會觸發此主機層級警示。                                                                                               |
-| 計量收集器進程                | 如果無法確認計量收集器已啟動，且在設定的埠上接聽的秒數等於閾值，就會觸發此警示。                                 |
-| 計量收集器-HBase Master 進程 | 如果無法確認計量收集器的 HBase 主要進程在網路上啟動並接聽已設定的重大臨界值（以秒為單位），就會觸發此警示。 |
-| 可用的計量監視百分比       | 如果計量監視進程的百分比未啟動，並在網路上接聽已設定的警告和重大臨界值，就會觸發此警示。                             |
-| 可用的 NodeManagers 百分比           | 如果叢集中的關閉 NodeManagers 數目大於設定的重大閾值，就會觸發此警示。 它會匯總 NodeManager 流程檢查的結果。        |
-| NodeManager 健全狀況                       | 此主機層級警示會檢查 NodeManager 元件中可用的節點健全狀況屬性。                                                                                              |
-| NodeManager Web UI                       | 如果無法連線到 NodeManager Web UI，就會觸發此主機層級警示。                                                                                                                 |
-| NameNode 高可用性健全狀況        | 如果作用中的 NameNode 或待命 NameNode 不在執行中，就會觸發此服務層級警示。                                                                                     |
-| DataNode 流程                         | 如果無法建立個別 DataNode 進程以在網路上啟動及接聽，則會觸發此主機層級警示。                                                         |
-| DataNode Web UI                          | 如果無法連線到 DataNode Web UI，就會觸發此主機層級警示。                                                                                                                    |
-| 可用的 JournalNodes 百分比           | 如果叢集中的關閉 JournalNodes 數目大於設定的重大閾值，就會觸發此警示。 它會匯總 JournalNode 流程檢查的結果。        |
-| 可用的 Datanode 百分比              | 如果叢集中的關閉 Datanode 數目大於設定的重大閾值，就會觸發此警示。 它會匯總 DataNode 流程檢查的結果。              |
-| Zeppelin 伺服器狀態                   | 如果無法判斷 Zeppelin 伺服器是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                                   |
-| HiveServer2 互動式進程          | 如果無法判斷 HiveServerInteractive 是否已啟動並回應用戶端要求，就會觸發此主機層級警示。                                                             |
-| LLAP 應用程式                         | 如果無法判斷 LLAP 應用程式是否已啟動並回應要求，就會觸發此警示。                                                                                    |
+| 指標監視器狀態                    | 此警報指示由監視器狀態腳本確定的指標監視器進程的狀態。                                                                                   |
+| 安巴里代理心跳                   | 如果伺服器與代理失去聯繫，將觸發此警報。                                                                                                                        |
+| 動物園管理員伺服器流程                 | 如果無法確定 ZooKeeper 伺服器進程在網路上啟動並偵聽，則觸發此主機級警報。                                                               |
+| IOCache 中繼資料伺服器狀態           | 如果無法確定 IOCache 中繼資料伺服器是啟動並回應用戶端請求，則會觸發此主機級警報                                                            |
+| 日誌節點 Web UI                       | 如果無法訪問 JournalNode Web UI，將觸發此主機級警報。                                                                                                                 |
+| Spark2 節儉伺服器                     | 如果無法確定 Spark2 節儉伺服器已啟動，則觸發此主機級警報。                                                                                                |
+| 歷史記錄伺服器進程                   | 如果無法將歷史記錄伺服器進程建立為在網路上啟動和偵聽，則觸發此主機級警報。                                                                |
+| 歷史記錄伺服器 Web UI                    | 如果無法訪問歷史記錄伺服器 Web UI，將觸發此主機級警報。                                                                                                              |
+| `ResourceManager`Web UI                   | 如果無法訪問 Web UI，`ResourceManager`將觸發此主機級警報。                                                                                                             |
+| 節點管理器運行狀況摘要               | 如果存在不正常的節點管理器，將觸發此服務等級警報                                                                                                                    |
+| 應用時間表 Web UI                      | 如果無法訪問應用時間軸伺服器 Web UI，將觸發此主機級警報。                                                                                                         |
+| 資料節點運行狀況摘要                  | 如果存在不正常的資料節點，將觸發此服務等級警報                                                                                                                       |
+| 名稱節點 Web UI                          | 如果 NameNode Web UI 無法訪問，將觸發此主機級警報。                                                                                                                    |
+| 動物園管理員容錯移轉控制器流程    | 如果無法確認 ZooKeeper 容錯移轉控制器進程在網路上啟動並偵聽，則觸發此主機級警報。                                                   |
+| Oozie 伺服器 Web UI                      | 如果無法訪問 Oozie 伺服器 Web UI，將觸發此主機級警報。                                                                                                                |
+| Oozie 伺服器狀態                      | 如果無法確定 Oozie 伺服器是啟動並回應用戶端請求，則觸發此主機級警報。                                                                      |
+| 蜂巢元存儲流程                   | 如果無法確定 Hive Metastore 進程在網路上啟動並偵聽，則觸發此主機級警報。                                                                 |
+| 蜂巢2進程                      | 如果無法確定 HiveServer 是啟動並回應用戶端請求，則觸發此主機級警報。                                                                        |
+| WebHCat 伺服器狀態                    | 如果伺服器狀態不正常，`templeton`將觸發此主機級警報。                                                                                                            |
+| 可用的動物園管理員伺服器百分比      | 如果群集中關閉的 ZooKeeper 伺服器數大於配置的關鍵閾值，則觸發此警報。 它聚合動物園守護者過程檢查的結果。     |
+| Spark2 利維伺服器                       | 如果無法確定 Livy2 伺服器已啟動，則觸發此主機級警報。                                                                                                        |
+| Spark2 歷史記錄伺服器                    | 如果無法確定 Spark2 歷史記錄伺服器已啟動，則觸發此主機級警報。                                                                                               |
+| 指標收集器流程                | 如果無法確認指標收集器在配置的埠上啟動並偵聽等於閾值的秒數，則觸發此警報。                                 |
+| 指標收集器 - HBase 主流程 | 如果無法確認指標收集器的 HBase 主進程在網路上啟動並偵聽配置的關鍵閾值（以秒為單位），則觸發此警報。 |
+| 可用的指標百分比監視器       | 如果指標監視器進程未啟動百分比，並且在網路上偵聽配置的警告和關鍵閾值，則觸發此警報。                             |
+| 可用節點管理器的百分比           | 如果群集中的下節點管理器數大於配置的關鍵閾值，則觸發此警報。 它聚合節點管理器流程檢查的結果。        |
+| 節點管理器運行狀況                       | 此主機級警報檢查 NodeManager 元件提供的節點運行狀況屬性。                                                                                              |
+| 節點管理器 Web UI                       | 如果 NodeManager Web UI 無法訪問，將觸發此主機級警報。                                                                                                                 |
+| 名稱節點高可用性運行狀況        | 如果活動 NameNode 或備用 NameNode 未運行，則觸發此服務等級警報。                                                                                     |
+| 資料節點流程                         | 如果無法將單個 DataNode 進程建立為在網路上啟動和偵聽，則觸發此主機級警報。                                                         |
+| 資料節點 Web UI                          | 如果 DataNode Web UI 無法訪問，將觸發此主機級警報。                                                                                                                    |
+| 可用的日誌節點百分比           | 如果群集中的日記節點數量大於配置的關鍵閾值，則觸發此警報。 它聚合日記本節點流程檢查的結果。        |
+| 可用資料節點的百分比              | 如果群集中的資料節點的向下資料節點數大於配置的關鍵閾值，則觸發此警報。 它聚合 DataNode 過程檢查的結果。              |
+| 澤佩林伺服器狀態                   | 如果無法確定 Zeppelin 伺服器是啟動並回應用戶端請求，則觸發此主機級警報。                                                                   |
+| 蜂巢2互動式流程          | 如果無法確定 HiveServerInteractive 是啟動並回應用戶端請求，則觸發此主機級警報。                                                             |
+| LLAP 應用程式                         | 如果無法確定 LLAP 應用程式已啟動並回應請求，則觸發此警報。                                                                                    |
 
 您可以選取每個服務來檢視其詳細資訊。
 
-雖然服務頁面提供每個服務的狀態和設定資訊，但它並不會提供服務執行所在之前端節點的相關資訊。 若要檢視這項資訊，請使用在頁面頂端的 [主機] 連結。 此頁面會顯示叢集內的主機，包括前端節點在內。
+雖然服務頁提供有關每個服務的狀態和配置的資訊，但它不提供有關服務運行的主管節點的資訊。 若要檢視這項資訊，請使用在頁面頂端的 [主機] **** 連結。 此頁面會顯示叢集內的主機，包括前端節點在內。
 
-![Apache Ambari 前端節點主機清單](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![阿帕奇安巴里頭節點主機清單](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 選取其中一個前端節點的連結會顯示該節點上執行的服務與元件。
 
-![Apache Ambari 元件狀態](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![阿帕奇安巴里元件狀態](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 如需有關使用 Ambari 的詳細資訊，請參閱[使用 Apache Ambari Web UI 來監視和管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。
 
@@ -180,8 +180,8 @@ Ambari REST API 可透過網際網路提供。 HDInsight 公用閘道器會處�
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 ```
 
-* 將 **PASSWORD** 取代為 HTTP 使用者 (系統管理員) 帳戶密碼。
-* 將 **CLUSTERNAME** 取代為叢集的名稱。
+* 將**PASSWORD**替換為 HTTP 使用者（管理員）帳戶密碼。
+* 將**CLUSTERNAME**替換為群集的名稱。
 * 將 **SERVICENAME** 取代為您要檢查其狀態的服務名稱。
 
 例如，若要檢查在名為 **mycluster** 的叢集上的 **HDFS** 服務狀態，其中密碼是 **password**，您可使用下列命令：
@@ -203,11 +203,11 @@ curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycl
 }
 ```
 
-此 URL 會告訴我們服務目前正在名為 mycluster 的前端節點上執行。 **wutj3h4ic1zejluqhxzvckxq0g**。
+URL 告訴我們，該服務目前運行在名為**mycluster.wutj3h4ic1zejluqhxqq0g**的頭節點上運行。
 
 該狀態會告訴我們此服務目前正在執行，或 **已啟動**。
 
-如果您不知道叢集上安裝了哪些服務，可以使用下列命令來取出清單：
+如果您不知道群集上安裝了哪些服務，則可以使用以下命令檢索清單：
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
@@ -223,7 +223,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 ```
 
-如果您不知道服務提供了哪些元件，您可以使用下列命令來取出清單：
+如果您不知道服務提供哪些元件，則可以使用以下命令檢索清單：
 
 ```bash
 curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
@@ -243,12 +243,12 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 類似於使用 SSH 用戶端，當連接到叢集時，您必須提供 SSH 的使用者帳戶名稱和叢集的 SSH 位址。 例如： `sftp username@mycluster-ssh.azurehdinsight.net` 。 出現提示時，請提供帳戶密碼或使用 `-i` 參數提供公開金鑰。
 
-連接之後，您就會看到 `sftp>` 提示字元。 您可以從該提示變更目錄、上傳和下載檔案。 例如：下列命令會將目錄變更至 **/var/log/hadoop/hdfs** 目錄，然後在目錄中下載所有檔案。
+連接後，將顯示提示`sftp>`。 您可以從該提示變更目錄、上傳和下載檔案。 例如：下列命令會將目錄變更至 **/var/log/hadoop/hdfs** 目錄，然後在目錄中下載所有檔案。
 
     cd /var/log/hadoop/hdfs
     get *
 
-如需可用命令清單，請在 `help` 提示中輸入 `sftp>`。
+如需可用命令清單，請在 `sftp>` 提示中輸入 `help`。
 
 > [!NOTE]  
 > 使用 SFTP 連線時，也提供圖形化介面可讓您以視覺化方式檢視檔案系統。 例如： [MobaXTerm](https://mobaxterm.mobatek.net/) 可讓您使用類似於「Windows 檔案總管」的介面瀏覽檔案系統。
@@ -258,7 +258,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 > [!NOTE]  
 > 若要使用 Ambari 存取記錄檔，您必須使用 SSH 通道。 個別服務的 Web 介面不會在網際網路上公開。 如需使用 SSH 通道的詳細資訊，請參閱[使用 SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)文件。
 
-從 Ambari Web UI 中，選取您想要檢視記錄的服務 (例如，YARN)。 然後使用 [快速連結] 來選取要檢視記錄的前端節點。
+從 Ambari Web UI 中，選取您想要檢視記錄的服務 (例如，YARN)。 然後使用 [快速連結]**** 來選取要檢視記錄的前端節點。
 
 ![使用快速連結檢視記錄](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
@@ -266,22 +266,22 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 只能在叢集建立期間選取節點的大小。 您可以在 [HDInsight 價格頁面](https://azure.microsoft.com/pricing/details/hdinsight/)找到 HDInsight 可用之不同 VM 大小的清單。
 
-建立叢集時，您可以指定節點的大小。 下列資訊提供如何使用 [ [Azure 入口網站](https://portal.azure.com/)]、[ [Azure PowerShell 模組 Az](/powershell/azureps-cmdlets-docs)] 和 [ [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)] 來指定大小的指引：
+建立叢集時，您可以指定節點的大小。 以下資訊提供有關如何使用[Azure 門戶](https://portal.azure.com/)[、Azure PowerShell 模組 Az](/powershell/azureps-cmdlets-docs)和 Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)指定大小的指導：
 
 * **Azure 入口網站**：建立叢集時，您可以設定叢集所使用的節點大小：
 
     ![可選取節點大小的 [叢集映像建立精靈]](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI**：使用[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令時，您可以使用 `--headnode-size`、`--workernode-size`和 `--zookeepernode-size` 參數來設定 Head、worker 和 ZooKeeper 節點的大小。
+* **Azure CLI**：使用[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令時，可以使用`--headnode-size`、`--workernode-size`和`--zookeepernode-size`參數設置頭、輔助角色和 ZooKeeper 節點的大小。
 
-* **Azure PowerShell**：使用 new-azhdinsightcluster 指令[程式](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)時，您可以使用 `-HeadNodeSize`、`-WorkerNodeSize`和 `-ZookeeperNodeSize` 參數來設定 Head、worker 和 ZooKeeper 節點的大小。
+* **Azure PowerShell**：使用[New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) Cmdlet 時，可以使用`-HeadNodeSize`、`-WorkerNodeSize`和`-ZookeeperNodeSize`參數設置頭、輔助角色和 ZooKeeper 節點的大小。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解本文中所討論的專案，請參閱：
+要瞭解有關本文中討論的專案的更多內容，請參閱：
 
 * [Apache Ambari REST 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [安裝和設定 Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [安裝和設定 Azure PowerShell 模組 Az](/powershell/azure/overview)
+* [安裝和配置 Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [安裝和配置 Azure PowerShell 模組 Az](/powershell/azure/overview)
 * [使用 Apache Ambari 來管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 * [佈建以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)

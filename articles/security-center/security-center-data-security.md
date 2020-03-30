@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604173"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 資訊安全中心資料安全性
@@ -49,9 +49,9 @@ Azure 資訊安全中心會分析來自下列來源的資料，以掌握您的�
 |-------------------------------------|---------------|
 | 美國、巴西、南非 | 美國 |
 | Canada                              | Canada        |
-| 歐洲（英國除外）   | 歐洲        |
+| 歐洲（不包括英國）   | 歐洲        |
 | United Kingdom                      | United Kingdom |
-| 亞洲（印度、日本、韓國、中國除外）   | 亞太地區  |
+| 亞洲（不包括印度、日本、韓國、中國）   | 亞太地區  |
 | 南韓                              | 亞太地區  |
 | 印度                               | 印度         |
 | 日本                               | 日本         |
@@ -80,8 +80,8 @@ Microsoft Monitoring Agent 會掃描各種安全性相關設定，並將其轉�
 
 客戶可以取用來自不同資料流的資訊安全中心相關資料，如下所示：
 
-* **Azure 活動**：所有安全性警示、已核准的資訊安全中心[即時](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)要求，以及彈性[應用](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)程式控制所產生的所有警示。
-* **Azure 監視器記錄**：所有安全性警示。
+* **Azure 活動**：所有安全警報、已批准的安全中心[即時](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)請求以及[自我調整應用程式控制項](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)生成的所有警報。
+* **Azure 監視器日誌**：所有安全警報。
 
 
 > [!NOTE]
@@ -90,8 +90,8 @@ Microsoft Monitoring Agent 會掃描各種安全性相關設定，並將其轉�
 ## <a name="see-also"></a>另請參閱
 在本文件中，您已了解如何在 Azure 資訊安全中心管理和保護資料。 若要深入了解 Azure 資訊安全中心，請參閱：
 
-* [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md) — 了解如何規劃及了解採用 Azure 資訊安全中心的設計考量。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健全狀況。
-* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) — 了解如何管理與回應安全性警示。
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)– 瞭解如何規劃和瞭解採用 Azure 安全中心的設計注意事項。
+* [Azure 安全中心中的安全運行狀況監視](security-center-monitoring.md)• 瞭解如何監視 Azure 資源的運行狀況
+* [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)- 瞭解如何管理和回應安全警報
+* [使用 Azure 安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)– 瞭解如何監視合作夥伴解決方案的運行狀況。
+* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)– 查找有關 Azure 安全性和合規性的博客文章

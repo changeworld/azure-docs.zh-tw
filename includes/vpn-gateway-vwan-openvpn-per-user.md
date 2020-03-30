@@ -9,23 +9,23 @@ ms.date: 01/16/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3a83fab3211175b6f1e7a5a719f00f775d147fbb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471491"
 ---
-### <a name="mfa"></a>開啟 [MFA] 頁面
+### <a name="open-the-mfa-page"></a><a name="mfa"></a>打開 MFA 頁面
 
 1. 登入 Azure 入口網站。
-2. 流覽至**Azure Active Directory-> [所有使用者**]。
-3. 選取 [**多重要素驗證**] 以開啟 [多重要素驗證] 頁面。
+2. 導航到**Azure 活動目錄 ->所有使用者**。
+3. 選擇**多重要素驗證**以打開多重要素驗證頁面。
 
    ![登入](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa1.jpg)
 
-### <a name="users"></a>選取使用者
+### <a name="select-users"></a><a name="users"></a>選擇使用者
 
-1. 在 [**多重要素驗證**] 頁面上，選取您想要啟用 MFA 的使用者。
-2. 選取 [啟用]。
+1. 在**多重要素驗證**頁上，選擇要為其啟用 MFA 的使用者。
+2. 選取 [啟用]****。
 
-   ![Select](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa2.jpg)
+   ![選取](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa2.jpg)

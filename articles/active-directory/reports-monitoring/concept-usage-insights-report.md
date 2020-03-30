@@ -1,6 +1,6 @@
 ---
-title: 使用方式和深入解析報表 |Microsoft Docs
-description: Azure Active Directory 入口網站中的使用方式和深入解析報表簡介
+title: 使用方式和見解報告 |微軟文檔
+description: Azure 活動目錄門戶中的使用方式和見解報告簡介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,46 +17,46 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008271"
 ---
-# <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的使用量和見解報告
+# <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure 活動目錄門戶中的使用方式和見解報告
 
-使用 [使用量和深入解析] 報告，您可以取得以應用程式為中心的登入資料檢視。 您可以找到下列問題的答案：
+使用使用方式和見解報告，您可以獲取以應用程式為中心的登錄資料檢視。 您可以找到以下問題的答案：
 
-*   我的組織中最常使用的應用程式為何？
-*   哪些應用程式的登入失敗？ 
-*   每個應用程式的最上層登入錯誤為何？
+*   組織中最常用的應用程式是什麼？
+*   哪些應用程式的登錄失敗最多？ 
+*   每個應用程式的頂級登錄錯誤是什麼？
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
-若要從 usage 和 insights 報表存取資料，您需要：
+要從使用方式和見解報告中訪問資料，您需要：
 
 * Azure AD 租用戶
-* 用來查看登入資料的 Azure AD premium （P1/P2）授權
-* 全域管理員、安全性系統管理員、安全性讀取者或報告讀取者角色中的使用者。 此外，任何使用者（非系統管理員）都可以存取自己的登入。 
+* Azure AD 高級版 （P1/P2） 許可證，用於查看登錄資料
+* 全域管理員、安全管理員、安全讀取器或報表讀取器角色中的使用者。 此外，任何使用者（非管理員）都可以訪問自己的登錄。 
 
-## <a name="access-the-usage-and-insights-report"></a>存取使用量和見解報告
+## <a name="access-the-usage-and-insights-report"></a>訪問使用方式和見解報告
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 選取正確的目錄，然後選取 [ **Azure Active Directory** ]，然後選擇 [**企業應用程式**]。
-3. 從 [**活動**] 區段中，選取 [**使用量 & 深入**解析] 以開啟報表。 
+1. 導航到[Azure 門戶](https://portal.azure.com)。
+2. 選擇正確的目錄，然後選擇**Azure 活動目錄**並選擇**企業應用程式**。
+3. 在 **"活動"** 部分中，選擇 **"使用方式&見解**以打開報表。 
 
 ![使用量和深入解析報告](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>使用報表
 
-[使用量和深入解析] 報告會顯示具有一或多個登入嘗試的應用程式清單，並可讓您依成功登入的次數、失敗的登入和成功率進行排序。
+使用方式和見解報告顯示嘗試一個或多個登錄的應用程式清單，並允許您按成功登錄數、登錄失敗次數和成功率進行排序。
 
-按一下清單底部的 [載入更多]，可讓您在頁面上查看其他應用程式。 您可以選取日期範圍，以查看範圍內使用的所有應用程式。
+按一下清單底部的更多載入允許您查看頁面上的其他應用程式。 您可以選擇日期範圍以查看已在範圍內使用的所有應用程式。
 
-您也可以將焦點設定在特定的應用程式上。 選取 [ **view 登入活動**]，以查看一段時間內應用程式的登入活動，以及最常見的錯誤。  
+您還可以將焦點設置為特定應用程式。 選擇**視圖登錄活動**以查看應用程式隨時間的變化登錄活動以及頂部錯誤。  
 
-當您選取 [應用程式使用量] 圖表中的日期時，您會取得應用程式的登入活動詳細清單。  
+在應用程式使用圖中選擇一天時，您將獲得應用程式登錄活動的詳細清單。  
 
 ![使用量和深入解析報告](./media/concept-usage-insights-report/usage-and-insights-report.png)
 

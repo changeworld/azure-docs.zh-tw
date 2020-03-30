@@ -1,5 +1,5 @@
 ---
-title: 將 Raspberry Pi 連線到遠端監視解決方案-node.js-Azure |Microsoft Docs
+title: 將樹莓派連接到遠端監控解決方案 - Node.js - Azure |微軟文檔
 description: 描述如何使用以 Node.js 編寫的應用程式，將 Raspberry Pi 裝置連線到遠端監視解決方案加速器。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 98d947e8aabf20fbfdb192cb80c9bc881007d5da
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889277"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>將 Raspberry Pi 裝置連線到遠端監視解決方案加速器 (Node.js)
@@ -45,7 +45,7 @@ ms.locfileid: "73889277"
 
 如果您尚未這麼做，請在 Raspberry Pi 上安裝 Node.js 4.0.0 版或更新版本。 下列步驟向您示範如何在 Raspberry Pi 上安裝 Node.js v6：
 
-1. 使用 `ssh` 連線至您的 Raspberry Pi。 如需詳細資訊，請參閱 [Raspberry Pi 網站](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)上的 [SSH (安全殼層)](https://www.raspberrypi.org/)。
+1. 使用 `ssh` 連線至您的 Raspberry Pi。 如需詳細資訊，請參閱 [Raspberry Pi 網站](https://www.raspberrypi.org/)上的 [SSH (安全殼層)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)。
 
 1. 若要更新 Raspberry Pi，請使用下列命令︰
 

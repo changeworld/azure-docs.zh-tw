@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73590514"
 ---
-下列限制適用于每個 Azure 訂用帳戶的認知服務資源數目。 每個認知服務可能會有額外的限制，如需詳細資訊，請參閱[Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/)。
+以下限制針對每個 Azure 訂閱的認知服務資源數。 每個認知服務可能都有其他限制，有關詳細資訊，請參閱 Azure[認知服務](https://docs.microsoft.com/azure/cognitive-services/)。
 
 | 類型 | 限制 | 範例 |
 |------|-------|---------|
-| 認知服務資源的混合 | 最多200認知服務資源總計。 | 100電腦視覺美國西部的美國西部2、50語音服務資源中的資源，以及50美國東部的文字分析資源。 |
-| 單一類型的認知服務資源。 | 每個區域最多100個資源，最大值為200認知服務資源總計。 | 100電腦視覺在美國東部的美國西部2和100電腦視覺資源中的資源。 |
+| 認知服務資源的混合 | 最多 200 個認知服務資源。 | 美國西部的 100 個電腦視覺資源 2、美國西部的 50 個語音服務資源以及美國東部的 50 個文本分析資源。 |
+| 一種類型的認知服務資源。 | 每個區域最多 100 個資源，最多 200 個認知服務資源。 | 美國西部的 100 個電腦視覺資源 2， 和美國東部的 100 個電腦視覺資源。 |

@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：優化路由
+title: Azure 快速路由：優化路由
 description: 此頁面提供當您有一個以上的 ExpressRoute 線路連接 Microsoft 與您的公司網路時，如何最佳化路由的詳細資訊。
 services: expressroute
 author: charwen
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74080127"
 ---
 # <a name="optimize-expressroute-routing"></a>最佳化 ExpressRoute 路由
 當您有多個 ExpressRoute 線路時，會有一個以上的路徑來連線到 Microsoft。 因此，可能會產生次佳的路由 - 也就是，您的流量可能會經由較長的路徑連到 Microsoft，而 Microsoft 也可能會經由較長的路徑連到您的網路。 網路路徑愈常，延遲愈久。 延遲對於應用程式效能和使用者體驗有直接的影響。 本文將說明這個問題，並說明如何使用標準路由技術來最佳化路由。
 
-## <a name="path-selection-on-microsoft-and-public-peerings"></a>在 Microsoft 和公用對等互連上選取路徑
-在利用 Microsoft 或公用對等互連時，如果您有一或多個 ExpressRoute 線路，以及透過網際網路交換（IX）或網際網路服務提供者（ISP）連到網際網路的路徑，就一定要確定流量會流經所需的路徑。 BGP 會根據數個因素（包括最長的前置詞比對（LPM）），利用最佳路徑選取演算法。 若要確保透過 Microsoft 或公用對等互連以 Azure 為目標的流量會通過 ExpressRoute 路徑，客戶必須執行*本機喜好*設定屬性，以確保在 ExpressRoute 上一律慣用路徑。 
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>微軟和公共對等互連的直接選取
+請務必確保，在使用 Microsoft 或公共對等互連時，如果您有一個或多個 ExpressRoute 電路以及通過 Internet Exchange （IX） 或 Internet 服務提供者 （ISP） 訪問 Internet 的路徑，則流量會流過所需路徑。 BGP 利用基於許多因素的最佳直接選取演算法，包括最長的首碼匹配 （LPM）。 為了確保通過 Microsoft 或公共對等互連發送到 Azure 的流量遍歷 ExpressRoute 路徑，客戶必須實現*本地首選項*屬性，以確保路徑始終在 ExpressRoute 上首選。 
 
 > [!NOTE]
-> 預設的本機喜好設定通常是100。 較高的本機喜好設定更慣用。 
+> 預設本地首選項通常為 100。 較高的本地偏好更可取。 
 >
 >
 
-請考慮下列範例案例：
+請考慮以下示例方案：
 
 ![ExpressRoute 案例 1 問題 - 從客戶到 Microsoft 的次佳化路由](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
-在上述範例中，若要使用 ExpressRoute 路徑，請依照下列方式設定本機喜好設定。 
+在上面的示例中，要首選 ExpressRoute 路徑，請按如下方式配置本地首選項。 
 
-**Cisco IOS-從 R1 觀點的 XE 設定：**
+**從 R1 角度考慮思科 IOS-XE 配置：**
 
     R1(config)#route-map prefer-ExR permit 10
     R1(config-route-map)#set local-preference 150
@@ -41,7 +41,7 @@ ms.locfileid: "74080127"
     R1(config-router)#neighbor 1.1.1.2 activate
     R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
-**從 R1 觀點來 Junos 設定：**
+**從 R1 角度配置 Junos：**
 
     user@R1# set protocols bgp group ibgp type internal
     user@R1# set protocols bgp group ibgp local-preference 150
@@ -74,7 +74,7 @@ ms.locfileid: "74080127"
 第二個解決方案是您繼續告知兩個 ExpressRoute 線路上的兩個前置詞，此外請提供哪個前置詞接近哪個辦公室的提示。 因為我們支援 BGP AS PATH 前置，所以您可以設定前置詞的 AS PATH 來影響路由。 在此範例中，您可以延長美國東部 172.2.0.0/31 的 AS PATH，以致我們偏好將美國西部的 ExpressRoute 線路用於以此前置詞為目的地的流量 (因為我們的網路會認為此前置詞的路徑在西部比較短)。 同樣地，您可以延長美國西部 172.2.0.2/31 的 AS PATH，以致我們偏好美國東部的 ExpressRoute 線路。 這兩個辦公室的路由均已最佳化。 採用這個設計，如果一個 ExpressRoute 路線已中斷，Exchange Online 仍可透過另一個 ExpressRoute 線路和您的 WAN 來觸達您。 
 
 > [!IMPORTANT]
-> 當使用私用 AS 號碼進行對等互連時，我們會針對 Microsoft 對等互連上收到的首碼，移除 AS 路徑中的私用 AS 編號。 您需要對等互連，並在 AS 路徑中附加 public as 作為數位，以影響 Microsoft 對等的路由。
+> 我們使用專用 AS 編號對等互連時，刪除 AS PATH 中收到的 Microsoft 對等互連中收到的專用 AS 編號。 您需要與公共 AS 對等和對 AS PATH 中的公共 AS 編號進行對等，以影響 Microsoft 對等互連的路由。
 > 
 > 
 

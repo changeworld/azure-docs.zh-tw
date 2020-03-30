@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152919"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 網路監看員進行封包檢查
@@ -51,7 +51,7 @@ ms.locfileid: "77152919"
 
 ### <a name="step-3"></a>步驟 3
 
-若要在 TCP 對話中檢視初始的來回時間 (RTT)，我們將只會看到參與 TCP 交握的前兩個封包。 我們將在三向交握中使用前兩個封包，也就是 [SYN]、[SYN, ACK] 封包。 它們會針對 TCP 標頭中設定的旗標命名。 在交握期間的最後一個封包 ([ACK] 封包) 不會用於此案例。 [SYN] 封包會由用戶端傳送。 一旦收到，伺服器就會傳送 [ACK] 封包，做為從用戶端接收 SYN 的認可。 利用伺服器的回應需要極少額外負荷的特性，我們將用戶端接收 [SYN, ACK] 封包的時間減去用戶端傳送 [SYN] 封包的時間來計算 RTT。
+若要在 TCP 對話中檢視初始的來回時間 (RTT)，我們將只會看到參與 TCP 交握的前兩個封包。 我們將在三向交握中使用前兩個封包，也就是 [SYN]、[SYN, ACK] 封包。 它們會針對 TCP 標頭中設定的旗標命名。 在交握期間的最後一個封包 ([ACK] 封包) 不會用於此案例。 [SYN] 封包會由用戶端傳送。 收到後，伺服器將發送 [ACK] 資料包作為從用戶端接收 SYN 的確認。 利用伺服器的回應需要極少額外負荷的特性，我們將用戶端接收 [SYN, ACK] 封包的時間減去用戶端傳送 [SYN] 封包的時間來計算 RTT。
 
 使用 WireShark，系統會為我們計算此值。
 
@@ -77,7 +77,7 @@ ms.locfileid: "77152919"
 
 ### <a name="step-1"></a>步驟 1
 
-使用先前案例中相同的擷取按一下 [統計資料] > [通訊協定階層]
+在上一個方案中使用相同的捕獲，按一下 **"統計資訊** > **協定層次結構"**
 
 ![通訊協定階層功能表][2]
 
@@ -93,7 +93,7 @@ ms.locfileid: "77152919"
 
 ### <a name="step-1"></a>步驟 1
 
-使用先前案例中相同的擷取按一下 [統計資料] > [IPv4 統計資料] > [目的地和連接埠]
+在上一個方案中使用相同的捕獲，按一下**統計資訊** > **IPv4 統計資訊** > **目的地和埠**
 
 ![封包擷取視窗][4]
 

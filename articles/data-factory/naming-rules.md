@@ -1,5 +1,5 @@
 ---
-title: 命名 Azure Data Factory 實體的規則
+title: 命名 Azure 資料工廠實體的規則
 description: 描述 Data Factory 實體的命名規則。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 59cddf04493333b441dcf130d1d99d4fa946748c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837838"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 命名規則

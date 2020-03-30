@@ -1,6 +1,6 @@
 ---
-title: 使用入口網站進行維護通知
-description: 查看在 Azure 中執行之虛擬機器的維護通知，並使用入口網站啟動自助維護。
+title: 使用門戶進行維護通知
+description: 查看在 Azure 中運行的虛擬機器的維護通知，並使用門戶啟動自助服務維護。
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115733"
 ---
-# <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用入口網站處理預定的維護通知
+# <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用門戶處理計畫維護通知
 
-**本文適用于同時執行 Linux 和 Windows 的虛擬機器。**
+**本文適用于同時運行 Linux 和 Windows 的虛擬機器。**
 
-排定[規劃的維護](maintenance-notifications.md)波之後，您就可以檢查受影響的虛擬機器清單。 
+計畫[運行](maintenance-notifications.md)波計畫後，可以檢查受影響的虛擬機器清單。 
 
 您可以使用 Azure 入口網站並尋找已排程維護的 VM。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
-2. 在左側導覽中，按一下 [虛擬機器]。
+2. 在左側導航中，按一下 **"虛擬機器**"。
 
-3. 在 [虛擬機器] 窗格中，選取 [**編輯資料行**] 按鈕以開啟可用資料行的清單。
+3. 在"虛擬機器"窗格中，選擇 **"編輯列"** 按鈕以打開可用列的清單。
 
 4. 選取並新增下列資料行︰
 
@@ -52,7 +52,7 @@ ms.locfileid: "77115733"
 
 Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組，來傳達計劃性維護排程。 您可以建立 Azure 活動記錄警示，將其他收件者和通道新增到這個通訊。 如需詳細資訊，請參閱[建立服務通知的活動記錄警示](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
 
-請確定您將**事件種類**設定為 [**規劃的維護**]，並將 [**服務**] 設為**虛擬機器擴展集**和/或**虛擬機器**。
+請確保將**事件種類**設置為 **"計畫維護**"，將**服務**設置為**虛擬機器縮放集**和/或**虛擬機器**。
 
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>從入口網站在 VM 上開始維護
 
@@ -69,4 +69,4 @@ Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組�
 
 ## <a name="next-steps"></a>後續步驟
 
-您也可以使用[Azure CLI](maintenance-notifications-cli.md)或[PowerShell](maintenance-notifications-powershell.md)來處理預定的維護。
+您還可以使用[Azure CLI](maintenance-notifications-cli.md)或[PowerShell](maintenance-notifications-powershell.md)來處理計畫維護。

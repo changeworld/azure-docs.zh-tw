@@ -1,6 +1,6 @@
 ---
-title: 瞭解 IoT 成本的 Azure 資訊安全中心 |Microsoft Docs
-description: 瞭解與 IoT Azure 資訊安全中心相關聯的成本，以及如何控制它們。
+title: 瞭解 Azure 安全中心，瞭解 IoT 成本*微軟文檔
+description: 瞭解與 IoT Azure 安全中心關聯的成本，以及如何控制這些成本。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,69 +16,69 @@ ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
 ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71348513"
 ---
 # <a name="pricing-and-associated-costs"></a>定價和相關成本
 
-本文說明 IoT 定價模式的 Azure 資訊安全中心、摘要所有相關成本，並說明如何管理它們。
+本文介紹了 IoT 定價模型的 Azure 安全中心，總結了所有相關成本，並解釋了如何管理這些成本。
 
 ## <a name="pricing"></a>定價
 
-IoT 計價模式的 Azure 資訊安全中心由兩個部分組成，一旦在 IoT 的 Azure 資訊安全中心中[啟用](quickstart-onboard-iot-hub.md)IoT 中樞，就會計費：
+IoT 定價的 Azure 安全中心由兩部分組成，一旦在 Azure IoT 安全中心[中啟用](quickstart-onboard-iot-hub.md)IoT 中心，將計費：
 
-- 根據 IoT 中樞記錄分析的裝置內建安全性功能所產生的成本。
+- 按設備計算的成本 - 基於 IoT 中心日誌分析的內置安全功能。
 
-- 根據來自 IoT Edge 或分葉裝置的安全性訊息，以訊息增強的安全性功能來計算成本。
+- 按消息計算的成本 - 基於來自 IoT Edge 或葉設備的安全消息增強的安全功能。
 
 
-如需詳細資訊，請參閱[資訊安全中心定價](https://azure.microsoft.com/pricing/details/security-center/)。
+有關詳細資訊，請參閱[安全中心定價](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="associated-costs"></a>相關成本
 
-IoT 的 Azure 資訊安全中心有相關聯的成本，而這不是直接定價的一部分：
+IoT 的 Azure 安全中心具有相關成本，這些成本不是直接定價的一部分：
 
 
-- Log Analytics 儲存體成本
+- 日誌分析存儲成本
 
-您可以退出宣告某些解決方案功能，以降低相關成本。 藉由變更您的設定來退出宣告。
+您可以通過退出宣告某些解決方案功能來降低相關成本。 通過更改設置退出宣告。
 
-若要變更您的設定：
+要更改設置，
 
-1. 開啟 IoT 中樞。
+1. 打開 IoT 中心。
 
-2. 在 [**安全性**] 底下，按一下 **[總覽**]。
+2. 在 **"安全"** 下，按一下 **"概述**"。
 
-3. 按一下 [設定]。
+3. 按一下 [設定]****。
 
-下表提供每個選項的相關費用和含意的摘要。
+下表概述了每個備選方案的相關費用和影響。
 
 |     | 使用量 | 註解 |
 | --- | --- | --- |
-| **Log Analytics 儲存體** |  |
-| 裝置建議和警示| 服務產生的安全性建議和警示 | 非選擇性 |
-| 原始的安全性資料| 來自 IoT 裝置的原始安全性資料，由安全性代理程式收集 | 停用_儲存原始裝置安全性事件_ |
+| **日誌分析存儲** |  |
+| 設備建議和警報| 服務生成的安全建議和警報 | 不是可選的 |
+| 原始安全資料| 由安全代理收集的 IoT 設備的原始安全資料 | 禁用_存儲原始設備安全事件_ |
 |
 
 >[!Important]
-> 退出宣告對 IoT 安全性功能可用性 Azure 資訊安全中心有嚴重的影響。 
+> 退出宣告對 Azure 安全中心具有嚴重影響，這些安全中心具有 IoT 安全功能可用性。 
   
-| 退出 | 產生 |
+| 退出 | 含意 |
 | --- | --- |
-| _對應項元資料集合_ | 停用[自訂警示](quickstart-create-custom-alerts.md) |
-| | 停用 IoT Edge 資訊清單建議 |
-| | 停用裝置身分識別型建議和警示 |
-| _儲存原始裝置安全性事件_ | 裝置作業系統基準建議的詳細資料無法使用 |
-| | [警示](concept-security-alerts.md)和[建議](concept-recommendations.md)調查的詳細資料無法使用 |
+| _雙元元集_ | 禁用[自訂警報](quickstart-create-custom-alerts.md) |
+| | 禁用 IoT 邊緣清單建議 |
+| | 禁用基於設備標識的建議和警報 |
+| _存儲原始設備安全事件_ | 有關設備作業系統基線建議的詳細資訊不可用 |
+| | 有關[警報](concept-security-alerts.md)[和建議調查](concept-recommendations.md)的詳細資訊，請提供 |
 |
 
 
 ## <a name="see-also"></a>另請參閱
 
-- 存取未經處理的[安全性資料](how-to-security-data-access.md)
+- 訪問[原始安全資料](how-to-security-data-access.md)
 - [調查裝置](how-to-investigate-device.md)
-- 瞭解及探索[安全性建議](concept-recommendations.md)
-- 瞭解及探索[安全性警示](concept-security-alerts.md)
+- 瞭解並探討[安全建議](concept-recommendations.md)
+- 瞭解和探索[安全警報](concept-security-alerts.md)

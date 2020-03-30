@@ -1,5 +1,5 @@
 ---
-title: SAP Hana 向外延展 HSR-Pacemaker 與 Azure Vm 上的 SLES 疑難排解 |Microsoft Docs
+title: SAP HANA 橫向擴展 HSR-Pacemaker，在 Azure VM 故障排除上使用 SLES 進行故障排除*微軟文檔
 description: 在 Azure 虛擬機器執行的 SLES 12 SP3 上，針對根據 SAP HANA System Replication (HSR) 和 Pacemaker 的複雜 SAP HANA scale-out 高可用性設定進行檢查和疑難排解的指南
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617130"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>在 SLES 12 SP3 上驗證 SAP HANA scale-out 高可用性設定並為其進行疑難排解 
@@ -41,16 +41,16 @@ ms.locfileid: "77617130"
 ## <a name="important-notes"></a>重要事項
 
 SAP HANA scale-out 與 SAP HANA System Replication 和 Pacemaker 的所有測試都僅使用 SAP HANA 2.0 完成。 作業系統版本是適用於 SAP 應用程式的 SUSE Linux Enterprise Server 12 SP3。 使用了 SUSE 中的最新 RPM 套件 SAPHanaSR-ScaleOut 來設定 pacemaker 叢集。
-SUSE 已發佈[此效能優化設定的詳細描述][sles-hana-scale-out-ha-paper]。
+SUSE 已發佈[此效能最佳化設定的詳細描述][sles-hana-scale-out-ha-paper]。
 
-針對 SAP Hana 向外延展支援的虛擬機器類型，請檢查[SAP Hana 認證的 IaaS 目錄][sap-hana-iaas-list]。
+針對 SAP HANA scale-out 所支援的虛擬機器類型，檢查 [SAP HANA 認證 IaaS 目錄][sap-hana-iaas-list]。
 
 搭配使用 SAP HANA scale-out 與多個子網路和 vNIC 並設定 HSR 時發生技術問題。 必須使用已修正此問題的最新 SAP HANA 2.0 修補程式。 支援的 SAP HANA 版本如下： 
 
 * rev2.00.024.04 或更新版本 
 * rev2.00.032 或更新版本
 
-如果您需要 SUSE 的支援，請遵循本[指南][suse-pacemaker-support-log-files]。 收集所有 SAP HANA 高可用性 (HA) 叢集的資訊，如本文中所述。 SUSE 支援需要這項資訊，以進一步分析。
+如果您需要 SUSE 的支援，請遵循此[指南][suse-pacemaker-support-log-files]。 收集所有 SAP HANA 高可用性 (HA) 叢集的資訊，如本文中所述。 SUSE 支援需要這項資訊，以進一步分析。
 
 在內部測試期間，叢集設定會與透過 Azure 入口網站的一般正常 VM 關機混淆。 因此，建議您以其他方法來測試叢集容錯移轉。 請使用強制核心異常或關閉網路這類方法，或遷移 **msl** 資源。 請參閱下列各節中的詳細資料。 假設蓄意發生標準關機。 蓄意關機的最佳範例是進行維護。 請參閱[計劃性維護](#planned-maintenance)中的詳細資料。
 
@@ -93,7 +93,7 @@ SUSE 已發佈[此效能優化設定的詳細描述][sles-hana-scale-out-ha-pape
 
 如需使用多個網路的 SAP HANA 設定資訊，請參閱 [SAP HANA global.ini](#sap-hana-globalini)。
 
-叢集中的每個 VM，都具有對應至子網路數目的三個 vNIC。 [如何在 azure 中使用多個網路介面卡建立 Linux 虛擬機器][azure-linux-multiple-nics]說明部署 linux VM 時，azure 上可能的路由問題。 本特定路由文章僅適用於使用多個 vNIC。 根據預設，在 SLES 12 SP3 中，是由 SUSE 來解決問題。 如需詳細資訊，請參閱[EC2 和 Azure 中的多個 NIC 與雲端 netconfig][suse-cloud-netconfig]。
+叢集中的每個 VM，都具有對應至子網路數目的三個 vNIC。 [如何以多個網路介面卡在 Azure 中建立 Linux 虛擬機器][azure-linux-multiple-nics]描述在部署 Linux VM 時，Azure 上的潛在路由問題。 本特定路由文章僅適用於使用多個 vNIC。 根據預設，在 SLES 12 SP3 中，是由 SUSE 來解決問題。 如需詳細資訊，請參閱 [EC2 和 Azure 中搭配雲端 netconfig 的多個 NIC][suse-cloud-netconfig]。
 
 
 若要確認 SAP HANA 已正確設定為使用多個網路，請執行下列命令。 首先檢查所有三個子網路的所有三個內部 IP 位址均為使用中的 OS 層級。 如果您定義具有不同 IP 位址範圍的子網路，則必須調整命令：
@@ -119,13 +119,13 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-例如，若要尋找正確的連接埠號碼，您可以查看 HANA Studio 的 [設定] 或透過 SQL 陳述式：
+要查找正確的埠號，例如，您可以在**配置**下的 HANA Studio 中或通過 SQL 語句查找：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-若要尋找 SAP 軟體堆疊中所使用的每個埠（包括 SAP Hana），請搜尋[所有 sap 產品的 tcp/ip 埠][sap-list-port-numbers]。
+若要尋找 SAP 軟體堆疊中使用的每個連接埠 (包含 SAP HANA)，請搜尋[所有 SAP 產品的 TCP/IP 連接埠][sap-list-port-numbers]。
 
 假設 SAP HANA 2.0 測試系統中的執行個體數目為 **00**，則名稱伺服器的連接埠號碼為 **30001**。 HSR 中繼資料通訊的連接埠號碼為 **40002**。 其中一個選項是登入背景工作節點，然後檢查主要節點服務。 在本文中，我們檢查了站台 2 上的背景工作節點 2，嘗試連線至站台 2 上的主要節點。
 
@@ -172,7 +172,7 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 
 測試系統的 **corosync.conf** 內容即為範例。
 
-第一個區段為 **totem**，如[叢集安裝](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)步驟 11 中所述。 您可以忽略 **mcastaddr** 的值。 只需要保留現有項目。 [**權杖**] 和 [**共識**] 的專案必須根據[Microsoft Azure SAP Hana 檔][sles-pacemaker-ha-guide]集來設定。
+第一個區段為 **totem**，如[叢集安裝](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)步驟 11 中所述。 您可以忽略 **mcastaddr** 的值。 只需要保留現有項目。 必須根據 [Microsoft Azure SAP HANA 文件][sles-pacemaker-ha-guide]設定 **token** 和 **consensus** 的項目。
 
 <pre><code>
 totem {
@@ -202,7 +202,7 @@ totem {
 }
 </code></pre>
 
-第二個區段 **logging** 未變更指定的預設值：
+第二**部分日誌記錄未**從給定預設值更改：
 
 <pre><code>
 logging {
@@ -255,7 +255,7 @@ nodelist {
 }
 </code></pre>
 
-在最後一個區段 **quorum** 中，務必正確設定 **expected_votes** 的值。 它必須是節點數目 (包含多數製作者節點)。 而且 **two_node** 的值必須是 **0**。 請不要整個移除項目。 只需要將值設定為 **0**。
+在最後一節，**仲裁**中，正確設置**expected_votes**的值非常重要。 它必須是節點數目 (包含多數製作者節點)。 而且 **two_node** 的值必須是 **0**。 請不要整個移除項目。 只需要將值設定為 **0**。
 
 <pre><code>
 quorum {
@@ -451,15 +451,15 @@ node.startup = automatic
 在重新啟動 VM 後的測試和驗證期間，某些情況下將無法再看到 SBD 裝置。 啟動設定與 yast2 所顯示的內容有所差異。 若要檢查設定，請採取下列步驟：
 
 1. 啟動 YaST2。
-2. 選取左側的 [網路服務]。
-3. 在右側，向下捲動至 [iSCSI 啟動器] 並將其選取。
-4. 在下一個畫面的 [服務] 索引標籤下方，您會看到節點的唯一啟動器名稱。
-5. 在啟動器名稱上方，確定 [啟動服務] 值設定為 [開機時]。
-6. 如果尚未設定，則請將其設定為 [開機時]，而不是 [手動]。
-7. 接下來，將最上層索引標籤切換至 [連線的目標]。
-8. 在 [連線的目標] 畫面上，您應該會看到 SBD 裝置的項目，例如此範例：**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
-9. 檢查 [啟動] 值是否設定為 **on boot**。
-10. 若不是，請選擇 [編輯] 予以變更。
+2. 選取左側的 [網路服務]****。
+3. 在右側，向下捲動至 [iSCSI 啟動器]**** 並將其選取。
+4. 在下一個畫面的 [服務]**** 索引標籤下方，您會看到節點的唯一啟動器名稱。
+5. 在啟動器名稱上方，確定 [啟動服務]**** 值設定為 [開機時]****。
+6. 如果尚未設定，則請將其設定為 [開機時]****，而不是 [手動]****。
+7. 接下來，將最上層索引標籤切換至 [連線的目標]****。
+8. 在 **"已連接目標"** 螢幕上，您應該會看到 SBD 設備的條目，例如 **：10.0.0.19：3260 iqn.2006-04.dbhso.local：dbhso**。
+9. 檢查 [啟動]**** 值是否設定為 **on boot**。
+10. 若不是，請選擇 [編輯]**** 予以變更。
 11. 儲存變更並結束 YaST2。
 
 
@@ -472,7 +472,7 @@ node.startup = automatic
 systemctl status pacemaker
 </code></pre>
 
-輸出的頂端看起來應如下列範例所示。 [使用中] 後的狀態必須顯示為 [loaded] \(已載入\) 和 [active (running)] \(使用中 (執行)\)。 [已載入] 後的狀態必須顯示為 [已啟用]。
+輸出的頂端看起來應如下列範例所示。 [使用中]**** 後的狀態必須顯示為 [loaded] \(已載入\)**** 和 [active (running)] \(使用中 (執行)\)****。 [已載入]**** 後的狀態必須顯示為 [已啟用]****。
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -492,7 +492,7 @@ systemctl status pacemaker
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-如果設定仍然為 [已停用]，則請執行下列命令：
+如果設定仍然為 [已停用]****，則請執行下列命令：
 
 <pre><code>
 systemctl enable pacemaker
@@ -504,7 +504,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-輸出看起來應如下列範例所示。 多數製作者 VM (**hso-hana-dm**) 上的 **cln** 和 **msl** 資源顯示為已停止是正常的。 多數製作者節點上並未安裝 SAP HANA。 因此，**cln** 和 **msl** 資源會顯示為已停止。 其必須顯示正確的 VM 總數 (**7**)。 所有屬於叢集一部分的 VM，都必須以 [連線] 狀態列出。 目前主要的主要節點必須正確辨識。 在此範例中為 **hso-hana-vm-s1-0**：
+輸出看起來應如下列範例所示。 多數製作者 VM (**hso-hana-dm**) 上的 **cln** 和 **msl** 資源顯示為已停止是正常的。 多數製作者節點上並未安裝 SAP HANA。 因此，**cln** 和 **msl** 資源會顯示為已停止。 重要的是，它顯示正確的 VM 總數**7**。 所有屬於叢集一部分的 VM，都必須以 [連線]**** 狀態列出。 目前主要的主要節點必須正確辨識。 在此範例中為 **hso-hana-vm-s1-0**：
 
 <pre><code>
 Stack: corosync
@@ -538,7 +538,7 @@ Pacemaker 的重要功能是維護模式。 在此模式中，您可以在不誘
 crm configure property maintenance-mode=true
 </code></pre>
 
-檢查 **crm status** 時，您會在輸出中注意到所有資源都標示為 [非受控]。 在此狀態中，叢集不會反應任何變更，例如啟動或停止 SAP HANA。
+檢查 **crm status** 時，您會在輸出中注意到所有資源都標示為 [非受控]****。 在此狀態中，叢集不會反應任何變更，例如啟動或停止 SAP HANA。
 下列範例顯示叢集處於維護模式時的 **crm status** 命令輸出：
 
 <pre><code>
@@ -600,7 +600,7 @@ crm configure show
 
 
 
-叢集資源失敗之後，**crm status** 命令會顯示 [失敗的動作] 清單。 請參閱下列輸入範例：
+叢集資源失敗之後，**crm status** 命令會顯示 [失敗的動作]**** 清單。 請參閱下列輸入範例：
 
 
 <pre><code>
@@ -656,7 +656,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>容錯移轉或接管
 
-如[重要事項](#important-notes)中所述，您不應該使用標準正常關機來測試叢集容錯移轉或 SAP HANA HSR 接管。 反之，建議您觸發核心異常、強制資源移轉或關閉 VM 之 OS 層級上的所有網路。 另一種方法為 **crm \<node\> standby** 命令。 請參閱[SUSE 檔][sles-12-ha-paper]。 
+如[重要事項](#important-notes)中所述，您不應該使用標準正常關機來測試叢集容錯移轉或 SAP HANA HSR 接管。 反之，建議您觸發核心異常、強制資源移轉或關閉 VM 之 OS 層級上的所有網路。 另一種方法為 **crm \<node\> standby** 命令。 請參閱 [SUSE 文件][sles-12-ha-paper]。 
 
 下列三個範例命令可強制叢集容錯移轉：
 
@@ -672,7 +672,7 @@ wicked ifdown eth2
 wicked ifdown eth&ltn&gt
 </code></pre>
 
-如[計劃性維護](#planned-maintenance)所述，監視叢集活動的一項好方式是搭配執行 **SAPHanaSR-showAttr** 與 **watch** 命令：
+如**計劃性維護**所述，監視叢集活動的一項好方式是搭配執行 [SAPHanaSR-showAttr](#planned-maintenance) 與 **watch** 命令：
 
 <pre><code>
 watch SAPHanaSR-showAttr
@@ -680,15 +680,15 @@ watch SAPHanaSR-showAttr
 
 此外，查看來自 SAP Python 指令碼的 SAP HANA 橫向狀態也有幫助。 叢集設定會尋找此狀態值。 考慮背景工作節點失敗，就會十分清楚。 如果背景工作節點關閉，則 SAP HANA 不會立即傳回整個向外延展系統的健康狀態錯誤。 
 
-需要重試數次，避免不必要的容錯移轉。 只有在狀態從 [正常] (傳回值 **4**) 變更為 [錯誤] (傳回值 **1**) 時，叢集才會做出反應。 因此，如果 **SAPHanaSR-showAttr** 的輸出顯示狀態為**離線**的 VM，即為正確。 但目前並沒有活動可切換主要和次要。 只要 SAP HANA 未傳回錯誤，就不會觸發任何叢集活動。
+需要重試數次，避免不必要的容錯移轉。 只有在狀態從 [正常]**** (傳回值 **4**) 變更為 [錯誤]**** (傳回值 **1**) 時，叢集才會做出反應。 因此，如果 **SAPHanaSR-showAttr** 的輸出顯示狀態為**離線**的 VM，即為正確。 但目前並沒有活動可切換主要和次要。 只要 SAP HANA 未傳回錯誤，就不會觸發任何叢集活動。
 
-您可以呼叫如下 SAP Python 指令碼，以使用者 **\<HANA SID\>adm** 身分監視 SAP HANA 橫向健康狀態。 您可能必須調整路徑：
+您可以通過按如下方式調用 SAP Python 腳本來監視 SAP HANA 環境運行狀況狀態，作為使用者**\<HANA SID\>adm。** 您可能必須調整路徑：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-此命令的輸出應該與下列範例類似。 [主機狀態] 資料行，以及 [整體主機狀態] 兩者都很重要。 實際的輸出會具有額外資料行，因此會較寬。
+此命令的輸出應該與下列範例類似。 [主機狀態]**** 資料行，以及 [整體主機狀態]**** 兩者都很重要。 實際的輸出會具有額外資料行，因此會較寬。
 為了更容易閱讀本文件內的輸出資料表，已移除右側的大部分資料行：
 
 <pre><code>
@@ -704,7 +704,7 @@ overall host status: ok
 </code></pre>
 
 
-還有另一個命令可檢查目前的叢集活動。 在終止主要站台的主要節點之後，請參閱下列命令和輸出結尾。 您可以看到轉換動作清單，例如將先前的次要主要節點 **hso-hana-vm-s2-0**，**升階**為新主要的主要節點。 如果一切正常，且所有活動都已完成，則此 [轉換摘要] 清單必須為空白。
+還有另一個命令可檢查目前的叢集活動。 在終止主要站台的主要節點之後，請參閱下列命令和輸出結尾。 您可以看到轉換動作清單，例如將先前的次要主要節點 **hso-hana-vm-s2-0**，**升階**為新主要的主要節點。 如果一切正常，且所有活動都已完成，則此 [轉換摘要]**** 清單必須為空白。
 
 <pre><code>
  crm_simulate -Ls
@@ -725,13 +725,13 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>預定的維修 
 
 進入計劃性維護時，有不同的使用案例。 其中一個問題是，此維護僅為基礎結構維護 (例如 OS 層級和磁碟設定的變更) 或是 HANA 升級。
-您可以從 SUSE 的檔中找到其他資訊，例如[零停機時間][sles-zero-downtime-paper]或[SAP Hana SR 效能優化案例][sles-12-for-sap]。 這些文件也包含示範如何手動遷移主要站台的範例。
+您可以從 SUSE 的文件中，例如[朝向零停機時間][sles-zero-downtime-paper] 或 [SAP HANA SR 效能最佳化案例][sles-12-for-sap]，找到其他資訊。 這些文件也包含示範如何手動遷移主要站台的範例。
 
 密集內部測試是要驗證基礎結構維護使用案例。 為了避免任何關於遷移主要站台的問題，我們決定一律先遷移主要站台，再讓叢集進入維護模式。 藉由此方法，不需要讓叢集忘記先前的情況：哪一端是主要站台，哪一端是次要站台。
 
 在這部分有兩種不同的情況：
 
-- **目前次要站台上的計劃性維護**。 在此情況下，您只能讓叢集進入維護模式，以及在次要上執行工作，而不影響叢集。
+- **計畫對當前輔助進行維護**。 在此情況下，您只能讓叢集進入維護模式，以及在次要上執行工作，而不影響叢集。
 
 - **目前主要站台上的計劃性維護**。 若要讓使用者可以在維護期間繼續工作，您需要強制容錯移轉。 使用此方式，您必須由 Pacemaker 觸發叢集容錯移轉，而不只是在 SAP HANA HSR 層級上。 Pacemaker 設定會自動觸發 SAP HANA 接管。 您也需要在讓叢集進入維護模式前，先完成容錯移轉。
 
@@ -768,7 +768,7 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 watch SAPHanaSR-showAttr
 </code></pre>
 
-輸出應該會顯示手動容錯移轉。 先前的此要主要節點會**升階**，在此範例中為 **hso-hana vm-s2-0**。 先前的主要站台已停止，先前主要的主要節點 **hso-hana vm-s1-0** **lss** 值 **1**： 
+輸出應該會顯示手動容錯移轉。 先前的此要主要節點會**升階**，在此範例中為 **hso-hana vm-s2-0**。 先前的主要站台已停止，先前主要的主要節點 **hso-hana vm-s1-0****lss** 值 **1**： 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -945,7 +945,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 叢集解決方案可提供瀏覽器介面，為偏好功能表和圖形 (相較於殼層層級上的所有命令) 的人員提供 GUI。
-若要使用瀏覽器介面，以下列 URL 中實際的 SAP HANA 節點取代 **節點\<\>** 。 然後輸入叢集的認證 (使用者**叢集**)：
+要使用瀏覽器介面，請將**\<節點\>** 替換為以下 URL 中的實際 SAP HANA 節點。 然後輸入叢集的認證 (使用者**叢集**)：
 
 <pre><code>
 https://&ltnode&gt:7630
@@ -971,12 +971,12 @@ https://&ltnode&gt:7630
 
 ![hb_report 輸出中的 Hawk 轉換](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-此最後一個螢幕擷取畫面顯示單一轉換的 [詳細資料] 區段。 叢集在主要的主要節點當機時作出回應，節點 **hso-hana vm-s1-0**。 會將該次要節點升階為新的主要節點，**hso-hana vm-s2-0**：
+此最後一個螢幕擷取畫面顯示單一轉換的 [詳細資料]**** 區段。 叢集在主要的主要節點當機時作出回應，節點 **hso-hana vm-s1-0**。 會將該次要節點升階為新的主要節點，**hso-hana vm-s2-0**：
 
 ![Hawk 單一轉換](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
 ## <a name="next-steps"></a>後續步驟
 
-本疑難排解指南描述向外延展設定中的 SAP HANA 高可用性。 除了資料庫之外，SAP 橫向中的另一個重要元件是 SAP NetWeaver 堆疊。 瞭解[使用 SUSE Enterprise Linux Server 的 Azure 虛擬機器上 SAP NetWeaver 的高可用性][sap-nw-ha-guide-sles]。
+本疑難排解指南描述向外延展設定中的 SAP HANA 高可用性。 除了資料庫之外，SAP 橫向中的另一個重要元件是 SAP NetWeaver 堆疊。 了解[使用 SUSE Enterprise Linux Server 之 Azure 虛擬機器上的 SAP NetWeaver 高可用性][sap-nw-ha-guide-sles]。
 

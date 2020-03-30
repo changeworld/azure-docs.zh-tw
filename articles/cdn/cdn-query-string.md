@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 6471241527dd9b594eaaca20ebc75cacb27f8f72
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083037"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>使用查詢字串來控制 Azure CDN 快取行為 - 標準層
@@ -27,7 +27,7 @@ ms.locfileid: "74083037"
 > * [進階層](cdn-query-string-premium.md)
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 使用 Azure 內容傳遞網路 (CDN)，可以控制 Web 要求內含查詢字串時的檔案快取方式。 在包含查詢字串的 Web 要求中，查詢字串是要求中問號 (?) 之後的部分。 查詢字串可以包含一或多個索引鍵/值組，其中的欄位名稱與其值是以等號 (=) 分隔。 每個索引鍵/值組是以 & 符號分隔。 例如 http:\//www.contoso.com/content.mov?field1=value1&field2=value2。 如果要求的查詢字串中有不止一個索引鍵/值組，其順序無關緊要。 
 
 > [!IMPORTANT]
@@ -49,17 +49,17 @@ ms.locfileid: "74083037"
    
    ![CDN 設定檔端點](./media/cdn-query-string/cdn-endpoints.png)
    
-2. 在左側窗格的 [設定] 下方，按一下 [快取規則]。
+2. 在左側窗格的 [設定] 下方，按一下 [快取規則]****。
    
-    ![CDN 快取規則按鈕](./media/cdn-query-string/cdn-caching-rules-btn.png)
+    ![CDN [快取規則] 按鈕](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
-3. 在 [查詢字串快取行為] 清單中，選取查詢字串模式，然後按一下 [儲存]。
+3. 在 [查詢字串快取行為]**** 清單中，選取查詢字串模式，然後按一下 [儲存]****。
    
    ![CDN 查詢字串快取選項](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
 > 由於註冊資訊需要一些時間才能傳播至整個 Azure CDN，因此可能無法立即顯示快取字串設定變更：
-> - 若為**來自 Microsoft 的標準 Azure CDN**設定檔，通常會在 10 分鐘內完成傳播。 
+> - 若為**來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
 > - 若為**來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
 > - 若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
 

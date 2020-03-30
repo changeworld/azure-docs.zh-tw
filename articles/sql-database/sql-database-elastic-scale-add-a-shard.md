@@ -1,5 +1,5 @@
 ---
-title: 使用彈性資料庫工具加入分區
+title: 使用彈性資料庫工具添加分片
 description: 如何使用 Elastic Scale API 將新的分區新增至分區集。
 services: sql-database
 ms.service: sql-database
@@ -12,23 +12,23 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823703"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>使用彈性資料庫工具加入分區
 
 ## <a name="to-add-a-shard-for-a-new-range-or-key"></a>為新的範圍或索引鍵加入分區
 
-對於已經存在的分區對應，應用程式通常需要加入新的分區，以處理預期來自新的索引鍵或索引鍵範圍的資料。 例如，以租用戶識別碼分區化的應用程式，可能需要為新的租用戶佈建新的分區，或者，每月分區化的資料可能需要在每個新月份開始之前佈建新的分區。
+對於已經存在的分區對應，應用程式通常需要新增分區，以處理預期來自新的索引鍵或索引鍵範圍的資料。 例如，以租用戶識別碼分區化的應用程式，可能需要為新的租用戶佈建新的分區，或者，每月分區化的資料可能需要在每個新月份開始之前佈建新的分區。
 
 如果索引鍵值的新範圍尚不屬於現有的對應，則新增分區並將新的索引鍵或範圍與該分區產生關聯就很簡單。
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>範例：將分區及其範圍加入至現有的分區對應
 
-這個範例會使用 TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100)))、CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard))、CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) 方法，並建立 ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) 類別的執行個體。 在下列範例中，已建立名為 **sample_shard_2** 的資料庫及其中的所有必要結構描述物件，以保存範圍 [300, 400)。  
+此示例使用 TryGetShard[（JAVA](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard)， [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))） CreateShard[（JAVA，](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [.NET），](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)CreateRangemap（JAVA， [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)方法，並創建分片位置[（JAVA，](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation) [.NET）](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)類的實例。[ ](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping) 在下列範例中，已建立名為 **sample_shard_2** 的資料庫及其中的所有必要結構描述物件，以保存範圍 [300, 400)。  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**重要**：只有在您確定更新對應的範圍是空白時，才可使用這項技術。  上述方法並不會檢查要移動的資料範圍，因此您最好在程式碼中納入檢查。  如果資料列存在於要移動的範圍中，則實際的資料分佈將不會符合更新的分區對應。 在這些情況下，請改用 [分割合併工具](sql-database-elastic-scale-overview-split-and-merge.md) 執行作業。  
+**重要提示**：僅當您確定更新映射的範圍為空時，才使用此技術。  上述方法並不會檢查要移動的資料範圍，因此您最好在程式碼中納入檢查。  如果資料列存在於要移動的範圍中，則實際的資料分佈將不會符合更新的分區對應。 在這些情況下，請改用 [分割合併工具](sql-database-elastic-scale-overview-split-and-merge.md) 執行作業。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: 多重 DRM 內容保護系統-Azure 媒體服務 v3
-description: 這篇文章提供如何使用 Azure 媒體服務設計多重 DRM 內容保護系統的詳細說明。
+title: 多 DRM 內容保護系統 - Azure 媒體服務 v3
+description: 本文詳細介紹了如何使用 Azure 媒體服務設計多 DRM 內容保護系統。
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161778"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統 
@@ -48,7 +48,7 @@ ms.locfileid: "77161778"
 | **用戶端平台** | **原生 DRM** | **EME** |
 | --- | --- | --- |
 | **智慧型電視、STB** | PlayReady、Widevine 及/或其他 | 內嵌瀏覽器/EME for PlayReady 及/或 Widevine|
-| **Windows 10** | PlayReady | Microsoft Edge/IE11 for PlayReady|
+| **視窗 10** | PlayReady | Microsoft Edge/IE11 for PlayReady|
 | **Android 裝置 (電話、平板電腦、電視)** |Widevine |Chrome for Widevine |
 | **iOS** | FairPlay | Safari for FairPlay (自 iOS 11.2 起) |
 | **macOS** | FairPlay | Safari for FairPlay (自 Mac OS X 10.11+ El Capitan 上的 Safari 9+ 起)|
@@ -131,10 +131,10 @@ DRM 子系統可能包含下列元件：
 
 下表會顯示對應。
 
-| **建置組塊** | **Technology** |
+| **建置組塊** | **技術** |
 | --- | --- |
-| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **身分識別提供者 (IDP)** |Azure Active Directory (Azure AD) |
+| **球員** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **身份提供者（IDP）** |Azure Active Directory (Azure AD) |
 | **安全權杖服務 (STS)** |Azure AD |
 | **DRM 保護工作流程** |Azure 媒體服務動態保護 |
 | **DRM 授權傳遞** |* 媒體服務授權傳遞 (PlayReady、Widevine、FairPlay) <br/>* Axinom 授權伺服器 <br/>* 自訂 PlayReady 授權伺服器 |
@@ -176,7 +176,7 @@ DRM 子系統可能包含下列元件：
 ### <a name="implementation-procedures"></a>實作程序
 實作包含下列步驟：
 
-1. 準備測試資產。 編碼/封裝測試視訊為媒體服務中的多位元速率分散 MP4。 這項資產不受 DRM 保護。 DRM 保護稍後會由動態保護完成。
+1. 準備測試資產。 編碼/封裝測試視訊為媒體服務中的多位元速率分散 MP4。 此資產*不受*DRM 保護。 DRM 保護稍後會由動態保護完成。
 
 2. 建立金鑰識別碼和內容金鑰 (選擇性地從金鑰種子)。 在本例中，並不需要金鑰管理系統，因為數個測試資產只需要單一金鑰識別碼和內容金鑰。
 
@@ -200,16 +200,16 @@ DRM 子系統可能包含下列元件：
 
 9. 下表會顯示測試矩陣。
 
-    | **DRM** | **[瀏覽器]** | **有權限使用者的結果** | **無權限使用者的結果** |
+    | **DRM** | **瀏覽器** | **有權限使用者的結果** | **無權限使用者的結果** |
     | --- | --- | --- | --- |
     | **PlayReady** |Windows 10 的 Microsoft Edge 或 Internet Explorer 11 |成功 |失敗 |
     | **Widevine** |Chrome、Firefox、Opera |成功 |失敗 |
-    | **FairPlay** |macOS 上的 Safari      |成功 |失敗 |
+    | **公平播放** |macOS 上的 Safari      |成功 |失敗 |
     | **AES-128** |大部分的新式瀏覽器  |成功 |失敗 |
 
 如需如何針對 ASP.NET MVC 播放器應用程式設定 Azure AD 的相關資訊，請參閱[整合 Azure 媒體服務 OWIN MVC 型應用程式與 Azure Active Directory 並根據 JWT 宣告限制內容金鑰傳遞](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
 
-如需詳細資訊，請參閱 [Azure 媒體服務和動態加密中的 JWT 權杖驗證](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/) (英文)。  
+有關詳細資訊，請參閱[Azure 媒體服務和動態加密中的 JWT 權杖身份驗證](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。  
 
 如需 Azure AD 的資訊：
 
@@ -229,7 +229,7 @@ DRM 子系統可能包含下列元件：
 
     ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定] 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
+* 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定]**** 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
 
     ![權限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
@@ -241,7 +241,7 @@ DRM 子系統可能包含下列元件：
 
         <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
 
-    GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點] 快顯功能表中找到 GUID。
+    GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點]**** 快顯功能表中找到 GUID。
 
 * 授與群組成員資格宣告權限。 請確定下列項目位於 Azure AD 應用程式資訊清單檔中： 
 
@@ -276,7 +276,7 @@ DRM 子系統可能包含下列元件：
 
 因為 Azure AD 信任 Microsoft 帳戶網域，您可以將下列任何網域的任何帳戶新增至自訂 Azure AD 租用戶，並使用該帳戶登入：
 
-| **網域名稱** | **網域** |
+| **功能變數名稱** | **域** |
 | --- | --- |
 | **自訂 Azure AD 租用戶網域** |somename.onmicrosoft.com |
 | **公司網域** |microsoft.com |

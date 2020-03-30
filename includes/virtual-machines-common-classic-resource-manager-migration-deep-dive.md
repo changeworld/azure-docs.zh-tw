@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tanmaygore
 ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77068409"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>將 IaaS 資源從傳統部署模型移轉至 Azure Resource Manager
 首先，務必了解基礎結構即服務 (IaaS) 資源上資料平面與管理平面作業之間的差異。
 
-* 「管理/控制平面」說明進入管理/控制平面或 API 以便修改資源的呼叫。 例如，建立 VM、重新啟動 VM 以及將虛擬網路更新成使用新子網路等作業皆可管理執行中的資源。 它們並不直接影響對 VM 的連線。
-* 「資料平面」(應用程式) 說明應用程式本身的執行階段，並牽涉到與不通過 Azure API 的執行個體進行互動。 例如，不論是存取您的網站，還是從執行中的 SQL Server 或 MongoDB 伺服器提取資料，都會被視為資料平面或應用程式互動。 其他範例包含從儲存體帳戶複製 Blob，以及存取公用 IP 位址，以使用遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 進入虛擬機器。 這些作業會讓應用程式繼續跨計算、網路和儲存體執行。
+* *管理/控制平面*描述進入管理/控制平面或用於修改資源的 API 的調用。 例如，建立 VM、重新啟動 VM 以及將虛擬網路更新成使用新子網路等作業皆可管理執行中的資源。 它們並不直接影響對 VM 的連線。
+* **「資料平面」(應用程式) 說明應用程式本身的執行階段，並牽涉到與不通過 Azure API 的執行個體進行互動。 例如，不論是存取您的網站，還是從執行中的 SQL Server 或 MongoDB 伺服器提取資料，都會被視為資料平面或應用程式互動。 其他範例包含從儲存體帳戶複製 Blob，以及存取公用 IP 位址，以使用遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 進入虛擬機器。 這些作業會讓應用程式繼續跨計算、網路和儲存體執行。
 
 傳統部署模型與 Resource Manager 堆疊之間的資料平面相同。 差異在於移轉過程中，Microsoft 會將資源的表示法從傳統部署模型轉譯為 Resource Manager 堆疊中的表示法。 因此，您必須使用新的工具、API 和 SDK 來管理 Resource Manager 堆疊中資源。
 
@@ -121,7 +121,7 @@ ms.locfileid: "77068409"
 完成驗證之後，您便可以認可移轉。 資源不會再出現於傳統部署模型中，而只有在 Resource Manager 部署模型中才能使用這些資源。 只能在新入口網站中管理已移轉的資源。
 
 > [!NOTE]
-> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續失敗，請建立支援票證，或在 Microsoft Q 上建立論壇[& a](https://docs.microsoft.com/answers/index.html)
+> 這是一種等冪作業。 如果失敗，請重試此作業。 如果繼續失敗，請創建支援票證或在[Microsoft Q 上創建一](https://docs.microsoft.com/answers/index.html)個論壇&A
 >
 >
 

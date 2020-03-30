@@ -1,6 +1,6 @@
 ---
-title: 客戶資料要求功能-Azure 時間序列深入解析 |Microsoft Docs
-description: 深入瞭解 Azure 時間序列深入解析中的客戶資料要求功能。
+title: 客戶資料請求功能 - Azure 時間序列見解 |微軟文檔
+description: 在 Azure 時間序列見解中瞭解客戶資料請求功能。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,10 +10,10 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
 ms.openlocfilehash: 64660e497bb1765b649e00b07fdb5db8c05910f5
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368689"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
@@ -34,9 +34,9 @@ Azure 時間序列深入解析會將個人資料視為與時間序列深入解�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-不過，在您透過入口網站刪除客戶資料之前，應該在 Azure 入口網站中從時間序列深入解析環境移除使用者的存取原則。 如需詳細資訊，請參閱[使用 Azure 入口網站授與時間序列深入解析環境的資料存取權](time-series-insights-data-access.md)。
+不過，在您透過入口網站刪除客戶資料之前，應該在 Azure 入口網站中從時間序列深入解析環境移除使用者的存取原則。 有關詳細資訊，請閱讀使用[Azure 門戶授予對時間序列見解環境的資料存取權限](time-series-insights-data-access.md)。
 
-您也可以使用 REST API，在存取原則上執行刪除作業。 如需詳細資訊，請參閱[存取原則-刪除](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete)。
+您也可以使用 REST API，在存取原則上執行刪除作業。 有關詳細資訊，請閱讀[訪問策略 - 刪除](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete)。
 
 時間序列深入解析與 Azure 入口網站中的 [原則] 刀鋒視窗整合。 時間序列深入解析和 [原則] 刀鋒視窗兩者都可讓您檢視、匯出及刪除服務內儲存的使用者資料。 在 Azure 入口網站的 [原則] 刀鋒視窗內採取的任何刪除動作，也會刪除時間序列深入解析內的使用者資料。 例如，如果使用者有儲存的個人查詢，該查詢會從時間序列深入解析總管中永久刪除。 如果使用者有儲存的共用查詢，該查詢仍會存在，但是會永久刪除使用者資訊。 下列附註包含如何完成這些工作的指示。
 
@@ -46,9 +46,9 @@ Azure 時間序列深入解析會將個人資料視為與時間序列深入解�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-如果您是租用戶系統管理員，便可以在 Azure 入口網站中檢視時間序列深入解析環境內的資料存取原則。 如需詳細資訊，請參閱[使用 Azure 入口網站授與時間序列深入解析環境的資料存取權](time-series-insights-data-access.md)。
+如果您是租用戶系統管理員，便可以在 Azure 入口網站中檢視時間序列深入解析環境內的資料存取原則。 有關詳細資訊，請閱讀使用[Azure 門戶授予對時間序列見解環境的資料存取權限](time-series-insights-data-access.md)。
 
-您也可以在提供的 REST API 中使用「依環境列出」作業，在存取原則上執行匯出作業。 如需詳細資訊，請參閱[存取原則-依環境列出](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)。
+您也可以在提供的 REST API 中使用「依環境列出」作業，在存取原則上執行匯出作業。 有關詳細資訊，請閱讀[訪問策略 - 按環境列出](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)。
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>刪除儲存在時間序列深入解析內的資料
 
@@ -56,20 +56,20 @@ Azure 時間序列深入解析會將個人資料視為與時間序列深入解�
 
 **檢視和匯出資料**
 
-若要檢視和匯出儲存在時間序列深入解析內的資料，您需要搜尋該資料。 您可以使用時間序列深入解析總管或時間序列深入解析查詢 API 來檢視和匯出資料。 若要使用時間序列深入解析總管檢視和匯出資料，請先搜尋以找出所需的使用者資料。 搜尋之後，以滑鼠右鍵按一下圖表，然後選取 [探索事件]。 此時會出現事件方格，並提供將資料匯出為 CSV 和 JSON 的選項。
+若要檢視和匯出儲存在時間序列深入解析內的資料，您需要搜尋該資料。 您可以使用時間序列深入解析總管或時間序列深入解析查詢 API 來檢視和匯出資料。 若要使用時間序列深入解析總管檢視和匯出資料，請先搜尋以找出所需的使用者資料。 搜尋之後，以滑鼠右鍵按一下圖表，然後選取 [探索事件]****。 此時會出現事件方格，並提供將資料匯出為 CSV 和 JSON 的選項。
 
-如需詳細資訊，請參閱[Azure 時間序列深入解析 explorer](time-series-insights-explorer.md)。
+有關詳細資訊，請閱讀[Azure 時間序列見解資源管理器](time-series-insights-explorer.md)。
 
 **刪除資料**
 
 時間序列深入解析目前不支援細微刪除資料。 不過，時間序列深入解析可設定保留原則，以便移除在時間序列深入解析內儲存的客戶資料。 您可以將整個時間序列深入解析環境的保留期限調整為任何天數，以支援您的刪除需求。
 
-如需詳細資訊，請參閱[在時間序列深入解析中設定保留](time-series-insights-how-to-configure-retention.md)。
+有關詳細資訊，請閱讀[時間序列見解中的配置保留](time-series-insights-how-to-configure-retention.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[將資料存取權授與您的 Azure 時間序列深入解析環境](./time-series-insights-data-access.md)。
+* 閱讀有關[向 Azure 時間序列見解環境授予資料存取權限](./time-series-insights-data-access.md)的更多內容。
 
-* 查看 [ [Azure 時間序列深入解析 explorer](time-series-insights-explorer.md)]。
+* 查看[Azure 時間序列見解資源管理器](time-series-insights-explorer.md)。
 
-* 瞭解如何[在時間序列深入解析中設定保留期](time-series-insights-how-to-configure-retention.md)。
+* 瞭解[在時間序列見解中配置保留](time-series-insights-how-to-configure-retention.md)。

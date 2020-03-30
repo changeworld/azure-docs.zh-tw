@@ -7,17 +7,17 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 6fec85c028e992c15fb9503ffb599023e668c58f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459934"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>將推播通知新增至 Android 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，您會將推播通知新增至 [Android 快速入門]專案，以便在每次插入一筆記錄時傳送推播通知至裝置。
 
@@ -78,11 +78,11 @@ ms.locfileid: "77459934"
 
 現在您已經完成了這個教學課程，可以考慮繼續進行下列其中一個教學課程：
 
-* [在 Android 應用程式中新增驗證](app-service-mobile-android-get-started-users.md)。
+* [將身份驗證添加到您的 Android 應用](app-service-mobile-android-get-started-users.md)。
   了解如何使用支援的識別提供者，在 Android 上的 TodoList 快速入門專案中新增驗證。
 * [啟用 Android 應用程式的離線同步處理](app-service-mobile-android-get-started-offline-data.md)。
   了解如何使用 Mobile Apps 後端，將離線支援新增至應用程式。 使用離線同步處理時，使用者可與行動應用程式進行互動&mdash;檢視、新增或修改資料&mdash;即使沒有網路連線進也可行。
 
 <!-- URLs -->
 [Android 快速入門]: app-service-mobile-android-get-started.md
-[將 Firebase 新增至 Android 專案]: https://firebase.google.com/docs/android/setup
+[將 Firebase 新增至 Android 專案]:https://firebase.google.com/docs/android/setup

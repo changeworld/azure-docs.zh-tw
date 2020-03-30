@@ -1,6 +1,6 @@
 ---
-title: SRE 書籍清單 |Microsoft Docs
-description: 透過這些書籍提升您對網站可靠性工程的知識
+title: SRE 書目清單 |微軟文檔
+description: 通過這些書籍提高您對現場可靠性工程的瞭解
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 4a350953a5755f24c938011ae4b98e1e35e094e8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599037"
 ---
-# <a name="books-about-site-reliability-engineering"></a>網站可靠性工程的相關書籍
+# <a name="books-about-site-reliability-engineering"></a>關於現場可靠性工程的書籍
 
-如需網站可靠性工程（SRE）的詳細資訊，最佳來源是已在主旨上發佈的書籍三個
+有關網站可靠性工程 （SRE） 的更多詳細資訊，最佳來源是已就此問題出版的三本書
 
-- [_網站可靠性工程： Google 如何執行生產系統_](https://shop.oreilly.com/product/0636920041528.do)（又稱為 "The SRE Book"）
-- [_網站可靠性活頁簿：執行 sre 的實際方式_](https://shop.oreilly.com/product/0636920132448.do)（稱為「Sre 活頁簿」）
-- [_搜尋 SRE：大規模執行生產系統的相關交談_](https://shop.oreilly.com/product/0636920063964.do)
+- [_Site Reliability Engineering: How Google Runs Production Systems_](https://shop.oreilly.com/product/0636920041528.do) (又稱為 "The SRE Book")
+- [_The Site Reliability Workbook: Practical Ways to Implement SRE_](https://shop.oreilly.com/product/0636920132448.do) (又稱為 "The SRE Workbook")
+- [_Seeking SRE: Conversations About Running Production Systems at Scale_](https://shop.oreilly.com/product/0636920063964.do)
 
-每一本書都提供一組重要的資訊：
+這幾本書各自提供一些重要資訊：
 
-- SRE 書籍-提供 Google 在過去幾年來如何實行 SRE 的詳細說明。
+- The SRE Book：提供 Google 過去幾年來如何實作 SRE 的詳細說明。
 
-- Sre 活頁簿-這是 SRE 書籍的一項，提供更詳細的說明，不僅是 Google 的「什麼」，還有其他幾個地方，而是「如何」和「原因」。
+- The SRE Workbook：The SRE Book 的使用手冊，不只有 SRE 在 Google 在其他幾個地方的「性質」，而提供了「方式」和「原因」的詳細說明。
 
-- 尋求 SRE-提供更廣泛的 SRE 世界觀點，包括其來源，以及如何在其他環境中執行的資訊。
+- Seeking SRE：從 SRE 的源頭出發，提供更廣泛的 SRE 視野，包括先前如何在其他環境中實作的資訊。
 
-因為這些書籍描述的是組織的經驗、環境和文化特性，而且可能與您所在的不同，所以請務必閱讀這些書籍。 當您閱讀時，請嘗試判斷哪些做法在您的組織中不會成功。 請花一些時間找出您特定的資訊可以提供一些正值。 請思考貴組織文化特性和值的哪些部分可以支援 SRE 工作（如所述），而這可能會使其更具挑戰性。 謹慎地反復使用 SRE，幾乎一律會產生比您在這些書籍中所閱讀的大量重複的結果。
+由於這些書描述了組織的經驗、環境和文化，它們可能與您一樣，也可能不類似您所從事，因此，以批判的眼光閱讀這些書籍非常重要。 閱讀時，嘗試確定哪些做法將在組織中成功或不會成功。 請用一些時間找出您確定可以提供正向價值的資訊。 思考一下您的組織文化和價值有哪些部份可以像描述的一樣推動 SRE 工作，又有哪些可能會增加其難度。 仔細的、反復的SRE擁抱幾乎總是比在這些書中讀到的東西的徹底複製產生更好的結果。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （WebJob 專案）與 Azure 儲存體消費者入門
+title: 使用視覺化工作室（WebJob 專案）開始使用 Azure 存儲
 description: 在使用 Visual Studio 已連接服務連接到儲存體帳戶之後，如何於 Visual Studio Azure WebJobs 專案中開始使用 Azure 資料表儲存體
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707607"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>開始使用 Azure 儲存體 (Azure WebJob 專案)
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文提供 C# 程式碼範例，示範如何搭配 Azure 資料表儲存體服務使用 Azure WebJobs SDK 1.x 版。 此程式碼範例會使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 1.x 版。
 
 Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服務是一個 NoSQL 資料存放區，接受來自 Azure 雲端內外經過驗證的呼叫。 Azure 資料表很適合儲存結構化、非關聯式資料。  如需詳細資訊，請參閱 [以 .NET 開始使用 Azure 資料表儲存體](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) 。
@@ -33,7 +33,7 @@ Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服�
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何將實體新增至資料表
 
-若要將實體加入至資料表，請使用**table**屬性搭配**ICollector\<t >** 或**IAsyncCollector\<t >** 參數，其中**t**會指定您想要加入之實體的架構。 屬性建構函式採用字串參數，來指定資料表的名稱。
+要將實體添加到表，請使用具有**ICollector\<T>** 或**IAsyncCollector\<T>** 參數的**表**屬性，**其中 T**指定要添加的實體的架構。 屬性建構函式採用字串參數，來指定資料表的名稱。
 
 以下程式碼範例會將 **Person** 實體加入名為 *Ingress*的資料表。
 
@@ -74,21 +74,21 @@ public class Person
 
 ## <a name="real-time-monitoring"></a>即時監視
 
-因為資料外送流量函式經常處理大量資料，所以 WebJobs SDK 儀表板提供即時監視資料。 [引動過程記錄] 區段可告訴您是否仍有執行中的函式。
+因為資料外送流量函式經常處理大量資料，所以 WebJobs SDK 儀表板提供即時監視資料。 [引動過程記錄] **** 區段可告訴您是否仍有執行中的函式。
 
 ![輸入函式執行中](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-[引動過程詳細資料] 頁面會報告執行中函式的進度 (寫入的實體數目)，並讓您有機會將它中止。
+[引動過程詳細資料] **** 頁面會報告執行中函式的進度 (寫入的實體數目)，並讓您有機會將它中止。
 
 ![輸入函式執行中](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-當函式完成時，[引動過程詳細資料] 頁面會報告寫入的資料列數目。
+當函式完成時，[引動過程詳細資料] **** 頁面會報告寫入的資料列數目。
 
 ![輸入函式已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何讀取資料表中的多個實體
 
-若要讀取資料表，請使用**table**屬性搭配**IQueryable\<t >** 參數，其中 Type **t**衍生自**TableEntity**或 implements **itableentity 而得**。
+要讀取表，請使用具有**IQuery\<T>** 參數的**表**屬性，其中**T**類型派生自**表實體**或實現**ITableEntity**。
 
 下列程式碼範例會讀取並記錄 **Ingress** 資料表中的所有資料列：
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 設定 App Service
+title: 使用 PowerShell 配置應用服務
 titleSuffix: Azure Application Gateway
 description: 本文提供如何在現有或新的應用程式閘道上將網頁設定為後端主機的指引。
 services: application-gateway
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74089520"
 ---
-# <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 設定應用程式閘道的 App Service
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 使用應用程式閘道配置應用服務
 
 應用程式閘道可讓您以 Azure App Service 應用程式或其他多租用戶的服務作為後端集區成員。 在本文中，您將了解如何透過應用程式閘道設定 App Service 應用程式。 第一個範例示範如何將現有的應用程式閘道設定為以 Web 應用程式作為後端集區成員。 第二個範例示範如何建立新的應用程式閘道，並以 Web 應用程式作為後端集區成員。
 

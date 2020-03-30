@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 交換 Azure VM 的 OS 磁片
+title: 將 Azure VM 的 OS 磁片與 PowerShell 交換 。
 description: 使用 PowerShell 變更 Azure 虛擬機器所使用的作業系統磁碟。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: ec66892804f3c2d1f831168a2955f2498462cbf3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033015"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 變更 Azure VM 所使用的作業系統磁碟
 
-如果您目前有虛擬機器，但想要將磁碟交為備份磁碟或另一個作業系統 磁碟，則可使用 Azure PowerShell 來交換作業系統磁碟。 您不需要刪除並重新建立 VM。 甚至可以使用另一個資源群組中的受控磁碟，只要該磁碟並非使用中即可。
+如果您目前有虛擬機器，但想要將磁碟交為備份磁碟或另一個作業系統 磁碟，則可使用 Azure PowerShell 來交換作業系統磁碟。 您不需要刪除及重新建立虛擬機器。 甚至可以使用另一個資源群組中的受控磁碟，只要該磁碟並非使用中即可。
 
  
 
 必須停止\解除配置虛擬機器，然後才能使用不同受控磁碟的資源識別碼取代該受控磁碟的資源識別碼。
 
-請確定虛擬機器大小和儲存類型能和您想要附加的磁碟相容。 例如，如果您想要使用的磁碟是進階儲存體，VM 就必須能夠支援進階儲存體 (例如 DS 系列的大小)。 這兩個磁片也必須是相同的大小。
+請確定虛擬機器大小和儲存類型能和您想要附加的磁碟相容。 舉例而言，如果您想要使用的磁碟是進階儲存體，虛擬機器就需能支援進階儲存體 (例如 DS 系列的大小)。 兩個磁片的大小也必須相同。
 
 使用 [Get AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) 取得資源群組中的磁碟清單
 

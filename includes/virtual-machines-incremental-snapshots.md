@@ -9,13 +9,13 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74014534"
 ---
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 Azure 儲存體提供拍攝 Blob 快照的功能。 快照會擷取該時間點的 Blob 狀態。 在本文中，我們會說明使用快照集維護虛擬機器磁碟備份的案例。 當您選擇不使用 Azure 的備份和復原服務，但是想要為虛擬機器磁碟建立自訂的備份策略時，您可以使用這個方法。
 
 Azure 虛擬機器磁碟在 Azure 儲存體中會儲存為分頁 Blob。 本文中我們所描述的是虛擬機器磁碟的備份策略，因此，我們指的是分頁 Blob 內容中的快照集。 若要深入了解快照，請參閱 [建立 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)。
@@ -73,7 +73,7 @@ Blob 快照是在某個時間點擷取的 Blob 唯讀版本。 一旦建立快�
 
 在下一節中，我們將詳細說明如何使用增量快照複製維護磁碟的備份
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 在本節中，我們會使用快照說明涉及虛擬機器磁碟的自訂備份策略的案例。
 
 請考慮使用連接進階儲存體 P30 磁碟的 DS 系列 Azure VM。 稱為 *mypremiumdisk* 的 P30 磁碟會儲存在稱為 *mypremiumaccount* 的進階儲存體帳戶中。 稱為 *mybackupstdaccount* 的標準儲存體帳戶用於儲存 *mypremiumdisk* 的備份。 我們想要每 12 小時保留一個 *mypremiumdisk* 的快照集。
@@ -87,9 +87,9 @@ Blob 快照是在某個時間點擷取的 Blob 唯讀版本。 一旦建立快�
 
 1. 藉由製作 *mypremiumdisk* 的快照集 (稱為 *mypremiumdisk_ss1*)，為您的進階儲存體磁碟建立備份分頁 blob。
 2. 將此快照集複製到 mybackupstdaccount，以作為稱為 *mybackupstdpageblob*的分頁 Blob。
-3. 使用*快照集 Blob* 建立稱為 *mybackupstdpageblob_ss1* 的 [mybackupstdpageblob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) 快照集，並將其儲存在 *mybackupstdaccount* 中。
+3. 使用[快照集 Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) 建立稱為 *mybackupstdpageblob_ss1* 的 *mybackupstdpageblob* 快照集，並將其儲存在 *mybackupstdaccount* 中。
 4. 在備份時間範圍期間，建立 *mypremiumdisk* 的快照集 (即 *mypremiumdisk_ss2*)，並將其儲存在 *mypremiumaccount* 中。
-5. 搭配使用 *mypremiumdisk_ss2* 上的 *GetPageRanges* 與設為 [mypremiumdisk_ss1](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) 時間戳記的 *prevsnapshot* 參數，以取得兩個快照集 (**mypremiumdisk_ss2** 與 *mypremiumdisk_ss1*) 之間的增量變更。 將這些增量變更寫入 *mybackupstdaccount* 中的備份分頁 Blob *mybackupstdpageblob*。 如果增量變更中有已刪除的範圍，則必須從備份分頁 Blob 中清除這些範圍。 使用 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 將增量變更寫入備份分頁 Blob。
+5. 搭配使用 *mypremiumdisk_ss2* 上的 [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) 與設為 *mypremiumdisk_ss1* 時間戳記的 **prevsnapshot** 參數，以取得兩個快照集 (*mypremiumdisk_ss2* 與 *mypremiumdisk_ss1*) 之間的增量變更。 將這些增量變更寫入 *mybackupstdaccount* 中的備份分頁 Blob *mybackupstdpageblob*。 如果增量變更中有已刪除的範圍，則必須從備份分頁 Blob 中清除這些範圍。 使用 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 將增量變更寫入備份分頁 Blob。
 6. 建立稱為 *mybackupstdpageblob_ss2* 的備份分頁 Blob *mybackupstdpageblob* 的快照集。 從進階儲存體帳戶刪除先前的快照集 *mypremiumdisk_ss1*。
 7. 在每個備份時間範圍期間重複步驟 4-6。 如此一來，您可以維護標準儲存體帳戶中的 *mypremiumdisk* 備份。
 

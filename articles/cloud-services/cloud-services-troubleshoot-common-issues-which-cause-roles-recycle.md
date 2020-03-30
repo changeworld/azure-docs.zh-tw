@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154984"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>導致角色回收的常見問題
@@ -31,9 +31,9 @@ ms.locfileid: "71154984"
 
 在您建置及封裝應用程式之前，請確認下列項目：
 
-* 如果使用 Visual studio，請確定您不屬於 Azure SDK 或 .NET Framework 的專案中每個參考的組件，[複製到本機] 屬性都設定為 [True]。
+* 如果使用 Visual studio，請確定您不屬於 Azure SDK 或 .NET Framework 的專案中每個參考的組件，[複製到本機]**** 屬性都設定為 [True]****。
 * 確定 web.config 檔案未參考 compilation 元素中任何未使用的組件。
-* 每個 .cshtml 檔案的 [建置動作] 都設為 [內容]。 這可確保檔案會正確出現在封裝中，並且讓其他參考的檔案出現在封裝中。
+* 每個 .cshtml 檔案的 [建置動作]**** 都設為 [內容]****。 這可確保檔案會正確出現在封裝中，並且讓其他參考的檔案出現在封裝中。
 
 ## <a name="assembly-targets-wrong-platform"></a>組件以錯誤的平台作為目標
 Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組件無法在 Azure 上運作。
@@ -51,14 +51,14 @@ Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組�
 
 * `DiagnosticsConnectionString` 設定指向 Azure 中的有效儲存體帳戶。  
   根據預設，此設定會指向模擬儲存體帳戶，因此您必須在部署應用程式封裝之前明確變更這項設定。 若未變更此設定，當角色執行個體嘗試啟動診斷監視器時，將會擲回例外狀況。 這可能會導致角色執行個體無限期地回收。
-* 連接字串是以下列 [格式](../storage/common/storage-configure-connection-string.md)指定。 (通訊協定必須指定為 HTTPS。)以您的儲存體帳戶名稱取代 MyAccountName，並以您的存取金鑰取代 MyAccountKey：    
+* 連接字串是以下列 [格式](../storage/common/storage-configure-connection-string.md)指定。 （協定必須指定為 HTTPS。將*MyAccountName*替換為存儲帳戶的名稱，將*MyAccountKey*替換為訪問金鑰：    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
   如果您使用 Azure Tools for Microsoft Visual Studio 開發應用程式，您可以使用屬性頁面來設定此值。
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>匯出的憑證未包含私密金鑰
-若要在 SSL 下執行 Web 角色，您必須確保匯出的管理憑證包含私密金鑰。 如果您使用「Windows 憑證管理員」匯出憑證，請務必針對 [匯出私密金鑰] 選項選取 [是]。 憑證必須匯出為 PFX 格式，這是目前唯一支援的格式。
+若要在 SSL 下執行 Web 角色，您必須確保匯出的管理憑證包含私密金鑰。 如果您使用「Windows 憑證管理員」** 匯出憑證，請務必針對 [匯出私密金鑰]**** 選項選取 [是]****。 憑證必須匯出為 PFX 格式，這是目前唯一支援的格式。
 
 ## <a name="next-steps"></a>後續步驟
 檢視更多雲端服務的 [疑難排解文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
@@ -68,4 +68,4 @@ Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組�
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[運行]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

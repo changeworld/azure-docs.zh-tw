@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 虛擬 WAN 從基本升級至標準-Azure 入口網站 |Microsoft Docs
-description: 您可以升級您的虛擬 WAN 類型，以提供更大的功能。
+title: 將 Azure 虛擬 WAN 從基本版級升級到標準 - Azure 門戶 |微軟文檔
+description: 您可以升級虛擬 WAN 類型以獲得更大的功能。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 83fd5bafb5496908403c50dc0e000fd33a836c95
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73515807"
 ---
-# <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>將虛擬 WAN 從基本升級為標準
+# <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>將虛擬廣域網路從基本網域升級到標準
 
-本文可協助您將基本 WAN 升級為標準 WAN。 「基本」 WAN 類型會將其內部的所有中樞建立為基本 SKU 中樞。 在基本中樞中，您僅限使用站對站 VPN 功能。 「標準」 WAN 類型會建立其內部的所有中樞作為標準 SKU 中樞。 當您使用標準中樞時，您可以啟用 ExpressRoute、使用者（點對站） VPN、完整網狀中樞，以及透過 Azure 中樞的 VNet 對 VNet 傳輸。
+本文可説明您將基本 WAN 升級到標準 WAN。 "基本"WAN 類型將其中的所有集線器創建為基本 SKU 集線器。 在基本中心中，您只能使用網站到網站 VPN 功能。 "標準"WAN 類型將其中的所有集線器創建為標準 SKU 集線器。 使用標準集線器時，可以啟用 ExpressRoute、使用者（點對點）VPN、全網狀集線器和 VNet 到 VNet 傳輸通過 Azure 集線器。
 
-下表顯示適用于每種 WAN 類型的設定：
+下表顯示了每種 WAN 類型的可用配置：
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
-## <a name="to-change-the-virtual-wan-type"></a>變更虛擬 WAN 類型
+## <a name="to-change-the-virtual-wan-type"></a>更改虛擬 WAN 類型
 
-1. 在您的虛擬 WAN 頁面上 **，選取 [** 設定] 以開啟 [設定] 頁面。
+1. 在虛擬 WAN 的頁面上，選擇 **"配置"** 以打開"配置"頁。
 
    ![虛擬 WAN 的圖表](./media/upgrade-virtual-wan/1.png)
-2. 針對 [虛擬 WAN 類型]，從下拉式清單中選取 [**標準**]。
+2. 對於虛擬廣域網路類型，請從下拉清單中選擇 **"標準**"。
 
    ![虛擬 WAN 的圖表](./media/upgrade-virtual-wan/2.png)
-3. 請瞭解，如果您升級至標準虛擬 WAN，則無法還原為基本的虛擬 WAN。 如果您想要升級，請選取 [**確認**]。
+3. 請注意，如果升級到標準虛擬 WAN，則無法恢復為基本虛擬 WAN。 選擇 **"確認**是否要升級"。
 
    ![虛擬 WAN 的圖表](./media/upgrade-virtual-wan/4.png)
-4. 儲存變更之後，您的虛擬 WAN 頁面看起來會類似此範例。
+4. 保存更改後，虛擬 WAN 頁面看起來與本示例類似。
 
    ![虛擬 WAN 的圖表](./media/upgrade-virtual-wan/5.png)
 

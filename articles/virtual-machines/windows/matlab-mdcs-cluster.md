@@ -1,5 +1,5 @@
 ---
-title: 虛擬機器上的 MATLAB 叢集
+title: 虛擬機器上的 MATLAB 群集
 description: 使用 Microsoft Azure 虛擬機器建立 MATLAB Distributed Computing Server 叢集，以執行需密集計算的平行 MATLAB 工作負載。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038132"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>在 Azure VM 上建立 MATLAB Distributed Computing Server 叢集
@@ -28,11 +28,11 @@ ms.locfileid: "74038132"
 
 藉由使用 Azure 虛擬機器，您可以建立 MATLAB Distributed Computing Server 叢集，讓其擁有所有可供提交平行工作的相同機制以作為內部部署叢集，例如互動式作業、批次作業、獨立的工作和通訊工作。 相較於佈建和使用傳統內部部署硬體，搭配使用 Azure 與 MATLAB 平台有許多好處︰能因應各種虛擬機器大小、可隨選建立叢集以便只針對使用的計算資源付費，以及能夠大規模測試模型。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 * **用戶端電腦** - 您將需要以 Windows 為基礎的用戶端電腦，以便在部署之後與 Azure 和 MATLAB Distributed Computing Server 叢集通訊。
 * **Azure PowerShell** - 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) 以將其安裝在您的用戶端電腦上。
 * **Azure 訂用帳戶** - 如果您沒有訂用帳戶，只需要幾分鐘就可以建立 [免費帳戶](https://azure.microsoft.com/free/) 。 針對較大的叢集，請考慮隨用隨付訂用帳戶或其他購買選項。
-* **vCPU 配額** -您可能需要增加 vCPU 配額，以部署大型叢集或多個 MATLAB Distributed Computing Server 叢集。 若要增加配額，請 [開啟線上客戶支援要求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) ，不另外加收費用。
+* **vCPU 配額** -您可能需要增加 vCPU 配額，以部署大型叢集或多個 MATLAB Distributed Computing Server 叢集。 要增加配額，[請免費打開線上客戶支援請求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 * **MATLAB、Parallel Computing Toolbox 和 MATLAB Distributed Computing Server 授權** - 指令碼假設所有授權皆使用 [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) 。  
 * **MATLAB Distributed Computing Server 軟體** - 將會安裝在作為叢集 VM 之基礎 VM 映像的 VM 上。
 

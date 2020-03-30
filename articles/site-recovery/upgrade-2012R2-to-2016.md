@@ -1,5 +1,5 @@
 ---
-title: 將 Windows Server/System Center VMM 2012 R2 升級至 Windows Server 2016-Azure Site Recovery
+title: 將 Windows 伺服器/系統中心 VMM 2012 R2 升級到 Windows 伺服器 2016-Azure 網站恢復
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
 services: site-recovery
 author: rajani-janaki-ram
@@ -9,13 +9,13 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954412"
 ---
-# <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>將 Windows Server Server/System Center 2012 R2 VMM 升級至 Windows Server/VMM 2016 
+# <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>將 Windows 伺服器/系統中心 2012 R2 VMM 升級到 Windows 伺服器/VMM 2016 
 
 本文介紹如何將配有 Azure Site Recovery 的 Windows Server 2012 R2 主機和 SCVMM 2012 R2 升級到 Windows Server 2016 及 SCVMM 2016
 
@@ -38,26 +38,26 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 升級之前，請注意下列事項：
 
 - 如果您擁有不受 SCVMM 管理的 Windows Server 2012 R2 主機，且其有獨立的環境設定，如果您嘗試執行升級，將會中斷複寫。
-- 如果您在當初安裝 SCVMM 2012 R2 時，選取了 [not store my Keys in Active Directory under Distributed Key Management]\(不要將我的金鑰儲存在分散式金鑰管理下的 Active Directory\)，則會無法順利完成升級。
+- 如果您在當初安裝 SCVMM 2012 R2 時，選取了 [not store my Keys in Active Directory under Distributed Key Management]\(不要將我的金鑰儲存在分散式金鑰管理下的 Active Directory\)**，則會無法順利完成升級。
 
 - 如果您使用的是 System Center 2012 R2 VMM， 
 
-    - 檢查 VMM 上的資料庫資訊： **vmm 主控台** -> **設定** -> **一般** -> **資料庫**連線
+    - 檢查 VMM 上的資料庫資訊 **：VMM 主控台** -> **設置** -> **常規** -> **資料庫連接**
     - 檢查用於 System Center Virtual Machine Manager 代理程式服務的服務帳戶
     - 請確定您有 VMM 資料庫的備份。
-    - 請記下與 SCVMM 伺服器相關的資料庫名稱。 瀏覽至 [VMM 主控台] -> [設定] -> [一般] -> [資料庫連線]，即可完成此操作
+    - 請記下與 SCVMM 伺服器相關的資料庫名稱。 這可以通過導航到**VMM 主控台** -> **設置** -> **常規** -> **資料庫連接**來實現
     - 請記下 2012R2 主要 VMM 伺服器和復原 VMM 伺服器的 VMM ID。 可以從「HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup」此登錄找到 VMM ID。
     - 請確認您要新增至叢集的新 SCVMM 的名稱與之前的相同。 
 
 - 如果要在由 SCVMM 管理的兩個站台之間進行雙邊複寫，請確保在升級主要一方之前，先升級復原站台。
   > [!WARNING]
-  > 升級 SCVMM 2012 R2 時，請在 [分散式金鑰管理] 下，選取 [store encryption keys in Active Directory] \(將加密金鑰儲存在 Active Directory 中\)。 請仔細選擇服務帳戶和分散式金鑰管理的設定。 根據您的選擇，升級後可能無法使用加密資料 (例如範本中的密碼)，且可能會影響 Azure Site Recovery 的複寫
+  > 升級 SCVMM 2012 R2 時，請在 [分散式金鑰管理] 下，選取 [store encryption keys in Active Directory] \(將加密金鑰儲存在 Active Directory 中\)****。 請仔細選擇服務帳戶和分散式金鑰管理的設定。 根據您的選擇，升級後可能無法使用加密資料 (例如範本中的密碼)，且可能會影響 Azure Site Recovery 的複寫
 
 > [!IMPORTANT]
 > 請參閱[先決條件](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)的詳細 SCVMM 文件
 
 ## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>不受 SCVMM 管理的 Windows Server 2012 R2 主機 
-下列步驟清單適用於依此[教學課程](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-architecture)從 [Hyper-V 主機到 Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) 執行的使用者設定
+下列步驟清單適用於依此[教學課程](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial)從 [Hyper-V 主機到 Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-architecture) 執行的使用者設定
 
 > [!WARNING]
 > 如必要條件中所述，這些步驟僅適用於叢集環境的情形，而不適用於獨立的 Hyper-V 主機設定。
@@ -75,10 +75,10 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 1.  瀏覽至 [控制台] -> [程式] -> [程式和功能] -> [Microsoft Azure Site Recovery]，然後按一下 [解除安裝]，即可將 ASR 提供者解除安裝。
 2. [保留 SVMM 資料庫，並升級作業系統](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. 在 [新增/移除程式] 中，選取 [VMM] > [解除安裝]。 b.這是另一個 C# 主控台應用程式。 選取 [移除功能]，然後選取 [VMM 管理伺服器] 和 [VMM 主控台]。 c. 在 [資料庫選項] 中，選取 [保留資料庫]。 d. 檢閱摘要，並按一下 [解除安裝]。
+3. 在 [新增/移除程式]**** 中，選取 [VMM]**** > [解除安裝]****。 b. 選取 [移除功能]****，然後選取 [VMM 管理伺服器] 和 [VMM 主控台]****。 c. 在 [資料庫選項]**** 中，選取 [保留資料庫]****。 d. 檢閱摘要，並按一下 [解除安裝]****。
 
 4. [安裝 VMM 2016](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. **在 [** 網狀架構] 索引標籤下啟動 SCVMM 並檢查每部主機的狀態 **。按一下 [** 重新整理] 以取得最新狀態。 您應該會看到狀態為 [需要注意]。 
+5. 啟動 SCVMM 並檢查每個主機的狀態在 **"結構"** 選項卡下。按一下 **"刷新"** 以獲取最新狀態。 您應該會看到狀態為 [需要注意]。 
 17. 在 SCVMM 上安裝最新的 [Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra)。
 16. 在叢集的每個主機上安裝最新的 [Microsoft Azure Recovery Service (MARS) 代理程式](https://aka.ms/latestmarsagent)。 重新整理以確保 SCVMM 可以順利查詢主機。
 
@@ -86,7 +86,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 1. 請依照[此處](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)所述的步驟，執行下列叢集輪流升級程序。 
 2. 將新主機新增至叢集之後，請在 SCVMM 主控台重新整理主機，以在更新後的主機上安裝 VMM 代理程式。
-3. 執行 [更新-VMVersion]，以更新虛擬機器的 VM 版本。 
+3. 執行 [更新-VMVersion]**，以更新虛擬機器的 VM 版本。 
 4.  前往 Azure 入口網站，確認復原服務保存庫中虛擬機器複寫健康情況的狀態。 
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-are-managed-by-highly-available-scvmm-2012-r2-server"></a>升級受高可用性的 SCVMM 2012 R2 伺服器管理的 Windows Server 2012 R2 主機
@@ -96,7 +96,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 1.  瀏覽至 [控制台] -> [程式] -> [程式和功能] -> [Microsoft Azure Site Recovery]，然後按一下 [解除安裝]，即可將 ASR 提供者解除安裝。
 2. 根據您希望執行的升級模式，依照[此處](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)所述的步驟進行操作。
-3. 啟動 SCVMM 主控台，**並在 [** 網狀架構] 索引標籤下檢查每個主機的狀態 **。按一下 [** 重新整理] 以取得最新狀態。 您應該會看到狀態為 [需要注意]。
+3. 啟動 SCVMM 主控台並檢查 **"結構"** 選項卡下每個主機的狀態。按一下 **"刷新"** 以獲取最新狀態。 您應該會看到狀態為 [需要注意]。
 4. 在 SCVMM 上安裝最新的 [Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra)。
 5. 在叢集的每個主機上升級最新的 [Microsoft Azure Recovery Service (MARS) 代理程式](https://aka.ms/latestmarsagent)。 重新整理以確保 SCVMM 可以順利查詢主機。
 
@@ -105,7 +105,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 1. 請依照[此處](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)所述的步驟，執行下列叢集輪流升級程序。
 2. 將新主機新增至叢集之後，請在 SCVMM 主控台重新整理主機，以在更新後的主機上安裝 VMM 代理程式。
-3. 執行 [更新-VMVersion]，以更新虛擬機器的 VM 版本。 
+3. 執行 [更新-VMVersion]**，以更新虛擬機器的 VM 版本。 
 4.  前往 Azure 入口網站，確認復原服務保存庫中虛擬機器複寫健康情況的狀態。 
 
 ## <a name="next-steps"></a>後續步驟

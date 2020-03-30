@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421566"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在向外延展的雲端資料庫之間移動資料
@@ -24,7 +24,7 @@ ms.locfileid: "74421566"
 
 分割合併工具執行的方式如同 Azure Web 服務。 系統管理員或開發人員使用工具在不同的資料庫 (分區) 之間移動 Shardlet (分區的資料)。 此工具會使用分區對應管理來維護服務中繼資料資料庫，並確保一致的對應。
 
-![Overview][1]
+![總覽][1]
 
 ## <a name="download"></a>下載
 
@@ -33,12 +33,12 @@ ms.locfileid: "74421566"
 ## <a name="documentation"></a>文件
 
 1. [彈性資料庫分割合併工具教學課程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Split-Merge 安全性設定](sql-database-elastic-scale-split-merge-security-configuration.md)
+2. [拆分合併安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
 3. [分割合併安全性考量](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [分區對應管理](sql-database-elastic-scale-shard-map-management.md)
-5. [轉換現有的資料庫以使用彈性資料庫工具](sql-database-elastic-convert-to-use-elastic-tools.md)
+5. [將現有的資料庫移轉到相應放大的資料庫](sql-database-elastic-convert-to-use-elastic-tools.md)
 6. [彈性資料庫功能概觀](sql-database-elastic-scale-introduction.md)
-7. [彈性資料庫工具字彙](sql-database-elastic-scale-glossary.md)
+7. [彈性資料庫工具詞彙表](sql-database-elastic-scale-glossary.md)
 
 ## <a name="why-use-the-split-merge-tool"></a>為何使用分割合併工具？
 
@@ -52,7 +52,7 @@ ms.locfileid: "74421566"
 
 - **合併以縮減**
 
-  容量因為業務的季節特性需要縮減。 當業務減緩時，此工具可讓您縮小至較少的縮放單位。 Elastic Scale 分割合併服務的「合併」功能可滿足此需求。
+  容量因為業務的季節特性需要縮減。 當業務減緩時，此工具可讓您相應減少至較少的縮放單位。 Elastic Scale 分割合併服務的「合併」功能可滿足此需求。
 
 - **移動 Shardlet 來管理作用區**
 
@@ -180,17 +180,17 @@ ms.locfileid: "74421566"
 
 分割合併服務是以 Microsoft Azure 訂用帳戶中的雲端服務執行。 因此會對您的服務執行個體收取雲端服務的費用。 除非您經常執行分割/合併/移動作業，否則建議您刪除分割合併雲端服務。 這可以節省執行中或已部署的雲端服務執行個體的成本。 每當您需要執行分割或合併作業時，您可以重新部署和啟動可立即運作的組態。
 
-## <a name="monitoring"></a>監控
+## <a name="monitoring"></a>監視
 
 ### <a name="status-tables"></a>狀態資料表
 
 分割合併服務在中繼資料儲存資料庫中提供 **RequestStatus** 資料表，以監視已完成和進行中的要求。 已提交至這個分割合併服務執行個體的每一個分割合併要求，在此資料表中都會列出一個資料列。 它針對每個要求提供以下的資訊：
 
-- **Timestamp**
+- **時間 戳**
 
   要求開始的時間和日期。
 
-- **OperationId**
+- **操作 Id**
 
   可唯一識別要求的 GUID。 這項要求也可用來取消仍在進行中的作業。
 
@@ -202,7 +202,7 @@ ms.locfileid: "74421566"
 
   指出是否已取消要求的旗標。
 
-- **Progress**
+- **進展**
 
   作業完成的估計百分比。 值為 50 表示作業已完成大約 50%。
 
@@ -219,7 +219,7 @@ ms.locfileid: "74421566"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
 
 針對 NuGet 封裝所提供的 Web 和背景工作角色，若要使用診斷組態啟用監視和診斷，請使用 Azure PowerShell 執行下列命令：
 

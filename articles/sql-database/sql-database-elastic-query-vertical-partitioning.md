@@ -1,5 +1,5 @@
 ---
-title: 對不同結構描述的雲端資料庫執行查詢
+title: 使用不同的架構跨雲資料庫查詢
 description: 如何透過垂直資料分割設定跨資料庫查詢
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823720"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>對不同結構描述的雲端資料庫執行查詢 (預覽)
@@ -24,21 +24,21 @@ ms.locfileid: "73823720"
 
 垂直資料分割資料庫使用在不同資料庫的不同資料表集。 這表示不同資料庫的結構描述不同。 比方說，庫存的所有資料表都位於一個資料庫上，而所有會計相關資料表則位於另一個資料庫上。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 使用者必須擁有 ALTER ANY EXTERNAL DATA SOURCE 權限。 這個權限包含在 ALTER DATABASE 權限中。
 * 需有 ALTER ANY EXTERNAL DATA SOURCE 權限，才能參考基礎資料來源。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!NOTE]
 > 與水平資料分割不同，這些 DDL 陳述式並不倚賴透過彈性資料庫用戶端程式庫來定義帶有分區對應的資料層。
 >
 
-1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [建立資料庫範圍認證](https://msdn.microsoft.com/library/mt270260.aspx)
+1. [創建主金鑰](https://msdn.microsoft.com/library/ms174382.aspx)
+2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
+4. [創建外部表](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>建立資料庫範圍的主要金鑰和認證
 
@@ -50,7 +50,7 @@ ms.locfileid: "73823720"
     [;]
 
 > [!NOTE]
-> 請確定 `<username>` 不包含任何 **"\@servername"** 尾碼。 
+> 確保 不包含`<username>`任何 **"\@伺服器名稱"** 尾碼。 
 >
 
 ## <a name="create-external-data-sources"></a>建立外部資料來源

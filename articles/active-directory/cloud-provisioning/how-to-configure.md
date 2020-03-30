@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect 雲端布建新的代理程式設定
-description: 本文說明如何安裝雲端布建。
+title: Azure AD 連接雲預配新代理配置
+description: 本文介紹如何安裝雲資源調配。
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,83 +12,83 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77620980"
 ---
-# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>建立 Azure AD Connect 雲端式布建的新設定
+# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>為 Azure AD 連接基於雲的預配創建新配置
 
-安裝代理程式之後，您必須登入 Azure 入口網站並設定 Azure Active Directory （Azure AD） [連線雲端布建]。 請遵循下列步驟來啟用代理程式。
+安裝代理後，需要登錄到 Azure 門戶並配置 Azure 活動目錄 （Azure AD） 連接雲預配。 按照以下步驟啟用代理。
 
-## <a name="configure-provisioning"></a>設定布建
-若要設定布建，請遵循下列步驟。
+## <a name="configure-provisioning"></a>配置預配
+要配置預配，請按照以下步驟操作。
 
-1.  在 Azure 入口網站中，選取 [Azure Active Directory]。
-1.  選取 [Azure AD Connect]。
-1.  選取 **[管理布建（預覽）** ]。
+1.  在 Azure 門戶中，選擇**Azure 活動目錄**。
+1.  選取 [Azure AD Connect]****。
+1.  選擇 **"管理預配（預覽）"。**
 
-    ![管理布建（預覽）](media/how-to-configure/manage1.png)
+    ![管理預配（預覽）](media/how-to-configure/manage1.png)
 
-1.  選取 [**新增**設定]。
-1.  在 [設定] 畫面上，已預先填入內部部署網域。
-1.  輸入**通知電子郵件**。 當布建狀況不良時，將會通知這封電子郵件。
-1.  將選取器移至 [**啟用**]，然後選取 [**儲存**]。
+1.  選擇 **"新配置**"。
+1.  在配置螢幕上，本地域已預填充。
+1.  輸入**通知電子郵件**。 當預配不正常時，將通知此電子郵件。
+1.  將選擇器移到**啟用**，然後選擇 **"保存**"。
 
-    ![Azure AD 布建（預覽）](media/tutorial-single-forest/configure2.png)
+    ![Azure AD 預配（預覽）](media/tutorial-single-forest/configure2.png)
 
-## <a name="scope-provisioning-to-specific-users-and-groups"></a>將範圍布建到特定使用者和群組
-您可以使用內部部署 Active Directory 群組或組織單位，將代理程式設為範圍，以同步處理特定的使用者和群組。 您無法在設定內設定群組和組織單位。 
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>特定使用者和組的範圍預配
+您可以使用本地活動目錄組或組織單位對代理進行限定以同步特定使用者和組。 不能在配置中配置組和組織單位。 
 
-1.  在 Azure 入口網站中，選取 [Azure Active Directory]。
-1.  選取 [Azure AD Connect]。
-1.  選取 **[管理布建（預覽）** ]。
-1.  在 [設定]**下，選取您的設定**。
+1.  在 Azure 門戶中，選擇**Azure 活動目錄**。
+1.  選取 [Azure AD Connect]****。
+1.  選擇 **"管理預配（預覽）"。**
+1.  在 **"配置"** 下，選擇您的配置。
 
     ![[設定] 區段](media/how-to-configure/scope1.png)
 
-1.  在 [設定] 底下選取 [所有使用者]，以變更組態規則的範圍。
+1.  在 [設定]**** 底下選取 [所有使用者]****，以變更組態規則的範圍。
 
-    ![[所有使用者] 選項](media/how-to-configure/scope2.png)
+    ![所有使用者選項](media/how-to-configure/scope2.png)
 
-1. 在右側，您可以將範圍變更為僅包含安全性群組。 輸入群組的辨別名稱，然後選取 [**新增**]。
+1. 在右側，您可以更改範圍以僅包括安全性群組。 輸入組的可分辨名稱，然後選擇 **"添加**"。
 
-    ![選取的安全性群組選項](media/how-to-configure/scope3.png)
+    ![選定的安全性群組選項](media/how-to-configure/scope3.png)
 
-1.  或者，您可以將範圍變更為僅包含特定的組織單位。 選取 [**完成**] 和 [**儲存**]。  
-2.  變更範圍之後，您應該[重新開機](#restart-provisioning)布建以起始變更的立即同步處理。
+1.  或者，您可以更改範圍以僅包括特定的組織單位。 選擇 **"完成"** 並**保存**。  
+2.  更改範圍後，應[重新開機預配](#restart-provisioning)以啟動更改的立即同步。
 
-    ![選取的組織單位選項](media/how-to-configure/scope4.png)
+    ![選定的組織單位選項](media/how-to-configure/scope4.png)
 
 
-## <a name="restart-provisioning"></a>重新開機布建 
-如果您不想等候下一個排程的執行，請使用 [**重新開機**布建] 按鈕來觸發布建執行。 
-1.  在 Azure 入口網站中，選取 [Azure Active Directory]。
-1.  選取 [Azure AD Connect]。
-1.  選取 **[管理布建（預覽）** ]。
-1.  在 [設定]**下，選取您的設定**。
+## <a name="restart-provisioning"></a>重新開機預配 
+如果不想等待下一次計畫運行，請使用 **"重新開機預配**"按鈕觸發預配運行。 
+1.  在 Azure 門戶中，選擇**Azure 活動目錄**。
+1.  選取 [Azure AD Connect]****。
+1.  選擇 **"管理預配（預覽）"。**
+1.  在 **"配置"** 下，選擇您的配置。
 
-    ![設定選項以重新開機布建](media/how-to-configure/scope1.png)
+    ![用於重新開機預配的配置選擇](media/how-to-configure/scope1.png)
 
-1.  在頂端，選取 [**重新開機**布建]。
+1.  在頂部，選擇 **"重新開機預配**"。
 
-## <a name="remove-a-configuration"></a>移除設定
-若要刪除設定，請遵循下列步驟。
+## <a name="remove-a-configuration"></a>刪除配置
+要刪除配置，請按照以下步驟操作。
 
-1.  在 Azure 入口網站中，選取 [Azure Active Directory]。
-1.  選取 [Azure AD Connect]。
-1.  選取 **[管理布建（預覽）** ]。
-1.  在 [設定]**下，選取您的設定**。
+1.  在 Azure 門戶中，選擇**Azure 活動目錄**。
+1.  選取 [Azure AD Connect]****。
+1.  選擇 **"管理預配（預覽）"。**
+1.  在 **"配置"** 下，選擇您的配置。
 
-    ![要移除設定的設定選項](media/how-to-configure/scope1.png)
+    ![要刪除配置的配置選擇](media/how-to-configure/scope1.png)
 
-1.  在 [設定] 畫面頂端，選取 [**刪除**]。
+1.  在配置螢幕的頂部，選擇 **"刪除**"。
 
     ![刪除按鈕](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->在刪除設定之前，不會確認。 請確定這是您想要採取的動作，然後再選取 [**刪除**]。
+>刪除配置之前沒有確認。 在選擇 **"刪除**"之前，請確保這是要執行的操作。
 
 
 ## <a name="next-steps"></a>後續步驟 

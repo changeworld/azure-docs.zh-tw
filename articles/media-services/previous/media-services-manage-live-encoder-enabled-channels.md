@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162526"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒體服務執行即時串流，以建立多位元速率串流
@@ -27,11 +27,11 @@ ms.locfileid: "77162526"
 > [!NOTE]
 > 從 2018 年 5 月 12 日開始，即時通道將不再支援 RTP/MPEG-2 傳輸串流內嵌通訊協定。 請從 RTP/MPEG-2 移轉到 RTMP 或分散式 MP4 (Smooth Streaming) 內嵌通訊協定。
 
-## <a name="overview"></a>概觀
-在 Azure 媒體服務 (AMS) 中， **通道** 代表一個管線，負責處理即時資料流內容。 **通道** 會以兩種方式之一收到即時輸入串流：
+## <a name="overview"></a>總覽
+在 Azure 媒體服務 (AMS) 中， **通道** 代表一個管線，負責處理即時資料流內容。 **通道**以兩種方式之一接收即時輸入流：
 
 * 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
-* 內部部署即時編碼器會將多位元速率 **RTMP** 或 **Smooth Streaming** (分散式 MP4) 傳送到未啟用執行 AMS 即時編碼的通道。 內嵌的串流會通過 **通道**，而不需任何進一步處理。 此方法稱為 **傳遞**。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision、Teradek 和 Tricaster 編碼器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
+* 內部部署即時編碼器會將多位元速率 **RTMP** 或 **Smooth Streaming** (分散式 MP4) 傳送到未啟用執行 AMS 即時編碼的通道。 內嵌的串流會通過 **通道**，而不需任何進一步處理。 此方法稱為 **傳遞**。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下即時編碼器輸出RTMP：[遠端有線廣播](media-services-configure-wirecast-live-encoder.md)，海視，特拉德克和特裡卡斯特編碼器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
 
   > [!NOTE]
   > 使用傳遞方法是進行即時串流的最經濟實惠方式。
@@ -57,13 +57,13 @@ ms.locfileid: "77162526"
 若要停止通道進一步向您計費，您必須停止透過 API 或在 Azure 入口網站中的通道。
 您必須負責在完成即時編碼通道時停止您的通道。  無法停止編碼通道將會導致持續計費。
 
-### <a id="states"></a>通道狀態和狀態如何對應至計費模式
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道狀態和狀態如何對應至計費模式
 通道的目前狀態。 可能的值包括：
 
-* **已停止**。 這是通道建立後的初始狀態（除非已在入口網站中選取 [自動啟動]）。在此狀態下不會計費。 在此狀態下，通道屬性可以更新，但是不允許串流。
-* **啟動中**。 正在啟動通道。 此狀態中不會計費。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
-* **執行中**。 通道能夠處理即時串流。 現在針對使用量計費。 您必須停止通道來防止進一步計費。 
-* **停止中**。 正在停止通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
+* **已停止**。 這是通道創建後的初始狀態（除非在門戶中選擇了自動啟動）。此狀態下不發生計費。 在此狀態下，通道屬性可以更新，但是不允許串流。
+* **開始**。 正在啟動通道。 此狀態中不會計費。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
+* **正在運行**。 通道能夠處理即時串流。 現在針對使用量計費。 您必須停止通道來防止進一步計費。 
+* **停止**。 正在停止通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
 * **刪除中**。 正在刪除通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
 
 下表顯示通道狀態如何對應至計費模式。 
@@ -85,7 +85,7 @@ ms.locfileid: "77162526"
 
 ![即時工作流程][live-overview]
 
-## <a id="scenario"></a>常見即時串流案例
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見即時串流案例
 下列是建立常見即時串流應用程式所含的一般步驟。
 
 > [!NOTE]
@@ -111,7 +111,7 @@ ms.locfileid: "77162526"
 6. 發行與程式相關聯的資產。   
 
     >[!NOTE]
-    >建立 AMS 帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 您想要串流內容的串流端點必須處於 [執行中] 狀態。 
+    >創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
 
 7. 當您準備好開始串流和封存時，請啟動程式。
 8. 即時編碼器會收到啟動公告的信號 (選擇性)。 公告會插入輸出串流中。
@@ -123,14 +123,14 @@ ms.locfileid: "77162526"
 > 
 > 
 
-## <a id="channel"></a>通道的輸入 (嵌入) 組態
-### <a id="Ingest_Protocols"></a>嵌入串流通訊協定
+## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>通道的輸入 (嵌入) 組態
+### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>嵌入串流通訊協定
 如果**編碼器類型**設為**標準**，有效的選項如下：
 
-* 單一位元速率 **RTMP**
-* 單一位元速率 **分散的 MP4** (Smooth Streaming)
+* 單位元速率**RTMP**
+* 單位元速率**碎片 MP4（** 平滑流式處理）
 
-#### <a id="single_bitrate_RTMP"></a>單一位元速率 RTMP
+#### <a name="single-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>單一位元速率 RTMP
 考量：
 
 * 連入串流不能包含多位元速率視訊
@@ -207,10 +207,10 @@ ms.locfileid: "77162526"
 #### <a name="index"></a>索引
 建議您傳送單一程式傳輸串流 (SPTS)。 如果輸入串流包含多個程式，通道內的即時編碼器會剖析輸入中的程式對應資料表 (PMT)、識別具有串流類型名稱 MPEG-2 AAC ADTS 或 AC-3 System-A 或 AC-3 System-B 或 MPEG-2 Private PES 或 MPEG-1 音訊或 MPEG-2 音訊的輸入，並以 PMT 中指定的順序加以排列。 接著會使用以零起始的索引，在排列中挑選第 n 個項目。
 
-#### <a name="language"></a>Language
+#### <a name="language"></a>語言
 音訊串流的語言識別碼，符合 ISO 639-2，例如 ENG。 如果不存在，則預設為 UND (未定義)。
 
-### <a id="preset"></a>系統預設
+### <a name="system-preset"></a><a id="preset"></a>系統預設
 指定由此通道內之即時編碼器所使用的預設內容。 目前，唯一允許的值是 **Default720p** (預設值)。
 
 **Default720p** 會將視訊編碼成下列 6 層。
@@ -247,7 +247,7 @@ ms.locfileid: "77162526"
 廣告插播的唯一識別碼，可供下游應用程式用來採取適當的動作。 必須是正整數。 您可以將此值設定為任何隨機正整數，或使用上游系統來追蹤 Cue Id。 請務必在透過 API 送出任何識別碼前將其標準化為正整數。
 
 ### <a name="show-slate"></a>顯示 slate
-選擇性。 在廣告插播期間發送信號給即時編碼器以切換至 [預設 slate](media-services-manage-live-encoder-enabled-channels.md#default_slate) 映像，並隱藏連入的視訊摘要。 在 slate 期間也要使音訊靜音。 預設值為 **false**。 
+選擇性。 在廣告插播期間發送信號給即時編碼器以切換至 [預設 slate](media-services-manage-live-encoder-enabled-channels.md#default_slate) 映像，並隱藏連入的視訊摘要。 在 slate 期間也要使音訊靜音。 預設值**為 false**。 
 
 在建立通道時會透過預設 slate 資產識別碼屬性指定要使用的映像。 slate 將會延伸到符合顯示映像大小。 
 
@@ -262,7 +262,7 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 ### <a name="insert-slate-on-ad-marker"></a>插入 ad 標記上的 slate
 設為 true 時，此設定會將即時編碼器設為在廣告插播期間插入 slate 映像。 預設值為 true。 
 
-### <a id="default_slate"></a>預設靜態圖像資產識別碼
+### <a name="default-slate-asset-id"></a><a id="default_slate"></a>預設靜態圖像資產識別碼
 
 選擇性。 指定包含 slate 映像之媒體服務資產的資產識別碼。 預設值為 null。 
 
@@ -299,13 +299,13 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 ## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>取得即時摘要的縮圖預覽
 啟用即時編碼時，您現在可以在即時摘要抵達通道時取得其預覽。 這是重要的工具，可檢查您的即時摘要是否真的抵達通道。 
 
-## <a id="states"></a>通道狀態和狀態如何對應至計費模式
+## <a name="channel-states-and-how-states-map-to-the-billing-mode"></a><a id="states"></a>通道狀態和狀態如何對應至計費模式
 通道的目前狀態。 可能的值包括：
 
 * **已停止**。 這是通道建立後的初始狀態。 在此狀態下，通道屬性可以更新，但是不允許串流。
-* **啟動中**。 正在啟動通道。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
-* **執行中**。 通道能夠處理即時串流。
-* **停止中**。 正在停止通道。 在此狀態期間允許任何更新或串流。
+* **開始**。 正在啟動通道。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
+* **正在運行**。 通道能夠處理即時串流。
+* **停止**。 正在停止通道。 在此狀態期間允許任何更新或串流。
 * **刪除中**。 正在刪除通道。 在此狀態期間允許任何更新或串流。
 
 下表顯示通道狀態如何對應至計費模式。 
@@ -322,16 +322,16 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 > 
 > 
 
-## <a id="Considerations"></a>考量
+## <a name="considerations"></a><a id="Considerations"></a>考量
 * 當 **標準** 編碼類型的通道發生遺失輸入來源/發佈摘要時，它會透過取代含有錯誤靜態圖像與無聲的來源視訊/音訊來補償它。 通道將會繼續發出靜態圖像，直到輸入/發佈補償恢復為止。 我們建議不要讓即時通道停留在此狀態超過 2 個小時。 超過該時間點，就無法保證通道在輸入重新連線時的行為，也無法保證其回應重設命令的行為。 您將必須停止通道、將它刪除，以及建立新的通道。
 * 通道或其相關聯程式正在執行時，您無法變更輸入通訊協定。 如果您需要不同的通訊協定，則應該為每個輸入通訊協定建立個別的通道。
 * 每當您重新設定即時編碼器，請呼叫通道上的 **重設** 方法。 重設通道之前，您必須停止程式。 重設通道之後，請重新啟動程式。
 * 只有當通道處於執行中的狀態，且通道上的所有程式皆已停止時，才能停止通道。
-* 根據預設，您只能加入最多 5 個通道到媒體服務帳戶。 這是所有新帳戶的彈性配額。 如需詳細資訊，請參閱 [配額和限制](media-services-quotas-and-limitations.md)。
+* 根據預設，您只能加入最多 5 個通道到媒體服務帳戶。 這是所有新帳戶的彈性配額。 有關詳細資訊，請參閱[配額和限制](media-services-quotas-and-limitations.md)。
 * 通道或其相關聯程式正在執行時，您無法變更輸入通訊協定。 如果您需要不同的通訊協定，則應該為每個輸入通訊協定建立個別的通道。
 * 只有當您的通道處於 **執行中** 狀態時，才會向您計費。 若需詳細資訊，請參閱 [這個](media-services-manage-live-encoder-enabled-channels.md#states) 章節。
 * 目前，即時事件的最大建議持續時間是 8 小時。 
-* 確定您想要串流內容的串流端點已處於 [執行中] 狀態。
+* 確定您想要串流內容的串流端點已處於 [執行中]**** 狀態。
 * 編碼預設採用「畫面播放速率上限」30fps 的概念。 因此，如果輸入是 60fps/59.94i，輸入畫面會降低/去交錯為 30/29.97 fps。 如果輸入是 50fps/50i，輸入畫面會降低/去交錯為 25 fps。 如果輸入是 25 fps，輸出會保持為 25 fps。
 * 切記在完成時停止您的通道。 如果您忘記，計費會繼續。
 
@@ -364,7 +364,7 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 
 [媒體服務概念](media-services-concepts.md)
 
-[Azure 媒體服務的分散 MP4 即時內嵌規格](../media-services-fmp4-live-ingest-overview.md)
+[Azure 媒體服務 碎片 MP4 即時引入規範](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 

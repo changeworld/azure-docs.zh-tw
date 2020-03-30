@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162131"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下載可供進行 S2S VPN 連線的 VPN 裝置設定指令碼
@@ -26,7 +26,7 @@ ms.locfileid: "77162131"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>關於 VPN 裝置設定指令碼
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>關於 VPN 裝置設定指令碼
 
 跨單位 VPN 連線是由 Azure VPN 閘道、內部部署 VPN 裝置以及讓兩者相連的 IPsec S2S VPN 通道所組成。 典型的工作流程包含下列步驟：
 
@@ -50,7 +50,7 @@ ms.locfileid: "77162131"
 
 建立 Azure VPN 閘道、區域網路閘道以及讓兩者相連的連線資源。 下列網頁會指導您逐步執行步驟：
 
-* [在 Azure 入口網站中建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [在 Azure 門戶中創建網站到網站的連接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
 在建立連線資源後，請遵循下列指示以下載 VPN 裝置設定指令碼：
 

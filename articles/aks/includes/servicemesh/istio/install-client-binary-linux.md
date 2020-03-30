@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: b310de560f9791e1fc49d54dfbf0789c38d37f57
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593929"
 ---
-## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下載並安裝 Istio istioctl 用戶端二進位檔
+## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下載並安裝 Istio istioctl 用戶端二進位
 
-在 linux 或[適用于 linux 的 Windows 子系統][install-wsl]上以 bash 為基礎的 shell 中，使用 `curl` 下載 Istio 版本，然後以 `tar` 解壓縮，如下所示：
+在 Linux 或適用于 Linux[的 Windows 子系統][install-wsl]上的基於`curl`bash 的 shell 中，用於下載`tar`Istio 版本，然後提取如下所示：
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -21,7 +21,7 @@ ISTIO_VERSION=1.4.0
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
 ```
 
-`istioctl` 用戶端二進位檔會在您的用戶端電腦上執行，並可讓您與 Istio 服務網格互動。 使用下列命令，在 linux 或[適用于 linux 的 Windows 子系統][install-wsl]上以 bash 為基礎的 shell 中安裝 Istio `istioctl` 用戶端二進位檔。 這些命令會將 `istioctl` 用戶端二進位檔複製到 `PATH` 中的標準使用者程式位置。
+用戶端`istioctl`二進位檔案在用戶端電腦上運行，並允許您與 Istio 服務網格進行交互。 使用下列命令，在 Linux 或[適用於 Linux 的 Windows 子系統][install-wsl]上的 Bash 型殼層中，安裝 Istio `istioctl` 用戶端二進位檔。 這些命令會將 `istioctl` 用戶端二進位檔複製到 `PATH` 中的標準使用者程式位置。
 
 ```bash
 cd istio-$ISTIO_VERSION

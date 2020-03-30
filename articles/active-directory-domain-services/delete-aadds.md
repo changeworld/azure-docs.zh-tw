@@ -1,6 +1,6 @@
 ---
-title: 刪除 Azure Active Directory Domain Services |Microsoft Docs
-description: 瞭解如何使用 Azure 入口網站來停用或刪除 Azure Active Directory Domain Services 受控網域
+title: 刪除 Azure 活動目錄域服務 |微軟文檔
+description: 瞭解如何使用 Azure 門戶禁用或刪除 Azure 活動目錄域服務託管域
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
 ms.openlocfilehash: e1836f91b8afc1bb4f5b7e141949f3724c57c857
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614046"
 ---
-# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>使用 Azure 入口網站刪除 Azure Active Directory Domain Services 受控網域
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>使用 Azure 門戶刪除 Azure 活動目錄域服務託管域
 
-如果您不再需要受控網域，您可以刪除 Azure Active Directory Domain Services （Azure AD DS）實例。 沒有任何選項可關閉或暫時停用 Azure AD DS 受控網域。 刪除 Azure AD DS 受控網域不會刪除或對 Azure AD 租使用者造成不良影響。 本文說明如何使用 Azure 入口網站來刪除 Azure AD DS 受控網域。
+如果不再需要託管域，可以刪除 Azure 活動目錄域服務 （Azure AD DS） 實例。 沒有關閉或暫時禁用 Azure AD DS 託管域的選項。 刪除 Azure AD DS 託管域不會刪除 Azure AD 租戶或以其他方式對 Azure AD 租戶產生不利影響。 本文介紹如何使用 Azure 門戶刪除 Azure AD DS 託管域。
 
 > [!WARNING]
-> **刪除是永久的，無法復原。**
-> 當您刪除 Azure AD DS 受控網域時，會發生下列步驟：
+> **刪除是永久性的，無法撤銷。**
+> 刪除 Azure AD DS 託管域時，將執行以下步驟：
 >   * 受控網域的網域控制站會解除佈建，並從虛擬網路中移除。
->   * 受控網域上的資料會永久刪除。 此資料包括您所建立的自訂 Ou、Gpo、自訂 DNS 記錄、服務主體、Gmsa 等等。
+>   * 受控網域上的資料會永久刪除。 此資料包括您創建的自訂 O、GPO、自訂 DNS 記錄、服務主體、GMSA 等。
 >   * 聯結至受控網域的機器會失去與網域間的信任關係，且必須從網域中解除聯結。
->       * 您無法使用公司 AD 認證登入這些電腦。 相反地，您必須使用電腦的本機系統管理員認證。
+>       * 您無法使用公司 AD 憑據登錄到這些電腦。 相反，您必須對電腦使用本地管理員憑據。
 
-## <a name="delete-the-managed-domain"></a>刪除受控網域
+## <a name="delete-the-managed-domain"></a>刪除託管域
 
-若要刪除 Azure AD DS 受控網域，請完成下列步驟：
+要刪除 Azure AD DS 託管域，請完成以下步驟：
 
-1. 在 Azure 入口網站中，搜尋並選取  **Azure AD Domain Services**。
-1. 選取您 Azure AD DS 受控網域的名稱，例如*aaddscontoso.com*。
-1. 在 [概觀] 頁面上，按一下 [刪除]。 若要確認刪除，請再次輸入受控網域的功能變數名稱，然後選取 [**刪除**]。
+1. 在 Azure 門戶中，搜索並選擇**Azure AD 域服務**。
+1. 選擇 Azure AD DS 託管域的名稱，如*aaddscontoso.com*。
+1. 在 [概觀]**** 頁面上，按一下 [刪除]****。 要確認刪除，請再次鍵入託管域的功能變數名稱，然後選擇 **"刪除**"。
 
-可能需要15-20 分鐘或更久的時間，才能刪除 Azure AD DS 受控網域。
+刪除 Azure AD DS 託管域可能需要 15-20 分鐘或更長時間。
 
 ## <a name="next-steps"></a>後續步驟
 
-請考慮針對您想要在 Azure AD DS 中看到的功能，[分享意見][feedback]反應。
+請考慮[共用][feedback]有關您希望在 Azure AD DS 中查看的功能的回饋。
 
-如果您想要再次開始使用 Azure AD DS，請參閱[建立和設定 Azure Active Directory Domain Services 實例][create-instance]。
+如果要再次開始使用 Azure AD DS，請參閱[創建和配置 Azure 活動目錄域服務實例][create-instance]。
 
 <!-- INTERNAL LINKS -->
 [feedback]: contact-us.md

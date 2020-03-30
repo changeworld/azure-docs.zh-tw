@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery 部署規劃工具版本歷程記錄
-description: 已知不同的 Site Recovery 部署規劃工具版本修正和已知的限制，以及其發行日期。
+title: Azure 網站恢復部署規劃器版本歷程記錄
+description: 已知的不同網站恢復部署規劃器版本修復和已知限制及其發佈日期。
 services: site-recovery
 author: Daya-Patil
 manager: carmonm
@@ -9,154 +9,154 @@ ms.service: site-recovery
 ms.date: 10/16/2019
 ms.author: dapatil
 ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72433422"
 ---
-# <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署規劃工具版本歷程記錄
+# <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure 網站恢復部署規劃器版本歷程記錄
 
-本文提供所有版本 Azure Site Recovery 部署規劃工具的歷程記錄，以及修正程式、每個版本的已知限制和發行日期。
+本文提供 Azure 網站恢復部署規劃器的所有版本的歷史記錄，以及每個版本及其發佈日期中的修補程式、已知限制。
 
-## <a name="version-251"></a>版本2.51
+## <a name="version-251"></a>版本 2.51
 
-**發行日期：2019年8月22日**
+**發佈日期：2019 年 8 月 22 日**
 
-**補丁**
+**修復：**
 
-- 已修正部署規劃工具2.5 版的成本建議問題
+- 修復了部署規劃器版本 2.5 的成本建議問題
 
-## <a name="version-25"></a>版本2。5
+## <a name="version-25"></a>版本 2.5
 
-**發行日期：2019年7月29日**
+**發佈日期：2019 年 7 月 29 日**
 
-**補丁**
+**修復：**
 
-- 針對 VMware 虛擬機器和實體機器，建議會根據複寫到受控磁碟進行更新。
-- 已新增 Windows 10 （x64）、Windows 8.1 （x64）、Windows 8 （x64）、Windows 7 （x64） SP1 或更新版本的支援
+- 對於 VMware 虛擬機器和物理電腦，建議更新為基於對託管磁片的複製。
+- 添加了對 Windows 10 （x64）、Windows 8.1 （x64）、Windows 8 （x64）、Windows 7 （x64） SP1 或更高版本的支援
 
-## <a name="version-24"></a>版本2。4
+## <a name="version-24"></a>版本 2.4
 
-**發行日期：2019年4月17日**
+**發佈日期：2019 年 4 月 17 日**
 
-**補丁**
+**修復：**
 
-- 改善作業系統的相容性，特別是在處理以當地語系化為基礎的錯誤時。
-- 已將 Vm 新增至相容性檢查清單，最高可達 20 Mbps 的資料變更率（變換）。
-- 改善的錯誤訊息
-- 已新增對 vCenter 6.7 的支援。
-- 已新增 Windows Server 2019 和 Red Hat Enterprise Linux （RHEL）工作站的支援。
+- 改進了作業系統相容性，尤其是在處理基於當地語系化的錯誤時。
+- 將具有高達 20 Mbps 資料更改速率（流失）的 VM 添加到相容性檢查表中。
+- 改進的錯誤訊息
+- 添加了對 vCenter 6.7 的支援。
+- 添加了對 Windows 伺服器 2019 和紅帽企業 Linux （RHEL） 工作站的支援。
 
 
 
-## <a name="version-23"></a>版本2。3
+## <a name="version-23"></a>版本 2.3
 
-**發行日期：2018年12月3日**
+**發佈日期：2018 年 12 月 3 日**
 
-**補丁**
+**修復：**
 
-- 已修正導致部署規劃工具無法使用提供的目標位置和訂用帳戶產生報告的問題。
+- 修復了阻止部署規劃器生成具有提供的目標位置和訂閱的報告的問題。
 
-## <a name="version-22"></a>版本2。2 
+## <a name="version-22"></a>版本 2.2 
 
-**發行日期：2018年4月25日**
+**發佈日期：2018 年 4 月 25 日**
 
-**補丁**
+**修復：**
 
-- GetVMList 作業：
-  - 已修正當指定的資料夾不存在時，導致 GetVMList 失敗的問題。 它現在會建立預設目錄，或建立在 outputfile 參數中指定的目錄。
-  - 新增更詳細的 GetVMList 失敗原因。
-- 已將 VM 類型資訊新增為部署規劃工具報表之 [相容的 Vm] 工作表中的資料行。
-- Hyper-v 到 Azure 的嚴重損壞修復：
-  - 已排除具有共用 Vhd 的 Vm，以及分析的傳遞磁片。 Startprofiling 作業會顯示主控台中已排除的 Vm 清單。
-  - 已將具有超過64個磁片的 Vm 新增至不相容的 Vm 清單。
-  - 已更新初始複寫（IR）和差異複寫（DR）壓縮因素。
-  - 已新增 SMB 儲存體的有限支援。
+- 獲取VMList操作：
+  - 修復了如果指定的資料夾不存在，導致 GetVMList 失敗的問題。 它現在創建預設目錄，或創建輸出檔案參數中指定的目錄。
+  - 添加了 GetVMList 的更詳細的失敗原因。
+- 在部署規劃器報表的相容 VM 工作表中添加 VM 類型資訊作為列。
+- Hyper-V 到 Azure 災害復原：
+  - 從分析中排除具有共用 VHD 和"通過"磁片的 VM。 "啟動分析"操作顯示主控台中排除的 VM 的清單。
+  - 將具有 64 個以上磁片的 VM 添加到不相容 VM 清單中。
+  - 更新了初始複製 （IR） 和增量複製 （DR） 壓縮因數。
+  - 添加了對 SMB 存儲的有限支援。
 
-## <a name="version-21"></a>版本2。1
+## <a name="version-21"></a>2.1 版
 
-**發行日期：2018年1月3日**
+**發佈日期：2018 年 1 月 3 日**
 
-**補丁**
+**修復：**
 
-- 已更新 Excel 報表。
-- 已修正 GetThroughput 作業中的 bug。
-- 已新增選項，以限制要分析或產生報告的 Vm 數目。 預設限制為 1000 Vm。
-- VMware 至 Azure 的嚴重損壞修復：
-  - 已修正 Windows Server 2016 VM 進入不相容資料表的問題。 
-  - 已更新可延伸韌體介面（EFI） Windows Vm 的相容性訊息。
-- 已將 VMware 升級至 Azure 和 Hyper-v 至 Azure，每個 VM 的 VM 資料變換限制。 
-- 改善了 VM 清單檔案剖析的可靠性。
+- 更新了 Excel 報表。
+- 修復了 Get 輸送量操作中的 Bug。
+- 添加了用於限制 VM 數量以分析或生成報表的選項。 預設限制為 1，000 個 VM。
+- VMware 到 Azure 災害復原：
+  - 修復了 Windows Server 2016 VM 進入不相容表的問題。 
+  - 更新了可延伸韌體介面 （EFI） Windows VM 的相容性消息。
+- 將 VMware 更新為 Azure，Hyper-V 更新為 Azure，每個 VM 的 VM 資料改動限制。 
+- 提高了 VM 清單檔分析的可靠性。
 
 ## <a name="version-201"></a>版本 2.0.1
 
-**發行日期：2017年12月7日**
+**發佈日期：2017 年 12 月 7 日**
 
-**補丁**
+**修復：**
 
-- 已新增建議以優化網路頻寬。
+- 添加了優化網路頻寬的建議。
 
-## <a name="version-20"></a>版本2。0
+## <a name="version-20"></a>版本 2.0
 
-**發行日期：2017年11月28日**
+**發佈日期：2017 年 11 月 28 日**
 
-**補丁**
+**修復：**
 
-- 已新增 Hyper-v 至 Azure 嚴重損壞修復的支援。
-- 已新增成本計算機。
-- 已新增 VMware 至 Azure 嚴重損壞修復的 OS 版本檢查，以判斷 VM 是否與保護相容。 此工具會使用 vCenter server 為該 VM 傳回的作業系統版本字串。 這是使用者在 VMware 中建立 VM 時所選取的客體作業系統版本。
+- 添加了對 Hyper-V 對 Azure 災害復原的支援。
+- 添加了成本計算機。
+- 添加了 VMware 的作業系統版本檢查到 Azure 災害復原，以確定 VM 是相容的還是不相容的保護。 該工具使用 vCenter 伺服器為該 VM 返回的作業系統版本字串。 它是使用者在 VMware 中創建 VM 時選擇的客體作業系統版本。
 
-**已知的限制：**
+**已知限制：**
 
-- 針對 Hyper-v 到 Azure 的嚴重損壞修復，不支援名稱包含下列字元的 VM： `,`、`"`、`[`、`]` 和 ``` ` ```。 如果已進行分析，報告產生將會失敗，或會有不正確的結果。
-- 針對 VMware 到 Azure 的嚴重損壞修復，不支援名稱包含逗號的 VM。 如果已進行分析，則報表產生會失敗或會有不正確的結果。
+- `,`對於 Hyper-V 到 Azure 災害復原，不支援名稱包含：、、、、、``` ` ````"``[``]`和 的 VM。 如果分析，報告生成將失敗或結果不正確。
+- 對於 VMware 到 Azure 災害復原，不支援名稱包含逗號的 VM。 如果已分析，報告生成將失敗或結果不正確。
 
-## <a name="version-131"></a>1\.3.1 版
+## <a name="version-131"></a>1.3.1 版
 
-**發行日期：2017年7月19日** 
+**發佈日期：2017 年 7 月 19 日** 
 
-**補丁**
+**修復：**
 
-- 已在報告產生中新增對大型磁片（> 1 TB）的支援。 現在您可以使用部署規劃工具來規劃磁片大小大於 1 TB （最多 4095 GB）之虛擬機器的複寫。
+- 在報表生成中增加了對大型磁片（> 1 TB）的支援。 現在，您可以使用部署規劃器規劃磁片大小大於 1 TB（最多 4095 GB）的虛擬機器的複製。
 深入了解 [Azure Site Recovery 中的大型磁碟支援](https://azure.microsoft.com/blog/azure-site-recovery-large-disks/)
 
-## <a name="version-13"></a>版本1。3
+## <a name="version-13"></a>版本 1.3
 
-**發行日期：2017年5月9日**
+**發佈日期：2017 年 5 月 9 日**
 
-**補丁**
+**修復：**
 
-- 已在報告產生中新增對受控磁片的支援。 根據是否選取受控磁片來進行容錯移轉/測試容錯移轉，計算可放入單一儲存體帳戶的 Vm 數目。
+- 在報表生成中添加了對託管磁片的支援。 可放置在單個存儲帳戶的 VM 數將根據是否為容錯移轉/測試容錯移轉選擇託管磁片來計算。
 
-## <a name="version-12"></a>版本1。2
+## <a name="version-12"></a>版本 1.2
 
-**發行日期：2017年4月7日**
+**發佈日期：2017 年 4 月 7 日**
 
-**補丁**
+**修復：**
 
-- 已新增每個 VM 的開機類型（BIOS 或 EFI）檢查，以判斷 VM 是否相容或不相容于保護。
-- 在 [相容的 Vm] 和 [不相容的 Vm] 工作表中，新增每部虛擬機器的 OS 類型資訊。
-- 已新增美國政府和中國 Microsoft Azure 區域的 GetThroughput 作業支援。
+- 添加了引導類型（BIOS 或 EFI）檢查每個 VM，以確定 VM 是否與保護相容或不相容。
+- 為相容 VM 和不相容的 VM 工作表中的每個虛擬機器添加了 OS 類型資訊。
+- 為美國政府和中國微軟 Azure 區域添加了對 GetThroughput 操作的支援。
 - 已針對 vCenter 和 ESXi 伺服器新增更多必要條件檢查。
-- 修正當地區設定設為非英文時，產生不正確之報表的問題。
+- 修復了將地區設定設置為非英語時生成不正確的報告的問題。
 
-## <a name="version-11"></a>1\.1 版
+## <a name="version-11"></a>1.1 版
 
-**發行日期：2017年3月9日**
+**發佈日期：2017 年 3 月 9 日**
 
-**補丁**
+**修復：**
 
-- 已修正在不同 vCenter ESXi 主機上有兩個或多個 Vm 具有相同的名稱或 IP 位址時，無法分析 Vm 的問題。
-- 已修正針對相容的 Vm 和不相容的 Vm 工作表而停用複製和搜尋的問題。
+- 修復了在不同 vCenter ESXi 主機上存在兩個或多個具有相同名稱或 IP 位址的 VM 時阻止分析 VM 的問題。
+- 修復了導致禁用相容 VM 和不相容 VM 工作表的複製和搜索的問題。
 
-## <a name="version-10"></a>版本1。0
+## <a name="version-10"></a>版本 1.0
 
-**發行日期：2017年2月23日**
+**發佈日期：2017 年 2 月 23 日**
 
-**已知的限制：**
+**已知限制：**
 
-- 僅支援 VMware 到 Azure 的嚴重損壞修復案例。 針對 Hyper-v 到 Azure 的嚴重損壞修復案例，請使用[hyper-v 容量規劃工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。
-- 不支援美國政府和中國 Microsoft Azure 地區的 GetThroughput 作業。
-- 如果 vCenter server 在不同的 ESXi 主機上有兩個或多個 Vm 具有相同的名稱或 IP 位址，此工具會 cann't 分析 Vm。
-在此版本中，此工具會略過 VMListFile 中重複 VM 名稱或 IP 位址的分析。 因應措施是使用 ESXi 主機 (而非 vCenter Server) 剖析 VM。 請確定為每個 ESXi 主控制項執行一個實例。
+- 僅支援 VMware 到 Azure 災害復原方案。 對於 Hyper-V 到 Azure 災害復原方案，請使用[Hyper-V 容量規劃工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。
+- 不支援美國政府和中國 Microsoft Azure 區域的獲取輸送量操作。
+- 如果 vCenter 伺服器在各個 ESXi 主機上具有兩個或多個具有相同名稱或 IP 位址的 VM，則該工具無法對 VM 進行設定檔。
+在此版本中，此工具會略過 VMListFile 中重複 VM 名稱或 IP 位址的分析。 因應措施是使用 ESXi 主機 (而非 vCenter Server) 剖析 VM。 確保為每個 ESXi 主機運行一個實例。

@@ -1,5 +1,5 @@
 ---
-title: 監視遷移活動-Azure 資料庫移轉服務
+title: 監視遷移活動 - Azure 資料庫移轉服務
 description: 深入了解如何使用 Azure 資料庫移轉服務來監視移轉活動。
 services: database-migration
 author: pochiraju
@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77648507"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務監視遷移活動
@@ -36,7 +36,7 @@ ms.locfileid: "77648507"
     <tr>
       <th class="x-hidden-focus"><strong>欄位名稱</strong></th>
       <th><strong>欄位子狀態</strong></th>
-      <th><strong>說明</strong></th>
+      <th><strong>描述</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -92,7 +92,7 @@ ms.locfileid: "77648507"
       <td>按一下連結以顯示錯誤詳細資料。</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>有效期間</strong></td>
+      <td rowspan="1" class="duration"><strong>時間</strong></td>
       <td>N/A</td>
       <td>從移轉活動初始化到移轉完成或移轉失敗的總時間。</td>
     </tr>
@@ -136,7 +136,7 @@ ms.locfileid: "77648507"
 | **更新** | 套用到目標的資料列中，CDC 更新的數目。      |
 | **刪除**      | 套用到目標的資料列中，CDC 刪除的數目。 |
 | **套用項目總計**      | 套用到目標的資料列中，CDC 更新、插入及刪除的總數。 |
-| **資料錯誤** | 此資料表中發生的資料錯誤數目。 錯誤的一些範例是「511：無法建立大小為 %d 的資料列，這個大小大於可允許的資料列大小上限 %d，8114：將資料類型 %ls 轉換為 %ls 時發生錯誤。」  客戶應該從 Azure 目標中的 dms_apply_exceptions 資料表查詢，以查看錯誤詳細資料。    |
+| **資料錯誤** | 此資料表中發生的資料錯誤數目。 錯誤的一些範例是「511：無法建立大小為 %d 的資料列，這個大小大於可允許的資料列大小上限 %d，8114：將資料類型 %ls 轉換為 %ls 時發生錯誤。」**  客戶應該從 Azure 目標中的 dms_apply_exceptions 資料表查詢，以查看錯誤詳細資料。    |
 
 > [!NOTE]
 > 當資料庫完全移轉或重新啟動移轉時，插入、更新、刪除及套用項目總計的 CDC 值可能會減少。

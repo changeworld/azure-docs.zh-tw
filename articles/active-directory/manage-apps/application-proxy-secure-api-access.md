@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 應用程式 Proxy 存取內部部署 Api
-description: Azure Active Directory 的應用程式 Proxy 可讓原生應用程式安全地存取您裝載于內部部署或雲端 Vm 上的 Api 和商務邏輯。
+title: 使用 Azure AD 應用程式代理訪問本地 API
+description: Azure 活動目錄的應用程式代理允許本機應用安全地訪問您在本地或雲 VM 上託管的 API 和業務邏輯。
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -12,131 +12,131 @@ ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77165995"
 ---
-# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 來保護內部部署 Api 的存取
+# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式代理安全地訪問本地 API
 
-您可能有在內部部署執行的商務邏輯 Api，或裝載在雲端的虛擬機器上。 您的原生 Android、iOS、Mac 或 Windows 應用程式必須與 API 端點互動，才能使用資料或提供使用者互動。 Azure AD 應用程式 Proxy 和[Azure Active Directory 驗證程式庫（ADAL）](/azure/active-directory/develop/active-directory-authentication-libraries)可讓您的原生應用程式安全地存取您的內部部署 api。 Azure Active Directory 應用程式 Proxy 是更快速且更安全的解決方案，而不是在應用層開啟防火牆埠和控制驗證和授權。 
+您可能有業務邏輯 API 在本地運行，或託管在雲中的虛擬機器上。 您的本機 Android、iOS、Mac 或 Windows 應用需要與 API 終結點進行交互才能使用資料或提供使用者交互。 Azure AD 應用程式代理和[Azure 活動目錄身份驗證庫 （ADAL）](/azure/active-directory/develop/active-directory-authentication-libraries)允許本機應用安全地訪問本地 API。 與在應用層打開防火牆埠和控制身份驗證和授權相比，Azure 活動目錄應用程式代理是一個更快、更安全的解決方案。 
 
-本文會逐步引導您設定 Azure AD 應用程式 Proxy 解決方案，以裝載原生應用程式可以存取的 Web API 服務。 
+本文將引導您設置 Azure AD 應用程式代理解決方案，以便託管本機應用可以訪問的 Web API 服務。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-下圖顯示發行內部部署 Api 的傳統方式。 這種方法需要開啟連入埠80和443。
+下圖顯示了發佈本地 API 的傳統方法。 此方法需要打開傳入埠 80 和 443。
 
-![傳統 API 存取](./media/application-proxy-secure-api-access/overview-publish-api-open-ports.png)
+![傳統 API 訪問](./media/application-proxy-secure-api-access/overview-publish-api-open-ports.png)
 
-下圖顯示如何使用 Azure AD 應用程式 Proxy 來安全地發佈 Api，而不需要開啟任何連入的埠：
+下圖顯示了如何使用 Azure AD 應用程式代理在不打開任何傳入埠的情況下安全地發佈 API：
 
-![Azure AD 應用程式 Proxy API 存取](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
+![Azure AD 應用程式代理 API 訪問](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD 應用程式 Proxy 會形成解決方案的骨幹、做為 API 存取的公用端點，以及提供驗證和授權。 您可以使用[ADAL](/azure/active-directory/develop/active-directory-authentication-libraries)程式庫，從大量的平臺存取您的 api。 
+Azure AD 應用程式代理構成解決方案的主幹，用作 API 訪問的公共終結點，並提供身份驗證和授權。 您可以使用[ADAL](/azure/active-directory/develop/active-directory-authentication-libraries)庫從大量平臺訪問 API。 
 
-由於 Azure AD 的應用程式 Proxy 驗證和授權是建置於 Azure AD 之上，因此您可以使用 Azure AD 條件式存取，以確保只有受信任的裝置可以存取透過應用程式 Proxy 發佈的 Api。 針對桌上型電腦使用 Azure AD 加入或 Azure AD 混合式聯結，以及針對裝置管理 Intune。 您也可以利用 azure 多因素驗證等 Azure Active Directory Premium 功能，以及[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)的機器學習支援安全性。
+由於 Azure AD 應用程式代理身份驗證和授權構建在 Azure AD 之上，因此可以使用 Azure AD 條件訪問來確保只有受信任的設備才能訪問通過應用程式代理髮布的 API。 對桌面使用 Azure AD 聯接或 Azure AD 混合聯接，對設備使用 Intune 管理。 您還可以利用 Azure 活動目錄高級功能（如 Azure 多重要素驗證）和機器學習支援的[Azure 標識保護](/azure/active-directory/active-directory-identityprotection)安全性。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要遵循此逐步解說，您需要：
+要遵循本演練，您需要：
 
-- 使用可建立及註冊應用程式的帳戶，來管理 Azure 目錄的存取權
-- 範例 Web API 和原生用戶端應用程式， [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
+- 管理員訪問 Azure 目錄，具有可創建和註冊應用的帳戶
+- 示例 Web API 和本機用戶端應用來自[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
 
-## <a name="publish-the-api-through-application-proxy"></a>透過應用程式 Proxy 發佈 API
+## <a name="publish-the-api-through-application-proxy"></a>通過應用程式代理髮布 API
 
-若要透過應用程式 Proxy 在內部網路外部發行 API，您可以遵循與發佈 web 應用程式相同的模式。 如需詳細資訊，請參閱[教學課程：在 Azure Active Directory 中新增透過應用程式 Proxy 進行遠端存取的內部部署應用程式](application-proxy-add-on-premises-application.md)。
+要通過應用程式代理在 Intranet 外部發佈 API，請遵循與發佈 Web 應用相同的模式。 有關詳細資訊，請參閱[教程：在 Azure 活動目錄中添加用於遠端存取的應用程式](application-proxy-add-on-premises-application.md)。
 
-若要透過應用程式 Proxy 發佈 SecretAPI Web API：
+要通過應用程式代理髮布秘密 API：
 
-1. 在您的本機電腦或內部網路上建立範例 SecretAPI 專案，並將其發佈為 ASP.NET web 應用程式。 請確定您可以在本機存取 web 應用程式。 
+1. 將示例 SecretAPI 專案生成併發布為本地電腦或 Intranet 上的ASP.NET Web 應用。 確保可以在本地訪問 Web 應用。 
    
-1. 在 [[Azure 入口網站]](https://portal.azure.com) 中，選取 **[Azure Active Directory]** 。 然後選取 [**企業應用程式**]。
+1. 在 [[Azure 入口網站]](https://portal.azure.com) 中，選取 **[Azure Active Directory]**。 然後選擇**企業應用程式**。
    
-1. 在 [**企業應用程式-所有應用程式**] 頁面的頂端，選取 [**新增應用程式**]。
+1. 在**企業應用程式 - 所有應用程式**頁面的頂部，選擇 **"新應用程式**"。
    
-1. 在 [**新增應用程式**] 頁面上，選取 [**內部部署應用程式**]。 [**新增您自己的內部部署應用程式**] 頁面隨即出現。
+1. 在"**添加應用程式**"頁上，選擇**本地應用程式**。 將顯示 **"添加您自己的本地應用程式**"頁。
    
-1. 如果您沒有安裝應用程式 Proxy 連接器，系統會提示您安裝它。 選取 [**下載應用程式 Proxy 連接器**] 以下載並安裝連接器。 
+1. 如果未安裝應用程式代理連接器，系統將提示您安裝它。 選擇 **"下載應用程式代理連接器**"以下載並安裝連接器。 
    
-1. 安裝應用程式 Proxy 連接器之後，請在 [**新增您自己的內部部署應用程式**] 頁面上：
+1. 在 **"添加您自己的本地應用程式**"頁上安裝應用程式代理連接器後：
    
-   1. 在 [**名稱**] 旁，輸入*SecretAPI*。
+   1. 在**名稱**旁邊，輸入*秘密 API*。
       
-   1. 在 [**內部 Url**] 旁，輸入您用來從內部網路存取 API 的 Url。
+   1. 在**內部 URL**旁邊，輸入用於從 Intranet 內訪問 API 的 URL。
       
-   1. 請確定 [**預先驗證**] 設定為 [ **Azure Active Directory**]。 
+   1. 確保**預身份驗證**已設置為 Azure**活動目錄**。 
       
-   1. 選取頁面頂端的 [**新增**]，並等候應用程式建立。
+   1. 選擇 **"在**頁面頂部添加"，然後等待創建應用。
    
-   ![新增 API 應用程式](./media/application-proxy-secure-api-access/3-add-api-app.png)
+   ![添加 API 應用](./media/application-proxy-secure-api-access/3-add-api-app.png)
    
-1. 在 [**企業應用程式-所有應用程式**] 頁面上，選取 [ **SecretAPI** ] 應用程式。 
+1. 在**企業應用程式 - 所有應用程式**頁面上，選擇**SecretAPI**應用。 
    
-1. 在 [ **SecretAPI-總覽**] 頁面上，選取左側導覽中的 [**屬性**]。
+1. 在 **"機密 API - 概述"** 頁上，選擇左側導航中**的屬性**。
    
-1. 您不想讓 Api 可供使用者在 [ **MyApps** ] 面板中使用，因此**請在 [內容] 頁面底部**將 [**使用者可見**] 設定為 [**否**]，然後選取 [**儲存**]。
+1. 您不希望 API 可供 **"MyApps"** 面板中的最終使用者使用，因此在 **"屬性"** 頁的底部將 **"使用者可見"** 設置為 **"否**"，然後選擇"**保存**"。
    
    ![使用者看不到](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
    
-您已透過 Azure AD 應用程式 Proxy 發佈您的 Web API。 現在，新增可存取應用程式的使用者。 
+您已經通過 Azure AD 應用程式代理髮布了 Web API。 現在，添加可以訪問應用的使用者。 
 
-1. 在 [ **SecretAPI-總覽**] 頁面上，選取左側導覽中的 [**使用者和群組**]。
+1. 在 **"機密 API - 概述"** 頁上，選擇左側導航中的 **"使用者"和"組**"。
    
-1. 在 [**使用者和群組**] 頁面上，選取 [**新增使用者**]。  
+1. 在 **"使用者和組**"頁上，選擇 **"添加使用者**"。  
    
-1. 在 [**新增指派**] 頁面上，選取 [**使用者和群組**]。 
+1. 在"**添加分配"** 頁上，選擇 **"使用者"和"組**"。 
    
-1. 在 [**使用者和群組**] 頁面上，搜尋並選取可存取應用程式的使用者，至少包括您自己。 選取 [所有使用者] 之後，選取 [**選取**]。 
+1. 在 **"使用者和組**"頁上，搜索並選擇可以訪問應用的使用者，至少包括您自己。 選擇所有使用者後，選擇 **"選擇**"。 
    
-   ![選取並指派使用者](./media/application-proxy-secure-api-access/7-select-admin-user.png)
+   ![選擇和分配使用者](./media/application-proxy-secure-api-access/7-select-admin-user.png)
    
-1. 回到 [**新增指派**] 頁面上，選取 [**指派**]。 
+1. 返回"**添加分配"** 頁，選擇 **"分配**"。 
 
 > [!NOTE]
-> 使用整合式 Windows 驗證的 Api 可能需要[額外的步驟](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)。
+> 使用集成 Windows 身份驗證的 API 可能需要[其他步驟](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)。
 
-## <a name="register-the-native-app-and-grant-access-to-the-api"></a>註冊原生應用程式，並授與 API 的存取權
+## <a name="register-the-native-app-and-grant-access-to-the-api"></a>註冊本機應用並授予對 API 的存取權限
 
-原生應用程式是開發用來在特定平臺或裝置上使用的程式。 在您的原生應用程式可以連線並存取 API 之前，您必須先在 Azure AD 中註冊它。 下列步驟示範如何註冊原生應用程式，並讓它能夠存取您透過應用程式 Proxy 發佈的 Web API。
+本機應用是開發用於特定平臺或設備上的程式。 在本機應用可以連接和訪問 API 之前，必須在 Azure AD 中註冊它。 以下步驟演示如何註冊本機應用，並授予它對通過應用程式代理髮布的 Web API 的存取權限。
 
-若要註冊 AppProxyNativeAppSample 原生應用程式：
+要註冊 AppProxyNativeAppSample 本機應用：
 
-1. 在 [Azure Active Directory**總覽**] 頁面上，選取 [**應用程式註冊**]，然後在 [**應用程式註冊**] 窗格的頂端選取 [**新增註冊**]。
+1. 在 Azure 活動目錄**概述**頁上，選擇**應用註冊**，並在**應用註冊**窗格的頂部選擇 **"新建註冊**"。
    
-1. 在 [**註冊應用程式**] 頁面上：
+1. 在 **"註冊應用程式**"頁上：
    
-   1. 在 [**名稱**] 下，輸入*AppProxyNativeAppSample*。 
+   1. 在**名稱**下，輸入*應用程式代理本機Appsample*。 
       
-   1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。 
+   1. 在 [支援的帳戶類型]**** 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]****。 
       
-   1. 在 [重新**導向 URL**] 底下，下拉並選取 **[公用用戶端（行動 & 桌面）** ]，然後輸入*HTTPs：\//appproxynativeapp*。 
+   1. 在**重定向 URL**下，下拉並選擇**公共用戶端（移動&桌面），** 然後輸入*HTTPs：/\/應用程式本機應用程式*。 
       
-   1. 選取 [**註冊**]，然後等候應用程式成功註冊。 
+   1. 選擇 **"註冊**"，然後等待應用成功註冊。 
       
       ![新增應用程式註冊](./media/application-proxy-secure-api-access/8-create-reg-ga.png)
    
-您現在已在 Azure Active Directory 中註冊 AppProxyNativeAppSample 應用程式。 若要將您的原生應用程式存取權授與 SecretAPI Web API：
+您現在已註冊了 Azure 活動目錄中的應用代理應用。 要授予本機應用對秘密 API Web API 的存取權限，請進行以下訪問：
 
-1. 在 Azure Active Directory**總覽** > **應用程式註冊** 頁面上，選取  **AppProxyNativeAppSample**  應用程式。 
+1. 在 Azure 活動目錄**概述** > **應用註冊頁上**，選擇**AppProxyNativeAppSample**應用。 
    
-1. 在 [ **AppProxyNativeAppSample** ] 頁面上，選取左側導覽中的 [ **API 許可權**]。 
+1. 在**AppProxyNativeAppSample**頁上，在左側導航中選擇**API 許可權**。 
    
-1. 在 [ **API 許可權**] 頁面上，選取 [**新增許可權**]。
+1. 在**API 許可權**頁上，選擇 **"添加許可權**"。
    
-1. 在第一個 [**要求 API 許可權**] 頁面上，選取 [**我的組織使用的 api** ] 索引標籤，然後搜尋並選取 [ **SecretAPI**]。 
+1. 在第一個**請求 API 許可權**頁上，選擇**組織使用的 API**選項卡，然後搜索並選擇**SecretAPI**。 
    
-1. 在 [下一個**要求 API 許可權**] 頁面上，選取 [ **user_impersonation**] 旁的核取方塊，然後選取 [**新增許可權**]。 
+1. 在下一個**請求 API 許可權**頁上，選擇**user_impersonation**旁邊的核取方塊，然後選擇 **"添加許可權**"。 
    
     ![選取 API](./media/application-proxy-secure-api-access/10-secretapi-added.png)
    
-1. 回到 [ **API 許可權**] 頁面，您可以選取 **[授與 Contoso 的系統管理員同意**]，以防止其他使用者個別同意應用程式。 
+1. 回到**API 許可權**頁，您可以選擇**Contoso 授予管理員同意，** 以防止其他使用者單獨同意應用。 
 
-## <a name="configure-the-native-app-code"></a>設定原生應用程式代碼
+## <a name="configure-the-native-app-code"></a>配置本機應用代碼
 
-最後一個步驟是設定原生應用程式。 下列來自 Nativeclient-android 範例應用程式中*Form1.cs*檔案的程式碼片段會導致 ADAL 程式庫取得要求 API 呼叫的權杖，並將其附加為應用程式標頭的持有人。 
+最後一步是配置本機應用。 NativeClient 示例應用中*Form1.cs*檔中的以下片段導致 ADAL 庫獲取請求 API 呼叫的權杖，並將其作為承載器附加到應用標頭。 
    
    ```csharp
        AuthenticationResult result = null;
@@ -155,24 +155,24 @@ Azure AD 應用程式 Proxy 會形成解決方案的骨幹、做為 API 存取�
        MessageBox.Show(s);
    ```
    
-若要將原生應用程式設定為連接到 Azure Active Directory 並呼叫 API 應用程式 Proxy，請使用來自 Azure AD 的值，更新 Nativeclient-android 範例應用*程式 app.config 檔案*中的預留位置值： 
+要將本機應用配置為連接到 Azure 活動目錄並調用 API 應用代理，請使用 Azure AD 中的值更新本機用戶端示例應用的*App.config*檔中的預留位置值： 
 
-- 在 [`<add key="ida:Tenant" value="" />`] 欄位中貼上**目錄（租使用者）識別碼**。 您可以從任何一個應用程式的 [**總覽**] 頁面，尋找並複製此值（GUID）。 
+- 將**目錄（租戶）ID**粘貼到`<add key="ida:Tenant" value="" />`欄位中。 您可以在任一應用的 **"概述"** 頁中查找和複製此值（GUID）。 
   
-- 在 [`<add key="ida:ClientId" value="" />`] 欄位中貼上 AppProxyNativeAppSample**應用程式（用戶端）識別碼**。 您可以從 [AppProxyNativeAppSample] [**總覽**] 頁面尋找並複製此值（GUID）。
+- 將 AppProxyNativeApp 示例**應用程式（用戶端）ID** `<add key="ida:ClientId" value="" />`粘貼到欄位中。 您可以在 AppProxyNativeApp 示例**概述**頁面查找和複製此值（GUID）。
   
-- 在 [`<add key="ida:RedirectUri" value="" />`] 欄位中貼上 AppProxyNativeAppSample 重新**導向 URI** 。 您可以從 [AppProxyNativeAppSample **Authentication** ] 頁面尋找並複製此值（URI）。 
+- 將應用代理原點應用示例**重定向 URI**粘貼`<add key="ida:RedirectUri" value="" />`到欄位中。 您可以在 AppProxyNativeApp 示例**身份驗證**頁面查找和複製此值（URI）。 
   
-- 在 [`<add key="todo:TodoListResourceId" value="" />`] 欄位中貼上 SecretAPI**應用程式識別碼 URI** 。 您可以從 [SecretAPI] [**公開 API** ] 頁面中找到並複製此值（URI）。
+- 將機密 API**應用程式 ID** `<add key="todo:TodoListResourceId" value="" />` URI 粘貼到欄位中。 可以從 SecretAPI**公開 API**頁中查找和複製此值（URI）。
   
-- 在 [`<add key="todo:TodoListBaseAddress" value="" />`] 欄位中貼上 SecretAPI**首頁 URL** 。 您可以從 [SecretAPI**商標**] 頁面尋找並複製此值（URL）。
+- 將 SecretAPI**主頁 URL** `<add key="todo:TodoListBaseAddress" value="" />`粘貼到欄位中。 您可以在 SecretAPI**品牌**頁面查找和複製此值（URL）。
 
-設定參數之後，請建立並執行原生應用程式。 當您選取 [登**入**] 按鈕時，應用程式可讓您登入，然後顯示成功畫面，確認它已成功連線到 SecretAPI。
+配置參數後，生成並運行本機應用。 當您選擇"**登錄**"按鈕時，應用允許您登錄，然後顯示一個成功螢幕，以確認它已成功連接到 SecretAPI。
 
 ![Success](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：在 Azure Active Directory 中新增內部部署應用程式，以透過應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md)
-- [快速入門：設定用戶端應用程式以存取 web Api](../develop/quickstart-configure-app-access-web-apis.md)
-- [如何讓原生用戶端應用程式與 proxy 應用程式互動](application-proxy-configure-native-client-application.md)
+- [教程：在 Azure 活動目錄中添加本地應用程式，以便通過應用程式代理進行遠端存取](application-proxy-add-on-premises-application.md)
+- [快速入門：配置用戶端應用程式以訪問 Web API](../develop/quickstart-configure-app-access-web-apis.md)
+- [如何啟用本機用戶端應用程式與代理應用程式交互](application-proxy-configure-native-client-application.md)

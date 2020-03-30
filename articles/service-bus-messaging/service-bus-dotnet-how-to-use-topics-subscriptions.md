@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560104"
 ---
 # <a name="get-started-with-service-bus-topics"></a>開始使用服務匯流排主題
@@ -30,14 +30,14 @@ ms.locfileid: "74560104"
 1. 撰寫 .NET Core 主控台應用程式，以將一組訊息傳送到主題。
 2. 撰寫 .NET Core 主控台應用程式，以從訂用帳戶接收這些訊息。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題訂用](service-bus-quickstart-topics-subscriptions-portal.md)帳戶中的步驟來執行下列工作：
-    1. 建立服務匯流排**命名空間**。
-    2. 取得**連接字串**。
+2. 按照["快速入門"中的步驟：使用 Azure 門戶創建服務匯流排主題和訂閱主題](service-bus-quickstart-topics-subscriptions-portal.md)以執行以下任務：
+    1. 創建服務匯流排**命名空間**。
+    2. 獲取**連接字串**。
     3. 在命名空間中建立**主題**。
-    4. 為命名空間中的主題建立**一個訂**用帳戶。
+    4. 在命名空間中創建主題的**一個訂閱**。
 3. [Visual Studio 2017 Update 3 (版本 15.3, 26730.01)](https://www.visualstudio.com/vs) 或更新版本。
 4. [.NET Core SDK](https://www.microsoft.com/net/download/windows)，2.0 版或更新版本。
  
@@ -51,8 +51,8 @@ ms.locfileid: "74560104"
 
 ### <a name="add-the-service-bus-nuget-package"></a>新增服務匯流排 NuGet 封裝
 
-1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]。
-2. 按一下 [瀏覽] 索引標籤，搜尋 **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** ，然後選取 [Microsoft.Azure.ServiceBus] 項目。 按一下 [安裝] 完成安裝作業，然後關閉此對話方塊。
+1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]****。
+2. 按一下 [瀏覽]**** 索引標籤，搜尋 **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**，然後選取 [Microsoft.Azure.ServiceBus]**** 項目。 按一下 [安裝] **** 完成安裝作業，然後關閉此對話方塊。
    
     ![選取 NuGet 封裝][nuget-pkg]
 
@@ -75,7 +75,7 @@ ms.locfileid: "74560104"
     static ITopicClient topicClient;
     ``` 
 
-3. 將 `Main()` 方法取代為下列**非同步**`Main` 方法，使用您將在下一個步驟中新增的 SendMessagesAsync 方法，以非同步方式傳送訊息。 
+3. 使用將在`Main()`下一步中添加的 SendMessagesAsync 方法非同步發送消息的以下**非同步**`Main`方法替換該方法。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -182,13 +182,13 @@ ms.locfileid: "74560104"
     }
     ```
 
-3. 執行程式，並檢查 Azure 入口網站：按一下命名空間 [概觀] 視窗中的主題名稱。 主題的 [基本資訊] 畫面即會顯示。 請注意，在靠近視窗底部所列的訂用帳戶中，訂用帳戶的 [訊息計數] 值現在是 **10**。 每次執行傳送者應用程式而未擷取訊息 (如下一節所述)，這個值就會增加 10。 也請注意，每當應用程式將訊息新增到主題時，主題的目前大小就會讓 [基本資訊] 視窗上的 [目前] 值增加。
+3. 執行程式，並檢查 Azure 入口網站：按一下命名空間 [概觀]**** 視窗中的主題名稱。 主題的 [基本資訊]**** 畫面即會顯示。 請注意，在靠近視窗底部所列的訂用帳戶中，訂用帳戶的 [訊息計數]**** 值現在是 **10**。 每次執行傳送者應用程式而未擷取訊息 (如下一節所述)，這個值就會增加 10。 也請注意，每當應用程式將訊息新增到主題時，主題的目前大小就會讓 [基本資訊]**** 視窗上的 [目前]**** 值增加。
    
       ![訊息大小][topic-message]
 
 ## <a name="receive-messages-from-the-subscription"></a>自訂用帳戶接收訊息
 
-若要接收您所傳送的訊息，請建立另一個 .NET Core 主控台應用程式，並安裝與先前的傳送者應用程式類似的**Microsoft Azure**主機套件。
+要接收您發送的郵件，請創建另一個 .NET Core 主控台應用程式並安裝**Microsoft.Azure.ServiceBus** NuGet 包，類似于以前的寄件者應用程式。
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>撰寫程式碼以從訂用帳戶接收訊息
 
@@ -210,7 +210,7 @@ ms.locfileid: "74560104"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 使用下列**非同步**`Main` 方法來取代 `Main()` 方法。 它會呼叫您將在下一個步驟中新增的 `RegisterOnMessageHandlerAndReceiveMessages()` 方法。 
+3. 將`Main()`該方法替換為以下**非同步**`Main`方法。 它調用將在`RegisterOnMessageHandlerAndReceiveMessages()`下一步中添加的方法。 
 
     ```csharp
     public static async Task Main(string[] args)

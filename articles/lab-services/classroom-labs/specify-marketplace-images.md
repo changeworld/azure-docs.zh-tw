@@ -1,6 +1,6 @@
 ---
-title: 為 Azure 實驗室服務中的實驗室指定 marketplace 映射
-description: 本文說明如何指定實驗室建立者可用來在 Azure 實驗室服務的實驗室帳戶中建立實驗室的 Marketplace 映射。
+title: 為 Azure 實驗室服務中的實驗室指定市場映射
+description: 本文介紹如何指定實驗室建立者可用於在 Azure 實驗室服務中的實驗室帳戶中創建實驗室的應用商店映射。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444663"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>指定實驗室建立者可用的 Marketplace 映像
 身為實驗室帳戶擁有者的您，可以指定實驗室建立者可用來在實驗室帳戶中建立實驗室的 Marketplace 映像。 
 
-## <a name="select-images-available-for-labs"></a>選取可供實驗室使用的映射
-選取左側功能表上的 [Marketplace 映像]。 根據預設，您會看到映像 (包括已啟用和停用) 的完整清單。 您可以從頂端的下拉式清單中選取 [僅限已啟用]/[僅限已停用] 選項來篩選清單，而僅檢視已啟用/已停用的映像。 
+## <a name="select-images-available-for-labs"></a>選擇可用於實驗室的圖像
+選取左側功能表上的 [Marketplace 映像]****。 根據預設，您會看到映像 (包括已啟用和停用) 的完整清單。 您可以通過從頂部的下拉清單中選擇/**"僅啟用"/** 禁用的"**Enabled only**選項"來篩選清單，以僅查看已啟用/禁用的圖像。 
     
 ![Marketplace 映像頁面](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
@@ -34,22 +34,22 @@ ms.locfileid: "77444663"
 - 使用 Azure Resource Manager 來佈建 VM
 - 不需要購買額外的授權方案
 
-## <a name="disable-images-for-a-lab"></a>停用實驗室的映射 
-若要停用實驗室的單一映射，請選取 [ **...]（省略號）** 在最後一個資料行中，選取 [**停用映射**]。 
+## <a name="disable-images-for-a-lab"></a>禁用實驗室的圖像 
+要禁用實驗室的單個圖像，請選擇 **...（省略）** 在最後一列中，並選擇 **"禁用圖像**"。 
 
 ![停用一個映像](../media/tutorial-setup-lab-account/disable-one-image.png) 
 
-或者，您可以選取映射名稱前面的核取方塊，然後選取工具列上的 [**停用選取的映射**]。 
+或者，選擇圖像名稱前的核取方塊，然後選擇工具列上的 **"禁用選定圖像**"。 
 
-若要同時停用多個映射，請選取映射名稱前面的核取方塊，然後選取工具列上的 [**停用選取的映射**]。 
+要同時禁用多個圖像，請在圖像名稱之前選擇核取方塊，然後選擇**工具列上的"禁用所選圖像**"。 
 
 ![停用多個映像](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
 
 
-## <a name="enable-images-for-a-lab"></a>啟用實驗室的映射
-若要啟用已停用的映射，請選取 [ **...]（省略號）** 在最後一個資料行中，選取 [**啟用映射**]。 或者，您可以選取映射名稱前面的核取方塊，然後選取工具列上的 [**啟用選取的映射**]。 
+## <a name="enable-images-for-a-lab"></a>為實驗室啟用圖像
+要啟用禁用的圖像，請選擇 **...（省略）** 在最後一列中，選擇 **"啟用圖像**"。 或者，選擇圖像名稱前的核取方塊，然後選擇工具列上的 **"啟用選定的圖像**"。 
 
-若要同時停用多個映射，請選取映射名稱前面的核取方塊，然後選取工具列上的 [**啟用選取的映射**]。 
+要同時禁用多個圖像，請在圖像名稱之前選擇核取方塊，然後選擇工具列上的 **"啟用選定圖像**"。 
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：

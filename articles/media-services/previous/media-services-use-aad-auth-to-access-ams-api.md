@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157851"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>使用 Azure AD 驗證存取 Azure 媒體服務 API  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使用可用的用戶端 SDK 來執行媒體資源的作業。 Azure 媒體服務提供適用於 Microsoft .NET 的媒體服務用戶端 SDK。 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 
 
@@ -32,13 +32,13 @@ Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使�
 本文件提供如何使用 REST 或 .NET API 來存取媒體服務 API 的概觀。
 
 > [!NOTE]
-> 存取控制授權已于2018年6月1日淘汰。
+> 2018 年 6 月 1 日棄用存取控制授權。
 
 ## <a name="access-control"></a>存取控制
 
 Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存取之媒體服務帳戶的「參與者」或「擁有者」角色。  
 只有具備「擁有者」角色的使用者，可以授與媒體資源 (帳戶) 的存取權給新的使用者或應用程式。 「參與者」角色只能存取媒體資源。
-未經授權的要求會失敗，狀態碼為 401。 如果您看到此錯誤碼，請確認您的使用者是否具有針對該使用者的媒體服務帳戶指派的「參與者」或「擁有者」角色。 您可以在 Azure 入口網站查看。 搜尋您的媒體帳戶，然後按一下 [Access control] \(存取控制\) 索引標籤。 
+未經授權的要求會失敗，狀態碼為 401。 如果您看到此錯誤碼，請確認您的使用者是否具有針對該使用者的媒體服務帳戶指派的「參與者」或「擁有者」角色。 您可以在 Azure 入口網站查看。 搜尋您的媒體帳戶，然後按一下 [Access control] \(存取控制\)**** 索引標籤。 
 
 ![[Access control] \(存取控制\) 索引標籤](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
@@ -47,7 +47,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
 當您使用 Azure AD 驗證搭配 Azure 媒體服務 時，會有兩個驗證選項：
 
 - **使用者驗證**。 驗證使用應用程式與媒體服務資源互動的人員。 互動式應用程式應該會先提示使用者輸入使用者的認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。 
-- **服務主體驗證**。 驗證服務。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web 應用程式、函數應用程式、邏輯應用程式、API 或微服務。
+- **服務主體身份驗證**。 驗證服務。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web 應用程式、函數應用程式、邏輯應用程式、API 或微服務。
 
 ### <a name="user-authentication"></a>使用者驗證 
 
@@ -79,7 +79,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
        租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。
    * 媒體服務資源 URI。 
 
-       同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如， https://rest.media.azure.net)。
+       同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如，https://rest.media.azure.net)。
 
    * 媒體服務 (原生) 應用程式用戶端識別碼。
    * 媒體服務 (原生) 應用程式重新導向 URI。
@@ -121,7 +121,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
        租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。
    * 媒體服務資源 URI。 
 
-       位於同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如， https://rest.media.azure.net)。
+       位於同一 Azure 環境中的媒體服務帳戶的這個 URI 都相同 (例如，https://rest.media.azure.net)。
 
    * REST 媒體服務的資源 URI。
 

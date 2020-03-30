@@ -1,41 +1,41 @@
 ---
-title: 開始使用 Azure Data Lake Storage Gen1-PowerShell |Microsoft Docs
-description: 使用 Azure PowerShell 建立 Azure Data Lake Storage Gen1 帳戶，並執行基本作業。
+title: 開始使用 Azure 資料存儲第 1 代 - PowerShell |微軟文檔
+description: 使用 Azure PowerShell 創建 Azure 資料存儲庫存儲第 1 代帳戶並執行基本操作。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837883"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>使用 Azure PowerShell 開始使用 Azure Data Lake Storage Gen1
 
 > [!div class="op_single_selector"]
 > * [入口網站](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [電源外殼](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 >
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-瞭解如何使用 Azure PowerShell 建立 Azure Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱[Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
+瞭解如何使用 Azure PowerShell 創建 Azure 資料湖存儲 Gen1 帳戶，並執行基本操作，如創建資料夾、上載和下載資料檔案、刪除帳戶等。有關資料存儲第 1 代的詳細資訊，請參閱[資料存儲庫第 1 代概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更新版本**。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 電源外殼 1.0 或更高**。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="authentication"></a>驗證
 
-本文使用較簡單的驗證方法搭配 Data Lake Storage Gen1，系統會提示您輸入 Azure 帳號憑證。 Data Lake Storage Gen1 帳戶和檔案系統的存取層級則由已登入使用者的存取層級所控管。 不過，還有其他方法可向 Data Lake Storage Gen1 進行驗證，也就是使用者驗證或服務對服務驗證。 如需有關如何驗證的指示和詳細資訊，請參閱[使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)或[服務對服務驗證](data-lake-store-authenticate-using-active-directory.md)。
+本文使用更簡單的身份驗證方法處理 Data Lake 存儲 Gen1，提示您輸入 Azure 帳戶憑據。 Data Lake Storage Gen1 帳戶和檔案系統的存取層級則由已登入使用者的存取層級所控管。 但是，還有其他方法使用 Data Lake 存儲 Gen1 進行身份驗證，這些方法是最終使用者身份驗證或服務到服務身份驗證。 如需有關如何驗證的指示和詳細資訊，請參閱[使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)或[服務對服務驗證](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>建立 Data Lake Storage Gen1 帳戶
 
@@ -81,7 +81,7 @@ ms.locfileid: "73837883"
 
     此 Cmdlet 的輸出應為 **True**。
 
-## <a name="create-directory-structures"></a>建立目錄結構
+## <a name="create-directory-structures"></a>創建目錄結構
 
 您可以在您的 Data Lake Storage Gen1 帳戶下建立用於管理與儲存資料的目錄。
 
@@ -105,7 +105,7 @@ ms.locfileid: "73837883"
 
     輸出應如下列螢幕擷取畫面所示：
 
-    ![驗證目錄](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "確認目錄")
+    ![確認目錄](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "確認目錄")
 
 ## <a name="upload-data"></a>上傳資料
 
@@ -119,7 +119,7 @@ Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
    -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 ```
 
-## <a name="rename-download-and-delete-data"></a>重新命名、下載和刪除資料
+## <a name="rename-download-and-delete-data"></a>重命名、下載和刪除資料
 
 若要重新命名檔案，請使用下列命令：
 
@@ -151,7 +151,7 @@ Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
     -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 ```
 
-## <a name="delete-your-account"></a>刪除您的帳戶
+## <a name="delete-your-account"></a>建立您的帳戶
 
 使用下列命令刪除您的 Data Lake Storage Gen1 帳戶。
 
@@ -163,7 +163,7 @@ Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 PowerShell 和 Azure Data Lake Storage Gen1 進行效能微調之方針](data-lake-store-performance-tuning-powershell.md)
+* [使用 PowerShell 搭配 Azure Data Lake Storage Gen1 的效能微調指導方針](data-lake-store-performance-tuning-powershell.md)
 * [使用 Azure Data Lake Storage Gen1 處理巨量資料需求](data-lake-store-data-scenarios.md)
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

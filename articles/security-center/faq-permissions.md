@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心常見問題-關於許可權的問題
-description: 此常見問題會回答有關 Azure 資訊安全中心中許可權的問題，此產品可協助您預防、偵測及回應威脅。
+title: Azure 安全中心常見問題 - 有關許可權的問題
+description: 此常見問題解答有關 Azure 安全中心中的許可權的問題，該產品可説明您預防、檢測和回應威脅。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 66a260fbb03f770ee98ec29a5f5e15e3d7dd1310
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599388"
 ---
 # <a name="permissions"></a>權限
 
-## <a name="how-do-permissions-work-in-azure-security-center"></a>Azure 資訊安全中心中的許可權如何發揮作用？
+## <a name="how-do-permissions-work-in-azure-security-center"></a>許可權在 Azure 安全中心的工作原理？
 
 Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，以提供可在 Azure 中指派給使用者、群組與服務的[內建角色](../role-based-access-control/built-in-roles.md)。
 

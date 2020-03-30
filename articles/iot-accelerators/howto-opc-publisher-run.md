@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 4f5d57bab51d537b64ce4b800737219663c3d7a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198781"
 ---
 # <a name="run-opc-publisher"></a>執行 OPC 發行者
@@ -368,13 +368,13 @@ OPC 發行者可以直接作為 [Azure IoT Edge](https://docs.microsoft.com/azur
 
 若要將 OPC 發行者作為模組加入您的 IoT Edge 部署，請移至您在 Azure 入口網站中的 IoT 中樞設定，並完成下列步驟：
 
-1. 移至 [IoT Edge] 並建立或選取您的 IoT Edge 裝置。
-1. 選取 [設定模組]。
-1. 選取 [部署模組] 底下的 [新增]，然後選取 [IoT Edge 模組]。
-1. 在 [名稱] 欄位中，輸入 **publisher**。
-1. 在 [映像 URI] 欄位中，輸入 `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
+1. 移至 [IoT Edge]**** 並建立或選取您的 IoT Edge 裝置。
+1. 選擇**設置模組**。
+1. 選取 [部署模組]**** 底下的 [新增]****，然後選取 [IoT Edge 模組]****。
+1. 在 [名稱]**** 欄位中，輸入 **publisher**。
+1. 在 [映像 URI]**** 欄位中，輸入 `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
 1. 您可以在 [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) \(英文\) 上找到可用的標籤
-1. 將下列 JSON 貼到 [容器建立選項] 欄位中：
+1. 將下列 JSON 貼到 [容器建立選項]**** 欄位中：
 
     ```json
     {
@@ -385,10 +385,10 @@ OPC 發行者可以直接作為 [Azure IoT Edge](https://docs.microsoft.com/azur
     }
     ```
 
-    此設定會設定 IoT Edge 以使用 OPC 發行者映像來啟動名為 **publisher** 的容器。 容器系統的主機名稱被設定為 **publisher**。 OPC 發行者是透過下列命令列引數來呼叫：`--aa`。 透過此選項，OPC 發行者會信任其所連線至的 OPC UA 伺服器憑證。 您可以使用任何 OPC 發行者命令列選項。 唯一的限制是 IoT Edge 所支援的 [容器建立選項] 大小。
+    此設定會設定 IoT Edge 以使用 OPC 發行者映像來啟動名為 **publisher** 的容器。 容器系統的主機名稱被設定為 **publisher**。 OPC 發行者是透過下列命令列引數來呼叫：`--aa`。 透過此選項，OPC 發行者會信任其所連線至的 OPC UA 伺服器憑證。 您可以使用任何 OPC 發行者命令列選項。 唯一的限制是 IoT Edge 所支援的 [容器建立選項]**** 大小。
 
-1. 其他設定保留不變，然後選取 [儲存]。
-1. 如果您想要在本機搭配另一個 IoT Edge 模組來處理 OPC 發行者的輸出，請返回 [設定模組] 頁面。 然後請移至 [指定路由] 索引標籤，並加入看起來類似下列 JSON 的新路由：
+1. 其他設定保留不變，然後選取 [儲存]****。
+1. 如果您想要在本機搭配另一個 IoT Edge 模組來處理 OPC 發行者的輸出，請返回 [設定模組]**** 頁面。 然後請移至 [指定路由]**** 索引標籤，並加入看起來類似下列 JSON 的新路由：
 
     ```json
     {
@@ -399,13 +399,13 @@ OPC 發行者可以直接作為 [Azure IoT Edge](https://docs.microsoft.com/azur
     }
     ```
 
-1. 返回 [設定模組] 頁面，選取 [下一步]，直到您抵達設定的最後一頁。
-1. 選取 [提交] 以將設定傳送至 IoT Edge。
+1. 返回 [設定模組]**** 頁面，選取 [下一步]****，直到您抵達設定的最後一頁。
+1. 選取 [提交]**** 以將設定傳送至 IoT Edge。
 1. 當您在邊緣裝置上啟動 IoT Edge，且 Docker 容器 **publisher** 正在執行時，您可以使用 `docker logs -f publisher` 或檢查記錄檔來查看 OPC 發行者的記錄輸出。 在上一個範例中，記錄檔是位於 `d:\iiotegde\publisher-publisher.log` 上。 您也可以使用 [iot-edge-opc-publisher-diagnostics 工具](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics) \(英文\)。
 
 ### <a name="make-the-configuration-files-accessible-on-the-host"></a>使設定檔可在主機上存取
 
-若要使 IoT Edge 模組設定檔可在主機檔案系統中存取，請使用下列 [容器建立選項]。 下列範例是使用適用於 Windows 的 Linux 容器來進行部署：
+若要使 IoT Edge 模組設定檔可在主機檔案系統中存取，請使用下列 [容器建立選項]****。 下列範例是使用適用於 Windows 的 Linux 容器來進行部署：
 
 ```json
 {
@@ -491,11 +491,11 @@ docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname
 
 ### <a name="use-bind-mounts-shared-filesystem"></a>使用繫結掛接 (共用檔案系統)
 
-與其使用容器檔案系統，您可以選擇要用來儲存設定資訊和記錄檔的主機檔案系統。 若要設定此選項，請在繫結掛接模式下使用 `-v` 的 `docker run` 選項。
+與其使用容器檔案系統，您可以選擇要用來儲存設定資訊和記錄檔的主機檔案系統。 若要設定此選項，請在繫結掛接模式下使用 `docker run` 的 `-v` 選項。
 
 ## <a name="opc-ua-x509-certificates"></a>OPC UA X.509 憑證
 
-OPC UA 會使用 X.509 憑證來在 OPC UA 用戶端和伺服器建立連線時驗證它們，以及對它們之間的通訊進行加密。 OPC 發行者會使用由 OPC UA 堆疊所維護的憑證存放區來管理所有憑證。 在啟動時，OPC 發行者會檢查是否有適用於其本身的憑證。 如果憑證存放區上沒有任何憑證，且沒有透過命令列傳遞憑證，OPC 發行者便會建立自我簽署的憑證。 如需詳細資訊，請參閱 **中的**InitApplicationSecurityAsync`OpcApplicationConfigurationSecurity.cs` 方法。
+OPC UA 會使用 X.509 憑證來在 OPC UA 用戶端和伺服器建立連線時驗證它們，以及對它們之間的通訊進行加密。 OPC 發行者會使用由 OPC UA 堆疊所維護的憑證存放區來管理所有憑證。 在啟動時，OPC 發行者會檢查是否有適用於其本身的憑證。 如果憑證存放區上沒有任何憑證，且沒有透過命令列傳遞憑證，OPC 發行者便會建立自我簽署的憑證。 如需詳細資訊，請參閱 `OpcApplicationConfigurationSecurity.cs` 中的 **InitApplicationSecurityAsync** 方法。
 
 自我簽署憑證無法提供任何安全性，因為它們不是由受信任的 CA 所簽署。
 
@@ -687,7 +687,7 @@ current working set in MB: 90
 
 若要對應用程式進行偵錯，請使用 Visual Studio 開啟 **opcpublisher.sln** 解決方案檔案，並使用 Visual Studio 偵錯工具。
 
-如果您需要在 OPC 發行者中存取 OPC UA 伺服器，請確定您的防火牆已允許存取伺服器所聆聽的連接埠。 預設通訊埠為：62222。
+如果您需要在 OPC 發行者中存取 OPC UA 伺服器，請確定您的防火牆已允許存取伺服器所聆聽的連接埠。 預設埠為：62222。
 
 ## <a name="control-the-application-remotely"></a>遠端控制應用程式
 

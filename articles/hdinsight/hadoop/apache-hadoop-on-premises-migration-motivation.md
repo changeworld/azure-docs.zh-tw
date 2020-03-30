@@ -1,5 +1,5 @@
 ---
-title: 優點：將內部部署 Apache Hadoop 遷移至 Azure HDInsight
+title: 優點：將本地 Apache Hadoop 遷移到 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集遷移到 Azure HDInsight 的動機和優點。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74267315"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 動機和優點
@@ -41,19 +41,19 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 - **輕鬆地擴充** - HDInsight 可讓您 [調整](../hdinsight-administer-use-portal-linux.md)工作負載，將它相應增加或減少。 Azure 會負責資料轉散發和重新平衡工作負載，而不會中斷資料處理作業。
 
-- **全球可用性** - HDInsight 比任何其他巨量資料分析服務可在更多[區域](https://azure.microsoft.com/regions/services/)中取得。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。
+- **全球可用性**- HDInsight 在更多[區域](https://azure.microsoft.com/regions/services/)提供比任何其他大資料分析產品。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。
 
 - **安全與合規性** - HDInsight 可讓您使用  [Azure 虛擬網路](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)，以及與  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 整合來保護企業資料資產。 HDInsight 也符合最熱門的產業和政府 [合規性標準](https://azure.microsoft.com/overview/trusted-cloud)。
 
-- **簡化版本管理**-Azure HDInsight 管理 Hadoop 生態系統元件的版本，並將其保持在最新狀態。 軟體更新對於內部部署通常是複雜的程序。
+- **簡化版本管理**- Azure HDInsight 管理 Hadoop 生態系統元件的版本，並使其保持最新。 軟體更新對於內部部署通常是複雜的程序。
 
-- **針對特定工作負載最佳化的小型叢集，其元件之間的相依性更少** - 典型的內部部署 Hadoop 設定成使用多用途的單一叢集。 使用 Azure HDInsight 可以建立工作負載特定的叢集。 針對特定工作負載建立叢集，可移除維護單一且複雜度不斷增加之叢集的複雜性。
+- **針對特定工作負載優化的小型群集，元件之間的依賴性較少**- 典型的本地 Hadoop 設置使用單個群集，該群集具有多種用途。 使用 Azure HDInsight 可以建立工作負載特定的叢集。 針對特定工作負載建立叢集，可移除維護單一且複雜度不斷增加之叢集的複雜性。
 
 - **生產力** - 您可以在慣用的開發環境中使用各種適用於 Hadoop 和 Spark 的工具。
 
 - **使用自訂工具或協力廠商應用程式的擴充性** - HDInsight 叢集可以使用安裝的元件來擴充，並從 Azure Marketplace 使用[單鍵](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署來與其他巨量資料解決方案整合。
 
-- **輕鬆管理、管理和監視**-Azure HDInsight 與 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 整合，以提供單一介面讓您監視所有叢集。
+- **易於管理、管理和監視**- Azure HDInsight 與 [Azure 監視器日誌](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 集成，提供一個介面，您可以監視所有群集。
 
 - **與其他 Azure 服務整合** - HDInsight 可輕鬆地與其他熱門 Azure 服務整合，如下列服務：
 
@@ -85,7 +85,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 - 專案詳細資料
 - Azure 需求
 
-### <a name="on-premises-deployment-questionnaire"></a>內部部署問卷
+### <a name="on-premises-deployment-questionnaire"></a>本地部署調查表
 
 | **問題** | **範例** | **回答** |
 |---|---|---|
@@ -94,16 +94,16 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |巨量資料生態系統元件|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |叢集類型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
 |叢集數目|4|
-|主要節點數目|2|
-|背景工作節點數目|100|
-|邊緣節點數目| 5|
+|主節點數|2|
+|輔助節點數|100|
+|邊緣節點數| 5|
 |磁碟空間總計|100 TB|
 |主節點設定|m/y、cpu、disk 等|
 |資料節點設定|m/y、cpu、disk 等|
 |邊緣節點設定|m/y、cpu、disk 等|
-|是否使用 HDFS 加密？|yes|
+|是否使用 HDFS 加密？|是|
 |高可用性|HDFS HA、中繼存放區 HA|
-|嚴重損壞修復/備份|是否備份叢集？|  
+|災害復原/備份|是否備份叢集？|  
 |相依於叢集的系統|SQL Server、Teradata、Power BI、MongoDB|
 |協力廠商整合|Tableau，GridGain、Qubole、Informatica、Splunk|
 |**主題**：**安全性**|||
@@ -112,7 +112,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |HDFS 存取控制|  手動、ssh 使用者|
 |Hive 驗證與授權|Sentry、LDAP、AD 搭配 Kerberos、Ranger|
 |稽核|Ambari、Cloudera Navigator、Ranger|
-|監控|Graphite、collectd、statsd、Telegraf、InfluxDB|
+|監視|Graphite、collectd、statsd、Telegraf、InfluxDB|
 |警示|Kapacitor、Prometheus、Datadog|
 |資料保留期間| 3 年、5 年|
 |叢集系統管理員|單一系統管理員、多個系統管理員|
@@ -128,7 +128,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |Spark 串流作業|5 個作業 -- 每 3 分鐘||
 |結構化串流作業|5 個工作 -- 每分鐘||
 |ML 模型定型作業|2 個工作 -- 每週一次||
-|程式設計語言|Python、Scala、Java||
+|程式語言|Python、Scala、Java||
 |指令碼|殼層、Python||
 |**主題**：**資料**|||
 |資料來源|一般檔案、Json、Kafka、RDBMS||
@@ -137,10 +137,10 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |資料目的地|HDFS、RDBMS、Kafka、MPP ||
 |**主題**：**中繼資料**|||
 |Hive DB 類型|Mysql、Postgres||
-|Hive 中繼存放區的數目|2||
-|Hive 資料表的數目|100||
-|Ranger 原則的數目|20||
-|Oozie 工作流程的數目|100||
+|蜂巢元存儲數|2||
+|蜂巢表數|100||
+|遊俠策略數|20||
+|Oozie 工作流數|100||
 |**主題**：**調整**|||
 |包含複寫的資料磁碟區|100 TB||
 |每日擷取量|50 GB||
@@ -152,11 +152,11 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |磁碟空間使用量|75%||
 |平均網路使用量 %|25%
 |**主題**：**員工**|||
-|系統管理員數目|2||
-|開發人員人數|10||
-|終端使用者數目|100||
+|管理員人數|2||
+|開發人員數量|10||
+|最終使用者數量|100||
 |技術|Hadoop、Spark||
-|適用于遷移工作的可用資源數目|2||
+|用於遷移工作的可用資源數|2||
 |**主題**：**限制**|||
 |目前的限制|高延遲||
 |目前的挑戰|並行處理的問題||
@@ -167,8 +167,8 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |---|---|---|
 |**問題**|**範例**|**回答**|
 | 慣用區域|美國東部||
-|是否慣用 VNet？|yes||
-|是否需要 HA / DR？|yes||
+|是否慣用 VNet？|是||
+|是否需要 HA / DR？|是||
 |是否與其他雲端服務整合？|ADF、CosmosDB||
 |**主題**：**資料移動**  |||
 |初始載入喜好設定|DistCp、Data box、ADF、WANDisco||
@@ -177,25 +177,25 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |**主題**：**監視與警示** |||
 |使用 Azure 監視器與警示或整合協力廠商監視|使用 Azure 監視器與警示||
 |**主題**：**安全性喜好設定** |||
-|私人且受保護的資料管線？|yes||
-|是否使用網域加入叢集 (ESP)？|     yes||
-|是否將內部部署 AD 同步處理至雲端？|     yes||
-|要同步處理的 AD 使用者數目？|          100||
-|是否將密碼同步套雲端？|    yes||
-|僅雲端使用者？|                 yes||
+|私人且受保護的資料管線？|是||
+|是否使用網域加入叢集 (ESP)？|     是||
+|是否將內部部署 AD 同步處理至雲端？|     是||
+|要同步的 AD 使用者數？|          100||
+|是否將密碼同步套雲端？|    是||
+|僅雲端使用者？|                 是||
 |是否需要 MFA？|                       否|| 
-|是否符合資料授權需求？|  yes||
-|是否使用角色型存取控制？|        yes||
-|是否需要稽核？|                  yes||
-|是否使用待用資料加密？|          yes||
-|是否使用傳輸中資料加密？|       yes||
+|是否符合資料授權需求？|  是||
+|是否使用角色型存取控制？|        是||
+|是否需要稽核？|                  是||
+|是否使用待用資料加密？|          是||
+|是否使用傳輸中資料加密？|       是||
 |**主題**：**架構重新設計喜好設定** |||
 |單一叢集或特定叢集類型|特定叢集類型||
 |共置儲存體或遠端儲存體？|遠端儲存體||
 |是否因資料儲存在遠端，所以叢集大小較小？|較小的叢集大小||
 |是否使用多個較小的叢集而不是單一大型叢集？|使用多個較小的叢集||
-|是否使用遠端中繼存放區？|yes||
-|是否在不同叢集之間共用中繼存放區？|yes||
+|是否使用遠端中繼存放區？|是||
+|是否在不同叢集之間共用中繼存放區？|是||
 |是否將工作負載解構？|使用 Spark 作業取代 Hive 作業||
 |是否使用 ADF 資料協調流程？|否||
 

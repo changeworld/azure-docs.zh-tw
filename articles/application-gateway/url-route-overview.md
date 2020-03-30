@@ -1,6 +1,6 @@
 ---
 title: Azure 應用程式閘道 URL 型內容路由概觀
-description: 本文提供 Azure 應用程式閘道 URL 型內容路由、UrlPathMap 設定和 PathBasedRouting 規則的總覽。
+description: 本文概述了基於 Azure 應用程式閘道 URL 的內容路由、UrlPathMap 配置和基於路徑的路由規則。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77251833"
 ---
 # <a name="url-path-based-routing-overview"></a>URL 路徑型路由概觀
@@ -27,7 +27,7 @@ URL 路徑型路由可讓您根據要求的 URL 路徑，將流量路由傳送�
 對 http\://contoso.com/video/* 的要求會路由傳送至 VideoServerPool，而 http\://contoso.com/images/* 則會路由傳送至 ImageServerPool。 如果沒有任何路徑模式相符，則會選取 DefaultServerPool。
 
 > [!IMPORTANT]
-> 針對 v1 SKU，規則會依照其在入口網站中列出的順序進行處理。 如果先列出了基本接聽程式，且該接聽程式符合傳入的要求，就會由該接聽程式處理。 針對 v2 SKU，完全相符的優先順序較高。 不過，強烈建議您先設定多網站接聽程式，再設定基本接聽程式。 這可確保流量路由傳送到右邊後端。
+> 對於 v1 SKU，按在門戶中列出的連續處理規則。 如果先列出了基本接聽程式，且該接聽程式符合傳入的要求，就會由該接聽程式處理。 對於 v2 SKU，精確匹配具有更高的優先順序。 但是，強烈建議在配置基本攔截器之前先配置多網站攔截器。 這可確保流量路由傳送到右邊後端。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 組態元素
 

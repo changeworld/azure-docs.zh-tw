@@ -8,21 +8,21 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73147307"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
-本文說明如何使用資料模型化和管理應用程式（例如 SQL Server Management Studio （SSMS）或 Visual Studio 搭配 Analysis Services 專案，或使用用戶端報表應用程式（例如 Microsoft Excel）來連接到伺服器 Power BI桌面或自訂應用程式。 連到 Azure Analysis Services 的連線會使用 HTTPS。
+本文介紹了通過使用資料建模和管理應用程式（如 SQL Server 管理工作室 （SSMS） 或具有分析服務專案的視覺化工作室）或與用戶端報告應用程式（如 Microsoft Excel、Power BI）進行連接連接到伺服器桌面或自訂應用程式。 連到 Azure Analysis Services 的連線會使用 HTTPS。
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
 [取得最新的用戶端程式庫](analysis-services-data-providers.md)
 
-所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，會安裝最新的用戶端程式庫，或以每月版本進行更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
+所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 對於 SSMS、Visual Studio、Excel 2016 及更高版本以及 Power BI，將安裝或更新最新的用戶端庫，併發布月度版本。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
 
 ## <a name="server-name"></a>伺服器名稱
 
@@ -35,14 +35,14 @@ ms.locfileid: "73147307"
 
 ### <a name="get-the-server-name"></a>取得伺服器名稱
 
-在 [Azure 入口網站] > 伺服器 > [概觀] >  [伺服器名稱] 中，複製整個伺服器名稱。 如果您組織中的其他使用者也會連線到這部伺服器，您可以將此伺服器名稱告訴他們。 指定伺服器名稱時，必須使用完整路徑。
+在 [Azure 入口網站]**** > 伺服器 > [概觀] **** >  [伺服器名稱]**** 中，複製整個伺服器名稱。 如果您組織中的其他使用者也會連線到這部伺服器，您可以將此伺服器名稱告訴他們。 指定伺服器名稱時，必須使用完整路徑。
 
 ![在 Azure 中取得伺服器名稱](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 美國東部2區域的通訊協定是**aspaaseastus2**。
+> 美國東部2區的協定是**阿斯帕斯塔斯2。**
 
-## <a name="connection-string"></a>Connection string
+## <a name="connection-string"></a>連接字串
 
 使用表格式物件模型連線至 Azure Analysis Services 時，請使用下列連接字串格式：
 
@@ -76,7 +76,7 @@ ms.locfileid: "73147307"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Excel 進行連接](analysis-services-connect-excel.md)    
-[使用 Power BI 進行連接](analysis-services-connect-pbi.md)   
+[與 Excel 連接](analysis-services-connect-excel.md)    
+[使用電源 BI 連接](analysis-services-connect-pbi.md)   
 [管理您的伺服器](analysis-services-manage.md)   
 

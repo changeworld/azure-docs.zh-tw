@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73159689"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 網路原則概觀
@@ -32,17 +32,17 @@ ms.locfileid: "73159689"
 Azure 網路原則與 Azure CNI 搭配運作，而 Azure CNI 提供容器的 VNet 整合。 目前只有 Linux 節點上才支援。 實作會根據定義的原則來設定「Linux IP 資料表」規則，以強制執行流量篩選。
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>規劃 Kubernetes 叢集的安全性
-在為您的叢集執行安全性時，請使用網路安全性群組（Nsg）來篩選北南部流量（也就是輸入和離開您的叢集子網的流量），並將 Kubernetes 網路原則用於美國西部流量（也就是中 pod 之間的流量）。您的叢集。
+實現群集安全性時，使用網路安全性群組 （NSG） 篩選南北流量，即進出群集子網的流量，並使用 Kubernetes 網路原則進行東西方流量，即群集。
 
 ## <a name="using-azure-kubernetes-network-policies"></a>使用 Azure Kubernetes 網路原則
 您可以透過下列方式使用 Azure 網路原則，以提供 Pod 的微型分割。
 
 ### <a name="acs-engine"></a>ACS-engine
-ACS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azure Resource Manager 範本。 叢集設定是在 JSON 檔案中設定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其描述的完整清單，請參閱＜Microsoft Azure Container Service 引擎 - 叢集定義＞。
+ACS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azure Resource Manager 範本。 叢集設定是在 JSON 檔案中指定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其描述的完整清單，請參閱＜Microsoft Azure Container Service 引擎 - 叢集定義＞。
 
 若要在使用 acs-engine 所部署的叢集上啟用原則，請將叢集定義檔案中的 networkPolicy 設定值指定為 "azure"。
 
-#### <a name="example-configuration"></a>設定範例
+#### <a name="example-configuration"></a>範例設定
 
 以下 JSON 範例設定會建立新的虛擬網路和子網路，並使用 Azure CNI 在其中部署 Kubernetes 叢集。 建議您使用 [記事本] 編輯 JSON 檔案。 
 ```json
@@ -102,4 +102,4 @@ ACS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azur
 ## <a name="next-steps"></a>後續步驟
 - 了解 [Azure Kubernetes Service](../aks/intro-kubernetes.md)。
 -  了解[容器網路服務](container-networking-overview.md)。
-- [部署外掛程式](deploy-container-networking.md) (適用於 Kubernetes 叢集或 Docker 容器)。
+- 為庫伯奈斯群集或 Docker 容器[部署外掛程式](deploy-container-networking.md)。

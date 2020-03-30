@@ -1,6 +1,6 @@
 ---
-title: 瞭解適用C#于的 IoT 安全性代理程式本機設定檔 Azure 資訊安全中心 |Microsoft Docs
-description: 深入瞭解 IoT 安全性服務的 Azure 資訊安全中心、的安全性代理程式本機設定檔C#。
+title: 瞭解 Azure 安全中心，用於 IoT 安全代理本地設定檔，用於 C# |微軟文檔
+description: 詳細瞭解適用于 IoT 安全服務的 Azure 安全中心、C# 的安全代理本地設定檔。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74664183"
 ---
-# <a name="understanding-the-local-configuration-file-c-agent"></a>瞭解本機設定檔案（C# agent）
+# <a name="understanding-the-local-configuration-file-c-agent"></a>瞭解本地設定檔 （C# 代理）
 
 
-IoT 安全性代理程式的 Azure 資訊安全中心會使用本機設定檔案中的設定。
+IoT 安全代理的 Azure 安全中心使用本地設定檔中的配置。
 
-當代理程式啟動時，安全性代理程式會讀取設定檔。 本機設定檔中找到的設定同時包含驗證設定和其他代理程式相關設定。
+當代理啟動時，安全代理讀取設定檔一次。 在本地設定檔中找到的配置同時包含身份驗證配置和其他代理相關配置。
 
-C#安全性代理程式會使用多個設定檔：
+C# 安全代理使用多個設定檔：
 
-- **一般 .config** -代理程式相關設定。
-- **驗證 .config** -驗證相關設定（包括驗證詳細資料）。
-- **SecurityIotInterface** -IoT 相關設定。
+- **常規.配置**- 代理相關配置。
+- **身份驗證.config** - 身份驗證相關配置（包括身份驗證詳細資訊）。
+- **安全 Iot 介面.配置**- IoT 相關配置。
 
-設定檔包含預設設定。 驗證設定會在代理程式安裝期間填入，而當代理程式重新開機時，系統會對設定檔進行變更。 
+設定檔包含預設配置。 身份驗證配置在代理安裝期間填充，並在重新開機代理時對設定檔進行更改。 
 
-## <a name="configuration-file-location"></a>設定檔案位置
+## <a name="configuration-file-location"></a>設定檔位置
 若為 Linux：
-- 作業系統設定檔位於 `/var/ASCIoTAgent`。
+- 作業系統設定檔位於`/var/ASCIoTAgent`中。
 
 若為 Windows：
-- 作業系統設定檔位於安全性代理程式的目錄中。 
+- 作業系統設定檔位於安全代理的目錄中。 
 
-### <a name="generalconfig-configurations"></a>一般 .config 設定
+### <a name="generalconfig-configurations"></a>常規.配置配置
 
-| 設定名稱 | 可能的值 | 詳細資料 | 
+| 設定名稱 | 可能值 | 詳細資料 | 
 |:-----------|:---------------|:--------|
-| agentId | GUID | 代理程式唯一識別碼 |
-| readRemoteConfigurationTimeout | 時間範圍 | 從 IoT 中樞提取遠端設定的時間週期。 如果代理程式無法在指定的時間內提取設定，作業將會超時。|
-| schedulerInterval | 時間範圍 | 內部排程器間隔。 |
-| producerInterval | 時間範圍 | 事件產生者背景工作間隔。 |
-| consumerInterval | 時間範圍 | 事件取用者背景工作間隔。 |
-| highPriorityQueueSizePercentage | 0 < 數位 < 1 | 高優先順序訊息專用的總快取部分。 |
-| logLevel | 「關閉」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」  | 等於和高於此嚴重性的記錄訊息會記錄到 [調試] 主控台（Linux 中的 Syslog）。 |
-| fileLogLevel |  「關閉」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」| 等於和高於此嚴重性的記錄訊息會記錄到檔案（Linux 中的 Syslog）。 |
-| diagnosticVerbosityLevel | "None"、"Some"、"All"、 | 診斷事件的詳細資訊層級。 無-不傳送診斷事件，只會傳送具有高重要性的部分診斷事件，所有記錄也會當做診斷事件傳送。 |
-| logFilePath | 檔案的路徑 | 如果 fileLogLevel > Off，記錄檔就會寫入這個檔案。 |
-| defaultEventPriority | 「高」、「低」、「關閉」 | 預設事件優先順序。 |
+| 代理 Id | GUID | 代理唯一識別碼 |
+| 讀取遠端配置超時 | TimeSpan | 從 IoT 中心獲取遠端配置的時間段。 如果代理無法在指定時間內獲取配置，則操作將超時。|
+| 計畫時間間隔 | TimeSpan | 內部計畫程式間隔。 |
+| 生產者間隔 | TimeSpan | 事件產生器輔助角色間隔。 |
+| 消費者間隔 | TimeSpan | 事件消費者輔助角色間隔。 |
+| 高優先順序佇列大小百分比 | 0 < 數位 < 1 | 專用於高優先順序消息的總緩存部分。 |
+| logLevel | "關閉"、"致命"、"錯誤"、"警告"、"資訊"、"調試"  | 將等於且高於此嚴重性的錯誤日誌記錄到調試主控台（Linux 中的 Syslog）。 |
+| 檔日誌級別 |  "關閉"、"致命"、"錯誤"、"警告"、"資訊"、"調試"| 相同且高於此嚴重性的日誌消息將記錄到檔中（Linux 中的 Syslog）。 |
+| 診斷詳細級別 | "無"，"一些"，"所有" | 診斷事件的風險級別。 無 - 未發送診斷事件，某些 - 僅發送具有高重要性的診斷事件，所有 - 所有日誌也作為診斷事件發送。 |
+| 日誌檔路徑 | 檔路徑 | 如果 fileLogLevel >關閉，日誌將寫入此檔。 |
+| 預設事件優先順序 | "高"，"低"，"關" | 預設事件優先順序。 |
 
-### <a name="generalconfig-example"></a>一般 .config 範例
+### <a name="generalconfig-example"></a>常規.config 示例
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -78,22 +78,22 @@ C#安全性代理程式會使用多個設定檔：
 </General>
 ```
 
-### <a name="authenticationconfig"></a>驗證 .config
+### <a name="authenticationconfig"></a>身份驗證. 配置
 
-| 設定名稱 | 可能的值 | 詳細資料 | 
+| 組態名稱 | 可能值 | 詳細資料 | 
 |:-----------|:---------------|:--------|
-| moduleName | string | 安全性模組身分識別的名稱。 此名稱必須對應至裝置中的模組身分識別名稱。 |
-| deviceId | string | 裝置的識別碼（如 Azure IoT 中樞中所註冊）。 || schedulerInterval | TimeSpan 字串 | 內部排程器間隔。 |
-| gatewayHostname | string | Azure Iot 中樞的主機名稱。 通常會 < 我的中樞 >。 azure-devices.net |
-| filePath | 字串-檔案的路徑 | 包含驗證密碼之檔案的路徑。|
-| 類型 | "SymmetricKey"、"SelfSignedCertificate" | 用於驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果密碼是自我簽署憑證，請選擇 [*自我簽署憑證*]。 |
-| 身分識別 | 「DPS」、「模組」、「裝置」 | 驗證身分識別-如果驗證是透過 DPS、模組（如果使用模組認證進行驗證，則為），或在使用裝置認證進行驗證時為裝置。
-| certificateLocationKind |  "LocalFile"、"Store" | LocalFile 如果憑證儲存在檔案中，則儲存憑證是否位於憑證存放區中。 |
-| idScope | string | DPS 的識別碼範圍 |
-| registrationId | string  | DPS 裝置註冊識別碼。 |
+| moduleName | 字串 | 安全模組標識的名稱。 此名稱必須與設備中的模組標識名稱對應。 |
+| deviceId | 字串 | 設備的 ID（在 Azure IoT 中心註冊）。 || 計畫時間間隔 | 時間跨度字串 | 內部計畫程式間隔。 |
+| 閘道主機名稱 | 字串 | Azure Iot 中心的主機名稱。 通常<我的集線器>.azure-devices.net |
+| filePath | 字串 - 檔路徑 | 包含身份驗證金鑰的檔的路徑。|
+| type | "對稱金鑰"，"自簽章憑證" | 用於身份驗證的使用者金鑰。 如果使用者金鑰是對稱金鑰，請選擇*SymmetricKey，* 如果密碼是自簽章憑證，請選擇*自簽章憑證*。 |
+| 身分識別 | "DPS"、"模組"、"設備" | 身份驗證標識 - 通過 DPS 進行身份驗證的 DPS、使用模組憑據進行身份驗證的模組或使用設備憑據進行身份驗證的設備。
+| 證書位置金德 |  "本地檔"，"存儲" | 如果憑證存放區在檔中，則本地檔，如果證書位於憑證存放區中，則存儲。 |
+| idScope | 字串 | DPS 的 ID 範圍 |
+| 註冊 Id | 字串  | DPS 設備註冊 ID。 |
 |
 
-### <a name="authenticationconfig-example"></a>Authentication .config 範例
+### <a name="authenticationconfig-example"></a>身份驗證.config 示例
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +108,14 @@ C#安全性代理程式會使用多個設定檔：
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface .config
+### <a name="securityiotinterfaceconfig"></a>安全Iot介面.配置
 
-| 設定名稱 | 可能的值 | 詳細資料 | 
+| 設定名稱 | 可能值 | 詳細資料 | 
 |:-----------|:---------------|:--------|
-| transportType | "Ampq" "Mqtt" | IoT 中樞傳輸類型。 |
+| 傳輸類型 | "安普克""Mqtt" | IoT 集線器傳輸類型。 |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface .config 範例
+### <a name="securityiotinterfaceconfig-example"></a>安全Iot介面.config示例
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,10 +124,10 @@ C#安全性代理程式會使用多個設定檔：
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
-- 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
-- 啟用 IoT[服務](quickstart-onboard-iot-hub.md)的 Azure 資訊安全中心
-- 閱讀 IoT 服務的 Azure 資訊安全中心[常見問題](resources-frequently-asked-questions.md)
+- 閱讀 Azure 安全中心，瞭解 IoT 服務[概述](overview.md)
+- 瞭解有關 IoT[體系結構](architecture.md)的 Azure 安全中心
+- 啟用適用于 IoT[服務的](quickstart-onboard-iot-hub.md)Azure 安全中心
+- 閱讀 Azure 安全中心，瞭解 IoT 服務[常見問題解答](resources-frequently-asked-questions.md)
 - 了解如何存取[未經處理的安全性資料](how-to-security-data-access.md)
 - 了解[建議](concept-recommendations.md)
-- 瞭解安全性[警示](concept-security-alerts.md)
+- 瞭解安全[警報](concept-security-alerts.md)

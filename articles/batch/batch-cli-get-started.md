@@ -15,10 +15,10 @@ ms.date: 07/24/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020177"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
@@ -54,7 +54,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 mac
 
 若要搭配使用 Azure CLI 與 Batch，您需要登入和驗證。 請遵循兩個簡單的步驟︰
 
-1. **登入 Azure。** 登入 Azure 可讓您存取 Azure Resource Manager 命令，包括 [Batch Management 服務](batch-management-dotnet.md)命令。  
+1. **登錄到 Azure。** 登入 Azure 可讓您存取 Azure Resource Manager 命令，包括 [Batch Management 服務](batch-management-dotnet.md)命令。  
 2. **登入您的 Batch 帳戶。** 登入您的 Batch 帳戶即可存取 Batch 服務命令。   
 
 ### <a name="log-in-to-azure"></a>登入 Azure
@@ -83,7 +83,7 @@ az login
 
 您有兩個對 Batch 帳戶進行驗證的選項︰
 
-- **使用 Azure Active Directory (Azure AD) 驗證** 
+- **通過使用 Azure 活動目錄 （Azure AD） 身份驗證** 
 
     當您搭配使用 Azure CLI 與 Batch 時，使用 Azure AD 進行驗證是預設值，建議使用大部分的情況。 
     
@@ -97,7 +97,7 @@ az login
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **使用共用金鑰驗證**
+- **通過使用共用金鑰身份驗證**
 
     [共用金鑰驗證](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)會使用帳戶存取金鑰來驗證 Batch 服務的 Azure CLI 命令。
 
@@ -129,7 +129,7 @@ az batch pool create my_batch_pool.json
 
 雖然您只可以使用命令列選項建立大多數 Batch 資源，但有些功能需要您指定 JSON 格式的檔案 (內含資源詳細資料)。 例如，如果您想要指定啟動工作的資源檔，則必須使用 JSON 檔案。
 
-若要查看建立資源所需的 JSON 語法，請參閱[批次 REST API 參考][rest_api]檔。 REST API 參考中的每個「新增資源類型」主題都包含可供建立該資源的範例 JSON 指令碼。 您可以使用這些範例 JSON 指令碼作為 JSON 檔案的範本，以搭配 Azure CLI 使用。 例如，若要查看用於建立集區的 JSON 語法，請參閱[將集區新增至帳戶][rest_add_pool]。
+若要查看建立資源所需的 JSON 語法，請參閱 [Batch REST API 參考][rest_api]文件。 REST API 參考中的每個「新增資源類型」** 主題都包含可供建立該資源的範例 JSON 指令碼。 您可以使用這些範例 JSON 指令碼作為 JSON 檔案的範本，以搭配 Azure CLI 使用。 例如，若要查看用於建立集區的 JSON 語法，請參閱[將集區新增至帳戶][rest_add_pool]。
 
 如需可指定 JSON 檔案的範例指令碼，請參閱[使用 Batch 執行作業和工作](./scripts/batch-cli-sample-run-job.md)。
 
@@ -151,7 +151,7 @@ az batch task list --job-id job001
 
 下表描述 Batch 服務所支援的 OData 子句︰
 
-| 子句 | 說明 |
+| 子句 | 描述 |
 |---|---|
 | `--select-clause [select-clause]` | 傳回每個實體的屬性子集。 |
 | `--filter-clause [filter-clause]` | 傳回符合指定之 OData 運算式的實體。 |
@@ -161,7 +161,7 @@ az batch task list --job-id job001
 
 如需使用 OData 子句執行有效率之清單查詢的詳細資訊，請參閱[有效率地查詢 Azure Batch 服務](batch-efficient-list-queries.md)。
 
-## <a name="troubleshooting-tips"></a>疑難排解提示
+## <a name="troubleshooting-tips"></a>疑難排解秘訣
 
 當您針對 Azure CLI 問題進行疑難排解時，下列秘訣可能有所幫助︰
 

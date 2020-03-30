@@ -13,10 +13,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 1e729c608a2cad28c810f8d5236360c909a496b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70082038"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Linux Azure 虛擬機器上 SQL Server 的常見問題集
@@ -32,7 +32,7 @@ ms.locfileid: "70082038"
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a id="images"></a> 映像
+## <a name="images"></a><a id="images"></a>圖像
 
 1. **可用的 SQL Server 虛擬機器資源庫映像有哪些？**
 
@@ -48,7 +48,7 @@ ms.locfileid: "70082038"
 
 1. **是否可以從資源庫中移除 SQL Server 虛擬機器映像？**
 
-   是的。 Azure 只會為每個主要版本維護一個映像。 例如，發行新的 SQL Server Service Pack 後，Azure 會將新的映像新增至該 Service Pack 的資源庫。 前一個 Service Pack 的 SQL Server 映像會立即從 Azure 入口網站中移除。 不過，在接下來三個月仍可用於從 PowerShell 佈建。 三個月之後，便無法再使用前一個 Service Pack 映像。 如果 SQL Server 版本在達到其生命週期結尾時就不提供支援，也適用此移除原則。
+   是。 Azure 只會為每個主要版本維護一個映像。 例如，發行新的 SQL Server Service Pack 後，Azure 會將新的映像新增至該 Service Pack 的資源庫。 前一個 Service Pack 的 SQL Server 映像會立即從 Azure 入口網站中移除。 不過，在接下來三個月仍可用於從 PowerShell 佈建。 三個月之後，便無法再使用前一個 Service Pack 映像。 如果 SQL Server 版本在達到其生命週期結尾時就不提供支援，也適用此移除原則。
 
 ## <a name="creation"></a>建立
 
@@ -72,9 +72,9 @@ ms.locfileid: "70082038"
 
 1. **如果是從其中一個隨用隨付資源庫映像建立，可以將 VM 變更為使用自己的 SQL Server 授權嗎？**
 
-   資料分割 您不能從以秒鐘計費授權切換為使用您自己的授權。 您必須建立新的 Linux VM，安裝 SQL Server，然後移轉資料。 如需自備授權的詳細資訊，請參閱上一個問題。
+   否。 您不能從以秒鐘計費授權切換為使用您自己的授權。 您必須建立新的 Linux VM，安裝 SQL Server，然後移轉資料。 如需自備授權的詳細資訊，請參閱上一個問題。
 
-## <a name="administration"></a>管理
+## <a name="administration"></a>系統管理
 
 1. **我可以使用 SQL Server Management Studio (SSMS) 管理 Linux SQL Server 虛擬機器嗎？**
 
@@ -102,10 +102,10 @@ ms.locfileid: "70082038"
 
 * [Linux VM 上的 SQL Server 概觀](sql-server-linux-virtual-machines-overview.md)
 * [佈建 SQL Server Linux VM](provision-sql-server-linux-virtual-machine.md)
-* [Linux 上的 SQL Server 文件](https://docs.microsoft.com/sql/linux/sql-server-linux-overview) \(機器翻譯\)
+* [Linux 文檔上的 SQL 伺服器](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
-**Windows VM**：
+**視窗 VM**：
 
-* [Windows VM 上的 SQL Server 概觀](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 上的 SQL 伺服器概述](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [佈建 SQL Server Windows VM](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 * [常見問題集 (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)

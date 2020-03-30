@@ -10,10 +10,10 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813632"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 應用程式來管理 Azure Data Lake Analytics
@@ -21,9 +21,9 @@ ms.locfileid: "70813632"
 
 本文說明如何使用以 Azure Java SDK 所撰寫的應用程式，來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。 
 
-## <a name="prerequisites"></a>必要條件
-* **Java Development Kit (JDK) 8** (使用 Java 1.8 版)。
-* **IntelliJ** 或其他合適的 Java 開發環境。 本文件中的指示使用 IntelliJ。
+## <a name="prerequisites"></a>Prerequisites
+* **JAVA 開發工具組 （JDK） 8（** 使用 JAVA 版本 1.8）。
+* **IntelliJ**或其他合適的 JAVA 開發環境。 本文件中的指示使用 IntelliJ。
 * 建立 Azure Active Directory (AAD) 應用程式，並擷取其**用戶端識別碼**、**租用戶識別碼**和**金鑰**。 如需了解 AAD 應用程式，以及如何取得用戶端識別碼的指示，請參閱 [使用入口網站建立 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 建立應用程式並產生金鑰後，可以從入口網站取得回覆 URI 和金鑰。
 
 ## <a name="authenticating-using-azure-active-directory"></a>使用 Azure Active Directory 進行驗證
@@ -31,8 +31,8 @@ ms.locfileid: "70813632"
 下列程式碼片段提供**非互動式**驗證的程式碼，其中應用程式會提供它自己的認證。
 
 ## <a name="create-a-java-application"></a>建立 Java 應用程式
-1. 開啟 IntelliJ，並使用 [命令列應用程式] 範本建立 Java 專案。
-2. 在畫面左側的專案上按一下滑鼠右鍵，然後按一下 [新增架構支援]。 選擇 [Maven] 並按一下 [確定]。
+1. 開啟 IntelliJ，並使用 [命令列應用程式]**** 範本建立 Java 專案。
+2. 在畫面左側的專案上按一下滑鼠右鍵，然後按一下 [新增架構支援] ****。 選擇 [Maven]**** 並按一下 [確定]****。
 3. 開啟新建立的 **"pom.xml"** 檔案，並在 **\</version>** 標記和 **\<</project>** 標記之間新增下列一小段文字︰
 
 ```
@@ -76,9 +76,9 @@ ms.locfileid: "70813632"
 </dependencies>
 ```
 
-移至 [檔案] > [設定] > [建置] > [執行] > [部署]。 選取 [建置工具] > [Maven] > [匯入]。 然後勾選 [自動匯入 Maven 專案]。
+移至 [檔案] > [設定] > [建置] > [執行] > [部署]****。 選取 [建置工具] > [Maven] > [匯入]****。 然後勾選 [自動匯入 Maven 專案] ****。
 
-開啟`Main.java` ，並將現有的程式碼區塊取代為下列程式碼：
+打開`Main.java`現有代碼塊，然後用以下代碼替換現有代碼塊：
 
 ```java
 import com.microsoft.azure.CloudException;

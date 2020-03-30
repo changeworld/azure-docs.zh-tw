@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure HDInsight 工具 PySpark 互動式環境
+title: 使用 Azure HDInsight 工具的 PySpark 互動式環境
 description: 了解如何使用適用於 Visual Studio Code 的 Azure HDInsight 工具來建立及提交查詢和指令碼。
 keywords: VScode,Azure HDInsight 工具,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,互動式 Hive,互動式查詢
 author: jejiang
@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73241551"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>設定 Visual Studio Code 的 PySpark 互動式環境
@@ -23,14 +23,14 @@ ms.locfileid: "73241551"
 
 1. 安裝[Python](https://www.python.org/downloads/)和[pip](https://pip.pypa.io/en/stable/installing/)。
 
-   + 從 [https://www.python.org/downloads/](https://www.python.org/downloads/) 安裝 Python。
-   + 從[https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/)安裝 pip （如果未從 Python 安裝安裝）。
-   + 使用下列命令來驗證是否已成功安裝 Python 和 pip。 (選用)
+   + 從[https://www.python.org/downloads/](https://www.python.org/downloads/)安裝 Python。
+   + 安裝點[https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/)子（如果未從 Python 安裝安裝）。
+   + 使用以下命令驗證 Python 和 pip 是否成功安裝。 (選用)
 
         ![檢查 Python pip 版本命令](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > 建議您手動安裝 Python，而不是使用 macOS 預設版本。
+     > 建議手動安裝 Python，而不是使用 macOS 預設版本。
 
 2. 執行下列命令來安裝 **virtualenv**。
 
@@ -40,9 +40,9 @@ ms.locfileid: "73241551"
 
 ## <a name="other-packages"></a>其他套件
 
-如果您遇到錯誤訊息，請執行下列命令來安裝必要的套件：
+如果遇到錯誤訊息，請通過運行以下命令安裝所需的包：
 
-   ![安裝適用于 python 的 libkrb5-dev 套件](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+   ![安裝用於 python 的 libkrb5 套裝軟體](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
 ```
 sudo apt-get install libkrb5-dev
@@ -52,7 +52,7 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-重新啟動 VS Code，然後返回執行 [HDInsight: PySpark 互動式] 的指令碼編輯器。
+重新啟動 VS Code，然後返回執行 [HDInsight: PySpark 互動式]**** 的指令碼編輯器。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -69,5 +69,5 @@ sudo apt-get install python-dev
 * [HDInsight Apache Spark 叢集中 Jupyter Notebook 的可用核心](spark/apache-spark-jupyter-notebook-kernels.md)
 * [搭配 Jupyter Notebook 使用外部套件](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [在 Azure HDInsight 中使用 Microsoft Power BI 將 Apache Hive 資料視覺化](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [在 Azure HDInsight 中使用 Microsoft Power BI 視覺化 Apache Hive 資料](hadoop/apache-hadoop-connect-hive-power-bi.md)
 * [使用 Apache Zeppelin 在 Azure HDInsight 中執行 Apache Hive 查詢](./interactive-query/hdinsight-connect-hive-zeppelin.md)

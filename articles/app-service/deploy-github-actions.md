@@ -1,65 +1,65 @@
 ---
-title: 使用 GitHub 動作來設定 CI/CD
-description: 瞭解如何使用 GitHub 動作，從 CI/CD 管線將您的程式碼部署至 Azure App Service。 自訂群組建工作並執行複雜的部署。
+title: 使用 GitHub 操作配置 CI/CD
+description: 瞭解如何使用 GitHub 操作從 CI/CD 管道將代碼部署到 Azure 應用服務。 自訂生成任務並執行複雜的部署。
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562202"
 ---
-# <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub 動作部署到 App Service
+# <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub 操作部署到應用服務
 
-[GitHub 動作](https://help.github.com/en/articles/about-github-actions)可讓您彈性地建立自動化軟體發展生命週期工作流程。 透過適用于 GitHub 的 Azure App Service 動作，您可以使用 GitHub 動作，將工作流程自動化，以部署至[Azure App Service](overview.md) 。
+[GitHub 操作](https://help.github.com/en/articles/about-github-actions)使您能夠靈活地構建自動化的軟體發展生命週期工作流。 使用 GitHub 的 Azure 應用服務操作，可以自動執行工作流以使用 GitHub 操作部署到[Azure 應用服務](overview.md)。
 
 > [!IMPORTANT]
-> GitHub 動作目前為搶鮮版（Beta）。 您必須先[註冊，才能](https://github.com/features/actions)使用您的 GitHub 帳戶加入預覽版。
+> GitHub 操作當前處於測試階段。 您必須首先註冊才能使用 GitHub 帳戶[加入預覽](https://github.com/features/actions)。
 > 
 
-工作流程是由存放庫中 `/.github/workflows/` 路徑中的 YAML （. yml）檔案所定義。 此定義包含組成工作流程的各種步驟和參數。
+工作流由存儲庫中路徑中的`/.github/workflows/`YAML （.yml） 檔定義。 此定義包含構成工作流的各種步驟和參數。
 
-若為 Azure App Service 工作流程，檔案有三個區段：
+對於 Azure 應用服務工作流，該檔有三個部分：
 
 |區段  |工作  |
 |---------|---------|
-|**驗證** | 1. 定義服務主體 <br /> 2. 建立 GitHub 秘密 |
-|**建置** | 1. 設定環境 <br /> 2. 建立 web 應用程式 |
-|**部署** | 1. 部署 web 應用程式 |
+|[驗證]**** | 1. 定義服務主體 <br /> 2. 創建 GitHub 機密 |
+|**建立** | 1. 設置環境 <br /> 2. 構建 Web 應用程式 |
+|**部署** | 1. 部署 Web 應用 |
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp create-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的[Azure Cloud Shell](https://shell.azure.com/)或選取 [**試試看**] 按鈕來執行此命令。
+可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp 創建 rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令創建[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 門戶中的[Azure 雲外殼](https://shell.azure.com/)運行此命令，也可以選擇"**試用"** 按鈕。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
 ```
 
-在此範例中，將資源中的預留位置取代為您的訂用帳戶識別碼、資源組名和應用程式名稱。 輸出是可提供 App Service 應用程式存取權的角色指派認證。 複製這個 JSON 物件，您可以使用它從 GitHub 進行驗證。
+在此示例中，將資源中的預留位置替換為訂閱 ID、資源組名稱和應用名稱。 輸出是提供對應用服務應用存取權限的角色指派憑據。 複製此 JSON 物件，可用於從 GitHub 進行身份驗證。
 
 > [!NOTE]
-> 如果您決定使用發行設定檔進行驗證，則不需要建立服務主體。
+> 如果您決定使用發佈設定檔進行身份驗證，則無需創建服務主體。
 
 > [!IMPORTANT]
-> 授與最小存取權一律是最佳作法。 這就是上一個範例中的範圍限制為特定 App Service 應用程式，而不限於整個資源群組的原因。
+> 給予最低存取權限總是一種好的做法。 這就是為什麼上一個示例中的範圍僅限於特定的應用服務應用，而不是整個資源組。
 
-## <a name="configure-the-github-secret"></a>設定 GitHub 秘密
+## <a name="configure-the-github-secret"></a>配置 GitHub 金鑰
 
-您也可以使用應用層級的認證，也就是發行設定檔以進行部署。 請遵循下列步驟來設定密碼：
+您還可以使用應用級憑據（即發佈設定檔進行部署）。 按照步驟配置機密：
 
-1. 使用 [**取得發行設定檔**] 選項，從入口網站下載 App Service 應用程式的發行設定檔。
+1. 使用 **"獲取發佈設定檔"** 選項從門戶下載應用服務應用的發佈設定檔。
 
-2. 在[GitHub](https://github.com/)中，流覽您的存放庫、選取 [**設定] > 秘密 > 新增新密碼**
+2. 在[GitHub](https://github.com/)中，流覽存儲庫，選擇 **"設置>機密>添加新機密**
 
     ![密碼](media/app-service-github-actions/secrets.png)
 
-3. 將下載的發行設定檔的內容貼入密碼的 [值] 欄位中。
+3. 將下載的發佈設定檔檔的內容粘貼到機密的值欄位中。
 
-4. 現在，在您分支中的工作流程檔案中： `.github/workflows/workflow.yml` 取代 [部署 Azure Web 應用程式] 動作之輸入 `publish-profile` 的密碼。
+4. 現在，在分支中的工作流檔中：`.github/workflows/workflow.yml`替換部署 Azure Web`publish-profile`應用操作的輸入的機密。
     
     ```yaml
         - uses: azure/webapps-deploy@v1
@@ -67,24 +67,24 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
-5. 在定義之後，您會看到如下所示的密碼。
+5. 定義後，您將看到如下所示的機密。
 
     ![密碼](media/app-service-github-actions/app-service-secrets.png)
 
 ## <a name="set-up-the-environment"></a>設定 Azure 環境
 
-設定環境可以使用其中一個安裝動作來完成。
+可以使用其中一個設置操作來設置環境。
 
-|**語言**  |**設定動作**  |
+|**Language**  |**設置操作**  |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
-|**Java**     | `actions/setup-java` |
-|**JavaScript** | `actions/setup-node` |
+|**JAVA**     | `actions/setup-java` |
+|**JAVAscript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
-下列範例顯示的工作流程部分，會針對各種支援的語言設定環境：
+以下示例顯示了為各種受支援語言設置環境的工作流部分：
 
-**JavaScript**
+**JAVAscript**
 
 ```yaml
     - name: Setup Node 10.x
@@ -110,7 +110,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+**JAVA**
 
 ```yaml
     - name: Setup Java 1.8.x
@@ -121,13 +121,13 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-web-app"></a>建立 web 應用程式
+## <a name="build-the-web-app"></a>構建 Web 應用
 
-這取決於 Azure App Service 支援的語言和語言，本節應該是每種語言的標準組建步驟。
+這取決於 Azure 應用服務支援的語言和語言，此部分應該是每種語言的標準生成步驟。
 
-下列範例會以各種支援的語言，顯示建立 web 應用程式的工作流程部分。
+以下示例以各種受支援的語言顯示構建 Web 應用的工作流部分。
 
-**JavaScript**
+**JAVAscript**
 
 ```yaml
     - name: 'Run npm'
@@ -169,7 +169,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
         popd
 ```
 
-**Java**
+**JAVA**
 
 ```yaml
     - uses: actions/checkout@v1
@@ -182,18 +182,18 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 ## <a name="deploy-to-app-service"></a>部署到 App Service
 
-若要將程式碼部署到 App Service 應用程式，請使用 `azure/webapps-deploy@v1 ` 動作。 此動作有四個參數：
+要將代碼部署到應用服務應用，請使用 操作`azure/webapps-deploy@v1 `。 此操作有四個參數：
 
 | **參數**  | **說明**  |
 |---------|---------|
-| **應用程式名稱** | 具備App Service 應用程式的名稱 | 
-| **發行-設定檔** | 選擇性發行具有 Web Deploy 秘密的設定檔檔案內容 |
-| **套件** | 選擇性封裝或資料夾的路徑。 \* .zip、* war、* .jar 或要部署的資料夾 |
-| **位置名稱** | 選擇性輸入生產位置以外的現有插槽 |
+| **應用名稱** | （必需）應用服務應用的名稱 | 
+| **發佈設定檔** | （可選）使用 Web 部署機密發佈設定檔內容 |
+| **包** | （可選）包或資料夾的路徑。 *.zip、*.war、*.jar 或要部署的資料夾 |
+| **插槽名稱** | （可選）輸入生產槽以外的現有插槽 |
 
-### <a name="deploy-using-publish-profile"></a>使用發行設定檔進行部署
+### <a name="deploy-using-publish-profile"></a>使用發佈設定檔進行部署
 
-以下是使用發行設定檔建立 node.js 應用程式並將其部署至 Azure 的範例工作流程。
+下面是使用發佈設定檔生成 Node.js 應用並將其部署到 Azure 的示例工作流。
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -227,7 +227,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>使用 Azure 服務主體進行部署
 
-以下是使用 Azure 服務主體來建立 node.js 應用程式並將其部署至 Azure 的範例工作流程。
+下面是使用 Azure 服務主體生成 Node.js 應用並將其部署到 Azure 的示例工作流。
 
 ```yaml
 on: [push]
@@ -270,20 +270,20 @@ jobs:
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 GitHub 上找到分組到不同存放庫的一組動作，其中每一個都包含檔和範例，以協助您使用 GitHub 來進行 CI/CD，並將您的應用程式部署至 Azure。
+您可以在 GitHub 上找到我們分組到不同存儲庫的操作集，每個存儲庫都包含文檔和示例，以説明您使用 GitHub 進行 CI/CD 並將應用部署到 Azure。
 
-- [要部署至 Azure 的動作工作流程](https://github.com/Azure/actions-workflow-samples)
+- [要部署到 Azure 的操作工作流](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure 登入](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 
-- [適用于容器的 Azure WebApp](https://github.com/Azure/webapps-container-deploy)
+- [用於容器的 Azure WebApp](https://github.com/Azure/webapps-container-deploy)
 
-- [Docker 登入/登出](https://github.com/Azure/docker-login)
+- [Docker 登錄/登出](https://github.com/Azure/docker-login)
 
-- [觸發工作流程的事件](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [觸發工作流的事件](https://help.github.com/en/articles/events-that-trigger-workflows)
 
 - [K8s 部署](https://github.com/Azure/k8s-deploy)
 
-- [入門工作流程](https://github.com/actions/starter-workflows)
+- [初學者工作流](https://github.com/actions/starter-workflows)

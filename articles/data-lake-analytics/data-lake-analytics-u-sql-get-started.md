@@ -1,6 +1,6 @@
 ---
 title: 開始在 Azure Data Lake Analytics 中使用 U-SQL 語言
-description: 了解 Azure Data Lake Analytics 中 U-SQL 語言的基本概念。 使用變數，將您的第一個查詢寫入檔案、轉換資料列集和匯總資料。
+description: 了解 Azure Data Lake Analytics 中 U-SQL 語言的基本概念。 使用變數將第一個查詢寫入檔的額外資料、轉換行集和聚合資料。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672826"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>開始在 Azure Data Lake Analytics 中使用 U-SQL
@@ -23,9 +23,9 @@ U-SQL 是一種語言，結合了宣告式 SQL 與命令式 C#，可讓您處理
 
 * [U-SQL 教學課程](https://aka.ms/usqltutorial)提供大多數 U-SQL 語言的引導式逐步解說。 本文件的建議閱讀對象是所有想要學習 U-SQL 的開發人員。
 * 如需 **U-SQL 語言語法**的詳細資訊，請參閱 [U-SQL 語言參考 (英文)](https://docs.microsoft.com/u-sql/)。
-* 若要了解 U-SQL 的設計原理，請參閱 Visual Studio 部落格文章[簡介 U-SQL – 讓巨量資料的處理變簡單的語言 (英文)](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
+* 若要了解 U-SQL 的設計原理****，請參閱 Visual Studio 部落格文章[簡介 U-SQL – 讓巨量資料的處理變簡單的語言 (英文)](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在進行本文中的 U-SQL 範例前，請閱讀並完成[教學課程：使用適用於 Visual Studio 的 Data Lake 工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)。 本教學課程說明將 U-SQL 搭配 Azure Data Lake Tools for Visual Studio 使用的機制。
 
@@ -56,8 +56,8 @@ OUTPUT @searchlog
 
 ### <a name="key-concepts"></a>重要概念
 * **資料列集變數**：每個會產生資料列集的查詢運算式都可以指派給變數。 在指令碼中，U-SQL 會遵循 T-SQL 變數命名模式 (例如 `@searchlog`)。
-* EXTRACT 關鍵字會從檔案讀取資料，並在讀取時定義結構描述。 `Extractors.Tsv` 是內建的 U-SQL 擷取器，適用於以定位點分隔值的檔案。 您可以開發自訂擷取器。
-* OUTPUT 會將資料列集的資料寫入檔案。 `Outputters.Csv()` 是內建的 U-SQL 輸出器，用於建立以逗號分隔值的檔案。 您可以開發自訂輸出器。
+* EXTRACT**** 關鍵字會從檔案讀取資料，並在讀取時定義結構描述。 `Extractors.Tsv` 是內建的 U-SQL 擷取器，適用於以定位點分隔值的檔案。 您可以開發自訂擷取器。
+* OUTPUT**** 會將資料列集的資料寫入檔案。 `Outputters.Csv()` 是內建的 U-SQL 輸出器，用於建立以逗號分隔值的檔案。 您可以開發自訂輸出器。
 
 ### <a name="file-paths"></a>檔案路徑
 
@@ -225,5 +225,5 @@ U-SQL 的 HAVING 子句可以用來將輸出限制為符合 HAVING 條件的群�
 如需進階的彙總案例，請參閱 U-SQL 的[彙總、分析及參考函式](/u-sql/built-in-functions)參考文件
 
 ## <a name="next-steps"></a>後續步驟
-* [Microsoft Azure 資料湖分析概觀](data-lake-analytics-overview.md)
+* [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Data Lake Tools for Visual Studio 來開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)

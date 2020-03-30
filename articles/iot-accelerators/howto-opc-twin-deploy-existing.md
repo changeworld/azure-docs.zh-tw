@@ -1,6 +1,6 @@
 ---
-title: 如何將 OPC 對應項模組部署至現有的 Azure 專案 |Microsoft Docs
-description: 本文說明如何將 OPC 對應項部署至現有的專案。 您也可以瞭解如何針對部署失敗進行疑難排解。
+title: 如何將 OPC 孿生模組部署到現有 Azure 專案 |微軟文檔
+description: 本文介紹如何將 OPC 孿生部署到現有專案。 您還可以瞭解如何排除部署故障。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -9,129 +9,129 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824126"
 ---
-# <a name="deploy-opc-twin-to-an-existing-project"></a>將 OPC 對應項部署至現有的專案
+# <a name="deploy-opc-twin-to-an-existing-project"></a>將 OPC 孿生部署到現有專案
 
-OPC 對應項模組會在 IoT Edge 上執行，並為 OPC 對應項和登錄服務提供數個 Edge 服務。
+OPC 雙子模組在 IoT 邊緣上運行，並為 OPC 孿生和註冊表服務提供多項邊緣服務。
 
-OPC 對應項微服務可透過 OPC 對應項 IoT Edge 模組，協助工廠中的處理站運算子與 OPC UA 伺服器裝置之間的通訊。 微服務會透過其 REST API 公開 OPC UA 服務（流覽、讀取、寫入及執行）。 
+OPC Twin 微服務通過 OPC 雙 IoT 邊緣模組，方便工廠操作員與工廠車間 OPC UA 伺服器設備之間的通信。 微服務通過其 REST API 公開 OPC UA 服務（流覽、讀取、寫入和執行）。 
 
-OPC UA 裝置登錄微服務可讓您存取已註冊的 OPC UA 應用程式及其端點。 操作員和系統管理員可以註冊及取消註冊新的 OPC UA 應用程式，並流覽現有的 OPC UA 應用程式，包括其端點。 除了應用程式和端點管理之外，登錄服務也會將已註冊的 OPC 對應項 IoT Edge 模組目錄。 服務 API 可讓您控制邊緣模組的功能，例如啟動或停止伺服器探索（掃描服務），或啟用可使用 OPC 對應項微服務存取的新端點 twins。
+OPC UA 設備註冊表微服務提供對已註冊的 OPC UA 應用程式及其終結點的訪問。 操作員和管理員可以註冊和取消註冊新的 OPC UA 應用程式，並流覽現有應用程式，包括其終結點。 除了應用程式和端點管理外，註冊表服務還編目註冊的 OPC 雙 IoT 邊緣模組。 服務 API 允許您控制邊緣模組功能，例如啟動或停止伺服器發現（掃描服務），或啟動可以使用 OPC Twin 微服務訪問的新終結點孿生。
 
-模組的核心是監督員身分識別。 監督員會管理端點對應項，其對應至使用對應的 OPC UA 登錄 API 來啟用的 OPC UA 伺服器端點。 此端點 twins 會將從雲端中執行的 OPC 對應項微服務接收的 OPC UA JSON，轉譯成 OPC UA 二進位訊息，而這會透過可設定狀態的安全通道傳送至受控端點。 監督員也提供探索服務，將裝置探索事件傳送至 OPC UA 裝置上線服務以進行處理，其中這些事件會導致 OPC UA 登錄的更新。  本文說明如何將 OPC 對應項模組部署至現有的專案。
+模組的核心是主管標識。 主管管理端點孿生，對應于使用相應的 OPC UA 註冊表 API 啟動的 OPC UA 伺服器終結點。 此終結點孿生將從雲中運行的 OPC Twin 微服務接收的 OPC UA JSON 轉換為 OPC UA 二進位消息，這些消息通過有狀態的安全通道發送到託管終結點。 主管還提供發現服務，將設備發現事件發送到 OPC UA 設備載入服務進行處理，其中這些事件會導致對 OPC UA 註冊表的更新。  本文介紹如何將 OPC 孿生模組部署到現有專案。
 
 > [!NOTE]
-> 如需部署詳細資料和指示的詳細資訊，請參閱 GitHub 存放[庫](https://github.com/Azure/azure-iiot-opc-twin-module)。
+> 有關部署詳細資訊和說明的詳細資訊，請參閱 GitHub[存儲庫](https://github.com/Azure/azure-iiot-opc-twin-module)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-請確定您已安裝 PowerShell 和[AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)擴充功能。 如果您尚未這麼做，請複製此 GitHub 存放庫。 在 PowerShell 中執行下列命令：
+確保安裝了 PowerShell 和[AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)擴展。 如果尚未這樣做，則克隆此 GitHub 存儲庫。 在 PowerShell 中執行下列命令：
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
-## <a name="deploy-industrial-iot-services-to-azure"></a>將工業 IoT 服務部署至 Azure
+## <a name="deploy-industrial-iot-services-to-azure"></a>將工業 IoT 服務部署到 Azure
 
-1. 在您的 PowerShell 會話中，執行：
+1. 在 PowerShell 會話中，運行：
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy.cmd
     ```
 
-2. 遵循提示，將名稱指派給部署的資源群組和網站的名稱。   腳本會將微服務和其 Azure 平臺相依性部署到 Azure 訂用帳戶中的資源群組。  此腳本也會在您的 Azure Active Directory （AAD）租使用者中註冊應用程式，以支援 OAUTH 型驗證。  部署需要幾分鐘的時間。  成功部署解決方案後，您會看到的範例：
+2. 按照提示為部署的資源組和網站的名稱分配名稱。   該腳本將微服務及其 Azure 平臺依賴項部署到 Azure 訂閱中的資源組中。  該腳本還在 Azure 活動目錄 （AAD） 租戶中註冊應用程式，以支援基於 AuTH 的身份驗證。  部署需要幾分鐘時間。  成功部署解決方案後將看到的內容的示例：
 
-   ![產業 IoT OPC 對應項部署至現有的專案](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
+   ![工業物聯網 OPC 孿生部署到現有專案](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
 
-   輸出會包含公用端點的 URL。 
+   輸出包括公共終結點的 URL。 
 
-3. 腳本順利完成後，請選取您是否要儲存 `.env` 檔案。  如果您想要使用主控台之類的工具連接到雲端端點，或部署模組以進行開發和偵測，則需要 `.env` 環境檔案。
+3. 腳本成功完成後，選擇是否要保存`.env`該檔。  如果要使用主控台`.env`等工具連接到雲終結點，或部署用於開發和調試的模組，則需要環境檔。
 
-## <a name="troubleshooting-deployment-failures"></a>針對部署失敗進行疑難排解
+## <a name="troubleshooting-deployment-failures"></a>排除部署故障
 
 ### <a name="resource-group-name"></a>資源群組名稱
 
-請確定您使用簡短且簡單的資源組名。  此名稱也會用來命名資源，因此它必須符合資源命名需求。  
+確保使用簡短和簡單的資源組名稱。  該名稱還用於命名資源，因為它必須符合資源命名要求。  
 
 ### <a name="website-name-already-in-use"></a>網站名稱已在使用中
 
-網站的名稱可能已在使用中。  如果您遇到此錯誤，您需要使用不同的應用程式名稱。
+網站的名稱可能已在使用中。  如果遇到此錯誤，則需要使用不同的應用程式名稱。
 
-### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory （AAD）註冊
+### <a name="azure-active-directory-aad-registration"></a>Azure 活動目錄 （AAD） 註冊
 
-部署腳本會嘗試在 Azure Active Directory 中註冊兩個 AAD 應用程式。  視您對所選 AAD 租使用者的許可權而定，部署可能會失敗。 有兩個選項：
+部署腳本嘗試在 Azure 活動目錄中註冊兩個 AAD 應用程式。  根據您對所選 AAD 租戶的許可權，部署可能會失敗。 有兩個選項：
 
-1. 如果您從租使用者清單中選擇了 AAD 租使用者，請重新開機腳本，並從清單中選擇另一個。
-2. 或者，在另一個訂用帳戶中部署私人 AAD 租使用者、重新開機腳本，然後選擇使用它。
+1. 如果從租戶清單中選擇了 AAD 租戶，請重新開機腳本並從清單中選擇其他腳本。
+2. 或者，在另一個訂閱中部署專用 AAD 租戶，重新開機腳本，然後選擇使用它。
 
 > [!WARNING]
-> 永遠不要繼續，而不進行驗證。  如果您選擇這樣做，任何人都可以從未經驗證的網際網路存取您的 OPC 對應項端點。   您一律可以選擇 [[本機] 部署選項](howto-opc-twin-deploy-dependencies.md)來啟動輪。
+> 在沒有身份驗證的情況下，切勿繼續。  如果您選擇這樣做，任何人都可以訪問您的 OPC 雙子終結點從互聯網未經身份驗證。   您可以隨時選擇["本地"部署選項](howto-opc-twin-deploy-dependencies.md)來踢輪胎。
 
-## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>部署全功能產業 IoT 服務示範
+## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>部署一體式工業物聯網服務演示
 
-而不只是服務和相依性，您也可以部署一個全功能示範。  其中的全部示範包含三個 OPC UA 伺服器、OPC 對應項模組、所有微服務，以及範例 Web 應用程式。  其適用于示範用途。
+您可以部署一體式演示，而不僅僅是服務和依賴項。  全部在一個演示包含三個 OPC UA 伺服器、OPC 雙子模組、所有微服務以及一個示例 Web 應用程式。  它旨在用於演示目的。
 
-1. 請確定您有存放庫的複本（請參閱上文）。 在存放庫的根目錄中開啟 PowerShell 提示字元，然後執行：
+1. 請確保您具有存儲庫的克隆（請參閱上文）。 在存儲庫的根目錄中打開 PowerShell 提示符並運行：
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy -type demo
     ```
 
-2. 遵循提示，將新名稱指派給資源群組，並將名稱指派給網站。  成功部署之後，腳本會顯示 web 應用程式端點的 URL。
+2. 按照提示為資源組分配新名稱，為網站指定名稱。  成功部署後，腳本將顯示 Web 應用程式終結點的 URL。
 
 ## <a name="deployment-script-options"></a>部署腳本選項
 
-腳本會採用下列參數：
+該腳本採用以下參數：
 
 ```powershell
 -type
 ```
 
-部署類型（vm、本機、示範）
+部署類型（vm、本地、演示）
 
 ```powershell
 -resourceGroupName
 ```
 
-可以是現有或新資源群組的名稱。
+可以是現有資源組或新資源組的名稱。
 
 ```powershell
 -subscriptionId
 ```
 
-選擇性，這是將部署資源的訂用帳戶識別碼。
+可選，將部署資源的訂閱 ID。
 
 ```powershell
 -subscriptionName
 ```
 
-或訂用帳戶名稱。
+或訂閱名稱。
 
 ```powershell
 -resourceGroupLocation
 ```
 
-選擇性，資源群組位置。 如果指定，將會嘗試在這個位置建立新的資源群組。
+可選，資源組位置。 如果指定，將嘗試在此位置創建新的資源組。
 
 ```powershell
 -aadApplicationName
 ```
 
-要在其中註冊的 AAD 應用程式名稱。
+AAD 應用程式要在下註冊的名稱。
 
 ```powershell
 -tenantId
 ```
 
-要使用的 AAD 租使用者。
+要使用的 AAD 租戶。
 
 ```powershell
 -credentials
@@ -139,7 +139,7 @@ cd azure-iiot-components
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何將 OPC 對應項部署至現有的專案，以下是建議的後續步驟：
+現在，您已經瞭解如何將 OPC Twin 部署到現有專案，下面是建議的下一步：
 
 > [!div class="nextstepaction"]
-> [OPC UA 用戶端和 OPC UA PLC 的安全通訊](howto-opc-vault-secure.md)
+> [OPC UA 用戶端和 OPC UA PLC 的安全通信](howto-opc-vault-secure.md)

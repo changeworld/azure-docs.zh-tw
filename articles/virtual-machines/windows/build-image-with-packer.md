@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 中使用 Packer 建立 Windows VM 映射
+title: 如何在 Azure 中使用打包器創建 Windows VM 映射
 description: 了解如何在 Azure 中使用 Packer 建立 Windows 虛擬機器的映像
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
 ms.openlocfilehash: b2ff9869b0de7a0285644bea462101cd1dc80b99
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039226"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何在 Azure 中使用 Packer 來建立 Windows 虛擬機器映像
 Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則會定義 Windows 散發套件和作業系統版本。 映像中可包含預先安裝的應用程式與組態。 Azure Marketplace 提供了許多第一方和第三方映像，這些映像適用於最常見的作業系統和應用程式環境，而您也可以建立自己自訂的映像，以符合您的需求。 本文詳述如何使用開放原始碼工具 [Packer](https://www.packer.io/) \(英文\)，在 Azure 中定義和建置自訂映像。
 
-這篇文章上次是使用[Az PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps) version 1.3.0 和[Packer](https://www.packer.io/docs/install/index.html) version 1.3.4 在2/21/2019 上進行測試。
+本文最後一次測試是在 2019 年 2 月 21 日使用[Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 1.3.0 和[Packer](https://www.packer.io/docs/install/index.html)版本 1.3.4。
 
 > [!NOTE]
-> Azure 現在有一個服務，也就是 Azure 映射產生器（預覽），用來定義和建立您自己的自訂映射。 Azure 映射產生器是以 Packer 為基礎，因此您甚至可以搭配使用現有的 Packer shell 布建程式腳本。 若要開始使用 Azure 影像產生器，請參閱[使用 Azure 映射產生器建立 WINDOWS VM](image-builder.md)。
+> Azure 現在有一個服務，Azure 映射產生器（預覽），用於定義和創建您自己的自訂映射。 Azure 映射產生器是在打包器上構建的，因此您甚至可以將其現有打包器 shell 預配器腳本一起使用。 要開始使用 Azure 映射產生器，請參閱[使用 Azure 映射產生器創建 Windows VM。](image-builder.md)
 
 ## <a name="create-azure-resource-group"></a>建立 Azure 資源群組
 建置程序進行期間，Packer 會在建置來源 VM 時建立暫存的 Azure 資源。 若要擷取該來源 VM 以作為映像，您必須定義資源群組。 Packer 建置程序所產生的輸出會儲存在此資源群組中。
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>建立 Azure 認證
 Packer 會使用服務主體來向 Azure 驗證。 Azure 服務主體是安全性識別，可供您與應用程式、服務及諸如 Packer 等自動化工具搭配使用。 您可以控制和定義對於服務主體可以在 Azure 中執行哪些作業的權限。
 
-使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 建立服務主體，並為服務主體指派權限以便使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 來建立和管理資源。 `-DisplayName` 的值必須是唯一的;視需要將取代為您自己的值。  
+使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 建立服務主體，並為服務主體指派權限以便使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 來建立和管理資源。 的值需要是唯`-DisplayName`一的;根據需要用您自己的值替換。  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -52,7 +52,7 @@ $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-然後輸出密碼和應用程式識別碼。
+然後輸出密碼和應用程式 ID。
 
 ```powershell
 $plainPassword
@@ -70,16 +70,16 @@ Get-AzSubscription
 ## <a name="define-packer-template"></a>定義 Packer 範本
 若要建置映像，您可以將範本建立為 JSON 檔案。 在此範本中，您必須定義產生器和佈建程式，由它們執行實際的建置程序。 Packer 具有[適用於 Azure 的產生器](https://www.packer.io/docs/builders/azure.html)，以供您定義 Azure 資源，例如上述步驟所建立的服務主體認證。
 
-建立名為 windows.json 的檔案，並貼入下列內容。 針對下列參數輸入您自己的值︰
+建立名為 windows.json** 的檔案，並貼入下列內容。 針對下列參數輸入您自己的值︰
 
 | 參數                           | 取得位置 |
 |-------------------------------------|----------------------------------------------------|
-| client_id                         | 檢視具有 `$sp.applicationId` 的服務主體識別碼 |
-| client_secret                     | 使用 `$plainPassword` 來查看自動產生的密碼 |
-| tenant_id                         | `$sub.TenantId` 命令所產生的輸出 |
-| subscription_id                   | `$sub.SubscriptionId` 命令所產生的輸出 |
-| managed_image_resource_group_name | 您在第一個步驟中建立的資源群組名稱 |
-| managed_image_name                | 所建立之受控磁碟映像的名稱 |
+| *client_id*                         | 檢視具有 `$sp.applicationId` 的服務主體識別碼 |
+| *client_secret*                     | 使用`$plainPassword` |
+| *tenant_id*                         | `$sub.TenantId` 命令所產生的輸出 |
+| *subscription_id*                   | `$sub.SubscriptionId` 命令所產生的輸出 |
+| managed_image_resource_group_name** | 您在第一個步驟中建立的資源群組名稱 |
+| managed_image_name**                | 所建立之受控磁碟映像的名稱 |
 
 ```json
 {
@@ -130,7 +130,7 @@ Get-AzSubscription
 ## <a name="build-packer-image"></a>建置 Packer 映像
 如果您尚未在本機電腦上安裝 Packer，請[遵循 Packer 安裝指示](https://www.packer.io/docs/install/index.html)。
 
-開啟 cmd 命令提示字元並指定您的 Packer 範本檔案，以建立映射，如下所示：
+通過打開 cmd 提示符並指定 Packer 範本檔來生成映射，如下所示：
 
 ```
 ./packer build windows.json
@@ -214,7 +214,7 @@ Packer 需要幾分鐘的時間來建置 VM、執行佈建程式並清除部署�
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>從 Packer 映像建立 VM
-您現在可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 從您的映像建立 VM。 如果支援網路資源尚未存在，則會加以建立。 出現提示時，輸入要在 VM 上建立的系統管理使用者名稱和密碼。 下列範例會從 *myPackerImage* 建立名為 *myVM* 的 VM：
+您現在可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 從您的映像建立 VM。 如果支援網路資源尚未存在，則會加以建立。 出現提示時，輸入要在 VM 上建立的系統管理使用者名稱和密碼。 下面的示例從*myPackerImage*創建名為*myVM*的 VM：
 
 ```powershell
 New-AzVm `
@@ -235,7 +235,7 @@ New-AzVm `
 
 
 ## <a name="test-vm-and-webserver"></a>測試 VM 和網頁伺服器
-使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 取得 VM 的公用 IP 位址。 下列範例會取得稍早建立的 myPublicIP IP 位址︰
+使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 取得 VM 的公用 IP 位址。 下列範例會取得稍早建立的 myPublicIP** IP 位址︰
 
 ```powershell
 Get-AzPublicIPAddress `
@@ -249,4 +249,4 @@ Get-AzPublicIPAddress `
 
 
 ## <a name="next-steps"></a>後續步驟
-您也可以使用現有的 Packer 布建程式腳本搭配[Azure 映射](image-builder.md)產生器。
+您還可以使用 Azure[映射產生器](image-builder.md)使用現有的打包器預配器腳本。

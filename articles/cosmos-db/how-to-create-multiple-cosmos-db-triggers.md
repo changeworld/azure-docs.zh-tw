@@ -1,5 +1,5 @@
 ---
-title: 為 Cosmos DB 建立多個獨立的 Azure Functions 觸發程式
+title: 為 Cosmos DB 創建多個獨立的 Azure 函數觸發器
 description: 了解如何設定多個獨立的「Azure Functions 的 Cosmos DB 觸發程序」，以建立事件驅動的架構。
 author: ealsur
 ms.service: cosmos-db
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604952"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
@@ -27,18 +27,18 @@ ms.locfileid: "77604952"
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>最佳化多個觸發程序的容器
 
-考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」。 這表示每個 Azure 函式都需要個別的租用容器嗎？
+考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求**，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」**。 這表示每個 Azure 函式都需要個別的租用容器嗎？
 
 在此，您有兩個選項：
 
-* **針對每個函式建立一個租用容器**：除非您使用的是[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)，否則此方法會轉譯為額外成本。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
-* 有**一個租用容器，並將它共用**于您所有的函式：第二個選項可讓您更有效地使用容器上已布建的要求單位，因為它可讓多個 Azure Functions 共用並使用相同的布建輸送量。
+* **根據函數創建一個租約容器**：此方法可以轉換為額外的成本，除非您使用的是[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
+* 擁有**一個租約容器並共用它**用於所有函數：第二個選項更好地利用容器上的預配請求單位，因為它允許多個 Azure 函數共用和使用相同的預配輸送量。
 
 本文的目標是引導您完成第二個選項。
 
 ## <a name="configuring-a-shared-leases-container"></a>設定共用租用容器
 
-若要設定共用租用容器，只有在使用 JavaScript 時，如果您使用C#或 `leaseCollectionPrefix`[屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)，則必須在觸發程式中加入 `LeaseCollectionPrefix`[屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations)。 屬性值應該是該特定觸發程序的邏輯描述項。
+若要設定共用的租用容器，您必須對觸發程序進行的唯一額外設定就是新增 `LeaseCollectionPrefix` [屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) (若使用 C#) 或 `leaseCollectionPrefix` [屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) (若使用 JavaScript)。 屬性值應該是該特定觸發程序的邏輯描述項。
 
 例如，如果您有三個觸發程序：一個會傳送電子郵件、一個會進行彙總以建立具體化檢視，還有一個會將變更傳送至另一個儲存體以供稍後分析，您可以將 `LeaseCollectionPrefix` 為 "emails" 指派給第一個、將其值為 "materialized" 指派給第二個，以及將其值為 "analytics" 指派給第三個。
 
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-而在 JavaScript 中，您可以使用 `function.json` 屬性在 `leaseCollectionPrefix` 檔案上套用組態：
+而在 JavaScript 中，您可以使用 `leaseCollectionPrefix` 屬性在 `function.json` 檔案上套用組態：
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 設定 Citrix XenDesktop/XenApp 嚴重損壞修復
+title: 使用 Azure 網站恢復設置 Citrix XenDesktop/XenApp 災害復原
 description: 本文說明如何使用 Azure Site Recovery 來設定 Citrix XenDesktop 和 XenApp 部署的災害復原。
 author: ponatara
 manager: abhemraj
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084545"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>設定多層式 Citrix XenApp 和 XenDesktop 部署的災害復原
@@ -26,7 +26,7 @@ Citrix XenDesktop 是桌面虛擬化解決方案，能夠為任何地方的任�
 對於為 Hyper-V 和 VMware vSphere 平台上的內部部署 Citrix XenApp 部署建置災害復原方案，本文提供逐步指引。 本文同時也會說明如何使用復原計劃、支援的組態和必要條件，執行測試容錯移轉 (災害復原訓練) 和未計劃的 Azure 容錯移轉。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您瞭解下列項目︰
 
@@ -56,9 +56,9 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
-**Hyper-V** | 不在範圍中 | yes
-**VMware** | 不在範圍中 | yes
-**實體伺服器** | 不在範圍中 | yes
+**Hyper-V** | 不在範圍中 | 是
+**Vmware** | 不在範圍中 | 是
+**物理伺服器** | 不在範圍中 | 是
 
 ### <a name="versions"></a>版本
 客戶可以部署 XenApp 元件成為 Hyper-V 或 VMware 上執行的虛擬機器，或成為實體伺服器。 Azure Site Recovery 可以保護 Azure 的實體與虛擬部署。
@@ -121,7 +121,7 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 *   如果虛擬機器具有多個網路介面卡，則清單中顯示的第一個介面卡會變成 Azure 虛擬機器中的「預設」網路介面卡。
 
 
-## <a name="creating-a-recovery-plan"></a>建立復原方案
+## <a name="creating-a-recovery-plan"></a>建立復原計劃
 
 啟用 XenApp 元件 VM 的複寫之後，下一個步驟是建立復原計畫。
 復原計畫群組會將有類似需求的虛擬機器分組，以便進行容錯移轉和復原。  
@@ -156,7 +156,7 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
    >[!NOTE]     
    >包含手動或指令碼動作的步驟 4、6 和 7 僅適用於有 MCS/PV 目錄的內部部署 XenApp 環境。
 
-4. 群組3手動或腳本動作：關閉主要 VDA VM。
+4. 組 3 手動或腳本操作：關閉主 VDA VM。
 主要 VDA VM 在容錯移轉至 Azure 時將處於執行中狀態。 若要使用 Azure 裝載建立新的 MCS 目錄，主要 VDA VM 需要處於已停止 (已解除配置) 狀態。 從 Azure 入口網站關閉 VM。
 
 5. 容錯移轉群組 4：傳遞控制站和 StoreFront 伺服器 VM

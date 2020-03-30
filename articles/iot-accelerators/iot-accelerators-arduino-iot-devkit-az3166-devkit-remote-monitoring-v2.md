@@ -1,5 +1,5 @@
 ---
-title: 將 IoT DevKit 連線到遠端監視解決方案-Azure |Microsoft Docs
+title: 將 IoT 開發工具組連接到遠端監視解決方案 - Azure |微軟文檔
 description: 在本操作指南中，您會了解如何將來自 IoT DevKit AZ3166 裝置上感應器的遙測資料傳送至遠端監視解決方案加速器，以進行監視和呈現視覺效果。
 author: isabelcabezasm
 manager: ''
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888872"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>將 IoT DevKit 裝置連線到遠端監視解決方案加速器
@@ -36,9 +36,9 @@ ms.locfileid: "73888872"
 
 1. 確定 IoT DevKit 未連線至您的電腦。 先啟動 VS Code，然後將 DevKit 連線至您的電腦。
 
-1. 按一下 [`F1`] 以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺：開啟範例**...]。然後選取 [ **IoT DevKit** ] 作為 [面板]。
+1. 按一下`F1`以打開命令調色板，鍵入並選擇**Azure IoT 設備工作臺：打開示例..."** 然後選擇**IoT 開發人員工具組**作為板。
 
-1. 找出 [遠端監視]，並按一下 [開啟範例]。 新的 VS Code 視窗隨即開啟，其中顯示專案資料夾：
+1. 找出 [遠端監視]****，並按一下 [開啟範例]****。 新的 VS Code 視窗隨即開啟，其中顯示專案資料夾：
 
    ![IoT Workbench，選取遠端監視範例](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
@@ -46,16 +46,16 @@ ms.locfileid: "73888872"
 
 若要在您的 DevKit 裝置上設定 IoT 中樞裝置連接字串：
 
-1. 將 IoT DevKit 切換為**設定模式**：
+1. 將 IoT 開發人員工具組切換到**配置模式**：
 
     * 按住 **A** 按鈕。
-    * 按下再放開 [重設] 按鈕。
+    * 按下再放開 [重設]**** 按鈕。
 
 1. 畫面會顯示 DevKit 識別碼和 `Configuration`。
 
     ![IoT DevKit 設定模式](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. 按**F1**以開啟命令選擇區，輸入並選取 [ **Azure IoT 裝置工作臺：設定裝置設定 ...]> Config 裝置連接字串**。
+1. 按**F1**打開命令調色板，鍵入並選擇**Azure IoT 設備工作臺：配置設備設置...>配置設備連接字串**。
 
 1. 貼上您先前複製的連接字串，然後按 **Enter** 鍵設定裝置。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73888872"
 
 若要建置並上傳裝置程式碼：
 
-1. 按 `F1` 開啟命令選擇區，輸入並選取 **[Azure IoT 裝置工作臺：上傳裝置程式碼**]：
+1. 按`F1`以打開命令調色板，鍵入並選擇**Azure IoT 設備工作臺：上載設備代碼**：
 
 1. VS Code 會編譯程式碼並上傳到您的 DevKit 裝置：
 
@@ -79,7 +79,7 @@ ms.locfileid: "73888872"
 
 當範例應用程式執行時，DevKit 裝置會透過 Wi-Fi 將來自其感應器的遙測資料傳送至您的解決方案加速器。 若要查看遙測資料：
 
-1. 移至您的解決方案儀表板，然後按一下 [ **Device Explorer**]。
+1. 轉到解決方案儀表板，然後按一下 **"設備資源管理器**"。
 
 1. 按一下 DevKit 裝置的裝置名稱。 在右邊索引標籤上，您可以即時看到來自 DevKit 的遙測資料：
 
@@ -87,17 +87,17 @@ ms.locfileid: "73888872"
 
 ### <a name="control-the-devkit-device"></a>控制 DevKit 裝置
 
-遠端監視解決方案加速器可讓您從遠端控制裝置。 當您在 [ **Device Explorer** ] 頁面上選取裝置時，範例程式碼會執行三個您可以在 [**方法**] 區段中看到的方法：
+遠端監視解決方案加速器可讓您從遠端控制裝置。 示例代碼實現了三種方法，當您在 **"設備資源管理器"** 頁上選擇設備時，可以在 **"方法**"部分看到這些方法：
 
 ![IoT DevKit 方法](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
 若要變更其中一個 DevKit LED 的色彩，請使用 **LedColor** 方法：
 
-1. 從裝置清單中選取裝置名稱，然後按一下 [作業]：
+1. 從裝置清單中選取裝置名稱，然後按一下 [作業]****：
 
     ![建立作業](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
 
-1. 使用下列值設定作業，然後按一下 [套用]：
+1. 使用下列值設定作業，然後按一下 [套用]****：
 
    * 選取作業：**執行方法**
    * 方法名稱：**LedColor**

@@ -1,7 +1,7 @@
 ---
-title: 設定呼叫 web Api 的行動應用程式 |Azure
+title: 配置調用 Web API 的移動應用 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建立呼叫 web Api 的行動應用程式（應用程式的程式碼設定）
+description: 瞭解如何構建調用 Web API 的移動應用（應用的代碼配置）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,31 +16,31 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: fc25f13d0b0b8a264dcd47a5fdebb0533e93fb55
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132494"
 ---
-# <a name="configure-a-mobile-app-that-calls-web-apis"></a>設定會呼叫 web Api 的行動應用程式
+# <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置調用 Web API 的移動應用
 
-建立應用程式之後，您將瞭解如何使用應用程式註冊參數來設定程式碼。 行動應用程式呈現與建立架構相關的一些複雜性。
+創建應用程式後，您將學習如何使用應用註冊參數配置代碼。 移動應用程式在安裝到其創建框架中提出了一些複雜性。
 
-## <a name="find-msal-support-for-mobile-apps"></a>尋找行動裝置應用程式的 MSAL 支援
+## <a name="find-msal-support-for-mobile-apps"></a>查找移動應用的 MSAL 支援
 
-下列 Microsoft 驗證程式庫（MSAL）類型支援行動應用程式。
+以下 Microsoft 身份驗證庫 （MSAL） 類型支援移動應用。
 
 MSAL | 描述
 ------------ | ----------
-![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 用來開發便攜應用程式。 MSAL.NET 支援下列平臺來建立行動應用程式：通用 Windows 平臺（UWP）、Xamarin. iOS 和 Xamarin. Android。
-![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | 用來開發原生 iOS 應用程式，方法是使用目標-C 或 Swift。
-![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | 用來在適用于 Android 的 JAVA 中開發原生 Android 應用程式。
+![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 用於開發可擕式應用程式。 MSAL.NET支援以下構建移動應用程式的平臺：通用 Windows 平臺 （UWP）、Xamarin.iOS 和 Xamarin.Android。
+![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | 用於使用目標 C 或 Swift 開發本機 iOS 應用程式。
+![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | 用於在 JAVA 中為 Android 開發本機 Android 應用程式。
 
-## <a name="instantiate-the-application"></a>將應用程式具現化
+## <a name="instantiate-the-application"></a>具現化應用程式
 
 ### <a name="android"></a>Android
 
-行動應用程式會使用 `PublicClientApplication` 類別。 以下說明如何將它具現化：
+移動應用程式使用 類`PublicClientApplication`。 下面瞭解如何具現化：
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -50,7 +50,7 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-IOS 上的行動應用程式需要具現化 `MSALPublicClientApplication` 類別。 若要具現化類別，請使用下列程式碼。 
+iOS 上的移動應用程式需要具現化`MSALPublicClientApplication`類。 要具現化類，請使用以下代碼。 
 
 ```objc
 NSError *msalError = nil;
@@ -64,28 +64,28 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-[其他 MSALPublicClientApplicationConfig 屬性](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options)可以覆寫預設授權單位、指定重新導向 URI，或變更 MSAL token 快取的行為。 
+[其他 MSALPublicClientClientConfig 屬性](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options)可以覆蓋預設許可權、指定重定向 URI 或更改 MSAL 權杖緩存的行為。 
 
 ### <a name="xamarin-or-uwp"></a>Xamarin 或 UWP
 
-本節說明如何具現化適用于 Xamarin. iOS、Xamarin 和 UWP 應用程式的應用程式。
+本節介紹如何具現化 Xamarin.iOS、Xamarin.Android 和 UWP 應用程式的應用程式。
 
-#### <a name="instantiate-the-application"></a>將應用程式具現化
+#### <a name="instantiate-the-application"></a>具現化應用程式
 
-在 Xamarin 或 UWP 中，將應用程式具現化的最簡單方式是使用下列程式碼。 在這段程式碼中，`ClientId` 是已註冊應用程式的 GUID。
+在 Xamarin 或 UWP 中，具現化應用程式的最簡單方法是使用以下代碼。 在此代碼中，`ClientId`是已註冊應用的 GUID。
 
 ```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-其他 `With<Parameter>` 方法會設定 UI 父系、覆寫預設授權、指定遙測的用戶端名稱和版本、指定重新導向 URI，並指定要使用的 HTTP factory。 例如，您可以使用 HTTP factory 來處理 proxy，以及指定遙測和記錄。 
+其他`With<Parameter>`方法設置 UI 父級，覆蓋預設許可權，為遙測指定用戶端名稱和版本，指定重定向 URI，並指定要使用的 HTTP 工廠。 例如，可以使用 HTTP 工廠來處理代理並指定遙測和日誌記錄。 
 
-下列各節提供有關具現化應用程式的詳細資訊。
+以下各節提供有關具現化應用程式的詳細資訊。
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>指定父 UI、視窗或活動
 
-在 Android 上，您必須先傳遞父活動，然後才進行互動式驗證。 在 iOS 上，當您使用訊息代理程式時，您需要傳入 `ViewController`。 在 UWP 上，您可能會想要傳入父視窗。 當您取得權杖時，您會將它傳遞給。 但當您建立應用程式時，您也可以指定回呼做為傳回 `UIParent`的委派。
+在 Android 上，您需要在進行互動式身份驗證之前傳遞父活動。 在 iOS 上，當您使用代理時，您需要轉接`ViewController`。 在 UWP 上，您可能想要傳遞父視窗。 獲取權杖時將其傳遞。 但是，在創建應用時，還可以指定回檔作為返回`UIParent`的委託。
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -93,7 +93,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-在 Android 上，建議您使用[`CurrentActivityPlugin`](https://github.com/jamesmontemagno/CurrentActivityPlugin)。 產生的 `PublicClientApplication` 產生器程式碼如下列範例所示：
+在 Android 上，我們建議您使用[`CurrentActivityPlugin`](https://github.com/jamesmontemagno/CurrentActivityPlugin)。 生成的`PublicClientApplication`產生器代碼如下所示：
 
 ```csharp
 // Requires MSAL.NET 4.2 or above
@@ -103,81 +103,81 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-##### <a name="find-more-app-building-parameters"></a>尋找更多應用程式建立參數
+##### <a name="find-more-app-building-parameters"></a>查找更多應用構建參數
 
-如需 `PublicClientApplicationBuilder`上可用的所有方法清單，請參閱[方法清單](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
+有關 上`PublicClientApplicationBuilder`所有可用的方法的清單，請參閱[方法清單](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
 
-如需 `PublicClientApplicationOptions`中公開之所有選項的說明，請參閱[參考檔](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)。
+有關 中`PublicClientApplicationOptions`公開的所有選項的說明，請參閱[參考文檔](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)。
 
-## <a name="tasks-for-xamarin-ios"></a>Xamarin iOS 的工作
+## <a name="tasks-for-xamarin-ios"></a>Xamarin iOS 的任務
 
-如果您在 Xamarin iOS 上使用 MSAL.NET，請執行下列工作。
+如果您在 Xamarin iOS 上使用MSAL.NET，則執行以下任務。
 
-* [覆寫並在 `AppDelegate` 中執行 `OpenUrl` 函式](msal-net-xamarin-ios-considerations.md#implement-openurl)
-* [啟用 keychain 群組](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
-* [啟用權杖快取共用](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
-* [啟用 keychain 存取](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+* [覆蓋和實現`OpenUrl`函數`AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
+* [啟用鑰匙串組](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+* [啟用權杖緩存共用](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
+* [啟用鑰匙串訪問](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 
-如需詳細資訊，請參閱[Xamarin iOS 考慮](msal-net-xamarin-ios-considerations.md)。
+有關詳細資訊，請參閱[Xamarin iOS 注意事項](msal-net-xamarin-ios-considerations.md)。
 
-## <a name="tasks-for-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL 工作
+## <a name="tasks-for-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL 任務
 
-當您使用適用于 iOS 和 macOS 的 MSAL 時，需要執行這些工作：
+當您將 MSAL 用於 iOS 和 macOS 時，這些任務是必需的：
 
-* [執行 `openURL` 回呼](#brokered-authentication-for-msal-for-ios-and-macos)
-* [啟用 keychain 存取群組](howto-v2-keychain-objc.md)
-* [自訂瀏覽器和網站](customize-webviews.md)
+* [實現`openURL`回檔](#brokered-authentication-for-msal-for-ios-and-macos)
+* [啟用鑰匙串訪問組](howto-v2-keychain-objc.md)
+* [自訂瀏覽器和 WebViews](customize-webviews.md)
 
-## <a name="tasks-for-xamarinandroid"></a>適用于 Xamarin 的工作
+## <a name="tasks-for-xamarinandroid"></a>Xamarin.安卓的任務
 
-如果您使用的是 Xamarin，請執行下列工作：
+如果您使用 Xamarin.Android，則執行以下任務：
 
-- [確保在驗證流程的互動部分結束之後，控制權回到 MSAL](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
-- [更新 Android 資訊清單](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
-- [使用內嵌的 web view （選擇性）](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
-- [視需要進行疑難排解](msal-net-xamarin-android-considerations.md#troubleshoot)
+- [確保在身份驗證流的交互部分結束後將控制返回 MSAL](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
+- [更新 Android 清單](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
+- [使用嵌入式 Web 視圖（可選）](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
+- [根據需要進行故障排除](msal-net-xamarin-android-considerations.md#troubleshoot)
 
-如需詳細資訊，請參閱 < [Xamarin. Android 考慮](msal-net-xamarin-android-considerations.md)。
+有關詳細資訊，請參閱[Xamarin.安卓注意事項](msal-net-xamarin-android-considerations.md)。
 
-如需 Android 上瀏覽器的相關考慮，請參閱[MSAL.NET 的特定 android 相關考慮](msal-net-system-browser-android-considerations.md)。
+有關 Android 上的瀏覽器的注意事項，請參閱[Xamarin.Android 特定于MSAL.NET的注意事項](msal-net-system-browser-android-considerations.md)。
 
-#### <a name="tasks-for-uwp"></a>UWP 的工作
+#### <a name="tasks-for-uwp"></a>UWP 的任務
 
-在 UWP 上，您可以使用公司網路。 下列各節說明您應該在公司案例中完成的工作。
+在 UWP 上，您可以使用商業網路。 以下各節介紹了應在公司方案中完成的任務。
 
-如需詳細資訊，請參閱[MSAL.NET 的 UWP 特定考慮](msal-net-uwp-considerations.md)。
+有關詳細資訊，請參閱有關[MSAL.NET 的特定于 UWP 的注意事項](msal-net-uwp-considerations.md)。
 
-## <a name="configure-the-application-to-use-the-broker"></a>設定應用程式以使用 broker
+## <a name="configure-the-application-to-use-the-broker"></a>將應用程式佈建為使用代理
 
-在 Android 和 iOS 上，訊息代理程式會啟用：
+在 Android 和 iOS 上，經紀商支援：
 
-- **單一登入（sso）** ：您可以針對使用 Azure Active Directory （Azure AD）註冊的裝置使用 SSO。 當您使用 SSO 時，您的使用者不需要登入每個應用程式。
-- **裝置識別**：此設定可啟用與 Azure AD 裝置相關的條件式存取原則。 驗證程式會使用裝置加入工作場所時所建立的裝置憑證。
-- **應用程式識別驗證**：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 然後，訊息代理程式會確認它。
+- **單一登入 （SSO）：** 對於在 Azure 活動目錄 （Azure AD） 中註冊的設備，可以使用 SSO。 使用 SSO 時，使用者無需登錄到每個應用程式。
+- **設備標識**：此設置啟用與 Azure AD 設備相關的條件訪問策略。 身份驗證過程使用設備加入工作區時創建的設備證書。
+- **應用程式標識驗證**：當應用程式調用代理時，它將傳遞其重定向 URL。 然後，經紀人驗證它。
 
-### <a name="enable-the-broker-on-xamarin"></a>在 Xamarin 上啟用訊息代理程式
+### <a name="enable-the-broker-on-xamarin"></a>啟用 Xamarin 上的代理
 
-若要在 Xamarin 上啟用訊息代理程式，請在呼叫 `PublicClientApplicationBuilder.CreateApplication` 方法時，使用 `WithBroker()` 參數。 根據預設，`.WithBroker()` 會設定為 true。 
+要啟用 Xamarin 上的代理，`WithBroker()`在調用`PublicClientApplicationBuilder.CreateApplication`方法時使用 參數。 預設情況下，`.WithBroker()`設置為 true。 
 
-若要啟用 Xamarin 的代理驗證，請遵循本文中的 < [xamarin 一節](#enable-brokered-authentication-for-xamarin-ios)中的步驟。
+要為 Xamarin.iOS 啟用代理身份驗證，請按照本文中的[Xamarin.iOS 部分](#enable-brokered-authentication-for-xamarin-ios)中的步驟操作。
 
-### <a name="enable-the-broker-for-msal-for-android"></a>啟用 MSAL for Android 的 broker
+### <a name="enable-the-broker-for-msal-for-android"></a>為 Android 啟用 MSAL 的代理
 
-如需有關在 Android 上啟用訊息代理程式的詳細資訊，請參閱[android 上](brokered-auth.md)的代理驗證。 
+有關在 Android 上啟用代理的資訊，請參閱[Android 上的代理身份驗證](brokered-auth.md)。 
 
-### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>啟用適用于 iOS 和 macOS 的 MSAL 訊息代理程式
+### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>為 iOS 和 macOS 啟用 MSAL 的代理
 
-針對 iOS 和 macOS 的 MSAL 中 Azure AD 案例，預設會啟用代理驗證。 
+預設情況下，對於適用于 iOS 和 macOS 的 MSAL 中的 Azure AD 方案啟用代理身份驗證。 
 
-下列各節提供的指示可讓您設定應用程式，以取得適用于 MSAL for ios 或 MSAL for iOS and macOS 的代理驗證支援。 在這兩組指示中，部分步驟會有所不同。
+以下各節提供了用於為 Xamarin.iOS 或 msAL 配置應用程式的指令，用於 Xamarin.iOS 的 MSAL 或針對 iOS 和 macOS 的 MSAL。 在兩組說明中，某些步驟不同。
 
-### <a name="enable-brokered-authentication-for-xamarin-ios"></a>啟用 Xamarin iOS 的代理驗證
+### <a name="enable-brokered-authentication-for-xamarin-ios"></a>為 Xamarin iOS 啟用代理身份驗證
 
-請依照本節中的步驟，讓您的 Xamarin iOS 應用程式與[Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458)應用程式進行交談。
+按照本節中的步驟，使 Xamarin.iOS 應用能夠與 Microsoft[身份驗證器](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458)應用對話。
 
-#### <a name="step-1-enable-broker-support"></a>步驟1：啟用訊息代理程式支援
+#### <a name="step-1-enable-broker-support"></a>第 1 步：啟用代理支援
 
-預設會停用 Broker 支援。 您可以針對個別的 `PublicClientApplication` 類別啟用它。 當您透過 `PublicClientApplicationBuilder`建立 `PublicClientApplication` 類別時，請使用 `WithBroker()` 參數。 根據預設，`WithBroker()` 參數會設定為 true。
+預設情況下禁用代理支援。 為單個`PublicClientApplication`類啟用它。 通過`WithBroker()`創建`PublicClientApplication`類時使用 參數`PublicClientApplicationBuilder`。 預設情況下`WithBroker()`，參數設置為 true。
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -187,9 +187,9 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 
-#### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>步驟2：更新 AppDelegate 以處理回呼
+#### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>第 2 步：更新應用委託以處理回檔
 
-當 MSAL.NET 呼叫訊息代理程式時，broker 接著會回呼您的應用程式。 它會使用 `AppDelegate.OpenUrl` 方法來回呼。 因為 MSAL 會等待訊息代理程式的回應，所以您的應用程式需要合作以呼叫 MSAL.NET 回來。 您可以藉由更新 `AppDelegate.cs` 檔案來設定此行為，以覆寫方法，如下列程式碼所示。
+當MSAL.NET調用代理時，代理然後調用回您的應用程式。 它使用`AppDelegate.OpenUrl`方法回電。 由於 MSAL 等待來自代理的回應，因此您的應用程式需要合作來回撥MSAL.NET。 通過更新`AppDelegate.cs`檔以重寫方法來設置此行為，如下代碼所示。
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -209,19 +209,19 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 }
 ```
 
-每次啟動應用程式時，就會叫用這個方法。 這是處理來自訊息代理程式之回應的機會，並完成 MSAL.NET 啟動的驗證程式。
+每次啟動應用程式時都會調用此方法。 這是一個處理來自代理的回應並完成MSAL.NET啟動的身份驗證過程的機會。
 
-#### <a name="step-3-set-a-uiviewcontroller"></a>步驟3：設定 UIViewController （）
+#### <a name="step-3-set-a-uiviewcontroller"></a>第 3 步：設置 UIView 控制器（）
 
-若是 Xamarin iOS，您通常不需要設定物件視窗。 但是在這種情況下，您應該設定它，讓您可以傳送和接收來自訊息代理程式的回應。 若要設定物件視窗，請在 `AppDelegate.cs`中設定 `ViewController`。
+對於 Xamarin iOS，您通常不需要設置物件視窗。 但是在這種情況下，您應該設置它，以便您可以發送和接收來自代理的回應。 要在 中`AppDelegate.cs`設置物件視窗，在 中`ViewController`設置 。
 
-若要設定 [物件] 視窗，請遵循下列步驟：
+要設置物件視窗，請按照以下步驟操作：
 
-1. 在 `AppDelegate.cs`中，將 `App.RootViewController` 設定為新的 `UIViewController()`。 此設定可確保代理程式的呼叫包含 `UIViewController`。 如果設定不正確，您可能會收到此錯誤：
+1. 在`AppDelegate.cs`中，`App.RootViewController`將 設置為`UIViewController()`新的 。 此設置可確保對代理的調用包括`UIViewController`。 如果未正確設置，您可能會收到此錯誤：
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)`。 傳入您將使用之物件視窗的參考。 以下是範例：
+1. 在通話`AcquireTokenInteractive`中，使用`.WithParentActivityOrWindow(App.RootViewController)`。 將引用傳遞給要使用的物件視窗。 以下是範例：
 
     在 `App.cs` 中：
     ```csharp
@@ -232,28 +232,28 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
        LoadApplication(new App());
        App.RootViewController = new UIViewController();
     ```
-    在 `AcquireToken` 呼叫中：
+    在呼叫`AcquireToken`中：
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
                  .WithParentActivityOrWindow(App.RootViewController)
                  .ExecuteAsync();
     ```
     
-#### <a name="step-4-register-a-url-scheme"></a>步驟4：註冊 URL 配置
+#### <a name="step-4-register-a-url-scheme"></a>第 4 步：註冊 URL 方案
 
-MSAL.NET 會使用 Url 來叫用訊息代理程式，然後將 broker 回應傳回給您的應用程式。 若要完成來回行程，請在 `Info.plist` 檔案中註冊應用程式的 URL 配置。 
+MSAL.NET使用 URL 調用代理，然後將代理回應返回到你的應用。 要完成往返行程，請在`Info.plist`檔中註冊應用的 URL 方案。 
 
-若要註冊您應用程式的 URL 配置，請遵循下列步驟：
+要註冊應用的 URL 方案，請按照以下步驟操作：
 
-1. `msauth`的前置詞 `CFBundleURLSchemes`。 
-1. 將 `CFBundleURLName` 新增至結尾。 遵循此模式： 
+1. 前`CFBundleURLSchemes`綴`msauth`為 。 
+1. 添加到`CFBundleURLName`末尾。 遵循以下模式： 
 
    `$"msauth.(BundleId)"`
 
-   在這裡，`BundleId` 會唯一識別您的裝置。 例如，如果 `yourcompany.xforms``BundleId`，則會 `msauth.com.yourcompany.xforms`您的 URL 配置。
+   在這裡，`BundleId`唯一標識您的設備。 例如，如果`BundleId`為`yourcompany.xforms`，則 URL`msauth.com.yourcompany.xforms`方案為 。
     
    > [!NOTE]
-   > 此 URL 配置會成為重新導向 URI 的一部分，它會在收到訊息代理程式的回應時，唯一識別您的應用程式。
+   > 此 URL 方案將成為重定向 URI 的一部分，該 URI 在收到代理的回應時唯一標識應用。
     
    ```XML
     <key>CFBundleURLTypes</key>
@@ -271,11 +271,11 @@ MSAL.NET 會使用 Url 來叫用訊息代理程式，然後將 broker 回應傳�
        </array>
    ```
     
-#### <a name="step-5-add-to-the-lsapplicationqueriesschemes-section"></a>步驟5：新增至 LSApplicationQueriesSchemes 區段
+#### <a name="step-5-add-to-the-lsapplicationqueriesschemes-section"></a>第 5 步：添加到 LS 應用程式查詢計劃部分
 
-MSAL 會使用 `–canOpenURL:` 來檢查代理程式是否已安裝在裝置上。 在 iOS 9 中，Apple 已鎖定應用程式可以查詢的配置。
+MSAL`–canOpenURL:`用於檢查代理是否安裝在設備上。 在 iOS 9 中，Apple 鎖定了應用程式可以查詢的方案。
 
-將 `msauthv2` 新增至 `Info.plist` 檔案的 `LSApplicationQueriesSchemes` 區段中，如下列程式碼範例所示：
+添加到`msauthv2`檔的`LSApplicationQueriesSchemes`部分，`Info.plist`如以下代碼示例所示：
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -284,13 +284,13 @@ MSAL 會使用 `–canOpenURL:` 來檢查代理程式是否已安裝在裝置上
     </array>
 ```
 
-### <a name="brokered-authentication-for-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL 代理驗證
+### <a name="brokered-authentication-for-msal-for-ios-and-macos"></a>針對 iOS 和 macOS 的 MSAL 的代理身份驗證
 
-預設會針對 Azure AD 案例啟用代理驗證。
+預設情況下，為 Azure AD 方案啟用代理身份驗證。
 
-#### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>步驟1：更新 AppDelegate 以處理回呼
+#### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>第 1 步：更新應用委託以處理回檔
 
-當 iOS 和 macOS 的 MSAL 呼叫訊息代理程式時，broker 會使用 `openURL` 方法來回呼您的應用程式。 因為 MSAL 會等待訊息代理程式的回應，所以您的應用程式需要合作以回呼 MSAL。 藉由更新 `AppDelegate.m` 檔案來設定這項功能，以覆寫方法，如下列程式碼範例所示。
+當適用于 iOS 和 macOS 的 MSAL 調用代理時，代理使用`openURL`方法回檔您的應用程式。 由於 MSAL 等待來自代理的回應，因此您的應用程式需要合作來回撥 MSAL。 通過更新`AppDelegate.m`檔以覆蓋該方法來設置此功能，如下代碼示例所示。
 
 ```objc
 - (BOOL)application:(UIApplication *)app
@@ -314,26 +314,26 @@ MSAL 會使用 `–canOpenURL:` 來檢查代理程式是否已安裝在裝置上
 ```
 
 > [!NOTE]
-> 如果您在 iOS 13 或更新版本上採用 `UISceneDelegate`，請改為將 MSAL 回呼放入 `UISceneDelegate` 的 `scene:openURLContexts:`。 每個 URL 都只能呼叫 MSAL `handleMSALResponse:sourceApplication:` 一次。
+> 如果您在 iOS 13 或更高版本中採用`UISceneDelegate`，則將 MSAL 回檔`scene:openURLContexts:`放在`UISceneDelegate` 對於每個`handleMSALResponse:sourceApplication:`URL，只能調用一次 MSAL。
 >
-> 如需詳細資訊，請參閱[Apple 檔](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
+> 有關詳細資訊，請參閱 Apple[文檔](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
 
-#### <a name="step-2-register-a-url-scheme"></a>步驟2：註冊 URL 配置
+#### <a name="step-2-register-a-url-scheme"></a>第 2 步：註冊 URL 方案
 
-適用于 iOS 和 macOS 的 MSAL 會使用 Url 叫用訊息代理程式，然後將 broker 回應傳回給您的應用程式。 若要完成來回行程，請在 `Info.plist` 檔案中註冊應用程式的 URL 配置。
+適用于 iOS 和 macOS 的 MSAL 使用 URL 調用代理，然後將代理回應返回到你的應用。 要完成往返行程，請在檔中註冊應用的`Info.plist`URL 方案。
 
-若要註冊應用程式的配置： 
+要為應用註冊方案，請： 
 
-1. 在您的自訂 URL 配置前面加上 `msauth`。 
+1. 使用`msauth`首碼自訂 URL 方案。 
 
-1. 將您的套件組合識別碼新增至您的配置結尾。 遵循此模式： 
+1. 將捆綁包識別碼添加到方案的末尾。 遵循以下模式： 
 
    `$"msauth.(BundleId)"`
 
-   在這裡，`BundleId` 會唯一識別您的裝置。 例如，如果 `yourcompany.xforms``BundleId`，則會 `msauth.com.yourcompany.xforms`您的 URL 配置。
+   在這裡，`BundleId`唯一標識您的設備。 例如，如果`BundleId`為`yourcompany.xforms`，則 URL`msauth.com.yourcompany.xforms`方案為 。
   
    > [!NOTE]
-   > 此 URL 配置會成為重新導向 URI 的一部分，它會在收到訊息代理程式的回應時，唯一識別您的應用程式。 請確定已在[Azure 入口網站](https://portal.azure.com)中為您的應用程式註冊 `msauth.(BundleId)://auth` 格式的重新導向 URI。
+   > 此 URL 方案將成為重定向 URI 的一部分，該 URI 在收到代理的回應時唯一標識應用。 確保格式`msauth.(BundleId)://auth`中的重定向 URI 已為應用程式在[Azure 門戶](https://portal.azure.com)中註冊。
   
    ```XML
    <key>CFBundleURLTypes</key>
@@ -347,14 +347,14 @@ MSAL 會使用 `–canOpenURL:` 來檢查代理程式是否已安裝在裝置上
    </array>
    ```
 
-#### <a name="step-3-add-lsapplicationqueriesschemes"></a>步驟3：加入 LSApplicationQueriesSchemes
+#### <a name="step-3-add-lsapplicationqueriesschemes"></a>第 3 步：添加 LS 應用程式查詢方案
 
-新增 `LSApplicationQueriesSchemes` 以允許呼叫 Microsoft Authenticator 應用程式（如果已安裝）。
+添加`LSApplicationQueriesSchemes`以允許對 Microsoft 身份驗證器應用的調用（如果已安裝）。
 
 > [!NOTE]
-> 當您的應用程式使用 Xcode 11 和更新版本進行編譯時，需要 `msauthv3` 配置。 
+> 使用`msauthv3`Xcode 11 及更高版本編譯應用時，需要該方案。 
 
-以下是如何新增 `LSApplicationQueriesSchemes`的範例：
+下面是如何添加`LSApplicationQueriesSchemes`的示例：
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -364,11 +364,11 @@ MSAL 會使用 `–canOpenURL:` 來檢查代理程式是否已安裝在裝置上
 </array>
 ```
 
-### <a name="brokered-authentication-for-xamarinandroid"></a>適用于 Xamarin 的代理驗證
+### <a name="brokered-authentication-for-xamarinandroid"></a>Xamarin.安卓的代理身份驗證
 
-MSAL.NET 不支援 Android 的代理程式。
+MSAL.NET不支援安卓的經紀人。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [取得權杖](scenario-mobile-acquire-token.md)
+> [獲取權杖](scenario-mobile-acquire-token.md)

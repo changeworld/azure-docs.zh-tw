@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排訊息延遲
-description: 本文說明如何延遲傳遞 Azure 服務匯流排訊息。 訊息會保留於佇列或訂用帳戶中，但會將它擱置於一旁。
+title: Azure 服務匯流排 - 消息延遲
+description: 本文介紹如何推遲 Azure 服務匯流排消息的傳遞。 訊息會保留於佇列或訂用帳戶中，但會將它擱置於一旁。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538391"
 ---
 # <a name="message-deferral"></a>訊息延遲
@@ -32,13 +32,13 @@ ms.locfileid: "77538391"
 
 ## <a name="message-deferral-apis"></a>訊息延遲 API
 
-在 .NET Framework 用戶端、 [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync)的 .NET Standard client 中，API 為[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer)或[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) ，在 JAVA 用戶端中則為[IMessageReceiver. defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable)或[IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) 。 
+API 是[代理消息.延遲](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer)或[代理消息.deferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync)在 .NET 框架用戶端中[，消息接收器.deferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync)在 .NET 標準用戶端和[IMessageReceiver.defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable)或[IMessageReceiver.deferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable)在 JAVA 用戶端中。 
 
 延遲的訊息會和所有其他作用中的訊息一起保留在主要佇列中 (與存留於子佇列中的無效信件訊息不同)，但您無法再使用一般的 Receive/ReceiveAsync 函式來接收它們。 如果應用程式無法追蹤延遲的訊息，則可透過[訊息瀏覽](message-browsing.md)來探索它們。
 
-若要擷取延遲的訊息，其擁有者會負責記住 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber)，因為它會延遲該訊息。 任何知道延遲訊息序號的接收者稍後都可使用 `Receive(sequenceNumber)` 明確地接收訊息。
+要檢索延遲的消息，它的擁有者負責在遞延[時記住序號](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber)。 任何知道延遲訊息序號的接收者稍後都可使用 `Receive(sequenceNumber)` 明確地接收訊息。
 
-如果訊息因為用於處理該訊息的特殊資源暫時無法使用而無法處理，但不應立即暫止訊息處理，則用來將該訊息放在一邊數分鐘的方法是，記住要在數分鐘內發佈之**已排程的訊息**中的 [SequenceNumber](message-sequencing.md)，並在已排程的訊息送達時，重新擷取延遲的訊息。 如果訊息處理常式倚賴資料庫來進行所有作業，而該資料庫暫時無法提供服務，它就不應該使用延遲，而是應該完全暫停接收訊息，直到資料庫再次可供使用為止。
+如果訊息因為用於處理該訊息的特殊資源暫時無法使用而無法處理，但不應立即暫止訊息處理，則用來將該訊息放在一邊數分鐘的方法是，記住要在數分鐘內發佈之[已排程的訊息](message-sequencing.md)中的 **SequenceNumber**，並在已排程的訊息送達時，重新擷取延遲的訊息。 如果訊息處理常式倚賴資料庫來進行所有作業，而該資料庫暫時無法提供服務，它就不應該使用延遲，而是應該完全暫停接收訊息，直到資料庫再次可供使用為止。
 
 
 ## <a name="next-steps"></a>後續步驟

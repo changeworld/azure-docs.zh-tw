@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cosmos DB Sdk 中註冊和使用預存程式、觸發程式和使用者定義函數
+title: 在 Azure Cosmos DB SDK 中註冊和使用預存程序、觸發器和使用者定義的函數
 description: 了解如何使用 Azure Cosmos DB SDK 來註冊和呼叫預存程序、觸發程序和使用者定義函式
 author: markjbrown
 ms.service: cosmos-db
@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: mjbrown
 ms.openlocfilehash: 00740bc2255962089789682e3227ce414fd0ce64
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582495"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中註冊和使用預存程序、觸發程序和使用者定義函式
 
-Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預存程序、觸發程序和使用者定義函式 (UDF)。 您可以使用 SQL API [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、[Node.js](sql-api-sdk-node.md) 或 [Python](sql-api-sdk-python.md) SDK 來註冊及叫用預存程序。 在您定義一或多個預存程序、觸發程序和使用者定義函式之後，您可以使用資料總管在 [Azure 入口網站](https://portal.azure.com/)中載入並檢視這些項目。
+Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預存程序、觸發程序和使用者定義函式 (UDF)。 您可以使用 SQL API [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、[Node.js](sql-api-sdk-node.md) 或 [Python](sql-api-sdk-python.md) SDK 來註冊及叫用預存程序。 定義一個或多個預存程序、觸發器和使用者定義的函數後，可以使用資料資源管理器在[Azure 門戶](https://portal.azure.com/)中載入和查看它們。
 
-## <a id="stored-procedures"></a>如何執行預存程序
+## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>如何執行預存程序
 
 預存程序須以 JavaScript 撰寫。 這些程序可建立、更新、讀取、查詢和刪除 Azure Cosmos 容器內的項目。 如需如何在 Azure Cosmos DB 中撰寫預存程序的詳細資訊，請參閱[如何在 Azure Cosmos DB 中撰寫預存程序](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)一文。
 
@@ -26,9 +26,9 @@ Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預�
 > [!NOTE]
 > 對分割容器執行預存程序時，必須在要求選項中提供分割區索引鍵值。 預存程序的範圍一律為分割區索引鍵。 具有不同分割區索引鍵值的項目，將不會對預存程序顯示。 這也適用於觸發程序。
 
-### <a name="stored-procedures---net-sdk-v2"></a>預存程式-.NET SDK V2
+### <a name="stored-procedures---net-sdk-v2"></a>預存程序 - .NET SDK V2
 
-下列範例顯示如何使用 .NET SDK V2 來註冊預存程式：
+下面的示例演示如何使用 .NET SDK V2 註冊預存程序：
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-下列程式碼說明如何使用 .NET SDK V2 呼叫預存程式：
+以下代碼演示如何使用 .NET SDK V2 調用預存程序：
 
 ```csharp
 dynamic newItem = new
@@ -58,9 +58,9 @@ RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("P
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
 ```
 
-### <a name="stored-procedures---net-sdk-v3"></a>預存程式-.NET SDK V3
+### <a name="stored-procedures---net-sdk-v3"></a>預存程序 - .NET SDK V3
 
-下列範例顯示如何使用 .NET SDK V3 來註冊預存程式：
+下面的示例演示如何使用 .NET SDK V3 註冊預存程序：
 
 ```csharp
 StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
@@ -70,7 +70,7 @@ StoredProcedureResponse storedProcedureResponse = await client.GetContainer("dat
 });
 ```
 
-下列程式碼說明如何使用 .NET SDK V3 呼叫預存程式：
+以下代碼演示如何使用 .NET SDK V3 調用預存程序：
 
 ```csharp
 dynamic[] newItems = new dynamic[]
@@ -195,7 +195,7 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a id="pre-triggers"></a>如何執行預先觸發程序
+## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>如何執行預先觸發程序
 
 下列範例說明如何使用 Azure Cosmos DB SDK 來註冊和呼叫預先觸發程序。 請參閱[預先觸發程序範例](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers)作為來源，因為此預先觸發程序儲存為 `trgPreValidateToDoItemTimestamp.js`。
 
@@ -204,9 +204,9 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 > [!NOTE]
 > 即使以清單的形式傳入觸發程序的名稱，每個作業仍然只能執行一個觸發程序。
 
-### <a name="pre-triggers---net-sdk-v2"></a>預先觸發程式-.NET SDK V2
+### <a name="pre-triggers---net-sdk-v2"></a>預觸發 - .NET SDK V2
 
-下列程式碼說明如何使用 .NET SDK V2 註冊預先觸發程式：
+以下代碼演示如何使用 .NET SDK V2 註冊預觸發器：
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -221,7 +221,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-下列程式碼說明如何使用 .NET SDK V2 呼叫預先觸發程式：
+以下代碼演示如何使用 .NET SDK V2 調用預觸發器：
 
 ```csharp
 dynamic newItem = new
@@ -237,9 +237,9 @@ RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new Lis
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
 ```
 
-### <a name="pre-triggers---net-sdk-v3"></a>預先觸發程式-.NET SDK V3
+### <a name="pre-triggers---net-sdk-v3"></a>預觸發 - .NET SDK V3
 
-下列程式碼說明如何使用 .NET SDK V3 註冊預先觸發程式：
+以下代碼演示如何使用 .NET SDK V3 註冊預觸發器：
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -251,7 +251,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-下列程式碼說明如何使用 .NET SDK V3 呼叫預先觸發程式：
+以下代碼演示如何使用 .NET SDK V3 調用預觸發器：
 
 ```csharp
 dynamic newItem = new
@@ -353,13 +353,13 @@ client.CreateItem(container_link, item, {
                   'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="post-triggers"></a>如何執行後續觸發程序
+## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>如何執行後續觸發程序
 
 下列範例說明如何使用 Azure Cosmos DB SDK 來註冊後續觸發程序。 請參閱[後續觸發程序範例](how-to-write-stored-procedures-triggers-udfs.md#post-triggers)作為來源，因為此後續觸發程序儲存為 `trgPostUpdateMetadata.js`。
 
-### <a name="post-triggers---net-sdk-v2"></a>後續觸發程式-.NET SDK V2
+### <a name="post-triggers---net-sdk-v2"></a>觸發後 - .NET SDK V2
 
-下列程式碼示範如何使用 .NET SDK V2 註冊後置觸發程式：
+以下代碼演示如何使用 .NET SDK V2 註冊觸發器後：
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -374,7 +374,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-下列程式碼說明如何使用 .NET SDK V2 呼叫後續觸發程式：
+以下代碼演示如何使用 .NET SDK V2 調用觸發器後：
 
 ```csharp
 var newItem = { 
@@ -388,9 +388,9 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.createDocumentAsync(containerUri, newItem, options);
 ```
 
-### <a name="post-triggers---net-sdk-v3"></a>後續觸發程式-.NET SDK V3
+### <a name="post-triggers---net-sdk-v3"></a>觸發後 - .NET SDK V3
 
-下列程式碼示範如何使用 .NET SDK V3 註冊後置觸發程式：
+以下代碼演示如何使用 .NET SDK V3 註冊觸發器後：
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -402,7 +402,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-下列程式碼說明如何使用 .NET SDK V3 呼叫後續觸發程式：
+以下代碼演示如何使用 .NET SDK V3 調用觸發器後：
 
 ```csharp
 var newItem = { 
@@ -500,13 +500,13 @@ client.CreateItem(container_link, item, {
                   'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
-## <a id="udfs"></a>如何使用使用者定義函式
+## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>如何使用使用者定義函式
 
 下列範例說明如何使用 Azure Cosmos DB SDK 來註冊使用者定義函式。 請參閱[使用者定義函式範例](how-to-write-stored-procedures-triggers-udfs.md#udfs)作為來源，因為此後續觸發程序儲存為 `udfTax.js`。
 
-### <a name="user-defined-functions---net-sdk-v2"></a>使用者定義函數-.NET SDK V2
+### <a name="user-defined-functions---net-sdk-v2"></a>使用者定義的函數 - .NET SDK V2
 
-下列程式碼說明如何使用 .NET SDK V2 註冊使用者定義函式：
+以下代碼演示如何使用 .NET SDK V2 註冊使用者定義的函數：
 
 ```csharp
 string udfId = "Tax";
@@ -521,7 +521,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-下列程式碼說明如何使用 .NET SDK V2 呼叫使用者定義函數：
+以下代碼演示如何使用 .NET SDK V2 調用使用者定義的函數：
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -533,9 +533,9 @@ foreach (var result in results)
 }
 ```
 
-### <a name="user-defined-functions---net-sdk-v3"></a>使用者定義函數-.NET SDK V3
+### <a name="user-defined-functions---net-sdk-v3"></a>使用者定義的函數 - .NET SDK V3
 
-下列程式碼說明如何使用 .NET SDK V3 註冊使用者定義函式：
+以下代碼演示如何使用 .NET SDK V3 註冊使用者定義的函數：
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
@@ -545,7 +545,7 @@ await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunc
 });
 ```
 
-下列程式碼說明如何使用 .NET SDK V3 呼叫使用者定義函數：
+以下代碼演示如何使用 .NET SDK V3 調用使用者定義的函數：
 
 ```csharp
 var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
@@ -645,6 +645,6 @@ results = list(client.QueryItems(
 了解更多概念，以及如何在 Azure Cosmos DB 中寫入或使用預存程序、觸發程序和使用者定義函式：
 
 - [在 Azure Cosmos DB 中使用 Azure Cosmos DB 預存程序、觸發程序及使用者定義函式](stored-procedures-triggers-udfs.md)
-- [在 Azure Cosmos DB 中使用 JavaScript 語言整合式查詢 API](javascript-query-api.md)
+- [在 Azure Cosmos DB 中使用 JavaScript Language-integrated Query (LINQ) API](javascript-query-api.md)
 - [如何在 Azure Cosmos DB 中撰寫預存程序、觸發程序和使用者定義函式](how-to-write-stored-procedures-triggers-udfs.md)
 - [如何使用 Javascript 查詢 API 在 Azure Cosmos DB 中撰寫預存程序和觸發程序](how-to-write-javascript-query-api.md)

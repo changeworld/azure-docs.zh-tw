@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：非對稱式路由
+title: Azure 快速路由：非對稱路由
 description: 本文將逐步解說在有多個連結連至一個目的地的網路中，您可能會遇到的非對稱式路由問題。
 services: expressroute
 author: osamazia
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072149"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非對稱式路由與多個網路路徑
@@ -48,7 +48,7 @@ ms.locfileid: "74072149"
 
 然後，您會開啟 ExpressRoute，並透過 ExpressRoute 使用 Microsoft 所提供的服務。 Microsoft 提供的所有其他服務都是透過網際網路使用。 您會在連接到 ExpressRoute 的邊緣部署不同的防火牆。 Microsoft 會透過 ExpressRoute，針對特定服務，向您的網路通告更多特定的前置詞。 您的路由基礎結構會選擇 ExpressRoute 做為這些前置詞的慣用路徑。 如果您不是透過 ExpressRoute 向 Microsoft 通告您的公用 IP 位址，Microsoft 會透過網際網路與您的公用 IP 位址通訊。 從您的網路至 Microsoft 的向前流量會使用 ExpressRoute，而來自 Microsoft 的反向流量則會使用網際網路。 當邊緣防火牆看到對於在狀態資料表中找不到的流程的回應封包時，它會捨棄回傳流量。
 
-如果您選擇公告適用于 ExpressRoute 和網際網路的相同網路位址轉譯（NAT）集區，您會在私人 IP 位址上看到與網路中的用戶端類似的問題。 Windows Update 等服務的要求會透過網際網路輸送，因為這些服務的 IP 位址不會透過 ExpressRoute 通告。 不過，回傳流量會透過 ExpressRoute 返回。 如果 Microsoft 從網際網路和 ExpressRoute 收到具有相同子網路遮罩的 IP 位址，則會偏好透過網際網路的 ExpressRoute。 如果在您的網路邊緣且面對 ExpressRoute 的防火牆或其他具狀態裝置，沒有任何關於流程的先前資訊，它會捨棄屬於該流程的封包。
+如果您選擇為 ExpressRoute 和 Internet 通告相同的網路位址轉譯 （NAT） 池，則在私人 IP 位址上也會看到網路中的用戶端出現類似問題。 Windows Update 等服務的要求會透過網際網路輸送，因為這些服務的 IP 位址不會透過 ExpressRoute 通告。 不過，回傳流量會透過 ExpressRoute 返回。 如果 Microsoft 從網際網路和 ExpressRoute 收到具有相同子網路遮罩的 IP 位址，則會偏好透過網際網路的 ExpressRoute。 如果在您的網路邊緣且面對 ExpressRoute 的防火牆或其他具狀態裝置，沒有任何關於流程的先前資訊，它會捨棄屬於該流程的封包。
 
 ## <a name="asymmetric-routing-solutions"></a>非對稱式路由解決方案
 主要有兩個選項可解決非對稱式路由問題。 一個是透過路由，而另一個則是使用以來源為基礎 NAT (SNAT)。

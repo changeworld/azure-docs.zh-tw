@@ -1,5 +1,5 @@
 ---
-title: 使用 VNet 對等互連來連接虛擬網路-Azure PowerShell
+title: 將虛擬網路與 VNet 對等互連連接 - Azure PowerShell
 description: 在本文中，您將了解如何使用 Azure PowerShell，透過虛擬網路對等互連來連線虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201283"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>使用 PowerShell 以虛擬網路對等互連連線虛擬網路
@@ -41,13 +41,13 @@ ms.locfileid: "77201283"
 
 ## <a name="create-virtual-networks"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork1 的虛擬網路，其位址首碼為 10.0.0.0/16。
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork1** 的虛擬網路，其位址首碼為 10.0.0.0/16**。
 
 ```azurepowershell-interactive
 $virtualNetwork1 = New-AzVirtualNetwork `
@@ -57,7 +57,7 @@ $virtualNetwork1 = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-使用[new-azvirtualnetworksubnetconfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)建立子網設定。 下列範例會建立具有 10.0.0.0/24 位址首碼的子網路組態：
+使用[New-Az 虛擬網路子網配置創建子網配置](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)。 下列範例會建立具有 10.0.0.0/24 位址首碼的子網路組態：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -66,7 +66,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork1
 ```
 
-使用[New-azvirtualnetwork 將](/powershell/module/az.network/Set-azVirtualNetwork)子網設定寫入至虛擬網路，以建立子網：
+使用[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)將子網配置寫入虛擬網路，該網路創建子網：
 
 ```azurepowershell-interactive
 $virtualNetwork1 | Set-AzVirtualNetwork
@@ -94,7 +94,7 @@ $virtualNetwork2 | Set-AzVirtualNetwork
 
 ## <a name="peer-virtual-networks"></a>對等互連虛擬網路
 
-使用[Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)建立對等互連。 下列範例會將 myVirtualNetwork1 對等互連至 myVirtualNetwork2。
+使用[Add-Az 虛擬網路對等互連](/powershell/module/az.network/add-azvirtualnetworkpeering)創建對等互連。 下列範例會將 myVirtualNetwork1** 對等互連至 myVirtualNetwork2**。
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -103,7 +103,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 ```
 
-在執行上一個命令之後所傳回的輸出中，您會看到 **PeeringState** 是「已啟動」。 對等互連會持續處於「已啟動」狀態，直到您建立從 myVirtualNetwork2 到 myVirtualNetwork1 的對等互連為止。 建立從 myVirtualNetwork2 到 myVirtualNetwork1 的對等互連。
+在執行上一個命令之後所傳回的輸出中，您會看到 **PeeringState** 是「已啟動」**。 對等互連會持續處於「已啟動」** 狀態，直到您建立從 myVirtualNetwork2** 到 myVirtualNetwork1** 的對等互連為止。 建立從 myVirtualNetwork2** 到 myVirtualNetwork1** 的對等互連。
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -112,7 +112,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-在執行上一個命令之後所傳回的輸出中，您會看到 **PeeringState** 是「已連線」。 Azure 也會將 myVirtualNetwork1-myVirtualNetwork2 對等互連的對等互連狀態變更為「已連線」。 確認*myVirtualNetwork1-myVirtualNetwork2*對等互連的對等互連狀態已變更為 [*已連線*] [AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering)。
+在執行上一個命令之後所傳回的輸出中，您會看到 **PeeringState** 是「已連線」**。 Azure 也會將 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。 確認*myVirtualNetwork1-myVirtualNetwork2*對等互連的對等狀態更改為"與[獲取-Az虛擬網路對等互連](/powershell/module/az.network/get-azvirtualnetworkpeering)*連接*"。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -121,7 +121,7 @@ Get-AzVirtualNetworkPeering `
   | Select PeeringState
 ```
 
-兩個虛擬網路之對等互連的 **PeeringState** 都是「已連線」之前，其中一個虛擬網路中的資源無法與另一個虛擬網路中的資源通訊。
+兩個虛擬網路之對等互連的 **PeeringState** 都是「已連線」** 之前，其中一個虛擬網路中的資源無法與另一個虛擬網路中的資源通訊。
 
 ## <a name="create-virtual-machines"></a>建立虛擬機器
 
@@ -129,7 +129,7 @@ Get-AzVirtualNetworkPeering `
 
 ### <a name="create-the-first-vm"></a>建立第一個 VM
 
-使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM。 下列範例會在 myVirtualNetwork1 虛擬網路中建立名為 myVm1 的虛擬機器。 `-AsJob` 選項會在背景建立虛擬機器，以便您繼續進行下一步。 出現提示時，輸入您想要用來登入虛擬機器的使用者名稱和密碼。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM。 下列範例會在 myVirtualNetwork1** 虛擬網路中建立名為 myVm1** 的虛擬機器。 `-AsJob` 選項會在背景建立虛擬機器，以便您繼續進行下一步。 出現提示時，輸入您想要用來登入虛擬機器的使用者名稱和密碼。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -166,15 +166,15 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-請從您的本機電腦使用下列命令，來建立與 myVm1 虛擬機器的遠端桌面工作階段。 以上一個命令傳回的 IP 位址取代 `<publicIpAddress>`。
+請從您的本機電腦使用下列命令，來建立與 myVm1** 虛擬機器的遠端桌面工作階段。 以上一個命令傳回的 IP 位址取代 `<publicIpAddress>`。
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-將會建立一個「遠端桌面通訊協定」(.rdp) 檔案、下載至您的電腦並開啟。 輸入使用者名稱和密碼 (您可能需要選取 [更多選擇]，然後選取 [使用不同的帳戶] 以指定您在建立虛擬機器時輸入的認證)，然後按一下 [確定]。 您可能會在登入過程中收到憑證警告。 按一下 [是] 或 [繼續] 以繼續進行連線。
+將會建立一個「遠端桌面通訊協定」(.rdp) 檔案、下載至您的電腦並開啟。 輸入使用者名稱和密碼 (您可能需要選取 [更多選擇]****，然後選取 [使用不同的帳戶]**** 以指定您在建立虛擬機器時輸入的認證)，然後按一下 [確定]****。 您可能會在登入過程中收到憑證警告。 按一下"**是**"或 **"繼續**"繼續連接。
 
-在 myVm1 虛擬機器上，讓網際網路控制訊息通訊協定 (ICMP) 通過 Windows 防火牆，您就可以在稍後的步驟中使用 PowerShell 從 myVm2 針對此虛擬機器進行 Ping 操作：
+在 myVm1** 虛擬機器上，讓網際網路控制訊息通訊協定 (ICMP) 通過 Windows 防火牆，您就可以在稍後的步驟中使用 PowerShell 從 myVm2** 針對此虛擬機器進行 Ping 操作：
 
 ```powershell
 New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -182,23 +182,23 @@ New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 
 雖然本文使用 Ping 在虛擬機器之間進行通訊，但不建議在生產環境部署中允許 ICMP 通過 Windows 防火牆。
 
-若要連線至 myVm2 虛擬機器，請在 myVm1 虛擬機器上從命令提示字元輸入下列命令：
+若要連線至 myVm2** 虛擬機器，請在 myVm1** 虛擬機器上從命令提示字元輸入下列命令：
 
 ```
 mstsc /v:10.1.0.4
 ```
 
-由於您在 myVm1 上面啟用 Ping，您現在可以在 myVm2 虛擬機器上從命令提示字元依據 IP 位址來 Ping 它：
+由於您在 myVm1** 上面啟用 Ping，您現在可以在 myVm2** 虛擬機器上從命令提示字元依據 IP 位址來 Ping 它：
 
 ```
 ping 10.0.0.4
 ```
 
-您會收到四個回覆。 同時中斷與 myVm1 和 myVm2 的 RDP 工作階段。
+您會收到四個回覆。 同時中斷與 myVm1** 和 myVm2** 的 RDP 工作階段。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-不再需要時，請使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)移除資源群組及其包含的所有資源。
+當不再需要時，請使用[Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup)刪除資源組及其包含的所有資源。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

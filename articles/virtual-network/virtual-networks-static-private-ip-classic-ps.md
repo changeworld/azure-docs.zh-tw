@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00a4f282da3a943516ffce584247ac20935526b5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058714"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>使用 PowerShell 設定虛擬機器 (傳統) 的私人 IP 位址
@@ -35,14 +35,14 @@ ms.locfileid: "71058714"
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果您想要執行如本文件中所顯示的命令，請先建置 [建立 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md)中所說明的測試環境。
+以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果要在文檔中顯示命令時運行這些命令，請首先生成[創建 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md)中描述的測試環境。
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>如何驗證特定 IP 位址是否可用
-若要驗證 IP 位址 192.168.1.101 在名為 TestVnet 的 VNet 中是否可用，請執行下列 PowerShell 命令，並驗證 IsAvailable 的值：
+若要驗證 IP 位址 192.168.1.101** 在名為 TestVnet** 的 VNet 中是否可用，請執行下列 PowerShell 命令，並驗證 IsAvailable** 的值：
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
-預期的輸出：
+預期輸出：
 
     IsAvailable          : True
     AvailableAddresses   : {}
@@ -51,7 +51,7 @@ ms.locfileid: "71058714"
     OperationStatus      : Succeeded
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>建立 VM 時如何指定靜態私人 IP 位址
-下方 PowerShell 指令碼會建立名為 TestService 的新雲端服務，接著從 Azure 中擷取映像，然後在新的雲端服務中使用擷取的映像建立名為 DNS01 的 VM，接下來設定 VM 位於 FrontEnd 子網路中，並設定 192.168.1.7 作為 VM 的靜態私人 IP：
+下方 PowerShell 指令碼會建立名為 TestService** 的新雲端服務，接著從 Azure 中擷取映像，然後在新的雲端服務中使用擷取的映像建立名為 DNS01** 的 VM，接下來設定 VM 位於 FrontEnd** 子網路中，並設定 192.168.1.7** 作為 VM 的靜態私人 IP：
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -61,7 +61,7 @@ ms.locfileid: "71058714"
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
       New-AzureVM -ServiceName TestService –VNetName TestVNet
 
-預期的輸出：
+預期輸出：
 
     WARNING: No deployment found in service: 'TestService'.
     OperationDescription OperationId                          OperationStatus
@@ -74,7 +74,7 @@ ms.locfileid: "71058714"
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
-預期的輸出：
+預期輸出：
 
     DeploymentName              : TestService
     Name                        : DNS01
@@ -110,7 +110,7 @@ ms.locfileid: "71058714"
       Remove-AzureStaticVNetIP |
       Update-AzureVM
 
-預期的輸出：
+預期輸出：
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
@@ -123,7 +123,7 @@ ms.locfileid: "71058714"
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
       Update-AzureVM
 
-預期的輸出：
+預期輸出：
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------

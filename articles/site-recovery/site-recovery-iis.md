@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 設定 IIS web 應用程式的嚴重損壞修復
+title: 使用 Azure 網站恢復為 IIS Web 應用設置災害復原
 description: 了解如何使用 Azure Site Recovery 複寫 IIS Web 伺服陣列虛擬機器。
 author: mayurigupta13
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954658"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>設定多層式 IIS 型 Web 應用程式的災害復原
@@ -26,7 +26,7 @@ ms.locfileid: "73954658"
 
 本文說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 來保護以 Internet Information Services (IIS) 為基礎的 Web 應用程式。 本文涵蓋將三層式 IIS 型 Web 應用程式複寫至 Azure 的最佳做法、如何進行災害復原演練，以及如何將應用程式容錯移轉至 Azure。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始之前，請確定您了解如何執行下列工作：
 
@@ -58,23 +58,23 @@ IIS 型 Web 應用程式通常會遵循下列其中一個部署模式︰
 
 ### <a name="source-and-target"></a>來源與目標
 
-案例 | 至次要網站 | 至 Azure
+狀況 | 至次要網站 | 至 Azure
 --- | --- | ---
-Hyper-V | yes | yes
-VMware | yes | yes
-實體伺服器 | 否 | yes
-Azure|NA|yes
+Hyper-V | 是 | 是
+VMware | 是 | 是
+實體伺服器 | 否 | 是
+Azure|NA|是
 
 ## <a name="replicate-virtual-machines"></a>複寫虛擬機器
 
 若要開始將所有 IIS Web 伺服陣列虛擬機器複寫至 Azure，請遵循[在 Site Recovery 中測試容錯移轉到 Azure](site-recovery-test-failover-to-azure.md)中的指引。
 
-如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [計算和網路] 設定 > [目標 IP]。
+如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 要設置 IP 位址，請訪問 **"計算和網路設置** > **目標 IP"。**
 
 ![顯示如何在 Site Recovery 計算和網路窗格中設定目標 IP 的螢幕擷取畫面](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>建立復原計畫
-復原計畫支援在容錯移轉期間對多層式應用程式中的各層進行排序。 排序有助於維持應用程式的一致性。 當您為多層式 Web 應用程式建立復原計畫時，請完成[使用 Site Recovery 建立復原計畫](site-recovery-create-recovery-plans.md)中所述的步驟。
+復原方案支援在容錯移轉期間對多層式應用程式中的各層進行排序。 排序有助於維持應用程式的一致性。 當您為多層式 Web 應用程式建立復原方案時，請完成[使用 Site Recovery 建立復原方案](site-recovery-create-recovery-plans.md)中所述的步驟。
 
 ### <a name="add-virtual-machines-to-failover-groups"></a>將虛擬機器新增至容錯移轉群組
 典型的多層式 IIS Web 應用程式包含下列元件：
@@ -116,7 +116,7 @@ Azure|NA|yes
 
 > [!NOTE]
 >
-> 如果您將網站繫結設定為 [全未指派]，則在容錯移轉後，就不需要更新此繫結。 此外，如果與網站相關聯的 IP 位址並未在容錯移轉後變更，您就不需要更新網站繫結。 (IP 位址的保留取決於網路架構以及指派給主要和復原網站的子網路。 對您的組織而言，更新它們可能不可行。)
+> 如果您將網站繫結設定為 [全未指派]****，則在容錯移轉後，就不需要更新此繫結。 此外，如果與網站相關聯的 IP 位址並未在容錯移轉後變更，您就不需要更新網站繫結。 (IP 位址的保留取決於網路架構以及指派給主要和復原網站的子網路。 對您的組織而言，更新它們可能不可行。)
 
 ![示範如何設定 SSL 繫結的螢幕擷取畫面](./media/site-recovery-iis/sslbinding.png)
 
@@ -142,10 +142,10 @@ Azure|NA|yes
 
 1. 在 Azure 入口網站中，選取您的復原服務保存庫。
 2. 選取您為 IIS Web 伺服陣列建立的復原方案。
-3. 選取 [測試容錯移轉]。
+3. 選取 [測試容錯移轉]****。
 4. 若要啟動測試容錯移轉程序，請選取復原點和 Azure 虛擬網路。
 5. 當次要環境啟動時，您即可執行驗證。
-6. 完成驗證時，若要清除測試容錯移轉環境，請選取 [驗證完成]。
+6. 完成驗證時，若要清除測試容錯移轉環境，請選取 [驗證完成]****。
 
 如需詳細資訊，請參閱[在 Site Recovery 中測試容錯移轉至 Azure](site-recovery-test-failover-to-azure.md)。
 
@@ -153,7 +153,7 @@ Azure|NA|yes
 
 1. 在 Azure 入口網站中，選取您的復原服務保存庫。
 1. 選取您為 IIS Web 伺服陣列建立的復原方案。
-1. 選取 [容錯移轉]。
+1. 選取 [容錯移轉]****。
 1. 若要啟動容錯移轉程序，請選取復原點。
 
 如需詳細資訊，請參閱[在 Site Recovery 中容錯移轉](site-recovery-failover.md)。

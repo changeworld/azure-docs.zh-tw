@@ -1,5 +1,5 @@
 ---
-title: 啟用離線同步處理（iOS）
+title: 啟用離線同步 （iOS）
 description: 了解如何使用 Azure App Service Mobile Apps 來快取及同步處理 iOS 應用程式中的離線資料。
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
 ms.tgt_pltfrm: mobile-ios
@@ -7,40 +7,40 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459169"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>啟用 iOS Mobile Apps 的離線同步處理
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程涵蓋適用於 iOS 的 Azure App Service Mobile Apps 功能的離線同步處理說明。 透過離線同步處理，終端使用者即使沒有網路連線，也可以和行動裝置 App 互動以檢視、新增、修改資料。 變更會儲存在本機資料庫中。 裝置恢復上線後，這些變更就會與遠端後端進行同步處理。
 
-如果這是您第一次接觸 Mobile Apps，請先完成[建立 iOS 應用程式] 教學課程。 如果您不使用下載的快速入門伺服器專案，則必須將資料存取擴充套件新增至您的專案。 如需伺服器擴充套件的詳細資訊，請參閱 [使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+如果這是您第一次接觸 Mobile Apps，請先完成[建立 iOS 應用程式] 教學課程。 如果您不使用下載的快速入門伺服器專案，則必須將資料存取擴充套件新增至您的專案。 如需伺服器擴充套件的詳細資訊，請參閱[使用 Azure Mobile Apps 的 .NET 後端伺服器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
 若要深入了解離線同步處理功能，請參閱 [Mobile Apps 中的離線資料同步處理]。
 
-## <a name="review-sync"></a>檢閱用戶端同步程式碼
+## <a name="review-the-client-sync-code"></a><a name="review-sync"></a>檢閱用戶端同步處理程式碼
 您針對[建立 iOS 應用程式]教學課程下載的用戶端專案，已經包含了使用本機核心資料式資料庫支援離線同步處理的程式碼。 本節將摘要說明已包含在教學課程程式碼中的內容。 如需此功能的概念性概觀，請參閱 [Mobile Apps 中的離線資料同步處理]。
 
 Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存取網路時，仍可與本機資料庫互動。 若要在您的應用程式中使用這些功能，您可初始化 `MSClient` 的同步處理內容以及參考本機存放區。 然後透過 **MSSyncTable** 介面參考您的資料表。
 
 在 **QSTodoService.m** (Objective-C) 或 **ToDoTableViewController.swift** (Swift) 中，注意到成員 **syncTable** 的類型為 **MSSyncTable**。 離線同步處理會使用此同步處理資料表介面，而不是 **MSTable**。 使用同步處理資料表時，所有作業都會移至本機存放區，而且只會與具有明確推送和提取作業的遠端後端同步處理。
 
- 若要取得同步處理資料表的參考，請在 **上使用**syncTableWithName`MSClient` 方法。 若要移除離線同步處理功能，請改用 **tableWithName**。
+ 若要取得同步處理資料表的參考，請在 `MSClient` 上使用 **syncTableWithName** 方法。 若要移除離線同步處理功能，請改用 **tableWithName**。
 
 必須先初始化本機存放區，才可以執行資料表作業。 以下是相關的程式碼：
 
-* **Objective-C**。 在 **QSTodoService.init** 方法中：
+* **目標C**. 在 **QSTodoService.init** 方法中：
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
    self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
    ```    
-* **Swift**。 在 **ToDoTableViewController.viewDidLoad** 方法中︰
+* **斯威夫特**. 在 **ToDoTableViewController.viewDidLoad** 方法中︰
 
    ```swift
    let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
@@ -52,7 +52,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 現在，讓我們執行實際的同步處理作業，並從遠端後端取得資料：
 
-* **Objective-C**。 `syncData` 先推送新的變更，然後呼叫 **pullData** 以從遠端後端取得資料。 最後，**pullData** 方法會取得符合查詢的新資料︰
+* **目標C**. `syncData` 先推送新的變更，然後呼叫 **pullData** 以從遠端後端取得資料。 最後，**pullData** 方法會取得符合查詢的新資料︰
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -81,7 +81,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
        }];
    }
    ```
-* **Swift**：
+* **斯威夫特**：
    ```swift
    func onRefresh(sender: UIRefreshControl!) {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -121,7 +121,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 在 Objective-C 與 Swift 版本中，您可以使用 **pullWithQuery** 方法來指定查詢，以篩選想要擷取的記錄。 在此範例中，查詢會擷取遠端 `TodoItem` 資料表中的所有記錄。
 
-**PullWithQuery**的第二個參數是用於*增量同步*處理的查詢識別碼。增量同步處理會使用記錄的 `UpdatedAt` 時間戳記（在本機存放區中稱為 `updatedAt`），僅抓取自上次同步處理後修改的記錄。查詢識別碼應該是應用程式中每個邏輯查詢唯一的描述性字串。 若選擇不要增量同步處理，請傳遞 `nil` 做為查詢識別碼。 此方法可能效率不佳，因為它會在每次提取作業擷取所有記錄。
+**PullWithQuery**的第二個參數是用於*增量同步*的查詢 ID。增量同步僅檢索自上次同步以來修改的記錄，使用記錄`UpdatedAt`的時間戳記（在本機存放區中調用）。 `updatedAt`查詢 ID 應該是應用中每個邏輯查詢唯一的描述性字串。 若選擇不要增量同步處理，請傳遞 `nil` 做為查詢識別碼。 此方法可能效率不佳，因為它會在每次提取作業擷取所有記錄。
 
 當您修改或新增資料、使用者執行重新整理動作及啟動時，Objective-C 應用程式就會同步處理。
 
@@ -129,7 +129,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 因為每當資料修改 (Objective-C) 或 App 啟動 (Objective-C 和 Swift) 時，App 就會同步處理，故 App 假設使用者在線上。 在後續章節中，您將會更新 App，讓使用者即使是離線狀態也能進行編輯。
 
-## <a name="review-core-data"></a>檢閱核心資料模型
+## <a name="review-the-core-data-model"></a><a name="review-core-data"></a>檢閱核心資料模型
 在使用「核心資料離線」存放區時，您必須在資料模型中定義特定資料表和欄位。 範例應用程式已經包含具有正確格式的資料模型。 在這一節中，我們會逐步介紹這些資料表並示範其使用方式。
 
 開啟 **QSDataModel.xcdatamodeld**。 已定義四個資料表--其中三個由 SDK 使用，而一個是用於 To-do 項目本身：
@@ -139,7 +139,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
   * TodoItem：儲存 To-do 項目。 系統資料行 **createdAt**、**updatedAt** 和 **version** 為選擇性系統屬性。
 
 > [!NOTE]
-> Mobile Apps SDK 會保留以 " **``** " 為開頭的資料行名稱。 請不要將此前置詞用於系統資料行以外的項目。 否則，當您使用遠端後端時，系統會修改您的資料行名稱。
+> 移動應用 SDK 保留以""**``** 開頭的列名稱。 請不要將此前置詞用於系統資料行以外的項目。 否則，當您使用遠端後端時，系統會修改您的資料行名稱。
 >
 >
 
@@ -185,7 +185,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 ### <a name="data-table"></a>資料表
 
-**TodoItem**
+**項**
 
 | 屬性 | 類型 | 附註 |
 | --- | --- | --- |
@@ -196,7 +196,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 | 更新時間 | Date | (選擇性) 對應至 **updatedAt** 系統屬性 |
 | version | String | (選擇性) 用來偵測衝突，對應至版本 |
 
-## <a name="setup-sync"></a>變更應用程式的同步處理行為
+## <a name="change-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>變更應用程式的同步處理行為
 在本節中，您將修改 App，使它在啟動或有使用者插入並更新項目時不會同步處理。 只有在執行重新整理動作按鈕時，它才會同步。
 
 **Objective-C**：
@@ -216,35 +216,35 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
    }
    ```
 
-**Swift**：
+**斯威夫特**：
 
-在 `viewDidLoad`ToDoTableViewController.swift**的** 中，註解化這兩行以停止在 App 啟動時同步處理。 在本文撰寫期間，當某人新增或完成項目時，Swift Todo App 不會更新服務。 只有在 App 啟動時它才會更新。
+在 **ToDoTableViewController.swift** 的 `viewDidLoad` 中，註解化這兩行以停止在 App 啟動時同步處理。 在本文撰寫期間，當某人新增或完成項目時，Swift Todo App 不會更新服務。 只有在 App 啟動時它才會更新。
 
    ```swift
   self.refreshControl?.beginRefreshing()
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>測試應用程式
+## <a name="test-the-app"></a><a name="test-app"></a>測試應用程式
 在本節中，您將連接至無效的 URL，以模擬離線情況。 當您新增資料項目時，這些項目會存放在本機核心資料存放區，但不會同步到行動裝置 App 後端。
 
 1. 將 **QSTodoService.m** 中的行動裝置 App URL 變更為無效的 URL，然後再次執行該 App：
 
-   **Objective-C**。 在 QSTodoService.m 中：
+   **目標C**. 在 QSTodoService.m 中：
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **Swift**。 在 ToDoTableViewController.swift 中：
+   **斯威夫特**. 在 ToDoTableViewController.swift 中：
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
 2. 新增一些 To-do 項目。 結束模擬器 (或強制關閉 App)，然後重新啟動它。 確認已保存您的變更。
 
-3. 檢視遠端 **TodoItem** 資料表的內容：
-   * 針對 Node.js 後端，請移至 [Azure 入口網站](https://portal.azure.com/)，在您的行動裝置 App 後端中按一下 [簡易表] >  [TodoItem]。  
+3. 查看遠端**TodoItem**表的內容：
+   * 針對 Node.js 後端，請移至 [Azure 入口網站](https://portal.azure.com/)，在您的行動裝置 App 後端中按一下 [簡易表]**** >  [TodoItem]****。  
    * 針對 .NET 後端，請使用 SQL 工具 (例如 SQL Server Management Studio) 或 REST 用戶端 (例如 Fiddler 或 Postman)。  
 
-4. 請確認新項目「尚未」同步處理到伺服器。
+4. 請確認新項目「尚未」** 同步處理到伺服器。
 
 5. 請將 **QSTodoService.m** 中的 URL 變更回正確的 URL，然後重新執行 App。
 
@@ -253,7 +253,7 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 7. 再次檢視 **TodoItem** 資料。 其中會顯示已變更的新 To-do 項目。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 為了支援離線同步處理功能，我們使用了 `MSSyncTable` 介面，並對本機存放區初始化 `MSClient.syncContext`。 在此案例中，本機存放區是以核心資料為基礎的資料庫。
 
 使用核心資料本機存放區時，您必須使用[正確的系統屬性](#review-core-data)定義數個資料表。
@@ -264,12 +264,12 @@ Mobile Apps 的離線資料同步處理功能可讓終端使用者在無法存�
 
 ## <a name="additional-resources"></a>其他資源
 * [Mobile Apps 中的離線資料同步處理]
-* [雲端報導︰Azure 行動服務中的離線同步處理]處理 \(影片是關於行動服務，但 Mobile Apps 離線同步作業則以類似的方式運作。\)
+* [雲端報導：Azure Mobile Services 中的離線同步處理] \(雖然影片是關於 Mobile Services，但 Mobile Apps 也是以類似的方式進行離線同步處理。\)
 
 <!-- URLs. -->
 
 
-[建立 iOS 應用程式]: app-service-mobile-ios-get-started.md
+[創建 iOS 應用]: app-service-mobile-ios-get-started.md
 [Mobile Apps 中的離線資料同步處理]: app-service-mobile-offline-data-sync.md
 
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperationerrors-entity.png

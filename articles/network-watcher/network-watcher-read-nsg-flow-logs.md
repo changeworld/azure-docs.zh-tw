@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
 ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619923"
 ---
 # <a name="read-nsg-flow-logs"></a>讀取 NSG 流量記錄
@@ -187,8 +187,8 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ## <a name="next-steps"></a>後續步驟
 
 
-造訪[使用彈性堆疊](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md)，以及[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md)，以深入了解檢視 NSG 流量記錄的方式。 在這裡可以找到用來直接使用 blob 併發出至各種 log analytics 取用者的開放原始碼 Azure Function 方法： [Azure 網路監看員 NSG 流量記錄連接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
+造訪[使用彈性堆疊](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md)，以及[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md)，以深入了解檢視 NSG 流量記錄的方式。 可在此處找到一種開源 Azure 函數方法來直接使用 blob 並排放到各種日誌分析消費者[：Azure 網路觀察程式 NSG 流日誌連接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
-您可以使用[Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)來取得流量流程的深入解析。 流量分析會使用[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ，讓您的流量可供查詢。
+您可以使用[Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)獲取有關流量流的見解。 流量分析使用[日誌分析](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)使流量流可查詢。
 
 若要深入了解儲存體 Blob，請造訪：[Azure Functions Blob 儲存體繫結](../azure-functions/functions-bindings-storage-blob.md)

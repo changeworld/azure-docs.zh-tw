@@ -1,5 +1,5 @@
 ---
-title: 建立受控實例的虛擬網路
+title: 為託管實例創建虛擬網路
 description: 本文說明如何建立可在其中部署 Azure SQL Database 受控執行個體的虛擬網路。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823369"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>建立 Azure SQL Database 受控執行個體的虛擬網路
@@ -34,7 +34,7 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路](../vir
 >
 > 如果您打算使用現有的虛擬網路，您需要修改該網路組態以順應您的受控執行個體。 如需詳細資訊，請參閱[針對受控執行個體修改現有的虛擬網路](sql-database-managed-instance-configure-vnet-subnet.md)。
 >
-> 建立受控實例之後，不支援將受控實例或 VNet 移至另一個資源群組或訂用帳戶。
+> 創建託管實例後，不支援將託管實例或 VNet 移動到其他資源組或訂閱。
 
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
@@ -43,7 +43,7 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路](../vir
 
 1. 登入 Azure 入口網站。
 
-2. 選取 [部署至 Azure] 按鈕：
+2. 選取 [部署至 Azure]**** 按鈕：
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
@@ -56,12 +56,12 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路](../vir
 
    ![可供設定 Azure 網路的 Resource Manager 範本](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
-   您可以變更虛擬網路和子網路的名稱，以及調整與您的網路資源關聯的 IP 位址。 選取 [購買] 按鈕後，此表單就會建立並設定您的環境。 若您不需要兩個子網路，可將預設子網路刪除。
+   您可以變更虛擬網路和子網路的名稱，以及調整與您的網路資源關聯的 IP 位址。 選取 [購買]**** 按鈕後，此表單就會建立並設定您的環境。 若您不需要兩個子網路，可將預設子網路刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需概觀，請參閱[受控執行個體是什麼？](sql-database-managed-instance.md)。
+- 如需概觀，請參閱[受控執行個體是什麼](sql-database-managed-instance.md)。
 - 深入了解[受控執行個體連線架構](sql-database-managed-instance-connectivity-architecture.md)。
 - 了解如何[為受控執行個體修改現有的虛擬網路](sql-database-managed-instance-configure-vnet-subnet.md)。
 - 如需示範如何建立虛擬網路、建立受控執行個體，以及從資料庫備份還原資料庫的教學課程，請參閱[建立 Azure SQL Database 受控執行個體](sql-database-managed-instance-get-started.md)。
-- 針對 DNS 問題，請參閱[設定自訂 DNS](sql-database-managed-instance-custom-dns.md)。
+- 有關 DNS 問題，請參閱[配置自訂 DNS](sql-database-managed-instance-custom-dns.md)。

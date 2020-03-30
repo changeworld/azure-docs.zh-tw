@@ -1,6 +1,6 @@
 ---
-title: Azure DPS 裝置的客戶資料要求功能
-description: 對於在個人的 Azure 裝置布建服務（DPS）中管理的裝置，本文會說明如何匯出或刪除個人資料。
+title: Azure DPS 設備的客戶資料請求功能
+description: 對於在 Azure 設備佈建服務 （DPS） 中管理的個人設備，本文介紹管理員如何匯出或刪除個人資料。
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890643"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
@@ -62,6 +62,6 @@ Azure IoT 中樞裝置佈建服務是以企業客戶為目標的 REST API 型雲
 
 ## <a name="links-to-additional-documentation"></a>其他文件的連結
 
-完整的裝置佈建服務 API 文件可於 [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps) 找到。
+設備預配服務 API 的完整文檔位於[https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)。
 
 Azure IoT 中樞[客戶資料要求功能](../iot-hub/iot-hub-customer-data-requests.md)。
