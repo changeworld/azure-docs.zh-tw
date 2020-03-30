@@ -1,5 +1,5 @@
 ---
-title: HC 系列 VM 總覽-Azure 虛擬機器 |Microsoft Docs
+title: HC 系列 VM 概述 - Azure 虛擬機器*微軟文檔
 description: 瞭解 Azure 中 HC 系列 VM 大小的預覽支援。
 services: virtual-machines
 documentationcenter: ''
@@ -13,56 +13,56 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906738"
 ---
-# <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
+# <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器概述
 
-在 Intel 可延展的處理器上最大化 HPC 應用程式效能，需要審慎的方法來處理此新架構上的放置。 在這裡，我們將概述其在 HPC 應用程式的 Azure HC 系列 Vm 上的實作為。 我們會使用 "pNUMA" 一詞來參考實體 NUMA 網域，並使用 "Vnuma 解決方案" 來參考虛擬化的 NUMA 網域。 同樣地，我們將使用「pCore」一詞來指稱實體 CPU 核心，而「vCore」則是指虛擬化的 CPU 核心。
+最大化英特爾至強可擴展處理器上的 HPC 應用程式性能需要一種深思熟慮的方法來處理此新體系結構的放置。 在這裡，我們概述了我們在適用于 HPC 應用程式的 Azure HC 系列 VM 上實現它。 我們將使用術語"pNUMA"來指物理 NUMA 域，使用"vNUMA"來引用虛擬化的 NUMA 域。 同樣，我們將使用術語"pCore"來指物理 CPU 內核，使用"vCore"來指虛擬 CPU 內核。
 
-實際上，HC 伺服器是 2 * 24 核心 Intel 強白金 8168 Cpu，總共有48個實體核心。 每個 CPU 都是單一的 pNUMA 網域，並可統一存取六個 DRAM 通道。 Intel 強式白金 Cpu 的功能比先前的世代（256 KB/核心-> 1 MB/核心）多出4倍的 L2 快取，同時也減少了 L3 快取與先前的 Intel Cpu （2.5 MB/核心-> 1.375 MB/核心）。
+從物理上講，HC 伺服器是 2 + 24 核英特爾 Xeon 白金 8168 CPU，總共 48 個物理內核。 每個 CPU 都是單個 pNUMA 域，並且對六個 DRAM 通道具有統一存取權限。 英特爾至強白金 CPU 具有比前幾代人（256 KB/核心 -1 MB/內核 > 1 MB/內核）的 4 倍的 L2 緩存，同時與以前的英特爾 CPU（2.5 MB/core -> 1.375 MB/core）相比，也減少了 L3 緩存。
 
-上述拓撲也會攜帶至 HC 系列的虛擬機器設定。 為了讓 Azure 虛擬機器的空間在不幹擾 VM 的情況下運作，我們會保留 pCores 0-1 和24-25 （也就是每個插槽上的前2個 pCores）。 接著，我們會將所有剩餘核心的 pNUMA 網域指派給 VM。 因此，VM 會看到：
+上述拓撲也延續到 HC 系列虛擬機器管理程式配置。 為了為 Azure 虛擬機器管理程式提供在不幹擾 VM 的情況下運行的空間，我們保留 pCore0-1 和 24-25（即每個通訊端上的前 2 個 pCore）。 然後，我們將所有剩餘的內核分配 pNUMA 域到 VM。 因此，VM 將看到：
 
-每個 VM `(2 vNUMA domains) * (22 cores/vNUMA) = 44` 核心
+`(2 vNUMA domains) * (22 cores/vNUMA) = 44`每個 VM 的核心
 
-VM 沒有未提供 pCores 0-1 和24-25 的知識。 因此，它會公開每個 Vnuma 解決方案，就好像它原本就有22個核心一樣。
+VM 不知道 pCore0-1 和 24-25 沒有提供給它。 因此，它公開每個 vNUMA，就好像它本機有 22 個內核一樣。
 
-Intel 更強的白金、金級和銀級 Cpu 也引進了一種可在 CPU 通訊端內部和外部通訊的片上2D 網格網路。 我們強烈建議處理常式釘選以達到最佳效能和一致性。 進程釘選會在 HC 系列 Vm 上使用，因為基礎晶片會以本身的形式公開給來賓 VM。 若要深入瞭解，請參閱[Intel 強 SP 架構](https://bit.ly/2RCYkiE)。
+英特爾至強白金、金和銀 CPU 還引入了模上 2D 網狀網路，用於在 CPU 插槽內外進行通信。 我們強烈建議進行流程固定，以實現最佳性能和一致性。 進程固定將在 HC 系列 VM 上工作，因為基礎晶片以正樣公開給來賓 VM。 要瞭解更多資訊，請參閱[英特爾至強 SP 架構](https://bit.ly/2RCYkiE)。
 
-下圖顯示保留給 Azure 虛擬機器和 HC 系列 VM 的核心隔離。
+下圖顯示了為 Azure 虛擬機器管理程式和 HC 系列 VM 保留的內核的分離。
 
-![保留給 Azure 虛擬機器和 HC 系列 VM 的核心隔離](./media/hc-series-overview/segregation-cores.png)
+![為 Azure 虛擬機器管理程式和 HC 系列 VM 保留的內核分離](./media/hc-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>硬體規格
 
 | 硬體規格          | HC 系列 VM                     |
 |----------------------------------|----------------------------------|
-| 核心                            | 44（已停用 HT）                 |
-| CPU                              | Intel 8168 級白金 *        |
-| CPU 頻率（非 AVX）          | 3.7 GHz （單一核心）、2.7-3.4 GHz （所有核心） |
-| 記憶體                           | 8 GB/核心（352總計）            |
+| 核心                            | 44 （已禁用 HT）                 |
+| CPU                              | 英特爾新恩鉑金 8168*        |
+| CPU 頻率（非 AVX）          | 3.7 GHz（單核），2.7-3.4 GHz（所有內核） |
+| 記憶體                           | 8 GB/核心（共 352 個）            |
 | 本機磁碟                       | 700 GB NVMe                      |
-| Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 * * |
-| 網路                          | 50 Gb 乙太網路（40 Gb 可用） Azure second Gen SmartNIC * * * |
+| Infiniband                       | 100 Gb EDR 梅拉諾克斯連接X-5* |
+| 網路                          | 50 Gb 乙太網（40 Gb 可用） Azure 第二代智慧 NIC* |
 
 ## <a name="software-specifications"></a>軟體規格
 
 | 軟體規格     | HC 系列 VM          |
 |-----------------------------|-----------------------|
-| MPI 作業大小上限            | 13200核心（單一 VMSS 中的 300 Vm，singlePlacementGroup = true） |
-| MPI 支援                 | MVAPICH2、OpenMPI、MPICH、Platform MPI、Intel MPI  |
-| 其他架構       | 整合通訊 X、libfabric、PGAS |
-| Azure 儲存體支援       | Std + Premium （最多4個磁片） |
-| SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 + |
-| Azure CycleCloud 支援    | 是                         |
-| Azure Batch 支援         | 是                         |
+| 最大 MPI 作業大小            | 13200 個內核（單個 VMSS 中的 300 個 VMM，單位置組=true） |
+| MPI 支援                 | MVAPICH2， OpenMPI， MPICH， 平臺 MPI， 英特爾 MPI  |
+| 其他框架       | 整合通訊 X， 交換， PGAS |
+| Azure 存儲支援       | Std = 高級（最多 4 個磁片） |
+| 對 SRIOV RDMA 的作業系統支援   | CentOS/RHEL 7.6°， SLES 12 SP4+， WinServer 2016+ |
+| Azure 迴圈雲支援    | 是                         |
+| Azure 批次處理支援         | 是                         |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 Azure 中適用于[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)和[WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc)的 HPC VM 大小。
+* 詳細瞭解 Azure 中[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)和[Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc)的 HPC VM 大小。
 
-* 深入瞭解 Azure 中的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+* 在 Azure 中瞭解有關[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多詳細資訊。

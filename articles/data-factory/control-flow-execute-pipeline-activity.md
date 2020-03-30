@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 中執行管線活動
+title: 在 Azure 資料工廠中執行管道活動
 description: 了解如何使用「執行管線活動」從一個資料處理站管線叫用另一個資料處理站管線。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440430"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>在 Azure Data Factory 中執行管線活動
@@ -59,7 +59,7 @@ ms.locfileid: "75440430"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 說明 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 NAME | 執行管線活動的名稱。 | String | 是
 type | 必須設為：**ExecutePipeline**。 | String | 是
@@ -254,7 +254,7 @@ waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 
 ## <a name="next-steps"></a>後續步驟
 請參閱 Data Factory 支援的其他控制流程活動： 
 
-- [For Each 活動](control-flow-for-each-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [對於每個活動](control-flow-for-each-activity.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [Web 活動](control-flow-web-activity.md)

@@ -1,25 +1,25 @@
 ---
-title: 取得容器實例記錄 & 事件
-description: 瞭解如何在 Azure 容器實例中取得容器記錄和事件，以協助針對容器問題進行疑難排解
+title: 獲取容器實例日誌&事件
+description: 瞭解如何在 Azure 容器實例中檢索容器日誌和事件，以説明解決容器問題
 ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
 ms.openlocfilehash: 0991b9cb1f99606910dbdf2c87b111f67da6da7b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250005"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>在 Azure 容器執行個體中擷取容器記錄和事件
 
-當您在 Azure 容器實例中有異常的容器時，請先使用[az 容器記錄][az-container-logs]來查看其記錄，然後使用[az container attach][az-container-attach]來串流其標準輸出和標準錯誤。 您也可以在 Azure 入口網站中查看容器實例的記錄和事件，或將容器群組的記錄檔和事件資料傳送至[Azure 監視器記錄](container-instances-log-analytics.md)。
+在 Azure 容器實例中遇到行為不端的容器時，首先使用 az[容器日誌][az-container-logs]查看其日誌，然後使用[az 容器附加][az-container-attach]資料流其標準出和標準錯誤。 您還可以在 Azure 門戶中查看容器實例的日誌和事件，或者將容器組的日誌和事件資料發送到[Azure 監視器日誌](container-instances-log-analytics.md)。
 
 ## <a name="view-logs"></a>檢視記錄
 
 若要在容器內檢視應用程式程式碼中的記錄，您可以使用 [az container logs][az-container-logs] 命令。
 
-以下是在使用命令列覆寫提供不正確 URL 之後，在[容器實例中設定命令列](container-instances-start-command.md#azure-cli-example)中，以工作為基礎的容器範例中的記錄輸出：
+以下是在使用命令列重寫提供了無效 URL 後，容器[實例中"設置命令列"中](container-instances-start-command.md#azure-cli-example)的示例基於任務的容器的日誌輸出：
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -48,9 +48,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>附加輸出資料流
 
-[Az container attach][az-container-attach]命令會提供容器啟動期間的診斷資訊。 容器啟動之後，會將 STDOUT 和 STDERR 串流至您的本機主控台。
+[az container attach][az-container-attach] 命令會提供容器啟動期間的診斷資訊。 容器啟動之後，會將 STDOUT 和 STDERR 串流至您的本機主控台。
 
-例如，在提供要處理之大型文字檔的有效 URL 之後，在[容器實例的設定命令列](container-instances-start-command.md#azure-cli-example)中，以工作為基礎的容器輸出如下：
+例如，在提供了要處理的大文字檔的有效 URL 後，在[容器實例中"設置命令列"中的](container-instances-start-command.md#azure-cli-example)基於任務的容器中輸出：
 
 ```azurecli
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -82,7 +82,7 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>取得診斷事件
 
-如果您的容器無法順利部署，請參閱 Azure 容器實例資源提供者所提供的診斷資訊。 若要查看容器的事件，請執行[az container show][az-container-show]命令：
+如果容器無法成功部署，請查看 Azure 容器實例資來源提供者提供的診斷資訊。 若要檢視容器的事件，請執行 [az container show][az-container-show]：
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -151,7 +151,7 @@ az container show --resource-group myResourceGroup --name mycontainer
 ## <a name="next-steps"></a>後續步驟
 了解如何在 Azure 容器執行個體中[針對常見容器和部署問題進行疑難排解](container-instances-troubleshooting.md)。
 
-瞭解如何將容器群組的記錄檔和事件資料傳送至[Azure 監視器記錄](container-instances-log-analytics.md)。
+瞭解如何將容器組的日誌和事件資料發送到 Azure[監視器日誌](container-instances-log-analytics.md)。
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach

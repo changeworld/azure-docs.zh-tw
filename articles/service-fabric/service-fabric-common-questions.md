@@ -1,14 +1,14 @@
 ---
-title: 有關 Microsoft Azure Service Fabric 的常見問題
-description: 有關 Service Fabric 的常見問題，包括功能、使用案例和常見案例。
+title: 有關微軟 Azure 服務結構的常見問題
+description: 有關服務結構的常見問題，包括功能、用例和常見方案。
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254893"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 的常見問題
@@ -28,7 +28,7 @@ ms.locfileid: "78254893"
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>我能否建立跨多個 Azure 區域或自有資料中心的叢集？
 
-是的。 
+是。 
 
 核心的 Service Fabric 叢集技術可用來結合在世界各地執行的機器，只要它們彼此間有網路連線即可。 不過，建置和執行這類叢集的程序很複雜。
 
@@ -62,9 +62,9 @@ ms.locfileid: "78254893"
 因為下列三個原因，我們要求生產環境叢集至少有 5 個節點：
 1. 即使未執行任何使用者服務，Service Fabric 叢集仍會執行一組具設定狀態的系統服務，包括命名服務及容錯移轉管理員服務。 這些系統服務對於維持叢集的運作是不可或缺的。
 2. 我們一律會針對每個節點放置一個服務複本，因此叢集大小是服務 (實際上是分割區) 可以擁有的複本數量上限。
-3. 由於叢集升級將會至少讓一個節點停機，我們希望擁有至少一個節點的緩衝，因此我們希望生產環境叢集在最低限度以外能有至少兩個節點。 最低限度是系統服務的仲裁大小，其說明如下。  
+3. 由於叢集升級將會至少讓一個節點停機，我們希望擁有至少一個節點的緩衝，因此我們希望生產環境叢集在最低限度以外** 能有至少兩個節點。 最低限度是系統服務的仲裁大小，其說明如下。  
 
-我們希望叢集在面臨兩個節點同時失敗時仍然可用。 若要使 Service Fabric 叢集可用，則系統服務必須可供使用。 具狀態服務 (例如命名服務和容錯移轉管理員服務) 會根據強式一致性，追蹤哪些服務已經部署至叢集，以及它們目前的裝載位置。 該強式一致性接著會根據取得「仲裁」的能力，提供任何指定的更新給那些服務的狀態，其中仲裁代表指定之服務的特定多數複本 (N/2 + 1)。 因此，如果我們需要針對兩個節點同時中斷 (因此同時中斷系統服務的兩個複本) 的復原性，我們必須要讓 ClusterSize - QuorumSize >= 2，這會讓下限強制成為五。 若要達成這個結果，請考慮讓有 N 個節點的叢集有 N 個系統服務複本，亦即每個節點上都有一個。 系統服務的仲裁大小為 (N/2 + 1)。 上述的不等式看起來會像這樣：N - (N/2 + 1) >= 2。 有兩種情況要考量：當 N 是偶數和 N 是奇數。 如果 N 是偶數，假設 N = 2\*m，而 m >= 1，則不等式看起來會像這樣：2\*m - (2\*m/2 + 1) >= 2 或 m >= 3。 N 的最小值是 6，這是在 m = 3 時達成。 相反地，如果 N 是奇數，假設 N = 2\*m+1，而 m >= 1，則不等式看起來會像這樣：2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 或 2\*m+1 - (m+1) >= 2 或 m >= 2。 N 的最小值是 5，這是在 m = 2 時達成。 因此，上述滿足不等式 ClusterSize - QuorumSize >= 2 的所有 N 值，其最小值為 5。
+我們希望叢集在面臨兩個節點同時失敗時仍然可用。 若要使 Service Fabric 叢集可用，則系統服務必須可供使用。 具狀態服務 (例如命名服務和容錯移轉管理員服務) 會根據強式一致性，追蹤哪些服務已經部署至叢集，以及它們目前的裝載位置。 該強式一致性接著會根據取得「仲裁」** 的能力，提供任何指定的更新給那些服務的狀態，其中仲裁代表指定之服務的特定多數複本 (N/2 + 1)。 因此，如果我們需要針對兩個節點同時中斷 (因此同時中斷系統服務的兩個複本) 的復原性，我們必須要讓 ClusterSize - QuorumSize >= 2，這會讓下限強制成為五。 若要達成這個結果，請考慮讓有 N 個節點的叢集有 N 個系統服務複本，亦即每個節點上都有一個。 系統服務的仲裁大小為 (N/2 + 1)。 上述的不等式看起來會像這樣：N - (N/2 + 1) >= 2。 有兩種情況要考量：當 N 是偶數和 N 是奇數。 如果 N 是偶數，假設 N = 2\*m，而 m >= 1，則不等式看起來會像這樣：2\*m - (2\*m/2 + 1) >= 2 或 m >= 3。 N 的最小值是 6，這是在 m = 3 時達成。 相反地，如果 N 是奇數，假設 N = 2\*m+1，而 m >= 1，則不等式看起來會像這樣：2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 或 2\*m+1 - (m+1) >= 2 或 m >= 2。 N 的最小值是 5，這是在 m = 2 時達成。 因此，上述滿足不等式 ClusterSize - QuorumSize >= 2 的所有 N 值，其最小值為 5。
 
 請注意，在上述引數中我們已假設每個節點都有系統服務的複本，因此仲裁大小是根據叢集中的節點數量計算而來。 不過，藉由變更 *TargetReplicaSetSize*，我們可以讓仲裁大小小於 (N/2+1)，這可能會讓您認為我們能夠有小於 5 個節點的叢集，且仍然有 2 個額外節點高於仲裁大小。 例如，在有 4 個節點的叢集中，如果我們將 TargetReplicaSetSize 設為 3，基於 TargetReplicaSetSize 的仲裁大小會是 (3/2 + 1) 或 2，因此我們得出 ClusterSize - QuorumSize = 4-2 >= 2。 不過，如果我們同時遺失任一組節點 (可能是裝載兩個複本的兩個節點)，就無法保證系統服務能達到或高於仲裁，而讓系統服務進入仲裁遺失 (僅剩擁有單一複本)，且將會變為無法使用。
 
@@ -84,7 +84,7 @@ ms.locfileid: "78254893"
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>我能否在晚上/週末關閉叢集以節省成本？
 
-一般來說，不行。 Service Fabric 會將狀態儲存在本機的暫時磁碟上，這表示如果虛擬機器移至不同的主機，資料將不會隨之移動。 在一般作業中，因為新節點會透過其他節點保持在最新狀態，所以這不會是問題。 不過，如果您停止所有節點並在稍後重新啟動它們，則很有可能讓大部分的節點在新的主機上啟動，而使系統無法復原。
+一般而言不行。 Service Fabric 會將狀態儲存在本機的暫時磁碟上，這表示如果虛擬機器移至不同的主機，資料將不會隨之移動。 在一般作業中，因為新節點會透過其他節點保持在最新狀態，所以這不會是問題。 不過，如果您停止所有節點並在稍後重新啟動它們，則很有可能讓大部分的節點在新的主機上啟動，而使系統無法復原。
 
 如果您要建立叢集以在部署應用程式之前測試應用程式，建議您在[持續整合/持續部署管線](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)中動態建立那些叢集。
 
@@ -94,10 +94,10 @@ ms.locfileid: "78254893"
 在我們努力改善體驗時，您的責任是升級。 您必須升級叢集的虛擬機器上的作業系統映像，一次一部 VM。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何將叢集節點類型 (虛擬機器擴展集) 中已連結的資料磁碟加密？
-是的。  如需詳細資訊，請參閱[使用連接的資料磁片建立](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)叢集和[虛擬機器擴展集的 Azure 磁碟加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
+是。  有關詳細資訊，請參閱[創建具有附加資料磁片的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[虛擬機器縮放集的 Azure 磁片加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何在叢集節點類型 (虛擬機器擴展集) 中使用低優先順序的 VM？
-No。 不支援低優先順序的 VM。 
+否。 不支援低優先順序的 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>當我在叢集中執行防毒程式時需要排除哪些目錄和處理序？
 
@@ -126,7 +126,7 @@ No。 不支援低優先順序的 VM。
 您的應用程式可使用下列方法取得向 KeyVault 驗證所需的認證：
 
 A. 在您的應用程式建置/封裝作業期間，您可以將憑證提取到 SF 應用程式的資料套件中，並以此憑證向 KeyVault 驗證。
-B. 對於已啟用虛擬機器擴展集的 MSI，您可以為 SF 應用程式開發簡單的 PowerShell SetupEntryPoint，以[從 MSI 端點取得存取權杖](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然後[從 KeyVault 取出您的秘密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
+B. 對於虛擬機器規模集 MSI 啟用的主機，您可以為 SF 應用開發一個簡單的 PowerShell 安裝程式進入點，[以便從 MSI 終結點獲取訪問權杖](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然後[從 KeyVault 檢索機密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
 ## <a name="application-design"></a>應用程式設計
 
@@ -136,8 +136,8 @@ B. 對於已啟用虛擬機器擴展集的 MSI，您可以為 SF 應用程式開
 
 - 建立會查詢另一個服務所有分割的服務，以提取所需資料。
 - 建立可接收來自另一個服務所有分割之資料的服務。
-- 定期從每個服務將資料推送至外部存放區。 只有當您所執行的查詢不是核心商務邏輯的一部分，因為外部存放區的資料會過時，這種方法才適用。
-- 或者，儲存必須支援直接在資料存放區中查詢所有記錄的資料，而不是在可靠的集合中。 這可排除過時資料的問題，但不允許利用可靠集合的優點。
+- 定期從每個服務將資料推送至外部存放區。 僅當您執行的查詢不是核心業務邏輯的一部分時，此方法才適用，因為外部存儲的資料將過時。
+- 或者，存儲必須支援直接在資料存儲中而不是可靠集合中跨所有記錄查詢的資料。 這消除了陳舊資料的問題，但不允許利用可靠集合的優勢。
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>在所有動作項目查詢資料的最佳方式為何？

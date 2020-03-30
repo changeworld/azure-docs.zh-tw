@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI-sfctl 容器
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含容器的命令清單。
+title: Azure 服務結構 CLI-sfctl 容器
+description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括容器的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906108"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -17,7 +17,7 @@ ms.locfileid: "76906108"
 
 ## <a name="commands"></a>命令
 
-|Command|說明|
+|Command|描述|
 | --- | --- |
 | invoke-api | 針對指定程式碼封裝，叫用 Service Fabric 節點上所部署容器的容器 API。 |
 | 記錄 | 取得在 Service Fabric 節點上部署之容器的容器記錄。 |
@@ -27,7 +27,7 @@ ms.locfileid: "76906108"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --application-id           [必要] | 應用程式的身分識別。 <br><br> 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --code-package-instance-id [必要] | 可唯一識別 Service Fabric 節點上所部署程式碼封裝執行個體的識別碼。 <br><br> 可由 'service code-package-list' 來擷取。 |
@@ -42,7 +42,7 @@ ms.locfileid: "76906108"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -55,7 +55,7 @@ ms.locfileid: "76906108"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --application-id           [必要] | 應用程式的身分識別。 <br><br> 這通常是不含 'fabric\:' URI 配置的完整應用程式名稱。 從 6.0 版開始，階層的名稱會以 "\~" 字元分隔。 例如，如果應用程式名稱是 "fabric\:/myapp/app1"，則應用程式識別在 6.0+ 中會是 "myapp\~app1"，而在舊版中會是 "myapp/app1"。 |
 | --code-package-instance-id [必要] | 程式碼套件執行個體識別碼，可由 'service code-package-list' 來擷取。 |
@@ -67,7 +67,7 @@ ms.locfileid: "76906108"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -77,5 +77,5 @@ ms.locfileid: "76906108"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設定](service-fabric-cli.md) Service Fabric CLI。
+- [設置](service-fabric-cli.md)服務結構 CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

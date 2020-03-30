@@ -1,13 +1,13 @@
 ---
-title: Service Fabric 叢集安全性：用戶端角色
+title: 服務結構群集安全性：用戶端角色
 description: 本文說明兩個用戶端角色及提供給這些角色的權限。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451889"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>角色型存取控制 (適用於 Service Fabric 用戶端)
@@ -89,7 +89,7 @@ Azure Service Fabric 針對連線到 Service Fabric 叢集的用戶端，支援�
 系統管理員存取控制也可存取上述作業。
 
 ## <a name="changing-default-settings-for-client-roles"></a>變更用戶端角色的預設設定
-在叢集資訊清單檔案中，您可以視需要提供系統管理員功能給用戶端。 您可以在[建立叢集](service-fabric-cluster-creation-via-portal.md)時，前往 [Fabric 設定] 選項，並在 [名稱]、[系統管理員]、[使用者] 和 [值] 欄位中提供上述設定來變更預設值。
+在叢集資訊清單檔案中，您可以視需要提供系統管理員功能給用戶端。 您可以在[建立叢集](service-fabric-cluster-creation-via-portal.md)時，前往 [Fabric 設定]**** 選項，並在 [名稱]****、[系統管理員]****、[使用者]**** 和 [值]**** 欄位中提供上述設定來變更預設值。
 
 ## <a name="next-steps"></a>後續步驟
 [Service Fabric 叢集安全性](service-fabric-cluster-security.md)

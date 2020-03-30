@@ -1,7 +1,7 @@
 ---
-title: 需要安全傳輸以確保連接安全
+title: 需要安全傳輸以確保安全連線
 titleSuffix: Azure Storage
-description: 瞭解如何要求 Azure 儲存體的要求的安全傳輸。 當您需要儲存體帳戶的安全傳輸時，來自不安全連線的任何要求都會遭到拒絕。
+description: 瞭解如何要求安全傳輸請求到 Azure 存儲。 當您需要存儲帳戶的安全轉移時，來自不安全連線的任何請求都將被拒絕。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,51 +11,51 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457438"
 ---
-# <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全傳輸以確保連接安全
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全傳輸以確保安全連線
 
-您可以設定儲存體帳戶，以接受來自安全連線的要求，僅透過設定儲存體帳戶的 [**需要安全傳輸**] 屬性。 當您需要安全傳輸時，來自不安全連線的任何要求都會遭到拒絕。 Microsoft 建議您一律針對所有儲存體帳戶要求安全傳輸。
+您可以通過設置存儲帳戶**的安全轉移要求**屬性來配置存儲帳戶以接受來自安全連線的請求。 當您需要安全傳輸時，來自不安全連線的任何請求都被拒絕。 Microsoft 建議您始終需要安全轉移所有存儲帳戶。
 
-需要進行安全傳輸時，必須透過 HTTPS 呼叫 Azure 儲存體 REST API 作業。 任何透過 HTTP 提出的要求都會遭到拒絕。
+當需要安全傳輸時，必須通過 HTTPS 調用 Azure 存儲 REST API 操作。 通過 HTTP 提出的任何請求都被拒絕。
 
-當儲存體帳戶需要安全傳輸時，透過 SMB 連線至 Azure 檔案共用而不加密會失敗。 不安全連線的範例包括透過 SMB 2.1、沒有加密的 SMB 3.0，或某些 Linux SMB 用戶端版本所建立的連接。
+當存儲帳戶需要安全傳輸時，通過 SMB 連接到 Azure 檔共用而不進行加密失敗。 不安全連線的示例包括通過 SMB 2.1、SMB 3.0 未加密或某些版本的 Linux SMB 用戶端建立的連接。
 
-根據預設，當您在 Azure 入口網站中建立儲存體帳戶時，就會啟用 [**需要安全傳輸**] 屬性。 不過，當您使用 SDK 建立儲存體帳戶時，它會停用。
+預設情況下，在 Azure 門戶中創建存儲帳戶時啟用**了所需的安全傳輸**屬性。 但是，當您使用 SDK 創建存儲帳戶時，它將被禁用。
 
 > [!NOTE]
 > 因為 Azure 儲存體針對自訂網域名稱並不支援 HTTPS，當您使用自訂網域名稱時，將不會套用此選項。 不支援傳統儲存體帳戶。
 
-## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure 入口網站中需要安全傳輸
+## <a name="require-secure-transfer-in-the-azure-portal"></a>需要在 Azure 門戶中安全傳輸
 
-當您在[Azure 入口網站](https://portal.azure.com)中建立儲存體帳戶時，可以開啟 [**需要安全傳輸**] 屬性。 您也可以為現有的儲存體帳戶啟用它。
+在[Azure 門戶](https://portal.azure.com)中創建存儲帳戶時，可以打開 **"安全轉移"必需**屬性。 您也可以為現有的儲存體帳戶啟用它。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>針對新的儲存體帳戶要求使用安全傳輸
 
-1. 在 Azure 入口網站中開啟 [建立儲存體帳戶] 窗格。
-1. 在 [需要安全傳輸] 下，選取 [已啟用]。
+1. 在 Azure 入口網站中開啟 [建立儲存體帳戶]**** 窗格。
+1. 在 [需要安全傳輸]**** 下，選取 [已啟用]****。
 
    ![[建立儲存體帳戶] 刀鋒視窗](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>針對現有儲存體帳戶要求使用安全傳輸
 
 1. 在 Azure 入口網站中選取現有儲存體帳戶。
-1. 在 [儲存體帳戶] 功能表窗格中，選取 [設定] 底下的 [組態]。
-1. 在 [需要安全傳輸] 下，選取 [已啟用]。
+1. 在 [儲存體帳戶] 功能表窗格中，選取 [設定]**** 底下的 [組態]****。
+1. 在 [需要安全傳輸]**** 下，選取 [已啟用]****。
 
    ![[儲存體帳戶] 功能表窗格](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="require-secure-transfer-from-code"></a>需要從程式碼進行安全傳輸
+## <a name="require-secure-transfer-from-code"></a>需要從代碼安全傳輸
 
-若要以程式設計方式要求安全傳輸，請在儲存體帳戶上設定_supportsHttpsTrafficOnly_屬性。 您可以使用儲存體資源提供者 REST API、用戶端程式庫或工具來設定此屬性：
+要以程式設計方式要求安全轉移，請設置存儲帳戶上的_支援 HttpsTrafficOnly_屬性。 可以使用存儲資來源提供者 REST API、用戶端庫或工具設置此屬性：
 
 * [REST API](/rest/api/storagerp/storageaccounts)
-* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
-* [CLI](/cli/azure/storage/account)
+* [電源外殼](/powershell/module/az.storage/set-azstorageaccount)
+* [Cli](/cli/azure/storage/account)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)
@@ -91,13 +91,13 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-## <a name="require-secure-transfer-with-azure-cli"></a>需要 Azure CLI 的安全傳輸
+## <a name="require-secure-transfer-with-azure-cli"></a>需要使用 Azure CLI 進行安全傳輸
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- 使用下列命令來檢查設定：
+ 使用以下命令檢查設置：
 
 ```azurecli-interactive
 az storage account show -g {ResourceGroupName} -n {StorageAccountName}
@@ -110,7 +110,7 @@ az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 
 ```
 
-使用下列命令來啟用設定：
+使用以下命令啟用該設置：
 
 ```azurecli-interactive
 az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
@@ -125,4 +125,4 @@ az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https
 
 ## <a name="next-steps"></a>後續步驟
 
-[Blob 儲存體的安全性建議](../blobs/security-recommendations.md)
+[Blob 存儲的安全建議](../blobs/security-recommendations.md)

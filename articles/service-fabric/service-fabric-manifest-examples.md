@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 應用程式資訊清單範例
+title: Azure 服務結構應用程式清單示例
 description: 了解如何設定 Service Fabric 應用程式的應用程式和服務資訊清單設定。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451648"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric 應用程式和服務資訊清單範例
@@ -17,11 +17,11 @@ ms.locfileid: "75451648"
 
 以下是所示功能的索引，以及其所屬的資訊清單範例。
 
-|功能|資訊清單|
+|功能|file:///|
 |---|---|
-|[資源管理](service-fabric-resource-governance.md)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[容器應用程式資訊清單](service-fabric-manifest-example-container-app.md#application-manifest)|
+|[資源治理](service-fabric-resource-governance.md)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[容器應用程式資訊清單](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[以本機系統管理員帳戶身分執行服務](service-fabric-application-runas-security.md)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
-|[將預設原則套用到所有的服務程式碼套件](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
+|[將預設原則套用到所有的服務程式碼封裝](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
 |[建立使用者和群組主體](service-fabric-application-runas-security.md)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
 |在服務執行個體之間共用資料套件|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
 |[覆寫服務端點](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
@@ -34,7 +34,7 @@ ms.locfileid: "75451648"
 |[設定容器登錄驗證](service-fabric-get-started-containers.md#configure-container-repository-authentication)|[容器應用程式資訊清單](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[設定隔離模式](service-fabric-get-started-containers.md#configure-isolation-mode)|[容器應用程式資訊清單](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[指定作業系統組建專屬的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)|[容器應用程式資訊清單](service-fabric-manifest-example-container-app.md#application-manifest)|
-|[設定環境變數](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[容器 FrontEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)、[容器 BackEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|
+|[設置環境變數](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[容器 FrontEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)、[容器 BackEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|
 |[設定端點](service-fabric-get-started-containers.md#configure-communication)|[容器 FrontEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)、[容器 BackEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)、[VotingData 服務資訊清單](service-fabric-manifest-example-reliable-services-app.md#votingdata-service-manifest)|
 |將命令傳遞至容器|[容器 FrontEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)|
 |[將憑證匯入容器](service-fabric-securing-containers.md)|[容器 FrontEndService 服務資訊清單](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)|

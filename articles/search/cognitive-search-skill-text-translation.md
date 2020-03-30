@@ -1,7 +1,7 @@
 ---
-title: 文字翻譯認知技能
+title: 文本翻譯認知技能
 titleSuffix: Azure Cognitive Search
-description: 評估文字，並針對每一筆記錄，傳回在 Azure 認知搜尋的 AI 擴充管線中轉譯為指定目的語言的文字。
+description: 評估文本，並為每個記錄返回在 Azure 認知搜索中的 AI 擴充管道中翻譯成指定目的語言的文本。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
@@ -9,56 +9,56 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460764"
 ---
-#   <a name="text-translation-cognitive-skill"></a>文字翻譯認知技能
+#   <a name="text-translation-cognitive-skill"></a>文本翻譯認知技能
 
-**文字翻譯**技能會評估文字，而針對每筆記錄，會傳回轉譯為指定目的語言的文字。 這項技能使用認知服務中提供的[翻譯工具文字 API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) 。
+**文本翻譯**技能評估文本，並為每個記錄返回翻譯成指定目的語言的文本。 此技能使用認知服務中可用的[翻譯文本 API v3.0。](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)
 
-如果您預期檔可能並非全部都使用一種語言，這項功能就很有用，在這種情況下，您可以將文字標準化為單一語言，然後再進行搜尋的索引。  這也適用于當地語系化使用案例，您可能會想要有多種語言的相同文字複本。
+如果您希望文檔可能並非全部使用一種語言，則此功能非常有用，在這種情況下，您可以通過翻譯搜索索引，將文本正常化為單一語言。  它還可用於當地語系化用例，其中您可能希望使用多種語言的相同文本的副本。
 
-[翻譯工具文字 API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)是非區域認知服務，這表示您的資料不一定會與您的 Azure 認知搜尋或附加認知服務資源保持在相同的區域。
+[翻譯器文本 API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)是非區域認知服務，這意味著您的資料不保證與 Azure 認知搜索或附加的認知服務資源保持在同一區域。
 
 > [!NOTE]
-> 當您透過增加處理頻率、新增更多文件或新增更多 AI 演算法來擴展範圍時，您必須[連結可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
+> 隨著通過增加處理頻率、添加更多文檔或添加更多 AI 演算法來擴大範圍，您需要[附加計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
 > 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
 ## <a name="odatatype"></a>@odata.type  
-TranslationSkill。
+Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="data-limits"></a>資料限制
-記錄的大小上限應為50000個字元，如[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)所測量。 如果您需要在將資料傳送到文字翻譯技能之前先將其分解，請考慮使用[文字分割技能](cognitive-search-skill-textsplit.md)。
+記錄的最大大小應為 50，000 個字元（以[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)） 如果需要在將資料發送到文本翻譯技能之前拆分資料，請考慮使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能參數
 
 這些參數會區分大小寫。
 
-| 輸入                | 說明 |
+| 輸入                | 描述 |
 |---------------------|-------------|
-| defaultToLanguageCode | 具備將檔翻譯成的語言代碼，適用于未明確指定為語言的檔。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。 |
-| defaultFromLanguageCode | 選擇性針對未明確指定 from 語言的檔，用來轉譯檔的語言代碼。  如果未指定 defaultFromLanguageCode，則會使用翻譯工具文字 API 所提供的自動語言偵測來判斷 from 語言。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。 |
-| suggestedFrom | 選擇性當未提供 fromLanguageCode 輸入或 defaultFromLanguageCode 參數，且自動語言偵測不成功時，用來轉譯檔的語言代碼。  如果未指定 suggestedFrom 語言，則會使用英文（en）作為 suggestedFrom 語言。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。 |
+| 預設到語言代碼 | （必需）用於未顯式指定 to 語言的文檔，用於將文檔轉換為的語言代碼。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。 |
+| 預設從語言代碼 | （可選）用於翻譯未顯式指定 from 語言的文檔的語言代碼。  如果未指定預設From語言代碼，則翻譯文本 API 提供的自動語言檢測將用於確定 from 語言。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。 |
+| suggestedFrom | （可選）當未提供"語言代碼"輸入和預設From語言代碼參數且自動語言檢測不成功時，用於翻譯文檔的語言代碼。  如果未指定建議的 From 語言，則英語 （en） 將用作建議的 From 語言。 <br/> 請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。 |
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱     | 說明 |
+| 輸入名稱     | 描述 |
 |--------------------|-------------|
-| text | 要轉譯的文字。|
-| toLanguageCode    | 字串，表示文字應轉譯成的語言。 如果未指定此輸入，將會使用 defaultToLanguageCode 來轉譯文字。 <br/>請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
-| fromLanguageCode  | 字串，表示文字的目前語言。 如果未指定此參數，則會使用 defaultFromLanguageCode （如果未提供 defaultFromLanguageCode，則會自動偵測語言）將會用來轉譯文字。 <br/>請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
+| text | 要翻譯的文本。|
+| 到語言代碼    | 指示文本應轉換為的語言的字串。 如果未指定此輸入，則預設 ToTo 語言代碼將用於翻譯文本。 <br/>請參閱[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
+| 從語言代碼  | 指示文本當前語言的字串。 如果未指定此參數，則預設的 From 語言代碼（如果未提供預設的"從語言代碼"則自動語言檢測）將用於翻譯文本。 <br/>查看[支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出名稱    | 說明 |
+| 輸出名稱    | 描述 |
 |--------------------|-------------|
-| translatedText | 從 translatedFromLanguageCode 到 translatedToLanguageCode 之文字轉譯的字串結果。|
-| translatedToLanguageCode  | 表示文字轉譯成之語言代碼的字串。 如果您要翻譯成多種語言，而且想要能夠追蹤哪些文字是哪種語言，就很有用。|
-| translatedFromLanguageCode    | 表示文字轉譯來來源語言代碼的字串。 如果您選擇了自動語言偵測選項，此輸出將會提供該偵測的結果，這會很有用。|
+| translatedText | 文本翻譯的字串結果從翻譯的語言代碼到翻譯到翻譯到語言代碼。|
+| 翻譯至語言代碼  | 指示文本已轉換為的語言代碼的字串。 如果要翻譯成多種語言，並希望能夠跟蹤哪個文本是哪種語言，則非常有用。|
+| 翻譯自語言代碼    | 指示文本翻譯的語言代碼的字串。 如果您選擇自動語言檢測選項，則非常有用，因為此輸出將為您提供該檢測的結果。|
 
 ##  <a name="sample-definition"></a>範例定義
 
@@ -144,11 +144,11 @@ TranslationSkill。
 
 
 ## <a name="errors-and-warnings"></a>錯誤和警告
-如果您為 from 或 to 語言提供不支援的語言代碼，則會產生錯誤，而且不會轉譯文字。
+如果為 from 或 to 語言提供了不受支援的語言代碼，則建置錯誤，並且不會翻譯文本。
 如果您的文字是空白的，則會產生警告。
-如果您的文字大於50000個字元，則只會轉譯前50000個字元，併發出警告。
+如果文本大於 50，000 個字元，則僅翻譯前 50，000 個字元，併發出警告。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

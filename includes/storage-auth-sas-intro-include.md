@@ -9,17 +9,17 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75371766"
 ---
-共用存取簽章（SAS）可讓您將有限的存取權授與儲存體帳戶中的容器和 blob。 當您建立 SAS 時，您會指定其條件約束，包括用戶端可存取的 Azure 儲存體資源、這些資源上的許可權，以及 SAS 有效的時間長度。
+共用訪問簽名 （SAS） 使您能夠授予對存儲帳戶中的容器和 Blob 的有限存取權限。 創建 SAS 時，可以指定其約束，包括允許用戶端存取哪些 Azure 存儲資源、它們對這些資源具有哪些許可權以及 SAS 的有效期。
 
-每個 SAS 都會以金鑰簽署。 您可以使用下列兩種方式的其中一種來簽署 SAS：
+每個 SAS 都使用金鑰進行簽名。 您可以通過兩種方式之一對 SAS 進行簽名：
 
-- 使用 Azure Active Directory （Azure AD）認證建立的金鑰。 以 Azure AD 認證簽署的 SAS 是*使用者委派*sas。
-- 使用儲存體帳戶金鑰。 *服務 sas*和*帳戶 sas*都會使用儲存體帳戶金鑰進行簽署。
+- 使用使用 Azure 活動目錄 （Azure AD） 憑據創建的金鑰。 使用 Azure AD 憑據簽名的 SAS 是*使用者委派*SAS。
+- 使用存儲帳戶金鑰。 服務*SAS*和*帳戶 SAS*都使用存儲帳戶金鑰進行簽名。
 
-使用者委派 SAS 為使用儲存體帳戶金鑰簽署的 SAS 提供了絕佳的安全性。 Microsoft 建議盡可能使用使用者委派 SAS。 如需詳細資訊，請參閱[使用共用存取簽章（SAS）授與資料的有限存取權](../articles/storage/common/storage-sas-overview.md)。
+使用者委派 SAS 為使用存儲帳戶金鑰簽名的 SAS 提供了卓越的安全性。 Microsoft 建議盡可能使用使用者委派 SAS。 有關詳細資訊，請參閱[授予對具有共用訪問簽名 （SAS） 的資料的有限存取權限](../articles/storage/common/storage-sas-overview.md)。

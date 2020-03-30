@@ -1,15 +1,15 @@
 ---
-title: 使用 EventFlow 的 Azure Service Fabric 事件匯總
+title: Azure 服務結構事件聚合與事件流
 description: 深入了解使用 EventFlow 的彙總及收集事件，監視和診斷 Azure Service Fabric 叢集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463086"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 的事件彙總與集合
@@ -24,7 +24,7 @@ EventFlow 二進位檔是以一組 NuGet 套件的形式提供。 若要將 Even
 
 您會看到一份各種各樣套件的清單，標記為「輸入」和「輸出」。 EventFlow 支援各種不同的記錄提供者和分析器。 視應用程式記錄的來源和目的地而定，裝載 EventFlow 的服務應該包含適當的套件。 除了核心 ServiceFabric 套件，您還需要設定至少一個輸入和輸出。 例如，您可以新增下列套件，將 EventSource 事件傳送至 Application Insights：
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 從服務的 EventSource 類別以及從標準 EventSources (例如 *Microsoft-ServiceFabric-Services* 和 *Microsoft-ServiceFabric-Actors*) 擷取資料
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`從服務的 EventSource 類和標準事件源（如*Microsoft-ServiceFabric-Service-**工作方*）捕獲資料）
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (我們將把記錄傳送給 Azure Application Insights 資源)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` (允許從 Service Fabric 服務設定將 EventFlow 管線初始化，並以 Service Fabric 健康情況報告的形式傳送診斷資料來回報任何問題)
 
@@ -82,7 +82,7 @@ internal sealed class ServiceEventSource : EventSource
 
 請注意，`eventFlowConfig.json` 檔案是服務組態封裝的一部分。 對此檔案所做的變更可以包含在完整或僅限組態的服務升級中，並受到 Service Fabric 升級健康情況檢查和自動復原 (如果發生升級失敗) 控管。 如需詳細資訊，請參閱 [Service Fabric 應用程式升級](service-fabric-application-upgrade.md)。
 
-組態的「篩選」區段可讓您進一步自訂經過 EventFlow 管線到輸出的資訊，讓您卸除或包含特定資訊，或變更事件資料結構。 如需有關篩選的詳細資訊，請參閱 [EventFlow 篩選](https://github.com/Azure/diagnostics-eventflow#filters)。
+組態的「篩選」** 區段可讓您進一步自訂經過 EventFlow 管線到輸出的資訊，讓您卸除或包含特定資訊，或變更事件資料結構。 如需有關篩選的詳細資訊，請參閱 [EventFlow 篩選](https://github.com/Azure/diagnostics-eventflow#filters)。
 
 最後一個步驟是在服務的啟動程式碼 (位於 `Program.cs` 檔案中) 中將 EventFlow 管線具現化：
 
@@ -129,7 +129,7 @@ namespace Stateless1
 }
 ```
 
-當作 `ServiceFabricDiagnosticsPipelineFactory` 之 `CreatePipeline` 方法的參數來傳遞的名稱是「健康情況實體」的名稱，此實體代表 EventFlow 記錄檔收集管線。 當 EventFlow 發生錯誤並透過 Service Fabric 健康情況子系統回報錯誤時，就會使用此名稱。
+當作 `ServiceFabricDiagnosticsPipelineFactory` 之 `CreatePipeline` 方法的參數來傳遞的名稱是「健康情況實體」** 的名稱，此實體代表 EventFlow 記錄檔收集管線。 當 EventFlow 發生錯誤並透過 Service Fabric 健康情況子系統回報錯誤時，就會使用此名稱。
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>在 eventFlowConfig 中使用 Service Fabric 設定和應用程式參數
 
@@ -148,5 +148,5 @@ servicefabric:/<section-name>/<setting-name>
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Application Insights 進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Azure 監視器日誌的事件分析和視覺化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文件](https://github.com/Azure/diagnostics-eventflow)

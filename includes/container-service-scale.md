@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814881"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -20,16 +20,16 @@ ms.locfileid: "66814881"
 ## <a name="scale-with-the-azure-portal"></a>使用 Azure 入口網站進行調整
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽**容器服務**，然後按一下您想要修改的容器服務。
-2. 在 [容器服務] 刀鋒視窗中，按一下 [代理程式] 。
-3. 在 [VM 計數] 中，輸入所需的代理程式節點數目。
+2. 在 [容器服務]**** 刀鋒視窗中，按一下 [代理程式]****。
+3. 在 [VM 計數]**** 中，輸入所需的代理程式節點數目。
 
     ![在入口網站中調整集區](./media/container-service-scale/container-service-scale-portal.png)
 
-4. 若要儲存組態時，請按一下 [儲存] 。
+4. 若要儲存組態，請按一下 [儲存]****。
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 進行調整
 
-[安裝 Azure CLI](/cli/azure/install-azure-cli)並登入 Azure 帳戶與`az login`。
+[安裝 Azure CLI](/cli/azure/install-azure-cli)並登錄到 具有`az login`的 Azure 帳戶。
 
 ### <a name="see-the-current-agent-count"></a>查看目前的代理程式計數
 若要查看叢集中目前擁有的代理程式數目，請執行 `az acs show` 命令。 這會顯示叢集組態。 例如，下列命令會顯示資源群組 `myResourceGroup` 中名為 `containerservice-myACSName` 之容器服務的組態：

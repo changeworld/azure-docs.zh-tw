@@ -1,6 +1,6 @@
 ---
-title: 設計適用于查詢的 Azure 資料表儲存體 |Microsoft Docs
-description: 針對 Azure 資料表儲存體中的查詢設計資料表。
+title: 為查詢設計 Azure 表存儲 |微軟文檔
+description: 為 Azure 表存儲中的查詢設計表。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457637"
 ---
 # <a name="design-for-querying"></a>查詢的設計
@@ -35,13 +35,13 @@ ms.locfileid: "75457637"
 ## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>您選擇的 PartitionKey 和 RowKey 對查詢效能有何影響
 下列範例假設表格服務會以下列結構儲存員工實體 (為求簡潔，大部分的範例皆省略 **Timestamp** 屬性)：  
 
-| *資料行名稱* | *Data type* |
+| *資料行名稱* | *資料類型* |
 | --- | --- |
 | **PartitionKey** (部門名稱) |String |
 | **RowKey** (員工識別碼) |String |
 | **名字** |String |
 | **姓氏** |String |
-| **年齡** |整數 |
+| **Age** |整數  |
 | **EmailAddress** |String |
 
 ＜[Azure 表格儲存體概觀](table-storage-overview.md) ＞一文將說明某些對查詢設計有直接影響的重要 Azure 表格服務功能。 這些功能產生了設計資料表服務查詢的一般指導方針。 請注意，下列範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱 [查詢實體](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)。  
@@ -83,7 +83,7 @@ ms.locfileid: "75457637"
 
 許多設計必須符合需求，才能讓您根據多個準則查閱實體。 比方說，根據電子郵件、員工識別碼或姓氏找出員工實體。 [資料表設計模式](table-storage-design-patterns.md) 中所述的模式可因應這些類型的需求，並說明處理表格服務不提供次要索引的方式：  
 
-* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - 為每個實體儲存多個複本且使用不同 **RowKey** 值 (在相同的資料分割內)，透過使用不同的 **RowKey** 值，就能快速且有效率的查閱和替代排序次序。  
+* [分區內輔助索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern)- 使用不同的**RowKey**值（在同一分區中）存儲每個實體的多個副本，以便使用不同的**RowKey**值啟用快速高效的查找和備用排序次序。  
 * [間資料分割次要索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在個別資料分割或個別資料表中為每個實體儲存多個複本且使用不同 **RowKey** 值，透過使用不同的 **RowKey** 值，就能快速有效率地查閱和替代排序次序。  
 * [索引實體模式](table-storage-design-patterns.md#index-entities-pattern) - 維護索引實體，啟用有效的搜尋以傳回實體清單。  
 
@@ -98,7 +98,7 @@ ms.locfileid: "75457637"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [資料表設計模式](table-storage-design-patterns.md)
+- [表設計模式](table-storage-design-patterns.md)
 - [將關聯性模型化](table-storage-design-modeling.md)
 - [加密資料表資料](table-storage-design-encrypt-data.md)
 - [資料修改的設計](table-storage-design-for-modification.md)

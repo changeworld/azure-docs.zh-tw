@@ -1,7 +1,7 @@
 ---
-title: 使用自訂原則設定資源擁有者密碼認證流程
+title: 使用自訂策略配置資源擁有者密碼憑據流
 titleSuffix: Azure AD B2C
-description: 瞭解如何在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證（ROPC）流程。
+description: 瞭解如何使用 Azure 活動目錄 B2C 中的自訂策略配置資源擁有者密碼憑據 （ROPC） 流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,21 +12,21 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186982"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證流程
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，資源擁有者密碼認證（ROPC）流程是一項 OAuth 標準驗證流程。 在此流程中，應用程式 (也稱為信賴憑證者) 會以有效的認證交換權杖。 認證包含使用者識別碼和密碼。 傳回的權杖為識別碼權杖、存取權杖及重新整理權杖。
+在 Azure 活動目錄 B2C（Azure AD B2C）中，資源擁有者密碼憑據 （ROPC） 流是 OAuth 標準身份驗證流。 在此流程中，應用程式 (也稱為信賴憑證者) 會以有效的認證交換權杖。 認證包含使用者識別碼和密碼。 傳回的權杖為識別碼權杖、存取權杖及重新整理權杖。
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -86,7 +86,7 @@ ms.locfileid: "78186982"
     </ClaimsTransformations>
     ```
 
-4. 找出 **DisplayName** 為 **的**ClaimsProvider`Local Account SignIn` 元素，然後新增下列技術設定檔：
+4. 找出 **DisplayName** 為 `Local Account SignIn` 的 **ClaimsProvider** 元素，然後新增下列技術設定檔：
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -124,7 +124,7 @@ ms.locfileid: "78186982"
     </TechnicalProfile>
     ```
 
-    以您在必要條件教學課程中建立之 ProxyIdentityExperienceFramework 應用程式的應用程式識別碼取代**client_id**的**DefaultValue** 。 然後，使用您在必要條件教學課程中所建立之 IdentityExperienceFramework 應用程式的應用程式識別碼，取代**resource_id**的**DefaultValue** 。
+    將**client_id**的**預設值**替換為您在先決條件教程中創建的代理身份體驗框架應用程式的應用程式 ID。 然後，將**resource_id**的**預設值**替換為您在先決條件教程中創建的標識體驗框架應用程式的應用程式 ID。
 
 5. 將下列 **ClaimsProvider** 元素及其技術設定檔一起新增至 **ClaimsProviders** 元素：
 
@@ -217,9 +217,9 @@ ms.locfileid: "78186982"
     </UserJourney>
     ```
 
-7. 在 Azure AD B2C 租用戶的 [自訂原則] 頁面上，選取 [上傳原則]。
-8. 啟用 [覆寫現有的原則]，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-9. 按一下 [上傳]。
+7. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
+8. 啟用 [覆寫現有的原則]****，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
+9. 按一下 [上傳]****。
 
 ## <a name="create-a-relying-party-file"></a>建立信賴憑證者檔案
 
@@ -238,9 +238,9 @@ ms.locfileid: "78186982"
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. 在 Azure AD B2C 租用戶的 [自訂原則] 頁面上，選取 [上傳原則]。
-6. 啟用**覆寫已存在的原則**，然後流覽並選取  *ROPC_Auth .xml*檔案。
-7. 按一下 [上傳]。
+5. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
+6. **啟用覆蓋策略（如果存在**），然後流覽並選擇*ROPC_Auth.xml*檔。
+7. 按一下 [上傳]****。
 
 ## <a name="test-the-policy"></a>測試原則
 
@@ -256,13 +256,13 @@ ms.locfileid: "78186982"
 | username | `user-account` |
 | 密碼 | `password1` |
 | grant_type | 密碼 |
-| 範圍 | openid `application-id` offline_access |
+| scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 
 - 以您租用戶中的使用者帳戶名稱取代 `user-account`。
 - 以使用者帳戶的密碼取代 `password1`。
-- 以來自 `application-id`ROPC_Auth_app*註冊的「應用程式識別碼」取代*。
+- 以來自 *ROPC_Auth_app* 註冊的「應用程式識別碼」取代 `application-id`。
 - *Offline_access* 是您要接收重新整理權杖時可選用的項目。
 
 實際的 POST 要求與以下範例類似：
@@ -304,8 +304,8 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- 以來自 `application-id`ROPC_Auth_app*註冊的「應用程式識別碼」取代*。
-- 以先前回應中傳回的 `refresh-token`refresh_token**取代**。
+- 以來自 *ROPC_Auth_app* 註冊的「應用程式識別碼」取代 `application-id`。
+- 以先前回應中傳回的 **refresh_token** 取代 `refresh-token`。
 
 成功的回應看起來如以下範例：
 

@@ -1,5 +1,5 @@
 ---
-title: 設定閘道以路由傳送要求
+title: 配置閘道以路由請求
 description: 了解如何為 Service Fabric Mesh 上執行的應用程式設定處理傳入流量的閘道。
 author: dkkapur
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461961"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>設定閘道資源以路由要求
@@ -219,8 +219,8 @@ HTTP 路由規則中包含下列屬性：
 ```
 
 此閘道已設定為適用於 Linux 應用程式 "meshAppLinux"，其包含至少兩種服務 "helloWorldService" 和 "counterService"，而服務會接聽連接埠 80。 根據傳入要求的 URL 結構，閘道會將要求路由至這些服務中的其中一個。 
-* 「\<IPAddress >： 80/helloWorld/\<要求\>」會導致要求被導向 helloWorldService 中的 "helloWorldListener"。 
-* 「\<IPAddress >： 80/counter/\<要求\>」會導致要求被導向 counterService 中的 "counterListener"。 
+* "ip\<位址>：80/helloWorld/\<請求\>"將導致請求被定向到helloWorldService中的"helloWorldListener"。 
+* "ip\<位址>：80/計數器/\<請求\>"將導致請求被定向到計數器服務中的"計數器攔截器"。 
 
 ## <a name="next-steps"></a>後續步驟
 * 部署[輸入範例](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)以查看作用中的閘道

@@ -4,10 +4,10 @@ description: 了解如何針對 Durable Functions 設定自動 Azure 事件方�
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249752"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>發佈至 Azure 事件方格 (預覽) 的 Durable Functions
@@ -16,25 +16,25 @@ ms.locfileid: "78249752"
 
 以下是適合使用此功能的一些案例：
 
-* **DevOps 案例，例如藍色/綠色部署**：您可能想要知道是否有任何工作正在執行中，然後再實行[並存部署策略](durable-functions-versioning.md#side-by-side-deployments)。
+* **DevOps 方案（如藍色/綠色部署**）：在實施[並行部署策略](durable-functions-versioning.md#side-by-side-deployments)之前，您可能需要瞭解是否有任何任務正在運行。
 
-* **先進的監視和診斷支援**：您可以在已針對查詢優化的外部存放區中追蹤協調流程狀態資訊，例如 Azure SQL Database 或 Azure Cosmos DB。
+* **高級監視和診斷支援**：您可以跟蹤針對查詢（如 Azure SQL 資料庫或 Azure Cosmos DB）優化的外部存儲中的業務流程狀態資訊。
 
 * **長時間執行的背景活動**：如果您使用 Durable Functions 進行長時間執行的背景活動，這項功能可協助您知道目前的狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 在您的 Durable Functions 專案中安裝[DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 。
-* 安裝[Azure 儲存體模擬器](../../storage/common/storage-use-emulator.md)（僅限 Windows）或使用現有的 Azure 儲存體帳戶。
+* 在持久函數專案中安裝[Microsoft.Azure.Web 作業.擴展.持久任務](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。
+* 安裝[Azure 存儲模擬程式](../../storage/common/storage-use-emulator.md)（僅限 Windows）或使用現有的 Azure 存儲帳戶。
 * 安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>建立自訂事件方格主題
 
-從 Durable Functions 建立可供傳送事件的事件方格主題。 下列指示說明如何使用 Azure CLI 建立主題。 您也可以[使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或[使用 Azure 入口網站](../../event-grid/custom-event-quickstart-portal.md)來執行這項操作。
+從 Durable Functions 建立可供傳送事件的事件方格主題。 下列指示說明如何使用 Azure CLI 建立主題。 也可以[通過使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或使用[Azure 門戶](../../event-grid/custom-event-quickstart-portal.md)來執行此操作。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-使用 `az group create` 命令建立資源群組。 Azure 事件方格目前不支援所有區域。 如需有關支援哪些區域的詳細資訊，請參閱[Azure 事件方格總覽](../../event-grid/overview.md)。
+使用 `az group create` 命令建立資源群組。 目前，Azure 事件網格不支援所有區域。 有關支援哪些區域的資訊，請參閱 Azure[事件網格概述](../../event-grid/overview.md)。
 
 ```azurecli
 az group create --name eventResourceGroup --location westus2
@@ -64,11 +64,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 您現在可以將事件傳送至主題。
 
-## <a name="configure-event-grid-publishing"></a>設定事件方格發佈
+## <a name="configure-event-grid-publishing"></a>配置事件網格發佈
 
 在 Durable Functions 專案中，尋找 `host.json` 檔案。
 
-在 `eventGridTopicEndpoint` 屬性中新增 `eventGridKeySettingName` 和 `durableTask`。
+在 `durableTask` 屬性中新增 `eventGridTopicEndpoint` 和 `eventGridKeySettingName`。
 
 ```json
 {
@@ -79,7 +79,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-可能的 Azure 事件方格設定屬性可以在[host. json 檔](../functions-host-json.md#durabletask)中找到。 設定 `host.json` 檔案之後，您的函數應用程式會將生命週期事件傳送至事件方格主題。 這適用于您在本機和 Azure 中執行函數應用程式的情況。
+可能的 Azure 事件網格配置屬性可以在[主機.json 文檔中](../functions-host-json.md#durabletask)找到。 配置`host.json`檔後，函數應用會向事件網格主題發送生命週期事件。 當您在本地和 Azure 中運行函數應用時，這一點有效。
 
 在函式應用程式和 `local.settings.json` 中設定主題索引鍵的應用程式設定。 以下 JSON 是本機偵錯的 `local.settings.json` 範例。 以主題索引鍵取代 `<topic_key>`。  
 
@@ -94,21 +94,21 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-如果您使用[儲存體模擬器](../../storage/common/storage-use-emulator.md)（僅限 Windows），請確定它正在運作。 在執行之前，最好先執行 `AzureStorageEmulator.exe clear all` 命令。
+如果使用[存儲模擬器](../../storage/common/storage-use-emulator.md)（僅限 Windows），請確保它正常工作。 在執行之前，最好先執行 `AzureStorageEmulator.exe clear all` 命令。
 
-如果您使用現有的 Azure 儲存體帳戶，請使用其連接字串取代 `local.settings.json` 中的 `UseDevelopmentStorage=true`。
+如果使用現有的 Azure 存儲帳戶，請將其連接`UseDevelopmentStorage=true`字串`local.settings.json`替換。
 
 ## <a name="create-functions-that-listen-for-events"></a>建立可接聽事件的函式
 
-使用 Azure 入口網站，建立另一個函式應用程式來接聽 Durable Functions 應用程式所發佈的事件。 最好是在與事件方格主題相同的區域中找到它。
+使用 Azure 門戶，創建另一個函數應用來偵聽持久功能應用發佈的事件。 最好將其定位在事件網格主題的同一區域中。
 
 ### <a name="create-an-event-grid-trigger-function"></a>建立事件方格觸發程序函式
 
-建立可接收生命週期事件的函式。 選取 [自訂函式]。
+建立可接收生命週期事件的函式。 選取 [自訂函式]****。
 
 ![選取 [建立自訂函式]。](./media/durable-functions-event-publishing/functions-portal.png)
 
-選擇 [事件方格觸發程式]，然後選取語言。
+選擇事件網格觸發器，然後選擇一種語言。
 
 ![選取事件方格觸發程序。](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
@@ -118,7 +118,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 隨即建立具有下列程式碼的函式：
 
-# <a name="c-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -132,7 +132,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 ```javascript
 module.exports = async function(context, eventGridEvent) {
@@ -147,15 +147,15 @@ module.exports = async function(context, eventGridEvent) {
 
 ![選取事件方格觸發程序連結。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-針對 [主題類型] `Event Grid Topics`**選取**。 選取您為事件方格主題所建立的資源群組。 然後選取事件方格主題的執行個體。 按 `Create`。
+針對 [主題類型] **** 選取 `Event Grid Topics`。 選取您為事件方格主題所建立的資源群組。 然後選取事件方格主題的執行個體。 按 `Create`。
 
 ![建立事件格線訂用帳戶。](./media/durable-functions-event-publishing/eventsubscription.png)
 
 您現在已經準備好接收生命週期事件。
 
-## <a name="run-durable-functions-app-to-send-the-events"></a>執行 Durable Functions 應用程式以傳送事件
+## <a name="run-durable-functions-app-to-send-the-events"></a>運行持久功能應用以發送事件
 
-在您稍早設定的 Durable Functions 專案中，開始在本機電腦上進行偵錯工具，並啟動協調流程。 應用程式會將 Durable Functions 生命週期事件發佈到事件方格。 確認「事件方格」會在 Azure 入口網站中檢查其記錄，以觸發您所建立的接聽程式函式。
+在前面配置的"持久功能"專案中，在本地電腦上開始調試並開始業務流程。 該應用程式將持久函數生命週期事件發佈到事件網格。 通過在 Azure 門戶中檢查事件網格的日誌，驗證事件網格是否觸發您創建的攔截器函數。
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -201,23 +201,23 @@ module.exports = async function(context, eventGridEvent) {
 
 下列清單說明生命週期事件結構描述︰
 
-* **`id`** ：事件方格事件的唯一識別碼。
-* **`subject`** ：事件主體的路徑。 `durable/orchestrator/{orchestrationRuntimeStatus}`第 1 課：建立 Windows Azure 儲存體物件{2}。 `{orchestrationRuntimeStatus}` 會是 `Running`、`Completed`、`Failed` 和 `Terminated`。  
-* **`data`** ： Durable Functions 特定參數。
-  * **`hubName`** ： [TaskHub](durable-functions-task-hubs.md)名稱。
-  * **`functionName`** ：協調器函數名稱。
-  * **`instanceId`** ： Durable Functions instanceId。
-  * **`reason`** ：與追蹤事件相關聯的其他資料。 如需詳細資訊，請參閱 [Durable Functions 中的診斷 (Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`** ：協調流程執行時間狀態。 執行中、已完成、失敗、已取消。
-* **`eventType`** ： "orchestratorEvent"
-* **`eventTime`** ：事件時間（UTC）。
-* **`dataVersion`** ：生命週期事件架構的版本。
-* **`metadataVersion`** ：中繼資料的版本。
-* **`topic`** ：事件方格主題資源。
+* **`id`**：事件網格事件的唯一識別碼。
+* **`subject`**： 事件主題的路徑。 `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` 會是 `Running`、`Completed`、`Failed` 和 `Terminated`。  
+* **`data`**：持久函數特定參數。
+  * **`hubName`**：[任務中心](durable-functions-task-hubs.md)名稱。
+  * **`functionName`**：協調器函數名稱。
+  * **`instanceId`**：持久函數實例Id。
+  * **`reason`**：與跟蹤事件關聯的其他資料。 如需詳細資訊，請參閱 [Durable Functions 中的診斷 (Azure Functions)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`**：業務流程運行時狀態。 執行中、已完成、失敗、已取消。
+* **`eventType`**："協調器事件"
+* **`eventTime`**：事件時間 （UTC）。
+* **`dataVersion`**：生命週期事件架構的版本。
+* **`metadataVersion`**：中繼資料的版本。
+* **`topic`**：事件網格主題資源。
 
 ## <a name="how-to-test-locally"></a>本機測試方式
 
-若要在本機進行測試，請參閱[Azure 函數事件方格觸發程式本機的調試](../functions-debug-event-grid-trigger-local.md)程式。
+要在本地進行測試，請閱讀[Azure 函數事件網格觸發本地調試](../functions-debug-event-grid-trigger-local.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 叢集資源管理員中的節流
+title: 服務結構群集資源管理器中的限制
 description: 了解如何設定 Service Fabric 叢集 Resource Manager 提供的節流。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452166"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>對 Service Fabric 叢集資源管理員進行節流
@@ -84,4 +84,4 @@ Service Fabric 有兩種機制可供節制移動的複本數目。 Service Fabri
 
 ## <a name="next-steps"></a>後續步驟
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
-- 叢集資源管理員有許多描述叢集的選項。 若要深入了解這些選項，請參閱關於[描述 Service Fabric 叢集](service-fabric-cluster-resource-manager-cluster-description.md)一文
+- 叢集資源管理員有許多描述叢集的選項。 要瞭解有關它們的更多，請查看本文介紹[服務結構群集](service-fabric-cluster-resource-manager-cluster-description.md)

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Threat Modeling Tool 版本4/9/2019
+title: 微軟威脅建模工具版本 4/9/2019
 titleSuffix: Azure
 description: 記載 Threat Modeling Tool 的版本資訊
 author: jegeib
@@ -9,45 +9,45 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 59d385ba7de5bf7bceae4dc8ddadbca813046094
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269719"
 ---
-# <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool 更新版本 7.1.60408.1-4/9/2019
+# <a name="threat-modeling-tool-update-release-71604081---492019"></a>威脅建模工具更新版本 7.1.60408.1 - 2019/4/9
 
-Microsoft Threat Modeling Tool （TMT）的版本7.1.60408.1 已于 9 2019 年4月發行，並包含下列變更：
+Microsoft 威脅建模工具 （TMT） 的版本 7.1.60408.1 于 2019 年 4 月 9 日發佈，其中包含以下更改：
 
-- Azure Key Vault 和 Azure 流量管理員的新樣板
-- TMT 版本號碼現在會顯示在主畫面上
-- 支援連結已更新
+- Azure 金鑰保存庫和 Azure 流量管理器的新模具
+- TMT 版本號現在顯示在主畫面上
+- 已更新支援連結
 - 錯誤修正
 
 ## <a name="feature-changes"></a>功能變更
 
-### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Azure Key Vault 和 Azure 流量管理員的新樣板
+### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Azure 金鑰保存庫和 Azure 流量管理器的新模具
 
-![Azure Key Vault 樣板](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![Azure 金鑰保存庫模具](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
-已將 Azure Key Vault 和 Azure 流量管理員的新樣板和威脅新增至 Azure 樣板集。 開啟以 Azure 樣板集為基礎的模型時，系統會提示使用者更新與模型相關聯的範本。 您也可以使用 [檔案] 功能表中的 [套用範本] 命令，手動起始以 Azure 樣板集為基礎的模型，並重新套用最新的 Azure 雲端服務 tb7 檔案。
+Azure 金鑰保存庫和 Azure 流量管理器的新模具和威脅已添加到 Azure 模具集中。 基於 Azure 模具集打開模型時，將提示使用者更新與模型關聯的範本。 還可以通過使用"檔"功能表中的"應用範本"命令並重新應用最新的 Azure 雲服務.tb7 檔，手動啟動基於 Azure 模具集的更新模型。
 
-### <a name="tmt-version-number-is-now-shown-on-the-home-screen"></a>TMT 版本號碼現在會顯示在主畫面上
+### <a name="tmt-version-number-is-now-shown-on-the-home-screen"></a>TMT 版本號現在顯示在主畫面上
 
-Threat Modeling Tool 的用戶端版本現在會顯示在應用程式的主畫面上，以方便存取。
+為了便於訪問，威脅建模工具的用戶端版本現在顯示在應用程式的主畫面上。
 
-![Azure Key Vault 樣板](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![Azure 金鑰保存庫模具](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
-### <a name="support-links-have-been-updated"></a>支援連結已更新
+### <a name="support-links-have-been-updated"></a>已更新支援連結
 
-此工具內的所有支援連結都已更新，可讓使用者直接[tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) ，而不是 MSDN 論壇。
+該工具中的所有支援連結都已更新，以指示使用者訪問[tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com)MSDN 論壇，而不是 MSDN 論壇。
 
 ## <a name="system-requirements"></a>系統需求
 
 - 支援的作業系統
-  - [Microsoft Windows 10 年度更新版](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更新版本
+  - [微軟視窗 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 必要的 .NET 版本
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更新版本
+  - [.淨 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更高版本
 - 其他需求
   - 必須有網際網路連線可接收工具和範本的更新。
 

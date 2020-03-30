@@ -1,13 +1,13 @@
 ---
-title: 變換 Azure Service Fabric 叢集憑證
-description: 瞭解如何變換憑證一般名稱所識別的 Service Fabric 叢集憑證。
+title: 滾動 Azure 服務結構群集證書
+description: 瞭解如何滾動由證書通用名稱標識的服務結構群集證書。
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451968"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>手動變換 Service Fabric 叢集憑證
@@ -75,5 +75,5 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解[叢集安全性](service-fabric-cluster-security.md)。
+* 瞭解[群集安全性](service-fabric-cluster-security.md)。
 * [更新及管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)

@@ -1,15 +1,15 @@
 ---
-title: 建立 Azure Service Fabric 的混亂和容錯移轉測試
+title: 為 Azure 服務結構創建混沌和容錯移轉測試
 description: 使用 Service Fabric 混亂測試和容錯移轉測試案例來引發錯誤並確認服務的可靠性。
 author: motanv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465545"
 ---
 # <a name="testability-scenarios"></a>Testability 案例
@@ -124,7 +124,7 @@ class Test
 
 PowerShell
 
-Service Fabric Powershell 模組包含兩種開始混亂案例的方式。 `Invoke-ServiceFabricChaosTestScenario` 是以用戶端為基礎，而且如果用戶端機器在測試期間關閉，將不會再引進任何錯誤。 或者，還有一組命令，用來在機器關機時讓測試保持執行狀態。 `Start-ServiceFabricChaos` 使用名為 FaultAnalysisService 的具狀態且可靠的系統服務，確保在 TimeToRun 啟動之前，會持續引進錯誤。 `Stop-ServiceFabricChaos` 可用來手動停止案例，而 `Get-ServiceFabricChaosReport` 會取得報告。 如需詳細資訊，請參閱[Azure Service Fabric Powershell 參考](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)和[Service Fabric 叢集中的引發控制混亂](service-fabric-controlled-chaos.md)。
+服務結構電源外殼模組包括兩種開始混沌方案的方法。 `Invoke-ServiceFabricChaosTestScenario`基於用戶端，如果用戶端電腦在測試中途關閉，則不會引入進一步的故障。 或者，有一組命令，用於在電腦停機時保持測試回合。 `Start-ServiceFabricChaos`使用稱為故障分析服務的有狀態和可靠的系統服務，確保故障將保持引入，直到 TimeToRun 啟動。 `Stop-ServiceFabricChaos`可用於手動停止方案，並將`Get-ServiceFabricChaosReport`獲取報告。 有關詳細資訊，請參閱[Azure 服務結構電源殼引用](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)和[在服務結構群集中引入受控混沌](service-fabric-controlled-chaos.md)。
 
 ```powershell
 $connection = "localhost:19000"
@@ -234,7 +234,7 @@ class Test
 ```
 
 
-**PowerShell**
+**電源外殼**
 
 ```powershell
 $connection = "localhost:19000"

@@ -1,46 +1,46 @@
 ---
-title: 整合 Azure NetApp Files 與 Azure Kubernetes Service
-description: 瞭解如何整合 Azure NetApp Files 與 Azure Kubernetes Service
+title: 將 Azure NetApp 檔與 Azure 庫伯奈斯服務集成
+description: 瞭解如何將 Azure NetApp 檔與 Azure 庫伯奈斯服務集成
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
 ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273758"
 ---
-# <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>整合 Azure NetApp Files 與 Azure Kubernetes Service
+# <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>將 Azure NetApp 檔與 Azure 庫伯奈斯服務集成
 
-[Azure NetApp Files][anf]是在 azure 上執行的企業級、高效能、計量付費檔案儲存體服務。 本文說明如何整合 Azure NetApp Files 與 Azure Kubernetes Service （AKS）。
+[Azure NetApp 檔][anf]是在 Azure 上運行的企業級高性能、按流量計費的檔存儲服務。 本文介紹如何將 Azure NetApp 檔與 Azure 庫伯奈斯服務 （AKS） 集成。
 
 ## <a name="before-you-begin"></a>開始之前
-此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 > [!IMPORTANT]
-> 您的 AKS 叢集也必須[位於支援 Azure NetApp Files 的區域中][anf-regions]。
+> AKS 群集還必須[位於支援 Azure NetApp 檔的區域][anf-regions]。
 
-您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您還需要 Azure CLI 版本 2.0.59 或更高版本安裝和配置。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ### <a name="limitations"></a>限制
 
-當您使用 Azure NetApp Files 時，適用下列限制：
+使用 Azure NetApp 檔時，以下限制適用：
 
-* Azure NetApp Files 僅適用[于選取的 azure 區域][anf-regions]。
-* 您必須先獲得 Azure NetApp Files 服務的存取權，才可以使用 Azure NetApp Files。 若要申請存取，您可以使用[Azure NetApp Files 等候清單提交表單][anf-waitlist]。 在您收到來自 Azure NetApp Files 小組的官方確認電子郵件之前，您無法存取 Azure NetApp Files 服務。
-* 您的 Azure NetApp Files 服務必須建立在與您的 AKS 叢集相同的虛擬網路中。
-* 初始部署 AKS 叢集之後，只支援 Azure NetApp Files 的靜態布建。
-* 若要搭配使用動態布建與 Azure NetApp Files，請安裝並設定[NetApp Trident](https://netapp-trident.readthedocs.io/) 19.07 版或更新版本。
+* Azure NetApp 檔僅在[選定的 Azure 區域][anf-regions]中可用。
+* 在使用 Azure NetApp 檔之前，必須授予對 Azure NetApp 檔服務的存取權限。 要申請訪問，可以使用[Azure NetApp 檔等待清單提交表單][anf-waitlist]。 在收到 Azure NetApp 檔團隊的官方確認電子郵件之前，無法訪問 Azure NetApp 檔服務。
+* Azure NetApp 檔服務必須在與 AKS 群集相同的虛擬網路中創建。
+* 在初始部署 AKS 群集後，僅支援 Azure NetApp 檔的靜態預配。
+* 要將動態預配與 Azure NetApp 檔一起使用，請安裝和配置[NetApp Trident](https://netapp-trident.readthedocs.io/)版本 19.07 或更高版本。
 
-## <a name="configure-azure-netapp-files"></a>設定 Azure NetApp Files
+## <a name="configure-azure-netapp-files"></a>配置 Azure NetApp 檔
 
 > [!IMPORTANT]
-> 您必須先完成訂用帳戶的[Azure NetApp Files 等候清單提交表單][anf-waitlist]，才能註冊*Microsoft netapp*資源提供者。 您必須從 Azure NetApp Files 小組收到官方確認電子郵件，才能註冊資源提供。
+> 必須先完成訂閱的[Azure NetApp 檔等待清單提交表單][anf-waitlist]，然後才能註冊*Microsoft.NetApp*資來源提供者。 在收到 Azure NetApp 檔團隊的官方確認電子郵件之前，無法註冊資源提供。
 
-註冊*Microsoft NetApp*資源提供者：
+註冊*Microsoft.NetApp*資源供應商：
 
 ```azurecli
 az provider register --namespace Microsoft.NetApp --wait
@@ -49,7 +49,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > 這需要一些時間才會完成。
 
-當您建立 Azure NetApp 帳戶以與 AKS 搭配使用時，您必須在**節點**資源群組中建立帳戶。 首先，使用[az aks show][az-aks-show]命令取得資源組名，並加入 `--query nodeResourceGroup` 查詢參數。 下列範例會在資源組名*myResourceGroup*中，取得名為*myAKSCluster*之 AKS 叢集的節點資源群組：
+創建用於 AKS 的 Azure NetApp 帳戶時，需要在**節點**資源組中創建該帳戶。 首先，使用 [az aks show][az-aks-show] 命令來取得資源群組名稱，並新增 `--query nodeResourceGroup` 查詢參數。 下面的示例獲取名為 myAKSCluster 的資源組名為*myAKSCluster*的 AKS 群集的節點資源組，該組名為*myResourceGroup*：
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -59,7 +59,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-使用[az netappfiles account create][az-netappfiles-account-create]，在**node**資源群組和與您的 AKS 叢集相同的區域中建立 Azure NetApp Files 帳戶。 下列範例會在*MC_myResourceGroup_myAKSCluster_eastus*資源群組和*eastus*區域中建立名為*myaccount1*的帳戶：
+使用[az netapp 檔帳戶][az-netappfiles-account-create]創建在**節點**資源組中創建 Azure NetApp 檔帳戶，並使用 與 AKS 群集相同的區域。 以下示例在*MC_myResourceGroup_myAKSCluster_eastus*資源組和東部區域中創建名為*myaccount1* *的*帳戶：
 
 ```azurecli
 az netappfiles account create \
@@ -68,7 +68,7 @@ az netappfiles account create \
     --account-name myaccount1
 ```
 
-使用[az netappfiles pool create][az-netappfiles-pool-create]建立新的容量集區。 下列範例會建立名為*mypool1*的新容量集區，大小和*Premium*服務層級為 4 TB：
+使用[az netapp檔池創建][az-netappfiles-pool-create]創建新的容量池。 下面的示例創建一個名為*mypool1*的新容量池，其大小和*高級*服務等級為 4 TB：
 
 ```azurecli
 az netappfiles pool create \
@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-使用[az network vnet subnet create][az-network-vnet-subnet-create]建立要[委派給 Azure NetApp Files][anf-delegate-subnet]的子網。 *此子網必須位於與您的 AKS 叢集相同的虛擬網路中。*
+創建子網以使用[az 網路 vnet 子網創建][az-network-vnet-subnet-create][將委託給 Azure NetApp 檔][anf-delegate-subnet]。 *此子網必須與 AKS 群集位於同一虛擬網路中。*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -95,7 +95,7 @@ az network vnet subnet create \
     --address-prefixes 10.0.0.0/28
 ```
 
-使用[az netappfiles volume create][az-netappfiles-volume-create]來建立磁片區。
+使用[az netappfile 卷創建創建卷][az-netappfiles-volume-create]。
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
@@ -124,9 +124,9 @@ az netappfiles volume create \
     --protocol-types "NFSv3"
 ```
 
-## <a name="create-the-persistentvolume"></a>建立 PersistentVolume
+## <a name="create-the-persistentvolume"></a>創建持久卷
 
-使用[az netappfiles volume show][az-netappfiles-volume-show]列出磁片區的詳細資料
+使用[az netapp檔卷顯示][az-netappfiles-volume-show]列出卷的詳細資訊
 
 ```azurecli
 az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
@@ -148,7 +148,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-建立 `pv-nfs.yaml` 定義 PersistentVolume。 將 `path` 取代為上一個命令中具有*ipAddress*的*creationToken*和 `server`。 例如：
+創建定義`pv-nfs.yaml`持久卷。 替換為`path`*創建權杖*，然後`server`替換為上一個命令中的*ipAddress。* 例如：
 
 ```yaml
 ---
@@ -166,21 +166,21 @@ spec:
     path: /myfilepath2
 ```
 
-將*伺服器*和*路徑*更新為您在上一個步驟中建立的 NFS （網路檔案系統）磁片區的值。 使用[kubectl apply][kubectl-apply]命令來建立 PersistentVolume：
+更新*伺服器*和*路徑*，以訪問在上一步驟中創建的 NFS（網路檔案系統）卷的值。 使用[kubectl 應用][kubectl-apply]命令創建持久卷：
 
 ```console
 kubectl apply -f pv-nfs.yaml
 ```
 
-使用 [ [kubectl 描述][kubectl-describe]] 命令，確認 PersistentVolume 的*狀態*是否*可用*：
+使用[kubectl 描述][kubectl-describe]命令驗證持久卷*的狀態**可用*：
 
 ```console
 kubectl describe pv pv-nfs
 ```
 
-## <a name="create-the-persistentvolumeclaim"></a>建立 PersistentVolumeClaim
+## <a name="create-the-persistentvolumeclaim"></a>創建持久卷索賠
 
-建立 `pvc-nfs.yaml` 定義 PersistentVolume。 例如：
+創建定義`pvc-nfs.yaml`持久卷。 例如：
 
 ```yaml
 apiVersion: v1
@@ -196,21 +196,21 @@ spec:
       storage: 1Gi
 ```
 
-使用[kubectl apply][kubectl-apply]命令來建立 PersistentVolumeClaim：
+使用[kubectl 應用][kubectl-apply]命令創建持久卷聲明：
 
 ```console
 kubectl apply -f pvc-nfs.yaml
 ```
 
-使用[kubectl 描述][kubectl-describe]*命令，確認*PersistentVolumeClaim 的*狀態*是否已系結：
+*使用*[kubectl 描述][kubectl-describe]命令驗證持久卷聲明*的狀態*：
 
 ```console
 kubectl describe pvc pvc-nfs
 ```
 
-## <a name="mount-with-a-pod"></a>使用 pod 掛接
+## <a name="mount-with-a-pod"></a>隨吊艙安裝
 
-建立 `nginx-nfs.yaml`，定義使用 PersistentVolumeClaim 的 pod。 例如：
+創建`nginx-nfs.yaml`使用持久卷聲明的窗格定義。 例如：
 
 ```yaml
 kind: Pod
@@ -234,19 +234,19 @@ spec:
       claimName: pvc-nfs
 ```
 
-使用[kubectl apply][kubectl-apply]命令建立 pod：
+使用[kubectl 應用][kubectl-apply]命令創建 pod：
 
 ```console
 kubectl apply -f nginx-nfs.yaml
 ```
 
-使用[kubectl 描述][kubectl-describe]命令確認*pod 正在執行*：
+使用[kubectl 描述][kubectl-describe]命令驗證窗格*正在運行*：
 
 ```console
 kubectl describe pod nginx-nfs
 ```
 
-使用[kubectl exec][kubectl-exec]來連線至 pod，以確認您的磁片區已掛接在 pod 中，然後 `df -h` 檢查是否已掛接該磁片區。
+使用[kubectl exec][kubectl-exec]連接到 pod，然後`df -h`檢查卷是否已安裝，從而驗證卷已安裝在窗格中。
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
@@ -262,7 +262,7 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure NetApp Files 的詳細資訊，請參閱[什麼是 Azure Netapp files][anf]。 如需搭配使用 NFS 與 AKS 的詳細資訊，請參閱[手動建立和使用具有 Azure Kubernetes Service （AKS）的 nfs （網路檔案系統） Linux 伺服器磁片][aks-nfs]區。
+有關 Azure NetApp 檔的詳細資訊，請參閱[什麼是 Azure NetApp 檔][anf]。 有關將 NFS 與 AKS 一起使用的詳細資訊，請參閱[手動創建和使用具有 Azure 庫伯奈斯服務 （AKS） 的 NFS（網路檔案系統）Linux 伺服器卷][aks-nfs]。
 
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md

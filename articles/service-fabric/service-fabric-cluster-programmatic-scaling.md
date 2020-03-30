@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 以程式設計方式調整
+title: Azure 服務結構程式設計縮放
 description: 以程式設計方式根據自訂觸發程序相應縮小或放大 Azure Service Fabric 叢集
 author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458278"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以程式設計方式調整 Service Fabric 叢集 
@@ -20,16 +20,16 @@ ms.locfileid: "75458278"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>管理認證
-撰寫服務來處理調整的其中一項挑戰是，服務必須能夠不經互動式登入程序就存取虛擬機器擴展集資源。 如果調整服務是要修改自己的 Service Fabric 應用程式，存取 Service Fabric 叢集是很容易的事，但需要有認證才能存取擴展集。 若要登入，您可以使用以[Azure CLI](https://github.com/azure/azure-cli)建立的[服務主體](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)。
+撰寫服務來處理調整的其中一項挑戰是，服務必須能夠不經互動式登入程序就存取虛擬機器擴展集資源。 如果調整服務是要修改自己的 Service Fabric 應用程式，存取 Service Fabric 叢集是很容易的事，但需要有認證才能存取擴展集。 要登錄，可以使用使用[Azure CLI](https://github.com/azure/azure-cli)創建的[服務主體](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 您可以透過下列步驟來建立服務主體︰
 
-1. 以具有虛擬機器擴展集存取權的使用者身分登入 Azure CLI （`az login`）
+1. 以有權訪問虛擬機器規模集的使用者身份登錄到`az login`Azure CLI （ ）
 2. 使用 `az ad sp create-for-rbac` 建立服務主體
     1. 記下 appId (在其他地方稱為「用戶端識別碼」)、名稱、密碼及租用戶，以供稍後使用。
     2. 您還需要訂用帳戶識別碼，若要檢視此識別碼，請使用 `az account list`
 
-流暢的計算程式庫可以使用這些認證來登入，如下所示（請注意，如 `IAzure` 的核心流暢 Azure 類型是在[Microsoft. Azure 管理](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)的封裝中）：
+流暢的計算庫可以使用這些憑據登錄，如下所示（請注意，Microsoft.Azure.Management.Fluent`IAzure`包中如下[Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)所有流暢的 Azure 類型）：
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -59,13 +59,13 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-或者，也可以使用 PowerShell Cmdlet 來管理虛擬機器擴展集大小。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 可以擷取虛擬機器擴展集物件。 目前的容量可透過 `.sku.capacity` 屬性來取得。 將容量變更為所需的值之後，便可以使用 [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 命令來更新 Azure 中的虛擬機器擴展集。
+或者，也可以使用 PowerShell Cmdlet 來管理虛擬機器擴展集大小。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)可以檢索虛擬機器縮放集物件。 目前的容量可透過 `.sku.capacity` 屬性來取得。 將容量更改為所需值後，可以使用 命令更新[`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)Azure 中的虛擬機器縮放集。
 
 和手動新增節點時一樣，若要啟動新的 Service Fabric 節點，您只需要新增擴展集執行個體，因為擴展集範本所含有的擴充功能可自動將新的執行個體加入 Service Fabric 叢集。 
 
 ## <a name="scaling-in"></a>相應縮小
 
-中的相應放大類似于向外延展。實際的虛擬機器擴展集變更幾乎相同。 但就如先前所討論的，Service Fabric 只會自動清除持久性為金級或銀級的已移除節點。 因此，在銅級持久性的相應縮小案例中，就必須與 Service Fabric 叢集互動，以關閉要移除的節點，然後移除其狀態。
+中的擴展類似于向外擴展。實際虛擬機器規模集更改幾乎相同。 但就如先前所討論的，Service Fabric 只會自動清除持久性為金級或銀級的已移除節點。 因此，在銅級持久性的相應縮小案例中，就必須與 Service Fabric 叢集互動，以關閉要移除的節點，然後移除其狀態。
 
 關閉節點的準備工作涉及尋找要移除的節點 (最近新增的虛擬機器擴展集執行個體) 並加以停用。 虛擬機器擴展集執行個體會以其新增的順序編號，因此可以藉由比較節點名稱中的數字尾碼 (其會比對基礎的虛擬機器擴展集執行個體名稱) 來找到較新的節點。 
 

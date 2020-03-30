@@ -1,49 +1,49 @@
 ---
-title: 使用 Azure Site Recovery 將 VMware VM 磁片從嚴重損壞修復排除到 Azure
-description: 如何使用 Azure Site Recovery 排除 VMware VM 磁片，使其不會複寫到 Azure。
+title: 通過 Azure 網站恢復從災害復原排除 VMware VM 磁片到 Azure
+description: 如何通過 Azure 網站恢復將 VMware VM 磁片從複製到 Azure 中排除。
 author: mayurigupta13
 manager: rochakm
 ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
 ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75495363"
 ---
-# <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>將磁片從 VMware VM 複寫排除到 Azure
+# <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>從 VMware VM 複製到 Azure 的磁片
 
-本文說明如何在將 VMware Vm 複寫至 Azure 以進行嚴重損壞修復時，排除磁片。 基於下列原因，您可能會想要從複寫中排除磁片：
+本文介紹如何在將 VMware VM 複製到 Azure 以進行災害復原時排除磁片。 您可能希望出於多種原因從複製中排除磁片：
 
-- 確保在排除的磁片上變換不重要的資料不會被覆寫。
-- 藉由排除不需要複寫的磁片，將耗用的複寫頻寬或目標端資源優化。
-- 藉由不要複寫不需要的資料來儲存儲存體和網路資源。
+- 確保在排除的磁片上改動的不重要資料不會複製。
+- 通過排除不需要複製的磁片，優化消耗的複製頻寬或目標端資源。
+- 通過不復制不需要的資料來節省存儲和網路資源。
 
-從複寫排除磁片之前：
+在從複製中排除磁片之前：
 
 - [深入了解](exclude-disks-replication.md)排除磁碟。
-- 回顧[一般排除案例](exclude-disks-replication.md#typical-scenarios)和[範例](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk)，其中顯示如何排除磁片，如何影響複寫、容錯移轉和容錯回復。
+- 查看[典型的排除方案和](exclude-disks-replication.md#typical-scenarios)示例，這些方案和[示例](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk)顯示排除磁片如何影響複製、容錯移轉和故障恢復。
 
 ## <a name="before-you-start"></a>開始之前
 
  開始之前，請注意下列事項：
 
-- 複寫 **：根據**預設，機器上的所有磁片都已複寫。
-- **磁片類型**：只有基本磁碟可以從複寫中排除。 您無法排除作業系統或動態磁碟。
-- **行動服務**：若要排除磁片不進行複寫，您必須先在電腦上手動安裝行動服務，再啟用複寫。 您無法使用推送安裝，因為只有在啟用複寫之後，此方法才會在 VM 上安裝行動服務。  
-- **新增/移除/排除磁片**：啟用複寫之後，您將無法新增/移除/排除磁片以進行複寫。 如果您想要新增/移除或排除磁片，您需要停用機器的保護，然後再次啟用它。
-- **故障**轉移：容錯移轉之後，如果容錯移轉的應用程式需要排除的磁片才能正常執行，您必須手動建立這些磁片。 或者，您可以將 Azure 自動化整合至復原方案，以在電腦容錯移轉期間建立磁片。
-- **容錯回復-Windows**：當您在容錯移轉之後容錯回復至內部部署網站時，您在 Azure 中手動建立的 Windows 磁片不會容錯回復。 例如，如果您故障切換三個磁片，並直接在 Azure Vm 上建立兩個磁片，則只有三個已容錯回復的磁片會容錯回復。
-- **容錯回復-linux**機器的容錯回復，您在 Azure 中手動建立的磁片會容錯回復。 例如，如果您故障切換三個磁片，並直接在 Azure Vm 上建立兩個磁片，則所有五個都會容錯回復。 您無法排除在容錯回復或 Vm 重新保護中手動建立的磁片。
+- **複製**：預設情況下，將複製電腦上的所有磁片。
+- **磁片類型**：只能從複製中排除基本磁碟。 您無法排除作業系統或動態磁碟。
+- **移動服務**：要從複製中排除磁片，必須先在啟用複製之前在電腦上手動安裝移動服務。 不能使用推送安裝，因為此方法僅在啟用複製後在 VM 上安裝移動服務。  
+- **添加/刪除/排除磁片**：啟用複製後，無法添加/刪除/排除磁片進行複製。 如果要添加/刪除或排除磁片，則需要禁用對電腦的保護，然後再次啟用它。
+- **容錯移轉**：容錯移轉後，如果容錯移轉應用需要排除磁片才能正常工作，則需要手動創建這些磁片。 或者，您可以將 Azure 自動化集成到恢復計畫中，以在電腦容錯移轉期間創建磁片。
+- **故障倒回 Windows**：容錯移轉後故障回本地網站時，在 Azure 中手動創建的 Windows 磁片不會失敗。 例如，如果故障超過三個磁片，直接在 Azure VM 上創建兩個磁片，則只有容錯移轉的三個磁片將失敗。
+- **故障倒退-Linux：** 對於 Linux 電腦的故障倒回，您在 Azure 中手動創建的磁片將失敗。 例如，如果故障超過三個磁片，並直接在 Azure VM 上創建兩個磁片，則所有五個磁片都將失敗。 不能排除在故障恢復或重新保護 VM 中手動創建的磁片。
 
 
 
 ## <a name="exclude-disks-from-replication"></a>從複寫排除磁碟
 
-1. 當您[啟用](site-recovery-hyper-v-site-to-azure.md)VMware VM 的複寫時，在選取您想要複寫的 vm 之後，請在 [**啟用**複寫 > **屬性**] > **設定**內容] 頁面中，檢查要複寫的**磁片**資料行。 預設會選取所有磁片進行複寫。
-2. 如果您不想要複寫特定的磁片，請在 [要複寫的**磁片**] 中清除您要排除之任何磁片的選項。 
+1. 當您為 VMware VM[啟用複製](site-recovery-hyper-v-site-to-azure.md)時，在選擇要複製的 VM 後，在 **"啟用複製** > **屬性** > **配置屬性屬性"** 頁中，查看 **"磁片到複製"** 列。 預設情況下，所有磁片都選擇用於複製。
+2. 如果不想複製特定磁片，則在**磁片中複製**清除要排除的任何磁片的選擇。 
 
     ![從複寫排除磁碟](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)
 

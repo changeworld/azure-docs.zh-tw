@@ -1,6 +1,6 @@
 ---
 title: 在 Visual Studio 中設定和使用儲存體模擬器 | Microsoft Docs
-description: 設定和使用儲存體模擬器，這是一個公用程式，可在本機開發電腦上模擬 Azure 中的 Blob、佇列和資料表儲存體服務。
+description: 配置和使用存儲模擬器，這是一個實用程式，用於類比本地開發電腦上 Azure 中可用的 Blob、佇列和表存儲服務。
 services: visual-studio-online
 author: ghogen
 manager: jillfra
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
 ms.openlocfilehash: a6f853924416cce2440ca15767044029b20e651f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75450733"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>在 Visual Studio 中設定和使用儲存體模擬器
 
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure SDK 開發環境包含儲存體模擬器，這是一個公用程式，可在本機開發電腦上模擬 Azure 提供的 blob、佇列和資料表服務。 如果您要建置雲端服務來採用 Azure 儲存體服務，或撰寫任何外部應用程式來呼叫儲存體服務，您可以在本機利用儲存體模擬器來測試您的程式碼。 Azure Tools for Microsoft Visual Studio 已將儲存體模擬器的管理整合到 Visual Studio 中。 Azure Tools 會在第一次使用儲存體模擬器資料庫時初始化、當您從 Visual Studio 執行或偵錯程式碼時啟動儲存體模擬器服務，並以唯讀方式透過 [Azure 儲存體總管] 存取儲存體模擬器資料。
 
@@ -41,7 +41,7 @@ Azure SDK 開發環境包含儲存體模擬器，這是一個公用程式，可�
 
 ## <a name="initializing-and-running-the-storage-emulator"></a>初始化及執行儲存體模擬器
 
-您可以指定當您在 Visual Studio 中執行或偵錯服務時，讓 Visual Studio 自動啟動儲存體模擬器。 在 [方案總管] 中，開啟 **Azure** 專案的捷徑功能表並選擇 [屬性]。 在 [開發] 索引標籤的 [啟動 Azure 儲存體模擬器] 清單中，選擇 [True] \(如果未尚設定為此值)。  某些專案類型沒有 [**開發**] 索引標籤。如果是這種情況，您可以藉由設定專案檔中的 `StartDevelopmentStorage` 元素來啟用或停用儲存體模擬器啟動。 將它設定為**True**以啟用它，或設為**False**以停用它。  例如，在 Azure Functions 專案中，開啟專案檔來編輯和修改 XML 程式碼，如下所示：
+您可以指定當您在 Visual Studio 中執行或偵錯服務時，讓 Visual Studio 自動啟動儲存體模擬器。 在 [方案總管] 中，開啟 **Azure** 專案的捷徑功能表並選擇 [屬性]****。 在 [開發]**** 索引標籤的 [啟動 Azure 儲存體模擬器]**** 清單中，選擇 [True]**** (尚未設定為此值時)。  某些專案類型沒有 **"開發"** 選項卡。如果是這種情況，可以通過在專案檔案中設置`StartDevelopmentStorage`元素來啟用或禁用存儲模擬器啟動。 將其設置為**True**以啟用 True，或**將其設置為"False"** 以禁用它。  例如，在 Azure 函數專案中，打開專案檔案以編輯和修改 XML 代碼，如下所示：
 
 ```xml
   <PropertyGroup>

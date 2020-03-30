@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 來管理 Azure 中的流量管理員
-description: 透過此學習路徑，開始使用流量管理員的 Azure PowerShell。
+description: 使用此學習路徑，開始使用 Azure PowerShell 進行流量管理器。
 services: traffic-manager
 documentationcenter: na
 author: rohinkoul
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938504"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理員
@@ -59,7 +59,7 @@ $TmProfile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 
 下表描述參數：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | 名稱 |流量管理員設定檔資源的資源名稱。 相同資源群組中的設定檔必須有唯一的名稱。 這個名稱是從用於 DNS 查詢的 DNS 名稱分割而來。 |
 | resourceGroupName |包含設定檔資源的資源群組名稱。 |
@@ -125,7 +125,7 @@ Azure 端點會參考 Azure 中託管的服務。 支援兩種 Azure 端點：
 * 您可以選擇是否指定 'Weight'。 只有在設定檔已設定為使用「加權」流量路由方法時，才會使用加權， 否則會予以忽略。 如果指定，則值必須是 1 到 1000 之間的數字。 預設值為 '1'。
 * 您可以選擇是否指定 'Priority'。 只有在設定檔已設定為使用「優先順序」流量路由方法時，才會使用優先順序， 否則會予以忽略。 有效值從 1 到 1000，值越小代表優先順序越高。 如果對某個端點指定值，則所有端點也都必須進行指定。 如果省略，則會依端點列出順序，從 '1' 開始套用預設值。
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>範例1：使用 `Add-AzTrafficManagerEndpointConfig` 新增 App Service 端點
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>示例 1：使用添加應用服務終結點`Add-AzTrafficManagerEndpointConfig`
 
 在此範例中，我們使用 `Add-AzTrafficManagerEndpointConfig` Cmdlet 建立流量管理員設定檔，並新增兩個 App Service 端點。
 
@@ -210,7 +210,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>從另一個訂用帳戶新增端點
 
-流量管理員可以處理不同訂用帳戶的端點。 利用您想要新增的端點來切換至訂用帳戶，以擷取流量管理員所需的輸入。 接著，您必須切換至具有流量管理員設定檔的訂用帳戶，並將端點新增至其中。 下列範例會示範如何透過一個公用 IP 位址來完成此操作。
+流量管理員可以處理不同訂用帳戶的端點。 利用您想要新增的端點來切換至訂用帳戶，以擷取流量管理員所需的輸入。 然後，您需要使用流量管理器設定檔切換到訂閱，並將終結點添加到其中。 下列範例會示範如何透過一個公用 IP 位址來完成此操作。
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription

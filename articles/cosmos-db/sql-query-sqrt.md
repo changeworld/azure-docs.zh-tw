@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言的 SQRT
-description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 SQRT。
+title: AZURE 宇宙 DB 查詢語言中的 SQRT
+description: 在 Azure 宇宙 DB 中瞭解 SQL 系統函數 SQRT。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3d5452e5ba650b487acff03f622cdbb170275dce
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303455"
 ---
-# <a name="sqrt-azure-cosmos-db"></a>SQRT （Azure Cosmos DB）
+# <a name="sqrt-azure-cosmos-db"></a>SQRT（Azure 宇宙資料庫）
  傳回指定之數值的平方根。  
   
 ## <a name="syntax"></a>語法
@@ -48,10 +48,10 @@ SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+此系統功能不會利用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [數學函數 Azure 宇宙 DB](sql-query-mathematical-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

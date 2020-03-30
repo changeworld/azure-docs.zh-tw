@@ -1,5 +1,5 @@
 ---
-title: 範例 API 管理原則-根據訊息內文大小的路由要求
+title: 示例 API 管理原則 - 基於郵件內文大小的路由請求
 titleSuffix: Azure API Management
 description: Azure API 管理原則範例 - 示範如何根據要求主體的大小進行要求的路由傳送。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 8cee2c13386a076f0321619754468cfc1e9fb31c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442419"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>根據要求主體的大小進行要求的路由傳送
@@ -26,7 +26,7 @@ ms.locfileid: "75442419"
 
 ## <a name="policy"></a>原則
 
-將程式碼貼至 [輸入] 區塊。
+將程式碼貼至 [輸入]**** 區塊。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Route requests based on size.policy.xml)]
 

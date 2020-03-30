@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485438"
 ---
 # <a name="track-asynchronous-azure-operations"></a>追蹤非同步 Azure 作業
@@ -185,4 +185,4 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 ## <a name="next-steps"></a>後續步驟
 
 * 如需每個 REST 作業的相關文件，請參閱 [REST API 文件](/rest/api/)。
-* 如需透過 Resource Manager REST API 部署範本的詳細資訊，請參閱[使用 Resource Manager 範本部署資源和 Resource Manager REST API](../templates/deploy-rest.md)。
+* 有關通過資源管理器 REST API 部署範本的資訊，請參閱[使用資源管理器範本和資源管理器 REST API 部署資源](../templates/deploy-rest.md)。

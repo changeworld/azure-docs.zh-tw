@@ -1,7 +1,7 @@
 ---
 title: 使用 TensorBoard 將實驗視覺化
 titleSuffix: Azure Machine Learning
-description: 啟動 TensorBoard 以視覺化實驗執行歷程記錄，並找出超參數微調和重新定型的可能區域。
+description: 啟動 TensorBoard 以視覺化實驗執行歷程記錄，並確定超參數調優和再培訓的潛在區域。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,58 +10,58 @@ author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
 ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78195374"
 ---
-# <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure Machine Learning 將實驗執行和計量視覺化
+# <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 機器學習視覺化實驗運行和指標
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何使用主要 Azure Machine Learning SDK 中[的 `tensorboard` 套件](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py)，在 TensorBoard 中查看您的實驗執行和計量。 檢查實驗執行之後，您就可以更進一步地微調和重新定型您的機器學習模型。
+在本文中，您將瞭解如何使用主 Azure 機器學習 SDK 中的[`tensorboard`包](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py)在 TensorBoard 中查看實驗運行和指標。 檢查實驗運行後，可以更好地調整和重新訓練機器學習模型。
 
-[TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview)是一套 web 應用程式，可檢查並瞭解您的實驗結構和效能。
+[TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview)是一套 Web 應用程式，用於檢查和理解您的實驗結構和性能。
 
-如何使用 Azure Machine Learning 實驗啟動 TensorBoard，取決於實驗的類型：
-+ 如果您的實驗原本就輸出 TensorBoard 所能使用的記錄檔，例如 PyTorch、Chainer 和 TensorFlow 實驗，則您可以直接從實驗的執行歷程記錄[啟動 TensorBoard](#direct) 。 
+使用 Azure 機器學習實驗啟動 TensorBoard 的方式取決於實驗的類型：
++ 如果實驗本機輸出了 TensorBoard 可消耗的日誌檔，如 PyTorch、鏈子和 TensorFlow 實驗，則可以直接從實驗的執行歷程記錄[中啟動 TensorBoard。](#direct) 
 
-+ 對於原本不會輸出 TensorBoard 可耗用檔案的實驗（例如 Scikit-learn-學習或 Azure Machine Learning 實驗），請使用[`export_to_tensorboard()` 方法](#export)，將執行歷程記錄匯出為 TensorBoard 記錄，並從該處啟動 TensorBoard。 
++ 對於未本機輸出 TensorBoard 易耗檔的實驗（如 Scikit 學習或 Azure 機器學習實驗），請使用[`export_to_tensorboard()`該方法](#export)將執行歷程記錄匯出為 TensorBoard 日誌，並從那裡啟動 TensorBoard。 
 
 > [!TIP]
-> 本檔中的資訊主要適用于想要監視模型定型流程的資料科學家和開發人員。 如果您是系統管理員，想要監視 Azure Machine learning 中的資源使用方式和事件（例如配額、已完成的定型回合或完成的模型部署），請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
+> 本文檔中的資訊主要面向想要監視模型培訓過程的資料科學家和開發人員。 如果您是對監視 Azure 機器學習中的資源使用方式和事件（如配額、已完成訓練運行或已完成的模型部署）感興趣的管理員，請參閱[監視 Azure 機器學習](monitor-azure-machine-learning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 若要啟動 TensorBoard 並查看您的實驗執行歷程記錄，您的實驗必須先前已啟用記錄，以追蹤其計量和效能。  
+* 要啟動 TensorBoard 並查看實驗執行歷程記錄，您的實驗需要以前啟用的日誌記錄來跟蹤其指標和性能。  
 
-* 本檔中的程式碼可在下列其中一個環境中執行： 
+* 本文檔中的代碼可以在以下任一環境中運行： 
 
-    * Azure Machine Learning 計算實例-不需要下載或安裝
+    * Azure 機器學習計算實例 - 無需下載或安裝
 
-        * 完成[教學課程：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)，以建立預先載入 SDK 和範例存放庫的專用筆記本伺服器。
+        * 完成[教程：設置環境和工作區](tutorial-1st-experiment-sdk-setup.md)，以創建預載入 SDK 和示例存儲庫的專用筆記本伺服器。
 
-        * 在筆記本伺服器的 samples 資料夾中，流覽至下列目錄來尋找兩個已完成和已展開的筆記本：
-            * **使用方式 > 訓練-包含深度學習 > 匯出-執行歷程記錄到 tensorboard > 匯出-執行-歷程記錄到 tensorboard。 ipynb**
+        * 在筆記本伺服器上的示例資料夾中，通過導航到這些目錄來查找兩個已完成和展開的筆記本：
+            * **使用方式-azureml >培訓-深度學習>出口運行歷史到 tens板>出口運行歷史到 tensorboard.**
 
-            * **使用說明 > 的追蹤和監視 > tensorboard 的實驗。 ipynb**
+            * **如何使用-azureml>跟蹤和監控實驗>張緊板。**
 
-    * 您自己的 Juptyer 筆記本伺服器
-       * 安裝具有 `tensorboard` 額外的[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-        * [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。  
-        * [建立工作區設定檔](how-to-configure-environment.md#workspace)。
+    * 您自己的 Juptyer 筆記本電腦伺服器
+       * [安裝](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) `tensorboard` Azure 機器學習 SDK
+        * [創建 Azure 機器學習工作區](how-to-manage-workspace.md)。  
+        * [創建工作區設定檔](how-to-configure-environment.md#workspace)。
   
 <a name="direct"></a>
 
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>選項1：在 TensorBoard 中直接查看執行歷程記錄
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>選項 1：直接查看 TensorBoard 中的執行歷程記錄
 
-此選項適用于原生輸出 TensorBoard 所使用之記錄檔的實驗，例如 PyTorch、Chainer 和 TensorFlow 實驗。 如果您的實驗不是這種情況，請改用[`export_to_tensorboard()` 方法](#export)。
+此選項適用于本機輸出 TensorBoard 可消耗的日誌檔的實驗，例如 PyTorch、鏈條和 TensorFlow 實驗。 如果情況並非如此，請使用[方法`export_to_tensorboard()`](#export)。
 
-下列範例程式碼會從遠端計算目標中的 TensorFlow 存放庫使用[MNIST 示範實驗](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py)，Azure Machine Learning 計算。 接下來，我們會使用 SDK 的自訂[TensorFlow 估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)來定型模型，然後開始針對此 TensorFlow 實驗進行 TensorBoard，也就是原生輸出 TensorBoard 事件檔案的實驗。
+以下示例代碼在遠端計算目標 Azure 機器學習計算中使用 TensorFlow 存儲庫中的[MNIST 演示實驗](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py)。 接下來，我們使用 SDK 的自訂[TensorFlow 估計器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)訓練模型，然後針對此 TensorFlow 實驗啟動 TensorBoard，即本機輸出 TensorBoard 事件檔的實驗。
 
-### <a name="set-experiment-name-and-create-project-folder"></a>設定實驗名稱並建立專案資料夾
+### <a name="set-experiment-name-and-create-project-folder"></a>設置實驗名稱並創建專案資料夾
 
-在這裡，我們將實驗命名為，並建立其資料夾。 
+在這裡，我們命名實驗並創建其資料夾。 
  
 ```python
 from os import path, makedirs
@@ -75,9 +75,9 @@ if not path.exists(exp_dir):
 
 ```
 
-### <a name="download-tensorflow-demo-experiment-code"></a>下載 TensorFlow 示範實驗程式碼
+### <a name="download-tensorflow-demo-experiment-code"></a>下載 TensorFlow 演示實驗代碼
 
-TensorFlow 的存放庫有一個 MNIST 示範，其中包含廣泛的 TensorBoard 檢測。 我們不需要改變此示範的任何程式碼，就能與 Azure Machine Learning 搭配使用。 在下列程式碼中，我們會下載 MNIST 程式碼，並將它儲存在新建立的實驗資料夾中。
+TensorFlow 的存儲庫具有具有大量 TensorBoard 儀器的 MNIST 演示。 我們不需要也不需要更改本演示的任何代碼，以便它與 Azure 機器學習配合使用。 在以下代碼中，我們下載 MNIST 代碼並將其保存在新創建的實驗資料夾中。
 
 ```python
 import requests
@@ -87,14 +87,14 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-在 MNIST 程式碼檔案中，mnist_with_summaries .py，請注意，有幾行會呼叫 `tf.summary.scalar()`、`tf.summary.histogram()`、`tf.summary.FileWriter()` 等等。這些方法會將您實驗的重要計量分組、記錄及標記為執行歷程記錄。 `tf.summary.FileWriter()` 特別重要，因為它會將資料從您的記錄實驗計量中序列化，讓 TensorBoard 能夠產生其視覺效果。
+在整個 MNIST 代碼檔中，mnist_with_summaries.py，請注意有呼叫`tf.summary.scalar()`的`tf.summary.histogram()`行，`tf.summary.FileWriter()`等。這些方法將實驗的關鍵指標分組、記錄和標記到執行歷程記錄中。 特別`tf.summary.FileWriter()`重要，因為它序列化了來自您記錄的實驗指標中的資料，這允許 TensorBoard 從它們中生成視覺化效果。
 
  ### <a name="configure-experiment"></a>設定實驗
 
-在下列程式中，我們會設定我們的實驗，並設定記錄和資料的目錄。 這些記錄將會上傳至成品服務，稍後會 TensorBoard 存取。
+在下面，我們配置實驗並設置日誌和資料的目錄。 這些日誌將上載到工件服務，TensorBoard 稍後將訪問該服務。
 
 >[!Note]
-> 在此 TensorFlow 範例中，您必須在本機電腦上安裝 TensorFlow。 此外，TensorBoard 模組（也就是包含在 TensorFlow 中的模組）必須可供此筆記本的核心存取，因為本機電腦是執行 TensorBoard 的地方。
+> 對於此 TensorFlow 示例，您需要在本地電腦上安裝 TensorFlow。 此外，TensorBoard 模組（即 TensorFlow 中包含的模組）必須可供此筆記本的內核訪問，因為本地電腦是運行 TensorBoard 的模組。
 
 ```Python
 import azureml.core
@@ -120,8 +120,8 @@ arguments_list = ["--log_dir", logs_dir]
 exp = Experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-cluster-for-your-experiment"></a>為您的實驗建立叢集
-我們會為此實驗建立 AmlCompute 叢集，不過您可以在任何環境中建立您的實驗，而且仍然可以針對實驗執行歷程記錄啟動 TensorBoard。 
+### <a name="create-a-cluster-for-your-experiment"></a>為實驗創建群集
+我們為此實驗創建 AmlCompute 群集，但是您的實驗可以在任何環境中創建，您仍然能夠針對實驗執行歷程記錄啟動 TensorBoard。 
 
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -148,9 +148,9 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 # print(compute_target.get_status().serialize())
 ```
 
-### <a name="submit-run-with-tensorflow-estimator"></a>以 TensorFlow 估計工具提交執行
+### <a name="submit-run-with-tensorflow-estimator"></a>使用 TensorFlow 估計器提交運行
 
-TensorFlow 估計工具提供一種簡單的方式，在計算目標上啟動 TensorFlow 訓練作業。 它是透過泛型[`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)類別來執行，它可以用來支援任何架構。 如需使用泛型估計工具定型模型的詳細資訊，請參閱[使用估計工具以 Azure Machine Learning 定型模型](how-to-train-ml-models.md)
+TensorFlow 估計器提供了一種在計算目標上啟動 TensorFlow 訓練作業的簡單方法。 它通過泛型[`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)類實現，可用於支援任何框架。 有關使用通用估計器的訓練模型的詳細資訊，請參閱[使用估計器使用 Azure 機器學習訓練模型](how-to-train-ml-models.md)
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -164,11 +164,11 @@ tf_estimator = TensorFlow(source_directory=exp_dir,
 run = exp.submit(tf_estimator)
 ```
 
-### <a name="launch-tensorboard"></a>啟動 TensorBoard
+### <a name="launch-tensorboard"></a>啟動張力板
 
-您可以在執行期間或完成後啟動 TensorBoard。 在下列程式中，我們會建立 TensorBoard 物件實例 `tb`，以在 `run`中載入實驗執行歷程記錄，然後使用 `start()` 方法來啟動 TensorBoard。 
+您可以在運行期間或運行完成後啟動 TensorBoard。 在下面，我們創建一個 TensorBoard 物件`tb`實例 ，該實例將獲取載入在`run`中的實驗執行歷程記錄，然後使用 方法`start()`啟動 TensorBoard。 
   
-[TensorBoard](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py)的函式會接受執行的陣列，因此請務必將它當做單一元素陣列傳入。
+[TensorBoard 建構函式](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py)採用一個運行陣列，因此請確保並將其作為單元素陣列傳遞。
 
 ```python
 from azureml.tensorboard import Tensorboard
@@ -183,18 +183,18 @@ tb.stop()
 ```
 
 >[!Note]
- 雖然此範例使用 TensorFlow，但 TensorBoard 可輕鬆地搭配 PyTorch 或 Chainer 模型使用。 執行 TensorBoard 的電腦上必須有 TensorFlow，但在進行 PyTorch 或 Chainer 計算的電腦上則不需要。 
+ 雖然此示例使用 TensorFlow，但 TensorBoard 可以像 PyTorch 或鏈子型號一樣容易使用。 TensorFlow 必須在運行 TensorBoard 的電腦上可用，但在執行 PyTorch 或鏈式計算的電腦上不需要 TensorFlow。 
 
 
 <a name="export"></a>
 
-## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>選項2：在 TensorBoard 中將歷程記錄匯出為記錄
+## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>選項 2：將歷史記錄匯出為日誌，以在 TensorBoard 中查看
 
-下列程式碼會設定範例實驗、使用 Azure Machine Learning 執行歷程記錄 Api 開始記錄程式，並將實驗執行歷程記錄匯出到 TensorBoard 所取用的記錄中以供視覺效果。 
+以下代碼設置示例實驗，使用 Azure 機器學習執行歷程記錄 API 開始日誌記錄過程，並將實驗執行歷程記錄匯出到 TensorBoard 可使用的日誌中進行視覺化。 
 
-### <a name="set-up-experiment"></a>設定實驗
+### <a name="set-up-experiment"></a>設置實驗
 
-下列程式碼會設定新的實驗，並將執行目錄命名為 `root_run`。 
+以下代碼設置一個新的實驗，並命名運行目錄`root_run`。 
 
 ```python
 from azureml.core import Workspace, Experiment
@@ -207,7 +207,7 @@ exp = Experiment(ws, experiment_name)
 root_run = exp.start_logging()
 ```
 
-在這裡，我們會載入糖尿病資料集，這是 scikit-learn 所隨附的內建小型資料集，並將它分割成測試和定型集。
+在這裡，我們載入糖尿病資料集 -一個內置的小資料集，附帶 scikit 學習，並將其拆分為測試和培訓集。
 
 ```Python
 from sklearn.datasets import load_diabetes
@@ -223,9 +223,9 @@ data = {
 }
 ```
 
-### <a name="run-experiment-and-log-metrics"></a>執行實驗和記錄計量
+### <a name="run-experiment-and-log-metrics"></a>運行實驗和日誌指標
 
-在此程式碼中，我們會在執行歷程記錄中訓練線性回歸模型和記錄索引鍵計量、Alpha 係數、`alpha`和 mean 平方誤差 `mse`。
+對於此代碼，我們在執行歷程記錄中訓練線性回歸模型並記錄關鍵指標、Alpha`alpha`係數和均方誤差。 `mse`
 
 ```Python
 from tqdm import tqdm
@@ -247,11 +247,11 @@ for alpha in tqdm(alphas):
    root_run.log("mse", mse)
 ```
 
-### <a name="export-runs-to-tensorboard"></a>將執行匯出至 TensorBoard
+### <a name="export-runs-to-tensorboard"></a>匯出運行到 TensorBoard
 
-透過 SDK 的[export_to_tensorboard （）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py)方法，我們可以將 Azure machine learning 實驗的執行歷程記錄匯出至 tensorboard 記錄，以便我們可以透過 tensorboard 來加以查看。  
+使用 SDK 的[export_to_tensorboard（）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py)方法，我們可以將 Azure 機器學習實驗的執行歷程記錄匯出到 TensorBoard 日誌中，以便通過 TensorBoard 查看它們。  
 
-在下列程式碼中，我們會在目前的工作目錄中建立 `logdir` 資料夾。 此資料夾是我們將從 `root_run` 匯出實驗執行歷程記錄和記錄檔的位置，然後將該執行標示為已完成。 
+在以下代碼中，我們在當前工作目錄中`logdir`創建資料夾。 此資料夾是我們將匯出實驗執行歷程記錄和日誌的位置`root_run`，然後將其標記為已完成。 
 
 ```Python
 from azureml.tensorboard.export import export_to_tensorboard
@@ -272,10 +272,10 @@ root_run.complete()
 ```
 
 >[!Note]
- 您也可以指定執行 `export_to_tensorboard(run_name, logdir)` 的名稱，將特定執行匯出至 TensorBoard
+ 還可以通過指定運行的名稱將特定運行匯出到 TensorBoard`export_to_tensorboard(run_name, logdir)`
 
 ### <a name="start-and-stop-tensorboard"></a>啟動和停止 TensorBoard
-一旦匯出此實驗的執行歷程記錄，我們就可以使用[start （）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-)方法來啟動 TensorBoard。 
+匯出此實驗的執行歷程記錄後，我們可以使用[start（）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-)方法啟動 TensorBoard。 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -287,7 +287,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-當您完成時，請務必呼叫 TensorBoard 物件的[stop （）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#stop--)方法。 否則，TensorBoard 會繼續執行，直到您關閉筆記本核心為止。 
+完成後，請確保調用 TensorBoard 物件的[stop（）](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#stop--)方法。 否則，TensorBoard 將繼續運行，直到您關閉筆記本內核。 
 
 ```python
 tb.stop()
@@ -295,7 +295,7 @@ tb.stop()
 
 ## <a name="next-steps"></a>後續步驟
 
-在此操作說明中，建立兩個實驗，並瞭解如何針對其執行歷程記錄啟動 TensorBoard，以找出可能的微調和重新定型的區域。 
+在此，創建兩個實驗，並學習如何啟動 TensorBoard 針對其執行歷程記錄，以確定潛在的調優和再培訓區域。 
 
-* 如果您對模型感到滿意，請前往我們的[如何部署模型一](how-to-deploy-and-where.md)文。 
-* 深入瞭解[超參數微調](how-to-tune-hyperparameters.md)。 
+* 如果您對模型感到滿意，請前往我們的["如何部署模型](how-to-deploy-and-where.md)"文章。 
+* 瞭解有關[超參數調優](how-to-tune-hyperparameters.md)的更多。 

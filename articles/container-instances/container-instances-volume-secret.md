@@ -1,27 +1,27 @@
 ---
-title: 將秘密磁片區掛接至容器群組
+title: 將機密卷裝載到容器組
 description: 了解如何掛接秘密磁碟區，以儲存供您的容器執行個體存取的機密資訊
 ms.topic: article
 ms.date: 07/19/2018
 ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249943"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接秘密磁碟區
 
-使用「秘密」磁碟區，將敏感性資訊提供給容器群組中的容器。 「秘密」磁碟區會將您的祕密儲存在磁碟區內的檔案中，容器群組中的容器即可存取這些檔案。 藉由在「秘密」磁碟區中儲存密碼，您可以避免將 SSH 金鑰或資料庫認證等敏感性資料新增至您的應用程式程式碼。
+使用「秘密」** 磁碟區，將敏感性資訊提供給容器群組中的容器。 「秘密」** 磁碟區會將您的祕密儲存在磁碟區內的檔案中，容器群組中的容器即可存取這些檔案。 藉由在「秘密」** 磁碟區中儲存密碼，您可以避免將 SSH 金鑰或資料庫認證等敏感性資料新增至您的應用程式程式碼。
 
-所有的*秘密*磁片區都是由[tmpfs][tmpfs]所支援，這是以 RAM 為後盾的檔案系統;其內容永遠不會寫入至非變動性儲存體。
+所有秘密** 磁碟區都由 RAM 型檔案系統 [tmpfs][tmpfs] 支援；其內容永遠不會寫入靜態儲存區。
 
 > [!NOTE]
-> 「祕密」磁碟需目前僅限於 Linux 容器。 了解如何在[設定環境變數](container-instances-environment-variables.md)中，為 Windows 和 Linux 容器傳遞安全的環境變數。 雖然我們正致力於將所有功能帶入 Windows 容器，但是您可以在[總覽](container-instances-overview.md#linux-and-windows-containers)中找到目前的平臺差異。
+> 「祕密」** 磁碟需目前僅限於 Linux 容器。 了解如何在[設定環境變數](container-instances-environment-variables.md)中，為 Windows 和 Linux 容器傳遞安全的環境變數。 當我們正在努力將所有功能帶到 Windows 容器時，您可以在[概述](container-instances-overview.md#linux-and-windows-containers)中找到當前平臺差異。
 
 ## <a name="mount-secret-volume---azure-cli"></a>掛接秘密磁碟區 - Azure CLI
 
-若要使用 Azure CLI 來部署具有一或多個秘密的容器，請在[az container create][az-container-create]命令中包含 `--secrets` 和 `--secrets-mount-path` 參數。 此範例會在  *掛接由兩個祕密 ("mysecret1" 和 "mysecret2") 所組成的「秘密」* `/mnt/secrets`磁碟區：
+若要使用 Azure CLI 部署具有一或多個祕密的容器，請在 [az container create][az-container-create] 命令中包和 `--secrets` 和 `--secrets-mount-path` 參數。 此範例會在 `/mnt/secrets` 掛接由兩個祕密 ("mysecret1" 和 "mysecret2") 所組成的「秘密」** 磁碟區：
 
 ```azurecli-interactive
 az container create \
@@ -32,7 +32,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-下列[az container exec][az-container-exec]輸出顯示在執行中的容器中開啟 shell、列出秘密磁片區中的檔案，然後顯示其內容：
+下列 [az container exec][az-container-exec] 輸出顯示如何在執行中的容器中開啟殼層、列出祕密磁碟區內的檔案，然後顯示其內容：
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -56,7 +56,7 @@ Bye.
 
 當您透過 YAML 範本進行部署時，範本中的祕密值必須為 **Base64 編碼**。 不過，祕密值會出現於容器中檔案內的純文字。
 
-下列 YAML 範本可定義含有一個容器的容器群組，而該容器會在  *掛接「祕密」* `/mnt/secrets`磁碟區。 此祕密磁碟區有兩個祕密 "mysecret1" 和 "mysecret2"。
+下列 YAML 範本可定義含有一個容器的容器群組，而該容器會在 `/mnt/secrets` 掛接「祕密」** 磁碟區。 此祕密磁碟區有兩個祕密 "mysecret1" 和 "mysecret2"。
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -87,7 +87,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-若要使用 YAML 範本進行部署，請將上述 YAML 儲存到名為 `deploy-aci.yaml`的檔案，然後使用 `--file` 參數執行[az container create][az-container-create]命令：
+若要透過 YAML 範本進行部署，請將上述 YAML 儲存到名為 `deploy-aci.yaml` 的檔案，然後使用  參數執行 [az container create`--file`][az-container-create] 命令：
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -98,16 +98,16 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 除了 CLI 和 YAML 部署，您可以使用 Azure [Resource Manager 範例](/azure/templates/microsoft.containerinstance/containergroups)來部署容器群組。
 
-首先，填入範本的容器群組 `volumes` 區段中的 `properties` 陣列。 當您透過 Resource Manager 範本進行部署時，範本中的祕密值必須為 **Base64 編碼**。 不過，祕密值會出現於容器中檔案內的純文字。
+首先，填入範本的容器群組 `properties` 區段中的 `volumes` 陣列。 當您透過 Resource Manager 範本進行部署時，範本中的祕密值必須為 **Base64 編碼**。 不過，祕密值會出現於容器中檔案內的純文字。
 
-接下來，針對您想要掛接祕密磁碟區所在容器群組中的每個容器，填入容器定義之 `volumeMounts` 區段中的 `properties` 陣列。
+接下來，針對您想要掛接祕密** 磁碟區所在容器群組中的每個容器，填入容器定義之 `properties` 區段中的 `volumeMounts` 陣列。
 
-下列 Resource Manager 範本可定義含有一個容器的容器群組，而該容器會在  *掛接「祕密」* `/mnt/secrets`磁碟區。 此祕密磁碟區有兩個祕密 "mysecret1" 和 "mysecret2"。
+下列 Resource Manager 範本可定義含有一個容器的容器群組，而該容器會在 `/mnt/secrets` 掛接「祕密」** 磁碟區。 此祕密磁碟區有兩個祕密 "mysecret1" 和 "mysecret2"。
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-若要使用 Resource Manager 範本進行部署，請將上述 JSON 儲存到名為 `deploy-aci.json`的檔案，然後使用 `--template-file` 參數執行[az group deployment create][az-group-deployment-create]命令：
+若要透過 Resource Manager 範本進行部署，請將上述 JSON 儲存到名為 `deploy-aci.json` 的檔案，然後使用  參數執行 [az group deployment create`--template-file`][az-group-deployment-create] 命令：
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

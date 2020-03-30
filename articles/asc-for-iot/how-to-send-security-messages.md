@@ -1,6 +1,6 @@
 ---
-title: 將您的安全性訊息傳送至 IoT 的 Azure 資訊安全中心 |Microsoft Docs
-description: 瞭解如何使用適用于 IoT 的 Azure 資訊安全中心來傳送安全性訊息。
+title: 將安全消息發送到 Azure 安全中心，以便進行 IoT® 服務。微軟文檔
+description: 瞭解如何使用適用于 IoT 的 Azure 安全中心發送安全消息。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,50 +16,50 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963813"
 ---
 # <a name="send-security-messages-sdk"></a>傳送安全性訊息 SDK
 
-本操作指南說明當您選擇收集和傳送裝置安全性訊息，而不使用 IoT 代理程式的 Azure 資訊安全中心時，適用于 IoT 服務功能的 Azure 資訊安全中心，並說明如何執行此動作。  
+本操作指南在選擇不使用 IoT 代理 Azure 安全中心收集和發送設備安全消息時，請解釋 IoT 服務 Azure 安全中心功能，並說明如何執行此操作。  
 
 在本指南中，您將了解如何： 
 > [!div class="checklist"]
-> * 使用 Azure IoT C SDK 傳送安全性訊息
-> * 使用 Azure IoT C# SDK 傳送安全性訊息
-> * 使用 Azure IoT Python SDK 傳送安全性訊息
-> * 使用 Azure IoT node.js SDK 來傳送安全性訊息
-> * 使用 Azure IoT JAVA SDK 來傳送安全性訊息
+> * 使用 Azure IoT C SDK 發送安全消息
+> * 使用 Azure IoT C++ SDK 發送安全消息
+> * 使用 Azure IoT Python SDK 發送安全消息
+> * 使用 Azure IoT 節點.js SDK 發送安全消息
+> * 使用 Azure IoT JAVA SDK 發送安全消息
 
 
-## <a name="azure-security-center-for-iot-capabilities"></a>IoT 功能的 Azure 資訊安全中心
+## <a name="azure-security-center-for-iot-capabilities"></a>用於 IoT 功能的 Azure 安全中心
 
-只要傳送的資料符合[IoT 架構的 Azure 資訊安全中心](https://aka.ms/iot-security-schemas)，而且訊息已設定為安全性訊息，IoT 的 Azure 資訊安全中心就可以處理及分析任何類型的安全性訊息資料。
+IoT 的 Azure 安全中心可以處理和分析任何類型的安全消息資料，只要發送的資料符合[IoT 架構的 Azure 安全中心](https://aka.ms/iot-security-schemas)，並且消息設置為安全消息。
 
-## <a name="security-message"></a>安全性訊息
+## <a name="security-message"></a>安全消息
 
-IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
-- 如果訊息是透過 Azure IoT SDK 所傳送
-- 如果訊息符合[安全性訊息架構](https://aka.ms/iot-security-schemas)
-- 如果訊息在傳送之前已設定為安全性訊息
+IoT 的 Azure 安全中心使用以下條件定義安全消息：
+- 如果消息是使用 Azure IoT SDK 發送的
+- 如果消息符合[安全消息架構](https://aka.ms/iot-security-schemas)
+- 如果消息在發送前設置為安全消息
 
-每個安全性訊息都包含寄件者的中繼資料，例如 `AgentId`、`AgentVersion`、`MessageSchemaVersion` 和安全性事件清單。
-架構會定義安全性訊息（包括事件種類）的有效和必要屬性。
+每個安全消息都包括寄件者的中繼資料，如`AgentId`，`AgentVersion``MessageSchemaVersion`和安全事件的清單。
+架構定義安全消息的有效和必需屬性，包括事件種類。
 
 >[!Note]
 > 所傳送的訊息若不符合結構描述，則會遭到忽略。 請務必先確認結構描述再起始資料的傳送，因為系統目前並不會儲存遭到忽略的訊息。 
 
 >[!Note]
-> 未使用 Azure IoT SDK 設定為安全性訊息的已傳送訊息，將不會路由傳送至 IoT 管線的 Azure 資訊安全中心。
+> 未使用 Azure IoT SDK 設置為安全消息發送的郵件將不會路由到 IoT 管道的 Azure 安全中心。
 
-## <a name="valid-message-example"></a>有效的訊息範例
+## <a name="valid-message-example"></a>有效消息示例
 
-下列範例顯示有效的安全性訊息物件。 此範例包含訊息中繼資料和一個 `ProcessCreate` 安全性事件。
+下面的示例顯示了一個有效的安全消息物件。 該示例包含消息中繼資料和一個`ProcessCreate`安全事件。
 
-一旦設定為安全性訊息並傳送之後，IoT 的 Azure 資訊安全中心就會處理此訊息。
+設置為安全消息併發送後，此消息將由 IoT 的 Azure 安全中心處理。
 
 ```json
 "AgentVersion": "0.0.1",
@@ -91,15 +91,15 @@ IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 
 ## <a name="send-security-messages"></a>傳送安全性訊息 
 
-使用[Azure Iot C 裝置 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [AZURE C# IoT 裝置 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、 [Azure IOT node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [azure iot Python sdk](https://github.com/Azure/azure-iot-sdk-python)或[azure iot JAVA SDK](https://github.com/Azure/azure-iot-sdk-java)，在*不*使用 IoT 代理程式的 Azure 資訊安全中心的情況下傳送安全性訊息。
+使用[Azure IoT C 設備 SDK、Azure](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) [IoT C++ 設備 SDK、Azure](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) [IoT Node.js SDK、Azure](https://github.com/Azure/azure-iot-sdk-node) [IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)或[Azure IoT JAVA SDK，](https://github.com/Azure/azure-iot-sdk-java)*不使用*Azure 安全中心為 IoT 代理髮送安全消息。
 
-若要從您的裝置傳送裝置資料以供 IoT Azure 資訊安全中心處理，請使用下列其中一個 Api 將訊息標示為正確路由至 IoT 處理管線的 Azure 資訊安全中心。 
+要從設備發送設備資料，供 Azure 安全中心進行 IoT 處理，請使用以下 API 之一標記消息，以便正確路由到 Azure 安全中心進行 IoT 處理管道。 
 
-所有傳送的資料（即使以正確的標頭標記）也必須符合[IoT 訊息架構的 Azure 資訊安全中心](https://aka.ms/iot-security-schemas)。 
+發送的所有資料（即使標有正確的標頭）也必須符合[IoT 消息架構的 Azure 安全中心。](https://aka.ms/iot-security-schemas) 
 
 ### <a name="send-security-message-api"></a>傳送安全性訊息 API 
 
-「**傳送安全性訊息**API」目前提供 C 和C#、Python、node.js 和 JAVA。  
+**發送安全消息**API 當前在 C 和 C#、Python、Node.js 和 JAVA 中可用。  
 
 #### <a name="c-api"></a>C API
 
@@ -192,9 +192,9 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
-若要使用 Python API，您必須安裝[azure iot 裝置](https://pypi.org/project/azure-iot-device/)套件。
+要使用 Python API，您需要安裝包[azure-iot 設備](https://pypi.org/project/azure-iot-device/)。
 
-使用 Python API 時，您可以透過模組或使用唯一的裝置或模組連接字串，透過裝置傳送安全性訊息。 搭配裝置使用下列 Python 腳本範例時，請使用**IoTHubDeviceClient**，並搭配模組使用**IoTHubModuleClient**。 
+使用 Python API 時，可以使用唯一的設備或模組連接字串通過模組或通過設備發送安全消息。 使用以下 Python 腳本示例時，使用設備時，請使用**IoTHubDeviceClient**，並使用模組使用**IoTHubModuleClient**。 
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -226,10 +226,10 @@ public void SendSecurityMessage(string message)
 
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
-- 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
+- 閱讀 Azure 安全中心，瞭解 IoT 服務[概述](overview.md)
+- 瞭解有關 IoT[體系結構](architecture.md)的 Azure 安全中心
 - 啟用[服務](quickstart-onboard-iot-hub.md)
-- 閱讀[常見問題集](resources-frequently-asked-questions.md)
+- 閱讀[常見問題解答](resources-frequently-asked-questions.md)
 - 了解如何存取[未經處理的安全性資料](how-to-security-data-access.md)
 - 了解[建議](concept-recommendations.md)
 - 了解[警示](concept-security-alerts.md)

@@ -5,14 +5,14 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
-description: 瞭解如何使用 Azure Dev Spaces 和 Azure Kubernetes Services 來供應商務持續性，並為嚴重損壞修復做準備
+description: 瞭解如何使用 Azure 開發空間和 Azure 庫伯奈斯服務來提供業務連續性並為災害復原做好準備
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78295822"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Space 的商務持續性和災害復原
@@ -29,7 +29,7 @@ Azure Dev Spaces 是 Azure Kubernetes Service (AKS) 的功能之一。 您應留
 
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>透過 Azure 入口網站啟用 Dev Spaces
 
-在 Azure 入口網站中，選取每個叢集設定底下的  **Dev Spaces**  功能表項目。 然後選擇 [啟用 Dev Spaces] 和 [儲存] 選項。
+在 Azure 門戶中每個群集的設置下選擇 **"開發空間"** 功能表項目。 然後選擇啟用開發空間並保存的選項。
 
 ![透過 Azure 入口網站啟用 Dev Spaces](../media/common/enable-dev-spaces.jpg)
 
@@ -51,7 +51,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>選取要用於 Dev Spaces 的正確 AKS 叢集
 
-在正確設定執行小組基準的備份叢集後，您即可隨時快速切換至備份叢集。 然後，您可以重新執行您在子開發人員空間中處理的個別服務。
+在正確設定執行小組基準的備份叢集後，您即可隨時快速切換至備份叢集。 然後，您可以重新運行在子開發空間中處理的單個服務。
 
 請使用下列 CLI 命令來選取不同的叢集：
 
@@ -76,11 +76,11 @@ azds space select -n <space name>
 如果您使用 Visual Studio，您可以透過下列步驟來切換現有專案所使用的叢集：
 
 1. 在 Visual Studio 中，開啟您的專案。
-1. 在 [方案總管] 中，以滑鼠右鍵按一下專案名稱，然後按一下 [屬性]
-1. 在左側窗格中按一下 [偵錯]
-1. 在 [偵錯屬性] 頁面上按一下 [設定檔] 下拉式清單，然後選擇 [Azure Dev Spaces]。
-1. 按一下 [變更] 按鈕。
-1. 在顯示的對話方塊中，選取您要使用的 AAS 叢集。 如有需要，請選擇不同的開發人員空間來使用，從 [空間] 下拉式清單中選取適當的選項，以建立新的開發人員空間。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案名稱，然後按一下 [屬性]****
+1. 在左側窗格中按一下 [偵錯]****
+1. 在 [偵錯屬性] 頁面上按一下 [設定檔]**** 下拉式清單，然後選擇 [Azure Dev Spaces]****。
+1. 按一下 **[變更]** 按鈕。
+1. 在顯示的對話方塊中，選取您要使用的 AAS 叢集。 如有需要，請選擇不同的開發人員空間來使用，從 [空間]**** 下拉式清單中選取適當的選項，以建立新的開發人員空間。
 
 選取正確的叢集和空間後，您可以按 F5 在 Dev Spaces 中執行服務。
 

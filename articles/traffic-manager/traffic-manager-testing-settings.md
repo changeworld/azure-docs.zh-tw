@@ -1,6 +1,6 @@
 ---
 title: 驗證 Azure 流量管理員設定
-description: 在本文中，您將瞭解如何驗證您的流量管理員設定，並測試流量路由方法。
+description: 在本文中，瞭解如何驗證流量管理器設置並測試流量路由方法。
 services: traffic-manager
 author: rohinkoul
 ms.service: traffic-manager
@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 94ab5e550f0053fa19b9b93f1d67690211543325
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938389"
 ---
 # <a name="verify-traffic-manager-settings"></a>驗證流量管理員設定
@@ -33,7 +33,7 @@ ms.locfileid: "76938389"
 
 1. 以系統管理員的身分開啟命令或 Windows PowerShell 命令提示字元。
 2. 輸入 `ipconfig /flushdns` 以排清 DNS 解析程式快取。
-3. 輸入 `nslookup <your Traffic Manager domain name>`。 例如，下列命令會檢查包含 myapp.contoso 前置詞的網域名稱
+3. 輸入 `nslookup <your Traffic Manager domain name>`。 例如，下列命令會檢查包含 myapp.contoso** 前置詞的網域名稱
 
         nslookup myapp.contoso.trafficmanager.net
 

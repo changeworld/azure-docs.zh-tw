@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466180"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>將 Windows 上的 Service Fabric Reliable Services 和 Reliable Actors 容器化
@@ -45,7 +45,7 @@ Service Fabric 支援將 Service Fabric 微服務 (Reliable Services 和 Reliabl
           {
    ```
 
-4. 建置和[封裝](service-fabric-package-apps.md#Package-App)您的專案。 若要建置和建立套件，請以滑鼠右鍵按一下方案總管中的應用程式專案，然後選擇 [封裝] 命令。
+4. 建置和[封裝](service-fabric-package-apps.md#Package-App)您的專案。 若要建置和建立套件，請以滑鼠右鍵按一下方案總管中的應用程式專案，然後選擇 [封裝]**** 命令。
 
 5. 針對每個需要容器化的程式碼套件，執行 PowerShell 指令碼 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 使用方式如下：
 
@@ -111,7 +111,7 @@ Service Fabric 支援將 Service Fabric 微服務 (Reliable Services 和 Reliabl
    ```
 
 > [!NOTE] 
-> 根據預設，Service Fabric 應用程式可以存取 Service Fabric 執行時間，其格式為接受應用程式特定要求的端點。 當應用程式裝載不受信任的程式碼時，請考慮停用此存取。 如需詳細資訊，請參閱[Service Fabric 中的安全性最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 若要停用 Service Fabric 執行時間的存取，請在對應至匯入服務資訊清單的應用程式資訊清單的 [原則] 區段中新增下列設定，如下所示：
+> 預設情況下，Service Fabric 應用程式可以訪問 Service Fabric 運行時，其形式是接受特定于應用程式的請求的終結點。 請考慮在應用程式承載不受信任的代碼時禁用此訪問。 有關詳細資訊，請參閱[服務結構中的安全最佳實踐](service-fabric-best-practices-security.md#platform-isolation)。 要禁用對 Service Fabric 運行時的訪問，請在與導入的服務清單對應的應用程式清單的"策略"部分中添加以下設置，如下所示：
 >
 ```xml
   <Policies>

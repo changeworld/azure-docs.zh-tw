@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory 中的切換活動
-description: '[切換] 活動可讓您根據條件控制處理流程。'
+title: 在 Azure 資料工廠中切換活動
+description: Switch 活動允許您根據條件控制處理流。
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440391"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory 中的切換活動
+# <a name="switch-activity-in-azure-data-factory"></a>在 Azure 資料工廠中切換活動
 
-Switch 活動所提供的功能與 switch 語句在程式設計語言中所提供的相同。 它會評估對應到符合條件評估之案例的一組活動。
+Switch 活動提供與 switch 語句在程式設計語言中提供的功能相同的功能。 它評估與條件評估匹配的案例對應的一組活動。
 
 ## <a name="syntax"></a>語法
 
@@ -65,13 +65,13 @@ Switch 活動所提供的功能與 switch 語句在程式設計語言中所提�
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 說明 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | 切換活動的名稱。 | String | 是
-type | 必須設定為*切換** | String | 是
-expression | 必須評估為字串值的運算式 | 結果類型為 string 的運算式 | 是
-案例 | 一組案例，其中包含值，以及當值符合運算式評估時要執行的一組活動。 必須至少提供一個案例。 最大限制為25個案例。 | Case 物件的陣列 | 是
-defaultActivities | 未滿足運算式評估時所執行的一組活動。 | 活動陣列 | 是
+NAME | 交換器活動的名稱。 | String | 是
+type | 必須設置為 *"切換"** | String | 是
+expression | 必須計算到字串值的運算式 | 具有結果類型字串的運算式 | 是
+案例 | 包含值和一組活動，當值與運算式計算匹配時要執行的案例集。 必須至少提供一個案例。 最高限價為25例。 | 案例物件陣列 | 是
+預設活動 | 運算式計算未滿足時執行的活動集。 | 活動陣列 | 是
 
 ## <a name="example"></a>範例
 
@@ -80,7 +80,7 @@ defaultActivities | 未滿足運算式評估時所執行的一組活動。 | 活
 > [!NOTE]
 > 本節提供 JSON 定義和 PowerShell 命令範例，以供執行管線。 針對使用 Azure PowerShell 和 JSON 定義來建立 Data Factory 管線，如需包含逐步指示的逐步解說，請參閱[教學課程：使用 Azure PowerShell 來建立資料處理站](quickstart-create-data-factory-powershell.md)。
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>具有切換活動的管線（Adfv2QuickStartPipeline）
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>具有交換器活動的管道（Adfv2快速啟動管道.json）
 
 ```json
 {
@@ -286,7 +286,7 @@ defaultActivities | 未滿足運算式評估時所執行的一組活動。 | 活
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-這些命令假設您已將 JSON 檔案儲存到資料夾中： C:\ADF。 
+這些命令假定您已將 JSON 檔保存到資料夾中：C：\ADF。 
 
 ```powershell
 Connect-AzAccount
@@ -331,9 +331,9 @@ $result.Error -join "`r`n"
 
 請參閱 Data Factory 支援的其他控制流程活動： 
 
-- [If Condition 活動](control-flow-if-condition-activity.md)
+- [If 條件活動](control-flow-if-condition-activity.md)
 - [執行管道活動](control-flow-execute-pipeline-activity.md)
-- [For Each 活動](control-flow-for-each-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [對於每個活動](control-flow-for-each-activity.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [Web 活動](control-flow-web-activity.md)

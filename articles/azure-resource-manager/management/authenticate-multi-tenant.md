@@ -4,10 +4,10 @@ description: 描述 Azure Resource Manager 處理跨租用戶驗證要求的方�
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75478821"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租用戶驗證要求
@@ -18,10 +18,10 @@ ms.locfileid: "75478821"
 
 要求具有下列驗證標頭值：
 
-| 標頭名稱 | 說明 | 範例值 |
+| 標頭名稱 | 描述 | 範例值 |
 | ----------- | ----------- | ------------ |
 | 授權 | 主要權杖 | Bearer &lt;primary-token&gt; |
-| x-ms-authorization-auxiliary | 輔助權杖 | 持有者 &lt;輔助 token1&gt;、EncryptedBearer &lt;輔助 token2&gt;、持有人 &lt;輔助 token3&gt; |
+| x-ms-authorization-auxiliary | 輔助權杖 | 承載&lt;輔助權杖1，&gt;加密承載&lt;輔助權杖2，&gt;承載&lt;輔助權杖3&gt; |
 
 輔助標頭最多可以持有三個輔助權杖。 
 
@@ -35,5 +35,5 @@ ms.locfileid: "75478821"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解驗證要求，請參閱[驗證流程和應用程式案例](../../active-directory/develop/authentication-flows-app-scenarios.md)。
+* 要瞭解身份驗證請求，請參閱[身份驗證流和應用程式方案](../../active-directory/develop/authentication-flows-app-scenarios.md)。
 * 如需權杖的詳細資訊，請參閱 [Azure Active Directory 存取權杖](../../active-directory/develop/access-tokens.md)。

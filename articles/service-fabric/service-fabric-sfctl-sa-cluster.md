@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI-sfctl sa-叢集
-description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理獨立叢集的命令清單。
+title: Azure 服務結構 CLI-sfctl sa 群集
+description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於管理獨立群集的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904933"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
@@ -17,7 +17,7 @@ ms.locfileid: "76904933"
 
 ## <a name="commands"></a>命令
 
-|Command|說明|
+|Command|描述|
 | --- | --- |
 | config | 取得 Service Fabric 獨立叢集設定。 |
 | config-upgrade | 開始升級 Service Fabric 獨立叢集的設定。 |
@@ -30,14 +30,14 @@ ms.locfileid: "76904933"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --configuration-api-version [必要] | 獨立叢集 JSON 設定的 API 版本。 |
-| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -52,7 +52,7 @@ ms.locfileid: "76904933"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --cluster-config            [必要] | 叢集設定。 |
 | --application-health-policies | 引發錯誤之前，應用程式類型名稱和健康情況不良最大百分比組合的 JSON 編碼目錄。 |
@@ -69,7 +69,7 @@ ms.locfileid: "76904933"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -92,13 +92,13 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
-| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
+| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -108,5 +108,5 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設定](service-fabric-cli.md) Service Fabric CLI。
+- [設置](service-fabric-cli.md)服務結構 CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

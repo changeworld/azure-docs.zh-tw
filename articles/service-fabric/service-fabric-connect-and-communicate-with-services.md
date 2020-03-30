@@ -1,15 +1,15 @@
 ---
-title: 連線到 Azure 中的服務並與之通訊 Service Fabric
+title: 與 Azure 服務結構中的服務連接和通信
 description: 了解如何解析、連接至 Service Fabric 應用程式中的服務並與其進行通訊。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458236"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>連接至 Service Fabric 中的服務並與其進行通訊
@@ -23,7 +23,7 @@ Service Fabric 可以幫助管理您的服務的生命週期，但是它不會�
 ![服務端點][1]
 
 ## <a name="service-discovery-and-resolution"></a>服務探索和解析
-在分散式系統中，服務可能會隨著時間從一部電腦移動到另一部電腦。 這可能會因各種原因而發生，包括資源平衡、升級、容錯移轉或相應放大。這表示當服務移至具有不同 IP 位址的節點時，服務端點位址會變更，而且如果服務使用動態選取的埠，可能會在不同的埠上開啟。
+在分散式系統中，服務可能會隨著時間從一部電腦移動到另一部電腦。 這可能是由於各種原因發生的，包括資源平衡、升級、容錯移轉或橫向擴展。這意味著服務終結點在服務移動到具有不同 IP 位址的節點時會解決更改，如果服務使用動態選擇的埠，則可能會在不同的埠上打開。
 
 ![服務的分佈][7]
 
@@ -61,7 +61,7 @@ Service Fabric 提供稱為「命名服務」的探索和解析服務。 「命�
 叢集內彼此連接的服務通常可以直接存取其他服務的端點，因為叢集中的節點位於相同的本機網路上。 但是，在相同的環境中，叢集可能會位於負載平衡器後方，該負載平衡器會透過有限制的一組連接埠路由傳送外部輸入流量。 在這些情況下，服務仍然可以使用「命名服務」，彼此進行通訊及解析位址，但是必須採取額外的步驟，讓外部用戶端連接至服務。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
-Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢集的所有外部流量必須經過負載平衡器。 負載平衡器會自動將指定連接埠上的輸入流量轉送至具有相同的開啟連接埠的隨機「節點」 。 Azure Load Balancer 只會知道「節點」上開啟的連接埠，它不知道由個別「服務」開啟的連接埠。
+Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢集的所有外部流量必須經過負載平衡器。 負載平衡器會自動將指定連接埠上的輸入流量轉送至具有相同的開啟連接埠的隨機「節點」 ** 。 Azure Load Balancer 只會知道「節點」** 上開啟的連接埠，它不知道由個別「服務」** 開啟的連接埠。
 
 ![Azure 負載平衡器和 Service Fabric 拓撲][3]
 
@@ -147,7 +147,7 @@ Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢�
             ...
         }
     ```
-2. 在 Azure 中建立 Service Fabric 叢集，並指定連接埠 **80** 做為將裝載服務的節點類型的自訂端點連接埠。 如果您有一個以上的節點類型，您可以在服務上設定「放置條件約束」 ，以確保它只會在具有已開啟的自訂端點連接埠的節點類型上執行。
+2. 在 Azure 中建立 Service Fabric 叢集，並指定連接埠 **80** 做為將裝載服務的節點類型的自訂端點連接埠。 如果您有一個以上的節點類型，您可以在服務上設定「放置條件約束」 ** ，以確保它只會在具有已開啟的自訂端點連接埠的節點類型上執行。
 
     ![開啟節點類型上的連接埠][4]
 3. 一旦建立叢集，在叢集的資源群組中設定 Azure 負載平衡器，以轉送連接埠 80 上的流量。 透過 Azure 入口網站建立叢集時，會針對每個已設定的自訂端點連接埠設定這個項目。
@@ -157,12 +157,12 @@ Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢�
 
     ![轉送 Azure 負載平衡器的流量][8]
 
-請務必記住，Azure Load Balancer 和探查只知道「節點」，不知道在節點上執行的「服務」。 Azure 負載平衡器一律會將流量傳送到回應探查的節點，因此必須小心以確保可以在能夠回應探查的節點上使用服務。
+請務必記住，Azure Load Balancer 和探查只知道「節點」**，不知道在節點上執行的「服務」**。 Azure 負載平衡器一律會將流量傳送到回應探查的節點，因此必須小心以確保可以在能夠回應探查的節點上使用服務。
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services：內建的通訊 API 選項
 Reliable Services 架構隨附數個預先建置的通訊選項。 最適合您選項的決定取決於如何選擇程式設計模型、通訊架構以及用來撰寫您服務的程式語言。
 
-* **沒有特定通訊協定**：如果您沒有特定的通訊架構選擇，但您想要快速啟動並執行，則適合您的理想選項為[遠端服務](service-fabric-reliable-services-communication-remoting.md)，允許 Reliable Services 和 Reliable Actors 的強型別遠端程序呼叫。 若要開始使用服務通訊，這是最簡單且快速的方式。 遠端服務會處理服務位址、連接、重試和錯誤處理的解析。 這同時適用 C# 和 Java 應用程式。
+* **無特定協定：** 如果您沒有特定的通信框架選擇，但您希望快速啟動和運行某些內容，那麼您理想的選擇是[服務遠端處理](service-fabric-reliable-services-communication-remoting.md)，它允許強型別遠端過程要求可靠服務和可靠參與者。 若要開始使用服務通訊，這是最簡單且快速的方式。 遠端服務會處理服務位址、連接、重試和錯誤處理的解析。 這同時適用 C# 和 Java 應用程式。
 * **HTTP**︰對於無從驗證語言的通訊，HTTP 提供業界標準的選擇，具有工具與許多不同語言的 HTTP 伺服器，都受到 Service Fabric 的支援。 服務可以使用任何可用的 HTTP 堆疊，包括 C# 應用程式適用的 [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md)。 以 C# 撰寫的用戶端可以利用 `ICommunicationClient` 和 `ServicePartitionClient` 類別，而使用 Java 的用戶端則可以利用 `CommunicationClient` 和 `FabricServicePartitionClient` 進行[服務解析、HTTP 連線和重試迴圈](service-fabric-reliable-services-communication.md)。
 * **WCF**：若您有現有的程式碼且使用 WCF 作為通訊架構，則您可以針對伺服器端使用 `WcfCommunicationListener` 類別，並針對用戶端使用 `WcfCommunicationClient` 和 `ServicePartitionClient` 類別。 不過，這只適用以 Windows 為基礎的叢集上的 C# 應用程式。 如需詳細資訊，請參閱本文中 [通訊堆疊的 WCF 式實作](service-fabric-reliable-services-communication-wcf.md)。
 

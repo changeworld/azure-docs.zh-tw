@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 在 Azure 中建立和管理 Windows VM
+title: 使用 Python 在 Azure 中創建和管理 Windows VM
 description: 了解如何在 Azure 中使用 Python 建立並管理 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461088"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 建立並管理 Windows VM
@@ -38,15 +38,15 @@ ms.locfileid: "75461088"
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]，然後按一下 [安裝]。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)** 。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
-2. 安裝並啟動 Visual Studio 後，按一下 [檔案] > [新增] > [專案]。
-3. 按一下 [範本] > [Python] > [Python 應用程式]，輸入 myPythonProject 作為專案的名稱，選取專案的位置，然後按一下 [確定]。
+1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]****，然後按一下 [安裝]****。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)**。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
+2. 安裝並啟動視覺化工作室後，按一下"**檔** > **新專案** > **"。**
+3. 按一下**範本** > **Python Python** > **應用程式**，輸入*myPythonProject*以獲取專案名稱，選擇專案的位置，然後按一下"**確定**"。
 
 ## <a name="install-packages"></a>安裝套件
 
-1. 在 [方案總管] 的 myPythonProject 下，以滑鼠右鍵按一下 [Python 環境]，然後選取 [新增虛擬環境]。
-2. 在 [新增虛擬環境] 畫面上，接受 env 的預設名稱、確定選取 Python 3.6 (64 位元) 作為基底解譯器，然後按一下 [建立]。
-3. 以滑鼠右鍵按一下您所建立的 env 環境、按一下 [安裝 Python 套件]、在搜尋方塊中輸入 azure，然後按 Enter 鍵。
+1. 在 [方案總管] 的 myPythonProject** 下，以滑鼠右鍵按一下 [Python 環境]****，然後選取 [新增虛擬環境]****。
+2. 在 [新增虛擬環境] 畫面上，接受 env** 的預設名稱、確定選取 Python 3.6 (64 位元)** 作為基底解譯器，然後按一下 [建立]****。
+3. 以滑鼠右鍵按一下您所建立的 env** 環境、按一下 [安裝 Python 套件]****、在搜尋方塊中輸入 azure**，然後按 Enter 鍵。
 
 您應該會在輸出視窗中看到已成功安裝的 azure 套件。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "75461088"
 
 在開始此步驟之前，請確定您具有 [Active Directory 服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。 您也應該記錄應用程式識別碼、驗證金鑰以及租用戶識別碼，您在稍後的步驟會需要這些項目。
 
-1. 開啟所建立的 myPythonProject.py 檔案，然後新增此程式碼，讓您的應用程式可執行：
+1. 開啟所建立的 myPythonProject.py** 檔案，然後新增此程式碼，讓您的應用程式可執行：
 
     ```python
     if __name__ == "__main__":
@@ -125,7 +125,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>建立 VM 和支援的資源
 
-所有資源都必須包含在[資源群組](../../azure-resource-manager/management/overview.md)中。
+所有資源都必須包含在[資源組中](../../azure-resource-manager/management/overview.md)。
 
 1. 若要建立資源群組，請在 .py 檔案的變數之後新增此函式：
 
@@ -171,7 +171,7 @@ compute_client = ComputeManagementClient(
     input('Availability set created. Press enter to continue...')
     ```
 
-必須要有[公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器進行通訊。
+需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通信。
 
 1. 若要建立虛擬機器的公用 IP 位址，請在 .py 檔案的變數之後新增此函式：
 
@@ -559,19 +559,19 @@ compute_client = ComputeManagementClient(
     delete_resources(resource_group_client)
     ```
 
-3. 儲存 myPythonProject.py。
+3. 儲存 myPythonProject.py**。
 
 ## <a name="run-the-application"></a>執行應用程式
 
-1. 若要執行主控台應用程式，請在 Visual Studio 中按一下 [啟動]。
+1. 若要執行主控台應用程式，請在 Visual Studio 中按一下 [啟動]****。
 
-2. 傳回每個資源的狀態之後，按下 **Enter** 鍵。 在狀態資訊中，您應該會看到「成功」佈建狀態。 建立虛擬機器之後，您可以將所建立的所有資源刪除。 在您按下 **Enter** 鍵以開始刪除資源之前，可以先花幾分鐘的時間來確認 Azure 入口網站中的建立情況。 如果您讓 Azure 入口網站維持開啟，可能必須重新整理刀鋒視窗以便查看新的資源。  
+2. 傳回每個資源的狀態之後，按下 **Enter** 鍵。 在狀態資訊中，您應該會看到「成功」**** 佈建狀態。 建立虛擬機器之後，您可以將所建立的所有資源刪除。 在您按下 **Enter** 鍵以開始刪除資源之前，可以先花幾分鐘的時間來確認 Azure 入口網站中的建立情況。 如果您讓 Azure 入口網站維持開啟，可能必須重新整理刀鋒視窗以便查看新的資源。  
 
     此主控台應用程式從開始到完成的完整執行應該需要五分鐘左右。 應用程式已完成之後、所有資源和資源群組刪除之前，可能需要幾分鐘的時間。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果部署有問題，下一個步驟就是查看 [使用 Azure 入口網站針對資源群組部署進行疑難排解](../../resource-manager-troubleshoot-deployments-portal.md)
+- 如果部署出現問題，下一步是[使用 Azure 門戶查看故障排除資源組部署](../../resource-manager-troubleshoot-deployments-portal.md)
 - 深入了解 [Azure Python 程式庫](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
 

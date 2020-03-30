@@ -1,21 +1,21 @@
 ---
-title: 在 Service Fabric 中使用C#服務遠端處理
+title: 在服務結構中使用 C# 服務遠端處理
 description: Service Fabric 遠端處理可讓用戶端和服務使用遠端程序呼叫與 C# 服務進行通訊。
 author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
 ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433875"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>使用 Reliable Services 在 C# 中進行服務遠端處理
 
 > [!div class="op_single_selector"]
-> * [Windows 上的 C# ](service-fabric-reliable-services-communication-remoting.md)
+> * [C# 在 Windows 上](service-fabric-reliable-services-communication-remoting.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
@@ -313,7 +313,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 若要從 V1 升級為 V2 (介面相容，也稱為 V2_1)，需要 2 個步驟。 遵循此序列中的步驟。
 
 > [!NOTE]
-> 從 V1 升級至 V2 時，請確定 `Remoting` 命名空間已更新為使用 V2。 範例： ' ServiceFabric. FabricTransport. Client '
+> 從 V1 升級到 V2 時`Remoting`，請確保命名空間已更新為使用 V2。 示例："微軟.ServiceFabric.服務.Remoting.V2.Fabric 傳輸.用戶端"
 >
 >
 

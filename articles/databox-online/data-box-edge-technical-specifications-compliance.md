@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Edge 技術規格和合規性 |Microsoft Docs
-description: 瞭解您 Azure Data Box Edge 的技術規格和合規性
+title: 微軟 Azure 資料盒 邊緣技術規範和合規性*微軟文檔
+description: 瞭解 Azure 資料框邊緣的技術規範和合規性
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252040"
 ---
-# <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge 技術規格
+# <a name="azure-data-box-edge-technical-specifications"></a>Azure 資料框邊緣技術規範
 
-Microsoft Azure Data Box Edge 裝置的硬體元件會遵循本文所述的技術規格與法規標準。 技術規格描述電源供應器（Psu）、存放裝置容量、主機殼和環境標準。 
+Microsoft Azure 資料盒邊緣設備的硬體元件符合本文中概述的技術規範和法規標準。 技術規範描述了電源單元 （PSUs）、存儲容量、外殼和環境標準。 
 
-## <a name="compute-memory-specifications"></a>計算，記憶體規格
+## <a name="compute-memory-specifications"></a>計算、記憶體規格
 
-Data Box Edge 裝置的計算和記憶體規格如下：
+資料框邊緣設備具有以下計算和記憶體規範：
 
 | 規格           | 值                  |
 |-------------------------|----------------------------|
@@ -31,31 +31,31 @@ Data Box Edge 裝置的計算和記憶體規格如下：
 
 ## <a name="fpga-specifications"></a>FPGA 規格
 
-可程式化閘道陣列（FPGA）會包含在每個 Data Box Edge 裝置上，以啟用 Machine Learning （ML）案例。 
+支援機器學習 （ML） 方案的每個資料盒邊緣設備上都包含現場可程式設計閘陣列 （FPGA）。 
 
 | 規格           | 值                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> 可用的深度類神經網路（DNN）模型與[雲端 FPGA 實例所支援](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)的模型相同。| 
+| Fpga   | 英特爾阿裡亞 10 <br> 可用的深度神經網路 （DNN） 模型與[雲 FPGA 實例支援的](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)模型相同。| 
 
 
-## <a name="power-supply-unit-specifications"></a>電源供應器單位規格
+## <a name="power-supply-unit-specifications"></a>電源單元規格
 
-Data Box Edge 裝置具有具有高效能風扇的兩個 100-240 V 電源供應器（Psu）。 這兩個 Psu 提供了多餘的電源設定。 如果 PSU 失敗，裝置會繼續在另一個 PSU 上正常運作，直到更換故障的模組為止。 下表列出 Psu 的技術規格。
+資料盒邊緣設備有兩台 100-240 V 電源單元 （PSUs），具有高性能風扇。 兩個 PSUs 提供冗余電源配置。 如果 PSU 發生故障，設備將繼續在其他 PSU 上正常運行，直到更換故障模組。 下表列出了 PSUs 的技術規格。
 
 | 規格           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | 最大輸出電力    | 750 W                     |
 | 頻率               | 50/60 Hz                   |
-| 選取電壓範圍 | 自動範圍： 100-240 V AC |
+| 選取電壓範圍 | 自動測距：100-240 V 交流 |
 | 隨插即用           | 是                        |
 
 <!--## Power consumption statistics
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
-## <a name="network-interface-specifications"></a>網路介面規格
+## <a name="network-interface-specifications"></a>網路介面規範
 
-您 Data Box Edge 裝置有6個網路介面（PORT1-PORT6）。
+您的資料盒邊緣設備有 6 個網路介面，PORT1- PORT6。
 
 | 規格           | 描述                 |
 |-------------------------|----------------------------|
@@ -63,16 +63,16 @@ The following table lists the typical power consumption data (actual values may 
 
 ## <a name="storage-specifications"></a>儲存體規格
 
-Data Box Edge 裝置有 9 X 2.5 "NVMe Ssd，每個都有 1.6 TB 的容量。 在這些 Ssd 中，1是作業系統磁片，另8則是資料磁片。 裝置的可用容量總計約為 12.5 TB。 下表包含裝置儲存體容量的詳細資料。
+資料盒邊緣設備具有 9 X 2.5 英寸 NVMe SSD，每個設備容量為 1.6 TB。 在這些 SSD 中，1 是作業系統磁片，其他 8 個是資料磁片。 該設備的總可用容量約為 12.5 TB。 下表提供了設備的存儲容量的詳細資訊。
 
 |     規格                          |     值             |
 |--------------------------------------------|-----------------------|
 |    固態硬碟 (SSD) 數     |    8                  |
 |    單一 SSD 容量                     |    1.6 TB             |
 |    容量總計                          |    12.8 TB            |
-|    可用容量總計*                  |    ~ 12.5 TB            |
+|    可用容量總計*                  |    ± 12.5 TB            |
 
-**部分空間會保留供內部使用。*
+**保留一些空間供內部使用。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>機箱尺寸和重量規格
 
@@ -84,63 +84,63 @@ Data Box Edge 裝置有 9 X 2.5 "NVMe Ssd，每個都有 1.6 TB 的容量。 在
 
 |     機箱     |     公釐     |     英吋     |
 |-------------------|---------------------|----------------|
-|    高度         |    44.45            |    1.75 "          |
-|    寬度          |    434.1           |    17.09 "          |
-|    Length          |    740.4           |    29.15 "          |
+|    高度         |    44.45            |    1.75"          |
+|    寬度          |    434.1           |    17.09"          |
+|    長度          |    740.4           |    29.15"          |
 
-下表列出出貨套件的尺寸（以毫米和英寸為單位）。
+下表列出了裝運包的尺寸（以毫米和英寸為單位）。
 
-|     套件     |     公釐     |     英吋     |
+|     Package     |     公釐     |     英吋     |
 |-------------------|---------------------|----------------|
 |    高度         |    311.2            |    12.25"          |
 |    寬度          |    642.8          |    25.31"          |
-|    Length          |   1,051.1          |    41.38"          |
+|    長度          |   1,051.1          |    41.38"          |
 
 ### <a name="enclosure-weight"></a>機箱重量
 
-裝置套件會權衡66磅。 和需要兩個人員來處理它。 裝置的權數視主機殼的設定而定。
+設備封裝重 66 磅。 並要求兩個人來處理它。 設備的重量取決於機櫃的配置。
 
-|     機箱                                 |     加權          |
+|     機箱                                 |     Weight          |
 |-----------------------------------------------|---------------------|
-|    總權數（包括封裝）       |    61磅。          |
-|    裝置的權數                       |    35磅。          |
+|    總重量，包括包裝       |    61 磅          |
+|    設備重量                       |    35 磅          |
 
 ## <a name="enclosure-environment-specifications"></a>機箱環境規格
 
-本節列出與主機殼環境相關的規格，例如溫度、濕度和高度。
+本節列出了與機櫃環境相關的規範，如溫度、濕度和海拔高度。
 
 ### <a name="temperature-and-humidity"></a>溫度和溼度
 
 |     機箱         |     環境溫度範圍     |     環境相對濕度     |     最大露點     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    操作        |    10° C-35 ° C （50° F-86 ° F）         |    10%-80% 非冷凝。         |    29°C (84°F)            |
-|    無法運作    |    -40 ° C 至65° C （-40 ° F-149 ° F）     |    5%-95% 非冷凝。          |    33°C (91°F)            |
+|    運作        |    10°C - 35°C （50°F - 86°F）         |    10% - 80% 非冷凝。         |    29°C (84°F)            |
+|    無法運作    |    -40°C 至 65°C （-40°F - 149°F）     |    5% - 95% 非冷凝。          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>氣流、海拔高度、震盪、振動、方向、安全和 EMC
 
 |     機箱                           |     運作規格                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    氣流                              |    系統氣流是從前面到後面。 系統必須以低壓、尾段排氣安裝操作。 <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    最高高度，營運        |    3048計量（10000英尺），其最大操作溫度已由[操作溫度解除評等規格](#operating-temperature-de-rating-specifications)決定。                                                                                |
-|    最大高度，不可操作    |    12000計量（39370英尺）                                                                                                                                                                                         |
-|    可運作的震盪                   |    6 G 為6個方向的11毫秒                                                                                                                                                                         |
-|    無法運作的震盪               |    71 G 用於6個方向的2毫秒                                                                                                                                                                           |
+|    最大海拔高度，可操作        |    3048 米（10，000 英尺），最高工作溫度除位根據[工作溫度去額定值規格](#operating-temperature-de-rating-specifications)確定。                                                                                |
+|    最大海拔，不可操作    |    12，000公尺（39，370英尺）                                                                                                                                                                                         |
+|    可運作的震盪                   |    6 G，6 個方向為 11 毫秒                                                                                                                                                                         |
+|    無法運作的震盪               |    71 G，6 個方向為 2 毫秒                                                                                                                                                                           |
 |    可運作的振動               |    0.26 G<sub>RMS</sub> 5 Hz 至 350 Hz 隨機                                                                                                                                                                                     |
-|    無法運作的振動           |    1.88 G<sub>RMS</sub> 10 hz 至 500 hz 15 分鐘（所有六方皆已測試）。                                                                                                                                                  |
-|    定位和掛接             |    19「機架掛接」                                                                                                                                                                                        |
-|    安全與核可                 |    EN 60950-1:2006 + A1： 2010 + A2： 2013 + A11： 2009 + A12： 2011/IEC 60950-1:2005 ed2 + A1： 2009 + A2： 2013 EN 62311:2008                                                                                                                                                                       |
+|    無法運作的振動           |    1.88 G<sub>RMS</sub> 10 Hz 至 500 Hz，15 分鐘（所有六個面均經過測試）。                                                                                                                                                  |
+|    定位和掛接             |    19" 機架安裝                                                                                                                                                                                        |
+|    安全與核可                 |    EN 60950-1：2006 +A1：2010 +A2：2013 +A11：2009 +A12：2011/IEC 60950-1：2005 ed2 +A1：2009 +A2：2013 EN 62311：2008                                                                                                                                                                       |
 |    EMC                                  |    FCC A, ICES-003 <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 +A1:2015/CISPR 24:2010 +A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (Class D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
 |    能源             |    委員會條例 (EU) No. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
 
-### <a name="operating-temperature-de-rating-specifications"></a>操作溫度取消評等規格
+### <a name="operating-temperature-de-rating-specifications"></a>工作溫度去額定值規格
 
-|     操作溫度解除評等     |     環境溫度範圍                                                         |
+|     工作溫度去額定值     |     環境溫度範圍                                                         |
 |--------------------------------------------|------------------------------------------------------------------------------------------|
-|    最多35° C （95° F）                       |    溫度上限會減少1° C/300 m （1° F/547 ft）以上 950 m （3117 ft）。    |
-|    35° C 至40° C （95° F 到104° F）            |    最高溫度會減少1° C/175 m （1° F/319 ft）以上 950 m （3117 ft）。    |
-|    40° C 至45° C （104° F 至113° F）           |    高於 950 m （3117 ft）的溫度上限為1° C/125 m （1° F/228 ft）。    |
+|    高達 35°C （95°F）                       |    最高溫度降低 1°C/300 米（1°F/547 英尺），高於 950 米（3，117 英尺）。    |
+|    35°C 至 40°C （95°F 至 104°F）            |    最高溫度降低 1°C/175 米（1°F/319 英尺），高於 950 米（3，117 英尺）。    |
+|    40°C 至 45°C （104°F 至 113°F）           |    最高溫度降低 1°C/125 米（1°F/228 英尺），高於 950 米（3，117 英尺）。    |
 
 
 ## <a name="next-steps"></a>後續步驟

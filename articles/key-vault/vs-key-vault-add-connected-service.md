@@ -10,64 +10,64 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457008"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 連線服務在 Web 應用程式中新增 Key Vault
 
-在本教學課程中，您將了解如何輕鬆地新增所需的項目，以便開始在 Visual Studio 中使用 Azure Key Vault 來管理 Web 專案的祕密，而不論您使用的是 ASP.NET Core 或任何類型的 ASP.NET 專案。 藉由使用 Visual Studio 中的 [已連線的服務] 功能，您可以讓 Visual Studio 自動新增您連線至 Azure Key Vault 所需的所有 NuGet 套件和設定設定。
+在本教學課程中，您將了解如何輕鬆地新增所需的項目，以便開始在 Visual Studio 中使用 Azure Key Vault 來管理 Web 專案的祕密，而不論您使用的是 ASP.NET Core 或任何類型的 ASP.NET 專案。 通過使用 Visual Studio 中的"已連接服務"功能，您可以讓 Visual Studio 自動添加連接到 Azure 中金鑰保存庫所需的所有 NuGet 包和配置設置。
 
 針對「連線服務」在您專案中為啟用 Key Vault 所做的變更，如需詳細資料，請參閱 [Key Vault 連線服務 - 我的 ASP.NET 4.7.1 專案發生什麼情形](#how-your-aspnet-framework-project-is-modified)或 [Key Vault 連線服務 - 我的 ASP.NET Core 專案發生什麼情形](#how-your-aspnet-core-project-is-modified)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- **Azure 訂用帳戶**。 如果您沒有訂用帳戶，請註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2019 16.3 版**或更新版本，或**Visual Studio 2017 版本 15.7**並已安裝**Web 開發**工作負載。 [立即下載](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
-- 對於 Visual Studio 2017 的 ASP.NET （非核心），您需要 .NET Framework 的4.7.1 或更新版本的開發工具，預設不會安裝。 若要安裝它們，請啟動 Visual Studio 安裝程式、選擇 [修改]，然後選擇 [個別元件]，接著在右側展開 [ASP.NET 與網頁程式開發]，並選擇 [.NET Framework 4.7.1 開發工具]。
-- ASP.NET 4.7.1 或更新版本，或 ASP.NET Core 2.0 或更新版本的 Web 專案開啟。
+- **Azure 訂閱**。 如果您沒有訂閱，請註冊[一個免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+- **Visual Studio 2019 版本 16.3**或更高版本，或安裝**Web 開發**工作負載的 Visual **Studio 2017 版本 15.7。** [立即下載](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 對於 Visual Studio 2017 的ASP.NET（不是核心），您需要 .NET 框架 4.7.1 或更高版本的開發工具，這些工具預設未安裝。 若要安裝它們，請啟動 Visual Studio 安裝程式、選擇 [修改]****，然後選擇 [個別元件]****，接著在右側展開 [ASP.NET 與網頁程式開發]****，並選擇 [.NET Framework 4.7.1 開發工具]****。
+- ASP.NET 4.7.1 或更高版本，或ASP.NET酷睿 2.0 或更高版本的 Web 專案打開。
 
 ## <a name="add-key-vault-support-to-your-project"></a>在專案中新增 Key Vault 支援
 
-開始之前，請確定您已登入 Visual Studio。 使用您用於 Azure 訂用帳戶的相同帳戶登入。 然後，開啟 ASP.NET 4.7.1 或更新版本，或 ASP.NET Core 2.0 Web 專案，並執行下列步驟：
+開始之前，請確保您已登錄到視覺化工作室。 使用用於 Azure 訂閱的相同帳戶登錄。 然後打開ASP.NET 4.7.1 或更高版本，或ASP.NET Core 2.0 Web 專案，然後執行以下步驟：
 
-1. 在**方案總管**中，以滑鼠右鍵按一下您想要新增 Key Vault 支援的專案，然後選擇 [**加入** > **聯機服務**]。
+1. 在**解決方案資源管理器**中，按右鍵要向其添加金鑰保存庫支援的專案，然後選擇"**添加** > **連接的服務**"。
    [連線服務] 頁面隨即出現，並顯示您可新增至專案的服務。
-1. 在可用服務的功能表中，選擇 [運用 Azure Key Vault 保護祕密的安全]。
+1. 在可用服務的功能表中，選擇 [運用 Azure Key Vault 保護祕密的安全]****。
 
    ![選擇 [運用 Azure Key Vault 保護祕密的安全]](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-1. 選取您要使用的訂用帳戶，然後選擇新的或現有的 Key Vault。 如果您選擇新的 Key Vault，就會出現 [**編輯**] 連結。 選取它以設定您的新 Key Vault。
+1. 選擇要使用的訂閱，然後選擇新的金鑰保存庫或現有金鑰保存庫。 如果選擇新的金鑰保存庫，將顯示 **"編輯"** 連結。 選擇它來配置新的金鑰保存庫。
 
    ![選取您的訂用帳戶](media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
-1. 在 [**編輯 Azure Key Vault**] 中，輸入您要用於 Key Vault 的名稱。
+1. 在 **"編輯 Azure 金鑰保存庫"** 中，輸入要用於金鑰保存庫的名稱。
 
-1. 選取現有的**資源群組**，或選擇使用自動產生的唯一名稱來建立新的。  如果您想要以不同的名稱建立新的群組，您可以使用 [ [Azure 入口網站](https://portal.azure.com)]，然後關閉頁面並重新啟動，以重載資源群組清單。
-1. 選擇要在其中建立 Key Vault 的**位置**。 如果您的 Web 應用程式裝載於 Azure 中，請選擇裝載該 Web 應用程式的區域以獲得最佳效能。
-1. 選擇 [**定價層**]。 如需詳細資訊，請參閱 [Key Vault 價格](https://azure.microsoft.com/pricing/details/key-vault/)。
-1. 選擇 [**確定]** 以接受設定選項。
-1. 在您選取現有的 Key Vault 或已設定新 Key Vault 之後，請在 [Visual Studio] 的 [ **Azure Key Vault** ] 索引標籤中，選取 [**新增**] 以新增已連線的服務。
-1. 選取 [**管理此 Key Vault 中儲存的秘密**] 連結，以開啟您 Key Vault 的 [**秘密**] 頁面。 如果您關閉了頁面或專案，可以選擇 [**所有服務**]，然後在 [**安全性**] 底下選擇 [ **Key Vault**]，然後選擇您的 Key Vault，即可在[Azure 入口網站](https://portal.azure.com)中流覽。
-1. 在您所建立之 Key Vault 的 [Key Vault] 區段中，依序選擇 [**秘密**] 和 [**產生/匯入**]。
+1. 選擇現有**資源組**，或選擇創建具有自動生成的唯一名稱的新資源組。  如果要創建具有其他名稱的新組，可以使用[Azure 門戶](https://portal.azure.com)，然後關閉頁面並重新啟動以重新載入資源組的清單。
+1. 選擇在其中創建金鑰保存庫**的位置**。 如果您的 Web 應用程式裝載於 Azure 中，請選擇裝載該 Web 應用程式的區域以獲得最佳效能。
+1. 選擇**定價層**。 如需詳細資訊，請參閱 [Key Vault 價格](https://azure.microsoft.com/pricing/details/key-vault/)。
+1. 選擇 **"確定"** 以接受配置選項。
+1. 選擇現有金鑰保存庫或配置了新的金鑰保存庫後，在 Visual Studio 的**Azure 金鑰保存庫**選項卡中，選擇 **"添加"** 以添加連接的服務。
+1. 選擇 **"管理存儲在此金鑰保存庫"連結中的秘密**，以打開金鑰保存庫**的"機密"** 頁。 如果關閉了頁面或專案，則可以通過選擇 **"所有服務"** 並在[Azure 門戶](https://portal.azure.com)中導航到該頁面，然後在 **"安全**"下選擇**金鑰保存庫**，然後選擇金鑰保存庫。
+1. 在您創建的關鍵保存庫的"金鑰保存庫"部分中，選擇 **"機密**"，然後**生成/導入**。
 
    ![產生/匯入祕密](media/vs-key-vault-add-connected-service/azure-generate-secrets.png)
 
-1. 輸入秘密（例如*MySecret* ），並為它指定任何字串值作為測試，然後選取 [**建立**] 按鈕。
+1. 輸入機密（如*MySecret）* 並將其任何字串值作為測試，然後選擇 **"創建**"按鈕。
 
    ![建立祕密](media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
 
-1. (選擇性) 輸入其他祕密，但此時請將它命名為 *Secrets--MySecret*，藉以將它放置於分類中。 此語法會指定包含秘密 "MySecret" 的分類「秘密」。
+1. (選擇性) 輸入其他祕密，但此時請將它命名為 *Secrets--MySecret*，藉以將它放置於分類中。 此語法指定包含機密"MySecret"的類別"機密"。
 
 現在，您可透過程式碼存取祕密。 後續步驟會根據您使用的是 ASP.NET 4.7.1 或 ASP.NET Core 而有所差異。
 
-## <a name="access-your-secrets-in-code-aspnet-core"></a>在程式碼中存取您的秘密（ASP.NET Core）
+## <a name="access-your-secrets-in-code-aspnet-core"></a>在代碼中訪問您的機密（ASP.NET核心）
 
-1. 在方案總管中，以滑鼠右鍵按一下您的專案，然後選取 [**管理 NuGet 套件**]。 在 [**流覽**] 索引標籤中，找出並安裝這兩個 NuGet 套件： [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和 .net Core 2，新增[KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)或針對 .net core 3 新增[KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)。
+1. 在解決方案資源管理器中，按右鍵專案，然後選擇 **"管理 NuGet 包**"。 在 **"流覽"** 選項卡中，查找並安裝這兩個 NuGet 包[：Microsoft.Azure.Services.App 身份驗證](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和 .NET 核心 2，添加[Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)或 .NET 核心 3，添加[Microsoft.Azure.KeyVault.Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)。
 
-1. 針對 .NET Core 2，請選取 [`Program.cs`] 索引標籤，然後將 Program 類別中的 `BuildWebHost` 定義變更為下列內容：
+1. 對於 .NET 核心 2，選擇`Program.cs`選項卡並將`BuildWebHost`程式類中的定義更改為以下內容：
 
    ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -91,7 +91,7 @@ ms.locfileid: "75457008"
     }
    ```
 
-   針對 .NET Core 3，請使用下列程式碼。
+   對於 .NET 核心 3，請使用以下代碼。
 
    ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -115,20 +115,20 @@ ms.locfileid: "75457008"
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
-1. 接下來，開啟其中一個分頁檔案，例如*Index.cshtml.cs* ，並撰寫下列程式碼：
-   1. 使用指示詞包含 `Microsoft.Extensions.Configuration` 的參考：
+1. 接下來打開其中一個分頁檔，如*Index.cshtml.cs*並編寫以下代碼：
+   1. 包含此使用指令`Microsoft.Extensions.Configuration`的引用：
 
        ```csharp
        using Microsoft.Extensions.Configuration;
        ```
 
-   1. 新增設定變數。
+   1. 添加組態變數。
 
       ```csharp
       private static readonly IConfiguration _configuration;
       ```
 
-   1. 新增此函式，或使用下列內容取代現有的函式：
+   1. 添加此建構函式或用以下替換現有建構函式：
 
        ```csharp
        public IndexModel(IConfiguration configuration)
@@ -137,7 +137,7 @@ ms.locfileid: "75457008"
        }
        ```
 
-   1. 更新 `OnGet` 方法。 使用您在上述命令中建立的秘密名稱，來更新此處顯示的預留位置值。
+   1. 更新 `OnGet` 方法。 使用在上述命令中創建的秘密名稱更新此處顯示的預留位置值。
 
        ```csharp
        public void OnGet()
@@ -146,25 +146,25 @@ ms.locfileid: "75457008"
        }
        ```
 
-   1. 若要在執行時間確認此值，請加入程式碼以顯示 `ViewData["Message"]` 到*cshtml*檔案，以在訊息中顯示密碼。
+   1. 要在運行時確認該值，請添加要顯示`ViewData["Message"]`到 *.cshtml*檔的代碼以在消息中顯示機密。
 
       ```cshtml
           <p>@ViewData["Message"]</p>
       ```
 
-您可以在本機執行應用程式，以確認已從 Key Vault 成功取得密碼。
+您可以在本地運行應用，以驗證金鑰是否已成功從金鑰保存庫獲取。
 
-## <a name="access-your-secrets-aspnet"></a>存取您的秘密（ASP.NET）
+## <a name="access-your-secrets-aspnet"></a>訪問您的機密（ASP.NET）
 
-您可以設定設定，讓 web.config 檔案在 `appSettings` 專案中具有虛擬值，而此專案會在執行時間由 true 值所取代。 接著，您可以透過 `ConfigurationManager.AppSettings` 的資料結構來存取此功能。
+您可以設置配置，以便 Web.config 檔在`appSettings`元素中具有一個虛擬值，在運行時由真實值替換。 然後，您可以通過`ConfigurationManager.AppSettings`資料結構訪問此。
 
-1. 編輯您的 web.config 檔案。  尋找 appSettings 標籤、新增 `configBuilders="AzureKeyVault"`的屬性，然後新增一行：
+1. 編輯 Web.config 檔。  查找應用設置標記、添加屬性`configBuilders="AzureKeyVault"`和添加行：
 
    ```xml
       <add key="mysecret" value="dummy"/>
    ```
 
-1. 在*HomeController.cs*中編輯 `About` 方法，以顯示 [確認] 的值。
+1. 在`About`*HomeController.cs*中編輯方法，以顯示確認值。
 
    ```csharp
    public ActionResult About()
@@ -172,52 +172,52 @@ ms.locfileid: "75457008"
        ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["mysecret"];
    }
    ```
-1. 在偵錯工具下，于本機執行應用程式，切換到 **關於** 索引標籤，並確認已顯示 Key Vault 的值。
+1. 在調試器下本地運行應用，切換到 **"關於**"選項卡，並驗證顯示來自金鑰保存庫的值。
 
 ## <a name="clean-up-resources"></a>清除資源
 
 不再需要資源群組時，請加以刪除。 這會刪除 Key Vault 及相關資源。 若要透過入口網站刪除資源群組：
 
 1. 在入口網站頂端的 [搜尋] 方塊中，輸入資源群組的名稱。 當您在搜尋結果中看到本快速入門中使用的資源群組時，請加以選取。
-2. 選取 [刪除資源群組]。
-3. 在 [**輸入資源組名：** ] 方塊中，輸入資源群組的名稱，然後選取 [**刪除**]。
+2. 選取 [刪除資源群組]****。
+3. 在 **"資源組名稱類型："** 框中，輸入資源組的名稱，然後選擇 **"刪除**"。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您的 Key Vault 在不同的 Microsoft 帳戶上執行，而不是您所登入的 Visual Studio （例如，Key Vault 是在您的工作帳戶上執行，但 Visual Studio 使用您的私人帳戶），您的 Program.cs 檔案中會出現錯誤，這 Visual Studio 無法取得 Key Vault 的存取權。 若要修正此問題：
+如果您的金鑰保存庫運行在與您登錄到 Visual Studio 的帳戶不同的 Microsoft 帳戶上（例如，金鑰保存庫在您的工作帳戶上運行，但 Visual Studio 正在使用您的私人帳戶），則Program.cs檔中會收到錯誤，該視覺化工作室無法訪問金鑰保存庫。 若要修正此問題：
 
-1. 移至  [Azure 入口網站](https://portal.azure.com)並開啟您的 Key Vault。
+1. 轉到[Azure 門戶](https://portal.azure.com)並打開金鑰保存庫。
 
-1. 選擇 [**存取原則**]、[**新增存取原則**]，然後選擇您以 [主體] 登入的帳戶。
+1. 選擇**訪問策略**，然後**添加訪問策略**，然後選擇您作為主體登錄的帳戶。
 
-1. 在 Visual Studio 中，**選擇 [** 檔案 > **帳戶設定**]。
-從 [**所有帳戶**] 區段中選取 [**新增帳戶**]。 使用您選擇做為存取原則主體的帳戶來登入。
+1. 在視覺化工作室中，選擇 **"檔** > **帳戶設置**"。
+從"**全部帳戶**"部分**選擇"添加帳戶**"。 使用您選擇的帳戶登錄，作為訪問策略的主體。
 
-1. 選擇 [**工具**] > **選項**，並尋找 [ **Azure 服務驗證**]。 然後選取您剛才新增至 Visual Studio 的帳戶。
+1. 選擇**工具** > **選項**，然後查找**Azure 服務身份驗證**。 然後選擇您剛剛添加到視覺化工作室的帳戶。
 
-現在，當您在偵錯工具時，Visual Studio 會連接到您 Key Vault 所在的帳戶。
+現在，當您調試應用程式時，Visual Studio 會連接到金鑰保存庫所在的帳戶。
 
-## <a name="how-your-aspnet-core-project-is-modified"></a>ASP.NET Core 專案的修改方式
+## <a name="how-your-aspnet-core-project-is-modified"></a>如何修改ASP.NET核心專案
 
-本節識別使用 Visual Studio 新增 Key Vault 聯機服務時，對 ASP.NET 專案所做的確切變更。
+本節標識使用 Visual Studio 添加金鑰保存庫連接服務時對ASP.NET專案所做的準確更改。
 
-### <a name="added-references-for-aspnet-core"></a>已新增 ASP.NET Core 的參考
+### <a name="added-references-for-aspnet-core"></a>添加了ASP.NET核心的引用
 
-會影響專案檔案 .NET 參考和 NuGet 套件參考。
+影響專案檔案 .NET 引用和 NuGet 包引用。
 
-| 類型 | 參考 |
+| 類型 | 參考資料 |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
-### <a name="added-files-for-aspnet-core"></a>已新增 ASP.NET Core 的檔案
+### <a name="added-files-for-aspnet-core"></a>添加了ASP.NET核心的檔
 
-- `ConnectedService.json` 新增，這會記錄連線服務提供者、版本的相關資訊，並連結檔。
+- `ConnectedService.json`添加了，它記錄有關已連接服務提供者、版本和連結文檔的一些資訊。
 
-### <a name="project-file-changes-for-aspnet-core"></a>ASP.NET Core 的專案檔變更
+### <a name="project-file-changes-for-aspnet-core"></a>ASP.NET核心的專案檔案更改
 
-- 已新增已連線的服務 ItemGroup 和 `ConnectedServices.json` 檔案。
+- 添加了"已連結的服務項組`ConnectedServices.json`"和"檔"。
 
-### <a name="launchsettingsjson-changes-for-aspnet-core"></a>ASP.NET Core 的 launchsettings.json 變更
+### <a name="launchsettingsjson-changes-for-aspnet-core"></a>ASP.NET核心的啟動設置.json 更改
 
 - 已將下列環境變數項目新增至 IIS Express 設定檔及符合您 Web 專案名稱的設定檔：
 
@@ -228,31 +228,31 @@ ms.locfileid: "75457008"
       }
     ```
 
-### <a name="changes-on-azure-for-aspnet-core"></a>針對 ASP.NET Core 的 Azure 變更
+### <a name="changes-on-azure-for-aspnet-core"></a>ASP.NET核心的 Azure 上的更改
 
 - 已建立資源群組 (或使用了現有的資源群組)。
 - 已在指定的資源群組中建立 Key Vault。
 
-## <a name="how-your-aspnet-framework-project-is-modified"></a>ASP.NET Framework 專案的修改方式
+## <a name="how-your-aspnet-framework-project-is-modified"></a>如何修改ASP.NET框架專案
 
-本節識別使用 Visual Studio 新增 Key Vault 聯機服務時，對 ASP.NET 專案所做的確切變更。
+本節標識使用 Visual Studio 添加金鑰保存庫連接服務時對ASP.NET專案所做的準確更改。
 
-### <a name="added-references-for-aspnet-framework"></a>已新增 ASP.NET 架構的參考
+### <a name="added-references-for-aspnet-framework"></a>添加了ASP.NET框架的引用
 
-會影響專案檔案 .NET 參考和 `packages.config` （NuGet 參考）。
+影響專案檔案 .NET 引用`packages.config`和 （NuGet 引用）。
 
-| 類型 | 參考 |
+| 類型 | 參考資料 |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
 | .NET; NuGet | Microsoft.Rest.ClientRuntime |
 | .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
-### <a name="added-files-for-aspnet-framework"></a>已新增 ASP.NET 架構的檔案
+### <a name="added-files-for-aspnet-framework"></a>為ASP.NET框架添加了檔
 
-- `ConnectedService.json` 加入，這會記錄有關已連線服務提供者、版本和檔連結的一些資訊。
+- `ConnectedService.json`添加了，它記錄有關連接服務提供者、版本和文檔連結的一些資訊。
 
-### <a name="project-file-changes-for-aspnet-framework"></a>ASP.NET Framework 的專案檔變更
+### <a name="project-file-changes-for-aspnet-framework"></a>ASP.NET框架的專案檔案更改
 
 - 已新增連線服務 ItemGroup 和 ConnectedServices.json 檔案。
 - 對[新增的參考](#added-references-for-aspnet-framework)一節中所述 .NET 組件的參考。
@@ -280,13 +280,13 @@ ms.locfileid: "75457008"
     </configBuilders>
     ```
 
-### <a name="changes-on-azure-for-aspnet-framework"></a>適用于 ASP.NET Framework 的 Azure 變更
+### <a name="changes-on-azure-for-aspnet-framework"></a>ASP.NET框架的 Azure 上的更改
 
 - 已建立資源群組 (或使用了現有的資源群組)。
 - 已在指定的資源群組中建立 Key Vault。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您遵循本教學課程的指示，您的 Key Vault 許可權會設定為使用您自己的 Azure 訂用帳戶來執行，但這可能不適合生產環境案例。 您可以建立受控識別，以管理應用程式的 Key Vault 存取。 請參閱[使用受控識別提供 Key Vault 驗證](/azure/key-vault/managed-identity)。
+如果遵循本教程，金鑰保存庫許可權將設置為使用自己的 Azure 訂閱運行，但對於生產方案來說，這可能不可取。 您可以創建託管標識來管理應用的金鑰保存庫存取權限。 請參閱[使用託管標識提供金鑰保存庫身份驗證](/azure/key-vault/managed-identity)。
 
-閱讀[Key Vault 開發人員指南](key-vault-developers-guide.md)，以深入瞭解 Key Vault 開發。
+通過閱讀[金鑰保存庫開發人員指南](key-vault-developers-guide.md)，瞭解有關金鑰保存庫開發的更多內容。

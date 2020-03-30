@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300531"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步處理服務功能
@@ -96,7 +96,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 如需詳細資訊，請參閱 [Office 365、Azure 或 Intune 中的使用者名稱不符合內部部署的 UPN 或替代登入識別碼](https://support.microsoft.com/kb/2523192)。
 
-啟用這項功能可讓同步處理引擎在內部部署變更時更新 userPrincipalName，而且您會使用密碼雜湊同步處理或傳遞驗證。
+啟用此功能允許同步引擎在使用者主體名稱在本地更改並使用密碼雜湊同步或傳遞身份驗證時更新使用者主體名稱。
 
 在新建立的 Azure AD 目錄中，預設會開啟這項功能。 您可以執行下列項目，查看是否已啟用此功能︰  
 
@@ -114,5 +114,5 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure AD Connect 同步處理](how-to-connect-sync-whatis.md)
-* [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+* [Azure AD 連接同步](how-to-connect-sync-whatis.md)
+* [將本地標識與 Azure 活動目錄集成](whatis-hybrid-identity.md)。

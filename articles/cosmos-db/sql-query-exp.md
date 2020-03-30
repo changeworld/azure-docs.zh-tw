@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 EXP
-description: 瞭解 Azure Cosmos DB 中的指數（EXP） SQL 系統函數，以傳回指定數值運算式的指數值
+title: 以 Azure 宇宙 DB 查詢語言中的 EXP
+description: 瞭解 Azure Cosmos DB 中的指數 （EXP） SQL 系統函數，以返回指定數值運算式的指數值
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873313"
 ---
-# <a name="exp-azure-cosmos-db"></a>EXP （Azure Cosmos DB）
+# <a name="exp-azure-cosmos-db"></a>EXP（Azure 宇宙資料庫）
  傳回指定之數值運算式的指數值。  
   
 ## <a name="syntax"></a>語法
@@ -34,9 +34,9 @@ EXP (<numeric_expr>)
   
 ## <a name="remarks"></a>備註
   
-  常數 **e** (2.718281…)，為自然對數的基礎。  
+  常數 **e** (2.718281...) 是自然對數的底數。  
   
-  數字的指數是常數**e**的數字乘冪。 例如 EXP(1.0) = e^1.0 = 2.71828182845905 和 EXP(10) = e^10 = 22026.4657948067。  
+  數字的指數是提高至數字乘冪的常數 **e**。 例如 EXP(1.0) = e^1.0 = 2.71828182845905 和 EXP(10) = e^10 = 22026.4657948067。  
   
   數字的自然對數之指數為數字本身：EXP (LOG (n)) = n。 而數字指數的自然對數則是該數值本身：LOG (EXP (n)) = n。  
   
@@ -68,6 +68,6 @@ SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2
 
 ## <a name="next-steps"></a>後續步驟
 
-- [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [數學函數 Azure 宇宙 DB](sql-query-mathematical-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

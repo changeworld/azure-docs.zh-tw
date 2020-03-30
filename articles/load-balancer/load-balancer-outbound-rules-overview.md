@@ -1,6 +1,6 @@
 ---
-title: 輸出規則-Azure Load Balancer
-description: 透過此學習路徑，開始使用輸出規則來定義輸出網路位址轉譯。
+title: 出站規則 - Azure 負載等化器
+description: 使用此學習路徑，開始使用出站規則定義出站網路位址轉譯。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
 ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304186"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer 輸出規則
@@ -34,17 +34,17 @@ ms.locfileid: "78304186"
 - 應該如何配置[輸出 SNAT 連接埠](load-balancer-outbound-connections.md#snat)。
 - 要提供其輸出轉譯的通訊協定。
 - 要用於輸出連線閒置逾時的持續時間 (4-120 分鐘)。
-- 是否要在閒置超時時傳送 TCP 重設
+- 是否在空閒超時時發送 TCP 重置
 
-輸出規則會擴充[輸出連線](load-balancer-outbound-connections.md#lb)一文中所述的[情節 2](load-balancer-outbound-connections.md)，而且情節優先順序會保持現狀。
+輸出規則會擴充[輸出連線](load-balancer-outbound-connections.md)一文中所述的[情節 2](load-balancer-outbound-connections.md#lb)，而且情節優先順序會保持現狀。
 
 ## <a name="outbound-rule"></a>輸出規則
 
 如同所有 Load Balancer 規則，輸出規則會遵循與負載平衡和輸入 NAT 規則相同的熟悉語法：
 
-**前端** + **參數** + **後端集區**
+**前端** + **parameters**參數 + **後端池**
 
-輸出規則會將「後端集區所識別的所有虛擬機器」的輸出 NAT 設定為轉譯成「前端」。  而且，「參數」提供對輸出 NAT 演算法的額外精細控制。
+輸出規則會將「後端集區所識別的所有虛擬機器」__ 的輸出 NAT 設定為轉譯成「前端」__。  而且，「參數」__ 提供對輸出 NAT 演算法的額外精細控制。
 
 API 版本 "2018-07-01" 允許輸出規則定義建構如下：
 
@@ -64,7 +64,7 @@ API 版本 "2018-07-01" 允許輸出規則定義建構如下：
 >[!NOTE]
 >有效的輸出 NAT 設定包含所有輸出規則和負載平衡規則。 輸出規則會累加到負載平衡規則。 請檢閱[停用負載平衡規則的輸出 NAT](#disablesnat)，以管理將多個規則套用至 VM 時的有效輸出 NAT 轉譯。 所定義輸出規則使用與負載平衡規則相同的公用 IP 位址時，您必須[停用輸出 SNAT](#disablesnat)。
 
-### <a name="scale"></a> 使用多個 IP 位址擴充輸出 NAT
+### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a> 使用多個 IP 位址擴充輸出 NAT
 
 雖然輸出規則只能與單一公用 IP 位址搭配使用，但是輸出規則可減輕擴充輸出 NAT 的設定負擔。 您可以使用多個 IP 位址來規劃大規模案例，也可以使用輸出規則來減輕易於 [SNAT 消耗](load-balancer-outbound-connections.md#snatexhaust)模式。  
 
@@ -74,7 +74,7 @@ API 版本 "2018-07-01" 允許輸出規則定義建構如下：
 
 使用此選項作為輸出規則時，必須具有完整控制公用 IP 首碼，因此您不能有從公用 IP 首碼建立的個別公用 IP 位址資源。  如果您需要更精細的控制，則可以從公用 IP 首碼建立個別公用 IP 位址資源，並將多個公用 IP 位址個別指派給輸出規則的前端。
 
-### <a name="snatports"></a> 調整 SNAT 連接埠配置
+### <a name="tune-snat-port-allocation"></a><a name="snatports"></a> 調整 SNAT 連接埠配置
 
 您可以使用輸出規則來調整[根據後端集區大小的自動 SNAT 連接埠配置](load-balancer-outbound-connections.md#preallocatedports)，並配置比自動 SNAT 連接埠配置所提供的更多或更少。
 
@@ -83,11 +83,11 @@ API 版本 "2018-07-01" 允許輸出規則定義建構如下：
 
           "allocatedOutboundPorts": 10000
 
-來自輸出規則之所有前端的每個公用 IP 位址都會提供最多 64,000 個暫時連接埠，以當成 SNAT 連接埠使用。  Load Balancer 會以 8 的倍數來配置 SNAT 連接埠數目。 如果您提供的值無法與 8 整除，則會拒絕設定作業。  如果您嘗試根據公用 IP 位址數目來配置比可用 SNAT 連接埠更多的 SNAT 連接埠，則會拒絕設定作業。  例如，如果您為每個 VM 配置10000埠，而後端集區中的7個 Vm 會共用單一公用 IP 位址，則會拒絕設定（7 x 10000 SNAT 埠 > 64000 SNAT 埠）。  您可以將更多公用 IP 位址新增至輸出規則的前端，以啟用此情節。
+來自輸出規則之所有前端的每個公用 IP 位址都會提供最多 64,000 個暫時連接埠，以當成 SNAT 連接埠使用。  Load Balancer 會以 8 的倍數來配置 SNAT 連接埠數目。 如果您提供的值無法與 8 整除，則會拒絕設定作業。  如果您嘗試根據公用 IP 位址數目來配置比可用 SNAT 連接埠更多的 SNAT 連接埠，則會拒絕設定作業。  例如，如果為每個 VM 分配 10，000 個埠，後端池中的 7 個 VM 將共用單個公共 IP 位址，則配置將被拒絕（7 x 10，000 SNAT 埠> 64，000 個 SNAT 埠）。  您可以將更多公用 IP 位址新增至輸出規則的前端，以啟用此情節。
 
-您可以指定連接埠數目 0，以還原為[根據後端集區大小的自動 SNAT 連接埠配置](load-balancer-outbound-connections.md#preallocatedports)。 在此情況下，前50個 VM 實例會取得1024埠，51-100 VM 實例會根據資料表取得512等等。
+您可以指定連接埠數目 0，以還原為[根據後端集區大小的自動 SNAT 連接埠配置](load-balancer-outbound-connections.md#preallocatedports)。 在這種情況下，前 50 個 VM 實例將獲得 1024 個埠，51-100 個 VM 實例將獲得 512 個等。
 
-### <a name="idletimeout"></a> 控制輸出流程閒置逾時
+### <a name="control-outbound-flow-idle-timeout"></a><a name="idletimeout"></a> 控制輸出流程閒置逾時
 
 輸出規則提供設定參數來控制輸出流程閒置逾時，並使其符合您應用程式的需求。  輸出閒置逾時預設為 4 分鐘。  此參數可接受使用 4 到 120 的值來指定分鐘數，作為符合此特定規則之流程的閒置逾時。
 
@@ -95,7 +95,7 @@ API 版本 "2018-07-01" 允許輸出規則定義建構如下：
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a><a name="tcpreset"></a>在閒置超時時啟用 TCP 重設
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a>在空閒超時時啟用 TCP 重置
 
 Load Balancer 的預設行為，是在達到輸出閒置逾時的當時以無訊息方式捨棄流程。  運用 enableTCPReset 參數，您可以啟用更可預測的應用程式行為，並控制是否在輸出閒置逾時的當時傳送雙向 TCP 重設 (TCP RST)。 
 
@@ -103,9 +103,9 @@ Load Balancer 的預設行為，是在達到輸出閒置逾時的當時以無訊
 
            "enableTcpReset": true
 
-如需詳細資訊（包括區域可用性），請參閱[閒置超時的 TCP 重設](https://aka.ms/lbtcpreset)。
+查看[空閒超時時的 TCP 重置](https://aka.ms/lbtcpreset)，瞭解包括區域可用性在內的詳細資訊。
 
-### <a name="proto"></a> 使用單一規則支援 TCP 和 UDP 傳輸通訊協定
+### <a name="support-both-tcp-and-udp-transport-protocols-with-a-single-rule"></a><a name="proto"></a> 使用單一規則支援 TCP 和 UDP 傳輸通訊協定
 
 建議您針對輸出規則的傳輸通訊協定使用 "All"，但您也可以在需要時將輸出規則套用至特定傳輸通訊協定。
 
@@ -113,7 +113,7 @@ Load Balancer 的預設行為，是在達到輸出閒置逾時的當時以無訊
 
           "protocol": "All"
 
-### <a name="disablesnat"></a> 停用負載平衡規則的輸出 NAT
+### <a name="disable-outbound-nat-for-a-load-balancing-rule"></a><a name="disablesnat"></a> 停用負載平衡規則的輸出 NAT
 
 如先前所述，負載平衡規則會提供輸出 NAT 的自動程式設計。 不過，某些情節有所助益，或需要您透過負載平衡規則停用輸出 NAT 的自動程式設計，以控制或精簡行為。  輸出規則的情節對於停止自動輸出 NAT 程式設計十分重要。
 
@@ -145,7 +145,7 @@ disableOutboundSNAT 參數預設為 false，這表示負載平衡規則**確實*
 
 ## <a name="scenarios"></a>案例
 
-### <a name="groom"></a> 清理與一組特定公用 IP 位址的輸出連線
+### <a name="groom-outbound-connections-to-a-specific-set-of-public-ip-addresses"></a><a name="groom"></a> 清理與一組特定公用 IP 位址的輸出連線
 
 您可以使用輸出規則來清理似乎源自一組特定公用 IP 位址的輸出連線，以簡化允許清單情節。  此來源公用 IP 位址可以與負載平衡規則所使用的來源公用 IP 位址相同，或與負載平衡規則所使用的一組不同公用 IP 位址。  
 
@@ -157,7 +157,7 @@ disableOutboundSNAT 參數預設為 false，這表示負載平衡規則**確實*
    
 如果您不想要將負載平衡規則用於輸出，則需要在負載平衡規則上[停用輸出 SNAT](#disablesnat)。
 
-### <a name="modifysnat"></a> 修改 SNAT 連接埠配置
+### <a name="modify-snat-port-allocation"></a><a name="modifysnat"></a> 修改 SNAT 連接埠配置
 
 您可以使用輸出規則來調整[根據後端集區大小的自動 SNAT 連接埠配置](load-balancer-outbound-connections.md#preallocatedports)。
 
@@ -165,7 +165,7 @@ disableOutboundSNAT 參數預設為 false，這表示負載平衡規則**確實*
 
 請檢閱[輸出連線](load-balancer-outbound-connections.md)，以及如何配置和使用 [SNAT](load-balancer-outbound-connections.md#snat) 連接埠的詳細資料。
 
-### <a name="outboundonly"></a> 僅啟用輸出
+### <a name="enable-outbound-only"></a><a name="outboundonly"></a> 僅啟用輸出
 
 您可以使用公用 Standard Load Balancer 提供一組 VM 的輸出 NAT。 在此情節中，您可以使用輸出規則本身，而不需要任何其他規則。
 
@@ -206,7 +206,7 @@ disableOutboundSNAT 參數預設為 false，這表示負載平衡規則**確實*
 - 每個前端 IP 位址的可用暫時連接埠數目上限為 64,000。
 - 可設定輸出閒置逾時的範圍為 4 到 120 分鐘 (240 到 7200 秒)。
 - Load Balancer 不支援輸出 NAT 的 ICMP。
-- 輸出規則只能套用至 NIC 的主要 IP 設定。  支援多個 Nic。
+- 出站規則只能應用於 NIC 的主 IP 配置。  支援多個 NIC。
 
 ## <a name="next-steps"></a>後續步驟
 

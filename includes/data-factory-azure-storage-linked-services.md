@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75466586"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
-「Azure 儲存體連結服務」可讓您使用**帳戶金鑰**將 Azure 儲存體帳戶連結至 Azure Data Factory，而帳戶金鑰可將 Azure 儲存體的全域存取權提供給資料處理站。 下表提供 Azure 儲存體連結服務專屬 JSON 元素的描述。
+「Azure 儲存體連結服務」**** 可讓您使用**帳戶金鑰**將 Azure 儲存體帳戶連結至 Azure Data Factory，而帳戶金鑰可將 Azure 儲存體的全域存取權提供給資料處理站。 下表提供 Azure 儲存體連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type |類型屬性必須設為： **AzureStorage** |是 |
+| type |類型屬性必須設置為 **：Azure 存儲** |是 |
 | connectionString |針對 connectionString 屬性指定連接到 Azure 儲存體所需的資訊。 |是 |
 
-如需有關如何取得儲存體帳戶存取金鑰的詳細資訊，請參閱[管理儲存體帳戶存取金鑰](../articles/storage/common/storage-account-keys-manage.md)。
+如需有關如何擷取儲存體帳戶存取金鑰的資訊，請參閱[管理儲存體帳戶存取金鑰](../articles/storage/common/storage-account-keys-manage.md)。
 
-**範例︰**  
+**例子：**  
 
 ```json
 {
@@ -47,12 +47,12 @@ ms.locfileid: "75466586"
 
 Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Azure 儲存體帳戶連結到 Azure Data Factory。 它提供受限制/時間界限存取權，讓資料處理站存取儲存體中的所有/特定資源 (blob/容器)。 下表提供 Azure 儲存體 SAS 連結服務專屬 JSON 元素的描述。 
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type |類型屬性必須設為： **AzureStorageSas** |是 |
 | sasUri |指定 Azure 儲存體資源 (例如 Blob、容器或資料表) 的共用存取簽章 URI。  |是 |
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -68,7 +68,7 @@ Azure 儲存體 SAS 連結服務可讓您使用共用存取簽章 (SAS)，將 Az
 
 建立 **SAS URI**時，請考慮下列事項：  
 
-* 根據連結的服務 (讀取、寫入、讀取/寫入) 在資料處理站中的使用方式，在物件上設定適當的讀取/寫入**權限**。
-* 設定適當的 [過期時間]。 請確定 Azure 儲存體物件的存取權不會在管線的作用中期間內過期。
+* 根據資料工廠中的連結服務（讀取、寫入、讀取/寫入）的使用方式，設置物件的適當的讀/寫**許可權**。
+* 設定適當的 [過期時間]****。 請確定 Azure 儲存體物件的存取權不會在管線的作用中期間內過期。
 * URI 應根據需要在正確的容器/Blob 或資料表層級建立。 Azure Blob 的 SAS URI 可允許 Data Factory 服務存取該特定的 Blob。 Azure Blob 容器的 SAS URI 可允許 Data Factory 服務逐一查看該容器中的 Blob。 如果您稍後需要提供更多/較少物件的存取權，或需要更新 SAS URI，請記得使用新的 URI 更新連結的服務。   
 

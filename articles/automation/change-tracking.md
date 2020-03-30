@@ -6,31 +6,31 @@ ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844797"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用變更追蹤解決方案來追蹤環境中的變更
 
-本文將協助您使用變更追蹤解決方案，輕鬆地找出您環境中的變更。 解決方案會追蹤下列設定變更，以協助您找出操作問題：
+本文將協助您使用變更追蹤解決方案，輕鬆地找出您環境中的變更。 該解決方案跟蹤以下配置更改，以説明您確定操作問題：
 
 - Windows 軟體
-- Linux 軟體（套件）
+- Linux 軟體（套裝軟體）
 
     >[!NOTE]
-    >變更追蹤只會追蹤使用散發套件管理員所管理的軟體。
+    >更改跟蹤僅跟蹤使用分發的包管理器管理的軟體。
 
-- Windows 和 Linux 檔案
-- Windows 登錄機碼
+- Windows 和 Linux 檔
+- 視窗登錄機碼
 - Windows 服務
 - Linux 精靈
 
 受監視伺服器上安裝的軟體、Windows 服務、Windows 登錄和檔案以及 Linux 精靈的變更，會傳送至雲端中的 Azure 監視器服務進行處理。 會將邏輯套用至接收的資料，且雲端服務會記錄資料。 使用 [變更追蹤] 儀表板上的資訊，您可以輕鬆地看到您的伺服器基礎結構中所做的變更。
 
 > [!NOTE]
-> Azure 自動化變更追蹤會追蹤虛擬機器中的變更。 若要追蹤 Azure Resource Manager 屬性變更，請參閱 Azure Resource Graph 的[變更歷程記錄](../governance/resource-graph/how-to/get-resource-changes.md)。
+> Azure 自動化更改跟蹤跟蹤虛擬機器中的更改。 要跟蹤 Azure 資源管理器屬性更改，請參閱 Azure 資源圖的[更改歷史記錄](../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="supported-windows-operating-systems"></a>支援的 Windows 作業系統
 
@@ -60,7 +60,7 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 * Debian GNU/Linux 8 和 9
 * Ubuntu Linux 14.04 LTS 和 16.04 LTS
 
-## <a name="onboard"></a>啟用變更追蹤和清查
+## <a name="enable-change-tracking-and-inventory"></a><a name="onboard"></a>啟用變更追蹤和清查
 
 若要開始追蹤變更，您必須啟用變更追蹤和清查解決方案。 有許多方法可讓機器上線來變更追蹤和清查。 下列是使解決方案上線的建議和支援方式。
 
@@ -71,37 +71,37 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
 
 ## <a name="configuring-change-tracking-and-inventory"></a>設定變更追蹤和清查
 
-若要了解如何將電腦登入解決方案，請瀏覽：[登入自動化解決方案](automation-onboard-solutions-from-automation-account.md)。 一旦您的電腦上架了變更追蹤和清查解決方案，您就可以設定要追蹤的專案。當您啟用要追蹤的新檔案或登錄機碼時，它會同時啟用變更追蹤和清查。
+若要了解如何將電腦登入解決方案，請瀏覽：[登入自動化解決方案](automation-onboard-solutions-from-automation-account.md)。 使用"更改跟蹤和庫存"解決方案載入電腦後，可以配置要跟蹤的專案。啟用要跟蹤的新檔或登錄機碼時，將同時啟用該金鑰，用於更改跟蹤和清單。
 
 如需追蹤 Windows 和 Linux 上的檔案變更，則會使用檔案的 MD5 雜湊。 這些雜湊接著用來偵測自上次清查後是否已進行變更。
 
 ### <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
 
-Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性監視（FIM）。 雖然 FIM 只會監視檔案和登錄，但完整的變更追蹤解決方案也包含：
+Azure 安全中心添加了基於 Azure 更改跟蹤構建的檔完整性監視 （FIM）。 雖然 FIM 僅監視檔和註冊表，但完整的更改跟蹤解決方案還包括：
 
-- 軟體變更
+- 軟體更改
 - Windows 服務
-- Linux 守護程式
+- Linux 守護神
 
-如果您已經啟用 FIM，而且想要試用完整的變更追蹤解決方案，您需要執行下列步驟。 這個進程不會移除您的設定。
+如果您已經啟用了 FIM，並且希望嘗試完整的更改跟蹤解決方案，則需要執行以下步驟。 此過程不會刪除設置。
 
 > [!NOTE]
-> 啟用完整變更追蹤解決方案可能會產生額外的費用。如需詳細資訊，請參閱[自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
+> 有關詳細資訊，啟用完整的更改跟蹤解決方案可能會導致額外費用，請參閱[自動化定價](https://azure.microsoft.com/pricing/details/automation/)。
 
-1. 流覽至工作區，然後在[已安裝的監視解決方案清單](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中尋找，以移除監視解決方案。
-2. 按一下解決方案的名稱以開啟其 [摘要] 頁面，然後按一下 [刪除]，如[移除監視解決方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)中所述。
-3. 流覽至 [自動化帳戶]，然後從 [設定**管理**] 下的 [資源] 功能表中選取 [**變更追蹤**]，以重新啟用解決方案。
-4. 確認您的工作區設定詳細資料，然後按一下 [**啟用**]。
+1. 通過導航到工作區並將其定位在[已安裝的監視解決方案清單中](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)，刪除監視解決方案。
+2. 按一下解決方案的名稱以打開其摘要頁，然後按一下"刪除"，詳見[刪除監視解決方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)。
+3. 通過導航到自動化帳戶並從**建構管理**下的資源功能表選擇 **"更改跟蹤"** 來重新啟用解決方案。
+4. 確認工作區設置詳細資訊，然後按一下"**啟用**"。
 
 ### <a name="configure-linux-files-to-track"></a>設定要追蹤的 Linux 檔案
 
 使用下列步驟，設定要在 Linux 電腦上追蹤的檔案：
 
-1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 按一下 [編輯設定] \(齒輪符號)。
-2. 在 [變更追蹤] 頁面上選取 [Linux 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
-3. 在 [為變更追蹤新增 Linux 檔案] 上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存]。
+1. 從您的自動化帳戶中，選取 [組態管理]**** 下的 [變更追蹤]****。 按一下 [編輯設定]**** \(齒輪符號)。
+2. 在 [變更追蹤]**** 頁面上選取 [Linux 檔案]****，然後按一下 [+ 新增]****，以新增要追蹤的新檔案。
+3. 在**添加 Linux 檔進行更改跟蹤時**，輸入要跟蹤的檔或目錄的資訊，然後按一下"**保存**"。
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |啟用     | 判斷是否已套用設定。        |
 |項目名稱     | 要追蹤之檔案的易記名稱。        |
@@ -110,7 +110,7 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 |路徑類型     | 要追蹤的項目類型，可能值為 [檔案] 和 [目錄]。        |
 |遞迴     | 決定在尋找所要追蹤的項目時是否使用遞迴。        |
 |使用 Sudo     | 此設定會決定在檢查項目時是否使用 sudo。         |
-|連結     | 此設定會決定在周遊目錄時處理符號連結的方式。<br> **忽略** - 忽略符號連結，而不包含參考的檔案/目錄。<br>**遵循** - 在遞迴期間遵循符號連結，並且包含參考的檔案/目錄。<br>**管理** - 遵循符號連結並允許變更傳回的內容。     |
+|連結     | 此設定會決定在周遊目錄時處理符號連結的方式。<br> **忽略** - 忽略符號連結，而不包含參考的檔案/目錄。<br>**遵循**- 在遞迴期間遵循符號連結，還包括引用的檔/目錄。<br>**管理** - 遵循符號連結並允許變更傳回的內容。     |
 |上傳所有的檔案內容設定| 開啟或關閉追蹤變更上的檔案內容上傳。 可用的選項：**True** 或 **False**。|
 
 > [!NOTE]
@@ -120,11 +120,11 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 
 使用下列步驟，設定要在 Windows 電腦上追蹤的檔案：
 
-1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 按一下 [編輯設定] \(齒輪符號)。
-2. 在 [變更追蹤] 頁面上選取 [Windows 檔案]，然後按一下 [+ 新增]，以新增要追蹤的新檔案。
-3. 在 [為變更追蹤新增 Windows 檔案] 上，輸入要追蹤之檔案的資訊，然後按一下 [儲存]
+1. 從您的自動化帳戶中，選取 [組態管理]**** 下的 [變更追蹤]****。 按一下 [編輯設定]**** \(齒輪符號)。
+2. 在 [變更追蹤]**** 頁面上選取 [Windows 檔案]****，然後按一下 [+ 新增]****，以新增要追蹤的新檔案。
+3. 在 [為變更追蹤新增 Windows 檔案]**** 上，輸入要追蹤之檔案的資訊，然後按一下 [儲存]****
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |啟用     | 判斷是否已套用設定。        |
 |項目名稱     | 要追蹤之檔案的易記名稱。        |
@@ -152,11 +152,11 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 
 使用下列步驟，設定要在 Windows 電腦上追蹤的登錄機碼：
 
-1. 從您的自動化帳戶中，選取 [組態管理] 下的 [變更追蹤]。 按一下 [編輯設定] \(齒輪符號)。
-2. 在 [變更追蹤] 頁面上選取 [Windows 登錄]，然後按一下 [+ 新增]，以新增要追蹤的新登錄機碼。
-3. 在 [為變更追蹤新增 Windows 登錄] 上，輸入要追蹤之機碼的資訊，然後按一下 [儲存]。
+1. 從您的自動化帳戶中，選取 [組態管理]**** 下的 [變更追蹤]****。 按一下 [編輯設定]**** \(齒輪符號)。
+2. 在 [變更追蹤]**** 頁面上選取 [Windows 登錄]****，然後按一下 [+ 新增]****，以新增要追蹤的新登錄機碼。
+3. 在 [為變更追蹤新增 Windows 登錄]**** 上，輸入要追蹤之機碼的資訊，然後按一下 [儲存]****。
 
-|屬性  |說明  |
+|屬性  |描述  |
 |---------|---------|
 |啟用     | 判斷是否已套用設定。        |
 |項目名稱     | 要追蹤之登錄機碼的易記名稱。        |
@@ -169,12 +169,12 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 
 * Windows 登錄追蹤的遞迴
 * 網路檔案系統
-* 不會追蹤不同的安裝方法
-* \* .exe 檔案不會針對 Windows 追蹤
+* 不跟蹤不同的安裝方法
+* *.exe 檔未跟蹤到 Windows
 
 其他限制：
 
-* [最大檔案大小] 資料行和值未用於目前實作中。
+* [最大檔案大小]**** 資料行和值未用於目前實作中。
 * 如果您在 30 分鐘的收集週期收集超過 2500 個檔案，則解決方案效能可能會下降。
 * 網路流量高時，變更記錄最多可能需要六個小時才會顯示。
 * 如果您在關閉電腦時修改組態，電腦可能會提出屬於舊有組態的變更。
@@ -184,13 +184,13 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 「變更追蹤」解決方案目前有下列問題︰
 
 * Windows Server 2016 Core RS3 機器不會收集 Hotfix 更新。
-* 即使沒有任何變更，Linux 守護程式也可能會顯示已變更的狀態。 這是因為 `SvcRunLevels` 欄位的捕捉方式所致。
+* Linux 守護進程可能會顯示更改的狀態，即使沒有變化。 這是由於`SvcRunLevels`如何捕獲欄位。
 
 ## <a name="change-tracking-data-collection-details"></a>「變更追蹤」資料收集詳細資訊
 
 下表顯示各變更類型的資料收集頻率。 對於每個類型，目前狀態的資料快照集也至少會每隔 24 小時重新整理一次：
 
-| **變更類型** | **頻率** |
+| **更改類型** | **頻率** |
 | --- | --- |
 | Windows 登錄 | 50 分鐘 |
 | Windows 檔案 | 30 分鐘 |
@@ -202,11 +202,11 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 
 下表顯示對於變更追蹤所追蹤的每個機器項目限制。
 
-| **Resource** | **限制**| **注意事項** |
+| **資源** | **限制**| **注意** |
 |---|---|---|
 |檔案|500||
 |登錄|250||
-|Windows 軟體|250|不包含軟體修補程式|
+|Windows 軟體|250|不包括軟體修補程式|
 |Linux 套件|1250||
 |服務|250||
 |精靈|250||
@@ -215,7 +215,7 @@ Azure 資訊安全中心已新增 Azure 變更追蹤上建立的檔案完整性�
 
 ### <a name="windows-service-tracking"></a>Windows 服務追蹤
 
-Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移至**變更追蹤**。 在 [Windows 服務] 索引標籤上的 [編輯設定] 下有一個滑桿，可以將 Windows 服務的收集頻率從 10 秒變更為長達 30 分鐘。 將滑桿移至您想要的頻率，它會自動儲存。
+Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移至**變更追蹤**。 在 [Windows 服務]**** 索引標籤上的 [編輯設定]**** 下有一個滑桿，可以將 Windows 服務的收集頻率從 10 秒變更為長達 30 分鐘。 將滑桿移至您想要的頻率，它會自動儲存。
 
 ![Windows 服務滑桿](./media/change-tracking/windowservices.png)
 
@@ -253,7 +253,7 @@ Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移�
 
 以下為「變更追蹤」特別需要的位址。 這些位址的通訊皆經由連接埠 443 進行。
 
-|Azure 公用  |Azure 政府機構  |
+|Azure 公用  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -262,9 +262,9 @@ Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移�
 
 ## <a name="use-change-tracking"></a>使用變更追蹤
 
-此解決方案啟用後，您可以在自動化帳戶中選取 [組態管理] 下的 [變更追蹤]，以檢視受監視電腦的變更摘要。
+此解決方案啟用後，您可以在自動化帳戶中選取 [組態管理]**** 下的 [變更追蹤]****，以檢視受監視電腦的變更摘要。
 
-您可以檢視電腦的變更，然後向下鑽研每個事件的詳細資料。 您可以使用圖表頂端的下拉式清單，依據變更類型和時間範圍來限制圖表和詳細資訊。 您也可以按住並拖曳圖表，以選取自訂時間範圍。 **變更類型**將會是下列其中一個值 **：事件**、守護**程式、檔案、登錄、** **軟體** **、** **Windows 服務**。 類別會顯示變更的類型，而且可以**新增**、**修改**或**移除**。
+您可以檢視電腦的變更，然後向下鑽研每個事件的詳細資料。 您可以使用圖表頂端的下拉式清單，依據變更類型和時間範圍來限制圖表和詳細資訊。 您也可以按住並拖曳圖表，以選取自訂時間範圍。 **更改類型**將是**以下值事件**之一，**守護神**，**檔**，**註冊表**，**軟體**， **Windows 服務**. 類別顯示更改的類型，可以**添加**、**修改****或刪除**。
 
 ![變更追蹤儀表板的影像](./media/change-tracking/change-tracking-dash01.png)
 
@@ -274,13 +274,13 @@ Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移�
 
 ## <a name="search-logs"></a>搜尋記錄
 
-除了入口網站中提供的詳細資訊以外，您也可以對記錄執行搜尋。 開啟 [**變更追蹤**] 頁面，按一下 [ **Log Analytics**]，這會開啟 [**記錄**檔] 頁面。
+除了入口網站中提供的詳細資訊以外，您也可以對記錄執行搜尋。 打開 **"更改跟蹤"** 頁後，按一下 **"日誌分析**"，這將打開 **"日誌"** 頁。
 
 ### <a name="sample-queries"></a>範例查詢
 
 下表提供此解決方案所收集之變更記錄的記錄搜尋範例：
 
-|查詢  |說明  |
+|查詢  |描述  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | 針對已設為 [自動]、但回報為 [正在停止] 的 Windows 服務顯示最新的清查記錄<br>結果會限定為該 SoftwareName 和電腦的最新記錄      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|顯示已移除之軟體的變更記錄|
@@ -295,7 +295,7 @@ Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移�
 
 若要進一步分析這項變更，請按一下 **Log Analytics** 移至記錄搜尋。 在記錄搜尋中，透過查詢 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 搜尋 Hosts 檔案的內容變更。 此查詢會尋找變更，其中包括完整路徑包含 "hosts" 這個字的檔案的檔案內容變更。 您也可以將路徑部分變更為其完整形式 (例如 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`)，以要求特定檔案。
 
-在查詢傳回所需的結果之後，按一下記錄搜尋體驗中的 [新增警示規則] 按鈕，以開啟警示建立頁面。 您也可以在 Azure 入口網站中透過 [Azure 監視器] 瀏覽至此體驗。 在警示建立體驗中，再次檢查我們的查詢並修改警示邏輯。 在此情況下，即使在環境中的所有電腦上偵測到一項變更，也要觸發警示。
+在查詢傳回所需的結果之後，按一下記錄搜尋體驗中的 [新增警示規則]**** 按鈕，以開啟警示建立頁面。 您也可以在 Azure 入口網站中透過 [Azure 監視器]**** 瀏覽至此體驗。 在警示建立體驗中，再次檢查我們的查詢並修改警示邏輯。 在此情況下，即使在環境中的所有電腦上偵測到一項變更，也要觸發警示。
 
 ![顯示變更查詢以便追蹤 hosts 檔案變更的影像](./media/change-tracking/change-query.png)
 
@@ -309,7 +309,7 @@ Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移�
 
 雖然對變更追蹤或清查資料而言，Hosts 檔案的變更警示是一個很好的警示應用，但是有更多警示案例，包括已定義的情況及其在下一節的範例查詢。
 
-|查詢  |說明  |
+|查詢  |描述  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|適用於追蹤系統重要檔案的變更|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|適用於追蹤重要組態檔的修改|
@@ -317,14 +317,14 @@ Windows 服務的預設收集頻率為 30 分鐘。 若要設定頻率，請移�
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState != "Running"|適用於追蹤系統重要服務的變更|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|適用於需要鎖定軟體組態的環境|
 |ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion != "8.0.11081.0"|適用於查看哪些電腦已過時或不符合所安裝軟體版本的規範。 它會報告上次所回報的組態狀態，毫無變更。|
-|ConfigurationChange <br>&#124;where RegistryKey = = @ "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 適用於追蹤重要防毒金鑰的變更|
-|ConfigurationChange <br>&#124;其中，RegistryKey 包含 @ "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Win2k3 sharedaccess\\Parameters\\FirewallPolicy"| 適用於追蹤防火牆設定的變更|
+|ConfigurationChange <br>&#124;登錄機碼 =\\\"HKEY_LOCAL_MACHINE軟體\\微軟\\Windows\\當前\\版本品質相容性"| 適用於追蹤重要防毒金鑰的變更|
+|ConfigurationChange <br>註冊表\\項包含 #"HKEY_LOCAL_MACHINE SYSTEM\\當前控制集\\服務\\共用訪問\\參數\\防火牆策略&#124;"| 適用於追蹤防火牆設定的變更|
 
 ## <a name="next-steps"></a>後續步驟
 
 瀏覽變更追蹤的教學課程，以深入了解如何使用此解決方案：
 
 > [!div class="nextstepaction"]
-> [對您環境中的變更進行疑難排解](automation-tutorial-troubleshoot-changes.md)
+> [針對您環境中的變更進行疑難排解](automation-tutorial-troubleshoot-changes.md)
 
-* 使用[Azure 監視器記錄檔中的記錄檔搜尋](../log-analytics/log-analytics-log-searches.md)，以查看詳細的變更追蹤資料。
+* 使用[Azure 監視器日誌中的日誌搜索](../log-analytics/log-analytics-log-searches.md)查看詳細的更改跟蹤資料。

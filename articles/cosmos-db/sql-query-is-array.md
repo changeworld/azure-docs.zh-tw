@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 IS_ARRAY
-description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 IS_ARRAY。
+title: azure 宇宙 DB 查詢語言中的IS_ARRAY
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數IS_ARRAY。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303880"
 ---
-# <a name="is_array-azure-cosmos-db"></a>IS_ARRAY （Azure Cosmos DB）
+# <a name="is_array-azure-cosmos-db"></a>IS_ARRAY（Azure 宇宙資料庫）
  傳回布林值，表示指定之運算式的類型為陣列。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ IS_ARRAY(<expr>)
 ## <a name="arguments"></a>引數
   
 *expr*  
-   這是任何運算式。  
+   是任何運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +34,7 @@ IS_ARRAY(<expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會使用 `IS_ARRAY` 函式，檢查 JSON 布林值的物件、數位、字串、null、物件、陣列以及未定義的類型。  
+  下面的示例使用`IS_ARRAY`函數檢查 JSON 布林、數位、字串、空、物件、陣列和未定義類型的物件。  
   
 ```sql
 SELECT   
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+該系統功能將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [型別檢查函數 Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [類型檢查功能 Azure 宇宙資料庫](sql-query-type-checking-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

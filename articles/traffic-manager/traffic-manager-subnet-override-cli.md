@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 的 Azure 流量管理員子網覆寫 |Microsoft Docs
-description: 本文將協助您瞭解如何使用流量管理員子網覆寫來覆寫流量管理員設定檔的路由方法，以透過預先定義的 IP 範圍，將流量導向至端點對應的使用者 IP 位址。
+title: 使用 Azure CLI 進行 Azure 流量管理器子網覆蓋 |微軟文檔
+description: 本文將説明您瞭解如何使用流量管理器子網覆蓋來覆蓋流量管理器設定檔的路由方法，以便通過預定義的 IP 範圍將流量定向到基於最終使用者 IP 位址的終結點，以及通過預定義的 IP 範圍到終結點映射。
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -10,39 +10,39 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
 ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938479"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 流量管理員子網覆寫
+# <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 進行流量管理器子網覆蓋
 
-流量管理員子網覆寫可讓您變更設定檔的路由方法。  新增覆寫將會根據使用者的 IP 位址，以預先定義的 IP 範圍將流量導向端點對應。 
+流量管理器子網覆蓋允許您更改設定檔的路由方法。  添加覆蓋將基於最終使用者的 IP 位址（具有預定義的 IP 範圍）將流量定向到終結點映射。 
 
-## <a name="how-subnet-override-works"></a>子網覆寫的運作方式
+## <a name="how-subnet-override-works"></a>子網覆蓋的工作原理
 
-將子網覆寫新增至流量管理員設定檔時，流量管理員會先檢查是否有使用者 IP 位址的子網覆寫。 如果找到，則會將使用者的 DNS 查詢導向至對應的端點。  如果找不到對應，流量管理員會回到設定檔的原始路由方法。 
+將子網覆蓋添加到流量管理器設定檔時，流量管理器將首先檢查最終使用者的 IP 位址是否有子網覆蓋。 如果找到一個，使用者的 DNS 查詢將定向到相應的終結點。  如果未找到映射，流量管理器將回落到設定檔的原始路由方法。 
 
-IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或做為位址範圍（例如，1.2.3.4-5.6.7.8）。 與每個端點相關聯的 IP 範圍，對該端點而言必須是唯一的。 不同端點間的任何 IP 範圍重迭，會導致流量管理員拒絕設定檔。
+IP 位址範圍可以指定為 CIDR 範圍（例如，1.2.3.0/24）或位址範圍（例如 1.2.3.4-5.6.7.8）。 與每個終結點關聯的 IP 範圍必須是唯一的。 不同終結點之間的 IP 範圍的任何重疊將導致流量管理器拒絕設定檔。
 
-有兩種類型的路由設定檔支援子網覆寫：
+有兩種類型的路由設定檔支援子網覆蓋：
 
-* **地理**-如果流量管理員找到 DNS 查詢之 IP 位址的子網覆寫，則會將該查詢路由至端點的健康情況所在的端點。
-* **效能**-如果流量管理員找到 DNS 查詢之 IP 位址的子網覆寫，它只會將流量路由傳送至端點（如果狀況良好）。  如果子網覆寫端點狀況不良，流量管理員將會切換回效能路由啟發學習法。
+* **地理位置**- 如果流量管理器發現 DNS 查詢的 IP 位址的子網覆蓋，它將路由查詢到終結點，無論終結點的運行狀況是什麼。
+* **性能**- 如果流量管理器發現 DNS 查詢的 IP 位址的子網覆蓋，則僅當流量正常時，它才會將流量路由到終結點。  如果子網重寫終結點不正常，流量管理器將回落到性能路由啟發式。
 
-## <a name="create-a-traffic-manager-subnet-override"></a>建立流量管理員子網覆寫
+## <a name="create-a-traffic-manager-subnet-override"></a>創建流量管理器子網覆蓋
 
-若要建立流量管理員子網覆寫，您可以使用 Azure CLI 將覆寫的子網新增至流量管理員端點。
+要創建流量管理器子網覆蓋，可以使用 Azure CLI 將覆蓋的子網添加到流量管理器終結點。
 
 ## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，在執行本教學課程時，您必須執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，在執行本教學課程時，您必須執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
-## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>使用子網覆寫來更新流量管理員端點。
-使用 Azure CLI，透過[az network 流量-manager 端點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)來更新端點。
+## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>使用子網覆蓋更新流量管理器終結點。
+使用 Azure CLI 使用[az 網路流量管理器終結點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)終結點。
 
 ```azurecli
 
@@ -64,7 +64,7 @@ az network traffic-manager endpoint update \
 
 ```
 
-您可以使用 **--remove**選項執行[az network 流量-manager 端點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)，以移除 IP 位址範圍。
+您可以通過使用 **--remove**選項運行[az 網路流量管理器終結點更新](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)來刪除 IP 位址範圍。
 
 ```azurecli
 

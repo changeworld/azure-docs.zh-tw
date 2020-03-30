@@ -1,6 +1,6 @@
 ---
-title: 高可用性–超大規模資料庫（Citus）-適用於 PostgreSQL 的 Azure 資料庫
-description: 高可用性和嚴重損壞修復概念
+title: 高可用性 = 超大規模 （Citus） - 用於後格雷SQL的 Azure 資料庫
+description: 高可用性和災害復原概念
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975528"
 ---
-# <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的高可用性–超大規模資料庫（Citus）
+# <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure 資料庫中高可用性，適用于 PostgreSQL 和超大規模（Citus）
 
-高可用性 (HA) 能藉由維護伺服器群組中每個節點的待命複本，來避免資料庫停機。 如果節點關閉，超大規模就會將失敗節點的輸入連線切換至其待命節點。 容錯移轉會在數分鐘內發生，升階的節點一律會透過 PostgreSQL 同步串流複寫獲得更新的資料。
+高可用性 （HA） 通過維護伺服器組中每個節點的備用副本來避免資料庫停機時間。 如果節點出現故障，超大規模將傳入連接從故障節點切換到其備用節點。 容錯移轉在幾分鐘內發生，升級的節點始終通過 PostgreSQL 同步流複製獲得新資料。
 
-若要利用協調器節點上的 HA，資料庫應用程式必須偵測並重試中斷的連接和失敗的交易。 新升級的協調器將可透過相同的連接字串來存取。
+為了利用協調節點上的 HA，資料庫應用程式需要檢測和重試丟棄的連接和失敗的交易。 新升級的協調員將使用相同的連接字串訪問。
 
-復原可以分成三個階段：偵測、容錯移轉和完整復原。  超大規模資料庫會在每個節點上執行定期健全狀況檢查，並在四次失敗檢查之後判斷節點已關閉。 超大規模資料庫接著會將待命升級為主要節點狀態（容錯移轉），並布建新的待命。
-串流複寫會開始，使新節點保持在最新狀態。  當所有資料都已複寫之後，節點就已達到完整復原。
+恢復可以分為三個階段：檢測、容錯移轉和完全恢復。  Hyperscale 在每個節點上運行定期運行狀況檢查，在四次檢查失敗後，它確定節點已關閉。 然後，Hyperscale 將備用節點提升為主節點狀態（容錯移轉），並設置新的備用資料庫。
+流式複製開始，使新節點成為最新的節點。  複製所有資料後，節點已達到完全恢復。
 
 ### <a name="next-steps"></a>後續步驟
 
-- 瞭解如何在超大規模資料庫伺服器群組中[啟用高可用性](howto-hyperscale-high-availability.md)。
+- 瞭解如何在超大規模伺服器組中[啟用高可用性](howto-hyperscale-high-availability.md)。

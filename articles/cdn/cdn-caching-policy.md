@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 媒體服務中管理 Azure CDN 快取原則 | Microsoft Docs
-description: 本文說明如何在 Azure 媒體服務中管理 Azure CDN 快取原則。
+description: 本文介紹如何在 Azure 媒體服務中管理 Azure CDN 緩存策略。
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74892569"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>在 Azure 媒體服務中管理 Azure CDN 快取原則

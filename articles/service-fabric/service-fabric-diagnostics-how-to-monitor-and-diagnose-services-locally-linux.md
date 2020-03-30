@@ -1,16 +1,16 @@
 ---
-title: 在 Linux 中進行 Azure Service Fabric 應用程式的 Debug
+title: 在 Linux 中調試 Azure 服務結構應用
 description: 了解如何在本機 Linux 開發電腦上監視和診斷 Service Fabric 服務。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75526289"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視和診斷本機 Linux 機器開發設定中的服務
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視和診斷本地 Linux 機器開發設置中的服務
 
 
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "75526289"
 
 ## <a name="debugging-service-fabric-java-applications"></a>針對 Service Fabric Java 應用程式進行偵錯
 
-對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於 `java.util.logging` 是 JRE 的預設選項，它也會用於 [GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
+對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於`java.util.logging`JRE 是預設選項，因此它也用於[GitHub 中的代碼示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
 
 您可以使用 java.util.logging 將應用程式記錄重新導向至記憶體、輸出串流、主控台檔案或通訊端。 對於其中每個選項，架構中已經提供預設處理常式。 您可以建立 `app.properties` 檔案來設定應用程式的檔案處理常式，將所有記錄重新導向至本機檔案。
 
@@ -53,7 +53,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 依預設，如果未明確設定任何處理常式，則會註冊主控台處理常式。 使用者可以在 /var/log/syslog 下檢視 syslog 中的記錄。
 
-如需詳細資訊，請參閱 [GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
+有關詳細資訊，請參閱[GitHub 中的代碼示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>針對 Service Fabric C# 應用程式進行偵錯

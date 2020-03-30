@@ -1,7 +1,7 @@
 ---
-title: 使用自訂原則進行手機註冊和登入（預覽）
+title: 使用自訂策略進行電話註冊和登錄（預覽版）
 titleSuffix: Azure AD B2C
-description: 使用 Azure Active Directory B2C 中的自訂原則，將文字訊息中的單次密碼（OTP）傳送給應用程式使用者的手機。
+description: 使用 Azure 活動目錄 B2C 中的自訂策略，在文本消息中向應用程式使用者的電話發送一次性密碼 （OTP）。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,81 +12,81 @@ ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183953"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C （預覽）中使用自訂原則設定電話註冊和登入
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C（預覽）中使用自訂策略設置電話註冊和登錄
 
-Azure Active Directory B2C （Azure AD B2C）中的電話註冊和登入可讓您的使用者透過使用文字訊息傳送至其電話的一次性密碼（OTP）來註冊並登入您的應用程式。 單次密碼可協助將使用者忘記或破解密碼的風險降至最低。
+在 Azure 活動目錄 B2C（Azure AD B2C） 中使用手機註冊和登錄，使使用者能夠使用一次性密碼 （OTP） 向其手機傳送簡訊來註冊並登錄到應用程式。 一次性密碼有助於將使用者忘記或洩露其密碼的風險降至最低。
 
-請遵循本文中的步驟來使用自訂原則，讓您的客戶可以使用傳送到其電話的一次性密碼來註冊和登入您的應用程式。
+按照本文中的步驟使用自訂策略，使您的客戶能夠使用發送到其手機的一次性密碼註冊並登錄到您的應用程式。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="pricing"></a>Pricing
+## <a name="pricing"></a>定價
 
-單次密碼會使用 SMS 文字訊息傳送給您的使用者，而且您可能會針對每個傳送的訊息收費。 如需定價資訊，請參閱[Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**個別費用**一節。
+使用 SMS 短信向使用者發送一次性密碼，並且可能會因發送的每條消息向您收費。 有關定價資訊，請參閱[Azure 活動目錄 B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**單獨費用**部分。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在設定 OTP 之前，您必須先準備好下列資源。
+在設置 OTP 之前，您需要提供以下資源。
 
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
-* 在您的租使用者中[註冊的 Web 應用程式](tutorial-register-applications.md)
-* 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
+* 在租戶中[註冊的 Web 應用程式](tutorial-register-applications.md)
+* 上載到租戶的[自訂策略](custom-policy-get-started.md)
 
-## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>取得電話註冊 & 登入入門套件
+## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>獲取電話註冊&登錄入門包
 
-一開始請先更新電話註冊和登入自訂原則檔案，以與您的 Azure AD B2C 租使用者搭配使用。
+首先更新電話註冊和登錄自訂策略檔，以便與 Azure AD B2C 租戶一起工作。
 
-下列步驟假設您已完成[必要條件](#prerequisites)，並已將[自訂原則入門套件][starter-pack]存放庫複製到本機電腦。
+以下步驟假定您已完成[先決條件](#prerequisites)，並已將[自訂策略初學者包存儲庫][starter-pack]克隆到本地電腦。
 
-1. 在您的入門套件存放庫的本機複本中尋找[電話註冊和登入自訂原則][starter-pack-phone]檔案，或直接下載。 XML 原則檔案位於下列目錄：
+1. 在啟動包回購的本地克隆中查找[電話註冊和登錄自訂策略檔][starter-pack-phone]，或直接下載這些檔。 XML 策略檔位於以下目錄中：
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. 在每個檔案中，將字串 `yourtenant` 取代為 Azure AD B2C 租使用者的名稱。 例如，如果您的 B2C 租使用者名稱是*contosob2c*，則 `yourtenant.onmicrosoft.com` 的所有實例都會 `contosob2c.onmicrosoft.com`。
+1. 在每個檔中，將字串`yourtenant`替換為 Azure AD B2C 租戶的名稱。 例如，如果 B2C 租戶的名稱為*contosob2c，* 則 所有實例`yourtenant.onmicrosoft.com`都變為`contosob2c.onmicrosoft.com`。
 
-1. 完成在[Azure Active Directory B2C 中開始使用自訂](custom-policy-get-started.md)原則中的[將應用程式識別碼新增至自訂原則](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)一節中的步驟。 在此情況下，請使用完成必要條件*IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*時所註冊的兩個應用程式的**應用程式（用戶端）識別碼**，更新 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 。
+1. 完成"[將應用程式標識添加到 Azure](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [活動目錄 B2C 中的自訂策略](custom-policy-get-started.md)"開始"的自訂策略部分中的步驟。 在這種情況下，使用在完成先決條件`/phone-number-passwordless/`**`Phone_Email_Base.xml`**"*身份體驗框架*"和 *"代理身份體驗框架*"時註冊的兩個應用程式（**用戶端）標識**進行更新。
 
-## <a name="upload-the-policy-files"></a>上傳原則檔案
+## <a name="upload-the-policy-files"></a>上傳策略檔
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，然後流覽至您的 Azure AD B2C 租使用者。
-1. 在 [**原則**] 底下，選取 [ **Identity Experience Framework**]。
-1. 選取 **[上傳自訂原則**]。
-1. 依下列順序上傳原則檔案：
-    1. *Phone_Email_Base .xml*
-    1. *SignUpOrSignInWithPhone .xml*
-    1. *SignUpOrSignInWithPhoneOrEmail .xml*
-    1. *ProfileEditPhoneOnly .xml*
-    1. *ProfileEditPhoneEmail .xml*
-    1. *ChangePhoneNumber .xml*
-    1. *PasswordResetEmail .xml*
+1. 登錄到 Azure[門戶](https://portal.azure.com)並導航到 Azure AD B2C 租戶。
+1. 在 **"策略"** 下，選擇**身份體驗框架**。
+1. 選擇 **"上載自訂策略**"。
+1. 按以下順序上載策略檔：
+    1. *Phone_Email_Base.xml*
+    1. *註冊人signinin與Phone.xml*
+    1. *註冊人signin與電話或電子郵件.xml*
+    1. *設定檔編輯電話僅.xml*
+    1. *設定檔編輯PhoneEmail.xml*
+    1. *更改電話號碼.xml*
+    1. *密碼重設電子郵件.xml*
 
-當您上傳每個檔案時，Azure 會在 `B2C_1A_`加上前置詞。
+上載每個檔時，Azure 會添加前`B2C_1A_`綴 。
 
 ## <a name="test-the-custom-policy"></a>測試自訂原則
 
-1. 在 [**自訂原則**] 底下，選取 [ **B2C_1A_SignUpOrSignInWithPhone**]。
-1. 在 [**選取應用程式**] 下，選取您在完成必要條件時註冊的*webapp1*應用程式。
-1. 針對 [**選取回復 url**]，選擇 [`https://jwt.ms`]。
-1. 選取 [**立即執行**]，然後使用電子郵件地址或電話號碼進行註冊。
-1. 再次選取 [**立即執行**]，然後使用相同的帳戶登入，以確認您擁有正確的設定。
+1. 在**自訂策略**下，選擇**B2C_1A_SignUpOrSignInWithPhone。**
+1. 在 **"選擇應用程式"** 下，選擇在完成先決條件時註冊的*Webapp1*應用程式。
+1. 對於**選擇答覆 URL，** 請選擇`https://jwt.ms`。
+1. 選擇 **"立即運行**"並使用電子郵件地址或電話號碼註冊。
+1. 選擇 **"立即運行"，** 然後使用相同的帳戶登錄，以確認配置正確。
 
-## <a name="get-user-account-by-phone-number"></a>依電話號碼取得使用者帳戶
+## <a name="get-user-account-by-phone-number"></a>按電話號碼獲取使用者帳戶
 
-以電話號碼註冊但未提供修復電子郵件地址的使用者，會記錄在您的 Azure AD B2C 目錄中，並以其電話號碼作為其登入名稱。 如果使用者想要變更其電話號碼，技術支援人員或支援小組必須先尋找其帳戶，然後更新其電話號碼。
+使用電話號碼註冊但不提供恢復電子郵件地址的使用者記錄在 Azure AD B2C 目錄中，其電話號碼為其登錄名稱。 如果使用者然後想要更改其電話號碼，您的説明台或支援小組必須首先找到他們的帳戶，然後更新其電話號碼。
 
-您可以使用[Microsoft Graph](manage-user-accounts-graph-api.md)來尋找使用者的電話號碼（登入名稱）：
+您可以使用[Microsoft 圖形](manage-user-accounts-graph-api.md)按使用者的電話號碼（登錄名稱）查找使用者：
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-例如，
+例如：
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
@@ -94,14 +94,14 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 GitHub 上找到電話註冊和登入自訂原則入門套件（以及其他入門套件）：
+您可以在 GitHub 上找到電話註冊和登錄自訂策略初學者包（和其他初學者包）：
 
-[Azure-範例/active directory-b2c-自訂原則-active-directory-b2c-custom-policy-starterpack/案例/電話號碼-無密碼][starter-pack-phone]
+[Azure-採樣/主動目錄-b2c-自訂策略啟動包/方案/電話號無密碼][starter-pack-phone]
 
-入門套件原則檔案會使用多重要素驗證技術設定檔和電話號碼宣告轉換：
+入門包策略檔使用多重要素驗證技術設定檔和電話號碼聲明轉換：
 
-* [定義 Azure 多因素驗證技術設定檔](multi-factor-auth-technical-profile.md)
-* [定義電話號碼宣告轉換](phone-number-claims-transformations.md)
+* [定義 Azure 多重要素驗證技術設定檔](multi-factor-auth-technical-profile.md)
+* [定義電話號碼聲明轉換](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

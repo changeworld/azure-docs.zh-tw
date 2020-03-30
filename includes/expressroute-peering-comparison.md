@@ -5,10 +5,10 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75437001"
 ---
 |  | **私人對等互連** | **Microsoft 對等互連** |  **公用對等互連** (已被取代，不適用新線路) |

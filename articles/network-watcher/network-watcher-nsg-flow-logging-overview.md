@@ -1,5 +1,5 @@
 ---
-title: Nsg 的流程記錄簡介
+title: NSG 流日誌記錄簡介
 titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 網路監看員的 NSG 流量記錄功能。
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: fb4a55b9757748581e26f3d6594f9be2139658cb
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228263"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>網路安全性群組流量記錄簡介
@@ -33,7 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 您可以使用[流量分析](traffic-analytics.md)來分析流量記錄，並取得網路流量的見解。
 
-在其他記錄上看到的保留原則也同樣適用於流量記錄。 您可以將記錄保留原則設定為1天到365天。 如果未設定保留原則，則會永遠保留記錄。
+在其他記錄上看到的保留原則也同樣適用於流量記錄。 您可以將日誌保留原則設置為 1 天到 365 天。 如果未設定保留原則，則會永遠保留記錄。
 
 ## <a name="log-file"></a>記錄檔
 
@@ -46,12 +46,12 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 * **operationName** - 一律是 NetworkSecurityGroupFlowEvents
 * **properties** - 流量屬性的集合
     * **Version** - 流量記錄事件結構描述的版本號碼
-    * **flows** - 流量的集合。 這個屬性有多個適用於不同規則的項目
+    * **流**- 流的集合。 這個屬性有多個適用於不同規則的項目
         * **rule** - 做為流量列出依據的規則
             * **flows** - 流量的集合
                 * **mac** - 流量收集所在 VM 之 NIC 的 MAC 位址
                 * **flowTuples** - 包含多個流量 tuple 屬性的逗號分隔格式字串
-                    * **時間戳記**-此值是以 UNIX epoch 格式出現流程時的時間戳記
+                    * **時間戳記**- 此值是以 UNIX 紀元格式發生流的時間戳記
                     * **來源 IP** - 來源 IP
                     * **目的地 IP** - 目的地 IP
                     * **來源連接埠** - 來源連接埠
@@ -79,20 +79,20 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 之後的文字是流量記錄範例。 如您所見，有多筆記錄遵循上一節所述的屬性清單。
 
-## <a name="nsg-flow-logging-considerations"></a>NSG 流程記錄考慮
+## <a name="nsg-flow-logging-considerations"></a>NSG 流日誌記錄注意事項
 
-**儲存體帳戶考慮**： 
+**存儲帳戶注意事項**： 
 
-- 位置：使用的儲存體帳戶必須與 NSG 位於相同的區域。
-- 自我管理金鑰輪替：如果您變更/輪替儲存體帳戶的存取金鑰，NSG 流量記錄將會停止運作。 若要修正此問題，您必須先停用再重新啟用 NSG 流量記錄。
+- 位置：使用的存儲帳戶必須與 NSG 位於同一區域。
+- 自我管理金鑰輪換：如果您更改/旋轉存儲帳戶的訪問金鑰，NSG 流日誌將停止工作。 要解決此問題，必須禁用並重新啟用 NSG 流日誌。
 
-**在附加至資源的所有 nsg 上啟用 NSG 流量記錄**： Azure 中的流量記錄設定于 NSG 資源上。 流量只會與一個 NSG 規則相關聯。 在利用多個 NSG 的情況下，建議在適用於資源子網路或網路介面的所有 NSG 上啟用 NSG 流量記錄，以確保會記錄所有的流量。 如需詳細資訊，請參閱網路安全性群組中的[流量評估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。
+**在附加到資源的所有 NSG 上啟用 NSG 流日誌記錄**：Azure 中的流日誌記錄在 NSG 資源上配置。 流量只會與一個 NSG 規則相關聯。 在利用多個 NSG 的情況下，建議在適用於資源子網路或網路介面的所有 NSG 上啟用 NSG 流量記錄，以確保會記錄所有的流量。 有關詳細資訊，請參閱如何在網路安全性群組中[評估流量](../virtual-network/security-overview.md#how-traffic-is-evaluated)。
 
-**流量記錄成本**： NSG 流量記錄是根據所產生的記錄量來計費。 高流量可能會產生大量流量記錄和相關費用。 NSG 流量記錄價格不包括儲存體的基礎結構費用。 搭配 NSG 流量記錄使用保留原則功能，表示在一段時間內會產生個別的儲存成本。 如果您不需要保留原則功能，建議您將此值設為 0。 如需詳細資訊，請參閱[網路監看員定價](https://azure.microsoft.com/pricing/details/network-watcher/)和[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)，以取得其他詳細資料。
+**流日誌記錄成本**：NSG 流日誌記錄根據生成的日誌量計費。 高流量可能會產生大量流量記錄和相關費用。 NSG 流量記錄價格不包括儲存體的基礎結構費用。 將保留原則功能與 NSG 流日誌記錄一起使用意味著在較長時間內產生單獨的存儲成本。 如果您不需要保留原則功能，建議您將此值設為 0。 有關詳細資訊，請參閱[網路觀察程式定價](https://azure.microsoft.com/pricing/details/network-watcher/)和[Azure 存儲定價](https://azure.microsoft.com/pricing/details/storage/)以獲取其他詳細資訊。
 
-**從網際網路 ip 記錄到沒有公用 ip 的 vm 的輸入流量**：沒有公用 ip 位址的 vm 會透過與 NIC 相關聯的公用 ip 位址指派為實例層級的公用 ip，或屬於基本負載平衡器後端集區的一部分，請使用[預設 SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) ，並具有由 Azure 指派的 IP 位址，以加速輸出連線能力。 因此，如果流程是以指派給 SNAT 的埠範圍內的埠為目的地，您可能會看到來自網際網路 IP 位址之流量的流量記錄專案。 雖然 Azure 不允許這些流量進入 VM，但會記錄嘗試，並依設計出現在網路監看員的 NSG 流量記錄中。 我們建議使用 NSG 明確封鎖不想要的輸入網際網路流量。
+**從 Internet IP 記錄到沒有公共 IP 的 VM 的入站流**：沒有通過與 NIC 關聯的公共 IP 位址作為實例級公共 IP 或作為基本負載等化器後端池的一部分、使用[預設 SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)並由 Azure 分配 IP 位址以方便出站連接的公共 IP 位址的 VM。 因此，如果流被發送到分配給 SNAT 的埠範圍內的埠，您可能會看到來自 Internet IP 位址流的流日誌條目。 雖然 Azure 不允許這些流流向 VM，但嘗試將記錄並按設計顯示在網路觀察程式的 NSG 流日誌中。 我們建議使用 NSG 顯式阻止不需要的入站互聯網流量。
 
-**無狀態流程的位元組和封包計數不正確**：[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)會實作為具[狀態防火牆](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)。 不過，許多控制流量流程的預設/內部規則會以無狀態的方式來執行。 由於平臺限制的緣故，不會記錄無狀態流程的位元組和封包計數（也就是流量通過無狀態規則），而只會記錄在具狀態流程中。 因此，在 NSG 流量記錄（和流量分析）中回報的位元組和封包數目，可能與實際的流量不同。 這項限制已排程于2020年6月修正。
+**無狀態流的位元組和資料包計數不正確**：[網路安全性群組 （NSG）](https://docs.microsoft.com/azure/virtual-network/security-overview)作為[狀態防火牆](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)實現。 但是，許多控制流量的預設/內部規則都是以無狀態方式實現的。 由於平臺限制，不記錄無狀態流的位元組和資料包計數（即，通過無狀態規則的流量流），它們僅記錄狀態流。 因此，NSG 流日誌（和流量分析）中報告的位元組數和資料包數可能不同于實際流。 這一限制定于 2020 年 6 月修復。
 
 ## <a name="sample-log-records"></a>範例記錄的記錄
 
@@ -100,7 +100,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 
 > [!NOTE]
-> \*flowTuples 屬性中的值是逗號分隔清單。
+> **flowTuples*屬性中的值是逗號分隔的清單。
  
 ### <a name="version-1-nsg-flow-log-format-sample"></a>第 1 版 NSG 流量記錄格式範例
 ```json
@@ -287,5 +287,5 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 - 若要了解如何啟用流量記錄，請參閱[啟用 NSG 流量記錄](network-watcher-nsg-flow-logging-portal.md)。
 - 若要了解如何讀取流量記錄，請參閱[讀取 NSG 流量記錄](network-watcher-read-nsg-flow-logs.md)。
-- 若要深入瞭解 NSG 記錄，請參閱[網路安全性群組的 Azure 監視器記錄（nsg）](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 要瞭解有關 NSG 日誌記錄的更多資訊，請參閱[網路安全性群組 （NSG） 的 Azure 監視器日誌](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - 若要判斷是否允許或拒絕流量進出 VM，請參閱[診斷 VM 網路流量篩選問題](diagnose-vm-network-traffic-filtering-problem.md)

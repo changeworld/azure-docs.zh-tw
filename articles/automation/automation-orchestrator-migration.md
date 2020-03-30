@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 528b961ca07ec86ad502ee1b589772e354564a3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75421688"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>從 Orchestrator 移轉到 Azure 自動化 (Beta)
@@ -27,7 +27,7 @@ ms.locfileid: "75421688"
 6. 因為 Runbook Converter不會轉換這些資源，請在 Azure 自動化中手動建立必要的 Orchestrator 資產。
 7. 在本機的資料中心設定 [Hybrid Runbook Worker](#hybrid-runbook-worker) ，以執行將存取本機資源、經轉換的 Runbook。
 
-## <a name="service-management-automation"></a>Service Management Automation
+## <a name="service-management-automation"></a>服務管理自動化
 [服務管理自動化](https://technet.microsoft.com/library/dn469260.aspx) (SMA) 會在您的本機資料中心 (例如 Orchestrator) 中儲存並執行 Runbook，而它使用與 Azure 自動化相同的整合模組。 [Runbook Converter](#runbook-converter) 會將 Orchestrator Runbook 轉換為圖形化 Runbook，不過 SMA 中並不支援。  您仍然可以將[標準活動模組](#standard-activities-module)和 [System Center Orchestrator 整合模組](#system-center-orchestrator-integration-modules)安裝到 SMA，但是您必須手動[重新編寫您的 Runbook](https://technet.microsoft.com/library/dn469262.aspx)。
 
 ## <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
@@ -100,7 +100,7 @@ Runbook Converter 會在與所轉換的 Runbook 的相同位置中建立下列�
 ### <a name="exporting-runbooks-from-orchestrator"></a>從 Orchestrator 匯出 Runbook
 Runbook Converter 可與來自包含一或多個 Runbook 的 Orchestrator 匯出檔案搭配使用。  它會為匯出檔案中的每個 Orchestrator Runbook 建立對應的 Azure 自動化 Runbook。  
 
-若要從 Orchestrator 匯出 Runbook，請在 Runbook Designer 中的 Runbook 名稱上按一下滑鼠右鍵，然後選取 [匯出]。  若要匯出資料夾中的所有 Runbook，請在資料夾名稱上按一下滑鼠右鍵，並選取 [匯出]。
+若要從 Orchestrator 匯出 Runbook，請在 Runbook Designer 中的 Runbook 名稱上按一下滑鼠右鍵，然後選取 [匯出] ****。  若要匯出資料夾中的所有 Runbook，請在資料夾名稱上按一下滑鼠右鍵，並選取 [匯出] ****。
 
 ### <a name="runbook-activities"></a>Runbook 活動
 Runbook Converter 會將 Orchestrator Runbook 中的每個活動轉換成 Azure 自動化中的對應活動。  針對無法轉換的這些活動，會在 Runbook 中建立預留位置活動，並帶有警告文字。  將轉換的 Runbook 匯入 Azure 自動化之後，您必須將這些活動取代為可執行所需功能的有效活動。
@@ -122,7 +122,7 @@ Orchestrator 中的 Runbook 會接受具有 **初始化資料** 活動的輸入�
 使用此策略的原因是最能與 Orchestrator Runbook 中的功能對映。  新圖形化 Runbook 中的活動應該使用 Runbook 輸入資料來源直接參照輸入參數。
 
 ### <a name="invoke-runbook-activity"></a>叫用 Runbook 活動
-Orchestrator 中的 Runbook 會使用 **叫用 Runbook** 活動來啟動其他 Runbook。 如果要轉換的 Runbook 包含此活動，並且設定了 **等候完成** 選項，則會為它在轉換後的 Runbook 中建立 Runbook 活動。  如果未設定 [等候完成] 選項，則會建立使用 **Start-AzureAutomationRunbook** 來啟動 Runbook 的工作流程指令碼活動。  將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
+Orchestrator 中的 Runbook 會使用 **叫用 Runbook** 活動來啟動其他 Runbook。 如果要轉換的 Runbook 包含此活動，並且設定了 **等候完成** 選項，則會為它在轉換後的 Runbook 中建立 Runbook 活動。  如果未設定 [等候完成]**** 選項，則會建立使用 **Start-AzureAutomationRunbook** 來啟動 Runbook 的工作流程指令碼活動。  將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
 
 ## <a name="related-articles"></a>相關文章
 * [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
