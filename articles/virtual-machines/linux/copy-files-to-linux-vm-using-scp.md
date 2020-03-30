@@ -1,5 +1,5 @@
 ---
-title: 使用 SCP 從 Azure Linux Vm 來回移動檔案
+title: 使用 SCP 將檔移入和移入 Azure Linux VM
 description: 使用 SCP 和 SSH 金鑰組將檔案安全地移入和移出 Azure 中的 Linux VM。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969611"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 將檔案移入和移出 Linux VM
@@ -65,7 +65,7 @@ scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/confi
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-`-r` 旗標會指示 SCP 以遞迴方式從命令中列出的目錄點複製檔案和目錄。  另請注意，命令列語法類似 `cp` 複製命令。
+該`-r`標誌指示 SCP 從命令中列出的目錄點遞迴地複製檔和目錄。  另請注意，命令列語法類似 `cp` 複製命令。
 
 ## <a name="next-steps"></a>後續步驟
 

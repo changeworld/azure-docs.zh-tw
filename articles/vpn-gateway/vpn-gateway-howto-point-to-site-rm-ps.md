@@ -1,5 +1,5 @@
 ---
-title: 從電腦 P2S VPN 和原生 Azure 憑證驗證連接到 VNet： PowerShell
+title: 從電腦連接到 VNet - P2S VPN 和本機 Azure 證書身份驗證：PowerShell
 description: 使用 P2S 和自我簽署或 CA 核發的憑證，將 Windows 和 Mac OS X 用戶端安全地連線至 Azure 虛擬網路。 本文使用 PowerShell。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045105"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： PowerShell
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本機 Azure 證書身份驗證將點到網站 VPN 連接配置為 VNet：PowerShell
 
 本文可協助您將執行 Windows、Linux 或 Mac OS X 的個別用戶端安全地連線至 Azure VNet。 當您想要從遠端位置 (例如當您從住家或會議進行遠距工作) 連線到您的 VNet 時，點對站 VPN 連線很實用。 如果您只有少數用戶端必須連線至 VNet，您也可以使用 P2S，而不使用站對站 VPN。 點對站連線不需要 VPN 裝置或公眾對應 IP 位址。 P2S 會建立透過 SSTP (安全通訊端通道通訊協定) 或 IKEv2 的 VPN 連線。 如需點對站 VPN 的詳細資訊，請參閱[關於點對站 VPN](point-to-site-about.md)。
 
@@ -32,38 +32,38 @@ ms.locfileid: "76045105"
 
 ## <a name="before-you-begin"></a>開始之前
 
-請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
+請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂閱，則可以啟動[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 >[!NOTE]
-> 本文中的大部分步驟都可以使用 Azure Cloud Shell。 不過，若要上傳根憑證公開金鑰，您必須在本機使用 PowerShell，或使用 Azure 入口網站。
+> 本文中的大多數步驟都可以使用 Azure 雲外殼。 不過，若要上傳根憑證公開金鑰，您必須在本機使用 PowerShell，或使用 Azure 入口網站。
 >
 
-### <a name="example"></a>範例值
+### <a name="example-values"></a><a name="example"></a>範例值
 
 您可以使用範例值來建立測試環境，或參考這些值來進一步了解本文中的範例。 本文的第 [1](#declare) 節會設定變數。 您可以使用這些步驟做為逐步解說並使用未經變更的值，或變更這些值以反映您的環境。
 
 * **名稱：VNet1**
 * **位址空間：192.168.0.0/16** 和 **10.254.0.0/16**<br>此範例使用一個以上的位址空間來說明此組態可以與多個位址空間搭配使用。 不過，此組態不需要多個位址空間。
-* **子網路名稱：FrontEnd**
-  * **子網路位址範圍：192.168.1.0/24**
+* **子網名稱：前端**
+  * **子網位址範圍： 192.168.1.0/24**
 * **子網路名稱：BackEnd**
   * **子網路位址範圍：10.254.1.0/24**
 * **子網路名稱：GatewaySubnet**<br>子網路名稱 *GatewaySubnet* 是 VPN 閘道能夠運作的必要項目。
   * **閘道子網路位址範圍：192.168.200.0/24** 
 * **VPN 用戶端位址集區：172.16.201.0/24**<br>使用這個點對站連線來連線到 VNet 的 VPN 用戶端，會收到來自 VPN 用戶端位址集區的 IP 位址。
 * **訂用帳戶：** 如果您有一個以上的訂用帳戶，請確認您使用正確的訂用帳戶。
-* **資源群組：TestRG**
-* **位置：美國東部**
+* **資源組：TestRG**
+* **地點：美國東部**
 * **DNS 伺服器：** 您想要用於名稱解析的 DNS 伺服器的 IP 位址。 (選用)
 * **GW 名稱：Vnet1GW**
 * **公用 IP 名稱：VNet1GWPIP**
 * **VpnType：RouteBased** 
 
-## <a name="declare"></a>1. 登入和設定變數
+## <a name="1-sign-in-and-set-variables"></a><a name="declare"></a>1. 登錄並設置變數
 
 在此區段中，您可以登入並宣告用於此組態的值。 在範例指令碼中，會使用宣告的值。 請變更相關值以反映自己的環境。 或者，可以使用宣告的值並執行各步驟做為練習。
 
@@ -93,14 +93,14 @@ ms.locfileid: "76045105"
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="ConfigureVNet"></a>2. 設定 VNet
+## <a name="2-configure-a-vnet"></a><a name="ConfigureVNet"></a>2. 配置 VNet
 
 1. 建立資源群組。
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG -Location $Location
    ```
-2. 為虛擬網路建立子網路組態，將其命名為 FrontEndBackEnd 和 GatewaySubnet。 這些前置詞必須是您宣告的 VNet 位址空間的一部分。
+2. 為虛擬網路建立子網路組態，將其命名為 FrontEnd** BackEnd** 和 GatewaySubnet**。 這些前置詞必須是您宣告的 VNet 位址空間的一部分。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -120,7 +120,7 @@ ms.locfileid: "76045105"
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    ```
-5. VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 VPN 閘道目前僅支援*動態*公用 IP 位址配置。 您無法要求靜態公用 IP 位址指派。 不過，這不表示之後的 IP 位址變更已指派至您的 VPN 閘道。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
+5. VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 VPN 閘道目前僅支援*動態*公共 IP 位址分配。 您無法要求靜態公用 IP 位址指派。 不過，這不表示之後的 IP 位址變更已指派至您的 VPN 閘道。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
 
    要求動態指派的公用 IP 位址。
 
@@ -129,13 +129,13 @@ ms.locfileid: "76045105"
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="creategateway"></a>3. 建立 VPN 閘道
+## <a name="3-create-the-vpn-gateway"></a><a name="creategateway"></a>3. 創建 VPN 閘道
 
 設定和建立 VNet 的虛擬網路閘道。
 
-* -GatewayType 必須是 **Vpn**，而 -VpnType 必須是 **RouteBased**。
-* 使用 -VpnClientProtocol 可指定您想要啟用的通道類型。 通道選項為**OpenVPN、SSTP**和**IKEv2**。 您可以選擇啟用其中一個或任何支援的組合。 如果您想要啟用多個類型，請指定以逗號分隔的名稱。 無法同時啟用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 通道類型。
-* 虛擬網路閘道的「基本」 SKU 不支援 IKEv2、OpenVPN 或 RADIUS 驗證。 如果您打算讓 Mac 用戶端連線到您的虛擬網路，請勿使用「基本」SKU。
+* -GatewayType 必須是 **Vpn**，而且 -VpnType 必須是 **RouteBased**。
+* 使用 -VpnClientProtocol 可指定您想要啟用的通道類型。 隧道選項為**OpenVPN、SSTP**和**IKEv2**。 您可以選擇啟用其中一個組合或任何受支援的組合。 如果要啟用多種類型，請指定用逗號分隔的名稱。 OpenVPN 和 SSTP 不能同時啟用。 Android 和 Linux 上的 strongSwan 用戶端以及 iOS 和 OSX 上的原生 IKEv2 VPN 用戶端只會使用 IKEv2 通道來進行連線。 Windows 用戶端會先嘗試 IKEv2，如果無法連線，就會切換回使用 SSTP。 您可以使用 OpenVPN 用戶端連接到 OpenVPN 隧道類型。
+* 虛擬網路閘道"基本"SKU 不支援 IKEv2、OpenVPN 或 RADIUS 身份驗證。 如果您打算讓 Mac 用戶端連線到您的虛擬網路，請勿使用「基本」SKU。
 * 視您選取的[閘道 sku](vpn-gateway-about-vpn-gateway-settings.md) 而定，VPN 閘道可能需要 45 分鐘的時間才能完成。 此範例使用 IKEv2。
 
 ```azurepowershell-interactive
@@ -144,7 +144,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 ```
 
-## <a name="addresspool"></a>4. 新增 VPN 用戶端位址集區
+## <a name="4-add-the-vpn-client-address-pool"></a><a name="addresspool"></a>4. 添加 VPN 用戶端位址集區
 
 VPN 閘道完成建立之後，您可以新增 VPN 用戶端位址集區。 VPN 用戶端位址集區是 VPN 用戶端在連線時將從其接收 IP 位址的範圍。 使用不會重疊的私人 IP 位址範圍搭配您從其連線的內部部署位置，或搭配您要連線至的 VNet。 在此範例中，VPN 用戶端位址集區會宣告為步驟 1 中的[變數](#declare)。
 
@@ -153,27 +153,27 @@ $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPool $VPNClientAddressPool
 ```
 
-## <a name="Certificates"></a>5. 產生憑證
+## <a name="5-generate-certificates"></a><a name="Certificates"></a>5. 生成證書
 
 憑證是 Azure 用於點對站 VPN 的 VPN 用戶端驗證。 您會將根憑證的公開金鑰資訊上傳至 Azure。 公開金鑰就會被視為「受信任」。 用戶端憑證必須從信任的根憑證產生，然後安裝在 [憑證-目前使用者/個人憑證] 存放區中的每部用戶端電腦上。 在用戶端初始 VNet 連線時，此憑證用來驗證用戶端。 
 
 如果您使用自我簽署憑證，則必須使用特定參數來建立這些憑證。 您可以依循 [PowerShell 和 Windows 10](vpn-gateway-certificates-point-to-site.md) 的指示建立自我簽署憑證；或者，如果您沒有 Windows 10，可以使用 [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)。 產生自我簽署的根憑證和用戶端憑證時，請務必遵循指示中的步驟。 否則，您所產生的憑證將無法與 P2S 連線相容，而且會收到連線錯誤的訊息。
 
-### <a name="cer"></a>1. 取得根憑證的 .cer 檔案
+### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>1. 獲取根憑證的 .cer 檔
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
 
-### <a name="generate"></a>2. 產生用戶端憑證
+### <a name="2-generate-a-client-certificate"></a><a name="generate"></a>2. 生成用戶端憑證
 
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="upload"></a>6. 上傳根憑證公開金鑰資訊
+## <a name="6-upload-the-root-certificate-public-key-information"></a><a name="upload"></a>6. 上傳根憑證公開金鑰資訊
 
 確認 VPN 閘道已完成建立。 完成之後，您可以將受信任根憑證的 .cer 檔案 (其中包含公開金鑰資訊) 上傳至 Azure。 一旦上傳 .cer 檔案，Azure 就可以使用它來驗證已安裝從受信任根憑證產生之用戶端憑證的用戶端。 如有需要，您稍後可以上傳其他受信任的根憑證檔案 (最多總計 20 個檔案)。
 
 >[!NOTE]
-> 您無法使用 Azure Cloud Shell 上傳 .cer 檔案。 您可以在本機電腦上使用 PowerShell，也可以使用[Azure 入口網站步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
+> 不能使用 Azure 雲外殼上載 .cer 檔。 您可以在電腦上本地使用 PowerShell，也可以使用[Azure 門戶步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。
 >
 
 1. 宣告您的憑證名稱的變數，以自己的值取代。
@@ -189,13 +189,13 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPoo
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. 將公開金鑰資訊上傳至 Azure。 一旦上傳憑證資訊，Azure 會將它視為受信任的根憑證。 上傳時，請確定您是在本機電腦上執行 PowerShell，或者您可以使用[Azure 入口網站步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 您無法使用 Azure Cloud Shell 上傳。
+3. 將公開金鑰資訊上傳至 Azure。 一旦上傳憑證資訊，Azure 會將它視為受信任的根憑證。 上傳時，請確保在電腦上本地運行 PowerShell，或者可以使用[Azure 門戶步驟](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)。 不能使用 Azure 雲外殼進行上載。
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64
    ```
 
-## <a name="clientcertificate"></a>7. 安裝匯出的用戶端憑證
+## <a name="7-install-an-exported-client-certificate"></a><a name="clientcertificate"></a>7. 安裝匯出的用戶端憑證
 
 如果您想要從不同於用來產生用戶端憑證的用戶端電腦建立 P2S 連線，您需要安裝用戶端憑證。 安裝用戶端憑證時，您需要匯出用戶端憑證時所建立的密碼。
 
@@ -203,11 +203,11 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientAddressPoo
 
 如需安裝步驟，請參閱[安裝用戶端憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-## <a name="clientconfig"></a>8. 設定原生 VPN 用戶端
+## <a name="8-configure-the-native-vpn-client"></a><a name="clientconfig"></a>8. 配置本機 VPN 用戶端
 
 VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S 連線來連線至 VNet。 如需產生和安裝 VPN 用戶端組態檔的指示，請參閱[建立和安裝適用於原生 Azure 憑證驗證 P2S 組態的 VPN 用戶端組態檔](point-to-site-vpn-client-configuration-azure-cert.md)。
 
-## <a name="connect"></a>9. 連接到 Azure
+## <a name="9-connect-to-azure"></a><a name="connect"></a>9. 連接到 Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>從 Windows VPN 用戶端連線
 
@@ -216,8 +216,8 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 >
 >
 
-1. 若要連接至您的 VNet，在用戶端電腦上瀏覽到 VPN 連線，然後找出所建立的 VPN 連線。 其名稱會與虛擬網路相同。 按一下 [ **連接**]。 可能會出現與使用憑證有關的快顯訊息。 按一下 [繼續] 以使用較高的權限。 
-2. 在 [連線] 狀態頁面上，按一下 [連線] 以便開始連線。 如果出現 [選取憑證] 畫面，請確認顯示的用戶端憑證是要用來連接的憑證。 如果沒有，請使用下拉箭頭來選取正確的憑證，然後按一下 [確定]。
+1. 若要連接至您的 VNet，在用戶端電腦上瀏覽到 VPN 連線，然後找出所建立的 VPN 連線。 其名稱會與虛擬網路相同。 按一下 [連線]****。 可能會出現與使用憑證有關的快顯訊息。 按一下 [繼續]**** 可使用較高的權限。 
+2. 在 [連線]**** 狀態頁面上，按一下 [連線]**** 以便開始連線。 如果出現 [選取憑證]**** 畫面，請確認顯示的用戶端憑證是要用來連接的憑證。 如果沒有，請使用下拉箭頭來選取正確的憑證，然後按一下 [確定] ****。
 
    ![VPN 用戶端連線至 Azure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
 3. 已建立您的連線。
@@ -230,12 +230,12 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>從 Mac VPN 用戶端連線
 
-從 [網路] 對話方塊，找出您要使用的用戶端設定檔，然後按一下 [連線]。
+從 [網路] 對話方塊，找出您要使用的用戶端設定檔，然後按一下 [連線]****。
 如需詳細指示，請參閱[安裝 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)。 如果您在連線時發生問題，請確認虛擬網路閘道不是使用「基本」SKU。 針對 Mac 用戶端不支援「基本」SKU。
 
   ![Mac 連線](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
-## <a name="verify"></a>驗證您的連線
+## <a name="to-verify-your-connection"></a><a name="verify"></a>驗證您的連線
 
 這些指示適用於 Windows 用戶端。
 
@@ -255,21 +255,21 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
       NetBIOS over Tcpip..............: Enabled
    ```
 
-## <a name="connectVM"></a>連線至虛擬機器
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>連線至虛擬機器
 
 這些指示適用於 Windows 用戶端。
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
 
-## <a name="addremovecert"></a>新增或移除根憑證
+## <a name="to-add-or-remove-a-root-certificate"></a><a name="addremovecert"></a>新增或移除根憑證
 
 您可以從 Azure 新增和移除受信任的根憑證。 當您移除根憑證時，從根憑證產生憑證的用戶端無法進行驗證，而且無法進行連線。 若希望用戶端進行驗證和連線，您需要安裝從 Azure 信任 (已上傳至 Azure) 的根憑證產生的新用戶端憑證。
 
-### <a name="addtrustedroot"></a>新增受信任的根憑證
+### <a name="to-add-a-trusted-root-certificate"></a><a name="addtrustedroot"></a>若要新增受信任的根憑證
 
 您最多可將 20 個根憑證 .cer 檔案新增至 Azure。 下列步驟可協助您新增根憑證︰
 
-#### <a name="certmethod1"></a>方法 1
+#### <a name="method-1"></a><a name="certmethod1"></a>方法 1
 
 
 此方法是上傳根憑證最有效率的方式。 需要 Azure PowerShell Cmdlet 安裝在您的本機電腦上 (不是 Azure Cloud Shell)。
@@ -295,7 +295,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-#### <a name="certmethod2"></a>方法 2 - Azure 入口網站
+#### <a name="method-2---azure-portal"></a><a name="certmethod2"></a>方法 2 - Azure 入口網站
 
 這個方法的步驟比方法 1 多，但結果相同。 納入此方法，以免您需要檢視憑證資料。 需要 Azure PowerShell Cmdlet 安裝在您的本機電腦上 (不是 Azure Cloud Shell)。
 
@@ -326,7 +326,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-### <a name="removerootcert"></a>移除根憑證
+### <a name="to-remove-a-root-certificate"></a><a name="removerootcert"></a>移除根憑證
 
 1. 宣告變數。
 
@@ -348,15 +348,15 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
    -VirtualNetworkGatewayName "VNet1GW"
    ```
 
-## <a name="revoke"></a>撤銷用戶端憑證
+## <a name="to-revoke-a-client-certificate"></a><a name="revoke"></a>若要撤銷用戶端憑證
 
 您可以撤銷用戶端憑證。 憑證撤銷清單可讓您選擇性地拒絕以個別的用戶端憑證為基礎的點對站連線。 這與移除受信任的根憑證不同。 若您從 Azure 移除受信任的根憑證 .cer，就會撤銷所有由撤銷的根憑證所產生/簽署的用戶端憑證之存取權。 撤銷用戶端憑證，而不是根憑證，可以繼續使用從根憑證產生的憑證進行驗證。
 
 常見的做法是使用根憑證管理小組或組織層級的存取權，然後使用撤銷的用戶端憑證針對個別使用者進行細部的存取控制。
 
-### <a name="revokeclientcert"></a>撤銷用戶端憑證
+### <a name="revoke-a-client-certificate"></a><a name="revokeclientcert"></a>撤銷用戶端憑證
 
-1. 擷取用戶端憑證指紋。 如需詳細資訊，請參閱[做法：擷取憑證的指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
+1. 擷取用戶端憑證指紋。 有關詳細資訊，請參閱[如何檢索證書的指紋](https://msdn.microsoft.com/library/ms734695.aspx)。
 2. 將資訊複製到文字編輯器，並移除所有的空格，讓它是連續字串。 這個字串在下一個步驟中會宣告為變數。
 3. 宣告變數。 請確定宣告您在上一個步驟中擷取的指紋。
 
@@ -380,7 +380,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
    ```
 6. 新增指紋之後，憑證無法再用於連線接。 嘗試使用此憑證進行連線的用戶端會收到訊息，指出憑證不再有效。
 
-### <a name="reinstateclientcert"></a>恢復用戶端憑證
+### <a name="to-reinstate-a-client-certificate"></a><a name="reinstateclientcert"></a>恢復用戶端憑證
 
 您可以從撤銷的用戶端憑證清單中移除指紋來恢復用戶端憑證。
 
@@ -404,7 +404,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
    Get-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
    ```
 
-## <a name="faq"></a>點對站常見問題集
+## <a name="point-to-site-faq"></a><a name="faq"></a>點對站常見問題集
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 

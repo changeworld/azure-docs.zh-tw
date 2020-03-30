@@ -1,15 +1,15 @@
 ---
-title: UserNameTextBox UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Compute.UserNameTextBox UI 元素。 可讓使用者提供 Windows 或 Linux 使用者名稱。
+title: 使用者名文字方塊 UI 元素
+description: 描述 Azure 入口網站的 Microsoft.Compute.UserNameTextBox UI 元素。 使使用者能夠提供 Windows 或 Linux 使用者名。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651900"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI 元素
@@ -47,7 +47,7 @@ ms.locfileid: "75651900"
 
 ## <a name="remarks"></a>備註
 
-- 如果將 `constraints.required` 設為 **true**，則文字方塊必須有值，才能順利通過驗證。 預設值為 **true**。
+- 如果將 `constraints.required` 設為 **true**，則文字方塊必須有值，才能順利通過驗證。 預設值**為 true**。
 - 必須指定 `osPlatform`，且可以是 **Windows** 或 **Linux**。
 - `constraints.regex` 是 JavaScript 規則運算式模式。 如果指定，文字方塊的值就必須符合模式，才能順利通過驗證。 預設值為 **null**。
 - 當文字方塊的值無法通過 `constraints.regex` 驗證時，就會顯示 `constraints.validationMessage` 字串。 如果未指定，則會使用文字方塊的內建的驗證訊息。 預設值為 **null**。

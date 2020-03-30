@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897869"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB 圖形帳戶的區域端點
@@ -110,6 +110,6 @@ foreach (string location in readLocations)
 
 ## <a name="next-steps"></a>後續步驟
 * [如何在 Azure Cosmos DB 中管理資料庫帳戶控管](how-to-manage-database-account.md)
-* Azure Cosmos DB 中的[高可用性](high-availability.md)
+* Azure 宇宙 DB 中的[高可用性](high-availability.md)
 * [透過 Azure Cosmos DB 全域散發 - 運作原理](global-dist-under-the-hood.md)
-* 適用於 Azure Cosmos DB 的 [Azure CLI 範例](cli-samples.md)
+* Azure 宇宙資料庫的[Azure CLI 示例](cli-samples.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：總覽-高可用性閘道設定
+title: Azure VPN 閘道：概述 - 高度可用的閘道配置
 description: 本文提供使用 Azure VPN 閘道的高可用性組態選項概觀。
 services: vpn-gateway
 author: yushwang
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779615"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨單位和 VNet 對 VNet 連線
 本文針對使用 Azure VPN 閘道的跨單位和 VNet 對 VNet 連線提供高可用性組態選項的概觀。
 
-## <a name = "activestandby"></a>關於 Azure VPN 閘道備援
+## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>關於 Azure VPN 閘道備援
 每個 Azure VPN 閘道都是由作用中-待命組態中的兩個執行個體組成。 對於作用中執行個體所發生的任何計劃性維護或非計劃性中斷，待命執行個體都會自動進行接管 (容錯移轉)，並繼續 S2S VPN 或 VNet 對 VNet 連線。 切換會導致短暫中斷。 對於計劃性維護，應在 10 到 15 秒內還原連線。 對於非計劃問題，連線復原會更久，大約 1 分鐘到 1 分半 (最糟的情況)。 對於閘道的 P2S VPN 用戶端連線，P2S 連接將會中斷連線，而使用者必須從用戶端電腦重新連線。
 
 ![作用中-待命](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -29,7 +29,7 @@ ms.locfileid: "75779615"
 * 主動-主動 Azure VPN 閘道
 * 兩者的組合
 
-### <a name = "activeactiveonprem"></a>多個內部部署 VPN 裝置
+### <a name="multiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>多個內部部署 VPN 裝置
 您可以使用內部部署網路中的多個 VPN 裝置連接到 Azure VPN 閘道，如下圖所示︰
 
 ![多個內部部署 VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)

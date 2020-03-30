@@ -1,5 +1,5 @@
 ---
-title: VPN 閘道：修改閘道 IP 位址設定： Azure 入口網站
+title: VPN 閘道：修改閘道 IP 位址設置：Azure 門戶
 description: 本文逐步解說如何使用 Azure 入口網站來變更區域網路閘道的 IP 位址首碼。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: cherylmc
 ms.openlocfilehash: fdb98242cede36f818604a7a5d713f5f7c75daad
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864021"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>使用 Azure 入口網站修改區域網路閘道設定
@@ -21,20 +21,20 @@ ms.locfileid: "75864021"
 在您刪除連線之前，可能會想要先為您的連線端裝置下載設定，以取得已定義的 PSK。 如此一來，您便不需要在另一端重新定義它。
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](vpn-gateway-modify-local-network-gateway-portal.md)
-> * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
+> * [Azure 門戶](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [電源外殼](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
 
 
-## <a name="ipaddprefix"></a>修改 IP 位址首碼
+## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>修改 IP 位址首碼
 
 當您修改 IP 位址首碼時，使用的步驟會依您的區域網路閘道是否有連線而不同。
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="gwip"></a>修改閘道 IP 位址
+## <a name="modify-the-gateway-ip-address"></a><a name="gwip"></a>修改閘道 IP 位址
 
 如果您想要連線的 VPN 裝置已變更其公用 IP 位址，您需要修改區域網路閘道，以反映該變更。 當您變更公用 IP 位址時，使用的步驟會依您的區域網路閘道是否有連線而不同。
 

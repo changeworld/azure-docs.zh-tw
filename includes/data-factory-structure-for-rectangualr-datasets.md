@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174649"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形資料集的結構定義
@@ -16,9 +16,9 @@ ms.locfileid: "67174649"
 
 各資料行包含下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| name |資料行的名稱。 |是 |
+| NAME |資料行的名稱。 |是 |
 | type |資料行的資料類型。 有關何時應指定類型資訊的詳細資訊，請參閱下文類型轉換的部份 |否 |
 | culture |當有指定 type (類型) 時要使用的 .NET 型文化特性，且是 .NET 類型的 Datetime 或 Datetimeoffset。 預設值為 “en-us”。 |否 |
 | format |當有指定 type (類型) 時要使用的格式字串，且是 .NET 類型的 Datetime 或 Datetimeoffset。 |否 |
@@ -39,7 +39,7 @@ ms.locfileid: "67174649"
 * **結構化的資料來源** (如 SQL Server、Oracle、Azure 資料表等來源)，只有當您想要進行資料行對應將特定來源資料行對應至接收中的特定資料行且其名稱不相同時，才應該指定 “structure” 區段 (詳細資訊請參閱下文資料行對應的部份)。 
   
     如上所述，“structure” 區段中的類型資訊是選擇性的。 針對結構化的來源，類型資訊已可使用做為資料存放區中的資料集定義的一部分，因此當您包含 “structure” 區段時不應包含類型資訊。
-* **讀取的資料來源 (尤其是 Azure blob) 的結構描述**，您可以選擇儲存資料但不儲存任何結構描述或類型資訊。 針對這些類型的資料來源，在以下 2 種案例中應包含 “structure”：
+* **對於讀取資料來源（特別是 Azure Blob）上的架構，** 您可以選擇存儲資料，而無需隨資料存儲任何架構或類型資訊。 針對這些類型的資料來源，在以下 2 種案例中應包含 “structure”：
   * 您想要進行對應。
   * 當資料集是「複製」活動中的來源時，您可以在 “structure” 中提供類型資訊，資料處理站轉換為原生類型以利接收時會使用此類型資訊。 如需詳細資訊請參閱 [移動資料進出 Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md) 的文章。
 
@@ -50,11 +50,11 @@ ms.locfileid: "67174649"
 * Int32 
 * Int64
 * Single
-* 兩倍
+* Double
 * Decimal
 * Byte[]
 * Bool
-* 字串 
+* String 
 * Guid
 * Datetime
 * Datetimeoffset

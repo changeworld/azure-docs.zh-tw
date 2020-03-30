@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 在 Windows VM 上啟用診斷功能
+title: 使用 Azure PowerShell 在 Windows VM 上啟用診斷
 services: virtual-machines-windows
 documentationcenter: ''
 description: 了解如何使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
 ms.openlocfilehash: 55afeb52323ead7db8be7e8fd1dabc880328e888
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921533"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
@@ -42,9 +42,9 @@ Azure 診斷是 Azure 中可對部署的應用程式啟用診斷資料收集的�
 
 如果診斷組態檔以儲存體帳戶名稱指定 **StorageAccount** 元素，則 *Set-AzVMDiagnosticsExtension* 指令碼會自動設定診斷擴充功能，以將診斷資料傳送至該儲存體帳戶。 若要讓此做法能夠運作，儲存體帳戶必須與 VM 位於相同的訂用帳戶中。
 
-如果您未在診斷組態中指定 **StorageAccount** ，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果已指定 *StorageAccountName* 參數，則 Cmdlet 一定會使用在此參數中指定的儲存體帳戶，而非在診斷組態檔中指定的儲存體帳戶。
+如果您未在診斷組態中指定 **StorageAccount** ，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果指定*了 StorageAccountName*參數，則 Cmdlet 將始終使用參數中指定的存儲帳戶，而不是診斷設定檔中指定的存儲帳戶。
 
-如果診斷儲存體帳戶位於與 VM 不同的訂用帳戶，您就必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳送給 Cmdlet。 當診斷儲存體帳戶位於同一個訂用帳戶中時，就不需要使用 *StorageAccountKey* 參數，因為 Cmdlet 會在啟用診斷擴充功能時自動查詢並設定金鑰值。 不過，如果診斷儲存體帳戶位於不同的訂用帳戶中，Cmdlet 可能就無法自動取得金鑰，您必須透過 *StorageAccountKey* 參數來明確指定金鑰。  
+如果診斷儲存體帳戶位於與 VM 不同的訂用帳戶，您就必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳送給 Cmdlet。 當診斷存儲帳戶位於同一訂閱中時，不需要*存儲帳戶金鑰*參數，因為 Cmdlet 可在啟用診斷擴展時自動查詢和設置金鑰值。 但是，如果診斷存儲帳戶位於其他訂閱中，則 Cmdlet 可能無法自動獲取金鑰，您需要通過*StorageAccountKey*參數顯式指定金鑰。  
 
     Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
@@ -83,7 +83,7 @@ Cmdlet 會傳回包含診斷設定的 *PublicSettings*。 系統支援兩種設�
 
 您需要更新組態以包含下列各項：
 
-* 需要以 VM 的資源識別碼更新 [計量] 元素的 **resourceID** 屬性。
+* 需要以 VM 的資源識別碼更新 [計量] ** 元素的 **resourceID** 屬性。
   
   * 可以使用下列模式來建構資源識別碼："/subscriptions/{*具有 VM 之訂用帳戶的訂用帳戶 ID*}/resourceGroups/{*VM 的資源群組名稱*}/providers/Microsoft.Compute/virtualMachines/{*VM 名稱*}"。
   * 例如，如果 VM 執行所在訂用帳戶的訂用帳戶 ID 為 **11111111-1111-1111-1111-111111111111**、資源群組的資源群組名稱為 **MyResourceGroup** 和 VM 名稱為 **MyWindowsVM**，則 *resourceID* 的值會是：

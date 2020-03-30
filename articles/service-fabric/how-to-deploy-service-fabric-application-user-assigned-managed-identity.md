@@ -1,33 +1,33 @@
 ---
-title: 以使用者指派的受控識別部署應用程式
-description: 本文說明如何使用使用者指派的受控識別來部署 Service Fabric 應用程式
+title: 使用使用者分配的託管標識部署應用
+description: 本文介紹如何使用使用者分配的託管標識部署 Service Fabric 應用程式
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610330"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>以使用者指派的受控識別（預覽）部署 Service Fabric 應用程式
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>使用使用者分配的託管標識部署服務結構應用程式（預覽）
 
-若要使用受控識別部署 Service Fabric 應用程式，必須透過 Azure Resource Manager 部署應用程式，通常會使用 Azure Resource Manager 範本。 如需有關如何透過 Azure Resource Manager 部署 Service Fabric 應用程式的詳細資訊，請參閱將[應用程式和服務當做 Azure Resource Manager 資源來管理](service-fabric-application-arm-resource.md)。
+要部署具有託管標識的服務結構應用程式，需要通過 Azure 資源管理器（通常使用 Azure 資源管理器範本）部署該應用程式。 有關如何通過 Azure 資源管理器部署 Service Fabric 應用程式的詳細資訊，請參閱[將應用程式和服務管理為 Azure 資源管理器資源](service-fabric-application-arm-resource.md)。
 
 > [!NOTE] 
 > 
-> 未部署為 Azure 資源的應用程式**不能**有受控識別。 
+> 未作為 Azure 資源部署的應用程式**不能**具有託管標識。 
 >
-> API 版本 `"2019-06-01-preview"`支援具有受控識別的 Service Fabric 應用程式部署。 您也可以針對應用程式類型、應用程式類型版本和服務資源使用相同的 API 版本。
+> API 版本`"2019-06-01-preview"`支援使用託管標識的服務結構應用程式部署。 您還可以對應用程式類型、應用程式類型版本和服務資源使用相同的 API 版本。
 >
 
-## <a name="user-assigned-identity"></a>使用者指派的身分識別
+## <a name="user-assigned-identity"></a>使用者分配標識
 
-若要使用使用者指派的身分識別來啟用應用程式，請先將**identity**屬性新增至**userAssigned**類型的應用程式資源，以及參考的使用者指派的身分識別。 然後在**應用程式**資源的 [**屬性**] 區段內新增**managedIdentities**區段，其中包含每個使用者指派身分識別的易記名稱清單，以 principalId 對應。 如需使用者指派識別的詳細資訊[，請參閱建立、列出或刪除使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)。
+要啟用具有使用者分配標識的應用程式，請先將**標識**屬性添加到具有類型**使用者分配**和引用的使用者分配標識的應用程式資源。 然後在**應用程式**資源**的屬性**部分內添加**託管 Id 實體**部分，其中包含每個使用者分配標識的委託 Id 映射的易記名稱清單。 有關使用者分配標識的詳細資訊，請參閱[創建、列出或刪除使用者分配的託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)。
 
 ### <a name="application-template"></a>應用程式範本
 
-若要啟用具有使用者指派身分識別的應用程式，請先將**identity**屬性新增至類型為**userAssigned**的應用程式資源，以及參考的使用者指派的識別，然後在**properties**區段中新增**managedIdentities**物件，其中包含每個使用者指派身分識別的易記名稱清單，以 principalId 對應。
+要啟用具有使用者分配標識的應用程式，請先將**標識**屬性添加到具有類型**使用者分配**和引用使用者分配標識的應用程式資源，然後在**屬性**部分中添加**託管 Id 實體**物件，該部分包含一個易記名稱清單到每個使用者分配的身份的 iid 映射。
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -58,13 +58,13 @@ ms.locfileid: "75610330"
       }
     }
 
-在上述範例中，使用者指派身分識別的資源名稱會用來作為應用程式受控識別的易記名稱。 下列範例假設實際的易記名稱是 "AdminUser"。
+在上面的示例中，使用者分配標識的資源名稱正用作應用程式的託管標識的易記名稱。 以下示例假定實際易記名稱為"AdminUser"。
 
 ### <a name="application-package"></a>應用程式套件
 
-1. 針對 Azure Resource Manager 範本的 `managedIdentities` 區段中所定義的每個識別，在 [**主體**] 區段下的應用程式資訊清單中新增 `<ManagedIdentity>` 標記。 `Name` 屬性必須符合 `managedIdentities` 區段中所定義的 `name` 屬性。
+1. 對於 Azure 資源管理器範本`managedIdentities`中部分中定義的每個標識，在`<ManagedIdentity>`**"主體"** 部分下的應用程式清單中委任標記。 屬性`Name`需要匹配`name``managedIdentities`節中定義的屬性。
 
-    **ApplicationManifest .xml**
+    **ApplicationManifest.xml**
 
     ```xml
       <Principals>
@@ -74,9 +74,9 @@ ms.locfileid: "75610330"
       </Principals>
     ```
 
-2. 在 [ **ServiceManifestImport** ] 區段中，為使用受控識別的服務新增**IdentityBindingPolicy** 。 此原則會將 `AdminUser` 身分識別對應至稍後需要新增至服務資訊清單的服務特定身分識別名稱。
+2. 在 **"服務清單導入"** 部分中，為使用託管標識的服務添加**標識繫結原則**。 此策略將`AdminUser`標識映射到以後需要添加到服務清單中的特定于服務的標識名稱。
 
-    **ApplicationManifest .xml**
+    **ApplicationManifest.xml**
 
     ```xml
       <ServiceManifestImport>
@@ -86,9 +86,9 @@ ms.locfileid: "75610330"
       </ServiceManifestImport>
     ```
 
-3. 更新服務資訊清單，以在**資源**區段內新增**microsoft.managedidentity** ，其名稱符合應用程式資訊清單 `IdentityBindingPolicy` 中的 `ServiceIdentityRef`：
+3. 更新服務清單以在 **"資源"** 部分內添加與應用程式清單`ServiceIdentityRef`中的名稱匹配`IdentityBindingPolicy`的**託管標識**：
 
-    **ServiceManifest .xml**
+    **ServiceManifest.xml**
 
     ```xml
       <Resources>
@@ -101,5 +101,5 @@ ms.locfileid: "75610330"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [如何在 Service Fabric 應用程式代碼中使用受控識別](how-to-managed-identity-service-fabric-app-code.md)
-* [如何授與 Service Fabric 應用程式存取權給其他 Azure 資源](how-to-grant-access-other-resources.md)
+* [如何在服務結構應用程式代碼中使用託管標識](how-to-managed-identity-service-fabric-app-code.md)
+* [如何授予服務結構應用程式對其他 Azure 資源的存取權限](how-to-grant-access-other-resources.md)

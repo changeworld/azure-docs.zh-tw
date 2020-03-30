@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75416582"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>將伺服器設定為預期狀態並管理漂移
@@ -23,7 +23,7 @@ Azure Automation State Configuration 可讓您指定伺服器的組態，並且�
 > - 將節點設定指派給受控節點
 > - 檢查受控節點的合規性狀態
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您將會需要：
 
@@ -61,7 +61,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> 在需要匯入多個模組以提供 DSC 資源的更先進案例中，請確定每個模組在您的設定中都有唯一的 `Import-DscResource` 行。
+> 在需要導入多個提供 DSC 資源的模組的更高級方案中，請確保每個模組在配置中具有唯`Import-DscResource`一的行。
 
 呼叫 `Import-AzureRmAutomationDscConfiguration` Cmdlet 以將設定上傳至您的自動化帳戶：
 
@@ -130,16 +130,16 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 根據預設，DSC 節點會每隔 30 分鐘檢查節點設定的合規性。
 如需如何變更合規性檢查間隔的詳細資訊，請參閱[設定本機組態管理員](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
-## <a name="working-with-partial-configurations"></a>使用部分設定
+## <a name="working-with-partial-configurations"></a>使用部分配置
 
-Azure 自動化狀態設定支援[部分](/powershell/scripting/dsc/pull-server/partialconfigs)設定的使用方式。
-在此案例中，DSC 會設定為獨立管理多個設定，並從 Azure 自動化抓取每個設定。
-不過，每個自動化帳戶只能指派一個設定給一個節點。
-這表示如果您在節點上使用兩個設定，您將需要兩個自動化帳戶。
+Azure 自動化狀態配置支援[使用部分配置](/powershell/scripting/dsc/pull-server/partialconfigs)。
+在這種情況下，DSC 配置為獨立管理多個配置，並從 Azure 自動化檢索每個配置。
+但是，每個自動化帳戶只能向節點分配一個配置。
+這意味著，如果您對一個節點使用兩個配置，則需要兩個自動化帳戶。
 
-如需如何從提取服務註冊部分設定的詳細資訊，請參閱[部分](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)設定的檔。
+有關如何從拉取服務註冊部分配置的詳細資訊，請參閱[部分配置的文檔](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)。
 
-如需有關小組如何搭配使用設定即程式碼共同管理伺服器的詳細資訊，請參閱[瞭解 DSC 在 CI/CD 管線中的角色](/powershell/scripting/dsc/overview/authoringadvanced)。
+有關團隊如何協同協作以協作管理伺服器以使用配置作為代碼的詳細資訊，[請參閱瞭解 DSC 在 CI/CD 管道中的角色](/powershell/scripting/dsc/overview/authoringadvanced)。
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>檢查受控節點的合規性狀態
 
@@ -156,26 +156,26 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>從服務移除節點
+## <a name="removing-nodes-from-service"></a>從服務中刪除節點
 
-當您將節點新增至 Azure 自動化狀態設定時，本機 Configuration Manager 中的設定會設為 [向服務註冊] 和 [提取設定] 和 [所需的模組] 來設定電腦。
-如果您選擇從服務中移除節點，您可以使用 Azure 入口網站或 Az Cmdlet 來執行此動作。
+將節點添加到 Azure 自動化狀態配置時，本地組態管理員中的設置設置為向服務註冊，並提取配置以及配置電腦所需的模組。
+如果選擇從服務中刪除節點，則可以使用 Azure 門戶或 Az Cmdlet 執行此操作。
 
 > [!NOTE]
-> 從服務取消註冊節點時，只會設定本機 Configuration Manager 設定，讓節點不再連接至服務。
-> 這不會影響目前套用至節點的設定。
-> 若要移除目前的設定，請使用[PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1)或刪除本機設定檔案（這是 Linux 節點的唯一選項）。
+> 從服務中取消註冊節點只會設置本地組態管理員設置，以便節點不再連接到服務。
+> 這不會影響當前應用於節點的配置。
+> 要刪除當前配置，請使用[PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1)或刪除本地設定檔（這是 Linux 節點的唯一選項）。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure 入口網站
 
-從 Azure 自動化按一下目錄中的 [**狀態設定（DSC）** ]。
-接下來按一下 [**節點**]，以查看已向服務註冊的節點清單。
-按一下您要移除之節點的名稱。
-在開啟的節點視圖中，按一下 [**取消註冊**]。
+從 Azure 自動化中，按一下目錄中**的狀態配置 （DSC）。**
+接下來按一下 **"節點"** 以查看向服務註冊的節點清單。
+按一下要刪除的節點的名稱。
+在打開的"節點"視圖中，按一下 **"取消註冊**"。
 
 ### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 從 Azure 自動化狀態設定服務取消註冊節點，請遵循 Cmdlet [AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0)的檔。
+要使用 PowerShell 從 Azure 自動化狀態佈建服務中取消註冊節點，請按照 Cmdlet[取消註冊-AzAutomationDnode 的文檔](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0)進行操作。
 
 ## <a name="next-steps"></a>後續步驟
 

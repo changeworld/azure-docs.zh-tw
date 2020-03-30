@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: f4a9a131bcabc28a1eb77ffc31d93dc1d391cce4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67174574"
 ---
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 要完成此教學課程，您必須將 VHD 檔案上傳到與您建立自訂映像相關聯之實驗室的儲存體帳戶中。 選取下列任何連結，上傳 VHD 檔案：
 
 - [使用 AzCopy 命令列公用程式上傳](../articles/lab-services/devtest-lab-upload-vhd-using-azcopy.md)

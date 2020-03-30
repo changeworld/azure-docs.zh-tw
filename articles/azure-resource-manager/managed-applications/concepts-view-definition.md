@@ -1,32 +1,32 @@
 ---
-title: 視圖定義總覽
-description: 說明建立 Azure 受控應用程式之 view 定義的概念。
+title: 視圖定義概述
+description: 描述為 Azure 託管應用程式創建視圖定義的概念。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650691"
 ---
-# <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure 受控應用程式中的 View definition 成品
+# <a name="view-definition-artifact-in-azure-managed-applications"></a>在 Azure 託管應用程式中查看定義專案
 
-View definition 是 Azure 受控應用程式中的選擇性成品。 它可讓您自訂 [總覽] 頁面，並新增更多視圖，例如計量和自訂資源。
+視圖定義是 Azure 託管應用程式中的可選項目。 它允許自訂概覽頁面並添加更多視圖，如指標和自訂資源。
 
-本文提供視圖定義成品及其功能的總覽。
+本文概述了視圖定義工件及其功能。
 
 ## <a name="view-definition-artifact"></a>檢視定義成品
 
-視圖定義成品必須命名為**viewDefinition** ，並**放在建立**受控應用程式定義的 .zip 封裝中，與**createUiDefinition**相同的層級。 若要瞭解如何建立 .zip 套件併發布受控應用程式定義，請參閱[發佈 Azure 受控應用程式定義](publish-managed-app-definition-quickstart.md)
+視圖定義專案必須命名為**viewDefinition.json，** 並將其放置在創建託管應用程式的 .zip 包中的**createUiDefinition.json**和**mainTemplate.json**相同的級別。 要瞭解如何創建 .zip 包併發布託管應用程式定義，請參閱發佈[Azure 託管應用程式定義](publish-managed-app-definition-quickstart.md)
 
-## <a name="view-definition-schema"></a>視圖定義架構
+## <a name="view-definition-schema"></a>查看定義架構
 
-**ViewDefinition**檔案只有一個最上層 `views` 屬性，這是一個 views 陣列。 每個視圖都會顯示在受控應用程式使用者介面中，作為目錄中的另一個功能表項目。 每個 view 都有一個 `kind` 屬性，可設定視圖的類型。 它必須設定為下列其中一個值：[總覽](#overview)、[計量](#metrics)、 [CustomResources](#custom-resources)、[關聯](#associations)。 如需詳細資訊，請參閱 viewDefinition 的目前[json 架構](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)。
+**viewDefinition.json**檔只有一個頂級`views`屬性，這是一個視圖陣列。 每個視圖在託管應用程式使用者介面中顯示為目錄中的單獨功能表項目。 每個視圖都有一`kind`個屬性，該屬性設置視圖的類型。 它必須設置為以下值之一：[概述](#overview)、[指標](#metrics)、[自訂資源](#custom-resources)、[關聯](#associations)。 有關詳細資訊，請參閱[當前 JSON 架構，瞭解視圖定義.json](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)。
 
-View 定義的範例 JSON：
+用於視圖定義的 JSON 示例：
 
 ```json
 {
@@ -103,11 +103,11 @@ View 定義的範例 JSON：
 }
 ```
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 `"kind": "Overview"`
 
-當您在**viewDefinition**中提供此視圖時，它會覆寫受控應用程式中的預設 [總覽] 頁面。
+當您在**viewDefinition.json**中提供此視圖時，它將覆蓋託管應用程式中的預設"概述"頁。
 
 ```json
 {
@@ -125,19 +125,19 @@ View 定義的範例 JSON：
 }
 ```
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
-|頁首|否|[總覽] 頁面的標頭。|
-|description|否|受控應用程式的描述。|
-|命令|否|[總覽] 頁面的其他工具列按鈕陣列，請參閱[命令](#commands)。|
+|頁首|否|概述頁的標題。|
+|description|否|託管應用程式的說明。|
+|命令|否|概述頁的其他工具列按鈕的陣列，請參閱[命令](#commands)。|
 
-![概觀](./media/view-definition/overview.png)
+![總覽](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>計量
 
 `"kind": "Metrics"`
 
-計量視圖可讓您從[Azure 監視器計量](../../azure-monitor/platform/data-platform-metrics.md)中的受控應用程式資源收集和匯總資料。
+指標視圖使您能夠在[Azure 監視器指標](../../azure-monitor/platform/data-platform-metrics.md)中從託管應用程式資源收集和聚合資料。
 
 ```json
 {
@@ -164,29 +164,29 @@ View 定義的範例 JSON：
 }
 ```
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|否|視圖的顯示標題。|
-|version|否|用來呈現視圖的平臺版本。|
-|圖表|是|[度量] 頁面的圖表陣列。|
+|version|否|用於呈現視圖的平臺的版本。|
+|圖表|是|指標頁圖表陣列。|
 
 ### <a name="chart"></a>圖表
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|是|圖表的顯示標題。|
-|chartType|否|要用於此圖表的視覺效果。 根據預設，它會使用折線圖。 支援的圖表類型： `Bar, Line, Area, Scatter`。|
-|metrics|是|要在此圖表上繪製的度量陣列。 若要深入瞭解 Azure 入口網站中支援的計量，請參閱[支援的計量，Azure 監視器](../../azure-monitor/platform/metrics-supported.md)|
+|圖表類型|否|用於此圖表的視覺化效果。 預設情況下，它使用折線圖。 支援的圖表類型： `Bar, Line, Area, Scatter`.|
+|metrics|是|要在此圖表上繪製的指標陣列。 要瞭解有關 Azure 門戶中支援指標的更多內容，請參閱[使用 Azure 監視器支援指標](../../azure-monitor/platform/metrics-supported.md)|
 
 ### <a name="metric"></a>計量
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |NAME|是|計量的名稱。|
-|aggregationType|是|要用於此度量的匯總類型。 支援的匯總類型： `none, sum, min, max, avg, unique, percentile, count`|
-|命名空間|否|判斷正確的計量提供者時所要使用的其他資訊。|
-|resourceTagFilter|否|將會顯示計量的資源標記陣列（將以 `or` 單字分隔）。 適用于資源類型篩選器之上。|
-|resourceType|是|要顯示計量的資源類型。|
+|聚合類型|是|用於此指標的聚合類型。 支援的聚合類型：`none, sum, min, max, avg, unique, percentile, count`|
+|namespace|否|在確定正確的指標提供程式時要使用的其他資訊。|
+|資源標籤篩選器|否|將顯示指標的資源標記陣列（將用`or`單詞分隔）。 應用於資源類型篩選器的頂部。|
+|resourceType|是|將顯示指標的資源類型。|
 
 ![計量](./media/view-definition/metrics.png)
 
@@ -194,9 +194,9 @@ View 定義的範例 JSON：
 
 `"kind": "CustomResources"`
 
-您可以定義此類型的多個視圖。 每個 view 都代表您在**mainTemplate**中定義之自訂提供者的**唯一**自訂資源類型。 如需自訂提供者的簡介，請參閱 [Azure Custom Providers Preview 概觀](../custom-providers/overview.md)\(英文\)。
+您可以定義此類型的多個視圖。 每個視圖表示在**mainTemplate.json**中定義的自訂提供程式**中的唯**一自訂資源類型。 如需自訂提供者的簡介，請參閱 [Azure Custom Providers Preview 概觀](../custom-providers/overview.md)\(英文\)。
 
-在此視圖中，您可以針對您的自訂資源類型執行 GET、PUT、DELETE 和 POST 作業。 POST 作業可以是全域自訂動作，或自訂資源類型內容中的自訂動作。
+在此視圖中，您可以為自訂資源類型執行 GET、PUT、DELETE 和 POST 操作。 POST 操作可以是自訂資源類型的上下文中的全域自訂操作或自訂操作。
 
 ```json
 {
@@ -224,21 +224,21 @@ View 定義的範例 JSON：
 }
 ```
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
-|displayName|是|視圖的顯示標題。 在您的**viewDefinition**中，每個 CustomResources 視圖的標題都應該是**唯一**的。|
-|version|否|用來呈現視圖的平臺版本。|
-|resourceType|是|自訂資源類型。 必須是自訂提供者的**唯一**自訂資源類型。|
-|icon|否|視圖的圖示。 範例圖示清單定義于[JSON 架構](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中。|
-|createUIDefinition|否|建立 [建立自訂資源] 命令的 UI 定義架構。 如需建立 UI 定義的簡介，請參閱[CreateUiDefinition](create-uidefinition-overview.md)使用者入門|
-|命令|否|CustomResources 視圖的其他工具列按鈕陣列，請參閱[命令](#commands)。|
-|資料行|否|自訂資源的資料行陣列。 如果未定義，預設會顯示 `name` 資料行。 此資料行必須具有 `"key"` 和 `"displayName"`。 針對 [金鑰]，提供要在視圖中顯示之屬性的索引鍵。 如果是 nested，請使用點做為分隔符號，例如，`"key": "name"` 或 `"key": "properties.property1"`。 在 [顯示名稱] 中，提供要在視圖中顯示之屬性的顯示名稱。 您也可以提供 `"optional"` 屬性。 設定為 true 時，預設會在視圖中隱藏資料行。|
+|displayName|是|視圖的顯示標題。 標題對於**視圖定義.json**中的每個自訂資源檢視應**是唯一**的。|
+|version|否|用於呈現視圖的平臺的版本。|
+|resourceType|是|自訂資源類型。 必須是自訂提供程式**的唯**一自訂資源類型。|
+|icon|否|視圖的圖示。 示例圖示清單在[JSON 架構](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定義。|
+|創建 UI 定義|否|創建用於創建自訂資源命令的 UI 定義架構。 有關創建 UI 定義的簡介，請參閱[開始創建 Ui 定義](create-uidefinition-overview.md)|
+|命令|否|自訂資源檢視的其他工具列按鈕的陣列，請參閱[命令](#commands)。|
+|資料行|否|自訂資源的列陣列。 如果未定義，`name`則預設情況下將顯示該列。 列必須具有`"key"`和`"displayName"`。 對於鍵，請提供要在視圖中顯示的屬性的鍵。 如果嵌套，請使用點作為分隔符號，例如，`"key": "name"`或`"key": "properties.property1"`。 對於顯示名稱，請提供要在視圖中顯示的屬性的顯示名稱。 您還可以提供屬性`"optional"`。 當設置為 true 時，預設情況下該列將隱藏在視圖中。|
 
 ![CustomResources](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>命令
 
-命令是顯示在頁面上的其他工具列按鈕陣列。 每個命令都代表**mainTemplate**中定義的來自 Azure 自訂提供者的 POST 動作。 如需自訂提供者的簡介，請參閱[Azure 自訂提供者總覽](../custom-providers/overview.md)。
+命令是頁面上顯示的其他工具列按鈕的陣列。 每個命令表示在**mainTemplate.json**中定義的 Azure 自訂提供程式的 POST 操作。 有關自訂提供程式的簡介，請參閱[Azure 自訂提供程式概述](../custom-providers/overview.md)。
 
 ```json
 {
@@ -253,20 +253,20 @@ View 定義的範例 JSON：
 }
 ```
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
 |displayName|是|命令按鈕的顯示名稱。|
-|path|是|自訂提供者動作名稱。 動作必須定義在**mainTemplate**中。|
-|icon|否|命令按鈕的圖示。 範例圖示清單定義于[JSON 架構](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中。|
-|createUIDefinition|否|建立命令的 UI 定義架構。 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。|
+|path|是|自訂提供程式操作名稱。 操作必須在**主範本.json**中定義。|
+|icon|否|命令按鈕的圖示。 示例圖示清單在[JSON 架構](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定義。|
+|創建 UI 定義|否|為命令創建 UI 定義架構。 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。|
 
 ## <a name="associations"></a>關聯
 
 `"kind": "Associations"`
 
-您可以定義此類型的多個視圖。 此視圖可讓您透過在**mainTemplate**中定義的自訂提供者，將現有資源連結至受控應用程式。 如需自訂提供者的簡介，請參閱 [Azure Custom Providers Preview 概觀](../custom-providers/overview.md)\(英文\)。
+您可以定義此類型的多個視圖。 此視圖允許您通過**在 mainTemplate.json**中定義的自訂提供程式將現有資源連結到託管應用程式。 如需自訂提供者的簡介，請參閱 [Azure Custom Providers Preview 概觀](../custom-providers/overview.md)\(英文\)。
 
-在此視圖中，您可以根據 `targetResourceType`來擴充現有的 Azure 資源。 當您選取資源時，它會建立對**公用**自訂提供者的上架要求，這會對資源套用副作用。 
+在此視圖中，可以基於 擴展`targetResourceType`現有的 Azure 資源。 選擇資源後，它將創建一個對**公共**自訂提供程式的載入請求，該請求可以應用於資源的副作用。 
 
 ```json
 {
@@ -280,12 +280,12 @@ View 定義的範例 JSON：
 }
 ```
 
-|屬性|必要項|說明|
+|屬性|必要|描述|
 |---------|---------|---------|
-|displayName|是|視圖的顯示標題。 在**viewDefinition**中，每個相關檢視的標題都應該是**唯一**的。|
-|version|否|用來呈現視圖的平臺版本。|
-|targetResourceType|是|目標資源類型。 這是將針對資源上線顯示的資源類型。|
-|createUIDefinition|否|建立建立關聯資源命令的 UI 定義架構。 如需建立 UI 定義的簡介，請參閱[CreateUiDefinition](create-uidefinition-overview.md)使用者入門|
+|displayName|是|視圖的顯示標題。 標題對於**視圖定義.json**中的每個相關檢視應**是唯一**的。|
+|version|否|用於呈現視圖的平臺的版本。|
+|targetResourceType|是|目標資源類型。 這是將顯示的資源類型，用於資源載入。|
+|創建 UI 定義|否|創建用於創建關聯資源命令的 UI 定義架構。 有關創建 UI 定義的簡介，請參閱[開始創建 Ui 定義](create-uidefinition-overview.md)|
 
 ## <a name="looking-for-help"></a>尋求協助
 
@@ -294,5 +294,5 @@ View 定義的範例 JSON：
 ## <a name="next-steps"></a>後續步驟
 
 - 如需受控應用程式的簡介，請參閱 [Azure 受控應用程式概觀](overview.md)。
-- 如需自訂提供者的簡介，請參閱[Azure 自訂提供者總覽](../custom-providers/overview.md)。
-- 如需使用 Azure 自訂提供者建立 Azure 受控應用程式，請參閱[教學課程：使用自訂提供者動作和資源類型建立受控應用程式](tutorial-create-managed-app-with-custom-provider.md)
+- 有關自訂提供程式的簡介，請參閱[Azure 自訂提供程式概述](../custom-providers/overview.md)。
+- 有關使用 Azure 自訂提供程式創建 Azure 託管應用程式，請參閱[教程：使用自訂提供程式操作和資源類型創建託管應用程式](tutorial-create-managed-app-with-custom-provider.md)

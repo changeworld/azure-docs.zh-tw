@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 0ed2137d1fd7a3c207db3ec49590a61f00b5fd99
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774272"
 ---
-此時，使用入口網站或 PowerShell 不支援取消布建，請洽詢[Microsoft 對等互連](mailto:peeringexperience@microsoft.com)以取消布建。
+此時不支援使用門戶或 PowerShell 進行取消預配，請與[Microsoft 對等互連器聯繫](mailto:peeringexperience@microsoft.com)"取消預配"。

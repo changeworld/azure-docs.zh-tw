@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: alkohli
 ms.openlocfilehash: 2c95095147f6984fb67ba3faa476ec42c9e7ec4e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67812446"
 ---
-以下是作業系統的支援，透過連線到您的裝置的用戶端的資料複製作業的清單。
+下面是通過連接到設備的用戶端進行資料複製操作的支援作業系統的清單。
 
 | **作業系統** | **版本** |
 | --- | --- |

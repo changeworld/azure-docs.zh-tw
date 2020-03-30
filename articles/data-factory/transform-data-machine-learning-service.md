@@ -1,6 +1,6 @@
 ---
-title: 執行 Azure Machine Learning 管線
-description: 瞭解如何在您的 Azure Data Factory 管線中執行 Azure Machine Learning 管線。
+title: 執行 Azure 機器學習管道
+description: 瞭解如何在 Azure 資料工廠管道中運行 Azure 機器學習管道。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,17 +11,17 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76155158"
 ---
-# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure Data Factory 中執行 Azure Machine Learning 管線
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 資料工廠中執行 Azure 機器學習管道
 
-在您的 Azure Data Factory 管線中，以步驟的方式執行 Azure Machine Learning 管線。 Machine Learning 執行管線活動可啟用批次預測案例，例如識別可能的貸款預設值、判斷情感，以及分析客戶行為模式。
+在 Azure 資料工廠管道中運行 Azure 機器學習管道作為步驟。 機器學習執行管道活動支援批次處理預測方案，例如識別可能的貸款預設值、確定情緒和分析客戶行為模式。
 
-下列影片提供這項功能的六分鐘簡介和示範。
+以下視頻包含 6 分鐘的介紹和演示此功能。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -48,16 +48,16 @@ ms.locfileid: "76155158"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 說明 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 NAME | 管線中的活動名稱 | String | 是
-type | 活動類型為「AzureMLExecutePipeline」 | String | 是
-linkedServiceName | Azure Machine Learning 的連結服務 | 連結服務參考 | 是
-mlPipelineId | 已發佈 Azure Machine Learning 管線的識別碼 | 字串 (或含有字串之 resultType 的運算式) | 是
-ExperimentName | 執行 Machine Learning 管線執行的歷程記錄實驗名稱 | 字串 (或含有字串之 resultType 的運算式) | 否
-mlPipelineParameters | 要傳遞至已發行 Azure Machine Learning 管線端點的索引鍵/值組。 索引鍵必須符合已發佈 Machine Learning 管線中定義之管線參數的名稱 | 具有索引鍵值組（或具有 resultType 物件的運算式）的物件 | 否
-mlParentRunId | 父 Azure Machine Learning 管線執行識別碼 | 字串 (或含有字串之 resultType 的運算式) | 否
-continueOnStepFailure | 當步驟失敗時，是否要繼續執行 Machine Learning 管線中的其他步驟 | boolean | 否
+type | 活動類型為"AzureML 執行管道" | String | 是
+linkedServiceName | 連結到 Azure 機器學習的服務 | 連結服務參考 | 是
+毫升裡線Id | 已發佈的 Azure 機器學習管道的 ID | 字串 (或含有字串之 resultType 的運算式) | 是
+實驗名稱 | 運行機器學習管道運行的歷史實驗名稱 | 字串 (或含有字串之 resultType 的運算式) | 否
+mlPipeline 參數 | 鍵，要傳遞給已發佈的 Azure 機器學習管道終結點的值對。 鍵必須與已發佈的機器學習管道中定義的管道參數的名稱匹配 | 具有鍵值對的物件（或具有結果類型物件的運算式） | 否
+毫升家長魯尼 | 父 Azure 機器學習管道運行 ID | 字串 (或含有字串之 resultType 的運算式) | 否
+繼續步進失敗 | 如果步驟失敗，是否繼續執行機器學習管道中的其他步驟 | boolean | 否
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，其說明如何以其他方式轉換資料：
@@ -65,9 +65,9 @@ continueOnStepFailure | 當步驟失敗時，是否要繼續執行 Machine Learn
 * [執行資料流程活動](control-flow-execute-data-flow-activity.md)
 * [U-SQL 活動](transform-data-using-data-lake-analytics.md)
 * [Hive 活動](transform-data-using-hadoop-hive.md)
-* [Pig 活動](transform-data-using-hadoop-pig.md)
+* [豬活動](transform-data-using-hadoop-pig.md)
 * [MapReduce 活動](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
-* [Spark 活動](transform-data-using-spark.md)
+* [火花活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

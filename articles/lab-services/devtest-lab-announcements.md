@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976456"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>將公告張貼到 Azure DevTest Labs 中的實驗室
@@ -35,27 +35,27 @@ ms.locfileid: "75976456"
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>在現有實驗室中張貼公告的步驟
 
-1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 視需要選取 [所有服務]，然後從清單中選取 [DevTest Labs]。 (您的實驗室可能已顯示在 [所有資源] 下方的儀表板上)。
+1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 視需要選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。 (您的實驗室可能已顯示在 [所有資源]**** 下方的儀表板上)。
 1. 從實驗室清單中，選取您想要在其中張貼公告的實驗室。
-1. 在實驗室的 [概觀] 區域中選取 [組態和原則]。
+1. 在實驗室的 [概觀]**** 區域中選取 [組態和原則]****。
 
     ![組態和原則按鈕](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. 在左側的 [設定] 之下，選取 [實驗室公告]。
+1. 在左側的 [設定]**** 之下，選取 [實驗室公告]****。
 
     ![實驗室公告按鈕](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. 若要在這個實驗室中建立使用者訊息，請將 [啟用] 設定為 [是]。
+1. 若要在這個實驗室中建立使用者訊息，請將 [啟用]**** 設定為 [是]****。
 
 1. 您可以輸入**到期日**以指定日期和時間，此時間過後就不再對使用者顯示公告。 如果您未輸入到期日，直到您停用之前都會持續公告。
 
    > [!NOTE]
-   > 公告到期之後，就不會再對使用者顯示，但是仍存在於 [實驗室公告] 窗格。 您可以對它進行編輯，然後重新啟用它，讓它再次作用。
+   > 公告到期之後，就不會再對使用者顯示，但是仍存在於 [實驗室公告]**** 窗格。 您可以對它進行編輯，然後重新啟用它，讓它再次作用。
    >
    >
 
-1. 輸入 [公告標題] 和 [公告文字]。
+1. 輸入 [公告標題]**** 和 [公告文字]****。
 
    標題可多達 100 個字元，而且會在實驗室的 [概觀] 頁面上對使用者顯示。 如果使用者選取標題，就會顯示公告文字。
 
@@ -64,9 +64,9 @@ ms.locfileid: "75976456"
     ![用於建立訊息的實驗室公告畫面。](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
 
 
-1. 一旦準備好張貼公告，請選取 [儲存]。
+1. 一旦準備好張貼公告，請選取 [儲存]****。
 
-當您不想要再對實驗室使用者顯示此公告時，請返回 [實驗室公告] 頁面，然後將 [啟用] 設定為 [否]。 如果您指定了到期日，該日期和時間到了之後就會自動停用公告。
+當您不想要再對實驗室使用者顯示此公告時，請返回 [實驗室公告]**** 頁面，然後將 [啟用]**** 設定為 [否]****。 如果您指定了到期日，該日期和時間到了之後就會自動停用公告。
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>使用者檢視公告的步驟
 
@@ -160,11 +160,11 @@ ms.locfileid: "75976456"
 
 您可以使用下列其中一種方式，來部署 Azure Resource Manager 範本：
 
-- [Azure 入口網站](../azure-resource-manager/templates/deploy-portal.md)
-- [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+- [Azure 門戶](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure 電源外殼](../azure-resource-manager/templates/deploy-powershell.md)
 - [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 - [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ## <a name="next-steps"></a>後續步驟
 * 如果您變更或設定實驗室原則，您可以張貼公告來通知使用者。 [設定原則和排程](devtest-lab-set-lab-policy.md)提供的資訊是關於如何使用自訂的原則，在訂用帳戶內套用限制和慣例。
-* 瀏覽 [DevTest Labs Azure Resource Manager 快速入門範本資源庫 (英文)](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 流覽[開發人員測試實驗室 Azure 資源管理器快速入門範本庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
