@@ -1,62 +1,65 @@
 ---
-title: Azure 中支援的叢集版本 Service Fabric
-description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
+title: Azure 服務結構中受支援的群集版本
+description: 瞭解 Azure 服務結構中的群集版本，包括服務結構團隊博客中指向最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370418"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385039"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
-請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版本的 Service Fabric 之後，最少60天，對舊版的支援結束。 您會在[Service Fabric 小組的 blog](https://azure.microsoft.com/updates/?product=service-fabric)中找到新版本的公告。
+確保群集始終運行受支援的 Azure 服務結構版本。 在宣佈發佈新版本 Service Fabric 後至少 60 天，對早期版本的支援將結束。 您可以在[服務結構團隊博客上](https://azure.microsoft.com/updates/?product=service-fabric)找到新版本的公告。
 
-如需如何讓叢集執行支援的 Service Fabric 版本的詳細資訊，請參閱下列檔：
+有關如何保持群集運行受支援的 Service Fabric 版本的詳細資訊，請參閱以下文檔：
 
 - [升級 Azure Service Fabric 叢集](service-fabric-cluster-upgrade.md)
-- [升級在獨立 Windows Server 叢集上執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
+- [升級在獨立 Windows 伺服器叢集上運行的服務結構版本](service-fabric-cluster-upgrade-windows-server.md)
 
 ## <a name="supported-versions"></a>支援的版本
 
-下表列出 Service Fabric 的版本及其支援結束日期。
+下表列出了服務結構的版本及其支援結束日期。
 
-| 叢集中的 Service Fabric 執行時間 | 可以直接從叢集版本升級 |相容的 SDK 或 NuGet 套件版本 | 結束支援 |
+| 叢集中的 Service Fabric 執行階段 | 可直接自叢集版本升級 |相容 SDK 或 NuGet 包版本 | 結束支援 |
 | --- | --- |--- | --- |
-| 5\.3.121 前的所有叢集版本 | 5.1.158.* |小於或等於 2.3 版本 |2017 年 1 月 20 日 |
+| 5.3.121 之前的所有群集版本 | 5.1.158.* |小於或等於 2.3 版本 |2017 年 1 月 20 日 |
 | 5.3.* | 5.1.158.* |小於或等於 2.3 版本 |2017 年 2 月 24 日 |
 | 5.4.* | 5.1.158.* |小於或等於 2.4 版本 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |小於或等於 2.5 版本 |2017 年 8 月 10 日    |
 | 5.6.* | 5.4.164.* |小於或等於 2.6 版本 |2017 年 10 月 13 日   |
-| 5.7.* | 5.4.164.* |小於或等於 2.7 版 |2017年12月15日  |
-| 6.0.* | 5.6.205.* |小於或等於 2.8 版 |2018年3月30日     |
-| 6.1.* | 5.7.221.* |小於或等於 3.0 版 |2018年7月15日      |
+| 5.7.* | 5.4.164.* |小於或等於 2.7 版 |2017 年 12 月 15 日  |
+| 6.0.* | 5.6.205.* |小於或等於 2.8 版 |三月 30， 2018     |
+| 6.1.* | 5.7.221.* |小於或等於 3.0 版 |七月 15， 2018      |
 | 6.2.* | 6.0.232.* |小於或等於 3.1 版 |2018年10月26日   |
 | 6.3.* | 6.1.480.* |小於或等於 3.2 版 |2019年3月31日  |
 | 6.4.* | 6.2.301.* |小於或等於 3.3 版 |2019年9月15日 |
-| 6.5. * | 6.4.617.* |小於或等於版本3。4 |2020 5 月1日 |
-| 7.0. * | 7.0.466.* |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
+| 6.5.* | 6.4.617.* |小於或等於版本 3.4 |2020年8月1日 |
+| 7.0.466.* | 6.4.664.* |小於或等於版本 4.0|當前版本，因此沒有結束日期 |
+| 7.0.466.* | 6.5.* |小於或等於版本 4.0|當前版本，因此沒有結束日期 |
+| 7.0.470.* | 7.0.466.* |小於或等於版本 4.0 |當前版本，因此沒有結束日期 |
+
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-下表列出支援的 Service Fabric 版本所支援的作業系統。
+下表列出了支援的 Service Fabric 版本的受支援作業系統。
 
-| 作業系統 | 最早支援的 Service Fabric 版本 |
+| 作業系統 | 最早受支援的 Service 結構版本 |
 | --- | --- |
 | Windows Server 2012 R2 | 所有版本 |
 | Windows Server 2016 | 所有版本 |
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
+| 視窗伺服器 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
 
 ## <a name="supported-version-names"></a>支援的版本名稱
 
-下表列出 Service Fabric 的版本名稱及其對應的版本號碼。
+下表列出了 Service Fabric 的版本名稱及其相應的版本號。
 
-| 版本名稱 | Windows 版本號碼 | Linux 版本號碼 |
+| 版本名稱 | 視窗版本號 | Linux 版本號 |
 | --- | --- | --- |
 | 5.3 RTO | 5.3.121.9494 | NA |
 | 5.3 CU1 | 5.3.204.9494 | NA |
@@ -67,7 +70,7 @@ ms.locfileid: "79370418"
 | 5.5 CU2 | 5.5.219.0    | NA |
 | 5.5 CU3 | 5.5.227.0    | NA |
 | 5.5 CU4 | 5.5.232.0    | NA |
-| 5.6 RTO | 5.6.204.9494 以上 | NA |
+| 5.6 RTO | 5.6.204.9494 | NA |
 | 5.6 CU2 | 5.6.210.9494 | NA |
 | 5.6 CU3 | 5.6.220.9494 | NA |
 | 5.7 RTO | 5.7.198.9494 | NA |

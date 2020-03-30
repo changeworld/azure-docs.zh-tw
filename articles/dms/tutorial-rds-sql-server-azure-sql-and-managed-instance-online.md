@@ -1,7 +1,7 @@
 ---
-title: 教學課程：將 RDS SQL Server 線上遷移至 SQL Database
+title: 教程：將 RDS SQL 伺服器連線遷移到 SQL 資料庫
 titleSuffix: Azure Database Migration Service
-description: 瞭解如何使用 Azure 資料庫移轉服務，執行從 RDS SQL Server 到 Azure SQL Database 單一資料庫或受控實例的線上遷移。
+description: 瞭解如何使用 Azure 資料庫移轉服務執行從 RDS SQL Server 到 Azure SQL 資料庫單個資料庫或託管實例的線上遷移。
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 8d538deca610fd9981d401d28b6bea1c31c6d4c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255513"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298859"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教學課程：使用 DMS 在線上將 RDS SQL Server 遷移至 Azure SQL Database 或 Azure SQL Database 受控實例
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 將 RDS SQL 伺服器遷移到 Azure SQL 資料庫或 Azure SQL 資料庫託管實例
 您可以使用 Azure 資料庫移轉服務，以最短停機時間將資料庫從 RDS SQL Server 執行個體移轉至 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) 或 [Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2012 (或更新版本) RDS SQL Server 執行個體的 **Adventureworks2012** 資料庫移轉至 Azure SQL Database 或 Azure SQL Database 受控執行個體。
 
 在本教學課程中，您會了解如何：
@@ -33,7 +33,7 @@ ms.locfileid: "78255513"
 > * 下載移轉報告。
 
 > [!NOTE]
-> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 如需詳細資訊，請參閱 Azure 資料庫移轉服務的[定價](https://azure.microsoft.com/pricing/details/database-migration/)頁面。
+> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 有關詳細資訊，請參閱 Azure 資料庫移轉服務[定價](https://azure.microsoft.com/pricing/details/database-migration/)頁。
 
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
@@ -42,7 +42,7 @@ ms.locfileid: "78255513"
 
 本文說明如何從 RDS SQL Server 線上移轉至 Azure SQL Database 或 Azure SQL Database 受控執行個體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本教學課程，您需要：
 
 * 建立 [RDS SQL Server 資料庫](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)。
@@ -52,10 +52,10 @@ ms.locfileid: "78255513"
     > 如果您要移轉至 Azure SQL Database 受控執行個體，請依照[建立 Azure SQL Database 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文中的詳細資料進行，然後建立名為 **AdventureWorks2012** 的空資料庫。 
  
 * 下載並安裝 [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更新版本。
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路。 如果您要遷移至 Azure SQL Database 受控實例，請務必在用於 Azure SQL Database 受控實例的相同虛擬網路中建立 DMS 實例，但在不同的子網中。  或者，如果您針對 DMS 使用不同的虛擬網路，您需要在兩個虛擬網路之間建立虛擬網路對等互連。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
+* 通過使用 Azure 資源管理器部署模型為 Azure 資料庫移轉服務創建 Microsoft Azure 虛擬網路。 如果要遷移到 Azure SQL 資料庫託管實例，請確保在用於 Azure SQL 資料庫託管實例的同一虛擬網路中創建 DMS 實例，但在不同的子網中創建 DMS 實例。  或者，如果您為 DMS 使用不同的虛擬網路，則需要在兩個虛擬網路之間創建一個虛擬網路對等互連。 有關創建虛擬網路的詳細資訊，請參閱[虛擬網路文檔](https://docs.microsoft.com/azure/virtual-network/)，尤其是包含分步詳細資訊的快速入門文章。
 
     > [!NOTE]
-    > 在虛擬網路設定期間，如果您搭配與 Microsoft 對等互連的網路使用 ExpressRoute，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將布建服務的子網：
+    > 在虛擬網路設置期間，如果將 ExpressRoute 與網路對等互連到 Microsoft，則向將服務預配的子網添加以下服務[終結點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -63,10 +63,10 @@ ms.locfileid: "78255513"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。 
 
-* 請確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 確保虛擬網路網路安全性群組規則不會阻止以下到 Azure 資料庫移轉服務的入站通訊連接埠：443、53、9354、445、12000。 有關虛擬網路 NSG 流量篩選的更多詳細資訊，請參閱文章["使用網路安全性群組篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)"。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 SQL Server，其預設會通過 TCP 連接埠 1433。
-* 針對 Azure SQL Database 伺服器建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
+* 針對 Azure SQL Database 伺服器建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務的虛擬網路的子網範圍。
 * 確定用來連線到來源 RDS SQL Server 執行個體的認證，與所有要遷移的資料庫上屬於 “Processadmin” 伺服器角色成員和 "db_owner" 資料庫角色成員的帳戶相關聯。
 * 確定用來連線至目標 Azure SQL Database 執行個體的認證，在目標 Azure SQL 資料庫上具有 CONTROL DATABASE 權限，而且是 sysadmin 角色的成員 (如果要移轉至 Azure SQL Database 受控執行個體)。
 * 來源 RDS SQL Server 版本必須是 SQL Server 2012 或更新版本。 若要確認您的 SQL Server 執行個體正在執行的版本，請參閱[如何判斷 SQL Server 及其元件的版本、版次及更新層級](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)一文。
@@ -105,187 +105,187 @@ ms.locfileid: "78255513"
 
 若要將 **AdventureWorks2012** 結構描述移轉到 Azure SQL Database，請執行下列步驟：
 
-1. 在資料移轉小幫手中，選取新增 (+) 圖示，然後在 [專案類型] 底下選取 [移轉]。
-2. 在 [Source server type] \(來源伺服器類型\) 文字方塊中指定專案名稱，選取 [SQL Server]，然後在 [Target server type] \(目標伺服器類型\) 文字方塊中，選取 [Azure SQL Database]。
-3. 在 [Migration Scope] \(移轉範圍\) 下，選取 [Schema only] \(僅結構描述\)。
+1. 在資料移轉小幫手中，選取新增 (+) 圖示，然後在 [專案類型]**** 底下選取 [移轉]****。
+2. 在 [Source server type] \(來源伺服器類型\)**** 文字方塊中指定專案名稱，選取 [SQL Server]****，然後在 [Target server type] \(目標伺服器類型\)**** 文字方塊中，選取 [Azure SQL Database]****。
+3. 在 [Migration Scope] \(移轉範圍\)**** 下，選取 [Schema only] \(僅結構描述\)****。
 
     執行先前的步驟之後，DMA 介面應會如下圖所示：
 
     ![建立 Data Migration Assistant 專案](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-create-project.png)
 
-4. 選取 [Create] \(建立\) 以建立專案。
-5. 在 DMA 中，為您的 SQL Server 指定來源連線詳細資料，選取 [連線]，然後選取 [AdventureWorks2012] 資料庫。
+4. 選取 [Create] \(建立\)**** 以建立專案。
+5. 在 DMA 中，為您的 SQL Server 指定來源連線詳細資料，選取 [連線]****，然後選取 [AdventureWorks2012]**** 資料庫。
 
     ![Data Migration Assistant 來源連線詳細資料](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-source-connect.png)
 
-6. 在 [連線到目標伺服器] 下方選取 [下一步]，指定 Azure SQL 資料庫的目標連線詳細資料、選取 [連線]，然後選取您在 Azure SQL Database 中預先佈建的 [AdventureWorksAzure] 資料庫。
+6. 在 [連線到目標伺服器]**** 下方選取 [下一步]****，指定 Azure SQL 資料庫的目標連線詳細資料、選取 [連線]****，然後選取您在 Azure SQL Database 中預先佈建的 [AdventureWorksAzure]**** 資料庫。
 
     ![Data Migration Assistant 目標連線詳細資料](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-target-connect.png)
 
-7. 選取 [Next] \(下一步\) 前進到 [Select objects] \(選取物件\) 畫面，您可以指定 **AdventureWorks2012** 資料庫中需要部署至 Azure SQL Database 的結構描述物件。
+7. 選取 [Next] \(下一步\)**** 前進到 [Select objects] \(選取物件\)**** 畫面，您可以指定 **AdventureWorks2012** 資料庫中需要部署至 Azure SQL Database 的結構描述物件。
 
     預設會選取所有物件。
 
     ![產生 SQL 指令碼](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-assessment-source.png)
 
-8. 選取 [Generate SQL script] \(產生 SQL 指令碼\) 來建立 SQL 指令碼，然後檢閱指令碼是否有任何錯誤。
+8. 選取 [Generate SQL script] \(產生 SQL 指令碼\)**** 來建立 SQL 指令碼，然後檢閱指令碼是否有任何錯誤。
 
     ![結構描述指令碼](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-schema-script.png)
 
-9. 選取 [Deploy schema] \(部署結構描述\) 以將結構描述部署至 Azure SQL Database，並在結構描述部署好之後，檢查目標伺服器是否有任何異常狀況。
+9. 選取 [Deploy schema] \(部署結構描述\)**** 以將結構描述部署至 Azure SQL Database，並在結構描述部署好之後，檢查目標伺服器是否有任何異常狀況。
 
     ![部署結構描述](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dma-schema-deploy.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
-1. 登入 Azure 入口網站，選取 [所有服務]，然後選取 [訂用帳戶]。
+1. 登入 Azure 入口網站，選取 [所有服務]****，然後選取 [訂用帳戶]****。
 
    ![顯示入口網站訂用帳戶](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-select-subscription1.png)
 
-2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]。
+2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]****。
 
     ![顯示資源提供者](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
-3. 搜尋移轉，然後在 [Microsoft.DataMigration] 的右邊，選取 [註冊]。
+3. 搜索遷移，然後搜索 Microsoft 的右側 **。** **Register**
 
     ![註冊資源提供者](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>建立執行個體
 
-1. 在 Azure 入口網站中，選取 [+ 建立資源]，搜尋「Azure 資料庫移轉服務」，然後從下拉式清單選取 [Azure 資料庫移轉服務]。
+1. 在 Azure 入口網站中，選取 [+ 建立資源]****，搜尋「Azure 資料庫移轉服務」，然後從下拉式清單選取 [Azure 資料庫移轉服務]****。
 
     ![Azure Marketplace](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-marketplace.png)
 
-2. 在 [Azure 資料庫移轉服務] 畫面上，選取 [建立]。
+2. 在 [Azure 資料庫移轉服務]**** 畫面上，選取 [建立]****。
 
     ![建立 Azure 資料庫移轉服務執行個體](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create1.png)
   
-3. 在 [建立移轉服務] 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
+3. 在 [建立移轉服務]**** 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
 
 4. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的位置。 
 
-5. 選取現有的虛擬網路，或建立一個新的。
+5. 選擇現有虛擬網路或創建新虛擬網路。
 
-    虛擬網路會為 Azure 資料庫移轉服務提供來源 SQL Server 和目標 Azure SQL Database 實例的存取權。
+    虛擬網路為 Azure 資料庫移轉服務提供對源 SQL Server 和目標 Azure SQL 資料庫實例的訪問。
 
-    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+    有關如何在 Azure 門戶中創建虛擬網路的詳細資訊，請參閱[使用 Azure 門戶創建虛擬網路](https://aka.ms/DMSVnet)的文章。
 
 6. 選取定價層；對此線上移轉，務必選取進階定價層。
 
-    如需成本和定價層的詳細資訊，請參閱[定價分頁](https://aka.ms/dms-pricing)。
+    有關成本和定價層的詳細資訊，請參閱[定價頁](https://aka.ms/dms-pricing)。
 
      ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-settings3.png)
 
-7. 選取 [建立] 以建立服務。
+7. 選取 [建立]**** 以建立服務。
 
 ## <a name="create-a-migration-project"></a>建立移轉專案
 
 建立服務之後，請在 Azure 入口網站中找出該服務，然後建立新的移轉專案。
 
-1. 在 Azure 入口網站中，選取 [所有服務]，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]。
+1. 在 Azure 入口網站中，選取 [所有服務]****，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]****。
 
       ![找出 Azure 資料庫移轉服務的所有執行個體](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-search.png)
 
-2. 在 [Azure 資料庫移轉服務] 畫面上，搜尋您建立的 Azure 資料庫移轉服務執行個體名稱，然後選取該執行個體。
+2. 在 [Azure 資料庫移轉服務]**** 畫面上，搜尋您建立的 Azure 資料庫移轉服務執行個體名稱，然後選取該執行個體。
 
      ![找出您的 Azure 資料庫移轉服務執行個體](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-instance-search.png)
 
-3. 選取 [+ 新增移轉專案]。
-4. 在 [新增移轉專案] 畫面上指定專案名稱，並在 [來源伺服器類型] 文字方塊中中選取 [AWS RDS for SQL Server]，然後在 [目標伺服器類型] 文字方塊中選取 [Azure SQL Database]。
+3. 選取 [+ 新增移轉專案]****。
+4. 在 [新增移轉專案]**** 畫面上指定專案名稱，並在 [來源伺服器類型]**** 文字方塊中中選取 [AWS RDS for SQL Server]****，然後在 [目標伺服器類型]**** 文字方塊中選取 [Azure SQL Database]****。
 
     > [!NOTE]
-    > 針對目標伺服器類型，請選取 [Azure SQL Database]，以遷移至 Azure SQL Database 單一資料庫及 Azure SQL Database 受控執行個體。
+    > 針對目標伺服器類型，請選取 [Azure SQL Database]****，以遷移至 Azure SQL Database 單一資料庫及 Azure SQL Database 受控執行個體。
 
-5. 在 [選擇活動類型] 區段中，選取 [線上資料移轉]。
+5. 在 **"選擇活動類型"** 部分中，選擇**連線資料移轉**。
 
     > [!IMPORTANT]
-    > 請務必選取 [線上資料移轉]；此案例不支援離線移轉。
+    > 請務必選取 [線上資料移轉]****；此案例不支援離線移轉。
 
     ![建立資料庫移轉服務專案](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > 或者，您可以選擇 [僅建立專案] 以立即建立移轉專案，並於後續再執行移轉。
+    > 或者，您可以選擇 [僅建立專案]**** 以立即建立移轉專案，並於後續再執行移轉。
 
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
-7. 選取 [建立及執行活動]，以建立專案並執行移轉活動。
+7. 選取 [建立及執行活動]****，以建立專案並執行移轉活動。
 
     ![建立並執行資料庫移轉服務活動](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-and-run-activity1.png)
 
 ## <a name="specify-source-details"></a>指定來源詳細資料
 
-1. 在 [移轉來源詳細資料] 畫面上，指定來源 SQL Server 執行個體的連線詳細資料。
+1. 在 [移轉來源詳細資料]**** 畫面上，指定來源 SQL Server 執行個體的連線詳細資料。
 
     請務必使用來源 SQL Server 執行個體名稱的完整網域名稱 (FQDN)。
 
-2. 如果您尚未在來源伺服器上安裝信任的憑證，請選取 [信任伺服器憑證] 核取方塊。
+2. 如果您尚未在來源伺服器上安裝信任的憑證，請選取 [信任伺服器憑證]**** 核取方塊。
 
     未安裝信任的憑證時，SQL Server 會在執行個體啟動時產生自我簽署憑證。 此憑證用來加密用戶端連線的認證。
 
     > [!CAUTION]
-    > 使用自我簽署憑證加密的 SSL 連線不會提供增強式安全性。 這種連線容易受到攔截式攻擊。 在生產環境中，或在連線到網際網路的伺服器上，您不應該仰賴使用自我簽署憑證的 SSL。
+    > 使用自簽章憑證加密的 TLS 連接不提供強大的安全性。 這種連線容易受到攔截式攻擊。 不應依賴 TLS 在生產環境中或連接到 Internet 的伺服器上使用自簽章憑證。
 
    ![來源詳細資料](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
-1. 選取 [儲存]，然後在 [移轉目標詳細資料] 畫面上指定目標 Azure SQL Database 伺服器的連線詳細資料，此伺服器是使用 DMA 將 **AdventureWorks2012** 結構描述部署到的預先佈建 Azure SQL Database。
+1. 選取 [儲存]****，然後在 [移轉目標詳細資料]**** 畫面上指定目標 Azure SQL Database 伺服器的連線詳細資料，此伺服器是使用 DMA 將 **AdventureWorks2012** 結構描述部署到的預先佈建 Azure SQL Database。
 
     ![選取目標](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-select-target3.png)
 
-2. 選取 [儲存]，然後在 [對應到目標資料庫] 畫面上，對應要進行移轉的來源和目標資料庫。
+2. 選取 [儲存]****，然後在 [對應到目標資料庫]**** 畫面上，對應要進行移轉的來源和目標資料庫。
 
     如果目標資料庫包含與來源資料庫相同的資料庫名稱，Azure 資料庫移轉服務依預設會選取目標資料庫。
 
     ![對應到目標資料庫](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-map-targets-activity4.png)
 
-3. 在 [選取資料表] 畫面上選取 [儲存]，展開資料表清單，然後檢閱受影響欄位的清單。
+3. 在 [選取資料表]**** 畫面上選取 [儲存]****，展開資料表清單，然後檢閱受影響欄位的清單。
 
     Azure 資料庫移轉服務會自動選取存在於目標 Azure SQL Database 執行個體上的所有空來源資料表。 如果您想要重新遷移已包含資料的資料表，就必須在此畫面上明確地選取資料表。
 
     ![選取資料表](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 
-4. 在設定下列 [進階線上移轉設定] 之後，選取 [儲存]。
+4. 在設定下列 [進階線上移轉設定]**** 之後，選取 [儲存]****。
 
     | 設定 | 描述 |
     | ------------- | ------------- |
     | **要平行載入的資料表數目上限** | 指定 DMS 在移轉期間平行執行的資料表數目。 預設值為 5，但可將其設定為最佳值，以符合任何 POC 移轉的特定移轉需求。 |
     | **當來源資料表已截斷時** | 指定 DMS 是否會在移轉期間截斷目標資料表。 如果會在移轉過程中截斷一或多個資料表，則此設定很有幫助。 |
-    | **進行大型物件 (LOB) 資料的設定** | 指定 DMS 是否能遷移無限制的 LOB 資料，或限制遷移至特定大小的 LOB 資料。  當移轉的 LOB 資料有所限制時，就會截斷任何超出該限制的 LOB 資料。 對於生產遷移，建議選取 [不限制 LOB 大小] 以免資料遺失。 指定不限制 LOB 大小時，請選取 [當 LOB 大小小於指定的 (KB) 時遷移單一區塊中的 LOB 資料] 核取方塊，以改善效能。 |
+    | **進行大型物件 (LOB) 資料的設定** | 指定 DMS 是否能遷移無限制的 LOB 資料，或限制遷移至特定大小的 LOB 資料。  當移轉的 LOB 資料有所限制時，就會截斷任何超出該限制的 LOB 資料。 對於生產遷移，建議選取 [不限制 LOB 大小]**** 以免資料遺失。 指定不限制 LOB 大小時，請選取 [當 LOB 大小小於指定的 (KB) 時遷移單一區塊中的 LOB 資料]**** 核取方塊，以改善效能。 |
 
     ![設定進階線上移轉設定](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 
-5. 選取 [儲存]，在 [移轉摘要] 畫面的 [活動名稱] 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
+5. 選取 [儲存]****，在 [移轉摘要]**** 畫面的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
 
     ![移轉摘要](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>執行移轉
 
-* 選取 [執行移轉]。
+* 選取 [執行移轉]****。
 
-    [移轉活動] 視窗隨即出現，且活動的 [狀態] 為 [正在初始化]。
+    將顯示遷移使用中視窗，並且活動**的狀態****正在初始化**。
 
     ![活動狀態 - 正在初始化](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-status2.png)
 
 ## <a name="monitor-the-migration"></a>監視移轉
 
-1. 在移轉活動畫面上，選取 [重新整理] 以更新顯示，直到移轉的 [狀態] 顯示為 [執行中] 為止。
+1. 在移轉活動畫面上，選取 [重新整理]**** 以更新顯示，直到移轉的 [狀態]**** 顯示為 [執行中]**** 為止。
 
-2. 按一下特定資料庫，以顯示 [載入完整資料] 和 [累加式資料同步] 作業的移轉狀態。
+2. 按一下特定資料庫，以顯示 [載入完整資料]**** 和 [累加式資料同步]**** 作業的移轉狀態。
 
     ![活動狀態 - 進行中](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-in-progress.png)
 
 ## <a name="perform-migration-cutover"></a>執行完全移轉
 
-初始完整載入完成後，資料庫會標示為 [已可執行完全移轉]。
+初始完整載入完成後，資料庫會標示為 [已可執行完全移轉]****。
 
-1. 當您準備好要完成資料庫移轉後，請選取 [開始完全移轉]。
+1. 當您準備好要完成資料庫移轉後，請選取 [開始完全移轉]****。
 
     ![開始完全移轉](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-start-cutover.png)
 
-2. 確實停止所有傳入來源資料庫的交易；等到 [暫止的變更] 計數器顯示為 **0** 為止。
-3. 選取 [確認]，然後選取 [套用]。
-4. 當資料庫移轉狀態顯示為 [已完成] 後，請將應用程式連線至新的目標 Azure SQL Database。
+2. 確實停止所有傳入來源資料庫的交易；等到 [暫止的變更]**** 計數器顯示為 **0** 為止。
+3. 選取 [確認]****，然後選取 [套用]****。
+4. 當資料庫移轉狀態顯示為 [已完成]**** 後，請將應用程式連線至新的目標 Azure SQL Database。
 
     ![活動狀態 - 已完成](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 

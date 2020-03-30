@@ -9,15 +9,15 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561756"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>服務匯流排的 Azure Event Grid 事件結構描述
 
-本文提供服務匯流排事件的屬性與結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供服務匯流排事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
 如需範例指令碼和教學課程的清單，請參閱[服務匯流排事件來源](event-sources.md#service-bus)。
 
@@ -80,27 +80,27 @@ ms.locfileid: "60561756"
 
 事件具有下列的最高層級資料：
 
-| 屬性 | type | 描述 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| topic | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | object | blob 儲存體帳戶。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 事件的唯一識別碼。 |
+| data | 物件 (object) | blob 儲存體帳戶。 |
+| dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | type | 描述 |
+| 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| namespaceName | string | 資源所在的服務匯流排命名空間。 |
-| requestUri | string | 要發出此事件的特定佇列或訂用帳戶 URI。 |
-| entityType | string | 發出事件 (佇列或訂閱) 的服務匯流排實體類型。 |
-| queueName | string | 如果訂閱佇列則為作用中訊息佇列。 如果使用主題 / 訂用帳戶則為 null 值。 |
-| topicName | string | 包含作用中訊息所屬之服務匯流排訂用帳戶的主題。 如果使用佇列則為 null 值。 |
-| subscriptionName | string | 具有作用中訊息的服務匯流排訂用帳戶。 如果使用佇列則為 null 值。 |
+| namespaceName | 字串 | 資源所在的服務匯流排命名空間。 |
+| requestUri | 字串 | 要發出此事件的特定佇列或訂用帳戶 URI。 |
+| entityType | 字串 | 發出事件 (佇列或訂閱) 的服務匯流排實體類型。 |
+| queueName | 字串 | 如果訂閱佇列則為作用中訊息佇列。 如果使用主題 / 訂用帳戶則為 null 值。 |
+| topicName | 字串 | 包含作用中訊息所屬之服務匯流排訂用帳戶的主題。 如果使用佇列則為 null 值。 |
+| subscriptionName | 字串 | 具有作用中訊息的服務匯流排訂用帳戶。 如果使用佇列則為 null 值。 |
 
 ## <a name="next-steps"></a>後續步驟
 

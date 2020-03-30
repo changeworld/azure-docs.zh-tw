@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric 網格 Maven 參考
+title: Azure 服務結構網格 Maven 參考
 description: 包含如何使用 Service Fabric Mesh 的 Maven 外掛程式參考
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75459012"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 的 Maven 外掛程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Java SDK
 - Maven
@@ -36,7 +36,7 @@ ms.locfileid: "75459012"
 - 以提供的閘道名稱在 `appresources` 資料夾中產生 `gateway` YAML。 
 
 #### `azure-sfmesh:addvolume`
-- 使用在 `appresources` 資料夾中提供的磁片區名稱，產生 `volume` YAML。
+- 生成具有`volume`資料夾中提供的卷名稱的`appresources`YAML。
 
 ### `azure-sfmesh:addsecret`
 - 以提供的祕密名稱在 `appresources` 資料夾中產生 `secret` YAML 
@@ -53,7 +53,7 @@ ms.locfileid: "75459012"
 - 將所有資源都部署至 Service Fabric 叢集
  
 
-## <a name="usage"></a>用量
+## <a name="usage"></a>使用量
 
 若要在您的 Maven Java 應用程式中使用 Maven 外掛程式，請在 pom.xml 檔案中新增下列程式碼片段：
 

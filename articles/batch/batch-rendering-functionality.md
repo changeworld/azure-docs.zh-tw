@@ -1,6 +1,6 @@
 ---
 title: 轉譯功能 - Azure Batch
-description: 標準 Azure Batch 功能是用來執行轉譯工作負載和應用程式。 Batch 包含支援轉譯工作負載的特定功能。
+description: 標準 Azure 批次處理功能用於運行呈現工作負荷和應用。 批次處理包括支援呈現工作負載的特定功能。
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75449715"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 轉譯功能
@@ -30,16 +30,16 @@ ms.locfileid: "75449715"
 
 如需範例集區設定，請參閱 [Azure CLI 轉譯教學課程](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)。  Azure 入口網站和 Batch Explorer 提供 GUI 工具，讓您在建立集區時選取轉譯 VM 映像。  如果使用 Batch API，則在建立集區時指定 [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) 的下列屬性值：
 
-| 發佈者 | 供應項目 | SKU | 版本 |
+| 發行者 | 供應項目 | SKU | 版本 |
 |---------|---------|---------|--------|
-| batch | rendering-centos73 | 轉譯 | latest |
-| batch | rendering-windows2016 | 轉譯 | latest |
+| 批次 | rendering-centos73 | 轉譯 | 最新 |
+| 批次 | rendering-windows2016 | 轉譯 | 最新 |
 
 如果集區 VM 上需要額外的應用程式，則適用其他選項：
 
-* 來自共用映射資源庫的自訂映射：
-  * 使用此選項，可以為您的虛擬機器設定所需要的確切應用程式與特定版本。 如需詳細資訊，請參閱[使用共用映射資源庫建立集](batch-sig-images.md)區。 Autodesk 和 Chaos Group 已分別修改 Arnold 和 V-Ray，以驗證 Azure Batch 授權服務。 請確定您的應用程式版本具有此支援，否則按使用次數付費授權將無法運作。 目前版本的 Maya 或 3ds Max 在執行無周邊 (以批次/命令列模式) 時不需要授權伺服器。 如果您不確定如何繼續使用此選項，請連絡 Azure 支援。
-* [應用程式套件](https://docs.microsoft.com/azure/batch/batch-application-packages)：
+* 共用映射庫中的自訂圖像：
+  * 使用此選項，可以為您的虛擬機器設定所需要的確切應用程式與特定版本。 有關詳細資訊，請參閱[使用共用圖像庫創建池](batch-sig-images.md)。 Autodesk 和 Chaos Group 已分別修改 Arnold 和 V-Ray，以驗證 Azure Batch 授權服務。 請確定您的應用程式版本具有此支援，否則按使用次數付費授權將無法運作。 目前版本的 Maya 或 3ds Max 在執行無周邊 (以批次/命令列模式) 時不需要授權伺服器。 如果您不確定如何繼續使用此選項，請連絡 Azure 支援。
+* [應用程式包](https://docs.microsoft.com/azure/batch/batch-application-packages)：
   * 將使用一或多個 ZIP 檔案的應用程式檔案封裝、透過 Azure 入口網站上傳，然後在集區設定中指定套件。 建立集區 VM 時，會下載 ZIP 檔案並將檔案解壓縮。
 * 資源檔：
   * 應用程式檔案會上傳至 Azure Blob 儲存體，而且您要在[集區啟動工作](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) \(英文\) 中指定檔案參考。 建立集區 VM 時，會將資源檔下載到每個 VM。
@@ -62,7 +62,7 @@ ms.locfileid: "75449715"
 
 若要能夠建立適用於轉譯工作的命令列，就必須指定轉譯應用程式可執行檔的安裝位置。  系統環境變數已建立於 Azure Marketplace VM 映像上，您可以改用這類環境變數，而不需指定實際路徑。  除了針對每個工作建立的[標準 Batch 環境變數](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)，還有下列環境變數。
 
-|應用程式|應用程式可執行檔|環境變數|
+|Application|應用程式可執行檔|環境變數|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|

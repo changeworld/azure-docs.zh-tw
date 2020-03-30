@@ -1,5 +1,5 @@
 ---
-title: 為 Azure Logic Apps 建立 & REST Api 的 web Api
+title: 為 Azure 邏輯應用創建 & REST API 的 Web API
 description: 建立 Web API 和 REST API 來呼叫您的 API、服務或系統以在 Azure Logic Apps 中進行系統整合
 services: logic-apps
 ms.suite: integration
@@ -7,21 +7,21 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270533"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>建立您可以從 Azure Logic Apps 呼叫的自訂 API
 
-雖然 Azure Logic Apps 提供您可以在邏輯應用程式工作流程中使用的[數百個連接器](../connectors/apis-list.md)，但您可能會想要呼叫不是連接器提供的 api、系統和服務。 您可以建立自己的 API 來提供要在邏輯應用程式中使用的動作和觸發程序。 以下是您可能會想要建立自己的且可從邏輯應用程式工作流程呼叫之 API 的其他原因：
+儘管 Azure 邏輯應用提供了[數百個連接器](../connectors/apis-list.md)，您可以在邏輯應用工作流中使用，但您可能希望調用不能作為連接器提供的 API、系統和服務。 您可以建立自己的 API 來提供要在邏輯應用程式中使用的動作和觸發程序。 以下是您可能會想要建立自己的且可從邏輯應用程式工作流程呼叫之 API 的其他原因：
 
 * 延伸您目前的系統整合及資料整合工作流程。
 * 協助客戶使用您的服務來管理專業或個人工作。
 * 展開您服務的觸達、搜尋功能以及用途。
 
-基本上，連接器是使用 REST 作為隨插即用介面、[Swagger 中繼資料格式](https://swagger.io/specification/)作為文件，以及 JSON 作為其資料交換格式的 web API。 由於連接器是透過 HTTP 端點進行通訊的 REST Api，因此您可以使用任何語言（例如 .NET、JAVA、Python 或 node.js）來建立連接器。 您也可以在 [Azure App Service](../app-service/overview.md) 上裝載您的 API，Azure App Service 是平台即服務 (PaaS) 供應項目，能為 API 裝載提供最佳、最簡單且擴充性最高的方法。 
+基本上，連接器是使用 REST 作為隨插即用介面、[Swagger 中繼資料格式](https://swagger.io/specification/)作為文件，以及 JSON 作為其資料交換格式的 web API。 由於連接器是通過 HTTP 終結點進行通信的 REST API，因此可以使用任何語言（如 .NET、JAVA、Python 或 Node.js）來構建連接器。 您也可以在 [Azure App Service](../app-service/overview.md) 上裝載您的 API，Azure App Service 是平台即服務 (PaaS) 供應項目，能為 API 裝載提供最佳、最簡單且擴充性最高的方法。 
 
 若要讓自訂 API 與 Logic Apps 搭配使用，您的 API 可以提供[*動作*](./logic-apps-overview.md#logic-app-concepts)，能在邏輯應用程式工作流程中執行特定的工作。 您的 API 也可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式工作流程。 本主題描述常見的模式，以您想要 API 提供的行為作為基礎，加以遵循即可在您的 API 中建置動作和觸發程序。
 
@@ -30,18 +30,18 @@ ms.locfileid: "79270533"
 > [!TIP] 
 > 雖然您可以將 API 部署成 Web 應用程式，但請考慮將您的 API 部署成 API 應用程式，如此一來，當您在雲端和內部部署環境中建置、裝載及取用 API 時，將可讓您的作業更輕鬆。 您不需要在 API 中變更任何程式碼 -- 只需將您的程式碼部署至 API 應用程式。 例如，了解如何使用下列語言來建置 API 應用程式： 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
-> * [Java](../app-service/app-service-web-get-started-java.md)
+> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). . 
+> * [JAVA](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
-> * [PHP](../app-service/app-service-web-get-started-php.md)
+> * [Php](../app-service/app-service-web-get-started-php.md)
 > * [Python](../app-service/containers/quickstart-python.md)
-> * [Ruby](../app-service/containers/quickstart-ruby.md)
+> * [紅寶石](../app-service/containers/quickstart-ruby.md)
 >
 > 如需針對 Logic Apps 建置的 API 應用程式範例，請瀏覽 [Azure Logic Apps GitHub 存放庫](https://github.com/logicappsio)或[部落格](https://aka.ms/logicappsblog)。
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>自訂 API 與自訂連接器有何不同？
 
-自訂 API 和[自訂連接器](../logic-apps/custom-connector-overview.md)是針對可插式介面使用 REST、針對文件使用 [Swagger 中繼資料格式](https://swagger.io/specification/)以及使用 JSON 作為其資料交換格式的 Web API。 而且，由於這些 Api 和連接器是透過 HTTP 端點進行通訊的 REST Api，因此您可以使用任何語言（例如 .NET、JAVA、Python 或 node.js）來建立自訂 Api 和連接器。
+自訂 API 和[自訂連接器](../logic-apps/custom-connector-overview.md)是針對可插式介面使用 REST、針對文件使用 [Swagger 中繼資料格式](https://swagger.io/specification/)以及使用 JSON 作為其資料交換格式的 Web API。 由於這些 API 和連接器是通過 HTTP 終結點進行通信的 REST API，因此可以使用任何語言（如 .NET、JAVA、Python 或 Node.js）來構建自訂 API 和連接器。
 
 自訂 API 可讓您呼叫不是連接器的 API，並提供您可以使用 HTTP + Swagger、「Azure API 管理」或「應用程式服務」來呼叫的端點。 自訂連接器的運作方式與自訂 API 類似，但還具有下列屬性：
 
@@ -49,7 +49,7 @@ ms.locfileid: "79270533"
 * 在「Logic Apps 設計工具」中會顯示在 Microsoft 受控連接器旁邊且帶有圖示。
 * 只有連接器的作者，以及在部署邏輯應用程式的區域中具有相同 Azure Active Directory 租用戶和 Azure 訂用帳戶的使用者，才能使用。
 
-您也可以提名已註冊的連接器來進行 Microsoft 認證。 此程式會驗證註冊的連接器是否符合公用用途的準則，並讓這些連接器可供電源自動化和 Microsoft Power Apps 中的使用者使用。
+您也可以提名已註冊的連接器來進行 Microsoft 認證。 此過程驗證註冊的連接器是否符合公共使用標準，並使這些連接器可供 Power 自動化和 Microsoft 電源應用中的使用者使用。
 
 如需有關自訂連接器的詳細資訊，請參閱 
 
@@ -100,9 +100,9 @@ ms.locfileid: "79270533"
    
    `202 ACCEPTED` 回應應包含這些標頭：
    
-   * 必要：`location` 標頭所指定的 URL 絕對路徑，可讓 Logic Apps 引擎在其中檢查您的 API 作業狀態
+   * 必要**：`location` 標頭所指定的 URL 絕對路徑，可讓 Logic Apps 引擎在其中檢查您的 API 作業狀態
 
-   * 選擇性：`retry-after` 標頭所指定的秒數，是引擎在檢查 `location` URL 以了解作業狀態時所需等候的時間。 
+   * 選擇性**：`retry-after` 標頭所指定的秒數，是引擎在檢查 `location` URL 以了解作業狀態時所需等候的時間。 
 
      根據預設，引擎每隔 20 秒會進行檢查。 若要指定不同的間隔，請包括 `retry-after` 標頭，以及下一次輪詢之前的秒數。
 
@@ -152,7 +152,7 @@ ms.locfileid: "79270533"
 
 ### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>使用輪詢觸發程序模式定期檢查新的資料或事件
 
-輪詢觸發程序作用很像本主題先前所述的[輪詢動作](#async-pattern)。 Logic Apps 引擎會定期呼叫並檢查新的資料或事件，以查看觸發程序端點。 如果引擎發現符合您指定條件的新資料或事件，就會引發觸發程序。 然後，引擎會建立處理資料的邏輯應用程式執行個體作為輸入。 
+輪詢觸發程序** 作用很像本主題先前所述的[輪詢動作](#async-pattern)。 Logic Apps 引擎會定期呼叫並檢查新的資料或事件，以查看觸發程序端點。 如果引擎發現符合您指定條件的新資料或事件，就會引發觸發程序。 然後，引擎會建立處理資料的邏輯應用程式執行個體作為輸入。 
 
 ![輪詢觸發程序](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
@@ -164,7 +164,7 @@ ms.locfileid: "79270533"
 | 找到新資料或事件了嗎？  | API 回應 | 
 | ------------------------- | ------------ |
 | 已找到 | 傳回包含回應承載的 HTTP `200 OK` 狀態 (下一個步驟的輸入)。 <br/>此回應會建立邏輯應用程式執行個體，並啟動工作流程。 | 
-| 找不到 | 傳回包含 `202 ACCEPTED` 標頭和 `location` 標頭的 HTTP`retry-after` 狀態。 <br/>針對觸發程序，`location` 標頭也應該包含 `triggerState` 查詢參數，通常是「時間戳記」。 您的 API 可以利用這個識別碼，來追蹤邏輯應用程式所觸發的最後時間。 | 
+| 找不到 | 傳回包含 `location` 標頭和 `retry-after` 標頭的 HTTP`202 ACCEPTED` 狀態。 <br/>針對觸發程序，`location` 標頭也應該包含 `triggerState` 查詢參數，通常是「時間戳記」。 您的 API 可以利用這個識別碼，來追蹤邏輯應用程式所觸發的最後時間。 | 
 ||| 
 
 例如，定期檢查您的服務是否有新檔案，您可能會建立具有這些行為的輪詢觸發程序：
@@ -172,7 +172,7 @@ ms.locfileid: "79270533"
 | 要求是否包含 `triggerState`？ | API 回應 | 
 | -------------------------------- | -------------| 
 | 否 | 傳回 HTTP `202 ACCEPTED` 狀態與 `location` 標頭，並將 `triggerState` 設為目前的時間，且 `retry-after` 間隔設為 15 秒。 | 
-| 是 | 請檢查您的服務是否有 `DateTime` 的 `triggerState` 之後新增的檔案。 | 
+| 是 | 請檢查您的服務是否有 `triggerState` 的 `DateTime` 之後新增的檔案。 | 
 ||| 
 
 | 找到的檔案數 | API 回應 | 
@@ -189,7 +189,7 @@ ms.locfileid: "79270533"
 
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>等候並接聽使用 webhook 觸發程序模式的新資料或事件
 
-Webhook 觸發程序是推送觸發程序，會等候並接聽您服務端點中的新資料或事件。 如果新的資料或事件符合指定的條件，觸發程序就會引發，並建立邏輯應用程式執行個體，然後處理資料作為輸入。
+Webhook 觸發程序是推送觸發程序**，會等候並接聽您服務端點中的新資料或事件。 如果新的資料或事件符合指定的條件，觸發程序就會引發，並建立邏輯應用程式執行個體，然後處理資料作為輸入。
 Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webhook-actions)，並使用 `subscribe` 和 `unsubscribe` 端點加以設定。 
 
 * `subscribe` 端點：當您在邏輯應用程式中新增及儲存 webhook 觸發程序時，Logic Apps 引擎會呼叫 `subscribe` 端點。 這個步驟會導致邏輯應用程式建立您 API 所儲存的回呼 URL。 當沒有新的資料或事件符合指定的條件時，您的 API 會使用 HTTP POST 回呼 URL。 內容承載和標頭會作為輸入傳遞至邏輯應用程式。
@@ -206,9 +206,9 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 > [!TIP]
 > 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序控制器範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>針對從邏輯應用程式對 Api 的呼叫提升安全性
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高從邏輯應用調用 API 的安全性
 
-建立您的自訂 API 之後，請為 API 設定驗證，以便可以從邏輯應用程式安全地呼叫它們。 瞭解[如何從邏輯應用程式提升對自訂 api 呼叫的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
+建立您的自訂 API 之後，請為 API 設定驗證，以便可以從邏輯應用程式安全地呼叫它們。 [瞭解如何提高從邏輯應用調用自訂 API 的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和呼叫您的 API
 
@@ -218,11 +218,11 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 
 若要將您的自訂 API 提供給 Azure 中的其他 Logic Apps 使用者使用，您必須新增安全性並將它們註冊為 Logic Apps 連接器。 如需詳細資訊，請參閱[自訂連接器概觀](../logic-apps/custom-connector-overview.md)。 
 
-若要讓您的自訂 Api 可供 Logic Apps、電源自動化和 Microsoft Power Apps 中的所有使用者使用，您必須新增安全性、將 Api 註冊為邏輯應用程式連接器，並提名您的連接器使用[Microsoft Azure 認證方案](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。 
+要使自訂 API 可供邏輯應用、電源自動化和 Microsoft 電源應用中的所有使用者使用，必須添加安全性、將 API 註冊為邏輯應用連接器，並為[Microsoft Azure 認證程式](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名連接器。 
 
 ## <a name="get-support"></a>取得支援
 
-* 如需自訂 API 的特定說明，請連絡 [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)。
+* 有關自訂 API 的特定説明，請[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)與 .
 
 * 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
 

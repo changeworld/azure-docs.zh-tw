@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62123800"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array
@@ -42,7 +42,7 @@ ms.locfileid: "62123800"
 StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連接至多個 StorSimple Virtual Array。 您可以使用在瀏覽器中執行的中央 Microsoft Azure 入口網站來管理這些裝置。 若要連接至 StorSimple 裝置管理員服務，請執行下列動作。
 
 #### <a name="to-connect-to-the-service"></a>連接至此服務
-1. 移至 [https://ms.portal.azure.com](https://ms.portal.azure.com)。
+1. 轉到[https://ms.portal.azure.com](https://ms.portal.azure.com)。
 2. 使用您的 Microsoft 帳戶認證，登入 Microsoft Azure 入口網站 (位於窗格右上角)。
 3. 在 StorSimple 裝置管理員上瀏覽至 [瀏覽] --> [篩選]，以檢視指定訂用帳戶中所有的裝置管理員。
 
@@ -58,7 +58,7 @@ StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連�
 | 檢視活動記錄 |[使用 StorSimple 服務摘要](storsimple-virtual-array-service-summary.md) |
 | 停用 Virtual Array</br>刪除 Virtual Array |[停用或刪除虛擬陣列](storsimple-virtual-array-deactivate-and-delete-device.md) |
 | 災害復原和裝置容錯移轉</br>容錯移轉必要條件</br>業務持續性災害復原 (BCDR)</br>災害復原時發生錯誤 |[StorSimple Virtual Array 的災害復原和裝置容錯移轉](storsimple-virtual-array-failover-dr.md) |
-| 備份共用和磁碟區</br>進行手動備份</br>變更備份排程</br>檢視現有的備份 |[備份 StorSimple Virtual Array](storsimple-virtual-array-backup.md) |
+| 備份共用和磁碟區</br>進行手動備份</br>變更備份排程</br>檢視現有備份 |[備份 StorSimple Virtual Array](storsimple-virtual-array-backup.md) |
 | 從備份組複製共用</br>從備份組複製磁碟區</br>項目層級復原 (僅限檔案伺服器) |[從 StorSimple Virtual Array 的備份複製](storsimple-virtual-array-clone.md) |
 | 有關儲存體帳戶</br>新增儲存體帳戶</br>編輯儲存體帳戶</br>刪除儲存體帳戶 |[管理 StorSimple Virtual Array 的儲存體帳戶](storsimple-virtual-array-manage-storage-accounts.md) |
 | 關於存取控制記錄</br>加入或修改存取控制記錄 </br>刪除存取控制記錄 |[管理 StorSimple Virtual Array 的存取控制記錄](storsimple-virtual-array-manage-acrs.md) |

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Data Factory 中建立輪轉視窗觸發程式
+title: 在 Azure 資料工廠中創建翻滾視窗觸發器
 description: 了解如何在 Azure Data Factory 中建立依輪轉視窗執行管線的觸發程序。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73673701"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>建立依輪轉視窗執行管線的觸發程序
@@ -25,9 +25,9 @@ ms.locfileid: "73673701"
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
-1. 若要在 Data Factory UI 中建立輪轉視窗觸發程式，請選取 [**觸發**程式] 索引標籤，然後選取 [**新增**]。 
-1. [觸發程式設定] 窗格開啟之後，請選取 [**輪轉視窗]** ，然後定義輪轉視窗觸發程式屬性。 
-1. 完成時，選取 [儲存]。
+1. 要在"資料工廠 UI"中創建翻倒視窗觸發器，請選擇"**觸發器"** 選項卡，然後選擇 **"新建**"。 
+1. 打開觸發器配置窗格後，選擇 **"輪轉視窗**"，然後定義翻滾視窗觸發器屬性。 
+1. 完成時，選取 [儲存]****。
 
 ![在 Azure 入口網站中建立輪轉視窗觸發程序](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
@@ -92,21 +92,21 @@ ms.locfileid: "73673701"
 
 下表提供與輪轉視窗觸發程序之週期和排程相關的主要 JSON 元素的概要概觀：
 
-| JSON 元素 | 說明 | 類型 | 允許的值 | 必要 |
+| JSON 元素 | 描述 | 類型 | 允許的值 | 必要 |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | 觸發程序的類型。 類型是固定值 "TumblingWindowTrigger"。 | 字串 | "TumblingWindowTrigger" | 是 |
-| **runtimeState** | 觸發程序執行時間的目前狀態。<br/>**附註**：這個元素是 \<readOnly>。 | 字串 | "Started"、"Stopped"、"Disabled" | 是 |
-| **頻率** | 一個字串，代表觸發程序一再執行的頻率單位 (分鐘或小時)。 如果 **startTime** 日期值比 **frequency** 值更細微，計算視窗界限時，會將 **startTime** 日期納入計算。 例如，如果 **frequency** 值是每小時，而 **startTime** 值是 2017-09-01T10:10:10Z，則第一個視窗是 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | 字串 | "minute"、"hour"  | 是 |
-| **interval** | 代表 **frequency** 值之間隔的整數值，用來決定觸發程序執行的頻率。 例如，如果 **interval** 為 3，而 **frequency** 為 "hour"，則觸發程序就會每隔 3 小時重複執行一次。 <br/>**注意**：最短的視窗間隔是15分鐘。 | Integer | 正整數。 | 是 |
-| **startTime**| 第一次出現，可以是過去。 第一個觸發程序間隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 日期時間值。 | 是 |
-| **endTime**| 最後一次出現，可以是過去。 | DateTime | 日期時間值。 | 是 |
-| **delay** | 視窗延遲開始資料處理所延遲的時間長度。 管線執行會在預期執行時間加上 **delay** 後開始。 **delay** 定義觸發程序要在超過到期時間多久之後，才觸發新的執行。 **delay** 不會改變視窗的 **startTime**。 例如，**delay** 值為 00:10:00 表示延遲 10 分鐘。 | Timespan<br/>(hh:mm:ss)  | 時間範圍值，預設值是 00:00:00。 | 否 |
-| **maxConcurrency** | 就緒視窗可引發的同時執行觸發程序數目。 例如，為昨天回填每小時執行，結果會有 24 個視窗。 如果 **maxConcurrency** = 10，只有前 10 個視窗 (00:00-01:00 - 00:09:00-10) 會引發觸發程序事件。 前 10 個觸發的管線執行完成之後，才會引發接下來 10 個視窗 (10:00-11:00 - 19:00 20:00) 的觸發程序執行。 繼續以本範例的 **maxConcurrency** = 10 說明，如果有 10 個就緒視窗，則總共會有 10 個管線執行。 如果只有 1 個就緒視窗，則只有 1 個管線執行。 | Integer | 1 到 50 之間的整數。 | 是 |
-| **retryPolicy: Count** | 到管線執行標示為 [失敗] 前的重試次數。  | Integer | 整數，預設值為 0 (無重試)。 | 否 |
-| **retryPolicy: intervalInSeconds** | 重試嘗試之間的延遲 (以秒指定) | Integer | 秒數，預設值是 30。 | 否 |
-| **dependsOn: type** | TumblingWindowTriggerReference 的類型。 如果已設定相依性，則為必要項。 | 字串 |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | 否 |
-| **dependsOn: size** | 相依性輪轉視窗的大小。 | Timespan<br/>(hh:mm:ss)  | 正 timespan 值，預設為子觸發程式的視窗大小。  | 否 |
-| **dependsOn： offset** | 相依性觸發程式的位移。 | Timespan<br/>(hh:mm:ss) |  在自我相依性中必須是負值的 timespan 值。 如果未指定任何值，視窗會與觸發程式本身相同。 | 自我相依性：是<br/>其他：否  |
+| **型別** | 觸發程序的類型。 該類型是固定值"翻動視窗觸發器"。 | String | "TumblingWindowTrigger" | 是 |
+| **runtimeState** | 觸發程序執行時間的目前狀態。<br/>**附註**：這個元素是 \<readOnly>。 | String | "Started"、"Stopped"、"Disabled" | 是 |
+| **頻率** | 一個字串，代表觸發程序一再執行的頻率單位 (分鐘或小時)。 如果 **startTime** 日期值比 **frequency** 值更細微，計算視窗界限時，會將 **startTime** 日期納入計算。 例如，如果 **frequency** 值是每小時，而 **startTime** 值是 2017-09-01T10:10:10Z，則第一個視窗是 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | "minute"、"hour"  | 是 |
+| **區間** | 代表 **frequency** 值之間隔的整數值，用來決定觸發程序執行的頻率。 例如，如果 **interval** 為 3，而 **frequency** 為 "hour"，則觸發程序就會每隔 3 小時重複執行一次。 <br/>**注意**：最小視窗間隔為 15 分鐘。 | 整數  | 正整數。 | 是 |
+| **開始時間**| 第一次出現，可以是過去。 第一個觸發程序間隔是 (**startTime**, **startTime** + **interval**)。 | Datetime | 日期時間值。 | 是 |
+| **結束時間**| 最後一次出現，可以是過去。 | Datetime | 日期時間值。 | 是 |
+| **延遲** | 視窗延遲開始資料處理所延遲的時間長度。 管線執行會在預期執行時間加上 **delay** 後開始。 **delay** 定義觸發程序要在超過到期時間多久之後，才觸發新的執行。 **delay** 不會改變視窗的 **startTime**。 例如，**delay** 值為 00:10:00 表示延遲 10 分鐘。 | Timespan<br/>(hh:mm:ss)  | 時間範圍值，預設值是 00:00:00。 | 否 |
+| **maxConcurrency** | 就緒視窗可引發的同時執行觸發程序數目。 例如，為昨天回填每小時執行，結果會有 24 個視窗。 如果 **maxConcurrency** = 10，只有前 10 個視窗 (00:00-01:00 - 00:09:00-10) 會引發觸發程序事件。 前 10 個觸發的管線執行完成之後，才會引發接下來 10 個視窗 (10:00-11:00 - 19:00 20:00) 的觸發程序執行。 繼續以本範例的 **maxConcurrency** = 10 說明，如果有 10 個就緒視窗，則總共會有 10 個管線執行。 如果只有 1 個就緒視窗，則只有 1 個管線執行。 | 整數  | 1 到 50 之間的整數。 | 是 |
+| **retryPolicy: Count** | 到管線執行標示為 [失敗] 前的重試次數。  | 整數  | 整數，預設值為 0 (無重試)。 | 否 |
+| **retryPolicy: intervalInSeconds** | 重試嘗試之間的延遲 (以秒指定) | 整數  | 秒數，預設值是 30。 | 否 |
+| **取決於： 類型** | 翻滾視窗觸發器引用的類型。 如果設置了依賴項，則為必填項。 | String |  "翻存視窗觸發器依賴引用"，"自依賴視窗觸發器引用" | 否 |
+| **取決於： 大小** | 依賴項翻滾視窗的大小。 | Timespan<br/>(hh:mm:ss)  | 預設為子觸發器的視窗大小的正時間跨度值  | 否 |
+| **取決於：偏移** | 依賴項觸發器的偏移量。 | Timespan<br/>(hh:mm:ss) |  在自我依賴項中必須為負的時跨值。 如果未指定值，則視窗與觸發器本身相同。 | 自依賴：是<br/>其他： 否  |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart 和 WindowEnd 系統變數
 
@@ -146,12 +146,12 @@ ms.locfileid: "73673701"
 ### <a name="existing-triggerresource-elements"></a>現有 TriggerResource 元素
 下列各點適用於現有的 **TriggerResource** 元素：
 
-* 如果觸發程序的 **frequency** 元素 (或視窗大小) 值變更了，已經處理的視窗狀態「不會」重設。 觸發程序會繼續由它執行的最新視窗引發，並使用新的視窗大小。
-* 如果觸發程序的 **endTime** 元素值變更了 (新增或更新)，已經處理的視窗狀態「不會」重設。 觸發程序會採用新的 **endTime** 值。 如果新的 **endTime** 值在已經執行的視窗之前，觸發程序會停止。 反之，觸發程序會在遇到新的 **endTime** 值時停止。
+* 如果觸發程序的 **frequency** 元素 (或視窗大小) 值變更了，已經處理的視窗狀態「不會」** 重設。 觸發程序會繼續由它執行的最新視窗引發，並使用新的視窗大小。
+* 如果觸發程序的 **endTime** 元素值變更了 (新增或更新)，已經處理的視窗狀態「不會」** 重設。 觸發程序會採用新的 **endTime** 值。 如果新的 **endTime** 值在已經執行的視窗之前，觸發程序會停止。 反之，觸發程序會在遇到新的 **endTime** 值時停止。
 
-### <a name="tumbling-window-trigger-dependency"></a>輪轉視窗觸發程式相依性
+### <a name="tumbling-window-trigger-dependency"></a>輪轉視窗觸發器依賴項
 
-如果您想要確保只有在資料處理站中的另一個輪轉視窗觸發程式成功執行之後，才會執行輪轉視窗觸發程式，請[建立輪轉視窗觸發](tumbling-window-trigger-dependency.md)程式相依性。 
+如果要確保僅在資料工廠中成功執行另一個翻滾視窗觸發器後執行翻滾視窗觸發器，[請創建一個翻滾視窗觸發器依賴項](tumbling-window-trigger-dependency.md)。 
 
 ## <a name="sample-for-azure-powershell"></a>Azure PowerShell 的範例
 
@@ -195,31 +195,31 @@ ms.locfileid: "73673701"
     }
     ```
 
-2. 使用**start-azdatafactoryv2trigger** Cmdlet 建立觸發程式：
+2. 使用**Set-AzDataFactoryV2Trigger** Cmdlet 創建觸發器：
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
     
-3. 使用**start-azdatafactoryv2trigger** Cmdlet 來確認觸發程式的狀態是否已**停止**：
+3. 使用**Get-AzDataFactoryV2Trigger** Cmdlet 確認觸發器的狀態**已停止**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用**start-azdatafactoryv2trigger** Cmdlet 來啟動觸發程式：
+4. 使用**啟動-AzDataFactoryV2觸發器**Cmdlet 啟動觸發器：
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 使用**start-azdatafactoryv2trigger** Cmdlet 來確認觸發程式的狀態是否已**啟動**：
+5. 使用**Get-AzDataFactoryV2Trigger** Cmdlet 確認觸發器的狀態已**啟動**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6. 使用**AzDataFactoryV2TriggerRun** Cmdlet，取得在 Azure PowerShell 中執行的觸發程式。 若要取得有關觸發程序執行的資訊，請定期執行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 的值，以符合您觸發程序定義中的值：
+6. 使用**Get-AzDataFactoryV2TriggerRun** Cmdlet 獲取在 Azure PowerShell 中運行的觸發器。 若要取得有關觸發程序執行的資訊，請定期執行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 的值，以符合您的觸發程序定義中的值：
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -230,4 +230,4 @@ ms.locfileid: "73673701"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需有關觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#triggers)。
-* [建立輪轉視窗觸發程式相依性](tumbling-window-trigger-dependency.md)
+* [建立輪轉視窗觸發程序相依性](tumbling-window-trigger-dependency.md)

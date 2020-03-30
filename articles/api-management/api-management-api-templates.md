@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265957"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 範本
@@ -27,16 +27,16 @@ ms.locfileid: "79265957"
 本節的範本可讓您自訂開發人員入口網站中 API 頁面的內容。  
   
 -   [API 清單](#APIList)  
--   [運算](#Product)  
+-   [操作](#Product)  
 -   [程式碼範例](#CodeSamples)  
-    -   [Curl](#Curl)  
+    -   [捲曲](#Curl)  
     -   [C#](#CSharp)  
-    -   [Java](#Stub)  
-    -   [JavaScript](#JavaScript)  
-    -   [Objective C](#ObjectiveC)  
-    -   [PHP](#PHP)  
+    -   [JAVA](#Stub)  
+    -   [JAVAscript](#JavaScript)  
+    -   [目標C](#ObjectiveC)  
+    -   [Php](#PHP)  
     -   [Python](#Python)  
-    -   [Ruby](#Ruby)  
+    -   [紅寶石](#Ruby)  
 
 > [!NOTE]
 >  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
@@ -45,10 +45,10 @@ ms.locfileid: "79265957"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="APIList"></a>API 清單  
+## <a name="api-list"></a><a name="APIList"></a>API 清單  
  **API 清單**範本可讓您自訂開發人員入口網站中 API 清單頁面的主體。  
   
- ![開發人員入口網站 API 清單](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開發人員入口網站範本 API 清單")  
+ ![開發人員門戶 API 清單](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開發人員門戶範本 API 清單")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -80,12 +80,12 @@ ms.locfileid: "79265957"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `API list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分頁控制](api-management-page-controls.md#paging-control)  
   
--   [search-control](api-management-page-controls.md#search-control)  
+-   [搜索控制](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>資料模型  
   
@@ -113,10 +113,10 @@ ms.locfileid: "79265957"
 }  
 ```  
   
-## <a name="Product"></a>作業  
+## <a name="operation"></a><a name="Product"></a>操作  
  **作業**範本可讓您自訂開發人員入口網站中作業頁面的主體。  
   
- ![開發人員入口網站動作頁面](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開發人員入口網站範本動作頁面")  
+ ![開發人員門戶動作頁面](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開發人員門戶範本 動作頁")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -339,21 +339,21 @@ ms.locfileid: "79265957"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Operation` 範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>資料模型  
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`apiId`|字串|目前 API 的識別碼。|  
+|`apiId`|字串|當前 API 的 ID。|  
 |`apiName`|字串|API 的名稱。|  
 |`apiDescription`|字串|API 的描述。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)實體。|目前的 API。|  
-|`operation`|[運算](api-management-template-data-model-reference.md#Operation)|目前顯示的作業。|  
+|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|目前顯示的作業。|  
 |`sampleUrl`|字串|目前作業的 URL。|  
 |`operationMenu`|[作業功能表](api-management-template-data-model-reference.md#Menu)|此 API 的作業功能表。|  
-|`consoleUrl`|URI|[試用] 按鈕的 URI。|  
+|`consoleUrl`|URI|[試用]**** 按鈕的 URI。|  
 |`samples`|[程式碼範例](api-management-template-data-model-reference.md#Sample)實體的集合。|目前作業的程式碼範例。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
@@ -643,28 +643,28 @@ ms.locfileid: "79265957"
 }  
 ```  
   
-## <a name="CodeSamples"></a> 程式碼範例  
+## <a name="code-samples"></a><a name="CodeSamples"></a> 程式碼範例  
  下列範本可讓您自訂作業頁面上個別程式碼範例的主體。  
   
- ![開發人員入口網站範本程式碼範例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開發人員入口網站範本程式碼範例")  
+ ![開發人員門戶範本代碼示例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開發人員門戶範本代碼示例")  
   
--   [Curl](#Curl)  
+-   [捲曲](#Curl)  
   
 -   [C#](#CSharp)  
   
--   [Java](#Stub)  
+-   [JAVA](#Stub)  
   
--   [JavaScript](#JavaScript)  
+-   [JAVAscript](#JavaScript)  
   
--   [Objective C](#ObjectiveC)  
+-   [目標C](#ObjectiveC)  
   
--   [PHP](#PHP)  
+-   [Php](#PHP)  
   
 -   [Python](#Python)  
   
--   [Ruby](#Ruby)  
+-   [紅寶石](#Ruby)  
   
-### <a name="Curl"></a>Curl  
+### <a name="curl"></a><a name="Curl"></a>Curl  
  **DocumentationSamplesCurl** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -682,7 +682,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
   
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -717,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="CSharp"></a> C#  
+### <a name="c"></a><a name="CSharp"></a>C#  
  **DocumentationSamplesCsharp** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -861,7 +861,7 @@ namespace CSHttpClientSample
 }     
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -896,7 +896,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="Stub"></a>Java  
+### <a name="java"></a><a name="Stub"></a>JAVA  
  **DocumentationSamplesJava** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -957,7 +957,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -992,7 +992,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="JavaScript"></a>JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a>JAVAscript  
  **DocumentationSamplesJs** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1046,7 +1046,7 @@ public class JavaSample
   
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -1081,7 +1081,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="ObjectiveC"></a>Objective C  
+### <a name="objective-c"></a><a name="ObjectiveC"></a>Objective C  
  **DocumentationSamplesObjc** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1158,7 +1158,7 @@ int main(int argc, const char * argv[])
   
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -1193,7 +1193,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="PHP"></a>PHP  
+### <a name="php"></a><a name="PHP"></a>PHP  
  **DocumentationSamplesPhp** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1248,7 +1248,7 @@ catch (HttpException $ex)
 ?>  
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -1283,7 +1283,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="Python"></a>Python  
+### <a name="python"></a><a name="Python"></a>Python  
  **DocumentationSamplesPython** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1366,7 +1366,7 @@ except Exception as e:
 ####################################  
 ```
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  
@@ -1401,7 +1401,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="Ruby"></a>Ruby  
+### <a name="ruby"></a><a name="Ruby"></a>Ruby  
  **DocumentationSamplesRuby** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1437,7 +1437,7 @@ puts response.body
   
 ```  
   
-#### <a name="controls"></a>控制  
+#### <a name="controls"></a>控制項  
  程式碼範例範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 #### <a name="data-model"></a>資料模型  

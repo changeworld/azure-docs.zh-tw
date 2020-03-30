@@ -1,5 +1,5 @@
 ---
-title: 在 VMware 中布建 StorSimple Virtual Array
+title: 在 VMware 中預配 StorSimple 虛擬陣列
 description: 部署 StorSimple Virtual Array 的第二個教學課程，內容為如何在 VMware 中佈建虛擬裝置。
 author: alkohli
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
@@ -9,16 +9,16 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76272086"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple Virtual Array：在 VMware 中佈建
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -83,99 +83,99 @@ ms.locfileid: "76272086"
 3. 在 vSphere 用戶端中，選取左窗格 [詳細目錄] 區段中的 [ESXi 伺服器]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image2.png)
-4. 將 VMDK 上傳至 ESXi 伺服器。 瀏覽至右窗格中的 [組態] 索引標籤。 選取 [硬體] 下方的 [儲存體]。
+4. 將 VMDK 上傳至 ESXi 伺服器。 瀏覽至右窗格中的 [組態] **** 索引標籤。 選取 [硬體]**** 下方的 [儲存體]****。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
-5. 在右窗格的 [資料存放區]下方，選取您要上傳 VMDK 的資料存放區。 資料存放區必須要有足夠的可用空間來容納作業系統和資料磁碟。
+5. 在右窗格的 [資料存放區] **** 下方，選取您要上傳 VMDK 的資料存放區。 資料存放區必須要有足夠的可用空間來容納作業系統和資料磁碟。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image4.png)
-6. 按一下滑鼠右鍵並選取 [瀏覽資料存放區]。
+6. 按一下滑鼠右鍵並選取 [瀏覽資料存放區]****。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image5.png)
-7. 畫面會出現 [資料存放區瀏覽器] 視窗。
+7. 畫面會出現 [資料存放區瀏覽器] **** 視窗。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. 在工具列上，按一下 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) 圖示來建立新資料夾。 然後指定資料夾的名稱，並把該名稱記下來。 您稍後在建立虛擬機器時，將會使用該資料夾名稱 (建議的最佳做法)。 按一下 [確定]。
+8. 在工具列上，按一下 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) 圖示來建立新資料夾。 然後指定資料夾的名稱，並把該名稱記下來。 您稍後在建立虛擬機器時，將會使用該資料夾名稱 (建議的最佳做法)。 按一下 [確定]****。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
-9. [資料存放區瀏覽器] 的左窗格中會出現新的資料夾。
+9. [資料存放區瀏覽器]**** 的左窗格中會出現新的資料夾。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. 按一下 [上傳] 圖示 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png)，然後選取 [上傳檔案]。
+10. 按一下"上傳"![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png)圖示並選擇 **"上傳檔**"。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. 瀏覽並指向您已下載的 VMDK 檔案。 有兩個檔案。 選取要上傳的檔案。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image12m.png)
-12. 按一下 **[開啟]** 。 就會開始將 VMDK 檔案上傳至指定的資料存放區。 檔案可能需要幾分鐘的時間才能上傳完畢。
+12. 按一下 [開啟]****。 就會開始將 VMDK 檔案上傳至指定的資料存放區。 檔案可能需要幾分鐘的時間才能上傳完畢。
 13. 上傳完成之後，檔案就會出現在資料存放區裡您所建立的資料夾中。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image14.png)
 
     現在將第二個 VMDK 檔案上傳至相同的資料存放區。
-14. 返回 vSphere 用戶端視窗。 在選取 ESXi 伺服器之後按一下滑鼠右鍵，然後選取 [新增虛擬機器]。
+14. 返回 vSphere 用戶端視窗。 在選取 ESXi 伺服器之後按一下滑鼠右鍵，然後選取 [新增虛擬機器] ****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. 畫面會出限 [建立新虛擬機器] 視窗。 在 [設定] 頁面上，選取 [自訂] 選項。 按 [下一步]。
+15. 畫面會出限 [建立新虛擬機器] **** 視窗。 在 [設定]**** 頁面上，選取 [自訂]**** 選項。 按 [下一步]****。
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
-16. 在 [名稱和位置] 頁面上，指定虛擬機器的名稱。 這個名稱應該與您之前在步驟 8 中指定的資料夾名稱 (建議的最佳做法) 相同。
+16. 在 [名稱和位置]**** 頁面上，指定虛擬機器的名稱。 這個名稱應該與您之前在步驟 8 中指定的資料夾名稱 (建議的最佳做法) 相同。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image17.png)
-17. 在 [儲存體] 頁面上，選取您要用來佈建虛擬機器的資料存放區。
+17. 在 [儲存體] **** 頁面上，選取您要用來佈建虛擬機器的資料存放區。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. 在 [虛擬機器版本] 頁面上，選取 [虛擬機器版本: 8]。
+18. 在 [虛擬機器版本]**** 頁面上，選取 [虛擬機器版本: 8]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. 在 [客體作業系統] 頁面上，將 [客體作業系統] 選取為 [Windows]。 而對於 [版本]，請從下拉式清單中選取 [Microsoft Windows Server 2012 (64 位元)]。
+19. 在 [客體作業系統]**** 頁面上，將 [客體作業系統]**** 選取為 [Windows]****。 而對於 [版本]****，請從下拉式清單中選取 [Microsoft Windows Server 2012 (64 位元)]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. 在 [CPU] 頁面上，調整 [虛擬通訊端的數目] 和 [每個虛擬通訊端的核心數目]，以便讓 [核心總數] 至少為 4。 按 [下一步]。
+20. 在 [CPU]**** 頁面上，調整 [虛擬通訊端的數目]**** 和 [每個虛擬通訊端的核心數目]****，以便讓 [核心總數]**** 至少為 4。 按 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
-21. 在 [記憶體] 頁面上，將 RAM 指定為至少為 8 GB。 按 [下一步]。
+21. 在 [記憶體] **** 頁面上，將 RAM 指定為至少為 8 GB。 按 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
-22. 在 [網路] 頁面上，指定網路介面的數目。 最低需求是一個網路介面。
+22. 在 [網路] **** 頁面上，指定網路介面的數目。 最低需求是一個網路介面。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image23.png)
-23. 在 [SCSI 控制器] 頁面上，接受預設的 [LSI Logic SAS 控制器]。
+23. 在 [SCSI 控制器]**** 頁面上，接受預設的 [LSI Logic SAS 控制器]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. 在 [選取磁碟] 頁面上，選擇 [使用現有的虛擬硬碟]。 按 [下一步]。
+24. 在 [選取磁碟]**** 頁面上，選擇 [使用現有的虛擬硬碟]****。 按 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. 在 [選取現有的磁碟] 頁面的 [磁碟檔案路徑] 下方，按一下 [瀏覽]。 這會開啟 [瀏覽資料存放區] 對話方塊。 瀏覽至您之前上傳 VMDK 的位置。 因為您最初上傳回的兩個檔案已合併，所以您現在於資料存放區中只會看到一個檔案。 選取檔案，然後按一下 [確定]。 按 [下一步]。
+25. 在 [選取現有的磁碟]**** 頁面的 [磁碟檔案路徑]**** 下方，按一下 [瀏覽]****。 這會開啟 [瀏覽資料存放區] **** 對話方塊。 瀏覽至您之前上傳 VMDK 的位置。 因為您最初上傳回的兩個檔案已合併，所以您現在於資料存放區中只會看到一個檔案。 選取檔案，然後按一下 [確定] ****。 按 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
-26. 在 [進階選項] 頁面上，接受預設值並按一下 [下一步]。
+26. 在 [進階選項]**** 頁面上，接受預設值並按一下 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. 在 [準備完成] 頁面上，檢閱與新的虛擬機器相關的所有設定。 選取 [在完成之前編輯虛擬機器的設定]。 按一下 **[繼續]** 。
+27. 在 [準備完成] **** 頁面上，檢閱與新的虛擬機器相關的所有設定。 選取 [在完成之前編輯虛擬機器的設定]****。 按一下 **[繼續]**。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. 在 [虛擬機器屬性] 頁面的 [硬體] 索引標籤上尋找裝置的硬體。 選取 [新增硬碟]。 按一下 [新增]。
+28. 在 [虛擬機器屬性]**** 頁面的 [硬體]**** 索引標籤上尋找裝置的硬體。 選取 [新增硬碟] ****。 按一下 **[新增]**。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
-29. 您會看到 [新增硬體] 視窗。 在 [裝置類型] 頁面的 [選擇您想要新增的裝置類型] 下方，選取 [硬碟] 並按一下 [下一步]。
+29. 您會看到 [新增硬體]**** 視窗。 在 **"裝置類型"** 頁上，**在"選擇要添加的裝置類型**"下，選擇 **"硬碟**"，然後按一下"**下一步**"。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. 在 [選取磁碟] 頁面上，選擇 [建立新的虛擬磁碟]。 按 [下一步]。
+30. 在 [選取磁碟]**** 頁面上，選擇 [建立新的虛擬磁碟]****。 按 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. 在 [建立磁碟] 頁面上，將 [磁碟大小] 變更為至少 500 GB。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需有關要佈建之磁碟大小的詳細資訊，請檢閱[最佳作法文件](storsimple-ova-best-practices.md)中的＜調整大小＞一節。 在 [磁碟佈建] 下方，選取 [精簡佈建]。 按 [下一步]。
+31. 在 [建立磁碟]**** 頁面上，將 [磁碟大小]**** 變更為至少 500 GB。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 有關要預配的磁片大小的詳細資訊，請查看[最佳實踐文檔中](storsimple-ova-best-practices.md)的大小調整部分。 在 [磁碟佈建]**** 下方，選取 [精簡佈建]****。 按 [下一步]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
-32. 在 [進階選項] 頁面上，接受預設值。
+32. 在 [進階選項] **** 頁面上，接受預設值。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. 在 [準備完成] 頁面上，檢閱磁碟的各個選項。 按一下 [完成]。
+33. 在 [準備完成] **** 頁面上，檢閱磁碟的各個選項。 按一下 **[完成]**。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. 返回 [虛擬機器屬性] 頁面。 您的虛擬機器已新增一個硬碟。 按一下 [完成]。
+34. 返回 [虛擬機器屬性] 頁面。 您的虛擬機器已新增一個硬碟。 按一下 **[完成]**。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 在右窗格中選取您的虛擬機器後，流覽至 [**摘要**] 索引標籤。檢查虛擬機器的設定。
+35. 在右側窗格中選擇虛擬機器後，導航到 **"摘要"** 選項卡。查看虛擬機器的設置。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -188,10 +188,10 @@ ms.locfileid: "76272086"
 請執行下列步驟來啟動您的虛擬裝置，並連線到該虛擬裝置。
 
 #### <a name="to-start-the-virtual-device"></a>啟動虛擬裝置
-1. 啟動虛擬裝置。 在 vSphere 設定管理員中，選取左窗格中您的裝置，然後按一下滑鼠右鍵來開啟操作功能表。 選取 [電源]，然後選取 [開啟電源]。 此時您的虛擬機器應該會開機。 您可以在 vSphere 用戶端的 [最近的工作] 窗格底部檢視狀態。
+1. 啟動虛擬裝置。 在 vSphere 設定管理員中，選取左窗格中您的裝置，然後按一下滑鼠右鍵來開啟操作功能表。 選取 [電源]****，然後選取 [開啟電源]****。 此時您的虛擬機器應該會開機。 您可以在 vSphere 用戶端的 [最近的工作] **** 窗格底部檢視狀態。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 安裝工作將需要幾分鐘的時間才能完成。 裝置執行之後，流覽至 [**主控台**] 索引標籤。傳送 Ctrl + Alt + Delete 以登入裝置。 或者，您可以讓游標指向主控台視窗，然後按下 Ctrl+Alt+Insert。 預設使用者為 *StorSimpleAdmin*，預設密碼為 *Password1*。
+2. 安裝工作將需要幾分鐘的時間才能完成。 設備運行後，導航到**主控台**選項卡。發送 Ctrl_Alt_刪除以登錄到設備。 或者，您可以讓游標指向主控台視窗，然後按下 Ctrl+Alt+Insert。 預設使用者為 *StorSimpleAdmin*，預設密碼為 *Password1*。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. 基於安全性理由，裝置系統管理員密碼會在第一次登入時過期。 系統會提示您變更密碼。

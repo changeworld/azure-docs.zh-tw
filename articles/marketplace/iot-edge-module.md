@@ -1,20 +1,18 @@
 ---
 title: Azure IoT Edge 模組
 description: Azure Marketplace 中適用於應用程式和服務發行者的 IoT Edge 模組供應項目。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/22/2018
-ms.author: pabutler
-ms.openlocfilehash: db501c34a4418bc7b08b19105a9b28585288f877
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286144"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
 
@@ -46,17 +44,17 @@ IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  �
  
 **帳單選項**
 
-Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)] 計費選項。
+Marketplace 目前針對 IoT Edge 模組支援 [免費]**** 和 [自備授權 (BYOL)]**** 計費選項。
  
 **發佈選項**
 
-在所有情況下，IoT Edge 模組都應該選取 [交易] 發佈選項。  如需有關發佈選項的更多詳細資料，請參閱[選擇發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情況下，IoT Edge 模組都應該選取 [交易]**** 發佈選項。  如需有關發佈選項的更多詳細資料，請參閱[選擇發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
 
 ## <a name="eligibility-criteria"></a>適用性準則
 
 所有 Microsoft Azure Marketplace 合約和原則的條款都適用於 IoT Edge 模組供應項目。  此外，還有適用於 IoT Edge 模組的先決條件和技術需求。  
 
-**必要條件**
+**先決條件**
 
 若要將 IoT Edge 模組發佈至 Azure Marketplace，您必須滿足下列先決條件：
 
@@ -77,7 +75,7 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
 
 ## <a name="documentation-and-resources"></a>文件和資源
 
-[建立 IoT Edge 模組供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)專案--透過雲端發佈入口網站發佈新 IoT Edge 模組供應專案的步驟。
+[創建 IoT 邊緣模組產品 /](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)使用雲發佈門戶發佈新的 IoT Edge 模組產品的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

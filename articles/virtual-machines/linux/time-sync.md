@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1e459e96c128e20f44f1a5adcb18c5b1824c3bf5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c3571d9ba94e1803259457d473ed3f1669ea67ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534129"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330589"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中的 Linux VM 時間同步
 
@@ -31,11 +31,11 @@ Azure 受到執行 Windows Server 2016 之基礎結構的支援。 Windows Serve
 >
 > 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 電腦時鐘精確度的衡量方式，是依據電腦時鐘與國際標準時間 (UTC) 時間標準的接近程度。 UTC 是由多國的精準原子鐘樣本所定義；原子鐘在 300 年內只會誤差一秒。 但是直接讀取 UTC 需使用專用的硬體。 替代方式為系統將時間伺服器同步為 UTC，並從其他電腦存取以提供延展性和強固性。 每部電腦都有持續運作的時間同步服務，知道需使用哪些時間伺服器，且會定期檢查電腦時鐘是否需要修正，並視需要調整時間。 
 
-Azure 主機會與內部 Microsoft 時間伺服器同步，這些時間伺服器會透過 GPS 天線從 Microsoft 所屬的 Stratum 1 裝置擷取時間。 Azure 中的虛擬機器可以依賴其主機將準確的時間 (「主機時間」) 傳遞至 VM，也可以由 VM 直接從時間伺服器取得時間，或結合兩種方式。 
+Azure 主機會與內部 Microsoft 時間伺服器同步，這些時間伺服器會透過 GPS 天線從 Microsoft 所屬的 Stratum 1 裝置擷取時間。 Azure 中的虛擬機器可以依賴其主機將準確的時間 (「主機時間」**) 傳遞至 VM，也可以由 VM 直接從時間伺服器取得時間，或結合兩種方式。 
 
 在獨立的硬體上，Linux OS 只會在開機時讀取主機硬體時鐘。 之後，則會使用 Linux 核心中的插斷計時器來維護時鐘。 在此設定中，時鐘會隨時間慢慢移動。 在 Azure 上的較新 Linux 發行版本中，VM 可以使用 Linux Integration Services (LIS) 隨附的 VMICTimeSync 提供者，更頻繁地從主機查詢時鐘更新。
 
@@ -43,13 +43,13 @@ Azure 主機會與內部 Microsoft 時間伺服器同步，這些時間伺服器
 
 若沒有時間同步功能，VM 上的時鐘將會累積錯誤。 若只有一部 VM，除非工作負載需要高度精準的計時功能，否則不會造成顯著的影響。 但是在多數情況下，我們都有多部互相連接並使用時間來追蹤交易的 VM，而且整個部署中的時間必須保持一致。 當 VM 之間的時間有所不同，可能會產生下列影響：
 
-- 驗證將會失敗。 Kerberos 這類安全性通訊協定或憑證相依的技術仰賴整個系統中的時間維持一致。
+- 驗證將會失敗。 Kerberos 這類安全性通訊協定或憑證相依的技術，仰賴整個系統中的時間維持一致。
 - 如果記錄 (或其他資料) 認知的時間有所差異，很難想像系統會發生什麼問題。 同一個事件看起來可能像發生在不同時間，導致難以建立相互關聯。
 - 當時鐘有所誤差，計費功能也可能會計算錯誤。
 
 
 
-## <a name="configuration-options"></a>組態選項
+## <a name="configuration-options"></a>設定選項
 
 您通常可透過三種方式來為裝載於 Azure 中的 Linux VM 設定時間同步：
 
@@ -71,7 +71,7 @@ Azure 主機會與內部 Microsoft 時間伺服器同步，這些時間伺服器
 
 ### <a name="host-only"></a>僅限主機 
 
-由於 NTP 伺服器 (例如 time.windows.com 和 ntp.ubuntu.com) 為公用，與其同步時間需透過網際網路傳送流量。 不同的封包延遲可能會對時間同步的品質造成負面影響。藉由切換至僅限主機同步來移除 NTP，有時可以改善時間同步結果。
+由於 NTP 伺服器 (例如 time.windows.com 和 ntp.ubuntu.com) 為公用，與其同步時間需透過網際網路傳送流量。 不同的資料包延遲會對時間同步的品質產生負面影響。通過切換到僅主機同步來刪除 NTP 有時會提高時間同步結果。
 
 如果在使用預設設定時發生時間同步問題，切換為僅限主機時間同步為合理的解決方式。 嘗試使用僅限主機同步，確認是否可改善您 VM 上的時間同步結果。 
 
@@ -133,34 +133,35 @@ cat /sys/class/ptp/ptp0/clock_name
 
 ### <a name="chrony"></a>chrony
 
-在 Red Hat Enterprise Linux 和 CentOS 7.x 上，[chrony](https://chrony.tuxfamily.org/) 已設定為使用 PTP 來源時鐘。 網路時間通訊協定精靈 (ntpd) 不支援 PTP 來源，因此建議使用 **chronyd**。 若要啟用 PTP，請更新 **chrony.conf**。
+在 Ubuntu 19.10 和更高版本紅帽企業 Linux 和 CentOS 7.x 上，[計時](https://chrony.tuxfamily.org/)配置為使用 PTP 源時鐘。 較舊的 Linux 版本使用不支援 PTP 源的網路時間協定守護進程 （ntpd），而不是計時版本。 要在這些版本中啟用 PTP，必須使用以下代碼手動安裝和配置 chrony（在 chrony.conf 中）：
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-如需 Red Hat 和 NTP 的詳細資訊，請參閱 [Configure NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp) (設定 NTP)。 
+有關 Ubuntu 和 NTP 的詳細資訊，請參閱[時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。
 
-如需 chrony 的詳細資訊，請參閱 [Using chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony) (使用 chrony)。
+有關紅帽和 NTP 的詳細資訊，請參閱[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)。 
 
-如果同時啟用 chrony 和 TimeSync 來源，您可以將其中一個標示為**建議使用**，這會將其他來源設定為備份。 由於 NTP 服務不會更新時鐘的大幅誤差 (除非經過很長的一段時間)，因此 VMICTimeSync 從暫停的 VM 事件復原時鐘的速度會比 NTP 工具更快。
+有關計時的詳細資訊，請參閱[使用計時](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
 
-根據預設，chronyd 會加速或減緩系統時鐘，以修正任何時間漂移。 如果漂移變得太大，chrony 將無法修正漂移。 若要克服此情況，您可以變更 **/etc/chrony.conf**中的 `makestep` 參數，以在漂移超過指定的臨界值時強制執行 timesync。
+如果同時啟用了 chrony 和 TimeSync 源，則可以將一個源標記為**首選**，這將另一個源集為備份。 由於 NTP 服務不會更新時鐘的大幅誤差 (除非經過很長的一段時間)，因此 VMICTimeSync 從暫停的 VM 事件復原時鐘的速度會比 NTP 工具更快。
+
+預設情況下，計時加速或減慢系統時鐘以修復任何時間漂移。 如果漂移變得太大，色度無法修復漂移。 為了克服這種情況，可以`makestep`更改 **/etc/chrony.conf**中的參數，以強制時間同步（如果漂移超過指定的閾值）。
+
  ```bash
 makestep 1.0 -1
 ```
-在這裡，如果漂移大於1秒，chrony 將會強制執行時間更新。 若要套用變更，請重新開機 chronyd 服務。
+
+在這裡，如果漂移大於 1 秒，計時將強制時間更新。 要應用更改，請重新開機計時服務：
 
 ```bash
 systemctl restart chronyd
 ```
 
-
 ### <a name="systemd"></a>systemd 
 
-在 Ubuntu 和 SUSE 上，時間同步是使用 [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 設定。 如需 Ubuntu 的詳細資訊，請參閱 [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html) (時間同步)。 如需 SUSE 的詳細資訊，請參閱 [SUSE Linux Enterprise Server 12 SP3 Release Notes](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement) (SUSE Linux Enterprise Server 12 SP3 版本資訊) 中的第 4.5.8 節。
-
-
+在 19.10 之前的 SUSE 和 Ubuntu 版本中，使用[系統組態](https://www.freedesktop.org/wiki/Software/systemd/)時間同步。 有關 Ubuntu 的詳細資訊，請參閱[時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有關 SUSE 的詳細資訊，請參閱[SUSE Linux 企業伺服器 12 SP3 版本資訊](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 節。
 
 ## <a name="next-steps"></a>後續步驟
 

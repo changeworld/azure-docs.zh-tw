@@ -1,27 +1,27 @@
 ---
-title: 排程週期性工作和工作流程
-description: 在 Azure Logic Apps 中使用週期性觸發程式來排程和執行重複的自動化工作和工作流程
+title: 計畫定期任務和工作流
+description: 使用 Azure 邏輯應用中的定期觸發器計畫並運行重複的自動化任務和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445866"
 ---
-# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用週期觸發程式來建立、排程和執行循環性工作和工作流程
+# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>使用 Azure 邏輯應用中的定期觸發器創建、計畫和運行重複的任務和工作流
 
-若要定期執行特定排程上的工作、進程或作業，您可以使用內建的**迴圈排程**觸發程式來啟動邏輯應用程式工作流程。 您可以設定日期和時間，以及用來啟動工作流程的時區，以及重複該工作流程的週期。 如果因任何原因而遺漏了週期，此觸發程式會在下一個排定的間隔期間持續重複。 如需內建排程觸發程式和動作的詳細資訊，請參閱[使用 Azure Logic Apps 排程和執行循環性自動化、工作和工作流程](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
+要按特定計劃定期運行任務、進程或作業，可以使用內置**的"定期 - 計畫**"觸發器啟動邏輯應用工作流。 您可以設置日期和時間以及啟動工作流的時區以及重複該工作流的重複。 如果由於任何原因錯過了重複，則此觸發器在下一個計畫間隔繼續重複。 有關內置計畫觸發器和操作的詳細資訊，請參閱[使用 Azure 邏輯應用計畫並運行定期自動化、任務和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
-以下是此觸發程式支援的一些模式，以及更先進的週期和複雜的排程：
+以下是此觸發器支援的一些模式以及更高級的定期和複雜的計畫：
 
-* 立即執行，並每隔*n*秒、分鐘、小時、天、周或月重複一次。
+* 立即運行，每隔*n*秒、分鐘、小時、天、周或月重複一次。
 
-* 從特定的日期和時間開始，然後執行並重複每*n*秒、分鐘、小時、天、周或月。
+* 從特定的日期和時間開始，然後每隔*n*秒、分鐘、小時、數、周或月份運行和重複一次。
 
 * 每天執行並重複一次或多次，例如上午 8:00 和下午 5:00。
 
@@ -29,74 +29,74 @@ ms.locfileid: "75445866"
 
 * 每週執行並重複，但僅在特定的星期幾和時間，例如星期一到星期五的上午 8:00 和下午 5:00。
 
-如需此觸發程式與滑動視窗觸發程式之間的差異，或如需排程週期性工作流程的詳細資訊，請參閱[使用 Azure Logic Apps 排程和執行循環性的自動化工作、進程和工作流程](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
+有關此觸發器和滑動視窗觸發器之間的差異，或者有關計畫定期工作流的詳細資訊，請參閱使用 Azure[邏輯應用計畫並運行重複的自動化任務、進程和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
 > [!TIP]
-> 如果您想要觸發邏輯應用程式，並在未來只執行一次，請參閱[僅執行一次作業](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)。
+> 如果要觸發邏輯應用，並且將來只運行一次，請參閱[僅運行一次作業](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [邏輯應用程式](../logic-apps/logic-apps-overview.md)的基本知識。 如果您不熟悉邏輯應用程式，請瞭解[如何建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 關於[邏輯應用](../logic-apps/logic-apps-overview.md)的基本知識。 如果您是邏輯應用的新功能，請[瞭解如何創建第一個邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="add-recurrence-trigger"></a>新增迴圈觸發程式
+## <a name="add-recurrence-trigger"></a>添加重複觸發器
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 建立空白邏輯應用程式。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。 建立空白邏輯應用程式。
 
-1. 邏輯應用程式設計工具出現之後，請在 [搜尋] 方塊中，輸入 `recurrence` 作為篩選準則。 從觸發程式清單中，選取此觸發程式作為邏輯應用程式工作流程中的第一個步驟： **[週期**]
+1. 邏輯應用設計器顯示後，在搜索框中，輸入`recurrence`為篩選器。 從觸發器清單中，選擇此觸發器作為邏輯應用工作流中的第一步：**重複**
 
-   ![選取 [週期] 觸發程式](./media/connectors-native-recurrence/add-recurrence-trigger.png)
+   ![選擇"重複"觸發器](./media/connectors-native-recurrence/add-recurrence-trigger.png)
 
 1. 設定重複的間隔和頻率。 在此範例中，將這些屬性設定為每週執行工作流程。
 
    ![設定間隔和頻率](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | 屬性 | JSON 名稱 | 必要項 | 類型 | 說明 |
+   | 屬性 | JSON 名稱 | 必要 | 類型 | 描述 |
    |----------|-----------|----------|------|-------------|
-   | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p>- 月：1-16 個月 </br>- 天：1-500 天 </br>- 小時：1-12,000 個小時 </br>- 分鐘：1-72,000 分鐘 </br>- 秒：1-9,999,999 秒<p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
+   | **區間** | `interval` | 是 | 整數  | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p>- 月：1-16 個月 </br>- 天：1-500 天 </br>- 小時：1-12,000 個小時 </br>- 分鐘：1-72,000 分鐘 </br>- 秒：1-9,999,999 秒<p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
    | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
    ||||||
 
    > [!IMPORTANT]
-   > 當週期未指定 advanced 排程選項時，未來的週期會以上次執行時間為基礎。
-   > 這些週期的開始時間可能會因為一些因素（例如儲存體呼叫期間的延遲）而漂移。 若要確定您的邏輯應用程式不會錯過迴圈，特別是當頻率為天或更長時，請使用下列其中一個選項：
+   > 當定期未指定高級計畫選項時，將來的定期將基於上次運行時。
+   > 由於存儲調用期間的延遲等因素，這些重複的開始時間可能會漂移。 為了確保邏輯應用不會錯過重複，尤其是在頻率以天或更長時程表示時，請使用以下選項之一：
    > 
-   > * 提供週期的開始時間。
+   > * 提供重複的開始時間。
    > 
-   > * 使用 [**在這些時數**] 和 [**這些分鐘**數] 屬性來指定執行循環的時間和分鐘數。
+   > * 使用 **"At 這些小時**"和"**這些分鐘**"屬性指定運行重複的小時和分鐘。
    > 
-   > * 使用[滑動視窗觸發](../connectors/connectors-native-sliding-window.md)程式，而不是迴圈觸發程式。
+   > * 使用[滑動視窗觸發器](../connectors/connectors-native-sliding-window.md)，而不是"重複"觸發器。
 
-1. 若要設定 advanced 排程選項，請開啟 [**加入新的參數**] 清單。 您選取的任何選項都會出現在選取範圍後的觸發程式上。
+1. 要設置高級計畫選項，打開 **"添加新參數**清單"。 您選擇的任何選項在選擇後將顯示在觸發器上。
 
    ![進階排程選項](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | 屬性 | JSON 名稱 | 必要項 | 類型 | 說明 |
+   | 屬性 | JSON 名稱 | 必要 | 類型 | 描述 |
    |----------|-----------|----------|------|-------------|
    | **時區** | `timeZone` | 否 | String | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
-   | **開始時間** | `startTime` | 否 | String | 提供此格式的開始日期和時間： <p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來最多有49年，而且必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **開始時間** | `startTime` | 否 | String | 以此格式提供開始日期和時間： <p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您希望 2017 年 9 月 18 日下午 2：00，請指定"2017-09-18T14：00"並選擇時區，如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注：** 此開始時間在未來最多為 49 年，必須遵循[UTC 日期格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規範](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但沒有[UTC 偏移](https://en.wikipedia.org/wiki/UTC_offset)量。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    | **在這幾天內** | `weekDays` | 否 | 字串或字串陣列 | 如果您選取 [週]，可以選取想要在哪一天或哪幾天執行工作流程：**星期一**、**星期二**、**星期三**、**星期四**、**星期五**、**星期六**和**星期日** |
-   | **在這幾小時內** | `hours` | 否 | 整數或整數陣列 | 如果您選取 [天] 或 [周]，可以選取從0到23的一或多個整數，做為您要執行工作流程的一天中的時數。 <p><p>例如，如果您指定 "10"、"12" 和 "14"，則會在一天中取得上午10點、下午12點和下午2點，但會根據週期開始的時間計算該日的分鐘數。 若要設定一天的分鐘數，請**在 [這幾分鐘**的時間] 屬性指定的值。 |
+   | **在這幾小時內** | `hours` | 否 | 整數或整數陣列 | 如果選擇"Day"或"周"，則可以選擇 0 到 23 中的一個或多個整數作為要運行工作流的一天中的小時數。 <p><p>例如，如果指定"10"、"12"和"14"，則一天中的小時為上午 10 點、12 點和下午 2 點，但一天的分鐘數將根據重複開始的時間計算。 要設置一天的分鐘數，請指定 **"At 這些分鐘"** 屬性的值。 |
    | **在這幾分鐘內** | `minutes` | 否 | 整數或整數陣列 | 如果您選取 [天] 或 [週]，可以選取從 0 到 59 的一或多個整數，來表示想要在小時的哪幾個分鐘執行工作流程。 <p>例如，您可以指定 "30" 作為分鐘標記，然後使用上個範例代表一天中的整點，這樣就會得出上午 10:30、下午 12:30 及下午 2:30。 |
    |||||
 
-   例如，假設今天是 2017 年 9 月 4 日星期一。 下列迴圈觸發程式不會比開始日期和時間*快*引發，也就是2017年9月18日星期一上午8:00。 不過，重複排程已設定為只在星期一的上午 10:30、下午 12:30 和下午 2:30。 因此觸發程序第一次引發並建立邏輯應用程式工作流程執行個體的時間是在上午 10:30。 若要深入了解開始時間如何運作，請參閱這些[開始時間範例](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)。
+   例如，假設今天是 2017 年 9 月 4 日星期一。 以下"重複"觸發器不會*早于*開始日期和時間，即 2017 年 9 月 18 日星期一上午 8：00（PST）。 不過，重複排程已設定為只在星期一的上午 10:30、下午 12:30 和下午 2:30。 因此觸發程序第一次引發並建立邏輯應用程式工作流程執行個體的時間是在上午 10:30。 若要深入了解開始時間如何運作，請參閱這些[開始時間範例](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)。
 
-   未來則會在同一天的下午 12:30 和下午 2:30 執行。 每次重複都會建立自己的工作流程執行個體。 之後，整個排程會在下個星期一全部重複一次。 [*還有其他哪些範例重複？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
+   未來則會在同一天的下午 12:30 和下午 2:30 執行。 每次重複都會建立自己的工作流程執行個體。 之後，整個排程會在下個星期一全部重複一次。 [*還有其他哪些範例重複？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
 
    ![進階排程範例](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
 
    > [!NOTE]
    > 只有當您選取 [天] 或 [週] 作為頻率時，觸發程序才會顯示指定週期的預覽。
 
-1. 現在使用其他動作建立剩餘的工作流程。 如需您可以新增的其他動作，請參閱[Azure Logic Apps 的連接器](../connectors/apis-list.md)。
+1. 現在，使用其他操作構建剩餘的工作流。 有關可以添加的更多操作，請參閱[Azure 邏輯應用的連接器](../connectors/apis-list.md)。
 
-## <a name="workflow-definition---recurrence"></a>工作流程定義-週期
+## <a name="workflow-definition---recurrence"></a>工作流定義 - 重複
 
-在您的邏輯應用程式基礎工作流程定義中，使用 JSON，您可以使用您選擇的選項來查看[週期觸發程式定義](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)。 若要查看此定義，請在設計工具工具列上選擇 [程式**代碼視圖**]。 若要回到設計工具，請在設計工具工具列上選擇 [**設計師**]。
+在邏輯應用使用 JSON 的基礎工作流定義中，您可以使用您選擇的選項查看["定期觸發器"定義](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)。 要查看此定義，在設計器工具列上，請選擇 **"代碼"視圖**。 要返回到設計器，請選擇設計器工具列"**設計器**"。
 
-這個範例示範迴圈觸發程式定義可能在基礎工作流程定義中的外觀：
+此示例顯示定期觸發器定義在基礎工作流定義中的外觀：
 
 ``` json
 "triggers": {
@@ -127,5 +127,5 @@ ms.locfileid: "75445866"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用延遲動作暫停工作流程](../connectors/connectors-native-delay.md)
-* [Logic Apps 的連接器](../connectors/apis-list.md)
+* [使用延遲操作暫停工作流](../connectors/connectors-native-delay.md)
+* [適用於 Logic Apps 的連接器](../connectors/apis-list.md)

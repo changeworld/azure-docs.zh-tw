@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278528"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
+> * [電源外殼](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure CLI](cache-manage-cli.md)
 > 
 > 
@@ -322,7 +322,7 @@ ms.locfileid: "79278528"
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>調整 Azure Cache for Redis
-修改 `Set-AzRedisCache`、`Size` 或 `Sku` 屬性時，可使用 `ShardCount` 來調整 Azure Cache for Redis 執行個體。 
+修改 `Size`、`Sku` 或 `ShardCount` 屬性時，可使用 `Set-AzRedisCache` 來調整 Azure Cache for Redis 執行個體。 
 
 > [!NOTE]
 > 使用 PowerShell 調整快取，和從 Azure 入口網站調整快取有相同的限制和準則。 您可以調整具有下列限制的不同定價層。
@@ -529,7 +529,7 @@ ms.locfileid: "79278528"
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-若要重新產生快取的主要或次要金鑰，請呼叫 `New-AzRedisCacheKey` Cmdlet，並傳入名稱、資源群組，且針對 `Primary` 參數指定 `Secondary` 或 `KeyType`。 在下列範例中，會重新產生快取的次要存取金鑰。
+若要重新產生快取的主要或次要金鑰，請呼叫 `New-AzRedisCacheKey` Cmdlet，並傳入名稱、資源群組，且針對 `KeyType` 參數指定 `Primary` 或 `Secondary`。 在下列範例中，會重新產生快取的次要存取金鑰。
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 

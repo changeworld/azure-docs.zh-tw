@@ -1,6 +1,6 @@
 ---
-title: 針對 Linux VM 因 fstab 錯誤而啟動的問題進行疑難排解 |Microsoft Docs
-description: 說明為何無法啟動 Linux VM，以及如何解決問題。
+title: 排除 Linux VM 啟動問題，由於 fstab 錯誤 |微軟文檔
+description: 解釋為什麼 Linux VM 無法啟動以及如何解決問題。
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 868a0238092786d0999a6a41de71d30011bbef7a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245340"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351142"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>針對 Linux VM 因 fstab 錯誤而啟動的問題進行疑難排解
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>排除 Linux VM 啟動問題，由於 fstab 錯誤
 
-您無法使用安全殼層（SSH）連線來連接到 Azure Linux 虛擬機器（VM）。 當您在[Azure 入口網站](https://portal.azure.com/)上執行[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)功能時，會看到類似下列範例的記錄專案：
+無法使用安全外殼 （SSH） 連接連接到 Azure Linux 虛擬機器 （VM）。 在[Azure 門戶](https://portal.azure.com/)上運行[啟動診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)功能時，您將看到類似于以下示例的日誌條目：
 
 ## <a name="examples"></a>範例
 
-以下是可能錯誤的範例。
+以下是可能錯誤的示例。
 
-### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>範例 1：磁片是由 SCSI 識別碼裝載，而不是通用唯一識別碼（UUID）
+### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>示例 1：磁片由 SCSI ID 而不是通用唯一識別碼 （UUID） 裝載
 
 ```
 [K[[1;31m TIME [0m] Timed out waiting for device dev-incorrect.device.
 [[1;33mDEPEND[0m] Dependency failed for /data.
 [[1;33mDEPEND[0m] Dependency failed for Local File Systems.
 …
-Welcome to emergency mode! After logging in, type “journalctl -xb” to viewsystem logs, “systemctl reboot” to reboot, “systemctl default” to try again to boot into default mode.
+Welcome to emergency mode! After logging in, type "journalctl -xb" to viewsystem logs, "systemctl reboot" to reboot, "systemctl default" to try again to boot into default mode.
 Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>範例 2：CentOS 上遺失未連結的裝置
+### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>示例 2：CentOS 上缺少未連接的設備
 
 ```
 Checking file systems…
 fsck from util-linux 2.19.1
 Checking all file systems.
-/dev/sdc1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sdd1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sde1: nonexistent device (“nofail” fstab option may be used to skip this device)
+/dev/sdc1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sdd1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sde1: nonexistent device ("nofail" fstab option may be used to skip this device)
 
 [/sbin/fsck.ext3 (1) — /CODE] sck.ext3 -a /dev/sdc1
 fsck.ext3: No such file or directory while trying to open /dev/sdc1
@@ -67,14 +67,14 @@ e2fsck -b 8193 <device>
 [/sbin/fsck.ext3 (1) — /DATATEMP] fsck.ext3 -a /dev/sde1 fsck.ext3: No such file or directory while trying to open /dev/sde1
 ```
 
-### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>範例 3：VM 無法啟動，因為 fstab 設定錯誤，或磁片已不再連接
+### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>示例 3：由於 fstab 配置錯誤或磁片不再連接，VM 無法啟動
 
 ```
 The disk drive for /var/lib/mysql is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
 ```
 
-### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>範例 4：序列記錄專案顯示不正確的 UUID
+### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>示例 4：串列日誌條目顯示不正確的 UUID
 
 ```
 Checking filesystems
@@ -90,27 +90,63 @@ fsck.ext4: Unable to resolve UUID="<UUID>"
 *** when you leave the shell.
 *** Warning — SELinux is active
 *** Disabling security enforcement for system recovery.
-*** Run ‘setenforce 1’ to reenable.
+*** Run 'setenforce 1' to reenable.
 type=1404 audit(1428047455.949:4): enforcing=0 old_enforcing=1 auid=<AUID> ses=4294967295
 Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-如果檔案系統表格（fstab）語法不正確，或對應至 "/etc/fstab" 檔案中某個專案的必要資料磁片未附加至 VM，則可能會發生此問題。
+如果檔案系統表 （fstab） 語法不正確，或者映射到"/etc/fstab"檔中的條目所需的資料磁片未附加到 VM，則可能會出現此問題。
 
-## <a name="resolution"></a>解析度
+## <a name="resolution"></a>解決方案
 
-若要解決此問題，請使用適用于 Azure 虛擬機器的序列主控台，以緊急模式啟動 VM。 然後使用此工具來修復檔案系統。 如果未在您的 VM 上啟用序列主控台，請移至[修復 vm 離線](#repair-the-vm-offline)一節。
+要解決此問題，請使用 Azure 虛擬機器的串列主控台啟動緊急模式的 VM。 然後使用該工具修復檔案系統。 如果您的 VM 上未啟用串列主控台，請轉到["修復 VM 離線](#repair-the-vm-offline)"部分。
 
 ## <a name="use-the-serial-console"></a>使用序列主控台
 
-1. 連接到[序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
-2. 使用本機使用者和密碼登入系統。
+### <a name="using-single-user-mode"></a>使用單一使用者模式
+
+1. 連接到[串列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
+2. 使用串列主控台採用單使用者模式[單使用者模式](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+3. 一旦 vm 引導到單一使用者模式。 使用您最喜愛的文字編輯器打開 fstab 檔。 
+
+   ```
+   # nano /etc/fstab
+   ```
+
+4. 查看列出的檔案系統。 fstab 檔中的每一行都表示 VM 啟動時裝載的檔案系統。 有關 fstab 檔的語法的詳細資訊，運行 man fstab 命令。 要排除啟動故障，請查看每行，以確保其在結構和內容上都是正確的。
 
    > [!Note]
-   > 您無法在序列主控台中使用 SSH 金鑰來登入系統。
+   > * 每行上的欄位由定位字元或空格分隔。 空白行會遭到忽略。 具有數位記號 （#） 作為第一個字元的行是注釋。 注釋的行可以保留在 fstab 檔中，但不會處理它們。 我們建議您注釋您不確定要的 fstab 行，而不是刪除這些行。
+   > * 要恢復和啟動 VM，檔案系統分區應是唯一必需的分區。 VM 可能會遇到有關其他注釋分區的應用程式錯誤。 但是，VM 應該在沒有附加分區的情況下啟動。 以後可以取消注釋任何注釋行。
+   > * 我們建議您使用檔案系統分區的 UUID 在 Azure VM 上裝載資料磁片。 例如，運行以下命令：``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * 要確定檔案系統的 UUID，請運行 blkid 命令。 有關語法的詳細資訊，運行 man blkid 命令。
+   > * nofail 選項有助於確保 VM 啟動，即使檔案系統已損壞或啟動時檔案系統不存在也是如此。 我們建議您使用 fstab 檔中的 nofail 選項，以便在 VM 啟動的分區中發生錯誤後繼續啟動。
 
-3. 尋找指出磁片未裝載的錯誤。 在下列範例中，系統嘗試附加已不存在的磁片：
+5. 更改或注釋 fstab 檔中的任何不正確或不必要行，以使 VM 能夠正確啟動。
+
+6. 保存對 fstab 檔的更改。
+
+7. 使用以下命令重新開機 vm。
+   
+   ```
+   # reboot -f
+   ```
+> [!Note]
+   > 您還可以使用"ctrl_x"命令，該命令也會重新開機 vm。
+
+
+8. 如果條目注釋或修復成功，系統應在門戶中達到 bash 提示。 檢查是否可以連接到 VM。
+
+### <a name="using-root-password"></a>使用根密碼
+
+1. 連接到[串列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
+2. 使用本地使用者和密碼登錄系統。
+
+   > [!Note]
+   > 不能使用 SSH 金鑰在串列主控台中登錄到系統。
+
+3. 查找指示磁片未裝載的錯誤。 在下面的示例中，系統嘗試連接不再存在的磁片：
 
    ```
    [DEPEND] Dependency failed for /datadisk1.
@@ -123,40 +159,40 @@ Give root password for maintenance
    (or type Control-D to continue):
    ```
 
-4. 使用根密碼（以 Red Hat 為基礎的 Vm）來連線到 VM。
+4. 使用根密碼（基於紅帽的 VM）連接到 VM。
 
-5. 使用您慣用的文字編輯器來開啟 fstab 檔案。 掛接磁片之後，針對 Nano 執行下列命令：
+5. 使用您最喜愛的文字編輯器打開 fstab 檔。 安裝磁片後，運行 Nano 的以下命令：
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
    ```
 
-6. 檢查列出的檔案系統。 Fstab 檔案中的每一行表示在 VM 啟動時掛接的檔案系統。 如需 fstab 檔語法的詳細資訊，請執行 man fstab 命令。 若要疑難排解開始失敗，請檢查每一行，以確定它在結構和內容中都是正確的。
+6. 查看列出的檔案系統。 fstab 檔中的每一行都表示 VM 啟動時裝載的檔案系統。 有關 fstab 檔的語法的詳細資訊，運行 man fstab 命令。 要排除啟動故障，請查看每行，以確保其在結構和內容上都是正確的。
 
    > [!Note]
-   > * 每一行上的欄位會以定位字元或空格分隔。 會忽略空白行。 以數位記號（#）做為第一個字元的行是批註。 批註行可以保留在 fstab 檔案中，但不會進行處理。 我們建議您將不確定的 fstab 行批註，而不是移除行。
-   > * 為了讓 VM 能夠復原和啟動，檔案系統分割區應該是唯一需要的磁碟分割。 VM 可能會遇到關於其他批註資料分割的應用程式錯誤。 不過，VM 應該會在沒有其他磁碟分割的情況下啟動。 您稍後可以將任何批註行取消批註。
-   > * 建議您使用檔案系統磁碟分割的 UUID，將資料磁片掛接在 Azure Vm 上。 例如，執行下列命令： ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * 若要判斷檔案系統的 UUID，請執行 blkid 命令。 如需語法的詳細資訊，請執行 man blkid 命令。
-   > * Nofail 選項可協助確保即使檔案系統已損毀，或啟動時檔案系統不存在，VM 也會啟動。 我們建議您在 fstab 檔案中使用 nofail 選項，以便在 VM 啟動後不需要的分割區發生錯誤時，讓啟動繼續進行。
+   > * 每行上的欄位由定位字元或空格分隔。 空白行會遭到忽略。 具有數位記號 （#） 作為第一個字元的行是注釋。 注釋的行可以保留在 fstab 檔中，但不會處理它們。 我們建議您注釋您不確定要的 fstab 行，而不是刪除這些行。
+   > * 要恢復和啟動 VM，檔案系統分區應是唯一必需的分區。 VM 可能會遇到有關其他注釋分區的應用程式錯誤。 但是，VM 應該在沒有附加分區的情況下啟動。 以後可以取消注釋任何注釋行。
+   > * 我們建議您使用檔案系統分區的 UUID 在 Azure VM 上裝載資料磁片。 例如，運行以下命令：``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * 要確定檔案系統的 UUID，請運行 blkid 命令。 有關語法的詳細資訊，運行 man blkid 命令。
+   > * nofail 選項有助於確保 VM 啟動，即使檔案系統已損壞或啟動時檔案系統不存在也是如此。 我們建議您使用 fstab 檔中的 nofail 選項，以便在 VM 啟動的分區中發生錯誤後繼續啟動。
 
-7. 在 fstab 檔案中變更或批註掉任何不正確或不必要的行，讓 VM 能夠正確啟動。
+7. 更改或注釋 fstab 檔中的任何不正確或不必要行，以使 VM 能夠正確啟動。
 
-8. 將變更儲存至 fstab 檔案。
+8. 保存對 fstab 檔的更改。
 
 9. 重新啟動虛擬機器。
 
-10. 如果專案批註或修正成功，系統應該會在入口網站中到達 bash 提示。 檢查您是否可以連線到 VM。
+10. 如果條目注釋或修復成功，系統應在門戶中達到 bash 提示。 檢查是否可以連接到 VM。
 
-11. 當您執行 mount – a 命令來測試任何 fstab 變更時，請檢查您的掛接點。 如果沒有任何錯誤，您的掛接點應該是良好的。
+11. 通過運行裝載 +命令來測試任何 fstab 更改時，請檢查您的裝載點。 如果沒有錯誤，您的裝載點應該很好。
 
 ## <a name="repair-the-vm-offline"></a>修復離線的 VM
 
-1. 將 VM 的系統磁片做為資料磁片連結至復原 VM （任何運作中的 Linux VM）。 若要這樣做，您可以使用[CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，也可以使用[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自動設定復原 VM。
+1. 將 VM 的系統磁片作為資料磁片附加到恢復 VM（任何正常工作的 Linux VM）。 為此，可以使用[CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，也可以使用[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自動設置恢復 VM。
 
-2. 將系統磁片掛接為復原 VM 上的資料磁片之後，請在進行變更之前先備份 fstab 檔案，然後依照後續步驟更正 fstab 檔案。
+2. 將系統磁片作為資料磁片裝載到恢復 VM 上後，在進行更改之前備份 fstab 檔，然後按照後續步驟更正 fstab 檔。
 
-3.  尋找指出未裝載磁片的錯誤。 在下列範例中，系統嘗試附加已不存在的磁片：
+3.    查找指示磁片未裝載的錯誤。 在下面的示例中，系統嘗試連接不再存在的磁片：
 
     ```
     [DEPEND] Dependency failed for /datadisk1.
@@ -167,43 +203,43 @@ Give root password for maintenance
     Give root password for maintenance (or type Control-D to continue):
     ```
 
-4. 使用根密碼（以 Red Hat 為基礎的 Vm）來連線到 VM。
+4. 使用根密碼（基於紅帽的 VM）連接到 VM。
 
-5. 使用您慣用的文字編輯器來開啟 fstab 檔案。 掛接磁片之後，針對 Nano 執行下列命令。 請確定您使用的是位於掛接的磁片上的 fstab 檔案，而不是位於修復 VM 上的 fstab 檔案。
+5. 使用您最喜愛的文字編輯器打開 fstab 檔。 安裝磁片後，運行 Nano 的以下命令。 請確保正在處理位於裝載磁片上的 fstab 檔，而不是救援 VM 上的 fstab 檔。
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
    ```
 
-6. 檢查列出的檔案系統。 Fstab 檔案中的每一行表示在 VM 啟動時掛接的檔案系統。 如需 fstab 檔語法的詳細資訊，請執行 man fstab 命令。 若要疑難排解開始失敗，請檢查每一行，以確定它在結構和內容中都是正確的。
+6. 查看列出的檔案系統。 fstab 檔中的每一行都表示 VM 啟動時裝載的檔案系統。 有關 fstab 檔的語法的詳細資訊，運行 man fstab 命令。 要排除啟動故障，請查看每行，以確保其在結構和內容上都是正確的。
 
    > [!Note]
-   > * 每一行上的欄位會以定位字元或空格分隔。 會忽略空白行。 以數位記號（#）做為第一個字元的行是批註。 批註行可以保留在 fstab 檔案中，但不會進行處理。 我們建議您將不確定的 fstab 行批註，而不是移除行。
-   > * 為了讓 VM 能夠復原和啟動，檔案系統分割區應該是唯一需要的磁碟分割。 VM 可能會遇到關於其他批註資料分割的應用程式錯誤。 不過，VM 應該會在沒有其他磁碟分割的情況下啟動。 您稍後可以將任何批註行取消批註。
-   > * 建議您使用檔案系統磁碟分割的 UUID，將資料磁片掛接在 Azure Vm 上。 例如，執行下列命令： ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * 若要判斷檔案系統的 UUID，請執行 blkid 命令。 如需語法的詳細資訊，請執行 man blkid 命令。 請注意，您要復原的磁片現在已掛接在新的 VM 上。 雖然 Uuid 應該一致，但此 VM 上的裝置分割區識別碼（例如，"/dev/sda1"）是不同的。 在非系統 VHD 上，原始失敗 VM 的檔案系統磁碟分割無法[使用 CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)來提供給復原 VM。
-   > * Nofail 選項可協助確保即使檔案系統已損毀，或啟動時檔案系統不存在，VM 也會啟動。 我們建議您在 fstab 檔案中使用 nofail 選項，以便在 VM 啟動後不需要的分割區發生錯誤時，讓啟動繼續進行。
+   > * 每行上的欄位由定位字元或空格分隔。 空白行會遭到忽略。 具有數位記號 （#） 作為第一個字元的行是注釋。 注釋的行可以保留在 fstab 檔中，但不會處理它們。 我們建議您注釋您不確定要的 fstab 行，而不是刪除這些行。
+   > * 要恢復和啟動 VM，檔案系統分區應是唯一必需的分區。 VM 可能會遇到有關其他注釋分區的應用程式錯誤。 但是，VM 應該在沒有附加分區的情況下啟動。 以後可以取消注釋任何注釋行。
+   > * 我們建議您使用檔案系統分區的 UUID 在 Azure VM 上裝載資料磁片。 例如，運行以下命令：``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * 要確定檔案系統的 UUID，請運行 blkid 命令。 有關語法的詳細資訊，運行 man blkid 命令。 請注意，要恢復的磁片現在安裝在新的 VM 上。 儘管 UUD 應該一致，但設備分區 ID（例如，"/dev/sda1"）在此 VM 上是不同的。 位於非系統 VHD 上的原始故障 VM 的檔案系統分區[無法使用 CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)的恢復 VM。
+   > * nofail 選項有助於確保 VM 啟動，即使檔案系統已損壞或啟動時檔案系統不存在也是如此。 我們建議您使用 fstab 檔中的 nofail 選項，以便在 VM 啟動的分區中發生錯誤後繼續啟動。
 
-7. 在 fstab 檔案中變更或批註掉任何不正確或不必要的行，讓 VM 能夠正確啟動。
+7. 更改或注釋 fstab 檔中的任何不正確或不必要行，以使 VM 能夠正確啟動。
 
-8. 將變更儲存至 fstab 檔案。
+8. 保存對 fstab 檔的更改。
 
 9. 重新開機虛擬機器或重建原始 VM。
 
-10. 如果專案批註或修正成功，系統應該會在入口網站中到達 bash 提示。 檢查您是否可以連線到 VM。
+10. 如果條目注釋或修復成功，系統應在門戶中達到 bash 提示。 檢查是否可以連接到 VM。
 
-11. 當您執行 mount – a 命令來測試任何 fstab 變更時，請檢查您的掛接點。 如果沒有任何錯誤，您的掛接點應該是良好的。
+11. 通過運行裝載 +命令來測試任何 fstab 更改時，請檢查您的裝載點。 如果沒有錯誤，您的裝載點應該很好。
 
-12. 卸載並卸離原始虛擬硬碟，然後從原始系統磁片建立 VM。 若要這樣做，您可以使用[CLI 命令](troubleshoot-recovery-disks-linux.md)或[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)，以供您用來建立復原 VM。
+12. 卸載並分離原始虛擬硬碟，然後從原始系統磁片創建 VM。 為此，可以使用[CLI 命令](troubleshoot-recovery-disks-linux.md)或 VM[修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)（如果使用這些命令創建恢復 VM）。
 
-13. 再次建立 VM，而且您可以透過 SSH 連線到它之後，請採取下列動作：
-    * 在復原期間，檢查任何已變更或已標記為批註的 fstab 行。
-    * 請確定您使用的是 UUID，以及適當的 nofail 選項。
-    * 在重新開機 VM 之前，請先測試任何 fstab 變更。 若要這麼做，請使用下列命令： ``$ sudo mount -a``
-    * 建立已更正 fstab 檔案的額外複本，以便在未來的復原案例中使用。
+13. 再次創建 VM 並且可以通過 SSH 連接到 VM 後，請執行以下操作：
+    * 查看在恢復期間更改或注釋掉的任何 fstab 行。
+    * 確保您使用的 UUID 和 nofail 選項正確。
+    * 在重新開機 VM 之前測試任何 fstab 更改。 為此，請使用以下命令：``$ sudo mount -a``
+    * 創建已更正的 fstab 檔的其他副本，以便將來恢復方案使用。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [將 OS 磁片連結至具有 Azure CLI 2.0 的復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [使用 Azure 入口網站將 OS 磁片連接至復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
 

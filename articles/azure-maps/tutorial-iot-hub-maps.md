@@ -1,20 +1,20 @@
 ---
 title: 教學課程：執行 IoT 空間分析 | Microsoft Azure 地圖服務
 description: 整合 IoT 中樞與 Microsoft Azure 地圖服務 API。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223705"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333968"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 

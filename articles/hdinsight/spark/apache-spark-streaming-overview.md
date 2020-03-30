@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的 Spark 串流
-description: 如何在 HDInsight Spark 叢集上使用 Apache Spark 串流應用程式。
+description: 如何在 HDInsight Spark 群集上使用 Apache Spark 流式處理應用程式。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
 ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74406271"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 串流概觀
@@ -29,9 +29,9 @@ Spark 串流會使用名為 DStream 的*離散化資料流*表示傳入資料的
 
 DStream 會在原始事件資料的頂端提供抽象層。
 
-先以單一事件為例，例如從連接的控溫器讀取溫度。 當此事件抵達 Spark 串流應用程式時，事件會以可靠的方式儲存，並在其中複寫到多個節點。 此容錯功能可確保任何單一節點的失敗都不會導致事件遺失。 Spark 核心使用的資料結構會將資料散布到叢集中多個節點上，其中每個節點通常都會在記憶體內部維護自己的資料，以達到最好的效能。 此資料結構稱為*彈性分散式資料集* (resilient distributed dataset, RDD)。
+先以單一事件為例，例如從連接的控溫器讀取溫度。 當此事件到達 Spark 流式處理應用程式時，該事件以可靠的方式存儲，在多個節點上複製該事件。 此容錯確保任何單個節點的故障不會導致事件丟失。 Spark 核心使用的資料結構會將資料散布到叢集中多個節點上，其中每個節點通常都會在記憶體內部維護自己的資料，以達到最好的效能。 此資料結構稱為*彈性分散式資料集* (resilient distributed dataset, RDD)。
 
-每個 RDD 皆代表在使用者定義的時間範圍 (稱為「批次間隔」) 內收集的事件。 當每個批次間隔過去後，新的 RDD 就會產生，並包含該間隔中的所有資料。 一組連續的 RDD 會被收集到 DStream。 例如，如果批次間隔長度為一秒，您的 DStream 就會每秒發出包含一個 RDD 的批次，該 RDD 會包含在這一秒期間內嵌的所有資料。 處理 DStream 時，溫度事件就會出現在這些批次的其中一個。 Spark 串流應用程式會處理包含事件的批次，並在最後處理儲存在每個 RDD 中的資料。
+每個 RDD 皆代表在使用者定義的時間範圍 (稱為「批次間隔」**) 內收集的事件。 當每個批次間隔過去後，新的 RDD 就會產生，並包含該間隔中的所有資料。 一組連續的 RDD 會被收集到 DStream。 例如，如果批次間隔長度為一秒，您的 DStream 就會每秒發出包含一個 RDD 的批次，該 RDD 會包含在這一秒期間內嵌的所有資料。 處理 DStream 時，溫度事件就會出現在這些批次的其中一個。 Spark 串流應用程式會處理包含事件的批次，並在最後處理儲存在每個 RDD 中的資料。
 
 ![DStream 與溫度事件的範例](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
@@ -145,7 +145,7 @@ stream.foreachRDD { rdd =>
 ssc.start()
 ```
 
-啟動上述應用程式之後，請等候約30秒。  然後，您可以定期查詢資料框架，以查看目前在批次中的一組值，例如使用此 SQL 查詢：
+啟動上述應用程式後等待約 30 秒。  然後，您可以定期查詢 DataFrame 以查看批次處理中存在的當前值集，例如使用此 SQL 查詢：
 
 ```sql
 %%sql
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 輸出結果顯示如下：
 
-| 值 | 分析 |
+| value | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -167,7 +167,7 @@ SELECT * FROM demo_numbers
 
 ## <a name="sliding-windows"></a>滑動時間範圍
 
-若要在 DStream 上執行某一段時間的彙總計算 (例如取得過去 2 秒的平均溫度)，您可以使用 Spark 串流隨附的「滑動時間範圍」作業。 滑動時間範圍具有持續時間 (時間範圍長度) 及間隔，系統會在該期間內對該時間範圍的內容進行評估 (滑動間隔)。
+若要在 DStream 上執行某一段時間的彙總計算 (例如取得過去 2 秒的平均溫度)，您可以使用 Spark 串流隨附的「滑動時間範圍」** 作業。 滑動時間範圍具有持續時間 (時間範圍長度) 及間隔，系統會在該期間內對該時間範圍的內容進行評估 (滑動間隔)。
 
 滑動時間範圍可以重疊，例如，您可以定義一個長度為 2 秒且每秒滑動一次的時間範圍。 這意謂著每次您執行彙總計算時，該時間範圍都會包含前一個時間範圍最後一秒的資料，以及下一秒的任何新資料。
 
@@ -222,7 +222,7 @@ ssc.start()
 
 在第一分鐘之後，會有 12 個項目 - 在該時間範圍內收集的兩個批次中，每一個批次各有 6 個項目。
 
-| 值 | 分析 |
+| value | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158
@@ -249,7 +249,7 @@ ssc.start()
 
 ![部署 Spark 串流應用程式](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-您也可以藉由 LIVY 端點，使用 GET 要求來檢查所有應用程式的狀態。 最後，您可以對 LIVY 端點發出 DELETE 要求，來終止執行中的應用程式。 如需 LIVY API 的詳細資訊，請參閱[使用 Apache LIVY 執行遠端作業](apache-spark-livy-rest-interface.md)
+您也可以藉由 LIVY 端點，使用 GET 要求來檢查所有應用程式的狀態。 最後，您可以對 LIVY 端點發出 DELETE 要求，來終止執行中的應用程式。 如需 LIVY API 的詳細資料，請參閱[使用 Apache LIVY 執行遠端作業](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>後續步驟
 

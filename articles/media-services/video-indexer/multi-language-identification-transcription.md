@@ -1,7 +1,7 @@
 ---
-title: 使用影片索引子自動識別和轉譯多語言內容
+title: 使用視頻索引子自動識別和轉錄多語言內容
 titleSuffix: Azure Media Services
-description: 本主題示範如何使用影片索引子來自動識別和轉譯多語言內容。
+description: 本主題演示如何使用視頻索引子自動識別和轉錄多語言內容。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72968747"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>自動識別並轉譯多語言內容（預覽）
+# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>自動識別和轉錄多語言內容（預覽）
 
-影片索引子支援多語言內容中的自動語言識別和轉譯。 此程式牽涉到從音訊的不同區段自動識別說話語言，傳送要轉譯之媒體檔案的每個區段，並將轉譯方式合併回一個整合轉譯。 
+視頻索引子支援多語言內容中的自動語言識別和轉錄。 此過程涉及從音訊自動識別不同段中的口語，發送要轉錄的每個介質檔的段，並將轉錄合併回一個統一轉錄。 
 
-## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>選擇使用入口網站編制索引時的多語系識別
+## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>使用門戶索引時選擇多語言標識
 
-您可以在上傳影片並為其編制索引時選擇**多語言偵測**。 或者，您也可以在重新編制影片索引時選擇**多語言偵測**。 下列步驟說明如何重新編制索引：
+在上傳視頻並編制索引視頻時，您可以選擇**多語言檢測**。 或者，您可以在重新索引視頻時選擇**多語言檢測**。 以下步驟描述了如何重新編制索引：
 
 1. 瀏覽至[影片索引子](https://vi.microsoft.com/)網站並登入。
-1. 移至 [連結**庫**] 頁面，將滑鼠停留在您想要重新編制索引的影片名稱上。 
-1. 按一下右下角的 [**重新編制索引] 影片**按鈕。 
-1. 在 [**重新編制索引] 影片**對話方塊中，從 [**影片來來源語言**] 下拉式方塊中選擇 [**多語言偵測**]。
+1. 轉到 **"庫"** 頁面，並將滑鼠懸停在要重新索引的視頻名稱上。 
+1. 在右下角，按一下 **"重新索引視頻**"按鈕。 
+1. 在 **"重新索引視頻"對話方塊**中，從 **"視頻來源語言**"下拉清單中選擇**多語言檢測**。
 
-    * 當影片以多國語言編制索引時，[深入解析] 頁面將會包含該選項，並會出現額外的深入解析類型，讓使用者能夠查看哪些區段是轉譯的語言「語音語言」。
-    * 您可以從多語言文字記錄中完整取得所有語言的翻譯。
-    * 所有其他見解會以偵測到的主要語言顯示，也就是最常出現在音訊中的語言。
-    * 播放播放機上的隱藏式字幕也適用于多國語言。
+    * 當視頻索引為多語言時，見解頁將包含該選項，並會出現其他見解類型，使使用者能夠查看以哪種語言"口語"轉錄的分段。
+    * 從多語言成績單中可以完全翻譯所有語言。
+    * 所有其他見解將以檢測到的主語言顯示- 即音訊中出現最多的語言。
+    * 播放機上的隱藏字幕也可使用多語言版本。
 
 ![入口網站體驗](./media/multi-language-identification-transcription/portal-experience.png)
 
-## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>選擇使用 API 編制索引時的多語系識別
+## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>使用 API 索引時選擇多語言標識
 
-使用 API 編制影片的索引或重新[編制](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)索引時，請選擇 `sourceLanguage` 參數中的 [`multi-language detection`] 選項。
+使用 API 對視頻編制索引或[重新編制索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)時，在`multi-language detection`參數中選擇該`sourceLanguage`選項。
 
 ### <a name="model-output"></a>模型輸出
 
-此模型會以一份清單來抓取影片中偵測到的所有語言
+模型將在一個清單中檢索視頻中檢測到的所有語言
 
 ```json
 "sourceLanguage": null,
@@ -53,7 +53,7 @@ ms.locfileid: "72968747"
 ],
 ```
 
-此外，轉譯區段中的每個實例都將包含其轉譯的語言
+此外，轉錄部分中的每個實例都將包括轉錄它的語言
 
 ```json
 {
@@ -73,21 +73,21 @@ ms.locfileid: "72968747"
 },
 ```
 
-## <a name="guidelines-and-limitations"></a>指南和限制
+## <a name="guidelines-and-limitations"></a>指導方針和限制
 
-* 一組支援的語言：英文、法文、德文、西班牙文。
-* 支援具有最多三種支援語言的多語言內容。
-* 如果音訊包含上述支援清單以外的語言，則會產生非預期的結果。
-* 每種語言偵測的最社區段長度–15秒。
-* 語言偵測位移平均為3秒。
-* 語音應該是連續的。 在語言之間經常替代可能會影響模型效能。
-* 非原生喇叭的語音可能會影響模型效能（例如，當說話者使用其原生吐和切換到其他語言時）。
-* 此模型是設計用來辨識具有合理聲場的自發交談語音（而非語音命令、唱歌等等）。
-* 專案建立和編輯目前無法供多語言影片使用。
-* 使用多語言偵測時，無法使用自訂語言模型。
-* 不支援新增關鍵字。
-* 匯出隱藏式輔助字幕檔案時，將不會出現語言指示。
-* 更新文字記錄 API 不支援多種語言的檔案。
+* 支援語言集：英語、法語、德語、西班牙文。
+* 支援最多包含三種受支援語言的多語言內容。
+* 如果音訊包含上面支援清單以外的語言，則結果是意外的。
+* 每種語言檢測的段長度最小 = 15 秒。
+* 語言檢測偏移量平均為 3 秒。
+* 演講是連續的。 語言之間的頻繁交替可能會影響模型的性能。
+* 非母語人士的語音可能會影響模型性能（例如，當消費者使用母語並切換到其他語言時）。
+* 該模型旨在識別具有合理音訊聲學（而不是語音命令、唱歌等）的自發對話語音。
+* 專案創建和編輯目前不適用於多語言視頻。
+* 使用多語言檢測時，自訂語言模型不可用。
+* 不支援添加關鍵字。
+* 匯出隱藏字幕檔時，語言指示將不會顯示。
+* 更新腳本 API 不支援多種語言檔。
 
 ## <a name="next-steps"></a>後續步驟
 

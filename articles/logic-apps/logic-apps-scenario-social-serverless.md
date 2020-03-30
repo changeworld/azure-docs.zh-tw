@@ -1,5 +1,5 @@
 ---
-title: 建立 customer insights 儀表板
+title: 創建客戶洞察儀表板
 description: 使用 Azure Logic Apps 與 Azure Functions 來建置客戶儀表板，以管理客戶的意見反應、社交媒體資料和其他項目
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980431"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure Logic Apps 與 Azure Functions 來建立串流的客戶深入解析儀表板
@@ -46,21 +46,21 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 若要偵測某些文字後的情感，您可以使用 [Azure 認知服務](https://azure.microsoft.com/services/cognitive-services/)。
 
-1. 在邏輯應用程式設計工具中的觸發程序之下，選擇 [新增步驟]。
+1. 在邏輯應用程式設計工具中的觸發程序之下，選擇 [新增步驟]****。
 
-2. 尋找 [文字分析] 連接器。
+2. 尋找 [文字分析]**** 連接器。
 
-3. 選取 [偵測情感] 動作。
+3. 選取 [偵測情感]**** 動作。
 
 4. 如果出現提示，請提供適用於文字分析服務的有效認知服務金鑰。
 
-5. 在 [要求本文] 下，選取 [推文文字] 欄位，以提供推文文字作為分析的輸入。
+5. 在 [要求本文]**** 下，選取 [推文文字]**** 欄位，以提供推文文字作為分析的輸入。
 
 取得推文資料與推文的深入解析之後，您現在可以使用其他數個相關的連接器以及其動作：
 
 * **Power BI - 將資料列新增至串流資料集**︰在 Power BI 儀表板上檢視傳入的推文。
-* **Azure Data Lake - 附加檔案**︰將客戶資料新增至要納入分析作業的 Azure Data Lake 資料集。
-* **SQL - 新增資料列**︰將資料儲存在資料庫中，以供日後擷取。
+* **Azure 資料湖 - 追加檔**：將客戶資料添加到 Azure 資料湖資料集以包括在分析作業中。
+* **SQL - 添加行**：將資料存儲在資料庫中以便以後檢索。
 * **Slack - 傳送訊息**︰通知 Slack 通道有關可能需要有所行動的負面意見反應。
 
 您也可以建立 Azure 函式，以便對資料執行自訂處理。 
@@ -79,11 +79,11 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 ## <a name="add-azure-function-to-logic-app"></a>將 Azure 函式新增至邏輯應用程式
 
-1. 在邏輯應用程式設計工具中的 [偵測情感] 動作下，選擇 [新增步驟]。
+1. 在邏輯應用程式設計工具中的 [偵測情感]**** 動作下，選擇 [新增步驟]****。
 
 2. 尋找 **Azure Functions** 連接器，然後選取您建立的函式。
 
-3. 在 [要求本文] 下，選取 [推文文字]。
+3. 在 [要求本文]**** 下，選取 [推文文字]****。
 
 ![已設定的 Azure Function 步驟][2]
 
@@ -91,20 +91,20 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 若要檢閱目前或先前任何應用程式邏輯的執行，您可以在 Azure 入口網站或 Visual Studio 中，或是透過 Azure REST API 和 SDK，使用 Azure Logic Apps 提供的多種偵錯和監視功能。
 
-若要輕鬆地測試邏輯應用程式，請在邏輯應用程式設計工具中選擇 [執行觸發程序]。 觸發程序會根據您指定的排程，對推文進行輪詢，直到找到符合準則的推文。 執行進行時，設計工具會顯示該執行的即時檢視。
+若要輕鬆地測試邏輯應用程式，請在邏輯應用程式設計工具中選擇 [執行觸發程序]****。 觸發程序會根據您指定的排程，對推文進行輪詢，直到找到符合準則的推文。 執行進行時，設計工具會顯示該執行的即時檢視。
 
 若要在 Visual Studio 或 Azure 入口網站中檢視之前的執行記錄： 
 
-* 開啟 Visual Studio Cloud Explorer。 尋找邏輯應用程式，開啟應用程式的捷徑功能表。 選取 [開啟執行歷程記錄]。
+* 開啟 Visual Studio Cloud Explorer。 尋找邏輯應用程式，開啟應用程式的捷徑功能表。 選取 [開啟執行歷程記錄]****。
 
   > [!TIP]
   > 如果您在 Visual Studio 2019 中沒有此命令，請檢查您是否有最新的 Visual Studio 更新。
 
-* 在 Azure 入口網站中，尋找您的邏輯應用程式。 在邏輯應用程式功能表上，選擇 [概觀]。 
+* 在 Azure 入口網站中，尋找您的邏輯應用程式。 在邏輯應用程式功能表上，選擇 [概觀]****。 
 
 ## <a name="create-automated-deployment-templates"></a>建立自動部署範本
 
-建立邏輯應用程式解決方案之後，您可以擷取您的應用程式並將其當作 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)，部署至世界上任何 Azure 區域。 您可以使用這項功能來修改參數，以建立應用程式的不同版本，以及將您的解決方案整合至 Azure Pipelines。 您也可以將 Azure Functions 納入部署範本中，以便將整個解決方案與所有相依性當作單一範本來管理。 瞭解如何將[邏輯應用程式部署自動化](logic-apps-azure-resource-manager-templates-overview.md)。
+建立邏輯應用程式解決方案之後，您可以擷取您的應用程式並將其當作 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)，部署至世界上任何 Azure 區域。 您可以使用這項功能來修改參數，以建立應用程式的不同版本，以及將您的解決方案整合至 Azure Pipelines。 您也可以將 Azure Functions 納入部署範本中，以便將整個解決方案與所有相依性當作單一範本來管理。 瞭解如何[自動執行邏輯應用部署](logic-apps-azure-resource-manager-templates-overview.md)。
 
 如需 Azure 函式的部署範本範例，請查看 [Azure 快速入門範本存放庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)。
 

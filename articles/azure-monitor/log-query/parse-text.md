@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672441"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>剖析 Azure 監視器記錄中的文字資料
@@ -136,16 +136,16 @@ MyCustomCSVLog_CL
 ## <a name="parse-predefined-structures-in-a-query"></a>剖析查詢中預先定義的結構
 如果您的資料採用已知的結構設定格式，您可以使用 [Kusto 查詢語言](/azure/kusto/query/)中的其中一種函式，剖析預先定義的結構：
 
-- [JSON](/azure/kusto/query/parsejsonfunction)
+- [Json](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
-- [URL](/azure/kusto/query/parseurlfunction)
+- [Url](/azure/kusto/query/parseurlfunction)
 - [URL 查詢](/azure/kusto/query/parseurlqueryfunction)
-- [檔案路徑](/azure/kusto/query/parsepathfunction)
+- [檔路徑](/azure/kusto/query/parsepathfunction)
 - [使用者代理程式](/azure/kusto/query/parse-useragentfunction)
 - [版本字串](/azure/kusto/query/parse-versionfunction)
 
-下列範例查詢會剖析 _AzureActivity_ 資料表 (JSON 結構) 的 [屬性] 欄位。 它會將結果儲存到稱為 _parsedProp_ 的動態屬性，其中包括 JSON 中的個別命名值。 這些值用來篩選和彙總查詢結果。
+下列範例查詢會剖析 _AzureActivity_ 資料表 (JSON 結構) 的 [屬性]__ 欄位。 它會將結果儲存到稱為 _parsedProp_ 的動態屬性，其中包括 JSON 中的個別命名值。 這些值用來篩選和彙總查詢結果。
 
 ```Kusto
 AzureActivity

@@ -1,107 +1,109 @@
 ---
-title: 監視 Azure 備份受保護的工作負載
-description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份工作負載的監視和通知功能。
+title: 監視 Azure 備份保護的工作負荷
+description: 在本文中，瞭解使用 Azure 門戶的 Azure 備份工作負荷的監視和通知功能。
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294929"
 ---
-# <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
+# <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負荷
 
-Azure 備份根據備份需求和基礎結構拓撲（內部部署與 Azure）提供多個備份解決方案。 所有的備份使用者或系統管理員應該都會看到所有解決方案的情況，而且預期會在重要案例中收到通知。 本文詳細說明 Azure 備份服務所提供的監視和通知功能。
+Azure 備份基於備份要求和基礎結構拓撲（本地備份與 Azure）提供多個備份解決方案。 任何備份使用者或管理員都應查看所有解決方案中發生的情況，並期望在重要方案中收到通知。 本文詳細介紹了 Azure 備份服務提供的監視和通知功能。
 
-## <a name="backup-jobs-in-recovery-services-vault"></a>復原服務保存庫中的備份作業
+## <a name="backup-jobs-in-recovery-services-vault"></a>恢復服務保存庫中的備份作業
 
-Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視和警示功能。 在復原服務保存庫設定中，[**監視**] 區段會提供內建的作業和警示。
+Azure 備份為 Azure 備份保護的工作負載提供內置監視和警報功能。 在"恢復服務"保存庫設置中，"**監視**"部分提供內置作業和警報。
 
-![RS 保存庫內建監視](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
+![RS 保存庫內置監控](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
 
-當執行諸如設定備份、備份、還原、刪除備份等作業時，就會產生工作。
+執行配置備份、備份、還原、刪除備份等操作時生成作業。
 
-下列 Azure 備份解決方案的作業如下所示：
+此處顯示了以下 Azure 備份解決方案中的作業：
 
 - Azure VM 備份
 - Azure 檔案備份
-- Azure 工作負載備份，例如 SQL
+- Azure 工作負載備份，如 SQL 和 SAP HANA
 - Azure 備份代理程式 (MAB)
 
-系統不會顯示來自 System Center Data Protection Manager （SC-DPM）、Microsoft Azure 備份 Server （MABS）的作業。
+不會顯示系統中心資料保護管理器 （SC-DPM）、Microsoft Azure 備份伺服器 （MABS） 中的作業。
 
 > [!NOTE]
-> Azure 工作負載（例如 Azure Vm 中的 SQL 備份）有大量的備份作業。 例如，記錄備份可以每隔15分鐘執行一次。 因此，針對這類資料庫工作負載，只會顯示使用者觸發的作業。 不會顯示已排程的備份作業。
+> Azure 工作負荷（如 Azure VM 中的 SQL 和 SAP HANA 備份）具有大量備份作業。 例如，記錄備份可以每 15 分鐘運行一次。 因此，對於此類資料庫工作負載，僅顯示使用者觸發的操作。 不顯示計畫的備份操作。
 
-## <a name="backup-alerts-in-recovery-services-vault"></a>復原服務保存庫中的備份警示
+## <a name="backup-alerts-in-recovery-services-vault"></a>恢復服務保存庫中的備份警報
 
-警示主要是通知使用者，讓他們可以採取相關動作的情況。 [**備份警示**] 區段會顯示 Azure 備份服務所產生的警示。 這些警示是由服務所定義，使用者無法自訂建立任何警示。
+警報主要是通知使用者以便他們採取相關操作的情況。 "**備份警報"** 部分顯示 Azure 備份服務生成的警報。 這些警報由服務定義，使用者無法自訂創建任何警報。
 
-### <a name="alert-scenarios"></a>警示案例
+### <a name="alert-scenarios"></a>警報方案
 
-下列案例是由服務定義為打斷案例。
+以下方案由服務定義為可警報方案。
 
 - 備份/還原失敗
 - 備份成功但有 Azure 備份代理程式 (MAB) 的警告
-- 使用 [刪除資料] 停止保護 [保留資料]/[停止保護]
+- 通過保留資料/停止資料保護停止保護
 
-### <a name="exceptions-when-an-alert-is-not-raised"></a>未引發警示時的例外狀況
-
-當警示不會在失敗時引發時，有幾個例外狀況，它們是：
-
-- 使用者已明確取消正在執行的作業
-- 作業失敗，因為另一個備份作業正在進行中（在此不會採取任何動作，因為我們只需要等待前一個作業完成）
-- VM 備份作業失敗，因為備份的 Azure VM 已不存在
-
-上述例外狀況的設計來自于瞭解這些作業的結果（主要由使用者觸發）會立即顯示在入口網站/PS/CLI 用戶端上。 因此，使用者會立即察覺並不需要通知。
-
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>下列 Azure 備份解決方案的警示如下所示
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>此處顯示了以下 Azure 備份解決方案中的警報
 
 - Azure VM 備份
 - Azure 檔案備份
-- SQL 之類的 Azure 工作負載備份
+- Azure 工作負載備份，如 SQL、SAP HANA
 - Azure 備份代理程式 (MAB)
 
 > [!NOTE]
-> 這裡不會顯示來自 System Center Data Protection Manager （SC-DPM）、Microsoft Azure 備份 Server （MABS）的警示。
+> 此處不顯示來自系統中心資料保護管理器 （SC-DPM）、Microsoft Azure 備份伺服器 （MABS） 的警報。
+
+### <a name="consolidated-alerts"></a>合併警報
+
+對於 Azure 工作負載備份解決方案（如 SQL 和 SAP HANA），可以非常頻繁地生成記錄備份（根據策略，最多每 15 分鐘生成一次）。 因此，記錄備份失敗也可能非常頻繁（最多每 15 分鐘一次）。 在這種情況下，如果針對每次故障發生發出警報，最終使用者將不堪重負。 因此，將發送第一次事件的警報，如果後續失敗是由於同一根本原因，則不會生成進一步的警報。 第一個警報將更新為失敗計數。 但是，如果使用者停用了警報，則下一次發生將觸發另一個警報，這將被視為該事件的第一個警報。 這是 Azure 備份如何對 SQL 和 SAP HANA 備份執行警報整合。
+
+### <a name="exceptions-when-an-alert-is-not-raised"></a>未引發警報時的異常
+
+當未在發生故障時引發警報時，很少有例外情況。 其中包括：
+
+- 使用者顯式取消正在運行的作業
+- 作業失敗，因為另一個備份作業正在進行中（此處沒有任何操作，因為我們必須等待上一個作業完成）
+- VM 備份作業失敗，因為備份的 Azure VM 不再存在
+- [合併警報](#consolidated-alerts)
+
+上述異常的設計基於以下理解，即這些操作的結果（主要是使用者觸發）會立即顯示在門戶/PS/CLI 用戶端上。 因此，使用者會立即知道，不需要通知。
 
 ### <a name="alert-types"></a>警示類型
 
-根據警示嚴重性，警示可以定義為下列三種類型：
+根據警示嚴重性，警報可以定義三種類型：
 
-- **重大**：原則是，任何備份或復原失敗（已排程或使用者觸發）都會導致產生警示，並顯示為重大警示，以及破壞性作業，例如刪除備份。
-- **警告**：如果備份作業成功，但有幾個警告，則會列為警告警示。
-- **資訊**：從今天起，Azure 備份服務不會產生任何資訊警示。
+- **嚴重**：原則上，任何備份或恢復失敗（計畫或使用者觸發）都將導致警報的生成，並顯示為嚴重警報以及破壞性操作，如刪除備份。
+- **警告**：如果備份操作成功但警告很少，則它們被列為警告警報。
+- **資訊：** 截至目前，Azure 備份服務不會生成任何資訊警報。
 
-## <a name="notification-for-backup-alerts"></a>備份警示的通知
-
-> [!NOTE]
-> 通知設定只能透過 Azure 入口網站來完成。 不支援 PS/CLI/REST API/Azure Resource Manager 範本支援。
-
-一旦產生警示，就會通知使用者。 Azure 備份透過電子郵件提供內建通知機制。 其中一個可以指定個別的電子郵件地址或通訊群組清單，以便在產生警示時收到通知。 您也可以選擇是否要取得每個個別警示的通知，或以每小時摘要將其分組，然後收到通知。
-
-![RS 保存庫內建電子郵件通知](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+## <a name="notification-for-backup-alerts"></a>備份警報通知
 
 > [!NOTE]
-> SQL 備份的警示將會合並，而且只會在第一次出現時傳送電子郵件。 但是，如果使用者已停用警示，則下一次發生時將會觸發另一封電子郵件。
+> 通知的配置只能通過 Azure 門戶完成。 不支援 PS/CLI/REST API/Azure 資源管理器範本支援。
 
-當設定通知時，您會收到歡迎或簡介電子郵件。 這會確認當警示引發時，Azure 備份可以傳送電子郵件給這些位址。<br>
+引發警報後，將通知使用者。 Azure 備份通過電子郵件提供了內置通知機制。 可以指定單個電子郵件地址或通訊群組清單，以便生成警報時收到通知。 您還可以選擇是為每個警報收到通知，還是將它們分組到每小時摘要中，然後收到通知。
 
-如果 [頻率] 設定為 [每小時摘要]，而且在一小時內引發警示並加以解決，則不會成為即將到來的每小時摘要的一部分。
+![RS Vault 內置電子郵件通知](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+
+配置通知後，您將收到歡迎或介紹性電子郵件。 這確認 Azure 備份可以在引發警報時向這些位址發送電子郵件。<br>
+
+如果頻率設置為每小時摘要，並在一小時內引發並解決警報，則該頻率將不是即將進行的每小時摘要的一部分。
 
 > [!NOTE]
 >
-> - 如果執行**具有刪除資料的停止保護**之類的破壞性作業，則會產生警示，並將電子郵件傳送給訂用帳戶擁有者、系統管理員和共同管理員，即使未針對復原服務保存庫設定通知也一樣。
-> - 若要設定成功作業的通知，請使用[Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)。
+> - 如果執行破壞性操作（如**使用刪除資料的停止保護**），則會發出警報，併發送電子郵件給訂閱擁有者、管理員和共同管理員，即使未為恢復服務保存庫配置通知也是如此。
+> - 要為成功作業配置通知，請使用[日誌分析](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)。
 
-## <a name="inactivating-alerts"></a>將警示
+## <a name="inactivating-alerts"></a>停用警報
 
-若要停用/解決作用中警示，您可以按一下對應至您想要停用之警示的清單專案。 這會開啟一個畫面，顯示有關警示的詳細資訊，並在頂端出現 [停用] 按鈕。 按一下此按鈕會將警示的狀態變更為「非作用中」。 您也可以在與該警示對應的清單專案上按一下滑鼠右鍵，然後選取 [停用]，以停用警示。
+要停用/解析活動警報，可以按一下與要停用的警報對應的清單項。 這將打開一個螢幕，顯示有關警報的詳細資訊，頂部有"停用"按鈕。 按一下此按鈕會將警報的狀態更改為"非活動"。 您還可以通過按右鍵與該警報對應的清單項並選擇"停用"來停用警報。
 
-![RS Vault 警示](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+![RS Vault 警報停用](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Azure 監視器監視 Azure 備份工作負載](backup-azure-monitoring-use-azuremonitor.md)
+[使用 Azure 監視器監視 Azure 備份工作負荷](backup-azure-monitoring-use-azuremonitor.md)

@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
-description: 瞭解如何將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
+title: 使用 PowerShell 將 Azure 防火牆配置遷移到 Azure 防火牆策略（預覽版）
+description: 瞭解如何將 Azure 防火牆配置遷移到 Azure 防火牆策略（預覽）
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443103"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>使用 Powershell 將 Azure 防火牆設定遷移至 Azure 防火牆原則（預覽）
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>使用 Powershell 將 Azure 防火牆配置遷移到 Azure 防火牆策略（預覽版）
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-您可以使用 Azure PowerShell 腳本，將現有的 Azure 防火牆設定遷移至 Azure 防火牆原則資源。 接著，您可以使用 Azure 防火牆管理員來部署原則。
+可以使用 Azure PowerShell 腳本將現有的 Azure 防火牆配置遷移到 Azure 防火牆策略資源。 然後，可以使用 Azure 防火牆管理器來部署策略。
 
-`AZFWMigrationScript.ps1` 腳本會分別為 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 建立具有三個 RuleCollectionGroup 物件的 FirewallPolicy。 
+該`AZFWMigrationScript.ps1`腳本分別創建具有三個規則集合組物件的防火牆策略，分別用於應用程式規則集合、網路規則集合和 NatRule 集合。 
 
-RuleCollectionGroup 是適用于未來擴充性之規則集合的新最上層群組。 建議使用上述預設值，並自動從入口網站進行。
+規則集合組是規則集合的新頂級分組，用於將來的擴充性。 建議使用上述預設值，並從門戶自動完成。
 
-腳本的開頭會定義來源防火牆名稱和資源群組，以及目標原則名稱和位置。 視您的組織的需要變更這些值。
+腳本的開頭定義源防火牆名稱和資源組以及目標策略名稱和位置。 根據需要更改這些值，以適合您的組織。
 
 ## <a name="migration-script"></a>遷移腳本
 
-修改下列腳本以遷移防火牆設定。
+修改以下腳本以遷移防火牆配置。
 
 ```azurepowershell
 #Input params to be modified as needed
@@ -161,4 +161,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure 防火牆管理員部署： [Azure 防火牆管理員預覽版部署總覽](deployment-overview.md)。
+瞭解有關 Azure 防火牆管理器部署的詳細資訊[：Azure 防火牆管理器預覽部署概述](deployment-overview.md)。

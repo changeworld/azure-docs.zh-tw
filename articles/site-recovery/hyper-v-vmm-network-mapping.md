@@ -1,5 +1,5 @@
 ---
-title: 關於 Hyper-v （含 VMM）與 Site Recovery 的網路對應
+title: 關於帶網站恢復的 Hyper-V（使用 VMM）網路映射
 description: 說明如何使用 Azure Site Recovery 對 (VMM 雲端所管理的) Hyper-V VM 的災害復原設定網路對應。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082565"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>準備「Hyper-V VM 災害復原至 Azure」的網路對應
@@ -53,7 +53,7 @@ ms.locfileid: "74082565"
 
 以下是說明這項機制的範例。 讓我們以具有兩個位置 (紐約和芝加哥) 的組織為例。
 
-<bpt id="p1">**</bpt>Location<ept id="p1">**</ept> | **VMM 伺服器** | **VM 網路** | **對應至**
+**位置** | **VMM 伺服器** | **VM 網路** | **對應至**
 ---|---|---|---
 紐約 | VMM-NewYork| VMNetwork1-NewYork | 對應至 VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | 未對應
@@ -78,7 +78,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 ### <a name="logical-and-vm-network-settings"></a>邏輯和 VM 網路設定
 
-<bpt id="p1">**</bpt>Location<ept id="p1">**</ept> | **邏輯網路** | **相關聯的 VM 網路**
+**位置** | **邏輯網路** | **相關聯的 VM 網路**
 ---|---|---
 紐約 | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 芝加哥 | LogicalNetwork1-Chicago | VMNetwork1-Chicago
@@ -92,7 +92,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 可用
  | GoldCloud1 | GoldCloud2 | 可用
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 尚未提供
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 無法使用
  | GoldCloud1 | GoldCloud2 | 可用
 
 
@@ -104,7 +104,7 @@ VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 尚未提供
 若要了解容錯回復 (反向複寫) 時發生的狀況，讓我們假設 VMNetwork1-NewYork 對應到 VMNetwork1-Chicago，並包含下列設定。
 
 
-**VM** | **已連線至 VM 網路**
+**Vm** | **已連線至 VM 網路**
 ---|---
 VM1 | VMNetwork1-Network
 VM2 (VM1 的複本) | VMNetwork1-Chicago

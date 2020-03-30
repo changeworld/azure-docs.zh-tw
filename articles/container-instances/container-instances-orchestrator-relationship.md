@@ -1,19 +1,19 @@
 ---
-title: 容器實例和容器協調流程
+title: 容器實例和容器業務流程
 description: 了解 Azure 容器執行個體與容器 Orchestrator 的互動方式。
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533669"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器執行個體和容器 Orchestrator
 
-由於規模較小和應用程式方向的緣故，容器很適合用於敏捷式傳遞環境和微服務式架構。 自動執行和管理大量容器以及其互動方式的工作稱為「協調流程」。 熱門容器協調器包括 Kubernetes、DC/OS 和 Docker Swarm。
+由於規模較小和應用程式方向的緣故，容器很適合用於敏捷式傳遞環境和微服務式架構。 自動執行和管理大量容器以及其互動方式的工作稱為「協調流程」**。 熱門容器協調器包括 Kubernetes、DC/OS 和 Docker Swarm。
 
 Azure 容器執行個體提供了一些基本的協調流程平台排程功能。 但未涵蓋這些平台所提供的較高價值服務，因此事實上可與這些平台互補。 本文說明 Azure 容器執行個體所能處理的項目範圍，以及完整的容器 Orchestrator 如何與其互動。
 
@@ -52,11 +52,11 @@ Orchestrator 可以直接排程使用 Azure 容器執行個體的其他容器，
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>範例實作：Azure Kubernetes Service (AKS) 的虛擬節點
 
-若要快速調整 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) 叢集中的應用程式工作負載，您可以使用在 Azure 容器執行個體中動態建立的「虛擬節點」。 虛擬節點能夠進行在 ACI 與 AKS 叢集中執行的 pod 之間的網路通訊。 
+若要快速調整 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) 叢集中的應用程式工作負載，您可以使用在 Azure 容器執行個體中動態建立的「虛擬節點」**。 虛擬節點能夠進行在 ACI 與 AKS 叢集中執行的 pod 之間的網路通訊。 
 
 虛擬節點目前支援 Linux 容器執行個體。 使用 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2047545)，開始使用虛擬節點。
 
-虛擬節點會使用開放原始碼[虛擬 Kubelet][aci-connector-k8s]來模擬 Kubernetes [Kubelet][kubelet-doc] ，方法是註冊為具有無限容量的節點。 虛擬 Kubelet 會將 pod 的建立[分派為 Azure][pod-doc]容器實例中的容器群組。
+虛擬節點會藉由註冊為無限容量的節點，進而使用開放原始碼 [Virtual Kubelet][aci-connector-k8s] 來模擬 Kubernetes [kubelet][kubelet-doc]。 Virtual Kubelet 會將 [pod][pod-doc] 的建立分派為 Azure 容器執行個體中的容器群組。
 
 請參閱 [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) 專案，以取得將 Kubernetes API 擴充到無伺服器容器平台的其他範例。
 

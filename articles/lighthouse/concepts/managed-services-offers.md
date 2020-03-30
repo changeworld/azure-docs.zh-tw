@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace 中的受控服務供應項目
 description: 受控服務供應項目能允許服務提供者在 Azure Marketplace 中向客戶銷售資源管理供應項目。
-ms.date: 12/16/2019
+ms.date: 03/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d6e39f753736c0582e9d91870a99b66ae41255b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500795"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Marketplace 中的受控服務供應項目
 
-此文章說明 [Azure Marketplace](https://azuremarketplace.microsoft.com) 中的新 [受控服務] 供應項目類型。 受控服務供應項目可讓您搭配 Azure 委派的資源管理向客戶提供資源管理服務。 您可以向所有潛在客戶提供這些供應項目，或僅向一或多個特定客戶提供。 由於您會直接向客戶收取與這些受控服務相關的費用，因此 Microsoft 不會向您收取任何費用。
+此文章說明 [Azure Marketplace](https://azuremarketplace.microsoft.com) 中的新 [受控服務]**** 供應項目類型。 受控服務供應項目可讓您搭配 Azure 委派的資源管理向客戶提供資源管理服務。 您可以向所有潛在客戶提供這些供應項目，或僅向一或多個特定客戶提供。 由於您會直接向客戶收取與這些受控服務相關的費用，因此 Microsoft 不會向您收取任何費用。
 
 ## <a name="understand-managed-services-offers"></a>了解受控服務供應項目
 
@@ -22,7 +22,7 @@ ms.locfileid: "75453576"
 
 ## <a name="public-and-private-offers"></a>公用和私人供應項目
 
-每個受控服務供應項目都包含一或多個方案。 方案可以是私用或公用。 
+每個受控服務供應項目都包含一或多個方案。 計畫可以是私有的，也可以是公開的。 
 
 如果您想要將供應項目限制為僅提供特定客戶使用，則可以發佈私人方案。 當您這麼做時，該方案只能針對由您提供的特定訂用帳戶識別碼購買。 如需詳細資訊，請參閱[私人供應項目](../../marketplace/private-offers.md) \(部分機器翻譯\)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "75453576"
 如有需要，您可以在相同的供應項目中同時包含公用與私人方案。
 
 > [!IMPORTANT]
-> 方案發行為公開之後，您就無法將它變更為私用。 若要控制哪些客戶可以接受您的供應專案和委派資源，請使用私用方案。 有了公用方案，您就不能將可用性限制在特定客戶或甚至是特定數目的客戶（不過，如果您選擇這樣做，則可以完全停止銷售方案）。 當客戶接受供應專案之後，目前沒有任何機制可以拒絕或移除委派，雖然您可以隨時聯繫客戶，並要求他們[移除您的存取權](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 計畫一旦公開發布，您就無法將其更改為私有。 要控制哪些客戶可以接受您的報價並委派資源，請使用私人計畫。 使用公共計畫時，您無法將可用性限制為特定客戶，甚至限制特定數量的客戶（儘管如果您選擇這樣做，您可以完全停止銷售計畫）。 只有在發佈產品/服務時，在**角色定義**中包含"**授權"** 設置為["託管服務註冊分配刪除角色"時](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，才能在客戶接受產品/服務後取消對[委派的存取權限](../how-to/onboard-customer.md#remove-access-to-a-delegation)。 您也可以聯繫客戶，要求他們[刪除您的存取權限](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 ## <a name="publish-managed-service-offers"></a>發佈受控服務供應項目
 
@@ -40,4 +40,4 @@ ms.locfileid: "75453576"
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Azure 委派的資源管理](azure-delegated-resource-management.md)與[跨租用戶管理體驗](cross-tenant-management-experience.md)。
-- [將受控服務供應項目發佈](../how-to/publish-managed-services-offers.md)到 Azure Marketplace。
+- 向 Azure 應用商店[發佈託管服務產品/](../how-to/publish-managed-services-offers.md)服務。

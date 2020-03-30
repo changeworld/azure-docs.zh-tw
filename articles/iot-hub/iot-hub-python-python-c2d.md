@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110428"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中樞傳送雲端到裝置訊息 (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置和一個解決方案後端進行可靠且安全的雙向通訊。 將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範如何建立 iot 中樞、在其中布建裝置身分識別，以及撰寫模擬裝置應用程式的程式碼，以傳送裝置到雲端的訊息。
+Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置和一個解決方案後端進行可靠且安全的雙向通訊。 將[遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)快速入門顯示如何創建 IoT 中心、在其中預配設備標識以及編寫發送設備到雲消息的類比設備應用。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-本教學課程是[以將遙測從裝置傳送至 IoT 中樞為](quickstart-send-telemetry-python.md)基礎。 這會說明如何：
+本教程基於[將遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)。 這會說明如何：
 
 * 從您的解決方案後端，透過 IoT 中樞將雲端到裝置訊息傳送給單一裝置。
 
 * 接收裝置上的雲端到裝置訊息。
 
-* 從您的解決方案後端，針對從 IoT 中樞傳送至裝置的訊息要求傳遞通知（*意見*反應）。
+* 從解決方案後端請求從 IoT 中心發送到設備的消息的傳遞確認 （*回饋*）。
 
-如需有關雲端到裝置訊息的詳細資訊，請前往[IoT 中樞開發人員指南](iot-hub-devguide-messaging.md)。
+您可以在[IoT 中心開發人員指南](iot-hub-devguide-messaging.md)中找到有關雲到設備消息的詳細資訊。
 
 在本教學課程結尾，您會執行兩個 Python 主控台應用程式：
 
-* **SimulatedDevice.py**，這是在[將遙測資料從裝置傳送到 iot 中樞時](quickstart-send-telemetry-python.md)所建立的應用程式修改版本，可連線到您的 iot 中樞並接收雲端到裝置的訊息。
+* **SimulatedDevice.py**，在[將遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)中創建的應用程式的修改版本，該中心連接到 IoT 中心並接收雲到設備的消息。
 
-* **SendCloudToDeviceMessage.py**，它會透過 IoT 中樞將雲端到裝置訊息傳送至模擬裝置應用程式，然後接收其傳遞通知。
+* **SendCloudToDeviceMessage.py**，它通過 IoT 中心向類比設備應用發送雲到設備的消息，然後接收其傳遞確認。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -45,7 +45,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* 請確定您的防火牆已開啟埠8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 在某些公司和教育網路環境中，可能會封鎖此埠。 如需有關此問題的詳細資訊和解決方法，請參閱[連接到 IoT 中樞（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定，該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模擬的裝置應用程式中接收訊息
 
@@ -53,7 +53,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
 
 1. 使用文字編輯器，建立 **SimulatedDevice.py** 檔案。
 
-2. 在 `import`SimulatedDevice.py**檔案開頭新增下列** 陳述式和變數：
+2. 在 **SimulatedDevice.py** 檔案開頭新增下列 `import` 陳述式和變數：
 
    ```python
     import threading
@@ -62,7 +62,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
     RECEIVED_MESSAGES = 0
     ```
 
-3. 將下列程式碼新增至 **SimulatedDevice.py** 檔案。 將 "{deviceConnectionString}" 預留位置值取代為您在將[遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門中所建立的裝置連接字串：
+3. 將下列程式碼新增至 **SimulatedDevice.py** 檔案。 將"[設備連接String]"預留位置值替換為您在"[將遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)快速啟動"中創建的設備的設備連接字串：
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -112,19 +112,19 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
 
 7. 儲存並關閉 **SimulatedDevice.py** 檔案。
 
-## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
+## <a name="get-the-iot-hub-connection-string"></a>獲取 IoT 中心連接字串
 
-在本文中，您會建立後端服務，透過您在[將遙測從裝置傳送至 iot 中樞](quickstart-send-telemetry-python.md)中建立的 IoT 中樞傳送雲端到裝置訊息。 若要傳送雲端到裝置的訊息，您的服務需要**服務連接**許可權。 根據預設，每個 IoT 中樞都會使用名為**服務**的共用存取原則來建立，以授與此許可權。
+在本文中，您將創建一個後端服務，通過在[將遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)中創建的 IoT 中心發送雲到設備消息。 要發送雲到設備的消息，您的服務需要**服務連接**許可權。 預設情況下，每個 IoT 中心都使用授予此許可權的名為**服務的**共用訪問策略創建。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>傳送雲端到裝置訊息
 
-在本節中，您會建立一個 Python 主控台應用程式，將雲端到裝置訊息傳送到模擬裝置應用程式。 您需要在將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門中所新增裝置的裝置識別碼。 您也需要先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的 iot 中樞連接字串。
+在本節中，您會建立一個 Python 主控台應用程式，將雲端到裝置訊息傳送到模擬裝置應用程式。 您需要在["將遙測資料從設備發送到 IoT 中心](quickstart-send-telemetry-python.md)快速啟動"中添加的設備的裝置識別碼。 您還需要以前在[獲取 IoT 中心連接字串中複製的 IoT 中心連接字串](#get-the-iot-hub-connection-string)。
 
 1. 使用文字編輯器，建立 **SendCloudToDeviceMessage.py** 檔案。
 
-2. 在 `import`SendCloudToDeviceMessage.py**檔案開頭新增下列** 陳述式和變數：
+2. 在 **SendCloudToDeviceMessage.py** 檔案開頭新增下列 `import` 陳述式和變數：
 
     ```python
     import random
@@ -139,7 +139,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. 將下列程式碼新增至 **SendCloudToDeviceMessage.py** 檔案。 使用您先前記下的 IoT 中樞連接字串和裝置識別碼來取代 "{iot hub connection string}" 和 "{device id}" 預留位置值：
+3. 將下列程式碼新增至 **SendCloudToDeviceMessage.py** 檔案。 將"[iot 中心連接字串]"和"[設備 id]"預留位置值替換為您之前注意到的 IoT 中心連接字串和裝置識別碼：
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
