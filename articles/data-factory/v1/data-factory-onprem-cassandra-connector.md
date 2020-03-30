@@ -1,5 +1,5 @@
 ---
-title: 使用 Data Factory 從 Cassandra 移動資料
+title: 使用資料工廠從卡珊多拉移動資料
 description: 了解如何使用 Azure Data Factory 從內部部署的 Cassandra 資料庫移動資料。
 services: data-factory
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281297"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure Data Factory 從內部部署的 Cassandra 資料庫移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](data-factory-onprem-cassandra-connector.md)
+> * [版本 1](data-factory-onprem-cassandra-connector.md)
 > * [第 2 版 (目前的版本)](../connector-cassandra.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Cassandra 連接器](../connector-cassandra.md)。
 
-本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 Cassandra 資料庫移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
+本文說明如何使用 Azure Data Factory 中的「複製活動」，從內部部署的 Cassandra 資料庫移動資料。 它基於["資料移動活動"](data-factory-data-movement-activities.md)一文，其中概述了複製活動的資料移動。
 
-您可以將資料從內部部署的 Cassandra 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格。 Data Factory 目前只支援將資料從 Cassandra 資料存放區移到其他資料存放區，而不支援將資料從其他資料存放區移到 Cassandra 資料存放區。
+您可以將資料從內部部署的 Cassandra 資料存放區複製到任何支援的接收資料存放區。 有關複製活動支援為接收器支援的資料存儲的清單，請參閱[支援資料存儲](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 Data Factory 目前只支援將資料從 Cassandra 資料存放區移到其他資料存放區，而不支援將資料從其他資料存放區移到 Cassandra 資料存放區。
 
 ## <a name="supported-versions"></a>支援的版本
 Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自我裝載 Integration Runtime 上執行的活動，從 IR 3.7 版及更新版本開始支援 Cassandra 3.x。
@@ -47,14 +47,14 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從內部部署的 Cassandra 資料存放區移動資料。
 
-- 若要建立管線，最簡單的方式就是使用**複製精靈**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
-- 您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立內含複製活動之管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+- 創建管道的最簡單方法是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+- 您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**，代表複製作業的輸入和輸出資料。
-3. 建立**管線**，其中含有以一個資料集作為輸入、一個資料集作為輸出的複製活動。
+2. 創建**資料集**以表示複製操作的輸入和輸出資料。
+3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來從內部部署 Cassandra 資料存放區複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Cassandra 複製到 Azure Blob](#json-example-copy-data-from-cassandra-to-azure-blob) 一節。
 
@@ -80,7 +80,7 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
-每個資料集類型的 **typeProperties** 區段都不同，可提供資料存放區中的資料位置資訊。 **CassandraTable** 類型資料集的 typeProperties 區段有下列屬性
+**TypeProperties**部分對於每種類型的資料集都不同，並提供有關資料存儲中資料位置的資訊。 **CassandraTable** 類型資料集的 typeProperties 區段有下列屬性
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
@@ -100,7 +100,7 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 | consistencyLevel |一致性層級可指定必須先有多少複本回應讀取要求，才會將資料傳回用戶端應用程式。 Cassandra 會檢查要讓資料滿足讀取要求的指定複本數目。 |ONE、TWO、THREE、QUORUM、ALL、LOCAL_QUORUM、EACH_QUORUM、LOCAL_ONE。 如需詳細資訊，請參閱 [設定資料一致性](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 。 |否。 預設值為 ONE。 |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON 範例︰將資料從 Cassandra 複製到 Azure Blob
-這個範例提供範例 JSON 定義，您可以使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來建立管線。 它示範如何將資料從內部部署的 Cassandra 資料庫複製到「Azure Blob 儲存體」。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
+此示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)創建管道的示例 JSON 定義。 它示範如何將資料從內部部署的 Cassandra 資料庫複製到「Azure Blob 儲存體」。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
 
 > [!IMPORTANT]
 > 此範例提供 JSON 程式碼片段。 其中並不包含建立 Data Factory 的逐步指示。 如需逐步指示，請參閱 [在內部部署位置和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文。
@@ -109,11 +109,11 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 
 * [OnPremisesCassandra](#linked-service-properties)類型的連結服務。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
-* [CassandraTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)。
-* [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)。
-* 具有使用 [CassandraSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)。
+* [CassandraTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)類型的輸出[資料集](data-factory-create-datasets.md)。
+* 具有使用 [CassandraSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
 
-**Cassandra 已連結的服務：**
+**卡珊多拉連結服務：**
 
 此範例使用 **Cassandra** 連結服務。 如需此連結服務所支援的屬性，請參閱 [Cassandra 連結服務](#linked-service-properties) 一節。
 
@@ -136,7 +136,7 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 }
 ```
 
-**Azure 儲存體連結服務：**
+**Azure 存儲連結服務：**
 
 ```json
 {
@@ -150,7 +150,7 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 }
 ```
 
-**Cassandra 輸入資料集：**
+**卡珊多拉輸入資料集：**
 
 ```json
 {
@@ -290,7 +290,7 @@ Cassandra 連接器支援下列 Cassandra 版本：2.x 和 3.x。 針對在自�
 Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 Cassandra 資料庫並從中複製資料。 針對包含對應、集和清單在內的集合類型，此驅動程式會將資料重新標準化為對應的虛擬資料表。 具體來說，如果資料表包含任何集合資料行，則此驅動程式會產生下列虛擬資料表︰
 
 * **基底資料表**，其中包含與實際資料表相同的資料 (集合資料行除外)。 基底資料表使用與它所代表的實際資料表相同的名稱。
-* 每個集合資料行的 **虛擬資料表** ，以展開巢狀資料。 代表集合的虛擬資料表會使用實際資料表名稱、分隔字元 “vt”和資料行名稱來命名。
+* 每個集合資料行的 **虛擬資料表** ，以展開巢狀資料。 表示集合的虛擬表使用真實表的名稱、分隔符號 *"vt"* 和列的名稱命名。
 
 虛擬資料表會參考實際資料表中的資料，讓驅動程式得以存取反正規化的資料。 如需詳細資訊，請參閱＜範例＞一節。 您可以藉由查詢和聯結虛擬資料表來存取 Cassandra 集合的內容。
 
@@ -346,7 +346,7 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 Cassandra �
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>從關聯式來源進行可重複的讀取
-從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱[從關聯式來源進行可重複的讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱[從關係源讀取的可重複讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)一文，以了解在 Azure Data Factory 中會影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法。

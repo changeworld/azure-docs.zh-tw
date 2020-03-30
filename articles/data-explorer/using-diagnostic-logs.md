@@ -1,6 +1,6 @@
 ---
-title: 使用診斷記錄來監視 Azure 資料總管內嵌作業
-description: 瞭解如何設定 Azure 資料總管的診斷記錄來監視內嵌作業。
+title: 使用診斷記錄來監視 Azure 資料總管擷取作業
+description: 瞭解如何為 Azure 資料資源管理器設置診斷日誌以監視引入操作。
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,76 +8,76 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277435"
 ---
-# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>使用診斷記錄來監視 Azure 資料總管內嵌作業（預覽）
+# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>使用診斷日誌監視 Azure 資料資源管理器引入操作（預覽）
 
-Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌（載入）至資料庫中的資料表，讓您可以對其執行查詢。 [Azure 監視器診斷記錄](/azure/azure-monitor/platform/diagnostic-logs-overview)會提供有關 Azure 資源作業的資料。 Azure 資料總管會使用診斷記錄，以取得有關內嵌成功和失敗的見解。 您可以將作業記錄匯出至 Azure 儲存體、事件中樞或 Log Analytics，以監視內嵌狀態。 Azure 儲存體和 Azure 事件中樞的記錄可以路由至 Azure 資料總管叢集中的資料表，以進行進一步的分析。
+Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後，將（載入）資料引入資料庫中的表，以便可以針對它執行查詢。 [Azure 監視器診斷日誌](/azure/azure-monitor/platform/diagnostic-logs-overview)提供有關 Azure 資源操作的資料。 Azure 資料資源管理器使用診斷日誌來深入瞭解引入成功和失敗。 您可以將動作記錄匯出到 Azure 存儲、事件中心或日誌分析以監視引入狀態。 Azure 存儲和 Azure 事件中心的日誌可以路由到 Azure 資料資源管理器群集中的表以進行進一步分析。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 如果您沒有 Azure 訂用帳戶，請建立[免費的 azure 帳戶](https://azure.microsoft.com/free/)。
-* 建立叢集[和資料庫](create-cluster-database-portal.md)。
+* 如果沒有 Azure 訂閱，請創建[一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* 創建[群集和資料庫](create-cluster-database-portal.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 [Azure 入口網站](https://portal.azure.com/)。
+登錄到 Azure[門戶](https://portal.azure.com/)。
 
-## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>設定 Azure 資料總管叢集的診斷記錄
+## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>為 Azure 資料資源管理器群集設置診斷日誌
 
-診斷記錄可以用來設定下列記錄資料的收集：
-* 成功的內嵌作業：這些記錄檔包含成功完成之內嵌作業的相關資訊。
-* 失敗的內嵌作業：這些記錄具有有關失敗內嵌作業的詳細資訊，包括錯誤詳細資料。 
+診斷日誌可用於配置以下日誌資料的集合：
+* 成功引入操作：這些日誌包含有關成功完成引入操作的資訊。
+* 失敗的引入操作：這些日誌包含有關失敗的引入操作的詳細資訊，包括錯誤詳細資訊。 
 
-然後，資料會封存到儲存體帳戶、串流至事件中樞，或傳送至 Log Analytics （依據您的規格）。
+然後，資料將存檔到存儲帳戶中，資料流到事件中心，或者根據您的規範發送到日誌分析。
 
 ### <a name="enable-diagnostic-logs"></a>啟用診斷記錄
 
-診斷記錄預設為停用。 若要啟用診斷記錄，請執行下列步驟：
+診斷記錄預設為停用。 要啟用診斷日誌，執行以下步驟：
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，選取您要監視的 Azure 資料總管叢集資源。
-1. 在 [監視] 下方，選取 [診斷設定]。
+1. 在[Azure 門戶](https://portal.azure.com)中，選擇要監視的 Azure 資料資源管理器群集資源。
+1. 在 [監視]**** 下方，選取 [診斷設定]****。
   
-    ![新增診斷記錄](media/using-diagnostic-logs/add-diagnostic-logs.png)
+    ![添加診斷日誌](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
-1. 選取 [**新增診斷設定**]。
-1. 在 [**診斷設定**] 視窗中：
+1. 選擇 **"添加診斷設置**"。
+1. 在 **"診斷設置"** 視窗中：
  
-    ![診斷設定](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
+    ![診斷設置配置](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
 
-    1. 選取診斷設定的 [**名稱**]。
-    1. 選取一個或多個目標：儲存體帳戶、事件中樞或 Log Analytics。
-    1. 選取要收集的記錄： `SucceededIngestion` 或 `FailedIngestion`。
-    1. 選取要收集的[計量](using-metrics.md#supported-azure-data-explorer-metrics)（選擇性）。  
-    1. 選取 [**儲存**] 以儲存新的診斷記錄設定和計量。
-    1. 在 Azure 入口網站中建立**新的支援要求**，以要求啟用診斷記錄。
+    1. 為診斷設置選擇 **"名稱**"。
+    1. 選擇一個或多個目標：存儲帳戶、事件中心或日誌分析。
+    1. 選擇要收集的日誌：`SucceededIngestion`或`FailedIngestion`。
+    1. 選擇要收集的[指標](using-metrics.md#supported-azure-data-explorer-metrics)（可選）。  
+    1. 選擇 **"保存**"以保存新的診斷日誌設置和指標。
+    1. 在 Azure 門戶中**創建新的支援請求**，以請求啟動診斷日誌。
 
-將會在幾分鐘內設定新設定。 然後，記錄會出現在設定的封存目標（儲存體帳戶、事件中樞或 Log Analytics）中。 
+幾分鐘後將設置新設置。 日誌然後顯示在配置的存檔目標（存儲帳戶、事件中心或日誌分析）中。 
 
 ## <a name="diagnostic-logs-schema"></a>診斷記錄結構描述
 
-所有[Azure 監視器診斷記錄都會共用通用的最上層架構](/azure/azure-monitor/platform/diagnostic-logs-schema)。 Azure 資料總管具有本身事件的唯一屬性。 所有記錄都是以 JSON 格式儲存。
+所有[Azure 監視器診斷日誌共用一個公共頂級架構](/azure/azure-monitor/platform/diagnostic-logs-schema)。 Azure 資料資源管理器具有用於其自身事件的唯一屬性。 所有日誌都以 JSON 格式存儲。
 
-### <a name="ingestion-logs-schema"></a>內嵌記錄架構
+### <a name="ingestion-logs-schema"></a>引入日誌架構
 
-記錄 JSON 字串包括下表所列的元素：
+日誌 JSON 字串包括下表中列出的元素：
 
-|名稱               |說明
+|名稱               |描述
 |---                |---
-|time               |報表的時間
+|time               |報告的時間
 |resourceId         |Azure Resource Manager 資源識別碼
-|operationName      |作業的名稱： ' MICROSOFT。KUSTO/叢集/內嵌/動作 '
-|operationVersion   |架構版本： ' 1.0 ' 
-|category           |作業的類別。 `SucceededIngestion` 或 `FailedIngestion`。 [成功操作](#successful-ingestion-operation-log)或[失敗](#failed-ingestion-operation-log)作業的屬性會有所不同。
-|properties         |作業的詳細資訊。
+|operationName      |操作的名稱：'MICROSOFT。庫斯特托/集群/INGEST/行動'
+|operationVersion   |架構版本："1.0" 
+|category           |操作的類別。 `SucceededIngestion` 或 `FailedIngestion`。 [成功操作](#successful-ingestion-operation-log)或[操作失敗](#failed-ingestion-operation-log)的屬性不同。
+|properties         |操作的詳細資訊。
 
-#### <a name="successful-ingestion-operation-log"></a>成功的內嵌操作記錄
+#### <a name="successful-ingestion-operation-log"></a>成功引入動作記錄
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -98,21 +98,21 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
     }
 }
 ```
-**成功作業診斷記錄的屬性**
+**成功操作診斷日誌的屬性**
 
-|名稱               |說明
+|名稱               |描述
 |---                |---
-|succeededOn        |內嵌完成的時間
-|operationId        |Azure 資料總管內嵌作業識別碼
-|資料庫           |目標資料庫的名稱
-|資料表              |目標資料表的名稱
-|ingestionSourceId  |內嵌資料來源的識別碼
-|ingestionSourcePath|內嵌資料來源或 blob URI 的路徑
-|rootActivityId     |活動識別碼
+|成功上        |攝取完成時間
+|operationId        |Azure 資料資源管理器引入操作 ID
+|[資料庫]           |目標資料庫的名稱
+|資料表              |目標表的名稱
+|攝入來源Id  |攝入資料來源的 ID
+|引入源路徑|引入資料來源或 blob URI 的路徑
+|根活動Id     |活動識別碼
 
-#### <a name="failed-ingestion-operation-log"></a>無法內嵌操作記錄檔
+#### <a name="failed-ingestion-operation-log"></a>引入動作記錄失敗
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -139,25 +139,25 @@ Azure Data Explorer 是快速、完全受控的資料分析服務，可即時分
 }
 ```
 
-**失敗作業診斷記錄的屬性**
+**故障操作診斷日誌的屬性**
 
-|名稱               |說明
+|名稱               |描述
 |---                |---
-|failedOn           |內嵌完成的時間
-|operationId        |Azure 資料總管內嵌作業識別碼
-|資料庫           |目標資料庫的名稱
-|資料表              |目標資料表的名稱
-|ingestionSourceId  |內嵌資料來源的識別碼
-|ingestionSourcePath|內嵌資料來源或 blob URI 的路徑
-|rootActivityId     |活動識別碼
-|詳細資料            |失敗和錯誤訊息的詳細描述
+|失敗           |攝取完成時間
+|operationId        |Azure 資料資源管理器引入操作 ID
+|[資料庫]           |目標資料庫的名稱
+|資料表              |目標表的名稱
+|攝入來源Id  |攝入資料來源的 ID
+|引入源路徑|引入資料來源或 blob URI 的路徑
+|根活動Id     |活動識別碼
+|詳細資料            |故障和錯誤訊息的詳細說明
 |errorCode          |錯誤碼 
-|failureStatus      |`Permanent` 或 `Transient`。 暫時性失敗的重試可能會成功。
-|originatesFromUpdatePolicy|如果失敗源自更新原則，則為 True
-|shouldRetry        |如果重試可能成功，則為 True
+|失敗狀態      |`Permanent` 或 `Transient`。 重試瞬態故障可能會成功。
+|源自更新政策|如果失敗源自更新策略，則為 True
+|應該重新嘗試        |如果重試可能成功，則為 True
 
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：在 Azure 中內嵌和查詢監視資料資料總管](ingest-data-no-code.md)
+* [教程：在 Azure 資料資源管理器中引入和查詢監視資料](ingest-data-no-code.md)
 * [使用計量來監視叢集健康情況](using-metrics.md)
 

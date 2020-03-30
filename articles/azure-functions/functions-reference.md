@@ -1,14 +1,14 @@
 ---
-title: 開發 Azure Functions 的指引
+title: 開發 Azure 函數的指南
 description: 了解在 Azure 中開發函式所需的 Azure Functions 概念與技術，其中包含所有的程式設計語言和繫結。
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276617"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 開發人員指南
@@ -17,7 +17,7 @@ ms.locfileid: "79276617"
 本文假設您已閱讀過 [Azure Functions 開發人員概觀](functions-overview.md)。
 
 ## <a name="function-code"></a>函式程式碼
-「函數」 是 Azure Functions 中的主要概念。 函式包含兩個重要的部分，一個部分是可用各種語言撰寫的程式碼，另一則是一些組態，亦即 function.json 檔案。 對於已編譯的語言，系統會自動從您程式碼中的註解產生此組態檔。 對於指令碼語言，您必須自行提供組態檔。
+「函數」 ** 是 Azure Functions 中的主要概念。 函式包含兩個重要的部分，一個部分是可用各種語言撰寫的程式碼，另一則是一些組態，亦即 function.json 檔案。 對於已編譯的語言，系統會自動從您程式碼中的註解產生此組態檔。 對於指令碼語言，您必須自行提供組態檔。
 
 function.json 檔案會定義函式的觸發程序、繫結和其他組態設定。 每個函式會有一個且只能有一個觸發程序。 執行階段使用此組態檔來判斷要監視的事件，以及如何傳入資料並從函式執行傳回資料。 以下是範例 function.json 檔案。
 
@@ -36,7 +36,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 }
 ```
 
-如需詳細資訊，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
+有關詳細資訊，請參閱[Azure 函數觸發器和綁定概念](functions-triggers-bindings.md)。
 
 `bindings` 屬性可讓您設定觸發程序和繫結。 每個繫結都共用一些共用設定，以及特定類別的繫結特有的一些設定。 每個繫結都需要下列設定︰
 
@@ -47,7 +47,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 | `name` |字串 |用於函式中所繫結資料的名稱。 在 C# 中，這是引數名稱；在 JavaScript 中，這是索引鍵/值清單中的索引鍵。 |
 
 ## <a name="function-app"></a>函式應用程式
-函數應用程式在 Azure 中提供您的函式可在其中執行的執行內容。 因此，這是您的函式部署和管理的單位。 函式應用程式是由一或多個個別函式所組成，這些函式可一起管理、部署與調整。 函數應用程式中的所有函式會共用相同的定價方案、部署方法和執行階段版本。 請將函式應用程式視為用來組織及集體管理函式的方式。 若要深入瞭解，請參閱[如何管理函數應用程式](functions-how-to-use-azure-function-app-settings.md)。 
+函數應用程式在 Azure 中提供您的函式可在其中執行的執行內容。 因此，它是您的職能的部署和管理單位。 函式應用程式是由一或多個個別函式所組成，這些函式可一起管理、部署與調整。 函數應用中的所有函數共用相同的定價計畫、部署方法和執行階段版本。 請將函式應用程式視為用來組織及集體管理函式的方式。 要瞭解更多資訊，請參閱[如何管理函數應用](functions-how-to-use-azure-function-app-settings.md)。 
 
 > [!NOTE]
 > 函式應用程式中的所有函式都必須以相同的語言撰寫。 在[舊版](functions-versions.md)的 Azure Functions 執行階段中，這不是必要的。
@@ -55,7 +55,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 ## <a name="folder-structure"></a>資料夾結構
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-以上是 Function 應用程式的預設 (且建議的) 資料夾結構。 如果您想要變更函式程式碼的檔案位置，請修改 `scriptFile`function.json_檔案的_ 區段。 我們也建議您使用[套件部署](deployment-zip-push.md)來將您的專案部署到 Azure 中的函數應用程式中。 您也可以使用諸如[持續整合與部署](functions-continuous-deployment.md)和 Azure DevOps 之類的現有工具。
+以上是 Function 應用程式的預設 (且建議的) 資料夾結構。 如果您想要變更函式程式碼的檔案位置，請修改 _function.json_ 檔案的 `scriptFile` 區段。 我們也建議您使用[套件部署](deployment-zip-push.md)來將您的專案部署到 Azure 中的函數應用程式中。 您也可以使用諸如[持續整合與部署](functions-continuous-deployment.md)和 Azure DevOps 之類的現有工具。
 
 > [!NOTE]
 > 如果手動部署封裝，請務必將您的 _host.json_ 檔案和函式資料夾直接部署至 `wwwroot` 資料夾。 您的部署中請勿包含 `wwwroot` 資料夾。 否則，您會得到 `wwwroot\wwwroot` 資料夾。
@@ -65,7 +65,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a> 如何在 Azure 入口網站中編輯函式
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> 如何在 Azure 入口網站中編輯函式
 Azure 入口網站內建的函式編輯器可讓您更新您直接內嵌的程式碼和 *function.json* 檔案。 這僅建議用於概念的小型變更或證明 - 最佳作用是使用如 VS Code 等本機開發工具。
 
 ## <a name="parallel-execution"></a>平行執行
@@ -73,13 +73,13 @@ Azure 入口網站內建的函式編輯器可讓您更新您直接內嵌的程�
 
 ## <a name="functions-runtime-versioning"></a>Functions 執行階段版本設定
 
-您可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定來設定 Functions 執行階段的版本。 例如，值 "~ 3" 表示您的函數應用程式將使用3.x 作為其主要版本。 函數應用程式會在發行時升級為每個新的次要版本。 如需詳細資訊 (包括如何檢視函式應用程式的完全版本)，請參閱[如何設定 Azure Functions 的執行階段目標版本](set-runtime-version.md)。
+您可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定來設定 Functions 執行階段的版本。 例如，值"+3"表示函數應用將使用 3.x 作為其主要版本。 函數應用程式會在發行時升級為每個新的次要版本。 如需詳細資訊 (包括如何檢視函式應用程式的完全版本)，請參閱[如何設定 Azure Functions 的執行階段目標版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>儲存機制
 Azure Functions 的程式碼是開放原始碼，儲存於 GitHub 儲存機制中︰
 
 * [Azure Functions](https://github.com/Azure/Azure-Functions)
-* [Azure Functions 主機](https://github.com/Azure/azure-functions-host/)
+* [Azure 函數主機](https://github.com/Azure/azure-functions-host/)
 * [Azure Functions 入口網站](https://github.com/azure/azure-functions-ux)
 * [Azure Functions 範本](https://github.com/azure/azure-functions-templates)
 * [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
@@ -98,8 +98,8 @@ Azure Functions 的程式碼是開放原始碼，儲存於 GitHub 儲存機制�
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱下列資源：
 
-* [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)
+* [Azure 函數觸發器和綁定](functions-triggers-bindings.md)
 * [撰寫 Azure Functions 並在本機進行測試](./functions-develop-local.md)
-* [Azure Functions 的最佳作法](functions-best-practices.md)
+* [Azure 函數的最佳做法](functions-best-practices.md)
 * [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)
-* [Azure Functions node.js 開發人員參考](functions-reference-node.md)
+* [Azure 函數 Node.js 開發人員參考](functions-reference-node.md)

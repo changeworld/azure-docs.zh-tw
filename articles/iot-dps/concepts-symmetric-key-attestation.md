@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞裝置佈建服務 - 對稱金鑰證明
-description: 本文提供使用 IoT 裝置布建服務（DPS）的對稱金鑰證明概念總覽。
+description: 本文提供了使用 IoT 設備佈建服務 （DPS） 的對稱金鑰認證的概念概述。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271508"
 ---
 # <a name="symmetric-key-attestation"></a>對稱金鑰證明

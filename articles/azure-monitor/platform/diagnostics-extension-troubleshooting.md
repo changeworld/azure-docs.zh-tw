@@ -7,21 +7,21 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274576"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診斷疑難排解
 本文說明有關使用 Azure 診斷的疑難排解資訊。 如需有關 Azure 診斷的詳細資訊，請參閱 [Azure 診斷概觀](diagnostics-extension-overview.md)。
 
 ## <a name="logical-components"></a>邏輯元件
-**診斷外掛程式啟動器 (DiagnosticsPluginLauncher.exe)** ：啟動 Azure 診斷擴充功能。 可作為進入點程序。
+**診斷外掛程式啟動器 (DiagnosticsPluginLauncher.exe)**：啟動 Azure 診斷擴充功能。 可作為進入點程序。
 
-**診斷外掛程式 (DiagnosticsPlugin.exe)** ：設定、啟動及管理監視代理程式的存留期。 它是由啟動程式啟動的主要處理序。
+**診斷外掛程式 (DiagnosticsPlugin.exe)**：設定、啟動及管理監視代理程式的存留期。 它是由啟動程式啟動的主要處理序。
 
-**監視代理程式 (MonAgent\*.exe 處理序)** ：監視、收集及傳輸診斷資料。  
+**監視代理程式 (MonAgent\*.exe 處理序)**：監視、收集及傳輸診斷資料。  
 
 ## <a name="logartifact-paths"></a>記錄檔/構件路徑
 以下是一些重要記錄和構件的路徑。 稍後在本文中我們會參考這些資訊。
@@ -30,10 +30,10 @@ ms.locfileid: "79274576"
 | 構件 | Path |
 | --- | --- |
 | **Azure 診斷組態檔** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
-| **記錄檔** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **日誌檔** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
 | **診斷資料的本機存放區** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
-| **監視代理程式組態檔** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure 診斷擴充功能套件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
+| **監視代理設定檔** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Azure 診斷擴展包** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **記錄集合公用程式路徑** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost 記錄檔** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
@@ -41,22 +41,22 @@ ms.locfileid: "79274576"
 | 構件 | Path |
 | --- | --- |
 | **Azure 診斷組態檔** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
-| **記錄檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **日誌檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
 | **診斷資料的本機存放區** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
-| **監視代理程式組態檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **監視代理設定檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **狀態檔案** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
-| **Azure 診斷擴充功能套件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
-| **記錄集合公用程式路徑** | C:\WindowsAzure\Logs\WaAppAgent.log |
+| **Azure 診斷擴展包** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
+| **記錄集合公用程式路徑** | C：[WindowsAzure]Logs_WaAppAgent.log |
 | **MonAgentHost 記錄檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>計量資料沒有出現在 Azure 入口網站中
-Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中顯示。 如果您在入口網站中看到資料時遇到問題，請檢查 Azure 診斷儲存體帳戶中的 WADMetrics\* 資料表，以查看對應的計量記錄是否存在，並確定已註冊[資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)Microsoft Insights。
+Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中顯示。 如果在門戶中看到資料時遇到問題，請檢查 Azure 診斷存儲\*帳戶中的 WADMetrics 表，以查看是否有相應的指標記錄，並確保[資來源提供者](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)Microsoft.Insights 已註冊。
 
 此處的表格 **PartitionKey** 是資源識別碼、虛擬機器或虛擬機器擴展集。 **RowKey** 是度量的名稱 (也稱為效能計數器名稱)。
 
-如果資源識別碼不正確，請檢查 [**診斷**設定 **] > [** **計量**] > [ **ResourceId** ]，以查看資源識別碼是否設定正確。
+如果資源識別碼不正確，請檢查 [診斷組態]**** **** > [計量]**** > [資源識別碼]****，以查看資源識別碼是否正確地設定。
 
-如果沒有特定計量的資料，請檢查 [診斷組態] > [PerformanceCounter]，以查看是否包含計量 (效能計數器)。 我們預設會啟用下列計數器：
+如果沒有特定指標的資料，請檢查**診斷配置** > **效能計數器**以查看是否包括指標（效能計數器）。 我們預設會啟用下列計數器：
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -70,7 +70,7 @@ Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中�
 - \Process(WaWorkerHost)\% Processor Time
 - \Process(WaWorkerHost)\Private Bytes
 - \Memory\Page Faults/sec
-- \.NET CLR Memory(_Global_)\% Time in GC
+- \.NET CLR_Global_記憶體（\%全域 ） GC 中的時間
 - \LogicalDisk(C:)\Disk Write Bytes/sec
 - \LogicalDisk(C:)\Disk Read Bytes/sec
 - \LogicalDisk(D:)\Disk Write Bytes/sec
@@ -89,7 +89,7 @@ Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中�
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
 ```
-如果結束代碼為「負值」，請參閱[參考](#azure-diagnostics-plugin-exit-codes)一節中的[結束代碼表格](#references)。
+如果結束代碼為「負值」****，請參閱[參考](#references)一節中的[結束代碼表格](#azure-diagnostics-plugin-exit-codes)。
 
 ## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>診斷資料未記錄至 Azure 儲存體
 判斷是沒有出現任何資料，或是出現部分的資料。
@@ -102,15 +102,15 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 解決方法：更正診斷組態，並重新安裝診斷。
 
-如果已正確設定儲存體帳戶，請從遠端存取電腦，並確認*diagnosticsplugin.log*和*monagentcore.exe 正在*正在執行。 如果這兩個執行檔並未執行，請依照 [Azure 診斷未啟動](#azure-diagnostics-is-not-starting)中的步驟操作。
+如果存儲帳戶配置正確，請遠端存取電腦並驗證*診斷外掛程式.exe*和*MonAgentCore.exe*是否正在運行。 如果它們未運行，請按照 Azure 診斷中的步驟[不啟動](#azure-diagnostics-is-not-starting)。
 
 如果處理序正在執行，請移至[是否正在本機擷取資料](#is-data-getting-captured-locally)，並依照該處的指示操作。
 
-如果這樣做無法解決問題，請嘗試：
+如果這不能解決問題，請嘗試：
 
 1. 解除安裝代理程式
-2. 移除目錄 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
-3. 重新安裝代理程式
+2. 刪除目錄 C：\WindowsAzure\Logs_Plugins\Microsoft.Azure.診斷.IaaS診斷
+3. 再次安裝代理
 
 
 ### <a name="part-of-the-data-is-missing"></a>遺漏部分資料
@@ -120,12 +120,12 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 診斷組態會針對要收集的特定資料類型，包含相關的指示。 [檢閱您的設定](#how-to-check-diagnostics-extension-configuration)以確認您只尋找設定要收集的資料。
 
 #### <a name="is-the-host-generating-data"></a>主機是否正在產生資料？
-- **效能計數器**：開啟 Perfmon 並檢查計數器。
+- **效能計數器**：打開 perfmon 並檢查計數器。
 
 - **追蹤記錄**：從遠端存取 VM，並將 TextWriterTraceListener 新增至應用程式的組態檔。  請參閱 https://msdn.microsoft.com/library/sk36c28t.aspx 設定文字接聽程式。  確定 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
 如果未看到任何追蹤記錄產生，請參閱「關於遺漏追蹤記錄檔的詳細資訊」。
 
-- **ETW 追蹤**：從遠端存取 VM 並安裝 PerfView。  在 PerfView 中執行 [File] \(檔案\) > [User Command] \(使用者命令\) > [Listen etwprovder1] \(接聽 etwprovder1\) > [etwprovider2]，依此類推。 **Listen** 命令會區分大小寫，而且在以逗號區隔的 ETW 提供者清單之間不能有空格。 如果命令執行失敗，您可以選取 Perfview 工具右下方的 [Log] \(記錄\) 按鈕，即可查看已嘗試執行的動作與執行結果。  如果輸入正確，就會跳出新的視窗。 在幾秒鐘內，就會開始看到 ETW 追蹤。
+- **ETW 追蹤**：從遠端存取 VM 並安裝 PerfView。  在 PerfView 中，運行**檔** > **使用者命令** > **偵聽 etwprovder1** > **etwprovider2，** 等等。 **Listen** 命令會區分大小寫，而且在以逗號區隔的 ETW 提供者清單之間不能有空格。 如果命令執行失敗，您可以選取 Perfview 工具右下方的 [Log]**** \(記錄\) 按鈕，即可查看已嘗試執行的動作與執行結果。  如果輸入正確，就會跳出新的視窗。 在幾秒鐘內，就會開始看到 ETW 追蹤。
 
 - **事件記錄**：從遠端存取 VM。 開啟 `Event Viewer`，然後確認事件存在。
 
@@ -207,10 +207,10 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 
 | 事件 | 資料表名稱 |
 | --- | --- |
-| provider = "prov1" &lt;事件識別碼 = "1"/&gt; |WADEvent + MD5 （"prov1"） + "1" |
-| provider = "prov1" &lt;事件識別碼 = "2" eventDestination = "dest1"/&gt; |WADdest1 |
-| provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 （"prov1"） |
-| provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
+| 提供程式="prov1"&lt;事件 ID="1" /&gt; |瓦德事件_MD5（"prov1"）="1" |
+| 提供程式="prov1"&lt;事件 ID="2"事件目標="dest1" /&gt; |WADdest1 |
+| 提供程式="prov1"&lt;預設事件 /&gt; |瓦德預設=MD5（"prov1"） |
+| 提供程式="prov2"&lt;預設事件事件目標="dest2" /&gt; |WADdest2 |
 
 ## <a name="references"></a>參考
 
@@ -256,7 +256,7 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-在對應的 `<relevantLogFile>.csv` 檔案所在的相同路徑中，會建立一個名為 `.tsf` 的新檔案。
+在對應的 `.tsf` 檔案所在的相同路徑中，會建立一個名為 `<relevantLogFile>.csv` 的新檔案。
 
 >[!NOTE]
 > 您只需要針對主要的 tsf 檔案 (例如 PerformanceCountersTable.tsf) 來執行此公用程式。 系統會自動處理隨附的檔案 (例如，PerformanceCountersTables_\*\*001.tsf、PerformanceCountersTables_\*\*002.tsf 等等)。
@@ -266,35 +266,35 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 >[!NOTE]
 > 除非在 IaaS VM 上執行的應用程式已經設定 DiagnosticsMonitorTraceListener，否則以下資訊大部分適用於 Azure 雲端服務。
 
-- 請確定已在 web.config 或 app.config 中設定**DiagnosticMonitorTraceListener** 。 這在雲端服務專案中預設為已設定。 不過，有些客戶會使它成為註解，造成診斷不會收集追蹤陳述式。
+- 確保**診斷監視器跟蹤攔截器**在 Web.config 或 app.config 中配置。 預設情況下，這在雲服務專案中配置。 不過，有些客戶會使它成為註解，造成診斷不會收集追蹤陳述式。
 
-- 如果不是從**OnStart**或**Run**方法寫入記錄檔，請確定**DiagnosticMonitorTraceListener**是在 app.config 中。 根據預設，它是在 web.config 中，但只適用于在 w3wp.exe 內執行的程式碼。 因此您需要將它放在 app.config 中，以擷取在 WaIISHost.exe 中執行的追蹤。
+- 如果未從 **"啟動"或"****運行**"方法寫入日誌，請確保**診斷監視器跟蹤攔截器**位於 app.config 中。 預設情況下，它位於 Web.config 中，但僅適用于在 w3wp.exe 中運行的代碼。 因此您需要將它放在 app.config 中，以擷取在 WaIISHost.exe 中執行的追蹤。
 
 - 請確定您使用的是 **Diagnostics.Trace.TraceXXX**，而不是 **Diagnostics.Debug.WriteXXX**。 偵錯陳述式已從發行組建中移除。
 
-- 請確定已編譯的程式碼確實具有 **Diagnostics.Trace** 行 (使用 Reflector、ildasm 或 ILSpy 來驗證)。 除非使用 TRACE 條件式編譯符號，否則 **Diagnostics.Trace** 命令已從編譯的二進位檔中移除。 當您使用 msbuild 來建置專案時，這是常見的問題。   
+- 確保編譯的代碼實際上具有**診斷.跟蹤行**（使用反射器、ildasm 或 ILSpy 進行驗證）。 **診斷.跟蹤**命令將從已編譯的二進位檔案中刪除，除非您使用 TRACE 條件編譯符號。 當您使用 msbuild 來建置專案時，這是常見的問題。   
 
 ## <a name="known-issues-and-mitigations"></a>已知問題與緩解方式
 以下是已知問題和緩解方式的清單：
 
-**1. .NET 4.5 相依性**
+**1. .NET 4.5 依賴項**
 
 Windows Azure 診斷擴充功能對於 .NET 4.5 Framework 或更新版本有執行階段相依性。 在本文撰寫之際，針對 Azure 雲端服務佈建的所有電腦，以及以 Azure 虛擬機器為基礎的所有官方映像，都已經安裝 .NET 4.5 或更新版本。
 
 當您嘗試執行 Windows Azure 診斷擴充功能時，仍然可能會遇到電腦沒有 .NET 4.5 或更新版本的情況。 當您從舊映像或快照集建立電腦，或帶入自己的自訂磁碟時，就可能會發生這個問題。
 
-執行 **DiagnosticsPluginLauncher.exe** 時，這通常會以結束代碼 **255** 來表示。 失敗原因為下列未處理的例外狀況：
+這通常表現為在運行**診斷外掛程式Launcher.exe**時作為結束代碼**255。** 失敗原因為下列未處理的例外狀況：
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
 
 **緩解方式：** 在電腦上安裝 .NET 4.5 或更新版本。
 
-**2. 效能計數器資料可在儲存體中使用，但不會顯示在入口網站中**
+**2. 效能計數器資料在存儲中可用，但不顯示在門戶中**
 
 虛擬機器中的入口網站體驗預設會顯示特定效能計數器。 如果您沒有看到效能計數器，但知道系統正在產生資料，因為儲存體中有資料，請檢查下列項目：
 
-- 儲存體中的資料是否具有英文計數器名稱。 如果計數器名稱不是英文，入口網站計量圖表將無法辨識該計數器。 **緩解方式**：針對系統帳戶，將電腦的語言變更為英文。 若要執行上述方式，請選取 [控制台] > [地區] > [系統管理] > [複製設定]。 接下來，取消選取 [歡迎畫面及系統帳戶]，如此一來自訂語言就不會套用到系統帳戶。
+- 儲存體中的資料是否具有英文計數器名稱。 如果計數器名稱不是英文，入口網站計量圖表將無法辨識該計數器。 **緩解方式**：針對系統帳戶，將電腦的語言變更為英文。 為此，請選擇 **"控制台** > **區域** > **管理** > **複製設置**"。 接下來，取消選取 [歡迎畫面及系統帳戶]****，如此一來自訂語言就不會套用到系統帳戶。
 
-- 如果您在效能計數器名稱中使用萬用字元 (\*)，在將效能計數器傳送至 Azure 儲存體接收時，入口網站將無法關聯設定和收集的計數器。 **緩和**：為確保您可以使用萬用字元，並讓入口網站展開（\*），請將效能計數器路由傳送至 Azure 監視器接收。
+- 如果您在效能計數器名稱中使用萬用字元 (\*)，在將效能計數器傳送至 Azure 儲存體接收時，入口網站將無法關聯設定和收集的計數器。 **緩解**：為了確保可以使用萬用字元，並讓門戶展開 （\*）， 將效能計數器路由到 Azure 監視器接收器。
 

@@ -1,15 +1,15 @@
 ---
-title: 設定 Service Fabric 網格的 Windows 開發環境
+title: 為服務結構網格設置 Windows 開發環境
 description: 設定您的 Windows 開發環境，以便建立 Service Fabric Mesh 應用程式，並將其部署至 Azure Service Fabric Mesh。
 author: dkkapur
 ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259197"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>設定 Windows 開發環境以建置 Service Fabric Mesh 應用程式
@@ -27,32 +27,32 @@ ms.locfileid: "79259197"
 * Windows Server 1709 版
 * Windows Server 1803 版
 
-下列指示將協助您根據您所執行的 Windows 版本來安裝所有專案。
+以下說明將説明您根據正在運行的 Windows 版本安裝所有內容。
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="visual-studio"></a>Visual Studio
 
-需要 Visual Studio 2017 或更新版本，才能部署 Service Fabric 網狀應用程式。 [安裝 15.6.0][download-visual-studio]或更高版本，並啟用下列工作負載：
+部署服務結構網格應用程式需要 Visual Studio 2017 或更高版本。 [安裝 15.6.0 版][download-visual-studio]或更新版本，並啟用下列工作負載：
 
 * ASP.NET 和 Web 開發
 * Azure 開發
 
 ## <a name="install-docker"></a>安裝 Docker
 
-如果您已安裝 Docker，請確定您的是最新版本。 Docker 可能會在新版本已過期時提示您，但請手動檢查以確保您擁有最新版本。
+如果您已安裝 Docker，請確定您的是最新版本。 Docker 可能會提示您何時推出新版本，但請手動檢查以確保您擁有最新版本。
 
 #### <a name="install-docker-on-windows-10"></a>在 Windows 10 上安裝 Docker
 
-下載並安裝最新版的[Docker 社區版 For Windows][download-docker] ，以支援 Service Fabric 網格所使用的容器化 Service Fabric 應用程式。
+下載並安裝最新版的 [Docker Community Edition for Windows][download-docker]，以支援 Service Fabric Mesh 所使用的容器化 Service Fabric 應用程式。
 
-在安裝期間，當系統詢問時，請選取 [使用 Windows 容器，而非 Linux 容器]。
+在安裝期間，當系統詢問時，請選取 [使用 Windows 容器，而非 Linux 容器]****。
 
-如果您的電腦上未啟用 Hyper-v，Docker 的安裝程式將提供啟用它的功能。 如果出現提示，請按一下 [確定] 以執行此作業。
+如果電腦上未啟用 Hyper-V，Docker 的安裝程式將提供啟用它。 如果出現提示，請按一下 [確定]**** 以執行此作業。
 
 #### <a name="install-docker-on-windows-server-2016"></a>在 Windows Server 2016 上安裝 Docker
 
-如果您未啟用 Hyper-V 角色，請以系統管理員身分開啟 PowerShell 並執行下列命令，以啟用 Hyper-V，然後重新啟動電腦。 如需詳細資訊，請參閱[Docker Enterprise Edition For Windows Server][download-docker-server]。
+如果您未啟用 Hyper-V 角色，請以系統管理員身分開啟 PowerShell 並執行下列命令，以啟用 Hyper-V，然後重新啟動電腦。 如需詳細資訊，請參閱 [Docker Enterprise Edition for Windows Server][download-docker-server]。
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
@@ -72,8 +72,8 @@ Install-WindowsFeature Containers
 
 依下列順序安裝 Service Fabric Mesh 執行階段、SDK 和工具。
 
-1. 使用 Web Platform Installer 安裝[Service Fabric 網格 SDK][download-sdkmesh] 。 這也將安裝 Microsoft Azure Service Fabric SDK 和執行階段。
-2. 從 Visual Studio Marketplace 安裝[Visual Studio Service Fabric 網狀工具（預覽）延伸][download-tools]模組。
+1. 使用 Web Platform Installer 安裝 [Service Fabric Mesh SDK][download-sdkmesh]。 這也將安裝 Microsoft Azure Service Fabric SDK 和執行階段。
+2. 從 Visual Studio Marketplace 安裝 [Visual Studio Service Fabric Mesh Tools (預覽) 擴充功能][download-tools]。
 
 ## <a name="build-a-cluster"></a>建置叢集
 
@@ -85,9 +85,9 @@ Install-WindowsFeature Containers
 > 如果您是在 Windows Fall Creators Update (1709 版) 機器上進行開發，則只能使用 Windows 1709 版 Docker 映像。
 > 如果您是在 Windows 10 April 2018 update (1803 版) 機器上進行開發，則可以使用 Windows 1709 版或 1803 版的 Docker 映像。
 
-如果您使用 Visual Studio，您可以略過本節，因為如果您沒有本機叢集，Visual Studio 將會為您建立本機叢集。
+如果您使用的是 Visual Studio，則可以跳過此部分，因為如果沒有本地群集，Visual Studio 將為您創建本地群集。
 
-若要在您一次建立和執行單一 Service Fabric 應用程式時獲得最佳的調試效能，請建立單一節點的本機開發叢集。 如果您一次執行多個應用程式，請建立五個節點的本機開發叢集。 每當您部署或偵錯 Service Fabric Mesh 專案時，都必須執行此叢集。
+為了在一次創建和運行單個 Service Fabric 應用時獲得最佳的調試性能，請創建一個單節點本地開發群集。 如果一次運行多個應用程式，請創建一個五節點本地開發群集。 每當您部署或偵錯 Service Fabric Mesh 專案時，都必須執行此叢集。
 
 在您安裝執行階段、SDK、Visual Studio 工具、Docker，且 Docker 開始執行後，請建立開發叢集。
 
@@ -103,7 +103,7 @@ Install-WindowsFeature Containers
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
-5. 當服務叢集管理員工具開始執行 (它會出現在系統匣中) 後，請以滑鼠右鍵按一下該工具，然後按一下 [啟動本機叢集]。
+5. 當服務叢集管理員工具開始執行 (它會出現在系統匣中) 後，請以滑鼠右鍵按一下該工具，然後按一下 [啟動本機叢集]****。
 
 ![圖 1 - 啟動本機叢集](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 

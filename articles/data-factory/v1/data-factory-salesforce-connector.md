@@ -1,5 +1,5 @@
 ---
-title: 使用 Data Factory 從 Salesforce 移動資料
+title: 使用資料工廠從銷售人員中移動資料
 description: 了解如何使用 Azure Data Factory 從 Salesforce 移動資料。
 services: data-factory
 documentationcenter: ''
@@ -13,21 +13,21 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281128"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Salesforce 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](data-factory-salesforce-connector.md)
+> * [版本 1](data-factory-salesforce-connector.md)
 > * [第 2 版 (目前的版本)](../connector-salesforce.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Salesforce 連接器](../connector-salesforce.md)。
 
-本文概述如何在 Azure Data Factory 使用複製活動，將資料從 Salesforce 複製到 [支援的來源與接收](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 資料表的 [接收] 欄底下列出的任何資料存放區。 本文是根據 [資料移動活動](data-factory-data-movement-activities.md) 一文，該文呈現使用複製活動移動資料的一般概觀以及支援的資料存放區組合。
+本文概述如何在 Azure Data Factory 使用複製活動，將資料從 Salesforce 複製到 [支援的來源與接收](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 資料表的 [接收] 欄底下列出的任何資料存放區。 本文基於[資料移動活動](data-factory-data-movement-activities.md)一文，其中概述了使用複製活動和支援的資料存儲組合進行的資料移動。
 
 Azure Data Factory 目前只支援將資料從 Salesforce 移動到 [支援的接收資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)，但不支援將資料從其他資料存放區移動到 Salesforce。
 
@@ -49,15 +49,15 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從 Salesforce 移動資料。
 
-若要建立管線，最簡單的方式就是使用**複製精靈**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+創建管道的最簡單方法是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 
-您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立內含複製活動之管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**，代表複製作業的輸入和輸出資料。
-3. 建立**管線**，其中含有以一個資料集作為輸入、一個資料集作為輸出的複製活動。
+2. 創建**資料集**以表示複製操作的輸入和輸出資料。
+3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來從 Salesforce 複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Salesforce 複製到 Azure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) 一節。
 
@@ -68,8 +68,8 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設為： **Salesforce**。 |是 |
-| environmentUrl | 指定 Salesforce 執行個體的 URL。 <br><br> -預設值為 "HTTPs：\//login.salesforce.com"。 <br> - 若要從沙箱複製資料，請指定「 https://test.salesforce.com」。 <br> - 若要從自訂網域複製資料，舉例來說，請指定 "https://[網域].my.salesforce.com"。 |否 |
+| type |類型屬性必須設置為 **：Salesforce**。 |是 |
+| environmentUrl | 指定 Salesforce 執行個體的 URL。 <br><br> - 預設值為"HTTPs：/login.salesforce.com"。\/ <br> - 若要從沙箱複製資料，請指定「https://test.salesforce.com」。 <br> - 若要從自訂網域複製資料，舉例來說，請指定 "https://[網域].my.salesforce.com"。 |否 |
 | username |指定使用者帳戶的使用者名稱。 |是 |
 | 密碼 |指定使用者帳戶的密碼。 |是 |
 | securityToken |指定使用者帳戶的安全性權杖。 如需如何重設/取得安全性權杖的指示，請參閱 [取得安全性權杖](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) 。 若要整體了解安全性權杖，請參閱[安全性和 API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)。 |是 |
@@ -77,7 +77,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱 [建立資料集](data-factory-create-datasets.md) 一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
-每個資料集類型的 **typeProperties** 區段都不同，可提供資料存放區中的資料位置資訊。 **RelationalTable** 類型資料集的 typeProperties 區段有下列屬性：
+**TypeProperties**部分對於每種類型的資料集都不同，並提供有關資料存儲中資料位置的資訊。 **RelationalTable** 類型資料集的 typeProperties 區段有下列屬性：
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL-92 查詢或 [Salesforce 物件查詢語言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查詢。 例如： `select * from MyTable__c` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL-92 查詢或 [Salesforce 物件查詢語言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查詢。 例如：`select * from MyTable__c`。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 > [!IMPORTANT]
 > 任何自訂物件都需要 API 名稱的「__c」部分。
@@ -108,30 +108,30 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>在 DateTime 資料行上使用 Where 子句來擷取資料
 指定 SOQL 或 SQL 查詢時，請注意 DateTime 格式差異。 例如：
 
-* **SOQL 範例**：`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **SQL 範例**：
-    * **使用複製嚮導指定查詢：** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
-    * **使用 JSON 編輯來指定查詢（正確地逸出字元）：** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
+* **SOQL 樣本**：`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL 示例**：
+    * **使用複製精靈指定查詢︰** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **使用 JSON 編輯指定查詢 (適當地逸出字元)︰** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>從 Salesforce 報表擷取資料
-例如，您可以藉由以 `{call "<report name>"}` 方式指定查詢，從 Salesforce 報表擷取資料。 `"query": "{call \"TestReport\"}"`第 1 課：建立 Windows Azure 儲存體物件{2}。
+例如，您可以藉由以 `{call "<report name>"}` 方式指定查詢，從 Salesforce 報表擷取資料。 `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>從 Salesforce 資源回收筒擷取已刪除的記錄
-若要從「Salesforce 資源回收筒」查詢虛刪除記錄，您可以在查詢中指定 **"IsDeleted = 1"** 。 例如，
+若要從「Salesforce 資源回收筒」查詢虛刪除記錄，您可以在查詢中指定 **"IsDeleted = 1"**。 例如，
 
-* 若只要查詢已刪除的記錄，請指定 "select * from MyTable__c **where IsDeleted= 1**"
-* 若要查詢所有記錄 (包括現有和已刪除的記錄)，請指定 "select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**"
+* 要僅查詢已刪除的記錄，請指定"從**isDeleted= 1 所在的**MyTable__c中選擇 * "
+* 要查詢所有記錄，包括現有記錄和已刪除記錄，請指定"從**isDeleted = 0 或 IsDeleted = 1 的**MyTable__c中選擇 * "
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON 範例：將資料從 Salesforce 複製到 Azure Blob
-下列範例提供可讓您使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來建立管線的範例 JSON 定義。 這些範例示範如何將資料從 Salesforce 複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
+下面的示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)創建管道的示例 JSON 定義。 這些範例示範如何將資料從 Salesforce 複製到 Azure Blob 儲存體。 不過，您可以在 Azure Data Factory 中使用複製活動，將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
 
 以下是為了實作案例所必須建立的 Data Factory 構件。 清單後面的各節會提供有關這些步驟的詳細資料。
 
 * [Salesforce](#linked-service-properties)
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-* [RelationalTable](data-factory-create-datasets.md) 類型的輸入[資料集](#dataset-properties)
-* [AzureBlob](data-factory-create-datasets.md) 類型的輸出[資料集](data-factory-azure-blob-connector.md#dataset-properties)
-* 具有使用 [RelationalSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 之複製活動的[管線](data-factory-azure-blob-connector.md#copy-activity-properties)
+* [RelationalTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)
+* 具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)
 
 **Salesforce 連結服務**
 
@@ -152,7 +152,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
     }
 }
 ```
-**Azure 儲存體連結服務**
+**Azure 存儲連結服務**
 
 ```json
 {
@@ -223,7 +223,7 @@ Salesforce 對於 API 要求總數和並行 API 要求均有限制。 請注意�
 }
 ```
 
-**具有複製活動的管線**
+**具有複製活動的管道**
 
 此管線包含「複製活動」，該活動已設定為使用輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中，已將 **source** 類型設為 **RelationalSource**，並將 **sink** 類型設為 **BlobSink**。
 

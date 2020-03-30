@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 76af1f51c83e9554a51e6c17266fac739e6bd6b1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276812"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 指令碼 (.csx) 開發人員參考
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-本文是使用 C# 指令碼 (.csx) 開發 Azure Functions 的簡介。
+本文是使用 C# 指令碼 (.csx**) 開發 Azure Functions 的簡介。
 
 Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您要尋求[在 Visual Studio 類別庫專案中使用 C#](functions-develop-vs.md) 上的指引，請參閱 [C# 開發人員參考](functions-dotnet-class-library.md)。
 
@@ -24,11 +24,11 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您要尋�
 
 ## <a name="how-csx-works"></a>.csx 的運作方式
 
-Azure Functions 的 C# 指令碼體驗是以 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction) 為基礎。 資料會透過方法引數流入您的 C# 函式。 引數名稱指定於 `function.json` 檔案中，而且有預先定義的名稱可用來存取函式記錄器和取消權杖等項目。
+Azure 函數的 C# 腳本體驗基於[Azure Web 作業 SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)。 資料會透過方法引數流入您的 C# 函式。 引數名稱指定於 `function.json` 檔案中，而且有預先定義的名稱可用來存取函式記錄器和取消權杖等項目。
 
-.csx 格式可讓您撰寫較少「重複使用」文字，只專注於撰寫 C# 函式。 只需定義 `Run` 方法，而不用在命名空間和類別中包裝所有項目。 像往常一樣，在檔案開頭包含任何組件參考和命名空間。
+.csx** 格式可讓您撰寫較少「重複使用」文字，只專注於撰寫 C# 函式。 只需定義 `Run` 方法，而不用在命名空間和類別中包裝所有項目。 像往常一樣，在檔案開頭包含任何組件參考和命名空間。
 
-初始化執行個體時，會編譯函數應用程式的 .csx 檔案。 此編譯步驟表示與 C# 類別庫相較之下，C# 指令碼函式的冷啟動這類項目可能需要較長的時間。 此編譯步驟也是在 Azure 入口網站中可以編輯 C# 指令碼函式但無法編輯 C# 類別庫的原因。
+初始化執行個體時，會編譯函數應用程式的 .csx** 檔案。 此編譯步驟表示與 C# 類別庫相較之下，C# 指令碼函式的冷啟動這類項目可能需要較長的時間。 此編譯步驟也是在 Azure 入口網站中可以編輯 C# 指令碼函式但無法編輯 C# 類別庫的原因。
 
 ## <a name="folder-structure"></a>資料夾結構
 
@@ -51,11 +51,11 @@ FunctionsProject
 
 其中有一個可用來設定函數應用程式的共用 [host.json](functions-host-json.md) 檔案。 每個函數都具有本身的程式碼檔案 (.csx) 和繫結設定檔 (function.json)。
 
-在 2.x[版和更新版本](functions-versions.md)的函式執行時間中所需的系結延伸模組會定義在 `extensions.csproj` 檔案中，而實際的程式庫檔案則位於 `bin` 資料夾中。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
+[版本 2.x 和函數運行時的更高版本](functions-versions.md)所需的綁定副檔名在`extensions.csproj`檔中定義，`bin`資料夾中的實際庫檔。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
 
 ## <a name="binding-to-arguments"></a>繫結至引數
 
-會透過 function.json`name`*設定檔中的* 屬性，將輸入或輸出資料繫結至 C# 指令碼函式參數。 下列範例示範佇列觸發之函式的 function.json 檔案和 run.csx 檔案。 接收來自佇列訊息之資料的參數命名為 `myQueueItem`，因為這是 `name` 屬性的值。
+會透過 function.json** 設定檔中的 `name` 屬性，將輸入或輸出資料繫結至 C# 指令碼函式參數。 下列範例示範佇列觸發之函式的 function.json** 檔案和 run.csx** 檔案。 接收來自佇列訊息之資料的參數命名為 `myQueueItem`，因為這是 `name` 屬性的值。
 
 ```json
 {
@@ -85,7 +85,7 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-`#r`稍後在本文中[會說明 ](#referencing-external-assemblies) 陳述式。
+[稍後在本文中](#referencing-external-assemblies)會說明 `#r` 陳述式。
 
 ## <a name="supported-types-for-bindings"></a>支援的繫結類型
 
@@ -97,7 +97,7 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 
 如果您需要使用自訂簡單的 CLR 物件 (POCO) 類別，則可以包含相同檔案內的類別定義，或將它放在個別檔案中。
 
-下列範例示範內含 POCO 類別定義的 run.csx 範例。
+下列範例示範內含 POCO 類別定義的 run.csx** 範例。
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -116,9 +116,9 @@ POCO 類別的每個屬性都必須定義 getter 和 setter。
 
 ## <a name="reusing-csx-code"></a>重複使用 .csx 程式碼
 
-您可以在您的 *run.csx* 檔案中使用其他 *.csx* 檔案中定義的類別和方法。 若要這樣做，請在您的 `#load`run.csx*檔案中使用* 指示詞。 在下列範例中，名為 `MyLogger` 的記錄常式已在 *myLogger.csx* 中共用，並使用 *指示詞載入至*run.csx`#load`︰
+您可以在您的 *run.csx* 檔案中使用其他 *.csx* 檔案中定義的類別和方法。 若要這樣做，請在您的 *run.csx* 檔案中使用 `#load` 指示詞。 在下列範例中，名為 `MyLogger` 的記錄常式已在 *myLogger.csx* 中共用，並使用 `#load` 指示詞載入至 *run.csx*︰
 
-範例 run.csx：
+範例 run.csx **：
 
 ```csharp
 #load "mylogger.csx"
@@ -132,7 +132,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-範例 mylogger.csx：
+範例 mylogger.csx **：
 
 ```csharp
 public static void MyLogger(ILogger log, string logtext)
@@ -141,7 +141,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-當您想要將使用 POCO 物件之函式間傳遞的資料設為強式型別時，使用共用的 .csx 檔案是常見的模式。 在下列簡化的範例中，HTTP 觸發程序和佇列觸發程序共用一個名為 `Order` 的 POCO 物件，來使排序資料成為強式類型︰
+當您想要將使用 POCO 物件之函式間傳遞的資料設為強式型別時，使用共用的 .csx** 檔案是常見的模式。 在下列簡化的範例中，HTTP 觸發程序和佇列觸發程序共用一個名為 `Order` 的 POCO 物件，來使排序資料成為強式類型︰
 
 HTTP 觸發程序的範例 *run.csx*︰
 
@@ -212,19 +212,19 @@ public class Order
 
 * `#load "mylogger.csx"` 會載入位於函式資料夾中的檔案。
 * `#load "loadedfiles\mylogger.csx"` 會載入位於函式資料夾的資料夾中的檔案。
-* `#load "..\shared\mylogger.csx"` 會載入位於與函式資料夾相同層級的資料夾中的檔案 (也就是在 [wwwroot] 的正下方)。
+* `#load "..\shared\mylogger.csx"` 會載入位於與函式資料夾相同層級的資料夾中的檔案 (也就是在 [wwwroot]** 的正下方)。
 
-`#load` 指示詞只適用於 .csx 檔案，而不適用於 .cs 檔案。
+`#load` 指示詞只適用於 .csx** 檔案，而不適用於 .cs** 檔案。
 
 ## <a name="binding-to-method-return-value"></a>繫結至方法傳回值
 
-您可以使用 `$return`function.json*中的名稱*，使用輸出繫結的方法傳回值。 如需範例，請參閱[觸發程序和繫結](./functions-bindings-return-value.md)。
+您可以使用 *function.json* 中的名稱 `$return`，使用輸出繫結的方法傳回值。 如需範例，請參閱[觸發程序和繫結](./functions-bindings-return-value.md)。
 
 唯有成功的函式執行一律導致傳回值傳遞至輸出繫結時，才使用此傳回值。 否則，使用 `ICollector` 或 `IAsyncCollector`，如下一節所示。
 
 ## <a name="writing-multiple-output-values"></a>撰寫多個輸出值
 
-若要將多個值寫入至輸出繫結，或者如果成功的函式引動過程可能未導致任何項目傳遞至輸出繫結，請使用 [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 類型。 這些類型是在方法完成時，寫入至輸出繫結的唯寫集合。
+要將多個值寫入輸出綁定，或者如果成功的函式呼叫可能不會導致任何要傳遞給輸出綁定的東西，請使用 或[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)[`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)類型。 這些類型是在方法完成時，寫入至輸出繫結的唯寫集合。
 
 這個範例會使用 `ICollector` 將多個佇列訊息寫入相同佇列：
 
@@ -248,11 +248,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> 如需您可使用之較新記錄架構 (而非 `TraceWriter`) 的資訊，請參閱[監視 Azure Functions](functions-monitoring.md#write-logs-in-c-functions) 一文中的**在 C# 函式中寫入記錄**。
+> 如需您可使用之較新記錄架構 (而非 `TraceWriter`) 的資訊，請參閱**監視 Azure Functions** 一文中的[在 C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
 
 ## <a name="async"></a>非同步處理
 
-若要讓函式變成[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
+要使函數[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 關鍵字`async`並返回物件。 `Task`
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -357,9 +357,9 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 
 ## <a name="referencing-custom-assemblies"></a>參考自訂組件
 
-若要參考自訂組件，您可以使用「共用」組件或「私人」組件：
+若要參考自訂組件，您可以使用「共用」** 組件或「私人」** 組件：
 
-* 共用組件會共用於函式應用程式內的所有函式。 若要參考自訂組件，請將組件上傳至`bin`函式應用程式根資料夾[ (wwwroot) 中名為 ](functions-reference.md#folder-structure) 的資料夾。
+* 共用組件會共用於函式應用程式內的所有函式。 若要參考自訂組件，請將組件上傳至[函式應用程式根資料夾](functions-reference.md#folder-structure) (wwwroot) 中名為 `bin` 的資料夾。
 
 * 私人組件屬於所指定函式的內容，而且支援不同版本的側載。 應該在函式目錄的 `bin` 資料夾中上傳私人組件。 使用檔案名稱 (例如 `#r "MyAssembly.dll"`) 參考組件。
 
@@ -367,10 +367,10 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 
 ### <a name="watched-directories"></a>監看的目錄
 
-系統會自動監看包含函式指令碼檔案之目錄中的組件變更。 若要監看其他目錄中的組件變更，請將它們新增至 `watchDirectories`host.json[ 中的 ](functions-host-json.md) 清單。
+系統會自動監看包含函式指令碼檔案之目錄中的組件變更。 若要監看其他目錄中的組件變更，請將它們新增至 [host.json](functions-host-json.md) 中的 `watchDirectories` 清單。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 套件
-若要在2.x 和更新版本C#的函式中使用 NuGet 套件，請將*函數 proj*檔案上傳至函式應用程式檔案系統中的函式資料夾。 以下是範例 *function.proj* 檔案，該檔案會加入對 *Microsoft.ProjectOxford.Face* *1.1.0* 版的參考：
+要在 2.x 和更高版本的 C# 函數中使用 NuGet 包，請將*函數.proj*檔上載到函數應用檔案系統中的函數資料夾。 以下是範例 *function.proj* 檔案，該檔案會加入對 *Microsoft.ProjectOxford.Face**1.1.0* 版的參考：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -387,9 +387,9 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 若要使用自訂 NuGet 摘要，請在函式應用程式根目錄的 *Nuget.Config* 檔案中指定摘要。 如需詳細資訊，請參閱[設定 NuGet 行為](/nuget/consume-packages/configuring-nuget-behavior)。
 
 > [!NOTE]
-> C#在1.x 函式中，NuGet 套件是以*專案 json*檔案來參考，而不是以函式*proj*檔案來參考。
+> 在 1.x C++ 函數中，NuGet 包引用專案 *.json*檔而不是*函數.proj*檔。
 
-針對1.x 函式，請改用*專案 json*檔案。 以下是範例*專案. json*檔案：
+對於 1.x 函數，請使用*project.json*檔。 下面是一個*示例專案.json*檔：
 
 ```json
 {
@@ -403,11 +403,11 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 }
 ```
 
-### <a name="using-a-functionproj-file"></a>使用函數 proj 檔案
+### <a name="using-a-functionproj-file"></a>使用函數.proj 檔
 
 1. 在 Azure 入口網站中開啟函式。 [記錄] 索引標籤會顯示套件安裝輸出。
-2. 若要上傳*函數 proj*檔案，請使用 Azure Functions 開發人員參考主題中[如何更新函數應用程式檔](functions-reference.md#fileupdate)中所述的其中一種方法。
-3. 上傳*函數 proj*檔案之後，您會在函式的串流記錄中看到如下列範例所示的輸出：
+2. 要上載*函數.proj*檔，請使用 Azure 函數開發人員參考主題中的["如何更新函數應用檔](functions-reference.md#fileupdate)"中描述的方法之一。
+3. 上載*函數.proj*檔後，在函數的流式處理日誌中可以看到如下示例的輸出：
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -444,12 +444,12 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>執行階段的繫結
 
-在 C# 和其他 .NET 語言中，您可以使用相對於 [function.json](https://en.wikipedia.org/wiki/Imperative_programming) 中[*宣告式*](https://en.wikipedia.org/wiki/Declarative_programming)繫結的*命令式*繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
+在 C# 和其他 .NET 語言中，您可以使用相對於 *function.json* 中[*宣告式*](https://en.wikipedia.org/wiki/Declarative_programming)繫結的[命令式](https://en.wikipedia.org/wiki/Imperative_programming)繫結模式。 當繫結參數需要在執行階段而不是設計階段中計算時，命令式繫結非常有用。 利用此模式，您可以快速在您的函式程式碼中繫結至支援的輸入和輸出繫結。
 
 定義命令式繫結，如下所示︰
 
 - **請勿**在 *function.json* 中為您所需的命令式繫結併入項目。
-- 傳入輸入參數 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
+- 傳遞輸入參數[`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs)或[`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下列 C# 模式來執行資料繫結。
 
 ```cs
@@ -459,7 +459,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是可定義繫結的.NET 屬性，而 `T` 是該繫結類型所支援的輸入或輸出類型。 `T` 不能是 `out` 參數類型 (例如 `out JObject`)。 例如，Mobile Apps 資料表輸出系結支援[六種輸出類型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但您只能使用[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)來進行 `T`。
+`BindingTypeAttribute` 是可定義繫結的.NET 屬性，而 `T` 是該繫結類型所支援的輸入或輸出類型。 `T` 不能是 `out` 參數類型 (例如 `out JObject`)。 例如，移動應用表輸出綁定支援[六種輸出類型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但只能使用[ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) `T`。
 
 ### <a name="single-attribute-example"></a>單一屬性範例
 

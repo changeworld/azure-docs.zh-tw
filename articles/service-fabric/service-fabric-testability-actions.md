@@ -1,15 +1,15 @@
 ---
-title: 模擬 Azure 微服務中的失敗
+title: 類比 Azure 微服務中的故障
 description: 本文說明關於在 Microsoft Azure Service Fabric 中找到的 Testability 動作。
 author: motanv
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282038"
 ---
 # <a name="testability-actions"></a>Testability 動作

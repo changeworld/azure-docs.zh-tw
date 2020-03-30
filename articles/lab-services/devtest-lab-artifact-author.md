@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66399209"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>為 DevTest Labs 虛擬機器建立自訂構件
@@ -30,7 +30,7 @@ ms.locfileid: "66399209"
 >
 
 ## <a name="overview"></a>總覽
-在佈建 VM 之後，您可以使用「artifacts」來部署和設定應用程式。 構件包含構件定義檔和其他儲存於 Git 存放庫之資料夾中的指令碼檔案。 構件定義檔是由 JSON 和可用來指定您想要在 VM 上安裝的運算式所組成。 例如，您可以定義構件名稱、要執行的命令，以及執行命令時可用的參數。 您可以依照名稱來參考構件定義檔中的其他指令碼檔案。
+在佈建 VM 之後，您可以使用「構件」** 來部署和設定應用程式。 構件包含構件定義檔和其他儲存於 Git 存放庫之資料夾中的指令碼檔案。 構件定義檔是由 JSON 和可用來指定您想要在 VM 上安裝的運算式所組成。 例如，您可以定義構件名稱、要執行的命令，以及執行命令時可用的參數。 您可以依照名稱來參考構件定義檔中的其他指令碼檔案。
 
 ## <a name="artifact-definition-file-format"></a>構件定義檔格式
 下列範例顯示組成定義檔基本結構的區段：
@@ -60,7 +60,7 @@ ms.locfileid: "66399209"
 | description |是 |實驗室中顯示的構件說明。 |
 | iconUri |否 |實驗室中顯示的圖示 URI。 |
 | targetOsType |是 |構件安裝所在之 VM 的作業系統。 支援的選項為 Windows 和 Linux。 |
-| parameters |否 |在電腦上執行構件安裝命令時所提供的值。 這可協助您自訂構件。 |
+| 參數 |否 |在電腦上執行構件安裝命令時所提供的值。 這可協助您自訂構件。 |
 | runCommand |是 |在 VM 上執行的構件安裝命令。 |
 
 ### <a name="artifact-parameters"></a>構件參數
@@ -89,8 +89,8 @@ ms.locfileid: "66399209"
 * bool (任何有效的 JSON 布林值)
 * array (任何有效的 JSON 陣列)
 
-## <a name="secrets-as-secure-strings"></a>為安全字串的祕密
-宣告為安全字串的祕密。 以下是宣告中的安全字串參數的語法`parameters`一節**artifactfile.json 儲存於**檔案：
+## <a name="secrets-as-secure-strings"></a>機密作為安全字串
+將機密聲明為安全字串。 下面是在`parameters`**工件檔.json**檔部分中聲明安全字串參數的語法：
 
 ```json
 
@@ -102,7 +102,7 @@ ms.locfileid: "66399209"
     },
 ```
 
-構件安裝命令，執行 PowerShell 指令碼，以便使用 Convertto-securestring 命令來建立安全字串。 
+對於專案安裝命令，請運行使用 Convert 到 SecureString 命令創建的安全字串的 PowerShell 腳本。 
 
 ```json
   "runCommand": {
@@ -110,19 +110,19 @@ ms.locfileid: "66399209"
   }
 ```
 
-如需完整範例 artifactfile.json 儲存於和 artifact.ps1 （PowerShell 指令碼），請參閱[GitHub 上的這個範例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+有關完整的示例工件file.json 和工件.ps1（PowerShell 腳本），請參閱[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
 
-另一個重點要特別注意不是記錄至主控台的祕密，輸出會捕捉到的使用者偵錯。 
+需要注意的另一個重要點是，在捕獲輸出以進行使用者調試時，不要將機密記錄到主控台。 
 
 ## <a name="artifact-expressions-and-functions"></a>構件運算式和函式
 您可以使用運算式和函式來建構構件安裝命令。
 運算式是以方括號 ([ 與 ]) 括住，並會在安裝構件後加以評估。 運算式可以出現在 JSON 字串值的任何位置。 運算式一律會傳回另一個 JSON 值。 如果您必須使用開頭為括號 ([) 的常數字串，您必須使用兩個括號 ([[)。
-通常您會使用運算式搭配函式來建構值。 正如同在 JavaScript 中，函式呼叫的格式為 **functionName(arg1,arg2,arg3)** 。
+通常您會使用運算式搭配函式來建構值。 正如同在 JavaScript 中，函式呼叫的格式為 **functionName(arg1,arg2,arg3)**。
 
 下列清單顯示常見的函式：
 
-* **parameters(parameterName)** ：傳回在執行構件命令時所提供的參數值。
-* **concat(arg1, arg2, arg3,….. )** ：結合多個字串值。 此函式可以接受各種引數。
+* **parameters(parameterName)**：傳回在執行構件命令時所提供的參數值。
+* **concat(arg1, arg2, arg3,….. )**：結合多個字串值。 此函式可以接受各種引數。
 
 下列範例示範如何使用運算式和函式來建構值：
 
@@ -147,7 +147,7 @@ ms.locfileid: "66399209"
       構件資料夾的可能外觀範例如下：
       
       ![構件資料夾範例](./media/devtest-lab-artifact-author/git-repo.png)
-5. 如果您使用自己的存放庫來儲存成品，請依照以下文章中的指示，將存放庫新增至實驗室：[新增成品和範本的 Git 存放庫](devtest-lab-add-artifact-repo.md)。
+5. 如果您使用自己的存放庫來儲存成品，請依照[新增成品和範本的 Git 存放庫](devtest-lab-add-artifact-repo.md)一文中的指示，將存放庫新增至實驗室。
 
 ## <a name="related-articles"></a>相關文章
 * [如何診斷 DevTest Labs 中的構件失敗](devtest-lab-troubleshoot-artifact-failure.md)

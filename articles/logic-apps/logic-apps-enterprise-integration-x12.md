@@ -1,5 +1,5 @@
 ---
-title: 適用于 B2B 整合的 X12 訊息
+title: 用於 B2B 集成的 X12 消息
 description: 在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息 (採用 EDI 格式)
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
 ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651469"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息
@@ -27,39 +27,39 @@ ms.locfileid: "77651469"
 以下是您所需的項目︰
 
 * 已經定義並與 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)
-* 至少已在整合帳戶中定義兩個[夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，以及在 [企業身分識別] 之下設定 X12 識別碼    
+* 至少已在整合帳戶中定義兩個[夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，以及在 [企業身分識別]**** 之下設定 X12 識別碼    
 * 您可以上傳到整合帳戶的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
 在您[建立整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[新增夥伴](logic-apps-enterprise-integration-partners.md)，以及具有您有使用的[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)之後，您可以依照下列步驟建立 X12 合約。
 
 ## <a name="create-an-x12-agreement"></a>建立 X12 合約
 
-1. 登入 [Azure 入口網站](https://portal.azure.com "Azure 入口網站")。 
+1. 登錄到 Azure[門戶](https://portal.azure.com "Azure 入口網站")。 
 
-2. 從主要 Azure 功能表中選取 [所有服務]。 
-   在搜尋方塊中輸入「整合」，然後選取 [整合帳戶]。  
+2. 從主要 Azure 功能表中選取 [所有服務]****。 
+   在搜尋方塊中輸入「整合」，然後選取 [整合帳戶]****。  
 
    ![尋找您的整合帳戶](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
    > [!TIP]
-   > 如果 [所有服務] 未出現，您可能必須先展開功能表。 在摺疊功能表的頂端，選取 [顯示功能表]。
+   > 如果 [所有服務]**** 未出現，您可能必須先展開功能表。 在摺疊功能表的頂端，選取 [顯示功能表]****。
 
-3. 在 [整合帳戶] 底下，選取要在其中新增合約的整合帳戶。
+3. 在 [整合帳戶]**** 底下，選取要在其中新增合約的整合帳戶。
 
    ![選取您要在其中建立合約的整合帳戶](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. 選取 [概觀]，然後選取 [合約] 圖格。 
+4. 選取 [概觀]****，然後選取 [合約]**** 圖格。 
    如果您沒有 [合約] 圖格，請先新增圖格。 
 
    ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
-5. 在 [合約] 之下，選擇 [新增]。
+5. 在 [合約]**** 之下，選擇 [新增]****。
 
    ![選擇 [新增]](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
-6. 在 [新增] 之下，輸入合約的 [名稱]。 
+6. 在 [新增]**** 之下，輸入合約的 [名稱]****。 
    針對 [合約類型]，選取 **X12**。 
-   選取合約的 [主機夥伴]、[主機身分識別]、[來賓夥伴] 和 [來賓身分識別]。 
+   選取合約的 [主機夥伴]****、[主機身分識別]****、[來賓夥伴]**** 和 [來賓身分識別]****。 
    如需更多屬性詳細資訊，請參閱此步驟中的資料表。
 
     ![提供合約詳細資料](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
@@ -82,18 +82,18 @@ ms.locfileid: "77651469"
 
 您現在已經設定合約屬性，您可以設定此合約如何識別及處理您透過此合約從夥伴接收的內送訊息。
 
-1.  在 [新增] 之下，選取 [接收設定]。
+1.  在 [新增]**** 之下，選取 [接收設定]****。
 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
 
-    [接收設定] 分成下列各區段：識別碼、通知、結構描述、信封、控制編號、驗證和內部設定。
+    [接收設定]**** 分成下列各區段：識別碼、通知、結構描述、信封、控制編號、驗證和內部設定。
 
-2. 完成後，請務必選擇 [確定] 以儲存設定。
+2. 完成後，請務必選擇 [確定]**** 以儲存設定。
 
 您的合約現在已準備好處理符合您所選設定的內送訊息。
 
 ### <a name="identifiers"></a>識別碼
 
-![設定識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
+![設置識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -104,7 +104,7 @@ ms.locfileid: "77651469"
 
 ### <a name="acknowledgment"></a>通知
 
-![設定通知屬性](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+![設置確認屬性](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -126,7 +126,7 @@ ms.locfileid: "77651469"
 | 結構描述 |選取您要使用的結構描述檔案。 結構描述已新增到您的整合帳戶。 |
 
 > [!NOTE]
-> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-schemas.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-accounts.md)。
+> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
 
 ### <a name="envelopes"></a>信封
 
@@ -134,7 +134,7 @@ ms.locfileid: "77651469"
 
 | 屬性 | 描述 |
 | --- | --- |
-| ISA11 使用方法 |指定要用於交易集中的分隔符號︰ <p>選取 [標準識別碼] 以使用句號 (.) 做為小數點標記，而不是 EDI 接收管線中內送文件的小數點標記。 <p>選取 [重複分隔符號]，以指定重複出現簡單資料元素或重複資料結構的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
+| ISA11 使用方法 |指定要用於交易集中的分隔符號︰ <p>選取 [標準識別碼]**** 以使用句號 (.) 做為小數點標記，而不是 EDI 接收管線中內送文件的小數點標記。 <p>選擇 **"重複分隔符號**"以指定簡單資料元素或重複資料結構重複發生的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
 
 ### <a name="control-numbers"></a>控制編號
 
@@ -142,13 +142,13 @@ ms.locfileid: "77651469"
 
 | 屬性 | 描述 |
 | --- | --- |
-| 不允許交換控制編號重複 |封鎖重複的交換。 檢查已接收之交換控制編號的交換控制編號 (ISA13)。 如果偵測到相符項目，接收管線就不會處理交換。 您可以提供 [檢查 ISA13 是否重複的天數間隔] 的值，以指定執行檢查的天數。 |
+| 不允許交換控制編號重複 |封鎖重複的交換。 檢查已接收之交換控制編號的交換控制編號 (ISA13)。 如果偵測到相符項目，接收管線就不會處理交換。 您可以提供 [檢查 ISA13 是否重複的天數間隔]** 的值，以指定執行檢查的天數。 |
 | 不允許群組控制編號重複 |封鎖有重複群組控制編號的交換。 |
 | 不允許交易集控制編號重複 |封鎖有重複交易集控制編號的交換。 |
 
 ### <a name="validation"></a>驗證
 
-![設定已接收訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+![為接收郵件設置驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
 當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
 
@@ -159,9 +159,9 @@ ms.locfileid: "77651469"
 | 擴充驗證 |如果資料類型不是 EDI，則在資料元素要求時才進行驗證，且允許重複、列舉和資料元素長度驗證 (最小/最大)。 |
 | 允許前置/尾端零 |保留任何額外的前置或尾端零及空格字元。 請勿移除這些字元。 |
 | 修剪前置/尾端零 |移除前置或尾端零及空格字元。 |
-| 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]，禁止在已接收的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選擇性] 以接受包含或不含尾端分隔符號的交換。 <p>如果交換必須具備尾端分隔符號，請選取 [強制性]。 |
+| 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]****，禁止在已接收的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選用]**** 以接受具有或不具有結尾分隔字元的交換。 <p>如果交換必須具備尾端分隔符號，請選取 [強制性]****。 |
 
-### <a name="internal-settings"></a>內部設定
+### <a name="internal-settings"></a>內部設置
 
 ![選取內部設定](./media/logic-apps-enterprise-integration-x12/x12-37.png) 
 
@@ -178,18 +178,18 @@ ms.locfileid: "77651469"
 
 您可以設定此合約如何識別及處理您透過此合約傳送給夥伴的外寄訊息。
 
-1.  在 [新增] 之下，選取 [傳送設定]。
+1.  在 [新增]**** 之下，選取 [傳送設定]****。
 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
 
-    [傳送設定] 分成下列各區段：識別碼、通知、結構描述、信封、字元集和分隔符號、控制編號以及驗證。
+    [傳送設定]**** 分成下列各區段：識別碼、通知、結構描述、信封、字元集和分隔符號、控制編號以及驗證。
 
-2. 完成後，請務必選擇 [確定] 以儲存設定。
+2. 完成後，請務必選擇 [確定]**** 以儲存設定。
 
 您的合約現在已準備好處理符合您所選設定的外寄訊息。
 
 ### <a name="identifiers"></a>識別碼
 
-![設定識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
+![設置識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -200,7 +200,7 @@ ms.locfileid: "77651469"
 
 ### <a name="acknowledgment"></a>通知
 
-![設定通知屬性](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![設置確認屬性](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -219,7 +219,7 @@ ms.locfileid: "77651469"
 | SCHEMA |選取要使用的結構描述。 結構描述位於您的整合帳戶中。 若先選取結構描述，它會自動設定版本與交易類型  |
 
 > [!NOTE]
-> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-schemas.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-accounts.md)。
+> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
 
 ### <a name="envelopes"></a>信封
 
@@ -227,7 +227,7 @@ ms.locfileid: "77651469"
 
 | 屬性 | 描述 |
 | --- | --- |
-| ISA11 使用方法 |指定要用於交易集中的分隔符號︰ <p>選取 [標準識別碼] 以使用句號 (.) 做為小數點標記，而不是 EDI 接收管線中內送文件的小數點標記。 <p>選取 [重複分隔符號]，以指定重複出現簡單資料元素或重複資料結構的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
+| ISA11 使用方法 |指定要用於交易集中的分隔符號︰ <p>選取 [標準識別碼]**** 以使用句號 (.) 做為小數點標記，而不是 EDI 接收管線中內送文件的小數點標記。 <p>選擇 **"重複分隔符號**"以指定簡單資料元素或重複資料結構重複發生的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
 
 ### <a name="control-numbers"></a>控制編號
 
@@ -273,7 +273,7 @@ ms.locfileid: "77651469"
 
 ### <a name="validation"></a>驗證
 
-![設定傳送訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+![設置用於發送消息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 
 當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
 
@@ -284,24 +284,24 @@ ms.locfileid: "77651469"
 | 擴充驗證 |如果資料類型不是 EDI，則在資料元素要求時才進行驗證，且允許重複、列舉和資料元素長度驗證 (最小/最大)。 |
 | 允許前置/尾端零 |保留任何額外的前置或尾端零及空格字元。 請勿移除這些字元。 |
 | 修剪前置/尾端零 |移除前置或尾端零字元。 |
-| 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]，禁止在已傳送的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選擇性] 以傳送包含或不含尾端分隔符號的交換。 <p>如果傳送的交換必須具備尾端分隔符號，請選取 [強制性]。 |
+| 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]****，禁止在已傳送的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選擇性]**** 以傳送包含或不含尾端分隔符號的交換。 <p>如果傳送的交換必須具備尾端分隔符號，請選取 [強制性]****。 |
 
 ## <a name="find-your-created-agreement"></a>尋找您建立的合約
 
-1.  完成所有合約屬性的設定之後，請在 [新增] 頁面中選擇 [確定]，以完成合約建立並回到整合帳戶。
+1.  完成所有合約屬性的設定之後，請在 [新增]**** 頁面中選擇 [確定]****，以完成合約建立並回到整合帳戶。
 
-    您新增的合約現在顯示於您的 [合約] 清單中。
+    您新增的合約現在顯示於您的 [合約]**** 清單中。
 
-2.  您也可以在整合帳戶概觀中檢視您的合約。 在整合帳戶功能表上，選擇 [概觀]，然後選取 [合約] 圖格。
+2.  您也可以在整合帳戶概觀中檢視您的合約。 在整合帳戶功能表上，選擇 [概觀]****，然後選取 [合約]**** 圖格。
 
     ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/x12/)。 
+有關此連接器的更多技術詳細資訊（如連接器的 Swagger 檔所述的操作和限制），請參閱[連接器的參考頁](https://docs.microsoft.com/connectors/x12/)。 
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 對於[整合服務環境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用，此連接器的 ISE 標記版本使用[ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

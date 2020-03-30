@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278684"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解適用於自動化 Runbook 的重要 Windows PowerShell 工作流程概念
@@ -31,7 +31,7 @@ Workflow Test-Workflow
 }
 ```
 
-工作流程的名稱必須符合自動化 Runbook 的名稱。 如果正在匯入 Runbook，檔案名稱必須符合工作流程名稱，並必須以 .ps1 結尾。
+工作流程的名稱必須符合自動化 Runbook 的名稱。 如果正在導入 Runbook，則檔案名必須與工作流名稱匹配，並且必須以 *.ps1*結尾。
 
 若要將參數加入至工作流程，請使用 **Param** 關鍵字，如同您會對指令碼執行的動作。
 
@@ -222,7 +222,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>檢查點
 
-*檢查點* 是包含變數的目前值和在該點產生的任何輸出的工作流程的目前狀態的快照。 如果工作流程結束時發生錯誤或是擱置，下次執行時，就會從其最後一個檢查點開始，而不是從工作流程的開頭開始。  您可以使用 **Checkpoint-Workflow** 活動來設定工作流程中的檢查點。 Azure 自動化具有稱為「[公平共用](automation-runbook-execution.md#fair-share)」的功能，其中任何執行3小時的 runbook 都會卸載，以允許其他 runbook 執行。 最後，卸載的 runbook 將會重載，當它是時，它會從 runbook 中的最後一個檢查點繼續執行。 為了保證 runbook 最後會完成，您必須在執行時間不到3小時的間隔中新增檢查點。 如果在每次執行期間新增了新的檢查點，而且在3小時後收回 runbook，因為發生錯誤，則會無限期地繼續 runbook。
+*檢查點* 是包含變數的目前值和在該點產生的任何輸出的工作流程的目前狀態的快照。 如果工作流程結束時發生錯誤或是擱置，下次執行時，就會從其最後一個檢查點開始，而不是從工作流程的開頭開始。  您可以使用 **Checkpoint-Workflow** 活動來設定工作流程中的檢查點。 Azure 自動化具有一個稱為[公平共用](automation-runbook-execution.md#fair-share)的功能，其中將卸載運行 3 小時的 Runbook 以允許其他 Runbook 運行。 最終，將重新載入已卸載的 Runbook，當它被重新載入時，它將從 Runbook 中獲取的最後一個檢查點恢復執行。 為了保證 Runbook 最終完成，您必須按執行時間少於 3 小時的間隔添加檢查點。 如果在每次運行期間都添加了一個新檢查點，並且 Runbook 在 3 小時後由於錯誤而被逐出，則 Runbook 將無限期恢復。
 
 在下列範例程式碼中，Activity2 之後發生的例外狀況造成工作流程結束。 工作流程再次執行時，它會先執行 Activity2，因為這是緊接在設定的最後一個檢查點之後。
 
@@ -254,7 +254,7 @@ Workflow Copy-Files
 }
 ```
 
-在您呼叫 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活動或最後一個檢查點之後，使用者名稱認證就不會保存下來，因此您必須將認證設定為 null，然後在呼叫 **Suspend-Workflow** 或檢查點後，再次從資產存放區擷取認證。  否則，您可能會收到下列錯誤訊息：*無法繼續工作流程工作，可能是因為無法完整儲存持續性資料，或儲存的持續性資料已損毀。您必須重新開機工作流程。*
+在您呼叫 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活動或最後一個檢查點之後，使用者名稱認證就不會保存下來，因此您必須將認證設定為 null，然後在呼叫 **Suspend-Workflow** 或檢查點後，再次從資產存放區擷取認證。  否則，您可能會收到以下錯誤訊息：*無法恢復工作流作業，因為持久性資料無法完全保存，或者保存的持久性資料已損壞。您必須重新開機工作流。*
 
 下列同一個程式碼會示範如何在 PowerShell 工作流程 Runbook 中處理此問題。
 
@@ -291,5 +291,5 @@ workflow CreateTestVms
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要開始使用 PowerShell 工作流程 Runbook，請參閱 [我的第一個 PowerShell 工作流程 Runbook](automation-first-runbook-textual.md)
+* 要開始使用 PowerShell 工作流運行簿，請參閱[我的第一個 PowerShell 工作流運行簿](automation-first-runbook-textual.md)
 

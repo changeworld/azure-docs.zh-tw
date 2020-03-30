@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275174"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中建立管理解決方案檔 (預覽)
@@ -122,7 +122,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
     }
 
 
-參考解決方案的其他項目中使用 **parameters('parameter name')** 語法的參數值。  例如，若要存取工作區名稱，您會使用 **parameters('workspaceName')**
+參考解決方案的其他項目中使用 **parameters('parameter name')** 語法的參數值。  例如，要訪問工作區名稱，請使用**參數（"工作區名稱"）**
 
 ## <a name="variables"></a>變數
 [變數](../../azure-resource-manager/templates/template-syntax.md#variables)是您會在管理解決方案的其餘部分中使用的值。  這些值不會公開給安裝解決方案的使用者。  它們旨在為作者提供單一位置，讓他們可以管理在整個解決方案可能會重複使用的值。 您應該將解決方案特有的值放在變數中，而非將這些值硬式編碼在 **resources** 元素中。  這會讓程式碼更容易閱讀，並可讓您輕鬆地在後續的版本中變更這些值。
@@ -137,7 +137,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
         "AutomationApiVersion": "2015-10-31"
     },
 
-參考透過使用 **variables('variable name')** 語法的解決方案參數值。  例如，若要存取 SolutionName 變數，您會使用 **variables('SolutionName')** 。
+參考透過使用 **variables('variable name')** 語法的解決方案參數值。  例如，要訪問解決方案名稱變數，請使用**變數（"解決方案名稱"）。**
 
 您也可以定義有多組值的複雜變數。  這在您會針對不同的資源類型定義多個屬性的管理解決方案中，這特別實用。  例如，您可以將上述的解決方案變數重建為下列所示的狀態。
 
@@ -158,7 +158,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 
 
 ### <a name="dependencies"></a>相依性
-**dependsOn** 元素指定對另一個資源的[相依性](../../azure-resource-manager/templates/define-resource-dependency.md)。  安裝解決方案時，直到所有相依性建立後才會建立資源。  例如，解決方案可能會在使用[作業資源](solutions-resources-automation.md#runbooks)安裝時[啟動 Runbook](solutions-resources-automation.md#automation-jobs)。  作業資源會相依於 Runbook 資源，以確保在建立作業前建立 Runbook。
+**dependsOn** 元素指定對另一個資源的[相依性](../../azure-resource-manager/templates/define-resource-dependency.md)。  安裝解決方案時，直到所有相依性建立後才會建立資源。  例如，解決方案可能會在使用[作業資源](solutions-resources-automation.md#automation-jobs)安裝時[啟動 Runbook](solutions-resources-automation.md#runbooks)。  作業資源會相依於 Runbook 資源，以確保在建立作業前建立 Runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作區和自動化帳戶
 管理解決方案需要 [Log Analytics 工作區](../../azure-monitor/platform/manage-access.md)來包含檢視，以及[自動化帳戶](../../automation/automation-security-overview.md#automation-account-overview)來包含 Runbook 和相關資源。  這些項目必須在建立解決方案中的資源前取得，且不得定義於解決方案本身。  使用者將會在部署解決方案時[指定工作區和帳戶](solutions.md#log-analytics-workspace-and-automation-account)，但身為作者，您應該考慮下列幾點。
@@ -206,11 +206,11 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 
 | 屬性 | 描述 |
 |:--- |:--- |
-| workspaceResourceId |Log Analytics 工作區的識別碼，格式為 *\<資源群組識別碼 >:/providers/microsoft.operationalinsights/workspaces/\<工作區名稱\>* 。 |
+| workspaceResourceId |表單中的日誌分析工作區的 ID * \<>/提供程式/Microsoft.操作見解/工作區/\<工作區名稱\>*。 |
 | referencedResources |解決方案移除時不應移除的解決方案資源清單。 |
 | containedResources |解決方案移除時應移除的解決方案資源清單。 |
 
-上述範例適用於具有 Runbook、排程和檢視的解決方案。  *properties* 元素會「參考」排程和 Runbook，因此在移除解決方案時不會移除它們。  會*包含*檢視，因此當移除解決方案時會移除它。
+上述範例適用於具有 Runbook、排程和檢視的解決方案。  **properties** 元素會「參考」** 排程和 Runbook，因此在移除解決方案時不會移除它們。  會*包含*檢視，因此當移除解決方案時會移除它。
 
 ### <a name="plan"></a>計畫
 解決方案資源的**計劃**實體具有下表中的屬性。

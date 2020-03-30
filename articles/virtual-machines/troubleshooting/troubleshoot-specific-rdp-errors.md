@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266867"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>針對 Azure 中 Windows VM 的特定 RDP 錯誤訊息進行疑難排解
@@ -27,10 +27,10 @@ ms.locfileid: "79266867"
 
 如需特定錯誤訊息的資訊，請參閱下列內容：
 
-* [遠端工作階段中斷，因為沒有提供授權的遠端桌面授權伺服器可以使用](#rdplicense)。
+* [遠端會話已中斷連線，因為沒有可用的遠端桌面許可證伺服器來提供許可證](#rdplicense)。
 * [遠端桌面找不到電腦「名稱」](#rdpname)。
 * [發生驗證錯誤。無法連絡本機安全性授權](#rdpauth)。
-* [Windows 安全性錯誤：您的認證無法運作](#wincred)。
+* [Windows 安全錯誤：您的憑據不起作用](#wincred)。
 * [這部電腦無法連線到遠端電腦](#rdpconnect)。
 
 <a id="rdplicense"></a>
@@ -69,7 +69,7 @@ ms.locfileid: "79266867"
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>發生驗證錯誤。 無法連絡本機安全性授權。
 原因：目標 VM 在認證的使用者名稱部分找不到安全性授權。
 
-當您的使用者名稱格式為 *SecurityAuthority*\\*UserName* (範例：CORP\User1) 時，*SecurityAuthority* 部分會是 VM 的電腦名稱 (針對本機安全性授權) 或 Active Directory 網域名稱。
+當使用者名位於*SecurityAuthority*\\*使用者名*（例如：CORP_User1）中時，*安全頒發機構*部分是 VM 的電腦名稱稱（對於本地安全機構）或活動目錄功能變數名稱。
 
 可能的解決方案：
 
@@ -84,8 +84,8 @@ ms.locfileid: "79266867"
 
 以 Windows 為基礎的電腦可以驗證本機帳戶或網域帳戶之認證。
 
-* 如果是本機帳戶，請使用 *ComputerName*\\*UserName* 語法 (範例：SQL1\Admin4798)。
-* 針對網域帳戶，請使用 *DomainName*\\*UserName* 語法 (範例：CONTOSO\peterodman)。
+* 對於本地帳戶，請使用*電腦名稱稱*\\*使用者名*語法（例如：SQL1_admin4798）。
+* 對於域帳戶，請使用*功能變數名稱*\\*使用者名*語法（例如：CONTOSO_peterodman）。
 
 如果您在新的 Active Directory 樹系將 VM 提升為網域控制站，您用來登入的本機系統管理員帳戶會轉換為對等的帳戶，在新樹系和網域中使用相同的密碼。 本機帳戶隨即刪除。
 
@@ -102,7 +102,7 @@ ms.locfileid: "79266867"
 
 每部 Windows 電腦都有遠端桌面使用者本機群組，其中包含能夠遠端登入的帳戶和群組。 本機系統管理員群組成員也有權限，即使這些帳戶未列在遠端桌面使用者本機群組中。 對於加入網域的機器，本機系統管理員群組也包含此網域的網域系統管理員。
 
-請確保您用於連接的帳戶具有遠端桌面登入權限。 因應措施是使用網域或本機系統管理員帳戶透過遠端桌面進行連接。 若要將所需帳戶新增至「遠端桌面」使用者本機群組，請使用 Microsoft Management Console 嵌入式管理單元 ([系統工具] > [本機使用者和群組] > [群組] > [遠端桌面使用者])。
+請確保您用於連接的帳戶具有遠端桌面登入權限。 因應措施是使用網域或本機系統管理員帳戶透過遠端桌面進行連接。 若要將所需帳戶新增至「遠端桌面」使用者本機群組，請使用 Microsoft Management Console 嵌入式管理單元 ([系統工具] > [本機使用者和群組] > [群組] > [遠端桌面使用者]****)。
 
 ## <a name="next-steps"></a>後續步驟
 如果您在使用 RDP 進行連線時沒有發生上述錯誤，而是遇到未知的問題，請參閱[遠端桌面的疑難排解指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

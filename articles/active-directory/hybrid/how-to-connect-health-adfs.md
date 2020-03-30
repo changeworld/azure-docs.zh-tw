@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261563"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 AD FS
-下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 如需使用 Azure AD Connect Health 監視 Azure AD Connect （同步）的相關資訊，請參閱[使用 Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)處理。此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱搭配[使用 Azure AD Connect Health 與 AD DS](how-to-connect-health-adds.md)。
+下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 有關監視 Azure AD 連接（同步）與 Azure AD 連接運行狀況的資訊，請參閱[使用 Azure AD 連接運行狀況進行同步](how-to-connect-health-sync.md)。此外，有關使用 Azure AD 連接運行狀況監視活動目錄域服務的資訊，請參閱[使用 Azure AD 將運行狀況與 AD DS 連接](how-to-connect-health-adds.md)。
 
 ## <a name="alerts-for-ad-fs"></a>AD FS 的警示
 [Azure AD Connect Health 警示] 區段將為您提供作用中警示的清單。 每個警示都包含相關資訊、解決步驟，以及相關文件的連結。
@@ -121,5 +121,5 @@ Azure AD Connect Health for ADFS 會提供一份報告，內容有關因為使�
 ## <a name="related-links"></a>相關連結
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
-* [有風險的 IP 報告](how-to-connect-health-adfs-risky-ip.md)
+* [風險 IP 報告](how-to-connect-health-adfs-risky-ip.md)
 

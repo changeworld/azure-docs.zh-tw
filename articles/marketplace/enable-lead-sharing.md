@@ -1,25 +1,23 @@
 ---
 title: 在 Azure Marketplace 中啟用潛在客戶共用 | Azure
 description: 了解如何為應用程式與服務發行者啟用 Azure Marketplace 和 AppSource 的潛在客戶共用。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 09282f3a54eeded52c63fab6bfe13528eaace48a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286297"
 ---
 # <a name="enable-lead-sharing"></a>啟用潛在客戶共用
 確定已啟用潛在客戶管理，讓您列於 [Azure Marketplace](https://azuremarketplace.microsoft.com) 或 [Microsoft AppSource](https://appsource.microsoft.com) 中，協助您接收下列對象的連絡人資訊：
 
-| 店面 | 對象 |
+| 店面 | 適用對象 |
 |:--- |:--- |
 | AppSource | 商務客戶 |
 | Azure Marketplace | 所有客戶 |
@@ -40,8 +38,8 @@ ms.locfileid: "73818676"
 
 | 店面 | 列出清單 |
 |:--- |:--- |
-| AppSource | <table> <tr><td>應用程式</td></tr> <tr><td>諮詢服務</td></tr> </table> |
-| Azure Marketplace | <table> <tr><td>供應項目</td></tr> <tr><td>Technology</td></tr> </table> |
+| AppSource | <table> <tr><td>App</td></tr> <tr><td>諮詢服務</td></tr> </table> |
+| Azure Marketplace | <table> <tr><td>供應項目</td></tr> <tr><td>技術</td></tr> </table> |
 
 您應該具備可追蹤潛在客戶的程序，如下表所述：
 

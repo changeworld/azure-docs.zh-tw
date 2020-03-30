@@ -1,16 +1,16 @@
 ---
 title: 如何調整 Azure Redis 快取的規模
-description: 瞭解如何使用 Azure 入口網站以及 Azure PowerShell 和 Azure CLI 等工具，來調整您的 Azure Cache for Redis 實例。
+description: 瞭解如何使用 Azure 門戶和 Azure PowerShell 和 Azure CLI 等工具為 Redis 實例縮放 Azure 緩存。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277995"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何調整 Azure Redis 快取的規模
@@ -29,11 +29,11 @@ ms.locfileid: "79277995"
 如果您判斷快取不再符合您應用程式的需求，則可以調整為適合您應用程式的較大或較小快取定價層。 如需有關判斷要使用哪個快取定價層的詳細資訊，請參閱 [我應該使用哪個 Azure Redis 快取供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
 ## <a name="scale-a-cache"></a>調整快取
-若要調整快取，在 [Azure 入口網站](cache-configure.md#configure-azure-cache-for-redis-settings)中[瀏覽至快取](https://portal.azure.com)，然後按一下 **[資源]** 功能表中的 **[調整]** 。
+若要調整快取，在 [Azure 入口網站](https://portal.azure.com)中[瀏覽至快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後按一下 **[資源]** 功能表中的 **[調整]**。
 
 ![調整](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-從 [選取定價層] 刀鋒視窗中選取想要的定價層，然後按一下 [選取]。
+從 [選取定價層]**** 刀鋒視窗中選取想要的定價層，然後按一下 [選取]****。
 
 ![定價層][redis-cache-pricing-tier-blade]
 
@@ -47,11 +47,11 @@ ms.locfileid: "79277995"
 * 您無法直接從**基本**快取調整至**進階**快取。 首先，在單一調整作業中從**基本**調整至**標準**，然後在後續的調整作業中從**標準**調整至**進階**。
 * 您無法從較大的大小向下調整至 **C0 (250 MB)** 的大小。
  
-當快取正在調整成新的定價層時，[Azure Redis 快取] 刀鋒視窗中會顯示[正在調整規模] 狀態。
+當快取正在調整成新的定價層時，[Azure Redis 快取]**** 刀鋒視窗中會顯示[正在調整規模]**** 狀態。
 
 ![調整大小][redis-cache-scaling]
 
-調整完成時，狀態會從 [正在調整] 變更為 [執行中]。
+調整完成時，狀態會從 [正在調整]**** 變更為 [執行中]****。
 
 ## <a name="how-to-automate-a-scaling-operation"></a>如何自動化調整作業
 除了在 Azure 入口網站中調整快取執行個體之外，您還可以使用 PowerShell Cmdlet、Azure CLI 以及使用 Microsoft Azure 管理庫 (MAML) 進行調整。 
@@ -64,7 +64,7 @@ ms.locfileid: "79277995"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-當修改的屬性為 [、](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) 或 `Size` 時，您可以使用 PowerShell 以 `Sku`Set-AzRedisCache`ShardCount`Cmdlet 調整您的「Azure Redis 快取」執行個體規模。 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 
+在修改`Sku`或`ShardCount`屬性時，可以使用[Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) Cmdlet 來縮放 Redis 實例`Size`的 Azure 緩存。 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -126,7 +126,7 @@ ms.locfileid: "79277995"
 ### <a name="how-does-scaling-work"></a>調整運作方式如何？
 * **基本** 快取在調整為不同的大小時會關閉，並會使用新的大小佈建新的快取。 在此期間，快取無法使用，而且快取中的所有資料都會遺失。
 * **基本**快取在調整為**標準**快取時，會佈建複本快取，且會從主要快取將資料複製到複本快取。 調整程序期間仍可使用快取。
-* 當**標準**快取調整為不同的大小或**進階**快取時，會關閉其中一個複本，並會將其重新佈建為新的大小並傳輸資料，然後另一個複本會先執行容錯移轉，再進行重新佈建，這與其中一個快取節點失敗期間發生的程序類似。
+* 當**標準**緩存縮放到不同大小或**高級**緩存時，其中一個副本將關閉並重新預配到新大小和傳輸的資料，然後另一個副本在重新預配之前執行容錯移轉，類似于其中一個緩存節點發生故障期間發生的過程。
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>我是否會在調整期間遺失快取中的資料？
 * **基本** 快取調整為新的大小時，會遺失所有資料，且無法在調整作業期間使用快取。
@@ -166,10 +166,10 @@ ms.locfileid: "79277995"
 
 
 ### <a name="how-long-does-scaling-take"></a>調整需要多長的時間？
-調整時間取決於快取中的資料量，以及需要較長時間來完成的資料量。 調整大約需要20分鐘的時間。 針對叢集快取，調整每個分區大約需要20分鐘的時間。
+縮放時間取決於緩存中的資料量，而大量資料需要更長的時間才能完成。 縮放大約需要 20 分鐘。 對於群集緩存，縮放每個分片大約需要 20 分鐘。
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>如何分辨調整何時完成？
-在 Azure 入口網站中，您可以看到調整作業進行中。 調整完成時，快取的狀態會變更為 [執行中]。
+在 Azure 入口網站中，您可以看到調整作業進行中。 調整完成時，快取的狀態會變更為 [執行中] ****。
 
 <!-- IMAGES -->
 

@@ -1,69 +1,69 @@
 ---
-title: 註冊 Azure Functions 系結延伸模組
-description: 瞭解如何根據您的環境註冊 Azure Functions 系結延伸模組。
+title: 註冊 Azure 函數綁定擴展
+description: 瞭解如何基於環境註冊 Azure 函數綁定擴展。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277514"
 ---
-# <a name="register-azure-functions-binding-extensions"></a>註冊 Azure Functions 系結延伸模組
+# <a name="register-azure-functions-binding-extensions"></a>註冊 Azure 函數綁定擴展
 
-在 Azure Functions 2.x 版中，系結會當做函式運行[時間中的](./functions-triggers-bindings.md)個別套件來提供。 雖然 .NET 函式會透過 NuGet 封裝來存取系結，但擴充功能組合可讓其他函式透過設定設定來存取所有系結。
+在 Azure 函數版本 2.x 中，[綁定](./functions-triggers-bindings.md)作為函數運行時的單獨包提供。 雖然 .NET 函數通過 NuGet 包訪問綁定，但擴展包允許其他函數通過配置設置訪問所有綁定。
 
-請考慮下列與系結延伸模組相關的專案：
+請考慮與綁定擴展相關的以下項：
 
-- 系結延伸模組不會在函數1.x 中明確註冊，除非[使用 Visual Studio 建立C#類別庫](#local-csharp)。
+- 綁定擴展未在函數 1.x 中顯式註冊，除非[使用 Visual Studio 創建 C# 類庫](#local-csharp)。
 
-- 預設支援 HTTP 和計時器觸發程式，而且不需要擴充功能。
+- 預設情況下支援 HTTP 和計時器觸發器，不需要擴展。
 
-下表指出註冊系結的時機和方式。
+下表指示註冊綁定的時以及如何註冊綁定。
 
 | 開發環境 |註冊<br/> 在 Functions 1.x 中  |註冊<br/> 在 Functions 2.x 中  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure 入口網站|自動|自動|
-|Non-.NET 語言或本機 Azure Core 工具開發|自動|[使用 Azure Functions Core Tools 和延伸模組配套](#extension-bundles)|
-|C#使用 Visual Studio 的類別庫|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
+|Non-.NET語言或本地 Azure 核心工具開發|自動|[使用 Azure 函數核心工具和擴展包](#extension-bundles)|
+|使用視覺化工作室的 C# 類庫|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
 |使用 Visual Studio Code 的 C# 類別庫|N/A|[使用 .NET Core CLI](#vs-code)|
 
-## <a name="extension-bundles"></a>本機開發的延伸模組配套
+## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>用於本地發展的擴展捆綁包
 
-延伸模組配套是一種部署技術，可讓您將一組相容的函式系結擴充功能新增至函式應用程式。 當您建立應用程式時，會新增一組預先定義的延伸模組。 組合中定義的延伸模組套件彼此相容，這可協助您避免封裝之間的衝突。 您會在應用程式的 host. json 檔案中啟用延伸模組配套。  
+擴展包是一種部署技術，允許您向函數應用添加一組相容的函數綁定擴展。 生成應用時，將添加一組預定義的擴展。 捆綁包中定義的擴展包彼此相容，這有助於避免包之間的衝突。 您可以在應用的主機.json 檔中啟用擴展包。  
 
-您可以使用版本2.x 和更新版本的函式執行時間的延伸模組組合。 在本機開發時，請確定您使用的是最新版本的[Azure Functions Core Tools](functions-run-local.md#v2)。
+您可以將擴展包與版本 2.x 和函數運行時的更高版本一起使用。 在本地開發時，請確保使用的是最新版本的[Azure 函數核心工具](functions-run-local.md#v2)。
 
-在遠端建立時，使用 Azure Functions Core Tools、Visual Studio Code 和的本機開發延伸模組組合。
+使用 Azure 函數核心工具、視覺化工作室代碼以及遠端生成時，將擴展包用於本地開發。
 
-如果您未使用延伸模組配套，則必須先在本機電腦上安裝 .NET Core 2.x SDK，再安裝任何系結延伸模組。 延伸模組配套會移除本機開發的這項需求。 
+如果不使用擴展包，則必須在本地電腦上安裝 .NET Core 2.x SDK，然後才能安裝任何綁定擴展。 擴展捆綁包消除了本地開發的此要求。 
 
-若要使用延伸模組配套，請更新*主機. json*檔案，以包含 `extensionBundle`的下列專案：
+要使用擴展包，請更新*host.json*檔以包括 以下條目`extensionBundle`：
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a>C\# 具有 Visual Studio 的類別庫
+## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>帶\#視覺工作室的 C 類庫
 
-在**Visual Studio**中，您可以使用 [[安裝套件](https://docs.microsoft.com/nuget/tools/ps-ref-install-package)] 命令從套件管理員主控台安裝套件，如下列範例所示：
+在**Visual Studio 中**，可以使用[安裝包](https://docs.microsoft.com/nuget/tools/ps-ref-install-package)命令從包管理器主控台安裝包，如以下示例所示：
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-用於指定系結的封裝名稱會在該系結的參考文章中提供。 如需範例，請參閱[服務匯流排繫結參考文章的套件一節](functions-bindings-service-bus.md#functions-1x)。
+用於給定綁定的包的名稱在該綁定的參考文章中提供。 如需範例，請參閱[服務匯流排繫結參考文章的套件一節](functions-bindings-service-bus.md#functions-1x)。
 
-請以特定版本的套件 (例如 `<TARGET_VERSION>`) 取代範例中的 `3.0.0-beta5`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
+請以特定版本的套件 (例如 `3.0.0-beta5`) 取代範例中的 `<TARGET_VERSION>`。 有效版本以[NuGet.org](https://nuget.org)在各個包頁上列出。對應于函數運行時 1.x 或 2.x 的主要版本在綁定的參考文章中指定。
 
-如果您使用 `Install-Package` 來參考系結，則不需要使用[延伸](#extension-bundles)模組配套。 這個方法是 Visual Studio 內建的類別庫所特有。
+如果使用`Install-Package`引用綁定，則不需要使用[擴展包](#extension-bundles)。 此方法特定于在 Visual Studio 中構建的類庫。
 
-## <a name="vs-code"></a>C#具有 Visual Studio Code 的類別庫
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>C# 類庫，帶視覺工作室代碼
 
-在**Visual Studio Code**中，使用 .NET Core CLI 中C#的[dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package)命令，從命令提示字元安裝類別庫專案的套件。 下列範例示範如何新增系結：
+在**Visual Studio 代碼**中，使用 .NET Core CLI 中的[dotnet 添加包](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package)命令從命令提示符安裝 C# 類庫專案的包。 以下示例演示如何添加綁定：
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
@@ -71,10 +71,10 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 .NET Core CLI 只能用於 Azure Functions 2.x 開發。
 
-將 `<BINDING_TYPE_NAME>` 取代為包含您所需系結的套件名稱。 您可以在支援的系結[清單](./functions-triggers-bindings.md#supported-bindings)中找到所需的系結參考文章。
+替換為`<BINDING_TYPE_NAME>`包含所需綁定的包的名稱。 您可以在[受支援的繫結欄位表中](./functions-triggers-bindings.md#supported-bindings)找到所需的綁定引用文章。
 
-請以特定版本的套件 (例如 `<TARGET_VERSION>`) 取代範例中的 `3.0.0-beta5`。 有效版本會列在[NuGet.org](https://nuget.org)的個別套件頁面上。對應至函式執行時間1.x 或2.x 的主要版本，會在系結的參考文章中指定。
+請以特定版本的套件 (例如 `3.0.0-beta5`) 取代範例中的 `<TARGET_VERSION>`。 有效版本以[NuGet.org](https://nuget.org)在各個包頁上列出。對應于函數運行時 1.x 或 2.x 的主要版本在綁定的參考文章中指定。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [Azure 函數觸發程式和系結範例](./functions-bindings-example.md)
+> [Azure 函數觸發器和綁定示例](./functions-bindings-example.md)

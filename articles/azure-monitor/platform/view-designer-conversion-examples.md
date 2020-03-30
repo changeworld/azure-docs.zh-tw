@@ -1,5 +1,5 @@
 ---
-title: 針對活頁簿轉換 Azure 監視器視圖設計工具範例
+title: Azure 監視器視圖設計器到活頁簿轉換示例
 description: ''
 author: austonli
 ms.author: aul
@@ -7,19 +7,19 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274160"
 ---
-# <a name="view-designer-conversion-examples"></a>View designer 轉換範例
+# <a name="view-designer-conversion-examples"></a>查看設計器轉換示例
 
-若要複寫 [視圖設計工具] 索引標籤式活頁簿，請將下列程式碼複製並貼入 [Advanced editor] （以工具列中的 </> 符號表示）
+要複製視圖設計器選項卡式活頁簿，請將以下代碼複製並粘貼到高級編輯器中，該編輯器由工具列中的</>符號表示
 
-![進階編輯器工具列](media/view-designer-conversion-examples/toolbar.png)
+![高級編輯器工具列](media/view-designer-conversion-examples/toolbar.png)
 
-使用者可能必須將其查詢設定和訂用帳戶更新為他們自己的可存取資源
+使用者可能必須更新其查詢設置和訂閱到自己的可訪問資源
 
 ## <a name="vertical"></a>Vertical
 
@@ -337,7 +337,7 @@ ms.locfileid: "79274160"
 }
 ```
 
-## <a name="tabbed"></a>製表 
+## <a name="tabbed"></a>選項 卡式 
 
 ```Json
 {

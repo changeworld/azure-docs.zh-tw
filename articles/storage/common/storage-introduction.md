@@ -9,10 +9,10 @@ ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5bab70b6b023a4e6510e32368d407a38388cde2f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256064"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 儲存體簡介
@@ -23,7 +23,7 @@ Azure 儲存體是 Microsoft 針對最新資料儲存體環境推出的雲端儲
 - **安全。** 所有寫入 Azure 儲存體的資料皆會由服務進行加密。 Azure 儲存體在存取您資料的人員控管上，提供更細微的控制。
 - **可調整。** Azure 儲存體設計為可大幅調整，以符合現今應用程式的資料儲存和效能需求。
 - **受控。** Microsoft Azure 會為您處理硬體維護、更新和重大問題。
-- **可存取。** 您可以從世界各地透過 HTTP 或 HTTPS 存取 Azure 儲存體中的資料。 Microsoft 提供各種語言的 Azure 儲存體用戶端程式庫，包括 .NET、JAVA、node.js、Python、PHP、Ruby、Go 等，以及成熟的 REST API。 Azure 儲存體支援在 Azure PowerShell 或 Azure CLI 中使用指令碼。 而且在使用資料方面，Azure 入口網站和 Azure 儲存體總管提供簡易的視覺式解決方案。  
+- **可存取。** 您可以從世界各地透過 HTTP 或 HTTPS 存取 Azure 儲存體中的資料。 Microsoft 以多種語言為 Azure 存儲提供用戶端庫，包括 .NET、JAVA、Node.js、Python、PHP、Ruby、Go 等，以及成熟的 REST API。 Azure 儲存體支援在 Azure PowerShell 或 Azure CLI 中使用指令碼。 而且在使用資料方面，Azure 入口網站和 Azure 儲存體總管提供簡易的視覺式解決方案。  
 
 ## <a name="azure-storage-services"></a>Azure 儲存體服務
 
@@ -74,7 +74,7 @@ Blob 儲存體是適合用於：
 
 Azure 佇列服務用來儲存及擷取訊息。 佇列訊息的大小上限為 64 KB，而一個佇列可以包含數百萬則訊息。 佇列通常用來儲存要以非同步方式處理的訊息清單。
 
-例如，假設您希望客戶能夠上傳圖片，而且要建立每張圖片的縮圖。 您可以讓客戶在上傳圖片時等候您建立縮圖。 另外，也可以使用佇列。 當客戶完成上傳時，將訊息寫入佇列。 然後讓 Azure Function 從佇列擷取訊息並建立縮圖。 這項處理的每個部分都可以個別調整，讓您在針對您的使用量進行微調時有更多控制權。
+例如，假設您希望客戶能夠上傳圖片，而且要建立每張圖片的縮圖。 您可以讓客戶在上傳圖片時等候您建立縮圖。 另外，也可以使用佇列。 當客戶完成其上載時，向佇列寫入一條消息。 然後讓 Azure Function 從佇列擷取訊息並建立縮圖。 這項處理的每個部分都可以個別調整，讓您在針對您的使用量進行微調時有更多控制權。
 
 如需 Azure 佇列的詳細資訊，請參閱[佇列簡介](../queues/storage-queues-introduction.md)。
 
@@ -86,9 +86,9 @@ Azure 資料表儲存體現在屬於 Azure Cosmos DB。 若要查看 Azure 資�
 
 ## <a name="disk-storage"></a>磁碟儲存體
 
-Azure 受控磁碟是虛擬硬碟 (VHD)。 您可以將它視為內部部署伺服器中虛擬化的實體磁碟。 Azure 受控磁碟會儲存為分頁 Blob，它是 Azure 中的隨機 IO 儲存物件。 我們會呼叫受控磁片「受控」，因為它是對分頁 blob、blob 容器和 Azure 儲存體帳戶的抽象概念。 使用受控磁碟，您所要做的就是佈建磁碟，Azure 會負責執行剩餘的部分。
+Azure 受控磁碟是虛擬硬碟 (VHD)。 您可以將它視為內部部署伺服器中虛擬化的實體磁碟。 Azure 受控磁碟會儲存為分頁 Blob，它是 Azure 中的隨機 IO 儲存物件。 我們稱託管磁片為"託管磁片"，因為它是對頁面 Blob、Blob 容器和 Azure 存儲帳戶的抽象。 使用受控磁碟，您所要做的就是佈建磁碟，Azure 會負責執行剩餘的部分。
 
-如需受控磁片的詳細資訊，請參閱[Azure 受控磁片簡介](../../virtual-machines/windows/managed-disks-overview.md)。
+有關託管磁片的詳細資訊，請參閱 Azure[託管磁片簡介](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="types-of-storage-accounts"></a>儲存體帳戶類型
 
@@ -96,15 +96,15 @@ Azure 受控磁碟是虛擬硬碟 (VHD)。 您可以將它視為內部部署伺�
 
 如需有關儲存體帳戶類型的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
-## <a name="securing-access-to-storage-accounts"></a>保護對儲存體帳戶的存取
+## <a name="securing-access-to-storage-accounts"></a>保護對存儲帳戶的訪問
 
-Azure 儲存體的每個要求都必須獲得授權。 Azure 儲存體支援下列授權方法：
+對 Azure 存儲的每個請求都必須獲得授權。 Azure 存儲支援以下授權方法：
 
-- **適用于 blob 和佇列資料的 Azure Active Directory （Azure AD）整合。** Azure 儲存體透過角色型存取控制（RBAC），支援透過 Blob 和佇列服務的 Azure AD 進行驗證和授權。 建議使用 Azure AD 授權要求，以獲得更佳的安全性和易用性。 如需詳細資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](storage-auth-aad.md)。
-- **針對 Azure 檔案儲存體（預覽） Azure AD 透過 SMB 的授權。** Azure 檔案儲存體支援透過 Azure Active Directory Domain Services 以身分識別為基礎的 SMB （伺服器訊息區）授權。 已加入網域的 Windows 虛擬機器（Vm）可以使用 Azure AD 認證來存取 Azure 檔案共用。 如需詳細資訊，請參閱[Azure 檔案儲存體（預覽）透過 SMB 進行 Azure Active Directory 授權的總覽](../files/storage-files-active-directory-overview.md)。
-- **使用共用金鑰進行授權。** Azure 儲存體 Blob、佇列和表格服務和 Azure 檔案儲存體支援使用共用金鑰進行授權。使用共用金鑰授權的用戶端會傳遞標頭，其中每個要求都使用儲存體帳戶存取金鑰進行簽署。 如需詳細資訊，請參閱[使用共用金鑰進行授權](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
-- **使用共用存取簽章（SAS）的授權。** 共用存取簽章（SAS）是一個字串，其中包含可附加至儲存體資源 URI 的安全性權杖。 安全性權杖會封裝條件約束，例如許可權和存取的間隔。 如需詳細資訊，請參閱[使用共用存取簽章（SAS）](storage-sas-overview.md)。
-- **對容器和 blob 的匿名存取。** 容器及其 blob 可能可公開使用。 當您指定容器或 blob 為公用時，任何人都可以匿名讀取它;不需要驗證。 如需詳細資訊，請參閱[管理對容器與 Blob 的匿名讀取權限](../blobs/storage-manage-access-to-resources.md)
+- **用於 Blob 和佇列資料的 Azure 活動目錄 （Azure AD） 集成。** Azure 存儲支援通過基於角色的存取控制 （RBAC） 使用 Azure AD 對 Blob 和佇列服務進行身份驗證和授權。 建議使用 Azure AD 授權請求，以提供卓越的安全性和易用性。 有關詳細資訊，請參閱使用[Azure 活動目錄 授權訪問 Azure blob 和佇列](storage-auth-aad.md)。
+- **Azure AD 授權通過 SMB 進行 Azure 檔（預覽）。** Azure 檔通過 Azure 活動目錄域服務支援通過 SMB（伺服器訊息區）進行基於身份的授權。 您加入網域的 Windows 虛擬機器 (VM) 可以使用 Azure AD 認證存取 Azure 檔案共用。 有關詳細資訊，請參閱[Azure 檔（預覽）通過 SMB 對 Azure 活動目錄授權的概述](../files/storage-files-active-directory-overview.md)。
+- **使用共用金鑰的授權。** Azure 存儲 Blob、佇列和表服務和 Azure 檔支援使用共用金鑰授權。 使用共用金鑰授權的用戶端使用存儲帳戶訪問金鑰將每個請求傳遞標頭。 如需詳細資訊，請參閱[使用共用金鑰進行授權](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
+- **使用共用訪問簽名 （SAS） 的授權。** 共用訪問簽名 （SAS） 是包含安全權杖的字串，可以追加到存儲資源的 URI 中。 安全權杖封裝了許可權和訪問間隔等約束。 有關詳細資訊，請參閱[使用共用訪問簽名 （SAS）。](storage-sas-overview.md)
+- **匿名存取容器和 blob。** 容器及其 blob 可能公開可用。 當您指定容器或 Blob 是公共的時，任何人都可以匿名讀取它;無需身份驗證。 有關詳細資訊，請參閱[管理對容器和 Blob 的匿名讀取存取](../blobs/storage-manage-access-to-resources.md)
 
 ## <a name="encryption"></a>加密
 
@@ -112,15 +112,15 @@ Azure 儲存體的每個要求都必須獲得授權。 Azure 儲存體支援下�
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-Azure 儲存體加密可保護您的資料，以符合您組織的安全性和合規性承諾。 Azure 儲存體會在保存到儲存體帳戶之前自動加密所有資料，並在抓取之前將其解密。 加密、解密和金鑰管理程式對使用者而言是完全透明的。 客戶也可以選擇使用 Azure Key Vault 來管理自己的金鑰。 如需詳細資訊，請參閱待用[資料的加密 Azure 儲存體](storage-service-encryption.md)。
+Azure 存儲加密可保護資料並保護資料，以滿足您的組織安全性和合規性承諾。 Azure 存儲在保存到存儲帳戶之前會自動加密所有資料，並在檢索之前對其進行解密。 加密、解密和金鑰管理過程對使用者完全透明。 客戶還可以選擇使用 Azure 金鑰保存庫管理自己的金鑰。 有關詳細資訊，請參閱[靜態資料的 Azure 存儲加密](storage-service-encryption.md)。
 
 ### <a name="client-side-encryption"></a>用戶端加密
 
-Azure 儲存體用戶端程式庫會提供方法，以在透過網路傳送資料並將回應解密之前，從用戶端程式庫加密資料。 透過用戶端加密加密的資料也會在待用時 Azure 儲存體進行加密。 如需用戶端加密的詳細資訊，請參閱[使用 .net 進行 Azure 儲存體的用戶端加密](storage-client-side-encryption.md)。
+Azure 存儲用戶端庫提供在通過網路發送資料並解密回應之前對用戶端庫中的資料進行加密的方法。 通過用戶端加密加密的資料也由 Azure 存儲在靜態加密。 有關用戶端加密的詳細資訊，請參閱[用戶端加密與 .NET 的 Azure 存儲](storage-client-side-encryption.md)。
 
 ## <a name="redundancy"></a>備援性
 
-為了確保您的資料持久，Azure 儲存體會儲存資料的多個複本。 當您設定儲存體帳戶時，您可選取備援選項。
+為了確保資料持久，Azure 存儲存儲存儲資料的多個副本。 當您設定儲存體帳戶時，您可選取備援選項。
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
@@ -128,7 +128,7 @@ Azure 儲存體用戶端程式庫會提供方法，以在透過網路傳送資�
 
 您可以透過數個選項將資料移入或移出 Azure 儲存體。 應選擇哪個選項，取決於您的資料集大小和網路頻寬。 如需詳細資訊，請參閱[選擇適合資料轉送的 Azure 解決方案](storage-choose-data-transfer-solution.md)。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 如需 Azure 儲存體價格的詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -138,14 +138,14 @@ Azure 儲存體用戶端程式庫會提供方法，以在透過網路傳送資�
 
 ### <a name="azure-storage-data-api-and-library-references"></a>Azure 儲存體資料 API 和程式庫參考
 
-- [Azure 儲存體 REST API](https://docs.microsoft.com/rest/api/storageservices/)
-- [適用于 .NET 的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-- [適用于 JAVA/Android 的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [適用于 node.js 的 Azure 儲存體用戶端程式庫](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
-- [適用于 Python 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-python)
-- [適用于 PHP 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-php)
-- [適用于 Ruby 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-ruby)
-- [Azure 儲存體的用戶端程式庫C++](https://github.com/Azure/azure-storage-cpp)
+- [Azure 存儲 REST API](https://docs.microsoft.com/rest/api/storageservices/)
+- [.NET 的 Azure 存儲用戶端庫](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+- [用於 JAVA/Android 的 Azure 存儲用戶端庫](https://docs.microsoft.com/java/api/overview/azure/storage)
+- [Node.js 的 Azure 存儲用戶端庫](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [用於 Python 的 Azure 存儲用戶端庫](https://github.com/Azure/azure-storage-python)
+- [用於 PHP 的 Azure 存儲用戶端庫](https://github.com/Azure/azure-storage-php)
+- [用於 Ruby 的 Azure 存儲用戶端庫](https://github.com/Azure/azure-storage-ruby)
+- [用於C++的 Azure 存儲用戶端庫](https://github.com/Azure/azure-storage-cpp)
 
 ### <a name="azure-storage-management-api-and-library-references"></a>Azure 儲存體管理 API 和程式庫參考
 
@@ -162,7 +162,7 @@ Azure 儲存體用戶端程式庫會提供方法，以在透過網路傳送資�
 
 - [儲存體的 Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.storage)
 - [儲存體的 Azure CLI Cmdlet](https://docs.microsoft.com/cli/azure/storage)
-- [AzCopy 命令列公用程式](https://aka.ms/downloadazcopy)
+- [AzCopy 命令列實用程式](https://aka.ms/downloadazcopy)
 - [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
 - [Azure 儲存體用戶端工具](../storage-explorers.md)
 - [Azure 開發人員工具](https://azure.microsoft.com/tools/)

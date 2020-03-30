@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aschhab
 ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260939"
 ---
 # <a name="partitioned-queues-and-topics"></a>分割的佇列和主題
 
-Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用多個訊息存放區來儲存訊息。 傳統的佇列或主題由單一訊息代理程式處理並儲存在一個訊息存放區中。 服務匯流排「分割區」可讓佇列和主題或「傳訊實體」分割到多個訊息代理程式及訊息存放區。 分割表示分割實體的整體輸送量不會再受到單一訊息代理程式或訊息存放區的效能所限制。 此外，即使訊息存放區暫時中斷也不會讓分割的佇列或主題無法使用。 分割的佇列和主題可以包含所有進階的服務匯流排功能，例如支援交易和工作階段。
+Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用多個訊息存放區來儲存訊息。 傳統的佇列或主題由單一訊息代理程式處理並儲存在一個訊息存放區中。 服務匯流排「分割區」** 可讓佇列和主題或「傳訊實體」** 分割到多個訊息代理程式及訊息存放區。 分割表示分割實體的整體輸送量不會再受到單一訊息代理程式或訊息存放區的效能所限制。 此外，即使訊息存放區暫時中斷也不會讓分割的佇列或主題無法使用。 分割的佇列和主題可以包含所有進階的服務匯流排功能，例如支援交易和工作階段。
 
 > [!NOTE]
 > 基本或標準 SKU 中的所有佇列與主題在建立實體時均可使用分割。 進階傳訊 SKU 無法使用分割，但先前已存在於進階命名空間中的已分割實體會繼續如預期運作。
@@ -27,9 +27,9 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 
 ## <a name="how-it-works"></a>運作方式
 
-每個分割的佇列或主題都包含多個磁碟分割。 每個資料分割都會儲存在不同的訊息存放區中，並由不同的訊息代理程式處理。 當訊息傳送至分割的佇列或主題時，服務匯流排會將訊息指派給其中一個資料分割。 選取作業由服務匯流排或使用傳送者可指定的分割索引鍵隨機進行。
+每個分區佇列或主題由多個分區組成。 每個分區都存儲在不同的消息存儲中，並由不同的消息代理處理。 當消息發送到分區佇列或主題時，服務匯流排將消息分配給其中一個分區。 選取作業由服務匯流排或使用傳送者可指定的分割索引鍵隨機進行。
 
-當用戶端想要從分割的佇列接收訊息，或從訂用帳戶傳送到分割的主題時，服務匯流排會查詢訊息的所有分割區，然後將從任何訊息存放區取得的第一個訊息傳回給接收者。 服務匯流排會快取其他訊息，然後在它收到其他接收要求時將其傳回。 接收的用戶端並不知道分割。分割佇列或主題的用戶端對向行為 (例如讀取、完成、延遲、無效化、預先擷取) 和一般實體的行為相同。
+當用戶端希望接收來自分區佇列或從訂閱到分區主題的消息時，服務匯流排查詢消息的所有分區，然後將從任何消息存儲獲取的第一條消息返回給接收方。 服務匯流排會快取其他訊息，然後在它收到其他接收要求時將其傳回。 接收的用戶端並不知道分割。分割佇列或主題的用戶端對向行為 (例如讀取、完成、延遲、無效化、預先擷取) 和一般實體的行為相同。
 
 傳送訊息給分割的佇列或主題，或從該處接收訊息時，不需要額外成本。
 
@@ -39,11 +39,11 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 
 ### <a name="standard"></a>標準
 
-在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分割時，服務匯流排會建立實體的16個複本（16個數據分割），每個都指定相同的大小。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 您可以查看分割的佇列或主題的最大大小，方法是查看該實體的 [**總覽**] 分頁中[Azure 入口網站][Azure portal]的專案。
+在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分區後，服務匯流排將創建實體的 16 個副本（16 個分區），每個副本的大小都指定相同。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 如果要查看分割佇列或主題的大小上限，您可以在 [Azure 入口網站][Azure portal]上，在該實體的 [概觀]**** 刀鋒視窗中檢視其項目。
 
 ### <a name="premium"></a>Premium
 
-在進階層命名空間中，不支援資料分割實體。 然而，您仍然可以建立 1、2、3、4、5、10、20、40 或 80 GB 大小的服務匯流排佇列與主題 (預設值為 1 GB)。 您可以查看佇列或主題的大小，方法是在該實體的 [**總覽**] 分頁中查看[Azure 入口網站][Azure portal]的專案。
+在高級層命名空間中，不支援分區實體。 然而，您仍然可以建立 1、2、3、4、5、10、20、40 或 80 GB 大小的服務匯流排佇列與主題 (預設值為 1 GB)。 如果要查看佇列或主題的大小，您可以至 [Azure 入口網站][Azure portal]，在該實體的 [概觀]**** 刀鋒視窗中檢視其項目。
 
 ### <a name="create-a-partitioned-entity"></a>建立分割實體
 
@@ -57,15 +57,15 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-或者，您可以在[Azure 入口網站][Azure portal]中建立分割的佇列或主題。 當您在入口網站建立佇列或主題時，依預設會勾選佇列或主題 [建立] 對話方塊中的 [啟用分割] 選項。 您只能在標準層實體中停用此選項，進階層不支援分割，且核取方塊沒有作用。 
+或者，您可以在 [Azure 入口網站][Azure portal]中建立分割的佇列或主題。 當您在入口網站建立佇列或主題時，依預設會勾選佇列或主題 [建立]**** 對話方塊中的 [啟用分割]**** 選項。 您只能在標準層實體中停用此選項，進階層不支援分割，且核取方塊沒有作用。 
 
 ## <a name="use-of-partition-keys"></a>分割索引鍵的用途
 
-當訊息加入佇列至分割的佇列或主題時，服務匯流排會檢查分割區索引鍵是否存在。 如果找到一個，就會根據該索引鍵來選取資料分割。 如果找不到分割區索引鍵，就會根據內部演算法來選取資料分割。
+當訊息加入佇列至分割的佇列或主題時，服務匯流排會檢查分割區索引鍵是否存在。 如果找到一個分區，它將根據該鍵選擇分區。 如果找不到分區鍵，則根據內部演算法選擇分區。
 
 ### <a name="using-a-partition-key"></a>使用分割區索引鍵
 
-某些案例（例如會話或交易）需要將訊息儲存在特定的資料分割中。 這些案例都需要使用分割區索引鍵。 所有使用相同資料分割索引鍵的訊息都會指派給相同的資料分割。 如果資料分割暫時無法使用，服務匯流排會傳回錯誤。
+某些方案（如會話或事務）要求將消息存儲在特定的分區中。 這些案例都需要使用分割區索引鍵。 使用同一分區鍵的所有消息都分配給同一分區。 如果分區暫時不可用，則服務匯流排將返回錯誤。
 
 根據這個案例，會使用不同的訊息屬性做為分割索引鍵：
 
@@ -73,17 +73,17 @@ ns.CreateTopic(td);
 
 **PartitionKey**：若訊息已設定 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性而非 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 屬性，則服務匯流排會使用 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性做為分割區索引鍵。 如果訊息已設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 和 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，這兩個屬性必須相同。 如果 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性設為和 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 屬性不同的值，服務匯流排會傳回無效作業例外狀況。 如果傳送者傳送非工作階段感知的交易訊息，應使用 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性。 分割索引鍵可確保在交易內傳送的所有訊息都由相同的訊息代理人處理。
 
-**MessageId**：如果佇列或主題已將 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性設為 **true**，且未設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，則 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性值可做為分割區索引鍵。 （如果傳送應用程式沒有，Microsoft .NET 和 AMQP 程式庫會自動指派訊息識別碼）。在此情況下，相同訊息的所有複本都會由相同的訊息代理程式處理。 此識別碼可讓服務匯流排偵測並排除重複的訊息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性未設為 **true**，服務匯流排不會將 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性視為分割區索引鍵。
+**MessageId**：如果佇列或主題已將 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性設為 **true**，且未設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，則 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性值可做為分割區索引鍵。 （如果發送應用程式沒有，Microsoft .NET 和 AMQP 庫會自動分配消息 ID。在這種情況下，同一消息的所有副本由同一消息代理處理。 此識別碼可讓服務匯流排偵測並排除重複的訊息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性未設為 **true**，服務匯流排不會將 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性視為分割區索引鍵。
 
 ### <a name="not-using-a-partition-key"></a>不使用分割索引鍵
 
-如果沒有分割區索引鍵，服務匯流排會以迴圈配置資源方式，將訊息散發給分割的佇列或主題的所有分割區。 如果選擇的分割區無法使用，服務匯流排會將訊息指派給不同的資料分割。 如此一來，儘管訊息存放區暫時無法使用，傳送作業仍會成功。 不過，您將無法達到分割區索引鍵所提供的保證排序。
+在沒有分區鍵的情況下，服務匯流排以迴圈方式將消息分發到分區佇列或主題的所有分區。 如果所選分區不可用，服務匯流排會將消息分配給其他分區。 如此一來，儘管訊息存放區暫時無法使用，傳送作業仍會成功。 不過，您將無法達到分割區索引鍵所提供的保證排序。
 
 如需可用性 (無分割區索引鍵) 和一致性 (使用分割區索引鍵) 之間權衡取捨的深入討論，請參閱[這篇文章](../event-hubs/event-hubs-availability-and-consistency.md)。 此資訊同時適用於已分割的服務匯流排實體。
 
-為了讓服務匯流排有足夠的時間將訊息加入不同的分割區，傳送訊息之用戶端所指定的[OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout)值必須大於15秒。 建議將 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 屬性設為預設值 60 秒。
+要給服務匯流排足夠的時間將消息排入不同的分區，發送消息的用戶端指定的["操作超時"](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout)值必須大於 15 秒。 建議將 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 屬性設為預設值 60 秒。
 
-分割區索引鍵會將訊息「釘選」到特定的分割區。 如果保存此資料分割的訊息存放區無法使用，服務匯流排會傳回錯誤。 如果沒有分割區索引鍵，服務匯流排可以選擇不同的資料分割，作業就會成功。 因此，建議您若非必要請勿提供分割索引鍵。
+分區鍵"固定"到特定分區的消息。 如果保存此分區的消息存儲不可用，則服務匯流排將返回錯誤。 在沒有分區鍵的情況下，服務匯流排可以選擇不同的分區，並且操作成功。 因此，建議您若非必要請勿提供分割索引鍵。
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>進階主題：搭配交易使用分割的實體
 
@@ -101,7 +101,7 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-如果設定做為分割區索引鍵的任何屬性，服務匯流排會將訊息釘選到特定的分割區。 無論是否使用交易，都會發生這個行為。 建議您若非必要請勿指定分割索引鍵。
+如果設置了用作分區鍵的任何屬性，則服務匯流排將消息固定到特定分區。 無論是否使用交易，都會發生這個行為。 建議您若非必要請勿指定分割索引鍵。
 
 ## <a name="using-sessions-with-partitioned-entities"></a>搭配工作階段使用分割的實體
 
@@ -123,12 +123,12 @@ committableTransaction.Commit();
 
 ## <a name="automatic-message-forwarding-with-partitioned-entities"></a>使用分割實體的自動訊息轉送
 
-服務匯流排支援往返於分割實體或在它們之間自動轉送訊息。 若要啟用自動訊息轉送，請在來源佇列或訂用帳戶上設定 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 屬性。 如果該訊息指定分割索引鍵 ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 或 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid))，該分割索引鍵會用於目的地實體。
+服務匯流排支援往返於分割實體或在它們之間自動轉送訊息。 若要啟用自動訊息轉送，請在來源佇列或訂用帳戶上設定 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 屬性。 如果訊息指定分割索引鍵 ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 或 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid))，該分割索引鍵會用於目的地實體。
 
 ## <a name="considerations-and-guidelines"></a>考量和指導方針
-* **高一致性功能**：如果實體使用會話、重複偵測或明確控制資料分割索引鍵等功能，則訊息作業一律會路由傳送至特定的分割區。 如果有任何分割區遇到高流量，或基礎存放區狀況不良，則這些作業會失敗，而且會降低可用性。 整體來說，一致性仍然遠高於非分割實體，只有一部分流量會遭遇問題，而不是所有的流量。 如需詳細資訊，請參閱這篇[針對可用性和一致性的討論](../event-hubs/event-hubs-availability-and-consistency.md)。
-* **管理**：必須在實體的所有分割區上執行建立、更新和刪除等作業。 如果有任何資料分割狀況不良，可能會導致這些作業失敗。 針對取得作業，訊息計數之類的資訊必須從所有分割區匯總。 如果有任何資料分割狀況不良，則實體可用性狀態會回報為 [受限]。
-* **少量訊息案例**︰對於這類案例，尤其是當使用 HTTP 通訊協定時，您可能必須執行多次接收作業，才能取得所有訊息。 對於接收要求，前端會在所有分割區上執行接收，並快取所有收到的回應。 相同連接上的後續接收要求將受益於此快取，而且接收延遲將會縮短。 不過，如果您有多個連線或使用 HTTP，則會針對每個要求建立新的連接。 因此，不保證抵達相同的節點。 如果所有現有的訊息遭鎖定，而且在另一個前端中快取，接收作業會傳回 **null**。 訊息最後會到期，您可以再次接收它們。 建議使用 HTTP 持續作用。 在低容量案例中使用資料分割時，接收作業可能會花費比預期更長的時間。 因此，我們建議您不要在這些案例中使用資料分割。 刪除任何現有的分割實體，並在停用資料分割的情況之下重新建立，以改善效能。
+* **高一致性功能**：如果實體使用會話、重複檢測或顯式控制分區金鑰等功能，則消息傳遞操作始終路由到特定分區。 如果任何分區遇到高流量或基礎存儲不正常，則這些操作將失敗，可用性降低。 整體來說，一致性仍然遠高於非分割實體，只有一部分流量會遭遇問題，而不是所有的流量。 如需詳細資訊，請參閱這篇[針對可用性和一致性的討論](../event-hubs/event-hubs-availability-and-consistency.md)。
+* **管理**：必須在實體的所有分區上執行創建、更新和刪除等操作。 如果任何分區不正常，則可能導致這些操作失敗。 對於 Get 操作，必須從所有分區聚合消息計數等資訊。 如果任何分區不正常，則實體可用性狀態將報告為受限。
+* **少量訊息案例**︰對於這類案例，尤其是當使用 HTTP 通訊協定時，您可能必須執行多次接收作業，才能取得所有訊息。 對於接收請求，前端對所有分區執行接收，並緩存收到的所有回應。 相同連接上的後續接收要求將受益於此快取，而且接收延遲將會縮短。 不過，如果您有多個連線或使用 HTTP，則會針對每個要求建立新的連接。 因此，不保證抵達相同的節點。 如果所有現有的訊息遭鎖定，而且在另一個前端中快取，接收作業會傳回 **null**。 訊息最後會到期，您可以再次接收它們。 建議使用 HTTP 持續作用。 在低容量方案中使用分區時，接收操作可能需要比預期更長的時間。 因此，我們建議您不要在這些情況下使用分區。 刪除任何現有的分區實體，並在禁用分區後重新創建它們以提高性能。
 * **瀏覽/查看訊息**：僅適用於較舊的 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 程式庫。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) 不一定會傳回 [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) 屬性中指定的訊息數目。 此行為有兩個常見的原因。 其中一個原因是訊息集合的彙總大小超過大小上限 256 KB。 另一個原因是，如果佇列或主題的 [EnablePartitioning 屬性](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning)設為 **true**，分割區可能沒有足夠的訊息來完成所要求的訊息數目。 一般而言，如果應用程式想要接收一定數目的訊息，它應該重複呼叫 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch)，直到取得該數目的訊息，或已沒有更多訊息可查看為止。 如需詳細資訊，包括程式碼範例，請參閱 [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) 或 [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API 文件。
 
 ## <a name="latest-added-features"></a>最新加入的功能

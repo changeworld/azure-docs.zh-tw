@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277462"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 繫結
@@ -24,7 +24,7 @@ ms.locfileid: "79277462"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>封裝-函數2.x 和更新版本
+## <a name="packages---functions-2x-and-higher"></a>封裝 - 功能 2.x 及以上
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 套件版本 3.x 中提供了 SendGrid 繫結。 套件的原始程式碼位於 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存放庫中。
 
@@ -100,7 +100,7 @@ public class OutgoingEmail
 
 若您在名為「AzureWebJobsSendGridApiKey」的應用程式設定中有 API 金鑰，則可以省略設定屬性的 `ApiKey` 內容。
 
-# <a name="c-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
 
 下列範例說明 *function.json* 檔案中的 SendGrid 輸出繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。
 
@@ -159,7 +159,7 @@ public class Message
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 下列範例說明 *function.json* 檔案中的 SendGrid 輸出繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。
 
@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示 HTTP 觸發的函式，它會使用 SendGrid 系結來傳送電子郵件。 您可以在系結設定中提供預設值。 例如，在函式中設定了*from*電子郵件地址 *。* 
+下面的示例顯示了使用 SendGrid 綁定發送電子郵件的 HTTP 觸發函數。 您可以在綁定配置中提供預設值。 例如，在*函數.json*中配置*了 from*電子郵件地址。 
 
 ```json
 {
@@ -232,7 +232,7 @@ module.exports = function (context, input) {
 }
 ```
 
-下列函式會顯示如何提供選擇性屬性的自訂值。
+以下函數演示如何為可選屬性提供自訂值。
 
 ```python
 import logging
@@ -258,9 +258,9 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
     return func.HttpResponse(f"Sent")
 ```
 
-# <a name="java"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-下列範例會使用 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注釋，以使用 SendGrid 輸出系結來傳送電子郵件。
+下面的示例使用 JAVA `@SendGridOutput` [函數運行時庫中](/java/api/overview/azure/functions/runtime)的注釋使用 SendGrid 輸出綁定發送電子郵件。
 
 ```java
 package com.function;
@@ -332,11 +332,11 @@ public static void Run(
 
 如需完整範例，請參閱 [C# 範例](#example)。
 
-# <a name="c-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
 
-C#腳本不支援屬性。
+C# 腳本不支援屬性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
@@ -344,28 +344,28 @@ JavaScript 不支援屬性。
 
 Python 不支援屬性。
 
-# <a name="java"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-[SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java)注釋可讓您藉由提供設定值，以宣告方式設定 SendGrid 系結。 如需詳細資訊，請參閱[範例](#example)[和設定](#configuration)章節。
+[SendGrid輸出](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java)注釋允許您通過提供配置值來聲明配置 SendGrid 綁定。 有關詳細資訊，請參閱[示例](#example)和[配置](#configuration)部分。
 
 ---
 
 ## <a name="configuration"></a>組態
 
-下表列出*函數. json*檔案和 `SendGrid` 屬性/注釋中可用的系結設定屬性。
+下表列出了*函數.json*檔中可用的綁定配置屬性和`SendGrid`屬性/注釋。
 
-| *function. json*屬性 | 屬性/注釋屬性 | 描述 | 選用 |
+| *函數.json*屬性 | 屬性/注釋屬性 | 描述 | 選用 |
 |--------------------------|-------------------------------|-------------|----------|
 | type |n/a| 必須設為 `sendGrid`。| 否 |
 | direction |n/a| 必須設為 `out`。| 否 |
-| NAME |n/a| 函數程式碼中用於要求或要求主體的變數名稱。 當只有一個傳回值時，此值為 `$return`。 | 否 |
-| apiKey | ApiKey | 包含您 API 金鑰的應用程式設定名稱。 如果未設定，預設的應用程式設定名稱是*AzureWebJobsSendGridApiKey*。| 否 |
+| NAME |n/a| 請求或請求正文的函數代碼中使用的變數名稱。 當只有一個傳回值時，此值為 `$return`。 | 否 |
+| apiKey | ApiKey | 包含您 API 金鑰的應用程式設定名稱。 如果未設置，則預設應用設置名稱為*AzureWebJobsSendGridApiKey*。| 否 |
 | to| 至 | 收件者的電子郵件地址。 | 是 |
 | 從| 從 | 寄件者的電子郵件地址。 |  是 |
 | subject| 主體 | 電子郵件的主旨。 | 是 |
 | text| Text | 電子郵件內容。 | 是 |
 
-選擇性屬性可能會在系結中定義預設值，並以程式設計方式新增或覆寫。
+可選屬性可能具有在綁定中定義的預設值，並且以程式設計方式添加或重寫。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -373,7 +373,7 @@ Python 不支援屬性。
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-本節說明2.x 版和更高版本中可供此系結使用的全域設定。 下面的範例 host. json 檔案僅包含此系結的2.x 版和設定。 如需有關2.x 版和更早版本中的全域設定的詳細資訊，請參閱[Azure Functions 的 host. json 參考](functions-host-json.md)。
+本節介紹 2.x 和更高版本中可用於此綁定的全域配置設置。 下面的示例 host.json 檔僅包含此綁定的版本 2.x+ 設置。 有關版本 2.x 及以後的全域配置設置的詳細資訊，請參閱[Azure 函數的 host.json 引用](functions-host-json.md)。
 
 > [!NOTE]
 > 有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。

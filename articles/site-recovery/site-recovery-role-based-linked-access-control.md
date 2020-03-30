@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Site Recovery 中管理 Azure 角色型存取控制
+title: 在 Azure 網站恢復中管理基於 Azure 角色的存取控制
 description: 此文章說明如何套用角色型存取控制 (RBAC) 來管理 Azure Site Recovery 存取。
 ms.service: site-recovery
 ms.date: 04/08/2019
@@ -7,15 +7,15 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257572"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用角色型存取控制 (RBAC) 管理 Site Recovery 存取
 
-Azure 角色型存取控制（RBAC）可為 Azure 提供更細緻的存取權管理。 您可以使用 RBAC 劃分小組責任，並只將特定存取權限授與需要執行特定工作的使用者。
+基於 Azure 角色的存取控制 （RBAC） 支援 Azure 的細細微性訪問管理。 您可以使用 RBAC 劃分小組責任，並只將特定存取權限授與需要執行特定工作的使用者。
 
 Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作業。 深入了解 [Azure RBAC 內建角色](../role-based-access-control/built-in-roles.md)
 
@@ -39,9 +39,9 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 >確定為每個用於部署資源的部署模型 (Resource Manager/傳統) 新增相關的權限。
 
 > [!NOTE]
-> 如果您要啟用 Azure VM 的複寫，而且想要允許 Site Recovery 來管理更新，則在啟用複寫時，您可能也會想要建立新的自動化帳戶，在此情況下，您需要在相同的中建立自動化帳戶的許可權作為保存庫的訂用帳戶。
+> 如果要為 Azure VM 啟用複製，並且希望允許網站恢復管理更新，則在啟用複製時，您可能還需要創建新的自動化帳戶，在這種情況下，您需要獲得在同一情況下創建自動化帳戶的許可權訂閱作為保存庫以及。
 
-| **資源類型** | **部署模型** | **權限** |
+| **資源類型** | **部署模型** | [權限]**** |
 | --- | --- | --- |
 | 計算 | Resource Manager | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -62,7 +62,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | 傳統 | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| 儲存體 | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| 存放裝置 | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | 傳統 | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
@@ -74,7 +74,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 ## <a name="next-steps"></a>後續步驟
 * [角色型存取控制](../role-based-access-control/role-assignments-portal.md)：開始在 Azure 入口網站中使用 RBAC。
 * 了解如何使用下列各項管理存取權：
-  * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+  * [電源外殼](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
 * [角色型存取控制疑難排解](../role-based-access-control/troubleshooting.md)︰取得修正常見問題的建議。

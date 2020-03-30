@@ -1,15 +1,15 @@
 ---
-title: 可靠的服務應用程式資訊清單範例
+title: 可靠的服務應用清單示例
 description: 了解如何設定 Reliable Services Service Fabric 應用程式的應用程式和服務資訊清單設定。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282350"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 應用程式和服務資訊清單範例
@@ -17,9 +17,9 @@ ms.locfileid: "79282350"
 
 下面是會顯示的功能：
 
-|資訊清單|特性|
+|file:///|特性|
 |---|---|
-|[應用程式資訊清單](#application-manifest)| [資源管理](service-fabric-resource-governance.md)、[以本機系統管理員帳戶的身分執行服務](service-fabric-application-runas-security.md)、[對所有服務程式碼套件套用預設原則](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[建立使用者和群組主體](service-fabric-application-runas-security.md)、在服務執行個體之間共用資料套件、[覆寫服務端點](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
+|[應用程式清單](#application-manifest)| [資源管理](service-fabric-resource-governance.md)、[以本機系統管理員帳戶的身分執行服務](service-fabric-application-runas-security.md)、[對所有服務程式碼套件套用預設原則](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[建立使用者和群組主體](service-fabric-application-runas-security.md)、在服務執行個體之間共用資料套件、[覆寫服務端點](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService 服務資訊清單| [在服務啟動時執行指令碼](service-fabric-run-script-at-service-startup.md)、[定義 HTTPS 端點](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
 |BackEndService 服務資訊清單| [宣告設定套件](service-fabric-application-and-service-manifests.md)、[宣告資料套件](service-fabric-application-and-service-manifests.md)、[設定端點](service-fabric-service-manifest-resources.md)| 
 

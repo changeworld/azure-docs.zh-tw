@@ -1,78 +1,78 @@
 ---
-title: 使用 Azure 監視器監視 B2B 訊息
-description: 藉由設定 Azure 監視器記錄並收集診斷資料，來針對 AS2、X12 和 EDIFACT 訊息進行疑難排解 Azure Logic Apps
+title: 使用 Azure 監視器監視 B2B 消息
+description: 通過設置 Azure 監視器日誌和收集 Azure 邏輯應用的診斷資料，對 AS2、X12 和 EDIFACT 消息進行故障排除
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907977"
 ---
-# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定 Azure 監視器記錄並收集 B2B 訊息的診斷資料
+# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>在 Azure 邏輯應用中設置 Azure 監視器日誌並收集 B2B 消息的診斷資料
 
-在您的整合帳戶中設定交易夥伴之間的 B2B 通訊之後，這些合作夥伴可以使用 AS2、X12 和 EDIFACT 等通訊協定來交換訊息。 若要檢查此通訊是否以您預期的方式運作，您可以設定整合帳戶的[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)。 [Azure 監視器](../azure-monitor/overview.md)可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 藉由使用 Azure 監視器記錄，您可以記錄和儲存有關執行時間資料和事件的資料，例如觸發程式事件、執行事件和[Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)中的動作事件。 對於訊息，記錄也會收集下列資訊：
+在集成帳戶中設置交易夥伴之間的 B2B 通信後，這些合作夥伴可以使用 AS2、X12 和 EDIFACT 等協定交換消息。 要檢查此通信是否可以按預期方式工作，可以為集成帳戶設置[Azure 監視器日誌](../azure-monitor/platform/data-platform-logs.md)。 [Azure 監視器](../azure-monitor/overview.md)可説明您監視雲和本地環境，以便更輕鬆地維護其可用性和性能。 通過使用 Azure 監視器日誌，可以在[日誌分析工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)中記錄和存儲有關運行時資料和事件的資料，例如觸發器事件、運行事件和操作事件。 對於消息，日誌記錄還會收集資訊，例如：
 
 * 訊息計數和狀態
 * 通知狀態
-* 訊息和通知之間的相互關聯
+* 消息和確認之間的關聯
 * 失敗的詳細錯誤描述
 
-Azure 監視器可讓您建立[記錄查詢](../azure-monitor/log-query/log-query-overview.md)，以協助您尋找並查看此資訊。 您也可以[將此診斷資料與其他 Azure 服務搭配使用](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)，例如 Azure 儲存體和 Azure 事件中樞。
+Azure 監視器允許您創建[日誌查詢](../azure-monitor/log-query/log-query-overview.md)，以説明您查找和查看此資訊。 還可以[將此診斷資料與其他 Azure 服務](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)（如 Azure 存儲和 Azure 事件中心）一起使用。
 
-若要設定整合帳戶的記錄，請在 Azure 入口網站中[安裝 Logic Apps B2B 解決方案](#install-b2b-solution)。 此解決方案提供 B2B 訊息事件的匯總資訊。 然後，若要啟用記錄並建立此資訊的查詢，請設定[Azure 監視器記錄](#set-up-resource-logs)。
+要為集成帳戶設置日誌記錄，請在 Azure 門戶中[安裝邏輯應用 B2B 解決方案](#install-b2b-solution)。 此解決方案提供 B2B 消息事件的聚合資訊。 然後，要啟用日誌記錄和創建此資訊的查詢，應設置[Azure 監視器日誌](#set-up-resource-logs)。
 
-本文說明如何為您的整合帳戶啟用 Azure 監視器記錄。
+本文演示如何為集成帳戶啟用 Azure 監視器日誌記錄。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Log Analytics 工作區。 如果您沒有 Log Analytics 工作區，請了解[如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
-* 使用 Azure 監視器記錄設定的邏輯應用程式，並將該資訊傳送至 Log Analytics 工作區。 瞭解[如何為您的邏輯應用程式設定 Azure 監視器記錄](../logic-apps/monitor-logic-apps.md)。
+* 使用 Azure 監視器日誌記錄設置並將該資訊發送到日誌分析工作區的邏輯應用。 [瞭解如何為邏輯應用設置 Azure 監視器日誌](../logic-apps/monitor-logic-apps.md)。
 
-* 連結至邏輯應用程式的整合帳戶。 瞭解[如何將整合帳戶連結至邏輯應用程式](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
+* 連結至邏輯應用程式的整合帳戶。 [瞭解如何將集成帳戶連結到邏輯應用](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
 
 <a name="install-b2b-solution"></a>
 
 ## <a name="install-logic-apps-b2b-solution"></a>安裝 Logic Apps B2B 解決方案
 
-在 Azure 監視器記錄可以追蹤邏輯應用程式的 B2B 訊息之前，請將**Logic Apps B2B**解決方案新增至您的 Log Analytics 工作區。
+在 Azure 監視器日誌可以跟蹤邏輯應用的 B2B 消息之前，請將**邏輯應用 B2B**解決方案添加到日誌分析工作區。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的搜尋方塊中，輸入 `log analytics workspaces`，然後選取 [ **Log Analytics 工作區**]。
+1. 在[Azure 門戶](https://portal.azure.com)的搜索框中，輸入`log analytics workspaces`，然後選擇**日誌分析工作區**。
 
-   ![選取 [Log Analytics 工作區]](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
+   ![選擇"日誌分析工作區"](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
-1. 在 [ **Log Analytics 工作區**] 底下，選取您的工作區。
+1. 在 **"日誌分析"工作區**下，選擇工作區。
 
    ![選取 Log Analytics 工作區](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. 在 [總覽] 窗格的 [**開始使用 Log Analytics** > **設定監視解決方案**] 下，選取 [ **View 解決方案**]。
+1. 在"概述"窗格中，**在"開始使用日誌分析** > **配置監視解決方案**"下，選擇 **"查看解決方案**"。
 
-   ![在 [總覽] 窗格中，選取 [View 解決方案]](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
+   ![在"概述"窗格中，選擇"查看解決方案"](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
-1. 在 [總覽] 窗格中，選取 [**新增**]。
+1. 在"概述"窗格中，選擇 **"添加**"。
 
-   ![在 [總覽] 窗格中，加入新的方案](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
+   ![在概覽窗格上，添加新解決方案](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. 在**Marketplace**開啟之後，請在搜尋方塊中輸入 `logic apps b2b`，然後選取 [ **Logic Apps B2B**]。
+1. **市場**打開後，在搜索框中輸入`logic apps b2b`，然後選擇**邏輯應用 B2B**。
 
-   ![從 Marketplace 選取 [Logic Apps 管理]](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
+   ![從應用商店中，選擇"邏輯應用管理"](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
-1. 在 [解決方案描述] 窗格上，選取 [**建立**]。
+1. 在解決方案描述窗格中，選擇 **"創建**"。
 
-   ![選取 [建立] 以新增「Logic Apps B2B」方案](./media/monitor-b2b-messages-log-analytics/create-logic-apps-b2b-solution.png)
+   ![選擇"創建"以添加"邏輯應用 B2B"解決方案](./media/monitor-b2b-messages-log-analytics/create-logic-apps-b2b-solution.png)
 
-1. 請檢查並確認您要在其中安裝解決方案的 Log Analytics 工作區，然後再次選取 [**建立**]。
+1. 查看並確認要安裝解決方案的日誌分析工作區，然後選擇"再次**創建**"。
 
-   ![針對 [Logic Apps B2B] 選取 [建立]](./media/monitor-b2b-messages-log-analytics/confirm-log-analytics-workspace.png)
+   ![為"邏輯應用 B2B"選擇"創建"](./media/monitor-b2b-messages-log-analytics/confirm-log-analytics-workspace.png)
 
-   在 Azure 將解決方案部署至包含 Log Analytics 工作區的 Azure 資源群組之後，解決方案會出現在工作區的 [摘要] 窗格上。 處理 B2B 訊息時，會更新此窗格上的訊息計數。
+   Azure 將解決方案部署到包含日誌分析工作區的 Azure 資源組後，該解決方案將顯示在工作區的摘要窗格中。 處理 B2B 消息時，將更新此窗格上的消息計數。
 
    ![工作區摘要窗格](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
@@ -80,60 +80,60 @@ Azure 監視器可讓您建立[記錄查詢](../azure-monitor/log-query/log-quer
 
 ## <a name="set-up-azure-monitor-logs"></a>設定 Azure 監視器記錄
 
-您可以直接從您的整合帳戶啟用 Azure 監視器記錄。
+可以直接從集成帳戶啟用 Azure 監視器日誌記錄。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，尋找並選取整合帳戶。
 
    ![尋找並選取您的整合帳戶](./media/monitor-b2b-messages-log-analytics/find-integration-account.png)
 
-1. 在整合帳戶的功能表上，選取 [**監視**] 底下的 [**診斷設定**]。 選取 [**新增診斷設定**]。
+1. 在集成帳戶的功能表上，在 **"監視"** 下，選擇 **"診斷設置**"。 選擇 **"添加診斷設置**"。
 
-   ![在 [監視] 底下，選取 [診斷設定]](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
+   ![在"監視"下，選擇"診斷設置"](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
 
-1. 若要建立設定，請遵循下列步驟：
+1. 要創建設置，請按照以下步驟操作：
 
-   1. 提供設定的名稱。
+   1. 提供設置的名稱。
 
-   1. 選取 [傳送至 Log Analytics]。
+   1. 選取 [傳送至 Log Analytics]****。
 
-   1. 針對 [**訂**用帳戶]，選取與您的 Log Analytics 工作區相關聯的 Azure 訂用帳戶。
+   1. 對於**訂閱**，選擇與日誌分析工作區關聯的 Azure 訂閱。
 
-   1. 針對 [ **Log Analytics 工作區**]，選取您要使用的工作區。
+   1. 對於**日誌分析工作區**，請選擇要使用的工作區。
 
-   1. 在 **記錄** 下，選取  **integrationaccounttrackingevents**  類別，以指定您想要記錄的事件類別目錄。
+   1. 在**日誌**下，選擇 **"集成帳戶跟蹤事件**"類別，該類別指定要記錄的事件類別。
 
-   1. 完成時，選取 [儲存]。
+   1. 完成時，選取 [儲存]****。
 
    例如： 
 
-   ![設定 Azure 監視器記錄來收集診斷資料](./media/monitor-b2b-messages-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
+   ![設置 Azure 監視器日誌以收集診斷資料](./media/monitor-b2b-messages-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
 <a name="view-message-status"></a>
 
 ## <a name="view-message-status"></a>檢視訊息狀態
 
-執行邏輯應用程式之後，您可以在 Log Analytics 工作區中查看這些訊息的狀態和相關資料。
+運行邏輯應用後，您可以在日誌分析工作區中查看有關這些消息的狀態和資料。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)搜尋] 方塊中，尋找並開啟您的 Log Analytics 工作區。
+1. 在[Azure 門戶](https://portal.azure.com)搜索框中，查找並打開日誌分析工作區。
 
-1. 在工作區的功能表上，選取 **工作區摘要** > **Logic Apps B2B**。
+1. 在工作區的功能表上，選擇**工作區摘要** > **邏輯應用 B2B**。
 
    ![工作區摘要窗格](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
    > [!NOTE]
-   > 如果 [Logic Apps B2B] 磚不會在執行後立即顯示結果，請**嘗試選取 [** 重新整理] 或稍待片刻後再試一次。
+   > 如果邏輯應用 B2B 磁貼在運行後沒有立即顯示結果，請嘗試選擇 **"刷新"** 或等待一小段時間，然後再重試。
 
-   [Logic Apps B2B] 圖格預設會顯示以一天為基礎的資料。 若要將資料範圍變更為不同的間隔，請選取頁面頂端的範圍控制項：
+   [Logic Apps B2B]**** 圖格預設會顯示以一天為基礎的資料。 要將資料範圍更改為不同的間隔，請選擇頁面頂部的範圍控制項：
 
    ![變更間隔](./media/monitor-b2b-messages-log-analytics/change-summary-interval.png)
 
-1. 訊息狀態儀表板出現之後，即可檢視特定訊息類型的其他詳細資料，這會顯示以一天為基礎的資料。 選取**AS2**、 **X12**或**EDIFACT**的磚。
+1. 訊息狀態儀表板出現之後，即可檢視特定訊息類型的其他詳細資料，這會顯示以一天為基礎的資料。 選擇**AS2** **、X12**或**EDIFACT**的磁貼。
 
-   ![訊息的檢視狀態](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
+   ![查看郵件的狀態](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
 
    會針對您所選擇的磚顯示訊息清單。 例如，AS2 訊息清單可能如下：
 
-   ![AS2 訊息的狀態和詳細資料](./media/monitor-b2b-messages-log-analytics/as2-message-results-list.png)
+   ![AS2 消息的狀態和詳細資訊](./media/monitor-b2b-messages-log-analytics/as2-message-results-list.png)
 
    若要深入了解每種訊息類型的屬性，請參閱這些訊息屬性描述：
 
@@ -180,17 +180,17 @@ Azure 監視器可讓您建立[記錄查詢](../azure-monitor/log-query/log-quer
 
 以下是每個 AS2 訊息的屬性描述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
-| **發送者** | 針對 AS2 協議的 [接收設定] 中所指定的來賓合作夥伴，或 [傳送設定] 中所指定的主機合作夥伴 |
-| **放** | 針對 AS2 協議的 [接收設定] 中所指定的主機合作夥伴，或 [傳送設定] 中所指定的來賓合作夥伴 |
-| **邏輯應用程式** | 已設定 AS2 動作的邏輯應用程式 |
+| **發送** | 針對 AS2 協議的 [接收設定]**** 中所指定的來賓合作夥伴，或 [傳送設定]**** 中所指定的主機合作夥伴 |
+| **接收機** | 針對 AS2 協議的 [接收設定]**** 中所指定的主機合作夥伴，或 [傳送設定]**** 中所指定的來賓合作夥伴 |
+| **邏輯應用** | 已設定 AS2 動作的邏輯應用程式 |
 | **狀態** | AS2 訊息狀態 <br>成功 = 已接收或傳送有效的 AS2 訊息。 未設定 MDN。 <br>成功 = 已接收或傳送有效的 AS2 訊息。 已設定並接收 MDN，或傳送 MDN。 <br>失敗 = 已接收無效的 AS2 訊息。 未設定 MDN。 <br>暫止 = 已接收或傳送有效的 AS2 訊息。 已設定 MDN，並預期要有 MDN。 |
-| **認可** | MDN 訊息狀態 <br>接受 = 已接收或傳送正值的 MDN。 <br>暫止 = 等候接收或傳送 MDN。 <br>拒絕 = 已接收或傳送負值的 MDN。 <br>不需要 = 未在協議中設定 MDN。 |
+| **Ack** | MDN 訊息狀態 <br>接受 = 已接收或傳送正值的 MDN。 <br>暫止 = 等候接收或傳送 MDN。 <br>拒絕 = 已接收或傳送負值的 MDN。 <br>不需要 = 未在協議中設定 MDN。 |
 | **方向** | AS2 訊息方向 |
 | **追蹤識別碼** | 與邏輯應用程式中所有觸發程序和動作相關聯的識別碼 |
 | **訊息識別碼** | 來自 AS2 訊息標頭的 AS2 訊息識別碼 |
-| **Timestamp** | AS2 動作處理訊息的時間 |
+| **時間 戳** | AS2 動作處理訊息的時間 |
 |||
 
 <!--
@@ -213,19 +213,19 @@ Here are the name formats for each downloaded AS2 message folder and files.
 
 以下是每個 X12 訊息的屬性描述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
-| **發送者** | 針對 X12 協議的 [接收設定] 中所指定的來賓合作夥伴，或 [傳送設定] 中所指定的主機合作夥伴 |
-| **放** | 針對 X12 協議的 [接收設定] 中所指定的主機合作夥伴，或 [傳送設定] 中所指定的來賓合作夥伴 |
-| **邏輯應用程式** | 已設定 X12 動作的邏輯應用程式 |
+| **發送** | 針對 X12 協議的 [接收設定]**** 中所指定的來賓合作夥伴，或 [傳送設定]**** 中所指定的主機合作夥伴 |
+| **接收機** | 針對 X12 協議的 [接收設定]**** 中所指定的主機合作夥伴，或 [傳送設定]**** 中所指定的來賓合作夥伴 |
+| **邏輯應用** | 已設定 X12 動作的邏輯應用程式 |
 | **狀態** | X12 訊息狀態 <br>成功 = 已接收或傳送有效的 X12 訊息。 未設定任何功能通知。 <br>成功 = 已接收或傳送有效的 X12 訊息。 已設定和接收功能通知，或傳送功能通知。 <br>失敗 = 已接收或傳送有效的 X12 訊息。 <br>暫止 = 已接收或傳送有效的 X12 訊息。 已設定功能通知，並預期要有功能通知。 |
-| **認可** | 功能認可 (997) 狀態 <br>接受 = 已接收或傳送正值的功能通知。 <br>拒絕 = 已接收或傳送負值的功能通知。 <br>暫止 = 預期要有功能通知但未收到。 <br>暫止 = 已產生功能通知，但無法傳送給合作夥伴。 <br>不需要 = 未設定功能通知。 |
+| **Ack** | 功能認可 (997) 狀態 <br>接受 = 已接收或傳送正值的功能通知。 <br>拒絕 = 已接收或傳送負值的功能通知。 <br>暫止 = 預期要有功能通知但未收到。 <br>暫止 = 已產生功能通知，但無法傳送給合作夥伴。 <br>不需要 = 未設定功能通知。 |
 | **方向** | X12 訊息方向 |
 | **追蹤識別碼** | 與邏輯應用程式中所有觸發程序和動作相關聯的識別碼 |
-| **Msg 類型** | EDI X12 訊息類型 |
+| **訊息類型** | EDI X12 訊息類型 |
 | **ICN** | X12 訊息的交換控制編號 |
 | **TSCN** | X12 訊息的交易集控制編號 |
-| **Timestamp** | X12 動作處理訊息的時間 |
+| **時間 戳** | X12 動作處理訊息的時間 |
 |||
 
 <!--
@@ -248,19 +248,19 @@ Here are the name formats for each downloaded X12 message folder and files.
 
 以下是每個 EDIFACT 訊息的屬性描述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
-| **發送者** | 針對 EDIFACT 協議的 [接收設定] 中所指定的來賓合作夥伴，或 [傳送設定] 中所指定的主機合作夥伴 |
-| **放** | 針對 EDIFACT 協議的 [接收設定] 中所指定的主機合作夥伴，或 [傳送設定] 中所指定的來賓合作夥伴 |
-| **邏輯應用程式** | 已設定 EDIFACT 動作的邏輯應用程式 |
+| **發送** | 針對 EDIFACT 協議的 [接收設定]**** 中所指定的來賓合作夥伴，或 [傳送設定]**** 中所指定的主機合作夥伴 |
+| **接收機** | 針對 EDIFACT 協議的 [接收設定]**** 中所指定的主機合作夥伴，或 [傳送設定]**** 中所指定的來賓合作夥伴 |
+| **邏輯應用** | 已設定 EDIFACT 動作的邏輯應用程式 |
 | **狀態** | EDIFACT 訊息狀態 <br>成功 = 已接收或傳送有效的 EDIFACT 訊息。 未設定任何功能通知。 <br>成功 = 已接收或傳送有效的 EDIFACT 訊息。 已設定和接收功能通知，或傳送功能通知。 <br>失敗 = 已接收或傳送有效的 EDIFACT 訊息。 <br>暫止 = 已接收或傳送有效的 EDIFACT 訊息。 已設定功能通知，並預期要有功能通知。 |
-| **認可** | 功能通知（CONTRL）狀態 <br>接受 = 已接收或傳送正值的功能通知。 <br>拒絕 = 已接收或傳送負值的功能通知。 <br>暫止 = 預期要有功能通知但未收到。 <br>暫止 = 已產生功能通知，但無法傳送給合作夥伴。 <br>不需要 = 未設定功能通知。 |
+| **Ack** | 功能確認 （CONTRL） 狀態 <br>接受 = 已接收或傳送正值的功能通知。 <br>拒絕 = 已接收或傳送負值的功能通知。 <br>暫止 = 預期要有功能通知但未收到。 <br>暫止 = 已產生功能通知，但無法傳送給合作夥伴。 <br>不需要 = 未設定功能通知。 |
 | **方向** | EDIFACT 訊息方向 |
 | **追蹤識別碼** | 與邏輯應用程式中所有觸發程序和動作相關聯的識別碼 |
-| **Msg 類型** | EDIFACT 訊息類型 |
+| **訊息類型** | EDIFACT 訊息類型 |
 | **ICN** | EDIFACT 訊息的交換控制編號 |
 | **TSCN** | EDIFACT 訊息的交易集控制編號 |
-| **Timestamp** | EDIFACT 動作處理訊息的時間 |
+| **時間 戳** | EDIFACT 動作處理訊息的時間 |
 |||
 
 <!--

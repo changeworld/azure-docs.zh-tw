@@ -1,16 +1,16 @@
 ---
 title: 使用 FTP/S 部署內容
-description: 了解如何使用 FTP 或 FTPS 將您的應用程式部署至 Azure App Service。 藉由停用未加密的 FTP 來改善網站安全性。
+description: 了解如何使用 FTP 或 FTPS 將您的應用程式部署至 Azure App Service。 通過禁用未加密的 FTP 提高網站安全性。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266009"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
@@ -21,38 +21,38 @@ ms.locfileid: "79266009"
 
 ## <a name="open-ftp-dashboard"></a>開啟 FTP 儀表板
 
-1. 在  [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 **應用程式服務**。
+1. 在[Azure 門戶](https://portal.azure.com)中，搜索並選擇**應用服務**。
 
-    ![搜尋 [應用程式服務]。](media/app-service-continuous-deployment/search-for-app-services.png)
+    ![搜索應用服務。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-2. 選取您想要部署的 web 應用程式。
+2. 選擇要部署的 Web 應用。
 
-    ![選取您的應用程式。](media/app-service-continuous-deployment/select-your-app.png)
+    ![選擇你的應用。](media/app-service-continuous-deployment/select-your-app.png)
 
-3. 選取 **部署中心** > **FTP** > **儀表板**。
+3. 選擇**部署中心** > **FTP** > **儀表板**。
 
     ![開啟 FTP 儀表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>取得 FTP 連線資訊
 
-在 FTP 儀表板中，選取 [**複製**] 以複製 FTPS 端點和應用程式認證。
+在 FTP 儀表板中，選擇 **"複製"** 以複製 FTPS 終結點和應用憑據。
 
 ![複製 FTP 資訊](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-建議您使用**應用程式認證**來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
+建議您使用**應用程式認證**來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]****，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
 
 > [!NOTE]
-> 使用使用者層級認證向 FTP/FTPS 端點進行驗證時，會 requirers 下列格式的使用者名稱： 
+> 使用使用者級憑據對 FTP/FTPS 終結點進行身份驗證需要以以下格式進行使用者名： 
 >
 >`<app-name>\<user-name>`
 >
-> 由於使用者層級的認證會連結至使用者，而不是特定的資源，因此使用者名稱必須採用此格式，才能將登入動作導向至正確的應用程式端點。
+> 由於使用者級憑據連結到使用者而不是特定資源，因此使用者名必須採用此格式才能將登錄操作定向到正確的應用終結點。
 >
 
 ## <a name="deploy-files-to-azure"></a>將檔案部署至 Azure
 
 1. 從您的 FTP 用戶端 (例如 [Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/) 或 [WinSCP](https://winscp.net/index.php))，使用您所蒐集的連線資訊來連線到您的應用程式。
-2. 將您的檔案和其個別的目錄結構複製到 Azure 中的 [ **/site/wwwroot** 目錄](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (或 WebJobs 的 **/site/wwwroot/App_Data/Jobs/** 目錄)。
+2. 將您的檔案和其個別的目錄結構複製到 Azure 中的 [**/site/wwwroot** 目錄](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (或 WebJobs 的 **/site/wwwroot/App_Data/Jobs/** 目錄)。
 3. 瀏覽至您的應用程式 URL，以確認應用程式運作正常。 
 
 > [!NOTE] 
@@ -69,9 +69,9 @@ ms.locfileid: "79266009"
 
 為了增強安全性，您應該只允許 FTP over SSL。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
 
-在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中，從左側導覽**中選取** **[設定] [ > 一般設定**]。
+在[Azure 門戶](https://portal.azure.com)中的應用資源頁中，從左側導航中選擇 **"配置** > **常規設置**"。
 
-若要停用未加密的 FTP，請選取 [僅在**FTP 狀態**中**FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [**停用**]。 完成時，按一下 [儲存]。 如果**只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定**] 分頁，以強制執行 tls 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS] 功能。
+要禁用未加密的 FTP，請選擇 **"僅限 FTP 狀態的 FTPS"。** **FTP state** 要完全禁用 FTP 和 FTPS，請選擇 **"禁用**"。 完成時，按一下 [儲存]****。 如果僅使用**FTPS**，則必須通過導航到 Web 應用的**TLS/SSL 設置**邊欄選項卡來強制執行 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS]**** 功能。
 
 ![停用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "79266009"
 ## <a name="troubleshoot-ftp-deployment"></a>疑難排解 FTP 部署
 
 - [如何疑難排解 FTP 部署？](#how-can-i-troubleshoot-ftp-deployment)
-- [我無法 FTP 及發佈我的程式碼。如何解決此問題？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [我無法 FTP 和發佈我的代碼。如何解決此問題？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [如何透過被動模式連線到 Azure App Service 中的 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>如何疑難排解 FTP 部署？

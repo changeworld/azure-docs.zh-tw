@@ -1,5 +1,5 @@
 ---
-title: 疑難排解連接-Azure PowerShell
+title: 故障排除連接 - Azure 電源外殼
 titleSuffix: Azure Network Watcher
 description: 了解如何運用 PowerShell，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842830"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>使用 PowerShell 利用 Azure 網路監看員進行連線疑難排解
 
 > [!div class="op_single_selector"]
 > - [入口網站](network-watcher-connectivity-portal.md)
-> - [PowerShell](network-watcher-connectivity-powershell.md)
+> - [電源外殼](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -64,7 +64,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>回應
 
-下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
+下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]****。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +155,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>回應
 
-在下列範例中，`ConnectionStatus` 會顯示為 [無法連線]。 在 `Hops` 詳細資料中，您可以在 `Issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。 
+在下列範例中，`ConnectionStatus` 會顯示為 [無法連線]****。 在 `Hops` 詳細資料中，您可以在 `Issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。 
 
 ```
 ConnectionStatus : Unreachable
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>回應
 
-在下列回應中，您可以看到 `ConnectionStatus` 顯示為 [可以連線]。 連線成功時，會提供延遲值。
+在下列回應中，您可以看到 `ConnectionStatus` 顯示為 [可以連線]****。 連線成功時，會提供延遲值。
 
 ```
 ConnectionStatus : Reachable
@@ -271,7 +271,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>回應
 
-下列 JSON 是執行前一個 Cmdlet 的範例回應。 因為可以連線目的地，所以 `ConnectionStatus` 屬性會顯示為 [可以連線]。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
+下列 JSON 是執行前一個 Cmdlet 的範例回應。 因為可以連線目的地，所以 `ConnectionStatus` 屬性會顯示為 [可以連線]****。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
 
 ```json
 ConnectionStatus : Reachable

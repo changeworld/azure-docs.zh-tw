@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Analytics 來分析網站記錄
-description: 瞭解如何使用 Azure Data Lake Analytics 來分析網站記錄，以執行 U-SQL 函數和查詢。
+description: 瞭解如何使用 Azure 資料湖分析分析網站日誌來運行 U-SQL 函數和查詢。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,42 +10,42 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 04c6d4c74a82ccfbcbb0faecb0dca5ec495f6663
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672887"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 來分析網站記錄
 了解如何使用資料湖分析來分析網站記錄，特別是找出哪些訪客來源在嘗試瀏覽網站時遇到錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * **Visual Studio 2015 或 Visual Studio 2013**。
-* **[Visual Studio 適用的 Data Lake 工具](https://aka.ms/adltoolsvs)** 。
+* **[Visual Studio 適用的 Data Lake 工具](https://aka.ms/adltoolsvs)**。
 
-    安裝適用於 Visual Studio 的 Data Lake 工具之後，您會在 Visual Studio 的 [工具] 功能表中看到 [Datat Lake] 項目：
+    安裝適用於 Visual Studio 的 Data Lake 工具之後，您會在 Visual Studio 的 [工具]**** 功能表中看到 [Datat Lake]**** 項目：
 
     ![U-SQL Visual Studio 功能表](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-menu.png)
 * **對於資料湖分析和適用於 Visual Studio 的資料湖工具有基本的認識**。 若要開始使用，請參閱：
 
   * [使用適用於 Visual Studio 的資料湖工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)。
 * **資料湖分析帳戶。**  請參閱[建立 Azure Data Lake Analytics 帳戶可節省時間](data-lake-analytics-get-started-portal.md)。
-* **安裝範例資料。** 在 Azure 入口網站中開啟 Data Lake Analytics 帳戶，按一下左側功能表上的 [指令碼範例]，然後再按一下 [複製範例資料]。 
+* **安裝範例資料。** 在 Azure 入口網站中開啟 Data Lake Analytics 帳戶，按一下左側功能表上的 [指令碼範例]****，然後再按一下 [複製範例資料]****。 
 
-## <a name="connect-to-azure"></a>連線至 Azure
+## <a name="connect-to-azure"></a>連線到 Azure
 您必須先連接至 Azure，然後才能建置及測試任何 U-SQL 指令碼。
 
 **連接到資料湖分析**
 
 1. 開啟 Visual Studio。
-2. 按一下 [Data Lake] > [選項和設定]。
-3. 按一下 [登入]，或者如果已有其他人登入則按一下 [變更使用者]，並遵循指示。
-4. 按一下 [確定] 關閉 [選項和設定] 對話方塊。
+2. 按一下 [Data Lake] > [選項和設定]****。
+3. 按一下 [登入]****，或者如果已有其他人登入則按一下 [變更使用者]****，並遵循指示。
+4. 按一下 [確定] **** 關閉 [選項和設定] 對話方塊。
 
 **瀏覽您的資料湖分析帳戶**
 
-1. 從 Visual Studio 中，按 **CTRL+ALT+S**，開啟 [伺服器總管]。
-2. 在 [伺服器總管] 中展開 [Azure]，然後展開 [Data Lake Analytics]。 如果有資料湖分析帳戶，您就會看到其清單。 您無法從 Visual Studio 建立資料湖分析帳戶。 若要建立帳戶，請參閱[使用 Azure 入口網站開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md) 或[使用 Azure PowerShell 開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
+1. 從 Visual Studio 中，按 **CTRL+ALT+S**，開啟 [伺服器總管]****。
+2. 在 [伺服器總管]**** 中展開 [Azure]****，然後展開 [Data Lake Analytics]****。 如果有資料湖分析帳戶，您就會看到其清單。 您無法從 Visual Studio 建立資料湖分析帳戶。 要創建帳戶，請參閱[使用 Azure 門戶開始使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)或使用 Azure PowerShell 開始使用 Azure[資料湖分析](data-lake-analytics-get-started-powershell.md)。
 
 ## <a name="develop-u-sql-application"></a>開發 U-SQL 應用程式
 U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請參閱 [開始使用 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
@@ -54,11 +54,11 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
 
 **建立並提交資料湖分析工作**
 
-1. 按一下 [檔案] > [新增] > [專案]。
+1. 按一下 [檔案] > [新增] > [專案]****。
 2. 選取 [U-SQL 專案] 類型。
 
     ![新的 U-SQL Visual Studio 專案](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. 按一下 [確定]。 Visual Studio 會建立具有 Script.usql 檔案的方案。
+3. 按一下 [確定]****。 Visual Studio 會建立具有 Script.usql 檔案的方案。
 4. 在 Script.usql 檔案中輸入下列指令碼：
 
         // Create a database for easy reuse, so you don't need to read from a file every time.
@@ -150,10 +150,10 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
         OUTPUT @content
         TO @"/Samples/Outputs/UnsuccessfulResponses.log"
         USING Outputters.Tsv();
-6. 依序切換回至第一個 U-SQL 指令碼和 [提交] 按鈕，指定您的分析帳戶。
-7. 從 [方案總管] 中，在 [Script.usql] 上按一下滑鼠右鍵，然後按一下 [建置指令碼]。 確認 [輸出] 窗格中的結果。
-8. 從 [方案總管] 中，在 [Script.usql] 上按一下滑鼠右鍵，然後按一下 [提交指令碼]。
-9. 確認 [分析帳戶] 是在您想要執行工作的帳戶，然後按一下 [提交]。 提交作業完成時，[適用於 Visual Studio 的資料湖工具結果] 視窗中便會出現提交結果和工作連結。
+6. 依序切換回至第一個 U-SQL 指令碼和 [提交] **** 按鈕，指定您的分析帳戶。
+7. 從 [方案總管]**** 中，在 [Script.usql]**** 上按一下滑鼠右鍵，然後按一下 [建置指令碼]****。 確認 [輸出] 窗格中的結果。
+8. 從 [方案總管]**** 中，在 [Script.usql]**** 上按一下滑鼠右鍵，然後按一下 [提交指令碼]****。
+9. 確認 [分析帳戶]**** 是在您想要執行工作的帳戶，然後按一下 [提交]****。 提交作業完成時，[適用於 Visual Studio 的資料湖工具結果] 視窗中便會出現提交結果和工作連結。
 10. 請等待工作成功完成。  如果工作失敗，很可能是因為遺漏了原始檔。  請參閱本教學課程的＜必要條件＞一節。 如需其他疑難排解資訊，請參閱 [監視和疑難排解 Azure 資料湖分析工作](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)。
 
     工作完成之後，您會看到下列畫面：
@@ -163,8 +163,8 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
 
 **查看作業輸出**
 
-1. 在 [伺服器總管] 中，依序展開 [Azure]、[Data Lake Analytics]、您的 Data Lake Analytics 帳戶，以及 [儲存體帳戶]，然後用滑鼠右鍵按一下預設的 Data Lake 儲存體帳戶，再按一下 [總管]。
-2. 按兩下 [範例] 來開啟資料夾，然後再連按兩下 [輸出]。
+1. 在 [伺服器總管]**** 中，依序展開 [Azure]****、[Data Lake Analytics]****、您的 Data Lake Analytics 帳戶，以及 [儲存體帳戶]****，然後用滑鼠右鍵按一下預設的 Data Lake 儲存體帳戶，再按一下 [總管]****。
+2. 按兩下 [範例]**** 來開啟資料夾，然後再連按兩下 [輸出]****。
 3. 按兩下 **UnsuccessfulResponses.log**。
 4. 您也可以按兩下工作的圖形檢視內的輸出檔，直接瀏覽至輸出。
 

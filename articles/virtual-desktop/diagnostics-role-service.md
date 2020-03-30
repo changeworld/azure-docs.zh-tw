@@ -1,5 +1,5 @@
 ---
-title: Windows 虛擬桌面診斷問題-Azure
+title: Windows 虛擬桌面診斷問題 - Azure
 description: 如何使用 Windows 虛擬桌面診斷功能來診斷問題。
 services: virtual-desktop
 author: Heidilohr
@@ -9,23 +9,23 @@ ms.date: 03/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254257"
 ---
 # <a name="identify-and-diagnose-issues"></a>識別並診斷問題
 
-Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面來識別問題。 每當使用者與系統互動時，Windows 虛擬桌面角色就會記錄一個診斷活動。 每個記錄檔都包含相關資訊，例如交易中涉及的 Windows 虛擬桌面角色、錯誤訊息、租使用者資訊和使用者資訊。 診斷活動是由使用者和系統管理動作所建立，而且可以分類為三個主要的值區：
+Windows 虛擬桌面提供診斷功能，允許管理員通過單個介面識別問題。 每當使用者與系統交互時，Windows 虛擬桌面角色都會記錄診斷活動。 每個日誌都包含相關資訊，如事務中涉及的 Windows 虛擬桌面角色、錯誤訊息、租戶資訊和使用者資訊。 診斷活動由最終使用者和管理操作創建，可以分為三個主要存儲桶：
 
-* 摘要訂用帳戶活動：每當使用者嘗試透過 Microsoft 遠端桌面應用程式連線到其摘要時，就會觸發這些活動。
-* 連線活動：終端使用者會在嘗試透過 Microsoft 遠端桌面應用程式連線到桌面或 RemoteApp 時觸發這些活動。
-* 管理活動：系統管理員會在這些活動于系統上執行管理作業時觸發，例如建立主機集區、將使用者指派給應用程式群組，以及建立角色指派。
+* 源訂閱活動：最終使用者在嘗試通過 Microsoft 遠端桌面應用程式連接到其源時觸發這些活動。
+* 連接活動：最終使用者在嘗試通過 Microsoft 遠端桌面應用程式連接到桌面或遠端應用時觸發這些活動。
+* 管理活動：管理員在系統上執行管理操作（如創建主機池、將使用者分配給應用組以及創建角色指派）時觸發這些活動。
   
-因為診斷角色服務本身是 Windows 虛擬桌面的一部分，所以不會在診斷結果中顯示 Windows 虛擬桌面的連接。 當使用者遇到網路連線問題時，可能會發生 Windows 虛擬桌面連接問題。
+無法訪問 Windows 虛擬桌面的連接不會顯示在診斷結果中，因為診斷角色服務本身是 Windows 虛擬桌面的一部分。 當最終使用者遇到網路連接問題時，可能會發生 Windows 虛擬桌面連接問題。
 
-若要開始，請[下載並匯入 Windows 虛擬桌面 powershell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 powershell 會話中使用（如果您還沒有這麼做）。 之後，請執行下列 Cmdlet 來登入您的帳戶：
+要開始使用[，請下載並導入 Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以便如果您尚未在 PowerShell 會話中使用。 之後，請執行下列 Cmdlet 來登入您的帳戶：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -33,143 +33,143 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>診斷 PowerShell 的問題
 
-Windows 虛擬桌面診斷只會使用一個 PowerShell Cmdlet，但包含許多選用參數，以協助縮小和隔離問題。 下列各節列出您可以執行以診斷問題的 Cmdlet。 大部分的篩選準則都可以一起套用。 以方括弧括住的值（例如 `<tenantName>`）應取代為適用于您情況的值。
+Windows 虛擬桌面診斷僅使用一個 PowerShell Cmdlet，但包含許多可選參數，以説明縮小和隔離問題。 以下各節列出了可以運行以診斷問題的 Cmdlet。 大多數篩選器可以一起應用。 括弧中列出的值（如`<tenantName>`）應替換為適用于您的情況的值。
 
 >[!IMPORTANT]
->診斷功能適用于單一使用者的疑難排解。 所有使用 PowerShell 的查詢都必須包含 *-UserName*或 *-ActivityID*參數。 如需監視功能，請使用 Log Analytics。 如需如何將診斷資料傳送至您的工作區的詳細資訊，請參閱[使用 Log Analytics 進行診斷功能](diagnostics-log-analytics.md)。 
+>診斷功能用於單使用者故障排除。 使用 PowerShell 的所有查詢都必須包括 *-使用者名*或 *-ActivityID*參數。 要監視功能，請使用日誌分析。 有關如何將診斷資料發送到工作區的詳細資訊，請參閱[使用日誌分析進行診斷功能](diagnostics-log-analytics.md)。 
 
-### <a name="filter-diagnostic-activities-by-user"></a>依使用者篩選診斷活動
+### <a name="filter-diagnostic-activities-by-user"></a>按使用者篩選診斷活動
 
-**-UserName**參數會傳回由指定使用者起始的診斷活動清單，如下列範例 Cmdlet 所示。
+**-UserName**參數返回由指定使用者啟動的診斷活動的清單，如下例 Cmdlet 所示。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
 
-**-UserName**參數也可以與其他選擇性篩選參數結合。
+**-使用者名**參數也可以與其他可選篩選參數組合。
 
-### <a name="filter-diagnostic-activities-by-time"></a>依時間篩選診斷活動
+### <a name="filter-diagnostic-activities-by-time"></a>按時間篩選診斷活動
 
-您可以使用 **-StartTime**和 **-EndTime**參數來篩選傳回的診斷活動清單。 **-StartTime**參數會傳回從特定日期開始的診斷活動清單，如下列範例所示。
+您可以使用 **-Starttime**和 **-EndTime**參數篩選返回的診斷活動清單。 **-StartTime**參數將返回從特定日期開始的診斷活動清單，如以下示例所示。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
 ```
 
-**-EndTime**參數可以使用 **-StartTime**參數新增至 Cmdlet，以指定您想要接收結果的特定時間長度。 下列範例 Cmdlet 會傳回8月1日到8月10日之間的診斷活動清單。
+**-EndTime**參數可以添加到帶有 **-StartTime**參數的 Cmdlet 中，以指定要接收結果的特定時間段。 以下示例 Cmdlet 將返回 8 月 1 日至 8 月 10 日期間的診斷活動清單。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
 ```
 
-**-StartTime**和 **-EndTime**參數也可以與其他選擇性篩選參數結合。
+**-Starttime**和 **-EndTime**參數也可以與其他可選篩選參數組合使用。
 
-### <a name="filter-diagnostic-activities-by-activity-type"></a>依活動類型篩選診斷活動
+### <a name="filter-diagnostic-activities-by-activity-type"></a>按活動類型篩選診斷活動
 
-您也可以使用 **-ActivityType**參數，依活動類型篩選診斷活動。 下列 Cmdlet 會傳回使用者連線的清單：
+您還可以使用 **-ActivityType**參數按活動類型篩選診斷活動。 以下 Cmdlet 將返回最終使用者連接的清單：
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
 ```
 
-下列 Cmdlet 會傳回系統管理員管理工作的清單：
+以下 Cmdlet 將返回管理員管理工作的清單：
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
 ```
 
-**RdsDiagnosticActivities** Cmdlet 目前不支援指定摘要作為 ActivityType。
+**Get-Rds 診斷活動**Cmdlet 當前不支援將源指定為活動類型。
 
-### <a name="filter-diagnostic-activities-by-outcome"></a>依結果篩選診斷活動
+### <a name="filter-diagnostic-activities-by-outcome"></a>按結果篩選診斷活動
 
-您可以使用 **-結果**參數，依結果篩選傳回的診斷活動清單。 下列範例 Cmdlet 會傳回成功的診斷活動清單。
+您可以使用 **-結果**參數按結果篩選返回的診斷活動清單。 以下示例 Cmdlet 將返回成功診斷活動的清單。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
 ```
 
-下列範例 Cmdlet 會傳回失敗診斷活動的清單。
+以下示例 Cmdlet 將返回失敗的診斷活動的清單。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 ```
 
-**-結果**參數也可以與其他選擇性篩選參數結合。
+**-結果**參數也可以與其他可選的篩選參數組合。
 
-### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>依活動識別碼抓取特定的診斷活動
+### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>按活動 ID 檢索特定診斷活動
 
-**-ActivityId**參數會傳回特定的診斷活動（如果有的話），如下列範例 Cmdlet 所示。
+**-ActivityId**參數如果存在，將返回特定的診斷活動，如下例 Cmdlet 所示。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
 ```
 
-### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>依據活動識別碼來查看失敗活動的錯誤訊息
+### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>按活動 ID 查看失敗活動的錯誤訊息
 
-若要查看失敗活動的錯誤訊息，您必須以 **-詳細**參數執行 Cmdlet。 您可以藉由執行**Select-Object** Cmdlet 來查看錯誤清單。
+要查看失敗活動的錯誤訊息，必須使用 **-詳細**參數運行 Cmdlet。 您可以通過運行**選擇物件**Cmdlet 來查看錯誤清單。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="retrieve-detailed-diagnostic-activities"></a>取得詳細的診斷活動
+### <a name="retrieve-detailed-diagnostic-activities"></a>檢索詳細的診斷活動
 
-**-詳細**參數會針對每個傳回的診斷活動提供額外的詳細資料。 每個活動的格式會根據其活動類型而有所不同。 **-詳細**的參數可以新增至任何**RdsDiagnosticActivities**查詢，如下列範例所示。
+**-詳細**參數提供了返回的每個診斷活動的其他詳細資訊。 每個活動的格式因活動類型而異。 **-詳細**參數可以添加到任何**獲取診斷活動**查詢，如以下示例所示。
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
 
-## <a name="common-error-scenarios"></a>常見的錯誤案例
+## <a name="common-error-scenarios"></a>常見錯誤案例
 
-錯誤案例會在服務內部分類，並在外部進行 Windows 虛擬桌面。
+錯誤方案在服務內部和 Windows 虛擬桌面外部分類。
 
-* 內部問題：指定租使用者系統管理員無法緩和的案例，而且需要解決為支援問題。 透過[Windows 虛擬桌面技術社區](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供意見反應時，請包含活動識別碼，以及問題發生時的大約時間範圍。
-* 外部問題：與系統管理員可減輕的案例相關。 這些是 Windows 虛擬桌面的外部。
+* 內部問題：指定租戶管理員無法緩解且需要作為支援問題解決的方案。 當通過 Windows[虛擬桌面技術社區](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供回饋時 ，包括活動 ID 和問題發生的大致時間範圍。
+* 外部問題：與系統管理員可以緩解的方案相關。 這些是 Windows 虛擬桌面的外部。
 
-下表列出系統管理員可能會遇到的常見錯誤。
+下表列出了管理員可能會遇到的常見錯誤。
 
 >[!NOTE]
->這份清單包含最常見的錯誤，並且會定期更新。 為確保您擁有最新的資訊，請務必每個月至少檢查一次此文章。
+>此清單包含最常見的錯誤，並在常規節奏上更新。 為了確保您擁有最新資訊，請確保每月至少查看一次本文。
 
 ### <a name="external-management-error-codes"></a>外部管理錯誤代碼
 
-|數值代碼|錯誤碼|建議的解決方案|
+|數位代碼|錯誤碼|建議的解決方案|
 |---|---|---|
-|3|UnauthorizedAccess|嘗試執行系統管理 PowerShell Cmdlet 的使用者沒有許可權可執行此動作或輸入錯誤的使用者名稱。|
-|1000|TenantNotFound|您輸入的租使用者名稱不符合任何現有的 tenant。 請檢查租使用者名稱是否有輸入錯誤，然後再試一次。|
-|1006|TenantCannotBeRemovedHasSessionHostPools|如果租使用者包含物件，您就無法將其刪除。 請先刪除工作階段主機集區，然後再試一次。|
-|2000|HostPoolNotFound|您輸入的主機集區名稱不符合任何現有的主機池。 請檢查主機集區名稱中的錯誤，然後再試一次。|
-|2005|HostPoolCannotBeRemovedHasApplicationGroups|只要主機集區包含物件，您就無法將它刪除。 請先移除主機集區中的所有應用程式群組。|
-|2004|HostPoolCannotBeRemovedHasSessionHosts|刪除工作階段主機集區之前，請先移除所有工作階段主機。|
-|5001|SessionHostNotFound|您所查詢的工作階段主機可能已離線。 檢查主機集區的狀態。|
-|5008|SessionHostUserSessionsExist |您必須先登出工作階段主機上的所有使用者，才能執行您想要的管理活動。|
-|6000|AppGroupNotFound|您輸入的應用程式組名不符合任何現有的應用程式群組。 請檢查應用程式組名是否有輸入錯誤，然後再試一次。|
-|6022|RemoteAppNotFound|您輸入的 RemoteApp 名稱與任何 Remoteapp 不相符。 請檢查錯誤的 RemoteApp 名稱，然後再試一次。|
-|6010|PublishedItemsExist|您嘗試發佈的資源名稱與已經存在的資源相同。 請變更資源名稱，然後再試一次。|
-|7002|NameNotValidWhiteSpace|請勿在名稱中使用空白字元。|
-|8000|InvalidAuthorizationRoleScope|您輸入的角色名稱不符合任何現有的角色名稱。 請檢查錯誤的角色名稱，然後再試一次。 |
-|8001|UserNotFound |您輸入的使用者名稱不符合任何現有的使用者名稱。 請檢查錯誤的名稱，然後再試一次。|
-|8005|UserNotFoundInAAD |您輸入的使用者名稱不符合任何現有的使用者名稱。 請檢查錯誤的名稱，然後再試一次。|
-|8008|TenantConsentRequired|依照[這裡](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)的指示，為您的租使用者提供同意。|
+|3|未經授權的訪問|嘗試運行管理 PowerShell Cmdlet 的使用者沒有這樣做的許可權或鍵入了錯誤的使用者名。|
+|1000|租戶未找到|您輸入的租戶名稱與任何現有租戶不匹配。 查看租戶名稱中的拼寫錯誤，然後重試。|
+|1006|無法刪除的租戶具有工作階段主機池|不能刪除租戶，只要它包含物件。 請先刪除工作階段主機池，然後重試。|
+|2000|主機池未找到|您輸入的主機池名稱與任何現有主機池不匹配。 查看主機池名稱中的拼寫錯誤，然後重試。|
+|2005|主機池不可刪除具有應用程式組|只要主機池包含物件，它就不會刪除它。 首先刪除主機池中的所有應用組。|
+|2004|主機池不可刪除的工作階段主機|在刪除工作階段主機池之前，請先刪除所有工作階段主機。|
+|5001|工作階段主機未找到|您查詢的工作階段主機可能處於離線狀態。 檢查主機池的狀態。|
+|5008|工作階段主機使用者會話存在 |在執行預期的管理活動之前，必須登出工作階段主機上的所有使用者。|
+|6000|應用組未找到|您輸入的應用組名稱與任何現有應用組不匹配。 查看應用組名稱中的拼寫錯誤，然後重試。|
+|6022|遠端應用未找到|您輸入的 RemoteApp 名稱與任何遠端應用不匹配。 查看 RemoteApp 名稱中有拼寫錯誤，然後重試。|
+|6010|已發佈專案存在|您嘗試發佈的資源的名稱與已存在的資源的名稱相同。 請更改資源名稱，然後重試。|
+|7002|名稱 無效空白|不要在名稱中使用空格。|
+|8000|無效授權功能範圍|您輸入的角色名稱與任何現有角色名稱不匹配。 查看拼寫錯誤的角色名稱，然後重試。 |
+|8001|UserNotFound |您輸入的使用者名與任何現有使用者名不匹配。 查看拼寫錯誤的名稱，然後重試。|
+|8005|使用者不芬蘭 |您輸入的使用者名與任何現有使用者名不匹配。 查看拼寫錯誤的名稱，然後重試。|
+|8008|租戶同意要求|按照[此處](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)的說明為您的租戶提供同意。|
 
 ### <a name="external-connection-error-codes"></a>外部連接錯誤代碼
 
-|數值代碼|錯誤碼|建議的解決方案|
+|數位代碼|錯誤碼|建議的解決方案|
 |---|---|---|
-|-2147467259|ConnectionFailedAdTrustedRelationshipFailure|工作階段主機未正確聯結至 Active Directory。|
-|-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|連接失敗，因為工作階段主機無法使用。 檢查工作階段主機的健全狀況。|
-|-2146233088|ConnectionFailedClientDisconnect|如果您經常看到此錯誤，請確定使用者的電腦已連線到網路。|
-|-2146233088|ConnectionFailedNoHealthyRdshAvailable|主機使用者嘗試連接的會話狀況不良。 對虛擬機器進行 Debug。|
-|-2146233088|ConnectionFailedUserNotAuthorized|使用者沒有許可權可存取已發佈的應用程式或桌面。 此錯誤可能會在系統管理員移除已發佈的資源之後出現。 要求使用者重新整理遠端桌面應用程式中的摘要。|
-|2|FileNotFound|使用者嘗試存取的應用程式未正確安裝或設定為不正確的路徑。|
-|3|InvalidCredentials|使用者輸入的使用者名稱或密碼不符合任何現有的使用者名稱或密碼。 請檢查輸入錯誤的認證，然後再試一次。|
-|8|ConnectionBroken|用戶端與閘道或伺服器之間的連線已中斷。 除非意外發生，否則不需要採取任何動作。|
-|14|UnexpectedNetworkDisconnect|網路連線已中斷。 要求使用者再次連接。|
-|24|ReverseConnectFailed|主機虛擬機器無法直接看到 RD 閘道。 請確定可以解析閘道 IP 位址。|
+|-2147467259|連接失敗AdTrusted關係失敗|工作階段主機未正確加入活動目錄。|
+|-2146233088|連接失敗 使用者有效會話但 Rdshis 不健康|連接失敗，因為工作階段主機不可用。 檢查工作階段主機的運行狀況。|
+|-2146233088|連接失敗用戶端斷開連接|如果經常看到此錯誤，請確保使用者的電腦已連接到網路。|
+|-2146233088|連接失敗 無健康Rdsh可用|主機使用者嘗試連接到的會話不正常。 調試虛擬機器。|
+|-2146233088|連接失敗使用者未授權|使用者沒有訪問已發佈的應用或桌面的許可權。 管理員刪除已發佈資源後可能會出現錯誤。 要求使用者刷新遠端桌面應用程式中的源。|
+|2|FileNotFound|使用者嘗試訪問的應用程式安裝不正確或設置為錯誤的路徑。|
+|3|InvalidCredentials|使用者輸入的使用者名或密碼與任何現有使用者名或密碼不匹配。 查看拼寫錯誤憑據，然後重試。|
+|8|連接中斷|用戶端與閘道或伺服器之間的連接斷開。 除非意外發生，否則無需執行任何操作。|
+|14|意外網路斷開|與網路的連接斷開。 要求使用者再次連接。|
+|24|反向連接失敗|主機虛擬機器沒有直接的視線到 RD 閘道。 確保可以解析閘道 IP 位址。|
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 Windows 虛擬桌面內的角色，請參閱[Windows 虛擬桌面環境](environment-setup.md)。
+要瞭解有關 Windows 虛擬桌面中角色的更多資訊，請參閱[Windows 虛擬桌面環境](environment-setup.md)。
 
-若要查看 Windows 虛擬桌面可用的 PowerShell Cmdlet 清單，請參閱[PowerShell 參考](/powershell/windows-virtual-desktop/overview)。
+要查看適用于 Windows 虛擬桌面的可用 PowerShell Cmdlet 的清單，請參閱[PowerShell 參考](/powershell/windows-virtual-desktop/overview)。

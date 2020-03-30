@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67477026"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux 虛擬機器中執行指令碼
@@ -68,7 +68,7 @@ ms.locfileid: "67477026"
 
 深入了解可在虛擬機器中執行指令碼和命令的不同功能。
 
-* [自訂指令碼擴充功能](../extensions/custom-script-linux.md)
+* [自訂腳本擴展](../extensions/custom-script-linux.md)
 * [執行命令](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [序列主控台](serial-console.md)
+* [串列主控台](serial-console.md)

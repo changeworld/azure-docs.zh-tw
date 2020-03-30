@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：線路和對等互連
+title: Azure 快速路由：電路和對等互連
 description: 此頁面提供 ExpressRoute 線路和路由網域/對等互連的概觀。
 services: expressroute
 author: mialdrid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281349"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 線路和對等互連
@@ -21,10 +21,10 @@ ExpressRoute 線路可透過連線提供者將內部部署基礎結構連線到 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Azure 公用對等互連已被取代，不適用於新的 ExpressRoute 線路。 新線路支援 Microsoft 對等互連和私用對等互連。  
+> Azure 公共對等互連已被棄用，不適用於新的 ExpressRoute 電路。 新的電路支援微軟對等互連和私有對等互連。  
 >
 
-## <a name="circuits"></a>ExpressRoute 線路
+## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 線路
 
 ExpressRoute 線路代表您的內部部署基礎結構與 Microsoft 雲端服務之間，透過連線提供者的邏輯連線。 您可以訂購多條 ExpressRoute 線路。 每一條線路可以位於相同或不同區域，且可透過不同的連線提供者連線到您的內部環境。
 
@@ -34,31 +34,31 @@ ExpressRoute 線路不對應至任何實體裝置。 線路由一個稱為服務
 
 每個電路有固定的頻寬 (50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps)，而且對應至連線提供者和對等位置。 您選取的頻寬會在所有線路對等互連中共用
 
-### <a name="quotas"></a>配額和限制
+### <a name="quotas-limits-and-limitations"></a><a name="quotas"></a>配額和限制
 
 每個 ExpressRoute 線路會套用預設的配額和限制。 如需最新的配額資訊，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md) 。
 
-## <a name="routingdomains"></a>ExpressRoute 對等互連
+## <a name="expressroute-peering"></a><a name="routingdomains"></a>ExpressRoute 對等互連
 
-ExpressRoute 線路有多個相關聯的路由網域/對等互連： Azure 公用、Azure 私用和 Microsoft。 每個對等互連在一對路由器上的設定完全相同 (使用主動-主動或載入共用設定)，以確保高可用性。 Azure 服務分成 *Azure 公用*和 *Azure 私用*兩類來代表 IP 定址配置。
+ExpressRoute 電路具有與其關聯的多個路由域/對等互連：Azure 公共、Azure 專用和 Microsoft。 每個對等互連在一對路由器上的設定完全相同 (使用主動-主動或載入共用設定)，以確保高可用性。 Azure 服務分成 *Azure 公用*和 *Azure 私用*兩類來代表 IP 定址配置。
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="privatepeering"></a>Azure 私人對等互連
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure 私用對等
 
 部署於虛擬網路內的 Azure 計算服務 (也就是虛擬機器 (IaaS) 和雲端服務 (PaaS)) 可透過私用對等網域進行連線。 私人對等互連網域會被視為核心網路至 Microsoft Azure 的受信任延伸。 您可以在核心網路與 Azure 虛擬網路 (VNet) 之間設定雙向連線。 此對等可讓您直接連線到虛擬機器和雲端服務的私人 IP 位址。  
 
 您可以將多個虛擬網路連線到私人對等互連網域。 如需限制的相關資訊，請檢閱 [常見問題集頁面](expressroute-faqs.md) 。 如需最新的限制資訊，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md) 。  如需路由組態的詳細資訊，請參閱 [路由](expressroute-routing.md) 頁面。
 
-### <a name="microsoftpeering"></a>Microsoft 對等互連
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>微軟對等互連
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Microsoft 線上服務（Office 365 和 Azure PaaS 服務）的連線會透過 Microsoft 對等互連進行。 我們會透過 Microsoft 對等路由網域啟用 WAN 與 Microsoft 雲端服務之間的雙向連線。 您只能透過您或連線提供者所擁有的公用 IP 位址連線到 Microsoft 雲端服務，且必須遵守所有已定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md)頁面。
+通過 Microsoft 對等互連連接到 Microsoft 聯機服務（Office 365 和 Azure PaaS 服務）。 我們會透過 Microsoft 對等路由網域啟用 WAN 與 Microsoft 雲端服務之間的雙向連線。 您只能透過您或連線提供者所擁有的公用 IP 位址連線到 Microsoft 雲端服務，且必須遵守所有已定義的規則。 如需詳細資訊，請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md)頁面。
 
 如需支援的服務、費用和組態的詳細資訊，請參閱 [常見問題集頁面](expressroute-faqs.md) 。 如需有關提供 Microsoft 對等支援的連線提供者清單的詳細資訊，請參閱 [ExpressRoute 位置](expressroute-locations.md) 頁面。
 
-## <a name="peeringcompare"></a>對等互連比較
+## <a name="peering-comparison"></a><a name="peeringcompare"></a>對等互連比較
 
 下表是這三種對等互連的比較：
 
@@ -68,7 +68,7 @@ Microsoft 線上服務（Office 365 和 Azure PaaS 服務）的連線會透過 M
 
 每個對等互連都需要不同的 BGP 工作階段 (每個對等互連類型一對)。 BGP 工作階段配對提供高可用性連結。 若您透過第 2 層連線提供者來連線，則要負責設定和管理路由。 如需深入瞭解，請檢閱有關設定 ExpressRoute 的 [工作流程](expressroute-workflows.md) 。
 
-## <a name="health"></a>ExpressRoute 健康情況
+## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute 健康情況
 
 您可能會基於可用性、與 VNet 的連線能力及頻寬使用率，使用[網路效能監控](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 來監視 ExpressRoute 線路。
 

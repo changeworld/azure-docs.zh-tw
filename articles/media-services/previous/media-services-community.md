@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72598319"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒體服務社群  
@@ -40,7 +40,7 @@ Azure 媒體服務 (AMS) 社群頁面討論您可以取得 AMS 更新的不同�
 
 ### <a name="twitter"></a>Twitter
 
-使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 控制代碼，在 Twitter 上與我們連絡或追蹤更新。 您可以使用 [@AzureSupport](https://twitter.com/azuresupport) twitter 控制代碼，以在 Twitter 上要求支援。  
+使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia)推特控制碼與我們聯繫或關注 Twitter 上的更新。 您可以使用[@AzureSupport](https://twitter.com/azuresupport)推特控制碼在 Twitter 上請求支援。  
 
 ### <a name="online-forums"></a>線上論壇
 
@@ -48,16 +48,16 @@ Azure 媒體服務 (AMS) 社群頁面討論您可以取得 AMS 更新的不同�
 
 目前，MSDN 是媒體服務小組的主要社群論壇。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 小組也會監視 Stack Overflow 上標記 'azure-media-services' 的問題。
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![堆疊溢位](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="need-help"></a>需要協助嗎？
 
-您可以流覽至 [[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)] 來開啟支援票證
+您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
 
 ## <a name="next-steps"></a>後續步驟
 
-[Overview](media-services-overview.md)
+[概觀](media-services-overview.md)

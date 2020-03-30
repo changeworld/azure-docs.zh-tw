@@ -1,6 +1,6 @@
 ---
-title: 應用程式效能常見問題
-description: 取得 Azure App Service 中可用性、效能和應用程式問題常見問題的解答。
+title: 應用程式性能常見問題解答
+description: 獲取有關 Azure 應用服務中可用性、性能和應用程式問題的常見問題的解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -10,16 +10,16 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259860"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure Web 應用程式的應用程式效能常見問題集
 
 > [!NOTE]
-> 下列部分指導方針只能在 Windows 或 Linux 應用程式服務上使用。 例如，Linux 應用程式服務預設會在64位模式下執行。
+> 以下某些準則可能僅適用于 Windows 或 Linux 應用服務。 例如，預設情況下，Linux 應用程式服務以 64 位模式運行。
 >
 
 對於 [Azure App Service 的 Web 應用程式功能](https://azure.microsoft.com/services/app-service/web/)的應用程式效能問題，本文提供常見問題集的解答。
@@ -32,11 +32,11 @@ ms.locfileid: "79259860"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何針對高 CPU 耗用量案例進行疑難排解？
 
-在某些高 CPU 耗用量案例中，您的應用程式可能真正需要更多運算資源。 在此情況下，請考慮調整為較高的服務層級，讓應用程式取得所需的所有資源。 若是其他情況，不正確的迴圈或程式碼撰寫慣例可能會造成高 CPU 耗用量。 深入了解什麼觸發增加的 CPU 耗用量是兩部分的處理序。 首先，建立處理序傾印，然後分析處理序傾印。 如需詳細資訊，請參閱[擷取及分析 Web 應用程式高 CPU 耗用量的傾印檔案](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
+在某些高 CPU 耗用量案例中，您的應用程式可能真正需要更多運算資源。在此情況下，請考慮調整為較高的服務層級，讓應用程式取得所需的所有資源。 若是其他情況，不正確的迴圈或程式碼撰寫慣例可能會造成高 CPU 耗用量。 深入了解什麼觸發增加的 CPU 耗用量是兩部分的處理序。 首先，建立處理序傾印，然後分析處理序傾印。 如需詳細資訊，請參閱[擷取及分析 Web 應用程式高 CPU 耗用量的傾印檔案](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何針對高記憶體耗用量案例進行疑難排解？
 
-在某些高記憶體耗用量案例中，您的應用程式可能真正需要更多運算資源。 在此情況下，請考慮調整為較高的服務層級，讓應用程式取得所需的所有資源。 若是其他情況，程式碼中的錯誤可能會導致記憶體流失。 程式碼撰寫慣例也可能會增加記憶體耗用量。 深入瞭解觸發高記憶體耗用量是兩部分的程式。 首先，建立處理序傾印，然後分析處理序傾印。 Azure 網站擴充功能資源庫的損毀診斷程式可以有效率地執行這兩個步驟。 如需詳細資訊，請參閱[擷取及分析 Web 應用程式間歇高記憶體的傾印檔案](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
+在某些高記憶體耗用量案例中，您的應用程式可能真正需要更多運算資源。在此情況下，請考慮調整為較高的服務層級，讓應用程式取得所需的所有資源。 若是其他情況，程式碼中的錯誤可能會導致記憶體流失。 程式碼撰寫慣例也可能會增加記憶體耗用量。深入了解什麼觸發高記憶體耗用量是兩部分的處理序。 首先，建立處理序傾印，然後分析處理序傾印。 Azure 網站擴充功能資源庫的損毀診斷程式可以有效率地執行這兩個步驟。 如需詳細資訊，請參閱[擷取及分析 Web 應用程式間歇高記憶體的傾印檔案](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 自動化 App Service Web 應用程式？
 
@@ -47,7 +47,7 @@ ms.locfileid: "79259860"
 若要檢視您的 Web 應用程式事件記錄：
 
 1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 在功能表中，選取 [偵錯主控台] >  [CMD]。
+2. 在功能表中，選擇**調試主控台** > **CMD**。
 3. 選取 **LogFiles** 資料夾。
 4. 若要檢視事件記錄，請選取 **eventlog.xml** 旁邊的鉛筆圖示。
 5. 若要下載記錄，請執行 PowerShell Cmdlet `Save-AzureWebSiteLog -Name webappname`。
@@ -57,21 +57,21 @@ ms.locfileid: "79259860"
 若要擷取 Web 應用程式的使用者模式記憶體傾印：
 
 1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 選取 [處理序總管] 功能表。
+2. 選取 [處理序總管]**** 功能表。
 3. 以滑鼠右鍵按一下 **w3wp.exe** 處理序或您的 WebJob 處理序。
-4. 選取 [下載記憶體傾印] >  [完整傾印]。
+4. 選擇**下載記憶體傾印** > **完全轉儲**。
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>如何檢視 Web 應用程式的處理序層級資訊？
 
 您有兩個選項可以用來檢視 Web 應用程式的處理序層級資訊：
 
 *   在 Azure 入口網站中：
-    1. 開啟 Web 應用程式的 [處理序總管]。
+    1. 開啟 Web 應用程式的 [處理序總管]****。
     2. 若要查看詳細資料，請選取 **w3wp.exe** 處理序。
 *   在 Kudu 主控台中：
     1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
-    2. 選取 [處理序總管] 功能表。
-    3. 針對 **w3wp.exe** 處理序，選取 [屬性]。
+    2. 選取 [處理序總管]**** 功能表。
+    3. 針對 **w3wp.exe** 處理序，選取 [屬性]****。
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>當我瀏覽至我的應用程式時，我看到「錯誤 403 - 此 Web 應用程式已停止」。 如何解決這個問題？
 
@@ -89,25 +89,25 @@ ms.locfileid: "79259860"
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>如何減少第一個要求閒置時間之後的回應時間？
 
-根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 缺點是在 Web 應用程式卸載之後對第一個要求的回應時間比較長，以便讓 Web 應用程式載入及啟動服務回應。 在基本和標準服務方案中，您可以開啟 [永遠開啟] 設定以讓應用程式保持載入。 這會排除應用程式閒置之後的較長載入時間。 若要變更 [永遠開啟] 設定：
+根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 缺點是在 Web 應用程式卸載之後對第一個要求的回應時間比較長，以便讓 Web 應用程式載入及啟動服務回應。 在基本和標準服務方案中，您可以開啟 [永遠開啟]**** 設定以讓應用程式保持載入。 這會排除應用程式閒置之後的較長載入時間。 若要變更 [永遠開啟]**** 設定：
 
 1. 在 Azure 入口網站中，移至您的 Web 應用程式。
-2. 選取**設定**
-3. 選取 **[一般設定**]。
-4. 針對 [永遠開啟]，選取 [開啟]。
+2. 選擇**配置**
+3. 選擇**常規設置**。
+4. 針對 [永遠開啟]****，選取 [開啟]****。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何開啟失敗要求追蹤？
 
 若要開啟失敗的要求追蹤：
 
 1. 在 Azure 入口網站中，移至您的 Web 應用程式。
-3. 選取 [所有設定] >  [診斷記錄]。
-4. 針對 [失敗的要求追蹤]，選取 [開啟]。
-5. 選取 [儲存]。
-6. 在 Web 應用程式刀鋒視窗上，選取 [工具]。
-7. 選取 [Visual Studio Online]。
-8. 如果設定不是 [開啟]，請選取 [開啟]。
-9. 選取 [執行]。
+3. 選擇**所有設置** > **診斷日誌**。
+4. 針對 [失敗的要求追蹤]****，選取 [開啟]****。
+5. 選取 [儲存]****。
+6. 在 Web 應用程式刀鋒視窗上，選取 [工具]****。
+7. 選取 [Visual Studio Online]****。
+8. 如果設定不是 [開啟]****，請選取 [開啟]****。
+9. 選取 [執行]****。
 10. 選取 **Web.config**。
 11. 在 system.webServer 中，新增這項設定 (擷取特定 URL)：
 
@@ -142,8 +142,8 @@ ms.locfileid: "79259860"
     </tracing>
     ```
 13. 若要下載失敗的要求追蹤，在[入口網站](https://portal.azure.com)中，移至您的網站。
-15. 選取 [工具] >  [Kudu] >  [執行]。
-18. 在功能表中，選取 [偵錯主控台] >  [CMD]。
+15. 選擇**工具** > **庫杜** > **圍棋**。
+18. 在功能表中，選擇**調試主控台** > **CMD**。
 19. 選取 **LogFiles** 資料夾，然後選取名稱開頭為 **W3SVC** 的資料夾。
 20. 若要查看 XML 檔案，請選取鉛筆圖示。
 
@@ -174,7 +174,7 @@ Kestrel 1.0.2 版已經修正這個問題。 此版本隨附於 ASP.NET Core 1.0
 
 如果您使用 App Service 的本機快取功能，App Service 執行個體之「記錄檔」和「資料」資料夾的資料夾結構會受到影響。 使用本機快取時，會在儲存體的「記錄檔」和「資料」資料夾中建立子資料夾。 子資料夾會使用「唯一識別碼」+ 時間戳記的命名模式。 每個子資料夾都對應到將要用來執行或已用來執行 Web 應用程式的 VM 執行個體。
 
-若要判斷您是否使用本機快取，請檢查您 App Service 的 [**應用程式設定**] 索引標籤。如果使用本機快取，應用程式設定 `WEBSITE_LOCAL_CACHE_OPTION` 會設定為 `Always`。
+要確定是否使用本機快取，請檢查應用服務**應用程式設定**選項卡。如果使用本機快取，則應用設置`WEBSITE_LOCAL_CACHE_OPTION`設置為`Always`。
 
 如果您不是使用本機快取，但是也遇到此問題，請提交支援要求。
 

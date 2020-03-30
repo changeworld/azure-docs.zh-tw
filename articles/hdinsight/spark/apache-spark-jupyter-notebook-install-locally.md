@@ -9,72 +9,72 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903742"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在電腦上安裝 Jupyter Notebook，並連線到 HDInsight 上的 Apache Spark
 
 在這篇文章中，您會了解如何搭配含有 Spark magic 的自訂 PySpark (適用於 Python) 和 Apache Spark (適用於 Scala) 核心來安裝 Jupyter 筆記本，然後將筆記本連接到 HDInsight 叢集。 在您的本機電腦上安裝 Jupyter 可以有數種原因，而且也會面臨數種挑戰。 如需詳細資訊，請參閱本文章結尾的[為什麼我應該在我的電腦上安裝 Jupyter](#why-should-i-install-jupyter-on-my-computer) 一節。
 
-安裝 Jupyter 和連線至 HDInsight 上的 Apache Spark 時，有四個主要步驟。
+在 HDInsight 上安裝 Jupyter 和連接到 Apache Spark 涉及四個關鍵步驟。
 
-* 設定 Spark 叢集。
+* 配置 Spark 群集。
 * 安裝 Jupyter Notebook。
 * 安裝含有 Spark magic 的 PySpark 和 Spark 核心。
 * 設定 Spark magic 以存取 HDInsight 上的 Spark 叢集。
 
 如需有關可供 HDInsight 叢集之相關 Jupyter Notebook 使用的自訂核心和 Spark magic 的詳細資訊，請參閱 [HDInsight 上的 Apache Spark Linux 叢集可供 Jupyter Notebook 使用的核心](apache-spark-jupyter-notebook-kernels.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱 [在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。 這是在安裝筆記本之後，將 Jupyter 筆記本連接到 HDInsight 叢集的必要條件。
+* HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。 這是安裝筆記本電腦後將 Jupyter 筆記本連接到 HDInsight 群集的先決條件。
 
 * 熟悉如何搭配使用 Jupyter Notebook 和 HDInsight 上的 Spark。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在電腦上安裝 Jupyter Notebook
 
-您必須先安裝 Python，才能安裝 Jupyter Notebook。 [Anaconda 散發](https://www.anaconda.com/download/)套件將會同時安裝、Python 和 Jupyter Notebook。
+您必須先安裝 Python，才能安裝 Jupyter Notebook。 [Anaconda 發行版本](https://www.anaconda.com/download/)將同時安裝 Python 和 Jupyter 筆記本。
 
-下載您平台適用的 [Anaconda 安裝程式](https://www.anaconda.com/download/) ，然後執行安裝程式。 執行安裝精靈時，請確定您選取將 Anaconda 新增至 PATH 變數的選項。  另請參閱[使用 Anaconda 安裝 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
+下載您平台適用的 [Anaconda 安裝程式](https://www.anaconda.com/download/) ，然後執行安裝程式。 執行安裝精靈時，請確定您選取將 Anaconda 新增至 PATH 變數的選項。  另請參閱，[使用阿納康達安裝朱皮](https://jupyter.readthedocs.io/en/latest/install.html)特 。
 
-## <a name="install-spark-magic"></a>安裝 Spark 魔術
+## <a name="install-spark-magic"></a>安裝火花魔法
 
-1. 輸入下列其中一個命令，以安裝 Spark 魔術。 另請參閱[sparkmagic 檔](https://github.com/jupyter-incubator/sparkmagic#installation)。
+1. 輸入以下命令之一以安裝 Spark 魔法。 另請參閱[，火花文檔](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
     |叢集版本 | 安裝命令 |
     |---|---|
-    |3\.6 和3.5 版 |`pip install sparkmagic==0.13.1`|
-    |3\.4 版|`pip install sparkmagic==0.2.3`|
+    |v3.6 和 v3.5 |`pip install sparkmagic==0.13.1`|
+    |v3.4|`pip install sparkmagic==0.2.3`|
 
-1. 執行下列命令，確定已正確安裝 `ipywidgets`：
+1. 通過`ipywidgets`運行以下命令確保正確安裝：
 
     ```cmd
     jupyter nbextension enable --py --sys-prefix widgetsnbextension
     ```
 
-## <a name="install-pyspark-and-spark-kernels"></a>安裝 PySpark 和 Spark 核心
+## <a name="install-pyspark-and-spark-kernels"></a>安裝 PySpark 和 Spark 內核
 
-1. 輸入下列命令來識別安裝 `sparkmagic` 的位置：
+1. 通過輸入`sparkmagic`以下命令確定安裝位置：
 
     ```cmd
     pip show sparkmagic
     ```
 
-    然後將您的工作目錄變更為使用上述命令所識別的位置。
+    然後，將工作目錄更改為使用上述命令標識的位置。
 
-1. 從您的新工作目錄中，輸入下列一個或多個命令，以安裝所需的核心：
+1. 從新的工作目錄中，輸入以下一個或多個命令以安裝所需的內核：
 
-    |核心 | 命令 |
+    |核心 | Command |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|
     |PySpark|`jupyter-kernelspec install sparkmagic/kernels/pysparkkernel`|
-    |PySpark3|`jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel`|
+    |皮斯派克3|`jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel`|
 
-1. 選用。 輸入下列命令以啟用伺服器擴充功能：
+1. 選擇性。 輸入下面的命令以啟用伺服器擴展：
 
     ```cmd
     jupyter serverextension enable --py sparkmagic
@@ -82,15 +82,15 @@ ms.locfileid: "73903742"
 
 ## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>設定 Spark magic 以連線到 HDInsight Spark 叢集
 
-在本節中，您會設定您先前安裝的 Spark 神奇，以連線至 Apache Spark 叢集。
+在本節中，您可以配置之前安裝的 Spark 魔術以連接到 Apache Spark 群集。
 
-1. 使用下列命令啟動 Python shell：
+1. 使用以下命令啟動 Python 外殼：
 
     ```cmd
     python
     ```
 
-2. Jupyter 組態資訊通常儲存在使用者主目錄中。 輸入下列命令以識別主目錄，並建立名為**sparkmagic**的資料夾。  將會輸出完整路徑。
+2. Jupyter 組態資訊通常儲存在使用者主目錄中。 輸入以下命令以標識主目錄，並創建名為 **.sparkmagic**的資料夾。  將輸出完整路徑。
 
     ```python
     import os
@@ -100,7 +100,7 @@ ms.locfileid: "73903742"
     exit()
     ```
 
-3. 在 `.sparkmagic`的資料夾中，建立名為**config.xml**的檔案，並在其中新增下列 json 程式碼片段。  
+3. 在資料夾中`.sparkmagic`，創建一個名為**config.json**的檔，並在其中添加以下 JSON 程式碼片段。  
 
     ```json
     {
@@ -126,16 +126,16 @@ ms.locfileid: "73903742"
     }
     ```
 
-4. 對檔案進行下列編輯：
+4. 對檔進行以下編輯：
 
     |範本值 | 新值 |
     |---|---|
-    |USERNAME|叢集登入，預設值為 `admin`。|
-    |CLUSTERDNSNAME|叢集名稱|
-    |BASE64ENCODEDPASSWORD|以 base64 編碼的密碼，適用于您的實際密碼。  您可以在[https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/)產生 base64 密碼。|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.12.7` （叢集3.5 和3.6 版），請保留。  如果使用 `sparkmagic 0.2.3` （叢集3.4），請將取代為 `"should_heartbeat": true`。|
+    |[使用者名]|群集登錄，預設值為`admin`。|
+    |[群集 DNS 名稱]|叢集名稱|
+    |[BASE64編碼密碼]|基本密碼為實際密碼。  您可以在 生成[https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/)base64 密碼。|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用`sparkmagic 0.12.7`（群集 v3.5 和 v3.6），請保留。  如果使用`sparkmagic 0.2.3`（群集 v3.4），則替換為`"should_heartbeat": true`。|
 
-    您可以在[範例 config.xml](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)中看到完整的範例檔案。
+    您可以在[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)上看到完整的示例檔。
 
    > [!TIP]  
    > 傳送活動訊號可確保不會流失工作階段。 當電腦進入睡眠或已關機時，則不會傳送活動訊號，導致工作階段被清除。 若為叢集 3.4 版，如果想要停用此行為，您可以從 Ambari UI 將 Livy 組態 `livy.server.interactive.heartbeat.timeout` 設定為 `0`。 若為叢集 3.5 版，如果您未設定上述的 3.5 組態，則不會刪除工作階段。
@@ -146,16 +146,16 @@ ms.locfileid: "73903742"
     jupyter notebook
     ```
 
-6. 確認您可以使用核心所提供的 Spark 魔術。 請執行下列步驟：
+6. 驗證是否可以將可用的 Spark 魔術與內核一起使用。 請執行下列步驟：
 
-    a. 建立新的 Notebook。 從右上角選取 [**新增**]。 您應該會看到預設的核心**Python 2**或**Python 3** ，以及您安裝的核心。 實際的值可能會根據您的安裝選項而有所不同。  選取 [ **PySpark**]。
+    a. 建立新的 Notebook。 從右側角選擇 **"新建**"。 您應該會看到預設內核**Python 2**或**Python 3**以及您安裝的內核。 實際值可能因安裝選擇而異。  選擇**PySpark**。
 
-    ![Jupyter 筆記本中的可用核心](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter 筆記本中的核心")
+    ![猶太筆記筆記本中的可用內核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "聚居器筆記本中的內核")
 
     > [!IMPORTANT]  
-    > 選取 [**新增**] 之後，請檢查您的 shell 是否有任何錯誤。  如果您看到錯誤 `TypeError: __init__() got an unexpected keyword argument 'io_loop'` 您可能會遇到某些龍捲風版本的已知問題。  若是如此，請停止核心，然後使用下列命令來降級您的龍捲風安裝： `pip install tornado==4.5.3`。
+    > 選擇 **"新建"** 後，請審核 shell 是否存在任何錯誤。  如果您看到錯誤`TypeError: __init__() got an unexpected keyword argument 'io_loop'`，您可能遇到某些版本的龍捲風的已知問題。  如果是這樣，請停止內核，然後使用以下命令降級您的龍捲風安裝： `pip install tornado==4.5.3`。
 
-    b.這是另一個 C# 主控台應用程式。 執行下列程式碼片段。
+    b. 執行下列程式碼片段。
 
     ```sql
     %%sql
@@ -164,7 +164,7 @@ ms.locfileid: "73903742"
 
     如果您可以順利擷取輸出，即表示已測試您對 HDInsight 叢集的連線。
 
-    如果您想要更新筆記本設定以連線到不同的叢集，請使用一組新的值來更新 config.xml，如上面的步驟3所示。
+    如果要更新筆記本配置以連接到其他群集，請使用新值集更新 config.json，如上文步驟 3 所示。
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>為什麼我應該在我的電腦上安裝 Jupyter？
 
@@ -174,7 +174,7 @@ ms.locfileid: "73903742"
 * 使用本機可用的 Notebook，您可以根據您的應用程式需求，連接至不同的 Spark 叢集。
 * 您可以使用 GitHub 實作來源控制系統，並且具有 Notebook 的版本控制。 您也可以有共同作業環境，其中多個使用者可以使用相同的 Notebook。
 * 您甚至不需要啟用叢集，即可在本機使用 Notebook。 您只需要叢集針對 Notebook 進行測試，不必以手動方式管理您的 Notebook 或開發環境。
-* 設定自己的本機開發環境可能比較容易，而不是在叢集上設定 Jupyter 安裝。  您可以利用您已在本機安裝的所有軟體，而不需要設定一或多個遠端叢集。
+* 配置自己的本地開發環境可能比在群集上配置 Jupyter 安裝更容易。  您可以利用您在本地安裝的所有軟體，而無需配置一個或多個遠端群集。
 
 > [!WARNING]  
 > 將 Jupyter 安裝在本機電腦上，多個使用者可以同時在相同的 Spark 叢集上執行相同的 Notebook。 在這種情況下，會建立多個 Livy 工作階段。 如果您遇到問題，而且想要偵錯，則追蹤哪個 Livy 工作階段屬於哪個使用者會是複雜的工作。  
@@ -182,5 +182,5 @@ ms.locfileid: "73903742"
 ## <a name="next-steps"></a>後續步驟
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [Apache Spark 和 BI：在 HDInsight 中搭配使用 Spark 和 BI 工具執行互動式資料分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 和機器學習服務：在 HDInsight 中利用 HVAC 資料使用 Spark 分析建築物溫度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 和 BI：在 HDInsight 中搭配 BI 工具使用 Spark 執行互動式資料分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 和機器學習服務：使用 HDInsight 中的 Spark，使用 HVAC 資料來分析建築物溫度](apache-spark-ipython-notebook-machine-learning.md)

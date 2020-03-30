@@ -1,6 +1,6 @@
 ---
-title: Azure AD 用於報告的 PowerShell Cmdlet |Microsoft Docs
-description: 適用于報告的 Azure AD PowerShell Cmdlet 參考。
+title: 用於報告的 Azure AD 電源外殼 Cmdlet |微軟文檔
+description: 用於報告的 Azure AD PowerShell Cmdlet 的參考。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,44 +18,44 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75495317"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>適用於報表的 Azure AD PowerShell Cmdlet
 
 > [!NOTE] 
-> 這些 Powershell Cmdlet 目前僅適用于[Azure AD Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing)模組。 請注意，預覽模組不建議用於生產環境使用。 
+> 這些電源外殼 Cmdlet 目前僅適用于[Azure AD 預覽](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing)模組。 請注意，不建議使用預覽模組進行生產。 
 
-若要安裝公開預覽版本，請使用下列各項。 
+要安裝公共預覽版本，請使用以下內容。 
 
 ```powershell
 Install-module AzureADPreview
 ```
-如需如何使用 powershell 連接到 Azure AD 的詳細資訊，請參閱[Azure AD powershell For Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)一文。  
+有關如何使用電源shell 連接到 Azure AD 的更多介紹，請參閱圖表的 Azure [AD 電源殼](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。  
 
-有了 Azure Active Directory （Azure AD）報表，您可以在方向（audit logs）和驗證資料（登入記錄）中取得有關所有寫入作業的活動詳細資料。 雖然可以使用 MS 圖形 API 來取得資訊，但現在您可以使用 Azure AD PowerShell Cmdlet 來抓取相同的資料，以進行報告。
+使用 Azure 活動目錄 （Azure AD） 報表，可以獲取有關方向的所有寫入操作（稽核記錄）和身份驗證資料（登錄日誌）活動的詳細資訊。 儘管可以使用 MS Graph API 獲得該資訊，但現在您可以使用 Azure AD PowerShell Cmdlet 來檢索相同的資料進行報告。
 
-本文概要說明用於審查記錄和登入記錄的 PowerShell Cmdlet。
+本文概述了用於稽核記錄和登錄日誌的 PowerShell Cmdlet。
 
 ## <a name="audit-logs"></a>稽核記錄
 
-[Audit 記錄](concept-audit-logs.md)可讓您透過記錄來追蹤 Azure AD 內各種功能所完成的所有變更。 稽核記錄的範例包括對 Azure AD 中任何資源所做的變更，像是新增或移除使用者、應用程式、群組、角色和原則。
+[稽核記錄](concept-audit-logs.md)通過日誌提供 Azure AD 中各種功能執行的所有更改的可追溯性。 稽核記錄的範例包括對 Azure AD 中任何資源所做的變更，像是新增或移除使用者、應用程式、群組、角色和原則。
 
-您可以使用 ' AzureADAuditDirectoryLogs Cmdlet 取得 audit 記錄的存取權。
+您可以使用"獲取-AzureAUDITDirectoryLogLogs Cmdlet"訪問稽核記錄。
 
 
-| 案例                      | PowerShell 命令 |
+| 狀況                      | PowerShell 命令 |
 | :--                           | :--                |
-| 應用程式顯示名稱      | AzureADAuditDirectoryLogs-篩選 "initiatedBy/app/displayName eq ' Azure AD 雲端同步處理 '" |
-| 類別                      | AzureADAuditDirectoryLogs-篩選 "category eq ' 應用程式管理 '" |
-| 活動日期時間            | AzureADAuditDirectoryLogs-Filter "activityDateTime gt 2019-04-18" |
-| 以上皆是              | AzureADAuditDirectoryLogs-篩選 "initiatedBy/app/displayName eq ' Azure AD 雲端同步處理 ' 和分類 eq ' 應用程式管理 ' 和 activityDateTime gt 2019-04-18"|
+| 應用程式顯示名稱      | 獲取 AzureADAuditDirectoryLogLogs - 篩選"啟動由/應用/顯示名稱 eq 'Azure AD 雲同步'" |
+| 類別                      | 獲取 AzureADAuditDirectoryLogLog - 篩選"類別 eq '應用程式管理'" |
+| 活動日期時間            | 獲取 AzureADAuditDirectoryLogLog - 篩選"活動日期時間 gt 2019-04-18" |
+| 以上皆是              | 獲取 AzureADAuditDirectoryLogLog - 篩選"啟動由/應用/顯示名稱 eq 'Azure AD 雲同步'和類別 eq '應用程式管理' 和活動日期時間 gt 2019-04-18"|
 
 
-下圖顯示此命令的範例。 
+下圖顯示了此命令的示例。 
 
 ![[資料摘要] 按鈕](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
@@ -63,21 +63,21 @@ Install-module AzureADPreview
 
 ## <a name="sign-in-logs"></a>登入記錄
 
-登[入](concept-sign-ins.md)記錄提供受控應用程式和使用者登入活動的使用方式相關資訊。
+[登錄](concept-sign-ins.md)日誌提供有關託管應用程式和使用者登錄活動使用方式的資訊。
 
-您可以使用 AzureADAuditSignInLogs Cmdlet 來存取登入記錄。
+您可以使用"獲取-AzureAUDITSignInLogs Cmdlet"訪問登錄日誌。
 
 
-| 案例                      | PowerShell 命令 |
+| 狀況                      | PowerShell 命令 |
 | :--                           | :--                |
-| 使用者顯示名稱             | AzureADAuditSignInLogs-Filter "Event.pushnotification.userdisplayname eq ' Timothy Perkins '" |
-| 建立日期時間              | AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17：30： 00.0 Z" （自5:30 年 pm 起的所有專案，于4/18） |
-| 狀態                        | AzureADAuditSignInLogs-Filter "status/errorCode eq 50105" |
-| 應用程式顯示名稱      | AzureADAuditSignInLogs-Filter "appDisplayName eq ' StoreFrontStudio [wsfed enabled] '" |
-| 以上皆是              | AzureADAuditSignInLogs-Filter "Event.pushnotification.userdisplayname eq ' Timothy Perkins ' and status/errorCode ne 0 and appDisplayName eq ' StoreFrontStudio [wsfed enabled] '" |
+| 使用者顯示名稱             | 獲取 AzureADAuditSign 在日誌 - 篩選"使用者顯示名稱 eq '蒂莫西·珀金斯'" |
+| 創建日期時間              | 獲取 AzureADAuditSignInLogs - 篩檢程式"創建日期時間 gt 2019-04-18T17：30：00.0Z" （自 4 月 18 日下午 5：30 起的所有內容） |
+| 狀態                        | 獲取 AzureADAuditSignInLogs - 篩選"狀態/錯誤代碼 eq 50105" |
+| 應用程式顯示名稱      | 獲取 AzureADAuditSign 在日誌 - 篩選"應用程式顯示名稱 eq 'StoreFrontStudio [已啟用的"' |
+| 以上皆是              | 獲取 AzureADAuditSign 在日誌 - 篩選"使用者顯示名稱 eq 'Timothy Perkins' 和狀態/錯誤代碼 ne 0 和應用程式顯示名稱 eq 'StoreFrontStudio [已啟用的訂閱]" |
 
 
-下圖顯示此命令的範例。 
+下圖顯示了此命令的示例。 
 
 ![[資料摘要] 按鈕](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 

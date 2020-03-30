@@ -1,19 +1,18 @@
 ---
-title: 並行控制 |Azure Marketplace
+title: 併發控制 |Azure 應用商店
 description: Cloud Partner 入口網站發佈 API 的並行控制策略。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d0f035d77e74f157b793b9edf3ab5d3494096d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819754"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288643"
 ---
 # <a name="concurrency-control"></a>並行控制
 

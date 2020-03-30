@@ -1,6 +1,6 @@
 ---
-title: 適用于 Linux 的 Azure Key Vault VM 擴充功能
-description: 使用虛擬機器擴充功能來部署代理程式，以在虛擬機器上執行 Key Vault 憑證的自動重新整理。
+title: 適用于 Linux 的 Azure 金鑰保存庫 VM 擴展
+description: 使用虛擬機器擴展在虛擬機器上部署執行金鑰保存庫證書自動刷新的代理。
 services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
@@ -9,26 +9,26 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298983"
 ---
-# <a name="key-vault-virtual-machine-extension-for-linux"></a>適用于 Linux 的 Key Vault 虛擬機器擴充功能
+# <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 金鑰保存庫虛擬機器擴展
 
-Key Vault 的 VM 擴充功能可自動重新整理儲存在 Azure 金鑰保存庫中的憑證。 具體而言，延伸模組會監視儲存在金鑰保存庫中的已觀察憑證清單。  在偵測到變更時，延伸模組會抓取並安裝對應的憑證。 Key Vault 的 VM 擴充功能已由 Microsoft 發佈並支援，目前在 Linux Vm 上。 本檔詳述適用于 Linux 的 Key Vault VM 擴充功能所支援的平臺、設定和部署選項。 
+金鑰保存庫 VM 擴展提供存儲在 Azure 金鑰保存庫中的證書的自動刷新。 具體而言，擴展監視存儲在金鑰保存庫中的觀察證書的清單。  檢測到更改後，擴展將檢索並安裝相應的證書。 金鑰保存庫 VM 擴展由 Microsoft 發佈和支援，目前在 Linux VM 上。 本文檔詳細介紹了 Linux 金鑰保存庫 VM 擴展的支援平臺、配置和部署選項。 
 
 ### <a name="operating-system"></a>作業系統
 
-Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
+金鑰保存庫 VM 擴展支援以下 Linux 發行版本：
 
-- Ubuntu-1604
-- Ubuntu-1804
+- 烏本圖-1604
+- 烏本圖-1804
 - Debian-9
-- Suse-15 
+- 蘇塞-15 
 
-### <a name="supported-certificate-content-types"></a>支援的憑證內容類型
+### <a name="supported-certificate-content-types"></a>受支援的證書內容類型
 
 - PKCS #12
 
@@ -64,9 +64,9 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 ```
 
 > [!NOTE]
-> 您觀察到的憑證 Url 的格式應該是 `https://myVaultName.vault.azure.net/secrets/myCertName`。
+> 觀察到的證書 URL 應為 形式`https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 這是因為 `/secrets` 路徑會傳回完整憑證，包括私密金鑰，而 `/certificates` 路徑則不會。 如需憑證的詳細資訊，請參閱： [Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 這是因為`/secrets`路徑返回完整證書（包括私密金鑰），而`/certificates`路徑不返回。 有關證書的詳細資訊，請參閱此處：[金鑰保存庫證書](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>屬性值
@@ -75,21 +75,21 @@ Key Vault 的 VM 擴充功能支援下列 Linux 散發套件：
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | 字串 |
-| type | KeyVaultForLinux | 字串 |
+| type | 金鑰庫福Linux | 字串 |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | 字串 |
 | certificateStoreName | MY | 字串 |
-| linkOnRenewal | false | boolean |
+| 連結On更新 | false | boolean |
 | certificateStoreLocation  | LocalMachine | 字串 |
-| requiredInitialSync | true | boolean |
+| 必需的初始同步 | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
 
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後重新整理憑證的虛擬機器時，很適合使用範本。 擴充功能可以部署到個別的 Vm 或虛擬機器擴展集。 結構描述與組態對於這兩種範本類型都是通用的。 
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後重新整理憑證的虛擬機器時，很適合使用範本。 擴展可以部署到單個 VM 或虛擬機器規模集。 結構描述與組態對於這兩種範本類型都是通用的。 
 
-虛擬機器擴充功能的 JSON 設定必須嵌套在範本的虛擬機器資源片段中，特別是 `"resources": []` 虛擬機器範本的物件，以及在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 物件下的虛擬機器擴展集案例中。
+虛擬機器擴展的 JSON 配置必須嵌套在範本的虛擬機器資源片段中，特別是`"resources": []`虛擬機器範本的物件，以及設置物件下的`"virtualMachineProfile":"extensionProfile":{"extensions" :[]`虛擬機器縮放的情況。
 
 ```json
     {
@@ -141,7 +141,7 @@ Azure PowerShell 可以用來將金鑰保存庫 VM 擴充功能部署到現有�
     
     ```
 
-* 若要在虛擬機器擴展集上部署擴充功能：
+* 要在虛擬機器規模集中部署擴展：
 
     ```powershell
     
@@ -166,7 +166,7 @@ Azure PowerShell 可以用來將金鑰保存庫 VM 擴充功能部署到現有�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機器或虛擬機器擴展集。 
+Azure CLI 可用於將金鑰保存庫 VM 擴展部署到現有虛擬機器或虛擬機器規模集。 
  
 * 若要在 VM 上部署擴充功能：
     
@@ -179,7 +179,7 @@ Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機�
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-* 若要在虛擬機器擴展集上部署擴充功能：
+* 要在虛擬機器規模集中部署擴展：
 
    ```azurecli
         # Start the deployment
@@ -193,7 +193,7 @@ Azure CLI 可以用來將 Key Vault VM 擴充功能部署到現有的虛擬機�
 請留意下列限制/需求：
 - 金鑰保存庫限制：
   - 部署時必須存在 
-  - 使用 MSI 為 VM/VMSS 身分識別設定 Key Vault 存取原則
+  - 使用 MSI 為 VM/VMSS 標識設置金鑰保存庫訪問策略
 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
@@ -214,4 +214,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一點都需要更多説明，則可以在[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/forums/)上聯繫 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇"獲取支援"。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
