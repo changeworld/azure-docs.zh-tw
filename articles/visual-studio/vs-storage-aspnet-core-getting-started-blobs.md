@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （ASP.NET Core）開始使用 Azure Blob 儲存體
+title: 使用視覺化工作室（ASP.NET核心）開始使用 Azure Blob 存儲
 description: 在使用 Visual Studio 已連線服務連接到儲存體帳戶之後，如何在 Visual Studio 的 ASP.NET Core 專案中開始使用 Azure Blob 儲存體
 services: storage
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980741"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (ASP.NET Core)
@@ -34,7 +34,7 @@ Azure Blob 儲存體是可將非結構化資料儲存在雲端作為物件或 Bl
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
@@ -46,27 +46,27 @@ Azure Blob 儲存體是可將非結構化資料儲存在雲端作為物件或 Bl
 
 1. 開啟 Visual Studio。
 
-1. 從主功能表中，選取 [檔案] > [新增] > [專案]。
+1. 從主功能表中，選擇 **"檔** > **新專案** > **"。**
 
-1. 在 [新增專案] 對話方塊中，選取 [Web] > [ASP.NET Core 應用程式] > [AspNetCoreStorage]。 然後選取 [確定]。
+1. 在 [新增專案]**** 對話方塊中，選取 [Web]**** > [ASP.NET Core 應用程式]**** > [AspNetCoreStorage]****。 然後選擇 **"確定**"。
 
     ![Visual Studio [新增專案] 對話方塊的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. 在 [新增 ASP.NET Core Web 應用程式] 對話方塊中，選取 [.NET Core] > [ASP.NET Core 2.0] > [Web 應用程式 (模型-檢視-控制器)]。 然後選取 [確定]。
+1. 在 [新增 ASP.NET Core Web 應用程式]**** 對話方塊中，選取 [.NET Core]**** > [ASP.NET Core 2.0]**** > [Web 應用程式 (模型-檢視-控制器)]****。 然後選擇 **"確定**"。
 
     ![[新增 ASP.NET Core Web 應用程式] 對話方塊的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
 ### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>使用已連線服務來連線到 Azure 儲存體帳戶
 
-1. 在 [方案總管] 中，於專案上按一下滑鼠右鍵。
+1. 在 [方案總管]**** 中，於專案上按一下滑鼠右鍵。
 
-2. 從操作功能表中，選取 [新增] > [已連線的服務]。
+2. 在內容功能表中，選擇 **"添加** > **連接的服務**"。
 
-1. 在 [已連線的服務] 對話方塊中，選取 [使用 Azure 儲存體的雲端儲存體]，然後選取 [設定]。
+1. 在 [已連線的服務]**** 對話方塊中，選取 [使用 Azure 儲存體的雲端儲存體]****，然後選取 [設定]****。
 
     ![[已連線的服務] 對話方塊的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
 
-1. 在 [Azure 儲存體] 對話方塊中，選取要用於本教學課程的 Azure 儲存體帳戶。 若要建立新的 Azure 儲存體帳戶，請選取 [建立新的儲存體帳戶]，然後完成表單。 在選取現有儲存體帳戶或建立新的儲存體帳戶之後，選取 [新增]。 Visual Studio 會將 Azure 儲存體的 NuGet 套件及儲存體連接字串安裝到 **appsettings.json**。
+1. 在 [Azure 儲存體]**** 對話方塊中，選取要用於本教學課程的 Azure 儲存體帳戶。 若要建立新的 Azure 儲存體帳戶，請選取 [建立新的儲存體帳戶]****，然後完成表單。 在選取現有儲存體帳戶或建立新的儲存體帳戶之後，選取 [新增]****。 Visual Studio 會將 Azure 儲存體的 NuGet 套件及儲存體連接字串安裝到 **appsettings.json**。
 
 > [!TIP]
 > 若要了解如何使用 [Azure 入口網站](https://portal.azure.com)來建立儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)。
@@ -76,17 +76,17 @@ Azure Blob 儲存體是可將非結構化資料儲存在雲端作為物件或 Bl
 
 ### <a name="create-an-mvc-controller"></a>建立 MVC 控制器 
 
-1. 在 [方案總管] 中，於 [控制器] 上按一下滑鼠右鍵。
+1. 在 [方案總管]**** 中，於 [控制器]**** 上按一下滑鼠右鍵。
 
-2. 從快顯功能表中，選取 [新增] > [控制器]。
+2. 在內容功能表中，選擇 **"添加** > **控制器**"。
 
     ![[方案總管] 的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-menu.png)
 
-1. 在 [新增 Scaffold] 對話方塊中，選取 [MVC 控制器 - 空白]，然後選取 [新增]。
+1. 在 [新增 Scaffold]**** 對話方塊中，選取 [MVC 控制器 - 空白]****，然後選取 [新增]****。
 
     ![[新增 Scaffold] 對話方塊的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller.png)
 
-1. 在 [新增空白 MVC 控制器] 對話方塊中，將控制器命名為 *BlobsController*，然後選取 [新增]。
+1. 在 [新增空白 MVC 控制器]**** 對話方塊中，將控制器命名為 *BlobsController*，然後選取 [新增]****。
 
     ![[新增空白 MVC 控制器] 對話方塊的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
@@ -125,7 +125,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     ```
 
 > [!NOTE]
-> 即使 test-blob-container 尚不存在，此程式碼也會建立對它的參考。 如此一來，才能使用下一個步驟中所示的 `CreateIfNotExists` 方法來建立容器。
+> 即使 test-blob-container** 尚不存在，此程式碼也會建立對它的參考。 如此一來，才能使用下一個步驟中所示的 `CreateIfNotExists` 方法來建立容器。
 
 ## <a name="create-a-blob-container"></a>建立 Blob 容器
 
@@ -173,15 +173,15 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     }
     ```
 
-1. 在 [方案總管] 中，於 [檢視] 資料夾上按一下滑鼠右鍵。
+1. 在 [方案總管]**** 中，於 [檢視]**** 資料夾上按一下滑鼠右鍵。
 
-2. 從快顯功能表中，選取 [新增] > [新增資料夾]。 將新資料夾命名為 Blobs。 
+2. 從內容功能表中，選擇 **"添加新** > **資料夾**"。 將新資料夾命名為 Blobs**。 
 
-1. 在 [方案總管] 中，展開 [檢視] 資料夾，然後在 [Blobs] 上按一下滑鼠右鍵。
+1. 在 [方案總管]**** 中，展開 [檢視]**** 資料夾，然後在 [Blobs]**** 上按一下滑鼠右鍵。
 
-4. 從快顯功能表中，選取 [新增] > [檢視]。
+4. 在內容功能表中，選擇 **"添加** > **視圖**"。
 
-1. 在 [新增檢視] 對話方塊中，針對檢視名稱輸入 **CreateBlobContainer**，然後選取 [新增]。
+1. 在 [新增檢視]**** 對話方塊中，針對檢視名稱輸入 **CreateBlobContainer**，然後選取 [新增]****。
 
 1. 開啟 `CreateBlobContainer.cshtml` 並加以修改，以便其如下列程式碼片段所示：
 
@@ -195,7 +195,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. 在 [方案總管] 中，展開 [檢視] > [共用] 資料夾，然後開啟 `_Layout.cshtml`。
+1. 在 [方案總管]**** 中，展開 [檢視]**** > [共用]**** 資料夾，然後開啟 `_Layout.cshtml`。
 
 1. 尋找看似如下的未排序清單：`<ul class="nav navbar-nav">`。  在清單中的最後一個 `<li>` 元素之後，新增下列 HTML 以新增另一個導覽功能表項目：
 
@@ -203,7 +203,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     <li><a asp-area="" asp-controller="Blobs" asp-action="CreateBlobContainer">Create blob container</a></li>
     ```
 
-1. 執行應用程式，然後選取 [建立 Blob 容器]，以查看類似以下螢幕擷取畫面的結果︰
+1. 執行應用程式，然後選取 [建立 Blob 容器]****，以查看類似以下螢幕擷取畫面的結果︰
   
     ![[建立 Blob 容器] 的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/create-blob-container-results.png)
 
@@ -211,7 +211,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>將 Blob 上傳至 blob 容器
 
-在[建立 Blob 容器](#create-a-blob-container)之後，請將檔案上傳至該容器。 本節將逐步引導您將本機檔案上傳至 Blob 容器。 這些步驟會假設有一個名為 test-blob-container 的 Blob 容器。 
+在[建立 Blob 容器](#create-a-blob-container)之後，請將檔案上傳至該容器。 本節將逐步引導您將本機檔案上傳至 Blob 容器。 這些步驟會假設有一個名為 test-blob-container** 的 Blob 容器。 
 
 1. 開啟 `BlobsController.cs` 檔案。
 
@@ -241,7 +241,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     > [!NOTE]
     > Blob 名稱是用來擷取 Blob 之 URL 的一部分，且可以是任何字串，包括檔案的名稱。
 
-1. 有了 Blob 參考之後，您便可以藉由呼叫 Blob 參考物件的 `UploadFromStream` 方法，將任何資料流上傳至其中。 如果 Blob 不存在，`UploadFromStream` 方法就會建立 Blob，若已存在，則會予以覆寫。 (請將 &lt;file-to-upload> 變更為所要上傳之檔案的完整路徑)。
+1. 有了 Blob 參考之後，您便可以藉由呼叫 Blob 參考物件的 `UploadFromStream` 方法，將任何資料流上傳至其中。 如果 Blob 不存在，`UploadFromStream` 方法就會建立 Blob，若已存在，則會予以覆寫。 （將*&lt;檔上載>* 更改為要上載檔的完全限定路徑。
 
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
@@ -265,7 +265,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     }
     ```
 
-1. 在 [方案總管] 中，展開 [檢視] > [共用] 資料夾，然後開啟 `_Layout.cshtml`。
+1. 在 [方案總管]**** 中，展開 [檢視]**** > [共用]**** 資料夾，然後開啟 `_Layout.cshtml`。
 
 1. 在清單中的最後一個 `<li>` 元素之後，新增下列 HTML 以新增另一個導覽功能表項目：
 
@@ -273,7 +273,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     <li><a asp-area="" asp-controller="Blobs" asp-action="UploadBlob">Upload blob</a></li>
     ```
 
-1. 執行應用程式，並選取 [上傳 blob]。 success! 一字 應該會出現。
+1. 執行應用程式，並選取 [上傳 blob]****。 success!** 一字 應該會出現。
     
     ![成功驗證的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/upload-blob.png)
   
@@ -356,11 +356,11 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     }
     ```
 
-1. 在 [方案總管] 中，展開 [檢視] 資料夾，然後在 [Blobs] 上按一下滑鼠右鍵。
+1. 在 [方案總管]**** 中，展開 [檢視]**** 資料夾，然後在 [Blobs]**** 上按一下滑鼠右鍵。
 
-2. 從快顯功能表中，選取 [新增] > [檢視]。
+2. 在內容功能表中，選擇 **"添加** > **視圖**"。
 
-1. 在 [新增檢視] 對話方塊中，針對檢視名稱輸入 `ListBlobs`，然後選取 [新增]。
+1. 在 [新增檢視]**** 對話方塊中，針對檢視名稱輸入 `ListBlobs`，然後選取 [新增]****。
 
 1. 開啟 `ListBlobs.cshtml`，然後以下列程式碼取代內容：
 
@@ -380,7 +380,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     </ul>
     ```
 
-1. 在 [方案總管] 中，展開 [檢視] > [共用] 資料夾，然後開啟 `_Layout.cshtml`。
+1. 在 [方案總管]**** 中，展開 [檢視]**** > [共用]**** 資料夾，然後開啟 `_Layout.cshtml`。
 
 1. 在清單中的最後一個 `<li>` 元素之後，新增下列 HTML 以新增另一個導覽功能表項目：
 
@@ -388,7 +388,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     <li><a asp-area="" asp-controller="Blobs" asp-action="ListBlobs">List blobs</a></li>
     ```
 
-1. 執行應用程式，然後選取 [列出 Blob]，以查看類似以下螢幕擷取畫面的結果︰
+1. 執行應用程式，然後選取 [列出 Blob]****，以查看類似以下螢幕擷取畫面的結果︰
   
     ![[列出 Blob] 的螢幕擷取畫面](./media/vs-storage-aspnet-core-getting-started-blobs/listblobs.png)
 
@@ -421,7 +421,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. 若要下載 Blob，請使用 `CloudBlockBlob.DownloadToStream` 方法。 下列程式碼會將 Blob 的內容傳輸至串流物件。 系統會接著將該物件保存至本機檔案。 (請將 *&lt;local-file-name>* 變更為代表 Blob 下載位置的完整檔案名稱)。 
+1. 若要下載 Blob，請使用 `CloudBlockBlob.DownloadToStream` 方法。 下列程式碼會將 Blob 的內容傳輸至串流物件。 系統會接著將該物件保存至本機檔案。 （將*&lt;本地檔案名>* 更改為表示要下載 Blob 的完全限定檔案名。 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -445,7 +445,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     }
     ```
 
-1. 在 [方案總管] 中，展開 [檢視] > [共用] 資料夾，然後開啟 `_Layout.cshtml`。
+1. 在 [方案總管]**** 中，展開 [檢視]**** > [共用]**** 資料夾，然後開啟 `_Layout.cshtml`。
 
 1. 在清單中的最後一個 `<li>` 元素之後，新增下列 HTML 以新增另一個導覽功能表項目：
 
@@ -453,7 +453,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     <li><a asp-area="" asp-controller="Blobs" asp-action="DownloadBlob">Download blob</a></li>
     ```
 
-1. 執行應用程式，並選取 [下載 blob] 下載 blob。 `CloudBlobContainer.GetBlockBlobReference` 方法呼叫中指定的 Blob 會下載至 `File.OpenWrite` 方法呼叫中指定的位置。 success! 文字 應該會出現在瀏覽器中。 
+1. 執行應用程式，並選取 [下載 blob]**** 下載 blob。 `CloudBlobContainer.GetBlockBlobReference` 方法呼叫中指定的 Blob 會下載至 `File.OpenWrite` 方法呼叫中指定的位置。 success!** 文字 應該會出現在瀏覽器中。 
 
 ## <a name="delete-blobs"></a>刪除 Blob
 
@@ -502,7 +502,7 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     }
     ```
 
-1. 在 [方案總管] 中，展開 [檢視] > [共用] 資料夾，然後開啟 `_Layout.cshtml`。
+1. 在 [方案總管]**** 中，展開 [檢視]**** > [共用]**** 資料夾，然後開啟 `_Layout.cshtml`。
 
 1. 在清單中的最後一個 `<li>` 元素之後，新增下列 HTML 以新增另一個導覽功能表項目：
 
@@ -510,11 +510,11 @@ Blob 容器是 blob 和資料夾的巢狀階層。 本文件中剩餘的步驟�
     <li><a asp-area="" asp-controller="Blobs" asp-action="DeleteBlob">Delete blob</a></li>
     ```
 
-1. 執行應用程式，然後選取 [刪除 Blob] 以刪除 `CloudBlobContainer.GetBlockBlobReference` 方法呼叫中指定的 Blob。 success! 文字 應該會出現在瀏覽器中。 選取瀏覽器的 [上一頁] 按鈕，然後選取 [列出 Blob] 以確認 Blob 已不存在於容器中。
+1. 執行應用程式，然後選取 [刪除 Blob]**** 以刪除 `CloudBlobContainer.GetBlockBlobReference` 方法呼叫中指定的 Blob。 success!** 文字 應該會出現在瀏覽器中。 選取瀏覽器的 [上一頁]**** 按鈕，然後選取 [列出 Blob]**** 以確認 Blob 已不存在於容器中。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何使用 ASP.NET Core 在「Azure 儲存體」中儲存、列出及擷取 Blob。 如需了解 Azure 中的其他資料儲存選項，請檢視更多功能指南。
 
-  * [開始使用 Azure 資料表儲存體和 Visual Studio 已連線的服務 (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)
-  * [開始使用 Azure 佇列儲存體和 Visual Studio 已連線的服務 (ASP.NET)](vs-storage-aspnet-getting-started-queues.md)
+  * [開始使用 Azure 表存儲和視覺化工作室連接的服務（ASP.NET）](vs-storage-aspnet-getting-started-tables.md)
+  * [開始使用 Azure 佇列存儲和視覺化工作室連接的服務（ASP.NET）](vs-storage-aspnet-getting-started-queues.md)

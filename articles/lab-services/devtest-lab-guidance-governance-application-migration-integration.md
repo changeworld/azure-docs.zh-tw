@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs 中的應用程式遷移與整合
-description: 本文提供在應用程式遷移與整合的內容中，管理 Azure DevTest Labs 基礎結構的指引。
+title: Azure 開發人員測試實驗室中的應用程式遷移和集成
+description: 本文提供有關在應用程式遷移和集成上下文中治理 Azure DevTest Labs 基礎結構的指導。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644881"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>治理 Azure DevTest Labs 基礎結構 - 應用程式移轉和整合
@@ -31,7 +31,7 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 何時應使用 Azure Marketplace 映像，而何時應使用我自己自訂的組織映像？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 除非您具有特定考量或組織需求，否則預設應該使用 Azure Marketplace。 一些常見範例包括：
 
 - 複雜的軟體安裝，需要包含應用程式作為基礎映像的一部分。
@@ -46,7 +46,7 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 何時應使用公式，而何時應使用自訂映像？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 一般而言，此案例中的決定因素是成本與重複使用。
 
 如果您的案例是數個使用者/實驗室需要在基本映像最上方含有大量軟體的映像，則您可以藉由建立自訂映像來降低成本。 這表示映像會建立一次。 它會減少虛擬機器的安裝時間，以及因為虛擬機器在安裝期間執行而產生的成本。
@@ -58,13 +58,13 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 如何設定可輕鬆重複執行的程序，以便將自訂的組織映像帶入 DevTest Labs 環境？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 請參閱[這段關於映像處理站模式的影片](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) \(英文\)。 此案例是一個進階案例，而提供的指令碼只是範例指令碼。 如果不需要任何變更，則您需要管理和維護環境中所使用的指令碼。
 
 在 Azure Pipelines 中，使用 DevTest Labs 建立自訂映像管線：
 
 - [簡介：藉由在 Azure DevTest Labs 中設定映像處理站，在數分鐘內備妥 VM](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/) \(英文\)
-- [映射 Factory –第2部分！設定 Azure Pipelines 和 Factory 實驗室來建立 Vm](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [圖像工廠 = 第 2 部分！設置 Azure 管道和工廠實驗室以創建 VM](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [映像處理站 - 第 3 部分：儲存自訂映像並散發至多個實驗室](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/) \(英文\)
 - [影片：使用 Azure DevTest Labs 自訂映像處理站](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) \(英文\)
 
@@ -73,8 +73,8 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 如何確保開發和測試虛擬機器無法連線到公用網際網路？ 是否有任何可用來設定網路設定的建議模式？
 
-### <a name="answer"></a>答案
-可以。 有兩個需要考慮的層面：輸入和輸出流量。
+### <a name="answer"></a>Answer
+是。 有兩個需要考慮的層面：輸入和輸出流量。
 
 **輸入流量**：如果虛擬機器沒有公用 IP 位址，則無法透過網際網路連線。 常見的方法是確定訂用帳戶層級原則已設定，而使得所有使用者都無法建立公用 IP 位址。
 
@@ -90,7 +90,7 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 何時應該針對 DevTest Labs 環境建立新的虛擬網路，而何時該使用現有的虛擬網路？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 如果您的 VM 需要與現有的基礎結構互動，則應該考慮在 DevTest Labs 環境內使用現有的虛擬網路。 此外，如果您使用 ExpressRoute，您可能想要將 VNet / 子網路的數量降到最低，如此就不需分割指派來在訂用帳戶中使用的 IP 位址空間。 您也應該考慮在此處使用 VNet 對等互連模式 (中樞輪輻模型)。 儘管跨區域的對等互連是 Azure 網路功能中一個即將推出的功能，但此方式還是能夠在指定的區域內跨訂用帳戶進行 VNet / 子網路通訊。
 
 否則，每個 DevTest Labs 環境都可能有它自己的虛擬網路。 不過，請注意每個訂用帳戶都有虛擬網路數目[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 雖然可將此限制提升到 100，但預設數目是 50。
@@ -100,7 +100,7 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 何時應使用共用 IP、公用 IP 及私人 IP？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 如果您使用站對站 VPN 或 Express Route，請考慮使用私人 IP，如此一來，您的機器就可透過透過內部網路存取，但無法透過公用網際網路存取。
 
 > [!NOTE]
@@ -113,19 +113,19 @@ ms.locfileid: "75644881"
 ### <a name="question"></a>問題
 是否有我應該為每位使用者或每個實驗室設定多少部虛擬機器的規則？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 考慮每位使用者或每個實驗室的虛擬機器數目時，有三個主要考量：
 
 - 小組可在實驗室中花費於資源上的**整體成本**。 很容易就能將許多機器向上微調。 若要控制成本，有一種機制是限制每位使用者和/或每個實驗室的 VM 數目
-- 實驗室中的虛擬機器總數會受到可用的[訂用帳戶層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所影響。 其中一個上限是每個訂用帳戶 800 個資源群組。 DevTest Labs 目前會針對每部 VM 建立一個新的資源群組 (除非使用共用的公用 IP)。 如果訂用帳戶中有10個實驗室，實驗室可以在每個實驗室中容納大約79部虛擬機器（800上限為10個實驗室的資源群組） = 每個實驗室79個虛擬機器。
+- 實驗室中的虛擬機器總數會受到可用的[訂用帳戶層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所影響。 其中一個上限是每個訂用帳戶 800 個資源群組。 DevTest Labs 目前會針對每部 VM 建立一個新的資源群組 (除非使用共用的公用 IP)。 如果訂閱中有 10 個實驗室，則每個實驗室中可以容納大約 79 個虛擬機器（800 個上限 = 10 個實驗室本身的 10 個資源組） = 每個實驗室 79 個虛擬機器。
 - 舉例來說，如果實驗室會透過 Express Route 連線到內部部署，則會針對 VNet/子網路**定義可用的 IP 位址空間**。 若要確保實驗室中的 VM 不會建立失敗 (錯誤：無法取得 IP 位址)，實驗室擁有者可以針對每個已配置可用 IP 位址空間的實驗室指定 VM 的最大數目。
 
-## <a name="use-resource-manager-templates"></a>使用資源管理員範本
+## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本
 
 ### <a name="question"></a>問題
 如何在 DevTest Labs 環境中使用 Resource Manager 範本？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 您可以使用 [DevTest labs 中的環境功能](devtest-lab-test-env.md)文章中所述的步驟，來將 Resource Manager 範本部署到 DevTest Labs 環境。 基本上，您會將 Resource Manager 範本簽入到 Git 存放庫 (Azure Repos 或 GitHub)，並將[適用於範本的私人存放庫](devtest-lab-test-env.md)新增到實驗室。
 
 如果您使用 DevTest Labs 來裝載開發機器，此案例可能就沒有幫助，但若您要建立代表生產環境的預備環境，則可能會很有用。

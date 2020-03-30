@@ -1,22 +1,22 @@
 ---
-title: 範本函式-部署
+title: 範本功能 - 部署
 description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的函式。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156322"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的部署函式 
+# <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能 
 
-Resource Manager 提供下列函數來取得與目前部署相關的值：
+資源管理器提供以下功能，用於獲取與 Azure 資源管理器 （ARM） 範本的當前部署相關的值：
 
 * [部署](#deployment)
 * [環境](#environment)
-* [parameters](#parameters)
+* [參數](#parameters)
 * [變數](#variables)
 
 若要從資源、資源群組或訂用帳戶中取得值，請參閱 [資源函式](template-functions-resource.md)。
@@ -137,11 +137,11 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 
 `environment()`
 
-傳回用於部署之 Azure 環境的相關資訊。
+返回有關用於部署的 Azure 環境的資訊。
 
 ### <a name="return-value"></a>傳回值
 
-此函式會傳回目前 Azure 環境的屬性。 下列範例顯示全域 Azure 的屬性。 主權雲端可能會傳回稍微不同的屬性。
+此函數返回當前 Azure 環境的屬性。 下面的示例顯示了全域 Azure 的屬性。 主權雲可能返回略有不同的屬性。
 
 ```json
 {
@@ -179,7 +179,7 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 
 ### <a name="example"></a>範例
 
-下列範例範本會傳回環境物件。
+以下示例範本返回環境物件。
 
 ```json
 {
@@ -195,7 +195,7 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 }
 ```
 
-上述範例會在部署至全域 Azure 時傳回下列物件：
+上述示例在部署到全域 Azure 時返回以下物件：
 
 ```json
 {
@@ -334,7 +334,7 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 選項 1 |
 
-如需使用參數的詳細資訊，請參閱[Azure Resource Manager 範本中的參數](template-parameters.md)。
+有關使用參數的詳細資訊，請參閱 Azure[資源管理器範本中的參數](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -392,7 +392,7 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
         "var4": {
             "property1": "value1",
             "property2": "value2"
-        }
+          }
     },
     "resources": [],
     "outputs": {
@@ -425,11 +425,11 @@ Resource Manager 提供下列函數來取得與目前部署相關的值：
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-如需使用變數的詳細資訊，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。
+有關使用變數的詳細資訊，請參閱 Azure[資源管理器範本中的變數](template-variables.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
+* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
 * 若要合併數個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
+* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
 * 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 

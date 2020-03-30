@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 範本建立 Azure 資料總管叢集和資料庫
-description: 瞭解如何使用 Azure Resource Manager 範本來建立 Azure 資料總管叢集和資料庫
+title: 使用 Azure 資源管理器範本創建 Azure 資料資源管理器群集和資料庫
+description: 瞭解如何使用 Azure 資源管理器範本創建 Azure 資料資源管理器群集和資料庫
 author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
@@ -8,31 +8,31 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: 56639d8a29ad8eac465845c8d354d04b31ba6093
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75911955"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 Azure 資料總管叢集和資料庫
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 資源管理器範本創建 Azure 資料資源管理器群集和資料庫
 
 > [!div class="op_single_selector"]
 > * [入口網站](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [電源外殼](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [Azure Resource Manager 範本](create-cluster-database-resource-manager.md)
+> * [Azure 資源管理器範本](create-cluster-database-resource-manager.md)
 
 Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 
 
-在本文中，您會使用[Azure Resource Manager 範本](../azure-resource-manager/management/overview.md)來建立 Azure 資料總管叢集和資料庫。 本文說明如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 如需建立範本的詳細資訊，請參閱[編寫 Azure Resource Manager 範本](/azure/azure-resource-manager/resource-group-authoring-templates)。 如需在範本中使用的 JSON 語法和屬性，請參閱[Kusto 資源類型](/azure/templates/microsoft.kusto/allversions)。
+在本文中，可以使用[Azure 資源管理器範本](../azure-resource-manager/management/overview.md)創建 Azure 資料資源管理器群集和資料庫。 本文說明如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 有關創建範本的資訊，請參閱創作[Azure 資源管理器範本](/azure/azure-resource-manager/resource-group-authoring-templates)。 有關要在範本中使用的 JSON 語法和屬性，請參閱[Microsoft.Kusto 資源類型](/azure/templates/microsoft.kusto/allversions)。
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
 
-## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>建立叢集和資料庫的 Azure Resource Manager 範本
+## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>用於群集和資料庫創建的 Azure 資源管理器範本
 
-在本文中，您會使用[現有的快速入門範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json)
+在本文中，您可以使用[現有的快速入門範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json)
 
 ```json
 {
@@ -98,30 +98,30 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
 ## <a name="deploy-the-template-and-verify-template-deployment"></a>部署範本並驗證範本部署
 
-您可以[使用 Azure 入口網站](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment)或[使用 powershell](#use-powershell-to-deploy-the-template-and-verify-template-deployment)來部署 Azure Resource Manager 範本。
+可以使用[Azure 門戶](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment)或使用[powershell](#use-powershell-to-deploy-the-template-and-verify-template-deployment)來部署 Azure 資源管理器範本。
 
-### <a name="use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment"></a>使用 Azure 入口網站部署範本並驗證範本部署
+### <a name="use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment"></a>使用 Azure 門戶部署範本並驗證範本部署
 
-1. 若要建立叢集和資料庫，請使用下列按鈕來啟動部署。 按一下滑鼠右鍵並選取 [在新視窗中開啟]，以便依照本文中的其餘步驟操作。
+1. 要創建群集和資料庫，請使用以下按鈕啟動部署。 按一下滑鼠右鍵並選取 [在新視窗中開啟]****，以便依照本文中的其餘步驟操作。
 
-    [![部署至 Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
+    [![部署到 Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
-    [部署至 Azure] 按鈕可將您帶往 Azure 入口網站，填寫部署表單。
+    [部署至 Azure]**** 按鈕可將您帶往 Azure 入口網站，填寫部署表單。
 
-    ![部署到 Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
+    ![部署至 Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-    您可以使用表單來[編輯和部署 Azure 入口網站中的範本](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
+    可以使用[表單在 Azure 門戶中編輯和部署範本](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
 
-1. 完整的**基本概念**和**設定**章節。 選取 [唯一叢集] 和 [資料庫名稱]。
-建立 Azure 資料總管叢集和資料庫需要幾分鐘的時間。
+1. 完成**基礎知識**和**設置**部分。 選擇唯一的群集和資料庫名稱。
+創建 Azure 資料資源管理器群集和資料庫需要幾分鐘時間。
 
-1. 若要驗證部署，請在  [Azure 入口網站](https://portal.azure.com)中開啟資源群組，以尋找新的叢集和資料庫。 
+1. 要驗證部署，請打開[Azure 門戶](https://portal.azure.com)中的資源組以查找新的群集和資料庫。 
 
-### <a name="use-powershell-to-deploy-the-template-and-verify-template-deployment"></a>使用 powershell 來部署範本並驗證範本部署
+### <a name="use-powershell-to-deploy-the-template-and-verify-template-deployment"></a>使用電源外殼部署範本並驗證範本部署
 
-#### <a name="deploy-the-template-using-powershell"></a>使用 powershell 部署範本
+#### <a name="deploy-the-template-using-powershell"></a>使用電源外殼部署範本
 
-1. 選取下列程式碼區塊中的 [試用]，然後依照指示登入 Azure Cloud Shell。
+1. 選取下列程式碼區塊中的 [試用]****，然後依照指示登入 Azure Cloud Shell。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -136,13 +136,13 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. 選取 [複製] 來複製 PowerShell 指令碼。
-1. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]。
-建立 Azure 資料總管叢集和資料庫需要幾分鐘的時間。
+1. 選取 [複製]**** 來複製 PowerShell 指令碼。
+1. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]****。
+創建 Azure 資料資源管理器群集和資料庫需要幾分鐘時間。
 
 #### <a name="verify-the-deployment-using-powershell"></a>使用 PowerShell 驗證部署
 
-若要驗證部署，請使用下列 Azure PowerShell 腳本。  如果 Cloud Shell 仍為開啟狀態，您就不需要複製/執行第一行（讀取主機）。 如需有關在 PowerShell 中管理 Azure 資料總管資源的詳細資訊，請參閱[Az. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)。 
+要驗證部署，請使用以下 Azure PowerShell 腳本。  如果雲外殼仍然打開，則無需複製/運行第一行（讀取主機）。 有關在 PowerShell 中管理 Azure 資料資源管理器資源的詳細資訊，請閱讀[Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)。 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -159,4 +159,4 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>後續步驟
 
-[將資料內嵌至 Azure 資料總管叢集和資料庫](ingest-data-overview.md)
+[將資料引入 Azure 資料資源管理器群集和資料庫](ingest-data-overview.md)

@@ -17,24 +17,24 @@ ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978217"
 ---
-# <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>連接至 Azure 上的 SQL Server 虛擬機器 (傳統部署)
+# <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>連線到 Azure 上的 SQL Server 虛擬機器 (傳統部署)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
-> * [傳統](../classic/sql-connect.md)
+> * [資源管理器](../sql/virtual-machines-windows-sql-connect.md)
+> * [經典](../classic/sql-connect.md)
 > 
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本主題說明如何連線到在 Azure 虛擬機器上執行的 SQL Server 執行個體。 其中涵蓋一些[一般連線案例](#connection-scenarios)並提供[在 Azure VM 中設定 SQL Server 連線的詳細步驟](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)。
 
 > [!IMPORTANT] 
-> Azure 建立和處理資源的部署模型有二種： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。 如果您是使用 Resource Manager VM，請參閱 [使用 Resource Manager 連接到 Azure 上的 SQL Server 虛擬機器](../sql/virtual-machines-windows-sql-connect.md)。
+> Azure 有兩種不同的部署模型來創建和使用資源：[資源管理器和經典](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  如果您是使用 Resource Manager VM，請參閱 [使用 Resource Manager 連接到 Azure 上的 SQL Server 虛擬機器](../sql/virtual-machines-windows-sql-connect.md)。
 
 ## <a name="connection-scenarios"></a>連接案例
 用戶端連接在虛擬機器上執行的 SQL Server 方式，取決於用戶端的位置與電腦/網路組態。 這些案例包括：
@@ -58,7 +58,7 @@ ms.locfileid: "75978217"
 ### <a name="connect-to-sql-server-over-the-internet"></a>連接網際網路中的 SQL Server
 如果您希望透過網際網路連接您的 SQL Server 資料庫引擎，您必須建立虛擬機器端點以進行傳入 TCP 通訊。 此 Azure 組態步驟能將傳入 TCP 連接埠流量導向虛擬機器可存取的 TCP 連接埠。
 
-若要透過網際網路連接，您必須使用 VM 的 DNS 名稱和 VM 端點連接埠號碼 (稍後在本文中設定)。 若要尋找 DNS 名稱，請瀏覽至 Azure 入口網站，然後選取 [虛擬機器 (傳統)]。 然後選取您的虛擬機器。 [摘要] 區段中會顯示 [DNS 名稱]。
+若要透過網際網路連接，您必須使用 VM 的 DNS 名稱和 VM 端點連接埠號碼 (稍後在本文中設定)。 若要尋找 DNS 名稱，請瀏覽至 Azure 入口網站，然後選取 [虛擬機器 (傳統)]****。 然後選取您的虛擬機器。 [摘要]**** 區段中會顯示 [DNS 名稱]****。
 
 例如，假設名為 **mysqlvm** 的傳統虛擬機器，其 DNS 名稱為 **mysqlvm7777.cloudapp.net**，且 VM 端點是 **57500**。 假設已適當設定連線能力，則使用下列連接字串，就能從網際網路上任何位置存取該虛擬機器：
 
@@ -89,9 +89,9 @@ ms.locfileid: "75978217"
 * [在 Windows 防火牆中開啟 TCP 連接埠](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
 * [設定 SQL Server 以接聽 TCP 通訊協定](#configure-sql-server-to-listen-on-the-tcp-protocol)
 * [設定 SQL Server 以進行混合模式驗證](#configure-sql-server-for-mixed-mode-authentication)
-* [建立 SQL Server 驗證登入](#create-sql-server-authentication-logins)
-* [決定虛擬機器的 DNS 名稱](#determine-the-dns-name-of-the-virtual-machine)
-* [從另一部電腦連接到 Database Engine](#connect-to-the-database-engine-from-another-computer)
+* [創建 SQL Server 身份驗證登錄名](#create-sql-server-authentication-logins)
+* [確定虛擬機器的 DNS 名稱](#determine-the-dns-name-of-the-virtual-machine)
+* [從另一台電腦連接到資料庫引擎](#connect-to-the-database-engine-from-another-computer)
 
 連線路徑如以下圖表總結：
 

@@ -1,6 +1,6 @@
 ---
-title: 將您的 Azure 自動化帳戶移至另一個訂用帳戶
-description: 本文說明如何將您的自動化帳戶移至另一個訂用帳戶
+title: 將 Azure 自動化帳戶移動到其他訂閱
+description: 本文介紹如何將自動化帳戶移動到其他訂閱
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,38 +10,38 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969836"
 ---
-# <a name="move-your-azure-automation-account-to-another-subscription"></a>將您的 Azure 自動化帳戶移至另一個訂用帳戶
+# <a name="move-your-azure-automation-account-to-another-subscription"></a>將 Azure 自動化帳戶移動到其他訂閱
 
-Azure 讓您能夠將一些資源移到新的資源群組或訂用帳戶。 您可以透過 Azure 入口網站、PowerShell、Azure CLI 或 REST API 來移動資源。 若要深入瞭解此程式，請參閱[將資源移至新的資源群組或訂用](../../azure-resource-manager/management/move-resource-group-and-subscription.md)帳戶。
+Azure 使您能夠將某些資源移動到新資源組或訂閱。 您可以通過 Azure 門戶、PowerShell、Azure CLI 或 REST API 移動資源。 要瞭解有關該過程的更多資訊，請參閱[將資源移動到新資源組或訂閱](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-Azure 自動化帳戶是可以移動的其中一個資源。 在本文中，您將瞭解將自動化帳戶移至另一個資源或訂用帳戶的步驟。
+Azure 自動化帳戶是可移動的資源之一。 在本文中，您將瞭解將自動化帳戶移動到其他資源或訂閱的步驟。
 
-移動自動化帳戶的高階步驟如下：
+移動自動化帳戶的高級步驟包括：
 
-1. 移除您的解決方案。
-2. 取消連結您的工作區。
+1. 刪除您的解決方案。
+2. 取消連結工作區。
 3. 移動自動化帳戶。
-4. 刪除並重新建立執行身分帳戶。
-5. 重新啟用您的解決方案。
+4. 刪除並重新創建"以運行為帳戶"。"帳戶。
+5. 重新啟用解決方案。
 
-## <a name="remove-solutions"></a>移除解決方案
+## <a name="remove-solutions"></a>刪除解決方案
 
-若要取消您的工作區與自動化帳戶的連結，必須從您的工作區中移除這些解決方案：
-- **變更追蹤和清查**
+要從自動化帳戶取消連結工作區，必須從工作區中刪除這些解決方案：
+- **變更追蹤與詳細目錄**
 - **更新管理**
-- **于下班時間啟動/停止 Vm**
+- **在非工作時間啟動/停止 VM**
 
-在您的資源群組中，尋找每個解決方案，然後選取 [**刪除**]。 在 [**刪除資源**] 頁面上，確認要移除的資源，然後選取 [**刪除**]。
+在資源組中，查找每個解決方案並選擇 **"刪除**"。 在 **"刪除資源"** 頁上，確認要刪除的資源，然後選擇 **"刪除**"。
 
-![從 Azure 入口網站刪除解決方案](../media/move-account/delete-solutions.png)
+![從 Azure 門戶中刪除解決方案](../media/move-account/delete-solutions.png)
 
-您可以使用[get-azurermresource](/powershell/module/azurerm.resources/remove-azurermresource) Cmdlet 來完成相同的工作，如下列範例所示：
+您可以使用["刪除 AzureRmResource](/powershell/module/azurerm.resources/remove-azurermresource) Cmdlet"完成相同的任務，如以下示例所示：
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -51,100 +51,100 @@ Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' 
 Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM($workspaceName)" -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="additional-steps-for-startstop-vms"></a>啟動/停止 Vm 的其他步驟
+### <a name="additional-steps-for-startstop-vms"></a>啟動/停止 VM 的其他步驟
 
-對於**啟動/停止 vm**解決方案，您也必須移除解決方案所建立的警示規則。
+對於 **"開始/停止 VM"** 解決方案，還需要刪除解決方案創建的警報規則。
 
-在 Azure 入口網站中，移至您的資源群組，然後選取 **監視**  > **警示** > **管理警示規則**。
+在 Azure 門戶中，轉到資源組並選擇 **"監視** > **警報** > **管理警報規則**"。
 
-![顯示管理警示規則選取範圍的警示頁面](../media/move-account/alert-rules.png)
+![顯示"管理警報"規則選擇的警報頁](../media/move-account/alert-rules.png)
 
-在 [**規則**] 頁面上，您應該會看到該資源群組中所設定的警示清單。 **啟動/停止 vm**解決方案會建立三個警示規則：
+在 **"規則"** 頁上，您應該看到該資源組中配置的警報的清單。 **啟動/停止 VM**解決方案創建三個警報規則：
 
 * AutoStop_VM_Child
 * ScheduledStartStop_Parent
 * SequencedStartStop_Parent
 
-選取這三個警示規則，然後選取 [**刪除**]。 此動作將會移除這些警示規則。
+選擇這三個警報規則，然後選擇 **"刪除**"。 此操作將刪除這些警報規則。
 
-![要求確認刪除所選規則的規則頁面](../media/move-account/delete-rules.png)
+![規則頁請求確認所選規則的刪除](../media/move-account/delete-rules.png)
 
 > [!NOTE]
-> 如果您在 [**規則**] 頁面上看不到任何警示規則，請將**狀態**變更為 [顯示**已停用**的警示]，因為您可能已停用它們。
+> 如果在 **"規則"** 頁上看不到任何警報規則，則更改**狀態**以顯示 **"已禁用**"警報，因為您可能已禁用這些警報。
 
-移除警示規則時，請移除為 [**啟動/停止 vm** ] 解決方案通知所建立的動作群組。
+刪除警報規則後，刪除為**開始/停止 VM**解決方案通知創建的操作組。
 
-在 Azure 入口網站中，選取 **監視**  > **警示** > **管理動作群組**。
+在 Azure 門戶中，選擇 **"監視** > **警報** > **管理操作組**"。
 
-從清單中選取 [ **StartStop_VM_Notification** ]。 在 [動作群組] 頁面上，選取 [**刪除**]。
+從清單中選擇**StartStop_VM_Notification。** 在操作組頁上，選擇 **"刪除**"。
 
-![[動作群組] 頁面上，選取 [刪除]](../media/move-account/delete-action-group.png)
+![操作組頁面，選擇刪除](../media/move-account/delete-action-group.png)
 
-同樣地，您可以使用 PowerShell 搭配[AzureRmActionGroup](/powershell/module/azurerm.insights/remove-azurermactiongroup) Cmdlet 來刪除動作群組，如下列範例所示：
+同樣，您可以將 PowerShell 與[刪除 AzureRmActionGroup](/powershell/module/azurerm.insights/remove-azurermactiongroup) Cmdlet 一起使用來刪除操作組，如以下示例所示：
 
 ```azurepowershell-interactive
 Remove-AzureRmActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
 ```
 
-## <a name="unlink-your-workspace"></a>取消連結您的工作區
+## <a name="unlink-your-workspace"></a>取消連結工作區
 
-在 Azure 入口網站中，選取 **自動化帳戶**  > **相關資源** > **連結工作區**。 選取 [**取消連結工作區**]，將工作區從您的自動化帳戶取消連結。
+在 Azure 門戶中，選擇 **"自動化帳戶** > **相關資源** > **連結工作區**"。 選擇 **"取消連結工作區**"以從自動化帳戶取消連結工作區。
 
-![將工作區與自動化帳戶取消連結](../media/move-account/unlink-workspace.png)
+![從自動化帳戶取消連結工作區](../media/move-account/unlink-workspace.png)
 
 ## <a name="move-your-automation-account"></a>移動您的自動化帳戶
 
-移除先前的專案之後，您可以繼續移除您的自動化帳戶及其 runbook。 在 Azure 入口網站中，流覽至您的自動化帳戶的資源群組。 選取 [**移動**] > **移至另一個訂**用帳戶。
+刪除以前的專案後，可以繼續刪除自動化帳戶及其運行簿。 在 Azure 門戶中，流覽到自動化帳戶的資源組。 選擇 **"移動到** > **其他訂閱**"。
 
-![[資源群組] 頁面，移至另一個訂用帳戶](../media/move-account/move-resources.png)
+![資源組頁面，移動到其他訂閱](../media/move-account/move-resources.png)
 
-選取您想要移動的資源群組中的資源。 請確定您包含**自動化帳戶**、 **Runbook**和**Log Analytics 工作區**資源。
+選擇要移動的資源組中的資源。 確保您包括**您的自動化帳戶****、Runbook**和**日誌分析工作區**資源。
 
-移動完成後，需要進行其他步驟，才能讓所有專案都能正常執行。
+移動完成後，還需要執行其他步驟，以使一切正常工作。
 
-## <a name="re-create-run-as-accounts"></a>重新建立執行身分帳戶
+## <a name="re-create-run-as-accounts"></a>重新創建"作為帳戶運行"
 
-[執行身分帳戶](../manage-runas-account.md)會在 Azure Active Directory 中建立服務主體，以向 Azure 資源進行驗證。 當您變更訂閱時，自動化帳戶不再使用現有的執行身分帳戶。
+[在](../manage-runas-account.md)Azure 活動目錄中創建服務主體以使用 Azure 資源進行身份驗證。 更改訂閱時，自動化帳戶不再使用現有的"運行為樣"帳戶。
 
-前往新訂用帳戶中的自動化帳戶，然後在 [**帳戶設定**] 底下選取 [**執行身分帳戶**]。 您會看到 [執行身分帳戶] 現在顯示為 [未完成]。
+轉到新訂閱中的自動化帳戶，然後選擇"**在帳戶設置**下**作為帳戶運行**"。 您將看到"運行為帳戶"現在顯示為不完整。
 
-![執行身分帳戶不完整](../media/move-account/run-as-accounts.png)
+![運行帳戶不完整](../media/move-account/run-as-accounts.png)
 
-選取每個執行身分帳戶。 在 [**屬性**] 頁面上，選取 [**刪除**] 以刪除執行身分帳戶。
+選擇每個"以"身份運行"科目。 在 **"屬性**"頁上，選擇 **"刪除**"以刪除"運行為帳戶"。
 
 > [!NOTE]
-> 如果您沒有建立或查看執行身分帳戶的許可權，您會看到下列訊息： `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` 若要瞭解設定執行身分帳戶所需的許可權，請參閱[設定執行身分帳戶所需的許可權](../manage-runas-account.md#permissions)。
+> 如果您沒有創建或查看"運行為帳戶"的許可權，您將看到以下消息：`You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.`要瞭解配置"運行即"帳戶所需的許可權，請參閱[配置"作為運行帳戶"所需的許可權](../manage-runas-account.md#permissions)。
 
-刪除執行身分帳戶之後，請選取 [ **Azure 執行身分帳戶**] 底下的 [**建立**]。 在 [**新增 Azure 執行身分帳戶**] 頁面上，選取 [**建立**] 以建立執行身分帳戶和服務主體。 使用**Azure 傳統執行身分帳戶**重複上述步驟。
+刪除"運行為帳戶"後，選擇在**Azure 運行為帳戶**下**創建**。 在"**添加 Azure 運行為帳戶"** 頁上，選擇 **"創建**"以創建"以"以"身份運行"帳戶和服務主體。 使用**Azure 經典運行作為帳戶**重複上述步驟。
 
 ## <a name="enable-solutions"></a>啟用解決方案
 
-重新建立執行身分帳戶之後，您會重新啟用在移動前移除的解決方案。 若要開啟**變更追蹤和清查**和**更新管理**，請在您的自動化帳戶中選取各自的功能。 選擇您所移動的 Log Analytics 工作區，然後選取 [**啟用**]。
+重新創建"運行為帳戶"後，您將重新啟用在移動之前刪除的解決方案。 要打開 **"更改跟蹤"和"庫存**"和 **"更新管理**"，請在自動化帳戶中選擇相應的功能。 選擇您移動的日誌分析工作區，然後選擇 **"啟用**"。
 
 ![在移動的自動化帳戶中重新啟用解決方案](../media/move-account/reenable-solutions.png)
 
-當您已連線到現有的 Log Analytics 工作區時，將會顯示使用您的解決方案所上架的機器。
+連接現有日誌分析工作區後，使用解決方案隨機操作的電腦將可見。
 
-若要開啟 [在離峰期間**啟動/停止 vm** ] 解決方案，您必須重新部署解決方案。 在 **相關資源** 底下，選取 **啟動/停止 Vm**  > **深入瞭解並啟用解決方案** > **建立** 以開始部署。
+要在非工作時間解決方案期間打開 **"開始/停止 VM"，** 您需要重新部署解決方案。 在 **"相關資源**"下，選擇 **"開始/停止 VM"** > **以瞭解有關詳細資訊並啟用解決方案** > **"創建**"以啟動部署。
 
-在 [**新增解決方案**] 頁面上，選擇您的 Log Analytics 工作區和自動化帳戶。
+在 **"添加解決方案**"頁上，選擇日誌分析工作區和自動化帳戶。
 
-![[新增方案] 功能表](../media/move-account/add-solution-vm.png)
+![添加解決方案功能表](../media/move-account/add-solution-vm.png)
 
-如需設定解決方案的詳細指示，請參閱 Azure 自動化中的在[離峰期間啟動/停止 vm 解決方案](../automation-solution-vm-management.md)。
+有關配置解決方案的詳細說明，請參閱[Azure 自動化 中的非工作時間解決方案中的開始/停止 VM。](../automation-solution-vm-management.md)
 
 ## <a name="post-move-verification"></a>移動後驗證
 
-當移動完成時，請檢查下列應驗證的工作清單：
+移動完成後，請檢查以下應驗證的工作清單：
 
-|功能|測試|疑難排解連結|
+|功能|測試|故障排除連結|
 |---|---|---|
-|Runbook|Runbook 可以成功執行並聯機至 Azure 資源。|[對 Runbook 進行疑難排解](../troubleshoot/runbooks.md)
-|原始檔控制|您可以在原始檔控制存放庫上執行手動同步處理。|[原始檔控制整合](../source-control-integration.md)|
-|變更追蹤和清查|確認您看到來自電腦的目前清查資料。|[針對變更追蹤進行疑難排解](../troubleshoot/change-tracking.md)|
-|更新管理|確認您看到您的電腦，且其狀況良好。</br>執行測試軟體更新部署。|[針對更新管理進行疑難排解](../troubleshoot/update-management.md)|
-|共用的資源|確認您看到所有共用的資源，例如[認證](../shared-resources/credentials.md)、[變數](../shared-resources/variables.md)等。|
+|Runbook|Runbook 可以成功運行並連接到 Azure 資源。|[排除運行簿故障](../troubleshoot/runbooks.md)
+|原始檔控制|您可以在原始程式碼管理回購上運行手動同步。|[原始程式碼管理集成](../source-control-integration.md)|
+|更改跟蹤和庫存|驗證從電腦中看到當前庫存資料。|[故障排除更改跟蹤](../troubleshoot/change-tracking.md)|
+|更新管理|驗證您看到您的機器，並且它們是否正常。</br>運行測試軟體更新部署。|[故障排除更新管理](../troubleshoot/update-management.md)|
+|共用資源|驗證是否看到所有共用資源，如[憑據](../shared-resources/credentials.md)、[變數](../shared-resources/variables.md)等。|
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何在 Azure 中移動資源，請參閱[在 azure 中移動資源](../../azure-resource-manager/management/move-support-resources.md)。
+要瞭解有關在 Azure 中移動資源的更多資訊，請參閱[在 Azure 中移動資源](../../azure-resource-manager/management/move-support-resources.md)。

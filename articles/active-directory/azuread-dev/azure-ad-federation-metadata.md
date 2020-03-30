@@ -4,21 +4,21 @@ description: 本文說明 Azure Active Directory 針對接受 Azure Active Direc
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ryanwi
-ms.reviewer: hirsin, dastrock
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff034da1f2f40ad0162e5b9fad477d066bc4c3e7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154894"
 ---
 # <a name="federation-metadata"></a>同盟中繼資料
 
@@ -31,7 +31,7 @@ Azure AD 會發佈租用戶專屬與租用戶獨立端點。
 
 租用戶專屬端點是專為特定租用戶所設計的。 租用戶專屬同盟中繼資料包含租用戶相關資訊，其中包括租用戶專屬簽發者和端點資訊。 限制存取單一租用戶的應用程式會使用租用戶專屬端點。
 
-租用戶獨立端點會提供通用資訊給所有 Azure AD 租用戶。 本資訊適用裝載於 login.microsoftonline.com 的租用戶，並由所有租用戶共用。 建議多租用戶應用程式使用租用戶獨立端點，因為它們並不與任何特定租用戶相關聯。
+租用戶獨立端點會提供通用資訊給所有 Azure AD 租用戶。 本資訊適用裝載於 login.microsoftonline.com ** 的租用戶，並由所有租用戶共用。 建議多租用戶應用程式使用租用戶獨立端點，因為它們並不與任何特定租用戶相關聯。
 
 ## <a name="federation-metadata-endpoints"></a>同盟中繼資料端點
 Azure AD 會在 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`發佈同盟中繼資料。
@@ -43,7 +43,7 @@ Azure AD 會在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 
 若為**租用戶獨立端點**，`TenantDomainName` 是 `common`。 本文件只列出通用於所有 Azure AD 租用戶 (裝載於 login.microsoftonline.com) 的同盟中繼資料項目。
 
-例如，租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 租用戶獨立端點是 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 您可以在瀏覽器中輸入此 URL 以檢視同盟中繼資料文件。
+例如，租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 與租戶無關的終結點為[https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 您可以在瀏覽器中輸入此 URL 以檢視同盟中繼資料文件。
 
 ## <a name="contents-of-federation-metadata"></a>同盟中繼資料內容
 以下小節提供使用 Azure AD 所簽發之權杖的服務所需的資訊。
@@ -51,7 +51,7 @@ Azure AD 會在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 ### <a name="entity-id"></a>實體識別碼
 `EntityDescriptor` 項目包含 `EntityID` 屬性。 `EntityID` 屬性的值代表簽發者 (也就是簽發權杖的 Security Token Service (STS))。 請務必在收到權杖時驗證簽發者。
 
-下列中繼資料說明了含有 `EntityDescriptor` 項目的範例租用戶專屬 `EntityID` 項目。
+下列中繼資料說明了含有 `EntityID` 項目的範例租用戶專屬 `EntityDescriptor` 項目。
 
 ```
 <EntityDescriptor
@@ -71,7 +71,7 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>權杖簽署憑證
-當服務收到 Azure AD 租使用者所發行的權杖時，必須使用在同盟元資料檔案中發佈的簽署金鑰來驗證權杖的簽章。 同盟中繼資料包含租用戶用於權杖簽署之憑證的公開部分。 憑證原始位元組會出現在 `KeyDescriptor` 項目中。 當 `use` 屬性值為 `signing` 時，權杖簽署憑證僅能適用於簽署。
+當服務收到由 Azure AD 租戶頒發的權杖時，必須使用聯合中繼資料文檔中發佈的簽名金鑰驗證權杖的簽名。 同盟中繼資料包含租用戶用於權杖簽署之憑證的公開部分。 憑證原始位元組會出現在 `KeyDescriptor` 項目中。 當 `use` 屬性值為 `signing` 時，權杖簽署憑證僅能適用於簽署。
 
 Azure AD 所發佈之同盟中繼資料文件可以有多組簽署金鑰 (例如，Azure AD 準備更新簽署憑證時)。 當同盟中繼資料文件包含多個憑證時，正在驗證權杖的服務應會支援該文件中的所有憑證。
 

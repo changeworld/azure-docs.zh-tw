@@ -1,26 +1,26 @@
 ---
 title: 將自訂資源新增至 Azure REST API
-description: 瞭解如何將自訂資源新增至 Azure REST API。 本文將逐步解說想要執行自訂資源之端點的需求和最佳作法。
+description: 瞭解如何將自訂資源添加到 Azure REST API。 本文將介紹希望實現自訂資源的終結點的要求和最佳實踐。
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650522"
 ---
-# <a name="adding-custom-resources-to-azure-rest-api"></a>將自訂資源新增至 Azure REST API
+# <a name="adding-custom-resources-to-azure-rest-api"></a>將自訂資源添加到 Azure REST API
 
-本文將逐步解說建立 Azure 自訂資源提供者端點來執行自訂資源的需求和最佳作法。 如果您不熟悉 Azure 自訂資源提供者，請參閱[自訂資源提供者的總覽](overview.md)。
+本文將介紹創建實現自訂資源的 Azure 自訂資來源提供者終結點的要求和最佳實踐。 如果您不熟悉 Azure 自訂資來源提供者，請參閱[自訂資來源提供者的概述](overview.md)。
 
-## <a name="how-to-define-a-resource-endpoint"></a>如何定義資源端點
+## <a name="how-to-define-a-resource-endpoint"></a>如何定義資源終結點
 
-「**端點**」（endpoint）是指向服務的 URL，它會在它與 Azure 之間執行基礎合約。 端點會定義在自訂資源提供者中，而且可以是任何可公開存取的 URL。 下列範例有一個稱為的**resourceType** ，`myCustomResource` 由 `endpointURL`所執行。
+**終結點**是指向服務的 URL，該服務在它與 Azure 之間實現基礎協定。 終結點在自訂資來源提供者中定義，可以是任何可公開訪問的 URL。 下面的示例具有稱為`myCustomResource`由`endpointURL`實現**的資源類型**。
 
-範例**ResourceProvider**：
+示例**資來源提供者**：
 
 ```JSON
 {
@@ -40,45 +40,45 @@ ms.locfileid: "75650522"
 }
 ```
 
-## <a name="building-a-resource-endpoint"></a>建立資源端點
+## <a name="building-a-resource-endpoint"></a>構建資源終結點
 
-執行**resourceType**的**端點**必須處理 Azure 中新 API 的要求和回應。 建立具有**resourceType**的自訂資源提供者時，它會在 Azure 中產生一組新的 api。 在此情況下， **resourceType**會針對 `PUT`、`GET`和 `DELETE` 產生新的 AZURE 資源 API，以在單一資源上執行 CRUD，並使用 `GET` 來抓取所有現有的資源：
+實現**資源類型的****終結點**必須處理 Azure 中新 API 的請求和回應。 創建具有**資源類型的**自訂資來源提供者時，它將在 Azure 中生成一組新的 API。 在這種情況下，**資源類型**將為 生成`PUT`新的 Azure 資源 API，`GET`並在`DELETE`單個資源上執行 CRUD，以及`GET`檢索所有現有資源：
 
-操作單一資源（`PUT`、`GET`和 `DELETE`）：
+操作單個資源`PUT`（、 `GET` `DELETE`和 ）：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource/{myCustomResourceName}
 ```
 
-取出所有資源（`GET`）：
+檢索所有資源`GET`（ ）：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-針對自訂資源，自訂資源提供者提供兩種類型的**routingTypes**：「`Proxy`」和「`Proxy, Cache`」。
+對於自訂資源，自訂資來源提供者提供兩種類型的**路由類型**："`Proxy`和""。`Proxy, Cache`
 
-### <a name="proxy-routing-type"></a>proxy 路由類型
+### <a name="proxy-routing-type"></a>代理路由類型
 
-"`Proxy`" **routingType**會將所有要求方法 proxy 至自訂資源提供者中指定的**端點**。 使用「`Proxy`」的時機：
+"`Proxy`**路由類型**"代理所有請求方法到自訂資來源提供者中指定的**終結點**。 何時使用""：`Proxy`
 
-- 需要對回應的完整控制。
-- 整合系統與現有資源。
+- 需要完全控制回應。
+- 將系統集成與現有資源。
 
-若要深入瞭解「`Proxy`」資源，請參閱[自訂資源 proxy 參考](proxy-resource-endpoint-reference.md)
+要瞭解有關""資源`Proxy`"的更多[資訊，請參閱自訂資源代理引用](proxy-resource-endpoint-reference.md)
 
-### <a name="proxy-cache-routing-type"></a>proxy 快取路由類型
+### <a name="proxy-cache-routing-type"></a>代理緩存路由類型
 
-"`Proxy, Cache`" **routingType** proxy 只會 `PUT`，並 `DELETE` 要求方法加入至自訂資源提供者中指定的**端點**。 自訂資源提供者會根據它儲存在快取中的內容，自動傳回 `GET` 要求。 如果自訂資源是以快取標記，自訂資源提供者也會在回應中新增/覆寫欄位，使 Api 符合規範。 使用「`Proxy, Cache`」的時機：
+"`Proxy, Cache`**路由類型**"僅`PUT`代理，並將`DELETE`方法請求到自訂資來源提供者中指定的**終結點**。 自訂資來源提供者將根據存儲在其緩存`GET`中的內容自動返回請求。 如果自訂資源標記為緩存，自訂資來源提供者還將在回應中添加/覆蓋欄位，以使 API Azure 相容。 何時使用""：`Proxy, Cache`
 
-- 建立沒有現有資源的新系統。
+- 創建沒有現有資源的新系統。
 - 使用現有的 Azure 生態系統。
 
-若要深入瞭解「`Proxy, Cache`」資源，請參閱[自訂資源](proxy-cache-resource-endpoint-reference.md)快取參考
+要瞭解有關""資源`Proxy, Cache`的詳細資訊，請參閱[自訂資源緩存引用](proxy-cache-resource-endpoint-reference.md)
 
-## <a name="creating-a-custom-resource"></a>建立自訂資源
+## <a name="creating-a-custom-resource"></a>創建自訂資源
 
-有兩種主要方式可從自訂資源提供者建立自訂資源：
+從自訂資來源提供者創建自訂資源有兩種主要方法：
 
 - Azure CLI
 - Azure Resource Manager 範本
@@ -102,11 +102,11 @@ az resource create --is-full-object \
                     }'
 ```
 
-參數 | 必要項 | 說明
+參數 | 必要 | 描述
 ---|---|---
-is-full-object | 是 | 指出屬性物件包含其他選項，例如位置、標籤、SKU 和/或方案。
-id | 是 | 自訂資源的資源識別碼。 這應該存在於**ResourceProvider**
-properties | 是 | 將傳送至**端點**的要求主體。
+is-full-object | *是的* | 指出屬性物件包含其他選項，例如位置、標籤、SKU 和/或方案。
+id | *是的* | 自訂資源的資源識別碼。 這應該存在於**資來源提供者**的外
+properties | *是的* | 將發送到**終結點**的請求正文。
 
 刪除 Azure 自訂資源：
 
@@ -114,9 +114,9 @@ properties | 是 | 將傳送至**端點**的要求主體。
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-參數 | 必要項 | 說明
+參數 | 必要 | 描述
 ---|---|---
-id | 是 | 自訂資源的資源識別碼。 這應該存在於**ResourceProvider**中。
+id | *是的* | 自訂資源的資源識別碼。 這應該存在於**資來源提供者**中。
 
 擷取 Azure 自訂資源：
 
@@ -124,18 +124,18 @@ id | 是 | 自訂資源的資源識別碼。 這應該存在於**ResourceProvide
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-參數 | 必要項 | 說明
+參數 | 必要 | 描述
 ---|---|---
-id | 是 | 自訂資源的資源識別碼。 這應該存在於**ResourceProvider**
+id | *是的* | 自訂資源的資源識別碼。 這應該存在於**資來源提供者**的外
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 
 > [!NOTE]
-> 資源會要求回應包含來自**端點**的適當 `id`、`name`和 `type`。
+> `id`資源要求回應包含適當的 、`name`和`type`從**終結點**。
 
-Azure Resource Manager 範本需要從下游端點正確傳回 `id`、`name`和 `type`。 傳回的資源回應應採用下列格式：
+Azure 資源管理器範本要求`id`從`name`下游終結點正確`type`返回 和 。 返回的資源回應應為以下形式：
 
-範例**端點**回應：
+示例**終結點**回應：
 
 ``` JSON
 {
@@ -174,17 +174,17 @@ Azure Resource Manager 範本的範例：
 }
 ```
 
-參數 | 必要項 | 說明
+參數 | 必要 | 描述
 ---|---|---
-resourceTypeName | 是 | 自訂提供者中定義的**resourceType** **名稱**。
-resourceProviderName | 是 | 自訂資源提供者實例名稱。
-customResourceName | 是 | 自訂資源名稱。
+resourceTypeName | *是的* | 自訂提供程式中定義的**資源類型****的名稱**。
+resourceProviderName | *是的* | 自訂資來源提供者實例名稱。
+customResourceName | *是的* | 自訂資源名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 自訂資源提供者的總覽](overview.md)
-- [快速入門：建立 Azure 自訂資源提供者並部署自訂資源](./create-custom-provider.md)
-- [教學課程：在 Azure 中建立自訂動作和資源](./tutorial-get-started-with-custom-providers.md)
-- [如何：將自訂動作新增至 Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [參考：自訂資源 Proxy 參考](proxy-resource-endpoint-reference.md)
-- [參考：自訂資源快取參考](proxy-cache-resource-endpoint-reference.md)
+- [Azure 自訂資來源提供者概述](overview.md)
+- [快速入門：創建 Azure 自訂資來源提供者並部署自訂資源](./create-custom-provider.md)
+- [教程：在 Azure 中創建自訂操作和資源](./tutorial-get-started-with-custom-providers.md)
+- [如何：將自訂操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [引用：自訂資源代理引用](proxy-resource-endpoint-reference.md)
+- [參考：自訂資源緩存引用](proxy-cache-resource-endpoint-reference.md)

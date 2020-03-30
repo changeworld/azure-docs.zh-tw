@@ -9,10 +9,10 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, Open Service Broker for Azure
 ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247928"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>將現有的 MongoDB 應用程式與適用於 MongoDB 的 Azure Cosmos DB API 和 Open Service Broker for Azure (OSBA) 整合
@@ -21,7 +21,7 @@ Azure Cosmos DB 是全域散發的多模型資料庫服務。 它也提供與數
 
 在本文中，您會採用一個使用 MongoDB 資料庫的現有 Java 應用程式，然後使用 Open Service Broker for Azure 將它更新成使用 Cosmos DB 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在繼續之前，您必須先：
     
@@ -187,7 +187,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>在 AKS 叢集上執行您的應用程式
 
-您可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 將應用程式部署到您的 AKS 叢集。 Azure Dev Spaces 可協助您產生成品（例如 Dockerfile 和 Helm 圖表），以及在 AKS 中部署和執行應用程式。
+您可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 將應用程式部署到您的 AKS 叢集。 Azure 開發人員空間可説明您生成專案（如 Dockerfile 和 Helm 圖表），並在 AKS 中部署和運行應用程式。
 
 在您的 AKS 叢集中啟用 Azure Dev Spaces：
 
@@ -265,7 +265,7 @@ press Ctrl+C to detach
 ...
 ```
 
-請瀏覽至記錄中顯示的 URL。 在上述範例中，您會使用 *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* 。 
+請瀏覽至記錄中顯示的 URL。 在前面的示例中，您將使用*http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*。 
 
 請確認您看到應用程式，以及您所做的變更。
 
@@ -276,4 +276,4 @@ press Ctrl+C to detach
 如需有關 Cosmos DB、Open Service Broker for Azure 及 Azure Dev Spaces 的詳細資訊，請參閱：
 * [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)
 * [Open Service Broker for Azure](https://osba.sh) \(英文\)
-* [使用 Dev Spaces 進行開發](../dev-spaces/azure-dev-spaces.md)
+* [使用 Dev Spaces 部署](../dev-spaces/azure-dev-spaces.md)

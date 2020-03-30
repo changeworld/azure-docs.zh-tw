@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174174"
 ---
 ## <a name="troubleshooting-update-failures"></a>更新失敗的疑難排解
 **如果您看到升級前檢查失敗的通知，該怎麼辦？**
 
-如果前置檢查失敗，請確定您已經查看頁面底部的詳細通知列。 這會提供有關失敗的前置檢查的指引。 例如，您收到通知表示控制器健康情況檢查和硬體元件健康情況檢查失敗。 移至 [監視] > [硬體健康狀態]  。 您必須確定兩個控制器是狀況良好且在線上。 您也必須確定在 StorSimple 裝置中的所有硬體元件在此刀鋒視窗中都會顯示為狀況良好。 接著，您可以嘗試安裝更新。 如果您無法修正硬體元件問題，您將需要連絡 Microsoft 支援以了解後續步驟。
+如果前置檢查失敗，請確定您已經查看頁面底部的詳細通知列。 這會提供有關失敗的前置檢查的指引。 例如，您收到通知表示控制器健康情況檢查和硬體元件健康情況檢查失敗。 移至 [監視] > [硬體健康狀態]****。 您必須確定兩個控制器是狀況良好且在線上。 您也必須確定在 StorSimple 裝置中的所有硬體元件在此刀鋒視窗中都會顯示為狀況良好。 接著，您可以嘗試安裝更新。 如果您無法修正硬體元件問題，您將需要連絡 Microsoft 支援以了解後續步驟。
 
 **如果您收到「無法安裝更新」錯誤訊息，且建議是參考更新疑難排解指南，以判斷失敗的原因，該怎麼辦？**
 

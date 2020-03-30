@@ -1,6 +1,6 @@
 ---
-title: Azure 安全性控制-清查和資產管理
-description: 安全性控制清查和資產管理
+title: Azure 安全控制 - 庫存和資產管理
+description: 安全控制庫存和資產管理
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,31 +9,31 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75930068"
 ---
-# <a name="security-control-inventory-and-asset-management"></a>安全性控制：清查和資產管理
+# <a name="security-control-inventory-and-asset-management"></a>安全控制：庫存和資產管理
 
-清查和資產管理建議著重于解決與主動管理（清查、追蹤和更正）所有 Azure 資源相關的問題，因此只會授與授權的資源存取權，以及未授權和未受管理的資源已識別並已移除。
+庫存和資產管理建議側重于解決與主動管理（清單、跟蹤和更正）所有 Azure 資源相關的問題，以便僅授予授權資源存取權限，並且未經授權的和非託管資源已識別並刪除。
 
-## <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
+## <a name="61-use-azure-asset-discovery"></a>6.1： 使用 Azure 資產發現
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
-| 6.1 | 1.1、1.2、1.3、1.4、9.1、12。1 | 客戶 |
+| 6.1 | 1.1, 1.2, 1.3, 1.4, 9.1, 12.1 | 客戶 |
 
-使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源（例如計算、儲存體、網路、埠及通訊協定等）。  請確定您的租使用者中有適當（讀取）許可權，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
+使用 Azure 資源圖查詢/發現訂閱中的所有資源（如計算、存儲、網路、埠和協定等）。  請確保租戶中的適當（讀取）許可權，並枚舉訂閱中的所有 Azure 訂閱以及資源。
 
-雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
+儘管可以通過資源圖發現經典 Azure 資源，但強烈建議今後創建和使用 Azure 資源管理器資源。
 
-如何使用 Azure Resource Graph 建立查詢：
+如何使用 Azure 資源圖創建查詢：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何查看您的 Azure 訂用帳戶：
+如何查看 Azure 訂閱：
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -41,178 +41,178 @@ https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-## <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
+## <a name="62-maintain-asset-metadata"></a>6.2： 維護資產中繼資料
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.2 | 1.5 | 客戶 |
 
-將標籤套用至 Azure 資源，提供中繼資料以邏輯方式將其組織成分類法。
+將標記應用於 Azure 資源，使中繼資料以邏輯方式將它們組織到分類中。
 
-如何建立和使用標記：
+如何創建和使用標記：
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-## <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
+## <a name="63-delete-unauthorized-azure-resources"></a>6.3： 刪除未經授權的 Azure 資源
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.3 | 1.6 | 客戶 |
 
-使用標記、管理群組，以及個別的訂用帳戶（適當時）來組織和追蹤資產。 定期協調清查，並確保未經授權的資源會及時從訂用帳戶中刪除。
+在適當情況下，使用標記、管理組和單獨的訂閱來組織和跟蹤資產。 定期協調庫存，確保及時從訂閱中刪除未經授權的資源。
 
-如何建立額外的 Azure 訂用帳戶：
+如何創建其他 Azure 訂閱：
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-如何建立管理群組：
+如何創建管理組：
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何建立和使用標記：
+如何創建和使用標記：
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-## <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護已核准 Azure 資源和軟體標題的清查
+## <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護已批准的 Azure 資源和軟體標題的清單
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.4 | 2.1 | 客戶 |
 
-定義已核准的 Azure 資源，以及適用于計算資源的已核准軟體。
+為計算資源定義已批准的 Azure 資源和已批准的軟體。
 
-## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
+## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5： 監視未經批准的 Azure 資源
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.5 | 2.3、2.4 | 客戶 |
 
-請使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
+使用 Azure 策略對可在訂閱中創建的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。 &nbsp;確保所有存在於環境中的 Azure 資源都已核准。
+使用 Azure 資源圖查詢/發現其訂閱中的資源。 &nbsp;確保環境中的所有 Azure 資源都獲得批准。
 
-如何設定和管理 Azure 原則：
+如何配置和管理 Azure 策略：
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure Graph 建立查詢：
+如何使用 Azure 圖形創建查詢：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
+## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6： 監控計算資源中未經批准的軟體應用程式
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
-| 6.6 | 2.3/2。4 | 客戶 |
+| 6.6 | 2.3/2.4 | 客戶 |
 
-使用 Azure 虛擬機器清查，自動收集虛擬機器上所有軟體的相關資訊。 [軟體名稱]、[版本]、[發行者] 和 [重新整理時間] 可從 Azure 入口網站取得。 若要取得安裝日期和其他資訊的存取權，請啟用來賓層級診斷，並將 Windows 事件記錄檔帶入 Log Analytics 工作區。
+使用 Azure 虛擬機器清單自動收集有關虛擬機器上所有軟體的資訊。 軟體名稱、版本、發行者和刷新時間可從 Azure 門戶獲得。 要訪問安裝日期和其他資訊，請啟用來賓級診斷並將 Windows 事件日誌引入日誌分析工作區。
 
-如何啟用 Azure 虛擬機器清查：
+如何啟用 Azure 虛擬機器清單：
 
 https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software
 
-## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未核准的 Azure 資源和軟體應用程式
+## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7： 刪除未經批准的 Azure 資源和軟體應用程式
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.7 | 2.5 | 客戶 |
 
-使用 Azure 資訊安全中心的檔案完整性監視（變更追蹤）和虛擬機器清查來識別安裝在虛擬機器上的所有軟體。 您可以執行自己的程式來移除未經授權的軟體。 您也可以使用協力廠商解決方案來識別未經核准的軟體。
+使用 Azure 安全中心的檔完整性監視（更改跟蹤）和虛擬機器清單標識安裝在虛擬機器上的所有軟體。 您可以實現自己的刪除未經授權的軟體的過程。 您還可以使用協力廠商解決方案來識別未經批准的軟體。
 
-如何使用檔案完整性監視：
+如何使用檔完整性監視：
 
 https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring
 
-瞭解 Azure 變更追蹤：
+瞭解 Azure 更改跟蹤：
 
 https://docs.microsoft.com/azure/automation/change-tracking
 
-如何啟用 Azure 虛擬機器清查：
+如何啟用 Azure 虛擬機器清單：
 
 https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software
 
-## <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
+## <a name="68-use-only-approved-applications"></a>6.8： 僅使用已批准的應用程式
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.8 | 2.6 | 客戶 |
 
-使用 Azure 資訊安全中心的彈性應用程式控制，以確保只有授權的軟體會執行，且所有未經授權的軟體都會遭到封鎖而無法在 Azure 虛擬機器上執行。
+使用 Azure 安全中心自我調整應用程式控制項確保僅執行授權軟體，並且阻止在 Azure 虛擬機器上執行所有未經授權的軟體。
 
-如何使用 Azure 資訊安全中心適應性應用程式控制：
+如何使用 Azure 安全中心自我調整應用程式控制項：
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-application
 
-## <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
+## <a name="69-use-only-approved-azure-services"></a>6.9： 僅使用已批准的 Azure 服務
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.9 | 2.6 | 客戶 |
 
-使用 Azure 原則來限制您可以在環境中布建的服務。
+使用 Azure 策略限制可以在環境中預配哪些服務。
 
-如何設定和管理 Azure 原則：
+如何配置和管理 Azure 策略：
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何拒絕具有 Azure 原則的特定資源類型：
+如何使用 Azure 策略拒絕特定資源類型：
 
 https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-## <a name="610-implement-approved-application-list"></a>6.10：執行核准的應用程式清單
+## <a name="610-implement-approved-application-list"></a>6.10： 實施已批准的申請清單
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.1 | 2.7 | 客戶 |
 
-使用 Azure 資訊安全中心的彈性應用程式控制，指定規則可能或不適用的檔案類型。
+使用 Azure 安全中心自我調整應用程式控制項指定規則可能應用於哪些檔案類型，也可能不適用於哪些檔案類型。
 
-如果這不符合需求，請執行協力廠商解決方案。
+如果不符合要求，則實施協力廠商解決方案。
 
-如何使用 Azure 資訊安全中心適應性應用程式控制：
+如何使用 Azure 安全中心自我調整應用程式控制項：
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-application
 
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11：限制使用者透過腳本與 Azure Resource Manager 互動的能力
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11：限制使用者通過腳本與 Azure 資源管理器交互的能力
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.11 | 2.8 | 客戶 |
 
-使用 Azure 條件式存取，藉由設定 &quot;Microsoft Azure Management&quot; 應用程式的 &quot;封鎖存取&quot;，限制使用者與 Azure Resource Manager 互動的能力。
+使用 Azure 條件訪問&quot;通過配置&quot;&quot;Microsoft Azure 管理&quot;應用的塊訪問來限制使用者與 Azure 資源管理器交互的能力。
 
-如何設定條件式存取以封鎖對 Azure Resource Manager 的存取：
+如何配置條件訪問以阻止對 Azure 資源管理器的訪問：
 
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行腳本的能力
+## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12： 限制使用者在計算資源中執行腳本的能力
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.12 | 2.8 | 客戶 |
 
-使用作業系統特定設定或協力廠商資源，以限制使用者在 Azure 計算資源內執行腳本的能力。
+使用作業系統特定的配置或協力廠商資源來限制使用者在 Azure 計算資源中執行腳本的能力。
 
-例如，如何在 Windows 環境中控制 PowerShell 腳本執行：
+例如，如何控制 Windows 環境中的 PowerShell 腳本執行：
 
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
-## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
+## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13： 物理或邏輯上隔離高風險應用程式
 
-| Azure 識別碼 | CIS 識別碼 | 責任 |
+| Azure ID | 獨聯體的代用品 | 責任 |
 |--|--|--|
 | 6.13 | 2.9 | 客戶 |
 
-商務營運所需，但可能對組織產生較高風險的軟體，應該在自己的虛擬機器和/或虛擬網路中隔離，並使用 Azure 防火牆或網路安全性群組進行充分的保護。
+業務操作所需的軟體，但可能會給組織帶來更高的風險，應隔離在自己的虛擬機器和/或虛擬網路中，並且使用 Azure 防火牆或網路安全性群組進行充分保護。
 
-如何建立虛擬網路：
+如何創建虛擬網路：
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-如何建立具有安全性設定的 NSG：
+如何創建具有安全配置的 NSG：
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱下一個安全性控制：[安全](security-control-secure-configuration.md)設定
+請參閱下一個安全控制：[安全配置](security-control-secure-configuration.md)

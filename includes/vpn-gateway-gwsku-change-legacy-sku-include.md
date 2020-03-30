@@ -9,10 +9,10 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67173859"
 ---
 如果您使用的是資源管理員部署模型，則可以變更為新的閘道 SKU。 從舊版閘道 SKU 變更到新的 SKU 時，您會刪除現有的 VPN 閘道，並建立新的 VPN 閘道。

@@ -1,5 +1,5 @@
 ---
-title: 資料 & 儲存體建議-Azure 資訊安全中心
+title: 資料&存儲建議 - Azure 安全中心
 description: 本文件說明「Azure 資訊安全中心」中的建議，這些建議可協助您保護您的資料和 Azure SQL 服務，以及遵守安全性原則。
 services: security-center
 documentationcenter: na
@@ -14,60 +14,60 @@ ms.workload: na
 ms.date: 12/19/2019
 ms.author: memildin
 ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552860"
 ---
-# <a name="protect-azure-data-and-storage-services"></a>保護 Azure 資料和儲存體服務
-當 Azure 資訊安全中心識別潛在的安全性弱點時，它會建立建議，引導您完成設定所需控制項來強化和保護資源的程式。
+# <a name="protect-azure-data-and-storage-services"></a>保護 Azure 資料和存儲服務
+當 Azure 安全中心識別潛在的安全性漏洞時，它會創建建議，指導您完成配置所需控制項以強化和保護資源的過程。
 
-本文說明資訊安全中心的 [資源安全性] 區段中的 [**資料安全性] 頁面**。
+本文介紹了安全中心資源安全部分**的資料安全頁面**。
 
-如需您可能會在此頁面上看到之建議的完整清單，請參閱[資料和儲存體建議](recommendations-reference.md#recs-datastorage)。
+有關您可能在此頁上看到的建議的完整清單，請參閱[資料和存儲建議](recommendations-reference.md#recs-datastorage)。
 
 
-## <a name="view-your-data-security-information"></a>查看您的資料安全性資訊
+## <a name="view-your-data-security-information"></a>查看資料安全資訊
 
-1. 在 [**資源安全性**防護] 區段中，按一下 [**資料和儲存體資源**]。
+1. 在 **"資源安全衛生**"部分中，按一下 **"資料和存儲資源**"。
 
-    ![資料與儲存體資源](./media/security-center-monitoring/click-data.png)
+    ![資料&存儲資源](./media/security-center-monitoring/click-data.png)
 
-    [**資料安全性**] 頁面隨即開啟，並提供資料資源的建議。
+    "**資料安全**"頁將打開，並包含資料資源的建議。
 
     [![資料資源](./media/security-center-monitoring/sql-overview.png)](./media/security-center-monitoring/sql-overview.png#lightbox)
 
-    從此頁面，您可以：
+    您可以從這個頁面執行下列動作：
 
-    * 按一下 [**總覽**] 索引標籤，列出要補救的所有資料資源建議。 
-    * 按一下每個索引標籤，並依資源類型查看建議。
+    * 按一下"**概述"** 選項卡列出要修復的所有資料資源建議。 
+    * 按一下每個選項卡，並按資源類型查看建議。
 
     > [!NOTE]
-    > 如需儲存體加密的詳細資訊，請參閱待用[資料的加密 Azure 儲存體](../storage/common/storage-service-encryption.md)。
+    > 有關存儲加密的詳細資訊，請參閱[靜態資料的 Azure 存儲加密](../storage/common/storage-service-encryption.md)。
 
 
-## <a name="remediate-a-recommendation-on-a-data-resource"></a>補救資料資源的建議
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>修正對資料資源的建議
 
-1. 從任何 [資源] 索引標籤中，按一下資源。 [資訊] 頁面隨即開啟，列出要補救的建議。
+1. 從任何資源選項卡中，按一下資源。 將打開資訊頁，列出要修復的建議。
 
     ![資源資訊](./media/security-center-monitoring/sql-recommendations.png)
 
-2. 按一下 [建議]。 [建議] 頁面隨即開啟，並顯示執行建議的**補救步驟**。
+2. 按一下建議。 "建議"頁將打開並顯示實施建議的 **"修正"步驟**。
 
    ![補救步驟](./media/security-center-monitoring/remediate1.png)
 
-3. 按一下 [**採取動作**]。 [資源設定] 頁面隨即出現。
+3. 按一下 **"執行操作**"。 將顯示資源設置頁。
 
     ![啟用建議](./media/security-center-monitoring/remediate2.png)
 
-4. 遵循**補救步驟**，然後按一下 [**儲存**]。
+4. 按照**修復步驟**，然後按一下"**保存**"。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解適用于其他 Azure 資源類型的建議，請參閱下列主題：
+要瞭解有關適用于其他 Azure 資源類型的建議，請參閱以下主題：
 
-* [Azure 資訊安全中心安全性建議的完整參考清單](recommendations-reference.md)
+* [Azure 安全中心安全建議的完整參考清單](recommendations-reference.md)
 * [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
 * [保護 Azure 資訊安全中心內的網路](security-center-network-recommendations.md)

@@ -1,15 +1,15 @@
 ---
-title: 設定容器服務的網路模式
+title: 為容器服務配置網路模式
 description: 了解如何設定 Azure Service Fabric 所支援的不同網路模式。
 author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639797"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器網路模式
@@ -21,12 +21,12 @@ ms.locfileid: "75639797"
 當某個容器服務重新啟動或移到叢集中的另一個節點時，IP 位址便會變更。 因此，不建議使用以動態方式指派的 IP 位址來探索容器服務。 只有 Service Fabric 命名服務或 DNS 服務可用於服務探索。 
 
 >[!WARNING]
->Azure 允許每個虛擬網路總共65356個 Ip。 節點數目和容器服務實例數目的總和（使用開啟模式）不能超過虛擬網路中的65356個 Ip。 針對高密度的情況，建議使用 nat 網路模式。 此外，其他相依性（例如負載平衡器）將會有其他[限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 目前每個節點最多50個 Ip 已經過測試且經過證實穩定。 
+>Azure 允許每個虛擬網路總共允許 65，356 個 IP。 節點數和容器服務實例數（使用 Open 模式）的總和不能超過虛擬網路中的 65，356 個 IP。 針對高密度的情況，建議使用 nat 網路模式。 此外，其他依賴項（如負載等化器）將具有其他[需要考慮的限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 目前，每個節點多達 50 個 IP 已過測試，並經驗證穩定。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>設定 Open 網路模式
 
-1. 設定 Azure Resource Manager 範本。 在叢集資源的 [fabricSettings] 區段中，啟用 DNS 服務及 IP 提供者： 
+1. 設定 Azure Resource Manager 範本。 在叢集資源的 [fabricSettings]**** 區段中，啟用 DNS 服務及 IP 提供者： 
 
     ```json
     "fabricSettings": [
@@ -196,9 +196,9 @@ ms.locfileid: "75639797"
    |優先順序 |2000 | |
    |名稱 |Custom_Dns  | |
    |來源 |VirtualNetwork | |
-   |目的地 | VirtualNetwork | |
+   |Destination | VirtualNetwork | |
    |服務 | DNS (UDP/53) | |
-   |行動 | 允許  | |
+   |動作 | Allow  | |
    | | |
 
 4. 在每個服務的應用程式資訊清單中指定網路模式：`<NetworkConfig NetworkType="Open">`。 **Open** 網路模式會使服務取得專用 IP 位址。 如果未指定模式，服務會預設為 **nat** 模式。 在下列資訊清單範例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服務可以分別在相同的連接埠上接聽 (這兩個服務都會在 `Endpoint1` 上接聽)。 指定 Open 網路模式之後，就無法指定 `PortBinding` 設定。
@@ -236,7 +236,7 @@ ms.locfileid: "75639797"
     >在 Linux 叢集上，不支援針對不同服務混合網路模式。 
     >
 
-5. 選取 [開啟] 模式時，服務資訊清單中的 [端點] 定義應該明確地指向對應至端點的程式碼套件，即使服務套件中只有一個程式碼套件也是一樣。 
+5. 選取 [開啟]**** 模式時，服務資訊清單中的 [端點]**** 定義應該明確地指向對應至端點的程式碼套件，即使服務套件中只有一個程式碼套件也是一樣。 
    
    ```xml
    <Resources>

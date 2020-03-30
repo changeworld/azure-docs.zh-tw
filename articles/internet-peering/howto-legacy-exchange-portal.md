@@ -9,42 +9,42 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: a40c7bbc9f37135814b7bba3396d368faf97a166
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775195"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-the-portal"></a>使用入口網站將舊版 Exchange 對等互連轉換成 Azure 資源
 
-本文說明如何使用入口網站將現有的舊版 Exchange 對等互連轉換成 Azure 資源。
+本文介紹如何使用門戶將現有舊版 Exchange 對等互連轉換為 Azure 資源。
 
-如果您想要的話，可以使用[PowerShell](howto-legacy-exchange-powershell.md)來完成本指南。
+如果您願意，您可以使用[PowerShell](howto-legacy-exchange-powershell.md)完成本指南。
 
 ## <a name="before-you-begin"></a>開始之前
-* 開始設定之前，請先參閱[必要條件](prerequisites.md)和[Exchange 對等的逐步](walkthrough-exchange-all.md)解說。
+* 在開始配置之前，請查看[先決條件](prerequisites.md)和[交換對等演練](walkthrough-exchange-all.md)。
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>將舊版 Exchange 對等互連轉換成 Azure 資源
+## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>將舊版 Exchange 對等互連轉換為 Azure 資源
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>登入入口網站並選取您的訂用帳戶
+### <a name="sign-in-to-portal-and-select-your-subscription"></a>登錄到門戶並選擇訂閱
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name=create></a>轉換舊版 Exchange 對等互連
+### <a name="convert-legacy-exchange-peering"></a><a name=create></a>轉換舊交易所對等互連
 
-您可以使用對**等互連**資源轉換舊版對等互連連線。
+您可以使用**對等互連**資源轉換舊體向互連連接。
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>啟動資源並設定基本設定
+#### <a name="launch-resource-and-configure-basic-settings"></a>啟動資源並配置基本設置
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
-#### <a name="configure-connections-and-submit"></a>設定連接並提交
+#### <a name="configure-connections-and-submit"></a>配置連接並提交
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration-legacy.md)]
 
-### <a name=get></a>驗證 Exchange 對等
+### <a name="verify-exchange-peering"></a><a name=get></a>驗證交換對等互連
 [!INCLUDE [peering-exchange-get-portal](./includes/exchange-portal-get.md)]
 
 ## <a name="additional-resources"></a>其他資源
 
-如需詳細資訊，請造訪[網際網路對等常見問題](faqs.md)
+有關詳細資訊，請訪問[互聯網對等常見問題解答](faqs.md)
 
 ## <a name="next-steps"></a>後續步驟
 

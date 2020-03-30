@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a76f61902c6affdab9f70526d2de40852747f34e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174027"
 ---
 #### <a name="to-get-the-storsimple-service-registration-key"></a>取得 StorSimple 服務註冊金鑰
 
-1. 在 [StorSimple 裝置管理員]  刀鋒視窗上，按一下您建立的服務。 這會在右邊開啟新的刀鋒視窗。
+1. 在 [StorSimple 裝置管理員]**** 刀鋒視窗上，按一下您建立的服務。 這會在右邊開啟新的刀鋒視窗。
    
      ![StorSimple 裝置管理員刀鋒視窗](./media/storsimple-8000-get-service-registration-key/createssdevman5.png)
 
-2.  移至 [管理] > [金鑰]  。
+2.  移至 [管理] > [金鑰]****。
    
      ![[金鑰] 刀鋒視窗](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
 

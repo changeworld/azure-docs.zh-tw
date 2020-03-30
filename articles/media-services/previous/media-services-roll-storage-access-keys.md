@@ -16,21 +16,21 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981951"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>更換儲存體存取金鑰之後更新媒體服務 
 
 在建立新的 Azure 媒體服務 (AMS) 帳戶時，您需要選取用來儲存媒體內容的 Azure 儲存體帳戶。 您可以在媒體服務帳戶新增一個以上的儲存體帳戶。 本文說明如何更換儲存體金鑰。 其中也示範如何在媒體帳戶新增儲存體帳戶。 
 
-若要執行本文中描述的動作，您應該使用 [Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](https://docs.microsoft.com/powershell/module/az.media)。  如需詳細資訊，請參閱[如何使用 PowerShell 和資源管理員來管理 Azure 資源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
+若要執行本文中描述的動作，您應該使用 [Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](https://docs.microsoft.com/powershell/module/az.media)。  有關詳細資訊，請參閱如何使用[PowerShell 和資源管理器管理 Azure 資源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 建立新的儲存體帳戶時，Azure 會產生兩個 512 位元儲存體存取金鑰，用來驗證儲存體帳戶的存取權。 為了讓儲存體連線更加安全，建議您定期重新產生並更換儲存體存取金鑰。 您會收到兩個存取金鑰(主要和次要)，這樣當您重新產生其他存取金鑰時，您就可以使用其中一個存取金鑰保持儲存體連線不中斷。 此程序也稱為 「 更換存取金鑰 」。
 
@@ -45,7 +45,7 @@ ms.locfileid: "75981951"
 ## <a name="steps-to-rotate-storage-keys"></a>更換儲存體金鑰的步驟 
  
  1. 透過 PowerShell Cmdlet 或 [Azure](https://portal.azure.com/) 入口網站來變更儲存體帳戶主要金鑰。
- 2. 呼叫 AzMediaServiceStorageKeys Cmdlet 搭配適當的參數來強制媒體帳戶收取儲存體帳戶金鑰
+ 2. 使用適當的參數調用同步-AzMediaService 存儲金鑰 Cmdlet，以強制媒體帳戶獲取存儲帳戶金鑰
  
     以下範例示範如何將金鑰同步到儲存體帳戶。
   
@@ -53,7 +53,7 @@ ms.locfileid: "75981951"
   
  3. 請等候約一小時。 確認資料流案例運作無誤。
  4. 透過 PowerShell Cmdlet 或 Azure 入口網站變更儲存體帳戶次要金鑰。
- 5. 呼叫 Sync-AzMediaServiceStorageKeys powershell 搭配適當的參數，以強制媒體帳戶挑選新的儲存體帳戶金鑰。 
+ 5. 使用適當的參數調用同步-AzMediaService 存儲金鑰電源外殼，以強制媒體帳戶獲取新的存儲帳戶金鑰。 
  6. 請等候約一小時。 確認資料流案例運作無誤。
  
 ### <a name="a-powershell-cmdlet-example"></a>PowerShell Cmdlet 範例 

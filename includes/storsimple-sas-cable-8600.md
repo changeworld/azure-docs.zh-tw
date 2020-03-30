@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174013"
 ---
 #### <a name="to-attach-the-sas-cables"></a>連接 SAS 纜線
@@ -18,7 +18,7 @@ ms.locfileid: "67174013"
    
     **主要機箱與 EBOD 機箱的背面檢視**
    
-   | ThisAddIn | 描述 |
+   | 標籤 | 描述 |
    |:--- |:--- |
    | 1 |主要機箱 |
    | 2 |EBOD 機箱 |
@@ -28,7 +28,7 @@ ms.locfileid: "67174013"
    
     **序號貼紙的位置**
    
-   | ThisAddIn | 描述 |
+   | 標籤 | 描述 |
    |:--- |:--- |
    | 1 |機箱耳 |
 3. 接下來，使用提供的 SAS 纜線以連接主要機箱與 EBOD 機箱，如下所示：
@@ -41,7 +41,7 @@ ms.locfileid: "67174013"
       
       **SAS 佈線**
       
-      | ThisAddIn | 描述 |
+      | 標籤 | 描述 |
       |:--- |:--- |
       | A |主要機箱 |
       | B |EBOD 機箱 |
@@ -49,6 +49,6 @@ ms.locfileid: "67174013"
       | 2 |控制器 1 |
       | 3 |EBOD 控制器 0 |
       | 4 |EBOD 控制器 1 |
-      | 5、6 |主要機箱上的 SAS 連接埠 (標示為 EBOD) |
+      | 5, 6 |主要機箱上的 SAS 連接埠 (標示為 EBOD) |
       | 7、8 |EBOD 機箱上的 SAS 連接埠 (連接埠 A) |
 

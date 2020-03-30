@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 6c0dc122-2cd8-4d70-be5a-3943459d308e
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.reviewer: jesakowi, justhu
+ms.reviewer: jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: cde2d286be7180458d997f6db06e4ff16a993dff
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164002"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154469"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 端點中的權限和同意
 
@@ -36,8 +33,8 @@ Azure Active Directory (Azure AD) 廣泛使用 OAuth 和 OpenID Connect (OIDC) �
 
 Azure AD 定義兩種權限：
 
-* **委派權限** - 供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員要同意應用程式所要求的權限，然後對應用程式委派權限，讓其在呼叫 API 時以登入使用者的身分行事。 視 API 而定，使用者不一定能直接同意 API，而會[需要系統管理員提供「管理員同意」](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
-* **應用程式權限** - 供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。 應用程式許可權只能[由系統管理員同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因為它們通常是強大的功能，允許跨使用者界限存取資料，或在其他情況下限制系統管理員的資料。 定義為資源應用程式擁有者（也就是發佈許可權的 API）的使用者也可以授與他們所擁有之 Api 的應用程式許可權。
+* **委派權限** - 供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員要同意應用程式所要求的權限，然後對應用程式委派權限，讓其在呼叫 API 時以登入使用者的身分行事。 根據 API，使用者可能無法直接同意 API，而是[要求管理員提供"管理員同意"。](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
+* **應用程式權限** - 供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。 應用程式許可權只能[由管理員同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)，因為它們通常功能強大，允許跨使用者邊界訪問資料，或者允許將限制為管理員的資料。 定義為資源應用程式擁有者的使用者（即發佈許可權的 API）也允許為其擁有的 API 授予應用程式許可權。
 
 有效權限是應用程式向 API 提出要求時會具備的權限。 
 

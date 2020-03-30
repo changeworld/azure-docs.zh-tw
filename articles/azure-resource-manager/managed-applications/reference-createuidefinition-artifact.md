@@ -1,24 +1,24 @@
 ---
-title: CreateUiDefinition 成品
-description: 說明如何建立 Azure 受控應用程式的 createUiDefinition 成品。 此檔案名為 createUiDefinition. json。
+title: 創建 Ui 定義專案
+description: 演示如何為 Azure 託管應用程式創建創建 UiDefinition 專案。 該檔案名為 createUi定義.json。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651484"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>參考：使用者介面專案成品
+# <a name="reference-user-interface-elements-artifact"></a>參考：使用者介面元素專案
 
-本文是 Azure 受控應用程式中*createUiDefinition*的參考。 如需撰寫使用者介面元素的詳細資訊，請參閱[建立使用者介面元素](create-uidefinition-elements.md)。
+本文是 Azure 託管應用程式中*createUiDefinition.json*專案引用。 有關創作使用者介面元素的詳細資訊，請參閱[創建使用者介面元素](create-uidefinition-elements.md)。
 
 ## <a name="user-interface-elements"></a>使用者介面元素
 
-下列 JSON 顯示 Azure 受控應用程式的*createUiDefinition json*檔案範例：
+以下 JSON 顯示了 Azure 託管應用程式的*createUiDefinition.json*檔的示例：
 
 ```json
 {
@@ -81,6 +81,6 @@ ms.locfileid: "75651484"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：使用自訂動作和資源建立受控應用程式](tutorial-create-managed-app-with-custom-provider.md)
-- [參考：部署範本成品](reference-main-template-artifact.md)
-- [參考：視圖定義成品](reference-view-definition-artifact.md)
+- [教程：使用自訂操作和資源創建託管應用程式](tutorial-create-managed-app-with-custom-provider.md)
+- [參考：部署範本專案](reference-main-template-artifact.md)
+- [參考：查看定義專案](reference-view-definition-artifact.md)

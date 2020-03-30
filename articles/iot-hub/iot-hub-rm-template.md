@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976744"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 範本建立 IoT 中樞 (.NET)
@@ -23,28 +23,28 @@ ms.locfileid: "75976744"
 您可以使用 Azure 資源管理員，以程式設計方式建立和管理 Azure IoT 中樞。 本教學課程示範如何使用 Azure Resource Manager 範本從 C# 程式建立 IoT 中樞。
 
 > [!NOTE]
-> Azure 有兩種不同的部署模型可建立和處理資源：[Azure Resource Manager 和傳統](../azure-resource-manager/management/deployment-models.md)。  本文涵蓋使用 Azure Resource Manager 部署模型的部分。
+> Azure 有兩種不同的部署模型來創建和使用資源[：Azure 資源管理器和經典](../azure-resource-manager/management/deployment-models.md)。  本文涵蓋使用 Azure Resource Manager 部署模型的部分。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要完成此教學課程，您需要下列項目：
 
 * Visual Studio。
-* 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶][lnk-free-trial] 。
-* [Azure 儲存體帳戶][lnk-storage-account]，您可以在其中儲存 Azure Resource Manager 範本檔案。
-* [Azure PowerShell 1.0][lnk-powershell-install]或更新版本。
+* 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需幾分鐘即可創建[免費帳戶][lnk-free-trial]。
+* 可供您儲存 Azure Resource Manager 範本檔案的 [Azure 儲存體帳戶][lnk-storage-account]。
+* [Azure PowerShell 1.0][lnk-powershell-install] 或更新版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>準備 Visual Studio 專案
 
-1. 在 Visual Studio 中，使用 [主控台應用程式 (.NET Framework)] 專案範本，建立 Visual C# Windows 傳統桌面專案。 將專案命名為 **CreateIoTHub**。
+1. 在 Visual Studio 中，使用 [主控台應用程式 (.NET Framework)]**** 專案範本，建立 Visual C# Windows 傳統桌面專案。 將專案命名為 **CreateIoTHub**。
 
-2. 在方案總管中，於專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 封裝]。
+2. 在方案總管中，於專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 封裝] ****。
 
-3. 在 NuGet 套件管理員中，勾選 [包含發行前版本]，然後在 [瀏覽] 頁面上搜尋 **Microsoft.Azure.Management.ResourceManager**。 選取套件，按一下 [安裝]，在 [檢閱變更] 中按一下 [確定]，然後按一下 [我接受] 來接受授權。
+3. 在 NuGet 套件管理員中，勾選 [包含發行前版本]****，然後在 [瀏覽]**** 頁面上搜尋 **Microsoft.Azure.Management.ResourceManager**。 選取套件，按一下 [安裝]****，在 [檢閱變更]**** 中按一下 [確定]****，然後按一下 [我接受]**** 來接受授權。
 
-4. 在 NuGet 套件管理員中，搜尋 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  按一下 [安裝]，在 [檢閱變更] 中按一下 [確定]，然後按一下 [我接受] 來接受授權。
+4. 在 NuGet 套件管理員中，搜尋 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  按一下 [安裝]****，在 [檢閱變更]**** 中按一下 [確定]****，然後按一下 [我接受]**** 來接受授權。
 
 5. 在 Program.cs 中，以下列程式碼取代現有的 **using** 陳述式：
 
@@ -74,9 +74,9 @@ ms.locfileid: "75976744"
 
 使用 JSON 範本和參數檔案，在資源群組中建立 IoT 中樞。 您也可以使用 Azure Resource Manager 範本來對現有的 IoT 中樞進行變更。
 
-1. 在 [方案總管] 中，於專案上按一下滑鼠右鍵，按一下 [加入]，然後按一下 [新增項目]。 將名為 **template.json** 的 JSON 檔案新增到專案中。
+1. 在 [方案總管] 中，於專案上按一下滑鼠右鍵，按一下 [加入]****，然後按一下 [新增項目]****。 將名為 **template.json** 的 JSON 檔案新增到專案中。
 
-2. 若要將標準 IoT 中樞新增到**美國東部**區域，請以下列資源定義取代 **template.json** 的內容。 如需目前支援 IoT 中樞的區域清單，請參閱[Azure 狀態][lnk-status]：
+2. 若要將標準 IoT 中樞新增到**美國東部**區域，請以下列資源定義取代 **template.json** 的內容。 如需目前支援「IoT 中樞」的區域清單，請參閱 [Azure 狀態][lnk-status]：
 
     ```json
     {
@@ -112,7 +112,7 @@ ms.locfileid: "75976744"
     }
     ```
 
-3. 在 [方案總管] 中，於專案上按一下滑鼠右鍵，按一下 [加入]，然後按一下 [新增項目]。 將名為 **parameters.json** 的 JSON 檔案新增到專案中。
+3. 在 [方案總管] 中，於專案上按一下滑鼠右鍵，按一下 [加入]****，然後按一下 [新增項目]****。 將名為 **parameters.json** 的 JSON 檔案新增到專案中。
 
 4. 使用下列參數資訊來取代 **parameters.json** 的內容，此參數資訊會設定新 IoT 中樞的名稱，例如 **{your initials}mynewiothub**。 IoT 中樞名稱必須是全域唯一的，因此應該包含您的名稱或縮寫：
 
@@ -127,9 +127,9 @@ ms.locfileid: "75976744"
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. 在 [伺服器總管] 中，連接到您的 Azure 訂用帳戶，然後在您的「Azure 儲存體」帳戶中建立名為 **templates** 的容器。 在 [屬性] 面板中，將 **templates** 容器的 [公用讀取存取] 權限設定為 [Blob]。
+5. 在 [伺服器總管]**** 中，連接到您的 Azure 訂用帳戶，然後在您的「Azure 儲存體」帳戶中建立名為 **templates** 的容器。 在 [屬性]**** 面板中，將 **templates** 容器的 [公用讀取存取]**** 權限設定為 [Blob]****。
 
-6. 在 [伺服器總管] 中，於 [templates] 容器上按一下滑鼠右鍵，然後按一下 [檢視 Blob 容器]。 按一下 [上傳 Blob] 按鈕，選取 **parameters.json** 和 **templates.json** 這兩個檔案，然後按一下 [開啟]，將 JSON 檔案上傳至 **templates** 容器。 包含 JSON 資料的 blob 的 URL 如下：
+6. 在 [伺服器總管]**** 中，於 [templates]**** 容器上按一下滑鼠右鍵，然後按一下 [檢視 Blob 容器]****。 按一下 [上傳 Blob]**** 按鈕，選取 **parameters.json** 和 **templates.json** 這兩個檔案，然後按一下 [開啟]****，將 JSON 檔案上傳至 **templates** 容器。 包含 JSON 資料的 blob 的 URL 如下：
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
@@ -191,20 +191,20 @@ ms.locfileid: "75976744"
     Console.ReadLine();
     ```
 
-2. 按一下 [建置]，然後按一下 [建置方案]。 更正所有錯誤。
+2. 按一下 [建置]****，然後按一下 [建置方案]****。 更正所有錯誤。
 
-3. 按一下 [偵錯]，然後按一下 [開始偵錯] 以執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
+3. 按一下 [偵錯]****，然後按一下 [開始偵錯]**** 以執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
 
-4. 若要驗證您的應用程式是否已新增新的 IoT 中樞，請造訪[Azure 入口網站][lnk-azure-portal]，並查看您的資源清單。 或者，使用**Get-azresource** PowerShell Cmdlet。
+4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站][lnk-azure-portal] 並檢視您的資源清單。 或者，使用**獲取-AzResource**電源 Shell Cmdlet。
 
 > [!NOTE]
-> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 當您完成時，您可以透過[Azure 入口網站][lnk-azure-portal]或使用**get-azresource** PowerShell Cmdlet，來刪除 IoT 中樞。
+> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 您可以通過[Azure 門戶][lnk-azure-portal]或使用 **"刪除 AzResource** PowerShell Cmdlet"在完成後刪除 IoT 中心。
 
 ## <a name="next-steps"></a>後續步驟
 現在您已經使用 Azure Resource Manager 範本和 C# 程式部署 IoT 中樞，可以進一步探索：
 
-* 閱讀[IoT 中樞資源提供者 REST API][lnk-rest-api]的功能。
-* 若要深入瞭解 Azure Resource Manager 的功能，請閱讀[Azure Resource Manager 總覽][lnk-azure-rm-overview]。
+* 閱讀 [IoT 中樞資源提供者 REST API][lnk-rest-api] 功能的相關資訊。
+* 如需 Azure Resource Manager 功能的詳細資訊，請參閱 [Azure Resource Manager 概觀][lnk-azure-rm-overview]。
 * 若需要在範本中使用的 JSON 語法和屬性，請參閱 [Microsoft.Devices 資源類型](/azure/templates/microsoft.devices/iothub-allversions)。
 
 若要深入了解如何開發 IoT 中樞，請參閱以下文章︰

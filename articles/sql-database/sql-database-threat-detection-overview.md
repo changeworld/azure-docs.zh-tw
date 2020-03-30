@@ -1,6 +1,6 @@
 ---
 title: 進階威脅防護
-description: 先進的威脅防護會偵測異常資料庫活動，指出 Azure SQL Database 中的潛在安全性威脅。
+description: 高級威脅防護可檢測異常的資料庫活動，指示 Azure SQL 資料庫中的潛在安全威脅。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,33 +12,33 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 17ca8cbb7a55e9c0d44af099f4884f71b1cd457a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194082"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124764"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 資料庫的進階威脅防護
 
-適用于[Azure SQL Database](sql-database-technical-overview.md)和[Azure Synapse 分析](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
+Azure SQL[資料庫](sql-database-technical-overview.md)和[Azure 突觸分析](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的高級威脅保護可檢測異常活動，指示訪問或利用資料庫的異常和潛在有害嘗試。
 
-先進的威脅防護是先進的[資料安全性](sql-database-advanced-data-security.md)（ADS）供應專案的一部分，它是先進 SQL 安全性功能的整合套件。 先進的威脅防護可透過中央 SQL ADS 入口網站存取及管理。
+高級威脅防護是[高級資料安全](sql-database-advanced-data-security.md)（ADS） 產品（用於高級 SQL 安全功能的統一包）的一部分。 進階威脅防護可以透過中央 SQL ADS 入口網站存取及管理。
 
 > [!NOTE]
-> 本主題適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。
+> 本主題適用于 Azure SQL 伺服器，以及在 Azure SQL 伺服器上創建的 SQL 資料庫和 Azure 突觸。 為簡單起見，SQL 資料庫在引用 SQL 資料庫和 Azure 突觸時使用。
 
-## <a name="what-is-advanced-threat-protection"></a>什麼是先進的威脅防護
+## <a name="what-is-advanced-threat-protection"></a>什麼是高級威脅防護
 
- 先進的威脅防護提供一層新的安全性，藉由提供異常活動的安全性警示，讓客戶偵測並回應潛在威脅。 一旦有可疑活動、潛在弱點、SQL 插入式攻擊以及異常的資料庫存取和查詢模式發生時，使用者就會收到警示。 先進的威脅防護整合了警示與[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)，其中包括可疑活動的詳細資料，以及如何調查和緩和威脅的建議動作。 先進的威脅防護可讓您輕鬆解決資料庫的潛在威脅，而不需要是安全性專家或管理先進的安全性監視系統。
+ 高級威脅防護提供了新的安全層，使客戶能夠通過針對異常活動提供安全警報來檢測和回應潛在威脅的發生。 一旦有可疑活動、潛在弱點、SQL 插入式攻擊以及異常的資料庫存取和查詢模式發生時，使用者就會收到警示。 高級威脅防護將警報與[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包括可疑活動的詳細資訊，並建議如何調查和減輕威脅的操作。 高級威脅防護使解決資料庫的潛在威脅變得簡單，無需成為安全專家或管理高級安全監控系統。
 
 如需完整的調查體驗，建議您啟用 [SQL Database 稽核](sql-database-auditing.md)，這會將資料庫事件寫入您 Azure 儲存體帳戶中的稽核記錄。  
 
 ## <a name="advanced-threat-protection-alerts"></a>進階威脅防護警示
 
-Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫，而且它可以觸發下列警示：
+Azure SQL 資料庫的高級威脅保護可檢測異常活動，指示訪問或利用資料庫的異常和潛在有害嘗試，並可能引發以下警報：
 
-- **SQL 插入的弱點**：當應用程式在資料庫中產生錯誤的 SQL 語句時，就會觸發此警示。 此警示表示 SQL 插入式攻擊的可能弱點。 錯誤的陳述式之所以產生，有兩項可能的原因：
+- **SQL 注入的漏洞**：當應用程式在資料庫中建置錯誤的 SQL 語句時觸發此警報。 此警示表示 SQL 插入式攻擊的可能弱點。 錯誤的陳述式之所以產生，有兩項可能的原因：
 
   - 應用程式的程式碼中有缺失，而建構了錯誤的 SQL 陳述式
   - 應用程式的程式碼或預存程序在建構錯誤的 SQL 陳述式時未處理使用者輸入，這可能會遭到 SQL 插入式攻擊的侵害
@@ -55,7 +55,7 @@ Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常�
 
 ![異常活動報告](./media/sql-database-threat-detection/anomalous_activity_report.png)
 
-1. 按一下電子郵件中的 [檢視最近的 SQL 警示] 連結來啟動 Azure 入口網站，並顯示 Azure 資訊安全中心警示頁面，其中會概述在 SQL 資料庫上偵測到的作用中威脅。
+1. 按一下電子郵件中的 [檢視最近的 SQL 警示]**** 連結來啟動 Azure 入口網站，並顯示 Azure 資訊安全中心警示頁面，其中會概述在 SQL 資料庫上偵測到的作用中威脅。
 
    ![活動威脅](./media/sql-database-threat-detection/active_threats.png)
 
@@ -65,21 +65,21 @@ Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常�
 
    ![特定警示](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>在 Azure 入口網站中探索資料庫的先進威脅防護警示
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>在 Azure 門戶中流覽資料庫的高級威脅防護警報
 
-Advanced 威脅防護會將其警示與[Azure 安全性中心](https://azure.microsoft.com/services/security-center/)整合。 [資料庫] 和 [SQL ADS] blade 內的即時 SQL Advanced 威脅防護磚會追蹤作用 Azure 入口網站中威脅的狀態。
+高級威脅防護將其警報與 Azure[安全中心](https://azure.microsoft.com/services/security-center/)集成。 資料庫中的即時 SQL 高級威脅保護磁貼和 Azure 門戶中的 SQL ADS 邊欄選項卡跟蹤活動威脅的狀態。
 
-按一下 [ **Advanced 威脅防護警示**] 以啟動 [Azure 資訊安全中心警示] 頁面，並取得在資料庫上偵測到的作用中 SQL 威脅的總覽。
+按一下**高級威脅防護警報**以啟動 Azure 安全中心警報頁，並獲取資料庫中檢測到的活動 SQL 威脅的概覽。
 
-   ![Advanced 威脅防護警示](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![高級威脅防護警報](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![先進的威脅防護警示2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![高級威脅防護警報2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[單一和集區資料庫中的先進威脅防護](sql-database-threat-detection.md)。
-- 深入瞭解[受控實例中的先進威脅防護](sql-database-managed-instance-threat-detection.md)。
-- 深入瞭解[Advanced data security](sql-database-advanced-data-security.md)。
+- 詳細瞭解[單個資料庫和池資料庫中的高級威脅防護](sql-database-threat-detection.md)。
+- 詳細瞭解[託管實例中的高級威脅防護](sql-database-managed-instance-threat-detection.md)。
+- 瞭解有關[高級資料安全性](sql-database-advanced-data-security.md)的更多。
 - 深入了解 [Azure SQL Database 稽核](sql-database-auditing.md)
-- 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- 如需有關定價的詳細資訊，請參閱 [SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/)  
+- 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)詳細資訊
+- 有關定價的詳細資訊，請參閱 SQL[資料庫定價頁](https://azure.microsoft.com/pricing/details/sql-database/)  

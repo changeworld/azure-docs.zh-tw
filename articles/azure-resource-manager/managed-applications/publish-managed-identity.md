@@ -1,40 +1,40 @@
 ---
-title: 受控應用程式與受控識別
-description: 使用受控識別來設定受控應用程式，以連結至現有的資源、管理 Azure 資源，以及為活動記錄提供操作身分識別。
+title: 具有託管標識的託管應用
+description: 使用託管標識配置託管應用程式，以便連結到現有資源、管理 Azure 資源以及為活動日誌提供操作標識。
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651653"
 ---
-# <a name="azure-managed-application-with-managed-identity"></a>具有受控識別的 Azure 受控應用程式
+# <a name="azure-managed-application-with-managed-identity"></a>具有託管標識的 Azure 託管應用程式
 
 > [!NOTE]
-> 受控應用程式的受控識別支援目前為預覽狀態。 請使用 2018-09-01-preview api 版本來利用受控識別。
+> 託管應用程式的託管標識支援當前處於預覽狀態。 請使用 2018-09-01 預覽 api 版本使用託管標識。
 
-瞭解如何設定受控應用程式以包含受控識別。 受控識別可用來允許客戶將其他現有資源的存取權授與受控應用程式。 身分識別由 Azure 平台負責管理，因此您不需要佈建或輪替任何密碼。 如需 Azure Active Directory （AAD）中受控識別的詳細資訊，請參閱[適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。
+瞭解如何將託管應用程式佈建為包含託管標識。 託管標識可用於允許客戶授予託管應用程式對其他現有資源的存取權限。 身分識別由 Azure 平台負責管理，因此您不需要佈建或輪替任何密碼。 有關 Azure 活動目錄 （AAD） 中的託管標識，請參閱[Azure 資源的託管標識](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 您的應用程式可以授與兩種類型的身分識別：
 
 - **系統指派的身分識別**會繫結至您的應用程式，如果您的應用程式已刪除，則會被刪除。 應用程式只能有一個系統指派的身分識別。
-- **使用者指派**的身分識別是一種獨立的 Azure 資源，可指派給您的應用程式。 應用程式可以有多個使用者指派的身分識別。
+- **使用者分配的標識**是可分配給應用的獨立 Azure 資源。 應用程式可以有多個使用者指派的身分識別。
 
-## <a name="how-to-use-managed-identity"></a>如何使用受控識別
+## <a name="how-to-use-managed-identity"></a>如何使用託管標識
 
-受控識別可為受控應用程式提供許多案例。 可以解決的一些常見案例包括：
+託管標識支援託管應用程式的許多方案。 一些可以解決的常見方案包括：
 
-- 部署連結至現有 Azure 資源的受控應用程式。 例如，在連接到[現有網路介面](../../virtual-network/virtual-network-network-interface-vm.md)的受控應用程式中部署 Azure 虛擬機器（VM）。
-- 授與受控應用程式和發行者對**受控資源群組**外部 Azure 資源的存取權。
-- 針對活動記錄和 Azure 中的其他服務，提供受控應用程式的操作身分識別。
+- 部署連結到現有 Azure 資源的託管應用程式。 例如，在連接到[現有網路介面](../../virtual-network/virtual-network-network-interface-vm.md)的託管應用程式中部署 Azure 虛擬機器 （VM）。
+- 授予託管應用程式和發行者對**託管資源組**外部 Azure 資源的訪問。
+- 為 Azure 中的活動日誌和其他服務提供託管應用程式的操作標識。
 
-## <a name="adding-managed-identity"></a>新增受控識別
+## <a name="adding-managed-identity"></a>添加託管標識
 
-若要使用受控識別建立受控應用程式，需要在 Azure 資源上設定額外的屬性。 下列範例顯示範例**標識**屬性：
+使用託管標識創建託管應用程式需要在 Azure 資源上設置其他屬性。 下面的示例顯示了一個示例**標識**屬性：
 
 ```json
 {
@@ -46,11 +46,11 @@ ms.locfileid: "75651653"
 }
 ```
 
-建立受控應用程式時，有兩種常見的方式可使用身分**識別**： [CreateUIDefinition](./create-uidefinition-overview.md)和[Azure Resource Manager 範本](../templates/template-syntax.md)。 針對簡單的單一建立案例，應該使用 CreateUIDefinition 來啟用受控識別，因為它提供更豐富的體驗。 不過，在處理需要自動化或多個受控應用程式部署的先進或複雜系統時，可以使用範本。
+創建具有**標識**的託管應用程式有兩種常見方法：[創建 UIDefinition.json](./create-uidefinition-overview.md)和[Azure 資源管理器範本](../templates/template-syntax.md)。 對於簡單的單個創建方案，應使用 CreateUI定義啟用託管標識，因為它提供了更豐富的體驗。 但是，在處理需要自動化或多個託管應用程式部署的高級或複雜系統時，可以使用範本。
 
-### <a name="using-createuidefinition"></a>使用 CreateUIDefinition
+### <a name="using-createuidefinition"></a>使用 CreateUI 定義
 
-受控應用程式可以透過[CreateUIDefinition](./create-uidefinition-overview.md)來設定受控識別。 在 [[輸出] 區段](./create-uidefinition-overview.md#outputs)中，索引鍵 `managedIdentity` 可用來覆寫受控應用程式範本的 identity 屬性。 範例鈴會在受控應用程式上啟用**系統指派**的身分識別。 您可以使用 CreateUIDefinition 元素來要求取用者輸入，以形成更複雜的身分識別物件。 這些輸入可用於以**使用者指派**的身分識別來建立受控應用程式。
+可以通過[CreateUI定義.json](./create-uidefinition-overview.md)使用託管標識配置託管應用程式。 在[輸出部分](./create-uidefinition-overview.md#outputs)中，該鍵`managedIdentity`可用於重寫託管應用程式範本的識別屬性。 示例波紋管將在託管應用程式上啟用**系統分配的**標識。 通過使用 CreateUI定義元素向消費者請求輸入，可以形成更複雜的標識物件。 這些輸入可用於使用**使用者分配的標識**構造託管應用程式。
 
 ```json
 "outputs": {
@@ -58,17 +58,17 @@ ms.locfileid: "75651653"
 }
 ```
 
-#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>針對受控識別使用 CreateUIDefinition 的時機
+#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>何時對託管標識使用 CreateUI 定義
 
-以下是使用 CreateUIDefinition 在受控應用程式上啟用受控識別時的一些建議。
+以下是有關何時使用 CreateUI 定義在託管應用程式上啟用託管標識的一些建議。
 
-- 受控應用程式的建立會經過 Azure 入口網站或 marketplace。
-- 受控識別需要複雜的取用者輸入。
-- 建立受控應用程式時，需要受控識別。
+- 託管應用程式創建通過 Azure 門戶或應用商店。
+- 託管標識需要複雜的消費者輸入。
+- 創建託管應用程式時需要託管標識。
 
-#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
+#### <a name="systemassigned-createuidefinition"></a>系統分配創建 UI 定義
 
-為受控應用程式啟用 SystemAssigned 身分識別的基本 CreateUIDefinition。
+支援託管應用程式的系統分配標識的基本 CreateUI 定義。
 
 ```json
 {
@@ -88,9 +88,9 @@ ms.locfileid: "75651653"
 }
 ```
 
-#### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
+#### <a name="userassigned-createuidefinition"></a>使用者分配創建 UI 定義
 
-基本 CreateUIDefinition，採用**使用者指派**的身分識別資源做為輸入，並啟用受控應用程式的 UserAssigned 識別。
+一個基本的 CreateUI 定義，它以**使用者分配的標識**資源作為輸入，並啟用託管應用程式的使用者分配標識。
 
 ```json
 {
@@ -128,29 +128,29 @@ ms.locfileid: "75651653"
 }
 ```
 
-上述 CreateUIDefinition 會產生「建立使用者體驗」，其中包含取用者的 textbox，以輸入**使用者指派**的身分識別 AZURE 資源識別碼。 產生的體驗看起來會像這樣：
+上面的 CreateUIDefinition.json 生成一個創建使用者體驗，該使用者體驗具有一個文字方塊，供消費者輸入**使用者分配的身份**Azure 資源識別碼。 生成的體驗如下所示：
 
-![使用者指派的身分識別 CreateUIDefinition 範例](./media/publish-managed-identity/user-assigned-identity.png)
+![示例使用者分配標識 創建 UI 定義](./media/publish-managed-identity/user-assigned-identity.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 資源管理員範本
 
 > [!NOTE]
-> Marketplace 受控應用程式範本會自動產生，供客戶通過 Azure 入口網站建立體驗。
-> 在這些情況下，CreateUIDefinition 上的 `managedIdentity` 輸出金鑰必須用來啟用身分識別。
+> 市場託管應用程式範本會自動生成，供通過 Azure 門戶創建體驗的客戶使用。
+> 對於這些方案，`managedIdentity`必須使用 CreateUI 定義上的輸出金鑰來啟用標識。
 
-受控識別也可以透過 Azure Resource Manager 範本來啟用。 範例鈴會在受控應用程式上啟用**系統指派**的身分識別。 使用 Azure Resource Manager 樣板參數來提供輸入，就可以形成更複雜的識別物件。 這些輸入可用於以**使用者指派**的身分識別來建立受控應用程式。
+還可以通過 Azure 資源管理器範本啟用託管標識。 示例波紋管將在託管應用程式上啟用**系統分配的**標識。 通過使用 Azure 資源管理器範本參數提供輸入，可以形成更複雜的標識物件。 這些輸入可用於使用**使用者分配的標識**構造託管應用程式。
 
-#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>使用受控識別 Azure Resource Manager 範本的時機
+#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>何時使用 Azure 資源管理器範本進行託管標識
 
-以下是有關何時使用 Azure Resource Manager 範本在受控應用程式上啟用受控識別的一些建議。
+以下是有關何時使用 Azure 資源管理器範本在託管應用程式上啟用託管標識的一些建議。
 
-- 受控應用程式可以根據範本以程式設計方式部署。
-- 需要受控識別的自訂角色指派，才能布建受控應用程式。
-- 受控應用程式不需要 Azure 入口網站和 marketplace 建立流程。
+- 可以基於範本以程式設計方式部署託管應用程式。
+- 需要託管標識的自訂角色指派來預配託管應用程式。
+- 託管應用程式不需要 Azure 門戶和市場創建流。
 
-#### <a name="systemassigned-template"></a>SystemAssigned 範本
+#### <a name="systemassigned-template"></a>系統分配範本
 
-基本 Azure Resource Manager 範本，可使用**系統指派**的身分識別來部署受控應用程式。
+部署具有**系統分配標識的**託管應用程式的基本 Azure 資源管理器範本。
 
 ```json
 "resources": [
@@ -170,9 +170,9 @@ ms.locfileid: "75651653"
 ]
 ```
 
-### <a name="userassigned-template"></a>UserAssigned 範本
+### <a name="userassigned-template"></a>使用者分配範本
 
-基本 Azure Resource Manager 範本，可使用**使用者指派**的身分識別來部署受控應用程式。
+使用**使用者分配的標識**部署託管應用程式的基本 Azure 資源管理器範本。
 
 ```json
 "resources": [
@@ -201,24 +201,24 @@ ms.locfileid: "75651653"
 ]
 ```
 
-## <a name="granting-access-to-azure-resources"></a>授與 Azure 資源的存取權
+## <a name="granting-access-to-azure-resources"></a>授予對 Azure 資源的許可權
 
-一旦受控應用程式被授與身分識別，就可以授與現有 azure 資源的存取權。 此程式可透過 Azure 入口網站中的存取控制（IAM）介面來完成。 您可以搜尋受控應用程式的名稱或**使用者指派**的身分識別，以新增角色指派。
+授予託管應用程式標識後，就可以授予它對現有 Azure 資源的訪問。 此過程可以通過 Azure 門戶中的存取控制 （IAM） 介面完成。 可以搜索託管應用程式或**使用者分配標識**的名稱以添加角色指派。
 
-![新增受控應用程式的角色指派](./media/publish-managed-identity/identity-role-assignment.png)
+![為託管應用程式添加角色指派](./media/publish-managed-identity/identity-role-assignment.png)
 
 ## <a name="linking-existing-azure-resources"></a>連結現有的 Azure 資源
 
 > [!NOTE]
-> 在部署受控應用程式之前，必須先[設定](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)**使用者指派**的身分識別。 此外，只有**marketplace**類型支援受控應用程式的連結資源部署。
+> 在部署託管應用程式之前，必須[配置](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)**使用者分配的標識**。 此外，託管應用程式的連結資源部署僅支援**市場**類型。
 
-受控識別也可以用來部署需要在其部署期間存取現有資源的受控應用程式。 當客戶布建受控應用程式時，可以新增**使用者指派的**身分識別，以提供額外的授權給**mainTemplate**部署。
+託管標識還可用於部署託管應用程式，該應用程式需要在部署期間訪問現有資源。 當客戶預配託管應用程式時，可以添加**使用者分配的身份**，以向**主範本**部署提供其他授權。
 
-### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>使用連結的資源撰寫 CreateUIDefinition
+### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>使用連結資源創作 CreateUI 定義
 
-將受控應用程式的部署連結至現有資源時，必須提供現有的 Azure 資源和**使用者指派**的身分識別，以及該資源上適用的角色指派。
+將託管應用程式的部署連結到現有資源時，必須提供現有 Azure 資源和**使用者分配的標識**以及該資源上的適用角色指派。
 
- 需要兩個輸入的範例 CreateUIDefinition：網路介面資源識別碼和使用者指派的身分識別資源識別碼。
+ 需要兩個輸入的示例 CreateUI 定義：網路介面資源識別碼 和使用者分配的標識資源識別碼。
 
 ```json
 {
@@ -266,15 +266,15 @@ ms.locfileid: "75651653"
 }
 ```
 
-這個 CreateUIDefinition 會產生包含兩個欄位的建立使用者體驗。 第一個欄位可讓使用者輸入要連結至受控應用程式部署之資源的 Azure 資源識別碼。 第二個是讓取用者輸入**使用者指派**的身分識別 AZURE 資源識別碼，其可存取已連結的 azure 資源。 產生的體驗看起來會像這樣：
+此 CreateUI 定義.json 生成具有兩個欄位的創建使用者體驗。 第一個欄位允許使用者在 Azure 資源識別碼 中輸入連結到託管應用程式部署的資源。 第二個是消費者輸入**使用者分配的身份**Azure 資源識別碼，該標識有權訪問連結的 Azure 資源。 生成的體驗如下所示：
 
-![具有兩個輸入的範例 CreateUIDefinition：網路介面資源識別碼和使用者指派的身分識別資源識別碼](./media/publish-managed-identity/network-interface-cuid.png)
+![示例創建具有兩個輸入的 UI 定義：網路介面資源識別碼 和使用者分配的標識資源識別碼](./media/publish-managed-identity/network-interface-cuid.png)
 
-### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>使用連結的資源撰寫 mainTemplate
+### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>使用連結資源創作主範本
 
-除了更新 CreateUIDefinition，主要範本也需要更新，以接受已連結資源識別碼中傳遞的。 您可以藉由新增新的參數，更新主要範本以接受新的輸出。 因為 `managedIdentity` 的輸出會覆寫所產生的 Managed 應用程式範本上的值，所以不會將它傳遞至主要範本，而且不應該包含在 parameters 區段中。
+除了更新 CreateUI 定義之外，還需要更新主範本以接受連結資源識別碼 中傳遞的範本。 可以通過添加新參數來更新主範本以接受新輸出。 由於`managedIdentity`輸出覆蓋生成的託管應用程式範本上的值，因此不會將其傳遞給主範本，並且不應包含在參數部分中。
 
-範例主要範本，會將網路設定檔設定為 CreateUIDefinition 所提供的現有網路介面。
+將網路設定檔設置到 CreateUI 定義提供的現有網路介面的示例主範本。
 
 ```json
 {
@@ -306,17 +306,17 @@ ms.locfileid: "75651653"
 }
 ```
 
-### <a name="consuming-the-managed-application-with-a-linked-resource"></a>使用已連結資源的受控應用程式
+### <a name="consuming-the-managed-application-with-a-linked-resource"></a>使用連結的資源使用託管應用程式
 
-一旦建立受控應用程式封裝，就可以透過 Azure 入口網站取用受控應用程式。 在可以使用之前，有幾個必要條件步驟。
+創建託管應用程式包後，可通過 Azure 門戶使用託管應用程式。 在使用它之前，有幾個先決條件步驟。
 
-- 必須建立所需連結 Azure 資源的實例。
-- 必須建立**使用者指派**的身分識別[，並指定](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)對連結資源的角色指派。
-- 現有的連結資源識別碼和**使用者指派**的身分識別識別碼會提供給 CreateUIDefinition。
+- 必須創建所需的連結 Azure 資源的實例。
+- 必須創建**使用者分配的標識**[，並為其連結的資源配置角色](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
+- 現有的連結資源識別碼**和使用者分配的標識**ID 提供給 CreateUI 定義。
 
-## <a name="accessing-the-managed-identity-token"></a>存取受控識別權杖
+## <a name="accessing-the-managed-identity-token"></a>訪問託管標識權杖
 
-受控應用程式的權杖現在可以透過發行者租使用者中的 `listTokens` api 來存取。 範例要求可能如下所示：
+託管應用程式的權杖現在可以通過發行者租戶的`listTokens`api 訪問。 示例請求可能如下所示：
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -329,15 +329,15 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
-要求主體參數：
+請求正文參數：
 
-參數 | 必要項 | 說明
+參數 | 必要 | 描述
 ---|---|---
-authorizationAudience | 否 | 目標資源的應用程式識別碼 URI。 它也是已發行權杖的 `aud` （物件）宣告。 預設值為 "https://management.azure.com/"
-userAssignedIdentities | 否 | 要為其取得權杖的使用者指派受控識別清單。 如果未指定，`listTokens` 會傳回系統指派之受控識別的權杖。
+授權 | *不* | 目標資源的應用 ID URI。 它也是已頒發的`aud`權杖的（受眾）聲明。 預設值為""https://management.azure.com/
+userAssignedIdentities | *不* | 要為其檢索權杖的使用者分配的託管標識的清單。 如果未指定，`listTokens`將返回系統分配的託管標識的權杖。
 
 
-範例回應可能如下所示：
+示例回應可能類似于：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -358,19 +358,19 @@ Content-Type: application/json
 }
 ```
 
-回應會包含 `value` 屬性下的權杖陣列：
+回應將在`value`屬性下包含權杖陣列：
 
-參數 | 說明
+參數 | 描述
 ---|---
 access_token | 所要求的存取權杖。
-expires_in | 存取權杖生效的秒數。
-expires_on | 存取權杖到期的時間範圍。 這會表示為 epoch 的秒數。
-not_before | 存取權杖生效時的 timespan。 這會表示為 epoch 的秒數。
-authorizationAudience | 存取權杖要求的 `aud` （物件）。 這與 `listTokens` 要求中所提供的相同。
-resourceId | 已發行權杖的 Azure 資源識別碼。 這可能是受控應用程式識別碼或使用者指派的身分識別識別碼。
+expires_in | 訪問權杖有效的秒數。
+expires_on | 存取權杖到期的時間範圍。 這表示為來自紀元的秒數。
+not_before | 訪問權杖生效的時間跨度。 這表示為來自紀元的秒數。
+授權 | 請求`aud`訪問權杖的（訪問物件）。 這與`listTokens`請求中提供的內容相同。
+resourceId | 已頒發權杖的 Azure 資源識別碼。 這是託管應用程式 ID 或使用者分配的標識 ID。
 token_type | 語彙基元的類型。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [如何使用自訂提供者來設定受控應用程式](../custom-providers/overview.md)
+> [如何使用自訂提供程式配置託管應用程式](../custom-providers/overview.md)

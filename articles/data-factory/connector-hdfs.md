@@ -12,33 +12,33 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830423"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>使用 Azure Data Factory 從 HDFS 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](v1/data-factory-hdfs-connector.md)
-> * [目前的版本](connector-hdfs.md)
+> * [版本 1](v1/data-factory-hdfs-connector.md)
+> * [當前版本](connector-hdfs.md)
 
-本文概述如何從 HDFS 伺服器複製資料。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
+本文概述了如何從 HDFS 伺服器複製資料。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此 HDFS 連接器：
+此 HDFS 連接器支援以下活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
-- [查閱活動](control-flow-lookup-activity.md)
+- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [查找活動](control-flow-lookup-activity.md)
 
 具體而言，此 HDFS 連接器支援：
 
 - 使用 **Windows** (Kerberos) 或**匿名**驗證複製檔案。
 - 使用 **webhdfs** 通訊協定或**內建 DistCp** 支援複製檔案。
-- 依原樣複製檔案，或使用[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs.md)來剖析/產生檔案。
+- 按現在的形式複製檔或使用[受支援的檔案格式和壓縮編解碼器](supported-file-formats-and-compression-codecs.md)分析/生成檔。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -55,16 +55,16 @@ ms.locfileid: "75830423"
 
 以下是針對 HDFS 連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為：**Hdfs**。 | 是 |
 | url |到 HDFS 的 URL |是 |
-| authenticationType | 允許的值為：**匿名**或 **Windows**。 <br><br> 若要對 HDFS 連接器使用 **Kerberos 驗證**，請參閱[此章節](#use-kerberos-authentication-for-hdfs-connector)來據以設定您的內部部署環境。 |是 |
+| authenticationType | 允許的值為：**匿名**或 **Windows**。 <br><br> 要對 HDFS 連接器使用**Kerberos 身份驗證**，請參閱[本節](#use-kerberos-authentication-for-hdfs-connector)以相應地設置本地環境。 |是 |
 | userName |Windows 驗證的使用者名稱。 Kerberos 驗證請指定 `<username>@<domain>.com`。 |是 (適用於 Windows 驗證) |
 | 密碼 |Windows 驗證的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 (適用於 Windows 驗證) |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**範例：使用匿名驗證**
+**示例：使用匿名身份驗證**
 
 ```json
 {
@@ -84,7 +84,7 @@ ms.locfileid: "75830423"
 }
 ```
 
-**範例：使用 Windows 驗證**
+**示例：使用 Windows 身份驗證**
 
 ```json
 {
@@ -114,15 +114,15 @@ ms.locfileid: "75830423"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-下列屬性支援以格式為基礎之資料集的 `location` 設定下的 HDFS：
+在基於格式的資料集中的設置下`location`，HDFS 支援以下屬性：
 
-| 屬性   | 說明                                                  | 必要項 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Dataset 中 `location` 下的 type 屬性必須設定為**HdfsLocation**。 | 是      |
-| folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
-| fileName   | 指定 folderPath 下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源設定] 中指定。 | 否       |
+| type       | 資料集中的類型`location`屬性必須設置為**HdfsLocation**。 | 是      |
+| folderPath | 資料夾的路徑。 如果要使用萬用字元篩選資料夾，請跳過此設置並在活動源設置中指定。 | 否       |
+| fileName   | 給定資料夾 Path 下的檔案名。 如果要使用萬用字元篩選檔，請跳過此設置並在活動源設置中指定。 | 否       |
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -156,23 +156,23 @@ ms.locfileid: "75830423"
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-在以格式為基礎的複製來源中，`storeSettings` 設定下的 HDFS 支援下列屬性：
+在基於格式的副本源中的設置下`storeSettings`，HDFS 支援以下屬性：
 
-| 屬性                 | 說明                                                  | 必要項                                      |
+| 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` 下的 type 屬性必須設定為**HdfsReadSettings**。 | 是                                           |
-| 遞迴                | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 允許的值為 **true** (預設值) 和 **false**。 | 否                                            |
-| wildcardFolderPath       | 包含用來篩選源資料夾之萬用字元的資料夾路徑。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
-| wildcardFileName         | 在指定的 folderPath/wildcardFolderPath 下具有萬用字元的檔案名，用以篩選原始程式檔。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 如果未在 dataset 中指定 `fileName`，則為 [是] |
-| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 NULL，這意謂著不會在資料集套用任何檔案屬性篩選。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。 | 否                                            |
+| type                     | 下`storeSettings`的類型屬性必須設置為**HdfsReadSettings**。 | 是                                           |
+| 遞迴                | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 允許的值**為 true（** 預設值）和**false**。 | 否                                            |
+| 萬用字元資料夾路徑       | 具有萬用字元的資料夾路徑，用於篩選源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
+| 萬用字元檔案名稱         | 給定資料夾 Path/萬用字元下具有萬用字元的檔案名用於篩選原始檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 如果`fileName`資料集中未指定，則為 |
+| modifiedDatetimeStart    | 基於屬性的檔篩選器：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 NULL，這意謂著不會在資料集套用任何檔案屬性篩選。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
 | distcpSettings | 使用 HDFS DistCp 時的屬性群組。 | 否 |
-| resourceManagerEndpoint | Yarn Resource Manager 端點 | 若使用 DistCp 則為「是」 |
+| resourceManagerEndpoint | 紗線資源管理器端點 | 若使用 DistCp 則為「是」 |
 | tempScriptPath | 資料夾路徑，用來儲存暫存 DistCp 命令指令碼。 指令碼檔案是由 Data Factory 產生，並會在複製作業完成後移除。 | 若使用 DistCp 則為「是」 |
 | distcpOptions | 對於 DistCp 命令提供的其他選項。 | 否 |
-| maxConcurrentConnections | 連接到儲存體存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否                                            |
+| maxConcurrentConnections | 要同時連接到存儲存儲的連接數。 僅當要將併發連接限制到資料存儲時，才指定。 | 否                                            |
 
-**範例︰**
+**例子：**
 
 ```json
 "activities":[
@@ -220,20 +220,20 @@ ms.locfileid: "75830423"
 
 本節描述含有萬用字元篩選之資料夾路徑和檔案名稱所產生的行為。
 
-| folderPath | fileName             | 遞迴 | 來源資料夾結構和篩選結果 (會擷取以**粗體**顯示的檔案) |
+| folderPath | fileName             | 遞迴 | 源資料夾結構和篩選結果（檢索**粗體**檔） |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | (空白，使用預設值) | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | (空白，使用預設值) | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (空白，使用預設值) | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**檔3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**檔3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ## <a name="use-distcp-to-copy-data-from-hdfs"></a>使用 DistCp 從 HDFS 複製資料
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) 是 Hadoop 原生命令列工具，可用來執行 Hadoop 叢集中的分散式複製。 執行 Distcp 命令時，它會先列出將複製的所有檔案，並將數個對應工作建立到 Hadoop 叢集中，而且每個對應工作會執行從來源到接收的二進位複製。
 
-複製活動支援使用 DistCp 將檔案依現有方式複製到 Azure Blob （包括[分段複製](copy-activity-performance.md)）或 Azure Data Lake 存放區，在此情況下，它可以充分利用叢集的能力，而不是在自我裝載的 Integration Runtime 上執行。 尤其是，如果您的叢集相當強大，可提供更好的複製輸送量。 根據 Azure Data Factory 中的設定而定，複製活動會自動建構 distcp 命令，並提交至 Hadoop 叢集，然後監視複製狀態。
+使用 DistCp 複製活動支援將檔按"當前形式"複製到 Azure Blob（包括[暫存副本](copy-activity-performance.md)）或 Azure 資料湖存儲中，在這種情況下，它可以充分利用群集的功能，而不是在自託管的集成運行時上運行。 尤其是，如果您的叢集相當強大，可提供更好的複製輸送量。 根據 Azure Data Factory 中的設定而定，複製活動會自動建構 distcp 命令，並提交至 Hadoop 叢集，然後監視複製狀態。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要使用 DistCp 從 HDFS 將檔案依原樣複製到 Azure Blob (包括分段複製) 或 Azure Data Lake Store，請確定 Hadoop 叢集符合下列需求：
 
@@ -249,17 +249,17 @@ ms.locfileid: "75830423"
 
 ### <a name="configurations"></a>組態
 
-請參閱 DistCp 相關設定和 HDFS 中的範例[作為來源](#hdfs-as-source)一節。
+請參閱[HDFS](#hdfs-as-source)中的 DistCp 相關配置和示例作為源部分。
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>對 HDFS 連接器使用 Kerberos 驗證
 
 有兩種選項可以設定內部部署環境，以便在 HDFS 連接器中使用 Kerberos 驗證。 您可以選擇較適合您案例的選項。
 * 選項 1：[加入 Kerberos 領域中的自我裝載整合執行階段機器](#kerberos-join-realm)
-* 選項 2：[啟用 Windows 網域和 Kerberos 領域之間的相互信任](#kerberos-mutual-trust)
+* 選項 2：[實現 Windows 域和 Kerberos 領域之間的相互信任](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>選項 1：加入 Kerberos 領域中的自我裝載整合執行階段機器
+### <a name="option-1-join-self-hosted-integration-runtime-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>選項 1：在 Kerberos 領域加入自託管集成運行時電腦
 
-#### <a name="requirements"></a>要求
+#### <a name="requirements"></a>需求
 
 * 自我裝載整合執行階段機器必須加入 Kerberos 領域，且不可加入任何 Windows 網域。
 
@@ -287,9 +287,9 @@ ms.locfileid: "75830423"
 
 * 使用 **Windows 驗證**以及您用來連線到 HDFS 資料來源的 Kerberos 主體名稱和密碼，來設定 HDFS 連接器。 檢查組態詳細資料上的 [HDFS 連結服務屬性](#linked-service-properties)區段。
 
-### <a name="kerberos-mutual-trust"></a>選項 2：啟用 Windows 網域和 Kerberos 領域之間的相互信任
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>選項 2：啟用 Windows 網域和 Kerberos 領域之間的相互信任
 
-#### <a name="requirements"></a>要求
+#### <a name="requirements"></a>需求
 
 *   自我裝載整合執行階段機器必須加入 Windows 網域。
 *   您需要更新網域控制站設定的權限。
@@ -337,9 +337,9 @@ ms.locfileid: "75830423"
              REALM.COM = .
             }
 
-   設定之後**重新啟動** KDC 服務。
+   配置後**重新開機**KDC 服務。
 
-2. 使用下列命令，在 KDC 伺服器中準備名為**krbtgt/REALM\@AD.COM**的主體：
+2. 使用以下命令在 KDC 伺服器中準備名為**\@krbtgt/REALM.COM AD.COM**的委託：
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -347,12 +347,12 @@ ms.locfileid: "75830423"
 
 **在網域控制站上：**
 
-1.  執行下列 **Ksetup** 命令來新增領域項目：
+1.  運行以下**Ksetup**命令以添加域條目：
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  建立 Windows 網域到 Kerberos 領域的信任關係。 [password] 是主要**krbtgt/領域 .com\@AD.COM**的密碼。
+2.  建立 Windows 網域到 Kerberos 領域的信任關係。 [密碼] 是主**\@krbtgt/REALM.COM AD.COM**的密碼。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
@@ -360,7 +360,7 @@ ms.locfileid: "75830423"
 
     1. 移至 [伺服器管理員] > [群組原則管理] > [網域] > [群組原則物件] > [預設或作用中的網域原則]，然後進行編輯。
 
-    2. 在 [群組原則管理編輯器] 快顯視窗中，移至 [電腦設定] > [原則] > [Windows 設定] > [安全性設定] > [本機原則] > [安全性選項]，並設定 [網路安全性: 設定 Kerberos 允許的加密類型]。
+    2. 在 [群組原則管理編輯器]**** 快顯視窗中，移至 [電腦設定] > [原則] > [Windows 設定] > [安全性設定] > [本機原則] > [安全性選項]，並設定 [網路安全性: 設定 Kerberos 允許的加密類型]****。
 
     3. 選取您想要在連線至 KDC 時使用的加密演算法。 一般來說，您可以直接選取所有選項。
 
@@ -372,11 +372,11 @@ ms.locfileid: "75830423"
 
 4.  建立網域帳戶與 Kerberos 主體之間的對應，以便在 Windows 網域中使用 Kerberos 主體。
 
-    1. 啟動 [系統管理工具] > [Active Directory 使用者和電腦]。
+    1. 啟動 [系統管理工具] > [Active Directory 使用者和電腦]****。
 
-    2. 按一下 [檢視] > [進階功能] 來設定進階功能。
+    2. 通過按一下 **"查看** > **高級功能**"來配置高級功能。
 
-    3. 找到您要用以建立對應的帳戶，然後按一下滑鼠右鍵以檢視 [名稱對應] > 按一下 [Kerberos 名稱] 索引標籤。
+    3. 找到您要用以建立對應的帳戶，然後按一下滑鼠右鍵以檢視 [名稱對應]**** > 按一下 [Kerberos 名稱]**** 索引標籤。
 
     4. 加入來自領域的主體。
 
@@ -393,31 +393,31 @@ ms.locfileid: "75830423"
 
 * 使用 **Windows 驗證**以及您用來連線到 HDFS 資料來源的網域帳戶或 Kerberos 主體，來設定 HDFS 連接器。 檢查組態詳細資料上的 [HDFS 連結服務屬性](#linked-service-properties)區段。
 
-## <a name="lookup-activity-properties"></a>查閱活動屬性
+## <a name="lookup-activity-properties"></a>查找活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
 
-## <a name="legacy-models"></a>舊版模型
+## <a name="legacy-models"></a>舊模型
 
 >[!NOTE]
->下列模型仍然受支援，以提供回溯相容性。 建議您使用上述各節中所提及的新模型，然後 ADF 撰寫 UI 已切換為產生新的模型。
+>以下型號仍支援以下型號，以便進行向後相容性。 建議您今後使用上述各節中提及的新模型，並且 ADF 創作 UI 已切換到生成新模型。
 
-### <a name="legacy-dataset-model"></a>舊版資料集模型
+### <a name="legacy-dataset-model"></a>舊資料集模型
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為：**FileShare** |是 |
 | folderPath | 資料夾的路徑。 支援萬用字元篩選，允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際檔案名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
 | fileName |  在指定 "folderPath" 之下檔案的**名稱或萬用字元篩選**。 若未指定此屬性的值，資料集就會指向資料夾中的所有檔案。 <br/><br/>針對篩選，允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>如果實際資料夾名稱內有萬用字元或逸出字元 `^`，請使用此逸出字元來逸出。 |否 |
-| modifiedDatetimeStart | 檔案會根據屬性進行篩選：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要從大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 Null，表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。| 否 |
-| modifiedDatetimeEnd | 檔案會根據屬性進行篩選：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要從大量檔案進行檔案篩選時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 Null，表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。| 否 |
-| format | 如果您想要在以檔案為基礎的存放區之間**依原樣複製檔案** (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要以特定格式來剖析檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將格式下的 **type** 屬性設定為這些值其中之一。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。<br/>支援的層級為：**Optimal** 和 **Fastest**。 |否 |
+| modifiedDatetimeStart | 基於屬性的檔篩選器：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您希望從大量檔執行檔篩選器時，啟用此設置會影響資料移動的整體性能。 <br/><br/> 屬性可以是 Null，這意味著不會將任何檔案屬性篩選器應用於資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。| 否 |
+| modifiedDatetimeEnd | 基於屬性的檔篩選器：上次修改。 如果檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您希望從大量檔執行檔篩選器時，啟用此設置會影響資料移動的整體性能。 <br/><br/> 屬性可以是 Null，這意味著不會將任何檔案屬性篩選器應用於資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。| 否 |
+| format | 如果要在檔案為儲存基礎（二進位副本）之間**按"按"方式複製檔**，請跳過輸入資料集和輸出資料集定義中的格式部分。<br/><br/>如果您想要以特定格式來剖析檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)章節。 |否 (僅適用於二進位複製案例) |
+| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型是：GZip、Deflate、BZip2 和**ZipDeflate**。 **GZip** **Deflate** **BZip2**<br/>支援的級別是：**最佳**和**最快**。 |否 |
 
 >[!TIP]
 >若要複製資料夾下的所有檔案，請只指定 **folderPath**。<br>若要複製指定名稱的單一檔案，請以資料夾部分指定 **folderPath**，並以檔案名稱指定 **fileName**。<br>若要複製資料夾下的檔案子集，請以資料夾部分指定 **folderPath**，並以萬用字元篩選指定 **fileName**。
 
-**範例︰**
+**例子：**
 
 ```json
 {
@@ -447,19 +447,19 @@ ms.locfileid: "75830423"
 }
 ```
 
-### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
+### <a name="legacy-copy-activity-source-model"></a>舊複製活動源模型
 
-| 屬性 | 說明 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為：**HdfsSource** |是 |
-| 遞迴 | 表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 recursive 設定為 true，而接收器為檔案型存放區時，系統不會在接收器複製/建立空資料夾/子資料夾。<br/>允許的值為：**true** (預設值)、**false** | 否 |
+| 遞迴 | 表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 recursive 設定為 true，而接收器為檔案型存放區時，系統不會在接收器複製/建立空資料夾/子資料夾。<br/>允許的值是 **：true（** 預設 **），false** | 否 |
 | distcpSettings | 使用 HDFS DistCp 時的屬性群組。 | 否 |
-| resourceManagerEndpoint | Yarn Resource Manager 端點 | 若使用 DistCp 則為「是」 |
+| resourceManagerEndpoint | 紗線資源管理器端點 | 若使用 DistCp 則為「是」 |
 | tempScriptPath | 資料夾路徑，用來儲存暫存 DistCp 命令指令碼。 指令碼檔案是由 Data Factory 產生，並會在複製作業完成後移除。 | 若使用 DistCp 則為「是」 |
 | distcpOptions | 對於 DistCp 命令提供的其他選項。 | 否 |
-| maxConcurrentConnections | 連接到儲存體存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否 |
+| maxConcurrentConnections | 要同時連接到存儲存儲的連接數。 僅當要將併發連接限制到資料存儲時，才指定。 | 否 |
 
-**範例：使用 DistCp 在複製活動中的 HDFS 來源**
+**示例：使用 DistCp 複製活動中的 HDFS 源**
 
 ```json
 "source": {

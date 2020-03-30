@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 74031a8dbc9b64d6a09533789eed1296ff334d47
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174640"
 ---
 DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載到 Azure DNS 中，您必須建立該網域名稱的 DNS 區域。 接著在此 DNS 區域內，建立網域的每筆 DNS 記錄。
@@ -24,4 +24,4 @@ DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載�
 > [!NOTE]
 > 您不必擁有網域名稱，也能在 Azure DNS 中以該網域名稱建立 DNS 區域。 不過，的確需要擁有網域，才能將 Azure DNS 名稱伺服器，設定為網域名稱的正確名稱伺服器，供網域名稱註冊機構使用。
 > 
-> 如需詳細資訊，請參閱[將網域委派給 Azure DNS](../articles/dns/dns-domain-delegation.md)。
+> 有關詳細資訊，請參閱[將域委派給 Azure DNS](../articles/dns/dns-domain-delegation.md)。

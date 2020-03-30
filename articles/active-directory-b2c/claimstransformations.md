@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189731"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -33,9 +33,9 @@ ms.locfileid: "78189731"
 </ClaimsTransformations>
 ```
 
-**ClaimsTransformation**元素包含下列屬性：
+**聲明轉換**元素包含以下屬性：
 
-| 屬性 |必要項 | 描述 |
+| 屬性 |必要 | 描述 |
 | --------- |-------- | ----------- |
 | Id |是 | 用來唯一識別宣告轉換的識別碼。 此識別碼會從原則中的其他 XML 元素參考。 |
 | TransformationMethod | 是 | 要在宣告轉換中使用的轉換方法。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
@@ -77,7 +77,7 @@ ms.locfileid: "78189731"
 
 **InputClaim** 元素包含下列屬性：
 
-| 屬性 |必要項 | 描述 |
+| 屬性 |必要 | 描述 |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |是 | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。 |
 | TransformationClaimType |是 | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
@@ -92,7 +92,7 @@ ms.locfileid: "78189731"
 
 #### <a name="inputparameter"></a>InputParameter
 
-| 屬性 | 必要項 |描述 |
+| 屬性 | 必要 |描述 |
 | --------- | ----------- |----------- |
 | Id | 是 | 識別碼，其為對宣告轉換方法之參數的參考。 每個宣告轉換方法都有自己的值。 如需可用值的完整清單，請參閱宣告轉換表。 |
 | DataType | 是 | 參數的資料類型，例如字串、布林值、整數或日期時間，其會以自訂原則 XML 結構描述中的每個 DataType 列舉為依據。 此類型可用來正確地執行算術運算。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
@@ -110,7 +110,7 @@ ms.locfileid: "78189731"
 
 **OutputClaim** 元素包含下列屬性：
 
-| 屬性 |必要項 | 描述 |
+| 屬性 |必要 | 描述 |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | 是 | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。
 | TransformationClaimType | 是 | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
@@ -159,12 +159,12 @@ ms.locfileid: "78189731"
 
 如需宣告轉換的範例，請參閱下列參考頁面：
 
-- [布林值](boolean-transformations.md)
+- [布林](boolean-transformations.md)
 - [日期](date-transformations.md)
 - [整數](integer-transformations.md)
-- [JSON](json-transformations.md)
+- [Json](json-transformations.md)
 - [一般](general-transformations.md)
 - [社交帳戶](social-transformations.md)
-- [String](string-transformations.md)
+- [字串](string-transformations.md)
 - [StringCollection](stringcollection-transformations.md)
 

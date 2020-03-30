@@ -1,22 +1,22 @@
 ---
-title: Azure Service Fabric 的架構
-description: 本文說明 Service Fabric 的架構，這是一種分散式系統平臺，用來為雲端建立可擴充、可靠且易於管理的應用程式。
+title: Azure 服務結構的體系結構
+description: 本文介紹了 Service Fabric 的體系結構，Service Fabric 是一個分散式系統平臺，用於為雲構建可擴展、可靠且易於管理的應用程式。
 services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76024703"
 ---
-# <a name="service-fabric-architecture"></a>Service Fabric 結構
+# <a name="service-fabric-architecture"></a>Service Fabric 架構
 
 Service Fabric 是使用分層的子系統所建置。 這些子系統可讓您撰寫的應用程式為：
 
 * 高可用性
-* 可調式
+* 可調整
 * 可管理
 * 可測試
 
@@ -36,11 +36,11 @@ Service Fabric 是使用分層的子系統所建置。 這些子系統可讓您�
 
 ## <a name="reliability-subsystem"></a>可靠性子系統
 
-可靠性子系統提供一種機制，可透過使用「複寫器」、「容錯移轉管理員」以及「資源平衡器」，讓 Service Fabric 服務的狀態具有高可用性。
+可靠性子系統提供一種機制，可透過使用「複寫器」**、「容錯移轉管理員」** 以及「資源平衡器」**，讓 Service Fabric 服務的狀態具有高可用性。
 
 * 複寫器可確保主要服務複本中的狀態變更會自動複寫至次要複本，以便在服務複本集中維護主要和次要複本之間的一致性。 複寫器負責在複本集中的複本之間進行仲裁管理。 其會與容錯移轉單元互動，以取得要複寫的作業清單，且重新設定代理程式會提供複本集的組態。 該組態指出需要複寫作業的複本。 Service Fabric 會提供稱為網狀架構複寫器的預設複寫器，可由程式撰寫模型 API 用來使服務狀態具有高可用性和可靠性。
 * 容錯移轉管理員可確保當節點加入至叢集或從叢集移除節點時，負載會在可用的節點上自動重新分配。 如果叢集中的節點失敗，叢集會自動重新設定服務複本以維護可用性。
-* Resource Manager 會將服務複本置於叢集中的各個失敗網域，並確保所有的容錯移轉單位都可以運作。 Resource Manager 也會在叢集節點的基礎共用集區上平衡服務資源，以便達到最佳的統一負載分佈。
+* 資源管理器在群集中跨故障域放置服務副本，並確保所有容錯移轉單元都正常運行。 Resource Manager 也會在叢集節點的基礎共用集區上平衡服務資源，以便達到最佳的統一負載分佈。
 
 ## <a name="management-subsystem"></a>管理子系統
 

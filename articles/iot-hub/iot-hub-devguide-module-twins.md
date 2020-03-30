@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: menchi
 ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303591"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
@@ -45,13 +45,13 @@ ms.locfileid: "78303591"
 
 模組對應項是 JSON 文件，其中含有︰
 
-* **標籤**。 解決方案後端可以讀取及寫入的 JSON 文件區段。 裝置上的模組看不到標籤。 標籤是基於查詢用途所設定。
+* **標記**。 解決方案後端可以讀取及寫入的 JSON 文件區段。 裝置上的模組看不到標籤。 標籤是基於查詢用途所設定。
 
 * **所需屬性**。 搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組應用程式則可以讀取它們。 模組應用程式也可以接收所需屬性中的變更通知。
 
 * **報告屬性**。 搭配所需屬性使用，以便同步處理模組的設定或條件。 模組應用程式可以設定報告屬性，而解決方案後端則可以讀取並查詢它們。
 
-* **模組身分識別屬性**。 模組對應項 JSON 文件的根目錄包含來自對應模組身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。
+* **模組識別屬性**. 模組對應項 JSON 文件的根目錄包含來自對應模組身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。
 
 ![裝置對應項的架構表示法](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
@@ -152,7 +152,7 @@ ms.locfileid: "78303591"
 
 * **依識別碼擷取模組對應項**。 此作業會傳回模組對應項文件，包括標籤，以及所需及報告的系統屬性。
 
-* **局部更新模組對應項**。 此作業可讓解決方案後端局部地更新模組對應項中的標籤或所需屬性。 部分更新會以 JSON 文件的形式來表示，以新增或更新任何屬性。 設定為 `null` 的屬性會遭到移除。 下列範例會以 `{"newProperty": "newValue"}` 值建立新的所需屬性、以 `existingProperty` 覆寫 `"otherNewValue"` 的現有值，並移除 `otherOldProperty`。 不會對現有的所需屬性或標籤進行任何變更︰
+* **局部更新模組對應項**。 此作業可讓解決方案後端局部地更新模組對應項中的標籤或所需屬性。 部分更新會以 JSON 文件的形式來表示，以新增或更新任何屬性。 設定為 `null` 的屬性會遭到移除。 下列範例會以 `{"newProperty": "newValue"}` 值建立新的所需屬性、以 `"otherNewValue"` 覆寫 `existingProperty` 的現有值，並移除 `otherOldProperty`。 不會對現有的所需屬性或標籤進行任何變更︰
 
     ```json
     {
@@ -186,7 +186,7 @@ ms.locfileid: "78303591"
     moduleId | 模組的識別碼 |
     hubName | IoT 中樞名稱 |
     operationTimestamp | 作業的 [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 時間戳記 |
-    iothub-message-schema | twinChangeNotification |
+    iothub-message-schema | 雙更改通知 |
     opType | "replaceTwin" 或 "updateTwin" |
 
     訊息系統屬性前面會加上 `$` 符號。
@@ -236,15 +236,15 @@ ms.locfileid: "78303591"
 
 標籤、所需屬性和報告屬性是具有下列限制的 JSON 物件：
 
-* **金鑰**： JSON 物件中的所有金鑰都區分大小寫64個位元組的 utf-8 UNICODE 字串。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、SP 和 `$`。
+* **鍵**：JSON 物件中的所有鍵都是區分大小寫的 64 位元組 UTF-8 UNICODE 字串。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、SP 和 `$`。
 
-* **值**： json 物件中的所有值都可以是下列 JSON 類型：布林值、數位、字串、物件。 不允許使用陣列。
+* **值**：JSON 物件中的所有值都可以具有以下 JSON 類型：布林、數位、字串、物件。 不允許使用陣列。
 
-    * 整數的最小值可以是-4503599627370496，而最大值為4503599627370495。
+    * 整數的最小值為 -4503599627370496，最大值為 4503599627370495。
 
-    * 字串值是以 UTF-8 編碼，而且長度上限為512個位元組。
+    * 字串值是 UTF-8 編碼的，最大長度為 512 位元組。
 
-* **深度**：標記、所需和報告屬性中的所有 JSON 物件最多可以有5個深度。 例如，下列物件有效：
+* **深度**：標記、所需屬性和報告屬性中的所有 JSON 物件的最大深度為 5。 例如，下列物件有效：
 
     ```json
     {
@@ -268,19 +268,19 @@ ms.locfileid: "78303591"
 
 ## <a name="module-twin-size"></a>模組對應項大小
 
-IoT 中樞會在 `tags`的值上強制執行 8 KB 大小限制，並在 `properties/desired` 和 `properties/reported`的值上使用 32 KB 大小限制。 這些總計是專有的唯讀元素，例如 `$etag`、`$version`和 `$metadata/$lastUpdated`。
+IoT 中心對 的值強制實施 8 KB 大小`tags`限制，`properties/desired`對 和`properties/reported`的值執行 32 KB 大小限制。 這些總計不包括唯讀元素，如`$etag`和`$version`。 `$metadata/$lastUpdated`
 
-對應項大小的計算方式如下：
+雙大小按如下方式計算：
 
-* 針對 JSON 檔中的每個屬性，IoT 中樞累積的計算，並加入屬性的索引鍵和值的長度。
+* 對於 JSON 文檔中的每個屬性，IoT 中心會累積計算並添加屬性的鍵和值的長度。
 
-* 屬性索引鍵會被視為以 UTF8 編碼的字串。
+* 屬性鍵被視為 UTF8 編碼的字串。
 
-* 簡單的屬性值會視為 UTF8 編碼的字串、數值（8個位元組）或布林值（4個位元組）。
+* 簡單屬性值被視為 UTF8 編碼字串、數值（8 位元組）或布林值 （4 位元組）。
 
-* 以 UTF8 編碼的字串大小是藉由計算所有字元來計算，但不包括 UNICODE 控制字元（區段 C0 和 C1）。
+* UTF8 編碼字串的大小是通過計算所有字元（不包括 UNICODE 控制字元（段 C0 和 C1）來計算的。
 
-* 複雜的屬性值（嵌套物件）是根據屬性索引鍵的匯總大小和其所包含的屬性值計算而得。
+* 複雜屬性值（嵌套物件）是根據屬性鍵及其包含的屬性值的聚合大小計算的。
 
 IoT 中樞會拒絕 (並出現錯誤) 將會讓這些文件的大小增加到超過限制的所有作業。
 
@@ -339,7 +339,7 @@ IoT 中樞會為模組對應項所需屬性和報告屬性中的每個 JSON 物�
 ## <a name="optimistic-concurrency"></a>開放式並行存取
 
 標籤、所需屬性和報告屬性全都支援開放式並行存取。
-依據 [RFC7232](https://tools.ietf.org/html/rfc7232)，標籤會有一個 ETag 來表示該標籤的 JSON 表示法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
+標記具有一個 ETag，如[RFC7232](https://tools.ietf.org/html/rfc7232)，表示標記的 JSON 表示形式。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
 
 模組對應項所需屬性和報告屬性沒有 ETag，但是有一定會遞增的 `$version` 值。 類似於 ETag，更新端可以使用版本強制達到更新的一致性。 例如報告屬性的模組應用程式，或是所需屬性的解決方案後端。
 

@@ -1,19 +1,19 @@
 ---
 title: Reliable Services 通知
-description: 適用于可靠狀態管理員和可靠字典之 Service Fabric Reliable Services 通知的概念檔
+description: 服務結構可靠服務通知的概念文檔，用於可靠狀態管理員和可靠詞典
 author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639559"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
-通知可讓用戶端追蹤對於他們感興趣物件所進行的變更。 兩種類型的物件支援通知：「可靠的狀態管理員」和「可靠的字典」。
+通知可讓用戶端追蹤對於他們感興趣物件所進行的變更。 兩種類型的物件支援通知：「可靠的狀態管理員」** 和「可靠的字典」**。
 
 使用通知的常見原因如下：
 
@@ -158,7 +158,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 
 * **NotifyDictionaryChangedAction.Rebuild**：**NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**：**NotifyDictionaryClearEventArgs**
-* **Notifydictionarychangedaction.remove. Add**： **NotifyDictionaryItemAddedEventArgs**
+* **通知詞典更改操作.添加**：**通知字典專案添加事件**
 * **NotifyDictionaryChangedAction.Update**：**NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**：**NotifyDictionaryItemRemovedEventArgs**
 
@@ -194,9 +194,9 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ```
 
 ## <a name="recommendations"></a>建議
-* 完成通知事件。
-* 執行任何耗費資源的作業 (例如 IO 作業) 做為同步事件的一部分。
-* Action 類型。 未來可能會加入新的 Action 類型。
+* ** 完成通知事件。
+* ** 執行任何耗費資源的作業 (例如 IO 作業) 做為同步事件的一部分。
+* ** Action 類型。 未來可能會加入新的 Action 類型。
 
 以下是要牢記在心的一些事項：
 
@@ -207,8 +207,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * 在處理錯誤的進度過程中，某些作業可能會復原。 通知會針對這類復原作業加以引發，將複本狀態輪換回到可靠的時間點。 復原通知的一個重要差異，是使用重複索引鍵的事件會彙總在一起。 例如，如果復原上述的 T1，使用者將會看到 Delete(X) 的單一通知。
 
 ## <a name="next-steps"></a>後續步驟
-* [Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
+* [可靠的收藏](service-fabric-work-with-reliable-collections.md)
+* [可靠的服務快速啟動](service-fabric-reliable-services-quick-start.md)
 * [備份與還原 Reliable Services (災害復原)](service-fabric-reliable-services-backup-restore.md)
 * [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

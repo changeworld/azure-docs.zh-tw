@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 76eb3a135f7a32a30cfa62546a644bc77cf39998
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934577"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>移轉至以 Azure Resource Manager 為基礎的開發工具 (適用於 HDInsight 叢集)
@@ -67,7 +67,7 @@ HDInsight 正在取代以 Azure Service Manager (ASM) 為基礎的工具 (適用
 * 舊的命令 (ASM) - `azure hdinsight cluster delete myhdicluster`
 * 新命令 - `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**列出叢集**
+**清單群集**
 
 * 舊的命令 (ASM) - `azure hdinsight cluster list`
 * 新命令 - `azure hdinsight cluster list`
@@ -83,11 +83,11 @@ HDInsight 正在取代以 Azure Service Manager (ASM) 為基礎的工具 (適用
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>將 Azure PowerShell 移轉至 Azure Resource Manager
 有關 Azure PowerShell 在 Azure Resource Manager 模式中的一般資訊，請參閱 [搭配使用 Azure PowerShell 與 Azure Resource Manager](../powershell-azure-resource-manager.md)。
 
-Azure PowerShell Resource Manager Cmdlet 可與 ASM Cmdlet 並存安裝。 來自兩種模式的 Cmdlet 可依其名稱來區分。  Resource Manager 模式在與 ASM 模式中的*hdinsightclustername>.azurehdinsight.net*比較的 Cmdlet 名稱中具有*AzHDInsight* 。  例如， *new-azhdinsightcluster*與*新的「new-azurehdinsightcluster」* 。 某些參數和切換參數可能會有新的名稱，而且當使用資源管理員時，會有許多新的參數可供使用。  例如，數個 Cmdlet 需要名為 -ResourceGroupName的新切換參數。 
+Azure PowerShell Resource Manager Cmdlet 可與 ASM Cmdlet 並存安裝。 來自兩種模式的 Cmdlet 可依其名稱來區分。  資源管理器模式在 CMdlet 名稱中具有*AzHDInsight，* 與 ASM 模式下的*AzureHDInsight*進行比較。  例如，*新-AzHDInsight群集*與新*AzureHDInsight 群集*。 某些參數和切換參數可能會有新的名稱，而且當使用資源管理員時，會有許多新的參數可供使用。  例如，數個 Cmdlet 需要名為 -ResourceGroupName ** 的新切換參數。 
 
 在您可以使用 HDInsight Cmdlet 之前，必須連線到您的 Azure 帳戶，並建立新的資源群組︰
 
-* [連接-Disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount)
+* [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)
 * [New-AzResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>重新命名 Cmdlet
@@ -99,50 +99,50 @@ Azure PowerShell Resource Manager Cmdlet 可與 ASM Cmdlet 並存安裝。 來�
 
 | ASM cmdlets | 資源管理員 Cmdlet |
 | --- | --- |
-| 新增-AzureHDInsightConfigValue |[新增-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) |
-| Add-AzureHDInsightMetastore |[新增-AzHDInsightMetastore](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightmetastore) |
-| Add-AzureHDInsightScriptAction |[新增-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) |
-| Add-AzureHDInsightStorage |[新增-AzHDInsightStorage](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightstorage) |
-| Get-AzureHDInsightCluster |[New-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) |
-| Get-AzureHDInsightJob |[AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjob) |
-| Get-AzureHDInsightJobOutput |[AzHDInsightJobOutput](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput) |
-| AzureHDInsightProperty |[AzHDInsightProperty](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightproperty) |
+| 添加-AzureHDInsight 配置值 |[添加-AzHDInsight配置值](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) |
+| Add-AzureHDInsightMetastore |[添加-AzHDInsightMetastore](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightmetastore) |
+| Add-AzureHDInsightScriptAction |[添加-AzHDInsight腳本行動](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) |
+| Add-AzureHDInsightStorage |[添加-AzHDInsight 存儲](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightstorage) |
+| Get-AzureHDInsightCluster |[獲取阿茲德赫洞察集群](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) |
+| Get-AzureHDInsightJob |[獲取阿茲德洞察作業](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjob) |
+| Get-AzureHDInsightJobOutput |[獲取阿茲德洞察作業輸出](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput) |
+| 獲取 AzureHDInsight 屬性 |[獲取阿茲德赫洞察物業](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightproperty) |
 | Grant-AzureHDInsightHttpServicesAccess |[Grant-AzureRmHDInsightHttpServicesAccess](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/grant-azurermhdinsighthttpservicesaccess) |
-| Grant-AzureHdinsightRdpAccess |[授與-AzHDInsightRdpServicesAccess](https://docs.microsoft.com/powershell/module/az.hdinsight/grant-azhdinsightrdpservicesaccess) |
-| Invoke-AzureHDInsightHiveJob |[叫用-AzHDInsightHiveJob](https://docs.microsoft.com/powershell/module/az.hdinsight/invoke-azhdinsighthivejob) |
-| New-AzureHDInsightCluster |[新增-New-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) |
-| New-AzureHDInsightClusterConfig |[新增-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) |
-| New-AzureHDInsightHiveJobDefinition |[新增-AzHDInsightHiveJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition) |
-| New-AzureHDInsightMapReduceJobDefinition |[新增-AzHDInsightMapReduceJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightmapreducejobdefinition) |
-| New-AzureHDInsightPigJobDefinition |[新增-AzHDInsightPigJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightpigjobdefinition) |
-| New-AzureHDInsightSqoopJobDefinition |[新增-AzHDInsightSqoopJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightsqoopjobdefinition) |
-| New-AzureHDInsightStreamingMapReduceJobDefinition |[新增-AzHDInsightStreamingMapReduceJobDefinition](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightstreamingmapreducejobdefinition) |
-| Remove-AzureHDInsightCluster |[移除-New-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/remove-azhdinsightcluster) |
+| Grant-AzureHdinsightRdpAccess |[Grant-AzHDInsightRdpServicesAccess](https://docs.microsoft.com/powershell/module/az.hdinsight/grant-azhdinsightrdpservicesaccess) |
+| Invoke-AzureHDInsightHiveJob |[調用-阿茲德洞察希約伯](https://docs.microsoft.com/powershell/module/az.hdinsight/invoke-azhdinsighthivejob) |
+| New-AzureHDInsightCluster |[新阿茲德洞察集群](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) |
+| New-AzureHDInsightClusterConfig |[新-阿茲德洞察集群配置](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) |
+| New-AzureHDInsightHiveJobDefinition |[新-AzHDInsightHiveJob定義](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition) |
+| New-AzureHDInsightMapReduceJobDefinition |[新-AzHDInsightMap 減少作業定義](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightmapreducejobdefinition) |
+| New-AzureHDInsightPigJobDefinition |[新-AzHDInsightPigJob定義](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightpigjobdefinition) |
+| New-AzureHDInsightSqoopJobDefinition |[新-AzHDInsightOopoopJob定義](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightsqoopjobdefinition) |
+| New-AzureHDInsightStreamingMapReduceJobDefinition |[新-AzHDInsight流映射減少作業定義](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightstreamingmapreducejobdefinition) |
+| Remove-AzureHDInsightCluster |[刪除-AzHDInsight集群](https://docs.microsoft.com/powershell/module/az.hdinsight/remove-azhdinsightcluster) |
 | Revoke-AzureHDInsightHttpServicesAccess |[Revoke-AzHDInsightHttpServicesAccess](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/revoke-azurermhdinsighthttpservicesaccess) |
 | Revoke-AzureHdinsightRdpAccess |[Revoke-AzHDInsightRdpServicesAccess](https://docs.microsoft.com/powershell/module/az.hdinsight/revoke-azhdinsightrdpservicesaccess) |
-| Set-AzureHDInsightClusterSize |[設定-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) |
-| Set-AzureHDInsightDefaultStorage |[設定-AzHDInsightDefaultStorage](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage) |
-| Start-AzureHDInsightJob |[開始-AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/start-azhdinsightjob) |
-| Stop-AzureHDInsightJob |[停止-AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/stop-azhdinsightjob) |
-| Use-AzureHDInsightCluster |[使用-New-azhdinsightcluster](https://docs.microsoft.com/powershell/module/az.hdinsight/use-azhdinsightcluster) |
-| Wait-AzureHDInsightJob |[等候-AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/wait-azhdinsightjob) |
+| Set-AzureHDInsightClusterSize |[設置-AzHDInsight集群大小](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) |
+| Set-AzureHDInsightDefaultStorage |[設置-AzHDInsight預設存儲](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage) |
+| Start-AzureHDInsightJob |[啟動-阿茲德洞察工作](https://docs.microsoft.com/powershell/module/az.hdinsight/start-azhdinsightjob) |
+| Stop-AzureHDInsightJob |[停止-阿茲德洞察作業](https://docs.microsoft.com/powershell/module/az.hdinsight/stop-azhdinsightjob) |
+| Use-AzureHDInsightCluster |[使用-AzHDInsight集群](https://docs.microsoft.com/powershell/module/az.hdinsight/use-azhdinsightcluster) |
+| Wait-AzureHDInsightJob |[等待-阿茲德洞察工作](https://docs.microsoft.com/powershell/module/az.hdinsight/wait-azhdinsightjob) |
 
 ### <a name="new-cmdlets"></a>新的 Cmdlet
 下列是只在資源管理員模式中使用的新 Cmdlet。 
 
 **指令碼動作相關的 Cmdlet：**
 
-* **AzHDInsightPersistedScriptAction**：取得叢集的持續性腳本動作，並依時間先後順序列出，或取得指定持續性腳本動作的詳細資料。 
-* **AzHDInsightScriptActionHistory**：取得叢集的腳本動作歷程記錄，並依反向的時間順序列出，或取得先前執行之腳本動作的詳細資料。 
-* **AzHDInsightPersistedScriptAction**：從 HDInsight 叢集移除持續性腳本動作。
-* **AzHDInsightPersistedScriptAction**：將先前執行的腳本動作設定為持續性腳本動作。
-* **提交-AzHDInsightScriptAction**：將新的腳本動作提交至 Azure HDInsight 叢集。 
+* **獲取 AzHDInsight 持久腳本操作**：獲取群集的持久腳本操作，並按時間順序列出它們，或獲取指定持久腳本操作的詳細資訊。 
+* **獲取 AzHDInsightScriptAction 歷史**：獲取群集的腳本操作歷史記錄，並按相反的時間順序列出它，或獲取以前執行的腳本操作的詳細資訊。 
+* **刪除 AzHDInsight 持久腳本操作**：從 HDInsight 群集中刪除持久腳本操作。
+* **設置-AzHDInsight持久腳本操作**：將以前執行的腳本操作設置為持久腳本操作。
+* **提交-AzHDInsight腳本操作**：向 Azure HDInsight 群集提交新的腳本操作。 
 
 如需關於其他使用方式的詳細資訊，請參閱 [使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 **叢集身分識別相關的 Cmdlet：**
 
-* **AzHDInsightClusterIdentity**：將叢集身分識別新增至叢集設定物件，讓 HDInsight 叢集可以存取 Azure Data Lake Storage。 請參閱[使用 Azure PowerShell 建立搭配 Data Lake Storage 的 HDInsight 叢集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **添加-AzHDInsight群集標識**：向群集設定物件添加群集標識，以便 HDInsight 群集可以訪問 Azure 資料湖存儲。 請參閱[使用 Azure PowerShell 建立搭配 Data Lake Storage 的 HDInsight 叢集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>範例
 **建立叢集**
@@ -225,7 +225,7 @@ Azure PowerShell Resource Manager Cmdlet 可與 ASM Cmdlet 並存安裝。 來�
 
 | 如何...使用以資源管理員為基礎的 HDInsight SDK | 連結 |
 | --- | --- |
-| 適用於.NET 的 Azure HDInsight SDK|請參閱[適用于 .net 的 AZURE HDINSIGHT SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
+| 適用於.NET 的 Azure HDInsight SDK|請參閱[.NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
 | 搭配使用 Azure Active Directory 與 .NET SDK，以互動方式驗證應用程式 |請參閱[使用 .NET SDK 執行 Apache Hive 查詢](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 在本文中的程式碼片段會使用互動式驗證方法。 |
 | 搭配使用 Azure Active Directory 與 .NET SDK，以非互動方式驗證應用程式 |請參閱 [建立 HDInsight 的非互動式應用程式](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作業 |請參閱[提交 Apache Hive 作業](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174438"
 ---
-如果您遇到任何裝置問題，您可以從系統記錄檔來建立支援封裝。 Microsoft 支援服務會使用此套件，針對問題進行疑難排解。 請遵循下列步驟來建立支援封裝：
+如果遇到任何設備問題，可以從系統日誌創建支援包。 Microsoft 支援使用此包來解決問題。 按照以下步驟創建支援包：
 
-1. [連接到您的裝置的 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsNodeSupportPackage`命令來建立支援封裝。 此 cmdlet 的使用方式如下所示：
+1. [連接到設備的 PowerShell 介面](#connect-to-the-powershell-interface)。
+2. 使用`Get-HcsNodeSupportPackage`命令創建支援包。 Cmdlet 的用法如下：
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ ms.locfileid: "67174438"
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    此 cmdlet 會從您的裝置收集記錄檔，並將這些記錄檔複製到指定的網路或本機共用。
+    Cmdlet 從您的設備收集日誌，並將這些日誌複製到指定的網路或本地共用。
 
-    所使用的參數如下所示：
+    使用的參數如下：
 
-    - `-Path` -指定的網路或本機路徑複製到支援封裝。 (必要)
-    - `-Credential` -指定的認證來存取受保護的路徑。
-    - `-Zip` -指定產生的 zip 檔案。
-    - `-Include` -指定要包含的支援封裝中包含的元件。 如果未指定，`Default`假設。
-    - `-IncludeArchived` -指定要支援封裝中包含封存的記錄檔。
-    - `-IncludePeriodicStats` -指定要支援封裝中包含定期統計資料的記錄檔。
+    - `-Path`- 指定要將支援包複製到的網路或本地路徑。 (必要)
+    - `-Credential`- 指定訪問受保護路徑的憑據。
+    - `-Zip`- 指定以生成 ZIP 檔案。
+    - `-Include`- 指定以包括要包含在支援包中的元件。 如果未指定，`Default`則假定為。
+    - `-IncludeArchived`- 指定在支援包中包含存檔日誌。
+    - `-IncludePeriodicStats`- 指定在支援包中包括定期統計日誌。
 
     

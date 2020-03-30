@@ -1,41 +1,41 @@
 ---
-title: 授與應用程式存取權給其他 Azure 資源
-description: 本文說明如何將受管理身分識別功能的 Service Fabric 應用程式存取權授與支援 Azure Active Directory 型驗證的其他 Azure 資源。
+title: 授予應用程式對其他 Azure 資源的訪問
+description: 本文介紹如何將託管標識啟用的服務結構應用程式存取權限授予支援基於 Azure 活動目錄身份驗證的其他 Azure 資源。
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614788"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>將 Service Fabric 應用程式的受控識別存取權授與 Azure 資源（預覽）
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>授予服務結構應用程式對 Azure 資源的託管標識存取權限（預覽）
 
-在應用程式可以使用其受控識別來存取其他資源之前，必須先將許可權授與受保護 Azure 資源上的該身分識別。 授與許可權通常是 Azure 服務的「控制平面」上的管理動作，其擁有透過 Azure Resource Manager 路由傳送的受保護資源，這會強制執行任何適用的角色型存取檢查。
+在應用程式可以使用其託管標識訪問其他資源之前，必須授予所訪問的受保護 Azure 資源上的該標識的許可權。 授予許可權通常是 Azure 服務的"控制平面"上的管理操作，它擁有通過 Azure 資源管理器路由的受保護資源，這將強制實施任何適用的基於角色的訪問檢查。
 
-步驟的確切順序將取決於所存取的 Azure 資源類型，以及用來授與許可權的語言/用戶端。 本文的其餘部分假設已指派給應用程式的使用者指派身分識別，並包含數個可方便您使用的典型範例，但它不是本主題的完整參考。如需授與許可權的最新指示，請參閱個別 Azure 服務的檔。  
+然後，步驟的確切順序將取決於要訪問的 Azure 資源的類型以及用於授予許可權的語言/用戶端。 本文的其餘部分假定分配給應用程式的使用者分配標識，並包含幾個典型示例以方便您，但它絕不是本主題的詳盡參考;有關授予許可權的最新說明，請參閱相應 Azure 服務的文檔。  
 
-## <a name="granting-access-to-azure-storage"></a>授與 Azure 儲存體的存取權
-您可以使用 Service Fabric 應用程式的受控識別（在此案例中為使用者指派）來抓取 Azure 儲存體 blob 中的資料。 使用下列步驟，將 Azure 入口網站中的必要許可權授與身分識別：
+## <a name="granting-access-to-azure-storage"></a>授予對 Azure 存儲的存取權限
+可以使用 Service Fabric 應用程式的託管標識（在這種情況下由使用者分配）從 Azure 存儲 Blob 檢索資料。 通過以下步驟授予標識 Azure 門戶中所需的許可權：
 
-1. 流覽至儲存體帳戶
-2. 按一下左面板中的 [存取控制（IAM）] 連結。
-3. 選擇性檢查現有的存取權：在 [尋找] 控制項中選取系統或使用者指派的受控識別;從後續結果清單中選取適當的身分識別
-4. 按一下頁面頂端的 [+ 新增角色指派]，為應用程式的身分識別新增新的角色指派。
-在 [角色] 下，從下拉式清單中選取 [儲存體 Blob 資料讀取器]。
-5. 在下一個下拉式清單中的 [指派存取權] 底下，選擇 [`User assigned managed identity`]。
-6. 接下來，確定訂用帳戶下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組] 設定為 [所有資源群組]
-7. 在 [選取] 底下，選擇對應至 Service Fabric 應用程式的 UAI，然後按一下 [儲存]。
+1. 導航到存儲帳戶
+2. 按一下左側面板中的 [存取控制 (IAM)] 連結。
+3. （可選）檢查現有訪問：在"查找"控制項中選擇系統或使用者分配的託管標識;從後續結果清單中選擇適當的標識
+4. 按一下 " 添加頁面頂部的角色指派"，為應用程式標識添加新的角色指派。
+在 [角色] 下，從下拉式清單中，選取 [儲存體 Blob 資料讀取器]。
+5. 在下一個下拉下下下，在"分配`User assigned managed identity`對的訪問"下，選擇 。
+6. 接下來，請確保 [訂用帳戶] 下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組] 設定為 [所有資源群組]。
+7. 在"選擇"下，選擇與服務交換矩陣應用程式對應的 UAI，然後按一下"保存"。
 
-支援系統指派的 Service Fabric 受控識別不包含 Azure 入口網站中的整合;如果您的應用程式使用系統指派的身分識別，您就必須先尋找應用程式身分識別的用戶端識別碼，然後重複上述步驟，但選取 [尋找] 控制項中的 [`Azure AD user, group, or service principal`] 選項。
+對系統分配的 Service Fabric 託管標識的支援不包括在 Azure 門戶中的集成;因此，對服務結構託管標識的支援不包括在 Azure 門戶中集成。如果應用程式使用系統分配的標識，則必須首先查找應用程式標識的用戶端 ID，然後重複上述步驟，但在"查找"控制項中選擇`Azure AD user, group, or service principal`該選項。
 
-## <a name="granting-access-to-azure-key-vault"></a>授與 Azure Key Vault 的存取權
-類似于存取儲存體，您可以利用 Service Fabric 應用程式的受控識別來存取 Azure 金鑰保存庫。 在 Azure 入口網站中授與存取權的步驟類似于上述所列，而且不會在此重複。 請參閱下圖中的差異。
+## <a name="granting-access-to-azure-key-vault"></a>授予對 Azure 金鑰保存庫的存取權限
+同樣，在訪問存儲時，可以利用 Service Fabric 應用程式的託管標識來訪問 Azure 金鑰保存庫。 在 Azure 門戶中授予存取權限的步驟與上面列出的步驟類似，此處不會重複。 有關差異，請參閱下圖。
 
 ![Key Vault 存取原則](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-下列範例說明如何透過範本部署授與保存庫的存取權;將下列程式碼片段新增至範本之 `resources` 元素下的另一個專案。 此範例示範授與使用者指派和系統指派的身分識別類型的存取權，分別選擇適用的身分。
+下面的示例演示了通過範本部署授予對保存庫的存取權限;將下面的程式碼片段添加為範本`resources`元素下的另一個條目。 該示例演示了使用者分配和系統分配的標識類型的存取權限授予 - 選擇適用的標識類型。
 
 ```json
     # under 'variables':
@@ -65,7 +65,7 @@ ms.locfileid: "75614788"
         }
     },
 ```
-而針對系統指派的受控識別：
+對於系統分配的託管標識：
 ```json
     # under 'variables':
   "variables": {
@@ -102,8 +102,8 @@ ms.locfileid: "75614788"
     }
 ```
 
-如需詳細資訊，請參閱保存[庫-更新存取原則](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。
+有關詳細資訊，請參閱[保存庫 - 更新訪問策略](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。
 
 ## <a name="next-steps"></a>後續步驟
-* [使用系統指派的受控識別來部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [使用使用者指派的受控識別來部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [使用系統分配的託管標識部署 Azure 服務結構應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [使用使用者分配的託管標識部署 Azure 服務結構應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

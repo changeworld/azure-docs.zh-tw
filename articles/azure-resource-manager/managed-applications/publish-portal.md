@@ -1,22 +1,22 @@
 ---
-title: 透過入口網站發佈受管理的應用程式
+title: 通過門戶發佈託管應用
 description: 示範如何使用 Azure 入口網站建立 Azure 受控應用程式，以供組織成員使用。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651718"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>透過 Azure 入口網站發佈服務類別目錄應用程式
 
 您可以使用 Azure 入口網站來發佈[受控應用程式](overview.md)，以供組織成員使用。 例如，IT 部門可以發佈受控應用程式，以確保符合組織標準。 這些受控應用程式可透過服務類別目錄取得，而非 Azure Marketplace。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 發佈受控應用程式時，您會指定管理資源的身分識別。 建議您指定 Azure Active Directory 使用者群組。 若要建立 Azure Active Directory 使用者群組，請參閱[在 Azure Active Directory 中建立群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "75651718"
 
 ## <a name="create-managed-application-with-portal"></a>使用入口網站建立受控應用程式
 
-1. 在左上角，選取 [新增]。
+1. 在左上角，選取 [新增]****。
 
    ![新增服務](./media/publish-portal/new.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "75651718"
 
    ![搜尋受控應用程式定義](./media/publish-portal/select-managed-apps-definition.png)
 
-1. 選取 [建立] 以開始建立受控應用程式定義的程序。
+1. 選取 [建立]**** 以開始建立受控應用程式定義的程序。
 
    ![建立受控應用程式定義](./media/publish-portal/create-definition.png)
 
@@ -42,15 +42,15 @@ ms.locfileid: "75651718"
 
    ![提供值](./media/publish-portal/fill-application-values.png)
 
-1. 當您來到 [驗證和鎖定層級] 區段時，選取 [新增授權]。
+1. 當您來到 [驗證和鎖定層級] 區段時，選取 [新增授權]****。
 
    ![新增授權](./media/publish-portal/add-authorization.png)
 
-1. 選取 Azure Active Directory 群組來管理資源，然後選取 [確定]。
+1. 選取 Azure Active Directory 群組來管理資源，然後選取 [確定]****。
 
    ![新增授權群組](./media/publish-portal/add-auth-group.png)
 
-1. 當您已提供所有值時，選取 [建立]。
+1. 當您已提供所有值時，選取 [建立]****。
 
    ![建立受控應用程式](./media/publish-portal/create-app.png)
 

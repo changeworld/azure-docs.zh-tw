@@ -1,54 +1,54 @@
 ---
-title: 使用 Azure 入口網站將 Azure 內部 Load Balancer 移至另一個 Azure 區域
-description: 使用 Azure Resource Manager 範本，使用 Azure 入口網站將 Azure 內部 Load Balancer 從一個 Azure 區域移至另一個區域
+title: 使用 Azure 門戶將 Azure 內部負載平衡器移動到其他 Azure 區域
+description: 使用 Azure 資源管理器範本使用 Azure 門戶將 Azure 內部負載平衡器從一個 Azure 區域移動到另一個 Azure 區域
 author: asudbring
 ms.service: load-balancer
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638800"
 ---
-# <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>使用 Azure 入口網站將 Azure 內部 Load Balancer 移至另一個區域
+# <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>使用 Azure 門戶將 Azure 內部負載平衡器移動到其他區域
 
-在許多情況下，您會想要將現有的內部負載平衡器從一個區域移至另一個區域。 例如，您可能會想要使用相同的設定來建立內部負載平衡器以進行測試。 您也可以將內部負載平衡器移至另一個區域，做為嚴重損壞修復計畫的一部分。
+在各種方案中，您希望將現有內部負載等化器從一個區域移動到另一個區域。 例如，您可能希望創建具有相同配置用於測試的內部負載等化器。 作為災害復原規劃的一部分，您可能還希望將內部負載平衡器移到另一個區域。
 
-Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過，您可以使用 Azure Resource Manager 範本來匯出內部負載平衡器的現有設定和虛擬網路。  接著，您可以將負載平衡器和虛擬網路匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。  如需 Resource Manager 和範本的詳細資訊，請參閱[快速入門：使用 Azure 入口網站來建立和部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+Azure 內部負載等化器不能從一個區域移動到另一個區域。 但是，可以使用 Azure 資源管理器範本匯出內部負載等化器的現有配置和虛擬網路。  然後，可以通過將負載等化器和虛擬網路匯出到範本、修改參數以匹配目的地區域，然後將範本部署到新區域，將資源暫入另一個區域。  有關資源管理器和範本的詳細資訊，請參閱[快速入門：使用 Azure 門戶創建和部署 Azure 資源管理器範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 請確定 Azure 內部負載平衡器位於您要移動的 Azure 區域中。
+- 確保 Azure 內部負載等化器位於要從其移動的 Azure 區域中。
 
-- Azure 內部負載平衡器無法在區域之間移動。  您必須將新的負載平衡器關聯至目的地區域中的資源。
+- Azure 內部負載等化器無法在區域之間移動。  您必須將新的負載等化器與目的地區域中的資源相關聯。
 
-- 若要匯出內部負載平衡器設定並部署範本，以在另一個區域中建立內部負載平衡器，您需要網路參與者角色或更高版本。
+- 要匯出內部負載等化器配置並部署範本以在另一個區域中創建內部負載等化器，您需要"網路參與者"角色或更高版本。
 
-- 識別來源網路配置，以及您目前使用的所有資源。 此配置包括但不限於負載平衡器、網路安全性群組、虛擬機器和虛擬網路。
+- 識別來源網路配置，以及您目前使用的所有資源。 此佈局包括但不限於負載等化器、網路安全性群組、虛擬機器和虛擬網路。
 
-- 確認您的 Azure 訂用帳戶可讓您在所使用的目的地區域中建立內部負載平衡器。 請連絡支援人員啟用所需的配額。
+- 驗證 Azure 訂閱是否允許您在使用的目的地區域中創建內部負載等化器。 請連絡支援人員啟用所需的配額。
 
-- 請確定您的訂用帳戶有足夠的資源可支援新增此程式的負載平衡器。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
+- 請確保您的訂閱有足夠的資源來支援為此過程添加負載等化器。  請參閱[Azure 訂閱和服務限制、配額和約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>準備和移動
-下列步驟示範如何使用 Resource Manager 範本來準備用於移動的內部負載平衡器，以及使用 Azure 入口網站將內部負載平衡器設定移至目的地區域。  做為此程式的一部分，必須包含內部負載平衡器的虛擬網路設定，而且必須先完成，才能移動內部負載平衡器。
+以下步驟演示如何使用資源管理器範本準備內部負載等化器，以及使用 Azure 門戶將內部負載等化器配置移動到目的地區域。  作為此過程的一部分，必須包括內部負載等化器的虛擬網路配置，並且必須首先在移動內部負載等化器之前完成。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>匯出虛擬網路範本，並從 Azure 入口網站部署
+### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>匯出虛擬網路範本並從 Azure 門戶進行部署
 
-1. 登入[Azure 入口網站](https://portal.azure.com) > **資源群組**。
-2. 找出包含來源虛擬網路的資源群組，然後按一下它。
-3. 選取 [>**設定**] > [**匯出範本**]。
-4. 在 [**匯出範本**] 分頁中，選擇 [**部署**]。
-5. 按一下 [**範本**] > [**編輯參數**]，在線上編輯器中開啟**parameters. json**檔案。
-6. 若要編輯虛擬網路名稱的參數，請變更 [**參數**] 底下的 [**值**] 屬性：
+1. 登錄到[Azure 門戶](https://portal.azure.com) > **資源組**。
+2. 找到包含源虛擬網路的資源組並按一下它。
+3. 選擇>**設置** > **匯出範本**。
+4. 在 **"匯出範本"** 邊欄選項卡中選擇 **"部署**"。
+5. 按一下**TEMPLATE** > **編輯參數**以在連線編輯器中打開**參數.json**檔。
+6. 要編輯虛擬網路名稱的參數，請更改**參數**下**的值**屬性：
 
     ```json
     {
@@ -61,13 +61,13 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
         }
     }
     ```
-7. 將編輯器中的 [來源虛擬網路名稱] 值變更為目標 VNET 的選擇名稱。 請務必以引號括住名稱。
+7. 將編輯器中的源虛擬網路名稱值更改為目標 VNET 的首選名稱。 請確保將名稱括在引號中。
 
-8. 按一下編輯器中的 [**儲存**]。
+8. 按一下編輯器中的 **"保存**"。
 
-9. 按一下 [**範本**] > [**編輯範本**]，在線上編輯器中開啟**範本. json**檔案。
+9. 按一下**TEMPLATE** > **編輯範本**以在連線編輯器中打開**範本.json**檔。
 
-10. 若要編輯將移動 VNET 的目的地區域，請變更 [資源] 底下的 [**位置**] 屬性：
+10. 要編輯將移動 VNET 的目的地區域，請更改資源下**的位置**屬性：
 
     ```json
     "resources": [
@@ -87,11 +87,11 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
 
     ```
 
-11. 若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格的區功能變數名稱稱、**美國中部** = **centralus**。
+11. 要獲取區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的代碼是沒有空格的區功能變數名稱稱，**美國** = **中部中心**。
 
-12. 如果您選擇，您也可以變更**範本. json**檔案中的其他參數，而且這是選擇性的，視您的需求而定：
+12. 如果您選擇，還可以更改**範本.json**檔中的其他參數，並且根據您的要求是可選的：
 
-    * **位址空間**-可以藉由修改**resources** > **addressSpace**區段並變更**範本**中的**addressPrefixes**屬性，來變更 VNET 的位址空間：
+    * **位址空間**- 通過修改**資源** > **位址空間**部分並更改**範本.json**檔中**的位址首碼**屬性，可以在保存之前更改 VNET 的位址空間：
 
         ```json
                 "resources": [
@@ -111,7 +111,7 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
 
         ```
 
-    * **子網**-修改**範本. json**檔案的**子**網區段，即可變更或新增子網名稱和子網位址空間。 您可以藉由變更**name**屬性來變更子網的名稱。 藉由改變**範本. json**檔案中的**addressPrefix**屬性，即可變更子網位址空間：
+    * **子網**- 可以通過修改**範本.json**檔的**子網**部分來更改或添加到子網名稱和子網位址空間。 可以通過更改**名稱**屬性來更改子網的名稱。 可以通過更改**範本.json**檔中**的位址首碼**屬性來更改子網位址空間：
 
         ```json
                 "subnets": [
@@ -142,7 +142,7 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
                 ]
         ```
 
-         在**範本. json**檔案中，若要變更位址首碼，您必須在兩個位置中編輯它，如上所列的區段和以下所列的**類型**區段。  變更**addressPrefix**屬性，使其符合上述各項：
+         在**範本.json**檔中，要更改位址首碼，必須在兩個位置進行編輯，即上面列出的部分和下面列出的**類型**部分。  更改**位址首碼**屬性以匹配上述屬性：
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -178,29 +178,29 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
          ]
         ```
 
-13. 按一下線上編輯器中的 [**儲存**]。
+13. 按一下連線編輯器中的 **"保存**"。
 
-14. 按一下 **基本** > **訂**用帳戶，以選擇將部署目標 VNET 的訂用帳戶。
+14. 按一下**BASICS** > **訂閱**以選擇將部署目標 VNET 的訂閱。
 
-15. 按一下 [**基本**] > [**資源群組**]，選擇將部署目標 VNET 的資源群組。  您可以按一下 [**建立新**的]，為目標 VNET 建立新的資源群組。  請確定名稱與現有 VNET 的來源資源群組不同。
+15. 按一下**BASICS** > **資源組**以選擇將部署目標 VNET 的資源組。  可以按一下 **"創建新**"以創建目標 VNET 的新資源組。  確保名稱與現有 VNET 的源資源組不同。
 
-16. 確認 [**基本**] > [**位置**] 設定為您想要部署 VNET 的目標位置。
+16. 驗證**BASICS** > **位置**設置為您希望部署 VNET 的目標位置。
 
-17. 確認 [**設定**] 底下的 [名稱] 符合您在上面的 [參數編輯器] 中輸入的名稱。
+17. 在 **"設置"** 下驗證名稱是否與您在上述參數編輯器中輸入的名稱匹配。
 
-18. 勾選 [**條款及條件**] 底下的方塊。
+18. 選中 **"條件"和"條件**"下的核取方塊。
 
-19. 按一下 [**購買**] 按鈕以部署目標虛擬網路。
+19. 按一下 **"購買**"按鈕以部署目標虛擬網路。
 
-### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>匯出內部負載平衡器範本，並從 Azure PowerShell 部署
+### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>匯出內部負載等化器範本並從 Azure PowerShell 進行部署
 
-1. 登入[Azure 入口網站](https://portal.azure.com) > **資源群組**。
-2. 找出包含來源內部負載平衡器的資源群組，然後按一下它。
-3. 選取 [>**設定**] > [**匯出範本**]。
-4. 在 [**匯出範本**] 分頁中，選擇 [**部署**]。
-5. 按一下 [**範本**] > [**編輯參數**]，在線上編輯器中開啟**parameters. json**檔案。
+1. 登錄到[Azure 門戶](https://portal.azure.com) > **資源組**。
+2. 找到包含源內部負載等化器的資源組，然後按一下它。
+3. 選擇>**設置** > **匯出範本**。
+4. 在 **"匯出範本"** 邊欄選項卡中選擇 **"部署**"。
+5. 按一下**TEMPLATE** > **編輯參數**以在連線編輯器中打開**參數.json**檔。
 
-6. 若要編輯內部負載平衡器名稱的參數，請將來源內部負載平衡器名稱的屬性**defaultValue**變更為目標內部負載平衡器的名稱，並確定名稱是以引號括住：
+6. 要編輯內部負載等化器名稱的參數，請將源內部負載等化器名稱的屬性**預設值**更改為目標內部負載等化器的名稱，以確保名稱以引號形式使用：
 
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -216,13 +216,13 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
              }
     ```
 
-6. 若要編輯上方移動的目標虛擬網路值，您必須先取得資源識別碼，然後將它複製並貼到**parameters json**檔案中。 若要取得識別碼：
+6. 要編輯上面移動的目標虛擬網路的值，必須首先獲取資源識別碼，然後將其複製並粘貼到**參數.json**檔中。 要獲取 ID：
 
-    1. 在另一個瀏覽器索引標籤或視窗中，登入[Azure 入口網站](https://portal.azure.com) > **資源群組**。
-    2. 從上述步驟中，找出包含已移動虛擬網路的目標資源群組，然後按一下它。
-    3. 選取 >**設定** > **屬性**。
-    4. 在右側的分頁中，反白顯示**資源識別碼**，並將它複製到剪貼簿。  或者，您可以按一下**資源識別碼**路徑右邊的 [**複製到剪貼**簿] 按鈕。
-    5. 將資源識別碼貼入 [ **defaultValue** ] 屬性中，然後在另一個瀏覽器視窗或索引標籤中開啟 [**編輯參數**編輯器]：
+    1. 登錄到另一個瀏覽器選項卡或視窗中的[Azure 門戶](https://portal.azure.com) > **資源組**。
+    2. 從上述步驟中查找包含移動虛擬網路的目標資源組，然後按一下它。
+    3. 選擇>**設置** > **屬性**。
+    4. 在右側的邊欄選項卡中，突出顯示**資源識別碼**並將其複製到剪貼簿。  或者，您可以按一下**資源識別碼**路徑右側的副本**到剪貼簿**按鈕。
+    5. 將資源識別碼 粘貼到**預設值**屬性中，以在其他瀏覽器視窗或選項卡中打開**的"編輯參數"** 編輯器中：
 
         ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -237,10 +237,10 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
              "type": "String"
              }
         ```
-    6. 按一下線上編輯器中的 [**儲存**]。
+    6. 按一下連線編輯器中的 **"保存**"。
 
-7. 按一下 [**範本**] > [**編輯範本**]，在線上編輯器中開啟**範本. json**檔案。
-8. 若要編輯將移動內部負載平衡器設定的目的地區域，請在 [ **json**檔案] 中變更 [**資源**] 底下的 [**位置**] 屬性：
+7. 按一下**TEMPLATE** > **編輯範本**以在連線編輯器中打開**範本.json**檔。
+8. 要編輯將移動內部負載等化器配置的目的地區域，請更改**範本.json**檔中**資源**下**的位置**屬性：
 
     ```json
         "resources": [
@@ -255,11 +255,11 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
                 },
     ```
 
-9.  若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格的區功能變數名稱稱、**美國中部** = **centralus**。
+9.  要獲取區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的代碼是沒有空格的區功能變數名稱稱，**美國** = **中部中心**。
 
-10. 您也可以根據您的需求，變更範本中的其他參數，而且是選擇性的：
+10. 如果願意，還可以更改範本中的其他參數，並且根據您的要求是可選的：
 
-    * **Sku** -您可以變更**範本. json**檔案中的**sku** > **名稱** 屬性，將設定中的內部負載平衡器 sku 從 標準 或 基本 變更為 標準：
+    * **SKU** - 您可以通過更改**範本.json**檔中**的 sku** > **名稱**屬性來更改配置中內部負載等化器的 sKU 從標準更改為基本或基本到標準：
 
         ```json
         "resources": [
@@ -273,9 +273,9 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
                 "tier": "Regional"
             },
         ```
-      如需基本和標準 sku 負載平衡器之間差異的詳細資訊，請參閱[Azure Standard Load Balancer 總覽](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
+      有關基本和標準 SKU 負載等化器之間的差異的詳細資訊，請參閱[Azure 標準負載等化器概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
 
-    * **負載平衡規則**-在**範本**的**loadBalancingRules**區段中新增或移除專案，即可在設定中新增或移除負載平衡規則：
+    * **負載平衡規則**- 您可以通過向**範本.json**檔的**負載平衡規則**部分添加或項目剪除來添加或刪除配置中的負載平衡規則：
 
         ```json
         "loadBalancingRules": [
@@ -305,9 +305,9 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
                     }
                 ]
         ```
-       如需負載平衡規則的詳細資訊，請參閱[什麼是 Azure Load Balancer？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+       有關負載平衡規則的詳細資訊，請參閱什麼是[Azure 負載等化器？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **探查**-您可以藉由新增或移除**範本 json**檔案的**探查**區段中的專案，在設定中新增或移除負載平衡器的探查：
+    * **探測**- 您可以通過向**範本.json**檔的**探測**部分添加或項目剪除來添加或刪除配置中的負載等化器的探測器：
 
         ```json
         "probes": [
@@ -325,9 +325,9 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
                     }
                 ],
         ```
-       如需 Azure Load Balancer 健康狀態探查的詳細資訊，請參閱[Load Balancer 健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
+       有關 Azure 負載等化器運行狀況探測器的詳細資訊，請參閱[負載等化器運行狀況探測器](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **輸入 nat 規則**-您可以新增或移除負載平衡器的輸入 nat 規則，方法是新增或移除**範本 Json**檔案的**loadbalancer.inboundnatrules**區段中的專案：
+    * **入站 NAT 規則**- 您可以通過向**範本.json**檔的**入站 NatRules**部分添加或項目剪除來添加或刪除負載等化器的入站 NAT 規則：
 
         ```json
         "inboundNatRules": [
@@ -349,7 +349,7 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
                     }
                 ]
         ```
-        若要完成輸入 NAT 規則的新增或移除，此規則必須存在，或已在**範本 json**檔案結尾作為**類型**屬性移除：
+        要完成入站 NAT 規則的添加或刪除，必須在**範本.json**檔末尾作為**類型**屬性存在或刪除該規則：
 
         ```json
         {
@@ -373,33 +373,33 @@ Azure 內部負載平衡器無法從一個區域移至另一個區域。 不過�
             }
         }
         ```
-        如需輸入 NAT 規則的詳細資訊，請參閱[什麼是 Azure Load Balancer？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+        有關入站 NAT 規則的詳細資訊，請參閱[什麼是 Azure 負載等化器？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-12. 按一下線上編輯器中的 [**儲存**]。
+12. 按一下連線編輯器中的 **"保存**"。
 
-13. 按一下 **基本** > **訂**用帳戶，以選擇將部署目標內部負載平衡器的訂用帳戶。
+13. 按一下**BASICS** > **訂閱**以選擇將部署目標內部負載等化器的訂閱。
 
-15. 按一下 **基本** > **資源群組**，選擇將部署目標負載平衡器的資源群組。  您可以按一下 [**建立新**的]，為目標內部負載平衡器建立新的資源群組，或選擇上面為虛擬網路建立的現有資源群組。  請確定名稱與現有來源內部負載平衡器的來源資源群組不同。
+15. 按一下**BASICS** > **資源組**以選擇將部署目標負載等化器的資源組。  可以按一下 **"新建**"為目標內部負載等化器創建新的資源組，或選擇上面為虛擬網路創建的現有資源組。  確保名稱與現有源內部負載等化器的源資源組不同。
 
-16. 確認 [**基本**] > [**位置**] 設定為您想要部署內部負載平衡器的目標位置。
+16. 驗證**BASICS** > **位置**設置為您希望部署內部負載等化器的目標位置。
 
-17. 確認 [**設定**] 底下的 [名稱] 符合您在上面的 [參數編輯器] 中輸入的名稱。  確認已針對設定中的任何虛擬網路填入資源識別碼。
+17. 在 **"設置"** 下驗證名稱是否與您在上述參數編輯器中輸入的名稱匹配。  驗證配置中任何虛擬網路填充的資源指示。
 
-18. 勾選 [**條款及條件**] 底下的方塊。
+18. 選中 **"條件"和"條件**"下的核取方塊。
 
-19. 按一下 [**購買**] 按鈕以部署目標虛擬網路。
+19. 按一下 **"購買**"按鈕以部署目標虛擬網路。
 
 ## <a name="discard"></a>捨棄
 
-如果您想要捨棄目標虛擬網路和內部負載平衡器，請刪除包含目標虛擬網路和內部負載平衡器的資源群組。  若要這麼做，請從入口網站的儀表板中選取資源群組，然後選取 [總覽] 頁面頂端的 [**刪除**]。
+如果要放棄目標虛擬網路和內部負載等化器，請刪除包含目標虛擬網路和內部負載等化器的資源組。  為此，請從門戶中的儀表板中選擇資源組，然後選擇概覽頁頂部的 **"刪除**"。
 
 ## <a name="clean-up"></a>清除
 
-若要認可變更並完成虛擬網路與內部負載平衡器的移動，請刪除來源虛擬網路和內部負載平衡器或資源群組。 若要這麼做，請從入口網站的儀表板中選取虛擬網路和內部負載平衡器或資源群組，然後選取每個頁面頂端的 [**刪除**]。
+要提交更改並完成虛擬網路和內部負載等化器的移動，請刪除源虛擬網路和內部負載等化器或資源組。 為此，請從門戶中的儀表板中選擇虛擬網路和內部負載等化器或資源組，然後在每個頁面頂部選擇 **"刪除**"。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure 內部負載平衡器從一個區域移至另一個區域，並清除來源資源。  若要深入瞭解如何在 Azure 中的區域和嚴重損壞修復之間移動資源，請參閱：
+在本教程中，您將 Azure 內部負載等化器從一個區域移動到另一個區域並清理了源資源。  要瞭解有關在 Azure 中在區域和災害復原之間移動資源的詳細資訊，請參閱：
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

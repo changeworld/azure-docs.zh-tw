@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 叢集 Resource Manager：移動成本
-description: 瞭解 Service Fabric 服務的移動成本，以及如何指定它以符合任何架構需求，包括動態設定。
+title: 服務結構群集資源管理器：移動成本
+description: 瞭解 Service Fabric 服務的移動成本，以及如何指定它以滿足任何體系結構需求，包括動態配置。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75563338"
 ---
 # <a name="service-movement-cost"></a>服務移動成本
@@ -67,19 +67,19 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移動成本的影響
-MoveCost 有五個層級：零、低、中、高和 VeryHigh。 適用的規則如下：
+移動成本有五個級別：零、低、中、高和非常高。 適用的規則如下：
 
-* 除了零和 VeryHigh 以外，MoveCosts 會彼此相對。 
+* 移動成本是相對的，除了零和非常高。 
 * 零移動成本表示移動是免費的，因此不應計入解決方案的分數。
-* 將您的移動成本設定為 [高] 或 [VeryHigh]，並*不*保證複本*永遠*不會移動。
-* 只有當叢集中的條件約束違規無法以任何其他方式修正時，才會移動具有 VeryHigh 移動成本的複本（即使需要移動許多其他複本來修正違規）
+* 將移動成本設置為"高"或"非常高"*並不能*保證副本*永遠不會*移動。
+* 僅當群集中存在無法以任何其他方式修復的約束衝突時，才會移動具有"極高移動成本"的副本（即使它需要移動許多其他副本來修復衝突）
 
 
 
 <center>
 
-![在選取要移動][Image1]
-的複本時，移動成本的因素 </center>
+![移動成本作為選取要移動之複本的因素][Image1]
+</center>
 
 MoveCost 可協助您在達成對等的平衡時，尋找整體導致最少中斷且最容易達成的解決方案。 服務的成本概念可相對於許多事項。 計算您的移動成本時最常見的因素為：
 
@@ -88,7 +88,7 @@ MoveCost 可協助您在達成對等的平衡時，尋找整體導致最少中�
 - 中斷執行中作業的成本。 某些資料存放區層級的作業，或是執行以回應用戶端呼叫的作業，它們的成本都很高。 在某個特定點之後，除非必要否則您不會想要停止它們。 因此，在作業持續期間，您可以提高此服務物件的移動成本以降低其移動的可能性。 當作業完成之後，您可以將成本設定回正常。
 
 > [!IMPORTANT]
-> 應謹慎考慮使用 VeryHigh 移動成本，因為它會大幅限制叢集 Resource Manager 在叢集中尋找全域最佳放置解決方案的能力。 只有當叢集中的條件約束違規無法以任何其他方式修正時，才會移動具有 VeryHigh 移動成本的複本（即使需要移動許多其他複本來修正違規）
+> 應仔細考慮使用 VeryHigh 移動成本，因為它顯著限制了群集資源管理器在群集中查找全球最佳放置解決方案的能力。 僅當群集中存在無法以任何其他方式修復的約束衝突時，才會移動具有"極高移動成本"的副本（即使它需要移動許多其他副本來修復衝突）
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>在您的叢集中啟用移動成本
 為了將更細微的 MoveCosts 納入考量，必須在叢集中啟用 MoveCost。 如果沒有此設定，則會使用計算移動的預設模式來計算 MoveCost，並且忽略 MoveCost 報告。

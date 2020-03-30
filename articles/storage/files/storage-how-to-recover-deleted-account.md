@@ -1,6 +1,6 @@
 ---
 title: 如何復原已刪除的儲存體帳戶
-description: 瞭解如何復原已刪除的儲存體帳戶
+description: 瞭解如何恢復已刪除的存儲帳戶
 author: todmccoy
 manager: dcscontentpm
 ms.service: storage
@@ -11,35 +11,35 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 05465d4a03335ac607ba8981116c66fd6dac9416
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252639"
 ---
 # <a name="how-to-recover-a-deleted-storage-account"></a>如何復原已刪除的儲存體帳戶
 
-Azure 儲存體透過自動化複本提供資料恢復功能，但不會防止使用者或應用程式程式碼損毀資料（不論是不小心或惡意）。 在應用程式或使用者錯誤的實例中維持資料精確度需要更先進的技術，例如將資料複製到具有 audit 記錄檔的次要儲存體位置。
+Azure 存儲通過自動副本提供資料恢復能力，但不會阻止使用者或應用程式代碼意外或惡意損壞資料。 在應用程式或使用者錯誤發生期間保持資料逼真度需要更高級的技術，例如使用稽核記錄將資料複製到輔助存儲位置。
 
-下表提供儲存體帳戶復原範圍的總覽，視複寫策略而定。
+下表概述了存儲帳戶恢復的範圍，具體取決於複寫原則。
 
-| |LRS|ZRS|GRS|RA-GRS|
+| |LRS|ZRS|GRS|RA - GRS|
 |---|---|---|---|---|
-|儲存體帳戶 Azure Resource Manager|是|是|是|是|
-|傳統儲存體帳戶|是|是|是|是|
+|存儲帳戶 Azure 資源管理器|是|是|是|是|
+|存儲帳戶經典|是|是|是|是|
 
-收集下列資訊，並使用 Microsoft 支援服務提出支援要求：
+收集以下資訊，並與 Microsoft 支援部門提交支援請求：
 
 * 儲存體帳戶名稱
 * 刪除日期
-* 儲存體帳戶區域
-* 如何刪除儲存體帳戶？
-* 哪些方法會刪除儲存體帳戶？ （入口網站、PowerShell 等）
+* 存儲帳戶區域
+* 如何刪除存儲帳戶？
+* 刪除存儲帳戶的方法是什麼？ （門戶、電源外殼等）
 
-重要重點
+要點
 
-* 最多可能需要15天的時間來刪除儲存體服務，才能執行垃圾收集，因此無法使用 SLA 來復原儲存體帳戶。
-* Microsoft 支援服務將會嘗試以最佳方式復原容器/帳戶，而且無法保證修復。
+* 存儲服務執行垃圾回收通常可能需要自刪除時間起最多 15 天，因此可能無法使用 SLA 恢復存儲帳戶恢復。
+* Microsoft 支援將盡力恢復容器/帳戶，並且不能保證恢復。
 
 > [!NOTE]
-> 如果帳戶已重新建立，則復原可能無法成功。 如果您已經重新建立帳戶，您必須先將它刪除，然後才能嘗試復原。
+> 如果已重新創建帳戶，則恢復可能不成功。 如果您已重新創建帳戶，必須先將其刪除，然後才能嘗試恢復。

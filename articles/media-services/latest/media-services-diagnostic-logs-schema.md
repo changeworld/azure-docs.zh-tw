@@ -1,6 +1,6 @@
 ---
-title: Azure 媒體服務診斷記錄架構-Azure
-description: 本文示範 Azure 媒體服務診斷記錄架構。
+title: Azure 媒體服務診斷日誌架構 - Azure
+description: 本文演示 Azure 媒體服務診斷日誌架構。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,41 +14,41 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750885"
 ---
 # <a name="diagnostic-logs-schemas"></a>診斷記錄結構描述
 
-[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 您可以監視媒體服務診斷記錄，並為所收集的計量和記錄建立警示和通知。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)、將它們串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將它們匯出至[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
+[Azure 監視器](../../azure-monitor/overview.md)使您能夠監視指標和診斷日誌，以説明您瞭解應用程式的性能。 您可以監視媒體服務診斷日誌，並為收集的指標和日誌創建警報和通知。 您可以將日誌發送到[Azure 存儲](https://azure.microsoft.com/services/storage/)，將它們資料流到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，並將它們匯出到[日誌分析](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
 
-如需詳細資訊，請參閱[Azure 監視器計量](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+有關詳細資訊，請參閱[Azure 監視器指標](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷日誌](../../azure-monitor/platform/platform-logs-overview.md)。
 
-本文說明媒體服務診斷記錄架構。
+本文介紹了媒體服務診斷日誌架構。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>最上層診斷記錄結構描述
 
-如需最上層診斷記錄架構的詳細描述，請參閱[支援的服務、架構和 Azure 診斷記錄的類別](../../azure-monitor/platform/tutorial-dashboards.md)。
+有關頂級診斷日誌架構的詳細描述，請參閱[Azure 診斷日誌的支援服務、架構和類別](../../azure-monitor/platform/tutorial-dashboards.md)。
 
-## <a name="key-delivery-log-schema"></a>金鑰傳遞記錄架構
+## <a name="key-delivery-log-schema"></a>金鑰交付日誌架構
 
 ### <a name="properties"></a>屬性
 
-這些是金鑰傳遞記錄架構特有的屬性。
+這些屬性特定于金鑰傳遞日誌架構。
 
-|名稱|說明|
+|名稱|描述|
 |---|---|
-|keyId|所要求之金鑰的識別碼。|
-|keyType|可能是下列其中一個值： "Clear" （無加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
-|policyName|原則的 Azure Resource Manager 名稱。|
+|keyId|請求的金鑰的 ID。|
+|keyType|可以是以下值之一："清除"（無加密）、"公平播放"、"播放就緒"或"威文"。|
+|policyName|策略的 Azure 資源管理器名稱。|
 |tokenType|Token 類型。|
-|statusMessage|狀態訊息。|
+|狀態訊息|狀態訊息。|
 
 ### <a name="examples"></a>範例
 
-金鑰傳遞要求架構的屬性。
+金鑰傳遞請求架構的屬性。
 
 ```json
 {
@@ -114,4 +114,4 @@ ms.locfileid: "75750885"
 
 ## <a name="next-steps"></a>後續步驟
 
-[監視媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)
+[監視媒體服務指標和診斷日誌](media-services-metrics-diagnostic-logs.md)

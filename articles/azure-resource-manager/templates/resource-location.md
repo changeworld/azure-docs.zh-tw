@@ -1,31 +1,31 @@
 ---
 title: 範本資源位置
-description: 說明如何設定 Azure Resource Manager 範本中的資源位置。
+description: 介紹如何在 Azure 資源管理器範本中設置資源位置。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122401"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156424"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>在 Resource Manager 範本中設定資源位置
+# <a name="set-resource-location-in-arm-template"></a>在 ARM 範本中設置資源位置
 
-在部署範本時，您必須為每個資源提供一個位置。 位置不一定要與資源群組位置相同的位置。
+部署 Azure 資源管理器 （ARM） 範本時，必須為每個資源提供位置。 該位置不需要與資源組位置位於同一位置。
 
-## <a name="get-available-locations"></a>取得可用的位置
+## <a name="get-available-locations"></a>獲取可用位置
 
-不同的位置支援不同的資源類型。 若要取得資源類型支援的位置，請使用 Azure PowerShell 或 Azure CLI。
+不同的位置支援不同的資源類型。 要獲取資源類型的受支援位置，請使用 Azure PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -36,9 +36,9 @@ az provider show \
 
 ---
 
-## <a name="use-location-parameter"></a>使用 location 參數
+## <a name="use-location-parameter"></a>使用位置參數
 
-若要在部署範本時允許彈性，請使用參數來指定資源的位置。 將參數的預設值設定為 `resourceGroup().location`。
+為了在部署範本時允許靈活性，請使用參數指定資源的位置。 將參數的預設值設置為`resourceGroup().location`。
 
 下列範例顯示部署至某個 (已指定為參數) 位置的儲存體帳戶：
 
@@ -96,4 +96,4 @@ az provider show \
 ## <a name="next-steps"></a>後續步驟
 
 * 如需範本函數的完整清單，請參閱 [Azure 資源管理員範本函數](template-functions.md)。
-* 如需範本檔案的詳細資訊，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 有關範本檔的詳細資訊，請參閱瞭解[ARM 範本的結構和語法](template-syntax.md)。

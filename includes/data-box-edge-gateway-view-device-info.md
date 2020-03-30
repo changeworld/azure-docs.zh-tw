@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174439"
 ---
-1. [連線到 PowerShell 介面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsApplianceInfo`以取得您裝置的資訊。
+1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
+2. 使用`Get-HcsApplianceInfo`獲取設備的資訊。
 
-    下列範例會示範這個指令程式的使用方式：
+    下面的示例顯示了此 Cmdlet 的用法：
 
     ```
     [10.100.10.10]: PS>Get-HcsApplianceInfo
@@ -43,16 +43,16 @@ ms.locfileid: "67174439"
     IsRegistered                  : False
     ```
 
-    以下是一些重要的裝置資訊的摘要資料表：
+    下表總結了一些重要的設備資訊：
     
     | 參數                             | 描述                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | 在裝置部署期間透過本機 web UI 設定的裝置易記名稱。 預設的易記名稱是裝置序號。  |   |
-    | SerialNumber                   | 裝置序號是在工廠所指派的唯一號碼。                                                                             |   |
-    | 模型                          | 您的資料方塊邊緣或方塊部署資料閘道的裝置的模型。 此模型是方塊部署資料閘道的虛擬和實體的資料方塊的邊緣。                   |   |
-    | FriendlySoftwareVersion        | 對應至裝置軟體版本的易記字串。 執行預覽的系統，好易軟體版本會是資料方塊邊緣 1902年。 |   |
-    | HcsVersion                     | 裝置上執行的 HCS 軟體版本。 比方說，對應至資料方塊邊緣 1902年的 HCS 軟體版本是 1.4.771.324。            |   |
-    | LocalCapacityInMb              | 單位是 mb / 裝置的本機容量總計。                                                                                                        |   |
-    | IsRegistered                   | 這個值表示是否您的裝置就會啟動服務。                                                                                         |   |
+    | FriendlyName                   | 設備部署期間通過本地 Web UI 配置的設備易記名稱。 預設的易記名稱是裝置序號。  |   |
+    | SerialNumber                   | 設備序號是在工廠分配的唯一編號。                                                                             |   |
+    | 模型                          | 資料框邊緣或資料框閘道設備的模型。 該模型對於資料框閘道是虛擬的，對於資料框邊緣是物理的。                   |   |
+    | FriendlySoftwareVersion        | 對應至裝置軟體版本的易記字串。 對於運行預覽的系統，友好的軟體版本將是資料框邊緣 1902。 |   |
+    | HcsVersion                     | 裝置上執行的 HCS 軟體版本。 例如，與資料框邊緣 1902 對應的 HCS 軟體版本是 1.4.771.324。            |   |
+    | 本地容量InMb              | 以百萬位元表示設備的總本地容量。                                                                                                        |   |
+    | 已註冊                   | 此值指示您的設備是否已隨服務啟動。                                                                                         |   |
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect 雲端布建轉換
-description: 本文說明如何使用轉換來改變預設屬性對應。
+title: Azure AD 連接雲預配轉換
+description: 本文介紹如何使用轉換來更改預設屬性映射。
 author: billmath
 ms.author: billmath
 manager: davba
@@ -9,32 +9,32 @@ ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75549290"
 ---
 # <a name="transformations"></a>轉換
 
-使用轉換時，您可以使用雲端布建來變更屬性與 Azure Active Directory （Azure AD）同步處理方式的預設行為。
+通過轉換，可以使用雲預配更改屬性與 Azure 活動目錄 （Azure AD） 同步方式的預設行為。
 
-若要執行這項工作，您需要編輯架構，然後透過 web 要求重新提交。
+要執行此任務，您需要編輯架構，然後通過 Web 請求重新提交它。
 
-如需雲端布建屬性的詳細資訊，請參閱[瞭解 Azure AD 架構](concept-attributes.md)。
+有關雲預配屬性的詳細資訊，請參閱[瞭解 Azure AD 架構](concept-attributes.md)。
 
 
-## <a name="retrieve-the-schema"></a>取出架構
-若要取出架構，請遵循[查看架構](concept-attributes.md#view-the-schema)中的步驟。 
+## <a name="retrieve-the-schema"></a>檢索架構
+若要檢索架構，請按照[查看架構 中](concept-attributes.md#view-the-schema)的步驟操作。 
 
 ## <a name="custom-attribute-mapping"></a>自訂屬性對應
-若要加入自訂屬性對應，請遵循下列步驟。
+要添加自訂屬性對應，請按照以下步驟操作。
 
-1. 將架構複製到文字或程式碼編輯器，例如[Visual Studio Code](https://code.visualstudio.com/)。
-1. 在架構中找出您想要更新的物件。
+1. 將架構複製到文本或代碼編輯器（如[Visual Studio 代碼](https://code.visualstudio.com/)）。
+1. 在架構中查找要更新的物件。
 
    ![架構中的物件](media/how-to-transformation/transform1.png)</br>
-1. 找出使用者物件底下 `ExtensionAttribute3` 的程式碼。
+1. 找到使用者物件`ExtensionAttribute3`下的代碼。
 
     ```
                             {
@@ -62,7 +62,7 @@ ms.locfileid: "75549290"
                                 }
                             },
     ```
-1. 編輯程式碼，使 company 屬性對應至 `ExtensionAttribute3`。
+1. 編輯代碼，以便公司屬性對應到`ExtensionAttribute3`。
 
    ```
                                     {
@@ -90,25 +90,25 @@ ms.locfileid: "75549290"
                                         }
                                     },
    ```
- 1. 將架構複製回 [Graph Explorer]，將**要求類型**變更為 [ **PUT**]，然後選取 [**執行查詢**]。
+ 1. 將架構複製回圖形資源管理器，將**請求類型**更改為**PUT，** 然後選擇 **"執行查詢**"。
 
     ![執行查詢](media/how-to-transformation/transform2.png)
 
- 1. 現在，在 Azure 入口網站中，移至雲端布建設定，然後選取 [**重新開機**布建]。
+ 1. 現在，在 Azure 門戶中，轉到雲預配配置並選擇 **"重新開機預配**"。
 
-    ![重新開機布建](media/how-to-transformation/transform3.png)
+    ![重新開機預配](media/how-to-transformation/transform3.png)
 
- 1. 稍待一段時間之後，請在 Graph Explorer 中執行下列查詢來確認屬性是否已填入： `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`。
- 1. 您現在應該會看到此值。
+ 1. 稍等一段時間後，通過在圖形資源管理器中運行以下查詢來驗證正在填充屬性： `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`。
+ 1. 現在，您應該看到該值。
 
-    ![值隨即出現](media/how-to-transformation/transform4.png)
+    ![顯示該值](media/how-to-transformation/transform4.png)
 
-## <a name="custom-attribute-mapping-with-function"></a>使用 function 的自訂屬性對應
-如需更先進的對應，您可以使用函式，讓您運算元據並建立屬性值，以符合您組織的需求。
+## <a name="custom-attribute-mapping-with-function"></a>使用函數的自訂屬性對應
+對於更高級的映射，可以使用允許您運算元據並為屬性創建值以滿足組織需求的函數。
 
-若要執行這項工作，請遵循先前的步驟，然後編輯用來建立最終值的函式。
+要執行此任務，請按照前面的步驟操作，然後編輯用於構造最終值的函數。
 
-如需運算式語法和範例的詳細資訊，請參閱[在 Azure Active Directory 中撰寫屬性對應的運算式](reference-expressions.md)。
+有關運算式的語法和示例的資訊，請參閱[在 Azure 活動目錄中編寫屬性對應的運算式](reference-expressions.md)。
 
 
 ## <a name="next-steps"></a>後續步驟 

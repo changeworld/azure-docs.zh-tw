@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中保護您的叢集資料總管
-description: 本文說明如何在 Azure 入口網站中保護 Azure 資料總管中的叢集。
+title: 在 Azure 資料資源管理器中保護群集
+description: 本文介紹如何在 Azure 門戶中的 Azure 資料資源管理器中保護群集。
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,30 +8,30 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 0f935999b68a7283c032d43c42d688b273d5c450
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75720339"
 ---
-# <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>在 Azure 中保護您的叢集資料總管-Azure 入口網站
+# <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>在 Azure 資料資源管理器中保護群集 - Azure 門戶
 
-[Azure 磁碟加密](/azure/security/azure-security-disk-encryption-overview)有助於保護和保護您的資料，以符合組織的安全性和合規性承諾。 它提供叢集虛擬機器的 OS 和資料磁片的磁片區加密。 它也會與[Azure Key Vault](/azure/key-vault/)整合，可讓我們控制及管理磁片加密金鑰和密碼，並確保 VM 磁片上的所有資料都已加密。 
+[Azure 磁片加密](/azure/security/azure-security-disk-encryption-overview)有助於保護資料，以滿足組織安全性和合規性承諾。 它為群集虛擬機器的作業系統和資料磁片提供卷加密。 它還與 Azure[金鑰保存庫](/azure/key-vault/)集成，這使我們能夠控制和管理磁片加密金鑰和機密，並確保 VM 磁片上的所有資料都加密。 
   
-## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>在 Azure 入口網站中啟用待用加密
+## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>在 Azure 門戶中啟用靜態加密
   
-您的叢集安全性設定可讓您在叢集上啟用磁片加密。 在您的叢集上啟用待用[加密](/azure/security/fundamentals/encryption-atrest)可為儲存的資料（待用）提供資料保護。 
+群集安全設置允許您在群集上啟用磁片加密。 在群集上啟用[靜態加密](/azure/security/fundamentals/encryption-atrest)為存儲的資料（靜態）提供資料保護。 
 
-1. 在 Azure 入口網站中，移至您的 Azure 資料總管叢集資源。 在 [**設定**] 標題下，選取 [**安全性**]。 
+1. 在 Azure 門戶中，轉到 Azure 資料資源管理器群集資源。 在 **"設置"** 標題下，選擇 **"安全**"。 
 
-    ![開啟待用加密](media/manage-cluster-security/security-encryption-at-rest.png)
+    ![在靜止時打開加密](media/manage-cluster-security/security-encryption-at-rest.png)
 
-1. 在 [**安全性**] 視窗中，針對 [**磁片加密**] 安全性設定選取 [**開啟**]。 
+1. 在 **"安全"** 視窗中，為 **"磁片加密**安全設置**打開**"。 
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
  
 > [!NOTE]
-> 選取 [**關閉**] 以在啟用加密後予以停用。
+> 選擇 **"關閉**"以在加密啟用後禁用加密。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,15 +1,15 @@
 ---
-title: 指定計量和放置設定
+title: 指定指標和放置設置
 description: 藉由指定計量、放置條件約束及其他放置原則，了解如何描述 Service Fabric 服務。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: d4dcd319000edb204ba188ed14b4c797dba5cd38
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610092"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>設定 Service Fabric 服務的叢集資源管理員設定
@@ -33,9 +33,9 @@ ms.locfileid: "75610092"
 其他放置規則是透過「相互關聯」或「原則」來設定。
 
 ## <a name="next-steps"></a>後續步驟
-- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入了解計量及其設定方式，請查看[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
+- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 要瞭解有關指標以及如何配置指標的更多[，請查看本文](service-fabric-cluster-resource-manager-metrics.md)
 - 親和性是您可以針對服務設定的一種模式。 它並不常見，但如果您需要，可以參閱 [這裡](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
 - 有許多不同的放置規則可以在您的服務上設定以處理其他案例。 您可以在 [這裡](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
 - 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
-- 叢集資源管理員有許多描述叢集的選項。 若要深入了解這些選項，請參閱關於[描述 Service Fabric 叢集](service-fabric-cluster-resource-manager-cluster-description.md)一文
+- 叢集資源管理員有許多描述叢集的選項。 要瞭解有關它們的更多，請查看本文介紹[服務結構群集](service-fabric-cluster-resource-manager-cluster-description.md)

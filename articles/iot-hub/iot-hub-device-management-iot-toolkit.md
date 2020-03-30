@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Tools VSCode 的 Azure IoT 裝置管理
+title: 使用用於 VSCode 的 Azure IoT 工具的 Azure IoT 裝置管理
 description: 使用適用於 Visual Studio Code 的 Azure IoT Tools 來管理 Azure IoT 中樞裝置，並採用直接方法和對應項所需的屬性管理選項。
 author: formulahendry
 ms.service: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75911925"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來管理 Azure IoT 中樞裝置
@@ -47,35 +47,35 @@ ms.locfileid: "75911925"
 
 * 有效的 Azure 訂用帳戶。
 * 位於您訂用帳戶中的 Azure IoT 中樞。
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Code 的 Azure IoT Tools，](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或[在 Visual Studio Code 中開啟此連結](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [視覺工作室代碼](https://code.visualstudio.com/)
+* [用於 VS 代碼的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或在[視覺化工作室代碼 中打開此連結](vscode:extension/vsciot-vscode.azure-iot-tools)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登入以存取 IoT 中樞
 
-1. 在 VS Code 的 [總管] 檢視中，展開左下角的 [Azure IoT Hub Devices] \(Azure IoT 中樞裝置\) 部分。
+1. 在 VS Code 的 [總管]**** 檢視中，展開左下角的 [Azure IoT Hub Devices]**** \(Azure IoT 中樞裝置\) 部分。
 
-2. 按一下快顯功能表中的 [Select IoT Hub] \(選取 IoT 中樞\)。
+2. 按一下快顯功能表中的 [Select IoT Hub]**** \(選取 IoT 中樞\)。
 
 3. 快顯視窗會顯示在右下角，讓您第一次登入 Azure。
 
 4. 登入之後，系統會顯示您的 Azure 訂用帳戶清單，然後選取 [Azure 訂用帳戶] 和 [IoT 中樞]。
 
-5. 在幾秒鐘的時間內，裝置清單會顯示在 [Azure IoT Hub Devices] \(Azure IoT 中樞裝置\) 索引標籤中。
+5. 在幾秒鐘的時間內，裝置清單會顯示在 [Azure IoT Hub Devices]**** \(Azure IoT 中樞裝置\) 索引標籤中。
 
    > [!Note]
-   > 您也可以選擇 [設定 IoT 中樞連接字串] 來完成設定。 在快顯視窗中，輸入 IoT 裝置所連接之 IoT 中樞的**iothubowner**原則連接字串。
+   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在快顯視窗中輸入 IoT 設備連接到的 IoT 中心的**iothubowner**策略連接字串。
 
 ## <a name="direct-methods"></a>直接方法
 
-1. 以滑鼠右鍵按一下您的裝置，然後選取 [叫用直接方法]。 
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [叫用直接方法]****。 
 
 2. 在輸入方塊中輸入方法名稱和承載。
 
-3. 結果會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
+3. 結果將顯示在**輸出** > **Azure IoT 中心**視圖中。
 
 ## <a name="read-device-twin"></a>讀取裝置對應項
 
-1. 以滑鼠右鍵按一下您的裝置，然後選取 [編輯裝置對應項]。 
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [編輯裝置對應項]****。 
 
 2. **azure-iot-device-twin.json** 檔案與裝置對應項的內容一起開啟。
 
@@ -85,17 +85,17 @@ ms.locfileid: "75911925"
 
 2. 以滑鼠右鍵按一下 **azure-iot-device-twin.json** 檔案。
 
-3. 選取 [更新裝置對應項] 來更新裝置對應項。
+3. 選取 [更新裝置對應項]**** 來更新裝置對應項。
 
 ## <a name="send-cloud-to-device-messages"></a>傳送雲端到裝置訊息
 
 若要從您的 IoT 中樞將訊息傳送到裝置，請遵循下列步驟：
  
-1. 以滑鼠右鍵按一下您的裝置，然後選取 [Send C2D Message to Device] \(將 C2D 訊息傳送至裝置\)。 
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [Send C2D Message to Device]**** \(將 C2D 訊息傳送至裝置\)。 
 
 2. 在輸入方塊中輸入訊息。
 
-3. 結果會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
+3. 結果將顯示在**輸出** > **Azure IoT 中心**視圖中。
 
 ## <a name="next-steps"></a>後續步驟
 

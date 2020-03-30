@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749526"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 程式設計模型概觀
@@ -24,7 +24,7 @@ Service Fabric 提供多種撰寫和管理服務的方式。 服務可選擇使�
 
 ## <a name="containers"></a>容器
 
-根據預設，Service Fabric 會以處理程序形式部署和啟用這些服務。 Service Fabric 也可以在[容器](service-fabric-containers-overview.md)中部署服務。 Service Fabric 支援在 Windows Server 2016 和更新版本上部署 Linux 容器和 Windows 容器。 可以從任何容器存放庫提取容器映像，並部署至機器。 您可以在容器中部署現有的應用程式成為客體可執行檔、Service Fabric 無狀態或具狀態 Reliable Services，或 Reliable Actors，並且可以在同一個應用程式中混合使用處理序中的服務和容器中的服務。
+根據預設，Service Fabric 會以處理程序形式部署和啟用這些服務。 Service Fabric 也可以在[容器](service-fabric-containers-overview.md)中部署服務。 Service Fabric 支援在 Windows Server 2016 及更高版本部署 Linux 容器和 Windows 容器。 可以從任何容器存放庫提取容器映像，並部署至機器。 您可以在容器中部署現有的應用程式成為客體可執行檔、Service Fabric 無狀態或具狀態 Reliable Services，或 Reliable Actors，並且可以在同一個應用程式中混合使用處理序中的服務和容器中的服務。
 
 [深入了解如何在 Windows 或 Linux 中將服務容器化](service-fabric-deploy-container.md)
 
@@ -34,19 +34,19 @@ Reliable Services 是輕量級的服務撰寫架構，這些服務與 Service Fa
 
 Reliable Services 與大多數服務平台 (例如 Web 伺服器) 一樣，可以是無狀態的，其中每個服務執行個體都是以平等方式建立，並且狀態保存在外部解決方案中，例如 Azure DB 或「Azure 資料表儲存體」。
 
-Reliable Services 的專屬 Service Fabric，也可以是具狀態的，其狀態會使用可靠的集合直接保存在服務本身。 狀態透過複寫變得高度可用，並透過資料分割散發，全由 Service Fabric 自動管理。
+可靠性服務是服務結構獨有的，也可以是有狀態的，即狀態直接在服務本身中使用可靠集合。 狀態透過複寫變得高度可用，並透過資料分割散發，全由 Service Fabric 自動管理。
 
 [深入了解 Reliable Services](service-fabric-reliable-services-introduction.md)或從[撰寫第一個 Reliable Services](service-fabric-reliable-services-quick-start.md) 開始。
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-ASP.NET Core 是一種開放原始碼、跨平臺的架構，可用於建立新式雲端式網際網路連線的應用程式，例如 web apps、IoT 應用程式和行動後端。 Service Fabric 可與 ASP.NET Core 整合，因此您可以同時撰寫能夠利用可靠集合和 Service Fabric 的進階協調流程功能的無狀態與具狀態的 ASP.NET Core 應用程式。
+ASP.NET Core 是一個開源的跨平臺框架，用於構建現代基於雲的 Internet 連接應用程式，如 Web 應用、IoT 應用和移動後端。 Service Fabric 可與 ASP.NET Core 整合，因此您可以同時撰寫能夠利用可靠集合和 Service Fabric 的進階協調流程功能的無狀態與具狀態的 ASP.NET Core 應用程式。
 
 [深入了解 Service Fabric 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)，或從[撰寫第一個 ASP.NET Core Service Fabric 應用程式](service-fabric-tutorial-create-dotnet-app.md)開始使用。
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-以 Reliable Services 為基礎，可靠的動作專案架構是一種應用程式架構，可根據計算動作專案[模型](https://en.wikipedia.org/wiki/Actor_model)來執行[虛擬執行者](https://research.microsoft.com/en-us/projects/orleans/)模式。 可靠的動作專案架構會使用獨立的計算單位和狀態，*以及稱為動作*專案的單一執行緒執行。 Reliable Actor 架構提供動作項目的內建通訊和預先設定狀態持續性和相應放大組態。
+"可靠執行元件"框架建立在可靠服務之上，是一個應用程式框架，它基於計算[執行元件模型](https://en.wikipedia.org/wiki/Actor_model)實現[虛擬執行者](https://research.microsoft.com/en-us/projects/orleans/)模式。 可靠參與者框架使用獨立的計算和狀態單位，單線程執行稱為*參與者*。 Reliable Actor 架構提供動作項目的內建通訊和預先設定狀態持續性和相應放大組態。
 
 由於 Reliable Actors 本身是建置在 Reliable Services 上的應用程式架構，因此與 Service Fabric 平台完全整合，並可得益於平台提供的完整功能集。
 
@@ -62,4 +62,4 @@ ASP.NET Core 是一種開放原始碼、跨平臺的架構，可用於建立新�
 
 [Reliable Actors 概觀](service-fabric-reliable-actors-introduction.md)
 
-[Service Fabric 和 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+[服務結構與ASP.NET核心](service-fabric-reliable-services-communication-aspnetcore.md)

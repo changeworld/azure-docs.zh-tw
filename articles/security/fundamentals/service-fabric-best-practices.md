@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 安全性的最佳做法
+title: Azure 服務交換矩陣安全性的最佳做法
 description: 本文提供一組 Azure Service Fabric 安全性的最佳做法。
 author: unifycloud
 ms.author: tomsh
@@ -8,16 +8,16 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548814"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署應用程式很快速、輕鬆且符合成本效益。 將您的雲端應用程式部署至生產環境之前，請檢閱重要和建議最佳做法，以在應用程式中實作安全叢集。
 
-Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。 Service Fabric 也可解決開發與管理雲端應用程式時遭遇的重大挑戰。 開發人員與系統管理員可以避免複雜的基礎結構問題，將全部心力集中在實作要求高並可信賴、管理及調整的任務關鍵性工作負載上。
+Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。 Service Fabric 也可解決開發與管理雲端應用程式時遭遇的重大挑戰。 開發人員與管理員能夠避免複雜的基礎結構問題，專注於實作關鍵且嚴格要求之可調整、可信賴且可管理的工作負載。
 
 針對每個最佳做法，我們會說明︰
 
@@ -119,7 +119,7 @@ Service Fabric Reliable Actors 是動作項目設計模式的實作。 如同任
 複寫器組態會設定負責讓動作項目狀態提供者狀態高度可靠的複寫器。
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>設定 Azure Service Fabric 的 SSL
-伺服器驗證程序會[驗證](../../service-fabric/service-fabric-cluster-creation-via-arm.md)管理用戶端的叢集管理端點。 接著，管理用戶端會辨識其是與實際的叢集在交談。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 使用的 Service Fabric Explorer 提供 [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md)。
+伺服器驗證程序會[驗證](../../service-fabric/service-fabric-cluster-creation-via-arm.md)管理用戶端的叢集管理端點。 接著，管理用戶端會辨識其是與實際的叢集在交談。 此證書還為 HTTPS 管理 API 和 HTTPS 中的服務結構資源管理器提供[SSL。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
 您必須為您的叢集取得自訂網域名稱。 當您向憑證授權單位要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
 
 若要設定應用程式的 SSL，您必須先取得已由 CA 簽署的 SSL 憑證。 CA 是受信任的第三方，會就 SSL 安全性目的發出憑證。 如果您還沒有 SSL 憑證，就必須向銷售 SSL 憑證的公司取得。
@@ -132,10 +132,10 @@ Service Fabric Reliable Actors 是動作項目設計模式的實作。 如同任
 -   憑證的主體名稱必須符合用來存取您雲端服務的網域名稱。
 
     - 取得要在存取雲端服務時使用的自訂網域名稱。
-    - 向 CA 要求包含主體名稱的憑證，可符合您服務的自訂網域名稱。 例如，如果您的自訂網域名稱為 __contoso__ **.com**，您 CA 的憑證就要有 **.contoso.com** 或 __www__ **.contoso.com** 主體名稱。
+    - 向 CA 要求包含主體名稱的憑證，可符合您服務的自訂網域名稱。 例如，如果您的自訂網域名稱為 __contoso__**.com**，您 CA 的憑證就要有 **.contoso.com** 或 __www__**.contoso.com** 主體名稱。
 
     >[!NOTE]
-    >您無法從 CA 取得 __cloudapp__ **.net** 網域的 SSL 憑證。
+    >您無法從 CA 取得 __cloudapp__**.net** 網域的 SSL 憑證。
 
 -   憑證至少必須以 2,048 位元加密。
 
@@ -169,7 +169,7 @@ Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的�
 若要深入了解如何設定金鑰保存庫，請參閱[什麼是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
 ## <a name="assign-users-to-roles"></a>將使用者指派給角色
-建立應用程式來代表您的叢集之後，請將使用者指派給 Service Fabric 所支援的角色：唯讀和系統管理員。您可以使用 Azure 入口網站來指派這些角色。
+創建表示群集的應用程式後，將使用者分配給 Service Fabric 支援的角色：唯讀和管理員。可以使用 Azure 門戶分配這些角色。
 
 >[!NOTE]
 > 如需在 Service Fabric 中使用角色的詳細資訊，請參閱[角色型存取控制 (適用於 Service Fabric 用戶端)](../../service-fabric/service-fabric-cluster-security-roles.md)。

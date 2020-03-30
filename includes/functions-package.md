@@ -10,16 +10,16 @@ ms.date: 05/23/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 55e57d12b6d632f19318f221a49668804724e865
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67659759"
 ---
 下表說明如何在每個開發環境中為此繫結新增支援。
 
 | 開發環境               | 若要新增支援 <br>Functions 1.x  |
 |----------------------|----------------|
-|本機開發 - C# 類別庫       | [安裝套件](../articles/azure-functions/functions-bindings-register.md#vs) | 
+|本機開發 - C# 類別庫       | [安裝套裝軟體](../articles/azure-functions/functions-bindings-register.md#vs) | 
 |本機開發 - C# 指令碼、JavaScript、F# |自動         |
 |入口網站開發|  自動    |

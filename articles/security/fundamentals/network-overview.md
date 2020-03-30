@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749945"
 ---
 # <a name="azure-network-security-overview"></a>Azure 網路安全性概觀
@@ -46,7 +46,7 @@ Azure 需要虛擬機器連線至 Azure 虛擬網路。 虛擬網路是建置於
 
 深入了解：
 
-* [虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
+* [虛擬網路概述](../../virtual-network/virtual-networks-overview.md)
 
 ## <a name="network-access-control"></a>網路存取控制
 
@@ -93,7 +93,7 @@ NSG 未提供應用程式層級檢查或已驗證的存取控制。
 
 深入了解：
 
-* [服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
+* [服務終結點](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
 
 ### <a name="route-control-and-forced-tunneling"></a>路由控制和強制通道
 
@@ -111,7 +111,7 @@ Azure 網路支援在虛擬網路上自訂網路流量路由行為的能力。 �
 
 深入了解：
 
-* [什麼是使用者定義路由和 IP 轉送](../../virtual-network/virtual-networks-udr-overview.md)
+* [什麼是使用者定義的路由和 IP 轉發](../../virtual-network/virtual-networks-udr-overview.md)
 
 ### <a name="virtual-network-security-appliances"></a>虛擬網路安全性應用裝置
 
@@ -128,7 +128,7 @@ Azure 網路支援在虛擬網路上自訂網路流量路由行為的能力。 �
 * 應用程式存取控制
 * 額外的 DDoS 保護 (高於由 Azure 網狀架構本身所提供的 DDoS 保護)
 
-您可以使用 Azure 合作夥伴方案，來存取這些增強的網路安全性功能。 您可以造訪 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 並搜尋「安全性」和「網路安全性」，來尋找最新的 Azure 合作夥伴網路安全性解決方案。
+您可以使用 Azure 合作夥伴方案，來存取這些增強的網路安全性功能。 您可以通過訪問[Azure 應用商店](https://azure.microsoft.com/marketplace/)和搜索"安全"和"網路安全"來查找最新的 Azure 合作夥伴網路安全解決方案。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
 
@@ -158,7 +158,7 @@ Azure 網路支援下列安全遠端存取案例︰
 
 您可能想要讓個別的開發人員或操作人員在 Azure 中管理虛擬機器和服務。 例如，假設您需要存取虛擬網路上的虛擬機器。 但您的安全性原則不允許以 RDP 或 SSH 方式遠端存取個別虛擬機器。 在此情況下，您可以使用[點對站 VPN](../../vpn-gateway/point-to-site-about.md) 連線。
 
-點對站 VPN 連線可讓您在使用者與虛擬網路之間設定私人的安全連線。 建立 VPN 連線時，使用者可以透過 VPN 連結以 RDP 或 SSH 方式連線到虛擬網路上的任何虛擬機器 （這會假設使用者可以驗證並獲得授權）。點對站 VPN 支援：
+點對站 VPN 連線可讓您在使用者與虛擬網路之間設定私人的安全連線。 建立 VPN 連線時，使用者可以透過 VPN 連結以 RDP 或 SSH 方式連線到虛擬網路上的任何虛擬機器 （這假定使用者可以進行身份驗證並授權。點到網站 VPN 支援：
 
 * 安全通訊端通道通訊協定 (SSTP)，這是以 SSL 為基礎的專屬 VPN 通訊協定。 SSL VPN 解決方案可以穿透防火牆，因為大部分防火牆都會開啟 SSL 使用的 TCP 連接埠 443。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。
 
@@ -168,7 +168,7 @@ Azure 網路支援下列安全遠端存取案例︰
 
 深入了解：
 
-* [使用 PowerShell 設定虛擬網路的點對站連線](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [使用 PowerShell 配置指向虛擬網路的點對點連接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>透過 VPN 將內部部署網路連線到虛擬網路
 
@@ -193,7 +193,7 @@ Azure 網路支援下列安全遠端存取案例︰
 深入了解：
 
 * [ExpressRoute 技術概觀](../../expressroute/expressroute-introduction.md)
-* [ExpressRoute Direct](../../expressroute/expressroute-erdirect-about.md)
+* [快速路線直接](../../expressroute/expressroute-erdirect-about.md)
 * [Express Route Global Reach](../../expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>使虛擬網路彼此連線
@@ -202,13 +202,13 @@ Azure 網路支援下列安全遠端存取案例︰
 
 有一個選項是透過網際網路「繞回」，以將某個虛擬網路上的服務連線到另一個虛擬網路上的服務。 連線會從某個虛擬網路開始、經過網際網路，然後回到目的地虛擬網路。 這個選項會讓連線暴露在任何網際網路型通訊的固有安全性問題之中。
 
-建立在兩個虛擬網路之間連線的站對站 VPN 可能是更好的選項。 此方法會使用與前述跨單位站對站 VPN 連線相同的 [IPSec 通道模式](https://technet.microsoft.com/library/cc786385.aspx)通訊協定。
+建立在兩個虛擬網路之間連線的站對站 VPN 可能是更好的選項。 此方法使用與上述跨網站到網站 VPN 連接相同的[IPSec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)協定。
 
 這個方法的優點在於 VPN 連線是透過 Azure 網路網狀架構所建立的，而不是透過網際網路連線。 相較於透過網際網路連線的站對站 VPN，這會提供多一層的安全性。
 
 深入了解：
 
-* [使用 Azure Resource Manager 和 PowerShell 來設定 VNet 對 VNet 連線](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [使用 Azure 資源管理器和 PowerShell 配置 VNet 到 VNet 連接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 另一種連接虛擬網路的方式是 [VNET 對等互連](../../virtual-network/virtual-network-peering-overview.md)。 此功能可讓您連接兩個 Azure 網路，使其間的通訊透過 Microsoft 骨幹基礎結構進行，而完全不需要經由網際網路。 VNET 對等互連可連接相同區域內的兩個 VNET，或是跨 Azure 區域的兩個 VNET。 NSG 可用來限制不同子網路或系統之間的連線。
 
@@ -283,8 +283,8 @@ Azure 應用程式閘道會針對您的 Web 架構服務提供以 HTTP 為基礎
 
 深入了解：
 
-* [虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
-* [管理虛擬網路所使用的 DNS 伺服器](../../virtual-network/manage-virtual-network.md#change-dns-servers)
+* [虛擬網路概述](../../virtual-network/virtual-networks-overview.md)
+* [管理虛擬網路使用的 DNS 伺服器](../../virtual-network/manage-virtual-network.md#change-dns-servers)
 
 針對外部名稱解析，您有兩個選項：
 
@@ -299,7 +299,7 @@ Azure 會以 Azure DNS 的形式提供高可用性且高效能的外部 DNS 解�
 
 深入了解：
 
-* [Azure DNS 概觀](../../dns/dns-overview.md)
+* [Azure DNS 概述](../../dns/dns-overview.md)
 * [Azure DNS 私人區域](../../dns/private-dns-overview.md)可讓您在自動指派的名稱以外設定 Azure 資源的私人 DNS 名稱，而不需要新增自訂 DNS 解決方案。
 
 ## <a name="perimeter-network-architecture"></a>周邊網路架構
@@ -322,10 +322,10 @@ Microsoft 提供在 Azure 平台中名為**基本**的 DDoS 保護。 此功能�
 * **永遠可用流量監視：** 您的應用程式流量模式受到全年無休的全天候監視，以尋找 DDoS 攻擊的指標。 超出保護原則時，就會執行安全防護功能。
 * **攻擊風險降低報**攻擊風險降低報告會使用彙總的網路流量資料，提供有關以您資源為目標的攻擊詳細資訊。
 * **攻擊風險降低流程記錄**攻擊風險降低流程記錄可讓您在作用中 DDoS 攻擊期間，近乎即時地查看丟棄的流量、轉送的流量及其他相關攻擊資料。
-* **調適型微調：** 智慧型流量分析會在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。 第 3 層至第 7 層保護：搭配 Web 應用程式防火牆使用時，可提供完整的堆疊 DDoS 保護。
+* **自我調整調諧：** 智慧流量分析可以瞭解應用程式的流量，並選擇和更新最適合您的服務的設定檔。 設定檔會隨著時間調整流量變更。 第 3 層至第 7 層保護：搭配 Web 應用程式防火牆使用時，可提供完整的堆疊 DDoS 保護。
 * **廣泛的安全防護範圍：** 可利用全域功能降低超過 60 種不同攻擊類型的風險，以抵禦最大的已知 DDoS 攻擊。
 * **攻擊計量：** 透過 Azure 監視器可以存取每個攻擊的摘要計量。
-* **攻擊警示：** 警示可以在開始和停止攻擊時設定，並在攻擊的持續時間內使用內建攻擊計量。 警示會整合到您的作業軟體，例如 Microsoft Azure 監視器記錄、Splunk、Azure 儲存體、電子郵件和 Azure 入口網站。
+* **攻擊警報：** 警報可以在攻擊的開始和停止以及攻擊持續時間內使用內置攻擊指標進行配置。 警報集成到操作軟體中，如 Microsoft Azure 監視器日誌、Splunk、Azure 存儲、電子郵件和 Azure 門戶。
 * **成本保證：** 資料傳輸和應用程式相應放大服務會針對記載的 DDoS 攻擊計算點數。
 * **DDoS 快速回應**標準 DDoS 保護的客戶現在可以在攻擊進行期間，連絡 Rapid Response 小組。 DRR 可協助您在攻擊發生期間調查攻擊和自訂移轉，以及進行攻擊後的分析。
 
@@ -367,7 +367,7 @@ Azure 網路監看員可協助您進行疑難排解，並提供一組全新的�
 如需網路監看員以及如何開始在實驗室中測試部分功能的詳細資訊，請參閱 [Azure 網路監看員監視概觀](../../network-watcher/network-watcher-monitoring-overview.md)。
 
 > [!NOTE]
-> 如需此服務可用性和狀態的最新通知，請查看 [Azure 更新頁面](https://azure.microsoft.com/updates/?product=network-watcher)。
+> 有關此服務的可用性和狀態的最新通知，請查看[Azure 更新頁](https://azure.microsoft.com/updates/?product=network-watcher)。
 
 ### <a name="azure-security-center"></a>Azure 資訊安全中心
 
@@ -383,7 +383,7 @@ Azure 資訊安全中心可協助您預防、偵測和回應威脅，並加強�
 
 * [Azure 資訊安全中心簡介](../../security-center/security-center-intro.md)
 
-### <a name="virtual-network-tap"></a>Virtual Network TAP
+### <a name="virtual-network-tap"></a>虛擬網路 TAP
 
 Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路流量串流到網路封包收集器或分析工具。 收集器或分析工具是由網路虛擬設備合作夥伴所提供。 您可以使用相同的虛擬網路 TAP 資源，以從相同或不同訂用帳戶中的多個網路介面彙總流量。
 
@@ -395,11 +395,11 @@ Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路
 
 網路層級的記錄是任何網路安全性案例的重要功能。 在 Azure 中，您可以記錄針對 NSG 所取得的資訊，以取得網路層級的記錄資訊。 使用 NSG 記錄，您可以從下列項目取得資訊︰
 
-* [活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。 使用這些記錄來檢視已提交至您 Azure 訂用帳戶的所有作業。 預設會啟用這些記錄，並且可在 Azure 入口網站內使用。 它們以前稱為稽核或作業記錄。
+* [活動日誌](../../azure-monitor/platform/platform-logs-overview.md)。 使用這些記錄來檢視已提交至您 Azure 訂用帳戶的所有作業。 預設會啟用這些記錄，並且可在 Azure 入口網站內使用。 它們以前稱為稽核或作業記錄。
 * 事件記錄。 這些記錄會提供已套用哪些 NSG 規則的相關資訊。
 * 計數器記錄。 這些記錄可讓您知道套用每個 NSG 規則以拒絕或允許流量的次數。
 
 您也可以使用 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/) (功能強大的資料視覺化工具) 來檢視和分析這些記錄。
 深入了解：
 
-* [網路安全性群組（Nsg）的 Azure 監視器記錄](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [網路安全性群組 （NSG） 的 Azure 監視器日誌](../../virtual-network/virtual-network-nsg-manage-log.md)

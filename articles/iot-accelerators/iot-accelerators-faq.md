@@ -1,6 +1,6 @@
 ---
 title: IoT 解決方案加速器的常見問題集 - Azure | Microsoft Docs
-description: 本文會回答 IoT 解決方案加速器的常見問題。 它包含 GitHub 存放庫的連結。
+description: 本文回答了 IoT 解決方案加速器的常見問題。 它包括指向 GitHub 存儲庫的連結。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647708"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解決方案加速器的常見問題集
 
-另請參閱[連線處理站專屬的常見問題集](iot-accelerators-faq-cf.md)和[遠端監視專屬的常見問題集](iot-accelerators-faq-rm-v2.md)。
+另請參閱[連接工廠特定的常見問題解答](iot-accelerators-faq-cf.md)和[特定于遠端監控的常見問題解答](iot-accelerators-faq-rm-v2.md)。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>哪裡可以找到解決方案加速器的原始程式碼？
 
@@ -65,20 +65,20 @@ ms.locfileid: "75647708"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>哪裡可以找到舊版遠端監視解決方案的相關資訊？
 
-舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 上找到封存的文件。
+舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在 中找到 存檔的文檔。 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>是否可在與現有解決方案相同的地理區域中使用新的解決方案加速器？
 
 是，可在相同的地理區域中使用新的遠端監視。
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>刪除 Azure 入口網站中的資源群組和在 azureiotsolutions.com 中的解決方案加速器上按一下 [刪除] 有何差異？
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>在 Azure 門戶中刪除資源組和按一下azureiotsolutions.com中的解決方案加速器上的刪除之間的區別是什麼？
 
-* 如果您在[azureiotsolutions.com](https://www.azureiotsolutions.com/)中刪除解決方案加速器，就會刪除您在建立解決方案加速器時所部署的所有資源。 將額外資源新增到資源群組時，也會一併刪除這些資源。
+* 如果在[azureiotsolutions.com](https://www.azureiotsolutions.com/)中刪除解決方案加速器，則刪除創建解決方案加速器時部署的所有資源。 將額外資源新增到資源群組時，也會一併刪除這些資源。
 * 如果您在 [Azure 入口網站](https://portal.azure.com)中刪除資源群組，則只會刪除該資源群組中的資源。 您還必須刪除與解決方案加速器相關聯的 Azure Active Directory 應用程式。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>可以繼續利用我在 Azure IoT 解決方案加速器中的現有投資嗎？
 
-可以。 目前存在的任何解決方案都會繼續在您的 Azure 訂用帳戶中運作，而且原始碼在 GitHub 中仍保持可用。
+是。 目前存在的任何解決方案都會繼續在您的 Azure 訂用帳戶中運作，而且原始碼在 GitHub 中仍保持可用。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>我可以在一個訂用帳戶中佈建多少個 IoT 中樞執行個體？
 
@@ -107,7 +107,7 @@ ms.locfileid: "75647708"
 
 您也可以探索 IoT 解決方案加速器的一些其他特性與功能：
 
-* [探索遠端監視解決方案加速器的功能](quickstart-remote-monitoring-deploy.md)
+* [探索遠端監控解決方案加速器的功能](quickstart-remote-monitoring-deploy.md)
 * [預測性維護解決方案加速器概觀](iot-accelerators-predictive-overview.md)
 * [部署連線的處理站解決方案加速器](quickstart-connected-factory-deploy.md) \(英文\)
 * [從頭建立 IoT 安全性](/azure/iot-fundamentals/iot-security-ground-up)

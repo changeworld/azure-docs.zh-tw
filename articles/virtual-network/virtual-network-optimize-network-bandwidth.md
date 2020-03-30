@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
 ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75690892"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>最佳化 Azure 虛擬機器的網路輸送量

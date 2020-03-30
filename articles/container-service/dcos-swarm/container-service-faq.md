@@ -10,21 +10,21 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887915"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(已被取代) Container Service 常見問題集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>協調器
+## <a name="orchestrators"></a>Orchestrator
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Azure Container Service 上支援哪些容器 Orchestrator？ 
 
-支援開放原始碼的 DC/OS、Docker Swarm 和 Kubernetes。 如需詳細資訊，請參閱[概觀](../kubernetes/container-service-intro-kubernetes.md)。
+支援開放原始碼的 DC/OS、Docker Swarm 和 Kubernetes。 有關詳細資訊，請參閱[概述](../kubernetes/container-service-intro-kubernetes.md)。
  
 ### <a name="do-you-support-docker-swarm-mode"></a>是否支援 Docker Swarm 模式？ 
 
@@ -52,7 +52,7 @@ Azure Container Service 是具有 SLA 保證的 Azure 服務，其功能可在 A
 
 您可以在作業系統上使用標準工具來建立 SSH RSA 公用和私用金鑰組，以針對叢集的 Linux 虛擬機器進行驗證。 如需相關步驟，請參閱 [OS X 及 Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../../virtual-machines/linux/ssh-from-windows.md) 指引。 
 
-如果您使用 Azure CLI 命令來部署容器服務叢集，可以為您的叢集自動產生 SSH 金鑰。
+如果您使用 Azure CLI 命令部署容器服務叢集，系統會自動為叢集產生 SSH 金鑰。
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>如何為 Kubernetes 叢集建立服務主體？
 
@@ -98,11 +98,11 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 
 1. 在入口網站中，瀏覽至叢集部署的資源群組。  
 
-2. 按一下 [概觀]，然後按一下 [基本資訊] 下 [部署] 的連結。 
+2. 按一下 [概觀]****，然後按一下 [基本資訊]**** 下 [部署]**** 的連結。 
 
-3. 在 [部署歷程記錄] 刀鋒視窗中，按一下名稱開頭為 **microsoft-acs** 且後接部署日期的部署。 範例︰microsoft-acs-201701310000。  
+3. 在 [部署歷程記錄]**** 刀鋒視窗中，按一下名稱開頭為 **microsoft-acs** 且後接部署日期的部署。 範例︰microsoft-acs-201701310000。  
 
-4. 在 [摘要] 頁面的 [輸出] 底下，提供了一些叢集連結。 **SSHMaster0** 會提供容器服務叢集中第一個主要主機的 SSH 連接字串。 
+4. 在 [摘要]**** 頁面的 [輸出]**** 底下，提供了一些叢集連結。 **SSHMaster0** 會提供容器服務叢集中第一個主要主機的 SSH 連接字串。 
 
 如先前所述，您也可以使用 Azure 工具來尋找主要主機的 FQDN。 請使用建立叢集時所指定的主要主機 FQDN 和使用者名稱，透過 SSH 連線到主要主機。 例如：
 
@@ -112,9 +112,9 @@ ssh userName@masterFQDN –A –p 22 
 
 如需詳細資訊，請參閱[連接到 Azure Container Service 叢集](../../container-service/kubernetes/container-service-connect.md)。
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名稱解析在 Windows 中沒有作用。 我該怎麼做？
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名稱解析在 Windows 中沒有作用。 我該怎麼辦？
 
-Windows 上有一些已知的 DNS 問題，其修正程式仍在進行中。請確定您使用的是最新的 acs 引擎和 Windows 版本（已安裝[KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588)和[KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ），以便您的環境可以受益。 否則，請參閱下表中的風險降低步驟：
+Windows 上存在一些已知的 DNS 問題，其修復程式仍在主動淘汰中。請確保您使用的是最新的 acs 引擎和 Windows 版本（安裝了[KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588)和[KB4089848），](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848)以便您的環境可以從中受益。 否則，請參閱下表中的風險降低步驟：
 
 | DNS 徵兆 | 因應措施  |
 |-------------|-------------|

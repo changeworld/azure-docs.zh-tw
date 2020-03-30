@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心和 Azure Container Registry
-description: 瞭解 Azure 資訊安全中心與 Azure Container Registry 的整合
+title: Azure 安全中心和 Azure 容器註冊表
+description: 瞭解 Azure 安全中心與 Azure 容器註冊表的集成
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,40 +13,40 @@ ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
 ms.openlocfilehash: 069ce6ca1e76a9bd954031708702c973387abbaa
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78205988"
 ---
-# <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry 與資訊安全中心整合
+# <a name="azure-container-registry-integration-with-security-center"></a>Azure 容器註冊表與安全中心的集成
 
-Azure Container Registry （ACR）是受控的私用 Docker Registry 服務，可在中央登錄中儲存及管理 Azure 部署的容器映射。 它是以開放原始碼的 Docker Registry 2.0 為基礎。
+Azure 容器註冊表 （ACR） 是一種託管的專用 Docker 註冊表服務，用於在中央註冊表中存儲和管理 Azure 部署的容器映射。 它基於開源 Docker 註冊表 2.0。
 
-如果您是在 Azure 資訊安全中心的標準層，您可以新增容器登錄套件組合。 這項選擇性功能可讓您更深入瞭解 ARM 型登錄中的映射弱點。 啟用或停用訂用帳戶層級的配套，以涵蓋訂用帳戶中的所有登錄。 這項功能是按映射收費，如[定價頁面](security-center-pricing.md)所示。 啟用容器登錄庫組合，可確保資訊安全中心已準備好掃描已推送至登錄的映射。 
+如果您位於 Azure 安全中心的標準層，則可以添加容器註冊表捆綁包。 此可選功能可更深入地瞭解基於 ARM 的註冊表中圖像的漏洞。 在訂閱級別啟用或禁用捆綁包，以涵蓋訂閱中的所有註冊表。 此功能按圖像收費，如[定價頁上](security-center-pricing.md)所示。 啟用容器註冊表包，可確保安全中心準備好掃描推送到註冊表的圖像。 
 
-當映射推送至您的登錄時，資訊安全中心會自動掃描該映射。 若要觸發映射掃描，請將其推送至您的存放庫。
+每當圖像推送到註冊表時，安全中心會自動掃描該圖像。 要觸發映射的掃描，請將其推送到存儲庫。
 
-當掃描完成時（通常在大約10分鐘之後），資訊安全中心建議中會提供結果，如下所示：
+掃描完成後（通常在大約 10 分鐘後），安全中心建議中提供了調查結果，如下所示：
 
-[![範例 Azure 資訊安全中心有關在 Azure Container Registry （ACR）主控映射中探索到的弱點的建議](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![有關 Azure 容器註冊表 （ACR） 託管映射中發現的漏洞的 Azure 安全中心建議示例](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>整合的優點
 
-資訊安全中心可識別您訂用帳戶中以 ARM 為基礎的 ACR 登錄，並順暢地提供：
+安全中心在訂閱中標識基於 ARM 的 ACR 註冊表，並無縫提供：
 
-* **Azure-原生弱點掃描**所有已推送的 Linux 映射。 資訊安全中心使用領先業界的弱點掃描廠商 Qualys 掃描影像。 這個原生解決方案預設會緊密整合。
+* 針對所有推送的 Linux 映射的**Azure 本機漏洞掃描**。 安全中心使用業界領先的漏洞掃描供應商 Qualys 的掃描器掃描圖像。 預設情況下，此本機解決方案是無縫集成的。
 
-* 具有已知弱點之 Linux 映射的**安全性建議**。 資訊安全中心提供每個回報的弱點和嚴重性分類的詳細資料。 此外，它也提供指引，說明如何補救每個推送至登錄的映射上找到的特定弱點。
+* 具有已知漏洞的 Linux 映射**的安全建議**。 安全中心提供每個報告漏洞的詳細資訊和嚴重性分類。 此外，它還提供了如何修復推送到註冊表的每個映射上發現的特定漏洞的指導。
 
-![Azure 資訊安全中心和 Azure Container Registry （ACR）高階總覽](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+![Azure 安全中心和 Azure 容器註冊表 （ACR） 高級概述](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解資訊安全中心的容器安全性功能，請參閱：
+要瞭解有關安全中心的容器安全功能的更多，請參閱：
 
-* [Azure 資訊安全中心和容器安全性](container-security.md)
+* [Azure 安全中心和容器安全性](container-security.md)
 
 * [與 Azure Kubernetes Service 整合](azure-kubernetes-service-integration.md)
 
-* [虛擬機器保護](security-center-virtual-machine-protection.md)-描述資訊安全中心的建議
+* [虛擬機器保護](security-center-virtual-machine-protection.md)- 描述安全中心的建議
