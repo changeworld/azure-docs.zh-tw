@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881413"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure 專用 HSM 監視功能
@@ -41,6 +41,6 @@ Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完
 建議在任何裝置佈建和應用程式設計或部署之前，先充分了解服務的所有重要概念，例如高可用性和安全性。 更多概念層級的主題：
 
 * [高可用性](high-availability.md)
-* [實體安全性](physical-security.md)
+* [物理安全](physical-security.md)
 * [網路功能](networking.md)
 * [支援能力](supportability.md)

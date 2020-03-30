@@ -1,5 +1,5 @@
 ---
-title: 資料庫安全性最佳作法-Microsoft Azure
+title: 資料庫安全最佳實踐 - 微軟 Azure
 description: 本文章提供一組 Azure 資料庫安全性的最佳做法。
 services: security
 documentationcenter: na
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0f2e0257c5bf855b0d9be61c43b68b4e30b3d80d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943652"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125113"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 資料庫安全性最佳做法
-本文說明資料庫安全性的最佳作法。
+本文介紹了資料庫安全的最佳做法。
 
-最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變，而本文會定期更新以反映這些變更。
+最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 觀點和技術會隨時間而變化，本文會定期更新以反映這些變化。
 
-## <a name="secure-databases"></a>保護資料庫
+## <a name="secure-databases"></a>安全資料庫
 安全性是管理資料庫的最重要考量，而且向來是 [Azure SQL Database](../../sql-database/index.yml) 的優先考量。 您的資料庫可嚴加保護，有助於符合大多數法規或安全性需求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心網站](https://azure.microsoft.com/support/trust-center/services/)提供目前的安全性合規性認證清單。 您也可以法規要求作為基礎，選擇將資料庫放在特定的 Azure 資料中心。
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>使用防火牆規則來限制資料庫存取
@@ -55,7 +55,7 @@ Azure SQL Database 服務只透過 TCP 連接埠 1433 提供。 若要從您的�
 ## <a name="enable-database-authentication"></a>啟用資料庫驗證
 SQL Database 支援兩種類型的驗證，SQL Server 驗證和 Azure AD 驗證。
 
-### <a name="sql-server-authentication"></a>*SQL Server 驗證*
+### <a name="sql-server-authentication"></a>*SQL 伺服器身份驗證*
 
 包括以下優點：
 
@@ -75,7 +75,7 @@ SQL Database 支援兩種類型的驗證，SQL Server 驗證和 Azure AD 驗證�
 - (可能) 保護透過網路從 Web 伺服器傳遞至資料庫的認證。 如需詳細資訊，請參閱[如何：使用 ASP.NET 2.0 中的 SQL 驗證連線到 SQL Server](/previous-versions/msp-n-p/ff648340(v=pandp.10))。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 驗證*
-Azure AD 驗證是使用 Azure AD 中的身分識別來連線到 Azure SQL Database 和 [SQL 資料倉儲](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 您可以使用 Azure AD 驗證，在單一中央位置管理資料庫使用者和其他 Microsoft 服務的身分識別。 中央識別碼管理提供單一位置以管理資料庫使用者並簡化權限管理。
+Azure AD 驗證是使用 Azure AD 中的身分識別來連線到 Azure SQL Database 和 [SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 您可以使用 Azure AD 驗證，在單一中央位置管理資料庫使用者和其他 Microsoft 服務的身分識別。 中央識別碼管理提供單一位置以管理資料庫使用者並簡化權限管理。
 
 > [!NOTE]
 > 建議您優先使用 Azure AD 驗證，而不是使用 SQL Server 驗證。
@@ -132,7 +132,7 @@ Azure AD 驗證是使用 Azure AD 中的身分識別來連線到 Azure SQL Datab
 
 根據管制或安裝的標準需求而定，會有數個 SQL Server 的稽核等級。 SQL Server 稽核提供的工具和程序可用以啟用、儲存及檢視各種伺服器和資料庫物件上的稽核。
 
-[Azure SQL Database 稽核](/azure/sql-database/sql-database-auditing)會追蹤資料庫事件並將事件寫入您 Azure 儲存體帳戶中的稽核記錄。
+[Azure SQL 資料庫審核](/azure/sql-database/sql-database-auditing)跟蹤資料庫事件並將其寫入 Azure 存儲帳戶中的稽核記錄。
 
 稽核可協助您保持法規合規性、了解資料庫活動，以及發現可能指出商務考量或安全違規的不一致和異常。 稽核可推動遵循法規標準，但不保證符合法規。
 

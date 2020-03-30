@@ -1,27 +1,27 @@
 ---
-title: 範本函式-數值
+title: 範本函數 - 數位
 description: 描述 Azure Resource Manager 範本中用來使用數值的函式。
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156339"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager 範本的數值函式
+# <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數位函數
 
-資源管理員提供下列函式以使用整數：
+資源管理器提供了以下函數，用於在 Azure 資源管理器 （ARM） 範本中處理整數：
 
 * [新增](#add)
-* [copyIndex](#copyindex)
+* [複製索引](#copyindex)
 * [div](#div)
-* [float](#float)
-* [int](#int)
-* [max](#max)
-* [min](#min)
-* [mod](#mod)
+* [浮動](#float)
+* [Int](#int)
+* [麥克斯](#max)
+* [分鐘](#min)
+* [國防部](#mod)
 * [mul](#mul)
 * [sub](#sub)
 
@@ -37,7 +37,7 @@ ms.locfileid: "79273653"
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要 | 類型 | 描述 |
-|:--- |:--- |:--- |:--- | 
+|:--- |:--- |:--- |:--- |
 |operand1 |是 |int |要新增的第一個數字。 |
 |operand2 |是 |int |要新增的第二個數字。 |
 
@@ -89,13 +89,13 @@ ms.locfileid: "79273653"
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
@@ -103,7 +103,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-傳回反覆項目迴圈的索引。 
+傳回反覆項目迴圈的索引。
 
 ### <a name="parameters"></a>參數
 
@@ -116,25 +116,25 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 這個函式一律搭配 **copy** 物件使用。 如果未針對 **offset** 提供任何值，則會傳回目前的反覆項目值。 反覆項目值是從零開始。 定義資源或變數時，您可以使用反覆項目迴圈。
 
-**LoopName** 屬性可讓您指定 copyIndex 要參考資源的反覆項目還是屬性的反覆項目。 如果未提供任何 **loopName** 的值，就會使用目前的資源類型反覆項目。 逐一查看屬性時，請提供 **loopName** 的值。 
- 
+**LoopName** 屬性可讓您指定 copyIndex 要參考資源的反覆項目還是屬性的反覆項目。 如果未提供任何 **loopName** 的值，就會使用目前的資源類型反覆項目。 逐一查看屬性時，請提供 **loopName** 的值。
+
 如需如何使用 **copyIndex**的完整範例，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](copy-resources.md)。
 
 如需使用 **copyIndex** 的範例，請參閱[變數](template-syntax.md#variables)。
 
 ### <a name="example"></a>範例
 
-下列範例顯示複製迴圈以及名稱中所包含的索引值。 
+下列範例顯示複製迴圈以及名稱中所包含的索引值。
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
@@ -206,13 +206,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
@@ -275,7 +275,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -300,7 +300,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
@@ -364,7 +364,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
@@ -428,7 +428,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
@@ -498,7 +498,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
@@ -569,7 +569,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
@@ -639,7 +639,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 若要使用 Azure CLI 部署此範例範本，請使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 若要使用 PowerShell 部署此範例範本，請使用：
@@ -649,8 +649,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 如需有關 Azure Resource Manager 範本中各區段的說明，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要合併多個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。
-* 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
+* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
+* 要合併多個範本，請參閱[使用 Azure 資源管理器使用連結範本](linked-templates.md)。
+* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
+* 要查看如何部署已創建的範本，請參閱使用 Azure[資源管理器範本部署應用程式](deploy-powershell.md)。
 

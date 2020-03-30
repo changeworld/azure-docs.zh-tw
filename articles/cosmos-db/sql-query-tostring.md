@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 ToString
-description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 ToString。
+title: 以 Azure 宇宙 DB 查詢語言進行串串
+description: 瞭解 Azure 宇宙 DB 中的 SQL 系統函數 ToString。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304254"
 ---
-# <a name="tostring-azure-cosmos-db"></a>ToString （Azure Cosmos DB）
+# <a name="tostring-azure-cosmos-db"></a>到 String（Azure 宇宙資料庫）
  傳回純量運算式的字串表示法。 
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ ToString(<expr>)
 ## <a name="arguments"></a>引數
   
 *expr*  
-   這是任何純量運算式。  
+   是任何標量運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +34,7 @@ ToString(<expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示 `ToString` 在不同類型之間的行為方式。   
+  下面的示例顯示了不同類型`ToString`之間的表現。   
   
 ```sql
 SELECT 
@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- 下列範例會示範如何將 `ToString` 與其他字串函式（例如 `CONCAT`）搭配使用。   
+ 下面的示例演示如何`ToString`與其他字串函數（如`CONCAT`）一起使用。   
  
 ```sql
 SELECT 
@@ -78,7 +78,7 @@ FROM p in c.Products
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-下列範例會示範如何將 `ToString` 與其他字串函式（例如 `REPLACE`）搭配使用。   
+下面的示例演示如何`ToString`與其他字串函數（如`REPLACE`）一起使用。   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -97,10 +97,10 @@ JOIN n IN food.nutrients
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+此系統功能不會利用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [字串函數 Azure Cosmos DB](sql-query-string-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [字串函數 Azure 宇宙 DB](sql-query-string-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

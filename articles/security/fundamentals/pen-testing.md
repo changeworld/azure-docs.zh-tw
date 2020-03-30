@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
 ms.openlocfilehash: 3a2addce83862ef109089f1474330f3821daaed7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726709"
 ---
 # <a name="penetration-testing"></a>滲透測試
 使用 Azure 進行應用程式測試和部署的其中一個優點是您可以快速建立環境。 您無需購置、取得和組裝自己的內部部署硬體。
 
-這很好 - 但您仍然需要確定您審慎執行一般的安全性作業。 您可能想要做的其中一件事, 就是滲透測試您在 Azure 中部署的應用程式。
+這很好 - 但您仍然需要確定您審慎執行一般的安全性作業。 您可能想要做的一件事是滲透測試在 Azure 中部署的應用程式。
 
 您可能已經知道 Microsoft 會執行 [我們的 Azure 環境的滲透測試](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)。 這有助於促進 Azure 改進。
 
-我們不會為您滲透測試您的應用程式, 但我們瞭解您會想要和需要在您自己的應用程式上執行測試。 這是件好事, 因為當您加強應用程式的安全性時, 可讓整個 Azure 生態系統更加安全。
+我們不會為您滲透測試您的應用程式，但我們確實瞭解您需要並且需要在您自己的應用程式上執行測試。 這是一件好事，因為當您增強應用程式的安全性時，有助於確保整個 Azure 生態系統的安全。
 
-自2017年6月15日起, Microsoft 不再需要預先核准, 即可對 Azure 資源進行滲透測試。 要對 Microsoft Azure 正式提出近期滲透測試合作申請的客戶，建議填寫 [Azure 服務滲透測試通知單](https://portal.msrc.microsoft.com/en-us/engage/pentest)。 此程序僅與 Microsoft Azure 相關，並不適用任何其他 Microsoft 雲端服務。
+自 2017 年 6 月 15 日起，Microsoft 不再需要預先批准才能對 Azure 資源執行滲透測試。 要對 Microsoft Azure 正式提出近期滲透測試合作申請的客戶，建議填寫 [Azure 服務滲透測試通知單](https://portal.msrc.microsoft.com/en-us/engage/pentest)。 此程序僅與 Microsoft Azure 相關，並不適用任何其他 Microsoft 雲端服務。
 
 >[!IMPORTANT]
 >雖然通知 Microsoft 相關的滲透測試活動已不再需要，客戶仍須遵守 [Microsoft 雲端整合滲透測試的參與規則](https://technet.microsoft.com/mt784683)。
@@ -46,4 +46,4 @@ ms.locfileid: "68726709"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您想要針對 Microsoft Azure 中裝載的應用程式正式記載即將進行的滲透測試, 請前往 Engagement 的[滲透測試規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2), 並填寫測試通知表單。
+- 如果要正式記錄針對 Microsoft Azure 中託管的應用程式即將進行的滲透測試，請繼續執行[滲透測試參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2)並填寫測試通知表。

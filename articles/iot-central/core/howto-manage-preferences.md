@@ -1,21 +1,21 @@
 ---
-title: 在 IoT Central 上管理您的個人喜好設定 |Microsoft Docs
-description: 如何管理您的個人應用程式喜好設定，例如變更 IoT Central 應用程式中的語言和主題。
+title: 在 IoT 中心管理您的個人偏好 |微軟文檔
+description: 如何管理您的個人應用程式首選項，例如更改 IoT 中央應用程式中的語言和主題。
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6bfc70ada906f5c444ace5cd7bb96555700586db
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806145"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157886"
 ---
-# <a name="manage-your-personal-application-preferences"></a>管理您的個人應用程式喜好設定
+# <a name="manage-your-personal-application-preferences"></a>管理您的個人應用程式首選項
 
 *本文適用於操作員、建置員及系統管理員。*
 
@@ -23,11 +23,11 @@ IoT Central 具備可配合您的需求自訂應用程式的彈性。 也會針�
 
 ## <a name="changing-language"></a>變更語言
 
-支援多種語言的 IoT Central。 您可以在上方導覽列上，使用 [設定] 圖示上的 [**語言選擇器**] 來切換您偏好的語言。 變更您的語言之後，IoT Central 會記住您的選擇，並將其套用到您的所有應用程式。 應用程式內的自訂不會當地語系化，例如儀表板影像。
+多種語言支援 IoT 中心。 您可以使用頂部巡覽列上的設置圖示上**的語言選取器**切換首選語言。 更改語言後，IoT Central 會記住您的選擇並將其應用於所有應用程式。 應用程式中的自訂，此類儀表板映射未當地語系化。
 
 ## <a name="changing-theme"></a>變更佈景主題
 
-可支援深色佈景主題和淺色佈景主題。 雖然淺色主題是預設值，但您可以選取頂端導覽列上的 [設定] 圖示來變更主題。
+可支援深色佈景主題和淺色佈景主題。 當燈光主題為預設值時，您可以通過選擇頂部巡覽列上的設置圖示來更改主題。
 
 ![IoT Central 佈景主題選擇器](media/howto-manage-preferences/settings.png)
 

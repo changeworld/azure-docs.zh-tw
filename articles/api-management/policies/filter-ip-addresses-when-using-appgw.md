@@ -1,7 +1,7 @@
 ---
-title: 範例 API 管理原則-使用應用程式閘道時的 IP 位址篩選
+title: 示例 API 管理原則 - 使用應用程式閘道時對 IP 位址進行篩選
 titleSuffix: Azure API Management
-description: Azure API 管理原則範例-示範如何在使用應用程式閘道時，篩選要求的 IP 位址。
+description: Azure API 管理原則示例 - 演示如何在使用應用程式閘道時根據請求的 IP 位址進行篩選。
 services: api-management
 documentationcenter: ''
 author: jftl6y
@@ -13,19 +13,19 @@ ms.date: 01/13/2020
 ms.author: joscot
 ms.custom: fasttrack-new
 ms.openlocfilehash: 45e16c9aa9e4b04e7225320951e9f839fae75ba3
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75942473"
 ---
-# <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>使用應用程式閘道時篩選要求 IP 位址
+# <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>使用應用程式閘道時，根據請求 IP 位址進行篩選
 
-本文說明 Azure API 管理原則範例，示範如何在透過應用程式閘道或其他媒介存取 API 管理實例時，篩選要求 IP 位址。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-samples.md)。
+本文演示了 Azure API 管理原則示例，該示例演示了如何通過應用程式閘道或其他仲介訪問 API 管理實例時如何篩選請求 IP 位址。 若要設定或編輯原則程式碼，請依照[設定或編輯原則](../set-edit-policies.md)中所述的步驟執行。 若要查看其他範例，請參閱[原則範例](../policy-samples.md)。
 
 ## <a name="policy"></a>原則
 
-將程式碼貼至 [輸入] 區塊。
+將程式碼貼至 [輸入]**** 區塊。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Filter on IP Address when using Application Gateway.policy.xml)]
 

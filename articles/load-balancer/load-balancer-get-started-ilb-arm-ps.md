@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045481"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模組建立內部負載平衡器
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure 門戶](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [電源外殼](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [範本](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -48,7 +48,7 @@ ms.locfileid: "76045481"
 * 探查設定：虛擬機器的健康情況狀態探查。
 * 輸入 NAT 規則：直接存取虛擬機器的連接埠規則。
 
-如需負載平衡器元件的詳細資訊，請參閱[Azure Load Balancer 元件](concepts-limitations.md#load-balancer-components)。
+有關負載等化器元件的詳細資訊，請參閱[Azure 負載等化器元件](concepts-limitations.md#load-balancer-components)。
 
 下列步驟說明如何在兩部虛擬機器之間設定負載平衡器。
 
@@ -251,7 +251,7 @@ $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-b
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>步驟 1：儲存負載平衡器資源
 
-將負載平衡器資源儲存在變數中 (如果您還沒這麼做)。 我們會使用變數名稱 **$lb**。針對腳本中的屬性值，使用在先前步驟中建立的負載平衡器資源名稱。
+將負載平衡器資源儲存在變數中 (如果您還沒這麼做)。 我們使用的變數名稱 **$lb**。對於腳本中的屬性值，請使用在前面的步驟中創建的負載等化器資源的名稱。
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 537369c9466b1083723642ec9e93fcdf25056c5e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68855331"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 儲存體計量移轉
@@ -45,7 +45,7 @@ Azure 儲存體會收集舊計量值、加以彙總並儲存在相同儲存體�
 
 | 舊計量 | 新計量 |
 | ------------------- | ----------------- |
-| **容量**            | 維度 **BlobType** 等於 **BlockBlob** 或 **PageBlob** 的 **BlobCapacity** |
+| **Capacity**            | 維度 **BlobType** 等於 **BlockBlob** 或 **PageBlob** 的 **BlobCapacity** |
 | **ObjectCount**        | 維度 **BlobType** 等於 **BlockBlob** 或 **PageBlob** 的 **BlobCount** |
 | **ContainerCount**      | **ContainerCount** |
 
@@ -73,13 +73,13 @@ Azure 儲存體會收集舊計量值、加以彙總並儲存在相同儲存體�
 | **AnonymousServerTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
 | **AnonymousSuccess** | 維度 **ResponseType** 等於 **Success** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
 | **AnonymousThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AuthorizationError** | 維度 **ResponseType** 等於 **AuthorizationError** 的交易 |
+| **授權錯誤** | 維度 **ResponseType** 等於 **AuthorizationError** 的交易 |
 | **可用性** | **可用性** |
 | **AverageE2ELatency** | **SuccessE2ELatency** |
 | **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | 維度 **ResponseType** 等於 **ClientOtherError** 的交易 |
-| **ClientTimeoutError** | 維度 **ResponseType** 等於 **ClientTimeoutError** 的交易 |
-| **NetworkError** | 維度 **ResponseType** 等於 **NetworkError** 的交易 |
+| **用戶端其他錯誤** | 維度 **ResponseType** 等於 **ClientOtherError** 的交易 |
+| **用戶端逾時錯誤** | 維度 **ResponseType** 等於 **ClientTimeoutError** 的交易 |
+| **網路錯誤** | 維度 **ResponseType** 等於 **NetworkError** 的交易 |
 | **PercentAuthorizationError** | 維度 **ResponseType** 等於 **AuthorizationError** 的交易 |
 | **PercentClientOtherError** | 維度 **ResponseType** 等於 **ClientOtherError** 的交易 |
 | **PercentNetworkError** | 維度 **ResponseType** 等於 **NetworkError** 的交易 |
@@ -95,13 +95,13 @@ Azure 儲存體會收集舊計量值、加以彙總並儲存在相同儲存體�
 | **SASServerTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 且維度 **Authentication** 等於 **SAS** 的交易 |
 | **SASSuccess** | 維度 **ResponseType** 等於 **Success** 且維度 **Authentication** 等於 **SAS** 的交易 |
 | **SASThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **ServerOtherError** | 維度 **ResponseType** 等於 **ServerOtherError** 的交易 |
-| **ServerTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 的交易 |
-| 「成功」 | 維度 **ResponseType** 等於 **Success** 的交易 |
+| **伺服器其他錯誤** | 維度 **ResponseType** 等於 **ServerOtherError** 的交易 |
+| **伺服器逾時錯誤** | 維度 **ResponseType** 等於 **ServerTimeoutError** 的交易 |
+| **成功** | 維度 **ResponseType** 等於 **Success** 的交易 |
 | **ThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 的**交易**|
 | **TotalBillableRequests** | **交易** |
-| **TotalEgress** | **輸出** |
-| **TotalIngress** | **輸入** |
+| **TotalEgress** | **出口** |
+| **TotalIngress** | **入口** |
 | **TotalRequests** | **交易** |
 
 ## <a name="faq"></a>常見問題集
@@ -112,9 +112,9 @@ Azure 儲存體會收集舊計量值、加以彙總並儲存在相同儲存體�
 
 ### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>新的計量資料是否預設儲存在相同的儲存體帳戶中？
 
-資料分割 若要將計量資料封存至儲存體帳戶，請使用 [Azure 監視器診斷設定 API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。
+否。 若要將計量資料封存至儲存體帳戶，請使用 [Azure 監視器診斷設定 API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure 監視器](../../monitoring-and-diagnostics/monitoring-overview.md)
-* [Azure 監視器中的儲存體計量](./storage-metrics-in-azure-monitor.md)
+* [Azure 監視器中的存儲指標](./storage-metrics-in-azure-monitor.md)

@@ -1,6 +1,6 @@
 ---
-title: 為 VMware 解決方案（AVS）布建節點-Azure
-description: 瞭解如何將節點新增至具有 AVS 部署的 VMWare
+title: 按雲簡單配置 VMware 解決方案 - Azure
+description: 瞭解如何使用 CloudSimple 部署將節點添加到 VMWare
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,44 +8,44 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 94ca681153f1e3ccd9ff628b41a9d0e547be5802
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024801"
 ---
-# <a name="provision-nodes-for-azure-vmware-solutions-avs"></a>針對 Azure VMware 解決方案（AVS）布建節點
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>按雲簡單調配 Azure VMware 解決方案
 
-在 Azure 入口網站中布建節點。 接著，您可以為您的 AVS 私用雲端環境設定「隨用隨付」功能。
+在 Azure 門戶中預配節點。 然後，您可以為雲簡單私有雲環境設置即付容量。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
+登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
 
-## <a name="add-a-node-to-your-avs-private-cloud"></a>將節點新增至您的 AVS 私人雲端
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>將節點添加到雲簡單私有雲
 
-1. 選取 [所有服務]。
-2. 搜尋**AVS 節點**。
+1. 選擇**所有服務**。
+2. 搜索**雲簡單節點**。
 
-   ![搜尋 AVS 節點](media/create-cloudsimple-node-search.png)
+   ![搜索雲簡單節點](media/create-cloudsimple-node-search.png)
 
-3. 選取 [ **AVS 節點**]。
-4. 按一下 [**新增**] 以建立節點。
+3. 選擇**雲簡單節點**。
+4. 按一下"**添加**"以創建節點。
 
-    ![新增 AVS 節點](media/create-cloudsimple-node-add.png)
+    ![添加雲簡單節點](media/create-cloudsimple-node-add.png)
 
-5. 選取您要布建 AVS 節點的訂用帳戶。
-6. 選取節點的資源群組。 若要新增新的資源群組，**請按一下 [新建]** 。
-7. 輸入前置詞以識別節點。
-8. 選取節點資源的 [位置]。
-9. 選取要裝載節點資源的專用位置。
-10. 選取[節點類型](cloudsimple-node.md)。
-11. 選取要布建的節點數目。
-12. 選取 [檢閱 + 建立]。
-13. 檢查設定。 若要修改任何設定，請按一下 [**上一步**]。
-14. 選取 [建立]。
+5. 選擇要預配雲簡單節點的訂閱。
+6. 選擇節點的資源組。 要添加新資源組，請按一下"**新建**"。
+7. 輸入首碼以標識節點。
+8. 選擇節點資源的位置。
+9. 選擇託管節點資源的專用位置。
+10. 選擇[節點類型](cloudsimple-node.md)。
+11. 選擇要預配的節點數。
+12. 選擇 **"審閱 " 創建**。
+13. 查看設置。 要修改任何設置，請按一下"**上一個**"。
+14. 選取 [建立]****。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立 AVS 私用雲端](create-private-cloud.md)
+* [創建私有雲](create-private-cloud.md)

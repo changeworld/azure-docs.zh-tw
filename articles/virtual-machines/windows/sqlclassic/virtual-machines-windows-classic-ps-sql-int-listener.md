@@ -1,6 +1,6 @@
 ---
-title: 設定可用性群組的 ILB 接聽程式（傳統）
-description: 本教學課程使用以傳統部署模型建立的資源，而且它會在 Azure 中使用內部負載平衡器的 SQL Server VM 建立 Always On 可用性群組接聽程式。
+title: 為可用性組配置 ILB 攔截器（經典）
+description: 本教程使用使用經典部署模型創建的資源，並為 Azure 中的 SQL Server VM 創建一個始終處於可用性組攔截器，該 VM 使用內部負載等化器。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,23 +16,23 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978159"
 ---
-# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>針對 Azure SQL Server Vm 上的可用性群組設定 ILB 接聽程式
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>為 Azure SQL Server VM 上的可用性組配置 ILB 攔截器
 > [!div class="op_single_selector"]
 > * [內部接聽程式](../classic/ps-sql-int-listener.md)
 > * [外部接聽程式](../classic/ps-sql-ext-listener.md)
 >
 >
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!IMPORTANT]
-> Azure 建立和處理資源的部署模型有兩種：[Azure Resource Manager](../../../azure-resource-manager/management/deployment-models.md) 和傳統。 本文涵蓋傳統部署模型的使用。 我們建議讓大部分的新部署使用 Resource Manager 模型。
+> Azure 有兩種不同的部署模型來創建和使用資源[：Azure 資源管理器和經典](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋傳統部署模型的使用。 我們建議讓大部分的新部署使用 Resource Manager 模型。
 
 若要在 Resource Manager 模型中設定 Always On 可用性群組的接聽程式，請參閱[在 Azure 中設定 Always On 可用性群組的負載平衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
 
@@ -56,9 +56,9 @@ ms.locfileid: "75978159"
 
 1. 在 Azure 入口網站中，移至每部主控複本的 VM 以檢視詳細資料。
 
-2. 按一下每部 VM 的 [端點] 索引標籤。
+2. 按一下每部 VM 的 [端點]**** 索引標籤。
 
-3. 對於您想要使用的接聽程式端點，確認其 [名稱] 和 [公用連接埠] 並未使用中。 在本節的範例中，名稱是 MyEndpoint，而通訊埠為 1433。
+3. 對於您想要使用的接聽程式端點，確認其 [名稱]**** 和 [公用連接埠]**** 並未使用中。 在本節的範例中，名稱是 MyEndpoint**，而通訊埠為 1433**。
 
 4. 在您的本機用戶端上，下載並安裝最新的 [PowerShell 模組](https://azure.microsoft.com/downloads/)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "75978159"
         (Get-AzureVNetConfig).XMLConfiguration
 9. 請記下子網路 (其中包含主控複本的 VM) 的 *Subnet* 名稱。 此名稱使用於指令碼中的 $SubnetName 參數。
 
-10. 記下子網路 (其中包含主控複本的 VM) 的 VirtualNetworkSite 名稱和起始的 AddressPrefix。 將這兩個值傳遞至 `Test-AzureStaticVNetIP` 命令並檢查 AvailableAddresses 以尋找可用的 IP 位址。 例如，如果虛擬網路被命名為 MyVNet 且具有以 172.16.0.128 開始的子網路位址範圍，下列命令便會列出可用的位址：
+10. 記下子網路 (其中包含主控複本的 VM) 的 VirtualNetworkSite** 名稱和起始的 AddressPrefix**。 將這兩個值傳遞至 `Test-AzureStaticVNetIP` 命令並檢查 AvailableAddresses** 以尋找可用的 IP 位址。 例如，如果虛擬網路被命名為 MyVNet** 且具有以 172.16.0.128** 開始的子網路位址範圍，下列命令便會列出可用的位址：
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. 選取其中一個可用的位址，並將其用於下一個步驟中指令碼的 $ILBStaticIP 參數。
@@ -105,7 +105,7 @@ ms.locfileid: "75978159"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 設定變數之後，請從文字編輯器將指令碼複製到您的 PowerShell 工作階段來執行它。 如果提示依然顯示 **>>** ，請再次按 ENTER 鍵以確定指令碼開始執行。
+13. 設定變數之後，請從文字編輯器將指令碼複製到您的 PowerShell 工作階段來執行它。 如果提示仍然顯示**>>**，請再次按 Enter 以確保腳本開始運行。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>必要時，請確認已安裝 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ ms.locfileid: "75978159"
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. 設定變數之後，開啟提升權限的 Windows PowerShell 視窗，然後將指令碼從文字編輯器貼到您的 PowerShell 工作階段中來執行它。 如果提示依然顯示 **>>** ，請再次按 ENTER 鍵以確定指令碼開始執行。
+3. 設定變數之後，開啟提升權限的 Windows PowerShell 視窗，然後將指令碼從文字編輯器貼到您的 PowerShell 工作階段中來執行它。 如果提示仍然顯示**>>**，請再次按 Enter 以確保腳本開始運行。
 
 4. 對每部 VM 重複上述步驟。  
     此指令碼會使用雲端服務的 IP 位址來設定 IP 位址資源，並設定其他參數 (例如探查連接埠)。 當 IP 位址資源處於線上時，它會從您稍早所建立的負載平衡端點，回應探查連接埠上的輪詢。

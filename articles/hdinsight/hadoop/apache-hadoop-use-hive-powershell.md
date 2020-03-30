@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中搭配使用 Apache Hive 與 PowerShell - Azure
-description: 使用 PowerShell 在 Azure HDInsight 中的 Apache Hadoop 中執行 Apache Hive 查詢
+description: 使用 PowerShell 在 Azure HDInsight 中使用 Apache Hadoop 中運行 Apache Hive 查詢
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552588"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 執行 Apache Hive 查詢
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-本檔提供使用 Azure PowerShell 在 HDInsight 叢集上的 Apache Hadoop 中執行 Apache Hive 查詢的範例。
+本文檔提供了使用 Azure PowerShell 在 HDInsight 群集上的 Apache Hadoop 中運行 Apache Hive 查詢的示例。
 
 > [!NOTE]  
 > 本文件不提供範例中使用的 HiveQL 陳述式所執行的工作詳細的描述。 如需此範例中使用的 HiveQL 的相關資訊，請參閱 [在 HDInsight 上搭配 Apache Hadoop 使用 Apache Hive](hdinsight-use-hive.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight 上的 Apache Hadoop 叢集。 請參閱[在 Linux 上開始使用 HDInsight。](./apache-hadoop-linux-tutorial-get-started.md)
 
 * 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -37,8 +37,8 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Hi
 在遠端 HDInsight 叢集中執行 Hive 查詢時，會使用下列 Cmdlet：
 
 * `Connect-AzAccount`：向您的 Azure 訂用帳戶驗證 Azure PowerShell。
-* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 陳述式建立「作業定義」。
-* `Start-AzHDInsightJob`：將作業定義傳送至 HDInsight，並啟動作業。 系統會傳回「作業」物件。
+* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 陳述式建立「作業定義」**。
+* `Start-AzHDInsightJob`：將作業定義傳送至 HDInsight，並啟動作業。 系統會傳回「作業」** 物件。
 * `Wait-AzHDInsightJob`：使用作業物件來檢查作業的狀態。 它會等到工作完成，或等到等候時間超過。
 * `Get-AzHDInsightJobOutput`：用來擷取作業的輸出。
 * `Invoke-AzHDInsightHiveJob`：用來執行 HiveQL 陳述式。 這個 Cmdlet 會阻止查詢完成，然後傳回結果。
@@ -54,7 +54,7 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Hi
 
         .\hivejob.ps1
 
-    當腳本執行時，系統會提示您輸入叢集名稱和 HTTPS/叢集系統管理員帳號憑證。 系統可能也會提示您登入您的 Azure 訂用帳戶。
+    腳本運行時，系統會提示您輸入群集名稱和 HTTPS/群集管理員帳戶憑據。 可能還會提示您登錄到 Azure 訂閱。
 
 3. 作業完成時，應該會傳回類似下列文字的資訊：
 
@@ -95,7 +95,7 @@ Get-AzHDInsightJobOutput `
 
 這個 Cmdlet 會傳回作業處理期間寫入到 STDERR 的資訊。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 如您所見，Azure PowerShell 提供簡單的方法，在 HDInsight 叢集中執行 Hive 查詢、監視工作狀態，以及擷取輸出。
 
@@ -103,7 +103,7 @@ Get-AzHDInsightJobOutput `
 
 如需 HDInsight 中 Hive 的一般資訊：
 
-* [在 HDInsight 上搭配 Apache Hadoop 使用 Apache Hive](hdinsight-use-hive.md)
+* [在 HDInsight 上將 Apache Hive 與 Apache Hadoop 搭配使用](hdinsight-use-hive.md)
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

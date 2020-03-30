@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75974586"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
@@ -53,8 +53,8 @@ ms.locfileid: "75974586"
 
 | 角色 | 管理權限 | 資料存取權限 | 說明 |
 | --- | --- | --- | --- |
-| 未指派角色 |無 |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
-| 擁有者 |所有 |所有 |擁有者角色是超級使用者。 此角色可管理所有事項，且具有資料的完整存取權。 |
+| 未指派角色 |None |由 ACL 控管 |使用者無法使用 Azure 入口網站或 Azure PowerShell Cmdlet 來瀏覽 Data Lake Storage Gen1。 使用者只能使用命令列工具。 |
+| 擁有者 |全部 |全部 |擁有者角色是超級使用者。 此角色可管理所有事項，且具有資料的完整存取權。 |
 | 讀取者 |唯讀 |由 ACL 控管 |讀取者角色可以檢視有關帳戶管理的所有事項，例如哪個使用者被指派給哪個角色。 讀取者角色無法進行任何變更。 |
 | 參與者 |除了新增和移除角色以外的一切 |由 ACL 控管 |參與者角色可以管理帳戶的某些層面，例如部署以及警示建立和管理。 參與者無法新增或移除角色。 |
 | 使用者存取系統管理員 |新增和移除角色 |由 ACL 控管 |使用者存取管理員角色可管理使用者對帳戶的存取權。 |
@@ -71,12 +71,12 @@ Data Lake Storage Gen1 是 Hadoop 分散式檔案系統 (HDFS) 之類的階層�
 ## <a name="network-isolation"></a>網路隔離
 使用 Data Lake Storage Gen1 以協助在網路層級控制資料存放區的存取。 您可以建立防火牆，並且為受信任的用戶端定義 IP 位址範圍。 使用 IP 位址範圍時，只有具有定義範圍內 IP 位址的用戶端可以連線到 Data Lake Storage Gen1。
 
-![防火牆設定和 IP 存取](./media/data-lake-store-security-overview/firewall-ip-access.png "防火牆設定和 IP 位址")
+![防火牆設定和 IP 存取](./media/data-lake-store-security-overview/firewall-ip-access.png "防火牆設置和 IP 位址")
 
 ## <a name="data-protection"></a>資料保護
 Data Lake Storage Gen1 在資料的生命週期中保護您的資料。 對於傳輸中的資料，Data Lake Storage Gen1 會使用業界標準的傳輸層安全性 (TLS 1.2) 通訊協定來保護網路上的資料。
 
-![Data Lake Storage Gen1 中的加密](./media/data-lake-store-security-overview/adls-encryption.png "Data Lake Storage Gen1 中的加密")
+![資料存儲單元1中的加密](./media/data-lake-store-security-overview/adls-encryption.png "資料存儲單元1中的加密")
 
 Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 您可以選擇將資料加密，或選擇不使用加密。 如果您選擇進行加密，Data Lake Storage Gen1 中儲存的資料會在儲存在持續性媒體之前進行加密。 在這種情況下，Data Lake Storage Gen1 會在保存之前自動加密資料，並在擷取之前解密資料，因此它對存取資料的用戶端來說是完全透明的。 用戶端不需進行任何程式碼變更，即可加密/解密資料。
 
@@ -88,28 +88,28 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 * 帳戶管理相關活動是使用 Azure Resource Manager API，而且會透過活動記錄呈現在 Azure 入口網站中。
 * 資料相關活動會使用 WebHDFS REST API 並透過診斷記錄呈現在 Azure 入口網站中。
 
-### <a name="activity-log"></a>活動記錄
+### <a name="activity-log"></a>活動記錄檔
 若要符合規定，組織可能需要適當的帳戶管理活動稽核線索，才能深入了解特定事件。 Data Lake Storage Gen1 有內建的監視，而且它會記錄所有帳戶管理活動。
 
 如需帳戶管理稽核線索，請檢視並選擇您想要記錄的資料行。 您也可以將活動記錄匯出至 Azure 儲存體。
 
-![活動記錄檔](./media/data-lake-store-security-overview/activity-logs.png "活動記錄")
+![活動日誌](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
 
 如需使用活動記錄的詳細資訊，請參閱[檢視活動記錄以稽核對資源的動作](../azure-resource-manager/management/view-activity-logs.md)。
 
 ### <a name="diagnostics-logs"></a>診斷記錄
-您可以在 Azure 入口網站中啟用資料存取 audit 和診斷記錄，並將記錄傳送到 Azure Blob 儲存體帳戶、事件中樞或 Azure 監視器記錄。
+您可以在 Azure 門戶中啟用資料訪問審核和診斷日誌記錄，並將日誌發送到 Azure Blob 存儲帳戶、事件中心或 Azure 監視器日誌。
 
 ![診斷記錄](./media/data-lake-store-security-overview/diagnostic-logs.png "診斷記錄")
 
 如需搭配 Data Lake Storage Gen1 使用診斷記錄的詳細資訊，請參閱[存取 Data Lake Storage Gen1 的診斷記錄](data-lake-store-diagnostic-logs.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 企業客戶要求安全且容易使用的資料分析雲端平台。 Data Lake Storage Gen1 的設計目的是要透過藉由 Azure Active Directory 整合的身分識別管理和驗證、以 ACL 為基礎的授權、網路隔離、傳輸中和待用資料加密以及稽核，來協助滿足這些需求。
 
 如果您想要在 Data Lake Storage Gen1 中看到新功能，請在 [Data Lake Storage Gen1 UserVoice 論壇](https://feedback.azure.com/forums/327234-data-lake)將您的意見反應傳給我們。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)

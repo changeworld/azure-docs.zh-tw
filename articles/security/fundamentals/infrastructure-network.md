@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: c4756c36c2243840df69f3696e7ddac3628f3a00
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727164"
 ---
 # <a name="azure-network-architecture"></a>Azure 網路架構
@@ -81,7 +81,7 @@ Azure 資料中心是以高度備援且妥善佈建的網路基礎結構為基�
 ### <a name="ddos-mitigation"></a>DDOS 風險降低
 分散式阻斷服務 (DDoS) 攻擊會持續對線上服務的可靠性帶來實質威脅。 隨著攻擊變得更具針對性、更複雜，以及 Microsoft 提供的服務遍及各地時，首要之務就是識別及降低這些攻擊的影響。
 
-[Azure DDoS 保護標準](../../virtual-network/ddos-protection-overview.md)提供針對 DDoS 攻擊的防禦。 請參閱 [Azure DDoS 保護：最佳做法與參考架構](ddos-best-practices.md)以深入了解。
+[Azure DDoS 保護標準](../../virtual-network/ddos-protection-overview.md)提供針對 DDoS 攻擊的防禦。 請參閱[Azure DDoS 保護：最佳做法和參考體系結構](ddos-best-practices.md)以瞭解更多資訊。
 
 > [!NOTE]
 > 依預設，Microsoft 會為所有的 Azure 客戶提供 DDoS 保護。
@@ -98,11 +98,11 @@ Microsoft 會將網路架設在存取和邊緣位置，以當作套用輸入或�
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Microsoft 為協助保護 Azure 基礎結構執行了哪些動作，請參閱：
 
-- [Azure 設備、廠房以及實體安全性](physical-security.md)
+- [Azure 設施、廠房以及實體安全性](physical-security.md)
 - [Azure 基礎結構可用性](infrastructure-availability.md)
 - [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL Database 安全性功能](infrastructure-sql.md)
+- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

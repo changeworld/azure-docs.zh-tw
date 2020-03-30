@@ -1,15 +1,15 @@
 ---
-title: 引發 Service Fabric 叢集中的混亂
+title: 在服務結構群集中引發混沌
 description: 使用錯誤注射與叢集分析服務的 API 來管理叢集中的混亂。
 author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463162"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 叢集中引發受控制的混亂
@@ -25,7 +25,7 @@ ms.locfileid: "75463162"
 > 目前來說，混亂只會引發安全的錯誤，這表示如果沒有外部錯誤，絕不會發生仲裁遺失或資料遺失。
 >
 
-混亂執行時，會產生不同事件來擷取目前執行的狀態。 例如，ExecutingFaultsEvent 包含混亂已決定正在該反覆運算中執行的所有錯誤。 ValidationFailedEvent 包含在驗證叢集期間所發現驗證失敗 (健康情況或穩定性問題) 的詳細資料。 您可以叫用 GetChaosReport API (C#、Powershell 或 REST) 以取得混亂執行的報告。 這些事件保存在[可靠的字典](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)中，其中有由兩個組態決定的截斷原則：MaxStoredChaosEventCount (預設值為 25000) 及 StoredActionCleanupIntervalInSeconds (預設值為 3600)。 每個 StoredActionCleanupIntervalInSeconds 混亂檢查及最新 MaxStoredChaosEventCount 事件以外的所有事件皆會自可靠字典中清除。
+混亂執行時，會產生不同事件來擷取目前執行的狀態。 例如，ExecutingFaultsEvent 包含混亂已決定正在該反覆運算中執行的所有錯誤。 ValidationFailedEvent 包含在驗證叢集期間所發現驗證失敗 (健康情況或穩定性問題) 的詳細資料。 您可以叫用 GetChaosReport API (C#、Powershell 或 REST) 以取得混亂執行的報告。 這些事件保存在[可靠的字典](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)中，其中有由兩個組態決定的截斷原則：MaxStoredChaosEventCount**** (預設值為 25000) 及 StoredActionCleanupIntervalInSeconds**** (預設值為 3600)。 每個 StoredActionCleanupIntervalInSeconds** 混亂檢查及最新 MaxStoredChaosEventCount** 事件以外的所有事件皆會自可靠字典中清除。
 
 ## <a name="faults-induced-in-chaos"></a>混亂中引發的錯誤
 混亂會在整個 Service Fabric 叢集中產生錯誤，並將在幾個月或幾年內看到的錯誤壓縮成幾小時。 交錯錯誤和高錯誤率的組合，會尋找可能會在其他情形下遺漏的極端狀況。 這個混亂練習可以大幅提升服務的程式碼品質。

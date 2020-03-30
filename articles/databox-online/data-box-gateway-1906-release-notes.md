@@ -1,6 +1,6 @@
 ---
-title: Azure 資料箱閘道 & Azure Data Box Edge 1906 版本資訊 |Microsoft Docs
-description: 說明 Azure 資料箱閘道的重大未解決問題和解決方法，以及執行1906版本的 Azure Data Box Edge。
+title: Azure 資料框閘道& Azure 資料框邊緣 1906 版本資訊*微軟文檔
+description: 介紹運行 1906 版本的 Azure 資料框閘道和 Azure 資料框邊緣的關鍵打開問題和解決方法。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,37 +9,37 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71099482"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Data Box Edge 和 Azure 資料箱閘道1906版本資訊
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure 資料框邊緣和 Azure 資料框閘道 1906 版本資訊
 
-下列版本資訊會針對 Azure Data Box Edge 和 Azure 資料箱閘道的1906版本，識別重大的未解決問題和已解決的問題。
+以下版本資訊標識 Azure 資料框邊緣和 Azure 資料框閘道的 1906 版本的關鍵未決問題和已解決的問題。
 
-版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在您部署 Data Box Edge/Data Box Gateway 之前，請仔細檢查版本資訊中包含的資訊。
+版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在部署資料框邊緣/資料盒閘道之前，請仔細查看版本資訊中包含的資訊。
 
 此版本對應于軟體版本：
 
-- **資料箱閘道1906（1.6.978.743）**
-- **Data Box Edge 1906 （1.6.978.743）**
+- **資料盒閘道 1906 （1.6.978.743）**
+- **資料框邊緣 1906 （1.6.978.743）**
 
 > [!NOTE]
-> 更新1906只能套用至執行正式運作（GA）或1905版軟體的 Data Box Edge 裝置。
+> 更新 1906 只能應用於運行軟體的通用版 （GA） 或 1905 版本的資料盒邊緣設備。
 
 ## <a name="whats-new"></a>新功能
 
-- **修正修復金鑰管理工作流程中的錯誤**-在舊版中，有一個 bug 原因，未套用修復金鑰。 此版本已經修正這個錯誤。 我們強烈建議您套用此更新，因為修復金鑰可讓您在裝置無法開機的事件中復原裝置上的資料。 如需詳細資訊，請參閱[在部署 Data Box Edge 或資料箱閘道時，如何儲存修復金鑰](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
-- 現場可程式化網**關陣列（FPGA）記錄改進**-開始進行1905版本、記錄和與 FPGA 相關的警示增強功能。 如果您使用 Edge 計算功能搭配 FPGA，這會繼續成為 Data Box Edge 的必要更新。 如需詳細資訊，請參閱如何[在您的 Data Box Edge 上使用 Edge 計算來轉換資料](data-box-edge-deploy-configure-compute-advanced.md)。
+- **修復金鑰管理工作流中的 Bug 修復**- 在早期版本中，由於未應用修復金鑰，出現了一個 Bug。 此版本已經修正這個錯誤。 我們強烈建議您應用此更新，因為修復金鑰允許您在設備未啟動的情況下恢復設備上的資料。 有關詳細資訊，請參閱在[部署資料框邊緣或資料框閘道時如何保存修復金鑰](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
+- **現場可程式設計閘陣列 （FPGA） 日誌記錄改進**- 從 1905 年開始發佈，進行了與 FPGA 相關的日誌記錄和警報增強。 如果將 Edge 計算功能與 FPGA 一起使用，則這仍然是資料框邊緣所需的更新。 有關詳細資訊，請參閱如何在[資料框邊緣上使用 Edge 計算轉換資料](data-box-edge-deploy-configure-compute-advanced.md)。
 
 ## <a name="known-issues-in-ga-release"></a>GA 版本中的已知問題
 
-此版本未注明任何新問題。 所有已注明的發行問題都已從先前的版本中執行。 若要查看已知問題的清單，請移至[GA 版本中的已知問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
+此版本未注意到任何新問題。 所有發佈的注意到的問題都從以前的版本中延續過來。 要查看已知問題的清單，請訪問[GA 版本中的已知問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [準備部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md)
+- [準備部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
 - [準備部署 Azure Data Box Edge](data-box-edge-deploy-prep.md)
