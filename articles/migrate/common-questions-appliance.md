@@ -1,135 +1,135 @@
 ---
-title: Azure Migrate 設備常見問題
-description: 取得 Azure Migrate 設備的常見問題解答。
+title: Azure 遷移設備常見問題解答
+description: 獲取有關 Azure 遷移設備的常見問題的解答。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939285"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336981"
 ---
-# <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見的問題
+# <a name="azure-migrate-appliance-common-questions"></a>Azure 遷移設備：常見問題
 
-本文會回答有關 Azure Migrate 設備的常見問題。 如果您有其他問題，請檢查下列資源：
+本文回答了有關 Azure 遷移設備的常見問題。 如果您有其他問題，請檢查以下資源：
 
-- 關於 Azure Migrate 的[一般問題](resources-faq.md)
-- [探索、評估和相依性視覺效果](common-questions-discovery-assessment.md)的相關問題
-- [伺服器遷移](common-questions-server-migration.md)的相關問題
-- 在[Azure Migrate 論壇](https://aka.ms/AzureMigrateForum)中獲得解答
+- 有關 Azure 遷移的[一般問題](resources-faq.md)
+- 有關[發現、評估和依賴項視覺化](common-questions-discovery-assessment.md)的問題
+- 有關[伺服器遷移](common-questions-server-migration.md)的問題
+- 在[Azure 遷移論壇](https://aka.ms/AzureMigrateForum)中回答問題
 
-## <a name="what-is-the-azure-migrate-appliance"></a>什麼是 Azure Migrate 設備？
+## <a name="what-is-the-azure-migrate-appliance"></a>什麼是 Azure 遷移設備？
 
-Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工具用來探索及評估內部部署伺服器。 Azure Migrate：伺服器遷移工具也會使用設備來進行內部部署 VMware Vm 的無代理程式遷移。
+Azure 遷移設備是 Azure 遷移：伺服器評估工具用於發現和評估本機伺服器的羽量級設備。 Azure 遷移：伺服器遷移工具還使用該設備對本地 VMware VM 進行無代理遷移。
 
-以下是 Azure Migrate 設備的詳細資訊：
+以下是有關 Azure 遷移設備的詳細資訊：
 
-- 應用裝置會部署在內部部署環境中做為 VM 或實體機器。
-- 設備會探索內部部署機器，並持續將電腦中繼資料和效能資料傳送至 Azure Migrate。
-- 設備探索無須代理程式。 探索到的機器上未安裝任何內容。
+- 設備在本地部署為 VM 或物理電腦。
+- 設備發現本地電腦，並不斷向 Azure 遷移發送電腦中繼資料和效能資料。
+- 設備探索無須代理程式。 未在已發現的電腦上安裝任何內容。
 
-[深入瞭解](migrate-appliance.md)設備。
+[瞭解有關產品詳細資訊](migrate-appliance.md)。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>設備如何連接到 Azure？
 
-設備可以透過網際網路連線，或使用 Azure ExpressRoute 搭配公用/Microsoft 對等互連來連接。
+設備可以通過 Internet 或將 Azure ExpressRoute 與公共/微軟對等互連連接。
 
-## <a name="does-appliance-analysis-affect-performance"></a>設備分析是否會影響效能？
+## <a name="does-appliance-analysis-affect-performance"></a>設備分析會影響性能嗎？
 
-Azure Migrate 設備會持續分析內部部署機器，以測量效能資料。 此分析幾乎不會對已分析的機器造成效能影響。
+Azure 連續遷移本地電腦的設備設定檔，以測量效能資料。 此分析對已分析的電腦幾乎沒有性能影響。
 
 ## <a name="can-i-harden-the-appliance-vm"></a>我可以強化設備 VM 嗎？
 
-當您使用已下載的範本來建立設備 VM 時，如果您保留 Azure Migrate 設備所需的通訊和防火牆規則，您可以將元件（例如，防毒軟體）新增至範本。
+使用下載的範本創建設備 VM 時，如果保留 Azure 遷移設備所需的通信和防火牆規則，則可以向範本添加元件（例如防病毒）。
 
-## <a name="what-network-connectivity-is-required"></a>需要何種網路連線？
+## <a name="what-network-connectivity-is-required"></a>需要哪些網路連接？
 
-請參閱下列文章，以取得 Azure Migrate 設備之網路連線需求的相關資訊：
+有關 Azure 遷移設備的網路連接要求的資訊，請參閱以下文章：
 
-- **VMware 評估**： [URL 存取](migrate-appliance.md#url-access)和[埠存取](migrate-support-matrix-vmware.md#port-access)
-- **VMware 無代理程式遷移**： [URL 存取](migrate-appliance.md#url-access)和[埠存取](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-v 評估**： [URL 存取](migrate-appliance.md#url-access)和[埠存取](migrate-support-matrix-hyper-v.md#port-access)
+- **VMware 評估** [：URL 訪問](migrate-appliance.md#url-access)和[埠訪問](migrate-support-matrix-vmware.md#port-access)
+- **VMware 無代理遷移**[：URL 訪問](migrate-appliance.md#url-access)和[埠訪問](migrate-support-matrix-vmware-migration.md#agentless-ports)
+- **Hyper-V 評估** [：URL 訪問](migrate-appliance.md#url-access)和[埠訪問](migrate-support-matrix-hyper-v.md#port-access)
 
-## <a name="what-data-does-the-appliance-collect"></a>設備會收集哪些資料？
+## <a name="what-data-does-the-appliance-collect"></a>產品收集哪些資料？
 
-如需 Azure Migrate 設備在 Vm 上收集之資料的相關資訊，請參閱下列文章：
+有關 Azure 遷移設備在 VM 上收集的資料的資訊，請參閱以下文章：
 
-- **VMWARE VM**：[效能資料](migrate-appliance.md#collected-performance-data-vmware)和[元](migrate-appliance.md#collected-metadata-vmware)資料
-- **HYPER-V VM**：[效能資料](migrate-appliance.md#collected-performance-data-hyper-v)和[元](migrate-appliance.md#collected-metadata-hyper-v)資料
+- **VMware VM**：[查看](migrate-appliance.md#collected-data---vmware)收集的資料。 [
+- **Hyper-V VM**：[查看](migrate-appliance.md#collected-data---hyper-v)收集的資料。
 
-## <a name="how-is-data-stored"></a>如何儲存資料？
+## <a name="how-is-data-stored"></a>儲存資料的方式
 
-Azure Migrate 應用裝置所收集的資料會儲存在您建立 Azure Migrate 專案所在的 Azure 位置。
+Azure 遷移設備收集的資料存儲在創建 Azure 遷移專案的 Azure 位置。
 
-以下是資料儲存方式的詳細資訊：
+以下是有關如何存儲資料的詳細資訊：
 
-- 收集的資料會安全地儲存在 Microsoft 訂用帳戶的 CosmosDB 中。 當您刪除 Azure Migrate 專案時，就會刪除資料。 儲存體是由 Azure Migrate 處理。 您無法特別針對收集的資料選擇儲存體帳戶。
-- 如果您使用相依性[視覺效果](concepts-dependency-visualization.md)，所收集的資料會儲存在美國 Azure Log Analytics 工作區中建立的 azure 訂用帳戶中。 當您刪除訂用帳戶中的 Log Analytics 工作區時，會刪除資料。
+- 收集的資料安全地存儲在 Microsoft 訂閱中。 刪除 Azure 遷移專案時，將刪除資料。 存儲由 Azure 遷移處理。 不能為收集的資料專門選擇存儲帳戶。
+- 如果使用[依賴項視覺化](concepts-dependency-visualization.md)，則收集的資料將存儲在 Azure 訂閱中創建的 Azure 日誌分析工作區中。 刪除訂閱中的日誌分析工作區時，資料將被刪除。
 
-## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>連續分析期間會上傳多少資料？
+## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>在連續分析期間上傳了多少資料？
 
-傳送至 Azure Migrate 的資料量取決於多個參數。 例如，具有10部電腦的 Azure Migrate 專案（每個都有一個磁片和一個 NIC）每天會傳送大約 50 MB 的資料。 這個值是近似值;實際的值會根據磁片和 Nic 的資料點數目而有所不同。 如果電腦、磁片或 Nic 數目增加，則傳送的資料量會增加非線性。
+發送到 Azure 遷移的資料量取決於多個參數。 例如，具有 10 台電腦（每個電腦有一個磁片和一個 NIC）的 Azure 遷移專案每天發送大約 50 MB 的資料。 此值是近似值;實際值因磁片和 NIC 的資料點數而異。 如果電腦、磁片或 NIC 的數量增加，則發送的資料的增加是非線性的。
 
-## <a name="is-data-encrypted-at-rest-and-in-transit"></a>資料是否會在待用和傳輸中加密？
+## <a name="is-data-encrypted-at-rest-and-in-transit"></a>資料是否在靜態和傳輸中加密？
 
-是，適用于兩者：
+是，對於這兩個：
 
-- 中繼資料會透過 HTTPS 安全地透過網際網路傳送至 Azure Migrate 服務。
-- 中繼資料會儲存在[Azure Cosmos](../cosmos-db/database-encryption-at-rest.md)資料庫和 Microsoft 訂用帳戶的[azure Blob 儲存體](../storage/common/storage-service-encryption.md)中。 中繼資料會在待用時加密以供儲存之用。
-- 相依性分析的資料也會在傳輸中加密（透過安全的 HTTPS）。 它會儲存在您訂用帳戶的 Log Analytics 工作區中。 資料會在待用時加密，以進行相依性分析。
+- 中繼資料通過 HTTPS 通過互聯網安全地發送到 Azure 遷移服務。
+- 中繼資料存儲在 Azure[宇宙](../cosmos-db/database-encryption-at-rest.md)資料庫中，存儲在 Microsoft 訂閱中的[Azure Blob 存儲](../storage/common/storage-service-encryption.md)中。 中繼資料在靜態時進行加密以進行存儲。
+- 依賴項分析的資料也在傳輸過程中（通過安全 HTTPS）進行加密。 它存儲在訂閱中的日誌分析工作區中。 資料在靜態時進行加密，以便依賴項分析。
 
-## <a name="how-does-the-appliance-connect-to-vcenter-server"></a>設備如何連接到 vCenter Server？
+## <a name="how-does-the-appliance-connect-to-vcenter-server"></a>設備如何連接到 vCenter 伺服器？
 
-這些步驟說明設備如何連接到 VMware vCenter Server：
+這些步驟描述了設備如何連接到 VMware vCenter 伺服器：
 
-1. 設備會使用您在設定設備時所提供的認證，連接到 vCenter Server （埠443）。
-2. 設備會使用 VMware PowerCLI 來查詢 vCenter Server，以收集 vCenter Server 所管理之 Vm 的相關中繼資料。
-3. 設備會收集關於 Vm （核心、記憶體、磁片、Nic）的設定資料，以及每個 VM 在過去一個月的效能歷程記錄。
-4. 收集的中繼資料會傳送至 Azure Migrate：伺服器評估工具（透過網際網路透過 HTTPS）以進行評量。
+1. 設備使用設置設備時提供的憑據連接到 vCenter 伺服器（埠 443）。
+2. 設備使用 VMware PowerCLI 查詢 vCenter 伺服器來收集有關 vCenter 伺服器管理的 VM 的中繼資料。
+3. 設備收集有關 VM（內核、記憶體、磁片、NIC）和每個 VM 過去一個月的性能歷史記錄的配置資料。
+4. 收集的中繼資料將發送到 Azure 遷移：伺服器評估工具（通過互聯網通過 HTTPS 進行評估）。
 
-## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 設備是否可以連接到多部 vCenter Server？
+## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure 遷移設備是否可以連接到多個 vCenter 伺服器？
 
-No。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要探索多個 vCenter Server 實例上的 Vm，您必須部署多個應用裝置。 
+否。 [Azure 遷移設備和](migrate-appliance.md)vCenter 伺服器之間存在一對一映射。 要發現多個 vCenter Server 實例上的 VM，必須部署多個設備。 
 
-## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 專案可以有多個設備嗎？
-一個專案可以附加多個設備。 不過，應用裝置只能與一個專案相關聯。 
+## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure 遷移專案是否可以具有多個設備？
+專案可以附加多個設備。 但是，設備只能與一個專案關聯。 
 
 
-## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>我可以使用設備探索多少部 Vm 或伺服器？
+## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>使用設備可以發現多少個 VM 或伺服器？
 
-您最多可以探索10000個 VMware Vm、最多5000部 Hyper-v Vm，以及最多250個具有單一應用裝置的實體伺服器。 如果您的內部部署環境中有更多電腦，請閱讀[調整 hyper-v 評估](scale-hyper-v-assessment.md)、[調整 VMware 評估](scale-vmware-assessment.md)和[調整實體伺服器評](scale-physical-assessment.md)量。
+您最多可以發現 10，000 個 VMware VM、多達 5，000 台超虛擬機器，以及最多 250 台物理伺服器，只需一台設備。 如果本地環境中有更多的電腦，請閱讀有關[縮放 Hyper-V 評估](scale-hyper-v-assessment.md)、[縮放 VMware 評估](scale-vmware-assessment.md)以及[縮放物理伺服器評估](scale-physical-assessment.md)。
 
 ## <a name="can-i-delete-an-appliance"></a>我可以刪除設備嗎？
 
-目前不支援從專案中刪除應用裝置。
+目前，不支援從專案中刪除設備。
 
-若要刪除設備，唯一的方法是刪除資源群組，其中包含與設備相關聯的 Azure Migrate 專案。
+刪除設備的唯一方法是刪除包含與設備關聯的 Azure 遷移專案的資源組。
 
-不過，刪除資源群組也會刪除其他已註冊的設備、已探索的清查、評量，以及資源群組中與專案相關聯的所有其他 Azure 元件。
+但是，刪除資源組還會刪除與專案關聯的其他已註冊設備、已發現的清單、評估以及資源組中的所有其他 Azure 元件。
 
-## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>我可以使用具有不同訂用帳戶或專案的設備嗎？
+## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>我可以將設備用於不同的訂閱或專案嗎？
 
-使用設備來起始探索之後，您就無法重新設定設備以與不同的 Azure 訂用帳戶搭配使用，而且您無法在不同的 Azure Migrate 專案中使用它。 您也無法在不同的 vCenter Server 實例上探索 Vm。 為這些工作設定新的設備。
+使用設備啟動發現後，無法將設備重新配置為與其他 Azure 訂閱一起使用，也不能在其他 Azure 遷移專案中使用它。 您也不能在 vCenter Server 的不同實例上發現 VM。 為這些任務設置新設備。
 
-## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>我可以在 Azure VM 上設定設備嗎？
+## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>是否可以在 Azure VM 上設置設備？
 
-No。 目前不支援此選項。 
+否。 目前，此選項不受支援。 
 
-## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上探索嗎？
+## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上發現嗎？
 
-No。 若要探索 VMware Vm，您必須有 vCenter Server。
+否。 要發現 VMware VM，您必須具有 vCenter 伺服器。
 
-## <a name="how-do-i-update-the-appliance"></a>如何? 更新設備嗎？
+## <a name="how-do-i-update-the-appliance"></a>如何更新產品？
 
-根據預設，應用裝置及其安裝的代理程式會自動更新。 設備會每24小時檢查一次更新。 失敗的更新會重試。 
+預設情況下，設備及其安裝的代理會自動更新。 設備每 24 小時檢查一次更新。 將重試失敗的更新。 
 
-這些自動更新只會更新設備和應用裝置代理程式。 Azure Migrate 自動更新不會更新作業系統。 使用 Windows Update 讓作業系統保持在最新狀態。
+這些自動更新僅更新設備和產品代理。 Azure 遷移自動更新不會更新作業系統。 使用 Windows 更新使作業系統保持最新。
 
-## <a name="can-i-check-agent-health"></a>可以檢查代理程式健康情況嗎？
+## <a name="can-i-check-agent-health"></a>我可以檢查代理運行狀況嗎？
 
-是的。 在入口網站中，移至 [Azure Migrate：伺服器評定] 或 [Azure Migrate：伺服器遷移工具] 的 [**代理程式健康**情況] 頁面。 在這裡，您可以檢查 Azure 與設備上的探索與評估代理程式之間的線上狀態。
+是。 在門戶中，轉到 Azure 遷移的**代理運行狀況**頁：伺服器評估或 Azure 遷移：伺服器遷移工具。 在那裡，可以檢查 Azure 與設備上的發現和評估代理之間的連接狀態。
 
 ## <a name="next-steps"></a>後續步驟
 
-閱讀[Azure Migrate 的總覽](migrate-services-overview.md)。
+閱讀[Azure 遷移概述](migrate-services-overview.md)。

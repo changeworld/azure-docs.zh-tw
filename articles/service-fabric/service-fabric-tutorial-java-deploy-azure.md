@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252809"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292044"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教學課程：將 Java 應用程式部署到 Azure 中的 Service Fabric 叢集
 
@@ -217,11 +217,11 @@ ms.locfileid: "78252809"
     ./install.sh
     ```
 
-5. 若要存取 Service Fabric 總管，請開啟您慣用的瀏覽器並輸入 https://testlinuxcluster.westus.cloudapp.azure.com:19080 。 從憑證存放區選擇您要用來連線到此端點的憑證。 如果您使用 Linux 機器，new-service-fabric-cluster-certificate.sh  指令碼所產生的憑證必須匯入 Chrome 中，才能檢視 Service Fabric 總管。 如果您使用 Mac，則必須將 PFX 檔案安裝到您的金鑰鏈。 您會注意您的應用程式已安裝於叢集上。
+5. 若要存取 Service Fabric 總管，請開啟您慣用的瀏覽器並輸入 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 。 從憑證存放區選擇您要用來連線到此端點的憑證。 如果您使用 Linux 機器，new-service-fabric-cluster-certificate.sh  指令碼所產生的憑證必須匯入 Chrome 中，才能檢視 Service Fabric 總管。 如果您使用 Mac，則必須將 PFX 檔案安裝到您的金鑰鏈。 您會注意您的應用程式已安裝於叢集上。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. 若要存取您的應用程式，請輸入 https://testlinuxcluster.westus.cloudapp.azure.com:8080
+6. 若要存取您的應用程式，請輸入 `https://testlinuxcluster.westus.cloudapp.azure.com:8080`
 
     ![Voting 應用程式 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 

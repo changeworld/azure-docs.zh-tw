@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0a73a2bc3fa76c945cf699133a41b38a9983a234
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68640004"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345818"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中建置群集模型
 
 在這三部分教學課程系列的第二部分中，您將使用 R 建立 K-Means 模型來執行群集。 在本系列的下一個部分中，您將使用 Azure SQL Database 機器學習服務 (預覽) 在 SQL 資料庫中部署此模型。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 在本文中，您將學會如何：
 
