@@ -11,16 +11,16 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: bc779df06d92d2483755ae888fda121b8e493a18
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ef20c5b8babdf378b88997ae2fd7b98350c31319
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124915"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用適用於 SQL 驗證的 Azure Active Directory Authentication
 
-Azure Active Directory 驗證是使用 Azure Active Directory (Azure AD) 中的身分識別來連線到 Azure [SQL Database](sql-database-technical-overview.md)、[受控執行個體](sql-database-managed-instance.md)和 [SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 
+Azure Active Directory 驗證是使用 Azure Active Directory (Azure AD) 中的身分識別來連線到 Azure [SQL Database](sql-database-technical-overview.md)、[受控執行個體](sql-database-managed-instance.md)和 [SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 
 
 > [!NOTE]
 > 本主題適用於 Azure SQL 伺服器，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
@@ -135,19 +135,19 @@ Azure AD 伺服器主體 (登入) (**公開預覽**) 支援下列驗證方法：
   - Azure AD 伺服器主體 (登入) 新增到受控執行個體 (**公開預覽**) 之後，就能建立可以加入 `sysadmin` 角色的多個 Azure AD 伺服器主體 (登入)。
 - 只有 SQL Server 的 Azure AD 系統管理員可以一開始就使用 Azure Active Directory 帳戶來連線到 Azure SQL Database 伺服器、「受控執行個體」或「Azure SQL 資料倉儲」。 Active Directory 系統管理員可以設定後續的 Azure AD 資料庫使用者。   
 - 建議將連接逾時設定為 30 秒。   
-- SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015 (版本 14.0.60311.1 (2016 年 4 月) 或更新版本) 支援 Azure Active Directory 驗證。 ( **.NET Framework Data Provider for SqlServer** 支援 Azure AD 驗證，最低版本 .NET Framework 4.6)。 因此，這些工具和資料層應用程式 (DAC 和 .BACPAC) 的最新版本可以使用 Azure AD 驗證。   
+- SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015 (版本 14.0.60311.1 (2016 年 4 月) 或更新版本) 支援 Azure Active Directory 驗證。 (**.NET Framework Data Provider for SqlServer** 支援 Azure AD 驗證，最低版本 .NET Framework 4.6)。 因此，這些工具和資料層應用程式 (DAC 和 .BACPAC) 的最新版本可以使用 Azure AD 驗證。   
 - 從 15.0.1 版起，[sqlcmd 公用程式](/sql/tools/sqlcmd-utility)和 [bcp 公用程式](/sql/tools/bcp-utility)都支援搭配 MFA 的 Active Directory 互動式驗證。
 - SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版本的 Data Tools (版本 14.0.60311.1)。 Azure AD 使用者目前不會顯示在 SSDT 物件總管中。 解決方法是在 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) 中檢視使用者。   
 - [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支援 Azure AD 驗證。 此外，請參閱 [設定連接屬性](https://msdn.microsoft.com/library/ms378988.aspx)。   
 - PolyBase 無法使用 Azure AD 驗證進行驗證。   
-- Azure 入口網站的 [匯入資料庫] 和 [匯出資料庫] 刀鋒視窗支援 SQL Database 的 AD 驗證。 PowerShell 命令也支援使用 Azure AD 驗證的匯入和匯出。   
+- Azure 入口網站的 [匯入資料庫]**** 和 [匯出資料庫]**** 刀鋒視窗支援 SQL Database 的 AD 驗證。 PowerShell 命令也支援使用 Azure AD 驗證的匯入和匯出。   
 - SQL Database、「受控執行個體」及「SQL 資料倉儲」可藉由使用 CLI 來支援 Azure AD 驗證。 如需詳細資訊，請參閱[使用 SQL Database 或 SQL 資料倉儲設定和管理 Azure Active Directory 驗證](sql-database-aad-authentication-configure.md)和 [SQL Server - az sql server](https://docs.microsoft.com/cli/azure/sql/server)。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 若要了解如何建立和填入 Azure AD，然後搭配 Azure SQL Database 或「Azure SQL 資料倉儲」來設定 Azure AD，請參閱[搭配 SQL Database、受控執行個體或 SQL 資料倉儲來設定及管理 Azure Active Directory 驗證](sql-database-aad-authentication-configure.md)。
 - 如需搭配使用 Azure AD 伺服器主體 (登入) 與受控執行個體的教學課程，請參閱 [Azure AD 伺服器主體 (登入) 與受控執行個體](sql-database-managed-instance-aad-security-tutorial.md)
-- 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入[、使用者、資料庫角色和許可權](sql-database-manage-logins.md)。
+- 有關 SQL 資料庫中登錄名、使用者、資料庫角色和許可權的概述，請參閱[登錄名、使用者、資料庫角色和許可權](sql-database-manage-logins.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 如需資料庫角色的詳細資訊，請參閱[資料庫角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 如需建立適用於受控執行個體之 Azure AD 伺服器主體 (登入) 的語法，請參閱 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。

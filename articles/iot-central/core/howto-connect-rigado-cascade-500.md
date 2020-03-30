@@ -1,73 +1,73 @@
 ---
-title: 連接 Azure IoT Central 中的 Rigado Cascade 500 |Microsoft Docs
-description: 瞭解如何將 Rigado Cascade 500 閘道裝置連線到您的 IoT Central 應用程式。
+title: 在 Azure IoT 中心連接里加多級聯 500 |微軟文檔
+description: 瞭解如何將里加多級聯 500 閘道設備連接到 IoT 中央應用程式。
 services: iot-central
 ms.service: iot-central
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
 - iot-storeAnalytics-conditionMonitor
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: bd96d2b9f2220c4eecb653e0764c381235c62157
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026922"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158326"
 ---
-# <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>將 Rigado Cascade 500 閘道裝置連線到您的 Azure IoT Central 應用程式
+# <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>將里加多級聯 500 閘道設備連接到 Azure IoT 中央應用程式
 
 
-本文說明如何以解決方案產生器的形式，將 Rigado Cascade 500 閘道裝置連線到您的 Microsoft Azure IoT Central 應用程式。 
+本文介紹作為解決方案產生器，如何將 Rigado Cascade 500 閘道設備連接到 Microsoft Azure IoT 中央應用程式。 
 
-## <a name="what-is-cascade-500"></a>什麼是 Cascade 500？
+## <a name="what-is-cascade-500"></a>什麼是級聯 500？
 
-Cascade 500 IoT 閘道是 Rigado 的硬體供應專案，隨附于其串聯式邊緣即服務解決方案中。 它為商業 IoT 專案和產品小組提供彈性的邊緣運算能力、強大的容器化應用程式環境，以及各種不同的無線裝置連線選項，包括藍牙5、LTE、& 的 Wi-fi。
+級聯 500 IoT 閘道是 Rigado 提供的硬體產品，包含在其級聯邊緣即服務解決方案中。 它為商業物聯網專案和產品團隊提供了靈活的邊緣計算能力、強大的容器化應用環境以及各種無線設備連接選項，包括藍牙 5、LTE、& Wi-Fi。
 
-Cascade 500 是預先認證的 Azure IoT 隨插即用（預覽），可讓我們的解決方案產生器輕鬆地將裝置上線至其端對端解決方案。 Cascade 閘道可讓您以無線方式連線到與閘道裝置鄰近的各種條件監視感應器。 這些感應器可以透過閘道裝置上架到 IoT Central。
+Cascade 500 已為 Azure IoT 隨插即用（預覽）進行了預認證，允許我們的解決方案構建者輕鬆地將設備送入端到端解決方案。 Cascade 閘道允許您以無線方式連接到靠近閘道設備的各種狀態監控感應器。 這些感應器可通過閘道設備進入 IoT 中心。
 
-## <a name="prerequisites"></a>必要條件
-若要逐步執行本作法指南，您需要下列資源：
+## <a name="prerequisites"></a>Prerequisites
+要逐步完成本操作指南，您需要以下資源：
 
-* Rigado Cascade 500 裝置。 如需詳細資訊，請造訪[Rigado](https://www.rigado.com/)。
-* Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立新的應用程式](./quick-deploy-iot-central.md)。
+* 里加多級聯 500 設備。 欲瞭解更多資訊，請訪問[里加多](https://www.rigado.com/)。
+* Azure IoT Central 應用程式。 有關詳細資訊，請參閱[創建新應用程式](./quick-deploy-iot-central.md)。
 
 ## <a name="add-a-device-template"></a>新增裝置範本
 
-為了將串聯500閘道裝置上線至您的 Azure IoT Central 應用程式實例，您必須在應用程式中設定對應的裝置範本。
+為了將 Cascade 500 閘道設備引入 Azure IoT 中央應用程式實例，您需要在應用程式中配置相應的設備範本。
 
-若要新增 Cascade 500 裝置範本： 
+要添加級聯 500 設備範本， 
 
-1. 流覽至左窗格中的 [***裝置範本***] 索引標籤，選取 **+ 新增**： ![建立新的裝置範本](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. 此頁面可讓您選擇***建立自訂範本***，或***使用預先設定的裝置範本***
-1. 從預先設定的裝置範本清單中選取 [C500 裝置] 範本，如下所示： ![選取 [C500] [裝置範本]](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. 選取 ***[下一步]： [自訂***] 繼續進行下一個步驟。 
-1. 在下一個畫面上，選取 [***建立***]，將 C500 裝置範本上架到 IoT Central 應用程式中。
+1. 導航到左側窗格中的 ***"設備範本"*** 選項卡，選擇 **"新建**"：![創建新設備範本](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. 該頁面為您提供了***創建自訂範本***或使用***預配置設備範本***的選項
+1. 從預配置的設備範本清單中選擇 C500 設備範本，如下所示：![選擇 C500 設備範本](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. 選擇 ***"下一步"：自訂***以繼續下一步。 
+1. 在下一個螢幕上，選擇 ***"創建***"以將 C500 設備範本納入 IoT 中央應用程式。
 
-## <a name="retrieve-application-connection-details"></a>取得應用程式連線詳細資料
+## <a name="retrieve-application-connection-details"></a>檢索應用程式連接詳細資訊
 
-您現在必須取得 Azure IoT Central 應用程式的**範圍識別碼**和**主要金鑰**，才能連接 Cascade 500 裝置。 
+現在，您需要檢索 Azure IoT 中央應用程式**的範圍 ID**和**主金鑰**，以便連接 Cascade 500 設備。 
 
-1. 流覽至左窗格中的 [系統**管理**]，然後按一下 [**裝置**連線]。 
-2. 記下 IoT Central 應用程式的**範圍識別碼**。
-![應用程式範圍識別碼](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. 現在，按一下 [ **View Keys** ]，並記下**主要金鑰**
-![主鍵](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+1. 在左側窗格中導航到 **"管理****"，然後按一下"設備連接**"。 
+2. 記下 IoT 中央應用程式**的範圍 ID。**
+![應用範圍 ID](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
+3. 現在按一下 **"查看鍵**"並記下**主鍵主鍵**
+ ![](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
-## <a name="contact-rigado-to-connect-the-gateway"></a>聯絡 Rigado 以連接閘道 
+## <a name="contact-rigado-to-connect-the-gateway"></a>聯繫里加多連接閘道 
 
-若要將 Cascade 500 裝置連線到 IoT Central 應用程式，您必須聯絡 Rigado，並提供上述步驟中的應用程式連線詳細資料。 
+為了將 Cascade 500 設備連接到 IoT 中心應用程式，您需要聯繫 Rigado，並向他們提供上述步驟中的應用程式連接詳細資訊。 
 
-一旦裝置連線到網際網路，Rigado 就能夠透過安全通道向下推至串聯500閘道裝置。 
+一旦設備連接到互聯網，Rigado 將能夠通過安全通道向下推送到 Cascade 500 閘道設備的配置更新。 
 
-此更新將會在 Cascade 500 裝置上套用 IoT Central 連線詳細資料，且會出現在您的裝置清單中。 
+此更新將在 Cascade 500 設備上應用 IoT 中央連接詳細資訊，並將顯示在您的設備清單中。 
 
 ![主索引鍵](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
-您現在已準備好在 IoT Central 應用程式中使用您的 C500 裝置！
+現在，您已準備好在 IoT 中央應用程式中使用 C500 設備！
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何將 Rigado Cascade 500 連線到您的 Azure IoT Central 應用程式，建議的下一個步驟是瞭解如何[建立存放庫內的分析應用程式](../retail/tutorial-in-store-analytics-create-app-pnp.md)，以建立端對端解決方案。 
+現在，您已經瞭解如何將 Rigado Cascade 500 連接到 Azure IoT 中央應用程式，建議的下一步是瞭解如何[創建店內分析應用程式](../retail/tutorial-in-store-analytics-create-app-pnp.md)以構建端到端解決方案。 

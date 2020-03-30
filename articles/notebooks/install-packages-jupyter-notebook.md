@@ -1,16 +1,16 @@
 ---
-title: 在 Jupyter 筆記本中安裝套件-Azure Notebooks 預覽
-description: 瞭解如何從在 Azure 上執行的 Jupyter F#筆記本中安裝 Python、R 和套件。
+title: 在聚居筆記本中安裝套裝軟體 - Azure 筆記本預覽
+description: 瞭解如何在 Azure 上運行的 Jupyter 筆記本中安裝 Python、R 和 F# 包。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646223"
 ---
-# <a name="install-packages-from-within-azure-notebooks-preview"></a>從 Azure Notebooks Preview 中安裝套件
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>從 Azure 筆記本預覽中安裝包
 
 雖然您可以設定[適用於專案層級上 Notebook 的環境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)，還是建議您直接在個別 Notebook 內安裝套件。
 
@@ -68,12 +68,12 @@ Paket.Package
 #load "Paket.Generated.Refs.fsx"
 ```
 
-開啟媒體櫃：
+打開庫：
 ```fsharp
 open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-- [如何：設定和管理專案](configure-manage-azure-notebooks-projects.md)
-- [如何：顯示投影片放映](present-jupyter-notebooks-slideshow.md)
+- [如何：配置和管理專案](configure-manage-azure-notebooks-projects.md)
+- [如何：展示幻燈片](present-jupyter-notebooks-slideshow.md)

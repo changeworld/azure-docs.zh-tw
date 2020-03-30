@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68608014"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自訂遠端監視解決方案加速器
@@ -31,7 +31,7 @@ ms.locfileid: "68608014"
 
 1. 使用 **pcs** CLI 來部署解決方案加速器的**基本**執行個體。 記下部署的名稱以及您為虛擬機器提供的認證。 如需詳細資訊，請參閱[使用 CLI 進行部署](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-1. 若要針對裝載解決方案中微服務的虛擬機器啟用 SSH 存取，請使用 Azure 入口網站或 Azure Cloud Shell。 例如:
+1. 若要針對裝載解決方案中微服務的虛擬機器啟用 SSH 存取，請使用 Azure 入口網站或 Azure Cloud Shell。 例如：
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -39,7 +39,7 @@ ms.locfileid: "68608014"
 
     請只在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH，[您應該在使用完畢之後儘速加以停用](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
-1. 使用 Azure 入口網站或 Azure Cloud Shell 尋找虛擬機器的名稱和公用 IP 位址。 例如:
+1. 使用 Azure 入口網站或 Azure Cloud Shell 尋找虛擬機器的名稱和公用 IP 位址。 例如：
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
@@ -73,11 +73,11 @@ ms.locfileid: "68608014"
     npm start
     ```
 
-1. 上一個命令會在本機的 HTTP:\//localhost: 3000/儀表板上執行 UI。 您可以在網站執行期間編輯程式碼，並看到它動態更新。
+1. 前面的命令在本地運行 UI，網址為\/HTTP：/localhost：3000/儀表板。 您可以在網站執行期間編輯程式碼，並看到它動態更新。
 
 ## <a name="customize-the-layout"></a>自訂版面配置
 
-遠端監視解決方案中的每個頁面都是由一組控制項所組成，這在原始程式碼中稱為*面板*。 [儀表板] 頁面由五個面板所組成：概觀、地圖、警示、遙測及 Analytics。 您可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) \(英文\) GitHub 存放庫中找到定義每個頁面及其面板的原始程式碼。 例如，定義 [儀表板] 頁面、其版面配置，以及頁面上面板的程式碼位於 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) \(英文\) 資料夾中。
+遠端監視解決方案中的每個頁面都是由一組控制項所組成，這在原始程式碼中稱為*面板*。 **儀表板**頁面由五個面板組成：概述、映射、警報、遙測和分析。 您可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) \(英文\) GitHub 存放庫中找到定義每個頁面及其面板的原始程式碼。 例如，定義 [儀表板]**** 頁面、其版面配置，以及頁面上面板的程式碼位於 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) \(英文\) 資料夾中。
 
 由於面板會管理自己的版面配置及大小，因此您可以輕易地修改頁面的版面配置。 對 `src/components/pages/dashboard/dashboard.js` 檔案中的 **PageContent** 元素進行下列變更：
 
@@ -308,7 +308,7 @@ ms.locfileid: "68608014"
 
 ## <a name="customize-the-telemetry-chart"></a>自訂遙測圖表
 
-資料夾中的檔案會定義 **儀表板** `src/components/pages/dashboard/panels/telemtry` 頁面上的遙測圖表。 UI 會從解決方案後端的 `src/services/telemetryService.js` 檔案中擷取遙測。 下列步驟示範如何將遙測圖表上顯示的時間週期從 15 分鐘變更為 5 分鐘：
+資料夾中的檔案會定義 **儀表板**`src/components/pages/dashboard/panels/telemtry` 頁面上的遙測圖表。 UI 會從解決方案後端的 `src/services/telemetryService.js` 檔案中擷取遙測。 下列步驟示範如何將遙測圖表上顯示的時間週期從 15 分鐘變更為 5 分鐘：
 
 1. 在 `src/services/telemetryService.js` 檔案中，找出名為 **getTelemetryByDeviceIdP15M** 的函式。 複製此函式並修改複本，如下所示：
 
@@ -335,7 +335,7 @@ ms.locfileid: "68608014"
 
 ## <a name="add-a-new-kpi"></a>新增 KPI
 
-[儀表板] 頁面會在 [Analytics] 面板中顯示 KPI。 這些 KPI 是在 `src/components/pages/dashboard/dashboard.js` 檔案中計算的。 KPI 會由 `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` 檔案來呈現。 下列步驟說明如何在 [儀表板] 頁面上計算並呈現新的 KPI 值。 顯示的範例會在警告警示 KPI 中新增百分比變更：
+[儀表板]**** 頁面會在 [Analytics]**** 面板中顯示 KPI。 這些 KPI 是在 `src/components/pages/dashboard/dashboard.js` 檔案中計算的。 KPI 會由 `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` 檔案來呈現。 下列步驟說明如何在 [儀表板]**** 頁面上計算並呈現新的 KPI 值。 顯示的範例會在警告警示 KPI 中新增百分比變更：
 
 1. 開啟 `src/components/pages/dashboard/dashboard.js` 檔案。 修改 **initialState** 物件以包含 **warningAlertsChange** 屬性，如下所示：
 
@@ -469,7 +469,7 @@ ms.locfileid: "68608014"
     </div>
     ```
 
-[儀表板] 頁面現在會顯示新的 KPI 值：
+[儀表板]**** 頁面現在會顯示新的 KPI 值：
 
 ![警告 KPI](./media/iot-accelerators-remote-monitoring-customize/new-kpi.png)
 
@@ -496,13 +496,13 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 在本文中，您已了解可用來協助您在遠端監視解決方案加速器中自訂 Web UI 的資源。 若要深入了解如何自訂 UI，請參閱下列文章：
 
-* [在遠端監視解決方案加速器 Web UI 中新增自訂頁面](iot-accelerators-remote-monitoring-customize-page.md)
+* [向遠端監視解決方案加速器 Web UI 添加自訂頁面](iot-accelerators-remote-monitoring-customize-page.md)
 * [在遠端監視解決方案加速器 Web UI 中新增自訂服務](iot-accelerators-remote-monitoring-customize-service.md)
 * [在遠端監視解決方案加速器 Web UI 中新增自訂格線](iot-accelerators-remote-monitoring-customize-grid.md)
 * [在遠端監視解決方案加速器 Web UI 中新增自訂飛出視窗](iot-accelerators-remote-monitoring-customize-flyout.md)
 * [在遠端監視解決方案加速器 Web UI 中的儀表板上新增自訂面板](iot-accelerators-remote-monitoring-customize-panel.md)
 
-如需關於遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+有關遠端監視解決方案加速器的更多概念資訊，請參閱[遠端監視體系結構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
 如需關於自訂遠端監視解決方案微服務的詳細資訊，請參閱[自訂和重新部署微服務](iot-accelerators-microservices-example.md)。
 <!-- Next tutorials in the sequence -->

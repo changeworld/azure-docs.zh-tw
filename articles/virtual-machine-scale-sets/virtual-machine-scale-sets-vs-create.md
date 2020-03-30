@@ -1,7 +1,7 @@
 ---
 title: 使用 Visual Studio 部署虛擬機器調整集
 description: 使用 Visual Studio 和 Resource Manager 範本部署虛擬機器調整集
-ms.custom: H1Hack27Feb2017
+ms.custom: vs-azure, H1Hack27Feb2017
 ms.workload: azure-vs
 author: mayanknayar
 tags: azure-resource-manager
@@ -10,89 +10,89 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c49b4f42bc726c68880bdd4d6f58956936e83177
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066966"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 建立虛擬機器擴展集
 
-本文說明如何使用 Visual Studio 資源群組部署來部署 Azure 虛擬機器擴展集。
+本文介紹如何使用視覺化工作室資源組部署部署 Azure 虛擬機器縮放集。
 
-[Azure 虛擬機器擴展集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一項 azure 計算資源，可透過自動調整和負載平衡來部署和管理類似虛擬機器的集合。 您可以使用 [Azure Resource Manager 範本 (英文)](https://github.com/Azure/azure-quickstart-templates) 來佈建和部署虛擬機器擴展集。 Azure Resource Manager 範本可以使用 Azure CLI、PowerShell、REST 進行部署，也可直接從 Visual Studio 進行部署。 Visual Studio 提供一組範例範本，您可以將其部署為 Azure 資源群組部署專案的一部分。
+[Azure 虛擬機器縮放集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一種 Azure 計算資源，用於部署和管理具有自動縮放和負載平衡的類似虛擬機器的集合。 您可以使用 [Azure Resource Manager 範本 (英文)](https://github.com/Azure/azure-quickstart-templates) 來佈建和部署虛擬機器擴展集。 可以使用 Azure CLI、PowerShell、REST 以及直接從 Visual Studio 部署 Azure 資源管理器範本。 Visual Studio 提供了一組示例範本，您可以將這些範本部署為 Azure 資源組部署專案的一部分。
 
-Azure 資源群組部署是一種方式，可在單一部署作業中將一組相關的 Azure 資源群組在一起並加以發佈。 如需詳細資訊，請參閱[透過 Visual Studio 建立和部署 Azure 資源群組](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+Azure 資源群組部署是一種方式，可在單一部署作業中將一組相關的 Azure 資源群組在一起並加以發佈。 有關詳細資訊，請參閱通過[Visual Studio 創建和部署 Azure 資源組](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要開始在 Visual Studio 中部署虛擬機器擴展集，您需要下列必要條件：
+要開始在視覺化工作室中部署虛擬機器縮放集，您需要以下先決條件：
 
 * Visual Studio 2013 或更新版本
 * Azure SDK 2.7、2.8 或 2.9
 
 >[!NOTE]
->本文使用 Visual Studio 2019 搭配[AZURE SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)。
+>本文使用 Visual Studio 2019 與[Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)。
 
-## 建立專案<a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>創建專案<a name="creating-a-project"></a> 
 
-1. 開啟 Visual Studio，然後選取 [建立新專案]。
+1. 開啟 Visual Studio，然後選取 [建立新專案]****。
 
-1. 在 [**建立新專案**] 中，選擇 [ **Azure 資源群組** C# ]，然後選取 **[下一步]** 。
+1. 在**創建新專案中**，為 C# 選擇**Azure 資源組**，然後選擇 **"下一步**"。
 
-1. 在 [**設定您的新專案**] 中輸入名稱，然後選取 [**建立**]。
+1. 在 **"配置新專案"** 中，輸入名稱並選擇 **"創建**"。
 
-    ![命名並建立您的專案](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
+    ![命名並創建專案](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
-1. 從範本清單中，選擇 [ **Windows 虛擬機器擴展集**] 或 [ **Linux 虛擬機器擴展集**] 範本。 選取 [確定]。
+1. 從範本清單中，選擇**Windows 虛擬機器縮放集**或**Linux 虛擬機器縮放集**範本。 選取 [確定]****。
 
-   ![選取虛擬機器範本](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
+   ![選擇虛擬機器範本](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
 
-建立專案之後，**方案總管**包含 PowerShell 部署腳本、Azure Resource Manager 範本，以及虛擬機器擴展集的參數檔。
+創建專案後，**解決方案資源管理器**包含 PowerShell 部署腳本、Azure 資源管理器範本和虛擬機器縮放集的參數檔。
 
 ## <a name="customize-your-project"></a>自訂您的專案
 
-現在您可以編輯範本，以依據應用程式的需求進行自訂。 您可以新增虛擬機器擴充功能屬性或編輯負載平衡規則。 根據預設，虛擬機器擴展集範本會設定為部署**AzureDiagnostics**延伸模組，讓您可以輕鬆地新增自動調整規則。 範本也會部署具有公用 IP 位址的負載平衡器，並以輸入 NAT 規則進行設定。
+現在，您可以編輯範本以自訂它以滿足應用程式的需求。 您可以添加虛擬機器擴充屬性或編輯負載平衡規則。 預設情況下，虛擬機器縮放集範本配置為部署**Azure 診斷**擴展，這使得添加自動縮放規則變得容易。 範本還部署帶有公共 IP 位址的負載等化器，該位址配置有入站 NAT 規則。
 
-負載平衡器可讓您使用 SSH （Linux）或 RDP （Windows）連接到虛擬機器實例。 前端連接埠範圍是從 50000 開始。 針對 Linux，如果您透過 SSH 連線到埠50000，負載平衡會將您路由至擴展集中第一部虛擬機器的埠22。 連接到埠50001會路由至第二部虛擬機器的埠22，依此類推。
+負載等化器允許您使用 SSH （Linux） 或 RDP （Windows） 連接到虛擬機器實例。 前端連接埠範圍是從 50000 開始。 對於 Linux，如果 SSH 要移植 50000，則負載平衡將路由您到 Scale 集中的第一個虛擬機器的埠 22。 連接到埠 50001 路由到第二個虛擬機器的埠 22，等等。
 
- 使用 [Visual Studio] 來編輯範本的好方法是使用 [ **JSON 大綱**]。 您可以組織參數、變數和資源。 瞭解架構之後，Visual Studio 可以在您的範本中指出錯誤，然後再進行部署。
+ 使用 Visual Studio 編輯範本的一個好方法是使用**JSON 大綱**。 您可以組織參數、變數和資源。 通過瞭解架構，Visual Studio 可以在部署範本之前指出範本中的錯誤。
 
 ![JSON 總管](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
 ## <a name="deploy-the-project"></a>部署專案
 
-部署 Azure Resource Manager 範本來建立虛擬機器擴展集資源：
+部署 Azure 資源管理器範本以創建虛擬機器縮放集資源：
 
-1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後選擇 [**部署** > **新增**]。
+1. 在**解決方案資源管理器**中，按右鍵專案並選擇 **"部署** > **New**"。
 
     ![部署專案](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-1. 在 [**部署至資源群組**] 中，選擇要使用的訂用帳戶，然後選取資源群組。 如有必要，您可以建立資源群組。
+1. 在 **"部署到資源組"** 中，選擇要使用哪個訂閱並選擇資源組。 如有必要，可以創建資源組。
 
-1. 接下來，選取 [**編輯參數**] 以輸入傳遞至範本的參數。
+1. 接下來，選擇 **"編輯參數"** 以輸入傳遞給範本的參數。
 
-   ![輸入訂用帳戶和資源群組](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
+   ![輸入訂閱和資源組](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
 
-1. 提供作業系統的使用者名稱和密碼。 需要這些值才能建立部署。 如果您未安裝 PowerShell Tools for Visual Studio，請選取 [**儲存密碼**] 以避免隱藏的 PowerShell 命令提示字元，或使用[Key Vault 支援](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)。 選取 [**儲存**] 以繼續。
+1. 提供作業系統的使用者名和密碼。 創建部署需要這些值。 如果您沒有安裝適用于 Visual Studio 的 PowerShell 工具，請選擇 **"保存密碼**以避免隱藏 PowerShell 命令提示"，或使用[金鑰保存庫支援](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)。 選擇 **"保存"** 以繼續。
 
     ![編輯部署參數](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. 在 [**部署至資源群組**] 中，選取 [**部署**]。 動作會執行**deploy-azureresourcegroup.ps1**腳本。 [輸出] 視窗會顯示部署進度。
+1. 在 **"部署到資源組**"中，選擇 **"部署**"。 該操作運行**部署 Azure 資源組.ps1**腳本。 [輸出]**** 視窗會顯示部署進度。
 
    ![輸出顯示結果](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## 探索您的虛擬機器擴展集<a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>探索虛擬機器縮放集<a name="exploring-your-virtual-machine-scale-set"></a>
 
-選取 [ **view** > **Cloud Explorer** ] 以查看新的虛擬機器擴展集。 如有必要，請使用 [**全部**重新整理]。
+選擇 **"查看** > **雲資源管理器**"以查看新的虛擬機器規模集。 如有必要，請使用 **"全部刷新**"。
 
 ![雲端總管](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 
-**Cloud Explorer**可讓您在開發應用程式時，在 Visual Studio 中管理 Azure 資源。 您也可以在 [Azure 入口網站](https://portal.azure.com)和 [Azure 資源總管 (英文)](https://resources.azure.com/) 中檢視虛擬機器擴展集。
+**雲資源管理器**允許您在開發應用程式時在視覺化工作室中管理 Azure 資源。 您也可以在 [Azure 入口網站](https://portal.azure.com)和 [Azure 資源總管 (英文)](https://resources.azure.com/) 中檢視虛擬機器擴展集。
 
- 入口網站提供使用網頁瀏覽器來管理 Azure 基礎結構的最佳方式。 Azure 資源總管提供簡單的方式來探索和分析 Azure 資源。 Azure 資源總管提供實例視圖，也會顯示您所查看資源的 PowerShell 命令。
+ 門戶提供了使用 Web 瀏覽器管理 Azure 基礎結構的最佳方式。 Azure 資源資源管理器提供了一種探索和調試 Azure 資源的簡便方法。 Azure 資源資源管理器提供實例視圖，並顯示您所查看資源的 PowerShell 命令。
 
 ## <a name="next-steps"></a>後續步驟
 
-一旦透過 Visual Studio 成功部署虛擬機器擴展集之後，就可進一步自訂專案以符合應用程式的需求。 例如，藉由新增**深入**解析資源來設定自動調整。 您可以將基礎結構新增至您的範本（例如獨立虛擬機器），或使用自訂腳本擴充功能部署應用程式。 您可以在[Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates)GitHub 存放庫中找到良好的範例範本。 搜尋 `vmss`。
+通過 Visual Studio 成功部署虛擬機器縮放集後，您可以進一步自訂專案以滿足應用程式要求。 例如，通過添加**見解**資源來配置自動縮放。 您可以將基礎結構添加到範本（如獨立虛擬機器）或使用自訂腳本擴展部署應用程式。 好的示例範本可以在[Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates)GitHub 存儲庫中找到。 搜尋 `vmss`。

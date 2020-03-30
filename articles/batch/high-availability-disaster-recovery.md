@@ -1,6 +1,6 @@
 ---
-title: 高可用性和嚴重損壞修復-Azure Batch
-description: 瞭解如何設計 Batch 應用程式，以因應區域中斷情形。 工作負載應該容錯移轉至另一個區域，或在兩個或多個區域之間分割。
+title: 高可用性和災害復原 - Azure 批次處理
+description: 瞭解如何為區域中斷設計批次處理應用程式。 工作負載應容錯移轉到另一個區域，或拆分為兩個或多個區域。
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: labrenne
 ms.openlocfilehash: 84b0cce9557b4ae05586579f175cd0f5db14fdfc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77026076"
 ---
 # <a name="design-your-application-for-high-availability"></a>針對高可用性設計應用程式
@@ -49,5 +49,5 @@ Azure Batch 是區域性服務。 Batch 在所有 Azure 區域均提供，但在
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解如何使用[Azure 入口網站](batch-account-create-portal.md)、 [Azure CLI](cli-samples.md)、 [PowerShell](batch-powershell-cmdlets-get-started.md)或[batch 管理 API](batch-management-dotnet.md)建立 batch 帳戶。
+- 瞭解有關使用[Azure 門戶](batch-account-create-portal.md)[、Azure CLI、PowerShell](cli-samples.md)或[PowerShell](batch-powershell-cmdlets-get-started.md)[批次處理管理 API](batch-management-dotnet.md)創建批次處理帳戶的更多資訊。
 - 預設配額會與 Batch 帳戶相關聯；[本文](batch-quota-limit.md)提供預設配額值的詳細資訊，並說明如何增加配額。

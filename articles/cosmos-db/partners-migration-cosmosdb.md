@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 的遷移和應用程式開發夥伴
+title: Azure Cosmos DB 的遷移和應用程式開發合作夥伴
 description: 列出提供移轉解決方案，並支援 Azure Cosmos DB 的 Microsoft 合作夥伴。
 author: SnehaGunda
 ms.author: sngun
@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988170"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 移轉和應用程式開發合作夥伴
@@ -19,13 +19,13 @@ ms.locfileid: "76988170"
 
 ## <a name="migration-tools"></a>移轉工具
 
-|**合作夥伴**  |**功能和體驗**  |**支援的國家/地區**  |**連絡人**  |
+|**夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**連絡人**  |
 |---------|---------|---------|---------|
-|![Striim][2]    |  從各種資料來源[將即時資料移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 可簡化從各種內部部署來源（包括企業檔和關係資料庫、感應器和記錄檔）到 Azure Cosmos DB 的即時收集和移動資料。 |   USA   |  [網站](https://www.striim.com/)       |
+|![Striim][2]    |  從各種資料來源[將即時資料移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 簡化了從各種本地源（包括企業文檔和關係資料庫、感應器和日誌檔）到 Azure Cosmos DB 中即時收集和移動資料的過程。 |   USA   |  [網站](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>系統整合者合作夥伴
 
-|**合作夥伴**  |**功能和體驗**  |**支援的國家/地區**  |**連絡人**  |
+|**夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**連絡人**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL 移轉；新的應用程式開發 | USA | [網站](https://www.10thmagnitude.com/)|
 |![Altoros 開發 LLC][3]    |  NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發 |   美國、挪威、芬蘭、白俄羅斯、阿根廷 |  [網站](https://www.altoros.com/)     |
@@ -36,13 +36,13 @@ ms.locfileid: "76988170"
 | ![Capgemini][14] | NoSQL 移轉；應用程式創新 (現有的應用程式)；新的應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  | [網站](https://www.capgemini.com/) | 
 |![Coeo][7]     |   應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發 |    英國     |  [網站](https://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL 移轉 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳洲、日本 | [網站](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL 移轉       |    全球     |  [網站](https://www.infosys.com/)       |
+|![Infosys][8]     |  NoSQL 移轉       |    全域     |  [網站](https://www.infosys.com/)       |
 | ![Lagash][16] | NoSQL 移轉、 <br/> 新的應用程式開發 | 阿根廷、智利、哥倫比亞、墨西哥| [網站](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL 移轉、 <br/> 新的應用程式開發 | 巴西| [網站](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     新增發展 (新的應用程式)    |    USA     |  [網站](https://www.nealanalytics.com/)       |
 |![Pragmatic Works Software Inc][10]    |   NoSQL 移轉      |   USA      |  [網站](https://www.pragmaticworks.com/)       |
 | ![Ricoh Global][18] | NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)| 英國  | [網站](https://www.ricoh.com/)|
-| ![SNP Technologies][19] | NoSQL 移轉| 美國 | [網站](https://www.snp.com/)|
+| ![SNP Technologies][19] | NoSQL 移轉| US | [網站](https://www.snp.com/)|
 | ![Solidsoft Reply][20] | NoSQL 移轉 | 克羅埃西亞、瑞典、丹麥、愛爾蘭、保加利亞、斯洛維尼亞、賽普勒斯、馬爾他、立陶宛、捷克共和國、冰島、瑞士和列支敦斯登| [網站](https://www.reply.com/solidsoft-reply/)|
 | ![西班牙文點技術][21] | NoSQL 移轉| 愛爾蘭| [網站](https://www.spanishpoint.ie/)|
 | ![Syone][22] | NoSQL 移轉| 葡萄牙| [網站](https://www.syone.com/)|

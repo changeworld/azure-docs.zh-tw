@@ -3,15 +3,15 @@ title: 建立 Azure HPC Cache
 description: 如何建立 Azure HPC Cache 執行個體
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.openlocfilehash: c6090d19ce530829b79dca69636c2123e2519961
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647151"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129560"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -23,9 +23,9 @@ ms.locfileid: "75647151"
 
 ![Azure 入口網站中專案詳細資料頁面的螢幕擷取畫面](media/hpc-cache-create-basics.png)
 
-在 [專案詳細資料]  中，選取將要裝載快取的訂用帳戶和資源群組。 請確定訂用帳戶位於[存取](hpc-cache-prereqs.md#azure-subscription)清單上。
+在 [專案詳細資料]**** 中，選取將要裝載快取的訂用帳戶和資源群組。 請確定訂用帳戶位於[存取](hpc-cache-prereqs.md#azure-subscription)清單上。
 
-在 [服務詳細資料]  中，設定快取名稱和其他屬性：
+在 [服務詳細資料]**** 中，設定快取名稱和其他屬性：
 
 * 位置 - 選取其中一個[支援的區域](hpc-cache-overview.md#region-availability)。
 * 虛擬網路 - 您可以選取現有的虛擬網路，或建立一個新的虛擬網路。
@@ -34,7 +34,7 @@ ms.locfileid: "75647151"
 ## <a name="set-cache-capacity"></a>設定快取容量
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-在 [快取]  頁面上，您必須設定快取的容量。 此處設定的值會決定您的快取可以保存多少資料，以及它服務用戶端要求的速度。
+在 [快取]**** 頁面上，您必須設定快取的容量。 此處設定的值會決定您的快取可以保存多少資料，以及它服務用戶端要求的速度。
 
 容量也會影響快取的成本。
 
@@ -53,11 +53,11 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ## <a name="add-resource-tags-optional"></a>新增資源標記 (選擇性)
 
-[標籤]  頁面可讓您將[資源標籤](https://go.microsoft.com/fwlink/?linkid=873112)新增至 Azure HPC Cache 執行個體。
+[標籤]**** 頁面可讓您將[資源標籤](https://go.microsoft.com/fwlink/?linkid=873112)新增至 Azure HPC Cache 執行個體。
 
 ## <a name="finish-creating-the-cache"></a>完成建立快取
 
-設定新的快取之後，按一下 [檢閱 + 建立]  索引標籤。入口網站會驗證您的選擇，並讓您檢閱您的選擇。 如果所有設定都正確，請按一下 [建立]  。
+配置新緩存後，按一下"審閱 **+ 創建**"選項卡。門戶驗證您的選擇，並允許您查看您的選擇。 如果所有設定都正確，請按一下 [建立]****。
 
 建立快取需要大約 10 分鐘。 您可以在 Azure 入口網站的通知面板中追蹤進度。
 

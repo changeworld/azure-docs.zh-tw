@@ -1,5 +1,5 @@
 ---
-title: 適用于 Windows 的 Azure VM 延伸模組和功能
+title: 適用于 Windows 的 Azure VM 擴展和功能
 description: 了解哪些擴充功能適用於 Azure 虛擬機器，並依它們提供或改善的內容來分組。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250721"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066846"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>適用於 Windows 的虛擬機器擴充功能和功能
 
@@ -35,7 +35,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 有數個不同的 Azure VM 擴充功能可供使用，各有特定使用案例。 部分範例包括：
 
 - 使用適用於 Windows 的 DSC 擴充功能將 PowerShell 預期狀態設定套用至 VM。 如需詳細資訊，請參閱 [Azure 期望狀態組態擴充功能簡介](dsc-overview.md)。
-- 設定監視具有 Log Analytics 代理程式 VM 擴充功能的 VM。 如需詳細資訊，請參閱[將 Azure vm 連線至 Azure 監視器記錄](../../log-analytics/log-analytics-azure-vm-extension.md)。
+- 使用日誌分析代理 VM 擴展配置對 VM 的監視。 有關詳細資訊，請參閱將[Azure VM 連接到 Azure 監視器日誌](../../log-analytics/log-analytics-azure-vm-extension.md)。
 - 使用 Chef 設定 Azure VM。 如需詳細資訊，請參閱[使用 Chef 自動化 Azure VM 部署](../../chef/chef-automation.md)。
 - 使用 Datadog 副檔名設定 Azure 基礎結構的監視。 如需詳細資訊，請參閱 [Datadog 部落格](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
@@ -50,7 +50,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 Azure 虛擬機器代理程式可管理 Azure 虛擬機器與 Azure 網狀架構控制器之間的互動。 虛擬機器代理程式負責部署和管理 Azure 虛擬機器的許多功能層面，包括執行虛擬機器擴充功能。 Azure 虛擬機器代理程式會預先安裝在 Azure Marketplace 映像上，並可手動安裝在支援的作業系統上。 適用於 Windows 的 Azure VM 代理程式一般稱為 Windows 客體代理程式。
 
-如需有關支援的作業系統和安裝指示，請參閱 [Azure 虛擬機器代理程式](agent-windows.md)。
+有關支援的作業系統和安裝說明的資訊，請參閱 Azure[虛擬機器代理](agent-windows.md)。
 
 #### <a name="supported-agent-versions"></a>支援的代理程式版本
 
@@ -61,18 +61,18 @@ Azure 虛擬機器代理程式可管理 Azure 虛擬機器與 Azure 網狀架構
 Windows 客體代理程式可在多種 OS 上執行，但具有擴充功能的 OS 在擴充功能方面有所限制。 如需詳細資訊，請參閱 [本篇文章](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )。
 
-某些擴充功能並非所有作業系統都可支援，可能會發出錯誤碼 51：「不支援的 OS」。 請查看個別的擴充功能文件以了解支援度。
+某些擴充功能並非所有作業系統都可支援，可能會發出錯誤碼 51：「不支援的 OS」**。 請查看個別的擴充功能文件以了解支援度。
 
 #### <a name="network-access"></a>網路存取
 
-擴充功能套件可從 Azure 儲存體擴充功能存放庫下載，且擴充功能狀態上傳會發佈至 Azure 儲存體。 如果您使用[支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理程式版本，則不需要允許存取 VM 區域中的 Azure 儲存體，因為可以使用代理程式將通訊重新導向至 Azure 網狀架構控制器以進行代理程式通訊（透過私人 IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)上的特殊許可權通道 HostGAPlugin 功能）。 如果您使用不受支援的代理程式版本，則必須允許從虛擬機器對該區域中的 Azure 儲存體進行存取。
+擴充功能套件可從 Azure 儲存體擴充功能存放庫下載，且擴充功能狀態上傳會發佈至 Azure 儲存體。 如果使用[受支援的](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)代理版本，則不需要允許訪問 VM 區域中的 Azure 存儲，例如使用代理將通信重定向到 Azure 結構控制器以進行代理通信（通過專用 IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)上的特權通道的 HostGAPlugin 功能）。 如果您使用不受支援的代理程式版本，則必須允許從虛擬機器對該區域中的 Azure 儲存體進行存取。
 
 > [!IMPORTANT]
-> 如果您已使用來賓防火牆或 proxy 來封鎖對*168.63.129.16*的存取，則無論上述情況，延伸模組都會失敗。 需要端口80、443和32526。
+> 如果您使用來賓防火牆或代理阻止了對*168.63.129.16*的訪問，則無論上述情況如何，擴展都會失敗。 埠 80、443 和 32526 是必需的。
 
-代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要存取 Azure 儲存體或 Azure Active Directory 的延伸模組，您可以允許使用[AZURE NSG 服務](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)標籤來存取儲存體或 AzureActiveDirectory。
+代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要訪問 Azure 存儲或 Azure 活動目錄的擴展，可以使用[Azure NSG 服務標記](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)訪問存儲或 Azure ActiveDirectory。
 
-Windows 來賓代理程式沒有 proxy 伺服器支援，可讓您透過重新導向代理程式流量要求，這表示 Windows 來賓代理程式會依賴您的自訂 proxy （如果有的話），以透過 IP 存取網際網路或主機上的資源168.63.129.16.
+Windows 來賓代理沒有代理伺服器支援，您可以重定向代理流量請求，這意味著 Windows 來賓代理將依賴您的自訂代理（如果有）通過 IP 訪問 Internet 或主機上的資源168.63.129.16.
 
 ## <a name="discover-vm-extensions"></a>探索 VM 擴充功能
 
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-在此範例中，VM 存取擴充功能會用來重設 Windows 虛擬機器的系統管理密碼。 如需有關 VM 存取擴充功能的詳細資訊，請參閱[重設 Windows VM 中的遠端桌面服務](../windows/reset-rdp.md)。 在您執行此作業後，應在第一次登入時重設密碼：
+在此範例中，VM 存取擴充功能會用來重設 Windows 虛擬機器的系統管理密碼。 有關 VM 訪問擴展的詳細資訊，請參閱[在 Windows VM 中重置遠端桌面服務](../windows/reset-rdp.md)。 在您執行此作業後，應在第一次登入時重設密碼：
 
 ```powershell
 $cred=Get-Credential
@@ -142,7 +142,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-虛擬機器擴充功能可以透過 Azure 入口網站套用至現有的虛擬機器。 請在入口網站選取虛擬機器，選擇 [擴充功能]，然後選取 [新增]。 請從可用擴充功能清單選擇您想要的擴充功能，並遵循精靈中的指示。
+虛擬機器擴充功能可以透過 Azure 入口網站套用至現有的虛擬機器。 請在入口網站選取虛擬機器，選擇 [擴充功能]****，然後選取 [新增]****。 請從可用擴充功能清單選擇您想要的擴充功能，並遵循精靈中的指示。
 
 下列範例顯示從 Azure 入口網站安裝 Microsoft 反惡意程式碼擴充功能：
 
@@ -152,7 +152,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 當您使用範本部署擴充功能時，可以建立完全設定的 Azure 部署。 例如，下列 JSON 是取自部署一組負載平衡 VM 和 Azure SQL 資料庫的 Resource Manager 範本，並在每個 VM 上安裝 .NET 核心應用程式。 VM 擴充功能會處理軟體安裝。
 
-如需詳細資訊，請參閱[完整的 Resource Manager 範本](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)。
+有關詳細資訊，請參閱[完整的資源管理器範本](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)。
 
 ```json
 {
@@ -252,9 +252,9 @@ VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本�
 }
 ```
 
-在使用擴充功能的 Azure IaaS VM 上，您可能會在 [憑證] 主控台中看到具有「 **_Windows AZURE CRP 憑證_** 產生器」主體的憑證。 在傳統的 RDFE VM 上，這些憑證的主體名稱 **_為 [Windows Azure 服務管理_** ] [擴充功能]。
+在使用擴展的 Azure IaaS VM 上，在證書主控台中，您可能會看到具有主題**_為 Windows Azure CRP 證書產生器_** 的證書。 在經典 RDFE VM 上，這些證書的主題名稱為**_Windows Azure 服務管理，用於擴展_**。
 
-這些憑證會在擴充功能所使用的受保護設定（密碼、其他認證）傳輸期間，保護 VM 和其主機之間的通訊。 憑證是由 Azure 網狀架構控制器所建立，並會傳遞至 VM 代理程式。 如果您每天停止並啟動 VM，網狀架構控制器可能會建立新的憑證。 憑證會儲存在電腦的「個人」憑證存放區中。 您可以刪除這些憑證。 VM 代理程式會視需要重新建立憑證。
+這些證書保護 VM 與其主機之間的通信，在傳輸擴展使用的受保護設置（密碼、其他憑據）時。 證書由 Azure 結構控制器生成並傳遞到 VM 代理。 如果每天停止並啟動 VM，則結構控制器可能會創建新的證書。 憑證存放區在電腦的個人憑證存儲中。 可以刪除這些證書。 如果需要，VM 代理將重新創建證書。
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>如何更新代理程式和擴充功能？
 
@@ -288,13 +288,13 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 Windows 客體代理程式僅包含*擴充功能處理程式碼*，*Windows 佈建程式碼*須另行取得。 您可以解除安裝 Windows 客體代理程式。 您無法停用 Windows 客體代理程式的自動更新。
 
-「擴充功能處理程式碼」會負責與 Azure 網狀架構通訊，並處理虛擬機器擴充功能作業，例如安裝、報告狀態、更新個別的擴充功能和加以移除。 更新項目包含「擴充功能處理程式碼」的安全性修正程式、Bug 修正程式和增強功能。
+「擴充功能處理程式碼**」會負責與 Azure 網狀架構通訊，並處理虛擬機器擴充功能作業，例如安裝、報告狀態、更新個別的擴充功能和加以移除。 更新項目包含「擴充功能處理程式碼**」的安全性修正程式、Bug 修正程式和增強功能。
 
 若要確認您正在執行的版本，請參閱[偵測已安裝的 Windows 客體代理程式](agent-windows.md#detect-the-vm-agent)。
 
 #### <a name="extension-updates"></a>擴充功能更新
 
-有可用的擴充功能更新時，Windows 客體代理程式即會下載並升級擴充功能。 自動擴充功能更新分為「次要」或「Hotfix」兩種。 您可以在佈建擴充更新時，選擇加入或退出擴充功能「次要」更新。 下列範例說明如何透過 *autoUpgradeMinorVersion": true,'* 在 Resource Manager 範本中自動升級次要版本：
+有可用的擴充功能更新時，Windows 客體代理程式即會下載並升級擴充功能。 自動擴充功能更新分為「次要」** 或「Hotfix」** 兩種。 您可以在佈建擴充更新時，選擇加入或退出擴充功能「次要**」更新。 下列範例說明如何透過 *autoUpgradeMinorVersion": true,'* 在 Resource Manager 範本中自動升級次要版本：
 
 ```json
     "properties": {
@@ -353,7 +353,7 @@ AutoUpgradeMinorVersion     : True
 
 下列疑難排解步驟適用於所有虛擬機器擴充功能。
 
-1. 若要查看 Windows 客體代理程式記錄，請在 *C:\WindowsAzure\Logs\WaAppAgent.txt* 中檢視您佈建擴充功能時所執行的活動
+1. 要檢查 Windows 來賓代理日誌，請查看在*C：\WindowsAzure_Logs_WaAppAgent.log*中預配擴展時的活動
 
 2. 若要查看實際的擴充功能記錄，請在 *C:\WindowsAzure\Logs\Plugins\<extensionName>* 中取得詳細資訊。
 
@@ -371,7 +371,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>檢視擴充功能狀態
 
-針對 VM 執行 VM 擴充功能之後，請使用 Update-azvm 來傳回擴充[功能](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)狀態。 *Substatuses[0]* 顯示擴充功能佈建成功，這表示擴充功能已成功部署至 VM，但在 VM 內部執行失敗，而顯示 *Substatuses[1]* 。
+在針對 VM 上運行 VM 擴展後，使用[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)返回擴展狀態。 *Substatuses[0]* 顯示擴充功能佈建成功，這表示擴充功能已成功部署至 VM，但在 VM 內部執行失敗，而顯示 *Substatuses[1]*。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -403,7 +403,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-也可以在 Azure 入口網站中找到擴充功能的執行狀態。 若要檢視擴充功能的狀態，請選取虛擬機器，選擇 [擴充功能]，然後選取所需的擴充功能。
+也可以在 Azure 入口網站中找到擴充功能的執行狀態。 若要檢視擴充功能的狀態，請選取虛擬機器，選擇 [擴充功能]****，然後選取所需的擴充功能。
 
 ### <a name="rerun-vm-extensions"></a>執行 VM 擴充功能
 
@@ -425,7 +425,7 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 | --- | --- | --- |
 | Windows 的自訂指令碼延伸模組 |對「Azure 虛擬機器」執行指令碼 |[Windows 的自訂指令碼延伸模組](custom-script-windows.md) |
 | Windows 的 DSC 延伸模組 |PowerShell DSC (預期狀態設定) 擴充功能 |[適用於 Windows 的 DSC 擴充功能](dsc-overview.md) |
-| Azure 診斷擴充功能 |管理「Azure 診斷」 |[Azure 診斷擴充功能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure 診斷擴充功能 |管理「Azure 診斷」 |[Azure 診斷擴展](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM 存取擴充功能 |管理使用者和認證 |[適用於 Linux 的 VM 存取擴充功能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>後續步驟

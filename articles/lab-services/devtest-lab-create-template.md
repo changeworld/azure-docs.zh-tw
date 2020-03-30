@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61295951"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>從 VHD 檔案建立自訂映像
@@ -33,17 +33,17 @@ ms.locfileid: "61295951"
 
 下列步驟將逐步引導您使用 Azure 入口網站從 VHD 檔案建立自訂映像：
 
-1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選取 [所有服務]  ，然後從清單中選取 [DevTest Labs]  。
+1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 
-1. 在實驗室的主窗格上，選取 [設定與原則]  。 
+1. 在實驗室的主窗格上，選取 [設定與原則]****。 
 
-1. 在 [設定與原則]  窗格上，選取 [自訂映像]  。
+1. 在 [設定與原則]**** 窗格上，選取 [自訂映像]****。
 
-1. 在 [自訂映像]  窗格上，選取 [+新增]  。
+1. 在 [自訂映像]**** 窗格上，選取 [+新增]****。
 
     ![加入自訂映像](./media/devtest-lab-create-template/add-custom-image.png)
 
@@ -51,25 +51,25 @@ ms.locfileid: "61295951"
 
 1. 輸入自訂映像的描述。 這個描述會在建立 VM 時顯示於基本映像清單中。
 
-1. 針對 [OS 類型]  ，選取 [Windows]  或 [Linux]  。
+1. 針對 [OS 類型]****，選取 [Windows]**** 或 [Linux]****。
 
-    - 如果選取 [Windows]  ，請透過核取方塊來指定 *sysprep* 是否已在電腦上執行。 
-    - 如果選取 [Linux]  ，請透過核取方塊來指定 *deprovision* 是否已在電腦上執行。 
+    - 如果選取 [Windows]****，請透過核取方塊來指定 *sysprep* 是否已在電腦上執行。 
+    - 如果選取 [Linux]****，請透過核取方塊來指定 *deprovision* 是否已在電腦上執行。 
 
-1. 從下拉式功能表中選取 **VHD**。 這是將用來建立新自訂映像的 VHD。 如果需要，請選取 [使用 PowerShell 上傳 VHD]  。
+1. 從下拉式功能表中選取 **VHD**。 這是將用來建立新自訂映像的 VHD。 如果需要，請選取 [使用 PowerShell 上傳 VHD]****。
 
 1. 如果用來建立自訂映像的映像不是授權的映像 (由 Microsoft 發行)，您也可以輸入計劃名稱、計劃供應項目及計劃發行者。
 
-   - **方案名稱：** 輸入中會建立此自訂映像的 Marketplace 映像 (SKU) 名稱 
-   - **計劃的供應項目：** 輸入建立此自訂映像的 Marketplace 映像產品 （提供） 
-   - **計劃發行者：** 輸入建立此自訂映像的 Marketplace 映像的發行者
+   - **方案名稱：** 輸入建立此自訂映像的 Marketplace 映像 (SKU) 名稱 
+   - **方案供應項目：** 輸入建立此自訂映像的 Marketplace 映像產品 (供應項目) 
+   - **方案發行者：** 輸入建立此自訂映像的 Marketplace 映像發行者
 
    > [!NOTE]
    > 如果您用來建立自訂映像的映像**不**是授權的映像，則這些欄位是空的，而且您可選擇填入。 如果影像**是**授權的映像，則欄位會自動填入方案資訊。 如果您嘗試在此情況下變更這些，則會顯示警告訊息。
    >
    >
 
-1. 選取 [確定]  ，以建立自訂映像。
+1. 選取 [確定] **** ，以建立自訂映像。
 
 幾分鐘之後，即會建立自訂映像，並儲存於實驗室的儲存體帳戶內。 當實驗室使用者想要建立新的 VM 時，可在基底映像清單中取得映像。
 

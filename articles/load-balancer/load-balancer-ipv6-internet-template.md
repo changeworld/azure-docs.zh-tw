@@ -1,7 +1,7 @@
 ---
 title: 部署採用 IPv6 的網際網路對應負載平衡器 - Azure 範本
 titleSuffix: Azure Load Balancer
-description: 瞭解如何使用 Azure 範本來部署 Azure Load Balancer 和負載平衡 Vm 的 IPv6 支援。
+description: 瞭解如何使用 Azure 範本部署對 Azure 負載等化器和負載平衡 VM 的 IPv6 支援。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,22 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045442"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用範本部署配置有 IPv6 的網際網路面向負載平衡器解決方案
 
 > [!div class="op_single_selector"]
-> * [PowerShell](load-balancer-ipv6-internet-ps.md)
+> * [電源外殼](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [範本](load-balancer-ipv6-internet-template.md)
 
 
 >[!NOTE] 
->本文說明可讓基本負載平衡器同時提供 IPv4 和 IPv6 連線能力的入門 IPv6 功能。 [Ipv6 For Azure vnet](../virtual-network/ipv6-overview.md)現已提供完整的 ipv6 連線能力，其整合了 ipv6 連線與您的虛擬網路，並包含 Ipv6 網路安全性群組規則、ipv6 使用者定義的路由、ipv6 基本和標準負載平衡等主要功能。  適用于 azure Vnet 的 IPv6 是 Azure 中的 IPv6 應用程式建議標準。 請參閱[適用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
+>本文介紹了一個介紹性的 IPv6 功能，允許基本負載等化器同時提供 IPv4 和 IPv6 連接。 適用于[Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md)集成了 IPv6 連接，包括 IPv6 網路安全性群組規則、IPv6 使用者定義的路由、IPv6 基本和標準負載平衡等關鍵功能。  Azure VNET 的 IPv6 是 Azure 中 IPv6 應用程式的建議標準。 [有關 Azure VNET 電源殼部署，請參閱 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
 
 Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡器可藉由在負載平衡器集合中，將連入流量分散於雲端服務或虛擬機器中狀況良好的服務執行個體之間，來提供高可用性。 Azure Load Balancer 也會在多個連接埠、多個 IP 位址或兩者上顯示這些服務。
 
@@ -72,7 +72,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. 按一下 [編輯參數]。 在 [參數] 刀鋒視窗中，依照指引指定 [範本] 參數區段中的值，然後按一下 [儲存] 關閉 [參數] 刀鋒視窗。 在 [自訂部署] 刀鋒視窗中，選取您的訂用帳戶，選取現有資源群組或建立一個。 如果建立資源群組，請選取資源群組的位置。 接著，按一下 [法律條款]，然後按一下法律條款的 [購買]。 Azure 會開始部署資源。 部署所有資源需要幾分鐘。
+6. 按一下 [編輯參數]。 在 [參數] 刀鋒視窗中，依照指引指定 [範本] 參數區段中的值，然後按一下 [儲存] 關閉 [參數] 刀鋒視窗。 在 [自訂部署] 刀鋒視窗中，選取您的訂用帳戶，選取現有資源群組或建立一個。 如果建立資源群組，請選取資源群組的位置。 接著，按一下 [法律條款]****，然後按一下法律條款的 [購買]****。 Azure 會開始部署資源。 部署所有資源需要幾分鐘。
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 

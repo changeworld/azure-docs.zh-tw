@@ -1,33 +1,33 @@
 ---
-title: 使用自訂 NGINX 輸入控制器並設定 HTTPS
+title: 使用自訂 NGINX 入口控制器並配置 HTTPS
 services: azure-dev-spaces
 ms.date: 12/10/2019
 ms.topic: conceptual
-description: 瞭解如何設定 Azure Dev Spaces 以使用自訂 NGINX 輸入控制器，並使用該輸入控制器來設定 HTTPS
+description: 瞭解如何配置 Azure 開發人員空間以使用自訂 NGINX 入口控制器，並使用該入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 13b94d6079f665eeb5438b10b387360368b7a3ac
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79366048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155442"
 ---
-# <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自訂 NGINX 輸入控制器並設定 HTTPS
+# <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自訂 NGINX 入口控制器並配置 HTTPS
 
-本文說明如何將 Azure Dev Spaces 設定為使用自訂 NGINX 輸入控制器。 本文也會說明如何將該自訂輸入控制器設定為使用 HTTPS。
+本文介紹如何配置 Azure 開發空間以使用自訂 NGINX 入口控制器。 本文還介紹了如何配置該自訂入口控制器以使用 HTTPS。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有帳戶，您可以建立[免費帳戶][azure-account-create]。
 * [已安裝 Azure CLI][az-cli]。
-* [已啟用 Azure Dev Spaces 的 Azure Kubernetes Service （AKS）][qs-cli]叢集。
-* 已安裝[kubectl][kubectl] 。
+* [啟用 Azure 開發空間的 Azure 庫伯奈斯服務 （AKS） 群集][qs-cli]。
+* [已安裝庫布克特爾][kubectl]。
 * [已安裝 Helm 3][helm-installed]。
-* 具有[DNS 區域][dns-zone][的自訂網域][custom-domain]。  本文假設自訂網域和 DNS 區域位於與您的 AKS 叢集相同的資源群組中，但您可以在不同的資源群組中使用自訂網域和 DNS 區域。
+* 具有[DNS 區域][dns-zone]的[自訂域][custom-domain]。  本文假定自訂域和 DNS 區域與 AKS 群集位於同一資源組中，但可以在其他資源組中使用自訂域和 DNS 區域。
 
-## <a name="configure-a-custom-nginx-ingress-controller"></a>設定自訂 NGINX 輸入控制器
+## <a name="configure-a-custom-nginx-ingress-controller"></a>配置自訂 NGINX 入口控制器
 
-使用[kubectl][kubectl]（Kubernetes 命令列用戶端）連接到您的叢集。 若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。
+使用庫貝內特斯命令列用戶端[庫布埃特爾][kubectl]連接到群集。 若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -41,13 +41,13 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-新增[正式的穩定 Helm 存放庫][helm-stable-repo]，其中包含 NGINX 輸入控制器 Helm 圖表。
+添加[官方穩定Helm存儲庫][helm-stable-repo]，其中包含 NGINX 入口控制器 Helm 圖表。
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-為 NGINX 輸入控制器建立 Kubernetes 命名空間，並使用 `helm`進行安裝。
+為 NGINX 入口控制器創建 Kubernetes 命名空間，並使用`helm`安裝它。
 
 ```console
 kubectl create ns nginx
@@ -55,19 +55,19 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> 上述範例會建立輸入控制器的公用端點。 如果您需要改用輸入控制器的私用端點，請新增 *--設定控制器。service\\Beta\\. kubernetes\\。 io/azure-load-平衡器-internal "= true*參數至*helm install*命令。 例如：
+> 上面的示例為入口控制器創建公共終結點。 如果需要對入口控制器使用專用終結點，請添加 *--set 控制器.service.注釋。服務\\\\.Beta\\.kubernetes .io/azure 負載等化器內部"=掌**舵安裝*命令的真實參數。 例如：
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
-> 此私人端點會在您 AKS 叢集部署所在的虛擬網路中公開。
+> 此專用終結點在部署 AKS 群集的虛擬網路中公開。
 
-使用[kubectl get][kubectl-get]取得 NGINX 輸入控制器服務的 IP 位址。
+使用[kubectl get][kubectl-get]獲取 NGINX 入口控制器服務的 IP 位址。
 
 ```console
 kubectl get svc -n nginx --watch
 ```
 
-範例輸出會顯示*nginx*命名空間中所有服務的 IP 位址。
+示例輸出顯示*nginx*名稱空間中所有服務的 IP 位址。
 
 ```console
 NAME                                  TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
@@ -77,7 +77,7 @@ nginx-nginx-ingress-default-backend   ClusterIP      10.0.210.231   <none>      
 nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_IP   80:31314/TCP,443:30521/TCP   26s
 ```
 
-使用 az network DNS record，將*a*記錄新增至您的 DNS 區域，並在其中加入 NGINX 服務的外部 IP 位址[-設定新增記錄][az-network-dns-record-set-a-add-record]。
+使用[az 網路 dns 記錄設置附加記錄][az-network-dns-record-set-a-add-record]，使用 NGINX 服務的外部 IP 位址將*A*記錄添加到 DNS 區域。
 
 ```azurecli
 az network dns record-set a add-record \
@@ -87,7 +87,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-上述範例會將*A*記錄新增至*MY_CUSTOM_DOMAIN* DNS 區域。
+上面的示例將*A*記錄添加到*MY_CUSTOM_DOMAIN* DNS 區域。
 
 在本文中，您會使用 [Azure Dev Spaces 單車共享範例應用程式](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) \(英文\) 來示範如何使用 Azure Dev Spaces。 從 GitHub 複製應用程式，並瀏覽至其目錄：
 
@@ -96,11 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-開啟 [[值]。 yaml][values-yaml]並進行下列更新：
-* 將 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有實例取代為*nginx。MY_CUSTOM_DOMAIN*使用您的網域進行*MY_CUSTOM_DOMAIN*。 
-* 以*kubernetes.io/ingress.class： nginx # 自訂*輸入取代*kubernetes.io/ingress.class： traefik-Azds # Dev Spaces 特有*。 
+打開[值.yaml][values-yaml]並進行以下更新：
+* 將 *<REPLACE_ME_WITH_HOST_SUFFIX>* 的所有實例替換為*nginx。MY_CUSTOM_DOMAIN*將域用於*MY_CUSTOM_DOMAIN*。 
+* 替換*kubernetes.io/ingress.class： traefik-azds = 特定于開發空間**的kubernetes.io/ingress.class： nginx = 自訂入口*。 
 
-以下是已更新 `values.yaml` 檔案的範例：
+下面是更新`values.yaml`檔的示例：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -123,27 +123,27 @@ gateway:
 
 儲存變更並關閉該檔案。
 
-使用 `azds space select`，透過您的範例應用程式建立*開發人員*空間。
+使用`azds space select`使用 使用 應用程式範例創建*開發*空間。
 
 ```console
 azds space select -n dev -y
 ```
 
-使用 `helm install`部署範例應用程式。
+使用`helm install`部署應用程式範例。
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-上述範例會將範例應用程式部署至*dev*命名空間。
+上面的示例將應用程式範例部署到*開發*命名空間。
 
-顯示 Url，以使用 `azds list-uris`來存取範例應用程式。
+顯示使用 訪問應用程式範例的`azds list-uris`URL。
 
 ```console
 azds list-uris
 ```
 
-下列輸出顯示來自 `azds list-uris`的範例 Url。
+下面的輸出顯示了 來自`azds list-uris`的示例 URL。
 
 ```console
 Uri                                                  Status
@@ -152,19 +152,19 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-開啟來自 *命令的公用 URL，來瀏覽至*bikesharingweb`azds list-uris` 服務。 在上述範例中，*bikesharingweb* 服務的公用 URL 是 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
+開啟來自 `azds list-uris` 命令的公用 URL，來瀏覽至 *bikesharingweb* 服務。 在上述範例中，*bikesharingweb* 服務的公用 URL 是 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
 
 > [!NOTE]
-> 如果您看到錯誤頁面，而不是*bikesharingweb*服務，請確認您已在*yaml*檔案**中更新** *kubernetes.io/ingress.class*注釋和主機。
+> 如果您看到錯誤頁而不是*自行車共用 Web*服務，請驗證更新值**both***.yaml*檔中*的kubernetes.io/ingress.class*注釋和主機。
 
-使用 `azds space select` 命令在*dev*底下建立子空間，並列出 url 以存取子開發人員空間。
+使用`azds space select`命令在*開發*下創建子空間，並列出用於訪問子開發空間的 URL。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-下列輸出顯示 `azds list-uris` 的範例 Url，以存取*azureuser1*子開發人員空間中的範例應用程式。
+下面的輸出顯示了用於`azds list-uris`訪問*azureuser1*子開發空間中的應用程式範例的示例 URL。
 
 ```console
 Uri                                                  Status
@@ -173,11 +173,11 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-藉由從 `azds list-uris` 命令開啟公用 URL，流覽至*azureuser1*子開發人員空間中的*bikesharingweb*服務。 在上述範例中，會 `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`*azureuser1*子開發人員空間中的*BIKESHARINGWEB*服務公用 URL。
+通過從`azds list-uris`命令打開公共 URL，導航到*azureuser1*子開發空間中的*自行車共用 Web*服務。 在上面的示例中 *，azureuser1*子開發空間中的*自行車共用 Web*服務的公共 URL 是`http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
 
-## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>將 NGINX 輸入控制器設定為使用 HTTPS
+## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>將 NGINX 入口控制器配置為使用 HTTPS
 
-將 NGINX 輸入控制器設定為使用 HTTPS 時，請使用[cert 管理員][cert-manager]來自動化 TLS 憑證的管理。 使用 `helm` 安裝*certmanager*圖表。
+在配置 NGINX 入口控制器以使用 HTTPS 時，使用[證書管理器][cert-manager]自動管理 TLS 證書。 用於`helm`安裝*證書管理器*圖表。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace nginx
@@ -187,7 +187,7 @@ helm repo update
 helm install cert-manager --namespace nginx --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-建立 `letsencrypt-clusterissuer.yaml` 檔案，並以您的電子郵件地址更新 [電子郵件] 欄位。
+創建`letsencrypt-clusterissuer.yaml`檔，並更新電子郵件欄位與您的電子郵件地址。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -207,15 +207,15 @@ spec:
 ```
 
 > [!NOTE]
-> 若要進行測試，您也可以使用*ClusterIssuer*的[預備伺服器][letsencrypt-staging-issuer]。
+> 對於測試，還有一個[暫存伺服器][letsencrypt-staging-issuer]可用於*群集頒發者*。
 
-使用 `kubectl` 來套用 `letsencrypt-clusterissuer.yaml`。
+用於`kubectl`應用`letsencrypt-clusterissuer.yaml`。
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-更新[值。 yaml][values-yaml]以包含使用*cert-管理員*和 HTTPS 的詳細資料。 以下是已更新 `values.yaml` 檔案的範例：
+更新[值.yaml][values-yaml]以包括用於使用*證書管理器*和 HTTPS 的詳細資訊。 下面是更新`values.yaml`檔的示例：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -246,19 +246,19 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-使用 `helm`升級範例應用程式：
+使用`helm`升級應用程式範例：
 
 ```console
-helm upgrade bikesharing . --namespace dev --atomic
+helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-流覽至*dev/azureuser1*子空間中的範例應用程式，並注意您會重新導向至使用 HTTPS。 另請注意，頁面會載入，但瀏覽器會顯示一些錯誤。 開啟瀏覽器主控台會顯示與嘗試載入 HTTP 資源的 HTTPS 頁面相關的錯誤。 例如：
+導航到*dev/azureuser1*子空間中的應用程式範例，並注意到您將被重定向到使用 HTTPS。 另請注意頁面載入，但瀏覽器顯示一些錯誤。 打開瀏覽器主控台將顯示錯誤與嘗試載入 HTTP 資源的 HTTPS 頁相關。 例如：
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-若要修正此錯誤，請更新[BikeSharingWeb/azds][azds-yaml] ，如下所示：
+要修復此錯誤，請更新類似于以下內容的[自行車共用Web/azds.yaml：][azds-yaml]
 
 ```yaml
 ...
@@ -276,7 +276,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-以*url*套件的相依性更新[BikeSharingWeb/package. json][package-json] 。
+使用*URL*包的依賴項更新[自行車共用Web/包.json。][package-json]
 
 ```json
 {
@@ -288,7 +288,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-更新[BikeSharingWeb/pages/helper .js][helpers-js]中的*getApiHostAsync*方法，以使用 HTTPS：
+在[自行車共用Web/lib/helpers.js][helpers-js]中更新*getApiHostAsync*方法以使用 HTTPS：
 
 ```javascript
 ...
@@ -305,14 +305,14 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-流覽至 `BikeSharingWeb` 目錄，然後使用 `azds up` 來執行更新的*BikeSharingWeb*服務。
+導航到`BikeSharingWeb`目錄並用於`azds up`運行更新的*自行車共用 Web*服務。
 
 ```console
 cd ../BikeSharingWeb/
 azds up
 ```
 
-流覽至*dev/azureuser1*子空間中的範例應用程式，並注意您會被重新導向至使用 HTTPS，而不會發生任何錯誤。
+導航到*dev/azureuser1*子空間中的應用程式範例，並注意到您將被重定向到使用 HTTPS，沒有任何錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -335,7 +335,7 @@ azds up
 [cert-manager]: https://cert-manager.io/
 [helm-installed]: https://helm.sh/docs/intro/install/
 [helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
-[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
+[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/lib/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer

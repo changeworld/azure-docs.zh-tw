@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066637"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上掛接 Azure 檔案儲存體
 
@@ -27,17 +27,17 @@ ms.locfileid: "78944618"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-在「美國東部」位置建立名為 myResourceGroup 的資源群組。
+在「美國東部」** 位置建立名為 myResourceGroup** 的資源群組。
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-使用 [az storage account create](/cli/azure/storage/account)，在您所建立的資源群組中建立新的儲存體帳戶。 這個範例會建立名為 MySTORAGEACCT 的儲存體帳戶 *\<亂數 >* ，並將該儲存體帳戶的名稱放在變數**STORAGEACCT**中。 儲存體帳戶名稱必須是唯一的，請使用 `$RANDOM` 在結尾附加一個數字，使其成為唯一名稱。
+使用 [az storage account create](/cli/azure/storage/account)，在您所建立的資源群組中建立新的儲存體帳戶。 本示例創建一個名為*mySTORAGEACCT\<的存儲帳戶亂數>* 並將該存儲帳戶的名稱放在變數**STORAGEACCT**中。 儲存體帳戶名稱必須是唯一的，請使用 `$RANDOM` 在結尾附加一個數字，使其成為唯一名稱。
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -52,7 +52,7 @@ STORAGEACCT=$(az storage account create \
 
 使用 [az storage account keys list](/cli/azure/storage/account/keys) 檢視儲存體帳戶金鑰。 此範例會在 **STORAGEKEY** 變數中儲存金鑰 1 的值。
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -65,9 +65,9 @@ STORAGEKEY=$(az storage account keys list \
 
 共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
 
-此範例會建立名為 myshare 的共用 (具有 10-GiB 配額)。 
+此範例會建立名為 myshare** 的共用 (具有 10-GiB 配額)。 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -103,11 +103,12 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 為了提高生產環境的安全性，您應該將您的認證儲存在 fstab 之外。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [在建立期間使用 cloud-init 自訂 Linux VM](using-cloud-init.md)
 - [在 Linux VM 中新增磁碟](add-disk.md)
-- [適用于 Linux Vm 的 Azure 磁碟加密](disk-encryption-overview.md)
+- [適用于 Linux VM 的 Azure 磁片加密](disk-encryption-overview.md)
 

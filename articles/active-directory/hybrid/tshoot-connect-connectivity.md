@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：對 Azure AD 連線問題進行疑難排解 |Microsoft Docs
+title: Azure AD 連接：解決 Azure AD 連接問題 |微軟文檔
 description: 說明如何使用 Azure AD Connect 疑難排解連線問題。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253594"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049724"
 ---
-# <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力疑難排解
+# <a name="troubleshoot-azure-ad-connectivity"></a>排除 Azure AD 連接故障
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>在安裝精靈中疑難排解連線問題
@@ -53,7 +53,7 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 | \*.microsoftonline.com |HTTPS/443 |用來設定您的 Azure AD 目錄及匯入/匯出資料。 |
 
 ## <a name="errors-in-the-wizard"></a>精靈中的錯誤
-安裝精靈會使用兩種不同的安全性內容。 在 [連線到 Azure AD] 頁面上，使用的是目前登入的使用者。 在 [設定] 頁面上，它會變更為[執行同步處理引擎服務的帳戶](reference-connect-accounts-permissions.md#adsync-service-account)。 如果發生問題，問題最有可能已經出現在精靈中的 [連線到 Azure AD] 頁面，因為 Proxy 組態是全域組態。
+安裝精靈會使用兩種不同的安全性內容。 在 [連線到 Azure AD] **** 頁面上，使用的是目前登入的使用者。 在 [設定]**** 頁面上，它會變更為[執行同步處理引擎服務的帳戶](reference-connect-accounts-permissions.md#adsync-service-account)。 如果發生問題，問題最有可能已經出現在精靈中的 [連線到 Azure AD]**** 頁面，因為 Proxy 組態是全域組態。
 
 下列問題是您會在安裝精靈中遇到的最常見錯誤。
 
@@ -69,7 +69,7 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 ![使用了 Microsoft 帳戶](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>無法連線 MFA 端點
-如果無法連線到 **https://secure.aadcdn.microsoftonline-p.com** 端點，而您的全域系統管理員已啟用 MFA，就會出現此錯誤。  
+如果無法訪問終結點**https://secure.aadcdn.microsoftonline-p.com**，並且全域管理員啟用了 MFA，則會出現此錯誤。  
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * 如果您看到此錯誤，請確認是否已將 **secure.aadcdn.microsoftonline-p.com** 端點新增到 Proxy。
@@ -78,16 +78,16 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 如果安裝精靈成功連線到 Azure AD，但密碼本身無法獲得驗證，您就會看到此錯誤：  
 ![密碼錯誤。](./media/tshoot-connect-connectivity/badpassword.png)
 
-* 密碼是暫時密碼，而且必須變更嗎？ 實際上是正確的密碼嗎？ 嘗試登入 https://login.microsoftonline.com (在 Azure AD Connect 伺服器以外的另一部電腦上)，並確認該帳戶是否可使用。
+* 密碼是暫時密碼，而且必須變更嗎？ 實際上是正確的密碼嗎？ 嘗試登入 `https://login.microsoftonline.com` (在 Azure AD Connect 伺服器以外的另一部電腦上)，並確認該帳戶是否可使用。
 
 ### <a name="verify-proxy-connectivity"></a>確認 Proxy 連線
-若要確認 Azure AD Connect 伺服器是否確實能夠與 Proxy 和網際網路連線，請使用一些 PowerShell 來查看 Proxy 是否允許 Web 要求。 在 PowerShell 命令提示字元中，執行 `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`。 (就技術而言，第一個呼叫是對 https://login.microsoftonline.com 發出，而這個 URI 同樣能夠運作，但另一個 URI 的回應速度較快。)
+若要確認 Azure AD Connect 伺服器是否確實能夠與 Proxy 和網際網路連線，請使用一些 PowerShell 來查看 Proxy 是否允許 Web 要求。 在 PowerShell 命令提示字元中，執行 `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`。 (就技術而言，第一個呼叫是對 `https://login.microsoftonline.com` 發出，而這個 URI 同樣能夠運作，但另一個 URI 的回應速度較快。)
 
 PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh 中設定應該不會影響這些 Cmdlet。
 
 如果 Proxy 設定正確，您應該會收到成功的狀態：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-如果您收到 [無法連接至遠端伺服器]，則表示 PowerShell 正嘗試進行直接呼叫而未使用 Proxy，或是 DNS 設定不正確。 請確定 **machine.config** 檔案設定正確。
+如果您收到 [無法連接至遠端伺服器]****，則表示 PowerShell 正嘗試進行直接呼叫而未使用 Proxy，或是 DNS 設定不正確。 請確定 **machine.config** 檔案設定正確。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 如果 Proxy 設定不正確，您將會收到錯誤：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
@@ -96,7 +96,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | 錯誤 | 錯誤文字 | 註解 |
 | --- | --- | --- |
 | 403 |禁止 |Proxy 尚未對要求的 URL 開放。 重新瀏覽 Proxy 組態，並確定 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) 已經開啟。 |
-| 407 |需要 Proxy 驗證 |Proxy 伺服器要求提供登入資訊，但並未提供任何登入資訊。 如果您的 proxy 伺服器需要驗證，請務必在 machine.config 中設定這項設定。此外，請確定您為執行嚮導的使用者和服務帳戶使用網域帳戶。 |
+| 407 |需要 Proxy 驗證 |Proxy 伺服器要求提供登入資訊，但並未提供任何登入資訊。 如果代理伺服器需要身份驗證，請確保在電腦中配置了此設置。此外，請確保對運行嚮導的使用者和服務帳戶使用域帳戶。 |
 
 ### <a name="proxy-idle-timeout-setting"></a>Proxy 閒置逾時設定
 當 Azure AD Connect 將匯出要求傳送至 Azure AD 時，Azure AD 在產生回應之前，可能需要 5 分鐘的時間來處理要求。 特別是當相同的匯出要求中包含多個具有大型群組成員資格的群組時，可能就會發生這個情況。 請確認 Proxy 閒置逾時設定為 5 分鐘以上。 否則，可能會在 Azure AD Connect 伺服器上觀察到 Azure AD 的間歇性連線問題。
@@ -104,12 +104,12 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect 與 Azure AD 之間的通訊模式
 如果您已依照上述這些步驟操作卻仍然無法連接，這時可以開始查看網路記錄。 本節說明正常和成功的連線模式。 它也會列出常見的假象，當您閱讀網路記錄時可以略過。
 
-* 會有一些對 https://dc.services.visualstudio.com 的呼叫。 並不需要在 Proxy 中開啟此 URL，安裝即可成功，因此可以忽略這些呼叫。
+* 會有一些對 `https://dc.services.visualstudio.com` 的呼叫。 並不需要在 Proxy 中開啟此 URL，安裝即可成功，因此可以忽略這些呼叫。
 * 您會看到 DNS 解析列出要在 DNS 命名空間 nsatc.net 中的實際主機，以及其他不在 microsoftonline.com 底下的命名空間。 不過，實際伺服器名稱上沒有任何 Web 服務要求，因此您不需要將這些 URL 新增到 Proxy。
 * 端點 adminwebservice 和 provisioningapi 是探索端點，可用來尋找要使用的實際端點。 這些端點會依據您的區域而有所不同。
 
 ### <a name="reference-proxy-logs"></a>參考 Proxy 記錄
-以下是實際 Proxy 記錄檔的傾印及取得它的安裝精靈頁面 (已移除至相同端點的重複項目)。 本節可以作為您自己 Proxy 和網路記錄的參考。 您環境中實際的端點可能會有所不同 (特別是以「斜體字」表示的 URL)。
+以下是實際 Proxy 記錄檔的傾印及取得它的安裝精靈頁面 (已移除至相同端點的重複項目)。 本節可以作為您自己 Proxy 和網路記錄的參考。 您環境中實際的端點可能會有所不同 (特別是以「斜體字」** 表示的 URL)。
 
 **連接至 Azure AD**
 
@@ -138,7 +138,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
-**初始同步處理**
+**初始同步**
 
 | Time | URL |
 | --- | --- |
@@ -165,8 +165,8 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 ### <a name="authorization-failure"></a>授權失敗
 無法授權使用者在 Azure AD 中執行動作。
 
-### <a name="authentication-canceled"></a>已取消驗證
-已取消多重要素驗證（MFA）挑戰。
+### <a name="authentication-canceled"></a>身份驗證已取消
+多重要素驗證 （MFA） 質詢已取消。
 
 <div id="connect-msolservice-failed">
 <!--
