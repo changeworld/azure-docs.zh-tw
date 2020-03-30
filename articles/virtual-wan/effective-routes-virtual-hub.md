@@ -1,6 +1,6 @@
 ---
-title: 查看虛擬中樞的有效路由： Azure 虛擬 WAN |Microsoft Docs
-description: 在 Azure 虛擬 WAN 中檢視表 w 虛擬中樞的有效路由
+title: 查看虛擬中心的有效路由：Azure 虛擬 WAN |微軟文檔
+description: 在 Azure 虛擬 WAN 中為虛擬中心提供有效路由
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,65 +8,65 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73515846"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>查看虛擬中樞的有效路由
+# <a name="view-effective-routes-of-a-virtual-hub"></a>查看虛擬中心的有效路由
 
-您可以在 Azure 入口網站中查看虛擬 WAN 中樞的所有路由。 若要查看路由，請流覽至 [虛擬中樞]，然後選取 [**路由-> 查看有效路由**]。
+您可以在 Azure 門戶中查看虛擬 WAN 中心的所有路由。 要查看路由，請導航到虛擬中心，然後選擇路由 **->查看有效路由**。
 
-## <a name="understand"></a>瞭解路由
+## <a name="understanding-routes"></a><a name="understand"></a>瞭解路線
 
-下列範例可協助您進一步瞭解虛擬 WAN 路由的顯示方式。
+以下示例可説明您更好地瞭解虛擬 WAN 路由的顯示方式。
 
-在此範例中，我們有一個具有三個中樞的虛擬 WAN。 第一個中樞位於美國東部區域，第二個中樞位於西歐區域，而第三個中樞位於美國西部區域。 在虛擬 WAN 中，所有中樞都是互連的。 在此範例中，我們會假設「美國東部」和「西歐」中樞具有來自內部部署分支（輪輻）和「Azure 虛擬網路」（輪輻）的連接。
+在此示例中，我們有一個具有三個集線器的虛擬 WAN。 第一個樞紐位於美國東部地區，第二個樞紐位於西歐地區，第三個樞紐位於美國西部區域。 在虛擬廣域網路中，所有集線器都是互連的。 在此示例中，我們將假定東美國和西歐中心具有來自本地分支（分支）和 Azure 虛擬網路（分支）的連接。
 
-具有網路虛擬裝置（10.4.0.6）的 Azure VNet 輪輻（10.4.0.0/16）會進一步對等互連至 VNet （10.5.0.0/16）。 如需中樞路由表的詳細資訊，請參閱本文稍後的[其他資訊](#abouthubroute)。
+具有網路虛擬裝置 （10.4.0.6） 的 Azure VNet 分支 （10.4.0.0/16） 進一步與 VNet （10.5.0.0/16） 對等。 有關中心路由表的詳細資訊，請參閱本文後面的[其他資訊](#abouthubroute)。
 
-在此範例中，我們也假設西歐分支1已連接到美國東部中樞，以及西歐中樞。 「美國東部」的 ExpressRoute 線路會將分支2連接到「美國東部」中樞。
+在此示例中，我們還假定西歐分支 1 連接到美國東部中心以及西歐樞紐。 美國東部的 ExpressRoute 電路將第 2 分支連接到美國東部樞紐。
 
 ![圖表](./media/effective-routes-virtual-hub/diagram.png)
 
-## <a name="view"></a>查看有效路由
+## <a name="view-effective-routes"></a><a name="view"></a>查看有效路線
 
-當您在入口網站中選取 [查看有效路由] 時，它會產生 [美國東部] 中樞的[中樞路由表](#routetable)中所顯示的輸出。
+當您在門戶中選擇"查看有效路由"時，它將生成美國東部[中心集線表中](#routetable)顯示的輸出。
 
-若要將此設為觀點，第一行表示「美國東部中樞」已瞭解 10.20.1.0/24 （分支1）的路由，原因是 VPN*下一個躍點類型*連線（「下一個躍點」 VPN 閘道 Instance0 IP 10.1.0.6，Instance1 IP 10.1.0.7）。 *路由來源*指向資源識別碼。 *As path*表示分支1的 as 路徑。
+綜上所述，第一行意味著美國東部中心由於 VPN*下一躍點類型*連接（"下一躍點"VPN 閘道實例0 IP 10.1.0.6、實例1 IP 10.1.0.7）而瞭解了 10.20.1.0/24 （分支 1） 的路由。 *路由原點*指向資源識別碼。 *AS 路徑*指示分支 1 的 AS 路徑。
 
-### <a name="routetable"></a>中樞路由表
+### <a name="hub-route-table"></a><a name="routetable"></a>中心路由表
 
-使用資料表底部的捲軸來查看 "AS Path"。
+使用表底部的捲軸查看"AS 路徑"。
 
-| **前置詞** |  **下一個躍點類型** | **下一個躍點** |  **路由來源** |**AS 路徑** |
+| **首碼** |  **下一個躍點類型** | **下一跳** |  **路線原點** |**作為路徑** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
-|10.4.0.0/16|虛擬網路連接| 連結上 |  |  |
-|10.5.0.0/16| IP 位址| 10.4.0.6|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|0.0.0.0/0| IP 位址| `<Azure Firewall IP>` |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|10.22.1.0/16| 遠端中樞|10.8.0.6, 10.8.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_| 4848-22000 |
-|10.9.0.0/16| 遠端中樞|  連結上 |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_1| |
+| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/vpn閘道/343a19aa6ac74e4d81f05ccccf1536cf-Eastus-gw| 20000|
+|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/快速路由閘道/4444a6ac74e4d85555-eastus-gw|21000|
+|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/vpn閘道/343a19aa6ac74e4d81f05ccccf1536cf-Eastus-gw|23000|
+|10.4.0.0/16|虛擬網路連接| 鏈路上 |  |  |
+|10.5.0.0/16| IP 位址| 10.4.0.6|/訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/虛擬中心/easthub_1/路由表/table_1| |
+|0.0.0.0/0| IP 位址| `<Azure Firewall IP>` |/訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/虛擬中心/easthub_1/路由表/table_1| |
+|10.22.1.0/16| 遠端中心|10.8.0.6, 10.8.0.7|/訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/虛擬中心/westhub_| 4848-22000 |
+|10.9.0.0/16| 遠端中心|  鏈路上 |/訂閱/`<sub>`資源組//`<rg>`供應商/微軟.網路/虛擬中心/westhub_1| |
 
 >[!NOTE]
-> 如果 [美國東部] 和 [西歐] 中樞未在範例拓撲中彼此通訊，則已學習的路由（10.9.0.0/16）不存在。 中樞只會公告直接連線到它們的網路。
+> 如果美國東部和西歐中心在示例拓撲中互不通信，則所學的路線 （10.9.0.0/16） 將不存在。 中心僅通告直接連接到它們的網路。
 >
 
-## <a name="additional"></a>其他資訊
+## <a name="additional-information"></a><a name="additional"></a>其他資訊
 
-### <a name="abouthubroute"></a>關於中樞路由表
+### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>關於中心路由表
 
-您可以建立虛擬中樞路由並將路由套用到虛擬中樞路由表。 您可以將多個路由套用到虛擬中樞路由表。 這可讓您透過 IP 位址（通常是輪輻 VNet 中的網路虛擬裝置（NVA））來設定目的地 VNet 的路由。 如需 Nva 的詳細資訊，請參閱將[流量從虛擬中樞路由傳送至 NVA](virtual-wan-route-table-portal.md)。
+您可以建立虛擬中樞路由並將路由套用到虛擬中樞路由表。 您可以將多個路由套用到虛擬中樞路由表。 這允許您通過 IP 位址（通常是分支 VNet 中的網路虛擬裝置 （NVA））設置目標 VNet 的路由。 有關 NVA 的詳細資訊，請參閱[將流量從虛擬集線器路由到 NVA](virtual-wan-route-table-portal.md)。
 
-### <a name="aboutdefaultroute"></a>關於預設路由（0.0.0.0/0）
+### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>關於預設路由 （0.0.0.0/0）
 
-虛擬中樞能夠將已學習的預設路由傳播至虛擬網路、站對站 VPN，以及連線上的旗標為 [已啟用] 時的 ExpressRoute 連線。 當您編輯虛擬網路連線、VPN 連線或 ExpressRoute 連線時，就會顯示此旗標。 根據預設，中樞 VNet、ExpressRoute 和 VPN 連線上的 ' EnableInternetSecurity ' 一律為 false。
+如果連接上的標誌為"已啟用"，則虛擬中心能夠將學習的預設路由傳播到虛擬網路、網站到網站 VPN 和 ExpressRoute 連接。 編輯虛擬網路連接、VPN 連接或 ExpressRoute 連接時，此標誌可見。 預設情況下，在集線器 VNet、ExpressRoute 和 VPN 連接上，"啟用 Internet 安全"始終為 false。
 
-預設路由不是來自虛擬 WAN 中樞。 如果因為在中樞中部署防火牆，或另一個已連線的網站已啟用強制通道，而虛擬 WAN 中樞已經學習到預設路由，則會進行傳播。
+預設路由不源自虛擬廣域網路中心。 如果虛擬 WAN 中心由於在集線器中部署防火牆而已瞭解預設路由，或者另一個連接網站已啟用強制隧道，則將傳播該路由。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
+有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概述](virtual-wan-about.md)。

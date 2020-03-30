@@ -1,5 +1,5 @@
 ---
-title: 使用範本執行端對端作業-Azure Batch
+title: 使用範本端到端運行作業 - Azure 批次處理
 description: 您只需要使用 CLI 命令，就可以建立集區、上傳輸入資料、建立作業和相關聯工作，以及下載結果輸出資料。
 services: batch
 author: LauraBrenner
@@ -12,10 +12,10 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020160"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 範本和檔案傳輸
@@ -24,7 +24,7 @@ ms.locfileid: "77020160"
 
 建立 JSON 範本檔案並搭配 Azure CLI 使用，以建立 Batch 集區、作業和工作。 使用 CLI 擴充命令可輕鬆地將作業輸入檔案上傳至與 Batch 帳戶相關聯的儲存體帳戶，以及下載作業輸出檔案。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure CLI 的擴充功能可讓非開發人員的使用者端對端使用 Batch。 您只需要使用 CLI 命令，就可以建立集區、上傳輸入資料、建立作業和相關聯工作，以及下載結果輸出資料。 不需要額外的程式碼。 直接執行 CLI 命令，或將它們整合到指令碼。
 
@@ -156,7 +156,7 @@ CLI 會提示您提供 `poolId` 和 `nodeCount` 參數的值。 您也可以在 
 }
 ```
 
-如果參數 JSON 檔案名為 pool-parameters.json，則會叫用範本，如下所示：
+如果參數 JSON 檔案名為 pool-parameters.json**，則會叫用範本，如下所示：
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -260,11 +260,11 @@ az batch job create --template job-ffmpeg.json
 
 若要上傳範本：
 
-1. 在 Batch Explorer 中，選取 [資源庫] > [本機範本]。
+1. 在批次處理資源管理器中，選擇**庫** > **本地範本**。
 
 2. 選取或拖放本機集區或作業範本。
 
-3. 選取 [使用此範本]，並遵循螢幕上的提示。
+3. 選取 [使用此範本]****，並遵循螢幕上的提示。
 
 ## <a name="file-groups-and-file-transfer"></a>檔案群組和檔案傳輸
 
@@ -282,9 +282,9 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-集區和作業範本允許指定儲存在檔案群組中的檔案，以複製到集區節點上，或從集區節點複製回到檔案群組。 例如，在先前指定的作業範本中，會指定工作處理站的 ffmpeg-input 檔案群組，作為向下複製到節點進行轉碼的來源視訊檔案位置。 檔案群組 *ffmpeg-output* 是從執行每項工作的節點複製轉碼輸出檔案的位置。
+集區和作業範本允許指定儲存在檔案群組中的檔案，以複製到集區節點上，或從集區節點複製回到檔案群組。 例如，在先前指定的作業範本中，會指定工作處理站的 ffmpeg-input** 檔案群組，作為向下複製到節點進行轉碼的來源視訊檔案位置。 檔案群組 *ffmpeg-output* 是從執行每項工作的節點複製轉碼輸出檔案的位置。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 目前僅已將範本和檔案傳輸支援新增至 Azure CLI。 目標旨在將可使用 Batch 的對象拓展到不需要使用 Batch API 來開發程式碼的使用者，例如研究人員和 IT 使用者。 無需程式碼撰寫，了解 Azure、Batch 和 Batch 所要執行之應用程式的使用者可以建立集區和作業建立的範本。 利用範本參數，未深入了解 Batch 和應用程式的使用者就可以使用範本。
 

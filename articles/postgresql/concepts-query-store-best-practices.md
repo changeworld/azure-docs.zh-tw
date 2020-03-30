@@ -1,21 +1,21 @@
 ---
-title: 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的查詢存放區最佳作法
-description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的查詢存放區最佳作法。
+title: 查詢在 Azure 資料庫中存儲適用于 PostgreSQL - 單個伺服器的最佳做法
+description: 本文介紹了 Azure 資料庫中的"PostgreSQL - 單伺服器"查詢存儲的最佳做法。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70764225"
 ---
 # <a name="best-practices-for-query-store"></a>查詢存放區的最佳做法
 
-**適用範圍：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器版本9.6、10、11
+**適用于：** 用於 PostgreSQL 的 Azure 資料庫 - 單伺服器版本 9.6、10、11
 
 此文章概述在適用於 PostgreSQL 的 Azure 資料庫中使用查詢存放區的最佳做法。
 
@@ -24,14 +24,14 @@ ms.locfileid: "70764225"
 
 |**pg_qs.query_capture_mode** | **案例**|
 |---|---|
-|_所有_  |根據您的所有查詢與其執行頻率與其他統計資料徹底分析您的工作負載。 識別您工作負載中的新查詢。 偵測特定查詢是否用來識別使用者或自動參數化的機會。 _全都_有增加的資源耗用成本。 |
-|_前幾個_  |專注在前幾個查詢 - 那些由客戶發出的查詢。
+|_所有_  |根據您的所有查詢與其執行頻率與其他統計資料徹底分析您的工作負載。 識別您工作負載中的新查詢。 檢測是否使用臨時查詢來識別使用者或自動參數化的機會。 _全都_有增加的資源耗用成本。 |
+|_返回頁首_  |專注在前幾個查詢 - 那些由客戶發出的查詢。
 |_無_ |您已擷取查詢集與一段時間，您想要在這段時間內調查並減少其他查詢可能會產生之令人困惑之事。 _無_適用於測試及效能評定環境。 _無_應該謹慎使用，因為您可能可能會錯過追蹤及最佳化重要新查詢的機會。 我們無法復原過去時段內的資料。 |
 
 查詢存放區也包含等候統計資料的存放區。 有一個額外的擷取模式查詢，此查詢規範等候統計資料：**pgms_wait_sampling.query_capture_mode** 可設定為 _none_ 或 _all_。 
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** 已取代 **pgms_wait_sampling.query_capture_mode**。 若 pg_qs.query_capture_mode 是 _none_，則 pgms_wait_sampling.query_capture_mode 設定沒有影響。 
+> **pg_qs.query_capture_mode** 已取代 **pgms_wait_sampling.query_capture_mode**。 如果pg_qs.query_capture_mode_為無_，則pgms_wait_sampling.query_capture_mode設置無效。 
 
 
 ## <a name="keep-the-data-you-need"></a>保留您所需的資料

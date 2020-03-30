@@ -1,7 +1,7 @@
 ---
-title: 具現化公用用戶端應用程式（MSAL.NET） |Azure
+title: 具現化公共用戶端應用 （MSAL.NET） |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET），以設定選項具現化公用用戶端應用程式。
+description: 瞭解如何使用 .NET 的 Microsoft 身份驗證庫 （MSAL.NET） 使用配置選項具現化公共用戶端應用程式。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083588"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 以設定選項具現化公用用戶端應用程式
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用配置選項具現化公共用戶端應用程式，使用MSAL.NET
 
-本文說明如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）來具現化[公用用戶端應用程式](msal-client-applications.md)。  應用程式會使用設定檔中定義的設定選項來具現化。
+本文介紹如何使用 Microsoft 身份驗證庫對 .NET （MSAL.NET） 具現化[公共用戶端應用程式](msal-client-applications.md)。  應用程式使用設置檔中定義的配置選項進行具現化。
 
-在初始化應用程式之前，您必須先[註冊](quickstart-register-app.md)它，您的應用程式才能與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊（可在 Azure 入口網站中找到）：
+在初始化應用程式之前，首先需要[註冊](quickstart-register-app.md)它，以便應用可以與 Microsoft 標識平臺集成。 註冊後，您可能需要以下資訊（可在 Azure 門戶中找到）：
 
-- 用戶端識別碼（代表 GUID 的字串）
-- 應用程式的身分識別提供者 URL （名為實例）和登入物件。 這兩個參數統稱為授權單位。
-- 租使用者識別碼，如果您要撰寫僅供組織使用的企業營運應用程式（也稱為單一租使用者應用程式）。
-- 對於 web 應用程式，有時也適用于公用用戶端應用程式（特別是當您的應用程式需要使用訊息代理程式時），您也會設定 redirectUri，其中身分識別提供者會使用安全性權杖來與您的應用程式連線。
+- 用戶端 ID（表示 GUID 的字串）
+- 標識提供程式 URL（名為實例）和應用程式的登錄訪問群體。 這兩個參數統稱為許可權。
+- 如果您只為您的組織（也稱為單租戶應用程式）編寫業務線應用程式，則租戶 ID。
+- 對於 Web 應用，有時對於公共用戶端應用（尤其是在應用需要使用代理時），您還將設置重定向 Uri，標識提供程式將在其中使用安全權杖聯繫回應用程式。
 
 
-.NET Core 主控台應用程式可能會有下列*appsettings json*設定檔：
+.NET 核心主控台應用程式可以具有以下*應用程式設定.json*設定檔：
 
 ```json
 {
@@ -48,7 +48,7 @@ ms.locfileid: "77083588"
 }
 ```
 
-下列程式碼會使用 .NET 設定架構來讀取此檔案：
+以下代碼使用 .NET 組態架構讀取此檔：
 
 ```csharp
 public class SampleConfiguration
@@ -90,7 +90,7 @@ public class SampleConfiguration
 }
 ```
 
-下列程式碼會使用設定檔中的設定來建立您的應用程式：
+以下代碼使用設置檔中的配置創建應用程式：
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

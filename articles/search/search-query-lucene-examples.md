@@ -1,7 +1,7 @@
 ---
 title: 使用完整的 Lucene 查詢語法
 titleSuffix: Azure Cognitive Search
-description: 適用于模糊搜尋、鄰近搜尋、詞彙提升、正則運算式搜尋，以及 Azure 認知搜尋服務中萬用字元搜尋的 Lucene 查詢語法。
+description: Lucene 查詢語法，用於 Azure 認知搜索服務中的模糊搜索、鄰近搜尋、術語提升、正則運算式搜索和萬用字元搜尋。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,17 +10,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793436"
 ---
-# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用 "full" Lucene 搜尋語法（Azure 認知搜尋中的 advanced 查詢）
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用"完整"Lucene 搜索語法（Azure 認知搜索中的高級查詢）
 
-當您針對 Azure 認知搜尋來建立查詢時，您可以使用[Azure 認知搜尋中](query-lucene-syntax.md)更廣泛的 Lucene 查詢剖析器來取代預設的[簡單查詢](query-simple-syntax.md)剖析器，以制訂特製化和先進的查詢定義。 
+為 Azure 認知搜索構造查詢時，可以將預設[的簡單查詢解析器](query-simple-syntax.md)替換為 Azure 認知搜索中較寬泛的[Lucene 查詢解析器](query-lucene-syntax.md)，以制定專門和高級的查詢定義。 
 
-Lucene 剖析器支援複雜的查詢結構，例如欄位範圍的查詢、模糊和前置詞萬用字元搜尋、鄰近搜尋、詞彙提升和正則運算式搜尋。 額外的處理需求需要更多能源，因此，您應該預期執行時間會略久。 在本文中，您可以逐步執行範例，以示範使用完整語法時可用的查詢作業。
+Lucene 解析器支援複雜的查詢構造，例如欄位範圍查詢、模糊和首碼萬用字元搜尋、鄰近搜尋、術語提升和正則運算式搜索。 額外的處理需求需要更多能源，因此，您應該預期執行時間會略久。 在本文中，您可以逐步執行範例，以示範使用完整語法時可用的查詢作業。
 
 > [!Note]
 > 許多透過完整 Lucene 查詢語法來啟用的特製化查詢建構都不是[文字分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，因此如果您預期的是詞幹分析或詞形歸併還原，可能會感到意外。 只能對完整詞彙執行語彙分析 (詞彙查詢或片語查詢)。 不完整詞彙的查詢類型 (前置詞查詢、萬用字元查詢、Regex 查詢、模糊查詢) 會直接新增至查詢樹狀結構，並略過分析階段。 只能對不完整的查詢詞彙執行小寫轉換。 
@@ -28,7 +28,7 @@ Lucene 剖析器支援複雜的查詢結構，例如欄位範圍的查詢、模�
 
 ## <a name="formulate-requests-in-postman"></a>以 Postman 編寫要求
 
-下列範例會根據 [紐約市 OpenData](https://opendata.cityofnewyork.us/) 計劃所提供的資料集，利用由可用工作組成的 NYC 工作搜尋索引。 這項資料不應視為目前的或已完成。 此索引位於 Microsoft 所提供的沙箱服務上，這表示您不需要 Azure 訂用帳戶或 Azure 認知搜尋來嘗試這些查詢。
+下列範例會根據 [紐約市 OpenData](https://opendata.cityofnewyork.us/) 計劃所提供的資料集，利用由可用工作組成的 NYC 工作搜尋索引。 這項資料不應視為目前的或已完成。 索引位於 Microsoft 提供的沙箱服務上，這意味著您不需要 Azure 訂閱或 Azure 認知搜索來嘗試這些查詢。
 
 您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 如需詳細資訊，請參閱[使用 REST 用戶端瀏覽](search-get-started-postman.md)。
 
@@ -44,31 +44,31 @@ Lucene 剖析器支援複雜的查詢結構，例如欄位範圍的查詢、模�
 
 ### <a name="set-the-request-url"></a>設定要求 URL
 
-要求是與 URL 配對的 GET 命令，其中包含 Azure 認知搜尋端點和搜尋字串。
+請求是一個 GET 命令，它與包含 Azure 認知搜索終結點和搜索字串的 URL 配對。
 
   ![Postman 要求標頭](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 組合具有下列元素：
 
-+ **`https://azs-playground.search.windows.net/`** 是 Azure 認知搜尋開發小組所維護的沙箱搜尋服務。 
-+ **`indexes/nycjobs/`** 是該服務的索引集合中包含的 NYC 工作索引。 要求上必須同時有服務名稱和索引。
-+ **`docs`** 是包含所有可搜尋內容的文件集合。 要求標頭中提供的查詢 API 金鑰僅適用於以文件集合為目標的讀取作業。
-+ **`api-version=2019-05-06`** 會設定 API 版本，這是每個要求的必要參數。
-+ **`search=*`** 是查詢字串，在初始查詢中設為 Null，會傳回前 50 個結果 (根據預設)。
++ **`https://azs-playground.search.windows.net/`** 是 Azure 認知搜索開發團隊維護的沙箱搜索服務。 
++ **`indexes/nycjobs/`** 是該服務索引集合中的 NYC 作業索引。 要求上必須同時有服務名稱和索引。
++ **`docs`** 是包含所有可搜索內容的文件組合。 要求標頭中提供的查詢 API 金鑰僅適用於以文件集合為目標的讀取作業。
++ **`api-version=2019-05-06`** 設置 api 版本，它是每個請求所需的參數。
++ **`search=*`** 查詢字串，在初始查詢中為空，返回前 50 個結果（預設情況下）。
 
 ## <a name="send-your-first-query"></a>傳送第一個查詢
 
-在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]。 結果會以詳細 JSON 文件的形式傳回。 系統會傳回整份檔，讓您查看所有欄位和所有值。
+在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]****。 結果會以詳細 JSON 文件的形式傳回。 返回整個文檔，這允許您查看所有欄位和所有值。
 
-將此 URL 貼入 REST 用戶端做為驗證步驟，並查看檔結構。
+將此 URL 粘貼到 REST 用戶端作為驗證步驟，並查看文檔結構。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-查詢字串 **`search=*`** 是未指定的搜尋，等同於 Null 或空的搜尋。 這是您可以執行的最簡單搜尋。
+查詢字串**`search=*`** 是等效于空搜索或空搜索的未指定的搜索。 這是最簡單的搜索，你可以做。
 
-(選擇性) 您可以將 **`$count=true`** 新增至 URL，以傳回符合搜尋準則的文件計數。 在空的搜尋字串上，這是索引中的所有文件 (在 NYC 作業的案例中大約 2800)。
+或者，您可以添加到**`$count=true`** URL 以返回與搜尋條件匹配的文檔計數。 在空的搜尋字串上，這會是索引中的所有文件 (在 NYC 作業的案例中大約有 2800 份)。
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>如何叫用完整 Lucene 剖析
 
@@ -80,11 +80,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 本文中的所有範例會指定 **queryType=full** 搜尋參數，表示 Lucene 查詢剖析器處理的完整語法。 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>範例1：範圍限定在欄位清單的查詢
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1：查詢範圍為欄位清單
 
-第一個範例不是 Lucene 特有的，但我們會引導它引進第一個基本查詢概念：欄位範圍。 這個範例會將整個查詢和回應的範圍限定為幾個特定的欄位。 當您的工具是 Postman 或搜尋總管時，了解如何建構可讀取的 JSON 回應很重要。 
+第一個示例不是特定于 Lucene，但我們率先引入了第一個基本查詢概念：欄位範圍。 此示例僅對幾個特定欄位的範圍為整個查詢和回應。 當您的工具是 Postman 或搜尋總管時，了解如何建構可讀取的 JSON 回應很重要。 
 
-為求簡潔，查詢僅以 *business_title* 欄位為目標，且指定僅傳回公司職稱。 **SearchFields**參數會將查詢執行限制為只有 business_title 欄位，而**select**會指定要包含在回應中的欄位。
+為求簡潔，查詢僅以 *business_title* 欄位為目標，且指定僅傳回公司職稱。 **"搜索欄位"** 參數將查詢執行限制為僅business_title欄位，並**選擇指定**回應中包括哪些欄位。
 
 ### <a name="partial-query-string"></a>部分查詢字串
 
@@ -92,16 +92,16 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 &search=*&searchFields=business_title&$select=business_title
 ```
 
-以下是在逗號分隔清單中有多個欄位的相同查詢。
+下面是逗號分隔清單中具有多個欄位的相同查詢。
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
-逗號後面的空格是選擇性的。
+逗號之後的空格是可選的。
 
 > [!Tip]
-> 當您從應用程式程式碼使用 REST API 時，別忘了 URL 編碼的參數，例如 `$select` 和 `searchFields`。
+> 使用應用程式代碼中的 REST API 時，不要忘記 URL 編碼參數，如`$select`和`searchFields`。
 
 ### <a name="full-url"></a>完整 URL
 
@@ -113,11 +113,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman 範例回應](media/search-query-lucene-examples/postman-sample-results.png)
 
-您可能已注意到在回應中的搜尋分數。 沒有排名時，分數一律為 1，這是因為搜尋不是全文檢索搜尋，或是未套用任何準則。 若是未套用任何準則的 Null 搜尋，資料列會以任意順序傳回。 當您包含實際的搜尋條件時，您會看到搜尋分數進化成有意義的值。
+您可能已注意到在回應中的搜尋分數。 沒有排名時，分數一律為 1，這是因為搜尋不是全文檢索搜尋，或是未套用任何準則。 若是未套用任何準則的 Null 搜尋，資料列會以任意順序傳回。 當您包含實際搜尋條件時，您將看到搜索分數演變為有意義的值。
 
-## <a name="example-2-fielded-search"></a>範例2：回復搜尋
+## <a name="example-2-fielded-search"></a>示例 2：欄位搜索
 
-Full Lucene 語法支援將個別搜尋運算式的範圍設定為特定欄位。 這個範例會搜尋具有「資深」一詞的「商務標題」，而不是「初級」。
+完全 Lucene 語法支援將單個搜索運算式範圍範圍範圍到特定欄位。 本示例搜索具有"高級"一詞的業務名稱，而不是初級名稱。
 
 ### <a name="partial-query-string"></a>部分查詢字串
 
@@ -125,7 +125,7 @@ Full Lucene 語法支援將個別搜尋運算式的範圍設定為特定欄位�
 $select=business_title&search=business_title:(senior NOT junior)
 ```
 
-以下是具有多個欄位的相同查詢。
+下面是具有多個欄位的相同查詢。
 
 ```http
 $select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
@@ -139,18 +139,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman 範例回應](media/search-query-lucene-examples/intrafieldfilter.png)
 
-您可以使用**fieldName： searchExpression**語法來定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 某些範例包括以下內容：
+您可以使用**欄位 Name：searchExpression**語法定義欄位搜索操作，其中搜索運算式可以是單個單詞或短語，也可以是括弧中的更複雜的運算式，可選使用布林運算子。 部分範例如下：
 
 - `business_title:(senior NOT junior)`
 - `state:("New York" OR "New Jersey")`
 - `business_title:(senior NOT junior) AND posting_type:external`
 
-如果您想要將兩個字串都評估為單一實體，請務必將多個字串放在引號中，例如在此案例中，搜尋 [`state`] 欄位中的兩個不同位置。 此外，請確定運算子是大寫，如同您看到的 NOT 和 AND。
+如果希望將兩個字串計算為單個實體，請確保在引號中放置多個字串，例如在本例中搜索`state`欄位中的兩個不同的位置。 此外，請確定運算子是大寫，如同您看到的 NOT 和 AND。
 
-**FieldName： searchExpression**中指定的欄位必須是可搜尋的欄位。 如需有關如何在欄位定義中使用索引屬性的詳細資訊，請參閱[建立索引（Azure 認知搜尋 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index) 。
+**欄位名稱：搜索運算式**中指定的欄位必須是可搜索欄位。 有關索引屬性在欄位定義中如何使用的詳細資訊[，請參閱創建索引（Azure 認知搜索 REST API）。](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
 > [!NOTE]
-> 在上述範例中，我們不需要使用 `searchFields` 參數，因為查詢的每個部分都有明確指定的功能變數名稱。 不過，如果您想要執行一個查詢，其中某些部分的範圍設定為特定欄位，則您仍然可以使用 `searchFields` 參數，其餘的部分則適用于數個欄位。 例如，查詢 `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` 只會比對 [`business_title`] 欄位 `senior NOT junior`，而 [外部] 則會與 `posting_type` 欄位相符。 **FieldName： searchExpression**中提供的功能變數名稱一律優先于 `searchFields` 參數，因此在此範例中，我們不需要在 `searchFields` 參數中包含 `business_title`。
+> 在上面的示例中，我們不需要使用 參數，`searchFields`因為查詢的每個部分都有顯式指定的欄位名稱。 但是，如果要執行查詢，`searchFields`其中某些部分限定在特定欄位，其餘部分可以應用於多個欄位，則仍可以使用 參數。 例如，`search=business_title:(senior NOT junior) AND external&searchFields=posting_type`查詢將僅`senior NOT junior`與`business_title`欄位匹配，而它將"外部"與`posting_type`欄位匹配。 **欄位名稱：searchExpression**中提供的欄位名稱始終優先于`searchFields`參數，因此在此示例中，我們不需要在`business_title``searchFields`參數中包括。
 
 ## <a name="example-3-fuzzy-search"></a>範例 3：模糊搜尋
 
@@ -162,7 +162,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
 
-不直接支援片語，但是您可以在片語的元件部分上指定模糊相符。
+直接支援短語，但您可以對短語的元件部分指定模糊比對。
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~ AND comm~ 
@@ -210,7 +210,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-5-term-boosting"></a>範例 5：詞彙提升
 提升一詞指的是如果文件包含提升詞彙，則將其評等提高，高於不包含該詞彙的文件。 若要提升詞彙，請使用插入號 "^"，並在搜尋詞彙的結尾加上提升係數 (數字)。 
 
-### <a name="full-urls"></a>完整 Url
+### <a name="full-urls"></a>完整 URL
 
 在此 "before" 查詢中，搜尋含有 *computer analyst* 的工作時，我們會發現沒有同時包含 *computer* 和 *analyst* 兩個單字的結果，但是 *computer* 工作顯示於結果頂端。
 
@@ -230,7 +230,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 詞彙提升與評分設定檔的不同之處在於，評分設定檔會提升特定欄位，而不是特定字詞。 下列範例可協助說明差異。
 
-請考慮使用評分設定檔，可提高特定欄位中的相符項目，例如 musicstoreindex 範例中的 **genre** 。 詞彙提升可用來進一步提升某些搜尋詞彙，使其高於其他詞彙。 比方說，"rock^2 electronic" 可提升包含搜尋詞彙的文件﹐使其在 [genre] 欄位中高於索引中的其他可搜尋欄位。 此外，包含搜尋詞彙 "rock" 的文件排名會比另一個搜尋詞彙 "electronic" 還高，此為詞彙提升值 (2) 的結果。
+請考慮使用評分設定檔，可提高特定欄位中的相符項目，例如 musicstoreindex 範例中的 **genre** 。 詞彙提升可用來進一步提升某些搜尋詞彙，使其高於其他詞彙。 比方說，"rock^2 electronic" 可提升包含搜尋詞彙的文件﹐使其在 [genre] **** 欄位中高於索引中的其他可搜尋欄位。 此外，包含搜尋詞彙 "rock" 的文件排名會比另一個搜尋詞彙 "electronic" 還高，此為詞彙提升值 (2) 的結果。
 
 在設定係數層級時，提升係數越高，該字詞相對於其他搜尋字詞的關聯性也越高。 根據預設，提升係數為 1。 雖然提升係數必須是正數，但是它可能會小於 1 (例如，0.2)。
 
@@ -247,7 +247,7 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 
 ### <a name="full-url"></a>完整 URL
 
-在此查詢中，搜尋具有 [資深] 或 [初級： `search=business_title:/(Sen|Jun)ior/`] 這一詞的作業。
+在此查詢中，搜索術語"高級"或"初級："`search=business_title:/(Sen|Jun)ior/`的作業。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -284,12 +284,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="next-steps"></a>後續步驟
 請在您的程式碼中嘗試指定 Lucene 查詢剖析器。 下列連結說明如何設定 .NET 和 REST API 的搜尋查詢。 這些連結會使用預設的簡單語法，因此您必須套用您從本文了解的內容來指定 **queryType**。
 
-* [使用 .NET SDK 查詢您的索引](search-query-dotnet.md)
-* [使用 REST API 查詢您的索引](search-create-index-rest-api.md)
+* [使用 .NET SDK 查詢索引](search-query-dotnet.md)
+* [使用 REST API 查詢索引](search-create-index-rest-api.md)
 
 您可以在下列連結中找到其他語法參考、查詢架構和範例：
 
 + [簡單語法查詢範例](search-query-simple-examples.md)
-+ [全文檢索搜尋在 Azure 認知搜尋中的運作方式](search-lucene-query-architecture.md)
++ [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
 + [簡單查詢語法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [完整的 Lucene 查詢語法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

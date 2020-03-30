@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72028802"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 客體 OS 防火牆封鎖輸入流量
 
 本文說明如何解決客體作業系統防火牆封鎖輸入流量時發生的遠端桌面入口網站 (RDP) 問題。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您無法使用 RDP 連線來連線到 Azure 虛擬機器 (VM)。 從 [開機診斷] -> [螢幕擷取畫面] 中，顯示作業系統已在 [歡迎] 畫面 (Ctrl+Alt+Del) 完全載入。
 
@@ -41,7 +41,7 @@ ms.locfileid: "72028802"
 
 ![防火牆設定](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>方案
+## <a name="solution"></a>解決方法
 
 在按照下列步驟進行之前，請先擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱 [擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "72028802"
 
 #### <a name="mitigation-1"></a>緩解措施 1
 
-1.  如果 VM 上已安裝 Azure 代理程式並正常運作，您可以使用 VM 功能表中 [支援與疑難排解] > [重設密碼] 下方的 [僅重設設定] 選項。
+1.  如果 Azure 代理已安裝並在 VM 上正常工作，則可以使用"僅重置配置"選項，在 VM 功能表上使用 **"支援 + 故障排除** > **重置密碼"選項**。
 
 2.  執行此復原選項時會執行下列動作：
 
@@ -102,7 +102,7 @@ ms.locfileid: "72028802"
 
 #### <a name="mitigation-2"></a>緩解措施 2
 
-1.  查詢防火牆設定檔，以判斷輸入防火牆原則是否設定為*BlockInboundAlways*：
+1.  查詢防火牆設定檔，以確定入站防火牆策略是否設置為 *"阻止入站始終*"：
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "72028802"
     >    * *BlockInbound*：除非您具備允許輸入流量的有效規則，否則會封鎖所有輸入流量。
     >    * *BlockInboundAlways*：會忽略所有防火牆規則，並封鎖所有流量。
 
-2.  編輯*DefaultInboundAction*以設定這些設定檔以**允許**流量。 若要這樣做，請執行下列命令：
+2.  編輯*預設入行操作*以將這些設定檔設置為 **"允許**流量"。 若要這樣做，請執行下列命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -132,13 +132,13 @@ ms.locfileid: "72028802"
 
 4.  再次嘗試透過 RDP 存取您的 VM。
 
-### <a name="offline-mitigations"></a>離線緩解措施
+### <a name="offline-mitigations"></a>離線風險降低措施
 
 1.  [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
 2.  啟動復原 VM 的遠端桌面連線。
 
-3.  確定該磁碟在磁碟管理主控台中標示為 [線上]。 記下指派給已連結系統磁碟的磁碟機代號。
+3.  確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結系統磁碟的磁碟機代號。
 
 #### <a name="mitigation-1"></a>緩解措施 1
 
@@ -150,7 +150,7 @@ ms.locfileid: "72028802"
 
 2.  啟動復原 VM 的遠端桌面連線。
 
-3.  將系統磁片連結至復原 VM 之後，請確定該磁片在磁片管理主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3.  將系統磁片連接到恢復 VM 後，請確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結 OS 磁碟的磁碟機代號。
 
 4.  開啟提升權限的 CMD 執行個體，然後執行下列指令碼：
 

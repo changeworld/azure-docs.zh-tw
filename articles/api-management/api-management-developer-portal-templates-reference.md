@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176800"
 ---
 # <a name="developer-portal-templates"></a>開發人員入口網站範本
@@ -30,20 +30,20 @@ ms.locfileid: "73176800"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> 開發人員入口網站範本  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> 開發人員入口網站範本  
   
--   [API](api-management-api-templates.md)  
+-   [Api](api-management-api-templates.md)  
     -   [API 清單](api-management-api-templates.md#APIList)  
-    -   [作業](api-management-api-templates.md#Product)  
+    -   [操作](api-management-api-templates.md#Product)  
     -   [程式碼範例](api-management-api-templates.md#CodeSamples)  
-        -   [Curl](api-management-api-templates.md#Curl)  
+        -   [捲曲](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
-        -   [Java](api-management-api-templates.md#Stub)  
-        -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
-        -   [PHP](api-management-api-templates.md#PHP)  
+        -   [JAVA](api-management-api-templates.md#Stub)  
+        -   [JAVAscript](api-management-api-templates.md#JavaScript)  
+        -   [目標C](api-management-api-templates.md#ObjectiveC)  
+        -   [Php](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
-        -   [Ruby](api-management-api-templates.md#Ruby)  
+        -   [紅寶石](api-management-api-templates.md#Ruby)  
 -   [產品](api-management-product-templates.md)  
     -   [產品清單](api-management-product-templates.md#ProductList)  
     -   [產品](api-management-product-templates.md#Product)  
@@ -53,8 +53,8 @@ ms.locfileid: "73176800"
 -   [問題](api-management-issue-templates.md)  
     -   [問題清單](api-management-issue-templates.md#IssueList)  
 -   [使用者設定檔](api-management-user-profile-templates.md)  
-    -   [設定檔](api-management-user-profile-templates.md#Profile)  
-    -   [訂用帳戶](api-management-user-profile-templates.md#Subscriptions)  
+    -   [配置 檔](api-management-user-profile-templates.md#Profile)  
+    -   [訂閱](api-management-user-profile-templates.md#Subscriptions)  
     -   [應用程式](api-management-user-profile-templates.md#Applications)  
     -   [更新帳戶資訊](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [頁面](api-management-page-templates.md)  

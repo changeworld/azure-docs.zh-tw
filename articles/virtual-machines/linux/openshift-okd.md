@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035410"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
 您可使用這兩種方式之一在 Azure 中部署 OKD (之前稱為 OpenShift Origin)：
 
-- 您可以手動部署所需的所有 Azure 基礎結構元件，然後依照 [OKD 文件](https://docs.okd.io)進行。
+- 您可以手動部署所有必要的 Azure 基礎結構元件，然後按照[OKD 文檔](https://docs.okd.io)操作。
 - 您也可以使用能夠簡化 OKD 叢集部署的現有 [Resource Manager 範本](https://github.com/Microsoft/openshift-origin)。
 
 ## <a name="deploy-using-the-okd-template"></a>使用 OKD 範本部署
@@ -40,7 +40,7 @@ ms.locfileid: "74035410"
 
 [OKD 範本](https://github.com/Microsoft/openshift-origin)有多個分支可用於不同版本的 OKD。  根據您的需求，您可以直接從存放庫部署或可以分支處理存放庫，並且在部署前先進行自訂變更。
 
-使用您稍早針對 `appId` 參數所建立之服務主體中的 `aadClientId` 值。
+使用您稍早針對 `aadClientId` 參數所建立之服務主體中的 `appId` 值。
 
 以下是名為 azuredeploy.parameters.json 且具有所有必要輸入的參數檔案範例。
 

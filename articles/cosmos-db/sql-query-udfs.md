@@ -1,25 +1,25 @@
 ---
-title: Azure Cosmos DB 中的使用者定義函數 (Udf)
-description: 瞭解 Azure Cosmos DB 中的使用者定義函數。
+title: Azure 宇宙 DB 中的使用者定義的函數 （UdF）
+description: 瞭解 Azure Cosmos DB 中使用者定義的函數。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614325"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的使用者定義函數 (Udf)
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure 宇宙 DB 中的使用者定義的函數 （UdF）
 
-SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可以傳入零個或多個引數, 並傳回單一引數結果。 API 會檢查每個引數是否為合法的 JSON 值。  
+SQL API 支援使用者定義的函數 （UF）。 使用標量 UDF，可以傳遞零個或多個參數，並返回單個參數結果。 API 檢查每個參數為合法的 JSON 值。  
 
-此 API 會擴充 SQL 語法, 以支援使用 Udf 的自訂應用程式邏輯。 您可以向 SQL API 註冊 Udf, 並在 SQL 查詢中參考它們。 實際上，UDF 是特別設計來透過查詢進行呼叫的。 做為必然結果, Udf 無法存取內容物件, 如其他 JavaScript 類型, 例如預存程式和觸發程式。 查詢是唯讀的, 而且可以在主要或次要複本上執行。 與其他 JavaScript 類型不同的是, Udf 是設計來在次要複本上執行。
+API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以將 UdF 註冊到 SQL API 中，並在 SQL 查詢中引用它們。 實際上，UDF 是特別設計來透過查詢進行呼叫的。 作為推論，UDF 不能像其他 JavaScript 類型（如預存程序和觸發器）一樣訪問上下文物件。 查詢是唯讀的，可以在主副本或輔助副本上運行。 與其他 JavaScript 類型不同，UF 設計用於在輔助副本上運行。
 
-下列範例會在 Cosmos 資料庫中的專案容器下註冊 UDF。 此範例會建立一個 UDF, 其`REGEX_MATCH`名稱為。 它接受兩個 JSON 字串值`input`和`pattern`, 並使用 JavaScript 的`string.match()`函式來檢查第一個是否符合第二個中所指定的模式。
+以下示例在 Cosmos 資料庫中的專案容器下註冊 UDF。 該示例創建一個 UDF，`REGEX_MATCH`其名稱為 。 它接受兩個 JSON`input`字串`pattern`值，並檢查第一個值是否與使用 JavaScript`string.match()`函數在第二個字串中指定的模式匹配。
 
 ## <a name="examples"></a>範例
 
@@ -37,14 +37,14 @@ SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可�
            regexMatchUdf).Result;  
 ```
 
-現在, 請在查詢投影中使用此 UDF。 從查詢內呼叫 udf 時, 必須以區分`udf.`大小寫的前置詞來限定它們。
+現在，在查詢投影中使用此 UDF。 在從查詢中調用 UDF 時，必須`udf.`限定具有區分大小寫的首碼。
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
 ```
 
-結果為：
+結果如下：
 
 ```json
     [
@@ -57,7 +57,7 @@ SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可�
     ]
 ```
 
-您可以在篩選準則中使用以`udf.`前置詞限定的 UDF, 如下列範例所示:
+可以使用限定在篩選器內`udf.`的首碼的 UDF，如以下示例所示：
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -65,7 +65,7 @@ SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可�
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-結果為：
+結果如下：
 
 ```json
     [{
@@ -74,9 +74,9 @@ SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可�
     }]
 ```
 
-基本上, Udf 是可以在投影和篩選中使用的有效純量運算式。
+從本質上講，UDF 是有效的標量運算式，可用於投影和篩選器。
 
-若要展開 Udf 的強大功能, 請查看具有條件式邏輯的另一個範例:
+要擴展 UdF 的電源，請查看另一個具有條件邏輯的示例：
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -100,14 +100,14 @@ SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可�
                 seaLevelUdf);
 ```
 
-下列範例會練習 UDF:
+下面的示例練習 UDF：
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f
 ```
 
-結果為：
+結果如下：
 
 ```json
      [
@@ -122,12 +122,12 @@ SQL API 提供使用者定義函數 (Udf) 的支援。 使用純量 Udf, 您可�
     ]
 ```
 
-如果在 JSON 值中無法使用 UDF 參數所參考的屬性, 則會將參數視為未定義, 並略過 UDF 調用。 同樣地, 如果 UDF 的結果未定義, 則不會包含在結果中。
+如果 UDF 參數引用的屬性在 JSON 值中不可用，則該參數將被視為未定義，並跳過 UDF 調用。 同樣，如果 UDF 的結果未定義，則結果中不包括它。
 
-如上述範例所示, Udf 會將 JavaScript 語言的強大功能與 SQL API 整合在一起。 Udf 提供了豐富的程式設計介面, 可在內建 JavaScript 執行時間功能的協助下, 執行複雜的程式性、條件式邏輯。 SQL API 會在處理的目前 WHERE 或 SELECT 子句階段, 為每個來源專案提供 Udf 的引數。 結果會順暢地合併在整體執行管線中。 總而言之, Udf 是很棒的工具, 可在查詢過程中執行複雜的商務邏輯。
+如前面的示例所示，UDF 將 JavaScript 語言的強大功能與 SQL API 集成。 UF 提供了豐富的可程式設計介面，借助內置的 JavaScript 運行時功能，可以執行複雜的程式性條件邏輯。 SQL API 在當前 WHERE 或 SELECT 子句階段處理時，為每個源項向 UdF 提供參數。 結果無縫地包含在整個執行管道中。 總之，UF 是作為查詢的一部分執行複雜業務邏輯的絕佳工具。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Cosmos DB 簡介](introduction.md)
-- [系統函數](sql-query-system-functions.md)
-- [總計](sql-query-aggregates.md)
+- [Azure 宇宙 DB 簡介](introduction.md)
+- [系統功能](sql-query-system-functions.md)
+- [彙總](sql-query-aggregates.md)

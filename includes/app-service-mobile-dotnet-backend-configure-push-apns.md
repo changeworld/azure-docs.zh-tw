@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857341"
 ---
-**.NET 後端 (C#)** ：
+**.NET 後端 (C#)**：
   
-1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案並按一下 [管理 NuGet 封裝]，搜尋 `Microsoft.Azure.NotificationHubs`，然後按一下 [安裝]。 這會安裝通知中樞程式庫，以便從後端傳送通知。
-2. 在後端的 Visual Studio 專案中，開啟 **Controllers**  >  **TodoItemController.cs**。 在檔案頂端新增下列 `using` 陳述式：
+1. 在 Visual Studio 中，以滑鼠右鍵按一下伺服器專案並按一下 [管理 NuGet 封裝]****，搜尋 `Microsoft.Azure.NotificationHubs`，然後按一下 [安裝]****。 這會安裝通知中樞程式庫，以便從後端傳送通知。
+2. 在後端的視覺化工作室專案中，打開**控制器** > **TodoItemController.cs**。 在檔案頂端新增下列 `using` 陳述式：
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -67,7 +67,7 @@ ms.locfileid: "68857341"
 
 **Node.js 後端**：
 
-1. 設定您的後端專案。    
+1. 設置後端專案。    
 
 2. 使用下列程式碼取代  todoitem.js 資料表指令碼：
 

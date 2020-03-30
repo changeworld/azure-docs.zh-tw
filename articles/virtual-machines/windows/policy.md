@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中的 Windows Vm 上使用原則來強制執行安全性
-description: 如何將原則套用至 Azure Resource Manager  Windows 虛擬機器
+title: 使用 Azure 中的 Windows VM 上的策略強制實施安全性
+description: 如何將原則套用至 Azure Resource Manager Windows 虛擬機器
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: a2ee5f36b7dba03bea3cc219651804c5039115d5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74032965"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 將原則套用至 Windows VM
@@ -252,4 +252,4 @@ ms.locfileid: "74032965"
 ## <a name="next-steps"></a>後續步驟
 * 定義原則規則 (如上述範例所示) 之後，您必須建立原則定義，並將它指派到某個範圍。 範圍可以是訂用帳戶、資源群組或資源。 若要指派原則，請參閱[使用 Azure 入口網站來指派和管理資源原則](../../governance/policy/assign-policy-portal.md)、[使用 PowerShell 來指派原則](../../governance/policy/assign-policy-powershell.md)或[使用 Azure CLI 來指派原則](../../governance/policy/assign-policy-azurecli.md)。
 * 如需資源原則簡介，請參閱[什麼是 Azure 原則？](../../governance/policy/overview.md)。
-* 如需關於企業如何使用 Resource Manager 有效地管理訂閱的指引，請參閱 [Azure 企業 Scaffold - 規定的訂用帳戶治理](/azure/architecture/cloud-adoption-guide/subscription-governance)。
+* 如需關於企業如何使用 Resource Manager 有效地管理訂用帳戶的指引，請參閱 [Azure 企業 Scaffold - 規定的訂用帳戶治理](/azure/architecture/cloud-adoption-guide/subscription-governance)。

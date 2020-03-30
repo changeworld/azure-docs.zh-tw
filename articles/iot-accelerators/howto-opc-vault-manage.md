@@ -1,6 +1,6 @@
 ---
-title: 如何管理 OPC 保存庫憑證服務-Azure |Microsoft Docs
-description: 管理 OPC 保存庫根 CA 憑證和使用者權限。
+title: 如何管理 OPC 保存庫憑證服務 - Azure |微軟文檔
+description: 管理 OPC 保存庫根 CA 憑證和使用者許可權。
 author: mregen
 ms.author: mregen
 ms.date: 8/16/2019
@@ -9,126 +9,126 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71203662"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>管理 OPC 保存庫憑證服務
 
-本文說明 Azure 中的 OPC 保存庫憑證管理服務的管理工作。 其中包含有關如何更新簽發者 CA 憑證、如何更新憑證撤銷清單（CRL），以及如何授與及撤銷使用者存取權的資訊。
+本文介紹了 Azure 中 OPC 保存庫證書管理服務的管理工作。 它包括有關如何續訂頒發者 CA 憑證、如何續訂憑證撤銷清單 （CRL） 以及如何授予和撤銷使用者存取權限的資訊。
 
-## <a name="create-or-renew-the-root-ca-certificate"></a>建立或更新根 CA 憑證
+## <a name="create-or-renew-the-root-ca-certificate"></a>創建或續訂根 CA 憑證
 
-部署 OPC 保存庫之後，您必須建立根 CA 憑證。 如果沒有有效的簽發者 CA 憑證，您就無法簽署或發行應用程式憑證。 請參閱[憑證](howto-opc-vault-secure-ca.md#certificates)，以合理且安全的存留期來管理您的憑證。 在其存留期一半後更新簽發者 CA 憑證。 續訂時，也請考慮已設定新簽署應用程式憑證的存留期不應超過簽發者 CA 憑證的存留期。
+部署 OPC 保存庫後，必須創建根 CA 憑證。 如果沒有有效的頒發者 CA 憑證，則無法簽名或頒發應用程式證書。 請參閱[證書](howto-opc-vault-secure-ca.md#certificates)以管理具有合理、安全存留期的證書。 在頒發者 CA 憑證的一半存留期後續訂它。 續訂時，還要考慮新簽名的應用程式證書的配置存留期不應超過頒發者 CA 憑證的存留期。
 > [!IMPORTANT]
-> 必須要有系統管理員角色，才能建立或更新簽發者 CA 憑證。
+> 創建或續訂頒發者 CA 憑證需要管理員角色。
 
-1. 在`https://myResourceGroup-app.azurewebsites.net`中開啟您的憑證服務，然後登入。
-2. 前往 [**憑證群組**]。
-3. 有一個預設的憑證群組列出。 選取 [編輯]。
-4. 在 [**編輯憑證群組詳細資料**] 中，您可以修改 CA 和應用程式憑證的主體名稱和存留期。 只有在發行第一個 CA 憑證之前，應該只設定一次主體和存留期。 作業期間的存留期變更可能會導致所發行憑證和 Crl 的存留時間不一致。
-5. 輸入有效的主旨（例如， `CN=My CA Root, O=MyCompany, OU=MyDepartment`）。<br>
+1. 在 打開憑證服務`https://myResourceGroup-app.azurewebsites.net`，然後登錄。
+2. 轉到**證書組**。
+3. 列出了一個預設證書組。 選取 [編輯]****。
+4. 在 **"編輯證書組詳細資訊"** 中，可以修改 CA 和應用程式證書的主題名稱和存留期。 在頒發第一個 CA 憑證之前，應僅設置主題和存留期一次。 操作期間的存留期更改可能會導致頒發的證書和 CRL 的存留期不一致。
+5. 輸入有效的主題（例如， `CN=My CA Root, O=MyCompany, OU=MyDepartment`<br>
    > [!IMPORTANT]
-   > 如果您變更主旨，則必須更新簽發者憑證，否則服務將無法簽署應用程式憑證。 設定的主旨會針對作用中簽發者憑證的主旨進行檢查。 如果主體不相符，憑證簽署會遭到拒絕。
-6. 選取 [儲存]。
-7. 如果此時遇到「禁止」的錯誤，表示您的使用者認證沒有系統管理員許可權，無法修改或建立新的根憑證。 根據預設，部署服務的使用者具有服務的系統管理員和簽署角色。 其他使用者必須在 Azure Active Directory （Azure AD）應用程式註冊中，視需要新增至核准者、作者或系統管理員角色。
-8. 選取 [**詳細資料**]。 這應該會顯示更新的資訊。
-9. 選取 [**更新 CA 憑證**] 以發行第一個簽發者 CA 憑證，或更新簽發者憑證。 然後選取 [確定]。
-10. 幾秒鐘後，您會看到**憑證詳細資料**。 若要下載最新的 CA 憑證和 CRL 以散發至您的 OPC UA 應用程式，請選取 [**簽發者**或**crl**]。
+   > 如果更改主題，則必須續訂頒發者證書，否則服務將無法對應用程式證書進行簽名。 配置的主題根據活動頒發者證書的主題進行檢查。 如果主題不匹配，證書簽名將被拒絕。
+6. 選取 [儲存]****。
+7. 如果此時遇到"禁止"錯誤，則使用者憑據沒有管理員修改或創建新根憑證的許可權。 預設情況下，部署服務的使用者具有管理員並與服務簽名的角色。 需要在 Azure 活動目錄 （Azure AD） 應用程式註冊中根據需要將其他使用者添加到核准者、編寫者或管理員角色。
+8. 選擇**詳細資訊**。 這將顯示更新的資訊。
+9. 選擇**續訂 CA 憑證**以頒發第一個頒發者 CA 憑證，或續訂頒發者證書。 然後選擇 **"確定**"。
+10. 幾秒鐘後，您將看到**證書詳細資訊**。 要下載最新的 CA 憑證和 CRL 以分發到 OPC UA 應用程式，請選擇 **"頒發者**"或 **"Crl**"。
 
-現在，OPC UA 憑證管理服務已準備好發行 OPC UA 應用程式的憑證。
+現在，OPC UA 證書管理服務已準備好為 OPC UA 應用程式頒發證書。
 
-## <a name="renew-the-crl"></a>更新 CRL
+## <a name="renew-the-crl"></a>續訂 CRL
 
-CRL 的續訂是更新，應定期散發給應用程式。 支援 CRL 發佈點 X509 延伸模組的 OPC UA 裝置，可以直接從微服務端點更新 CRL。 其他 OPC UA 裝置可能需要手動更新，或可以使用 GDS 伺服器推送延伸模組（*）來更新信任清單與憑證和 Crl。
+CRL 的更新是一種更新，應定期分發給應用程式。 支援 CRL 發佈點 X509 擴展的 OPC UA 設備可以直接從微服務終結點更新 CRL。 其他 OPC UA 設備可能需要手動更新，或者可以使用 GDS 伺服器推送擴展 （*） 更新信任清單與證書和 CRL。
 
-在下列工作流程中，已刪除狀態中的所有憑證要求都會在 Crl 中撤銷，其對應至頒發證書的簽發者 CA 憑證。 CRL 的版本號碼會遞增1。 <br>
+在以下工作流中，已刪除狀態中的所有證書請求都將在 CRL 中撤銷，這些證書對應于為其發出的頒發證書的頒發者 CA 憑證。 CRL 的版本號增加 1。 <br>
 > [!NOTE]
-> 所有發行的 Crl 在簽發者 CA 憑證到期前都是有效的。 這是因為 OPC UA 規格不需要 CRL 的強制確定性散發模型。
+> 所有頒發的 CRL 在頒發者 CA 憑證到期之前都有效。 這是因為 OPC UA 規範不需要 CRL 的強制性確定性分佈模型。
 
 > [!IMPORTANT]
-> 必須要有系統管理員角色，才能更新簽發者 CRL。
+> 續訂頒發者 CRL 需要管理員角色。
 
-1. 在`https://myResourceGroup.azurewebsites.net`中開啟您的憑證服務，然後登入。
-2. 移至 [**憑證群組**] 頁面。
-3. 選取 [**詳細資料**]。 這應該會顯示目前的憑證和 CRL 資訊。
-4. 選取 [**更新 Crl 撤銷清單（CRL）** ]，為 OPC 保存庫儲存體中所有作用中的簽發者憑證發出更新的 crl。
-5. 幾秒鐘後，您會看到**憑證詳細資料**。 若要下載最新的 CA 憑證和 CRL 以散發至您的 OPC UA 應用程式，請選取 [**簽發者**或**crl**]。
+1. 在 打開憑證服務`https://myResourceGroup.azurewebsites.net`，然後登錄。
+2. 轉到**證書組**頁面。
+3. 選擇**詳細資訊**。 這應顯示當前證書和 CRL 資訊。
+4. 選擇 **"更新 CRL 吊銷清單 （CRL）"，** 以便為 OPC 保存庫存儲中的所有活動頒發者憑證發行更新的 CRL。
+5. 幾秒鐘後，您將看到**證書詳細資訊**。 要下載最新的 CA 憑證和 CRL 以分發到 OPC UA 應用程式，請選擇 **"頒發者**"或 **"Crl**"。
 
 ## <a name="manage-user-roles"></a>管理使用者角色
 
-您可以在 Azure AD 企業應用程式中管理 OPC 保存庫微服務的使用者角色。 如需角色定義的詳細描述，請參閱[角色](howto-opc-vault-secure-ca.md#roles)。
+在 Azure AD 企業應用程式中管理 OPC Vault 微服務的使用者角色。 有關角色定義的詳細說明，請參閱[角色](howto-opc-vault-secure-ca.md#roles)。
 
-根據預設，租使用者中已驗證的使用者可以將服務以讀取器的形式登入。 較高的特殊許可權角色需要在 Azure 入口網站中或使用 PowerShell 進行手動管理。
+預設情況下，租戶中的經過身份驗證的使用者可以以 Reader 身份登錄服務。 較高的特權角色需要在 Azure 門戶中手動管理，或者使用 PowerShell。
 
 ### <a name="add-user"></a>新增使用者
 
 1. 開啟 Azure 入口網站。
-2. 前往**Azure Active Directory**  > **企業應用程式**。
-3. 選擇 [OPC 保存庫] 微服務的註冊（根據預設， `resourceGroupName-service`您的）。
-4. 移至 [**使用者和群組**]。
-5. 選取 [新增使用者]。
-6. 選取或邀請使用者指派給特定角色。
-7. 選取使用者的角色。
-8. 選取 [指派]。
-9. 對於 [系統管理員] 或 [核准者] 角色的使用者，請繼續新增 Azure Key Vault 存取原則。
+2. 轉到**Azure 活動目錄** > **企業應用程式**。
+3. 選擇 OPC Vault 微服務的註冊（預設情況下，您的`resourceGroupName-service`）。
+4. 轉到**使用者和組**。
+5. 選擇 **"添加使用者**"。
+6. 選擇或邀請使用者分配到特定角色。
+7. 選擇使用者的角色。
+8. 選擇 **"分配**"。
+9. 對於管理員或核准者角色中的使用者，請繼續添加 Azure 金鑰保存庫訪問策略。
 
 ### <a name="remove-user"></a>移除使用者
 
 1. 開啟 Azure 入口網站。
-2. 前往**Azure Active Directory**  > **企業應用程式**。
-3. 選擇 [OPC 保存庫] 微服務的註冊（根據預設， `resourceGroupName-service`您的）。
-4. 移至 [**使用者和群組**]。
-5. 選取要移除角色的使用者，然後選取 [**移除**]。
-6. 若為 [系統管理員] 或 [核准者] 角色中移除的使用者，請同時從 Azure Key Vault 原則中移除它們。
+2. 轉到**Azure 活動目錄** > **企業應用程式**。
+3. 選擇 OPC Vault 微服務的註冊（預設情況下，您的`resourceGroupName-service`）。
+4. 轉到**使用者和組**。
+5. 選擇要刪除的角色的使用者，然後選擇 **"刪除**"。
+6. 對於管理員或核准者角色中的已刪除使用者，還要從 Azure 金鑰保存庫策略中刪除這些使用者。
 
-### <a name="add-user-access-policy-to-azure-key-vault"></a>將使用者存取原則新增至 Azure Key Vault
+### <a name="add-user-access-policy-to-azure-key-vault"></a>將使用者訪問策略添加到 Azure 金鑰保存庫
 
-核准者和系統管理員需要其他存取原則。
+核准者和管理員需要其他訪問策略。
 
-根據預設，服務識別僅具有存取 Key Vault 的有限許可權，以避免在沒有使用者模擬的情況下進行較高的作業或變更。 基本服務許可權為 [取得] 和 [清單]，適用于秘密和憑證。 針對秘密，只有一個例外狀況：服務可以在使用者接受私密金鑰後，從密碼存放區中將其刪除。 所有其他作業都需要使用者模擬許可權。
+預設情況下，服務標識訪問金鑰保存庫的許可權有限，以防止在沒有使用者類比的情況下進行提升的操作或更改。 對於機密和證書，基本服務許可權為"獲取"和"清單"。 對於機密，只有一個例外：服務可以在使用者接受金鑰後從金鑰存儲中刪除它。 所有其他操作都需要使用者類比許可權。
 
-#### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>若為核准者角色，必須將下列許可權新增至 Key Vault
-
-1. 開啟 Azure 入口網站。
-2. 移至您的 OPC `resourceGroupName`保存庫，在部署期間使用。
-3. 移至 [Key Vault `resourceGroupName-xxxxx`]。
-4. 移至 [**存取原則**]。
-5. 選取 [新增]。
-6. 略過範本。 沒有符合需求的範本。
-7. 選擇 [**選取主體**]，然後選取要新增的使用者，或將新的使用者邀請至租使用者。
-8. 選取下列**主要許可權**：**取得**、**列出**和**簽署**。
-9. 選取下列**秘密許可權**：**取得**、**列出**、**設定**和**刪除**。
-10. 選取下列**憑證許可權**：**Get**和**List**。
-11. 選取 **[確定]** ，然後選取 [**儲存**]。
-
-#### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>對於系統管理員角色，必須將下列許可權新增至 Key Vault
+#### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>對於核准者角色，必須將以下許可權添加到金鑰保存庫
 
 1. 開啟 Azure 入口網站。
-2. 移至您的 OPC `resourceGroupName`保存庫，在部署期間使用。
-3. 移至 [Key Vault `resourceGroupName-xxxxx`]。
-4. 移至 [**存取原則**]。
-5. 選取 [新增]。
-6. 略過範本。 沒有符合需求的範本。
-7. 選擇 [**選取主體**]，然後選取要新增的使用者，或將新的使用者邀請至租使用者。
-8. 選取下列**主要許可權**：**取得**、**列出**和**簽署**。
-9. 選取下列**秘密許可權**：**取得**、**列出**、**設定**和**刪除**。
-10. 選取下列**憑證許可權**：**取得**、**列出**、**更新**、**建立**和匯**入**。
-11. 選取 **[確定]** ，然後選取 [**儲存**]。
+2. 轉到部署期間使用的 OPC 保存庫`resourceGroupName`。
+3. 轉到金鑰保存庫`resourceGroupName-xxxxx`。
+4. 轉到**訪問策略**。
+5. 選取 [新增]****。
+6. 跳過範本。 沒有符合要求的範本。
+7. **選擇"選擇主體**"，然後選擇要添加的使用者，或邀請新使用者到租戶。
+8. 選擇以下**金鑰許可權**：**獲取**、**列出**和**簽名**。
+9. 選擇以下**機密許可權**：**獲取**、**清單**、**設置**和**刪除**。
+10. 選擇以下**證書許可權**：**獲取**和**列出**。
+11. 選擇 **"確定**"，然後選擇 **"保存**"。
 
-### <a name="remove-user-access-policy-from-azure-key-vault"></a>從 Azure Key Vault 移除使用者存取原則
+#### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>對於管理員角色，必須將以下許可權添加到金鑰保存庫
 
 1. 開啟 Azure 入口網站。
-2. 移至您的 OPC `resourceGroupName`保存庫，在部署期間使用。
-3. 移至 [Key Vault `resourceGroupName-xxxxx`]。
-4. 移至 [**存取原則**]。
-5. 尋找要移除的使用者，然後選取 [**刪除**]。
+2. 轉到部署期間使用的 OPC 保存庫`resourceGroupName`。
+3. 轉到金鑰保存庫`resourceGroupName-xxxxx`。
+4. 轉到**訪問策略**。
+5. 選取 [新增]****。
+6. 跳過範本。 沒有符合要求的範本。
+7. **選擇"選擇主體**"，然後選擇要添加的使用者，或邀請新使用者到租戶。
+8. 選擇以下**金鑰許可權**：**獲取**、**列出**和**簽名**。
+9. 選擇以下**機密許可權**：**獲取**、**清單**、**設置**和**刪除**。
+10. 選擇以下**證書許可權**：**獲取**、**清單**、**更新**、**創建**和**導入**。
+11. 選擇 **"確定**"，然後選擇 **"保存**"。
+
+### <a name="remove-user-access-policy-from-azure-key-vault"></a>從 Azure 金鑰保存庫中刪除使用者訪問策略
+
+1. 開啟 Azure 入口網站。
+2. 轉到部署期間使用的 OPC 保存庫`resourceGroupName`。
+3. 轉到金鑰保存庫`resourceGroupName-xxxxx`。
+4. 轉到**訪問策略**。
+5. 查找要刪除的使用者，然後選擇 **"刪除**"。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何管理 OPC 保存庫憑證和使用者，您可以：
+現在，您已經瞭解如何管理 OPC Vault 證書和使用者，您可以：
 
 > [!div class="nextstepaction"]
-> [安全的 OPC 裝置通訊](howto-opc-vault-secure.md)
+> [OPC 設備的安全通信](howto-opc-vault-secure.md)

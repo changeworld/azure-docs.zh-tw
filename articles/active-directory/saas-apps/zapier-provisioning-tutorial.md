@@ -1,6 +1,6 @@
 ---
-title: 教學課程：使用 Azure Active Directory 設定 Zapier 來自動布建使用者 |Microsoft Docs
-description: 瞭解如何從 Azure AD 自動布建和取消布建使用者帳戶至 Zapier。
+title: 教程：使用 Azure 活動目錄配置 Zapier 以自動預配使用者 |微軟文檔
+description: 瞭解如何從 Azure AD 自動預配和取消預配使用者帳戶到 Zapier。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,100 +16,100 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 4091e4fd544dbc6450bc14bd0e0731c4d3024592
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76992153"
 ---
-# <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>教學課程：設定 Zapier 來自動布建使用者
+# <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>教程：為自動使用者預配配置 Zapier
 
-本教學課程說明您需要在 Zapier 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[Zapier](https://zapier.com/pricing) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教程介紹在 Zapier 和 Azure 活動目錄 （Azure AD） 中配置自動使用者預配所需的步驟。 配置後，Azure AD 使用 Azure AD 預配服務自動預配和取消向[Zapier](https://zapier.com/pricing)預配使用者和組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
-## <a name="capabilities-supported"></a>支援的功能
+## <a name="capabilities-supported"></a>支援功能
 > [!div class="checklist"]
-> * 在 Zapier 中建立使用者
-> * 當使用者不再需要存取權時，移除 Zapier 中的使用者
-> * 在 Azure AD 和 Zapier 之間保持使用者屬性同步
-> * 在 Zapier 中布建群組和群組成員資格
-> * 單一登入 Zapier （建議選項）
+> * 在紮皮爾創建使用者
+> * 在 Zapier 中不再需要存取權限時刪除使用者
+> * 使使用者屬性在 Azure AD 和 Zapier 之間保持同步
+> * 紮皮爾的預配組和組成員身份
+> * 紮皮爾的單次登錄（推薦）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租使用者](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 中的使用者帳戶，具有設定布建的[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)（例如，應用程式系統管理員、雲端應用程式系統管理員、應用程式擁有者或全域管理員）。 
-* Zapier 中具有系統管理員許可權的使用者帳戶。
+* [Azure AD 租戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 中具有配置預配[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶（例如應用程式管理員、雲應用程式管理員、應用程式擁有者或全域管理員）。 
+* Zapier 中具有管理員許可權的使用者帳戶。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃您的布建部署
-1. 深入瞭解布建[服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-2. 判斷誰會在布建[範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
-3. 判斷要[在 Azure AD 和 Zapier 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
+## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃預配部署
+1. 瞭解[預配服務的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+2. 確定誰將在[預配範圍內](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
+3. 確定要在[Azure AD 和 Zapier 之間映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)哪些資料。 
 
-## <a name="step-2-configure-zapier-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Zapier 以支援以 Azure AD 布建
+## <a name="step-2-configure-zapier-to-support-provisioning-with-azure-ad"></a>步驟 2： 配置 Zapier 以支援使用 Azure AD 進行預配
 
-1. 登入您的[Zapier 管理主控台](https://zapier.com/app/login/)。 流覽至 [租使用者識別碼] 底下的 [**設定**]。
+1. 登錄到您的[紮皮爾管理主控台](https://zapier.com/app/login/)。 導航到租戶 ID 下的 **"設置**"。
 
-    ![Zapier 管理主控台](media/zapier-provisioning-tutorial/admin.png)
+    ![紮皮爾管理主控台](media/zapier-provisioning-tutorial/admin.png)
 
-2. 在 [**公司設定**] 底下，選取 [**使用者**布建]。
+2. 在 **"公司設置"下**，選擇**使用者預配**。
 
-    ![Zapier 新增 SCIM](media/zapier-provisioning-tutorial/user.png)
+    ![紮皮爾添加SCIM](media/zapier-provisioning-tutorial/user.png)
 
-3. 複製**SCIM 基底 URL**和**SCIM 持有人權杖**。 這些值會分別在 [租使用者 URL] 和 [秘密權杖] 欄位中輸入 Azure 入口網站中 Zapier 應用程式的 [布建] 索引標籤。
+3. 複製**SCIM 基本 URL**和**SCIM 承載權杖**。 這些值將分別在 Azure 門戶中的 Zapier 應用程式的預配選項卡中輸入租戶 URL 和秘密權杖欄位。
 
-    ![Zapier 建立權杖](media/zapier-provisioning-tutorial/token.png)
+    ![紮皮爾創建權杖](media/zapier-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-zapier-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 Zapier
+## <a name="step-3-add-zapier-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫添加紮皮爾
 
-從 Azure AD 應用程式庫新增 Zapier，以開始管理布建至 Zapier。 如果您先前已設定 SSO 的 Zapier，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 在[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入瞭解如何從資源庫新增應用程式。 
+從 Azure AD 應用程式庫添加 Zapier，開始管理對 Zapier 的預配。 如果您以前為 SSO 設置了 Zapier，則可以使用相同的應用程式。 但是，建議在最初測試集成時創建單獨的應用。 在此處瞭解有關從庫中添加應用程式[的更多詳細資訊](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在布建範圍內的人員 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義誰將處於預配範圍 
 
-Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據使用者/群組的屬性，來界定將布建的物件。 如果您選擇根據指派將布建到您的應用程式的範圍，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)，將使用者和群組指派給應用程式。 如果您選擇將僅根據使用者或群組的屬性布建的使用者範圍，您可以使用範圍篩選器，如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述。 
+Azure AD 預配服務允許您根據對應用程式的分配以及或基於使用者/組的屬性來限定誰將預配的範圍。 如果選擇根據分配將預配到應用的範圍，[則可以使用以下步驟將](../manage-apps/assign-user-or-group-access-portal.md)使用者和組分配給應用程式。 如果選擇僅根據使用者或組的屬性預配誰的範圍，則可以使用[此處](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選器。 
 
-* 將使用者和群組指派給 Zapier 時，您必須選取 [**預設存取**] 以外的角色。 具有預設存取角色的使用者會從布建中排除，且在布建記錄中會被標示為不有效率。 如果應用程式上唯一可用的角色是預設存取角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)來新增其他角色。 
+* 將使用者和組分配給 Zapier 時，必須選擇**預設訪問**以外的角色。 具有預設存取權限角色的使用者從預配中排除，並且將在預配日誌中標記為無效許可權。 如果應用程式上唯一可用的角色是預設訪問角色，則可以[更新應用程式清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
-* 從小規模開始。 在推出給所有人之前，先使用一小組的使用者和群組進行測試。 當布建的範圍設定為 [已指派的使用者和群組] 時，您可以藉由將一或兩個使用者或群組指派給應用程式來控制此項。 當 [範圍] 設定為 [所有使用者和群組] 時，您可以指定以[屬性為基礎的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 從小開始。 在向所有人推出之前，先與一小部分使用者和組進行測試。 將預配範圍設置為分配的使用者和組時，可以通過為應用分配一個或兩個使用者或組來控制這種情況。 當作用域設置為所有使用者和組時，可以指定[基於屬性的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-zapier"></a>步驟 5。 設定自動使用者布建至 Zapier 
+## <a name="step-5-configure-automatic-user-provisioning-to-zapier"></a>步驟 5。 配置自動使用者預配到紮皮爾 
 
-本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TestApp 中建立、更新和停用使用者和/或群組。
+本節將指導您完成將 Azure AD 預配服務配置為根據 Azure AD 中的使用者和/或組分配在 TestApp 中創建、更新和禁用使用者和/或組的步驟。
 
-### <a name="to-configure-automatic-user-provisioning-for-zapier-in-azure-ad"></a>若要在 Azure AD 中設定 Zapier 的自動使用者布建：
+### <a name="to-configure-automatic-user-provisioning-for-zapier-in-azure-ad"></a>要在 Azure AD 中配置 Zapier 的自動使用者預配：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。 選擇**企業應用程式**，然後選擇**所有應用程式**。
 
    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [ **Zapier**]。
+2. 在應用程式清單中，選擇**紮皮爾**。
 
-   ![應用程式清單中的 Zapier 連結](common/all-applications.png)
+   !["應用程式"清單中的紮皮爾連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選擇 **"預配"** 選項卡。
 
-   ![布建索引標籤](common/provisioning.png)
+   ![預配選項卡](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將**預配模式**設置為 **"自動**"。
 
-   ![布建索引標籤](common/provisioning-automatic.png)
+   ![預配選項卡](common/provisioning-automatic.png)
 
-5. 在 [**管理員認證**] 區段下，輸入您的 Zapier**租使用者 URL**和**密碼權杖**。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Zapier。 如果連線失敗，請確定您的 Zapier 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 **"管理員憑據"** 部分下，輸入您的 Zapier**租戶 URL**和**秘密權杖**。 按一下 **"測試連接**"以確保 Azure AD 可以連接到紮皮爾。 如果連接失敗，請確保您的 Zapier 帳戶具有管理員許可權，然後重試。
 
    ![佈建](./media/zapier-provisioning-tutorial/provisioning.png)
 
-6. 在 [**通知電子郵件**] 欄位中，輸入應收到布建錯誤通知之個人或群組的電子郵件地址，然後選取 [**發生失敗時傳送電子郵件通知**] 核取方塊。
+6. 在 **"通知電子郵件"** 欄位中，輸入應接收預配錯誤通知的個人或組的電子郵件地址，然後選中"**在發生故障時發送電子郵件通知**"核取方塊。
 
    ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 選取 [儲存]。
+7. 選取 [儲存]****。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Zapier**]。
+8. 在 **"映射"** 部分下，選擇**將 Azure 活動目錄使用者同步到紮皮爾**。
 
-9. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Zapier 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zapier 中的使用者帳戶，以進行更新作業。 如果您選擇變更相符的[目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，就必須確定 Zapier API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+9. 在**屬性對應**部分中查看從 Azure AD 同步到 Zapier 的使用者屬性。 選擇為 **"匹配屬性"** 的屬性用於匹配 Zapier 中的使用者帳戶以進行更新操作。 如果選擇更改[匹配的目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則需要確保 Zapier API 支援基於該屬性篩選使用者。 選取 [儲存]**** 按鈕以認可所有變更。
 
    |變數|類型|
    |---|---|
@@ -120,42 +120,42 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
    |name.familyName|String|
    |emails[type eq "work"].value|String|
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Zapier**]。
+10. 在 **"映射"** 部分下，選擇**將 Azure 活動目錄組同步到紮皮爾**。
 
-11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Zapier 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Zapier 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+11. 在**屬性對應**部分中查看從 Azure AD 同步到 Zapier 的組屬性。 選擇為 **"匹配屬性"** 的屬性用於匹配 Zapier 中的組以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
 
     |變數|類型|
     |---|---|
     |displayName|String|
-    |members|參考|
+    |members|參考資料|
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 Zapier 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
+13. 要為 Zapier 啟用 Azure AD 預配服務，在 **"設置"** 部分將**預配狀態**更改為 **"打開**"。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Zapier 的使用者和/或群組。
+14. 通過在 **"設置"** 部分中選擇"**範圍"** 中所需的值，定義要預配到 Zapier 的使用者和/或組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]。
+15. 當您準備好要佈建時，按一下 [儲存]****。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者和群組的初始同步處理迴圈。 初始週期比後續迴圈花費更多時間執行，只要 Azure AD 布建服務正在執行，這大約每40分鐘就會發生一次。 
+此操作將開始 **"設置"** 部分中 **"範圍**"中定義的所有使用者和組的初始同步週期。 初始週期執行的時間比後續週期長，只要 Azure AD 預配服務運行，則大約每 40 分鐘執行一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
-設定布建之後，請使用下列資源來監視您的部署：
+配置預配後，請使用以下資源監視部署：
 
-- 使用布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已成功布建或失敗
-- 檢查[進度](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)列以查看布建週期的狀態，以及關閉其完成的方式
-- 如果布建設定似乎處於狀況不良的狀態，應用程式將會進入隔離。 [在這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入瞭解隔離狀態。
+- 使用[預配日誌](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)確定已成功預配或未成功預配哪些使用者
+- 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)以查看預配週期的狀態以及預配週期與完成有多近
+- 如果預配配置似乎處於不正常狀態，則應用程式將進入隔離狀態。 在此處瞭解有關隔離狀態的更多[。](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用的使用者帳戶預配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

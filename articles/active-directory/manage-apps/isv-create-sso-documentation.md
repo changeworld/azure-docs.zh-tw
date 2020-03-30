@@ -1,6 +1,6 @@
 ---
-title: 建立 & 發行應用程式的單一登入檔
-description: 獨立軟體廠商與 Azure Active Directory 整合的指引
+title: 創建&發佈應用程式的單一登入文檔
+description: 獨立軟體廠商與 Azure 活動目錄集成指南
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,19 +13,19 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232276"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>建立及發佈應用程式的單一登入檔   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>為應用程式創建和發佈單一登入文檔   
 
-## <a name="documentation-on-your-site"></a>網站上的檔
+## <a name="documentation-on-your-site"></a>網站上的文檔
 
-簡化採用是企業軟體決策中的重要因素。 清楚易懂的檔可支援您的客戶採用旅程，並降低支援成本。 與數以千計的軟體廠商合作，Microsoft 看過哪些功能可以運作。
+易於採用是企業軟體決策的重要因素。 清晰的易於遵循的文檔可支援客戶的採用過程，並降低支援成本。 通過與成千上萬的軟體供應商合作，微軟已經看到了哪些是有效的。
 
-我們建議您的網站最少包含下列專案的檔。
+我們建議您在網站上的文檔至少包含以下專案。
 
 * SSO 功能簡介
 
@@ -33,32 +33,32 @@ ms.locfileid: "74232276"
 
   * 版本和 SKU
 
-  * 支援的身分識別提供者清單與檔連結
+  * 支援的身份提供程式清單，包含文檔連結
 
-* 應用程式的授權資訊
+* 應用程式的許可資訊
 
-* 以角色為基礎的存取控制，用於設定 SSO
+* 用於配置 SSO 的基於角色的存取控制
 
-* SSO 設定步驟
+* SSO 配置步驟
 
-  * 具有提供者所需值之 SAML 的 UI 設定元素
+  * SAML 的 UI 配置元素，具有來自提供程式的預期值
 
-  * 要傳遞給識別提供者的服務提供者資訊
+  * 要傳遞給標識提供程式的服務提供者資訊
 
 * 如果 OIDC/OAuth
 
-  * 同意商業理由所需的許可權清單
+  * 具有業務理由同意所需的許可權清單
 
 * 試驗使用者的測試步驟
 
-* 疑難排解資訊，包括錯誤代碼和訊息
+* 故障排除資訊，包括錯誤代碼和消息
 
-* 客戶的支援機制
+* 支援客戶機制
 
-## <a name="documentation-on-the-microsoft-site"></a>Microsoft 網站上的檔
+## <a name="documentation-on-the-microsoft-site"></a>微軟網站上的文檔
 
-當您使用 Azure Active Directory 應用程式庫列出您的應用程式時，這也會在 Azure Marketplace 中發佈您的應用程式，Microsoft 會為我們的相互客戶產生檔，以說明逐步流程。 您可以在[這裡](https://aka.ms/appstutorial)看到範例。 本檔是根據您提交至資源庫而建立的，如果您使用 GitHub 帳戶對應用程式進行變更，就可以輕鬆地更新。
+當您使用 Azure 活動目錄應用程式庫（在 Azure 應用商店中發佈應用程式）列出應用程式時，Microsoft 將為我們共同的客戶生成文檔，解釋分步過程。 你可以[在這裡](https://aka.ms/appstutorial)看到一個例子。 本文檔是根據您提交到庫而創建的，如果您使用 GitHub 帳戶對應用程式進行更改，則可以輕鬆地更新它。
 
 ## <a name="next-steps"></a>後續步驟
 
-[在 Azure AD 應用程式庫中列出您的應用程式](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[在 Azure AD 應用程式庫中列出應用程式](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

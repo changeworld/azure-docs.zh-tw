@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 案例中的租用戶、角色和使用者
 description: 了解 Azure Active Directory 租用戶、使用者和角色的概念，以及如何在 Azure Lighthouse 案例中使用它們。
-ms.date: 01/16/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7540e17fd80f9a1d8e996295000c126614b838d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156330"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246886"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租用戶、角色和使用者
 
@@ -31,7 +31,7 @@ Azure 委派的資源管理目前支援所有[內建角色](../../role-based-acc
 - 支援[使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)內建角色，但僅限於[將角色指派給客戶租用戶中的受控識別](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)。 將不適用此角色通常授與的其他任何權限。 如果您定義具有此角色的使用者，您也必須指定此使用者可以指派給受控識別的內建角色。
 
 > [!NOTE]
-> 一旦將適用的新內建角色新增至 Azure 之後，您就可以在[使用 Azure Resource Manager 範本將客戶](../how-to/onboard-customer.md)上線時加以指派。 在[發佈受管理的服務供應](../how-to/publish-managed-services-offers.md)專案的 Cloud Partner 入口網站中，可能會有一段延遲時間，新加入的角色才會變成可用。
+> 將適用的新內置角色添加到 Azure 後，可以使用[Azure 資源管理器範本在客戶入職](../how-to/onboard-customer.md)時為其分配該角色。 [發佈託管服務產品/](../how-to/publish-managed-services-offers.md)服務產品時，新添加的角色在雲合作夥伴門戶中可用之前可能會出現延遲。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定義使用者和角色的最佳做法
 
@@ -41,6 +41,9 @@ Azure 委派的資源管理目前支援所有[內建角色](../../role-based-acc
 - 請務必遵循最少特殊權限準則，讓使用者只具備完成其工作所需的權限，以協助減少發生意外錯誤的機會。 如需詳細資訊，請參閱[建議的安全性作法](../concepts/recommended-security-practices.md)。
 - 包含具有[受控服務註冊指派刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的使用者，讓您可以在稍後，視需要[移除對委派的存取權](../how-to/onboard-customer.md#remove-access-to-a-delegation)。 如果未指派此角色，則只有客戶租用戶中的使用者可以移除委派的資源。
 - 請確定需要[在 Azure 入口網站檢視 [我的客戶] 頁面](../how-to/view-manage-customers.md)的任何使用者都具有[讀取者](../../role-based-access-control/built-in-roles.md#reader)角色 (或包含讀取者存取權的其他內建角色)。
+
+> [!IMPORTANT]
+> 為了添加 Azure AD 組的許可權，**組類型**必須是 **"安全"，** 而不是**Office 365**。 創建組時選擇此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

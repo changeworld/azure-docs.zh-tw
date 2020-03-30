@@ -9,10 +9,10 @@ ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5dccdb6c357635e78b076b1560bf6c0c62c03753
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77135054"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支援的散發套件和驅動程式
@@ -26,15 +26,15 @@ ms.locfileid: "77135054"
 
 | 散發 | 驅動程式 |
 | --- | -- | 
-| Ubuntu 16.04 LTS、18.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3、7.4、7.5、7.6<br/><br/> CentOS 型 7.3、7.4、7.5、7.6、CentOS 型 7.4 HPC | NVIDIA CUDA 10.1，驅動程式分支 R418 |
+| Ubuntu 16.04 LTS、18.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3、7.4、7.5、7.6<br/><br/> CentOS 型 7.3、7.4、7.5、7.6、CentOS 型 7.4 HPC | NVIDIA CUDA 10.1，磁碟機分支 R418 |
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID 驅動程式
 
-Microsoft 會將適用于 NV 和 NVv3 系列 Vm 的 NVIDIA GRID 驅動程式安裝程式重新散發為虛擬工作站或虛擬應用程式。 請僅將這些 GRID 驅動程式安裝在 Azure NV 虛擬機器上，且僅安裝在下表所列的作業系統上。 這些驅動程式包含在 Azure 的 GRID 虛擬 GPU 軟體的授權中。 您不需要設定 NVIDIA vGPU 軟體授權伺服器。
+Microsoft 為用作虛擬工作站或虛擬應用程式的 NV 和 NVv3 系列 VM 重新分發 NVIDIA GRID 驅動程式安裝程式。 請僅將這些 GRID 驅動程式安裝在 Azure NV 虛擬機器上，且僅安裝在下表所列的作業系統上。 這些驅動程式包含在 Azure 的 GRID 虛擬 GPU 軟體的授權中。 您不需要設定 NVIDIA vGPU 軟體授權伺服器。
 
 | 散發 | 驅動程式 |
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.0 到7。6<br/><br/>CentOS 為基礎的7.0 到7。6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 10.1，驅動程式分支 R440|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>紅帽企業 Linux 7.0 到 7.6<br/><br/>基於 CentOS 的 7.0 到 7.6<br/><br/>SUSE Linux 企業伺服器 12 SP2 | NVIDIA 網格 10.1，驅動程式分支 R440|
 
 > [!WARNING] 
 > 在 Red Hat 產品上安裝第三方軟體可能會影響 Red Hat 支援條款。 請參閱 [Red Hat 知識庫文件 (英文)](https://access.redhat.com/articles/1067)。

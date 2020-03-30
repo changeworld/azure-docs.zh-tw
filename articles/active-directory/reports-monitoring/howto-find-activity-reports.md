@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 入口網站中尋找使用者活動報告 |Microsoft Docs
+title: 在 Azure 門戶中查找使用者活動報告 |微軟文檔
 description: 了解 Azure Active Directory 使用者活動報告在 Azure 入口網站中的位置。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008220"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 入口網站中尋找活動報告
@@ -29,9 +29,9 @@ ms.locfileid: "74008220"
 
 稽核記錄報告會將應用程式活動的多個相關報告結合到單一檢視中，以取得有相關內容可參考的報告。 若要存取稽核記錄報告：
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 從右上角選取您的目錄，然後從左側導覽窗格中選取 [Azure Active Directory] 刀鋒視窗。
-3. 您可以從 [Azure Active Directory] 刀鋒視窗的 [活動] 區段中選取 [稽核記錄]。 
+1. 導航到[Azure 門戶](https://portal.azure.com)。
+2. 從右上角選取您的目錄，然後從左側導覽窗格中選取 [Azure Active Directory]**** 刀鋒視窗。
+3. 您可以從 [Azure Active Directory] 刀鋒視窗的 [活動]**** 區段中選取 [稽核記錄]****。 
 
     ![稽核記錄](./media/howto-find-activity-reports/482.png "稽核記錄")
 
@@ -48,9 +48,9 @@ ms.locfileid: "74008220"
 
 ### <a name="filtering-on-audit-logs"></a>篩選稽核記錄
 
-您可以在 [審查] 報告中使用 [advanced filter] 來存取特定類別的 audit data，方法是在 [**類別目錄**] 篩選準則中指定它。 例如，若要查看所有與使用者相關的活動，請選取 [ **usermanagement program.cs** ] 類別。 
+通過在 **"類別"** 篩選器中指定審核資料，可以在審核報告中使用高級篩選來訪問特定類別的審核資料。 例如，要查看與使用者相關的所有活動，請選擇 **"使用者管理**"類別。 
 
-分類包括：
+類別包括：
 
 - 全部
 - AdministrativeUnit
@@ -60,18 +60,18 @@ ms.locfileid: "74008220"
 - 連絡人
 - 裝置
 - DeviceConfiguration
-- DirectoryManagement
-- EntitlementManagement
-- GroupManagement
+- 目錄管理
+- 權利管理
+- 集團管理
 - 其他
 - 原則
-- ResourceManagement
-- RoleManagement
-- Usermanagement program.cs
+- 資源管理
+- 角色管理
+- 使用者管理
 
-您也可以使用 [**服務**] 下拉式清單篩選器來篩選特定的服務。 例如，若要取得與自助式密碼管理相關的所有 audit 事件，請選取 [**自助式密碼管理**] 篩選準則。
+您還可以使用服務下拉清單篩選特定**服務**。 例如，要獲取與自助服務密碼管理相關的所有審核事件，請選擇**自助服務密碼管理**篩選器。
 
-各項服務包括：
+服務包括：
 
 - 全部
 - 存取權檢閱
@@ -91,33 +91,33 @@ ms.locfileid: "74008220"
 
 ## <a name="sign-ins-report"></a>登入報告 
 
-**登入**檢視包含所有使用者登入，以及**應用程式使用量**報告。 您也可以在 [企業應用程式] 概觀的 [管理] 區段中檢視應用程式使用量資訊。
+**登入**檢視包含所有使用者登入，以及**應用程式使用量**報告。 您也可以在 [企業應用程式]**** 概觀的 [管理]**** 區段中檢視應用程式使用量資訊。
 
 若要存取登入報告：
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 從右上角選取您的目錄，然後從左側導覽窗格中選取 [Azure Active Directory] 刀鋒視窗。
-3. 您可以從 [Azure Active Directory] 刀鋒視窗的 [活動] 區段中選取 [Signins]。 
+1. 導航到[Azure 門戶](https://portal.azure.com)。
+2. 從右上角選取您的目錄，然後從左側導覽窗格中選取 [Azure Active Directory]**** 刀鋒視窗。
+3. 您可以從 [Azure Active Directory] 刀鋒視窗的 [活動]**** 區段中選取 [Signins]****。 
 
-    ![登入視圖](./media/howto-find-activity-reports/483.png "登入視圖")
+    ![登錄視圖](./media/howto-find-activity-reports/483.png "登錄視圖")
 
 
 ### <a name="filtering-on-application-name"></a>篩選應用程式名稱
 
 您可以使用登入報告來檢視應用程式使用量的相關詳細資料，只要篩選使用者名稱或應用程式名稱即可。
 
-![篩選登入事件頁面](./media/howto-find-activity-reports/07.png "篩選登入事件頁面")
+![篩選登錄事件頁面](./media/howto-find-activity-reports/07.png "篩選登錄事件頁面")
 
 ## <a name="security-reports"></a>安全性報告
 
 ### <a name="anomalous-activity-reports"></a>異常活動報告
 
-異常活動報告提供 Azure AD 可以偵測和報告的安全性相關風險偵測資訊。
+異常活動報告提供有關 Azure AD 可以檢測和報告的安全相關風險檢測的資訊。
 
-下表列出 Azure 入口網站中的 Azure AD 異常活動安全性報告，以及對應的風險偵測類型。 如需詳細資訊，請參閱 [Azure Active Directory 風險偵測](concept-risk-events.md)。  
+下表列出了 Azure AD 異常活動安全報告以及 Azure 門戶中相應的風險檢測類型。 如需詳細資訊，請參閱 [Azure Active Directory 風險偵測](concept-risk-events.md)。  
 
 
-| Azure AD 異常活動報告 |  身分識別保護風險偵測類型|
+| Azure AD 異常活動報告 |  身份保護風險檢測類型|
 | :--- | :--- |
 | 認證外洩的使用者 | 認證外洩 |
 | 異常的登入活動 | 不可能到達非典型位置的移動 |
@@ -126,26 +126,26 @@ ms.locfileid: "74008220"
 | 從具有可疑活動的 IP 位址登入 | 從具有可疑活動的 IP 位址登入 |
 | - | 從不熟悉的位置登入 |
 
-下列 Azure AD 異常活動安全性報告並未包含在 Azure 入口網站的風險偵測中：
+以下 Azure AD 異常活動安全報告不包括為 Azure 門戶中的風險檢測：
 
 * 在多次失敗後登入
 * 從多個地理區域登入
 
 
-### <a name="detected-risk-detections"></a>偵測到的風險偵測
+### <a name="detected-risk-detections"></a>檢測到的風險檢測
 
-您可以在[Azure 入口網站](https://portal.azure.com)的 [ **Azure Active Directory** ] 分頁的 [**安全性**] 區段中，存取偵測到之風險偵測的相關報告。 偵測到的風險偵測會在下列報告中進行追蹤：   
+您可以在[Azure 門戶](https://portal.azure.com)中的**Azure 活動目錄**邊欄選項卡**的安全**部分中訪問有關檢測到的風險檢測的報告。 檢測到的風險檢測在以下報告中跟蹤：   
 
 - [有風險的使用者](concept-user-at-risk.md)
-- [有風險的登入](concept-risky-sign-ins.md)
+- [風險登錄](concept-risky-sign-ins.md)
 
-    ![安全性報告](./media/howto-find-activity-reports/04.png "安全性報告")
+    ![安全報告](./media/howto-find-activity-reports/04.png "安全性報告")
 
 ## <a name="troubleshoot-issues-with-activity-reports"></a>使用活動報告來進行問題疑難排解
 
 ### <a name="missing-data-in-the-downloaded-activity-logs"></a>已下載的活動記錄中遺漏資料
 
-#### <a name="symptoms"></a>徵兆 
+#### <a name="symptoms"></a>徵狀 
 
 我已下載活動記錄 (稽核或登入)，卻沒看到我所選擇時間的所有記錄。 原因為何？ 
 
@@ -153,7 +153,7 @@ ms.locfileid: "74008220"
  
 #### <a name="cause"></a>原因
 
-當您下載 Azure 入口網站中的活動記錄時，我們會將縮放比例限制為250000筆記錄（依最新的第一個排序）。 
+在 Azure 門戶中下載活動日誌時，我們將縮放限制為 250000 條記錄，按最近第一條排序。 
 
 #### <a name="resolution"></a>解決方案
 
@@ -161,7 +161,7 @@ ms.locfileid: "74008220"
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure 入口網站中遺漏最近動作的稽核記錄
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 我在 Azure 入口網站中執行某些動作，並預期要在 `Activity logs > Audit Logs` 刀鋒視窗中查看這些動作的稽核記錄，但卻找不到。
 
@@ -171,7 +171,7 @@ ms.locfileid: "74008220"
 
 動作不會立即出現在活動記錄中。 下表列舉出我們活動記錄的延遲數據。 
 
-| 報告 | &nbsp; | 延遲 (P95) | 延遲 (P99) |
+| Report | &nbsp; | 延遲 (P95) | 延遲 (P99) |
 |--------|--------|---------------|---------------|
 | 目錄稽核 | &nbsp; | 2 分鐘 | 5 分鐘 |
 | 登入活動 | &nbsp; | 2 分鐘 | 5 分鐘 | 
@@ -182,7 +182,7 @@ ms.locfileid: "74008220"
 
 ### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Azure AD 登入活動記錄中遺漏最近使用者登入的記錄
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 我最近曾登入 Azure 入口網站，而預期應會在 `Activity logs > Sign-ins` 刀鋒視窗中看到這些動作的登入記錄，但卻找不到。
 
@@ -192,7 +192,7 @@ ms.locfileid: "74008220"
 
 動作不會立即出現在活動記錄中。 下表列舉出我們活動記錄的延遲數據。 
 
-| 報告 | &nbsp; | 延遲 (P95) | 延遲 (P99) |
+| Report | &nbsp; | 延遲 (P95) | 延遲 (P99) |
 |--------|--------|---------------|---------------|
 | 目錄稽核 | &nbsp; | 2 分鐘 | 5 分鐘 |
 | 登入活動 | &nbsp; | 2 分鐘 | 5 分鐘 | 
@@ -203,7 +203,7 @@ ms.locfileid: "74008220"
 
 ### <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>我無法在 Azure 入口網站中檢視超過 30 天的報告資料
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="symptoms"></a>徵狀
 
 我無法從 Azure 入口網站檢視超過 30 天的登入和稽核資料。 原因為何？ 
 
@@ -213,7 +213,7 @@ ms.locfileid: "74008220"
 
 視您的授權而定，Azure Active Directory 動作會儲存下列期間的活動報告︰
 
-| 報告           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| Report           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
 | 目錄稽核  | &nbsp; |   7 天     | 30 天             | 30 天             |
 | 登入活動 | &nbsp; | 無法使用。 您可以從個別使用者設定檔刀鋒視窗中存取您自己 7 天內的登入資料 | 30 天 | 30 天             |

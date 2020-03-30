@@ -1,5 +1,5 @@
 ---
-title: 資料移轉：內部部署 Apache Hadoop 至 Azure HDInsight
+title: 資料移轉：本地 Apache Hadoop 到 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集移轉到 Azure HDInsight 的資料移轉最佳做法。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665996"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>將內部部署 Apache Hadoop 叢集移轉到 Azure HDInsight - 資料移轉最佳做法
@@ -24,26 +24,26 @@ ms.locfileid: "74665996"
 若要將資料從內部部署移轉到 Azure 環境，有兩個主要選項：
 
 * 使用 TLS 透過網路傳輸資料
-    * 透過網際網路 - 您可以使用其中一項工具 (例如 Azure 儲存體總管、AzCopy、Azure Powershell 和 Azure CLI) 來透過一般的網際網路連線，將資料傳輸到 Azure 儲存體。 如需詳細資訊，請參閱[將資料移入和移出 Azure 儲存體](../../storage/common/storage-moving-data.md)。
+    * 透過網際網路 - 您可以使用其中一項工具 (例如 Azure 儲存體總管、AzCopy、Azure Powershell 和 Azure CLI) 來透過一般的網際網路連線，將資料傳輸到 Azure 儲存體。 有關詳細資訊，請參閱[將資料移離 Azure 存儲](../../storage/common/storage-moving-data.md)。
 
-    * ExpressRoute - Express Route 是一項 Azure 服務，可讓您在 Microsoft 資料中心和內部部署或共置設施中的基礎結構之間建立私人連線。 ExpressRoute 連線不會經過公用網際網路，相較于透過網際網路一般連線的延遲，提供更高的安全性、可靠性和速度。 如需詳細資訊，請參閱[建立和修改 ExpressRoute 線路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
+    * ExpressRoute - Express Route 是一項 Azure 服務，可讓您在 Microsoft 資料中心和內部部署或共置設施中的基礎結構之間建立私人連線。 ExpressRoute 連接不會通過公共 Internet，並且提供更高的安全性、可靠性和速度，其延遲率低於 Internet 上的典型連接。 如需詳細資訊，請參閱[建立和修改 ExpressRoute 線路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
 
     * Data Box 線上資料傳輸 - Data Box Edge 與 Data Box Gateway 是線上資料轉送產品，等同於在您的網站與 Azure 之間管理資料的網路儲存體閘道。 Data Box Edge 是內部部署網路裝置，與 Azure 來回轉送資料，並使用具備人工智慧 (AI) 的邊緣計算來處理資料。 Data Box Gateway 是具備儲存體閘道功能的虛擬設備。 如需詳細資訊，請參閱 [Azure 資料箱文件 - 線上傳輸](https://docs.microsoft.com/azure/databox-online/)。
 
 * 離線寄送資料
 
-    資料箱離線資料傳輸 - 資料箱、資料箱磁碟和 Data Box Heavy 裝置可協助您在網路無法使用時，將大量資料傳輸至 Azure。 這些離線資料轉送裝置會在您的組織與 Azure 資料中心之間運送。 裝置使用 AES 加密來協助保護傳輸中的資料，而且會在上傳後經過徹底的清理過程，以從裝置中刪除您的資料。 如需資料箱離線傳輸裝置的詳細資訊，請參閱[Azure 資料箱檔-離線傳輸](https://docs.microsoft.com/azure/databox/)。 如需有關遷移 Hadoop 叢集的詳細資訊，請參閱[使用 Azure 資料箱從內部部署 HDFS 存放區遷移至 Azure 儲存體](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
+    資料箱離線資料傳輸 - 資料箱、資料箱磁碟和 Data Box Heavy 裝置可協助您在網路無法使用時，將大量資料傳輸至 Azure。 這些離線資料轉送裝置會在您的組織與 Azure 資料中心之間運送。 裝置使用 AES 加密來協助保護傳輸中的資料，而且會在上傳後經過徹底的清理過程，以從裝置中刪除您的資料。 有關資料盒離線傳輸設備的詳細資訊，請參閱 Azure[資料框文檔 - 離線傳輸](https://docs.microsoft.com/azure/databox/)。 有關 Hadoop 群集遷移的詳細資訊，請參閱[使用 Azure 資料框從本地 HDFS 存儲遷移到 Azure 存儲](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
 
 下表根據資料磁碟區和網路頻寬提供粗略的資料傳輸持續時間。 若資料移轉預計要花費超過三週的時間，請使用資料箱。
 
 |資料數量|網路頻寬||||
 |---|---|---|---|---|
 || **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
-|1 TB|2 天|1 天| 2 小時|14 分鐘|
-|10 TB|22 天|10 天|1 天|2 小時|
+|1 TB|2 天|1 日| 2 小時|14 分鐘|
+|10 TB|22 天|10 天|1 日|2 小時|
 |35 TB|76 天|34 天|3 天|8 小時|
 |80 TB|173 天|78 天|8 天|19 小時|
-|100 TB|216 天|97 天|10 天|1 天|
+|100 TB|216 天|97 天|10 天|1 日|
 |200 TB|1 年|194 天|19 天|2 天|
 |500 TB|3 年|1 年|49 天|5 天|
 |1 PB|6 年|3 年|97 天|10 天|
@@ -59,7 +59,7 @@ DistCp 是使用 MapReduce 對應作業的 Apache 專案，可以傳輸資料、
 
 DistCp 會嘗試建立對應工作，讓每個對應工作大致上可複製相同的位元組數。 根據預設，DistCp 作業會使用 20 個對應程式。 使用更多的 Distcp 對應程式 (在命令列中搭配 'm' 參數) 會增加資料傳輸程序期間的平行處理原則，並減少資料傳輸的長度。 不過，在增加對應程式數目時，有兩件事要列入考量：
 
-* DistCp 的最低資料粒度是單一檔案。 指定超出來源檔案數目的對應程式並不會有説明，而且會浪費可用的叢集資源。
+* DistCp 的最低資料粒度是單一檔案。 指定多個 Mappers 多於原始檔案的數量沒有説明，並且會浪費可用的群集資源。
 
 * 請考慮叢集上可用的 YARN 記憶體，來決定對應程式的數目。 每個對應工作會啟動為 YARN 容器。 假設叢集上沒有執行其他繁重的工作負載，對應程式的數目可以下列公式來決定：m = (背景工作角色節點數目 \* 每個背景工作角色的 YARN 記憶體) / YARN 容器大小。 不過，如果有其他應用程式在使用記憶體，則選擇讓 DistCp 作業只使用一部分 YARN 記憶體。
 
@@ -95,7 +95,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 #### <a name="hive-metastore-migration-using-scripts"></a>使用指令碼移轉 Hive 中繼存放區
 
-1. 從內部部署 Hive 中繼存放區產生 Hive Ddl。 此步驟可使用[包裝函式 Bash 指令碼](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md) \(英文\) 來完成。
+1. 從本地 Hive 元存儲生成 Hive DDL。 此步驟可使用[包裝函式 Bash 指令碼](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md) \(英文\) 來完成。
 1. 編輯產生的 DDL，使用 WASB/ADLS/ABFS URL 來取代 HDFS URL。
 1. 從 HDInsight 叢集的中繼存放區上執行更新的 DDL。
 1. 確定 Hive 中繼存放區版本在內部部署和雲端之間都相容。
@@ -112,7 +112,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - 將內部部署 Ranger 原則匯出至 XML 檔案。
-- 使用 XSLT 之類的工具，將內部部署特定 HDFS 路徑轉換為 WASB/ADLS。
+- 使用 XSLT 等工具將基於本地的基於 HDFS 的路徑轉換為 WASB/ADLS。
 - 將原則匯入在 HDInsight 上執行的 Ranger。
 
 ## <a name="next-steps"></a>後續步驟

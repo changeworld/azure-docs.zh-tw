@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 07502b4c4487a7517e2fe73b62eae0a237a6f22b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883278"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 金鑰保存庫 .NET 2.0 - 版本資訊和移轉指南
@@ -48,23 +48,23 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 * *Secret* 已變更為 *SecretBundle*
 * *Dictionary* 已變更為 *IDictionary*
-* *List\<t >，string []* 已變更*為\<IList T >*
+* *清單\<T>，字串 ** 更改為*\<IList T>*
 * *NextList* 已變更為 *NextPageLink*
 
 ## <a name="return-types"></a>傳回類型
 
-* **KeyList**和**SecretList**現在會*傳回\<IPage T >* , 而不是*非 listkeysresponsemessage*
-* 產生的 **BackupKeyAsync** 現在會傳回 BackupKeyResult，其包含 Value (備份 Blob)。 此方法在過去會進行包裝並只傳回值。
+* **金鑰清單**和**金鑰清單**現在返回*IPage\<T>* 而不是*清單金鑰回應訊息*
+* 產生的 **BackupKeyAsync** 現在會傳回 BackupKeyResult**，其包含 Value** (備份 Blob)。 此方法在過去會進行包裝並只傳回值。
 
 ## <a name="exceptions"></a>例外狀況
 
 * *KeyVaultClientException* 變更為 *KeyVaultErrorException*
-* 服務錯誤已從 exception.Error 變更為 exception.Body.Error.Message。
+* 服務錯誤已從 exception.Error** 變更為 exception.Body.Error.Message**。
 * 已移除 **[JsonExtensionData]** 的錯誤訊息中的其他資訊。
 
 ## <a name="constructors"></a>建構函式
 
-* 建構函式只會接受 *HttpClientHandler* 或 *DelegatingHandler[]* ，而不是接受 *HttpClient* 做為建構函式引數。
+* 建構函式只會接受 *HttpClientHandler* 或 *DelegatingHandler[]*，而不是接受 *HttpClient* 做為建構函式引數。
 
 ## <a name="downloaded-packages"></a>下載的套件
 
@@ -89,8 +89,8 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 ## <a name="class-changes"></a>類別變更
 
-* 已移除 **UnixEpoch** 類別。
-* **Base64UrlConverter** 類別已重新命名為 **Base64UrlJsonConverter**。
+* **UnixEpoch**類已被刪除。
+* **Base64Url轉換器**類被重命名為**Base64UrlJsonConverter。**
 
 ## <a name="other-changes"></a>其他變更
 
@@ -98,7 +98,7 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* 針對傳回 vault 的作業，傳回類型是包含 **Vault** 屬性的類別。 傳回類型現在是 *Vault*。
+* 對於返回*保存庫*的操作，返回類型是包含**保存庫**屬性的類。 傳回類型現在是 *Vault*。
 * *PermissionsToKeys* 和 *PermissionsToSecrets* 現在是 *Permissions.Keys* 和 *Permissions.Secrets*
 * 某些傳回類型變更也會套用至控制平面。
 

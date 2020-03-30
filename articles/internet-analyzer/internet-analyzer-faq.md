@@ -1,6 +1,6 @@
 ---
-title: Internet Analyzer 常見問題 |Microsoft Docs
-description: Azure Internet Analyzer 的常見問題。
+title: 互聯網分析器常見問題 |微軟文檔
+description: Azure Internet 分析器的常見問題解答。
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,62 +8,62 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184261"
 ---
-# <a name="azure-internet-analyzer-faq-preview"></a>Azure 網際網路分析器常見問題（預覽）
+# <a name="azure-internet-analyzer-faq-preview"></a>Azure 互聯網分析器常見問題解答（預覽版）
 
-這是 Azure Internet Analyzer 的常見問題-如果您有其他問題，請前往意見反應[論壇](https://aka.ms/internetAnalyzerFeedbackForum)並張貼您的問題。 當問題經常被詢問時，我們會將它新增至本文，讓它可以快速且輕鬆地找到。
+這是 Azure Internet 分析器的常見問題解答 - 如果您有其他問題，請轉到[回饋論壇](https://aka.ms/internetAnalyzerFeedbackForum)併發布您的問題。 當問題經常被問到時，我們會將其添加到本文中，以便快速輕鬆地找到它。
 
 ## <a name="how-do-i-participate-in-the-preview"></a>如何參與預覽？
 
-此預覽可用來選取客戶。 如果您有興趣加入預覽，請執行下列動作：
+預覽版可用於選擇客戶。 如果您有興趣加入預覽版，請執行以下操作：
 
-1. 登入 [Azure 入口網站](https://ms.portal.azure.com)。
-2. 流覽至 [**訂閱**] 頁面。
-3. 按一下您打算搭配使用「網際網路分析器」的 Azure 訂用帳戶。
-4. 移至訂用帳戶的**資源提供者**設定。
-5. 搜尋 [ **Microsoft 網路**]，然後按一下 [**註冊**] \ （或 [**重新註冊**]）按鈕。
-![存取要求](./media/ia-faq/request-preview-access.png)
+1. 登錄到 Azure[門戶](https://ms.portal.azure.com)。
+2. 導航到 **"訂閱"** 頁。
+3. 按一下計畫使用 Internet 分析器的 Azure 訂閱。
+4. 轉到**訂閱的資來源提供者**設置。
+5. 搜索**Microsoft.Network**並按一下 **"註冊**（或**重新註冊**）"按鈕。
+![訪問請求](./media/ia-faq/request-preview-access.png)
 
-6. 為我們提供您的電子郵件地址和用來提出存取要求的 Azure 訂用帳戶識別碼，以[要求核准](https://aka.ms/internetAnalyzerContact)。
-7. 一旦您的要求獲得核准，您就會收到一封電子郵件確認，而且將能夠從新允許的 Azure 訂用帳戶建立/更新/修改網際網路分析器資源。
+6. 通過向我們提供您的電子郵件地址和用於發出訪問請求的 Azure 訂閱 ID[來請求批准](https://aka.ms/internetAnalyzerContact)。
+7. 請求獲得批准後，您將收到一封電子郵件確認，並能夠從新允許的 Azure 訂閱創建/更新/修改 Internet 分析器資源。
 
-## <a name="do-i-need-to-embed-the-client-to-run-a-test"></a>我是否需要內嵌用戶端來執行測試？
+## <a name="do-i-need-to-embed-the-client-to-run-a-test"></a>我需要嵌入用戶端來運行測試嗎？
 
-是，您必須在應用程式中安裝網際網路分析器用戶端，以收集您的使用者特有的計量。 [瞭解如何安裝用戶端。](internet-analyzer-embed-client.md) 
+是的，必須在應用程式中安裝 Internet 分析器用戶端來收集特定于使用者的指標。 [瞭解如何安裝用戶端。](internet-analyzer-embed-client.md) 
 
-## <a name="do-i-get-billed-for-participating-in-the-preview"></a>參與預覽需要付費嗎？
-否，Azure 網際網路分析器可在預覽中免費使用。 在預覽期間，沒有任何服務等級協定。
+## <a name="do-i-get-billed-for-participating-in-the-preview"></a>我參加預覽會需要收費嗎？
+否，Azure Internet 分析器可免費在預覽版中使用。 預覽期間沒有服務等級協定。
 
-## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>什麼是 Internet Analyzer 設計用來處理的案例？
+## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>互聯網分析器設計用於解決哪些方案？
 
-Internet Analyzer 的設計目的是要根據您的使用者群體提供網路效能深入解析。 為了協助您為使用者做出最佳的效能決策，Internet Analyzer 會使用您的不同使用者人數來比較兩個網際網路端點的效能。 雖然 Internet Analyzer 可以回答許多問題，但其中一些最常見的問題如下：
+互聯網分析器旨在根據您的使用者群為您提供網路性能見解。 為了説明使用者做出最佳性能決策，Internet Analyzer 使用不同的使用者群比較了兩個 Internet 終結點的性能。 雖然 Internet Analyzer 可以回答許多問題，但其中一些最常見的問題如下：
 
 * 遷移至雲端有何效能影響？ 
-    * *建議的測試：自訂（您目前的內部部署基礎結構）與 Azure （任何預先設定的端點）*
+    * *建議測試：自訂（當前本地基礎結構）與 Azure（任何預配置終結點）*
 * 將資料放在邊緣與放在資料中心有何價值？ 
-    *  *建議的測試： Azure 與 Azure Front 門板、Azure 與來自 Microsoft 的 Azure CDN*
+    *  *建議測試：Azure 與 Azure 前門，Azure 與來自 Microsoft 的 Azure CDN*
 * Azure Front 有何效能優勢？
-    *  *建議的測試：自訂/Azure/CDN 與 Azure Front 門*
+    *  *建議測試：自訂/Azure/CDN 與 Azure 前門*
 * 來自 Microsoft 的 Azure CDN 有何效能優勢？ 
-    *  *建議的測試：自訂/Azure/AFD 與來自 Microsoft 的 Azure CDN*
+    *  *建議測試：自訂/Azure/AFD 與來自 Microsoft 的 Azure CDN*
 * 來自 Microsoft 的 Azure CDN 如何堆疊？ 
-    *  *建議的測試：自訂（其他 CDN 端點）與來自 Microsoft 的 Azure CDN*
+    *  *建議測試：自訂（其他 CDN 終結點）與來自 Microsoft 的 Azure CDN*
 * 在每個區域中何種雲端最適合您的終端使用者群體？ 
-    *  *建議的測試：自訂（其他雲端服務）與 Azure （任何預先設定的端點）*
+    *  *建議測試：自訂（其他雲服務）與 Azure（任何預配置終結點）*
 
-## <a name="which-tests-can-i-run-in-preview"></a>我可以在預覽中執行哪些測試？
+## <a name="which-tests-can-i-run-in-preview"></a>我可以在預覽中運行哪些測試？
 
-您在 Internet Analyzer 中建立的每項測試都是由兩個端點組成：端點 A 和端點 B。下列任何組合都可以當做測試執行：  
-* 兩個預先設定的端點，
-* 一個自訂和一個預先設定的端點，或
-* 兩個[自訂端點](internet-analyzer-custom-endpoint.md)（一個自訂端點必須位於 Azure 中）。
+在 Internet 分析器中創建的每個測試由兩個終結點組成：端點 A 和終結點 B。以下任何組合都可以作為測試回合：  
+* 兩個預配置的終結點，
+* 一個自訂和一個預配置終結點，或
+* 兩個[自訂終結點](internet-analyzer-custom-endpoint.md)（一個自訂終結點必須駐留在 Azure 中）。
 
-預覽期間提供下列預先設定的端點：
+預覽期間提供以下預配置終結點：
 * **Azure 區域**
     * 巴西南部
     * 印度中部
@@ -95,14 +95,14 @@ Internet Analyzer 的設計目的是要根據您的使用者群體提供網路�
 * **Azure 與來自 Microsoft 的 Azure CDN** - 部署於上列任意一個 Azure 區域組合上
 * **Azure 與 Azure 流量管理員** - 部署於上列任意多個 Azure 區域組合上
 
-## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Internet Analyzer 與 Azure 所提供的其他監視服務有何不同？
+## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Internet 分析器與 Azure 提供的其他監視服務有什麼不同？
 
-Internet Analyzer 可協助您瞭解使用者的效能，並協助您制定決策來改善其效能。 雖然其他 Azure 監視工具可讓您深入瞭解您的 Azure 服務，但 Internet Analyzer 著重于測量使用者的端對端網際網路效能。
+互聯網分析器可説明您瞭解最終使用者的性能，並説明您做出決策以提高其性能。 雖然其他 Azure 監視工具提供對 Azure 服務的見解，但 Internet 分析器側重于測量使用者的端到端 Internet 性能。
 
-## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>如何透過 Internet Analyzer 處理測量資料？
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>互聯網分析儀如何處理測量資料？
 
-Azure 有[嚴密的安全性程序，並符合各種法規遵循標準](https://azure.microsoft.com/support/trust-center/)。 只有您和您指定的小組可以存取您的資料。 Microsoft 工作人員只有在您知情的特定有限情況下，才具有其限定存取權。 它會在傳輸中和待用時加密。
+Azure 有[嚴密的安全性程序，並符合各種法規遵循標準](https://azure.microsoft.com/support/trust-center/)。 只有您和您指定的小組可以存取您的資料。 Microsoft 工作人員只有在您知情的特定有限情況下，才具有其限定存取權。 它在傳輸過程中和靜態中加密。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解，請參閱我們的[網際網路分析器總覽](internet-analyzer-overview.md)。
+要瞭解更多資訊，請參閱我們的[互聯網分析器概述](internet-analyzer-overview.md)。

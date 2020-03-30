@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
 ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73495484"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
@@ -48,7 +48,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 例如，假設位在墨西哥的使用者發出要求，然而因對等互連或流量等情況，該要求由位在美國 POP 的伺服器提供服務，則計費區域將會是美國。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>什麼是可計費的 Azure CDN 交易？
-所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
+所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」** 和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」**) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>使用 Azure CDN 會產生其他哪些相關聯的 Azure 成本？
 使用 Azure CDN 時，用來當做物件來源的服務也會產生一些使用量費用。 這些成本通常只佔整體 CDN 使用量成本的一小部分。
@@ -62,7 +62,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - 傳輸量 (GB)：填滿 CDN 快取的資料傳輸量。
 
 > [!NOTE]
-> 從2019年10月開始，如果您使用來自 Microsoft 的 Azure CDN，則從 Azure 裝載的原始來源到 CDN Pop 的資料傳輸成本是免費的。 來自 Verizon 的 azure CDN 和來自 Akamai 的 Azure CDN 受限於以下所述的費率。
+> 從 2019 年 10 月開始，如果您使用 Microsoft 的 Azure CDN，則從 Azure 中託管的源到 CDN POP 的資料傳輸成本是免費的。 來自 Verizon 的 Azure CDN 和 Akamai 的 Azure CDN 受以下描述費率的約束。
 
 如需 Azure 儲存體計費的詳細資訊，請參閱[了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
@@ -87,8 +87,8 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 
 - TTL 影響：物件的 TTL 越高，表示從來源擷取的頻率越低。 這也代表用戶端 (如瀏覽器) 將物件留在快取中的時間較長，因此能減少 CDN 的交易數。
 
-## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些原始服務符合 Microsoft Azure CDN 的免費資料傳輸資格？ 
-如果您使用下列其中一項 Azure 服務作為 CDN 原點，則不會向您收取從來源到 CDN Pop 的資料傳輸費用。 
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服務有資格使用 Microsoft 的 Azure CDN 進行免費資料傳輸？ 
+如果使用以下 Azure 服務之一作為 CDN 源，則從源到 CDN POP 的資料傳輸不會向您收費。 
 
 - Azure 儲存體
 - Azure 媒體服務

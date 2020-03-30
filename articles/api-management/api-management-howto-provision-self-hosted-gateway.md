@@ -1,6 +1,6 @@
 ---
-title: 在 Azure API 管理中布建自我裝載閘道 |Microsoft Docs
-description: 瞭解如何在 Azure API 管理中布建自我裝載的閘道。
+title: 在 Azure API 管理中預配自託管閘道 |微軟文檔
+description: 瞭解如何在 Azure API 管理中預配自託管閘道。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,47 +13,47 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075278"
 ---
-# <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中布建自我裝載閘道
+# <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中預配自託管閘道
 
-在您的 Azure API 管理實例中布建閘道資源是部署自我裝載閘道的先決條件。 本文會逐步解說在 API 管理中布建閘道資源的步驟。
+在 Azure API 管理實例中預配閘道資源是部署自託管閘道的先決條件。 本文介紹在 API 管理中預配閘道資源的步驟。
 
 > [!NOTE]
-> 自我裝載閘道功能目前為預覽狀態。 在預覽期間，自我裝載閘道僅適用于開發人員和進階層，不需要額外付費。 開發人員層僅限於單一自我裝載的閘道部署。
+> 自託管閘道功能處於預覽狀態。 在預覽期間，自託管閘道僅在開發人員和高級層中可用，無需支付額外費用。 開發人員層僅限於單個自託管閘道部署。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
+完成以下快速入門：[創建 Azure API 管理實例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="provision-a-self-hosted-gateway"></a>佈建自我裝載閘道
 
-1. 從 [**設定**] 底下選取**閘道**。
-2. 按一下 [+ 新增]。
-3. 輸入閘道的 [**名稱**] 和 [**區域**]。
+1. 從 **"設置"** 下選擇**閘道**。
+2. 按一下 **" 添加**"。
+3. 輸入閘道**的名稱****和區域**。
 > [!TIP]
-> **區域**指定將與此閘道資源相關聯之閘道節點的預定位置。 它在語義上相當於與任何 Azure 資源相關聯的類似屬性，但可以指派任一字元串值。
+> **區域**指定將與此閘道資源關聯的閘道節點的預期位置。 它在語義上等效于與任何 Azure 資源關聯的類似屬性，但可以分配任一字元串值。
 
-4. （選擇性）輸入閘道資源的**描述**。
-5. （選擇性）選取 [ **api** ] 底下的 **+** ，將一個或多個 api 與此閘道資源建立關聯。
+4. 可選，輸入閘道資源**的描述**。
+5. 可以選擇**+** 在**API**下將一個或多個 API 與此閘道資源相關聯。
 > [!TIP]
-> 您可以在 API 的 [**設定**] 索引標籤上，將 api 關聯至閘道並加以移除。
+> 您可以在 API 的 **"設置"** 選項卡上從閘道關聯和刪除 API。
 
 > [!IMPORTANT]
-> 根據預設，不會有任何現有的 Api 與新的閘道資源相關聯。 因此，透過新的閘道嘗試叫用它們會導致 `404 Resource Not Found` 回應。
+> 預設情況下，任何現有 API 都不會與新閘道資源關聯。 因此，嘗試通過新閘道調用它們將導致`404 Resource Not Found`回應。
 
-6. 按一下 [新增]。
+6. 按一下 **[新增]**。
 
-閘道資源現在已布建在您的 API 管理實例中。 您可以繼續部署閘道。
+現在，閘道資源已在 API 管理實例中預配。 您可以繼續部署閘道。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入瞭解自我裝載閘道，請參閱[AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
-* 深入瞭解如何將[自我裝載閘道部署至 Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
-* 深入瞭解如何將[自我裝載閘道部署至 Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+* 要瞭解有關自託管閘道的詳細資訊，請參閱 Azure [API 管理自託管閘道概述](self-hosted-gateway-overview.md)
+* 詳細瞭解如何[將自託管閘道部署到庫伯內特斯](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+* 詳細瞭解如何[將自託管閘道部署到 Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)

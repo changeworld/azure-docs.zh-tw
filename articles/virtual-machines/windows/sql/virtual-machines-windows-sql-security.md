@@ -16,10 +16,10 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031351"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 安全性考量
@@ -41,11 +41,11 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ## <a name="secure-connections"></a>安全連線
 
-當您使用資源庫映像建立 SQL Server 虛擬機器時，[SQL Server 連線] 選項可讓您選擇 [本機 (在 VM 內)][私人 (在虛擬網路內)] 或 [公用 (網際網路)]。
+當您使用資源庫映像建立 SQL Server 虛擬機器時，[SQL Server 連線]**** 選項可讓您選擇 [本機 (在 VM 內)]****[私人 (在虛擬網路內)]**** 或 [公用 (網際網路)]****。
 
 ![SQL Server 連線](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-如需最佳的安全性，請為您的案例選擇最嚴格的選項。 例如，如果您執行的應用程式可存取相同 VM 上的 SQL Server，則 [本機] 是最安全的選擇。 如果您執行的 Azure 應用程式需要存取 SQL Server，則 [私人] 只可保護指定之 [Azure 虛擬網路](../../../virtual-network/virtual-networks-overview.md) 內的 SQL Server 通訊。 如果您需要 SQL Server VM的 [公用] \(網際網路) 存取，請務必遵循本主題中的其他最佳做法，以縮寫受攻擊面。
+如需最佳的安全性，請為您的案例選擇最嚴格的選項。 例如，如果您執行的應用程式可存取相同 VM 上的 SQL Server，則 [本機]**** 是最安全的選擇。 如果您執行的 Azure 應用程式需要存取 SQL Server，則 [私人]**** 只可保護指定之 [Azure 虛擬網路](../../../virtual-network/virtual-networks-overview.md) 內的 SQL Server 通訊。 如果您需要 SQL Server VM的 [公用]**** \(網際網路) 存取，請務必遵循本主題中的其他最佳做法，以縮寫受攻擊面。
 
 入口網站中選取的選項會使用 VM [網路安全性群組](../../../virtual-network/security-overview.md) (NSG) 上的輸入安全性規則來允許或拒絕虛擬機器的網路流量。 您可以修改或建立新的輸入 NSG 規則，以允許 SQL Server 連接埠 (預設值 1433) 的流量。 您也可以指定允許透過此連接埠通訊的特定 IP 位址。
 
@@ -59,17 +59,17 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ## <a name="encryption"></a>加密
 
-受控磁片提供伺服器端加密，並 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供待用加密，並保護您的資料，以符合您的組織安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 BITLOCKER 或 DM Crypt 技術，並與 Azure Key Vault 整合，以加密作業系統和資料磁片。 
+託管磁片提供伺服器端加密和 Azure 磁片加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供靜態加密，並保護您的資料，以滿足您的組織安全性和合規性承諾。 [Azure 磁片加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 Bitlocker 或 DM-Crypt 技術，並與 Azure 金鑰保存庫集成以加密作業系統和資料磁片。 
 
 ## <a name="use-a-non-default-port"></a>使用非預設連接埠
 
-根據預設，SQL Server 會在已知的通訊埠 1433 上接聽。 為了提高安全性，將 SQL Server 設定為在非預設連接埠 (例如 1401) 上接聽。 如果您在 Azure 入口網站中佈建 SQL Server 資源庫映像，您可以在 [SQL Server 設定] 刀鋒視窗中指定此連接埠。
+根據預設，SQL Server 會在已知的通訊埠 1433 上接聽。 為了提高安全性，將 SQL Server 設定為在非預設連接埠 (例如 1401) 上接聽。 如果您在 Azure 入口網站中佈建 SQL Server 資源庫映像，您可以在 [SQL Server 設定]**** 刀鋒視窗中指定此連接埠。
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
 若要在佈建後進行此設定，您有兩個選項：
 
-- 針對 Resource Manager Vm，您可以從 [ [SQL 虛擬機器] 資源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)選取 [**安全性**]。 這可提供變更連接埠的選項。
+- 對於資源管理器 VM，您可以從[SQL 虛擬機器資源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)中選擇 **"安全性**"。 這可提供變更連接埠的選項。
 
   ![在入口網站中變更 TCP 連接埠](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
@@ -93,17 +93,17 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
   - 使用具有 **sysadmin** 成員資格的唯一名稱建立 SQL 帳戶。 在佈建期間啟用 **SQL 驗證**，即可從入口網站執行此作業。
 
     > [!TIP] 
-    > 如果您未在佈建期間啟用 SQL 驗證，您必須將驗證模式手動變更為 **SQL Server 和 Windows 驗證模式**。 如需詳細資訊，請參閱 [變更伺服器驗證模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
+    > 如果您未在佈建期間啟用 SQL 驗證，您必須將驗證模式手動變更為 **SQL Server 和 Windows 驗證模式**。 有關詳細資訊，請參閱[更改伺服器身份驗證模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
 
   - 如果您必須使用 **SA** 登入，請在佈建後啟用此登入，然後指派新的強式密碼。
 
 ## <a name="additional-best-practices"></a>其他最佳做法
 
-除了本主題中所述的作法以外，我們也建議您從傳統內部部署安全性作法，以及虛擬機器安全性最佳作法，檢查並執行安全性最佳作法。 
+除了本主題中描述的實踐外，我們建議您查看並實施傳統本地安全實踐和虛擬機器安全最佳實踐的安全最佳實踐。 
 
-如需內部部署安全性作法的詳細資訊，請參閱 SQL Server 安裝和資訊[安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的[安全性考慮](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)。 
+有關本地安全實踐的詳細資訊，請參閱[SQL 伺服器安裝](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)[和安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的安全注意事項。 
 
-如需虛擬機器安全性的詳細資訊，請參閱[虛擬機器安全性總覽](/azure/security/fundamentals/virtual-machines-overview)。
+有關虛擬機器安全性的詳細資訊，請參閱[虛擬機器安全概述](/azure/security/fundamentals/virtual-machines-overview)。
 
 
 ## <a name="next-steps"></a>後續步驟

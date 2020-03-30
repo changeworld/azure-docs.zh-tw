@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop 架構 - Azure HDInsight
-description: 說明 Azure HDInsight 叢集上的 Apache Hadoop 儲存和處理。
+description: 描述 Azure HDInsight 群集上的 Apache Hadoop 存儲和處理。
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162203"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 上的 Apache Hadoop 架構
 
-[Apache Hadoop](https://hadoop.apache.org/) 包含兩個核心元件：提供儲存體的 [Apache Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)，和提供處理功能的 [Apache Hadoop Yet Another Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)。 使用儲存體和處理功能，叢集變成能夠執行 [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) 程式以進行所需的資料處理。
+[Apache Hadoop](https://hadoop.apache.org/) 包含兩個核心元件：提供儲存體的 [Apache Hadoop 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)，和提供處理功能的 [Apache Hadoop Yet Another Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)。 借助存儲和處理功能，群集能夠運行[MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)程式以執行所需的資料處理。
 
 > [!NOTE]  
 > 通常不會在 HDInsight 叢集內部署 HDFS 來提供儲存體。 相反地，Hadoop 元件使用 HDFS 相容的介面層。 實際的儲存體功能是由 Azure 儲存體或 Azure Data Lake Storage 提供。 對於 Hadoop，在 HDInsight 叢集上執行的 MapReduce 作業會像 HDFS 存在一般運作，因此不需要變更即可支援其儲存需求。 在 HDInsight 上的 Hadoop 中，儲存體是外部的，但 YARN 處理仍然是核心元件。 如需詳細資訊，請參閱 [Azure HDInsight 簡介](hadoop/apache-hadoop-introduction.md)。
@@ -49,24 +49,24 @@ NodeManagers 會執行組成應用程式的各項工作，然後將其進度和�
 
 ## <a name="soft-delete"></a>虛刪除
 
-若要從您的儲存體帳戶刪除檔案，請參閱：
+要從存儲帳戶中刪除檔，請參閱：
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
 * [Azure 儲存體 Blob 的虛刪除](../storage/blobs/storage-blob-soft-delete.md)
-* [刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [取消刪除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
 
-### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+### <a name="azure-data-lake-storage-gen-1"></a>Azure 資料存儲第 1 代
 
-[還原-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[還原-阿茲達湖存儲刪除專案](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 
 [Azure Data Lake Storage Gen2 的已知問題](../storage/blobs/data-lake-storage-known-issues.md)
 
-## <a name="trash-purging"></a>垃圾桶清除
+## <a name="trash-purging"></a>垃圾清除
 
-來自**HDFS** > **Advanced core-site**的 `fs.trash.interval` 屬性應維持預設值 `0`，因為您不應該將任何資料儲存在本機檔案系統上。 此值不會影響遠端儲存體帳戶（WASB、ADLS GEN1、ABFS）
+`fs.trash.interval` **HDFS** > **高級核心網站**的屬性應保留為預設值`0`，因為不應在本地檔案系統上存儲任何資料。 此值不會影響遠端存放帳戶（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>後續步驟
 

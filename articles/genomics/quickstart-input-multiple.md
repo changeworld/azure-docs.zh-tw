@@ -1,7 +1,7 @@
 ---
-title: 使用多個輸入提交工作流程
+title: 使用多個輸入提交工作流
 titleSuffix: Microsoft Genomics
-description: 本文示範如何在您的輸入檔案是來自相同範例的多個 FASTQ 或 BAM 檔案時，將工作流程提交至 Microsoft Genomics 服務。
+description: 本文演示如何將工作流提交到 Microsoft 基因組服務，如果您的輸入檔是多個 FASTQ 或 BAM 檔從同一個示例。
 services: genomics
 ms.service: genomics
 author: grhuynh
@@ -10,25 +10,25 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248575"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>使用相同範例中的多個輸入來提交工作流程
 
-本文示範如何將工作流程提交至 Microsoft Genomics 服務（如果您的輸入檔案是來自**相同範例**的多個 FASTQ 或 BAM 檔案）。 例如，如果您已在排序器上的多個通道中執行**相同範例**，則排序器可能會為每個通道輸出一組 FASTQ 檔案。 比起在校對和識別變體之前串連 FASTQ 檔案，您可以直接將這些輸入全部提交到 `msgen` 用戶端。 `msgen` 用戶端的輸出會是**一組**檔案，包括 .bam、.bai 和 .vcf 檔案。 
+本文演示如何提交工作流到 Microsoft 基因組服務，如果您的輸入檔是多個 FASTQ 或 BAM 檔**來自同一個示例**。 例如，如果您已在排序器上的多個通道中執行**相同範例**，則排序器可能會為每個通道輸出一組 FASTQ 檔案。 比起在校對和識別變體之前串連 FASTQ 檔案，您可以直接將這些輸入全部提交到 `msgen` 用戶端。 `msgen` 用戶端的輸出會是**一組**檔案，包括 .bam、.bai 和 .vcf 檔案。 
 
 不過，請記住，您**無法**在相同的提交中將 FASTQ 和 BAM 檔案混合。 此外，您**無法**提交多個個體的 FASTQ 或 BAM 檔案。 
 
-本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已使用提供的範例資料成功地提交工作流程，則您已準備好繼續進行本文。 
+本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已成功使用提供的示例資料提交工作流，則可以繼續執行本文。 
 
 
 ## <a name="multiple-bam-files"></a>多個 BAM 檔案
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>將您的輸入檔案上傳至 Azure 儲存體
-假設您以多個 BAM 檔案作為輸入，reads.bam、additional_reads.bam 和 yet_more_reads.bam，且您已它們上傳至 Azure 中的儲存體帳戶 myaccount。 您具有 API URL 以及存取金鑰。 您需要 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中的輸出。
+假設您以多個 BAM 檔案作為輸入，reads.bam**、additional_reads.bam** 和 yet_more_reads.bam**，且您已它們上傳至 Azure 中的儲存體帳戶 myaccount**。 您具有 API URL 以及存取金鑰。 您需要 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中的輸出。
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>將作業提交至 `msgen` 用戶端 
@@ -91,7 +91,7 @@ output_storage_account_container: outputs
 ## <a name="multiple-paired-fastq-files"></a>多個配對的 FASTQ 檔案
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>將您的輸入檔案上傳至 Azure 儲存體
-假設您以多個配對的 FASTQ 檔案作為輸入，reads_1.fq.gz 與 reads_2.fq.gz、additional_reads_1.fq.gz 與 additional_reads_2.fq.gz 以及 yet_more_reads_1.fq.gz 與 yet_more_reads_2.fq.gz。 您已將它們上傳至 Azure 中的儲存體帳戶 myaccount，且您有 API URL 和存取金鑰。 您需要 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中的輸出。
+假設您以多個配對的 FASTQ 檔案作為輸入，reads_1.fq.gz** 與 reads_2.fq.gz**、additional_reads_1.fq.gz** 與 additional_reads_2.fq.gz** 以及 yet_more_reads_1.fq.gz** 與 yet_more_reads_2.fq.gz**。 您已將它們上傳至 Azure 中的儲存體帳戶 myaccount**，且您有 API URL 和存取金鑰。 您需要 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中的輸出。
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>將作業提交至 `msgen` 用戶端 

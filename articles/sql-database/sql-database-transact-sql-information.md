@@ -1,5 +1,5 @@
 ---
-title: 解決 T-sql 差異-遷移
+title: 解決 T-SQL 差異 -遷移
 description: 在 Azure SQL Database 中未完整支援  Transact-SQL 陳述式
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
 ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79208822"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解決移轉至 SQL Database 期間的 Transact-SQL 差異
 
 [將您的資料庫從 SQL Server 移轉](sql-database-single-database-migrate.md)至 Azure SQL Server 時，您可能會發現您的資料庫必須先進行一些再造，才能移轉 SQL Server。 本文章提供一些指引，以協助您執行此再造作業，以及了解為何必須執行再造的基礎原因。 若要偵測不相容性，請使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部分 Transact-SQL 功能。 例如，資料類型、運算子、字串、算術、邏輯及資料指標函式等核心 SQL 元件在 SQL Server 與 SQL Database 中都以相同的方式運作。 不過，DDL (資料定義語言) 和 DML (資料操作語言) 元素中有幾個 T-SQL 差異導致對 T-SQL 陳述式和查詢僅提供部分支援 (將在本文章中稍後探討)。
 
@@ -38,7 +38,7 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部
 
 - CREATE 和 ALTER DATABASE 陳述式有超過三十多個選項。 這些陳述式包括僅適用於 SQL Server 的檔案放置、FILESTREAM 及服務訊息代理程式選項。 如果您是在移轉之前建立資料庫，這可能無關緊要，但如果您要移轉建立資料庫的 T-SQL 程式碼，您就應該將 [CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) 與在 [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) 的 SQL Server 語法做比較，以確定系統支援您使用的所有選項。 Azure SQL Database 的 CREATE DATABASE 也有僅適用於 SQL Database 的服務目標和靈活擴充能力選項。
 - CREATE 和 ALTER TABLE 陳述式具有無法在 SQL Database 上使用的 FileTable 選項，因為 FILESTREAM 不受支援。
-- CREATE 和 ALTER 登入陳述式受支援，但 SQL Database 並未提供所有選項。 為了讓您的資料庫更具可攜性，SQL Database 建議您儘可能使用自主資料庫使用者，而不要使用登入。 如需詳細資訊，請參閱[建立/改變登](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql)入和管理登入[和使用者](sql-database-manage-logins.md)。
+- CREATE 和 ALTER 登入陳述式受支援，但 SQL Database 並未提供所有選項。 為了讓您的資料庫更具可攜性，SQL Database 建議您儘可能使用自主資料庫使用者，而不要使用登入。 有關詳細資訊，請參閱[創建/更改登錄](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql)[和管理登錄名和使用者](sql-database-manage-logins.md)。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>在 Azure SQL Database 中不支援的 Transact-SQL 語法
 
@@ -78,13 +78,13 @@ Microsoft SQL Server 和 Azure SQL Database 都支援應用程式使用的大部
 
 ## <a name="full-transact-sql-reference"></a>完整 Transact-SQL 參考
 
-如需 Transact-SQL 文法、使用方式和範例的詳細資訊，請參閱 SQL Server 線上叢書中的 [Transact-SQL 參考 (資料庫引擎)](https://msdn.microsoft.com/library/bb510741.aspx) 。
+有關 Transact-SQL 語法、使用方式和示例的詳細資訊，請參閱 SQL 伺服器帳簿連線中的 [Transact-SQL 引用（資料庫引擎）。](https://msdn.microsoft.com/library/bb510741.aspx)  
 
 ### <a name="about-the-applies-to-tags"></a>關於「適用於」標記
 
-Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關文章。 文章標題下方是圖示列，列出四個 SQL Server 平台並指出適用性。 例如，可用性群組是在 SQL Server 2012 中導入。  [建立可用性群組](https://msdn.microsoft.com/library/ff878399.aspx) 一文指出語句適用于**SQL Server （從2012開始）** 。 陳述式不適用於 SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL 資料倉儲或平行資料倉儲。
+Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關文章。 文章標題下方是圖示列，列出四個 SQL Server 平台並指出適用性。 例如，可用性群組是在 SQL Server 2012 中導入。  [創建可用性組](https://msdn.microsoft.com/library/ff878399.aspx) 文章指示該語句適用于 SQL **Server（從 2012 年開始）。** 陳述式不適用於 SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL 資料倉儲或平行資料倉儲。
 
-在某些情況下，文章的一般主旨可用於產品中，但產品之間的差異較小。 依適當情況會在文章的中間點指出差異。 在某些情況下，文章的一般主旨可用於產品中，但產品之間的差異較小。 依適當情況會在文章的中間點指出差異。 例如，SQL Database 中有提供 CREATE TRIGGER 文章。 但伺服器層級觸發程序的 **ALL SERVER** 選項指出無法在 SQL Database 中使用伺服器層級的觸發程序。 請改用資料庫層級的觸發程序。
+在某些情況下，文章的一般主題可以在產品中使用，但產品之間有細微差異。 依適當情況會在文章的中間點指出差異。 在某些情況下，文章的一般主題可以在產品中使用，但產品之間有細微差異。 依適當情況會在文章的中間點指出差異。 例如，SQL Database 中有提供 CREATE TRIGGER 文章。 但伺服器層級觸發程序的 **ALL SERVER** 選項指出無法在 SQL Database 中使用伺服器層級的觸發程序。 請改用資料庫層級的觸發程序。
 
 ## <a name="next-steps"></a>後續步驟
 

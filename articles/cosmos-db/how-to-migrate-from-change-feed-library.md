@@ -1,54 +1,54 @@
 ---
-title: 從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
-description: 瞭解如何使用變更摘要處理器程式庫將您的應用程式遷移至 Azure Cosmos DB SDK V3
+title: 從更改饋送處理器庫遷移到 Azure 宇宙 DB .NET V3 SDK
+description: 瞭解如何將應用程式從使用更改饋送處理器庫遷移到 Azure Cosmos DB SDK V3
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: f651beb181430f65d0b4c86f285e74958f8366eb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588878"
 ---
-# <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
+# <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>從更改饋送處理器庫遷移到 Azure 宇宙 DB .NET V3 SDK
 
-本文說明將使用[變更摘要處理器程式庫](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet)之現有應用程式的程式碼，遷移到最新版 .net SDK （也稱為 .NET V3 sdk）中[變更](change-feed.md)摘要功能的必要步驟。
+本文介紹了將使用[更改源處理器庫](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet)的現有應用程式代碼遷移到最新版本 .NET SDK（也稱為 .NET V3 SDK）中的[更改源](change-feed.md)功能所需的步驟。
 
-## <a name="required-code-changes"></a>必要的程式碼變更
+## <a name="required-code-changes"></a>所需的代碼更改
 
-.NET V3 SDK 有數個重大變更，以下是遷移應用程式的主要步驟：
+.NET V3 SDK 有幾個重大更改，以下是遷移應用程式的關鍵步驟：
 
-1. 將 `DocumentCollectionInfo` 實例轉換成受監視和租用容器的 `Container` 參考。
-1. 使用 `WithProcessorOptions` 的自訂應該更新為使用 `WithLeaseConfiguration` 和 `WithPollInterval` 的間隔、`WithStartTime`[開始時間](how-to-configure-change-feed-start-time.md)，以及 `WithMaxItems` 定義最大專案計數。
-1. 將 `GetChangeFeedProcessorBuilder` 上的 `processorName` 設定為符合 `ChangeFeedProcessorOptions.LeasePrefix`上設定的值，否則請使用 `string.Empty`。
-1. 這些變更不再當做 `IReadOnlyList<Document>`傳遞，而是 `IReadOnlyCollection<T>`，其中 `T` 是您需要定義的類型，沒有任何基底專案類別。
-1. 若要處理變更，您不再需要執行，而是必須[定義委派](change-feed-processor.md#implementing-the-change-feed-processor)。 委派可以是靜態函式，或者，如果您需要維護跨執行的狀態，您可以建立自己的類別，並將實例方法當做委派傳遞。
+1. 將`DocumentCollectionInfo`實例轉換為`Container`受監視容器的引用，並租用容器。
+1. `WithProcessorOptions`使用的`WithLeaseConfiguration`自訂項應更新為 使用 和`WithPollInterval`間隔、`WithStartTime`[開始時間](how-to-configure-change-feed-start-time.md)以及`WithMaxItems`定義最大項計數。
+1. 將`processorName`on`GetChangeFeedProcessorBuilder`設置為匹配 在`ChangeFeedProcessorOptions.LeasePrefix`上配置的值`string.Empty`，否則使用。
+1. 更改不再作為 傳遞，`IReadOnlyList<Document>`而是一種`IReadOnlyCollection<T>``T`需要定義的類型，不再有基項類。
+1. 要處理更改，不再需要實現，而是需要[定義委託](change-feed-processor.md#implementing-the-change-feed-processor)。 委託可以是靜態函數，或者，如果需要跨執行保持狀態，則可以創建自己的類並將實例方法作為委託傳遞。
 
-例如，如果用來建立變更摘要處理器的原始程式碼看起來如下：
+例如，如果用於生成更改饋送處理器的原始代碼如下所示：
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorLibrary":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorLibrary)]
 
-遷移後的程式碼看起來會像這樣：
+遷移的代碼將如下所示：
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorMigrated":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
 
-而委派則可以是靜態方法：
+委託，可以是一個靜態方法：
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="Delegate":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
 
-## <a name="state-and-lease-container"></a>狀態和租用容器
+## <a name="state-and-lease-container"></a>狀態和租賃容器
 
-類似于變更摘要處理器程式庫，.NET V3 SDK 中的變更摘要功能會使用[租用容器](change-feed-processor.md#components-of-the-change-feed-processor)來儲存狀態。 不過，架構是不同的。
+與更改源處理器庫類似，.NET V3 SDK 中的更改源功能使用[租約容器](change-feed-processor.md#components-of-the-change-feed-processor)來存儲狀態。 但是，架構是不同的。
 
-SDK V3 變更摘要處理器會偵測到任何舊的程式庫狀態，並在第一次執行已遷移的應用程式程式碼時，自動將其遷移至新的架構。 
+SDK V3 更改饋送處理器將檢測任何舊的庫狀態，並在首次執行遷移的應用程式代碼時自動將其遷移到新架構。 
 
-您可以使用舊的程式碼安全地停止應用程式、將程式碼遷移至新版本、啟動已遷移的應用程式，以及在應用程式停止時所發生的任何變更，將會由新版本收取並處理。
+您可以使用舊代碼安全地停止應用程式、將代碼遷移到新版本、啟動遷移的應用程式，並且新版本將拾取和處理在應用程式停止期間發生的任何更改。
 
 > [!NOTE]
-> 從使用程式庫的應用程式遷移至 .NET V3 SDK 是單向的，因為狀態（租用）將會遷移至新的架構。 遷移無法回溯相容。
+> 使用庫的應用程式遷移到 .NET V3 SDK 是單向的，因為狀態（租約）將遷移到新架構。 遷移不向後相容。
 
 
 ## <a name="additional-resources"></a>其他資源

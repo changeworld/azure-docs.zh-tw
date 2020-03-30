@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Workbench 架構
-description: 概述 Azure Blockchain Workbench 預覽架構及其元件。
+description: Azure 區塊鏈工作臺預覽體系結構及其元件概述。
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324888"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 架構
 
-Azure Blockchain Workbench Preview 藉由提供使用數個 Azure 元件的解決方案，來簡化區塊鏈應用程式開發。 您可以使用 Azure Marketplace 中的解決方案範本來部署 Blockchain Workbench。 範本可讓您挑選要部署的模組和元件，包括區塊鏈堆疊、用戶端應用程式類型及 IoT 整合支援。 Blockchain Workbench 一經部署，即可提供 Web 應用程式、iOS 應用程式和 Android 應用程式的存取權。
+Azure 區塊鏈工作臺預覽版通過使用多個 Azure 元件提供解決方案，簡化了區塊鏈應用程式開發。 您可以使用 Azure Marketplace 中的解決方案範本來部署 Blockchain Workbench。 範本可讓您挑選要部署的模組和元件，包括區塊鏈堆疊、用戶端應用程式類型及 IoT 整合支援。 Blockchain Workbench 一經部署，即可提供 Web 應用程式、iOS 應用程式和 Android 應用程式的存取權。
 
-![Blockchain Workbench 架構](./media/architecture/architecture.png)
+![區塊鏈工作臺架構](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>身分識別和驗證
 
@@ -78,7 +78,7 @@ Blockchain Workbench 會自動部署兩種類型的事件消費者。 其中一�
 
 ## <a name="transaction-builder-and-signer"></a>交易產生器和簽署者
 
-如果輸入訊息代理人上的訊息需要寫入至區塊鏈，將會由 DLT 取用者負責處理。 DLT 取用者是一項服務，其會擷取訊息 (其中包含所要執行交易的中繼資料)，然後將資訊傳送至「交易產生器和簽署者」。 「交易產生器和簽署者」會將以資料為基礎的區塊鏈交易與所需的 區塊鏈目的地組合在一起。 一經組合，便會簽署交易。 私密金鑰會儲存在 Azure Key Vault。
+如果輸入訊息代理人上的訊息需要寫入至區塊鏈，將會由 DLT 取用者負責處理。 DLT 取用者是一項服務，其會擷取訊息 (其中包含所要執行交易的中繼資料)，然後將資訊傳送至「交易產生器和簽署者」**。 「交易產生器和簽署者」** 會將以資料為基礎的區塊鏈交易與所需的 區塊鏈目的地組合在一起。 一經組合，便會簽署交易。 私密金鑰會儲存在 Azure Key Vault。
 
  Blockchain Workbench 會從 Key Vault 擷取適當的私密金鑰，並在 Key Vault 外簽署交易。 一經簽署，交易就會傳送至交易路由器和總帳。
 
@@ -107,7 +107,7 @@ Azure 儲存體可用來儲存合約以及與合約相關聯的中繼資料。
 
 Blockchain Workbench 能夠使用區塊鏈商務邏輯來新增文件或其他媒體內容。 文件或媒體內容的雜湊會儲存在區塊鏈中，實際的文件或媒體內容則會儲存在 Azure 儲存體中。 相關聯的交易資訊會傳遞至輸入訊息代理人、加以封裝、簽署，並路由傳送至區塊鏈。 此程序會觸發事件，這些事件會透過輸出訊息代理人來共用。 SQL DB 會取用這項資訊，並將其傳送至 DB 以便稍後進行查詢。 下游系統也可取用這些事件以採取適當行動。
 
-## <a name="monitoring"></a>監控
+## <a name="monitoring"></a>監視
 
 Workbench 使用 Application Insights 和 Azure 監視器來提供應用程式記錄。 Application Insights 可用來儲存 Blockchain Workbench 中所記錄的所有資訊，並且會包含錯誤、警告和成功的作業。 Application Insights 可供開發人員用來對 Blockchain Workbench 的問題進行偵錯。 
 

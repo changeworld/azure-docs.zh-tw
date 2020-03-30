@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823520"
 ---
 # <a name="split-merge-security-configuration"></a>分割合併安全性設定
@@ -58,17 +58,17 @@ ms.locfileid: "73823520"
 1. [建立自我簽署憑證](#create-a-self-signed-certificate)
 2. [建立自我簽署 SSL 憑證的 PFX 檔案](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [將 SSL 憑證上傳至雲端服務](#upload-ssl-certificate-to-cloud-service)
-4. [在服務組態檔中更新 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
+4. [更新服務設定檔中的 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
 5. [匯入 SSL 憑證授權單位](#import-ssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>如何從憑證存放區使用現有的憑證
 1. [從憑證存放區匯出 SSL 憑證](#export-ssl-certificate-from-certificate-store)
 2. [將 SSL 憑證上傳至雲端服務](#upload-ssl-certificate-to-cloud-service)
-3. [在服務組態檔中更新 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
+3. [更新服務設定檔中的 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>如何使用 PFX 檔案中現有的憑證
 1. [將 SSL 憑證上傳至雲端服務](#upload-ssl-certificate-to-cloud-service)
-2. [在服務組態檔中更新 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
+2. [更新服務設定檔中的 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>設定用戶端憑證
 需要用戶端憑證，才能驗證服務的要求。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
@@ -120,7 +120,7 @@ ms.locfileid: "73823520"
 預設組態會允許對 HTTPS 端點的所有存取。 這項設定可能會進一步限制。
 
 ### <a name="changing-the-configuration"></a>變更組態
-適用于和端點的存取控制規則群組是在**服務設定檔**的 **\<EndpointAcls >** 區段中設定。
+應用於 和 終結點的存取控制規則組在**服務設定檔**中的**\<endpoint>** 部分中配置。
 
 ```xml
 <EndpointAcls>
@@ -129,7 +129,7 @@ ms.locfileid: "73823520"
 </EndpointAcls>
 ```
 
-存取控制群組中的規則設定于服務設定檔的 \<AccessControl name = "" > 區段中。 
+存取控制組中的規則在服務設定檔的\<AccessControl 名稱\"> 部分中配置。 
 
 網路存取控制清單文件會說明其格式。
 例如，若只要允許範圍 100.100.0.0 至 100.100.255.255 中的 IP 存取 HTTPS 端點，則規則看起來如下：
@@ -324,7 +324,7 @@ ms.locfileid: "73823520"
 * -e 與憑證到期日
 * MyID.pvk 和 MyID.cer，使用這個用戶端憑證的唯一檔名
 
-此命令會提示建立密碼，然後使用一次。 請使用強式密碼。
+此命令會提示建立密碼，然後使用一次。 請使用增強式密碼。
 
 ## <a name="create-pfx-files-for-client-certificates"></a>建立用戶端憑證的 PFX 檔案
 對於每個產生的用戶端憑證，請執行：
@@ -358,7 +358,7 @@ ms.locfileid: "73823520"
 * 請確定 [顯示] 是顯示 [全部]
 * 在清單中選取名為 [憑證指紋] 的欄位
 * 複製指紋的值
-  * 刪除第一個數位前面不可見的 Unicode 字元
+  * 刪除第一個數位前面的不可見的 Unicode 字元
   * 刪除所有空格
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>在服務組態檔中設定允許的用戶端
@@ -420,10 +420,10 @@ ms.locfileid: "73823520"
 1. 執行 mmc.exe。
 2. [檔案] -> [新增/移除嵌入式管理單元]
 3. 選取 [ **憑證**]。
-4. 按一下 [新增]。
+4. 按一下 **[新增]**。
 5. 選擇憑證存放區位置。
-6. 按一下 [完成]。
-7. 按一下 [確定]。
+6. 按一下 **[完成]**。
+7. 按一下 [確定]****。
 8. 展開 [ **憑證**]。
 9. 展開憑證存放區節點。
 10. 展開 [憑證] 子節點。
@@ -432,18 +432,18 @@ ms.locfileid: "73823520"
 ## <a name="export-certificate"></a>匯出憑證
 在 [ **憑證匯出精靈**] 中：
 
-1. 按一下 [下一步]。
-2. 選取 [是]，再選取 [匯出私密金鑰]。
-3. 按一下 [下一步]。
+1. 按 [下一步]****。
+2. 選取 [是]****，再選取 [匯出私密金鑰]****。
+3. 按 [下一步]****。
 4. 選取想要的輸出檔案格式。
 5. 核取所需的選項。
 6. 核取 [ **密碼**]。
 7. 輸入強式密碼並加以確認。
-8. 按一下 [下一步]。
+8. 按 [下一步]****。
 9. 輸入或瀏覽至用來儲存憑證的檔案名稱 (使用 .PFX 副檔名)。
-10. 按一下 [下一步]。
-11. 按一下 [完成]。
-12. 按一下 [確定]。
+10. 按 [下一步]****。
+11. 按一下 **[完成]**。
+12. 按一下 [確定]****。
 
 ## <a name="import-certificate"></a>匯入憑證
 在 [憑證匯入精靈] 中：
@@ -452,23 +452,23 @@ ms.locfileid: "73823520"
    
    * 如果只有在目前使用者下執行的處理程序會存取服務，請選取 [ **目前使用者** ]
    * 如果這台電腦中的其他處理程序會存取服務，請選取 [ **本機電腦** ]
-2. 按一下 [下一步]。
+2. 按 [下一步]****。
 3. 如果從檔案匯入，請確認檔案路徑。
 4. 如果匯入 .PFX 檔案：
    1. 輸入密碼以保護私密金鑰
    2. 選取匯入選項
 5. 選取將憑證「放入」以下的存放區
-6. 按一下 [瀏覽]。
+6. 按一下 [瀏覽]****。
 7. 選取所需的存放區。
-8. 按一下 [完成]。
+8. 按一下 **[完成]**。
    
    * 若已選擇 [受信任的根憑證授權單位] 存放區，請按一下 [ **是**]。
 9. 在所有對話方塊視窗上，按一下 [ **確定** ]。
 
 ## <a name="upload-certificate"></a>Upload certificate
-在 [Azure 入口網站](https://portal.azure.com/)中
+在[Azure 門戶](https://portal.azure.com/)中
 
-1. 選取 [雲端服務]。
+1. 選取 [雲端服務] ****。
 2. 選取雲端服務。
 3. 按一下頂端功能表的 [ **憑證**]。
 4. 按一下底列的 [ **上傳**]。

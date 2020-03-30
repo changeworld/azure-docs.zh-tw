@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Data Lake Analytics 中使用 U-SQL 目錄
-description: 了解如何使用 U-SQL 目錄來共用程式碼和資料。 建立資料表值函式、建立視圖、建立資料表，以及查詢這些函數。
+title: 在 Azure 資料湖分析中使用 U-SQL 目錄
+description: 了解如何使用 U-SQL 目錄來共用程式碼和資料。 創建表值函數、創建視圖、創建表和查詢它們。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,10 +10,10 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
 ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672852"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>開始在 Azure Data Lake Analytics 中使用 U-SQL 目錄
@@ -173,4 +173,4 @@ OUTPUT @res
 ## <a name="next-steps"></a>後續步驟
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Data Lake Tools for Visual Studio 開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)
-* [使用 Azure 入口網站監視和疑難排解 Azure Data Lake Analytics 作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 門戶監視 Azure 資料湖分析作業並疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

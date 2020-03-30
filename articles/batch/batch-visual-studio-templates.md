@@ -15,10 +15,10 @@ ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022744"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 專案範本快速啟動 Batch 解決方案
@@ -51,26 +51,26 @@ Batch 的**作業管理員**和**工作處理器 Visual Studio 範本**提供了
 
 ![顯示用戶端程式碼與 Batch 服務互動方式的圖表][diagram01]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用 Batch 範本，您需要下列項目︰
 
 * 已安裝 Visual Studio 2015 的電腦。 目前只有針對 Visual Studio 2015 支援批次範本。
-* Batch 範本，可從[Visual Studio 圖庫][vs_gallery]取得，做為 Visual Studio 延伸模組。 有兩種方式可取得範本︰
+* Batch 範本，可從 [Visual Studio 資源庫][vs_gallery]取得作為 Visual Studio 擴充。 有兩種方式可取得範本︰
   
-  * 使用 Visual Studio 中的 [**擴充功能和更新**] 對話方塊安裝範本（如需詳細資訊，請參閱[尋找和使用 Visual Studio 擴充][vs_find_use_ext]功能）。 在 [擴充功能和更新] 對話方塊中，搜尋和下載下列兩個延伸模組︰
+  * 在 Visual Studio 中，使用 [擴充功能和更新]**** 對話方塊安裝範本 (如需詳細資訊，請參閱[尋找及使用 Visual Studio 擴充][vs_find_use_ext])。 在 [擴充功能和更新] **** 對話方塊中，搜尋和下載下列兩個延伸模組︰
     
     * 具有作業分割器的 Azure Batch 作業管理員
     * Azure Batch 工作處理器
-  * 從適用于 Visual Studio 的線上元件庫下載範本： [Microsoft Azure Batch 專案範本][vs_gallery_templates]
+  * 從 Visual Studio 的線上資源庫下載範本：[Microsoft Azure Batch 專案範本][vs_gallery_templates]
 * 如果您打算使用 [應用程式封裝](batch-application-packages.md) 功能將作業管理員和工作處理器部署到 Batch 計算節點，您必須連結儲存體帳戶和 Batch 帳戶。
 
 ## <a name="preparation"></a>準備
 我們建議您建立可在其中包含作業管理員和工作處理器的方案，因為這樣便能更輕鬆地在作業管理員和工作處理器程式之間共用程式碼。 若要建立此方案，請依照下列步驟執行︰
 
-1. 開啟 Visual Studio，然後選取 [檔案] > [新增] > [專案]。
-2. 在 [範本] 底下展開 [其他專案類型]、按一下 [Visual Studio 方案]，然後選取 [空白方案]。
+1. 打開視覺化工作室並選擇 **"檔** > **新專案** > **"。**
+2. 在 [範本]**** 底下展開 [其他專案類型]****、按一下 [Visual Studio 方案]****，然後選取 [空白方案]****。
 3. 輸入可描述應用程式和此方案用途的名稱 (例如，「LitwareBatchTaskPrograms」)。
-4. 若要建立新方案，請按一下 [確定]。
+4. 若要建立新方案，請按一下 [確定] ****。
 
 ## <a name="job-manager-template"></a>作業管理員範本
 作業管理員範本可協助您實作作業管理員工作以執行下列動作︰
@@ -87,17 +87,17 @@ Batch 的**作業管理員**和**工作處理器 Visual Studio 範本**提供了
 若要在稍早建立的方案中新增作業管理員，請遵循下列步驟︰
 
 1. 在 Visual Studio 中開啟現有方案。
-2. 在 [方案總管] 中，以滑鼠右鍵按一下方案，然後按一下 [新增] > [新增專案]。
-3. 在 [Visual C#] 底下按一下 [雲端]，然後按一下 [具有作業分割器的 Azure Batch 作業管理員]。
+2. 在"解決方案資源管理器"中，按右鍵解決方案，按一下"**添加新** > **專案**"。
+3. 在 [Visual C#]**** 底下按一下 [雲端]****，然後按一下 [具有作業分割器的 Azure Batch 作業管理員]****。
 4. 輸入可描述應用程式並將此專案識別為作業管理員的名稱 (例如"LitwareJobManager")。
-5. 若要建立專案，按一下 [確定]。
+5. 若要建立專案，按一下 [確定] ****。
 6. 最後，建置專案來強制 Visual Studio 載入所有參考的 NuGet 套件，以及確認專案是否有效以便能開始對其進行修改。
 
 ### <a name="job-manager-template-files-and-their-purpose"></a>作業管理員範本檔案及其用途
 當您使用作業管理員範本建立專案時，它會產生三組程式碼檔案︰
 
 * 主要程式檔 (Program.cs)。 這包含程式進入點和最上層的例外狀況處理。 通常來說，您應該不需要修改此檔案。
-* 架構目錄。 這包含負責「重複使用」工作的檔案，這些檔案是由作業管理員程式所完成-將參數解壓縮、將工作加入至批次作業等。您通常不需要修改這些檔案。
+* 架構目錄。 這包含負責作業管理器程式完成的"樣板"工作的檔 - 解包參數、向批次處理作業添加任務等。通常不需要修改這些檔。
 * 作業分割器檔案 (JobSplitter.cs)。 此處可供存放用於將作業分割成多個工作的應用程式特定邏輯。
 
 當然，您可以根據作業分割邏輯的複雜度，視需要新增其他檔案來支援作業分割器程式碼。
@@ -156,7 +156,7 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> `Split()` 在方法中，註解區段是作業管理員範本程式碼中唯一可供您修改的區段，方法是新增用來將作業分割成不同工作的邏輯。 如果您想要修改範本的其他區段，請確定您已熟悉 Batch 的運作方式，並嘗試幾個[batch 程式碼範例][github_samples]。
+> `Split()` 在方法中，註解區段是作業管理員範本程式碼中唯一可供您修改的區段，方法是新增用來將作業分割成不同工作的邏輯。 如果您想要修改範本的其他區段，請確定您熟悉 Batch 的運作方式，並先在幾個 [Batch 程式碼範例][github_samples]中試試看。
 > 
 > 
 
@@ -190,7 +190,7 @@ Split() 實作具有下列項目的存取權︰
 
 使用作業管理員範本實作的作業管理員工作會傳回三個可能的結束代碼︰
 
-| 程式碼 | 說明 |
+| 程式碼 | 描述 |
 | --- | --- |
 | 0 |作業管理員順利完成。 作業分隔器程式碼已執行完成，而且所有工作皆已新增至作業中。 |
 | 1 |作業管理員工作失敗，且程式的「預期」部分有例外狀況。 例外狀況已轉譯成 JobManagerException 與診斷資訊，如有可能，也會提供可解決失敗的建議。 |
@@ -227,19 +227,19 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 **作業管理員工作設定**
 
-用戶端應該將作業管理員的「killJobOnCompletion」 旗標設為 **false**。
+用戶端應該將作業管理員的「killJobOnCompletion」 ** 旗標設為 **false**。
 
-用戶端通常可以放心地將「runExclusive」 設為 **false**。
+用戶端通常可以放心地將「runExclusive」 ** 設為 **false**。
 
 用戶端應使用 *resourceFiles* 或 *applicationPackageReferences* 集合，將作業管理員可執行檔 (和其所需的 DLL) 部署至計算節點。
 
-根據預設，作業管理員在失敗時不會重試。 根據作業管理員邏輯，用戶端可能會想透過 *constraints*/*maxTaskRetryCount* 啟用重試。
+根據預設，作業管理員在失敗時不會重試。 根據作業管理器邏輯，用戶端可能希望通過*約束*/*maxTaskRetryCount*啟用重試。
 
 **作業設定**
 
 如果作業分割器發出具有相依性的工作，用戶端必須將作業的 usesTaskDependencies 設為 true。
 
-在作業分割器模型中，除了作業分割器所建立的工作外，用戶端通常不會想將工作新增至作業中。 因此一般來說，用戶端應該會將作業的「onAllTasksComplete」 設為 **terminatejob**。
+在作業分割器模型中，除了作業分割器所建立的工作外，用戶端通常不會想將工作新增至作業中。 因此一般來說，用戶端應該會將作業的「onAllTasksComplete」 ** 設為 **terminatejob**。
 
 ## <a name="task-processor-template"></a>工作處理器範本
 工作處理器範本可協助您實作工作處理器以執行下列動作︰
@@ -256,17 +256,17 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 若要在稍早建立的方案中新增工作處理器，請遵循下列步驟︰
 
 1. 在 Visual Studio 中開啟現有方案。
-2. 在 [方案總管] 中，以滑鼠右鍵按一下方案、按一下 [新增]，然後按一下 [新增專案]。
-3. 在 [Visual C#] 底下按一下 [雲端]，然後按一下 [Azure Batch 工作處理器]。
+2. 在 [方案總管] 中，以滑鼠右鍵按一下方案、按一下 [新增]****，然後按一下 [新增專案]****。
+3. 在 [Visual C#]**** 底下按一下 [雲端]****，然後按一下 [Azure Batch 工作處理器]****。
 4. 輸入可描述應用程式並將此專案識別為工作處理器的名稱 (例如"LitwareTaskProcessor")。
-5. 若要建立專案，按一下 [確定]。
+5. 若要建立專案，按一下 [確定] ****。
 6. 最後，建置專案來強制 Visual Studio 載入所有參考的 NuGet 套件，以及確認專案是否有效以便能開始對其進行修改。
 
 ### <a name="task-processor-template-files-and-their-purpose"></a>工作處理器範本檔案及其用途
 當您使用工作處理器範本建立專案時，它會產生三組程式碼檔案︰
 
 * 主要程式檔 (Program.cs)。 這包含程式進入點和最上層的例外狀況處理。 通常來說，您應該不需要修改此檔案。
-* 架構目錄。 這包含負責「重複使用」工作的檔案，這些檔案是由作業管理員程式所完成-將參數解壓縮、將工作加入至批次作業等。您通常不需要修改這些檔案。
+* 架構目錄。 這包含負責作業管理器程式完成的"樣板"工作的檔 - 解包參數、向批次處理作業添加任務等。通常不需要修改這些檔。
 * 工作處理器檔案 (TaskProcessor.cs)。 此檔案可供存放用於執行工作的應用程式特定邏輯 (通常是藉由向外呼叫現有的可執行檔)。 前置和後置處理程式碼 (例如下載額外資料或上傳結果檔案) 也存放在此。
 
 當然，您可以根據作業分割邏輯的複雜度，視需要新增其他檔案來支援工作處理器程式碼。
@@ -368,9 +368,9 @@ Run() 實作具有下列項目的存取權︰
 
 使用工作處理器範本實作的工作處理器工作會傳回三個可能的結束代碼︰
 
-| 程式碼 | 說明 |
+| 程式碼 | 描述 |
 | --- | --- |
-| [ExitCode][process_exitcode] |工作處理器已執行完成。 請注意，這並非表示您叫用的程式已成功，只表示工作處理器已成功叫用程式並執行任何後置處理，而沒有例外狀況。 結束代碼的意義取決於所叫用的程式，一般來說，結束代碼 0 表示程式已成功，任何其他結束代碼則表示程式失敗。 |
+| [Process.ExitCode][process_exitcode] |工作處理器已執行完成。 請注意，這並非表示您叫用的程式已成功，只表示工作處理器已成功叫用程式並執行任何後置處理，而沒有例外狀況。 結束代碼的意義取決於所叫用的程式，一般來說，結束代碼 0 表示程式已成功，任何其他結束代碼則表示程式失敗。 |
 | 1 |工作處理器失敗，且程式的「預期」部分有例外狀況。 例外狀況已轉譯成 `TaskProcessorException` 與診斷資訊，如有可能，也會提供可解決失敗的建議。 |
 | 2 |工作處理器失敗，並發生「非預期」的例外狀況。 例外狀況已記錄至標準輸出，但工作處理器無法新增任何額外的診斷或修復資訊。 |
 
@@ -384,7 +384,7 @@ Run() 實作具有下列項目的存取權︰
 ### <a name="client-considerations"></a>用戶端考量
 **儲存體認證**
 
-如果工作處理器會使用 Azure Blob 儲存體來保存輸出 (例如使用檔案慣例協助程式程式庫)，則它需要存取雲端儲存體帳戶認證或包含共用存取簽章 (SAS) 的 Blob 容器 URL。 範本支援透過常見環境變數來提供認證。 用戶端可以如下所示傳遞儲存體認證︰
+如果工作處理器會使用 Azure Blob 儲存體來保存輸出 (例如使用檔案慣例協助程式程式庫)，則它需要存取** 雲端儲存體帳戶認證或** 包含共用存取簽章 (SAS) 的 Blob 容器 URL。 範本支援透過常見環境變數來提供認證。 用戶端可以如下所示傳遞儲存體認證︰
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -409,7 +409,7 @@ job.CommonEnvironmentSettings = new [] {
 * Batch 帳戶 URL
 * Batch 帳戶金鑰
 
-Batch 服務具有簡單的機制，可使用[可 microsoft.azure.batch.jobmanagertask][net_jobmanagertask]中的 `EnvironmentSettings` 屬性，將環境設定傳遞至作業管理員工作。
+Batch 服務具有簡單的機制，可在 [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] 中使用 `EnvironmentSettings` 屬性，將環境設定傳遞至作業管理員工作。
 
 例如，若要取得 Batch 帳戶的 `BatchClient` 執行個體，您可以環境變數的形式從用戶端程式碼傳遞 Batch 帳戶的 URL 和共用金鑰認證。 同樣地，若要存取連結至 Batch 帳戶的儲存體帳戶，您可使用環境變數的形式傳遞儲存體帳戶名稱和儲存體帳戶金鑰。
 
@@ -436,7 +436,7 @@ parameters.json 的資源檔案，如果找到，即會將它載入以做為參�
 
 ## <a name="next-steps"></a>後續步驟
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>將作業和工作輸出保存到 Azure 儲存體
-Batch 解決方案開發中另一個有用的工具是[Azure Batch 檔案慣例][nuget_package]。 在 Batch .NET 應用程式中使用此 .NET 類別庫 (目前為預覽版) 可在 Azure 儲存體中輕鬆地儲存或擷取工作輸出。 [保存 Azure Batch 作業和工作輸出](batch-task-output.md) 包含類別庫及其使用方式的完整討論。
+開發 Batch 解決方案時的另一個實用工具是 [Azure Batch 檔案慣例][nuget_package]。 在 Batch .NET 應用程式中使用此 .NET 類別庫 (目前為預覽版) 可在 Azure 儲存體中輕鬆地儲存或擷取工作輸出。 [保存 Azure Batch 作業和工作輸出](batch-task-output.md) 包含類別庫及其使用方式的完整討論。
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

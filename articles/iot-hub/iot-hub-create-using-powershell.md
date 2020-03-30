@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell Cmdlet 建立 Azure IoT 中樞 | Microsoft Docs
-description: 瞭解如何使用 PowerShell Cmdlet 來建立資源群組，然後在資源群組中建立 IoT 中樞。 另請瞭解如何移除中樞。
+description: 瞭解如何使用 PowerShell Cmdlet 創建資源組，然後在資源組中創建 IoT 中心。 還瞭解如何刪除集線器。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890594"
 ---
-# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 AzIotHub Cmdlet 建立 IoT 中樞
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用新 AzIotHub Cmdlet 創建 IoT 中心
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "73890594"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="connect-to-your-azure-subscription"></a>連線到 Azure 訂閱
+## <a name="connect-to-your-azure-subscription"></a>連接到 Azure 訂用帳戶
 
 如果您使用 Cloud Shell，表示您已登入訂用帳戶。 但如果您是在本機執行 PowerShell，請輸入下列命令來登入您的 Azure 訂用帳戶：
 
@@ -41,7 +41,7 @@ Login-AzAccount
 
 您需要一個資源群組來部署 IoT 中樞。 您可以使用現有的資源群組，或建立一個新的群組。
 
-若要為您的 IoT 中樞建立資源群組，請使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup)命令。 此範例會在**美國東部**區域中建立一個稱為 **MyIoTRG1** 的資源群組：
+要為 IoT 中心創建資源組，請使用[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup)命令。 此範例會在**美國東部**區域中建立一個稱為 **MyIoTRG1** 的資源群組：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
@@ -49,7 +49,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
-若要在您于上一個步驟中建立的資源群組中建立 IoT 中樞，請使用[AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub)命令。 此範例會在**美國東部**區域中建立一個稱為 **MyTestIoTHub** 的 **S1** 中樞：
+要在上一步驟中創建的資源組中創建 IoT 中心，請使用[New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub)命令。 此範例會在**美國東部**區域中建立一個稱為 **MyTestIoTHub** 的 **S1** 中樞：
 
 ```azurepowershell-interactive
 New-AzIotHub `
@@ -63,7 +63,7 @@ IoT 中樞名稱必須是全域唯一的。
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-您可以使用[AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub)命令來列出您訂用帳戶中的所有 IoT 中樞：
+您可以使用[Get-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub)命令列出訂閱中的所有 IoT 中心：
 
 ```azurepowershell-interactive
 Get-AzIotHub
@@ -71,7 +71,7 @@ Get-AzIotHub
 
 此範例會顯示您在上一個步驟中建立的 S1 標準 IoT 中樞。
 
-您可以使用[AzIotHub](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub)命令來刪除 IoT 中樞：
+您可以使用["刪除-AzIotHub"](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub)命令刪除 IoT 中心：
 
 ```azurepowershell-interactive
 Remove-AzIotHub `
@@ -79,7 +79,7 @@ Remove-AzIotHub `
     -Name MyTestIoTHub
 ```
 
-或者，您可以使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup)命令來移除資源群組及其包含的所有資源：
+或者，您可以使用[刪除 AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup)命令刪除資源組及其包含的所有資源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyIoTRG1
@@ -91,7 +91,7 @@ Remove-AzResourceGroup -Name MyIoTRG1
 
 * [搭配 IoT 中樞使用的 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/)。
 
-* [IoT 中樞資源提供者 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)。
+* [IoT 中心資來源提供者 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)。
 
 若要深入了解如何開發 IoT 中樞，請參閱以下文章︰
 

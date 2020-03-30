@@ -1,20 +1,19 @@
 ---
-title: Azure Marketplace VHD 建立期間的常見問題（FAQ）
+title: Azure 應用商店 VHD 創建 （FAQ） 期間的常見問題
 description: 建立 VHD 的常見問題與相關問題。
-services: Azure Marketplace
-author: MaggiePucciEvans
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/02/2018
-ms.author: evansma
+ms.author: dsindona
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: 152a2f6fda081b2612197cc4848207b336adf8dc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 192fea4101fb972ec66bb5f21a2a83f9903f0855
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934268"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278104"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD 建立過程中的常見問題 (常見問題集)
 
@@ -51,7 +50,7 @@ Azure Marketplace 目前不支援從位於受控儲存體或 Azure 進階儲存�
 ## <a name="how-do-you-configure-a-virtual-private-network-vpn-to-work-with-my-vms"></a>如何設定搭配我的虛擬機器使用的虛擬私人網路 (VPN)？
 
 如果您使用的是 Azure Resource Manager 部署模型，則可選擇以下三種設定 VPN 的常用選項：
-- [使用 Azure 入口網站建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
+- [使用 Azure 門戶創建基於路由的 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
 - [使用 PowerShell 來建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
 - [使用 CLI 來建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
 
@@ -77,7 +76,7 @@ Azure Marketplace 目前不支援從位於受控儲存體或 Azure 進階儲存�
 
 如需詳細資訊，請參閱下列文章：
 - [執行 32 位元應用程式](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications) (英文)
-- [在 Azure 的虛擬機器中的 32 位元作業系統的支援](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
+- [在 Azure 虛擬機器中的 32 位元作業系統支援](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [適用於 Microsoft Azure 虛擬機器的 Microsoft 伺服器軟體支援](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 

@@ -1,25 +1,25 @@
 ---
-title: 使用 PowerShell 管理 Azure 檔案共用備份
-description: 瞭解如何使用 PowerShell 來管理和監視由 Azure 備份服務所備份的 Azure 檔案共用。
+title: 使用 PowerShell 管理 Azure 檔共用備份
+description: 瞭解如何使用 PowerShell 管理和監視由 Azure 備份服務備份的 Azure 檔共用。
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083174"
 ---
-# <a name="manage-azure-file-share-backups-with-powershell"></a>使用 PowerShell 管理 Azure 檔案共用備份
+# <a name="manage-azure-file-share-backups-with-powershell"></a>使用 PowerShell 管理 Azure 檔共用備份
 
-本文說明如何使用 Azure PowerShell 來管理和監視由 Azure 備份服務所備份的 Azure 檔案共用。
+本文介紹如何使用 Azure PowerShell 管理和監視由 Azure 備份服務備份的 Azure 檔共用。
 
 > [!WARNING]
-> 請確定 PS 版本已升級為 AFS 備份的 ' Az. Azurerm.recoveryservices 2.6.0 ' 的最低版本。 如需詳細資訊，請參閱概述這項變更需求[一節](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)。
+> 確保 PS 版本升級到 AFS 備份的"Az.恢復服務 2.6.0"的最低版本。 有關詳細資訊，請參閱概述此更改要求[的部分](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)。
 
 ## <a name="modify-the-protection-policy"></a>修改保護原則
 
-若要變更用來備份 Azure 檔案共用的原則，請使用[enable-azrecoveryservicesbackupprotection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)。 指定相關的備份專案和新的備份原則。
+要更改用於備份 Azure 檔共用的策略，請使用[啟用-AzRecoveryServices 備份保護](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)。 指定相關的備份項和新的備份策略。
 
 下列範例會將 **testAzureFS** 保護原則從 **dailyafs** 變更為 **monthlyafs**。
 
@@ -32,7 +32,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="track-backup-and-restore-jobs"></a>追蹤備份和還原作業
 
-隨選備份和還原作業會連同識別碼一起傳回工作，如您[執行隨選備份](backup-azure-afs-automation.md#trigger-an-on-demand-backup)中所示。 使用[AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) Cmdlet 來追蹤作業進度和詳細資料。
+按需備份和還原操作返回作業以及 ID，如[運行按需備份](backup-azure-afs-automation.md#trigger-an-on-demand-backup)時所示。 使用[獲取-AzRecovery 服務備份作業詳細資訊](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0)Cmdlet 跟蹤作業進度和詳細資訊。
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -64,16 +64,16 @@ $job.ErrorDetails
 
 有兩種方式可停止保護 Azure 檔案共用︰
 
-* 停止所有未來的備份作業並*刪除*所有復原點
-* 停止所有未來的備份工作，但*保留*復原點
+* 停止所有將來的備份作業並*刪除*所有復原點
+* 停止所有將來的備份作業，但*離開*復原點
 
-在儲存體中保留復原點可能會產生相關成本，因為將會保留 Azure 備份所建立的基礎快照集。 不過，保留復原點的好處是您稍後可以視需要還原檔案共用。 如需復原點保留成本的相關資訊，請參閱 [定價詳細資料](https://azure.microsoft.com/pricing/details/storage/files/)。 如果您選擇刪除所有復原點，則無法還原檔案共用。
+由於 Azure 備份創建的基礎快照將保留，因此將存儲中存儲復原點可能存在成本。 但是，離開復原點的好處是，如果需要，您可以稍後還原檔共用。 有關離開復原點的成本的資訊，請參閱[定價詳細資訊](https://azure.microsoft.com/pricing/details/storage/files/)。 如果選擇刪除所有復原點，則無法還原檔共用。
 
 ## <a name="stop-protection-and-retain-recovery-points"></a>停止保護並保留復原點
 
-若要在保留資料時停止保護，請使用[enable-azrecoveryservicesbackupprotection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) Cmdlet。
+要在保留資料時停止保護，請使用[禁用-AzRecovery 服務備份保護](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0)Cmdlet。
 
-下列範例會停止*命名為 afsfileshare*檔案共用的保護，但會保留所有復原點：
+以下示例停止對*afsfileshare*檔共用的保護，但保留所有復原點：
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "afstesting" -Name "afstest" | select -ExpandProperty ID
@@ -87,13 +87,13 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-輸出中的作業識別碼屬性會對應至備份服務針對您的「停止保護」作業所建立之工作的作業識別碼。 若要追蹤作業的狀態，請使用[AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0) Cmdlet。
+輸出中的作業 ID 屬性對應于備份服務為"停止保護"操作創建的作業的作業 ID。 要跟蹤作業的狀態，請使用[獲取-AzRecovery 服務備份作業](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0)Cmdlet。
 
-## <a name="stop-protection-without-retaining-recovery-points"></a>停止保護，而不保留復原點
+## <a name="stop-protection-without-retaining-recovery-points"></a>停止保護而不保留復原點
 
-若要停止保護而不保留復原點，請使用[enable-azrecoveryservicesbackupprotection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) Cmdlet 並新增 **-RemoveRecoveryPoints**參數。
+要停止保護而不保留復原點，請使用[禁用-AzRecoveryServices 備份保護](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0)Cmdlet 並添加 **-刪除復原點**參數。
 
-下列範例會停止保護*命名為 afsfileshare*檔案共用，而不會保留復原點：
+以下示例停止保護*afsfileshare*檔共用而不保留復原點：
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "afstesting" -Name "afstest" | select -ExpandProperty ID
@@ -109,4 +109,4 @@ afsfileshare     DeleteBackupData     Completed      1/26/2020 2:50:57 PM      1
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解如何](manage-afs-backup.md)在 Azure 入口網站中管理 Azure 檔案共用備份。
+[瞭解如何](manage-afs-backup.md)在 Azure 門戶中管理 Azure 檔共用備份。

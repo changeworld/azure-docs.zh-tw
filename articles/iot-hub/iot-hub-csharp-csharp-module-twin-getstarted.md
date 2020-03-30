@@ -1,5 +1,5 @@
 ---
-title: 開始使用/Azure IoT 中樞模組識別 & 模組對應項（.NET）
+title: 使用 Azure IoT 中心模組標識&模組孿生 （.NET） 開始
 description: 了解如何使用適用於 .NET 的 SDK，建立模組身分識別及更新模組對應項。
 author: chrissie926
 ms.service: iot-hub
@@ -9,39 +9,39 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73947673"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>開始使用 IoT 中樞模組身分識別和模組對應項（.NET）
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>開始使用 IoT 中心模組標識和模組孿生 （.NET）
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別和裝置對應項可讓後端應用程式設定裝置，並提供裝置狀況的可見度，但模組身分識別和模組對應項會為裝置的個別元件提供這些功能。 在具有多個元件的可用裝置（例如以作業系統為基礎的裝置或固件裝置）上，模組身分識別和模組 twins 允許每個元件的隔離設定和條件。
+> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 當 Azure IoT 中心設備標識和設備孿生使後端應用程式能夠配置設備並提供設備條件的可見度時，模組標識和模組孿生為設備的單個元件提供這些功能。 在具有多個元件（如基於作業系統的設備或固件設備、模組標識和模組孿生）的功能設備上，允許為每個元件提供隔離的配置和條件。
 
 在本教學課程結尾，您會有兩個 .NET 主控台應用程式：
 
-* **CreateIdentities**。 此應用程式會建立裝置身分識別、模組身分識別，以及相關聯的安全性金鑰，以連接您的裝置和模組用戶端。
+* **創建標識**。 此應用創建設備標識、模組標識和相關安全金鑰以連接設備和模組用戶端。
 
-* **UpdateModuleTwinReportedProperties**。 此應用程式會將已更新的模組對應項報告屬性傳送至您的 IoT 中樞。
+* **更新模組孿生報告屬性**。 此應用程式向 IoT 中心發送更新的模組孿生報告屬性。
 
 > [!NOTE]
-> 如需可用來建置兩個應用程式，以在裝置上與解決方案後端執行的 Azure IoT SDK 詳細資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
+> 如需可用來建置兩個應用程式，以在裝置與您的解決方案後端執行之 Azure IoT SDK 的相關資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 。
+* Visual Studio。
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需幾分鐘即可創建[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-hub"></a>建立中樞
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
+## <a name="get-the-iot-hub-connection-string"></a>獲取 IoT 中心連接字串
 
 [!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
@@ -53,25 +53,25 @@ ms.locfileid: "73947673"
 
 在這一節中，您會在模擬裝置上建立 .NET 主控台應用程式，以便更新模組對應項報告的屬性。
 
-開始之前，請先取得您的模組連接字串。 登入 [Azure 入口網站](https://portal.azure.com/)。 流覽至您的中樞，然後選取 [ **IoT 裝置**]。 尋找**myFirstDevice**。 選取 [ **myFirstDevice** ] 將其開啟，然後選取 [ **myFirstModule** ] 以開啟它。 在 [**模組身分識別詳細資料**] 中，複製下列程式中所需的**連接字串（主要金鑰）** 。
+開始之前，獲取模組連接字串。 登錄到 Azure[門戶](https://portal.azure.com/)。 導航到您的中心並選擇**IoT 設備**。 查找**我的第一個設備**。 選擇**myFirstDevice**將其打開，然後選擇**myFirstModule**將其打開。 在**模組標識詳細資訊**中，在以下過程中根據需要複製**連接字串（主鍵）。**
 
    ![Azure 入口網站模組詳細資料](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. 在 Visual Studio 中 **，選取 [** 檔案 > **新增** > **專案**]，將新專案新增至方案。 在 [建立新專案] 中，選取 [**主控台應用程式（.NET Framework）** ]，然後選取 **[下一步]** 。
+1. 在 Visual Studio 中，通過選擇 **"檔** > **新專案** > **"將**新專案添加到解決方案中。 在創建新專案時，選擇**主控台應用 （.NET 框架），** 然後選擇 **"下一步**"。
 
-1. 將專案命名為 *UpdateModuleTwinReportedProperties*。 針對 [**方案**]，選取 [**新增至方案**]。 確定 .NET Framework 為 4.6.1 或更新版本。
+1. 將專案命名為 *UpdateModuleTwinReportedProperties*。 對於**解決方案**，選擇 **"添加到解決方案**"。 確定 .NET Framework 為 4.6.1 或更新版本。
 
     ![建立 Visual Studio 專案](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-1. 選取 [**建立**] 以建立您的專案。
+1. 選擇 **"創建**"以創建專案。
 
-1. 在 Visual Studio 中，開啟 [**工具**] [ > **nuget 套件管理員**] > [**管理解決方案的 nuget 套件**]。 選取 [瀏覽] 索引標籤。
+1. 在視覺化工作室中，打開**工具** > **NuGet 包管理器** > **管理 NuGet 包以進行解決方案**。 選取 [瀏覽]**** 索引標籤。
 
-1. 搜尋並選取 [ **Microsoft. Azure**]，然後選取 [**安裝**]。
+1. 搜索並選擇**Microsoft.Azure.Devices.用戶端**，然後選擇 **"安裝**"。
 
-    ![安裝 Azure IoT 中樞 .NET 服務 SDK 目前版本](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    ![安裝 Azure IoT 中心 .NET 服務 SDK 當前版本](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. 在 `using`Program.cs**檔案開頭處新增下列** 陳述式：
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -111,7 +111,7 @@ ms.locfileid: "73947673"
         }
     ```
 
-1. 將下列幾行新增至**Main**方法：
+1. 將以下行添加到**Main**方法：
 
     ```csharp
     static void Main(string[] args)
@@ -151,7 +151,7 @@ ms.locfileid: "73947673"
 
     此程式碼範例顯示如何擷取模組對應項，並使用 AMQP 通訊協定更新報告的屬性。 在公開預覽中，我們只支援 AMQP 進行模組對應項作業。
 
-1. （選擇性）您可以將這些語句新增至**Main**方法，以從您的模組將事件傳送至 IoT 中樞。 將這些行放在 `try catch` 區塊底下。
+1. 或者，您可以將這些語句添加到**Main**方法，以便從模組向 IoT 中心發送事件。 將這些線放在塊下方`try catch`。
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -164,15 +164,15 @@ ms.locfileid: "73947673"
 
 ## <a name="run-the-apps"></a>執行應用程式
 
-您現在可以執行應用程式。
+您現在可以運行應用。
 
-1. 在 Visual Studio 的**方案總管**中，以滑鼠右鍵按一下您的方案，然後選取 [**設定啟始專案**]。
+1. 在視覺化工作室中，在**解決方案資源管理器**中，按右鍵您的解決方案，然後選擇"**設置啟動專案**"。
 
-1. 在 [**通用屬性**] 下，選取 [**啟始專案]。**
+1. 在 **"通用屬性**"下，選擇**啟動專案。**
 
-1. 選取 [**多個啟始專案**]，然後選取 [**啟動**] 作為應用程式的動作，然後按一下 **[確定]** 以接受變更。
+1. 選擇**多個啟動專案**，然後選擇 **"開始**"作為應用的操作，**然後選擇"確定**"以接受您的更改。
 
-1. 按**F5**啟動應用程式。
+1. 按**F5**啟動應用。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 將作業和工作輸出保存至資料存放區-Azure Batch
+title: 持久作業和任務輸出到資料存儲 - Azure 批次處理
 description: 深入了解從 Batch 工作和作業保存輸出資料的不同選項。 您可以將資料保存到 Azure 儲存體，或是另一個資料存放區。
 services: batch
 author: LauraBrenner
@@ -14,10 +14,10 @@ ms.date: 11/14/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0809a838f1d34491eb4e276ce356eded9b98756e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022829"
 ---
 # <a name="persist-job-and-task-output"></a>持續作業及工作輸出
@@ -54,7 +54,7 @@ Batch 會定義一組選擇性的慣例，可在 Azure 儲存體中命名工作�
 
 您可決定是否要使用檔案慣例標準來命名輸出資料檔案。 您也可以任何方式命名目的地容器和 blob。 如果您要針對命名輸出檔案使用檔案慣例標準，您的輸出檔案就可在 [Azure 入口網站][portal]中檢視。
 
-使用C#和 .Net 建立 Batch 解決方案的開發人員可以使用[適用于 .Net][nuget_package]的檔案慣例程式庫，根據[批次檔慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)，將工作資料保存到 Azure 儲存體帳戶。 檔案慣例程式庫可處理將輸出檔案移動至 Azure 儲存體，並使用已知方法命名目的地容器和 blob。
+使用 C# 和 .NET 建置 Batch 解決方案的開發人員可以使用 [適用於 .NET 的檔案慣例][nuget_package] ，根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)，將工作資料保存至 Azure 儲存體帳戶。 檔案慣例程式庫可處理將輸出檔案移動至 Azure 儲存體，並使用已知方法命名目的地容器和 blob。
 
 如需使用適用於 .NET 的檔案慣例程式庫來保存工作輸出的詳細資訊，請參閱[使用適用於 .NET 的 Batch 檔案慣例程式庫，將作業和工作資料保存到 Azure 儲存體](batch-task-output-file-conventions.md)。
 
@@ -82,13 +82,13 @@ Batch 會定義一組選擇性的慣例，可在 Azure 儲存體中命名工作�
 
 - **輸出擷取**：如果您已保存工作輸出，就可以從集區中的計算節點，或從 Azure 儲存體或另一個資料存放區直接擷取工作輸出。 若要直接從計算節點擷取工作的輸出，您需要檔案名稱和該檔案在節點上的輸出位置。 如果您將工作輸出保存到 Azure 儲存體，就需要 Azure 儲存體中的檔案完整路徑，才能下載輸出檔案與 Azure 儲存體 SDK。
 
-- **檢視輸出**：當您在 Azure 入口網站中瀏覽至 Batch 工作並選取 [節點上的檔案] 時，系統將會顯示與該工作相關聯的所有檔案，而不只是您感興趣的輸出檔案。 同樣地，只有當運算節點存在時，且僅在您針對該工作設定的保留期內，才能取得該節點的檔案。 若要查看您已保存到 Azure 儲存體的工作輸出，您可以使用 Azure 入口網站或 Azure 儲存體的用戶端應用程式，例如[Azure 儲存體總管][storage_explorer]。 若要使用入口網站或其他工具檢視 Azure 儲存體中的輸出資料，您必須知道檔案的位置，並直接瀏覽至該位置。
+- **檢視輸出**：當您在 Azure 入口網站中瀏覽至 Batch 工作並選取 [節點上的檔案]**** 時，系統將會顯示與該工作相關聯的所有檔案，而不只是您感興趣的輸出檔案。 同樣地，只有當運算節點存在時，且僅在您針對該工作設定的保留期內，才能取得該節點的檔案。 若要檢視您已保存到 Azure 儲存體的工作輸出，可以使用 Azure 入口網站或 Azure 儲存體用戶端應用程式，例如 [Azure 儲存體總管][storage_explorer]。 若要使用入口網站或其他工具檢視 Azure 儲存體中的輸出資料，您必須知道檔案的位置，並直接瀏覽至該位置。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 使用 Batch 服務 API 中的新功能進行瀏覽，可保存[使用 Batch 服務 API 將工作資料保存到 Azure 儲存體](batch-task-output-files.md)中的工作資料。
 - 在[使用適用於 .NET 的 Batch 檔案慣例程式庫，將作業和工作資料保存到 Azure 儲存體](batch-task-output-file-conventions.md)中，了解如何使用適用於 .NET 的檔案慣例程式庫。
-- 請參閱 GitHub 上的[PersistOutputs][github_persistoutputs]範例專案，其示範如何使用適用于 .Net 的 Batch 用戶端程式庫和適用于 .net 的檔案慣例程式庫，將工作輸出保存到永久性儲存體。
+- 請參閱 GitHub 上的 [PersistOutputs][github_persistoutputs] 範例專案，示範如何使用適用於 .NET 的 Batch 用戶端程式庫和適用於 .NET 的檔案慣例程式庫，將工作輸出保存到永久儲存體。
 
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

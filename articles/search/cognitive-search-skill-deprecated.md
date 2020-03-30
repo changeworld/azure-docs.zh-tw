@@ -1,7 +1,7 @@
 ---
-title: 已淘汰的認知技能
+title: 棄用的認知技能
 titleSuffix: Azure Cognitive Search
-description: 此頁面包含被視為已淘汰的認知技能清單，在不久的未來 Azure 認知搜尋技能集中不會提供支援。
+description: 此頁包含被視為已棄用的認知技能的清單，在不久的將來 Azure 認知搜索技能集中將不支援這些技能。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792024"
 ---
-# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 認知搜尋中已淘汰的認知技能
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure 認知搜索中的已棄用認知技能
 
 本文件描述已淘汰的認知技能。 使用下列指南取得內容：
 
 * 技能名稱：即將淘汰的技能名稱，其對應至 @odata.type 屬性。
-* 上次可用的 api 版本： Azure 認知搜尋公用 API 的最後一個版本，您可以在其中建立/更新包含對應已淘汰技能的技能集。
+* 最後可用的 api 版本：通過該版本創建/更新包含相應棄用技能的技能集的最後一個版本。
 * 結束支援：對應技能已視為不受支援後的最後一天。 先前建立的技能集應會繼續運作，但建議使用者遷移出已淘汰的技能。
 * 建議：將路徑遷移至受支援的技能。 建議使用者遵循建議，以便繼續獲得支援。
 
@@ -43,11 +43,11 @@ ms.locfileid: "72792024"
 > [!NOTE]
 > 目前不支援信賴分數作為概念。 `minimumPrecision` 參數會存在於 `EntityRecognitionSkill` 以供日後使用，並提供回溯相容性。
 
-1. 「(必要)」將 `@odata.type` 從 `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` 變更至 `"#Microsoft.Skills.Text.EntityRecognitionSkill"`。
+1. 「(必要)」** 將 `@odata.type` 從 `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` 變更至 `"#Microsoft.Skills.Text.EntityRecognitionSkill"`。
 
-2. 「(選擇性)」如果您正在使用 `entities` 輸出，請改為使用 `EntityRecognitionSkill` 中的 `namedEntities` 複雜集合輸出。 您可以使用技能定義中的 `targetName`，將其對應至稱為 `entities` 的註釋。
+2. 「(選擇性)」** 如果您正在使用 `entities` 輸出，請改為使用 `EntityRecognitionSkill` 中的 `namedEntities` 複雜集合輸出。 您可以使用技能定義中的 `targetName`，將其對應至稱為 `entities` 的註釋。
 
-3. 「(選擇性)」如果您未明確指定 `categories`，則除了先前受 `NamedEntityRecognitionSkill` 支援的類別外，`EntityRecognitionSkill` 可能會傳回不同類型的類別。 如果您不希望有此行為，請務必將 `categories` 參數明確設定為 `["Person", "Location", "Organization"]`。
+3. 「(選擇性)」** 如果您未明確指定 `categories`，則除了先前受 `NamedEntityRecognitionSkill` 支援的類別外，`EntityRecognitionSkill` 可能會傳回不同類型的類別。 如果您不希望有此行為，請務必將 `categories` 參數明確設定為 `["Person", "Location", "Organization"]`。
 
     _範例移轉定義_
 
@@ -145,8 +145,8 @@ ms.locfileid: "72792024"
         }
         ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
-+ [如何定義技能集](cognitive-search-defining-skillset.md)
++ [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [實體辨識技能](cognitive-search-skill-entity-recognition.md)

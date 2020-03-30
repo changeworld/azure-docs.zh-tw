@@ -1,6 +1,6 @@
 ---
 title: 遠端監視解決方案加速器的常見問題集 - Azure | Microsoft Docs
-description: 本文會回答遠端監視解決方案加速器的常見問題。
+description: 本文回答了遠端監視解決方案加速器的常見問題。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826243"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>遠端監視解決方案加速器的常見問題集
@@ -23,8 +23,8 @@ ms.locfileid: "73826243"
 
 新的解決方案加速器提供兩種部署選項：
 
-* 基本選項，是針對尋求降低開發成本的開發人員，或需要建置示範或概念證明的客戶所設計。
-* 標準選項，是針對需要部署備妥基礎結構的企業而設計。
+* 基本** 選項，是針對尋求降低開發成本的開發人員，或需要建置示範或概念證明的客戶所設計。
+* 標準** 選項，是針對需要部署備妥基礎結構的企業而設計。
 
 ### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>如何確定我在開發解決方案的同時保持降低成本？
 
@@ -40,13 +40,13 @@ ms.locfileid: "73826243"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>哪裡可以找到舊版遠端監視解決方案的相關資訊？
 
-舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 上找到封存的文件。
+舊版遠端監視解決方案加速器稱為 IoT 套件遠端監視預先設定解決方案。 您可以在 中找到 存檔的文檔。 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)
 
 ### <a name="next-steps"></a>後續步驟
 
 您也可以探索 IoT 解決方案加速器的一些其他特性與功能：
 
-* [探索遠端監視解決方案加速器的功能](quickstart-remote-monitoring-deploy.md)
+* [探索遠端監控解決方案加速器的功能](quickstart-remote-monitoring-deploy.md)
 * [預測性維護解決方案加速器概觀](iot-accelerators-predictive-overview.md)
 * [部署連線的處理站解決方案加速器](quickstart-connected-factory-deploy.md) \(英文\)
 * [從頭建立 IoT 安全性](/azure/iot-fundamentals/iot-security-ground-up)

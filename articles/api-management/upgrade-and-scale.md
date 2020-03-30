@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
 ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70018242"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升級和調整 Azure API 管理執行個體的規模  
@@ -29,7 +29,7 @@ ms.locfileid: "70018242"
 >[!NOTE]
 >[定價詳細資料](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)一文顯示每一層單位容量的大約數字。 若要取得更精確的數字，則需要查看 API 的實際情節。 請參閱 [Azure API 管理執行個體的容量](api-management-capacity.md)一文。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依照本文中的步驟進行，您必須：
 
@@ -54,24 +54,24 @@ ms.locfileid: "70018242"
 您可以升級到任何階層，也能從任何階層降級。 請注意，升級或降級可以移除某些功能；例如，從進階層降級到標準層或基本層時，就會移除 VNET 或多區域部署。
 
 > [!NOTE]
-> 升級或調整程序需要 15 到 45 分鐘才會生效。 完成時, 您會收到通知。
+> 升級或調整程序需要 15 到 45 分鐘才會生效。 完成後，您將收到通知。
 
 > [!NOTE]
-> 取用層中的 API管理服務會根據流量自動調整。
+> **消耗**層中的 API 管理服務根據流量自動縮放。
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>使用 Azure 入口網站來升級和調整規模
 
 ![在 Azure 入口網站中調整 APIM](./media/upgrade-and-scale/portal-scale.png)
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽至您的 APIM 執行個體。
-2. 從功能表選取 [級別與價格]。
+1. 導航到[Azure 門戶](https://portal.azure.com/)中的 APIM 實例。
+2. 從功能表選取 [級別與價格]****。
 3. 挑選所需階層。
 4. 指定您想要新增的**單位**數。 您可以使用滑桿或輸入單位數。  
     如果您選擇**進階**層，則必須先選取區域。
-5. 按下 [儲存]。
+5. 按下 [儲存] ****。
 
-## <a name="downtime-during-scaling-up-and-down"></a>相應增加和減少期間的停機時間
-如果您要從開發人員層級進行調整, 則會有停機時間。 否則, 就不會有停機時間。 
+## <a name="downtime-during-scaling-up-and-down"></a>上下擴展過程中的停機時間
+如果要從開發人員層縮放或擴展到開發人員層，則會有停機時間。 否則，沒有停機時間。 
 
 
 ## <a name="next-steps"></a>後續步驟

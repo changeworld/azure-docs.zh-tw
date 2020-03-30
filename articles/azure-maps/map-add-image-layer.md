@@ -1,6 +1,6 @@
 ---
-title: 將影像圖層新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來覆迭地圖上的影像。
+title: 向地圖添加圖像圖層 |微軟 Azure 地圖
+description: 在本文中，您將瞭解如何使用 Microsoft Azure 地圖 Web SDK 在地圖上疊加圖像。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,35 +10,35 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209710"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>在地圖中新增影像圖層
 
-本文說明如何將影像重迭成一組固定的座標。 以下是幾個可在地圖上重迭之不同影像類型的範例：
+本文介紹如何將圖像疊加到一組固定的座標。 下面是一些可以疊加在地圖上的不同圖像類型的示例：
 
-* 從無人機所捕獲的映射
-* 建立 floorplans
-* 歷程記錄或其他特製化地圖影像
-* 作業網站的藍圖
-* 氣象雷達圖影像
+* 從無人機捕獲的圖像
+* 建築平面圖
+* 歷史或其他專用地圖圖像
+* 作業地點的藍圖
+* 天氣雷達圖像
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是一種簡單的方式，可在地圖上疊加影像。 請注意，瀏覽器可能難以載入大型影像。 在此情況下，請考慮將您的影像分解成磚，並將其載入至地圖中做為[TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)。
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是一種在地圖上疊加圖像的簡單方法。 請注意，瀏覽器可能難以載入大型圖像。 在這種情況下，請考慮將圖像分解為切片，並將其載入到地圖中作為[TileLayer。](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 
-影像層支援下列影像格式：
+圖像圖層支援以下圖像格式：
 
 - JPEG
 - PNG
 - BMP
-- GIF （沒有動畫）
+- GIF（無動畫）
 
 ## <a name="add-an-image-layer"></a>新增映像圖層
 
-下列程式碼會從地圖上的[1922 中，覆迭紐華克、New Jersey 的地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)影像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)的建立方式是將 URL 傳遞給影像，並以 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`的格式來協調四個角落。
+以下代碼在地圖上疊加了[1922 年新澤西州紐華克地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的圖像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是通過將 URL 傳遞給圖像來創建的，並且以格式`[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`對四個角的座標。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,18 +53,18 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-以下是上述程式碼的完整執行程式碼範例。
+下面是前面代碼的完整運行代碼示例。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='簡單的影像圖層' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>簡單的影像圖層</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="import-a-kml-file-as-ground-overlay"></a>匯入 KML 檔案作為基礎重迭
+## <a name="import-a-kml-file-as-ground-overlay"></a>將 KML 檔導入地面疊加
 
-這個範例會示範如何將 KML 地面重迭資訊新增為地圖上的影像圖層。 KML 地面重迭提供北、南、東和西座標，以及逆時針旋轉。 但是，影像圖層預期影像的每個角落都會有座標。 此範例中的 KML 基礎重迭適用于 Chartres cathedral，其來自[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
+此示例演示如何在地圖上將 KML 地面疊加資訊添加為圖像圖層。 KML 地面疊加提供北、南、東和西座標，以及逆時針旋轉。 但是，圖像圖層需要圖像的每個角的座標。 此示例中的 KML 地面覆蓋是為查特雷斯大教堂，它來自[維琪媒體](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-程式碼會使用[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類別中的靜態 `getCoordinatesFromEdges` 函式。 它會使用 KML 地面重迭的北部、南部、東、west 和旋轉資訊來計算影像的四個角落。
+代碼使用`getCoordinatesFromEdges`[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類中的靜態函數。 它使用 KML 地面疊加的北、南、東、西和旋轉資訊計算圖像的四個角。
 
 <br/>
 
@@ -73,7 +73,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="customize-an-image-layer"></a>自訂影像圖層
 
-影像圖層有許多樣式選項。 以下是用來試用的工具。
+圖像圖層具有許多樣式選項。 這裡有一個工具來嘗試它們。
 
 <br/>
 

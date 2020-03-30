@@ -1,5 +1,5 @@
 ---
-title: 使用現有的 IoT 中樞搭配裝置模擬解決方案-Azure |Microsoft Docs
+title: 將現有的 IoT 中心與設備類比解決方案一起使用 - Azure |微軟文檔
 description: 本文說明如何設定「裝置模擬」解決方案加速器以使用現有的 IoT 中樞。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889186"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>使用現有的 IoT 中樞搭配裝置模擬解決方案加速器
@@ -25,9 +25,9 @@ ms.locfileid: "73889186"
 
 若要使用預先存在的 IoT 中樞，您需要 **iothubowner** 共用存取原則的連接字串。 您可以從 [Azure 入口網站](https://portal.azure.com)取得此連接字串：
 
-1. 在入口網站中的中樞設定頁面上，按一下 [共用存取原則]。
+1. 在入口網站中的中樞設定頁面上，按一下 [共用存取原則]****。
 
-1. 按一下 [iothubowner]。
+1. 按一下 [iothubowner]****。
 
 1. 複製主要連接字串或次要連接字串。
 

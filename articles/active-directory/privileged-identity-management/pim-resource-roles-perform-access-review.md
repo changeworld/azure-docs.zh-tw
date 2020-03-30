@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中審查對 Azure 資源角色的存取-Azure AD |Microsoft Docs
-description: 瞭解如何在 Azure AD Privileged Identity Management （PIM）中審查 Azure 資源角色的存取權。
+title: 查看對 PIM 中 Azure 資源角色的訪問 - Azure AD |微軟文檔
+description: 瞭解如何在 Azure AD 特權標識管理 （PIM） 中查看 Azure 資源角色的訪問。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,37 +17,37 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ddb4d0ff1339f1427c5041528cdbe464a345b37
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847008"
 ---
-# <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中審查 Azure 資源角色的存取權
+# <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>查看對特權標識管理中的 Azure 資源角色的訪問
 
-Privileged Identity Management （PIM）存取審查有助於保護 Azure Active Directory （Azure AD）中特殊許可權角色的存取。 本文將說明如何在 Azure AD 的存取權審查中完成特殊許可權角色指派的檢查步驟。
+特權標識管理 （PIM） 訪問審核可説明保護對 Azure 活動目錄 （Azure AD） 中特權角色的訪問。 本文介紹在 Azure AD 訪問審閱中完成審核特權角色指派的步驟。
 
-如果您指派給系統管理角色，您可能需要先完成存取權審查，才能確認您的角色需求。 確認要求可能會收到包含連結的電子郵件，或者您可以在[Azure 入口網站](https://portal.azure.com)中確認。
+如果您被分配到管理角色，則可能需要管理員完成訪問審核，以確認是否需要角色。 確認請求可以附帶包含連結的電子郵件，也可以在[Azure 門戶](https://portal.azure.com)中進行確認。
 
 如果您是對存取權檢閱感興趣的特殊權限角色管理員，請在 [如何開始存取權檢閱](pim-resource-roles-start-access-review.md)中取得更多詳細資訊。
 
 ## <a name="approve-or-deny-access"></a>核准或拒絕存取
 
-您可以根據您是否仍然使用此角色來核准或拒絕存取。 如果您想要繼續擔任此角色，請選擇 [核准]，如果您不再需要此存取權，則請選擇 [拒絕]。 只有在審核者套用結果之後，您的狀態才會變更。
+您可以根據是否仍使用此角色來批准或拒絕存取權限。 如果您想要繼續擔任此角色，請選擇 [核准]****，如果您不再需要此存取權，則請選擇 [拒絕]****。 只有在檢閱者應用結果後，您的狀態才會更改。
 
 請依照下列步驟來尋找並完成存取權檢閱︰
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 選取**Azure Active Directory**並開啟**Privileged Identity Management**。
-1. 選取 [**審查存取**]。
+1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 選擇**Azure 活動目錄**並打開**特權標識管理**。
+1. 選擇 **"審閱存取權限**"。
 
-   ![已選取 [審核存取] 分頁的 Privileged Identity Management 應用程式的螢幕擷取畫面](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
+   ![特權身份管理應用程式的螢幕截圖，並選擇了查看訪問邊欄選項卡](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 1. 選取您想要完成的檢閱。
-1. 選擇 [**核准**] 或 [**拒絕**]。 在 [**提供原因**] 方塊中，視需要為您的決策輸入業務理由。
+1. 選擇 **"批准**"或 **"拒絕**"。 在 **"提供原因"框中**，根據需要輸入決策的業務理由。
 
    ![檢閱詳細資料頁面的螢幕擷取畫面](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在 Privileged Identity Management 中執行我的 Azure AD 角色的存取權檢查](pim-how-to-perform-security-review.md)
+- [在特權標識管理中對 Azure AD 角色執行訪問審查](pim-how-to-perform-security-review.md)

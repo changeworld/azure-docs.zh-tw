@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services 備份與還原 | Microsoft Docs
-description: 本文說明如何從 Azure Analysis Services 資料庫備份和還原模型中繼資料和資料。
+description: 本文介紹如何從 Azure 分析服務資料庫備份和還原模型中繼資料和資料。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573439"
 ---
 # <a name="backup-and-restore"></a>備份與還原
@@ -23,7 +23,7 @@ ms.locfileid: "73573439"
 > 
 > 
 
-備份會以 .abf 副檔名儲存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
+備份使用 .abf 擴展保存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
 
 
 ## <a name="configure-storage-settings"></a>設定儲存體設定
@@ -31,11 +31,11 @@ ms.locfileid: "73573439"
 
 
 ### <a name="to-configure-storage-settings"></a>設定儲存體設定
-1.  在 Azure 入口網站 > [設定] 中，按一下 [備份]。
+1.  在 Azure 入口網站 > [設定]**** 中，按一下 [備份]****。
 
     ![[設定] 中的 [備份]](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  按一下 [已啟用]，然後按一下 [儲存體設定]。
+2.  按一下 [已啟用]****，然後按一下 [儲存體設定]****。
 
     ![啟用](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -49,17 +49,17 @@ ms.locfileid: "73573439"
 
     ![儲存備份設定](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup 
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 來進行備份
 
-1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [備份]。
+1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [備份]****。
 
-2. 在 [備份資料庫] > [備份檔案] 中，按一下 [瀏覽]。
+2. 在**備份資料庫** > **備份檔案中**，按一下"**流覽**"。
 
-3. 在 [另存新檔] 對話方塊中，確認資料夾路徑，然後輸入備份檔案的名稱。 
+3. 在 [另存新檔]**** 對話方塊中，確認資料夾路徑，然後輸入備份檔案的名稱。 
 
-4. 在 [備份資料庫] 對話方塊中，選取選項。
+4. 在 [備份資料庫]**** 對話方塊中，選取選項。
 
     **允許檔案覆寫** - 若要覆寫同名的備份檔案，請選取此選項。 如果未選取此選項，您要儲存的檔案就不能與相同位置中已經存在的檔案同名。
 
@@ -67,7 +67,7 @@ ms.locfileid: "73573439"
 
     **加密備份檔案** - 若要將備份檔案加密，請選取此選項。 此選項需要有使用者提供的密碼來保護備份檔案。 此密碼可防止以還原作業以外的任何其他方式讀取備份資料。 如果您選擇將備份加密，請將密碼儲存在安全的位置。
 
-5. 按一下 [確定] 以建立並儲存備份檔案。
+5. 按一下 [確定]**** 以建立並儲存備份檔案。
 
 
 ### <a name="powershell"></a>PowerShell
@@ -85,13 +85,13 @@ ms.locfileid: "73573439"
 
 ### <a name="to-restore-by-using-ssms"></a>使用 SSMS 來進行還原
 
-1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [還原]。
+1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [還原]****。
 
-2. 在 [備份資料庫] 對話方塊的 [備份檔案] 中，按一下 [瀏覽]。
+2. 在 [備份資料庫]**** 對話方塊的 [備份檔案]**** 中，按一下 [瀏覽]****。
 
-3. 在 [尋找資料庫檔案] 對話方塊中，選取您想要還原的檔案。
+3. 在 [尋找資料庫檔案]**** 對話方塊中，選取您想要還原的檔案。
 
-4. 在 [還原資料庫] 中，選取資料庫。
+4. 在 [還原資料庫]**** 中，選取資料庫。
 
 5. 指定選項。 安全性選項必須與您備份時所使用的備份選項相符。
 

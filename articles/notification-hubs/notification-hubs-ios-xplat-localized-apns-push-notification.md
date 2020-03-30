@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞將當地語系化的推播通知傳送至 iOS |Microsoft Docs
+title: 使用 Azure 通知中心向 iOS 發送當地語系化的推送通知 |微軟文檔
 description: 了解如何使用 Azure 通知中樞將當地語系化的通知推送至 iOS 裝置。
 services: notification-hubs
 documentationcenter: ios
@@ -17,19 +17,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72385649"
 ---
-# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將當地語系化的推播通知傳送至 iOS
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 發送當地語系化推送通知
 
 > [!div class="op_single_selector"]
 > * [Windows 市集 C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-本教學課程說明如何使用 Azure 通知中樞的[範本](notification-hubs-templates-cross-platform-push-messages.md)功能，廣播已依語言及裝置進行當地語系化的即時新聞通知。 在本教學課程中，您必須以在[使用通知中樞傳送即時新聞]中所建立 iOS 應用程式為基礎。 完成時，您可以註冊您感興趣的類別、指定用來接收通知的語言，以及僅接收該語言中所選類別的推播通知。
+本教學課程說明如何使用 Azure 通知中樞的[範本](notification-hubs-templates-cross-platform-push-messages.md)功能，廣播已依語言及裝置進行當地語系化的即時新聞通知。 在本教程中，您從使用通知中心創建的 iOS 應用開始[發送突發新聞]。 完成後，您可以註冊您感興趣的類別，指定接收通知的語言，並僅接收該語言中所選類別的推送通知。
 
 此案例分成兩部分：
 
@@ -44,14 +44,14 @@ ms.locfileid: "72385649"
 > * 從 .NET 主控台應用程式傳送當地語系化的範本通知
 > * 從裝置傳送當地語系化的範本通知
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-在[使用通知中樞傳送即時新聞]中，您已建置使用**標記**來訂閱不同即時新聞類別通知的應用程式。 但有許多應用程式是以多個市場為目標的，因此需要當地語系化。 這表示通知本身的內容必須進行當地語系化，並傳遞至正確的裝置集。 本教學課程會說明如何使用通知中樞的**範本**功能，輕鬆地傳遞已當地語系化的即時新聞通知。
+在["使用通知中心發送突發新聞]"中，您構建了一個應用，該應用程式使用**標記**訂閱不同新聞類別的通知。 但有許多應用程式是以多個市場為目標的，因此需要當地語系化。 這表示通知本身的內容必須進行當地語系化，並傳遞至正確的裝置集。 本教學課程會說明如何使用通知中樞的**範本**功能，輕鬆地傳遞已當地語系化的即時新聞通知。
 
 > [!NOTE]
 > 傳送當地語系化通知的其中一個方法，是為每個標記建立多個版本。 例如，若要支援英文、法文和中文，您必須為世界新聞建立三個不同的標記："world_en"、"world_fr" 和 "world_ch"。 接著，您必須將世界新聞的當地語系化版本分別傳送至這三個標記。 在本主題中，您會使用範本來避免使用過多的標籤和傳送過多訊息。
 
-範本是指定特定裝置應如何接收通知的方式。 範本可參照您的應用程式後端所傳送的訊息中包含的屬性，藉以指定確切的裝載格式。 在您的案例中，您會傳送地區設定無從驗證且包含所有支援語言的訊息：
+範本是指定特定設備應如何接收通知的一種方式。 範本可參照您的應用程式後端所傳送的訊息中包含的屬性，藉以指定確切的裝載格式。 在您的案例中，您會傳送地區設定無從驗證且包含所有支援語言的訊息：
 
 ```json
 {
@@ -73,16 +73,16 @@ ms.locfileid: "72385649"
 
 如需範本的詳細資訊，請參閱[範本](notification-hubs-templates-cross-platform-push-messages.md)一文。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[將通知推送至特定的 iOS 裝置](notification-hubs-ios-xplat-segmented-apns-push-notification.md)教學課程並具備該教學課程中的程式碼，因為本教學課程是以該程式碼為基礎。
-* Visual Studio 2019 是選擇性的。
+* 視覺工作室 2019 是可選的。
 
 ## <a name="update-the-app-user-interface"></a>更新應用程式使用者介面
 
 在本節中，您會修改在[使用通知中樞傳送即時新聞]主題中所建立的即時新聞應用程式，以使用範本來傳送當地語系化的即時新聞。
 
-在您的 `MainStoryboard_iPhone.storyboard` 中，新增具有三種語言的分段控制：英文、法文和普通話。
+在`MainStoryboard_iPhone.storyboard`中，添加分段控制項，包括三種語言：英語、法語和普通話。
 
 ![建立 iOS UI 分鏡腳本][13]
 
@@ -92,7 +92,7 @@ ms.locfileid: "72385649"
 
 ## <a name="build-the-ios-app"></a>建置 iOS 應用程式
 
-1. 在您的 `Notification.h` 中，新增 `retrieveLocale` 方法，並修改 store 和訂閱者法，如下列程式碼所示：
+1. 在`Notification.h`中，添加`retrieveLocale`方法，並修改存儲和訂閱者法，如以下代碼所示：
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -266,7 +266,7 @@ ms.locfileid: "72385649"
 在本教學課程中，您已將當地語系化通知傳送至 iOS 裝置。 若要了解如何將通知推送至 iOS 應用程式的特定使用者，請繼續進行下列教學課程：
 
 > [!div class="nextstepaction"]
->[將通知推送給特定使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)
+>[將推播通知傳送給特定使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
@@ -274,7 +274,7 @@ ms.locfileid: "72385649"
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
-[使用通知中樞傳送即時新聞]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+[使用通知中心傳送即時新聞]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Notify users with Notification Hubs: Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

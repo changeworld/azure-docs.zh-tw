@@ -1,15 +1,15 @@
 ---
-title: 平衡您的 Azure Service Fabric 叢集
+title: 平衡 Azure 服務結構群集
 description: 使用 Azure Service Fabric 叢集資源管理員平衡叢集的簡介。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79081687"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>平衡 Service Fabric 叢集
@@ -27,9 +27,9 @@ ms.locfileid: "79081687"
 「叢集資源管理員」可執行的每個不同類型修正，都是由控管其頻率的不同計時器所控制。 當每個計時器啟動時，便會排程工作。 根據預設，Resource Manager 會：
 
 * 每 1/10 秒掃描一次其狀態並套用更新 (例如記錄某個節點已關閉)
-* 每秒設定放置檢查旗標
+* 每秒設置放置檢查標誌
 * 設定每秒條件約束檢查旗標
-* 每五秒設定一次平衡旗標
+* 每五秒設置一次平衡標誌
 
 控管這些計時器的設定範例如下：
 
@@ -76,10 +76,10 @@ ClusterManifest.xml：
 
 例如，當節點失敗時，他們可以一次對整個容錯網域執行這個動作。 所有失敗會在 *PLBRefreshGap* 之後的下一個狀態更新期間擷取。 更正會在下列位置、條件約束檢查以及平衡執行期間決定。 「叢集資源管理員」預設不會將叢集中數小時的變更整個掃描一遍，然後嘗試一次處理所有變更。 這麼做會導致變換量激增。
 
-「叢集資源管理員」也需要一些其他資訊，才能判斷叢集是否處於不平衡的狀態。 因此，我們有其他兩個的設定︰「平衡臨界值」和「活動臨界值」。
+「叢集資源管理員」也需要一些其他資訊，才能判斷叢集是否處於不平衡的狀態。 因此，我們有其他兩個的設定︰「平衡臨界值」** 和「活動臨界值」**。
 
 ## <a name="balancing-thresholds"></a>平衡臨界值
-平衡臨界值是觸發重新平衡的主要控制項。 計量的平衡臨界值是一個_比率_。 如果負載最多之節點的計量負載除以負載最少之節點的負載量超過該計量的*平衡臨界值*，此叢集就會被視為不平衡。 因此，下一次「叢集資源管理員」進行檢查時，就會觸發平衡作業。 MinLoadBalancingInterval 計時器會定義當需要重新平衡時，「叢集資源管理員」的檢查頻率。 檢查並不意謂著有發生任何事情。 
+平衡臨界值是觸發重新平衡的主要控制項。 計量的平衡臨界值是一個_比率_。 如果負載最多之節點的計量負載除以負載最少之節點的負載量超過該計量的*平衡臨界值*，此叢集就會被視為不平衡。 因此，下一次「叢集資源管理員」進行檢查時，就會觸發平衡作業。 MinLoadBalancingInterval** 計時器會定義當需要重新平衡時，「叢集資源管理員」的檢查頻率。 檢查並不意謂著有發生任何事情。 
 
 平衡臨界值會根據每個度量定義為叢集定義的一部分。 如需有關計量的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)。
 
@@ -123,7 +123,7 @@ ClusterManifest.xml
 
 <center>
 
-![平衡臨界值範例動作][Image2]
+![平衡閾值示例操作][Image2]
 </center>
 
 > [!NOTE]
@@ -133,7 +133,7 @@ ClusterManifest.xml
 使數據低於平衡臨界值並不是一個明確的目標。 平衡臨界值只是*觸發程序*。 當平衡執行時，叢集資源管理員會判斷可以進行哪些增強功能，如果有的話。 因為平衡搜尋開始並不代表任何項目移動。 有時候叢集過於受到修正的限制而不平衡。 或者，改進需要的移動太[昂貴](service-fabric-cluster-resource-manager-movement-cost.md))。
 
 ## <a name="activity-thresholds"></a>活動臨界值
-有時候，雖然節點處於相對的不平衡狀態，但叢集中的負載「總量」 卻很低。 缺乏負載可能是暫時性的下跌情況，或是因為叢集是新的且才剛啟動而已。 不論是上述哪一種情況，您可能都不想花時間平衡叢集，因為能獲得的好處很少。 如果叢集進行平衡作業，您將需要花費網路和計算資源將東西四處移動，但卻不會產生任何大型的「絕對」差異。 為了避免不必要的移動，出現了另一種控制方式，稱為「活動臨界值」。 「活動臨界值」可讓您為活動指定某種絕對下限。 如果沒有任何節點超出此臨界值，則即使達到「平衡臨界值」，也不會觸發平衡作業。
+有時候，雖然節點處於相對的不平衡狀態，但叢集中的負載「總量」 ** 卻很低。 缺乏負載可能是暫時性的下跌情況，或是因為叢集是新的且才剛啟動而已。 不論是上述哪一種情況，您可能都不想花時間平衡叢集，因為能獲得的好處很少。 如果叢集進行平衡作業，您將需要花費網路和計算資源將東西四處移動，但卻不會產生任何大型的「絕對」** 差異。 為了避免不必要的移動，出現了另一種控制方式，稱為「活動臨界值」。 「活動臨界值」可讓您為活動指定某種絕對下限。 如果沒有任何節點超出此臨界值，則即使達到「平衡臨界值」，也不會觸發平衡作業。
 
 假設我們為這個計量保留平衡臨界值 3。 同時假設我們有活動臨界值 1536。 在第一個案例中，根據「平衡臨界值」，叢集是處於不平衡狀態，但沒有任何節點達到「活動臨界值」，因此不會發生任何事情。 在下半部的範例中，Node1 超出「活動臨界值」。 由於同時超出該計量的「平衡臨界值」和「活動臨界值」，因此會排定平衡作業。 讓我們看看下圖的範例： 
 
@@ -189,7 +189,7 @@ ClusterManifest.xml
 
 <center>
 
-![平衡服務一起][Image4]
+![將服務一起平衡][Image4]
 </center>
 
 因為這個鏈結，所以計量 1-4 若發生不平衡，可能會導致屬於服務 1-3 的複本或執行個體四處移動。 我們也知道計量 1、2 或 3 若發生不平衡，並不會導致 Service4 中發生移動。 這麼做並沒有必要，因為將屬於 Service4 的複本或執行個體四處移動完全不會影響計量 1-3 的平衡。
@@ -198,14 +198,13 @@ ClusterManifest.xml
 
 <center>
 
-![平衡服務一起][Image5]
+![將服務一起平衡][Image5]
 </center>
 
 ## <a name="next-steps"></a>後續步驟
-* 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入了解計量及其設定方式，請查看[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
+* 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 要瞭解有關指標以及如何配置指標的更多[，請查看本文](service-fabric-cluster-resource-manager-metrics.md)
 * 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 如需有關移動成本的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)
 * 叢集資源管理員有數個為減緩叢集的流失而可以設定的節流。 這些節流通常不是必要的，但若有需要，您可以參閱 [這裡](service-fabric-cluster-resource-manager-advanced-throttling.md)
-* 叢集 Resource Manager 可以辨識和處理子叢集（有時候當您使用放置條件約束和平衡時，會發生這種情況）。 若要瞭解子叢集會如何影響平衡，以及如何處理它，請參閱[這裡](service-fabric-cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CDN Verizon Premium 規則引擎覆寫 HTTP 行為
-description: 規則引擎可讓您自訂 Azure CDN 從 Verizon Premium 處理 HTTP 要求的方式，例如封鎖傳遞特定類型的內容、定義快取原則，以及修改 HTTP 標頭。
+title: 使用 Azure CDN 覆蓋 HTTP 行為 - Verizon 高級規則引擎
+description: 規則引擎允許您自訂 Azure CDN 從 Verizon 高級版處理 HTTP 要求的方式，例如阻止某些類型的內容的傳遞、定義緩存策略和修改 HTTP 標頭。
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082947"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用來自 Verizon 的 Azure CDN Premium 規則引擎覆寫 HTTP 行為
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon 高級規則引擎中的 Azure CDN 覆蓋 HTTP 行為
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 
 Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封鎖特定內容類型的傳遞、定義快取原則，或修改 HTTP 標頭。 本教學課程會示範如何建立用以變更 CDN 資產之快取行為的規則。 如需規則引擎語法的詳細資訊，請參閱 [Azure CDN 規則引擎參考](cdn-verizon-premium-rules-engine-reference.md)。
 
 ## <a name="access"></a>存取
 
-若要存取規則引擎，您必須先從 [CDN 設定檔] 頁面頂端選取 [管理]，以存取 Azure CDN 管理頁面。 視您的端點是否已針對動態網站加速 (DSA) 最佳化，然後存取具有您的端點類型適用之規則集的規則引擎：
+若要存取規則引擎，您必須先從 [CDN 設定檔]**** 頁面頂端選取 [管理]****，以存取 Azure CDN 管理頁面。 視您的端點是否已針對動態網站加速 (DSA) 最佳化，然後存取具有您的端點類型適用之規則集的規則引擎：
 
 - 已針對一般 Web 傳遞或其他非 DSA 最佳化進行最佳化的端點：
     
-    選取 [HTTP 大型] 索引標籤，然後選取 [規則引擎]。
+    選取 [HTTP 大型]**** 索引標籤，然後選取 [規則引擎]****。
 
     ![HTTP 的規則引擎](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
 - 已針對 DSA 最佳化的端點：
     
-    選取 [ADN] 索引標籤，然後選取 [規則引擎]。
+    選取 [ADN]**** 索引標籤，然後選取 [規則引擎]****。
     
     ADN 是 Verizon 用來指定 DSA 內容的詞彙。 您設定檔中未針對 DSA 最佳化的所有端點都會忽略您在此處建立的任何規則。
 
@@ -42,13 +42,13 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
 
 ## <a name="tutorial"></a>教學課程
 
-1. 從 [CDN 設定檔] 頁面選取 [管理]。
+1. 在**CDN 設定檔**頁中，選擇 **"管理**"。
    
     ![CDN 設定檔 [管理] 按鈕](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    CDN 管理入口網站隨即開啟。
+    隨即開啟 CDN 管理入口網站。
 
-2. 選取 [HTTP 大型] 索引標籤，然後選取 [規則引擎]。
+2. 選取 [HTTP 大型]**** 索引標籤，然後選取 [規則引擎]****。
    
     新規則的選項隨即顯示。
    
@@ -58,9 +58,9 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
    > 多項規則的列出順序會影響規則的處理方式。 後一項規則可能會覆寫前一項規則所指定的動作。
    >
 
-3. 在 [名稱/描述] 文字方塊中輸入名稱。
+3. 在 [名稱/描述] **** 文字方塊中輸入名稱。
 
-4. 識別要套用此規則的要求類型。 使用預設比對條件 [一律]。
+4. 識別要套用此規則的要求類型。 使用預設比對條件 [一律]****。
    
    ![CDN 規則比對條件](./media/cdn-rules-engine/cdn-request-type.png)
    
@@ -73,20 +73,20 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
    >
    >
 
-5. 若要新增功能，請選取 [功能] **+ 旁的**  按鈕。  在左側下拉式清單中，選取 [強制執行內部最大壽命]。  在出現的文字方塊中，輸入 **300**。 請勿變更其餘的預設值。
+5. 要添加新功能，請選擇 **"要素**"**+** 旁邊的按鈕。  在左側下拉式清單中，選取 [強制執行內部最大壽命]****。  在出現的文字方塊中，輸入 **300**。 請勿變更其餘的預設值。
    
    ![CDN 規則功能](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
    > 下拉式清單中提供多項功能。 如需目前所選功能的相關資訊，請選取其左邊的藍色資訊圖示。
    >
-   > 在 [強制執行內部最大壽命] 中，資產的 `Cache-Control` 和 `Expires` 標頭會遭到覆寫，以控制 CDN 邊緣節點何時要從原始來源重新整理資產。 在此範例中，CDN 邊緣節點會先快取資產 300 秒 (或 5 分鐘)，再從其原始來源重新整理資產。
+   > 在 [強制執行內部最大壽命]**** 中，資產的 `Cache-Control` 和 `Expires` 標頭會遭到覆寫，以控制 CDN 邊緣節點何時要從原始來源重新整理資產。 在此範例中，CDN 邊緣節點會先快取資產 300 秒 (或 5 分鐘)，再從其原始來源重新整理資產。
    >
    > 如需功能的詳細清單，請參閱[規則引擎功能](cdn-verizon-premium-rules-engine-reference-features.md)。
    >
    >
 
-6. 選擇 [新增] 以儲存新規則。  新規則現在正在等待核准。 核准之後，狀態會從 [暫止 XML] 變更為 [使用中 XML]。
+6. 選擇 [新增]**** 以儲存新規則。  新規則現在正在等待核准。 核准之後，狀態會從 [暫止 XML]**** 變更為 [使用中 XML]****。
    
    > [!IMPORTANT]
    > 規則變更可能需要最多 10 分鐘才能傳遍 Azure CDN。
@@ -97,7 +97,7 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
 
 - [Azure CDN 概觀](cdn-overview.md)
 - [規則引擎參考](cdn-verizon-premium-rules-engine-reference.md)
-- [規則引擎比對條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [規則引擎匹配條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [規則引擎條件運算式](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [規則引擎功能](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Azure Fridays: Azure CDN's powerful new Premium Features (影片：Azure 星期五：Azure CDN 強大的新高階功能)](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/)

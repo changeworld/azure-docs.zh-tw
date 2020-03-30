@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案（AVS）-建立 AVS 私人雲端
-description: 描述如何建立 AVS 私用雲端，將 VMware 工作負載擴充到具有營運彈性和持續性的雲端
+title: Azure VMware 解決方案（按雲簡單 - 創建雲簡單私有雲）
+description: 描述如何創建雲簡單私有雲，以具有操作靈活性和連續性將 VMware 工作負載擴展到雲
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,75 +8,71 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 128a0a1eec03878d0deba93048c54324aab7d888
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024784"
 ---
-# <a name="create-an-avs-private-cloud"></a>建立 AVS 私用雲端
+# <a name="create-a-cloudsimple-private-cloud"></a>創建雲簡單私有雲
 
-AVS 私用雲端是一種隔離的 VMware 堆疊，可支援 ESXi 主機、vCenter、vSAN 和 NSX。 AVS 私人雲端是透過 AVS 入口網站來管理。 他們在自己的管理網域中有自己的 vCenter server。 堆疊會在專用節點和隔離的裸機硬體節點上執行。
+私有雲是一個孤立的 VMware 堆疊，支援 ESXi 主機、vCenter、vSAN 和 NSX。 私有雲通過雲簡單門戶進行管理。 它們有自己的 vCenter 伺服器。 堆疊在專用節點和隔離裸機硬體節點上運行。
 
-建立 AVS 私人雲端可協助您解決網路基礎結構的各種常見需求：
+創建私有雲可説明您滿足網路基礎設施的各種常見需求：
 
-* **成長**。 如果您已達到現有基礎結構的硬體重新整理點，AVS 私用雲端可讓您進行擴充，而不需要新的硬體投資。
+* **增長**。 如果您已達到現有基礎架構的硬體刷新點，則私有雲允許您擴展，無需新的硬體投資。
 
-* **快速擴充**。 如果發生任何暫時性或非計畫的容量需求，AVS 私用雲端可讓您建立額外的容量，而不會有延遲。
+* **快速擴展**。 如果出現任何臨時或計畫外容量需求，私有雲允許您立即創建額外的容量。
 
-* **加強保護**。 有三個或更多節點的 AVS 私用雲端，您可以獲得自動的冗余和高可用性保護。
+* **加強保護**。 使用三個或更多節點的私有雲，您可以獲得自動冗余和高可用性保護。
 
-* **長期基礎結構需求**。 如果您的資料中心已達到產能，或您想要重新組織以降低成本，AVS 私用雲端可讓您淘汰資料中心並遷移至雲端式解決方案，同時與您的企業營運保持相容。
+* **長期需要基礎設施**。 如果您的資料中心處於容量，或者您想要進行重組以降低成本，則私有雲允許您停用資料中心並遷移到基於雲的解決方案，同時保持與企業運營相容。
 
-當您建立 AVS 私人雲端時，您會取得單一 vSphere 叢集，以及在該叢集中建立的所有管理 Vm。
+創建私有雲時，您將獲得單個 vSphere 群集以及該群集中創建的所有管理 VM。
 
 ## <a name="before-you-begin"></a>開始之前
 
-您必須先布建節點，才能建立您的 AVS 私用雲端。 如需布建節點的詳細資訊，請參閱布建[Azure VMware 解決方案的節點（AVS）](create-nodes.md)。
+必須先預配節點，然後才能創建私有雲。 有關預配節點的詳細資訊，請參閱[按雲簡單為 的 Azure VMware 解決方案預配節點](create-nodes.md)。
 
-為 AVS 私人雲端的 vSphere/vSAN 子網配置 CIDR 範圍。 AVS 私用雲端會建立為 vCenter server 所管理的隔離 VMware 堆疊環境（具有 ESXi 主機、vCenter、vSAN 和 NSX）。 管理元件會部署在為 vSphere/vSAN 子網 CIDR 選取的網路中。 在部署期間，網路 CIDR 範圍會分成不同的子網。 VSphere/vSAN 子網位址空間必須是唯一的。 它不得與任何與 AVS 環境通訊的網路重迭。 與 AVS 通訊的網路包含內部部署網路和 Azure 虛擬網路。 如需有關 vSphere/vSAN 子網的詳細資訊，請參閱 Vlan 和子網總覽。
+為私有雲為 vSphere/vSAN 子網分配 CIDR 範圍。 私有雲創建為獨立的 VMware 堆疊環境（具有 ESXi 主機、vCenter、vSAN 和 NSX），由 vCenter 伺服器管理。 管理元件部署在為 vSphere/vSAN 子網 CIDR 選擇的網路中。 網路 CIDR 範圍在部署期間分為不同的子網。 vSphere/vSAN 子網位址空間必須是唯一的。 它不得與任何與 CloudSimple 環境通信的網路重疊。 與 CloudSimple 通信的網路包括本地網路和 Azure 虛擬網路。 有關 vSphere/vSAN 子網的詳細資訊，請參閱 VLAN 和子網概述。
 
-* 最小 vSphere/vSAN 子網 CIDR 範圍前置詞：/24
-* 最大 vSphere/vSAN 子網 CIDR 範圍前置詞：/21
+* 最小 vSphere/vSAN 子網 CIDR 範圍首碼： /24
+* 最大 vSphere/vSAN 子網 CIDR 範圍首碼： /21
 
 
-## <a name="access-the-avs-portal"></a>存取 AVS 入口網站
+## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-存取[AVS 入口網站](access-cloudsimple-portal.md)。
+訪問[雲簡單門戶](access-cloudsimple-portal.md)。
 
-## <a name="create-a-new-avs-private-cloud"></a>建立新的 AVS 私用雲端
+## <a name="create-a-new-private-cloud"></a>創建新私有雲
 
-1. 選取 [所有服務]。
-2. 搜尋 [ **AVS 服務**]。
-3. 選取您要在其上建立您的 AVS 私人雲端的 AVS 服務。
-4. 在 **[總覽**] 中，按一下 [**建立 avs 私人雲端**] 以開啟 AVS 入口網站的新瀏覽器索引標籤。 若出現提示，請使用您的 Azure 登入認證登入。
+1. 選擇**所有服務**。
+2. 搜索**雲簡單服務**。
+3. 選擇要在其中創建私有雲的雲簡單服務。
+4. 從**概述**中，按一下 **"創建私有雲**"可為雲簡單門戶打開新的瀏覽器選項卡。 如果出現提示，請使用 Azure 登錄憑據登錄。
 
-    ![從 Azure 建立 AVS 私用雲端](media/create-private-cloud-from-azure.png)
+    ![從 Azure 創建私有雲](media/create-private-cloud-from-azure.png)
 
-5. 在 AVS 入口網站中，提供您的 AVS 私人雲端名稱。
-6. 選取您的 AVS 私人雲端的 [**位置**]。
-7. 選取 [**節點類型**]，與您在 Azure 上購買的內容一致。
-8. 指定**節點計數**。 至少需要三個節點，才能建立 AVS 私人雲端。
-5. 在 CloudSimple 入口網站中，提供私人雲端的 [名稱]。
-6. 選取私人雲端的 [**位置**]。
-7. 選取 [**節點類型**]，與您在 Azure 上布建的內容一致。
-8. 指定**節點計數**。  至少需要三個節點，才能建立私人雲端。
+5. 在雲簡單門戶中，為私有雲提供名稱。
+6. 選擇私有雲**的位置**。
+7. 選擇**節點類型**，與在 Azure 上預配的內容一致。
+8. 指定**節點計數**。  創建私有雲至少需要三個節點。
 
-    ![建立 AVS 私用雲端-基本資訊](media/create-private-cloud-basic-info.png)
+    ![創建私有雲 - 基本資訊](media/create-private-cloud-basic-info.png)
 
-9. 按 **[下一步： Advanced Options]** 。
-10. 輸入 vSphere/vSAN 子網的 CIDR 範圍。 請確定 CIDR 範圍不會與您的任何內部部署或其他 Azure 子網（虛擬網路）或閘道子網重迭。
+9. 按一下 **"下一步：高級選項**"。
+10. 輸入 vSphere/vSAN 子網的 CIDR 範圍。 確保 CIDR 範圍不會與任何本地或其他 Azure 子網（虛擬網路）或閘道子網重疊。
 
-    **CIDR 範圍選項：** /24、/23、/22 或/21。 A/24 CIDR 範圍最多支援9個節點，/23 CIDR 範圍最多支援41個節點，而/22 和/21 CIDR 範圍最多支援64個節點（AVS 私人雲端中的節點數目上限）。
+    **CIDR 範圍選項**：/24、/23、/22 或 /21。 /24 CIDR 範圍最多支援 9 個節點，/23 CIDR 範圍最多支援 41 個節點，/22 和 /21 CIDR 範圍支援多達 64 個節點（私有雲中最大節點數）。
 
     > [!IMPORTANT]
-    > VSphere/vSAN CIDR 範圍中的 IP 位址會保留供 AVS 私用雲端基礎結構使用。 請勿在任何虛擬機器上使用此範圍內的 IP 位址。
+    > vSphere/vSAN CIDR 範圍內的 IP 位址保留供私有雲基礎設施使用。  不要在任何虛擬機器上使用此範圍內的 IP 位址。
 
-11. 按 **[下一步]： [審查並建立]** 。
-12. 檢查設定。 如果您需要變更任何設定，請按一下 [**上一步**]。
-13. 按一下頁面底部的 [新增]。
+11. 按一下 **"下一步："查看並創建**。
+12. 查看設置。 如果需要更改任何設置，請按一下"**上一個**"。
+13. 按一下 **[建立]**。
 
-AVS 私用雲端布建程式開始。 最多可能需要兩個小時的時間，才能布建 AVS 私用雲端。
+私有雲預配過程開始。 預配私有雲最多可能需要兩個小時。
 
-如需擴充現有的 AVS 私人雲端的指示，請參閱[擴充 Avs 私用雲端](expand-private-cloud.md)。
+有關擴展現有私有雲的說明，請參閱[擴展私有雲](expand-private-cloud.md)。

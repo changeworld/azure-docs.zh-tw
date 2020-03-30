@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72437947"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>採用 Azure Resource Manager 範本的預期狀態設定延伸模組
@@ -177,36 +177,36 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 ## <a name="details"></a>詳細資料
 
-| 屬性名稱 | Type | 描述 |
+| 屬性名稱 | 類型 | 描述 |
 | --- | --- | --- |
-| settings.wmfVersion |string |指定應該安裝在您 VM 上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 **latest** 會安裝最新版的 WMF。 此屬性目前只有下列可能值： **4.0**、**5.0**、**5.1**, 與**latest**。 這些可能的值可能會更新。 預設值為 **latest**。 |
-| settings.configuration.url |string |指定要從中下載 DSC 設定 .zip 檔案的 URL 位置。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationUrlSasToken** 屬性設定為您 SAS 權杖的值。 如果已定義 **settings.configuration.script** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定「位置設定管理員」(LCM) 中繼資料，而應該提供引數。 |
-| settings.configuration.script |string |指定指令碼的檔案名稱，其中包含 DSC 組態的定義。 此指令碼必須位於從 **settings.configuration.url** 屬性所指定 URL 下載之 zip 檔案的根資料夾中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.script**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
-| settings.configuration.function |string |指定 DSC 組態的名稱。 所命名的設定必須包含在 **settings.onfiguration.script** 所定義的指令碼中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
+| settings.wmfVersion |字串 |指定應該安裝在您 VM 上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 **latest** 會安裝最新版的 WMF。 此屬性目前只有下列可能值： **4.0**、**5.0**、**5.1**, 與**latest**。 這些可能的值可能會更新。 預設值為**最新**。 |
+| settings.configuration.url |字串 |指定要從中下載 DSC 設定 .zip 檔案的 URL 位置。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationUrlSasToken** 屬性設定為您 SAS 權杖的值。 如果已定義 **settings.configuration.script** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定「位置設定管理員」(LCM) 中繼資料，而應該提供引數。 |
+| settings.configuration.script |字串 |指定指令碼的檔案名稱，其中包含 DSC 組態的定義。 此指令碼必須位於從 **settings.configuration.url** 屬性所指定 URL 下載之 zip 檔案的根資料夾中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.script**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
+| settings.configuration.function |字串 |指定 DSC 組態的名稱。 所命名的設定必須包含在 **settings.onfiguration.script** 所定義的指令碼中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
 | settings.configurationArguments |集合 |定義任何您想要傳遞給 DSC 設定的參數。 這個屬性並未加密。 |
-| settings.configurationData.url |string |指定 URL，從中下載您的組態資料 (.psd1) 檔案以做為 DSC 組態的輸入。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationDataUrlSasToken** 屬性設定為您 SAS 權杖的值。 |
-| settings.privacy.dataCollection |string |啟用或停用遙測收集。 此屬性只有下列可能值：**Enable** **Disable** **''** 或 **$null**。 將此屬性保持空白或 null 即可啟用遙測。 預設值為 **''** 。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。 |
+| settings.configurationData.url |字串 |指定 URL，從中下載您的組態資料 (.psd1) 檔案以做為 DSC 組態的輸入。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationDataUrlSasToken** 屬性設定為您 SAS 權杖的值。 |
+| settings.privacy.dataCollection |字串 |啟用或停用遙測收集。 此屬性的唯一可能值是**啟用**、**禁用****、''或****$null**。 將此屬性保持空白或 null 即可啟用遙測。 預設值為 **'。** 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。 |
 | settings.advancedOptions.downloadMappings |集合 |定義要從中下載 WMF 的替代位置。 如需詳細資訊，請參閱 [Azure DSC 延伸模組 2.8 及如何將延伸模組相依性的下載對應至您自己的位置](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)(英文\)。 |
 | protectedSettings.configurationArguments |集合 |定義任何您想要傳遞給 DSC 設定的參數。 這個屬性已加密。 |
-| protectedSettings.configurationUrlSasToken |string |指定用來存取 **settings.onfiguration.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |
-| protectedSettings.configurationDataUrlSasToken |string |指定用來存取 **settings.onfigurationData.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |
+| protectedSettings.configurationUrlSasToken |字串 |指定用來存取 **settings.onfiguration.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |
+| protectedSettings.configurationDataUrlSasToken |字串 |指定用來存取 **settings.onfigurationData.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |
 
 ## <a name="default-configuration-script"></a>預設設定指令碼
 
 如需有關下列值的詳細資訊，請參閱[本機設定管理員基本設定](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings)。
 您可以使用 DSC 延伸模組預設設定指令碼來設定的 LCM 屬性僅限下表所列的屬性。
 
-| 屬性名稱 | Type | 描述 |
+| 屬性名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必要屬性。 指定節點向「Azure 自動化」服務註冊時，用來作為 PowerShell 認證物件密碼的金鑰。 針對「自動化」帳戶使用 **listkeys** 方法，即可自動探索此值。  查看[範例](#example-using-referenced-azure-automation-registration-values)。 |
-| settings.configurationArguments.RegistrationUrl |string |必要屬性。 指定節點嘗試進行註冊之「自動化」端點的 URL。 針對「自動化」帳戶使用**reference** 方法，即可自動探索此值。 |
-| settings.configurationArguments.NodeConfigurationName |string |必要屬性。 指定「自動化」帳戶中要指派給節點的 節點設定。 |
-| settings.configurationArguments.ConfigurationMode |string |指定 LCM 的模式。 有效的選項包括 **ApplyOnly** **ApplyandMonitor**, 及 **ApplyandAutoCorrect**。  預設值為 **ApplyandMonitor**。 |
+| settings.configurationArguments.RegistrationUrl |字串 |必要屬性。 指定節點嘗試進行註冊之「自動化」端點的 URL。 針對「自動化」帳戶使用**reference** 方法，即可自動探索此值。 |
+| settings.configurationArguments.NodeConfigurationName |字串 |必要屬性。 指定「自動化」帳戶中要指派給節點的 節點設定。 |
+| settings.configurationArguments.ConfigurationMode |字串 |指定 LCM 的模式。 有效的選項包括 **ApplyOnly****ApplyandMonitor**, 及 **ApplyandAutoCorrect**。  預設值為 **ApplyandMonitor**。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 嘗試檢查「自動化」帳戶是否有更新的頻率。  預設值為 **30**。  最小值為 **15**。 |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | 指定 LCM 驗證目前設定的頻率。 預設值為 **15**。 最小值為 **15**。 |
-| settings.configurationArguments.RebootNodeIfNeeded | 布林值 | 指定節點是否能在 DSC 作業要求時自動重新開機。 預設值為 **false**。 |
-| settings.configurationArguments.ActionAfterReboot | string | 指定套用設定時，在重新開機後會發生什麼事。 有效的選項為 **ContinueConfiguration** 和 **StopConfiguration**。 預設值為 **ContinueConfiguration**。 |
-| settings.configurationArguments.AllowModuleOverwrite | 布林值 | 指定 LCM 是否會覆寫節點上現有的模組。 預設值為 **false**。 |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | 指定節點是否能在 DSC 作業要求時自動重新開機。 預設值為 **false**。 |
+| settings.configurationArguments.ActionAfterReboot | 字串 | 指定套用設定時，在重新開機後會發生什麼事。 有效的選項為 **ContinueConfiguration** 和 **StopConfiguration**。 預設值為 **ContinueConfiguration**。 |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | 指定 LCM 是否會覆寫節點上現有的模組。 預設值為 **false**。 |
 
 ## <a name="settings-vs-protectedsettings"></a>settings 與 protectedSettings 的比較
 
@@ -255,7 +255,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 下列範例來自 [DSC 延伸模組處理常式概觀](dsc-overview.md)。
 此範例使用 Resource Manager 範本 (而不是Cmdlet) 來部署擴充功能。
-儲存 IisInstall 設定，將它放在 .zip 檔案中（例如： `iisinstall.zip`），然後將檔案上傳至可存取的 URL。
+保存 IisInstall.ps1 配置，將其放在 .ZIP 檔案中（例如`iisinstall.zip`：），然後將檔上載到可訪問的 URL 中。
 此範例會使用 Azure Blob 儲存體，但您可以從任意位置下載 .zip 檔案。
 
 在 Resource Manager 範本中，下列程式碼會指示 VM 下載正確的檔案，然後執行適當的 PowerShell 函式：
@@ -356,7 +356,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 「WmfVersion 為 '{0}'。
 可能的值為 … 和 'latest'"。
 
-**問題**︰所提供的值不是允許的值。
+**問題**：不允許提供的值。
 
 **解決方式**︰將無效的值變更為有效的值。
 如需詳細資訊，請參閱[詳細資料](#details)中的表格。
@@ -365,9 +365,9 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 「ConfigurationData.url 為 '{0}'。 這不是有效的 URL」「DataBlobUri 為 '{0}'。 這不是有效的 URL」「Configuration.url 為 '{0}'。 這不是有效的 URL」
 
-**問題**︰所提供的 URL 無效。
+**問題**：提供的 URL 無效。
 
-**解決方式**︰檢查您提供的所有 URL。
+**解決方案**：檢查所有提供的 URL。
 請確定所有 URL 都會解析成延伸模組可在遠端電腦上存取的有效位置。
 
 ### <a name="invalid-registrationkey-type"></a>無效的 RegistrationKey 類型
@@ -420,7 +420,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 **問題**︰已定義的屬性需要另一個屬性，但遺漏該屬性。
 
-**解決方式**：
+**解決方案**：
 
 - 提供遺漏的屬性。
 - 移除需要遺漏屬性的屬性。
