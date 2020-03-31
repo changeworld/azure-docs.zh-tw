@@ -11,14 +11,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 03/04/2020
+  ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0071d4da31e4739ccf53e9570bc7d0ed61c01bc4
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: f047af5d14ed6b18c559f814b35d730ba7ce0f6a
+  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943326"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80244319"
 highlightedContent:
   items:
   - title: 什麼是語音服務？
@@ -37,15 +37,15 @@ conceptualContent:
   items:
   - title: 語音轉文字
     links:
+    - itemType: how-to-guide
+      text: 語音辨識基本概念
+      url: speech-to-text-basics.md
     - itemType: quickstart
       text: 從麥克風辨識語音
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
-      text: 以批次模式辨識語音
-      url: batch-transcription.md
-    - itemType: how-to-guide
-      text: 為應用程式自訂語音辨識
-      url: how-to-custom-speech.md
+      text: 辨識來自音訊檔案的語音
+      url: quickstarts/speech-to-text-from-file.md
     footerLink:
       text: 查看更多
       url: index-speech-to-text.yml
@@ -94,10 +94,10 @@ conceptualContent:
   - title: 對話情節
     links:
     - itemType: overview
-      text: 關於對話轉譯
+      text: 關於對話轉譯 (會議)
       url: conversation-transcription.md
     - itemType: overview
-      text: 關於多裝置對話
+      text: 關於多裝置對話 (會議)
       url: multi-device-conversation.md
     - itemType: how-to-guide
       text: 話務中心轉譯
@@ -152,9 +152,6 @@ conceptualContent:
     - itemType: how-to-guide
       text: 從 Bing 語音遷移
       url: how-to-migrate-from-bing-speech.md
-    - itemType: how-to-guide
-      text: 從自訂語音服務遷移
-      url: how-to-migrate-from-custom-speech-service.md
     - itemType: how-to-guide
       text: 從翻譯工具語音 API 遷移
       url: how-to-migrate-from-translator-speech-api.md

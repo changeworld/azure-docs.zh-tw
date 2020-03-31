@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526632"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 後端連線功能的互通性：資料平面分析
 
-本文說明[測試設定][Setup]的資料平面分析。 您也可以查看測試設定的[測試設定][Configuration]和[控制平面分析][Control-Analysis]。
+本文說明[測試設定][Setup]的資料平面分析。 您也可以檢閱測試設定的[測試設定組態][Configuration]和[控制平面分析][Control-Analysis]。
 
 資料平面分析會檢查從一個本機網路 (LAN 或虛擬網路) 周遊至拓撲中其他網路的封包所走的路徑。 兩個本機網路之間的資料路徑不一定要對稱。 因此，我們在本文中分析從本機網路至其他網路的轉送路徑與反向路徑是分離的案例。
 
@@ -356,7 +356,7 @@ ms.locfileid: "77526632"
 
 ### <a name="path-to-on-premises-location-2"></a>往內部部署位置 2 的路徑
 
-如我們在[控制平面分析][Control-Analysis]中所討論，內部部署位置1對於每個網路設定都沒有內部部署位置2的可見度。 下列 Ping 結果可證實： 
+如我們在[控制平面分析][Control-Analysis]中所討論，由於網路設定的緣故，內部部署位置 2 對於內部部署位置 1 是不可見的。 下列 Ping 結果可證實： 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -420,7 +420,7 @@ ms.locfileid: "77526632"
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>往分支 VNet、內部部署位置 1 和遠端 VNet 的路徑
 
-如我們在[控制平面分析][Control-Analysis]中所討論，內部部署位置1無法看到分支 VNet、內部部署位置1，或每個網路設定的遠端 VNet。 
+如我們在[控制平面分析][Control-Analysis]中所討論，由於網路設定的緣故，分支 VNet、內部部署位置 1 或遠端 VNet 對於內部部署位置 1 都是不可見的。 
 
 ## <a name="data-path-from-the-remote-vnet"></a>從遠端 VNet 來的資料路徑
 
@@ -454,7 +454,7 @@ ms.locfileid: "77526632"
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>往分支 VNet 和內部部署位置 2 的路徑
 
-如我們在[控制平面分析][Control-Analysis]中所討論，遠端 VNet 對於每個網路設定都沒有分支 VNet 或內部部署位置2的可見度。 
+如我們在[控制平面分析][Control-Analysis]中所討論，由於網路設定的緣故，分支 VNet、內部部署位置 2 對於遠端 VNet 都是不可見的。 
 
 ### <a name="path-to-on-premises-location-1"></a>往內部部署位置 1 的路徑
 
@@ -476,7 +476,7 @@ ms.locfileid: "77526632"
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>透過 ExpressRoute 設定站對站 VPN
 
-您可透過 ExpressRoute Microsoft 對等互連設定站對站 VPN，私下交換您內部部署網路和 Azure VNet 之間的資料。 使用此組態時，您可以交換具有機密性、真實性和完整性的資料。 資料交換也會禁止重新播放。 如需如何使用 ExpressRoute Microsoft 對等互連，在通道模式中設定站對站 IPsec VPN 的詳細資訊，請參閱透過[Expressroute microsoft 對等互連的站對站 vpn][S2S-Over-ExR]。 
+您可透過 ExpressRoute Microsoft 對等互連設定站對站 VPN，私下交換您內部部署網路和 Azure VNet 之間的資料。 使用此組態時，您可以交換具有機密性、真實性和完整性的資料。 資料交換也會禁止重新播放。 如需如何使用 ExpressRoute Microsoft 對等互連，來設定通道模式站對站 IPSec VPN 的詳細資訊，請參閱[透過 ExpressRoute Microsoft 對等互連設定站對站 VPN][S2S-Over-ExR]。 
 
 設定使用 Microsoft 對等互連的站對站 VPN 的主要限制是輸送量。 IPSec 通道的輸送量受限於 VPN 閘道容量。 VPN 閘道輸送量低於 ExpressRoute 輸送量。 在此情況下，針對高安全流量使用 IPSec 通道，並針對所有其他流量使用私人對等互連，可協助將 ExpressRoute 頻寬使用量最佳化。
 
@@ -484,13 +484,13 @@ ms.locfileid: "77526632"
 
 ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的 Azure 區域中設定異地備援 ExpressRoute 連線。 如果您想在 Azure 區域中為 ExpressRoute 連線建立容錯移轉路徑，可以透過與測試設定中示範的相同方法使用站對站 VPN。 當 ExpressRoute 和站對站 VPN 顯示相同的首碼時，Azure 將優先選擇 ExpressRoute。 為了避免 ExpressRoute 和站對站 VPN 擁有不對稱的路由，內部部署網路組態也應該在使用站對站 VPN 連線之前使用 ExpressRoute 連線進行回應。
 
-如需有關如何為 ExpressRoute 和站對站 VPN 設定並存連線的詳細資訊，請參閱[expressroute 和站對站共存][ExR-S2S-CoEx]。
+如需如何設定 ExpressRoute 和站對站 VPN 共存連線的詳細資訊，請參閱 [ExpressRoute 和站對站共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>將後端連線擴充至輪輻 VNet 和分支位置
 
 ### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-中樞和輪輻 VNet 架構為普遍採用的選項。 中樞是 Azure 中的 VNet，可在您的輪輻 VNet 和內部部署網站之間作為連線中心點。 輪輻是與中樞對等互連的 VNet，可用於隔離工作負載。 流量會透過 ExpressRoute 或 VPN 連線，在內部部署資料中心和中樞之間流動。 如需架構的詳細資訊，請參閱[在 Azure 中執行中樞輪輻網路拓撲][Hub-n-Spoke]。
+中樞和輪輻 VNet 架構為普遍採用的選項。 中樞是 Azure 中的 VNet，可在您的輪輻 VNet 和內部部署網站之間作為連線中心點。 輪輻是與中樞對等互連的 VNet，可用於隔離工作負載。 流量會透過 ExpressRoute 或 VPN 連線，在內部部署資料中心和中樞之間流動。 如需架構的詳細資訊，請參閱[在 Azure 中實作中樞輪輻網路拓撲][Hub-n-Spoke]。
 
 區域中的 VNet 對等互連可讓輪輻 VNet 使用中樞 VNet 閘道 (VPN 和 ExpressRoute 閘道) 與遠端網路通訊。
 
@@ -503,18 +503,18 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[EXPRESSROUTE 常見問題][ExR-FAQ]：
+請參閱 [ExpressRoute 常見問題集][ExR-FAQ]：
 -   了解可以連線到 ExpressRoute 閘道的 ExpressRoute 線路數量。
 -   了解可以連接到 ExpressRoute 線路的 ExpressRoute 閘道數量。
 -   了解 ExpressRoute 的其他規模限制。
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "從中樞 VNet 到輪輻 VNet 的連線網路監看員觀點"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "從中樞 VNet 到分支 VNet 的連線網路監看員觀點"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "從中樞 VNet 到分支 VNet 的連線網路監看員方格視圖"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "透過 ExpressRoute 1 從位置 1 VM 至中樞 VNet 的連線網路效能監控觀點"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "透過站對站 VPN 從位置 1 VM 至中樞 VNet 的連線網路效能監控觀點"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "從集線器 VNet 到分支 VNet 的連接的網路觀察器視圖"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "從集線器 VNet 到分支 VNet 的連接的網路觀察器視圖"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "從集線器 VNet 到分支 VNet 的連接的網路觀察程式網格視圖"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "通過 ExpressRoute 1 從位置 1 VM 到集線器 VNet 的連接的網路效能監視器視圖"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "通過網站到網站 VPN 從位置 1 VM 到集線器 VNet 的連接的網路效能監視器視圖"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

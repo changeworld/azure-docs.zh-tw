@@ -1,6 +1,6 @@
 ---
-title: 主要重新整理權杖（PRT）和 Azure AD Azure Active Directory
-description: 什麼是角色，以及如何管理 Azure Active Directory 中的主要重新整理權杖（PRT）？
+title: 主刷新權杖 （PRT） 和 Azure AD - Azure 活動目錄
+description: Azure 活動目錄中的主要刷新權杖 （PRT） 的作用是什麼以及如何管理？
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,173 +12,173 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672640"
 ---
-# <a name="what-is-a-primary-refresh-token"></a>什麼是主要的重新整理權杖？
+# <a name="what-is-a-primary-refresh-token"></a>什麼是主刷新權杖？
 
-主要的重新整理權杖（PRT）是在 Windows 10、iOS 和 Android 裝置上 Azure AD 驗證的主要專案。 它是特別發行給 Microsoft 第一方權杖代理人的 JSON Web 權杖（JWT），可跨這些裝置上使用的應用程式啟用單一登入（SSO）。 在本文中，我們將提供有關如何在 Windows 10 裝置上發行、使用和保護 PRT 的詳細資料。
+主刷新權杖 （PRT） 是 Windows 10、iOS 和 Android 設備上 Azure AD 身份驗證的關鍵專案。 它是專門頒發給 Microsoft 第一方權杖代理的 JSON Web 權杖 （JWT），用於跨這些設備中使用的應用程式啟用單一登入 （SSO）。 在本文中，我們將提供有關如何在 Windows 10 設備上頒發、使用和保護 PRT 的詳細資訊。
 
-本文假設您已瞭解 Azure AD 中可用的不同裝置狀態，以及單一登入在 Windows 10 中的運作方式。 如需 Azure AD 中裝置的詳細資訊，請參閱[什麼是 Azure Active Directory 中的裝置管理？](overview.md)
+本文假定您已經瞭解了 Azure AD 中可用的不同設備狀態以及單一登入在 Windows 10 中的工作方式。 有關 Azure AD 中的設備的詳細資訊，請參閱["Azure 活動目錄中什麼是裝置管理"](overview.md)一文。
 
-## <a name="key-terminology-and-components"></a>重要的術語和元件
+## <a name="key-terminology-and-components"></a>關鍵術語和元件
 
-下列 Windows 元件在要求和使用 PRT 方面扮演著重要的角色：
+以下 Windows 元件在請求和使用 PRT 時起著關鍵作用：
 
-* **雲端驗證提供者**（CloudAP）： CloudAP 是適用于 windows 登入的新式驗證提供者，可驗證使用者是否記錄到 windows 10 裝置。 CloudAP 提供一個外掛程式架構，讓身分識別提供者能夠以該身分識別提供者的認證，在 Windows 上建立驗證。
-* **Web 帳戶管理員**（WAM）： WAM 是 Windows 10 裝置上的預設權杖訊息代理程式。 WAM 也提供一個外掛程式架構，讓身分識別提供者可以在其應用程式依賴該身分識別提供者時，建立並啟用 SSO。
-* **Azure AD CloudAP 外掛程式**： CloudAP 架構上建立的 Azure AD 特定外掛程式，可在 Windows 登入期間使用 Azure AD 來驗證使用者認證。
-* **AZURE AD WAM 外掛程式**： WAM 架構上建立的 Azure AD 特定外掛程式，可讓 SSO 應用程式依賴 Azure AD 進行驗證。
-* **Dsreg**： Windows 10 上的 Azure AD 特定元件，可處理所有裝置狀態的裝置註冊程式。
-* **信賴平臺模組**（tpm）： TPM 是內建于裝置的硬體元件，可為使用者和裝置密碼提供硬體型安全性功能。 如需更多詳細資料，請參閱可[信賴平臺模組技術總覽](/windows/security/information-protection/tpm/trusted-platform-module-overview)一文。
+* **雲身份檢查器提供者**（CloudAP）：CloudAP 是 Windows 登錄的現代身份檢查器提供者，用於驗證登錄到 Windows 10 設備的使用者。 CloudAP 提供了一個外掛程式框架，身份供應商可以構建該外掛程式框架，以便使用該標識提供程式的憑據對 Windows 啟用身份驗證。
+* **Web 帳戶管理器**（WAM）：WAM 是 Windows 10 設備上的預設權杖代理。 WAM 還提供一個外掛程式框架，身份提供程式可以基於該外掛程式框架，並使 SSO 能夠依賴于該標識提供程式。
+* **Azure AD CloudAP 外掛程式**：在 CloudAP 框架上構建的特定于 Azure AD 的外掛程式，用於在 Windows 登錄期間使用 Azure AD 驗證使用者憑據。
+* **Azure AD WAM 外掛程式**：在 WAM 框架上構建的特定于 Azure AD 的外掛程式，該外掛程式使 SSO 能夠連接到依賴 Azure AD 進行身份驗證的應用程式。
+* **Dsreg**： Windows 10 上特定于 Azure AD 的元件，用於處理所有設備狀態的設備註冊過程。
+* **受信任的平臺模組**（TPM）：TPM 是內置於設備中的硬體元件，為使用者和設備機密提供基於硬體的安全功能。 更多詳細資訊請參閱文章["受信任的平臺模組技術概述](/windows/security/information-protection/tpm/trusted-platform-module-overview)"。
 
 ## <a name="what-does-the-prt-contain"></a>PRT 包含哪些內容？
 
-PRT 包含通常包含在任何 Azure AD 重新整理權杖中的宣告。 此外，PRT 中還包含一些裝置特定的宣告。 如下所示：
+PRT 包含通常包含在任何 Azure AD 刷新權杖中的聲明。 此外，PRT 中還包括一些特定于設備的聲明。 如下所示：
 
-* **裝置識別碼**： PRT 會發行給特定裝置上的使用者。 裝置識別碼宣告 `deviceID` 會決定 PRT 發給使用者的裝置。 此宣告會在稍後發給透過 PRT 取得的權杖。 裝置識別碼宣告是用來根據裝置狀態或合規性來判斷條件式存取的授權。
-* **工作階段金鑰**：工作階段金鑰是加密的對稱金鑰，由 Azure AD authentication 服務所產生，並會在 PRT 中發行。 當使用 PRT 來取得其他應用程式的權杖時，工作階段金鑰會作為擁有權證明。
+* **裝置識別碼**：向特定設備上的使用者發出 PRT。 裝置識別碼`deviceID`聲明確定 PRT 頒發給使用者的設備。 此聲明後來頒發給通過 PRT 獲得的權杖。 裝置識別碼 聲明用於根據設備狀態或合規性確定條件訪問的授權。
+* **工作階段金鑰**：工作階段金鑰是一個加密的對稱金鑰，由 Azure AD 身份驗證服務生成，作為 PRT 的一部分發出。 當使用 PRT 獲取其他應用程式的權杖時，工作階段金鑰充當佔有證明。
 
-### <a name="can-i-see-whats-in-a-prt"></a>我可以看到 PRT 中的內容嗎？
+### <a name="can-i-see-whats-in-a-prt"></a>我能看看 PRT 中的內容嗎？
 
-PRT 是從 Azure AD 傳送的不透明 blob，其內容對任何用戶端元件而言都是不知道的。 您看不到 PRT 內的內容。
+PRT 是從 Azure AD 發送的不透明 Blob，其內容不為任何用戶端元件所知。 您看不到 PRT 中的內容。
 
-## <a name="how-is-a-prt-issued"></a>PRT 如何發行？
+## <a name="how-is-a-prt-issued"></a>如何頒發 PRT？
 
-裝置註冊是 Azure AD 中以裝置為基礎之驗證的必要條件。 只有在已註冊的裝置上，才會將 PRT 發給使用者。 如需裝置註冊的更深入詳細資料，請參閱[Windows Hello 企業版和裝置註冊](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)一文。 在裝置註冊期間，dsreg 元件會產生兩組密碼編譯金鑰組：
+設備註冊是 Azure AD 中基於設備的身份驗證的先決條件。 PRT 僅在已註冊的設備上頒發給使用者。 有關設備註冊的更深入詳細資訊，請參閱["Windows Hello 用於企業和設備註冊](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)"一文。 在設備註冊期間，dsreg 元件生成兩組加密金鑰對：
 
-* 裝置金鑰（dkpub/dkpriv）
-* 傳輸金鑰（tkpub/tkpriv）
+* 設備金鑰（dkpub/dkpriv）
+* 運輸鑰匙（tkpub/tkpriv）
 
-如果裝置具有有效且正常運作的 TPM，則私密金鑰會系結至裝置的 TPM，而公開金鑰則會在裝置註冊程式期間傳送至 Azure AD。 在 PRT 要求期間，會使用這些金鑰來驗證裝置狀態。
+如果設備具有有效和正常運行的 TPM，則私密金鑰將綁定到設備的 TPM，而公開金鑰在設備註冊過程中會發送到 Azure AD。 這些金鑰用於在 PRT 請求期間驗證設備狀態。
 
-在兩種情況下，PRT 會在 Windows 10 裝置上的使用者驗證期間發出：
+PRT 在 Windows 10 設備上的使用者身份驗證期間在以下兩種情況下發出：
 
-* **Azure AD 已聯結**或已**加入混合式 Azure AD**：當使用者以其組織認證登入時，會在 Windows 登入期間發出 PRT。 PRT 是以所有 Windows 10 支援的認證（例如，密碼和 Windows Hello 企業版）發行。 在此案例中，Azure AD CloudAP 外掛程式是 PRT 的主要授權單位。
-* **Azure AD 已註冊的裝置**：當使用者將次要工作帳戶新增至其 Windows 10 裝置時，就會發出 PRT。 使用者可以透過兩種不同的方式將帳戶新增至 Windows 10-  
-   * 在登入應用程式之後，透過在**此裝置上的任何位置使用此帳戶**來新增帳戶（例如 Outlook）
-   * 從 **[** **設定**] > **帳戶**新增帳戶 > **存取公司或學校** > Connect
+* **Azure AD 已加入**或**混合 Azure AD 加入**：當使用者使用組織憑據登錄時，在 Windows 登錄期間發出 PRT。 PRT 會頒發所有 Windows 10 支援的憑據，例如，密碼和適用于企業的 Windows Hello。 在這種情況下，Azure AD CloudAP 外掛程式是 PRT 的主要許可權。
+* **Azure AD 註冊設備**：當使用者將輔助工作帳戶添加到其 Windows 10 設備時，將發出 PRT。 使用者可以以兩種不同的方式向 Windows 10 添加帳戶 -  
+   * 登錄到應用後，通過 **"在此設備上的任何地方使用此帳戶**"添加帳戶（例如，Outlook）
+   * 從**設置** > **帳戶** > **訪問工作或學校** > **連接**添加帳戶
 
-在 Azure AD 註冊的裝置案例中，Azure AD WAM 外掛程式是 PRT 的主要授權單位，因為此 Azure AD 帳戶不會發生 Windows 登入。
+在 Azure AD 註冊設備方案中，Azure AD WAM 外掛程式是 PRT 的主要許可權，因為此 Azure AD 帳戶未發生 Windows 登錄。
 
 > [!NOTE]
-> 協力廠商身分識別提供者必須支援 WS-TRUST 通訊協定，才能在 Windows 10 裝置上啟用 PRT 發行。 若沒有 WS-TRUST，PRT 就無法在已加入混合式 Azure AD 或已加入 Azure AD 的裝置上向使用者發出
+> 協力廠商標識提供程式需要支援 WS-Trust 協定，以便在 Windows 10 設備上啟用 PRT 發行。 如果沒有 WS 信任，PRT 將無法頒發給混合 Azure AD 聯接或 Azure AD 聯接設備上的使用者
 
-## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的存留期為何？
+## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的壽命是多少？
 
-一旦發出，PRT 的有效時間為14天，而且只要使用者主動使用裝置，就會持續更新。  
+一旦發出，PRT 的有效期為 14 天，只要使用者主動使用設備，它就會持續續訂。  
 
 ## <a name="how-is-a-prt-used"></a>如何使用 PRT？
 
-Windows 中的兩個主要元件會使用 PRT：
+PRT 由 Windows 中的兩個關鍵元件使用：
 
-* **Azure AD CloudAP 外掛程式**：在 Windows 登入期間，Azure AD CloudAP 外掛程式會使用使用者所提供的認證，向 AZURE AD 要求 PRT。 它也會快取 PRT，以在使用者無法存取網際網路連線時啟用快取登入。
-* **AZURE AD WAM 外掛程式**：當使用者嘗試存取應用程式時，Azure AD WAM 外掛程式會使用 PRT 來啟用 Windows 10 上的 SSO。 Azure AD WAM 外掛程式會使用 PRT，針對依賴 WAM 進行權杖要求的應用程式要求重新整理和存取權杖。 它也會藉由將 PRT 插入瀏覽器要求中，在瀏覽器上啟用 SSO。 Microsoft Edge （原生）和 Chrome （透過 Windows 10 帳戶或 Office Online 延伸模組）支援 Windows 10 中的瀏覽器 SSO。
+* **Azure AD CloudAP 外掛程式**：在 Windows 登錄期間，Azure AD CloudAP 外掛程式使用使用者提供的憑據從 Azure AD 請求 PRT。 它還緩存 PRT，以便在使用者無法訪問互聯網連接時啟用緩存登錄。
+* **Azure AD WAM 外掛程式**：當使用者嘗試訪問應用程式時，Azure AD WAM 外掛程式使用 PRT 在 Windows 10 上啟用 SSO。 Azure AD WAM 外掛程式使用 PRT 請求刷新並訪問依賴 WAM 進行權杖請求的應用程式的權杖。 它還通過將 PRT 注入瀏覽器請求，在瀏覽器上啟用 SSO。 微軟邊緣（本機）和 Chrome（通過 Windows 10 帳戶或辦公室連線副檔名）支援 Windows 10 中的瀏覽器 SSO。
 
-## <a name="how-is-a-prt-renewed"></a>PRT 如何續訂？
+## <a name="how-is-a-prt-renewed"></a>如何續訂 PRT？
 
-PRT 會以兩種不同的方法進行更新：
+PRT 以兩種不同的方法續訂：
 
-* **每隔4小時 Azure AD CloudAP 外掛程式**： CloudAP 外掛程式會在 Windows 登入期間每隔4小時更新 PRT。 如果使用者在這段時間內沒有網際網路連線，則在裝置連線到網際網路之後，CloudAP 外掛程式將會更新 PRT。
-* **在應用程式權杖要求期間 AZURE AD WAM 外掛程式**： WAM 外掛程式會啟用應用程式的無訊息權杖要求，以在 Windows 10 裝置上啟用 SSO。 WAM 外掛程式可以透過兩種不同的方式，在這些權杖要求期間更新 PRT：
-   * 應用程式會以無訊息方式要求存取權杖的 WAM，但該應用程式沒有可用的重新整理權杖。 在此情況下，WAM 會使用 PRT 來要求應用程式的權杖，並在回應中取得新的 PRT。
-   * 應用程式要求存取權杖的 WAM，但 PRT 無效，或 Azure AD 需要額外的授權（例如，Azure 多重要素驗證）。 在此案例中，WAM 會起始互動式登入，要求使用者重新驗證或提供額外的驗證，並在成功驗證時發出新的 PRT。
+* **Azure AD CloudAP 外掛程式每 4 小時一次**：在 Windows 登錄期間，雲AP 外掛程式每 4 小時更新一次 PRT。 如果使用者在此期間沒有互聯網連接，CloudAP 外掛程式將在設備連接到互聯網後續訂 PRT。
+* **Azure AD WAM 外掛程式在應用權杖請求期間**： WAM 外掛程式通過為應用程式啟用靜默權杖請求，在 Windows 10 設備上啟用 SSO。 WAM 外掛程式可以在這些權杖請求期間以兩種不同的方式續訂 PRT：
+   * 應用以靜默方式請求 WAM 訪問權杖，但沒有可用於該應用的刷新權杖。 在這種情況下，WAM 使用 PRT 請求應用的權杖，並在回應中返回新的 PRT。
+   * 應用請求 WAM 獲取訪問權杖，但 PRT 無效或 Azure AD 需要其他授權（例如，Azure 多重要素驗證）。 在這種情況下，WAM 啟動互動式登入，要求使用者重新驗證或提供其他驗證，並在成功身份驗證時頒發新的 PRT。
 
 ### <a name="key-considerations"></a>主要考量
 
-* 只有在原生應用程式驗證期間，才會發出 PRT 並加以更新。 PRT 不會在瀏覽器會話期間更新或發行。
-* 在 Azure AD 聯結和混合式 Azure AD 聯結裝置中，CloudAP 外掛程式是 PRT 的主要授權單位。 如果在以 WAM 為基礎的權杖要求期間更新 PRT，則會將 PRT 傳送回 CloudAP 外掛程式，這會在接受 Azure AD 之前驗證 PRT 的有效性。
+* PRT 僅在本機應用身份驗證期間頒發和續訂。 PRT 不會在瀏覽器會話期間續訂或頒發。
+* 在 Azure AD 聯接和混合 Azure AD 聯接設備中，CloudAP 外掛程式是 PRT 的主要許可權。 如果在基於 WAM 的權杖請求期間續訂 PRT，則 PRT 將發送回 CloudAP 外掛程式，該外掛程式在接受之前使用 Azure AD 驗證 PRT 的有效性。
 
-## <a name="how-is-the-prt-protected"></a>PRT 如何受到保護？
+## <a name="how-is-the-prt-protected"></a>如何保護 PRT？
 
-PRT 受到保護，其方式是將它系結至使用者已登入的裝置。 Azure AD 和 Windows 10 透過下列方法啟用 PRT 保護：
+PRT 通過綁定到使用者已登錄的設備進行保護。 Azure AD 和 Windows 10 通過以下方法啟用 PRT 保護：
 
-* **第一次登入期間**：第一次登入期間，會使用裝置註冊期間產生的裝置金鑰加密來簽署要求，藉此發出 PRT。 在具有有效且可運作之 TPM 的裝置上，裝置金鑰會受到 TPM 的保護，以防止任何惡意存取。 如果無法驗證對應的裝置金鑰簽章，則不會發出 PRT。
-* **在權杖要求和更新期間**：發出 PRT 時，Azure AD 也會向裝置發出加密的工作階段金鑰。 它會使用產生的公開傳輸金鑰（tkpub）進行加密，並傳送至 Azure AD 做為裝置註冊的一部分。 此工作階段金鑰只能由 TPM 所保護的私用傳輸金鑰（tkpriv）解密。 工作階段金鑰是傳送至 Azure AD 之任何要求的擁有權證明（POP）金鑰。  工作階段金鑰也會受到 TPM 的保護，而且沒有其他作業系統元件可以存取它。 此工作階段金鑰會透過 TPM 安全地簽署權杖要求或 PRT 更新要求，因此無法被篡改。 Azure AD 會使來自裝置的任何要求無效，而不是由對應的工作階段金鑰所簽署。
+* **在第一次登錄**期間：在第一次登錄期間，使用設備註冊期間加密生成的設備金鑰，通過簽名請求發出 PRT。 在具有有效和正常運行的 TPM 的設備上，設備金鑰由 TPM 保護，以防止任何惡意訪問。 如果無法驗證相應的設備金鑰簽名，則不發出 PRT。
+* **在權杖請求和續訂期間**：發出 PRT 時，Azure AD 還會向設備發出加密的工作階段金鑰。 它使用生成的公共傳輸金鑰 （tkpub） 進行加密，並作為設備註冊的一部分發送到 Azure AD。 此工作階段金鑰只能由 TPM 保護的專用傳輸金鑰 （tkpriv） 解密。 工作階段金鑰是發送到 Azure AD 的任何請求的佔有證明 （POP） 金鑰。  工作階段金鑰還受 TPM 保護，沒有其他作業系統元件可以訪問它。 權杖請求或 PRT 續訂請求由此工作階段金鑰通過 TPM 安全簽名，因此不能被篡改。 Azure AD 將使來自設備的任何未由相應工作階段金鑰簽名的請求無效。
 
-藉由使用 TPM 保護這些金鑰，惡意執行者就無法竊取金鑰，也無法在其他地方重新執行 PRT，因為即使攻擊者有實體擁有裝置，也無法存取 TPM。  因此，使用 TPM 可大幅提升已加入 Azure AD 的安全性，混合式 Azure AD 聯結，以及 Azure AD 註冊的裝置，以防止認證遭竊。 針對效能和可靠性，Windows 10 上所有 Azure AD 裝置註冊案例的建議使用 TPM 2.0。
+通過使用 TPM 保護這些金鑰，惡意參與者無法竊取金鑰，也不能在其他地方重播 PRT，因為即使攻擊者擁有設備，TPM 也無法訪問。  因此，使用 TPM 可大大提高 Azure AD 加入、混合 Azure AD 聯接和 Azure AD 註冊設備的安全性，防止憑據被盜。 為性能和可靠性，TPM 2.0 是 Windows 10 上所有 Azure AD 設備註冊方案的推薦版本。
 
-### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>如何保護應用程式權杖和瀏覽器 cookie？
+### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>如何保護應用權杖和瀏覽器 Cookie？
 
-**應用程式權杖**：當應用程式透過 WAM 要求權杖時，Azure AD 會發出重新整理權杖和存取權杖。 不過，WAM 只會將存取權杖傳回給應用程式，並藉由使用使用者的資料保護應用程式開發介面（DPAPI）金鑰來加密，以保護其快取中的重新整理權杖。 WAM 會以工作階段金鑰簽署要求，以安全地使用重新整理權杖，以發出進一步的存取權杖。 DPAPI 金鑰會受到 Azure AD 本身中以 Azure AD 為基礎的對稱金鑰所保護。 當裝置需要使用 DPAPI 金鑰來解密使用者設定檔時，Azure AD 提供由工作階段金鑰加密的 DPAPI 金鑰，CloudAP 外掛程式會要求 TPM 進行解密。 這項功能可確保保護重新整理權杖的一致性，並避免應用程式執行自己的保護機制。  
+**應用權杖**：當應用通過 WAM 請求權杖時，Azure AD 會發出刷新權杖和訪問權杖。 但是，WAM 僅將訪問權杖返回到應用，並通過使用使用者的資料保護應用程式開發介面 （DPAPI） 金鑰加密刷新權杖來保護其緩存中的刷新權杖。 WAM 使用會話金鑰組請求進行簽名，從而安全地使用刷新權杖來頒發進一步的訪問權杖。 DPAPI 金鑰由 Azure AD 本身中基於 Azure AD 的對稱金鑰保護。 當設備需要使用 DPAPI 金鑰解密使用者設定檔時，Azure AD 提供由工作階段金鑰加密的 DPAPI 金鑰，CloudAP 外掛程式請求 TPM 解密該金鑰。 此功能可確保在保護刷新權杖時保持一致性，並避免應用程式實現自己的保護機制。  
 
-**瀏覽器 cookie**：在 windows 10 中，Azure AD 透過 windows 10 帳戶擴充功能，在 Internet Explorer 和 Microsoft Edge 中以原生方式或在 Google Chrome 中支援瀏覽器 SSO。 安全性不只是用來保護 cookie，也會建立 cookie 的傳送端點。 瀏覽器 cookie 的保護方式與 PRT 相同，方法是利用工作階段金鑰來簽署和保護 cookie。
+**瀏覽器 Cookie**： 在 Windows 10 中，Azure AD 支援瀏覽器 SSO 在互聯網瀏覽器和微軟邊緣本機或在谷歌 Chrome 通過 Windows 10 帳戶擴展。 安全性不僅用於保護 Cookie，還用於保護 Cookie 發送到的終結點。 瀏覽器 Cookie 的保護方式與 PRT 一樣，通過使用會話金鑰組 Cookie 進行簽名和保護。
 
-當使用者起始瀏覽器互動時，瀏覽器（或延伸模組）會叫用 COM native client 主機。 Native client 主機可確保頁面是來自其中一個允許的網域。 瀏覽器可以將其他參數傳送至 native client 主機（包括 nonce），不過 native client 主機會保證主機名稱的驗證。 Native client 主機向 CloudAP 外掛程式要求 PRT-cookie，它會使用 TPM 保護的工作階段金鑰來建立並簽署它。 由於 PRT cookie 是由工作階段金鑰所簽署，因此無法被篡改。 此 PRT cookie 會包含在要求標頭中，以供 Azure AD 用來驗證其來源裝置。 如果使用 Chrome 瀏覽器，只有在原生用戶端主控制項資訊清單中明確定義的擴充功能可以叫用它，防止任意延伸模組進行這些要求。 一旦 Azure AD 驗證 PRT cookie，它就會向瀏覽器發出會話 cookie。 此會話 cookie 也包含與 PRT 一起發行的相同工作階段金鑰。 在後續要求期間，工作階段金鑰會進行驗證，以有效地將 cookie 系結至裝置，並防止從其他地方重新執行。
+當使用者啟動瀏覽器交互時，瀏覽器（或擴展）將調用 COM 本機用戶端主機。 本機用戶端主機可確保頁面來自允許的域之一。 瀏覽器可以向本機用戶端主機發送其他參數，包括 nonce，但本機用戶端主機保證對主機名稱的驗證。 本機用戶端主機從 CloudAP 外掛程式請求 PRT-cookie，該外掛程式使用受 TPM 保護的工作階段金鑰創建並簽名。 由於 PRT-cookie 由工作階段金鑰簽名，因此無法篡改。 此 PRT-cookie 包含在 Azure AD 的請求標頭中，以驗證其源自的設備。 如果使用 Chrome 瀏覽器，則只有本機用戶端主機清單中顯式定義的擴展才能調用它，防止任意擴展發出這些請求。 Azure AD 驗證 PRT Cookie 後，它會向瀏覽器發出會話 Cookie。 此會話 Cookie 還包含使用 PRT 頒發的同一工作階段金鑰。 在後續請求中，工作階段金鑰得到驗證，有效地將 Cookie 綁定到設備，並阻止從其他地方重播。
 
-## <a name="when-does-a-prt-get-an-mfa-claim"></a>PRT 何時會取得 MFA 宣告？
+## <a name="when-does-a-prt-get-an-mfa-claim"></a>PRT 何時獲得 MFA 索賠？
 
-在特定案例中，PRT 可以取得多重要素驗證（MFA）宣告。 當使用 MFA 型 PRT 來要求應用程式的權杖時，MFA 宣告會轉移至這些應用程式權杖。 這項功能可針對需要的每個應用程式防止 MFA 挑戰，為使用者提供順暢的體驗。 PRT 可以透過下列方式取得 MFA 宣告：
+PRT 可以在特定方案中獲得多重要素驗證 （MFA） 聲明。 當基於 MFA 的 PRT 用於請求應用程式的權杖時，MFA 聲明將傳輸到這些應用權杖。 此功能通過防止每個需要它的應用的 MFA 挑戰，為使用者提供無縫體驗。 PRT 可以通過以下方式獲得 MFA 索賠：
 
-* **使用 Windows Hello 企業版登入**： Windows Hello 企業版會取代密碼，並使用加密編譯金鑰來提供強式雙因素驗證。 Windows Hello 企業版專屬於裝置上的使用者，而且本身需要 MFA 才能布建。 當使用者使用 Windows Hello 企業版登入時，使用者的 PRT 會取得 MFA 宣告。 如果智慧卡驗證從 ADFS 產生 MFA 宣告，則此案例也適用于使用智慧卡登入的使用者。
-   * 當 Windows Hello 企業版被視為多重要素驗證時，MFA 宣告會在 PRT 本身重新整理時更新，因此當使用者使用 WIndows Hello 企業版登入時，MFA 持續時間將持續延長
-* **WAM 互動式登入期間的 MFA**：在透過 WAM 的權杖要求期間，如果使用者必須執行 mfa 才能存取應用程式，則在此互動期間更新的 PRT 會 IMPRINTED 為 mfa 宣告。
-   * 在此情況下，MFA 宣告不會持續更新，因此 MFA 持續時間是以目錄上設定的存留期為基礎。
-   * 當先前現有的 PRT 和 RT 用來存取應用程式時，PRT 和 RT 將被視為第一次的驗證證明。 在第二次證明和 imprinted MFA 宣告中，將會需要新的。 這也會發出新的 PRT 和 RT。
-* **裝置註冊期間的 MFA**：如果系統管理員已在 Azure AD 中設定其裝置設定，以[要求使用 mfa 來註冊裝置](device-management-azure-portal.md#configure-device-settings)，則使用者必須執行 mfa 才能完成註冊。 在此過程中，向使用者發出的 PRT 會在註冊期間取得 MFA 宣告。 這項功能僅適用于執行聯結作業的使用者，而不會套用至其他登入該裝置的使用者。
-   * 類似于 WAM 互動式登入，MFA 宣告不會持續更新，因此 MFA 持續時間是以目錄上設定的存留期為基礎。
+* **使用 Windows Hello 為企業**登錄： 適用于企業的 Windows Hello 替換密碼並使用加密金鑰提供強大的雙重身份驗證。 適用于企業的 Windows Hello 特定于設備上的使用者，並且本身需要 MFA 來預配。 當使用者使用 Windows Hello 業務登錄時，使用者的 PRT 將獲得 MFA 聲明。 如果智慧卡身份驗證從 ADFS 生成 MFA 聲明，則此方案也適用于使用智慧卡登錄的使用者。
+   * 由於適用于企業的 Windows Hello 被視為多重要素驗證，因此在刷新 PRT 本身時，MFA 聲明會更新，因此當使用者使用 WIndows Hello Business 登錄時，MFA 持續時間將持續延長
+* **MFA 在 WAM 互動式登入期間**： 通過 WAM 進行權杖請求期間，如果使用者需要執行 MFA 才能訪問應用，則在此交互期間續訂的 PRT 將帶有 MFA 聲明。
+   * 在這種情況下，MFA 聲明不會持續更新，因此 MFA 持續時間基於目錄中設置的存留期。
+   * 當以前的現有 PRT 和 RT 用於訪問應用時，PRT 和 RT 將被視為身份驗證的第一個證明。 需要一個新的AT，有第二個證據和印記MFA索賠。 這還將發佈新的 PRT 和 RT。
+* **設備註冊期間的 MFA：** 如果管理員在 Azure AD 中配置了設備設置[，要求 MFA 註冊設備](device-management-azure-portal.md#configure-device-settings)，則使用者需要執行 MFA 才能完成註冊。 在此過程中，向使用者發出的 PRT 在註冊期間獲得了 MFA 索賠。 此功能僅適用于執行聯接操作的使用者，不適用於登錄到該設備的其他使用者。
+   * 與 WAM 互動式登入類似，MFA 聲明不會持續更新，因此 MFA 持續時間基於目錄上設置的存留期。
 
-Windows 10 會針對每個認證維護一個 PRTs 的資料分割清單。 因此，每個 Windows Hello 企業版、密碼或智慧卡都有 PRT。 此分割可確保 MFA 宣告會根據所使用的認證加以隔離，而不會在權杖要求期間進行混合。
+Windows 10 維護每個憑據的已分區 PRT 清單。 因此，每個 Windows Hello 企業、密碼或智慧卡都有一個 PRT。 此分區可確保 MFA 聲明根據使用的憑據隔離，不會在權杖請求期間混合。
 
 ## <a name="how-is-a-prt-invalidated"></a>PRT 如何失效？
 
-在下列案例中，PRT 會失效：
+在以下情況下，PRT 無效：
 
-* **不正確使用者**：如果已在 Azure AD 中刪除或停用使用者，其 PRT 會失效，且無法用來取得應用程式的權杖。 如果已刪除或停用的使用者在之前已登入裝置，則快取登入會將其記錄在中，直到 CloudAP 知道其無效狀態為止。 一旦 CloudAP 判定使用者無效，就會封鎖後續的登入。 系統會自動封鎖不正確使用者，使其無法登入未快取其認證的新裝置。
-* **不正確裝置**：如果已在 Azure AD 中刪除或停用裝置，則在該裝置上取得的 PRT 會失效，且無法用來取得其他應用程式的權杖。 如果使用者已登入不正確裝置，他們可以繼續執行此動作。 但裝置上的所有權杖都已失效，且使用者沒有從該裝置到任何資源的 SSO。
-* **密碼變更**：使用者變更其密碼之後，以先前的密碼取得的 PRT 會 Azure AD 失效。 密碼變更會導致使用者取得新的 PRT。 這個失效可能會以兩種不同的方式發生：
-   * 如果使用者使用新密碼登入 Windows，CloudAP 會捨棄舊的 PRT，並要求 Azure AD 使用新的密碼來發出新的 PRT。 如果使用者沒有網際網路連線，就無法驗證新的密碼，Windows 可能會要求使用者輸入舊密碼。
-   * 如果使用者在登入 Windows 之後以舊密碼登入或變更其密碼，則會針對任何以 WAM 為基礎的權杖要求使用舊的 PRT。 在此案例中，系統會提示使用者在 WAM token 要求期間進行重新驗證，併發出新的 PRT。
-* **TPM 問題**：有時候，裝置的 TPM 可能會折損或失敗，而導致 INACCESSIBILITY 受 TPM 保護的金鑰。 在此情況下，裝置無法使用現有的 PRT 取得 PRT 或要求權杖，因為它無法證明擁有密碼編譯金鑰。 因此，任何現有的 PRT 都會 Azure AD 失效。 當 Windows 10 偵測到失敗時，它會起始復原流程，以使用新的密碼編譯金鑰來重新註冊裝置。 使用混合式 Azure Ad join 時，就像初始註冊一樣，會以無訊息模式執行復原，而不需要使用者輸入。 若為已加入 Azure AD 或 Azure AD 已註冊的裝置，則必須由在裝置上具有系統管理員許可權的使用者執行復原。 在此案例中，復原流程是由引導使用者成功復原裝置的 Windows 提示字元所起始。
+* **無效使用者**：如果在 Azure AD 中刪除或禁用使用者，則其 PRT 將失效，不能用於獲取應用程式的權杖。 如果已刪除或禁用的使用者之前已登錄到設備，緩存的登錄將登錄，直到 CloudAP 知道其無效狀態。 一旦 CloudAP 確定使用者無效，它將阻止後續登錄。 無效使用者將自動阻止登錄到未緩存其憑據的新設備。
+* **無效設備**：如果在 Azure AD 中刪除或禁用設備，則在該設備上獲得的 PRT 將失效，不能用於獲取其他應用程式的權杖。 如果使用者已登錄到無效設備，他們可以繼續這樣做。 但是，設備上的所有權杖都無效，並且使用者沒有 SSO 到該設備的任何資源。
+* **密碼更改**：使用者更改其密碼後，使用前一個密碼獲取的 PRT 將由 Azure AD 失效。 密碼更改會導致使用者獲得新的 PRT。 這種失效可以通過兩種不同的方式發生：
+   * 如果使用者使用新密碼登錄到 Windows，CloudAP 將丟棄舊的 PRT，並請求 Azure AD 使用新密碼頒發新 PRT。 如果使用者沒有互聯網連接，則無法驗證新密碼，Windows 可能要求使用者輸入其舊密碼。
+   * 如果使用者在登錄到 Windows 後使用舊密碼登錄或更改了密碼，則舊 PRT 將用於任何基於 WAM 的權杖請求。 在這種情況下，系統會提示使用者在 WAM 權杖請求期間重新進行身份驗證，並頒發新的 PRT。
+* **TPM 問題**：有時，設備的 TPM 可能會抖抖或失敗，從而導致 TPM 保護的金鑰無法訪問。 在這種情況下，設備無法獲取 PRT 或使用現有 PRT 請求權杖，因為它無法證明擁有加密金鑰。 因此，任何現有的 PRT 都因 Azure AD 而失效。 當 Windows 10 檢測到故障時，它會啟動恢復流以使用新的加密金鑰重新註冊設備。 使用混合 Azure 廣告聯接，就像初始註冊一樣，恢復在沒有使用者輸入的情況下靜默進行。 對於 Azure AD 已加入或 Azure AD 註冊設備，恢復需要由在設備上具有管理員許可權的使用者執行。 在這種情況下，恢復流由 Windows 提示啟動，該提示引導使用者成功恢復設備。
 
 ## <a name="detailed-flows"></a>詳細流程
 
-下圖說明發行、更新和使用 PRT 來要求應用程式的存取權杖時的基礎詳細資料。 此外，這些步驟也會說明在這些互動期間，如何套用前述的安全性機制。
+下圖說明瞭頒發、續訂和使用 PRT 請求應用程式訪問權杖的基本詳細資訊。 此外，這些步驟還描述了在這些交互過程中如何應用上述安全機制。
 
-### <a name="prt-issuance-during-first-sign-in"></a>第一次登入期間的 PRT 發行
+### <a name="prt-issuance-during-first-sign-in"></a>首次登錄期間的 PRT 發行
 
-![第一次登入詳細流程期間的 PRT 發行](./media/concept-primary-refresh-token/prt-initial-sign-in.png)
+![PRT 在第一次簽署期間在詳細流中發出](./media/concept-primary-refresh-token/prt-initial-sign-in.png)
 
 > [!NOTE]
-> 在 Azure AD 聯結的裝置中，這項交換會同步進行，以在使用者可以登入 Windows 之前發出 PRT。 在已加入混合式 Azure AD 的裝置中，內部部署 Active Directory 是主要授權單位。 因此，使用者只會等到他們可以取得 TGT 來登入，而 PRT 發行則會以非同步方式發生。 此案例不適用於 Azure AD 已註冊的裝置，因為登入不會使用 Azure AD 認證。
+> 在 Azure AD 聯接的設備上，此交換同步發生，以在使用者可以登錄到 Windows 之前發出 PRT。 在混合 Azure AD 聯接設備中，本地活動目錄是主要許可權。 因此，使用者只等待，直到他們可以獲取 TGT 登錄，而 PRT 發行以非同步方式進行。 此方案不適用於 Azure AD 註冊設備，因為登錄不使用 Azure AD 憑據。
 
 | 步驟 | 描述 |
 | :---: | --- |
-| A | 使用者在登入 UI 中輸入其密碼。 LogonUI 會將驗證緩衝區中的認證傳遞給 LSA，這會在內部將它傳遞給 CloudAP。 CloudAP 會將此要求轉送至 CloudAP 外掛程式。 |
-| B | CloudAP 外掛程式會起始領域探索要求，以識別使用者的身分識別提供者。 如果使用者的租使用者已設定同盟提供者，Azure AD 會傳回同盟提供者的中繼資料交換端點（MEX）端點。 如果不是，Azure AD 會傳回管理的使用者，表示使用者可以使用 Azure AD 進行驗證。 |
-| C | 如果使用者是受管理的，CloudAP 會從 Azure AD 取得 nonce。 如果使用者是同盟的，CloudAP 外掛程式會向同盟提供者要求 SAML 權杖與使用者的認證。 一旦收到 SAML 權杖，就會向 Azure AD 要求 nonce。 |
-| D | CloudAP 外掛程式會使用使用者的認證、nonce 和 broker 範圍來建立驗證要求，並使用裝置金鑰（dkpriv）簽署要求，並將它傳送至 Azure AD。 在聯合環境中，CloudAP 外掛程式會使用同盟提供者所傳回的 SAML 權杖，而不是使用者的認證。 |
-| E | Azure AD 會驗證使用者認證、nonce 和裝置簽章，確認裝置在租使用者中是有效的，併發出加密的 PRT。 除了 PRT 之外，Azure AD 也會發出對稱金鑰，稱為 Azure AD 使用傳輸金鑰（tkpub）加密的工作階段金鑰。 此外，工作階段金鑰也會內嵌在 PRT 中。 此工作階段金鑰會作為 PRT 後續要求的擁有權證明（PoP）金鑰。 |
-| 華氏 (F) | CloudAP 外掛程式會將加密的 PRT 和工作階段金鑰傳遞至 CloudAP。 CloudAP 要求 TPM 使用傳輸金鑰（tkpriv）來解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 會將加密的工作階段金鑰連同 PRT 一起儲存在其快取中。 |
+| A | 使用者在 UI 中的登錄名中輸入其密碼。 LogonUI 將 auth 緩衝區中的憑據傳遞給 LSA，LSA 在內部傳遞到 CloudAP。 CloudAP 將此請求轉發給 CloudAP 外掛程式。 |
+| B | CloudAP 外掛程式啟動域發現請求，以標識使用者的標識提供程式。 如果使用者的租戶具有聯合提供程式設置，Azure AD 將返回聯合提供程式的中繼資料交換終結點 （MEX）。 如果沒有，Azure AD 將返回使用者被管理，指示使用者可以使用 Azure AD 進行身份驗證。 |
+| C | 如果使用者已管理，CloudAP 將從 Azure AD 獲取 nonce。 如果使用者是聯合的，CloudAP 外掛程式會向聯合供應商請求具有使用者憑據的 SAML 權杖。 一旦它收到 SAML 權杖，它將請求 Azure AD 的 nonce。 |
+| D | CloudAP 外掛程式使用使用者的憑據 nonce 和代理作用域構造身份驗證請求，使用設備金鑰 （dkpriv） 對請求進行簽名，並將其發送到 Azure AD。 在聯合環境中，CloudAP 外掛程式使用聯合提供程式返回的 SAML 權杖，而不是使用者的憑據。 |
+| E | Azure AD 驗證使用者憑據、nonce 和設備簽名，驗證設備在租戶中是否有效並頒發加密 PRT。 與 PRT 一起，Azure AD 還會發出一個對稱金鑰，稱為 Azure AD 使用傳輸金鑰 （tkpub） 加密的工作階段金鑰。 此外，工作階段金鑰也嵌入 PRT 中。 此工作階段金鑰充當 PRT 後續請求的佔有證明 （PoP） 金鑰。 |
+| F | CloudAP 外掛程式將加密 PRT 和工作階段金鑰傳遞給 CloudAP。 CloudAP 請求 TPM 使用傳輸金鑰 （tkpriv） 解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 將加密工作階段金鑰與 PRT 一起存儲在其緩存中。 |
 
-### <a name="prt-renewal-in-subsequent-logons"></a>後續登入中的 PRT 更新
+### <a name="prt-renewal-in-subsequent-logons"></a>後續登錄中的 PRT 續訂
 
-![後續登入中的 PRT 更新](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
-
-| 步驟 | 描述 |
-| :---: | --- |
-| A | 使用者在登入 UI 中輸入其密碼。 LogonUI 會將驗證緩衝區中的認證傳遞給 LSA，這會在內部將它傳遞給 CloudAP。 CloudAP 會將此要求轉送至 CloudAP 外掛程式。 |
-| B | 如果使用者先前已登入使用者，Windows 就會起始快取登入，並驗證認證以登入使用者。 CloudAP 外掛程式每隔4小時會以非同步方式起始 PRT 更新。 |
-| C | CloudAP 外掛程式會起始領域探索要求，以識別使用者的身分識別提供者。 如果使用者的租使用者已設定同盟提供者，Azure AD 會傳回同盟提供者的中繼資料交換端點（MEX）端點。 如果不是，Azure AD 會傳回管理的使用者，表示使用者可以使用 Azure AD 進行驗證。 |
-| D | 如果使用者是同盟的，CloudAP 外掛程式會向同盟提供者要求 SAML 權杖與使用者的認證。 一旦收到 SAML 權杖，就會向 Azure AD 要求 nonce。 如果使用者是受管理的，CloudAP 會直接從 Azure AD 取得 nonce。 |
-| E | CloudAP 外掛程式會使用使用者的認證、nonce 和現有的 PRT 來建立驗證要求，並使用工作階段金鑰來簽署要求，並將它傳送至 Azure AD。 在聯合環境中，CloudAP 外掛程式會使用同盟提供者所傳回的 SAML 權杖，而不是使用者的認證。 |
-| 華氏 (F) | Azure AD 會藉由與內嵌在 PRT 中的工作階段金鑰進行比較來驗證工作階段金鑰簽章、驗證 nonce，並確認裝置在租使用者中是有效的，併發出新的 PRT。 如先前所見，PRT 會再次伴隨著由傳輸金鑰（tkpub）加密的工作階段金鑰。 |
-| G | CloudAP 外掛程式會將加密的 PRT 和工作階段金鑰傳遞至 CloudAP。 CloudAP 會要求 TPM 使用傳輸金鑰（tkpriv）來解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 會將加密的工作階段金鑰連同 PRT 一起儲存在其快取中。 |
-
-### <a name="prt-usage-during-app-token-requests"></a>應用程式權杖要求期間的 PRT 使用方式
-
-![應用程式權杖要求期間的 PRT 使用方式](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
+![後續登錄中的 PRT 續訂](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
 | 步驟 | 描述 |
 | :---: | --- |
-| A | 應用程式（例如 Outlook、OneNote 等）會起始 WAM 的權杖要求。 接著，WAM 會要求 Azure AD WAM 外掛程式提供權杖要求的服務。 |
-| B | 如果應用程式的重新整理權杖已可供使用，Azure AD WAM 外掛程式會使用它來要求存取權杖。 為了提供裝置系結的證明，WAM 外掛程式會使用工作階段金鑰來簽署要求。 Azure AD 會驗證工作階段金鑰，併發出應用程式的存取權杖和新的重新整理權杖，並由工作階段金鑰加密。 WAM 外掛程式會要求雲端 AP 外掛程式來解密權杖，接著會要求 TPM 使用工作階段金鑰進行解密，因而導致 WAM 外掛程式取得這兩個權杖。 接下來，WAM 外掛程式只會提供應用程式的存取權杖，同時它會使用 DPAPI 重新加密更新權杖，並將它儲存在自己的快取中  |
-| C |  如果無法使用應用程式的重新整理權杖，Azure AD WAM 外掛程式會使用 PRT 來要求存取權杖。 為了提供擁有權證明，WAM 外掛程式會使用工作階段金鑰來簽署包含 PRT 的要求。 Azure AD 會藉由與內嵌在 PRT 中的工作階段金鑰進行比較來驗證工作階段金鑰簽章，驗證裝置是否有效，併發出應用程式的存取權杖和重新整理權杖。 此外，Azure AD 可以發出新的 PRT （根據重新整理週期），這些都是由工作階段金鑰加密。 |
-| D | WAM 外掛程式會要求雲端 AP 外掛程式來解密權杖，接著會要求 TPM 使用工作階段金鑰進行解密，因而導致 WAM 外掛程式取得這兩個權杖。 接下來，WAM 外掛程式只會提供應用程式的存取權杖，同時會使用 DPAPI 重新加密更新權杖，並將它儲存在自己的快取中。 WAM 外掛程式將會針對此應用程式使用重新整理權杖。 WAM 外掛程式也會將新的 PRT 提供給雲端 AP 外掛程式，這會使用 Azure AD 來驗證 PRT，然後才在自己的快取中更新它。 雲端 AP 外掛程式將會使用新的 PRT。 |
-| E | WAM 會將新發行的存取權杖提供給 WAM，然後再將它提供給呼叫的應用程式。|
+| A | 使用者在 UI 中的登錄名中輸入其密碼。 LogonUI 將 auth 緩衝區中的憑據傳遞給 LSA，LSA 在內部傳遞到 CloudAP。 CloudAP 將此請求轉發給 CloudAP 外掛程式。 |
+| B | 如果使用者以前登錄到該使用者，Windows 將啟動緩存登錄並驗證憑據以登錄使用者。 每 4 小時，CloudAP 外掛程式會非同步啟動 PRT 續訂。 |
+| C | CloudAP 外掛程式啟動域發現請求，以標識使用者的標識提供程式。 如果使用者的租戶具有聯合提供程式設置，Azure AD 將返回聯合提供程式的中繼資料交換終結點 （MEX）。 如果沒有，Azure AD 將返回使用者被管理，指示使用者可以使用 Azure AD 進行身份驗證。 |
+| D | 如果使用者是聯合的，CloudAP 外掛程式會向聯合供應商請求具有使用者憑據的 SAML 權杖。 一旦它收到 SAML 權杖，它將請求 Azure AD 的 nonce。 如果使用者是託管的，CloudAP 將直接從 Azure AD 獲取 nonce。 |
+| E | CloudAP 外掛程式使用使用者的憑據 nonce 和現有 PRT 構造身份驗證請求，使用會話金鑰組請求進行簽名，並將其發送到 Azure AD。 在聯合環境中，CloudAP 外掛程式使用聯合提供程式返回的 SAML 權杖，而不是使用者的憑據。 |
+| F | Azure AD 通過將其與 PRT 中嵌入的工作階段金鑰進行比較來驗證工作階段金鑰簽名，驗證 nonce 並驗證設備在租戶中是否有效並頒發新的 PRT。 如前所示，PRT 再次附帶由傳輸金鑰 （tkpub） 加密的工作階段金鑰。 |
+| G | CloudAP 外掛程式將加密 PRT 和工作階段金鑰傳遞給 CloudAP。 CloudAP 請求 TPM 使用傳輸金鑰 （tkpriv） 解密工作階段金鑰，並使用 TPM 自己的金鑰重新加密它。 CloudAP 將加密工作階段金鑰與 PRT 一起存儲在其緩存中。 |
+
+### <a name="prt-usage-during-app-token-requests"></a>應用權杖請求期間的 PRT 使用
+
+![應用權杖請求期間的 PRT 使用](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
+
+| 步驟 | 描述 |
+| :---: | --- |
+| A | 應用程式（例如 Outlook、OneNote 等）向 WAM 發起權杖請求。 WAM 反過來要求 Azure AD WAM 外掛程式為權杖請求提供服務。 |
+| B | 如果應用程式的刷新權杖已可用，Azure AD WAM 外掛程式會使用它請求訪問權杖。 為了提供設備綁定證明，WAM 外掛程式使用會話金鑰組請求進行簽名。 Azure AD 驗證工作階段金鑰，並為應用頒發訪問權杖和新的刷新權杖，由工作階段金鑰加密。 WAM 外掛程式請求 Cloud AP 外掛程式解密權杖，而權杖又請求 TPM 使用工作階段金鑰解密，從而導致 WAM 外掛程式同時獲取兩個權杖。 接下來，WAM 外掛程式僅提供對應用程式的訪問權杖，同時使用 DPAPI 重新加密刷新權杖並將其存儲在自己的緩存中  |
+| C |  如果應用程式的刷新權杖不可用，Azure AD WAM 外掛程式將使用 PRT 請求訪問權杖。 為了提供擁有證明，WAM 外掛程式使用工作階段金鑰在包含 PRT 的請求上簽名。 Azure AD 通過將其與 PRT 中嵌入的工作階段金鑰進行比較來驗證工作階段金鑰簽名，驗證設備是否有效，並為應用程式頒發訪問權杖和刷新權杖。 此外，Azure AD 可以發佈新的 PRT（基於刷新週期），所有這些 PRT 都由工作階段金鑰加密。 |
+| D | WAM 外掛程式請求 Cloud AP 外掛程式解密權杖，而權杖又請求 TPM 使用工作階段金鑰解密，從而導致 WAM 外掛程式同時獲取兩個權杖。 接下來，WAM 外掛程式僅提供對應用程式的訪問權杖，同時使用 DPAPI 重新加密刷新權杖並將其存儲在自己的緩存中。 WAM 外掛程式將為此應用程式使用刷新權杖。 WAM 外掛程式還會將新的 PRT 回饋給雲 AP 外掛程式，該外掛程式在在其自己的緩存中更新 PRT 之前，使用 Azure AD 對其進行驗證。 雲 AP 外掛程式將未來使用新的 PRT。 |
+| E | WAM 向 WAM 提供新頒發的訪問權杖，而 WAM 又將其發回檔用應用程式|
 
 ### <a name="browser-sso-using-prt"></a>使用 PRT 的瀏覽器 SSO
 
@@ -186,13 +186,13 @@ Windows 10 會針對每個認證維護一個 PRTs 的資料分割清單。 因�
 
 | 步驟 | 描述 |
 | :---: | --- |
-| A | 使用者使用其認證登入 Windows 以取得 PRT。 一旦使用者開啟瀏覽器，瀏覽器（或延伸模組）會從登錄載入 Url。 |
-| B | 當使用者開啟 Azure AD 登入 URL 時，瀏覽器或延伸模組會以從登錄取得的 URL 來驗證 URL。 如果兩者相符，瀏覽器會叫用原生用戶端主機來取得權杖。 |
-| C | Native client 主機會驗證 Url 是否屬於 Microsoft 身分識別提供者（Microsoft 帳戶或 Azure AD）、解壓縮從 URL 傳送的 nonce，以及呼叫 CloudAP 外掛程式以取得 PRT cookie。 |
-| D | CloudAP 外掛程式會建立 PRT cookie，並使用 TPM 系結工作階段金鑰登入，並將其傳回給 native client 主機。 由於 cookie 是由工作階段金鑰所簽署，因此無法被篡改。 |
-| E | Native client 主機會將此 PRT cookie 傳回給瀏覽器，其會將它包含在要求標頭中，稱為 x-ms-RefreshTokenCredential 和 Azure AD 的要求權杖。 |
-| 華氏 (F) | Azure AD 會驗證 PRT cookie 上的工作階段金鑰簽章、驗證 nonce、驗證該裝置在租使用者中是否有效，併發出網頁的識別碼權杖和瀏覽器的加密會話 cookie。 |
+| A | 使用者使用憑據登錄到 Windows 以獲取 PRT。 使用者打開瀏覽器後，瀏覽器（或擴展）將從註冊表載入 URL。 |
+| B | 當使用者打開 Azure AD 登錄 URL 時，瀏覽器或擴展將驗證 URL 與從註冊表獲取的 URL。 如果它們匹配，瀏覽器將調用本機用戶端主機以獲取權杖。 |
+| C | 本機用戶端主機驗證 URL 是否屬於 Microsoft 標識提供程式（Microsoft 帳戶或 Azure AD），提取從 URL 發送的 nonce，並調用 CloudAP 外掛程式以獲取 PRT Cookie。 |
+| D | CloudAP 外掛程式將創建 PRT Cookie，使用 TPM 綁定工作階段金鑰登錄，並將其發送回本機用戶端主機。 由於 Cookie 由工作階段金鑰簽名，因此無法篡改它。 |
+| E | 本機用戶端主機將此 PRT Cookie 返回到瀏覽器，瀏覽器將包含它作為稱為 x-ms-RefreshToken 憑據的請求標頭的一部分，並從 Azure AD 請求權杖。 |
+| F | Azure AD 驗證 PRT Cookie 上的工作階段金鑰簽名，驗證 nonce，驗證設備在租戶中是否有效，並為網頁發出 ID 權杖和瀏覽器的加密會話 Cookie。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關針對 PRT 相關問題進行疑難排解的詳細資訊，請參閱[疑難排解已加入混合式 Azure Active Directory windows 10 和 Windows Server 2016 裝置](troubleshoot-hybrid-join-windows-current.md)一文。
+有關解決 PRT 相關問題疑難排解的詳細資訊，請參閱有關[排除混合 Azure 活動目錄加入 Windows 10 和 Windows Server 2016 設備](troubleshoot-hybrid-join-windows-current.md)的文章。

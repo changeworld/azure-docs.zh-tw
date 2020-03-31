@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
 ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67174098"
 ---
 ## <a name="automatic-device-management"></a>自動裝置管理
@@ -60,4 +60,4 @@ IoT Edge 執行階段包含 Microsoft 散發以安裝於 IoT Edge 裝置上的�
 複製位於單一裝置模組對應項上之 IoT Edge 資訊清單內容的作業。 基礎 API 是一般的「套用設定」，它會直接將 IoT Edge 資訊清單作為輸入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目標條件
-在 IoT Edge 部署中，「目標條件」是裝置對應項的標籤上選取部署目標裝置的任何布林值條件，例如 **tag.environment = prod**。系統會持續評估目標條件以納入任何符合需求的新裝置，或是移除任何不再符合需求的裝置。 深入了解[目標條件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
+在 IoT Edge 部署中，目標條件是設備孿生標記上的任何布林條件，用於選擇部署的目標設備，例如**tag.環境 = prod**。持續評估目標條件，以包括任何滿足要求的新設備或刪除不再執行要求的設備。 深入了解[目標條件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)

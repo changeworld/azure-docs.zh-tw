@@ -1,16 +1,16 @@
 ---
-title: 使用範本部署應用程式
-description: 尋找有關建立 Azure Resource Manager 範本以布建和部署 App Service 應用程式的指引。
+title: 使用範本部署應用
+description: 查找有關創建 Azure 資源管理器範本以預配和部署應用服務應用的指導。
 author: tfitzmac
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77211706"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本部署 Web 應用程式的指引
@@ -22,7 +22,7 @@ ms.locfileid: "77211706"
 要定義 Web 應用程式的相依性，必須先了解 Web 應用程式中的資源彼此互動的方式。 如果您以不正確的順序指定相依性，將可能會導致部署錯誤，或產生競爭情形而致使部署停止。
 
 > [!WARNING]
-> 如果您在範本中納入 MSDeploy 網站延伸模組，則必須將任何組態資源設定為相依於 MSDeploy 資源。 組態變更會導致網站以非同步方式重新啟動。 將組態資源設定為相依於 MSDeploy，可確保在 MSDeploy 完成後，網站才會重新啟動。 若沒有這些相依性，網站即可能在 MSDeploy 的部署程序期間重新啟動。 如需範例範本，請參閱[具有 Web Deploy 相依性的 WordPress 範本](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
+> 如果您在範本中納入 MSDeploy 網站延伸模組，則必須將任何組態資源設定為相依於 MSDeploy 資源。 組態變更會導致網站以非同步方式重新啟動。 將組態資源設定為相依於 MSDeploy，可確保在 MSDeploy 完成後，網站才會重新啟動。 若沒有這些相依性，網站即可能在 MSDeploy 的部署程序期間重新啟動。 有關示例範本，請參閱[具有 Web 部署依賴項的 WordPress 範本](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
 
 下圖顯示各種 App Service 資源的相依性順序：
 
@@ -41,7 +41,7 @@ ms.locfileid: "77211706"
 **第 3 層**
 * 原始檔控制 - 視 Web 應用程式而定。
 * MSDeploy 網站延伸模組 - 視 Web 應用程式而定。
-* 以 web 應用程式為目標的 Azure 應用程式 Insights 實例-視 web 應用程式而定。
+* 面向 Web 應用的 Azure 應用程式見解實例取決於 Web 應用。
 
 **第 4 層**
 * App Service 憑證 - 取決於存在的原始檔控制或 MSDeploy。 若都不存在，則視 Web 應用程式而定。
@@ -90,7 +90,7 @@ ms.locfileid: "77211706"
 
 1. 移至網站的 [Kudu 主控台](https://github.com/projectkudu/kudu/wiki/Kudu-console)。
 2. 瀏覽至位於 D:\home\LogFiles\SiteExtensions\MSDeploy 上的資料夾。
-3. 尋找 appManagerStatus.xml 和 appManagerLog.xml 檔案。 第一個檔案會記錄狀態。 第二個檔案會記錄錯誤的相關資訊。 如果您不清楚此錯誤，您可以在尋求[論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)的協助時加以包含。
+3. 尋找 appManagerStatus.xml 和 appManagerLog.xml 檔案。 第一個檔案會記錄狀態。 第二個檔案會記錄錯誤的相關資訊。 如果您不清楚錯誤，您可以在論壇中尋求説明時包括該[錯誤](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
 
 ## <a name="choose-a-unique-web-app-name"></a>選擇唯一的 Web 應用程式名稱
 
@@ -123,7 +123,7 @@ Set-AzKeyVaultAccessPolicy `
 
 在 Azure Government 中，App Service 服務主體的識別碼為 **6a02c803-dafd-4136-b4c3-5a6f318b4714**。 使用上述範例中的該識別碼。
 
-在 Key Vault 中，選取 [憑證] 和 [產生/匯入] 以上傳憑證。
+在 Key Vault 中，選取 [憑證]**** 和 [產生/匯入]**** 以上傳憑證。
 
 ![匯入憑證](media/web-sites-rm-template-guidance/import-certificate.png)
 

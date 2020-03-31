@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Azure MFA Server-Azure Active Directory
+title: 入門 Azure MFA 伺服器 - Azure 活動目錄
 description: 逐步開始進行 Azure MFA Server 內部部署
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263695"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>開始使用 Azure Multi-Factor Authentication Server
 
 <center>
 
-![開始使用 MFA Server 內部部署](./media/howto-mfaserver-deploy/server2.png)</center>
+![入門本地 MFA 伺服器](./media/howto-mfaserver-deploy/server2.png)</center>
 
 本頁面探討新伺服器安裝，以及透過內部部署 Active Directory 予以設定。 如果您已經安裝 MFA 伺服器，且想要升級，請參閱[升級至最新的 Azure Multi-factor Authentication Server](howto-mfaserver-deploy-upgrade.md)。 如果您想要尋找僅是安裝 Web 服務的資訊，請參閱[部署 Azure Multi-Factor Authentication Server 行動應用程式 Web 服務](howto-mfaserver-deploy-mobileapp.md)。
 
 > [!IMPORTANT]
-> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
+> 自 2019 年 7 月 1 日起，Microsoft 將不再為新部署提供 MFA 伺服器。 希望使用者進行多重要素驗證的新客戶應使用基於雲的 Azure 多重要素驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動憑據。
 
 ## <a name="plan-your-deployment"></a>規劃您的部署
 
@@ -95,12 +95,12 @@ ms.locfileid: "79263695"
 
 請遵循下列步驟，以從 Azure 入口網站下載 Azure Multi-Factor Authentication Server：
 
-1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 搜尋並選取 [Azure Active Directory]。 選取 [**安全性** > **MFA**]。
-3. 在 [**管理員 MFA Server**] 底下，選取 [**伺服器設定**]。
-4. 選取 [下載] 並遵循下載頁面上的指示，以儲存安裝程式。 
+1. 以管理員身份登錄到[Azure 門戶](https://portal.azure.com)。
+2. 搜尋並選取 [Azure Active Directory]**。 選擇**安全** > **MFA**。
+3. 在**管理器 MFA 伺服器**下 ，選擇**伺服器設置**。
+4. 選取 [下載]**** 並遵循下載頁面上的指示，以儲存安裝程式。 
 
-   ![從 Azure 入口網站下載 MFA Server](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![從 Azure 門戶下載 MFA 伺服器](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. 讓此頁面保持開啟，我們會在執行安裝程式之後參照該頁面。
 
@@ -109,16 +109,16 @@ ms.locfileid: "79263695"
 既然您已下載伺服器，現在可以進行安裝和設定。 請確定要安裝的伺服器符合規劃區段中所列的需求。
 
 1. 按兩下可執行檔。
-2. 在 [選取安裝資料夾] 畫面中，請確認資料夾正確，然後按一下 [下一步]。
-3. 當安裝完成時，請按一下 [完成]。 組態精靈就會啟動。
-4. 在組態精靈歡迎畫面上，核取 [略過使用驗證設定精靈]，然後按 [下一步]。 精靈關閉然後伺服器啟動。
+2. 在 [選取安裝資料夾] 畫面中，請確認資料夾正確，然後按一下 [下一步]****。
+3. 當安裝完成時，請按一下 [完成]****。 組態精靈就會啟動。
+4. 在組態精靈歡迎畫面上，核取 [略過使用驗證設定精靈]****，然後按 [下一步]****。 精靈關閉然後伺服器啟動。
 
-   ![略過使用驗證設定向導](./media/howto-mfaserver-deploy/skip2.png)
+   ![使用身份驗證設定精靈跳過](./media/howto-mfaserver-deploy/skip2.png)
 
-5. 回到您下載伺服器的頁面，按一下 [產生啟用認證] 按鈕。 將此資訊複製到 Azure MFA Server 提供的方塊中，然後按一下 [ **啟用**]。
+5. 回到您下載伺服器的頁面，按一下 [產生啟用認證]**** 按鈕。 將此資訊複製到 Azure MFA Server 提供的方塊中，然後按一下 [ **啟用**]。
 
 > [!NOTE]
-> 只有全域管理員能夠在 Azure 入口網站中產生啟用認證。
+> 只有全域管理員才能在 Azure 門戶中生成啟動憑據。
 
 ## <a name="send-users-an-email"></a>傳送電子郵件給使用者
 
@@ -130,13 +130,13 @@ ms.locfileid: "79263695"
 
 ### <a name="configure-email-and-email-templates"></a>設定電子郵件和電子郵件範本
 
-按一下左邊的電子郵件圖示，即可設定用來傳送這些電子郵件的設定。 此頁面可讓您輸入郵件伺服器的 SMTP 資訊，並透過核取 [傳送電子郵件給使用者] 核取方塊來傳送電子郵件。
+按一下左邊的電子郵件圖示，即可設定用來傳送這些電子郵件的設定。 此頁面可讓您輸入郵件伺服器的 SMTP 資訊，並透過核取 [傳送電子郵件給使用者]**** 核取方塊來傳送電子郵件。
 
 ![MFA Server 電子郵件組態](./media/howto-mfaserver-deploy/email1.png)
 
 在 [電子郵件內容] 索引標籤中，您會看到可供選擇的電子郵件範本。 請根據您是如何設定使用者來執行雙步驟驗證，選擇最適合您使用的範本。
 
-![主控台中的 MFA Server 電子郵件範本](./media/howto-mfaserver-deploy/email2.png)
+![主控台中的 MFA 伺服器電子郵件範本](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>從 Active Directory 匯入使用者
 
@@ -147,17 +147,17 @@ ms.locfileid: "79263695"
 1. 在 Azure MFA Server 的左側選取 [ **使用者**]。
 2. 在底部選取 [ **從 Active Directory 匯入**]。
 3. 現在您可以搜尋個別使用者，或在 AD 中搜尋含使用者的 OU。 在此情況下，我們會指定使用者的 OU。
-4. 反白顯示右側的所有使用者，然後按一下 [匯入]。 您應該會看到指出成功完成作業的快顯視窗。 關閉匯入視窗。
+4. 反白顯示右側的所有使用者，然後按一下 [匯入]****。 您應該會看到指出成功完成作業的快顯視窗。 關閉匯入視窗。
 
-   ![從 Active Directory 進行 MFA Server 使用者匯入](./media/howto-mfaserver-deploy/import2.png)
+   ![MFA 伺服器使用者從活動目錄導入](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>自動與 Active Directory 同步處理
 
-1. 在 Azure MFA Server 的左側選取 [目錄整合]。
-2. 瀏覽至 [同步處理] 索引標籤。
-3. 在底部選擇 [新增]
-4. 在出現的 [新增同步處理項目] 方塊中選擇 [網域]、[OU] **或**安全性群組、[設定]、[預設方法]，以及此同步處理工作的 [預設語言]，然後按一下 [新增]。
-5. 核取標示為 [啟用與 Active Directory 同步處理] 的方塊並選擇介於一分鐘與 24 小時之間的 [同步處理間隔]。
+1. 在 Azure MFA Server 的左側選取 [目錄整合]****。
+2. 瀏覽至 [同步處理]**** 索引標籤。
+3. 在底部選擇 [新增]****
+4. 在出現的 [新增同步處理項目]**** 方塊中選擇 [網域]、[OU] **或**安全性群組、[設定]、[預設方法]，以及此同步處理工作的 [預設語言]，然後按一下 [新增]****。
+5. 核取標示為 [啟用與 Active Directory 同步處理]**** 的方塊並選擇介於一分鐘與 24 小時之間的 [同步處理間隔]****。
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure Multi-Factor Authentication Server 如何處理使用者資料？
 
@@ -177,7 +177,7 @@ ms.locfileid: "79263695"
 除了上述欄位，驗證結果 (成功/拒絕) 和任何拒絕的原因也與驗證資料一起儲存，可透過驗證/使用情況報告取得。
 
 > [!IMPORTANT]
-> 從2019年3月開始，免費/試用版 Azure AD 租使用者中的 MFA Server 使用者將無法使用通話選項。 這項變更不會影響 SMS 訊息。 付費 Azure AD 租使用者中的使用者將可繼續使用通話。 這種變更只會影響 Azure AD 租使用者的免費/試用版。
+> 從 2019 年 3 月開始，免費/試用 Azure AD 租戶中的 MFA 伺服器使用者將不能使用撥打電話選項。 SMS 消息不受此更改的影響。 撥打電話將繼續可供付費 Azure AD 租戶中的使用者使用。 此更改僅影響免費/試用 Azure AD 租戶。
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>備份和還原 Azure MFA Server
 
