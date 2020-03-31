@@ -11,47 +11,47 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214713"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 雲端服務角色上安裝 .NET
 本文說明如何安裝未隨附於 Azure 客體 OS 的 .NET Framework 版本。 若要設定雲端服務 web 和背景工作角色，您可以在客體 OS 上使用 .NET。
 
-例如，您可以在來賓 OS 系列4上安裝 .NET Framework 4.6.2，這不會隨附于任何版本的 .NET Framework 4.6。 （「虛擬作業系統系列」5會隨附 .NET Framework 4.6）。如需 Azure 虛擬作業系統版本的最新資訊，請參閱[Azure 來賓 os 發行新聞](cloud-services-guestos-update-matrix.md)。 
+例如，您可以在來賓 OS 系列 4 上安裝 .NET 框架 4.6.2，該系列不附帶 .NET Framework 4.6 的任何版本。 （來賓 OS 系列 5 附帶 .NET 框架 4.6。有關 Azure 客體作業系統版本的最新資訊，請參閱[Azure 客體作業系統發佈新聞](cloud-services-guestos-update-matrix.md)。 
 
 >[!IMPORTANT]
->Azure SDK 2.9 包含在來賓 OS 系列4或更早版本上部署 .NET Framework 4.6 的限制。 可在 [Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) 網站上取得限制的修正程式。
+>Azure SDK 2.9 包含在來賓 OS 系列 4 或更早版本上部署 .NET 框架 4.6 的限制。 可在 [Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) 網站上取得限制的修正程式。
 
 若要在您的 web 和背景工作角色上安裝 .NET，請包括 .NET web 安裝程式作為雲端服務專案的一部分。 啟動安裝程式作為角色啟動工作的一部分。 
 
 ## <a name="add-the-net-installer-to-your-project"></a>將 .NET 安裝程式加入至專案
 若要下載 .NET framework 的 Web 安裝程式，請選擇您需要安裝的版本：
 
-* [.NET Framework 4.8 web 安裝程式](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET Framework 4.7.2 web 安裝程式](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET Framework 4.6.2 web 安裝程式](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET 框架 4.8 Web 安裝程式](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET 框架 4.7.2 Web 安裝程式](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET 框架 4.6.2 Web 安裝程式](https://www.microsoft.com/download/details.aspx?id=53345)
 
-若要新增 web 角色的安裝程式：
-  1. 在 [方案總管] 中，於雲端服務專案中的 [角色] 下，以滑鼠右鍵按一下您的 web角色，然後依序選取 [新增] > [新增資料夾]。 建立名為 **bin** 的資料夾。
-  2. 在 bin 資料夾上按一下滑鼠右鍵，並依序選取 [新增] > [現有項目]。 選取 .NET 安裝程式，並將它加入至 bin 資料夾。
+若要新增 web** 角色的安裝程式：
+  1. 在 [方案總管]**** 中，於雲端服務專案中的 [角色]**** 下，以滑鼠右鍵按一下您的 web** 角色，然後依序選取 [新增]**** > [新增資料夾]****。 創建名為**bin**的資料夾。
+  2. 按右鍵 bin 資料夾並選擇"**添加** > **現有專案**"。 選取 .NET 安裝程式，並將它加入至 bin 資料夾。
   
-若要新增 worker 角色的安裝程式：
-* 以滑鼠右鍵按一下您的 worker 角色，然後依序選取 [新增] > [現有項目]。 選取 .NET 安裝程式，並將它加入至角色。 
+若要新增 worker** 角色的安裝程式：
+* 以滑鼠右鍵按一下您的 worker** 角色，然後依序選取 [新增]**** > [現有項目]****。 選取 .NET 安裝程式，並將它加入至角色。 
 
 以這個方式將檔案新增至角色內容資料夾時，檔案就會自動新增至雲端服務套件。 然後檔案就會部署到虛擬機器上的一致位置。 為雲端服務中的每個 Web 和背景工作角色重複此程序，以便所有角色都有安裝程式副本。
 
 > [!NOTE]
-> 即使您的應用程式是以 .NET Framework 4.6 為目標，您還是應該在雲端服務角色上安裝 .NET Framework 4.6.2。 客體 OS 包含知識庫[更新 3098779](https://support.microsoft.com/kb/3098779) 和[更新 3097997](https://support.microsoft.com/kb/3097997)。 當您執行 .NET 應用程式時，如果 .NET Framework 4.6 安裝在知識庫更新之上，就可能會發生問題。 若要避免這些問題，請安裝 .NET Framework 4.6.2，而不是4.6 版。 如需詳細資訊，請參閱[知識庫文章 3118750](https://support.microsoft.com/kb/3118750) 和 [4340191](https://support.microsoft.com/kb/4340191)。
+> 您應該在雲服務角色上安裝 .NET 框架 4.6.2，即使應用程式以 .NET 框架 4.6 為目標。 客體 OS 包含知識庫[更新 3098779](https://support.microsoft.com/kb/3098779) 和[更新 3097997](https://support.microsoft.com/kb/3097997)。 如果 .NET 框架 4.6 安裝在知識庫更新之上，則運行 .NET 應用程式時可能會出現問題。 為了避免這些問題，請安裝 .NET 框架 4.6.2 而不是版本 4.6。 如需詳細資訊，請參閱[知識庫文章 3118750](https://support.microsoft.com/kb/3118750) 和 [4340191](https://support.microsoft.com/kb/4340191)。
 > 
 > 
 
 ![安裝程式檔案的角色內容][1]
 
 ## <a name="define-startup-tasks-for-your-roles"></a>定義角色的啟動工作
-您可以利用啟動工作，在角色啟動之前執行作業。 將 .NET Framework 安裝為啟動工作的一部分，可確保在執行任何應用程式程式碼之前就已安裝好 Framework。 如需有關啟動工作的詳細資訊，請參閱[在 Azure 中執行啟動工作](cloud-services-startup-tasks.md)。 
+您可以利用啟動工作，在角色啟動之前執行作業。 將 .NET Framework 安裝為啟動工作的一部分，可確保在執行任何應用程式程式碼之前就已安裝好 Framework。 有關啟動任務的詳細資訊，請參閱在[Azure 中運行啟動任務](cloud-services-startup-tasks.md)。 
 
 1. 將下列內容新增至所有角色的 **WebRole** 或 **WorkerRole** 節點底下的 ServiceDefinition.csdef 檔案：
    
@@ -82,7 +82,7 @@ ms.locfileid: "79214713"
 
 2. 建立名為 **install.cmd** 的檔案，並將下列安裝指令碼新增至檔案。
 
-   指令碼會透過查詢登錄來檢查指定的 .NET Framework 版本是否已在電腦上安裝。 如果未安裝 .NET Framework 版本，則會開啟 .NET Framework web 安裝程式。 為協助針對任何問題進行疑難排解，該指令碼會將所有活動記錄到 startuptasklog-(目前日期和時間).txt 的檔案 (儲存於 **InstallLogs** 本機儲存體)。
+   指令碼會透過查詢登錄來檢查指定的 .NET Framework 版本是否已在電腦上安裝。 如果未安裝 .NET 框架版本，則打開 .NET Framework Web 安裝程式。 為協助針對任何問題進行疑難排解，該指令碼會將所有活動記錄到 startuptasklog-(目前日期和時間).txt 的檔案 (儲存於 **InstallLogs** 本機儲存體)。
    
    > [!IMPORTANT]
    > 使用 Windows 記事本之類的基本文字編輯器來建立 install.cmd 檔案。 如果您是使用 Visual Studio 來建立文字檔案，然後將副檔名變更為 .cmd，檔案可能仍會包含 UTF-8 位元組順序標記。 執行指令碼的第一行時，此標記可能會導致錯誤。 若要避免這個錯誤，請在指令碼的第一行使用 REM 陳述式，位元組順序處理就可以跳過。 
@@ -197,7 +197,7 @@ ms.locfileid: "79214713"
    EXIT /B 0
    ```
 
-3. 將 install.cmd 檔案新增至每個角色，方法是使用 [方案總管] 中的 [新增] > [現有項目]如本主題中稍早所述。 
+3. 使用"**解決方案資源管理器**中**的現有** > **專案添加現有專案**"將 install.cmd 檔添加到每個角色中，如本主題前面所述。 
 
     完成此步驟之後，所有角色應該都有 .NET 安裝程式檔案，以及 install.cmd 檔案。
 
@@ -207,7 +207,7 @@ ms.locfileid: "79214713"
 如要簡化針對安裝問題進行疑難排解，您可以設定 Azure 診斷，來將啟動工作指令碼或 .NET 安裝程式所產生的所有記錄檔傳輸到 Azure Blob 儲存體。 您可以使用這種方法，從 Blob 儲存體下載記錄，而無需遠端桌面到角色，即可檢視記錄。
 
 
-若要設定診斷，請開啟 diagnostics.wadcfgx 檔案，並在 [目錄] 節點下新增下列內容： 
+若要設定診斷，請開啟 diagnostics.wadcfgx 檔案，並在 [目錄]**** 節點下新增下列內容： 
 
 ```xml 
 <DataSources>
@@ -217,15 +217,15 @@ ms.locfileid: "79214713"
 </DataSources>
 ```
 
-這個 XML 會將診斷設定為將 NETFXInstall 資源下 log 目錄中的檔案，傳輸到 **netfx-install** Blob 容器中的診斷儲存體帳戶。
+這個 XML 會將診斷設定為將 NETFXInstall**** 資源下 log 目錄中的檔案，傳輸到 **netfx-install** Blob 容器中的診斷儲存體帳戶。
 
 ## <a name="deploy-your-cloud-service"></a>部署您的雲端服務
-部署雲端服務時，啟動工作會安裝 .NET Framework (如果尚未安裝)。 安裝架構時，雲端服務角色會處於忙碌狀態。 如果架構安裝需要重新啟動，服務角色可能也會重新啟動。 
+部署雲端服務時，啟動工作會安裝 .NET Framework (如果尚未安裝)。 安裝架構時，雲端服務角色會處於忙碌** 狀態。 如果架構安裝需要重新啟動，服務角色可能也會重新啟動。 
 
 ## <a name="additional-resources"></a>其他資源
 * [安裝 .NET Framework][Installing the .NET Framework]
 * [判斷安裝的 .NET Framework 版本][How to: Determine Which .NET Framework Versions Are Installed]
-* [疑難排解 .NET Framework 安裝][Troubleshooting .NET Framework Installations]
+* [故障排除 .NET 框架安裝][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

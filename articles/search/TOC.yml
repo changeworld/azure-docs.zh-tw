@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: 建立知識存放區
           href: knowledge-store-create-portal.md
+        - name: 使用搜尋總管進行查詢
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: 使用完整 Lucene 語法
           href: search-query-lucene-examples.md
-        - name: 使用搜尋總管 (入口網站)
-          href: search-explorer.md
         - name: 特殊字元和部分條款
           href: search-query-partial-matching.md
+        - name: 從 Power Apps 查詢
+          href: search-howto-powerapps.md
         - name: 語法參考
           items:
             - name: 簡單查詢語法

@@ -3,7 +3,7 @@ documentType: LandingData
 title: SQL 受控執行個體
 metadata:
   title: 受控執行個體文件 - 教學課程和 API 參考
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 尋找 Azure SQL Database 受控執行個體 (其為雲端中裝載的完全受控 SQL Server 資料庫引擎執行個體) 的快速入門、教學課程和範例。
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab
@@ -52,7 +52,7 @@ sections:
           - title: 在不停機的情況下移轉
             href: /azure/dms/tutorial-sql-server-to-managed-instance
             html: <p>使用資料庫移轉服務，在停機時間最短的情況下遷移多個資料庫。</p>
-          - title: 價格
+          - title: 定價
             href: 'https://azure.microsoft.com/pricing/hybrid-benefit/'
             html: <p>使用現有的內部部署授權，節省高達 40% 的 Azure Hybrid Benefit (AHB) 費用。</p>
           - title: PaaS 功能

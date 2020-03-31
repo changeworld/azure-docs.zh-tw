@@ -5,18 +5,18 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250102"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239284"
 ---
-# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教學課程：使用 Azure Resource Manager 範本匯入 SQL BACPAC 檔案
+# <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案
 
-了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager 範本匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。 
+了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager (ARM) 範本匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。 
 
-在本教學課程中，您將建立一個範本來部署 Azure SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 如需如何使用 Azure Resource Manager 範本來部署 Azure 虛擬機器擴充功能的相關資訊，請參閱[教學課程：使用 Azure Resource Manager 範本部署虛擬機器擴充功能](./template-tutorial-deploy-vm-extensions.md)。
+在本教學課程中，您將建立一個範本來部署 Azure SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 如需如何使用 ARM 範本部署 Azure 虛擬機器擴充功能的相關資訊，請參閱[教學課程：使用 ARM 範本部署虛擬機器擴充功能](./template-tutorial-deploy-vm-extensions.md)。
 
 本教學課程涵蓋下列工作：
 
@@ -33,20 +33,20 @@ ms.locfileid: "78250102"
 
 若要完成本文，您需要：
 
-* Visual Studio Cod 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](./use-vs-code-to-create-template.md)。
+* Visual Studio Cod 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](./use-vs-code-to-create-template.md)。
 * 為了提高安全性，請使用為 Azure SQL Server 系統管理員帳戶產生的密碼。 以下是您可以用來產生密碼的範例：
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault 的設計訴求是保護加密金鑰和其他祕密。 如需詳細資訊，請參閱[教學課程：在 Resource Manager 範本部署中整合 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我們也建議您每三個月更新一次密碼。
+    Azure Key Vault 的設計訴求是保護加密金鑰和其他祕密。 如需詳細資訊，請參閱[教學課程：在 ARM 範本部署中整合 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我們也建議您每三個月更新一次密碼。
 
 ## <a name="prepare-a-bacpac-file"></a>準備 BACPAC 檔案
 
 已在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中分享 BACPAC 檔案。 若要自行建立，請參閱[將 Azure SQL 資料庫匯出到 BACPAC 檔案](../../sql-database/sql-database-export.md)。 如果您選擇將檔案發佈到自己的位置，您稍後必須在本教學課程中更新範本。
 
-BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 Resource Manager 範本進行匯入。 下列 PowerShell 指令碼會使用這些步驟來準備 BACPAC 檔案：
+BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範本進行匯入。 下列 PowerShell 指令碼會使用這些步驟來準備 BACPAC 檔案：
 
 * 下載 BACPAC 檔案。
 * 建立 Azure 儲存體帳戶。

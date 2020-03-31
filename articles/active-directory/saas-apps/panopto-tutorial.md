@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 027876e3d8d669d2ab41d37e24f4171c2349adaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>教學課程：Azure Active Directory 與 Panopto 整合
@@ -34,7 +34,7 @@ Panopto 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Panopto 與 Azure AD 的整合，您需要下列項目：
 
@@ -136,11 +136,11 @@ Panopto 與 Azure AD 整合提供下列優點：
 
 3. 按一下 [新增提供者]  。
    
-    ![身分識別提供者](./media/panopto-tutorial/ic777671.png "身分識別提供者")
+    ![識別提供者](./media/panopto-tutorial/ic777671.png "識別提供者")
    
 4. 在 [SAML 提供者] 區段中，執行下列步驟：
    
-    ![SaaS 設定](./media/panopto-tutorial/ic777672.png "SaaS 設定")
+    ![SaaS 設定](./media/panopto-tutorial/ic777672.png "SssS 組態")
     
     a. 從 [提供者類型]  清單中，選取 [SAML20]  。    
     

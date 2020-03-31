@@ -3,16 +3,16 @@ title: Azure 遷移設備體系結構
 description: 提供伺服器評估和遷移中使用的 Azure 遷移設備的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 25dc530199cde3408ce3bd6641aeb9bb8595465d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337593"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389013"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure 遷移設備體系結構
 
-本文介紹 Azure 遷移設備體系結構和過程。 Azure 遷移設備是一種羽量級設備，部署在內部，用於發現要評估的 VM 和物理伺服器，以便遷移到 Azure。 
+本文介紹 Azure 遷移設備體系結構和過程。 Azure 遷移設備是一種羽量級設備，部署在內部，用於發現 VM 和物理伺服器，以便遷移到 Azure。 
 
 ## <a name="deployment-scenarios"></a>部署案例
 
@@ -40,13 +40,13 @@ Azure 遷移設備用於以下方案。
 
 ## <a name="appliance-deployment"></a>設備部署
 
-- 可以使用範本（僅限 Hyper-V 或 VMware）或 PowerShell 腳本安裝程式設置 Azure 遷移設備。 [詳細瞭解](deploy-appliance.md#deployment-options)這些選項。 
+- Azure 遷移設備可以使用[Hyper-V](how-to-set-up-appliance-hyper-v.md)或[VMware](how-to-set-up-appliance-vmware.md)的範本進行設置，或者使用[適用于 VMware/Hyper-V](deploy-appliance-script.md)的 PowerShell 腳本安裝程式以及[物理伺服器](how-to-set-up-appliance-physical.md)。 
 - 設備支援要求和部署先決條件匯總到[設備支援矩陣](migrate-appliance.md)中。
 
 
 ## <a name="appliance-registration"></a>設備註冊
 
-在設備設置期間，您將設備註冊到 Azure 遷移。 在設置和註冊過程中，將發生表中匯總的操作。
+在設備設置期間，您將設備註冊到 Azure 遷移，並且表中匯總的操作將發生。
 
 **動作** | **詳細資料** | **許可權**
 --- | --- | ---
@@ -58,7 +58,7 @@ Azure 遷移設備用於以下方案。
 
 ## <a name="collected-data"></a>收集的資料
 
-用戶端為所有部署方案收集的資料在[設備支援矩陣](migrate-appliance.md)中完全捕獲。
+用戶端針對所有部署方案收集的資料匯總到[設備支援矩陣](migrate-appliance.md)中。
 
 ## <a name="discovery-and-collection-process"></a>發現和收集過程
 
@@ -89,7 +89,8 @@ Azure 遷移設備用於以下方案。
 
 隨著在設備上運行的 Azure 遷移代理更新，設備將升級。 這是自動發生的，因為預設情況下在設備上啟用了自動更新。 您可以更改此預設設置以手動更新代理。
 
-通過將HKEY_LOCAL_MACHINE_SOFTWARE_Microsoft_AzureAppliance"自動更新"鍵設置為 0 （DWORD））來關閉註冊表中的自動更新。 如果您決定使用手動更新，請務必同時更新設備上的所有代理，使用設備上每個過期代理的 **"更新**"按鈕。
+通過將HKEY_LOCAL_MACHINE_SOFTWARE_Microsoft_AzureAppliance"自動更新"鍵設置為 0 （DWORD），在註冊表中關閉自動更新。
+
  
 
 ## <a name="next-steps"></a>後續步驟

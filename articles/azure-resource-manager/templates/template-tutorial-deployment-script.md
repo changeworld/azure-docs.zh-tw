@@ -10,22 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561454"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239212"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
-了解如何使用 Azure Resource Manager 範本中的部署指令碼。 部署指令碼可用來執行無法由 Resource Manager 範本完成的自訂步驟。 例如，建立自我簽署憑證。  在本教學課程中，您將建立用來部署 Azure 金鑰保存庫的範本，然後在相同的範本中使用 `Microsoft.Resources/deploymentScripts` 資源建立憑證，再將憑證新增至金鑰保存庫。 若要深入了解部署指令碼，請參閱[使用 Azure Resource Manager 範本中的部署指令碼](./deployment-script-template.md)。
-
-> [!NOTE]
-> 部署指令碼目前為預覽狀態。 若要加以使用，您必須[註冊預覽版](https://aka.ms/armtemplatepreviews)。
+了解如何使用 Azure Resource Manager (ARM) 範本中的部署指令碼。 部署指令碼可用來執行無法由 ARM 範本完成的自訂步驟。 例如，建立自我簽署憑證。  在本教學課程中，您將建立用來部署 Azure 金鑰保存庫的範本，然後在相同的範本中使用 `Microsoft.Resources/deploymentScripts` 資源建立憑證，再將憑證新增至金鑰保存庫。 若要深入了解部署指令碼，請參閱[使用 ARM 範本中的部署指令碼](./deployment-script-template.md)。
 
 > [!IMPORTANT]
 > 系統會在相同的資源群組中建立兩個部署指令碼資源 (儲存體帳戶和容器執行個體)，用以執行指令碼和疑難排解。 當指令碼執行處於終止狀態時，指令碼服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 若要深入了解，請參閱[清除部署指令碼資源](./deployment-script-template.md#clean-up-deployment-script-resources)。
@@ -43,7 +40,7 @@ ms.locfileid: "77561454"
 
 若要完成本文，您需要：
 
-* **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](./use-vs-code-to-create-template.md)。
+* **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[使用 Visual Studio Code 建立 ARM 範本](./use-vs-code-to-create-template.md)。
 
 * **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
@@ -62,7 +59,7 @@ ms.locfileid: "77561454"
 
 ## <a name="open-a-quickstart-template"></a>開啟快速入門範本
 
-您可以從 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)開啟範本，而無須從頭建立範本。 Azure 快速入門範本是 Resource Manager 範本的存放庫。
+您可以從 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)開啟範本，而無須從頭建立範本。 Azure 快速入門範本是 ARM 範本的存放庫。
 
 本快速入門中使用的範本名為[建立 Azure Key Vault 和秘密](https://azure.microsoft.com/resources/templates/101-key-vault-create/)。 此範本會建立金鑰保存庫，然後將秘密新增至金鑰保存庫。
 
@@ -348,7 +345,7 @@ program.\nCheck the spelling of the name, or if a path was included, verify that
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 Azure Resource Manager 範本中的部署指令碼。 若要深入了解如何根據條件部署 Azure 資源，請參閱：
+在本教學課程中，您已了解如何使用 ARM 範本中的部署指令碼。 若要深入了解如何根據條件部署 Azure 資源，請參閱：
 
 > [!div class="nextstepaction"]
 > [使用條件](./template-tutorial-use-conditions.md)

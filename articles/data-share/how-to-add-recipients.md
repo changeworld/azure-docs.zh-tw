@@ -1,35 +1,35 @@
 ---
-title: 在 Azure 資料共用中新增收件者
-description: 瞭解如何在 Azure 資料共用中將收件者新增至現有的資料共用。
+title: 在 Azure 資料共用中添加收件者
+description: 瞭解如何將收件者添加到 Azure 資料共用中的現有資料共用。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 9f49ab3aed60bfbe04ad022070a931461e3f52f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73490522"
 ---
-# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>如何在 Azure 資料共用中將收件者新增至現有的資料共用
+# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>如何將收件者添加到 Azure 資料共用中的現有資料共用
 
-本文將說明如何將收件者新增至既有的資料共用。
+本文將介紹如何將收件者添加到預先存在的資料共用。
 
-如需有關如何在建立共用時新增收件者的詳細資訊，請參閱[共用資料](share-your-data.md)教學課程。
+有關如何在創建共用時添加收件者的資訊，請參閱[共用資料](share-your-data.md)教程。
 
-## <a name="navigate-to-a-sent-data-share"></a>流覽至已傳送的資料共用
+## <a name="navigate-to-a-sent-data-share"></a>導航到已發送的資料共用
 
-在 Azure 資料共用中，流覽至您已傳送的共用，並選取 [**邀請**] 索引標籤。此處列出的是此資料共用的所有邀請收件者。 若要加入新的帳戶，請按一下 [新增**收件**者]。
+在 Azure 資料共用中，導航到已發送的共用並選擇 **"邀請"** 選項卡。此處列出的是此資料共用邀請的所有收件者。 要添加新收件者，請按一下"**添加收件者**"。
 
-![新增收件者](./media/how-to/how-to-add-recipients/add-recipient.png)
+![添加收件者](./media/how-to/how-to-add-recipients/add-recipient.png)
 
-面板會在頁面的右側彈出。 按一下 [**新增收件**者]，然後在空白行中填寫新收件者的電子郵件。 新增您想要的收件者數目。
+頁面右側將彈出一個面板。 按一下"**添加收件者**"，然後在空白行上填寫新收件者的電子郵件。 根據需要添加盡可能多的收件者。
 
-![新增收件者](./media/how-to/how-to-add-recipients/add-recipient-side.png)
+![添加收件者](./media/how-to/how-to-add-recipients/add-recipient-side.png)
 
-按一下 [**新增並傳送邀請**]。 新的收件者將會收到此資料共用的邀請電子郵件。
+按一下"**添加併發送邀請**"。 新收件者將發送邀請電子郵件到此資料共用。
 
 ## <a name="next-steps"></a>後續步驟
-深入瞭解如何[刪除共用的邀請](how-to-delete-invitation.md)。
+詳細瞭解如何[刪除對共用的邀請](how-to-delete-invitation.md)。

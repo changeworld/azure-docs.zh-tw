@@ -1,7 +1,7 @@
 ---
-title: 設定資源擁有者密碼認證流程
+title: 配置資源擁有者密碼憑據流
 titleSuffix: Azure AD B2C
-description: 瞭解如何在 Azure AD B2C 中設定 ROPC 流程。
+description: 瞭解如何在 Azure AD B2C 中配置 ROPC 流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189696"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定資源擁有者密碼認證流程
@@ -30,13 +30,13 @@ ms.locfileid: "78189696"
 
 1. 以 Azure AD B2C 租用戶的全域管理員身分登入 Azure 入口網站。
 2. 若要切換為您的 Azure AD B2C 租用戶，請選取入口網站右上角的 B2C 租用戶。
-3. 按一下 [使用者流程]，然後選取 [新增使用者流程]。
-4. 按一下 [**全部**] 索引標籤，然後選取 [**使用 ROPC 登入**]。
+3. 按一下 [使用者流程]****，然後選取 [新增使用者流程]****。
+4. 按一下"**全部"** 選項卡，然後選擇**使用 ROPC 登錄**。
 5. 提供使用者流程的名稱，例如 *ROPC_Auth*。
-6. 在 [應用程式宣告] 底下，按一下 [顯示更多]。
+6. 在 [應用程式宣告]**** 底下，按一下 [顯示更多]****。
 7. 選取您的應用程式所需的應用程式宣告，例如 [顯示名稱]、[電子郵件地址] 和 [身分識別提供者]。
-8. 選取 [確定]，然後選取 [建立]。
-9. 按一下 [執行使用者流程]。
+8. 選擇 **"確定**"，然後選擇 **"創建**"。
+9. 按一下 [執行使用者流程]****。
 
    然後，您會看到類似於下列範例的端點：
 
@@ -50,9 +50,9 @@ ms.locfileid: "78189696"
 ## <a name="test-the-user-flow"></a>測試使用者流程
 
 使用您最慣用的 API 開發應用程式產生 API 呼叫，並檢視回應以對您的使用者流程偵錯。 使用下表中的資訊作為 POST 要求的本文，以建構與此類似的呼叫：
-- 將 *yourtenant.onmicrosoft.com>\<* 取代為您的 B2C 租用戶名稱。
-- 將 *B2C_1A_ROPC_Auth>\<* 取代為資源擁有者密碼認證原則的完整名稱。
-- 將 *bef2222d56-552f-4a5b-b90a-1988a7d634c3>\<* 取代為您註冊中的應用程式識別碼。
+- 將*\<yourtenant.onmicrosoft.com>* 替換為 B2C 租戶的名稱。
+- 將*\<B2C_1A_ROPC_Auth>* 替換為資源擁有者密碼憑據策略的全名。
+- 將*\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 替換為註冊申請 ID。
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -61,7 +61,7 @@ ms.locfileid: "78189696"
 | username | leadiocl@outlook.com |
 | 密碼 | Passxword1 |
 | grant_type | 密碼 |
-| 範圍 | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
@@ -124,7 +124,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 }
 ```
 > [!NOTE]
-> 透過圖形 API 建立使用者時，應用程式必須要有來自 Microsoft Graph 的 "openid"、"offline_access" 和 "profile" 許可權。
+> 通過圖形 API 創建使用者時，應用程式需要具有 Microsoft 圖形的"openid"、"offline_access"和"設定檔"許可權。
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>使用您慣用的原生 SDK 或 App-Auth 進行實作
 

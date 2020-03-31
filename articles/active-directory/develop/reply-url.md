@@ -1,6 +1,6 @@
 ---
-title: 重新導向 URI & 回復 URL 限制-Microsoft 身分識別平臺 |Azure
-description: 回復 Url/重新導向 Url 限制 & 限制
+title: 重定向 URI &回復 URL 限制 - 微軟身份平臺 |蔚藍
+description: 回復 URL/重定向 URl&限制
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
@@ -11,66 +11,66 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77656733"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重新導向 URI/回覆 URL 限制
 
-[重新導向 URI] 或 [回復 URL] 是指當應用程式成功授權並授與授權碼或存取權杖時，授權伺服器會將使用者傳送至的位置。 程式碼或權杖包含在 [重新導向 URI] 或 [回復權杖] 中，因此請務必在應用程式註冊過程中註冊正確的位置。
+重定向 URI 或回復 URL 是授權伺服器在應用成功授權並授予授權代碼或訪問權杖後將使用者發送到的位置。 代碼或權杖包含在重定向 URI 或回復權杖中，因此在應用註冊過程中註冊正確的位置非常重要。
 
- 下列限制適用于回復 Url：
+ 以下限制適用于回復 URL：
 
-    * 回復 URL 的開頭必須是配置 `https`。
-    * 回復 URL 會區分大小寫。 其大小寫必須符合您執行中應用程式之 URL 路徑的大小寫。 例如，如果您的應用程式包含作為其路徑 `.../abc/response-oidc`的一部分，請勿在回復 URL 中指定 `.../ABC/response-oidc`。 由於網頁瀏覽器會將路徑視為區分大小寫，因此如果將與 `.../abc/response-oidc` 相關聯的 cookie 重新導向至不相符的 `.../ABC/response-oidc` URL，可能會予以排除。
+    * 答覆 URL 必須以方案`https`開頭。
+    * 答覆 URL 區分大小寫。 其大小寫必須與正在運行的應用程式的 URL 路徑的情況匹配。 例如，如果應用程式包含作為其路徑`.../abc/response-oidc`的一部分，請不要在答覆 URL`.../ABC/response-oidc`中指定。 由於 Web 瀏覽器將路徑視為區分大小寫的，因此，`.../abc/response-oidc`如果重定向到案例不匹配`.../ABC/response-oidc`的 URL，可能會排除與路徑關聯的 Cookie。
     
-## <a name="maximum-number-of-redirect-uris"></a>重新導向 Uri 的數目上限
+## <a name="maximum-number-of-redirect-uris"></a>重定向 URI 的最大數量
 
-下表顯示當您註冊應用程式時，可以新增的重新導向 Uri 數目上限。
+下表顯示了註冊應用時可以添加的最大重定向 URI 數。
 
-| 已登入的帳戶 | 重新導向 Uri 的數目上限 | 描述 |
+| 正在登錄的帳戶 | 重定向 URI 的最大數量 | 描述 |
 |--------------------------|---------------------------------|-------------|
-| 任何組織的 Azure Active Directory （Azure AD）租使用者中的 Microsoft 公司或學校帳戶 | 256 | 應用程式資訊清單中的 `signInAudience` 欄位設定為*AzureADMyOrg*或*AzureADMultipleOrgs* |
-| 個人 Microsoft 帳戶和公司和學校帳戶 | 100 | 應用程式資訊清單中的 `signInAudience` 欄位已設定為*AzureADandPersonalMicrosoftAccount* |
+| 任何組織的 Azure 活動目錄 （Azure AD） 租戶中的 Microsoft 工作或學校帳戶 | 256 | `signInAudience`應用程式清單中的欄位設置為*AzureADMyOrg*或*AzureAD 多路組織* |
+| 個人 Microsoft 帳戶、工作帳戶和學校帳戶 | 100 | `signInAudience`應用程式清單中的欄位設置為*AzureADand個人 Microsoft 帳戶* |
 
-## <a name="maximum-uri-length"></a>URI 長度上限
+## <a name="maximum-uri-length"></a>最大 URI 長度
 
-針對您新增至應用程式註冊的每個重新導向 URI，您最多可以使用256個字元。
+對於添加到應用註冊的每個重定向 URI，最多可以使用 256 個字元。
 
-## <a name="supported-schemes"></a>支援的架構
-Azure AD 應用程式模型現在支援 HTTP 和 HTTPS 架構，適用于在任何組織的 Azure Active Directory （Azure AD）租使用者中登入 Microsoft 公司或學校帳戶的應用程式。 這是應用程式資訊清單中 `signInAudience` 欄位設定為*AzureADMyOrg*或*AzureADMultipleOrgs*。 對於登入個人 Microsoft 帳戶和公司和學校帳戶（`signInAudience` 設定為*AzureADandPersonalMicrosoftAccount*）的應用程式，只允許 HTTPS 配置。
+## <a name="supported-schemes"></a>支援的計畫
+Azure AD 應用程式模型今天支援對在任何組織的 Azure 活動目錄 （Azure AD） 租戶中登錄 Microsoft 工作或學校帳戶的應用的 HTTP 和 HTTPS 方案。 這是`signInAudience`應用程式清單中的欄位設置為*AzureADMyOrg*或*AzureAD 多維多組織*。 對於在個人 Microsoft 帳戶和工作帳戶和學校帳戶（`signInAudience`設置為*AzureADand個人 Microsoft 帳戶*）中登錄的應用，僅允許 HTTPS 方案。
 
 > [!NOTE]
-> 新的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上使用 HTTP 配置來新增 uri。 只有透過應用程式資訊清單編輯器，才支援為登入工作或學校帳戶的應用程式新增 HTTP Uri。 未來，新的應用程式將無法在重新導向 URI 中使用 HTTP 配置。 不過，包含重新導向 Uri 中之 HTTP 配置的繼承應用程式將會繼續工作。 開發人員必須在重新導向 Uri 中使用 HTTPS 配置。
+> 新的[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上添加帶有 HTTP 方案的 URI。 僅通過應用清單編輯器支援為登錄工作或學校帳戶的應用添加 HTTP URI。 今後，新應用將無法在重定向 URI 中使用 HTTP 方案。 但是，在重定向 URI 中包含 HTTP 方案的舊應用將繼續工作。 開發人員必須在重定向 URI 中使用 HTTPS 方案。
 
-## <a name="restrictions-using-a-wildcard-in-uris"></a>在 Uri 中使用萬用字元的限制
+## <a name="restrictions-using-a-wildcard-in-uris"></a>在 URI 中使用萬用字元的限制
 
-萬用字元 Uri （例如 `https://*.contoso.com`）很方便，但應該避免。 在重新導向 URI 中使用萬用字元會影響安全性。 根據 OAuth 2.0 規格（[RFC 6749 的區段 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)），重新導向端點 URI 必須是絕對 uri。 
+萬用字元 URI（如`https://*.contoso.com`）很方便，但應避免使用。 在重定向 URI 中使用萬用字元具有安全影響。 根據 OAuth 2.0 規範[（RFC 6749 的第 3.1.2 節](https://tools.ietf.org/html/rfc6749#section-3.1.2)），重定向端點 URI 必須是絕對 URI。 
 
-針對設定為登入個人 Microsoft 帳戶和公司或學校帳戶的應用程式，Azure AD 應用程式模型不支援萬用字元 Uri。 不過，已設定為立即在組織的 Azure AD 租使用者中登入公司或學校帳戶的應用程式，允許使用萬用字元 Uri。 
+Azure AD 應用程式模型不支援配置為登錄個人 Microsoft 帳戶和工作或學校帳戶的應用的萬用字元 URI。 但是，對於配置為在組織的 Azure AD 租戶中登錄工作或學校帳戶的應用，允許萬用字元 URI。 
  
 > [!NOTE]
-> 新的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上新增萬用字元 uri。 只有透過應用程式資訊清單編輯器，才支援為登入工作或學校帳戶的應用程式新增萬用字元 URI。 未來，新的應用程式將無法在重新導向 URI 中使用萬用字元。 不過，重新導向 Uri 中包含萬用字元的繼承應用程式將會繼續作用。
+> 新的[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上添加萬用字元 URI。 僅通過應用清單編輯器支援為登錄工作或學校帳戶的應用添加 wilcard URI。 今後，新應用將無法在重定向 URI 中使用萬用字元。 但是，在重定向 URI 中包含萬用字元的舊應用將繼續工作。
 
-如果您的案例所需的重新導向 Uri 數目超過允許的上限，而不是新增萬用字元重新導向 URI，請考慮下列方法。
+如果方案需要的重定向 URI 超過允許的最大值限制，而不是添加萬用字元重定向 URI，請考慮以下方法。
 
-### <a name="use-a-state-parameter"></a>使用 state 參數
+### <a name="use-a-state-parameter"></a>使用狀態參數
 
-如果您有一些子域，而且如果您的案例要求您在成功驗證時將使用者重新導向至其啟動所在的相同頁面，則使用狀態參數可能會很有説明。 
+如果您有多個子域，並且您的方案要求您在成功身份驗證後將使用者重定向到啟動它們所在的同一頁面，則使用狀態參數可能會有所説明。 
 
-這種方法：
+在此方法中：
 
-1. 建立每個應用程式的「共用」重新導向 URI，以處理您從授權端點接收的安全性權杖。
-1. 您的應用程式可以在 state 參數中，傳送應用程式特定的參數（例如，使用者源自于的子域 URL，或商標資訊之類的任何專案）。 使用 state 參數時，請防範[RFC 6749 第10.12 節](https://tools.ietf.org/html/rfc6749#section-10.12)所指定的 CSRF 保護。 
-1. 應用程式特定的參數將包含應用程式為使用者呈現正確體驗所需的所有資訊，也就是建立適當的應用程式狀態。 Azure AD 授權端點會從狀態參數中去除 HTML，因此請確定您不會在此參數中傳遞 HTML 內容。
-1. 當 Azure AD 將回應傳送至「共用」重新導向 URI 時，它會將狀態參數傳回給應用程式。
-1. 然後，應用程式可以使用 state 參數中的值來決定要進一步傳送使用者的目標 URL。 請確定您已驗證是否有 CSRF 保護。
+1. 創建每個應用程式的"共用"重定向 URI，以處理從授權終結點收到的安全權杖。
+1. 應用程式可以在狀態參數中發送特定于應用程式的參數（例如使用者所在的子域 URL 或任何品牌資訊）。 使用狀態參數時，要防止[RFC 6749 節 10.12 節中](https://tools.ietf.org/html/rfc6749#section-10.12)指定的 CSRF 保護。 
+1. 特定于應用程式的參數將包括應用程式為使用者呈現正確體驗所需的所有資訊，即構造適當的應用程式狀態。 Azure AD 授權終結點從狀態參數中剝離 HTML，因此請確保未在此參數中傳遞 HTML 內容。
+1. 當 Azure AD 向"共用"重定向 URI 發送回應時，它將將狀態參數發送回應用程式。
+1. 然後，應用程式可以使用狀態參數中的值來確定要進一步向使用者發送到的 URL。 請確保驗證 CSRF 保護。
 
 > [!NOTE]
-> 此方法可讓遭入侵的用戶端修改狀態參數中傳送的其他參數，藉此將使用者重新導向至不同的 URL，也就是 RFC 6819 中所述的開啟的重新導向器[威脅](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，用戶端必須保護這些參數，方法是將狀態加密，或以其他方式進行驗證，例如在重新導向 URI 中驗證權杖的功能變數名稱。
+> 此方法允許受攻擊的用戶端修改狀態參數中發送的其他參數，從而將使用者重定向到其他 URL，這是 RFC 6819 中描述的[打開重定向器威脅](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，用戶端必須通過加密狀態或通過某些其他方法（如根據權杖在重定向 URI 中驗證功能變數名稱）來保護這些參數。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[應用程式資訊清單](reference-app-manifest.md)
+- 瞭解[應用程式清單](reference-app-manifest.md)

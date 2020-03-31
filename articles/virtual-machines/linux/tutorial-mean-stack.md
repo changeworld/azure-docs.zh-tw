@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034393"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154316"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中的 Linux 虛擬機器上建立 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆疊
 
@@ -327,7 +327,7 @@ sudo apt-get install -y nodejs
 
     ![書籍記錄](media/tutorial-mean/meanstack-init.png)
 
-3. 在文字方塊中輸入資料，然後按一下 [新增]  。 例如︰
+3. 在文字方塊中輸入資料，然後按一下 [新增]  。 例如：
 
     ![新增書籍記錄](media/tutorial-mean/meanstack-add.png)
 
@@ -349,7 +349,7 @@ sudo apt-get install -y nodejs
 > * 使用 AngularJS 存取路由
 > * 執行應用程式
 
-前進到下一個教學課程，以了解如何使用 SSL 憑證保護 Web 伺服器。
+前進到下一個教學課程，以了解如何使用 TLS 憑證保護 Web 伺服器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保護網路伺服器](tutorial-secure-web-server.md)
+> [使用 TLS 保護 Web 伺服器](tutorial-secure-web-server.md)

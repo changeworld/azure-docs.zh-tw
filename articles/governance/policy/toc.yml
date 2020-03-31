@@ -11,14 +11,14 @@
     - name: 指派原則 - 入口網站
       displayName: 'assign, compliance'
       href: assign-policy-portal.md
-    - name: 指派原則 - PowerShell
+    - name: 指派原則 - Azure PowerShell
       displayName: 'assign, compliance'
       href: assign-policy-powershell.md
     - name: 指派原則 - Azure CLI
       displayName: 'assign, compliance'
       href: assign-policy-azurecli.md
-    - name: 指派原則 - 範本
-      displayName: 'assign, compliance, resource manager, ARM'
+    - name: 指派原則 - ARM 範本
+      displayName: 'assign, compliance, resource manager'
       href: assign-policy-template.md
 - name: 教學課程
   items:
@@ -81,7 +81,7 @@
     - name: 適用於 Kubernetes 的 Azure 原則
       items:
         - name: 適用於 AKS 的原則
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
           href: ./concepts/rego-for-aks.md
         - name: 適用於 AKS 引擎的原則
           displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
@@ -100,9 +100,12 @@
     - name: 編寫陣列屬性的原則
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: 建立來賓組態原則
-      displayName: 'powershell, dsc, chef, linux, windows'
+    - name: 在 Windows 上建立來賓組態原則
+      displayName: 'powershell, dsc, chef, windows'
       href: ./how-to/guest-configuration-create.md
+    - name: 在 Linux 上建立來賓組態原則
+      displayName: 'powershell, dsc, chef, linux'
+      href: ./how-to/guest-configuration-create-linux.md
     - name: 取得合規性資料
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -148,6 +151,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: 原則定義
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK for Node
+      items:
+        - name: 原則
+          href: /javascript/api/@azure/arm-policy
+        - name: Policy Insights
+          href: /javascript/api/@azure/arm-policyinsights
     - name: 適用於 Python 的 Azure SDK
       items:
         - name: 原則
@@ -186,6 +195,8 @@
   items:
     - name: GitHub - Azure 原則範例
       href: 'https://github.com/Azure/azure-policy'
+    - name: GitHub - 社群原則存放庫
+      href: 'https://github.com/Azure/Community-Policy'
     - name: 影片 - Build 2018
       href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
     - name: 治理 YouTube 頻道

@@ -1,5 +1,5 @@
 ---
-title: 遠端監視解決方案匯入封裝-Azure |Microsoft Docs
+title: 遠端監視解決方案導入包 - Azure |微軟文檔
 description: 本文說明如何將自動裝置管理套件匯入至遠端監視解決方案加速器
 author: dominicbetts
 manager: philmea
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61443272"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>將自動裝置管理套件匯入至遠端監視解決方案加速器
@@ -28,16 +28,16 @@ ms.locfileid: "61443272"
 
 使用 Azure 入口網站，從開發環境匯出自動裝置管理組態：
 
-1. 在 Azure 入口網站中，瀏覽至您用來開發和測試 IoT 裝置的 IoT 中樞。 按一下 [IoT 裝置組態]  ：
+1. 在 Azure 入口網站中，瀏覽至您用來開發和測試 IoT 裝置的 IoT 中樞。 按一下 [IoT 裝置組態]****：
 
-    [![IoT 裝置組態](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
+    [![IoT 設備配置](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
-1. 按一下您想要使用的組態。 [裝置組態詳細資料]  頁面隨即顯示：
+1. 按一下您想要使用的組態。 [裝置組態詳細資料]**** 頁面隨即顯示：
 
-    [![IoT 裝置組態詳細資料](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
-1. 按一下 [下載組態檔案]  ：
+    [![IoT 設備配置詳細資訊](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
+1. 按一下 [下載組態檔案]****：
 
-    [![下載組態檔案](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![下載設定檔](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
 1. 將 JSON 檔案儲存為名為 **configuration.json** 的本機檔案。
 
@@ -47,17 +47,17 @@ ms.locfileid: "61443272"
 
 請遵循下列步驟將自動裝置管理組態當作套件匯入您的解決方案中：
 
-1. 在遠端監視 Web UI 中瀏覽至 [套件]  頁面：![套件頁面](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. 在遠端監視 Web UI 中瀏覽至 [套件]**** 頁面：![套件頁面](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. 按一下 [+ 新增套件]  ，選擇 [組態]  作為套件類型，然後按一下 [瀏覽]  以選取您在上一節中儲存的 **configuration.json** 檔案：
+1. 按一下 [+ 新增套件]****，選擇 [組態]**** 作為套件類型，然後按一下 [瀏覽]**** 以選取您在上一節中儲存的 **configuration.json** 檔案：
 
     ![選取組態](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 
-1. 按一下 [上傳]  將套件新增至遠端監視解決方案：
+1. 按一下 [上傳]**** 將套件新增至遠端監視解決方案：
 
     ![上傳的套件](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
 
-您現在已上傳自動裝置管理組態作為套件。 在 [部署]  頁面上，您可以將此套件部署到已連線的裝置。
+您現在已上傳自動裝置管理組態作為套件。 在 [部署]**** 頁面上，您可以將此套件部署到已連線的裝置。
 
 ## <a name="next-steps"></a>後續步驟
 

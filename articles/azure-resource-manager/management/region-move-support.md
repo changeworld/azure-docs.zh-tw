@@ -1,35 +1,35 @@
 ---
-title: 跨區域移動 Azure 資源的支援
-description: 列出可跨 Azure 區域移動的 Azure 資源類型
+title: 支援跨區域移動 Azure 資源
+description: 列出可在 Azure 區域移動的 Azure 資源類型
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 01/20/2020
 ms.author: raynew
 ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760703"
 ---
-# <a name="support-for-moving-azure-resources-across-regions"></a>跨區域移動 Azure 資源的支援
+# <a name="support-for-moving-azure-resources-across-regions"></a>支援跨區域移動 Azure 資源
 
-本文會確認是否支援將 Azure 資源類型移至另一個 Azure 區域。 
+本文確認是否支援 Azure 資源類型以移動到其他 Azure 區域。 
 
-跳至資源提供者命名空間：
+跳轉到資來源提供者命名空間：
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [microsoft.aadiam](#microsoftaadiam)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [微軟.應用程式佈建](#microsoftappconfiguration)
 > - [Microsoft.AppService](#microsoftappservice)
-> - [Microsoft.Authorization](#microsoftauthorization)
+> - [微軟.授權](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
-> - [AzureData](#microsoftazuredata)
+> - [微軟.Azure資料](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.BatchAI](#microsoftbatchai)
@@ -41,11 +41,11 @@ ms.locfileid: "76760703"
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
-> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
+> - [微軟.經典計算](#microsoftclassiccompute)
+> - [微軟.經典網路](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
-> - [Microsoft.Compute](#microsoftcompute)
+> - [微軟.認知服務](#microsoftcognitiveservices)
+> - [微軟.計算](#microsoftcompute)
 > - [Microsoft.Container](#microsoftcontainer)
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
@@ -54,7 +54,7 @@ ms.locfileid: "76760703"
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
-> - [CustomProviders](#microsoftcustomproviders)
+> - [微軟.自訂提供程式](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
@@ -66,7 +66,7 @@ ms.locfileid: "76760703"
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
 > - [Microsoft.DataMigration](#microsoftdatamigration)
-> - [DataShare](#microsoftdatashare)
+> - [微軟.資料共用](#microsoftdatashare)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -76,20 +76,20 @@ ms.locfileid: "76760703"
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
-> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [微軟.企業知識圖](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
 > - [Microsoft.Genomics](#microsoftgenomics)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
+> - [微軟.醫療保健Apis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [微軟.鑰匙庫](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
@@ -105,14 +105,14 @@ ms.locfileid: "76760703"
 > - [Microsoft.Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft.Media](#microsoftmedia)
-> - [Microservices4Spring](#microsoftmicroservices4spring)
+> - [微軟.微服務4春天](#microsoftmicroservices4spring)
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Network](#microsoftnetwork)
+> - [微軟.網路](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
+> - [微軟.運營管理](#microsoftoperationsmanagement)
+> - [微軟.對等](#microsoftpeering)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
@@ -120,7 +120,7 @@ ms.locfileid: "76760703"
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
-> - [Az.resourcegraph](#microsoftresourcegraph)
+> - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -131,11 +131,11 @@ ms.locfileid: "76760703"
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
 > - [Microsoft.Solutions](#microsoftsolutions)
-> - [Microsoft.Sql](#microsoftsql)
+> - [微軟.Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
-> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [微軟.存儲緩存](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -144,13 +144,13 @@ ms.locfileid: "76760703"
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.Token](#microsofttoken)
+> - [微軟.權杖](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
-> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [微軟.VMware雲簡單](#microsoftvmwarecloudsimple)
 > - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
-> - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
+> - [微軟.視窗虛擬桌面](#microsoftwindowsvirtualdesktop)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 
@@ -158,7 +158,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- | 
 > | domainservices | 否 | 
-> | domainservices/replicasets | 否 | 
+> | 域服務/複本集 | 否 | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
@@ -172,14 +172,14 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | actionrules | 否 | 
+> | 動作規則 | 否 | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 伺服器 | 否 |
+> | servers | 否 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
@@ -188,12 +188,12 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | 服務 |  是 | 
 
-## <a name="microsoftappconfiguration"></a>AppConfiguration
+## <a name="microsoftappconfiguration"></a>微軟.應用程式佈建
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | configurationstores | 否 | 
+> | 配置存儲 | 否 | 
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
@@ -218,8 +218,8 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | automationaccounts | 否 | 
-> | automationaccounts/設定 | 否 | 
-> | automationaccounts/runbook | 否 | 
+> | 自動化帳戶/配置 | 否 | 
+> | 自動化帳戶/運行簿 | 否 | 
 
 
 
@@ -230,12 +230,12 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | b2cdirectories | 否 | 
 
-## <a name="microsoftazuredata"></a>AzureData
+## <a name="microsoftazuredata"></a>微軟.Azure資料
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | sqlserverregistrations | 否 |
+> | sqlserver 註冊 | 否 |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
@@ -281,7 +281,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | blockchainmembers | 否 |
-> | 位監看員 | 否 | 
+> | 觀察家 | 否 | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -310,7 +310,7 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | cdnwebapplicationfirewallpolicies | 否 |
+> | cdnweb應用程式防火牆策略 | 否 |
 > | 設定檔 | 否 | 
 > | 設定檔/端點 | 否 | 
 
@@ -362,21 +362,21 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | availabilitysets | 否 | 
-> | diskencryptionsets | 否 | 
+> | 磁片加密集 | 否 | 
 > | disks | 否 | 
 > | galleries | 否 | 
-> | 資源庫/影像 | 否 | 
-> | 資源庫/影像/版本 | 否 | 
-> | hostgroups | 否 | 
-> | hostgroups/主機 | 否 | 
+> | 畫廊/圖片 | 否 | 
+> | 畫廊 / 圖像 / 版本 | 否 | 
+> | 主機組 | 否 | 
+> | 主機組/主機 | 否 | 
 > | images | 否 | 
 > | proximityplacementgroups | 否 | 
 > | restorepointcollections | 否 | 
 > | sharedvmimages | 否 | 
-> | sharedvmimages/版本 | 否 | 
+> | 共用vm圖像/版本 | 否 | 
 > | snapshots | 否 | 
 > | virtualmachines | 是 | 
-> | virtualmachines/extensions | 否 | 
+> | 虛擬機器/擴展 | 否 | 
 > | virtualmachinescalesets | 否 | 
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
@@ -399,10 +399,10 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | registries | 否 |  
-> | 登錄/buildtasks | 否 |  
-> | 登錄/複寫 | 否 | 
-> | 登錄/工作 | 否 |  
-> | 登錄/webhook | 否 | 
+> | 註冊表/構建任務 | 否 |  
+> | 註冊表/複製 | 否 | 
+> | 註冊表/任務 | 否 |  
+> | 註冊表/網鉤 | 否 | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
@@ -418,7 +418,7 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 應用程式 | 否 | 
+> | 應用程式所需 | 否 | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
@@ -441,12 +441,12 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | hubs | 否 |  
 
-## <a name="microsoftcustomproviders"></a>CustomProviders
+## <a name="microsoftcustomproviders"></a>微軟.自訂提供程式
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | resourceproviders | 否 | 
+> | 資源提供者 | 否 | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -475,7 +475,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | catalogs | 否 | 
-> | datacatalogs | 否 | 
+> | 資料目錄 | 否 | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
@@ -530,7 +530,7 @@ ms.locfileid: "76760703"
 > | 服務/專案 | 否 | 
 > | slots | 否 | 
 
-## <a name="microsoftdatashare"></a>DataShare
+## <a name="microsoftdatashare"></a>微軟.資料共用
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
@@ -542,14 +542,14 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 伺服器 | 否 |  
+> | servers | 否 |  
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 伺服器 | 否 |  
+> | servers | 否 |  
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -557,8 +557,8 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | servergroups | 否 | 
-> | 伺服器 | 否 |  
-> | serversv2 | 否 | 
+> | servers | 否 |  
+> | 伺服器v2 | 否 | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -568,8 +568,8 @@ ms.locfileid: "76760703"
 > | artifactsources | 否 | 
 > | rollouts | 否 |  
 > | servicetopologies | 否 | 
-> | servicetopologies/服務 | 否 |  
-> | servicetopologies/services/serviceunits | 否 | 
+> | 服務/服務 | 否 |  
+> | 服務/服務/服務單位 | 否 | 
 > | steps | 否 | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -578,7 +578,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | elasticpools | 否 | 
-> | elasticpools / iothubtenants | 否 | 
+> | 彈性池/擴展租戶 | 否 | 
 > | iothubs | 是 | 
 > | provisioningservices | 否 | 
 
@@ -597,8 +597,8 @@ ms.locfileid: "76760703"
 > | labcenters | 否 | 
 > | labs | 否 | 
 > | 實驗室/環境 | 否 |  
-> | 實驗室/servicerunners | 否 | 
-> | 實驗室/virtualmachines | 否 |  
+> | 實驗室/服務運行者 | 否 | 
+> | 實驗室/虛擬機器 | 否 |  
 > | schedules | 否 |  
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
@@ -615,7 +615,7 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | domains | 否 | 
 
-## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>微軟.企業知識圖
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
@@ -651,7 +651,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | hanainstances | 否 | 
-> | sapmonitors | 否 |  
+> | 皂監測器 | 否 |  
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -660,19 +660,19 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | clusters | 否 | 
 
-## <a name="microsofthealthcareapis"></a>HealthcareApis
+## <a name="microsofthealthcareapis"></a>微軟.醫療保健Apis
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | 服務 | 否 |  
 
-## <a name="microsofthybridcompute"></a>HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 機時 | 否 | 
+> | 機器 | 否 | 
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -794,10 +794,10 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | accounts | 否 | 
 > | 帳戶/工作區 | 否 | 
-> | 帳戶/工作區/專案 | 否 | 
+> | 帳戶/ 工作區 / 專案 | 否 | 
 > | teamaccounts | 否 | 
-> | teamaccounts/工作區 | 否 | 
-> | teamaccounts/工作區/專案 | 否 | 
+> | 團隊帳戶/工作區 | 否 | 
+> | 團隊帳戶 / 工作區 / 專案 | 否 | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
@@ -847,15 +847,15 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | mediaservices |  否 | 
-> | windowsazure.mediaservices.extensions/liveevent |  否 | 
-> | windowsazure.mediaservices.extensions/streamingendpoint |  否 | 
+> | 媒體服務/現場活動 |  否 | 
+> | 媒體服務/流式處理點 |  否 | 
 
-## <a name="microsoftmicroservices4spring"></a>Microservices4Spring
+## <a name="microsoftmicroservices4spring"></a>微軟.微服務4春天
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | appclusters | 否 | 
+> | 應用群集 | 否 | 
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -872,10 +872,10 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | netappaccounts | 否 | 
-> | netappaccounts / capacitypools | 否 | 
-> | netappaccounts/capacitypools/磁片區 | 否 | 
-> | netappaccounts/capacitypools/磁片區/mounttargets | 否 | 
-> | netappaccounts/capacitypools/磁片區/快照集 | 否 | 
+> | 網路應用帳戶/容量池 | 否 | 
+> | 網路應用帳戶 / 容量池 / 卷 | 否 | 
+> | 網路應用帳戶 / 容量池 / 卷 / 裝載目標 | 否 | 
+> | 網路應用帳戶 / 容量池 / 卷 / 快照 | 否 | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -883,7 +883,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | applicationgateways | 否 | 
-> | applicationgatewaywebapplicationfirewallpolicies | 否 | 
+> | 應用程式閘道Web應用程式防火牆策略 | 否 | 
 > | applicationsecuritygroups |  否 |  
 > | azurefirewalls |  否 |  
 > | bastionhosts | 否 | 
@@ -897,7 +897,7 @@ ms.locfileid: "76760703"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是-基本 SKU<br>無標準 SKU | 是-基本 SKU<br> -是標準 SKU |
+> | loadbalancers | 是 - 基本 SKU<br>否 - 標準 SKU | 是 - 基本 SKU<br> -是標準 SKU |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
@@ -905,15 +905,15 @@ ms.locfileid: "76760703"
 > | networkprofiles | 否 | 
 > | networksecuritygroups | 是 | 
 > | networkwatchers |  否 |  
-> | networkwatchers / connectionmonitors |  否 | 
-> | networkwatchers/鏡頭 |  否 | 
-> | networkwatchers / pingmeshes |  否 | 
+> | 網路觀察器/連接監視器 |  否 | 
+> | 網路觀察家/鏡頭 |  否 | 
+> | 網路觀察器/ 平模 |  否 | 
 > | p2svpngateways | 否 | 
-> | privatednszones |  否 |  
-> | privatednszones / virtualnetworklinks |  否 |  
-> | privateendpoints | 否 | 
+> | 專用 dns 區域 |  否 |  
+> | 私人網路區/虛擬網路鏈路 |  否 |  
+> | 私有端點 | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是-基本 SKU<br>無標準 SKU | 是-基本 SKU<br>無標準 SKU |
+> | publicipaddresses | 是 - 基本 SKU<br>否 - 標準 SKU | 是 - 基本 SKU<br>否 - 標準 SKU |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -924,8 +924,8 @@ ms.locfileid: "76760703"
 > | virtualnetworks |  否 | 
 > | virtualnetworktaps | 否 | 
 > | virtualwans | 否 | 
-> | vpngateways （虛擬 WAN） | 否 | 
-> | vpnsites （虛擬 WAN） | 否 | 
+> | vpn閘道（虛擬 WAN） | 否 | 
+> | vpnsites（虛擬 WAN） | 否 | 
 > | webapplicationfirewallpolicies |  否 | 
 
 
@@ -935,7 +935,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | 命名空間 |  否 | 
-> | 命名空間/notificationhubs |  否 |  
+> | 命名空間/通知中心 |  否 |  
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -954,7 +954,7 @@ ms.locfileid: "76760703"
 > | managementconfigurations |  否 | 
 > | 檢視 |  否 | 
 
-## <a name="microsoftpeering"></a>Microsoft 對等互連
+## <a name="microsoftpeering"></a>微軟.對等
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
@@ -1001,7 +1001,7 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | vaults | 不會。 [停用保存庫並重新](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)建立 Site Recovery  | 
+> | vaults | 否。 [禁用保存庫並重新創建](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)網站恢復  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1016,14 +1016,14 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 筆查詢 |  否 |  
+> | 查詢 |  否 |  
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 應用程式 |  否 | 
+> | 應用程式所需 |  否 | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -1046,8 +1046,8 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | iotsecuritysolutions |  否 | 
-> | playbookconfigurations | 否 | 
+> | iot 安全解決方案 |  否 | 
+> | 行動手冊配置 | 否 | 
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 
@@ -1055,7 +1055,7 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | gateways | 否 | 
-> | 節點 | 否 | 
+> | nodes | 否 | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -1069,9 +1069,9 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 應用程式 | 否 | 
+> | 應用程式所需 | 否 | 
 > | clusters |  否 | 
-> | 叢集/應用程式 | 否 | 
+> | 群集/應用程式 | 否 | 
 > | containergroups | 否 | 
 > | containergroupsets | 否 | 
 > | edgeclusters | 否 | 
@@ -1084,7 +1084,7 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 應用程式 |  否 | 
+> | 應用程式所需 |  否 | 
 > | containergroups | 否 | 
 > | gateways |  否 | 
 > | networks |  否 | 
@@ -1106,7 +1106,7 @@ ms.locfileid: "76760703"
 > | appliancedefinitions | 否 | 
 > | appliances | 否 | 
 > | applicationdefinitions | 否 | 
-> | 應用程式 | 否 | 
+> | 應用程式所需 | 否 | 
 > | jitrequests | 否 | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -1114,12 +1114,12 @@ ms.locfileid: "76760703"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | instancepools | 否 | 
+> | 實例池 | 否 | 
 > | managedinstances | 是 | 
-> | managedinstances/資料庫 | 是 | 
-> | 伺服器 | 是 | 
+> | 託管實例/資料庫 | 是 | 
+> | servers | 是 | 
 > | 伺服器/資料庫 | 是 | 
-> | 伺服器/elasticpools | 是 | 
+> | 伺服器/彈性池 | 是 | 
 > | virtualclusters | 是 | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
@@ -1144,12 +1144,12 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | storageaccounts | 是 | 
 
-## <a name="microsoftstoragecache"></a>StorageCache
+## <a name="microsoftstoragecache"></a>微軟.存儲緩存
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 緩衝區 | 否 | 
+> | 緩存 | 否 | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1193,10 +1193,10 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | environments | 否 | 
-> | 環境/eventsources | 否 | 
+> | 環境/事件源 | 否 | 
 > | 執行個體 | 否 | 
 > | 實例/環境 | 否 | 
-> | 實例/環境/eventsources | 否 | 
+> | 實例/環境/事件源 | 否 | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
@@ -1212,15 +1212,15 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | environments |  否 | 
-> | 環境/eventsources |  否 |  
-> | 環境/referencedatasets |  否 | 
+> | 環境/事件源 |  否 |  
+> | 環境/參考資料集 |  否 | 
 
-## <a name="microsofttoken"></a>Microsoft Token
+## <a name="microsofttoken"></a>微軟.權杖
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | 商店 | 否 | 
+> | stores | 否 | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
@@ -1235,18 +1235,18 @@ ms.locfileid: "76760703"
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
 > | account |  否 | 
-> | 帳戶/擴充功能 |  否 | 
-> | 帳戶/專案 |  否 | 
+> | 帳戶/擴展 |  否 | 
+> | 帳戶/ 專案 |  否 | 
 
 
 
-## <a name="microsoftvmwarecloudsimple"></a>VMwareCloudSimple
+## <a name="microsoftvmwarecloudsimple"></a>微軟.VMware雲簡單
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | dedicatedcloudnodes | 否 | 
-> | dedicatedcloudservices | 否 | 
+> | 專用雲節點 | 否 | 
+> | 專用雲服務 | 否 | 
 > | virtualmachines | 否 | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -1261,8 +1261,8 @@ ms.locfileid: "76760703"
 > | hostingenvironments | 否 | 
 > | serverfarms |  否 |  
 > | sites |  否 | 
-> | sites/premieraddons |  否 |  
-> | 網站/位置 |  否 |  
+> | 網站 / 首播 |  否 |  
+> | 網站/插槽 |  否 |  
 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
@@ -1272,13 +1272,13 @@ ms.locfileid: "76760703"
 > | ------------- | ----------- |
 > | deviceservices | 否 | 
 
-## <a name="microsoftwindowsvirtualdesktop"></a>WindowsVirtualDesktop
+## <a name="microsoftwindowsvirtualdesktop"></a>微軟.視窗虛擬桌面
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 區域移動 | 
 > | ------------- | ----------- |
-> | applicationgroups | 否 | 
-> | hostpools | 否 | 
+> | 應用程式組 | 否 | 
+> | 主機池 | 否 | 
 > | workspaces | 否 | 
 
 ## <a name="third-party-services"></a>協力廠商服務

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9ed14ce1af6421accccface1b66119057d1c5a30
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209472"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239302"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教學課程：使用 Resource Manager 範本建立多個資源執行個體
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>教學課程：使用 ARM 範本建立多個資源執行個體
 
-了解如何在您的 Azure Resource Manager 範本中逐一查看以建立 Azure 資源的多個執行個體。 在本教學課程中，您將修改範本以建立三個儲存體帳戶執行個體。
+了解如何在您的 Azure Resource Manager (ARM) 範本中逐一查看以建立 Azure 資源的多個執行個體。 在本教學課程中，您將修改範本以建立三個儲存體帳戶執行個體。
 
 ![Azure Resource Manager 建立多個執行個體圖表](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -31,11 +31,11 @@ ms.locfileid: "77209472"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](use-vs-code-to-create-template.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
 
 ## <a name="open-a-quickstart-template"></a>開啟快速入門範本
 
-[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)是 Resource Manager 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本快速入門中使用的範本名為[建立標準儲存體帳戶](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 此範本會定義 Azure 儲存體帳戶資源。
+[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本快速入門中使用的範本名為[建立標準儲存體帳戶](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 此範本會定義 Azure 儲存體帳戶資源。
 
 1. 在 Visual Studio Code 中，選取 [檔案]  >[開啟檔案]  。
 2. 在 [檔案名稱]  中，貼上下列 URL：
@@ -108,7 +108,7 @@ ms.locfileid: "77209472"
 }
 ```
 
-如需有關建立多個執行個體的詳細資訊，請參閱[在 Azure Resource Manager 範本中部署資源或屬性的多個執行個體](./copy-resources.md)
+如需關於建立多個執行個體的詳細資訊，請參閱[在 ARM 範本中部署資源或屬性的多個執行個體](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -147,7 +147,7 @@ Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您已學到如何建立多個儲存體帳戶執行個體。  在下一個教學課程中，您會開發具有多個資源與多個資源類型的的範本。 某些資源有相依的資源。
+在此教學課程中，您已學到如何建立多個儲存體帳戶執行個體。  在下一個教學課程中，您會開發具有多個資源與多個資源類型的範本。 某些資源有相依的資源。
 
 > [!div class="nextstepaction"]
 > [建立相依資源](./template-tutorial-create-templates-with-dependent-resources.md)

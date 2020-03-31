@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL Database：單一資料庫
+title: Azure SQL Database
 metadata:
-  title: 文件 - 單一資料庫
-  meta.description: Learn how to use Azure SQL databases.
+  title: 文件 - 單一資料庫、資料庫伺服器、彈性集區
+  description: 尋找 Azure SQL Database 單一資料庫、彈性集區和資料庫伺服器的快速入門、教學課程和範例。
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

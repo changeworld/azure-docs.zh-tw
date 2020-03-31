@@ -17,10 +17,10 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72035714"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 NetDocuments 整合
@@ -33,7 +33,7 @@ ms.locfileid: "72035714"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -75,7 +75,7 @@ ms.locfileid: "72035714"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [NetDocuments]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -141,7 +141,7 @@ ms.locfileid: "72035714"
 
 3. 按一下 [新增與移除使用者和群組]  。
    
-    ![存放庫](./media/netdocuments-tutorial/ic795047.png "存放庫")
+    ![存放庫](./media/netdocuments-tutorial/ic795047.png "Repository")
 
 4. 按一下 [設定進階驗證選項]  。
     
@@ -168,11 +168,11 @@ ms.locfileid: "72035714"
 
 2. 在頂端的功能表中，按一下 [系統管理員]  。
    
-    ![管理](./media/netdocuments-tutorial/ic795051.png "管理")
+    ![管理員](./media/netdocuments-tutorial/ic795051.png "管理")
 
 3. 按一下 [新增與移除使用者和群組]  。
    
-    ![存放庫](./media/netdocuments-tutorial/ic795047.png "存放庫")
+    ![存放庫](./media/netdocuments-tutorial/ic795047.png "Repository")
 
 4. 在 [電子郵件地址]  文字方塊中輸入您想要佈建的有效 Azure Active Directory 帳戶電子郵件地址，然後按一下 [新增使用者]  。
    

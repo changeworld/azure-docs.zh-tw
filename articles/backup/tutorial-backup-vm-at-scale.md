@@ -1,15 +1,15 @@
 ---
-title: 教學課程 - 大規模備份 Azure 虛擬機器
+title: 教學課程 - 備份多個 Azure 虛擬機器
 description: 在本教學課程中，您將了解如何建立復原服務保存庫、定義備份原則，以及同時備份多部虛擬機器。
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171843"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245237"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 入口網站備份多部虛擬機器
 
@@ -56,7 +56,7 @@ ms.locfileid: "74171843"
 
 建立復原服務保存庫之後，下一個步驟是針對資料類型設定保存庫，並設定備份原則。 備份原則是復原點擷取頻率和時間的排程。 原則也會包含復原點的保留範圍。 本教學課程假設您的企業是集合飯店、運動場以及餐廳和小館的運動休閒中心，而您要保護虛擬機器上的資料。 下列步驟會建立財務資料的備份原則。
 
-1. 在復原服務保存庫清單中，選取 **myRecoveryServicesVault** 開啟其儀表板。
+1. 在復原服務保存庫清單中，選取 [myRecoveryServicesVault]  來開啟其儀表板。
 
    ![開啟 [案例] 功能表](./media/tutorial-backup-vm-at-scale/open-vault-from-list.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "74171843"
 
 4. 在操作功能表上，選取 [立即備份]  。
 
-    ![內容功能表](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![捷徑功能表](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     [立即備份] 功能表隨即開啟。
 

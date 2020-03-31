@@ -1,8 +1,8 @@
 ---
-title: 在 Azure Active Directory 入口網站中標示有風險的使用者 |Microsoft Docs
+title: 在 Azure 活動目錄門戶中標記為風險的使用者 |微軟文檔
 description: 了解 Azure Active Directory 入口網站中標幟為有風險的使用者安全性報告
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1412cacd453de01f1937fbcf5e712afdac88def
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68989704"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
@@ -32,7 +32,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>存取標幟為有風險的使用者報告
 
-您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果您沒有 Azure AD，則可以在 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 註冊免費版。 
+您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果沒有 Azure AD，則可以在[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)上免費註冊。 
 
 從標幟為有風險的使用者報告，您可以為每位使用者採取下列動作：
 
@@ -46,14 +46,14 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 您也可以使用 Office 365 認證來存取 **Azure 系統管理中心**。 在您啟動 Azure AD 存取後，您就會重新導向至 Azure AD 入口網站。 在基本訂閱等級，報告中提供的詳細資料數量有限。 其他資料和分析資料則適用於 Azure 進階訂閱者。
 
-若要存取 Microsoft 365 系統管理中心內**標示為有風險的使用者**報告:
+要訪問在 Microsoft 365 管理中心**中標記為風險報告的使用者**，：
 
-1.  從左側的導覽功能表中，選取 [系統管理中心]。 
-2.  選取 [Azure AD]。
-3.  登入 [Azure Active Directory 系統管理中心]。
-4.  如果頁面頂端顯示的橫幅表示「查看新的入口網站」，請選取此連結。
-4.  在左側導覽功能表中，選取 [Azure Active Directory]。 
-5.  在導覽窗格中，從 [安全性] 區段選取 [標幟為有風險的使用者]。
+1.  從左側的導覽功能表中，選取 [系統管理中心]****。 
+2.  選取 [Azure AD]****。
+3.  登入 [Azure Active Directory 系統管理中心]****。
+4.  如果頁面頂端顯示的橫幅表示「查看新的入口網站」****，請選取此連結。
+4.  在左側導覽功能表中，選取 [Azure Active Directory]****。 
+5.  在導覽窗格中，從 [安全性]**** 區段選取 [標幟為有風險的使用者]****。
 
 ## <a name="remediation-actions"></a>補救動作
 

@@ -1,18 +1,18 @@
 ---
-title: Service Fabric Reliable Actors 概觀
-description: Service Fabric Reliable Actors 程式設計模型的簡介，以虛擬執行者模式為基礎。
+title: 服務結構可靠參與者概述
+description: 基於虛擬參與者模式的服務結構可靠參與者程式設計模型簡介。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645560"
 ---
-# <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 簡介
+# <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actor 簡介
 Reliable Actors 是以 [Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) 模式為基礎的 Service Fabric 應用程式架構。 Reliable Actors API 提供單一執行緒的程式設計模型，此模型立基於 Service Fabric 所提供的延展性和可靠性保證上。
 
 ## <a name="what-are-actors"></a>什麼是動作項目？
@@ -42,7 +42,7 @@ Service Fabric 動作項目是虛擬的，也就是說，其生命週期不會�
 * 雖然 Reliable Actors 會以隱含方式建立動作項目物件，但您還是無法明確地刪除動作項目及其狀態。
 
 ## <a name="distribution-and-failover"></a>散佈和容錯移轉
-為了提供延展性和可靠性，Service Fabric 將動作項目散佈於整個叢集，並視需要讓動作項目從失敗的節點自動移轉到狀況良好的節點。 這是 [已資料分割的具狀態可靠服務](service-fabric-concepts-partitioning.md)上的一個抽象概念。 散佈、延展性、可靠性及自動容錯移轉全都是憑藉動作項目正在名為「動作項目服務」的具狀態可靠服務內執行的事實來提供。
+為了提供延展性和可靠性，Service Fabric 將動作項目散佈於整個叢集，並視需要讓動作項目從失敗的節點自動移轉到狀況良好的節點。 這是 [已資料分割的具狀態可靠服務](service-fabric-concepts-partitioning.md)上的一個抽象概念。 散佈、延展性、可靠性及自動容錯移轉全都是憑藉動作項目正在名為「動作項目服務」 ** 的具狀態可靠服務內執行的事實來提供。
 
 動作項目會散佈在動作項目服務的分割區上，而這些分割區會散佈到 Service Fabric 叢集中的節點上。 每個服務分割區都會包含一組動作項目。 Service Fabric 會管理服務分割區的散佈和容錯移轉。
 
@@ -110,7 +110,7 @@ Reliable Actors 執行階段會提供簡單的回合式存取模型來存取動�
 
 動作項目執行階段會藉由在某回合的開頭取得一個各動作項目鎖定，然後在回合結束時釋放該鎖定，來強制回合式並行。 因此，回合式並行會依各個動作項目強制執行，不會在動作項目之間強制執行。 動作項目方法和計時器/提醒回撥可代表不同的動作項目同時執行。
 
-以下範例說明上述概念。 如果有一個動作項目類型實作兩個非同步方法 (假設為 Method1 與 Method2)，也就是計時器與提醒。 下圖顯示代表這兩個屬於此動作項目類型的動作項目 (ActorId1 與 ActorId2) 執行這些方法與回呼的時間軸範例。
+以下範例說明上述概念。 如果有一個動作項目類型實作兩個非同步方法 (假設為 Method1** 與 Method2**)，也就是計時器與提醒。 下圖顯示代表這兩個屬於此動作項目類型的動作項目 (ActorId1** 與 ActorId2**) 執行這些方法與回呼的時間軸範例。
 
 ![Reliable Actors 執行階段回合式並行和存取][1]
 
@@ -123,13 +123,13 @@ Reliable Actors 執行階段會提供簡單的回合式存取模型來存取動�
 
 有一些需要考慮的重要事項︰
 
-* 當 Method1 代表 ActorId2 執行以回應用戶端要求 xyz789 時，另一個抵達的用戶端要求 (abc123) 也需要 Method1 由 ActorId2 執行。 不過， *Method1* 的第二次執行會在前一次執行完成後才開始。 同樣的，由 ActorId2 註冊的提醒會在 Method1 正在執行時引發，以回應用戶端要求 xyz789。 提醒回撥只會在 *Method1* 的這兩個執行都完成後才執行。 所有的一切都是因為對 *ActorId2*強制執行回合式並行。
-* 同樣地，也會對 ActorId1 強制執行回合式並行，如代表依序發生的 ActorId1 執行 Method1、Method2 和計時器回呼所示。
-* 代表 ActorId1 執行 Method1 與代表 ActorId2 執行重疊。 這是因為回合式並行只會在動作項目內強制執行，不會在動作項目間強制執行。
+* 當 Method1** 代表 ActorId2** 執行以回應用戶端要求 xyz789** 時，另一個抵達的用戶端要求 (abc123**) 也需要 Method1** 由 ActorId2** 執行。 不過， *Method1* 的第二次執行會在前一次執行完成後才開始。 同樣的，由 ActorId2** 註冊的提醒會在 Method1** 正在執行時引發，以回應用戶端要求 xyz789**。 提醒回撥只會在 *Method1* 的這兩個執行都完成後才執行。 所有的一切都是因為對 *ActorId2*強制執行回合式並行。
+* 同樣地，也會對 ActorId1** 強制執行回合式並行，如代表依序發生的 ActorId1** 執行 Method1**、Method2** 和計時器回呼所示。
+* 代表 ActorId1** 執行 Method1** 與代表 ActorId2** 執行重疊。 這是因為回合式並行只會在動作項目內強制執行，不會在動作項目間強制執行。
 * 在某些方法/回呼執行中，方法/回呼傳回的 `Task`(C#)/`CompletableFuture`(Java) 會在方法傳回後完成。 在某些其他執行中，已在方法/回呼傳回的時間前完成非同步作業。 在這兩種情況下，只有在方法/回呼傳回且完成非同步作業後，才會釋放各個動作項目鎖定。
 
 ### <a name="reentrancy"></a>重新進入
-動作項目執行階段依預設允許重新進入。 這表示如果 Actor A 的動作項目方法在 Actor B 上呼叫某一個方法，然後反過來在 Actor A 上呼叫另一個方法，則允許執行該方法。 這是因為該方法是同一個邏輯呼叫鏈結內容的一部分。 所有的計時器與提醒呼叫的開頭都是新的邏輯呼叫內容。 如需詳細資訊，請參閱 [Reliable Actors 重新進入](service-fabric-reliable-actors-reentrancy.md) 。
+動作項目執行階段依預設允許重新進入。 這表示如果 Actor A** 的動作項目方法在 Actor B** 上呼叫某一個方法，然後反過來在 Actor A** 上呼叫另一個方法，則允許執行該方法。 這是因為該方法是同一個邏輯呼叫鏈結內容的一部分。 所有的計時器與提醒呼叫的開頭都是新的邏輯呼叫內容。 如需詳細資訊，請參閱 [Reliable Actors 重新進入](service-fabric-reliable-actors-reentrancy.md) 。
 
 ### <a name="scope-of-concurrency-guarantees"></a>並行保證的範圍
 動作項目執行階段在控制叫用這些方法的狀況下，提供這些並行保證。 例如，動作項目執行階段會對為回應用戶端要求而進行的方法叫用，以及對計時器與提醒回呼提供這些保證。 然而，如果動作項目程式碼在動作項目執行階段提供的機制之外直接叫用這些方法，則執行階段無法提供任何並行保證。 例如，如果在某個與動作項目方法所傳回的工作不相關聯的工作內容中叫用方法，則執行階段無法提供並行保證。 如果從動作項目自行建立的執行緒叫用方法，則執行階段也無法提供並行保證。 因此，若要執行背景作業，動作項目應使用遵守回合式並行的 [動作項目計時器和動作項目提醒](service-fabric-reliable-actors-timers-reminders.md) 。

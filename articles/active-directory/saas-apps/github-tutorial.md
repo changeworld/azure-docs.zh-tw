@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129898"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79138972"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
 在本教學課程中，您將了解如何整合 GitHub 與 Azure Active Directory (Azure AD)。 在整合 GitHub 與 Azure AD 時，您可以︰
 
-* 在 Azure AD 中控制可存取 GitHub 的人員。
-* 讓使用者使用其 Azure AD 帳戶自動登入 GitHub。
-* 在 Azure 入口網站集中管理您的帳戶。
+* 在 Azure AD 中控制可存取 GitHub Enterprise Cloud Organization 的人員。
+* 在一個集中位置 (也就是 Azure 入口網站) 管理 GitHub Enterprise Cloud Organization 的存取權。
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
@@ -45,7 +44,7 @@ ms.locfileid: "79129898"
 
 * GitHub 支援 **SP** 起始的 SSO
 
-* GitHub 支援[**自動使用者佈建**](github-provisioning-tutorial.md)
+* GitHub 支援[**自動化**使用者佈建 (組織邀請)](github-provisioning-tutorial.md)
 * 設定 GitHub 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>從資源庫新增 GitHub

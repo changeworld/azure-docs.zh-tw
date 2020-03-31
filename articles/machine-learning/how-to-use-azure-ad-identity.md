@@ -1,7 +1,7 @@
 ---
-title: 搭配您的 web 服務使用 AAD 身分識別
+title: 將 AAD 標識與 Web 服務一起使用
 titleSuffix: Azure Machine Learning
-description: 在 Azure Kubernetes Service 中使用 AAD 身分識別搭配 web 服務，以在計分期間存取雲端資源。
+description: 在 Azure Kubernetes 服務中的 Web 服務中使用 AAD 標識，在評分期間訪問雲資源。
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -11,49 +11,49 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: f997aef59e91bed325b84af855a84f43cd639d83
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122840"
 ---
-# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用 Azure AD 身分識別與您的機器學習 web 服務
+# <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure 庫伯奈斯服務中使用 Azure AD 標識與機器學習 Web 服務
 
-在此操作說明中，您將瞭解如何在 Azure Kubernetes Service 中將 Azure Active Directory （AAD）身分識別指派給已部署的機器學習模型。 [Aad Pod 身分識別](https://github.com/Azure/aad-pod-identity)專案可讓應用程式使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)和 Kubernetes 基本型別，透過 aad 安全地存取雲端資源。 這可讓您的 web 服務安全地存取您的 Azure 資源，而不需要直接在 `score.py` 腳本內內嵌認證或管理權杖。 本文說明在您的 Azure Kubernetes Service 叢集中建立和安裝 Azure 身分識別的步驟，並將身分識別指派給您已部署的 web 服務。
+在此方法中，您將瞭解如何在 Azure Kubernetes 服務中為已部署的機器學習模型分配 Azure 活動目錄 （AAD） 標識。 [AAD Pod 標識](https://github.com/Azure/aad-pod-identity)專案允許應用程式使用[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)和庫伯奈斯基元安全地使用 AAD 訪問雲資源。 這允許 Web 服務安全地訪問 Azure 資源，而無需直接在`score.py`腳本中嵌入憑據或管理權杖。 本文介紹在 Azure Kubernetes 服務群集中創建和安裝 Azure 標識並將標識分配給已部署的 Web 服務的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- [Machine Learning 服務的 Azure CLI 擴充](reference-azure-machine-learning-cli.md)功能、[適用于 PYTHON 的 Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，或[Azure Machine Learning Visual Studio Code 延伸](tutorial-setup-vscode-extension.md)模組。
+- [機器學習服務的 Azure CLI 擴展](reference-azure-machine-learning-cli.md)、用於[Python 的 Azure 機器學習 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或 Azure[機器學習視覺化工作室代碼擴展](tutorial-setup-vscode-extension.md)。
 
-- 使用 `kubectl` 命令來存取您的 AKS 叢集。 如需詳細資訊，請參閱[連接到](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)叢集
+- 使用`kubectl`命令訪問 AKS 群集。 有關詳細資訊，請參閱[連接到群集](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
 
-- 部署到 AKS 叢集的 Azure Machine Learning web 服務。
+- 部署到 AKS 群集的 Azure 機器學習 Web 服務。
 
-## <a name="create-and-install-an-azure-identity-in-your-aks-cluster"></a>在您的 AKS 叢集中建立和安裝 Azure 身分識別
+## <a name="create-and-install-an-azure-identity-in-your-aks-cluster"></a>在 AKS 群集中創建和安裝 Azure 標識
 
-1. 若要判斷您的 AKS 叢集是否已啟用 RBAC，請使用下列命令：
+1. 要確定 AKS 群集是否啟用了 RBAC，請使用以下命令：
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    如果已啟用 RBAC，此命令會傳回 `true` 的值。 此值會決定要在下一個步驟中使用的命令。
+    此命令返回`true`是否啟用了 RBAC 的值。 此值確定在下一步中要使用的命令。
 
-1. 若要在您的 AKS 叢集中安裝[AAD Pod 身分識別](https://github.com/Azure/aad-pod-identity#getting-started)，請使用下列其中一個命令：
+1. 要在 AKS 群集中安裝[AAD Pod 標識](https://github.com/Azure/aad-pod-identity#getting-started)，請使用以下命令之一：
 
-    * 如果您的 AKS 叢集已**啟用 RBAC** ，請使用下列命令：
+    * 如果您的 AKS 群集**啟用了 RBAC，** 請使用以下命令：
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
         ```
     
-    * 如果您的 AKS 叢集**未啟用 RBAC**，請使用下列命令：
+    * 如果您的 AKS 群集**未啟用 RBAC，** 請使用以下命令：
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
         ```
     
-        命令的輸出類似下列文字：
+        該命令的輸出類似于以下文本：
 
         ```text
         customresourcedefinition.apiextensions.k8s.io/azureassignedidentities.aadpodidentity.k8s.io created
@@ -64,25 +64,25 @@ ms.locfileid: "77122840"
         deployment.apps/mic created
         ```
 
-1. 依照 AAD Pod 身分識別專案頁面中所示的步驟，[建立 Azure 身分識別](https://github.com/Azure/aad-pod-identity#2-create-an-azure-identity)。
+1. [按照](https://github.com/Azure/aad-pod-identity#2-create-an-azure-identity)AAD Pod 標識專案頁中顯示的步驟創建 Azure 標識。
 
-1. 依照 AAD Pod 身分識別專案頁面中所示的步驟來[安裝 Azure 身分識別](https://github.com/Azure/aad-pod-identity#3-install-the-azure-identity)。
+1. 按照 AAD Pod 標識專案頁中顯示的步驟[安裝 Azure 標識](https://github.com/Azure/aad-pod-identity#3-install-the-azure-identity)。
 
-1. 依照 AAD Pod 身分識別專案頁面中所示的步驟，[安裝 Azure 身分識別](https://github.com/Azure/aad-pod-identity#5-install-the-azure-identity-binding)系結。
+1. 按照 AAD Pod 標識專案頁中顯示的步驟[安裝 Azure 標識綁定](https://github.com/Azure/aad-pod-identity#5-install-the-azure-identity-binding)。
 
-1. 如果在上一個步驟中建立的 Azure 身分識別不在與您的 AKS 叢集相同的資源群組中，請遵循 AAD Pod 識別專案頁面中所示的步驟[來設定 MIC 的許可權](https://github.com/Azure/aad-pod-identity#6-set-permissions-for-mic)。
+1. 如果上一步中創建的 Azure 標識與 AKS 群集不在同一資源組中，請按照 AAD Pod 標識專案頁中顯示的步驟操作["為 MIC 設置許可權](https://github.com/Azure/aad-pod-identity#6-set-permissions-for-mic)"。
 
-## <a name="assign-azure-identity-to-machine-learning-web-service"></a>將 Azure 身分識別指派給 machine learning web 服務
+## <a name="assign-azure-identity-to-machine-learning-web-service"></a>將 Azure 標識分配給機器學習 Web 服務
 
-下列步驟會使用在上一節中建立的 Azure 身分識別，並透過**選取器標籤**將它指派給您的 AKS web 服務。
+以下步驟使用上一節中創建的 Azure 標識，並通過**選擇器標籤**將其分配給 AKS Web 服務。
 
-首先，在您想要指派 Azure 身分識別的 AKS 叢集中，識別部署的名稱和命名空間。 您可以藉由執行下列命令來取得這項資訊。 命名空間應該是您 Azure Machine Learning 的工作區名稱，而您的部署名稱應該是您的端點名稱，如入口網站中所示。
+首先，在要分配 Azure 標識的 AKS 群集中標識部署的名稱和命名空間。 您可以通過運行以下命令來獲取此資訊。 命名空間應為 Azure 機器學習工作區名稱，並且部署名稱應為終結點名稱，如門戶所示。
 
 ```azurecli-interactive
 kubectl get deployment --selector=isazuremlapp=true --all-namespaces --show-labels
 ```
 
-編輯部署規格，以將 Azure 身分識別選取器標籤新增至您的部署。選取器值應該是您在[安裝 Azure 身分識別](https://github.com/Azure/aad-pod-identity#5-install-the-azure-identity-binding)系結的步驟5中所定義的值。
+通過編輯部署規範，將 Azure 標識選擇器標籤添加到部署中。選擇器值應該是在[安裝 Azure 標識綁定](https://github.com/Azure/aad-pod-identity#5-install-the-azure-identity-binding)的步驟 5 中定義的值。
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -94,7 +94,7 @@ spec:
   Selector: <label value to match>
 ```
 
-編輯部署以新增 Azure 身分識別選取器標籤。 移至 [`/spec/template/metadata/labels`] 底下的下一節。 您應該會看到 `isazuremlapp: “true”`之類的值。 新增 aad-pod-身分識別標籤，如下所示。
+編輯部署以添加 Azure 標識選擇器標籤。 轉到 下一節。 `/spec/template/metadata/labels` 您應該看到值，如`isazuremlapp: “true”`。 添加 aad-pod 標識標籤，如下所示。
 
 ```azurecli-interactive
     kubectl edit deployment/<name of deployment> -n azureml-<name of workspace>
@@ -109,31 +109,31 @@ spec:
       ...
 ```
 
-若要確認已正確新增標籤，請執行下列命令。
+要驗證標籤是否正確添加，請運行以下命令。
 
 ```azurecli-interactive
    kubectl get deployment <name of deployment> -n azureml-<name of workspace> --show-labels
 ```
 
-若要查看所有 pod 狀態，請執行下列命令。
+要查看所有 Pod 狀態，運行以下命令。
 
 ```azurecli-interactive
     kubectl get pods -n azureml-<name of workspace>
 ```
 
-Pod 啟動並執行之後，此部署的 web 服務現在將能夠透過您的 Azure 身分識別存取 Azure 資源，而不需要在您的程式碼中內嵌認證。 
+啟動並運行窗格後，此部署的 Web 服務現在將能夠通過 Azure 標識訪問 Azure 資源，而無需將憑據嵌入到代碼中。 
 
-## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>將適當的角色指派給您的 Azure 身分識別
+## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>將適當的角色指派給 Azure 標識
 
-[使用適當的角色指派您的 Azure 受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)，以存取其他 azure 資源。 請確定您所指派的角色具有正確的**資料動作**。 例如，「[儲存體 Blob 資料讀取](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)者」角色將會擁有儲存體 blob 的讀取權限，而「一般讀取者」[角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)則不會。
+[使用適當的角色指派 Azure 託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)以訪問其他 Azure 資源。 確保您分配的角色具有正確的**資料操作**。 例如，存儲[Blob 資料讀取器角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)將具有對存儲 Blob 的讀取權限，而通用[讀取器角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)可能沒有。
 
-## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>搭配您的 machine learning web 服務使用 Azure 身分識別
+## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>將 Azure 標識與機器學習 Web 服務一起使用
 
-將模型部署到您的 AKS 叢集。 `score.py` 腳本可以包含指向 azure 身分識別可存取之 Azure 資源的作業。 請確定您已針對嘗試存取的資源，安裝必要的用戶端程式庫相依性。 以下是一些範例，說明如何使用您的 Azure 身分識別，從您的服務存取不同的 Azure 資源。
+將模型部署到 AKS 群集。 該`score.py`腳本可以包含指向 Azure 標識有權訪問的 Azure 資源的操作。 確保已為嘗試訪問的資源安裝了所需的用戶端庫依賴項。 下面是如何使用 Azure 標識從服務訪問不同的 Azure 資源的幾個示例。
 
-### <a name="access-key-vault-from-your-web-service"></a>從您的 web 服務存取 Key Vault
+### <a name="access-key-vault-from-your-web-service"></a>從 Web 服務訪問金鑰保存庫
 
-如果您已將 Azure 身分識別讀取權限提供給**Key Vault**內的密碼，您的 `score.py` 可以使用下列程式碼來存取它。
+如果已授予 Azure 標識對**金鑰保存庫**內機密的讀取存取許可權，則可以使用`score.py`以下代碼訪問它。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -151,9 +151,9 @@ secret_client = SecretClient(
 secret = secret_client.get_secret(my_secret_name)
 ```
 
-### <a name="access-blob-from-your-web-service"></a>從您的 web 服務存取 Blob
+### <a name="access-blob-from-your-web-service"></a>從 Web 服務訪問 Blob
 
-如果您已將 Azure 身分識別存取權提供給**儲存體 Blob**內的資料，您的 `score.py` 可以使用下列程式碼來存取它。
+如果已授予 Azure 標識對**存儲 Blob**中資料的讀取存取許可權，`score.py`則可以使用以下代碼訪問它。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -175,5 +175,5 @@ blob_data.readall()
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關如何使用 Python Azure 身分識別用戶端程式庫的詳細資訊，請參閱 GitHub 上的存放[庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python)。
-* 如需將模型部署至 Azure Kubernetes Service 叢集的詳細指南，請參閱操作[說明](how-to-deploy-azure-kubernetes-service.md)。
+* 有關如何使用 Python Azure 標識用戶端庫的詳細資訊，請參閱 GitHub 上的[存儲庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python)。
+* 有關將模型部署到 Azure 庫伯奈斯服務群集的詳細資訊，請參閱[方法](how-to-deploy-azure-kubernetes-service.md)。

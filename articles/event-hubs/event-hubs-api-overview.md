@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中樞 API 概觀 | Microsoft Docs
-description: 本文提供使用 Azure 事件中樞服務的可用 Api （執行時間和管理）的總覽。
+description: 本文概述了用於使用 Azure 事件中心服務的可用 API（運行時和管理）。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
 ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162220"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中樞 API
@@ -47,7 +47,7 @@ ms.locfileid: "77162220"
 
 #### <a name="node"></a>節點
 
-[JavaScript 程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前為預覽狀態，並由 Microsoft 員工和外部參與者以專案的形式加以維護。 我們非常歡迎所有的參與，包括原始程式碼，而且都會加以檢閱。
+[JavaScript 庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)當前處於預覽狀態，由 Microsoft 員工和外部貢獻者作為附帶專案進行維護。 我們非常歡迎所有的參與，包括原始程式碼，而且都會加以檢閱。
 
 ## <a name="management-apis"></a>管理 API
 

@@ -1,8 +1,8 @@
 ---
-title: 新增 B2B 來賓，而不使用邀請連結或電子郵件-Azure AD
+title: 添加沒有邀請連結或電子郵件的 B2B 來賓 - Azure AD
 description: 您可以讓來賓使用者將其他來賓使用者加入您的 Azure AD，而不需在 Azure Active Directory B2B 共同作業中兌換邀請。
-services: active-directory
 documentationcenter: ''
+services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
@@ -12,18 +12,18 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efbb941e589cb8e4cf56ee06a697a1557a3cc89
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 42c9caaf581fab37e2e55cbe408db6d6d846622a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050899"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>在沒有邀請連結或電子郵件的情況下新增 B2B 共同作業來賓使用者
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>添加 B2B 協作來賓使用者，無需邀請連結或電子郵件
 
 您現在可以送出共用應用程式的直接連結，來邀請來賓使用者。 透過此方法，除了某些特殊情況，來賓使用者已不再需要使用邀請電子郵件。 來賓使用者可以按一下應用程式連結、檢閱並接受隱私權條款，然後順暢地存取應用程式。 如需詳細資訊，請參閱 [B2B 共同作業邀請兌換](redemption-experience.md)。   
 
-在有此新方法可用之前，若要在不需要邀請電子郵件的情況下邀請來賓使用者，您可以將邀請者 (從您的組織或從合作夥伴組織) 新增至**來賓邀請者**目錄角色，再讓邀請者透過 UI 或透過 PowerShell 將來賓使用者新增至目錄、群組或應用程式 (如果使用 PowerShell，您可以完全隱藏邀請電子郵件)。 例如︰
+在有此新方法可用之前，若要在不需要邀請電子郵件的情況下邀請來賓使用者，您可以將邀請者 (從您的組織或從合作夥伴組織) 新增至**來賓邀請者**目錄角色，再讓邀請者透過 UI 或透過 PowerShell 將來賓使用者新增至目錄、群組或應用程式 (如果使用 PowerShell，您可以完全隱藏邀請電子郵件)。 例如：
 
 1. 主組織 (例如，WoodGrove) 中的使用者邀請合作夥伴組織 (例如，Sam@litware.com) 的使用者做為「來賓」。
 2. 主組織中的管理員會[設定原則](delegate-invitations.md)，以允許 Sam 識別及新增來自合作夥伴組織 (Litware) 的其他使用者。 (必須將 Sam 新增至**來賓邀請者**角色)。

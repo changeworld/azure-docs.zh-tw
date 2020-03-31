@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946154"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79212953"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>教學課程：使用 Azure Data Box Edge 轉送資料
 
@@ -59,26 +59,28 @@ ms.locfileid: "78946154"
     類型可以是 **SMB** 或 **NFS**，並以 SMB 為預設值。 SMB 是 Windows 用戶端的標準，NFS 則用於 Linux 用戶端。  
     視您選擇 SMB 或 NFS 共用而定，其餘選項可能會有些許不同。 
 
-    c. 提供共用所在的儲存體帳戶。 
+    c. 提供共用所在的儲存體帳戶。
 
-    
+      > [!IMPORTANT]
+      > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+
     d. 在 [儲存體服務]  下拉式清單中，選取 [區塊 Blob]  、[分頁 Blob]  或 [檔案]  。  
     您選取的服務類型，取決於您想要讓資料在 Azure 中使用的格式。 在此範例中，我們想要將資料以區塊 Blob 的形式儲存在 Azure 中，因此我們選取 [區塊 Blob]  。 如果您選取 [分頁 Blob]  ，請確定您的資料是 512 位元組規格。 例如，VHDX 一律是 512 位元組規格。
 
     e. 建立新的 Blob 容器，或使用從下拉式清單中的現有容器。 如果要建立 Blob 容器，請提供容器名稱。 如果容器尚不存在，則會使用新建共用名稱在儲存體帳戶中建立容器。
-   
-    f. 根據您已建立的是 SMB 共用還是 NFS 共用，執行下列其中一個步驟： 
-     
-    - **SMB 共用**：在 [完整權限本機使用者]  下方，選取 [新建]  或 [使用現有的]  。 如果您建立新的本機使用者，請輸入使用者名稱和密碼，然後確認密碼。 此動作會將權限指派給本機使用者。 目前不支援修改共用層級權限。
+
+    f. 根據您已建立的是 SMB 共用還是 NFS 共用，執行下列其中一個步驟：
+
+    * **SMB 共用**：在 [完整權限本機使用者]  下方，選取 [新建]  或 [使用現有的]  。 如果您建立新的本機使用者，請輸入使用者名稱和密碼，然後確認密碼。 此動作會將權限指派給本機使用者。 目前不支援修改共用層級權限。
 
         如果您針對此共用資料選取 [僅允許讀取作業]  核取方塊，則可以指定唯讀使用者。
 
         ![新增 SMB 共用](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
-   
-    - **NFS 共用**：針對經允許可存取共用的用戶端輸入其 IP 位址。
+
+    * **NFS 共用**：針對經允許可存取共用的用戶端輸入其 IP 位址。
 
         ![新增 NFS 共用](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
-   
+
 4. 選取 [建立]  以建立共用。
     
     共用正在建立時，您會收到通知。 使用指定的設定來建立共用之後，[共用]  圖格將會更新，以反映新的共用。

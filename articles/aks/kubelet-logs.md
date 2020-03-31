@@ -1,39 +1,39 @@
 ---
 title: 在 Azure Kubernetes Service (AKS) 中檢視 kubelet 記錄
-description: 瞭解如何在 Azure Kubernetes Service （AKS）節點的 kubelet 記錄中查看疑難排解資訊
+description: 瞭解如何查看 Azure 庫伯奈斯服務 （AKS） 節點的庫貝萊特日誌中的故障排除資訊
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595377"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>從 Azure Kubernetes Service (AKS) 叢集節點取得 kubelet 記錄
 
-在操作 AKS 叢集的過程中，您可能需要檢查記錄檔以疑難排解問題。 內建的 Azure 入口網站可讓您在 AKS 叢集中查看[AKS 主要元件][aks-master-logs]或[容器][azure-container-logs]的記錄。 有時候，您可能需要從 AKS 節點取得*kubelet*記錄，以供疑難排解之用。
+作為操作 AKS 群集的一部分，您可能需要查看日誌以排除問題。 內置到 Azure 門戶是查看[AKS 群集中][azure-container-logs] [AKS 主元件][aks-master-logs]或容器的日誌的能力。 有時，您可能需要從 AKS 節點獲取*kubelet*日誌以進行故障排除。
 
-本文說明如何使用 `journalctl` 來查看 AKS 節點上的*kubelet*記錄。
+本文介紹如何使用`journalctl`在 AKS 節點上查看*kubelet*日誌。
 
 ## <a name="before-you-begin"></a>開始之前
 
-此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 ## <a name="create-an-ssh-connection"></a>建立 SSH 連線
 
-首先，請針對您需要檢視 kubelet 記錄的節點建立 SSH 連線。 這項作業會在[SSH 到 Azure Kubernetes Service （AKS）叢集節點][aks-ssh]檔中詳細說明。
+首先，請針對您需要檢視 kubelet** 記錄的節點建立 SSH 連線。 這項作業會在[透過 SSH 連線至 Azure Kubernetes Service (AKS) 叢集節點][aks-ssh]文件中詳細說明。
 
 ## <a name="get-kubelet-logs"></a>取得 kubelet 記錄
 
-一旦您已連線到節點後，請執行下列命令以提取 kubelet 記錄：
+一旦您已連線到節點後，請執行下列命令以提取 kubelet** 記錄：
 
 ```console
 sudo journalctl -u kubelet -o cat
 ```
 
-下列範例輸出顯示 kubelet 記錄資料：
+下列範例輸出顯示 kubelet** 記錄資料：
 
 ```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
@@ -61,7 +61,7 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您需要來自 Kubernetes master 的其他疑難排解資訊，請參閱[View Kubernetes master node logs IN AKS][aks-master-logs]。
+如果您需要 Kubernetes 主檔中的其他疑難排解資訊，請參閱[在 AKS 中檢視 Kubernetes 主要節點記錄][aks-master-logs]。
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md

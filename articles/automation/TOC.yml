@@ -31,6 +31,11 @@
     - name: 管理 Azure 自動化資料
       href: automation-managing-data.md
       displayName: backup
+    - name: 疑難排解
+      items:
+        - name: 自動化帳戶疑難排解
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: 程序自動化
   items:
     - name: 混合式 Runbook 背景工作概觀
@@ -372,7 +377,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

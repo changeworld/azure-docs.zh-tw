@@ -1,7 +1,7 @@
 ---
 title: 映像分類教學課程：部署模型
 titleSuffix: Azure Machine Learning
-description: 本教學課程會示範如何使用 Azure Machine Learning，搭配 scikit-learn 在 Python Jupyter Notebook 中部署影像分類模型。 本教學課程是兩部分系列的第二部分。
+description: 本教學課程是兩部分系列的第二部分，將說明如何使用 Azure Machine Learning 搭配 scikit-learn 在 Python Jupyter Notebook 中部署影像分類模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116500"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159061"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教學課程：在 Azure 容器執行個體中部署映像分類模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本教學課程是**兩部分教學課程系列的第二部分**。 在[先前的教學課程](tutorial-train-models-with-aml.md)中，您定型了機器學習模型，並在您的雲端工作區內註冊模型。  
-
-現在，您已準備好將模型以 Web 服務的形式部署在 [Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances/)中。 Web 服務是映像，在此案例中為 Docker 映像。 它封裝了評分邏輯和模型本身。 
+本教學課程是**兩部分教學課程系列的第二部分**。 在[先前的教學課程](tutorial-train-models-with-aml.md)中，您定型了機器學習模型，並在您的雲端工作區內註冊模型。  現在，您已準備好將模型部署為 Web 服務。 Web 服務是映像，在此案例中為 Docker 映像。 它封裝了評分邏輯和模型本身。 
 
 在本教學課程部分中，您將使用 Azure Machine Learning 來進行下列工作：
 
@@ -50,7 +48,7 @@ ms.locfileid: "77116500"
 > 如果您想要在執行程式碼時進行閱讀，請立即切換到 Jupyter Notebook。
 > 若要在 Notebook 中執行單一程式碼資料格，請按一下程式碼資料格，然後按 **Shift+Enter**。 或者，從頂端工具列中選擇 [全部執行]  ，以執行整個 Notebook。
 
-## <a name="start"></a>設定環境
+## <a name="set-up-the-environment"></a><a name="start"></a>設定環境
 
 著手開始設定測試環境。
 
@@ -299,7 +297,6 @@ service.wait_for_deployment(show_output=True)
 ```python
 print(service.scoring_uri)
 ```
-
 
 ## <a name="test-the-deployed-service"></a>測試已部署的服務
 

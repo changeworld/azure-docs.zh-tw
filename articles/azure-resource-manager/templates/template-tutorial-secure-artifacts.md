@@ -5,20 +5,20 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ad6ea3c68ed6f48ac48bbbdafed7f8660df23937
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250119"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239218"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教學課程：保護 Azure Resource Manager 範本部署中的成品
+# <a name="tutorial-secure-artifacts-in-arm-template-deployments"></a>教學課程：保護 ARM 範本部署中的成品
 
-了解如何使用 Azure 儲存體帳戶搭配共用存取簽章 (SAS)，保護 Azure Resource Manager 範本使用的成品。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 例如，在[教學課程：使用 Azure Resource Manager 範本匯入 SQL BACPAC 檔案](./template-tutorial-deploy-sql-extensions-bacpac.md)中，主要範本會建立 Azure SQL Database 執行個體。 也會呼叫 BACPAC 檔案以建立資料表及插入資料。 BACPAC 檔案是儲存在 Azure 儲存體帳戶中的成品。 您可以使用儲存體帳戶金鑰來存取該成品。 
+了解如何使用 Azure 儲存體帳戶搭配共用存取簽章 (SAS)，保護 Azure Resource Manager (ARM) 範本使用的成品。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 例如，在[教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案](./template-tutorial-deploy-sql-extensions-bacpac.md)中，主要範本會建立 Azure SQL Database 執行個體。 也會呼叫 BACPAC 檔案以建立資料表及插入資料。 BACPAC 檔案是儲存在 Azure 儲存體帳戶中的成品。 您可以使用儲存體帳戶金鑰來存取該成品。
 
 在本教學課程中，您會使用 SAS 在您自己的 Azure 儲存體帳戶中授與 BACPAC 檔案的有限存取權。 如需關於 SAS 的詳細資訊，請參閱[使用共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
-若要了解如何保護連結的範本，請參閱[教學課程：建立連結的 Azure Resource Manager 範本](./template-tutorial-create-linked-templates.md)。
+若要了解如何保護連結的範本，請參閱[教學課程：建立連結的 ARM 範本](./template-tutorial-create-linked-templates.md)。
 
 本教學課程涵蓋下列工作：
 
@@ -35,19 +35,19 @@ ms.locfileid: "78250119"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](./use-vs-code-to-create-template.md)。
-* 檢閱[本教學課程：使用 Azure Resource Manager 範本匯入 SQL BACPAC 檔案](./template-tutorial-deploy-sql-extensions-bacpac.md)。 本教學課程中使用的範本就是該教學課程中開發的範本。 本文會提供完整範本的下載連結。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](./use-vs-code-to-create-template.md)。
+* 檢閱[本教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案](./template-tutorial-deploy-sql-extensions-bacpac.md)。 本教學課程中使用的範本就是該教學課程中開發的範本。 本文會提供完整範本的下載連結。
 * 為了提高安全性，請使用為 SQL Server 系統管理員帳戶產生的密碼。 以下是您可以用來產生密碼的範例：
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault 的設計訴求是保護加密金鑰和其他祕密。 如需詳細資訊，請參閱[教學課程：在 Resource Manager 範本部署中整合 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我們也建議您每三個月更新一次密碼。
+    Azure Key Vault 的設計訴求是保護加密金鑰和其他祕密。 如需詳細資訊，請參閱[教學課程：在 ARM 範本部署中整合 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我們也建議您每三個月更新一次密碼。
 
 ## <a name="prepare-a-bacpac-file"></a>準備 BACPAC 檔案
 
-在這一節中，您會準備 BACPAC 檔案，以便在部署 Resource Manager 範本時安全地存取該檔案。 本節有五個程序︰
+在本節中，您會準備 BACPAC 檔案，以便在部署 ARM 範本時安全地存取該檔案。 本節有五個程序︰
 
 * 下載 BACPAC 檔案。
 * 建立 Azure 儲存體帳戶。
@@ -115,7 +115,7 @@ ms.locfileid: "78250119"
 
 ## <a name="open-an-existing-template"></a>開啟現有範本
 
-在這個課程中，您會修改在[教學課程：使用 Azure Resource Manager 範本匯入 SQL BACPAC 檔案](./template-tutorial-deploy-sql-extensions-bacpac.md)中建立的範本，以呼叫具有 SAS 權杖的 BACPAC 檔案。 在 SQL 擴充功能教學課程中開發的範本會在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中共用。
+在這個課程中，您會修改在[教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案](./template-tutorial-deploy-sql-extensions-bacpac.md)中建立的範本，以呼叫具有 SAS 權杖的 BACPAC 檔案。 在 SQL 擴充功能教學課程中開發的範本會在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中共用。
 
 1. 在 Visual Studio Code 中，選取 [檔案]   > [開啟檔案]  。
 1. 在 [檔案名稱]  中，貼上下列 URL：
@@ -138,7 +138,7 @@ ms.locfileid: "78250119"
 
 ## <a name="edit-the-template"></a>編輯範本
 
-1. 將 storageAccountKey 參數定義取代為下列參數定義： 
+1. 將 storageAccountKey 參數定義取代為下列參數定義：
 
     ```json
         "_artifactsLocationSasToken": {
@@ -211,7 +211,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已使用 SAS 權杖部署 SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 若要了解如何建立 Azure 管線來持續開發及部署 Resource Manager 範本，請參閱：
+在本教學課程中，您已使用 SAS 權杖部署 SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 若要了解如何跨多個區域部署 Azure 資源，以及如何使用安全的部署實務，請參閱
 
 > [!div class="nextstepaction"]
-> [透過 Azure 管線的持續整合](./template-tutorial-use-azure-pipelines.md)
+> [使用安全部署做法](./deployment-manager-tutorial.md)

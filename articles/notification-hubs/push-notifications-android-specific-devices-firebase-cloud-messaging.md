@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞和 Google Firebase 雲端通訊將通知推送至特定 Android 裝置 | Microsoft Docs
+title: 使用 Azure 通知中樞和 Google Firebase 雲端通訊將推播通知傳送至特定裝置 | Microsoft Docs
 description: 了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊 (FCM) 將通知推送至特定 Android 裝置。
 services: notification-hubs
 documentationcenter: android
@@ -17,14 +17,14 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213348"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126866"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>教學課程：使用 Azure 通知中樞和 Google Firebase 雲端通訊 (FCM) 將通知推送至特定 Android 裝置
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>教學課程：使用通知中樞和 Google Firebase 雲端通訊將通知傳送至特定裝置
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "71213348"
 > * 傳送加註標記的通知。
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程以您在以下教學課程中建立的 Android 應用程式為基礎：[教學課程：使用 Azure 通知中樞和 Firebase 雲端通訊將通知推送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。 開始進行本教學課程之前，請完成[教學課程：使用 Azure 通知中樞和 Firebase 雲端通訊將通知推送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 

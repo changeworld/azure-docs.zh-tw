@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456912"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合式身分識別目錄整合工具比較
@@ -28,7 +28,7 @@ ms.locfileid: "60456912"
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect 包含先前發行為 Dirsync 和 AAD Sync 的元件和功能。這些工具已不會再個別發行，而且所有未來的增強功能都會包含在 Azure AD Connect 的更新中，因此，您一定會知道可以到哪裡取得最新的功能。
+> Azure AD 連接合並了以前作為 Dirsync 和 AAD 同步發佈的元件和功能。這些工具不再單獨發佈，所有未來的改進都將包含在 Azure AD Connect 的更新中，以便始終知道在哪裡獲取最新的功能。
 > 
 > DirSync 和 Azure AD Sync 已被取代。 如需詳細資訊，請參閱 [這裡](reference-connect-dirsync-deprecated.md)。
 > 

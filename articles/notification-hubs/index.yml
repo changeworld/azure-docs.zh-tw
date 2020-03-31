@@ -1,59 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 通知中樞文件
+summary: 將推播通知從任何後端傳送至任何行動裝置。 教學課程、API 參考和其他文件。
 metadata:
-  title: Azure 通知中樞文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何透過通知中樞，將推播通知從任何後端傳送至任何行動裝置。 教學課程、API 參考和其他文件。
-  services: notification-hubs
-  author: sethmanheim
-  manager: femila
+  title: Azure 通知中樞文件
+  description: 將推播通知從任何後端傳送至任何行動裝置。 教學課程、API 參考和其他文件。
   ms.service: notification-hubs
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/01/2017
+  author: sethmanheim
   ms.author: sethm
-abstract:
-  description: 了解如何使用通知中樞 (這是一個多平台、可調整的推播通知引擎) 快速地將數百萬則訊息傳送到在各種類型裝置 (Android、iOS、Windows、Windows Phone) 上執行的應用程式。 <p>教學課程、API 參考和其他文件會示範如何設定推播通知，並將這類通知從任何後端傳送至任何行動裝置。</p>
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 將推播通知傳送至 Android 應用程式
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
-    width: 250
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用通知中樞來傳送推播通知：
-      - type: list
-        style: ordered
-        items:
-          - html: 將推播通知傳送到所有註冊的裝置 - <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
-          - html: 將推播通知傳送到特定裝置 - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
-          - html: 將推播通知傳送給特定使用者 - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
-          - html: 推播以位置為基礎的通知 - <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
-          - html: 推播個人化及本地化的通知 - <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: Azure 通知中樞範例應用程式可從多個來源取得。 我們會將具備個別 SDK 的特定平台範例 (連結如下) 與包含其他平台範例的獨立範例存放庫組合在一起。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">範例存放庫 (其他平台)</a>'
-          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-  - title: 參考
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
-          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-          - html: <a href="/rest/api/notificationhubs">REST API 參考</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bed452fcababb3a712da95e3041bdeec71116773
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80289102"
+landingContent:
+- title: 關於 Azure 通知中樞
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 通知中樞？
+      url: notification-hubs-push-notification-overview.md
+    - text: 與 App Service Mobile Apps 整合
+      url: notification-hubs-app-service.md
+  - linkListType: concept
+    links:
+    - text: 企業推送架構指引
+      url: notification-hubs-enterprise-push-notification-architecture.md
+    - text: 註冊管理
+      url: notification-hubs-push-notification-registration-management.md
+  - linkListType: video
+    links:
+    - text: 將推播通知傳送至 Android 應用程式
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 在 Azure 入口網站中建立 Azure 通知中樞
+      url: create-notification-hub-portal.md
+    - text: 在 Azure 入口網站中設定通知中樞中的推播通知
+      url: configure-notification-hub-portal-pns-settings.md
+- title: 將通知傳送到所有已註冊的裝置
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 將推播通知傳送到所有已註冊的 Android 裝置
+      url: notification-hubs-android-push-notification-google-fcm-get-started.md
+    - text: 將推播通知傳送至 Swift iOS 應用程式
+      url: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+  - linkListType: how-to-guide
+    links:
+    - text: 傳送跨平台通知
+      url: notification-hubs-aspnet-cross-platform-notification.md
+    - text: 傳送排定通知
+      url: notification-hubs-send-push-notifications-scheduled.md
+- title: 範例
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Azure 通知中樞範例
+      url: samples.md
+    - text: PowerShell 範例
+      url: samples-powershell.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET API
+      url: /dotnet/api/microsoft.azure.notificationhubs?view=azure-dotnet
+    - text: PowerShell
+      url: /powershell/module/az.notificationhubs/?view=azps-3.6.1
+    - text: CLI
+      url: /cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest
+- title: 資源
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 常見問題集
+      url: notification-hubs-push-notification-faq.md
+    - text: 支援選項
+      url: https://azure.microsoft.com/support/options/
+    - text: MSDN 論壇
+      url: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs

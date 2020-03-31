@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162951"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288286"
 landingContent:
 - title: 關於事件中樞
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 建立已啟用 Apache kafka 的事件中樞
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: 在事件中樞中鏡像 Kafka 訊息代理程式
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: 將 Apache Spark 連線到事件中樞
@@ -131,7 +131,7 @@ landingContent:
       url: event-hubs-metrics-azure-monitor.md
     - text: 設定診斷記錄
       url: event-hubs-diagnostic-logs.md
-    - text: 自動相應增加輸送量單位
+    - text: 自動擴大輸送量單位
       url: event-hubs-auto-inflate.md
     - text: 例外狀況疑難排解
       url: event-hubs-messaging-exceptions.md
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: 使用虛擬網路服務端點
       url: event-hubs-service-endpoints.md
+    - text: 使用私人端點
+      url: private-link-service.md
     - text: 設定客戶管理的金鑰來加密待用資料
       url: configure-customer-managed-key.md
-    - text: 啟用虛擬網路整合和防火牆
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

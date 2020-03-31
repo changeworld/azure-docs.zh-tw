@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: rohink
 ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250903"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理員路由方法
@@ -23,12 +23,12 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 
 流量管理員可提供下列流量路由方法：
 
-* **[優先順序](#priority-traffic-routing-method)：** 如果您想要針對所有流量使用某個主要服務端點，請選取 [優先順序]，並提供備用方案，以防萬一發生主要端點或備份端點無法使用的情況。
-* **[加權](#weighted)︰** 如果您想要將流量分配給一組端點 (不論是平均分配還是根據您定義的權數)，請選取 [加權]。
-* **[效能](#performance)：** 如果您的端點位於不同的地理位置，而您希望使用者使用「最靠近」(亦即網路延遲最低) 的端點，請選取 [效能]。
-* **[地理](#geographic)︰** 選取 [地理]，以根據使用者的 DNS 查詢來自哪個地理位置，將使用者導向特定端點 (Azure、外部或巢狀)。 在必須知道使用者的地理區域，並據以路由傳送使用者的情況下，這可讓流量管理員客戶應付自如。 例如，遵守資料主權規定、內容和使用者經驗的當地語系化，以及測量來自不同區域的流量。
-* **[多值](#multivalue)：** 針對流量管理員設定檔選取 [多值]，其只能將 IPv4/IPv6 位址當作端點。 當系統收到此設定檔的查詢時，會傳回所有狀況良好的端點。
-* **[子網路](#subnet)：** 選取 [子網路] 流量路由方法，以將使用者 IP 位址範圍集對應到流量管理員設定檔中的特定端點。 當收到要求時，傳回的端點會是對應至該要求來源 IP 位址的端點。 
+* **[優先順序](#priority-traffic-routing-method)：** 如果要對所有流量使用主服務終結點，請選擇**優先順序**，並在主終結點或備份終結點無法接通提供備份。
+* **[加權](#weighted)：** 如果要在一組終結點之間分配流量時選擇 **"加權"，** 這些終結點是均勻的，也可以根據您定義的權重進行分配。
+* **[性能](#performance)：** 當您在不同地理位置有終結點，並且希望最終使用者在最低網路延遲方面使用"最近"終結點時，請選擇 **"性能**"。
+* **[地理](#geographic)︰** 選取 [地理]****，以根據使用者的 DNS 查詢來自哪個地理位置，將使用者導向特定端點 (Azure、外部或巢狀)。 在必須知道使用者的地理區域，並據以路由傳送使用者的情況下，這可讓流量管理員客戶應付自如。 例如，遵守資料主權規定、內容和使用者經驗的當地語系化，以及測量來自不同區域的流量。
+* **[多值](#multivalue)：** 針對流量管理員設定檔選取 [多值]****，其只能將 IPv4/IPv6 位址當作端點。 當系統收到此設定檔的查詢時，會傳回所有狀況良好的端點。
+* **[子網路](#subnet)：** 選取 [子網路]**** 流量路由方法，以將使用者 IP 位址範圍集對應到流量管理員設定檔中的特定端點。 當收到要求時，傳回的端點會是對應至該要求來源 IP 位址的端點。 
 
 
 所有流量管理員設定檔都支援監視端點健康狀態和自動容錯移轉。 如需詳細資訊，請參閱 [流量管理員端點監視](traffic-manager-monitoring.md)。 單一「流量管理員」設定檔只能使用一個流量路由方法。 您可以隨時為您的設定檔選取不同的流量路由方法。 變更會在 1 分鐘內套用，不會造成任何停機時間。 透過使用巢狀「流量管理員」設定檔可以將流量路由方法加以結合。 巢狀可讓您建立精密又有彈性的流量路由設定，以滿足更大又複雜的應用程式的需求。 如需詳細資訊，請參閱 [巢狀流量管理員設定檔](traffic-manager-nested-profiles.md)。
@@ -45,7 +45,7 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 
 在 Azure Resource Manager 中，您可以使用「優先順序」屬性來明確設定每個端點的點端優先順序。 這個屬性的值介於 1 到 1000 之間。 值越低代表優先順序越高。 端點無法共用優先順序值。 設定屬性是選擇性的。 如果省略，則會使用以端點順序為基礎的預設優先順序。
 
-## <a name = "weighted"></a>加權流量路由方法
+## <a name="weighted-traffic-routing-method"></a><a name = "weighted"></a>加權流量路由方法
 「加權」流量路由方法可讓您平均分散流量，或使用預先定義的權數。
 
 ![Azure 流量管理員「加權」流量路由方法](media/traffic-manager-routing-methods/weighted.png)
@@ -72,7 +72,7 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 
 這些 DNS 快取效果對所有 DNS 型流量路由系統來說很常見，不僅限於「Azure 流量管理員」。 在某些情況下，明確清除 DNS 快取也許是一種因應措施。 在其他情況下，使用替代的流量路由方法可能更為合適。
 
-## <a name = "performance"></a>效能流量路由方法
+## <a name="performance-traffic-routing-method"></a><a name = "performance"></a>效能流量路由方法
 
 如果將端點部署在全球的兩個或更多個位置，然後將流量路由傳送至「最靠近」您的位置，即可改善許多應用程式的回應速度。 「效能」流量路由方法提供這項功能。
 
@@ -96,7 +96,7 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 * 端點的選擇演算法具有決定性。 來自同一個用戶端的重複 DNS 查詢會導向同一個端點。 一般而言，用戶端在漫遊時會使用不同的遞迴 DNS 伺服器。 用戶端可能會路由傳送至不同的端點。 「網際網路延遲資料表」的更新也會影響路由。 因此，效能流量路由方法不保證用戶端一定會路由傳送至相同的端點。
 * 當「網際網路延遲資料表」變更時，您可能會發現某些用戶端導向不同的端點。 只要取得最新的延遲資料，此路由變更會更精確。 隨著網際網路的持續發展，這些更新對於維護「效能」流量路由的精確度也變得不可或缺。
 
-## <a name = "geographic"></a>地理流量路由方法
+## <a name="geographic-traffic-routing-method"></a><a name = "geographic"></a>地理流量路由方法
 
 流量管理員設定檔可以設定成使用地理路由方法，以根據使用者的 DNS 查詢來自哪個地理位置，將使用者導向特定端點 (Azure、外部或巢狀)。 在必須知道使用者的地理區域，並據以路由傳送使用者的情況下，這可讓流量管理員客戶應付自如。 例如，遵守資料主權規定、內容和使用者經驗的當地語系化，以及測量來自不同區域的流量。
 設定地理路由的設定檔時，必須指派一組地理區域給該設定檔相關聯的每個端點。 地理區域可以達到下列細微層級 
@@ -109,7 +109,7 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 
 ![Azure 流量管理員「地理」流量路由方法](./media/traffic-manager-routing-methods/geographic.png)
 
-流量管理員會讀取 DNS 查詢的來源 IP 位址，判斷查詢的來源地理區域。 然後尋找是否有此地理區域對應的端點。 查閱時會從最低細微層級開始 (州/省 - 若支援，否則是國家/地區層級)，一直到最高層級，也就是「世界」。 經過此周遊找到的第一個相符項目，就指定為要在查詢回應中傳回的端點。 符合「巢狀」類型端點時，則會根據路由方法，傳回該子設定檔中的端點。 此行為有下列幾個特點︰
+流量管理員會讀取 DNS 查詢的來源 IP 位址，判斷查詢的來源地理區域。 然後尋找是否有此地理區域對應的端點。 此查找從最低細微性級別（支援它的國家/省，其他在國家/區域級別）開始，並一直持續到最高級別，即**世界**。 經過此周遊找到的第一個相符項目，就指定為要在查詢回應中傳回的端點。 符合「巢狀」類型端點時，則會根據路由方法，傳回該子設定檔中的端點。 此行為有下列幾個特點︰
 
 - 當路由類型是「地理路由」時，在流量管理員設定檔中，一個地理區域只能對應至一個端點。 這可確保使用者路由是具決定性，讓客戶在地理界限必須明確的情況下應付自如。
 - 如果使用者的區域出現在兩個不同端點的地理對應中，流量管理員會選取細微度最低的端點，不會考慮將該區域的要求路由傳送至另一個端點。 例如，假設「地理路由」類型設定檔有兩個端點 - 端點 1 和端點 2。 端點 1 設定為接收來自愛爾蘭的流量，端點 2 設定接收來自歐洲的流量。 如果要求是來自愛爾蘭，則永遠會路由傳送至端點 1。
@@ -125,38 +125,38 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 
 ### <a name="faqs"></a>常見問題集
 
-* [地理路由很有用的部分使用案例有哪些？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+* [地理路由派上用場的使用案例有哪些？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-* [如何? 決定是否應該使用效能路由方法或地理路由方法？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+* [如何決定應該要使用效能路由方法或使用地理路由方法？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-* [地理路由的流量管理員支援哪些區域？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+* [流量管理員的地理路由支援哪些區域？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
 
-* [流量管理員如何判斷使用者從何處進行查詢？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+* [流量管理員如何判斷使用者從何處執行查詢？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
 
-* [是否保證流量管理員可以在每個案例中正確判斷使用者的確切地理位置？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+* [它保證流量管理員可以在每個案例中正確判斷使用者確切的地理位置嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
 
-* [端點必須實際位於與針對地理路由設定的相同區域中嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+* [端點必須實際位於地理路由設定的相同區域嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
 
-* [我可以在未設定為執行地理路由的設定檔中，將地理區域指派給端點嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+* [您可以在未設定為執行地理路由的設定檔中指派地理區域給端點嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
 
-* [當我嘗試將現有設定檔的路由方法變更為地理時，為什麼會收到錯誤？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+* [當我嘗試將現有設定檔的路由方法變更為地理時為何會發生錯誤？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
 
-* [為什麼強烈建議客戶在啟用地理路由的設定檔下建立嵌套的設定檔，而不是端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+* [為什麼強烈建議客戶建立巢狀設定檔，而不是在啟用地理路由的設定檔下新增端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
 
-* [支援此路由類型的 API 版本是否有任何限制？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+* [支援此路由類型的 API 版本有任何限制嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
-## <a name = "multivalue"></a>多值流量路由方法
-**多值**流量路由方法可讓您在單一 DNS 查詢回應中取得多個狀況良好的端點。 這可讓呼叫端在傳回的端點未回應時，使用其他端點執行用戶端重試。 此模式可提高服務的可用性，且可減少透過新的 DNS 查詢來取得狀況良好端點的相關延遲。 只有在所有端點類型為「外部」且指定為 IPv4 或 IPv6 位址時，才適用多值路由方法。 當系統收到此設定檔的查詢時，會傳回所有狀況良好的端點，您可以設定回傳計數上限來限制回傳數量。
+## <a name="multivalue-traffic-routing-method"></a><a name = "multivalue"></a>多值流量路由方法
+**多值**流量路由方法可讓您在單一 DNS 查詢回應中取得多個狀況良好的端點。 這使調用方能夠在返回的終結點無回應時與其他終結點執行用戶端重試。 此模式可提高服務的可用性，且可減少透過新的 DNS 查詢來取得狀況良好端點的相關延遲。 只有在所有端點類型為「外部」且指定為 IPv4 或 IPv6 位址時，才適用多值路由方法。 當系統收到此設定檔的查詢時，會傳回所有狀況良好的端點，您可以設定回傳計數上限來限制回傳數量。
 
 ### <a name="faqs"></a>常見問題集
 
-* [多值路由有説明的一些使用案例？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+* [MultiValue 路由派上用場的使用案例有哪些？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
 
-* [使用多值路由時，會傳回多少個端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+* [使用 MultiValue 路由時，會傳回多少個端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
 
-* [使用多值路由時，是否會取得相同的端點集合？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+* [使用 MultiValue 路由時，會取得一組相同的端點嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
-## <a name = "subnet"></a>子網路流量路由方法
+## <a name="subnet-traffic-routing-method"></a><a name = "subnet"></a>子網路流量路由方法
 **子網路**流量路由方法可讓您將一組使用者 IP 位址範圍對應至設定檔中的特定端點。 在那之後，如果流量管理員收到該設定檔的 DNS 查詢，它會檢查該要求的來源 IP 位址 (在大部分情況下，這會是呼叫端使用之 DNS 解析程式的連出 IP 位址)，判斷其所對應至的端點，並將會在查詢回應中傳回該端點。 
 
 要對應至端點的 IP 位址可指定為 CIDR 範圍 (例如 1.2.3.0/24) 或位址範圍 (例如 1.2.3.4 - 5.6.7.8)。 與端點相關聯的 IP 範圍在該設定檔中必須是唯一的，且不能與相同設定檔中不同端點的 IP 位址集重疊。
@@ -166,20 +166,20 @@ Azure 流量管理員支援六種流量路由方法，以決定如何將網路�
 
 ### <a name="faqs"></a>常見問題集
 
-* [子網路由很有用的部分使用案例有哪些？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+* [子網路路由派上用場的使用案例有哪些？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
 
-* [流量管理員如何得知終端使用者的 IP 位址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+* [流量管理員如何知道終端使用者的 IP 位址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
 
-* [使用子網路由時，如何指定 IP 位址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+* [使用「子網路」路由時，如何指定 IP 位址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
 
-* [使用子網路由時，如何指定 fallback 端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+* [使用「子網路」路由時，如何指定後援端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
 
-* [如果子網路由類型設定檔中的端點已停用，會發生什麼事？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+* [如果「子網路」路由類型設定檔中已停用端點，則會發生什麼事？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何使用 [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
+瞭解如何使用[流量管理器端點監視](traffic-manager-monitoring.md)開發高可用性應用程式
 
 
 

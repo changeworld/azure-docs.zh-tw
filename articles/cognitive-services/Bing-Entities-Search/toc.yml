@@ -7,7 +7,7 @@
     - name: 比較 Bing 搜尋 API
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API 快速入門
+- name: 快速入門
   expanded: true
   items:
     - name: REST API
@@ -68,7 +68,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
 - name: 資源
   items:
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'

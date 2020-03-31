@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249577"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的問題範本
@@ -34,10 +34,10 @@ ms.locfileid: "79249577"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> 問題清單  
- 「問題清單」範本可讓您自訂開發人員入口網站中問題清單頁面的主體。  
+##  <a name="issue-list"></a><a name="IssueList"></a>問題清單  
+ 「問題清單」**** 範本可讓您自訂開發人員入口網站中問題清單頁面的主體。  
   
- ![問題清單開發人員入口網站](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 問題清單開發人員入口網站")  
+ ![問題清單 開發人員門戶](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 問題清單開發人員門戶")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -91,10 +91,10 @@ ms.locfileid: "79249577"
 </div>
 ```
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Issue list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分頁控制](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>資料模型  
   

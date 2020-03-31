@@ -1,20 +1,20 @@
 ---
 title: 快速入門：使用 Azure 地圖服務的互動式地圖搜尋 | Microsoft Azure 地圖服務
 description: 了解如何使用 Microsoft Azure Maps Web SDK 建立互動式地圖搜尋的示範 Web 應用程式。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 74539a7ed74d0216f1a4bb2d719983895d8b320f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 13dc5f6c7175e1ed568199abcbaa4c5d9a20fa7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79289986"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80334430"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入門：使用 Azure 地圖服務建立互動式地圖搜尋
 

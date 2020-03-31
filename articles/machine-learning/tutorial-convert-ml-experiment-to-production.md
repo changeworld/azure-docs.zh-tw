@@ -6,13 +6,13 @@ author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/13/2020
+ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301840"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477131"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教學課程：將 ML 實驗性程式碼轉換為實際執行程式碼
 
@@ -29,7 +29,7 @@ ms.locfileid: "78301840"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 產生 [MLOpsPython 範本](https://github.com/microsoft/MLOpsPython/generate)並使用 `experimentation/Diabetes Ridge Regression Training.ipynb` 和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` Notebook。 這些 Notebook 會作為從實驗轉換到生產的範例。
+- 產生 [MLOpsPython 範本](https://github.com/microsoft/MLOpsPython/generate)並使用 `experimentation/Diabetes Ridge Regression Training.ipynb` 和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` Notebook。 這些 Notebook 會作為從實驗轉換到生產的範例。 您可以在 [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) 找到這些 Notebook。
 - 安裝 nbconvert。 僅依照[安裝](https://nbconvert.readthedocs.io/en/latest/install.html)頁面上__安裝 nbconvert__ 一節中的安裝指示操作。
 
 ## <a name="remove-all-nonessential-code"></a>移除所有非必要的程式碼

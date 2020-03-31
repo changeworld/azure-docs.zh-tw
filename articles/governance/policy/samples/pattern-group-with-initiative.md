@@ -4,17 +4,17 @@ description: 此 Azure 原則模式提供如何將原則定義群組到方案中
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 41c2b0cf3b8f677cdc408e85088c3ca6c2049d6b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77170246"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure 原則模式：群組原則定義
 
 方案是一組原則定義。 您可以藉由將相關的原則定義群組到單一物件中，建立有多個指派的單一指派。
 
-## <a name="sample-initiative-definition"></a>方案定義範例
+## <a name="sample-initiative-definition"></a>範例方案定義
 
 此方案會部署兩個原則定義，每一個都會採用 **tagName** 和 **tagValue** 參數。 此方案本身有兩個參數：**costCenterValue** 和 **productNameValue**。
 這些方案參數會分別提供給每個已分組的原則定義。 此設計可讓現有原則定義盡可能地重複使用，同時限制建立的指派數目，並在有需要時再加以執行。

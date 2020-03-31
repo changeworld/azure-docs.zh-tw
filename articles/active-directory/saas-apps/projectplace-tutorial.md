@@ -17,10 +17,10 @@ ms.date: 05/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 179721075484c35c5ebbb3d936b83bc407b75a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093529"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>教學課程：整合 Projectplace 與 Azure Active Directory
@@ -34,7 +34,7 @@ ms.locfileid: "67093529"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -147,11 +147,11 @@ ms.locfileid: "67093529"
 
 3. 選取 [新增成員]  ：
    
-    ![選取新增成員](./media/projectplace-tutorial/ic790232.png "新增成員")
+    ![選取 [新增成員]](./media/projectplace-tutorial/ic790232.png "新增成員")
 
 4. 在 [新增成員]  區段中，執行下列步驟。
    
-    ![新增成員區段](./media/projectplace-tutorial/ic790233.png "新增成員")
+    ![[新增成員] 區段](./media/projectplace-tutorial/ic790233.png "新成員")
    
     1. 在 [新增成員]  方塊中，輸入您要新增的有效 Azure AD 帳戶電子郵件地址。
    

@@ -10,9 +10,31 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: 建立範本 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Azure 服務
+      items:
+        - name: AKS
+          href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Backup
+          href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Event Grid
+          href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 事件中樞
+          href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Key Vault
+          href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 負載平衡器
+          href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 原則
+          href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 服務匯流排傳訊
+          href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: SQL Database
+          href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: 教學課程
   items:
-    - name: 初學者
+    - name: 初學者範本
       items:
         - name: 1 - 建立第一個範本
           href: template-tutorial-create-first-template.md
@@ -34,6 +56,15 @@
           href: template-tutorial-add-tags.md
         - name: 10 - 使用參數檔案
           href: template-tutorial-use-parameter-file.md
+    - name: 部署
+      items:
+        - name: 1 - 部署本機範本
+          href: deployment-tutorial-local-template.md
+        - name: 2 - 部署連結的範本
+          href: deployment-tutorial-linked-template.md
+        - name: 3 - 建立管線
+          displayName: Devop
+          href: deployment-tutorial-pipeline.md
     - name: 進階
       items:
         - name: 利用範本參考
@@ -61,9 +92,6 @@
           href: template-tutorial-deploy-sql-extensions-bacpac.md
         - name: 保護成品
           href: template-tutorial-secure-artifacts.md
-        - name: 透過 Azure Pipelines 的持續整合
-          displayName: DevOps
-          href: template-tutorial-use-azure-pipelines.md
         - name: 使用安全部署實務
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -214,7 +242,7 @@
         - name: InvalidTemplate
           href: error-invalid-template.md
         - name: Linux 部署問題
-          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md
         - name: NoRegisteredProviderFound
           href: error-register-resource-provider.md
         - name: NotFound
@@ -222,9 +250,9 @@
         - name: ParentResourceNotFound
           href: error-parent-resource.md
         - name: Linux 佈建和配置問題
-          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md
         - name: Windows 佈建和配置問題
-          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md
         - name: RequestDisallowedByPolicy
           href: error-policy-requestdisallowedbypolicy.md
         - name: ReservedResourceName
@@ -234,7 +262,7 @@
         - name: SkuNotAvailable
           href: error-sku-not-available.md
         - name: Windows 部署問題
-          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+          href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-windows.md
 - name: 參考
   items:
     - name: 範本參考

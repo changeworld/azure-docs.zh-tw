@@ -265,6 +265,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 疑難排解
       items:
+        - name: 對間歇性輸出連線錯誤進行疑難排解
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: 使用 Visual Studio 進行疑難排解
           href: troubleshoot-dotnet-visual-studio.md
         - name: 針對 Node.js 應用程式進行疑難排解

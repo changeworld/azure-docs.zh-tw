@@ -102,6 +102,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: 資料加密
               href: concepts-data-encryption-postgresql.md
+            - name: 安全性基準
+              href: security-baseline.md
         - name: 業務持續性
           items:
             - name: 業務持續性簡介
@@ -273,6 +275,10 @@
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+        - name: 拒絕公用網路存取
+          items:
+            - name: Azure 入口網站
+              href: howto-deny-public-network-access.md
         - name: 複寫
           items:
             - name: 管理讀取複本 Azure 入口網站

@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649065"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472991"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace 中 Azure 受控應用程式
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>教學課程：在 Marketplace 中發佈 Azure 受控應用程式
 
 廠商可以使用 Azure 受控應用程式，將其解決方案提供給所有 Azure Marketplace 客戶。 這些廠商可以包含受控服務提供者 (MSP)、獨立軟體廠商 (ISV) 和系統整合者 (SI)。 受控應用程式能減少客戶的維護與服務額外負荷。 廠商可以透過 Marketplace 銷售基礎結構和軟體。 他們可以將服務和操作支援附加至受控應用程式。 如需詳細資訊，請參閱[受控應用程式概觀](overview.md)。
 

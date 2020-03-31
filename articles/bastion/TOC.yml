@@ -8,6 +8,10 @@
   items:
     - name: 從 VM 設定建立堡壘主機
       href: quickstart-host-portal.md
+- name: 概念
+  items:
+    - name: 遠端工作
+      href: work-remotely-support.md
 - name: 操作指南
   items:
     - name: 建立 Bastion 主機
@@ -16,6 +20,8 @@
           href: bastion-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
+        - name: Azure CLI
+          href: create-host-cli.md
     - name: 連接到虛擬機器
       items:
         - name: SSH (Linux)
@@ -40,6 +46,14 @@
       href: session-monitoring.md
     - name: 疑難排解
       href: troubleshoot.md
+- name: 參考
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: REST
+      href: /rest/api/virtualnetwork/bastionhosts
+    - name: Azure CLI
+      href: /cli/azure/network/bastion
 - name: 資源
   items:
     - name: Bastion 常見問題集

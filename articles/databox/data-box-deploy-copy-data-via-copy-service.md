@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466972"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501870"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教學課程：使用資料複製服務將資料複製到 Azure 資料箱 (預覽)
 
@@ -28,6 +28,7 @@ ms.locfileid: "77466972"
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 將資料複製到資料箱
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -43,9 +44,13 @@ ms.locfileid: "77466972"
 
 在連線至 NAS 裝置後，下一個步驟是複製資料。 開始複製資料之前，請檢閱下列注意事項：
 
-- 複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)一文中所述的大小限制。
-- 如果由資料箱上傳的資料同時由資料箱外部的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
-- 如果資料因為由資料複製服務讀取而有所修改，您可能會看到資料失敗或損毀。
+* 複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)一文中所述的大小限制。
+
+* 如果由資料箱上傳的資料同時由資料箱外部的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
+
+* 如果資料因為由資料複製服務讀取而有所修改，您可能會看到資料失敗或損毀。
+
+* 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
 
 若要使用資料複製服務來複製資料，您需要建立一項作業：
 

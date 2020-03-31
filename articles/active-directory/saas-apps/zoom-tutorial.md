@@ -17,15 +17,15 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70743976"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zoom 整合
 
-在此教學課程中，您將了解如何整合 Zoom 與 Azure Active Directory (Azure AD)。 在整合 Zoom 與 Azure AD 時，您可以︰
+在本教學課程中，您將了解如何整合 Zoom 與 Azure Active Directory (Azure AD)。 在整合 Zoom 與 Azure AD 時，您可以︰
 
 * 在 Azure AD 中控制可存取 Zoom 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zoom。
@@ -33,7 +33,7 @@ ms.locfileid: "70743976"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -42,7 +42,7 @@ ms.locfileid: "70743976"
 
 ## <a name="scenario-description"></a>案例描述
 
-在此教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Zoom 支援 **SP** 起始的 SSO，且 
 * Zoom 支援[**自動**使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) \(部分機器翻譯\)。

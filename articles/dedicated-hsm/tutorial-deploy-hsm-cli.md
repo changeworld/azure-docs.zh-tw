@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4750673eb60529d812e4df71de9203d4d59a0cc9
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212263"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454307"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教學課程：使用 CLI 將 HSM 部署至現有的虛擬網路
 
@@ -47,7 +47,7 @@ Azure 入口網站中目前尚未提供 Azure 專用 HSM。 所有與服務的�
 - 您已建立這些資源的資源群組，而本教學課程中部署的新資訊將會加入該群組。
 - 您已經按照上圖建立所需的虛擬網路、子網路和虛擬機器，而現在想要將 2 個 HSM 整合到該部署中。
 
-以下所有指示都假設您已經導覽至 Azure 入口網站，並已開啟 Cloud Shell (選取靠近入口網站右上方的 “\>\_”)。
+以下所有指示都假設您已經導覽至 Azure 入口網站，並已開啟 Cloud Shell (選取靠近入口網站右上方的 "\>\_")。
 
 ## <a name="provisioning-a-dedicated-hsm"></a>佈建專用 HSM
 
@@ -71,7 +71,7 @@ az feature show \
    --name AllowBaremetalServers
 ```
 
-兩個命令都應該會傳回 “Registered” 狀態 (如下所示)。 如果命令並未傳回 “Registered”，則必須註冊此服務，請連絡您的 Microsoft 帳戶代表。
+兩個命令都應該會傳回 "Registered" 狀態 (如下所示)。 如果命令並未傳回 “Registered”，則必須註冊此服務，請連絡您的 Microsoft 帳戶代表。
 
 ![訂用帳戶狀態](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
@@ -79,7 +79,7 @@ az feature show \
 
 HSM 會佈建到客戶的虛擬網路中，所以需要虛擬網路和子網路。 ExpressRoute 閘道是可供 HSM 啟用虛擬網路與實體裝置之間通訊的相依性，而虛擬機器最終需要使用 Gemalto 用戶端軟體存取 HSM 裝置。 這些資源已收集到範本檔案中 (具有對應的參數檔案)，以便使用。 直接以 HSMrequest@Microsoft.com 連絡 Microsoft 即可取得檔案。
 
-擁有檔案後，您必須編輯參數檔案，以插入慣用的資源名稱。 使用 “value”: “” 編輯程式碼行。
+擁有檔案後，您必須編輯參數檔案，以插入慣用的資源名稱。 使用 "value": "" 編輯程式碼行。
 
 - `namingInfix` HSM 資源名稱的首碼
 - `ExistingVirtualNetworkName` 用於 HSM 的虛擬網路名稱
@@ -126,7 +126,7 @@ HSM 會佈建到客戶的虛擬網路中，所以需要虛擬網路和子網路�
 - 戳記 1 中的 HSM
 - 戳記 2 中的 HSM
 
-設定參數值後，必須將檔案上傳至 Azure 入口網站 Cloud Shell 檔案共用，以便使用。 在 Azure 入口網站中，按一下右上方的 “\>\_” Cloud Shell 符號，這會讓畫面的底部成為命令環境。 其選項包含 BASH 和 PowerShell，而您應該選取 BASH (如果尚未設定)。
+設定參數值後，必須將檔案上傳至 Azure 入口網站 Cloud Shell 檔案共用，以便使用。 在 Azure 入口網站中，按一下右上方的 "\>\_" Cloud Shell 符號，這會讓畫面的底部成為命令環境。 其選項包含 BASH 和 PowerShell，而您應該選取 BASH (如果尚未設定)。
 
 命令殼層在工具列上有上傳/下載選項，您應該選取此選項以將範本和參數檔案上載至您的檔案共用：
 
@@ -144,7 +144,8 @@ az network vnet create \
 ```
 
 ```azurecli
---vnet-name myHSM-vnet \
+az network vnet create \
+  --vnet-name myHSM-vnet \
   --resource-group myRG \
   --name hsmsubnet \
   --address-prefixes 10.2.1.0/24 \
@@ -160,7 +161,7 @@ az network vnet subnet create \
 ```
 
 >[!NOTE]
->請注意，對於虛擬網路而言最重要的組態是 HSM 裝置的子網路必須將委派設定為 “Microsoft.HardwareSecurityModules/dedicatedHSMs”。  若未設定此選項，HSM 佈建將無法運作。
+>請注意，對於虛擬網路而言最重要的組態是 HSM 裝置的子網路必須將委派設定為 "Microsoft.HardwareSecurityModules/dedicatedHSMs"。  若未設定此選項，HSM 佈建將無法運作。
 
 一旦備妥所有必要條件，請執行下列命令以使用 Azure Resource Manager 範本，確保您已使用您唯一的名稱來更新值 (最少資源群組名稱)：
 
@@ -177,7 +178,7 @@ az group deployment create \
 
 ![佈建狀態](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-當部署順利完成時，會顯示 “provisioningState”:“Succeeded”。 您可以連線到現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
+當部署順利完成時，會顯示 "provisioningState":"Succeeded"。 您可以連線到現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
 
 ## <a name="verifying-the-deployment"></a>確認部署
 
@@ -193,7 +194,7 @@ az resource show \
 
 ![佈建輸出](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
-您現在也可以使用 [Azure 資源總管](https://resources.azure.com/)來查看資源。   在總管中，依序展開左側的 [訂用帳戶]、專用 HSM 的特定訂用帳戶、資源群組、您所使用的資源群組，最後選取 [資源] 項目。
+您現在也可以使用 [Azure 資源總管](https://resources.azure.com/)來查看資源。   在總管中，依序展開左側的 [訂用帳戶]、專用 HSM 的特定訂用帳戶、[資源群組]、您所使用的資源群組，最後選取 [資源] 項目。
 
 ## <a name="testing-the-deployment"></a>測試部署
 
@@ -209,7 +210,7 @@ VM 的 IP 位址也用來取代上述命令中的 DNS 名稱。 如果命令成�
 >[!NOTE]
 >請注意，若已選取 [顯示隱藏的類型] 核取方塊，將會顯示 HSM 資源。
 
-在上面的螢幕擷取畫面，按一下 “HSM1_HSMnic” 或 “HSM2_HSMnic” 會顯示適當的私人 IP 位址。 否則，以上使用的 `az resource show` 命令是識別正確 IP 位址的方法。 
+在上面的螢幕擷取畫面，按一下 "HSM1_HSMnic" 或 "HSM2_HSMnic" 會顯示適當的私人 IP 位址。 否則，以上使用的 `az resource show` 命令是識別正確 IP 位址的方法。 
 
 當您擁有正確的 IP 位址時，請執行下列命令來替代該位址：
 

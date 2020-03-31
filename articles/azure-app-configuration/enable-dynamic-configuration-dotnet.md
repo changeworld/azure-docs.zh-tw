@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484871"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245798"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教學課程：在 .NET Framework 應用程式中使用動態組態
 
@@ -38,13 +38,15 @@ ms.locfileid: "77484871"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管]   >  [+ 建立]  來新增下列索引鍵/值組：
+6. 選取 [組態總管]   > [+ 建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 應用程式設定的值 |
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
+
+7. 選取 [套用]  。
 
 ## <a name="create-a-net-framework-console-app"></a>建立.NET Framework 主控台應用程式
 

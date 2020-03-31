@@ -1,6 +1,6 @@
 ---
-title: 網路監看員-使用 Azure Resource Manager 範本建立 NSG 流量記錄
-description: 使用 Azure Resource Manager 範本和 PowerShell 輕鬆地設定 NSG 流量記錄。
+title: 網路觀察程式 - 使用 Azure 資源管理器範本創建 NSG 流日誌
+description: 使用 Azure 資源管理器範本和 PowerShell 輕鬆設置 NSG 流日誌。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,31 +15,31 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
 ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538153"
 ---
-# <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>從 Azure Resource Manager 範本設定 NSG 流量記錄
+# <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>從 Azure 資源管理器範本配置 NSG 流日誌
 
 > [!div class="op_single_selector"]
-> - [Azure 入口網站](network-watcher-nsg-flow-logging-portal.md)
-> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure 門戶](network-watcher-nsg-flow-logging-portal.md)
+> - [電源外殼](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
-> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
+> - [Azure 資源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)是 Azure 的原生且強大的方式，可管理您的[基礎結構即程式碼](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)。
+[Azure 資源管理器](https://azure.microsoft.com/features/resource-manager/)是 Azure 作為[代碼管理基礎結構](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)的本機和強大方法。
 
-本文說明如何使用 Azure Resource Manager 範本和 Azure PowerShell 以程式設計方式啟用[NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 我們一開始先提供 NSG Flow 記錄物件的屬性總覽，再加上幾個範例範本。 然後，我們會使用本機 PowerShell 實例來部署範本。
+本文演示如何使用 Azure 資源管理器範本和 Azure PowerShell 以程式設計方式啟用[NSG 流日誌](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 我們首先提供 NSG 流日誌物件屬性的概述，然後是幾個示例範本。 然後，我們使用本地 PowerShell 實例部署範本。
 
 
-## <a name="nsg-flow-logs-object"></a>NSG 流量記錄物件
+## <a name="nsg-flow-logs-object"></a>NSG 流日誌物件
 
-具有所有參數的 NSG Flow 記錄物件如下所示。
-如需屬性的完整總覽，您可以閱讀[NSG 流量記錄範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)。
+具有所有參數的 NSG 流日誌物件如下所示。
+有關屬性的完整概述，請閱讀[NSG 流日誌範本引用](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)。
 
 ```json
 {
@@ -69,20 +69,20 @@ ms.locfileid: "77538153"
     }
   }
 ```
-若要建立 networkWatchers/flowLogs 資源，請將上述 JSON 新增至範本的 resources 區段。
+要創建 Microsoft.Network/網路觀察程式/流日誌資源，請將上述 JSON 添加到範本的資源部分。
 
 
-## <a name="creating-your-template"></a>建立您的範本
+## <a name="creating-your-template"></a>創建範本
 
-如果您是第一次使用 Azure Resource Manager 範本，您可以使用下列連結深入瞭解它們。
+如果首次使用 Azure 資源管理器範本，則可以使用以下連結瞭解有關這些範本的更多內容。
 
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
-* [教學課程：建立及部署您的第一個 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+* [教程：創建並部署第一個 Azure 資源管理器範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
 
 
-以下是設定 NSG 流量記錄的兩個完整範本範例。
+下面是兩個用於設置 NSG 流日誌的完整範本示例。
 
-**範例 1**：上述最簡單的版本，傳遞最少的參數。 下列範本會在目標 NSG 上啟用 NSG 流量記錄，並將它們儲存在指定的儲存體帳戶中。
+**示例 1**： 上述最簡單的版本，傳遞最小參數。 以下範本支援目標 NSG 上的 NSG 流日誌，並將它們存儲在給定的存儲帳戶中。
 
 ```json
 {
@@ -110,11 +110,11 @@ ms.locfileid: "77538153"
 ```
 
 > [!NOTE]
-> * 資源名稱的格式為「父資源 >/Child 資源」。 在這裡，父資源是區域網路監看員實例（格式： NetworkWatcher_<RegionName>。 範例： NetworkWatcher_centraluseuap）
-> * targetResourceId 是目標 NSG 的資源識別碼
-> * storageId 是目的地儲存體帳戶的資源識別碼
+> * 資源的名稱具有"父資源>/子資源"的格式。 此處，父資源是區域網路觀察程式實例（格式：NetworkWatcher_<RegionName>。 示例：NetworkWatcher_centraluseuap）
+> * 目標資源 Id 是目標 NSG 的資源識別碼
+> * 存儲 Id 是目標存儲帳戶的資源識別碼
 
-**範例 2**：下列範本可啟用 NSG 流量記錄（第2版），保留期為5天。 以10分鐘的處理間隔啟用流量分析。
+**示例 2**： 以下範本啟用 NSG 流日誌（版本 2），保留 5 天。 啟用處理間隔為 10 分鐘的流量分析。
 
 ```json
 {
@@ -153,26 +153,26 @@ ms.locfileid: "77538153"
 }
 ```
 
-## <a name="deploying-your-azure-resource-manager-template"></a>部署您的 Azure Resource Manager 範本
+## <a name="deploying-your-azure-resource-manager-template"></a>部署 Azure 資源管理器範本
 
-本教學課程假設您有現有的資源群組，以及可啟用流量記錄的 NSG。
-您可以在本機將上述範例範本儲存為 `azuredeploy.json`。 更新屬性值，使其指向您的訂用帳戶中的有效資源。
+本教程假定您具有現有資源組和可以啟用流登錄的 NSG。
+您可以將上述任何示例範本保存在本地為`azuredeploy.json`。 更新屬性值，以便它們指向訂閱中的有效資源。
 
-若要部署範本，請在 PowerShell 中執行下列命令。
+要部署範本，在 PowerShell 中運行以下命令。
 ```azurepowershell
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
 
 
-## <a name="verifying-your-deployment"></a>正在驗證您的部署
+## <a name="verifying-your-deployment"></a>驗證部署
 
-有幾種方式可以檢查您的部署是否成功。 您的 PowerShell 主控台應該會將 "ProvisioningState" 顯示為「成功」。 此外，您可以流覽[NSG Flow 記錄入口網站頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)，以確認您的變更。 如果部署有問題，請參閱[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)。
+有幾種方法可以檢查部署是否成功。 您的 PowerShell 主控台應將"預配狀態"顯示為"成功"。 此外，您還可以訪問[NSG 流日誌門戶頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)以確認您的更改。 如果部署出現問題，請查看[Azure 資源管理器中常見的 Azure 部署錯誤故障排除](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用來視覺化您的 NSG 流量資料：
-* [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-* [開放原始碼工具](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+瞭解如何使用：
+* [微軟電源 BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+* [開源工具](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 * [Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)

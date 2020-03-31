@@ -1,7 +1,7 @@
 ---
-title: 教學課程：使用 R 的羅吉斯迴歸模型
+title: 教學課程：使用 R 建立機器學習模型
 titleSuffix: Azure Machine Learning
-description: 在本教學課程中，您將使用 R 套件 azuremlsdk 和插入點來建立羅吉斯迴歸模型，以預測因車禍致命的可能性。
+description: 在本教學課程中，您將使用 Azure Machine Learning R SDK 建立羅吉斯迴歸模型，以預測車禍致命的可能性。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 72488ba339399c526e882ffd11c41410a0b011ea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648286"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159073"
 ---
-# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>教學課程：使用 R 在 Azure Machine Learning 中建立羅吉斯迴歸模型
+# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教學課程：使用 R 建立機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教學課程中，您將使用 R 和 Azure Machine Learning 來建立羅吉斯迴歸模型，以預測因車禍致命的可能性。 完成本教學課程之後，您將具備 Azure Machine Learning R SDK 的實際知識，進而開發更複雜的實驗和工作流程。
+在本教學課程中，您將使用 Azure Machine Learning R SDK 建立羅吉斯迴歸模型，以預測車禍致命的可能性。 您將了解 Azure Machine Learning 雲端資源如何與 R 搭配使用以提供可調整的環境，以進行模型的定型和部署。  
 
 在本教學課程中，您會執行下列工作：
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ ms.locfileid: "77648286"
 > * 部署預測端點
 > * 以 R 測試模型
 
-如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 
 ## <a name="create-a-workspace"></a>建立工作區
@@ -49,7 +49,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 > 記下您的**工作區**和**訂用帳戶**。 您會需要這些項目，以確保您在正確位置建立實驗。 
 
 
-## <a name="azure"></a>複製 Notebook 資料夾
+## <a name="clone-a-notebook-folder"></a><a name="azure"></a>複製 Notebook 資料夾
 
 此範例會使用您工作區中的雲端 Notebook 伺服器，讓您擁有免安裝和預先設定的體驗。 如果您想要控制您的環境、套件和相依性，[請使用您自己的環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
 
@@ -229,7 +229,7 @@ view_run_details(run)
 wait_for_run_completion(run, show_output = TRUE)
 ```
 
-您和可存取工作區的同事可以同時提交多個實驗，Azure ML 將會在計算叢集上排程工作。 您甚至可以將叢集設定為自動相應增加至多個節點，並在佇列中沒有其他計算工作時再調整回來。 這種設定對共用計算資源的小組而言，將是符合成本效益的方式。
+您和可存取工作區的同事可以同時提交多個實驗，Azure ML 將會在計算叢集上排程工作。 您甚至可以將叢集設定為自動擴大至多個節點，並在佇列中沒有其他計算工作時再調整回來。 這種設定對共用計算資源的小組而言，將是符合成本效益的方式。
 
 ## <a name="retrieve-training-results"></a>擷取定型結果
 模型完成定型後，您就可以存取已保存到執行記錄的作業成品，包括任何已記錄的計量和最終定型的模型。

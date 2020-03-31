@@ -1,28 +1,28 @@
 ---
-title: 重新開機伺服器-Azure CLI-適用於 MySQL 的 Azure 資料庫
-description: 本文說明如何使用 Azure CLI 來重新開機適用於 MySQL 的 Azure 資料庫伺服器。
+title: 重新開機伺服器 - Azure CLI - MySQL 的 Azure 資料庫
+description: 本文介紹如何使用 Azure CLI 重新開機 MySQL 伺服器的 Azure 資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 146c531805ff22544797c44c8df32b0e5d1e83b0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c1fd688fbfd892e3d0dfc3ebb1712dd931e0ed39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774187"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063507"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機適用於 MySQL 的 Azure 資料庫伺服器
+# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機 MySQL 伺服器的 Azure 資料庫
 本主題說明如何重新啟動適用於 MySQL 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
 
 如果服務忙碌中，系統會阻止伺服器重新啟動。 例如，該服務可能正在處理先前要求的作業，例如調整虛擬核心。
 
 完成重新啟動所需的時間取決於 MySQL 復原程序。 若要減少重新啟動時間，建議您先盡量減少伺服器上發生的活動數量，再進行重新啟動。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
-- [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-server-up-azure-cli.md)
+- [MySQL 伺服器的 Azure 資料庫](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "74774187"
 
 ## <a name="restart-the-server"></a>重新啟動伺服器
 
-使用下列命令重新開機伺服器：
+使用以下命令重新開機伺服器：
 
 ```azurecli-interactive
 az mysql server restart --name mydemoserver --resource-group myresourcegroup
@@ -40,4 +40,4 @@ az mysql server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解[如何在適用於 MySQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-cli.md)
+瞭解如何[在 MySQL 的 Azure 資料庫中設置參數](howto-configure-server-parameters-using-cli.md)

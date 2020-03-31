@@ -15,18 +15,18 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912999"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測動作
 
 > [!NOTE]
-> **Azure 媒體動態偵測器**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+> **Azure 媒體運動探測器**媒體處理器將停用。 有關停用日期，請參閱[舊元件](legacy-components.md)主題。
  
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **Azure 媒體動作偵測器** 媒體處理器 (MP) 能讓您在冗長且平淡的影片中，有效識別出感興趣的區段。 動作偵測可以用來在靜態攝影機資料上識別影片中有動作發生的區段。 它會產生 JSON 檔案，其中包含具有時間戳記的中繼資料，以及發生事件的週框區域。
 
@@ -90,7 +90,7 @@ ms.locfileid: "77912999"
 
 動作偵測器 API 會在物件於固定背景的影片 (例如監視影片) 中移動時提供指示器。 動作偵測器已針對降低誤判 (例如光源和陰影變化) 進行調整。 目前演算法的限制包括夜視影片、半透明物件及小型物件。
 
-### <a id="output_elements"></a>輸出 JSON 檔案的元素
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>輸出 JSON 檔案的元素
 > [!NOTE]
 > 在最新版本中，輸出 JSON 格式已變更，而且對某些客戶來說可能代表著重大變更。
 > 
@@ -113,7 +113,7 @@ ms.locfileid: "77912999"
 | regionId |如前文所述，這在此版本中將永遠會是 0。 此標籤可讓影片 API 在未來的版本中能夠彈性地在各個區域中尋找動作。 |
 | regions |指的是影片中您會關心其中所發生之動作的區塊。 <br/><br/>-「識別碼」表示區域區塊 – 在此版本中只有一個，識別碼為 0。 <br/>-「類型」代表您關心動作的區域形狀。 目前支援「矩形」和「多邊形」。<br/> 如果您指定「矩形」，區域的維度將以 X、Y、寬度及高度表示。 X 和 Y 座標代表以標準化縮放 (0.0 到 1.0) 顯示之區域左上角的 XY 座標。 寬度和高度代表以標準化縮放 (0.0 到 1.0) 顯示之區域的大小。 在目前版本中，X、Y、寬度和高度一律固定為 0, 0 和 1, 1。 <br/>如果您指定「多邊形」，區域的維度將以點表示。 <br/> |
 | fragments |中繼資料會被分成稱為「片段」的不同區段。 每個片段皆包含開始、持續時間、間隔數字及事件。 沒有事件的片段，代表在該片段的開始時間和持續時間之間沒有偵測到任何動作。 |
-| 方括弧 [] |每個括號皆代表事件中的單一間隔。 如果間隔顯示空白括號，便代表沒有偵測到動作。 |
+| 括弧 * |每個括號皆代表事件中的單一間隔。 如果間隔顯示空白括號，便代表沒有偵測到動作。 |
 | 位置 |這是位在事件下的新項目，它能列出動作的發生位置。 它比偵測區域更明確。 |
 
 下列 JSON 範例顯示輸出：
@@ -208,7 +208,7 @@ ms.locfileid: "77912999"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例
 

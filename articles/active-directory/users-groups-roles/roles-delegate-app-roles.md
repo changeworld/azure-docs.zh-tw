@@ -1,6 +1,6 @@
 ---
-title: 委派應用程式管理管理 perms-Azure AD |Microsoft Docs
-description: 在 Azure Active Directory 中授與應用程式存取管理的許可權
+title: 委託應用程式管理管理滲透 - Azure AD |微軟文檔
+description: 授予 Azure 活動目錄中的應用程式訪問管理許可權
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,91 +15,91 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253035"
 ---
-# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委派應用程式註冊許可權
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure 活動目錄中委派應用註冊許可權
 
-本文說明如何使用 Azure Active Directory （Azure AD）中的自訂角色所授與的許可權，來處理您的應用程式管理需求。 在 Azure AD 中，您可以透過下列方式委派應用程式建立和管理許可權：
+本文介紹如何使用 Azure 活動目錄 （Azure AD） 中的自訂角色授予的許可權來滿足應用程式管理需求。 在 Azure AD 中，可以通過以下方式委派應用程式創建和管理許可權：
 
-- [限制誰可以建立應用程式](#restrict-who-can-create-applications)，以及管理他們所建立的應用程式。 根據預設，在 Azure AD 中，所有使用者都可以註冊應用程式註冊，並管理他們所建立之應用程式的所有層面。 這可限制為僅允許選取的人員擁有該許可權。
-- [將一或多個擁有者指派給應用程式](#assign-application-owners)。 這是一種簡單的方式，讓某人能夠管理特定應用程式的 Azure AD 設定的所有層面。
-- [指派內建的系統管理角色](#assign-built-in-application-admin-roles)，以授與存取權來管理所有應用程式的 Azure AD 中的設定。 這是建議的方法，讓 IT 專家能夠管理廣泛的應用程式設定許可權，而不需授與存取權來管理與應用程式設定無關之 Azure AD 的其他部分。
-- [建立自訂角色](#create-and-assign-a-custom-role-preview)，以定義非常特定的許可權，並將其指派給某個使用者的單一應用程式範圍，以限制擁有者身分，或在目錄範圍（所有應用程式）上為受限的系統管理員。
+- [限制誰可以創建應用程式](#restrict-who-can-create-applications)並管理他們創建的應用程式。 預設情況下，在 Azure AD 中，所有使用者都可以註冊應用程式註冊並管理他們創建的應用程式的所有方面。 這可以限制為僅允許選定的人員獲得該許可權。
+- [為應用程式分配一個或多個擁有者](#assign-application-owners)。 這是一種簡單的方法，可以授予某人管理特定應用程式 Azure AD 配置的所有方面的能力。
+- [分配一個內置管理角色](#assign-built-in-application-admin-roles)，該角色授予管理 Azure AD 中所有應用程式佈建的存取權限。 這是授予 IT 專家管理廣泛應用程式佈建許可權的推薦方式，而無需授予管理與應用程式佈建無關的 Azure AD 其他部分的許可權。
+- [創建自訂角色](#create-and-assign-a-custom-role-preview)，定義非常特定的許可權，並將其分配給某人，或者將其分配給單個應用程式的範圍，作為有限擁有者，或在目錄作用域（所有應用程式）中作為有限管理員。
 
-請務必考慮使用上述其中一種方法來授與存取權，原因有兩個。 首先，委派執行系統管理工作的能力，可減少全域系統管理員的負擔。 其次，使用有限的許可權可改善您的安全性狀態，並降低未經授權存取的可能性。 有關於委派問題和一般指導方針的討論，請見[在 Azure Active Directory 中委派管理](roles-concept-delegation.md)。
+考慮使用上述方法之一授予存取權限非常重要，原因有二。 首先，委派執行管理工作的能力可降低全域管理員開銷。 其次，使用有限的許可權可改善您的安全狀態，並降低未經授權的訪問的可能性。 有關於委派問題和一般指導方針的討論，請見[在 Azure Active Directory 中委派管理](roles-concept-delegation.md)。
 
-## <a name="restrict-who-can-create-applications"></a>限制可以建立應用程式的人員
+## <a name="restrict-who-can-create-applications"></a>限制誰可以創建應用程式
 
-根據預設，在 Azure AD 中，所有使用者都可以註冊應用程式註冊，並管理他們所建立之應用程式的所有層面。 每個人也都能同意應用程式代表自己存取公司資料。 您可以選擇將全域交換器設定為 [否]，並將選取的使用者新增至應用程式開發人員角色，以選擇性地授與這些許可權。
+預設情況下，在 Azure AD 中，所有使用者都可以註冊應用程式註冊並管理他們創建的應用程式的所有方面。 每個人都能夠同意代表他們訪問公司資料的應用。 通過將全域交換器設置為"否"並將所選使用者添加到應用程式開發人員角色，您可以選擇有選擇地授予這些許可權。
 
-### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>若要停用建立應用程式註冊或同意應用程式的預設功能
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>禁用創建應用程式註冊或同意應用程式的預設功能
 
-1. 使用適用于您 Azure AD 組織中全域管理員角色的帳戶，登入您的 Azure AD 組織。
-1. 設定下列其中一項或兩項：
+1. 使用符合 Azure AD 組織中全域管理員角色的帳戶登錄到 Azure AD 組織。
+1. 設置以下一個或兩個：
 
-    - 在 [您組織的 [使用者設定] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，將 [**使用者可以註冊應用程式**] 設定設為 [否]。 這會停用使用者建立應用程式註冊的預設功能。
-    - 在 [ [企業應用程式的使用者設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)] 上，將 [**使用者可同意應用程式代表自己存取公司資料**] 設定設為 [否]。 這會停用使用者同意應用程式代表自己存取公司資料的預設功能。
+    - 在 [組織的"使用者設置"頁上](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)，將 **"使用者可以註冊應用程式**"設置為"否"。 這將禁用使用者創建應用程式註冊的預設功能。
+    - 在 [企業應用程式的使用者設置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)上，將**使用者可以同意應用程式代表其訪問公司資料**設置為"否"。 這將禁用使用者同意代表他們訪問公司資料的應用程式的預設能力。
 
-### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>授與個別許可權，以在預設功能停用時建立和同意應用程式
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>在禁用預設功能時授予創建和同意應用程式的單獨許可權
 
-指派應用程式開發人員角色，以在 [**使用者可以註冊應用程式**] 設定設為 [否] 時，授與建立應用程式註冊的能力。 此角色也會在**使用者可同意應用程式代表自己存取公司資料**時，授與許可權以代表自己的同意設定為 [否]。 作為系統行為，當使用者建立新的應用程式註冊時，會自動將它們新增為第一個擁有者。 擁有權許可權可讓使用者管理他們所擁有之應用程式註冊或企業應用程式的所有層面。
+分配應用程式開發人員角色，以授予在 **"使用者可以註冊應用程式**"設置為"否"時創建應用程式註冊的能力。 當使用者**可以同意代表其訪問公司資料的應用**設置為"否"時，此角色還會授予代表自己的同意許可權。 作為系統行為，當使用者創建新的應用程式註冊時，它們會自動添加為第一個擁有者。 擁有權許可權使使用者可以管理他們擁有的應用程式註冊或企業應用程式的所有方面。
 
-## <a name="assign-application-owners"></a>指派應用程式擁有者
+## <a name="assign-application-owners"></a>分配應用程式擁有者
 
-指派擁有者是一種簡單的方式，可讓您針對特定應用程式註冊或企業應用程式，授與管理 Azure AD 設定之所有層面的能力。 作為系統行為，當使用者建立新的應用程式註冊時，會自動將其新增為第一個擁有者。 擁有權許可權可讓使用者管理他們所擁有之應用程式註冊或企業應用程式的所有層面。 可以移除原始擁有者，也可以新增其他擁有者。
+分配擁有者是授予管理特定應用程式註冊或企業應用程式 Azure AD 配置的所有方面的能力的一種簡單方法。 作為系統行為，當使用者創建新的應用程式註冊時，它們將自動添加為第一個擁有者。 擁有權許可權使使用者可以管理他們擁有的應用程式註冊或企業應用程式的所有方面。 可以刪除原始擁有者，並添加其他擁有者。
 
 ### <a name="enterprise-application-owners"></a>企業應用程式擁有者
 
-身為擁有者，使用者可以管理企業應用程式的組織特定設定，例如單一登入設定、布建和使用者指派。 擁有者也可以新增或移除其他擁有者。 與全域管理員不同的是，擁有者只能管理他們所擁有的企業應用程式。
+作為擁有者，使用者可以管理企業應用程式的特定于組織的配置，例如單一登入配置、預配和使用者分配。 擁有者也可以新增或移除其他擁有者。 與全域管理員不同，擁有者只能管理他們擁有的企業應用程式。
 
-在某些情況下，從應用程式庫建立的企業應用程式包括企業應用程式和應用程式註冊。 當此條件為 true 時，將擁有者新增至企業應用程式會自動將擁有者新增至對應的應用程式註冊，做為擁有者。
+在某些情況下，從應用程式庫創建的企業應用程式包括企業應用程式和應用程式註冊。 如果為 true，則將擁有者添加到企業應用程式中會自動將擁有者添加到相應的應用程式註冊中作為擁有者。
 
-### <a name="to-assign-an-owner-to-an-enterprise-application"></a>將擁有者指派給企業應用程式
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>將擁有者分配給企業應用程式
 
-1. 使用適用于組織應用程式系統管理員或雲端應用程式管理員的帳戶，登入[您的 Azure AD 組織](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
-1. 在組織 的 [ [應用程式註冊] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，選取應用程式以開啟應用程式的 [總覽] 頁面。
-1. 選取 [擁有者] 以查看應用程式的擁有者清單。
-1. 選取 [新增]，以選取一或多個要新增至應用程式的擁有者。
+1. 使用符合組織應用程式管理員或雲應用程式管理員資格的帳戶登錄到[Azure AD 組織](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
+1. 在組織的 ["應用註冊"頁上](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) ，選擇一個應用以打開應用的"概述"頁。
+1. 選取 [擁有者]**** 以查看應用程式的擁有者清單。
+1. 選取 [新增]****，以選取一或多個要新增至應用程式的擁有者。
 
 > [!IMPORTANT]
-> 使用者和服務主體可以是應用程式註冊的擁有者。 只有使用者可以是企業應用程式的擁有者。 群組無法指派為任何一個的擁有者。
+> 使用者和服務主體可以是應用程式註冊的擁有者。 只有使用者才能成為企業應用程式的擁有者。 不能將組指定為任的擁有者。
 >
-> 擁有者可以將認證新增至應用程式，並使用這些認證來模擬應用程式的身分識別。 應用程式可能會有比擁有者更多的許可權，因此會提升擁有者以使用者或服務主體存取權的許可權。 應用程式擁有者可能會在模擬應用程式時建立或更新使用者或其他物件，端視應用程式的許可權而定。
+> 擁有者可以將憑據添加到應用程式，並使用這些憑據來類比應用程式的標識。 應用程式可能比擁有者擁有更多的許可權，因此，對擁有者作為使用者或服務主體有權訪問的許可權將提升。 應用程式擁有者在類比應用程式時可能會創建或更新使用者或其他物件，具體取決於應用程式的許可權。
 
-## <a name="assign-built-in-application-admin-roles"></a>指派內建應用程式系統管理員角色
+## <a name="assign-built-in-application-admin-roles"></a>分配內置應用程式管理員角色
 
-Azure AD 具有一組內建的系統管理員角色，可授與存取權來管理所有應用程式 Azure AD 中的設定。 建議使用這些角色來授與 IT 專家存取權，以管理廣泛的應用程式設定許可權，而不授予存取權來管理與應用程式設定無關之 Azure AD 的其他部分。
+Azure AD 具有一組內置管理角色，用於授予所有應用程式在 Azure AD 中管理配置的許可權。 這些角色是授予 IT 專家管理廣泛應用程式佈建許可權的推薦方式，而無需授予管理與應用程式佈建無關的 Azure AD 其他部分的許可權。
 
-- 應用程式系統管理員：此角色中的使用者可以建立及管理企業應用程式、應用程式註冊和應用程式 proxy 設定的所有層面。 此角色也會授與同意委派許可權的能力，以及不含 Microsoft Graph 的應用程式許可權。 在建立新的應用程式註冊或企業應用程式時，不會將指派給此角色的使用者新增為擁有者。
-- 雲端應用程式系統管理員：此角色中的使用者具有與應用程式系統管理員角色相同的許可權，但不包括管理應用程式 proxy 的能力。 在建立新的應用程式註冊或企業應用程式時，不會將指派給此角色的使用者新增為擁有者。
+- 應用程式系統管理員：此角色中的使用者可以建立和管理企業應用程式、應用程式註冊和應用程式 Proxy 設定的所有層面。 此角色還授予同意委派許可權的許可權的許可權以及應用程式許可權（不包括 Microsoft Graph）。 創建新應用程式註冊或企業應用程式時，分配給此角色的使用者不會添加為擁有者。
+- 雲端應用程式系統管理員：此角色中的使用者具有與應用程式系統管理員角色相同的權限，但不包括管理應用程式 Proxy 的能力。 創建新應用程式註冊或企業應用程式時，分配給此角色的使用者不會添加為擁有者。
 
-如需詳細資訊及查看這些角色的說明，請參閱 [可用的角色](directory-assign-admin-roles.md#available-roles)。
+有關詳細資訊並查看這些角色的說明，請參閱 [可用角色](directory-assign-admin-roles.md#available-roles)。
 
-遵循將[角色指派給具有 Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)操作指南的使用者中的指示，來指派應用程式系統管理員或雲端應用程式系統管理員角色。
+按照"[將角色指派給具有 Azure 活動目錄操作指南"的使用者](../fundamentals/active-directory-users-assign-role-azure-portal.md)的說明進行操作，以分配應用程式管理員或雲應用程式管理員角色。
 
 > [!IMPORTANT]
-> 應用程式系統管理員和雲端應用程式系統管理員可以將認證新增至應用程式，並使用這些認證來模擬應用程式的身分識別。 應用程式可能具有許可權，而這是系統管理員角色許可權的權限提高。 根據應用程式的許可權，此角色中的系統管理員可能會在模擬應用程式時建立或更新使用者或其他物件。
+> 應用程式管理員和雲應用程式管理員可以將憑據添加到應用程式，並使用這些憑據來類比應用程式的標識。 應用程式可能具有的許可權，這些許可權是管理員角色許可權的提升。 此角色的管理員可能會在類比應用程式時創建或更新使用者或其他物件，具體取決於應用程式的許可權。
 > 而這些角色都不會授與管理條件式存取設定的能力。
 
-## <a name="create-and-assign-a-custom-role-preview"></a>建立並指派自訂角色（預覽）
+## <a name="create-and-assign-a-custom-role-preview"></a>創建和分配自訂角色（預覽）
 
-建立自訂角色和指派自訂角色是不同的步驟：
+創建自訂角色和分配自訂角色是單獨的步驟：
 
-- [建立自訂*角色定義*](roles-create-custom.md) ，並[從預設清單新增其許可權](roles-custom-available-permissions.md)。 這些是內建角色中所使用的相同許可權。
-- [建立*角色指派*](roles-assign-powershell.md)來指派自訂角色。
+- [創建自訂*角色定義*](roles-create-custom.md)並從[預設清單中向其添加許可權](roles-custom-available-permissions.md)。 這些許可權與內置角色中使用的許可權相同。
+- [創建*角色指派*](roles-assign-powershell.md)以分配自訂角色。
 
-這種區隔可讓您建立單一角色定義，然後在不同的*範圍*指派多次。 您可以在整個組織範圍中指派自訂角色，如果單一 Azure AD 物件，則可以在範圍中指派。 物件範圍的範例是單一應用程式註冊。 使用不同的範圍，可以將相同的角色定義指派給組織中的所有應用程式註冊 Sally，然後只 Naveen Contoso 費用報表應用程式註冊。
+這種分離允許您創建單個角色定義，然後在不同的*作用域*中多次分配它。 可以在組織範圍分配自訂角色，也可以在作用域（如果單個 Azure AD 物件）中分配該角色。 物件作用域的一個示例是單個應用註冊。 使用不同的作用域，可以將相同的角色定義分配給 Sally 組織中的所有應用註冊，然後僅通過 Contoso 支出報表應用註冊分配給 Naveen。
 
-建立和使用自訂角色來委派應用程式管理的秘訣：
-- 自訂角色只會在 Azure AD 入口網站的最新應用程式註冊 blade 中授與存取權。 它們不會在繼承應用程式註冊 blade 中授與存取權。
-- 當 [限制對 Azure AD 系統管理入口網站的存取] 使用者設定設為 [是] 時，自訂角色不會授與 Azure AD 入口網站的存取權。
-- 使用者只有在應用程式註冊頁面上的 [所有應用程式] 索引標籤中才會顯示使用角色指派的存取權應用程式註冊。 它們不會顯示在 [擁有的應用程式] 索引標籤中。
+創建和使用自訂角色進行委派應用程式管理的提示：
+- 自訂角色僅在 Azure AD 門戶的最新版本註冊邊欄選項卡中授予存取權限。 它們不授予舊版應用註冊刀片中的存取權限。
+- 當"限制對 Azure AD 監管中心的訪問"使用者設置設置為"是"時，自訂角色不會授予對 Azure AD 門戶的存取權限。
+- 使用者可以使用角色指派的應用註冊僅在應用註冊頁上的"所有應用程式"選項卡中顯示。 它們不會顯示在"擁有的應用程式"選項卡中。
 
-如需有關自訂角色之基本概念的詳細資訊，請參閱[自訂角色總覽](roles-custom-overview.md)，以及如何[建立自訂角色](roles-create-custom.md)和如何[指派角色](roles-assign-powershell.md)。
+有關自訂角色基礎知識的詳細資訊，請參閱[自訂角色概述](roles-custom-overview.md)，以及如何[創建自訂角色](roles-create-custom.md)以及如何[分配角色](roles-assign-powershell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

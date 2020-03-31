@@ -17,10 +17,10 @@ ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73570490"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
@@ -33,7 +33,7 @@ ms.locfileid: "73570490"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -93,7 +93,7 @@ ms.locfileid: "73570490"
     | 名稱  |  來源屬性|
     | ---------------| --------------- |
     | 公司名稱 | **Sage Intacct 公司識別碼** |
-    | name | 此值應等同 Sage Intacct 的**使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]  區段中輸入的值)，本教學課程稍後會說明 |
+    | NAME | 此值應等同 Sage Intacct 的**使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]  區段中輸入的值)，本教學課程稍後會說明 |
     | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | 此值應等同 Sage Intacct 的**同盟 SSO 使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]**區段中輸入的值)** ，本教學課程稍後會說明 |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
@@ -190,7 +190,7 @@ ms.locfileid: "73570490"
 
 1. 按一下 [新增]  索引標籤。
 
-    ![新增](./media/intacct-tutorial/ic790042.png "新增")
+    ![加入](./media/intacct-tutorial/ic790042.png "加")
 
 1. 在 [使用者資訊]  區段中，執行下列步驟：
 

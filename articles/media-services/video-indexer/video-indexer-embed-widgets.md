@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336822"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389370"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在應用中嵌入視頻索引子小部件
 
@@ -48,7 +48,7 @@ ms.locfileid: "80336822"
 |`showCaptions` | 布林值 | 可讓播放器載入已啟用的標題。<br/> 範例： `showCaptions=true`. |
 |`type`| | 啟動音訊播放機外觀（視頻部分被刪除）。<br/> 範例： `type=audio`. |
 |`autoplay` | 布林值 | 指示播放機在載入時是否應開始播放視頻。 預設值是 `true`。<br/> 範例： `autoplay=false`. |
-|`language` | 語言代碼 | 控制玩家語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
+|`language`/`locale` | 語言代碼 | 控制玩家語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
 
 ### <a name="editor-widget"></a>編輯器小部件
 
@@ -233,14 +233,14 @@ ms.locfileid: "80336822"
 
 您可以選擇所需的見解類型。 為此，請將它們指定為添加到您獲取的嵌入代碼（從 API 或 Web 應用）的以下 URL 參數的值： `&widgets=<list of wanted widgets>`。
 
-可能的價值觀是：**人**，**關鍵字**，**情緒**，**成績單**和**搜索**。
+可能的值`people`是： 、 `animatedCharacters` `keywords`、 `labels` `sentiments`、 `emotions` `topics`、 `keyframes` `transcript`、 `ocr` `speakers`、 `scenes`、 `namedEntities`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、
 
-例如，如果要嵌入僅包含人員並搜索見解的小部件，iframe 嵌入 URL 如下所示：
+例如，如果要嵌入僅包含人和關鍵字見解的小部件，iframe 嵌入 URL 如下所示：
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它自訂 HTML\<標題>值）。
-
+iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它自訂 HTML<title>值）。
+   
 例如，若您想要為您的 iframe 視窗指定標題 "MyInsights"，URL w看起來會像這樣：
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 預設情況下，視頻索引子播放機已基於視頻腳本自動生成隱藏字幕。 使用上傳視頻時選擇的來源語言從視頻中提取腳本。
 
-如果要使用其他語言進行嵌入，可以添加到`&captions=< Language | "all" | "false" >`嵌入播放機 URL。 如果需要所有可用語言的標題，請使用 值`all`。 如果您想要依預設顯示標題，您可以傳入 `&showCaptions=true`。
+如果要使用其他語言進行嵌入，可以將&字幕*<語言代碼>添加到嵌入播放機 URL 中。 如果預設情況下希望顯示字幕，則可以傳遞&顯示Captions_true。
 
 內嵌 URL 將顯示如下︰
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-如果要禁用標題，可以將`captions`參數值傳遞給`false`。
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>自動播放
+
 預設情況下，播放機將開始播放視頻。 您可以選擇不通過傳遞到`&autoplay=false`前面的嵌入 URL。
 
 ## <a name="code-samples"></a>程式碼範例

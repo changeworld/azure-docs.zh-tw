@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 16091286aecc6dfdbcfa833a76920ff4bc9c64de
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b254621cc414fb9b2b76263957adc80da6e9c22d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821133"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79214012"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>適用於 Azure SQL Database 的 Azure Resource Manager 範本
 
 Azure Resource Manager 範本可讓您定義基礎結構即程式碼，並將解決方案部署至 Azure 雲端。
 
-## <a name="single-database--elastic-pooltabsingle-database"></a>[單一資料庫和彈性集區](#tab/single-database)
+## <a name="single-database--elastic-pool"></a>[單一資料庫和彈性集區](#tab/single-database)
 
 下表包含適用於 Azure SQL Database 的 Azure Resource Manager 範本的連結。
 
@@ -34,14 +34,14 @@ Azure Resource Manager 範本可讓您定義基礎結構即程式碼，並將解
 | [容錯移轉群組](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | 此範本可建立兩個 Azure SQL 邏輯伺服器、一個 SQL 資料庫和一個容錯移轉群組。|
 | [威脅偵測](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | 此範本可讓您部署啟用「威脅偵測」的 Azure SQL 邏輯伺服器和一組 Azure SQL Database，並且為每個資料庫部署警示的電子郵件地址。 「威脅偵測」包含在 SQL 進階威脅防護 (ATP) 供應項目中，可提供一層安全性來防禦 SQL 伺服器和資料庫所受到的潛在威脅。|
 | [將稽核資料移至 Azure Blob 儲存體](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | 此範本可讓您部署啟用稽核的 Azure SQL Server 邏輯伺服器，以將稽核記錄寫入至 Blob 儲存體。 Azure SQL Database 的稽核可追蹤資料庫事件，並將其寫入至可存放在 Azure 儲存體帳戶、OMS 工作區或事件中樞的稽核記錄中。|
-| [將稽核資料移至 Azure 事件中樞](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | 此範本可讓您部署啟用稽核的 Azure SQL Server 伺服器，以將稽核記錄寫入至現有的事件中樞。 若要將稽核事件傳送到事件中樞，請設定 `Enabled` `State` 的稽核設定，並將 `IsAzureMonitorTargetEnabled` 設為 `true`。 此外，請在 `master` 資料庫上設定 `SQLSecurityAuditEvents` 診斷記錄類別的診斷設定 (用於服務層級稽核)。 Azure SQL Database 和 SQL 資料倉儲的稽核可追蹤資料庫事件，並將其寫入至可存放在 Azure 儲存體帳戶、OMS 工作區或事件中樞的稽核記錄中。|
+| [將稽核資料移至 Azure 事件中樞](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | 此範本可讓您部署啟用稽核的 Azure SQL Server 伺服器，以將稽核記錄寫入至現有的事件中樞。 若要將稽核事件傳送到事件中樞，請設定 `Enabled` `State` 的稽核設定，並將 `IsAzureMonitorTargetEnabled` 設為 `true`。 此外，請在 `master` 資料庫上設定 `SQLSecurityAuditEvents` 記錄類別的診斷設定 (用於服務層級稽核)。 Azure SQL Database 和 SQL 資料倉儲的稽核可追蹤資料庫事件，並將其寫入至可存放在 Azure 儲存體帳戶、OMS 工作區或事件中樞的稽核記錄中。|
 | [Azure Web 應用程式與 SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | 此範本可在「基本」服務層級建立免費的 Azure Web 應用程式與 SQL Database。|
 | [Azure Web 應用程式、Redis 快取與 SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | 此範本可在相同的資源群組中建立 Web 應用程式、Redis 快取和 SQL Database，並且在 Web 應用程式中針對 SQL Database 和 Redis 快取建立兩個連接字串。|
 | [使用 ADF V2 從 Blob 儲存體匯入資料](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | 此 Azure Resource Manager 範本可建立能夠將資料從 Azure Blob 儲存體複製到 SQL Database 的 Azure Data Factory V2。|
 | [HDInsight 叢集與 SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 此範本可讓您建立 HDInsight 叢集、SQL Database 伺服器、SQL Database 和兩個資料表。 [搭配使用 Sqoop 與 HDInsight 中的 Hadoop](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) 一文中使用了此範本 |
 | [依排程執行 SQL 預存程序的 Azure 邏輯應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | 此範本可讓您建立會依排程執行 SQL 預存程序的邏輯應用程式。 此程序的任何引數都可放入範本的本文區段中。|
 
-## <a name="managed-instancetabmanaged-instance"></a>[受控執行個體](#tab/managed-instance)
+## <a name="managed-instance"></a>[受控執行個體](#tab/managed-instance)
 
 下表包含適用於 Azure SQL Database - 受控執行個體的 Azure Resource Manager 範本的連結。
 

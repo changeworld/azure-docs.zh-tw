@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: cb6095f1579334b9fe35a02a3006de32ff551989
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 0b6667965ddd1fce30bb2da2593e2a9274b595ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268183"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472011"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>教學課程：透過媒體服務進行即時串流
 
@@ -34,7 +34,7 @@ ms.locfileid: "78268183"
 > [!div class="checklist"]
 > * 下載本主題中說明的範例應用程式。
 > * 檢查執行即時串流的程式碼。
-> * 使用 https://ampdemo.azureedge.net 上的 [Azure 媒體播放器](https://amp.azure.net/libs/amp/latest/docs/index.html)監看事件。
+> * 使用 [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net) 上的 [Azure 媒體播放器](https://amp.azure.net/libs/amp/latest/docs/index.html)監看事件。
 > * 清除資源。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

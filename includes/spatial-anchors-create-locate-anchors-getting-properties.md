@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: c5ca85c0dfe8d601821a78c02b2230c0909c8003
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173690"
 ---
-一旦在服務上建立-您必須建立新的錨點，並刪除舊的密碼，來追蹤的新位置，您無法更新錨點的位置。
+錨點在服務上建立後，您就無法更新其位置 - 您必須建立新的錨點並刪除舊的錨定，以追蹤新的位置。
 
-如果您不需要找出要更新其屬性的錨點，您可以使用`GetAnchorPropertiesAsync()`方法，以傳回`CloudSpatialAnchor`屬性的物件。
+如果您不需要尋找錨點以更新其屬性，您可以使用 `GetAnchorPropertiesAsync()` 方法，以傳回具有屬性的 `CloudSpatialAnchor` 物件。

@@ -5,8 +5,12 @@
   items:
     - name: 什麼是 Azure Active Directory？
       href: active-directory-whatis.md
+    - name: 比較 Azure AD 與 ADDS
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure Active Directory 的新增功能
       href: whats-new.md
+    - name: Microsoft 365 Government 的最新消息
+      href: whats-new-microsoft-365-government.md
 - name: 快速入門
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: 概念
   expanded: true
   items:
-    - name: 身分識別安全分數
-      href: identity-secure-score.md
     - name: 安全性
       items:
         - name: 啟用 MFA
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: 封鎖舊式驗證
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: 群組和存取管理
-      href: active-directory-manage-groups.md
-    - name: 群組型授權
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD 架構
-      href: active-directory-architecture.md
-    - name: 預設使用者權限
-      href: users-default-permissions.md
-    - name: 部署 30、90 及更多
+        - name: 身分識別安全分數
+          href: identity-secure-score.md
+    - name: 群組和使用者
+      items:
+        - name: 群組和存取管理
+          href: active-directory-manage-groups.md
+        - name: 群組型授權
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: 預設使用者權限
+          href: users-default-permissions.md
+    - name: 架構
+      items:
+        - name: Azure AD 架構
+          href: active-directory-architecture.md
+    - name: 部署指南
+      items:
+        - name: 部署 30、90 及更多
       href: active-directory-deployment-checklist-p2.md
-    - name: 適用於歐盟的身分識別資料儲存體
-      href: active-directory-data-storage-eu.md
-    - name: 適用於澳大利亞與紐西蘭的身分識別資料儲存體
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Microsoft 365 Government 的最新消息
-      href: whats-new-microsoft-365-government.md
-    - name: 比較 Azure AD 與 ADDS
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: 資料儲存體
+      items:
+        - name: 適用於歐洲的身分識別資料儲存體
+          href: active-directory-data-storage-eu.md
+        - name: 適用於澳大利亞與紐西蘭的身分識別資料儲存體
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Azure AD Operations 參考
       items:
         - name: 簡介

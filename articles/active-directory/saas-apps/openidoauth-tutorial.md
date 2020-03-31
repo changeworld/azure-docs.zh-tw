@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160224"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048423"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>從 Azure AD 應用程式資源庫設定 OpenID/OAuth 應用程式
 
@@ -71,7 +71,7 @@ ms.locfileid: "73160224"
 > [!NOTE]
 > 如果要讓您的應用程式可供多個目錄中的使用者使用，則需要有機制來判斷使用者所在的租用戶。 單一租用戶應用程式只須查看其本身目錄的使用者。 多租用戶應用程式需要從 Azure AD 的所有目錄中識別特定使用者。
 > 
-> 為了完成這項工作，Azure AD 提供一個共同驗證端點，供任何多租用戶應用程式引導登入要求，而非提供租用戶特定的端點。 此端點是 [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common)，適用於 Azure AD 中的所有目錄。 租用戶專屬端點可能是 [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com)。 
+> 為了完成這項工作，Azure AD 提供一個共同驗證端點，供任何多租用戶應用程式引導登入要求，而非提供租用戶特定的端點。 此端點是 `https://login.microsoftonline.com/common`，適用於 Azure AD 中的所有目錄。 租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。 
 >
 > 常用端點是您開發應用程式時必須納入考量的重點。 您將需要必要邏輯來處理多租用戶的登入、登出和權杖驗證。
 
@@ -125,7 +125,7 @@ Graph API 也會提供 Azure AD 中的使用者和群組存取權，以及多個
 
 3. 如果使用者尚未經過驗證，Azure AD /授權端點就會提示使用者登入。
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![驗證](./media/openidoauth-tutorial/authentication.png)
 
 4. 使用者登入之後，Azure AD 會判斷是否需要向使用者顯示同意頁面。 此判斷根據使用者 (或其組織的系統管理員) 是否已經同意應用程式。
 

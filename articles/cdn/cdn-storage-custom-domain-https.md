@@ -1,5 +1,6 @@
 ---
 title: 使用 Azure CDN 自訂網域透過 HTTPS 存取儲存體 Blob
+description: 了解如何為自訂 Blob 儲存體端點新增 Azure CDN 自訂網域，並在該網域上啟用 HTTPS。
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,18 +15,18 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be09229136289e343856f1e2ba61cda63730d21f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279129"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80053956"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>教學課程：使用 Azure CDN 自訂網域透過 HTTPS 存取儲存體 Blob
 
 在您整合 Azure 儲存體帳戶與 Azure 內容傳遞網路 (CDN) 之後，即可新增自訂網域，並在該網域上啟用自訂 Blob 儲存體端點的 HTTPS。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先整合 Azure 儲存體帳戶與 Azure CDN，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：整合 Azure 儲存體帳戶與 Azure CDN](cdn-create-a-storage-account-with-cdn.md)。
 

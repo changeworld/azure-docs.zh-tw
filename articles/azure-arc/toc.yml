@@ -14,6 +14,8 @@
       href: ./servers/onboard-service-principal.md
     - name: 使用 PowerShell DSC 將機器連線至 Azure Arc
       href: ./servers/onboard-dsc.md
+- name: 管理代理程式
+  href: ./servers/manage-agent.md
 - name: 參考
   items:
     - name: Azure 連線的機器代理程式 CLI 介面

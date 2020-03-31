@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759784"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292475"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>設定適用於 Azure VM 的災害復原
 
@@ -75,7 +75,7 @@ ms.locfileid: "76759784"
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
-如果您使用網路安全性群組 (NSG)，請針對 Azure 儲存體、Azure Active Directory、Site Recovery 服務和 Site Recovery 監視的存取權建立以服務標籤為基礎的 NSG 規則。 [深入了解](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
+如果您使用網路安全性群組 (NSG)，請針對 Azure 儲存體、Azure Active Directory、Site Recovery 服務和 Site Recovery 監視的存取權建立以服務標籤為基礎的 NSG 規則。 [深入了解](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。
 
 ## <a name="verify-azure-vm-certificates"></a>驗證 Azure VM 憑證
 
