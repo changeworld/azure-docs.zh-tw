@@ -1,6 +1,6 @@
 ---
 title: 如何利用媒體編碼器標準裁剪影片 - Azure | Microsoft Docs
-description: 裁剪是指在視訊畫面內選取矩形視窗，並只編碼該視窗內之像素的程序。 本文示範如何使用媒體編碼器標準裁剪影片。
+description: 裁剪是指在視訊畫面內選取矩形視窗，並只編碼該視窗內之像素的程序。 本文演示如何使用媒體編碼器標準裁剪視頻。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887759"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>以 Media Encoder Standard 裁剪影片  
@@ -128,7 +128,7 @@ MES 中的裁剪是前置處理階段，因此編碼預設值中的裁剪參數�
 
 
 ## <a name="restrictions-on-cropping"></a>裁剪的限制
-裁剪功能僅供手動操作。 您必須將輸入影片載入適當的編輯工具，讓您選取感的畫面、定位游標以判斷裁剪矩形的位移、判斷針對該特定影片微調的編碼預設值等等。這項功能並非用來啟用：自動偵測和移除輸入影片中的黑色黑邊/垂直黑邊框線。
+裁剪功能僅供手動操作。 您需要將輸入視頻載入到合適的編輯工具中，該工具允許您選擇感興趣的幀，定位游標以確定裁剪矩形的偏移量，以確定為該特定視頻調整的編碼預設等。此功能並非旨在啟用以下功能：自動檢測和刪除輸入視頻中的黑色信箱/柱框邊框。
 
 裁剪功能受到以下限制的約束。 如果不符合以下情況，編碼工作可能會失敗或產生非預期的輸出。
 

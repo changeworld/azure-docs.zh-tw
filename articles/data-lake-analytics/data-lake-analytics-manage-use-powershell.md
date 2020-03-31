@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66156419"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
@@ -21,16 +21,16 @@ ms.locfileid: "66156419"
 
 本文說明如何使用 Azure PowerShell 來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要搭配使用 PowerShell 與 Data Lake Analytics，請收集下列幾項資訊： 
 
-* **訂用帳戶識別碼**：您 Data Lake Analytics 帳戶所屬 Azure 訂用帳戶的識別碼。
-* **资源组**：您 Data Lake Analytics 帳戶所屬 Azure 資源群組的名稱。
-* **Data Lake Analytics 帳戶名稱**：您 Data Lake Analytics 帳戶的名稱。
-* **預設 Data Lake Store 帳戶名稱**：每個 Data Lake Analytics 帳戶都有預設的 Data Lake Store 帳戶。
+* **訂用帳戶識別碼**：Data Lake Analytics 帳戶所在 Azure 訂用帳戶的識別碼。
+* **資源群組**：包含您 Data Lake Analytics 帳戶的 Azure 資源群組名稱。
+* **Data Lake Analytics 帳戶名稱**：Data Lake Analytics 帳戶的名稱。
+* **預設 Data Lake Store 帳戶名稱**：每個 Data Lake Analytics 帳戶都有一個預設的 Data Lake Store 帳戶。
 * **位置**：您 Data Lake Analytics 帳戶的位置，例如「美國東部 2」或其他支援的位置。
 
 本教學課程中的 PowerShell 程式碼片段會使用這些變數來儲存此資訊
@@ -121,8 +121,8 @@ Test-AdlAnalyticsAccount -Name $adla
 ## <a name="manage-data-sources"></a>管理資料來源
 Azure Data Lake Analytics 目前支援下列資料來源：
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure 儲存體](../storage/common/storage-introduction.md)
+* [Azure 資料湖存儲](../data-lake-store/data-lake-store-overview.md)
+* [Azure 存儲](../storage/common/storage-introduction.md)
 
 每個 Data Lake Analytics 帳戶都有預設 Data Lake Store 帳戶。 預設的資料湖存放區帳戶是用來儲存工作中繼資料與工作稽核記錄。 
 
@@ -243,9 +243,9 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 使用 `-Result` 參數來偵測已結束的工作是否順利完成。 它有下列值：
 
 * 已取消
-* Failed
+* 失敗
 * None
-* Succeeded
+* 成功
 
 ``` powershell
 # List Successful jobs.
@@ -553,9 +553,9 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>使用範本建立 Data Lake Analytics 帳戶
 
-您也可以運用下列範例來使用「Azure 資源群組」範本：[使用範本來建立 Data Lake Analytics 帳戶](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template) \(英文\)
+您也可以使用下列範例來使用 Azure 資源群組範本：[使用範本建立 Data Lake Analytics 帳戶](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
 ## <a name="next-steps"></a>後續步驟
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
-* 透過 [Azure 入口網站](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md) 來開始使用 Data Lake Analytics
-* 運用 [Azure 入口網站](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) 來管理 Azure Data Lake Analytics 
+* 使用[Azure 門戶](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md)開始使用資料湖分析
+* 使用[Azure 門戶](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure 資料湖分析 

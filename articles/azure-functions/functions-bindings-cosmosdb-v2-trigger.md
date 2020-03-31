@@ -1,22 +1,22 @@
 ---
-title: 函數2.x 的 Azure Cosmos DB 觸發程式
-description: 瞭解如何在 Azure Functions 中使用 Azure Cosmos DB 觸發程式。
+title: 函數 2.x 的 Azure 宇宙 DB 觸發器
+description: 瞭解如何在 Azure 函數中使用 Azure 宇宙資料庫觸發器。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277566"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Functions 2.x 的 Azure Cosmos DB 觸發程式
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure 函數 2.x 的 Azure 宇宙 DB 觸發器
 
 Azure Cosmos DB 觸發程序會使用 [Azure Cosmos DB 變更摘要](../cosmos-db/change-feed.md)，跨分割區接聽插入項目及變更。 變更摘要會發行插入和更新，而非刪除。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-cosmosdb-v2.md)。
+有關設置和配置詳細資訊的資訊，請參閱[概述](./functions-bindings-cosmosdb-v2.md)。
 
 <a id="example" name="example"></a>
 
@@ -54,9 +54,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
 
-下列範例示範 function.json 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 新增或修改 Cosmos DB 記錄時，函數會寫入記錄訊息。
+下列範例示範 function.json** 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 當添加或修改 Cosmos DB 記錄時，該函數寫入日誌消息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -90,9 +90,9 @@ namespace CosmosDBSamplesV2
     }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
-下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的 Cosmos DB 觸發程序繫結。 新增或修改 Cosmos DB 記錄時，函數會寫入記錄訊息。
+下列範例示範的是使用繫結之 function.json** 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的 Cosmos DB 觸發程序繫結。 當添加或修改 Cosmos DB 記錄時，該函數寫入日誌消息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -121,7 +121,7 @@ namespace CosmosDBSamplesV2
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例示範 function.json 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [Python 指令碼函式](functions-reference-python.md)。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
+下列範例示範 function.json** 檔案中的 Cosmos DB 觸發程序繫結，以及使用此繫結的 [Python 指令碼函式](functions-reference-python.md)。 修改 Cosmos DB 記錄時，函式會寫入記錄訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -150,9 +150,9 @@ namespace CosmosDBSamplesV2
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-# <a name="java"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-當指定的資料庫和集合中有插入或更新時，就會叫用這個函數。
+當指定的資料庫和集合中插入或更新時，將調用此功能。
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -192,13 +192,13 @@ namespace CosmosDBSamplesV2
     }
 ```
 
-如需完整範例，請參閱[觸發](#example)程式。
+有關完整示例，請參閱[觸發器](#example)。
 
-# <a name="c-script"></a>[C#文字](#tab/csharp-script)
+# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
 
-C#腳本不支援屬性。
+C# 腳本不支援屬性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JAVAscript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
@@ -206,44 +206,44 @@ JavaScript 不支援屬性。
 
 Python 不支援屬性。
 
-# <a name="java"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-從 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，在從 Cosmos DB 讀取資料的參數上使用 `@CosmosDBInput` 注釋。
+從[JAVA 函數運行時庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，對從`@CosmosDBInput`Cosmos DB 讀取資料的參數使用注釋。
 
 ---
 
 ## <a name="configuration"></a>組態
 
-下表說明您在 *function.json* 檔案中設定的繫結設定屬性內容和 `CosmosDBTrigger` 屬性。
+下表介紹了您在*函數.json*檔和`CosmosDBTrigger`屬性中設置的綁定配置屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**type** | n/a | 必須設為 `cosmosDBTrigger`。 |
+|**型別** | n/a | 必須設為 `cosmosDBTrigger`。 |
 |**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此參數。 |
-|**name** | n/a | 函式程式碼中使用的變數名稱，代表有變更的文件清單。 |
-|**connectionStringSetting**|**ConnectionStringSetting** | 應用程式設定的名稱，包含用來連接到要監視之 Azure Cosmos DB 帳戶的連接字串。 |
-|**databaseName**|**DatabaseName**  | 含有要監視之集合的 Azure Cosmos DB 資料庫名稱。 |
-|**collectionName** |**CollectionName** | 要監視的集合名稱。 |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | 選擇性應用程式設定的名稱，其中包含保留租用集合的 Azure Cosmos DB 帳戶的連接字串。 如果未設定，會使用 `connectionStringSetting` 值。 在入口網站中建立繫結時，會自動設定此參數。 租用集合的連接字串必須具有寫入權限。|
-|**leaseDatabaseName** |**LeaseDatabaseName** | (選擇性) 保存用來儲存租用之集合的資料庫名稱。 如果未設定，會使用 `databaseName` 設定的值。 在入口網站中建立繫結時，會自動設定此參數。 |
-|**leaseCollectionName** | **LeaseCollectionName** | (選擇性) 用來儲存租用的集合名稱。 如果未設定，會使用 `leases` 值。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (選擇性) 設為 `true` 時，如果租用集合尚未存在，即會自動加以建立。 預設值是 `false`。 |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| 選擇性定義建立租用集合時要指派的要求單位數目。 只有當 `createLeaseCollectionIfNotExists` 設定為 `true`時，才會使用此設定。 使用入口網站建立繫結時，會自動設定此參數。
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| 選擇性設定時，會將值新增為此函式的租用集合中所建立租用的前置詞。 使用前置詞可讓兩個不同的 Azure Functions 使用不同的首碼來共用相同的租用集合。
-|**feedPollDelay**| **FeedPollDelay**| 選擇性在所有目前的變更清空之後，針對摘要上的新變更輪詢資料分割之間的延遲時間（以毫秒為單位）。 預設值為5000毫秒，或5秒。
-|**leaseAcquireInterval**| **LeaseAcquireInterval**| (選擇性) 如果設定，將會以毫秒為單位定義啟動工作以計算分割區是否平均分散到已知主機執行個體的間隔。 預設值為 13000 (13 秒)。
-|**leaseExpirationInterval**| **LeaseExpirationInterval**| (選擇性) 如果設定，將會以毫秒為單位定義租用代表分割區的間隔。 未在此間隔內更新的租用將會過期，且分割區的擁有權會移轉給另一個執行個體。 預設值為 60000 (60 秒)。
-|**leaseRenewInterval**| **LeaseRenewInterval**| (選擇性) 如果設定，將會以毫秒為單位定義目前由執行個體保有之分割區的所有租用所適用的更新間隔。 預設值為 17000 (17 秒)。
-|**checkpointFrequency**| **CheckpointFrequency**| (選擇性) 如果設定，將會以毫秒為單位定義租用檢查點的間隔。 預設永遠是各函式呼叫後。
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| 選擇性設定時，這個屬性會設定每個函式呼叫所接收的最大專案數。 如果受監視集合中的作業是透過預存程式執行，則從變更摘要讀取專案時，會保留[交易範圍](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，接收的專案數可能會高於指定的值，如此一來，相同交易變更的專案就會當做一個不可部分完成批次的一部分傳回。
-|**startFromBeginning**| **StartFromBeginning**| 選擇性此選項會指示觸發程式從集合的變更歷程記錄開始讀取變更，而不是從目前的時間開始。 從開頭開始讀取只會在觸發程式第一次啟動時運作，而在後續的執行中，檢查點已經儲存。 若已建立租用，將此選項設定為 `true` 則不會有任何作用。 |
-|**preferredLocations**| **PreferredLocations**| 選擇性定義 Azure Cosmos DB 服務中異地複寫資料庫帳戶的慣用位置（區域）。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
+|**名稱** | n/a | 函式程式碼中使用的變數名稱，代表有變更的文件清單。 |
+|**連接字串設置**|**ConnectionStringSetting** | 應用程式設定的名稱，包含用來連接到要監視之 Azure Cosmos DB 帳戶的連接字串。 |
+|**databaseName**|**資料庫名稱**  | 含有要監視之集合的 Azure Cosmos DB 資料庫名稱。 |
+|**集合名稱** |**CollectionName** | 要監視的集合名稱。 |
+|**租約連接字串設置** | **LeaseConnectionStringSetting** | （可選）包含與持有租約集合的 Azure Cosmos DB 帳戶的連接字串的應用設置的名稱。 如果未設定，會使用 `connectionStringSetting` 值。 在入口網站中建立繫結時，會自動設定此參數。 租用集合的連接字串必須具有寫入權限。|
+|**租約資料庫名稱** |**LeaseDatabaseName** | (選擇性) 保存用來儲存租用之集合的資料庫名稱。 如果未設定，會使用 `databaseName` 設定的值。 在入口網站中建立繫結時，會自動設定此參數。 |
+|**租約集合名稱** | **LeaseCollectionName** | (選擇性) 用來儲存租用的集合名稱。 如果未設定，會使用 `leases` 值。 |
+|**創建租約集合如果不存在** | **CreateLeaseCollectionIfNotExists** | (選擇性) 設為 `true` 時，如果租用集合尚未存在，即會自動加以建立。 預設值是 `false`。 |
+|**leasesCollectionThroughput**| **租賃收集輸送量**| （可選）定義創建租約集合時要分配的請求單位數。 僅當設置為 時，才`createLeaseCollectionIfNotExists`使用此設置`true`。 使用入口網站建立繫結時，會自動設定此參數。
+|**租賃收集首碼**| **LeaseCollectionPrefix**| （可選）設置後，該值將作為首碼添加到此函數的租約集合中創建的租約。 使用首碼允許兩個單獨的 Azure 函數使用不同的首碼共用相同的租約集合。
+|**飼料延遲**| **FeedPollDelay**| （可選）在耗盡所有當前更改後，輪詢分區以在源上為新更改之間的延遲時間（以毫秒為單位）。 預設值為 5，000 毫秒或 5 秒。
+|**租賃獲取間隔**| **LeaseAcquireInterval**| (選擇性) 如果設定，將會以毫秒為單位定義啟動工作以計算分割區是否平均分散到已知主機執行個體的間隔。 預設值為 13000 (13 秒)。
+|**租約過期間隔**| **LeaseExpirationInterval**| (選擇性) 如果設定，將會以毫秒為單位定義租用代表分割區的間隔。 未在此間隔內更新的租用將會過期，且分割區的擁有權會移轉給另一個執行個體。 預設值為 60000 (60 秒)。
+|**租約續訂間隔**| **LeaseRenewInterval**| (選擇性) 如果設定，將會以毫秒為單位定義目前由執行個體保有之分割區的所有租用所適用的更新間隔。 預設值為 17000 (17 秒)。
+|**檢查點頻率**| **CheckpointFrequency**| (選擇性) 如果設定，將會以毫秒為單位定義租用檢查點的間隔。 預設永遠是各函式呼叫後。
+|**maxItemsPerInvocation**| **最大專案perin調用**| （可選）設置後，此屬性將設置每個函式呼叫接收的最大項數。 如果通過預存程序執行受監視集合中的操作，則從更改源讀取項時將保留[事務範圍](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，收到的項數可以高於指定值，以便將同一事務更改的項作為一個原子批次處理的一部分返回。
+|**從開始**| **StartFromBeginning**| （可選）此選項告訴觸發器從集合更改歷史記錄的開頭讀取更改，而不是從目前時間開始。 從頭開始讀取僅在觸發器初次開機時起作用，因為在後續運行中，檢查點已存儲。 將此選項設置為`true`已創建租約時不起作用。 |
+|**首選位置**| **首選位置**| （可選）為 Azure Cosmos 資料庫服務中的異地複製資料庫帳戶定義首選位置（區域）。 值應為逗號分隔。 例如，"美國東部、美國中南部、北歐"。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用量
 
-觸發程序需要第二個集合，用來在分割區上儲存「租用」。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
+觸發程序需要第二個集合，用來在分割區上儲存「租用」__。 要監視的集合和包含租用的集合必須可供觸發程序用來運作。
 
 >[!IMPORTANT]
 > 如果針對同一個集合設定多個函式使用 Cosmos DB 觸發程序，則每個函式都應該使用專用的租用集合，或為每個函式指定不同的 `LeaseCollectionPrefix`。 否則，將只會觸發其中一個函式。 如需前置詞的相關資訊，請參閱[組態區段](#configuration)。
@@ -252,5 +252,5 @@ Python 不支援屬性。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [讀取 Azure Cosmos DB 檔（輸入系結）](./functions-bindings-cosmosdb-v2-input.md)
-- [儲存 Azure Cosmos DB 檔的變更（輸出系結）](./functions-bindings-cosmosdb-v2-output.md)
+- [閱讀 Azure 宇宙資料庫文檔（輸入綁定）](./functions-bindings-cosmosdb-v2-input.md)
+- [保存對 Azure Cosmos DB 文檔的更改（輸出綁定）](./functions-bindings-cosmosdb-v2-output.md)

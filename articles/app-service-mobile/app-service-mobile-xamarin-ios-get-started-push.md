@@ -1,23 +1,23 @@
 ---
-title: 將推播通知新增至您的 Xamarin iOS 應用程式
-description: 瞭解如何使用 Azure App Service 將推播通知傳送至您的 Xamarin iOS 應用程式。
+title: 將推送通知添加到 Xamarin.iOS 應用
+description: 瞭解如何使用 Azure 應用服務向 Xamarin.iOS 應用發送推送通知。
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249278"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>將推播通知新增至 Xamarin.iOS 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，您會將推播通知新增至 [Xamarin.iOS 快速入門](app-service-mobile-xamarin-ios-get-started.md)專案，以便在每次插入一筆記錄時傳送推播通知至裝置。
 
@@ -132,15 +132,15 @@ ms.locfileid: "79249278"
 
 您的應用程式現在已更新為支援推播通知。
 
-## <a name="test"></a>在應用程式中測試推播通知
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>在應用程式中測試推播通知
 
-1. 按 [執行] 按鈕以建置專案並在可執行 iOS 的裝置上啟動應用程式，然後按一下 [確定] 以接受推播通知。
+1. 按 [執行]**** 按鈕以建置專案並在可執行 iOS 的裝置上啟動應用程式，然後按一下 [確定]**** 以接受推播通知。
 
    > [!NOTE]
    > 您必須明確地接受來自應用程式的推播通知。 只有在應用程式第一次執行時，才會發生此要求。
 
-2. 在應用程式中輸入一項工作，然後按一下加號 ( **+** ) 圖示。
-3. 確認您已接收到通知，然後按一下 [確定] 以關閉通知。
+2. 在應用中，鍵入任務，然後按一下加號 （**+**） 圖示。
+3. 驗證是否收到通知，然後按一下"**確定"** 以關閉通知。
 4. 重複執行步驟 2 並立即關閉應用程式，接著確認通知已顯示。
 
 您已成功完成此教學課程。

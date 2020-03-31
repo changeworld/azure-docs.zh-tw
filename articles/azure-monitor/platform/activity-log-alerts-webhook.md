@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669041"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活動記錄警示的 Webhook
@@ -19,7 +19,7 @@ ms.locfileid: "77669041"
 如需有關動作群組的資訊，請參閱如何[建立動作群組](../../azure-monitor/platform/action-groups.md)。
 
 > [!NOTE]
-> 您也可以使用[一般警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您的 webhook 整合能夠在 Azure 監視器的所有警示服務中擁有單一可延伸和整合的警示承載。 [瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
+> 您還可以使用[通用警報架構](https://aka.ms/commonAlertSchemaDocs)，它提供了在 Azure 監視器中的所有警報服務中具有單個可擴展和統一警報負載的優勢，以便進行 Webhook 集成。 [瞭解常見的警報架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 ## <a name="authenticate-the-webhook"></a>驗證 Webhook
@@ -260,15 +260,15 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 | 內容 |事件的內容。 |
 | resourceProviderName |受影響資源的資源提供者。 |
 | conditionType |一律為「事件」。 |
-| 名稱 |警示規則的名稱。 |
+| NAME |警示規則的名稱。 |
 | id |警示的資源識別碼。 |
 | description |建立警示時，會設定警示描述。 |
 | subscriptionId |Azure 訂用帳戶識別碼。 |
 | timestamp |處理要求的 Azure 服務產生事件的時間。 |
 | resourceId |受影響資源的資源識別碼。 |
 | resourceGroupName |受影響資源的資源群組的名稱。 |
-| 屬性 |一組包含事件相關詳細資料的`<Key, Value>`配對 (也就是 `Dictionary<String, String>`)。 |
-| 事件 |包含事件相關中繼資料的元素。 |
+| properties |一組包含事件相關詳細資料的`<Key, Value>`配對 (也就是 `Dictionary<String, String>`)。 |
+| event |包含事件相關中繼資料的元素。 |
 | 授權 |事件的角色型存取控制屬性。 這些屬性通常包括動作、角色和範圍。 |
 | category |事件的類別。 支援值包括「管理」、「警示」、「安全性」、「ServiceHealth」和「建議」。 |
 | 呼叫者 |已執行作業的使用者的電子郵件地址，根據可用性的 UPN 宣告或 SPN 宣告。 特定系統呼叫可為 Null。 |
@@ -277,18 +277,18 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 | eventDataId |事件的唯一識別碼。 |
 | eventSource |產生事件的 Azure 服務或基礎結構的名稱。 |
 | httpRequest |要求通常包括 “clientRequestId”、“clientIpAddress” 和 HTTP “method” (例如 PUT)。 |
-| level |下列其中一個值：Critical、Error、Warning 和 Informational。 |
+| 層級 |下列其中一個值：Critical、Error、Warning 和 Informational。 |
 | operationId |通常是對應至單一作業的事件之間共用的 GUID。 |
 | operationName |作業名稱。 |
-| 屬性 |事件的屬性。 |
+| properties |事件的屬性。 |
 | status |字串。 作業的狀態。 常見的值包括︰「已啟動」、「進行中」、「成功」、「失敗」、「使用中」和「已解決」。 |
 | 子狀態 |通常包含對應 REST 呼叫的 HTTP 狀態碼。 它也可以包含其他描述子狀態的字串。 常見子狀態的值包括：確定 (HTTP 狀態碼︰200)，已建立 (HTTP 狀態碼︰201)、接受 (HTTP 狀態碼︰202)、沒有內容 (HTTP 狀態碼︰204)、不正確的要求 (HTTP 狀態碼︰400)、找不到 (HTTP 狀態碼︰404)，衝突 (HTTP 狀態碼︰409)、內部伺服器錯誤 (HTTP 狀態碼︰500)、服務無法使用 (HTTP 狀態碼︰503) 和閘道逾時 (HTTP 狀態碼︰504)。 |
 
 如需了解所有其他活動記錄警示的特定結構詳細資料，請參閱 [Azure 活動記錄的概觀](../../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* [深入了解活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。
-* [對 Azure 警示執行 Azure 自動化指令碼 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
+* [瞭解有關活動日誌 的更多內容](../../azure-monitor/platform/platform-logs-overview.md)。
+* [在 Azure 警報上執行 Azure 自動化腳本（Runbook）。](https://go.microsoft.com/fwlink/?LinkId=627081)
 * [使用邏輯應用程式透過 Twilio 從 Azure 警示傳送 SMS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。
 * [使用邏輯應用程式從 Azure 警示傳送 Slack 訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。
 * [使用邏輯應用程式從 Azure 警示將訊息傳送到 Azure 佇列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。

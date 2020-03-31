@@ -95,6 +95,9 @@
     - name: 模型訓練
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: 分散式定型
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: 模型管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: 自動化機器學習
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: 管理 ML 陷阱
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: 計算執行個體
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: 使用資料
       items:
-        - name: 連線到 Azure 儲存體中的資料
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: 從資料存放區取得資料
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: 使用資料集定型
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: 在設計工具中匯入資料
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: 偵測資料集上的漂移
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: 版本和追蹤資料集
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: 取得標示的資料
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: 標籤映像
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: 建立具有標籤的資料集
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: 使用 Azure Data Factory 進行資料擷取
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: 適用於資料擷取的 DevOps
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: 標籤資料
+          items:
+            - name: 取得標示的資料
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: 標籤映像
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: 建立具有標籤的資料集
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: 取得資料
+          items:
+            - name: 使用 Azure Data Factory 進行資料擷取
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: 適用於資料擷取的 DevOps
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: 在設計工具中匯入資料
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: 存取資料
+          items:
+            - name: 連線到 Azure 儲存體
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: 從資料存放區取得資料
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: 管理並取用資料
+          items:
+            - name: 使用資料集定型
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: 偵測資料集上的漂移
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: 版本和追蹤資料集
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: 將模型定型
       items:
         - name: 為 ML 使用估算器
@@ -337,6 +351,7 @@
         - name: 觸發管線
           href: how-to-trigger-published-pipeline.md
         - name: 管線偵錯與疑難排解
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: 對 Application Insights 中的管線進行偵錯
           displayname: 'pipelines, log, monitor'

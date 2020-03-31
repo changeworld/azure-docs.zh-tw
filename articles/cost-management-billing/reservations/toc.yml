@@ -1,92 +1,115 @@
 - name: Azure Reservations 文件
   href: index.yml
+- name: 概觀
+  expanded: true
   items:
-    - name: 概觀
-      expanded: true
+    - name: 什麼是 Azure 保留項目？
+      href: save-compute-costs-reservations.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 決定要購買的項目
       items:
-        - name: 什麼是 Azure 保留項目？
-          href: save-compute-costs-reservations.md
-    - name: 操作指南
+        - name: 選擇要購買的保留
+          href: determine-reservation-purchase.md
+    - name: 購買保留項目
       items:
-        - name: 購買 SQL 資料倉儲保留
-          href: prepay-sql-data-warehouse-charges.md
-        - name: 購買虛擬機器保留
-          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
-        - name: 購買專用主機保留
-          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
-        - name: Azure 磁碟儲存體
-          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: 購買 Azure 儲存體保留
-          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: 購買 Cosmos DB 保留
-          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: 購買 SQL Database 保留
-          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: 購買 Azure 資料總管保留
-          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: 購買 Azure Databricks 保留
-          href: prepay-databricks-reserved-capacity.md
-        - name: 購買 Azure Cache for Redis 保留
-          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/billing/TOC.json
-        - name: 購買 App Service 保留
+        - name: 購買 Azure 保留
+          href: prepare-buy-reservation.md
+        - name: App Service 方案
           href: prepay-app-service-isolated-stamp.md
-        - name: 購買 Azure 軟體方案保留
-          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
-        - name: 以每月付款方式購買保留項目
-          href: monthly-payments-reservations.md
-        - name: 更新保留項目
-          href: reservation-renew.md
-        - name: 交換和退款保留項目
-          href: exchange-and-refund-azure-reservations.md
+        - name: Azure Cache for Redis 保留
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Databricks
+          href: prepay-databricks-reserved-capacity.md
+        - name: 資料總管
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 磁碟儲存體
+          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 專用主機
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
+        - name: 軟體方案
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure 儲存體
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SQL Database
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SQL 資料倉儲
+          href: prepay-sql-data-warehouse-charges.md
+        - name: 虛擬機器
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: 購買後進行檢視、管理並最佳化
+      items:
+        - name: 檢視保留項目和使用率
+          href: view-reservations.md
         - name: 管理保留項目
           href: manage-reserved-vm-instance.md
         - name: 變更最佳化設定
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
-        - name: 檢視保留項目
-          href: view-reservations.md
-    - name: 概念
+        - name: 交換和退款保留項目
+          href: exchange-and-refund-azure-reservations.md
+    - name: 更新保留項目
       items:
-        - name: 建立保留建議的方式
-          href: reserved-instance-purchase-recommendations.md
-        - name: 保留 VM 執行個體折扣
-          href: ../manage/understand-vm-reservation-charges.md
-        - name: 保留專用主機折扣
-          href: billing-understand-dedicated-hosts-reservation-charges.md
-        - name: Azure 儲存體保留容量折扣
-          href: understand-storage-charges.md
-        - name: Azure 磁碟儲存體保留折扣
-          href: understand-disk-reservations.md
-        - name: Cosmos DB 保留容量折扣
-          href: understand-cosmosdb-reservation-charges.md
-        - name: SQL Database 保留容量折扣
-          href: understand-reservation-charges.md
-        - name: SQL 資料倉儲折扣
-          href: reservation-discount-azure-sql-dw.md
-        - name: Azure 資料總管折扣
-          href: understand-azure-data-explorer-reservation-charges.md
-        - name: Azure Databricks 折扣
-          href: reservation-discount-databricks.md
-        - name: 適用於 MySQL 的 Azure 資料庫折扣
-          href: understand-reservation-charges-mysql.md
-        - name: 適用於 PostgreSQL 的 Azure 資料庫折扣
-          href: understand-reservation-charges-postgresql.md
-        - name: Red Hat Linux Enterprise 折扣
-          href: understand-rhel-reservation-charges.md
-        - name: 適用於 MariaDB 的 Azure 資料庫折扣
-          href: understand-reservation-charges-mariadb.md
-        - name: Azure Cache for Redis 折扣
-          href: understand-azure-cache-for-redis-reservation-charges.md
-        - name: App Service 折扣
+        - name: 更新保留
+          href: reservation-renew.md
+- name: 概念
+  expanded: true
+  items:
+    - name: 建立保留建議的方式
+      href: reserved-instance-purchase-recommendations.md
+    - name: 如何套用折扣
+      items:
+        - name: Azure 保留折扣的套用方式
+          href: reservation-discount-application.md
+        - name: App Service 方案
           href: reservation-discount-app-service-isolated-stamp.md
-        - name: Azure 軟體方案折扣
+        - name: Azure Cache for Redis
+          href: understand-azure-cache-for-redis-reservation-charges.md
+        - name: Cosmos DB
+          href: understand-cosmosdb-reservation-charges.md
+        - name: 適用於 MariaDB 的資料庫
+          href: understand-reservation-charges-mariadb.md
+        - name: 適用於 MySQL 的資料庫
+          href: understand-reservation-charges-mysql.md
+        - name: 適用於 PostgreSQL 的資料庫
+          href: understand-reservation-charges-postgresql.md
+        - name: Databricks
+          href: reservation-discount-databricks.md
+        - name: 資料總管
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: 專用主機
+          href: billing-understand-dedicated-hosts-reservation-charges.md
+        - name: 磁碟儲存體
+          href: understand-disk-reservations.md
+        - name: Red Hat Linux Enterprise
+          href: understand-rhel-reservation-charges.md
+        - name: 軟體方案
           href: understand-suse-reservation-charges.md
-        - name: 不包含 Windows 和 SQL 成本
-          href: reserved-instance-windows-software-costs.md
-        - name: 個人訂用帳戶的使用量
-          href: understand-reserved-instance-usage.md
-        - name: 企業客戶的使用量資料
-          href: understand-reserved-instance-usage-ea.md
-    - name: 參考
-      items:
-        - name: Azure 保留 API
-          href: reservation-apis.md
+        - name: 儲存體
+          href: understand-storage-charges.md
+        - name: SQL Database
+          href: understand-reservation-charges.md
+        - name: SQL 資料倉儲
+          href: reservation-discount-azure-sql-dw.md
+        - name: 虛擬機器
+          href: ../manage/understand-vm-reservation-charges.md
+    - name: 不包含 Windows 和 SQL 成本
+      href: reserved-instance-windows-software-costs.md
+    - name: 個人訂用帳戶的使用量
+      href: understand-reserved-instance-usage.md
+    - name: 企業客戶的使用量資料
+      href: understand-reserved-instance-usage-ea.md
+- name: 參考
+  items:
+    - name: 保留 REST API
+      href: reservation-apis.md
+    - name: 保留 - Azure PowerShell
+      href: /powershell/module/azurerm.reservations
+    - name: 保留 - CLI
+      href: /cli/azure/reservations/reservation
+    - name: 成本管理 - 使用量詳細資料 REST API
+      href: /rest/api/consumption/usagedetails
+    - name: 成本管理 - 使用量保留詳細資料 REST API
+      href: /rest/api/consumption/reservationsdetails

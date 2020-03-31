@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Resource Manager 部署和升級
+title: 使用 Azure 資源管理器部署和升級
 description: 了解如何使用 Azure Resource Manager 範本將應用程式和服務部署到 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610245"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>將應用程式和服務視為 Azure Resource Manager 進行管理
 
-您可以透過 Azure Resource Manager 將應用程式和服務部署到 Service Fabric 叢集。 這意味著與其等待叢集準備就緒後透過 PowerShell 或 CLI 部署及管理應用程式，您現在可以利用 JSON 來表示應用程式和服務，然後在與叢集相同的 Resource Manager 範本中加以部署。 應用程式註冊、佈建和部署程序全都能在一個步驟中完成。
+您可以透過 Azure Resource Manager 將應用程式和服務部署到 Service Fabric 叢集。 這意味著與其等待叢集準備就緒後透過 PowerShell 或 CLI 部署及管理應用程式，您現在可以利用 JSON 來表示應用程式和服務，然後在與叢集相同的 Resource Manager 範本中加以部署。 應用程式註冊、佈建和部署等程序全部都發生在一個步驟中。
 
 這是部署叢集所需之任何設定、治理或叢集管理應用程式的建議方法。 包括[修補程式協調流程應用程式](service-fabric-patch-orchestration-application.md)、監視程式，或是任何需要在叢集中執行其他應用程式或服務才能部署的應用程式。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "75610245"
 1. 準備好叢集的 Resource Manager 範本，以供部署之用。 如需詳細資訊，請參閱[使用 Azure Resource Manager 來建立 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)。
 2. 思考幾個您計劃部署在叢集中的應用程式。 是否有任何應用程式將隨時保持執行狀態，讓其他應用程式得以依賴？ 您是否有部署任何叢集治理或設定應用程式的計劃？ 這類應用程式最適合透過 Resource Manager 範本管理，如同前文所討論。 
 3. 一旦想好要利用這種方法部署哪些應用程式後，您必須封裝、壓縮應用程式，再將它們放在檔案共用上。 共用必須可透過 REST 端點存取，Azure Resource Manager 才能在部署期間取用。
-4. 在 Resource Manager 範本的叢集宣告下方，描述每個應用程式的屬性。 這些屬性包括複本或執行個體計數，以及資源 (其他應用程式或服務) 之間的任何相依性鏈結。 如需完整的屬性清單，請參閱[REST API Swagger 規格](https://aka.ms/sfrpswaggerspec)。請注意，這不會取代應用程式或服務資訊清單，而是會描述其中部分是叢集 Resource Manager 範本的一部分。 以下是範例範本，其中包括部署 *Application1*無狀態服務 *Service1* 和具狀態服務 *Service2*：
+4. 在 Resource Manager 範本的叢集宣告下方，描述每個應用程式的屬性。 這些屬性包括複本或執行個體計數，以及資源 (其他應用程式或服務) 之間的任何相依性鏈結。 有關綜合屬性的清單，請參閱 REST [API 斯瓦格規格](https://aka.ms/sfrpswaggerspec)。請注意，這不會替換應用程式或服務清單，而是描述其中的某些內容，作為群集資源管理器範本的一部分。 以下是範例範本，其中包括部署 *Application1*無狀態服務 *Service1* 和具狀態服務 *Service2*：
 
    ```json
    {
@@ -248,20 +248,20 @@ ms.locfileid: "75610245"
 
 5. 部署！ 
 
-## <a name="remove-service-fabric-resource-provider-application-resource"></a>移除 Service Fabric 資源提供者應用程式資源
-以下會觸發從叢集取消布建應用程式套件，而這會清除所使用的磁碟空間：
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>刪除服務結構資來源提供者應用程式資源
+以下內容將觸發從群集取消預配的應用包，這將清理使用的磁碟空間：
 ```powershell
 Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2019-03-01" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
 ```
-只要從 ARM 範本移除 ServiceFabric/叢集/應用程式，就不會解除布建應用程式
+只需從 ARM 範本中刪除 Microsoft.ServiceFabric/群集/應用程式，就不會取消預配應用程式
 
 >[!NOTE]
-> 移除完成後，您就不應該再看到 SFX 或 ARM 中的套件版本。 您無法刪除應用程式執行時所使用的應用程式類型版本資源;ARM/SFRP 會防止這種情況。 如果您嘗試解除布建執行中的封裝，SF 執行時間會阻止它。
+> 刪除完成後，您不應再在 SFX 或 ARM 中看到包版本。 不能刪除應用程式正在運行的應用程式類型版本資源;因此，您可以刪除應用程式正在運行的應用程式類型版本資源。ARM/SFRP 將阻止這種情況。 如果嘗試取消預配正在運行的包，SF 運行時將阻止它。
 
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>透過 Resource Manager 管理現有應用程式
 
-如果您的叢集已啟動，而且您已經將幾個要視為 Resource Manager 資源管理的應用程式部署在叢集之上，與其移除應用程式再重新部署，不如透過使用相同 API 的 PUT 呼叫讓應用程式獲得 Resource Manager 資源的認可。 如需其他資訊，請參閱[什麼是 Service Fabric 應用程式資源模型？](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
+如果您的叢集已啟動，而且您已經將幾個要視為 Resource Manager 資源管理的應用程式部署在叢集之上，與其移除應用程式再重新部署，不如透過使用相同 API 的 PUT 呼叫讓應用程式獲得 Resource Manager 資源的認可。 有關詳細資訊，請參閱[什麼是服務結構應用程式資源模型？](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
 > 若要讓叢集升級忽略狀況不良的應用程式，客戶可以在 “upgradeDescription/healthPolicy” 區段指定 “maxPercentUnhealthyApplications: 100”；所有設定的詳細說明位於 [Service Fabric REST API 叢集升級原則文件](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)中。

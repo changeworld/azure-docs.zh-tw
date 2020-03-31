@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure DevTest Labs 進行訓練 | Microsoft Docs
-description: 本文提供詳細的步驟，可讓您在 Azure DevTest Labs 中設定實驗室以進行定型。
+description: 本文提供了為在 Azure DevTest 實驗室中設置培訓實驗室可以遵循的詳細步驟。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759972"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure DevTest Labs 進行訓練

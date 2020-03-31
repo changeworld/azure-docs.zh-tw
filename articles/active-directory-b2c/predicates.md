@@ -1,7 +1,7 @@
 ---
 title: Predicates 與 PredicateValidations
 titleSuffix: Azure AD B2C
-description: 使用 Azure Active Directory B2C 中的自訂原則，防止將格式不正確的資料新增至您的 Azure AD B2C 租使用者。
+description: 通過使用 Azure 活動目錄 B2C 中的自訂策略，防止將格式不正確的資料添加到 Azure AD B2C 租戶。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,27 +12,27 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187231"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 與 PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-述詞和**PredicateValidations**元素可讓您執行驗證**程式，以**確保在您的 Azure Active Directory B2C （Azure AD B2C）租使用者中只輸入正確格式的資料。
+**謂詞**和**謂詞驗證**元素使您能夠執行驗證過程，以確保僅將格式正確的資料輸入 Azure 活動目錄 B2C （Azure AD B2C） 租戶。
 
 下圖顯示元素之間的關聯性：
 
-![顯示述詞和述詞驗證關聯性的圖表](./media/predicates/predicates.png)
+![顯示謂詞和謂詞驗證關係的圖表](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>述詞
 
 **Predicate** 元素會定義基本驗證來檢查宣告類型的值，並傳回 `true` 或 `false`。 您可以使用指定的 **Method** 元素及與該方法相關聯的一組 **Parameter** 元素來完成驗證。 例如，述詞可以檢查字串宣告值的長度是否介於所指定 Minimum 和 Maximum 參數的範圍內，或者字串宣告值是否包含字元集。 **UserHelpText** 元素會在檢查失敗時，為使用者提供錯誤訊息。 **UserHelpText** 元素的值可以使用[語言自訂](localization.md)進行當地語系化。
 
-述**詞元素必須**緊接在[BuildingBlocks](buildingblocks.md)元素內的**ClaimsSchema**元素後面。
+**謂詞**元素必須直接出現在[構建塊](buildingblocks.md)元素中的 **"聲明架構**"元素之後。
 
 **Predicates** 元素包含下列元素：
 
@@ -42,17 +42,17 @@ ms.locfileid: "78187231"
 
 **Predicate** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
 | 方法 | 是 | 要用於驗證的方法類型。 可能的值：**IsLengthRange**、**MatchesRegex**、**IncludesCharacters** 或 **IsDateRange**。 **IsLengthRange** 值可讓您檢查字串宣告值的長度是否位於所指定 Minimum 和 Maximum 參數的範圍內。 **MatchesRegex** 值會檢查字串宣告值是否符合規則運算式。 **IncludesCharacters** 值會檢查字串宣告值是否包含字元集。 **IsDateRange** 值會檢查日期宣告值是否介於所指定 Minimum 和 Maximum 參數的範圍之間。 |
-| HELPTEXT | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
+| HelpText | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
 
 **Predicate** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | 不再如果檢查失敗，則為使用者提供錯誤訊息。 |
+| UserHelpText | 0:1 | （已棄用）如果檢查失敗，則給使用者發送錯誤訊息。 |
 | 參數 | 1:1 | 適用於字串驗證方法類型的參數。 |
 
 **Parameters** 元素包含下列元素：
@@ -98,7 +98,7 @@ ms.locfileid: "78187231"
 </Predicate>
 ```
 
-下列範例顯示 `IsDateRange` 方法，以及可使用 `Minimum` 和 `Maximum` 格式來指定日期範圍的 `yyyy-MM-dd` 和 `Today` 參數。
+下列範例顯示 `IsDateRange` 方法，以及可使用 `yyyy-MM-dd` 和 `Today` 格式來指定日期範圍的 `Minimum` 和 `Maximum` 參數。
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -113,7 +113,7 @@ ms.locfileid: "78187231"
 
 當述詞定義驗證以針對宣告類型進行檢查時，**PredicateValidations** 會群組一組述詞，以形成可套用至宣告類型的使用者輸入驗證。 每個 **PredicateValidation** 元素均包含一組 **PredicateGroup** 元素，其中包含一組指向 **Predicate** 的 **PredicateReference** 元素。 若要通過驗證，宣告的值應該在所有的 **PredicateGroup** 下方，使用它們的 **PredicateReference** 元素組來傳遞任何述詞的所有測試。
 
-**PredicateValidations**元素必須緊接在[BuildingBlocks](buildingblocks.md)元素內的述**詞元素後面**。
+**謂詞驗證**元素必須直接出現在[構建塊](buildingblocks.md)元素中的**謂詞**元素之後。
 
 ```XML
 <PredicateValidations>
@@ -141,7 +141,7 @@ ms.locfileid: "78187231"
 
 **PredicateValidation** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞驗證的識別碼。 **ClaimType** 元素可以在原則中使用這個識別碼。 |
 
@@ -159,7 +159,7 @@ ms.locfileid: "78187231"
 
 **PredicateGroup** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞群組的識別碼。  |
 
@@ -172,9 +172,9 @@ ms.locfileid: "78187231"
 
 **PredicateReferences** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，則值必須符合所有述詞定義。 |
+| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，該值必須匹配所有謂詞定義。 |
 
 **PredicateReferences** 元素包含下列元素：
 
@@ -184,7 +184,7 @@ ms.locfileid: "78187231"
 
 **PredicateReference** 元素包含下列屬性：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞驗證的識別碼。  |
 
@@ -193,14 +193,14 @@ ms.locfileid: "78187231"
 
 利用 **Predicates** 和 **PredicateValidationsInput**，您可以控制使用者在建立帳戶時所提供密碼的複雜度需求。 根據預設，Azure AD B2C 會使用強式密碼。 Azure AD B2C 也支援組態選項，可控制客戶可以使用的密碼複雜度。 您可以使用這些述詞元素來定義密碼複雜度：
 
-- 使用 **方法的**IsLengthBetween8And64`IsLengthRange`，驗證密碼長度必須介於 8 到 64 個字元之間。
-- 使用 **方法的**Lowercase`IncludesCharacters`，驗證密碼包含小寫字母。
-- 使用 **方法的**Uppercase`IncludesCharacters`，驗證密碼包含大寫字母。
-- 使用 **方法的**Number`IncludesCharacters`，驗證密碼包含數字。
-- **符號**：使用 `IncludesCharacters` 方法，會驗證密碼是否包含數個符號字元的其中一個。
-- 使用 **方法的**PIN`MatchesRegex`，驗證密碼只包含數字。
-- 使用 **方法的**AllowedAADCharacters`MatchesRegex`，驗證提供了只對密碼無效的字元。
-- 使用 **方法的**DisallowedWhitespace`MatchesRegex`，驗證密碼不是以空白字元開始或結尾。
+- 使用 `IsLengthRange` 方法的 **IsLengthBetween8And64**，驗證密碼長度必須介於 8 到 64 個字元之間。
+- 使用 `IncludesCharacters` 方法的 **Lowercase**，驗證密碼包含小寫字母。
+- 使用 `IncludesCharacters` 方法的 **Uppercase**，驗證密碼包含大寫字母。
+- 使用 `IncludesCharacters` 方法的 **Number**，驗證密碼包含數字。
+- **Symbol**使用 方法`IncludesCharacters`的符號驗證密碼是否包含多個符號字元之一。
+- 使用 `MatchesRegex` 方法的 **PIN**，驗證密碼只包含數字。
+- 使用 `MatchesRegex` 方法的 **AllowedAADCharacters**，驗證提供了只對密碼無效的字元。
+- 使用 `MatchesRegex` 方法的 **DisallowedWhitespace**，驗證密碼不是以空白字元開始或結尾。
 
 ```XML
 <Predicates>
@@ -343,11 +343,11 @@ ms.locfileid: "78187231"
 
 以下顯示當 Azure AD B2C 顯示錯誤訊息時組織元素的方式：
 
-![述詞和 PredicateGroup 密碼複雜度範例的圖表](./media/predicates/predicates-pass.png)
+![謂詞和謂片語密碼複雜性圖示例](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>設定日期範圍
 
-利用 **Predicates** 和 **PredicateValidations** 元素，您可以使用 **來控制**UserInputType`DateTimeDropdown` 的最小和最大日期值。 若要這樣做，請使用 **方法來建立**Predicate`IsDateRange`，並提供 Minimum 和 Maximum 參數。
+利用 **Predicates** 和 **PredicateValidations** 元素，您可以使用 `DateTimeDropdown` 來控制 **UserInputType** 的最小和最大日期值。 若要這樣做，請使用 `IsDateRange` 方法來建立 **Predicate**，並提供 Minimum 和 Maximum 參數。
 
 ```XML
 <Predicates>
@@ -360,7 +360,7 @@ ms.locfileid: "78187231"
 </Predicates>
 ```
 
-使用對 **述詞的參考來新增**PredicateValidation`DateRange`。
+使用對 `DateRange` 述詞的參考來新增 **PredicateValidation**。
 
 ```XML
 <PredicateValidations>

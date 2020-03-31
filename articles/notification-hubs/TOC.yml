@@ -11,7 +11,9 @@
   items:
     - name: 建立通知中樞 - Azure 入口網站
       href: create-notification-hub-portal.md
-    - name: 設定通知中樞 - Azure 入口網站
+    - name: 建立通知中樞 - Azure CLI
+      href: create-notification-hub-azure-cli.md
+    - name: 設定通知中樞
       href: configure-notification-hub-portal-pns-settings.md
 - name: 教學課程
   items:
@@ -140,6 +142,8 @@
       href: notification-hubs-push-notification-fixer.md
     - name: 使用百度雲推送傳送推播通知
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: 透過通知中樞使用 APNS VOIP
+      href: voip-apns.md
 - name: 參考
   items:
     - name: .NET

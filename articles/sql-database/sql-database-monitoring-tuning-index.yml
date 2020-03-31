@@ -3,7 +3,7 @@ title: Azure SQL Database 監視和效能微調
 summary: Azure SQL Database 提供了可協助您收集計量和診斷資訊的工具，以監視資料庫並改善其效能。
 metadata:
   title: Azure SQL Database 監視和微調文件
-  description: Azure SQL Database 提供了可協助您收集計量和診斷資訊的工具，以監視資料庫並改善其效能。
+  description: 深入了解 Azure SQL Database 監視和效能微調工具，以協助您收集計量和診斷，並改善資料庫效能。
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79208902"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373108"
 landingContent:
 - title: 關於監視和效能微調
   linkLists:

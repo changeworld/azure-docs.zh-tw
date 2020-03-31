@@ -1,73 +1,90 @@
 ---
-title: 在不同的網路拓撲中設定 Azure Dev Spaces 的網路功能
+title: 為不同網路拓撲中的 Azure 開發空間配置網路
 services: azure-dev-spaces
-ms.date: 01/10/2020
+ms.date: 03/17/2020
 ms.topic: conceptual
-description: 描述在 Azure Kubernetes Services 中執行 Azure Dev Spaces 的網路需求
-keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，CNI，kubenet，SDN，網路
-ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+description: 描述在 Azure 庫伯奈斯服務中運行 Azure 開發空間的網路要求
+keywords: Azure 開發空間、開發空間、Docker、庫伯奈斯、Azure、AKS、Azure 庫伯奈斯服務、容器、CNI、kubenet、SDN、網路
+ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265346"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240577"
 ---
-# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>在不同的網路拓撲中設定 Azure Dev Spaces 的網路功能
+# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>為不同網路拓撲中的 Azure 開發空間配置網路
 
-Azure Dev Spaces 在具有預設網路設定的 Azure Kubernetes Service （AKS）叢集上執行。 如果您想要變更 AKS 叢集的網路設定（例如將叢集放在防火牆後方、使用網路安全性群組，或使用網路原則），您必須納入執行 Azure Dev Spaces 的其他考慮。
+Azure 開發空間在具有預設網路配置的 Azure 庫伯奈斯服務 （AKS） 群集上運行。 如果要更改 AKS 群集的網路設定（例如將群集置於防火牆後、使用網路安全性群組或使用網路原則），則必須合併運行 Azure Dev Space 的其他注意事項。
 
-![虛擬網路設定](media/configure-networking/virtual-network-clusters.svg)
+![虛擬網路配置](media/configure-networking/virtual-network-clusters.svg)
 
-## <a name="virtual-network-or-subnet-configurations"></a>虛擬網路或子網設定
+## <a name="virtual-network-or-subnet-configurations"></a>虛擬網路或子網配置
 
-您的 AKS 叢集可能會有不同的虛擬網路或子網設定，以限制 AKS 叢集的輸入或輸出流量。 例如，您的叢集可能位於防火牆後方，例如 Azure 防火牆，或者您可能會使用網路安全性群組或自訂角色來限制網路流量。
+AKS 群集可能具有不同的虛擬網路或子網配置，以限制 AKS 群集的入口或出口流量。 例如，群集可能落後于防火牆（如 Azure 防火牆），或者您可以使用網路安全性群組或自訂角色來限制網路流量。
 
-Azure Dev Spaces 具有輸入*和*輸出網路流量，以及*僅*輸入流量的特定需求。 如果您在 AKS 叢集上使用 Azure Dev Spaces，而該叢集的虛擬網路或子網設定會限制 AKS 叢集的流量，則您必須遵循下列僅輸入和輸出流量需求，才能 Azure Dev Spaces正常運作。
+Azure 開發空間對*入口和出口*網路流量以及*僅入口*流量有某些要求。 如果在 AKS 群集上使用 Azure 開發人員空間，其虛擬網路或子網配置限制 AKS 群集的流量，則必須僅遵循以下入口和入口和出口流量要求，以便 Azure 開發空間功能正常。
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>輸入和輸出網路流量需求
+### <a name="ingress-and-egress-network-traffic-requirements"></a>入口和出口網路流量要求
 
-Azure Dev Spaces 需要下列 Fqdn 的輸入和輸出流量：
+Azure 開發空間需要以下 FQDN 的入口和出口流量：
 
 | FQDN                       | 連接埠       | 使用      |
 |----------------------------|------------|----------|
-| cloudflare.docker.com      | HTTPS：443 | 提取 docker 映射以進行 Azure Dev Spaces |
-| gcr.io                     | HTTPS：443 | 提取 helm 映射以進行 Azure Dev Spaces |
-| storage.googleapis.com     | HTTPS：443 | 提取 helm 映射以進行 Azure Dev Spaces |
-| azds-*. azds. io             | HTTPS：443 | 與 Azure Dev Spaces 控制器的 Azure Dev Spaces 後端服務進行通訊。 您可以在*dataplaneFqdn*的中找到確切的 FQDN `USERPROFILE\.azds\settings.json` |
+| cloudflare.docker.com      | HTTPS：443 | 為 Azure 開發空間提取 Docker 映射 |
+| gcr.io                     | HTTPS：443 | 為 Azure 開發空間拉舵映射 |
+| storage.googleapis.com     | HTTPS：443 | 為 Azure 開發空間拉舵映射 |
+| 阿茲茲-*.azds.io             | HTTPS：443 | 與 Azure 開發人員空間控制器的 Azure 開發空間後端服務進行通信。 確切的 FQDN 可在*資料平面Fqdn*中找到。`USERPROFILE\.azds\settings.json` |
 
-更新您的防火牆或安全性設定，以允許進出上述所有 Fqdn 的網路流量。 例如，如果您使用防火牆來保護您的網路，則應該將上述 Fqdn 新增至防火牆的應用程式規則，以允許進出這些網域的流量。
+更新防火牆或安全配置，以允許網路流量與上述所有 FQDN 進行傳輸。 例如，如果您使用防火牆來保護網路，則應將上述 FQDN 添加到防火牆的應用程式規則中，以允許流量來自這些域。
 
-### <a name="ingress-only-network-traffic-requirements"></a>僅輸入網路流量需求
+### <a name="ingress-only-network-traffic-requirements"></a>僅入口網路流量要求
 
-Azure Dev Spaces 提供 Kubernetes 的命名空間層級路由，以及使用自己的 FQDN 來公開存取服務。 若要讓這兩項功能都能正常執行，請更新防火牆或網路設定，以允許公用輸入至叢集上 Azure Dev Spaces 輸入控制器的外部 IP 位址。 或者，您可以建立[內部負載平衡器][aks-internal-lb]，並在防火牆中新增 NAT 規則，將防火牆的公用 ip 轉譯為內部負載平衡器的 ip。 您也可以使用[traefik][traefik-ingress]或[NGINX][nginx-ingress]來建立自訂輸入控制器。
+Azure 開發空間提供 Kubernetes 命名空間級路由以及使用其自己的 FQDN 對服務的公共訪問。 要使這兩個功能都正常工作，請更新防火牆或網路設定，以允許公共進入群集上的 Azure Dev Space 入口控制器的外部 IP 位址。 或者，您可以創建[內部負載等化器][aks-internal-lb]並在防火牆中添加 NAT 規則，將防火牆的公共 IP 轉換為內部負載等化器的 IP。 您還可以使用[traefik][traefik-ingress]或[NGINX][nginx-ingress]創建自訂入口控制器。
 
-## <a name="aks-cluster-network-requirements"></a>AKS 叢集網路需求
+## <a name="aks-cluster-network-requirements"></a>AKS 群集網路要求
 
-AKS 可讓您使用[網路原則][aks-network-policies]來控制叢集中 pod 之間的輸入和輸出流量，以及來自 pod 的輸出流量。 Azure Dev Spaces 具有輸入*和*輸出網路流量，以及*僅*輸入流量的特定需求。 如果您在具有 AKS 網路原則的 AKS 叢集上使用 Azure Dev Spaces，則必須遵循下列僅輸入和輸出流量需求，Azure Dev Spaces 才能正常運作。
+AKS 允許您使用[網路原則][aks-network-policies]來控制群集上的 Pod 之間的入口和出口流量以及來自 Pod 的出入口流量。 Azure 開發空間對*入口和出口*網路流量以及*僅入口*流量有某些要求。 如果在 AKS 群集上使用 Azure 開發人員空間，並且使用 AKS 網路原則，則必須僅遵循以下入口以及入口和出口流量要求，以便 Azure 開發空間正常運行。
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>輸入和輸出網路流量需求
+### <a name="ingress-and-egress-network-traffic-requirements"></a>入口和出口網路流量要求
 
-Azure Dev Spaces 可讓您直接與叢集中的開發人員空間中的 pod 進行通訊，以進行偵錯工具。 若要讓這項功能能夠正常執行，請新增網路原則，允許輸入和輸出通訊到 Azure Dev Spaces 基礎結構的 IP 位址，這[會因區域而異][dev-spaces-ip-auth-range-regions]。
+Azure 開發人員空間允許您直接與群集上的開發空間中的窗格進行通信以進行調試。 要此功能正常工作，添加一個網路原則，允許入口和傳出通信到 Azure 開發人員空間基礎結構的 IP 位址，[該位址因區域而異][dev-spaces-ip-auth-range-regions]。
 
-### <a name="ingress-only-network-traffic-requirements"></a>僅輸入網路流量需求
+### <a name="ingress-only-network-traffic-requirements"></a>僅入口網路流量要求
 
-Azure Dev Spaces 提供跨命名空間的 pod 之間的路由。 例如，啟用 Azure Dev Spaces 的命名空間可以具有父系/子系關聯性，這可讓跨父系和子命名空間的 pod 之間路由傳送網路流量。 若要讓這項功能能夠正常執行，請新增網路原則，以允許在路由傳送網路流量的命名空間（例如，父系/子命名空間）之間的流量。 此外，如果輸入控制器已部署至*azds*命名空間，則輸入控制器必須與不同命名空間中的 Azure 開發人員空間所檢測的 pod 進行通訊。 若要讓輸入控制器正常運作，必須允許從*azds*命名空間到已檢測 pod 執行所在的命名空間的網路流量。
+Azure 開發空間提供跨命名空間的窗格之間的路由。 例如，啟用 Azure 開發人員空間的命名空間可以具有父/子關係，這允許在父和子命名空間的 pod 之間路由網路流量。 Azure 開發空間還使用其自己的 FQDN 公開服務終結點。 要配置不同的公開服務的方式及其如何影響命名空間級別路由，請參閱[使用不同的終結點選項][endpoint-options]。
 
 ## <a name="using-azure-cni"></a>使用 Azure CNI
 
-根據預設，AKS 叢集會設定為使用[kubenet][aks-kubenet]的網路功能，可與 Azure Dev Spaces 搭配運作。 您也可以將 AKS 叢集設定為使用[Azure 容器網路介面（CNI）][aks-cni]。 若要在您的 AKS 叢集上使用 Azure Dev Spaces 搭配 Azure CNI，請針對 Azure Dev Spaces 所部署的 pod，允許您的虛擬網路和子網位址空間最多10個私人 IP 位址。 如需允許私人 IP 位址的詳細資訊，請[參閱 AKS AZURE CNI 檔][aks-cni-ip-planning]。
+預設情況下，AKS 群集配置為將[kubenet][aks-kubenet]用於網路，該群集適用于 Azure 開發空間。 還可以將 AKS 群集配置為使用[Azure 容器網路介面 （CNI）。][aks-cni] 要在 AKS 群集上使用 Azure 開發人員空間與 Azure CNI 一起使用，請允許虛擬網路和子網位址空間最多 10 個私人 IP 位址，用於 Azure 開發空間部署的 Pod。 有關允許私人 IP 位址的更多詳細資訊，請參閱[AKS Azure CNI 文檔][aks-cni-ip-planning]。
 
 ## <a name="using-api-server-authorized-ip-ranges"></a>使用 API 伺服器授權的 IP 範圍
 
-AKS 叢集可讓您設定額外的安全性，以限制哪些 IP 位址可以與您的叢集互動，例如使用自訂虛擬網路，或[使用授權的 IP 範圍來保護 API 伺服器的存取權][aks-ip-auth-ranges]。 若要在[建立][aks-ip-auth-range-create]叢集時使用這種額外的安全性 Azure Dev Spaces，您必須根據[您的區域允許額外的範圍][dev-spaces-ip-auth-range-regions]。 您也可以[更新][aks-ip-auth-range-update]現有的叢集，以允許這些額外的範圍。 您也需要允許連線到 AKS 叢集的任何開發電腦的 IP 位址，以進行偵錯工具以連線到您的 API 伺服器。
+AKS 群集允許您配置其他安全性，以限制哪些 IP 位址可以與群集交互，例如使用自訂虛擬網路或使用[授權的 IP 範圍保護對 API 伺服器的訪問][aks-ip-auth-ranges]。 要在[創建][aks-ip-auth-range-create]群集時使用此附加安全性時使用 Azure 開發人員空間，必須[允許基於區域 的其他範圍][dev-spaces-ip-auth-range-regions]。 您還可以[更新][aks-ip-auth-range-update]現有群集以允許這些其他範圍。 您還需要允許連接到 AKS 群集的任何開發電腦的 IP 位址進行調試以連接到 API 伺服器。
 
-## <a name="using-aks-private-clusters"></a>使用 AKS 私人叢集
+## <a name="using-aks-private-clusters"></a>使用 AKS 專用群集
 
-目前， [AKS 私人][aks-private-clusters]叢集不支援 Azure Dev Spaces。
+此時[，AKS 專用群集][aks-private-clusters]不支援 Azure 開發空間。
+
+## <a name="using-different-endpoint-options"></a>使用不同的終結點選項
+
+Azure 開發空間可以選擇公開在 AKS 上運行的服務的終結點。 在群集上啟用 Azure 開發空間時，有以下選項用於配置群集的終結點類型：
+
+* *公共*終結點（預設值為預設終結點）部署具有公共 IP 位址的入口控制器。 公共 IP 位址在群集的 DNS 上註冊，允許使用 URL 公開訪問您的服務。 您可以使用 查看此 URL。 `azds list-uris`
+* *專用*終結點部署具有私人 IP 位址的入口控制器。 使用私人 IP 位址時，只能通過群集的虛擬網路內部訪問群集的負載等化器。 負載等化器的私人 IP 位址在群集的 DNS 上註冊，以便可以使用 URL 訪問群集虛擬網路中的服務。 您可以使用 查看此 URL。 `azds list-uris`
+* 為終結點選項設置 *"無"* 會導致不部署入口控制器。 未部署入口控制器[，Azure 開發空間路由功能][dev-spaces-routing]將不起作用。 或者，您可以使用[traefik][traefik-ingress]或[NGINX][nginx-ingress]實現您自己的入口控制器解決方案，這將允許路由功能再次工作。
+
+要配置終結點選項，在群集上啟用 Azure 開發空間時，請使用 *-e*或 *--終結點*。 例如：
+
+> [!NOTE]
+> 終結點選項要求您運行 Azure CLI 版本 2.2.0 或更高版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
+```
 
 ## <a name="client-requirements"></a>用戶端需求
 
-Azure Dev Spaces 使用用戶端工具（例如 Azure Dev Spaces CLI 擴充功能、Visual Studio Code 延伸模組，以及 Visual Studio 擴充功能）與您的 AKS 叢集進行通訊，以進行偵錯工具。 若要使用 Azure Dev Spaces 的用戶端工具，請允許從開發電腦到*azds-\*. azds.io*網域的流量。 如需確切的 FQDN，請參閱 `USERPROFILE\.azds\settings.json` 中的*dataplaneFqdn* 。 如果使用[API 伺服器授權的 IP 範圍][auth-range-section]，您也需要允許連線到您的 AKS 叢集的任何開發電腦的 ip 位址，以進行偵錯工具以連線到您的 API 伺服器。
+Azure 開發空間使用用戶端工具（如 Azure 開發空間 CLI 擴展、視覺化工作室代碼擴展和視覺化工作室擴展）與 AKS 群集進行調試。 要使用 Azure 開發人員空間用戶端工具，請允許從開發電腦到*azds-.azds.io\** 域的流量。 有關確切的`USERPROFILE\.azds\settings.json`*FQDN，請參閱資料平面Fqdn。* 如果使用[API 伺服器授權的 IP 範圍][auth-range-section]，還需要允許連接到 AKS 群集的任何開發電腦的 IP 位址進行調試以連接到 API 伺服器。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -86,7 +103,10 @@ Azure Dev Spaces 使用用戶端工具（例如 Azure Dev Spaces CLI 擴充功�
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
+[azure-cli-install]: /cli/azure/install-azure-cli
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-routing]: how-dev-spaces-works-routing.md
+[endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [team-quickstart]: quickstart-team-development.md

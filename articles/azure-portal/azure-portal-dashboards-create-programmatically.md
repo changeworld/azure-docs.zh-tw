@@ -1,6 +1,6 @@
 ---
 title: 以程式設計方式建立 Azure Dashboards
-description: 在 Azure 入口網站中使用儀表板做為範本，以程式設計方式建立 Azure 儀表板。 包含 JSON 參考。
+description: 使用 Azure 門戶中的儀表板作為範本以程式設計方式創建 Azure 儀表板。 包括 JSON 引用。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -11,89 +11,85 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 414427c722b3531c994bb99dbd5d1332c5253dfd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5329a7b21aff7ecffc7153c7aa74ddb93bce75cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900905"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132024"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以程式設計方式建立 Azure Dashboards
 
-本文會逐步解說以程式設計方式建立和發佈 Azure 儀表板的流程。 文件全程參照以下所示的儀表板。
+本文將引導您完成以程式設計方式創建和發佈 Azure 儀表板的過程。 文件全程參照以下所示的儀表板。
 
 ![範例儀表板](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-[Azure 入口網站](https://portal.azure.com)中的共用儀表板是[資源](../azure-resource-manager/management/overview.md)，就像虛擬機器和儲存體帳戶一樣。 您可以使用[AZURE RESOURCE MANAGER REST api](/rest/api/)、 [Azure CLI](/cli/azure)和[Azure PowerShell 命令](/powershell/azure/get-started-azureps)，以程式設計方式管理資源。  
+[Azure 門戶](https://portal.azure.com)中的共用儀表板與虛擬機器和存儲帳戶一樣[是資源](../azure-resource-manager/management/overview.md)。 可以使用[Azure 資源管理器 REST API、Azure](/rest/api/) [CLI](/cli/azure)和[Azure PowerShell 命令](/powershell/azure/get-started-azureps)以程式設計方式管理資源。
 
-許多功能都建置於這些 Api 上，讓資源管理變得更容易。 這些 API 和工具都能夠建立、列出、擷取、修改和刪除資源。 由於儀表板是資源，因此您可以挑選您最愛的 API 或工具來使用。
+許多功能都基於這些 API 構建，使資源管理更加輕鬆。 這些 API 和工具都能夠建立、列出、擷取、修改和刪除資源。 由於儀表板是資源，因此您可以選擇您喜愛的 API 或工具。
 
-無論您使用哪一種工具，您都必須建立儀表板物件的 JSON 標記法。 此物件包含儀表板上磚的相關資訊。 其中包括大小、位置、它們所系結的資源，以及任何使用者自訂。
+無論使用哪種工具，以程式設計方式創建儀表板，您都構造了儀表板物件的 JSON 表示形式。 此物件包含有關儀表板上的磁貼的資訊。 它包括大小、位置、它們綁定到的資源以及任何使用者自訂項。
 
-若要建立此 JSON 檔，最實用的方式是使用 Azure 入口網站。 您可以互動方式新增和定位您的磚。 然後，匯出 JSON 並從結果建立範本，以供稍後用於腳本、程式和部署工具。
+構建此 JSON 文檔的最實際方法是使用 Azure 門戶。 您可以以對話模式添加和放置磁貼。 然後匯出 JSON 並從結果創建範本，以便以後在腳本、程式和部署工具中使用。
 
 ## <a name="create-a-dashboard"></a>建立儀表板
 
-若要建立儀表板，請從 [ [Azure 入口網站](https://portal.azure.com)] 功能表選取 [**儀表板**]，然後選取 [**新增儀表板**]。
+要創建儀表板，請從 Azure[門戶](https://portal.azure.com)功能表中選擇**儀表板**，然後選擇 **"新建儀表板**"。
 
 ![新儀表板命令](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
-使用 [磚庫] 來尋找並新增磚。 透過拖曳和置放即可新增圖格。 有些磚支援使用拖曳控點來調整大小。
+使用磁貼庫查找和添加磁貼。 透過拖曳和置放即可新增圖格。 某些磁貼支援使用拖動手柄調整大小。
 
-![拖曳控點以變更大小](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
+![拖動手柄以更改大小](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
 
-其他人在其內容功能表中有固定的大小可供選擇。
+其他人有固定的大小可供選擇，從他們的內容功能表。
 
-![大小內容功能表變更大小](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)
+![調整內容功能表以更改大小](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)
 
 ## <a name="share-the-dashboard"></a>共用儀表板
 
-設定儀表板之後，接下來的步驟是使用**Share**命令發佈儀表板，然後使用資源總管來提取 JSON。
+配置儀表板後，下一步是使用 **"共用"** 命令發佈儀表板。
 
 ![共用儀表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-選取 [**共用**] 會提示您選擇要發佈到哪個訂用帳戶和資源群組。 您必須具有所選訂用帳戶和資源群組的寫入權限。 如需詳細資訊，請參閱[使用 AZURE RBAC 新增或移除角色指派和 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)。
+選擇 **"共用**"會提示您選擇要發佈到的訂閱和資源組。 您必須具有對您選擇的訂閱和資源組的寫入存取權限。 有關詳細資訊，請參閱使用[Azure RBAC 和 Azure 門戶添加或刪除角色指派](../role-based-access-control/role-assignments-portal.md)。
 
-![對共用和存取進行變更](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
+![更改共用和訪問](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
 ## <a name="fetch-the-json-representation-of-the-dashboard"></a>擷取儀表板的 JSON 表示法
 
-發佈只需要幾秒鐘。  完成後，下一個步驟是移至[資源總管](https://portal.azure.com/#blade/HubsExtension/ArmExplorerBlade)來提取 JSON。
+發佈只需要幾秒鐘。 完成後，下一步是使用 **"下載"** 命令獲取 JSON。
 
-![流覽資源總管](./media/azure-portal-dashboards-create-programmatically/search-resource-explorer.png)
-
-從 [資源總管] 中，流覽至您所選擇的訂用帳戶和資源群組。 接下來，選取新發行的儀表板資源以顯示 JSON。
-
-![資源總管中的 view JSON](./media/azure-portal-dashboards-create-programmatically/resource-explorer-json-detail.png)
+![下載 JSON 表示](./media/azure-portal-dashboards-create-programmatically/download-command.png)
 
 ## <a name="create-a-template-from-the-json"></a>從 JSON 建立範本
 
-下一個步驟是從這個 JSON 建立範本。 以程式設計方式使用該範本搭配適當的資源管理 Api、命令列工具，或在入口網站內。
+下一步是使用此 JSON 創建範本。 在適當的資源管理 API、命令列工具或閘戶中以程式設計方式使用該範本。
 
-您不需要完全瞭解儀表板 JSON 結構來建立範本。 在大部分情況下，您會想要保留每個磚的結構和設定。 然後參數化磚所指向的一組 Azure 資源。 查看匯出的 JSON 儀表板，並尋找所有出現的 Azure 資源識別碼。 我們的範例儀表板有多個圖格全部指向單一 Azure 虛擬機器。 這是因為我們的儀表板只會查看此單一資源。 如果您搜尋範例 JSON （包含在檔結尾，則針對 "/subscriptions"），您會發現此識別碼出現數次。
+創建範本不必完全理解儀表板 JSON 結構。 在大多數情況下，您希望保留每個磁貼的結構和配置。 然後參數化磁貼指向的 Azure 資源集。 查看匯出的 JSON 儀表板，並查找 Azure 資源標識的所有匹配項。 我們的範例儀表板有多個圖格全部指向單一 Azure 虛擬機器。 這是因為我們的儀表板只查看此單個資源。 如果搜索文檔末尾的示例 JSON 以查找"/訂閱"，則會發現此 ID 的多個匹配項。
 
 `/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1`
 
-若要在未來為任何虛擬機器發佈此儀表板，請在 JSON 中將此字串的每個出現參數化。
+要在將來為任何虛擬機器發佈此儀表板，在 JSON 中參數化此字串的每個發生。
 
-在 Azure 中建立資源的 Api 有兩種方法：
+在 Azure 中創建資源的 API 有兩種方法：
 
-* 命令式 Api 一次會建立一個資源。 如需詳細資訊，請參閱[資源](/rest/api/resources/resources)。
-* 以範本為基礎的部署系統，可透過單一 API 呼叫來建立多個相依的資源。 如需詳細資訊，請參閱[使用 Resource Manager 範本部署資源和 Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)。
+* 命令性 API 一次創建一個資源。 如需詳細資訊，請參閱[資源](/rest/api/resources/resources)。
+* 一種基於範本的部署系統，使用單個 API 呼叫創建多個從屬資源。 有關詳細資訊，請參閱[使用資源管理器範本和 Azure PowerShell 部署資源](../azure-resource-manager/resource-group-template-deploy.md)。
 
-以範本為基礎的部署支援參數化和範本化。 我們會在本文中使用此方法。
+基於範本的部署支援參數化和範本化。 在本文中，我們使用此方法。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>以程式設計方式使用範本部署從範本建立儀表板
 
-Azure 可讓您協調多個資源的部署。 您會建立部署範本，以表示要部署的一組資源，以及它們之間的關聯性。  每個資源的 JSON 格式都相同，就如同您逐一建立這些資源一般。 差別在於範本語言會新增一些概念，例如變數、參數、基本函數等等。 只有在範本部署的內容中，才支援這個擴充語法。 如果搭配稍早所討論的命令式 Api 使用，則無法使用。 如需詳細資訊，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 可讓您協調多個資源的部署。 創建一個部署範本，用於表示要部署的資源集及其之間的關係。  每個資源的 JSON 格式都相同，就如同您逐一建立這些資源一般。 差異在於，範本語言會加入一些概念，例如變數、參數、基本功能等等。 此擴展語法僅在範本部署的上下文中受支援。 如果與前面討論的命令 API 一起使用，則它不起作用。 有關詳細資訊，請參閱瞭解[Azure 資源管理器範本的結構和語法](../azure-resource-manager/resource-group-authoring-templates.md)。
 
-參數化應該使用範本的參數語法來完成。  您會取代我們稍早找到的資源識別碼的所有實例，如下所示。
+應使用範本的參數語法進行參數化。  您可以替換我們前面找到的資源識別碼 的所有實例，如下所示。
 
-具有硬式編碼資源識別碼的範例 JSON 屬性：
+具有硬編碼資源識別碼 的示例 JSON 屬性：
 
 ```json
 id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"
@@ -105,7 +101,7 @@ id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/
 id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
 ```
 
-在 JSON 範本的頂端宣告必要的範本中繼資料和參數，如下所示：
+聲明所需的範本中繼資料和 JSON 範本頂部的參數，如下所示：
 
 ```json
 
@@ -127,21 +123,18 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 
     ... rest of template omitted ...
 ```
-
-您可以在本檔結尾看到完整的工作範本。
-
-設定範本之後，請使用下列任何一種方法來部署它：
+配置範本後，請使用以下任一方法部署它：
 
 * [REST APIs](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [電源外殼](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
-* [Azure 入口網站範本部署頁面](https://portal.azure.com/#create/Microsoft.Template)
+* [Azure 門戶範本部署頁](https://portal.azure.com/#create/Microsoft.Template)
 
-以下是範例儀表板 JSON 的兩個版本。 第一個是我們從已經繫結至資源的入口網站匯出的版本。 第二個是可以用程式設計方式系結至任何虛擬機器並使用 Azure Resource Manager 部署的範本版本。
+接下來，您將看到我們示例儀表板 JSON 的兩個版本。 第一個是我們從已經繫結至資源的入口網站匯出的版本。 第二個是範本版本，可以以程式設計方式綁定到任何虛擬機器並使用 Azure 資源管理器進行部署。
 
-## <a name="json-representation-of-our-example-dashboard-before-templating"></a>樣板化之前的範例儀表板的 JSON 標記法
+### <a name="json-representation-of-our-example-dashboard-before-templating"></a>範本化前我們示例儀表板的 JSON 表示形式
 
-這個範例會顯示您在遵循這篇文章時可以看到的結果。 這些指示會匯出已部署之儀表板的 JSON 標記法。 顯示此儀表板的硬式編碼資源識別碼會指向特定的 Azure 虛擬機器。
+此示例顯示是否遵循本文，可以預期看到的內容。 這些說明匯出了已部署的儀表板的 JSON 表示形式。 硬式編碼資源識別碼顯示此儀表板指向特定的 Azure 虛擬機器。
 
 ```json
 
@@ -395,7 +388,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 
 ### <a name="template-representation-of-our-example-dashboard"></a>範例儀表板的範本表示法
 
-儀表板的範本版本已定義三個參數，稱為 `virtualMachineName`、`virtualMachineResourceGroup`和 `dashboardName`。  這些參數可讓您在每次部署時，將此儀表板指向不同的 Azure 虛擬機器。 此儀表板可透過程式設計方式設定及部署，以指向任何 Azure 虛擬機器。 若要測試這項功能，請複製下列範本，並將它貼入[Azure 入口網站範本部署頁面](https://portal.azure.com/#create/Microsoft.Template)中。
+儀表板的範本版本定義了三個參數，稱為`virtualMachineName`和`virtualMachineResourceGroup`。 `dashboardName`  這些參數可讓您在每次部署時，將此儀表板指向不同的 Azure 虛擬機器。 可以以程式設計方式配置和部署此儀表板以指向任何 Azure 虛擬機器。 要測試此功能，請複製以下範本並將其粘貼到 Azure[門戶範本部署頁](https://portal.azure.com/#create/Microsoft.Template)。
 
 此範例是自行部署儀表板，但是範本語言可讓您部署多個資源，並組合一個或多個儀表板。
 
@@ -663,6 +656,6 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
         }
     ]
 }
-
-
 ```
+
+現在，您已經看到使用參數化範本部署儀表板的示例，可以使用[Azure 資源管理器 REST API、Azure](/rest/api/) [CLI](/cli/azure)或[Azure PowerShell 命令](/powershell/azure/get-started-azureps)嘗試部署範本。

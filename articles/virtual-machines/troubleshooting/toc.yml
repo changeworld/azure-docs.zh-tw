@@ -69,18 +69,24 @@
           href: boot-diagnostics.md
         - name: BitLocker 錯誤
           href: troubleshoot-bitlocker-boot-error.md
-        - name: 檢查檔案系統錯誤
-          href: troubleshoot-check-disk-boot-error.md
         - name: 藍色畫面錯誤
           href: troubleshoot-common-blue-screen-error.md
-        - name: VM 啟動已停滯
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: 檢查檔案系統錯誤
+          href: troubleshoot-check-disk-boot-error.md
+        - name: 已停用重要的處理序
+          href: troubleshoot-guide-critical-process-died.md
         - name: 重要服務已失敗
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 不是可開機磁碟
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: 重新開機迴圈
           href: troubleshoot-reboot-loop.md
         - name: 在執行 Windows 更新時停滯
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: VM 啟動已停滯
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: 因 Windows 開機管理程式導致 VM無法開機
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: 無法連接到我的 VM
   items:
     - name: RDP
@@ -126,7 +132,7 @@
           href: guest-os-firewall-blocking-inbound-traffic.md
         - name: 客體 OS 防火牆設定不正確
           href: guest-os-firewall-misconfigured.md
-        - name: '針對由 netvsc.sys{1}{2}所造成的 RDP 錯誤進行疑難排解'
+        - name: 針對由 netvsc.sys所造成的 RDP 錯誤進行疑難排解
           href: troubleshoot-rdp-driver-netvsc.md
     - name: SSH
       items:

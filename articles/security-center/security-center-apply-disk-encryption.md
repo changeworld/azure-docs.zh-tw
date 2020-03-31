@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 資訊安全中心中套用磁碟加密 | Microsoft Docs
-description: 本文件說明如何實作 Azure 資訊安全中心建議的「套用磁碟加密」。
+description: 本文檔演示如何實現 Azure 安全中心建議**應用磁片加密**。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604521"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 資訊安全中心中套用磁碟加密
@@ -31,8 +31,8 @@ ms.locfileid: "77604521"
 >
 
 ## <a name="implement-the-recommendation"></a>實作建議
-1. 在 [建議] 刀鋒視窗中，選取 [套用磁碟加密]。
-2. 在 [套用磁碟加密] 刀鋒視窗中，您會看到建議進行磁碟加密的 VM 清單。
+1. 在 [建議]**** 刀鋒視窗中，選取 [套用磁碟加密]****。
+2. 在 [套用磁碟加密] **** 刀鋒視窗中，您會看到建議進行磁碟加密的 VM 清單。
 3. 依照指示將加密套用至這些 VM。
 
 ![][1]
@@ -56,10 +56,10 @@ ms.locfileid: "77604521"
 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [設定 Azure 資訊安全中心的安全性原則](tutorial-security-policy.md) -- 了解如何設定安全性原則。
-* [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) -- 了解如何監視 Azure 資源的健全狀況。
-* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。
-* [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md) -- 了解建議如何協助您保護您的 Azure 資源。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/) -- 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全中心中的安全運行狀況監視](security-center-monitoring.md)-- 瞭解如何監視 Azure 資源的運行狀況。
+* [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)-- 瞭解如何管理和回應安全警報。
+* [在 Azure 安全中心管理安全建議](security-center-recommendations.md)-- 瞭解建議如何説明保護 Azure 資源。
+* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)-- 查找有關 Azure 安全性和合規性的博客文章。
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png

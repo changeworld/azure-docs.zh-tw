@@ -97,6 +97,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD 驗證
           href: concepts-azure-ad-authentication.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 業務持續性
       items:
         - name: 業務持續性簡介
@@ -176,6 +178,8 @@
           href: howto-configure-ssl.md
         - name: Web 應用程式
           href: howto-connect-webapp.md
+        - name: 使用重新導向連線
+          href: howto-redirection.md
     - name: 設定伺服器參數
       items:
         - name: Azure 入口網站
@@ -246,6 +250,10 @@
       items:
         - name: 設定 Azure AD 整合
           href: howto-configure-sign-in-azure-ad-authentication.md
+    - name: 拒絕公用網路存取
+      items:
+        - name: Azure 入口網站
+          href: howto-deny-public-network-access.md
     - name: 重新啟動伺服器
       items:
         - name: Azure 入口網站
