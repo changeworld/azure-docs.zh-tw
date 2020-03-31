@@ -1,18 +1,18 @@
 ---
 title: 發行適用於 Azure Marketplace 的檢查清單 | Azure
 description: 使用 Cloud Partner 入口網站發佈 Azure Marketplace 的檢查清單。
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: deee43628f8d9f782979b4112f1fec415d137340
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0409933a3cd4bb535427cf61bd06207d53d5a96e
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284988"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387711"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>發行適用於 Azure Marketplace 的檢查清單    
 在啟動發行程序之前，請檢閱必要的元件。  

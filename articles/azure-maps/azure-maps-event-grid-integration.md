@@ -1,26 +1,26 @@
 ---
-title: 使用事件方格來回應對應事件 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用事件方格來回應 Microsoft Azure 對應事件。
-author: farah-alyasari
-ms.author: v-faalya
+title: 使用事件網格回應映射事件 |微軟 Azure 地圖
+description: 在本文中，您將學習如何通過使用事件網格對 Microsoft Azure 映射事件做出反應。
+author: philmea
+ms.author: philmea
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f7e5be8d4aca85c9574db18ec9df8a7f30850d06
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335724"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>使用事件格線回應 Azure 地圖服務事件 
 
-Azure 地圖服務與 Azure 事件方格整合，讓使用者可以將事件通知傳送給其他服務並觸發下游進程。 本文的目的是要協助您設定商務應用程式，以接聽 Azure 地圖服務的事件。 這可讓使用者以可靠、可擴充且安全的方式回應重大事件。 例如，使用者可以建立應用程式來更新資料庫、建立票證，以及在每次裝置進入地理柵欄時傳遞電子郵件通知。
+Azure 映射與 Azure 事件網格集成，以便使用者可以將事件通知發送到其他服務並觸發下游進程。 本文的目的是説明您配置商務應用程式以偵聽 Azure 地圖事件。 這允許使用者以可靠、可擴展和安全的方式對關鍵事件做出反應。 例如，使用者可以構建應用程式以更新資料庫、創建票證和在每次設備進入地理圍欄時發送電子郵件通知。
 
-Azure 事件方格是完全受控的事件路由服務，它會使用發佈-訂閱模型。 事件方格內建對 Azure 服務的支援，例如[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)和[Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)。 它可以使用 webhook 將事件警示傳遞至非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](https://docs.microsoft.com/azure/event-grid/overview)。
+Azure 事件網格是一個完全託管的事件路由服務，它使用發佈-訂閱模型。 事件網格具有對[Azure 函數](https://docs.microsoft.com/azure/azure-functions/functions-overview)和[Azure 邏輯應用](https://docs.microsoft.com/azure/azure-functions/functions-overview)等 Azure 服務的內置支援。 它可以使用 Webhook 向非 Azure 服務提供事件警報。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](https://docs.microsoft.com/azure/event-grid/overview)。
 
 
 ![Azure 事件格線運作模型](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -32,13 +32,13 @@ Event Grid 使用[事件訂閱](https://docs.microsoft.com/azure/event-grid/conc
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | 當接收的座標已從指定地理柵欄的外部移至內時引發 |
-| Microsoft.Maps.GeofenceExited | 當接收的座標已從指定的地理柵欄移至外部時引發 |
+| Microsoft.Maps.GeofenceEntered | 接收座標時從給定地理圍欄外部移動到內部時引發 |
+| Microsoft.Maps.GeofenceExited | 接收座標從給定的地理圍欄內移動到外部時引發 |
 | Microsoft.Maps.GeofenceResult | 會在每次地理柵欄查詢傳回結果時引發，無論狀態為何 |
 
 ## <a name="event-schema"></a>結構描述
 
-下列範例顯示 Geofenceresult 架構的架構：
+下面的示例顯示了 GeofenceResult 的架構：
 
 ```JSON
 {   
@@ -80,9 +80,9 @@ Event Grid 使用[事件訂閱](https://docs.microsoft.com/azure/event-grid/conc
 
 處理 Azure 地圖服務地理柵欄事件的應用程式應該遵循幾個建議做法：
 
-* 設定多個訂閱以將事件路由至相同的事件處理常式。 請務必不要假設事件是來自特定來源。 請一律檢查訊息主題，以確保訊息來自您預期的來源。
-* 使用回應標頭中的 [`X-Correlation-id`] 欄位，以瞭解您的物件相關資訊是否為最新狀態。 訊息的抵達可能會不按順序或有延遲。
-* 當呼叫地理柵欄 API 中的 GET 或 POST 要求，並將 mode 參數設為 `EnterAndExit`時，就會針對地理柵欄中的每個幾何（其狀態已從先前的地理柵欄 API 呼叫變更）產生 Enter 或 Exit 事件。
+* 配置多個訂閱以將事件路由到同一事件處理常式。 請務必不要假設事件是來自特定來源。 始終檢查訊息主旨，以確保消息來自您期望的源。
+* 使用回應`X-Correlation-id`標頭中的欄位瞭解有關物件的資訊是否最新。 訊息的抵達可能會不按順序或有延遲。
+* 當使用模式參數設置為`EnterAndExit`調用 Geofence API 中的 GET 或 POST 請求時，將針對狀態與以前的 Geofence API 呼叫更改的地理圍欄中的每個幾何體生成 Enter 或 Exit 事件。
 
 ## <a name="next-steps"></a>後續步驟
 

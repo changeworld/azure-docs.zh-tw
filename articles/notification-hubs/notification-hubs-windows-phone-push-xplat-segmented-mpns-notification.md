@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞將通知推送至特定 Windows Phone | Microsoft Docs
+title: 使用 Azure 通知中樞將推播通知傳送至特定 Windows Phone | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞，將通知推送至已向應用程式後端註冊的特定 (並非所有) Windows Phone 8 或 Windows Phone 8.1 裝置。
 services: notification-hubs
 documentationcenter: windows
@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213403"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126950"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知推送至特定 Windows Phone 裝置
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 Windows Phone
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -43,9 +43,9 @@ ms.locfileid: "71213403"
 > * 傳送加註標記的通知
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在開始進行本教學課程之前，請先完成[教學課程：使用 Azure 通知中樞將通知推送至 Windows Phone 應用程式](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教學課程中，您會更新行動應用程式，以便能夠註冊您所感興趣的即時新聞類別，並僅接收這些類別的推播通知。
+完成[教學課程：使用 Azure 通知中樞將通知推送至 Windows Phone 應用程式](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教學課程中，您會更新行動應用程式，以便能夠註冊您所感興趣的即時新聞類別，並僅接收這些類別的推播通知。
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>在行動應用程式中新增類別選項
 

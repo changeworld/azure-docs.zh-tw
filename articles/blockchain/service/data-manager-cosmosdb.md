@@ -1,15 +1,15 @@
 ---
 title: 使用區塊鏈資料管理員更新 Azure Cosmos DB - Azure 區塊鏈服務
 description: 使用 Azure 區塊鏈服務的區塊鏈資料管理員將區塊鏈資料傳送至 Azure Cosmos DB
-ms.date: 12/04/2019
+ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977384"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79533176"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>教學課程：使用區塊鏈資料管理員將資料傳送至 Azure Cosmos DB
 
@@ -29,7 +29,7 @@ ms.locfileid: "74977384"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[快速入門：使用 Azure 入口網站建立區塊鏈成員](create-member.md)或[快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員](create-member-cli.md)
 * 完成[快速入門：使用 Visual Studio Code 連線至 Azure 區塊鏈服務聯盟網路](connect-vscode.md)。 此快速入門會引導您安裝[適用於 Ethereum 的 Azure 區塊鏈服務開發套件](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)，並設定您的區塊鏈開發環境。
@@ -49,12 +49,12 @@ ms.locfileid: "74977384"
 
     輸入下列詳細資料：
 
-    設定 | 範例 | 說明
+    設定 | 範例 | 描述
     --------|---------|------------
     名稱 | mywatcher | 為已連線的區塊鏈資料管理員輸入唯一名稱。
     交易節點 | myblockchainmember | 選取您在必要條件中建立的 Azure 區塊鏈服務成員的預設交易節點。
     連接名稱 | cosmosdb | 為用來傳送區塊鏈交易資料的輸出連線輸入唯一名稱。
-    事件方格端點 | myTopic | 選擇您在必要條件中建立的事件方格主題。 注意：區塊鏈資料管理員執行個體和事件方格主題必須位於相同的訂用帳戶中。
+    事件方格端點 | myTopic | 選擇您在必要條件中建立的事件方格主題。 注意:區塊鏈資料管理員執行個體和事件方格主題必須位於相同的訂用帳戶中。
 
 1. 選取 [確定]  。
 
@@ -108,7 +108,7 @@ ms.locfileid: "74977384"
 
     ![建立儲存體帳戶容器](./media/data-manager-cosmosdb/create-container.png)
 
-    | 設定 | 說明 |
+    | 設定 | 描述 |
     |---------|-------------|
     | 名稱  | 為容器命名。 例如 *smartcontract* |
     | 公用存取層級 | 選擇 [私人 (沒有匿名存取)]  |
@@ -144,7 +144,7 @@ ms.locfileid: "74977384"
 
     輸入區塊鏈應用程式的名稱，以及智慧型合約 ABI 和位元組程式碼 URL。
 
-    設定 | 說明
+    設定 | 描述
     --------|------------
     名稱 | 輸入要追蹤的區塊鏈應用程式的唯一名稱。
     合約 ABI | 合約 ABI 檔案的 URL 路徑。 如需詳細資訊，請參閱[建立合約 ABI 和位元組程式碼 URL](#create-contract-abi-and-bytecode-url)。
@@ -171,10 +171,10 @@ ms.locfileid: "74977384"
 
     ![新增容器設定](./media/data-manager-cosmosdb/add-container.png)
 
-    | 設定 | 說明
+    | 設定 | 描述
     |---------|-------------|
     | 資料庫識別碼 | 輸入 **blockchain-data** 作為新資料庫的名稱。 |
-    | Throughput | 讓輸送量保持在每秒 **400** 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以相應增加輸送量。|
+    | Throughput | 讓輸送量保持在每秒 **400** 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以擴大輸送量。|
     | 容器識別碼 | 輸入 **Messages** 作為新容器的名稱。 |
     | 資料分割索引鍵 | 使用 **/MessageType** 作為分割區索引鍵。 |
 
@@ -202,7 +202,7 @@ ms.locfileid: "74977384"
 
     ![事件方格觸發程序設定](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
-    | 設定 | 說明
+    | 設定 | 描述
     |---------|-------------|
     | 訂用帳戶 | 選擇包含事件方格主題的訂用帳戶。 |
     | 資源類型 | 選擇 **Microsoft.EventGrid.Topics**。 |
@@ -219,7 +219,7 @@ ms.locfileid: "74977384"
 
     ![Cosmos DB 連線設定](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
-    | 設定 | 說明
+    | 設定 | 描述
     |---------|-------------|
     | 連線名稱 | 選擇包含事件方格主題的訂用帳戶。 |
     | DocumentDB 帳戶 | 選擇您在[建立 Azure Cosmos DB 帳戶](#create-azure-cosmos-db)一節中建立的 DocumentDB 帳戶。 |
@@ -247,17 +247,17 @@ ms.locfileid: "74977384"
 
 ## <a name="send-a-transaction"></a>傳送交易
 
-接著，將交易傳送至區塊鏈總帳，以測試您所建立的內容。 請使用您在下列必要教學課程中建立的 **sendrequest.js** 指令碼：[教學課程：使用 Visual Studio Code 建立、建置及部署智慧型合約](send-transaction.md)。
+接著，將交易傳送至區塊鏈總帳，以測試您所建立的內容。 使用您在下列必要教學課程中建立的 **HelloBlockchain** 合約的 **SendRequest** 函式：[教學課程：使用 Visual Studio Code 建立、建置及部署智慧型合約](send-transaction.md)。
 
-在 VS Code 的終端機窗格中，使用 Truffle 在聯盟區塊鏈網路上執行指令碼。 在終端機窗格的功能表列中，於下拉式清單內選取 [終端機]  索引標籤和 [PowerShell]  。
+1. 使用 Azure 區塊鏈服務開發套件智慧型合約互動頁面來呼叫 **SendRequest** 函式。 以滑鼠右鍵按一下 [HelloBlockchain.sol]  ，然後從功能表中選擇 [顯示智慧型合約互動頁面]  。
 
-``` PowerShell
-truffle exec sendrequest.js --network <blockchain network>
-```
+    ![從功能表選擇 [顯示智慧型合約互動頁面]](./media/data-manager-cosmosdb/contract-interaction.png)
 
-將 \<blockchain network\> 取代為 **truffle-config.js** 中所定義區塊鏈網路的名稱。
+1. 選擇 [SendRequest]  合約動作，然後輸入 **Hello, Blockchain!** 來作為 **requestMessage** 參數。 選取 [執行]  ，以透過交易呼叫 **SendRequest** 函式。
 
-![傳送交易](./media/data-manager-cosmosdb/send-request.png)
+    ![執行 SendRequest 動作](./media/data-manager-cosmosdb/sendrequest-action.png)
+
+SendRequest 函式會設定 [RequestMessage]  和 [狀態]  欄位。 [RequestMessage]  的目前狀態是傳遞了 **Hello, Blockchain** 的引數。 [狀態]  欄位值則仍是 [要求]  。
 
 ## <a name="view-transaction-data"></a>檢視交易資料
 

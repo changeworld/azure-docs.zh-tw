@@ -1,6 +1,6 @@
 ---
-title: 對應資料流程排序轉換
-description: Azure Data Factory 對應資料排序轉換
+title: 映射資料流程排序轉換
+description: Azure 資料工廠映射資料排序轉換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/08/2018
 ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930216"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory 資料流程排序轉換
+# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure 資料工廠資料流程排序轉換
 
 
 
-![排序設定](media/data-flow/sort.png "排序")
+![排序設置](media/data-flow/sort.png "Sort")
 
 「排序」轉換可讓您排序目前資料流的內送資料列。 「排序」轉換的輸出資料列後續會遵循您設定的排序規則。 您可以選擇個別的資料行，並使用每個欄位旁邊的箭號指標按照 ASC 或 DEC 加以排序。 套用排序之前，如果您需要修改資料行，請按一下「計算資料行」啟動運算式編輯器。 此時能夠建立排序作業的運算式，而不只是直接對於排序套用資料行。
 
@@ -36,4 +36,4 @@ ms.locfileid: "74930216"
 
 ## <a name="next-steps"></a>後續步驟
 
-排序之後，您可能會想要使用「[匯總」轉換](data-flow-aggregate.md)
+排序後，您可能需要使用[聚合轉換](data-flow-aggregate.md)

@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: labrenne
 ms.openlocfilehash: d251229c522bd4d6daca894513eaae14d244d8a1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025855"
 ---
 # <a name="monitor-batch-solutions"></a>監視 Batch 解決方案
@@ -29,7 +29,7 @@ Azure 與 Batch 服務提供一系列服務、工具和 API 來監視您的 Batc
 
 具體針對 Batch 帳戶來說，活動記錄會收集關於帳戶建立和刪除及金鑰管理的事件。
 
-從活動記錄擷取事件的方法之一是使用 Azure 入口網站。 按一下 [所有服務] > [活動記錄]。 或是，使用 Azure CLI、PowerShell Cmdlet 或 Azure Monitor REST API 來查詢事件。 您也可以匯出活動記錄，或設定[活動記錄警示](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)。
+從活動記錄擷取事件的方法之一是使用 Azure 入口網站。 按一下**所有服務** > **活動日誌**。 或是，使用 Azure CLI、PowerShell Cmdlet 或 Azure Monitor REST API 來查詢事件。 您也可以匯出活動記錄，或設定[活動記錄警示](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)。
 
 ## <a name="batch-account-level-monitoring"></a>Batch 帳戶層級監視
 
@@ -62,7 +62,7 @@ Azure 與 Batch 服務提供一系列服務、工具和 API 來監視您的 Batc
   > 使用 Application Insights 可能會產生額外費用。 請參閱[定價選項](https://azure.microsoft.com/pricing/details/application-insights/)。 
   >
 
-* [Batch Explorer](https://github.com/Azure/BatchExplorer)是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用於 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。 (選擇性) 將您的 Batch 解決方案設定為[顯示 Application Insights 資料](https://github.com/Azure/batch-insights)，例如 Batch Explorer 中的 VM 效能計數器。
+* [Batch Explorer](https://github.com/Azure/BatchExplorer) 是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝包](https://azure.github.io/BatchExplorer/)。 (選擇性) 將您的 Batch 解決方案設定為[顯示 Application Insights 資料](https://github.com/Azure/batch-insights)，例如 Batch Explorer 中的 VM 效能計數器。
 
 
 ## <a name="next-steps"></a>後續步驟

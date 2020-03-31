@@ -14,27 +14,27 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453865"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用範本來建立含有事件中樞的命名空間並啟用擷取
 
-本文說明如何使用 Azure Resource Manager 範本來建立含有一個事件中樞執行個體的[事件中樞](event-hubs-what-is-event-hubs.md)命名空間，也可在該事件中樞上啟用[擷取功能](event-hubs-capture-overview.md)。 此文章說明如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
+本文演示如何使用 Azure 資源管理器範本創建[事件中心](event-hubs-what-is-event-hubs.md)命名空間（具有一個事件中心實例），並在事件中心啟用["捕獲"功能](event-hubs-capture-overview.md)。 此文章說明如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
 
 本文也會示範如何根據您選擇的目的地，指定將事件擷取到 Azure 儲存體 Blob 或 Azure Data Lake Store 中。
 
-如需關於建立範本的詳細資訊，請參閱 [編寫 Azure Resource Manager 範本][Authoring Azure Resource Manager templates]。 如需要在範本中使用的 JSON 語法和屬性，請參閱 [Microsoft.EventHub 資源類型](/azure/templates/microsoft.eventhub/allversions)。
+有關創建範本的詳細資訊，請參閱[創作 Azure 資源管理器範本][Authoring Azure Resource Manager templates]。 如需要在範本中使用的 JSON 語法和屬性，請參閱 [Microsoft.EventHub 資源類型](/azure/templates/microsoft.eventhub/allversions)。
 
-如需 Azure 資源命名慣例模式和實務的詳細資訊，請參閱[Azure 資源命名慣例][Azure Resources naming conventions]。
+如需 Azure 資源命名慣例相關模式和實務的詳細資訊，請參閱 [Azure 資源命名慣例][Azure Resources naming conventions]。
 
 對於所有範本，按一下下列 GitHub 連結：
 
-- [事件中樞並啟用 [捕獲至儲存體] 範本][Event Hub and enable Capture to Storage template] 
-- [事件中樞並啟用 Capture to Azure Data Lake Store 範本][Event Hub and enable Capture to Azure Data Lake Store template]
+- [事件中樞和啟用擷取至儲存體範本][Event Hub and enable Capture to Storage template] 
+- [事件中樞和啟用擷取至 Azure Data Lake Store 範本][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
 > 若要檢查最新的範本，請造訪 [Azure 快速入門範本][Azure Quickstart Templates] 資源庫並搜尋事件中樞。
@@ -45,11 +45,11 @@ ms.locfileid: "77187334"
 
 使用此範本，您可部署含有事件中樞的事件中樞命名空間，也可啟用[事件中樞擷取](event-hubs-capture-overview.md)。 事件中樞擷取功能讓您能夠在指定時間或大小間隔內，自動將事件中樞的串流資料傳遞到 Azure Blob 儲存體或 Azure Data Lake Store。 按一下以下按鈕來啟用「事件中心擷取到 Azure 儲存體中」：
 
-[![部署至 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 按一下以下按鈕來啟用「事件中心擷取到 Azure Data Lake Store 中」：
 
-[![部署至 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
+[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>參數
 
@@ -235,7 +235,7 @@ ms.locfileid: "77187334"
 }
 ```
 
-如果您選擇 Azure Data Lake 將 Gen 1 儲存為目的地，請使用下列參數。 您必須在您想要擷取事件的 Data Lake Store 路徑上設定權限。 若要設定許可權，請參閱[Capture data to Azure Data Lake Storage Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
+如果選擇 Azure 資料湖存儲第 1 代作為目標，請使用以下參數。 您必須在您想要擷取事件的 Data Lake Store 路徑上設定權限。 要設置許可權，請參閱[將資料捕獲到 Azure 資料湖存儲第 1 代](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -414,17 +414,13 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Azure Blob 儲存體作為目的地：
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Azure Data Lake Store 作為目的地：
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
 ## <a name="next-steps"></a>後續步驟

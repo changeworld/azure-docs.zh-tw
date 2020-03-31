@@ -1,25 +1,25 @@
 ---
-title: '& 資源群組部署跨訂用帳戶的資源'
+title: 跨訂閱&資源組部署資源
 description: 示範如何在部署期間將目標放在多個 Azure 訂用帳戶和資源群組。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944041"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460342"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>將 Azure 資源部署至多個訂用帳戶和資源群組
 
-一般而言，您要將範本中的所有資源都部署至單一[資源群組](../management/overview.md)。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 例如，建議您將 Azure Site Recovery 的備份虛擬機器部署至不同的資源群組和位置。 Resource Manager 可讓您使用嵌套的範本，以多個訂用帳戶和資源群組為目標。
+一般而言，您要將範本中的所有資源都部署至單一[資源群組](../management/overview.md)。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 例如，建議您將 Azure Site Recovery 的備份虛擬機器部署至不同的資源群組和位置。 資源管理器使您能夠使用嵌套範本來定位多個訂閱和資源組。
 
 > [!NOTE]
 > 您在單一部署中只能部署至五個資源群組。 一般而言，此限制表示您可以部署至一個指定用於父範本的資源群組，並且可在巢狀或連結的部署中部署至最多四個資源群組。 不過，如果父範本只包含巢狀或連結的範本，而本身未部署任何資源，則您可以在巢狀或連結的部署中包含最多五個資源群組。
 
-## <a name="specify-subscription-and-resource-group"></a>指定訂用帳戶和資源群組
+## <a name="specify-subscription-and-resource-group"></a>指定訂閱和資源組
 
-若要以不同的資源群組或訂用帳戶為目標，請使用[嵌套或連結的範本](linked-templates.md)。 `Microsoft.Resources/deployments` 資源類型提供 `subscriptionId` 和 `resourceGroup`的參數，可讓您指定用於嵌套部署的訂用帳戶和資源群組。 如果您未指定訂用帳戶識別碼或資源群組，則會使用來自父範本的訂用帳戶和資源群組。 執行部署之前，所有資源群組都必須存在。
+要定位其他資源組或訂閱，請使用[嵌套或連結範本](linked-templates.md)。 `Microsoft.Resources/deployments`資源類型提供 和`resourceGroup`的`subscriptionId`參數，用於指定嵌套部署的訂閱和資源組。 如果不指定訂閱 ID 或資源組，則使用父範本中的訂閱和資源組。 執行部署之前，所有資源群組都必須存在。
 
 您用來部署範本的帳戶必須具有可部署到指定訂用帳戶 ID 的權限。 如果指定的訂用帳戶在不同的 Azure Active Directory 租用戶中，您必須[從另一個目錄中新增來賓使用者](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "78944041"
 
 如果您的資源群組位於相同的訂用帳戶中，則可以移除 **subscriptionId** 值。
 
-下列範例會部署兩個儲存體帳戶。 第一個儲存體帳戶會部署到部署期間指定的資源群組。 第二個儲存體帳戶會部署到 `secondResourceGroup` 和 `secondSubscriptionID` 參數中指定的資源群組：
+下面的示例部署兩個存儲帳戶。 第一個存儲帳戶部署到部署期間指定的資源組。 第二個存儲帳戶部署到 和`secondResourceGroup``secondSubscriptionID`參數中指定的資源組：
 
 ```json
 {
@@ -115,13 +115,13 @@ ms.locfileid: "78944041"
 }
 ```
 
-如果您將 `resourceGroup` 設定為不存在的資源組名，部署將會失敗。
+如果設置為`resourceGroup`不存在的資源組的名稱，則部署將失敗。
 
-若要測試上述範本並查看結果，請使用 PowerShell 或 Azure CLI。
+要測試前面的範本並查看結果，請使用 PowerShell 或 Azure CLI。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
-若要將兩個儲存體帳戶部署到**相同訂**用帳戶中的兩個資源群組，請使用：
+要將兩個存儲帳戶部署到**同一訂閱**中的兩個資源組，請使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -138,7 +138,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-若要將兩個儲存體帳戶部署到**兩個**訂用帳戶，請使用：
+要將兩個存儲帳戶部署到**兩個訂閱**，請使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -164,7 +164,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要將兩個儲存體帳戶部署到**相同訂**用帳戶中的兩個資源群組，請使用：
+要將兩個存儲帳戶部署到**同一訂閱**中的兩個資源組，請使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -172,14 +172,14 @@ secondRG="secondarygroup"
 
 az group create --name $firstRG --location southcentralus
 az group create --name $secondRG --location eastus
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-若要將兩個儲存體帳戶部署到**兩個**訂用帳戶，請使用：
+要將兩個存儲帳戶部署到**兩個訂閱**，請使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -194,7 +194,7 @@ az group create --name $secondRG --location eastus
 az account set --subscription $firstSub
 az group create --name $firstRG --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
@@ -205,21 +205,21 @@ az group deployment create \
 
 ## <a name="use-functions"></a>使用函式
 
-[ResourceGroup （）](template-functions-resource.md#resourcegroup)和訂用帳戶[（）](template-functions-resource.md#subscription)函式會根據您指定範本的方式，以不同方式進行解析。 當您連結至外部範本時，函數一律會解析為該範本的範圍。 當您將範本嵌套在父範本中時，請使用 `expressionEvaluationOptions` 屬性來指定函式是否解析為父範本或已嵌套範本的資源群組和訂用帳戶。 將屬性設定為 `inner`，以解析成嵌套範本的範圍。 將屬性設定為 `outer`，以解析為父範本的範圍。
+[資源組（）](template-functions-resource.md#resourcegroup)和[訂閱（）](template-functions-resource.md#subscription)函數根據您指定範本的方式以不同的方式解析。 連結到外部範本時，函數始終解析為該範本的範圍。 在父範本中嵌套範本時，使用 該`expressionEvaluationOptions`屬性指定函數是解析給父範本的資源組和訂閱還是嵌套範本。 將 屬性設置為`inner`解析為嵌套範本的範圍。 將 要解析`outer`的屬性設置為父範本的範圍。
 
-下表顯示函式是否解析成父系或內嵌的資源群組和訂用帳戶。
+下表顯示了函數是解析給父資源組還是嵌入式資源組和訂閱。
 
-| 範本類型 | 範圍 | 解決方案 |
+| 範本類型 | 影響範圍 | 解決方案 |
 | ------------- | ----- | ---------- |
-| 巢狀        | 外部（預設值） | 父資源群組 |
-| 巢狀        | 內部 | 子資源群組 |
-| 連結        | N/A   | 子資源群組 |
+| 巢狀        | 外部（預設） | 父資源組 |
+| 巢狀        | inner | 子資源組 |
+| 已連結        | N/A   | 子資源組 |
 
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)顯示：
+以下[示例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)顯示：
 
-* 具有預設（外部）範圍的嵌套範本
-* 具有內部範圍的嵌套範本
-* 連結的範本
+* 具有預設（外部）作用域的嵌套範本
+* 具有內部作用域的嵌套範本
+* 連結範本
 
 ```json
 {
@@ -315,9 +315,9 @@ az group deployment create \
 }
 ```
 
-若要測試上述範本並查看結果，請使用 PowerShell 或 Azure CLI。
+要測試前面的範本並查看結果，請使用 PowerShell 或 Azure CLI。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -347,7 +347,7 @@ az group create --name parentGroup --location southcentralus
 az group create --name inlineGroup --location southcentralus
 az group create --name linkedGroup --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json

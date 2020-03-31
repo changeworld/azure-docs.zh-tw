@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: 一般條件式存取原則
       items:
+        - name: 封鎖舊式驗證
+          href: howto-conditional-access-policy-block-legacy.md
         - name: 需要管理員的 MFA
           href: howto-conditional-access-policy-admin-mfa.md
         - name: 需要 Azure 管理的 MFA
           href: howto-conditional-access-policy-azure-management.md
         - name: 要求所有使用者使用 MFA
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: 封鎖舊式驗證
-          href: howto-conditional-access-policy-block-legacy.md
         - name: 依據風險的條件式存取
           href: howto-conditional-access-policy-risk.md
-        - name: 需要受信任的位置進行 MFA 註冊
+        - name: 保障安全性資訊註冊的安全
           href: howto-conditional-access-policy-registration.md
         - name: 依位置封鎖存取
           href: howto-conditional-access-policy-location.md
         - name: 需要相容的裝置
           href: howto-conditional-access-policy-compliant-device.md
+        - name: 封鎖存取
+          href: howto-conditional-access-policy-block-access.md
     - name: 封鎖舊式驗證
       href: block-legacy-authentication.md
     - name: 需要已核准的用戶端應用程式
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: 疑難排解
       items:
+        - name: 對登入問題進行疑難排解
+          href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具進行疑難排解
           href: troubleshoot-conditional-access-what-if.md
 - name: 資源
@@ -102,7 +106,7 @@
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md

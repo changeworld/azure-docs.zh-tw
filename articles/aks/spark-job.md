@@ -6,26 +6,26 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473620"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 上執行 Apache Spark 作業
 
-[Apache Spark][apache-spark]是大規模資料處理的快速引擎。 在[Spark 2.3.0 版本][spark-latest-release]中，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
+[Apache Spark][apache-spark]是大規模資料處理的快速引擎。 從 [Spark 2.3.0 版][spark-latest-release] 開始，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 為了要完成本文中的步驟，您需要下列項目。
 
-* 對 Kubernetes 和[Apache Spark][spark-quickstart]的基本瞭解。
-* [Docker Hub][docker-hub]帳戶或[Azure Container Registry][acr-create]。
-* Azure CLI[安裝][azure-cli]在您的開發系統上。
-* [JDK 8][java-install]安裝在您的系統上。
-* 已安裝在您系統上的 SBT （[Scala Build Tool][sbt-install]）。
+* 對 Kubernetes 和 [Apache Spark][spark-quickstart] 的基本了解。
+* [Docker Hub][docker-hub] 帳戶，或 [Azure Container Registry][acr-create]。
+* 在您的開發系統上[安裝][azure-cli] Azure CLI。
+* 在您的系統上安裝 [JDK 8][java-install]。
+* 在您的系統上安裝 SBT ([Scala 建置工具][sbt-install])。
 * 在您的系統上安裝 Git 命令列工具。
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
@@ -40,13 +40,13 @@ Spark 會用於大規模的資料處理，而且需要將 Kubernetes 節點的�
 az group create --name mySparkCluster --location eastus
 ```
 
-建立叢集的服務主體。 建立之後，您將需要服務主體 appId 和 password 來進行下一個命令。
+為群集創建服務主體。 創建後，您將需要下一個命令的服務主體應用 Id 和密碼。
 
 ```azurecli
 az ad sp create-for-rbac --name SparkSP
 ```
 
-建立 AKS 叢集，其中包含 `Standard_D3_v2`大小的節點，以及做為服務主體和用戶端秘密參數傳遞的 appId 和密碼值。
+創建具有大小`Standard_D3_v2`節點的 AKS 群集，並將 appId 和密碼的值作為服務主體和用戶端機密參數傳遞。
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -58,7 +58,7 @@ az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-si
 az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 ```
 
-如果您使用 Azure Container Registry (ACR) 來儲存容器映像，請設定 AKS 與 ACR 之間的驗證。 如需這些步驟，請參閱[ACR 驗證檔][acr-aks]。
+如果您使用 Azure Container Registry (ACR) 來儲存容器映像，請設定 AKS 與 ACR 之間的驗證。 請參閱 [ACR 驗證文件][acr-aks]以取得這些步驟。
 
 ## <a name="build-the-spark-source"></a>建置 Spark 來源
 
@@ -186,7 +186,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 使用下列命令將 jar 檔案上傳至 Azure 儲存體帳戶。
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -217,7 +217,7 @@ kubectl proxy
 cd $sparkdir
 ```
 
-建立具有足夠許可權可執行作業的服務帳戶。
+創建具有運行作業許可權的服務帳戶。
 
 ```bash
 kubectl create serviceaccount spark
@@ -241,8 +241,10 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 這項作業會啟動 Spark 作業，它會將作業狀態串流至您的殼層工作階段。 執行作業時，您可以使用 kubectl get pods 命令查看 Spark 驅動程式 Pod 和執行程式 Pod。 開啟第二個終端機工作階段來執行下列命令。
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -270,7 +272,7 @@ kubectl get pods --show-all
 
 輸出：
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -283,7 +285,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 在這些記錄中，您可以看到 Spark 作業的結果，那就是 Pi 的值。
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
@@ -291,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 在上述範例中，Spark jar 檔案已上傳至 Azure 儲存體。 另一個選項是將 jar 檔案封裝至自訂建置的 Docker 映像。
 
-若要這樣做，請找出 Spark 映像 (位於 `dockerfile` 目錄) 的 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`。 為 `ADD` 與 `jar` 宣告之間某個位置的 Spark 作業 `WORKDIR` 新增 `ENTRYPOINT` 陳述式。
+若要這樣做，請找出 Spark 映像 (位於 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目錄) 的 `dockerfile`。 為 `WORKDIR` 與 `ENTRYPOINT` 宣告之間某個位置的 Spark 作業 `jar` 新增 `ADD` 陳述式。
 
 將 jar 路徑更新為您的開發系統上 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 檔案的位置。 您也可以使用自己的自訂 jar 檔案。
 
@@ -325,14 +327,14 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
 > [!WARNING]
-> 從 Spark[檔][spark-docs]：「Kubernetes 排程器目前為實驗性。 在未來的版本中，可組態、容器映像和進入點可能會有行為上的變更。」
+> 引述自 Spark [文件][spark-docs]：「Kubernetes 排程器目前為實驗性。 在未來的版本中，可組態、容器映像和進入點可能會有行為上的變更。」
 
 ## <a name="next-steps"></a>後續步驟
 
 如需詳細資料，請參閱 Spark 文件。
 
 > [!div class="nextstepaction"]
-> [Spark 檔][spark-docs]
+> [Spark 文件][spark-docs]
 
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/

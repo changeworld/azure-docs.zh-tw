@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: e8ae31122d59238ac104d7d873cf56f32977c9af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086507"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教學課程：Azure Active Directory 與 xMatters OnDemand 整合
@@ -34,7 +34,7 @@ xMatters OnDemand 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 xMatters OnDemand 的整合，您需要下列項目：
 
@@ -152,11 +152,11 @@ xMatters OnDemand 與 Azure AD 整合提供下列優點：
 
 2. 在頂端工具列中按一下 [管理]  ，然後按一下左側導覽列中的 [公司詳細資料]  。
 
-    ![管理](./media/xmatters-ondemand-tutorial/IC776795.png "管理")
+    ![管理員](./media/xmatters-ondemand-tutorial/IC776795.png "管理")
 
 3. 在 [SAML 組態]  頁面上，執行下列步驟：
 
-    ![SAML 組態](./media/xmatters-ondemand-tutorial/IC776796.png "SAML 組態")
+    ![SAML 設定](./media/xmatters-ondemand-tutorial/IC776796.png "SAML 設定")
 
     a. 選取 [啟用 SAML]  。
 
@@ -168,7 +168,7 @@ xMatters OnDemand 與 Azure AD 整合提供下列優點：
 
     e. 在 [公司詳細資料] 頁面頂端，按一下 [儲存變更]  。
 
-    ![公司詳細資料](./media/xmatters-ondemand-tutorial/IC776797.png "公司詳細資料")
+    ![Company details](./media/xmatters-ondemand-tutorial/IC776797.png "公司詳細資料")
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -234,7 +234,7 @@ xMatters OnDemand 與 Azure AD 整合提供下列優點：
 
 3. 在 [加入使用者]  區段中，執行下列步驟：
 
-    ![加入使用者](./media/xmatters-ondemand-tutorial/IC781049.png "加入使用者")
+    ![新增使用者](./media/xmatters-ondemand-tutorial/IC781049.png "加入使用者")
 
     a. 選取 [使用中]  。
 

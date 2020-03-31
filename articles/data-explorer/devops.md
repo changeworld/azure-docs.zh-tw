@@ -1,6 +1,6 @@
 ---
-title: 適用于 Azure 資料總管的 Azure DevOps 工作
-description: 在本主題中，您將瞭解如何建立發行管線並部署
+title: Azure 資料資源管理器的 Azure DevOps 任務
+description: 在本主題中，您將學習創建發佈管道並部署
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,112 +9,112 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
 ms.openlocfilehash: 1e44a7e71858f028b798720c5505eacbfe8c2332
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77472038"
 ---
-# <a name="azure-devops-task-for-azure-data-explorer"></a>適用于 Azure 資料總管的 Azure DevOps 工作
+# <a name="azure-devops-task-for-azure-data-explorer"></a>Azure 資料資源管理器的 Azure DevOps 任務
 
-[Azure DevOps Services](https://azure.microsoft.com/services/devops/)提供開發共同作業工具，例如高效能管線、免費私人 Git 存放庫、可設定的看板面板，以及廣泛的自動化和持續測試功能。 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)是一項 Azure DevOps 的功能，可讓您管理 CI/CD 以使用適用于任何語言、平臺和雲端的高效能管線來部署您的程式碼。
-[Azure 資料總管-系統管理命令](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX)是 Azure Pipelines 的工作，可讓您建立發行管線，並將您的資料庫變更部署至 Azure 資料總管資料庫。 它在[Visual Studio Marketplace](https://marketplace.visualstudio.com/)中免費提供。
+[Azure DevOps 服務](https://azure.microsoft.com/services/devops/)提供開發協作工具，如高性能管道、免費專用 Git 存儲庫、可配置看板以及廣泛的自動和連續測試功能。 [Azure 管道](https://azure.microsoft.com/services/devops/pipelines/)是一種 Azure DevOps 功能，使您能夠管理 CI/CD，以便使用適用于任何語言、平臺和雲的高性能管道部署代碼。
+[Azure 資料資源管理器 - 管理命令](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX)是 Azure 管道任務，它使您能夠創建發佈管道並將資料庫更改部署到 Azure 資料資源管理器資料庫。 它在[視覺工作室市場](https://marketplace.visualstudio.com/)免費提供。
 
-本檔描述使用**Azure 資料總管–管理命令**工作將架構變更部署到資料庫的簡單範例。 如需完整的 CI/CD 管線，請參閱[Azure DevOps 檔](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)。
+本文檔介紹了有關使用**Azure 資料資源管理器和管理命令**任務將架構更改部署到資料庫的簡單示例。 有關完整的 CI/CD 管道，請參閱[Azure DevOps 文檔](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* Azure 資料總管叢集設定：
-    * [Azure 資料總管叢集和資料庫](/azure/data-explorer/create-cluster-database-portal)
-    * 藉由布建[Azure AD 應用程式](/azure/kusto/management/access-control/how-to-provision-aad-app)來建立 Azure Active Directory （Azure AD）應用程式。
-    * 藉由[管理 azure 資料總管資料庫許可權](/azure/data-explorer/manage-database-permissions)，將存取權授與您的 azure 資料總管資料庫上的 Azure AD App。
-* Azure DevOps 安裝程式：
-    * [註冊免費的組織](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
+* Azure 資料資源管理器群集設置：
+    * [Azure 資料資源管理器群集和資料庫](/azure/data-explorer/create-cluster-database-portal)
+    * 通過[預配 Azure AD 應用程式創建](/azure/kusto/management/access-control/how-to-provision-aad-app)Azure 活動目錄 （Azure AD） 應用。
+    * 通過[管理 Azure 資料資源管理器資料庫許可權](/azure/data-explorer/manage-database-permissions)，在 Azure 資料資源管理器資料庫上授予對 Azure AD 應用的存取權限。
+* Azure DevOps 設置：
+    * [註冊免費組織](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
     * [建立組織](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-    * [在 Azure DevOps 中建立專案](/azure/devops/organizations/projects/create-project?view=azure-devops)
-    * [使用 Git 的程式碼](/azure/devops/user-guide/code-with-git?view=azure-devops)
+    * [在 Azure 開發人員計畫中創建專案](/azure/devops/organizations/projects/create-project?view=azure-devops)
+    * [使用 Git 的代碼](/azure/devops/user-guide/code-with-git?view=azure-devops)
 
 ## <a name="create-folders"></a>建立資料夾
 
-在您的 Git 存放庫中建立下列範例資料夾（*函數*、*原則*、*資料表*）。 將檔案從[這裡](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline)複製到各自的資料夾，如下所示並認可變更。 提供範例檔案來執行下列工作流程。
+在 Git 存儲庫中創建以下示例資料夾（*函數*、*策略*、*表*）。 [在此處](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline)將檔案複製到相應的資料夾中，如下所示並提交更改。 提供示例檔以執行以下工作流。
 
 ![建立資料夾](media/devops/create-folders.png)
 
 > [!TIP]
-> 當您建立自己的工作流程時，我們建議讓您的程式碼具有等冪性。 例如，請使用[. create-merge table](/azure/kusto/management/create-table-command#create-merge-table) ，而不是[create table](/azure/kusto/management/create-table-command)，並使用[. create-或-alter](/azure/kusto/management/create-alter-function) function，而不是[create](/azure/kusto/management/create-function) function。
+> 在創建自己的工作流時，我們建議您使代碼具有冪等性。 例如，使用[.create-merge 表](/azure/kusto/management/create-table-command#create-merge-table)而不是[.create 表](/azure/kusto/management/create-table-command)，並使用[.create 或更改](/azure/kusto/management/create-alter-function)函數而不是[.create](/azure/kusto/management/create-function)函數。
 
 ## <a name="create-a-release-pipeline"></a>建立發行管線
 
-1. 登入您的[Azure DevOps 組織](https://dev.azure.com/)。
-1. 從左側功能表中選取 [**管線**] > [**發行**]，然後選取 [**新增管線**]。
+1. 登錄到 Azure [DevOps 組織](https://dev.azure.com/)。
+1. 選擇 **"管道** > **從左側功能表中釋放"** 並選擇 **"新建管道**"。
 
     ![新增管線](media/devops/new-pipeline.png)
 
-1. [**新增發行管線**] 視窗隨即開啟。 在 [**管線**] 索引標籤的 [**選取範本**] 窗格中，選取 [**空白作業**]。
+1. 將打開 **"新建"管道**視窗。 在"**管道"** 選項卡中，在"**選擇範本**"窗格中，選擇 **"空作業**"。
 
      ![選取範本](media/devops/select-template.png)
 
-1. 選取 [**階段**] 按鈕。 在 [**階段**] 窗格中，新增**階段名稱**。 選取 [**儲存**] 以儲存管線。
+1. 選擇 **"階段"** 按鈕。 在 **"階段"** 窗格中，添加**舞臺名稱**。 選擇 **"保存"** 以保存管道。
 
-    ![為階段命名](media/devops/stage-name.png)
+    ![命名舞臺](media/devops/stage-name.png)
 
-1. 選取 [**新增**成品] 按鈕。 在 [**加入**成品] 窗格中，選取您的程式碼所在的存放庫，並填寫相關資訊，然後按一下 [**新增**]。 選取 [**儲存**] 以儲存管線。
+1. 選擇 **"添加專案**"按鈕。 在"**添加專案"** 窗格中，選擇代碼所在的存儲庫，填寫相關資訊，然後按一下"**添加**"。 選擇 **"保存"** 以保存管道。
 
     ![新增構件](media/devops/add-artifact.png)
 
-1. 在 [**變數**] 索引標籤中，選取 [ **+ 新增**] 以建立將在工作中使用之**端點 URL**的變數。 寫入端點的**名稱**和**值**。 選取 [**儲存**] 以儲存管線。 
+1. 在 **"變數"** 選項卡中，選擇 **"添加"** 以創建將在任務中使用的**終結點 URL**的變數。 編寫終結點**的名稱**和**值**。 選擇 **"保存"** 以保存管道。 
 
-    ![建立變數](media/devops/create-variable.png)
+    ![創建變數](media/devops/create-variable.png)
 
-    若要尋找您的 Endpoint_URL，Azure 入口網站中**azure 資料總管**叢集的 [總覽] 頁面包含 azure 資料總管叢集 URI。 依照下列格式，`https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`來建立 URI。  例如，HTTPs：\//kustodocs.westus.kusto.windows.net？ DatabaseName = SampleDB
+    要查找**Endpoint_URL，Azure 資料資源管理器群集**在 Azure 門戶中的概述頁包含 Azure 資料資源管理器群集 URI。 以以下格式`https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`構造 URI。  例如，HTTPs：\//kustodocs.westus.kusto.windows.net？資料庫名稱_示例DB
 
-    ![Azure 資料總管叢集 URI](media/devops/adx-cluster-uri.png)
+    ![Azure 資料資源管理器群集 URI](media/devops/adx-cluster-uri.png)
 
-## <a name="create-tasks-to-deploy"></a>建立要部署的工作
+## <a name="create-tasks-to-deploy"></a>創建要部署的任務
 
-1. 在 [**管線**] 索引標籤中，按一下 [ **1 個作業，0個工作**] 以新增工作。 
+1. 在 **"管道"** 選項卡中，按一下**1 個作業，0 個任務**以添加任務。 
 
     ![新增工作](media/devops/add-task.png)
 
-1. 依照此順序，建立三個**工作**來部署**資料表**、函式和**原則**。 
+1. 按此順序創建三個任務以部署**表**、**函數**和**策略**。 
 
-1. **在 [工作**] 索引標籤中，選取 [由**Agent 作業** **+** ]。 搜尋 **Azure 資料總管**。 在**Marketplace**中，安裝**Azure 資料總管-Admin 命令**延伸模組。 然後，在 [**執行 Azure 資料總管命令**] 中選取 [**新增**]。
+1. 在"**任務"** 選項卡中**+**，按 **"代理作業**"選擇 。 搜尋 **Azure 資料總管**。 在**應用商店**中，安裝**Azure 資料資源管理器和管理員命令**擴展。 然後，選擇 **"在****運行 Azure 資料資源管理器"命令**中添加。
 
-     ![新增管理命令](media/devops/add-admin-commands.png)
+     ![添加管理員命令](media/devops/add-admin-commands.png)
 
-1. 按一下左側的 [ **Kusto] 命令**，並使用下列資訊來更新工作：
-    * **顯示名稱**：工作的名稱
-    * 檔案**路徑**：在 [**資料表]** 工作中，指定 [ */Tables/* ]，因為資料表建立檔案位於 [*資料表*] 資料夾中。
-    * **端點 URL**：輸入在上一個步驟中建立的 `EndPoint URL`變數。
-    * 選取 [**使用服務端點**]，然後選取 [ **+ 新增**]。
+1. 按一下左側的**Kusto 命令**，然後使用以下資訊更新任務：
+    * **顯示名稱**：任務的名稱
+    * **檔路徑**：在**表**任務中，指定 */table/*.csl，因為表創建檔位於*表*資料夾中。
+    * **終結點 URL**：`EndPoint URL`輸入在上一步中創建的變數。
+    * 選擇 **"使用服務終結點**"並選擇 **" 新建**"。
 
-    ![更新 Kusto 命令工作](media/devops/kusto-command-task.png)
+    ![更新庫斯塔命令任務](media/devops/kusto-command-task.png)
 
-1. 在 [**新增 Azure 資料總管服務**連線] 視窗中，完成下列資訊：
+1. 在 **"添加 Azure 資料資源管理器"服務連接**視窗中完成以下資訊：
 
     |設定  |建議的值  |
     |---------|---------|
-    |**連線名稱**     |    輸入名稱以識別此服務端點     |
-    |**叢集 Url**    |    您可以在 Azure 資料總管叢集的 [總覽] 區段中找到值，其位於 Azure 入口網站 | 
-    |**服務主體識別碼**    |    輸入 AAD 應用程式識別碼（建立為先決條件）     |
-    |**服務主體應用程式金鑰**     |    輸入 AAD 應用程式金鑰（建立為先決條件）    |
-    |**AAD 租使用者識別碼**    |      輸入您的 AAD 租使用者（例如 microsoft.com，contoso.com ...）    |
+    |**連接名稱**     |    輸入名稱以標識此服務終結點     |
+    |**群集 URL**    |    值可在 Azure 門戶中的 Azure 資料資源管理器群集的概述部分中找到 | 
+    |**服務主體 ID**    |    輸入 AAD 應用 ID（作為先決條件創建）     |
+    |**服務主體應用金鑰**     |    輸入 AAD 應用金鑰（作為先決條件創建）    |
+    |**AAD 租戶 ID**    |      輸入您的 AAD 租戶（如microsoft.com、contoso.com...    |
 
-    選取 [**允許所有管線使用此連接**] 核取方塊。 選取 [確定]。
+    選擇"**允許所有管道使用此連接**"核取方塊。 選取 [確定]****。
 
-    ![新增服務連接](media/devops/add-service-connection.png)
+    ![添加服務連接](media/devops/add-service-connection.png)
 
-1. 重複步驟1-5 另兩*次，從 [函*式] 和 [*原則*] 資料夾部署檔案。 選取 [儲存]。 在 [**工作]** 索引標籤中，查看建立的三個工作：**部署資料表**、**部署**函式，以及**部署原則**。
+1. 重複步驟 1-5 兩次以從*函數*和*策略*資料夾中部署檔。 選取 [儲存]****。 在"**任務"** 選項卡中，請參閱創建的三個任務：**部署表**、**部署函數**和**部署策略**。
 
     ![部署所有資料夾](media/devops/deploy-all-folders.png)
 
-1. 選取  **+ 發行** > **建立發行** 來建立發行。
+1. 選擇 **+ 發佈** > **創建版本**以創建版本。
 
     ![建立發行](media/devops/create-release.png)
 
-1. 在 [**記錄**] 索引標籤中，檢查部署狀態是否為 [成功]。
+1. 在 **"日誌"** 選項卡中，檢查部署狀態是否成功。
 
     ![部署成功](media/devops/deployment-successful.png)
 
-您現在已完成建立發行管線，以將三個工作部署至生產階段前。
+您現已完成發佈管道的創建，用於部署三個任務進行預生產。

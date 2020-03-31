@@ -1,6 +1,6 @@
 ---
-title: 使用對稱金鑰布建舊版裝置-Azure IoT 中樞裝置布建服務
-description: 如何使用對稱金鑰來布建舊版裝置與裝置布建服務（DPS）實例
+title: 使用對稱鍵預配舊設備 - Azure IoT 中心設備佈建服務
+description: 如何使用對稱鍵將舊設備預配到設備預配服務 （DPS） 實例中
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434705"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>如何使用對稱金鑰佈建繼承裝置
@@ -28,9 +28,9 @@ ms.locfileid: "75434705"
 此文章以 Windows 工作站為基礎來說明。 不過，您可以在 Linux 上執行上述程序。 如需 Linux 範例，請參閱[如何針對多組織用戶管理佈建](how-to-provision-multitenant.md)。
 
 > [!NOTE]
-> 本文中使用的範例是以 C 撰寫。另外還有[ C#裝置布建對稱金鑰範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)可供使用。 若要使用此範例，請下載或複製[azure-iot-範例-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp)存放庫，並遵循範例程式碼中的內嵌指示。 您可以遵循本文中的指示，使用入口網站建立對稱金鑰註冊群組，並尋找執行範例所需的識別碼範圍和註冊群組主要和次要金鑰。 您也可以使用範例來建立個別註冊。
+> 本文中使用的示例以 C 編寫。還有一個[C# 設備預配對稱金鑰示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)可用。 要使用此示例，請下載或克隆[azure-iot-示例-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp)存儲庫，並按照示例代碼中的內聯說明進行操作。 您可以按照本文中的說明使用門戶創建對稱金鑰註冊組，並找到運行示例所需的 ID 範圍和註冊組主金鑰和輔助金鑰。 您還可以使用示例創建單個註冊。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 將根據識別該裝置的資訊，為每個裝置定義唯一的註冊識別碼。 例如，MAC 位址或序號。
 
@@ -41,13 +41,13 @@ ms.locfileid: "75434705"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)快速入門。
 
-下列必要條件適用于 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 檔中的[準備開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
+下列必要條件適用於 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
-* 已啟用「[桌面開發C++ ](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) 」工作負載的[Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 同時也支援 Visual Studio 2015 和 Visual Studio 2017。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
 * 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
@@ -59,11 +59,11 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 1. 下載 [CMake 建置系統](https://cmake.org/download/)。
 
-    在開始安裝 `CMake`**之前**，請務必將 Visual Studio 先決條件 (Visual Studio 和「使用 C++ 進行桌面開發」工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
+    在開始`CMake`安裝**之前**，在電腦上安裝 Visual Studio 的先決條件（Visual Studio 和"具有C++"工作負載的桌面開發）非常重要。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
 
-2. 尋找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest)SDK 的標記名稱。
+2. 尋找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的標籤名稱。
 
-3. 開啟命令提示字元或 Git Bash 殼層。 執行下列命令，以複製最新版本的[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存放庫。 使用您在上一個步驟中找到的標記做為 `-b` 參數的值：
+3. 開啟命令提示字元或 Git Bash 殼層。 執行下列命令以複製最新版的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存放庫。 使用您在上一個步驟中找到的標籤作為 `-b` 參數的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -109,25 +109,25 @@ SDK 包含模擬裝置的範例程式碼。 這個模擬裝置將會嘗試在裝
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，並開啟您的裝置佈建服務執行個體。
 
-2. 選取 [管理註冊] 索引標籤，然後按一下頁面頂端的 [新增註冊群組] 按鈕。 
+2. 選取 [管理註冊]**** 索引標籤，然後按一下頁面頂端的 [新增註冊群組]**** 按鈕。 
 
-3. 在 [新增註冊群組] 上輸入下列資訊，然後按一下 [儲存] 按鈕。
+3. 在 [新增註冊群組]**** 上輸入下列資訊，然後按一下 [儲存]**** 按鈕。
 
    - **群組名稱**：輸入 **mylegacydevices**。
 
-   - **證明類型**：選取 [對稱金鑰]。
+   - **證明類型**：選取 [對稱金鑰]****。
 
    - **自動產生金鑰**︰選取此方塊。
 
-   - **選取要將裝置指派到中樞的方式**：選取 [靜態設定]，以指派給特定的中樞。
+   - **選取要將裝置指派到中樞的方式**：選取 [靜態設定]****，以指派給特定的中樞。
 
    - **選取可指派此群組的 IoT 中樞**：選取您的任何一個中樞。
 
      ![為對稱金鑰證明新增註冊群組](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. 一旦儲存您的註冊，將會產生 [主要金鑰] 與 [次要金鑰] 並新增到註冊項目。 您的對稱金鑰註冊群組會在 [註冊群組] 索引標籤的 [群組名稱] 資料行之下，顯示為 **mylegacydevices**。 
+4. 一旦儲存您的註冊，將會產生 [主要金鑰]**** 與 [次要金鑰]**** 並新增到註冊項目。 您的對稱金鑰註冊群組會在 [註冊群組]** 索引標籤的 [群組名稱]** 資料行之下，顯示為 **mylegacydevices**。 
 
-    開啟註冊並複製您產生之 [主要金鑰] 的值。 此金鑰是您的主要群組金鑰。
+    開啟註冊並複製您產生之 [主要金鑰]**** 的值。 此金鑰是您的主要群組金鑰。
 
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>為裝置選擇唯一的註冊識別碼
@@ -154,7 +154,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 如果您使用 Linux 工作站，您可以使用 openssl 來產生衍生的裝置金鑰，如下列範例所示。
 
-將 **KEY** 的值取代為您先前記下的 [主要金鑰]。
+將 **KEY** 的值取代為您先前記下的 [主要金鑰]****。
 
 將 **REG_ID** 的值取代為您的註冊識別碼。
 
@@ -175,7 +175,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 如果您使用以 Windows 為基礎的工作站，您可以使用 PowerShell 來產生衍生的裝置金鑰，如下列範例所示。
 
-將 **KEY** 的值取代為您先前記下的 [主要金鑰]。
+將 **KEY** 的值取代為您先前記下的 [主要金鑰]****。
 
 將 **REG_ID** 的值取代為您的註冊識別碼。
 
@@ -205,7 +205,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 此範例程式碼會模擬將佈建要求傳送至裝置佈建服務執行個體的裝置開機順序。 此開機順序會使裝置接受辨識，並指派至您在註冊群組中設定的 IoT 中樞。
 
-1. 在 Azure 入口網站中，選取您裝置佈建服務的 [概觀] 索引標籤，並記下 [識別碼範圍] 值。
+1. 在 Azure 入口網站中，選取您裝置佈建服務的 [概觀]**** 索引標籤，並記下 [識別碼範圍]**__** 值。
 
     ![從入口網站刀鋒視窗擷取裝置佈建服務端點資訊](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -215,9 +215,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的 [方案總管] 視窗中，瀏覽至 **Provision\_Samples** 資料夾。 展開名為 **prov\_dev\_client\_sample** 的範例專案。 展開 [來源檔案]，然後開啟 **prov\_dev\_client\_sample.c**。
+3. 在 Visual Studio 的 [方案總管]** 視窗中，瀏覽至 **Provision\_Samples** 資料夾。 展開名為 **prov\_dev\_client\_sample** 的範例專案。 展開 [來源檔案]****，然後開啟 **prov\_dev\_client\_sample.c**。
 
-4. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍] 值。 
+4. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍]**** 值。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -248,9 +248,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     儲存檔案。
 
-7. 以滑鼠右鍵按一下 **prov\_dev\_client\_sample** 專案，然後選取 [設定為起始專案]。 
+7. 以滑鼠右鍵按一下 **prov\_dev\_client\_sample** 專案，然後選取 [設定為起始專案]****。 
 
-8. 在 Visual Studio 功能表中，選取 [偵錯] > [啟動但不偵錯] 以執行解決方案。 出現重新建置專案的提示時，按一下 [是]，以在執行前重新建置專案。
+8. 在 Visual Studio 功能表上，選擇 > **"調試開始而不調試**"以運行解決方案。 **Debug** 出現重新建置專案的提示時，按一下 [是]****，以在執行前重新建置專案。
 
     下列輸出是模擬裝置成功開機，並連線到佈建服務執行個體以準備指派給 IoT 中樞的範例：
 
@@ -269,7 +269,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     Press enter key to exit:
     ```
 
-9. 在入口網站中，流覽至您的模擬裝置所指派的 IoT 中樞，然後按一下 [ **Iot 裝置**] 索引標籤。成功布建模擬至中樞後，其裝置識別碼會出現在 [ **IoT 裝置**] 分頁上，*狀態*為 [**已啟用**]。 您可能需要按一下頂端的 [重新整理] 按鈕。 
+9. 在門戶中，導航到已分配類比設備的 IoT 中心，然後按一下 **"IoT 設備**"選項卡。成功將類比預配到集線器後，其裝置識別碼 將顯示在**IoT 設備**邊欄選項卡上，*狀態*為**啟用**。 您可能需要按一下頂端的 [重新整理]**** 按鈕。 
 
     ![已向 IoT 中樞註冊裝置](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
@@ -285,9 +285,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入瞭解重新布建，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
+* 要瞭解更多重新調配，請參閱[IoT 中心設備重新調配概念](concepts-device-reprovision.md) 
 * [快速入門：使用對稱金鑰來佈建模擬的裝置](quick-create-simulated-device-symm-key.md)
-* 若要深入瞭解解除布建，請參閱如何取消布建[先前自動布建的裝置](how-to-unprovision-devices.md) 
+* 要瞭解更多取消預配，請參閱[如何取消預配以前自動預配的設備](how-to-unprovision-devices.md) 
 
 
 

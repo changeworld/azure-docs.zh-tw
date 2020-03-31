@@ -10,31 +10,34 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2018
+ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a22adef5510e24c2dc07ffb39c9687d500644f8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066443"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>建立、變更或刪除網路安全性群組
 
-網路安全性群組中的安全性規則能讓您篩選可在虛擬網路子網路及網路介面中流入和流出的網路流量類型。 如果您不熟悉網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)以深入了解安全性群組，並完成[篩選網路流量](tutorial-filter-network-traffic.md)教學課程以獲得一些網路安全性群組相關經驗。
+網路安全性群組中的安全性規則能讓您篩選可在虛擬網路子網路及網路介面中流入和流出的網路流量類型。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)。 接下來，完成["篩選網路流量](tutorial-filter-network-traffic.md)教程"，以獲得網路安全性群組的一些經驗。
 
 ## <a name="before-you-begin"></a>開始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-在完成本文任一節的步驟之前，請先完成下列工作︰
+如果沒有，則使用活動訂閱設置 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 在開始本文的其餘部分之前完成這些任務之一：
 
-- 如果您還沒有 Azure 帳戶，請註冊[免費試用帳戶](https://azure.microsoft.com/free)。
-- 如果使用入口網站，請開啟 https://portal.azure.com，並使用您的 Azure 帳戶來登入。
-- 如果使用 PowerShell 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/powershell) \(英文\) 中執行命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 本教學課程需要 Azure PowerShell 模組 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
-- 如果使用命令列介面 (CLI) 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/bash) \(英文\) 中執行命令，或從您的電腦執行 CLI。 本教學課程需要 Azure CLI 2.0.28 版或更新版本。 執行 `az --version` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 Azure CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
+- **門戶使用者**：使用 Azure 帳戶登錄到[Azure 門戶](https://portal.azure.com)。
 
-您登入或連線到 Azure 的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派[權限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中所列適當動作的[自訂角色](#permissions)。
+- **PowerShell 使用者**：在[Azure 雲殼](https://shell.azure.com/powershell)中運行命令，或者從電腦運行 PowerShell。 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 在 Azure 雲殼瀏覽器選項卡中，查找 **"選擇環境**"下拉清單，如果尚未選擇**PowerShell，請選擇 PowerShell。**
+
+    如果在本地運行 PowerShell，請使用 Azure PowerShell 模組版本 1.0.0 或更高版本。 執行 `Get-Module -ListAvailable Az.Network` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 執行 `Connect-AzAccount` 來建立與 Azure 的連線。
+
+- **Azure 命令列介面 （CLI） 使用者**：在 Azure[雲外殼](https://shell.azure.com/bash)中運行命令，或從電腦運行 CLI。 如果您在本地運行 Azure CLI，請使用 Azure CLI 版本 2.0.28 或更高版本。 執行 `az --version` 來了解安裝的版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 執行 `az login` 來建立與 Azure 的連線。
+
+必須將您登錄或連接到 Azure 的帳戶分配給[網路參與者角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)或已分配[許可權](#permissions)中列出的相應操作的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="work-with-network-security-groups"></a>使用網路安全性群組
 
@@ -42,51 +45,82 @@ ms.locfileid: "79245105"
 
 ### <a name="create-a-network-security-group"></a>建立網路安全性群組
 
-每個 Azure 位置和訂用帳戶可以建立的網路安全性群組數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+可以為每個 Azure 位置和訂閱創建多少個網路安全性群組是有限制的。 要瞭解更多資訊，請參閱[Azure 訂閱和服務限制、配額和約束](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
-2. 選取 [網路]，然後選取 [網路安全性群組]。
-3. 輸入網路安全性群組的 [名稱]選取您的 [訂用帳戶]建立新的 [資源群組] 或選取現有的資源群組、選取 [位置]，然後選取 [建立]。
+1. 在[Azure 門戶](https://portal.azure.com)功能表或**主頁**上，選擇 **"創建資源**"。
 
-**命令**
+2. 選擇 **"網路**"，然後選擇**網路安全性群組**。
 
-- Azure CLI：[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create)
-- PowerShell：[新增-new-aznetworksecuritygroup](/powershell/module/az.network/new-aznetworksecuritygroup)
+3. 在"**創建網路安全性群組"** 頁中，在 **"基本"** 選項卡下，為以下設置設置值：
+
+    | 設定 | 動作 |
+    | --- | --- |
+    | **訂閱** | 選擇您的訂用帳戶。 |
+    | **資源組** | 選擇現有資源組，或選擇 **"新建**"以創建新資源組。 |
+    | **名稱** | 在資源組中輸入唯一的文本字串。 |
+    | **地區** | 選擇您想要的位置。 |
+
+4. 選擇 **"審閱" = 創建**。
+
+5. 看到**驗證傳遞**的消息後，選擇 **"創建**"。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
+| PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
 
 ### <a name="view-all-network-security-groups"></a>檢視所有網路安全性群組
 
-在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。 列出的是存在於您訂用帳戶中的網路安全性群組。
+轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組。 搜索並選擇**網路安全性群組**。 為您的訂閱顯示網路安全性群組的清單。
 
-**命令**
+#### <a name="commands"></a>命令
 
-- Azure CLI：[az network nsg list](/cli/azure/network/nsg#az-network-nsg-list)
-- PowerShell： [new-aznetworksecuritygroup](/powershell/module/az.network/get-aznetworksecuritygroup)
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 nsg 清單](/cli/azure/network/nsg#az-network-nsg-list) |
+| PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="view-details-of-a-network-security-group"></a>檢視網路安全性群組的詳細資料
 
-1. 在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。
-2. 選取清單中您想要檢視其詳細資料的網路安全性群組。 在 [設定] 底下，您可以檢視網路安全性群組所關聯的 [輸入安全性規則] 和 [輸出安全性規則]、[網路介面] 和 [子網路]。 您也可以啟用或停用 [診斷記錄]，以及檢視 [有效的安全性規則]。 若要深入了解，請參閱[診斷記錄](virtual-network-nsg-manage-log.md)和[檢視有效的安全性規則](diagnose-network-traffic-filter-problem.md)。
-3. 若要深入了解列出的一般 Azure 設定，請參閱下列文章：
-    *   [活動記錄檔](../azure-monitor/platform/platform-logs-overview.md)
-    *   [存取控制 (IAM)](../role-based-access-control/overview.md)
-    *   [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (標籤)
-    *   [鎖定](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [自動化指令碼](../azure-resource-manager/templates/export-template-portal.md)
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組。 搜索並選擇**網路安全性群組**。
 
-**命令**
+2. 選擇網路安全性群組的名稱。
 
-- Azure CLI：[az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)
-- PowerShell： [new-aznetworksecuritygroup](/powershell/module/az.network/get-aznetworksecuritygroup)
+在網路安全性群組的功能表列中，在 **"設置"** 下，您可以查看網路安全性群組關聯的**入站安全規則**、**出站安全規則**、**網路介面**和**子網**。
+
+在 **"監視"** 下，您可以啟用或禁用**診斷設置**。 在 **"支援 + 故障排除"下**，您可以查看**有效安全規則**。 要瞭解更多資訊，請參閱[網路安全性群組的診斷日誌記錄](virtual-network-nsg-manage-log.md)和診斷 VM[網路流量篩選器問題](diagnose-network-traffic-filter-problem.md)。
+
+若要深入了解列出的一般 Azure 設定，請參閱下列文章：
+
+- [活動日誌](../azure-monitor/platform/platform-logs-overview.md)
+- [存取控制 （IAM）](../role-based-access-control/overview.md)
+- [標記](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [鎖](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [自動化指令碼](../azure-resource-manager/templates/export-template-portal.md)
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 nsg 顯示](/cli/azure/network/nsg#az-network-nsg-show) |
+| PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="change-a-network-security-group"></a>變更網路安全性群組
 
-1. 在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。
-2. 選取您想要變更的網路安全性群組。 最常見的變更是[新增](#create-a-security-rule)或[移除](#delete-a-security-rule)安全性規則，以及[讓網路安全性群組與子網路或網路介面建立關聯或中斷關聯](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface)。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組。 搜索並選擇**網路安全性群組**。
 
-**命令**
+2. 選擇要更改的網路安全性群組的名稱。
 
-- Azure CLI：[az network nsg update](/cli/azure/network/nsg#az-network-nsg-update)
-- PowerShell：[設定-new-aznetworksecuritygroup](/powershell/module/az.network/set-aznetworksecuritygroup)
+最常見的更改是[添加安全規則](#create-a-security-rule)、[刪除規則](#delete-a-security-rule)，並將[網路安全性群組關聯或脫離子網或網路介面](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface)。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 nsg 更新](/cli/azure/network/nsg#az-network-nsg-update) |
+| PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>讓網路安全性群組與子網路或網路介面建立關聯或中斷關聯
 
@@ -94,16 +128,20 @@ ms.locfileid: "79245105"
 
 ### <a name="delete-a-network-security-group"></a>刪除網路安全性群組
 
-如果網路安全性群組與任何子網路或網路介面關聯，便無法刪除它。 請先將網路安全性群組與所有子網路和網路介面中斷關聯，再嘗試刪除它。
+如果網路安全性群組與任何子網或網路介面相關聯，則無法將其刪除。 請先將網路安全性群組與所有子網路和網路介面中斷關聯，再嘗試刪除它。
 
-1. 在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。
-2. 從清單中選取您想要刪除的網路安全性群組。
-3. 選取 [刪除]，然後選取 [是]。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組。 搜索並選擇**網路安全性群組**。
 
-**命令**
+2. 選擇要刪除的網路安全性群組的名稱。
 
-- Azure CLI：[az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete)
-- PowerShell：[移除-new-aznetworksecuritygroup](/powershell/module/az.network/remove-aznetworksecuritygroup)
+3. 在網路安全性群組的工具列中，選擇 **"刪除**"。 然後，選取確認對話方塊中的 [是]****。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 nsg 刪除](/cli/azure/network/nsg#az-network-nsg-delete) |
+| PowerShell | [刪除-阿茲網路安全性群組](/powershell/module/az.network/remove-aznetworksecuritygroup) |
 
 ## <a name="work-with-security-rules"></a>使用安全性規則
 
@@ -111,76 +149,113 @@ ms.locfileid: "79245105"
 
 ### <a name="create-a-security-rule"></a>建立安全性規則
 
-每個 Azure 位置和訂用帳戶的每個網路安全性群組可以建立的規則數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+每個網路安全性群組可以為每個 Azure 位置和訂閱創建多少規則是有限制的。 要瞭解更多資訊，請參閱[Azure 訂閱和服務限制、配額和約束](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-1. 在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。
-2. 從清單中選取您想要為其新增安全性規則的網路安全性群組。
-3. 在 [設定] 底下，選取 [輸入安全性規則]。 這會列出數個現有的規則。 有些規則可能您並未新增。 建立網路安全性群組時，會在該群組中建立數個預設安全性規則。 若要深入了解，請參閱[預設安全性規則](security-overview.md#default-security-rules)。  您無法刪除預設安全性規則，但是可以使用優先順序較高的規則來覆寫它們。
-4. <a name = "security-rule-settings"></a>選取 [+ 新增]。  選取或新增下列設定的值，然後選取 [確定]：
-    
-    |設定  |值  |詳細資料  |
-    |---------|---------|---------|
-    |來源     | 針對輸入安全性規則，選取 [任何]、[應用程式安全性群組]、[IP 位址] 或 [服務標籤]。 如果您建立輸出安全性規則，則選項會與針對 [目的地] 所列的選項相同。       | 如果您選取 [應用程式安全性群組]，請選取與網路介面相同之區域中的一或多個現有應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。 如果您針對 [來源] 和 [目的地] 選取 [應用程式安全性群組]，則兩個應用程式安全性群組內的網路介面都必須在相同的虛擬網路中。 如果您選取 [IP 位址]，請指定 [來源 IP 位址/CIDR 範圍]。 您可以指定單一值或以逗號分隔的多值清單。 多值範例：10.0.0.0/16, 192.188.1.1。 您可以指定的值數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 如果您選取 [服務標籤]，請選取一個服務標籤。 服務標籤是為 IP 位址類別預先定義的識別碼。 若要深入了解可用的服務標籤，以及每個標籤所代表的意義，請參閱[服務標籤](security-overview.md#service-tags)。 如果您將指定的 IP 位址指派給 Azure 虛擬機器，請確定您指定私人 IP 位址，而不是指派給虛擬機器的公用 IP 位址。 在 Azure 針對輸入安全性規則將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出規則將私人 IP 位址轉譯為公用 IP 位址之前，安全性規則會進行處理。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](virtual-network-ip-addresses-overview-arm.md)。        |
-    |來源連接埠範圍     | 指定單一連接埠 (例如 80)、連接埠範圍 (例如 1024-65535)，或是單一連接埠和/或連接埠範圍的逗號分隔清單 (例如 80, 1024-65535)。 輸入星號可以允許任何連接埠上的流量。 | 連接埠和範圍指定規則將允許或拒絕哪些連接埠流量。 您可以指定的連接埠數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。  |
-    |Destination     | 針對輸出安全性規則選取 [**任何**]、[**應用程式安全性群組**]、[ **IP 位址**] 或 [**虛擬網路**]。 如果您要建立輸入安全性規則，選項會與針對 [**來源**] 所列的選項相同。        | 如果您選取 [應用程式安全性群組]，則必須選取與網路介面相同之區域中的一或多個現有應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。 如果您選取 [應用程式安全性群組]，請選取與網路介面相同之區域中的一個現有應用程式安全性群組。 如果您選取 [IP 位址]，請指定 [目的地 IP 位址/CIDR 範圍]。 與 [來源] 和 [來源 IP 位址/CIDR 範圍] 類似，您可以指定單一或多個位址或範圍，且您可以指定的數目有所限制。 選取 [虛擬網路] (服務標籤) 即表示允許流量連至虛擬網路位址空間內的所有 IP 位址。 如果您將指定的 IP 位址指派給 Azure 虛擬機器，請確定您指定私人 IP 位址，而不是指派給虛擬機器的公用 IP 位址。 在 Azure 針對輸入安全性規則將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出規則將私人 IP 位址轉譯為公用 IP 位址之前，安全性規則會進行處理。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](virtual-network-ip-addresses-overview-arm.md)。        |
-    |目的地連接埠範圍     | 指定單一值或以逗號分隔的值清單。 | 與 [來源連接埠範圍] 類似，您可以指定單一或多個位址和範圍，且您可以指定的數目有所限制。 |
-    |通訊協定     | 選取 [**任何**]、[ **TCP**]、[ **UDP** ] 或 [ **ICMP**]。        |         |
-    |動作     | 選取 [允許] 或 [拒絕]。        |         |
-    |優先順序     | 輸入一個介於 100 到 4096 且對網路安全性群組內的所有安全性規則而言具唯一性的值。 |規則會依照優先順序進行處理。 編號愈低，優先順序愈高。 建議您在建立規則時，於優先順序編號之間保留間距，例如 100、200、300。 保留間距可方便您未來新增比現有規則優先順序更高或更低的規則。         |
-    |名稱     | 網路安全性群組內規則的唯一名稱。        |  此名稱最多可有 80 個字元。 它必須以字母或數字為開頭、以字母、數字或底線為結尾，且只能包含字母、數字、底線、句點或連字號。       |
-    |描述     | 選擇性的描述。        |         |
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組。 搜索並選擇**網路安全性群組**。
 
-**命令**
+2. 選擇要向其添加安全規則的網路安全性群組的名稱。
 
-- Azure CLI：[az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
-- PowerShell：[新增-new-aznetworksecurityruleconfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)
+3. 在網路安全性群組的功能表列中，選擇**入站安全規則**或**出站安全規則**。
+
+    列出了幾個現有規則，包括您可能尚未添加的一些規則。 創建網路安全性群組時，會創建多個預設安全規則。 若要深入了解，請參閱[預設安全性規則](security-overview.md#default-security-rules)。  您無法刪除預設安全性規則，但是可以使用優先順序較高的規則來覆寫它們。
+
+4. <a name="security-rule-settings"></a>選擇 **"添加**"。 選擇或添加以下設置的值，然後選擇 **"確定**" ：
+
+    | 設定 | 值 | 詳細資料 |
+    | ------- | ----- | ------- |
+    | **來源** | 值為下列其中之一：<ul><li>**任何**</li><li>**IP 位址**</li><li>**服務標記**（入站安全規則）或**虛擬網路**（出站安全規則）</li><li>**應用程式&nbsp;安全&nbsp;組**</li></ul> | <p>如果選擇**IP 位址**，還必須指定**源 IP 位址/CIDR 範圍**。</p><p>如果選擇**服務標記**，還可以選擇**源服務標記**。</p><p>如果選擇**應用程式安全性群組**，還必須選擇現有的應用程式安全性群組。 如果同時為 **"源"****和目標**選擇**應用程式安全性群組**，則兩個應用程式安全性群組中的網路介面必須位於同一虛擬網路中。</p> |
+    | **源 IP 位址/CIDR 範圍** | IP 位址和無類域間路由 （CIDR） 範圍的逗號分隔清單 | <p>如果將**源**更改為**IP 位址**，則將顯示此設置。 必須指定多個值的單個值或逗號分隔清單。 多個值的一個示例`10.0.0.0/16, 192.188.1.1`是 。 您可以指定的值數目有所限制。 有關詳細資訊，請參閱[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果指定的 IP 位址分配給 Azure VM，請指定其私人 IP 位址，而不是其公共 IP 位址。 Azure 將公共 IP 位址轉換為入站安全規則的私人 IP 位址後，但在將私人 IP 位址轉換為出站規則的公共 IP 位址之前，將安全規則進行處理。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](virtual-network-ip-addresses-overview-arm.md)。</p> |
+    | **源服務標記** | 下拉清單中的服務標記 | 如果為入站安全規則設置了 **"源**到**服務標記"，** 則會出現此可選設置。 服務標籤是為 IP 位址類別預先定義的識別碼。 要瞭解有關可用服務標記以及每個標記表示的內容的更多內容，請參閱[服務標記](security-overview.md#service-tags)。 |
+    | **源應用程式安全性群組** | 現有應用程式安全性群組 | 如果將 **"源"** 設置為**應用程式安全性群組**，則將顯示此設置。 選擇與網路介面位於同一區域中的應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。 |
+    | **源埠範圍** | 值為下列其中之一：<ul><li>單個埠，例如`80`</li><li>一系列埠，例如`1024-65535`</li><li>單個埠和/或埠範圍的逗號分隔清單，例如`80, 1024-65535`</li><li>星號 （`*`） 允許任何埠上的流量</li></ul> | 此設置指定規則允許或拒絕流量的埠。 您可以指定的連接埠數目有所限制。 有關詳細資訊，請參閱[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 |
+    | **目的地** | 值為下列其中之一：<ul><li>**任何**</li><li>**IP 位址**</li><li>**服務標記**（出站安全規則）或**虛擬網路**（入站安全規則）</li><li>**應用程式&nbsp;安全&nbsp;組**</li></ul> | <p>如果選擇**IP 位址**，則還要指定**目標 IP 位址/CIDR 範圍**。</p><p>如果選擇 **"虛擬網路"，** 則允許流量訪問虛擬網路位址空間中的所有 IP 位址。 **虛擬網路**是服務標記。</p><p>如果選擇**應用程式安全性群組**，則必須選擇現有應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。</p> |
+    | **目標 IP 位址/CIDR 範圍** | IP 位址和 CIDR 範圍的逗號分隔清單 | <p>如果將 **"目標"** 更改為 IP**位址**，則將顯示此設置。 與**源**和**源 IP 位址/CIDR 範圍**類似，您可以指定單個或多個位址或範圍。 您可以指定的數位有限制。 有關詳細資訊，請參閱[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果指定的 IP 位址已分配給 Azure VM，請確保指定其專用 IP，而不是其公共 IP 位址。 Azure 將公共 IP 位址轉換為入站安全規則的私人 IP 位址後，但在 Azure 將私人 IP 位址轉換為出站規則的公共 IP 位址之前，將安全規則進行處理。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](virtual-network-ip-addresses-overview-arm.md)。</p> |
+    | **目的地服務標記** | 下拉清單中的服務標記 | 如果為出站安全規則更改 **"目標**到**服務標記"，** 則將顯示此可選設置。 服務標籤是為 IP 位址類別預先定義的識別碼。 要瞭解有關可用服務標記以及每個標記表示的內容的更多內容，請參閱[服務標記](security-overview.md#service-tags)。 |
+    | **目標應用程式安全性群組** | 現有應用程式安全性群組 | 如果將 **"目標"** 設置為**應用程式安全性群組**，則將顯示此設置。 選擇與網路介面位於同一區域中的應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。 |
+    | **目標埠範圍** | 值為下列其中之一：<ul><li>單個埠，例如`80`</li><li>一系列埠，例如`1024-65535`</li><li>單個埠和/或埠範圍的逗號分隔清單，例如`80, 1024-65535`</li><li>星號 （`*`） 允許任何埠上的流量</li></ul> | 與**Source 埠範圍**一樣，您可以指定單個或多個埠和範圍。 您可以指定的數位有限制。 有關詳細資訊，請參閱[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 |
+    | **協定** | **任何** **、TCP、UDP**或**ICMP** **UDP** | 您可以將規則限制為傳輸控制協定 （TCP）、使用者資料圖協定 （UDP） 或 Internet 控制訊息協定 （ICMP）。 預設值是規則應用於所有協定。 |
+    | **動作** | **允許**或**拒絕** | 此設置指定此規則是否允許或拒絕對提供的源和目標配置的訪問。 |
+    | **優先順序** | 100 和 4096 之間的值，對於網路安全性群組中的所有安全規則都是唯一的 | Azure 按優先順序連續處理安全規則。 編號愈低，優先順序愈高。 我們建議您在創建規則（如 100、200 和 300）時，在優先順序數位之間留出間隙。 留下間隙可以更輕鬆地在將來添加規則，以便您可以給予它們比現有規則更高或更低的優先順序。 |
+    | **名稱** | 網路安全性群組中規則的唯一名稱 | 此名稱最多可有 80 個字元。 它必須以字母或數位開頭，並且必須以字母、數位或底線結尾。 名稱可能僅包含字母、數位、底線、句點或連字號。 |
+    | **描述** | 文本說明 | 您可以選擇為安全規則指定文本說明。 |
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
+| PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
 
 ### <a name="view-all-security-rules"></a>檢視所有安全性規則
 
 網路安全性群組包含零個或多個規則。 若要深入了解檢視規則時列出的資訊，請參閱[網路安全性群組概觀](security-overview.md)。
 
-1. 在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。
-2. 從清單中選取您想要檢視其規則的網路安全性群組。
-3. 在 [設定] 底下，選取 [輸入安全性規則] 或 [輸出安全性規則]。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組的規則。 搜索並選擇**網路安全性群組**。
 
-此清單包含您已建立的所有規則，以及網路安全性群組[預設安全性規則](security-overview.md#default-security-rules)。
+2. 選擇要為其查看規則的網路安全性群組的名稱。
 
-**命令**
+3. 在網路安全性群組的功能表列中，選擇**入站安全規則**或**出站安全規則**。
 
-- Azure CLI：[az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
-- PowerShell： [new-aznetworksecurityruleconfig](/powershell/module/az.network/get-aznetworksecurityruleconfig)
+該清單包含您創建的任何規則以及網路安全性群組的[預設安全規則](security-overview.md#default-security-rules)。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
+| PowerShell | [獲取-阿茲網路安全規則配置](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="view-details-of-a-security-rule"></a>檢視安全性規則的詳細資料
 
-1. 在入口網站頂端的搜尋方塊中，輸入「網路安全性群組」。 當**網路安全性群組**出現在搜尋結果中時，請選取它。
-2. 選取您想要檢視其安全性規則詳細資料的網路安全性群組。
-3. 在 [設定] 底下，選取 [輸入安全性規則] 或 [輸出安全性規則]。
-4. 選取您想要檢視其詳細資料的規則。 如需所有設定的詳細說明，請參閱[安全性規則設定](#security-rule-settings)。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看網路安全性群組的規則。 搜索並選擇**網路安全性群組**。
 
-**命令**
+2. 選擇要為其查看規則詳細資訊的網路安全性群組的名稱。
 
-- Azure CLI：[az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
-- PowerShell： [new-aznetworksecurityruleconfig](/powershell/module/az.network/get-aznetworksecurityruleconfig)
+3. 在網路安全性群組的功能表列中，選擇**入站安全規則**或**出站安全規則**。
+
+4. 選取您想要檢視其詳細資料的規則。 有關所有設置的說明，請參閱[安全規則設置](#security-rule-settings)。
+
+    > [!NOTE]
+    > 此過程僅適用于自訂安全規則。 如果選擇預設安全規則，則不起作用。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 nsg 規則顯示](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
+| PowerShell | [獲取-阿茲網路安全規則配置](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="change-a-security-rule"></a>變更安全性規則
 
 1. 完成[檢視安全性規則的詳細資料](#view-details-of-a-security-rule)中的步驟。
-2. 視需要變更設定，然後選取 [儲存]。 如需所有設定的詳細說明，請參閱[安全性規則設定](#security-rule-settings)。
 
-**命令**
+2. 根據需要更改設置，然後選擇 **"保存**"。 有關所有設置的說明，請參閱[安全規則設置](#security-rule-settings)。
 
-- Azure CLI：[az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
-- PowerShell：[設定-new-aznetworksecurityruleconfig](/powershell/module/az.network/set-aznetworksecurityruleconfig)
+    > [!NOTE]
+    > 此過程僅適用于自訂安全規則。 不允許更改預設安全規則。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
+| PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
 
 ### <a name="delete-a-security-rule"></a>刪除安全性規則
 
 1. 完成[檢視安全性規則的詳細資料](#view-details-of-a-security-rule)中的步驟。
-2. 選取 [刪除]，然後選取 [是]。
 
-**命令**
+2. 選取 [刪除]****，然後選取 [是]****。
 
-- Azure CLI：[az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
-- PowerShell：[移除-new-aznetworksecurityruleconfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig)
+    > [!NOTE]
+    > 此過程僅適用于自訂安全規則。 不允許刪除預設安全規則。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 nsg 規則刪除](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
+| PowerShell | [刪除-阿茲網路安全規則配置](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
 
 ## <a name="work-with-application-security-groups"></a>使用應用程式安全性群組
 
@@ -188,69 +263,96 @@ ms.locfileid: "79245105"
 
 ### <a name="create-an-application-security-group"></a>建立應用程式安全性群組
 
-1. 選取 Azure 入口網站左上角的 [+ 建立資源]。
-2. 在 [搜尋 Marketplace] 方塊中，輸入「應用程式安全性群組」。 當搜尋結果中出現 [應用程式安全性群組] 時，請加以選取，在 [所有項目] 下再次選取 [應用程式安全性群組]，然後選取 [建立]。
-3. 輸入或選取下列資訊，然後選取 [建立]︰
+1. 在[Azure 門戶](https://portal.azure.com)功能表或**主頁**上，選擇 **"創建資源**"。
 
-    | 設定        | 值                                                   |
-    | ---            | ---                                                     |
-    | 名稱           | 名稱在資源群組內必須是唯一的。        |
-    | 訂用帳戶   | 選取您的訂用帳戶。                               |
-    | 資源群組 | 選取現有資源群組或建立新群組。 |
-    | Location       | 選取位置                                       |
+2. 在搜索框中，輸入*應用程式安全性群組*。
 
-**命令**
+3. 在 **"應用程式安全性群組"** 頁中，選擇 **"創建**"。
 
-- Azure CLI：[az network asg create](/cli/azure/network/asg#az-network-asg-create)
-- PowerShell：[新增-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup)
+4. 在"**創建應用程式安全性群組"** 頁中，在 **"基本"** 選項卡下，為以下設置設置值：
+
+    | 設定 | 動作 |
+    | --- | --- |
+    | **訂閱** | 選擇您的訂用帳戶。 |
+    | **資源組** | 選擇現有資源組，或選擇 **"新建**"以創建新資源組。 |
+    | **名稱** | 在資源組中輸入唯一的文本字串。 |
+    | **地區** | 選擇您想要的位置。 |
+
+5. 選擇 **"審閱" = 創建**。
+
+6. 在 **"審核 + 創建**"選項卡下，在看到 **"驗證傳遞"** 消息後，選擇 **"創建**"。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 asg 創建](/cli/azure/network/asg#az-network-asg-create) |
+| PowerShell | [新應用安全性群組](/powershell/module/az.network/new-azapplicationsecuritygroup) |
 
 ### <a name="view-all-application-security-groups"></a>檢視所有應用程式安全性群組
 
-1. 在 Azure 入口網站的左上角，選取 [所有服務]。
-2. 在 [所有服務篩選] 方塊中輸入「應用程式安全性群組」，然後當 [應用程式安全性群組] 出現在搜尋結果時加以選取。
+轉到[Azure 門戶](https://portal.azure.com)以查看應用程式安全性群組。 搜索並選擇**應用程式安全性群組**。 Azure 門戶顯示應用程式安全性群組的清單。
 
-**命令**
+#### <a name="commands"></a>命令
 
-- Azure CLI：[az network asg list](/cli/azure/network/asg#az-network-asg-list)
-- PowerShell： [AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup)
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 asg 清單](/cli/azure/network/asg#az-network-asg-list) |
+| PowerShell | [獲取應用安全性群組](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>檢視特定應用程式安全性群組的詳細資料
 
-1. 在 Azure 入口網站的左上角，選取 [所有服務]。
-2. 在 [所有服務篩選] 方塊中輸入「應用程式安全性群組」，然後當 [應用程式安全性群組] 出現在搜尋結果時加以選取。
-3. 選取您想要檢視其詳細資料的應用程式安全性群組。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看應用程式安全性群組。 搜索並選擇**應用程式安全性群組**。
 
-**命令**
+2. 選擇要查看其詳細資訊的應用程式安全性群組的名稱。
 
-- Azure CLI：[az network asg show](/cli/azure/network/asg#az-network-asg-show)
-- PowerShell： [AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup)
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 asg 顯示](/cli/azure/network/asg#az-network-asg-show) |
+| PowerShell | [獲取應用安全性群組](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="change-an-application-security-group"></a>變更應用程式安全性群組
 
-1. 在 Azure 入口網站的左上角，選取 [所有服務]。
-2. 在 [所有服務篩選] 方塊中輸入「應用程式安全性群組」，然後當 [應用程式安全性群組] 出現在搜尋結果時加以選取。
-3. 選取您想要變更其設定的應用程式安全性群組。 您可以新增或移除標記，或是指派或移除應用程式安全性群組的權限。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查看應用程式安全性群組。 搜索並選擇**應用程式安全性群組**。
 
-- Azure CLI：[az network asg update](/cli/azure/network/asg#az-network-asg-update)
-- PowerShell：沒有任何 PowerShell Cmdlet。
+2. 選擇要更改的應用程式安全性群組的名稱。
+
+3. 選擇要修改的設置旁邊的**更改**。 例如，您可以添加或刪除**標記**，也可以更改**資源組**或**訂閱**。
+
+    > [!NOTE]
+    > 您無法更改位置。
+
+    在功能表列中，您還可以選擇**存取控制 （IAM）。** 在**Access 控制項 （IAM）** 頁中，您可以向應用程式安全性群組分配或刪除許可權。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 asg 更新](/cli/azure/network/asg#az-network-asg-update) |
+| PowerShell | 無電源外殼 Cmdlet |
 
 ### <a name="delete-an-application-security-group"></a>刪除應用程式安全性群組
 
-如果應用程式安全性群組內有網路介面，您便無法刪除該群組。 藉由變更網路介面設定或刪除網路介面，從應用程式安全性群組移除所有網路介面。 如需詳細資料，請參閱[在應用程式安全性群組新增或移除網路介面](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)或[刪除網路介面](virtual-network-network-interface.md#delete-a-network-interface)。
+如果應用程式安全性群組包含任何網路介面，則無法刪除它。 要從應用程式安全性群組中刪除所有網路介面，請更改網路介面設置或刪除網路介面。 要瞭解更多資訊，請參閱[從應用程式安全性群組添加或刪除](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)或[刪除網路介面](virtual-network-network-interface.md#delete-a-network-interface)。
 
-1. 在 Azure 入口網站的左上角，選取 [所有服務]。
-2. 在 [所有服務篩選] 方塊中輸入「應用程式安全性群組」，然後當 [應用程式安全性群組] 出現在搜尋結果時加以選取。
-3. 選取您想要刪除的應用程式安全性群組。
-4. 選取 [刪除]，然後選取 [是] 刪除應用程式安全性群組。
+1. 轉到[Azure 門戶](https://portal.azure.com)以管理應用程式安全性群組。 搜索並選擇**應用程式安全性群組**。
 
-**命令**
+2. 選擇要刪除的應用程式安全性群組的名稱。
 
-- Azure CLI：[az network asg delete](/cli/azure/network/asg#az-network-asg-delete)
-- PowerShell：[移除-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup)
+3. 選取 [刪除]****，然後選取 [是]**** 刪除應用程式安全性群組。
+
+#### <a name="commands"></a>命令
+
+| 工具 | Command |
+| ---- | ------- |
+| Azure CLI | [az 網路 asg 刪除](/cli/azure/network/asg#az-network-asg-delete) |
+| PowerShell | [刪除-應用安全性群組](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
 
 ## <a name="permissions"></a>權限
 
-若要針對網路安全性群組、安全性規則及應用程式安全性群組執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表所列適當權限的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：
+要執行網路安全性群組、安全規則和應用程式安全性群組的任務，您的帳戶必須分配給[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或已分配相應許可權的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，如下表中列出：
 
 ### <a name="network-security-group"></a>網路安全性群組
 
@@ -260,7 +362,6 @@ ms.locfileid: "79245105"
 | Microsoft.Network/networkSecurityGroups/write                 |   建立或更新網路安全性群組                             |
 | Microsoft.Network/networkSecurityGroups/delete                |   刪除網路安全性群組                                       |
 | Microsoft.Network/networkSecurityGroups/join/action           |   將網路安全性群組與子網路或網路介面建立關聯 
-
 
 ### <a name="network-security-group-rule"></a>網路安全性群組規則
 
@@ -282,5 +383,5 @@ ms.locfileid: "79245105"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 範例指令碼，或使用 Azure [Resource Manager 範本](template-samples.md)建立網路或應用程式安全性群組
+- 使用[PowerShell](powershell-samples.md)或[Azure CLI](cli-samples.md)示例腳本或 Azure[資源管理器範本](template-samples.md)創建網路或應用程式安全性群組
 - 為虛擬網路建立及套用 [Azure 原則](policy-samples.md)

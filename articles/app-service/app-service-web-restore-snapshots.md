@@ -1,16 +1,16 @@
 ---
-title: 從快照集還原應用程式
-description: 了解如何從快照集還原應用程式。 使用自動陰影複製，從進階層中非預期的資料遺失中復原。
+title: 從快照還原應用
+description: 了解如何從快照集還原應用程式。 使用自動卷影副本從高級層中意外資料丟失中恢復。
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255141"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中透過快照集還原應用程式
@@ -35,20 +35,20 @@ ms.locfileid: "78255141"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>從快照集還原應用程式
 
-1. 在應用程式位於 [Azure 入口網站](https://portal.azure.com)的 [設定] 頁面上，按一下 [備份] 以顯示 [備份] 頁面。 然後按一下 [快照集] \(預覽\) 區段底下的 [還原]。
+1. 在[Azure 門戶](https://portal.azure.com)中的"設置"**應用頁上，** 按一下 **"備份**"以顯示 **"備份"** 頁。 然後按一下 [快照集] \(預覽\)**** 區段底下的 [還原]****。
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. 在 [還原] 頁面中，選取要還原的快照集。
+2. 在 [還原]**** 頁面中，選取要還原的快照集。
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. 在 [還原目的地] 中指定應用程式還原目的地。
+3. 在 [還原目的地]**** 中指定應用程式還原目的地。
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > 如果您選擇 [覆寫]，則系統會將應用程式目前檔案系統中的所有現有資料予以清除和覆寫。 按一下 [確定] 之前，請確定這是您想要執行的動作。
+   > 如果您選擇 [覆寫]****，則系統會將應用程式目前檔案系統中的所有現有資料予以清除和覆寫。 按一下 [確定]**** 之前，請確定這是您想要執行的動作。
    > 
    > 
       
@@ -57,10 +57,10 @@ ms.locfileid: "78255141"
    > 
    > 
    
-    您可以選取將 [現有應用程式] 還原至位置。 使用此選項之前，您應該要已在應用程式中建立位置。
+    您可以選取將 [現有應用程式]**** 還原至位置。 使用此選項之前，您應該要已在應用程式中建立位置。
 
 4. 您可以選擇還原站台設定。
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 
-5. 按一下 [確定]。
+5. 按一下 [確定]****。

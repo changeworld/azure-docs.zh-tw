@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>教學課程：Azure Active Directory 與 Igloo Software 整合
@@ -34,7 +34,7 @@ Igloo Software 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Igloo Software 整合，您需要以下項目：
 
@@ -147,7 +147,7 @@ Igloo Software 與 Azure AD 整合提供下列優點：
 
 5. 在 [一般設定]  區段，執行下列步驟：
 
-    ![一般組態](./media/igloo-software-tutorial/ic783970.png "一般組態")
+    ![一般設定](./media/igloo-software-tutorial/ic783970.png "一般設定")
 
     a. 在 [連接名稱]  文字方塊中，輸入組態的自訂名稱。
 
@@ -161,7 +161,7 @@ Igloo Software 與 Azure AD 整合提供下列優點：
 
 6. 在 [回應與驗證設定]  ，執行以下步驟：
 
-    ![回應和驗證設定](./media/igloo-software-tutorial/IC783971.png "回應和驗證設定")
+    ![回應與驗證設定](./media/igloo-software-tutorial/IC783971.png "回應與驗證組態")
   
     a. 在 [識別提供者]  ，選取 [Microsoft ADFS]  。
 

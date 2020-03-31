@@ -4,28 +4,26 @@ description: 了解 Azure 檔案同步的雲端階層處理功能
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268089"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454613"
 ---
 # <a name="cloud-tiering-overview"></a>雲端階層處理概觀
 雲端階層處理是 Azure 檔案同步的一個選用功能，其中經常存取的檔案會快取到伺服器本機上，而其他的檔案會依原則設定分層處理至 Azure 檔案服務。 當檔案被分層之後，Azure 檔案同步檔案系統篩選器 (StorageSync.sys) 會將本機檔案取代為指標或重新分析點。 重新分析點代表的是針對 Azure 檔案服務中檔案的 URL。 階層式檔案在 NTFS 中具有「離線」屬性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性集，因此協力廠商應用程式可以安全地識別階層式檔案。
  
-當使用者開啟階層式檔案時，Azure 檔案同步不需要知道檔案是儲存在 Azure 中，就會從 Azure 檔案儲存體順暢地重新叫用檔案資料。 
+當使用者打開分層檔時，Azure 檔同步會無縫地從 Azure 檔中撤回檔資料，而無需使用者知道該檔存儲在 Azure 中。 
  
  > [!Important]  
- > Windows 系統磁碟區上的伺服器端點不支援雲端階層處理，且只有大小大於 64 KiB 的檔案可以分層處理到 Azure 檔案服務。
+ > Windows 系統磁碟區不支援雲分層。
     
-Azure 檔案同步不支援階層處理小於 64 KiB 的檔案，因為階層處理和重新叫用這類小型檔案的效能負擔大過所節省的空間。
-
  > [!Important]  
- > 若要重新叫用已階層式檔案，網路頻寬至少應為 1 Mbps。 如果網路頻寬小於 1 Mbps，檔案可能會因逾時錯誤而無法回收。
+ > 要調用已階層式檔，網路頻寬應至少為 1 Mbps。 如果網路頻寬小於 1 Mbps，則檔可能無法下載逾時錯誤。
 
 ## <a name="cloud-tiering-faq"></a>雲端階層處理常見問題集
 
@@ -34,6 +32,10 @@ Azure 檔案同步不支援階層處理小於 64 KiB 的檔案，因為階層處
 Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名空間的「熱度圖」。 它會監視一段時間的存取 (讀取和寫入作業)，然後根據存取的頻率和近因，將熱度分數指派給每個檔案。 最近開啟過且經常被存取的檔案，將會被視為熱門，而很少被觸及與一段時間未被存取的檔案將被視為冷門。 當伺服器上的檔案磁碟區超過您設定的磁碟區可用空間閾值時，它會將最冷門的檔案分層處理至 Azure 檔案服務，直到符合您設定的可用空間百分比為止。
 
 在 Azure 檔案同步代理程式 4.0 版和更新版本中，您可以另外在每個伺服器端點上指定日期原則，以對指定天數內未曾存取或修改過的檔案進行階層處理。
+
+<a id="tiering-minimum-file-size"></a>
+### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>要層的檔的最低檔案大小是多少？
+對於代理版本 9.x 和更高版本，要層的檔的最小檔案大小基於檔案系統群集大小（將檔案系統群集大小翻倍）。 例如，如果 NTFS 檔案系統群集大小為 4KB，則生成的檔到層的最小檔案大小為 8KB。 對於代理版本 8.x 和舊版本，檔到層的最小檔案大小為 64KB。
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>磁碟區可用空間階層處理原則如何運作？
@@ -61,26 +63,26 @@ Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名�
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>我已新增伺服器端點。 我在此伺服器上的檔案會於存在多久後，才進行階層處理？
-在 Azure 檔案同步代理程式的4.0 版和更新版本中，一旦您的檔案上傳至 Azure 檔案共用，就會在下一次階層處理會話執行時，根據您的原則進行階層處理，這會在一小時後進行分層。 在舊版的代理程式上，最久可能需要 24 小時才會進行階層處理。
+在 Azure 檔同步代理的版本 4.0 及以上版本中，一旦檔上載到 Azure 檔共用，將在下一次分層會話運行時根據策略對其進行分層，每小時一次。 在舊版的代理程式上，最久可能需要 24 小時才會進行階層處理。
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>如何判斷檔案是否已分層？
 有幾個方法可用來確認是否已將檔案分層到 Azure 檔案共用：
     
    *  **檢查檔案的檔案屬性。**
-     請在檔案上按一下滑鼠右鍵，移至 [詳細資料]，然後向下捲動至 [屬性] 屬性。 分層的檔案具有下列屬性組：     
+     請在檔案上按一下滑鼠右鍵，移至 [詳細資料]****，然後向下捲動至 [屬性]**** 屬性。 分層的檔案具有下列屬性組：     
         
         | 屬性代號 | 屬性 | 定義 |
         |:----------------:|-----------|------------|
         | A | 封存 | 指出該檔案應該由備份軟體進行備份。 不論檔案已分層還是完全儲存在磁碟上，一律會設定這個屬性。 |
-        | P | 疏鬆檔案 | 指出該檔案是疏鬆檔案。 疏鬆檔案是 NTFS 所提供的特殊化檔案類型，可在磁碟資料流上的檔案大多空白時有效地加以使用。 Azure 檔案同步會使用疏鬆檔案，因為檔案已完全分層或已部分回收。 在完全分層的檔案中，檔案資料流會儲存於雲端。 在部分回收的檔案中，該部分的檔案已經在磁碟上。 如果檔案已完全回收到磁碟，Azure 檔案同步便會將它從疏鬆檔案轉換為一般檔案。 此屬性只會在 Windows Server 2016 和更舊版本上設定。|
-        | M | 資料存取的回想 | 表示檔案的資料未完全存在於本機儲存體上。 讀取檔案會導致至少從伺服器端點所連接的 Azure 檔案共用提取部分檔案內容。 此屬性只會在 Windows Server 2019 上設定。 |
+        | P | 疏鬆檔案 | 指出該檔案是疏鬆檔案。 疏鬆檔案是 NTFS 所提供的特殊化檔案類型，可在磁碟資料流上的檔案大多空白時有效地加以使用。 Azure 檔案同步會使用疏鬆檔案，因為檔案已完全分層或已部分回收。 在完全分層的檔案中，檔案資料流會儲存於雲端。 在部分回收的檔案中，該部分的檔案已經在磁碟上。 如果檔案已完全回收到磁碟，Azure 檔案同步便會將它從疏鬆檔案轉換為一般檔案。 此屬性僅在 Windows Server 2016 及更舊版上設置。|
+        | M | 在資料訪問時召回 | 指示檔的資料未完全存在於本機存放區中。 讀取該檔將導致至少從伺服器終結點連接到的 Azure 檔共用獲取某些檔內容。 此屬性僅在 Windows Server 2019 上設置。 |
         | L | 重新分析點 | 指出該檔案有重新分析點。 重新分析點是可供檔案系統篩選器使用的特殊指標。 Azure 檔案同步會使用重新分析點來為 Azure 檔案同步的檔案系統篩選器 (StorageSync.sys) 定義儲存檔案的雲端位置。 這支援無縫存取。 使用者不需要知道正在使用 Azure 檔案同步，或是如何取得 Azure 檔案共用中檔案的存取權。 當檔案完全回收時，Azure 檔案同步就會從檔案中移除重新分析點。 |
         | O | 離線 | 指出部分或所有檔案的內容並未儲存在磁碟上。 當檔案完全回收時，Azure 檔案同步就會移除此屬性。 |
 
         ![檔案的 [屬性] 對話方塊，已選取 [詳細資料] 索引標籤](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
-        您可以在檔案總管的資料表顯示中新增 [屬性] 欄位，就能看見資料夾中所有檔案的屬性。 若要這樣做，以滑鼠右鍵按一下現有資料行 (例如，**大小**)，選取 [詳細]，然後從下拉式清單中選取 [屬性]。
+        您可以在檔案總管的資料表顯示中新增 [屬性]**** 欄位，就能看見資料夾中所有檔案的屬性。 若要這樣做，以滑鼠右鍵按一下現有資料行 (例如，**大小**)，選取 [詳細]****，然後從下拉式清單中選取 [屬性]****。
         
    * **使用 `fsutil` 來檢查檔案的重新分析點。**
        如上述選項所述，已分層的檔案一律已設定重新分析點。 重新分析指標是適用於 Azure 檔案同步檔案系統篩選器 (StorageSync.sys) 的特殊指標。 若要檢查檔案是否有重新分析點，請在提升權限的命令提示字元或 PowerShell 視窗中，執行 `fsutil` 公用程式：
@@ -89,7 +91,7 @@ Azure 檔案同步系統篩選器會在每個伺服器端點上建立您命名�
         fsutil reparsepoint query <your-file-name>
         ```
 
-        如果檔案有重新分析點，您可以預期會看到**重新分析標記值 : 0x8000001e**。 這個十六進位值是 Azure 檔案同步所擁有的重新分析點值。輸出中也包含重新分析資料，代表您的檔案在 Azure 檔案共用上的路徑。
+        如果檔案有重新分析點，您可以預期會看到**重新分析標記值 : 0x8000001e**。 此十六進位值是 Azure 檔同步擁有的重解析點值。輸出還包含表示 Azure 檔共用上檔的路徑的重新分析資料。
 
         > [!WARNING]  
         > `fsutil reparsepoint` 公用程式命令也能刪除重新分析點。 除非 Azure 檔案同步工程小組要求您，否則請勿執行此命令。 執行此命令可能導致資料遺失。 
@@ -106,17 +108,17 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 選用參數：
-* `-Order CloudTieringPolicy` 會先重新叫用最近修改過的檔案。  
-* `-ThreadCount` 決定可平行重新叫用的檔案數目。
-* `-PerFileRetryCount`會決定嘗試重新叫用目前被封鎖之檔案的頻率。
-* `-PerFileRetryDelaySeconds`會決定重試重新叫用的間隔時間（以秒為單位），且應一律與先前的參數搭配使用。
+* `-Order CloudTieringPolicy`將首先撤回最近修改的檔。  
+* `-ThreadCount`確定可以並行調用的檔數。
+* `-PerFileRetryCount`確定當前被阻止的檔的調用嘗試頻率。
+* `-PerFileRetryDelaySeconds`確定重試調用嘗試之間的時間（以秒為單位），應始終與前面的參數結合使用。
 
 > [!Note]  
 > 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  
 
 <a id="sizeondisk-versus-size"></a>
-### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 檔案同步之後，為什麼檔案的「磁碟大小」屬性不符合「大小」屬性？ 
-Windows 檔案總管會顯示兩個屬性來代表檔案的大小：**大小**和**磁碟大小**。 這些屬性的意義稍有不同。 **大小**代表檔案的完整大小。 **磁碟大小**代表儲存在磁碟上的檔案資料流大小。 這些屬性的值可能因各種原因而有所不同，例如壓縮、使用重復資料刪除，或使用 Azure 檔案同步進行雲端階層處理。如果檔案分層至 Azure 檔案共用，則磁片上的大小為零，因為檔案資料流程是儲存在您的 Azure 檔案共用中，而不是存放在磁片上。 檔案也可能部分分層 (或部分回收)。 在部分分層的檔案中，部分的檔案是在磁碟上。 當應用程式 (例如，多媒體播放程式或壓縮公用程式) 讀取部分檔案時，可能會發生這種情形。 
+### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 檔案同步之後，為什麼檔案的「磁碟大小」** 屬性不符合「大小」** 屬性？ 
+Windows 檔案總管會顯示兩個屬性來代表檔案的大小：**大小**和**磁碟大小**。 這些屬性的意義稍有不同。 **大小**代表檔案的完整大小。 **磁碟大小**代表儲存在磁碟上的檔案資料流大小。 這些屬性的值可能因各種原因而異，例如壓縮、使用資料重復資料消除或使用 Azure 檔同步進行雲分層。如果將檔分層到 Azure 檔共用，則磁片上的大小為零，因為檔流存儲在 Azure 檔共用中，而不是存儲在磁片上。 檔案也可能部分分層 (或部分回收)。 在部分分層的檔案中，部分的檔案是在磁碟上。 當應用程式 (例如，多媒體播放程式或壓縮公用程式) 讀取部分檔案時，可能會發生這種情形。 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>如何強制讓檔案或目錄分層？
@@ -128,10 +130,10 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
 
 <a id="afs-image-thumbnail"></a>
-### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>為什麼我的分層檔案不會在 Windows Explorer 中顯示縮圖或預覽？
-若為階層式檔案，縮圖和預覽將不會顯示在您的伺服器端點上。 這是預期的行為，因為 Windows 中的縮圖快取功能會刻意略過讀取具有離線屬性的檔案。 啟用雲端階層處理時，透過階層式檔案讀取會導致下載（重新叫用）。
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>為什麼我的分層檔在 Windows 資源管理器中不顯示縮略圖或預覽？
+對於分層檔，縮略圖和預覽在伺服器終結點上不可見。 由於 Windows 中的縮略圖緩存功能有意跳過使用離線屬性讀取檔，因此應對此行為進行預期。 啟用雲分層後，讀取分層檔將導致下載（調用）。
 
-這不是 Azure 檔案同步特有的行為，Windows Explorer 會針對任何已設定離線屬性的檔案顯示「灰階 X」。 透過 SMB 存取檔案時，您會看到 X 圖示。 如需此行為的詳細說明，請參閱[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+此行為不特定于 Azure 檔同步，Windows 資源管理器將顯示具有離線屬性集的任何檔的"灰色 X"。 通過 SMB 訪問檔時，您將看到 X 圖示。 有關此行為的詳細說明，請參閱[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 
 ## <a name="next-steps"></a>後續步驟

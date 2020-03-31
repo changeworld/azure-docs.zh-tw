@@ -1,6 +1,6 @@
 ---
-title: 使用主領域探索來設定登入自動加速
-description: 瞭解如何為同盟使用者的 Azure Active Directory 驗證設定主領域探索原則，包括自動加速和網域提示。
+title: 使用主域發現配置登錄自動加速
+description: 瞭解如何為聯合使用者配置 Azure 活動目錄身份驗證的主頁 Realm 發現策略，包括自動加速和域提示。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,15 +16,15 @@ ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943433"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
-本文提供為同盟使用者設定 Azure Active Directory 驗證行為的簡介。 其中涵蓋自動加速組態，以及同盟網域中的使用者驗證限制。
+本文介紹了為聯合使用者配置 Azure 活動目錄身份驗證行為的介紹。 其中涵蓋自動加速組態，以及同盟網域中的使用者驗證限制。
 
 ## <a name="home-realm-discovery"></a>主領域探索
 主領域探索 (HRD) 是讓 Azure Active Directory (Azure AD) 判斷使用者登入時應在何處驗證的程序。  使用者在登入 Azure AD 租用戶以存取資源或 Azure AD 一般登入頁面時，會輸入使用者名稱 (UPN)。 Azure AD 會使用該值來探索使用者需在何處登入。 
@@ -100,7 +100,7 @@ ms.locfileid: "78943433"
 
 任何時候服務主體都只能有一個作用中的 HRD 原則。  
 
-您可以使用 Azure Active Directory PowerShell Cmdlet 來建立和管理 HRD 原則。
+您可以使用 Azure 活動目錄 PowerShell Cmdlet 創建和管理 HRD 策略。
 
 以下是範例 HRD 原則定義：
     
@@ -150,7 +150,7 @@ ms.locfileid: "78943433"
 - 列出已設定原則的應用程式。
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 在下列範例中，您將建立、更新、連結和刪除 Azure AD 中應用程式服務主體上的原則。
 
 1.  若要開始，請下載最新的 Azure AD PowerShell Cmdlet 預覽版。 
@@ -195,7 +195,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPass
 ```
 
 
-若要查看您的新原則並取得其 **ObjectID**，請執行下列命令：
+要查看新策略並獲取其**ObjectID，** 請運行以下命令：
 
 ``` powershell
 Get-AzureADPolicy
@@ -209,7 +209,7 @@ Get-AzureADPolicy
 
 您可以使用入口網站，或者您可以查詢 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 
 
-因為您使用的是 PowerShell，您可以使用下列 Cmdlet 來列出服務主體及其識別碼。
+由於您使用的是 PowerShell，因此可以使用以下 Cmdlet 列出服務主體及其代表。
 
 ``` powershell
 Get-AzureADServicePrincipal
@@ -268,5 +268,5 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>後續步驟
 - 如需如何在 Azure AD 中進行驗證的詳細資訊，請參閱 [Azure AD 的驗證案例](../develop/authentication-scenarios.md)。
-- 如需使用者單一登入的詳細資訊，請參閱[Azure Active Directory 中的應用程式的單一登入](what-is-single-sign-on.md)。
-- 如需所有開發人員相關內容的總覽，請造訪[Microsoft 身分識別平臺](../develop/v2-overview.md)。
+- 有關使用者單一登入的詳細資訊，請參閱 Azure[活動目錄中的應用程式單一登入](what-is-single-sign-on.md)。
+- 請訪問[Microsoft 標識平臺](../develop/v2-overview.md)，瞭解所有與開發人員相關的內容的概述。

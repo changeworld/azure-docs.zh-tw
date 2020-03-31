@@ -1,5 +1,5 @@
 ---
-title: 教學課程： Azure Active Directory 單一登入（SSO）與 Amazon Web Services （AWS）整合 |Microsoft Docs
+title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Amazon Web Services (AWS) 之間的單一登入。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6970debd3885a513ac0e30d6cc5391b0db66cf9b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
-ms.translationtype: MT
+ms.openlocfilehash: 40fd8217285643aa7d706d194d7f78ba0634dd32
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668538"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048972"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程： Azure Active Directory 單一登入（SSO）與 Amazon Web Services 整合（AWS）
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
 在本教學課程中，您將了解如何整合 Amazon Web Services (AWS) 與 Azure Active Directory (Azure AD)。 在整合 Amazon Web Services (AWS) 與 Azure AD 時，您可以︰
 
@@ -34,7 +34,7 @@ ms.locfileid: "78668538"
 
 ![Azure AD 和 AWS 關聯性的圖表](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-您可以為多個執行個體設定多個識別碼。 例如，
+您可以為多個執行個體設定多個識別碼。 例如：
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -53,7 +53,7 @@ ms.locfileid: "78668538"
 > [!Note]
 > 請確定您只使用資源庫應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -75,11 +75,11 @@ ms.locfileid: "78668538"
 若要設定 Amazon Web Services (AWS) 與 Azure AD 整合，您需要從資源庫將 Amazon Web Services (AWS) 新增到受控 SaaS App 清單。
 
 1. 使用公司帳戶、學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
-1. 在 Azure Active Directory 概觀功能表中，選擇 [企業應用程式] > [所有應用程式]。
-1. 選取 [新增應用程式] 以新增應用程式。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Amazon Web Services (AWS)** 。
-1. 從結果面板選取 [Amazon Web Services (AWS)]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]  。
+1. 在 Azure Active Directory 概觀功能表中，選擇 [企業應用程式]   > [所有應用程式]  。
+1. 選取 [新增應用程式]  以新增應用程式。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Amazon Web Services (AWS)** 。
+1. 從結果面板選取 [Amazon Web Services (AWS)]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>設定和測試 Amazon Web Services (AWS) 的 Azure AD 單一登入
 
@@ -99,23 +99,23 @@ ms.locfileid: "78668538"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Amazon Web Services (AWS)] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Amazon Web Services (AWS)]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定] 設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須選取 [儲存]，才能儲存組態。
+1. 在 [基本 SAML 設定]  設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須選取 [儲存]  ，才能儲存組態。
 
 1. 若要設定多個執行個體，請提供識別碼值。 從第二個執行個體開始，請使用下列格式，並包括 **#** 符號來指定唯一 SPN 值。
 
     `https://signin.aws.amazon.com/saml#2`
 
-1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Amazon Web Services (AWS)] 區段上，依據您的需求複製適當的 URL。
+1. 在 [設定 Amazon Web Services (AWS)]  區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -123,109 +123,109 @@ ms.locfileid: "78668538"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
-1. 在 Azure Active Directory 概觀功能表中，選擇 [使用者] > [所有使用者]。
-1. 在畫面頂端選取 [新增使用者]。
-1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下 [建立]。
+1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]  。
+1. 在 Azure Active Directory 概觀功能表中，選擇 [使用者]   > [所有使用者]  。
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Amazon Web Services (AWS) 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
-1. 在 Azure Active Directory 概觀功能表中，選擇 [企業應用程式] > [所有應用程式]。
-1. 在應用程式清單中，選取 [Amazon Web Services (AWS)]。
-1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
+1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]  。
+1. 在 Azure Active Directory 概觀功能表中，選擇 [企業應用程式]   > [所有應用程式]  。
+1. 在應用程式清單中，選取 [Amazon Web Services (AWS)]  。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
-1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-amazon-web-services-aws-sso"></a>設定 Amazon Web Services (AWS) SSO
 
 1. 在不同的瀏覽器視窗中，以系統管理員身分登入您的 AWS 公司網站。
 
-2. 選取 [AWS 首頁]。
+2. 選取 [AWS 首頁]  。
 
     ![醒目提示 AWS 首頁圖示的 AWS 公司網站螢幕擷取畫面][11]
 
-3. 選取 [Identity and Access Management] \(身分識別和存取管理\)。
+3. 選取 [Identity and Access Management] \(身分識別和存取管理\)  。
 
     ![醒目提示 IAM 的 AWS 服務頁面螢幕擷取畫面][12]
 
-4. 選取 [識別提供者] > [建立提供者]。
+4. 選取 [識別提供者]   > [建立提供者]  。
 
     ![醒目提示 [識別提供者] 和 [建立提供者] 的 IAM 頁面螢幕擷取畫面][13]
 
-5. 在 [設定提供者] 頁面上，執行下列步驟：
+5. 在 [設定提供者]  頁面上，執行下列步驟：
 
     ![設定提供者的螢幕擷取畫面][14]
 
-    a. 針對 [Provider Type] \(提供者類型\)，選取 [SAML]。
+    a. 針對 [Provider Type] \(提供者類型\)  ，選取 [SAML]  。
 
-    b. 在 [**提供者名稱**] 中，輸入提供者名稱（例如： *WAAD*）。
+    b. 針對 [提供者名稱]  ，輸入提供者名稱 (例如：*WAAD*)。
 
-    c. 若要上傳從 Azure 入口網站下載的**中繼資料檔案**，請選取 [Choose File] \(選擇檔案\)。
+    c. 若要上傳從 Azure 入口網站下載的**中繼資料檔案**，請選取 [Choose File] \(選擇檔案\)  。
 
-    d. 選取 [Next Step] \(下一步\)。
+    d. 選取 [Next Step] \(下一步\)  。
 
-6. 在 [驗證提供者資訊] 對話方塊中，選取 [建立]。
+6. 在 [驗證提供者資訊]  對話方塊中，選取 [建立]  。
 
     ![醒目提示 [建立] 的驗證提供者資訊螢幕擷取畫面][15]
 
-7. 選取 [角色] > [建立角色]。
+7. 選取 [角色]   > [建立角色]  。
 
     ![[角色] 頁面的螢幕擷取畫面][16]
 
-8. 在 [Create role] \(建立角色\) 頁面上，執行下列步驟：  
+8. 在 [Create role] \(建立角色\)  頁面上，執行下列步驟：  
 
     ![[建立角色] 頁面的螢幕擷取畫面][19]
 
-    a. 在 [選取信任的實體類型] 底下，選取 [SAML 2.0 同盟]。
+    a. 在 [選取信任的實體類型]  底下，選取 [SAML 2.0 同盟]  。
 
-    b. 在 **[選擇 saml 2.0 提供者**] 底下，選取您先前建立的**SAML 提供者**（例如： *WAAD*）。
+    b. 在 [選擇 SAML 2.0 提供者]  下方，選取您先前建立的 [SAML 提供者]  (例如：*WAAD*)。
 
-    c. 選取 [Allow programmatic and AWS Management Console access] \(允許透過程式設計方式和 AWS 管理主控台存取\)。
+    c. 選取 [Allow programmatic and AWS Management Console access] \(允許透過程式設計方式和 AWS 管理主控台存取\)  。
   
-    d. 選取 **[下一步：許可權]** 。
+    d. 完成時，選取 [下一步:**權限]** 。
 
-9. 在 [附加權限原則] 對話方塊中，請根據您的組織需求附加適當的原則。 然後選取 **[下一步：審查]** 。  
+9. 在 [附加權限原則]  對話方塊中，請根據您的組織需求附加適當的原則。 然後，選取 **下一步：:** 。  
 
     ![[附加權限原則] 對話方塊的螢幕擷取畫面][33]
 
-10. 在 [檢閱] 對話方塊上，執行下列步驟：
+10. 在 [檢閱]  對話方塊上，執行下列步驟：
 
     ![[檢閱] 對話方塊的螢幕擷取畫面][34]
 
-    a. 在 [角色名稱] 中，輸入您的角色名稱。
+    a. 在 [角色名稱]  中，輸入您的角色名稱。
 
-    b. 在 [角色描述] 文字方塊中，輸入描述。
+    b. 在 [角色描述]  文字方塊中，輸入描述。
 
-    c. 選取 [建立角色]。
+    c. 選取 [建立角色]  。
 
     d. 建立所需數量的角色，並將它們對應至識別提供者。
 
 11. 使用 AWS 服務帳戶認證，以透過 Azure AD 使用者佈建中的 AWS 帳戶來擷取角色。 若要這麼做，請開啟 AWS 主控台首頁。
 
-12. 選取 [服務]。 在 [安全性、身分識別與合規性] 底下，選取 [IAM]。
+12. 選取 [服務]  。 在 [安全性、身分識別與合規性]  底下，選取 [IAM]  。
 
     ![已醒目提示服務和 IAM 的 AWS 主控台首頁螢幕擷取畫面](./media/amazon-web-service-tutorial/fetchingrole1.png)
 
-13. 在 [IAM] 區段中，選取 [原則]。
+13. 在 [IAM] 區段中，選取 [原則]  。
 
     ![醒目提示 [原則] 的 IAM 區段螢幕擷取畫面](./media/amazon-web-service-tutorial/fetchingrole2.png)
 
-14. 選取 [建立原則] 來建立新原則，以從「Azure AD 使用者佈建」中的 AWS 帳戶擷取角色。
+14. 選取 [建立原則]  來建立新原則，以從「Azure AD 使用者佈建」中的 AWS 帳戶擷取角色。
 
     ![醒目提示 [建立原則] 的 [建立角色] 頁面螢幕擷取畫面](./media/amazon-web-service-tutorial/fetchingrole3.png)
 
@@ -233,7 +233,7 @@ ms.locfileid: "78668538"
 
     ![醒目提示 [JSON] 的 [建立原則] 頁面螢幕擷取畫面](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. 在 [建立原則] 區段中，選取 [JSON] 索引標籤。
+    a. 在 [建立原則]  區段中，選取 [JSON]  索引標籤。
 
     b. 在原則文件中，新增下列 JSON：
 
@@ -252,7 +252,7 @@ ms.locfileid: "78668538"
     }
     ```
 
-    c. 選取 [檢閱原則] 以驗證原則。
+    c. 選取 [檢閱原則]  以驗證原則。
 
     ![[建立原則] 頁面的螢幕擷取畫面](./media/amazon-web-service-tutorial/policy5.png)
 
@@ -260,41 +260,41 @@ ms.locfileid: "78668538"
 
     ![醒目提示名稱和描述欄位的 [建立原則] 頁面螢幕擷取畫面](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. 針對 [名稱]，輸入 **AzureAD_SSOUserRole_Policy**。
+    a. 針對 [名稱]  ，輸入 **AzureAD_SSOUserRole_Policy**。
 
-    b. 針對 [描述]，輸入**此原則將允許從 AWS 帳戶擷取角色**。
+    b. 針對 [描述]  ，輸入**此原則將允許從 AWS 帳戶擷取角色**。
 
-    c. 選取 [建立原則]。
+    c. 選取 [建立原則]  。
 
 17. 在 AWS IAM 服務中建立新的使用者帳戶。
 
-    a. 在 AWS IAM 主控台中，選取 [使用者]。
+    a. 在 AWS IAM 主控台中，選取 [使用者]  。
 
     ![已醒目提示使用者的 AWS IAM 主控台螢幕擷取畫面](./media/amazon-web-service-tutorial/policy3.png)
 
-    b. 若要建立新的使用者，請選取 [新增使用者]。
+    b. 若要建立新的使用者，請選取 [新增使用者]  。
 
     ![[新增使用者] 按鈕的螢幕擷取畫面](./media/amazon-web-service-tutorial/policy4.png)
 
-    c. 在 [新增使用者] 區段中：
+    c. 在 [新增使用者]  區段中：
 
     ![醒目提示使用者名稱和存取類型的 [新增使用者] 頁面螢幕擷取畫面](./media/amazon-web-service-tutorial/adduser1.png)
 
     * 將使用者名稱輸入為 **AzureADRoleManager**。
 
-    * 針對 [存取類型]，選取 [以程式設計方式存取]。 因此，使用者可以叫用 API，以及從 AWS 帳戶擷取角色。
+    * 針對 [存取類型]，選取 [以程式設計方式存取]  。 因此，使用者可以叫用 API，以及從 AWS 帳戶擷取角色。
 
-    * 選取 [下一步：權限]。
+    * 選取 [下一步：權限]  。
 
 18. 為此使用者建立新的原則。
 
     ![[新增使用者] 的螢幕擷取畫面](./media/amazon-web-service-tutorial/adduser2.png)
 
-    a. 選取 [直接附加現有的原則]。
+    a. 選取 [直接附加現有的原則]  。
 
     b. 在篩選區段 **AzureAD_SSOUserRole_Policy** 中，搜尋新建立的原則。
 
-    c. 選取原則，然後選取 **[下一步：審查]** 。
+    c. 選取原則，然後選取 **下一步：:** 。
 
 19. 檢閱附加使用者的原則。
 
@@ -302,7 +302,7 @@ ms.locfileid: "78668538"
 
     a. 檢閱使用者名稱、存取類型，以及對應至使用者的原則。
 
-    b. 選取 [建立使用者]。
+    b. 選取 [建立使用者]  。
 
 20. 下載使用者的使用者認證。
 
@@ -312,35 +312,35 @@ ms.locfileid: "78668538"
 
     b. 在 Azure AD 使用者佈建區段中輸入這些認證，以從 AWS 主控台擷取角色。
 
-    c. 選取 [關閉]。
+    c. 選取 [關閉]  。
 
 ### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>如何在 Amazon Web Services (AWS) 中設定角色佈建
 
-1. 在 Azure AD 管理入口網站的 AWS 應用程式中，移至[佈建]。
+1. 在 Azure AD 管理入口網站的 AWS 應用程式中，移至[佈建]  。
 
     ![醒目提示 [佈建] 的 AWS 應用程式螢幕擷取畫面](./media/amazon-web-service-tutorial/provisioning.png)
 
-2. 在 [用戶端祕密] 和 [祕密權杖] 欄位中，分別輸入存取金鑰和祕密。
+2. 在 [用戶端祕密]  和 [祕密權杖]  欄位中，分別輸入存取金鑰和祕密。
 
     ![[系統管理員認證] 對話方塊的螢幕擷取畫面](./media/amazon-web-service-tutorial/provisioning1.png)
 
     a. 在 **clientsecret** 欄位中，輸入 AWS 使用者存取金鑰。
 
-    b. 在 [祕密權杖] 欄位中，輸入 AWS 使用者祕密。
+    b. 在 [祕密權杖]  欄位中，輸入 AWS 使用者祕密。
 
-    c. 選取 [測試連線]。
+    c. 選取 [測試連線]  。
 
-    d. 選取 [儲存] 來儲存設定。
+    d. 選取 [儲存]  來儲存設定。
 
-3. 針對 [設定] 區段中的 [佈建狀態]，選取 [開啟]。 然後選取 [儲存]。
+3. 針對 [設定]  區段中的 [佈建狀態]  ，選取 [開啟]  。 然後選取 [儲存]  。
 
     ![醒目提示 [開啟] 的 [設定] 區段螢幕擷取畫面](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> 布建服務只會將角色從 AWS 匯入至 Azure AD。 服務不會將 Azure AD 的使用者和群組布建至 AWS。
+> 佈建服務只會將 AWS 的角色匯入至 Azure AD。 此服務不會將 Azure AD 的使用者和群組佈建到 AWS。
 
 > [!NOTE]
-> 儲存布建認證之後，您必須等候初始同步週期執行。 同步處理通常需要大約40分鐘的時間才能完成。 您可以在 [**目前狀態**] 下方的 [布建 **] 頁面底部**看到狀態。
+> 在儲存布建認證後，必須等候初始同步週期開始執行。 同步作業通常需要 40 分鐘左右的時間才能完成。 您可以在 [佈建]  頁面底部的 [目前狀態]  底下看到狀態。
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>建立 Amazon Web Services (AWS) 測試使用者
 
@@ -354,13 +354,13 @@ ms.locfileid: "78668538"
 
 ## <a name="known-issues"></a>已知問題
 
- * 在 [佈建] 區段中，[對應] 子區段會顯示「正在載入...」訊息且永遠不會顯示屬性對應。 目前支援的唯一佈建工作流程是在使用者或群組指派期間，將角色從 AWS 匯入 Azure AD 以供選取。 此屬性對應是預先決定的，無法加以設定。
+ * 在 [佈建]  區段中，[對應]  子區段會顯示「正在載入...」訊息且永遠不會顯示屬性對應。 目前支援的唯一佈建工作流程是在使用者或群組指派期間，將角色從 AWS 匯入 Azure AD 以供選取。 此屬性對應是預先決定的，無法加以設定。
 
- * [佈建] 區段只支援一次輸入一個 AWS 租用戶的一組認證。 所有匯入的角色都會針對 AWS 租用戶寫入 Azure AD `appRoles`[ 物件`servicePrincipal`的 ](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 屬性。
+ * [佈建]  區段只支援一次輸入一個 AWS 租用戶的一組認證。 所有匯入的角色都會針對 AWS 租用戶寫入 Azure AD [`servicePrincipal` 物件](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 `appRoles` 屬性。
 
    您可以從資源庫中，將多個 AWS 租用戶 (以 `servicePrincipals` 表示) 新增至 Azure AD 以進行佈建。 不過，有一個已知的問題，就是無法自動從用於佈建的多個 AWS `servicePrincipals` 中，將所有匯入的角色寫入用於 SSO 的單一 `servicePrincipal`。
 
-   因應措施如下：您可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 來擷取所有匯入每個 AWS `appRoles` (已設定佈建) 的 `servicePrincipal`。 接著，您可以將這些角色字串新增至已設定 SSO 的 AWS `servicePrincipal`。
+   因應措施如下：您可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 來擷取所有匯入每個 AWS `servicePrincipal` (已設定佈建) 的 `appRoles`。 接著，您可以將這些角色字串新增至已設定 SSO 的 AWS `servicePrincipal`。
 
 * 角色必須符合下列需求才能從 AWS 匯入到 Azure AD：
 

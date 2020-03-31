@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教學課程：Azure Active Directory 與 Work.com 整合
@@ -35,7 +35,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Work.com 整合，您需要下列項目：
 
@@ -134,7 +134,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 
 2. 移到 [設定]  。
    
-    ![設定](./media/work-com-tutorial/ic794108.png "設定")
+    ![安裝程式](./media/work-com-tutorial/ic794108.png "安裝程式")
 
 3. 在 [系統管理員]  區段的左方導覽窗格中，按一下 [網域管理]  展開相關的區段，然後按一下 [我的網域]  來開啟 [我的網域]  頁面。 
    
@@ -148,7 +148,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 
 6. 移到 [設定]  。
     
-    ![設定](./media/work-com-tutorial/ic794108.png "設定")
+    ![安裝程式](./media/work-com-tutorial/ic794108.png "安裝程式")
 
 7. 展開 [安全性控制]  功能表，然後再按一下 [單一登入設定]  。
     
@@ -160,7 +160,7 @@ Work.com 與 Azure AD 整合提供下列優點：
     
     a. 選取 [已啟用 SAML]  。
     
-    b. 按一下 [新增]  。
+    b. 按一下 **[新增]** 。
 
 9. 在 [SAML 單一登入設定]  區段中，執行下列步驟：
     
@@ -261,7 +261,7 @@ Azure Active Directory 使用者必須先佈建到 Work.com，才可以登入。
 
 2. 移到 [設定]  。
    
-    ![設定](./media/work-com-tutorial/IC794108.png "設定")
+    ![安裝程式](./media/work-com-tutorial/IC794108.png "安裝程式")
 
 3. 移至 [管理使用者 \> 使用者]  。
    

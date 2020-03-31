@@ -1,7 +1,7 @@
 ---
 title: 授權資料作業
 titleSuffix: Azure Storage
-description: 瞭解授權存取 Azure 儲存體的不同方式，包括 Azure Active Directory、共用金鑰授權或共用存取簽章（SAS）。
+description: 瞭解授權訪問 Azure 存儲的不同方法，包括 Azure 活動目錄、共用金鑰授權或共用訪問簽名 （SAS）。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,33 +11,33 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616296"
 ---
-# <a name="authorizing-access-to-data-in-azure-storage"></a>授權存取 Azure 儲存體中的資料
+# <a name="authorizing-access-to-data-in-azure-storage"></a>授權訪問 Azure 存儲中的資料
 
 每次存取儲存體帳戶中的資料時，用戶端都會透過 HTTP/HTTPS 對 Azure 儲存體發出要求。 針對受保護資源所發出的每個要求都必須經過授權，服務才能確保用戶端具有所需的資料存取權限。
 
-下表說明 Azure 儲存體提供的選項，可授權資源的存取權：
+下表描述了 Azure 存儲為授權訪問資源提供的選項：
 
-|  |共用金鑰（儲存體帳戶金鑰）  |共用存取簽章 (SAS)  |Azure Active Directory (Azure AD)  |Active Directory （預覽） |匿名公用讀取權限  |
+|  |共用金鑰（存儲帳戶金鑰）  |共用存取簽章 (SAS)  |Azure Active Directory (Azure AD)  |活動目錄（預覽版） |匿名公共讀取存取  |
 |---------|---------|---------|---------|---------|---------|
 |Azure Blob     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |[支援](storage-sas-overview.md)         |[支援](storage-auth-aad.md)         |不支援|[支援](../blobs/storage-manage-access-to-resources.md)         |
-|Azure 檔案儲存體（SMB）     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |不支援         |[僅支援 AAD 網域服務](../files/storage-files-active-directory-overview.md)         |[支援，認證必須同步至 Azure AD](../files/storage-files-active-directory-overview.md)|不支援         |
-|Azure 檔案儲存體（REST）     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |[支援](storage-sas-overview.md)         |不支援         |不支援 |不支援         |
+|Azure 檔 （SMB）     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |不支援         |[支援，僅適用于 AAD 域服務](../files/storage-files-active-directory-overview.md)         |[受支援，憑據必須同步到 Azure AD](../files/storage-files-active-directory-overview.md)|不支援         |
+|Azure 檔 （REST）     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |[支援](storage-sas-overview.md)         |不支援         |不支援 |不支援         |
 |Azure 佇列     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |[支援](storage-sas-overview.md)         |[支援](storage-auth-aad.md)         |不支援 | 不支援         |
 |Azure 資料表     |[支援](/rest/api/storageservices/authorize-with-shared-key/)         |[支援](storage-sas-overview.md)         |不支援         |不支援| 不支援         |
 
-以下簡要說明每個授權選項：
+下面將簡要描述每個授權選項：
 
-- 適用于 blob 和佇列的**Azure Active Directory （Azure AD）整合**。 Azure AD 提供了角色型存取控制 (RBAC)，供您更細微地控制用戶端對儲存體帳戶資源的存取。 如需有關 blob 和佇列 Azure AD 整合的詳細資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](storage-auth-aad.md)。
+- 用於 Blob 和佇列的**Azure 活動目錄 （Azure AD） 集成**。 Azure AD 提供了角色型存取控制 (RBAC)，供您更細微地控制用戶端對儲存體帳戶資源的存取。 有關 Blob 和佇列的 Azure AD 集成的詳細資訊，請參閱[使用 Azure 活動目錄 授權訪問 Azure blob 和佇列](storage-auth-aad.md)。
 
-- 適用于 Azure 檔案儲存體的**Azure Active Directory Domain Services （AZURE AD DS）驗證**。 Azure 檔案儲存體透過 Azure AD DS 支援伺服器訊息區（SMB）的身分識別型授權。 您可以使用 RBAC 來精細控制用戶端對儲存體帳戶中 Azure 檔案儲存體資源的存取權。 如需有關使用網域服務 Azure 檔案儲存體驗證的詳細資訊，請參閱我們的[總覽](../files/storage-files-active-directory-overview.md)。
+- **Azure 活動目錄域服務 （Azure AD DS）** 對 Azure 檔的身份驗證。 Azure 檔支援通過 Azure AD DS 通過伺服器訊息區 （SMB） 進行基於標識的授權。 可以使用 RBAC 對用戶端對存儲帳戶中的 Azure 檔資源的存取權限進行細細微性控制。 有關使用域服務的 Azure 檔身份驗證的詳細資訊，請參閱我們的[概述](../files/storage-files-active-directory-overview.md)。
 
-- Azure 檔案儲存體的**Active Directory （AD）驗證（預覽）** 。 Azure 檔案儲存體支援透過 AD 以身分識別為基礎的 SMB 授權。 您的 AD 網域服務可以裝載于內部部署機器或 Azure Vm 中。 您可以從內部部署或 Azure 中已加入網域的電腦使用 AD 認證，來支援對檔案的 SMB 存取。 您可以使用 RBAC 來進行目錄/檔案層級許可權強制的共用層級存取控制和 NTFS Dacl。 如需有關使用網域服務 Azure 檔案儲存體驗證的詳細資訊，請參閱我們的[總覽](../files/storage-files-active-directory-overview.md)。
+- **Azure 檔的活動目錄 （AD） 身份驗證（預覽）。** Azure 檔通過 AD 支援通過 SMB 進行基於身份的授權。 AD 域服務可以託管在本地電腦或 Azure VM 中。 SMB 訪問檔受支援，使用來自域聯接的電腦的 AD 憑據，無論是本地還是在 Azure 中。 您可以將 RBAC 用於共用級別的存取控制，將 NTFS DACL 用於目錄/檔級許可權實施。 有關使用域服務的 Azure 檔身份驗證的詳細資訊，請參閱我們的[概述](../files/storage-files-active-directory-overview.md)。
 
 - **共用金鑰授權**，適用於 Blob、檔案、佇列和資料表。 使用共用金鑰的用戶端會在每個要求中，傳遞使用儲存體帳戶存取金鑰所簽署的標頭。 如需詳細資訊，請參閱[使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key/)。
 - **共用存取簽章**，適用於 Blob、檔案、佇列和資料表。 共用存取簽章 (SAS) 可提供儲存體帳戶資源的有限委派存取權。 對簽章的有效時間間隔或對其授與的權限新增條件約束，可讓您彈性管理存取權。 如需詳細資訊，請參閱[使用共用存取簽章 (SAS)](storage-sas-overview.md)。
@@ -47,6 +47,6 @@ ms.locfileid: "77616296"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure Active Directory 授權存取 Azure blob 和佇列](storage-auth-aad.md)
+- [使用 Azure 活動目錄授權訪問 Azure Blob 和佇列](storage-auth-aad.md)
 - [使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key/)
-- [使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](storage-sas-overview.md)
+- [使用共用訪問簽名 （SAS） 授予對 Azure 存儲資源的有限存取權限](storage-sas-overview.md)

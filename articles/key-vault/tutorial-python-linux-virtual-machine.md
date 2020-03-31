@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 59b8abf59212d9cfb0719b6b76e9542249ee4c41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198145"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472685"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>教學課程：使用 Linux VM 和 Python 應用程式將這些秘密儲存在 Azure Key Vault 中
 
@@ -113,7 +113,7 @@ az vm create \
 
 建立虛擬機器和支援資源需要幾分鐘的時間。 下列範例輸出會顯示 VM 建立作業成功：
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -138,7 +138,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 命令的輸出如下所示。
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - 應用程式層安全性 | Microsoft Docs
-description: 此文章可協助您了解 Azure Front Door Service 如何保護應用程式後端
+title: Azure 前門 - 應用程式層安全性 |微軟文檔
+description: 本文可説明您瞭解 Azure 前門如何保護和保護您的應用程式後端
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193912"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471790"
 ---
 # <a name="application-layer-security-with-front-door"></a>Front Door 的應用程式層安全性
-Azure Front Door Service 提供的 Web 應用程式保護功能可保護 Web 應用程式免於受到網路攻擊與常見網路弱點惡意探索，例如 SQL 插入或跨網站指令碼 (XSS)。 針對 http(s) 前端啟用，Front Door 的應用程式層安全性散布全球各地且永遠開啟，可在遠離您後端的 Azure 網路邊緣遏止惡意攻擊。 Front Door 可提高安全性並將效能最佳化，向您的終端使用者提供快速又安全的 Web 體驗。
+Azure 前門提供 Web 應用程式保護功能，可保護 Web 應用程式免受網路攻擊和常見 Web 漏洞漏洞利用，如 SQL 注入或跨網站腳本 （XSS）。 針對 http(s) 前端啟用，Front Door 的應用程式層安全性散布全球各地且永遠開啟，可在遠離您後端的 Azure 網路邊緣遏止惡意攻擊。 Front Door 可提高安全性並將效能最佳化，向您的終端使用者提供快速又安全的 Web 體驗。
 
 ## <a name="application-protection"></a>應用程式保護
 Front Door 的應用程式保護是在全球各地的每個邊緣環境配合應用程式設定的，而且會自動封鎖非 http(s) 流量觸達您的 Web 應用程式。 我們的多租用戶分散式架構可提供大規模全球保護，卻不必犧牲效能。 針對 http(s) 工作負載，Front Door 的 Web 應用程式保護服務可為自訂規則、對常見攻擊預先設定的規則集提供豐富的規則引擎，並詳細記錄符合規則的所有要求。 可彈性使用的支援動作包括允許、封鎖或僅記錄。
 
 ## <a name="custom-access-control-rules"></a>自訂存取控制規則
-- **IP 允許清單和封鎖清單：** 您可以設定自訂規則來控制存取權的用戶端 IP 位址的清單為基礎的 web 應用程式。 支援 IP v4 與 IP v6 兩者
-- **地理型的存取控制：** 您可以設定自訂規則來控制存取權的用戶端 IP 是來自的國家/地區程式碼為基礎的 web 應用程式
-- **篩選的 HTTP 參數：** 您可以設定根據比對 http 要求參數包括標頭、 URL 和查詢字串的自訂存取規則
+- **IP 允許清單和阻止清單：** 您可以配置自訂規則，以便根據用戶端 IP 位址清單控制對 Web 應用程式的訪問。 支援 IP v4 與 IP v6 兩者
+- **地理型存取控制：** 您可以設定自訂規則，根據用戶端 IP 所來自的國家/地區代碼控制對您 Web 應用程式的存取權
+- **HTTP 參數篩選：** 您可以根據相符的 http(s) 要求參數 (包括標頭、URL 與查詢字串) 設定自訂存取規則
 
 ## <a name="azure-managed-rules"></a>Azure 受控規則
 - 預設會啟用針對最常見 OWASP 弱點預先設定的規則集。 預覽期間的規則集包含 sqli 與 xss 要求檢查。 未來將會新增其他規則。 您可以從選擇只記錄動作開始，以驗證為您的應用程式預先設定的規則如預期般運作 
@@ -45,7 +45,7 @@ Front Door 的應用程式保護是在全球各地的每個邊緣環境配合應
 ## <a name="monitoring"></a>監視
 Front Door 可讓您使用與 Azure 監視器整合以追蹤警示並輕鬆監視趨勢的即時計量，來監視對 Web 應用程式的攻擊。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 預覽期間免費提供 Front Door 的應用程式層安全性。
 
 

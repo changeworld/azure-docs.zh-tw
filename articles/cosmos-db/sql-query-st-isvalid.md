@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 ST_ISVALID
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 ST_ISVALID。
+title: Azure Cosmos DB 查詢語言中的ST_ISVALID
+description: 瞭解 Azure Cosmos DB 中ST_ISVALID的 SQL 系統函數。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349373"
 ---
-# <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID （Azure Cosmos DB）
+# <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID（Azure 宇宙資料庫）
  傳回布林值，指出指定的 GeoJSON Point、Polygon 或 LineString 運算式是否有效。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ ST_ISVALID(<spatial_expr>)
 ## <a name="arguments"></a>引數
   
 *spatial_expr*  
-   這是一個 GeoJSON 點、多邊形或 LineString 運算式。  
+   是 GeoJSON 點、多邊形或線弦運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -52,6 +52,6 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 
 ## <a name="next-steps"></a>後續步驟
 
-- [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [空間函數 Azure 宇宙 DB](sql-query-spatial-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

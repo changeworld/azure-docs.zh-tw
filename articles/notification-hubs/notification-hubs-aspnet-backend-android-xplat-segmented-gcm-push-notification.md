@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa2aa7b77bf174f4a2ca89408ee037b398a32e4d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387436"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127295"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將通知推送至特定 Android 裝置
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>教學課程：使用 Google 雲端通訊 (已淘汰) 將推播通知傳送至特定 Android 裝置
 
 > [!WARNING]
 > Google 已於 2018 年 4 月 10 日淘汰 Google 雲端通訊 (GCM)。 GCM 伺服器和用戶端 API 會由其他項目取代，並且很快就會在 2019 年 5 月 29 日進行移除。 如需詳細資訊，請參閱 [GCM 和 FCM 常見問題集](https://developers.google.com/cloud-messaging/faq)。
@@ -45,7 +45,7 @@ ms.locfileid: "72387436"
 > * 傳送加註標記的通知。
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程以您在以下教學課程中建立的 Android 應用程式為基礎：[教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置][get-started]。 開始進行本教學課程之前，請完成[教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置][get-started]。
 

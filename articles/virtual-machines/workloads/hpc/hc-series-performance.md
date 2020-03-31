@@ -1,6 +1,6 @@
 ---
-title: HC 系列 VM 大小的效能-Azure 虛擬機器 |Microsoft Docs
-description: 深入了解在 Azure 中測試結果 HC 系列 VM 大小的效能。
+title: HC 系列 VM 大小性能 - Azure 虛擬機器 |微軟文檔
+description: 瞭解 Azure 中 HC 系列 VM 大小的效能測試結果。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,46 +13,46 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707688"
 ---
-# <a name="hc-series-virtual-machine-sizes"></a>HC 系列虛擬機器大小
+# <a name="hc-series-virtual-machine-sizes"></a>HC 系列虛擬機器尺寸
 
-HC 系列大小上已執行許多效能測試。 以下是一些效能測試的結果。
+已在 HC 系列大小上運行了多個效能測試。 以下是此效能測試的一些結果。
 
 | 工作負載                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| 資料流三角理論                                    | ~ 190 GB/秒 (Intel MLC AVX-512)  |
-| 高效能 Linpack (HPL)                  | ~3520 GigaFLOPS (Rpeak), ~2970 GigaFLOPS (Rmax) |
-| RDMA 延遲和頻寬                        | 1.80 百萬分之一秒為單位，96.3 Gb/秒   |
-| 在本機的 NVMe SSD 上 FIO                           | ~1.3 GB/秒的讀取，~ 900 MB/s writes |  
-| 在 4 個 Azure 進階 SSD 上的 IOR （P30 受控磁碟，RAID0） * *  | ~ 780 MB/s 讀取，~ 780 MB/寫入 |
+| STREAM 三合會                                    | ±190 GB/s （英特爾 MLC AVX-512）  |
+| 高性能林包 （HPL）                  | +3520 千兆（Rpeak），+2970千兆次（Rmax） |
+| RDMA 延遲&頻寬                        | 1.80 微秒，96.3 Gb/s   |
+| 本地 NVMe SSD 上的 FIO                           | ±1.3 GB/s 讀取，±900 MB/s 寫入 |  
+| 4 個 Azure 高級 SSD 上的 IOR（P30 託管磁片，RAID0）*  | ±780 MB/s 讀取，+780 MB/寫入 |
 
-## <a name="infiniband-send-latency"></a>InfiniBand 傳送延遲
+## <a name="infiniband-send-latency"></a>英菲尼班發送延遲
 
-Mellanox Perftest。
+梅拉諾克斯·佩弗斯特
 
 ```azure-cli
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-|  #bytes         | #iterations     | t_min[microsecond]     | t_max[microsecond]     | t_typical[microsecond] | t_avg[microsecond]     | t_stdev[microsecond]   |
+|  #bytes         | #iterations     | t_min[微秒]     | t_max[微秒]     | t_typical [微秒] | t_avg[微秒]     | t_stdev[微秒]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 | 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0.20            |
 | 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0.20            |
 | 8               | 1000            | 1.78            | 5.26            | 1.83            | 1.84            | 0.19            |
 | 16              | 1000            | 1.79            | 6.21            | 1.83            | 1.84            | 0.22            |
-| 32              | 1000            | 1.80            | 6.82            | 1.84            | 1.85            | $0.24            |
+| 32              | 1000            | 1.80            | 6.82            | 1.84            | 1.85            | 0.24            |
 | 64              | 1000            | 1.85            | 5.47            | 1.88            | 1.86            | 0.12            |
 | 128             | 1000            | 1.88            | 5.61            | 1.93            | 1.89            | 0.25            |
 | 256             | 1000            | 2.24            | 6.39            | 2.28            | 2.02            | 0.18            |
 | 512             | 1000            | 2.32            | 5.42            | 2.36            | 2.30            | 0.17            |
 | 1024            | 1000            | 2.43            | 6.22            | 2.48            | 2.38            | 0.21            |
 | 2048            | 1000            | 2.68            | 6.14            | 2.75            | 2.52            | 0.20            |
-| 4096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | $0.24            |
+| 4096            | 1000            | 3.17            | 7.02            | 3.26            | 2.81            | 0.24            |
 
 ## <a name="osu-mpi-latency-test"></a>OSU MPI 延遲測試
 
@@ -62,7 +62,7 @@ OSU MPI 延遲測試 v5.4.3。
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
-| #bytes  | 延遲 [微秒] （MPICH 3.3 + 第 4 章第） | 延遲 [微秒] (OpenMPI 4.0.0) | 延遲 [微秒] (MVAPICH2 2.3) |
+| #bytes  | 延遲 [微秒] （MPICH 3.3 + CH4） | 延遲 [微秒] （OpenMPI 4.0.0） | 延遲 [微秒] （MVAPICH2 2.3） |
 |------|----------|----------|----------|
 | 2    | 1.84     | 1.78     | 2.08     |
 | 4    | 1.84     | 1.79     | 2.08     |
@@ -77,15 +77,15 @@ OSU MPI 延遲測試 v5.4.3。
 | 2048 | 3.09     | 3.11     | 3.34     |
 | 4096 | 3.72     | 3.91     | 4.44     |
 
-## <a name="mpi-bandwidth"></a>MPI 的頻寬
+## <a name="mpi-bandwidth"></a>MPI 頻寬
 
-OSU MPI 的頻寬測試 v5.4.3。
+OSU MPI 頻寬測試 v5.4.3。
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-| #Size   | 頻寬 （MB/秒） | 頻寬 （Gb/秒） |
+| #Size   | 頻寬（MB/s） | 頻寬（Gb/s） |
 |---------|------------------|------------------|
 | 2       | 6.18             | 0.04944          |
 | 4       | 13.27            | 0.10616          |

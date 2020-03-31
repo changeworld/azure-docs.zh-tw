@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple 虛擬陣列系統需求
+title: 微軟 Azure Stor 簡單虛擬陣列系統要求
 description: 了解 StorSimple Virtual Array 的軟體和網路功能需求
 author: alkohli
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
@@ -7,18 +7,18 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298814"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array 系統需求
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文章說明 Microsoft Azure StorSimple Virtual Array 以及針對儲存體用戶端存取陣列的重要系統需求。 建議您先仔細檢閱資訊，再部署 StorSimple 系統，然後在部署和後續作業期間，必要時回顧參考。
 
@@ -45,11 +45,11 @@ ms.locfileid: "79267543"
 > 請勿在您的 StorSimple Virtual Array 上安裝 VMware 工具，這樣會導致不支援的設定。
 
 ### <a name="virtual-device-requirements"></a>虛擬裝置需求
-| **元件** | **需求** |
+| **元件** | **要求** |
 | --- | --- |
 | 虛擬處理器 (核心) 的最小數目 |4 |
 | 最小記憶體 (RAM) |8 GB <br> 對於檔案伺服器，8 GB 適用於 2 百萬個以下的檔案，而 16 GB 則適用於 2 - 4 百萬個檔案|
-| 磁碟空間<sup>1</sup> |OS 磁碟 - 80 GB <br></br>資料磁碟 - 500 GB 到 8 TB |
+| 磁碟空間<sup>1</sup> |OS 磁碟 - 80 GB  <br></br>資料磁碟 - 500 GB 到 8 TB |
 | 最小網路介面數目 |1 |
 | 網際網路頻寬<sup>2</sup> |所需的最小頻寬：5 Mbps <br> 建議頻寬：100 Mbps <br> 資料傳輸的速度會隨著網際網路頻寬而調整。 例如，100 GB 的資料以 5 Mbps 傳輸需要 2 天的時間，這可能導致備份失敗，因為每日備份無法在一天內完成。 使用 100 Mbps 的頻寬，100 GB 的資料可以在 2.5 小時內傳輸完畢。   |
 
@@ -67,7 +67,7 @@ ms.locfileid: "79267543"
 ### <a name="supported-storage-clients"></a>支援的儲存體用戶端
 下列軟體需求適用於存取 StorSimple Virtual Array (已設定為 iSCSI 伺服器) 的 iSCSI 啟動器。
 
-| **受支援的作業系統** | **必要版本** | **其他需求/注意事項** |
+| **支援的作業系統** | **必要版本** | **其他需求/注意事項** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1、2012、2012R2 |StorSimple 可以建立精簡佈建和完整佈建的磁碟區。 它無法建立部分佈建的磁碟區。 StorSimple iSCSI 磁碟區只支援︰ <ul><li>Windows 基本磁碟上的簡單磁碟區。</li><li>Windows NTFS 以進行磁碟區格式化。</li> |
 
@@ -102,7 +102,7 @@ ms.locfileid: "79267543"
 <sup>1</sup> 公用網際網路上沒有必須開啟的輸入連接埠。
 
 > [!IMPORTANT]
-> 請確定防火牆不會修改或解密 StorSimple 裝置和 Azure 之間的任何 SSL 流量。
+> 確保防火牆不會修改或解密 StorSimple 設備和 Azure 之間的任何 TLS 流量。
 > 
 > 
 

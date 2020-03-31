@@ -10,17 +10,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 6cf19292c3675382789ca25af7f9b7f69e9066fe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255414"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端加密和 Azure Key Vault 金鑰保存庫
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>概觀
-[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)支援在上傳至 Azure 儲存體之前，將用戶端應用程式中的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與 [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/) 整合，以進行儲存體帳戶金鑰管理。
+## <a name="overview"></a>總覽
+[用於 .NET 的 Azure 存儲用戶端庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)支援在上載到 Azure 存儲之前加密用戶端應用程式中的資料，並在下載到用戶端時解密資料。 該庫還支援與[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)集成，用於存儲帳戶金鑰管理。
 
 如需引導您進行使用用戶端加密和 Azure 金鑰保存庫來加密 Blob 的逐步教學課程，請參閱 [在 Microsoft Azure 儲存體中使用 Azure 金鑰保存庫加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "79255414"
 儲存體用戶端程式庫會使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 來加密使用者資料。 具體來說，就是 [加密區塊鏈結 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式搭配 AES。 每個服務的運作方式稍有不同，我們將在這裡討論每個服務。
 
 ### <a name="blobs"></a>Blob
-用戶端程式庫目前僅支援整個 Blob 的加密。 具體而言，當使用者使用**UploadFrom**方法或**OpenWrite**方法時，會支援加密。 針對下載，則皆支援完整與範圍下載。
+用戶端程式庫目前僅支援整個 Blob 的加密。 具體來說，當使用者使用 **"從上載"** 方法或**OpenWrite**方法時，支援加密。 針對下載，則皆支援完整與範圍下載。
 
 在加密期間，用戶端程式庫會產生 16 位元組的隨機初始化向量 (IV)，以及 32 位元組的隨機內容加密金鑰 (CEK)，並使用這項資訊執行 blob 資料的信封加密。 然後，已包裝的 CEK 和一些其他加密中繼資料會儲存為 blob 中繼資料，並連同加密的 blob 一起儲存在服務上。
 
@@ -61,9 +61,9 @@ ms.locfileid: "79255414"
 > 
 > 
 
-下載加密的 blob 牽涉到使用**DownloadTo**/**BlobReadStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
+下載加密的 Blob 涉及使用 **"下載到**/**BlobReadStream"** 的便利方法檢索整個 Blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
 
-在加密的 blob 中下載任意範圍（**DownloadRange**方法）牽涉到調整使用者所提供的範圍，以取得少量額外的資料，可用來成功解密所要求的範圍。
+在加密的 Blob 中下載任意範圍（**下載範圍**）涉及調整使用者提供的範圍，以便獲取可用於成功解密請求範圍的少量附加資料。
 
 所有 Blob 類型 (區塊 Blob、頁面 Blob 和附加 Blob) 都可以使用此機制進行加密/解密。
 
@@ -93,7 +93,7 @@ ms.locfileid: "79255414"
 
 請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串儲存在服務上作為二進位屬性，且解密後會轉換回字串。
 
-針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 作法是指定 [EncryptProperty] 屬性 (針對衍生自 TableEntity 的 POCO 實體)，或在要求選項中指定加密解析程式。 加密解析程式是委派，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
+針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 作法是指定 [EncryptProperty] 屬性 (針對衍生自 TableEntity 的 POCO 實體)，或在要求選項中指定加密解析程式。 加密解析程式是委派，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則加密屬性 A;否則加密屬性 A 和 B。請注意，在讀取或查詢實體時不必提供此資訊。
 
 ### <a name="batch-operations"></a>批次作業
 在批次作業中，批次作業中的所有資料列上會使用相同的 KEK，因為用戶端程式庫只允許每個批次作業有一個選項物件 (也就是一個原則/KEK)。 不過，用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。
@@ -123,7 +123,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 2. 使用密碼的基底識別碼做為參數，解析用於加密的目前密碼版本，並在本機快取這項資訊。 使用 CachingKeyResolver 進行快取。使用者不需要實作自己的快取邏輯。
 3. 建立加密原則時，使用快取解析程式做為輸入。
 
-有關金鑰保存庫使用方式的詳細資訊位於 [加密程式碼範例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
+有關金鑰保存庫使用方式的詳細資訊，請參閱[加密代碼示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
 
 ## <a name="best-practices"></a>最佳作法
 只有 .NET 的儲存體用戶端程式庫才支援加密。 Windows Phone 和 Windows 執行階段目前不支援加密。

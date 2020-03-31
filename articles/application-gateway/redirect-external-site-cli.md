@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI Azure 應用程式閘道進行外部流量重新導向
+title: 使用 CLI - Azure 應用程式閘道重定向外部流量重定向
 description: 了解如何使用 Azure CLI，建立會將內部 Web 流量重新導向至適當集區的應用程式閘道。
 services: application-gateway
 author: vhorne
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74011601"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 建立具有外部重新導向的應用程式閘道
 
-您可以使用 Azure CLI，在建立[應用程式閘道](multiple-site-overview.md)時設定 [Web 流量重新導向](overview.md)。 在本教學課程中，您會設定接聽程式和規則，以將抵達應用程式閘道的 Web 流量重新導向至外部網站。
+您可以使用 Azure CLI，在建立[應用程式閘道](overview.md)時設定 [Web 流量重新導向](multiple-site-overview.md)。 在本教學課程中，您會設定接聽程式和規則，以將抵達應用程式閘道的 Web 流量重新導向至外部網站。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 設定網路
@@ -29,13 +29,13 @@ ms.locfileid: "74011601"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group) 建立資源群組。
 
-下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
+下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -43,7 +43,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源 
 
-使用 *az network vnet create* 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet[](/cli/azure/network/vnet) 的子網路。 使用 *az network public-ip create* 建立名為 myAGPublicIPAddress[](/cli/azure/network/public-ip) 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。 這些資源可用來為應用程式閘道及其相關聯的資源提供網路連線。
 
 ```azurecli-interactive
 az network vnet create \
@@ -60,7 +60,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
-您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet 和 myPublicIPAddress。 
+您可以使用[az 網路應用程式閘道創建](/cli/azure/network/application-gateway)來創建名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -80,15 +80,15 @@ az network application-gateway create \
 
 可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到它的這些新功能：
 
-- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
-- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
-- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
+- appGatewayBackendPool** - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings** - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener** - 與 appGatewayBackendPool** 相關聯的預設接聽程式。
+- appGatewayFrontendIP** - 將 myAGPublicIPAddress** 指派給 appGatewayHttpListener**。
+- rule1** - 與 appGatewayHttpListener** 相關聯的預設路由規則。
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-新增重新導向設定，此設定會*使用\.* *az network application-gateway 重新導向-config create\.，將來自 www consoto.org 的流量傳送至適用于*www[contoso.com](/cli/azure/network/application-gateway/redirect-config)的接聽程式。
+使用[az 網路應用程式閘道重定向配置創建](/cli/azure/network/application-gateway/redirect-config)，添加將流量從*www\.consoto.org*發送到攔截器的重定向配置，*以便wwwcontoso.com\.* 到應用程式閘道。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -101,7 +101,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>新增接聽程式和路由規則
 
-需要接聽程式才能讓應用程式閘道適當地路由傳送流量。 使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway) 建立接聽程式，並讓其具有使用 [az network application-gateway frontend-port create](/cli/azure/network/application-gateway) 所建立的前端連接埠。 接聽程式需要規則才能知道要將傳入流量傳送到何處。 使用 *az network application-gateway rule create* 建立名為 [redirectRule](/cli/azure/network/application-gateway) 的基本規則。
+需要接聽程式才能讓應用程式閘道適當地路由傳送流量。 使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway) 建立接聽程式，並讓其具有使用 [az network application-gateway frontend-port create](/cli/azure/network/application-gateway) 所建立的前端連接埠。 接聽程式需要規則才能知道要將傳入流量傳送到何處。 使用 [az network application-gateway rule create](/cli/azure/network/application-gateway) 建立名為 *redirectRule* 的基本規則。
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -128,7 +128,7 @@ az network application-gateway rule create \
 
 若要取得應用程式閘道的公用 IP 位址，您可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 將公用 IP 位址複製並貼到您瀏覽器的網址列。
 
-您應該會看到瀏覽器中出現 bing.com。
+您應該會看到瀏覽器中出現 bing.com**。
 
 ## <a name="next-steps"></a>後續步驟
 

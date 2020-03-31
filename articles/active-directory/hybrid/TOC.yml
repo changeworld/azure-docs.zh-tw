@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: 強式身分識別基礎的四大步驟
           href: four-steps.md
+        - name: 選擇混合式身分識別驗證方法
+          href: choose-ad-authn.md
     - name: Azure AD Connect 和 Connect Health
       items:
         - name: 什麼是 Azure AD Connect 和 Connect Health？
@@ -90,7 +92,7 @@
           href: concept-azure-ad-connect-sync-user-and-contacts.md
         - name: 了解陰影屬性
           href: how-to-connect-syncservice-shadow-attributes.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 安裝與升級
       items:
@@ -142,7 +144,7 @@
           href: plan-connect-userprincipalname.md
         - name: 執行個體的特殊考量
           href: reference-connect-instances.md
-        - name: 移轉
+        - name: 遷移
           items:
             - name: 從同盟遷移至 PHS
               href: plan-migrate-adfs-password-hash-sync.md
@@ -312,6 +314,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: 安裝問題
           href: tshoot-connect-install-issues.md
+        - name: UPN 變更
+          href: howto-troubleshoot-upn-changes.md
 - name: 參考
   items:
     - name: 混合式身分識別所需的連接埠和通訊協定

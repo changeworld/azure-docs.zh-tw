@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748967"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>將認證傳遞至 Azure DSCExtension 處理常式
@@ -60,7 +60,7 @@ configuration Main
 }
 ```
 
-請務必將 **node localhost** 納入為設定的一部分。 延伸模組處理常式專門尋找 **node localhost** 陳述式。 如果缺少此陳述式，將無法執行下列步驟。 也請務必納入 typecast **[PsCredential]** 。 這個特定的類型會觸發擴充功能對認證進行加密。
+請務必將 **node localhost** 納入為設定的一部分。 延伸模組處理常式專門尋找 **node localhost** 陳述式。 如果缺少此陳述式，將無法執行下列步驟。 也請務必納入 typecast **[PsCredential]**。 這個特定的類型會觸發擴充功能對認證進行加密。
 
 若要將此指令碼發佈至 Azure Blob 儲存體︰
 
@@ -83,7 +83,7 @@ $vm | Update-AzVM
 
 執行此程式碼會提示您輸入認證。 提供認證之後，它會暫時儲存在記憶體中。 使用 **Set-AzVMDscExtension** Cmdlet 發佈認證時，認證會透過 HTTPS 傳輸至 VM。 在 VM 中，Azure 會使用本機 VM 憑證儲存在磁碟上加密的認證。 認證會在記憶體中短暫地解密後再重新加密，以便傳遞給 DSC。
 
-此流程與[使用不含延伸模組處理常式的安全組態](/powershell/scripting/dsc/pull-server/securemof)不同。 Azure 環境提供一個透過憑證以安全傳輸組態資料的方式。 使用 DSC 擴充處理常式時，您不需要在 **ConfigurationData** 中提供 **$CertificatePath** 或 / $CertificateID **$Thumbprint** 項目。
+此流程與[使用不含延伸模組處理常式的安全組態](/powershell/scripting/dsc/pull-server/securemof)不同。 Azure 環境提供一個透過憑證以安全傳輸組態資料的方式。 使用 DSC 擴充處理常式時，您不需要在 **ConfigurationData** 中提供 **$CertificatePath** 或 **$CertificateID**/ **$Thumbprint** 項目。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -15,15 +15,15 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243168"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>連線到 Azure 上的 SQL Server 虛擬機器
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本主題說明如何連線到在 Azure 虛擬機器上執行的 SQL Server 執行個體。 它涵蓋了部分[一般連線能力案例](#connection-scenarios)，然後提供[在入口網站中變更連線設定的步驟](#change)。 如果您需要疑難排解或設定入口網站以外的連線，請參閱本主題結尾的[手動設定](#manual)。 
 
@@ -41,15 +41,15 @@ ms.locfileid: "79243168"
 
 | 選項 | 描述 |
 |---|---|
-| **公開** | 透過網際網路連線到 SQL Server |
-| **私用** | 連接相同虛擬網路中的 SQL Server |
+| **公共** | 透過網際網路連線到 SQL Server |
+| **私人** | 連接相同虛擬網路中的 SQL Server |
 | **本機** | 在相同的虛擬機器上本機連線到 SQL Server | 
 
 下列各節更詳細說明**公開**和**私用**選項。
 
 ## <a name="connect-to-sql-server-over-the-internet"></a>連接網際網路中的 SQL Server
 
-如果您需要從網際網路連線到您的 SQL Server 資料庫引擎，請於佈建期間，在入口網站中針對 [SQL 連線能力]類型選取 [公開]。 入口網站會自動執行下列步驟：
+如果您需要從網際網路連線到您的 SQL Server 資料庫引擎，請於佈建期間，在入口網站中針對 [SQL 連線能力]**** 類型選取 [公開]****。 入口網站會自動執行下列步驟：
 
 * 啟用 SQL Server 的 TCP/IP 通訊協定。
 * 設定防火牆規則，以開啟 SQL Server TCP 連接埠 (預設為 1433)。
@@ -76,7 +76,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>連線到相同虛擬網路內的 SQL Server
 
-當您在入口網站中針對 [SQL 連線能力]類型選擇 [私用] 時，Azure 會將大部分設定設定為與**公用**的相同。 其中一項差異是沒有任何網路安全性群組規則可允許 SQL Server 連接埠 (預設為 1433) 上的外部流量。
+當您在入口網站中針對 [SQL 連線能力]**** 類型選擇 [私用]**** 時，Azure 會將大部分設定設定為與**公用**的相同。 其中一項差異是沒有任何網路安全性群組規則可允許 SQL Server 連接埠 (預設為 1433) 上的外部流量。
 
 > [!IMPORTANT]
 > SQL Server Developer 和 Express 版本的虛擬機器映像不會自動啟用 TCP/IP 通訊協定。 在 Developer 和 Express 版本中，您必須在建立 VM 之後，使用「SQL Server 組態管理員」來[手動啟用 TCP/IP 通訊協定](#manualtcp)。
@@ -91,17 +91,17 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a id="change"></a>變更 SQL 連線能力設定
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a>變更 SQL 連線能力設定
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
 您可以在 Azure 入口網站中變更您 SQL Server 虛擬機器的連線能力設定。
 
-1. 在 Azure 入口網站中，選取**SQL 虛擬機器**。
+1. 在 Azure 門戶中，選擇**SQL 虛擬機器**。
 
 2. 選取 SQL Server VM。
 
-3. 在 [**設定**] 下，選取 [**安全性**]。
+3. 在 **"設置"** 下，選擇 **"安全**"。
 
 4. 將 **SQL 連線能力層級**變更為必要的設定。 可選擇性地使用此區域來變更 SQL Server 連接埠或 SQL 驗證設定。
 
@@ -111,7 +111,7 @@ Server=mysqlvm;Integrated Security=true
 
    ![SQL VM 更新通知](./media/virtual-machines-windows-sql-connect/sql-vm-updating-notification.png)
 
-## <a id="manualtcp"></a> 針對 Developer 和 Express 版本啟用 TCP/IP
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>為開發人員版和快速版啟用 TCP/IP
 
 變更 SQL Server 連線能力連線時，Azure 不會對 SQL Server Developer 和 Express 版本自動啟用 TCP/IP 通訊協定。 以下步驟說明如何以手動方式啟用 TCP/IP，以便您經由 IP 位址從遠端連線。
 
@@ -129,7 +129,7 @@ Server=mysqlvm;Integrated Security=true
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a id="manual"></a>手動設定和疑難排解
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>手動設定和疑難排解
 
 雖然入口網站提供自動設定連線的選項，但是您最好知道如何手動設定連線。 了解需求也有助於疑難排解。
 
@@ -137,7 +137,7 @@ Server=mysqlvm;Integrated Security=true
 
 | 需求 | 描述 |
 |---|---|
-| [啟用 SQL Server 驗證模式](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | 除非您已經在虛擬網路上設定 Active Directory，否則，從遠端連線至 VM 需要 SQL Server 驗證。 |
+| [啟用 SQL 伺服器身份驗證模式](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | 除非您已經在虛擬網路上設定 Active Directory，否則，從遠端連線至 VM 需要 SQL Server 驗證。 |
 | [建立 SQL 登入](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | 如果您使用的是 SQL 驗證，則需要包含使用者名稱和密碼，且具備目標資料庫權限的 SQL 登入。 |
 | [啟用 TCP/IP 通訊協定](#manualtcp) | SQL Server 必須允許透過 TCP 連線。 |
 | [啟用 SQL Server 連接埠的防火牆規則](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 上的防火牆必須允許 SQL Server 連接埠 (預設 1433) 上的連入流量。 |

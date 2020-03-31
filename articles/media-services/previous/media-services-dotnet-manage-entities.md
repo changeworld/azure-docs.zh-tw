@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251137"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒體服務 .NET SDK 管理資產和相關的實體
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-manage-entities.md)
-> * [REST](media-services-rest-manage-entities.md)
+> * [休息](media-services-rest-manage-entities.md)
 > 
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 本主題說明如何使用 .NET 管理 Azure 媒體服務實體。
 
@@ -37,10 +37,10 @@ ms.locfileid: "79251137"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="get-an-asset-reference"></a>取得資產參考
-常見的工作是在媒體服務中取得現有資產的參考。 下列程式碼範例顯示如何根據資產識別碼，從伺服器內容物件的資產集合取得資產參考。下列程式碼範例會使用 Linq 查詢來取得現有 IAsset 物件的參考。
+常見的工作是在媒體服務中取得現有資產的參考。 以下代碼示例演示如何根據資產 ID 從伺服器上下文物件上的"資產"集合獲取資產引用。以下代碼示例使用 Linq 查詢獲取對現有 IAsset 物件的引用。
 
 ```csharp
     static IAsset GetAsset(string assetId)
@@ -100,7 +100,7 @@ ms.locfileid: "79251137"
 
 ## <a name="get-a-job-reference"></a>取得工作參考
 
-當您使用媒體服務程式碼中的處理工作時，您通常需要根據識別碼取得現有作業的參考。下列程式碼範例示範如何從工作集合中取得 IJob 物件的參考。
+當您處理媒體服務代碼中的處理任務時，通常需要根據 Id 獲取對現有作業的引用。以下代碼示例演示如何從作業集合中獲取對 IJob 物件的引用。
 
 您可能需要在開始長時間執行編碼作業時，取得作業參考，並且需要檢查執行緒上的作業狀態。 在這種情況下，當此方法從執行緒傳回時，您需要擷取作業的重新整理的參考。
 
@@ -203,7 +203,7 @@ ms.locfileid: "79251137"
 ```
 
 ## <a name="list-all-access-policies"></a>列出所有存取原則
-在媒體服務中，您可以定義資產或其檔案的存取原則。 存取原則會定義檔案或資產 (存取的類型和持續時間) 的權限。 在您的媒體服務程式碼中，通常會藉由建立 IAccessPolicy 物件，然後將其與現有資產產生關聯，來定義存取原則。 然後您會建立 ILocator 物件，讓您能夠直接存取媒體服務中的資產。 本文件系列隨附的 Visual Studio 專案包含數個程式碼範例，示範如何建立及指派存取原則和定位器給資產。
+在媒體服務中，您可以定義資產或其檔案的存取原則。 存取原則會定義檔案或資產 (存取的類型和持續時間) 的權限。 在您的媒體服務程式碼中，通常會藉由建立 IAccessPolicy 物件，然後將其與現有資產產生關聯，來定義存取原則。 然後創建一個 ILocator 物件，該物件允許您直接存取媒體服務中的資產。 本文件系列隨附的 Visual Studio 專案包含數個程式碼範例，示範如何建立及指派存取原則和定位器給資產。
 
 下列程式碼範例顯示如何列出伺服器上的所有存取原則，並顯示每個相關聯的權限的類型。 檢視存取原則的另一個實用方式，是列出伺服器上的所有 ILocator 物件，然後針對每個定位器，您可以使用其 AccessPolicy 屬性列出其相關聯的存取原則。
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818026"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222585"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教學課程：保護單一或集區資料庫
 
@@ -42,11 +42,11 @@ Azure SQL Database 可讓您以下列方式保護單一或集區資料庫中的�
 > [!TIP]
 > 下列 Microsoft Learn 模組可協助您免費學習如何[保護 Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列必要條件：
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL 伺服器和資料庫
   - 透過 [Azure 入口網站](sql-database-single-database-get-started.md)、[CLI](sql-database-cli-samples.md) 或 [PowerShell](sql-database-powershell-samples.md) 加以建立
 
@@ -149,7 +149,7 @@ Azure 中的 SQL 資料庫是由防火牆保護。 依預設，伺服器與資�
 
 ## <a name="manage-database-access"></a>管理資料庫存取
 
-將使用者新增至資料庫，或允許使用者使用安全的連接字串存取，以管理資料庫存取權。 連接字串適合用於外部應用程式。 若要深入了解，請參閱 [Azure SQL 存取控制](sql-database-control-access.md)和 [AD 驗證](sql-database-aad-authentication.md)。
+將使用者新增至資料庫，或允許使用者使用安全的連接字串存取，以管理資料庫存取權。 連接字串適合用於外部應用程式。 若要深入了解，請參閱[管理登入和使用者帳戶](sql-database-manage-logins.md)和 [AD 驗證](sql-database-aad-authentication.md)。
 
 若要新增使用者，請選擇資料庫驗證類型：
 

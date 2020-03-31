@@ -1,15 +1,15 @@
 ---
-title: Reliable Services 通訊總覽
+title: 可靠的服務通信概述
 description: Reliable Services 通訊模型概觀，其中包括開啟服務的接聽程式、解析端點和服務間通訊。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462945"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通訊 API
@@ -87,7 +87,7 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-在這兩種情況下，您會傳回接聽程式的集合。 這可讓您的服務透過多個接聽程式，可能使使用不同的通訊協定，在多個端點上接聽。 例如，您可能有 HTTP 接聽程式和個別的 WebSocket 接聽程式。 每個接聽程式都會獲得一個名稱及所產生的名稱集合：當用戶端要求服務執行個體或資料分割的接聽位址時，系統會以 JSON 物件的形式呈現位址配對。
+在這兩種情況下，您會傳回接聽程式的集合。 這可讓您的服務透過多個接聽程式，可能使使用不同的通訊協定，在多個端點上接聽。 例如，您可能有 HTTP 接聽程式和個別的 WebSocket 接聽程式。 每個接聽程式都會獲得一個名稱及所產生的名稱集合**：當用戶端要求服務執行個體或資料分割的接聽位址時，系統會以 JSON 物件的形式呈現位址配對。
 
 在無狀態服務中，覆寫項會傳回 ServiceInstanceListeners 的集合。 `ServiceInstanceListener` 會包含可建立 `ICommunicationListener(C#) / CommunicationListener(Java)` 的函式，並會為它命名。 就具狀態服務而言，覆寫項則會傳回 ServiceReplicaListeners 集合。 這與其無狀態的對應項稍有不同，因為 `ServiceReplicaListener` 可以選擇在次要複本上將 `ICommunicationListener` 開啟。 您不僅可以在服務中使用多個通訊接聽程式，也可以指定哪些接聽程式要在次要複本上接受要求，以及哪些接聽程式只在主要複本上進行接聽。
 
@@ -147,7 +147,7 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 >
 
 ### <a name="service-address-registration"></a>服務位址註冊
-名為「命名服務」 的系統服務會在 Service Fabric 叢集上執行。 命名服務是適用於服務及其位址的註冊機構，而服務的每個執行個體或複本正在其上接聽。 當 `ICommunicationListener(C#) / CommunicationListener(Java)` 的 `OpenAsync(C#) / openAsync(Java)` 方法完成時，它的傳回值會在命名服務中註冊。 這個在命名服務中發佈的傳回值是一個字串，其值完全可以是任何項目。 這個字串值是用戶端向命名服務要求服務的位址時將會看見的內容。
+名為「命名服務」 ** 的系統服務會在 Service Fabric 叢集上執行。 命名服務是適用於服務及其位址的註冊機構，而服務的每個執行個體或複本正在其上接聽。 當 `ICommunicationListener(C#) / CommunicationListener(Java)` 的 `OpenAsync(C#) / openAsync(Java)` 方法完成時，它的傳回值會在命名服務中註冊。 這個在命名服務中發佈的傳回值是一個字串，其值完全可以是任何項目。 這個字串值是用戶端向命名服務要求服務的位址時將會看見的內容。
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -196,7 +196,7 @@ Service Fabric 提供 API，讓用戶端和其他服務之後能夠依服務名�
 Reliable Services API 提供下列程式庫來撰寫與服務通訊的用戶端。
 
 ### <a name="service-endpoint-resolution"></a>服務端點解析
-與服務通訊的第一個步驟是，解析您想要通訊之服務的分割區或執行個體的端點位址。 `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` 公用程式類別是一個基本類型，可協助用戶端在執行階段判斷服務的端點。 在 Service Fabric 術語中，判斷服務端點的程序稱為「服務端點解析」。
+與服務通訊的第一個步驟是，解析您想要通訊之服務的分割區或執行個體的端點位址。 `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` 公用程式類別是一個基本類型，可協助用戶端在執行階段判斷服務的端點。 在 Service Fabric 術語中，判斷服務端點的程序稱為「服務端點解析」 **。
 
 若要連線到叢集內的服務，可以使用預設設定建立 ServicePartitionResolver。 這是大多數情況的建議用法︰
 

@@ -1,51 +1,51 @@
 ---
 title: 在 Azure 中建立及上傳 Ubuntu Linux VHD
 description: 了解如何建立及上傳包含 Ubuntu Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
-author: mimckitt
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mimckitt
-ms.openlocfilehash: cbb10d544cb299e15022ae47f00d3887d03619c0
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 5fa3415d8663f358bf0ae48be46ac52b8f8b4b06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066736"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>準備適用於 Azure 的 Ubuntu 虛擬機器
 
 
-Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)。 如果您需要針對 Azure 建置您專用的 Ubuntu 映像，而不使用下面的手動程序，建議您視需要從使用這些已知可運作的 VHD 並加以自訂來開始建置。 最新的映像版本一律可以在下列位置找到︰
+Ubuntu 現在發佈官方 Azure VHD，[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)以便下載。 如果您需要針對 Azure 建置您專用的 Ubuntu 映像，而不使用下面的手動程序，建議您視需要從使用這些已知可運作的 VHD 並加以自訂來開始建置。 最新的映像版本一律可以在下列位置找到︰
 
 * Ubuntu 12.04/Precise︰ [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty︰ [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 16.04/Xenial： [ubuntu-16.04-server-cloudimg-amd64-disk1 .vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic： [Bionic-server-cloudimg-amd64](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
+* Ubuntu 16.04/Xenial： [ubuntu-16.04-伺服器雲-amd64-磁片1.vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
+* Ubuntu 18.04/仿生：[仿生-伺服器-雲-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 * Ubuntu 18.10/Cosmic：[cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Prerequisites
-本文假設您已將 Ubuntu Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假設您已將 Ubuntu Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 有關說明，請參閱[安裝 Hyper-V 角色和配置虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **Ubuntu 安裝注意事項**
 
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
 * Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。
-* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，可以在資料磁片上使用[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[RAID。](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  您可以在以下步驟中找到與此有關的詳細資訊。
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="manual-steps"></a>手動步驟
 > [!NOTE]
-> 在嘗試為 Azure 建立您的自訂 Ubuntu 映像之前，請考慮改為使用來自 [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) 的已預先建置並已測試的映像。
+> 在嘗試為 Azure 創建自己的自訂 Ubuntu 映射之前，請考慮使用[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)預構建和測試的圖像。
 > 
 > 
 
 1. 在 Hyper-V 管理員的中間窗格中，選取虛擬機器。
 
-2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
+2. 按一下 **[連接]** 開啟虛擬機器視窗。
 
-3. 取代映射中的目前儲存機制，以使用 Ubuntu 的 Azure 存放庫。 此步驟會隨著 Ubuntu 版本而略有不同。
+3. 替換映射中的當前存儲庫以使用 Ubuntu 的 Azure 存儲庫。 此步驟會隨著 Ubuntu 版本而略有不同。
    
     建議您在編輯 `/etc/apt/sources.list` 之前先進行備份：
    
@@ -66,7 +66,7 @@ Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-image
         # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
         # sudo apt-get update
 
-4. Ubuntu 的 Azure 映像現在遵循「硬體啟用」 (HWE) 核心。 執行下列命令，將作業系統更新為最新的核心：
+4. Ubuntu 的 Azure 映像現在遵循「硬體啟用」 ** (HWE) 核心。 執行下列命令，將作業系統更新為最新的核心：
 
     Ubuntu 12.04：
    
@@ -94,7 +94,7 @@ Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-image
 
         # sudo reboot
     
-    Ubuntu 18.04.04：
+    烏本圖 18.04.04：
     
         # sudo apt-get update
         # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
@@ -122,7 +122,7 @@ Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-image
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  若已安裝 `walinuxagent` 和 `NetworkManager` 套件，則 `NetworkManager-gnome` 套件可能會將它們移除。
+   >  若已安裝 `NetworkManager` 和 `NetworkManager-gnome` 套件，則 `walinuxagent` 套件可能會將它們移除。
 
 
 1. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
@@ -131,7 +131,7 @@ Ubuntu 現在發佈官方 Azure VHD 提供下載，位於：[https://cloud-image
         # export HISTSIZE=0
         # logout
 
-1. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。 您現在可以將 Linux VHD 上傳至 Azure。
+1. 按一下 **"操作 ->在**超 V 管理器中關閉。 您現在可以將 Linux VHD 上傳至 Azure。
 
 ## <a name="references"></a>參考
 [Ubuntu 硬體啟用 (HWE) 核心](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)

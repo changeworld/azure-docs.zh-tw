@@ -1,6 +1,6 @@
 ---
-title: 使用啟動程式自訂 Azure HDInsight 叢集設定
-description: 瞭解如何使用 .Net、PowerShell 和 Resource Manager 範本，以程式設計方式自訂 HDInsight 叢集設定。
+title: 使用引導策略自訂 Azure HDInsight 群集配置
+description: 瞭解如何使用 .Net、PowerShell 和資源管理器範本以程式設計方式自訂 HDInsight 群集配置。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272522"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 叢集
 
-啟動程式腳本可讓您以程式設計方式在 Azure HDInsight 中安裝和設定元件。
+引導腳本允許您以程式設計方式在 Azure HDInsight 中安裝和配置元件。
 
-有三種方法可以在建立 HDInsight 叢集時設定設定檔案設定：
+創建 HDInsight 群集時，有三種方法可以設置設定檔設置：
 
 * 使用 Azure PowerShell
 * 使用 .NET SDK
 * 使用 Azure Resource Manager 範本
 
-例如，您可以使用這些程式設計方法來設定這些檔案中的選項：
+例如，使用這些程式設計方法，可以在以下檔中配置選項：
 
 * clusterIdentity.xml
 * core-site.xml
@@ -44,18 +44,18 @@ ms.locfileid: "79272522"
 * yarn-site.xml
 * server.properties (kafka-broker 設定)
 
-如需在建立期間于 HDInsight 叢集上安裝其他元件的相關資訊，請參閱[使用腳本動作自訂 hdinsight 叢集（Linux）](hdinsight-hadoop-customize-cluster-linux.md)。
+有關在創建期間在 HDInsight 群集上安裝其他元件的資訊，請參閱[使用腳本操作 （Linux） 自訂 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 如果使用 PowerShell，您將需要[Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，則需要[Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
 下列 PowerShell 程式碼會自訂 [Apache Hive](https://hive.apache.org/) 組態：
 
 > [!IMPORTANT]  
-> 參數 `Spark2Defaults` 可能需要與[AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)搭配使用。 您可以將空值傳遞給參數，如下列程式碼範例所示。
+> 該參數`Spark2Defaults`可能需要與[Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)一起使用。 您可以將空值傳遞給參數，如下代碼示例所示。
 
 ```powershell
 # hive-site.xml configuration
@@ -85,10 +85,10 @@ New-AzHDInsightCluster `
 
 **若要確認變更：**
 
-1. 流覽至 `https://CLUSTERNAME.azurehdinsight.net/`，其中 `CLUSTERNAME` 是您的叢集名稱。
-1. 從左側功能表中，流覽至**Hive** > 配置 > **Advanced**。
-1. 展開 [ **Advanced hive-site**]。
-1. 找出**中繼存放區**，並確認此值為**90 年代**。
+1. 導航到`https://CLUSTERNAME.azurehdinsight.net/`群集`CLUSTERNAME`的名稱所在的位置。
+1. 從左側功能表導航到**Hive** > **Configs** > **高級**。
+1. 擴展**高級蜂巢網站**。
+1. 找到**hive.metastore.client.通訊端.超時**並確認值為**90 秒**。
 
 以下是更多自訂其他組態檔的範例：
 
@@ -108,7 +108,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>使用 .NET SDK
 
-請參閱[適用于 .net 的 AZURE HDINSIGHT SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
+請參閱[.NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 
@@ -124,18 +124,18 @@ Resource Manager 範本中，您可以使用啟動程序︰
 }
 ```
 
-![Hadoop 自訂叢集啟動程式 Azure Resource Manager 範本](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop 自訂群集引導 Azure 資源管理器範本](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>另請參閱
 
-* [在 HDInsight 中建立 Apache Hadoop](hdinsight-hadoop-provision-linux-clusters.md)叢集提供如何使用其他自訂選項建立 HDInsight 叢集的指示。
-* [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions-linux.md)
-* [在 HDInsight 叢集上安裝及使用 Apache Spark](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [在 HDInsight 叢集上安裝和使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。
+* [在 HDInsight 中建立 Apache Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md)提供如何使用其他自訂選項建立 HDInsight 叢集的指示。
+* [為 HDInsight 開發腳本操作腳本](hdinsight-hadoop-script-actions-linux.md)
+* [在 HDInsight 叢集上安裝和使用 Apache Spark](spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* [在 HDInsight 群集上安裝和使用 Apache Giraph。](hdinsight-hadoop-giraph-install.md)
 
 ## <a name="appendix-powershell-sample"></a>附錄：PowerShell 範例
 
-此 PowerShell 腳本會建立 HDInsight 叢集，並自訂 Hive 設定。 請務必輸入 `$nameToken`、`$httpPassword`和 `$sshPassword`的值。
+此 PowerShell 腳本創建 HDInsight 群集並自訂 Hive 設置。 請務必輸入`$nameToken`的值 。 `$httpPassword` `$sshPassword`
 
 ```powershell
 ####################################

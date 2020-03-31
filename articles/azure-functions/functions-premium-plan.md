@@ -1,109 +1,109 @@
 ---
-title: Azure Functions Premium 方案
-description: Azure Functions Premium 方案的詳細資料和設定選項（VNet，無冷啟動、無限制的執行持續時間）。
+title: Azure 函數高級計畫
+description: Azure 函數高級計畫的詳細資訊和配置選項（VNet、無冷啟動、無限制執行持續時間）。
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
 ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276903"
 ---
-# <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
+# <a name="azure-functions-premium-plan"></a>Azure 函數高級計畫
 
-Azure Functions Premium 方案（有時稱為彈性高階方案）是函數應用程式的裝載選項。 Premium 方案提供 VNet 連線能力、無冷啟動和 Premium 硬體等功能。  多個函數應用程式可以部署到相同的高階方案，而方案則可讓您設定計算實例大小、基本方案大小和最大方案大小。  如需高階計畫和其他計畫和裝載類型的比較，請參閱[函數級別和裝載選項](functions-scale.md)。
+Azure 函數高級計畫（有時稱為彈性高級計畫）是函數應用的託管選項。 高級計畫提供 VNet 連接、無冷啟動和高級硬體等功能。  可以將多個功能應用部署到同一高級計畫，並且該計畫允許您配置計算實例大小、基本計畫大小和最大計畫大小。  有關高級計畫和其他計畫和託管類型的比較，請參閱[功能規模和託管選項](functions-scale.md)。
 
 ## <a name="create-a-premium-plan"></a>建立進階方案
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-您也可以使用 Azure CLI 中的[az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create)來建立高階計畫。 下列範例會建立_彈性 Premium 1_層方案：
+您還可以使用在 Azure CLI 中[創建的 az 函數應用計畫](/cli/azure/functionapp/plan#az-functionapp-plan-create)創建高級計畫。 以下示例創建_彈性高級高級 1_層計畫：
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
 --location <REGION> --sku EP1
 ```
 
-在此範例中，請將 `<RESOURCE_GROUP>` 取代為您的資源群組，並使用您的方案名稱（在資源群組中是唯一的） `<PLAN_NAME>`。 指定[支援的 `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)。 若要建立支援 Linux 的 Premium 方案，請包含 `--is-linux` 選項。
+在此示例中，替換為資源組`<RESOURCE_GROUP>`，並`<PLAN_NAME>`替換為資源組中唯一的計畫的名稱。 指定[受支援的`<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)。 要創建支援 Linux 的高級計畫，請包括`--is-linux`該選項。
 
-建立計畫之後，您可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)來建立函數應用程式。 在入口網站中，會同時建立方案和應用程式。 如需完整 Azure CLI 腳本的範例，請參閱[在 Premium 方案中建立函數應用程式](scripts/functions-cli-create-premium-plan.md)。
+創建計畫後，可以使用[創建 az 函數應用](/cli/azure/functionapp#az-functionapp-create)來創建函數應用。 在門戶中，將同時創建計畫和應用。 有關完整 Azure CLI 腳本的示例，請參閱[在高級計畫中創建函數應用](scripts/functions-cli-create-premium-plan.md)。
 
 ## <a name="features"></a>特性
 
-下列功能可供部署至 Premium 方案的函數應用程式使用。
+以下功能可用於部署到高級計畫的應用。
 
-### <a name="pre-warmed-instances"></a>預先準備就緒的實例
+### <a name="pre-warmed-instances"></a>預熱實例
 
-如果目前在取用方案中沒有發生任何事件和執行，您的應用程式可能會相應縮小為零個實例。 當新事件進入時，必須將新的實例專門提供給在其上執行的應用程式。  根據應用程式，將新的實例特製化可能需要一些時間。  第一次呼叫時的此額外延遲通常稱為應用程式冷啟動。
+如果"消耗"計畫中今天未發生事件和執行，則應用可能會擴展到零實例。 當新事件進入時，需要專門使用運行其應用的新實例。  根據應用的不同，專業化新實例可能需要一些時間。  第一次調用時的額外延遲通常稱為應用冷啟動。
 
-在高階方案中，您可以讓應用程式預先準備就緒指定的實例數目，最多可達您最小的方案大小。  預先準備就緒的實例也可讓您在高負載前預先調整應用程式。 當應用程式相應放大時，它會先調整為預先準備就緒的實例。 其他實例會繼續緩衝並立即準備好進行下一個調整作業。 藉由擁有預先準備就緒之實例的緩衝區，您可以有效地避免冷啟動延遲。  預先準備就緒的實例是高階方案的一項功能，而且您必須至少保留一個執行中的實例，而且在計畫作用中的任何時候都可以使用。
+在高級計畫中，您可以讓應用在指定數量的實例上預熱，最多達到最低計畫大小。  預熱的實例還允許您在高負載之前預縮放應用。 當應用縮小時，它首先擴展到預熱的實例。 其他實例繼續緩衝並立即加熱，為下一次規模操作做準備。 通過具有預預熱實例的緩衝區，您可以有效地避免冷啟動延遲。  預熱實例是高級計畫的一項功能，您需要保持至少一個實例的運行狀態，並且在計畫處於活動狀態時隨時可用。
 
-您可以選取您的**函數應用程式**、前往 [**平臺功能**] 索引標籤，然後選取**Scale Out**選項，以在 Azure 入口網站中設定預先準備就緒的實例數目。 在 [函數應用程式] [編輯] 視窗中，預先準備就緒的實例是該應用程式特有的，但最小和最大實例適用于整個計畫。
+您可以通過選擇**功能應用**（進入 **"平臺功能"** 選項卡以及選擇 **"橫向擴展"** 選項）來配置 Azure 門戶中預熱實例的數量。 在函數應用編輯視窗中，預熱的實例特定于該應用，但最小和最大實例適用于整個計畫。
 
-![彈性調整規模設定](./media/functions-premium-plan/scale-out.png)
+![彈性比例設置](./media/functions-premium-plan/scale-out.png)
 
-您也可以使用 Azure CLI 為應用程式設定預先準備就緒的實例。
+還可以使用 Azure CLI 為應用配置預熱的實例。
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
-### <a name="private-network-connectivity"></a>私人網路連線能力
+### <a name="private-network-connectivity"></a>專用網路連接
 
-部署至 Premium 方案的 Azure Functions 會利用[web 應用程式的新 VNet 整合](../app-service/web-sites-integrate-with-vnet.md)。  設定之後，您的應用程式就可以與 VNet 內的資源通訊，或透過服務端點來保護其安全。  應用程式也可以使用 IP 限制來限制連入流量。
+部署到高級計畫的 Azure 函數利用了[Web 應用的新 VNet 集成](../app-service/web-sites-integrate-with-vnet.md)。  配置後，你的應用可以與 VNet 中的資源通信或通過服務終結點進行保護。  應用程式上也提供 IP 限制，以限制傳入流量。
 
-將子網指派給高階方案中的函式應用程式時，您需要有足夠的 IP 位址可用於每個潛在實例的子網。 我們需要至少具有100個可用位址的 IP 區塊。
+在高級計畫中將子網分配給函數應用時，需要每個潛在實例具有足夠的 IP 位址的子網。 我們需要一個至少具有 100 個可用位址的 IP 塊。
 
-如需詳細資訊，請參閱[整合您的函數應用程式與 VNet](functions-create-vnet.md)。
+有關詳細資訊，請參閱[將函數應用與 VNet 集成](functions-create-vnet.md)。
 
-### <a name="rapid-elastic-scale"></a>快速彈性調整
+### <a name="rapid-elastic-scale"></a>快速彈性刻度
 
-系統會使用與取用方案相同的快速調整邏輯，為您的應用程式自動新增額外的計算實例。  若要深入瞭解調整如何運作，請參閱[函數級別和裝載](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
+使用與消耗計畫相同的快速縮放邏輯，為您的應用自動添加其他計算實例。  要瞭解有關縮放的工作原理，請參閱[函數縮放和託管](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
-### <a name="longer-run-duration"></a>較長的執行持續時間
+### <a name="longer-run-duration"></a>更長的運行持續時間
 
-取用方案中的 Azure Functions 僅限10分鐘的時間執行一次。  在 Premium 方案中，回合持續時間預設為30分鐘，以防止執行失控。 不過，您可以[修改 host. json](./functions-host-json.md#functiontimeout)設定，讓 Premium 方案應用程式不受限制（保證60分鐘）。
+使用計畫中的 Azure 函數在單個執行時限制為 10 分鐘。  在高級計畫中，運行持續時間預設為 30 分鐘，以防止失控執行。 但是，您可以[修改 host.json 配置](./functions-host-json.md#functiontimeout)，使其對高級計畫應用無限制（保證 60 分鐘）。
 
-## <a name="plan-and-sku-settings"></a>方案和 SKU 設定
+## <a name="plan-and-sku-settings"></a>計畫和 SKU 設置
 
-當您建立方案時，可以設定兩個設定：實例的最小數目（或方案大小）和最大高載限制。  實例的最小值為保留且一律正在執行。
+創建計畫時，配置兩個設置：最小實例數（或計畫大小）和最大突發限制。  保留最小實例並始終運行。
 
 > [!IMPORTANT]
-> 不論函式是否正在執行，您都會針對每個配置於最小實例計數的實例向您收費。
+> 無論函數是否正在執行，都會為在最小實例計數中分配的每個實例收費。
 
-如果您的應用程式需要超過方案大小的實例，它可以繼續相應放大，直到實例數目達到最大高載限制為止。  只有在執行並出租給您的情況下，才會向您收取方案大小以外的實例費用。  我們會盡力將您的應用程式調整為其定義的最大限制，而最小方案實例則可保證您的應用程式。
+如果應用需要超出計畫大小的實例，則可以繼續橫向擴展，直到實例數達到最大突發限制。  只有在超出計畫大小的實例運行並租給您時，才會向您收費。  我們將盡最大努力將你的應用擴展到其定義的最大限制，同時保證你的應用的最小計畫實例。
 
-您可以在 Azure 入口網站中設定計劃大小和上限，方法是選取方案中的**Scale Out**選項或部署至該方案的函式應用程式（在 **平臺功能** 底下）。
+您可以通過在計畫中選擇 **"橫向擴展"** 選項或部署到該計畫的函數應用（在**平臺功能**下）來配置 Azure 門戶中的計畫大小和最大值。
 
-您也可以從 Azure CLI 增加最大的高載限制：
+您還可以從 Azure CLI 增加最大突發限制：
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>可用的實例 Sku
+### <a name="available-instance-skus"></a>可用實例 SKU
 
-建立或調整您的方案時，您可以選擇三種實例大小。  系統會向您收取每秒耗用的核心和記憶體總數。  您的應用程式可以視需要自動相應放大至多個實例。  
+創建或縮放計畫時，可以在三個實例大小之間進行選擇。  您將按每秒消耗的內核和記憶體總數計費。  您的應用可以根據需要自動擴展到多個實例。  
 
-|SKU|核心|記憶體|儲存體|
+|SKU|核心|記憶體|存放裝置|
 |--|--|--|--|
-|EP1|1|3.5 GB|250GB|
+|EP1|1|3.5GB|250GB|
 |EP2|2|7 GB|250GB|
 |EP3|4|14 GB|250GB|
 
-### <a name="memory-utilization-considerations"></a>記憶體使用量考慮
-在具有更多記憶體的電腦上執行，並不一定表示您的函式應用程式會使用所有可用的記憶體。
+### <a name="memory-utilization-considerations"></a>記憶體利用率注意事項
+在記憶體較多的電腦上運行並不總是意味著函數應用將使用所有可用記憶體。
 
-例如，JavaScript 函數應用程式受限於 node.js 中的預設記憶體限制。 若要增加此固定記憶體限制，請將應用程式設定 `languageWorkers:node:arguments` 加上 `--max-old-space-size=<max memory in MB>`的值。
+例如，JavaScript 函數應用受 Node.js 中的預設記憶體限制的約束。 要增加此固定記憶體限制，添加值 為`languageWorkers:node:arguments`的應用`--max-old-space-size=<max memory in MB>`設置。
 
-## <a name="region-max-scale-out"></a>區域最大 Scale Out
+## <a name="region-max-scale-out"></a>區域最大橫向擴展
 
-以下是每個區域和 OS 設定中，單一計畫目前支援的最大相應放大值。 若要要求增加，請開啟支援票證。
+以下是當前支援的每個區域和作業系統配置中單個計畫的最大橫向擴展值。 要要求增加，請打開一張支援票。
 
-請參閱這裡的函式完整區域可用性： [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
+在此處查看功能的完整區域可用性[：Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |區域| Windows | Linux |
 |--| -- | -- |
@@ -139,4 +139,4 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [瞭解 Azure Functions 規模和裝載選項](functions-scale.md)
+> [瞭解 Azure 函數縮放和託管選項](functions-scale.md)

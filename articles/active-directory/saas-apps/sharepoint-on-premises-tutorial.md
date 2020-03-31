@@ -11,73 +11,61 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 22b673ef481593247b6ee1007c13390a498c66be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037015"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048622"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教學課程：Azure Active Directory 與 SharePoint 內部部署整合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharepoint-on-premises"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SharePoint 內部部署整合
 
-在本教學課程中，您將了解如何整合 SharePoint 內部部署與 Azure Active Directory (Azure AD)。
-將 SharePoint 內部部署與 Azure AD 整合可提供下列優點：
+在本教學課程中，您將了解如何整合 SharePoint 內部部署與 Azure Active Directory (Azure AD)。 在整合 SharePoint 內部部署與 Azure AD 時，您可以︰
 
-* 您可以在 Azure AD 中控制可存取 SharePoint 內部部署的人員。
-* 您可以讓使用者使用其 Azure AD 帳戶自動登入 SharePoint 內部部署 (單一登入)。
-* 您可以在 Azure 入口網站中集中管理您的帳戶。
+* 在 Azure AD 中控制可存取 SharePoint 內部部署的人員。
+* 讓使用者使用其 Azure AD 帳戶自動登入 SharePoint 內部部署。
+* 在 Azure 入口網站集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要設定 Azure AD 與 SharePoint 內部部署整合，您需要下列項目：
+若要開始，您需要下列項目：
 
-* Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以申請[免費帳戶](https://azure.microsoft.com/free/)
-* 已啟用 SharePoint 內部部署單一登入功能的訂用帳戶
+* Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
+* 已啟用 SharePoint 內部部署單一登入 (SSO) 的訂用帳戶。
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
+在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * SharePoint 內部部署支援 **SP** 起始的 SSO
+* 設定 SharePoint 內部部署後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 請參閱此[連結](https://docs.microsoft.com/archive/blogs/kaevans/sharepoint-2013-user-profile-sync-for-claims-users)，以了解如何將使用者設定檔從 SharePoint 內部部署同步至 Azure AD
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>從資源庫新增 SharePoint 內部部署
 
 若要設定將 SharePoint 內部部署整合到 Azure AD 中，您需要從資源庫將 SharePoint 內部部署新增到受控 SaaS 應用程式清單。
 
-**若要從資源庫新增 SharePoint 內部部署，請執行下列步驟：**
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
-
-    ![Azure Active Directory 按鈕](common/select-azuread.png)
-
-    > [!NOTE]   
+    > [!NOTE]
     > 如果元素應該無法使用，也可以透過左側導覽窗格頂端的固定 [所有服務]  連結來開啟。 在下列概觀中，[Azure Active Directory]  連結位於 [身分識別]  區段中，或者可以透過使用篩選文字方塊來搜尋。
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
+1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 若要新增應用程式，請選取 [新增應用程式]  。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SharePoint 內部部署**。
+1. 從結果面板中選取 [SharePoint 內部部署]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sharepoint-on-premises"></a>設定和測試 SharePoint 內部部署的 Azure AD 單一登入
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+以名為 **B.Simon** 的測試使用者，設定及測試與 SharePoint 內部部署搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 SharePoint 內部部署中相關使用者之間的連結關聯性。
 
-    ![新增應用程式按鈕](common/add-new-app.png)
-
-4. 在搜尋方塊中，輸入 **SharePoint 內部部署**，從結果面板中選取 [SharePoint 內部部署]  ，然後按一下 [新增]  按鈕以新增應用程式。
-
-    ![結果清單中的 SharePoint 內部部署](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
-
-在本節中，您會以名為 **Britta Simon** 的測試使用者身分，使用 SharePoint 內部部署來設定和測試 Azure AD 單一登入。
-若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 SharePoint 內部部署中相關使用者之間的連結關聯性。
-
-若要設定及測試與 SharePoint 內部部署搭配運作的 Azure AD 單一登入，您需要完成下列基本工作：
+若要使用 SharePoint 內部部署來設定並測試 Azure AD SSO，請完成下列建構元素：
 
 1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** - 讓您的使用者能夠使用此功能。
 2. **[設定 SharePoint 內部部署單一登入](#configure-sharepoint-on-premises-single-sign-on)** - 在應用程式端設定單一登入設定。
@@ -107,7 +95,6 @@ ms.locfileid: "79037015"
 
 4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
-    ![[SharePoint 內部部署網域及 URL] 單一登入資訊](common/sp-identifier-reply.png)
 
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<YourSharePointServerURL>/_trust/default.aspx`
 
@@ -318,6 +305,7 @@ ms.locfileid: "79037015"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
+
 6. 在 [管理中心] 內，移至 Web 應用程式，並且啟用現有受信任的識別提供者。 請記得也要將登入頁面 URL 設定為自訂登入頁面 `/_trust/`。
 
 7. 在 [管理中心] 內，按一下 Web 應用程式，然後選擇 [使用者原則]  。 如本文中先前的示範，新增具有適當權限的使用者。
@@ -359,7 +347,7 @@ ms.locfileid: "79037015"
 
 ### <a name="create-sharepoint-on-premises-test-user"></a>建立 SharePoint 內部部署測試使用者
 
-在本節中，您會在 SharePoint 內部部署中建立名為 Britta Simon 的使用者。 請與  [SharePoint 內部部署支援小組](https://support.office.com/) 合作，在 SharePoint 內部部署平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 SharePoint 內部部署中建立名為 Britta Simon 的使用者。 請與 [SharePoint 內部部署支援小組](https://support.office.com/) 合作，在 SharePoint 內部部署平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
@@ -371,6 +359,8 @@ ms.locfileid: "79037015"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

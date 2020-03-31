@@ -1,6 +1,6 @@
 ---
-title: 將反升圖層新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，將反升圖層新增至地圖。
+title: 向地圖添加氣泡圖層 |微軟 Azure 地圖
+description: 在本文中，您將瞭解如何使用 Microsoft Azure 地圖 Web SDK 將氣泡圖層添加到地圖中。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,22 +10,22 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208551"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>將泡泡圖層新增至地圖
 
-本文說明如何將資料來源中的點資料轉譯為地圖上的氣泡圖層。 反升層會將點轉譯為地圖上具有固定圖元半徑的圓形。 
+本文介紹如何將資料來源的點資料呈現為地圖上的氣泡圖層。 氣泡圖層在地圖上渲染點，使其為具有固定圖元半徑的圓圈。 
 
 > [!TIP]
-> 根據預設，泡泡圖層會轉譯資料來源中所有幾何圖形的座標。 若要限制圖層，使其只轉譯點幾何特徵，請將圖層的 [`filter`] 屬性設為 [`['==', ['geometry-type'], 'Point']`] 或 [`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`] （如果您也想要包含 MultiPoint 功能）。
+> 根據預設，泡泡圖層會轉譯資料來源中所有幾何圖形的座標。 要限制圖層，使其僅渲染點幾何要素，`filter`請將圖層的屬性設置為`['==', ['geometry-type'], 'Point']`或`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`是否還希望也包含 MultiPoint 要素。
 
 ## <a name="add-a-bubble-layer"></a>新增泡泡圖層
 
-下列程式碼會將點陣列載入至資料來源。 然後，它會將資料點連接到反升[圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 反升層會以五個圖元和白色的填滿色彩，呈現每個氣泡的半徑。 而且是藍色的筆觸色彩和六個圖元的筆觸寬度。 
+以下代碼將一系列點載入到資料來源中。 然後，它連接資料點是到[氣泡層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 氣泡圖層以五個圖元和填充顏色白色渲染每個氣泡的半徑。 並且，描邊顏色為藍色，描邊寬度為 6 圖元。 
 
 ```javascript
 //Add point locations.
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 }));
 ```
 
-以下是上述功能的完整執行程式碼範例。
+下面是上述功能的完整運行代碼示例。
 
 <br/>
 
@@ -62,7 +62,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 ## <a name="show-labels-with-a-bubble-layer"></a>顯示標籤與泡泡圖層
 
-這段程式碼示範如何使用反升層來呈現地圖上的點。 以及如何使用符號圖層來轉譯標籤。 若要隱藏符號圖層的圖示，請將圖示選項的 [`image`] 屬性設定為 [`'none'`]。
+此代碼演示如何使用氣泡圖層在地圖上呈現點。 以及如何使用符號圖層來渲染標籤。 要隱藏符號圖層的圖示，將`image`圖示選項的屬性設置為`'none'`。
 
 <br/>
 
@@ -75,7 +75,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='泡泡圖層選項' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io'>泡泡圖層選項</a>。
+<iframe height='700' scrolling='no' title='泡泡圖層選項' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen：<a href='https://codepen.io/azuremaps/pen/eQxbGm/'>泡泡圖層選項</a>。
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟
@@ -94,7 +94,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [建立資料來源](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [新增符號圖層](map-add-pin.md)
+> [添加符號圖層](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)

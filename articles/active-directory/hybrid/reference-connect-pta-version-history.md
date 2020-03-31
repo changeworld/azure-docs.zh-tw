@@ -1,6 +1,6 @@
 ---
-title: Azure AD 傳遞驗證：版本發行歷程記錄 |Microsoft Docs
-description: 本文列出 Azure AD 傳遞驗證代理程式的所有版本
+title: Azure AD 直通身份驗證：版本發佈歷史記錄 |微軟文檔
+description: 本文列出了 Azure AD 直通身份驗證代理的所有版本
 services: active-directory
 author: billmath
 manager: daveba
@@ -13,68 +13,68 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c5d0efe8e662544dc69356c6b17dd7eca6f3a50
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74786447"
 ---
-# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD 傳遞驗證代理程式：版本發行歷程記錄 
+# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD 直通身份驗證代理：版本發佈歷史記錄 
  
-在內部部署安裝的代理程式（可啟用傳遞驗證）會定期更新，以提供新功能。 本文列出引進新功能時所新增的版本和功能。 發行新版本時，會自動更新傳遞驗證代理程式。 
+在本地安裝的啟用直通身份驗證的代理會定期更新以提供新功能。 本文列出了引入新功能時添加的版本和功能。 發佈新版本時，直通身份驗證代理將自動更新。 
 
 以下是相關主題： 
 
-- [使用 Azure AD 傳遞驗證的使用者登入](how-to-connect-pta.md) 
-- [Azure AD 傳遞驗證代理程式安裝](how-to-connect-pta-quick-start.md) 
+- [使用 Azure AD 直通身份驗證的使用者登錄](how-to-connect-pta.md) 
+- [Azure AD 直通身份驗證代理安裝](how-to-connect-pta-quick-start.md) 
 
 
 
 ## <a name="1510070"></a>1.5.1007.0 
 ### <a name="release-status"></a>發行狀態 
-1/22/2019：已發行以供下載  
+2019/1/22：發佈供下載  
 ### <a name="new-features-and-improvements"></a>新功能和改進 
-- 新增服務匯流排可靠通道的支援，為輸出連線新增另一層連線恢復功能 
-- 在代理程式註冊期間強制使用 TLS 1。2 
+- 添加了對服務匯流排可靠通道的支援，為出站連接添加另一層連接恢復能力 
+- 在代理註冊期間強制執行 TLS 1.2 
 
 ## <a name="156430"></a>1.5.643.0 
 ### <a name="release-status"></a>發行狀態 
-4/10/2018：已發行以供下載  
+2018/4/10：發佈供下載  
 ### <a name="new-features-and-improvements"></a>新功能和改進 
 - Web 通訊端連接支援 
-- 將 TLS 1.2 設定為代理程式的預設通訊協定 
+- 將 TLS 1.2 設置為代理的預設協定 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>發行狀態 
-1/31/2018：已發行以供下載  
+2018/1/31：發佈供下載  
 ### <a name="fixed-issues"></a>已修正的問題 
 
-- 已修正導致代理程式發生記憶體流失的 bug。 
-- 已更新 Azure 服務匯流排版本，其中包含連接器超時問題的錯誤修正。 
+- 修復了導致代理中某些記憶體洩漏的 Bug。 
+- 更新了 Azure 服務匯流排版本，其中包括連接器超時問題的錯誤修復程式。 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>發行狀態 
-11/26/2017：已發行以供下載  
+2017/11/26：發佈供下載  
 ### <a name="new-features-and-improvements"></a>新功能和改進 
-- 已新增代理程式與 Azure AD 服務之間以 websocket 為基礎之連線的支援，以改善連接恢復功能 
+- 添加了對代理和 Azure AD 服務之間基於 Websocket 的連接的支援，以提高連接恢復能力 
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>發行狀態 
-11/25/2017：已發行以供下載  
+2017/11/25：發佈供下載  
 ### <a name="fixed-issues"></a>已修正的問題 
-- 已修正與 DNS 快取有關預設 proxy 案例的錯誤 
+- 修復了與預設代理方案的 DNS 緩存相關的 Bug 
  
-## <a name="153890"></a>1.5.389.0 版 
+## <a name="153890"></a>1.5.389.0 
 ### <a name="release-status"></a>發行狀態 
-10/17/2017：已發行以供下載  
+2017/10/17：發佈供下載  
 ### <a name="new-features-and-improvements"></a>新功能和改進 
-- 已新增輸出連線的 DNS 快取功能，以從 DNS 失敗中新增復原 
+- 為出站連接添加 DNS 緩存功能，以添加 DNS 故障的恢復能力 
  
 ## <a name="152610"></a>1.5.261.0 
 ### <a name="release-status"></a>發行狀態 
-08/31/2017：已發行以供下載  
+08/31/2017： 發佈供下載  
 ### <a name="new-features-and-improvements"></a>新功能和改進 
-- GA 版本的 Azure AD 傳遞驗證代理程式 
+- Azure AD 直通身份驗證代理的 GA 版本 
 
 ## <a name="next-steps"></a>後續步驟
 

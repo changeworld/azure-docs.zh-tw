@@ -1,5 +1,5 @@
 ---
-title: Linux Vm 的 DNS 名稱解析選項
+title: Linux VM 的 DNS 名稱解析選項
 description: Azure IaaS 中 Linux 虛擬機器的名稱解析案例 (包括提供的 DNS 服務)：混合式外部 DNS 和自備 DNS 伺服器。
 author: RicksterCDN
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969327"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的 DNS 名稱解析選項
@@ -23,19 +23,19 @@ Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析
 
 下表說明各種案例和對應的名稱解析解決方案：
 
-| **案例** | **方案** | **尾碼** |
+| **案例** | **解決方法** | **尾碼** |
 | --- | --- | --- |
 | 相同虛擬網路中的角色執行個體或虛擬機器之間的名稱解析 |Azure 提供的名稱解析 |主機名稱或完整網域名稱 (FQDN) |
-| 不同虛擬網路中的角色執行個體或虛擬機器之間的名稱解析 |客戶受控的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server)。 |僅 FQDN |
-| 解析 Azure 中角色執行個體或虛擬機器的內部部署電腦及伺服器名稱 |客戶管理的 DNS 伺服器 (例如，內部部署的網域控制站、本機唯讀網域控制站或使用區域傳輸同步的次要 DNS)。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server)。 |僅 FQDN |
-| 從內部部署電腦解析 Azure 主機名稱 |將查詢轉送到所對應虛擬網路中客戶管理的 DNS Proxy 伺服器。 Proxy 伺服器將查詢轉送給 Azure 進行解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server)。 |僅 FQDN |
+| 不同虛擬網路中的角色執行個體或虛擬機器之間的名稱解析 |客戶受控的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用您自己的 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server)。 |僅 FQDN |
+| 解析 Azure 中角色執行個體或虛擬機器的內部部署電腦及伺服器名稱 |客戶管理的 DNS 伺服器 (例如，內部部署的網域控制站、本機唯讀網域控制站或使用區域傳輸同步的次要 DNS)。 請參閱[使用您自己的 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server)。 |僅 FQDN |
+| 從內部部署電腦解析 Azure 主機名稱 |將查詢轉送到所對應虛擬網路中客戶管理的 DNS Proxy 伺服器。 Proxy 伺服器將查詢轉送給 Azure 進行解析。 請參閱[使用您自己的 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server)。 |僅 FQDN |
 | 內部 IP 的反向 DNS |[使用專屬 DNS 伺服器的名稱解析](#name-resolution-using-your-own-dns-server) |n/a |
 
 ## <a name="name-resolution-that-azure-provides"></a>Azure 提供的名稱解析
 除了公用 DNS 名稱的解析之外，Azure 也提供相同虛擬網路中的虛擬機器和角色執行個體的內部名稱解析。 在 Azure Resource Manager 型虛擬網路中，DNS 尾碼在虛擬網路之間是一致的，因此不需要 FQDN。 DNS 名稱可以指派給網路介面卡 (NIC) 和虛擬機器。 雖然 Azure 提供的名稱解析不需要任何設定，但它不適用於所有部署案例，如上表所示。
 
 ### <a name="features-and-considerations"></a>功能和注意事項
-**功能：**
+**特徵：**
 
 * 不需要設定，就能使用 Azure 提供的名稱解析。
 * Azure 提供的名稱解析服務高度可用。 您不需要建立和管理專屬 DNS 伺服器的叢集。
@@ -43,7 +43,7 @@ Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析
 * 在虛擬網路的虛擬機器之間提供名稱解析，不需要 FQDN。
 * 您可以使用最能描述部署的主機名稱，而不是使用自動產生的名稱。
 
-**考量因素：**
+**考慮：**
 
 * Azure 建立的 DNS 尾碼不能修改。
 * 您無法手動註冊您自己的記錄。
@@ -64,14 +64,14 @@ Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析
 **Ubuntu (使用 resolvconf)**
   * 安裝 dnsmasq 封裝 (“sudo apt-get install dnsmasq”)。
 
-SUSE (使用 netconf)：
+**SUSE （使用網路）**：
 1. 安裝 dnsmasq 封裝 (“sudo zypper install dnsmasq”)。
 2. 啟用 dnsmasq 服務 (“systemctl enable dnsmasq.service”)。
 3. 啟動 dnsmasq 服務 (“systemctl start dnsmasq.service”)。
 4. 編輯 “/etc/sysconfig/network/config” 並將 NETCONFIG_DNS_FORWARDER="" 變更為 ”dnsmasq”。
 5. 更新 resolv.conf ("netconfig update") 來設定快取作為本機 DNS 解析程式。
 
-**CentOS by Rogue Wave Software (先前稱為 OpenLogic；使用 NetworkManager)**
+**中心OS由流氓波軟體（以前開放邏輯;使用網路管理器）**
 1. 安裝 dnsmasq 封裝 (“sudo yum install dnsmasq”)。
 2. 啟用 dnsmasq 服務 (“systemctl enable dnsmasq.service”)。
 3. 啟動 dnsmasq 服務 (“systemctl start dnsmasq.service”)。
@@ -96,7 +96,7 @@ DNS 主要是 UDP 通訊協定。 因為 UDP 通訊協定並不保證訊息傳�
 
 resolv.conf 檔案會自動產生且不可編輯。 新增 [選項] 行的特定步驟會因發行版本而有所不同：
 
-**Ubuntu** (使用 resolvconf)
+**烏本圖**（使用管解）
 1. 將選項行新增至 '/etc/resolveconf/resolv.conf.d/head'。
 2. 執行 'resolvconf -u' 以進行更新。
 

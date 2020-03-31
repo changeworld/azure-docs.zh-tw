@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio 開始使用 blob 儲存體（WebJob 專案）
+title: 使用視覺化工作室（WebJob 專案）開始使用 Blob 存儲
 description: 在使用 Visual Studio 已連接服務連接至 Azure 儲存體之後，如何於 WebJob 專案中開始使用 Blob 儲存體。
 services: storage
 author: ghogen
@@ -14,22 +14,22 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299971"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (WebJob 專案)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>總覽
-本文提供 C# 程式碼範例，示範如何在建立或更新 Azure Blob 時觸發程序。 此程式碼範例會使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 1.x 版。 當您使用 Visual Studio [加入連接的服務] 對話方塊將儲存體帳戶加入 WebJob 專案時，適當的 Azure 儲存體 NuGet 套件會隨即安裝、適當的 .NET 參考會隨即加入專案中，而儲存體帳戶的連接字串也會隨即在 App.config 檔案中更新。
+本文提供 C# 程式碼範例，示範如何在建立或更新 Azure Blob 時觸發程序。 此程式碼範例會使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 1.x 版。 當您使用 Visual Studio [加入連接的服務] **** 對話方塊將儲存體帳戶加入 WebJob 專案時，適當的 Azure 儲存體 NuGet 套件會隨即安裝、適當的 .NET 參考會隨即加入專案中，而儲存體帳戶的連接字串也會隨即在 App.config 檔案中更新。
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>如何在建立或更新 Blob 時觸發函數
 本節示範如何使用 **BlobTrigger** 屬性。
 
- **注意：** WebJobs SDK 會掃描要監看的的記錄檔，找出新的或變更的 Blob。 此程序的速度原本就很慢；可能直到建立 Blob 之後數分鐘或更久，才會觸發函數。  如果您的應用程式需要立即處理 Blob，建議的方法是在您建立 Blob 時建立佇列訊息，並在處理 Blob 的函數上使用 **QueueTrigger** 屬性，而不是 **BlobTrigger** 屬性。
+ **附註：** WebJobs SDK 會掃描要監看的的記錄檔，找出新的或變更的 Blob。 此程序的速度原本就很慢；可能直到建立 Blob 之後數分鐘或更久，才會觸發函數。  如果您的應用程式需要立即處理 Blob，建議的方法是在您建立 Blob 時建立佇列訊息，並在處理 Blob 的函數上使用 **QueueTrigger** 屬性，而不是 **BlobTrigger** 屬性。
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>適用於含有副檔名之 Blob 名稱的單一預留位置
 下列程式碼範例會將出現在 *input* 容器中的文字 Blob 複製到 *output* 容器：
@@ -79,9 +79,9 @@ ms.locfileid: "72299971"
 ## <a name="types-that-you-can-bind-to-blobs"></a>您可以繫結至 Blob 的類型
 您可將 **BlobTrigger** 屬性用於下列類型：
 
-* **string**
+* **字串**
 * **TextReader**
-* **Stream**
+* **流**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
@@ -145,7 +145,7 @@ ms.locfileid: "72299971"
 
 適用於有害 Blob 的佇列訊息是一個 JSON 物件，其中包含下列屬性：
 
-* FunctionId （格式為 *{WebJob name}* ）。函式. *{Function name}* ，例如：WebJob1.Functions.CopyBlob)
+* FunctionId (格式為 *{WebJob name}*.Functions.*{Function name}*，例如：WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" 或 "PageBlob")
 * ContainerName
 * BlobName
@@ -194,7 +194,7 @@ WebJobs SDK 可確保不會針對相同的新 Blob 或更新的 Blob，多次呼
 
 Blob 回條儲存於 AzureWebJobsStorage 連接字串所指定之 Azure 儲存體帳戶中名為 *azure-webjobs-hosts* 的容器中。 Blob 回條具有下列資訊：
 
-* 針對 blob 所呼叫的函式（" *{WebJob 名稱}* 。函式. *{Function name}* "，例如："Webjob1.functions.copyblob. CopyBlob"）
+* 已為 Blob 呼叫的函數 ("*{WebJob name}*.Functions.*{Function name}*"，例如："WebJob1.Functions.CopyBlob")
 * 容器名稱
 * Blob 類型 ("BlockBlob" 或 "PageBlob")
 * Blob 名稱

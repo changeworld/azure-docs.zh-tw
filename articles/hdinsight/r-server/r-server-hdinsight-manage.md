@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 上管理 ML 服務叢集 - Azure
-description: 瞭解如何在 Azure HDInsight 中管理 ML 服務叢集上的各種工作。
+description: 瞭解如何在 Azure HDInsight 中管理 ML 服務群集上的各種任務。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,27 +9,27 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647725"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>在 HDInsight 上管理 ML 服務叢集
 
-在本文中，您將瞭解如何在 Azure HDInsight 上管理現有的 ML 服務叢集，以執行像是新增多個並行使用者、遠端連線至 ML 服務叢集、變更計算內容等工作的工作。
+在本文中，您將瞭解如何在 Azure HDInsight 上管理現有的 ML 服務群集，以執行諸如添加多個併發使用者、遠端連線到 ML 服務群集、更改計算上下文等任務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務] 作為 [叢集類型]。
+* HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務]**** 作為 [叢集類型]****。
 
-* 安全殼層（SSH）用戶端： SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 如需詳細資訊，請參閱[搭配使用 SSH 與 HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 有關詳細資訊，請參閱將[SSH 與 HDInsight 一起使用。](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="enable-multiple-concurrent-users"></a>啟用多個並行使用者
 
 為 RStudio 社群版本執行所在的邊緣節點新增更多使用者，即可藉此為 HDInsight 上的 ML 服務叢集啟用多個並行使用者。 當您建立 HDInsight 叢集時，您必須提供兩個使用者 (HTTP 使用者和 SSH 使用者)：
 
-![HDI Azure 入口網站登入參數](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
+![HDI Azure 門戶登錄參數](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **叢集登入使用者名稱**：透過 HDInsight 閘道 (用來保護您所建立的 HDInsight 叢集) 進行驗證的 HTTP 使用者。 此 HTTP 使用者用於存取 Apache Ambari UI、Apache Hadoop YARN UI，以及其他 UI 元件。
 - **安全殼層 (SSH) 使用者名稱**：透過安全殼層存取叢集的 SSH 使用者。 此使用者是在 Linux 系統中適用於所有前端節點、背景工作節點和邊緣節點的使用者。 因此您可以使用安全殼層來存取遠端叢集中的任何節點。
@@ -64,7 +64,7 @@ HDInsight 上 ML 服務叢集中所使用的 R Studio Server 社群版本，只�
 
 以下螢幕擷取畫面會顯示輸出。
 
-![螢幕擷取畫面輸出並行使用者](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
+![螢幕截圖輸出併發使用者](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 當系統提示您輸入 [目前的 Kerberos 密碼] 時，只要按 **Enter** 加以忽略。 `useradd` 命令中的 `-m` 選項表示系統將為使用者建立主資料夾，這是 RStudio 社群版本所需的。
 
@@ -106,7 +106,7 @@ HDInsight 上 ML 服務叢集中所使用的 R Studio Server 社群版本，只�
 
 ## <a name="use-a-compute-context"></a>使用計算內容
 
-計算內容可讓您控制要在邊緣節點上本機執行計算，或散發到 HDInsight 叢集的節點中。  如需使用 RStudio 伺服器設定計算內容的範例，請參閱[使用 RStudio 伺服器在 Azure HDInsight 中的 ML 服務叢集上執行 R 腳本](machine-learning-services-quickstart-job-rstudio.md)。
+計算內容可讓您控制要在邊緣節點上本機執行計算，或散發到 HDInsight 叢集的節點中。  有關使用 RStudio Server 設置計算上下文的示例，請參閱[使用 RStudio Server 在 Azure HDInsight 中的 ML 服務群集上執行 R 腳本](machine-learning-services-quickstart-job-rstudio.md)。
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>將 R 程式碼分散到多個節點
 
@@ -188,7 +188,7 @@ HDInsight ML 服務可讓您在 Hive 和 Parquet 中直接存取資料，以供 
 
 3. 針對**提交指令碼動作**，提供下列資訊：
 
-   * 針對**指令碼類型**，選取 [自訂]。
+   * 針對**指令碼類型**，選取 [自訂]****。
 
    * 針對**名稱**，提供指令碼動作的名稱。
 
@@ -203,11 +203,11 @@ HDInsight ML 服務可讓您在 Hive 和 Parquet 中直接存取資料，以供 
    > [!NOTE]
    > 1. 根據預設，系統在安裝所有的 R 封裝時，會透過已安裝 Machine Learning Server 相同版本的 Microsoft MRAN 存放庫快照。 如果您想要安裝較新版的套件，則會有不相容的風險。 不過，將 `useCRAN` 指定為套件清單的第一個元素 (例如 `useCRAN bitops, stringr, arules`)，這種安裝就可行。  
    > 2. 有些 R 套件需要額外的 Linux 系統程式庫。 為了方便起見，HDInsight ML 服務已預先安裝前 100 個最受歡迎的 R 封裝所需的相依性。 然而，如果您安裝的 R 封裝需要的程式庫不在這之中，則必須下載此處所使用的基底指令碼，並加入安裝系統程式庫的步驟。 接下來，您必須將修改過的指令碼上傳至 Azure 儲存體中的公用 Blob 容器，並使用修改過的指令碼來安裝封裝。
-   >    如需開發指令碼動作的詳細資訊，請參閱 [指令碼動作開發](../hdinsight-hadoop-script-actions-linux.md)。
+   >    有關開發腳本操作的詳細資訊，請參閱[腳本操作開發](../hdinsight-hadoop-script-actions-linux.md)。
 
-   ![Azure 入口網站提交腳本動作](./media/r-server-hdinsight-manage/submit-script-action.png)
+   ![Azure 門戶提交腳本操作](./media/r-server-hdinsight-manage/submit-script-action.png)
 
-4. 按一下 [建立] 執行指令碼。 指令碼完成之後，即可在所有的背景工作角色節點上使用 R 套件。
+4. 按一下 [建立]**** 執行指令碼。 指令碼完成之後，即可在所有的背景工作角色節點上使用 R 套件。
 
 ## <a name="next-steps"></a>後續步驟
 

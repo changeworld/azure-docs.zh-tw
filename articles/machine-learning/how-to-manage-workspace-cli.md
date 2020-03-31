@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure CLI 建立工作區
+title: 使用 Azure CLI 創建工作區
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure CLI 建立新的 Azure Machine Learning 工作區。
+description: 瞭解如何使用 Azure CLI 創建新的 Azure 機器學習工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,44 +9,46 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
-ms.openlocfilehash: 5e90416b23b057ad5079a551242895802ac641c9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 64c2e77ffc43ec98c13ce8c0cad002cdb2053241
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399119"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296907"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 為 Azure 機器學習創建工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何使用 Azure CLI 建立 Azure Machine Learning 工作區。 Azure CLI 提供用來管理 Azure 資源的命令。 CLI 的機器學習擴充功能會提供命令，以使用 Azure Machine Learning 資源。
+在本文中，您將瞭解如何使用 Azure CLI 創建 Azure 機器學習工作區。 Azure CLI 提供用於管理 Azure 資源的命令。 到 CLI 的機器學習擴展提供了用於使用 Azure 機器學習資源的命令。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 如果您沒有帳戶，請試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂閱**。 如果沒有，請嘗試[Azure 機器學習的免費或付費版本](https://aka.ms/AMLFree)。
 
-* 若要在您的**本機環境**中使用本檔中的 CLI 命令，您需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 要從**本地環境**使用此文檔中的 CLI 命令，需要 Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-    如果您使用[Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，CLI 就會透過瀏覽器存取，並存在於雲端中。
+    如果使用 Azure[雲外殼](https://azure.microsoft.com//features/cloud-shell/)，則 CLI 將通過瀏覽器訪問並生活在雲中。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>將 CLI 連接至您的 Azure 訂用帳戶
 
 > [!IMPORTANT]
-> 如果您使用 Azure Cloud Shell，可以略過本節。 Cloud shell 會使用您登入 Azure 訂用帳戶的帳戶來自動驗證您的身份。
+> 如果使用 Azure 雲外殼，則可以跳過此部分。 雲外殼使用登錄到 Azure 訂閱的帳戶自動對您進行身份驗證。
 
-有數種方式可讓您從 CLI 向您的 Azure 訂用帳戶進行驗證。 最基本的是以互動方式使用瀏覽器進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，然後使用下列命令：
+有幾種方法可以從 CLI 對 Azure 訂閱進行身份驗證。 最基本的是使用瀏覽器進行互動式身份驗證。 要進行交互身份驗證，請使用以下命令打開命令列或終端：
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
-如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入登入頁面。 否則，您需要開啟瀏覽器，並遵循命令列上的指示。 這些指示包含流覽[https://aka.ms/devicelogin](https://aka.ms/devicelogin)並輸入授權碼。
+如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入登入頁面。 否則，您需要打開瀏覽器並按照命令列上的說明進行操作。 這些說明涉及流覽[https://aka.ms/devicelogin](https://aka.ms/devicelogin)和輸入授權代碼。
 
-如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-## <a name="install-the-machine-learning-extension"></a>安裝機器學習擴充功能
+有關其他身份驗證方法，請參閱[使用 Azure CLI 登錄](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
-若要安裝機器學習擴充功能，請使用下列命令：
+## <a name="install-the-machine-learning-extension"></a>安裝機器學習擴展
+
+要安裝機器學習擴展，請使用以下命令：
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -54,31 +56,31 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>建立工作區
 
-Azure Machine Learning 工作區會依賴下列 Azure 服務或實體：
+Azure 機器學習工作區依賴于以下 Azure 服務或實體：
 
 > [!IMPORTANT]
-> 如果您未指定現有的 Azure 服務，則會在建立工作區時自動建立一個。 您一定要指定資源群組。
+> 如果不指定現有的 Azure 服務，將在工作區創建期間自動創建一個服務。 必須始終指定資源組。
 
-| Service | 用來指定現有實例的參數 |
+| 服務 | 指定現有實例的參數 |
 | ---- | ---- |
 | **Azure 資源群組** | `-g <resource-group-name>`
 | **Azure 儲存體帳戶** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure 金鑰保存庫** | `--keyvault <service-id>` |
-| **Azure Container Registry** | `--container-registry <service-id>` |
+| **Azure 容器註冊表** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-Azure Machine Learning 工作區必須建立在資源群組內。 您可以使用現有的資源群組，或建立一個新的群組。 若要__建立新的資源群組__，請使用下列命令。 以要用於此資源群組的名稱取代 `<resource-group-name>`。 將 `<location>` 取代為要用於此資源群組的 Azure 區域：
+必須在資源組中創建 Azure 機器學習工作區。 您可以使用現有的資源群組，或建立一個新的群組。 要__創建新的資源組__，請使用以下命令。 替換為`<resource-group-name>`用於此資源組的名稱。 替換為`<location>`要用於此資源組的 Azure 區域：
 
 > [!TIP]
-> 您應該選取可使用 Azure Machine Learning 的區域。 如需相關資訊，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)。
+> 應選擇 Azure 機器學習可用的區域。 有關詳細資訊，請參閱[按區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)。
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
 ```
 
-此命令的回應類似下列 JSON：
+此命令的回應類似于以下 JSON：
 
 ```json
 {
@@ -94,14 +96,14 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-如需使用資源群組的詳細資訊，請參閱[az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)。
+有關使用資源組的詳細資訊，請參閱 az[組](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)。
 
-### <a name="automatically-create-required-resources"></a>自動建立必要的資源
+### <a name="automatically-create-required-resources"></a>自動創建所需資源
 
-若要建立__自動建立服務__的新工作區，請使用下列命令：
+要創建__自動創建服務__的新工作區，請使用以下命令：
 
 > [!TIP]
-> 本節中的命令會建立基本版本工作區。 若要建立企業工作區，請使用 `--sku enterprise` 參數搭配 `az ml workspace create` 命令。 如需 Azure Machine Learning 版本的詳細資訊，請參閱[什麼是 Azure Machine Learning](overview-what-is-azure-ml.md#sku)。
+> 本節中的命令創建基本版本工作區。 要創建企業工作區，請使用 該`--sku enterprise`命令的`az ml workspace create`開關。 有關 Azure 機器學習版本的詳細資訊，請參閱什麼是[Azure 機器學習](overview-what-is-azure-ml.md#sku)。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -110,7 +112,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!NOTE]
 > 工作區名稱不區分大小寫。
 
-此命令的輸出類似下列 JSON：
+此命令的輸出類似于以下 JSON：
 
 ```json
 {
@@ -135,57 +137,57 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 ### <a name="use-existing-resources"></a>使用現有的資源
 
-若要建立使用現有資源的工作區，您必須提供資源的識別碼。 使用下列命令來取得服務的識別碼：
+要創建使用現有資源的工作區，必須提供資源的 ID。 使用以下命令獲取服務的 ID：
 
 > [!IMPORTANT]
-> 您不需要指定所有現有的資源。 您可以指定一或多個。 例如，您可以指定現有的儲存體帳戶，而工作區將會建立其他資源。
+> 您不必指定所有現有資源。 您可以指定一個或多個。 例如，您可以指定現有存儲帳戶，工作區將創建其他資源。
 
-+ **Azure 儲存體帳戶**： `az storage account show --name <storage-account-name> --query "id"`
++ **Azure 存儲帳戶**：`az storage account show --name <storage-account-name> --query "id"`
 
-    此命令的回應類似下列文字，而是儲存體帳戶的識別碼：
+    此命令的回應類似于以下文本，是存儲帳戶的 ID：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
-+ **Azure Application Insights**：
++ **Azure 應用程式見解**：
 
-    1. 安裝 application insights 延伸模組：
+    1. 安裝應用程式見解擴展：
 
-        ```bash
+        ```azurecli-interactive
         az extension add -n application-insights
         ```
 
-    2. 取得應用程式深入解析服務的識別碼：
+    2. 獲取應用程式洞察服務的 ID：
 
-        ```bash
+        ```azurecli-interactive
         az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"
         ```
 
-        此命令的回應類似下列文字，而是 application insights 服務的識別碼：
+        此命令的回應類似于以下文本，是應用程式見解服務的 ID：
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**： `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure 金鑰保存庫**：`az keyvault show --name <key-vault-name> --query "ID"`
 
-    此命令的回應類似于下列文字，而是金鑰保存庫的識別碼：
+    此命令的回應類似于以下文本，是金鑰保存庫的 ID：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**： `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure 容器註冊表**：`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
-    此命令的回應類似下列文字，而是容器登錄的識別碼：
+    此命令的回應類似于以下文本，是容器註冊表的 ID：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > 容器登錄必須先啟用系統[管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)，才能搭配 Azure Machine Learning 工作區使用。
+    > 容器註冊表必須啟用[管理帳戶](/azure/container-registry/container-registry-authentication#admin-account)，然後才能與 Azure 機器學習工作區一起使用。
 
-當您有想要用於工作區的資源識別碼之後，請使用 [基底 `az workspace create -w <workspace-name> -g <resource-group-name>`] 命令，並新增現有資源的參數和識別碼。 例如，下列命令會建立使用現有容器登錄的工作區：
+獲得要與工作區一起使用的資源的 ID 後，請使用基本`az workspace create -w <workspace-name> -g <resource-group-name>`命令並為現有資源添加參數和 ID。 例如，以下命令創建一個工作區，該工作區使用現有的容器註冊表：
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-此命令的輸出類似下列 JSON：
+此命令的輸出類似于以下 JSON：
 
 ```json
 {
@@ -210,13 +212,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name> --container-
 
 ## <a name="list-workspaces"></a>列出工作區
 
-若要列出 Azure 訂用帳戶的所有工作區，請使用下列命令：
+要列出 Azure 訂閱的所有工作區，請使用以下命令：
 
 ```azurecli-interactive
 az ml workspace list
 ```
 
-此命令的輸出類似下列 JSON：
+此命令的輸出類似于以下 JSON：
 
 ```json
 [
@@ -233,17 +235,17 @@ az ml workspace list
 ]
 ```
 
-如需詳細資訊，請參閱[az ml workspace list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list)檔。
+有關詳細資訊，請參閱 az [ml 工作區清單](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list)文檔。
 
-## <a name="get-workspace-information"></a>取得工作區資訊
+## <a name="get-workspace-information"></a>獲取工作區資訊
 
-若要取得工作區的相關資訊，請使用下列命令：
+要獲取有關工作區的資訊，請使用以下命令：
 
 ```azurecli-interactive
 az ml workspace show -w <workspace-name> -g <resource-group-name>
 ```
 
-此命令的輸出類似下列 JSON：
+此命令的輸出類似于以下 JSON：
 
 ```json
 {
@@ -266,17 +268,17 @@ az ml workspace show -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-如需詳細資訊，請參閱[az ml workspace show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show)檔。
+有關詳細資訊，請參閱 az [ml 工作區顯示](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show)文檔。
 
 ## <a name="update-a-workspace"></a>更新工作區
 
-若要更新工作區，請使用下列命令：
+要更新工作區，請使用以下命令：
 
 ```azurecli-interactive
 az ml workspace update -w <workspace-name> -g <resource-group-name>
 ```
 
-此命令的輸出類似下列 JSON：
+此命令的輸出類似于以下 JSON：
 
 ```json
 {
@@ -299,68 +301,68 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-如需詳細資訊，請參閱[az ml workspace update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update)檔。
+有關詳細資訊，請參閱 az [ml 工作區更新](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update)文檔。
 
 ## <a name="share-a-workspace-with-another-user"></a>與其他使用者共用工作區
 
-若要與您訂用帳戶上的其他使用者共用工作區，請使用下列命令：
+要與訂閱上的其他使用者共用工作區，請使用以下命令：
 
 ```azurecli-interactive
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-如需有關使用 Azure Machine Learning 的角色型存取控制（RBAC）的詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
+有關 Azure 機器學習基於角色的存取控制 （RBAC） 的詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
 
-如需詳細資訊，請參閱[az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share)檔。
+有關詳細資訊，請參閱 az [ml 工作區共用](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share)文檔。
 
-## <a name="sync-keys-for-dependent-resources"></a>相依資源的同步金鑰
+## <a name="sync-keys-for-dependent-resources"></a>從屬資源的同步鍵
 
-如果您變更工作區所使用的其中一個資源的存取金鑰，請使用下列命令來同步處理新的金鑰與工作區：
+如果更改工作區使用的資源之一的便捷鍵，請使用以下命令將新鍵與工作區同步：
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 ```
 
-如需變更金鑰的詳細資訊，請參閱[重新產生儲存體存取金鑰](how-to-change-storage-access-key.md)。
+有關更改金鑰的詳細資訊，請參閱[重新生成存儲訪問金鑰](how-to-change-storage-access-key.md)。
 
-如需詳細資訊，請參閱[az ml workspace 同步金鑰](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys)檔。
+有關詳細資訊，請參閱 az [ml 工作區同步鍵](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys)文檔。
 
 ## <a name="delete-a-workspace"></a>刪除工作區
 
-若要在不再需要工作區之後將其刪除，請使用下列命令：
+要在不再需要工作區後刪除工作區，請使用以下命令：
 
 ```azurecli-interactive
 az ml workspace delete -w <workspace-name> -g <resource-group-name>
 ```
 
 > [!IMPORTANT]
-> 刪除工作區並不會刪除工作區所使用的應用程式深入解析、儲存體帳戶、金鑰保存庫或容器登錄。
+> 刪除工作區不會刪除工作區使用的應用程式見解、存儲帳戶、金鑰保存庫或容器註冊表。
 
-您也可以刪除資源群組，這會刪除工作區和資源群組中的所有其他 Azure 資源。 若要刪除資源群組，請使用下列命令：
+還可以刪除資源組，該資源組將刪除工作區和資源組中的所有其他 Azure 資源。 要刪除資源組，請使用以下命令：
 
 ```azurecli-interactive
 az group delete -g <resource-group-name>
 ```
 
-如需詳細資訊，請參閱[az ml workspace delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete)檔。
+有關詳細資訊，請參閱 az [ml 工作區刪除](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete)文檔。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="resource-provider-errors"></a>資源提供者錯誤
+### <a name="resource-provider-errors"></a>資來源提供者錯誤
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
 ### <a name="moving-the-workspace"></a>移動工作區
 
 > [!WARNING]
-> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+> 不支援將 Azure 機器學習工作區移動到其他訂閱，或將所屬訂閱移動到新租戶。 這樣做可能會導致錯誤。
 
-### <a name="deleting-the-azure-container-registry"></a>刪除 Azure Container Registry
+### <a name="deleting-the-azure-container-registry"></a>刪除 Azure 容器註冊表
 
-Azure Machine Learning 工作區會使用 Azure Container Registry （ACR）進行某些作業。 當 ACR 實例第一次需要時，它會自動建立。
+Azure 機器學習工作區使用 Azure 容器註冊表 （ACR） 執行某些操作。 當 ACR 實例首次需要時，它將自動創建一個 ACR 實例。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-如需機器學習服務之 Azure CLI 擴充功能的詳細資訊，請參閱[az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)檔。
+有關用於機器學習的 Azure CLI 擴展的詳細資訊，請參閱[az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)文檔。

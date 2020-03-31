@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160546"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>教學課程：Azure Active Directory 與 Mitel MiCloud Connect 整合
@@ -33,7 +33,7 @@ ms.locfileid: "73160546"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定與 MiCloud Connect 的 Azure AD 整合，您需要下列項目：
 
@@ -110,40 +110,40 @@ ms.locfileid: "73160546"
     [Connect 單一登入設定] 對話方塊會隨即出現。
     
 3. 選取 [啟用單一登入]  核取方塊。
-    ![映像](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
 4. 在 Azure 入口網站中，按一下 [基本 SAML 組態]  區段中的 [編輯]  圖示。
-    ![映像](common/edit-urls.png)
+    ![image](common/edit-urls.png)
 
     [基本 SAML 組態] 對話方塊會隨即出現。
 
 5.  從 Mitel 帳戶入口網站中的 [Mitel 識別碼 (實體識別碼)]  欄位複製 URL，並將其貼到 Azure 入口網站中的 [識別碼 (實體識別碼)]  欄位。
 
 6. 從 Mitel 帳戶入口網站中的 [回覆 URL (判斷提示取用者服務 URL)]  欄位中複製 URL，然後將其貼到 Azure 入口網站中的 [回覆 URL (判斷提示取用者服務 URL)]  欄位。  
-   ![映像](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
+   ![image](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
 7. 在 [登入 URL]  文字方塊中，輸入下列其中一個 URL：
 
     * **https://portal.shoretelsky.com** - 使用 Mitel 帳戶入口網站作為您預設的 Mitel 應用程式
     * **https://teamwork.shoretel.com** - 使用 Teamwork 作為您預設的 Mitel 應用程式
 
-    **附註**：預設 Mitel 應用程式是當使用者按一下存取面板中的 [Mitel Connect] 圖格時，所存取的應用程式。 這也是從 Azure AD 進行測試設定時所存取的應用程式。
+    **注意**：預設 Mitel 應用程式是當使用者按一下存取面板中的 [Mitel Connect] 圖格時，所存取的應用程式。 這也是從 Azure AD 進行測試設定時所存取的應用程式。
 
 8. 在 Azure 入口網站的 [基本 SAML 組態]  對話方塊中，按一下 [儲存]  。
 
 9. 在 Azure 入口網站的 [SAML 登入]  頁面上，從 [SAML 簽署憑證]  區段中按一下 [憑證 (Base64)]  旁的 [下載]  ，下載 [簽署憑證]  並將其儲存在您的電腦中。
-    ![映像](./media/mitel-connect-tutorial/Azure_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
 10. 在文字編輯器中開啟簽署憑證檔案，複製檔案中的所有資料，然後將資料貼到 Mitel 帳戶入口網站中的 [簽署憑證]  欄位。 
-    ![映像](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
 11. 在 Azure 入口網站中，從 [SAML 登入]  頁面上的 [設定 Mitel Connect]  區段執行下列動作：
 
     a. 從 [登入 URL]  欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [登入 URL]  欄位中。
 
     b. 從 [Azure AD 識別碼]  欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [實體識別碼]  欄位中。
-    ![映像](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
 12. 在 Mitel 帳戶入口網站中的 [Connect 單一登入設定]  對話方塊上按一下 [儲存]  。
 

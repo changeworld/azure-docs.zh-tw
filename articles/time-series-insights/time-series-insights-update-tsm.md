@@ -1,6 +1,6 @@
 ---
-title: 時間序列模型-Azure 時間序列深入解析 |Microsoft Docs
-description: 瞭解 Azure 時間序列深入解析 Preview 中的時間序列模型。
+title: 時間序列模型 - Azure 時間序列見解 |微軟文檔
+description: 在 Azure 時間序列見解預覽中瞭解時間序列模型。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,108 +8,108 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476649"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的時間序列模型
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 時間序列見解預覽中的時間序列模型
 
-本文描述時間序列模型、功能，以及如何開始在 Azure 時間序列深入解析預覽環境中建立及更新您自己的模型。
+本文介紹時間序列模型、功能以及如何在 Azure 時間序列預覽環境中開始構建和更新您自己的模型。
 
 > [!TIP]
->  * 移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)環境，以取得即時時間序列模型範例。
-> * 閱讀[Azure 時間序列深入解析 Preview explorer](time-series-insights-update-explorer.md)以瞭解如何流覽您的時間序列模型 UI。
-> * 瞭解如何使用時間序列深入解析 web explorer[來處理時間序列模型](time-series-insights-update-how-to-tsm.md)。
+>  * 轉到 [Contoso 風電場演示](https://insights.timeseries.azure.com/preview/samples)環境，獲得即時時間序列模型示例。
+> * 閱讀有關[Azure 時間序列見解預覽資源管理器](time-series-insights-update-explorer.md)，瞭解如何導航時序模型 UI。
+> * 瞭解如何使用時序見解 Web 資源管理器[使用時間序列模型](time-series-insights-update-how-to-tsm.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
-傳統上，從 IoT 裝置收集的資料缺發關聯的資訊，因此很難快速地尋找及分析感應器。 時間序列模型的主要動機是簡化尋找和分析 IoT 或時間序列資料的程式。 它可讓您鑒藏、維護和擴充時間序列資料，以協助準備取用者準備好用於分析的資料集，達到此目標。
+傳統上，從 IoT 裝置收集的資料缺發關聯的資訊，因此很難快速地尋找及分析感應器。 時間序列模型的主要動機是簡化對 IoT 或時間序列資料的查找和分析。 它啟用時間序列資料的整理、維護和豐富，以説明準備面向消費者的資料集進行分析，從而實現這一目標。
 
-## <a name="scenario-contosos-new-smart-oven"></a>案例： Contoso 的新智慧型 oven
+## <a name="scenario-contosos-new-smart-oven"></a>場景：康托索的新智慧烤箱
 
-**請考慮 Contoso 智慧型 oven 的虛構案例。** 在此案例中，假設每個 Contoso 智慧型 oven 有五個溫度感應器，分別用於四個熱門燒錄機，另一個用於 oven 本身。 直到最近，每個 Contoso 溫度感應器會個別傳送、儲存及視覺化其資料。 針對其廚房設備監視，Contoso 依賴基本圖表，每個個別感應器各一個。
+**考慮 Contoso 智慧烤箱的虛構場景。** 在這種情況下，假設每個 Contoso 智慧烤箱有五個溫度感應器，一個用於四個頂部燃燒器，一個用於烤箱本身。 直到最近，每個 Contoso 溫度感應器都單獨發送、存儲和視覺化其資料。 在廚房電器監控方面，Contoso 依靠基本圖表，每個感應器一個。
 
-雖然 Contoso 對其初始資料和視覺效果解決方案感到滿意，但有幾項限制變得很明顯：
+雖然 Contoso 對其初始資料和視覺化解決方案感到滿意，但有幾個限制變得明顯：
 
-* 客戶想要知道當大部分最熱門的燒錄機已開啟時，整體 oven 會得到的熱程度。 Contoso 在分析和呈現整體 oven 條件的整合解答時，比較困難。
-* Contoso 工程師想要確認同時執行的熱門燒錄機不會導致電力繪製效率不佳。 交叉參照哪些溫度和電壓感應器彼此相關，以及如何在存放區中找到它們，是很困難的。
-* Contoso 品質保證小組想要對兩個感應器版本之間的歷程記錄進行審核和比較。 判斷哪些資料屬於哪個感應器版本很困難。
+* 客戶想知道當大多數頂級燃燒器打開時，整個烤箱會有多熱。 Contoso 在分析和提出關於整個烤箱條件的統一答案方面更加困難。
+* Contoso 工程師希望驗證同時運行的頂級燃燒器不會導致低效的功耗。 交叉引用哪些溫度和電壓感應器彼此關聯以及如何在存儲中定位它們，都很困難。
+* Contoso 品質保證團隊希望審核和比較兩個感應器版本之間的歷史記錄。 很難確定哪些資料屬於哪個感應器版本。
 
-若沒有結構、組織及定義整體智慧型 oven 時間序列模型的功能，每個溫度感應器都會維護 dislocated、隔離且更具資訊性的資料點。 將這些資料點轉換成可採取動作的深入解析變得更棘手，因為每個資料集的存留期都獨立。
+由於無法構建、組織和定義總體智慧烤箱時間序列模型，每個溫度感應器都會保持資料點錯位、隔離且資訊不足。 將這些資料點轉換為可操作的見解更加困難，因為每個資料集都獨立于其他資料集。
 
-這些限制揭示了 Contoso 新 oven 的智慧型資料匯總和視覺化檢視的重要性：
+這些限制揭示了智慧資料聚合和視覺化檢視對 Contoso 新烤箱的重要性：
 
-* 當您能夠建立關聯並將資料結合成方便的視圖時，資料視覺效果證明會很有用。 其中一個範例顯示電壓感應器和溫度感應器。
-* 管理數個實體的多維度資料以及比較、縮放和時間範圍功能，可能會很容易完成。
+* 當您能夠將資料關聯併合並到方便的視圖中時，資料視覺化證明非常有用。 一個例子是顯示電壓感應器和溫度感應器。
+* 管理多個實體的多維資料以及比較、縮放和時間範圍功能可能難以完成。
 
-**時間序列模型**會針對在此虛構範例中遇到的許多案例提供便利的解決方案：
+時間序列模型為本虛構示例中遇到的許多方案**提供了一個方便的解決方案**：
 
-[![時間序列模型智慧型 oven 圖表範例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
+[![時間序列 模型智慧烤箱圖表示例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* 時間序列模型在查詢和導覽中扮演重要的角色，因為它可讓您跨時間範圍以及感應器與裝置種類之間繪製比較，藉此就資料。 （**A**） 
-* 資料會進一步內容相關，因為時間序列模型中保存的資料會將時間序列查詢計算保留為變數，並在查詢時重複使用它們。
-* 時間序列模型會組織並匯總資料，以改善視覺效果和管理功能。 （**B**） 
+* 時序模型在查詢和導航中起著至關重要的作用，因為它允許跨時間範圍以及感應器和裝置類型之間的比較來對資料進行上下文化。 （**A**） 
+* 資料進一步上下文化，因為時間序列模型中保留的資料將保留時間序列查詢計算為變數，並在查詢時重用它們。
+* 時間序列模型組織和聚合資料，以提高視覺化和管理功能。 （**B**） 
 
 ### <a name="key-capabilities"></a>主要功能
 
 為了達到簡單輕鬆就能管理時間序列關聯化的目的，時間序列模型在時間序列深入解析中提供下列功能。 它可協助您：
 
-* 撰寫和管理利用純量函數、匯總作業等等的計算或公式。
-* 定義父子式關聯性，以啟用導覽、搜尋和參考。
-* 定義與實例相關聯的屬性（定義為*實例欄位*），並使用它們來建立階層。
+* 使用標量函數、聚合操作等編寫和管理計算或公式。
+* 定義父子關係以啟用導航、搜索和引用。
+* 定義與實例關聯的屬性，定義為*實例欄位*，並使用它們創建層次結構。
 
-### <a name="components"></a>Components
+### <a name="components"></a>元件
 
 時間序列模型有三個核心元件：
 
 * [時間序列模型實例](#time-series-model-instances)
-* [時間序列模型階層](#time-series-model-hierarchies)
+* [時間序列模型層次結構](#time-series-model-hierarchies)
 * [時間序列模型類型](#time-series-model-types)
 
-這些元件會結合以指定時間序列模型，並組織您的 Azure 時間序列深入解析資料。
+這些元件組合起來以指定時間序列模型並組織 Azure 時序見解資料。
 
-[![時間序列模型總覽圖表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
+[![時序模型概覽圖](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-您可以透過[時間序列深入解析 Preview](time-series-insights-update-how-to-tsm.md)介面來建立和管理時間序列模型。 時間序列模型設定可以透過[模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)來管理。
+可以通過[時序見解預覽](time-series-insights-update-how-to-tsm.md)介面創建和管理時序模型。 時間序列模型設置可以通過[模型設置 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)進行管理。
 
 ## <a name="time-series-model-instances"></a>時間序列模型執行個體
 
-時間序列模型*實例*是時間序列本身的虛擬標記法。
+時序模型*實例*是時間序列本身的虛擬表示形式。
 
-在大部分的情況下，實例是以**deviceId**或**assetId**唯一識別，並儲存為時間序列識別碼。
+在大多數情況下，實例由**設備 Id**或**assetId**唯一標識，這些參數保存為時間序列 ID。
 
-實例具有相關聯的描述性資訊，稱為*實例屬性*，例如時間序列識別碼、類型、名稱、描述、階層和實例欄位。 執行個體屬性至少會包含階層資訊。
+實例具有與其關聯的描述性資訊，稱為*實例屬性*，如時間序列 ID、類型、名稱、描述、層次結構和實例欄位。 執行個體屬性至少會包含階層資訊。
 
-*實例欄位*是描述性資訊的集合，其中可以包含階層層級的值，以及製造商、運算子等等。
+*實例欄位*是描述性資訊的集合，可以包括層次結構級別以及製造商、操作員等的值。
 
-為時間序列深入解析環境設定事件來源之後，系統會自動探索實例並在時間序列模型中建立。 您可以使用時間序列模型查詢，透過時間序列深入解析 explorer 來建立或更新實例。
+為時序見解環境配置事件源後，實例將自動在時間序列模型中發現和創建。 可以使用時序模型查詢，通過時序見解資源管理器創建或更新實例。
 
-[Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)提供數個即時實例範例。
+[Contoso 風電場演示](https://insights.timeseries.azure.com/preview/samples)提供了幾個即時實例示例。
 
-[![時間序列模型實例範例](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
+[![時間序列模型實例示例](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>實例屬性
 
-實例是由**timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds**和**instancefields 定義**所定義。 每個實例只會對應至一個*類型*，以及一個或多個*階層。*
+實例由**時間序列Id、typeId、****名稱**、**描述**、**層次結構 Id**和**實例欄位**定義。 **typeId** 每個實例只映射到一*個類型*，以及一個或多個*層次結構*。
 
 | 屬性 | 描述 |
 | --- | ---|
-| timeSeriesId | 與實例相關聯之時間序列的 UUID。 |
-| typeId | 與實例相關聯之時間序列模型類型的 UUID。 根據預設，所有探索到的新實例都會與預設類型建立關聯。
-| 名稱 | **Name**屬性是選擇性的，而且區分大小寫。 如果 [**名稱**] 無法使用，則預設為 [ **timeSeriesId**]。 如果[提供了名稱](time-series-insights-update-explorer.md#4-time-series-well)， **timeSeriesId**仍然可供使用。 |
-| description | 實例的文字描述。 |
-| hierarchyIds | 定義實例所屬的階層。 |
-| Instancefields 定義 | 實例的屬性，以及定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
+| 時間序列Id | 實例關聯的時間序列的 UUID。 |
+| typeId | 時間序列模型的 UUID 類型實例與之關聯。 預設情況下，所有發現的新實例都與預設類型相關聯。
+| NAME | **名稱**屬性是可選的，區分大小寫。 如果**名稱**不可用，則預設為**timeSeriesId**。 如果提供了名稱，**則時間序列Id**在[井](time-series-insights-update-explorer.md#4-time-series-well)中仍然可用。 |
+| description | 實例的文本說明。 |
+| 層次結構 Id | 定義實例所屬的層次結構。 |
+| 實例欄位 | 實例的屬性和定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
 
 > [!NOTE]
-> 階層是使用實例欄位所建立。 可以針對進一步的實例屬性定義加入額外的**instancefields 定義**。
+> 層次結構是通過使用實例欄位構建的。 可以為進一步的實例屬性定義添加其他**實例欄位**。
 
-實例具有下列 JSON 標記法：
+實例具有以下 JSON 表示形式：
 
 ```JSON
 {
@@ -129,29 +129,29 @@ ms.locfileid: "77368629"
 ```
 
 > [!TIP]
-> 如需時間序列深入解析實例 API 和建立、讀取、更新和刪除（CRUD）支援，請閱讀[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和[實例 API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
+> 對於時間序列見解實例 API 以及創建、讀取、更新和刪除 （CRUD） 支援，請閱讀[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和[實例 API REST 文檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
 
 ## <a name="time-series-model-hierarchies"></a>時間序列模型階層
 
-時間*序列模型階層*會藉由指定屬性名稱及其關聯性來組織實例。
+時序模型*層次結構*通過指定屬性名稱及其關係來組織實例。
 
-您可以在指定的時間序列深入解析環境中設定多個階層。 時間序列模型實例可以對應到單一階層或多個階層（多對多關聯性）。
+您可以在給定的時間序列見解環境中配置多個層次結構。 時間序列模型實例可以映射到單個層次結構或多個層次結構（多對多關係）。
 
-[Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)用戶端介面會顯示標準實例和類型階層。
+[Contoso 風電場演示](https://insights.timeseries.azure.com/preview/samples)用戶端介面顯示標準實例和類型層次結構。
 
-[![時間序列模型階層範例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
+[![時間序列模型層次結構示例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
-### <a name="hierarchy-definition"></a>階層定義
+### <a name="hierarchy-definition"></a>層次結構定義
 
-階層是由階層**識別碼**、**名稱**和**來源**所定義。
+層次結構由層次結構**ID、****名稱**和**源**定義。
 
 | 屬性 | 描述 |
 | ---| ---|
-| id | 階層的唯一識別碼，例如，當您定義實例時使用。 |
-| 名稱 | 用來提供階層名稱的字串。 |
-| 來源 | 指定組織階層或路徑，這是使用者想要建立之階層的由上而下的父子式順序。 父子式屬性會對應實例欄位。 |
+| id | 層次結構的唯一識別碼，例如，在定義實例時使用。 |
+| NAME | 用於為層次結構提供名稱的字串。 |
+| source | 指定組織層次結構或路徑，這是使用者要創建的層次結構的自上而下的父子順序。 父子式屬性會對應「執行個體欄位」。 |
 
-階層會以 JSON 表示為：
+層次結構在 JSON 中表示為：
 
 ```JSON
 {
@@ -180,17 +180,17 @@ ms.locfileid: "77368629"
 }
 ```
 
-在先前的 JSON 範例中：
+在前面的 JSON 示例中：
 
-* `Location` 會定義具有父系 `states` 和子 `cities`的階層。 每個 `location` 都可以有多個 `states`，而這可以有多個 `cities`。
-* `ManufactureDate` 會定義具有父系 `year` 和子 `month`的階層。 每個 `ManufactureDate` 都可以有多個 `years`，而這可以有多個 `months`。
+* `Location`定義具有父`states`項和子`cities`的層次結構。 每個`location`可以有多個`states`，而後者可以有多個`cities`。
+* `ManufactureDate`定義具有父`year`項和子`month`的層次結構。 每個`ManufactureDate`可以有多個`years`，而後者可以有多個`months`。
 
 > [!TIP]
-> 如需時間序列深入解析實例 API 和 CRUD 支援，請閱讀[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和階層[API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
+> 有關時間序列見解實例 API 和 CRUD 支援，請閱讀[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和[層次結構 API REST 文檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
 
 ### <a name="hierarchy-example"></a>階層範例
 
-假設有一個範例，其中的階層**H1**已 `building`、`floor`和 `room` 作為其**instanceFieldNames**定義的一部分：
+考慮層次結構**H1**具有`building`的示例`floor`，並作為`room`**實例 FieldNames**定義的一部分：
 
 ```JSON
 {
@@ -206,45 +206,45 @@ ms.locfileid: "77368629"
 }
 ```
 
-假設先前定義中使用的實例欄位和數個時間序列中，階層屬性和值如下表所示：
+給定上一個定義和多個時間序列中使用的實例欄位，層次結構屬性和值如下所示：
 
 | 時間序列識別碼 | 執行個體欄位 |
 | --- | --- |
-| ID1 | "building" = "1000", "floor" = "10", "room" = "55"  |
-| ID2 | "building" = "1000", "room" = "55" |
-| ID3 | "floor" = "10" |
-| ID4 | "building" = "1000", "floor" = "10"  |
-| ID5 | 未設定任何「建築物」、「樓層」或「房間」。 |
+| ID1 | "建築" = "1000"，"地板" = "10"，"房間" = "55"  |
+| ID2 | "建築" = "1000"，"房間" = "55" |
+| ID3 | "地板" = "10" |
+| ID4 | "建築" = "1000"，"地板" = "10"  |
+| ID5 | 沒有設置"建築"、"地板"或"房間"。 |
 
-時間序列**ID1**和**ID4**會在[Azure 時間序列深入解析 Explorer](time-series-insights-update-explorer.md)中顯示為階層**H1**的一部分，因為它們具有完整定義且正確排序的*建築物*、*樓層*和*房間*參數。
+時序**ID1**和**ID4**在[Azure 時間序列見解資源管理器](time-series-insights-update-explorer.md)中顯示為層次結構**H1**的一部分，因為它們已完全定義並正確排列*了建築物*、*樓層*和*房間*參數。
 
-其他專案會在*無上層實例*之下分類，因為它們不符合指定的資料層次。
+其他類實例在*非父級實例*下分類，因為它們不符合指定的資料層次結構。
 
 ## <a name="time-series-model-types"></a>時間序列模型類型
 
-時間序列模型「類型」協助您定義執行計算的變數或公式。 類型與特定的時間序列深入解析實例相關聯。
+時間序列模型「類型」** 協助您定義執行計算的變數或公式。 類型與特定的時序見解實例相關聯。
 
-一個類型可以有一或多個變數。 例如，時間序列模型實例可能屬於*溫度感應器*類型，這是由變數的*平均*溫度、*最小溫度*和*最大溫度*所組成。
+一個類型可以有一或多個變數。 例如，時間序列模型實例可以是 *"溫度感應器"* 類型，該類型由*平均值*、*最小溫度*和*最大溫度*變數組成。
 
-[Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)會將數個與個別實例相關聯的時間序列模型類型視覺化。
+[Contoso 風電場演示](https://insights.timeseries.azure.com/preview/samples)視覺化了與其各自的實例關聯的多個時間序列模型類型。
 
-[![時間序列模型類型範例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
+[![時間序列模型類型示例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 如需時間序列深入解析實例 API 和 CRUD 支援，請閱讀[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和[類型 API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
+> 有關時間序列見解實例 API 和 CRUD 支援，請閱讀[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和[類型 API REST 文檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
 
 ### <a name="type-properties"></a>類型屬性
 
-時間序列模型類型是由**識別碼**、**名稱**、**描述**和**變數**所定義。
+時間序列模型類型由**id、****名稱**、**描述**和**變數**定義。
 
 | 屬性 | 描述 |
 | ---| ---|
 | id | 類型的 UUID。 |
-| 名稱 | 用來提供型別名稱的字串。 |
-| description | 類型的字串描述。 |
-| 變數 | 指定與類型相關聯的變數。 |
+| NAME | 用於提供類型名稱的字串。 |
+| description | 類型的字串說明。 |
+| variables | 指定與類型關聯的變數。 |
 
-類型符合下列 JSON 範例：
+類型符合以下 JSON 示例：
 
 ```JSON
 {
@@ -286,28 +286,28 @@ ms.locfileid: "77368629"
 
 ### <a name="variables"></a>變數
 
-時間序列深入解析類型可能有許多變數，可指定事件的公式和計算規則。
+時間序列見解類型可能有許多變數，用於指定事件上的公式和計算規則。
 
-每個變數都可以是下列三*種類型*之一：*數值*、*類別*和*匯總*。
+每個變數可以是三*種類型*之一：*數位*、*分類*和*聚合*。
 
-* **數值**類型會使用連續的值。 
-* **類別**類型會使用一組已定義的離散值。
-* **匯總**值結合了單一種類的多個變數（全部為數值或所有類別）。
+* **數值**類型使用連續值。 
+* **分類**類型使用一組定義的離散值。
+* **聚合**值合併單個類型的多個變數（所有數位或所有分類）。
 
-下表顯示每個變數種類的相關屬性。
+下表顯示了與每種變數類型相關的屬性。
 
-[![時間序列模型變數資料表](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
+[![時間序列 模型變數表](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>數值變數
 
-| Variable 屬性 | 描述 |
+| 變數屬性 | 描述 |
 | --- | ---|
-| 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數值 | 用於計算來自裝置或感應器，或使用時間序列運算式轉換的遙測值。 數數值型別變數必須是*Double*類型。|
-| 變數插補 | 插補會指定如何使用現有的資料來重建信號。 [*步驟*] 和 [*線性*插補] 選項適用于數值變數。 |
-| 變數彙總 | 支援透過*Avg*、 *min*、 *max*、 *sum*、 *Count*、 *First*、 *Last*和 time-加權（*Avg*、 *Min*、 *Max*、 *sum*、 *Left*）運算子進行計算。 |
+| 變數篩選條件 | 篩選器是可選的條件子句，用於限制考慮計算的行數。 |
+| 變數值 | 遙測值，用於計算來自設備或感應器或使用時序運算式轉換。 數數值型別的變數必須為 *"雙*"類型。|
+| 變數插值 | 插值指定如何使用現有資料重建信號。 *步長*和*線性*插值選項可用於數值變數。 |
+| 變數彙總 | 支援計算通過*平均，**最小*，*最大*，*總和*，*計數*，*第一*，*最後*和時間加權 （*平均*，*最小*，*最大*，*總和*，*左*） 運算子. |
 
-變數符合下列 JSON 範例：
+變數符合以下 JSON 示例：
 
 ```JSON
 "Interpolated Speed": {
@@ -328,23 +328,23 @@ ms.locfileid: "77368629"
 }
 ```
 
-#### <a name="categorical-variables"></a>類別變數
+#### <a name="categorical-variables"></a>分類變數
 
-| Variable 屬性 | 描述 |
+| 變數屬性 | 描述 |
 | --- | ---|
-| 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數值 | 用於計算來自裝置或感應器的遙測值。 類別類型變數必須是*Long*或*String*。 |
-| 變數插補 | 插補會指定如何使用現有的資料來重建信號。 [*步驟*內插補點] 選項適用于類別變數。 |
-| 變數類別目錄 | 類別會在來自裝置或感應器的值與標籤之間建立對應。 |
-| 變數預設分類 | 預設類別是針對未在 [分類] 屬性中對應的所有值。 |
+| 變數篩選條件 | 篩選器是可選的條件子句，用於限制考慮計算的行數。 |
+| 變數值 | 用於計算來自設備或感應器的遙測值。 分類類變數必須為*長*變數或*字串*。 |
+| 變數插值 | 插值指定如何使用現有資料重建信號。 "*步驟*插值"選項可用於分類變數。 |
+| 變數類別 | 類別在來自設備或感應器的值與標籤之間創建映射。 |
+| 可變預設類別 | 預設類別適用于未在"類別"屬性中映射的所有值。 |
 
-變數符合下列 JSON 範例：
+變數符合以下 JSON 示例：
 
 ```JSON
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "toLong($event.[Status].Double)" 
+     "tsx": "toLong($event.[Status].Double)"
 },
   "interpolation": {
     "kind": "step",
@@ -354,7 +354,7 @@ ms.locfileid: "77368629"
   },
   "categories": [
     {
-      "values": [0, 1, 2, 3],
+      "values": [0, 1, 2],
       "label": "Good"
     },
     {
@@ -368,14 +368,14 @@ ms.locfileid: "77368629"
 }
 ```
 
-#### <a name="aggregate-variables"></a>匯總變數
+#### <a name="aggregate-variables"></a>聚合變數
 
-| Variable 屬性 | 描述 |
+| 變數屬性 | 描述 |
 | --- | ---|
-| 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數彙總 | 支援透過*Avg*、 *Min*、 *Max*、 *Sum*、 *Count*、 *First*、 *Last*進行計算。 |
+| 變數篩選條件 | 篩選器是可選的條件子句，用於限制考慮計算的行數。 |
+| 變數彙總 | 支援計算通過*平均，**最小*，*最大*，*總和*，*計數*，*第一*，*最後*. |
 
-變數符合下列 JSON 範例：
+變數符合以下 JSON 示例：
 
 ```JSON
 "Aggregate Speed": {
@@ -387,12 +387,12 @@ ms.locfileid: "77368629"
 }
 ```
 
-變數會儲存在時間序列模型的類型定義中，而且可以透過[查詢 api](time-series-insights-update-tsq.md)以內嵌方式提供，以覆寫儲存的定義。
+變數存儲在時間序列模型的類型定義中，可以通過[查詢 API](time-series-insights-update-tsq.md)提供內聯式，以覆蓋存儲的定義。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀[Azure 時間序列深入解析預覽儲存體和](./time-series-insights-update-storage-ingress.md)輸入。
+- 閱讀[Azure 時間序列見解 預覽存儲和入口](./time-series-insights-update-storage-ingress.md)。
 
-- 瞭解[Azure 時間序列深入解析 Preview 中資料模型](./time-series-insights-update-how-to-tsm.md)化的一般時間序列模型作業
+- 在[Azure 時間序列見解預覽中瞭解資料建模中](./time-series-insights-update-how-to-tsm.md)的常見時間序列模型操作
 
-- 閱讀新的[時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)參考檔。
+- 閱讀新的[時序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)參考文檔。

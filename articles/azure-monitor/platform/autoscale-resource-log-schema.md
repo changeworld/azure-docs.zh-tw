@@ -1,26 +1,26 @@
 ---
-title: Azure 自動調整記錄事件架構
-description: 用於監視和疑難排解自動調整動作的記錄格式
+title: Azure 自動縮放日誌事件架構
+description: 用於監視和故障排除自動縮放操作的日誌格式
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75395936"
 ---
-# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure 監視器自動調整動作資源記錄架構
+# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure 監視器自動縮放操作資源日誌架構
 
-以下是包含範例資料的自動調整資源記錄的一般格式。 並非下列所有範例都是正確格式的 JSON，因為它們可能包含多個可能對指定欄位有效的值。 
+以下是包含示例資料自動縮放資源日誌的一般格式。 並非所有示例都正確形成 JSON，因為它們可能包含對給定欄位有效的多個值。 
 
-使用此類型的事件，針對自動調整時可能發生的問題進行疑難排解。 如需詳細資訊，請參閱針對[自動調整問題進行疑難排解](autoscale-troubleshoot.md)。
+使用此類型的事件來排除自動縮放時可能遇到的問題。 有關詳細資訊，請參閱[排除自動縮放問題的故障排除](autoscale-troubleshoot.md)。
 
 
 ## <a name="profile-evaluation"></a>設定檔評估
 
-當自動調整第一次查看自動調整設定檔時記錄
+自動縮放首次查看自動縮放設定檔時錄製
 
 ```json
 {
@@ -37,9 +37,9 @@ ms.locfileid: "75395936"
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>設定檔 cooldown 評估
+## <a name="profile-cooldown-evaluation"></a>設定檔冷卻評估
 
-當自動調整評估為不應因冷卻時間而無法執行規模時，即會進行記錄。 
+自動縮放時記錄，評估是否由於冷卻週期而不應進行縮放。 
 
 ```json
 {
@@ -62,7 +62,7 @@ ms.locfileid: "75395936"
 
 ## <a name="rule-evaluation"></a>規則評估
 
-當自動調整第一次開始評估特定的縮放規則時記錄。 
+自動縮放首次開始評估特定比例規則時記錄。 
 
 ```json
 {
@@ -87,9 +87,9 @@ ms.locfileid: "75395936"
 }
 ```
 
-## <a name="metric-evaluation"></a>度量評估
+## <a name="metric-evaluation"></a>指標評估
 
-當自動調整評估用來觸發調整動作的度量時記錄。 
+自動縮放評估用於觸發縮放操作的指標時的記錄。 
 
 ```json
 {
@@ -113,7 +113,7 @@ ms.locfileid: "75395936"
 
 ## <a name="instance-count-evaluation"></a>實例計數評估
 
-當自動調整會評估已執行的實例數目，以準備決定是否應該啟動更多、關閉部分，或不執行任何動作時，即會記錄。 
+自動縮放時記錄已運行的實例數，以準備決定是否啟動更多實例、關閉某些實例或不執行任何操作。 
 
 ```json
 {
@@ -132,9 +132,9 @@ ms.locfileid: "75395936"
 }
 ```
 
-## <a name="scale-action-evaluation"></a>調整動作評估
+## <a name="scale-action-evaluation"></a>縮放操作評估
 
-當自動調整開始評估時記錄。 
+在自動縮放開始評估時記錄，如果應執行縮放操作。 
 
 ```json
 {
@@ -154,7 +154,7 @@ ms.locfileid: "75395936"
 
 ## <a name="instance-update-evaluation"></a>實例更新評估
 
-當自動調整更新執行中的計算實例數目時（不論是向上或向下記錄）。
+自動縮放時記錄的可向上或向下更新正在運行的計算實例數。
 
 ```json
 {
@@ -173,9 +173,9 @@ ms.locfileid: "75395936"
 }
 ```
 
-## <a name="scale-action"></a>調整動作
+## <a name="scale-action"></a>縮放操作
 
-當自動調整起始縮放動作（不論是向上或向下）時記錄。 
+自動縮放時記錄，向上或向下啟動縮放操作。 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -196,9 +196,9 @@ ms.locfileid: "75395936"
 }
 ```
 
-## <a name="scale-action-tracking"></a>調整動作追蹤
+## <a name="scale-action-tracking"></a>縮放操作跟蹤
 
-以實例調整動作的不同間隔記錄。
+以實例縮放操作的不同間隔記錄。
 
 ```json
 {
@@ -217,4 +217,4 @@ ms.locfileid: "75395936"
 ```
 
 ## <a name="next-steps"></a>後續步驟
-瞭解[自動](autoscale-overview.md)調整規模
+瞭解[自動縮放](autoscale-overview.md)

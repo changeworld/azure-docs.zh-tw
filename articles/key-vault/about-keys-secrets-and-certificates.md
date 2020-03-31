@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271729"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>關於金鑰、祕密與憑證
@@ -86,7 +86,7 @@ JavaScript 物件標記法 (JSON) 和 JavaScript 物件簽章與加密 (JOSE) �
 Key Vault 中的密碼編譯金鑰會表示為 JSON Web 金鑰 [JWK] 物件。 基底 JWK/JWA 規格也可延伸，讓 Key Vault 實作使用特有的金鑰類型。 例如，匯入使用 HSM 廠商特定封裝的金鑰，可安全地傳輸只能在 Key Vault HSM 中使用的金鑰。  
 
 - **「軟式」金鑰**：由 Key Vault 在軟體中進行處理，但會在待用期間使用 HSM 中的系統金鑰來加密儲存。 用戶端可以匯入現有的 RSA 或 EC 金鑰，或要求 Key Vault 產生此金鑰。
-- **「硬式」金鑰**：在 HSM (硬體安全模組) 中處理的金鑰。 這些金鑰會在其中一個 Key Vault HSM Security Worlds 中受到保護 (每個地理位置各有一個 Security World，以保有獨立性)。 用戶端可以匯入軟式 RSA 或 EC 金鑰，或從相容的 HSM 裝置匯出金鑰。 用戶端也可以要求 Key Vault 產生金鑰。 此金鑰類型會將 key_hsm 屬性新增至 JWK 取得，以攜帶 HSM 金鑰內容。
+- **「硬式」金鑰**：在 HSM (硬體安全模組) 中處理的金鑰。 這些金鑰會在其中一個 Key Vault HSM Security Worlds 中受到保護 (每個地理位置各有一個 Security World，以保有獨立性)。 用戶端可以匯入軟式 RSA 或 EC 金鑰，或從相容的 HSM 裝置匯出金鑰。 用戶端也可以要求 Key Vault 產生金鑰。 此金鑰類型將key_hsm屬性添加到 JWK 獲取以攜帶 HSM 金鑰材料。
 
      如需地理界限的詳細資訊，請參閱 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -115,10 +115,10 @@ Key Vault 使用的密碼編譯模組 (HSM 或軟體) 皆經過 FIPS (聯邦資�
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
--   **ES256** - 適用於 SHA-256 摘要的 ECDSA 與使用曲線 P-256 建立的金鑰。 此演算法說明於 [RFC7518](https://tools.ietf.org/html/rfc7518)。
+-   **ES256** - 適用於 SHA-256 摘要的 ECDSA 與使用曲線 P-256 建立的金鑰。 該演算法在[RFC7518](https://tools.ietf.org/html/rfc7518)上描述。
 -   **ES256K** - 適用於 SHA-256 摘要的 ECDSA 與使用曲線 P-256K 建立的金鑰。 此演算法尚待標準化。
--   **ES384** - 適用於 SHA-384 摘要的 ECDSA 與使用曲線 P-384 建立的金鑰。 此演算法說明於 [RFC7518](https://tools.ietf.org/html/rfc7518)。
--   **ES512** - 適用於 SHA-512 摘要的 ECDSA 與使用曲線 P-521 建立的金鑰。 此演算法說明於 [RFC7518](https://tools.ietf.org/html/rfc7518)。
+-   **ES384** - 適用於 SHA-384 摘要的 ECDSA 與使用曲線 P-384 建立的金鑰。 該演算法在[RFC7518](https://tools.ietf.org/html/rfc7518)上描述。
+-   **ES512** - 適用於 SHA-512 摘要的 ECDSA 與使用曲線 P-521 建立的金鑰。 該演算法在[RFC7518](https://tools.ietf.org/html/rfc7518)上描述。
 
 
 ###  <a name="rsa-algorithms"></a>RSA 演算法  
@@ -131,9 +131,9 @@ Key Vault 使用的密碼編譯模組 (HSM 或軟體) 皆經過 FIPS (聯邦資�
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
--   **PS256** -rsassa-pkcs-v1.5-使用 sha-256 和及 MGF1 搭配 sha-256 的 PSS，如[rfc7518 說明](https://tools.ietf.org/html/rfc7518)中所述。
--   **PS384** -rsassa-pkcs-v1.5-使用 sha-384 和及 MGF1 搭配 sha-384 的 PSS，如[rfc7518 說明](https://tools.ietf.org/html/rfc7518)中所述。
--   **PS512** -rsassa-pkcs-v1.5-使用 sha-512 和及 MGF1 搭配 sha-512 的 PSS，如[rfc7518 說明](https://tools.ietf.org/html/rfc7518)中所述。
+-   **PS256** - RSASSA-PSS 使用SHA-256和MGF1與SHA-256，如[RFC7518](https://tools.ietf.org/html/rfc7518)所述。
+-   **PS384** - RSASSA-PSS 使用SHA-384和MGF1與SHA-384，如[RFC7518](https://tools.ietf.org/html/rfc7518)所述。
+-   **PS512** - RSASSA-PSS 使用SHA-512和MGF1與SHA-512，如[RFC7518](https://tools.ietf.org/html/rfc7518)所述。
 -   **RS256** - 使用 SHA-256 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-256 計算，而且長度必須是 32 個位元組。  
 -   **RS384** - 使用 SHA-384 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-384 計算，而且長度必須是 48 個位元組。  
 -   **RS512** - 使用 SHA-512 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-512 計算，而且長度必須是 64 個位元組。  
@@ -173,22 +173,22 @@ Key Vault 不支援匯出作業。 在系統中佈建金鑰後，即無法加以
 
 除了金鑰內容，您可以指定下列屬性。 在 JSON 要求中，屬性關鍵字和括弧「{」「}」是必要的，即使沒有指定任何屬性。  
 
-- enabled：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 *Enabled*屬性會與*nbf*和*exp*一起使用。當*nbf*與*exp*之間發生作業時，只有在 [*已啟用*] 設定為 [ **true**] 時，才會允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
-- nbf：選擇性的 IntDate，預設值為現在 (now)。 nbf (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf 屬性，目前的日期/時間「必須」晚於或等同 nbf 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
-- exp：選擇性的 IntDate，預設值為永久 (forever)。 exp (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp 屬性，目前的日期/時間「必須」早於 exp 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
+- enabled**：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 *啟用*的屬性與*nbf*和*exp*結合使用。當在*nbf*和*exp*之間發生操作時，僅當*啟用*為**true**時，才允許它。 *nbf* / *exp*視窗外的操作將自動禁止，但[特定條件下](#date-time-controlled-operations)的某些操作類型除外。
+- *nbf*： IntDate， 可選， 預設值是現在. nbf** (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf** 屬性，目前的日期/時間「必須」晚於或等同 nbf** 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
+- *exp*： IntDate， 可選， 預設值是"永遠的"。 exp** (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp** 屬性，目前的日期/時間「必須」早於 exp** 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 
 任何包含金鑰屬性的回應中，可包含其他唯讀屬性：  
 
-- created：選擇性的 IntDate。 created 屬性會指出建立此金鑰版本的時間。 若金鑰是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
-- updated：選擇性的 IntDate。 updated 屬性會指出更新此金鑰版本的時間。 若金鑰是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- created**：選擇性的 IntDate。 created** 屬性會指出建立此金鑰版本的時間。 若金鑰是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- updated**：選擇性的 IntDate。 updated** 屬性會指出更新此金鑰版本的時間。 若金鑰是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
 
 如需有關 IntDate 和其他資料類型的詳細資訊，請參閱[資料類型](#data-types)  
 
 #### <a name="date-time-controlled-operations"></a>受到日期時間控制的作業
 
-nbf / exp 範圍外尚未生效和過期的金鑰，將會用於**解密**、**解除包裝**和**驗證**作業 (不會傳回 403 禁止)。 使用尚未生效狀態的基本原理是，允許金鑰先經過測試，然後才在生產環境使用。 使用過期狀態的基本原理是，允許對在金鑰有效時建立的資料執行復原作業。 此外，您可以使用 Key Vault 原則，或藉由將 enabled 金鑰屬性更新為 **false**，來停用金鑰的存取權。
+*nbf* / *exp*視窗外尚未生效和過期的金鑰將用於**解密**、**解包**和**驗證**操作（不會返回 403，禁止）。 使用尚未生效狀態的基本原理是，允許金鑰先經過測試，然後才在生產環境使用。 使用過期狀態的基本原理是，允許對在金鑰有效時建立的資料執行復原作業。 此外，您可以使用 Key Vault 原則，或藉由將 enabled** 金鑰屬性更新為 **false**，來停用金鑰的存取權。
 
-如需資料類型的詳細資訊，請參閱[資料類型](#data-types)。
+有關資料類型的詳細資訊，請參閱[資料類型](#data-types)。
 
 如需其他可能屬性的詳細資訊，請參閱 [JSON Web 金鑰 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)。
 
@@ -197,35 +197,35 @@ nbf / exp 範圍外尚未生效和過期的金鑰，將會用於**解密**、**�
 您可以將其他應用程式專屬的中繼資料指定為標記形式。 Key Vault 支援最多 15 個標記，各標記可以有 256 個字元的名稱和 256 個字元的值。  
 
 >[!Note]
->如果標記具有可對物件類型 (金鑰、秘密或憑證) 執行「列出」或「取得」的權限，則呼叫者可讀取這些標記。
+>如果調用方具有*該清單*或*獲得*該物件類型（金鑰、機密或證書）的許可權，則調用方可讀標記。
 
 ###  <a name="key-access-control"></a>金鑰存取控制
 
-對於由 Key Vault 管理的金鑰，其存取控制是在 Key Vault 層級上提供的，Key Vault 則是用來作為金鑰的容器。 金鑰的存取控制原則與相同 Key Vault 中的秘密存取控制原則不同。 使用者可建立一或多個保存庫來保存秘密，且必須維護適當區分和管理秘密的案例。 金鑰的存取控制獨立於秘密的存取控制。  
+對於由 Key Vault 管理的金鑰，其存取控制是在 Key Vault 層級上提供的，Key Vault 則是用來作為金鑰的容器。 金鑰的存取控制策略不同于同一金鑰保存庫中的機密存取控制策略。 使用者可建立一或多個保存庫來保存秘密，且必須維護適當區分和管理秘密的案例。 金鑰的存取控制獨立於秘密的存取控制。  
 
-您可以在保存庫上的金鑰存取控制項目中授與下列權限 (以每個使用者 / 服務主體為基礎)。 這些許可權會與金鑰組象上允許的作業緊密地進行鏡像。  將存取權授與 key vault 中的服務主體是一項 onetime 作業，所有 Azure 訂用帳戶的訂用帳戶都保持不變。 您可以使用它來部署您想要的多個憑證。 
+您可以在保存庫上的金鑰存取控制項目中授與下列權限 (以每個使用者 / 服務主體為基礎)。 這些許可權與關鍵物件上允許的操作緊密反映。  授予金鑰保存庫中的服務主體的存取權限是一次性操作，並且對於所有 Azure 訂閱，它將保持不變。 您可以使用它部署盡可能多的證書。 
 
 - 金鑰管理作業的權限
-  - 取得：讀取金鑰的公開部分及其屬性
-  - 列出：列出金鑰保存庫中儲存的金鑰或金鑰版本
-  - 更新：更新金鑰屬性
-  - 建立：建立新的金鑰
-  - 匯入：將金鑰匯入金鑰保存庫
-  - 刪除：刪除金鑰物件
-  - 復原：復原已刪除的金鑰
-  - 備份：備份金鑰保存庫中的金鑰
-  - 還原：將備份的金鑰還原至金鑰保存庫
+  - 取得**：讀取金鑰的公開部分及其屬性
+  - 列出**：列出金鑰保存庫中儲存的金鑰或金鑰版本
+  - 更新**：更新金鑰屬性
+  - 建立**：建立新的金鑰
+  - 匯入**：將金鑰匯入金鑰保存庫
+  - 刪除**：刪除金鑰物件
+  - 復原**：復原已刪除的金鑰
+  - 備份**：備份金鑰保存庫中的金鑰
+  - 還原**：將備份的金鑰還原至金鑰保存庫
 
 - 密碼編譯作業的權限
-  - 解密：使用金鑰來取消保護位元組序列
-  - 加密：使用金鑰來保護任意位元組序列
-  - 解除包裝金鑰：使用金鑰來取消保護已包裝的對稱金鑰
-  - 包裝金鑰：使用金鑰來保護對稱金鑰
-  - 驗證：使用金鑰來驗證摘要  
-  - 簽署：使用金鑰來簽署摘要
+  - 解密**：使用金鑰來取消保護位元組序列
+  - 加密**：使用金鑰來保護任意位元組序列
+  - 解除包裝金鑰**：使用金鑰來取消保護已包裝的對稱金鑰
+  - 包裝金鑰**：使用金鑰來保護對稱金鑰
+  - 驗證**：使用金鑰來驗證摘要  
+  - 簽署**：使用金鑰來簽署摘要
     
 - 特殊權限作業的權限
-  - 清除：清除 (永久刪除) 已刪除的金鑰
+  - 清除**：清除 (永久刪除) 已刪除的金鑰
 
 如需使用金鑰的詳細資訊，請參閱 [Key Vault REST API 參考中的金鑰作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 
@@ -243,20 +243,20 @@ Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密�
 
 除了秘密內容，您可以指定下列屬性：  
 
-- exp：選擇性的 IntDate，預設值為**永久 (forever)** 。 Exp (到期時間) 屬性會識別到期時間，在此時間點或之後「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用，因為它告知金鑰保存庫的使用者服，特定祕密可能無法使用。 其值必須是包含 IntDate 值的數字。   
-- nbf：選擇性的 IntDate，預設值為**現在 (now)** 。 nbf (不早於) 屬性會識別一個時間，在此時間之前「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用。 其值必須是包含 IntDate 值的數字。 
-- enabled：選擇性的布林值，預設值是 **true**。 此屬性會指定是否可以擷取秘密資料。 當作業發生於 *nbf* 和 *exp* 之間時，enabled 屬性會用來搭配 *nbf* 和 *exp* 使用，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf 和 exp 範圍外的作業將自動禁止，除了在[特定情況下](#date-time-controlled-operations)。  
+- exp**：選擇性的 IntDate，預設值為**永久 (forever)**。 Exp** (到期時間) 屬性會識別到期時間，在此時間點或之後「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用，因為它告知金鑰保存庫的使用者服，特定祕密可能無法使用。 其值必須是包含 IntDate 值的數字。   
+- nbf**：選擇性的 IntDate，預設值為**現在 (now)**。 nbf** (不早於) 屬性會識別一個時間，在此時間之前「不應」擷取秘密資料，除非在[特定情況下](#date-time-controlled-operations)。 此欄位僅供**參考**用。 其值必須是包含 IntDate 值的數字。 
+- enabled**：選擇性的布林值，預設值是 **true**。 此屬性會指定是否可以擷取秘密資料。 當作業發生於 *nbf* 和 *exp* 之間時，enabled 屬性會用來搭配 *nbf* 和 *exp* 使用，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf** 和 exp** 範圍外的作業將自動禁止，除了在[特定情況下](#date-time-controlled-operations)。  
 
 任何包含秘密屬性的回應中，可包含其他唯讀屬性：  
 
-- created：選擇性的 IntDate。 created 屬性會指出建立此秘密版本的時間。 若秘密是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
-- updated：選擇性的 IntDate。 updated 屬性會指出更新此秘密版本的時間。 若秘密是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。
+- created**：選擇性的 IntDate。 created 屬性會指出建立此秘密版本的時間。 若秘密是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- updated**：選擇性的 IntDate。 updated 屬性會指出更新此秘密版本的時間。 若秘密是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。
 
 #### <a name="date-time-controlled-operations"></a>受到日期時間控制的作業
 
-秘密的**取得**作業將會用於尚未生效和過期的秘密 (在 nbf / exp 範圍外)。 呼叫祕密的**取得**作業來取得尚未生效的秘密，可以用於測試。 擷取 (**取得**) 過期的密碼，可用於復原作業。
+秘密的**取得**作業將會用於尚未生效和過期的秘密 (在 nbf ** / exp** 範圍外)。 呼叫祕密的**取得**作業來取得尚未生效的秘密，可以用於測試。 擷取 (**取得**) 過期的密碼，可用於復原作業。
 
-如需資料類型的詳細資訊，請參閱[資料類型](#data-types)。  
+有關資料類型的詳細資訊，請參閱[資料類型](#data-types)。  
 
 ### <a name="secret-access-control"></a>秘密存取控制
 
@@ -265,16 +265,16 @@ Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密�
 下列權限可以在保存庫上的祕密存取控制項目中使用 (以每個主體為基礎)，且密切地對映秘密物件上所允許的作業：  
 
 - 秘密管理作業的權限
-  - 取得：讀取密碼  
-  - 列出：列出 Key Vault 中儲存的秘密或秘密版本  
-  - 設定：建立祕密  
-  - 刪除：刪除秘密  
-  - 復原：復原已刪除的秘密
-  - 備份：備份金鑰保存庫中的秘密
-  - 還原：將備份的秘密還原至金鑰保存庫
+  - 取得**：讀取密碼  
+  - 列出**：列出 Key Vault 中儲存的秘密或秘密版本  
+  - 設定**：建立祕密  
+  - 刪除**：刪除秘密  
+  - 復原**：復原已刪除的秘密
+  - 備份**：備份金鑰保存庫中的秘密
+  - 還原**：將備份的秘密還原至金鑰保存庫
 
 - 特殊權限作業的權限
-  - 清除：清除 (永久刪除) 已刪除的秘密
+  - 清除**：清除 (永久刪除) 已刪除的秘密
 
 如需使用秘密的詳細資訊，請參閱 [Key Vault REST API 參考中的秘密作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 
@@ -282,7 +282,7 @@ Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密�
 您可以將其他應用程式專屬的中繼資料指定為標記形式。 Key Vault 支援最多 15 個標記，各標記可以有 256 個字元的名稱和 256 個字元的值。  
 
 >[!Note]
->如果標記具有可對物件類型 (金鑰、秘密或憑證) 執行「列出」或「取得」的權限，則呼叫者可讀取這些標記。
+>如果調用方具有*該清單*或*獲得*該物件類型（金鑰、機密或證書）的許可權，則調用方可讀標記。
 
 ## <a name="key-vault-certificates"></a>Key Vault 憑證
 
@@ -309,9 +309,9 @@ Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密�
 
 Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 格式的私密金鑰來擷取。 用來建立憑證的原則必須指出金鑰是可匯出的。 如果原則指出金鑰是不可匯出的，則擷取為祕密的值不會包含私密金鑰。  
 
-可定址的金鑰會變成與不可匯出的 KV 憑證有較高相關性。 用來建立 KV 憑證的 KV 憑證原則欄位 keyusage，會對應至可定址 KV 金鑰的作業。  
+可定址的金鑰會變成與不可匯出的 KV 憑證有較高相關性。 用來建立 KV 憑證的 KV 憑證原則欄位 keyusage**，會對應至可定址 KV 金鑰的作業。  
 
-支援金鑰類型有兩種 – 具有憑證的 RSA 或 RSA HSM。 可匯出金鑰允許使用 RSA，不支援 RSA HSM。  
+支援金鑰類型有兩種 – 具有憑證的 RSA** 或 RSA HSM**。 可匯出金鑰允許使用 RSA，不支援 RSA HSM。  
 
 ### <a name="certificate-attributes-and-tags"></a>憑證屬性與標記
 
@@ -323,14 +323,14 @@ Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 
 
 Key Vault 憑證具有下列屬性：  
 
--   enabled：選擇性的布林值，預設值是 **true**。 可指定以指出憑證資料是否可以擷取為秘密，或是否可以作為金鑰執行。 也可再作業發生於 nbf 和 exp 之間時，用來搭配 nbf 和 exp 使用，只有在 enabled 設定為 true 時，才能允許此作業。 在 nbf 和 exp 範圍以外的作業會自動禁止。  
+-   enabled**：選擇性的布林值，預設值是 **true**。 可指定以指出憑證資料是否可以擷取為秘密，或是否可以作為金鑰執行。 也可再作業發生於 nbf** 和 exp** 之間時，用來搭配 nbf** 和 exp** 使用，只有在 enabled 設定為 true 時，才能允許此作業。 在 nbf** 和 exp** 範圍以外的作業會自動禁止。  
 
 回應中會包含其他唯讀屬性：
 
--   created：IntDate：指出建立此憑證版本的時間。  
--   updated：IntDate：指出更新此憑證版本的時間。  
--   exp：IntDate：包含 x509 憑證的到期日值。  
--   nbf：IntDate：包含 x509 憑證的日期值。  
+-   created**：IntDate：指出建立此憑證版本的時間。  
+-   updated**：IntDate：指出更新此憑證版本的時間。  
+-   exp**：IntDate：包含 x509 憑證的到期日值。  
+-   nbf**：IntDate：包含 x509 憑證的日期值。  
 
 > [!Note] 
 > 如果 Key Vault 憑證到期，其可定址金鑰和秘密將變得無法使用。  
@@ -340,7 +340,7 @@ Key Vault 憑證具有下列屬性：
  用戶端指定的金鑰值組字典，類似於金鑰與秘密中的標記。  
 
  > [!Note]
-> 如果標記具有可對物件類型 (金鑰、秘密或憑證) 執行「列出」或「取得」的權限，則呼叫者可讀取這些標記。
+> 如果調用方具有*該清單*或*獲得*該物件類型（金鑰、機密或證書）的許可權，則調用方可讀標記。
 
 ### <a name="certificate-policy"></a>Certificate policy
 
@@ -357,7 +357,7 @@ Key Vault 憑證具有下列屬性：
 
      - 觸發程序：透過到期或存留期範圍百分比前的天數來指定  
 
-     - 動作：指定動作類型 – emailContacts 或 autoRenew  
+     - 動作：指定動作類型 – emailContacts** 或 autoRenew**  
 
 -   簽發者：要用於發行 x509 憑證的憑證簽發者相關參數。  
 -   原則屬性：包含與原則相關聯的屬性  
@@ -381,9 +381,9 @@ Key Vault 憑證具有下列屬性：
 
 Key Vault 憑證物件會保存用來與所選憑證簽發者之提供者通訊的組態，以訂購 x509 憑證。  
 
--   具有下列 TLS/SSL 憑證之憑證簽發者提供者的 Key Vault 合作夥伴
+-   用於 TLS/SSL 憑證的金鑰保存庫與以下憑證發行供應商合作
 
-|**提供者名稱**|**位置**|
+|**提供程式名稱**|**位置**|
 |----------|--------|
 |DigiCert|支援所有位在公用雲端和 Azure Government 中的金鑰保存庫服務|
 |GlobalSign|支援所有位在公用雲端和 Azure Government 中的金鑰保存庫服務|
@@ -394,7 +394,7 @@ Key Vault 憑證物件會保存用來與所選憑證簽發者之提供者通訊�
 
     -   組織系統管理員必須至少使用一個 CA 提供者來讓其公司 ( 例如 Contoso) 上架。  
 
-2. 系統管理員會建立 Key Vault 的要求者認證，以註冊（及更新） TLS/SSL 憑證  
+2. 管理員為金鑰保存庫創建請求憑據以註冊（和續訂）TLS/SSL 憑證  
 
     -   提供組態，以用來建立金鑰保存庫中提供者的簽發者物件  
 
@@ -422,24 +422,24 @@ Key Vault 可讓您以不同簽發者的提供者組態，來建立多個簽發�
  下列權限可以在金鑰保存庫上的祕密存取控制項目中使用 (以每個主體為基礎)，且密切地對映秘密物件上所允許的作業：  
 
 - 憑證管理作業的權限
-  - 取得：取得目前版本的憑證或任何版本的憑證 
-  - 列出：列出目前憑證或憑證版本  
-  - 更新：更新憑證
-  - 建立：建立 Key Vault 憑證
-  - 匯入：將憑證內容匯入 Key Vault 憑證
-  - 刪除：刪除憑證、其原則和所有版本  
-  - 復原：復原已刪除的憑證
-  - 備份：備份金鑰保存庫中的憑證
-  - 還原：將備份的憑證還原至金鑰保存庫
-  - managecontacts：管理 Key Vault 憑證連絡人  
-  - manageissuers：管理 Key Vault 憑證授權單位/簽發者
-  - getissuers：取得憑證授權單位/簽發者
-  - listissuers：列出憑證授權單位/簽發者  
-  - setissuers：建立或更新 Key Vault 憑證授權單位/簽發者  
-  - deleteissuers：刪除 Key Vault 憑證授權單位/簽發者  
+  - 取得**：取得目前版本的憑證或任何版本的憑證 
+  - 列出**：列出目前憑證或憑證版本  
+  - 更新**：更新憑證
+  - 建立**：建立 Key Vault 憑證
+  - 匯入**：將憑證內容匯入 Key Vault 憑證
+  - 刪除**：刪除憑證、其原則和所有版本  
+  - 復原**：復原已刪除的憑證
+  - 備份**：備份金鑰保存庫中的憑證
+  - 還原**：將備份的憑證還原至金鑰保存庫
+  - managecontacts**：管理 Key Vault 憑證連絡人  
+  - manageissuers**：管理 Key Vault 憑證授權單位/簽發者
+  - getissuers**：取得憑證授權單位/簽發者
+  - listissuers**：列出憑證授權單位/簽發者  
+  - setissuers**：建立或更新 Key Vault 憑證授權單位/簽發者  
+  - deleteissuers**：刪除 Key Vault 憑證授權單位/簽發者  
  
 - 特殊權限作業的權限
-  - 清除：清除 (永久刪除) 已刪除的憑證
+  - 清除**：清除 (永久刪除) 已刪除的憑證
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
@@ -459,26 +459,26 @@ Key Vault 可管理 Azure 儲存體帳戶金鑰：
 為使用者或應用程式主體授與在受控儲存體帳戶上執行作業的權限時，可以使用下列權限：  
 
 - 受控儲存體帳戶和 SaS 定義作業的權限
-  - 取得：取得儲存體帳戶的相關資訊 
-  - 列出：列出由 Key Vault 管理的儲存體帳戶
-  - 更新：更新儲存體帳戶
-  - 刪除：刪除儲存體帳戶  
-  - 復原：復原已刪除的儲存體帳戶
-  - 備份：備份儲存體帳戶
-  - 還原：將備份的儲存體帳戶還原至 Key Vault
-  - 設定：建立或更新儲存體帳戶
-  - regeneratekey：為儲存體帳戶重新產生指定的金鑰值
-  - getsas：取得與儲存體帳戶的 SAS 定義有關的資訊
-  - listsas：列出儲存體帳戶的儲存體 SAS 定義
-  - deletesas：從儲存體帳戶中刪除 SAS 定義
-  - setsas：為儲存體帳戶建立或更新新的 SAS 定義/屬性
+  - 取得**：取得儲存體帳戶的相關資訊 
+  - 列出**：列出由 Key Vault 管理的儲存體帳戶
+  - 更新**：更新儲存體帳戶
+  - 刪除**：刪除儲存體帳戶  
+  - 復原**：復原已刪除的儲存體帳戶
+  - 備份**：備份儲存體帳戶
+  - 還原**：將備份的儲存體帳戶還原至 Key Vault
+  - 設定**：建立或更新儲存體帳戶
+  - regeneratekey**：為儲存體帳戶重新產生指定的金鑰值
+  - getsas**：取得與儲存體帳戶的 SAS 定義有關的資訊
+  - listsas**：列出儲存體帳戶的儲存體 SAS 定義
+  - deletesas**：從儲存體帳戶中刪除 SAS 定義
+  - setsas**：為儲存體帳戶建立或更新新的 SAS 定義/屬性
 
 - 特殊權限作業的權限
-  - 清除：清除 (永久刪除) 受控儲存體帳戶
+  - 清除**：清除 (永久刪除) 受控儲存體帳戶
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的儲存體帳戶作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
 ## <a name="see-also"></a>另請參閱
 
 - [驗證、要求和回應](authentication-requests-and-responses.md)
-- [Key Vault 開發人員指南](/azure/key-vault/key-vault-developers-guide)
+- [金鑰保存庫開發人員指南](/azure/key-vault/key-vault-developers-guide)

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞將通知推送至 Windows Phone 應用程式 | Microsoft Docs
+title: 使用 Azure 通知中樞將推播通知傳送至 Windows Phone 應用程式 | Microsoft Docs
 description: 在本教學課程中，您會了解如何使用 Azure 通知中樞，將推播通知傳送到 Windows Phone 8 或 Windows Phone 8.1 Silverlight 應用程式。
 services: notification-hubs
 documentationcenter: windows
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7f026dd5953dd233b0183d8ce7978f647fb8c6af
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9cad4bfc474ef23492858ed3b0a6447932b589b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213466"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127073"
 ---
-# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知推送至 Windows Phone 應用程式
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>教學課程：使用通知中樞將推播通知傳送至 Windows Phone 應用程式
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "71213466"
 > * 建立 Windows Phone 應用程式
 > * 進行傳送通知的測試
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * [具有行動裝置應用程式開發元件的 Visual Studio 2015 Express](https://www.visualstudio.com/vs/older-downloads/)

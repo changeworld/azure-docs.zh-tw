@@ -1,6 +1,6 @@
 ---
-title: 使用識別碼代理程式（預覽）進行認證管理-Azure HDInsight
-description: 瞭解 HDInsight 識別碼訊息代理程式，以簡化已加入網域的 Apache Hadoop 叢集的驗證。
+title: 使用 ID 代理（預覽）進行憑據管理 - Azure HDInsight
+description: 瞭解 HDInsight ID 代理，以簡化域加入的 Apache Hadoop 群集的身份驗證。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,56 +8,56 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483007"
 ---
-# <a name="use-id-broker-preview-for-credential-management"></a>使用識別碼代理程式（預覽）進行認證管理
+# <a name="use-id-broker-preview-for-credential-management"></a>使用 ID 代理（預覽）進行憑據管理
 
-本文說明如何在 Azure HDInsight 中設定和使用識別碼訊息代理程式功能。 您可以使用這項功能透過 Azure 多重要素驗證登入 Apache Ambari，並取得必要的 Kerberos 票證，而不需要在 Azure Active Directory Domain Services （Azure AD DS）中使用密碼雜湊。
+本文介紹如何在 Azure HDInsight 中設置和使用 ID 代理功能。 您可以使用此功能通過 Azure 多重要素驗證登錄到 Apache Ambari，並獲取所需的 Kerberos 票證，而無需在 Azure 活動目錄域服務 （Azure AD DS） 中進行密碼雜湊。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-在下列案例中，識別碼 Broker 會簡化複雜的驗證程式：
+ID 代理在以下情況下簡化了複雜的身份驗證設置：
 
-* 您的組織會依賴同盟來驗證使用者，以存取雲端資源。 先前，若要使用 HDInsight 企業安全性套件（ESP）叢集，您必須啟用從內部部署環境到 Azure Active Directory 的密碼雜湊同步處理。 對於某些組織來說，這項需求可能很艱難或不是必要的。
+* 您的組織依靠識別身分同盟來驗證使用者訪問雲資源。 以前，要使用 HDInsight 企業安全包 （ESP） 群集，必須啟用從本地環境到 Azure 活動目錄的密碼雜湊同步。 對於某些組織來說，這一要求可能很困難或不可取。
 
-* 您正在建立使用依賴不同驗證機制之技術的解決方案。 例如，Apache Hadoop 和 Apache Ranger 依賴 Kerberos，而 Azure Data Lake Storage 依賴 OAuth。
+* 您正在構建使用依賴于不同身份驗證機制的技術的解決方案。 例如，Apache Hadoop 和 Apache 遊俠依賴于 Kerberos，而 Azure 資料湖存儲依賴于 OAuth。
 
-識別碼代理人提供統一的驗證基礎結構，並移除將密碼雜湊同步至 Azure AD DS 的需求。 識別碼代理程式是由 Windows Server VM （識別碼代理程式節點）上執行的元件以及叢集閘道節點所組成。 
+ID 代理提供統一的身份驗證基礎結構，並消除了將密碼雜湊同步到 Azure AD DS 的要求。 ID 代理由在 Windows 伺服器 VM（ID 代理節點）上運行的元件以及群集閘道節點組成。 
 
-下圖顯示已啟用識別碼代理人之後，所有使用者的驗證流程，包括同盟使用者：
+下圖顯示了啟用 ID Broker 後所有使用者（包括聯合使用者）的身份驗證流：
 
-![識別碼訊息代理程式的驗證流程](./media/identity-broker/identity-broker-architecture.png)
+![使用 ID 代理的身份驗證流](./media/identity-broker/identity-broker-architecture.png)
 
-識別碼代理程式可讓您使用多重要素驗證來登入 ESP 叢集，而不需要提供任何密碼。 如果您已經登入其他 Azure 服務（例如 Azure 入口網站），您可以使用單一登入（SSO）體驗來登入您的 HDInsight 叢集。
+ID 代理允許您使用多重要素驗證登錄到 ESP 群集，而無需提供任何密碼。 如果您已登錄到其他 Azure 服務（如 Azure 門戶），則可以使用單個登錄 （SSO） 體驗登錄到 HDInsight 群集。
 
-## <a name="enable-hdinsight-id-broker"></a>啟用 HDInsight 識別碼代理程式
+## <a name="enable-hdinsight-id-broker"></a>啟用 HDInsight ID 代理
 
-若要建立已啟用識別碼代理程式的 ESP 叢集，請執行下列步驟：
+要創建啟用 ID 代理的 ESP 群集，請執行以下步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 遵循 ESP 叢集的基本建立步驟。 如需詳細資訊，請參閱[建立具有 ESP 的 HDInsight](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)叢集。
-1. 選取 [**啟用 HDINSIGHT 識別碼訊息代理**程式]。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 按照 ESP 群集的基本創建步驟操作。 有關詳細資訊，請參閱使用[ESP 創建 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。
+1. 選擇**啟用 HDInsight ID 代理**。
 
-識別碼訊息代理程式功能會將一個額外的 VM 新增至叢集。 此 VM 是識別碼訊息代理程式節點，包含支援驗證的伺服器元件。 識別碼代理人節點已加入網域至 Azure AD DS 網域。
+ID 代理功能將添加一個額外的 VM 到群集。 此 VM 是 ID 代理節點，包括支援身份驗證的伺服器元件。 ID 代理節點是加入到 Azure AD DS 域的域。
 
-![啟用識別碼訊息代理程式的選項](./media/identity-broker/identity-broker-enable.png)
+![啟用 ID 代理的選項](./media/identity-broker/identity-broker-enable.png)
 
-## <a name="tool-integration"></a>工具整合
+## <a name="tool-integration"></a>工具集成
 
-HDInsight [IntelliJ 外掛程式](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)已更新為支援 OAuth。 您可以使用此外掛程式來連接到叢集並提交工作。
+HDInsight [IntelliJ 外掛程式](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)已更新以支援 OAuth。 您可以使用此外掛程式連接到群集並提交作業。
 
-## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS 中沒有密碼雜湊的 SSH 存取
+## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS 中沒有密碼雜湊的 SSH 訪問
 
-啟用識別碼代理人之後，您仍然需要在使用網域帳戶的 SSH 案例中，儲存在 Azure AD DS 中的密碼雜湊。 若要透過 SSH 連線到已加入網域的 VM，或執行 `kinit` 命令，您必須提供密碼。 
+啟用 ID 代理後，您仍然需要在 Azure AD DS 中存儲的密碼雜湊，用於具有域帳戶的 SSH 方案。 要 SSH 到加入域的 VM，或者要`kinit`運行該命令，您需要提供密碼。 
 
-SSH 驗證需要在 Azure AD DS 中使用雜湊。 如果您只想要在系統管理案例中使用 SSH，您可以建立一個僅限雲端的帳戶，並使用它來透過 SSH 連線到叢集。 其他使用者仍然可以使用 Ambari 或 HDInsight 工具（例如 IntelliJ 外掛程式），而不需要在 Azure AD DS 中提供密碼雜湊。
+SSH 身份驗證要求雜湊在 Azure AD DS 中可用。 如果只想將 SSH 用於管理方案，則可以創建一個僅雲帳戶，並將其用於群集的 SSH。 其他使用者仍可以使用 Ambari 或 HDInsight 工具（如 IntelliJ 外掛程式），而無需在 Azure AD DS 中提供密碼雜湊。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
+* [使用 Azure 活動目錄域服務使用企業安全包配置 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md)
 * [將 Azure Active Directory 使用者同步至 HDInsight 叢集](../hdinsight-sync-aad-users-to-cluster.md)
 * [監視叢集效能](../hdinsight-key-scenarios-to-monitor.md)

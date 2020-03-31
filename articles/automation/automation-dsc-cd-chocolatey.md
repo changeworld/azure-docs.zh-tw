@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966732"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用範例：使用自動化狀態設定和 Chocolatey 持續部署至虛擬機器
@@ -47,10 +47,10 @@ Resource Manager 範本的主要功能之一，能夠在佈建時將 VM 擴充�
 ## <a name="quick-trip-around-the-diagram"></a>圖表速覽
 
 從頂端開始，您撰寫程式碼、建置和測試，然後建立安裝封裝。
-Chocolatey 可以處理各種類型的安裝封裝，例如 MSI、MSU、ZIP 等。 如果 Chocolatey 的原生功能不是很足夠，您還有 PowerShell 的完整功能可執行實際安裝。 將封裝放入某個可連線的位置–套件存放庫。 這個使用範例使用 Azure blob 儲存體帳戶中的公用資料夾，但可以是任何位置。 Chocolatey 可自然搭配 NuGet 伺服器和其他一些工具，一起管理封裝中繼資料。 [這篇文章](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) 說明選項。 這個使用範例使用 NuGet。 Nuspec 是封裝的中繼資料。 Nuspec 會「編譯」成 NuPkg，然後儲存在 NuGet 伺服器中。 當您的組態依名稱要求某個封裝，而且參考 NuGet 伺服器時，Chocolatey DSC 資源 (現在位於 VM) 會為您抓取封裝並安裝。 您也可以要求特定版本的封裝。
+Chocolatey 可以處理各種類型的安裝封裝，例如 MSI、MSU、ZIP 等。 如果 Chocolatey 的原生功能不是很足夠，您還有 PowerShell 的完整功能可執行實際安裝。 將包放入可到達的某個位置 — 包存儲庫。 這個使用範例使用 Azure blob 儲存體帳戶中的公用資料夾，但可以是任何位置。 Chocolatey 可自然搭配 NuGet 伺服器和其他一些工具，一起管理封裝中繼資料。 [這篇文章](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) 說明選項。 這個使用範例使用 NuGet。 Nuspec 是封裝的中繼資料。 Nuspec 會「編譯」成 NuPkg，然後儲存在 NuGet 伺服器中。 當您的組態依名稱要求某個封裝，而且參考 NuGet 伺服器時，Chocolatey DSC 資源 (現在位於 VM) 會為您抓取封裝並安裝。 您也可以要求特定版本的封裝。
 
 圖表左下方有一個 Azure Resource Manager 範本。 在這個使用範例中，VM 擴充功能會將 VM 註冊到 Azure 自動化狀態設定提取伺服器 (也就是提取伺服器)，作為「節點」。 組態儲存在提取伺服器中。
-實際上，它會儲存兩次：一次為純文字，一次編譯為 MOF 檔案（適用于這些專案的相關資訊）。在入口網站中，MOF 是「節點設定」（相對於單純的「設定」）。 它是與「節點」相關聯的構件，因此節點會知道其組態。 下列詳細資料示範如何將節點組態指派給節點。
+實際上，它存儲了兩次：一次作為純文字，一次編譯為 MOF 檔案（對於那些知道這些事情的人）。在門戶中，MOF 是一種"節點配置"（而不是簡單的"配置"）。 它是與「節點」相關聯的構件，因此節點會知道其組態。 下列詳細資料示範如何將節點組態指派給節點。
 
 您應已完成其中的初階工作或大部分的工作。 建立 nuspec、編譯和儲存在 NuGet 伺服器中很簡單。 您已開始管理 VM。 持續部署的下一步需要設定提取伺服器 (一次)、向它註冊節點 (一次)，然後建立組態並儲存到那裡 (初步)。 接著，當封裝升級並部署至儲存機制時，請重新整理提取伺服器中的 [組態] 和 [節點組態] \(視需要重複)。
 
@@ -82,7 +82,7 @@ PowerShell 資源庫會自動將 DSC 資源安裝到您的 Azure 自動化帳戶
 最近新增至 Azure 入口網站的另一種技術可讓您提取新模組或更新現有模組。 按一下 [自動化帳戶資源]、[資產] 圖格和 [模組] 圖格。 [瀏覽資源庫] 圖示可讓您查看資源庫的模組清單，深入了解詳細資料，並最終匯入您的自動化帳戶。 這是讓您的模組隨時保持最新狀態的絕佳方法。 而且，匯入功能會檢查與其他模組的相依性以確保所有模組都保持同步。
 
 或者，您可以使用手動方法。 適用於 Windows 電腦的 PowerShell 整合模組的資料夾結構，與 Azure 自動化所需的資料夾結構稍有不同。
-您需要稍微調整一下。 但這並不難，而且每個資源只會執行一次（除非您想要在未來進行升級）。如需有關撰寫 PowerShell 整合模組的詳細資訊，請參閱這篇文章：[撰寫 Azure 自動化的整合模組](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+您需要稍微調整一下。 但是這並不難，而且每個資源只完成一次（除非您希望將來升級它）。有關創作 PowerShell 集成模組的詳細資訊，請參閱本文：為[Azure 自動化創作集成模組](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - 將您需要的模組安裝在工作站，如下所示：
   - 安裝 [Windows Management Framework v5](https://aka.ms/wmf5latest) (Windows 10 不需安裝)
@@ -195,7 +195,7 @@ Get-AzureRmAutomationDscCompilationJob `
 ## <a name="related-articles"></a>相關文章
 * [Azure 自動化 DSC 概觀](automation-dsc-overview.md)
 * [Azure 自動化 DSC Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
-* [將機器上架交由 Azure 自動化 DSC 管理](automation-dsc-onboarding.md)
+* [上架由 Azure 自動化 DSC 管理的機器](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>後續步驟
 

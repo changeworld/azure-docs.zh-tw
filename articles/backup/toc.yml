@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: 備份 VM - CLI
       href: quick-backup-vm-cli.md
-    - name: 備份 VM - Resource Manager 範本
-      displayName: ARM
+    - name: 備份 VM - ARM 範本
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: 教學課程
   items:
-    - name: 大規模備份 Azure VM
+    - name: 備份多個 Azure VM
       href: tutorial-backup-vm-at-scale.md
     - name: 使用 PowerShell 來備份 Azure VM
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS 代理程式支援矩陣
           href: backup-support-matrix-mars-agent.md
+        - name: SQL Server 備份支援矩陣
+          href: sql-support-matrix.md
         - name: SAP Hana 備份支援矩陣
           href: sap-hana-backup-support-matrix.md
         - name: Azure 原則支援的 VM SKU

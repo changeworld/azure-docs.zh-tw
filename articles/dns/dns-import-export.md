@@ -1,5 +1,5 @@
 ---
-title: 匯入和匯出網域區域檔案-Azure CLI
+title: 導入和匯出域區域檔 - Azure CLI
 titleSuffix: Azure DNS
 description: 了解如何使用 Azure CLI 匯入和匯出 DNS 區域檔案至 Azure DNS
 services: dns
@@ -9,10 +9,10 @@ ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79365163"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 匯入及匯出 DNS 區域檔案
@@ -23,7 +23,7 @@ ms.locfileid: "79365163"
 
 DNS 區域檔案是一個文字檔，其中包含區域中每筆網域名稱系統 (DNS) 記錄的詳細資料。 它會遵循標準格式，使其適合於在 DNS 系統之間傳送 DNS 記錄。 使用區域檔案是從 Azure DNS 移入或移出 DNS 區域的快速、可靠又方便的方法。
 
-Azure DNS 支援使用 Azure 命令列介面 (CLI) 匯入和匯出區域檔案。 目前並「不」支援透過 Azure PowerShell 或 Azure 入口網站進行區域檔案匯入。
+Azure DNS 支援使用 Azure 命令列介面 (CLI) 匯入和匯出區域檔案。 目前並「不」**** 支援透過 Azure PowerShell 或 Azure 入口網站進行區域檔案匯入。
 
 Azure CLI 是用來管理 Azure 服務的跨平台命令列工具。 它可從 [Azure 下載頁面](https://azure.microsoft.com/downloads/)取得，且適用於 Windows、Mac 及 Linux 平台。 跨平台支援對於匯入和匯出區域檔案十分重要，因為最常見的名稱伺服器軟體 [BIND](https://www.isc.org/downloads/bind/) 通常會在 Linux 上執行。
 
@@ -32,7 +32,7 @@ Azure CLI 是用來管理 Azure 服務的跨平台命令列工具。 它可從 [
 將 DNS 區域檔案匯入 Azure DNS 之前，您必須取得區域檔案的複本。 此檔案的來源取決於目前裝載 DNS 區域的位置。
 
 * 如果 DNS 區域是由合作夥伴服務 (例如網域註冊機構、專用 DNS 主機服務提供者或其他雲端提供者) 託管，該服務應提供下載 DNS 區域檔案的能力。
-* 如果 DNS 區域託管在 Windows DNS 上，區域檔案的預設資料夾是 **%systemroot%\system32\dns**。 DNS 主控台的 [一般] 索引標籤上，也會顯示每個區域檔案的完整路徑。
+* 如果 DNS 區域託管在 Windows DNS 上，區域檔案的預設資料夾是 **%systemroot%\system32\dns**。 DNS 主控台的 [一般]**** 索引標籤上，也會顯示每個區域檔案的完整路徑。
 * 如果使用 BIND 裝載 DNS 區域，則 BIND 組態檔 **named.conf**中會指定每個區域的區域檔案位置。
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>將 DNS 區域檔案匯入 Azure DNS
@@ -54,8 +54,8 @@ Azure CLI 是用來管理 Azure 服務的跨平台命令列工具。 它可從 [
 * `$TTL` 指示詞為選擇性並受到支援。 若未提供 `$TTL` 指示詞，會匯入沒有明確 TTL 的記錄，並設定為預設 TTL 3600 秒。 如果相同資料錄集中有兩筆記錄指定不同的 TTL，則會使用較低的值。
 * `$ORIGIN` 指示詞為選擇性並受到支援。 若未設定 `$ORIGIN` ，則使用的預設值是在命令列上指定的區域名稱 (加上結尾的 ".")。
 * `$INCLUDE` 和 `$GENERATE` 指示詞不受支援。
-* 支援這些記錄類型： A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
-* Azure DNS 會在建立區域時，自動建立 SOA 記錄。 當您匯入區域檔案時，所有 SOA 參數都會取自該區域檔案，但  *參數*除外`host`。 這個參數會使用 Azure DNS 所提供的值。 這是因為此參數必須參照 Azure DNS 所提供的主要名稱伺服器。
+* 支援這些記錄類型：A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
+* Azure DNS 會在建立區域時，自動建立 SOA 記錄。 當您匯入區域檔案時，所有 SOA 參數都會取自該區域檔案，但 `host` 參數*除外*。 這個參數會使用 Azure DNS 所提供的值。 這是因為此參數必須參照 Azure DNS 所提供的主要名稱伺服器。
 * Azure DNS 也會在建立區域時，自動建立位於區域頂點的名稱伺服器記錄集。 只會匯入此記錄集的 TTL。 這些記錄包含 Azure DNS 所提供的名稱伺服器名稱。 所匯入區域檔案中包含的值不會覆寫記錄資料。
 * 在公開預覽期間，Azure DNS 僅支援單一字串 TXT 記錄。 Multistring TXT 記錄會串連起來並截斷為 255 個字元。
 
@@ -155,7 +155,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 ## <a name="export-a-dns-zone-file-from-azure-dns"></a>從 Azure DNS 匯出 DNS 區域檔案
 
-匯出 DNS 區域 Azure CLI 命令的格式為：
+Azure CLI 命令匯出 DNS 區域的格式為：
 
 ```azurecli
 az network dns zone export -g <resource group> -n <zone name> -f <zone file name>

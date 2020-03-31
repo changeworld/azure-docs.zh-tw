@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案（AVS）-網路檢查清單
-description: 透過 AVS 在 Azure VMware 解決方案上配置網路 CIDR 的檢查清單
+title: Azure VMware 解決方案（按雲簡單 - 網路檢查表）
+description: 用於在 Azure VMware 解決方案上按雲簡單分配網路 CIDR 的檢查表
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 09/25/2019
@@ -8,58 +8,58 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cbb0fc0514c17fe34f8e57806e6620cfa8b3f68
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025005"
 ---
-# <a name="networking-prerequisites-for-azure-vmware-solution-by-avs"></a>Azure VMware Solution by AVS 的網路必要條件
+# <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>按雲簡單實現 Azure VMware 解決方案的網路先決條件
 
-Azure VMware 解決方案（AVS）提供 VMware 私人雲端環境，可供來自內部部署環境、企業管理的裝置和 Azure 資源的使用者和應用程式存取。 透過網路服務（例如 Vpn 和 Azure ExpressRoute 連線）來傳遞連線能力。 其中一些網路服務會要求您指定用來啟用服務的網路位址範圍。 
+雲簡單版 Azure VMware 解決方案提供了 VMware 私有雲環境，可供本地環境、企業託管設備和 Azure 資源的使用者和應用程式訪問。 連接通過 VPN 和 Azure 快速路由連接等網路服務進行。 其中一些網路服務要求您指定網路位址範圍以啟用服務。 
 
-本文中的表格說明使用指定位址的位址範圍和對應服務的集合。 有些位址是必要的，有些則取決於您想要部署的服務。 這些位址空間不應與您的任何內部部署子網、Azure 虛擬網路子網或規劃的 AVS 工作負載子網重迭。
+本文中的表描述了使用指定位址的位址範圍和相應服務集。 某些位址是強制性的，有些位址取決於要部署的服務。 這些位址空間不應與任何本地子網、Azure 虛擬網路子網或計畫的 CloudSimple 工作負荷子網重疊。
 
-## <a name="network-address-ranges-required-for-creating-an-avs-private-cloud"></a>建立 AVS 私人雲端所需的網路位址範圍
+## <a name="network-address-ranges-required-for-creating-a-private-cloud"></a>創建私有雲所需的網路位址範圍
 
-在建立 AVS 服務和 AVS 私人雲端時，您必須遵守指定的網路無類別網域間路由（CIDR）範圍，如下所示。
+在創建 CloudSimple 服務和私有雲期間，必須遵守指定的無類域間路由 （CIDR） 範圍，如下所示。
 
-| 名稱/用於     | 說明                                                                                                                            | 位址範圍            |
+| 名稱/用於     | 描述                                                                                                                            | 位址範圍            |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| 閘道 CIDR      | Edge 服務（VPN 閘道）的必要。 在 AVS 服務建立期間需要此 CIDR，而且必須來自 RFC 1918 空間。 | /28                      |
-| vSphere/vSAN CIDR | VMware 管理網路的必要。 在 AVS 私人雲端建立期間，必須指定此 CIDR。                                    | /24 或/23 或/22 或/21 |
+| 閘道 CIDR      | 邊緣服務（VPN 閘道）需要。  此 CIDR 在雲簡單服務創建期間是必需的，並且必須來自 RFC 1918 空間。 | /28                      |
+| vSphere/vSAN CIDR | VMware 管理網路需要。 必須在私有雲創建期間指定此 CIDR。                                    | /24 或 /23 或 /22 或 /21 |
 
-## <a name="network-address-range-required-for-azure-network-connection-to-an-on-premises-network"></a>內部部署網路的 Azure 網路連線所需的網路位址範圍
+## <a name="network-address-range-required-for-azure-network-connection-to-an-on-premises-network"></a>Azure 連接到本地網路所需的網路位址範圍
 
-[透過 ExpressRoute 從內部部署網路連線到 AVS 私人雲端網路](on-premises-connection.md)，會建立全球觸達連線。 此連線會使用邊界閘道協定（BGP），在您的內部部署網路、您的 AVS 私人雲端網路和 Azure 網路之間交換路由。
+[通過 ExpressRoute 從本地網路連接到專用雲網路](on-premises-connection.md)可建立全球覆蓋連接。  該連接使用邊界閘道協定 （BGP） 在本地網路、私有雲網路和 Azure 網路之間交換路由。
 
-| 名稱/用於             | 說明                                                                                                                                                                             | 位址範圍 |
+| 名稱/用於             | 描述                                                                                                                                                                             | 位址範圍 |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| ExpressRoute 對等互連 CIDR | 當您使用 ExpressRoute Global 觸達內部部署連線能力時所需。 當透過支援票證提出的全球觸達連線要求時，必須提供此 CIDR。 | /29           |
+| 快速路由對等 CIDR | 使用 ExpressRoute 全球覆蓋實現本地連接時是必需的。 當通過支援票證發出全域覆蓋連接請求時，必須提供此 CIDR。 | /29           |
 
-## <a name="network-address-range-required-for-using-a-site-to-site-vpn-connection-to-an-on-premises-network"></a>使用內部部署網路的站對站 VPN 連線所需的網路位址範圍
+## <a name="network-address-range-required-for-using-a-site-to-site-vpn-connection-to-an-on-premises-network"></a>使用網站到網站 VPN 連接到本地網路所需的網路位址範圍
 
-[使用站對站 VPN 從內部部署網路連接到 AVS 私人雲端網路](vpn-gateway.md)時，需要下列 IP 位址、內部部署網路和識別碼。 
+[使用網站到本地 VPN 從本地網路連接到私有雲網路](vpn-gateway.md)需要以下 IP 位址、本地網路和識別碼。 
 
-| 位址/位址範圍 | 說明                                                                                                                                                                                                                                                           |
+| 位址/位址範圍 | 描述                                                                                                                                                                                                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 對等 IP               | 內部部署 VPN 閘道的公用 IP 位址。 需要在內部部署資料中心與 AVS 服務區域之間建立站對站 VPN 連線。 在建立站對站 VPN 閘道期間，需要此 IP 位址。                                         |
-| 對等識別碼       | 內部部署 VPN 閘道的對等識別碼。 這通常與**對等 IP**相同。  如果您在內部部署 VPN 閘道上指定了唯一識別碼，則必須指定識別碼。  在建立站對站 VPN 閘道期間，必須要有對等識別碼。   |
-| 內部部署網路   | 需要存取區域中的 AVS 網路的內部部署首碼。  包含將存取 AVS 網路之內部部署網路中的所有首碼，包括使用者存取網路時所使用的用戶端網路。                                         |
+| 對等 IP               | 本地 VPN 閘道公共 IP 位址。 需要在本地資料中心和雲簡單服務區域之間建立網站到網站 VPN 連接。 在網站到網站 VPN 閘道創建期間，需要此 IP 位址。                                         |
+| 對等識別碼       | 本地 VPN 閘道的對等識別碼。 這通常與**對等 IP**相同。  如果在本地 VPN 閘道上指定了唯一識別碼，則必須指定該識別碼。  網站到網站 VPN 閘道創建期間需要對等 ID。   |
+| 本地網路   | 需要訪問區域中的 CloudSimple 網路的本地首碼。  包括將訪問 CloudSimple 網路的本地網路的所有首碼，包括使用者從其中訪問網路的用戶端網路。                                         |
 
-## <a name="network-address-range-required-for-using-point-to-site-vpn-connections"></a>使用點對站 VPN 連線所需的網路位址範圍
+## <a name="network-address-range-required-for-using-point-to-site-vpn-connections"></a>使用點對點 VPN 連接所需的網路位址範圍
 
-點對站 VPN 連線可讓您從用戶端電腦存取 AVS 網路。 [若要設定點對站 VPN](vpn-gateway.md)，您必須指定下列網路位址範圍。
+點對點 VPN 連接允許從用戶端電腦訪問 CloudSimple 網路。  [要設置點對點 VPN，](vpn-gateway.md)必須指定以下網路位址範圍。
 
-| 位址/位址範圍 | 說明                                                                                                                                                                                                                                                                                                  |
+| 位址/位址範圍 | 描述                                                                                                                                                                                                                                                                                                  |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 用戶端子網         | 當您使用點對站 VPN 進行連接時，用戶端子網會提供 DHCP 位址。 當您在 AVS 入口網站上建立點對站 VPN 閘道時，需要此子網。 網路會分割成兩個子網，一個用於 UDP 連線，另一個用於 TCP 連線。 |
+| 用戶端子網         | 使用點對點 VPN 進行連接時，用戶端子網提供 DHCP 位址。 當您在 CloudSimple 門戶上創建點對點 VPN 閘道時，需要此子網。  網路分為兩個子網;一個用於 UDP 連接，另一個用於 TCP 連接。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* [用於存取您的 AVS 私用雲端的內部部署防火牆設定](on-premises-firewall-configuration.md)
-* [快速入門-建立 AVS 服務](quickstart-create-cloudsimple-service.md)
-* [快速入門-設定 AVS 私人雲端](quickstart-create-private-cloud.md)
-* 深入瞭解[Azure 網路](cloudsimple-azure-network-connection.md)連線
-* 深入瞭解[VPN 閘道](cloudsimple-vpn-gateways.md)
+* [用於訪問私有雲的本地防火牆設置](on-premises-firewall-configuration.md)
+* [快速入門 - 創建雲簡單服務](quickstart-create-cloudsimple-service.md)
+* [快速入門 - 配置私有雲](quickstart-create-private-cloud.md)
+* 瞭解有關[Azure 網路連接](cloudsimple-azure-network-connection.md)的更多資訊
+* 瞭解有關[VPN 閘道](cloudsimple-vpn-gateways.md)的更多

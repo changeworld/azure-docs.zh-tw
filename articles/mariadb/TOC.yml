@@ -63,6 +63,8 @@
           href: concepts-data-access-security-private-link.md
         - name: 進階威脅防護
           href: concepts-data-access-and-security-threat-protection.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 業務持續性
       items:
         - name: 業務持續性簡介
@@ -138,6 +140,10 @@
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+    - name: 拒絕公用網路存取
+      items:
+        - name: Azure 入口網站
+          href: howto-deny-public-network-access.md
     - name: 存取伺服器記錄
       items:
         - name: 慢速查詢記錄
@@ -206,7 +212,7 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'

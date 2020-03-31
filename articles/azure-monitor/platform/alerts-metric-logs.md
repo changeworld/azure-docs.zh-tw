@@ -6,29 +6,29 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9f61c62bc4960cb8e5bff31f84bd73a14240b613
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055171"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>為 Azure 監視器中的記錄建立計量警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure 監視器支援的[計量警示類型](../../azure-monitor/platform/alerts-metric-near-real-time.md)具有優於[傳統警示](../../azure-monitor/platform/alerts-classic-portal.md)的優點。 計量適用於 [Azure 服務的大型清單](../../azure-monitor/platform/metrics-supported.md)。 此文章說明 `Microsoft.OperationalInsights/workspaces` 資源子集的使用量。
 
-您可以針對從記錄中的計量（包括 Azure 或內部部署中的資源）所組成的熱門 Log Analytics 記錄，使用計量警示。 以下列出支援的 Log Analytics 解決方案：
+您可以在作為指標從日誌（包括 Azure 或本地資源）中提取的指標的常用日誌分析日誌上使用指標警報。 以下列出支援的 Log Analytics 解決方案：
 
 - Windows 和 Linux 電腦的[效能計數器](../../azure-monitor/platform/data-sources-performance-counters.md)
 - [代理程式健全狀況的活動訊號記錄](../../azure-monitor/insights/solution-agenthealth.md)
 - [更新管理](../../automation/automation-update-management.md)記錄
 - [事件資料](../../azure-monitor/platform/data-sources-windows-events.md)記錄
 
-在 Azure 中對以查詢為基礎的**記錄警示**使用[記錄的計量警示](../../azure-monitor/platform/alerts-log.md)有許多優點；以下列出一部分優點：
+在 Azure 中對以查詢為基礎的[記錄警示](../../azure-monitor/platform/alerts-log.md)使用**記錄的計量警示**有許多優點；以下列出一部分優點：
 
 - 計量警示提供近乎即時的監視功能，以及來自記錄來源的記錄計量警示分支資料，以確保一致性。
 - 計量警示具狀態，只會在引發警示和解決警示時各通知一次，因此與無狀態、只要符合警示條件就會在每個間隔持續引發的記錄警示並不相同。
@@ -42,7 +42,7 @@ Azure 監視器支援的[計量警示類型](../../azure-monitor/platform/alerts
  計量警示支援對使用維度的計量發出警示。 您可以使用維度來將計量篩選到正確層級。 跨支援的解決方案列出來自 [Log Analytics 工作區](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)的記錄所支援計量的完整清單。
 
 > [!NOTE]
-> 若要檢視透過 [Azure 監視器 - 計量](../../azure-monitor/platform/metrics-charts.md)從 Log Analytics 工作區擷取的支援計量，則必須為所述計量建立記錄的計量警示。 在記錄的計量警示中選擇的維度，只會透過 [Azure 監視器 - 計量] 顯示以供探索。
+> 要查看通過[Azure 監視器 - 指標](../../azure-monitor/platform/metrics-charts.md)從日誌分析工作區中提取的受支援的指標，必須在該特定指標上創建日誌指標警報。 日誌指標警報中選擇的維度 - 將僅顯示通過 Azure 監視器 - 指標進行流覽。
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>建立 Log Analytics 的計量警示
 
@@ -54,9 +54,9 @@ Azure 監視器支援的[計量警示類型](../../azure-monitor/platform/alerts
 在針對 Log Analytics 資料所收集記錄的計量發揮作用之前，必須先設定並提供下列各項：
 
 1. **使用中的 Log Analytics 工作區**：有效且使用中的 Log Analytics 工作區必須存在。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
-2. 已**針對 Log Analytics 工作區設定代理程式**：需要為 Azure vm （和/或）內部部署 vm 設定代理程式，以將資料傳送至先前步驟中使用的 Log Analytics 工作區。 如需詳細資訊，請參閱 [Log Analytics - 代理程式概觀](../../azure-monitor/platform/agents-overview.md)。
-3. **已安裝支援的 Log Analytics 解決方案**：應設定 log analytics 解決方案，並將資料傳送至 log analytics 工作區-支援的解決方案為[Windows & Linux 的效能計數器](../../azure-monitor/platform/data-sources-performance-counters.md)、[代理程式健全狀況的心跳記錄](../../azure-monitor/insights/solution-agenthealth.md)、[更新管理](../../automation/automation-update-management.md)和[事件資料](../../azure-monitor/platform/data-sources-windows-events.md)。
-4. **設定 Log Analytics 解決方案以傳送記錄**：Log Analytics 解決方案應啟用對應至 [Log Analytics 工作區所支援計量](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)的必要記錄/資料。 例如，您必須先在*效能計數器*解決方案中設定其 [% Available Memory](../../azure-monitor/platform/data-sources-performance-counters.md) 計數器。
+2. **代理配置為日誌分析工作區**：需要為 Azure VM（和/或）本地 VM 配置代理，以便將資料發送到前面步驟中使用的日誌分析工作區。 如需詳細資訊，請參閱 [Log Analytics - 代理程式概觀](../../azure-monitor/platform/agents-overview.md)。
+3. **已安裝支援的日誌分析解決方案**：應配置日誌分析解決方案並將資料發送到日誌分析工作區 - 支援的解決方案是[Windows & Linux 的效能計數器](../../azure-monitor/platform/data-sources-performance-counters.md)、[代理運行狀況的檢測記錄](../../azure-monitor/insights/solution-agenthealth.md)、[更新管理和](../../automation/automation-update-management.md)[事件資料](../../azure-monitor/platform/data-sources-windows-events.md)。
+4. **設定 Log Analytics 解決方案以傳送記錄**：Log Analytics 解決方案應啟用對應至 [Log Analytics 工作區所支援計量](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)的必要記錄/資料。 例如，您必須先在[效能計數器](../../azure-monitor/platform/data-sources-performance-counters.md)解決方案中設定其 *% Available Memory* 計數器。
 
 ## <a name="configuring-metric-alert-for-logs"></a>設定記錄的計量警示
 
@@ -64,14 +64,14 @@ Azure 監視器支援的[計量警示類型](../../azure-monitor/platform/alerts
 
 如需逐步詳細資料與範例，請參閱[建立及管理計量警示](https://aka.ms/createmetricalert)。 具體就記錄的計量警示而言，請依照指示來管理計量警示，並確定下列各項：
 
-- 計量警示的目標是有效的「Log Analytics 工作區」
-- 為所選取「Log Analytics 工作區」的計量警示選擇的訊號是 [計量] 類型
+- 計量警示的目標是有效的「Log Analytics 工作區」**
+- 為所選取「Log Analytics 工作區」** 的計量警示選擇的訊號是 [計量]**** 類型
 - 使用維度篩選篩選特定條件或資源；記錄的計量是多維度的
-- 當設定「訊號邏輯」時，可建立訊號警示，以延伸維度 (像是電腦) 的多個值
+- 當設定「訊號邏輯」** 時，可建立訊號警示，以延伸維度 (像是電腦) 的多個值
 - 如果**未**使用 Azure 入口網站為選取的 *Log Analytics 工作區*建立計量警示，則使用者必須使用 [Azure 監視器 - 排程的查詢規則](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，先建立將記錄資料轉換為計量的明確規則。
 
 > [!NOTE]
-> 透過 Azure 入口網站為 Log Analytics 工作區建立計量警示時，透過 [Azure 監視器 - 排程的查詢規則](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)將記錄資料轉換為計量的對應規則會在背景自動建立，完全不需要使用者介入或採取行動。 如需使用 Azure 入口網站以外的方法所建立記錄的計量警示，請參閱[記錄的計量警示所適用資源範本](#resource-template-for-metric-alerts-for-logs)一節中，在建立計量警示之前，對計量轉換規則建立 ScheduledQueryRule 記錄的示範方法，否則對記錄建立的計量警示不會有任何資料。
+> 通過 Azure 門戶為日誌分析工作區創建指標警報時 （用於通過 Azure 監視器 將日誌資料轉換為指標的相應規則[） 計畫查詢規則](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)會自動在後臺創建，*無需任何使用者干預或操作*。 如需使用 Azure 入口網站以外的方法所建立記錄的計量警示，請參閱[記錄的計量警示所適用資源範本](#resource-template-for-metric-alerts-for-logs)一節中，在建立計量警示之前，對計量轉換規則建立 ScheduledQueryRule 記錄的示範方法，否則對記錄建立的計量警示不會有任何資料。
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>記錄的計量警示所適用資源範本
 
@@ -689,4 +689,4 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 
 - 深入了解[計量警示](alerts-metric.md)。
 - 了解 [Azure 中的記錄警示](../../azure-monitor/platform/alerts-unified-log.md)。
-- 深入了解 [Azure 中的警示](alerts-overview.md)。
+- 瞭解[Azure 中的警報](alerts-overview.md)。

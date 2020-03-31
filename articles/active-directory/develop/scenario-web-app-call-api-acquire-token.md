@@ -1,6 +1,6 @@
 ---
-title: 在呼叫 web Api 的 web 應用程式中取得權杖-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何為呼叫 web Api 的 web 應用程式取得權杖
+title: 在調用 Web API 的 Web 應用中獲取權杖 - 微軟身份平臺 |蔚藍
+description: 瞭解如何為調用 Web API 的 Web 應用獲取權杖
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759069"
 ---
-# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 web 應用程式：取得應用程式的權杖
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>調用 Web API 的 Web 應用：獲取應用的權杖
 
-您已建立用戶端應用程式物件。 現在，您將使用它來取得權杖，以呼叫 Web API。 在 ASP.NET 或 ASP.NET Core 中，呼叫 Web API 是在控制器中完成：
+您已經生成了用戶端應用程式物件。 現在，您將使用它獲取權杖來調用 Web API。 在ASP.NET或ASP.NET核心中，調用 Web API 在控制器中完成：
 
-- 使用權杖快取取得 Web API 的權杖。 若要取得此權杖，請呼叫 `AcquireTokenSilent` 方法。
-- 呼叫受保護的 API，並將存取權杖當做參數傳遞給它。
+- 使用權杖緩存獲取 Web API 的權杖。 要獲取此權杖，請調用`AcquireTokenSilent`方法。
+- 調用受保護的 API，將訪問權杖作為參數傳遞給它。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-控制器方法會受到 `[Authorize]` 屬性的保護，強制使用者進行驗證以使用 web 應用程式。 以下是呼叫 Microsoft Graph 的程式碼：
+控制器方法受強制`[Authorize]`經過身份驗證的使用者使用 Web 應用的屬性的保護。 下面是調用 Microsoft 圖形的代碼：
 
 ```csharp
 [Authorize]
@@ -48,9 +48,9 @@ public class HomeController : Controller
 }
 ```
 
-使用相依性插入，ASP.NET 會插入 `ITokenAcquisition` 服務。
+該服務`ITokenAcquisition`由ASP.NET使用依賴項注入注入。
 
-以下是 `HomeController`的動作簡化的程式碼，它會取得要呼叫 Microsoft Graph 的權杖：
+下面是 的簡化代碼，用於 操作，`HomeController`該代碼獲取權杖以調用 Microsoft Graph：
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -66,28 +66,28 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-若要進一步瞭解此案例所需的程式碼，請參閱[aspnetcore-webapp-教學](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)課程教學課程的第2階段（[2-1-Web 應用程式呼叫 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步驟。
+要更好地瞭解此方案所需的代碼，請參閱[ms-身份-aspnetcore-webapp 教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)的第 2 階段[（2-1-Web 應用程式調用 Microsoft 圖形](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步驟。
 
 還有其他複雜的變化，例如：
 
-- 呼叫數個 Api。
-- 處理累加同意和條件式存取。
+- 調用多個 API。
+- 處理增量同意和條件訪問。
 
-[3-WebApp-多 api](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs)教學課程的第3章將涵蓋這些 advanced 步驟。
+這些高級步驟在[3-WebApp 多 API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs)教程的第 3 章仲介紹。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET 的程式碼類似于 ASP.NET Core 顯示的程式碼：
+ASP.NET的代碼類似于為 ASP.NET Core 顯示的代碼：
 
-- 由 [授權] 屬性保護的控制器動作，會解壓縮控制器之 `ClaimsPrincipal` 成員的租使用者識別碼和使用者識別碼。 （ASP.NET 會使用 `HttpContext.User`）。
-- 接著，它會建立一個 MSAL.NET `IConfidentialClientApplication` 物件。
-- 最後，它會呼叫機密用戶端應用程式的 `AcquireTokenSilent` 方法。
+- 受 [授權] 屬性保護的控制器操作提取控制器成員的`ClaimsPrincipal`租戶 ID 和使用者 ID。 （ASP.NET`HttpContext.User`使用 .）
+- 從那裡，它生成一個MSAL.NET`IConfidentialClientApplication`物件。
+- 最後，`AcquireTokenSilent`調用機密用戶端應用程式的方法。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[JAVA](#tab/java)
 
-在 JAVA 範例中，呼叫 API 的程式碼位於[AuthPageController. JAVA # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)的 getUsersFromGraph 方法中。
+在 JAVA 示例中，調用 API 的代碼位於[AuthPageController.java_L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)中的 getUserFromGraph 方法中。
 
-方法會嘗試呼叫 `getAuthResultBySilentFlow`。 如果使用者需要同意更多的範圍，程式碼會處理 `MsalInteractionRequiredException` 物件，以挑戰使用者。
+該方法嘗試調用`getAuthResultBySilentFlow`。 如果使用者需要同意更多作用域，代碼將處理`MsalInteractionRequiredException`物件以挑戰使用者。
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")
@@ -145,11 +145,11 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 // Code omitted here
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-在 Python 範例中，呼叫 Microsoft Graph 的程式碼位於[.py # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62)。
+在 Python 示例中，調用 Microsoft 圖形的代碼位於[app.py_L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62)中。
 
-程式碼會嘗試從權杖快取取得權杖。 然後，在設定 authorization 標頭之後，它會呼叫 Web API。 如果它無法取得權杖，它就會再次將使用者重新登入。
+代碼嘗試從權杖緩存獲取權杖。 然後，在設置授權標頭後，它調用 Web API。 如果無法獲取權杖，則再次登錄使用者。
 
 ```python
 @app.route("/graphcall")

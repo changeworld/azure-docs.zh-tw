@@ -6,16 +6,16 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250062"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239167"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>教學課程：在 Resource Manager 範本部署中整合 Azure Key Vault
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教學課程：在 ARM 範本部署中整合 Azure Key Vault
 
-了解如何從 Azure 金鑰保存庫擷取祕密，並且在部署 Azure Resource Manager 時傳遞祕密作為參數。 您只參考其金鑰保存庫識別碼，因此參數值絕不會公開。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
+了解如何從 Azure 金鑰保存庫擷取祕密，並且在部署 Azure Resource Manager (ARM) 範本時傳遞祕密作為參數。 您只參考其金鑰保存庫識別碼，因此參數值絕不會公開。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
 
 在[設定資源部署順序](./template-tutorial-create-templates-with-dependent-resources.md)教學課程中，您建立了虛擬機器 (VM)。 您需要提供虛擬機器系統管理員的使用者名稱和密碼。 您可以不提供密碼，而是將密碼預先儲存在 Azure 金鑰保存庫，然後自訂範本以在部署期間從金鑰保存庫擷取密碼。
 
@@ -39,7 +39,7 @@ ms.locfileid: "78250062"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](use-vs-code-to-create-template.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
 * 為了提高安全性，請使用為 VM 系統管理員帳戶產生的密碼。 以下是用於產生密碼的範例：
 
     ```console
@@ -49,7 +49,7 @@ ms.locfileid: "78250062"
 
 ## <a name="prepare-a-key-vault"></a>準備金鑰保存庫
 
-在本節中，您會建立金鑰保存庫，並在其中新增祕密，以便可以在部署範本時擷取祕密。 有許多方式可以建立金鑰保存庫。 在本教學課程中，您會使用 Azure PowerShell 來部署 [Resource Manager 範本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)。 此範本會執行以下動作：
+在本節中，您會建立金鑰保存庫，並在其中新增祕密，以便可以在部署範本時擷取祕密。 有許多方式可以建立金鑰保存庫。 在本教學課程中，您會使用 Azure PowerShell 來部署 [ARM 範本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)。 此範本會執行以下動作：
 
 * 在啟用 `enabledForTemplateDeployment` 屬性的情況下建立金鑰保存庫。 此屬性必須為 *true*，範本部署程序才能存取此金鑰保存庫中定義的祕密。
 * 將秘密新增至金鑰保存庫。 此祕密會儲存虛擬機器的系統管理員密碼。
@@ -97,7 +97,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="open-a-quickstart-template"></a>開啟快速入門範本
 
-Azure 快速入門範本是 Resource Manager 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本教學課程中使用的範本名為[部署簡單的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
+Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本教學課程中使用的範本名為[部署簡單的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，選取 [檔案]   > [開啟檔案]  。
 
@@ -107,7 +107,7 @@ Azure 快速入門範本是 Resource Manager 範本的存放庫。 您可以尋�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. 選取 [開啟]  以開啟檔案。 案例與 [ 教學課程中所用的案例相同：使用相依資源建立 Azure Resource Manager 範本](./template-tutorial-create-templates-with-dependent-resources.md)中使用的 Cloud Shell 部署方法。
+1. 選取 [開啟]  以開啟檔案。 案例與 [ 教學課程中所用的案例相同：建立具有相依資源的 ARM 範本](./template-tutorial-create-templates-with-dependent-resources.md)。
    範本會定義五個資源：
 
    * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Storage/storageAccounts`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。

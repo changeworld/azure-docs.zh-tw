@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249460"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047687"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-##  <a name="TransformationPolicies"></a> 轉換原則
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>轉換策略
 
 -   [將 JSON 轉換成 XML](api-management-transformation-policies.md#ConvertJSONtoXML) - 將要求或回應內文從 JSON 轉換成 XML。
 
 -   [將 XML 轉換成 JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) - 將要求或回應內文從 XML 轉換成 JSON。
 
--   [在內文中尋找並取代字串](api-management-transformation-policies.md#Findandreplacestringinbody) - 尋找要求或回應子字串，並將它取代為其他子字串。
+-   [在內文中尋找並取代字串](api-management-transformation-policies.md#Findandreplacestringinbody) - 尋找要求或回應子字串，並替換為其他子字串。
 
 -   [遮罩內容中的 URL](api-management-transformation-policies.md#MaskURLSContent) - 重寫 (遮罩) 回應內文的連結，使其經由閘道器指向同等的連結。
 
@@ -44,7 +44,7 @@ ms.locfileid: "79249460"
 
 -   [使用 XSLT 轉換 XML](api-management-transformation-policies.md#XSLTransform) - 將 XSL 轉換套用至要求或回應本文中的 XML。
 
-##  <a name="ConvertJSONtoXML"></a> 將 JSON 轉換成 XML
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> 將 JSON 轉換成 XML
  `json-to-xml` 原則將要求或回應本文從 JSON 轉換成 XML。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -78,7 +78,7 @@ ms.locfileid: "79249460"
 |名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律套用轉換。<br />-   content-type-json - 只有當回應中的 Content-type 標頭指出 JSON 存在時才轉換。|是|N/A|
-|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 JSON，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
+|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 XML，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
 |剖析日期|設定為 `false` 時，只會在轉換期間複製日期值|否|true|
 
 ### <a name="usage"></a>使用量
@@ -88,7 +88,7 @@ ms.locfileid: "79249460"
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="ConvertXMLtoJSON"></a> 將 XML 轉換成 JSON
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> 將 XML 轉換成 JSON
  `xml-to-json` 原則將要求或回應本文從 XML 轉換成 JSON。 此原則可用於將架構在「僅使用 XML 的後端 Web 服務」上的 API 現代化。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -123,7 +123,7 @@ ms.locfileid: "79249460"
 |----------|-----------------|--------------|-------------|
 |kind|此屬性必須設為下列其中一個值。<br /><br /> -   javascript-friendly - 轉換後的 JSON 有 JavaScript 開發人員熟悉的格式。<br />-   direct -  | 轉換後的 JSON 可反映原始 XML 文件的結構。|是|N/A|
 |apply|此屬性必須設為下列其中一個值。<br /><br /> -   always - 一律轉換。<br />-   content-type-xml - 只有當回應中的 Content-type 標頭指出 XML 存在時才轉換。|是|N/A|
-|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 XML，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
+|consider-accept-header|此屬性必須設為下列其中一個值。<br /><br /> -   true - 如果在要求的 Accept 標頭中要求 JSON，才套用轉換。<br />-   false - 一律套用轉換。|否|true|
 
 ### <a name="usage"></a>使用量
  此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
@@ -132,7 +132,7 @@ ms.locfileid: "79249460"
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="Findandreplacestringinbody"></a> 在本文中尋找並取代字串
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> 在本文中尋找並取代字串
  `find-and-replace` 原則會尋找要求或回應子字串，並取代為不同的子字串。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -167,7 +167,7 @@ ms.locfileid: "79249460"
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="MaskURLSContent"></a> 遮罩內容中的 URL
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> 遮罩內容中的 URL
  `redirect-content-urls` 原則會重寫 (遮罩) 回應本文中的連結，使其經由閘道器指向同等的連結。 使用在輸出區段中，用以重新撰寫回應本文連結，使其指向閘道。 使用在輸入區段中則效果相反。
 
 > [!NOTE]
@@ -198,7 +198,7 @@ ms.locfileid: "79249460"
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="SetBackendService"></a> 設定後端服務
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> 設定後端服務
  使用 `set-backend-service` 原則將傳入要求重新導向至不同的後端，而不是 API 設定中為該作業指定的後端。 此原則會將傳入要求中的後端服務基底 URL 變更為原則中指定的 URL。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -214,7 +214,7 @@ ms.locfileid: "79249460"
 ```
 
 > [!NOTE]
-> 您可以透過管理[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理後端實體。
+> 後端實體可以通過管理[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。
 
 ### <a name="example"></a>範例
 
@@ -268,8 +268,8 @@ ms.locfileid: "79249460"
 
 |名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
-|base-url|新的後端服務基底 URL。|其中一個 `base-url` 或 `backend-id` 必須存在。|N/A|
-|backend-id|要傳送至的後端識別碼。 （後端實體是透過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)來管理）。|其中一個 `base-url` 或 `backend-id` 必須存在。|N/A|
+|base-url|新的後端服務基底 URL。|或`base-url``backend-id`必須存在。|N/A|
+|backend-id|要傳送至的後端識別碼。 （後端實體通過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。|或`base-url``backend-id`必須存在。|N/A|
 |sf-partition-key|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 用於從名稱解析服務解析特定資料分割。|否|N/A|
 |sf-replica-type|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 控制要求應移至資料分割的主要或次要複本。 |否|N/A|
 |sf-resolve-condition|僅適用於後端為 Service Fabric 服務時。 識別新的解析是否必須重複呼叫 Service Fabric 後端的條件。|否|N/A|
@@ -283,7 +283,7 @@ ms.locfileid: "79249460"
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="SetBody"></a> 設定本文
+##  <a name="set-body"></a><a name="SetBody"></a> 設定本文
  使用 `set-body` 原則來設定傳入和傳出要求的訊息本文。 若要存取訊息本文，您可以使用 `context.Request.Body` 屬性或 `context.Response.Body`，取決於原則是在輸入或輸出區段中。
 
 > [!IMPORTANT]
@@ -296,7 +296,7 @@ ms.locfileid: "79249460"
 >   -   在輸出管線中保留要求的內容沒有意義，因為此時要求已傳送至後端。
 >   -   如果在沒有任何訊息本文時使用此原則，例如輸入 GET，會擲回例外狀況。
 
- 如需詳細資訊，請參閱`context.Request.Body`內容變數`context.Response.Body`表中 `IMessage`、[、](api-management-policy-expressions.md#ContextVariables) 的部分。
+ 如需詳細資訊，請參閱[內容變數](api-management-policy-expressions.md#ContextVariables)表中 `context.Request.Body`、`context.Response.Body`、`IMessage` 的部分。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -453,7 +453,7 @@ OriginalUrl.
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="SetHTTPheader"></a> 設定 HTTP 標頭
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> 設定 HTTP 標頭
  `set-header` 原則會指派值給現有的回應及/或要求標頭，或加入新的回應及/或要求標頭。
 
  將 HTTP 標頭清單插入至 HTTP 訊息中。 放在輸入管線中時，此原則會為傳遞至目標服務的要求設定 HTTP 標頭。 放在輸出管線中時，此原則會為傳送至閘道器用戶端的回應設定 HTTP 標頭。
@@ -468,14 +468,14 @@ OriginalUrl.
 
 ### <a name="examples"></a>範例
 
-#### <a name="example---adding-header-override-existing"></a>範例-新增標頭、覆寫現有的
+#### <a name="example---adding-header-override-existing"></a>示例 - 添加標頭，覆蓋現有
 
 ```xml
 <set-header name="some header name" exists-action="override">
     <value>20</value>
 </set-header>
 ```
-#### <a name="example---removing-header"></a>範例-移除標頭
+#### <a name="example---removing-header"></a>示例 - 刪除標頭
 
 ```xml
  <set-header name="some header name" exists-action="delete" />
@@ -497,14 +497,14 @@ OriginalUrl.
  如需詳細資訊，請參閱[原則運算式](api-management-policy-expressions.md)和[內容變數](api-management-policy-expressions.md#ContextVariables)。
 
 > [!NOTE]
-> 標頭的多個值會串連成 CSV 字串，例如： `headerName: value1,value2,value3`
+> 標頭的多個值將串聯到 CSV 字串中，例如：`headerName: value1,value2,value3`
 >
 > 例外狀況包括值具有下列情況的標準化標頭：
 > - 可能包含逗號 (`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`)，
 > - 可能包含日期 (`Cookie`、`Set-Cookie`、`Warning`)，
 > - 包含日期 (`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`)。
 >
-> 如果發生這些例外狀況，多個標頭值將不會串連成一個字串，並會當做個別的標頭來傳遞，例如： `User-Agent: value1`
+> 如果這些異常，多個標頭值將不會串聯到一個字串中，並將作為單獨的標頭傳遞，例如：`User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
@@ -529,7 +529,7 @@ OriginalUrl.
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="SetQueryStringParameter"></a> 設定查詢字串參數
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> 設定查詢字串參數
  `set-query-parameter` 原則會新增、取代值或刪除要求查詢字串參數。 可用來傳遞後端服務所需的查詢參數，為選擇性或從未存在於要求中。
 
 ### <a name="policy-statement"></a>原則陳述式
@@ -589,7 +589,7 @@ OriginalUrl.
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="RewriteURL"></a> 重寫 URL
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> 重寫 URL
  `rewrite-uri` 原則會將要求 URL 從公用格式轉換成 Web 服務所需的格式，如以下範例中所示。
 
 - 公用 URL - `http://api.example.com/storenumber/ordernumber`
@@ -667,7 +667,7 @@ OriginalUrl.
 
 -   **原則範圍：** 所有範圍
 
-##  <a name="XSLTransform"></a> 使用 XSLT 轉換 XML
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> 使用 XSLT 轉換 XML
  `Transform XML using an XSLT` 原則會將 XSL 轉換套用至要求或回應本文中的 XML。
 
 ### <a name="policy-statement"></a>原則陳述式

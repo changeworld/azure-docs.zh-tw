@@ -1,26 +1,26 @@
 ---
-title: 使用 OpenCensus Python Azure 應用程式深入解析中的相依性追蹤 |Microsoft Docs
-description: 透過 OpenCensus Python 監視 Python 應用程式的相依性呼叫。
+title: 使用 OpenCensus Python 在 Azure 應用程式洞察中跟蹤依賴項 |微軟文檔
+description: 通過 OpenCensus Python 監視 Python 應用的依賴項調用。
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669925"
 ---
-# <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 追蹤相依性
+# <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 跟蹤依賴項
 
-「相依性」（dependency）是指應用程式所呼叫的外部元件。 使用 OpenCensus Python 和其各種整合來收集相依性資料。 然後，資料會以 `dependencies` 遙測傳送至 Azure 監視器下的 Application Insights。
+依賴項是應用程式調用的外部元件。 依賴項資料使用 OpenCensus Python 及其各種集成進行收集。 然後，資料作為`dependencies`遙測資料發送到 Azure 監視器下的應用程式見解。
 
-首先，使用最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)檢測您的 python 應用程式。
+首先，使用最新的[OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md)來檢測您的 Python 應用程式。
 
-## <a name="in-process-dependencies"></a>同進程相依性
+## <a name="in-process-dependencies"></a>進程內依賴項
 
-OpenCensus 適用于 Azure 監視器的 Python SDK 可讓您傳送「同進程」相依性遙測（應用程式內所發生的資訊和邏輯）。 同進程相依性將會有 [`type`] 欄位，做為分析中的 `INPROC`。
+Azure 監視器的 OpenCensus Python SDK 允許您發送"進程內"依賴項遙測（應用程式中發生的資訊和邏輯）。 進程內依賴項將具有`type`與分析一樣`INPROC`的欄位。
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -33,11 +33,11 @@ with tracer.span(name='foo'): # <-- A dependency telemetry item will be sent for
     print('Hello, World!')
 ```
 
-## <a name="dependencies-with-requests-integration"></a>與「要求」整合的相依性
+## <a name="dependencies-with-requests-integration"></a>具有"請求"集成的依賴項
 
-使用 OpenCensus `requests` 整合來追蹤您的連出要求。
+使用 OpenCensus`requests`集成跟蹤傳出請求。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-requests/)下載並安裝 `opencensus-ext-requests`，並將它新增至追蹤整合。 將會追蹤使用 Python[要求](https://pypi.org/project/requests/)程式庫傳送的要求。
+從`opencensus-ext-requests`[PyPI](https://pypi.org/project/opencensus-ext-requests/)下載並安裝，並將其添加到跟蹤集成中。 將使用 Python 請求庫發送[的請求](https://pypi.org/project/requests/)將被跟蹤。
 
 ```python
 import requests
@@ -54,11 +54,11 @@ with tracer.span(name='parent'):
     response = requests.get(url='https://www.wikipedia.org/wiki/Rabbit') # <-- this request will be tracked
 ```
 
-## <a name="dependencies-with-httplib-integration"></a>與 "HTTPlib" 整合的相依性
+## <a name="dependencies-with-httplib-integration"></a>具有"HTTPlib"集成的依賴項
 
-使用 OpenCensus `httplib` 整合來追蹤您的連出要求。
+通過 OpenCensus`httplib`集成跟蹤傳出請求。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-httplib/)下載並安裝 `opencensus-ext-httplib`，並將它新增至追蹤整合。 將會追蹤使用[HTTP](https://docs.python.org/3.7/library/http.client.html)傳送的要求 Python3 或[HTTPlib](https://docs.python.org/2/library/httplib.html) for Python2。
+從`opencensus-ext-httplib`[PyPI](https://pypi.org/project/opencensus-ext-httplib/)下載並安裝，並將其添加到跟蹤集成中。 將使用[HTTP.client](https://docs.python.org/3.7/library/http.client.html)為 Python3 或[HTTPlib](https://docs.python.org/2/library/httplib.html)發送的 Python2 請求將被跟蹤。
 
 ```python
 import http.client as httplib
@@ -80,11 +80,11 @@ response = conn.getresponse()
 conn.close()
 ```
 
-## <a name="dependencies-with-django-integration"></a>與 "django" 整合的相依性
+## <a name="dependencies-with-django-integration"></a>具有"django"集成的依賴關係
 
-使用 OpenCensus `django` 整合來追蹤您的連出 Django 要求。
+使用 OpenCensus`django`集成跟蹤傳出的 Django 請求。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-django/)下載並安裝 `opencensus-ext-django`，並將下列程式程式碼新增至 Django `settings.py` 檔的 `MIDDLEWARE` 區段。
+從[PyPI](https://pypi.org/project/opencensus-ext-django/)下載並安裝`MIDDLEWARE``settings.py``opencensus-ext-django`，並將以下行添加到 Django 檔中的部分。
 
 ```python
 MIDDLEWARE = [
@@ -93,7 +93,7 @@ MIDDLEWARE = [
 ]
 ```
 
-可以提供其他設定，請閱讀[自訂](https://github.com/census-instrumentation/opencensus-python#customization)以取得完整的參考。
+可以提供其他配置，讀取[自訂以](https://github.com/census-instrumentation/opencensus-python#customization)進行完整參考。
 
 ```python
 OPENCENSUS = {
@@ -106,11 +106,11 @@ OPENCENSUS = {
 }
 ```
 
-## <a name="dependencies-with-mysql-integration"></a>與「mysql」整合的相依性
+## <a name="dependencies-with-mysql-integration"></a>具有"mysql"集成的依賴項
 
-使用 OpenCensus `mysql` 整合來追蹤您的 MYSQL 相依性。 此整合支援[mysql-連接器](https://pypi.org/project/mysql-connector-python/)程式庫。
+使用 OpenCensus`mysql`集成跟蹤 MYSQL 依賴項。 此集成支援[mysql 連接器](https://pypi.org/project/mysql-connector-python/)庫。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-mysql/)下載並安裝 `opencensus-ext-mysql`，並將下列幾行新增至您的程式碼。
+從`opencensus-ext-mysql`[PyPI](https://pypi.org/project/opencensus-ext-mysql/)下載並安裝，並將以下行添加到代碼中。
 
 ```python
 from opencensus.trace import config_integration
@@ -118,11 +118,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['mysql'])
 ```
 
-## <a name="dependencies-with-pymysql-integration"></a>與 "pymysql" 整合的相依性
+## <a name="dependencies-with-pymysql-integration"></a>具有"pymysql"集成的依賴項
 
-使用 OpenCensus `pymysql` 整合來追蹤您的 PyMySQL 相依性。
+使用 OpenCensus`pymysql`集成跟蹤您的 PyMySQL 依賴項。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-pymysql/)下載並安裝 `opencensus-ext-pymysql`，並將下列幾行新增至您的程式碼。
+從`opencensus-ext-pymysql`[PyPI](https://pypi.org/project/opencensus-ext-pymysql/)下載並安裝，並將以下行添加到代碼中。
 
 ```python
 from opencensus.trace import config_integration
@@ -130,11 +130,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymysql'])
 ```
 
-## <a name="dependencies-with-postgresql-integration"></a>與 "于 postgresql" 整合的相依性
+## <a name="dependencies-with-postgresql-integration"></a>具有"後格雷sql"集成的依賴項
 
-使用 OpenCensus `postgresql` 整合來追蹤您的于 postgresql 相依性。 此整合支援[psycopg2](https://pypi.org/project/psycopg2/)程式庫。
+使用 OpenCensus`postgresql`集成跟蹤 PostgreSQL 依賴項。 此集成支援[psycopg2](https://pypi.org/project/psycopg2/)庫。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-postgresql/)下載並安裝 `opencensus-ext-postgresql`，並將下列幾行新增至您的程式碼。
+從`opencensus-ext-postgresql`[PyPI](https://pypi.org/project/opencensus-ext-postgresql/)下載並安裝，並將以下行添加到代碼中。
 
 ```python
 from opencensus.trace import config_integration
@@ -142,11 +142,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['postgresql'])
 ```
 
-## <a name="dependencies-with-pymongo-integration"></a>與 "pymongo" 整合的相依性
+## <a name="dependencies-with-pymongo-integration"></a>具有"pymongo"集成的依賴關係
 
-使用 OpenCensus `pymongo` 整合來追蹤您的 MongoDB 相依性。 此整合支援[pymongo](https://pypi.org/project/pymongo/)程式庫。
+使用 OpenCensus`pymongo`集成跟蹤您的 MongoDB 依賴項。 此集成支援[pymongo](https://pypi.org/project/pymongo/)庫。
 
-從[PyPI](https://pypi.org/project/opencensus-ext-pymongo/)下載並安裝 `opencensus-ext-pymongo`，並將下列幾行新增至您的程式碼。
+從`opencensus-ext-pymongo`[PyPI](https://pypi.org/project/opencensus-ext-pymongo/)下載並安裝，並將以下行添加到代碼中。
 
 ```python
 from opencensus.trace import config_integration
@@ -154,9 +154,9 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymongo'])
 ```
 
-### <a name="dependencies-with-sqlalchemy-integration"></a>與 "sqlalchemy" 整合的相依性
+### <a name="dependencies-with-sqlalchemy-integration"></a>具有"sqlchemy"集成的依賴項
 
-使用 OpenCensus `sqlalchemy` 整合來追蹤您的相依性。 不論基礎資料庫為何，此整合都會追蹤[sqlalchemy](https://pypi.org/project/SQLAlchemy/)套件的使用方式。
+使用 OpenCensus`sqlalchemy`集成使用 SQLAlchemy 跟蹤您的依賴項。 此集成跟蹤[sqlalchemy](https://pypi.org/project/SQLAlchemy/)包的使用方式，而不考慮基礎資料庫。
 
 ```python
 from opencensus.trace import config_integration
@@ -166,8 +166,8 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>後續步驟
 
-* [應用程式對應](../../azure-monitor/app/app-map.md)
+* [應用程式映射](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
 * [搜尋](../../azure-monitor/app/diagnostic-search.md)
-* [記錄（分析）查詢](../../azure-monitor/log-query/log-query-overview.md)
+* [日誌（分析）查詢](../../azure-monitor/log-query/log-query-overview.md)
 * [交易診斷](../../azure-monitor/app/transaction-diagnostics.md)

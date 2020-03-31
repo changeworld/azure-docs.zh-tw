@@ -1,5 +1,5 @@
 ---
-title: 建立具有 IPv6 Azure PowerShell 的網際網路面向負載平衡器
+title: 使用 IPv6 創建面向 Internet 的負載等化器 - Azure PowerShell
 titleSuffix: Azure Load Balancer
 description: 了解如何使用 PowerShell 在 Resource Manager 中建立配置有 IPv6 的網際網路面向負載平衡器
 services: load-balancer
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045464"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>開始使用 PowerShell 在 Resource Manager 中建立配置有 IPv6 的網際網路面向負載平衡器
 
 > [!div class="op_single_selector"]
-> * [PowerShell](load-balancer-ipv6-internet-ps.md)
+> * [電源外殼](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [範本](load-balancer-ipv6-internet-template.md)
 
 >[!NOTE] 
->本文說明可讓基本負載平衡器同時提供 IPv4 和 IPv6 連線能力的入門 IPv6 功能。 [Ipv6 For Azure vnet](../virtual-network/ipv6-overview.md)現已提供完整的 ipv6 連線能力，其整合了 ipv6 連線與您的虛擬網路，並包含 Ipv6 網路安全性群組規則、ipv6 使用者定義的路由、ipv6 基本和標準負載平衡等主要功能。  適用于 azure Vnet 的 IPv6 是 Azure 中的 IPv6 應用程式建議標準。 請參閱[適用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
+>本文介紹了一個介紹性的 IPv6 功能，允許基本負載等化器同時提供 IPv4 和 IPv6 連接。 適用于[Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md)集成了 IPv6 連接，包括 IPv6 網路安全性群組規則、IPv6 使用者定義的路由、IPv6 基本和標準負載平衡等關鍵功能。  Azure VNET 的 IPv6 是 Azure 中 IPv6 應用程式的建議標準。 [有關 Azure VNET 電源殼部署，請參閱 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡器可藉由在負載平衡器集合中，將連入流量分散於雲端服務或虛擬機器中狀況良好的服務執行個體之間，來提供高可用性。 Azure Load Balancer 也會在多個連接埠、多個 IP 位址或兩者上顯示這些服務。
 
@@ -55,13 +55,13 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡
 
 若要部署負載平衡器，請建立並設定下列物件：
 
-* 前端 IP 設定-包含連入網路流量的公用 IP 位址。
-* 後端位址集區-包含虛擬機器的網路介面（Nic），以接收來自負載平衡器的網路流量。
+* 前端 IP 配置 - 包含傳入網路流量的公共 IP 位址。
+* 後端位址集區 - 包含用於虛擬機器從負載等化器接收網路流量的網路介面 （NIC）。
 * 負載平衡規則 - 包含將負載平衡器上的公用連接埠對應至後端位址集區中連接埠的規則。
 * 輸入 NAT 規則 - 包含將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器之連接埠的規則。
 * 探查 - 包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀態探查。
 
-如需詳細資訊，請參閱[Azure Load Balancer 元件](./concepts-limitations.md#load-balancer-components)。
+有關詳細資訊，請參閱[Azure 負載等化器元件](./concepts-limitations.md#load-balancer-components)。
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>設定 PowerShell 以使用 Resource Manager
 
@@ -102,7 +102,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. 建立前端 IP 位址集區的 Azure 公用 IP 位址 (PIP) 資源。 執行下列命令之前，請務必變更 `-DomainNameLabel` 的值。 此值在 Azure 區域內必須是唯一的。
+2. 建立前端 IP 位址集區的 Azure 公用 IP 位址 (PIP) 資源。 在運行以下命令之前，請確保`-DomainNameLabel`更改 的值。 該值在 Azure 區域中必須是唯一的。
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

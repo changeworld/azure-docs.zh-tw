@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 在 DevTest Labs 中建立虛擬機器
-description: 瞭解如何使用 Azure DevTest Labs 來建立和管理具有 Azure PowerShell 的虛擬機器。
+title: 使用 Azure PowerShell 在 DevTest 實驗室中創建虛擬機器
+description: 瞭解如何使用 Azure 開發人員測試實驗室使用 Azure PowerShell 創建和管理虛擬機器。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76167101"
 ---
-# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用 Azure PowerShell 建立具有 DevTest Labs 的虛擬機器
-本文說明如何使用 Azure PowerShell 在 Azure DevTest Labs 中建立虛擬機器。 您可以使用 PowerShell 腳本，在 Azure DevTest Labs 的實驗室中自動建立虛擬機器。 
+# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用 Azure PowerShell 使用開發人員測試實驗室創建虛擬機器
+本文介紹如何使用 Azure PowerShell 在 Azure 開發人員測試實驗室中創建虛擬機器。 您可以使用 PowerShell 腳本在 Azure 開發人員測試實驗室的實驗室中自動創建虛擬機器。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始之前：
 
-- 如果您不想要使用現有的實驗室來測試本文中的腳本或命令，請[建立實驗室](devtest-lab-create-lab.md)。 
-- [安裝 Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)或使用已整合至 Azure 入口網站的 Azure Cloud Shell。 
+- 如果不想使用現有實驗室來測試本文中的腳本或命令，[請創建一個實驗室](devtest-lab-create-lab.md)。 
+- [安裝 Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)或使用集成到 Azure 門戶中的 Azure 雲外殼。 
 
 ## <a name="powershell-script"></a>PowerShell 指令碼
-本節中的範例腳本會使用[AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) Cmdlet。  此 Cmdlet 會採用實驗室的資源識別碼、要執行之動作的名稱（`createEnvironment`），以及執行該動作所需的參數。 這些參數是在包含所有虛擬機器描述屬性的雜湊表中。 
+本節中的示例腳本使用[Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) Cmdlet。  此 Cmdlet 獲取實驗室的資源識別碼、要執行的操作的名稱 （`createEnvironment`），以及執行該操作所需的參數。 參數位於包含所有虛擬機器描述屬性的雜湊表中。 
 
 ```powershell
 [CmdletBinding()]
@@ -115,29 +115,29 @@ finally {
 }
 ```
 
-在上述腳本中，虛擬機器的屬性可讓我們以 Windows Server 2016 DataCenter 作為 OS 來建立虛擬機器。 針對每種類型的虛擬機器，這些屬性會稍有不同。 [定義虛擬機器](#define-virtual-machine)一節說明如何判斷要在此腳本中使用的屬性。
+上述腳本中虛擬機器的屬性允許我們創建一個虛擬機器，該虛擬機器以 Windows Server 2016 資料中心為作業系統。 對於每種類型的虛擬機器，這些屬性將略有不同。 "[定義虛擬機器](#define-virtual-machine)"部分演示如何確定在此腳本中使用哪些屬性。
 
-下列命令提供執行儲存在檔案名中之腳本的範例： Create-LabVirtualMachine。 
+以下命令提供了運行保存在檔案名中的腳本的示例：Create-LabVirtualMachine.ps1。 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
 ```
 
 ## <a name="define-virtual-machine"></a>定義虛擬機器
-本節說明如何取得您想要建立之虛擬機器類型特有的屬性。 
+本節介紹如何獲取特定于要創建的虛擬機器類型的屬性。 
 
 ### <a name="use-azure-portal"></a>使用 Azure 入口網站
-在 Azure 入口網站中建立 VM 時，您可以產生 Azure Resource Manager 範本。 您不需要完成建立 VM 的程式。 您只會依照步驟執行，直到您看到範本為止。 如果您還沒有建立實驗室 VM，這是取得必要 JSON 描述的最佳方式。 
+在 Azure 門戶中創建 VM 時，可以生成 Azure 資源管理器範本。 您無需完成創建 VM 的過程。 您只按照這些步驟操作，直到看到範本。 如果尚未創建實驗室 VM，則這是獲取必要 JSON 說明的最佳方式。 
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 選取左側導覽功能表上的 [**所有服務**]。
-3. 搜尋並從服務清單中選取 [ **DevTest Labs** ]。 
-4. 在 [ **DevTest Labs** ] 頁面的實驗室清單中，選取您的實驗室。
-5. 在您實驗室的首頁上，選取工具列上的 [ **+ 新增**]。 
-6. 選取 VM 的**基底映射**。 
-7. 選取 [**提交**] 按鈕上方頁面底部的 [**自動化選項**]。 
-8. 您會看到用來建立虛擬機器的**Azure Resource Manager 範本**。 
-9. **Resources**區段中的 JSON 區段具有您稍早選取之映射類型的定義。 
+1. 導航到[Azure 門戶](https://portal.azure.com)。
+2. 選擇左側導航功能表上**的所有服務**。
+3. 從服務清單中搜索並選擇**DevTest 實驗室**。 
+4. 在**DevTest 實驗室**頁面上，在實驗室清單中選擇您的實驗室。
+5. 在實驗室的主頁上，選擇 **"添加"** 在工具列上。 
+6. 為 VM 選擇**基本映射**。 
+7. 選擇 **"提交"** 按鈕上方的頁面底部的**自動化選項**。 
+8. 您將看到用於創建虛擬機器的**Azure 資源管理器範本**。 
+9. **資源**部分中的 JSON 段具有您之前選擇的圖像類型的定義。 
 
     ```json
     {
@@ -177,22 +177,22 @@ finally {
     }
     ```
 
-在此範例中，您會看到如何取得 Azure marketplace 位置映射的定義。 您可以使用相同的方式來取得自訂映射、公式或環境的定義。 新增虛擬機器所需的任何構件，並設定所需的任何 advanced 設定。 在您提供必要欄位的值和任何選擇性欄位之後，再選取 [**自動化選項**] 按鈕。
+在此示例中，您將瞭解如何獲取 Azure 市場位置圖像的定義。 您可以以同樣的方式獲取自訂圖像、公式或環境的定義。 添加虛擬機器所需的任何工件，並設置所需的任何高級設置。 在選擇 **"自動化"選項**按鈕之前，為所需欄位和任何可選欄位提供值。
 
 ### <a name="use-azure-rest-api"></a>使用 Azure REST API
-下列程式提供使用 REST API 來取得映射屬性的步驟：這些步驟僅適用于實驗室中的現有 VM。 
+以下過程提供了使用 REST API 獲取映射屬性的步驟：這些步驟僅適用于實驗室中的現有 VM。 
 
-1. 流覽至 [[虛擬機器清單](/rest/api/dtl/virtualmachines/list)] 頁面，選取 [**試試看**] 按鈕。 
-2. 選取您的 **Azure 訂用帳戶**。
-3. 輸入**實驗室的資源群組**。
+1. 導航到[虛擬機器 - 清單](/rest/api/dtl/virtualmachines/list)頁，選擇 **"試用"** 按鈕。 
+2. 選擇**Azure 訂閱**。
+3. 輸入**實驗室的資源組**。
 4. 輸入**實驗室的名稱**。 
-5. 選取 [執行]。
-6. 您會看到以 VM 為基礎所建立之**映射的屬性**。 
+5. 選擇 **"運行**"。
+6. 您將看到基於創建 VM 的圖像**的屬性**。 
 
 ## <a name="set-expiration-date"></a>設定到期日期
-在訓練、示範和試用等案例中，您可能會想要建立虛擬機器，並在固定期間之後自動加以刪除，這樣就不會產生不必要的成本。 您可以使用 PowerShell 來建立 VM 的到期日，如範例[powershell 腳本](#powershell-script)一節所示。
+在培訓、演示和試用等方案中，您可能希望創建虛擬機器，並在固定持續時間後自動刪除虛擬機器，這樣您就不會產生不必要的成本。 您可以使用 PowerShell[腳本示例部分](#powershell-script)所示，在使用 PowerShell 創建 VM 時設置到期日期。
 
-以下 PowerShell 腳本範例會針對實驗室中的所有現有 Vm 設定到期日：
+下面是一個示例 PowerShell 腳本，該腳本設置實驗室中所有現有 VM 的到期日期：
 
 ```powershell
 # Values to change
@@ -225,4 +225,4 @@ Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列內容：[適用于 Azure DevTest Labs 的 Azure PowerShell 檔](/powershell/module/az.devtestlabs/)
+請參閱以下內容[：Azure 開發人員測試實驗室的 Azure PowerShell 文檔](/powershell/module/az.devtestlabs/)

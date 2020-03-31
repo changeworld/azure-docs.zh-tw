@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: d591532d0b6d1047b9ebd1b2099b180beb494688
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173701"
 ---
-若要重設您的工作階段中已擷取的環境資料，您可以叫用`Reset()`。
+若要重設您工作階段中已擷取的環境資料，您可以叫用 `Reset()`。

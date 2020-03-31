@@ -1,18 +1,18 @@
 ---
 title: 如何針對 Azure 事件格線篩選事件
-description: 本文說明如何在建立 Event Grid 訂用帳戶時篩選事件（依事件種類、依主題、依運算子和資料等）。
+description: 本文演示如何在創建事件網格訂閱時篩選事件（按事件種類、主題、運算子和資料等）。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 58da209c68449d3a28b08f52ec575f7db520f121
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454018"
 ---
 # <a name="filter-events-for-event-grid"></a>針對事件格線篩選事件
 
@@ -193,7 +193,7 @@ az eventgrid event-subscription create \
 
 對於 Azure CLI，請使用：
 
-```azurecli-interactive
+```azurecli
 topicName=<your-topic-name>
 endpointURL=<endpoint-URL>
 
@@ -214,7 +214,7 @@ az eventgrid event-subscription create \
 
 對於 PowerShell，請使用：
 
-```azurepowershell-interactive
+```powershell
 $topicName = <your-topic-name>
 $endpointURL = <endpoint-URL>
 
@@ -240,7 +240,7 @@ New-AzEventGridSubscription `
 
 對於 Azure CLI，請使用：
 
-```azurecli-interactive
+```azurecli
 topicEndpoint=$(az eventgrid topic show --name $topicName -g gridResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name $topicName -g gridResourceGroup --query "key1" --output tsv)
 
@@ -251,7 +251,7 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 
 對於 PowerShell，請使用：
 
-```azurepowershell-interactive
+```powershell
 $endpoint = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
 $keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
 
@@ -279,14 +279,14 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 對於 Azure CLI，請使用：
 
-```azurecli-interactive
+```azurecli
 event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/cars", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "model": "SUV", "color": "yellow"},"dataVersion": "1.0"} ]'
 
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
 對於 PowerShell，請使用：
 
-```azurepowershell-interactive
+```powershell
 $htbody = @{
     id= $eventID
     eventType="recordInserted"

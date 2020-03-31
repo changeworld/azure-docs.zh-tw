@@ -4,22 +4,22 @@ description: Azure Functions host.json 檔案與 v1 執行階段的參考文件�
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277046"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 host.json 參考
 
-> [!div class="op_single_selector" title1="選取您要使用的 Azure Functions 執行階段版本： "]
-> * [第 1 版](functions-host-json-v1.md)
-> * [第 2 版](functions-host-json.md)
+> [!div class="op_single_selector" title1="選擇正在使用的 Azure 函數運行時的版本： "]
+> * [版本 1](functions-host-json-v1.md)
+> * [版本 2](functions-host-json.md)
 
 *host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出 v1 執行階段可用的設定。 JSON 結構描述位於 http://json.schemastore.org/host。
 
 > [!NOTE]
-> 本文適用於 Azure Functions 1.x。  如需函式2.x 和更新版本中的 host. json 參考，請參閱 Azure Functions 2.x 的[host. json 參考](functions-host-json.md)。
+> 本文適用於 Azure Functions 1.x。  有關函數 2.x 和更高版本中的 host.json 的引用，請參閱[Azure 函數 2.x 的 host.json 引用](functions-host-json.md)。
 
 其他函數應用程式設定選項的管理是在[應用程式設定](functions-app-settings.md)中進行。
 
@@ -122,7 +122,7 @@ ms.locfileid: "79277046"
 
 ## <a name="documentdb"></a>DocumentDB
 
-[Azure Cosmos DB 觸發程式和](functions-bindings-cosmosdb.md)系結的設定。
+[Azure Cosmos DB 觸發器和綁定的](functions-bindings-cosmosdb.md)配置設置。
 
 ```json
 {
@@ -164,7 +164,7 @@ ms.locfileid: "79277046"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指出所有函式的逾時持續期間。 在無伺服器的使用情況方案中，有效範圍是從 1 秒到 10 分鐘，而預設值是 5 分鐘。 在 App Service 計畫中，沒有整體限制，而且預設值為_null_，表示沒有超時。
+指出所有函式的逾時持續期間。 在無伺服器的使用情況方案中，有效範圍是從 1 秒到 10 分鐘，而預設值是 5 分鐘。 在應用服務方案中，沒有總體限制，預設值為_null，_ 表示沒有超時。
 
 ```json
 {
@@ -214,8 +214,8 @@ ms.locfileid: "79277046"
 |屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|啟用時，此設定會促使要求處理管線定期檢查系統效能計數器，例如連線/執行緒/處理程序/記憶體/CPU/其他，而且如果這些計數器中任一個超過內建的臨界值上限 (80%)，則要求會遭到拒絕，並包含 429「忙碌」的回應，直到計數器回到正常水平。|
-|maxConcurrentRequests|未系結（`-1`）|將平行執行的 HTTP 函式數目上限。 這可讓您控制並行作業，幫助您管理資源使用率。 例如，您可能有一個使用大量系統資源（記憶體/cpu/通訊端）的 HTTP 函式，因此當並行處理太高時，會造成問題。 或者，如果函式對第三方服務發出傳出要求，則需要限制這些呼叫的速率。 在這些情況下，套用節流會有所幫助。|
-|maxOutstandingRequests|未系結（`-1`）|在任何指定時間保留的未完成要求數目上限。 此限制包括已排入佇列但尚未開始執行的要求，以及任何進行中的執行。 會以 429「忙碌」回應來拒絕任何超過此限制的連入要求。 這樣可讓呼叫者採用以時間為基礎的重試策略，並且也協助您控制要求延遲的上限。 此動作只會控制在指令碼主機執行路徑內發生的佇列處理。 其他佇列 (例如 ASP.NET 要求佇列) 仍然有效，且不受此設定的影響。|
+|maxConcurrentRequests|無界 （`-1`）|將並存執行的最大 HTTP 函數數。 這可讓您控制並行作業，幫助您管理資源使用率。 例如，您可能具有一個使用大量系統資源（記憶體/cpu/通訊端）的 HTTP 函數，以便當併發性過高時，它會導致問題。 或者，如果函式對第三方服務發出傳出要求，則需要限制這些呼叫的速率。 在這些情況下，套用節流會有所幫助。|
+|maxOutstandingRequests|無界 （`-1`）|在任何指定時間保留的未完成要求數目上限。 此限制包括已排入佇列但尚未開始執行的要求，以及任何進行中的執行。 會以 429「忙碌」回應來拒絕任何超過此限制的連入要求。 這樣可讓呼叫者採用以時間為基礎的重試策略，並且也協助您控制要求延遲的上限。 此動作只會控制在指令碼主機執行路徑內發生的佇列處理。 其他佇列 (例如 ASP.NET 要求佇列) 仍然有效，且不受此設定的影響。|
 |routePrefix|api|適用於所有路由的路由前置詞。 若要移除預設前置詞，請使用空字串。 |
 
 ## <a name="id"></a>id
@@ -281,7 +281,7 @@ ms.locfileid: "79277046"
 
 ## <a name="sendgrid"></a>SendGrid
 
-[SendGrind 輸出](functions-bindings-sendgrid.md)系結的設定
+[SendGrind 輸出綁定](functions-bindings-sendgrid.md)的配置設置
 
 ```json
 {

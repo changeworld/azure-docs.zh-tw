@@ -8,10 +8,10 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669075"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立動作群組
@@ -163,7 +163,7 @@ ms.locfileid: "77669075"
 
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。
+* 瞭解有關[操作組](../../azure-monitor/platform/action-groups.md)的更多。
 * 深入了解[警示](alerts-overview.md)。
 * 了解如何[使用 Resource Manager 範本新增警示](../../azure-monitor/platform/alerts-activity-log.md)。
 

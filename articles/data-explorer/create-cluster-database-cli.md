@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 建立 Azure 資料總管叢集 & DB
+title: 使用 Azure CLI 創建 azure 資料資源管理器群集&資料庫
 description: 了解如何使用 Azure CLI 建立 Azure 資料總管叢集與資料庫
 author: radennis
 ms.author: radennis
@@ -8,31 +8,31 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77561930"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 建立 Azure 資料總管叢集與資料庫
 
 > [!div class="op_single_selector"]
 > * [入口網站](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [電源外殼](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM 範本](create-cluster-database-resource-manager.md)
 
-Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，您會使用 Azure CLI 來建立叢集和資料庫。
+Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，可以使用 Azure CLI 創建群集和資料庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要完成本文，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
+要完成本文，您需要 Azure 訂閱。 如果沒有，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 Azure CLI，本文會要求 Azure CLI 版本2.0.4 版或更新版本。 執行 `az --version` 來檢查您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果選擇在本地安裝和使用 Azure CLI，則本文需要 Azure CLI 版本 2.0.4 或更高版本。 執行 `az --version` 來檢查您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="configure-the-cli-parameters"></a>設定 CLI 參數
 
@@ -72,7 +72,7 @@ Azure 資料總管是快速、完全受控的資料分析服務，可即時分�
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-如果結果中包含有 `provisioningState` 值的 `Succeeded`，表示已成功建立叢集。
+如果結果中包含有 `Succeeded` 值的 `provisioningState`，表示已成功建立叢集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 資料總管叢集中建立資料庫
 
@@ -100,7 +100,7 @@ Azure 資料總管是快速、完全受控的資料分析服務，可即時分�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-* 如果您打算遵循其他文章，請保留您建立的資源。
+* 如果您計畫關注我們的其他文章，請保留您創建的資源。
 * 若要清除資源，請刪除叢集。 您刪除叢集時，也會刪除其中的所有資料庫。 使用下列命令刪除您的叢集：
 
     ```azurecli-interactive
@@ -109,4 +109,4 @@ Azure 資料總管是快速、完全受控的資料分析服務，可即時分�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure 資料總管 Python 程式庫內嵌資料](python-ingest-data.md)
+* [使用 Azure 資料資源管理器 Python 庫引入資料](python-ingest-data.md)
