@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: c13657b8f2dae3868c1b9820236585aa930c6be4
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "80239089"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>快速入門：適用於 Node.js 的 Anomaly Detector 用戶端程式庫

@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: 5e3d6ea4d2defa9567d142063bcdcdeef663e1f2
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "80289906"
 ---
 # <a name="quickstart-use-the-bing-video-search-client-library"></a>快速入門：使用 Bing 影片搜尋用戶端程式庫

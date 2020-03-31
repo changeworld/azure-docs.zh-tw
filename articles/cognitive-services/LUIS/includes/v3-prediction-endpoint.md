@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 23e7f88b23ac7af7470183877eeb1be89e79779c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "80287742"
 ---
 1. 在 LUIS 入口網站的 [管理]  區段 (右上方功能表)、[Azure 資源]  頁面 (左側功能表)、[預測資源]  索引標籤上，複製頁面底部的**範例查詢**。

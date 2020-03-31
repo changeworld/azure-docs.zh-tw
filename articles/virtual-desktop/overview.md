@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a32ee682490c5930b8c48d069087020c4763dcb
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127764"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294820"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -123,11 +123,32 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 
 下列遠端桌面用戶端支援 Windows 虛擬桌面：
 
-* [Windows](connect-windows-7-and-10.md)
+* [Windows 桌面](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Mac](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (預覽)](connect-android.md)
+
+> [!IMPORTANT]
+> Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
+
+> [!IMPORTANT]
+> Windows 虛擬桌面目前不支援來自 Windows Store 的遠端桌面用戶端。 未來版本將增加此用戶端的支援。
+
+遠端桌面用戶端必須能夠存取下列 URL：
+
+|位址|輸出連接埠|目的|用戶端|
+|---|---|---|---|
+|*.wvd.microsoft.com|TCP 通訊埠 443|服務流量|全部|
+|*.servicebus.windows.net|TCP 通訊埠 443|疑難排解資料|全部|
+|go.microsoft.com|TCP 通訊埠 443|Microsoft FWLinks|全部|
+|aka.ms|TCP 通訊埠 443|Microsoft URL 縮短器|全部|
+|docs.microsoft.com|TCP 通訊埠 443|文件|全部|
+|privacy.microsoft.com|TCP 通訊埠 443|隱私權聲明|全部|
+|query.prod.cms.rt.microsoft.com|TCP 通訊埠 443|用戶端更新|Windows 桌面|
+
+>[!IMPORTANT]
+>開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於用戶端網站和資源，並不包含其他服務 (例如 Azure Active Directory) 的 URL。
 
 ## <a name="supported-virtual-machine-os-images"></a>支援的虛擬機器 OS 映像
 

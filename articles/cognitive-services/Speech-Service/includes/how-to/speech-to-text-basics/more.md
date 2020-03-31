@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: dapine
 ms.openlocfilehash: 12ab3afed0d1232f126e11d1c227c4c9b50e8ac3
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79372378"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他語言和平台支援

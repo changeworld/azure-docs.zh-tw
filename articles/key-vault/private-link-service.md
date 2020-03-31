@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 6a5cc5bbdb56e308d79b8eb2c8db546184cedb39
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 53036a43cbb0fe3c3a1e61f7124fe7dcbef228f3
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080338"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388928"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
@@ -19,11 +19,11 @@ Azure Private Link 服務可讓您透過虛擬網路中的私人端點存取各�
 
 Azure 私人端點是一種網路介面，可讓您以私人且安全地方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
-如需詳細資訊，請參閱[何謂 Azure Private Link (預覽)？](../private-link/private-link-overview.md)
+如需詳細資訊，請參閱[何謂 Azure Private Link？](../private-link/private-link-overview.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要整合金鑰保存庫與 Azure Private Link (預覽)，您需要下列各項：
+若要整合金鑰保存庫與 Azure Private Link，您需要下列各項：
 
 - 一個金鑰保存庫。
 - Azure 虛擬網路。
@@ -46,7 +46,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 
 設定金鑰保存庫基本資料後，請選取 [網路] 索引標籤並遵循下列步驟：
 
-1. 在 [網路] 索引標籤中選取 [私人端點 (預覽)] 選項按鈕。
+1. 在 [網路] 索引標籤中選取 [私人端點] 選項按鈕。
 1. 按一下 [+ 新增] 按鈕以新增私人端點。
 
     ![映像](./media/private-link-service-1.png)
@@ -57,7 +57,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 讓 [與私人區域 DNS 整合] 選項保持不變。  
 1. 選取 [確定]。
 
-    ![映像](./media/private-link-service-2.png)
+    ![映像](./media/private-link-service-8.png)
  
 您現在能夠看到已設定的私人端點。 您現在可以選擇刪除和編輯此私人端點。 選取 [檢閱 + 建立] 按鈕並建立金鑰保存庫。 需要 5-10 分鐘的時間才能完成部署。 
 
@@ -69,7 +69,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 在搜尋列中輸入「金鑰保存庫」。
 1. 從您要新增私人端點的清單中選取金鑰保存庫。
 1. 選取 [設定] 底下的 [網路] 索引標籤。
-1. 選取頁面頂端的 [私人端點連線 (預覽)] 索引標籤
+1. 選取頁面頂端的 [私人端點連線] 索引標籤
 1. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
     ![影像](./media/private-link-service-3.png) ![影像](./media/private-link-service-4.png)
@@ -100,6 +100,10 @@ az provider register -n Microsoft.KeyVault
 ### <a name="create-a-new-key-vault"></a>建立新 Key Vault
 ```console
 az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
+```
+### <a name="turn-on-key-vault-firewall"></a>開啟 Key Vault 防火牆
+```console
+az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
 ```
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 ```console
@@ -220,9 +224,9 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="limitations-and-design-considerations"></a>限制和設計考量
 
-**價格**：如需定價資訊，請參閱 [Azure 私人連結 (預覽) 定價](https://azure.microsoft.com/pricing/details/private-link/)。
+**價格**：如需定價資訊，請參閱 [Azure 私人連結定價](https://azure.microsoft.com/pricing/details/private-link/)。
 
-**限制**：Azure Key Vault 的私人端點處於公開預覽狀態。 此功能已可在所有 Azure 公用區域中使用。
+**限制**：Azure Key Vault 的私人端點僅適用於 Azure 公用區域。
 
 **每個金鑰保存庫的私人端點數目上限**：64。
 
@@ -232,5 +236,5 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 [Azure Private Link (預覽)](../private-link/private-link-service-overview.md)
+- 深入了解 [Azure Private Link](../private-link/private-link-service-overview.md)
 - 深入了解 [Azure Key Vault](key-vault-overview.md)

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
 ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "80155183"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能

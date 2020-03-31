@@ -4,10 +4,10 @@ description: 在本教學課程中，建立自訂應用程式來預測使用者�
 ms.topic: tutorial
 ms.date: 03/24/2020
 ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "80286739"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教學課程：建置 LUIS 應用程式來判斷使用者意圖

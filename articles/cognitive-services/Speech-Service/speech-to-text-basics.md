@@ -12,10 +12,10 @@ ms.date: 03/13/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 6e1b366ee23f472489eeaa6c08df99bdfc892f00
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79372384"
 ---
 # <a name="learn-the-basics-of-speech-recognition"></a>了解語音辨識的基本概念
