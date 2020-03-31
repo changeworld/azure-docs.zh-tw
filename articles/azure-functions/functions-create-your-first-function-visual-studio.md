@@ -1,28 +1,30 @@
 ---
-title: 使用 Visual Studio 在 Azure 中建立第一個函式
-description: 使用 Visual Studio 建立並發佈 HTTP 所觸發的 Azure 函式。
+title: 快速入門：使用 Visual Studio 在 Azure 中建立第一個函式
+description: 在本快速入門中，您將了解如何使用 Visual Studio 來建立和發佈 HTTP 觸發的 Azure 函式。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: b343adeed5abeecdf55f71f8bc4298659a106e09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 13a03ca6820229fc90467236e0c23f236664d73f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198389"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80056591"
 ---
-# <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 建立第一個函式
+# <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入門：使用 Visual Studio 在 Azure 中建立第一個函式
 
-Azure Functions 可讓您在[無伺服器](https://azure.microsoft.com/solutions/serverless/)環境中執行程式碼，而不需要先建立 VM 或發佈 Web 應用程式。
+Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要先建立 VM 或發佈 Web 應用程式。
 
-在本文中，您將了解如何使用 Visual Studio 2019 在本機建立及測試 "hello world" 函式，然後將其發佈至 Azure。 本快速入門針對 Visual Studio 2019 所設計。 使用 Visual Studio 2017 建立 Functions 專案時，您必須先安裝[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
+在本快速入門中，您將了解如何使用 Visual Studio 2019 在本機建立及測試 HTTP 觸發的 C# 函式應用程式 "hello world"，然後將其發佈至 Azure。 
 
 ![瀏覽器中的函式 localhost 回應](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
+本快速入門針對 Visual Studio 2019 所設計。 
+
 ## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您必須先安裝 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 確定也已經安裝 **Azure 開發**工作負載。
+若要完成本教學課程，請先安裝 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 請務必在安裝期間選取 [Azure 開發]  工作負載。 如果您想要改為使用 Visual Studio 2017 來建立 Azure Functions 專案，您必須先安裝[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
 
 ![透過 Azure 開發工作負載安裝 Visual Studio](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
@@ -32,15 +34,15 @@ Azure Functions 可讓您在[無伺服器](https://azure.microsoft.com/solutions
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio 會建立一個專案，其中的類別包含 HTTP 觸發程序函式類型的重複使用程式碼。 方法上的 `FunctionName` 屬性會設定函式名稱，其預設為 `Function1`。 `HttpTrigger` 屬性指定此函式是由 HTTP 要求所觸發。 重複使用程式碼會傳送 HTTP 回應，其中包含要求內文或查詢字串中的值。
+Visual Studio 會建立一個專案，其中的類別包含 HTTP 觸發程序函式類型的重複使用程式碼。 `FunctionName` 方法屬性會設定函式名稱，其預設為 `Function1`。 `HttpTrigger` 屬性指定此函式是由 HTTP 要求所觸發。 重複使用程式碼會傳送 HTTP 回應，其中包含要求內文或查詢字串中的值。
 
-您可以將適當的屬性套用至方法，進而使用輸入和輸出繫結來擴展您的函式功能。 如需詳細資訊，請參閱 [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)的[觸發程序和繫結](functions-dotnet-class-library.md#triggers-and-bindings)一節。
+將適當的屬性套用至方法，進而使用輸入和輸出繫結來擴展您的函式功能。 如需詳細資訊，請參閱 [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)的[觸發程序和繫結](functions-dotnet-class-library.md#triggers-and-bindings)一節。
 
 您現在已建立函式專案和 HTTP 觸發的函式，可以在本機電腦上進行測試。
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
-Visual Studio 與 Azure Functions Core Tools 整合，以便您使用完整 Functions 執行階段在本機測試函式。  
+Visual Studio 與 Azure Functions Core Tools 整合，以便您使用完整 Azure Functions 執行階段在本機測試函式。  
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
@@ -54,19 +56,25 @@ Visual Studio 與 Azure Functions Core Tools 整合，以便您使用完整 Func
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中測試您的函式
 
-1. 從發行設定檔頁面複製函式應用程式的基底 URL。 使用新的基底 URL，取代在本機測試函式時所使用之 URL 的 `localhost:port` 部分。 如同以往，務必將查詢字串 `?name=<YOUR_NAME>` 附加至此 URL 並執行要求。
+1. 從**發佈**設定檔頁面複製函式應用程式的基底 URL。 使用新的基底 URL，取代在本機測試函式時所使用的 URL `localhost:port` 部分。 將查詢字串 `?name=<YOUR_NAME>` 附加至此 URL 並執行要求。
 
-    呼叫 HTTP URL 觸發函式的 URL 應採用下列格式：
+    呼叫 HTTP URL 觸發函式的 URL 會採用下列格式：
 
-        http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME> 
+    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
 2. 將 HTTP 要求的新 URL 貼到瀏覽器的網址列。 下圖顯示瀏覽器中對於函式傳回之遠端 GET 要求所做出的回應︰
 
     ![瀏覽器中的函式回應](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
+## <a name="clean-up-resources"></a>清除資源
+
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
-您已透過 Visual Studio，使用簡單的 HTTP 觸發函式在 Azure 中建立及發佈 C# 函式應用程式。 若要深入了解如何將函式開發為 .NET 類別庫，請參閱 [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)。
+在本快速入門中，您已透過 Visual Studio，使用簡單的 HTTP 觸發函式在 Azure 中建立及發佈 C# 函式應用程式。 
 
+請接著前往下一篇文章，了解如何將 Azure 儲存體的佇列繫結新增至您的函式：
 > [!div class="nextstepaction"]
 > [將 Azure 儲存體佇列繫結新增至您的函式](functions-add-output-binding-storage-queue-vs.md)
+

@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/18/2018
-ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355822"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79369041"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入門：搭配使用 Azure Cache for Redis 與 .NET Framework 應用程式
 
@@ -49,8 +49,7 @@ ms.locfileid: "78355822"
 
 在 Visual Studio 中，按一下 [檔案]   > [新增]   > [專案]  。
 
-在 **Visual C#** 下，按一下 [Windows 傳統桌面]  ，然後按一下 [主控台應用程式]  和 [確定]  ，以建立新的主控台應用程式。
-
+選取 [主控台應用程式 (.NET Framework)]  ，然後選取 [下一步]  來設定您的應用程式。 輸入**專案名稱**，然後按一下 [建立]  以建立新的主控台應用程式。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -128,7 +127,7 @@ CacheConnection  appSetting 的值可用來從 Azure 入口網站中將快取連
         {
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            IDatabase cache = Connection.GetDatabase();
 
             // Perform cache operations using the cache object...
 

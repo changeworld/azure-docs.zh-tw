@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531157"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064319"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什麼是 IoT 隨插即用預覽版？
 
@@ -77,7 +77,7 @@ IoT 隨插即用適用於兩種類型的開發人員：
 
 ## <a name="regional-availability"></a>區域可用性
 
-在公開預覽期間，IoT 隨插即用適用於北歐、美國中部和日本東部區域。 請務必在這其中一個區域建立您的中樞。
+在公開預覽期間，IoT 隨插即用適用於所有區域。
 
 ## <a name="message-quotas-in-iot-hub"></a>IoT 中樞的訊息配額
 在公開預覽期間，IoT 隨插即用裝置會為每個介面傳送個別的訊息，這可能會增加您的[訊息配額](../iot-hub/iot-hub-devguide-quotas-throttling.md)中計入的訊息數目。

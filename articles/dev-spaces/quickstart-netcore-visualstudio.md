@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5d0d1541600f4c10b021d5d7f7f435f1aa5ae589
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245041"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239711"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>快速入門：在 Kubernetes 上偵錯和逐一查看：Visual Studio 和 .NET Core - Azure Dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-在上述範例中，公用 URL 是 http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ 。 瀏覽至您服務的公用 URL，並與您開發人員空間中執行的服務互動。
+在上述範例中，公用 URL 是 http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ 。 
+
+選取 [偵錯]  ，然後**開始偵錯**。 幾秒鐘之後，您的服務就會啟動，而 Visual Studio 將會以服務的公用 URL 開啟瀏覽器。 如果瀏覽器未自動開啟，請在瀏覽器中流覽至您服務的公用 URL，並與在開發人員空間中執行的服務互動。
 
 此程序可能已停用針對您服務的公用存取。 若要啟用公用存取，您可以更新[*values.yaml* 中的輸入值][ingress-update]。
 
@@ -106,7 +108,7 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-儲存變更，並從啟動設定下拉式清單中，啟動會使用 **Azure Dev Spaces** 的服務。 在瀏覽器中開啟您服務的公用 URL，然後按一下 [關於]  。 您會發現更新過的訊息跑出來。
+儲存您的變更並選取 [偵錯]  ，然後選取 [開始偵錯]  。 幾秒鐘之後，您的服務就會啟動，而 Visual Studio 將會以服務的公用 URL 開啟瀏覽器。 如果瀏覽器未自動開啟，請在瀏覽器中流覽服務的公用 URL，然後按一下 [關於]  。 您會發現更新過的訊息跑出來。
 
 Azure Dev Spaces 會以累加方式重新編譯現有容器中的程式碼，以提供更快的編輯/偵錯迴圈，而不是在每次進行程式碼編輯時重新建置及重新部署新的容器映像。
 
@@ -133,5 +135,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [使用多個容器和小組開發](multi-service-netcore-visualstudio.md)
 
-[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[ingress-update]: how-dev-spaces-works-up.md#how-running-your-code-is-configured
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

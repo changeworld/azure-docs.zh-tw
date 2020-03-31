@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: a1bedf97f5ae7c48e5bcb47880a25ee1219b917b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5213a20036385ff25373252e6670d8bd86a4b07
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173763"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80056658"
 ---
-此集合中的其他快速入門會建置在本快速入門。 如果您打算繼續進行後續的快速入門、教學課程或者您在本快速入門中建立的任何服務，請勿清除資源。
+此集合中的其他快速入門會以本快速入門為基礎。 如果您打算繼續進行後續的快速入門、教學課程或者您在本快速入門中建立的任何服務，請勿清除資源。
 
-在 Azure 中「資源」  是指函式應用程式、函式、儲存體帳戶等等。 它們會分組為「資源群組」  ，您可以藉由刪除群組來刪除群組中的所有項目。 
+在 Azure 中「資源」  是指函式應用程式、函式、儲存體帳戶等等。 其會分組為「資源群組」  ，您可以藉由刪除群組來刪除群組中的所有項目。 
 
 您已建立資源來完成這些快速入門。 您可能必須支付這些資源，取決於您的[帳戶狀態](https://azure.microsoft.com/account/)和[服務定價](https://azure.microsoft.com/pricing/)。 如果您不再需要資源，刪除方式如下：
 
@@ -25,7 +25,7 @@ ms.locfileid: "67173763"
 
    若要從儀表板移至該分頁，選取 [資源群組]  ，然後選取您用於本快速入門的資源群組。
 
-2. 在 [資源群組]  分頁中，檢閱包含資源的清單，並確認它們是您想要刪除的項目。
+2. 在 [資源群組]  分頁中，檢閱包含資源的清單，並確認這些是您想要刪除的項目。
  
 3. 選取 [刪除資源群組]  ，並遵循指示。
 

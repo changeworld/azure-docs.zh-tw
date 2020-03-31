@@ -1,35 +1,27 @@
 ---
 title: 快速入門：在 LUIS 入口網站中建立新的應用程式
-titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您會建立應用程式、意圖和實體的基本部分，以及在 LUIS 入口網站中使用範例語句進行測試。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381982"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80244609"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中建立新的應用程式
 
-在本快速入門中，您會在 LUIS 入口網站中建立新的應用程式。 首先要建立應用程式、**意圖**和**實體**的基本部分。 然後藉由在互動式測試面板中提供範例使用者語句進行測試，以取得預測意圖。
-
-建立應用程式是免費的，而且不需要 Azure 訂用帳戶。 您準備要部署您的應用程式時，請參閱[部署應用程式的快速入門](get-started-portal-deploy-app.md)。 文中會示範如何建立 Azure 認知服務資源，並將該服務指派給應用程式。
+在本快速入門中，您會在 LUIS 入口網站中建立新的應用程式。 受先，建立應用程式、**意圖**和**實體**的基本部分。 然後，藉由在互動式測試面板中提供範例使用者語句進行測試，以取得預測意圖。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>建立應用程式
 
-1. 從內容工具列中選取 [+ 建立]  。
+1. 從內容工具列中選取 [+ 新增對話應用程式]  ，然後選取 [新增對話應用程式]  。
 
-   [![在 LUIS 入口網站中建立新的應用程式](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![在 LUIS 入口網站中建立新的應用程式](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. 在快顯視窗中，使用下列設定進行應用程式設定，然後選取 [完成]  。
 
@@ -70,7 +62,8 @@ ms.locfileid: "75381982"
 
 至於此範例應用程式的 `FindForm` 意圖，範例語句會納入表單號碼。 用戶端應用程式需要表單號碼才能滿足使用者的要求，因此必須將表單號碼包含在表達中。
 
-[![輸入 FindForm 意圖的範例語句](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![輸入 FindForm 意圖的範例語句](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 請將下列 15 個範例語句新增至 `FindForm` 意圖。
 
@@ -147,7 +140,8 @@ ms.locfileid: "75381982"
 
    實體會標示它在範例語句中的顯示之處。 如果您想要查看原始文字，請從工具列切換 [實體檢視]  ，而不是使用實體名稱。
 
-   [![標示了實體的所有範例語句](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [!div class="mx-imgBorder"]
+   > [![標示了實體的所有範例語句](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>使用互動式測試窗格測試新的應用程式
 
@@ -159,7 +153,10 @@ ms.locfileid: "75381982"
 
    ```Is there a form named hrf-234098```
 
-   ![對測試窗格中的新語句進行測試](./media/get-started-portal-build-app/test-new-utterance.png)
+    選取 [檢查]  以查看實體預測。
+
+   > [!div class="mx-imgBorder"]
+   > ![對測試窗格中的新語句進行測試](./media/get-started-portal-build-app/test-new-utterance.png)
 
    最高預測意圖是信賴度超過 90% (0.977) 的 **FindForm**。 對於**人力資源表單號碼**實體擷取到 hrf-234098 的值。
 
