@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 02/21/2020
+ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 208a7a677bdf0b76ffed83e679c6f1ff3041d50d
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561437"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239692"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在混合式網路中部署及設定 Azure 防火牆
 
@@ -54,7 +54,7 @@ ms.locfileid: "77561437"
    此外，通往閘道連線虛擬網路或內部部署網路的路由，將會自動傳播到使用閘道傳輸的對等虛擬網路路由表。 如需詳細資訊，請參閱[為虛擬網路對等互連設定 VPN 閘道傳輸](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
 
 - 當您將 VNet-Spoke 對等互連至 VNet-Hub 時，請設定 **UseRemoteGateways**。 如果已設定 **UseRemoteGateways**，也已在遠端對等互連上設定 **AllowGatewayTransit**，則輪輻虛擬網路會使用遠端虛擬網路的閘道進行傳輸。
-- 若要透過中樞防火牆路由傳送輪輻子網路流量，您需要一個使用者定義的路由 (UDR)，其指向具有 [停用 BGP 路由傳播]  選項組的防火牆。 [停用 BGP 路由傳播]  選項會防止將路由散發到輪輻子網路。 這可防止已學習的路由與您的 UDR 衝突。
+- 若要透過中樞防火牆路由傳送輪輻子網路流量，您需要一個使用者定義的路由 (UDR)，其指向已停用 [虛擬網路閘道路由傳播]  選項的防火牆。 [虛擬網路閘道路由傳播]  選項停用時，會防止將路由散發到輪輻子網路。 這可防止已學習的路由與您的 UDR 衝突。
 - 在中樞閘道子網路上設定可指向防火牆 IP 位址的 UDR，作為輪輻網路的下一個躍點。 Azure 防火牆子網路不需要任何 UDR，因為可從 BGP 得知路由。
 
 請參閱本教學課程中的[建立路由](#create-the-routes)一節，了解如何建立這些路由。

@@ -4,10 +4,10 @@ description: 開始使用 Advisor。
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259626"
 ---
 # <a name="get-started-with-azure-advisor"></a>開始使用 Advisor
@@ -19,15 +19,15 @@ ms.locfileid: "79259626"
 
 ## <a name="get-recommendations"></a>取得建議
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
-1. 在左窗格中，按一下 [Advisor]。  如果在左窗格中沒有看到 [Advisor]，請按一下 [所有服務]。  在服務功能表窗格中，於 [監視與管理] 底下，按一下 [Advisor]。 隨即會顯示 Advisor 儀表板。
+1. 在左窗格中，按一下 [Advisor]****。  如果在左窗格中沒有看到 [Advisor]，請按一下 [所有服務]****。  在服務功能表窗格中，於 [監視與管理]**** 底下，按一下 [Advisor]****。 隨即會顯示 Advisor 儀表板。
 
    ![使用 Azure 入口網站存取 Azure 建議程式](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Advisor 儀表板會顯示所有選取之訂用帳戶的建議摘要。  您可以使用訂用帳戶篩選下拉式清單，選擇您想要顯示建議的訂用帳戶。
 
-1. 若要取得特定類別的建議，請按一下下列其中一個索引標籤：[高可用性]、[安全性]、[效能] 或 [成本]。 
+1. 若要取得特定類別的建議，請按一下下列其中一個索引標籤：[高可用性]****、[安全性]****、[效能]**** 或 [成本]****。 
 
    ![Azure 建議程式儀表板](./media/advisor-overview/advisor-dashboard.png)
 
@@ -37,13 +37,13 @@ ms.locfileid: "79259626"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後開啟 [Advisor](https://aka.ms/azureadvisordashboard)。
 
-1. 選取一個建議類別以顯示該類別內的建議清單，或選取 [全部] 索引標籤以檢視所有建議。
+1. 選取一個建議類別以顯示該類別內的建議清單，或選取 [全部]**** 索引標籤以檢視所有建議。
 
 1. 按一下您想要詳細檢閱的建議。
 
 1. 檢閱該建議的相關資訊，以及該建議適用的資源。
 
-1. 按一下 [建議的動作] 以實作建議。
+1. 按一下 [建議的動作]**** 以實作建議。
 
 ## <a name="filter-recommendations"></a>篩選建議
 
@@ -63,9 +63,9 @@ ms.locfileid: "79259626"
 
 1. 按一下該建議。
 
-1. 按一下 [延期]。 
+1. 按一下 [延期]****。 
 
-1. 指定延期時間週期，或選取 [永不] 來關閉建議。
+1. 指定延期時間週期，或選取 [永不]**** 來關閉建議。
 
 ## <a name="exclude-subscriptions-or-resource-groups"></a>排除訂用帳戶或資源群組
 
@@ -76,36 +76,36 @@ ms.locfileid: "79259626"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後開啟 [Advisor](https://aka.ms/azureadvisordashboard)。
 
-1. 按一下動作列中的 [設定]。
+1. 按一下動作列中的 [設定] ****。
 
 1. 將所有您不想要收到 Advisor 建議的訂用帳戶或資源群組取消選取。
 
     ![Advisor 設定資源範例](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. 按一下 [套用] 按鈕。
+1. 按一下 [套用]**** 按鈕。
 
 ## <a name="configure-low-usage-vm-recommendation"></a>設定低使用量 VM 建議
 
 此程序針對低使用量虛擬機器建議設定平均 CPU 使用率規則。
 
-Advisor 會監視您的虛擬機器使用量7天，然後找出低使用率的虛擬機器。 如果虛擬機器的 CPU 使用率為5% 或更低，而其網路使用率低於2%，或目前的工作負載可由較小的虛擬機器大小容納，則會視為低使用率。
+Advisor 會監視虛擬機器使用時間 7 天，然後識別利用率較低的虛擬機器。 如果虛擬機器的 CPU 利用率為 5% 或更少，並且其網路利用率低於 2%，或者當前工作負載可以通過較小的虛擬機器大小來容納，則被視為低利用率。
 
-如果您想要更積極地識別低使用量虛擬機器，您可以依據個別訂用帳戶調整平均 CPU 使用率規則。  CPU 使用率規則可以設定為5%、10%、15% 或20%。
+如果您想要更積極地識別低使用量虛擬機器，您可以依據個別訂用帳戶調整平均 CPU 使用率規則。  CPU 利用率規則可以設置為 5%、10%、15% 或 20%。
 
 > [!NOTE]
-> 若要調整平均 CPU 使用率規則以識別低使用量虛擬機器，您必須是訂用帳戶「擁有者」。  如果您沒有訂用帳戶或資源群組的必要權限，將其包含或排除的選項在使用者介面中就會停用。 
+> 若要調整平均 CPU 使用率規則以識別低使用量虛擬機器，您必須是訂用帳戶「擁有者」**。  如果您沒有訂用帳戶或資源群組的必要權限，將其包含或排除的選項在使用者介面中就會停用。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後開啟 [Advisor](https://aka.ms/azureadvisordashboard)。
 
-1. 按一下動作列中的 [設定]。
+1. 按一下動作列中的 [設定] ****。
 
-1. 按一下 [規則] 索引標籤。
+1. 按一下 [規則]**** 索引標籤。
 
-1. 選取您要調整平均 CPU 使用率規則的訂用帳戶，然後按一下 [編輯]。
+1. 選取您要調整平均 CPU 使用率規則的訂用帳戶，然後按一下 [編輯]****。
 
-1. 選取所需的平均 CPU 使用率值，然後按一下 [套用]。
+1. 選取所需的平均 CPU 使用率值，然後按一下 [套用]****。
 
-1. 按一下 [重新整理建議]，以將現有的建議更新成使用新的平均 CPU 使用率規則。 
+1. 按一下 [重新整理建議]****，以將現有的建議更新成使用新的平均 CPU 使用率規則。 
 
    ![Advisor 設定建議規則範例](./media/advisor-get-started/advisor-configure-rules.png)
 
@@ -115,7 +115,7 @@ Advisor 可讓您下載建議摘要。  您可以將建議下載為 PDF 檔案�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後開啟 [Advisor](https://aka.ms/azureadvisordashboard)。
 
-1. 按一下動作列上的 [下載為 CSV] 或 [下載為 PDF]。
+1. 按一下動作列上的 [下載為 CSV]**** 或 [下載為 PDF]****。
 
 下載選項會遵守您已套用至 Advisor 儀表板的所有篩選。  如果您在檢視特定建議類別或建議時選取下載選項，則下載的摘要只會包含該類別或建議的資訊。 
 
@@ -126,5 +126,5 @@ Advisor 可讓您下載建議摘要。  您可以將建議下載為 PDF 檔案�
 - [Azure 建議程式簡介](advisor-overview.md)
 - [Advisor 高可用性建議](advisor-high-availability-recommendations.md)
 - [Advisor 安全性建議](advisor-security-recommendations.md)
-- [Advisor 效能建議](advisor-performance-recommendations.md)
+- [建議程式效能建議](advisor-performance-recommendations.md)
 - [Advisor 成本建議](advisor-performance-recommendations.md)

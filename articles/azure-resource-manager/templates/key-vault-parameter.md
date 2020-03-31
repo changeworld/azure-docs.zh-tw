@@ -1,34 +1,34 @@
 ---
-title: 使用範本 Key Vault 秘密
+title: 使用範本金鑰保存庫金鑰庫金鑰
 description: 示範如何在部署期間從金鑰保存庫中傳遞密碼做為參數。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 56fa2def49f6d98abf1c939ed87456c4bf353eb9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460189"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署期間使用 Azure Key Vault 以傳遞安全的參數值
 
-除了將安全的值（例如密碼）直接放在您的範本或參數檔案中，您也可以在部署期間從[Azure Key Vault](../../key-vault/key-vault-overview.md)取得值。 您可以藉由參考金鑰保存庫和參數檔案中的密碼來擷取值。 您只參考其金鑰保存庫識別碼，因此該值絕不會公開。 金鑰保存庫可存在於與您要部署的資源群組不同的訂用帳戶中。
+您可以在部署期間從[Azure 金鑰保存庫](../../key-vault/key-vault-overview.md)檢索該值，而不是將安全值（如密碼）直接放入範本或參數檔中。 您可以藉由參考金鑰保存庫和參數檔案中的密碼來擷取值。 您只參考其金鑰保存庫識別碼，因此該值絕不會公開。 金鑰保存庫可以存在於與要部署到的資源組不同的訂閱中。
 
-本文著重于將中的機密值當做範本參數傳遞的案例。 它不會涵蓋將虛擬機器屬性設定為 Key Vault 中憑證 URL 的案例。 如需該案例的快速入門範本，請參閱[從虛擬機器上的 Azure Key Vault 安裝憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
+本文重點介紹將敏感值作為範本參數傳遞的方案。 它不包括將虛擬機器屬性設置為金鑰保存庫中證書 URL 的情況。 有關該方案的快速入門範本，請參閱[在虛擬機器上安裝 Azure 金鑰保存庫的證書](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署金鑰保存庫和祕密
 
-若要在範本部署期間存取金鑰保存庫，請將金鑰保存庫上的 `enabledForTemplateDeployment` 設定為 `true`。
+要在範本部署期間訪問金鑰保存庫，`enabledForTemplateDeployment`在金鑰保存庫上`true`設置為 。
 
-如果您已經有 Key Vault，請確定它允許範本部署。
+如果您已經擁有金鑰保存庫，請確保它允許範本部署。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az keyvault update  --name ExampleVault --enabled-for-template-deployment true
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
@@ -36,9 +36,9 @@ Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
 
 ---
 
-若要建立新的 Key Vault 並新增秘密，請使用：
+要創建新的金鑰保存庫並添加機密，請使用：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location centralus
@@ -50,7 +50,7 @@ az keyvault create \
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ExampleGroup -Location centralus
@@ -65,9 +65,9 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-身為金鑰保存庫的擁有者，您可以自動擁有建立秘密的存取權。 如果使用秘密的使用者不是金鑰保存庫的擁有者，請使用下列方式授與存取權：
+作為金鑰保存庫的擁有者，您將自動有權訪問創建機密。 如果使用機密的使用者不是金鑰保存庫的擁有者，則使用以下項授予存取權限：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az keyvault set-policy \
@@ -76,7 +76,7 @@ az keyvault set-policy \
   --secret-permissions set delete get list
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $userPrincipalName = "<Email Address of the deployment operator>"
@@ -89,7 +89,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
-如需建立金鑰保存庫和新增秘密的詳細資訊，請參閱：
+有關創建金鑰保存庫和添加機密的詳細資訊，請參閱：
 
 - [使用 CLI 設定和擷取祕密](../../key-vault/quick-create-cli.md)
 - [使用 PowerShell 設定和擷取祕密](../../key-vault/quick-create-powershell.md)
@@ -99,7 +99,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="grant-access-to-the-secrets"></a>授與祕密的存取權
 
-部署範本的使用者必須具有資源群組和金鑰保存庫範圍的 [`Microsoft.KeyVault/vaults/deploy/action`] 許可權。 [擁有者](../../role-based-access-control/built-in-roles.md#owner)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色皆可授與此權限。 如果您已建立金鑰保存庫，則您是擁有者，因此您擁有該許可權。
+部署範本的使用者必須具有資源組和金鑰保管`Microsoft.KeyVault/vaults/deploy/action`庫範圍的許可權。 [擁有者](../../role-based-access-control/built-in-roles.md#owner)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色皆可授與此權限。 如果您創建了金鑰保存庫，則您是擁有者，因此您擁有許可權。
 
 下列程序說明如何建立具有最低權限的角色，以及如何指派使用者
 
@@ -121,11 +121,11 @@ Set-AzKeyVaultAccessPolicy `
       ]
     }
     ```
-    以訂用帳戶識別碼取代 "00000000-0000-0000-0000-000000000000"。
+    將"0000000-0000-0000-0000-00000000"替換為訂閱 ID。
 
 2. 使用 JSON 檔案建立新的角色：
 
-    # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli-interactive
     az role definition create --role-definition "<path-to-role-file>"
@@ -135,7 +135,7 @@ Set-AzKeyVaultAccessPolicy `
       --resource-group ExampleGroup
     ```
 
-    # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+    # <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
     ```azurepowershell-interactive
     New-AzRoleDefinition -InputFile "<path-to-role-file>"
@@ -147,7 +147,7 @@ Set-AzKeyVaultAccessPolicy `
 
     ---
 
-    這些範例會將自訂角色指派給資源群組層級的使用者。
+    示例在資源組級別將自訂角色指派給使用者。
 
 將金鑰保存庫與[受控應用程式](../managed-applications/overview.md)的範本搭配使用時，您必須授與**設備資源提供者**服務主體的存取權。 如需詳細資訊，請參閱[在部署 Azure 受控應用程式時存取金鑰保存庫密碼](../managed-applications/key-vault-access.md) (英文)。
 
@@ -157,9 +157,9 @@ Set-AzKeyVaultAccessPolicy `
 
 ![Resource Manager 金鑰保存庫整合靜態識別碼圖表](./media/key-vault-parameter/statickeyvault.png)
 
-[教學課程：將 Azure Key Vault 整合 Resource Manager 範本部署](./template-tutorial-use-key-vault.md)使用此方法。
+[教程：在資源管理器範本部署中集成 Azure 金鑰保存庫](./template-tutorial-use-key-vault.md)使用此方法。
 
-下列範本會部署包含系統管理員密碼的 SQL server。 密碼參數會設定為安全字串。 但範本並不會指定該值來自何處。
+以下範本部署包含管理員密碼的 SQL 伺服器。 密碼參數會設定為安全字串。 但是，範本沒有指定該值的來源。
 
 ```json
 {
@@ -197,7 +197,7 @@ Set-AzKeyVaultAccessPolicy `
 
 現在，請為前述範本建立參數檔案。 在參數檔案中，指定符合範本中參數名稱的參數。 針對參數值，參考來自金鑰保存庫的密碼。 您可以藉由傳遞金鑰保存庫的資源識別碼和密碼的名稱來參考密碼：
 
-在下列參數檔案中，金鑰保存庫密碼必須已經存在，而且您可以為其資源識別碼提供靜態值。
+在下列參數檔案中，金鑰保存庫祕密必須已經存在，而且您要針對其資源識別碼提供靜態值。
 
 ```json
 {
@@ -231,17 +231,17 @@ Set-AzKeyVaultAccessPolicy `
 
 部署範本並在參數檔案中傳遞：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name SqlGroup --location westus2
-az group deployment create \
+az deployment group create \
   --resource-group SqlGroup \
   --template-uri <template-file-URI> \
   --parameters <parameter-file>
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -259,11 +259,11 @@ New-AzResourceGroupDeployment `
 
 由於參數檔中不允許使用範本運算式，因此您無法在參數檔中以動態方式產生資源識別碼。
 
-在您的父範本中，您可以新增嵌套的範本，並傳入包含動態產生之資源識別碼的參數。 下圖顯示連結的範本中的參數如何參考祕密。
+在父範本中，添加嵌套範本並傳遞包含動態生成的資源識別碼 的參數。 下圖顯示連結的範本中的參數如何參考祕密。
 
 ![動態識別碼](./media/key-vault-parameter/dynamickeyvault.png)
 
-下列範本會以動態方式建立金鑰保存庫識別碼，並將它當做參數傳遞。
+下列範本會動態建立金鑰保存庫識別碼，並將它當作參數傳遞。
 
 ```json
 {

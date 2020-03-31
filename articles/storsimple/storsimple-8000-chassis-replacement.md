@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61312440"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>更換 StorSimple 裝置上的底座
@@ -41,7 +41,7 @@ ms.locfileid: "61312440"
 4. 取下每個磁碟機，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱 [取下磁碟機](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive)。
 5. 在 EBOD 機箱 (如果這是故障的底座) 上，取下 EBOD 控制器模組。 如需詳細資訊，請參閱 [取下 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller)。
    
-    在主要機箱 (如果這是故障的底座) 上，取下控制器，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱 [取下控制器](storsimple-8000-controller-replacement.md#remove-a-controller)。
+    在主要機箱 (如果這是故障的底座) 上，取下控制器，並記下從哪些插槽中取下它們。 有關詳細資訊，請參閱[刪除控制器](storsimple-8000-controller-replacement.md#remove-a-controller)。
 
 ## <a name="install-the-chassis"></a>安裝底座
 請執行下列步驟來安裝 StorSimple 裝置上的底座。

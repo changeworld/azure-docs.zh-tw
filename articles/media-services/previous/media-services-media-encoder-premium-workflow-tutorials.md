@@ -16,15 +16,15 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251007"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>進階媒體編碼器 Premium 工作流程教學課程
-## <a name="overview"></a>概觀
-本文件包含的逐步解說可示範如何使用**工作流程設計工具**自訂工作流程。 您可以在[這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)尋找實際的工作流程檔案。  
+## <a name="overview"></a>總覽
+本文檔包含演練，演示如何使用**工作流設計器自訂工作流**。 您可以在[這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)尋找實際的工作流程檔案。  
 
 ## <a name="toc"></a>目錄
 其中涵蓋下列主題：
@@ -35,43 +35,43 @@ ms.locfileid: "79251007"
   * [檢查媒體串流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_streams)
   * [為產生的 MP4 檔案加入視訊編碼器](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
   * [對音訊串流編碼](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio)
-  * [將音訊和視訊串流多工處理為 MP4 容器](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio_and_fideo)
-  * [寫入 MP4 檔案](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_writing_mp4)
+  * [多工音訊和視頻流入 MP4 容器](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio_and_fideo)
+  * [寫入 MP4 檔](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_writing_mp4)
   * [從輸出檔案建立媒體服務資產](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_asset_from_output)
-  * [在本機測試完成的工作流程](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_test)
+  * [在本地測試已完成的工作流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_test)
 * [將 MXF 編碼為多位元速率 MP4 - 動態封裝已啟用](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)
   * [加入一或多個其他的 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_more_outputs)
-  * [設定檔案輸出名稱](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_conf_output_names)
-  * [加入個別的曲目](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
+  * [設定檔輸出名稱](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_conf_output_names)
+  * [添加單獨的音軌](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * [新增 "ISM" SMIL 檔案](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
 * [將 MXF 編碼為多位元速率 MP4 - 增強的藍圖](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
   * 要增強的工作流程概觀
   * [檔案命名慣例](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
-  * [發佈元件屬性至工作流程根目錄](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
+  * [將元件屬性發佈到工作流根目錄](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
   * [讓產生的輸出檔案名稱依賴發佈的屬性值](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
-* [加入縮圖至多位元速率 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
+* [將縮略圖添加到多比特 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
   * 要加入縮圖的目標工作流程概觀
   * [加入 JPG 編碼](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
   * [處理色彩空間轉換](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [寫入縮圖](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)
-  * [偵測工作流程中的錯誤](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_errors)
+  * [檢測工作流中的錯誤](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_errors)
   * [工作流程完成](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_finish)
-* [多位元速率 MP4 輸出以時間為基礎的修剪](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim)
+* [多比特 MP4 輸出的基於時間的修剪](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim)
   * [要開始加入修剪的目標工作流程概觀](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_start)
-  * [使用串流修剪器](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_use_stream_trimmer)
+  * [使用流修剪器](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_use_stream_trimmer)
   * [工作流程完成](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_finish)
 * [推出指令碼元件](media-services-media-encoder-premium-workflow-tutorials.md#scripting)
-  * [工作流程內的指令碼：Hello World](media-services-media-encoder-premium-workflow-tutorials.md#scripting_hello_world)
+  * [工作流中的腳本：你好世界](media-services-media-encoder-premium-workflow-tutorials.md#scripting_hello_world)
 * [多位元速率 MP4 輸出以畫面格為基礎的修剪](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)
   * [要開始加入修剪的目標藍圖概觀](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_start)
   * [使用剪輯清單 XML](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clip_list)
-  * [透過指令碼元件修改剪輯清單](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
-  * [加入 ClippingEnabled 便利屬性](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
+  * [從腳本元件修改剪輯清單](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
+  * [添加"剪切啟用"便利屬性](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
-## <a id="MXF_to_MP4"></a>將 MXF 編碼為單一位元速率 MP4
+## <a name="encoding-mxf-into-a-single-bitrate-mp4"></a><a id="MXF_to_MP4"></a>將 MXF 編碼為單一位元速率 MP4
 本節示範如何使用來自 .MXF 輸入檔案 AAC-HE 編碼的音訊來建立單一位元速率 .MP4 檔案。
 
-### <a id="MXF_to_MP4_start_new"></a>開始新的工作流程
+### <a name="starting-a-new-workflow"></a><a id="MXF_to_MP4_start_new"></a>開始新的工作流程
 開啟「工作流程設計工具」，然後選取 [檔案] > [新增工作區] > [轉碼藍圖]
 
 新的工作流程會顯示三個元素︰
@@ -84,7 +84,7 @@ ms.locfileid: "79251007"
 
 *新編碼工作流程*
 
-### <a id="MXF_to_MP4_with_file_input"></a>使用媒體檔案輸入
+### <a name="using-the-media-file-input"></a><a id="MXF_to_MP4_with_file_input"></a>使用媒體檔案輸入
 為了接受輸入媒體檔案，您會從新增媒體檔案輸入元件開始。 若要將元件加入至工作流程，請在 [儲存機制] 搜尋方塊中尋找它，然後將所需的項目拖曳至設計工具窗格。 請對「媒體檔案輸入」重複此動作，並將 [主要來源檔案] 元件從 [媒體檔案輸入] 連線至 [檔案名稱] 輸入接點。
 
 ![連接的媒體檔案輸入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
@@ -103,7 +103,7 @@ ms.locfileid: "79251007"
 
 *設定輸入和輸出屬性*
 
-### <a id="MXF_to_MP4_streams"></a>檢查媒體串流
+### <a name="inspecting-media-streams"></a><a id="MXF_to_MP4_streams"></a>檢查媒體串流
 通常您想要知道經過工作流程之後串流的外觀。 若要在工作流程中的任何一點檢查串流，只要按一下任何元件上的輸出或輸入接點。 在此情況下，請嘗試從 [媒體檔案輸入] 按一下 [未壓縮的影片] 輸出接點。 對話方塊隨即開啟，讓您檢查輸出影片。
 
 ![檢查未壓縮的視訊輸出接點](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
@@ -112,7 +112,7 @@ ms.locfileid: "79251007"
 
 在此案例中，它會顯示影片包含要對一段接近 2 分鐘的影片，以 4:2:2 取樣每秒 24 個畫面格處理 1920x1080 輸入。
 
-### <a id="MXF_to_MP4_file_generation"></a>為產生的 MP4 檔案加入視訊編碼器
+### <a name="adding-a-video-encoder-for-mp4-file-generation"></a><a id="MXF_to_MP4_file_generation"></a>為產生的 MP4 檔案加入視訊編碼器
 現在，[未壓縮的視訊] 和多個 [未壓縮的音訊] 輸出接點可供用於媒體檔案輸入。 為了對輸入影片編碼，必須將編碼元件新增至工作流程 - 在此情況下用於產生 .MP4 檔案。
 
 若要將視訊串流編碼成 H.264，請將 AVC 視訊編碼器元件加入至設計工具介面。 此元件會將未壓縮的視訊串流做為輸入，並在其輸出接點上提供 AVC 壓縮視訊串流。
@@ -138,14 +138,14 @@ ms.locfileid: "79251007"
 
 *連接的 AVC 主要編碼器*
 
-### <a id="MXF_to_MP4_audio"></a>對音訊串流編碼
+### <a name="encoding-the-audio-stream"></a><a id="MXF_to_MP4_audio"></a>對音訊串流編碼
 此時，仍需壓縮原始未壓縮的音訊串流。 如需壓縮音訊串流，請將 AAC 編碼器 (Dolby) 元件新增至工作流程。
 
 ![未連接的 AVC 編碼器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
 
 *未連接的 AAC 編碼器*
 
-現在有不相容性：AAC 編碼器只有單一未壓縮音訊輸入接點，而媒體檔案輸入可能會有兩個不同的未壓縮音訊串流可用：一個用於左聲道，一個用於右聲道。 （如果您正在處理環繞音效，這就是六個頻道）。因此，您無法直接將音訊從媒體檔案輸入來源連線到 AAC 音訊編碼器。 AAC 元件預期稱為「交錯」的音訊串流：具有左右聲道並彼此交錯的單一串流。 一旦我們從來源媒體檔案知道哪一個音訊曲目在來源中的哪個位置後，可以使用正確指派的左右喇叭位置來產生這類的交錯音訊串流。
+現在有不相容性：AAC 編碼器只有單一未壓縮音訊輸入接點，而媒體檔案輸入可能會有兩個不同的未壓縮音訊串流可用：一個用於左聲道，一個用於右聲道。 （如果您正在處理環繞聲，則是六個聲道。因此，無法將媒體檔案輸入源的音訊直接連接到 AAC 音訊編碼器。 AAC 元件預期稱為「交錯」的音訊串流：具有左右聲道並彼此交錯的單一串流。 一旦我們從來源媒體檔案知道哪一個音訊曲目在來源中的哪個位置後，可以使用正確指派的左右喇叭位置來產生這類的交錯音訊串流。
 
 首先，使用者需要從需要的來源音訊聲道產生交錯的串流。 音訊串流交錯器元件會為我們處理。 將它加入至工作流程，並從 [媒體檔案輸入] 將音訊輸出連接到它。
 
@@ -163,14 +163,14 @@ ms.locfileid: "79251007"
 
 將 [喇叭位置指定器] 的輸出連接到 [AAC 編碼器] 的輸入。 然後，告訴 AAC 編碼器使用 "2.0 (L,R)" 聲道預設，讓它知道要將立體聲音訊處理為輸入。
 
-### <a id="MXF_to_MP4_audio_and_fideo"></a>將音訊和視訊串流多工處理為 MP4 容器
+### <a name="multiplexing-audio-and-video-streams-into-an-mp4-container"></a><a id="MXF_to_MP4_audio_and_fideo"></a>將音訊和視訊串流多工處理為 MP4 容器
 假設我們有 AVC 編碼的視訊串流和 AAC 編碼的音訊串流，我們可以將兩者擷取為 .MP4 容器。 將不同的串流混合為單一串流的程序稱為「多工處理」(multiplexing，或 "muxing")。 在此情況下，我們要將音訊及影片串流交錯到單一一致的 .MP4 套件。 為 .MP4 容器協調此動作的元件稱為 ISO MPEG-4 多工器。 將其中一個加入至設計工具介面，並將 AVC 視訊編碼器和 AAC 編碼器連接到其輸入。
 
 ![連接的 MPEG4 多工器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
 *連接的 MPEG4 多工器*
 
-### <a id="MXF_to_MP4_writing_mp4"></a>寫入 MP4 檔案
+### <a name="writing-the-mp4-file"></a><a id="MXF_to_MP4_writing_mp4"></a>寫入 MP4 檔案
 寫入輸出檔時，會使用「檔案輸出」元件。 我們可以將它連接到 ISO MPEG-4 多工器的輸出，讓其輸出寫入至磁碟。 若要這樣做，請將容器 (MPEG-4) 輸出接點連接到 [檔案輸出] 的 [寫入] 輸入接點。
 
 ![連接的檔案輸出](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
@@ -204,7 +204,7 @@ ms.locfileid: "79251007"
 
 *檔案運算式解析輸出目錄*
 
-### <a id="MXF_to_MP4_asset_from_output"></a>從輸出檔案建立媒體服務資產
+### <a name="creating-a-media-services-asset-from-the-output-file"></a><a id="MXF_to_MP4_asset_from_output"></a>從輸出檔案建立媒體服務資產
 雖然我們已編寫 MP4 輸出檔，但仍需要指出此檔案屬於媒體服務會因為執行此工作流程而產生的輸出資產。 在此端，會使用工作流程畫布上的 [輸出檔案/資產] 節點。 所有連入此節點中的檔案就會成為所產生之 Azure 媒體服務資產的一部分。
 
 將 [檔案輸出] 元件連接到 [輸出檔案/資產] 元件以完成工作流程。
@@ -213,10 +213,10 @@ ms.locfileid: "79251007"
 
 *工作流程完成*
 
-### <a id="MXF_to_MP4_test"></a>在本機測試完成的工作流程
+### <a name="test-the-finished-workflow-locally"></a><a id="MXF_to_MP4_test"></a>在本機測試完成的工作流程
 若要在本機測試工作流程，請按頂端工具列中的 [播放] 按鈕。 當工作流程完成執行時，請檢查設定的輸出資料夾中產生的輸出。 您會看到從 MXF 輸入來源檔案進行編碼完成的 MP4 輸出檔。
 
-## <a id="MXF_to_MP4_with_dyn_packaging"></a>將 MXF 編碼為 MP4 - 多位元速率動態封裝已啟用
+## <a name="encoding-mxf-into-mp4---multibitrate-dynamic-packaging-enabled"></a><a id="MXF_to_MP4_with_dyn_packaging"></a>將 MXF 編碼為 MP4 - 多位元速率動態封裝已啟用
 本逐步解說會使用單一 .MXF 輸入檔案中 AAC 編碼的音訊來建立一組多位元速率 MP4 檔案。
 
 想要將多位元速率資產輸出用於結合 Azure 媒體服務提供的動態封裝功能時，將需要對每個不同的位元速率與解析度產生多個結合 GOP 的 MP4 檔案。 若要這樣做， [將 MXF 編碼為單一位元速率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) 逐步解說提供不錯的起點。
@@ -225,7 +225,7 @@ ms.locfileid: "79251007"
 
 *開始工作流程*
 
-### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>加入一或多個其他的 MP4 輸出
+### <a name="adding-one-or-more-additional-mp4-outputs"></a><a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>加入一或多個其他的 MP4 輸出
 我們產生的 Azure 媒體服務資產中的每個 MP4 檔案，都會支援不同的位元速率與解析度。 讓我們加入一或多個 MP4 輸出檔案至工作流程。
 
 若要確定我們使用相同的設定來建立影片編碼器，最方便的方式是複製現有的 AVC 影片編碼器，並設定其他解析度及位元速率的組合 (讓我們新增 960x540，每秒 25 個畫面格，2.5 Mbps 的組合)。 若要複製現有的編碼器，請在設計工具介面複製貼上。
@@ -260,7 +260,7 @@ ms.locfileid: "79251007"
 
 注意：您可以對要加入至資產輸出的任何其他位元速率和解析度組合重複此程序。
 
-### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>設定檔案輸出名稱
+### <a name="configuring-the-file-output-names"></a><a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>設定檔案輸出名稱
 我們已將一個以上的單一檔案加入至輸出資產。 這使得您需要確定每個輸出檔案的檔案名稱會彼此不同，並甚至可能套用檔案命名慣例，使得您能夠從檔案名稱清楚知道要處理的是什麼。
 
 檔案輸出命名可以透過設計工具中的運算式來控制。 開啟其中一個 [檔案輸出] 元件的屬性窗格，然後開啟 [檔案屬性] 的運算式編輯器。 我們的第一個輸出檔是透過下列運算式設定 (請參閱從 [MXF 到單一位元速率 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)的教學課程)：
@@ -278,7 +278,7 @@ ms.locfileid: "79251007"
 
 執行中繼的測試回合，以確定正確產生這兩個 MP4 輸出檔案。
 
-### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>加入個別的曲目
+### <a name="adding-a-separate-audio-track"></a><a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>加入個別的曲目
 如我們稍後所見，在產生要隨著我們的 MP4 輸出檔案傳送之 .ism 檔案時，我們也將需要僅限音訊的 MP4 檔案作為彈性資料流的曲目。 若要建立此檔案，請將額外的 Muxer 加入至工作流程 (ISO-MPEG-4 多工器)，並 AAC 編碼器的輸出接點與其曲目 1 輸入接點連接。
 
 ![加入音訊 Muxer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
@@ -293,7 +293,7 @@ ms.locfileid: "79251007"
 
 *音訊 Muxer 建立輸出檔案*
 
-### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>加入 .ISM SMIL 檔案
+### <a name="adding-the-ism-smil-file"></a><a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>添加 。ISM SMIL 檔
 為了讓動態封裝能在我們媒體服務資產中結合這兩個 MP4 檔案 (僅限音訊的 MP4) 運作，我們也需要資訊清單檔案 (也稱為 "SMIL" 檔案：同步多媒體整合語言)。 這個檔案可向 Azure 媒體服務指出哪些 MP4 檔案可供動態封裝，以及要考量進行音訊串流的檔案。 具有單一的音訊串流之一組 MP4 的一般資訊清單檔看起來像這樣：
 
 ```xml
@@ -327,17 +327,17 @@ ms.locfileid: "79251007"
 
 *MXF 到多位元速率 MP4 的工作流程完成*
 
-## <a id="MXF_to__multibitrate_MP4"></a>將 MXF 編碼為多位元速率 MP4 - 增強的藍圖
+## <a name="encoding-mxf-into-multibitrate-mp4---enhanced-blueprint"></a><a id="MXF_to__multibitrate_MP4"></a>將 MXF 編碼為多位元速率 MP4 - 增強的藍圖
 在[前一個工作流程逐步解說](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)中，我們已了解可以如何將單一 MXF 輸入資產轉換成輸出資產，其具有多位元速率 MP4 檔案、僅限音訊的 MP4 檔案和用於與 Azure 媒體服務動態封裝結合使用的資訊清單檔。
 
 此逐步解說將示範如何加強一些層面，並使它更便利。
 
-### <a id="MXF_to_multibitrate_MP4_overview"></a>要增強的工作流程概觀
+### <a name="workflow-overview-to-enhance"></a><a id="MXF_to_multibitrate_MP4_overview"></a>要增強的工作流程概觀
 ![要增強的多位元速率 MP4 工作流程](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
 
 *要增強的多位元速率 MP4 工作流程*
 
-### <a id="MXF_to__multibitrate_MP4_file_naming"></a>檔案命名慣例
+### <a name="file-naming-conventions"></a><a id="MXF_to__multibitrate_MP4_file_naming"></a>檔案命名慣例
 在先前的工作流程中，我們已指定簡單的運算式作為產生輸出檔案名稱的基礎。 不過，我們有一些重複項目：所有的個別輸出檔案元件都指定了這類運算式。
 
 例如，我們的第一個視訊檔案的檔案輸出元件是使用此運算式設定：
@@ -352,7 +352,7 @@ ms.locfileid: "79251007"
 
 假設我們將從個別 MP4 檔案的位元速率推動檔案名稱的組態。 我們將力求在一個集中位置 (在我們圖形的根目錄) 設定的這些位元速率，將從該位置存取它們，以設定及推動檔案名稱產生。 為了這樣做，我們會從將來自兩個 AVC 編碼器的位元速率屬性發佈到我們的工作流程根目錄開始，使其成為可從根目錄及從 AVC 編碼器存取。 (即使顯示在兩個不同的位置，只有單一的基礎值。)
 
-### <a id="MXF_to__multibitrate_MP4_publishing"></a>發佈元件屬性至工作流程根目錄
+### <a name="publishing-component-properties-onto-the-workflow-root"></a><a id="MXF_to__multibitrate_MP4_publishing"></a>發佈元件屬性至工作流程根目錄
 開啟第一個 AVC 編碼器，移至 [位元速率 (kbps)] 屬性，並從下拉式清單中選擇 [發佈]。
 
 ![發佈位元速率屬性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-bitrate-property.png)
@@ -388,7 +388,7 @@ ms.locfileid: "79251007"
 
 對這三個值的任何變更也會重新設定並變更所連結 (和發佈來源位置) 之個別元件的值。
 
-### <a id="MXF_to__multibitrate_MP4_output_files"></a>讓產生的輸出檔案名稱依賴發佈的屬性值
+### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>讓產生的輸出檔案名稱依賴發佈的屬性值
 不要對我們產生的檔案名稱進行硬式編碼，我們現在可以在每個「檔案輸出」元件上變更檔案名稱，以仰賴我們在圖形根目錄上發佈的運算式屬性。 從我們的第一個檔案輸出開始，尋找檔案屬性，然後編輯運算式，如下：
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
@@ -409,15 +409,15 @@ ms.locfileid: "79251007"
 
 如果我們現在變更任何視訊或音訊檔案的位元速率，將重新設定個別的編碼器，而將會對所有項目自動使用以位元速率為基礎的檔案名稱慣例。
 
-## <a id="thumbnails_to__multibitrate_MP4"></a>加入縮圖至多位元速率 MP4 輸出
+## <a name="adding-thumbnails-to-multibitrate-mp4-output"></a><a id="thumbnails_to__multibitrate_MP4"></a>加入縮圖至多位元速率 MP4 輸出
 從 [透過 MXF 輸入產生多位元速率 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流程開始，我們現在將尋求將縮圖加入到輸出。
 
-### <a id="thumbnails_to__multibitrate_MP4_overview"></a>要加入縮圖的目標工作流程概觀
+### <a name="workflow-overview-to-add-thumbnails-to"></a><a id="thumbnails_to__multibitrate_MP4_overview"></a>要加入縮圖的目標工作流程概觀
 ![要從中開始的多位元速率 MP4 工作流程](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
 
 *要從中開始的多位元速率 MP4 工作流程*
 
-### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>加入 JPG 編碼
+### <a name="adding-jpg-encoding"></a><a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>加入 JPG 編碼
 我們的縮圖產生核心會是可以輸出 JPG 檔案的 JPG 編碼器元件。
 
 ![JPG 編碼器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
@@ -438,7 +438,7 @@ ms.locfileid: "79251007"
 
 讓我們透過將模式設為時間 (秒) 及間隔設為 60，每隔一分鐘建立縮圖。
 
-### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>處理色彩空間轉換
+### <a name="dealing-with-color-space-conversion"></a><a id="thumbnails_to__multibitrate_MP4_color_space"></a>處理色彩空間轉換
 雖然邏輯上可看到畫面格閘道和媒體檔案輸入的未壓縮的視訊接點現在已可連接，如果我們想執行此動作，則會收到警告。
 
 ![輸入色彩空間錯誤](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
@@ -455,7 +455,7 @@ ms.locfileid: "79251007"
 
 在屬性視窗中，從 [預設] 清單選擇 BGR 24 項目。
 
-### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>寫入縮圖
+### <a name="writing-the-thumbnails"></a><a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>寫入縮圖
 不同於我們的 MP4 影片，JPG 編碼器元件會輸出多個檔案。 為了解決這個問題，可以使用「場景搜尋 JPG 檔案寫入器」元件：它會採用傳入的 JPG 縮圖並加以寫出，每個檔案名稱結尾加上不同的數字。 (數字通常指出縮圖取自串流中的秒數/單位數。)
 
 ![推出場景搜尋 JPG 檔案寫入器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
@@ -476,7 +476,7 @@ ms.locfileid: "79251007"
 
 將 [場景搜尋 JPG 檔案寫入器] 連接至 [輸出檔案/資產] 節點。
 
-### <a id="thumbnails_to__multibitrate_MP4_errors"></a>偵測工作流程中的錯誤
+### <a name="detecting-errors-in-a-workflow"></a><a id="thumbnails_to__multibitrate_MP4_errors"></a>偵測工作流程中的錯誤
 將色彩空間轉換器的輸入連接到原始未壓縮的視訊輸出。 現在，對工作流程執行本機測試回合。 工作流程很可能會突然停止執行，並在發生錯誤之元件上以紅色外框指出：
 
 ![色彩空間轉換器錯誤](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
@@ -497,23 +497,23 @@ ms.locfileid: "79251007"
 
 *更新資料類型更新程式上的色彩空間標準*
 
-### <a id="thumbnails_to__multibitrate_MP4_finish"></a>工作流程完成
+### <a name="finished-workflow"></a><a id="thumbnails_to__multibitrate_MP4_finish"></a>工作流程完成
 現在，我們完成了工作流程，接著執行另一個測試回合來查看它傳遞。
 
 ![具有縮圖的多個 mp4 輸出完成的工作流程](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
 *具有縮圖的多個 mp4 輸出完成的工作流程*
 
-## <a id="time_based_trim"></a>多位元速率 MP4 輸出以時間為基礎的修剪
+## <a name="time-based-trimming-of-multibitrate-mp4-output"></a><a id="time_based_trim"></a>多位元速率 MP4 輸出以時間為基礎的修剪
 從 [透過 MXF 輸入產生多位元速率 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流程開始，我們現在將尋求以時間戳記為基礎修剪來源視訊。
 
-### <a id="time_based_trim_start"></a>要開始加入修剪的目標工作流程概觀
+### <a name="workflow-overview-to-start-adding-trimming-to"></a><a id="time_based_trim_start"></a>要開始加入修剪的目標工作流程概觀
 ![要加入修剪的目標開始工作流程](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
 *要加入修剪的目標開始工作流程*
 
-### <a id="time_based_trim_use_stream_trimmer"></a>使用串流修剪器
-Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪輸入資料流程基底的開始和結束。修剪器不支援以畫面格為基礎的修剪。
+### <a name="using-the-stream-trimmer"></a><a id="time_based_trim_use_stream_trimmer"></a>使用串流修剪器
+流修剪器元件允許您根據計時資訊（秒、分鐘、...）修剪輸入流基礎的開始和結束。修剪器不支援基於幀的修剪。
 
 ![串流修剪器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
@@ -557,12 +557,12 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
     ${ROOT_TrimmingEndTime}
 
-### <a id="time_based_trim_finish"></a>工作流程完成
+### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>工作流程完成
 ![工作流程完成](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
 
 *工作流程完成*
 
-## <a id="scripting"></a>推出指令碼元件
+## <a name="introducing-the-scripted-component"></a><a id="scripting"></a>推出指令碼元件
 指令碼元件可以在我們的工作流程執行階段期間執行任意指令碼。 有四個可以執行的不同指令碼，每個都具有特定特性，以及在工作流程生命週期中的位置：
 
 * **commandScript**
@@ -572,7 +572,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 指令碼元件的文件會更詳細說明上述各項。 在 [下一節](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)， **realizeScript** 指令碼元件用來在工作流程啟動時快速建構剪輯清單 XML。 在元件安裝期間會呼叫此指令碼，這種情況在其生命週期中只會發生一次。
 
-### <a id="scripting_hello_world"></a>工作流程內的指令碼：Hello World
+### <a name="scripting-within-a-workflow-hello-world"></a><a id="scripting_hello_world"></a>工作流程內的指令碼：Hello World
 將指令碼元件拖曳至設計工具介面上，並重新命名 (例如，"SetClipListXML")。
 
 ![加入指令碼元件](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
@@ -599,7 +599,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 *Hello World 記錄輸出*
 
-我們呼叫記錄方法所在的節點物件，是指我們目前的「節點」或是我們正在編寫指令碼的元件。 每個元件都可以透過 [系統] 索引標籤來輸出記錄資料。在此情況下，我們會輸出字串常值 "hello world"。 在此處需要了解的是這可以證明是非常重要的偵錯工具，讓您深入了解指令碼實際上做些什麼。
+我們呼叫記錄方法所在的節點物件，是指我們目前的「節點」或是我們正在編寫指令碼的元件。 每個元件都能夠輸出通過系統選項卡提供的日誌記錄資料。在這種情況下，我們輸出字串文本"hello world"。 在此處需要了解的是這可以證明是非常重要的偵錯工具，讓您深入了解指令碼實際上做些什麼。
 
 從我們的指令碼環境內，我們也可以存取其他元件的屬性。 試試看：
 
@@ -625,15 +625,15 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 *用於存取節點路徑的記錄輸出*
 
-## <a id="frame_based_trim"></a>多位元速率 MP4 輸出以畫面格為基礎的修剪
+## <a name="frame-based-trimming-of-multibitrate-mp4-output"></a><a id="frame_based_trim"></a>多位元速率 MP4 輸出以畫面格為基礎的修剪
 從 [透過 MXF 輸入產生多位元速率 MP4 輸出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流程開始，我們現在將尋求以畫面格計數為基礎修剪來源視訊。
 
-### <a id="frame_based_trim_start"></a>要開始加入修剪的目標藍圖概觀
+### <a name="blueprint-overview-to-start-adding-trimming-to"></a><a id="frame_based_trim_start"></a>要開始加入修剪的目標藍圖概觀
 ![要開始加入修剪的目標工作流程](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
 
 *要開始加入修剪的目標工作流程*
 
-### <a id="frame_based_trim_clip_list"></a>使用剪輯清單 XML
+### <a name="using-the-clip-list-xml"></a><a id="frame_based_trim_clip_list"></a>使用剪輯清單 XML
 在所有先前的工作流程教學課程中，我們使用「媒體檔案輸入」元件做為我們的視訊輸入來源。 不過，在此特定案例中，我們將改為使用剪輯清單來源元件。 這應該不是最好的工作方式；只在有實際原因這麼做時，才使用剪輯清單來源 (如同在下列情況下，我們會使用剪輯清單修剪功能)。
 
 若要從我們的「媒體檔案輸入」切換到「剪輯清單來源」，請將 [剪輯清單來源] 元件拖曳至設計介面，並將 [剪輯清單 XML] 接點連接至工作流程設計工具的 [剪輯清單 XML] 節點。 這會根據我們的輸入影片，以輸出接點填入剪輯清單來源。 現在，從剪輯清單來源將「未壓縮的影片」和「未壓縮的音訊」接點連線至相應的「AVC 編碼器」和「音訊串流交錯器」。 現在移除媒體檔案輸入。
@@ -678,7 +678,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 *指令碼元件屬性*
 
-### <a id="frame_based_trim_modify_clip_list"></a>透過指令碼元件修改剪輯清單
+### <a name="modifying-the-clip-list-from-a-scripted-component"></a><a id="frame_based_trim_modify_clip_list"></a>透過指令碼元件修改剪輯清單
 在我們可以將工作流程啟動時產生的剪輯清單 XML 重新寫入之前，必須存取剪輯清單 XML 屬性和內容。 我們可以像這樣執行：
 
 ```java
@@ -761,7 +761,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 *記錄產生的剪輯清單*
 
-執行測試回合以查看視訊和音訊串流剪輯的情況。 不過，由於您將對修剪點的使用不同值進行多個測試回合，您會發現，這些將不會被納入考量！ 這是因為設計工具不同於 Azure 執行階段，不會在每次執行時覆寫剪輯清單 XML。 這表示，只有在您第一次設定 in 和 out 時，才會造成 xml 轉換，而所有其他時間，我們的 guard 子句（if （`clipListXML.indexOf("<trim>") == -1`））將會防止工作流程在已經有一個 trim 元素時加入另一個 trim 專案。
+執行測試回合以查看視訊和音訊串流剪輯的情況。 不過，由於您將對修剪點的使用不同值進行多個測試回合，您會發現，這些將不會被納入考量！ 這是因為設計工具不同於 Azure 執行階段，不會在每次執行時覆寫剪輯清單 XML。 這意味著，只有首次設置進出點，才會導致 xml 轉換，所有其他時間，我們的保護子句 （if（`clipListXML.indexOf("<trim>") == -1`）） 將阻止工作流添加另一個修剪元素，當已經有一個存在。
 
 為了讓工作流程方便在本機測試，我們最好加入一些管理程式碼，其會檢查是否已經存在修剪元素。 如果是的話，我們可以在繼續之前，將 XML 修改為新的值來將它移除。 不要使用純文字字串操作，透過實際的 XML 物件模型剖析執行此動作可能更安全。
 
@@ -818,7 +818,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 此時，只要我們需要，可以在讓變更隨著時間套用時執行及修改工作流程。    
 
-### <a id="frame_based_trim_clippingenabled_prop"></a>加入 ClippingEnabled 便利屬性
+### <a name="adding-a-clippingenabled-convenience-property"></a><a id="frame_based_trim_clippingenabled_prop"></a>加入 ClippingEnabled 便利屬性
 因為您可能不要一律進行修剪，讓我們透過加入方便的布林值旗標 (可指出是否要啟用修剪/剪輯) 來完成工作流程。
 
 如同以往，發佈新的屬性到我們稱為 "ClippingEnabled" (類型 "BOOLEAN") 的工作流程根目錄。
@@ -841,7 +841,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
     }
 ```
 
-### <a id="code"></a>完整程式碼
+### <a name="complete-code"></a><a id="code"></a>完整程式碼
 
 ```java
     import javax.xml.parsers.*;
@@ -946,7 +946,7 @@ Stream 修剪器元件可讓您根據計時資訊（秒、分鐘、...）修剪�
 
 [透過 Azure 媒體服務編碼的隨選內容](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-[媒體編碼器高階工作流程格式和轉碼器](media-services-premium-workflow-encoder-formats.md)
+[媒體編碼器高級工作流程格式和編解碼器](media-services-premium-workflow-encoder-formats.md)
 
 [範例工作流程檔案](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 

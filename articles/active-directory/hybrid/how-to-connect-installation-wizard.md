@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261329"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步處理︰第二次執行安裝精靈
 第一次執行 Azure AD Connect 安裝精靈時，它會逐步引導您設定安裝。 如果您再次執行安裝精靈，它則會提供維護選項。
 
 >[!IMPORTANT]
->請注意，當同步處理正在進行時，您無法執行安裝精靈。  請先確認同步處理並未執行，再啟動嚮導。
+>請注意，在同步進行中無法運行安裝精靈。  請在啟動嚮導之前驗證同步是否未運行。
 
 您可以在 [開始] 功能表中找到名為 **Azure AD Connect**的安裝精靈。
 
@@ -40,7 +40,7 @@ ms.locfileid: "79261329"
 
 如果您已使用 Azure AD Connect 安裝 ADFS，您會有更多選項。 [ADFS 管理](how-to-connect-fed-management.md#manage-ad-fs)中記載了您擁有的其他 ADFS 選項。
 
-請選取其中一項工作，然後按 [下一步] 繼續。
+請選取其中一項工作，然後按 [下一步] **** 繼續。
 
 > [!IMPORTANT]
 > 當您開啟安裝精靈時，同步處理引擎中的所有作業都會暫停。 請確定您有在完成組態變更後，就馬上關閉安裝精靈。
@@ -52,7 +52,7 @@ ms.locfileid: "79261329"
 
 ![含有所有選項和其狀態之清單的頁面](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-按 [上一步] 返回。 如果您選取 [結束]，您會關閉安裝精靈。
+按 [上一步] **** 返回。 如果您選取 [結束] ****，您會關閉安裝精靈。
 
 ## <a name="customize-synchronization-options"></a>自訂同步處理選項
 此選項可用來變更同步處理組態。 您會在自訂組態安裝路徑中看到選項子集。 即使您一開始是使用快速安裝也會看到此選項。
@@ -85,7 +85,7 @@ ms.locfileid: "79261329"
 ![也會顯示預備模式目前狀態的選項](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>變更使用者登入
-此選項可讓您將使用者登入方法變更為密碼雜湊同步處理、傳遞驗證或同盟。 您無法變更為 [不設定]。
+此選項可讓您將使用者登入方法變更為密碼雜湊同步處理、傳遞驗證或同盟。 您無法變更為 [不設定] ****。
 
 如需此選項的詳細資訊，請參閱 [使用者登入](plan-connect-user-signin.md#changing-the-user-sign-in-method)。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593907"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>在 Microsoft Azure CDN 中分析邊緣節點效能
@@ -50,12 +50,12 @@ ms.locfileid: "67593907"
 * 關鍵度量和統計資訊，依整體效能、使用量和效率來測量，指出 CDN 網路如何改善網站流量。
 
 ### <a name="accessing-the-edge-performance-dashboard"></a>存取邊緣效能儀表板
-1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理]  按鈕。
+1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。
    
     ![[CDN 設定檔] 刀鋒視窗的 [管理] 按鈕](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [分析]  索引標籤上，然後將滑鼠移至 [邊緣效能分析]  飛出視窗上。  按一下 [儀表板]  。
+2. 將滑鼠移至 [分析]**** 索引標籤上，然後將滑鼠移至 [邊緣效能分析]**** 飛出視窗上。  按一下 [儀表板] ****。
    
     邊緣節點分析儀表板隨即顯示。
 
@@ -73,7 +73,7 @@ ms.locfileid: "67593907"
 * 時間範圍：執行下列其中一項：
   * 在時間表中選取需要的區域。 將會以對應至所選期間的資料來更新圖表。
   * 按兩下圖表以顯示所有可用的歷史資料，最多為兩年。
-* 計量：按一下所需度量旁邊顯示的圖表圖示。 將會以相對應度量的資料來重新整理圖表和時間表。
+* 度量：按一下所需度量旁邊顯示的圖表圖示。 將會以相對應度量的資料來重新整理圖表和時間表。
 
 ### <a name="key-metrics-and-statistics"></a>關鍵度量和統計資料
 #### <a name="efficiency-metrics"></a>效能度量
@@ -134,20 +134,20 @@ ms.locfileid: "67593907"
 | 安全點擊 |表示對 CDN 內容的 HTTPS 要求次數。 |
 | 安全輸出位元組 |表示從 CDN (邊緣伺服器) 傳遞至要求者 (例如網頁瀏覽器) 的 HTTPS 流量 (位元組)。 |
 
-## <a name="reports"></a>報告
+## <a name="reports"></a>報表
 此模組中的每一份報告包含圖表和統計資料，指出各種不同度量 (例如，HTTP 狀態碼、快取狀態碼、要求 URL 等) 的頻寬和流量用量。 這項資訊可用來深入探究內容如何提供給用戶端，並微調 CDN 行為，以改善資料傳遞效能。
 
 ### <a name="accessing-the-edge-performance-reports"></a>存取邊緣效能報告
-1. 在 CDN 設定檔刀鋒視窗中，按一下 [管理]  按鈕。
+1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。
    
     ![[CDN 設定檔] 刀鋒視窗的 [管理] 按鈕](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [分析]  索引標籤上，然後將滑鼠移至 [邊緣效能分析]  飛出視窗上。  按一下 [HTTP 大型物件]  。
+2. 將滑鼠移至 [分析]**** 索引標籤上，然後將滑鼠移至 [邊緣效能分析]**** 飛出視窗上。  按一下 [HTTP 大型物件] ****。
    
     邊緣節點分析報告畫面隨即顯示。
 
-| 報表 | 描述 |
+| Report | 描述 |
 | --- | --- |
 | 每日摘要 |可讓您檢視一段指定期間內的每日流量趨勢。 此圖形上的每個橫條都代表特定日期。 橫條大小表示那一天發生的點擊總數。 |
 | 每小時摘要 |可讓您檢視一段指定期間內的每小時流量趨勢。 此圖形上的每個橫條都代表特定日期的單一小時。 橫條大小表示那一小時發生的點擊總數。 |
@@ -184,8 +184,8 @@ ms.locfileid: "67593907"
 | 5xx 錯誤 |包含的橫條圖可讓您檢視導致 500 系列回應碼的前 10 名要求。  這份報告中排除「502 錯誤的閘道」和「504 閘道逾時」回應碼。 |
 
 ## <a name="see-also"></a>另請參閱
-* [Azure CDN 概觀](cdn-overview.md)
+* [Azure CDN 概述](cdn-overview.md)
 * [Microsoft Azure CDN 中的即時統計資料](cdn-real-time-stats.md)
 * [使用規則引擎覆寫預設的 HTTP 行為](cdn-rules-engine.md)
-* [進階的 HTTP 報表](cdn-advanced-http-reports.md)
+* [高級 HTTP 報告](cdn-advanced-http-reports.md)
 

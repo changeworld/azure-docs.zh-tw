@@ -11,270 +11,239 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 01/22/2019
+ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775272"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066279"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以路由表路由傳送網路流量
 
-根據預設，Azure 會路由虛擬網路內所有子網路之間的流量。 您可以建立您自己的路由，以覆寫 Azure 的預設路由。 舉例來說，如果您想要通過網路虛擬設備 (NVA) 路由傳送子網路之間的流量，則建立自訂路由的能力很有幫助。 在本教學課程中，您會了解如何：
+根據預設，Azure 會路由虛擬網路內所有子網路之間的流量。 您可以建立您自己的路由，以覆寫 Azure 的預設路由。 舉例來說，當您想要通過網路虛擬設備 (NVA) 路由傳送子網路之間的流量時，自訂路由便很有用。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+> * 建立會路由傳送流量的 NVA
 > * 建立路由表
 > * 建立路由
-> * 建立有多個子網路的虛擬網路
 > * 建立路由表與子網路的關聯
-> * 建立會路由傳送流量的 NVA
 > * 將虛擬機器 (VM) 部署到不同子網路
 > * 透過 NVA 從一個子網路將流量路由傳送到另一個子網路
 
-您可以依偏好使用 [Azure CLI](tutorial-create-route-table-cli.md) 或 [Azure PowerShell](tutorial-create-route-table-powershell.md) 完成本教學課程。
+本教學課程會使用 [Azure 入口網站](https://portal.azure.com)。 您也可以使用 [Azure CLI](tutorial-create-route-table-cli.md) 或 [Azure PowerShell](tutorial-create-route-table-powershell.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="create-an-nva"></a>建立 NVA
 
-登入 [Azure 入口網站](https://portal.azure.com)。
+網路虛擬設備 (NVA) 是可協助路由和防火牆最佳化等網路功能的虛擬機器。 本教學課程假設您使用 **Windows Server 2016 Datacenter**。 如果您想要，您可以選取不同的作業系統。
+
+1. 從 [Azure 入口網站](https://portal.azure.com)功能表或 [首頁]  頁面，選取 [建立資源]  。
+
+1. 選擇 [安全性]   > [Windows Server 2016 Datacenter]  。
+
+    ![Windows Server 2016 Datacenter, 建立 VM, Azure 入口網站](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
+
+1. 在 [建立虛擬機器]  頁面的 [基本資料]  底下，輸入或選取下列資訊：
+
+    | 區段 | 設定 | 動作 |
+    | ------- | ------- | ----- |
+    | **專案詳細資料** | 訂用帳戶 | 選擇您的訂用帳戶。 |
+    | | 資源群組 | 選取 [新建]  ，輸入 *myResourceGroup*，然後選取 [確定]  。 |
+    | **執行個體詳細資料** | 虛擬機器名稱 | 輸入 *myVmNva*。 |
+    | | 區域 | 選擇 [(美國) 美國東部]  。 |
+    | | 可用性選項 | 選擇 [不需要基礎結構備援]  。 |
+    | | 映像 | 選擇 [Windows Server 2016 Datacenter]  。 |
+    | | 大小 | 保留預設值 [標準 DS1 v2]  。 |
+    | **系統管理員帳戶** | 使用者名稱 | 輸入您選擇的使用者名稱。 |
+    | | 密碼 | 輸入您選擇的密碼，其長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。 |
+    | | 確認密碼 | 再次輸入密碼。 |
+    | **輸入連接埠規則** | 公用輸入連接埠 | 挑選 [無]  。 |
+    | **節省費用** | 已經有 Windows Server 授權了嗎? | 挑選 [沒有]  。 |
+
+    ![基本資料, 建立虛擬機器, Azure 入口網站](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
+
+    然後，選取 **[下一步：磁碟 >]** 。
+
+1. 在 [磁碟]  底下，選取適合您需求的設定，然後選取 [下一步：**網路 >]** 。
+
+1. 在 [網路]  底下：
+
+    1. 在 [虛擬網路]  中選取 [新建]  。
+    
+    1. 在 [建立虛擬網路]  對話方塊的 [名稱]  底下，輸入「myVirtualNetwork」  。
+
+    1. 在 [位址空間]  中，將現有位址範圍取代為 [10.0.0.0/16]  。
+
+    1. 在 [子網路]  中，選取 [刪除]  圖示來刪除現有子網路，然後輸入下列 [子網路名稱]  和 [位址範圍]  的組合。 輸入有效的名稱和範圍之後，其下方就會出現新的空白資料列。
+
+        | 子網路名稱 | 位址範圍 |
+        | ----------- | ------------- |
+        | *公開* | *10.0.0.0/24* |
+        | *私用* | *10.0.1.0/24* |
+        | *DMZ* | *10.0.2.0/24* |
+
+    1. 選取 [確定]  以結束對話方塊。
+
+    1. 在 [子網路]  中，選擇 [DMZ (10.0.2.0/24)]  。
+
+    1. 此 VM 不會透過網際網路來連線，因此請在 [公用 IP]  中選擇 [無]  。
+
+    1. 選取 [下一步：**管理 >]** 。
+
+1. 在 [管理]  底下：
+
+    1. 在 [診斷儲存體帳戶]  中，選取 [新建]  。
+    
+    1. 在 [建立儲存體帳戶]  對話方塊中，輸入或選取下列資訊：
+
+        | 設定 | 值 |
+        | ------- | ----- |
+        | 名稱 | *mynvastorageaccount* |
+        | 帳戶類型 | **儲存體 (一般用途 v1)** |
+        | 效能 | **Standard** |
+        | 複寫 | **本地備援儲存體 (LRS)** |
+    
+    1. 選取 [確定]  以結束對話方塊。
+
+    1. 選取 [檢閱 + 建立]  。 您會移至 [檢閱 + 建立]  頁面，且 Azure 會驗證您的設定。
+
+1. 當您看到 [驗證成功]  訊息時，請選取 [建立]  。
+
+    建立 VM 需要幾分鐘的時間。 等候 Azure 建立好 VM。 [您的部署正在進行]  頁面會顯示您的部署詳細資料。
+
+1. 您的 VM 準備就緒後，請選取 [前往資源]  。
 
 ## <a name="create-a-route-table"></a>建立路由表
 
-1. 從 Azure 入口網站功能表選取 [建立資源]  。
+1. 從 [Azure 入口網站](https://portal.azure.com)功能表或 [首頁]  頁面，選取 [建立資源]  。
+
 2. 在搜尋方塊中，輸入「路由表」  。 當搜尋結果中出現**路由表**出時加以選取。
+
 3. 在 [路由表]  頁面中，選取 [建立]  。
+
 4. 在 [建立路由表]  中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 *myRouteTablePublic*。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 [新建]  ，輸入 *myResourceGroup*，然後選取 [確定]  。 |
-    | Location | 選取 [美國東部]  。
-    | 虛擬網路閘道路由傳播 | 保留預設值 [啟用]  。 |
+    | 名稱 | *myRouteTablePublic* |
+    | 訂用帳戶 | 您的訂用帳戶 |
+    | 資源群組 | **myResourceGroup** |
+    | Location | (美國) 美國東部  |
+    | 虛擬網路閘道路由傳播 | **已啟用** |
+
+    ![建立路由表, Azure 入口網站](./media/tutorial-create-route-table-portal/create-route-table.png)
+
 5. 選取 [建立]  。
 
 ## <a name="create-a-route"></a>建立路由
 
-1. 在入口網站的搜尋列中，輸入 *myRouteTablePublic*。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，以管理您的路由表。 搜尋並選取 [路由表]  。
 
-1. 當 **myRouteTablePublic** 出現在搜尋結果時，選取它。
+1. 挑選路由表的名稱 (**myRouteTablePublic**)。
 
-1. 在 **myRouteTablePublic** 中的 [設定]  下方，選取 [路由]   > [+ 新增]  。
+1. 選擇 [路由]   > [新增]  。
 
-    ![新增路由](./media/tutorial-create-route-table-portal/add-route.png)
+    ![新增路由, 路由表, Azure 入口網站](./media/tutorial-create-route-table-portal/add-route.png)
 
 1. 在 [新增路由]  中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 路由名稱 | 輸入 *ToPrivateSubnet*。 |
-    | 位址首碼 | 輸入 *10.0.1.0/24*。 |
-    | 下一個躍點類型 | 選取 [虛擬設備]  。 |
-    | 下一個躍點位址 | 輸入 *10.0.2.4*。 |
+    | 路由名稱 | *ToPrivateSubnet* |
+    | 位址首碼 | *10.0.1.0/24* (稍早所建立「私人」  子網路的位址範圍) |
+    | 下一個躍點類型 | **虛擬設備** |
+    | 下一個躍點位址 | *10.0.2.4* (DMZ  子網路位址範圍內的位址) |
 
 1. 選取 [確定]  。
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>建立路由表與子網路的關聯
 
-您必須先建立虛擬網路和子網路，才能讓路由表與子網路產生關聯。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，以管理您的虛擬網路。 搜尋並選取 [虛擬網路]  。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+1. 挑選虛擬網路的名稱 (**myVirtualNetwork**)。
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [虛擬網路]  。
+1. 在虛擬網路的功能表列中，選擇 [子網路]  。
 
-1. 在 [建立虛擬網路]  中，輸入或選取這項資訊：
+1. 在虛擬網路的子網路清單中，選擇 [公用]  。
 
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 *myVirtualNetwork*。 |
-    | 位址空間 | 輸入 *10.0.0.0/16*。 |
-    | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 [選取現有的] > [myResourceGroup]  。 |
-    | Location | 保留預設值 [美國東部]  。 |
-    | 子網路 - 名稱 | 輸入*公用*。 |
-    | 子網路 - 位址範圍 | 輸入 *10.0.0.0/24*。 |
+1. 在 [路由表]  中，選擇您建立的路由表 (**myRouteTablePublic**)，然後選取 [儲存]  ，以將路由表關聯至「公用」  子網路。
 
-1. 保留其餘的預設值，然後選取 [建立]  。
-
-### <a name="add-subnets-to-the-virtual-network"></a>將子網路新增至虛擬網路
-
-1. 在入口網站的搜尋列中，輸入 *myVirtualNetwork*。
-
-1. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。
-
-1. 在 **myVirtualNetwork** 中的 [設定]  下方，選取 [子網路]   > [+ 子網路]  。
-
-    ![新增子網路](./media/tutorial-create-route-table-portal/add-subnet.png)
-
-1. 在 [新增子網路]  中，輸入這項資訊：
-
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入*私人*。 |
-    | 位址空間 | 輸入 *10.0.1.0/24*。 |
-
-1. 保留其餘的預設值，然後選取 [確定]  。
-
-1. 再次選取 [+ 子網路]  。 這次請輸入這項資訊：
-
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 *DMZ*。 |
-    | 位址空間 | 輸入 *10.0.2.0/24*。 |
-
-1. 和上次一樣，保留其餘的預設值，然後選取 [確定]  。
-
-    Azure 會顯示三個子網路：**公用**、**私人**和 **DMZ**。
-
-### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>讓 myRouteTablePublic 與公用子網路產生關聯
-
-1. 選取 [公用]  。
-
-1. 在 [公用]  中，選取 [路由表]   > [MyRouteTablePublic]   > [儲存]  。
-
-    ![關聯路由表](./media/tutorial-create-route-table-portal/associate-route-table.png)
-
-## <a name="create-an-nva"></a>建立 NVA
-
-NVA 是可協助您最佳化路由和防火牆等網路功能的 VM。 如果您想要，您可以選取不同的作業系統。 本教學課程假設您使用 **Windows Server 2016 Datacenter**。
-
-1. 在畫面的左上方，選取 [建立資源]   >  **[計算]**  > [Windows Server 2016 Datacenter]  。
-
-1. 在 [建立虛擬機器 - 基本]  中，輸入或選取這項資訊：
-
-    | 設定 | 值 |
-    | ------- | ----- |
-    | **專案詳細資料** | |
-    | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 **myResourceGroup**。 |
-    | **執行個體詳細資料** |  |
-    | 虛擬機器名稱 | 輸入 *myVmNva*。 |
-    | 區域 | 選取 [美國東部]  。 |
-    | 可用性選項 | 保留預設值 [不需要基礎結構備援]  。 |
-    | 映像 | 保留預設值 [Windows Server 2016 Datacenter]  。 |
-    | 大小 | 保留預設值 [標準 DS1 v2]  。 |
-    | **系統管理員帳戶** |  |
-    | 使用者名稱 | 輸入您選擇的使用者名稱。 |
-    | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    | 確認密碼 | 再次輸入密碼。 |
-    | **輸入連接埠規則** |  |
-    | 公用輸入連接埠 | 選取 [無]  。
-    | **節省費用** |  |
-    | 已經有 Windows 授權？ | 保留預設值 [否]  。 |
-
-1. 選取 [下一步：  磁碟]。
-
-1. 在 [建立虛擬機器 - 磁碟]  中，選取最適合您個人需求的設定。
-
-1. 選取 [下一步：  網路]。
-
-1. 在 [建立虛擬機器 - 網路]  中，選取這項資訊：
-
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 虛擬網路 | 保留預設值 [myVirtualNetwork]  。 |
-    | 子網路 | 選取 [DMZ (10.0.2.0/24)]  。 |
-    | 公用 IP | 選取 [無]  。 您不需要公用 IP 位址。 VM 不會透過網際網路連線。|
-
-1. 保留其餘的預設值，然後選取 [下一步：  管理]。
-
-1. 在 [建立虛擬機器 - 管理]  中，針對 [診斷儲存體帳戶]  ，選取 [新建]  。
-
-1. 在 [建立儲存體帳戶]  中，輸入或選取這項資訊：
-
-    | 設定 | 值 |
-    | ------- | ----- |
-    | 名稱 | 輸入 *mynvastorageaccount*。 |
-    | 帳戶類型 | 保留預設值 [儲存體 (一般用途 v1)]  。 |
-    | 效能 | 保留預設值 [標準]  。 |
-    | 複寫 | 保留預設值 [本地備援儲存體 (LRS)]  。
-
-1. 選取 [確定] 
-
-1. 選取 [檢閱 + 建立]  。 您會移至 [檢閱 + 建立]  頁面，且 Azure 會驗證您的設定。
-
-1. 當您看到 [驗證成功]  時，請選取 [建立]  。
-
-    建立 VM 需要幾分鐘的時間。 在 VM 建立完成前，請勿繼續操作。 [您的部署正在進行]  頁面會顯示您的部署詳細資料。
-
-1. 您的 VM 準備就緒後，請選取 [前往資源]  。
+    ![關聯路由表, 子網路清單, 虛擬網路, Azure 入口網站](./media/tutorial-create-route-table-portal/associate-route-table.png)
 
 ## <a name="turn-on-ip-forwarding"></a>開啟 IP 轉送
 
-為 *myVmNva* 開啟 IP 轉送。 當 Azure 將網路流量傳送至 *myVmNva* 時，如果流量的目的地為不同的 IP 位址，IP 轉送會將流量傳送至正確的位置。
+接下來，為新的 NVA 虛擬機器 (myVmNva  ) 開啟 IP 轉送。 當 Azure 將網路流量傳送至 *myVmNva* 時，如果流量的目的地為不同的 IP 位址，IP 轉送會將流量傳送至正確的位置。
 
-1. 在 **myVmNva** 的 [設定]  下方，選取 [網路]  。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，以管理您的 VM。 搜尋並選取 [虛擬機器]  。
 
-1. 選取 [myvmnva123]  。 這是 Azure 為您的 VM 建立的網路介面。 它會有唯一的數字字串供您明確識別。
+1. 挑選 VM 的名稱 (**myVmNva**)。
 
-    ![VM 網路功能](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+1. 在 NVA 虛擬機器的功能表列中，選取 [網路]  。
 
-1. 在 [設定]  下方，選取 [IP 組態]  。
+1. 選取 [myvmnva123]  。 這是 Azure 為您的 VM 建立的網路介面。 Azure 會加上數字以確保名稱是唯一的。
 
-1. 在 [myvmnva123 - IP 組態]  上，針對 [IP 轉送]  選取 [啟用]  ，然後選取 [儲存]  。
+    ![網路, 網路虛擬設備 (NVA) 虛擬機器 (VM), Azure 入口網站](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
 
-    ![啟用 IP 轉送](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+1. 在 [網路介面] 功能表列中，選取 [IP 設定]  。
+
+1. 在 [IP 設定]  頁面上，將 [IP 轉送]  設定為 [啟用]  ，然後選取 [儲存]  。
+
+    ![啟用 IP 轉送, IP 設定, 網路介面, 網路虛擬設備 (NVA) 虛擬機器 (VM), Azure 入口網站](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
 ## <a name="create-public-and-private-virtual-machines"></a>建立公用和私人虛擬機器
 
 在虛擬網路中建立公用 VM 和私人 VM。 您稍後將用它們來檢視 Azure 透過 NVA 將「公用」  子網路的流量路由至「私人」  子網路。
 
-完成[建立 NVA](#create-an-nva) 的步驟 1-12。 所使用的設定大致相同。 必須不同的值如下：
+若要建立公用 VM 和私人 VM，請遵循稍早[建立 NVA](#create-an-nva)的步驟。 您不需要等待部署完成或移至 VM 資源。 您將會使用大部分的相同設定，但下面所述設定除外。
 
-| 設定 | 值 |
-| ------- | ----- |
-| **公用 VM** | |
-| 基本 |  |
-| 虛擬機器名稱 | 輸入 *myVmPublic*。 |
-| 網路 | |
-| 子網路 | 選取 [公用 (10.0.0.0/24)]  。 |
-| 公用 IP 位址 | 接受預設值。 |
-| 公用輸入連接埠 | 選取 [允許選取的連接埠]  。 |
-| 選取輸入連接埠 | 選取 [HTTP]  和 [RDP]  。 |
-| 管理 | |
-| 診斷儲存體帳戶 | 保留預設值 [mynvastorageaccount]  。 |
-| **私人 VM** | |
-| 基本 |  |
-| 虛擬機器名稱 | 輸入 *myVmPrivate*。 |
-| 網路 | |
-| 子網路 | 選取 [私人 (10.0.1.0/24)]  。 |
-| 公用 IP 位址 | 接受預設值。 |
-| 公用輸入連接埠 | 選取 [允許選取的連接埠]  。 |
-| 選取輸入連接埠 | 選取 [HTTP]  和 [RDP]  。 |
-| 管理 | |
-| 診斷儲存體帳戶 | 保留預設值 [mynvastorageaccount]  。 |
+在選取 [建立]  以建立公用或私人 VM 之前，請先移至下列兩個子區段 ([公用 VM](#public-vm) 和[私人 VM](#private-vm))，以了解必須不同的值。 在 Azure 完成這兩個 VM 的部署後，您可以繼續進行下一節 ([透過 NVA 路由傳送流量](#route-traffic-through-an-nva))。
 
-您可以在 Azure 建立 myVmPublic  虛擬機器的時候建立 myVmPrivate  虛擬機器。 在 Azure 完成兩部虛擬機器建立之前，請勿繼續進行其餘步驟。
+### <a name="public-vm"></a>公用 VM
+
+| 索引標籤 | 設定 | 值 |
+| --- | ------- | ----- |
+| 基本概念 | 資源群組 | **myResourceGroup** |
+| | 虛擬機器名稱 | *myVmPublic* |
+| | 公用輸入連接埠 | **允許選取的連接埠** |
+| | 選取輸入連接埠 | **HTTP** 和 **RDP** |
+| 網路功能 | 虛擬網路 | **myVirtualNetwork** |
+| | 子網路 | **公用 (10.0.0.0/24)** |
+| | 公用 IP 位址 | 預設值 |
+| 管理性 | 診斷儲存體帳戶 | **mynvastorageaccount** |
+
+### <a name="private-vm"></a>私人 VM
+
+| 索引標籤 | 設定 | 值 |
+| --- | ------- | ----- |
+| 基本概念 | 資源群組 | **myResourceGroup** |
+| | 虛擬機器名稱 | *myVmPrivate* |
+| | 公用輸入連接埠 | **允許選取的連接埠** |
+| | 選取輸入連接埠 | **HTTP** 和 **RDP** |
+| 網路功能 | 虛擬網路 | **myVirtualNetwork** |
+| | 子網路 | **私人 (10.0.1.0/24)** |
+| | 公用 IP 位址 | 預設值 |
+| 管理性 | 診斷儲存體帳戶 | **mynvastorageaccount** |
 
 ## <a name="route-traffic-through-an-nva"></a>透過 NVA 路由傳送流量
 
 ### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>透過遠端桌面登入 myVmPrivate
 
-1. 在入口網站的搜尋列中，輸入 *myVmPrivate*。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，以管理您的私人 VM。 搜尋並選取 [虛擬機器]  。
 
-1. 當 **myVmPrivate** 虛擬機器出現在搜尋結果中時，請加以選取。
+1. 挑選私人 VM 的名稱 (**myVmPrivate**)。
 
-1. 選取 [連線]  ，以建立對 *myVmPrivate* VM 的遠端桌面連線。
+1. 在 VM 的功能表列中選取 [連線]  ，以建立與私人 VM 的遠端桌面連線。
 
-1. 在 [連線至虛擬機器]  中，選取 [下載 RDP 檔案]  。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
+1. 在 [使用 RDP 連線]  頁面上，選取 [下載 RDP 檔案]  。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
 
-1. 開啟下載的 *.rdp* 檔案。
-
-    1. 如果出現提示，請選取 [連接]  。
-
-    1. 輸入您在建立私人 VM 時指定的使用者名稱和密碼。
-
-    1. 您可能需要選取 [其他選擇]   > [使用不同的帳戶]  ，以使用私人 VM 認證。
+1. 開啟下載的 *.rdp* 檔案。 如果出現提示，請選取 [連接]  。 選取 [更多選擇]   > [使用其他帳戶]  ，然後輸入您在建立私人 VM 時所指定的使用者名稱和密碼。
 
 1. 選取 [確定]  。
 
-    您可能會在登入過程中收到憑證警告。
-
-1. 選取 [是]  以連線至 VM。
+1. 如果您在登入程序進行期間收到憑證警告，請選取 [是]  以連線到 VM。
 
 ### <a name="enable-icmp-through-the-windows-firewall"></a>讓 ICMP 可通過 Windows 防火牆
 
@@ -300,13 +269,13 @@ NVA 是可協助您最佳化路由和防火牆等網路功能的 VM。 如果您
     mstsc /v:myvmnva
     ```
 
-1. 從 myVmNva  上的 PowerShell，輸入下列命令以開啟 IP 轉送：
+1. 從 myVmNva  VM 上的 PowerShell，輸入下列命令以開啟 IP 轉送：
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. 重新啟動 myVmNva  VM。 在工作列中，選取 [啟動] 按鈕   > [電源] 按鈕  、[其他 (計劃性)]   > [繼續]  。
+1. 重新啟動 myVmNva  VM：從工作列中，選取 [啟動]   > [電源]  、[其他 (已計劃)]   > [繼續]  。
 
     這也會中斷遠端桌面工作階段的連線。
 
@@ -345,7 +314,7 @@ NVA 是可協助您最佳化路由和防火牆等網路功能的 VM。 如果您
     Trace complete.
     ```
 
-    您可以看到第一個躍點是 10.0.2.4。 這是 NVA 的私人 IP 位址。 第二個躍點是 myVmPrivate  VM 的私人 IP 位址：10.0.1.4。 您先前已將路由新增至 myRouteTablePublic  路由表，並建立該路由表與公用  子網路的關聯。 因此，Azure 會透過 NVA 傳送流量，而不是直接傳送至私人  子網路。
+    您可以看到第一個躍點是 10.0.2.4，也就是 NVA 的私人 IP 位址。 第二個躍點是 myVmPrivate  VM 的私人 IP 位址：10.0.1.4。 您先前已將路由新增至 myRouteTablePublic  路由表，並建立該路由表與公用  子網路的關聯。 因此，Azure 會透過 NVA 傳送流量，而不是直接傳送至私人  子網路。
 
 1. 關閉 myVmPublic  虛擬機器的遠端桌面工作階段，但您仍然與 myVmPrivate  虛擬機器連線。
 
@@ -355,7 +324,7 @@ NVA 是可協助您最佳化路由和防火牆等網路功能的 VM。 如果您
     tracert myVmPublic
     ```
 
-    這會測試從 myVmPrivate  VM 到 myVmPublic  VM 的網路流量路由。 回應如下列範例所示：
+    此命令會測試從 myVmPrivate  VM 到 myVmPublic  VM 的網路流量路由。 回應如下列範例所示：
 
     ```cmd
     Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
@@ -372,21 +341,21 @@ NVA 是可協助您最佳化路由和防火牆等網路功能的 VM。 如果您
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當不再需要時，請將資源群組及其包含的所有資源刪除：
+不再需要資源群組時，請刪除 myResourceGroup  及其擁有的所有資源：
 
-1. 在入口網站的搜尋列中，輸入 myResourceGroup  。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，以管理您的資源群組。 搜尋並選取 [資源群組]  。
 
-1. 當您在搜尋結果中看到 myResourceGroup  時，請加以選取。
+1. 挑選資源群組的名稱 (**myResourceGroup**)。
 
 1. 選取 [刪除資源群組]  。
 
-1. 針對 [輸入資源群組名稱:]  輸入 myResourceGroup  ，然後選取 [刪除]  。
+1. 在 [確認] 對話方塊的 [輸入資源群組名稱]  中，輸入「myResourceGroup」  ，然後選取 [刪除]  。 Azure 便會刪除 myResourceGroup  以及繫結至該資源群組的所有資源，包括路由表、儲存體帳戶、虛擬網路、VM、網路介面和公用 IP 位址。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立路由表，並將其與子網路產生關聯。 您已建立簡單的 NVA，它會將來自公用子網路的流量路由傳送至私人子網路。 您已了解其作法，現在您可以從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署不同的預先設定 NVA。 其中包含許多您會認為很有用的網路功能。 若要深入了解路由，請參閱[路由概觀](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
+在本教學課程中，您已建立路由表，並將其與子網路產生關聯。 您已建立簡單的 NVA，它會將來自公用子網路的流量路由傳送至私人子網路。 現在您可以從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署不同的預先設定 NVA，以獲得許多有用的網路功能。 若要深入了解路由，請參閱[路由概觀](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
 
-雖然您可以在虛擬網路內部署許多 Azure 資源，但 Azure 無法將某些 PaaS 服務的資源部署到虛擬網路中。 您可以限制對某些 Azure PaaS 服務所含資源的存取。 但此類限制必須是來自虛擬網路子網路的流量。 若要了解如何限制對 Azure PaaS 資源的網路存取，請繼續進行下一個教學課程。
+雖然您可以在虛擬網路內部署許多 Azure 資源，但 Azure 無法將某些 PaaS 服務的資源部署到虛擬網路中。 您可以限制對某些 Azure PaaS 服務的資源存取，但能限制的只有來自虛擬網路子網路的流量。 若要了解如何限制對 Azure PaaS 資源的網路存取，請參閱下一個教學課程。
 
 > [!div class="nextstepaction"]
 > [限制對 PaaS 資源的網路存取](tutorial-restrict-network-access-to-resources.md)

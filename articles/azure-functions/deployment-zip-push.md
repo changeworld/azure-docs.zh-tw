@@ -4,10 +4,10 @@ description: 使用 Kudu 部署服務的 .zip 檔案部署工具來發佈 Azure 
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769657"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 ZIP 部署
@@ -16,7 +16,7 @@ ms.locfileid: "75769657"
 
 Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合選項。 如需詳細資訊，請參閱 [Azure Functions 的持續部署](functions-continuous-deployment.md)。
 
-若要加速開發，您可能會發現直接從 .zip 檔案部署函式應用程式專案檔會比較容易。 .zip 部署 API 會取得 .zip 檔案的內容，並將內容擷取至函式應用程式的 `wwwroot` 資料夾。 此 .zip 檔案部署所使用的是支援持續整合式部署的同一個 Kudu 服務，包括：
+為了加快開發速度，您可能會發現直接從 .ZIP 檔案部署函數應用專案檔案會更容易。 .zip 部署 API 會取得 .zip 檔案的內容，並將內容擷取至函式應用程式的 `wwwroot` 資料夾。 此 .zip 檔案部署所使用的是支援持續整合式部署的同一個 Kudu 服務，包括：
 
 + 刪除較舊部署所留下的檔案。
 + 部署自訂，包括執行中的部署指令碼。
@@ -42,11 +42,11 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
 不過，您可能已在 Azure 入口網站中使用編輯器建立好您的函式。 您可以使用下列其中一個方式來下載現有函式應用程式專案：
 
-+ **從 Azure 入口網站：**
++ **從 Azure 門戶：**
 
   1. 登入 [Azure 入口網站](https://portal.azure.com)，然後移至您的函式應用程式。
 
-  2. 在 [概觀] 索引標籤上，選取 [下載應用程式內容]。 選取下載選項，然後選取 [下載]。
+  2. 在 [概觀]**** 索引標籤上，選取 [下載應用程式內容]****。 選取下載選項，然後選取 [下載]****。
 
       ![下載函式應用程式專案](./media/deployment-zip-push/download-project.png)
 
@@ -62,11 +62,11 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
 您也可以從 GitHub 存放庫下載 .zip 檔案。 當您將 GitHub 存放庫下載為 .zip 檔案時，GitHub 會為分支新增額外的資料夾層級。 這個額外的資料夾層級表示，由於您是從 GitHub 下載 .zip 檔案，所以無法直接部署該檔案。 如果您使用 GitHub 存放庫來維護函式應用程式，請使用[持續整合](functions-continuous-deployment.md)來部署應用程式。  
 
-## <a name="cli"></a>使用 Azure CLI 進行部署
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>使用 Azure CLI 進行部署
 
 您可以使用 Azure CLI 來觸發推送部署。 請使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令，將 .zip 檔案推送部署至函式應用程式。 若要使用此命令，您所使用的 Azure CLI 必須是 2.0.21 版或更新版本。 若要了解您所使用的 Azure CLI 版本，請使用 `az --version` 命令。
 
-在下列命令中，使用 .zip 檔案的位置路徑取代 `<zip_file_path>` 預留位置。 此外，將 `<app_name>` 取代為函式應用程式的唯一名稱，並以您的資源組名取代 `<resource_group>`。
+在下列命令中，使用 .zip 檔案的位置路徑取代 `<zip_file_path>` 預留位置。 此外，替換為`<app_name>`函數應用的唯一名稱，並替換為`<resource_group>`資源組的名稱。
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \

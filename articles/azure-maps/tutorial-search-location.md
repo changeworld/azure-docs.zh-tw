@@ -1,20 +1,20 @@
 ---
 title: 教學課程：在地圖上搜尋附近位置 | Microsoft Azure 地圖服務
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務在地圖上搜尋景點。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1035f9c8284f3acf2667d93ce257039defeb3c71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209506"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333624"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務來搜尋附近景點
 

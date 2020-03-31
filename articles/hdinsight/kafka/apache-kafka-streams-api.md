@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: f256adfd1fc970512cad5fb93ec235fc27a50373
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.custom: hdinsightactive
+ms.date: 03/20/2020
+ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817740"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80064484"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中使用 Apache Kafka 串流 API
 
@@ -33,7 +33,7 @@ Kafka 串流處理通常會使用 Apache Spark 或 Apache Storm 來完成。 Kaf
 > * 設定 Kafka 主題
 > * 執行程式碼
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 3.6 叢集上的 Kafka。 若要深入了解如何建立 HDInsight 上的 Apache Kafka 叢集，請參閱[開始使用 HDInsight 上的 Apache Kafka](apache-kafka-get-started.md) 文件。
 
@@ -49,8 +49,8 @@ Kafka 串流處理通常會使用 Apache Spark 或 Apache Storm 來完成。 Kaf
 
 範例應用程式位於 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 的 `Streaming` 子目錄中。 該應用程式包含兩個檔案：
 
-* `pom.xml`：此檔案會定義專案相依性、Java 版本和封裝方法。
-* `Stream.java`：此檔案會實作串流邏輯。
+* `pom.xml`:此檔案會定義專案相依性、Java 版本和封裝方法。
+* `Stream.java`:此檔案會實作串流邏輯。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -71,8 +71,8 @@ Kafka 串流處理通常會使用 Apache Spark 或 Apache Storm 來完成。 Kaf
 
 * 外掛程式：Maven 外掛程式可提供多種功能。 在此專案中，會使用下列外掛程式：
 
-    * `maven-compiler-plugin`：用來將專案所使用的 Java 版本設為 8。 HDInsight 3.6 需要 Java 8。
-    * `maven-shade-plugin`：用來產生包含此應用程式以及任何相依性的 uber jar。 它也可用來設定應用程式的進入點，如此您即可直接執行 Jar 檔案，而不需要指定主要類別。
+    * `maven-compiler-plugin`:用來將專案所使用的 Java 版本設為 8。 HDInsight 3.6 需要 Java 8。
+    * `maven-shade-plugin`:用來產生包含此應用程式及任何相依性的 uber jar。 它也可用來設定應用程式的進入點，如此您即可直接執行 Jar 檔案，而不需要指定主要類別。
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -166,6 +166,7 @@ public class Stream
     ```
 
 4. 擷取正確大小寫的叢集名稱。 視叢集的建立方式而定，叢集名稱的實際大小寫可能與您預期的不同。 此命令會取得實際的大小寫，然後將其儲存在變數中。 輸入下列命令：
+
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
@@ -173,7 +174,7 @@ public class Stream
     > [!Note]  
     > 如果您是從叢集外部執行此程序，則應以不同的程序儲存叢集名稱。 請從 Azure 入口網站取得小寫的叢集名稱。 然後，在下列命令中，以叢集名稱取代 `<clustername>`，並執行命令：`export clusterName='<clustername>'`。  
 
-5. 若要取得 Kafka 代理程式主機和 Apache Zookeeper 主機，請使用下列命令。 出現提示時，輸入叢集登入 (admin) 帳戶的密碼。 系統會提示您輸入密碼兩次。
+5. 若要取得 Kafka 代理程式主機和 Apache Zookeeper 主機，請使用下列命令。 出現提示時，輸入叢集登入 (admin) 帳戶的密碼。
 
     ```bash
     export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
@@ -181,8 +182,8 @@ public class Stream
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-> [!Note]  
-> 這些命令需要存取 Ambari。 如果您的叢集位於 NSG 後方，請從可存取 Ambari 的機器執行這些命令。 
+    > [!Note]  
+    > 這些命令需要存取 Ambari。 如果您的叢集位於 NSG 後方，請從可存取 Ambari 的機器執行這些命令。
 
 6. 若要建立串流作業所使用的主題，請使用下列命令：
 
@@ -198,10 +199,10 @@ public class Stream
 
     這些主題的用途如下：
 
-   * `test`：此主題是接收記錄之處。 串流應用程式會從中進行讀取。
-   * `wordcounts`：此主題是串流應用程式儲存其輸出之處。
-   * `RekeyedIntermediateTopic`：此主題可在 `countByKey` 運算子更新計數時用來重新分割資料。
-   * `wordcount-example-Counts-changelog`：此主題是 `countByKey` 作業所使用的狀態存放區
+   * `test`:此主題是接收記錄之處。 串流應用程式會從中進行讀取。
+   * `wordcounts`:此主題是串流應用程式儲存其輸出之處。
+   * `RekeyedIntermediateTopic`:此主題可在 `countByKey` 運算子更新計數時用來重新分割資料。
+   * `wordcount-example-Counts-changelog`:此主題是 `countByKey` 作業所使用的狀態存放區
 
     HDInsight 上的 Kafka 也可設定為自動建立主題。 如需詳細資訊，請參閱[設定自動建立主題功能](apache-kafka-auto-create-topics.md)文件。
 

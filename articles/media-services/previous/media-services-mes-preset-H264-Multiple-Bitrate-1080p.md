@@ -1,6 +1,6 @@
 ---
 title: H264 多重位元率 1080p 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本主題提供「H264 多重位元速率 1080p」  工作預設的概觀。
+description: 本主題提供「H264 多重位元速率 1080p」**** 工作預設的概觀。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: e542c6c15f1b23ba3a84b35dd5d712f9481f49de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463697"
 ---
 # <a name="h264-multiple-bitrate-1080p"></a>H264 多重位元速率 1080p
@@ -29,7 +29,7 @@ ms.locfileid: "61463697"
  此預設會產生一組 8 個對齊 GOP 的 MP4 檔案 (範圍從 6000 kbps 到 400 kbps) 和立體聲 AAC 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需這些預設中每個元素的意義說明，請參閱[媒體編碼器標準結構描述](media-services-mes-schema.md)主題。  
   
 > [!NOTE]
->  跨層修改 `Width` 和 `Height` 值時，請確定長寬比保持一致。 例如: 1920x1080、1280x720、1080x576、640x360。 請勿混用長寬比，例如：1280x720、720x480、640x360。  
+>  跨層修改 `Width` 和 `Height` 值時，請確定長寬比保持一致。 例如︰1920x1080、1280x720、1080x576、640x360。 請勿使用混合的長寬比，例如︰1280x720、720x480、640x360。  
   
  XML  
   

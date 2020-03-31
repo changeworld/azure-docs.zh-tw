@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 中的 Web 活動
+title: Azure 資料工廠中的 Web 活動
 description: 了解如何使用 Web 活動 (Data Factory 支援的其中一個控制流程活動) 從管線叫用 REST 端點。
 services: data-factory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260861"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Web 活動
 使用 Web 活動可以從 Data Factory 管線呼叫自訂的 REST 端點。 您可以傳遞資料集和連結服務，以供活動取用和存取。
 
 > [!NOTE]
-> Web 活動只能呼叫公開公開的 Url。 裝載于私人虛擬網路中的 Url 不支援此功能。
+> Web 活動只能調用公開公開的 URL。 對於託管在專用虛擬網路中的 URL，不支援它。
 
 ## <a name="syntax"></a>語法
 
@@ -90,7 +90,7 @@ linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的
 
 ## <a name="authentication"></a>驗證
 
-以下是 web 活動中支援的驗證類型。
+以下是 Web 活動中支援的身份驗證類型。
 
 ### <a name="none"></a>None
 
@@ -132,7 +132,7 @@ linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的
 ```
 
 > [!NOTE]
-> 如果您的 data factory 設定了 git 存放庫，您必須將認證儲存在 Azure Key Vault 中，才能使用基本或用戶端憑證驗證。 Azure Data Factory 不會將密碼儲存在 git 中。
+> 如果資料工廠配置了 git 存儲庫，則必須在 Azure 金鑰保存庫中存儲憑據才能使用基本或用戶端憑證身份驗證。 Azure 資料工廠不將密碼存儲在 git 中。
 
 ## <a name="request-payload-schema"></a>要求承載結構描述
 當您使用 POST/PUT 方法時，主體屬性代表傳送至端點的承載。 您可以將連結服務和資料集傳遞為承載的一部分。 以下是承載的結構描述：
@@ -255,6 +255,6 @@ public HttpResponseMessage Execute(JObject payload)
 請參閱 Data Factory 支援的其他控制流程活動：
 
 - [執行管道活動](control-flow-execute-pipeline-activity.md)
-- [For Each 活動](control-flow-for-each-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [對於每個活動](control-flow-for-each-activity.md)
+- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)

@@ -11,53 +11,54 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8e3c525230c3de530a93bd61a9227e9a4d7ed10b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bc238f08021bb9fb16b8c7319e63acebdfec3948
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933421"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80061897"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-single-database-into-a-failover-group"></a>使用 CLI 將 Azure SQL Database 單一資料庫新增至容錯移轉群組
+# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>使用 CLI 將 Azure SQL Database 新增至容錯移轉群組
 
-此 PowerShell 指令碼範例會建立單一資料庫、建立容錯移轉群組、在其中新增資料庫，以及測試容錯移轉。 
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+此 Azure CLI 指令碼範例會建立單一資料庫、建立容錯移轉群組、在其中新增資料庫，以及測試容錯移轉。
 
 如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>範例指令碼
 
+### <a name="sign-in-to-azure"></a>登入 Azure
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+```azurecli-interactive
+$subscription = "<subscriptionId>" # add subscription here
+
+az account set -s $subscription # ...or use 'az login'
+```
+
+### <a name="run-the-script"></a>執行指令碼
+
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Add single database to failover group")]
 
-## <a name="clean-up-deployment"></a>清除部署
+### <a name="clean-up-deployment"></a>清除部署
 
 使用下列命令來移除資源群組及其所有相關聯的資源。
 
 ```azurecli-interactive
-az group delete --name $resourceGroupName
+az group delete --name $resource
 ```
 
-## <a name="script-explanation"></a>指令碼說明
+## <a name="sample-reference"></a>範例參考
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| | |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 | 
-| [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 建立裝載單一資料庫和彈性集區的 SQL Database 伺服器。 |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 建立伺服器的防火牆規則。 | 
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | 建立資料庫。 | 
-| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 建立容錯移轉群組。 | 
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出伺服器中的容錯移轉群組。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 | 
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az sql db](/cli/azure/sql/db) | 資料庫命令。 |
+| [az sql failover-group](/cli/azure/sql/failover-group) | 容錯移轉群組命令。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 其他的 SQL Database CLI 指令碼範例可於 [Azure SQL Database 文件](../sql-database-cli-samples.md)中找到。

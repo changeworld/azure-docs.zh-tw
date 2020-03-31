@@ -1,24 +1,24 @@
 ---
-title: 設定伺服器參數-Azure CLI 適用於 MariaDB 的 Azure 資料庫
+title: 佈建服務器參數 - Azure CLI - MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 命令列公用程式，在適用於 MariaDB 的 Azure 資料庫中設定服務參數。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888507"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527668"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自訂伺服器設定參數
 您可以使用 Azure CLI (Azure 命令列公用程式)，來列出、顯示和更新適用於 MariaDB 的 Azure 資料庫伺服器的設定參數。 有一部分的引擎設定會在伺服器層級公開而且可供修改。
 
-## <a name="prerequisites"></a>必要條件
-若要逐步執行本作法指南，您需要：
+## <a name="prerequisites"></a>Prerequisites
+若要逐步執行本作法指南，您需要︰
 - [適用於 MariaDB 伺服器的 Azure 資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 命令列公用程式，或在瀏覽器中使用 Azure Cloud Shell。
 
@@ -69,7 +69,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 您應該重新開機伺服器，以確保正確填入時區資料表。 若要重新開機伺服器，請使用[Azure 入口網站](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
+> 應重新開機伺服器以確保時區表已正確填充。 要重新開機伺服器，請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 若要檢視可用的時區值，請執行以下命令：
 

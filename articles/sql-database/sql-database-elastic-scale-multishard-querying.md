@@ -1,30 +1,27 @@
 ---
-title: 查詢分區化資料庫
+title: 查詢分片資料庫
 description: 使用彈性資料庫用戶端程式跨分區執行查詢。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 6458b52e707b7e4c11fe8b501f3393e1009a748c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ae14a9fd8fc8479eac596fb694e12e3e0a9027f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823545"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067304"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>使用彈性資料庫工具進行多分區查詢
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 使用[彈性資料庫工具](sql-database-elastic-scale-introduction.md)，您可以建立分區化資料庫解決方案。 **多分區查詢**用於資料收集/報告等工作，這些工作需要跨越數個分區執行查詢。 (這與在單一分區上執行所有工作的[資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)相反。)
 
-1. 使用 **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1))、**TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) 或 **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)) 方法，取得 **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) 或 **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap))。 請參閱[建構 ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) 和[取得 RangeShardMap 或 ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)。
+1. 使用 **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap))、**TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) 或 **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) 方法，取得 **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) 或 **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1))。 請參閱[建構 ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) 和[取得 RangeShardMap 或 ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)。
 2. 建立 **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) 物件。
 3. 建立 **MultiShardStatement 或 MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand))。
 4. 將 **CommandText 屬性** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) 設定為 T-SQL 命令。
@@ -58,7 +55,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-主要差異是多分區連接的建構方式。 其中，**SqlConnection** 在個別資料庫上運作，**MultiShardConnection** 接受分區集合做為輸入。 從分區對應填入分區集合。 然後，使用 **UNION ALL** 語意在分區集合上執行查詢，以組成單一的整體結果。 (選擇性) 在命令上使用 **ExecutionOptions** 屬性，可將資料列的來源分區名稱加入至輸出。
+主要差異是多分區連接的建構方式。 其中，**SqlConnection** 在個別資料庫上運作，**MultiShardConnection** 接受分區集合****** 做為輸入。 從分區對應填入分區集合。 然後，使用 **UNION ALL** 語意在分區集合上執行查詢，以組成單一的整體結果。 (選擇性) 在命令上使用 **ExecutionOptions** 屬性，可將資料列的來源分區名稱加入至輸出。
 
 請注意 **myShardMap.GetShards()** 的呼叫。 這個方法會從分區對應擷取所有分區，並提供簡單的方式跨所有相關的資料庫執行查詢。 在呼叫 **myShardMap.GetShards()** 所傳回的集合分區上執行 LINQ 查詢，可以進一步調整多分區查詢的分區集合。 結合部分結果原則，多分區查詢目前的功能已設計成可適當處理數十個到數百個分區。
 
@@ -66,6 +63,6 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 ## <a name="multi-shard-queries-and-split-merge-operations"></a>多分區查詢與分割合併作業
 
-多分區查詢不會驗證所查詢資料庫上的 Shardlet 是否參與進行中的分割/合併作業。 （請參閱[使用彈性資料庫分割合併工具進行調整](sql-database-elastic-scale-overview-split-and-merge.md)）。這可能會導致不一致的情況，也就是同一個 shardlet 中的資料列，在相同的多分區查詢中顯示多個資料庫。 請注意這些限制，在執行多分區查詢時，請考慮清空進行中的分割/合併作業和分區對應的變更。
+多分區查詢不會驗證所查詢資料庫上的 Shardlet 是否參與進行中的分割/合併作業。 （請參閱[使用彈性資料庫拆分合併工具進行縮放](sql-database-elastic-scale-overview-split-and-merge.md)。這可能導致不一致，其中同一分片中的行顯示同一多分片查詢中的多個資料庫。 請注意這些限制，在執行多分區查詢時，請考慮清空進行中的分割/合併作業和分區對應的變更。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

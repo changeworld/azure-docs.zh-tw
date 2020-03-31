@@ -12,36 +12,36 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187656"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>適用於 Azure Active Directory B2C 中的 JavaScript 範例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-您可以將自己的 JavaScript 用戶端程式代碼新增至您的 Azure Active Directory B2C （Azure AD B2C）應用程式。
+您可以將自己的 JavaScript 用戶端代碼添加到 Azure 活動目錄 B2C （Azure AD B2C） 應用程式中。
 
-若要為您的應用程式啟用 JavaScript：
+要為應用程式啟用 JavaScript，
 
-* 將元素新增至您的[自訂原則](custom-policy-overview.md)
-* 選取[頁面配置](page-layout.md)
-* 在您的要求中使用[b2clogin.com](b2clogin.md)
+* 向[自訂策略](custom-policy-overview.md)添加元素
+* 選擇[頁面配置](page-layout.md)
+* 在請求中使用[b2clogin.com](b2clogin.md)
 
-本文說明如何變更自訂原則，以啟用腳本執行。
+本文說明如何變更自訂原則以啟用指令碼執行。
 
 > [!NOTE]
-> 如果您想要為使用者流程啟用 JavaScript，請參閱[Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
+> 如果要為使用者流啟用 JavaScript，請參閱[Azure 活動目錄 B2C 中的 JavaScript 和頁面配置版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-### <a name="select-a-page-layout"></a>選取頁面配置
+### <a name="select-a-page-layout"></a>選擇頁面配置
 
-* 為應用程式的使用者介面元素選取[頁面配置](contentdefinitions.md#select-a-page-layout)。
+* 為應用程式的使用者介面元素選擇[頁面配置](contentdefinitions.md#select-a-page-layout)。
 
-    如果您想要使用 JavaScript，您必須針對自訂原則中的*所有*內容定義，使用頁面 `contract` 版本[定義頁面配置版本](contentdefinitions.md#migrating-to-page-layout)。
+    如果要使用 JavaScript，則需要為自訂策略中的所有內容定義定義具有頁面版本的*all*頁面`contract`[佈局版本](contentdefinitions.md#migrating-to-page-layout)。
 
 ## <a name="add-the-scriptexecution-element"></a>新增 ScriptExecution 元素
 
@@ -67,7 +67,7 @@ ms.locfileid: "78187656"
 
 ### <a name="show-or-hide-a-password"></a>顯示或隱藏密碼
 
-協助客戶成功註冊的常見方式，便是允許他們查看自己所輸入的密碼。 此選項可讓使用者輕鬆地查看其密碼，並視需要做出更正，以協助他們完成註冊。 任何輸入密碼的欄位都會有具有 [顯示密碼] 標籤的核取方塊。  這可讓使用者以純文字的形式查看密碼。 將此程式碼片段包含到您適用於自我判斷頁面的註冊或登入範本：
+協助客戶成功註冊的常見方式，便是允許他們查看自己所輸入的密碼。 此選項可讓使用者輕鬆地查看其密碼，並視需要做出更正，以協助他們完成註冊。 任何輸入密碼的欄位都會有具有 [顯示密碼]**** 標籤的核取方塊。  這可讓使用者以純文字的形式查看密碼。 將此程式碼片段包含到您適用於自我判斷頁面的註冊或登入範本：
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -113,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>新增使用規定
 
-將下列程式碼包含到您在自己的頁面中想包含 [使用規定] 核取方塊的位置。 在您的本機帳戶註冊和社交帳戶註冊頁面中，通常會需要這個核取方塊。
+將下列程式碼包含到您在自己的頁面中想包含 [使用規定]**** 核取方塊的位置。 在您的本機帳戶註冊和社交帳戶註冊頁面中，通常會需要這個核取方塊。
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -138,7 +138,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-在程式碼中，請將 `termsOfUseUrl` 取代為您使用規定合約的連結。 針對您的目錄，建立名為**termsOfUse**的新使用者屬性，然後將**termsOfUse**納入為使用者屬性。
+在程式碼中，請將 `termsOfUseUrl` 取代為您使用規定合約的連結。 對於目錄，請創建一個名為**術語OfUse**的新使用者屬性，然後將**術語OfUse**作為使用者屬性。
 
 ## <a name="next-steps"></a>後續步驟
 

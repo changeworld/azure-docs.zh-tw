@@ -10,21 +10,21 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60813410"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 Python 程式碼擴充 U-SQL 指令碼
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定 Python 擴充功能已安裝在您的 Azure Data Lake Analytics 帳戶中。
 
 * 在 Azure 入口網站中，瀏覽至您的 Data Lake Analytics 帳戶
-* 在左窗格中，於 [入門]  中按一下 [範例指令碼] 
-* 按一下 [安裝 U-SQL 擴充程式]  ，然後按一下 [確定] 
+* 在左窗格中，於 [入門]**** 中按一下 [範例指令碼]****
+* 按一下 [安裝 U-SQL 擴充程式]****，然後按一下 [確定]****
 
 ## <a name="overview"></a>總覽 
 

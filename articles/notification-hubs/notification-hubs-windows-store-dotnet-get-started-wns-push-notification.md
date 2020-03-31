@@ -15,14 +15,14 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: ec0181dd75cd656859967c30dc3941175407413a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895020"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127065"
 ---
-# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式
+# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "74895020"
 > * 在 Windows 應用程式中建立範例
 > * 傳送測試通知
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Microsoft Visual Studio 2017 或更新版本。 本教學課程中的範例會使用 [Visual Studio 2019](https://www.visualstudio.com/products)。

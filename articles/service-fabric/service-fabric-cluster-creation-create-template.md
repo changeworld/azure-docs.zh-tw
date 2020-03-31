@@ -1,20 +1,20 @@
 ---
-title: 建立 Azure Service Fabric 叢集範本
+title: 創建 Azure 服務結構群集範本
 description: 了解如何為 Service Fabric 叢集建立 Resource Manager 範本。 為用戶端驗證設定安全性、Azure Key Vault 與 Azure Active Directory (Azure AD)。
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258872"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>建立 Service Fabric 叢集 Resource Manager 範本
 
 [Azure Service Fabric 叢集](service-fabric-deploy-anywhere.md)是一組透過網路連線的虛擬機器，您可以將微服務部署到其中並進行管理。 在 Azure 中執行的 Service Fabric 叢集是 Azure 資源，而且是使用 Resource Manager 來部署、管理及監視的。  此文章說明如何為在 Azure 中執行的 Service Fabric 叢集建立 Resource Manager 範本。  當範本完成時，您可以[在 Azure 上部署叢集](service-fabric-cluster-creation-via-arm.md)。
 
-叢集安全性是在第一次設定叢集時所設定，而且稍後無法變更。 在設定叢集之前，請先閱讀[Service Fabric 叢集安全性案例][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 憑證來保護您的叢集與其端點、驗證用戶端，以及加密資料。 也建議您使用 Azure Active Directory 來保護對管理端點的存取。 必須在建立叢集之前先建立 Azure AD 租用戶與使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
+叢集安全性是在第一次設定叢集時所設定，而且稍後無法變更。 設定叢集之前，請閱讀 [Service Fabric 叢集安全性案例][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 憑證來保護您的叢集與其端點、驗證用戶端，以及加密資料。 也建議您使用 Azure Active Directory 來保護對管理端點的存取。 必須在建立叢集之前先建立 Azure AD 租用戶與使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
 
 部署生產叢集以執行生產工作負載之前，請務必先閱讀[生產整備檢查清單](service-fabric-production-readiness-checklist.md)。
 
@@ -24,16 +24,16 @@ ms.locfileid: "79258872"
 ## <a name="create-the-resource-manager-template"></a>建立 Resource Manager 範本
 您可以在 [GitHub 上的 Azure 範例](https://github.com/Azure-Samples/service-fabric-cluster-templates)中取得 Resource Manager 範本範例。 這些範本可以用作叢集範本的起點。
 
-本文使用[五個節點的安全][service-fabric-secure-cluster-5-node-1-nodetype]叢集範例範本和範本參數。 將 *azuredeploy.json* 與 *azuredeploy.parameters.json* 下載到您的電腦，並在您慣用的文字編輯器中開啟這兩個檔案。
+此文章使用 [5 節點安全叢集][service-fabric-secure-cluster-5-node-1-nodetype]範例範本與範本參數。 將 *azuredeploy.json* 與 *azuredeploy.parameters.json* 下載到您的電腦，並在您慣用的文字編輯器中開啟這兩個檔案。
 
 > [!NOTE]
 > 針對國家雲 (Azure Government、Azure 中國、Azure 德國)，您也應將下列 `fabricSettings` 新增至您的範本：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
 
 ## <a name="add-certificates"></a>新增憑證
-您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 在 Resource Manager 範本參數檔案 (*azuredeploy.parameters.json*) 中新增金鑰保存庫參數和值。
+您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 將這些金鑰保存庫參數和值添加到資源管理器範本參數檔 *（azuredeploy.parameters.json*） 中。
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>將所有憑證都新增到虛擬機器擴展集 osProfile
-安裝在叢集中的每個憑證都必須在擴展集資源 (Microsoft.Compute/virtualMachineScaleSets) 的 [osProfile] 區段中設定妥當。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
+群集中安裝的每個證書都必須在規模集資源的**osProfile**部分（Microsoft.Compute/VirtualMachineScaleSet）中配置。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
 
 ```json
 {
@@ -132,10 +132,10 @@ ms.locfileid: "79258872"
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>新增 Azure AD 設定以針對用戶端存取使用 Azure AD
 
-您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 在 Resource Manager 範本參數檔案 (*azuredeploy.parameters.json*) 中新增那些 Azure AD 參數和值。 
+您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 將這些 Azure AD 參數和值添加到資源管理器範本參數檔 *（azuredeploy.parameter.json*） 中。 
 
 > [!NOTE]
-> 在 Linux 上，必須在建立叢集之前，先建立 Azure AD 的租使用者和使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
+> 在 Linux 上，必須在創建群集之前創建 Azure AD 租戶和使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
 
 ```json
 {
@@ -253,10 +253,10 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 若要深入了解本文中所部署資源的 JSON 語法和屬性，請參閱：
 
 * [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [微軟.存儲/存儲帳戶](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [微軟.網路/公共IP位址](/azure/templates/microsoft.network/publicipaddresses)
+* [微軟.網路/負載平衡器](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

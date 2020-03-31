@@ -8,23 +8,23 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 74fec059bdffb91f5a7774d430e2f1897f0e863c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303200"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474453"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教學課程：準備部署 Azure Data Box Gateway
 
-
-我們提供了一系列的部署教學課程來說明如何完整部署 Azure 資料箱閘道，這是此系列的第一個教學課程。 本教學課程說明如何準備 Azure 入口網站以部署資料箱閘道資源。 
+我們提供了一系列的部署教學課程來說明如何完整部署 Azure 資料箱閘道，這是此系列的第一個教學課程。 本教學課程說明如何準備 Azure 入口網站以部署資料箱閘道資源。
 
 您需要有系統管理員權限，才能完成安裝和設定程序。 入口網站準備工作不到 10 分鐘就能完成。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 建立新的資源
 > * 下載虛擬裝置映像
 > * 取得啟用金鑰
@@ -50,12 +50,11 @@ ms.locfileid: "78303200"
 
 在您開始前，請確定：
 
-- Data Box Gateway 資源應支援您的 Microsoft Azure 訂用帳戶。 也支援隨用隨付訂用帳戶。
-- 您在 Data Box Edge/Data Box Gateway、IoT 中樞及 Azure 儲存體資源的資源群組層級上，具有擁有者或參與者存取權限。
-
+* 已針對 Azure Stack Edge 資源啟用您的 Microsoft Azure 訂用帳戶。 確定您所使用的是受支援的訂用帳戶，例如 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/overview/sales-number/)、[雲端方案提供者 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
+* 您在 Data Box Edge/Data Box Gateway、IoT 中樞及 Azure 儲存體資源的資源群組層級上，具有擁有者或參與者存取權限。
     - 若要建立任何 Data Box Edge/ Data Box Gateway 資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 您也需要確定已註冊 `Microsoft.DataBoxEdge` 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)。
     - 同樣的，若要建立儲存體帳戶資源，您需要以資源群組層級作為範圍的參與者存取權限 (或更高權限)。 根據預設，Azure 儲存體是已註冊的資源提供者。
-- 您有 Azure Active Directory 圖形 API 的管理員或使用者存取權。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+- 您擁有 Microsoft Graph API 的系統管理員或使用者存取權。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](https://docs.microsoft.com/graph/permissions-reference)。
 - 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
 
 ### <a name="for-the-data-box-gateway-device"></a>針對資料箱閘道裝置

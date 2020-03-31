@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387487"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127196"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>教學課程：使用 Azure 通知中樞和 Bing 空間資料來傳送以位置為基礎的推播通知
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>教學課程：使用通知中樞和 Bing 空間資料傳送以位置為基礎的推播通知
 
 在本教學課程中，您將學習如何使用 Azure 通知中樞和 Bing 空間資料來傳遞以位置為基礎的推播通知。
 
@@ -37,7 +37,7 @@ ms.locfileid: "72387487"
 > * 設定後端
 > * 測試通用 Windows 平台 (UWP) 應用程式中的推播通知
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) 或更新版本 ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)。
@@ -107,7 +107,7 @@ ms.locfileid: "72387487"
 
     ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
 
-    建立好專案之後，您應該就能控管應用程式本身。 現在讓我們來進行地理柵欄基礎結構的各項設定。 由於您會使用 Bing 服務來進行這項解決方案，因此會有可供您查詢特定位置框架的公用 REST API 端點︰
+    建立好專案之後，您應該就能控管應用程式本身。 現在，我們將進行地理柵欄基礎結構的各項設定。 由於您會使用 Bing 服務來進行這項解決方案，因此會有可供您查詢特定位置框架的公用 REST API 端點︰
 
     ```text
     http://spatial.virtualearth.net/REST/v1/data/
@@ -164,7 +164,7 @@ ms.locfileid: "72387487"
     }
     ```
 
-    若要深入了解如何取得 UWP 應用程式中的使用者位置，請參閱[取得使用者的位置](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)。
+    若要深入了解如何在 UWP 應用程式中取得使用者位置，請參閱[取得使用者的位置](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)。
 5. 若要確認實際上是否能取得位置，請開啟主頁面的程式碼端 (`MainPage.xaml.cs`)。 在 `MainPage` 建構函式中為 `Loaded` 事件建立新的事件處理常式。
 
     ```csharp
@@ -196,7 +196,7 @@ ms.locfileid: "72387487"
 
     ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
-    現在您知道能正常取得位置了，接著您可以自由移除 Loaded 事件處理常式，因為我們不會再用到它。
+    現在您知道能正常取得位置了，接著您可以選擇移除「已載入」事件處理常式，因為您不會再用到此處理常式。
 8. 下一步是擷取位置變更。 在 `LocationHelper` 類別中，新增 `PositionChanged` 的事件處理常式：
 
     ```csharp
@@ -348,7 +348,7 @@ ms.locfileid: "72387487"
     ```
 
     > [!NOTE]
-    > 將 `POST_URL` 設定為已部署的 Web 應用程式所在位置。 現在您可以在本機加以執行，但是由於您要著手部署公用版本，因此您必須使用外部提供者來進行裝載。
+    > 將 `POST_URL` 設定為已部署的 Web 應用程式所在位置。 現在您可以在本機加以執行，但由於您要著手部署公用版本，因此必須使用外部提供者加以裝載。
 2. 註冊 UWP 應用程式以取得推播通知。 在 Visual Studio 中，選擇 [專案]   > [市集]   > [將應用程式與市集建立關聯]  。
 
     ![](./media/notification-hubs-geofence/vs-associate-with-store.png)

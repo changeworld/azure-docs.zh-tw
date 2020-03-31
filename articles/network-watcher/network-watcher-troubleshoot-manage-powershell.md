@@ -1,5 +1,5 @@
 ---
-title: 針對 Azure VNet 閘道和連線進行疑難排解-Azure PowerShell
+title: 排除 Azure VNet 閘道和連接故障 - Azure 電源外殼
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 Azure 網路監看員來針對 PowerShell Cmdlet 進行疑難排解
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673660"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 網路監看員 PowerShell 來針對虛擬網路閘道和連線進行疑難排解
 
 > [!div class="op_single_selector"]
 > - [入口網站](diagnose-communication-problem-between-networks.md)
-> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
+> - [電源外殼](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
@@ -38,7 +38,7 @@ ms.locfileid: "78673660"
 
 如需支援的閘道類型清單，請瀏覽[支援的閘道類型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 資源疑難排解可讓您針對虛擬網路閘道和連線所發生的問題進行疑難排解。 在要求進行資源疑難排解後，便會查詢並檢查記錄。 檢查完成時，就會傳回結果。 資源疑難排解要求是執行時間很長的要求，可能需要幾分鐘的時間才會傳回結果。 疑難排解記錄會儲存在指定儲存體帳戶的容器中。
 
@@ -85,7 +85,7 @@ Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -T
 
 動作文字會提供有關如何解決問題的一般指引。 如果問題有可行動作，則會提供附有其他指引的連結。 如果沒有其他指引，回應中會提供 URL 以供您開啟支援案例。  如需回應屬性和所含內容的詳細資訊，請瀏覽[網路監看員疑難排解概觀](network-watcher-troubleshoot-overview.md)
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 有關儲存體總管的詳細資訊可以在下列連結找到︰[儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 有關存儲資源管理器的詳細資訊，請參閱以下連結：[存儲資源管理器](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>後續步驟
 

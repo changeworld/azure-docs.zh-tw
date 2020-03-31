@@ -1,19 +1,18 @@
 ---
-title: Azure Marketplace 的 Cloud Partner 入口網站導覽
-description: Azure Marketplace 的 Cloud Partner 入口網站中的導覽說明。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure 應用商店的雲合作夥伴門戶導航
+description: Azure 應用商店雲合作夥伴門戶中的導航說明。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: pabutler
-ms.openlocfilehash: 57ccc7fb738dc23956e56e70c68405cc995a9a99
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2c1d0eafe96d6e1533bb980ae0e4fd3c43f0e56b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278411"
 ---
 # <a name="cloud-partner-portal-navigation"></a>Cloud Partner 入口網站瀏覽
 
@@ -29,15 +28,15 @@ ms.locfileid: "73821483"
 在這些區域上按一下會產生下列動作：
 
 1. 標題區域：瀏覽至入口網站首頁。
-2. [說明] 按鈕：顯示說明功能表，提供可協助使用者的資源。
-3. [意見反應] 按鈕：顯示 [傳送意見反應] 表單。
-4. [發行者] 按鈕：顯示可讓使用者管理其設定檔的功能表。
+2. [說明]**** 按鈕：顯示說明功能表，提供可協助使用者的資源。
+3. [意見反應]**** 按鈕：顯示 [傳送意見反應]**** 表單。
+4. [發行者]**** 按鈕：顯示可讓使用者管理其設定檔的功能表。
 
 接下來將說明這些功能表和表單。
 
 ### <a name="help-menu"></a>說明功能表
 
-[說明] 功能表提供可協助使用者使用 Cloud Partner 入口網站的資源。
+[說明]**** 功能表提供可協助使用者使用 Cloud Partner 入口網站的資源。
 
 ![頂端功能表列](./media/top-menubar2.png)
 
@@ -50,12 +49,12 @@ ms.locfileid: "73821483"
 
 ### <a name="send-us-feedback-form"></a>傳送意見反應表單
 
-**傳送意見反應**表單提供您直接的方法，將意見反應提供給 Marketplace 發行者上線小組。  只有在您已選取 [可以就此您的意見反應連絡您] 核取方塊時，我們才會連絡您以了解其他資訊。
+**傳送意見反應**表單提供您直接的方法，將意見反應提供給 Marketplace 發行者上線小組。  只有在您已選取 [可以就此您的意見反應連絡您]**** 核取方塊時，我們才會連絡您以了解其他資訊。
 
 ![意見反應表單](./media/feedback-form.png)
 
 > [!TIP]
-> 如果您的意見反應與 Cloud Partner 入口網站上的特定頁面也關，請先瀏覽至該頁面，然後再按一下 [意見反應] 按鈕。  在提交您的意見反應之前，請確定已選取 [包含螢幕擷取畫面] 核取方塊，如此才會擷取您工作階段的 UI 狀態。 
+> 如果您的意見反應與 Cloud Partner 入口網站上的特定頁面也關，請先瀏覽至該頁面，然後再按一下 [意見反應]**** 按鈕。  在提交您的意見反應之前，請確定已選取 [包含螢幕擷取畫面]**** 核取方塊，如此才會擷取您工作階段的 UI 狀態。 
 
 
 ### <a name="publisher-menu"></a>發行者功能表
@@ -70,7 +69,7 @@ ms.locfileid: "73821483"
 佔用入口網站的左側的是可折疊的瀏覽窗格。  它包含的功能表具有可供合作夥伴使用的下列項目：
 
 
-|    **功能表項目**     |      **說明**                       |
+|    **功能表項目**     |      **描述**                       |
 |    -------------     |      ---------------                       |
 | ![[新增供應項目] 項目](./media/left-navbar1.png) | [[新增供應項目] 功能表](./cpp-new-offer-menu.md)可建立指定類型的新供應項目。 |
 | ![[所有供應項目] 項目](./media/left-navbar2.png) | [所有供應項目](./cpp-all-offers-page.md)頁面可檢視所有已提交的供應項目，以及一些主要特性。 |
@@ -78,9 +77,9 @@ ms.locfileid: "73821483"
 | ![[所有發行者] 項目](./media/left-navbar4.png) | [所有發行者](./cpp-all-publishers-page.md)頁面會列出所有目前已註冊的雲端合作夥伴發行者。 |
 | ![[使用者] 項目](./media/left-navbar5.png) | [使用者](./cpp-users-page.md)頁面會列出目前與註冊的雲端合作夥伴相關聯的所有使用者帳戶。 |
 | ![[歷程記錄] 頁面](./media/left-navbar6.png) | [歷程記錄](./cpp-history-page.md)頁面會列出所有發行者的供應項目發行和修改事件。 |
-| ![[見解] 項目](./media/left-navbar7.png) | [見解](./cpp-insights-page.md)頁面包含各種儀表板，並組成此入口網站的「賣方見解」功能。 |
-| ![[文件] 項目](./media/left-navbar8.png) | 在新的索引標籤中啟動 Cloud Partner 入口網站的文件首頁 (與 [說明] 功能表中的項目重複)。 |
-| ![[論壇] 項目](./media/left-navbar9.png)  | 在新的索引標籤中啟動 AppSource 和 Azure Marketplaces 的合作夥伴文件首頁 (與 [說明] 功能表中的項目重複)。 |
+| ![[見解] 項目](./media/left-navbar7.png) | [見解](./cpp-insights-page.md)頁包含構成此門戶的*賣家見解*功能的各種儀表板。 |
+| ![[文件] 項目](./media/left-navbar8.png) | 在新的索引標籤中啟動 Cloud Partner 入口網站的文件首頁 (與 [說明]**** 功能表中的項目重複)。 |
+| ![[論壇] 項目](./media/left-navbar9.png)  | 在新的索引標籤中啟動 AppSource 和 Azure Marketplaces 的合作夥伴文件首頁 (與 [說明]**** 功能表中的項目重複)。 |
 |  |  |
 
 > [!NOTE]
@@ -89,4 +88,4 @@ ms.locfileid: "73821483"
 
 ## <a name="next-steps"></a>後續步驟
 
-下一篇文章[新增供應項目功能表](./cpp-new-offer-menu.md)會列出您可以使用 [新增供應項目] 功能表建立的供應項目類型。
+下一篇文章[新增供應項目功能表](./cpp-new-offer-menu.md)會列出您可以使用 [新增供應項目]**** 功能表建立的供應項目類型。

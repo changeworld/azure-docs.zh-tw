@@ -1,17 +1,17 @@
 ---
-title: 設定伺服器參數-Azure 入口網站適用於 MariaDB 的 Azure 資料庫
+title: 佈建服務器參數 - Azure 門戶 - MariaDB 的 Azure 資料庫
 description: 此文章說明如何使用 Azure 入口網站，在適用於 MariaDB 的 Azure 資料庫中設定 MariaDB 伺服器參數。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/9/2019
-ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 3/18/2020
+ms.openlocfilehash: 243530b4badb9b19d288a91f247eefbcf622fb87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251501"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536406"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 入口網站，在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 
@@ -20,13 +20,13 @@ ms.locfileid: "79251501"
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>瀏覽至 Azure 入口網站上的伺服器參數
 
 1. 登入 Azure 入口網站，然後找到適用於 MariaDB 的 Azure 資料庫伺服器。
-2. 在 [設定] 區段下方，按一下 [伺服器參數] 以開啟適用於 MariaDB 的 Azure 資料庫伺服器的 [伺服器參數] 頁面。
+2. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MariaDB 的 Azure 資料庫伺服器的 [伺服器參數] 頁面。
 ![Azure 入口網站伺服器參數頁面](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. 找出您需要調整的任何設定。 檢閱 [描述] 資料行，以了解用途和允許的值。
+3. 找出您需要調整的任何設定。 檢閱 [描述]**** 資料行，以了解用途和允許的值。
 ![列舉下拉按鈕](./media/howto-server-parameters/3-toggle_parameter.png)
-4. 按一下 [儲存] 以儲存變更。
+4. 按一下 **"保存"** 以保存更改。
 ![儲存或捨棄變更](./media/howto-server-parameters/4-save_parameters.png)
-5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值] 回復為所有參數的預設值。
+5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>可設定的伺服器參數清單
@@ -37,7 +37,7 @@ ms.locfileid: "79251501"
 
 InnoDB 緩衝集區和連線數目上限無法設定，且與您的[定價層](concepts-pricing-tiers.md)有關。
 
-|定價層| **vCore(s)**|**InnoDB 緩衝集區 (MB)**|
+|**定價層**| **虛擬核心**|**InnoDB 緩衝集區 (MB)**|
 |---|---|---|
 |基本| 1| 1024|
 |基本| 2| 2560|
@@ -78,7 +78,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 您應該重新開機伺服器，以確保正確填入時區資料表。 若要重新開機伺服器，請使用[Azure 入口網站](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
+> 應重新開機伺服器以確保時區表已正確填充。 要重新開機伺服器，請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 若要檢視可用的時區值，請執行以下命令：
 
 ```sql
@@ -87,7 +87,7 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>設定全域層級時區
 
-全域層級時區可從 Azure 入口網站中的 [伺服器參數] 頁面設定。 下方的命令可將全域時區的值設定為 "US/Pacific"。
+全域層級時區可從 Azure 入口網站中的 [伺服器參數]**** 頁面設定。 下方的命令可將全域時區的值設定為 "US/Pacific"。
 
 ![設定時區參數](./media/howto-server-parameters/timezone.png)
 

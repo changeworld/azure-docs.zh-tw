@@ -1,6 +1,6 @@
 ---
 title: 在初次執行期間向 Azure AD 加入新的 Windows 10 裝置 | Microsoft Docs
-description: 如何使用者可以設定 Azure AD Join 在全新體驗期間。
+description: 使用者可以如何在開箱即用體驗期間設置 Azure AD 加入。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67482103"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>教學課程：在初次執行期間向 Azure AD 加入新的 Windows 10 裝置
@@ -27,39 +27,39 @@ ms.locfileid: "67482103"
 
 如果您在裝置上安裝了 Windows 10 專業版或 Windows 10 企業版，體驗則預設為公司所擁有裝置的安裝程序。
 
-在 Windows「全新體驗」  中，不支援加入內部部署 Active Directory (AD) 網域的功能。 如果您打算要在安裝期間讓電腦加入 AD 網域，應該要選取 [使用本機帳戶設定 Windows]  連結。 然後，您就可以透過自己電腦上的設定來加入網域。
+在 Windows「全新體驗」** 中，不支援加入內部部署 Active Directory (AD) 網域的功能。 如果您打算要在安裝期間讓電腦加入 AD 網域，應該要選取 [使用本機帳戶設定 Windows]**** 連結。 然後，您就可以透過自己電腦上的設定來加入網域。
  
 在本教學課程中，您將了解如何在 FRX 期間將裝置加入 Azure AD：
  > [!div class="checklist"]
-> * 必要條件
+> * Prerequisites
 > * 加入裝置
-> * 验证
+> * 驗證
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要加入 Windows 10 裝置，必須設定 Device Registration Service，才能註冊裝置。 除了擁有在 Azure AD 租用戶中加入裝置的權限之外，您所擁有的已註冊裝置必須少於已設定的最大值。 如需詳細資訊，請參閱[設定裝置設定](device-management-azure-portal.md#configure-device-settings)。
 
-此外，如果您的租用戶已同盟，則您的識別提供者「必須」支援 WS-Fed 和 WS-Trust 使用者名稱/密碼端點。 這可以是 1.3 或 2005 版。 需要將裝置加入 Azure AD 和密碼的裝置登入此通訊協定支援。
+此外，如果您的租用戶已同盟，則您的識別提供者「必須」支援 WS-Fed 和 WS-Trust 使用者名稱/密碼端點。 這可以是 1.3 或 2005 版。 此協定支援需要將設備加入 Azure AD 並使用密碼登錄到設備。
 
 ## <a name="joining-a-device"></a>加入裝置
 
 **若要在 FRX 期間將 Windows 10 裝置加入 Azure AD：**
 
-1. 當您開啟新裝置，並啟動安裝程序時，您應該會看到 [正在準備]  的訊息。 請依照提示來設定您的裝置。
+1. 當您打開新設備並啟動安裝過程時，應看到"**準備"** 消息。 請依照提示來設定您的裝置。
 1. 首先，自訂您的地區及語言， 然後接受 Microsoft 軟體授權條款。
  
     ![自訂您的地區](./media/azuread-joined-devices-frx/01.png)
 
 1. 選取您要用來連線到網際網路的網路。
-1. 按一下 [此裝置屬於我的組織]  。 
+1. 按一下 [此裝置屬於我的組織]****。 
 
     ![[誰是這部電腦的擁有者] 畫面](./media/azuread-joined-devices-frx/02.png)
 
-1. 輸入組織提供給您的認證，然後按一下 [登入]  。
+1. 輸入組織提供給您的認證，然後按一下 [登入]****。
 
     ![登入畫面](./media/azuread-joined-devices-frx/03.png)
 
-1. 您的裝置會在 Azure AD 中，找出相符的租用戶。 如果您位於同盟網域，系統會將您重新導向至內部部署安全性權杖服務 (STS) 伺服器，例如 Active Directory 同盟服務 (AD FS)。
+1. 您的設備在 Azure AD 中查找匹配的租戶。 如果您位於同盟網域，系統會將您重新導向至內部部署安全性權杖服務 (STS) 伺服器，例如 Active Directory 同盟服務 (AD FS)。
 1. 如果您是非同盟網域的使用者，請直接在裝載 Azure AD 的頁面上輸入您的認證。 
 1. 系統會提示您進行 Multi-Factor Authentication 挑戰。 
 1. Azure AD 會確認是否需要在行動裝置管理中註冊。
@@ -68,9 +68,9 @@ ms.locfileid: "67482103"
    - 受控使用者，Windows 會透過自動登入程序帶您前往桌面。
    - 同盟使用者，系統會將您導向至 Windows 登入畫面來輸入認證。
 
-## <a name="verification"></a>验证
+## <a name="verification"></a>驗證
 
-若要確認裝置是否已加入您的 Azure AD，請在 Windows 裝置上檢閱 [存取公司或學校資源]  對話方塊。 此對話方塊應該指出您已連線至 Azure AD 目錄。
+若要確認裝置是否已加入您的 Azure AD，請在 Windows 裝置上檢閱 [存取公司或學校資源]**** 對話方塊。 此對話方塊應該指出您已連線至 Azure AD 目錄。
 
 ![存取公司或學校資源](./media/azuread-joined-devices-frx/13.png)
 

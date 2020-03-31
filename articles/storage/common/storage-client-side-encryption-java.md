@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460443"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體搭配 Java 的用戶端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>概觀
-[Azure Storage Client Library for Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與 [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/) 整合，以進行儲存體帳戶金鑰管理。
+## <a name="overview"></a>總覽
+[Azure Storage Client Library for Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。 該庫還支援與[Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)集成，用於存儲帳戶金鑰管理。
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>透過信封技術進行加密和解密
 加密和解密的程序採用信封技術。  
@@ -56,9 +56,9 @@ ms.locfileid: "75460443"
 > 
 > 
 
-下載加密的 blob 牽涉到使用**下載**/**openInputStream**便利方法來抓取整個 blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
+下載加密的 Blob 涉及使用**下載**/**openInputStream**便利方法檢索整個 Blob 的內容。 包裝的 CEK 會解除包裝，並與 IV (在此情況下儲存為 blob 中繼資料) 一起用來傳回解密的資料給使用者。
 
-在加密的 blob 中下載任意範圍（**downloadRange**方法）牽涉到調整使用者所提供的範圍，以取得少量額外的資料，可用來成功解密所要求的範圍。  
+在加密的 Blob 中下載任意範圍（**下載範圍**）涉及調整使用者提供的範圍，以便獲取可用於成功解密請求範圍的少量附加資料。  
 
 所有 Blob 類型 (區塊 Blob、頁面 Blob 和附加 Blob) 都可以使用此機制進行加密/解密。
 
@@ -90,7 +90,7 @@ ms.locfileid: "75460443"
    
    請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串儲存在服務上作為二進位屬性，且解密後會轉換回字串。
    
-   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 作法是指定 [Encrypt] 屬性 (針對衍生自 TableEntity 的 POCO 實體)，或在要求選項中指定加密解析程式。 加密解析程式是委派，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
+   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 作法是指定 [Encrypt] 屬性 (針對衍生自 TableEntity 的 POCO 實體)，或在要求選項中指定加密解析程式。 加密解析程式是委派，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則加密屬性 A;否則加密屬性 A 和 B。請注意，在讀取或查詢實體時不必提供此資訊。
 
 ### <a name="batch-operations"></a>批次作業
 在批次作業中，批次作業中的所有資料列上會使用相同的 KEK，因為用戶端程式庫只允許每個批次作業有一個選項物件 (也就是一個原則/KEK)。 不過，用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。
@@ -102,7 +102,7 @@ ms.locfileid: "75460443"
 > 
 > 若要執行查詢作業，您必須指定一個能夠解析結果集中的所有金鑰的金鑰解析程式。 如果查詢結果中包含的實體無法解析成提供者，用戶端程式庫會擲回錯誤。 針對執行伺服器端投影的任何查詢，用戶端程式庫會依預設將特殊加密中繼資料屬性 (_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2) 加入選取的資料行。
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+## <a name="azure-key-vault"></a>Azure 金鑰保存庫
 Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 使用 Azure 金鑰保存庫時，使用者可以使用受硬體安全模組 (HSM) 保護的金鑰來加密金鑰和密碼 (例如驗證金鑰、儲存體帳戶金鑰、資料加密金鑰、.PFX 檔案和密碼)。 如需詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../../key-vault/key-vault-overview.md)。
 
 儲存體用戶端程式庫會使用金鑰保存庫核心程式庫，以提供整個 Azure 的通用架構來管理金鑰。 使用者也享有使用金鑰保存庫延伸模組程式庫的額外好處。 延伸模組程式庫提供實用的功能，包括簡單又完善的對稱/RSA 本機和雲端金鑰提供者，以及彙總和快取。
@@ -121,7 +121,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 3. 建立加密原則時，使用快取解析程式做為輸入。
    如需有關「金鑰保存庫」使用方式的詳細資訊，請參閱加密程式碼範例。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 只有 Java 的儲存體用戶端程式庫才支援加密。
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
     [加密範例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) 會針對 Blob、佇列和資料表以及金鑰保存庫的整合，示範更詳細的端對端案例。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
-使用者可以針對所有上傳和下載都必須加密的作業模式，從中選擇啟用。 在此模式中，在用戶端上嘗試上傳沒有加密原則的資料或下載未在服務上加密的資料將會失敗。 要求選項物件的 **requireEncryption** 旗標會控制此行為。 如果您的應用程式會將所有儲存在 Azure 儲存體中的物件加密，則您可以在服務用戶端服務的預設要求選項上，設定 **requireEncryption** 屬性。   
+使用者可以針對所有上傳和下載都必須加密的作業模式，從中選擇啟用。 在此模式中，在用戶端上嘗試上傳沒有加密原則的資料或下載未在服務上加密的資料將會失敗。 要求選項物件的 **requireEncryption** 旗標會控制此行為。 如果應用程式將加密存儲在 Azure 存儲中的所有物件，則可以在服務用戶端物件的預設請求選項上設置 **"需要加密**"屬性。   
 
 例如，使用 **CloudBlobClient.getDefaultRequestOptions().setRequireEncryption(true)** 要求加密透過該用戶端物件所執行的所有 Blob 作業。
 
@@ -193,7 +193,7 @@ CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
 
 ### <a name="table-service-encryption"></a>資料表服務加密
-除了建立加密原則並在要求選項上加以設定之外，您必須在 **TableRequestOptions** 中指定 **EncryptionResolver**，或在實體的 getter 與 setter 上設定 [Encrypt] 屬性。
+除了創建加密策略並在請求選項上設置它之外，還必須在**表RequestOptions**中指定**加密解析器**，或者在實體的 getter 和 setter 上設置 [加密] 屬性。
 
 ### <a name="using-the-resolver"></a>使用解析程式
 
@@ -255,5 +255,5 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 * 從 GitHub 下載 [Azure Storage Client Library for Java Source Code (適用於 Java 原始程式碼的 Azure 儲存體用戶端程式庫)](https://github.com/Azure/azure-storage-java)
 * 下載適用於 Java Maven 的 Azure 金鑰保存庫 Maven 程式庫封裝：
   * [核心](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) 封裝
-  * [用戶端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) 封裝
+  * [用戶端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)包
 * 請瀏覽 [Azure 金鑰保存庫文件](../../key-vault/key-vault-overview.md)

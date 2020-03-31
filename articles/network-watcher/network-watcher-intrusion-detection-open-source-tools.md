@@ -1,5 +1,5 @@
 ---
-title: 使用開放原始碼工具執行網路入侵偵測
+title: 使用開源工具執行網路入侵偵測
 titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 網路監看員和開放原始碼工具來執行網路入侵偵測
 services: network-watcher
@@ -14,19 +14,19 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845018"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用網路監看員和開放原始碼工具執行網路入侵偵測
 
 封包擷取是實作網路入侵偵測系統 (ID) 和執行網路安全性監視 (NSM) 的重要元件。 有數個開放原始碼 IDS 工具，可處理封包擷取並尋找可能的網路入侵和惡意活動的簽章。 使用網路監看員所提供的封包擷取，您可以分析您的網路找出任何有害的入侵或安全性弱點。
 
-一種開放原始碼工具是 Suricata，這是使用規則集監視網路流量且在可疑事件發生時就會觸發警示的 IDS 引擎。 Suricata 提供多執行緒的引擎，這表示它可以更高的速度和效率執行網路流量分析。 如需關於 Suricata 和其功能的詳細資訊，請瀏覽其網站： https://suricata-ids.org/ 。
+一種開放原始碼工具是 Suricata，這是使用規則集監視網路流量且在可疑事件發生時就會觸發警示的 IDS 引擎。 Suricata 提供多執行緒的引擎，這表示它可以更高的速度和效率執行網路流量分析。 如需關於 Suricata 和其功能的詳細資訊，請瀏覽其網站：https://suricata-ids.org/。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 本文說明如何使用網路監看員、Suricata 和彈性堆疊來設定您的環境，以執行網路入侵偵測。 網路監看員會提供用來執行網路入侵偵測的封包擷取。 Suricata 會根據比對指定的威脅規則集處理封包擷取和觸發警示。 這些警示會儲存在本機電腦上的記錄檔。 使用彈性堆疊的 Suricata 所產生之記錄可以編製索引及用來建立 Kibana 儀表板，提供您視覺表示法的記錄，以便快速獲得潛在網路弱點的見解。  
 
@@ -80,7 +80,7 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安裝 Elasticsearch
 
-1. 5\.0 版和更新版本的彈性堆疊需要 Java 8。 執行命令 `java -version` 來檢查您的版本。 如果您沒有安裝 Java，請參閱 [Azure 支援的 JDK](https://aka.ms/azure-jdks) 上的文件。
+1. 5.0 版和更新版本的彈性堆疊需要 Java 8。 執行命令 `java -version` 來檢查您的版本。 如果您沒有安裝 Java，請參閱 [Azure 支援的 JDK](https://aka.ms/azure-jdks) 上的文件。
 
 1. 針對您的系統下載正確的二進位套件︰
 
@@ -244,7 +244,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 下載儀表板檔案 ([這裡](https://aka.ms/networkwatchersuricatadashboard))、視覺效果檔案 ([這裡](https://aka.ms/networkwatchersuricatavisualization))，以及儲存的搜尋檔案 ([這裡](https://aka.ms/networkwatchersuricatasavedsearch))。
 
-1. 在 Kibana 的 [管理] 索引標籤下，瀏覽至 [儲存的物件] 並匯入這三個檔案。 然後您可以從 [儀表板] 索引標籤開啟並載入範例儀表板。
+1. 在 Kibana 的 [管理]**** 索引標籤下，瀏覽至 [儲存的物件]**** 並匯入這三個檔案。 然後您可以從 [儀表板]**** 索引標籤開啟並載入範例儀表板。
 
 您也可以針對自己感興趣的計量，量身製作自己的視覺效果和儀表板。 從 Kibana 的[正式文件](https://www.elastic.co/guide/en/kibana/current/visualize.html)深入了解如何建立 Kibana 視覺效果。
 
@@ -254,7 +254,7 @@ tail -f /var/log/suricata/fast.log
 
 範例儀表板會提供 Suricata 警示記錄的數個視覺效果︰
 
-1. 依 GeoIP 的警示–顯示根據地理位置（由 IP 決定）之來源國家/地區的警示分佈的地圖
+1. 按 GeoIP 分類的警報 – 顯示警報按其所在國家/地區（根據地理位置確定）分佈的地圖
 
     ![地理 IP][3]
 

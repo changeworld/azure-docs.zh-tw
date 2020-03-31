@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623449"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79298830"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型
 
@@ -159,7 +159,7 @@ ms.locfileid: "77623449"
 
 1. 保留所產生的 [裝置識別碼]  和 [裝置名稱]  。 確定 [模擬]  切換開關為 [開啟]  。 選取 [建立]  。
 
-1. 在 [裝置]  頁面上，選取裝置範本清單中的 [R1 感應器]  。
+1. 在 [裝置]  頁面上，選取裝置範本清單中的 [S1 感應器]  。
 
 1. 選取 **+** 以開始新增裝置。
 
@@ -203,6 +203,9 @@ ms.locfileid: "77623449"
 * 定義裝置遙測的視覺效果。
 * 新增關聯性。
 * 發佈您的裝置範本。
+
+> [!NOTE]
+> 在 IoT Central 中模型化的閘道裝置目前不支援以 VS Code 為基礎的程式碼產生。
 
 接著，您可以：
 

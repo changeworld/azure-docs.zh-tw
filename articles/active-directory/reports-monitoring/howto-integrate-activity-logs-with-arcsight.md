@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 監視器將記錄與 ArcSight 整合 |Microsoft Docs
-description: 瞭解如何使用 Azure 監視器將 Azure Active Directory 記錄與 ArcSight 整合
+title: 使用 Azure 監視器將日誌與 ArcSight 集成 |微軟文檔
+description: 瞭解如何使用 Azure 監視器將 Azure 活動目錄日誌與 ArcSight 集成
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,19 +18,19 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75608375"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure 監視器整合 Azure Active Directory 記錄與 ArcSight
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure 監視器將 Azure Active Directory 記錄與 ArcSight 整合
 
 [Micro Focus ArcSight](https://software.microfocus.com/products/siem-security-information-event-management/overview) 是安全性資訊及事件管理 (SIEM) 解決方案，可協助您偵測及回應您平台中的安全性威脅。 您現在可以使用 Azure 監視器與適用於 Azure AD 的 ArcSight 連接器，將 Azure Active Directory (Azure AD) 記錄路由傳送至 ArcSight。 這項功能可讓您使用 ArcSight 監視租用戶中是否有安全性危害。  
 
 在本文中，您將了解如何使用 Azure 監視器將 Azure AD 記錄路由傳送至 ArcSight。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此功能，您必須要有：
 * 包含 Azure AD 活動記錄的 Azure 事件中樞。 了解如何[將活動記錄串流至事件中樞](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 

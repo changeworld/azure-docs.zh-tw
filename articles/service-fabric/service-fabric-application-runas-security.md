@@ -1,13 +1,13 @@
 ---
-title: 在系統和本機安全性帳戶下執行服務
+title: 在系統和本地安全帳戶下運行服務
 description: 了解如何在系統和本機安全性帳戶下執行 Service Fabric 應用程式。  建立安全性主體並套用「執行身分」原則以安全地執行您的服務。
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610111"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本機使用者帳戶或本機系統帳戶身分執行服務
@@ -22,7 +22,7 @@ ms.locfileid: "75610111"
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>以本機使用者身分執行服務
-您可以建立一個本機使用者，以便用來協助保護應用程式內的服務。 在應用程式資訊清單的主體區段中指定 **LocalUser** 帳戶類型時，Service Fabric 會在部署應用程式所在的電腦上建立本機使用者帳戶。 根據預設，這些帳戶的名稱不會與應用程式資訊清單中所指定的名稱相同 (例如，以下應用程式資訊清單範例中的 Customer3)。 相反地，它們會動態產生並具有隨機密碼。
+您可以建立一個本機使用者，以便用來協助保護應用程式內的服務。 在應用程式資訊清單的主體區段中指定 **LocalUser** 帳戶類型時，Service Fabric 會在部署應用程式所在的電腦上建立本機使用者帳戶。 根據預設，這些帳戶的名稱不會與應用程式資訊清單中所指定的名稱相同 (例如，以下應用程式資訊清單範例中的 Customer3**)。 相反地，它們會動態產生並具有隨機密碼。
 
 在 **ServiceManifestImport** 的 **RunAsPolicy** 區段中，指定**主體**區段中的使用者帳戶來執行服務程式碼套件。  下列範例會示範如何建立本機使用者，以及將 RunAs 原則套用至主要進入點：
 
@@ -55,7 +55,7 @@ ms.locfileid: "75610111"
 ```
 
 ## <a name="create-a-local-user-group"></a>建立本機使用者群組
-您可以建立使用者群組，並將一或多個使用者新增至群組。 當不同的服務進入點有多個使用者，而他們需要具備可在群組層級取得的某些通用權限時，這會很有用。 下列應用程式資訊清單範例會顯示名為 LocalAdminGroup 且具有系統管理員權限的本機群組。 Customer1 和 Customer2 這兩個使用者會成為此本機群組的成員。 在 **ServiceManifestImport** 區段中，會套用 RunAs 原則以 Customer2 的身分執行 Stateful1Pkg 程式碼套件。  另一個 RunAs 原則會套用來以 Customer1 的身分執行 Web1Pkg 程式碼套件。
+您可以建立使用者群組，並將一或多個使用者新增至群組。 當不同的服務進入點有多個使用者，而他們需要具備可在群組層級取得的某些通用權限時，這會很有用。 下列應用程式資訊清單範例會顯示名為 LocalAdminGroup** 且具有系統管理員權限的本機群組。 Customer1** 和 Customer2** 這兩個使用者會成為此本機群組的成員。 在 **ServiceManifestImport** 區段中，會套用 RunAs 原則以 Customer2** 的身分執行 Stateful1Pkg** 程式碼套件。  另一個 RunAs 原則會套用來以 Customer1** 的身分執行 Web1Pkg** 程式碼套件。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -152,7 +152,7 @@ ms.locfileid: "75610111"
 基於偵錯的目的，查看執行服務後的主控台輸出偶爾會有幫助。 您可以在服務資訊清單中的進入點上設定主控台重新導向原則，其會將輸出寫入至檔案。 檔案輸出會寫入至部署並執行應用程式所在的叢集節點上，稱為 **log** 的應用程式資料夾中。 
 
 > [!WARNING]
-> 切勿在實際部署的應用程式中使用主控台重新導向原則，因為這可能會影響應用程式容錯移轉。 僅將此原則用於本機開發及偵錯。  
+> 切勿在實際部署的應用程式中使用主控台重新導向原則，因為這可能會影響應用程式容錯移轉。 僅** 將此原則用於本機開發及偵錯。  
 > 
 > 
 

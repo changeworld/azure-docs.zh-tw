@@ -1,14 +1,14 @@
 ---
 title: DoD 影響等級 4 藍圖範例
 description: DoD 影響等級 4 藍圖範例的部署步驟，其中包括藍圖成品參數的詳細資料。
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 087b5947f86d33e44cd72754b79acd457674d545
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c92e24327bc1879b8fea89cf85a50f845e473810
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154696"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415303"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>部署 DoD 影響等級 4 藍圖範例
 
@@ -132,7 +132,8 @@ ms.locfileid: "77154696"
 |\[預覽\]：DoD 影響等級 4|原則指派|應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
 |\[預覽\]：DoD 影響等級 4|原則指派|應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
 |\[預覽\]：DoD 影響等級 4|原則指派|應為 Azure SQL Database 啟用長期異地備援備份|如需原則效果的相關資訊，請參閱[了解 Azure 原則效果](../../../policy/concepts/effects.md)。|
-
+|允許的位置|原則指派|允許的位置|此原則可讓您限制您的組織在部署資源時可指定的位置。 它可用來強制執行地理合規性需求。|
+|資源群組允許的位置|原則指派 |允許的位置|此原則可讓您限制貴組織可在其中建立資源群組的位置。 它可用來強制執行地理合規性需求。|
 
 ## <a name="next-steps"></a>後續步驟
 

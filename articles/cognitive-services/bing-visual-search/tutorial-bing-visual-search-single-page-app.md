@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 02095a307e5227f477f51e857ee423d22a8edf8f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74689163"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370107"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>建立圖像式搜尋單頁 Web 應用程式
+# <a name="tutorial-create-a-visual-search-single-page-web-app"></a>教學課程：建立圖像式搜尋單頁 Web 應用程式
 
 Bing 圖像式搜尋 API 會傳回影像的見解。 您可以上傳影像，也可以提供影像的 URL。 見解是視覺上類似的影像、購物來源、包含影像的網頁等。 Bing 圖像式搜尋 API 所傳回的見解，類似於 Bing.com/images 上顯示的內容。
 

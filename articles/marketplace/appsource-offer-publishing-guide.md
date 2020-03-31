@@ -1,31 +1,31 @@
 ---
-title: AppsSource 店面的 AppSource 供應專案發行指南 |Azure Marketplace
+title: AppSource 為 AppSource 網店提供發佈指南 |Azure 應用商店
 description: 逐步指南與發佈檢查清單，可將應用程式發佈到 Office 365、Dynamics 365、Power BI 和 Power Apps 的 AppSource 店面
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 82b1d096b1641915fc2dc58e000c40c18731c28c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427221"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286637"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power Apps 及 Power BI 供應項目發佈指南
 
 AppSource 店面包含可建置或擴充 Dynamics 365、Office 365、Power BI 和 Power Apps 的供應項目。 這些產品每項都有特定的文件，可引導發佈程序。 如需每個供應項目類型的詳細資料連結，請參閱下方內容。 
 
-AppSource 有付費、清單和試用版供應專案，並呼叫「立即取得」、「聯絡我」和「立即試用」。 
+AppSource 已付費、列出和試用優惠，並號召行動"立即獲取"、"立即聯繫"和"立即試用"。 
 
 ## <a name="product-specific-guides"></a>產品特定指南
 
 ### <a name="office-365"></a>Office 365
 
-檢閱[發佈程序和指導方針](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
+查看[發佈流程和指南](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
 
 ### <a name="power-apps"></a>Power Apps
 
@@ -33,7 +33,7 @@ AppSource 有付費、清單和試用版供應專案，並呼叫「立即取得�
 
 ### <a name="power-bi"></a>Power BI
 
-檢閱[發佈程序和指導方針](https://docs.microsoft.com/power-bi/developer/office-store)。
+查看[發佈過程和指南。](https://docs.microsoft.com/power-bi/developer/office-store)
 
 ### <a name="dynamics-365"></a>Dynamics 365
 

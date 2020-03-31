@@ -1,13 +1,13 @@
 ---
 title: 探索您的 Azure 資源
-description: 瞭解如何使用 Resource Graph 查詢語言來探索您的資源，並探索其連線方式。
+description: 瞭解如何使用資源圖查詢語言來探索資源並瞭解這些資源的連接方式。
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76156976"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 探索您的 Azure 資源
@@ -104,7 +104,7 @@ JSON 結果的結構類似於下列範例：
 ]
 ```
 
-屬性會告訴我們有關虛擬機器資源本身的其他資訊，從 SKU、OS、磁片、標籤，以及其所屬的資源群組和訂用帳戶的所有專案。
+這些屬性告訴我們有關虛擬機器資源本身的其他資訊，包括 SKU、作業系統、磁片、標記以及它所包含的資源組和訂閱的所有內容。
 
 ### <a name="virtual-machines-by-location"></a>依位置劃分的虛擬機器
 
@@ -176,7 +176,7 @@ Resources
 ```
 
 > [!NOTE]
-> 取得 SKU 的另一種方法是使用 **aliases** 屬性 **Microsoft.Compute/virtualMachines/sku.name**。 請參閱[顯示別名](../samples/starter.md#show-aliases)和[顯示相異的別名值](../samples/starter.md#distinct-alias-values)範例。
+> 取得 SKU 的另一種方法是使用 **aliases** 屬性 **Microsoft.Compute/virtualMachines/sku.name**。 請參閱[顯示別名](../samples/starter.md#show-aliases)和[顯示不同的別名值](../samples/starter.md#distinct-alias-values)示例。
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -257,7 +257,7 @@ JSON 結果的結構類似於下列範例：
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>瀏覽虛擬機器以尋找公用 IP 位址
 
-這組查詢會先尋找並儲存連接至虛擬機器的所有網路介面（NIC）資源。 然後，查詢會使用 Nic 清單來尋找每個 IP 位址資源，這是公用 IP 位址，並儲存這些值。 最後，查詢會提供公用 IP 位址的清單。
+這組查詢首先查找並存儲連接到虛擬機器的所有網路介面 （NIC） 資源。 然後，查詢使用 NIC 清單查找作為公共 IP 位址的每個 IP 位址資源並存儲這些值。 最後，查詢提供公共 IP 位址的清單。
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nics.txt' file
@@ -275,7 +275,7 @@ $nics = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virt
 $nics.nic
 ```
 
-在下一個查詢中使用檔案（Azure CLI）或變數（Azure PowerShell），以取得相關的網路介面資源詳細資料，其中有一個公用 IP 位址附加至 NIC。
+在下一個查詢中使用檔 （Azure CLI） 或變數 （Azure PowerShell） 獲取相關網路介面資源詳細資訊，其中有連接到 NIC 的公共 IP 位址。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -293,7 +293,7 @@ $ips = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/netwo
 $ips.publicIp
 ```
 
-最後，使用儲存在檔案中的公用 IP 位址資源清單（Azure CLI）或變數（Azure PowerShell），從相關物件取得實際的公用 IP 位址，並顯示。
+最後，使用存儲在檔 （Azure CLI） 或變數 （Azure PowerShell） 中的公共 IP 位址資源清單從相關物件和顯示中獲取實際公共 IP 位址。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
@@ -305,10 +305,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-若要瞭解如何使用 `join` 運算子在單一查詢中完成這些步驟，請參閱[列出具有其網路介面和公用 IP 的虛擬機器](../samples/advanced.md#join-vmpip)範例。
+要查看如何在與`join`操作員的單個查詢中完成這些步驟，請參閱[具有網路介面和公共 IP](../samples/advanced.md#join-vmpip)的 List 虛擬機器。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[查詢語言](query-language.md)。
-- 請參閱[入門查詢](../samples/starter.md)中使用的語言。
-- 請參閱 advanced[查詢](../samples/advanced.md)中的 advanced 使用。
+- 瞭解有關[查詢語言](query-language.md)的更多詳細資訊。
+- 請參閱[初學者查詢](../samples/starter.md)中正在使用的語言。
+- 請參閱[高級查詢](../samples/advanced.md)中的高級用途。

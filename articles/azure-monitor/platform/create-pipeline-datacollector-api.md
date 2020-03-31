@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure 監視器資料收集器 API 建立資料管線 |Microsoft Docs
+title: 使用資料收集器 API 創建資料管道
 description: 您可以使用 Azure 監視器 HTTP 資料收集器 API，將 POST JSON 資料從任何可呼叫 REST API 的用戶端新增至 Log Analytics 工作區。 本文將說明如何以自動化方式上傳儲存在檔案中的資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 0300b44577725ddb272086713220d3318f1726fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055102"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用資料收集器 API 建立資料管線
 
@@ -20,7 +20,7 @@ ms.locfileid: "77655324"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>問題範例
-在本文的其餘部分中，我們將透過 Application Insights 檢查頁面檢視資料。 在我們的假設案例中，我們想要將 Application Insights SDK 預設收集的地理資訊相互關聯至包含全球每個國家/地區擴展的自訂資料，其目標是要找出我們應該花費最多行銷金額的位置。 
+在本文的其餘部分中，我們將透過 Application Insights 檢查頁面檢視資料。 在我們的假設場景中，我們希望將應用程式洞察 SDK 預設收集的地理資訊與包含世界每個國家/地區人口的自訂資料相關聯，目的是確定我們應花費最多行銷資金的位置。 
 
 我們會使用 [UN World Population Prospects](https://esa.un.org/unpd/wpp/) (聯合國世界人口展望) 等公開資料來源來完成此目的。 資料會有下列簡易結構描述：
 
@@ -60,8 +60,8 @@ Logic Apps 目前並沒有可輕鬆地將 XML、CSV 或其他類型轉換成 JSO
 
 在此範例中，我們會剖析 CSV 檔案，但您可以使用類似的方式處理任何其他檔案類型。 只需修改 Azure Function 的還原序列化部分，即可反映特定資料類型的正確邏輯。
 
-1.  建立新的 Azure Function，並在出現提示時，使用 Function 執行階段 v1 並以耗用量作為依據。  選取以 C# 作為目標的 [HTTP 觸發程序]，作為設定所需繫結的起點。 
-2.  從右側窗格上的 [檢視檔案] 索引標籤中，建立名為 **project.json** 的新檔案，並從我們正在使用的 NuGet 套件中，貼上下列程式碼：
+1.  建立新的 Azure Function，並在出現提示時，使用 Function 執行階段 v1 並以耗用量作為依據。  選取以 C# 作為目標的 [HTTP 觸發程序]****，作為設定所需繫結的起點。 
+2.  從右側窗格上的 [檢視檔案]**** 索引標籤中，建立名為 **project.json** 的新檔案，並從我們正在使用的 NuGet 套件中，貼上下列程式碼：
 
     ![Azure Functions 的專案範例](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
@@ -122,7 +122,7 @@ Logic Apps 目前並沒有可輕鬆地將 XML、CSV 或其他類型轉換成 JSO
     ```
 
 4. 儲存您的函式。
-5. 測試函式，以確定程式碼正常運作。 在右側窗格中切換到 [測試] 索引標籤，依照下圖來設定測試。 在 [要求本文] 文字方塊中放入範例資料 Blob 的連結。 按一下 [執行] 後，您應該會在 [輸出] 方塊中看到 JSON 輸出：
+5. 測試函式，以確定程式碼正常運作。 在右側窗格中切換到 [測試]**** 索引標籤，依照下圖來設定測試。 在 [要求本文]**** 文字方塊中放入範例資料 Blob 的連結。 按一下 [執行]**** 後，您應該會在 [輸出]**** 方塊中看到 JSON 輸出：
 
     ![函式應用程式的測試程式碼](./media/create-pipeline-datacollector-api/functions-test-01.png)
 

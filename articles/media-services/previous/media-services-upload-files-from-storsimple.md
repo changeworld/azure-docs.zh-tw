@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64868303"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>從 Azure StorSimple 將檔案上傳至 Azure 媒體服務帳戶  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 >
 > 
 > Azure StorSimple Data Manager 目前處於私人預覽階段。 
@@ -32,7 +32,7 @@ ms.locfileid: "64868303"
 
 ## <a name="overview"></a>總覽
 
-在媒體服務中，您會將數位檔案上傳到到資產。 「資產」可以包含視訊、音訊、影像、縮圖集合、文字播放軌及隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料)。上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。
+在媒體服務中，您會將數位檔案上傳到到資產。 資產可以包含視頻、音訊、圖像、縮略圖集合、文本軌道和隱藏字幕檔（以及有關這些檔的中繼資料）。上傳檔後，您的內容將安全地存儲在雲中，以便進一步處理和資料流。
 
 [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) 使用雲端儲存體做為內部部署解決方案的擴充功能，並且跨內部部署儲存體和雲端儲存體自動將資料分層。 StorSimple 裝置會先刪除重複資料並加以壓縮，再將資料傳送至雲端，以非常有效率的方式將大型檔案傳送至雲端。 [StorSimple Data Manager](../../storsimple/storsimple-data-manager-overview.md) 服務提供 API，可讓您從 StorSimple 擷取資料並將它呈現為 AMS 資產。
 
@@ -47,7 +47,7 @@ ms.locfileid: "64868303"
 
 ## <a name="see-also"></a>另請參閱
 
-[在資料管理員中使用.NET SDK 來觸發作業](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[使用 .NET SDK 在資料管理器中觸發作業](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

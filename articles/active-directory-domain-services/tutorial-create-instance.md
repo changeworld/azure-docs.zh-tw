@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
 ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082342"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223075"
 ---
-# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立和設定 Azure Active Directory Domain Services 實例
+# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立並設定 Azure Active Directory Domain Services 執行個體
 
 Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，例如：網域加入、群組原則、LDAP、Kerberos/NTLM 驗證，與 Windows Server Active Directory 完全相容。 您不需要自行部署、管理和修補網域控制站，就可以使用這些網域服務。 Azure AD DS 會與您現有的 Azure AD 租用戶整合。 這項整合可讓使用者使用其公司認證進行登入，而您可以使用現有的群組和使用者帳戶來保護資源的存取。
 
@@ -40,12 +40,12 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 您必須擁有 Azure AD 租用戶的*全域管理員*權限，才能啟用 Azure AD DS。
-* 您需要 Azure 訂用帳戶中的「參與者」權限，才能建立必要的 Azure AD DS 資源。
+* 您需要 Azure 訂用帳戶中的「參與者」  權限，才能建立必要的 Azure AD DS 資源。
 
 雖然 Azure AD DS 不需要，但建議針對 Azure AD 租用戶[設定自助式密碼重設 (SSPR)][configure-sspr]。 使用者不需 SSPR 即可變更其密碼，但是如果他們忘記密碼且需要加以重設，SSPR 會協助他們。
 
 > [!IMPORTANT]
-> 建立 Azure AD DS 受控網域之後，您就無法將實例移至不同的資源群組、虛擬網路、訂用帳戶等。當您部署 Azure AD DS 實例時，請小心選取最適當的訂用帳戶、資源群組、區域和虛擬網路。
+> 建立 Azure AD DS 受控網域之後，您就無法將執行個體移至不同的資源群組、虛擬網路、訂用帳戶等。當您部署 Azure AD DS 執行個體時，請仔細選取最適當的訂用帳戶、資源群組、區域和虛擬網路。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -53,38 +53,38 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 ## <a name="create-an-instance"></a>建立執行個體
 
-若要啟動 [啟用 Azure AD Domain Services] 精靈，請完成下列步驟：
+若要啟動 [啟用 Azure AD Domain Services]  精靈，請完成下列步驟：
 
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
-1. 在搜尋列中輸入 [Domain Services]，然後從搜尋建議中選擇 [Azure AD Domain Services]。
-1. 在 [Azure AD Domain Services] 頁面中，選取 [建立]。 [啟用 Azure AD Domain Services] 精靈隨即啟動。
+1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]  。
+1. 在搜尋列中輸入 [Domain Services]  ，然後從搜尋建議中選擇 [Azure AD Domain Services]  。
+1. 在 [Azure AD Domain Services] 頁面中，選取 [建立]  。 [啟用 Azure AD Domain Services]  精靈隨即啟動。
 1. 選取您要在其中建立受控網域的 Azure **訂用帳戶**。
-1. 選取受控網域應該隸屬的**資源群組**。 選擇 [新建]，或選取現有的資源群組。
+1. 選取受控網域應該隸屬的**資源群組**。 選擇 [新建]  ，或選取現有的資源群組。
 
 當您建立 Azure AD DS 執行個體時，您可以指定 DNS 名稱。 以下是選擇此 DNS 名稱時的一些考量：
 
-* **內建功能變數名稱：** 根據預設，會使用目錄的內建功能變數名稱（ *onmicrosoft.com*尾碼）。 如果您想要啟用透過網際網路對受控網域進行安全 LDAP 存取，則無法建立數位憑證來保護對此預設網域建立的連線。 .onmicrosoft.com 網域屬於 Microsoft，因此憑證授權單位不會發行憑證。
-* **自訂功能變數名稱：** 最常見的方法是指定自訂功能變數名稱，通常是您已擁有且可路由傳送的名稱。 當您使用可路由的自訂網域時，流量就可以在應用程式需要支援時，流向正確的位置。
-* **不可路由傳送的網域尾碼：** 我們通常會建議您避免使用無法路由傳送的功能變數名稱尾碼，例如*contoso. local*。 .local 尾碼是不可路由的，因此會導致 DNS 解析發生問題。
+* **內建網域名稱：** 預設會使用目錄的內建網域名稱 (具有 .onmicrosoft.com  尾碼)。 如果您想要啟用透過網際網路對受控網域進行安全 LDAP 存取，則無法建立數位憑證來保護對此預設網域建立的連線。 .onmicrosoft.com  網域屬於 Microsoft，因此憑證授權單位不會發行憑證。
+* **自訂網域名稱：** 最常見的方法是指定自訂網域名稱，通常是您已擁有且可路由的名稱。 當您使用可路由的自訂網域時，流量就可以在應用程式需要支援時，流向正確的位置。
+* **非路由式網域尾碼：** 我們通常會建議您避免使用無法路由的網域名稱尾碼，例如 contoso. local  。 .local  尾碼是不可路由的，因此會導致 DNS 解析發生問題。
 
 > [!TIP]
-> 如果您建立自訂網域名稱，請注意現有的 DNS 命名空間。 建議使用與任何現有 Azure 或內部部署 DNS 命名空間分開的功能變數名稱。
+> 如果您建立自訂網域名稱，請注意現有的 DNS 命名空間。 建議使用與任何現有 Azure 或內部部署 DNS 命名空間不同的功能變數名稱。
 >
-> 例如，如果您有現有的 DNS 命名空間*contoso.com*，請使用*aaddscontoso.com*的自訂功能變數名稱來建立 Azure AD DS 受控網域。 如果您需要使用安全 LDAP，您必須註冊並擁有此自訂功能變數名稱，以產生必要的憑證。
+> 例如，如果您現有的 DNS 名稱空間是 contoso.com  ，請使用 corp.contoso.com  自訂網域名稱建立 Azure AD DS 受控網域。 如果您需要使用安全 LDAP，必須註冊並擁有此自訂功能網域名稱，才能產生必要的憑證。
 >
-> 您可能需要為環境中的其他服務或環境中現有 DNS 命名空間之間的條件式 DNS 轉寄站，建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
+> 建議您為環境中的其他服務，或環境中現有 DNS 命名空間之間的條件式 DNS 轉寄站，建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
 >
-> 在這些教學課程和操作說明文章中， *aaddscontoso.com*的自訂網域是用來做為簡短的範例。 在 [所有命令] 中，指定您自己的功能變數名稱。
+> 在這些教學課程和操作說明文章中，會使用 aadds.contoso.com  的自訂網域作為簡短的範例。 在所有命令中，指定您自己的網域名稱。
 
 下列 DNS 名稱限制也適用於此：
 
-* **網域前置詞限制：** 您無法使用超過15個字元的首碼來建立受控網域。 您指定之功能變數名稱的前置詞（例如*aaddscontoso.com*功能變數名稱中的*aaddscontoso* ）必須包含15個或更少的字元。
-* **網路名稱衝突：** 受控網域的 DNS 功能變數名稱不應已存在於虛擬網路中。 具體而言，請檢閱下列會導致名稱衝突的案例：
+* **網域前置詞限制：** 您無法使用超過 15 個字元的前置詞來建立受控網域。 您指定的網域名稱的前置詞字元數 (例如，aaddscontoso.com  網域名稱中的 aaddscontoso  ) 必須少於 15 個字元。
+* **網路名稱衝突：** 受控網域的 DNS 網域名稱不應已存在於虛擬網路中。 具體而言，請檢閱下列會導致名稱衝突的案例：
     * Azure 虛擬網路上是否已有包含相同 DNS 網域名稱的 Active Directory 網域。
     * 您打算啟用受控網域的虛擬網路是否與內部部署網路建立 VPN 連線。 在此案例中，確定您在內部部署網路上沒有使用相同 DNS 網域名稱的網域。
     * 您在 Azure 虛擬網路上是否已有使用該名稱的 Azure 雲端服務。
 
-在 Azure 入口網站中完成 [基本資料] 視窗中的欄位，以建立 Azure AD DS 執行個體：
+在 Azure 入口網站中完成 [基本資料]  視窗中的欄位，以建立 Azure AD DS 執行個體：
 
 1. 輸入受控網域的 **DNS 網域名稱**，並將前面幾項列入考慮。
 1. 選擇應該在其中建立受控網域的 Azure**位置**。 如果您選擇支援可用性區域的區域，Azure AD DS 資源會跨區域分散，以供額外的備援。
@@ -102,29 +102,29 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
     ![設定 Azure AD Domain Services 執行個體的基本設定](./media/tutorial-create-instance/basics-window.png)
 
-若要快速建立 Azure AD DS 受控網域，您可以選取 [檢閱 + 建立]，以接受其他預設的設定選項。 當您選擇此建立選項時，系統會設定下列預設值：
+若要快速建立 Azure AD DS 受控網域，您可以選取 [檢閱 + 建立]  ，以接受其他預設的設定選項。 當您選擇此建立選項時，系統會設定下列預設值：
 
-* 建立使用 10.0.1.0/24 IP 位址範圍且名為 aadds-vnet 的虛擬網路。
-* 建立使用 10.0.1.0/24 IP 位址範圍且名為 aadds-subnet 的子網路。
-* 將 Azure AD 中的「所有」使用者同步到 Azure AD DS 受控網域。
+* 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-vnet  的虛擬網路。
+* 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-subnet  的子網路。
+* 將 Azure AD 中的「所有」  使用者同步到 Azure AD DS 受控網域。
 
-選取 [檢閱 + 建立] 以接受這些預設的設定選項。
+選取 [檢閱 + 建立]  以接受這些預設的設定選項。
 
 ## <a name="deploy-the-managed-domain"></a>部署受控網域
 
-在精靈的 [摘要] 分頁中，檢閱受控網域的組態設定。 您可以返回精靈的任何步驟以進行變更。 若要以一致的方式，使用這些設定選項將 Azure AD DS 受控網域重新部署到不同的 Azure AD 租用戶，您也可以**下載用於自動化的範本**。
+在精靈的 [摘要]  分頁中，檢閱受控網域的組態設定。 您可以返回精靈的任何步驟以進行變更。 若要以一致的方式，使用這些設定選項將 Azure AD DS 受控網域重新部署到不同的 Azure AD 租用戶，您也可以**下載用於自動化的範本**。
 
-1. 若要建立受控網域，請選取 [建立]。 系統會顯示注意事項，告知您某些設定選項 (例如 DNS 名稱或虛擬網路) 在 Azure AD DS 受控網域建立之後就無法變更。 若要繼續，請選取 [確定]。
+1. 若要建立受控網域，請選取 [建立]  。 系統會顯示注意事項，告知您某些設定選項 (例如 DNS 名稱或虛擬網路) 在 Azure AD DS 受控網域建立之後就無法變更。 若要繼續，請選取 [確定]  。
 1. 佈建受控網域的程序可能需要一小時的時間。 您會在入口網站中看到顯示 Azure AD DS 部署進度的通知。 選取通知以查看部署的詳細進度。
 
     ![Azure 入口網站中的部署進度通知](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. 此頁面會載入部署程程序上的更新，包括在您目錄中建立新的資源。
-1. 選取您的資源群組（例如*myResourceGroup*），然後從 Azure 資源的清單中選擇您的 Azure AD DS 實例，例如*aaddscontoso.com*。 [概觀] 索引標籤會顯示受控網域目前「正在進行部署」。 完整佈建之前，您無法設定受控網域。
+1. 選取您的資源群組 (例如 myResourceGroup  )，然後從 Azure 資源清單中選擇您的 Azure AD DS 執行個體，例如 aaddscontoso.com  。 [概觀]  索引標籤會顯示受控網域目前「正在進行部署」  。 完整佈建之前，您無法設定受控網域。
 
     ![佈建狀態期間的 Domain Services 狀態](./media/tutorial-create-instance/provisioning-in-progress.png)
 
-1. 當受控網域完整佈建時，[概觀] 索引標籤會將網域狀態顯示為 [執行中]。
+1. 當受控網域完整佈建時，[概觀]  索引標籤會將網域狀態顯示為 [執行中]  。
 
     ![成功布建後的 Domain Services 狀態](./media/tutorial-create-instance/successfully-provisioned.png)
 
@@ -134,13 +134,13 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 成功部署 Azure AD DS 之後，現在請將虛擬網路設定為允許其他已連線的 VM 和應用程式使用受控網域。 若要提供此連線，請更新虛擬網路的 DNS 伺服器設定，使其指向其中部署 Azure AD DS 的兩個 IP 位址。
 
-1. 受控網域的 [概觀] 索引標籤會顯示一些**必要的設定步驟**。 第一個設定步驟是更新虛擬網路的 DNS 伺服器設定。 正確設定 DNS 的設定之後，就不會再顯示此步驟。
+1. 受控網域的 [概觀]  索引標籤會顯示一些**必要的設定步驟**。 第一個設定步驟是更新虛擬網路的 DNS 伺服器設定。 正確設定 DNS 的設定之後，就不會再顯示此步驟。
 
-    列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是*10.0.1.4*和*10.0.1.5*。 您稍後可以在 [屬性] 索引標籤上找到這些 IP 位址。
+    列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是 *10.0.1.4* 和 *10.0.1.5*。 您稍後可以在 [屬性]  索引標籤上找到這些 IP 位址。
 
     ![使用 Azure AD Domain Services IP 位址來設定虛擬網路的 DNS 設定](./media/tutorial-create-instance/configure-dns.png)
 
-1. 若要更新虛擬網路的 DNS 伺服器設定，請選取 [設定] 按鈕。 系統會自動為您的虛擬網路設定 DNS 設定。
+1. 若要更新虛擬網路的 DNS 伺服器設定，請選取 [設定]  按鈕。 系統會自動為您的虛擬網路設定 DNS 設定。
 
 > [!TIP]
 > 如果您在先前步驟中選取現有的虛擬網路，則任何連線到網路的 VM 都只會在重新開機後取得新的 DNS 設定。 您可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來重新啟動 VM。
@@ -164,13 +164,13 @@ Azure AD 租用戶必須先[設定為可進行自助式密碼重設][configure-s
 若要變更僅限雲端使用者的密碼，使用者必須完成下列步驟：
 
 1. 前往 Azure AD 存取面板頁面：[https://myapps.microsoft.com](https://myapps.microsoft.com)。
-1. 在右上角選取您的名稱，然後從下拉式功能表中選擇 [設定檔]。
+1. 在右上角選取您的名稱，然後從下拉式功能表中選擇 [設定檔]  。
 
     ![選取設定檔](./media/tutorial-create-instance/select-profile.png)
 
-1. 在 [設定檔] 頁面上，選取 [變更密碼]。
-1. 在 [變更密碼] 頁面上，輸入您現有 (舊的) 密碼，然後輸入新密碼並加以確認。
-1. 選取 [提交]。
+1. 在 [設定檔]  頁面上，選取 [變更密碼]  。
+1. 在 [變更密碼]  頁面上，輸入您現有 (舊的) 密碼，然後輸入新密碼並加以確認。
+1. 選取 [提交]  。
 
 變更密碼之後，需要幾分鐘的時間，新密碼才能在 Azure AD DS 中使用，以及成功登入已加入受控網域的電腦。
 

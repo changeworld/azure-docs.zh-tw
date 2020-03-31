@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78299069"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481512"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：建立管理 VM 來設定及管理 Azure Active Directory Domain Services 受控網域
 
@@ -89,6 +89,7 @@ Azure AD DS 網域已被鎖定，因此您沒有在網域上進行特定管理�
 
     ![在 Azure 入口網站中使用 Bastion 連線到 Windows 虛擬機器](./media/join-windows-vm/connect-to-vm.png)
 
+    您也可以[建立及使用 Azure Bastion 主機 (目前處於預覽狀態)][azure-bastion]，而僅允許使用 TLS 透過 Azure 入口網站進行存取。
 1. 輸入 VM 的認證，然後選取 [連線]  。
 
    ![在 Azure 入口網站中透過 Bastion 主機連線](./media/join-windows-vm/connect-to-bastion.png)

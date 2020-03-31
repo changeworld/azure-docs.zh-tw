@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98706d0c9a86d53ae31d05bec48d7071f251b651
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944398"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136375"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workplace by Facebook 整合
 
@@ -30,7 +30,7 @@ ms.locfileid: "78944398"
 * 讓使用者使用他們的 Azure AD 帳戶自動登入 Workplace by Facebook。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -240,7 +240,7 @@ ms.locfileid: "78944398"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

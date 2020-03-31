@@ -4,10 +4,10 @@ description: 開始使用 Application Insights 之後，以下是您可以瀏覽
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.openlocfilehash: 3c4a9a736f34d4f7dbfeb004d0837f1f2efa55dc
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666019"
 ---
 # <a name="more-telemetry-from-application-insights"></a>更多來自 Application Insights 的遙測
@@ -15,7 +15,7 @@ ms.locfileid: "77666019"
 
 | 動作 | 得到什麼結果|
 |---|---|
-|(IIS 伺服器) 在每一部伺服器電腦上[安裝狀態監視器](https://go.microsoft.com/fwlink/?LinkId=506648)。<br/>(Azure Web 應用程式) 在 Web 應用程式的 Azure 控制台中，開啟 Application Insights 刀鋒視窗。| [**效能計數器**](../../azure-monitor/app/performance-counters.md)<br/>[**例外狀況**](asp-net-exceptions.md) - 包括堆疊追蹤<br/>[**相依項目**](../../azure-monitor/app/asp-net-dependencies.md)|
+|(IIS 伺服器) 在每一部伺服器電腦上[安裝狀態監視器](https://go.microsoft.com/fwlink/?LinkId=506648)。<br/>(Azure Web 應用程式) 在 Web 應用程式的 Azure 控制台中，開啟 Application Insights 刀鋒視窗。| [**效能計數器**](../../azure-monitor/app/performance-counters.md)<br/>[**例外狀況**](asp-net-exceptions.md) - 包括堆疊追蹤<br/>[**依賴**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[將 JavaScript 程式碼片段新增至您的網頁](../../azure-monitor/app/javascript.md)|[頁面效能](../../azure-monitor/app/usage-overview.md)、瀏覽器例外狀況、AJAX 效能。 自訂用戶端遙測。|
 |[建立可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)|如果網站無法使用，將收到警示|
 |[確定 buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) 由 MSBuild 產生|[建置計量圖表中的註解](https://docs.microsoft.com/azure/azure-monitor/app/annotations) \(英文\)

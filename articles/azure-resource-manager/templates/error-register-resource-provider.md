@@ -1,13 +1,13 @@
 ---
-title: 資源提供者註冊錯誤
-description: 說明使用 Azure Resource Manager 部署資源時，如何解決 Azure 資源提供者註冊錯誤。
+title: 資來源提供者註冊錯誤
+description: 介紹在使用 Azure 資源管理器部署資源時如何解決 Azure 資來源提供者註冊錯誤。
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273770"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解決資源提供者註冊的錯誤
@@ -101,11 +101,11 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 您可以看到註冊狀態，並透過入口網站註冊資源提供者命名空間。
 
-1. 從入口網站，選取 [所有服務]。
+1. 從入口網站，選取 [所有服務]****。
 
    ![選取 [所有服務]](./media/error-register-resource-provider/select-all-services.png)
 
-1. 選取 **訂用帳戶** 。
+1. 選擇**訂閱**。
 
    ![選取訂用帳戶](./media/error-register-resource-provider/select-subscriptions.png)
 
@@ -117,6 +117,6 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![選取資源提供者](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. 查看資源提供者的清單，並視需要選取 [註冊] 連結以註冊您嘗試部署的資源提供者類型。
+1. 查看資源提供者的清單，並視需要選取 [註冊]**** 連結以註冊您嘗試部署的資源提供者類型。
 
    ![列出資源提供者](./media/error-register-resource-provider/list-resource-providers.png)

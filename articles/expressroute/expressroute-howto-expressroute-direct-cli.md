@@ -1,24 +1,24 @@
 ---
-title: Azure ExpressRoute：設定 ExpressRoute Direct： CLI
-description: 本文可協助您使用 Azure CLI 來設定 ExpressRoute Direct
+title: Azure 快速路由：直接配置快速路由：CLI
+description: 本文使用 Azure CLI 説明您配置快速路由直接
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049930"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481971"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 設定 ExpressRoute Direct
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 直接配置快速路由
 
 您可以使用 Azure ExpressRoute Direct 在策略性分散於世界各地的對等互連位置，直接連線至 Microsoft 全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
-## <a name="resources"></a>建立資源
+## <a name="create-the-resource"></a><a name="resources"></a>建立資源
 
 1. 登入 Azure 並選取包含 ExpressRoute 的訂用帳戶。 ExpressRoute Direct 資源和 ExpressRoute 線路必須位於相同的訂用帳戶中。 在 Azure CLI 中，執行下列命令：
 
@@ -38,7 +38,7 @@ ms.locfileid: "77049930"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 將您的訂用帳戶重新註冊至 Microsoft，以存取 expressrouteportslocation 和 expressrouteport Api
+2. 重新註冊您的訂閱到 Microsoft.Network 以訪問快速路由埠定位和快速路由埠 API
 
    ```azurecli
    az provider register --namespace Microsoft.Network
@@ -49,9 +49,9 @@ ms.locfileid: "77049930"
    az network express-route port location list
    ```
 
-   **範例輸出**
+   **示例輸出**
   
-   ```azurecli
+   ```output
    [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
@@ -116,9 +116,9 @@ ms.locfileid: "77049930"
    az network express-route port location show -l "Equinix-Ashburn-DC2"
    ```
 
-   **範例輸出**
+   **示例輸出**
 
-   ```azurecli
+   ```output
    {
    "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
    "availableBandwidths": [
@@ -151,12 +151,12 @@ ms.locfileid: "77049930"
    ```
 
    > [!NOTE]
-   > 您也可以將 [封裝] 屬性設定為 **Dot1Q**。 
+   > 您也可以將 [封裝]**** 屬性設定為 **Dot1Q**。 
    >
 
-   **範例輸出**
+   **示例輸出**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -208,11 +208,11 @@ ms.locfileid: "77049930"
    }  
    ```
 
-## <a name="state"></a>變更連結的 AdminState
+## <a name="change-adminstate-for-links"></a><a name="state"></a>變更連結的 AdminState
 
 使用此程序來進行第 1 層測試。 確保每個交叉連線都已在主要和次要連接埠的每個路由器中正確修補。
 
-1. 將連結設定為 [已啟用]。 重複此步驟，將每個連結設定為 [已啟用]。
+1. 將連結設定為 [已啟用]****。 重複此步驟，將每個連結設定為 [已啟用]****。
 
    連結 [0] 是主要連接埠，而連結 [1] 是次要連接埠。
 
@@ -222,9 +222,9 @@ ms.locfileid: "77049930"
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
    ```
-   **範例輸出**
+   **示例輸出**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -278,15 +278,15 @@ ms.locfileid: "77049930"
 
    使用 `AdminState = "Disabled"`，可使用相同的程序來關閉連接埠。
 
-## <a name="circuit"></a>建立線路
+## <a name="create-a-circuit"></a><a name="circuit"></a>建立線路
 
 根據預設，您可以在包含 ExpressRoute Direct 資源的訂用帳戶中建立 10 個線路。 Microsoft 支援服務可以提高預設限制。 您則負責追蹤已佈建和已使用的頻寬。 已佈建的頻寬是 ExpressRoute Direct 資源上所有線路的頻寬總和。 已使用的頻寬則是基礎實體介面的實際使用量。
 
 您只可以在 ExpressRoute Direct 上使用額外線路頻寬來支援以上所述的案例。 頻寬是 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是 Local、Standard 或 Premium。
+**SkuTier**可以是本地、標準版或高級版。
 
-只有在 ExpressRoute Direct 不支援**SkuFamily**時，才必須 MeteredData 為無限制。
+**SkuFamily**必須僅按流量計費資料，因為 ExpressRoute Direct 不支援無限制的資料。
 在 ExpressRoute Direct 資源上建立線路：
 
   ```azurecli
@@ -295,9 +295,9 @@ ms.locfileid: "77049930"
 
   其他頻寬包含：5 Gbps、10 Gbps 及 40 Gbps。
 
-  **範例輸出**
+  **示例輸出**
 
-  ```azurecli
+  ```output
   {
   "allowClassicOperations": false,
   "allowGlobalReach": false,

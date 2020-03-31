@@ -5,16 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/01/2019
-ms.openlocfilehash: 9bfadf55e4f68bb7188b27e4ef5bc03e3955f375
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/16/2020
+ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480278"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
-本文包含多個使用 [Kusto 查詢語言](log-query-overview.md)的[查詢](/azure/kusto/query/)範例，以從 Azure 監視器擷取不同的記錄資料類型。 您可以透過方法來合併和分析資料，以使用這些範例識別用於您的要求的不同策略。  
+本文包含多個使用 [Kusto 查詢語言](/azure/kusto/query/)的[查詢](log-query-overview.md)範例，以從 Azure 監視器擷取不同的記錄資料類型。 您可以透過方法來合併和分析資料，以使用這些範例識別用於您的要求的不同策略。  
 
 請參閱 [Kusto 語言參考](https://docs.microsoft.com/azure/kusto/query/)了解在這些範例中使用不同關鍵字的詳細資料。 如果您不熟悉 Azure 監視器，請逐步查看[建立查詢的課程](get-started-queries.md)。
 
@@ -37,7 +37,7 @@ Event
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>活動訊號
+## <a name="heartbeat"></a>Heartbeat
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>列出逐週傳送資料的電腦數目圖表
 
@@ -229,7 +229,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>使用活動識別碼計算安全性事件的數目
 
 
-此範例仰賴**活動**資料行的固定結構：\<識別碼\>-\<名稱\>。
+此示例依賴于**活動**列的固定結構\<：ID\>-\<名稱\>。
 它會將**活動**的值剖析為兩個新的資料行，並計算每個**活動識別碼**的發生次數。
 
 ```Kusto
@@ -270,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>剖析活動名稱和識別碼
-下列兩個範例仰賴**活動**資料行的固定結構：\<識別碼\>-\<名稱\>。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
+以下兩個示例依賴于**活動**列的固定結構\<：ID\>-\<名稱\>。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -373,42 +373,49 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>計算每部電腦的效能使用量報告的平均大小
+資料類型`Usage`可用於按解決方案或資料類型跟蹤引入的資料量。 還有其他技術可以按[電腦](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 訂閱、資源組或資源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)來研究引入的資料卷。
 
-此範例會計算過去 3 小時內每部電腦的效能使用量報告的平均大小。
-結果會以橫條圖顯示。
-```Kusto
+#### <a name="data-volume-by-solution"></a>依方案分類的資料量
+
+用於查看上個月（不包括最後一個部分）的計費資料量的查詢是：
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>時間圖表延遲百分位數為 50 和 95
+請注意，子句`where IsBillable = true`從某些沒有引入費用的解決方案中篩選出資料類型。  此外，使用`TimeGenerated`的 子句還只是為了確保 Azure 門戶中的查詢體驗將回顧到預設 24 小時之外。 使用"使用方式"資料類型時，`StartTime`並`EndTime`表示顯示結果的時間桶。 
 
-此範例會計算過去 24 小時內，報告每小時的 **avgLatency** 第 50 個和第 95 個百分位數，並製作成圖表。
+#### <a name="data-volume-by-type"></a>按類型進行的資料量
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+您可以進一步鑽取以查看資料類型的資料趨勢：
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>特定電腦今天的使用量
-此範例會從前一天包含字串 **ContosoFile** 的電腦名稱擷取_使用量_資料。 結果的排序依據為 **TimeGenerated**。
+或者查看按解決方案和上個月類型的表，
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]****，以及其他與擷取相關的欄位 ([TotalBatches]****、[BatchesWithinSla]****、[BatchesOutsideSla]****、[BatchesCapped]****，以及 [AverageProcessingTimeMs]****)。
 
 ## <a name="updates"></a>更新
 

@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 入口網站部署 SQL Database Edge 預覽 |Microsoft Docs
-description: 瞭解如何使用 Azure 入口網站部署 Azure SQL Database 邊緣
-keywords: 部署 sql database edge
+title: 使用 Azure 門戶部署 SQL 資料庫邊緣預覽 |微軟文檔
+description: 瞭解如何使用 Azure 門戶部署 Azure SQL 資料庫邊緣
+keywords: 部署 sql 資料庫邊緣
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -9,64 +9,64 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 9da756b702c994d69aae42ecef0e2da4d44eed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9da922de38d820864b3f83de80fe64eb3ac792e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246716"
 ---
-# <a name="deploy-azure-sql-database-edge-preview"></a>部署 Azure SQL Database Edge 預覽
+# <a name="deploy-azure-sql-database-edge-preview"></a>部署 Azure SQL 資料庫邊緣預覽
 
-Azure SQL Database Edge 預覽是針對 IoT 和 Azure IoT Edge 部署優化的關係資料庫引擎。 它提供的功能可為 IoT 應用程式和解決方案建立高效能的資料儲存和處理層。 本快速入門說明如何使用 Azure 入口網站，開始透過 Azure IoT Edge 建立 Azure SQL Database Edge 模組。
+Azure SQL 資料庫邊緣預覽是一個關係資料庫引擎，專為 IoT 和 Azure IoT 邊緣部署進行了優化。 它提供了為 IoT 應用程式和解決方案創建高效能資料存儲和處理層的功能。 此快速入門演示如何開始使用 Azure 門戶通過 Azure IoT 邊緣創建 Azure SQL 資料庫邊緣模組。
 
 ## <a name="before-you-begin"></a>開始之前
 
-* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
-* 登入 [Azure 入口網站](https://portal.azure.com/)。
-* 在[這裡](https://azure.microsoft.com/services/sql-database-edge/#contact)提交要求，讓訂用帳戶啟用以部署 SQL Database Edge。
-* 建立[Azure IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
-* [從 Azure 入口網站註冊 IoT Edge 裝置](../iot-edge/how-to-register-device-portal.md)。
-* 準備 IoT Edge 裝置，以[從 Azure 入口網站部署 IoT Edge 模組](../iot-edge/how-to-deploy-modules-portal.md)。
+* 如果沒有 Azure 訂閱，請創建[一個免費帳戶](https://azure.microsoft.com/free/)。
+* 登錄到 Azure[門戶](https://portal.azure.com/)。
+* [在此處](https://azure.microsoft.com/services/sql-database-edge/#contact)提交請求，以啟用用於部署 SQL 資料庫邊緣的訂閱。
+* 創建[Azure IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
+* 從[Azure 門戶註冊 IoT 邊緣設備](../iot-edge/how-to-register-device-portal.md)。
+* 準備 IoT 邊緣設備以[從 Azure 門戶部署 IoT 邊緣模組](../iot-edge/how-to-deploy-modules-portal.md)。
 
 > [!NOTE]
-> 若要將 Azure Linux VM 部署為 IoT Edge 裝置，請參閱此[快速入門手冊](../iot-edge/quickstart-linux.md)。
+> 要將 Azure Linux VM 部署為 IoT 邊緣設備，請參閱此[快速入門手冊](../iot-edge/quickstart-linux.md)。
 
-## <a name="deploy-sql-database-edge-module-from-azure-marketplace"></a>從 Azure Marketplace 部署 SQL Database Edge 模組
+## <a name="deploy-sql-database-edge-module-from-azure-marketplace"></a>從 Azure 應用商店部署 SQL 資料庫邊緣模組
 
-Azure Marketplace 是集合了應用程式和服務的線上市集，您可以在其中瀏覽各式各樣的企業應用程式和解決方案，這些項目皆已通過認證而可在 Azure 上執行並獲得最佳效能，包括 [IoT Edge 模組](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)。 Azure SQL Database Edge 可以透過 marketplace 部署至邊緣裝置。
+Azure Marketplace 是集合了應用程式和服務的線上市集，您可以在其中瀏覽各式各樣的企業應用程式和解決方案，這些項目皆已通過認證而可在 Azure 上執行並獲得最佳效能，包括 [IoT Edge 模組](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)。 Azure SQL 資料庫邊緣可以通過市場部署到邊緣設備。
 
-1. 尋找 Azure Marketplace 上的 Azure SQL Database Edge 模組。<br><br>
+1. 在 Azure 應用商店中查找 Azure SQL 資料庫邊緣模組。<br><br>
 
-   ![MarketPlace 中的 SQL Database 邊緣](media/deploy-portal/find-offer-marketplace.png)
+   ![市場中的 SQL 資料庫邊緣](media/deploy-portal/find-offer-marketplace.png)
 
-2. 挑選最符合您需求的軟體方案，然後按一下 [**建立**]。 <br><br>
+2. 選擇最符合您要求的軟體計畫，然後按一下"**創建**"。 <br><br>
 
-   ![挑選正確的軟體方案](media/deploy-portal/pick-correct-plan.png)
+   ![選擇正確的軟體計畫](media/deploy-portal/pick-correct-plan.png)
 
-3. 在 [IoT Edge 模組的目標裝置] 頁面上，指定下列詳細資料，然後按一下 [**建立**]
+3. 在 IoT 邊緣模組的目標設備頁面上，指定以下詳細資訊，然後按一下"**創建"**
 
-   |**欄位**  |**說明**  |
+   |**領域**  |**描述**  |
    |---------|---------|
-   |訂用帳戶  |  用來建立 IoT 中樞的 Azure 訂用帳戶 |
-   |IoT 中樞   |  註冊 IoT Edge 裝置的 IoT 中樞名稱，然後選取 [部署至裝置] 選項|
-   |IoT Edge 裝置名稱  |  SQL Database Edge 部署所在的 IoT Edge 裝置名稱 |
+   |訂用帳戶  |  創建 IoT 中心下的 Azure 訂閱 |
+   |IoT 中樞   |  註冊 IoT 邊緣設備的 IoT 中心的名稱，然後選擇"部署到設備"選項|
+   |IoT 邊緣設備名稱  |  將部署 SQL 資料庫邊緣的 IoT 邊緣設備的名稱 |
 
-4. 在 [**設定模組**] 頁面上，流覽至部署模組的區段，然後按一下 [針對 SQL Database Edge 模組進行**設定**]。 
+4. 在 **"設置模組"** 頁上，導航到有關部署模組的部分，然後按一下 SQL 資料庫邊緣模組的 **"配置**"。 
 
-5. 在 [ **IoT Edge 自訂模組**] 窗格中，為環境變數指定所需的值，以及（或）自訂模組的 [建立選項] 和 [所需屬性]。 如需所支援環境變數的完整清單，請參閱[SQL Server 容器環境變數](/sql/linux/sql-server-linux-configure-environment-variables/)。
+5. 在**IoT 邊緣自訂模組**窗格中，指定環境變數的所需值和/或自訂模組的創建選項和所需屬性。 有關受支援環境變數的完整清單，請參閱[SQL Server 容器環境變數](/sql/linux/sql-server-linux-configure-environment-variables/)。
 
-   |**參數**  |**說明**|
+   |**參數**  |**描述**|
    |---------|---------|
    | 名稱 | 模組的名稱。 |
-   |SA_PASSWORD  | 為 SQL Database Edge 管理帳戶指定強式密碼。 |
-   |MSSQL_LCID   | 設定要用於 SQL Server 的語言識別項。 例如，1036是法文。 |
-   |MSSQL_COLLATION | 設定 SQL Server 的預設定序。 此設定會將語言識別項（LCID）的預設對應覆寫為定序。 |
+   |SA_PASSWORD  | 為 SQL 資料庫邊緣管理員帳戶指定強式密碼。 |
+   |MSSQL_LCID   | 為 SQL Server 設定要使用的語言識別碼。 例如，1036 是法語。 |
+   |MSSQL_COLLATION | 設定 SQL Server 的預設定序。 此設置將覆蓋語言識別碼 （LCID） 到排序的預設映射。 |
 
    > [!NOTE]
-   > 請不要變更或更新此模組上的**映射 URI**或**ACCEPT_EULA**設定。
+   > 請不要更改或更新**模組上的映射 URI**或**ACCEPT_EULA**設置。
 
-6. 在 [ **IoT Edge 自訂模組**] 窗格中，針對**主機埠**和掛接點的**目標**，更新 [容器建立選項] 所需的值。 掛接點目標是 SQL 資料庫檔案存放在主機 IoT Edge 裝置上的位置。
+6. 在**IoT 邊緣自訂模組**窗格中，更新容器為**主機埠**創建所需的值選項。 如果需要部署多個 SQL DB Edge 模組，請確保更新裝載選項，以創建持久卷的新源&目標對。 有關裝載和卷的詳細資訊，請參閱 Docker 文檔中[的"使用卷](https://docs.docker.com/storage/volumes/)"。 
 
    ```json
        {
@@ -96,7 +96,7 @@ Azure Marketplace 是集合了應用程式和服務的線上市集，您可以�
        }
    ```
 
-7. 在 [ **IoT Edge 自訂模組**] 窗格中，更新*設定模組對應項的所需屬性*，以包含 SQL 封裝和串流分析作業資訊的位置。 這兩個欄位是選擇性的，如果您想要使用資料庫和串流作業來部署 SQL Database Edge 模組，則應使用此欄位。
+7. 在**IoT 邊緣自訂模組**窗格中，更新 *"設置"模組孿生的所需屬性*，以包括 SQL 包的位置和流分析作業資訊。 這兩個欄位是可選的，如果要使用資料庫和流式處理作業部署 SQL 資料庫邊緣模組，則應使用。
 
    ```json
        {
@@ -108,16 +108,16 @@ Azure Marketplace 是集合了應用程式和服務的線上市集，您可以�
        }
    ```
 
-8. 在 [ **IoT Edge 自訂模組**] 窗格中，將 [*重新開機原則*] 設定為 [一律]，而 [*預期狀態*]
-9. 在 [ **IoT Edge 自訂模組**] 窗格中，按一下 [**儲存**]。
-10. 在 [**設定模組**] 頁面上，按 **[下一步]** 。
-11. 在 [**設定模組**的**指定路由（選擇性）** ] 頁面上，指定模組對模組或模組的路由，以 IoT Edge 中樞通訊，請參閱[在 IoT Edge 中部署模組及建立路由](../iot-edge/module-composition.md)。
-12. 按一下 [下一步]。
-13. 按一下 [提交]。
+8. 在**IoT 邊緣自訂模組**窗格中，將 *"重新開機策略*"設置為"始終 *"，並將"所需狀態*"設置為"始終運行"。
+9. 在**IoT 邊緣自訂模組**窗格中，按一下"**保存**"。
+10. 在 **"設置模組"** 頁上按一下 **"下一步**"。
+11. 在 **"設置模組"** 頁的 **"指定路由（可選"）** 上，指定模組到模組或模組到 IoT 邊緣中心通信的路由，請參閱[部署模組並在 IoT 邊緣中建立路由](../iot-edge/module-composition.md)。
+12. 按 [下一步]****。
+13. 按一下 [提交]****。
 
-在本快速入門中，您已在 IoT Edge 裝置上部署 SQL Database Edge 模組。
+在此快速入門中，您將 SQL 資料庫邊緣模組部署在 IoT 邊緣設備上。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 SQL Database Edge 中的 ONNX Machine Learning 及人工智慧](onnx-overview.md)。
-- 使用 IoT Edge，建立具有 SQL Database 邊緣的端對端 IoT 解決方案。
+- [機器學習和人工智慧與 SQL 資料庫邊緣中的 ONNX。](onnx-overview.md)
+- 使用 IoT 邊緣使用 SQL 資料庫邊緣構建端到端 IoT 解決方案。

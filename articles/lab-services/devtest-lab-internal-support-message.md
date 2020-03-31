@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 591dcec36dc62143901d3b49db24196e84d58c29
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170358"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>將內部支援陳述式新增到 Azure DevTest Labs 中的實驗室
@@ -31,33 +31,33 @@ Azure DevTest Labs 可讓您使用為使用者提供實驗室相關支援資訊�
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>將支援陳述式新增到現有實驗室的步驟
 
-1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 視需要選取 [所有服務]，然後從清單中選取 [DevTest Labs]。 (您的實驗室可能已顯示在 [所有資源] 下方的儀表板上)。
+1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 視需要選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。 (您的實驗室可能已顯示在 [所有資源]**** 下方的儀表板上)。
 1. 從實驗室清單中，選取您想要在其中新增支援陳述式的實驗室。  
-1. 在實驗室的 [概觀] 區域中選取 [組態和原則]。  
+1. 在實驗室的 [概觀]**** 區域中選取 [組態和原則]****。  
 
     ![組態和原則按鈕](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. 在左側的 [設定] 之下，選取 [內部支援]。
+1. 在左側的 [設定]**** 之下，選取 [內部支援]****。
 
     ![內部支援按鈕](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
-1. 若要在此實驗室中為使用者建立內部支援訊息，請將 [啟用] 設定為 [是]。
+1. 若要在此實驗室中為使用者建立內部支援訊息，請將 [啟用] 設定為 [是]****。
 
-1. 在 [支援訊息] 欄位中，輸入您想要向實驗室使用者呈現的內部支援陳述式。 支援訊息接受 Markdown。 當您輸入訊息文字時，可以檢視畫面底部的 [預覽] 區域，以查看訊息向使用者呈現的方式。
+1. 在 [支援訊息]**** 欄位中，輸入您想要向實驗室使用者呈現的內部支援陳述式。 支援訊息接受 Markdown。 當您輸入訊息文字時，可以檢視畫面底部的 [預覽]**** 區域，以查看訊息向使用者呈現的方式。
 
     ![用於建立訊息的內部支援畫面。](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
 
 
-1. 一旦準備好張貼支援陳述式之後，請選取 [儲存]。
+1. 一旦準備好張貼支援陳述式之後，請選取 [儲存]****。
 
-當您不想要再對實驗室使用者顯示此支援訊息時，請返回 [內部支援] 頁面，然後將 [啟用] 設定為 [否]。
+當您不想要再對實驗室使用者顯示此支援訊息時，請返回 [內部支援]**** 頁面，然後將 [啟用]**** 設定為 [否]****。
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>讓使用者檢視支援訊息的步驟
 
 1. 從 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)選取一個實驗室。
 
-1. 在實驗室的 [概觀] 區域上，選取 [內部支援]。  
+1. 在實驗室的 [概觀]**** 區域上，選取 [內部支援]****。  
 
     ![內部支援按鈕](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 混合式身分識別設計 - Azure 採用策略 | Microsoft Docs
-description: 使用條件式存取控制，Azure Active Directory 會檢查驗證使用者時以及允許存取應用程式之前，您挑選的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
+description: 使用條件訪問控制項，Azure 活動目錄會檢查在驗證使用者時和允許訪問應用程式之前選擇的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109323"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定義混合式身分識別採用策略
@@ -37,7 +37,7 @@ ms.locfileid: "67109323"
 ## <a name="define-an-integration-strategy"></a>定義整合策略
 Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步處理身分識別和同盟身分識別。  您應該規劃採用這些整合策略的其中一個。  您選擇的策略可能不同，決策的因素可能包括您想要提供何種使用者體驗、是否有現有的基礎結構，以及什麼最符合成本效益。  
 
-![整合案例](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![集成方案](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
 上圖所定義的案例如下：
 
@@ -54,9 +54,9 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 
 | 策略 | 優點 | 缺點 |
 | --- | --- | --- |
-| **雲端身分識別** |在小型組織中易於管理。 <br> 沒有項目可以在內部安裝或更新。 沒有其他硬體需求<br>使用者離職時輕易停用 |使用者存取雲端中的工作負載時必須登入 <br> 雲端和內部部署身分識別的密碼可能相同，也可能不相同 |
-| **已同步處理** |內部部署密碼會驗證內部部署和雲端目錄 <br>對小型、中型或大型組織來說易於管理 <br>使用者可以對一些資源進行單一登入 (SSO) <br> Microsoft 對於同步處理的慣用方法 <br> 易於管理 |基於公司的特定原則，有些客戶可能不願意將目錄與雲端同步 |
-| **同盟** |使用者可以有單一登入 (SSO) <br>如果使用者終止或離開時，可以將帳戶立即停用並撤銷存取權。<br> 支援同步處理所無法解決的進階案例 |安裝和設定的詳細步驟 <br> 較高的維護 <br> STS 基礎結構可能需要額外的硬體 <br> 安裝同盟伺服器可能需要額外的硬體。 如果使用 AD FS，則需要額外的軟體 <br> 需要大量的設定才能使用 SSO <br> 重大失敗點是，同盟伺服器關閉時使用者會無法驗證 |
+| **雲端身分識別** |在小型組織中易於管理。 <br> 沒有項目可以在內部安裝或更新。 沒有其他硬體需求<br>使用者離職時輕易停用 |使用者存取雲端中的工作負載時必須登入 <br>  雲端和內部部署身分識別的密碼可能相同，也可能不相同 |
+| **同步** |內部部署密碼會驗證內部部署和雲端目錄 <br>對小型、中型或大型組織來說易於管理 <br>使用者可以對一些資源進行單一登入 (SSO) <br> Microsoft 對於同步處理的慣用方法 <br>  易於管理 |基於公司的特定原則，有些客戶可能不願意將目錄與雲端同步 |
+| **聯邦** |使用者可以有單一登入 (SSO)  <br>如果使用者終止或離開時，可以將帳戶立即停用並撤銷存取權。<br> 支援同步處理所無法解決的進階案例 |安裝和設定的詳細步驟 <br> 較高的維護 <br> STS 基礎結構可能需要額外的硬體 <br> 安裝同盟伺服器可能需要額外的硬體。 如果使用 AD FS，則需要額外的軟體 <br> 需要大量的設定才能使用 SSO <br> 重大失敗點是，同盟伺服器關閉時使用者會無法驗證 |
 
 ### <a name="client-experience"></a>用戶端體驗
 您使用的策略決定使用者的登入體驗。  下表提供使用者所預期之登入體驗的相關資訊。  所有同盟識別提供者並非在所有案例中都支援 SSO。
@@ -71,7 +71,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | OneDrive for Business |提示輸入認證 |單一登入 |
 | Office Pro Plus 訂用帳戶 |提示輸入認證 |單一登入 |
 
-**外部或未受信任的來源**：
+**外部或不受信任的源**：
 
 |  | 同步處理身分識別 | 同盟身分識別 |
 | --- | --- | --- |
@@ -111,14 +111,14 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 ### <a name="supported-topologies"></a>支援的拓撲
 定義同步處理策略時，必須判斷使用的拓撲。 您可以根據步驟 2 中已判斷的資訊，判斷適合使用的拓撲。 單一樹系、單一 Azure AD 拓撲最常見，由單一 Active Directory 樹系和單一 Azure AD 執行個體所組成。  這將用於大部分的案例中，也是在使用 Azure AD Connect Express 安裝時預期的拓撲，如下圖所示。
 
-![支援的拓撲](./media/plan-hybrid-identity-design-considerations/single-forest.png)單一樹系案例中很常見的大型組織，甚至小型組織有多個樹系，如 圖 5 所示。
+![支援的拓撲](./media/plan-hybrid-identity-design-considerations/single-forest.png)單一林方案大型甚至小型組織通常具有多個林，如圖 5 所示。
 
 > [!NOTE]
 > 如需不同的內部部署和 Azure AD 拓撲與 Azure AD Connect 同步處理的詳細資訊，請參閱 [Azure AD Connect 的拓撲](plan-connect-topologies.md)一文。
 > 
 > 
 
-![多樹系拓撲](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![多林拓撲](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 多樹系案例
 
@@ -140,7 +140,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 
 如果上述條件不成立，而且您有多個使用中的帳戶或多個信箱，Azure AD Connect 會挑選其中一個，其他全部忽略。  如果您有連結的信箱，但沒有其他帳戶，這些帳戶不會匯出至 Azure AD，而且該使用者不會是任何群組的成員。  這不同以往在 DirSync 中的情形，主要是為了更充分支援這些多樹系案例。 下圖顯示多樹系案例。
 
-![多個 Azure AD 租用戶](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![多個 Azure AD 租戶](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **多樹系多個 Azure AD 案例**
 
@@ -148,7 +148,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 
 可以且支援將一個 Active Directory 內部部署執行個體連接到多個 Azure AD 目錄，如下圖所示：
 
-![單一樹系篩選](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![單個林篩選](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **單一樹系篩選案例**
 
@@ -158,7 +158,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 * DNS 網域只能在單一 Azure AD 目錄中註冊，因此內部部署 AD 中的使用者 UPN 必須使用個別的命名空間。
 * 一個 Azure AD 執行個體中的使用者只能看到他們的執行個體中的使用者。  他們看不到其他執行個體中的使用者
 * 只有其中一個 Azure AD 目錄可以啟用 Exchange 與內部部署 AD 混合
-* 回寫也有互斥性。  這造成此拓撲不支援部分回寫功能，因為這些功能都假設使用單一內部部署組態。  其中包括：
+* 回寫也有互斥性。  這造成此拓撲不支援部分回寫功能，因為這些功能都假設使用單一內部部署組態。  這包括：
   * 使用預設組態的群組回寫
   * 裝置寫回
 
@@ -185,8 +185,8 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | Microsoft 應用程式 |是 |是 |
 | 應用程式資源庫中的 SaaS 應用程式 |是 |是 |
 | 透過 Azure AD App Proxy 發佈的 IIS 應用程式 |是 |是 |
-| 非透過 Azure AD App Proxy 發行的 IIS 應用程式 |no |是 |
-| VPN、RDG 等遠端存取 |no |是 |
+| 非透過 Azure AD App Proxy 發行的 IIS 應用程式 |否 |是 |
+| VPN、RDG 等遠端存取 |否 |是 |
 
 即使已選定策略的解決方案，您仍然需要使用上述評估來判斷使用者位於何處。  這可能會造成解決方案變更。  使用下表來協助判斷：
 
