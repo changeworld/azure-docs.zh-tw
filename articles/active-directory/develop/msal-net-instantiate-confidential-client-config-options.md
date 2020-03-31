@@ -1,7 +1,7 @@
 ---
-title: 具現化機密用戶端應用程式（MSAL.NET） |Azure
+title: 具現化機密用戶端應用 （MSAL.NET） |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET），以設定選項具現化機密用戶端應用程式。
+description: 瞭解如何使用 .NET 的 Microsoft 身份驗證庫 （MSAL.NET） 使用配置選項具現化機密用戶端應用程式。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084727"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 以設定選項具現化機密用戶端應用程式
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>使用MSAL.NET配置選項具現化機密用戶端應用程式
 
-本文說明如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）來具現化[機密用戶端應用程式](msal-client-applications.md)。  應用程式會使用設定檔中定義的設定選項來具現化。
+本文介紹如何使用 Microsoft 身份驗證庫對 .NET （MSAL.NET） 具現化[機密用戶端應用程式](msal-client-applications.md)。  應用程式使用設置檔中定義的配置選項進行具現化。
 
-在初始化應用程式之前，您必須先[註冊](quickstart-register-app.md)它，您的應用程式才能與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊（可在 Azure 入口網站中找到）：
+在初始化應用程式之前，首先需要[註冊](quickstart-register-app.md)它，以便應用可以與 Microsoft 標識平臺集成。 註冊後，您可能需要以下資訊（可在 Azure 門戶中找到）：
 
-- 用戶端識別碼（代表 GUID 的字串）
-- 應用程式的身分識別提供者 URL （名為實例）和登入物件。 這兩個參數統稱為授權單位。
-- 租使用者識別碼，如果您要撰寫僅供組織使用的企業營運應用程式（也稱為單一租使用者應用程式）。
-- 應用程式密碼（用戶端密碼字串）或憑證（類型為 X509Certificate2）（如果它是機密用戶端應用程式）。
-- 對於 web 應用程式，有時也適用于公用用戶端應用程式（特別是當您的應用程式需要使用訊息代理程式時），您也會設定 redirectUri，其中身分識別提供者會使用安全性權杖來與您的應用程式連線。
+- 用戶端 ID（表示 GUID 的字串）
+- 標識提供程式 URL（名為實例）和應用程式的登錄訪問群體。 這兩個參數統稱為許可權。
+- 如果您只為您的組織（也稱為單租戶應用程式）編寫業務線應用程式，則租戶 ID。
+- 應用程式金鑰（用戶端機密字串）或證書（X509證書2類型）（如果是機密用戶端應用）。
+- 對於 Web 應用，有時對於公共用戶端應用（尤其是在應用需要使用代理時），您還將設置重定向 Uri，標識提供程式將在其中使用安全權杖聯繫回應用程式。
 
-## <a name="configure-the-application-from-the-config-file"></a>從設定檔設定應用程式
-MSAL.NET 中選項的屬性名稱符合 ASP.NET Core 中 `AzureADOptions` 的屬性名稱，因此您不需要撰寫任何粘連程式碼。
+## <a name="configure-the-application-from-the-config-file"></a>從設定檔配置應用程式
+MSAL.NET中選項的屬性的名稱與 ASP.NET 酷中的屬性`AzureADOptions`的名稱匹配，因此無需編寫任何粘附代碼。
 
-ASP.NET Core 的應用程式設定會在*appsettings*中描述：
+ASP.NET核心應用程式佈建在*appsettings.json*檔中描述：
 
 ```json
 {
@@ -58,9 +58,9 @@ ASP.NET Core 的應用程式設定會在*appsettings*中描述：
 }
 ```
 
-從 MSAL.NET v3. x 開始，您可以從設定檔設定您的機密用戶端應用程式。
+從MSAL.NET v3.x 開始，可以從設定檔配置機密用戶端應用程式。
 
-在您要設定並具現化應用程式的類別中，您需要宣告 `ConfidentialClientApplicationOptions` 物件。  `IConfigurationRoot.Bind()` 使用來自 appconfig 的應用程式選項實例，將從來源讀取的設定（包括檔案）系結至應用程式選項的[實例：](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)
+在要配置和具現化應用程式的類中，需要聲明物件`ConfidentialClientApplicationOptions`。  使用`IConfigurationRoot.Bind()` [Microsoft.擴展.配置.Binder nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)將從源讀取的配置（包括 appconfig.json 檔）綁定到應用程式選項的實例：
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-這可讓*appsettings*的 "AzureAD" 區段內容系結至 `ConfidentialClientApplicationOptions` 物件的對應屬性。  接下來，建立 `ConfidentialClientApplication` 物件：
+這使*appsettings.json*檔的"AzureAD"部分的內容能夠綁定到`ConfidentialClientApplicationOptions`物件的相應屬性。  接下來，生成物件`ConfidentialClientApplication`：
 
 ```csharp
 IConfidentialClientApplication app;
@@ -78,8 +78,8 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
         .Build();
 ```
 
-## <a name="add-runtime-configuration"></a>新增執行時間設定
-在機密用戶端應用程式中，您通常會有每位使用者的快取。 因此，您必須取得與使用者相關聯的快取，並通知應用程式產生器您想要使用它。 以同樣的方式，您可能會有動態計算的重新導向 URI。 在此情況下，程式碼如下所示：
+## <a name="add-runtime-configuration"></a>添加運行時配置
+在機密用戶端應用程式中，您通常具有每個使用者的緩存。 因此，您需要獲取與使用者關聯的緩存，並通知應用程式產生器要使用它。 同樣，您可能有一個動態計算的重定向 URI。 在這種情況下，代碼如下：
 
 ```csharp
 IConfidentialClientApplication app;

@@ -4,17 +4,17 @@ description: 了解如何依照這些最佳做法來有效地使用 Azure Contai
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247068"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry 的最佳做法
 
 藉由依照這些最佳做法進行操作，您將可協助發揮最大效能，以及以符合成本效益的方式在 Azure 中使用您的私人 Docker 登錄。
 
-如需在登錄中標記和版本映射的策略，另請參閱[標記和版本設定容器映射的建議](container-registry-image-tag-version.md)。 
+另請參閱[有關標記和版本控制容器映射的建議](container-registry-image-tag-version.md)，瞭解在註冊表中標記和版本映射的策略。 
 
 ## <a name="network-close-deployment"></a>網路鄰近部署
 
@@ -33,7 +33,7 @@ ms.locfileid: "79247068"
 
 您可以利用儲存機制命名空間，來允許在組織內的多個群組之間共用單一登錄。 登錄可以在各個部署與小組之間共用。 Azure Container Registry 支援巢狀命名空間，可讓您進行群組隔離。
 
-例如，請思考一下下列容器映像標記。 全公司使用的影像（例如 `aspnetcore`）會放在根命名空間中，而產品和行銷群組所擁有的容器映射則各自使用自己的命名空間。
+例如，請思考一下下列容器映像標記。 在全公司範圍內使用的圖像（如`aspnetcore`）放置在根命名空間中，而產品和行銷組擁有的容器映射則使用它們自己的命名空間。
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -52,16 +52,16 @@ ms.locfileid: "79247068"
 
 | 類型 | 範例案例 | 建議的方法 |
 |---|---|---|
-| 個人身分識別 | 將映像提取至其開發電腦或從該電腦提取映像的開發人員。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
+| 個人身分識別 | 將映像提取至其開發電腦或從該電腦提取映像的開發人員。 | [az acr 登錄](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | 遠端控制/服務身分識別 | 未直接涉及使用者的組建和部署管線。 | [服務主體](container-registry-authentication.md#service-principal) |
 
 如需有關 Azure Container Registry 驗證的深入資訊，請參閱[向 Azure Container Registry 進行驗證](container-registry-authentication.md)。
 
 ## <a name="manage-registry-size"></a>管理登錄大小
 
-每個[容器登錄 SKU][container-registry-skus]的儲存體條件約束都是要與一般案例一致：**基本**用於入門、適用于大多數實際執行應用程式的**標準**，以及用於超大規模效能和[異地][container-registry-geo-replication]複寫的**Premium** 。 在整個登錄生命週期，您應該定期刪除未使用的內容來管理其大小。
+每個[容器登錄 SKU][container-registry-skus] 的儲存體條件約束都要符合典型案例：「基本」**** 可用於開始使用、「標準」**** 可用於大部分的實際執行應用程式，而「進階」**** 可進行大規模效能和[異地複寫][container-registry-geo-replication]。 在整個登錄生命週期，您應該定期刪除未使用的內容來管理其大小。
 
-使用 Azure CLI 命令[az acr show-usage][az-acr-show-usage]來顯示登錄的目前大小：
+使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 來顯示登錄的目前大小：
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -74,7 +74,7 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-您也可以在 Azure 入口網站中，於登錄的 [概觀] 中找到目前使用的儲存體：
+您也可以在 Azure 入口網站中，於登錄的 [概觀]**** 中找到目前使用的儲存體：
 
 ![Azure 入口網站中的登錄使用量資訊][registry-overview-quotas]
 

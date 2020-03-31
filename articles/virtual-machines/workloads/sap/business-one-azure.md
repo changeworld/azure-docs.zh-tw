@@ -16,10 +16,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101420"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SAP Business One
@@ -31,7 +31,7 @@ Business One 支援兩種不同的資料庫：
 
 關於 SQL Server 的基本部署考量如 [SAP NetWeaver 的 Azure 虛擬機器 DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide)中所述。 SAP HANA 的考量則會在本文中提及。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用本指南，您需要下列 Azure 元件的基本知識：
 
 - [Windows 上的 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -129,7 +129,7 @@ SQL Server 與 SAP HANA 均為可用的資料庫類型。 雖與 DBMS 無關，�
 
 SQL Server 的 DBMS 端粗略估算如下：
 
-| 使用者數目 | vCPU | 記憶體 | 範例 VM 類型 |
+| 使用者人數 | vCPU | 記憶體 | 範例 VM 類型 |
 | --- | --- | --- | --- |
 | 最多 20 人 | 4 | 16 GB | D4s_v3、E4s_v3 |
 | 最多 40 人 | 8 | 32 GB | D8s_v3、E8s_v3 |
@@ -149,8 +149,8 @@ SQL Server 的 DBMS 端粗略估算如下：
 ### <a name="business-one-client-server"></a>Business One 用戶端伺服器
 對於這些元件而言，儲存體考量並非其主要的考量。 不過，您仍然需要可靠的平台。 因此，即使是基底 VHD，此 VM 也應使用 Azure 進階儲存體。 使用 [SAP Business One 硬體需求指南](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf) \(英文\) 中所提供的資料來調整 VM 大小。 對於 Azure，您必須著重於計算文件的第 2.4 章中所述的需求。 計算需求時，您必須對照下列文件，以找出理想的 VM：
 
-- [Azure 中的 Windows 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [SAP 附註 #1928533](https://launchpad.support.sap.com/#/notes/1928533) \(英文\)
+- [Azure 中 Windows 虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+- [SAP 注釋#1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 針對 CPU 與記憶體，比較所需的數量與 Microsoft 記載的數量。 在選擇 VM 時，也請記得考量網路輸送量。
 

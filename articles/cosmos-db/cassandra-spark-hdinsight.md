@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887627"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>透過 HDInsight 從 Spark on YARN 存取 Azure Cosmos DB Cassandra API
 
 本文說明如何透過 Spark-Shell 中的 HDInsight-Spark 從 Spark on YARN 存取 Azure Cosmos DB Cassandra API。 HDInsight 是 Microsoft 在 Azure 上的 Hortonworks Hadoop PaaS，可將物件儲存體用於 HDFS，且隨附數種選項，包括 [Spark](../hdinsight/spark/apache-spark-overview.md)。  雖然本文件的內容參考 HDInsight Spark，但仍適用於所有的 Hadoop 散發套件。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [佈建 Azure Cosmos DB Cassandra API](create-cassandra-dotnet.md#create-a-database-account)
 

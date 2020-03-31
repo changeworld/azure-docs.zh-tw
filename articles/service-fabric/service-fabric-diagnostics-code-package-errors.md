@@ -1,62 +1,62 @@
 ---
-title: 使用 Service Fabric 診斷一般程式碼套件錯誤
-description: 瞭解如何使用 Azure Service Fabric 針對常見的程式碼套件錯誤進行疑難排解
+title: 使用 Service Fabric 診斷常見代碼包錯誤
+description: 瞭解如何使用 Azure 服務交換矩陣解決常見代碼包錯誤
 author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463106"
 ---
-# <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 診斷一般程式碼套件錯誤
+# <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 診斷常見代碼包錯誤
 
-本文說明程式碼套件意外終止的意義。 它可讓您深入瞭解常見錯誤代碼的可能原因，以及疑難排解步驟。
+本文介紹了代碼包意外終止的含義。 它提供了對常見錯誤代碼的可能原因以及故障排除步驟的見解。
 
 ## <a name="when-does-a-process-or-container-terminate-unexpectedly"></a>進程或容器何時意外終止？
 
-當 Azure Service Fabric 收到啟動程式碼套件的要求時，它會根據應用程式和服務資訊清單中設定的選項，開始在本機系統上準備環境。 這些準備工作可能包括保留網路端點或資源、設定防火牆規則，或設定資源治理條件約束。 
+當 Azure Service Fabric 收到啟動代碼包的請求時，它會開始根據應用和服務清單中設置的選項在本地系統上準備環境。 這些準備工作可能包括保留網路終結點或資源、配置防火牆規則或設置資源治理約束。 
 
-正確設定環境之後，Service Fabric 會嘗試顯示程式碼套件。 如果 OS 或容器執行時間報告已成功啟用進程或容器，則會將此步驟視為成功。 如果啟用失敗，您應該會在 SFX 中看到類似下列的健全狀況訊息：
+正確配置環境後，Service Fabric 會嘗試啟動代碼包。 如果作業系統或容器運行時報告進程或容器已成功啟動，則此步驟被視為成功。 如果啟動不成功，您應該在 SFX 中看到類似于以下內容的運行狀況消息：
 
 ```
 There was an error during CodePackage activation. Service host failed to activate. Error: 0xXXXXXXXX
 ```
 
-成功啟用程式碼套件之後，Service Fabric 開始監視其存留期。 此時，進程或容器可能會因為許多原因而隨時終止。 例如，它可能無法初始化 DLL，或 OS 可能已用盡桌面堆積空間。 如果您的程式碼套件已終止，您應該會在 SFX 中看到下列健全狀況訊息：
+成功啟用代碼包後，Service Fabric 開始監視其存留期。 此時，進程或容器可以出於多種原因隨時終止。 例如，它可能未能初始化 DLL，或者作業系統可能耗盡了桌面堆空間。 如果代碼包終止，應在 SFX 中看到以下運行狀況消息：
 
 ```
 The process/container terminated with exit code: XXXXXXXX. Please look at your application logs/dump or debug your code package for more details. For information about common termination errors, please visit https://aka.ms/service-fabric-termination-errors
 ```
 
-此健全狀況訊息中的結束代碼是處理常式或容器提供終止原因的唯一線索。 它可以由堆疊的任何層級產生。 例如，此結束代碼可能與 OS 錯誤或 .NET 問題相關，或可能已由您的程式碼引發。 請使用本文作為診斷結束代碼來源和可能解決方案的起點。 但請記住，這些是常見案例的一般解決方案，可能不適用於您所看到的錯誤。
+此運行狀況消息中的結束代碼是進程或容器提供有關其終止原因的唯一線索。 它可以由堆疊的任何級別生成。 例如，此結束代碼可能與作業系統錯誤或 .NET 問題相關，或者代碼可能已引發。 使用本文作為診斷終止結束代碼和可能解決方案來源的起點。 但請記住，這些是常見方案的一般解決方案，可能不適用於您看到的錯誤。
 
-## <a name="how-can-i-tell-if-service-fabric-terminated-my-code-package"></a>如何判斷 Service Fabric 是否會終止我的程式碼套件？
+## <a name="how-can-i-tell-if-service-fabric-terminated-my-code-package"></a>如何判斷 Service Fabric 是否終止了代碼包？
 
-基於各種原因，Service Fabric 可能會負責終止程式碼套件。 例如，它可能會決定將程式碼套件放在另一個節點上，以供負載平衡之用。 如果您看到下表中的任何結束代碼，您可以確認 Service Fabric 終止您的程式碼套件。
+由於各種原因，Service Fabric 可能負責終止代碼包。 例如，它可能會決定將代碼包放在另一個節點上以進行負載平衡。 如果看到下表中的任何結束代碼，則可以驗證 Service Fabric 是否終止了代碼包。
 
 >[!NOTE]
-> 如果您的進程或容器終止的結束代碼不是下表中的代碼，Service Fabric 不負責終止它。
+> 如果進程或容器終止了下表中代碼以外的結束代碼，則 Service Fabric 不負責終止它。
 
-結束代碼 | 說明
+結束代碼 | 描述
 --------- | -----------
-7147 | 指出 Service Fabric 藉由傳送 Ctrl + C 信號的方式，正常關閉進程或容器。
-7148 | 表示 Service Fabric 終止進程或容器。 有時，此錯誤碼表示進程或容器在傳送 Ctrl + C 信號之後，未及時回應，而且必須終止。
+7147 | 指示 Service Fabric 通過向進程或容器發送 Ctrl_C 信號，從而正常關閉進程或容器。
+7148 | 指示 Service 結構終止了進程或容器。 有時，此錯誤代碼指示進程或容器在發送 Ctrl_C 信號後沒有及時回應，並且必須終止。
 
 
-## <a name="other-common-error-codes-and-their-potential-fixes"></a>其他常見的錯誤碼及其可能的修正
+## <a name="other-common-error-codes-and-their-potential-fixes"></a>其他常見錯誤代碼及其潛在修復
 
-結束代碼 | 十六進位值 | 簡短描述 | 根本原因 | 可能的修正
+結束代碼 | 十六進位值 | 簡短描述 | 根本原因 | 潛在修復
 --------- | --------- | ----------------- | ---------- | -------------
-3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | 此錯誤有時表示電腦已用盡桌面堆積空間。 如果您有許多屬於在節點上執行之應用程式的進程，則此問題特別可能發生。 | 如果您的程式不是為了回應 Ctrl + C 信號而建立，您可以在叢集資訊清單中啟用**EnableActivateNoWindow**設定。 啟用這項設定表示您的程式碼封裝會在沒有 GUI 視窗的情況下執行，而且不會收到 Ctrl + C 信號。 此動作也會減少每個進程耗用的桌面堆積空間數量。 如果您的程式碼套件需要接收 Ctrl + C 信號，您可以增加節點的桌面堆積大小。
-3762504530 | 0xe0434352 | N/A | 此值代表 managed 程式碼（也就是 .NET）中未處理之例外狀況的錯誤碼。 | 這個結束代碼會指出您的應用程式引發了例外狀況，而此例外狀況會保持未處理，並終止進程。 在判斷觸發此錯誤的第一個步驟中，請將應用程式的記錄檔和傾印檔案加以調試。
+3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | 此錯誤有時表示電腦已耗盡桌面堆空間。 如果有許多進程屬於在節點上運行的應用程式，則此原因尤其可能。 | 如果程式不是為回應 Ctrl_C 信號而構建的，則可以在群集清單中**啟用啟用ActivateNoWindow**設置。 啟用此設置意味著代碼包將運行而不帶 GUI 視窗，並且不會接收 Ctrl_C 信號。 此操作還減少了每個進程消耗的桌面堆空間量。 如果代碼包需要接收 Ctrl_C 信號，則可以增加節點桌面堆的大小。
+3762504530 | 0xe0434352 | N/A | 此值表示託管代碼（即 .NET）中未處理異常的錯誤代碼。 | 此結束代碼指示應用程式引發一個未處理的異常，該異常終止了進程。 作為確定觸發此錯誤的第一步，請調試應用程式的日誌和轉儲檔。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[診斷其他常見案例](service-fabric-diagnostics-common-scenarios.md)。
-* 閱讀[Azure 監視器總覽](../operations-management-suite/operations-management-suite-overview.md)，以深入瞭解 Azure 監視器記錄及其提供的功能。
-* 深入瞭解 Azure 監視器記錄[警示](../log-analytics/log-analytics-alerts.md)，以協助偵測和診斷。
-* 熟悉[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)Azure 監視器記錄中提供的功能。
+* 瞭解有關[診斷其他常見方案的更多詳細資訊](service-fabric-diagnostics-common-scenarios.md)。
+* 通過閱讀[Azure 監視器概述](../operations-management-suite/operations-management-suite-overview.md)，詳細瞭解 Azure 監視器日誌及其提供的內容。
+* 詳細瞭解 Azure 監視器日誌[，用於提醒](../log-analytics/log-analytics-alerts.md)用於檢測和診斷。
+* 熟悉 Azure 監視器日誌中提供的[日誌搜索和查詢](../log-analytics/log-analytics-log-searches.md)功能。

@@ -1,5 +1,5 @@
 ---
-title: 以憑證為基礎的驗證-Azure Active Directory
+title: 基於證書的身份驗證 - Azure 活動目錄
 description: 了解如何在環境中設定憑證式驗證
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b57c4f474b0b9def08005f32f48225d36ea8cf1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848828"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
@@ -32,11 +32,11 @@ ms.locfileid: "74848828"
 - 提供為 Office 365 企業版、商務版、教育版、美國政府方案的租用戶使用者，設定和使用憑證式驗證的步驟。 在 Office 365 China、US Government Defense 及 US Government Federal 方案中，這項功能處於預覽版。
 - 假設您已經設定[公開金鑰基礎結構 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) 和 [AD FS](../hybrid/how-to-connect-fed-whatis.md)。
 
-## <a name="requirements"></a>要求
+## <a name="requirements"></a>需求
 
 若要設定憑證式驗證，必須符合下列陳述：
 
-- 僅針對瀏覽器應用程式、使用新式驗證（ADAL）的原生用戶端，或 MSAL 程式庫的同盟環境，才支援以憑證為基礎的驗證（CBA）。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
+- 基於證書的身份驗證 （CBA） 僅支援用於瀏覽器應用程式的聯合環境、使用現代身份驗證 （ADAL） 的本機用戶端或 MSAL 庫。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
 - 務必要在 Azure Active Directory 中設定根憑證授權單位和任何中繼憑證授權單位。
 - 每個憑證授權單位都必須有一份可透過網際網路對應 URL 來參考的憑證撤銷清單 (CRL)。
 - 您至少必須在 Azure Active Directory 中設定一個憑證授權單位。 您可以在[設定憑證授權單位](#step-2-configure-the-certificate-authorities)一節中找到相關步驟。
@@ -45,7 +45,7 @@ ms.locfileid: "74848828"
 - 用於戶端驗證的用戶端憑證必須已經發給您的用戶端。
 
 >[!IMPORTANT]
->Azure Active Directory 成功下載和快取的 CRL 大小上限為20MB，而下載 CRL 所需的時間不能超過10秒。  如果 Azure Active Directory 無法下載 CRL，使用對應 CA 所發行之憑證的憑證型驗證將會失敗。 確保 CRL 檔案在大小限制範圍內的最佳做法，是將憑證存留期保持在合理的限制範圍內，並清除過期的憑證。 
+>Azure 活動目錄成功下載和緩存的 CRL 的最大大小為 20MB，下載 CRL 所需的時間不得超過 10 秒。  如果 Azure 活動目錄無法下載 CRL，則使用相應 CA 頒發的證書的基於證書的身份驗證將失敗。 確保 CRL 檔在大小限制範圍內的最佳做法是，將證書存留期保持在合理的限制範圍內，並清理過期的證書。 
 
 ## <a name="step-1-select-your-device-platform"></a>步驟 1︰選取裝置平台
 
@@ -63,7 +63,7 @@ ms.locfileid: "74848828"
 
 若要在 Azure Active Directory 中設定您的憑證授權單位，為每個憑證授權單位下載下列項目：
 
-* 憑證的公開部分 (「.cer」 格式)
+* 憑證的公開部分 (「.cer」 ** 格式)
 * 憑證撤銷清單 (CRl) 所在的網際網路對應 URL
 
 憑證授權單位的結構描述看起來像這樣︰
@@ -99,7 +99,7 @@ ms.locfileid: "74848828"
 
 設定的第一個步驟，您需要與您的租用戶建立連線。 一旦您與租用戶的連線存在，您可以檢閱、新增、刪除、修改在您的目錄中定義的受信任的憑證授權單位。
 
-### <a name="connect"></a>連接
+### <a name="connect"></a>連線
 
 若要與您的租用戶建立連線，使用 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) Cmdlet︰
 
@@ -111,7 +111,7 @@ ms.locfileid: "74848828"
 
     Get-AzureADTrustedCertificateAuthority
 
-### <a name="add"></a>新增
+### <a name="add"></a>加
 
 若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
 
@@ -139,11 +139,11 @@ ms.locfileid: "74848828"
 
 ## <a name="step-3-configure-revocation"></a>步驟 3︰設定撤銷
 
-若要撤銷用戶端憑證，Azure Active Directory 會從和憑證授權單位資訊一起上傳的 URL 中，擷取憑證撤銷清單 (CRL) 並加以快取。 在 CRL 中，上次發佈的時間戳記 ([生效日期] 屬性) 是用來確保 CRL 依然有效。 定期參考 CRL 以撤銷對清單所列憑證的存取權。
+若要撤銷用戶端憑證，Azure Active Directory 會從和憑證授權單位資訊一起上傳的 URL 中，擷取憑證撤銷清單 (CRL) 並加以快取。 在 CRL 中，上次發佈的時間戳記 ([生效日期]**** 屬性) 是用來確保 CRL 依然有效。 定期參考 CRL 以撤銷對清單所列憑證的存取權。
 
 如果需要立即撤銷 (例如，使用者遺失裝置)，可以讓使用者的授權權杖失效。 使用 Windows PowerShell 設定這位特定使用者的 **StsRefreshTokenValidFrom** 欄位，即可讓授權權杖失效。 您必須為想要撤銷其存取權的每位使用者更新其 **StsRefreshTokenValidFrom** 欄位。
 
-為了確保撤銷持續有效，您必須將 CRL 的 [生效日期] 設定為 **StsRefreshTokenValidFrom** 所設值之後的日期，並確保有問題的憑證位於 CRL 中。
+為了確保撤銷持續有效，您必須將 CRL 的 [生效日期]**** 設定為 **StsRefreshTokenValidFrom** 所設值之後的日期，並確保有問題的憑證位於 CRL 中。
 
 下列步驟概述藉由設定 **StsRefreshTokenValidFrom** 欄位，來更新授權權杖並讓它失效的程序。
 

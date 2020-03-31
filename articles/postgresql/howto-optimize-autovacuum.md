@@ -1,25 +1,25 @@
 ---
-title: 優化自動資料清理-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明如何將適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理優化
+title: 優化自動真空 - Azure 資料庫，用於後處理SQL - 單個伺服器
+description: 本文介紹如何在 Azure 資料庫上優化自動真空， 用於 PostgreSQL - 單伺服器
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770181"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>優化 Azure 資料庫上的自動真空，用於後格雷SQL - 單個伺服器
 本文描述如何有效地將適用於 PostgreSQL 的 Azure 資料庫伺服器上的自動資料清理最佳化。
 
 ## <a name="overview-of-autovacuum"></a>自動資料清理的概觀
 PostgreSQL 使用多版本並行控制 (MVCC)，來達到更好的資料庫並行。 每次更新都會導致插入和刪除，且每次刪除都會導致資料列虛標示為要刪除。 虛標示會識別無效且會在稍後被清除的 Tuple。 為了執行這些工作，PostgreSQL 會執行資料清理作業。
 
-資料清理作業可以由手動或自動的方式觸發。 當資料庫經歷大量更新或刪除作業時，會有更多無效 Tuple。 當資料庫閒置時，會有較少無效 Tuple。 當資料庫的負載較大時，您需要更頻繁地執行資料清理，因此「手動」執行資料清理作業會變得不方便。
+資料清理作業可以由手動或自動的方式觸發。 當資料庫經歷大量更新或刪除作業時，會有更多無效 Tuple。 當資料庫閒置時，會有較少無效 Tuple。 當資料庫的負載較大時，您需要更頻繁地執行資料清理，因此「手動」** 執行資料清理作業會變得不方便。
 
 您可以設定自動資料清理，並進行調整從中獲益。 PostgreSQL 隨附的預設值可確保產品能在各種裝置上運作。 這些裝置包括 Raspberry Pi。 理想的設定值取決於：
 - 可用的總資源，如 SKU 和儲存體大小。

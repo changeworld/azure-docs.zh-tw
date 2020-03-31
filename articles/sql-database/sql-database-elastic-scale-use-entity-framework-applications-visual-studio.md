@@ -1,5 +1,5 @@
 ---
-title: 搭配 Entity Framework 使用彈性資料庫用戶端程式庫
+title: 將彈性資料庫用戶端庫與實體框架一起使用
 description: 使用彈性資料庫用戶端程式庫與和 Entity Framework 來編寫資料庫
 services: sql-database
 ms.service: sql-database
@@ -12,25 +12,25 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087180"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>搭配使用彈性資料庫用戶端程式庫與 Entity Framework
 
-這份文件說明 Entity Framework 應用程式為了要與 [彈性資料庫工具](sql-database-elastic-scale-introduction.md)整合所需做的變更。 重點將著重於使用 Entity Framework [Code First](sql-database-elastic-scale-shard-map-management.md) 方法來編寫[分區對應管理](sql-database-elastic-scale-data-dependent-routing.md)和**資料相依路由**。 這整份文件是以 EF 的 [Code First - 新的資料庫](https://msdn.microsoft.com/data/jj193542.aspx)教學課程作為執行範例。 本文所附的範例程式碼取自於 Visual Studio 程式碼範例中的彈性資料庫工具範例集。
+這份文件說明 Entity Framework 應用程式為了要與 [彈性資料庫工具](sql-database-elastic-scale-introduction.md)整合所需做的變更。 重點將著重於使用 Entity Framework **Code First** 方法來編寫[分區對應管理](sql-database-elastic-scale-shard-map-management.md)和[資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)。 這整份文件是以 EF 的 [Code First - 新的資料庫](https://msdn.microsoft.com/data/jj193542.aspx)教學課程作為執行範例。 本文所附的範例程式碼取自於 Visual Studio 程式碼範例中的彈性資料庫工具範例集。
 
 ## <a name="downloading-and-running-the-sample-code"></a>下載並執行範例程式碼
 
 若要下載本文的程式碼：
 
 * 需要 visual Studio 2012 或更新版本。 
-* 下載[適用于 AZURE SQL 的彈性 DB 工具-Entity Framework 整合範例](https://github.com/Azure/elastic-db-tools/)。 將範例解壓縮至您選擇的位置。
+* 下載[Azure SQL - 實體框架組成示例的彈性資料庫工具](https://github.com/Azure/elastic-db-tools/)。 將範例解壓縮至您選擇的位置。
 * 啟動 Visual Studio。 
 * 在 Visual Studio 中，選取 [檔案] -> [開啟專案/方案]。 
-* 在 [開啟專案] 對話方塊中，瀏覽至您下載的範例，然後選取 **EntityFrameworkCodeFirst.sln** 以開啟範例。 
+* 在 [開啟專案]**** 對話方塊中，瀏覽至您下載的範例，然後選取 **EntityFrameworkCodeFirst.sln** 以開啟範例。 
 
 若要執行範例，您在 Azure SQL Database 中需要建立三個空的資料庫：
 
@@ -44,8 +44,8 @@ ms.locfileid: "77087180"
 
 Entity Framework 開發人員依賴下列四種工作流程來建置應用程式，以及確保應用程式物件的持續性：
 
-* **Code First (新的資料庫)** ：EF 開發人員在應用程式碼中建立模型，然後 EF 從它產生資料庫。 
-* **Code First (現有的資料庫)** ：開發人員可讓 EF 從現有資料庫產生模型的應用程式碼。
+* **Code First (新的資料庫)**：EF 開發人員在應用程式碼中建立模型，然後 EF 從它產生資料庫。 
+* **Code First (現有的資料庫)**：開發人員可讓 EF 從現有資料庫產生模型的應用程式碼。
 * **Model First**：開發人員在 EF 設計工具中建立模型，然後 EF 從模型建立資料庫。
 * **Database First**：開發人員使用 EF 工具從現有的資料庫推斷模型。 
 
@@ -275,7 +275,7 @@ new CreateDatabaseIfNotExists<ElasticScaleContext<T>>());
 
 ## <a name="conclusion"></a>結論
 
-透過本文件中所述的步驟，EF 應用程式可以使用彈性資料庫用戶端程式庫的資料相依路由功能，重構 EF 應用程式中使用的 **DbContext** 子類別的建構函式。 已存在 **DbContext** 類別的地方不需要做太多變更。 此外，EF 應用程式可以結合叫用必要 EF 移轉的步驟，以及將新的分區和對應註冊在分區對應中的步驟，以繼續受益於自動結構描述部署。 
+透過本文件中所述的步驟，EF 應用程式可以使用彈性資料庫用戶端程式庫的資料相依路由功能，重構 EF 應用程式中使用的 **DbContext** 子類別的建構函式。 這將限制對**DbCoNtext**類已經存在的地方所需的更改。 此外，EF 應用程式可以結合叫用必要 EF 移轉的步驟，以及將新的分區和對應註冊在分區對應中的步驟，以繼續受益於自動結構描述部署。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

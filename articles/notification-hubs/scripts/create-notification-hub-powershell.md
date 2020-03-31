@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 建立 Azure 通知中樞 |Microsoft Docs
-description: 瞭解如何使用 PowerShell 腳本來建立 Azure 通知中樞。
+title: 使用 PowerShell 創建 Azure 通知中心 |微軟文檔
+description: 瞭解如何使用 PowerShell 腳本創建 Azure 通知中心。
 author: dimazaid
 manager: femila
 services: notification-hubs
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
 ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263963"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>使用 PowerShell 建立 Azure 通知中樞
@@ -27,7 +27,7 @@ ms.locfileid: "76263963"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶** - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 

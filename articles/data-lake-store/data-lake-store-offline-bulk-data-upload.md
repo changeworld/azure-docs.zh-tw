@@ -1,35 +1,35 @@
 ---
-title: 將大型資料集上傳至 Azure Data Lake Storage Gen1 離線方法
-description: 使用匯入/匯出服務，將資料從 Azure Blob 儲存體複製到 Azure Data Lake Storage Gen1
+title: 將大型資料集上載到 Azure 資料存儲第 1 代 - 離線方法
+description: 使用導入/匯出服務將資料從 Azure Blob 存儲複製到 Azure 資料湖存儲第 1 代
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839300"
 ---
-# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 匯入/匯出服務將資料離線複製到 Data Lake Storage Gen1
+# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 導入/匯出服務將資料離線複製到資料湖存儲第 1 代
 
-在本文中，您將瞭解如何使用離線複製方法（例如[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)）將大型資料集（> 200 GB）複製到 Data Lake Storage Gen1。 具體來說，作為本文中範例的檔案是 339,420,860,416 個位元組，或在磁碟上大約是 319 GB。 讓我將此檔案稱為 319GB.tsv。
+在本文中，您將學習如何使用離線複製方法（如[Azure 導入/匯出服務](../storage/common/storage-import-export-service.md)）將大型資料集（>200 GB）複製到資料存儲第 1 代。 具體來說，作為本文中範例的檔案是 339,420,860,416 個位元組，或在磁碟上大約是 319 GB。 讓我將此檔案稱為 319GB.tsv。
 
 Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安全地傳輸大量資料至 Azure Blob 儲存體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，您必須具備下列條件：
 
-* **Azure 訂用帳戶**。 請參閱 [取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure 儲存體帳戶**。
-* **Azure Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 存儲帳戶**。
+* **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 
 ## <a name="prepare-the-data"></a>準備資料
 
-開始使用「匯入/匯出服務」之前，請將要傳輸的資料檔分割成大小**小於 200 GB 的複本**。 匯入工具不適用於大於 200 GB 的檔案。 在本文中，我們會將檔案分割成每個 100 GB 的區塊。 您可以使用 [Cygwin](https://cygwin.com/install.html) 來達成此目的。 Cygwin 支援 Linux 命令。 在此情況下，請使用下列命令：
+開始使用「匯入/匯出服務」之前，請將要傳輸的資料檔分割成大小**小於 200 GB 的複本**。 匯入工具不適用於大於 200 GB 的檔案。 在本文中，我們將檔拆分為每個塊 100 GB。 您可以使用 [Cygwin](https://cygwin.com/install.html) 來達成此目的。 Cygwin 支援 Linux 命令。 在此情況下，請使用下列命令：
 
     split -b 100m 319GB.tsv
 
@@ -65,7 +65,7 @@ Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安
 
 您現在可以將磁碟實際寄送至 Azure 資料中心。 在此，資料將在這裡複製到您建立匯入作業時所提供的 Azure 儲存體 Blob。 此外，如果您在建立作業時選擇了稍後提供追蹤資訊，您現在便可返回您的匯入作業並更新追蹤號碼。
 
-## <a name="copy-data-from-blobs-to-data-lake-storage-gen1"></a>將資料從 blob 複製到 Data Lake Storage Gen1
+## <a name="copy-data-from-blobs-to-data-lake-storage-gen1"></a>將資料從 blob 複製到資料存儲第 1 代
 
 匯入作業的狀態顯示為完成之後，您可以確認您指定的 Azure 儲存體 Blob 中是否有該資料。 接下來，您可以使用各種方法將該資料從 Blob 移至 Azure Data Lake Storage Gen1。 如需所有可用的上傳資料選項，請參閱[將資料內嵌到 Azure Data Lake Storage Gen1](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-storage-gen1)。
 
@@ -86,7 +86,7 @@ Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安
 }
 ```
 
-### <a name="target-linked-service-data-lake-storage-gen1"></a>目標連結服務（Data Lake Storage Gen1）
+### <a name="target-linked-service-data-lake-storage-gen1"></a>目標連結服務（資料存儲第 1 代）
 
 ```JSON
 {
@@ -198,7 +198,7 @@ Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安
 
 如需詳細資訊，請參閱[使用 Azure Data Factory 從 Azure Data Lake Storage Gen1 來回複製資料](../data-factory/connector-azure-data-lake-store.md)。
 
-## <a name="reconstruct-the-data-files-in-data-lake-storage-gen1"></a>重建 Data Lake Storage Gen1 中的資料檔案
+## <a name="reconstruct-the-data-files-in-data-lake-storage-gen1"></a>重建資料存儲第 1 代中的資料檔案
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

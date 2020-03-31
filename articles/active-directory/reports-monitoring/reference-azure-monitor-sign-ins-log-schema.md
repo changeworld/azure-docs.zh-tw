@@ -1,6 +1,6 @@
 ---
-title: Azure 監視器中的登入記錄架構 |Microsoft Docs
-description: 描述用於 Azure 監視器的 Azure AD 登入記錄架構
+title: Azure 監視器中的登錄日誌架構 |微軟文檔
+description: 描述日誌架構中的 Azure AD 標誌，以便在 Azure 監視器中使用
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748674"
 ---
-# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解讀 Azure 監視器中的 Azure AD 登入記錄架構
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>在 Azure 監視器中解釋 Azure AD 登錄日誌架構
 
 此文章說明 Azure 監視器中的 Azure Active Directory (Azure AD) 登入記錄結構描述。 大部分與登入相關的資訊都會在 `records` 物件的 *Properties* 屬性下提供。
 
@@ -143,9 +143,9 @@ ms.locfileid: "75748674"
 
 ## <a name="field-descriptions"></a>欄位描述
 
-| 欄位名稱 | 說明 |
+| 欄位名稱 | 描述 |
 |------------|-------------|
-| 時間 | 日期和時間 (UTC)。 |
+| Time | 日期和時間 (UTC)。 |
 | ResourceId | 此值未對應，您可以放心地略過此欄位。  |
 | OperationName | 針對登入，這個值一律是 *Sign-in activity*。 |
 | OperationVersion | 用戶端要求的 REST API 版本。 |
@@ -154,20 +154,20 @@ ms.locfileid: "75748674"
 | ResultType | 登入作業的結果可以是 *Success* 或 *Failure*。 | 
 | ResultSignature | 包含登入作業的錯誤碼 (如果有)。 |
 | ResultDescription | 提供登入作業的錯誤描述。 |
-| riskDetail | riskDetail | 在有風險的使用者、登入或風險偵測的特定狀態之後提供「原因」。 可能的值為： `none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue`。 值 `none` 表示目前未對使用者執行任何動作或登入。 <br>**注意：** 此屬性的詳細資料需要 Azure AD Premium P2 授權。 其他授權則會傳回 `hidden`的值。 |
-| riskEventTypes | riskEventTypes | 與登入相關聯的風險偵測類型。 可能的值為： `unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic`和 `unknownFutureValue`。 |
-| riskLevelAggregated | riskLevel | 匯總的風險層級。 可能的值為： `none`、`low`、`medium`、`high`、`hidden`和 `unknownFutureValue`。 值 `hidden` 表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 所有其他客戶都會 `hidden`傳回。 |
-| riskLevelDuringSignIn | riskLevel | 登入期間的風險層級。 可能的值為： `none`、`low`、`medium`、`high`、`hidden`和 `unknownFutureValue`。 值 `hidden` 表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 所有其他客戶都會 `hidden`傳回。 |
-| riskState | riskState | 報告有風險的使用者、登入或風險偵測的狀態。 可能的值為： `none`、`confirmedSafe`、`remediated`、`dismissed`、`atRisk`、`confirmedCompromised`、`unknownFutureValue`。 |
+| 風險詳情 | 風險詳情 | 提供風險使用者的特定狀態、登錄或風險檢測背後的"原因"。 `none`可能的值是： 、 `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange`、 `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe`、 `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy`、 `adminDismissedAllRiskForUser` `adminConfirmedSigninCompromised`、 `unknownFutureValue`、 、 、 、 、 、 、 、 、 、 、 、 該值`none`表示到目前為止未對使用者或登錄執行任何操作。 <br>**注：** 此屬性的詳細資訊需要 Azure AD 高級 P2 許可證。 其他許可證傳回值`hidden`。 |
+| 風險事件種類 | 風險事件種類 | 與登錄關聯的風險檢測類型。 可能`unlikelyTravel`的值是： `anonymizedIPAddress`、 `maliciousIPAddress`、 `unfamiliarFeatures` `malwareInfectedIPAddress`、 `suspiciousIPAddress` `leakedCredentials`、 `investigationsThreatIntelligence` `generic`、 、 、 、 、 、 、 `unknownFutureValue`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 |
+| 風險級別聚合 | 風險級別 | 聚合風險級別。 可能的值是`none`： `low`、 `medium`、 `high` `hidden`、 `unknownFutureValue`、 、 和 。 該值`hidden`表示未為 Azure AD 標識保護啟用使用者或登錄。 **注：** 此屬性的詳細資訊僅適用于 Azure AD 高級 P2 客戶。 所有其他客戶將被退回`hidden`。 |
+| 風險級別期間Signin | 風險級別 | 登錄期間的風險級別。 可能的值是`none`： `low`、 `medium`、 `high` `hidden`、 `unknownFutureValue`、 、 和 。 該值`hidden`表示未為 Azure AD 標識保護啟用使用者或登錄。 **注：** 此屬性的詳細資訊僅適用于 Azure AD 高級 P2 客戶。 所有其他客戶將被退回`hidden`。 |
+| 風險狀態 | 風險狀態 | 報告風險使用者的狀態、登錄或風險檢測。 可能的值`none`是： 、 `confirmedSafe` `remediated`、 `dismissed` `atRisk`、 `confirmedCompromised` `unknownFutureValue`、 、 、 、 、 、 、 |
 | DurationMs |  此值未對應，您可以放心地略過此欄位。 |
 | CallerIpAddress | 發出要求之用戶端的 IP 位址。 | 
 | CorrelationId | 用戶端傳遞的選擇性 GUID。 此值能協助將用戶端作業和伺服器端作業相互關聯，當您在追蹤跨服務的記錄時它會很有用。 |
 | 身分識別 | 當您發出要求時，來自出示之權杖的身分識別。 它可以是使用者帳戶、系統帳戶或服務主體。 |
 | 層級 | 提供訊息的類型。 針對稽核，它一律是 *Informational*。 |
-| 位置 | 提供登入活動的位置。 |
-| 屬性 | 列出與登入相關聯的所有屬性。如需詳細資訊，請參閱[MICROSOFT GRAPH API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 此結構描述使用與登入資源相同的屬性名稱，以提高可讀性。
+| Location | 提供登入活動的位置。 |
+| 屬性 | 列出與登錄關聯的所有屬性。有關詳細資訊，請參閱[Microsoft 圖形 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 此結構描述使用與登入資源相同的屬性名稱，以提高可讀性。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)
+* [解釋 Azure 監視器中的稽核記錄架構](reference-azure-monitor-audit-log-schema.md)
 * [深入了解 Azure 診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)

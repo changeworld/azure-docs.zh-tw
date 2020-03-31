@@ -1,5 +1,5 @@
 ---
-title: 資源疑難排解簡介
+title: 資源故障排除簡介
 titleSuffix: Azure Network Watcher
 description: 本頁提供網路監看員資源疑難排解功能的概觀
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840684"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure 網路監看員中的資源疑難排解簡介
@@ -47,7 +47,7 @@ ms.locfileid: "76840684"
 
 ### <a name="gateway"></a>閘道
 
-| 錯誤類型 | 原因 | 記錄|
+| 錯誤類型 | 原因 | Log|
 |---|---|---|
 | NoFault | 未偵測到任何錯誤時 |是|
 | GatewayNotFound | 找不到閘道或閘道尚未佈建 |否|
@@ -60,9 +60,9 @@ ms.locfileid: "76840684"
 | ConnectionsNotConnected | 未建立連線。 此錯誤只是警告。| 是|
 | GatewayCPUUsageExceeded | 目前的閘道 CPU 使用量 > 95%。 | 是 |
 
-### <a name="connection"></a>連線
+### <a name="connection"></a>Connection
 
-| 錯誤類型 | 原因 | 記錄|
+| 錯誤類型 | 原因 | Log|
 |---|---|---|
 | NoFault | 未偵測到任何錯誤時 |是|
 | GatewayNotFound | 找不到閘道或閘道尚未佈建 |否|
@@ -85,14 +85,14 @@ ms.locfileid: "76840684"
 |  |  |
 |---------|---------|
 |**閘道類型**   |         |
-|VPN      | 支援的        |
+|VPN      | 支援        |
 |ExpressRoute | 不支援 |
 |**VPN 類型** | |
-|路由式 | 支援的|
+|路由式 | 支援|
 |原則式 | 不支援|
 |**連線類型**||
-|IPsec| 支援的|
-|VNet2Vnet| 支援的|
+|IPsec| 支援|
+|VNet2Vnet| 支援|
 |ExpressRoute| 不支援|
 |VPNClient| 不支援|
 
@@ -105,7 +105,7 @@ ms.locfileid: "76840684"
 > [!NOTE]
 > 在某些情況下，只有部分的記錄會寫入至儲存體。
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 有關儲存體總管的詳細資訊可以在下列連結找到︰[儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 有關存儲資源管理器的詳細資訊，請參閱以下連結：[存儲資源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

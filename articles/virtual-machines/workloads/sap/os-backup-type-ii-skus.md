@@ -1,6 +1,6 @@
 ---
 title: SAP HANA on Azure (大型執行個體) 類型 II SKU 的作業系統備份和還原 | Microsoft Docs
-description: 針對 Azure （大型實例）類型 II Sku 上的 SAP Hana 執行作業系統備份和還原
+description: 在 Azure（大型實例）類型 II SKU 上為 SAP HANA 執行作業系統備份和還原
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,34 +14,34 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616874"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修訂版3戳記之類型 II Sku 的 OS 備份和還原
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>版本 3 戳的 II 型 SKU 的作業系統備份和恢復
 
-本檔說明針對修訂版3的「HANA 大型實例」**類型 II sku**執行作業系統檔案層級備份和還原的步驟。 
+本文檔介紹為修訂版 3 的 HANA 大型實例的**II 類型 SKU**執行作業系統檔級備份和還原的步驟。 
 
 >[!Important]
-> **本文不適用於修訂版 4 HANA 大型實例戳記中的類型 II SKU 部署。** 類型 II HANA 大型實例單位的開機 LUN，部署于修訂版 4 HANA 大型實例戳記中。您可以使用儲存體快照集來備份，這是類型 I Sku 已經在修訂3戳記中的情況。
+> **本文不適用於修訂版 4 HANA 大型實例戳中的 II 類型 SKU 部署。** 在修訂版 4 HANA 大型實例戳中部署的 II 類型 HANA 大型實例單元的啟動 LUNS 可以備份存儲快照，因為修訂版 3 戳中已部署的 I 型 SKU 就是這種情況
 
 
 >[!NOTE]
 >作業系統備份指令碼使用已預先安裝在伺服器中的 ReaR 軟體。  
 
-Microsoft `Service Management` 小組完成布建之後，根據預設，伺服器會設定兩個備份排程來備份作業系統的檔案系統層級。 您可以使用下列命令來檢查備份作業的排程：
+預配由 Microsoft`Service Management`團隊完成後，預設情況下，伺服器配置了兩個備份計畫，以備份作業系統的檔案系統級別。 可以使用以下命令檢查備份作業的計畫：
 ```
 #crontab –l
 ```
-您可以使用下列命令隨時變更備份排程：
+您可以隨時使用以下命令更改備份計畫：
 ```
 #crontab -e
 ```
 ## <a name="how-to-take-a-manual-backup"></a>如何進行手動備份？
 
-OS 檔案系統備份已使用**cron 作業**進行排程。 不過，您也可以手動執行作業系統檔案等級備份。 若要執行手動備份，請執行下列命令：
+作業系統檔案系統備份已使用**cron 作業**計畫。 不過，您也可以手動執行作業系統檔案等級備份。 若要執行手動備份，請執行下列命令：
 
 ```
 #rear -v mkbackup
@@ -67,7 +67,7 @@ OS 檔案系統備份已使用**cron 作業**進行排程。 不過，您也可�
 >[!NOTE] 
 >從備份還原檔案之後，您需要將檔案複製到想要的位置。
 
-下列螢幕擷取畫面顯示還原完整備份：
+以下螢幕截圖顯示了完整備份的還原：
 
 ![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
@@ -86,7 +86,7 @@ Relax-and-Recover (ReaR) 封裝已**預先安裝**在 HANA 大型執行個體的
 ```
 #yum install rear -y
 ```
-若要設定 ReaR 工具，您需要在檔案 **/etc/rear/local.conf** 中更新 **OUTPUT_URL** 和 *BACKUP_URL* 參數。
+若要設定 ReaR 工具，您需要在檔案 */etc/rear/local.conf* 中更新 **OUTPUT_URL** 和 **BACKUP_URL** 參數。
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-下列螢幕擷取畫面顯示還原完整備份： ![RearToolConfiguration .PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+以下螢幕截圖顯示了完整備份的恢復：![後工具配置.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

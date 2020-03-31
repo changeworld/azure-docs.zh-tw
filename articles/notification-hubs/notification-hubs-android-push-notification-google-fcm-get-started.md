@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞和 Firebase 雲端通訊將推播通知傳送至 Android | Microsoft Docs
+title: 使用 Azure 通知中樞和 Firebase 將推播通知傳送至 Android | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將通知推送至 Android 裝置。
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 1af109405118754daa08adf848f1da3f04534455
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387514"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127544"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-google-firebase-cloud-messaging"></a>教學課程：使用 Google Firebase 雲端通訊將推播通知傳送至 Android 裝置
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>教學課程：使用 Firebase 將推播通知傳送至 Android 裝置
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "72387514"
 > * 將應用程式連線至中樞。
 > * 測試應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/free/)。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "72387514"
 
 您的中樞現在已設定為與 Firebase 雲端通訊搭配使用。 您也擁有了所需的連接字串，而可將通知傳送給裝置並註冊應用程式來接收通知。
 
-## <a id="connecting-app"></a>將您的應用程式連接到通知中樞
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>將您的應用程式連接到通知中樞
 
 ### <a name="add-google-play-services-to-the-project"></a>新增 Google Play 服務至專案
 

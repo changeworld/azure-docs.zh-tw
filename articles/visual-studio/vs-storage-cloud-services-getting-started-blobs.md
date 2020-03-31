@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Visual Studio 的 blob 儲存體（雲端服務）
+title: 使用視覺化工作室（雲服務）開始使用 Blob 存儲
 description: 在使用 Visual Studio 已連接服務連接到儲存體帳戶之後，如何於 Visual Studio 雲端服務專案中開始使用 Azure Blob 儲存體
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298802"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (雲端服務專案)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>總覽
-本文描述如何在 Visual Studio 雲端服務專案中使用 [ **加入已連接服務** ] 對話方塊建立或參考 Azure 儲存體帳戶後，開始搭配使用 Azure Blob 儲存體。 我們會說明如何存取及建立 Blob 容器，以及如何執行上傳、列出和下載 Blob 等一般工作。 這些範例均以 C\# 撰寫，並使用 [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+本文描述如何在 Visual Studio 雲端服務專案中使用 [ **加入已連接服務** ] 對話方塊建立或參考 Azure 儲存體帳戶後，開始搭配使用 Azure Blob 儲存體。 我們會說明如何存取及建立 Blob 容器，以及如何執行上傳、列出和下載 Blob 等一般工作。 這些示例以 C\#編寫，並使用[.NET 的 Microsoft Azure 存儲用戶端庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量非結構化資料的服務，全球任何地方都可透過 HTTP 或 HTTPS 來存取這些資料。 單一 Blob 可以是任何大小。 Blob 可以是影像、音訊和視訊檔、原始資料及文件檔案。
 
@@ -88,7 +88,7 @@ Azure 二進位大型物件 (Microsoft Azure Blob) 儲存是一項儲存大量�
 ## <a name="upload-a-blob-into-a-container"></a>將 Blob 上傳至容器
 Azure 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，建議使用區塊 Blob 的類型。
 
-若要將檔案上傳至區塊 Blob，請取得容器參照，並使用該參照來取得區塊 Blob 參照。 擁有 Blob 參照後，即可藉由呼叫 **UploadFromStream** 方法，將任何資料流上傳至其中。 此操作會建立 Blob (如果其並不存在) 或覆寫 Blob (如果其已存在)。 下列範例顯示如何將 Blob 上傳到容器，並假設已建立該容器。
+若要將檔案上傳至區塊 Blob，請取得容器參照，並使用該參照來取得區塊 Blob 參照。 獲得 Blob 引用後，可以通過調用**UploadFromStream**方法將任何資料流程上載到它。 此操作會建立 Blob (如果其並不存在) 或覆寫 Blob (如果其已存在)。 下列範例顯示如何將 Blob 上傳到容器，並假設已建立該容器。
 
     // Retrieve a reference to a blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
@@ -100,7 +100,7 @@ Azure 儲存體支援區塊 Blob 和頁面 Blob。 在大多數情況下，建�
     }
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，請先取得容器參照。 然後您即可使用容器的 **ListBlobs** 方法來擷取 Blob 和 (或) 其中的目錄。 若要針對傳回的 **IListBlobItem** 存取一組豐富的屬性與方法，您必須先將它轉換至 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 物件。 如果不清楚類型，可使用類型檢查來決定要將其轉換至何種類型。 下列程式碼示範如何擷取和輸出 **photos** 容器中每個項目的 URI：
+若要列出容器中的 Blob，請先取得容器參照。 然後您即可使用容器的 **ListBlobs** 方法來擷取 Blob 和 (或) 其中的目錄。 要訪問返回的**IListBlobItem**的豐富屬性和方法集，必須將其轉換為**CloudBlockBlob、CloudPageBlob**或**CloudBlobDirectory**物件。 **CloudPageBlob** 如果不清楚類型，可使用類型檢查來決定要將其轉換至何種類型。 下列程式碼示範如何擷取和輸出 **photos** 容器中每個項目的 URI：
 
     // Loop over items within the container and output the length and URI.
     foreach (IListBlobItem item in container.ListBlobs(null, false))

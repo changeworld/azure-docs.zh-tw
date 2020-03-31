@@ -8,10 +8,10 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268141"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>搭配 Windows 使用 Azure 檔案共用
@@ -30,24 +30,24 @@ ms.locfileid: "79268141"
 | Windows 8.1 | SMB 3.0 | 是 | 是 |
 | Windows Server 2012 R2 | SMB 3.0 | 是 | 是 |
 | Windows Server 2012 | SMB 3.0 | 是 | 是 |
-| Windows 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
+| 視窗 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
+| 視窗伺服器 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
 
-<sup>1</sup>Windows 10，版本1507、1607、1709、1803、1809、1903和1909。  
-<sup>2</sup>Windows Server，版本1809、1903和1909。  
-<sup>3</sup>Windows 7 和 Windows Server 2008 R2 的一般 Microsoft 支援已結束。 您只能透過[擴充安全性更新（ESU）程式](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)來購買額外的安全性更新支援。 我們強烈建議您從這些作業系統進行遷移。
+<sup>1</sup>Windows 10、版本 1507、1607、1709、1803、1809、1903 和 1909。  
+<sup>2</sup>Windows 伺服器，版本 1809、1903 和 1909。  
+<sup>3</sup>微軟對 Windows 7 和 Windows 伺服器 2008 R2 的常規支援已經結束。 只能通過[擴展安全更新 （ESU） 計畫](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)購買對安全更新的其他支援。 我們強烈建議從這些作業系統遷移。
 
 > [!Note]  
 > 我們一律建議針對您的 Windows 版本採取最新的 KB。
 
 ## <a name="prerequisites"></a>Prerequisites 
-* **儲存體帳戶名稱**：若要掛接 Azure 檔案共用，您需要儲存體帳戶的名稱。
+* **存儲帳戶名稱**：要裝載 Azure 檔共用，您需要存儲帳戶的名稱。
 
-* **儲存體帳戶金鑰**：若要掛接 Azure 檔案共用，您需要主要 (或次要) 金鑰。 掛接目前不支援 SAS 金鑰。
+* **存儲帳戶金鑰**：要裝載 Azure 檔共用，需要主（或輔助）存儲金鑰。 掛接目前不支援 SAS 金鑰。
 
-* **確定已開啟連接埠 445**：SMB 通訊協定要求 TCP 連接埠 445 為開啟狀態；如果連接埠 445 遭到封鎖，連線將會失敗。 您可以使用 `Test-NetConnection` Cmdlet，查看您的防火牆是否封鎖連接埠 445。 您可以在這裡瞭解各種因應措施的因應措施已[封鎖埠445的方法](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
+* **確定已開啟連接埠 445**：SMB 通訊協定要求 TCP 連接埠 445 為開啟狀態；如果連接埠 445 遭到封鎖，連線將會失敗。 您可以使用 `Test-NetConnection` Cmdlet，查看您的防火牆是否封鎖連接埠 445。 你可以在這裡瞭解[各種方法來解決阻塞埠445。](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)
 
-    下列 PowerShell 程式碼假設您已安裝 Azure PowerShell 模組，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)以取得詳細資訊。 請記得以儲存體帳戶的相關名稱取代 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
+    以下 PowerShell 代碼假定已安裝 Azure PowerShell 模組，有關詳細資訊，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 請記得以儲存體帳戶的相關名稱取代 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -80,7 +80,7 @@ ms.locfileid: "79268141"
 ## <a name="using-an-azure-file-share-with-windows"></a>搭配 Windows 使用 Azure 檔案共用
 若要搭配 Windows 使用 Azure 檔案共用，您必須掛接它 (這表示將磁碟機代號或掛接點路徑指派給它)，或透過 [UNC 路徑](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)存取它。 
 
-不同於其他您可能有互動的 SMB 共用 (例如 Windows Server、Linux Samba 伺服器或 NAS 裝置上裝載的共用)，Azure 檔案共用目前不支援使用您的 Active Directory (AD) 或 Azure Active Directory (AAD) 身分識別進行 Kerberos 驗證，雖然這是我們正在[努力](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)的功能。 相反地，對於包含 Azure 檔案共用的儲存體帳戶，您必須使用儲存體帳戶金鑰來存取 Azure 檔案共用。 儲存體帳戶金鑰是儲存體帳戶的系統管理員金鑰，包括您所存取檔案共用中所有檔案和資料夾的系統管理員許可權，以及包含的所有檔案共用和其他儲存體資源（blob、佇列、資料表等）在您的儲存體帳戶內。 如果這不足以處理您的工作負載，[Azure 檔案同步](storage-sync-files-planning.md)可以在過渡期間處理缺乏 Kerberos 驗證和 ACL 支援，直到可公開取得以 AAD 為基礎的 Kerberos 驗證和 ACL 支援為止。
+不同於其他您可能有互動的 SMB 共用 (例如 Windows Server、Linux Samba 伺服器或 NAS 裝置上裝載的共用)，Azure 檔案共用目前不支援使用您的 Active Directory (AD) 或 Azure Active Directory (AAD) 身分識別進行 Kerberos 驗證，雖然這是我們正在[努力](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)的功能。 相反地，對於包含 Azure 檔案共用的儲存體帳戶，您必須使用儲存體帳戶金鑰來存取 Azure 檔案共用。 存儲帳戶金鑰是存儲帳戶的管理員金鑰，包括管理員對要訪問的檔共用中的所有檔和資料夾以及包含的所有檔共用和其他存儲資源（Blob、佇列、表等）的許可權在您的存儲帳戶中。 如果這不足以處理您的工作負載，[Azure 檔案同步](storage-sync-files-planning.md)可以在過渡期間處理缺乏 Kerberos 驗證和 ACL 支援，直到可公開取得以 AAD 為基礎的 Kerberos 驗證和 ACL 支援為止。
 
 將應有 SMB 檔案共用的企業營運 (LOB) 應用程式隨即移轉至 Azure 的常見模式，就是使用 Azure 檔案共用作為在 Azure VM 中執行專用 Windows 檔案伺服器的替代方式。 成功移轉企業營運應用程式以使用 Azure 檔案共用的一項重要考量，就是許多企業營運應用程式使用有限的系統權限 (而不是 VM 的系統管理帳戶)，在專屬服務帳戶的內容之下執行。 因此，您必須確定從服務帳戶的內容 (而不是系統管理帳戶) 掛接/儲存 Azure 檔案共用的認證。
 
@@ -168,7 +168,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 ```
 
 > [!Note]  
-> 如果已儲存認證，在 `-Persist` cmdlet 上使用 `New-PSDrive` 選項，只會允許在開機時重新掛接檔案共用。 您可以使用[先前所述](#persisting-azure-file-share-credentials-in-windows)的 cmdkey 來儲存認證。 
+> 如果已儲存認證，在 `New-PSDrive` cmdlet 上使用 `-Persist` 選項，只會允許在開機時重新掛接檔案共用。 您可以使用[先前所述](#persisting-azure-file-share-credentials-in-windows)的 cmdkey 來儲存認證。 
 
 如有需要，您可使用下列 PowerShell cmdlet 來卸載 Azure 檔案共用。
 
@@ -182,11 +182,11 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. 開啟檔案總管。 做法是從 [開始] 功能表中開啟，或按 Win + E 捷徑。
 
-2. 瀏覽至視窗左側的 [本機] 項目。 這會變更功能區中所提供的功能表。 在 [電腦] 功能表之下，選取 [連線網路磁碟機]。
+2. 導航到視窗左側的 **"此 PC"** 項。 這會變更功能區中所提供的功能表。 在 [電腦] 功能表之下，選取 [連線網路磁碟機]****。
     
     ![「連線網路磁碟機」下拉式功能表的螢幕擷取畫面](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. 從 Azure 入口網站的 [連線] 窗格中複製 UNC 路徑。 
+3. 從 Azure 門戶中的 **"連接**"窗格複製 UNC 路徑。 
 
     ![[Azure 檔案服務連線] 窗格中的 UNC 路徑](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
@@ -202,26 +202,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![現在已掛接 Azure 檔案共用](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. 當您準備好要卸載 Azure 檔案共用時，您可以滑鼠右鍵按一下 [檔案總管] 中 [網路位置] 下的共用項目，然後選取 [中斷連線]。
+7. 當您準備好要卸載 Azure 檔案共用時，您可以滑鼠右鍵按一下 [檔案總管] 中 [網路位置]**** 下的共用項目，然後選取 [中斷連線]****。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>從 Windows 存取共用快照集
-如果您已建立共用快照集 (透過指令碼或 Azure 備份之類的服務手動或自動建立)，您即可從 Windows 上的檔案共用檢視舊版的共用、目錄或特定檔案。 您可以從 [ [Azure 入口網站](storage-how-to-use-files-portal.md)]、[ [Azure PowerShell](storage-how-to-use-files-powershell.md)] 和 [ [Azure CLI](storage-how-to-use-files-cli.md)] 建立共用快照集。
+如果您已建立共用快照集 (透過指令碼或 Azure 備份之類的服務手動或自動建立)，您即可從 Windows 上的檔案共用檢視舊版的共用、目錄或特定檔案。 可以從[Azure 門戶](storage-how-to-use-files-portal.md)Azure [PowerShell](storage-how-to-use-files-powershell.md)和 Azure [CLI](storage-how-to-use-files-cli.md)獲取共用快照。
 
 #### <a name="list-previous-versions"></a>列出舊版
-瀏覽至需要還原的項目或父項目。 按兩下以移至所需的目錄。 按一下滑鼠右鍵，然後從功能表中選取 [屬性]。
+瀏覽至需要還原的項目或父項目。 按兩下以移至所需的目錄。 按一下滑鼠右鍵，然後從功能表中選取 [屬性]****。
 
 ![以滑鼠右鍵按一下功能表以取得選取的目錄](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
 
-選取 [舊版]，以查看此目錄之共用快照集的清單。 視網路速度和目錄中的共用快照集數目而定，清單可能需要幾秒鐘的時間才能載入。
+選取 [舊版]****，以查看此目錄之共用快照集的清單。 視網路速度和目錄中的共用快照集數目而定，清單可能需要幾秒鐘的時間才能載入。
 
 ![[舊版] 索引標籤](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
 
-您可以選取 [開啟]，開啟特定的快照集。 
+您可以選取 [開啟]****，開啟特定的快照集。 
 
 ![已開啟快照集](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>從舊版還原
-選取 [還原] 可在共用快照集建立時，將整個目錄的內容以遞迴方式複製到原始位置。
+選取 [還原]**** 可在共用快照集建立時，將整個目錄的內容以遞迴方式複製到原始位置。
  ![警告訊息中的 [還原] 按鈕](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>保護 Windows/Windows Server
@@ -243,7 +243,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 | Windows 7                                 | 啟用              | 利用登錄停用       | 
 
 ### <a name="auditing-smb-1-usage"></a>稽核 SMB 1 使用量
-> 適用于 Windows Server 2019、Windows Server 半年通道（版本1709和1803）、Windows Server 2016、Windows 10 （版本1507、1607、1703、1709和1803）、Windows Server 2012 R2 和 Windows 8。1
+> 適用于 Windows 伺服器 2019、Windows Server 半年頻道（版本 1709 和 1803）、Windows 伺服器 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows 伺服器 2012 R2 和 Windows 8.1
 
 移除您環境中的 SMB 1 之前，您可以稽核 SMB 1 使用情況，以查看是否有任何用戶端會因此變更而中斷。 如果對含有 SMB 1 的 SMB 共用 提出任何要求，稽核事件將會記錄在 `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` 之下的事件記錄中。 
 
@@ -257,7 +257,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>從 Windows Server 移除 SMB 1
-> 適用于 Windows Server 2019、Windows Server 半年通道（版本1709和1803）、Windows Server 2016、Windows Server 2012 R2
+> 適用于 Windows 伺服器 2019， Windows 伺服器半年頻道 （版本 1709 和 1803）， Windows 伺服器 2016， Windows 伺服器 2012 R2
 
 若要從 Windows Server 執行個體移除 SMB 1，請從提高權限的 PowerShell 工作階段執行下列 Cmdlet︰
 
@@ -284,7 +284,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>在舊版 Windows/Windows Server 上停用 SMB 1
 > 套用至 Windows Server 2012、Windows Server 2008 R2 和 Windows 7
 
-SMB 1 無法完全從舊版的 Windows/Windows Server 中移除，但是可以透過登錄停用。 若要停用 SMB 1，請在 `SMB1` 之下建立類型為 `DWORD` 且值為 `0` 的新登錄機碼 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters`。
+SMB 1 無法完全從舊版的 Windows/Windows Server 中移除，但是可以透過登錄停用。 若要停用 SMB 1，請在 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` 之下建立類型為 `DWORD` 且值為 `0` 的新登錄機碼 `SMB1`。
 
 您也可以使用下列 PowerShell Cmdlet 輕鬆達成：
 
@@ -302,6 +302,6 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Par
 
 ## <a name="next-steps"></a>後續步驟
 請參閱這些連結，以取得 Azure 檔案服務的詳細資訊：
-- [規劃 Azure 檔案部署](storage-files-planning.md)
+- [規劃 Azure 檔案服務部署](storage-files-planning.md)
 - [常見問題集](../storage-files-faq.md)
 - [在 Windows 上進行疑難排解](storage-troubleshoot-windows-file-connection-problems.md)      

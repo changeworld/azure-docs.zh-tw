@@ -1,6 +1,6 @@
 ---
-title: Azure 支援要求-檔案上傳指導方針
-description: 說明使用 Microsoft Azure 支援要求檔案上傳選項時的指導方針
+title: Azure 支援請求 - 檔上載指南
+description: 描述使用 Microsoft Azure 支援請求檔上載選項時的指南
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: genli
 ms.openlocfilehash: ac8dffe3b1200f3925478f968170498ee744bb79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76548963"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure 新的支援要求檔案上傳公用程式指導方針
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>微軟 Azure 新的支援請求檔上載實用程式指南
 
-當您[建立支援要求](https://portal.azure.com/#create/Microsoft.Support)時，[檔案上傳] 選項可協助您輕鬆上傳診斷檔案或您認為與事件相關的任何其他檔案。  
+創建[支援請求](https://portal.azure.com/#create/Microsoft.Support)時，檔上載選項可以説明您輕鬆上傳診斷檔或您認為與事件相關的任何其他檔。  
 
 > [!NOTE]
 > 若要保護您的隱私權，請勿在您的上傳中包含任何個人資訊。
 >
 >
 
-當您使用 [檔案上傳] 選項時，請遵循下列指導方針：
+使用檔上載選項時，請遵循以下準則：
 
-* 所有檔案都必須具有副檔名，例如 *.docx*或 *.xlsx*。 請參閱資料表以取得允許的副檔名。
+* 所有檔都必須具有檔案名副檔名，如 *.docx*或 *.xlsx*。 有關允許的檔案名副檔名，請參閱表。
 * 檔案名稱的長度不得超過 110 個字元。
-* 您無法上傳一個以上的檔案。
-* 檔案不能大於 4 MB。
+* 不能上載多個檔。
+* 檔不能大於 4 MB。
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>允許的檔案名稱副檔名的資料表
 

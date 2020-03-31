@@ -1,15 +1,15 @@
 ---
-title: 使用計量來管理 Azure Service Fabric 應用程式負載
+title: 使用指標管理 Azure 服務結構應用載入
 description: 了解如何在 Service Fabric 中設定及使用計量，以管理服務資源耗用量。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452006"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用度量管理資源耗用量和負載
@@ -27,8 +27,8 @@ ms.locfileid: "75452006"
 | 計量 | 無狀態執行個體負載 | 具狀態次要負載 | 具狀態主要負載 | Weight |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |高 |
-| ReplicaCount |0 |1 |1 |中型 |
-| 計數 |1 |1 |1 |低 |
+| ReplicaCount |0 |1 |1 |中 |
+| Count |1 |1 |1 |低 |
 
 
 針對基本工作負載，預設計量會提供叢集中工作的適當分配。 在下列範例中，讓我們看看建立兩個服務以及依賴預設計量以進行平衡時會發生什麼情況。 第一個服務是帶有三個資料分割且目標複本集大小為三的具狀態服務。 第二個服務是帶有一個資料分割且執行個體計數為三的無狀態服務。
@@ -37,7 +37,7 @@ ms.locfileid: "75452006"
 
 <center>
 
-![使用預設度量的叢集配置][Image1]
+![使用預設計量的叢集配置][Image1]
 </center>
 
 注意事項如下：
@@ -52,7 +52,7 @@ ms.locfileid: "75452006"
 
 您可以僅使用預設計量來執行。 不過，這樣通常表示叢集使用率較低，比您想要的更不平均。 這是因為預設計量不是調適性的，而是假設所有項目都相等。 例如，忙碌的主要複本和一個不忙碌的其他複本都會對 PrimaryCount 計量貢獻 "1"。 在最糟的情況下，使用預設計量也可能導致節點被過度排定，而造成效能問題。 如果您對充分利用叢集並避免效能問題感興趣，您必須使用自訂計量和動態負載報告。
 
-## <a name="custom-metrics"></a>自訂計量
+## <a name="custom-metrics"></a>自訂度量
 當您建立服務時，可以為每個具名服務執行個體設定計量。
 
 任何計量都有一些描述它的屬性：名稱、權數及預設負載。
@@ -135,7 +135,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 現在，我們再更詳細地瀏覽這些設定，並且討論其影響的行為。
 
 ## <a name="load"></a>載入
-定義計量的整個重點在於代表某個負載。 「負載」係指特定節點上的某個服務執行個體或複本取用的特定計量數量。 隨時可以設定負載。 例如：
+定義計量的整個重點在於代表某個負載。 「負載」** 係指特定節點上的某個服務執行個體或複本取用的特定計量數量。 隨時可以設定負載。 例如：
 
   - 建立服務時，可以定義負載。 這稱為_預設負載_。
   - 計量資訊，包括建立服務之後服務可以更新的預設負載。 這稱為_更新服務_。 
@@ -145,7 +145,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 這些策略全部可以在相同服務的存留期內使用。 
 
 ## <a name="default-load"></a>預設負載
-預設負載係指此服務的每個服務物件 (無狀態執行個體或具狀態複本) 取用的計量數量。 叢集資源管理員會將這個數字用於服務物件的負載，直到它接收其他資訊，例如動態負載報告。 針對簡單服務，預設負載是靜態定義。 預設負載永遠不會更新，並且在服務的存留期使用。 預設負載非常適用於簡單的容量規劃案例，其中特定數量的資源是供不同的工作負載專用，不會變更。
+預設負載** 係指此服務的每個服務物件 (無狀態執行個體或具狀態複本) 取用的計量數量。 叢集資源管理員會將這個數字用於服務物件的負載，直到它接收其他資訊，例如動態負載報告。 針對簡單服務，預設負載是靜態定義。 預設負載永遠不會更新，並且在服務的存留期使用。 預設負載非常適用於簡單的容量規劃案例，其中特定數量的資源是供不同的工作負載專用，不會變更。
 
 > [!NOTE]
 > 如需有關容量管理和定義叢集中節點容量的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-cluster-description.md#capacity)。
@@ -208,8 +208,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![叢集與預設和自訂計量][Image2]
-的平衡 </center>
+![使用預設和自訂計量平衡的叢集][Image2]
+</center>
 
 有幾件事值得一提：
 
@@ -233,7 +233,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![公制權數範例及其對平衡解決方案的影響][Image3]
+![指標權重示例及其對平衡解決方案的影響][Image3]
 </center>
 
 在此範例中，有四個不同的服務，它們都針對兩個不同計量 (MetricA 和 MetricB) 報告不同值。 在其中一個案例中，所有定義 MetricA 的服務是最重要的 (權數 = 高)，MetricB 則是較不重要的 (權數 = 低)。 因此，我們看到「叢集資源管理員」是以讓 MetricA 比 MetricB 更加平衡的方式來設置服務。 「更加平衡」表示 MetricA 具有比 MetricB 較低的標準差。 在第二個案例中，我們將計量權數反轉。 結果就是「叢集資源管理員」會交換服務 A 與 B，以便產生 MetricB 比 MetricA 更加平衡的配置。
@@ -251,8 +251,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![全域方案][Image4]
-的影響 </center>
+![全域唯一解決方案的影響][Image4]
+</center>
 
 在上半部的範例中，只考量了全域平衡，叢集整體上的確達到平衡。 所有節點的主要複本計數和複本總數都相同。 不過，如果您查看此配置的實際影響，就不是那麼理想︰遺失任何節點都會對特定工作負載帶來不成比例的影響，因為這會取出其所有主要複本。 例如，如果第一個節點發生失敗，圓形服務之三個不同資料分割的三個主要複本將會全部遺失。 相反地，「三角形」和「六邊形」服務的資料分割遺失複本。 這樣不會造成中斷，只是必須復原關閉的複本。
 
@@ -260,7 +260,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="next-steps"></a>後續步驟
 - 如需有關設定服務的詳細資訊，請參閱[深入了解設定服務](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- 定義磁碟重組計量是在節點上合併負載而不是將其分散出去的一種方式。若要瞭解如何設定磁碟重組，請參閱[這篇文章](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- 定義磁碟重組指標是整合節點負載而不是將其分散的一種方式。要瞭解如何配置磁碟重組，請參閱[本文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
 - 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)
 - 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 若要深入了解移動成本，請參閱 [這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)

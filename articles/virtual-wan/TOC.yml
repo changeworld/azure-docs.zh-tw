@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: 全域傳輸網路架構
           href: virtual-wan-global-transit-network-architecture.md
+        - name: 與中國互連
+          href: interconnect-china.md
 - name: 教學課程
   items:
     - name: 建立站對站連線
@@ -20,6 +22,8 @@
       href: virtual-wan-expressroute-portal.md
 - name: 概念
   items:
+    - name: 遠端工作
+      href: work-remotely-support.md
     - name: 位置與合作夥伴
       items:
         - name: 中樞位置與合作夥伴
@@ -28,8 +32,6 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec 原則
       href: virtual-wan-ipsec.md
-    - name: 點對站 VPN 概觀
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: 操作指南
   items:
     - name: 將虛擬網路閘道連線到虛擬 WAN
@@ -52,25 +54,31 @@
           href: virtual-wan-site-to-site-portal.md
     - name: 使用者 VPN (點對站)
       items:
-        - name: 建立使用者 VPN (點對站) 連線
+        - name: 建立使用者 VPN 連線
           href: virtual-wan-point-to-site-portal.md
-        - name: 設定使用者 VPN 的憑證
+        - name: 產生憑證
           href: certificates-point-to-site.md
-        - name: 設定使用者 VPN 的 Azure AD 租用戶
+        - name: 設定 Azure AD 租用戶
           href: openvpn-azure-ad-tenant.md
-        - name: 設定 Always On VPN 使用者通道
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: 設定 Always On VPN 裝置通道
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: 啟用使用者 VPM 的 Multi-Factor Authentication (MFA)
-          href: openvpn-azure-ad-mfa.md
-        - name: 設定適用於使用者 VPN 的 Azure AD 驗證
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: 設定適用於使用者 VPN 的多應用程式 Azure AD 驗證
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: 下載全域型和中樞型使用者 VPN 設定檔
+        - name: 用戶端設定檔
+          href: about-vpn-profile-download.md
+        - name: 全域型和中樞型設定檔
           href: global-hub-profile.md
-    - name: 設定路由
+        - name: 設定 OpenVPN 用戶端
+          href: howto-openvpn-clients.md?
+        - name: 設定 Always On VPN 使用者通道
+          href: howto-always-on-user-tunnel.md
+        - name: 設定 Always On VPN 裝置通道
+          href: howto-always-on-device-tunnel.md
+        - name: 啟用 Multi-Factor Authentication (MFA)
+          href: openvpn-azure-ad-mfa.md
+        - name: 設定 Azure AD 驗證
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: 設定適用於 Windows 10 的 Azure VPN Client
+          href: openvpn-azure-ad-client.md
+        - name: 設定多應用程式 Azure AD 驗證
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: 路由
       items:
         - name: 將流量從虛擬中樞路由傳送至 NVA
           items:

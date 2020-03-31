@@ -4,17 +4,17 @@ description: Azure 角色型存取控制 (RBAC) 以及身分識別和存取管�
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74893479"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
 
-Azure Container Registry 服務支援一組[內建的 azure 角色](../role-based-access-control/built-in-roles.md)，可為 azure Container Registry 提供不同層級的許可權。 使用 Azure[角色型存取控制](../role-based-access-control/index.yml)（RBAC），將特定許可權指派給需要與登錄互動的使用者、服務主體或其他身分識別。 
+Azure 容器註冊表服務支援一組[內置 Azure 角色](../role-based-access-control/built-in-roles.md)，這些角色向 Azure 容器註冊表提供不同級別的許可權。 使用基於 Azure[角色的存取控制](../role-based-access-control/index.yml)（RBAC） 向需要與註冊表交互的使用者、服務主體或其他標識分配特定許可權。 
 
-| 角色/權限       | [存取 Resource Manager](#access-resource-manager) | [建立/刪除登錄](#create-and-delete-registry) | [推送映像](#push-image) | [提取映像](#pull-image) | [刪除影像資料](#delete-image-data) | [變更原則](#change-policies) |   [簽署映像](#sign-images)  |
+| 角色/權限       | [存取 Resource Manager](#access-resource-manager) | [建立/刪除登錄](#create-and-delete-registry) | [推送映像](#push-image) | [提取映像](#pull-image) | [刪除映像資料](#delete-image-data) | [變更原則](#change-policies) |   [簽署映像](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 擁有者 | X | X | X | X | X | X |  |  
 | 參與者 | X | X | X |  X | X | X |  |  
@@ -58,7 +58,7 @@ Azure Container Registry 服務支援一組[內建的 azure 角色](../role-base
 
 ## <a name="delete-image-data"></a>刪除映像資料
 
-從登錄中[刪除容器映射](container-registry-delete.md)，或刪除其他[支援](container-registry-image-formats.md)的成品（例如 Helm 圖表）的功能。
+從註冊表[中刪除容器圖像](container-registry-delete.md)或刪除其他[受支援的專案](container-registry-image-formats.md)（如 Helm 圖表）的功能。
 
 ## <a name="change-policies"></a>變更原則
 
@@ -70,18 +70,18 @@ Azure Container Registry 服務支援一組[內建的 azure 角色](../role-base
 
 ## <a name="custom-roles"></a>自訂角色
 
-就像其他 Azure 資源一樣，您可以建立自己的[自訂角色](../role-based-access-control/custom-roles.md)，並使用更細緻的許可權來 Azure Container Registry。 然後將自訂角色指派給需要與登錄互動的使用者、服務主體或其他身分識別。 
+與其他 Azure 資源一樣，您可以創建自己的[自訂角色](../role-based-access-control/custom-roles.md)，並具有對 Azure 容器註冊表的細細微性許可權。 然後，將自訂角色指派給使用者、服務主體或其他需要與註冊表交互的標識。 
 
-若要判斷要套用至自訂角色的許可權，請參閱 ContainerRegistry[動作](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)清單、檢查[內建 ACR 角色](../role-based-access-control/built-in-roles.md)的允許動作，或執行下列命令：
+要確定要應用於自訂角色的許可權，請參閱 Microsoft.ContainerRegistry[操作](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)的清單，查看[內置 ACR 角色的](../role-based-access-control/built-in-roles.md)允許操作，或運行以下命令：
 
 ```azurecli
 az provider operation show --namespace Microsoft.ContainerRegistry
 ```
 
-若要定義自訂角色，請參閱[建立自訂角色的步驟](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
+要定義自訂角色，請參閱[創建自訂角色的步驟](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
 
 > [!IMPORTANT]
-> 在自訂角色中，Azure Container Registry 目前不支援萬用字元，例如 `Microsoft.ContainerRegistry/*` 或 `Microsoft.ContainerRegistry/registries/*`，可授與所有相符動作的存取權。 在角色中個別指定任何必要的動作。
+> 在自訂角色中，Azure 容器註冊表當前不支援萬用字元，例如`Microsoft.ContainerRegistry/*`或`Microsoft.ContainerRegistry/registries/*`授予對所有匹配操作的存取權限。 在角色中單獨指定任何必需的操作。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -89,4 +89,4 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 * 深入了解 Azure Container Registry 的[驗證選項](container-registry-authentication.md)。
 
-* 瞭解如何在容器登錄中啟用存放[庫範圍的許可權](container-registry-repository-scoped-permissions.md)（預覽）。
+* 瞭解如何在容器註冊表中啟用[存儲庫範圍的許可權](container-registry-repository-scoped-permissions.md)（預覽）。
