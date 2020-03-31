@@ -10,21 +10,21 @@ ms.date: 09/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: a7b58e96918d26851812aa96c18043121c081e94
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023917"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>依狀態計算作業和節點數目以監視 Batch 解決方案
 
 若要監視及管理大規模的 Azure Batch 解決方案，處於各種狀態的資源必須要有精準的計數。 Azure Batch 提供有效的作業，可取得 Batch *作業*和*計算節點*的這些計數。 請使用這些作業，而非可能很耗時的清單查詢 (會傳回大型工作或節點集合的相關詳細資訊)。
 
-* [取得工作計數][rest_get_task_counts]會取得作業中作用中、執行中和已完成工作的匯總計數，以及成功或失敗的工作。 
+* [取得作業計數][rest_get_task_counts]可取得作業中的作用中、執行中和已完成工作的彙總計數，以及成功或失敗的工作計數。 
 
   藉由計算處於各個狀態的工作數目，您可以更輕鬆地向使用者顯示作業進度，或偵測可能會影響作業的非預期延遲或失敗。 「取得工作計數」適用於 Batch 服務 API 2017-06-01.5.1 起的版本，以及相關 SDK 和工具。
 
-* [列出集區節點計數][rest_get_node_counts]會取得每個集區中處於各種狀態的專用和低優先順序計算節點數目：建立、閒置、離線、搶先、重新開機、重新安裝映射、啟動和其他。 
+* [列出集區節點計數][rest_get_node_counts]可取得每個集區中處於各種狀態的專用和低優先順序計算節點的數目：建立中、閒置、離線、先佔、重新開機中、重新安裝映像中、啟動中和其他狀態。 
 
   藉由計算各個狀態的節點數目，您將可判斷是否有足夠的計算資源可執行作業，並找出集區的潛在問題。 「列出集區節點計數」適用於 Batch 服務 API 2018-03-01.6.1 起的版本，以及相關 SDK 和工具。
 
@@ -35,9 +35,9 @@ ms.locfileid: "77023917"
 「取得工作計數」作業會依下列狀態計算工作數目：
 
 - **作用中** - 已排入佇列且能夠執行、但目前尚未指派給計算節點的工作。 如果工作[相依於尚未完成的父工作](batch-task-dependencies.md)，也會計為 `active`。 
-- **執行中** - 已指派給計算節點、但尚未完成的工作。 當工作的狀態為 [`preparing`] 或 [`running`] 時（如取得工作作業的[相關資訊][rest_get_task]所指示），會將其視為 `running`。
+- **執行中** - 已指派給計算節點、但尚未完成的工作。 處於 `preparing` 或 `running` 狀態的工作會計為 `running`，如[取得工作相關資訊][rest_get_task]作業所示。
 - **已完成** - 因已順利完成，或未順利完成且已達到其重試限制，而不再符合執行條件的工作。 
-- **成功** - 工作執行結果為 `success` 的工作。 Batch 會藉由檢查[executionInfo][rest_get_exec_info]屬性的 `TaskExecutionResult` 屬性來判斷工作是否成功或失敗。
+- **成功** - 工作執行結果為 `success` 的工作。 Batch 會藉由檢查 [executionInfo][rest_get_exec_info] 屬性的 `TaskExecutionResult` 屬性來判斷工作是否成功。
 - **失敗** - 工作執行結果為 `failure` 的工作。
 
 下列 .NET 程式碼範例示範如何依狀態擷取工作計數： 
@@ -71,7 +71,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 - **重新安裝映像中** - 正在重新安裝作業系統的節點。
 - **執行中** - 正在執行一或多個工作 (非啟動工作) 的節點。
 - **啟動中** - 正在啟動 Batch 服務的節點。 
-- **StartTaskFailed** -[啟動][rest_start_task]工作失敗的節點，並已耗盡所有重試次數，以及在啟動工作上設定 `waitForSuccess`。 此類節點無法用來執行工作。
+- **StartTaskFailed** - [啟動工作][rest_start_task]失敗並且已耗盡所有重試次數，且其啟動工作設定了 `waitForSuccess` 的節點。 此類節點無法用來執行工作。
 - **不明** - 失去與 Batch 服務的聯繫、且狀態不明的節點。
 - **無法使用** - 因發生錯誤而無法用來執行工作的節點。
 - **WaitingForStartTask** - 啟動工作已開始執行、但設定了 `waitForSuccess`且啟動工作未完成的節點。

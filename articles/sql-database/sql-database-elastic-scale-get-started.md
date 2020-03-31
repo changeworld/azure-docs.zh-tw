@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987017"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>開始使用彈性資料庫工具
@@ -24,7 +24,7 @@ ms.locfileid: "76987017"
 
 ## <a name="elastic-database-tools-for-java"></a>適用於 Java 的彈性資料庫工具
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * Java Developer Kit (JDK) 1.8 版或更新版本
 * [Maven](https://maven.apache.org/download.cgi)
@@ -70,7 +70,7 @@ ms.locfileid: "76987017"
 
 ## <a name="elastic-database-tools-for-net"></a>適用於 .NET 的彈性資料庫工具
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * 含 C# 的 Visual Studio 2012 或更新版本。 請在 [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)上下載免費版本。
 * NuGet 2.7 或更新版本。 若要取得最新版本，請參閱[安裝 NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)。
@@ -81,7 +81,7 @@ ms.locfileid: "76987017"
 
 若要下載及執行範例，請遵循下列步驟： 
 
-1. 下載[適用于 AZURE SQL 的彈性 DB 工具-消費者入門範例](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
+1. 下載[Azure SQL - 入門示例的彈性資料庫工具](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
 
 2. 若要建立專案，從 *C#* 目錄開啟 *ElasticScaleStarterKit.sln* 方案。
 
@@ -120,7 +120,7 @@ ms.locfileid: "76987017"
 
 例如，範例應用程式會建立新資料庫。 此容量的費用取決於您選擇的 SQL Database 版本，以及您應用程式的 Azure 使用量。
 
-如需價格資訊，請參閱 [SQL Database 定價詳細資料](https://azure.microsoft.com/pricing/details/sql-database/)。
+有關定價資訊，請參閱[SQL 資料庫定價詳細資訊](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 ## <a name="next-steps"></a>後續步驟
 

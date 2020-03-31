@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 虛擬機器擴展集修復自動實例
-description: 瞭解如何為擴展集中的 VM 實例設定自動修復原則
+title: 使用 Azure 虛擬機器縮放集進行自動實例修復
+description: 瞭解如何在規模集中為 VM 實例配置自動修復策略
 author: avirishuv
 manager: vashan
 tags: azure-resource-manager
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
 ms.openlocfilehash: f335b0fb3396103c321d740bcf6d125e60e95086
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274810"
 ---
-# <a name="preview-automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>預覽： Azure 虛擬機器擴展集的自動實例修復
+# <a name="preview-automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>預覽：Azure 虛擬機器縮放集的自動實例修復
 
-針對 Azure 虛擬機器擴展集啟用自動實例修復，可以藉由維護一組狀況良好的實例，協助達到應用程式的高可用性。 如果擴展集中的實例發現[應用程式健康情況延伸](./virtual-machine-scale-sets-health-extension.md)模組或[負載平衡器健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md)所回報的狀況不良，則此功能會藉由刪除狀況不良的實例並建立新的實例來加以取代，以自動執行實例修復。
+為 Azure 虛擬機器擴展集啟用自動實例修復有助於通過維護一組正常實例實現應用程式的高可用性。 如果發現比例集中的實例與[應用程式運行狀況擴展](./virtual-machine-scale-sets-health-extension.md)或[負載等化器運行狀況探測器](../load-balancer/load-balancer-custom-probe-overview.md)報告的那樣不正常，則此功能通過刪除不正常的實例並創建新實例來替換它，自動執行實例修復。
 
 > [!NOTE]
-> 此預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
+> 此預覽功能在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 
-## <a name="requirements-for-using-automatic-instance-repairs"></a>使用自動實例修復的需求
+## <a name="requirements-for-using-automatic-instance-repairs"></a>使用自動實例修復的要求
 
 **加入宣告自動實例修復預覽**
 
-請使用 REST API 或 Azure PowerShell 加入宣告自動實例修復預覽。 這些步驟會針對預覽功能註冊您的訂用帳戶。 請注意，這只是使用這項功能時所需的一次性設定。 如果您的訂用帳戶已註冊自動實例修復預覽，則您不需要再註冊一次。 
+使用 REST API 或 Azure PowerShell 加入宣告自動實例修復預覽。 這些步驟將註冊預覽功能的訂閱。 請注意，這只是使用此功能所需的一次性設置。 如果您的訂閱已註冊用於自動實例修復預覽，則無需再次註冊。 
 
 使用 REST API 
 
-1. 使用功能註冊功能[-register](/rest/api/resources/features/register) 
+1. 使用功能註冊功能[- 註冊](/rest/api/resources/features/register) 
 
 ```
 POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview/register?api-version=2015-12-01'
@@ -49,7 +49,7 @@ POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/
 }
 ```
 
-2. 等待幾分鐘，讓*狀態*變更為 [*已註冊*]。 您可以使用下列 API 來確認這一點。
+2. 等待幾分鐘，*讓國家*更改為*註冊*。 您可以使用以下 API 來確認這一點。
 
 ```
 GET on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview?api-version=2015-12-01'
@@ -66,7 +66,7 @@ GET on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 }
 ```
 
-3. *狀態*變更為 [*已註冊*] 之後，請執行下列程式。
+3. 一旦*國家*更改為*註冊*，然後運行以下內容。
 
 ```
 POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2015-12-01'
@@ -74,7 +74,7 @@ POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?ap
 
 使用 Azure PowerShell
 
-1. 使用 Cmdlet [register-register-azurermresourceprovider](/powershell/module/azurerm.resources/register-azurermresourceprovider) ，後面接著[register-azurermproviderfeature](/powershell/module/azurerm.resources/register-azurermproviderfeature)註冊功能
+1. 使用 Cmdlet[寄存器-AzureRm 資來源提供者](/powershell/module/azurerm.resources/register-azurermresourceprovider)註冊該功能，後跟[註冊 -AzureRm 提供程式功能](/powershell/module/azurerm.resources/register-azurermproviderfeature)
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider `
@@ -85,7 +85,7 @@ Register-AzureRmProviderFeature `
  -FeatureName RepairVMScaleSetInstancesPreview
 ```
 
-2. 等候幾分鐘，讓*RegistrationState*變更為 [*已註冊*]。 您可以使用下列 Cmdlet 來確認這一點。
+2. 等待幾分鐘，註冊*狀態*更改為*註冊*。 您可以使用以下 Cmdlet 來確認這一點。
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature `
@@ -93,80 +93,80 @@ Get-AzureRmProviderFeature `
  -FeatureName RepairVMScaleSetInstancesPreview
  ```
 
- 回應應如下所示。
+ 答覆應如下。
 
-| 功能                           | ProviderName            | RegistrationState       |
+| 功能名稱                           | ProviderName            | 註冊國       |
 |---------------------------------------|-------------------------|-------------------------|
-| RepairVMScaleSetInstancesPreview      | Microsoft.Compute       | 已登錄              |
+| 修復VMScale設置實例預覽      | Microsoft.Compute       | 已登錄              |
 
-3. 當*RegistrationState*變更為 [*已註冊*] 之後，請執行下列 Cmdlet。
+3. 一旦*註冊狀態*更改為*已註冊*，然後運行以下 Cmdlet。
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider `
  -ProviderNamespace Microsoft.Compute
 ```
 
-**啟用擴展集的應用程式健康情況監視**
+**為規模集啟用應用程式運行狀況監視**
 
-擴展集應該具有已啟用實例的應用程式健康情況監視。 這可以使用[應用程式健康狀態延伸](./virtual-machine-scale-sets-health-extension.md)模組或[負載平衡器健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md)來完成。 一次只能啟用其中一個。 應用程式健康情況延伸模組或負載平衡器探查會偵測虛擬機器實例上設定的應用程式端點，以判斷應用程式的健康狀態。 擴展集協調器會使用此健康情況狀態來監視實例健全狀況，並在需要時執行修復。
+規模集應啟用實例的應用程式運行狀況監視。 這可以使用[應用程式運行狀況擴展](./virtual-machine-scale-sets-health-extension.md)或[負載等化器運行狀況探測器](../load-balancer/load-balancer-custom-probe-overview.md)來完成。 一次只能啟用其中一個。 應用程式運行狀況擴展或負載等化器探測在虛擬機器實例上配置的應用程式終結點以確定應用程式運行狀況狀態。 此運行狀況由規模集協調器用於監視實例運行狀況並在需要時執行修復。
 
-**設定端點以提供健全狀況狀態**
+**配置終結點以提供運行狀況**
 
-啟用自動實例修復原則之前，請確定擴展集實例已設定應用程式端點，以發出應用程式健康情況狀態。 當實例在此應用程式端點上傳回狀態200（確定）時，會將實例標示為「狀況良好」。 在所有其他情況下，實例會標示為「狀況不良」，包括下列案例：
+在啟用自動實例修復策略之前，請確保縮放集實例已配置應用程式終結點以發出應用程式運行狀況狀態。 當實例在此應用程式終結點上返回狀態 200 （OK） 時，該實例將標記為"正常"。 在所有其他情況下，實例標記為"不正常"，包括以下方案：
 
-- 當虛擬機器實例內未設定應用程式端點以提供應用程式健康狀態時
-- 當應用程式端點的設定不正確時
-- 當無法連線到應用程式端點時
+- 當虛擬機器實例中沒有配置應用程式終結點以提供應用程式運行狀況時
+- 當應用程式終結點配置不正確時
+- 無法訪問應用程式終結點時
 
-針對標示為「狀況不良」的實例，自動修復會由擴展集觸發。 請先確定已正確設定應用程式端點，再啟用自動修復原則，以避免在設定端點時進行非預期的實例修復。
+對於標記為"不正常"的實例，自動修復由比例集觸發。 在啟用自動修復策略之前，請確保應用程式終結點配置正確，以避免在配置終結點時意外進行實例修復。
 
-**啟用單一放置群組**
+**啟用單個放置組**
 
-此預覽目前僅適用于部署為單一放置群組的擴展集。 您的擴展集應該將屬性*singlePlacementGroup*設定為*true* ，才能使用自動實例修復功能。 深入瞭解[放置群組](./virtual-machine-scale-sets-placement-groups.md#placement-groups)。
+此預覽當前僅適用于作為單個放置組部署的規模集。 屬性*單放置組*應設置為*true，* 以便將縮放設置為使用自動實例修復功能。 瞭解有關[放置組](./virtual-machine-scale-sets-placement-groups.md#placement-groups)的更多。
 
 **API 版本**
 
-計算 API 2018-10-01 版或更高版本支援自動修復原則。
+計算 API 版本 2018-10-01 或更高版本支援自動修復策略。
 
-**資源或訂用帳戶移動的限制**
+**對資源或訂閱移動的限制**
 
-在此預覽中，當啟用自動修復原則時，擴展集目前不支援資源或訂用帳戶移動。
+作為此預覽的一部分，啟用自動修復策略時，縮放集當前不支援資源或訂閱移動。
 
-**Service fabric 擴展集的限制**
+**對服務結構規模集的限制**
 
-Service fabric 擴展集目前不支援此預覽功能。
+服務結構縮放集當前不支援此預覽功能。
 
-## <a name="how-do-automatic-instance-repairs-work"></a>自動實例修復如何正常執行？
+## <a name="how-do-automatic-instance-repairs-work"></a>自動實例修復如何工作？
 
-自動實例修復功能會依賴擴展集中個別實例的健全狀況監視。 擴展集中的 VM 實例可以設定為使用[應用程式健康情況延伸](./virtual-machine-scale-sets-health-extension.md)模組或[負載平衡器健全狀況探查](../load-balancer/load-balancer-custom-probe-overview.md)來發出應用程式健康狀態。 如果發現實例狀況不良，擴展集會藉由刪除狀況不良的實例並建立新的實例來取代它，藉以執行修復動作。 您可以使用*automaticRepairsPolicy*物件，在虛擬機器擴展集模型中啟用這項功能。
+自動實例修復功能依賴于對規模集中的各個實例的運行狀況監視。 縮放集中的 VM 實例可以配置為使用[應用程式運行狀況擴展](./virtual-machine-scale-sets-health-extension.md)或[負載等化器運行狀況探測器](../load-balancer/load-balancer-custom-probe-overview.md)發出應用程式運行狀況。 如果發現實例不正常，則縮放集通過刪除不正常的實例並創建新實例來替換它來執行修復操作。 此功能可以使用*自動修復策略*物件在虛擬機器縮放集模型中啟用。
 
 ### <a name="batching"></a>批次處理
 
-自動實例修復作業會以批次方式執行。 在任何指定的時間，擴展集中的實例數目不會超過5%，而是透過自動修復原則來進行修復。 如果同時發現狀況不良，這有助於避免同時刪除和重新建立大量實例。
+自動實例修復操作分批執行。 在任意給定時間，通過自動修復策略修復比例集中的實例不超過 5%。 這有助於避免同時刪除和重新創建大量實例（如果同時發現不正常）。
 
 ### <a name="grace-period"></a>寬限期
 
-當實例因在擴展集上執行的 PUT、PATCH 或 POST 動作而進行狀態變更作業（例如重新安裝映射、重新部署、更新等等）時，只有在等候寬限期之後，才會執行該實例上的任何修復動作。 寬限期是允許實例回到狀況良好狀態的時間量。 寬限期會在狀態變更完成後開始。 這有助於避免任何過早或意外的修復作業。 擴展集內任何新建立的實例都會接受寬限期（包括做為修復作業的結果所建立的）。 寬限期是以 ISO 8601 格式指定，而且可以使用*automaticRepairsPolicy. gracePeriod*屬性來設定。 寬限期的範圍可以介於30分鐘到90分鐘之間，預設值為30分鐘。
+當實例由於在規模集上執行的 PUT、PATCH 或 POST 操作（例如重新映射、重新部署、更新等）而通過狀態更改操作時，則該實例上的任何修復操作僅在等待寬限期後執行。 寬限期是允許實例返回到正常狀態的時間量。 寬限期在狀態更改完成後開始。 這有助於避免任何過早或意外的維修操作。 對於比例集中中任何新創建的實例（包括由於修復操作而創建的實例），寬限期都適用。 寬限期以 ISO 8601 格式以分鐘為單位指定，可以使用屬性 *"自動修復策略.gracePeriod"* 進行設置。 寬限期的範圍為 30 分鐘到 90 分鐘，預設值為 30 分鐘。
 
-自動實例修復進程的運作方式如下：
+自動實例修復過程的工作方式如下：
 
-1. [應用程式健康情況延伸](./virtual-machine-scale-sets-health-extension.md)模組或[負載平衡器健全狀況探查](../load-balancer/load-balancer-custom-probe-overview.md)會偵測到擴展集中每個虛擬機器內的應用程式端點，以取得每個實例的應用程式健全狀況狀態。
-2. 如果端點以狀態200（確定）回應，則實例會標示為「狀況良好」。 在所有其他情況下（包括無法連線到端點），實例會標示為「狀況不良」。
-3. 當發現實例狀況不良時，擴展集會藉由刪除狀況不良的實例並建立新的實例來觸發修復動作，以取代它。
-4. 實例修復會以批次方式執行。 在任何指定的時間，擴展集中的總實例總數不會超過5%。 如果擴展集的實例少於20個，則會一次對一個狀況不良的實例進行修復。
-5. 上述程式會繼續進行，直到修復擴展集中所有狀況不良的實例為止。
+1. [應用程式運行狀況擴展](./virtual-machine-scale-sets-health-extension.md)或[負載等化器運行狀況探測](../load-balancer/load-balancer-custom-probe-overview.md)在規模集中的每個虛擬機器內對應用程式終結點進行 ping，以獲取每個實例的應用程式運行狀況狀態。
+2. 如果終結點回應狀態為 200 （OK），則實例將標記為"正常"。 在所有其他情況下（包括終結點無法訪問），實例標記為"不正常"。
+3. 當發現實例不正常時，縮放集通過刪除不正常的實例並創建新實例來替換它來觸發修復操作。
+4. 實例修復分批執行。 在任何給定時間，將修復規模集中總實例的 5%。 如果比例集的實例少於 20 個實例，則一次為一個不正常的實例執行修復。
+5. 上述過程將繼續，直到修復比例集中的所有不正常實例。
 
 ## <a name="instance-protection-and-automatic-repairs"></a>實例保護和自動修復
 
-如果擴展集中的實例受到套用 [ *[從擴展集保護] 保護原則](./virtual-machine-scale-sets-instance-protection.md#protect-from-scale-set-actions)* 的保護，則不會在該實例上執行自動修復。
+如果比例集中的實例通過應用*["保護從比例集操作"保護原則](./virtual-machine-scale-sets-instance-protection.md#protect-from-scale-set-actions)* 進行保護，則不會對該實例執行自動修復。
 
-## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>在建立新的擴展集時啟用自動修復原則
+## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>創建新比例集時啟用自動修復策略
 
-在建立新的擴展集時，若要啟用自動修復原則，請確定已符合加入宣告這項功能的所有[需求](#requirements-for-using-automatic-instance-repairs)。 應用程式端點應正確設定為擴展集實例，以避免在設定端點時觸發非預期的修復。 針對新建立的擴展集，只有在等候寬限期的持續時間之後，才會執行任何實例修復。 若要在擴展集中啟用自動實例修復，請使用虛擬機器擴展集模型中的*automaticRepairsPolicy*物件。
+對於在創建新比例集時啟用自動修復策略，請確保滿足加入宣告此功能的所有[要求](#requirements-for-using-automatic-instance-repairs)。 應正確配置應用程式終結點以用於縮放集實例，以避免在配置終結點時觸發意外修復。 對於新創建的縮放集，任何實例修復僅在等待寬限期後執行。 要在比例集中啟用自動實例修復，請使用虛擬機器縮放集模型中的*自動修復策略*物件。
 
 ### <a name="rest-api"></a>REST API
 
-下列範例顯示如何在擴展集模型中啟用自動實例修復。 使用 API 版本2018-10-01 或更高版本。
+下面的示例演示如何在比例集模型中啟用自動實例修復。 使用 API 版本 2018-10-01 或更高版本。
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-07-01'
@@ -185,7 +185,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用[new-azvmssconfig](/powershell/module/az.compute/new-azvmssconfig)指令程式建立新的擴展集時，可以啟用自動實例修復功能。 此範例腳本會逐步解說如何使用設定檔來建立擴展集和相關聯的資源：[建立完整的虛擬機器擴展集](./scripts/powershell-sample-create-complete-scale-set.md)。 您可以將*EnableAutomaticRepair*和*AutomaticRepairGracePeriod*參數新增至設定物件，以設定自動實例修復原則，以建立擴展集。 下列範例會在30分鐘的寬限期內啟用此功能。
+可以使用[New-AzVmsConfig](/powershell/module/az.compute/new-azvmssconfig) Cmdlet 創建新比例集時啟用自動實例修復功能。 此示例腳本使用設定檔流覽比例集和相關資源的創建：[創建完整的虛擬機器規模集](./scripts/powershell-sample-create-complete-scale-set.md)。 您可以通過將參數*啟用"自動修復"* 和 *"自動修復寬限期"* 添加到用於創建比例集的設定物件來配置自動實例修復策略。 下面的示例啟用寬限期為 30 分鐘的功能。
 
 ```azurepowershell-interactive
 New-AzVmssConfig `
@@ -197,13 +197,13 @@ New-AzVmssConfig `
  -AutomaticRepairGracePeriod "PT30M"
 ```
 
-## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>在更新現有的擴展集時啟用自動修復原則
+## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>更新現有規模集時啟用自動修復策略
 
-在現有的擴展集內啟用自動修復原則之前，請確定已符合加入宣告這項功能的所有[需求](#requirements-for-using-automatic-instance-repairs)。 應用程式端點應正確設定為擴展集實例，以避免在設定端點時觸發非預期的修復。 若要在擴展集中啟用自動實例修復，請使用虛擬機器擴展集模型中的*automaticRepairsPolicy*物件。
+在現有比例集中啟用自動修復策略之前，請確保滿足加入宣告此功能的所有[要求](#requirements-for-using-automatic-instance-repairs)。 應正確配置應用程式終結點以用於縮放集實例，以避免在配置終結點時觸發意外修復。 要在比例集中啟用自動實例修復，請使用虛擬機器縮放集模型中的*自動修復策略*物件。
 
 ### <a name="rest-api"></a>REST API
 
-下列範例會啟用寬限期為40分鐘的原則。 使用 API 版本2018-10-01 或更高版本。
+下面的示例啟用寬限期為 40 分鐘的策略。 使用 API 版本 2018-10-01 或更高版本。
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-07-01'
@@ -222,7 +222,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用[get-azvmss](/powershell/module/az.compute/update-azvmss) Cmdlet 來修改現有擴展集中自動實例修復功能的設定。 下列範例會將寬限期更新為40分鐘。
+使用[Update-AzVms](/powershell/module/az.compute/update-azvmss) Cmdlet 修改現有規模集中自動實例修復功能的配置。 下面的示例將寬限期更新為 40 分鐘。
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -234,18 +234,18 @@ Update-AzVmss `
 
 ## <a name="troubleshoot"></a>疑難排解
 
-**無法啟用自動修復原則**
+**無法啟用自動修復策略**
 
-如果您收到「BadRequest」錯誤訊息，指出「找不到 ' properties ' 類型之物件上的成員 ' automaticRepairsPolicy '」，請檢查用於虛擬機器擴展集的 API 版本。 這項功能需要 API 2018-10-01 版或更新版本。
+如果收到"BadRequest"錯誤，其中顯示一條消息，指出"在類型'屬性'的物件上找不到成員'自動修復策略'"，請檢查用於虛擬機器規模集的 API 版本。 此功能需要 API 版本 2018-10-01 或更高版本。
 
-**實例未獲得修復，即使已啟用原則**
+**即使啟用策略，實例也不會修復**
 
-實例可能在寬限期內。 這是在執行修復之前，實例上的任何狀態變更後所要等待的時間量。 這是為了避免任何過早或意外的修復。 完成實例的寬限期之後，就會發生修復動作。
+實例可能處於寬限期。 這是執行修復之前實例上任何狀態更改後等待的時間量。 這是為了避免任何過早或意外的維修。 實例的寬限期完成後，應執行修復操作。
 
-**正在查看擴展集實例的應用程式健康情況狀態**
+**查看縮放集實例的應用程式運行狀況**
 
-您可以針對虛擬機器擴展集中的實例使用[取得實例視圖 API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) ，以查看應用程式健全狀況狀態。 使用 Azure PowerShell，您可以使用 Cmdlet [get-azvmssvm](/powershell/module/az.compute/get-azvmssvm)搭配 *-InstanceView*旗標。 應用程式健康狀態會在屬性*vmHealth*底下提供。
+您可以將[獲取實例視圖 API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview)用於虛擬機器規模集中的實例以查看應用程式運行狀況狀態。 使用 Azure PowerShell，可以將 Cmdlet [Get-AzVmsVM](/powershell/module/az.compute/get-azvmssvm)與 *-實例視圖*標誌一起使用。 應用程式運行狀況狀態在屬性*vmHealth*下提供。
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何為您的擴展集設定[應用程式健康情況延伸](./virtual-machine-scale-sets-health-extension.md)模組或[負載平衡器健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md)。
+瞭解如何為規模集配置[應用程式運行狀況擴展](./virtual-machine-scale-sets-health-extension.md)或[負載平衡器運行狀況探測](../load-balancer/load-balancer-custom-probe-overview.md)。

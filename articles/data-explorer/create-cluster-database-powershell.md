@@ -1,5 +1,5 @@
 ---
-title: 使用 Powershell 建立 Azure 資料總管叢集 & DB
+title: 使用電源外殼創建 &資料庫的 Azure 資料資源管理器群集
 description: 了解如何使用 PowerShell 建立 Azure 資料總管叢集與資料庫
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -8,33 +8,33 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560587"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 建立 Azure 資料總管叢集與資料庫
 
 > [!div class="op_single_selector"]
 > * [入口網站](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [電源外殼](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM 範本](create-cluster-database-resource-manager.md)  
 
-Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，您會使用 Powershell 來建立叢集和資料庫。 您可以使用 [Az.Kusto](../cloud-shell/overview.md) 在 Windows 和 Linux 上或在 [Azure Cloud Shell](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) 中執行 PowerShell Cmdlet 和指令碼，以建立及設定 Azure 資料總管叢集與資料庫。
+Azure 資料總管是快速、完全受控的資料分析服務，可即時分析來自應用程式、網站、IoT 裝置等的大量資料流。 若要使用 Azure 資料總管，請先建立叢集，然後在該叢集中建立一或多個資料庫。 然後將資料內嵌 (載入) 至資料庫，讓您可以對資料執行查詢。 在本文中，您可以使用 Powershell 創建群集和資料庫。 您可以使用 [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) 在 Windows 和 Linux 上或在 [Azure Cloud Shell](../cloud-shell/overview.md) 中執行 PowerShell Cmdlet 和指令碼，以建立及設定 Azure 資料總管叢集與資料庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 Azure CLI，本文會要求 Azure CLI 版本2.0.4 版或更新版本。 執行 `az --version` 來檢查您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果選擇在本地安裝和使用 Azure CLI，則本文需要 Azure CLI 版本 2.0.4 或更高版本。 執行 `az --version` 來檢查您的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="configure-parameters"></a>設定參數
 
@@ -79,7 +79,7 @@ Azure 資料總管是快速、完全受控的資料分析服務，可即時分�
     Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
-如果結果中包含有 `provisioningState` 值的 `Succeeded`，表示已成功建立叢集。
+如果結果中包含有 `Succeeded` 值的 `provisioningState`，表示已成功建立叢集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 資料總管叢集中建立資料庫
 
@@ -107,7 +107,7 @@ Azure 資料總管是快速、完全受控的資料分析服務，可即時分�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-* 如果您打算遵循其他文章，請保留您建立的資源。
+* 如果您計畫關注我們的其他文章，請保留您創建的資源。
 * 若要清除資源，請刪除叢集。 您刪除叢集時，也會刪除其中的所有資料庫。 使用下列命令刪除您的叢集：
 
     ```azurepowershell-interactive

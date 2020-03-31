@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案（AVS）-設定適用于 AVS 私人雲端的 vSAN 加密
-description: 說明如何設定 vSAN 軟體加密功能，讓您的 AVS 私用雲端可以與在 Azure 虛擬網路中執行的金鑰管理伺服器搭配運作。
+title: Azure VMware 解決方案（按雲簡單 ） - 為私有雲配置 vSAN 加密
+description: 描述如何配置 vSAN 軟體加密功能，以便雲簡單私有雲可以使用在 Azure 虛擬網路中運行的金鑰管理伺服器。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,110 +8,110 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 056c05701a3915610fb17a7e8c04feb743e38286
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020636"
 ---
-# <a name="configure-vsan-encryption-for-avs-private-cloud"></a>設定適用于 AVS 私人雲端的 vSAN 加密
+# <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>為雲簡單私有雲配置 vSAN 加密
 
-您可以設定 vSAN 軟體加密功能，讓您的 AVS 私用雲端可以與在 Azure 虛擬網路中執行的金鑰管理伺服器搭配運作。
+您可以配置 vSAN 軟體加密功能，以便雲簡單私有雲可以使用在 Azure 虛擬網路中運行的金鑰管理伺服器。
 
-使用 vSAN 加密時，VMware 需要使用外部 KMIP 1.1 相容的協力廠商金鑰管理伺服器（KMS）工具。 您可以利用 VMware 認證且適用于 Azure 的任何受支援 KMS。
+VMware 在使用 vSAN 加密時需要使用符合外部 KMIP 1.1 標準的協力廠商金鑰管理伺服器 （KMS） 工具。 您可以利用 VMware 認證且可用於 Azure 的任何受支援的 KMS。
 
-本指南說明如何使用在 Azure 虛擬網路中執行的 HyTrust KeyControl KMS。 適用于 vSAN 的任何其他認證的協力廠商 KMS 解決方案都可以使用類似的方法。
+本指南介紹如何使用在 Azure 虛擬網路中運行的 HyTrust 金鑰控制 KMS。 類似的方法可用於任何其他經過認證的協力廠商 KMS 解決方案的 vSAN。
 
-此 KMS 解決方案需要您：
+此 KMS 解決方案要求您：
 
-* 在您的 Azure 虛擬網路中安裝、設定及管理 VMware 認證的協力廠商 KMS 工具。
-* 提供您自己的 KMS 工具授權。
-* 使用在 Azure 虛擬網路中執行的協力廠商 KMS 工具，在您的 AVS 私人雲端中設定和管理 vSAN 加密。
+* 在 Azure 虛擬網路中安裝、配置和管理 VMware 認證的協力廠商 KMS 工具。
+* 為 KMS 工具提供您自己的許可證。
+* 使用在 Azure 虛擬網路中運行的協力廠商 KMS 工具在私有雲中配置和管理 vSAN 加密。
 
-## <a name="kms-deployment-scenario"></a>KMS 部署案例
+## <a name="kms-deployment-scenario"></a>KMS 部署方案
 
-KMS 伺服器叢集會在您的 Azure 虛擬網路中執行，並可透過已設定的 Azure ExpressRoute 連線從 AVS 私用雲端 vCenter 連線到 IP。
+KMS 伺服器叢集在 Azure 虛擬網路中運行，通過配置的 Azure ExpressRoute 連接從私有雲 vCenter 可進行 IP 可伸路。
 
-![..Azure 虛擬網路中的/media/KMS 叢集](media/vsan-kms-cluster.png)
+![..Azure 虛擬網路中的媒體/KMS 群集](media/vsan-kms-cluster.png)
 
 ## <a name="how-to-deploy-the-solution"></a>如何部署解決方案
 
-部署程式具有下列步驟：
+部署過程具有以下步驟：
 
-1. [確認符合必要條件](#verify-prerequisites-are-met)
-2. [AVS 入口網站：取得 ExpressRoute 對等互連資訊](#avs-portal-obtain-expressroute-peering-information)
-3. [Azure 入口網站：將您的虛擬網路連線到 AVS 私人雲端](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
-4. [Azure 入口網站：在您的虛擬網路中部署 HyTrust KeyControl 叢集](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
-5. [HyTrust WebUI：設定 KMIP 伺服器](#hytrust-webui-configure-the-kmip-server)
-6. [vCenter UI：將 vSAN 加密設定為在您的 Azure 虛擬網路中使用 KMS 叢集](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
+1. [驗證是否滿足先決條件](#verify-prerequisites-are-met)
+2. [雲簡單門戶：獲取快速路由對等資訊](#cloudsimple-portal-obtain-expressroute-peering-information)
+3. [Azure 門戶：將虛擬網路連接到私有雲](#azure-portal-connect-your-virtual-network-to-your-private-cloud)
+4. [Azure 門戶：在虛擬網路中部署 HyTrust 金鑰控制群集](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
+5. [HyTrust WebUI：配置KMIP伺服器](#hytrust-webui-configure-the-kmip-server)
+6. [vCenter UI：配置 vSAN 加密以在 Azure 虛擬網路中使用 KMS 群集](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
 
-### <a name="verify-prerequisites-are-met"></a>確認符合必要條件
+### <a name="verify-prerequisites-are-met"></a>滿足驗證先決條件
 
-在部署之前，請確認下列事項：
+在部署之前驗證以下內容：
 
-* 選取的 KMS 廠商、工具和版本位於 vSAN 相容性清單上。
-* 選取的廠商支援在 Azure 中執行的工具版本。
-* Azure 版本的 KMS 工具與 KMIP 1.1 相容。
-* 已建立 Azure Resource Manager 和虛擬網路。
-* 已建立 AVS 私用雲端。
+* 所選 KMS 供應商、工具和版本位於 vSAN 相容性清單中。
+* 所選供應商支援要在 Azure 中運行的工具的版本。
+* KMS 工具的 Azure 版本符合 KMIP 1.1 標準。
+* 已創建 Azure 資源管理器和虛擬網路。
+* 雲簡單私有雲已創建。
 
-### <a name="avs-portal-obtain-expressroute-peering-information"></a>AVS 入口網站：取得 ExpressRoute 對等互連資訊
+### <a name="cloudsimple-portal-obtain-expressroute-peering-information"></a>雲簡單門戶：獲取快速路由對等資訊
 
-若要繼續進行設定，您需要 ExpressRoute 的授權金鑰和對等線路 URI，再加上 Azure 訂用帳戶的存取權。 這項資訊可在 AVS 入口網站的 [虛擬網路連線] 頁面上取得。 如需指示，請參閱[設定與 AVS 私人雲端的虛擬網路](virtual-network-connection.md)連線。 如果您在取得資訊時遇到任何問題，請開啟[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+要繼續設置，需要 ExpressRoute 的授權金鑰和對等電路 URI 以及對 Azure 訂閱的訪問。 此資訊可在雲簡單門戶中的虛擬網路連接頁面上找到。 有關說明，請參閱[設置到私有雲的虛擬網路連接](virtual-network-connection.md)。 如果您在獲取資訊時遇到任何問題，請打開[支援請求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-avs-private-cloud"></a>Azure 入口網站：將您的虛擬網路連線到 AVS 私人雲端
+### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure 門戶：將虛擬網路連接到私有雲
 
-1. 遵循[使用 Azure 入口網站設定 ExpressRoute 的虛擬網路閘道](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)中的指示，為您的虛擬網路建立虛擬網路閘道。
-2. 遵循[使用入口網站將虛擬網路連線到 ExpressRoute 電路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)中的指示，將您的虛擬網路連結到 AVS ExpressRoute 線路。
-3. 使用來自 AVS 的歡迎電子郵件中收到的 AVS ExpressRoute 線路資訊，將您的虛擬網路連結至 Azure 中的 AVS ExpressRoute 線路。
-4. 輸入 [授權金鑰] 和 [對等線路 URI]，並指定連線的名稱，然後按一下 **[確定]** 。
+1. 使用 Azure 門戶按照[ExpressRoute 配置虛擬網路閘道](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)中的說明為虛擬網路創建虛擬網路閘道。
+2. 使用門戶，按照[將虛擬網路連接到 ExpressRoute 電路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)中的說明，將虛擬網路連結到雲簡單快速路由電路。
+3. 使用雲簡單歡迎電子郵件中收到的 CloudSimple 快速路由電路資訊將虛擬網路連結到 Azure 中的雲簡單快速路由電路。
+4. 輸入授權金鑰和對等電路 URI，為連接指定名稱，然後按一下 **"確定**"。
 
-![建立虛擬網路時提供 CS 對等線路 URI](media/vsan-azureportal01.png) 
+![創建虛擬網路時提供 CS 等體電路 URI](media/vsan-azureportal01.png) 
 
-### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure 入口網站：在虛擬網路的 Azure Resource Manager 中部署 HyTrust KeyControl 叢集
+### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure 門戶：在虛擬網路中的 Azure 資源管理器中部署 HyTrust 金鑰控制群集
 
-若要在虛擬網路的 Azure Resource Manager 中部署 HyTrust KeyControl 叢集，請執行下列工作。 如需詳細資訊，請參閱[HyTrust 檔](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)。
+要在虛擬網路中的 Azure 資源管理器中部署 HyTrust 金鑰控制群集，請執行以下任務。 有關詳細資訊，請參閱[HyTrust 文檔](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)。
 
-1. 遵循 HyTrust 檔中的指示，建立具有指定輸入規則的 Azure 網路安全性群組（nsg-hytrust）。
-2. 在 Azure 中產生 SSH 金鑰組。
-3. 從 Azure Marketplace 中的映射部署初始 KeyControl 節點。 使用所產生金鑰組的公開金鑰，然後選取 [ **nsg-hytrust** ] 作為 [KeyControl] 節點的 [網路安全性群組]。
+1. 按照 HyTrust 文檔中的說明創建具有指定入站規則的 Azure 網路安全性群組 （nsg-hytrust）。
+2. 在 Azure 中生成 SSH 金鑰組。
+3. 從 Azure 應用商店中的映射部署初始金鑰控制節點。  使用生成的金鑰組的公開金鑰，選擇**nsg-hytrust**作為金鑰控制節點的網路安全性群組。
 4. 將 KeyControl 的私人 IP 位址轉換為靜態 IP 位址。
-5. 透過 SSH 連線到 KeyControl VM，其使用其公用 IP 位址和先前提及之金鑰組的私密金鑰。
-6. 在 SSH 命令介面中出現提示時，選取 [`No`]，將節點設定為初始 KeyControl 節點。
-7. 重複執行此程式的步驟3-5，並在系統提示您新增至現有叢集時選取 `Yes`，以新增其他 KeyControl 節點。
+5. SSH 到金鑰控制 VM 使用其公共 IP 位址和前面提到的金鑰組的私密金鑰。
+6. 當 SSH shell 中提示`No`時，選擇將節點設置為初始金鑰控制節點。
+7. 通過重複此過程的步驟 3-5 並選擇`Yes`何時提示添加到現有群集，添加其他 KeyControl 節點。
 
-### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI：設定 KMIP 伺服器
+### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI：配置 KMIP 伺服器
 
-移至 [HTTPs://] [*公用-ip*]，其中 [*公用 Ip* ] 是 KeyControl 節點 VM 的公用 ip 位址。 請遵循[HyTrust 檔](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)中的下列步驟。
+轉到公共*ip*HTTPs:// ，其中*公共 ip*是 KeyControl 節點 VM 的公共 IP 位址。 按照[HyTrust 文檔中](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)的步驟操作。
 
-1. [設定 KMIP 伺服器](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
-2. [建立 VMware 加密的憑證配套](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
+1. [配置 KMIP 伺服器](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
+2. [為 VMware 加密創建證書包](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
 
-### <a name="vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network"></a>vCenter UI：將 vSAN 加密設定為在您的 Azure 虛擬網路中使用 KMS 叢集
+### <a name="vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network"></a>vCenter UI：配置 vSAN 加密以在 Azure 虛擬網路中使用 KMS 群集
 
-遵循 HyTrust 指示，[在 vCenter 中建立 KMS](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)叢集。
+按照 HyTrust 說明[在 vCenter 中創建 KMS 群集](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)。
 
-![在 vCenter 中新增 KMS 叢集詳細資料](media/vsan-config01.png)
+![在 vCenter 中添加 KMS 群集詳細資訊](media/vsan-config01.png)
 
-在 vCenter 中，移至 [叢集] **> [設定**]，然後選取 **[一般**] 選項作為 vSAN。 啟用加密，並選取先前已新增至 vCenter 的 KMS 叢集。
+在 vCenter 中，轉到**群集>配置**並選擇 vSAN**的"常規**"選項。 啟用加密並選擇以前添加到 vCenter 的 KMS 群集。
 
-![啟用 vSAN 加密並在 vCenter 中設定 KMS 叢集](media/vsan-config02.png)
+![啟用 vSAN 加密並在 vCenter 中配置 KMS 群集](media/vsan-config02.png)
 
 ## <a name="references"></a>參考
 
 ### <a name="azure"></a>Azure
 
-[使用 Azure 入口網站設定 ExpressRoute 的虛擬網路閘道](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+[使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
 
 [使用入口網站將虛擬網路連線到 ExpressRoute 線路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
-### <a name="hytrust"></a>HyTrust
+### <a name="hytrust"></a>海信
 
-[HyTrust DataControl 和 Microsoft Azure](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)
+[HyTrust 資料控制和微軟 Azure](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)
 
-[設定 KMPI 伺服器](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
+[配置 KMPI 伺服器](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
 
-[建立 VMware 加密的憑證配套](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
+[為 VMware 加密創建證書包](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
 
-[在 vSphere 中建立 KMS 叢集](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)
+[在 vSphere 中創建 KMS 群集](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)

@@ -1,20 +1,20 @@
 ---
-title: 防火牆規則-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明如何使用防火牆規則來連接到適用於 PostgreSQL 的 Azure 資料庫單一伺服器。
+title: 防火牆規則 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
+description: 本文介紹如何使用防火牆規則連接到 Azure 資料庫的 PostgreSQL - 單伺服器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157265"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的防火牆規則-單一伺服器
-適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆會防止所有對資料庫伺服器的存取，直到您指定哪些電腦擁有許可權為止。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
+# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure 資料庫中的防火牆規則，用於 PostgreSQL - 單個伺服器
+用於 PostgreSQL 伺服器防火牆的 Azure 資料庫阻止對資料庫伺服器的所有訪問，直到指定哪些電腦具有許可權。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
 若要設定您的防火牆，您可以建立防火牆規則，指定可接受的 IP 位址範圍。 您可以在伺服器層級建立防火牆規則。
 
 **防火牆規則：** 這些規則可讓用戶端完整存取適用於 PostgreSQL 的 Azure 資料庫伺服器，也就是相同邏輯伺服器內的所有資料庫。 使用 Azure 入口網站或使用 Azure CLI 命令，即可設定伺服器層級的防火牆規則。 若要建立伺服器層級的防火牆規則，您必須是訂用帳戶擁有者或訂用帳戶參與者。
@@ -32,24 +32,24 @@ ms.locfileid: "76157265"
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
 
 ## <a name="connecting-from-azure"></a>從 Azure 連線
-建議您尋找任何應用程式或服務的連出 IP 位址，並明確允許存取這些個別的 IP 位址或範圍。 例如，您可以尋找 Azure App Service 的連出 IP 位址，或使用系結至虛擬機器或其他資源的公用 IP （請參閱下方的資訊，以取得透過服務端點連線至虛擬機器的私人 IP）。 
+建議您找到任何應用程式或服務的傳出 IP 位址，並顯式允許訪問這些單獨的 IP 位址或範圍。 例如，您可以查找 Azure 應用服務的傳出 IP 位址或使用綁定到虛擬機器或其他資源的公共 IP（有關在服務終結點上與虛擬機器的專用 IP 連接的資訊，請參閱下文）。 
 
-如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線**安全性**] 窗格將 [**允許存取 Azure 服務**] 選項設為 [**開啟**]，以從 Azure 入口網站啟用此設定，然後點擊 [**儲存**]。 從 Azure CLI，具有開始和結束位址等於0.0.0.0 的防火牆規則設定會執行對等的。 如果不允許連線嘗試，要求就不會到達適用於 PostgreSQL 的 Azure 資料庫伺服器。
+如果固定傳出 IP 位址不適用於 Azure 服務，則可以考慮啟用來自所有 Azure 資料中心 IP 位址的連接。 可以通過將"**允許訪問 Azure 服務"** 選項設置為"**從連接安全**窗格**中打開**"並點擊 **"保存**"，從 Azure 門戶啟用此設置。 從 Azure CLI 中，具有開始和結束位址等於 0.0.0.0 的防火牆規則設置等效。 如果不允許連線嘗試，要求就不會到達適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 > [!IMPORTANT]
-> [**允許存取 azure 服務**] 選項會將防火牆設定為允許所有來自 Azure 的連線，包括來自其他客戶之訂用帳戶的連接。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。
+> "**允許訪問 Azure 服務**"選項將防火牆配置為允許來自 Azure 的所有連接，包括來自其他客戶的訂閱的連接。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。
 > 
 
 ![在入口網站中設定 [允許存取 Azure 服務]](media/concepts-firewall-rules/allow-azure-services.png)
 
-### <a name="connecting-from-a-vnet"></a>從 VNet 連接
-若要從 VNet 安全地連接到您的適用於 PostgreSQL 的 Azure 資料庫伺服器，請考慮使用[vnet 服務端點](./concepts-data-access-and-security-vnet.md)。 
+### <a name="connecting-from-a-vnet"></a>從 VNet 進行連接
+要從 VNet 安全地連接到用於 PostgreSQL 伺服器的 Azure 資料庫，請考慮使用[VNet 服務終結點](./concepts-data-access-and-security-vnet.md)。 
 
 ## <a name="programmatically-managing-firewall-rules"></a>以程式設計方式管理防火牆規則
 除了 Azure 入口網站之外，防火牆規則還可以程式設計方式使用 Azure CLI 來管理。
 另請參閱[使用 Azure CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-cli.md)。
 
-## <a name="troubleshooting-firewall-issues"></a>疑難排解防火牆問題
+## <a name="troubleshooting-firewall-issues"></a>解決防火牆問題
 對於適用於 PostgreSQL 的 Microsoft Azure 資料庫伺服器服務的存取未如預期般運作時，請考慮下列幾點：
 
 * **對允許清單的變更尚未生效：** 對適用於 PostgreSQL 之 Azure 資料庫伺服器防火牆組態的變更最多可能會延遲 5 分鐘才能生效。
@@ -65,10 +65,10 @@ ms.locfileid: "76157265"
 
    * 改為針對您的用戶端電腦取得靜態 IP 位址，然後將該靜態 IP 位址新增為防火牆規則。
 
-* **伺服器的 IP 看起來是公用的：** 適用於 PostgreSQL 的 Azure 資料庫伺服器的連線會透過可公開存取的 Azure 閘道進行路由傳送。 不過，實際的伺服器 IP 會受到防火牆保護。 如需詳細資訊，請瀏覽[連線架構文章](concepts-connectivity-architecture.md)。 
+* **伺服器的 IP 似乎是公開的：** 與 PostgreSQL 伺服器的 Azure 資料庫的連接通過可公開訪問的 Azure 閘道路由。 不過，實際的伺服器 IP 會受到防火牆保護。 有關詳細資訊，請訪問[連接體系結構文章](concepts-connectivity-architecture.md)。 
 
 ## <a name="next-steps"></a>後續步驟
 如需有關建立伺服器層級和資料庫層級防火牆規則的文章，請參閱：
 * [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-cli.md)
-- [適用於 PostgreSQL 的 Azure 資料庫中的 VNet 服務端點](./concepts-data-access-and-security-vnet.md)
+- [Azure 資料庫中的 VNet 服務終結點用於 PostgreSQL](./concepts-data-access-and-security-vnet.md)

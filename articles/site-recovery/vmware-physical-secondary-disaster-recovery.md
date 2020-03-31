@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 將 VMware Vm/實體伺服器損毀修復至次要網站
+title: VMware VM/物理伺服器的災害復原到具有 Azure 網站恢復的輔助網站
 description: 了解如何使用 Azure Site Recovery 設定 VMware VM 或 Windows 和 Linux 實體伺服器至次要網站的災害復原。
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256805"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>設定內部部署 VMware 虛擬機器或實體伺服器至次要網站的災害復原
@@ -46,14 +46,14 @@ Azure Site Recovery 將持續創新，以 Azure 作為災害復原站台，為 V
 
 ### <a name="quick-comparison"></a>快速比較
 
-**功能** | **複寫至 Azure** |**在 VMware 資料中心之間複寫**
+**特徵** | **複寫至 Azure** |**在 VMware 資料中心之間複寫**
 --|--|--
-**必要的元件** |複寫機器上的行動服務。 內部部署組態伺服器、處理伺服器、主要目標伺服器。Azure 中用於容錯回復的臨時處理伺服器。|行動服務、處理伺服器、組態伺服器和主要目標
+**所需元件** |複寫機器上的行動服務。 內部部署組態伺服器、處理伺服器、主要目標伺服器。Azure 中用於容錯回復的臨時處理伺服器。|行動服務、處理伺服器、組態伺服器和主要目標
 **組態和協調流程** |Azure 入口網站中的復原服務保存庫 | 使用 vContinuum 
-**複寫** |磁碟 (Windows 和 Linux) |磁碟區 - Windows<br> 磁碟 - Linux
+**複製** |磁碟 (Windows 和 Linux) |磁碟區 - Windows<br> 磁碟 - Linux
 **共用磁碟叢集** |不支援|支援
 **資料變換限制 (平均值)** |每個磁碟 10 MB/s 的資料<br> 每個 VM 25 MB/s 的資料<br> [深入了解](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | 每個磁碟 > 10 MB/s 的資料  <br> 每個 VM > 25 MB/s 的資料
-**監視** |從 Azure 入口網站|從 CX (組態伺服器)
+**監測** |從 Azure 入口網站|從 CX (組態伺服器)
 **支援矩陣** | [按一下這裡以取得詳細資訊](./vmware-physical-azure-support-matrix.md)|[下載 ASR Scout 相容矩陣](https://aka.ms/asr-scout-cm)
 
 
@@ -118,14 +118,14 @@ Azure Site Recovery 將持續創新，以 Azure 作為災害復原站台，為 V
 - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
 - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
   1. 解壓縮 .zip 檔。
-  2. **Rx 伺服器**： **0_GA_Update_7_2965621_28Dec18 gz RX_8**複製到 rx 伺服器，然後將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。
-  3. 設定**伺服器和進程伺服器**：複製**CX_Windows_8 0.7. 0_GA_Update_7_2965621_28Dec18 .exe**到設定伺服器和進程伺服器。 連按兩下加以執行。<br>
-  4. **Windows 主要目標伺服器**：若要更新整合代理程式，請將**InMage_UA_8. 0.7. 0_Windows_GA_27Dec2018_release**複製到伺服器。 連按兩下加以執行。 相同的檔案也可以用於全新安裝。 相同的整合代理程式更新也適用於來源伺服器。
+  2. **RX 伺服器**： 將**RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz**複製到 RX 伺服器，並提取它。 在解壓縮的資料夾中執行 **/Install**。
+  3. **佈建服務器和進程伺服器**：將**CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe**複製到佈建服務器和進程伺服器。 連按兩下加以執行。<br>
+  4. **Windows 主目標伺服器**：要更新統一代理，請將**InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe**複製到伺服器。 連按兩下加以執行。 相同的檔案也可以用於全新安裝。 相同的整合代理程式更新也適用於來源伺服器。
   更新不需要在使用 **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** 備妥的主要目標上套用，因為這是包含所有最新變更的新公開推出安裝程式。
-  5. **vContinuum 伺服器**：複製**InMage_Scout_vContinuum_MT_8 0.7. 0_Windows_GA_27Dec2018_release .exe**至伺服器。  確定您已經關閉 vContinuum 精靈。 連按兩下檔案加以執行。
-  6. **Linux 主要目標伺服器**：若要更新整合代理程式，請將**InMage_UA_8 0_RHEL6-64_GA_03Dec2018_release Gz**到 Linux 主要目標伺服器，然後將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。
-  7. **Windows 來源伺服器**：若要更新整合代理程式，請將**InMage_UA_8. 0.7. 0_Windows_GA_27Dec2018_release**複製到來源伺服器。 連按兩下檔案加以執行。 
-  8. **Linux 來源伺服器**：若要更新整合代理程式，請將對應的整合代理程式版本複製到 Linux 伺服器並將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。  範例：若為 RHEL 6.7 64-bit server，請複製**InMage_UA_8 0_RHEL6-64_GA_03Dec2018_release. gz**至伺服器，然後將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。
+  5. **vContinuum 伺服器**： 將**InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe**複製到伺服器。  確定您已經關閉 vContinuum 精靈。 連按兩下檔案加以執行。
+  6. **Linux 主目標伺服器**：要更新統一代理，請將**InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz**複製到 Linux 主目標伺服器並提取它。 在解壓縮的資料夾中執行 **/Install**。
+  7. **Windows 源伺服器**：要更新統一代理，請將**InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe**複製到源伺服器。 連按兩下檔案加以執行。 
+  8. **Linux 來源伺服器**：若要更新整合代理程式，請將對應的整合代理程式版本複製到 Linux 伺服器並將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。  示例：對於 RHEL 6.7 64 位伺服器，請將**InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz**複製到伺服器，然後提取它。 在解壓縮的資料夾中執行 **/Install**。
   9. 使用上述安裝程式升級設定伺服器、處理伺服器和 RX 伺服器之後，需要使用[快速入門指南](https://aka.ms/asr-scout-quick-install-guide) \(英文\) 中在 7.4 小節提及的步驟來手動升級 PHP 和 MySQL 程式庫。
 
 ## <a name="enable-replication"></a>啟用複寫
@@ -143,7 +143,7 @@ Azure Site Recovery 將持續創新，以 Azure 作為災害復原站台，為 V
 ## <a name="updates"></a>更新
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 Update 7 
-更新日期：2018年12月31日下載[Scout update 7](https://aka.ms/asr-scout-update7)。
+更新： 2018年12月31日 下載[童子軍更新7](https://aka.ms/asr-scout-update7).
 Scout Update 7 是完整的安裝程式，可用於全新安裝，也可以升級在先前更新 (Update 1 至 Update 6) 上的現有代理程式/MT。 其中包含 Update 1 到 Update 6 的所有修正及以下描述的新修正和增強功能。
  
 #### <a name="new-features"></a>新功能
@@ -151,15 +151,15 @@ Scout Update 7 是完整的安裝程式，可用於全新安裝，也可以升�
 * TLS v1.2 支援
 
 #### <a name="bug-and-security-fixes"></a>錯誤 (Bug) 和安全性問題修正
-* 已修正：在復原/DR 演練時，Windows 叢集/獨立電腦的 IP 設定不正確。
-* 已修正：有時會針對 V2V 叢集新增磁片作業失敗。
+* 已修復：Windows 群集/獨立電腦在恢復/DR 鑽取時具有不正確的 IP 配置。
+* 已修復：有時 V2V 群集的添加磁片操作失敗。
 * 已修正：如果主要目標是 Windows Server 2016，[vContinuum 精靈] 會在復原階段期間停滯
-* 已修正：將 MySQL 升級至版本5.7.23 可減輕 MySQL 安全性問題
+* 已修復：將 MySQL 升級到版本 5.7.23 可緩解 MySQL 安全問題
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>CS、PS 和 RX 上 PHP 和 MySQL 的手動升級
 設定伺服器、處理伺服器和 RX 伺服器上的 PHP 指令碼平台應升級到 7.2.10 版。
 設定伺服器、處理伺服器和 RX 伺服器上的MySQL 資料庫管理系統應升級為 5.7.23 版。
-請遵循[快速安裝指南](https://aka.ms/asr-scout-quick-install-guide)中所提供的手動步驟，升級 PHP 和 MySQL 版本。
+請按照[快速安裝指南](https://aka.ms/asr-scout-quick-install-guide)中給出的手動步驟升級 PHP 和 MySQL 版本。
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
 更新日期：2017 年 10 月 12 日
@@ -188,14 +188,14 @@ Scout Update 6 是累積更新。 其中包含 Update 1 到 Update 5 的所有�
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
 - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- UA update 4 bits for RHEL5、OL5、OL6、SUSE 10、SUSE 11： UA_\<Linux OS > _ 8.0.4. 0_GA_Update_4_9035261_26Sep16. tar. gz
+- UA 更新 4 位，用於 RHEL5、OL5、OL6、SUSE 10、SUSE 11：UA_\<Linux 作業系統>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   1. 解壓縮 .zip 檔。
   2. **RX 伺服器**：將 **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** 複製到 RX 伺服器並將其解壓縮。 在解壓縮的資料夾中執行 **/Install**。
   3. **設定伺服器和處理伺服器**：將 **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** 複製到設定伺服器和處理伺服器。 連按兩下加以執行。<br>
-  4. **Windows 主要目標伺服器**：若要更新整合代理程式，請將 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 複製到伺服器。 連按兩下加以執行。 相同的整合代理程式更新也適用於來源伺服器。 如果來源尚未更新為 Update 4，您應該更新整合代理程式。
+  4. **Windows 主目標伺服器**：要更新統一代理，請將**UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**複製到伺服器。 連按兩下加以執行。 相同的整合代理程式更新也適用於來源伺服器。 如果來源尚未更新為 Update 4，您應該更新整合代理程式。
   更新不需要在使用 **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** 備妥的主要目標上套用，因為這是包含所有最新變更的新 GA 安裝程式。
   5. **vContinuum 伺服器**：將 **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** 複製到伺服器。  確定您已經關閉 vContinuum 精靈。 連按兩下檔案加以執行。
-  更新不需要在使用 **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** 備妥的主要目標上套用，因為這是包含所有最新變更的新 GA 安裝程式。
+  更新不需要應用於使用**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe**編寫的主目標，因為這是具有所有最新更改的新 GA 安裝程式。
   6. **Linux 主要目標伺服器**：若要更新整合代理程式，請將 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 複製到主要目標伺服器並將它解壓縮。 在解壓縮的資料夾中執行 **/Install**。
   7. **Windows 來源伺服器**：若要更新整合代理程式，請將 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 複製到來源伺服器。 連按兩下檔案加以執行。 
   如果來源伺服器已經更新為 Update 4，或者來源代理程式已經與最新的基底安裝程式 **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** 一起安裝，則您不需要在來源伺服器上安裝 Update 5 代理程式。
@@ -236,7 +236,7 @@ Scout Update 5 是累積更新， 包含 Update 1 到 Update 4 的所有修正�
 > [!NOTE]
 > * P2V 叢集修正僅適用於剛以 Site Recovery Scout Update 5 加以保護的實體 MSCS 叢集。 若要在以舊版更新保護的 P2V MSCS 叢集上安裝叢集修正，請遵循 [Site Recovery Scout 版本資訊](https://aka.ms/asr-scout-release-notes)第 12 節中所述的升級步驟。
 > * 重新保護時，只有當在每個叢集節點上使用中的幾個磁碟與最初受保護時相同，重新保護實體 MSCS 叢集才可以重複使用現有的目標磁碟。 如果沒有，則使用 [Site Recovery Scout 版本資訊](https://aka.ms/asr-scout-release-notes)第 12 節中的手動步驟，將目標端磁碟移至正確的資料存放區路徑，以便在重新保護時重複使用。 如果未遵循升級步驟重新保護 P2V 模式中的 MSCS 叢集，則會在目標 ESXi 伺服器上建立新的磁碟。 您必須手動刪除資料存放區中的舊磁碟。
-> * 當來源 SLES11 或 SLES11 (含任何 Service Pack) 伺服器正常重新開機時，請手動標記**根**磁碟複寫配對以利重新同步處理。 CX 介面中不會有任何通知。 如果您未標示要重新同步處理的根磁片，可能會注意到資料完整性問題。
+> * 當來源 SLES11 或 SLES11 (含任何 Service Pack) 伺服器正常重新開機時，請手動標記**根**磁碟複寫配對以利重新同步處理。 CX 介面中不會有任何通知。如果您未標記要重新同步處理的根磁碟，可能會注意到資料完整性問題。
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
@@ -268,7 +268,7 @@ Scout Update 4 是累積更新。 包含 Update 1 到 Update 3 的所有修正�
 * 針對實體叢集，修正當壓縮來源磁碟區時，導致無法在 vContinuum 精靈中調整磁碟區大小的問題。
 * 修正當叢集磁碟是 PRDM 磁碟時，叢集保護會因發生「找不到磁碟簽章」錯誤而失敗的問題。
 * 修正超出範圍例外狀況所造成的 cxps 傳輸伺服器當機。
-* 現在在 vContinuum 精靈的 [推送安裝] 頁面中可以調整 [伺服器名稱] 和 [IP 位址] 欄的大小。
+* 現在在 vContinuum 精靈的 [推送安裝]**** 頁面中可以調整 [伺服器名稱] 和 [IP 位址] 欄的大小。
 * RX API 增強功能：
   * 現已推出五個最新可用的共同一致性點 (僅限保證標記)。
   * 顯示所有受保護裝置的容量和可用空間詳細資料。
@@ -326,7 +326,7 @@ Update 1 包含下列錯誤修正和新功能：
 
 * 每個伺服器執行個體享有 31 天的免費保護。 這可讓您測試功能或設定概念證明。
 * 伺服器上的所有作業 (包括容錯移轉和容錯回復) 在前 31 天都是免費的。 此時間是從第一次使用 Site Recovery Scout 保護伺服器開始計算。 從第 32 天起，每部受保護的伺服器都會依照標準執行個體費率，向客戶擁有的網站收取 Site Recovery 保護費用。
-* 在保存庫的 [儀表板] 上，隨時可取得目前計費的受保護伺服器數目。
+* 在保存庫的 [儀表板]**** 上，隨時可取得目前計費的受保護伺服器數目。
 * 新增對 vSphere 命令列介面 (vCLI) 5.5 Update 2 的支援。
 * 新增對來源伺服器上下列 Linux 作業系統的支援：
     * RHEL 6 Update 6
@@ -341,7 +341,7 @@ Update 1 包含下列錯誤修正和新功能：
   * 不會如預期般強制執行重新同步處理閾值，因而導致不一致的複寫行為。
   * RPO 設定並未正確地顯示在設定伺服器主控台中。 未壓縮的資料值未正確地顯示壓縮的值。
   * 未如預期在 vContinuum 精靈中刪除移除作業，而且未從設定伺服器主控台中刪除複寫作業。
-  * 在 vContinuum 精靈中，於 MSCS VM 的保護期間，按一下磁碟檢視中的 [詳細資料]，磁碟會自動取消選取。
+  * 在 vContinuum 精靈中，於 MSCS VM 的保護期間，按一下磁碟檢視中的 [詳細資料]****，磁碟會自動取消選取。
   * 在實體到虛擬 (P2V) 案例中，必要的 HP 服務 (例如 CIMnotify 和 CqMgHost) 不會移至 VM 復原中的 [手動]。 此問題會導致額外的開機時間。
   * 主要目標伺服器上有超過 26 個磁碟時，Linux VM 的保護就會失敗。
 

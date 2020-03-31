@@ -7,17 +7,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461465"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>將推播通知新增至 Xamarin.Forms 應用程式
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 在本教學課程中，您會將推播通知新增至 [Xamarin.Forms 快速入門](app-service-mobile-xamarin-forms-get-started.md)所產生的所有專案。 這表示每次插入記錄時，就會將推播通知傳送到所有跨平台用戶端。
 
@@ -25,9 +25,9 @@ ms.locfileid: "77461465"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若為 iOS，您需要 [Apple Developer Program 成員資格](https://developer.apple.com/programs/ios/)和實體 iOS 裝置。 [iOS 模擬器不支援推播通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
+若為 iOS，您需要 [Apple Developer Program 成員資格](https://developer.apple.com/programs/ios/)和實體 iOS 裝置。 [iOS 模擬器不支援推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
-## <a name="configure-hub"></a>設定通知中樞
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "77461465"
 
 為後端設定了 FCM 後，您就可以在用戶端中新增元件和程式碼，以向 FCM 註冊。 您也可以透過 Mobile Apps 後端向 Azure 通知中樞註冊推播通知，並接收通知。
 
-1. 在 **Droid** 專案中，以滑鼠右鍵按一下 [參考] > [管理 NuGet 套件...]。
+1. 在 **Droid** 專案中，以滑鼠右鍵按一下 [參考] > [管理 NuGet 套件...]****。
 1. 在 [NuGet 套件管理員] 視窗中，搜尋 **Xamarin.Firebase.Messaging** 套件，並將其新增至專案。
 1. 在 **Droid** 專案的專案屬性中，將應用程式設定為使用 Android 7.0 版或更新版本進行編譯。
 1. 將從 Firebase 主控台下載的 **google-services.json** 檔案新增至 **Droid** 專案的根目錄，並將其建置動作設定為 **GoogleServicesJson**。 如需詳細資訊，請參閱[新增 Google Services JSON 檔案](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File)。
@@ -73,7 +73,7 @@ ms.locfileid: "77461465"
 
 #### <a name="implementing-the-firebase-instance-id-service"></a>實作 Firebase 執行個體識別碼服務
 
-1. 將新的類別新增至名為 **的**Droid`FirebaseRegistrationService` 專案，並確定下列 `using` 陳述式出現在檔案頂端：
+1. 將新的類別新增至名為 `FirebaseRegistrationService` 的 **Droid** 專案，並確定下列 `using` 陳述式出現在檔案頂端：
 
     ```csharp
     using System.Threading.Tasks;
@@ -116,7 +116,7 @@ ms.locfileid: "77461465"
 
 #### <a name="registering-with-the-azure-notification-hub"></a>向 Azure 通知中樞進行註冊
 
-1. 將新的類別新增至名為 **的**Droid`AzureNotificationHubService` 專案，並確定下列 `using` 陳述式出現在檔案頂端：
+1. 將新的類別新增至名為 `AzureNotificationHubService` 的 **Droid** 專案，並確定下列 `using` 陳述式出現在檔案頂端：
 
     ```csharp
     using System;
@@ -159,7 +159,7 @@ ms.locfileid: "77461465"
 
 #### <a name="displaying-the-contents-of-a-push-notification"></a>顯示推播通知的內容
 
-1. 將新的類別新增至名為 **的**Droid`FirebaseNotificationService` 專案，並確定下列 `using` 陳述式出現在檔案頂端：
+1. 將新的類別新增至名為 `FirebaseNotificationService` 的 **Droid** 專案，並確定下列 `using` 陳述式出現在檔案頂端：
 
     ```csharp
     using Android.App;
@@ -221,11 +221,11 @@ ms.locfileid: "77461465"
 
 只有要在模擬器上測試時，才需要前兩個步驟。
 
-1. 請確定您要在利用 Google Play Services 設定的裝置或模擬器上進行部署或偵錯。 藉由檢查裝置或模擬器上已安裝 **Play**  應用程式，即可確認這點。
-2. 按一下 [應用程式] > [設定] > [新增帳戶] 將 Google 帳戶加入 Android 裝置。 然後遵循提示在裝置中新增現有 Google 帳戶，或是建立一個新的帳戶。
-3. 在 Visual Studio 或 Xamarin Studio 中，以滑鼠右鍵按一下 **Droid** 專案，然後按一下 [設定為啟始專案]。
-4. 按一下 [執行] 以建置專案，並在 Android 裝置或模擬器上啟動應用程式。
-5. 在應用程式中輸入一項工作，然後按一下加號 ( **+** ) 圖示。
+1. 請確定您要在利用 Google Play Services 設定的裝置或模擬器上進行部署或偵錯。 藉由檢查裝置或模擬器上已安裝 **Play ** 應用程式，即可確認這點。
+2. 通過按一下 **"應用** > **設置** > **添加帳戶**"將 Google 帳戶添加到 Android 設備。 然後遵循提示在裝置中新增現有 Google 帳戶，或是建立一個新的帳戶。
+3. 在 Visual Studio 或 Xamarin Studio 中，以滑鼠右鍵按一下 **Droid** 專案，然後按一下 [設定為啟始專案]****。
+4. 按一下 [執行]**** 以建置專案，並在 Android 裝置或模擬器上啟動應用程式。
+5. 在應用中，鍵入任務，然後按一下加號 （**+**） 圖示。
 6. 確認在加入項目時收到通知。
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>設定和執行 iOS 專案 (選擇性)
@@ -313,14 +313,14 @@ ms.locfileid: "77461465"
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 應用程式中測試推播通知
 
-1. 以滑鼠右鍵按一下 iOS 專案，然後按一下 [設為起始專案]。
-2. 在 Visual Studio 中按下 [執行] 按鈕或 **F5** 以建置專案，並在 iOS 裝置上啟動應用程式。 然後，按一下 [確定] 以接收推撥通知。
+1. 以滑鼠右鍵按一下 iOS 專案，然後按一下 [設為起始專案]****。
+2. 在 Visual Studio 中按下 [執行]**** 按鈕或 **F5** 以建置專案，並在 iOS 裝置上啟動應用程式。 然後，按一下 [確定]**** 以接收推撥通知。
 
    > [!NOTE]
    > 您必須明確地接受來自應用程式的推播通知。 只有在應用程式第一次執行時，才會發生此要求。
 
-3. 在應用程式中輸入一項工作，然後按一下加號 ( **+** ) 圖示。
-4. 確認您已接收到通知，然後按一下 [確定] 以關閉通知。
+3. 在應用中，鍵入任務，然後按一下加號 （**+**） 圖示。
+4. 確認您已接收到通知，然後按一下 [確定]**** 以關閉通知。
 
 ## <a name="configure-and-run-windows-projects-optional"></a>設定和執行 Windows 專案 (選擇性)
 
@@ -346,9 +346,9 @@ ms.locfileid: "77461465"
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    使用包含 `<your_TodoItemManager_portable_class_namespace>` 類別的可攜式專案命名空間來取代 `TodoItemManager`。
+    使用包含 `TodoItemManager` 類別的可攜式專案命名空間來取代 `<your_TodoItemManager_portable_class_namespace>`。
 
-2. 在 App.xaml.cs 中，新增下列 **InitNotificationsAsync** 方法：
+2. 在App.xaml.cs中，添加以下**Init通知Async**方法：
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -374,9 +374,9 @@ ms.locfileid: "77461465"
     }
     ```
 
-    這個方法會取得推播通知通道，並註冊範本以接收來自通知中樞的範本通知。 支援 messageParam 的範本通知會傳送到此用戶端。
+    這個方法會取得推播通知通道，並註冊範本以接收來自通知中樞的範本通知。 支援 messageParam ** 的範本通知會傳送到此用戶端。
 
-3. 在 App.xaml.cs 中，新增 **修飾詞以更新**OnLaunched`async` 事件處理常式方法定義。 然後，在方法的結尾新增下列程式碼行：
+3. 在 App.xaml.cs 中，新增 `async` 修飾詞以更新 **OnLaunched** 事件處理常式方法定義。 然後，在方法的結尾新增下列程式碼行：
 
     ```csharp
     await InitNotificationsAsync();
@@ -384,14 +384,14 @@ ms.locfileid: "77461465"
 
     如此可確保每次啟動應用程式時都會建立或重新整理推播通知註冊。 必須如此以保證 WNS 推送通道永遠在作用中。  
 
-4. 在 Visual Studio 的 [方案總管] 中，開啟 **Package.appxmanifest** 檔案，然後把 [通知] 下方的 [支援快顯通知] 設為 [是]。
+4. 在 Visual Studio 的 [方案總管] 中，開啟 **Package.appxmanifest** 檔案，然後把 [通知]**** 下方的 [支援快顯通知]**** 設為 [是]****。
 5. 建置應用程式並確認沒有錯誤。 您用戶端應用程式現在應該註冊 Mobile Apps 後端的範本通知。 針對方案中每個 Windows 專案重複操作這一節。
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>在 Windows 應用程式中測試推播通知
 
-1. 在 Visual Studio 中，以滑鼠右鍵按一下 Windows 專案，然後按一下 [設定為啟始專案]。
-2. 按 [執行] 按鈕，以建立專案並啟動應用程式。
-3. 在應用程式中輸入新 todoitem 的名稱，然後按一下加號 ( **+** ) 圖示來加入它。
+1. 在 Visual Studio 中，以滑鼠右鍵按一下 Windows 專案，然後按一下 [設定為啟始專案]****。
+2. 按 **"運行"** 按鈕生成專案並啟動應用。
+3. 在應用中，鍵入新項的名稱，然後按一下加號 （**+**） 圖示添加它。
 4. 確認在加入項目時收到通知。
 
 ## <a name="next-steps"></a>後續步驟
@@ -399,14 +399,14 @@ ms.locfileid: "77461465"
 您可以深入了解推播通知︰
 
 * [從 Azure Mobile Apps 傳送推播通知](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase 雲端傳訊](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [使用 Firebase 雲端傳訊進行遠端通知](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [診斷推播通知問題](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   通知遭到捨棄或未抵達裝置有各種原因。 本主題說明如何分析及找出推播通知失敗的根本原因。
 
 您也可以繼續進行下列其中一個教學課程：
 
-* [將驗證新增至應用程式中](app-service-mobile-xamarin-forms-get-started-users.md)  
+* [向應用添加身份驗證](app-service-mobile-xamarin-forms-get-started-users.md)  
   了解如何利用識別提供者來驗證應用程式的使用者。
 * [啟用應用程式的離線同步處理](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   了解如何使用 Mobile Apps 後端，為應用程式新增離線支援。 使用離線同步處理時，使用者可與行動應用程式進行互動&mdash;檢視、新增或修改資料&mdash;即使沒有網路連線進也可行。

@@ -1,7 +1,7 @@
 ---
-title: 使用入口網站將對等 ASN 與 Azure 訂用帳戶建立關聯
+title: 使用入口網站將對等 ASN 與 Azure 訂用帳戶互連
 titleSuffix: Azure
-description: 使用入口網站將對等 ASN 與 Azure 訂用帳戶建立關聯
+description: 使用入口網站將對等 ASN 與 Azure 訂用帳戶互連
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,113 +9,113 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912174"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>使用入口網站將對等 ASN 與 Azure 訂用帳戶建立關聯
+# <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>使用入口網站將對等 ASN 與 Azure 訂用帳戶互連
 
-提交對等互連要求之前，您應該先使用下列步驟，將您的 ASN 與 Azure 訂用帳戶產生關聯。
+在提交對等請求之前，應首先使用以下步驟將 ASN 與 Azure 訂閱相關聯。
 
-如果您想要的話，可以使用[PowerShell](howto-subscription-association-powershell.md)來完成本指南。
+如果您願意，您可以使用[PowerShell](howto-subscription-association-powershell.md)完成本指南。
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>建立 PeerAsn 以將您的 ASN 與 Azure 訂用帳戶建立關聯
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>創建對等 Asn 以將 ASN 與 Azure 訂閱關聯
 
-### <a name="sign-in-to-the-portal"></a>登入入口網站
+### <a name="sign-in-to-the-portal"></a>登錄到門戶
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="register-for-peering-resource-provider"></a>註冊對等互連資源提供者
-遵循下列步驟，在您的訂用帳戶中註冊對等互連資源提供者。 如果您未執行此動作，則無法存取設定對等互連所需的 Azure 資源。
+### <a name="register-for-peering-resource-provider"></a>註冊對等資來源提供者
+按照以下步驟註冊訂閱中的對等資來源提供者。 如果不執行此操作，則無法訪問設置對等互連所需的 Azure 資源。
 
-1. 按一下入口網站左上角的 [訂用帳戶]。 如果您沒有看到它，請按一下 [**更多服務**] 並搜尋它。
+1. 按一下門戶左上角的**訂閱**。 如果您沒有看到它，請按一下 **"更多服務"** 並搜索它。
 
     > [!div class="mx-imgBorder"]
-    > ![開啟訂閱](./media/rp-subscriptions-open.png)
+    > ![打開訂閱](./media/rp-subscriptions-open.png)
 
-1. 按一下您要用於對等互連的訂用帳戶。
+1. 按一下要用於對等互連的訂閱。
 
     > [!div class="mx-imgBorder"]
     > ![啟動訂閱](./media/rp-subscriptions-launch.png)
 
-1. 訂用帳戶開啟後，在左側按一下 [**資源提供者**]。 然後在右窗格中，搜尋搜尋視窗中的 [對*等互連*]，或使用捲軸來尋找 [Microsoft] 對**等互連**，並查看**狀態**。 如果狀態為 [***已註冊***]，請略過下列步驟，並繼續進行 [**建立 PeerAsn**] 一節。 如果狀態為***NotRegistered***，請選取 [ **Microsoft 對等互連**]，然後按一下 [**註冊**]。
+1. 訂閱打開後，在左側，按一下**資來源提供者**。 然後，在右側窗格中，在搜索視窗中搜索*對等互連*，或使用滾動欄查找**Status****Microsoft。** 如果狀態為 ***"已註冊"，*** 請跳過以下步驟，然後繼續創建**對等 Asn**節。 如果狀態為 ***"未註冊***"，請選擇 **"Microsoft.對等"，** 然後按一下"**註冊**"。
 
     > [!div class="mx-imgBorder"]
     > ![註冊開始](./media/rp-register-start.png)
 
-1. 觀察狀態會變更為 [***註冊***]。
+1. 觀察狀態更改為***註冊***。
 
     > [!div class="mx-imgBorder"]
-    > ![註冊進行中](./media/rp-register-progress.png)
+    > ![註冊正在進行中](./media/rp-register-progress.png)
 
-1. 等待最小或完成註冊。 然後按一下 [重新整理] **，並確認**狀態為 [***已註冊***]。
-
-    > [!div class="mx-imgBorder"]
-    > 已完成 ![註冊](./media/rp-register-completed.png)
-
-### <a name="create-peerasn"></a>建立 PeerAsn
-您可以建立新的 PeerAsn 資源，將自發系統編號（ASN）與 Azure 訂用帳戶產生關聯。 您可以為需要關聯的每個 ASN 建立**PeerAsn** ，藉此建立多個 asn 與訂用帳戶的關聯。
-
-1. 按一下 [**建立資源**] > [**查看全部**]。
+1. 等待一分鐘左右，等待它完成註冊。 然後，按一下 **"刷新"** 並驗證狀態是否***已註冊***。
 
     > [!div class="mx-imgBorder"]
-    > ![搜尋 PeerAsn](./media/peerasn-seeall.png)
+    > ![註冊完成](./media/rp-register-completed.png)
 
-1. 在搜尋方塊中搜尋*PeerAsn* ，然後按鍵盤上的*Enter 鍵*。 從結果中，按一下 [ **PeerAsn**資源]。
+### <a name="create-peerasn"></a>創建對等 Asn
+您可以創建用於將自治系統號 （ASN） 與 Azure 訂閱關聯的新的 PeerAsn 資源。 您可以通過為需要關聯的每個 ASN 創建一個**PeerAsn**將多個 ASN 與訂閱相關聯。
 
-    > [!div class="mx-imgBorder"]
-    > ![啟動 PeerAsn](./media/peerasn-launch.png)
-
-1. 啟動**PeerAsn**之後，按一下 [**建立**]。
+1. 按一下 **"創建資源** > **查看所有**"。
 
     > [!div class="mx-imgBorder"]
-    > ![建立 PeerAsn](./media/peerasn-create.png)
+    > ![搜索對等 Asn](./media/peerasn-seeall.png)
 
-1. 在 [**關聯對等 ASN** ] 頁面的 [**基本**] 索引標籤底下，填寫欄位，如下所示。
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn 基本 索引標籤](./media/peerasn-basics-tab.png)
-
-    * **名稱**會對應至資源名稱，而且可以是您選擇的任何專案。  
-    * 選擇您需要與 ASN 建立關聯的**訂**用帳戶。
-    * **對等名稱**會對應至您公司的名稱，而且必須盡可能靠近您的 PeeringDB 設定檔。 請注意，此值僅支援字元 a-z、A-z 和空格
-    * 在 [**對等 ASN** ] 欄位中輸入您的 asn。
-    * 按一下 [**新建]，然後**輸入網路營運中心（NOC）的**電子郵件地址**和**電話號碼**
-1. 然後，按一下 [**審核] [+ 建立**]，並觀察入口網站對您輸入的資訊執行基本驗證。 這會顯示在頂端的功能區中，如同執行*最後的驗證 ...* 。
+1. 在搜索框中搜索*PeerAsn，* 然後按鍵盤上的 *"輸入*"。 從結果中，按一下**PeerAsn**資源。
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn 審查 索引標籤](./media/peerasn-review-tab-validation.png)
+    > ![啟動對等 Asn](./media/peerasn-launch.png)
 
-1. 當功能區中的訊息變成*通過驗證*之後，請按一下 [**建立**] 來驗證您的資訊並提交要求。 如果未通過驗證，請按一下 [上**一**步]，然後重複上述步驟來修改您的要求，並確定您輸入的值沒有任何錯誤。
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn 審查 索引標籤](./media/peerasn-review-tab.png)
-
-1. 提交要求之後，請等候它完成部署。 如果部署失敗，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。 成功的部署將會如下所示。
+1. 啟動**對等操作後**，按一下"**創建**"。
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn 成功](./media/peerasn-success.png)
+    > ![創建對等 Asn](./media/peerasn-create.png)
 
-### <a name="view-status-of-a-peerasn"></a>PeerAsn 的檢視狀態
-成功部署 PeerAsn 資源之後，您將需要等候 Microsoft 核准關聯要求。 核准最多可能需要12小時的時間。 一經核准，您就會收到在上一節中輸入之電子郵件地址的通知。
+1. 在 **"關聯對等 ASN"** 頁上，在 **"基本"** 選項卡下填寫欄位，如下所示。
+
+    > [!div class="mx-imgBorder"]
+    > ![對等 Asn 基礎知識選項卡](./media/peerasn-basics-tab.png)
+
+    * **名稱**對應于資源名稱，可以是您選擇的任何名稱。  
+    * 選擇關聯 ASN 所需的**訂閱**。
+    * **對等名稱**對應于公司的名稱，並且需要盡可能接近您的對等資料庫設定檔。 請注意，該值僅支援字元 a-z、A-Z 和空格
+    * 在 **"對等 ASN"欄位中輸入 ASN。**
+    * 按一下 **"創建新**"並輸入網路運營中心 （NOC）**的電子郵件地址**和**電話號碼**
+1. 然後，按一下 **"審閱 + 創建**"，並觀察門戶對輸入的資訊進行基本驗證。 這顯示在頂部的功能區中，如*正在運行最終驗證...*
+
+    > [!div class="mx-imgBorder"]
+    > ![對等 Asn 審閱選項卡](./media/peerasn-review-tab-validation.png)
+
+1. 功能區中的消息變為 *"驗證已通過"* 後，請驗證您的資訊，並通過按一下"**創建**"提交請求。 如果驗證未通過，請按一下 **"上一步"** 並重複上述步驟以修改請求並確保輸入的值沒有錯誤。
+
+    > [!div class="mx-imgBorder"]
+    > ![對等 Asn 審閱選項卡](./media/peerasn-review-tab.png)
+
+1. 提交請求後，請等待它完成部署。 如果部署失敗，請與[微軟對等互連](mailto:peering@microsoft.com)。 成功部署將顯示如下。
+
+    > [!div class="mx-imgBorder"]
+    > ![同行成功](./media/peerasn-success.png)
+
+### <a name="view-status-of-a-peerasn"></a>查看對等 Asn 的狀態
+成功部署 PeerAsn 資源後，您需要等待 Microsoft 批准關聯請求。 可能需要長達 12 小時才能獲得批准。 獲得批准後，您將收到上述部分中輸入的電子郵件地址的通知。
 
 > [!IMPORTANT]
-> 等待 ValidationState 「核准」，然後再提交對等要求。 此核准最多可能需要12小時的時間。
+> 等待驗證狀態在提交對等請求之前將"已批准"變為"已批准"。 此批准可能需要長達 12 小時。
 
-## <a name="modify-peerasn"></a>修改 PeerAsn
-目前不支援修改 PeerAsn。 如果您需要修改，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。
+## <a name="modify-peerasn"></a>修改對等Asn
+當前不支援修改對等 Asn。 如果需要修改，請與[Microsoft 對等互連](mailto:peering@microsoft.com)。
 
-## <a name="delete-peerasn"></a>刪除 PeerAsn
-目前不支援刪除 PeerAsn。 如果您需要刪除 PeerAsn，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。
+## <a name="delete-peerasn"></a>刪除對等 Asn
+當前不支援刪除對等 Asn。 如果需要刪除對等器，請與[微軟對等互連](mailto:peering@microsoft.com)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用入口網站建立或修改直接對等互連](howto-direct-portal.md)
 * [使用入口網站將舊版直接對等互連轉換為 Azure 資源](howto-legacy-direct-portal.md)
-* [使用入口網站建立或修改 Exchange 對等互連](howto-exchange-portal.md)
+* [使用門戶創建或修改 Exchange 對等互連](howto-exchange-portal.md)
 * [使用入口網站將舊版 Exchange 對等互連轉換成 Azure 資源](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>其他資源
 
-如需詳細資訊，請造訪[網際網路對等常見問題](faqs.md)
+有關詳細資訊，請訪問[互聯網對等常見問題解答](faqs.md)

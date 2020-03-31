@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: db431d7815cfcc006563bd6da438154ef77ae6e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814699"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79461209"
 ---
-## <a name="cli-shell"></a>CLI Shell
+## <a name="use-cli-shell"></a>使用 CLI Shell
 
 建議使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 執行 CLI 命令。 **Cloud Shell** 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 Cloud Shell 中已預先安裝和設定共用 Azure 工具，以便您搭配自己的帳戶使用。 它可讓您彈性地選擇最適合您工作方式的殼層體驗。 Linux 使用者可以選擇 Bash 體驗，而 Windows 使用者可以選擇 PowerShell。
 
@@ -43,8 +43,8 @@ ms.locfileid: "66814699"
 Linux/Mac 和 Windows OS 上的絕對檔案路徑
 
 * `@ "/usr/home/mytestfile.json"`
-*   `@"c:\tmp\user\mytestfile.json"`
+*    `@"c:\tmp\user\mytestfile.json"`
 
-如果命令要求檔案路徑，請使用 `{file}`。 例如： `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`。 <br/> 如果命令要載入指定檔案，請使用 `@{file}`。 例如： `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`。
+如果命令要求檔案路徑，請使用 `{file}`。 例如： `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json` 。 <br/> 如果命令要載入指定檔案，請使用 `@{file}`。 例如： `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json` 。
 
 [上傳檔案]: ./media/media-services-cli/upload-download-files.png

@@ -1,5 +1,5 @@
 ---
-title: VMware 嚴重損壞修復-Azure Site Recovery 中的設定伺服器需求
+title: Azure 網站恢復中的 VMware 災害復原佈建服務器要求
 description: 本文說明部署組態伺服器以便使用 Azure Site Recovery 進行 VMware 至 Azure 的災害復原時的支援和需求
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 0b0942b517c8dc83c048bd1203a58d9861515dfb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257403"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>VMware 至 Azure 災害復原的組態伺服器需求

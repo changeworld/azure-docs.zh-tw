@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
 ms.openlocfilehash: d7077e51282864f1208080838a1bb94ddd773b7d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77667460"
 ---
 # <a name="manage-smart-groups"></a>管理智慧群組
@@ -17,7 +17,7 @@ ms.locfileid: "77667460"
 
 1. 若要查看為警示執行個體建立的智慧型群組，您可以
 
-     1. 在 [警示摘要] 頁面上按一下 [智慧群組]    
+     1. 在 [警示摘要]**** 頁面上按一下 [智慧群組]****    
     ![監視](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
     
      1. 在 [所有警示] 頁面中按一下 [依智慧群組分類的警示]   

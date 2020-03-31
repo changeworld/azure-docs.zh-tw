@@ -1,16 +1,16 @@
 ---
 title: 了解如何在 Azure Cosmos DB 中管理資料庫帳戶
-description: 瞭解如何使用 Azure 入口網站、PowerShell、CLI 和 Azure Resource Manager 範本來管理 Azure Cosmos DB 資源
+description: 瞭解如何使用 Azure 門戶、PowerShell、CLI 和 Azure 資源管理器範本管理 Azure Cosmos 資料庫資源
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247380"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帳戶
@@ -19,35 +19,35 @@ ms.locfileid: "79247380"
 
 ## <a name="create-an-account"></a>建立帳戶
 
-### <a id="create-database-account-via-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure 入口網站
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a id="create-database-account-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 建立 Azure Cosmos DB 帳戶](manage-with-cli.md#create-an-azure-cosmos-db-account)
+請參閱[使用 Azure CLI 創建 Azure 宇宙資料庫帳戶](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
-### <a id="create-database-account-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure 電源外殼
 
-請參閱[使用 Powershell 建立 Azure Cosmos DB 帳戶](manage-with-powershell.md#create-account)
+請參閱[使用電源外殼創建 Azure 宇宙資料庫帳戶](manage-with-powershell.md#create-account)
 
-### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager 範本
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure 資源管理器範本
 
-此 Azure Resource Manager 範本會建立一個 Azure Cosmos 帳戶，適用于設定了兩個區域的 SQL API，以及用來選取一致性層級、自動容錯移轉和多宿主的選項。 若要部署此範本，請在讀我檔案頁面的[建立 Azure Cosmos 帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)中，按一下 [部署至 Azure]
+此 Azure 資源管理器範本將為 SQL API 創建 Azure Cosmos 帳戶，該帳戶配置了兩個區域和選項，用於選擇一致性級別、自動容錯移轉和多主機。 若要部署此範本，請在讀我檔案頁面的[建立 Azure Cosmos 帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)中，按一下 [部署至 Azure]
 
 ## <a name="addremove-regions-from-your-database-account"></a>在資料庫帳戶中新增/移除區域
 
-### <a id="add-remove-regions-via-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure 入口網站
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到[Azure 門戶](https://portal.azure.com)。
 
-1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料] 功能表。
+1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]**** 功能表。
 
-1. 若要新增區域，請選取地圖上具有 **+** 標籤、且與您所需的區域相對應的六邊形。 或者，若要新增區域，請選取 [+ 新增區域] 選項，然後從下拉式功能表中選擇區域，藉以新增區域。
+1. 要添加區域，請選擇地圖上的六邊形，**+** 其標籤與所需區域相對應。 或者，若要新增區域，請選取 [+ 新增區域]**** 選項，然後從下拉式功能表中選擇區域，藉以新增區域。
 
 1. 若要移除區域，請選取具有核取記號的藍色六邊形，以清除地圖中的一或多個區域。 或者，選取右側區域旁邊的「垃圾桶」(🗑) 圖示。
 
-1. 若要儲存變更，請選取 [確定]。
+1. 若要儲存變更，請選取 [確定]****。
 
    ![新增或移除區域功能表](./media/how-to-manage-database-account/add-region.png)
 
@@ -55,31 +55,31 @@ ms.locfileid: "79247380"
 
 在多重區域寫入模式中，只要您有至少一個區域，即可新增或移除任何區域。
 
-### <a id="add-remove-regions-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 新增或移除區域](manage-with-cli.md#add-or-remove-regions)
+請參閱[使用 Azure CLI 添加或刪除區域](manage-with-cli.md#add-or-remove-regions)
 
-### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure 電源外殼
 
-請參閱[使用 Powershell 新增或移除區域](manage-with-powershell.md#update-account)
+請參閱[使用電源殼添加或刪除區域](manage-with-powershell.md#update-account)
 
-## <a id="configure-multiple-write-regions"></a>設定多重寫入區域
+## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>設定多重寫入區域
 
-### <a id="configure-multiple-write-regions-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure 入口網站
 
-開啟 [全域複寫資料] 索引標籤，並選取 [啟用] 以啟用多重區域寫入。 啟用多重區域寫入後，您目前在帳戶上擁有的所有讀取區域都將成為讀取和寫入區域。
+開啟 [全域複寫資料]**** 索引標籤，並選取 [啟用]**** 以啟用多重區域寫入。 啟用多重區域寫入後，您目前在帳戶上擁有的所有讀取區域都將成為讀取和寫入區域。
 
 ![Azure Cosmos 帳戶設定多重主機的螢幕擷取畫面](./media/how-to-manage-database-account/single-to-multi-master.png)
 
-### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 啟用多重寫入區域](manage-with-cli.md#enable-multiple-write-regions)
+請參閱[使用 Azure CLI 啟用多寫區域](manage-with-cli.md#enable-multiple-write-regions)
 
-### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure 電源外殼
 
-請參閱[使用 Powershell 啟用多重寫入區域](manage-with-powershell.md#multi-master)
+請參閱[使用 Powershell 啟用多寫區域](manage-with-powershell.md#multi-master)
 
-### <a id="configure-multiple-write-regions-arm"></a>Resource Manager 範本
+### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager 範本
 
 帳戶可以從單一主機移轉至多重主機，只要部署用來建立帳戶的 Resource Manager 範本並設定 `enableMultipleWriteLocations: true` 即可。 下列 Azure Resource Manager 範本是一個最低限度範本，將會為已啟用兩個區域和多重寫入位置的 SQL API 部署 Azure Cosmos 帳戶。
 
@@ -139,31 +139,31 @@ ms.locfileid: "79247380"
 }
 ```
 
-## <a id="automatic-failover"></a>啟用 Azure Cosmos 帳戶的自動容錯移轉
+## <a name="enable-automatic-failover-for-your-azure-cosmos-account"></a><a id="automatic-failover"></a>啟用 Azure Cosmos 帳戶的自動容錯移轉
 
 [自動容錯移轉] 選項可讓 Azure Cosmos DB 在一個區域變得無法使用時，容錯移轉至具有最高容錯移轉優先順序的區域，而不需要使用者動作。 自動容錯移轉啟用時，可以修改區域的優先順序。 帳戶必須具有兩個或更多區域，才能啟用自動容錯移轉。
 
-### <a id="enable-automatic-failover-via-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure 入口網站
 
-1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料] 窗格。
+1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料]**** 窗格。
 
-2. 在窗格頂端，選取 [自動容錯移轉]。
+2. 在窗格頂端，選取 [自動容錯移轉]****。
 
    ![全域複寫資料功能表](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. 在 [自動容錯移轉] 窗格中，確定 [啟用自動容錯移轉] 設定為 [開啟]。 
+3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。 
 
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
    ![自動容錯移轉入口網站功能表](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="enable-automatic-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
 請參閱[使用 Azure CLI 啟用自動容錯移轉](manage-with-cli.md#enable-automatic-failover)
 
-### <a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure 電源外殼
 
-請參閱[使用 Powershell 啟用自動容錯移轉](manage-with-powershell.md#enable-automatic-failover)
+請參閱[使用電源shell 啟用自動容錯移轉](manage-with-powershell.md#enable-automatic-failover)
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的容錯移轉屬性
 
@@ -172,31 +172,31 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 > [!IMPORTANT]
 > 帳戶設定了自動容錯移轉時，您無法修改寫入區域 (容錯移轉優先順序為零)。 若要變更寫入區域，您必須停用自動容錯移轉，並執行手動容錯移轉。
 
-### <a id="set-failover-priorities-via-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure 入口網站
 
-1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料] 窗格。
+1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料]**** 窗格。
 
-2. 在窗格頂端，選取 [自動容錯移轉]。
+2. 在窗格頂端，選取 [自動容錯移轉]****。
 
    ![全域複寫資料功能表](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. 在 [自動容錯移轉] 窗格中，確定 [啟用自動容錯移轉] 設定為 [開啟]。
+3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。
 
 4. 若要修改容錯移轉優先順序，請透過當您暫留其上時出現在資料列左側的三個點拖曳讀取區域。
 
-5. 選取 [儲存]。
+5. 選取 [儲存]****。
 
    ![自動容錯移轉入口網站功能表](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="set-failover-priorities-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 設定容錯移轉優先順序](manage-with-cli.md#set-failover-priority)
+請參閱[使用 Azure CLI 設置容錯移轉優先順序](manage-with-cli.md#set-failover-priority)
 
-### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure 電源外殼
 
-請參閱[使用 Powershell 設定容錯移轉優先順序](manage-with-powershell.md#modify-failover-priority)
+請參閱[使用電源shell設置容錯移轉優先順序](manage-with-powershell.md#modify-failover-priority)
 
-## <a id="manual-failover"></a>在 Azure Cosmos 帳戶上執行手動容錯移轉
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>在 Azure Cosmos 帳戶上執行手動容錯移轉
 
 > [!IMPORTANT]
 > Azure Cosmos 帳戶必須已設定手動容錯移轉，這項作業才會成功。
@@ -206,27 +206,27 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 > [!NOTE]
 > 多重主機帳戶無法以手動方式容錯移轉。 如果應用程式使用 Azure Cosmos SDK，此 SDK 將會偵測變得無法使用的區域，然後自動重新導向至下一個最接近的區域 (如果 SDK 中使用多路連接 API)。
 
-### <a id="enable-manual-failover-via-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure 入口網站
 
-1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料] 功能表。
+1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]**** 功能表。
 
-2. 在功能表的頂端，選取 [手動容錯移轉]。
+2. 在功能表的頂端，選取 [手動容錯移轉]****。
 
    ![全域複寫資料功能表](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. 在 [手動容錯移轉] 功能表上，選取新的寫入區域。 選取核取方塊，表示您了解此選項會變更您的寫入區域。
+3. 在 [手動容錯移轉]**** 功能表上，選取新的寫入區域。 選取核取方塊，表示您了解此選項會變更您的寫入區域。
 
-4. 若要觸發容錯移轉，請選取 [確定]。
+4. 若要觸發容錯移轉，請選取 [確定]****。
 
    ![手動容錯移轉入口網站功能表](./media/how-to-manage-database-account/manual-failover.png)
 
-### <a id="enable-manual-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
 請參閱[使用 Azure CLI 觸發手動容錯移轉](manage-with-cli.md#trigger-manual-failover)
 
-### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure 電源外殼
 
-請參閱[使用 Powershell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
+請參閱[使用電源shell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
 
 ## <a name="next-steps"></a>後續步驟
 

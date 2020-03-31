@@ -1,7 +1,7 @@
 ---
-title: Xamarin Android 系統瀏覽器考慮（MSAL.NET） |Azure
+title: Xamarin Android 系統瀏覽器注意事項 （MSAL.NET） |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解在 Xamarin Android 上使用系統瀏覽器搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）的考慮。
+description: 瞭解在 Xamarin Android 上使用系統瀏覽器與 Microsoft 身份驗證庫用於 .NET （MSAL.NET） 的注意事項。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -15,62 +15,62 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad26a4d619a7984f08a8decc87f9339adae47cdd
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132601"
 ---
-#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>使用 MSAL.NET 的 Xamarin Android 系統瀏覽器考慮
+#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android 系統瀏覽器使用MSAL.NET
 
-本文討論當您在 Xamarin Android 上使用系統瀏覽器搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時，您應該考慮的事項。
+本文討論了在 Xamarin Android 上使用 Xamarin Android 上的系統瀏覽器以及用於 .NET （MSAL.NET）的 Microsoft 身份驗證庫時應考慮的事項。
 
-從 MSAL.NET 2.4.0 Preview 開始，MSAL.NET 支援 Chrome 以外的瀏覽器。 它不再需要在 Android 裝置上安裝 Chrome 來進行驗證。
+從 MSAL.NET 2.4.0 預覽版開始，MSAL.NET支援 Chrome 以外的瀏覽器。 它不再需要在 Android 設備上安裝 Chrome 進行身份驗證。
 
-建議您使用支援自訂索引標籤的瀏覽器。 以下是這些瀏覽器的一些範例：
+我們建議您使用支援自訂選項卡的瀏覽器。 下面是這些瀏覽器的一些示例：
 
-| 具有自訂索引標籤支援的瀏覽器 | 套件名稱 |
+| 支援自訂選項卡的瀏覽器 | 套件名稱 |
 |------| ------- |
-|Chrome | .com. chrome|
-|Microsoft Edge | emmx|
-|Firefox | 組織 mozilla. firefox|
-|Ecosia | ecosia android|
-|奇異果 | kiwibrowser. 瀏覽器|
-|美麗 | 美麗. 瀏覽器|
+|Chrome | com.android.chrome|
+|Microsoft Edge | com.微軟.emmx|
+|Firefox | org.mozilla.火狐|
+|埃西亞 | com.ecosia.android|
+|獼猴桃 | com.kiwi瀏覽器.瀏覽器|
+|勇敢 | com.brave.瀏覽器|
 
-我們的測試除了可識別提供自訂索引標籤支援的瀏覽器之外，還會指出不支援自訂索引標籤的一些瀏覽器也適用于驗證。 這些瀏覽器包括 Opera、Opera 迷你、InBrowser 和 Maxthon。 
+除了識別支援自訂選項卡的瀏覽器外，我們的測試還表明，一些不支援自訂選項卡的瀏覽器也可用於身份驗證。 這些瀏覽器包括歌劇，歌劇迷你，瀏覽器和Maxthon。 
 
-## <a name="tested-devices-and-browsers"></a>測試的裝置和瀏覽器
-下表列出已針對驗證相容性進行測試的裝置和瀏覽器。
+## <a name="tested-devices-and-browsers"></a>測試設備和瀏覽器
+下表列出了已測試身份驗證相容性的設備和瀏覽器。
 
 | 裝置 | 瀏覽器     |  結果  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/一 + | Chrome\* | 通過|
-| Huawei/一 + | Edge\* | 通過|
-| Huawei/一 + | Firefox\* | 通過|
-| Huawei/一 + | 美麗\* | 通過|
-| 一個 + | Ecosia\* | 通過|
-| 一個 + | 奇異果\* | 通過|
-| Huawei/一 + | Opera | 通過|
-| Huawei | OperaMini | 通過|
-| Huawei/一 + | InBrowser | 通過|
-| 一個 + | Maxthon | 通過|
-| Huawei/一 + | DuckDuckGo | 使用者已取消驗證|
-| Huawei/一 + | UC 瀏覽器 | 使用者已取消驗證|
-| 一個 + | Dolphin | 使用者已取消驗證|
-| 一個 + | CM 瀏覽器 | 使用者已取消驗證|
-| Huawei/一 + | 未安裝 | AndroidActivityNotFound 例外狀況|
+| 華為/一* | Chrome\* | 通過|
+| 華為/一* | Edge\* | 通過|
+| 華為/一* | Firefox\* | 通過|
+| 華為/一* | 勇敢\* | 通過|
+| 一個* | 埃西亞\* | 通過|
+| 一個* | 獼猴桃\* | 通過|
+| 華為/一* | Opera | 通過|
+| Huawei | 歌劇迷你 | 通過|
+| 華為/一* | 瀏覽器中 | 通過|
+| 一個* | 馬克斯森 | 通過|
+| 華為/一* | 鴨鴨果 | 使用者取消身份驗證|
+| 華為/一* | UC 瀏覽器 | 使用者取消身份驗證|
+| 一個* | 海豚 | 使用者取消身份驗證|
+| 一個* | CM 瀏覽器 | 使用者取消身份驗證|
+| 華為/一* | 未安裝 | Android 活動未發現異常|
 
-\* 支援自訂索引標籤
+\*支援自訂選項卡
 
 ## <a name="known-issues"></a>已知問題
 
-如果使用者未在裝置上啟用瀏覽器，MSAL.NET 將會擲回 `AndroidActivityNotFound` 例外狀況。  
-  - **緩和**：要求使用者在其裝置上啟用瀏覽器。 建議支援自訂索引標籤的瀏覽器。
+如果使用者在設備上未啟用瀏覽器，MSAL.NET將引發`AndroidActivityNotFound`異常。  
+  - **緩解**：要求使用者在其設備上啟用瀏覽器。 建議支援自訂選項卡的瀏覽器。
 
-如果驗證失敗（例如，如果使用 DuckDuckGo 啟動驗證），MSAL.NET 會傳回 `AuthenticationCanceled MsalClientException`。 
-  - **根本問題**：不在裝置上啟用支援自訂索引標籤的瀏覽器。 以瀏覽器啟動的驗證無法完成驗證。 
-  - **緩和**：要求使用者在其裝置上啟用瀏覽器。 建議支援自訂索引標籤的瀏覽器。
+如果身份驗證失敗（例如，如果使用 DuckDuckGo 啟動身份驗證），MSAL.NET將`AuthenticationCanceled MsalClientException`返回 。 
+  - **根問題**：設備上未啟用支援自訂選項卡的瀏覽器。 使用無法完成身份驗證的瀏覽器啟動身份驗證。 
+  - **緩解**：要求使用者在其設備上啟用瀏覽器。 建議支援自訂選項卡的瀏覽器。
 
 ## <a name="next-steps"></a>後續步驟
-如需詳細資訊和程式碼範例，請參閱在 Xamarin Android 和[embedded 與系統 WEB UI](msal-net-web-browsers.md#embedded-vs-system-web-ui)[上選擇內嵌網頁瀏覽器和系統流覽](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)器。  
+有關詳細資訊和代碼示例，請參閱在 Xamarin Android 和[嵌入式與系統 Web UI](msal-net-web-browsers.md#embedded-vs-system-web-ui)[上的嵌入式 Web 瀏覽器和系統瀏覽器之間進行選擇](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)。  

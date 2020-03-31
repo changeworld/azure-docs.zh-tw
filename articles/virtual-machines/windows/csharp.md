@@ -1,5 +1,5 @@
 ---
-title: 使用建立及管理 Azure 虛擬機器C#
+title: 使用 C 創建和管理 Azure 虛擬機器#
 description: 使用 C# 和 Azure Resource Manager 來部署 Azure 虛擬機器及所有支援它的資源。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944504"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>在 Azure 中使用 C# 建立並管理 Windows VM #
@@ -38,15 +38,15 @@ ms.locfileid: "78944504"
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 分頁上選取 [.NET 桌面開發]，然後按一下 [安裝]。 在摘要中，您可以看到系統自動為您選取 [NET Framework 4 – 4.6 開發工具]。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 .NET 工作負載。
-2. 在 Visual Studio 中，按一下 [檔案] > [新增] > [專案]。
-3. 在 [範本] > [Visual C#] 中，選取 [主控台應用程式 (.NET Framework)]，針對專案名稱輸入 myDotnetProject，選取專案的位置，然後按一下 [確定]。
+1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 分頁上選取 [.NET 桌面開發]****，然後按一下 [安裝]****。 在摘要中，您可以看到系統自動為您選取 [NET Framework 4 – 4.6 開發工具]****。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 .NET 工作負載。
+2. 在視覺化工作室中，按一下 **"檔** > **新專案** > **"。**
+3. 在**範本** > **視覺化 C++** 中，選擇**主控台應用 （.NET 框架），** 輸入*myDotnetProject*以獲取專案名稱，選擇專案的位置，然後按一下"**確定**"。
 
 ## <a name="install-the-package"></a>安裝套件
 
 NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 若要取得在 Visual Studio 中所需要的程式庫，請執行下列步驟：
 
-1. 按一下 [工具] > [NuGet 套件管理員]，然後按一下 [Package Manager Console]。
+1. 按一下**工具** > **Nuget 包管理器**，然後按一下**包管理器主控台**。
 2. 在主控台中輸入以下命令：
 
     ```
@@ -59,7 +59,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 ### <a name="create-the-authorization-file"></a>建立授權檔
 
-1. 在 [方案總管] 中，於 [myDotnetProject] 上按一下滑鼠右鍵 > [新增] > [新增項目]，然後選取 [Visual C# 項目] 中的 [文字檔]。 將檔案命名為 *azureauth.properties*，然後按一下 [新增]。
+1. 在解決方案資源管理器中，按右鍵*myDotnetProject* > **添加新** > **專案**，然後在*視覺化 C# 專案中*選擇**文字檔**。 將檔案命名為 *azureauth.properties*，然後按一下 [新增]****。
 2. 新增下列授權屬性：
 
     ```
@@ -73,7 +73,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
     graphURL=https://graph.microsoft.com/
     ```
 
-    以您的訂用帳戶 ID 取代 **&lt;subscription-id&gt;** 、以 Active Directory 應用程式識別碼取代 **&lt;application-id&gt;** 、以應用程式金鑰取代 **&lt;authentication-key&gt;** ，以及以租用戶識別碼取代 **&lt;tenant-id&gt;** 。
+    將**&lt;訂閱 ID&gt;** 替換為訂閱識別碼，**&lt;將應用程式&gt;ID**替換為 Active Directory 應用程式識別碼，**&lt;使用應用程式金鑰進行身份驗證金鑰&gt;**，將**&lt;租戶 ID&gt;** 替換為租戶識別碼。
 
 3. 儲存 azureauth.properties 檔案。 
 4. 在 Windows 中名為 AZURE_AUTH_LOCATION 的環境變數上，設定您所建立之授權檔的完整路徑。 例如，可以使用下列 PowerShell 命令：
@@ -84,7 +84,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 ### <a name="create-the-management-client"></a>建立管理用戶端
 
-1. 開啟您所建立之專案的 Program.cs 檔案。 然後，將這些 using 語句新增至檔案頂端的現有語句：
+1. 打開您創建的專案的Program.cs檔。 然後，將這些使用語句添加到檔頂部的現有語句：
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -111,7 +111,7 @@ NuGet 套件是安裝完成這些步驟所需之程式庫的最簡單方式。 �
 
 ### <a name="create-the-resource-group"></a>建立資源群組
 
-所有資源都必須包含在[資源群組](../../azure-resource-manager/management/overview.md)中。
+所有資源都必須包含在[資源組中](../../azure-resource-manager/management/overview.md)。
 
 若要指定應用程式的值並建立資源群組，請將以下程式碼新增到 Main 方法：
 
@@ -143,7 +143,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>建立公用 IP 位址
 
-必須要有[公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器進行通訊。
+需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通信。
 
 若要為虛擬機器建立公用 IP 位址，請將以下程式碼新增到 Main 方法：
    
@@ -364,7 +364,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>將資料磁碟新增至 VM
 
-若要將資料磁片新增至虛擬機器，請將此程式碼新增至 Main 方法。 這個範例會新增大小為 2 GB 的資料磁片，並將 LUN 0 和快取類型為 ReadWrite：
+要將資料磁片添加到虛擬機器，請將其代碼添加到 Main 方法。 本示例添加大小為 2 GB 的資料磁片、0 的 LUN 和 ReadWrite 的緩存類型：
 
 ```csharp
 Console.WriteLine("Adding data disk to vm...");
@@ -389,7 +389,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 此主控台應用程式從開始到完成的完整執行應該需要五分鐘左右。 
 
-1. 若要執行主控台應用程式，請按一下 [啟動]。
+1. 若要執行主控台應用程式，請按一下 [啟動]****。
 
 2. 在您按 **Enter** 以開始刪除資源之前，可以先花幾分鐘的時間來確認 Azure 入口網站中的資源建立情況。 請按一下部署狀態來查看該項部署的相關資訊。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 建立叢集-錯誤字典
-description: 瞭解如何針對建立 Azure HDInsight 叢集時所發生的錯誤進行疑難排解
+title: Azure HDInsight 創建群集 - 錯誤字典
+description: 瞭解如何排除創建 Azure HDInsight 群集時出現的錯誤
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -9,209 +9,209 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302724"
 ---
-# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：叢集建立錯誤
+# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集創建錯誤
 
-本文說明您在建立叢集時可能會遇到之錯誤的解決方式。
+本文介紹了創建群集時可能會遇到的錯誤的解決方法。
 
 > [!NOTE]
-> 本文中所述的前三個錯誤是驗證錯誤。 當 Azure HDInsight 產品使用**CsmDocument_2_0**類別時，就可能發生這種情況。
+> 本文中描述的前三個錯誤是驗證錯誤。 當 Azure HDInsight 產品使用**CsmDocument_2_0**類時，可能會發生此類操作。
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤碼： DeploymentDocument ' CsmDocument_2_0 ' 無法通過驗證
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤代碼：部署文檔"CsmDocument_2_0"驗證失敗
 
 ### <a name="error"></a>錯誤
 
-「無法存取腳本動作位置 URI：\<腳本動作 URL\>」
+"無法訪問腳本操作位置 URI：SCRIPT\<操作 URL"\>
 
 #### <a name="error-message"></a>錯誤訊息
 
-「遠端伺服器傳回錯誤：（404）找不到」。
+遠端伺服器返回了一個錯誤：（404） 未找到。
 
 ### <a name="cause"></a>原因
 
-HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL。 當服務嘗試存取腳本動作時，會收到先前的錯誤訊息。
+HDInsight 服務無法訪問您在創建群集請求中提供的腳本操作 URL。 當服務嘗試訪問腳本操作時，它會收到前面的錯誤訊息。
 
 ### <a name="resolution"></a>解決方案
 
-- 若為 HTTP 或 HTTPS URL，請嘗試從 incognito 瀏覽器視窗中移至 URL，以確認它。
-- 針對 WASB URL，請確定您在要求中提供的儲存體帳戶中有該腳本。 也請確定此儲存體帳戶的儲存體金鑰是正確的。
-- 針對 ADLS URL，請確定此腳本存在於儲存體帳戶中。
+- 對於 HTTP 或 HTTPS URL，請通過嘗試從隱身瀏覽器視窗轉到 URL 來驗證 URL。
+- 對於 WASB URL，請確保腳本存在於您在請求中給出的存儲帳戶中。 還要確保此存儲帳戶的存儲金鑰正確。
+- 對於 ADLS URL，請確保該腳本存在於存儲帳戶中。
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤碼： DeploymentDocument ' CsmDocument_2_0 ' 無法通過驗證
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤代碼：部署文檔"CsmDocument_2_0"驗證失敗
 
 ### <a name="error"></a>錯誤
 
-「無法存取腳本動作位置 URI： \<SCRIPT_ACTION_URL\>」
+無法訪問腳本操作位置 URI：SCRIPT_ACTION_URL" \< \>
 
 #### <a name="error-message"></a>錯誤訊息
 
-「指定的腳本 URI \<SCRIPT_URI\> 是在 ADLS 中，但此叢集沒有 data lake storage 主體」
+給定的腳本 URI \< \> SCRIPT_URI位於 ADLS 中，但此群集沒有資料湖存儲主體
 
 ### <a name="cause"></a>原因
 
-HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL。 當服務嘗試存取腳本動作時，會收到先前的錯誤訊息。
+HDInsight 服務無法訪問您在創建群集請求中提供的腳本操作 URL。 當服務嘗試訪問腳本操作時，它會收到前面的錯誤訊息。
 
 ### <a name="resolution"></a>解決方案
 
-將對應的 Azure Data Lake Storage Gen 1 帳戶新增至叢集。 此外，將存取 Data Lake Storage Gen 1 帳戶的服務主體新增至叢集。
+將相應的 Azure 資料存儲庫存儲第 1 代帳戶添加到群集。 還將訪問資料存儲湖存儲第 1 代帳戶的服務主體添加到群集中。
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤碼： DeploymentDocument ' CsmDocument_2_0 ' 無法通過驗證
+## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤代碼：部署文檔"CsmDocument_2_0"驗證失敗
 
 ### <a name="error"></a>錯誤
 
-在要求中提供的「VM 大小」\<CUSTOMER_SPECIFIED_VM_SIZE\>' 無效，或不支援角色「\<角色\>」。 有效的值為： \<VALID_VM_SIZE_FOR_ROLE\>。」
+請求中提供的\<"VM\>大小"CUSTOMER_SPECIFIED_VM_SIZE" 對於角色"ROLE"\<\>無效或不支援。 有效值為：VALID_VM_SIZE_FOR_ROLE。 \< \>
 
 ### <a name="cause"></a>原因
 
-角色不允許您指定的虛擬機器大小。 發生此錯誤的原因可能是 VM 大小值未如預期般運作，或不適用於電腦角色。
+不允許角色指定虛擬機器大小。 可能發生此錯誤，因為 VM 大小值不按預期工作或不適合計算機角色。
 
 ### <a name="resolution"></a>解決方案
 
-錯誤訊息會列出 VM 大小的有效值。 選取其中一個值，然後重試建立叢集要求。
+錯誤訊息列出 VM 大小的有效值。 選擇這些值之一，然後重試創建群集請求。
 
 ---
 
-## <a name="error-codeinvalidvirtualnetworkid"></a>錯誤碼： InvalidVirtualNetworkId  
+## <a name="error-codeinvalidvirtualnetworkid"></a>錯誤代碼：無效虛擬網路 Id  
 
 ### <a name="error"></a>錯誤
 
-「VirtualNetworkId 無效。 VirtualNetworkId '\<USER_VIRTUALNETWORKID\>' * "
+"虛擬網路 Id 無效。 虛擬網路 Id\<\>' USER_VIRTUALNETWORKID "*"
 
 ### <a name="cause"></a>原因
 
-您在叢集建立期間指定的**VirtualNetworkId**值格式不正確。
+在群集創建期間指定的**虛擬網路 Id**值格式不正確。
 
 ### <a name="resolution"></a>解決方案
 
-請確定**VirtualNetworkId**和子網值的格式正確。 若要取得**VirtualNetworkId**值：
+確保**虛擬網路Id**和子網值格式正確。 要獲取**虛擬網路 Id**值，可以：
 
 1. 移至 Azure 入口網站。
-1. 選取您的虛擬網路。
-1. 選取 [**屬性**] 功能表項目。 **ResourceID**屬性值是**VirtualNetworkId**值。
+1. 選擇虛擬網路。
+1. 選擇"**屬性"** 功能表項目。 **資源識別碼**屬性值是**虛擬網路 Id**值。
 
-以下是虛擬網路識別碼的範例：
+下面是虛擬網路識別碼 的示例：
 
-"/subscriptions/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
-
----
-
-## <a name="error-code-customizationfailederrorcode"></a>錯誤碼： CustomizationFailedErrorCode
-
-### <a name="error"></a>錯誤
-
-「叢集部署因自訂腳本動作發生錯誤而失敗。 失敗的動作： \<SCRIPT_NAME\>，請移至 Ambari UI 以進一步偵測失敗。」
-
-### <a name="cause"></a>原因
-
-您在建立叢集要求期間所提供的自訂腳本，會在成功部署叢集之後執行。 這個錯誤碼表示在執行名為 \<SCRIPT_NAME\>的自訂腳本期間，發生錯誤。
-
-### <a name="resolution"></a>解決方案
-
-由於腳本是您的自訂腳本，因此建議您針對問題進行疑難排解，並視需要重新執行腳本。 若要針對腳本失敗進行疑難排解，請檢查/var/lib/ambari-agent/* 資料夾中的記錄檔。 或者，在 Ambari UI 中開啟 [**作業**] 頁面，然後選取**run_customscriptaction**操作以查看錯誤詳細資料。
+/訂閱/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/資源組/我的資源組/供應商/微軟.網路/虛擬網路/myvnet"
 
 ---
 
-## <a name="error-codeinvaliddocumenterrorcode"></a>錯誤碼： InvalidDocumentErrorCode
+## <a name="error-code-customizationfailederrorcode"></a>錯誤代碼：自訂失敗錯誤代碼
 
 ### <a name="error"></a>錯誤
 
-「資料庫 METASTORE_MAJOR_VERSION\> \<中的 \<META_STORE_TYPE\> 中繼存放區架構版本 \<DATABASE_NAME\> 與叢集版本不相容 \<CLUSTER_VERSION\>」
+"由於自訂腳本操作中的錯誤，群集部署失敗。 失敗操作：SCRIPT_NAME，\<\>請轉到 Ambari UI 以進一步調試故障。
 
 ### <a name="cause"></a>原因
 
-自訂中繼存放區與選取的 HDInsight 叢集版本不相容。 目前，HDInsight 4.0 叢集僅支援中繼存放區3.0 版和更新版本，而 HDInsight 3.6 叢集不支援中繼存放區版本3.0 和更新版本。
+成功部署群集後，將執行在創建群集請求期間提供的自訂腳本。 此錯誤代碼指示在執行名為\<SCRIPT_NAME\>的自訂腳本期間出現錯誤。
 
 ### <a name="resolution"></a>解決方案
 
-僅使用 HDInsight 叢集版本所支援的中繼存放區版本。 如果您未指定自訂中繼存放區，HDInsight 會在內部建立中繼存放區，然後在刪除叢集時刪除它。
+由於腳本是自訂腳本，因此我們建議您疑難排解，並在必要時重新運行該腳本。 要排除腳本故障，請檢查 /var/lib/ambari 代理/* 資料夾中的日誌。 或者打開 Ambari UI 中的 **"操作"** 頁，然後選擇**run_customscriptaction**操作以查看錯誤詳細資訊。
 
 ---
 
-## <a name="error-code-failedtoconnectwithclustererrorcode"></a>錯誤碼： FailedToConnectWithClusterErrorCode 
+## <a name="error-codeinvaliddocumenterrorcode"></a>錯誤代碼：無效文檔錯誤代碼
 
 ### <a name="error"></a>錯誤
 
-「無法連接到叢集管理端點來執行調整作業。 確認網路安全性規則不會封鎖對叢集的外部存取，而且可以成功存取叢集管理員（Ambari） UI。」
+\<資料庫\>\<\>\<\>DATABASE_NAME中的META_STORE_TYPE元存儲架構版本METASTORE_MAJOR_VERSION與群集版本CLUSTER_VERSION不相容。\> \<
 
 ### <a name="cause"></a>原因
 
-網路安全性群組（NSG）上的防火牆規則會封鎖與重要 Azure 健康狀態和管理服務的叢集通訊。
+自訂元存儲與所選的 HDInsight 群集版本不相容。 目前，HDInsight 4.0 群集僅支援 Metastore 版本 3.0 及更高版本，而 HDInsight 3.6 群集不支援 Metastore 版本 3.0 及更高版本。
 
 ### <a name="resolution"></a>解決方案
 
-如果您打算使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前，採取下列動作：
+僅使用 HDInsight 群集版本支援的 Metastore 版本。 如果不指定自訂元存儲，HDInsight 會在內部創建元存儲，然後在群集刪除後將其刪除。
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>錯誤代碼：未與群集錯誤代碼連接 
+
+### <a name="error"></a>錯誤
+
+無法連接到群集管理終結點以執行縮放操作。 驗證網路安全規則是否阻止對群集的外部訪問，以及群集管理器 （Ambari） UI 是否能夠成功訪問。
+
+### <a name="cause"></a>原因
+
+網路安全性群組 （NSG） 上的防火牆規則阻止與關鍵 Azure 運行狀況和管理服務的群集通信。
+
+### <a name="resolution"></a>解決方案
+
+如果您計畫使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前執行以下操作：
 
 - 識別您要用於 HDInsight 的 Azure 區域。
 - 識別 HDInsight 所需的 IP 位址。 如需詳細資訊，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
-  - 建立或修改您打算安裝 HDInsight 之子網的網路安全性群組。
-  - 針對 [網路安全性群組]，允許埠443上來自 IP 位址的輸入流量。 此設定可確保 HDInsight 管理服務可以從虛擬網路外部連線到叢集。
+  - 創建或修改計畫安裝 HDInsight 的子網的網路安全性群組。
+  - 對於網路安全性群組，允許來自 IP 位址的埠 443 上的入站流量。 此配置可確保 HDInsight 管理服務可以從虛擬網路外部到達群集。
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>錯誤碼： StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>錯誤代碼：存儲許可權阻止  
 
 ### <a name="error"></a>錯誤
 
-「受控識別沒有儲存體帳戶的許可權。 請確認「儲存體 Blob 資料擁有者」角色已指派給儲存體帳戶的受控識別。 儲存體：/subscriptions/\<訂用帳戶識別碼\>/resourceGroups/\< 資源組名\>/providers/Microsoft.Storage/storageAccounts/\<儲存體帳戶名稱\>，受控識別：/subscriptions/\<訂閱識別碼\>/resourceGroups//\< 資源組名\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/\<使用者受控識別名稱\>"
+託管標識對存儲帳戶沒有許可權。 請驗證"存儲 Blob 資料擁有者"角色是否分配給存儲帳戶的託管標識。 存儲：/訂閱/\<訂閱\>ID /資源\<組/資源\>組名稱/提供程式/Microsoft.存儲/存儲帳戶\</存儲帳戶\>名稱、託管標識：/訂閱\</訂閱\>ID /資源\<組//\>資源組名稱/資源組名稱/提供程式/Microsoft.託管身份\</使用者分配\>Id 身份/使用者託管標識名稱"
 
 ### <a name="cause"></a>原因
 
-您未提供管理身分識別所需的許可權。 使用者指派的受控識別在 Azure Data Lake Storage Gen2 儲存體帳戶上沒有「Blob 儲存體參與者」角色。
+您沒有提供管理標識所需的許可權。 使用者分配的託管標識在 Azure 資料湖存儲 Gen2 存儲帳戶上沒有 Blob 存儲參與者角色。
 
 ### <a name="resolution"></a>解決方案
 
 1. 開啟 Azure 入口網站。
 1. 移至您的儲存體帳戶。
-1. 查看**存取控制（IAM）** 底下。
-1. 請確定使用者已指派儲存體 Blob 資料參與者角色或儲存體 Blob 資料擁有者角色。
+1. 查看**存取控制 （IAM）** 下。
+1. 確保使用者具有存儲 Blob 資料參與者角色或分配給他們的存儲 Blob 資料擁有者角色。
 
-如需詳細資訊，請參閱在[Data Lake Storage Gen2 帳戶上設定受控識別的許可權](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+有關詳細資訊，請參閱在[Data Lake 存儲 Gen2 帳戶上設置託管標識的許可權](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>錯誤碼：出現 invalidnetworksecuritygroupsecurityrules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>錯誤代碼：無效網路安全性群組安全規則  
 
 ### <a name="error"></a>錯誤
 
-「網路安全性群組中的安全性規則/subscriptions/\<SubscriptionID\>/resourceGroups/< 資源組名\> 預設/提供者/networkSecurityGroups/\<網路安全性群組名稱\> 設定為子網/subscriptions/\<SubscriptionID\>/resourceGroups/\<資源組名\> RG-westeurope-vnet-tomtom-default/provider/Microsoft. Network/virtualNetworks/\<Virtual網路名稱\>/subnets/\<子網名稱\> 不允許必要的輸入和/或輸出連線能力。 如需詳細資訊，請造訪[規劃虛擬網路以取得 Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)或聯絡支援。」
+網路安全性群組的安全規則/訂閱/\<訂閱 ID\>/資源組/<資源組名稱\>預設/提供程式/Microsoft.網路/網路安全性群組/\<網路安全性群組名稱\>配置與子網/訂閱/訂閱 ID/\<\>資源組/\<資源組名稱\>RG-westeurope-vnet-tom-default/供應商/Microsoft.Network/虛擬網路/\<虛擬網路網路名稱\>/子網/\<子網名稱\>不允許所需的入站和/或出站連接。 有關詳細資訊，請訪問[為 Azure HDInsight 規劃虛擬網路](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)，或聯繫支援人員。
 
 ### <a name="cause"></a>原因
 
-如果網路安全性群組或使用者定義路由（Udr）控制對您 HDInsight 叢集的輸入流量，請確定您的叢集可以與重要的 Azure 健康情況和管理服務進行通訊。
+如果網路安全性群組或使用者定義的路由 （UDR） 控制到 HDInsight 群集的入站流量，請確保群集可以與關鍵的 Azure 運行狀況和管理服務進行通信。
 
 ### <a name="resolution"></a>解決方案
 
-如果您打算使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前，採取下列動作：
+如果您計畫使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前執行以下操作：
 
-- 識別您打算用於 HDInsight 的 Azure 區域，並為您的區域建立安全的 IP 位址清單。 如需詳細資訊，請參閱[健全狀況和管理服務：特定區域](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)。
-- 識別 HDInsight 所需的 IP 位址。 如需詳細資訊，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
-- 建立或修改您打算安裝 HDInsight 之子網的網路安全性群組。 針對 [網路安全性群組]，允許埠443上來自 IP 位址的輸入流量。 此設定可確保 HDInsight 管理服務可以從虛擬網路外部連線到叢集。
+- 確定計畫用於 HDInsight 的 Azure 區域，並為區域創建 IP 位址的安全清單。 有關詳細資訊，請參閱[運行狀況和管理服務：特定區域](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)。
+- 識別 HDInsight 所需的 IP 位址。 有關詳細資訊，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+- 創建或修改計畫安裝 HDInsight 的子網的網路安全性群組。 對於網路安全性群組，允許來自 IP 位址的埠 443 上的入站流量。 此配置可確保 HDInsight 管理服務可以從虛擬網路外部到達群集。
   
 ---
 
-## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>錯誤碼：叢集安裝程式無法在一或多部主機上安裝元件
+## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>錯誤代碼：群集設置未能在一個或多個主機上安裝元件
 
 ###  <a name="error"></a>錯誤
 
-「叢集安裝程式無法在一或多部主機上安裝元件。 請重試您的要求。」
+群集設置無法在一個或多個主機上安裝元件。 請重試您的請求。
 
 ### <a name="cause"></a>原因 
 
-通常，當發生暫時性問題或 Azure 中斷時，就會產生此錯誤。
+通常，當存在暫時性問題或 Azure 中斷時，將生成此錯誤。
 
 ### <a name="resolution"></a>解決方案
 
-檢查[azure 狀態](https://status.azure.com)頁面中可能會影響叢集部署的任何 azure 中斷。 如果沒有中斷，請重試叢集部署。
+檢查[Azure 狀態](https://status.azure.com)頁中是否有任何可能影響群集部署的 Azure 中斷。 如果沒有中斷，請重試群集部署。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關疑難排解叢集建立錯誤的詳細資訊，請參閱[使用 Azure HDInsight 針對叢集建立失敗進行疑難排解](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)。
+有關在群集創建中排除錯誤的詳細資訊，請參閱使用[Azure HDInsight 排除群集創建故障](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)。

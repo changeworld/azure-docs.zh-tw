@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb9e369bbba72cd3a1dd7fcc864e2845e3a979e9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5ffa85a2a681bfd064bfeade77d9ae7b85b1f723
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184630"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471756"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教學課程：將自訂網域新增到您的前端
 本教學課程說明如何將自訂網域新增至您的 Front Door。 使用 Azure Front Door 進行應用程式傳遞時，如果您想要在使用者要求中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。
@@ -32,7 +32,10 @@ ms.locfileid: "74184630"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+> [!NOTE]
+> Front Door **不**支援具有 [punycode](https://en.wikipedia.org/wiki/Punycode) 字元的自訂網域。 
+
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先建立 Front Door，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：建立前端](quickstart-create-front-door.md)。
 
@@ -43,12 +46,12 @@ ms.locfileid: "74184630"
 
 ## <a name="create-a-cname-dns-record"></a>建立 CNAME DNS 記錄
 
-您必須先透過網域提供者建立正式名稱 (CNAME) 記錄，以指向您 Front Door 的預設前端主機 (例如 contoso.azurefd.net)，才能將自訂網域用於您的 Front Door。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。 在 Azure Front Door Service 中，來源網域名稱是您的自訂網域名稱，而目的地網域名稱是您的 Front Door 預設主機名稱。 在 Front Door 驗證您所建立的 CNAME 記錄後，定址到來源自訂網域 (例如 www\.contoso.com) 的流量即會路由傳送至指定的目的地 Front Door 預設前端主機 (例如 contoso.azurefd.net)。 
+您必須先透過網域提供者建立正式名稱 (CNAME) 記錄，以指向您 Front Door 的預設前端主機 (例如 contoso.azurefd.net)，才能將自訂網域用於您的 Front Door。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。 在 Azure Front Door 中，來源網域名稱是您的自訂網域名稱，而目的地網域名稱是您的 Front Door 預設主機名稱。 在 Front Door 驗證您所建立的 CNAME 記錄後，定址到來源自訂網域 (例如 www\.contoso.com) 的流量即會路由傳送至指定的目的地 Front Door 預設前端主機 (例如 contoso.azurefd.net)。 
 
 自訂網域及其子網域一次只能與單一 Front Door 相關聯。 不過，您可以使用多個 CNAME 記錄，將來自相同自訂網域的不同子網域用於不同的 Front Door。 您也可以將具有不同子網域的自訂網域對應至相同的 Front Door。
 
 
-## <a name="map-the-temporary-afdverify-sub-domain"></a>對應暫時 afdverify 子網域
+## <a name="map-the-temporary-afdverify-subdomain"></a>對應暫時 afdverify 子網域
 
 在對應生產環境中的現有網域時，會有特殊事項需要考量。 當您在 Azure 入口網站中註冊自訂網域時，該網域可能會有短暫的期間停止運作。 為了避免 Web 流量中斷，請先將自訂網域對應至具有 Azure afdverify 子網域的 Front Door 預設前端主機，以建立暫時 CNAME 對應。 透過此方法，使用者在 DNS 對應期間將可持續存取您的網域而不被中斷。
 
@@ -62,11 +65,11 @@ ms.locfileid: "74184630"
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
-    | 來源                    | 類型  | 目的地                     |
+    | 來源                    | 類型  | Destination                     |
     |---------------------------|-------|---------------------------------|
-    | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
+    | afdverify. www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - 來源：以下列格式輸入您的自訂網域名稱 (包括 afdverify 子網域)：afdverify. _&lt;自訂網域名稱&gt;_ 。 例如 afdverify.www.contoso.com。
+    - 來源：以下列格式輸入您的自訂網域名稱 (包括 afdverify 子網域)：afdverify. _&lt;自訂網域名稱&gt;_ 。 例如 afdverify. www.contoso.com。
 
     - 輸入：輸入 CNAME  。
 
@@ -92,7 +95,7 @@ ms.locfileid: "74184630"
 
     - 指向：輸入預設 Front Door 前端主機的主機名稱，包括 afdverify 子網域名稱。 例如 afdverify.contoso.azurefd.net。 
 
-    - TTL：保留已選取的 [1 小時]  。
+    - TTL：保持選取 [一小時]  。
 
 6. 選取 [儲存]  。
  
@@ -111,7 +114,7 @@ ms.locfileid: "74184630"
 
 4. 針對 [前端主機]  ，系統會從您的 Front Door 衍生要在 CNAME 記錄中作為目的地網域的前端主機，並預先填入： *&lt;default hostname&gt;* .azurefd.net。 無法予以變更。
 
-5. 針對 [自訂主機名稱]  ，請輸入您的自訂網域 (包括子網域)，以作為 CNAME 記錄的來源網域。 例如，www\.contoso.com 或 cdn.contoso.com。 請勿使用 afdverify 子網域名稱。
+5. 針對 [自訂主機名稱]  ，請輸入您的自訂網域 (包括子網域)，以作為 CNAME 記錄的來源網域。 例如 www\.contoso.com 或 cdn.contoso.com。 請勿使用 afdverify 子網域名稱。
 
 6. 選取 [新增]  。
 
@@ -139,7 +142,7 @@ ms.locfileid: "74184630"
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
-    | 來源          | 類型  | 目的地           |
+    | 來源          | 類型  | Destination           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -173,7 +176,7 @@ ms.locfileid: "74184630"
 
     - 指向：輸入 Front Door 的預設主機名稱。 例如 contoso.azurefd.net。 
 
-    - TTL：保留已選取的 [1 小時]  。
+    - TTL：保持選取 [一小時]  。
 
 6. 選取 [儲存]  。
  

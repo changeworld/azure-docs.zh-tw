@@ -1,5 +1,5 @@
 ---
-title: 視覺化 NSG 流量記錄-彈性堆疊
+title: 視覺化 NSG 流日誌 - 彈性堆疊
 titleSuffix: Azure Network Watcher
 description: 使用網路監看員和彈性堆疊在 Azure 中管理和分析網路安全性群組流量記錄。
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840633"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用開放原始碼工具將 Azure 網路監看員 NSG 流量記錄視覺化
@@ -28,7 +28,7 @@ ms.locfileid: "76840633"
 > [!Warning]  
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在本文中，我們將設定一個解決方案，讓您使用「彈性堆疊」將網路安全性群組流量記錄視覺化。  Logstash 輸入外掛程式會直接從為了容納流量記錄而設定的儲存體 Blob 取得流量記錄。 然後，使用「彈性堆疊」，替流量記錄編製索引並用來建立 Kibana 儀表板，以將資訊視覺化。
 
@@ -37,14 +37,14 @@ ms.locfileid: "76840633"
 ## <a name="steps"></a>步驟
 
 ### <a name="enable-network-security-group-flow-logging"></a>啟用網路安全性群組流量記錄
-在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流量記錄的指示，請參閱下列文章︰[網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
+在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 有關啟用網路安全流日誌的說明，請參閱以下文章[簡介網路安全性群組流日誌記錄](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="set-up-the-elastic-stack"></a>設定彈性堆疊
 藉由連線 NSG 流量記錄與彈性堆疊，我們可以建立 Kibana 儀表板，以便從記錄搜尋、繪圖、分析和洞察。
 
 #### <a name="install-elasticsearch"></a>安裝 Elasticsearch
 
-1. 5\.0 版和更新版本的彈性堆疊需要 Java 8。 執行命令 `java -version` 來檢查您的版本。 如果您沒有安裝 Java，請參閱 [Azure 支援的 JDK](https://aka.ms/azure-jdks) 上的文件。
+1. 5.0 版和更新版本的彈性堆疊需要 Java 8。 執行命令 `java -version` 來檢查您的版本。 如果您沒有安裝 Java，請參閱 [Azure 支援的 JDK](https://aka.ms/azure-jdks) 上的文件。
 2. 針對您的系統下載正確的二進位套件︰
 
    ```bash
@@ -157,7 +157,7 @@ ms.locfileid: "76840633"
    }  
    ```
 
-如需安裝 Logstash 的進一步指示，請參閱[正式文件](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
+有關安裝 Logstash 的進一步說明，請參閱[官方文檔](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安裝 Azure blob 儲存體的 Logstash 輸入外掛程式
 
@@ -203,7 +203,7 @@ sudo /etc/init.d/logstash start
 
 下載[儀表板檔案](https://aka.ms/networkwatchernsgflowlogdashboard)、[視覺效果檔案](https://aka.ms/networkwatchernsgflowlogvisualizations)，以及[儲存的搜尋檔案](https://aka.ms/networkwatchernsgflowlogsearch)。
 
-在 Kibana 的 [管理] 索引標籤下，瀏覽至 [儲存的物件] 並匯入這三個檔案。 然後您可以從 [儀表板] 索引標籤開啟並載入範例儀表板。
+在 Kibana 的 [管理]**** 索引標籤下，瀏覽至 [儲存的物件]**** 並匯入這三個檔案。 然後您可以從 [儀表板]**** 索引標籤開啟並載入範例儀表板。
 
 您也可以針對自己感興趣的計量，量身製作自己的視覺效果和儀表板。 從 Kibana 的[正式文件](https://www.elastic.co/guide/en/kibana/current/visualize.html)深入了解如何建立 Kibana 視覺效果。
 

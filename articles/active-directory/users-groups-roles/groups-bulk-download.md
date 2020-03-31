@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 入口網站中下載群組清單 |Microsoft Docs
-description: 在 Azure Active Directory 的 Azure 系統管理中心下載大量的群組屬性。
+title: 在 Azure 活動目錄門戶中下載組清單 |微軟文檔
+description: 在 Azure 活動目錄中的 Azure 管理中心批量下載組屬性。
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,35 +14,35 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517146"
 ---
-# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>大量下載 Azure Active Directory 中的群組清單（預覽）
+# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>批量下載 Azure 活動目錄中的組（預覽）清單
 
-使用 Azure Active Directory （Azure AD）入口網站，您可以將組織中所有群組的清單大量下載到逗號分隔值（CSV）檔案。
+使用 Azure 活動目錄 （Azure AD） 門戶，可以將組織中所有組的清單批量下載到逗號分隔的值 （CSV） 檔中。
 
-## <a name="to-download-a-list-of-groups"></a>下載群組清單
+## <a name="to-download-a-list-of-groups"></a>下載組清單
 
-1. 使用組織中的系統管理員帳戶登入[Azure 入口網站](https://portal.azure.com)。
-1. 在 Azure AD 中，選取 **群組**  > **下載群組**。
-1. 在 [**群組下載**] 頁面上，選取 [**啟動**] 以接收列出群組的 CSV 檔案。
+1. 使用組織中的管理員帳戶登錄到[Azure 門戶](https://portal.azure.com)。
+1. 在 Azure AD 中，選擇 **"組** > **下載組**"。
+1. 在 **"組下載**"頁上，選擇 **"開始"** 以接收列出組內容的 CSV 檔。
 
-   ![[下載群組] 命令位於 [所有群組] 頁面](./media/groups-bulk-download/bulk-download.png)
+   ![下載組命令位於"所有組"頁上](./media/groups-bulk-download/bulk-download.png)
 
 ## <a name="check-download-status"></a>檢查下載狀態
 
-您可以在 [**大量作業結果（預覽）** ] 頁面中查看所有擱置大量要求的狀態。
+您可以在**批量操作結果（預覽）** 頁中查看所有掛起的批量請求的狀態。
 
-   ![[大量作業結果] 頁面會顯示大量要求狀態](./media/groups-bulk-download/bulk-center.png)
+   ![批量操作結果頁顯示批量請求狀態](./media/groups-bulk-download/bulk-center.png)
 
-## <a name="bulk-download-service-limits"></a>大量下載服務限制
+## <a name="bulk-download-service-limits"></a>批量下載服務限制
 
-每個要下載群組清單的大量活動最多可以執行一小時。 這可讓您下載至少300000個群組的清單。
+下載組清單的每個批量活動最多可以運行一個小時。 這使您能夠下載至少 300，000 個組的清單。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [大容量移除群組成員](groups-bulk-remove-members.md)
-- [下載群組的成員](groups-bulk-download-members.md)
+- [大量刪除組成員](groups-bulk-remove-members.md)
+- [下載組成員](groups-bulk-download-members.md)

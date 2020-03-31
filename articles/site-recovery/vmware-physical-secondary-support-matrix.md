@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 支援對次要網站進行 VMware/實體嚴重損壞修復
+title: 支援 VMware/物理災害復原到具有 Azure 網站恢復的輔助網站
 description: 摘要說明使用 Azure Site Recovery 將 VMware VM 和實體伺服器災害復原至次要網站的支援。
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256792"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>從 VMware VM 和實體伺服器至次要網站之災害復原的支援矩陣
@@ -26,9 +26,9 @@ ms.locfileid: "79256792"
 > 內部部署 VMware VM 和實體伺服器的複寫是由 InMage Scout 提供。 InMage Scout 包含在 Azure Site Recovery 服務訂用帳戶中。
 
 ## <a name="end-of-support-announcement"></a>終止支援公告
-在內部部署 VMware 或實體資料中心之間進行複寫的 Site Recovery 案例即將到達支援終止。
+本地 VMware 或物理資料中心之間複製的網站恢復方案正在到達支援結束。
 
-- 從2018年8月起，無法在復原服務保存庫中設定案例，而且無法從保存庫下載 InMage Scout 軟體。 現有的部署仍受支援。
+- 從 2018 年 8 月起，無法在恢復服務保存庫中配置該方案，並且無法從保存庫下載 InMage Scout 軟體。 現有的部署仍受支援。
 - - 自 2020 年 12 月 31 日起，將不再支援此案例。
 現有的合作夥伴可在支援終止前將新客戶登入至案例。
 - 在 2018 年和 2019 年期間，將會發行兩項更新：
@@ -79,7 +79,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 客體 VM - 多重 NIC | 是
 
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
 ### <a name="host-storage"></a>主機儲存體
 
@@ -124,7 +124,7 @@ RDM | 是
 | **更新** | **詳細資料** |
 | --- | --- |
 |Scout 更新 | Scout 更新是累計的。 <br/><br/> [了解並下載](vmware-physical-secondary-disaster-recovery.md#updates)最新的 Scout 更新 |
-|元件更新 | Scout 更新包含所有元件的更新，包括 RX 伺服器、設定伺服器、處理序和主要目標伺服器、vContinuum 伺服器，以及您要保護的來源伺服器。<br/><br/> [詳細資訊](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
+|元件更新 | Scout 更新包含所有元件的更新，包括 RX 伺服器、設定伺服器、處理序和主要目標伺服器、vContinuum 伺服器，以及您要保護的來源伺服器。<br/><br/> [深入了解](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -132,4 +132,4 @@ RDM | 是
 下載 [InMage Scout 使用者指南](https://aka.ms/asr-scout-user-guide)
 
 - [將 VMM 雲端中的 Hyper-V VM 複寫至次要網站](tutorial-vmm-to-vmm.md)
-- [將 VMware VM 和實體伺服器複寫至次要網站](tutorial-vmware-to-vmware.md)
+- [將 VMWare VM 和實體伺服器複寫至次要網站](tutorial-vmware-to-vmware.md)

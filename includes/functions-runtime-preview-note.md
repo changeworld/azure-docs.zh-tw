@@ -8,11 +8,11 @@ ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 8f5793a132684ab71405278a2866bce7a72968fa
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279268"
 ---
 > [!IMPORTANT]
-> Azure Functions 執行階段 preview 2 僅支援版本1.x 的 Azure Functions 執行時間。 此預覽功能不會更新以支援執行時間2.x 版和更高版本，且不會規劃未來的更新。 如果您需要在 Azure 外部裝載 Azure Functions 執行時間，請考慮[在 Kubernetes 上搭配 KEDA 使用 Azure Functions](../articles/azure-functions/functions-kubernetes-keda.md)
+> Azure 函數運行時預覽 2 僅支援 Azure 函數運行時的版本 1.x。 此預覽功能未更新以支援 2.x 版本和更高版本的運行時，並且沒有計劃將來的更新。 如果需要在 Azure 外部託管 Azure 函數運行時，請考慮[在 Kubernetes 上使用 Azure 函數與 KEDA 一起](../articles/azure-functions/functions-kubernetes-keda.md)

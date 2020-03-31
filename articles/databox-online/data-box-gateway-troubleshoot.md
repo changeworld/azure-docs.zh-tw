@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265385"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>針對 Azure 資料箱閘道問題進行疑難排解 
@@ -29,7 +29,7 @@ ms.locfileid: "79265385"
 
 若要診斷任何裝置錯誤並進行疑難排解，您可以執行診斷測試。 在您裝置的本機 Web UI 中執行下列步驟，以執行診斷測試。
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]。 選取您想要執行的測試，然後按一下 [執行測試]。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
+1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]****。 選取您想要執行的測試，然後按一下 [執行測試]****。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
@@ -44,11 +44,11 @@ ms.locfileid: "79265385"
 
 執行下列步驟來收集支援套件。 
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [支援]。 按一下 [建立支援套件]。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
+1. 在本機 Web UI 中，移至 [疑難排解] > [支援]****。 按一下 [建立支援套件]****。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. 建立支援套件之後，按一下 [下載支援套件]。 壓縮的套件會下載至您所選的路徑。 您可以將套件解壓縮。
+2. 建立支援套件之後，按一下 [下載支援套件]****。 壓縮的套件會下載至您所選的路徑。 您可以將套件解壓縮。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "79265385"
 
       ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
-2. 按一下 [Microsoft 資料箱閘道] 資料夾。 這個資料夾有兩個子資料夾：
+2. 按一下 [Microsoft 資料箱閘道]__ 資料夾。 這個資料夾有兩個子資料夾：
 
    - 具有上傳錯誤記錄檔的 [上傳] 資料夾。
    - 在重新整理期間發生錯誤的 [重新整理] 資料夾。

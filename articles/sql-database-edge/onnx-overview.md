@@ -1,59 +1,58 @@
 ---
-title: Azure SQL Database Edge 預覽版中的機器學習服務和 AI 搭配 ONNX |Microsoft Docs
-description: Azure SQL Database Edge 預覽版中的機器學習支援 Open Neural Network Exchange （ONNX）格式的模型。 ONNX 是一種開放格式，可讓您用來在各種機器學習架構和工具之間交換模型。
-keywords: 部署 sql database edge
+title: 在 Azure SQL 資料庫邊緣預覽中，使用 ONNX 進行機器學習和 AI |微軟文檔
+description: Azure SQL 資料庫邊緣預覽中的機器學習支援開放神經網路交換 （ONNX） 格式的模型。 ONNX 是一種開放格式，可用於在各種機器學習框架和工具之間交換模型。
+keywords: 部署 sql 資料庫邊緣
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
-author: ronychatterjee
-ms.author: achatter
-ms.reviewer: davidph
-ms.date: 11/07/2019
-ms.openlocfilehash: bdb602598f3d8b4aaed5d6061542d540a82ebc75
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+author: dphansen
+ms.author: davidph
+ms.date: 03/26/2020
+ms.openlocfilehash: 7813a08b6b18e517b81e8c4bfac660d198eba7f7
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114590"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366272"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL Database Edge 預覽版中的機器學習服務和 AI 搭配 ONNX
+# <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>在 SQL 資料庫邊緣預覽中，使用 ONNX 進行機器學習和 AI
 
-Azure SQL Database Edge 預覽版中的機器學習支援[Open Neural Network Exchange （ONNX）](https://onnx.ai/)格式的模型。 ONNX 是一種開放格式，可讓您用來在各種[機器學習架構和工具](https://onnx.ai/supported-tools)之間交換模型。
+Azure SQL 資料庫邊緣預覽中的機器學習支援[開放神經網路交換 （ONNX）](https://onnx.ai/)格式的模型。 ONNX 是一種開放格式，可用於在各種[機器學習框架和工具](https://onnx.ai/supported-tools)之間交換模型。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>總覽
 
-若要在 Azure SQL Database Edge 中推斷機器學習模型，您需要先取得模型。 這可以是預先定型的模型，或是以您選擇的架構定型的自訂模型。 Azure SQL Database Edge 支援 ONNX 格式，而且您必須將模型轉換成此格式。 對模型的精確度應該不會有任何影響，而且一旦擁有 ONNX 模型，您就可以在 Azure SQL Database 邊緣部署模型，並搭配[預測 t-sql 函數使用原生計分](/sql/advanced-analytics/sql-native-scoring/)。
+要推斷 Azure SQL 資料庫邊緣中的機器學習模型，首先需要獲取模型。 這可以是經過預先訓練的模型，也可以是使用您選擇的框架訓練的自訂模型。 Azure SQL 資料庫邊緣支援 ONNX 格式，您需要將模型轉換為此格式。 不應對模型準確性產生影響，一旦您有了 ONNX 模型，就可以在 Azure SQL 資料庫邊緣部署模型，並使用[預測 T-SQL 函數使用本機評分](/sql/advanced-analytics/sql-native-scoring/)。
 
 ## <a name="get-onnx-models"></a>取得 ONNX 模型
 
-若要取得 ONNX 格式的模型：
+要獲取 ONNX 格式的模型，：
 
-- **模型建立服務**： Azure Machine Learning 和[Azure 自訂視覺服務](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)[中自動化 Machine Learning 功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)的服務，支援以 ONNX 格式直接匯出定型的模型。
+- **模型構建服務**：Azure 機器學習和[Azure 自訂視覺服務](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)[中的自動機器學習功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)等服務支援以 ONNX 格式直接匯出已訓練的模型。
 
-- [**轉換和/或匯出現有模型**](https://github.com/onnx/tutorials#converting-to-onnx-format)：數個定型架構（例如[PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer 和 CAFFE2）支援對 ONNX 的原生匯出功能，可讓您將定型的模型儲存至特定版本的 ONNX 格式。 對於不支援原生匯出的架構，有獨立的 ONNX 轉換器可安裝套件，可讓您將從不同機器學習架構定型的模型轉換成 ONNX 格式。
+- [**轉換和/或匯出現有模型**](https://github.com/onnx/tutorials#converting-to-onnx-format)：多個培訓框架（例如[PyTorch、](https://pytorch.org/docs/stable/onnx.html)鏈條和 Caffe2）支援本機匯出功能到 ONNX，這允許您將訓練的模型保存到 ONNX 格式的特定版本。 對於不支援本機匯出的框架，有獨立的 ONNX 轉換器可安裝包，使您能夠將從不同機器學習框架訓練的模型轉換為 ONNX 格式。
 
      **支援的架構**
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
-   * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+   * [張力流](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [學習](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
-    如需支援的架構和範例的完整清單，請參閱[轉換為 ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。
+    有關支援的框架和示例的完整清單，請參閱轉換為[ONNX 格式](https://github.com/onnx/tutorials#converting-to-onnx-format)。
 
 ## <a name="limitations"></a>限制
 
-目前，Azure SQL Database Edge 並不支援所有的 ONNX 模型。 支援僅限於具有**數值資料類型**的模型：
+目前，並非所有 ONNX 模型都受 Azure SQL 資料庫邊緣的支援。 支援僅限於具有**數位資料類型的**模型：
 
 - [int 和 Bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
-- [real 和 float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql)。
+- [真實和浮動](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql)。
   
-您可以使用[CAST 和 CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)，將其他數數值型別轉換成支援的類型。
+其他數數值型別可以使用[CAST 和 CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)轉換為支援的類型。
 
-模型輸入應該是結構化的，讓模型的每個輸入都對應到資料表中的單一資料行。 例如，如果您使用 pandas 資料框架來定型模型，則每個輸入都應該是模型的個別資料行。
+模型輸入的結構應使模型的每個輸入對應于表中的單個列。 例如，如果使用熊貓資料框來訓練模型，則每個輸入應該是模型的單獨列。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [透過 Azure 入口網站部署 SQL Database Edge](deploy-portal.md)
-- [在 Azure SQL Database Edge 預覽上部署 ONNX 模型](deploy-onnx.md)
+- [通過 Azure 門戶部署 SQL 資料庫邊緣](deploy-portal.md)
+- [在 Azure SQL 資料庫邊緣預覽版上部署 ONNX 模型](deploy-onnx.md)

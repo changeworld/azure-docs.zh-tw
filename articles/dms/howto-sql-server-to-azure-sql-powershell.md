@@ -1,7 +1,7 @@
 ---
-title: Powershell：將 SQL Server 遷移至 SQL Database
+title: 電源外殼：將 SQL 伺服器遷移到 SQL 資料庫
 titleSuffix: Azure Database Migration Service
-description: 瞭解如何透過 Azure 資料庫移轉服務使用 Azure PowerShell，從內部部署 SQL Server 遷移至 Azure SQL Database。
+description: 瞭解如何將 Azure PowerShell 與 Azure 資料庫移轉服務一起使用，從本地 SQL 伺服器遷移到 Azure SQL 資料庫。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650685"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 將 SQL Server 內部部署遷移至 Azure SQL Database
@@ -40,12 +40,12 @@ ms.locfileid: "77650685"
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * Azure SQL Database 執行個體。 您可以依照[在 Azure 入口網站中建立 Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) 一文中的詳細資料來建立 Azure SQL 資料庫執行個體。
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) \(英文\) 的 v3.3 或更新版本。
-* 若要使用 Azure Resource Manager 部署模型來建立 Microsoft Azure 虛擬網路，可使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力給 Azure 資料庫移轉服務。
-* 如[執行 SQL Server 遷移評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文所述，使用 Data Migration Assistant 完成內部部署資料庫和架構遷移的評估
-* 使用[install-Module PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)從 PowerShell 資源庫下載並安裝 Az microsoft.datamigration 模組;請務必使用 [以系統管理員身分執行] 來開啟 powershell 命令視窗。
+* 使用 Azure 資源管理器部署模型創建 Microsoft Azure 虛擬網路，該模型通過使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)向 Azure 資料庫移轉服務提供網站到本地源伺服器的網站到網站連接。
+* 使用"[執行 SQL Server 遷移評估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)"一文中所述的資料移轉助手完成對本機資料庫和架構遷移的評估
+* 使用[安裝模組 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)從 PowerShell 庫下載和安裝 Az.Data 遷移模組;請確保使用作為管理員運行打開電源殼命令視窗。
 * 確定用來連線至來源 SQL Server 執行個體的認證具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 權限。
 * 確定用來連線至目標 Azure SQL DB 執行個體的認證，在目標 Azure SQL Database 資料庫上具有 CONTROL DATABASE 權限。
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費](https://azure.microsoft.com/free/)帳戶。
+* Azure 訂用帳戶。 如果沒有，請先創建一個[免費](https://azure.microsoft.com/free/)帳戶。"
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登入您的 Microsoft Azure 訂用帳戶
 
@@ -55,9 +55,9 @@ ms.locfileid: "77650685"
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 建立虛擬機器之前，先建立資源群組。
 
-使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)命令來建立資源群組。
+使用["新阿茲資源組"](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)命令創建資源組。
 
-下列範例會在 EastUS 地區建立名為 myResourceGroup 的資源群組。
+下列範例會在 EastUS** 地區建立名為 myResourceGroup** 的資源群組。
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -67,13 +67,13 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 
 您可以使用 `New-AzDataMigrationService` Cmdlet，來建立新的 Azure 資料庫移轉服務執行個體。 此 Cmdlet 預期有下列必要參數：
 
-* Azure 資源群組名稱。 如先前所示，您可以使用[remove-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)命令來建立 Azure 資源群組，並提供其名稱作為參數。
-* 服務名稱。 該字串會對應至 Azure 資料庫移轉服務所需的唯一服務名稱 
+* *Azure 資源組名稱*。 可以使用[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)命令創建 Azure 資源組（如前面所示）並將其名稱作為參數提供。
+* *服務名稱*. 該字串會對應至 Azure 資料庫移轉服務所需的唯一服務名稱 
 * *位置*。 指定服務的位置。 指定 Azure 資料中心位置，例如美國西部或東南亞
-* SKU。 此參數會對應至 DMS SKU 名稱。 目前支援的 SKU 名稱為 *GeneralPurpose_4vCores*。
-* 虛擬子網路識別碼。 您可以使用 Cmdlet [new-azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)來建立子網。 
+* *斯庫*. 此參數會對應至 DMS SKU 名稱。 目前支援的 SKU 名稱為 *GeneralPurpose_4vCores*。
+* 虛擬子網路識別碼**。 您可以使用 Cmdlet[新-Az 虛擬網路子網配置來](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)創建子網。 
 
-下列範例會使用名為 *MyVNET* 的虛擬網路和名為 *MySubnet* 的子網路，在 *MyDMSResourceGroup* 資源群組中建立名為 *MyDMS* 的服務 (位於美國東部地區)。
+下列範例會使用名為 *MyVNET* 的虛擬網路和名為 *MySubnet* 的子網路，在 *MyDMSResourceGroup* 資源群組中建立名為 *MyDMS* 的服務 (位於美國東部** 地區)。
 
 ```powershell
  $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
@@ -95,10 +95,10 @@ $service = New-AzDms -ResourceGroupName myResourceGroup `
 
 您可以使用 `New-AzDmsConnInfo` Cmdlet 來建立資料庫連接資訊物件。 此 Cmdlet 預期有下列參數：
 
-* ServerType。 要求的資料庫連接類型，例如 SQL、Oracle 或 MySQL。 使用 SQL Server 的 SQL 和 Azure SQL。
-* DataSource。 SQL Server 執行個體或 Azure SQL 資料庫的名稱或 IP。
-* AuthType。 連線的驗證類型，可以是 SqlAuthentication 或 WindowsAuthentication。
-* TrustServerCertificate 參數會設定一個值，指出通道是否會加密，同時繞過驗證信任的信任鏈結。 值可以是 true 或 false。
+* *伺服器類型*。 要求的資料庫連接類型，例如 SQL、Oracle 或 MySQL。 使用 SQL Server 的 SQL 和 Azure SQL。
+* *資料來源*. SQL Server 執行個體或 Azure SQL 資料庫的名稱或 IP。
+* *奧思類型*. 連線的驗證類型，可以是 SqlAuthentication 或 WindowsAuthentication。
+* TrustServerCertificate** 參數會設定一個值，指出通道是否會加密，同時繞過驗證信任的信任鏈結。 值可以是 true 或 false。
 
 下列範例會使用 SQL 驗證，為名為 MySourceSQLServer 的來源 SQL Server 建立連線資訊物件：
 
@@ -120,9 +120,9 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 ### <a name="provide-databases-for-the-migration-project"></a>提供移轉專案所用的資料庫
 
-建立 `AzDataMigrationDatabaseInfo` 物件清單，該清單會指定資料庫作為 Azure 資料庫移轉專案的一部份，並提供給建立物件所需的參數使用。 Cmdlet `New-AzDataMigrationDatabaseInfo` 可以用來建立 AzDataMigrationDatabaseInfo。 
+建立 `AzDataMigrationDatabaseInfo` 物件清單，該清單會指定資料庫作為 Azure 資料庫移轉專案的一部份，並提供給建立物件所需的參數使用。 Cmdlet`New-AzDataMigrationDatabaseInfo`可用於創建 AzData 遷移資料庫資訊。 
 
-下列範例會為 `AzDataMigrationDatabaseInfo`AdventureWorks2016**資料庫建立** 專案，並將其新增至清單 (提供給建立物件所需的參數使用)。
+下列範例會為 **AdventureWorks2016** 資料庫建立 `AzDataMigrationDatabaseInfo` 專案，並將其新增至清單 (提供給建立物件所需的參數使用)。
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks2016
@@ -131,7 +131,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>建立專案物件
 
-最後，您可以使用  *建立位在美國東部* *且名為 MyDMSProject*`New-AzDataMigrationProject` 的 Azure 資料庫移轉專案，並新增先前建立的來源和目標連線及資料庫清單來進行移轉。
+最後，您可以使用 `New-AzDataMigrationProject` 建立位在美國東部** 且名為 MyDMSProject** 的 Azure 資料庫移轉專案，並新增先前建立的來源和目標連線及資料庫清單來進行移轉。
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -153,7 +153,7 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 連線安全性認證可建立為 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) \(英文\) 物件。
 
-下列範例示範如何將密碼提供為 $sourcePassword 和 $targetPassword 字串變數，以建立來源和目標的 PSCredential 物件。
+下列範例示範如何將密碼提供為 $sourcePassword** 和 $targetPassword** 字串變數，以建立來源和目標的 PSCredential** 物件。
 
 ```powershell
 $secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
@@ -184,23 +184,23 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
   -TableMap $tableMap
 ```
 
-### <a name="create-the-migration-task-and-start-it"></a>建立並啟動遷移工作
+### <a name="create-the-migration-task-and-start-it"></a>創建遷移任務並啟動它
 
 使用 `New-AzDataMigrationTask` Cmdlet 建立並啟動移轉工作。 此 Cmdlet 預期有下列參數：
 
-* TaskType。 為 SQL Server 與 Azure SQL Database 移轉所建立的移轉工作類型，預期為 *MigrateSqlServerSqlDb*。 
-* 資源群組名稱。 要在其中建立工作的資源群組名稱。
-* ServiceName。 要在其中建立工作的 Azure 資料庫移轉服務執行個體。
-* ProjectName。 要在其中建立工作的 Azure 資料庫移轉服務專案名稱。 
-* TaskName。 要建立的工作名稱。 
-* *SourceConnection*。 代表來源 SQL Server 連接的 AzDmsConnInfo 物件。
-* *TargetConnection*。 代表目標 Azure SQL Database 連接的 AzDmsConnInfo 物件。
-* SourceCred。 連線至來源伺服器所用的 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
-* TargetCred。 連線至目標伺服器所用的 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
-* SelectedDatabase。 代表來源和目標資料庫對應的 AzDataMigrationSelectedDB 物件。
-* *SchemaValidation*。 （選擇性，切換參數）在遷移之後，會在來源與目標之間執行架構資訊的比較。
-* *DataIntegrityValidation*。 （選擇性，切換參數）在遷移之後，會在來源和目標之間執行總和檢查碼架構的資料完整性驗證。
-* *QueryAnalysisValidation*。 （選擇性，切換參數）在遷移之後，會執行快速且智慧型的查詢分析，方法是從源資料庫中抓取查詢，並在目標中執行它們。
+* *任務類型*。 為 SQL Server 與 Azure SQL Database 移轉所建立的移轉工作類型，預期為 *MigrateSqlServerSqlDb*。 
+* *資源組名稱*. 要在其中建立工作的資源群組名稱。
+* *服務名稱*。 要在其中建立工作的 Azure 資料庫移轉服務執行個體。
+* *專案名稱*。 要在其中建立工作的 Azure 資料庫移轉服務專案名稱。 
+* *任務名稱*。 要建立的工作名稱。 
+* *SourceConnection*。 表示源 SQL 伺服器連接的 AzDmsConnInfo 物件。
+* *TargetConnection*。 表示目標 Azure SQL 資料庫連接的 AzDmsConnInfo 物件。
+* SourceCred**。 連線至來源伺服器所用的 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
+* TargetCred**。 連線至目標伺服器所用的 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 物件。
+* SelectedDatabase**。 表示源資料庫和目標資料庫映射的 AzData 遷移選擇DB 物件。
+* *架構驗證*。 （可選，切換參數）遷移後，對源和目標之間的架構資訊進行比較。
+* *資料完整性驗證*。 （可選，切換參數）遷移後，在源和目標之間執行基於校驗和的資料完整性驗證。
+* *查詢分析驗證*。 （可選，切換參數）遷移後，通過從源資料庫檢索查詢並在目標中執行查詢，執行快速和智慧的查詢分析。
 
 下列範例會建立並啟動名為 myDMSTask 的移轉工作：
 
@@ -217,7 +217,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb `
   -SelectedDatabase  $selectedDbs `
 ```
 
-下列範例會建立並啟動與上述相同的遷移工作，但也會執行這三項驗證：
+以下示例創建並啟動與上述相同的遷移任務，但也執行所有三個驗證：
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb `

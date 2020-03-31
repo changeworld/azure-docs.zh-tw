@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
 ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072967"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虛擬機器擴充功能和功能
@@ -52,31 +52,31 @@ Azure 平台裝載許多擴充功能，包括 VM 設定、監視、安全性和�
 
 ## <a name="troubleshoot-extensions"></a>針對擴充功能進行疑難排解
 
-您可以在延伸模組總覽的**疑難排解和支援**一節中找到每個擴充功能的疑難排解資訊。 以下是可用的疑難排解資訊清單：
+每個擴展的故障排除資訊可在擴展概述的 **"疑難排解和支援**"部分中找到。 下面是可用的故障排除資訊的清單：
 
 | 命名空間 | 疑難排解 |
 |-----------|-----------------|
-| dependencyagent. dependencyagentlinux。 | [適用于 Linux 的 Azure 監視器相依性](agent-dependency-linux.md#troubleshoot-and-support) |
-| dependencyagent. dependencyagentwindows。 | [Windows Azure 監視器相依性](agent-dependency-windows.md#troubleshoot-and-support) |
-| azurediskencryptionforlinux。 | [適用于 Linux 的 Azure 磁碟加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
-| azurediskencryption。 | [適用于 Windows 的 Azure 磁碟加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
-| customscriptextension | [適用于 Windows 的自訂腳本](custom-script-windows.md#troubleshoot-and-support) |
-| microsoft.ostcextensions.customscriptforlinux. customscriptforlinux | [適用于 Linux 的 Desired State Configuration](dsc-linux.md#troubleshoot-and-support) |
-| microsoft. powershell. dsc | [適用于 Windows 的 Desired State Configuration](dsc-windows.md#troubleshoot-and-support) |
-| hpccompute. nvidiagpudriverlinux | [適用于 Linux 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-linux.md#troubleshoot-and-support) |
-| hpccompute. nvidiagpudriverwindows | [適用于 Windows 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-windows.md#troubleshoot-and-support) |
-| iaasantimalware。 | [Windows 的反惡意程式碼擴充功能](iaas-antimalware-windows.md#troubleshoot-and-support) |
-| microsoft.enterprisecloud.monitoring. monitoring. omsagentforlinux | [適用于 Linux 的 Azure 監視器](oms-linux.md#troubleshoot-and-support)
-| microsoft.enterprisecloud.monitoring. monitoring. microsoftmonitoringagent | [適用于 Windows 的 Azure 監視器](oms-windows.md#troubleshoot-and-support) |
-| stackify. linuxagent. stackifylinuxageNtextension | [適用于 Linux 的 Stackify 回溯](stackify-retrace-linux.md#troubleshoot-and-support) |
-| vmaccessforlinux. microsoft.ostcextensions.customscriptforlinux | [適用于 Linux 的重設密碼（VMAccess）](vmaccess.md#troubleshoot-and-support) |
-| azurerm.recoveryservices. vmsnapshot | [Linux 的快照集](vmsnapshot-linux.md#troubleshoot-and-support) |
-| azurerm.recoveryservices. vmsnapshot | [Windows 的快照集](vmsnapshot-windows.md#troubleshoot-and-support) |
+| 微軟.azure.監視.依賴代理.依賴代理 | [Linux 的 Azure 監視器依賴項](agent-dependency-linux.md#troubleshoot-and-support) |
+| microsoft.azure.監視.依賴代理.依賴代理視窗 | [Windows 的 Azure 監視器依賴項](agent-dependency-windows.md#troubleshoot-and-support) |
+| 微軟.azure.安全.azure磁片加密forlinux | [Linux 的 Azure 磁片加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| 微軟.azure.安全.azure 磁片加密 | [Windows 適用的 Azure 磁碟加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| 微軟.計算.自訂腳本擴展 | [適用于 Windows 的自訂腳本](custom-script-windows.md#troubleshoot-and-support) |
+| 微軟.ostc擴展.自訂腳本forlinux | [Linux 所需的狀態配置](dsc-linux.md#troubleshoot-and-support) |
+| 微軟.powershell.dsc | [視窗所需的狀態配置](dsc-windows.md#troubleshoot-and-support) |
+| 微軟.hpccompute.nvidiagpudrivelinux | [NVIDIA GPU Linux 驅動程式擴展](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| 微軟.hpc計算.nvidiagpu驅動程式視窗 | [適用于 Windows 的 NVIDIA GPU 驅動程式擴展](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| 微軟.azure.安全.iaasanti惡意軟體 | [適用于 Windows 的反惡意軟體擴展](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| 微軟.企業雲.監控.omsagentforlinux | [Linux 的 Azure 監視器](oms-linux.md#troubleshoot-and-support)
+| 微軟.企業雲.監控.微軟監控代理 | [用於視窗的 Azure 監視器](oms-windows.md#troubleshoot-and-support) |
+| 堆疊ify.linuxagent.擴展.stackifylinux代理擴展 | [Linux 的堆疊化回溯](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux.microsoft.ostc 擴展 | [重置 Linux 的密碼 （VMAccess）](vmaccess.md#troubleshoot-and-support) |
+| 微軟.恢復服務.vmsnapshot | [Linux 快照](vmsnapshot-linux.md#troubleshoot-and-support) |
+| 微軟.恢復服務.vmsnapshot | [視窗快照](vmsnapshot-windows.md#troubleshoot-and-support) |
 
 
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Linux 代理程式和擴充功能運作方式的詳細資訊，請參閱[適用於 Linux 的 Azure VM 擴充功能和功能](features-linux.md)。
 * 如需有關 Windows 客體代理程式和擴充功能運作方式的詳細資訊，請參閱[適用於 Windows 的 Azure VM 擴充功能和功能](features-windows.md)。  
-* 若要安裝 Windows 來賓代理程式，請參閱[Azure Windows 虛擬機器代理程式總覽](agent-windows.md)。  
-* 若要安裝 Linux 代理程式，請參閱[Azure Linux 虛擬機器代理程式總覽](agent-linux.md)。  
+* 要安裝 Windows 來賓代理，請參閱[Azure Windows 虛擬機器代理概述](agent-windows.md)。  
+* 要安裝 Linux 代理，請參閱[Azure Linux 虛擬機器代理概述](agent-linux.md)。  
 

@@ -1,6 +1,6 @@
 ---
-title: 從 Azure CLI 命令列部署模組-Azure IoT Edge
-description: 使用 Azure CLI 搭配 Azure IoT 擴充功能，將 IoT Edge 模組從您的 IoT 中樞推送至 IoT Edge 裝置，如部署資訊清單所設定。
+title: 從 Azure CLI 命令列部署模組 - Azure IoT 邊緣
+description: 將 Azure CLI 與 Azure IoT 擴展一起，將 IoT 邊緣模組從 IoT 中心推送到 IoT 邊緣設備，由部署清單配置。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e93360d4045f9c97d45abe2af489804a4c3c85f0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 619ba7cb2d99e0137fd1834096dd5b66ffcd6ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673505"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240391"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模組
 
@@ -24,12 +24,12 @@ ms.locfileid: "78673505"
 
 本文說明如何建立 JSON 部署資訊清單，然後使用該檔案將部署發送到 IoT Edge 裝置。 如需根據裝置共用標籤，建立目標為多個裝置的部署資訊，請參閱[大規模部署和監視 IoT Edge 模組](how-to-deploy-monitor-cli.md) (英文)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。
+* Azure 訂閱中的[IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
 * 已安裝 IoT Edge 執行階段的 [IoT Edge 裝置](how-to-register-device.md#register-with-the-azure-cli)。
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須為2.0.70 或以上。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
-* [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
+* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 至少，Azure CLI 版本必須為 2.0.70 或以上。 使用 `az --version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。
+* [Azure CLI 的 IoT 擴展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>設定部署資訊清單
 
@@ -116,11 +116,11 @@ ms.locfileid: "78673505"
 
 使用下列命令，將組態套用至 IoT Edge 裝置：
 
-   ```cli
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-裝置識別碼參數會區分大小寫。 內容參數會指向您已儲存的部署資訊清單檔案。
+裝置識別碼 參數區分大小寫。 內容參數會指向您已儲存的部署資訊清單檔案。
 
    ![az iot edge set-modules 輸出](./media/how-to-deploy-cli/set-modules.png)
 
@@ -130,11 +130,11 @@ ms.locfileid: "78673505"
 
 在您的 IoT Edge 裝置上檢視模組：
 
-   ```cli
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-裝置識別碼參數會區分大小寫。
+裝置識別碼 參數區分大小寫。
 
    ![az iot hub module-identity list 輸出](./media/how-to-deploy-cli/list-modules.png)
 

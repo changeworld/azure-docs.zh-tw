@@ -1,5 +1,5 @@
 ---
-title: 使用範本在 Azure 監視器中收集 Windows VM 計量
+title: 使用範本在 Azure 監視器中收集 Windows VM 指標
 description: 使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 author: anirudhcavale
 services: azure-monitor
@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657362"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
@@ -24,15 +24,15 @@ ms.locfileid: "77657362"
 
 將它們儲存在此位置可讓您存取與平台計量相同的動作。 動作包括近乎即時的警示、圖表、路由，以及從 REST API 存取和更多功能。 在過去，診斷擴充功能會寫入到 Azure 儲存體，而不是 Azure 監視器資料存放區。
 
-如果您剛開始使用 Resource Manager 範本，請了解[範本部署](../../azure-resource-manager/management/overview.md)與其結構和語法。
+如果您是資源管理器範本的新增功能，則瞭解[範本部署](../../azure-resource-manager/management/overview.md)及其結構和語法。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。
+- 您的訂閱必須註冊到[Microsoft.Insights.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)
 
 - 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
-- 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。 
+- 您的 VM 資源必須位於[支援自訂指標的區域](metrics-custom-overview.md#supported-regions)。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>設定 Azure 監視器作為資料接收器
@@ -48,7 +48,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 下載這兩個檔案並儲存在本機。
 
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
-開啟 *azuredeploy.parameters.json* 檔案
+打開*azuredeploy.parameters.json*檔
 
 1. 輸入 VM 的 **adminUsername** 與 **adminPassword** 值。 這些參數可用來從遠端存取 VM。 若要避免該 VM 被駭，請勿使用此範本中的值。 Bot 會掃描網際網路，取得公用 GitHub 存放庫中的使用者名稱與密碼。 很可能會利用這些預設值來測試 VM。
 
@@ -58,7 +58,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 
 開啟 *azuredeploy.json* 檔案
 
-在 **storageAccountName** 項目後面，將儲存體帳戶識別碼新增至範本的 **variables** 區段。
+在**存儲帳戶名稱**條目後，將存儲帳戶 ID 添加到範本的**變數**部分。
 
 ```json
 // Find these lines.
@@ -69,7 +69,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
 ```
 
-將這個受控服務識別 (MSI) 擴充功能新增至範本的 **resources** 區段頂端。 此擴充功能可確保 Azure 監視器接受所發出的計量。
+將此託管服務標識 （MSI） 擴展添加到**資源**部分頂部的範本。 此擴充功能可確保 Azure 監視器接受所發出的計量。
 
 ```json
 //Find this code.
@@ -234,7 +234,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 ## <a name="deploy-the-resource-manager-template"></a>部署 Resource Manager 範本
 
 > [!NOTE]
-> 您必須執行 Azure 診斷擴充功能 1.5 版或更新版本，並將 Resource Manager 範本中的 **autoUpgradeMinorVersion**: 屬性集合設定為 'true'。 接著，Azure 會在啟動 VM 時載入適當的擴充功能。 如果您的範本中沒有這些設定，請進行變更，並重新部署該範本。
+> 您必須運行 Azure 診斷擴展版本 1.5 或更高版本，並且在資源管理器範本中自動**升級 Minorversion：** 屬性設置為"true"。 接著，Azure 會在啟動 VM 時載入適當的擴充功能。 如果您的範本中沒有這些設定，請進行變更，並重新部署該範本。
 
 
 我們會利用 Azure PowerShell 來部署 Resource Manager 範本。
@@ -253,7 +253,7 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > 請記得[使用為自訂計量啟用的 Azure 區域](metrics-custom-overview.md)。
+   > 請記住[使用為自訂指標啟用的 Azure 區域](metrics-custom-overview.md)。
 
 1. 執行下列命令以使用 Resource Manager 範本部署 VM。
    > [!NOTE]
@@ -270,21 +270,21 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 
 ## <a name="chart-your-metrics"></a>繪製計量圖表
 
-1. 登入 Azure 入口網站。
+1. 登入 Azure 管理入口網站。
 
-2. 在左側功能表上，選取 [監視]。
+2. 在左側功能表上，選取 [監視]****。
 
-3. 在 [監視] 頁面上，選取 [計量]。
+3. 在 [監視] 頁面上，選取 [計量]****。
 
    ![[計量] 頁面](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. 將彙總期間變更為 [過去 30 分鐘]。
+4. 將彙總期間變更為 [過去 30 分鐘]****。
 
 5. 在 [資源] 下拉式功能表中，選取您所建立的 VM。 如果您沒有變更範本中的名稱，它應該是 *SimpleWinVM2*。
 
 6. 在 [命名空間] 下拉式功能表中，選取 **azure.vm.windows.guest**
 
-7. 在 [計量] 下拉式功能表中，選取 [記憶體**認可的位元組 (使用中)]\%** 。
+7. 在 [計量] 下拉式功能表中，選取 [記憶體\%認可的位元組 (使用中)]****。
 
 
 ## <a name="next-steps"></a>後續步驟

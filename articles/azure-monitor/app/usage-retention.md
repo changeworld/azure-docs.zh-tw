@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670962"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 進行 Web 應用程式的使用者保留期分析
@@ -27,7 +27,7 @@ ms.locfileid: "77670962"
 
 1. 工具列可讓使用者建立新的保留報告、開啟現有的保留報告、儲存目前保留報告或另存新檔、還原對已儲存之報表所做的變更、重新整理報表上的資料、透過電子郵件或直接連結共用報表，以及存取文件頁面。 
 2. 根據預設，保留期會顯示執行任何動作然後回來，並且在一段期間內未執行任何其他動作的所有使用者。 您可以選取不同組合的事件，以縮小特定使用者活動的關注範圍。
-3. 在屬性新增一或多個篩選條件。 例如，您可以將重點放在特定國家或區域中的使用者。 設定篩選條件後，按一下 [更新]。 
+3. 在屬性新增一或多個篩選條件。 例如，您可以將重點放在特定國家或區域中的使用者。 設定篩選條件後，按一下 [更新]****。 
 4. 整體保留圖表顯示所選期間內的使用者保留摘要。 
 5. 此格線根據 #2 中的查詢產生器顯示保留的使用者數目。 每個資料列代表在所顯示的時間週期內執行任何事件的同群使用者。 資料列中的每個資料格會顯示該同群使用者中在稍後期間內至少回來使用一次的數目。 有些使用者可能會在不只一個期間內回來使用。 
 6. Insights 卡顯示前五個起始事件，以及前五個傳回的事件，讓使用者深入了解其保留報表。 

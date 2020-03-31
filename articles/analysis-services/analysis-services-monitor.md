@@ -1,6 +1,6 @@
 ---
 title: 監視 Azure Analysis Services 伺服器計量 | Microsoft Docs
-description: 瞭解 Analysis Services 如何使用 Azure 計量瀏覽器，這是入口網站中的免費工具，可協助您監視伺服器的效能和健康情況。
+description: 瞭解分析服務如何使用門戶中的免費工具 Azure 指標資源管理器來説明監視伺服器的性能和運行狀況。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252801"
 ---
 # <a name="monitor-server-metrics"></a>監視伺服器計量
 
-Analysis Services 提供 Azure 計量瀏覽器中的計量，這是入口網站中的免費工具，可協助您監視伺服器的效能和健康情況。 例如，監視記憶體和 CPU 使用率、用戶端連接數目，以及查詢資源消耗。 Analysis Services 和其他大部分的 Azure 服務一樣，採用相同的監視架構。 若要深入瞭解，請參閱[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)。
+分析服務在 Azure 指標資源管理器（門戶中的免費工具）中提供指標，以説明您監視伺服器的性能和運行狀況。 例如，監視記憶體和 CPU 使用率、用戶端連接數目，以及查詢資源消耗。 Analysis Services 和其他大部分的 Azure 服務一樣，採用相同的監視架構。 要瞭解更多資訊，請參閱[使用 Azure 指標資源管理器入門](../azure-monitor/platform/metrics-getting-started.md)。
 
 若要在資源群組或訂用帳戶中跨多個服務資源執行更多深入的診斷、追蹤效能及識別趨勢，請使用 [Azure 監視器](../azure-monitor/overview.md)。 使用 Azure 監視器 (服務) 可能需要付費。
 
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>監視 Analysis Services 伺服器的計量
 
-1. 在 Azure 入口網站中，選取 [計量]。
+1. 在 Azure 入口網站中，選取 [計量]****。
 
     ![在 Azure 入口網站中監視](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. 在 [**度量**] 中，選取要包含在圖表中的計量。 
+2. 在 **"指標"** 中，選擇要包含在圖表中的指標。 
 
     ![監視器圖表](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -54,10 +54,10 @@ Analysis Services 提供 Azure 計量瀏覽器中的計量，這是入口網站�
 |MemoryLimitLow|記憶體︰記憶體下限|位元組|Average|來自組態檔的記憶體下限。|
 |MemoryLimitVertiPaq|記憶體︰記憶體限制 VertiPaq|位元組|Average|來自組態檔的記憶體內部限制。|
 |MemoryUsage|記憶體：記憶體使用量|位元組|Average|伺服器處理序用於計算清除器記憶體價格的記憶體使用量。 等於計數器 Process\PrivateBytes 加上記憶體對應的資料大小，忽略記憶體內部分析引擎 (VertiPaq) 在超出引擎記憶體限制時所對應或配置的任何記憶體。|
-|private_bytes_metric|私用位元組 |位元組|Average|Analysis Services 引擎進程和混合的容器進程所配置的記憶體總量，不包括與其他進程共用的記憶體。|
-|virtual_bytes_metric|虛擬位元組 |位元組|Average|Analysis Services 引擎進程和混合使用容器進程的虛擬位址空間目前大小。|
-|mashup_engine_private_bytes_metric|M 引擎私用位元組 |位元組|Average|已配置的記憶體混合容器進程總數，不包含與其他進程共用的記憶體。|
-|mashup_engine_virtual_bytes_metric|M 引擎虛擬位元組 |位元組|Average|混合容器進程的目前虛擬位址空間大小是使用。|
+|private_bytes_metric|私用位元組 |位元組|Average|分析服務引擎進程和 Mashup 容器進程已分配的記憶體總量，不包括與其他進程共用的記憶體。|
+|virtual_bytes_metric|虛擬位元組 |位元組|Average|分析服務引擎處理的虛擬位址空間和 Mashup 容器進程當前大小。|
+|mashup_engine_private_bytes_metric|M 引擎專用位元組 |位元組|Average|已分配記憶體 Mashup 容器進程的總數量，不包括與其他進程共用的記憶體。|
+|mashup_engine_virtual_bytes_metric|M 引擎虛擬位元組 |位元組|Average|正在使用的虛擬位址空間 Mashup 容器進程當前大小。|
 |Quota|記憶體︰配額|位元組|Average|目前的記憶體配額，以位元組為單位。 記憶體配額也就是指授與使用的記憶體，或是保留的記憶體。|
 |QuotaBlocked|記憶體︰封鎖的配額|Count|Average|在釋放其他記憶體配額之前，目前已封鎖的配額要求數目。|
 |VertiPaqNonpaged|記憶體︰未分頁的 VertiPaq|位元組|Average|工作集中已封鎖來供記憶體內部引擎使用的記憶體位元組。|
@@ -88,6 +88,6 @@ Analysis Services 提供 Azure 計量瀏覽器中的計量，這是入口網站�
 |TotalConnectionRequests|連線要求的總計|Count|Average|連線要求的總計。 |
 
 ## <a name="next-steps"></a>後續步驟
-[Azure 監視器總覽](../azure-monitor/overview.md)      
-[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)      
+[Azure 監視器概述](../azure-monitor/overview.md)      
+[使用 Azure 指標資源管理器入門](../azure-monitor/platform/metrics-getting-started.md)      
 [Azure 監視器 REST API 中的計量](/rest/api/monitor/metrics)

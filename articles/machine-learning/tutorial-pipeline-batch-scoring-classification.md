@@ -1,35 +1,36 @@
 ---
-title: 教學課程：適用于批次評分的 ML 管線
+title: 教學課程：批次評分的 ML 管線
 titleSuffix: Azure Machine Learning
-description: 在本教學課程中，建立機器學習管線，用以在 Azure Machine Learning 中的影像分類模型上執行批次評分。 機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您可將心力放在專業知識和機器學習上，而不是基礎結構和自動化。
+description: 在本教學課程中，您將建立機器學習管線，用以在影像分類模型上執行批次評分。 Azure Machine Learning 可讓您專注於機器學習，而不是基礎結構和自動化。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: cb99861a53c6802598cf925121f1821f74e7d76f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.reviewer: laobri
+ms.date: 03/11/2020
+ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354921"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472215"
 ---
-# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建立批次評分的 Azure Machine Learning 管線
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教學課程中，您會使用 Azure Machine Learning 中的管線執行批次評分作業。 此範例會使用預先定型的 [Inception-V3](https://arxiv.org/abs/1512.00567) 迴旋神經網路 Tensorflow 模型來分類未標記的影像。 在建置和發佈管線之後，您可以設定可讓您從任何平台上的任何 HTTP 程式庫觸發管線的 REST 端點。
+了解如何在 Azure Machine Learning 中建置管線以執行批次評分作業。 機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您能夠專注於機器學習，而不是基礎結構和自動化。 在建置和發佈管線之後，您可以設定可讓您從任何平台上的任何 HTTP 程式庫觸發管線的 REST 端點。 
 
-機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您可將心力放在專業知識和機器學習上，而不是基礎結構和自動化。 [深入了解機器學習管線](concept-ml-pipelines.md)。
+此範例會使用預先定型的 [Inception-V3](https://arxiv.org/abs/1512.00567) 迴旋神經網路模型 (在 Tensorflow 中實作)，來分類未標記的影像。 [深入了解機器學習管線](concept-ml-pipelines.md)。
 
 在本教學課程中，您會完成下列工作：
 
 > [!div class="checklist"]
-> * 設定工作區和下載資料範例
-> * 建立資料物件以擷取和輸出資料
+> * 設定工作區 
+> * 下載並儲存範例資料
+> * 建立資料集物件以擷取和輸出資料
 > * 您的工作區中下載、準備和註冊模型
 > * 佈建計算目標和建立評分指令碼
 > * 使用 `ParallelRunStep` 類別進行非同步批次評分
@@ -41,7 +42,7 @@ ms.locfileid: "78354921"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 如果您還沒有 Azure Machine Learning 工作區或 Notebook 虛擬機器，請完成[設定教學課程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 筆記本。
+* 完成設定教學課程之後，請使用相同的筆記本伺服器開啟 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb  筆記本。
 
 如果您想要在自己的[本機環境](how-to-configure-environment.md#local)中執行設定教學課程，您可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上存取教學課程。 執行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` 以取得必要套件。
 
@@ -57,7 +58,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>建立影像範例的資料存放區
+## <a name="create-a-datastore-for-sample-images"></a>建立影像範例的資料存放區
 
 在 `pipelinedata` 帳戶上，從 `sampledata` 公用 Blob 容器取得 ImageNet 評估的公用資料範例。 呼叫 `register_azure_blob_container()`，讓資料可供名為 `images_datastore` 的工作區使用。 然後，將工作區預設資料存放區設定為輸出資料存放區。 使用輸出資料存放區對管線中的輸出評分。
 
@@ -73,7 +74,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>建立資料物件
+## <a name="create-dataset-objects"></a>建立資料集物件
 
 在建置管線時，系統會使用 `Dataset` 物件從工作區的資料存放區讀取資料，並使用 `PipelineData` 物件在管線步驟之間傳輸中繼資料。
 
@@ -97,7 +98,7 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-接下來，將資料集註冊到工作區。
+接著，將資料集註冊到工作區。
 
 ```python
 
@@ -163,10 +164,10 @@ except ComputeTargetException:
 
 若要進行評分，請建立名為 `batch_scoring.py` 的批次評分指令碼，然後將其寫入至目前的目錄。 此指令碼會取得輸入影像、套用分類模型，然後將預測輸出至結果檔案。
 
-`batch_scoring.py` 腳本會採用下列參數，從您稍後建立的 `ParallelRunStep` 傳遞：
+`batch_scoring.py` 指令碼會採用下列參數，而這些參數從您稍後建立的 `ParallelRunStep` 傳入：
 
-- `--model_name`：所使用之模型的名稱。
-- `--labels_name`：保存 `labels.txt` 檔案的 `Dataset` 名稱。
+- `--model_name`:所用模型的名稱。
+- `--labels_name`:保存 `labels.txt` 檔案的 `Dataset` 名稱。
 
 管線基礎結構會使用 `ArgumentParser` 類別將參數傳遞至管線步驟。 例如，在下列程式碼中，會對第一個引數 `--model_name` 指定屬性識別碼 `model_name`。 在 `init()` 函式中，會使用 `Model.get_model_path(args.model_name)` 來存取此屬性。
 
@@ -259,9 +260,9 @@ def run(mini_batch):
 > [!TIP]
 > 本教學課程中的管線只有一個步驟，此步驟會將輸出寫入至檔案。 在有多個步驟的管線中，您也可以使用 `ArgumentParser` 來定義目錄以供寫入輸出資料，從而作為後續步驟的輸入。 如需使用 `ArgumentParser` 設計模式在多個管線步驟之間傳遞資料的範例，請參閱[筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)。
 
-## <a name="build-and-run-the-pipeline"></a>建置並執行管線
+## <a name="build-the-pipeline"></a>建置管線
 
-在執行管線之前，請先建立物件以定義 Python 環境並建立指令碼 `batch_scoring.py` 所需的相依性。 所需的主要相依性是 Tensorflow，但您也會安裝背景程式的 `azureml-defaults`。 使用相依性建立 `RunConfiguration` 物件。 此外，請指定 Docker 和 Docker-GPU 支援。
+在執行管線之前，請先建立物件以定義 Python 環境並建立指令碼 `batch_scoring.py` 所需的相依性。 所需的主要相依性是 Tensorflow，但您也會安裝 `azureml-defaults` 以供背景程序使用。 使用相依性建立 `RunConfiguration` 物件。 此外，請指定 Docker 和 Docker-GPU 支援。
 
 ```python
 from azureml.core import Environment
@@ -274,9 +275,9 @@ env.python.conda_dependencies = cd
 env.docker.base_image = DEFAULT_GPU_IMAGE
 ```
 
-### <a name="create-the-configuration-to-wrap-the-script"></a>建立用來包裝腳本的設定
+### <a name="create-the-configuration-to-wrap-the-script"></a>建立用來包裝指令碼的設定
 
-使用指令碼、環境設定和參數來建立管線步驟。 指定您已附加至工作區的計算目標。
+使用指令碼、環境設定和參數來建立管線步驟。 指定您已連結至工作區的計算目標。
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -303,7 +304,7 @@ parallel_run_config = ParallelRunConfig(
 * 輸入和輸出資料，以及任何自訂參數
 * 在步驟進行期間，所要執行指令碼或 SDK 邏輯的參考
 
-有多個類別會繼承自父代類別 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 您可以選擇類別，以使用特定的架構或堆疊來建置步驟。 在此範例中，您會使用 `ParallelRunStep` 類別來定義使用自訂 Python 腳本的步驟邏輯。 如果指令碼的引數是步驟的輸入或步驟的輸出，則必須將此引數*同時*定義在 `arguments` 陣列中，*以及*分別定義在 `input` 或 `output` 參數中。 
+有多個類別會繼承自父代類別 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 您可以選擇類別，以使用特定的架構或堆疊來建置步驟。 在此範例中，您會使用 `ParallelRunStep` 類別，透過自訂的 Python 指令碼來定義步驟邏輯。 如果指令碼的引數是步驟的輸入或步驟的輸出，則必須將此引數*同時*定義在 `arguments` 陣列中，*以及*分別定義在 `input` 或 `output` 參數中。 
 
 在有多個步驟的案例中，`outputs` 陣列中的物件參考將可以作為後續管線步驟的*輸入*。
 
@@ -324,7 +325,7 @@ batch_score_step = ParallelRunStep(
 
 如需可用於不同步驟類型的所有類別清單，請參閱[步驟套件](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)。
 
-### <a name="run-the-pipeline"></a>執行管道
+## <a name="submit-the-pipeline"></a>提交管線
 
 現在，請執行管線。 首先，使用工作區參考和您建立的管線步驟來建立 `Pipeline` 物件。 `steps` 參數是步驟的陣列。 在此案例中，批次評分只有一個步驟。 若要建置有多個步驟的管線，請在此陣列中依序放置步驟。
 
@@ -377,7 +378,7 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-若要從 REST 端點執行管線，您必須要有 OAuth2 Bearer-type 驗證標頭。 下列範例會使用互動式驗證（用於說明），但對於需要自動或無周邊驗證的大部分生產案例，請使用服務主體驗證，如[這篇文章中所述](how-to-setup-authentication.md)。
+若要從 REST 端點執行管線，您必須要有 OAuth2 Bearer-type 驗證標頭。 下列範例會使用互動式驗證來進行說明，但對於大部分需要自動化驗證或無周邊驗證的生產案例，請使用[本文中所述](how-to-setup-authentication.md)的服務主體驗證。
 
 若要使用服務主體驗證，必須在 *Azure Active Directory* 建立中*應用程式註冊*。 首先，您必須產生用戶端密碼，然後將您的服務主體*角色存取權*授與機器學習工作區。 請使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 類別管理您的驗證流程。 
 
@@ -431,12 +432,12 @@ RunDetails(published_pipeline_run).show()
 
 如果您不打算使用您建立的資源，請刪除它們，以免產生任何費用：
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
 1. 在資源群組清單中，選取您所建立的資源群組。
-1. 選取 [刪除資源群組]。
-1. 輸入資源群組名稱。 然後，選取 [刪除]。
+1. 選取 [刪除資源群組]  。
+1. 輸入資源群組名稱。 然後，選取 [刪除]  。
 
-您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]。
+您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 

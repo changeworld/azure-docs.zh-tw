@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894181"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>從 Spark 對 Azure Cosmos DB Cassandra API 資料表進行彙總作業 
@@ -97,7 +97,7 @@ res48: Long = 5
 
 * DISK_ONLY：會將 RDD 分割區只儲存在磁碟。
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2…：與上述層級相同，但會在兩個叢集節點上複寫每個分割區。
+* MEMORY_ONLY_2、MEMORY_AND_DISK_2…：與上述層級相同，但會在兩個叢集節點上複寫每個分割區。
 
 * OFF_HEAP (實驗性)：與 MEMORY_ONLY_SER 類似，但會將資料儲存在堆集外記憶體中，而需要事先啟用堆集外記憶體。 
 

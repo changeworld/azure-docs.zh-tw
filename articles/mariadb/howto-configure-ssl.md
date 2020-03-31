@@ -1,39 +1,39 @@
 ---
-title: 設定 SSL-適用於 MariaDB 的 Azure 資料庫
+title: 配置 SSL - MariaDB 的 Azure 資料庫
 description: 有關如何適當設定「適用於 MariaDB 的 Azure 資料庫」及相關聯應用程式以適當使用 SSL 連線的指示
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 668b72fa89916de6d2aa5971543b0ec085de8263
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767359"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530677"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MariaDB 的 Azure 資料庫
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MariaDB 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="obtain-ssl-certificate"></a>取得 SSL 憑證
-從 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 下載要透過 SSL 與「適用於 MariaDB 的 Azure 資料庫」伺服器通訊所需的憑證，並將該憑證檔儲存到本機磁碟機 (例如，本教學課程使用 c:\ssl)。
+下載通過 SSL 與 MariaDB 伺服器的 Azure 資料庫進行[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)通信所需的證書，並將證書檔保存到本地磁碟機（例如，本教程使用 c：\ssl）。
 **針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="bind-ssl"></a>繫結 SSL
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL 工作臺透過 SSL 連線到伺服器
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>通過 SSL 使用 MySQL 工作臺連接到伺服器
 設定使 MySQL Workbench 安全地透過 SSL 連線。 
 
-1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL] 索引標籤。 
+1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL]**** 索引標籤。 
 
-1. 將 [**使用 SSL** ] 欄位更新為 [需要]。
+1. 將**使用 SSL**欄位更新為"需要"。
 
-1. 在 [ **SSL CA 檔案：** ] 欄位中，輸入**baltimorecybertrustroot.crt.pem**的檔案位置。 
+1. 在 [SSL CA 檔案:]**** 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。 
     
-    ![儲存 SSL 設定](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+    ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-針對現有的連線，您可以用滑鼠右鍵按一下連線圖示來系結 SSL，然後選擇 [編輯]。 然後瀏覽至 [SSL] 索引標籤上，並繫結憑證檔案。
+對於現有連接，您可以通過按右鍵連接圖示並選擇編輯來綁定 SSL。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 透過 SSL 連線至伺服器
 有另一個繫結 SSL 憑證的方法，就是藉由執行下列命令來使用 MySQL 命令列介面。 
@@ -47,7 +47,7 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>強制在 Azure 中使用 SSL 連線 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
-使用 Azure 入口網站，瀏覽適用於 MariaDB 的 Azure 資料庫伺服器，然後按一下 [連線安全性]。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線] 設定，然後按一下 [儲存]。 Microsoft 建議一律啟用 [強制使用 SSL 連線] 設定，以增強安全性。
+使用 Azure 入口網站，瀏覽適用於 MariaDB 的 Azure 資料庫伺服器，然後按一下 [連線安全性]****。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線]**** 設定，然後按一下 [儲存]****。 Microsoft 建議一律啟用 [強制使用 SSL 連線]**** 設定，以增強安全性。
 ![啟用 ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
@@ -94,7 +94,7 @@ conn = pymysql.connect(user='myadmin@mydemoserver',
                        host='mydemoserver.mariadb.database.azure.com',
                        ssl={'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
-### <a name="ruby"></a>拼音
+### <a name="ruby"></a>Ruby
 ```ruby
 client = Mysql2::Client.new(
         :host     => 'mydemoserver.mariadb.database.azure.com', 

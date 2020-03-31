@@ -1,7 +1,7 @@
 ---
 title: 已知問題和疑難排解
 titleSuffix: Azure Machine Learning
-description: 取得 Azure Machine Learning 的已知問題、因應措施和疑難排解清單。
+description: 獲取 Azure 機器學習的已知問題、解決方法和故障排除的清單。
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -10,22 +10,22 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2522b31788df294c37db4326985edd6c85774561
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d5525c02edb30eff0ee8971a382f2acb8f2e57ee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191838"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455718"
 ---
-# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和 Azure 機器學習故障排除
 
-本文可協助您找出並更正使用 Azure Machine Learning 時所遇到的錯誤或失敗。
+本文可説明您查找和更正使用 Azure 機器學習時遇到的錯誤或故障。
 
 ## <a name="sdk-installation-issues"></a>SDK 安裝問題
 
 **錯誤訊息：無法解除安裝 'PyYAML'**
 
-適用于 Python 的 Azure Machine Learning SDK： PyYAML 是 distutils 安裝的專案。 因此，在有部分解決安裝的情況下，我們無法精確判斷哪些檔案屬於它。 若要繼續安裝 SDK，但略過此錯誤，請使用：
+適用于 Python 的 Azure 機器學習 SDK：PyYAML 是一個已安裝的專案。 因此，在有部分解決安裝的情況下，我們無法精確判斷哪些檔案屬於它。 若要繼續安裝 SDK，但略過此錯誤，請使用：
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -33,82 +33,82 @@ pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 
 **錯誤訊息：`ERROR: No matching distribution found for azureml-dataprep-native`**
 
-Anaconda 的 Python 3.7.4 散發有一個錯誤，會破壞 azureml sdk 安裝。 此[GitHub 問題](https://github.com/ContinuumIO/anaconda-issues/issues/11195)會討論此問題，方法是使用此命令來建立新的 Conda 環境：
+Anaconda 的 Python 3.7.4 發行版本存在中斷 azureml-sdk 安裝的錯誤。 此問題在此[GitHub 問題](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中討論 此問題，可以通過使用此命令創建新的 Conda 環境來解決此問題：
 ```bash
 conda create -n <env-name> python=3.7.3
 ```
-這會使用 Python 3.7.3 建立 Conda 環境，而不會在3.7.4 中出現安裝問題。
+使用 Python 3.7.3 創建 Conda 環境，該環境不存在 3.7.4 中的安裝問題。
 
-## <a name="training-and-experimentation-issues"></a>訓練和實驗問題
+## <a name="training-and-experimentation-issues"></a>培訓和實驗問題
 
-### <a name="metric-document-is-too-large"></a>度量檔太大
-Azure Machine Learning 對於可以從定型回合一次記錄的度量物件大小，具有內部限制。 如果您在記錄清單值度量時遇到「計量檔太大」錯誤，請嘗試將清單分割成較小的區塊，例如：
+### <a name="metric-document-is-too-large"></a>公制文檔太大
+Azure 機器學習對可以從訓練運行中一次記錄的指標物件的大小有內部限制。 如果在記錄清單值指標時遇到"指標文檔太大"錯誤，請嘗試將清單拆分為較小的塊，例如：
 
 ```python
 run.log_list("my metric name", my_metric[:N])
 run.log_list("my metric name", my_metric[N:])
 ```
 
-就內部而言，Azure ML 會將具有相同計量名稱的區塊串連成連續清單。
+在內部，Azure ML 將具有相同指標名稱的塊串聯到連續清單中。
 
-### <a name="moduleerrors-no-module-named"></a>ModuleErrors （沒有名為的模組）
-如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，這表示訓練腳本預期會安裝套件，但不會新增。 一旦您提供套件名稱，Azure ML 就會將套件安裝在用於定型執行的環境中。 
+### <a name="moduleerrors-no-module-named"></a>模組錯誤（未命名模組）
+如果在 Azure ML 中提交實驗時遇到模組錯誤，則意味著訓練腳本希望安裝包，但不會添加。 提供包名稱後，Azure ML 將在用於定型運行的環境中安裝包。 
 
-如果您使用[估算器](concept-azure-machine-learning-architecture.md#estimators)來提交實驗，您可以根據要安裝封裝的來源，在估計工具中透過 `pip_packages` 或 `conda_packages` 參數指定封裝名稱。 您也可以使用 `conda_dependencies_file`來指定具有所有相依性的 yml 檔案，或使用 `pip_requirements_file` 參數列出 txt 檔案中所有的 pip 需求。 如果您有自己的 Azure ML 環境物件，而您想要覆寫估計工具所使用的預設映射，您可以透過估計工具函數的 `environment` 參數來指定該環境。
+如果使用["估計器"](concept-azure-machine-learning-architecture.md#estimators)提交實驗，則可以根據要從哪個源安裝包，通過`pip_packages``conda_packages`或估算器中的參數指定包名稱。 您還可以使用使用`conda_dependencies_file`或使用`pip_requirements_file`參數在 txt 檔中列出所有 pip 要求，指定包含所有依賴項的 yml 檔。 如果自己的 Azure ML 環境物件要覆蓋估計器使用的預設映射，則可以通過估計器建構函式的`environment`參數指定該環境。
 
-Azure ML 也提供適用于 Tensorflow、PyTorch、Chainer 和 SKLearn 的架構專屬估算器。 使用這些估算器可確保在用於定型的環境中，代表您安裝核心架構相依性。 如先前所述，您可以選擇指定額外的相依性。 
+Azure ML 還為 Tensorflow、PyTorch、鏈條和 SKLearn 提供了特定于框架的估算器。 使用這些估計器將確保核心框架依賴項代表您安裝在用於培訓的環境中。 您可以選擇如上所述指定額外的依賴項。 
  
-Azure ML 維護的 docker 映射及其內容可以在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到。
-架構特定的相依性會列在個別的架構檔中- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
+Azure ML 維護的 Docker 映射及其內容可以在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到。
+特定于框架的依賴項列在各自的框架文檔中 -[鏈子](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、PyTorch、TensorFlow、SKLearn。 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks) [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks) [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)
 
 > [!Note]
-> 如果您認為特定套件很常見，可以在 Azure ML 維護的映射和環境中新增，請在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 問題。 
+> 如果您認為某個包是通用的，可以添加到 Azure ML 維護的圖像和環境中，請在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中引發 GitHub 問題。 
  
-### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError （名稱未定義）、AttributeError （物件沒有屬性）
-這個例外狀況應該來自您的訓練腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義的特定名稱或屬性錯誤的詳細資訊。 從 SDK 中，您可以使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 請務必先查看您的訓練腳本並修正錯誤，再重新提交執行。 
+### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>名稱錯誤（未定義名稱）、屬性錯誤（物件沒有屬性）
+此異常應來自您的培訓腳本。 可以查看 Azure 門戶中的日誌檔，以獲取有關未定義的特定名稱或屬性錯誤的詳細資訊。 在 SDK 中，您可以使用`run.get_details()`查看錯誤訊息。 這還將列出為運行而生成的所有日誌檔。 請務必查看您的訓練腳本，並在重新提交運行之前修復錯誤。 
 
-### <a name="horovod-has-been-shut-down"></a>Horovod 已關閉
-在大多數情況下，如果您遇到「AbortedError： Horovod 已關閉」，此例外狀況表示其中一個處理常式造成 Horovod 關閉的基礎例外狀況。 MPI 作業中的每個排名都會在 Azure ML 中取得專屬的專用記錄檔。 這些記錄檔的名稱為 `70_driver_logs`。 在分散式訓練的情況下，記錄檔名稱會加上 `_rank`，讓您更輕鬆地區分記錄檔。 若要找出造成 Horovod 關閉的確切錯誤，請流覽所有的記錄檔，並尋找 driver_log 檔案結尾處的 `Traceback`。 其中一個檔案會提供您實際的基礎例外狀況。 
+### <a name="horovod-has-been-shut-down"></a>霍羅沃德已經關閉
+在大多數情況下，如果您遇到"中止錯誤：霍羅沃德已關閉"此異常意味著在導致 Horovod 關閉的一個進程中存在潛在的異常。 MPI 作業中的每個排名都獲取其在 Azure ML 中的專用日誌檔。 這些日誌被命名為`70_driver_logs`。 在分散式培訓的情況下，日誌名稱尾碼為，`_rank`以便更輕鬆地區分日誌。 要查找導致霍羅福關閉的確切錯誤，請流覽所有日誌檔，並在driver_log檔末尾查找`Traceback`。 這些檔之一將為您提供實際的基礎異常。 
 
-### <a name="sr-iov-availability-on-ncv3-machines-in-amlcompute-for-distributed-training"></a>AmlCompute 中的 NCv3 機器上的 SR-IOV 可用性以進行分散式訓練
-Azure 計算已推出 NCv3 機器的[sr-iov 升級](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku/)，客戶可以利用 azure ML 的受控計算供應專案（AmlCompute）。 這些更新可支援整個 MPI 堆疊，以及使用不會佔用的 RDMA 網路，以改善多節點分散式定型效能，特別是針對深度學習。
+### <a name="sr-iov-availability-on-ncv3-machines-in-amlcompute-for-distributed-training"></a>AmlCompute 中的 NCv3 機器上的 SR-IOV 可用性，用於分散式培訓
+Azure 計算已推出 NCv3 電腦的[SR-IOV 升級](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku/)，客戶可以利用 Azure ML 的託管計算產品 （AmlCompute）。 這些更新將支援整個 MPI 堆疊，並使用 Infiniband RDMA 網路來改進多節點分散式培訓性能，尤其是深度學習。
 
-查看[更新排程](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/)，以查看何時會針對您的區域推出支援。
+查看[更新計畫](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/)，查看何時將為您的區域推出支援。
 
-### <a name="run-or-experiment-deletion"></a>執行或實驗刪除
-您可以使用 [[實驗].](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) [封存] 方法來封存實驗，或從 Azure Machine Learning studio 用戶端中的 [實驗] 索引標籤視圖，透過 [封存實驗] 按鈕進行封存。 此動作會隱藏來自清單查詢和 views 的實驗，但不會將其刪除。
+### <a name="run-or-experiment-deletion"></a>運行或實驗刪除
+可以使用[實驗.存檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--)方法或通過"存檔實驗"按鈕從 Azure 機器學習工作室用戶端中的"實驗"選項卡視圖存檔實驗。 此操作將隱藏清單查詢和視圖中的實驗，但不會將其刪除。
 
-目前不支援永久刪除個別實驗或執行。 如需刪除工作區資產的詳細資訊，請參閱[匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。
+當前不支援永久刪除單個實驗或運行。 有關刪除工作區資源的詳細資訊，請參閱[匯出或刪除機器學習服務工作區資料](how-to-export-delete-data.md)。
 
-## <a name="azure-machine-learning-compute-issues"></a>Azure Machine Learning 計算問題
-使用 Azure Machine Learning 計算的已知問題（AmlCompute）。
+## <a name="azure-machine-learning-compute-issues"></a>Azure 機器學習計算問題
+使用 Azure 機器學習計算 （Aml 計算） 的已知問題。
 
-### <a name="trouble-creating-amlcompute"></a>建立 AmlCompute 時發生問題
+### <a name="trouble-creating-amlcompute"></a>創建 Aml 計算時遇到問題
 
-在 GA 版本之前，從 Azure 入口網站建立其 Azure Machine Learning 工作區的使用者很罕見，可能無法在該工作區中建立 AmlCompute。 您可以對服務提出支援要求，或透過入口網站或 SDK 建立新的工作區來立即解除封鎖。
+在 GA 版本之前從 Azure 門戶創建 Azure 機器學習工作區的某些使用者可能無法在該工作區中創建 AmlCompute，這一的可能性很小。 您可以針對服務提出支援請求，或者通過門戶或 SDK 創建新工作區，以便立即解除阻止自己。
 
-### <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>中斷： SR-IOV 升級至 AmlCompute 中的 NCv3 機器
+### <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>中斷：SR-IOV 升級到 AmlCompute 中的 NCv3 電腦
 
-Azure 計算將從2019年11月開始更新 NCv3 Sku，以支援所有 MPI 執行和版本，以及適用于未裝備虛擬機器的 RDMA 動詞命令。 這將需要短暫的停機時間-請[閱讀更多有關 sr-iov 升級的資訊](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)。
+Azure 計算將從 2019 年 11 月初開始更新 NCv3 SKU，以支援所有 MPI 實現和版本，以及適用于 InfiniBand 的虛擬機器的 RDMA 謂詞。 這將需要短暫的停機時間 -[閱讀更多有關 SR-IOV 升級](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)的資訊。
 
-身為 Azure Machine Learning 管理的計算供應專案（AmlCompute）的客戶，您目前不需要進行任何變更。 根據[更新排程](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)，您必須在訓練中規劃簡短的休息。 服務會負責更新叢集節點上的 VM 映射，並自動相應增加您的叢集。 一旦升級完成，您可以使用其他所有 MPI 散發套件（例如 OpenMPI with Pytorch），除了取得更高的未充分使用頻寬、延遲較低，以及更有效率的分散式應用程式效能。
+作為 Azure 機器學習託管計算產品 （AmlCompute） 的客戶，此時無需進行任何更改。 根據[更新計畫](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)，您需要在培訓中計畫一次短暫的休息。 該服務將負責更新叢集節點上的 VM 映射，並自動擴展群集。 升級完成後，除了獲得更高的 InfiniBand 頻寬、更低的延遲和更好的分散式應用程式性能外，您還可以使用所有其他 MPI 分發（如帶有 Pytorch 的 OpenMPI）。
 
-## <a name="azure-machine-learning-designer-issues"></a>Azure Machine Learning 設計工具問題
+## <a name="azure-machine-learning-designer-issues"></a>Azure 機器學習設計器問題
 
-設計工具的已知問題。
+設計器的已知問題。
 
-### <a name="long-compute-preparation-time"></a>長計算準備時間
+### <a name="long-compute-preparation-time"></a>計算準備時間長
 
-建立新的計算或呼叫讓計算需要一些時間，可能需要幾分鐘或更久。 小組正致力於優化。
+創建新計算或喚起離開計算需要時間，可能需要幾分鐘甚至更長的時間。 團隊正在努力優化。
 
 
-### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>無法執行實驗僅包含資料集 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>無法運行僅包含資料集的實驗 
 
-您可能想要執行實驗只包含資料集，以將資料集視覺化。 不過，不允許執行實驗目前只包含資料集。 我們正積極修正此問題。
+您可能希望僅運行一個實驗，其中包含用於視覺化資料集的資料集。 但是，今天不允許運行僅包含資料集的實驗。 我們正在積極解決這個問題。
  
-在修正之前，您可以將資料集連接到任何資料轉換模組（選取資料集中的資料行、編輯中繼資料、分割資料等）並執行實驗。 然後您可以將資料集視覺化。 
+在修復之前，您可以將資料集連接到任何資料轉換模組（在資料集中選擇列、編輯中繼資料、拆分資料等）並運行實驗。 然後，您可以視覺化資料集。 
 
-下圖顯示如何： ![visulize-資料](./media/resource-known-issues/aml-visualize-data.png)
+下圖顯示了如何：![視覺化資料](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="image-building-failure"></a>映像建置失敗
 
@@ -120,23 +120,23 @@ Azure 計算將從2019年11月開始更新 NCv3 Sku，以支援所有 MPI 執行
 
 ## <a name="fpgas"></a>FPGA
 
-您將無法在 FPGA 上部署模型，直到您已針對 FPGA 配額提出要求並已獲得核准。 若要要求存取權，請填妥配額要求表單： https://aka.ms/aml-real-time-ai
+您將無法在 FPGA 上部署模型，直到您已針對 FPGA 配額提出要求並已獲得核准。 若要要求存取權，請填妥配額要求表單：https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>自動化機器學習
 
-張量 Flow 自動化機器學習目前不支援張量流程版本1.13。 安裝此版本將導致封裝相依性停止運作。 我們正致力於在未來的版本中修正此問題。 
+Tensor 流自動機器學習當前不支援張量流版本 1.13。 安裝此版本將導致包依賴項停止工作。 我們正在努力在未來的版本中解決此問題。
 
 ### <a name="experiment-charts"></a>實驗圖表
 
-自動化 ML 實驗反復專案中顯示的二元分類圖表（精確度召回、ROC、增益曲線等）在4/12 之後無法在使用者介面中正確轉譯。 圖表繪圖目前顯示的是反向結果，其中較佳的執行模型會以較低的結果顯示。 解決方案正在進行調查。
+自動 ML 實驗反覆運算中顯示的二進位分類圖表（精度召回、ROC、增益曲線等）自 4 月 12 日起在使用者介面中未正確呈現。 圖表圖當前顯示反向結果，其中性能更好的模型顯示，結果較低。 一項決議正在調查中。
 
 ## <a name="datasets-and-data-preparation"></a>資料集和資料準備
 
-這些是 Azure Machine Learning 資料集的已知問題。
+這些是 Azure 機器學習資料集的已知問題。
 
-### <a name="typeerror-filenotfound-no-such-file-or-directory"></a>TypeError： FileNotFound：沒有這類檔案或目錄
+### <a name="typeerror-filenotfound-no-such-file-or-directory"></a>類型錯誤：檔未找到：沒有此類檔或目錄
 
-如果您提供的檔案路徑不是檔案所在的位置，就會發生這個錯誤。 您必須確定您參考檔案的方式與您在計算目標上裝載資料集的位置一致。 若要確保具有決定性的狀態，建議您在將資料集掛接至計算目標時使用抽象路徑。 例如，在下列程式碼中，我們會將資料集掛接在計算目標的檔案系統根目錄底下，`/tmp`。 
+如果提供的檔路徑不在檔所在的位置，則會發生此錯誤。 您需要確保引用檔的方式與在計算目標上裝載資料集的位置一致。 為了確保確定性狀態，我們建議在將資料集安裝到計算目標時使用抽象路徑。 例如，在以下代碼中，我們將資料集裝載到計算目的檔案系統的根目錄下`/tmp`。 
 
 ```python
 # Note the leading / in '/tmp/dataset'
@@ -145,19 +145,19 @@ script_params = {
 } 
 ```
 
-如果您未包含前置正斜線 '/'，您必須在工作目錄前面加上首碼，例如在計算目標上 `/mnt/batch/.../tmp/dataset`，以指出您要裝載資料集的位置。 
+如果不包括前導前斜杠"/"，則需要在計算目標`/mnt/batch/.../tmp/dataset`上對工作目錄進行首碼，以指示要將資料集裝載到何處。
 
-### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>無法從 HTTP 或 ADLS Gen 2 讀取 Parquet 檔案
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>無法從 HTTP 或 ADLS 第 2 代讀取 Parquet 檔
 
-AzureML DataPrep SDK 版本1.1.25 中有一個已知問題，它會在建立資料集時，從 HTTP 或 ADLS Gen 2 讀取 Parquet 檔案，而導致失敗。 `Cannot seek once reading started.`會失敗。 若要修正此問題，請將 `azureml-dataprep` 升級為高於1.1.26 的版本，或降級為低於1.1.24 的版本。
+AzureML DataPrep SDK 版本 1.1.25 中存在一個已知問題，該問題通過從 HTTP 或 ADLS Gen 2 讀取 Parquet 檔來創建資料集時導致失敗。 它將失敗與`Cannot seek once reading started.`。 要解決此問題，請升級到`azureml-dataprep`高於 1.1.26 的版本，或降級到低於 1.1.24 的版本。
 
 ```python
 pip install --upgrade azureml-dataprep
 ```
 
-### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError： mount （）有未預期的關鍵字引數 ' invocation_id '
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>類型錯誤：裝載（）得到了一個意外的關鍵字參數"invocation_id"
 
-如果您的 `azureml-core` 與 `azureml-dataprep`之間有不相容的版本，就會發生此錯誤。 如果您看到此錯誤，請將 `azureml-dataprep` 封裝升級至較新的版本（大於或等於1.1.29）。
+如果 和 之間存在`azureml-core`不相容的版本，`azureml-dataprep`則會發生此錯誤。 如果看到此錯誤，則將`azureml-dataprep`包升級到較新版本（大於或等於 1.1.29）。
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -167,79 +167,79 @@ pip install --upgrade azureml-dataprep
 
 Databricks 與 Azure Machine Learning 問題。
 
-### <a name="failure-when-installing-packages"></a>安裝封裝失敗
+### <a name="failure-when-installing-packages"></a>安裝包時失敗
 
-安裝更多套件時，Azure Databricks 上的 Azure Machine Learning SDK 安裝會失敗。 有些套件 (例如 `psutil`) 會導致發生衝突。 若要避免安裝錯誤，請藉由凍結程式庫版本來安裝套件。 此問題與 Databricks 有關，而不是 Azure Machine Learning SDK。 您也可能會遇到其他程式庫的這個問題。 範例：
+安裝更多包時，Azure 機器學習 SDK 安裝在 Azure 資料塊上失敗。 有些套件 (例如 `psutil`) 會導致發生衝突。 為了避免安裝錯誤，請通過凍結庫版本來安裝包。 此問題與資料磚塊無關，而不是與 Azure 機器學習 SDK 相關。 您可能也會在其他庫中遇到此問題。 範例：
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
-或者，如果您持續遇到 Python 程式庫的安裝問題，則可以使用 init 腳本。 這種方法並不正式支援。 如需詳細資訊，請參閱叢集[範圍的初始化腳本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
+或者，如果您繼續面臨 Python 庫的安裝問題，則可以使用 init 腳本。 此方法不受官方支援。 有關詳細資訊，請參閱[群集範圍的腳本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
 
-### <a name="cancel-an-automated-machine-learning-run"></a>取消自動化機器學習執行
+### <a name="cancel-an-automated-machine-learning-run"></a>取消自動機器學習運行
 
-當您在 Azure Databricks 上使用自動化機器學習功能時，若要取消執行並開始新的實驗執行，請重新開機您的 Azure Databricks 叢集。
+在 Azure 資料塊上使用自動機器學習功能時，要取消運行並開始新的實驗運行，請重新開機 Azure 資料塊群集。
 
-### <a name="10-iterations-for-automated-machine-learning"></a>> 自動化機器學習服務的10次反復專案
+### <a name="10-iterations-for-automated-machine-learning"></a>>10 次自動化機器學習反覆運算
 
-在自動化機器學習設定中，如果您有10個以上的反復專案，請將 `show_output` 設定為在提交執行時 `False`。
+在自動機器學習設置中，如果具有 10 次以上的反覆運算，則在`show_output`提交`False`運行時設置為。
 
-### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>適用于 Azure Machine Learning SDK 和自動化機器學習的 Widget
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>用於 Azure 機器學習 SDK 和自動機器學習的小工具
 
-Databricks 筆記本中不支援 Azure Machine Learning SDK widget，因為筆記本無法剖析 HTML 小工具。 您可以在入口網站中使用此 Python 程式碼，在您的 Azure Databricks 筆記本資料格中查看 widget：
+資料磚塊筆記本不支援 Azure 機器學習 SDK 小部件，因為筆記本無法解析 HTML 小部件。 您可以在 Azure 資料磚塊筆記本儲存格中使用此 Python 代碼在門戶中查看小部件：
 
 ```
 displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
 ```
 
-### <a name="import-error-cannot-import-name-timedelta-from-pandas_libstslibs"></a>匯入錯誤：無法從 ' pandas ' 匯入名稱 ' Timedelta '。 _libs. tslibs '
+### <a name="import-error-cannot-import-name-timedelta-from-pandas_libstslibs"></a>導入錯誤：無法從"熊貓._libs.tslibs"導入名稱"Timedelta"
 
-如果您在使用自動化機器學習時看到此錯誤，請在您的筆記本中執行下列兩行：
+如果您在使用自動機器學習時看到此錯誤，請運行筆記本中的以下兩行：
 ```
 %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
 %sh /databricks/python/bin/pip install pandas==0.23.4
 ```
 
-### <a name="import-error-no-module-named-pandascoreindexes"></a>匯入錯誤：沒有名為 ' pandas ' 的模組
+### <a name="import-error-no-module-named-pandascoreindexes"></a>導入錯誤：沒有名為"pandas.core.indexs"的模組
 
-如果您在使用自動化機器學習時看到此錯誤：
+如果您在使用自動機器學習時看到此錯誤：
 
-1. 執行此命令以在您的 Azure Databricks 叢集中安裝兩個套件： 
+1. 運行此命令以在 Azure 資料磚塊群集中安裝兩個包：
 
-   ```
+   ```bash
    scikit-learn==0.19.1
    pandas==0.22.0
    ```
 
-1. 卸離叢集，然後將叢集重新附加至您的筆記本。 
+1. 分離，然後將群集重新連接到筆記本。
 
-如果這些步驟無法解決問題，請嘗試重新開機叢集。
+如果這些步驟不能解決問題，請嘗試重新開機群集。
 
-### <a name="failtosendfeather"></a>FailToSendFeather
+### <a name="failtosendfeather"></a>失敗發送費
 
-如果您在 Azure Databricks 叢集上讀取資料時看到 `FailToSendFeather` 錯誤，請參閱下列解決方案：
+如果在讀取 Azure`FailToSendFeather`資料磚塊群集上的資料時出現錯誤，請參閱以下解決方案：
 
-* 將 `azureml-sdk[automl]` 套件升級至最新版本。
-* 新增 `azureml-dataprep` 1.1.8 或更新版本。
-* 新增 `pyarrow` 0.11 版或更新版本。
+* 將`azureml-sdk[automl]`包升級到最新版本。
+* 添加`azureml-dataprep`版本 1.1.8 或以上。
+* 添加`pyarrow`版本 0.11 或以上。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-如果您從 SDK 或入口網站的共用連結直接檢視工作區，將無法在延伸模組中檢視包含訂用帳戶資訊的一般 [概觀] 頁面。 您也無法切換至另一個工作區。 如果您需要查看另一個工作區，因應措施是直接前往[Azure Machine Learning studio](https://ml.azure.com)並搜尋工作區名稱。
+如果您從 SDK 或入口網站的共用連結直接檢視工作區，將無法在延伸模組中檢視包含訂用帳戶資訊的一般 [概觀] 頁面。 您也無法切換至另一個工作區。 如果需要查看另一個工作區，解決方法是直接轉到[Azure 機器學習工作室](https://ml.azure.com)並搜索工作區名稱。
 
 ## <a name="diagnostic-logs"></a>診斷記錄
 
-當您在尋求協助時，如果能夠提供診斷資訊，有時可能會相當有幫助。 若要查看一些記錄，請造訪[Azure Machine Learning studio](https://ml.azure.com)並移至您的工作區，然後選取 [**工作區 > 實驗] > 執行 > 記錄**。  
+當您在尋求協助時，如果能夠提供診斷資訊，有時可能會相當有幫助。 要查看某些日誌，請訪問[Azure 機器學習工作室](https://ml.azure.com)並轉到工作區，然後選擇**工作區>實驗>運行>日誌**。  
 
 > [!NOTE]
-> Azure Machine Learning 會在定型期間記錄各種來源的資訊，例如 AutoML 或執行定型作業的 Docker 容器。 其中有許多記錄檔並未記載。 如果您遇到問題並聯系 Microsoft 支援服務，他們可能會在進行疑難排解時使用這些記錄。
+> Azure 機器學習在培訓期間從各種來源（如自動ML 或運行訓練作業的 Docker 容器）記錄資訊。 許多這些日誌沒有記錄。 如果您遇到問題並聯系 Microsoft 支援人員，他們也許能夠在故障排除期間使用這些日誌。
 
 ## <a name="activity-logs"></a>活動記錄
 
-Azure Machine Learning 工作區中的某些動作並不會將資訊記錄到__活動記錄__中。 例如，啟動定型執行或註冊模型。
+Azure 機器學習工作區中的某些操作不會將資訊記錄到__活動日誌__。 例如，啟動訓練運行或註冊模型。
 
-其中有些動作會出現在工作區的 [__活動__] 區域中，但不會指出起始活動的人員。
+其中一些操作將顯示在工作區的 __"活動"__ 區域中，但它們並不指示發起活動的人員。
 
 ## <a name="resource-quotas"></a>資源配額
 
@@ -259,25 +259,25 @@ Azure Machine Learning 工作區中的某些動作並不會將資訊記錄到__�
 
 例如，如果您嘗試從 ML 管線建立或連結為遠端執行所提交的計算目標，您會收到錯誤。
 
-## <a name="overloaded-azurefile-storage"></a>多載的 AzureFile 儲存體
+## <a name="overloaded-azurefile-storage"></a>重載 Azure 檔存儲
 
-如果您收到錯誤 `Unable to upload project files to working directory in AzureFile because the storage is overloaded`，請套用下列因應措施。
+如果收到錯誤`Unable to upload project files to working directory in AzureFile because the storage is overloaded`，請應用以下解決方法。
 
-如果您使用檔案共用來進行其他工作負載（例如資料傳輸），建議使用 blob，讓檔案共用可免費用於提交執行。 您也可以在兩個不同的工作區之間分割工作負載。
+如果您將檔共用用於其他工作負荷（如資料傳輸），則建議使用 blob，以便檔共用可以自由地用於提交運行。 您還可以在兩個不同的工作區之間拆分工作負荷。
 
-## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes Service 失敗中的 Webservices 
+## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure 庫伯內斯服務中的 Web 服務失敗
 
-Azure Kubernetes Service 中的許多 webservice 失敗都可以藉由使用 `kubectl`連接到叢集來進行調試。 您可以執行來取得 Azure Kubernetes Service 叢集的 `kubeconfig.json`
+Azure Kubernetes 服務中的許多 Web 服務故障可以通過使用`kubectl`連接到群集來調試。 您可以通過運行 Azure`kubeconfig.json`庫伯奈斯服務群集獲取
 
-```bash
+```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
-## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>在 AKS 叢集中更新 Azure Machine Learning 元件
+## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>更新 AKS 群集中的 Azure 機器學習元件
 
-Azure Kubernetes Service 叢集中安裝的 Azure Machine Learning 元件更新必須手動套用。 
+必須手動應用 Azure 庫伯內斯服務群集中安裝的 Azure 機器學習元件的更新。 
 
-您可以從 [Azure Machine Learning] 工作區卸離叢集，然後將叢集重新附加至工作區，以套用這些更新。 如果叢集中已啟用 SSL，則在重新附加叢集時，您將需要提供 SSL 憑證和私密金鑰。 
+可以通過從 Azure 機器學習工作區分離群集，然後將群集重新附加到工作區來應用這些更新。 如果在群集中啟用了 SSL，則重新連接群集時需要提供 SSL 憑證和私密金鑰。 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -298,36 +298,36 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-如果您不再擁有 SSL 憑證和私密金鑰，或您使用 Azure Machine Learning 所產生的憑證，您可以使用 `kubectl` 連線到叢集並抓取密碼 `azuremlfessl`，在卸離叢集之前先取出檔案。
+如果不再有 SSL 憑證和私密金鑰，或者正在使用 Azure 機器學習生成的證書，則可以通過使用`kubectl`連接到群集並檢索機密`azuremlfessl`來在分離群集之前檢索檔。
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes 會以64編碼的格式儲存秘密。 在提供 `attach_config.enable_ssl`之前，您必須先64將密碼的 `cert.pem` 和 `key.pem` 元件解碼。 
+>庫伯內特以基-64編碼格式存儲秘密。 在將機密和元件提供到`cert.pem``key.pem``attach_config.enable_ssl`之前，您需要對機密和元件進行基礎解碼。 
 
 ## <a name="labeling-projects-issues"></a>標記專案問題
 
-標籤專案的已知問題。
+標記專案的已知問題。
 
-### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>只能使用在 blob 資料存放區上建立的資料集
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>只能使用在 Blob 資料存儲上創建的資料集
 
-這是目前版本的已知限制。 
+這是當前版本的已知限制。
 
-### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>建立之後，專案會顯示「正在初始化」一段很長的時間
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>創建後，專案長時間顯示"初始化"
 
-手動重新整理頁面。 初始化應該會在大約每秒20資料點時繼續。 缺乏 autorefresh 是已知的問題。 
+手動刷新頁面。 初始化應以大約每秒 20 個資料點的速度進行。 缺少自動刷新是一個已知問題。 
 
-### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>在審核影像時，不會顯示新加上標籤的影像
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>查看圖像時，不會顯示新標記的圖像
 
-若要載入所有加上標籤的影像，請選擇**第一個**按鈕。 **第一個**按鈕會將您帶回清單的前端，但會載入所有加上標籤的資料。
+要載入所有標記的圖像，請選擇 **"第一"** 按鈕。 "**第一個**"按鈕將帶您返回清單的前面，但載入所有標記的資料。
 
-### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>當物件偵測標記時按下 Esc 鍵，會在左上角建立零大小的標籤。 在此狀態下提交卷標失敗。
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>在標記物件檢測時按下 Esc 鍵會在左上角創建零尺寸標籤。 在此狀態下提交標籤失敗。
 
-按一下旁邊的交叉標記來刪除標籤。
+按一下標籤旁邊的交叉標記，刪除標籤。
 
 ## <a name="moving-the-workspace"></a>移動工作區
 
 > [!WARNING]
-> 不支援將您的 Azure Machine Learning 工作區移至不同的訂用帳戶，或將擁有的訂用帳戶移至新的租使用者。 這麼做可能會導致錯誤。
+> 不支援將 Azure 機器學習工作區移動到其他訂閱，或將所屬訂閱移動到新租戶。 這樣做可能會導致錯誤。

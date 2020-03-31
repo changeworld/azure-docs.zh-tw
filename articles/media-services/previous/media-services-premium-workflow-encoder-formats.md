@@ -15,10 +15,10 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269753"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒體編碼器高階工作流程格式和轉碼器
@@ -28,13 +28,13 @@ ms.locfileid: "79269753"
 
 本文包含 **Media Encoder Premium Workflow** 編碼器公開預覽版本支援的輸入與輸出檔案格式以及轉碼器清單。
 
-[媒體編碼器高階工作流程輸入格式和轉碼器](#input_formats)
+[媒體編碼器高級工作流輸入格式和編解碼器](#input_formats)
 
 媒體編碼器高階工作流程輸出格式和轉碼器
 
 **Media Encoder Premium Workflow** 支援 [本](#closed_captioning) 章節所述的隱藏式字幕。 
 
-## <a id="input_formats"></a>Media Encoder Premium Worflow 輸入格式和轉碼器
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Worflow 輸入格式和轉碼器
 
 下節列出此媒體處理器支援做為輸入的轉碼器和檔案格式。
 
@@ -71,7 +71,7 @@ ms.locfileid: "79269753"
 * Windows Media 音訊
 * WAV/PCM
 
-## <a id="output_format"></a>Media Encoder Premium Worflow 輸出格式和轉碼器
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Worflow 輸出格式和轉碼器
 
 下節列出此媒體處理器支援做為輸出的轉碼器和檔案格式。
 
@@ -112,7 +112,7 @@ ms.locfileid: "79269753"
 >[!NOTE]
 >如果編碼成 Dolby® Digital (AC3)，則輸出只能寫入到 ISO MP4 檔案。
 
-## <a id="closed_captioning"></a>支援隱藏式字幕
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>支援隱藏式字幕
 
 內嵌時， **Media Encoder Premium Workflow** 支援：
 

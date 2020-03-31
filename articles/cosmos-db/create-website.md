@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
 ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128366"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Azure Cosmos DB 和 Azure App Service Web Apps
-本教學課程說明如何使用 Azure Resource Manager 範本來部署和整合[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web 應用程式，以及範例 web 應用程式。
+本教程演示如何使用 Azure 資源管理器範本來部署和集成[Microsoft Azure Cosmos DB、Azure](https://azure.microsoft.com/services/cosmos-db/)[應用服務](https://go.microsoft.com/fwlink/?LinkId=529714)Web 應用和示例 Web 應用程式。
 
 使用 Azure Resource Manager 範本，您可以輕鬆自動化 Azure 資源的部署和設定。  本教學課程示範如何部署 Web 應用程式，以及自動設定 Azure Cosmos DB 帳戶連接資訊。
 
@@ -33,7 +33,7 @@ ms.locfileid: "79128366"
 
 在依照本教學課程中的指示進行之前，請先確定您已備妥 Azure 訂用帳戶。 Azure 是訂閱型平台。  如需取得訂用帳戶的詳細資訊，請參閱[購買選項](https://azure.microsoft.com/pricing/purchase-options/)、[成員供應項目](https://azure.microsoft.com/pricing/member-offers/)或[免費試用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a id="CreateDB"></a>步驟 1︰下載範本檔案
+## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>步驟 1︰下載範本檔案
 讓我們從下載本教學課程所需的範本檔案開始。
 
 1. 將[建立 Azure Cosmos DB 帳戶、Web Apps 和部署示範應用程式範例](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)範本下載至本機資料夾 (例如 C:\Azure Cosmos DBTemplates)。 這個範本將會部署 Azure Cosmos DB 帳戶、App Service Web 應用程式和 Web 應用程式。  它還會自動設定 Web 應用程式以連線到 Azure Cosmos DB 帳戶。
@@ -51,12 +51,12 @@ ms.locfileid: "79128366"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，按一下 [新增]，並搜尋「範本部署」。
     ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment1.png)
-2. 選取 [範本部署] 專案，然後按一下 [**建立**] ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment2.png)
-3. 按一下 [編輯範本]，貼上 DocDBWebsiteTodo.json 範本檔案的內容，然後按一下 [儲存]。
+2. 選取範本部署項目，然後按一下 [建立]**** ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment2.png)
+3. 按一下 [編輯範本]****，貼上 DocDBWebsiteTodo.json 範本檔案的內容，然後按一下 [儲存]****。
    ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment3.png)
-4. 按一下 [編輯參數]，提供每個必要參數的值，然後按一下 [確定]。  參數如下所示：
+4. 按一下 [編輯參數]****，提供每個必要參數的值，然後按一下 [確定]****。  參數如下所示：
    
-   1. SITENAME：指定 App Service web 應用程式名稱，並用來建立用來存取 web 應用程式的 URL （例如，如果您指定 "mydemodocdbwebsite"，則您用來存取 web 應用程式的 URL 會是 `mydemodocdbwebapp.azurewebsites.net`）。
+   1. SITENAME：指定應用服務 Web 應用名稱，用於構造用於訪問 Web 應用的 URL（例如，如果您指定"mydemodocdbwebapp"，則訪問 Web 應用的 URL 為`mydemodocdbwebapp.azurewebsites.net`）。
    2. HOSTINGPLANNAME︰指定要建立的主控方案 App Service 名稱。
    3. LOCATION：指定要在其中建立 Azure Cosmos DB 和 Web 應用程式資源的 Azure 位置。
    4. DATABASEACCOUNTNAME：指定要建立的 Azure Cosmos DB 帳戶名稱。   
@@ -65,14 +65,14 @@ ms.locfileid: "79128366"
 5. 選擇現有的資源群組，或提供名稱建立新的資源群組，然後選擇資源群組的位置。
 
     ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment5.png)
-6. 依序按一下 [檢閱法律條款]、[購買] 和 [建立] 以開始部署。  選取 [釘選到儀表板] 讓產生的部署輕鬆簡單顯示在 Azure 入口網站的首頁上。
+6. 依序按一下 [檢閱法律條款]****、[購買]**** 和 [建立]**** 以開始部署。  選取 [釘選到儀表板] **** 讓產生的部署輕鬆簡單顯示在 Azure 入口網站的首頁上。
    ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment6.png)
 7. 部署完成時，隨即開啟 [資源群組] 窗格。
    ![資源群組窗格的螢幕擷取畫面](./media/create-website/TemplateDeployment7.png)  
-8. 若要使用應用程式，請流覽至 web 應用程式 URL （在上述範例中，URL 會是 `http://mydemodocdbwebapp.azurewebsites.net`）。  您會看到下列的 Web 應用程式：
+8. 要使用該應用程式，請導航到 Web 應用 URL（在上面的示例中，URL 將為`http://mydemodocdbwebapp.azurewebsites.net`）。  您會看到下列的 Web 應用程式：
    
    ![範例待辦事項應用程式](./media/create-website/image2.png)
-9. 請繼續在 Web 應用程式中建立幾個工作，然後回到 Azure 入口網站的 [資源群組] 窗格。 按一下 [資源] 清單中的 Azure Cosmos DB 帳戶資源，然後按一下 [資料總管]。
+9. 請繼續在 Web 應用程式中建立幾個工作，然後回到 Azure 入口網站的 [資源群組] 窗格。 按一下 [資源] 清單中的 Azure Cosmos DB 帳戶資源，然後按一下 [資料總管]****。
 10. 執行預設查詢 "SELECT * FROM c"，然後檢查結果。  請注意查詢已擷取您在步驟 7 所建立待辦事項的 JSON 表示法。  任意嘗試查詢；例如，嘗試執行 SELECT * FROM c WHERE c.isComplete = true，以傳回所有已標示為完成的待辦事項。
 11. 任意瀏覽 Azure Cosmos DB 入口網站體驗，或修改範例 Todo 應用程式。  當您準備好時，讓我們來部署另一個範本。
 
@@ -88,10 +88,10 @@ ms.locfileid: "79128366"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，按一下 [新增]，並搜尋「範本部署」。
     ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment1.png)
-2. 選取 [範本部署] 專案，然後按一下 [**建立**] ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment2.png)
-3. 按一下 [編輯範本]，貼上 DocDBWebSite.json 範本檔案的內容，然後按一下 [儲存]。
+2. 選取範本部署項目，然後按一下 [建立]**** ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment2.png)
+3. 按一下 [編輯範本]****，貼上 DocDBWebSite.json 範本檔案的內容，然後按一下 [儲存]****。
    ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment3.png)
-4. 按一下 [編輯參數]，提供每個必要參數的值，然後按一下 [確定]。  參數如下所示：
+4. 按一下 [編輯參數]****，提供每個必要參數的值，然後按一下 [確定]****。  參數如下所示：
    
    1. SITENAME：指定 App Service Web 應用程式名稱，並用來建構您將用來存取 Web 應用程式的 URL (例如：如果您指定 "mydemodocdbwebsite"，則將存取 Web 應用程式的 URL 會是 mydemodocdbwebsite.azurewebsites.net)。
    2. HOSTINGPLANNAME︰指定要建立的主控方案 App Service 名稱。
@@ -102,11 +102,11 @@ ms.locfileid: "79128366"
 5. 選擇現有的資源群組，或提供名稱建立新的資源群組，然後選擇資源群組的位置。
 
     ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment5.png)
-6. 依序按一下 [檢閱法律條款]、[購買] 和 [建立] 以開始部署。  選取 [釘選到儀表板] 讓產生的部署輕鬆簡單顯示在 Azure 入口網站的首頁上。
+6. 依序按一下 [檢閱法律條款]****、[購買]**** 和 [建立]**** 以開始部署。  選取 [釘選到儀表板] **** 讓產生的部署輕鬆簡單顯示在 Azure 入口網站的首頁上。
    ![範本部署 UI 的螢幕擷取畫面](./media/create-website/TemplateDeployment6.png)
 7. 部署完成時，隨即開啟 [資源群組] 窗格。
    ![資源群組窗格的螢幕擷取畫面](./media/create-website/TemplateDeployment7.png)  
-8. 按一下 [資源] 清單中的 Web 應用程式資源，然後按一下 [**應用程式設定**] ![資源群組的螢幕擷取畫面](./media/create-website/TemplateDeployment9.png)  
+8. 按一下 [資源] 清單中的 Web 應用程式資源，然後按一下 [應用程式設定]**** ![資源群組的螢幕擷取畫面](./media/create-website/TemplateDeployment9.png)  
 9. 請注意出現的 Azure Cosmos DB 端點以及每個 Azure Cosmos DB 主要金鑰的應用程式設定。
 
     ![應用程式設定的螢幕擷取畫面](./media/create-website/TemplateDeployment10.png)  
@@ -122,7 +122,7 @@ ms.locfileid: "79128366"
 * 若要深入了解 Azure 資源管理員範本，請按一下 [這裡](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
 
 ## <a name="whats-changed"></a>變更的項目
-* 如需從網站變更為 App Service 的指南，請參閱： [Azure App Service 及其對現有 Azure 服務的影響](https://go.microsoft.com/fwlink/?LinkId=529714)
+* 有關從網站更改為應用服務的更改指南，請參閱[：Azure 應用服務及其對現有 Azure 服務的影響](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
 > 如果您想在註冊 Azure 帳戶前開始使用 Azure App Service，請移至 [試用 App Service](https://go.microsoft.com/fwlink/?LinkId=523751)，即可在 App Service 中立即建立短期入門 Web 應用程式。 不需要信用卡；無需承諾。

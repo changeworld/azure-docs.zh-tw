@@ -1,6 +1,6 @@
 ---
 title: Azure 事件方格事件來源
-description: Azure 訂用帳戶、Container Registry、自訂主題、事件中樞、IoT 中樞、Key Vault、媒體服務、資源群組、服務匯流排、儲存體、地圖、應用程式組態、信號 R、Machine Learning。
+description: Azure 訂閱、容器註冊表、自訂主題、事件中心、IoT 中心、金鑰保存庫、媒體服務、資源組、服務匯流排、存儲、映射、應用配置、信號 R、機器學習。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
 ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264995"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件方格中的事件來源
@@ -74,26 +74,26 @@ ms.locfileid: "79264995"
 
 ## <a name="iot-hub"></a>IoT 中樞
 
-訂閱 IoT 中樞事件，以回應裝置建立、刪除、連線、中斷連接和遙測事件。
+訂閱 IoT 中心事件以回應設備創建、刪除、連接、斷開連接和遙測事件。
 
 |Title  |描述  |
 |---------|---------|
 | [使用 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](publish-iot-hub-events-to-logic-apps.md) | 每當有裝置新增至您的 IoT 中樞時，邏輯應用程式就會傳送電子郵件通知。 |
-| [使用事件方格來觸發動作以回應「IoT 中樞」事件](../iot-hub/iot-hub-event-grid.md) | 整合 IoT 中樞與事件方格的概觀。 |
+| [使用事件方格來觸發動作以回應 IoT 中樞事件](../iot-hub/iot-hub-event-grid.md) | 整合 IoT 中樞與事件方格的概觀。 |
 | [事件結構描述](event-schema-iot-hub.md) | 顯示 IoT 中樞事件中的欄位。 |
 | [排序裝置連線和裝置中斷連線事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | 說明如何排序裝置連線狀態事件。 |
 
-## <a name="key-vault-preview"></a>Key Vault （預覽）
+## <a name="key-vault-preview"></a>金鑰保存庫（預覽版）
 
 Key Vault 與事件方格的整合目前為預覽狀態。 
 
-訂閱 Key Vault 事件，以在秘密即將過期、密碼到期或密碼有新版本可用時收到通知。 
+訂閱金鑰保存庫事件，在機密即將過期、機密過期或機密有新版本可用時收到通知。 
 
 |Title  |描述  |
 |---------|---------|
-| [使用 Azure 事件方格監視 Key Vault 事件](../key-vault/event-grid-overview.md) | 整合 Key Vault 與事件方格的總覽。 |
-| [教學課程：使用事件方格建立和監視 Key Vault 事件](../key-vault/event-grid-tutorial.md) | 瞭解如何設定 Key Vault 的事件方格通知。 |
-| [事件結構描述](event-schema-key-vault.md) | 顯示 Key Vault 事件中的欄位。 |
+| [使用 Azure 事件網格監視金鑰保存庫事件](../key-vault/event-grid-overview.md) | 將金鑰保存庫與事件網格集成的概述。 |
+| [教程：使用事件網格創建和監視金鑰保存庫事件](../key-vault/event-grid-tutorial.md) | 瞭解如何為金鑰保存庫設置事件網格通知。 |
+| [事件結構描述](event-schema-key-vault.md) | 在"金鑰保存庫"事件中顯示欄位。 |
 
 ## <a name="media-services"></a>媒體服務
 
@@ -111,13 +111,13 @@ Key Vault 與事件方格的整合目前為預覽狀態。
 
 |Title  |描述  |
 |---------|---------|
-| [教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器變更](monitor-virtual-machine-changes-event-grid-logic-app.md) | 邏輯應用程式會監視虛擬機器的變更，並傳送有關這些變更的電子郵件。 |
+| [教程：使用 Azure 事件網格和邏輯應用監視虛擬機器更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 邏輯應用程式會監視虛擬機器的變更，並傳送有關這些變更的電子郵件。 |
 | [Azure CLI：訂閱資源群組的事件](./scripts/event-grid-cli-resource-group.md)| 訂閱資源群組事件的範例指令碼。 它會將事件傳送到 WebHook。 |
 | [Azure CLI：訂閱資源群組的事件和篩選資源](./scripts/event-grid-cli-resource-group-filter.md) | 訂閱資源群組事件以及為資源篩選事件的範例指令碼。 |
 | [PowerShell：訂閱資源群組的事件](./scripts/event-grid-powershell-resource-group.md) | 訂閱資源群組事件的範例指令碼。 它會將事件傳送到 WebHook。 |
 | [PowerShell：訂閱資源群組的事件和篩選資源](./scripts/event-grid-powershell-resource-group-filter.md) | 訂閱資源群組事件以及為資源篩選事件的範例指令碼。 |
 | [Resource Manager 範本：資源訂用帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | 訂閱 Azure 訂用帳戶或資源群組的事件。 它會將事件傳送到 WebHook。 |
-| [事件結構描述](event-schema-resource-groups.md) | 顯示資源群組事件中的欄位。 |
+| [事件架構](event-schema-resource-groups.md) | 顯示資源群組事件中的欄位。 |
 
 ## <a name="service-bus"></a>服務匯流排
 
@@ -129,12 +129,12 @@ Key Vault 與事件方格的整合目前為預覽狀態。
 | [概觀：Azure 服務匯流排與事件方格的整合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 整合服務匯流排與事件方格的概觀。 |
 | [事件結構描述](event-schema-service-bus.md) | 顯示服務匯流排事件中的欄位。 |
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
 訂閱 Blob 儲存體事件，以回應 Blob 建立和刪除事件。
 
 >[!NOTE]
-> 只有種類為 [StorageV2 (一般用途 v2)] 和 [BlobStorage] 的儲存體帳戶支援事件整合。 **儲存體（一般用途 v1）** 不*支援與*事件方格整合。
+> 只有種類為 [StorageV2 (一般用途 v2)]**** 和 [BlobStorage]**** 的儲存體帳戶支援事件整合。 **存儲（通用 v1）** 不支援*與*事件網格集成。
 
 |Title  |描述  |
 |---------|---------|
@@ -153,37 +153,37 @@ Key Vault 與事件方格的整合目前為預覽狀態。
 |Title  |描述  |
 |---------|---------|
 | [使用事件方格來回應 Azure 地圖服務事件](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 整合「Azure 地圖服務」與「事件方格」的概觀。 |
-| [教學課程：設定地理柵欄](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教學課程會逐步引導您完成使用「Azure 地圖服務」來設定地理柵欄的基本步驟。 您會使用「Azure 事件方格」來串流處理地理柵欄結果，並根據地理柵欄結果設定通知。 |
+| [教程：設置地理圍欄](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教學課程會逐步引導您完成使用「Azure 地圖服務」來設定地理柵欄的基本步驟。 您會使用「Azure 事件方格」來串流處理地理柵欄結果，並根據地理柵欄結果設定通知。 |
 | [事件結構描述](event-schema-azure-maps.md) | 顯示「Azure 地圖服務」中的欄位。 |
 
 ## <a name="app-configuration"></a>應用程式組態
-訂閱 Azure 應用程式組態事件以回應索引鍵/值修改事件。
+訂閱 Azure 應用配置事件以回應鍵值修改事件。
 
 |Title | 描述 |
 |---------|---------|
-| [使用事件方格來回應 Azure 應用程式組態事件](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 整合 Azure 應用程式組態與事件方格的總覽。 |
-| [快速入門：使用 Azure CLI 將 Azure 應用程式組態事件路由至自訂 web 端點](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 將 Azure 應用程式組態事件傳送至 WebHook。 |
-| [事件結構描述](event-schema-app-configuration.md) | 顯示 Azure 應用程式組態事件中的欄位。 |
+| [使用事件網格回應 Azure 應用配置事件](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 將 Azure 應用配置與事件網格集成的概述。 |
+| [快速入門：使用 Azure CLI 將 Azure 應用配置事件路由到自訂 Web 終結點](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 演示如何使用 Azure CLI 將 Azure 應用配置事件發送到 WebHook。 |
+| [事件結構描述](event-schema-app-configuration.md) | 在 Azure 應用配置事件中顯示欄位。 |
 
 ## <a name="azure-signalr"></a>Azure SignalR
-訂閱 Azure SignalR Service 事件以回應用戶端連接事件。
+訂閱 Azure SignalR 服務事件以回應用戶端連接事件。
 
 |Title | 描述 |
 |---------|---------|
-| [使用事件方格來回應 Azure SignalR Service 事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 整合 Azure SignalR Service 與事件方格的總覽。 |
-| [如何將 Azure SignalR Service 事件傳送至事件方格](../azure-signalr/signalr-howto-event-grid-integration.md) | 說明如何透過事件方格將 Azure SignalR Service 事件傳送至應用程式。 |
-| [事件結構描述](event-schema-azure-signalr.md) | 顯示 Azure SignalR Service 事件中的欄位。 |
+| [使用事件網格回應 Azure SignalR 服務事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 將 Azure SignalR 服務與事件網格集成的概述。 |
+| [如何向事件網格發送 Azure SignalR 服務事件](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何通過事件網格向應用程式發送 Azure SignalR 服務事件。 |
+| [事件結構描述](event-schema-azure-signalr.md) | 在 Azure SignalR 服務事件中顯示欄位。 |
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-訂閱 Azure Machine Learning 的工作區事件以回應模型註冊。
+訂閱 Azure 機器學習工作區事件以回應模型註冊。
 
 | Title | 描述 |
 | ----- | ----- |
-| [取用 Azure Machine Learning 事件](../machine-learning/concept-event-grid-integration.md) | 整合 Azure Machine Learning 與事件方格的總覽。 |
-| [適用于 Azure Machine Learning 的 Azure 事件方格事件架構](event-schema-machine-learning.md) | 顯示 Azure Machine Learning 事件中的欄位。 |
+| [使用 Azure 機器學習事件](../machine-learning/concept-event-grid-integration.md) | 將 Azure 機器學習與事件網格集成的概述。 |
+| [Azure 事件網格事件架構，用於 Azure 機器學習](event-schema-machine-learning.md) | 在 Azure 機器學習事件中顯示欄位。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Event Grid 的簡介，請參閱[關於 Event Grid](overview.md)。
+* 有關事件網格的簡介，請參閱[有關事件網格](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

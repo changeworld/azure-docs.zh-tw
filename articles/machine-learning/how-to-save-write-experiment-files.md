@@ -1,7 +1,7 @@
 ---
-title: 儲存 & 寫入實驗檔案的位置
+title: 在何處保存&編寫實驗檔
 titleSuffix: Azure Machine Learning
-description: 瞭解儲存實驗輸入檔案的位置，以及要在何處寫入輸出檔，以防止儲存體限制錯誤和實驗延遲。
+description: 瞭解在何處保存實驗輸入檔，以及編寫輸出檔案的位置，以防止存儲限制錯誤和實驗延遲。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -13,68 +13,68 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79078416"
 ---
-# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>儲存和寫入 Azure Machine Learning 實驗檔案的位置
+# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>在何處保存和寫入用於 Azure 機器學習實驗的檔
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您會瞭解儲存輸入檔的位置，以及從您的實驗寫入輸出檔案以避免儲存限制錯誤和實驗延遲的位置。
+在本文中，您將瞭解在何處保存輸入檔，以及從實驗中寫入輸出檔案的位置，以防止存儲限制錯誤和實驗延遲。
 
-在[計算目標](how-to-set-up-training-targets.md)上啟動定型執行時，它們會與外部環境隔離。 這項設計的目的是要確保實驗的重現性和可攜性。 如果您執行相同的腳本兩次，在相同或另一個計算目標上，您會收到相同的結果。 透過這項設計，您可以將計算目標視為無狀態計算資源，每個都不會與完成後執行的作業有相似性。
+在[計算目標](how-to-set-up-training-targets.md)上啟動訓練時，它們與外部環境隔離。 此設計的目的是確保實驗的可重複性和可攜性。 如果在同一或另一個計算目標上運行同一腳本兩次，則收到相同的結果。 使用此設計，您可以將計算目標視為無狀態計算資源，每個計算目標與完成後運行的作業沒有相關性。
 
-## <a name="where-to-save-input-files"></a>儲存輸入檔的位置
+## <a name="where-to-save-input-files"></a>保存輸入檔的位置
 
-您必須先確定該計算目標可以使用必要的檔案，例如您的程式碼需要執行的相依性檔案和資料檔案，才能在計算目標或本機電腦上起始實驗。
+在計算目標或本地電腦上啟動實驗之前，必須確保該計算目標可以使用必要的檔，例如代碼需要運行的依賴項檔和資料檔案。
 
-Azure Machine Learning 會藉由將整個腳本資料夾複製到目標計算內容來執行定型腳本，然後再建立快照集。 實驗快照集的儲存體限制為 300 MB 及/或2000個檔案。
+Azure 機器學習通過將整個腳本資料夾複製到目標計算上下文來運行訓練腳本，然後拍攝快照。 而實驗快照集的儲存空間限制為 300 MB 及 (或) 2000 個檔案。
 
-基於這個理由，我們建議：
+因此，我們建議：
 
-* **將您的檔案儲存在 Azure Machine Learning[資料](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)存放區中。** 這可避免實驗延遲問題，並具有從遠端計算目標存取資料的優點，這表示驗證和掛接是由 Azure Machine Learning 管理。 若要深入瞭解如何指定資料存放區作為來原始目錄，以及如何將檔案上傳到您的資料存放區，請參閱[從資料存放區存取資料](how-to-access-data.md)一文。
+* **將檔存儲在 Azure 機器學習[資料存儲](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)中。** 這可以防止實驗延遲問題，並且具有從遠端計算目標訪問資料的優勢，這意味著身份驗證和安裝由 Azure 機器學習管理。 詳細瞭解如何將資料存儲指定為原始目錄，以及將資料存儲中的["訪問資料"](how-to-access-data.md)文章中的檔上載到資料存儲。
 
-* **如果您只需要幾個資料檔案和相依性腳本，而且無法使用**資料存放區，請將檔案放在與定型腳本相同的資料夾目錄中。 在您的定型腳本中，或在呼叫定型腳本的程式碼中，直接指定此資料夾做為 `source_directory`。
+* **如果只需要幾個資料檔案和依賴項腳本，並且無法使用資料存儲，請**將檔與訓練腳本放在同一資料夾目錄中。 直接在訓練腳本或`source_directory`調用訓練腳本的代碼中指定此資料夾作為您的資料夾。
 
 <a name="limits"></a>
 
-### <a name="storage-limits-of-experiment-snapshots"></a>實驗快照集的儲存體限制
+### <a name="storage-limits-of-experiment-snapshots"></a>實驗快照的存儲限制
 
-針對實驗，Azure Machine Learning 會根據您在設定執行時建議的目錄，自動建立程式碼的實驗快照集。 這是總限制為 300 MB 和/或2000個檔案。 如果超過此限制，您會看到下列錯誤：
+對於實驗，Azure 機器學習會根據配置運行時建議的目錄自動創建代碼的實驗快照。 這總限制為 300 MB 和/或 2000 個檔。 如果超過此限制，您將看到以下錯誤：
 
 ```Python
 While attempting to take snapshot of .
 Your total snapshot size exceeds the limit of 300.0 MB
 ```
 
-若要解決此錯誤，請將實驗檔案儲存在資料存放區上。 如果您無法使用資料存放區，下表提供可能的替代方案。
+要解決此錯誤，請將實驗檔存儲在資料存儲中。 如果您無法使用資料存儲，下表提供了可能的備用解決方案。
 
-實驗&nbsp;描述|儲存體限制解決方案
+實驗&nbsp;描述|存儲限制解決方案
 ---|---
-不到2000的檔案 & 無法使用資料存放區| 覆寫快照集大小限制 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 這可能需要幾分鐘的時間，視檔案的數量和大小而定。
-必須使用特定的腳本目錄| 建立 `.amlignore` 檔案，以從不屬於原始程式碼的實驗快照集排除檔案。 將檔案名新增至 `.amlignore` 檔案，並將它放在與定型腳本相同的目錄中。 `.amlignore` 檔案使用與 `.gitignore` 檔案相同的[語法和模式](https://git-scm.com/docs/gitignore)。
-管線|針對每個步驟使用不同的子目錄
-Jupyter Notebook| 建立 `.amlignore` 檔案，或將您的筆記本移至新的空白子目錄，然後再次執行您的程式碼。
+&無法使用資料存儲的檔少於 2000 個| 使用 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 這可能需要幾分鐘時間，具體取決於檔的數量和大小。
+必須使用特定的腳本目錄| 製作一`.amlignore`個檔，從實驗快照中排除不屬於原始程式碼的檔。 將檔案名添加到檔中，`.amlignore`並將其放在與訓練腳本相同的目錄中。 該檔`.amlignore`使用與`.gitignore`檔相同的[語法和模式](https://git-scm.com/docs/gitignore)。
+管線|為每個步驟使用不同的子目錄
+Jupyter Notebook| 創建`.amlignore`檔或將筆記本移動到新的空子目錄中，然後再次運行代碼。
 
-## <a name="where-to-write-files"></a>寫入檔案的位置
+## <a name="where-to-write-files"></a>在哪裡寫入檔
 
-由於定型實驗的隔離，對執行期間所發生的檔案所做的變更不一定會在您的環境之外保存。 如果您的腳本修改了本機檔案，則不會保存變更以供下一次實驗執行，而且它們不會自動傳播回用戶端電腦。 因此，在第一次實驗執行期間所做的變更不會影響到第二個。
+由於訓練實驗的隔離，運行期間發生的檔的更改不一定會保留在環境之外。 如果腳本修改要計算的檔本地，則更改不會保留用於下一次實驗運行，並且不會自動傳播回用戶端電腦。 因此，在第一次實驗運行期間所做的更改不會也不應影響第二個實驗中的更改。
 
-寫入變更時，建議您將檔案寫入 Azure Machine Learning 的資料存放區。 請參閱[從您的資料存放區存取資料](how-to-access-data.md)。
+編寫更改時，我們建議將檔寫入 Azure 機器學習資料存儲。 請參閱[從資料存儲訪問資料](how-to-access-data.md)。
 
-如果您不需要資料存放區，請將檔案寫入 `./outputs` 和/或 `./logs` 資料夾。
+如果不需要資料存儲，請將檔寫入`./outputs`和/或`./logs`資料夾。
 
 >[!Important]
-> 兩個資料夾、*輸出*和*記錄*，會 Azure Machine Learning 接收特殊處理。 在定型期間，當您將檔案寫入`./outputs` 並`./logs` 資料夾時，檔案會自動上傳到您的執行歷程記錄，讓您在執行完成之後可以存取這些檔案。
+> 兩個資料夾（*輸出*和*日誌*）接受 Azure 機器學習的特殊處理。 在培訓期間，當您將檔和`./outputs``./logs`資料夾寫入時，這些檔將自動上載到執行歷程記錄，以便在運行完成後可以訪問這些檔。
 
-* 若**為輸出（例如狀態訊息或計分結果），請**將檔案寫入 `./outputs` 資料夾，以便在執行歷程記錄中保存為構件。 請留意寫入此資料夾的檔案數目和大小，因為當內容上傳到執行歷程記錄時，可能會發生延遲。 如果需要考慮延遲，建議您將檔案寫入資料存放區。
+* **對於狀態訊息或評分結果等輸出，** 將檔寫入`./outputs`資料夾，以便它們作為專案保留在執行歷程記錄中。 請注意寫入此資料夾的檔的數量和大小，因為當內容上載到執行歷程記錄時，可能會出現延遲。 如果延遲是一個問題，建議將檔寫入資料存儲。
 
-* **若要將寫入的檔案儲存為執行歷程記錄中的記錄，請**將檔案寫入 `./logs` 資料夾。 記錄會即時上傳，因此這個方法適用于從遠端執行串流處理即時更新。
+* **要將書面檔另存為執行歷程記錄中的日誌，請**將檔寫入`./logs`資料夾。 日誌是即時上載的，因此此方法適用于從遠端運行資料流即時更新。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解如何[從您的資料存放區存取資料](how-to-access-data.md)。
+* 詳細瞭解[如何從資料存儲訪問資料](how-to-access-data.md)。
 
-* 深入瞭解[如何設定定型目標](how-to-set-up-training-targets.md)。
+* 詳細瞭解[如何設置培訓目標](how-to-set-up-training-targets.md)。

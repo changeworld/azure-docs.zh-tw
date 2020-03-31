@@ -1,7 +1,7 @@
 ---
-title: 選取資料行轉換：模組參考
+title: 選擇列轉換：模組引用
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的 [選取資料行轉換] 模組來建立轉換，以選取資料行的相同子集，如同指定的資料集。
+description: 瞭解如何在 Azure 機器學習中使用"選擇列變換"模組來創建與給定資料集中相同的列子集的轉換。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,50 +9,50 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c8d58180b11c12afb256dc888406c7c0d58fb119
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455905"
 ---
 # <a name="select-columns-transform"></a>選取資料行轉換
 
-本文描述如何在 Azure Machine Learning 設計師中使用 [選取資料行轉換] 模組。 [選取資料行轉換] 模組的目的是要確保在下游機器學習作業中使用一組可預測、一致的資料行。
+本文介紹如何在 Azure 機器學習設計器（預覽）中使用"選擇列轉換"模組。 "選擇列轉換"模組的目的是確保下游機器學習操作中使用一組可預測的、一致的列。
 
-此模組對於需要特定資料行的計分等工作很有説明。 [可用的資料行] 中的變更可能會中斷管線或變更結果。
+此模組對於需要特定列的任務（如評分）非常有用。 可用列中的更改可能會破壞管道或更改結果。
 
-您可以使用 [選取資料行轉換] 來建立及儲存一組資料行。 然後，使用 [套用[轉換](apply-transformation.md)] 模組將這些選項套用至新的資料。
+您可以使用"選擇列變換"創建和保存一組列。 然後，使用[應用轉換](apply-transformation.md)模組將這些選擇應用於新資料。
 
-## <a name="how-to-use-select-columns-transform"></a>如何使用選取資料行轉換
+## <a name="how-to-use-select-columns-transform"></a>如何使用選擇列變換
 
-此案例假設您想要使用特徵選取來產生一組將用於定型模型的動態資料行。 若要確保評分程式的資料行選取專案相同，您可以使用 [選取資料行轉換] 模組來捕捉資料行選取專案，並將其套用至管線中的其他位置。
+此方案假定您希望使用要素選擇生成一組動態列，用於訓練模型。 為確保評分過程的列選擇相同，請使用"選擇列變換"模組捕獲列選擇並將其應用於管道中的其他位置。
 
-1. 在設計工具中，將輸入資料集新增至您的管線。
+1. 在設計器中向管道添加輸入資料集。
 
-2. 新增以[篩選器為基礎的特徵選取](filter-based-feature-selection.md)實例。
+2. 添加[基於篩選器的功能選擇](filter-based-feature-selection.md)實例。
 
-3. 連接模組並設定特徵選取模組，以自動尋找輸入資料集中的一些最佳功能。
+3. 連接模組並配置要素選擇模組，以自動查找輸入資料集中的多個最佳功能。
 
-4. 新增[定型模型](train-model.md)的實例，並使用以[篩選器為基礎的特徵選取](filter-based-feature-selection.md)輸出作為定型的輸入。
+4. 添加[訓練模型](train-model.md)的實例，並使用[基於篩選器的特徵選取](filter-based-feature-selection.md)輸出作為培訓的輸入。
 
     > [!IMPORTANT]
-    > 因為功能重要性是以資料行中的值為基礎，所以您無法事先知道哪些欄位可能可用於[定型模型](train-model.md)的輸入。  
-5. 附加 [選取資料行轉換] 模組的實例。 
+    > 由於要素重要性基於列中的值，因此無法提前知道哪些列可用於輸入[訓練模型](train-model.md)。  
+5. 附加"選擇列變換"模組的實例。 
 
-    此步驟會產生資料行選取專案，做為可儲存或套用至其他資料集的轉換。 此步驟可確保儲存特徵選取中識別的資料行，以供其他模組重複使用。
+    此步驟將生成列選擇作為可保存或應用於其他資料集的轉換。 此步驟可確保保存在要素選擇中標識的列以供其他模組重用。
 
-6. 新增 [[評分模型](score-model.md)] 模組。 
+6. 添加[分數模型](score-model.md)模組。 
 
-   *請勿連接輸入資料集。* 相反地，請新增 [套用[轉換](apply-transformation.md)] 模組，並連接 [特徵選取] 轉換的輸出。
+   *不要連接輸入資料集。* 而是添加[應用轉換](apply-transformation.md)模組，並連接要素選擇轉換的輸出。
 
    > [!IMPORTANT]
-   > 您不能預期將以[篩選器為基礎的特徵選取](filter-based-feature-selection.md)套用至評分資料集，並取得相同的結果。 由於特徵選取是以值為基礎，因此可能會選擇一組不同的資料行，這會導致計分作業失敗。
-7. 執行管道。
+   > 您不能指望將[基於篩選器的功能選擇](filter-based-feature-selection.md)應用於評分資料集並獲取相同的結果。 由於要素選擇基於值，因此可能會選擇一組不同的列，這將導致評分操作失敗。
+7. 提交管道。
 
-儲存並套用資料行選取的這個程式，可確保相同的資料結構描述可用於定型和計分。
+保存然後應用列選擇的過程可確保相同的資料架構可用於培訓和評分。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 
+請參閱 Azure 機器學習[可用的模組集](module-reference.md)。 

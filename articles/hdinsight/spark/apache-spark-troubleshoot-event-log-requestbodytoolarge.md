@@ -1,6 +1,6 @@
 ---
-title: 來自 Apache Spark 應用程式的 RequestBodyTooLarge 錯誤-Azure HDInsight
-description: NativeAzureFileSystem ...RequestBodyTooLarge 會出現在 Azure HDInsight 的 Apache Spark 串流應用程式的記錄中
+title: 請求來自阿帕奇火花應用的BodyTooLarge錯誤 - Azure HDInsight
+description: 本機 Azure 檔案系統 ...請求BodyTooLarge顯示在 Azure HDInsight 中 Apache Spark 流式處理應用的日誌中
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,44 +8,44 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894391"
 ---
-# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge "會出現在 HDInsight 的 Apache Spark 串流應用程式記錄中
+# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"本機 Azure 檔案系統...請求BodyTooLarge"出現在 Apache Spark 流式處理應用日誌中 HDInsight 中
 
-本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和問題的可能解決方法。
+本文介紹了在 Azure HDInsight 群集中使用 Apache Spark 元件時，故障排除步驟和可能解決的問題。
 
 ## <a name="issue"></a>問題
 
-錯誤： `NativeAzureFileSystem ... RequestBodyTooLarge` 會出現在 Apache Spark 串流應用程式的驅動程式記錄檔中。
+錯誤：`NativeAzureFileSystem ... RequestBodyTooLarge`顯示在 Apache Spark 流應用的驅動程式日誌中。
 
 ## <a name="cause"></a>原因
 
-您的 Spark 事件記錄檔可能達到 WASB 的檔案長度限制。
+Spark 事件日誌檔可能達到 WASB 的檔長度限制。
 
-在 Spark 2.3 中，每個 Spark 應用程式都會產生一個 Spark 事件記錄檔。 當應用程式正在執行時，Spark 串流應用程式的 Spark 事件記錄檔會繼續成長。 現在，WASB 上的檔案具有50000區塊限制，而預設區塊大小為 4 MB。 因此，在預設設定中，檔案大小上限為 195 GB。 不過，Azure 儲存體已將最大區塊大小增加到 100 MB，這可有效地將單一檔案限制設為 4.75 TB。 如需詳細資訊，請參閱[Blob 儲存體的擴充性和效能目標](../../storage/blobs/scalability-targets.md)。
+在 Spark 2.3 中，每個 Spark 應用生成一個 Spark 事件日誌檔。 當應用運行時，Spark 流式處理應用的 Spark 事件日誌檔將繼續增長。 今天，WASB 上的檔具有 50000 塊限制，預設塊大小為 4 MB。 因此，在預設配置中，最大檔案大小為 195 GB。 但是，Azure 存儲將最大塊大小增加到 100 MB，這實際上將單個檔限制增加到 4.75 TB。 如需詳細資訊，請參閱 [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)。
 
-## <a name="resolution"></a>解析度
+## <a name="resolution"></a>解決方案
 
-此錯誤有三個可用的解決方案：
+此錯誤有三種可用解決方案：
 
-* 將區塊大小增加至最多 100 MB。 在 Ambari UI 中，修改 HDFS 設定屬性 `fs.azure.write.request.size` （或在 `Custom core-site` 區段中建立）。 將屬性設定為較大的值，例如：33554432。 儲存已更新的設定並重新啟動受影響的元件。
+* 將塊大小增加到高達 100 MB。 在 Ambari UI 中，修改`fs.azure.write.request.size`HDFS 配置`Custom core-site`屬性（或在部分中創建）。 將屬性設置為較大的值，例如：33554432。 保存更新的配置並重新啟動受影響的元件。
 
-* 定期停止並重新提交 spark 串流作業。
+* 定期停止並重新提交火花流作業。
 
-* 使用 HDFS 儲存 Spark 事件記錄檔。 使用 HDFS 進行儲存體可能會導致在叢集調整或 Azure 升級期間遺失 Spark 事件資料。
+* 使用 HDFS 存儲 Spark 事件日誌。 在群集縮放或 Azure 升級期間，將 HDFS 用於存儲可能會導致 Spark 事件資料丟失。
 
-    1. 透過 Ambari UI 進行 `spark.eventlog.dir` 和 `spark.history.fs.logDirectory` 的變更：
+    1. 對`spark.eventlog.dir`Ambari `spark.history.fs.logDirectory` UI 進行更改，並通過 Ambari UI 進行更改：
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
         spark.history.fs.logDirectory = "hdfs://mycluster/hdp/spark2-events"
         ```
 
-    1. 在 HDFS 上建立目錄：
+    1. 在 HDFS 上創建目錄：
 
         ```
         hadoop fs -mkdir -p hdfs://mycluster/hdp/spark2-events
@@ -54,14 +54,14 @@ ms.locfileid: "75894391"
         hadoop fs -chmod -R o+t hdfs://mycluster/hdp/spark2-events
         ```
 
-    1. 透過 Ambari UI 重新開機所有受影響的服務。
+    1. 通過 Ambari UI 重新開機所有受影響的服務。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
+* 通過[Azure 社區支援](https://azure.microsoft.com/support/community/)從 Azure 專家那裡獲得答案。
 
-* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源，來改善客戶體驗：解答、支援和專家。
+* 與[@AzureSupport](https://twitter.com/azuresupport)- 正式的 Microsoft Azure 帳戶連接 Azure 社區，以將 Azure 社區連接到正確的資源：答案、支援和專家，從而改善客戶體驗。
 
-* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。
+* 如果需要更多説明，可以從[Azure 門戶](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援請求。 從功能表列中選擇 **"支援"** 或打開 **"説明 + 支援**中心"。 有關詳細資訊，請查看[如何創建 Azure 支援請求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 訂閱中包含對訂閱管理和計費支援的訪問，並且通過[Azure 支援計畫](https://azure.microsoft.com/support/plans/)之一提供技術支援。

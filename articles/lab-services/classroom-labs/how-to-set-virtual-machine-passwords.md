@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 實驗室服務中設定 Vm 的密碼 |Microsoft Docs
-description: 瞭解如何在 Azure 實驗室服務的教室實驗室中設定和重設虛擬機器（Vm）的密碼。
+title: 為 Azure 實驗室服務中的 VM 設置密碼 |微軟文檔
+description: 瞭解如何在 Azure 實驗室服務的教室實驗室中設置和重置虛擬機器 （VM） 的密碼。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,103 +14,103 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933801"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>設定和管理虛擬機器集區 
-本文說明如何執行下列工作：
+本文介紹如何執行以下任務：
 
-- 增加實驗室中的虛擬機器（Vm）數目
-- 啟動所有 Vm 或選取的 Vm 
-- 重設 Vm
+- 增加實驗室中的虛擬機器 （VM） 數量
+- 啟動所有 VM 或所選 VM 
+- 重置 VM
 
 ## <a name="update-the-lab-capacity"></a>更新實驗室容量
-若要增加或減少實驗室容量（實驗室中的虛擬機器數目），請執行下列步驟：
+要增加或減少實驗室容量（實驗室中的虛擬機器數量），執行以下步驟：
 
-1. 在 [**虛擬機器集**區] 頁面上，選取 [**實驗室容量： &lt;號碼]&gt; [機器**]。
-2. 在實驗室中輸入您想要的新**vm 數目**。 此數位必須大於或等於實驗室中註冊的使用者數目。 
-3. 然後選取 [儲存]。 
+1. 在**虛擬機器池**頁上，選擇 **"實驗室容量：&lt;數位&gt;電腦**"。
+2. 在實驗室中輸入所需的新**VM 數量**。 此數位必須大於或等於實驗室中註冊的使用者數。 
+3. 然後，選擇 **"保存**"。 
 
-    ![[全部啟動] 按鈕](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. 如果您增加了容量，您可以看到 VM 或正在建立的 Vm。 如果您在清單中看不到新的 VM，請重新整理頁面。 
+    ![啟動所有按鈕](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+4. 如果增加了容量，可以看到正在創建的 VM 或 VM。 如果在清單中看不到新的 VM，請刷新頁面。 
 
-    ![正在建立 VM](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
+    ![正在創建的 VM](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
 ## <a name="start-vms"></a>啟動 VM
 
-### <a name="start-ot-stop-all-vms"></a>開始停止所有 Vm
-1. 切換至 [**虛擬機器集**區] 頁面。 
-2. 從工具列中選取 [**全部啟動**]。 
+### <a name="start-ot-stop-all-vms"></a>開始停止所有 VM
+1. 切換到**虛擬機器池**頁面。 
+2. 從工具列**中選擇"全部開始**"。 
 
-    ![[全部啟動] 按鈕](../media/how-to-set-virtual-machine-passwords/start-all-vms-button.png)
-3. 啟動所有 Vm 之後，您可以選取工具列上的 [全部**停止**] 按鈕來停止所有 vm。 
+    ![啟動所有按鈕](../media/how-to-set-virtual-machine-passwords/start-all-vms-button.png)
+3. 啟動所有 VM 後，您可以通過選擇工具列上的"**停止所有"** 按鈕來停止所有 VM。 
 
-    ![[全部停止] 按鈕](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
+    ![停止所有按鈕](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
-### <a name="start-selected-vms"></a>啟動選取的 Vm
-有兩種方式可以啟動選取的 Vm （一或多個）。 第一種方式是選取清單中的 VM 或 vm，然後選取工具列上的 [**啟動**]。 
+### <a name="start-selected-vms"></a>啟動所選 VM
+有兩種方法可以啟動選定的 VM（一個或多個）。 第一種方法是在清單中選擇 VM 或 VM，然後在工具列上選擇 **"開始"。** 
 
-第二種方式是選取清單中的一或多個 Vm，並切換 [**狀態**] 資料行中的按鈕。 
+第二種方法是在清單中選擇一個或多個 VM，並切換 **"狀態"** 列中的按鈕。 
 
-![啟動選取的 Vm](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
+![啟動所選 VM](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-同樣地，您可以切換 [**狀態**] 欄中的按鈕，或在工具列上選取 [**停止**]，來停止一或多個 vm。 
+同樣，您可以通過切換 **"狀態**"列中的按鈕或選擇工具列上的 **"停止"** 來停止一個或多個 VM。 
 
 > [!NOTE]
-> 當教育者開啟學生 VM 時，該學生的配額不會受到影響。 使用者的配額會指定使用者可在排程的類別時間之外使用的實驗室時數。 如需有關配額的詳細資訊，請參閱[設定使用者配額](how-to-configure-student-usage.md?#set-quotas-for-users)。
+> 當教育者打開學生 VM 時，學生的配額不受影響。 使用者的配額指定在計畫類時間之外可供使用者可用的實驗室小時數。 有關配額的詳細資訊，請參閱[為使用者設置配額](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
-## <a name="reset-vms"></a>重設 Vm
-若要重設一或多個 Vm，請在清單中選取它們，然後選取工具列上的 [**重設**]。 
+## <a name="reset-vms"></a>重置 VM
+要重置一個或多個 VM，請在清單中選擇它們，然後在工具列上選擇 **"重置**"。 
 
-![重設選取的 Vm](../media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
+![重置選定的 VM](../media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
 
-在 [**重設虛擬機器**] 對話方塊中，選取 [**重設**]。 
+在 **"重置虛擬機器"對話方塊中**，選擇 **"重置**"。 
 
-![重設 VM 對話方塊](../media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
+![重置 VM 對話方塊](../media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
 
 
 
-## <a name="set-password-for-vms"></a>設定 Vm 的密碼
-實驗室擁有者（老師）可以在建立實驗室（lab 建立嚮導）時，或在 [**範本**] 頁面上建立實驗室之後，設定/重設 vm 的密碼。 
+## <a name="set-password-for-vms"></a>為 VM 設置密碼
+實驗室擁有者（教師）可以在創建實驗室時（實驗室創建嚮導）或**在範本**頁面上創建實驗室後設置/重置 VM 的密碼。 
 
-### <a name="set-password-at-the-time-of-lab-creation"></a>在建立實驗室時設定密碼
-實驗室擁有者（老師）可以在實驗室建立嚮導的 [**虛擬機器認證**] 頁面上，為實驗室中的 vm 設定密碼。
+### <a name="set-password-at-the-time-of-lab-creation"></a>在實驗室創建時設置密碼
+實驗室擁有者（教師）可以在實驗室創建嚮導的**虛擬機器憑據**頁上為實驗室中的 VM 設置密碼。
 
 ![[新增實驗室] 視窗](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-藉由啟用/停用此頁面上**所有虛擬機器的 [使用相同的密碼**] 選項，老師可以選擇針對實驗室中的所有 vm 使用相同的密碼，或允許學生設定其 vm 的密碼。 根據預設，除了 Ubuntu 以外，所有 Windows 和 Linux 作業系統映射都會啟用此設定。 當此設定停用時，學生會在嘗試第一次連線到 VM 時，提示您設定密碼。 
+通過啟用/禁用此頁面**上所有虛擬機器使用相同的密碼**選項，教師可以選擇對實驗室中的所有 VM 使用相同的密碼，或者允許學生為其 VM 設置密碼。 預設情況下，此設置適用于除 Ubuntu 之外的所有 Windows 和 Linux 作業系統映射。 禁用此設置後，將提示學生在首次嘗試連接到 VM 時設置密碼。 
 
-### <a name="reset-password-later"></a>稍後重設密碼
+### <a name="reset-password-later"></a>稍後重置密碼
 
-1. 在實驗室的 [**範本**] 頁面上，選取工具列上的 [**重設密碼**]。 
-1. 在 [**重設密碼**] 對話方塊中，輸入密碼，然後選取 [**重設密碼**]。
+1. 在實驗室的**範本**頁上，選擇工具列上的 **"重置密碼**"。 
+1. 在 **"重置密碼"** 對話方塊中，輸入密碼，然後選擇 **"重置密碼**"。
     
-    ![[設定密碼] 對話方塊](../media/how-to-set-virtual-machine-passwords/set-password.png)
+    ![設置密碼對話方塊](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
-## <a name="connect-to-student-vms"></a>連接到學生 Vm
-如果符合下列條件，實驗室建立者（講師/教授）就可以連線到學生 VM： 
+## <a name="connect-to-student-vms"></a>連接到學生 VM
+如果滿足以下條件，實驗室建立者（講師/教授）可以連接到學生 VM： 
 
-- 建立實驗室時，已選取 [**所有虛擬機器都使用相同的密碼**] 選項
-- VM 正在執行 
+- 創建實驗室時選擇了 **"對所有虛擬機器使用相同的密碼**"選項
+- VM 正在運行 
 
- 若要連接到學生 VM，請將滑鼠停留在清單中的 VM 上，然後選取 [電腦] 按鈕。  
+ 要連接到學生 VM，請將滑鼠懸停在清單中的 VM 上，然後選擇電腦按鈕。  
 
-![[連線至學生 VM] 按鈕](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+![連接到學生 VM 按鈕](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> 當教授啟動 VM 並聯機到它時，學生配額不會受到影響。 
+> 當教授啟動 VM 並連接到 VM 時，學生配額不受影響。 
 
-## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>將虛擬機器的清單匯出至 CSV 檔案
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>將虛擬機器清單匯出到 CSV 檔
 
-1. 切換至 [**虛擬機器集**區] 索引標籤。
-2. 選取工具列上的 [ **...** ] （省略號），然後選取 [**匯出 CSV**]。 
+1. 切換到**虛擬機器池**選項卡。
+2. 在工具列上選擇 **...（** 省略號），然後選擇 **"匯出 CSV**"。 
 
-    ![匯出虛擬機器清單](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
+    ![虛擬機器匯出清單](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>後續步驟
-若要瞭解您（身為實驗室擁有者）可以設定的其他學生使用選項，請參閱下列文章：[設定學生使用](how-to-configure-student-usage.md)方式。
+要瞭解您（作為實驗室擁有者）可以配置的其他學生使用選項，請參閱以下文章：[配置學生使用方式](how-to-configure-student-usage.md)。
 
-若要瞭解學生如何重設其 Vm 的密碼，請參閱[在教室實驗室（學生）中設定或重設虛擬機器的密碼](how-to-set-virtual-machine-passwords-student.md)。
+要瞭解學生如何重置 VM 的密碼，請參閱[在教室實驗室（學生）中設置或重置虛擬機器的密碼](how-to-set-virtual-machine-passwords-student.md)。
