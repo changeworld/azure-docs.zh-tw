@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72386312"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將通知推送至 Android 裝置
@@ -53,7 +53,7 @@ ms.locfileid: "72386312"
 > * 將您的應用程式連接到通知中樞
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -76,14 +76,14 @@ ms.locfileid: "72386312"
 
 現在已將您的通知中樞設定成使用 GCM，而且您已擁有可用來註冊應用程式以接收和傳送推播通知的連接字串。
 
-## <a id="connecting-app"></a>將您的應用程式連接到通知中樞
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>將您的應用程式連接到通知中樞
 
 ### <a name="create-a-new-android-project"></a>建立新的 Android 專案
 
 1. 在 Android Studio 中，啟動新的 Android Studio 專案。
 
    ![Android Studio - 新增專案][13]
-2. 選擇 [電話和平板電腦]  板型規格和您要支援的 [Minimum SDK]  。 然後按 [下一步]  。
+2. 選擇 [電話和平板電腦]  板型規格和您要支援的 [Minimum SDK]  。 然後按一下 [下一步]  。
 
    ![Android Studio - 專案建立工作流程][14]
 3. 為主要活動選擇 [空白活動]  ，並按 [下一步]  ，然後按一下 [完成]  。
@@ -100,7 +100,7 @@ ms.locfileid: "72386312"
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
-2. 加入下列儲存機制到 **dependencies** 一節之後。
+2. 將下列存放庫新增到 **dependencies** 區段之後。
 
     ```gradle
     repositories {
@@ -166,9 +166,9 @@ ms.locfileid: "72386312"
 
     請在 `NotificationSettings` 類別的下列程式碼中更新這三個預留位置：
 
-   * `SenderId`：您稍早在 [Google Cloud Console](https://cloud.google.com/console) 中取得的專案編號。
-   * `HubListenConnectionString`：您中樞的 `DefaultListenAccessSignature` 連接字串。 在 [Azure 入口網站]中，按一下中樞 [設定]  頁面上的 [存取原則]  ，即可複製該連接字串。
-   * `HubName`：使用出現在 [Azure 入口網站]中樞頁面中的通知中樞名稱。
+   * `SenderId`:您稍早在 [Google Cloud Console](https://cloud.google.com/console) 中取得的專案編號。
+   * `HubListenConnectionString`:您中樞的 `DefaultListenAccessSignature` 連接字串。 在 [Azure 入口網站]中，按一下中樞 [設定]  頁面上的 [存取原則]  ，即可複製該連接字串。
+   * `HubName`:使用出現在 [Azure 入口網站]中樞頁面中的通知中樞名稱。
 
      `NotificationSettings` 程式碼︰
 

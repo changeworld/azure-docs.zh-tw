@@ -1,5 +1,5 @@
 ---
-title: 設定可用性群組的外部接聽程式
+title: 為可用性組配置外部攔截器
 description: 本教學課程將逐步引導您完成建立 Azure 中 Always On 可用性群組接聽程式的步驟，並且可使用相關聯雲端服務的公用虛擬 IP 位址從外部存取。
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,23 +16,23 @@ ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978187"
 ---
-# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>針對 Azure SQL Server Vm 上的可用性群組設定外部接聽程式
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>為 Azure SQL Server VM 上的可用性組配置外部攔截器
 > [!div class="op_single_selector"]
-> * [內部接聽程式](../classic/ps-sql-int-listener.md)
-> * [外部接聽程式](../classic/ps-sql-ext-listener.md)
+> * [內部攔截器](../classic/ps-sql-int-listener.md)
+> * [外部攔截器](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
 本主題說明如何設定 Always On 可用性群組的接聽程式，並且能夠在網際網路上從外部存取。 如此可將雲端服務的 **公用虛擬 IP (VIP)** 位址與接聽程式建立關聯。
 
 > [!IMPORTANT] 
-> Azure 建立和處理資源的部署模型有二種： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。
+> Azure 有兩種不同的部署模型來創建和使用資源：[資源管理器和經典](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。
 
 您的可用性群組可包含的複本為僅限內部部署、僅限 Azure，或同時跨內部部署和 Azure 的混合式組態。 Azure 複本可位於相同區域內，或使用多個虛擬網路 (VNet) 跨多個區域。 下列步驟假設您已 [設定可用性群組](../classic/portal-sql-alwayson-availability-groups.md)，但尚未設定接聽程式。
 
@@ -53,12 +53,12 @@ ms.locfileid: "75978187"
 ## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>使用伺服器直接回傳建立負載平衡 VM 端點
 外部負載平衡會使用主控 VM 之雲端服務的虛擬和公用虛擬 IP 位址。 因此在此情況下，您不需要建立或設定負載平衡器。
 
-您必須為每個主控 Azure 複本的 VM 建立負載平衡端點。 如果您的複本位於多個區域，則該區域的每個複本必須位於相同 VNet 中的相同雲端服務。 建立跨越多個 Azure 區域的可用性群組複本需要設定多個 VNet。 如需有關設定跨 VNet 連線的詳細資訊，請參閱[設定 VNet 對 VNet 連線](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
+您必須為每個主控 Azure 複本的 VM 建立負載平衡端點。 如果您的複本位於多個區域，則該區域的每個複本必須位於相同 VNet 中的相同雲端服務。 建立跨越多個 Azure 區域的可用性群組複本需要設定多個 VNet。 有關配置跨 VNet 連接的詳細資訊，請參閱[將 VNet 配置為 VNet 連接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
 1. 在 Azure 入口網站中，巡覽至每個主控複本的 VM 並檢視詳細資料。
-2. 按一下每個 VM 的 [ **端點** ] 索引標籤。
-3. 針對您想要使用的接聽程式端點，確認**名稱**和**公用連接埠**並未處於使用中狀態。 在下列範例中，名稱是「MyEndpoint」，而通訊埠為「1433」。
-4. 在您的本機用戶端上，下載並安裝 [最新的 PowerShell 模組](https://azure.microsoft.com/downloads/)。
+2. 針對每個 VM 按一下 **[端點]** 索引標籤。
+3. 確認您想要使用之接聽程式端點的 **[名稱]** 和 **[公用連接埠]** 尚未使用。 在下列範例中，名稱是「MyEndpoint」，而通訊埠為「1433」。
+4. 在本地用戶端上，下載並安裝[最新的 PowerShell 模組](https://azure.microsoft.com/downloads/)。
 5. 啟動 **Azure PowerShell**。 新的 PowerShell 工作階段會使用載入的 Azure 系統管理模組來開啟。
 6. 執行 **Get-AzurePublishSettingsFile**。 這個 Cmdlet 會將您導向瀏覽器，以便將發佈設定檔案下載至本機目錄。 系統可能會提示您輸入 Azure 訂用帳戶的登入認證。
 7. 使用您所下載發佈設定檔案的路徑來執行 **Import-AzurePublishSettingsFile** 命令：
@@ -95,8 +95,8 @@ ms.locfileid: "75978187"
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中設定叢集資源
-1. 對於外部負載平衡，您必須取得包含複本之雲端服務的公用虛擬 IP 位址。 登入 Azure 入口網站。 巡覽至包含可用性群組 VM 的雲端服務。 開啟 **儀表板** 檢視。
-2. 記下 [ **公用虛擬 IP (VIP) 位址**] 下方顯示的位址。 如果您的解決方案跨越多個 VNet，請針對包含主控複本之 VM 的每個雲端服務重複此步驟。
+1. 對於外部負載平衡，您必須取得包含複本之雲端服務的公用虛擬 IP 位址。 登入 Azure 入口網站。 巡覽至包含可用性群組 VM 的雲端服務。 開啟 **[儀表板]** 檢視。
+2. 請記下顯示在 **[公用虛擬 IP (VIP) 位址]** 下的位址。 如果您的解決方案跨越多個 VNet，請針對包含主控複本之 VM 的每個雲端服務重複此步驟。
 3. 在其中一個 VM 上，將下方的 PowerShell 指令碼複製到文字編輯器，並將變數設定為之前記下的值。
    
         # Define variables
@@ -123,7 +123,7 @@ ms.locfileid: "75978187"
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>測試可用性群組接聽程式 (位於網際網路)
-若要從虛擬網路外部存取接聽程式，您必須使用外部/公用負載平衡（如本主題中所述），而不是 ILB，這只能在相同的 VNet 中存取。 在連接字串中，您將指定雲端服務名稱。 例如，如果您雲端服務的名稱為 *mycloudservice*，sqlcmd 陳述式便如下所示：
+為了從虛擬網路外部訪問攔截器，您必須使用外部/公共負載平衡（本主題中所述），而不是 ILB，ILB 只能在同一 VNet 中訪問。 在連接字串中，您將指定雲端服務名稱。 例如，如果您雲端服務的名稱為 *mycloudservice*，sqlcmd 陳述式便如下所示：
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 

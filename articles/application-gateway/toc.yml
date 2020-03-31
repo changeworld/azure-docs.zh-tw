@@ -15,6 +15,9 @@
       href: quick-create-powershell.md
     - name: 建立應用程式閘道 - Azure CLI
       href: quick-create-cli.md
+    - name: 建立應用程式閘道 - ARM 範本
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: 教學課程
   items:
     - name: 使用 SSL 保護
@@ -47,6 +50,8 @@
           href: application-gateway-components.md
         - name: 組態概觀
           href: configuration-overview.md
+    - name: 高流量支援
+      href: high-traffic-support.md
     - name: 自動調整 v2 SKU
       href: application-gateway-autoscaling-zone-redundant.md
     - name: 路由

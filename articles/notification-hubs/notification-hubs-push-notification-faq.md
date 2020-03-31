@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中樞常見問題（Faq） |Microsoft Docs
-description: 有關在 Azure 通知中樞上設計和執行解決方案的常見問題。
+title: Azure 通知中心常見問題 （FAQ） |微軟文檔
+description: 有關在 Azure 通知中心上設計和實現解決方案的常見問題解答。
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263824"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中樞推播通知：常見問題集 (FAQ)
@@ -43,22 +43,22 @@ Azure 通知中樞有兩個資源層級：中樞和命名空間。 中樞是單�
 標準層級功能：
 
 * **豐富的遙測**：您可以使用每個訊息遙測的通知中樞，來追蹤任何推播要求和平台通知系統的意見反應以進行偵錯。
-* **多**租使用者：您可以在命名空間層級上使用平臺通知系統認證。 此選項可讓您在相同的命名空間內輕鬆地將租用戶分割成多個中樞。
+* **多租戶**：您可以在命名空間級別使用平臺通知系統憑據。 此選項可讓您在相同的命名空間內輕鬆地將租用戶分割成多個中樞。
 * **排定推播**：您可以排定在任何時間傳送通知。
-* **大量作業**：啟用註冊匯出/匯入功能，如[註冊匯出/匯入]檔中所述。
+* **批量操作**：啟用註冊匯出/導入功能，如[註冊匯出/導入]文檔中所述。
 
 ### <a name="what-is-the-notification-hubs-sla"></a>什麼是通知中樞 SLA？
 
 以基本和標準通知中樞層級來說，若應用程式已正確設定，則可傳送推播通知或執行註冊管理作業的時間至少有 99.9 %。 若要深入了解 SLA，請前往[通知中樞 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 頁面。
 
 > [!NOTE]
-> 因為推播通知依存于協力廠商平臺通知系統（例如 Apple 的推播通知服務（APNs）和 Google 的 Firebase 雲端通訊（FCM）），所以傳遞這些訊息沒有 SLA 保證。 通知中樞將批次傳送至平台通知系統 (SLA 保證) 後，就由平台通知系統負責傳遞推播 (無 SLA 保證)。
+> 由於推送通知依賴于協力廠商平臺通知系統，如 Apple 的推送通知服務 （APN） 和 Google 的 Firebase 雲消息 （FCM），因此沒有 SLA 保證傳遞這些消息。 通知中樞將批次傳送至平台通知系統 (SLA 保證) 後，就由平台通知系統負責傳遞推播 (無 SLA 保證)。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何將中樞或命名空間升級或降級為不同層級？
 
-移至 **[Azure 入口網站]**  > **通知中樞命名空間**或**通知中樞**。 選取您要更新的資源，並移至**定價層**。 請注意下列需求：
+轉到**[Azure 門戶]** > **通知中心命名空間**或**通知中心**。 選取您要更新的資源，並移至**定價層**。 請注意下列需求：
 
-* 更新後的定價層會套用至您正在使用的命名空間中所有中樞。
+* 更新後的定價層會套用至您正在使用的命名空間中所有** 中樞。
 * 如果您要降級至某一層，而您的裝置數量超過該層的限制，則必須要先刪除裝置才能降級。
 
 ## <a name="design-and-development"></a>設計與開發
@@ -69,30 +69,30 @@ Azure 通知中樞有兩個資源層級：中樞和命名空間。 中樞是單�
 
 ### <a name="which-client-platforms-do-you-support"></a>支援哪些用戶端平台？
 
-推播通知支援[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China （透過百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin （[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android，以及[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)）。 如需詳細資訊，請移至[通知中樞入門教學課程]頁面。
+[iOS，](notification-hubs-ios-apple-push-notification-apns-get-started.md)[安卓，](notification-hubs-android-push-notification-google-fcm-get-started.md) [Windows環球](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)， [Windows手機](notification-hubs-windows-mobile-push-notifications-mpns.md)， [Android中國 （通過百度）](notification-hubs-baidu-china-android-notifications-get-started.md)， Xamarin[（iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和安卓， 和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). 如需詳細資訊，請移至[通知中樞入門教學課程]頁面。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>你們是否支援簡訊、電子郵件、或 Web 通知？
 
-通知中樞會將通知傳送至執行 mobile apps 的裝置。 不提供電子郵件或簡訊功能。 通知中樞也不提供現成可用的瀏覽器中推播通知傳送服務。 客戶可以在支援的伺服器端平台上，使用 SignalR 來實作此功能。 
+通知中心向運行移動應用的設備發送通知。 不提供電子郵件或簡訊功能。 通知中樞也不提供現成可用的瀏覽器中推播通知傳送服務。 客戶可以在支援的伺服器端平台上，使用 SignalR 來實作此功能。 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>如果透過通知中樞傳送推播通知，可以支援多少個裝置？
 
 如需支援的裝置數目詳細資訊，請參閱[通知中樞價格]頁面。
 
-如果您需要支援超過10000000個已註冊的裝置，您必須將裝置分割到多個中樞。
+如果您需要對超過 1000 萬個註冊設備的支援，則必須跨多個集線器對設備進行分區。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以傳送多少推播通知？
 
 端視選取的層次而定，Azure 通知朱書會自動根據通知數目相應增加透過系統傳送的通知數目。
 
 > [!NOTE]
-> 整體使用成本可能會根據傳送的推播通知數目而增加。 請務必留意[通知中樞價格]頁面上概述的層級限制。
+> 根據發送的推送通知數，總使用成本可能會增加。 請務必留意[通知中樞價格]頁面上概述的層級限制。
 
 我們的客戶每天使用通知中樞來傳送數百萬則推播通知。 只要使用 Azure 通知中樞，您就不需要採取任何特別動作來調整推播通知可及範圍。
 
 ### <a name="how-long-does-it-take-for-sent-push-notifications-to-reach-my-device"></a>送出的推播通知多久才會到達我的裝置？
 
-在一般使用案例中，Azure 通知中樞能在 1 分鐘處理至少 1 百萬個推播通知傳送作業，能處理的連入負載數目大致上一樣。 此速率可能視標記數目、連入傳送作業本質和其他外部因子而異。
+在一般使用案例中，Azure 通知中樞能在 1 分鐘處理至少 1 百萬個推播通知傳送作業 **，能處理的連入負載數目大致上一樣。 此速率可能視標記數目、連入傳送作業本質和其他外部因子而異。
 
 在預估的傳送時間內，服務能計算每個平台的目標數，並根據已註冊的標記或標記運算式將訊息路由傳送到推播通知服務 (PNS) 。 PNS 負責將通知傳送至裝置。
 
@@ -127,7 +127,7 @@ PNS 不保證任何傳送通知的 SLA。 不過，大部分的推播通知皆�
 
 #### <a name="geo-distribution"></a>地理分散
 
-在推播通知案例中，地理分散不一定是關鍵。 將推播通知傳遞至裝置的各種 Pns （例如 APNs 或 FCM）不會平均分散。
+在推播通知案例中，地理分散不一定是關鍵。 向設備發送推送通知的各種 PNS（例如，APN 或 FCM）分佈不均勻。
 
 如果您有一個在全球使用的應用程式，您可以透過在世界上不同的 Azure 區域中使用通知中樞，以在不同命名空間中建立中樞。
 
@@ -149,15 +149,15 @@ Azure 通知中樞使用[共用存取簽章](../storage/common/storage-dotnet-sh
 傳送者與 Azure 通知中樞之間的連線以及 Azure 通知中樞與 PNS 之間的連線都使用 HTTPS。
 
 > [!NOTE]
-> Azure 通知中樞不會記錄訊息的承載。
+> Azure 通知中心不記錄消息的有效負載。
 
 若要傳送機密乘載，我們建議您使用「安全推播」模式。 傳送者會傳送 Ping 通知與訊息識別碼給裝置 (不含機密承載)。 當裝置上的應用程式收到此承載時，就能夠直接呼叫安全 API 以擷取訊息詳細資料。 您可以在[通知中樞安全推播教學課程]頁面上，取得如何實作此模式的指南。
 
-## <a name="operations"></a>Dynamics 365
+## <a name="operations"></a>作業
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>我可以得到哪些災害復原支援？
 
-我們在我們這邊提供中繼資料災害復原範圍 (通知中樞名稱、連接字串和其他重要資訊)。 觸發災害復原案例後，註冊資料是通知中樞基礎結構中唯一會遺失的區段。 您必須執行解決方案，將此資料重新填入新的中樞後復原：
+我們在我們這邊提供中繼資料災害復原範圍 (通知中樞名稱、連接字串和其他重要資訊)。 觸發災害復原案例後，註冊資料是通知中樞基礎結構中唯一會遺失的區段**。 您必須實現解決方案，以重新填充此資料到恢復後的新中心：
 
 1. 在不同的資料中心建立次要通知中樞。 我們建議您一開始就建立通知中樞，以避免災害復原事件和影響您的管理功能。 您也可以在災害復原事件發生時建立一個通知中樞。
 
@@ -175,13 +175,13 @@ Azure 通知中樞使用[共用存取簽章](../storage/common/storage-dotnet-sh
 
 但如果裝置上有未開啟的應用程式時，會有一段期間收不到通知。
 
-### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>我所有的資料都是以加密形式儲存嗎？
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>我的所有資料是否都以加密形式存儲？
 
-Azure 通知中樞會將待用的所有客戶資料加密，但註冊標記除外。 基於這個理由，您不應該使用標記來儲存個人或機密資料。
+Azure 通知中心除註冊標記外，對所有靜態客戶資料進行加密。 因此，您不應使用標籤存儲個人或機密資料。
 
 ### <a name="is-there-audit-log-capability"></a>是否有稽核記錄功能？
 
-可以。 所有「通知中樞」管理作業都會更新在 [Azure 入口網站]中公開的「Azure 活動記錄」。 「Azure 活動記錄」可讓您深入了解在您訂用帳戶中資源上執行的作業。 藉由使用「活動記錄」，您可以判斷出為訂用帳戶中資源進行的任何寫入作業 (PUT、POST、DELETE) 的內容、對象及時間。 您也可以了解作業的狀態和其他相關屬性。 不過， 「活動記錄」不包含讀取 (GET) 作業。
+是。 所有「通知中樞」管理作業都會更新在 [Azure 入口網站]中公開的「Azure 活動記錄」。 「Azure 活動記錄」可讓您深入了解在您訂用帳戶中資源上執行的作業。 藉由使用「活動記錄」，您可以判斷出為訂用帳戶中資源進行的任何寫入作業 (PUT、POST、DELETE) 的內容、對象及時間。 您也可以了解作業的狀態和其他相關屬性。 不過， 「活動記錄」不包含讀取 (GET) 作業。
 
 ## <a name="monitoring-and-troubleshooting"></a>監視與疑難排解
 
@@ -193,28 +193,28 @@ Azure 通知中樞提供數個功能以進行疑難排解，特別是在已捨�
 
 您可透過 Azure 通知中樞，在 [Azure 入口網站]中檢視遙測資料。 您可以在[通知中樞計量]頁面上取得計量的詳細資料。
 
-您也可以透過程式設計方式存取計量。 如需詳細資訊，請參閱下列文章：
+您還可以以程式設計方式訪問指標。 如需詳細資訊，請參閱下列文章：
 
-- [使用 .Net 取得 Azure 監視器計量](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 這個範例會使用使用者名稱和密碼。 若要使用憑證，請多載 FromServicePrincipal 方法以提供憑證，如[本範例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)所示。 
-- [取得資源的計量和活動記錄](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
+- [使用 .NET 檢索 Azure 監視器指標](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用使用者名和密碼。 要使用證書，請重載 FromServiceThe 方法以提供證書，如[本示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)所示。 
+- [獲取資源的指標和活動日誌](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure 監視 REST API 逐步解說](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
-> 成功的通知表示已將推播通知傳遞至外部 PNS （例如，適用于 iOS 的 APNs，以及適用于 Android 裝置的 macOS 或 FCM）。 PNS 負責將通知傳送至目標裝置。 PNS 通常不會向第三方公開計量。  
+> 成功通知僅意味著推送通知已傳遞到外部 PNS（例如，適用于 iOS 和 macOS 的 APN 或適用于 Android 設備的 FCM）。 PNS 負責將通知傳送至目標裝置。 PNS 通常不會向第三方公開計量。  
 
-[Azure 入口網站]: https://portal.azure.com
+[Azure 門戶]: https://portal.azure.com
 [通知中樞價格]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [通知中樞 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [通知中樞入門教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [後端註冊指引]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[後端註冊指引 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
+[後端註冊指導方針 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
 [通知中樞資訊安全模型]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [通知中樞安全推播教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [通知中樞疑難排解]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [通知中樞計量]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [註冊匯出/匯入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure 入口網站]: https://portal.azure.com
+[Azure 門戶]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

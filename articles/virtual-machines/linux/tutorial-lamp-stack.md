@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034460"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154367"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中的 Linux 虛擬機器上安裝 LAMP 網頁伺服器
 
@@ -122,10 +122,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * 驗證安裝和設定
 > * 在 LAMP 伺服器上安裝 WordPress
 
-前進到下一個教學課程，以了解如何使用 SSL 憑證保護 Web 伺服器。
+前進到下一個教學課程，以了解如何使用 TLS/SSL 憑證保護 Web 伺服器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保護網路伺服器](tutorial-secure-web-server.md)
+> [使用 TLS 保護 Web 伺服器](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

@@ -1,14 +1,14 @@
 ---
 title: DoD 影響等級 4 藍圖範例控制
 description: 控制 DoD 影響等級 4 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 15ab3bc8bf53d54161ecc3b1f0dc138c3ff923c1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154706"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415388"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>控制 DoD 影響等級 4 藍圖範例的對應
 
@@ -83,6 +83,20 @@ Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-cont
 - 函式應用程式的遠端偵錯應關閉
 - Web 應用程式的遠端偵錯應關閉
 
+## <a name="ac-23-data-mining"></a>AC-23 資料採礦
+
+此藍圖會提供原則定義，以協助您確定已正確啟用資料安全性通知。 此外，此藍圖可確保已在 SQL Server 上設定稽核與進階資料安全性。
+
+- 應在 SQL 伺服器上啟用進階資料安全性
+- 應在 SQL 受控執行個體上啟用進階資料安全性
+- 在 SQL 伺服器的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
+- 在 SQL 受控執行個體的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
+- 應該在 SQL Server 上的進階資料安全性設定上啟用稽核
+- 應在 SQL 伺服器進階資料安全性設定中啟用傳給系統管理員和訂用帳戶擁有者的通知
+- 應在 SQL 受控執行個體進階資料安全性設定中，啟用傳給系統管理員和訂用帳戶擁有者的電子郵件通知
+- SQL 伺服器的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
+- SQL 受控執行個體的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
+
 ## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>AU-3 (2) 稽核記錄的內容 | 集中管理已計劃的稽核記錄內容
 
 「Azure 監視器」所收集的記錄資料會儲存在 Log Analytics 工作區中，進而啟用集中化設定與管理。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核和強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，協助您確保會記錄事件。
@@ -123,8 +137,6 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 如需詳細的弱點掃描和監視，建議您也要利用 Azure Sentinel 和 Azure 資訊安全中心。
 
 - \[預覽\]：虛擬機器上應啟用弱點評定
-- \[預覽\]：啟用適用於 VM 的 Azure 監視器
-- \[預覽\]：為 VM 擴展集 (VMSS) 啟用 Azure 監視器
 - 弱點評定應於您的 SQL 伺服器上啟用
 - 稽核診斷設定
 - SQL 受控執行個體上應啟用弱點評定
@@ -133,6 +145,8 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 - 應修復 SQL 資料庫的弱點
 - 弱點評量解決方案應修復弱點
 - 應修復虛擬機器擴展集上安全性組態的弱點
+- \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
 
 ## <a name="au-12-audit-generation"></a>AU-12 稽核產生
 
@@ -236,6 +250,16 @@ Azure Site Recovery 會將虛擬機器上執行的工作負載從主要位置複
 - \[預覽\]：部署需求以稽核最小密碼長度未限制為 14 個字元的 Windows VM
 - \[預覽\]：部署需求以稽核未使用可逆加密來儲存密碼的 Windows VM
 
+## <a name="ir-6-2-incident-reporting--vulnerabilities-related-to-incidents"></a>IR-6 (2) 事件報告 | 與事件相關的弱點
+
+此藍圖會提供原則定義，以便利用虛擬機器、虛擬機器擴展集和 SQL Server 的弱點評定分析來稽核記錄。 這些深入解析可讓您即時檢視已部署資源的安全性狀態，並且可協助您排定補救措施的優先順序。
+
+- 應修復虛擬機器擴展集上安全性組態的弱點
+- 弱點評量解決方案應修復弱點
+- 您應在機器上修復安全性組態的弱點
+- 應補救容器安全性設定中的弱點
+- 應修復 SQL 資料庫的弱點
+
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 弱點掃描
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure 資訊安全中心內的作業系統弱點、SQL 弱點與虛擬機器弱點，以協助您管理資訊系統弱點。 Azure 資訊安全中心提供報告功能，可讓您即時深入檢視已部署 Azure 資源的安全性狀態。 此藍圖還指派原則定義，針對 SQL 伺服器稽核並強制套用「進階資料安全性」。 「進階資料安全性」包含弱點評定和進階威脅防護功能，可協助您了解所部署資源的弱點。
@@ -312,6 +336,30 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 應修復 SQL 資料庫的弱點
 - 弱點評量解決方案應修復弱點
 
+## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 缺陷補救 | 移除舊版的軟體/韌體
+
+此藍圖會指派原則定義，以協助您確定應用程式會使用最新版的 .NET Framework、 Java、PHP、Python 和 TLS。 此藍圖也會指派原則定義以確保 Kubernetes 服務會升級為其不易受攻擊的版本。
+
+- 確定 '.Net Framework' 在作為 API 應用程式的一部分時，版本是最新的
+- 確定 '.Net Framework' 在作為函式應用程式的一部分時，版本是最新的
+- 確定 '.Net Framework' 在作為 Web 應用程式的一部分時，版本是最新的
+- 確定 'HTTP' 在用來執行 API 應用程式時，版本是最新的
+- 確定 'HTTP' 在用來執行函式應用程式時，版本是最新的
+- 確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的
+- 確定 'Java' 在作為 API 應用程式的一部分時，版本是最新的
+- 確定 'Java' 在作為函式應用程式的一部分時，版本是最新的
+- 確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的
+- 確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的
+- 確定 'PHP' 在作為函式應用程式的一部分時，版本是最新的
+- 確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的
+- 確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的
+- 確定 'Python' 在作為函式應用程式的一部分時，版本是最新的
+- 確定 'Python' 在作為 Web 應用程式的一部分時，版本是最新的
+- 您的 API 應用程式應使用最新的 TLS 版本
+- 您的函式應用程式應使用最新的 TLS 版本
+- 您的 Web 應用程式應使用最新的 TLS 版本
+- \[預覽\]：Kubernetes 服務應升級為不易受攻擊的 Kubernetes 版本
+
 ## <a name="si-3-malicious-code-protection"></a>SI-3 惡意程式碼防護
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以在「Azure 資訊安全中心」監視虛擬機器缺少的 Endpoint Protection，並在 Windows 虛擬機器上強制執行 Microsoft 反惡意程式碼軟體解決方案，協助您管理 Endpoint Protection，包括惡意程式碼防護。
@@ -347,6 +395,18 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 在 SQL 伺服器上部署威脅偵測
 - 允許的位置
 - 允許資源群組的位置
+
+## <a name="si-4-12-information-system-monitoring--automated-alerts"></a>SI-4 (12) 資訊系統監視 | 自動警示
+
+此藍圖會提供原則定義，以協助您確定已正確啟用資料安全性通知。 此外，此藍圖可確保已啟用 Azure 資訊安全中心的標準定價層。 請注意，標準定價層會為網路及虛擬機器啟用威脅偵測，在 Azure 資訊安全中心提供威脅情報、異常偵測及行為分析。
+
+- 應已針對高嚴重性警示啟用傳送給訂用帳戶擁有者的電子郵件通知
+- 應為您的訂用帳戶提供安全性連絡人電子郵件地址 
+- 應在 SQL 受控執行個體進階資料安全性設定中，啟用傳給系統管理員和訂用帳戶擁有者的電子郵件通知 
+- 應在 SQL 伺服器進階資料安全性設定中啟用傳給系統管理員和訂用帳戶擁有者的通知 
+- 應為您的訂用帳戶提供安全性連絡人電話號碼
+- SQL 伺服器的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
+- 應選取資訊安全中心標準定價層
 
 ## <a name="si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>SI-4 (18) 資訊系統監視 | 分析流量 / 掩飾外洩
 

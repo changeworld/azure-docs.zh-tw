@@ -1,179 +1,276 @@
 ---
-title: 邏輯組織的標記資源
+title: 為邏輯組織標記資源、資源組和訂閱
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
-ms.date: 01/03/2020
-ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/20/2020
+ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132115"
 ---
-# <a name="use-tags-to-organize-your-azure-resources"></a>使用標記來組織 Azure 資源
+# <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記組織 Azure 資源和管理層次結構
 
-您會將標籤套用至 Azure 資源，以邏輯方式將它們組織成分類法。 每個標記都是由一個名稱和一個值配對組成。 例如，您可以將「環境」名稱和「生產」值套用至生產環境中的所有資源。
+將標記應用於 Azure 資源、資源組和訂閱，以邏輯方式將它們組織到分類中。 每個標記都是由一個名稱和一個值配對組成。 例如，您可以將「環境」名稱和「生產」值套用至生產環境中的所有資源。
 
-套用標記之後，您可以擷取訂用帳戶中具有該標記名稱和值的所有資源。 標記可讓您擷取不同資源群組中的相關資源。 當您需要組織資源以進行計費或管理時，此方法很有用。
-
-除了 autotagging 策略之外，您的分類法也應考慮使用自助元資料標記策略，以降低使用者的負擔並提高精確度。
+有關如何實現標記策略的建議，請參閱[資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="limitations"></a>限制
+## <a name="required-access"></a>必需的訪問
 
-標籤具有下列限制：
+要將標記應用於資源，您必須具有對**Microsoft.Resource/標記**資源類型的寫入存取權限。 **"標記參與者"** 角色允許您將標記應用於實體，而無需訪問實體本身。
 
-* 並非所有資源類型都支援標記。 若要判斷您是否可以將標記套用至資源類型，請參閱 [Azure 資源的標記支援](tag-support.md)。
-* 每個資源或資源群組最多可以有50個標記名稱/值配對。 如果您需要套用的標記超過允許的最大數目，請使用標記值的 JSON 字串。 JSON 字串可以包含許多套用至單一標記名稱的值。 資源群組可以包含多個具有50標記名稱/值組的資源。
-* 標記名稱上限為 512 個字元，且標記值上限為 256 字元。 儲存體帳戶的標記名稱上限為 128 個字元，且標記值上限為 256 個字元。
-* 一般化 Vm 不支援標記。
-* 資源群組中的資源不會繼承套用至該資源群組的標籤。
-* 標記無法套用到類似雲服務的傳統資源。
-* 標記名稱不得包含這些字元：`<`、`>`、`%`、`&`、`\`、`?`、`/`
-
-   > [!NOTE]
-   > 目前 Azure DNS 區域和流量管理員服務也不允許在標記中使用空格。 
-
-## <a name="required-access"></a>必要的存取權
-
-若要將標記套用到資源，使用者必須具有該資源類型的寫入權限。 若要將標記套用到所有資源類型，請使用[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色。 若只要將標記套用到一個資源類型，則使用適用於該資源的參與者角色。 例如，若要將標記套用到虛擬機器，可使用[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
-
-## <a name="policies"></a>原則
-
-您可以使用 [Azure 原則](../../governance/policy/overview.md)來強制標記規則和慣例。 建立原則，就可以避免將資源部署到不符合貴組織預期標記的訂用帳戶。 您可以建立一個原則，以便在部署期間自動套用所需的標記，而不需手動套用標記或搜尋不符合規範的資源。 標籤現在也可以套用至具有新[修改](../../governance/policy/concepts/effects.md#modify)效果和[補救](../../governance/policy/how-to/remediate-resources.md)工作的現有資源。 下列區段會顯示標籤的範例原則。
-
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
+["參與者"](../../role-based-access-control/built-in-roles.md#contributor)角色還授予向任何實體應用標記所需的存取權限。 若只要將標記套用到一個資源類型，則使用適用於該資源的參與者角色。 例如，若要將標記套用到虛擬機器，可使用[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
 ## <a name="powershell"></a>PowerShell
 
-若要查看*資源群組*的現有標籤，請使用：
+### <a name="apply-tags"></a>應用標記
+
+Azure PowerShell 提供了兩個用於應用標記的命令 -[新 AzTag](/powershell/module/az.resources/new-aztag)和[Update-AzTag](/powershell/module/az.resources/update-aztag)。 您必須具有 Azure PowerShell 3.6.1 或更高版本才能使用這些命令。
+
+**New-AzTag**替換資源、資源組或訂閱上的所有標記。 調用命令時，將要標記的實體的資源識別碼 傳遞。
+
+以下示例將一組標記應用於存儲帳戶：
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Name examplegroup).Tags
+$tags = @{"Dept"="Finance"; "Status"="Normal"}
+$resource = Get-AzResource -Name demoStorage -ResourceGroup demoGroup
+New-AzTag -ResourceId $resource.id -Tag $tags
 ```
 
-該指令碼會傳回下列格式︰
+命令完成後，請注意資源有兩個標記。
 
-```powershell
-Name                           Value
-----                           -----
-Dept                           IT
-Environment                    Test
+```output
+Properties :
+        Name    Value
+        ======  =======
+        Dept    Finance
+        Status  Normal
 ```
 
-若要查看*具有指定之名稱和資源群組之資源*的現有標記，請使用：
+如果再次運行該命令，但這次使用不同的標記，請注意，前面的標記將被刪除。
 
 ```azurepowershell-interactive
-(Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+$tags = @{"Team"="Compliance"; "Environment"="Production"}
+New-AzTag -ResourceId $resource.id -Tag $tags
 ```
 
-或者，如果您有資源的資源識別碼，您可以傳遞該資源識別碼來取得標記。
+```output
+Properties :
+        Name         Value
+        ===========  ==========
+        Environment  Production
+        Team         Compliance
+```
+
+要將標記添加到已具有標記的資源，請使用**Update-Aztag**。 將 **-操作**參數設置為**合併**。
 
 ```azurepowershell-interactive
-(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
+$tags = @{"Dept"="Finance"; "Status"="Normal"}
+Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Merge
 ```
 
-若要取得*具有特定標籤名稱和值的資源群組*，請使用：
+請注意，兩個新標記已添加到兩個現有標記中。
+
+```output
+Properties :
+        Name         Value
+        ===========  ==========
+        Status       Normal
+        Dept         Finance
+        Team         Compliance
+        Environment  Production
+```
+
+每個標記名稱只能有一個值。 如果為標記提供新值，則即使使用合併作業，也會替換舊值。 下面的示例將狀態標記從"正常"更改為綠色。
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Tag @{ "Dept"="Finance" }).ResourceGroupName
+$tags = @{"Status"="Green"}
+Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Merge
 ```
 
-若要取得*具有特定標籤名稱和值的資源*，請使用：
+```output
+Properties :
+        Name         Value
+        ===========  ==========
+        Status       Green
+        Dept         Finance
+        Team         Compliance
+        Environment  Production
+```
+
+將 **-操作**參數設置為 **"替換**"時，現有標記將被新的標記集替換。
 
 ```azurepowershell-interactive
-(Get-AzResource -Tag @{ "Dept"="Finance"}).Name
+$tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
+Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Replace
 ```
 
-若要取得「具有特定標記名稱的資源」，請使用：
+資源上僅保留新標記。
+
+```output
+Properties :
+        Name        Value
+        ==========  =========
+        CostCenter  00123
+        Team        Web
+        Project     ECommerce
+```
+
+相同的命令也可用於資源組或訂閱。 您傳遞要標記的資源組或訂閱的識別碼。
+
+要向資源組添加新標記集，請使用：
+
+```azurepowershell-interactive
+$tags = @{"Dept"="Finance"; "Status"="Normal"}
+$resourceGroup = Get-AzResourceGroup -Name demoGroup
+New-AzTag -ResourceId $resourceGroup.ResourceId -tag $tags
+```
+
+要更新資源組的標記，請使用：
+
+```azurepowershell-interactive
+$tags = @{"CostCenter"="00123"; "Environment"="Production"}
+$resourceGroup = Get-AzResourceGroup -Name demoGroup
+Update-AzTag -ResourceId $resourceGroup.ResourceId -Tag $tags -Operation Merge
+```
+
+要向訂閱添加新標記集，請使用：
+
+```azurepowershell-interactive
+$tags = @{"CostCenter"="00123"; "Environment"="Dev"}
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+New-AzTag -ResourceId "/subscriptions/$subscription" -Tag $tags
+```
+
+要更新訂閱的標記，請使用：
+
+```azurepowershell-interactive
+$tags = @{"Team"="Web Apps"}
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+Update-AzTag -ResourceId "/subscriptions/$subscription" -Tag $tags -Operation Merge
+```
+
+資源組中可能有多個同名資源。 在這種情況下，可以使用以下命令設置每個資源：
+
+```azurepowershell-interactive
+$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
+$resource | ForEach-Object { Update-AzTag -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Operation Merge }
+```
+
+### <a name="list-tags"></a>列出標籤
+
+要獲取資源、資源組或訂閱的標記，請使用[Get-AzTag](/powershell/module/az.resources/get-aztag)命令並傳遞實體的資源識別碼。
+
+要查看資源的標記，請使用：
+
+```azurepowershell-interactive
+$resource = Get-AzResource -Name demoStorage -ResourceGroup demoGroup
+Get-AzTag -ResourceId $resource.id
+```
+
+要查看資源組的標記，請使用：
+
+```azurepowershell-interactive
+$resourceGroup = Get-AzResourceGroup -Name demoGroup
+Get-AzTag -ResourceId $resourceGroup.ResourceId
+```
+
+要查看訂閱的標記，請使用：
+
+```azurepowershell-interactive
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+Get-AzTag -ResourceId "/subscriptions/$subscription"
+```
+
+### <a name="list-by-tag"></a>按標記列出
+
+要獲取具有特定標記名稱和值的資源，請使用：
+
+```azurepowershell-interactive
+(Get-AzResource -Tag @{ "CostCenter"="00123"}).Name
+```
+
+要獲取具有具有任何標記值的特定標記名稱的資源，請使用：
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName "Dept").Name
 ```
 
-每當您將標記套用到資源或資源群組時，即會覆寫該資源或資源群組上現有的標記。 因此，您必須視該資源或資源群組是否具備現有標籤來使用不同的方法。
-
-若要將標籤新增至*不具現有標籤的資源群組*，請使用：
+要獲取具有特定標記名稱和值的資源組，請使用：
 
 ```azurepowershell-interactive
-Set-AzResourceGroup -Name examplegroup -Tag @{ "Dept"="IT"; "Environment"="Test" }
+(Get-AzResourceGroup -Tag @{ "CostCenter"="00123" }).ResourceGroupName
 ```
 
-若要將標記新增至「具有現有標記的資源群組」，請擷取現有標記、新增標記，然後重新套用標記：
+### <a name="remove-tags"></a>刪除標記
+
+要刪除特定標記，請使用**Update-AzTag**並將 **-操作**設置為 **"刪除**"。 傳遞要刪除的標記。
 
 ```azurepowershell-interactive
-$tags = (Get-AzResourceGroup -Name examplegroup).Tags
-$tags.Add("Status", "Approved")
-Set-AzResourceGroup -Tag $tags -Name examplegroup
+$removeTags = @{"Project"="ECommerce"; "Team"="Web"}
+Update-AzTag -ResourceId $resource.id -Tag $removeTags -Operation Delete
 ```
 
-若要將標籤新增至*不具現有標籤的資源*，請使用：
+指定的標記將被刪除。
 
-```azurepowershell-interactive
-$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $resource.ResourceId -Force
+```output
+Properties :
+        Name        Value
+        ==========  =====
+        CostCenter  00123
 ```
 
-在資源群組中，您可能會有一個以上的資源具有相同的名稱。 在此情況下，您可以使用下列命令來設定每個資源：
+要刪除所有標記，請使用["刪除-AzTag"](/powershell/module/az.resources/remove-aztag)命令。
 
 ```azurepowershell-interactive
-$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
-$resource | ForEach-Object { Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Force }
-```
-
-若要將標記新增至「沒有現有標記的資源」，請使用：
-
-```azurepowershell-interactive
-$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$resource.Tags.Add("Status", "Approved")
-Set-AzResource -Tag $resource.Tags -ResourceId $resource.ResourceId -Force
-```
-
-若要將所有標記從資源群組套用至其資源，而*不保留資源上的現有標記*，請使用下列腳本：
-
-```azurepowershell-interactive
-$group = Get-AzResourceGroup -Name examplegroup
-Get-AzResource -ResourceGroupName $group.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $group.Tags -Force }
-```
-
-若要將所有標記從資源群組套用至其資源，並*在不重複的資源上保留現有*的標籤，請使用下列腳本：
-
-```azurepowershell-interactive
-$group = Get-AzResourceGroup -Name examplegroup
-if ($null -ne $group.Tags) {
-    $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
-    foreach ($r in $resources)
-    {
-        $resourcetags = (Get-AzResource -ResourceId $r.ResourceId).Tags
-        if ($resourcetags)
-        {
-            foreach ($key in $group.Tags.Keys)
-            {
-                if (-not($resourcetags.ContainsKey($key)))
-                {
-                    $resourcetags.Add($key, $group.Tags[$key])
-                }
-            }
-            Set-AzResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
-        }
-        else
-        {
-            Set-AzResource -Tag $group.Tags -ResourceId $r.ResourceId -Force
-        }
-    }
-}
-```
-
-若要移除所有標記，請傳遞空的雜湊表：
-
-```azurepowershell-interactive
-Set-AzResourceGroup -Tag @{} -Name examplegroup
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
-若要查看*資源群組*的現有標籤，請使用：
+### <a name="apply-tags"></a>應用標記
+
+將標記添加到資源組或資源時，可以覆蓋現有標記或將新標記追加到現有標記。
+
+要覆蓋資源上的標記，請使用：
+
+```azurecli-interactive
+az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+```
+
+要將標記追加到資源上的現有標記，請使用：
+
+```azurecli-interactive
+az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+```
+
+要覆蓋資源組中的現有標記，請使用：
+
+```azurecli-interactive
+az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+```
+
+要將標記追加到資源組的現有標記，請使用：
+
+```azurecli-interactive
+az group update -n examplegroup --set tags.'Status'='Approved'
+```
+
+目前，Azure CLI 不支援將標記應用於訂閱。
+
+### <a name="list-tags"></a>列出標籤
+
+要查看資源的現有標記，請使用：
+
+```azurecli-interactive
+az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+```
+
+若要查看資源群組的現有標籤，請使用：
 
 ```azurecli-interactive
 az group show -n examplegroup --query tags
@@ -188,16 +285,12 @@ az group show -n examplegroup --query tags
 }
 ```
 
-或者，若要查看「具有指定之名稱、類型和資源群組的資源」的現有標籤，請使用：
+### <a name="list-by-tag"></a>按標記列出
+
+若要取得「具有特定標籤和值的所有資源」，請使用 `az resource list`：
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
-```
-
-對資源的集合執行迴圈時，您可能想要依據資源識別碼顯示資源。 本文稍後會示範完整範例。 若要查看「具有指定之資源識別碼的資源」的現有標記，請使用：
-
-```azurecli-interactive
-az resource show --id <resource-id> --query tags
+az resource list --tag Dept=Finance
 ```
 
 若要取得「具有特定標籤的資源群組」，請使用 `az group list`：
@@ -206,66 +299,9 @@ az resource show --id <resource-id> --query tags
 az group list --tag Dept=IT
 ```
 
-若要取得「具有特定標籤和值的所有資源」，請使用 `az resource list`：
+### <a name="handling-spaces"></a>處理空間
 
-```azurecli-interactive
-az resource list --tag Dept=Finance
-```
-
-將標籤新增至資源群組或資源時，您可以覆寫現有的標籤，或將新的標記附加至現有的標記。
-
-若要覆寫資源群組上的現有標記，請使用：
-
-```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
-```
-
-若要將標記附加至資源群組上的現有標記，請使用：
-
-```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
-```
-
-若要覆寫資源上的標記，請使用：
-
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-若要將標記附加至資源上的現有標記，請使用：
-
-```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-若要將所有標記從資源群組套用至其資源，而*不保留資源上的現有標記*，請使用下列腳本：
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '"{},' | sed 's/: /=/g')
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags $tags --id $id
-done
-```
-
-若要將所有標記從資源群組套用至其資源，並*在資源上保留現有的標記*，請使用下列腳本：
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '"{},' | sed 's/: /=/g')
-
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  resourcejsontags=$(az resource show --id $id --query tags -o json)
-  resourcetags=$(echo $resourcejsontags | tr -d '"{},' | sed 's/: /=/g')
-  az resource tag --tags $tags$resourcetags --id $id
-done
-```
-
-如果您的標籤名稱或值包含空格，則必須採取幾個額外的步驟。 下列範例會在標記可能包含空格時，將所有標記從資源群組套用至其資源。
+如果標記名稱或值包含空格，則必須執行幾個額外的步驟。 以下示例將資源組中的所有標記應用於其資源，當標記可能包含空格時。
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
@@ -283,17 +319,21 @@ IFS=$origIFS
 
 ## <a name="templates"></a>範本
 
-若要在部署期間標記資源，請將 `tags` 元素新增至您要部署的資源。 提供標籤名稱和值。
+您可以在部署期間使用資源管理器範本標記資源、資源組和訂閱。
 
-### <a name="apply-a-literal-value-to-the-tag-name"></a>將常值套用至標記名稱
+### <a name="apply-values"></a>應用值
 
-下列範例說明含有兩個標籤 (`Dept` 和 `Environment`) 並設為常值的儲存體帳戶：
+下面的示例部署具有三個標記的存儲帳戶。 兩個標記 （`Dept` `Environment`和 ） 設置為文本值。 一個標記`LastDeployed`（ ） 設置為預設為當前日期的參數。
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "utcShort": {
+            "type": "string",
+            "defaultValue": "[utcNow('d')]"
+        },
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]"
@@ -307,7 +347,8 @@ IFS=$origIFS
             "location": "[parameters('location')]",
             "tags": {
                 "Dept": "Finance",
-                "Environment": "Production"
+                "Environment": "Production",
+                "LastDeployed": "[parameters('utcShort')]"
             },
             "sku": {
                 "name": "Standard_LRS"
@@ -319,11 +360,9 @@ IFS=$origIFS
 }
 ```
 
-若要將標記設定為 datetime 值，請使用[utcNow 函數](../templates/template-functions-string.md#utcnow)。
+### <a name="apply-an-object"></a>應用物件
 
-### <a name="apply-an-object-to-the-tag-element"></a>將物件套用至標記元素
-
-您可定義存放數個標籤的物件參數，並將該物件套用至標籤元素。 物件中的每個屬性會變成資源的個別標籤。 下列範例具有名為 `tagValues` 且套用至標籤元素的參數。
+您可定義存放數個標籤的物件參數，並將該物件套用至標籤元素。 此方法提供了比前一個示例更大的靈活性，因為物件可以具有不同的屬性。 物件中的每個屬性會變成資源的個別標籤。 下列範例具有名為 `tagValues` 且套用至標籤元素的參數。
 
 ```json
 {
@@ -359,9 +398,9 @@ IFS=$origIFS
 }
 ```
 
-### <a name="apply-a-json-string-to-the-tag-name"></a>將 JSON 字串套用至標記名稱
+### <a name="apply-a-json-string"></a>應用 JSON 字串
 
-若要將多個值儲存於單一標籤，請套用代表這些值的 JSON 字串。 整個 JSON 字串會儲存成一個不能超過256個字元的標記。 下列範例具有名為 `CostCenter` 的單一標籤，其中包含 JSON 字串中的數個值︰  
+若要將多個值儲存於單一標籤，請套用代表這些值的 JSON 字串。 整個 JSON 字串存儲為一個不能超過 256 個字元的標記。 下列範例具有名為 `CostCenter` 的單一標籤，其中包含 JSON 字串中的數個值︰  
 
 ```json
 {
@@ -392,9 +431,9 @@ IFS=$origIFS
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>從資源群組套用標記
+### <a name="apply-tags-from-resource-group"></a>應用資源組中的標記
 
-若要將標記從資源群組套用至資源，請使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用 `tags[tag-name]` 語法，而不是 `tags.tag-name` 語法，因為在點標記法中無法正確剖析某些字元。
+要將資源組中的標記應用於資源，請使用[資源組](../templates/template-functions-resource.md#resourcegroup)函數。 獲取標記值時，請使用`tags[tag-name]`語法而不是`tags.tag-name`語法，因為某些字元在點標記法中未正確解析。
 
 ```json
 {
@@ -426,23 +465,132 @@ IFS=$origIFS
 }
 ```
 
+### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>將標記應用於資源組或訂閱
+
+您可以通過部署**Microsoft.Resources/標記**資源類型向資源組或訂閱委任標記。 標記將應用於部署的目標資源組或訂閱。 每次部署範本時，都會替換任何標記。這些標記以前都應用過。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tagName": {
+            "type": "string",
+            "defaultValue": "TeamName"
+        },
+        "tagValue": {
+            "type": "string",
+            "defaultValue": "AppTeam1"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/tags",
+            "name": "default",
+            "apiVersion": "2019-10-01",
+            "dependsOn": [],
+            "properties": {
+                "tags": {
+                    "[parameters('tagName')]": "[parameters('tagValue')]"
+                }
+            }
+        }
+    ]
+}
+```
+
+要將標記應用於資源組，請使用 PowerShell 或 Azure CLI。 部署到要標記的資源組。
+
+```azurepowershell-interactive
+New-AzResourceGroupDeployment -ResourceGroupName exampleGroup -TemplateFile https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+```azurecli-interactive
+az deployment group create --resource-group exampleGroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+要將標記應用於訂閱，請使用 PowerShell 或 Azure CLI。 部署到要標記的訂閱。
+
+```azurepowershell-interactive
+New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+```azurecli-interactive
+az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+以下範本將物件的標記添加到資源組或訂閱。
+
+```json
+"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tags": {
+            "type": "object",
+            "defaultValue": {
+                "TeamName": "AppTeam1",
+                "Dept": "Finance",
+                "Environment": "Production"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/tags",
+            "name": "default",
+            "apiVersion": "2019-10-01",
+            "dependsOn": [],
+            "properties": {
+                "tags": "[parameters('tags')]"
+            }
+        }
+    ]
+}
+```
+
 ## <a name="portal"></a>入口網站
 
 [!INCLUDE [resource-manager-tag-resource](../../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="rest-api"></a>REST API
 
-Azure 入口網站和 PowerShell 在幕後都使用 [Resource Manager REST API](/rest/api/resources/) 。 如果您需要將標籤整合到另一個環境中，則可以在資源識別碼上利用 **GET** 來取得標籤，並使用 **PATCH** 呼叫來更新一組標籤。
+要通過 Azure REST API 處理標記，請使用：
+
+* [標記 - 在範圍內創建或更新](/rest/api/resources/tags/createorupdateatscope)（PUT 操作）
+* [標記 - 在範圍內更新](/rest/api/resources/tags/updateatscope)（PATCH 操作）
+* [標記 - 在範圍上獲取](/rest/api/resources/tags/getatscope)（GET 操作）
+* [標記 - 在範圍內刪除](/rest/api/resources/tags/deleteatscope)（刪除操作）
+
+## <a name="inherit-tags"></a>繼承標記
+
+應用於資源組或訂閱的標記不會由資源繼承。 要將訂閱或資源組中的標記應用於資源，請參閱[Azure 策略 - 標記](tag-policies.md)。
 
 ## <a name="tags-and-billing"></a>標記與計費
 
 您可以使用標籤將您的計費資料分組。 例如，如果您針對不同組織執行多個 VM，請使用標籤依成本中心將使用量分組。 您也可以使用標籤來根據執行階段環境將成本分類。例如，在生產環境中執行之 VM 的計費使用量。
 
-您可以透過 [Azure 資源使用狀況和 RateCard API](../../billing/billing-usage-rate-card-overview.md) 或使用狀況逗號分隔值 (CSV) 檔案，擷取關於標記的資訊。 您可以從 [Azure 帳戶中心](https://account.azure.com/Subscriptions)或 Azure 入口網站下載使用量檔案。 如需詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](../../billing/billing-download-azure-invoice-daily-usage-date.md)。 從「Azure 帳戶中心」下載使用量檔案時，請選取 [版本 2]。 針對支援在計費方面使用標籤的服務，標籤會顯示在 [標籤] 資料行中。
+您可以透過 [Azure 資源使用狀況和 RateCard API](../../billing/billing-usage-rate-card-overview.md) 或使用狀況逗號分隔值 (CSV) 檔案，擷取關於標記的資訊。 您可以從 [Azure 帳戶中心](https://account.azure.com/Subscriptions)或 Azure 入口網站下載使用量檔案。 如需詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](../../billing/billing-download-azure-invoice-daily-usage-date.md)。 從「Azure 帳戶中心」下載使用量檔案時，請選取 [版本 2]****。 針對支援在計費方面使用標籤的服務，標籤會顯示在 [標籤]**** 資料行中。
 
 若為 REST API 作業，請參閱 [Azure 計費 REST API 參考](/rest/api/billing/)。
+
+## <a name="limitations"></a>限制
+
+標籤具有下列限制：
+
+* 並非所有資源類型都支援標記。 若要判斷您是否可以將標記套用至資源類型，請參閱 [Azure 資源的標記支援](tag-support.md)。
+* 管理組當前不支援標記。
+* 每個資源、資源組和訂閱最多可以有 50 個標記名稱/值對。 如果需要應用的標記數大於最大允許數，請使用 JSON 字串作為標記值。 JSON 字串可以包含許多套用至單一標記名稱的值。 資源組或訂閱可以包含許多資源，每個資源具有 50 個標記名稱/值對。
+* 標記名稱上限為 512 個字元，且標記值上限為 256 字元。 儲存體帳戶的標記名稱上限為 128 個字元，且標記值上限為 256 個字元。
+* 通用 VM 不支援標記。
+* 標記無法套用到類似雲服務的傳統資源。
+* 標記名稱不得包含這些字元：`<`、`>`、`%`、`&`、`\`、`?`、`/`
+
+   > [!NOTE]
+   > 目前，Azure DNS 區域和流量管理器服務也不允許在標記中使用空格。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 並非所有資源類型都支援標記。 若要判斷您是否可以將標記套用至資源類型，請參閱 [Azure 資源的標記支援](tag-support.md)。
-* 如需使用入口網站的簡介，請參閱[使用 Azure 入口網站來管理您的 Azure 資源](manage-resource-groups-portal.md)。  
+* 有關如何實現標記策略的建議，請參閱[資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。

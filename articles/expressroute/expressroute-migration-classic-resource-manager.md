@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：將傳統 Vnet 遷移至 Resource Manager
+title: Azure 快速路由：將經典 VNet 遷移到資源管理器
 description: 此頁面描述如何在移動線路之後，將 ExpressRoute 相關虛擬網路移轉至 Resource Manager。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8033c80b72c19a9473ce7ecfaa8fe5a1da9f12ee
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061301"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>將 ExpressRoute 相關虛擬網路從傳統移轉至 Resource Manager
@@ -22,7 +22,7 @@ ms.locfileid: "77061301"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* 請確認您有最新版本的 Azure PowerShell 模組。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/overview)。 若要安裝 PowerShell 服務管理模組（傳統部署模型所需），請參閱[安裝 Azure PowerShell 服務管理模組](/powershell/azure/servicemanagement/install-azure-ps)。
+* 驗證您是否具有最新版本的 Azure PowerShell 模組。 有關詳細資訊，請參閱[如何安裝和配置 Azure PowerShell](/powershell/azure/overview)。 要安裝 PowerShell 服務管理模組（這是經典部署模型所必需的），請參閱安裝[Azure PowerShell 服務管理模組](/powershell/azure/servicemanagement/install-azure-ps)。
 * 開始設定之前，請確定您已經檢閱過[必要條件](expressroute-prerequisites.md)、[路由需求](expressroute-routing.md)和[工作流程](expressroute-workflows.md)。
 * 請檢閱[將 ExpressRoute 電路從傳統移至 Resource Manager](expressroute-move.md) 下提供的資訊。 請確定您已完整了解各項限制。
 * 請確認電路在傳統部署模型中的運作完全正常。
@@ -40,7 +40,7 @@ ms.locfileid: "77061301"
 * 虛擬網路、閘道，以及虛擬網路中連結至相同訂用帳戶中 ExpressRoute 線路的相關聯部署，都可以移轉至 Resource Manager 環境，而不需要停機。 您可以依照稍後描述的步驟來移轉資源，例如虛擬網路、閘道，以及虛擬網路中部署的虛擬機器。 您必須確保虛擬網路在移轉之前都已正確設定。 
 * 虛擬網路、閘道，以及虛擬網路內與 ExpressRoute 線路位於不同訂用帳戶的相關聯部署，都需要一些停機時間，才能完成移轉。 本文件的最後一節描述移轉資源所需遵循的步驟。
 * 無法移轉同時具有「ExpressRoute 閘道」和「VPN 閘道」的虛擬網路。
-* 不支援 ExpressRoute 線路的跨訂用帳戶移轉。 如需詳細資訊，請參閱[Microsoft。網路移動支援](../azure-resource-manager/management/move-support-resources.md#microsoftnetwork)。
+* 不支援 ExpressRoute 線路的跨訂用帳戶移轉。 有關詳細資訊，請參閱[Microsoft.網路移動支援](../azure-resource-manager/management/move-support-resources.md#microsoftnetwork)。
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>將 ExpressRoute 線路從傳統移到 Resource Manager
 嘗試移轉已連結至 ExpressRoute 線路的資源之前，您必須先將 ExpressRoute 線路從傳統移至 Resource Manager 環境。 若要完成此工作，請參閱下列文章：

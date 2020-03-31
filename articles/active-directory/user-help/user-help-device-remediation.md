@@ -1,6 +1,6 @@
 ---
-title: 修正「您無法從這裡取得」錯誤-Azure AD
-description: 尋找您為什麼會收到「無法從這裡取得」錯誤訊息的潛在修正。
+title: 修復了"無法從這裡到達那裡"錯誤 - Azure AD
+description: 查找潛在的解決方法，瞭解您收到"無法從這裡到達那裡"錯誤訊息的原因。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,13 +14,13 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190034"
 ---
-# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能的修正程式「您無法從這裡取得」錯誤訊息
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"您無法從這裡到達那裡"錯誤訊息的可能修復
 
 存取貴組織的內部 Web 應用程式或服務時收到錯誤訊息，指出：**您無法從這裡完成**。 此訊息表示貴組織已讓原則就位，防止您的裝置存取貴組織的資源。 雖然最終您可能還是需要連絡技術服務人員來修正此問題，但是以下是您可以先嘗試的一些動作。
 
@@ -34,13 +34,13 @@ ms.locfileid: "77190034"
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>請確定您使用支援的作業系統
 請確定您執行支援版本的作業系統，包括：
 
-- **Windows 用戶端。** Windows 7 或更新版本。
+- **視窗用戶端。** Windows 7 或更新版本。
 
-- **Windows Server。** Windows Server 2008 R2 或更新版本。
+- **視窗伺服器。** Windows Server 2008 R2 或更新版本。
 
-- **macOS。** macOS X 或更新版本
+- **macOS.** macOS X 或更新版本
 
-- **Android 和 iOS。** 最新版本的 Android 和 iOS 行動裝置作業系統
+- **安卓和 iOS。** 最新版本的 Android 和 iOS 行動裝置作業系統
 
 若要修正此問題，您必須安裝並執行支援的作業系統。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77190034"
 
 4. 使用您的公司或學校帳戶來解除鎖定裝置，然後再次嘗試存取有問題的應用程式或服務。
 
-    如果您還是看到**您無法從這裡完成**錯誤訊息，請選取 [更多詳細資料] 連結，然後連絡技術服務人員以取得詳細資料。
+    如果您還是看到**您無法從這裡完成**錯誤訊息，請選取 [更多詳細資料]**** 連結，然後連絡技術服務人員以取得詳細資料。
 
 ### <a name="to-join-your-device-to-your-network"></a>若要將裝置加入您的網路
 如果您的裝置未加入貴組織的網路，可以執行下列其中一項操作：

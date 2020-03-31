@@ -1,19 +1,18 @@
 ---
-title: 虛擬機器供應專案的定價 |Azure Marketplace
+title: 虛擬機器產品/服務定價 |Azure 應用商店
 description: 說明指定虛擬機器供應項目定價的三種方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280434"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虛擬機器供應項目定價
 ==================================
@@ -24,7 +23,7 @@ ms.locfileid: "73827328"
 <a name="customized-core-pricing"></a>自訂核心定價
 -----------------------
 
-定價專屬於各個地區和核心組合。 必須在定義的 **virtualMachinePricing**/**regionPrices** 區段中指定銷售清單中的每個區域。  在您的要求中為每個[區域](#regions)使用正確的貨幣代碼。  下列範例示範這些需求：
+定價專屬於各個地區和核心組合。 銷售清單中的每個區域都必須在定義的**虛擬機器定價**/**區域價格**部分中指定。  在您的要求中為每個[區域](#regions)使用正確的貨幣代碼。  下列範例示範這些需求：
 
 ``` json
     "virtualMachinePricing": 
@@ -101,10 +100,10 @@ ms.locfileid: "73827328"
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>7/2/2019 新增的核心大小
+<a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日新增的核心尺寸
 ---------------------------
 
-針對新的 Azure 虛擬機器大小（根據核心數目），在2019年7月2日新增新價格的 VM 發行者已收到通知。  新的價格是針對核心大小10、44、48、60、120、208和416。  針對現有的 VM，會根據目前的價格自動計算這些核心大小的新價格。  發行者必須等到2019年8月1日，才能查看額外的價格，並進行任何想要的變更。  在此日期之後（如果發行者尚未重新發行），這些新核心大小自動計算的價格將會生效。
+VM 發佈商于 2019 年 7 月 2 日收到新 Azure 虛擬機器大小（基於內核數）新價格的通知。  新價格適用于核心尺寸 10、44、48、60、120、208 和 416。  對於現有 VM，這些內核的大小可根據當前價格自動計算新的價格。  出版商必須到 2019 年 8 月 1 日才能查看附加價格並進行任何所需的更改。  在此日期之後，如果發行者尚未重新發佈，則這些新內核大小的自動計算價格將生效。
 
 
 <a name="regions"></a>區域
@@ -112,7 +111,7 @@ ms.locfileid: "73827328"
 
 下表顯示您可以為自訂核心定價指定的不同區域，以及其相對應的貨幣代碼。
 
-| **區域** | **名稱**             | **貨幣代碼** |
+| **地區** | **名稱**             | **貨幣代碼** |
 |------------|----------------------|-------------------|
 | DZ         | 阿爾及利亞              | DZD               |
 | AR         | 阿根廷            | ARS 披索               |
@@ -123,7 +122,7 @@ ms.locfileid: "73827328"
 | BE         | 比利時              | 歐元               |
 | BR         | 巴西               | 美元               |
 | BG         | 保加利亞             | BGN               |
-| CA         | 加拿大               | 加拿大幣               |
+| CA         | Canada               | 加拿大幣               |
 | CL         | 智利                | CLP               |
 | CO         | 哥倫比亞             | COP               |
 | CR         | 哥斯大黎加           | CRC               |
@@ -198,7 +197,7 @@ ms.locfileid: "73827328"
 | TR         | 土耳其               | 土耳其里拉               |
 | UA         | 烏克蘭              | UAH               |
 | AE         | 阿拉伯聯合大公國 | 歐元               |
-| GB         | 英國       | 英鎊               |
+| GB         | United Kingdom       | 英鎊               |
 | US         | 美國        | 美元               |
 | UY         | 烏拉圭              | UYU               |
 | VE         | 委內瑞拉            | 美元               |

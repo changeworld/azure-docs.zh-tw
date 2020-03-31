@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用共用磁片在 WSFC 上叢集 SAP ASCS/SCS 實例 |Microsoft Docs
+title: 使用 Azure 中的共用磁片在 WSFC 上群集 SAP ASCS/SCS 實例 |微軟文檔
 description: 了解如何使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598471"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -194,7 +194,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 ## <a name="prerequisites"></a>Prerequisites
 開始本文中的工作之前，請檢閱下列文章：
 
-* [Azure 虛擬機器 SAP NetWeaver 的高可用性架構和案例][sap-high-availability-architecture-scenarios]
+* [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
 
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure 中的 Windows Server 容錯移轉叢集
@@ -205,7 +205,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 Azure 雲端平台不提供設定虛擬 IP 位址的選項，例如浮動 IP 位址。 您需要一個替代解決方案來設定虛擬 IP，以便連線到雲端的叢集資源。 
 
-Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」。 使用內部負載平衡器，用戶端可透過叢集虛擬 IP 位址連線叢集。 
+Azure Load Balancer 服務可為 Azure 提供「內部負載平衡器」**。 使用內部負載平衡器，用戶端可透過叢集虛擬 IP 位址連線叢集。 
 
 在包含叢集節點的資源群組中部署內部負載平衡器。 接著，使用內部負載平衡器的探查連接埠來設定所有必要的連接埠轉送規則。 用戶端可以透過虛擬主機名稱進行連線。 DNS 伺服器會解析叢集 IP 位址，而內部負載平衡器則會處理對作用中叢集節點的轉送。
 
@@ -219,7 +219,7 @@ _**圖 1**：Azure 中不含共用磁碟的 Windows Server 容錯移轉叢集設
 SAP ASCS/SCS 執行個體包含下列元件：
 
 * SAP 中央服務：
-    * 兩個處理常式、訊息和排入佇列的伺服器，以及 \<的 ASCS/SCS 虛擬主機名稱 >，用來存取這兩個進程。
+    * 兩個進程，一個消息和排隊伺服器，以及\<一個 ASCS/SCS 虛擬主機名稱>，用於訪問這兩個進程。
     * 檔案結構：S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<執行個體號碼\>
 
 
@@ -227,22 +227,22 @@ SAP ASCS/SCS 執行個體包含下列元件：
   * 檔案結構：S:\usr\sap\\&lt;SID&gt;\SYS\..
   * sapmnt 檔案共用，可利用下列 UNC 路徑，供存取這些全域 S:\usr\sap\\&lt;SID&gt;\SYS\... 檔案：
 
-    \\\\< ASCS/SCS 虛擬主機名稱\>\sapmnt\\&lt;SID&gt;\SYS\..。
+    \\\\<ASCS/SCS 虛擬\>主機名稱 \sapmnt\\&lt;SID&gt;_SYS\...
 
 
 ![圖 2：SAP ASCS/SCS 執行個體的處理序、檔案結構和全域主機 sapmnt 檔案共用][sap-ha-guide-figure-8001]
 
-_**圖 2：** SAP ASCS/SCS 執行個體的處理序、檔案結構和全域主機 sapmnt 檔案共用_
+_**圖 2：** SAP ASCS/SCS 實例的進程、檔結構和全域主機檔共用_
 
 在高可用性設定中，您要將 SAP ASCS/SCS 執行個體進行叢集處理。 我們會使用*叢集共用磁碟* (在我們的範例為 S 磁碟機) 來放置 SAP ASCS/SCS 和 SAP 全域主機檔案。
 
 ![圖 3：含共用磁碟的 SAP ASCS/SCS HA 架構][sap-ha-guide-figure-8002]
 
-_**圖 3：** 含共用磁碟的 SAP ASCS/SCS HA 架構_
+_**圖 3：** 帶共用磁片的 SAP ASCS/SCS HA 架構_
 
 > [!IMPORTANT]
 > 這兩個元件會在相同的 SAP ASCS/SCS 執行個體底下執行：
->* 相同的 \<ASCS/SCS 虛擬主機名稱 > 是用來存取 SAP 訊息和排入佇列伺服器進程，以及透過 sapmnt 檔案共用的 SAP 全域主機檔案。
+>* 相同的\<ASCS/SCS 虛擬主機名稱>用於訪問 SAP 消息和排隊伺服器進程，以及通過 sapmnt 檔共用對 SAP 全域主機檔進行排隊。
 >* 會在兩者間共用相同的叢集共用磁碟 S 磁碟機。
 >
 
@@ -275,6 +275,6 @@ _**圖 5：** Azure 中含 SIOS DataKeeper 的 Windows 容錯移轉叢集組態_
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 SAP ASCS/SCS 實例的 Windows 容錯移轉叢集和共用磁片，為 SAP HA 準備 Azure 基礎結構][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [使用 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [在 SAP ASCS/SCS 實例的 Windows 容錯移轉叢集和共用磁片上安裝 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
+* [在 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟上安裝 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]

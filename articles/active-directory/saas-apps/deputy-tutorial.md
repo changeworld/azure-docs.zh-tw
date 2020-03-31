@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227594"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教學課程：Azure Active Directory 與 Deputy 整合
 
@@ -35,7 +35,7 @@ Deputy 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如要設定 Azure AD 與 Deputy 的整合，您需要下列項目：
 
@@ -174,7 +174,7 @@ Deputy 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-deputy-single-sign-on"></a>設定 Deputy 單一登入
 
-1. 瀏覽至下列 URL：[https://(your-subdomain).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config)。 移至 [安全性設定]  ，然後按一下 [編輯]  。
+1. 瀏覽到下列 URL：`https://(your-subdomain).deputy.com/exec/config/system_config`。 移至 [安全性設定]  ，然後按一下 [編輯]  。
    
     ![設定單一登入](./media/deputy-tutorial/tutorial_deputy_004.png)
 

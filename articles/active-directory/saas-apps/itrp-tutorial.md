@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67656685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教學課程：Azure Active Directory 與 ITRP 整合
@@ -35,7 +35,7 @@ ms.locfileid: "67656685"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 ITRP 的整合，您需要具備：
 
@@ -143,13 +143,13 @@ ms.locfileid: "67656685"
 
 1. 在左側窗格中，選取 [單一登入]  ：
 
-    ![選取單一登入](./media/itrp-tutorial/ic775571.png "選取單一登入")
+    ![選取 [單一登入]](./media/itrp-tutorial/ic775571.png "選取 [單一登入]")
 
 1. 在 [單一登入]  設定區段中，採取下列步驟。
 
-    ![單一登入區段](./media/itrp-tutorial/ic775572.png "單一登入區段")
+    ![[單一登入] 區段](./media/itrp-tutorial/ic775572.png "[單一登入] 區段")
 
-    ![單一登入區段](./media/itrp-tutorial/ic775573.png "單一登入區段")
+    ![[單一登入] 區段](./media/itrp-tutorial/ic775573.png "[單一登入] 區段")
 
     1. 選取 [啟用]  。
 
@@ -159,7 +159,7 @@ ms.locfileid: "67656685"
 
     1. 在 [憑證指紋]  方塊中，貼上您從 Azure 入口網站複製的憑證 [指紋]  值。
 
-    1. 選取 [ **儲存**]。
+    1. 選取 [儲存]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -221,11 +221,11 @@ ms.locfileid: "67656685"
 
 1. 在視窗頂端，選取 [記錄]  圖示：
 
-    ![記錄圖示](./media/itrp-tutorial/ic775575.png "記錄圖示")
+    ![[記錄] 圖示](./media/itrp-tutorial/ic775575.png "[記錄] 圖示")
 
 1. 在功能表中，選取 [人員]  ：
 
-    ![選取人員](./media/itrp-tutorial/ic775587.png "選取人員")
+    ![選取 [人員]](./media/itrp-tutorial/ic775587.png "選取 [人員]")
 
 1. 選取加號 ( **+** ) 以新增人員：
 
@@ -233,11 +233,11 @@ ms.locfileid: "67656685"
 
 1. 在 [新增人員]  對話方塊中，採取下列步驟。
 
-    ![新增人員對話方塊](./media/itrp-tutorial/ic775577.png "新增人員對話方塊")
+    ![[新增人員] 對話方塊](./media/itrp-tutorial/ic775577.png "[新增人員] 對話方塊")
 
     1. 針對所要新增的有效 Azure AD 帳戶，輸入其名稱和電子郵件地址。
 
-    1. 選取 [ **儲存**]。
+    1. 選取 [儲存]  。
 
 > [!NOTE]
 > 您可以使用任何使用者帳戶建立工具或 ITRP 提供的 API 來佈建 Azure AD 使用者帳戶。

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d603dbf2746608f499ba37b4f17b533b64bc941
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034444"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154350"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中的 Linux 虛擬機器上安裝 LEMP 網頁伺服器
 
@@ -170,10 +170,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * 驗證安裝和設定
 > * 在 LEMP 堆疊上安裝 WordPress
 
-前進到下一個教學課程，以了解如何使用 SSL 憑證保護 Web 伺服器。
+前進到下一個教學課程，以了解如何使用 TLS/SSL 憑證保護 Web 伺服器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保護網路伺服器](tutorial-secure-web-server.md)
+> [使用 TLS 保護 Web 伺服器](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

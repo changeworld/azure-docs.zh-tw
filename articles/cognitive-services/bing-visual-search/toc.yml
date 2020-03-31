@@ -41,6 +41,10 @@
       href: tutorial-visual-search-image-upload.md
     - name: 裁剪並搜尋影像的某個區域
       href: tutorial-visual-search-crop-area-results.md
+    - name: 尋找先前搜尋中的類似影像
+      href: tutorial-visual-search-insights-token.md
+    - name: 建立單頁 Web 應用程式
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: 範例
   items:
     - name: 程式碼範例
@@ -63,10 +67,6 @@
     - name: 調整大小和裁剪縮圖
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: 使用影像深入解析權杖搜尋影像
-      href: tutorial-visual-search-insights-token.md
-    - name: 建立單頁 Web 應用程式
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: 參考
   items:
     - name: REST v7 API

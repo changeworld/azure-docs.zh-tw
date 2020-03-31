@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967697"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SignalFx 整合
 
@@ -30,7 +30,7 @@ ms.locfileid: "78967697"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SignalFx；以及
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -57,7 +57,7 @@ ms.locfileid: "78967697"
 1. 選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入並選取 [SignalFx]  。
-    * 您可能需要等候幾分鐘，應用程式才會新增至您的租用戶。
+     * 您可能需要等候幾分鐘，應用程式才會新增至您的租用戶。
 1. 保持 Azure 入口網站為開啟，然後開啟新的網頁索引標籤。    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>步驟 2:開始 SignalFx SSO 組態
@@ -175,7 +175,7 @@ ms.locfileid: "78967697"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

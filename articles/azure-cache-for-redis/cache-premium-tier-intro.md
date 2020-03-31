@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74121663"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis 進階層簡介
@@ -19,14 +19,14 @@ Azure Cache for Redis 是一種分散式受控快取，可提供超快速的資�
 新的高階層是可供企業立即使用的層，其中包括所有標準層功能及其他優點，例如更佳的效能、更大的工作負載、災害復原、匯入/匯出和增強的安全性。 請繼續閱讀，以深入了解高階快取層的其他功能。
 
 ## <a name="better-performance-compared-to-standard-or-basic-tier"></a>效能優於標準或基本層。
-**效能優於標準或基本層。** 高階層中的快取是部署在擁有較快處理器的硬體上，因此效能優於基本或標準層。 高階層快取的輸送量較高，延遲較低。 
+**效能優於標準或基本層。**  高階層中的快取是部署在擁有較快處理器的硬體上，因此效能優於基本或標準層。 高階層快取的輸送量較高，延遲性較低。 
 
-**相較於標準層，高階層中相同大小的快取，其輸送量較高。** 例如：53 GB P4 (高階層) 快取的輸送量是每秒 250K 個要求，相較之下，C6 (標準層) 則只有 150K 個。
+**相較於標準層，高階層中相同大小的快取，其輸送量較高。**  例如：53 GB P4 (高階層) 快取的輸送量是每秒 250K 個要求，相較之下，C6 (標準層) 則只有 150K 個。
 
 如需進階快取的大小、輸送量和頻寬的詳細資訊，請參閱 [Azure Cache for Redis 常見問題集](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="redis-data-persistence"></a>Redis 資料永續性
-高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在基本/標準快取中，所有資料都只儲存在記憶體中。 如果基礎結構發生問題，資料可能會遺失。 建議您使用高階層中的 Redis 資料永續性功能，以提高資料遺失時的復原能力。 Azure Cache for Redis 在 [Redis 持續性](https://redis.io/topics/persistence)中提供 RDB 和 AOF (即將推出) 選項。 
+高階層可讓您將快取資料保存在 Azure 儲存體帳戶中。 在基本/標準快取中，所有資料都只儲存在記憶體中。 如果基礎結構發生問題，資料可能會遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 Azure Cache for Redis 在 [Redis 持續性](https://redis.io/topics/persistence)中提供 RDB 和 AOF (即將推出) 選項。 
 
 如需設定持續性的相關指示，請參閱 [如何設定進階 Azure Cache for Redis 的持續性](cache-how-to-premium-persistence.md)。
 
@@ -55,9 +55,9 @@ Azure Cache for Redis 是一種分散式受控快取，可提供超快速的資�
 進階層可讓您依需求重新啟動快取的一或多個節點。 這可讓您測試應用程式，以便在發生失敗時加以復原。 您可以重新啟動下列節點。
 
 * 快取的主要節點
-* 快取的次要節點
-* 快取的主要和次要節點
-* 搭配使用高階快取與叢集時，您可以在快取中重新開機個別分區的主要、次要或兩個節點
+* 緩存的輔助節點
+* 緩存的主節點和輔助節點
+* 將高級緩存與群集一起使用時，可以重新開機緩存中各個分片的主節點、輔助節點或兩個節點
 
 如需詳細資訊，請參閱[重新啟動](cache-administration.md#reboot)和[重新啟動常見問題集](cache-administration.md#reboot-faq)。
 
@@ -66,7 +66,7 @@ Azure Cache for Redis 是一種分散式受控快取，可提供超快速的資�
 >
 >
 
-## <a name="schedule-updates"></a>排程更新
+## <a name="schedule-updates"></a>更新排程
 排程更新功能可讓您指定適用於快取的維護期間。 若指定了維護期間，即會在此期間進行任何 Redis 伺服器更新。 若要指定維護期間，請選取所需的天數，並指定每一天的維護期間開始小時。 請注意，維護期間時間是 UTC。 
 
 如需詳細資訊，請參閱[排程更新](cache-administration.md#schedule-updates)和[排程更新常見問題集](cache-administration.md#schedule-updates-faq)。
@@ -84,7 +84,7 @@ Azure Cache for Redis 是一種分散式受控快取，可提供超快速的資�
 
 
 ## <a name="to-scale-to-the-premium-tier"></a>調整為進階層
-若要調整為進階層，只需選擇 [變更定價層] 刀鋒視窗中的其中一個進階層。 您也可以使用 PowerShell 和 CLI 來將快取調整為進階層。 如需逐步指示，請參閱[如何調整 Azure Cache for Redis](cache-how-to-scale.md) 和[如何將調整作業自動化](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
+若要調整為進階層，只需選擇 [變更定價層] **** 刀鋒視窗中的其中一個進階層。 您也可以使用 PowerShell 和 CLI 來將快取調整為進階層。 如需逐步指示，請參閱[如何調整 Azure Cache for Redis](cache-how-to-scale.md) 和[如何將調整作業自動化](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
 
 ## <a name="next-steps"></a>後續步驟
 建立快取並探索高階層的新功能。

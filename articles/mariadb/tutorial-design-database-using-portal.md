@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776703"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80063797"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MariaDB 的 Azure 資料庫」資料庫
 
@@ -42,14 +42,14 @@ ms.locfileid: "74776703"
 1. 選取入口網站左上角的 [建立資源]  按鈕 (+)。
 
 2. 選取 [資料庫]   > [適用於 MariaDB 的 Azure 資料庫]  。 您也可以在搜尋方塊中輸入 **MariaDB** 以尋找此服務。
-   
+
    ![移至 MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. 選取 [適用於 MariaDB 的 Azure 資料庫]  圖格，然後選取 [建立]  。 輸入或選取必要的資訊。
-   
+3. 選取 [適用於 MariaDB 的 Azure 資料庫]  圖格。 輸入或選取必要的資訊。
+
    ![建立表單](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-    設定 | 建議的值 | 欄位描述 
+    設定 | 建議的值 | 欄位描述
     ---|---|---
     伺服器名稱 | 唯一的伺服器名稱  | 選擇可識別適用於 MariaDB 的 Azure 資料庫伺服器的唯一名稱。 例如，**mydemoserver**。 網域名稱 *.mariadb.database.azure.com* 會附加至您輸入的伺服器名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含 3 到 63 個字元。
     訂用帳戶 | *您的訂用帳戶* | 選取您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
@@ -58,7 +58,7 @@ ms.locfileid: "74776703"
     伺服器管理員登入 | myadmin  | 連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
     密碼 | 您的選擇  | 為伺服器管理帳戶輸入新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
     確認密碼 | 您的選擇 | 確認管理帳戶密碼。
-    位置 | 最接近使用者的區域 | 選取最靠近使用者或其他 Azure 應用程式的位置。
+    Location | 最接近使用者的區域 | 選取最靠近使用者或其他 Azure 應用程式的位置。
     版本 | 最新版本 | 最新版本 (除非您有使用不同版本的特定需求)。
     定價層 | 請參閱說明。 | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]   > [一般用途]  。 保留下列設定的預設值：<br><ul><li>**計算產生** (Gen 5)</li><li>**vCore** (4 個 vCore)</li><li>**儲存體** (100 GB)</li><li>**備份保留期限** (7 天)</li></ul><br>若要啟用異地備援儲存體中的伺服器備份，請為 [備份備援選項]  選取 [異地備援]  。 <br><br>若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
     
@@ -67,14 +67,14 @@ ms.locfileid: "74776703"
    > [!TIP]
    > 啟用**自動成長**後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
 
-4. 選取 [建立]  。 在一兩分鐘內，新的「適用於 MariaDB 的 Azure 資料庫」伺服器就會在雲端執行。 若要監視部署程序，請在工具列上選取 [通知]  。
+4. 按一下 [檢閱 + 建立]  。 您可以按一下工具列上的 [通知]  按鈕來監視部署程序。 部署最多需要 20 分鐘的時間。
 
 ## <a name="configure-the-firewall"></a>設定防火牆
 
 「適用於 MariaDB 的 Azure 資料庫」會受到防火牆保護。 依預設，伺服器與其內部資料庫的所有連線皆會遭拒。 第一次連線到適用於 MariaDB 的 Azure 資料庫之前，請設定防火牆來新增用戶端電腦的公用網路 IP 位址 (或 IP 位址範圍)。
 
 1. 選取您新建立的伺服器，然後選取 [連線安全性]  。
-   
+
    ![連接安全性](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. 您可以在這裡選取 [新增我的 IP]  ，或設定防火牆規則。 請記得在建立規則後選取 [儲存]  。
 
@@ -85,7 +85,7 @@ ms.locfileid: "74776703"
 
 ## <a name="get-connection-information"></a>取得連線資訊
 
-請從 Azure 入口網站取得「適用於 MariaDB 的 Azure 資料庫」伺服器的 [伺服器名稱]  (完整) 和 [伺服器管理員登入名稱]  值。 您將使用 mysql 命令列工具搭配此完整伺服器名稱來連線到伺服器。 
+請從 Azure 入口網站取得「適用於 MariaDB 的 Azure 資料庫」伺服器的 [伺服器名稱]  (完整) 和 [伺服器管理員登入名稱]  值。 您將使用 mysql 命令列工具搭配此完整伺服器名稱來連線到伺服器。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的左側功能表中，選取 [所有資源]  。 輸入伺服器名稱，並搜尋適用於 MariaDB 的 Azure 資料庫伺服器。 選取伺服器名稱以檢視伺服器詳細資料。
 
@@ -97,11 +97,11 @@ ms.locfileid: "74776703"
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>使用 mysql 來連線到伺服器
 
-使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)來建立對「適用於 MariaDB 的 Azure 資料庫」伺服器的連線。 您可以從 Azure Cloud Shell 在瀏覽器中，或從電腦使用本機安裝的 mysql 工具執行 mysql 命令列工具。 若要開啟 Azure Cloud Shell，請選取本文中程式碼區塊上的 [試用]  按鈕，或造訪 Azure 入口網站並按一下右上方工具列中的 **>_** 圖示。 
+使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)來建立對「適用於 MariaDB 的 Azure 資料庫」伺服器的連線。 您可以從 Azure Cloud Shell 在瀏覽器中，或從電腦使用本機安裝的 mysql 工具執行 mysql 命令列工具。 若要開啟 Azure Cloud Shell，請選取本文中程式碼區塊上的 [試用]  按鈕，或造訪 Azure 入口網站並按一下右上方工具列中的 **>_** 圖示。
 
 輸入下列命令以進行連線：
 
-```azurecli-interactive
+```bash
 mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 ```
 
@@ -171,7 +171,7 @@ SELECT * FROM inventory;
    ![還原資料庫](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. 在 [還原]  頁面上，輸入或選取下列資訊：
-   
+
    ![還原表單](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **還原點**：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。

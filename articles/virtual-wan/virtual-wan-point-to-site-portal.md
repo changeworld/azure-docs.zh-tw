@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/18/2020
 ms.author: alzam
-ms.openlocfilehash: 02c8bf24d4ddb6408160da7a4c517d6c8c82de5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450907"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060302"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
@@ -29,7 +29,6 @@ ms.locfileid: "75450907"
 > * 將 VNet 連線至中樞
 > * 下載並套用 VPN 用戶端設定
 > * 檢視您的虛擬 WAN
-> * 檢視資源健康情況
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -45,7 +44,7 @@ ms.locfileid: "75450907"
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="wan"></a>建立虛擬 WAN
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>建立虛擬 WAN
 
 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
@@ -63,7 +62,7 @@ ms.locfileid: "75450907"
 4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
 5. 驗證通過後，選取 [建立]  ，以建立虛擬 WAN。
 
-## <a name="site"></a>建立空的虛擬中樞
+## <a name="create-an-empty-virtual-hub"></a><a name="hub"></a>建立空的虛擬中樞
 
 1. 在您的虛擬 WAN 底下選取 [中樞]，然後按一下 [+新增中樞] 
 
@@ -80,7 +79,7 @@ ms.locfileid: "75450907"
 3. 按一下 [檢閱 + 建立] 
 4. 在 [驗證成功]  頁面上，按一下 [建立] 
 
-## <a name="site"></a>建立 P2S 設定
+## <a name="create-a-p2s-configuration"></a><a name="p2sconfig"></a>建立 P2S 設定
 
 P2S 設定會定義用於連線遠端用戶端的參數。
 
@@ -99,10 +98,9 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
    **公用憑證資料** - Base-64 編碼的 X.509 憑證資料。
   
-   ![新網站](media/virtual-wan-point-to-site-portal/p2s2.jpg)
 5. 按一下 [建立]  來建立設定。
 
-## <a name="hub"></a>編輯中樞指派
+## <a name="edit-hub-assignment"></a><a name="edit"></a>編輯中樞指派
 
 1. 瀏覽至虛擬 WAN 底下的 [中樞]  刀鋒視窗
 2. 選取要與 VPN 伺服器設定產生關聯的中樞，然後按一下 [...]  。
@@ -116,7 +114,7 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 6. 按一下 [確認] 
 7. 此作業最多可能需要 30 分鐘的時間才能完成。
 
-## <a name="device"></a>下載 VPN 設定檔
+## <a name="download-vpn-profile"></a><a name="download"></a>下載 VPN 設定檔
 
 使用 VPN 設定檔來設定用戶端。
 
@@ -134,8 +132,8 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 1. 從官方網站下載並安裝 OpenVPN 用戶端。
 2. 下載閘道的 VPN 設定檔。 這可從 Azure 入口網站中的 [使用者 VPN 設定] 索引標籤，或是 PowerShell 中的 New-AzureRmVpnClientConfiguration 來完成。
 3. 將設定檔解壓縮。 在記事本中開啟 OpenVPN 資料夾中的 vpnconfig.ovpn 設定檔。
-4. 以 Base64 的 P2S 用戶端憑證公開金鑰填入 P2S 用戶端憑證區段。 在 PEM 格式的憑證中，您只需開啟 .cer 檔案並在憑證標題之間複製 Base64 金鑰。 在這裡查看[如何匯出憑證來取得編碼的公開金鑰](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)。
-5. 以 Base64 的 P2S 用戶端憑證私密金鑰填入私密金鑰區段。 在這裡查看[如何擷取私密金鑰](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients#windows)。
+4. 以 Base64 的 P2S 用戶端憑證公開金鑰填入 P2S 用戶端憑證區段。 在 PEM 格式的憑證中，您只需開啟 .cer 檔案並在憑證標題之間複製 Base64 金鑰。 如需相關步驟，請參閱[如何匯出憑證來取得編碼的公開金鑰](certificates-point-to-site.md)。
+5. 以 Base64 的 P2S 用戶端憑證私密金鑰填入私密金鑰區段。 如需相關步驟，請參閱[如何擷取私密金鑰](howto-openvpn-clients.md#windows)。
 6. 請勿變更任何其他欄位。 使用用戶端輸入中填入的設定來連線至 VPN。
 7. 將 vpnconfig.ovpn 檔案複製到 C:\Program Files\OpenVPN\config 資料夾。
 8. 以滑鼠右鍵按一下系統匣中的 OpenVPN 圖示，然後按一下 [連線]。
@@ -145,21 +143,16 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 1. 選取 Windows 電腦架構所對應的 VPN 用戶端組態檔。 若是 64 位元的處理器架構，請選擇 'VpnClientSetupAmd64' 安裝程式套件。 若是 32 位元的處理器架構，請選擇 'VpnClientSetupX86' 安裝程式套件。
 2. 對套件按兩下來加以安裝。 如果您看到 SmartScreen 快顯視窗，請按一下 [更多資訊]，然後按一下 [仍要執行]。
 3. 在用戶端電腦上，瀏覽至 [網路設定]，然後按一下 [VPN]。 VPN 連線會顯示其連線的虛擬網路名稱。
-4. 嘗試連線之前，請確認您已在用戶端電腦上安裝用戶端憑證。 使用原生 Azure 憑證驗證類型時，必須提供用戶端憑證才能通過驗證。 如需有關產生憑證的詳細資訊，請參閱[產生憑證](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)。 如需有關如何安裝用戶端憑證的資訊，請參閱安裝用戶端憑證。
+4. 嘗試連線之前，請確認您已在用戶端電腦上安裝用戶端憑證。 使用原生 Azure 憑證驗證類型時，必須提供用戶端憑證才能通過驗證。 如需有關產生憑證的詳細資訊，請參閱[產生憑證](certificates-point-to-site.md)。 如需有關如何安裝用戶端憑證的資訊，請參閱[安裝用戶端憑證](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-## <a name="viewwan"></a>檢視您的虛擬 WAN
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>檢視您的虛擬 WAN
 
 1. 瀏覽至虛擬 WAN。
-2. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。 暫留在任一點上，即可檢視中樞健康情況摘要。
+2. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。
 3. 在 [中樞與連線] 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
 
-## <a name="viewhealth"></a>檢視資源健康狀態
 
-1. 瀏覽至您的 WAN。
-2. 在 WAN 頁面上的 [支援 + 疑難排解]  區段中，按一下 [健康情況]  並檢視您的資源。
-
-
-## <a name="cleanup"></a>清除資源
+## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 
 您可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
 

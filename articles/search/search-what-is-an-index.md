@@ -1,7 +1,7 @@
 ---
-title: 建立索引定義和概念
+title: 創建索引定義和概念
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜尋中的索引詞彙和概念簡介，包括元件部分和實體結構。
+description: Azure 認知搜索中的索引術語和概念簡介，包括元件部分和物理結構。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282779"
 ---
-# <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立基本索引
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 認知搜索中創建基本索引
 
-在「Azure 認知搜尋」中，「*索引*」是一種持續性的*檔*和其他結構的存放區，用於 Azure 認知搜尋服務上的篩選和全文檢索搜尋。 就概念而言，文件是索引中可搜尋資料的單一單位。 例如，電子商務零售商可能會有儲存了每個銷售項目的文件、新聞組織可能會有儲存了每篇文章的文件，類似情況不一而足。 對應這些概念到更熟悉的資料庫同等項目：索引在概念上類似於資料表，而文件大致上相當於資料表中的資料列。
+在 Azure 認知搜索中，*索引*是*文檔和其他構造*的持久存儲，用於在 Azure 認知搜索服務上進行篩選和全文檢索搜尋。 就概念而言，文件是索引中可搜尋資料的單一單位。 例如，電子商務零售商可能會有儲存了每個銷售項目的文件、新聞組織可能會有儲存了每篇文章的文件，類似情況不一而足。 對應這些概念到更熟悉的資料庫同等項目：索引** 在概念上類似於資料表**，而文件** 大致上相當於資料表中的資料列**。
 
-當您新增或上傳索引時，Azure 認知搜尋會根據您提供的架構來建立實體結構。 例如，如果您索引中的某個欄位被標記為可搜尋，系統便會針對該欄位建立反向的索引。 之後，當您新增或上傳檔，或提交搜尋查詢到 Azure 認知搜尋時，您會將要求傳送到搜尋服務中的特定索引。 載入具有文件值的欄位，被稱為「編製索引」或資料擷取。
+添加或上載索引時，Azure 認知搜索會根據提供的架構創建物理結構。 例如，如果您索引中的某個欄位被標記為可搜尋，系統便會針對該欄位建立反向的索引。 稍後，當您添加或上載文檔或向 Azure 認知搜索提交搜索查詢時，您將向搜索服務中的特定索引發送請求。 載入具有文件值的欄位，被稱為「編製索引」** 或資料擷取。
 
 您可以在入口網站、[REST API](search-create-index-rest-api.md) 或 [.NET SDK](search-create-index-dotnet.md)中建立索引。
 
@@ -29,31 +29,31 @@ ms.locfileid: "79282779"
 
 1. 判斷您是否可以使用[索引子](search-indexer-overview.md#supported-data-sources)。 如果您的外部資料是其中一個支援的資料來源，您可以使用[**匯入資料**](search-import-data-portal.md)精靈來建立原型並載入索引。
 
-2. 如果您無法使用 [匯入資料]，仍然可以[在入口網站中建立初始索引](search-create-index-portal.md)，以及使用 [新增索引] 頁面上的控制項來新增欄位、資料類型和指派屬性。 入口網站會顯示不同的資料類型適用哪些屬性。 如果您還不熟悉索引設計，這很有幫助。
+2. 如果您無法使用 [匯入資料]****，仍然可以[在入口網站中建立初始索引](search-create-index-portal.md)，以及使用 [新增索引]**** 頁面上的控制項來新增欄位、資料類型和指派屬性。 入口網站會顯示不同的資料類型適用哪些屬性。 如果您還不熟悉索引設計，這很有幫助。
 
-   ![依資料類型顯示內容的新增索引頁面](media/search-create-index-portal/field-attributes.png "依資料類型顯示內容的新增索引頁面")
+   ![按資料類型添加顯示內容的索引頁](media/search-create-index-portal/field-attributes.png "按資料類型添加顯示內容的索引頁")
   
-   當您按一下 [建立] 時，所有支援您索引的實體結構都會建立於您的搜尋服務中。
+   當您按一下 [建立]**** 時，所有支援您索引的實體結構都會建立於您的搜尋服務中。
 
 3. 使用[取得索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-get-started-postman.md) 之類的 Web 測試工具，下載索引結構描述。 對於您在入口網站中建立的索引，您現在有其 JSON 表示法。 
 
-   您會在此時切換到程式碼式方法。 入口網站不適合用于反復專案，因為您無法編輯已建立的索引。 但您可以使用 Postman 和 REST 進行剩餘的工作。
+   您會在此時切換到程式碼式方法。 門戶不適合反覆運算，因為無法編輯已創建的索引。 但您可以使用 Postman 和 REST 進行剩餘的工作。
 
-4. [隨著資料載入您的索引](search-what-is-data-import.md)。 Azure 認知搜尋會接受 JSON 檔。 若要以程式設計方式載入資料，您可以使用 Postman 搭配要求承載中的 JSON 文件。 如果您的資料不會輕易地表示為 JSON，此步驟將最耗費人力。
+4. [隨著資料載入您的索引](search-what-is-data-import.md)。 Azure 認知搜索接受 JSON 文檔。 若要以程式設計方式載入資料，您可以使用 Postman 搭配要求承載中的 JSON 文件。 如果您的資料不會輕易地表示為 JSON，此步驟將最耗費人力。
 
 5. 在您開始查看您所預期的結果之前，查詢索引、檢查結果，以及進一步逐一查看索引結構描述。 您可以使用[**搜尋總管**](search-explorer.md)或 Postman 來查詢索引。
 
 6. 繼續使用程式碼來逐一查看您的設計。  
 
-因為實體結構是在服務中建立，所以每當您對現有欄位定義進行材質變更時，都必須卸載和重新建立[索引](search-howto-reindex.md)。 這表示在開發期間，您應該規劃經常重建。 您可以考慮處理部份的資料，讓重建更快速。 
+由於物理結構是在服務中創建的，因此每當對現有欄位定義進行重大更改時，都有必要[刪除和重新創建索引](search-howto-reindex.md)。 這表示在開發期間，您應該規劃經常重建。 您可以考慮處理部份的資料，讓重建更快速。 
 
 建議將程式碼 (而非入口網站方法) 用於反覆式設計。 如果您依賴入口網站進行索引定義，則必須在每次重建時填妥索引定義。 另外，當開發專案仍在早期階段時，[Postman 和 REST API](search-get-started-postman.md) 之類的工具對於概念證明測試很有幫助。 您可以對要求主體中的索引定義進行累加變更，然後將要求傳送至您的服務，以使用更新後的結構描述來重建索引。
 
 ## <a name="components-of-an-index"></a>索引的元件
 
-方式，Azure 認知搜尋索引是由下列元素所組成。 
+從原理上講，Azure 認知搜索索引由以下元素組成。 
 
-「[欄位集合 *」* ](#fields-collection)通常是索引中最大的一部分，其中每個欄位都會具有名稱、類型和屬性，以及可決定其使用方式的可允許行為。 其他元素包括[建議工具](#suggesters)、[評分設定檔](#scoring-profiles)、具有元件部分的[分析器](#analyzers)，以支援自訂、 [CORS](#cors)和[加密金鑰](#encryption-key)選項。
+「[欄位集合](#fields-collection)」** 通常是索引中最大的一部分，其中每個欄位都會具有名稱、類型和屬性，以及可決定其使用方式的可允許行為。 其他元素包括[建議器](#suggesters)、[評分設定檔](#scoring-profiles)、具有元件部件的[分析儀](#analyzers)、支援自訂[、CORS](#cors)和[加密金鑰](#encryption-key)選項。
 
 ```json
 {
@@ -148,7 +148,7 @@ ms.locfileid: "79282779"
 | 類型 | 描述 |
 | --- | --- |
 | *Edm.String* |可選擇性予以 Token 化以供進行全文檢索搜尋 (斷字、詞幹分析等) 的文字。 |
-| *Collection(Edm.String)* |可選擇性予以 Token 化以供進行全文檢索搜尋的字串清單。 理論上，集合中的項目數沒有上限，但集合的承載大小有 16 MB 的上限。 |
+| *收藏（Edm.String）* |可選擇性予以 Token 化以供進行全文檢索搜尋的字串清單。 理論上，集合中的項目數沒有上限，但集合的承載大小有 16 MB 的上限。 |
 | *Edm.Boolean* |包含 true/false 值。 |
 | *Edm.Int32* |32 位元整數值。 |
 | *Edm.Int64* |64 位元整數值。 |
@@ -156,15 +156,15 @@ ms.locfileid: "79282779"
 | *Edm.DateTimeOffset* |以 OData V4 格式表示的日期時間值 (例如 `yyyy-MM-ddTHH:mm:ss.fffZ` 或 `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`)。 |
 | *Edm.GeographyPoint* |代表地球上地理位置的一點。 |
 
-您可以在這裡找到更多有關 Azure 認知搜尋[支援之資料類型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)的詳細資訊。
+您可以在此處找到有關 Azure 認知搜索[支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)的更多詳細資訊。
 
 ### <a name="index-attributes"></a>索引屬性
 
-您的索引中只有一個欄位必須是指定為唯一識別每份檔的索引**鍵**欄位。
+索引中的一個欄位必須指定為唯一標識每個文檔**的鍵**欄位。
 
-其他屬性會決定欄位在應用程式中的使用方式。 例如，可搜尋**的屬性會**指派給應該包含在全文檢索搜尋中的每個欄位。 
+其他屬性確定如何在應用程式中使用欄位。 例如，**可搜索**屬性分配給應包含在全文檢索搜尋中的每個欄位。 
 
-您用來建立索引的 Api 有不同的預設行為。 對於[REST api](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，大部分的屬性預設為啟用（例如，字串欄位**的可搜尋和可供**搜尋 **），而且**您通常只需要設定它們（如果您想要將它們關閉）。 針對 .NET SDK，相反的為 true。 在您未明確設定的任何屬性上，除非您特別啟用，否則預設會停用對應的搜尋行為。
+用於生成索引的 API 具有不同的預設行為。 對於[REST API，](https://docs.microsoft.com/rest/api/searchservice/Create-Index)大多數屬性在預設情況下啟用（例如，字串欄位的**可搜索**和**可檢索**屬性為 true），並且通常只需在要關閉它們時才需要設置它們。 對於 .NET SDK，情況正好相反。 在未顯式設置的任何屬性上，預設為禁用相應的搜索行為，除非您特別啟用它。
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -177,21 +177,21 @@ ms.locfileid: "79282779"
 
 ## <a name="index-size"></a>索引大小
 
-索引的大小取決於您上傳的檔案大小，加上索引設定，例如您是否包含建議工具，以及如何在個別欄位上設定屬性。 下列螢幕擷取畫面說明各種屬性組合所產生的索引儲存模式。
+索引的大小由上載的文檔的大小以及索引配置（例如是否包含建議器）以及如何在單個欄位上設置屬性等決定。 下列螢幕擷取畫面說明各種屬性組合所產生的索引儲存模式。
 
-索引是以內建的[房地產範例](search-get-started-portal.md)資料來源為基礎，您可以在入口網站中編制索引和查詢。 雖然未顯示索引結構描述，但您可以根據索引名稱推斷屬性。 例如，*realestate 可搜尋*索引僅只選取 **searchable** 屬性，*realestate 可擷取*索引僅只選取 **retrievable** 屬性。
+索引基於[內置的房地產示例](search-get-started-portal.md)資料來源，您可以在門戶中索引和查詢。 雖然未顯示索引結構描述，但您可以根據索引名稱推斷屬性。 例如，*realestate 可搜尋*索引僅只選取 **searchable** 屬性，*realestate 可擷取*索引僅只選取 **retrievable** 屬性。
 
-![以屬性選取專案為基礎的索引大小](./media/search-what-is-an-index/realestate-index-size.png "以屬性選取專案為基礎的索引大小")
+![基於屬性選擇的索引大小](./media/search-what-is-an-index/realestate-index-size.png "基於屬性選擇的索引大小")
 
 雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定 **retrievable** 是否會增加索引大小？ 否。 將欄位新增至**建議工具**是否會增加索引大小？ 是。
 
-支援篩選和排序的索引會按比例大於僅支援全文檢索搜尋的索引。 篩選和排序作業會掃描是否有完全相符的專案，需要有不完整的檔。 相較之下，支援全文檢索和模糊搜尋的可搜尋欄位會使用倒置索引，其中會填入比完整文件取用較少空間的權杖化字詞。 
+支援篩選器和排序的索引比例大於僅支援全文檢索搜尋的索引。 篩選和排序操作掃描，以進行精確匹配，需要存在完整的文檔。 相較之下，支援全文檢索和模糊搜尋的可搜尋欄位會使用倒置索引，其中會填入比完整文件取用較少空間的權杖化字詞。 
 
 > [!Note]
-> 儲存體架構會被視為 Azure 認知搜尋的執行詳細資料，而且可能會變更，恕不另行通知。 不保證未來會保存目前的行為。
+> 存儲體系結構被視為 Azure 認知搜索的實現詳細資訊，可能會更改而不通知。 不保證未來會保存目前的行為。
 
 ## <a name="suggesters"></a>建議工具
-建議工具是結構描述的區段，其定義索引中有哪些欄位會被用來支援搜尋中的自動完成或預先輸入查詢。 一般而言，部分搜尋字串會在使用者輸入搜尋查詢時傳送至[建議（REST API）](https://docs.microsoft.com/rest/api/searchservice/suggestions) ，而 API 會傳回一組建議的檔或片語。 
+建議工具是結構描述的區段，其定義索引中有哪些欄位會被用來支援搜尋中的自動完成或預先輸入查詢。 通常，當使用者鍵入搜索查詢時，部分搜索字串會發送到[建議 （REST API），](https://docs.microsoft.com/rest/api/searchservice/suggestions)並且 API 返回一組建議的文檔或短語。 
 
 新增至建議工具的欄位用來建置自動完成搜尋字詞。 所有的搜尋字詞都建立於編製索引期間，且分開儲存。 如需有關建立建議工具結構的詳細資訊，請參閱[新增建議工具](index-add-suggesters.md)。
 
@@ -203,7 +203,7 @@ ms.locfileid: "79282779"
 
 ## <a name="analyzers"></a>分析器
 
-分析器元素會設定要用於欄位之語言分析器的名稱。 如需可供您使用之分析器範圍的詳細資訊，請參閱[將分析器新增至 Azure 認知搜尋索引](search-analyzers.md)。 分析器只能搭配可搜尋的欄位使用。 將分析器指派給欄位後，除非重建索引，否則無法變更。
+分析器元素會設定要用於欄位之語言分析器的名稱。 有關可用的分析器範圍的詳細資訊，請參閱[將分析器添加到 Azure 認知搜索索引](search-analyzers.md)中。 分析器只能搭配可搜尋的欄位使用。 將分析器指派給欄位後，除非重建索引，否則無法變更。
 
 ## <a name="cors"></a>CORS
 
@@ -211,15 +211,15 @@ ms.locfileid: "79282779"
 
 您可以為 CORS 設定下列選項：
 
-+ **allowedOrigins** （必要）：這是將授與您索引存取權的原始來源清單。 這表示將允許來自那些原始來源的所有 JavaScript 程式碼查詢您的索引 (假設它能提供正確的 API 金鑰)。 每個原始來源的形式通常是 `protocol://<fully-qualified-domain-name>:<port>` (儘管經常會忽略 `<port>`)。 請參閱[跨原始來源資源共用](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)以取得詳細資料。
++ **允許的源**（必需）：這是將被授予對索引的存取權限的源清單。 這表示將允許來自那些原始來源的所有 JavaScript 程式碼查詢您的索引 (假設它能提供正確的 API 金鑰)。 每個原始來源的形式通常是 `protocol://<fully-qualified-domain-name>:<port>` (儘管經常會忽略 `<port>`)。 請參閱[跨原始來源資源共用](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)以取得詳細資料。
 
-  如果您想要允許所有原始來源進行存取，請在 `*`allowedOrigins**陣列中包含** 作為單一項目。 「此做法並不建議用於生產環境搜尋服務」，但對於開發和偵錯通常很有幫助。
+  如果您想要允許所有原始來源進行存取，請在 **allowedOrigins** 陣列中包含 `*` 作為單一項目。 「此做法並不建議用於生產環境搜尋服務」**，但對於開發和偵錯通常很有幫助。
 
-+ **maxAgeInSeconds** （選用）：瀏覽器會使用此值來判斷快取 CORS 預檢回應的持續時間（以秒為單位）。 這必須是非負數的整數。 這個值越大，效能就越好，但是讓 CORS 原則變更生效的時間也就越長。 若未設定，即會使用預設持續期間 5 分鐘。
++ **maxAgeIn秒**（可選）：瀏覽器使用此值來確定緩存 CORS 預檢回應的持續時間（以秒為單位）。 這必須是非負數的整數。 這個值越大，效能就越好，但是讓 CORS 原則變更生效的時間也就越長。 若未設定，即會使用預設持續期間 5 分鐘。
 
 ## <a name="encryption-key"></a>加密金鑰
 
-雖然所有 Azure 認知搜尋索引預設都會使用 Microsoft 管理的金鑰進行加密，但您可以將索引設定為使用 Key Vault 中**客戶管理的金鑰**進行加密。 若要深入瞭解，請參閱[在 Azure 認知搜尋中管理加密金鑰](search-security-manage-encryption-keys.md)。
+雖然預設情況下使用 Microsoft 管理的金鑰組所有 Azure 認知搜索索引進行加密，但索引可以配置為使用金鑰保存庫中**的客戶託管金鑰**進行加密。 要瞭解更多資訊，請參閱[在 Azure 認知搜索 中管理加密金鑰](search-security-manage-encryption-keys.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

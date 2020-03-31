@@ -1,6 +1,6 @@
 ---
-title: 教學課程：在 Azure 中使用 SSL 憑證來保護 Windows 網頁伺服器
-description: 在本教學課程中，您將了解如何搭配使用 Azure PowerShell 與 Azure Key Vault 中儲存的 SSL 憑證，來保護執行 IIS 網頁伺服器的 Windows 虛擬機器。
+title: 教學課程：在 Azure 中使用 TLS/SSL 憑證來保護 Windows 網頁伺服器
+description: 在本教學課程中，您將了解如何搭配使用 Azure PowerShell 與 Azure Key Vault 中儲存的 TLS/SSL 憑證，來保護執行 IIS 網頁伺服器的 Windows 虛擬機器。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,25 +15,25 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6185ad4f0e043329c4e833b97a09922ba0238a82
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b084f8a226d1cfd5bab2cc81512fb51fa6bf41c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264232"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154282"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 SSL 憑證，來保護 Windows 虛擬機器上的網頁伺服器
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 TLS/SSL 憑證，來保護 Windows 虛擬機器上的網頁伺服器
 
 > [!NOTE]
 > 此文件目前僅適用於一般化映像。 如果嘗試使用特製化磁碟進行本教學課程，您將會收到錯誤訊息。 
 
-若要保護網頁伺服器，您可以使用安全通訊端層 (SSL) 憑證將 Web 流量加密。 這些 SSL 憑證可儲存在 Azure Key Vault，並且能夠讓您將憑證安全地部署到 Azure 中的 Windows 虛擬機器 (VM)。 在本教學課程中，您將了解如何：
+若要保護 Web 伺服器，您可以使用傳輸層安全性 (TLS) (先前稱為安全通訊端層 (SSL)) 憑證來加密網路流量。 這些 TLS/SSL 憑證可儲存在 Azure Key Vault，並且能夠讓您將憑證安全地部署到 Azure 中的 Windows 虛擬機器 (VM)。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Azure Key Vault
 > * 產生或上傳憑證至 Key Vault
 > * 建立 VM 並安裝 IIS 網頁伺服器
-> * 將憑證插入 VM 並使用 SSL 繫結來設定 IIS
+> * 將憑證插入 VM 並使用 TLS 繫結來設定 IIS
 
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
@@ -172,13 +172,13 @@ Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress
 
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已使用儲存在 Azure Key Vault 中的 SSL 憑證來保護 IIS 網頁伺服器。 您已了解如何︰
+在本教學課程中，您已使用儲存在 Azure Key Vault 中的 TLS/SSL 憑證來保護 IIS 網頁伺服器。 您已了解如何︰
 
 > [!div class="checklist"]
 > * 建立 Azure Key Vault
 > * 產生或上傳憑證至 Key Vault
 > * 建立 VM 並安裝 IIS 網頁伺服器
-> * 將憑證插入 VM 並使用 SSL 繫結來設定 IIS
+> * 將憑證插入 VM 並使用 TLS 繫結來設定 IIS
 
 用以下連結查看預先建立的虛擬機器指令碼範例。
 

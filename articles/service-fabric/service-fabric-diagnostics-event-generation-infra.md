@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 平台層級監視
+title: Azure 服務結構平臺級別監視
 description: 了解用來監視和診斷 Azure Service Fabric 叢集的平台層級事件和記錄。
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75376931"
 ---
 # <a name="monitoring-the-cluster"></a>監視叢集
@@ -20,7 +20,7 @@ ms.locfileid: "75376931"
 
 在 Windows 上，透過一組用來挑選「作業和資料」與「傳訊」通道的相關 `logLevelKeywordFilters`，就能從單一 ETW 提供者取得 Service Fabric 事件 - 這是我們在需要時區分出待篩選傳出 Service Fabric 事件的方法。
 
-* **營運**Service Fabric 和叢集執行的高階作業，包括即將推出的節點、正在部署的新應用程式，或升級復原等事件。請參閱[這裡](service-fabric-diagnostics-event-generation-operational.md)的完整事件清單。  
+* **運營**Service Fabric 和群集執行的高級操作，包括即將啟動的節點的事件、正在部署的新應用程式或升級回滾等。在此處[查看事件的完整](service-fabric-diagnostics-event-generation-operational.md)清單。  
 
 * **作業 - 詳細**  
 健康情況報告和負載平衡決策。
@@ -53,7 +53,7 @@ ms.locfileid: "75376931"
 Service Fabric 有自己的健全狀況模型，詳述於下列文件：
 
 - [Service Fabric 健全狀況監視簡介](service-fabric-health-introduction.md)
-- [回報和檢查服務健全狀況](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+- [回報和檢查服務健康情況](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 - [新增自訂 Service Fabric 健康狀態報告](service-fabric-report-health.md)
 - [檢視 Service Fabric 健康狀態報告](service-fabric-view-entities-aggregated-health.md)
 
@@ -70,7 +70,7 @@ Service Fabric 有自己的健全狀況模型，詳述於下列文件：
 
 ## <a name="service-fabric-support-logs"></a>Service Fabric 支援記錄
 
-如果您需要連絡 Microsoft 支援服務以協助處理您的 Azure Service Fabric 叢集，通常都需要提供支援記錄。 如果您的叢集裝載於 Azure，建立叢集時會自動設定和收集支援記錄。 記錄會儲存在叢集資源群組中的專用儲存體帳戶。 儲存體帳戶沒有固定名稱，但您會在帳戶中看到名稱以 fabric 開頭的 blob 容器和資料表。 如需有關為獨立叢集設定記錄收集的資訊，請參閱[建立和管理獨立 Azure Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)和[獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)。 若為獨立 Service Fabric 執行個體，記錄應該傳送至本機檔案共用。 您**需要**擁有這些記錄才能取得支援，而這些記錄只限 Microsoft 客戶支援小組使用。
+如果您需要連絡 Microsoft 支援服務以協助處理您的 Azure Service Fabric 叢集，通常都需要提供支援記錄。 如果您的叢集裝載於 Azure，建立叢集時會自動設定和收集支援記錄。 記錄會儲存在叢集資源群組中的專用儲存體帳戶。 儲存體帳戶沒有固定名稱，但您會在帳戶中看到名稱以 fabric** 開頭的 blob 容器和資料表。 如需有關為獨立叢集設定記錄收集的資訊，請參閱[建立和管理獨立 Azure Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)和[獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)。 若為獨立 Service Fabric 執行個體，記錄應該傳送至本機檔案共用。 您**需要**擁有這些記錄才能取得支援，而這些記錄只限 Microsoft 客戶支援小組使用。
 
 ## <a name="measuring-performance"></a>測量效能
 
@@ -81,13 +81,13 @@ Service Fabric 有自己的健全狀況模型，詳述於下列文件：
 以下是您可以設定收集叢集效能資料的兩個常用方式：
 
 * **使用代理程式**  
-這是從電腦收集效能的慣用方法，因為代理程式通常會有一份可收集的效能計量清單，而且選擇您要收集或變更的計量是相當簡單的程序。 閱讀關於 Azure 監視器在 Service Fabric 的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)中提供 Azure 監視器記錄，以及[設定 log analytics 代理程式](../log-analytics/log-analytics-windows-agent.md)以深入瞭解 log analytics 代理程式，這種監視代理程式可以挑選叢集 vm 和已部署容器的效能資料。
+這是從電腦收集效能的慣用方法，因為代理程式通常會有一份可收集的效能計量清單，而且選擇您要收集或變更的計量是相當簡單的程序。 有關 Azure 監視器的 Azure 監視器在 Service Fabric 的[Azure 監視器日誌](service-fabric-diagnostics-event-analysis-oms.md)中提供 Azure 監視器日誌，並[設置日誌分析代理](../log-analytics/log-analytics-windows-agent.md)以瞭解有關日誌分析代理的更多資訊，該代理是能夠獲取群集 VM 和已部署容器的效能資料的監視代理之一。
 
 * **Azure 表格儲存體的效能計數器**  
 您也可以將效能計量傳送給與事件相同的表格儲存體。 這需要變更 Azure 診斷設定來反映叢集中 VM 的適當效能計數器，並在您要部署任何容器時，讓它反映 Docker 統計資料。 請閱讀在 Service Fabric 中設定 [WAD 中的效能計數器](service-fabric-diagnostics-event-aggregation-wad.md)，以設定效能計數器集合。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 閱讀 Service Fabric 的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)，以收集叢集診斷並建立自訂查詢和警示
+* 閱讀有關服務結構的[Azure 監視器日誌集成](service-fabric-diagnostics-event-analysis-oms.md)，以收集群集診斷並創建自訂查詢和警報
 * 了解 Service Fabric 的內建診斷經驗 ([EventStore](service-fabric-diagnostics-eventstore.md))
 * 瀏覽 Service Fabric 中的一些[常見診斷案例](service-fabric-diagnostics-common-scenarios.md)

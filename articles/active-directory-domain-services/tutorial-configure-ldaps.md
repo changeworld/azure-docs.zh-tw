@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612766"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481529"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定安全 LDAP
 
@@ -66,9 +66,9 @@ ms.locfileid: "77612766"
 * **主體名稱** - 憑證的主體名稱必須是您受控網域。 例如，如果您的網域名稱為 aaddscontoso.com  ，則憑證的主體名稱必須是 *.aaddscontoso.com  。
     * 憑證的 DNS 名稱或主體替代名稱必須是萬用字元憑證，才能確保安全 LDAP 可以順利地與 Azure AD Domain Services 搭配運作。 網域控制站會使用隨機名稱，而且可以加以移除或新增，以確保服務可供使用。
 * **金鑰使用方法** - 必須將憑證設定為「數位簽章」  與「金鑰編密」  。
-* **憑證目的** - 憑證必須有效可進行 SSL 伺服器驗證。
+* **憑證目的** - 憑證必須可有效用於 TLS 伺服器驗證。
 
-在本教學課程中，會使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] Cmdlet 建立安全 LDAP 的自我簽署憑證。 以**系統管理員**身分開啟 PowerShell 視窗並執行下列命令。 將 $dnsName  變數取代為您本身的受控網域所使用的 DNS 名稱，例如 aaddscontoso.com  ：
+有數個工具可用來建立自我簽署憑證，例如 OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertificate] Cmdlet 等等。在本教學課程中，會使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] Cmdlet 建立安全 LDAP 的自我簽署憑證。 以**系統管理員**身分開啟 PowerShell 視窗並執行下列命令。 將 $dnsName  變數取代為您本身的受控網域所使用的 DNS 名稱，例如 aaddscontoso.com  ：
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Thumbprint                                Subject
 1. 當此憑證用於解密資料時，您應謹慎地控制存取。 密碼可以用來保護憑證的使用。 如果沒有正確的密碼，憑證就無法套用至服務。
 
     在 [安全性]  頁面上，選擇 [密碼]  選項來保護 .PFX  憑證檔案。 輸入並確認密碼，然後選取 [下一步]  。 在下一節中，此密碼會用來為您的 Azure AD DS 受控網域啟用安全 LDAP。
-1. 在 [要匯出的檔案]  頁面上，指定檔案名稱及接收匯出憑證的位置，例如 C:\Users\accountname\azure-ad-ds.pfx  。
+1. 在 [要匯出的檔案]  頁面上，指定檔案名稱及接收匯出憑證的位置，例如 C:\Users\accountname\azure-ad-ds.pfx  。 記下 *.PFX* 檔案的密碼和位置，因為後續步驟將需要這項資訊。
 1. 在檢閱頁面上選取 [完成]  ，以將憑證匯出至 .PFX  憑證檔案。 成功匯出憑證後，系統會顯示確認對話方塊。
 1. 讓 MMC 保持開啟，以供下一節使用。
 

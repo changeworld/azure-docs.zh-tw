@@ -6,11 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 8a5507d11c9545e4053dde832b7305f9bf35e39e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586269"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>如何設定變更摘要處理器的開始時間
@@ -25,7 +25,7 @@ ms.locfileid: "77586269"
 
 您可以初始化會從**特定的日期和時間**開始讀取變更的變更摘要處理器，只要將 `DateTime` 的執行個體傳至 `WithStartTime` 建立器延伸模組即可：
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="TimeInitialization":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
 變更摘要處理器會針對該日期和時間進行初始化，並開始讀取其後發生的變更。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77586269"
 
 在其他案例中 (例如資料移轉，或分析容器的整個歷程記錄)，我們必須從**該容器存留期的開端**開始讀取變更摘要。 若要這麼做，我們可以在建立器延伸模組上使用 `WithStartTime`，但傳遞 `DateTime.MinValue.ToUniversalTime()`，這會產生 `DateTime` 最小值的 UTC 表示法，如下所示：
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartFromBeginningInitialization":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 
 變更摘要處理器將會初始化，並從容器存留期的開端開始讀取變更。
 

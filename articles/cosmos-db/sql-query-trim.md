@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的修剪
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數修剪。
+title: 在 Azure 宇宙 DB 查詢語言中修剪
+description: 在 Azure 宇宙 DB 中瞭解 SQL 系統函數 TRIM。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304237"
 ---
-# <a name="trim-azure-cosmos-db"></a>TRIM （Azure Cosmos DB）
+# <a name="trim-azure-cosmos-db"></a>TRIM（Azure 宇宙資料庫）
  傳回移除開頭和尾端空白之後的字串運算式。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ TRIM(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   這是字串運算式。  
+   是字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +34,7 @@ TRIM(<str_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何在查詢內使用 `TRIM`。  
+  下面的示例演示如何`TRIM`在查詢中使用。  
   
 ```sql
 SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4
@@ -48,10 +48,10 @@ SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+此系統功能不會利用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [字串函數 Azure Cosmos DB](sql-query-string-functions.md)
-- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 簡介](introduction.md)
+- [字串函數 Azure 宇宙 DB](sql-query-string-functions.md)
+- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 簡介](introduction.md)

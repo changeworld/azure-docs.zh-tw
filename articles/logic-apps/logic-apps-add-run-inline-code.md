@@ -1,94 +1,94 @@
 ---
-title: 使用內嵌程式碼新增和執行程式碼片段
-description: 瞭解如何使用內嵌程式碼動作來建立和執行程式碼片段，以用於您使用建立的自動化工作和工作流程 Azure Logic Apps
+title: 使用內聯代碼添加和運行程式碼片段
+description: 瞭解如何使用內聯代碼操作創建和運行程式碼片段，以便使用 Azure 邏輯應用創建的自動任務和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453502"
 ---
-# <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用內嵌程式碼來新增和執行程式碼片段
+# <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 邏輯應用中使用內聯代碼添加和運行程式碼片段
 
-當您想要在邏輯應用程式內部執行一段程式碼時，您可以在邏輯應用程式的工作流程中新增內建的**內嵌程式碼**動作作為步驟。 當您想要執行符合此案例的程式碼時，此動作的效果最佳：
+如果要在邏輯應用中運行一段代碼，可以將內置**的內聯代碼**操作添加為邏輯應用工作流中的一個步驟。 當您要運行適合此方案的代碼時，此操作效果最佳：
 
-* 以 JavaScript 執行。 即將推出更多語言。
-* 在5秒或更少的時間內完成執行。
-* 處理大小上限為 50 MB 的資料。
-* 不需要使用尚未支援的[**變數**動作](../logic-apps/logic-apps-create-variables-store-values.md)。
-* 使用 node.js 版本建議使用8.11.1。 如需詳細資訊，請參閱[標準的內建物件](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
+* 在 JavaScript 中運行。 更多語言即將推出。
+* 在五秒或五秒內完成運行。
+* 處理大小高達 50 MB 的資料。
+* 不需要使用[**尚未支援的變數**操作](../logic-apps/logic-apps-create-variables-store-values.md)。
+* 使用 Node.js 版本 8.11.1。 有關詳細資訊，請參閱[標準內置物件](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
 
   > [!NOTE]
-  > 執行 JavaScript 的**內嵌程式碼**動作不支援 `require()` 函式。
+  > 用於`require()`運行 JavaScript 的**內聯代碼**操作不支援該函數。
 
-此動作會執行程式碼片段，並將該片段的輸出當做名為**Result**的 token 傳回，以供您在邏輯應用程式的後續動作中使用。 針對您想要為程式碼建立函式的其他案例，請嘗試在您的邏輯應用程式中[建立和呼叫 Azure 函數](../logic-apps/logic-apps-azure-functions.md)。
+此操作運行程式碼片段，並將該程式碼片段的輸出作為名為**Result**的權杖返回，您可以在邏輯應用中的後續操作中使用該權杖。 對於要為代碼創建函數的其他方案，請嘗試在邏輯應用中[創建和調用 Azure 函數](../logic-apps/logic-apps-azure-functions.md)。
 
-在本文中，範例邏輯應用程式會在新的電子郵件送達 Office 365 Outlook 帳戶時觸發。 此程式碼片段會解壓縮並傳回出現在電子郵件內文中的任何電子郵件地址。
+在本文中，當新電子郵件到達 Office 365 Outlook 帳戶時，示例邏輯應用將觸發。 程式碼片段提取並返回出現在電子郵件正文中的任何電子郵件地址。
 
-![範例總覽](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
+![示例概述](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 您想要在其中新增程式碼片段的邏輯應用程式，包括觸發程式。 如果您沒有邏輯應用程式，請參閱[快速入門：建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 要添加程式碼片段（包括觸發器）的邏輯應用。 如果沒有邏輯應用，請參閱[快速入門：創建第一個邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-   本主題中的範例邏輯應用程式會使用此 Office 365 Outlook 觸發程式：**當新的電子郵件送達時**
+   本主題中的示例邏輯應用使用此 Office 365 Outlook 觸發器：**當新電子郵件到達時**
 
-* 連結至邏輯應用程式的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* 連結到邏輯應用的[集成帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
   > [!NOTE]
-  > 請確定您使用的是適用于您的使用案例或案例的整合帳戶。 例如，[免費層](../logic-apps/logic-apps-pricing.md#integration-accounts)整合帳戶僅適用于探索案例和工作負載，而非生產案例僅限於使用量和輸送量，而且不受服務等級協定（SLA）的支援。 其他層則會產生成本，但包含 SLA 支援、提供更多的輸送量，而且有更高的限制。 深入瞭解整合帳戶[層](../logic-apps/logic-apps-pricing.md#integration-accounts)、[定價](https://azure.microsoft.com/pricing/details/logic-apps/)和[限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
+  > 請確保使用適合您的用例或方案的集成帳戶。 例如，[自由層](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帳戶僅用於探索性方案和工作負載，而不是生產方案，在使用和輸送量方面受到限制，並且不受服務等級協定 （SLA） 的支援。 其他層會產生成本，但包括 SLA 支援、提供更多輸送量且具有更高的限制。 詳細瞭解集成帳戶[層](../logic-apps/logic-apps-pricing.md#integration-accounts)、[定價](https://azure.microsoft.com/pricing/details/logic-apps/)和[限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-## <a name="add-inline-code"></a>加入內嵌程式碼
+## <a name="add-inline-code"></a>添加內聯代碼
 
-1. 如果您還沒有這麼做，請在  [Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟邏輯應用程式。
+1. 如果尚未在[Azure 門戶](https://portal.azure.com)中，請在邏輯應用設計器中打開邏輯應用。
 
-1. 在設計工具中，于您想要的邏輯應用程式工作流程中的位置新增**內嵌程式碼**動作。
+1. 在設計器中，在邏輯應用工作流中所需的位置添加**內聯代碼**操作。
 
-   * 若要在工作流程結尾處新增動作，請選擇 [**新增步驟**]。
+   * 要在工作流末尾添加操作，請選擇 **"新建步驟**"。
 
-   * 若要在現有步驟之間新增動作，請將滑鼠指標移到連接這些步驟的箭號上。 選擇加號（ **+** ），然後選取 [**新增動作**]。
+   * 要在現有步驟之間添加操作，請將滑鼠指標移到連接這些步驟的箭頭上。 選擇加號 （），**+** 然後選擇 **"添加操作**"。
 
-   這個範例會在 Office 365 Outlook 觸發程式下加入**內嵌程式碼**動作。
+   本示例在 Office 365 Outlook 觸發器下添加**內聯代碼**操作。
 
-   ![新增步驟](./media/logic-apps-add-run-inline-code/add-new-step.png)
+   ![添加新步驟](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. 在 [**選擇動作**] 下的 [搜尋] 方塊中，輸入「內嵌程式碼」作為篩選準則。 從 [動作] 清單中，選取此動作：**執行 JavaScript 程式碼**
+1. 在搜索框中**選擇操作**，在搜索框中輸入"內聯代碼"作為篩選器。 從動作清單中選擇此操作：**執行 JavaScript 代碼**
 
-   ![選取 [執行 JavaScript 程式碼]](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
+   ![選擇"執行 JavaScript 代碼"](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
-   此動作會出現在設計工具中，並包含一些預設的範例程式碼，包括 return 語句。
+   該操作將顯示在設計器中，並包含一些預設示例代碼，包括返回語句。
 
-   ![具有預設範例程式碼的內嵌程式碼動作](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
+   ![帶有預設示例代碼的內聯代碼操作](./media/logic-apps-add-run-inline-code/inline-code-action-default.png)
 
-1. 在 [程式**代碼**] 方塊中，刪除範例程式碼，然後輸入您想要執行的代碼。 撰寫您放在方法中的程式碼，但不定義方法簽章。 
+1. 在 **"代碼"** 框中，刪除示例代碼，然後輸入要運行的代碼。 編寫放入方法的代碼，但不定義方法簽名。 
 
-   當您輸入可辨識的關鍵字時，自動完成清單會隨即出現，讓您可以從可用的關鍵字中選取，例如：
+   鍵入識別關鍵字時，將顯示自動完成清單，以便您可以從可用關鍵字中選擇，例如：
 
    ![關鍵字自動完成清單](./media/logic-apps-add-run-inline-code/auto-complete.png)
 
-   這個範例程式碼片段會先建立一個變數來儲存*正則運算式*，以指定要在輸入文字中比對的模式。 然後，程式碼會建立一個變數，以儲存來自觸發程式的電子郵件內文資料。
+   此示例程式碼片段首先創建一個變數，該變數存儲*正則運算式*，該變數指定要在輸入文本中匹配的模式。 然後，代碼創建一個變數，用於存儲觸發器中的電子郵件正文資料。
 
    ![建立變數](./media/logic-apps-add-run-inline-code/save-email-body-variable.png)
 
-   若要讓觸發程式的結果和先前的動作更容易參考，動態內容清單會在游標位於 [**代碼**] 方塊內時出現。 在此範例中，清單會顯示來自觸發程式的可用結果，包括**主體**權杖，您現在可以選取此功能。
+   為了使觸發器和以前操作的結果更易於引用，動態內容清單會在游標位於 **"代碼"** 框中時顯示。 在此示例中，清單顯示觸發器的可用結果，包括 **"正文**"權杖，您現在可以選擇該結果。
 
-   當您**選取 [內**文] token 之後，內嵌程式碼動作會將 token 解析為參考電子郵件 `Body` 屬性值的 `workflowContext` 物件：
+   選擇**Body**權杖後，內聯代碼操作將權杖解析為引用電子郵件`workflowContext``Body`屬性值的物件：
 
-   ![選取結果](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
+   ![選擇結果](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   在 [程式**代碼**] 方塊中，程式碼片段可以使用唯讀 `workflowContext` 物件做為輸入。 這個物件具有子屬性，可讓您的程式碼存取來自觸發程式的結果，以及工作流程中的先前動作。
-   如需詳細資訊，請參閱本主題稍後的此節：[在您的程式碼中參考觸發程式和動作結果](#workflowcontext)。
+   在 **"代碼"** 框中，程式碼片段可以使用只`workflowContext`讀物件作為輸入。 此物件具有子屬性，使代碼可以訪問工作流中觸發器和以前操作的結果。
+   有關詳細資訊，請參閱本主題後面的本節：[代碼中的引用觸發器和操作結果](#workflowcontext)。
 
    > [!NOTE]
    >
-   > 如果您的程式碼片段參考使用點（.）運算子的動作名稱，則必須將這些動作名稱新增至[**動作**參數](#add-parameters)。 這些參考也必須用方括弧（[]）和引號括住動作名稱，例如：
+   > 如果程式碼片段引用使用 dot （.） 運算子的操作名稱，則必須將這些操作名稱添加到[**操作**參數](#add-parameters)。 這些引用還必須將操作名稱與方括弧 （*） 和引號括在一起，例如：
    >
    > `// Correct`</br> 
    > `workflowContext.actions["my.action.name"].body`</br>
@@ -96,8 +96,8 @@ ms.locfileid: "75453502"
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   內嵌程式碼動作不需要 `return` 語句，但是來自 `return` 語句的結果可在後續的動作中，透過**結果**token 來參考。 
-   例如，程式碼片段會藉由呼叫 `match()` 函式來傳回結果，該函式會在電子郵件內文中尋找符合正則運算式的相符專案。 **撰寫**動作會使用**結果**token 來參考內嵌程式碼動作的結果，並建立單一結果。
+   內聯代碼操作不需要語句`return`，但`return`語句的結果可在以後的操作中通過**Result**權杖進行參考。 
+   例如，程式碼片段通過調用`match()`函數返回結果，該函數在電子郵件正文中找到與正則運算式的匹配項。 **"組合"** 操作使用**結果**權杖引用內聯代碼操作的結果並創建單個結果。
 
    ![完成的邏輯應用程式](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -105,9 +105,9 @@ ms.locfileid: "75453502"
 
 <a name="workflowcontext"></a>
 
-### <a name="reference-trigger-and-action-results-in-your-code"></a>程式碼中的參考觸發程式和動作結果
+### <a name="reference-trigger-and-action-results-in-your-code"></a>引用觸發器和操作會導致代碼
 
-`workflowContext` 物件具有這個結構，其中包括 `actions`、`trigger`和 `workflow` 子屬性：
+該`workflowContext`物件具有此結構，其中包括`actions`、`trigger`和`workflow`子屬性：
 
 ```json
 {
@@ -126,16 +126,16 @@ ms.locfileid: "75453502"
 }
 ```
 
-此資料表包含這些子屬性的詳細資訊：
+此表包含有關這些子屬性的詳細資訊：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |----------|------|-------|
-| `actions` | 物件集合 | 在您的程式碼片段執行之前執行之動作的結果物件。 每個物件都有索引*鍵/值*組，其中索引鍵是動作的名稱，而值相當於使用 `@actions('<action-name>')`呼叫[actions （）](../logic-apps/workflow-definition-language-functions-reference.md#actions)函式。 動作的名稱會使用在基礎工作流程定義中使用的相同動作名稱，這會以底線（_）取代動作名稱中的空格（""）。 這個物件可讓您從目前的工作流程實例執行存取動作屬性值。 |
-| `trigger` | 物件 | 來自觸發程式的結果物件，相當於呼叫[trigger （）函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件可讓您從目前的工作流程實例執行，存取觸發程式的屬性值。 |
-| `workflow` | 物件 | 工作流程物件，相當於呼叫[workflow （）函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 這個物件可讓您從目前的工作流程實例執行，存取工作流程屬性值，例如工作流程名稱、執行識別碼等等。 |
+| `actions` | 物件集合 | 從程式碼片段運行之前運行的操作中生成物件。 每個物件都有一個*鍵值*對，其中鍵是操作的名稱，該值等效于使用`@actions('<action-name>')`調用[操作（）函數](../logic-apps/workflow-definition-language-functions-reference.md#actions)。 操作的名稱使用的基礎工作流定義中使用的操作名稱，該名稱將操作名稱中的空格（""）替換為底線 （*）。 此物件提供對當前工作流實例運行中的操作屬性值的訪問。 |
+| `trigger` | Object | 觸發器的結果物件，等效于調用[觸發器（） 函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此物件提供從當前工作流實例運行中觸發屬性值的訪問。 |
+| `workflow` | Object | 工作流物件，等效于調用[工作流（） 函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 此物件提供從當前工作流實例運行對工作流屬性值（如工作流名稱、運行 ID 等）的訪問。 |
 |||
 
-在本主題的範例中，`workflowContext` 物件具有您的程式碼可以存取的下列屬性：
+在本主題的示例中，`workflowContext`物件具有代碼可以訪問的這些屬性：
 
 ```json
 {
@@ -205,65 +205,65 @@ ms.locfileid: "75453502"
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>新增參數
+## <a name="add-parameters"></a>加入參數
 
-在某些情況下，您可能必須明確要求內嵌程式**代碼**動作包含觸發程式的結果，或您的程式碼藉由新增**trigger**或**actions**參數來參考為相依性的特定動作。 此選項適用于在執行時間找不到參考結果的案例。
+在某些情況下，您可能需要顯式要求**內聯代碼**操作包括觸發器的結果或代碼引用為依賴項的特定操作的結果，通過添加**觸發器**或**操作**參數。 此選項對於在運行時找不到引用結果的方案很有用。
 
 > [!TIP]
-> 如果您打算重複使用您的程式碼，請使用 [程式**代碼**] 方塊加入屬性的參考，讓您的程式碼包含已解析的 token 參考，而不是將觸發程式或動作新增為明確相依性。
+> 如果計畫重用代碼，請使用**Code**框添加對屬性的引用，以便代碼包含解析的權杖引用，而不是將觸發器或操作添加為顯式依賴項。
 
-例如，假設您的程式碼會從 Office 365 Outlook 連接器的 [**傳送核准電子郵件**] 動作中參考**SelectedOption**結果。 在建立期間，Logic Apps 引擎會分析您的程式碼，以判斷您是否已參考任何觸發程式或動作結果，並自動包含這些結果。 在執行時間，如果您在指定的 `workflowContext` 物件中無法使用所參考的觸發程式或動作結果，您可以將該觸發程式或動作新增為明確的相依性，您就會收到錯誤。 在此範例中，您會新增 [**動作**] 參數，並指定**內嵌程式碼**動作明確包含 [**傳送核准電子郵件**] 動作的結果。
+例如，假設您有代碼引用 Office 365 Outlook 連接器的 **"發送核准電子郵件**操作"中的 **"選定選項**"結果。 在創建時，邏輯應用引擎會分析代碼，以確定您是否引用了任何觸發器或操作結果，並自動包含這些結果。 在運行時，如果收到引用的觸發器或操作結果在指定`workflowContext`物件中不可用的錯誤，則可以將該觸發器或操作添加為顯式依賴項。 在此示例中，添加 **"操作"** 參數，並指定**內聯代碼**操作顯式包含 **"發送核准電子郵件**"操作的結果。
 
-若要新增這些參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數：
+要添加這些參數，請打開 **"添加新參數**清單"，然後選擇所需的參數：
 
-   ![新增參數](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![加入參數](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
-   | 參數 | 說明 |
+   | 參數 | 描述 |
    |-----------|-------------|
-   | **動作** | 包含先前動作的結果。 請參閱[包含動作結果](#action-results)。 |
-   | **觸發程序** | 包含來自觸發程式的結果。 請參閱[包含觸發程式結果](#trigger-results)。 |
+   | **動作** | 包括以前操作的結果。 請參閱[包括操作結果](#action-results)。 |
+   | **觸發** | 包括觸發器的結果。 請參閱[包括觸發器結果](#trigger-results)。 |
    |||
 
 <a name="trigger-results"></a>
 
-### <a name="include-trigger-results"></a>包含觸發程式結果
+### <a name="include-trigger-results"></a>包括觸發器結果
 
-如果您選取 [**觸發**程式]，系統會提示您是否要包含觸發程式結果。
+如果選擇**觸發器**，系統將提示您是否包括觸發器結果。
 
-* 從**觸發**程式清單中，選取 **[是]** 。
+* 在 **"觸發"** 清單中，選擇 **"是**"。
 
 <a name="action-results"></a>
 
-### <a name="include-action-results"></a>包含動作結果
+### <a name="include-action-results"></a>包括操作結果
 
-如果您選取 [**動作**]，系統就會提示您輸入要新增的動作。 不過，在您開始新增動作之前，您需要出現在邏輯應用程式基礎工作流程定義中的動作名稱版本。
+如果選擇 **"操作"，** 系統將提示您要添加的操作。 但是，在開始添加操作之前，您需要邏輯應用的基礎工作流定義中顯示的操作名稱的版本。
 
-* 這項功能不支援變數、迴圈和反復專案索引。
+* 此功能不支援變數、迴圈和反覆運算索引。
 
-* 邏輯應用程式的工作流程定義中的名稱使用底線（_），而不是空格。
+* 邏輯應用工作流定義中的名稱使用底線 （*），而不是空格。
 
-* 如需使用點運算子（.）的動作名稱，請包含這些運算子，例如：
+* 對於使用點運算子 （.） 的操作名稱，包括這些運算子，例如：
 
   `My.Action.Name`
 
-1. 在設計工具工具列上，選擇 [程式**代碼視圖**]，然後在 [`actions`] 屬性內搜尋動作名稱。
+1. 在設計器工具列上，選擇 **"代碼"視圖**，並在屬性`actions`內搜索操作名稱。
 
-   例如，`Send_approval_email_` 是 [**傳送核准電子郵件**] 動作的 JSON 名稱。
+   例如，`Send_approval_email_`是 **"發送核准電子郵件**操作"的 JSON 名稱。
 
-   ![尋找 JSON 中的動作名稱](./media/logic-apps-add-run-inline-code/find-action-name-json.png)
+   ![在 JSON 中查找操作名稱](./media/logic-apps-add-run-inline-code/find-action-name-json.png)
 
-1. 若要返回設計師視圖，請在程式碼視圖工具列上，選擇 [**設計**工具]。
+1. 要返回到設計器視圖，在代碼視圖工具列上，請選擇 **"設計器**"。
 
-1. 若要新增第一個動作，請在 [**動作專案-1** ] 方塊中，輸入動作的 JSON 名稱。
+1. 要添加第一個操作，請在 **"操作項 - 1"** 框中輸入操作的 JSON 名稱。
 
-   ![輸入第一個動作](./media/logic-apps-add-run-inline-code/add-action-parameter.png)
+   ![輸入第一個操作](./media/logic-apps-add-run-inline-code/add-action-parameter.png)
 
-1. 若要新增另一個動作，請選擇 [**加入新專案**]。
+1. 要添加其他操作，請選擇"**添加新項**"。
 
-## <a name="reference"></a>參考
+## <a name="reference"></a>參考資料
 
-如需使用工作流程定義語言的邏輯應用程式基礎工作流程定義中，**執行 JavaScript 程式碼**動作結構和語法的詳細資訊，請參閱此動作的[參考一節](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)。
+有關使用工作流定義語言在邏輯應用的基礎工作流定義中**執行 JavaScript 代碼**操作的結構和語法的詳細資訊，請參閱此操作的[參考部分](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[Azure Logic Apps 的連接器](../connectors/apis-list.md)
+瞭解有關[Azure 邏輯應用連接器](../connectors/apis-list.md)的更多資訊

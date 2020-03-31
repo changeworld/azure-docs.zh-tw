@@ -4,16 +4,16 @@ description: 教學課程：針對用來在邊緣進行機器學習之模組的�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944285"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79296792"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教學課程：在 IoT Edge 上為機器學習設定環境
 
@@ -177,7 +177,7 @@ Azure IoT 中樞會處理 IoT 裝置和雲端之間的安全通訊，因此可�
 
 ## <a name="review-route-to-storage-in-iot-hub"></a>檢閱針對 IoT 中樞中儲存體的路由
 
-作為建立 IoT 中樞的一部分，我們在上一節中所執行的指令碼也已建立自訂端點和路由。 IoT 中樞路由包含查詢運算式和端點。 如果訊息符合運算式，資料便會沿著路由被傳送至相關聯的端點。 端點可以是事件中樞、服務匯流排佇列及主題。 在此案例中，端點是儲存體帳戶中的 Blob 容器。 讓我們使用 Azure 入口網站來檢閱由指令碼所建立的路由。
+作為建立 IoT 中樞的一部分，我們在上一節中所執行的指令碼也已建立自訂端點和路由。 IoT 中樞路由包含查詢運算式和端點。 如果訊息符合運算式，資料便會沿著路由被傳送至相關聯的端點。 端點可以是事件中樞、服務匯流排佇列及主題。 在此案例中，端點是儲存體帳戶中的 Blob 容器。 我們將使用 Azure 入口網站來檢閱由指令碼所建立的路由。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，並移至您將在本教學課程中使用的資源群組。
 
@@ -189,12 +189,13 @@ Azure IoT 中樞會處理 IoT 裝置和雲端之間的安全通訊，因此可�
 
 1. 展開 [儲存體]  區段：
 
-   ![確認 turbofandevicestorage 位於自訂端點清單中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![確認 turbofanDeviceStorage 位於自訂端點清單中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   我們看到 **turbofandevicestorage** 位於自訂端點清單中。 請留意此端點具有下列特性：
+   我們看到 **turbofanDeviceStorage** 位於自訂端點清單中。 請留意此端點具有下列特性：
 
    * 它會指向您所建立的 Blob 儲存體容器 (其名稱為 `devicedata`，如**容器名稱**所示)。
    * 其**檔案名稱格式**會以分割區作為名稱中的最後一個元素。 我們認為這個格式對於我們稍後會在教學課程中搭配 Azure Notebooks 進行的檔案作業來說較為方便。
+   * 其 [狀態]  應該是良好。
 
 1. 選取 [路由]  索引標籤。
 

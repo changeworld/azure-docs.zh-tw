@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248327"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282115"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什麼是適用於 Azure 資源的受控識別？
 
@@ -56,7 +56,7 @@ Azure 訂用帳戶的 Azure AD 可免費使用適用於 Azure 資源的受控識
 
 下圖顯示受控服務識別與 Azure 虛擬機器一起運作的方式。
 
-![受控服務識別與 Azure VM](media/overview/msi-vm-vmextension-imds-example.png)
+![受控服務識別與 Azure VM](media/overview/data-flow.png)
 
 |  屬性    | 系統指派的受控識別 | 使用者指派的受控識別 |
 |------|----------------------------------|--------------------------------|
@@ -143,7 +143,7 @@ Azure 訂用帳戶的 Azure AD 可免費使用適用於 Azure 資源的受控識
 * [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
 
 
-## 哪些 Azure 服務支援此功能？<a name="which-azure-services-support-managed-identity"></a>
+## <a name="what-azure-services-support-the-feature"></a>哪些 Azure 服務支援此功能？<a name="which-azure-services-support-managed-identity"></a>
 
 適用於 Azure 資源的受控識別，可用來向支援 Azure AD 驗證的服務進行驗證。 有關哪些 Azure 服務支援適用於 Azure 資源的受控識別功能，請參閱[這些服務支援適用於 Azure 資源的受控識別](services-support-msi.md)。
 

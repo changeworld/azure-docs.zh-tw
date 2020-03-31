@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: 如何
   items:
+    - name: 虛擬機器擴展集
+      items:
+        - name: 與現有的 Azure Load Balancer 搭配使用 - 入口網站
+          href: configure-vm-scale-set-portal.md
+        - name: 與現有的 Azure Load Balancer 搭配使用 - PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: 與現有的 Azure Load Balancer 搭配使用 - CLI
+          href: configure-vm-scale-set-cli.md
     - name: 將 Basic Load Balancer 升級為 Standard Load Balancer
       items:
         - name: 將基本公用 Load Balancer 進行升級
@@ -156,7 +164,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Azure Load Balancer 意見反應
       href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

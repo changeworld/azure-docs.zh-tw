@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273094"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>雲端服務監視簡介
@@ -34,7 +34,7 @@ ms.locfileid: "79273094"
 
 ## <a name="advanced-monitoring"></a>進階監視
 
-進階監視包含對您想要監視的角色使用 **Azure 診斷**延伸模組 (和選擇性的 Application Insights SDK)。 診斷延伸模組會使用名為 **diagnostics.wadcfgx** 的設定檔 (每個角色)，來設定所監視的診斷計量。 Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 這些設定是在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 檔案中設定。 這表示會有與進階監視建立關聯的額外成本。
+高級監視涉及對要監視的角色使用**Azure 診斷**擴展（以及可選的應用程式見解 SDK）。 診斷延伸模組會使用名為 **diagnostics.wadcfgx** 的設定檔 (每個角色)，來設定所監視的診斷計量。 Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 這些設定是在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 檔案中設定。 這表示會有與進階監視建立關聯的額外成本。
 
 建立每個角色時，Visual Studio 會在其中新增 Azure 診斷延伸模組。 此診斷延伸模組可以收集下列類型的資訊：
 
@@ -48,13 +48,13 @@ ms.locfileid: "79273094"
 * 客戶錯誤記錄
 
 > [!IMPORTANT]
-> 雖然此資料全都會彙總至儲存體帳戶，但是入口網站**不會**提供製作資料圖表的原生方法。 強烈建議您將其他像是 Application Insights 的服務整合到您的應用程式。
+> 雖然所有這些資料都聚合到存儲帳戶中，但門戶**不**提供繪製資料的本機方法。 強烈建議您將其他像是 Application Insights 的服務整合到您的應用程式。
 
 ## <a name="setup-diagnostics-extension"></a>設定診斷延伸模組
 
 首先，如果您沒有**傳統**儲存體帳戶，則請[建立傳統儲存體帳戶](../storage/common/storage-account-create.md)。 請確定建立已指定**傳統部署模型**的儲存體帳戶。
 
-接下來，巡覽至 [儲存體帳戶 (傳統)] 資源。 選取 [設定] > [存取金鑰]，然後複製 [主要連接字串] 值。 雲端服務需要有此值。 
+接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選擇 **"設置** > **便捷鍵**"並複製**主連接字串**值。 雲端服務需要有此值。 
 
 您必須變更兩個設定檔才能啟用進階診斷：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
@@ -94,7 +94,7 @@ ms.locfileid: "79273094"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入了解含雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md)
+- [瞭解使用雲服務的應用程式見解](../azure-monitor/app/cloudservices.md)
 - [設定效能計數器](diagnostics-performance-counters.md)
 
 

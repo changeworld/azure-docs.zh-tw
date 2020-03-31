@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368537"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474419"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教學課程 – 使用 PowerShell 將 HSM 部署至現有的虛擬網路
 
@@ -250,15 +250,7 @@ SSH 工具用於連線至虛擬機器。 此命令將如下所示，但採用您
 > [!NOTE]
 > 如果您有關於任何 Gemalto 裝置組態的問題，您應該連絡 [Gemalto 客戶支援](https://safenet.gemalto.com/technical-support/)。
 
-如果您只想要移除 Azure 中的 HSM 資源，您可以使用下列命令將 "$" 變數取代為您的唯一參數：
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-如果您已處理完此資源群組中的資源，即可透過下列命令來移除它們：
+如果您想要移除 Azure 中的 HSM 資源，您可以使用下列命令將 "$" 變數取代為您的唯一參數：
 
 ```powershell
 

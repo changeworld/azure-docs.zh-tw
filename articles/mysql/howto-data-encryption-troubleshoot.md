@@ -1,62 +1,62 @@
 ---
-title: 針對資料加密進行疑難排解-適用於 MySQL 的 Azure 資料庫
-description: 瞭解如何針對適用於 MySQL 的 Azure 資料庫中的資料加密進行疑難排解
+title: 排除資料加密故障 - MySQL 的 Azure 資料庫
+description: 瞭解如何在 MySQL 的 Azure 資料庫中排除資料加密故障
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 42956d115590fd322d2851fd546c505a76a851fa
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297035"
 ---
-# <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫中的資料加密進行疑難排解
+# <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>為 MySQL 在 Azure 資料庫中排除資料加密故障
 
-本文說明如何在使用客戶管理的金鑰進行資料加密設定時，識別和解決適用於 MySQL 的 Azure 資料庫中可能發生的常見問題。
+本文介紹如何使用客戶管理的金鑰配置資料加密時，如何識別和解決 MySQL Azure 資料庫中可能出現的常見問題。
 
 ## <a name="introduction"></a>簡介
 
-當您設定資料加密以在 Azure Key Vault 中使用客戶管理的金鑰時，伺服器需要持續存取金鑰。 如果伺服器無法存取 Azure Key Vault 中客戶管理的金鑰，它會拒絕所有連線、傳回適當的錯誤訊息，並將其狀態變更為在 Azure 入口網站中***無法***存取。
+將資料加密配置為在 Azure 金鑰保存庫中使用客戶管理的金鑰時，伺服器需要持續訪問金鑰。 如果伺服器無法訪問 Azure 金鑰保存庫中的客戶託管金鑰，它將拒絕所有連接、返回相應的錯誤訊息，並將其狀態更改為 Azure 門戶中的***不可訪問***狀態。
 
-如果您不再需要適用於 MySQL 的 Azure 資料庫伺服器無法存取，您可以將它刪除，以停止產生成本。 除非已還原金鑰保存庫的存取權，而且伺服器可供使用，否則不允許伺服器上的其他任何動作。 當您使用客戶管理的金鑰加密時，也無法在無法存取的伺服器上，將 [資料加密] 選項從 [`Yes`（由客戶管理）] 變更為 [`No` （服務管理）]。 您必須手動重新驗證金鑰，才能再次存取伺服器。 這是保護資料免于未經授權存取的必要動作，同時撤銷對客戶管理的金鑰的許可權。
+如果不再需要 MySQL 伺服器無法訪問的 Azure 資料庫，則可以將其刪除以停止產生成本。 在還原金鑰保存庫且伺服器可用之前，不允許對伺服器上的其他操作。 當資料加密使用客戶管理的金鑰加密時，也不可能將資料`Yes`加密選項從（客戶管理`No`）更改為不可訪問的伺服器上（服務管理）。 在再次訪問伺服器之前，您必須手動重新驗證金鑰。 此操作對於在吊銷客戶管理金鑰的許可權時防止資料被未經授權的訪問是必需的。
 
-## <a name="common-errors-that-cause-the-server-to-become-inaccessible"></a>導致伺服器變成無法存取的常見錯誤
+## <a name="common-errors-that-cause-the-server-to-become-inaccessible"></a>導致伺服器無法訪問的常見錯誤
 
-下列錯誤配置會導致使用 Azure Key Vault 金鑰之資料加密的大部分問題：
+以下錯誤配置導致使用 Azure 金鑰保存庫金鑰的資料加密問題：
 
-- 金鑰保存庫無法使用或不存在：
+- 金鑰保存庫不可用或不存在：
   - 意外刪除金鑰保存庫。
   - 間歇網路錯誤導致無法使用金鑰保存庫。
 
-- 您沒有存取金鑰保存庫的許可權，或機碼不存在：
-  - 金鑰已過期或不小心遭到刪除或停用。
-  - 不小心刪除了適用於 MySQL 的 Azure 資料庫實例的受控識別。
-  - 適用於 MySQL 的 Azure 資料庫實例的受控識別沒有足夠的索引鍵許可權。 例如，許可權不包含 Get、Wrap 和解除包裝。
-  - 已撤銷或刪除適用於 MySQL 的 Azure 資料庫實例的受控識別許可權。
+- 您沒有訪問金鑰保存庫的許可權，或者金鑰不存在：
+  - 金鑰已過期或意外刪除或禁用。
+  - MySQL 實例的 Azure 資料庫的託管標識被意外刪除。
+  - MySQL 實例的 Azure 資料庫的託管標識具有足夠的金鑰許可權。 例如，許可權不包括獲取、換行和取消包裝。
+  - MySQL 實例的 Azure 資料庫的託管標識許可權已吊銷或刪除。
 
 ## <a name="identify-and-resolve-common-errors"></a>識別及解決常見的錯誤
 
 ### <a name="errors-on-the-key-vault"></a>金鑰保存庫上的錯誤
 
-#### <a name="disabled-key-vault"></a>已停用金鑰保存庫
+#### <a name="disabled-key-vault"></a>禁用金鑰保存庫
 
 - `AzureKeyVaultKeyDisabledMessage`
-- **說明**：無法在伺服器上完成作業，因為 Azure Key Vault 金鑰已停用。
+- **說明**： 由於 Azure 金鑰保存庫金鑰已禁用，因此無法在伺服器上完成該操作。
 
-#### <a name="missing-key-vault-permissions"></a>遺失金鑰保存庫許可權
+#### <a name="missing-key-vault-permissions"></a>缺少金鑰保存庫許可權
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **說明**：伺服器沒有所需的 Get、Wrap 和解除包裝許可權可 Azure Key Vault。 將任何缺少的許可權授與識別碼為的服務主體。
+- **說明**：伺服器沒有 Azure 金鑰保存庫所需的獲取、換行和取消包裝許可權。 使用 ID 向服務主體授予任何缺少的許可權。
 
 ### <a name="mitigation"></a>降低
 
-- 確認客戶管理的金鑰存在於金鑰保存庫中。
+- 確認金鑰保存庫中存在客戶管理的金鑰。
 - 識別金鑰保存庫，並在 Azure 入口網站中移至該金鑰保存庫。
-- 請確定金鑰 URI 識別出存在的索引鍵。
+- 確保金鑰 URI 標識存在金鑰。
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Azure 入口網站，以在適用於 MySQL 的 Azure 資料庫上以客戶管理的金鑰設定資料加密](howto-data-encryption-portal.md)
+[使用 Azure 門戶在 MySQL 的 Azure 資料庫上使用客戶管理的金鑰設置資料加密](howto-data-encryption-portal.md)

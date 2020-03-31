@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 286d00ce718a34dea15a075984cc3b2a5e4cfec3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 762d67a291ec33e13ca9e7311b0cf11da140dd6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064669"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154265"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 在 Windows VM 中安裝 SQL、IIS、.NET 堆疊
 
@@ -137,8 +137,8 @@ Set-AzVMSqlServerExtension `
 > * 建立執行 SQL Server 的 VM
 > * 安裝 SQL Server 擴充功能
 
-前進到下一個教學課程，以了解如何使用 SSL 憑證保護 IIS Web 伺服器。
+前進到下一個教學課程，以了解如何使用 TLS/SSL 憑證保護 IIS Web 伺服器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 憑證保護 IIS Web 伺服器](tutorial-secure-web-server.md)
+> [使用 TLS/SSL 憑證保護 IIS Web 伺服器](tutorial-secure-web-server.md)
 

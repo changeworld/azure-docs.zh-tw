@@ -1,5 +1,5 @@
 ---
-title: 疑難排解連接-Azure 入口網站
+title: 故障排除連接 - Azure 門戶
 titleSuffix: Azure Network Watcher
 description: 了解如何運用 Azure 入口網站，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
 ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283234"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 入口網站利用 Azure 網路監看員進行連線疑難排解
 
 > [!div class="op_single_selector"]
 > - [入口網站](network-watcher-connectivity-portal.md)
-> - [PowerShell](network-watcher-connectivity-powershell.md)
+> - [電源外殼](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -43,15 +43,15 @@ ms.locfileid: "79283234"
 
 這個範例會檢查透過連接埠 80 的目的地虛擬機器連線。
 
-瀏覽至您的網路監看員，然後按一下 [連線疑難排解]。 選取要作為連線能力檢查起點的虛擬機器。 在 [目的地] 區段中選擇 [選取虛擬機器]，然後選擇要測試的正確虛擬機器和連接埠。
+瀏覽至您的網路監看員，然後按一下 [連線疑難排解]****。 選取要作為連線能力檢查起點的虛擬機器。 在 [目的地]**** 區段中選擇 [選取虛擬機器]****，然後選擇要測試的正確虛擬機器和連接埠。
 
-按一下 [檢查] 之後，系統就會檢查指定連接埠上虛擬機器之間的連線能力。 在範例中，目的地 VM 無法連線，因此會顯示躍點清單。
+按一下 [檢查]**** 之後，系統就會檢查指定連接埠上虛擬機器之間的連線能力。 在範例中，目的地 VM 無法連線，因此會顯示躍點清單。
 
 ![查看虛擬機器的連線能力結果][1]
 
 ## <a name="check-remote-endpoint-connectivity"></a>檢查遠端端點的連線能力
 
-若要檢查遠端端點的連線能力和延遲，請在 [目的地] 區段中選擇 [手動指定] 選項按鈕，輸入 URL 和連接埠，然後按一下 [檢查]。  這會用於網站與儲存體端點之類的遠端端點。
+若要檢查遠端端點的連線能力和延遲，請在 [目的地]**** 區段中選擇 [手動指定]**** 選項按鈕，輸入 URL 和連接埠，然後按一下 [檢查]****。  這會用於網站與儲存體端點之類的遠端端點。
 
 ![查看網站的連線能力結果][2]
 
@@ -59,7 +59,7 @@ ms.locfileid: "79283234"
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
-造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來得知 VM 是否允許特定流量流入或流出
+通過訪問[檢查 IP 流驗證](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允許某些流量進入或退出 VM
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

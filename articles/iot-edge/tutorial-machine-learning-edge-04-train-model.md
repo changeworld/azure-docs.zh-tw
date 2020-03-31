@@ -4,16 +4,16 @@ description: 在本教學課程中，您將使用 Azure Machine Learning 對機�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 2/10/2020
+ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650753"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80236037"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教學課程：定型和部署 Azure Machine Learning 模型
 
@@ -62,7 +62,9 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 
 1. 從新帳戶的 [使用者] 頁面，選取頂端功能表列中的 [我的專案]  。
 
-1. 在 [建立新專案]  對話方塊中，提供也會自動形成 [專案識別碼]  的 [專案名稱]  。
+1. 選取 **+** 按鈕以新增專案。
+
+1. 在 [建立新專案]  對話方塊中，提供 [專案名稱]  。 
 
 1. 因為不需要公開專案或具有讀我檔案，請讓 [公用]  和 [讀我檔案]  保持未核取狀態。
 
@@ -73,6 +75,8 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 1. 選取 [選擇檔案]  。
 
 1. 瀏覽至 **C:\source\IoTEdgeAndMlSample\AzureNotebooks**。 選取清單中的所有檔案，然後按一下 [開啟]  。
+
+1. 勾選 [我信任這些檔案的內容]  方塊。
 
 1. 選取 [上傳]  以開始上傳，然後在程序完成時選取 [完成]  。
 
@@ -96,7 +100,7 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 
 * **Test\_FD003.txt：** 此檔案包含我們將在驗證已定型分類器時作為測試集使用的資料。 為求簡化，我們選擇使用針對原始競賽所提供的測試資料作為測試集。
 
-* **RUL\_FD003.txt：** 此檔案包含 Test\_FD003.txt 檔案中每個裝置之最後一個週期的 RUL。 請參閱 C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan 中的 readme.txt 和 Damage Propagation Modeling.pdf 檔案，以取得該資料的詳細說明。
+* **RUL\_FD003.txt：** 此檔案包含 Test\_FD003.txt 檔案中每個裝置的最後一個週期的剩餘使用年限 (RUL)。 請參閱 C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan 中的 readme.txt 和 Damage Propagation Modeling.pdf 檔案，以取得該資料的詳細說明。
 
 * **Utils.py：** 包含用來處理資料的 Python 公用程式函式。 第一個筆記本包含這些函式的詳細說明。
 
@@ -110,24 +114,22 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 
     ![選取要執行的第一個筆記本](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-1. 出現提示時，請從對話方塊選擇 [Python 3.6 核心]，然後選取 [設定核心]  。
-
 1. 如果該筆記本被列為 [不受信任]  ，請按一下位於筆記本右上方的 [不受信任]  小工具。 出現對話方塊時，請選取 [信任]  。
 
-1. 在筆記本中，向下捲動至緊接在 [設定全域屬性]  指示後面，且以代碼 `AZURE_SUBSCRIPTION_ID =` 開頭的資料格，然後填入 Azure 訂用帳戶、設定和資源的值。
+1. 為了獲得最佳結果，請參閱每個資料格的文件，並個別加以執行。 選取工具列上的 [執行]  。 之後，您會發現執行多個資料格較為方便。 您可以忽略升級和淘汰的警告。
 
-    ![在筆記本中設定全域屬性](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
+    資料格在執行時會顯示以方括號括住的星號 ([\*])。 當資料格的作業完成時，星號會以數字取代，並可能會出現相關輸出。 筆記本中的資料格會循序建置，而且一次只能執行一個。
 
-1. 選取工具列上的 [執行]  來執行該資料格。
-
-    資料格在執行時會顯示由方括號括住的星號 ([\*])。 當資料格的作業完成時，星號會以數字取代，並可能會出現相關輸出。 筆記本中的資料格會循序建置，而且一次只能執行一個。
-
-    依照筆記本中的指示進行操作。 您也可以從 [資料格]  功能表來使用執行選項、使用 `Ctrl` + `Enter` 來執行資料格，以及使用 `Shift` + `Enter` 來執行資料格並前進到下一個資料格。
+    您也可以從 [資料格]  功能表來使用執行選項、使用 `Ctrl` + `Enter` 來執行資料格，以及使用 `Shift` + `Enter` 來執行資料格並前進到下一個資料格。
 
     > [!TIP]
     > 為了讓資料格作業保持一致，請避免在瀏覽器中從多個索引標籤執行相同的筆記本。
 
-1. 向下捲動至緊接在 [建立工作區]  概觀文字後面的資料格，並執行該資料格。 在資料格的輸出中，尋找會指示您登入以進行驗證的連結。 
+1. 在 [設定全域屬性]  指示後面的資料格中，寫入您的 Azure 訂用帳戶、設定和資源的值。 然後，執行資料格。
+
+    ![在筆記本中設定全域屬性](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
+
+1. 在 [工作區詳細資料]  前面的資料格中，在資料格執行後，尋找指示您登入以進行驗證的連結：
 
     ![裝置驗證的登入提示](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
 
@@ -135,17 +137,17 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
 
     ![在裝置確認時驗證應用程式](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
 
-1. 至此，您便可以執行其餘的資料格。 最好是執行所有資料格，以便讓資料格中的代碼循序執行。 從 [資料格]  功能表中，選取 [全部執行]  。 反過來向上捲動筆記本，並檢閱資料格作業的完成方式。
+1. 在 [瀏覽結果]  前面的資料格中，複製執行識別碼中的值，然後將其貼到 [重新組成執行]  後面的資料格中包含的執行識別碼。
 
-    在 [探索資料]  區段中，您可以檢閱 [感應器讀數和 RUL]  子區段中的資料格，其會呈現感應器測量值的散佈圖。
+   ![在資料格之間複製執行識別碼](media/tutorial-machine-learning-edge-04-train-model/automl-id.png)
 
-    ![感應器讀數散佈圖](media/tutorial-machine-learning-edge-04-train-model/sensor-readings.png)
+1. 執行筆記本中其餘的資料格。
 
-1. 儲存筆記本並返回專案頁面，方法是按一下筆記本右上角的專案名稱，或回到瀏覽器中。
+1. 儲存筆記本並返回您的專案頁面。
 
-1. 開啟 **02-turbofan\_deploy\_model.ipynb**，並重複此程序中的步驟來執行第二個筆記本。
+1. 開啟 **02-turbofan\_deploy\_model.ipynb**，並執行每個資料格。 您必須先登入，以在 [設定工作區]  後面的資料格中進行驗證。
 
-1. 儲存筆記本並返回專案頁面，方法是按一下筆記本右上角的專案名稱，或回到瀏覽器中。
+1. 儲存筆記本並返回您的專案頁面。
 
 ### <a name="verify-success"></a>確認是否成功
 
@@ -161,11 +163,21 @@ Azure Notebooks 能運用 Azure Machine Learning 工作區，其為用來對機�
     | ./aml_config/model_config.json | 我們需要在 Azure 中的 **turbofanDemo** Machine Learning 工作區中部署模型的設定檔。 |
     | myenv.yml| 提供所部署 Machine Learning 模型相依性的相關資訊。|
 
-1. 在 Azure 入口網站中確認 **turboFanDemo** Machine Learning 工作區存在於資源群組中。
+1. 確認下列 Azure 資源已建立。 某些資源名稱會附加隨機字元。
+
+    | Azure 資源 | 名稱 |
+    | --- | --- |
+    | 機器學習服務工作區 | turborfanDemo |
+    | Container Registry | turbofandemoxxxxxxxx |
+    | Application Insights | turbofaninsightxxxxxxxx |
+    | Key Vault | turbofankeyvaultbxxxxxxxx |
+    | 儲存體 | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>偵錯
 
-您可以將 Python 陳述式內嵌至筆記本以進行偵錯，主要是透過 `print()` 命令。 如果您看到未定義的變數或物件，請執行其首次宣告或具現化時所在的資料格。
+您可以將 Python 陳述式插入至筆記本以進行偵錯，例如使用 `print()` 命令來顯示值。 如果您看到未定義的變數或物件，請執行其首次宣告或具現化時所在的資料格。
+
+如果需要重做筆記本，您可能必須刪除先前建立的檔案和 Azure 資源。
 
 ## <a name="next-steps"></a>後續步驟
 

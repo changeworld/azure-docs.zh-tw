@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720464"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的模型化階段
@@ -23,7 +23,7 @@ ms.locfileid: "76720464"
 本文將概要說明與 Team Data Science Process (TDSP) 模型化階段相關聯的目標、工作和交付項目。 此流程會提供建議的生命週期，供您建構資料科學專案。 生命週期可描繪出專案一般執行時 (通常會反覆進行) 的主要階段：
 
    1. **了解商務**
-   2. **資料取得與認知**
+   2. **資料獲取和理解**
    3. **模型化**
    4. **部署**
    5. **客戶接受度**
@@ -41,9 +41,9 @@ ms.locfileid: "76720464"
 ## <a name="how-to-do-it"></a>作法
 此階段會解決三項主要工作︰
 
-  * **特徵設計**︰從未經處理資料建立資料特徵，以便訓練模型。
-  * **模型訓練**︰比較各個模型的成功標準，以找出最能精確回答問題的模型。
-  * 判斷您的模型是否**適用於生產環境**
+  * **特徵工程**：從原始資料創建資料要素，以方便模型培訓。
+  * **模型培訓**：通過比較其成功指標，查找最準確地回答這個問題的模型。
+  * 確定模型是否適合**生產。**
 
 ### <a name="feature-engineering"></a>特徵設計
 特徵設計包括納入、彙總和轉換未經處理的變數，以建立用於分析的特徵。 如果您想要深入了解模型驅動因子，就必須了解特徵之間的關聯方式，以及機器學習演算法要如何使用這些特徵。 
@@ -57,7 +57,7 @@ ms.locfileid: "76720464"
 
 模型訓練程序包括下列步驟︰ 
 
-   * 將用於模型化的**輸入資料隨機分割**成訓練資料集和測試資料集。
+   * 隨機**拆分輸入資料**，以便建模到訓練資料集和測試資料集中。
    * 使用訓練資料集來**建置模型**。
    * **評估**訓練和測試資料集。 使用一系列競爭的機器學習演算法，以及專為使用目前資料回答感興趣問題的各種相關微調參數 (稱為*參數掃掠*)。
    * 比較替代方法之間的成功標準，以**決定用來回答問題的「最佳」方案**。
@@ -72,9 +72,9 @@ ms.locfileid: "76720464"
 ## <a name="artifacts"></a>構件
 此階段所產生的成品包括︰
 
-   * [特徵集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md) \(英文\)：**Data definition** 報告的 **Feature sets** 區段會說明針對模型化所開發的特徵。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
+   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：為建模開發的功能在**資料定義**報表的 **"功能集**"部分中描述。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
    * [模型報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md) \(英文\)：每個嘗試過的模型，都會產生一個標準的範本型報告，提供每項實驗的詳細資料。
-   * **檢查點決策**：評估模型是否足以執行生產環境。 需要詢問的一些重要問題是︰
+   * **檢查點決策**：評估模型是否為生產工作充分。 需要詢問的一些重要問題是︰
      * 在給訂測試資料的情況下，模型是否有足夠的信心來回答問題？ 
      * 您應該嘗試任何替代方法嗎？ 您應該收集其他資料、進行更多特徵設計，或實驗其他演算法嗎？
 
@@ -83,7 +83,7 @@ ms.locfileid: "76720464"
 以下是 TDSP 生命週期中每個步驟的連結：
 
    1. [了解商務](lifecycle-business-understanding.md)
-   2. [資料取得與認知](lifecycle-data.md)
+   2. [資料獲取和理解](lifecycle-data.md)
    3. [模型化](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)

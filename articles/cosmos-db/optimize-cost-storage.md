@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754952"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化儲存體成本
 
-Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量 (需要在 Azure Cosmos 容器或資料庫上進行佈建/設定)，儲存體是根據耗用量來計費。 您只需為自己所耗用的邏輯儲存體支付費用，且不需要事先保留任何儲存體。 儲存體會根據您在 Azure Cosmos 容器中新增或移除的資料，自動相應增加和減少。
+Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量 (需要在 Azure Cosmos 容器或資料庫上進行佈建/設定)，儲存體是根據耗用量來計費。 您只需為自己所耗用的邏輯儲存體支付費用，且不需要事先保留任何儲存體。 存儲根據您添加或刪除的資料自動向上和向下擴展到 Azure Cosmos 容器。
 
 ## <a name="storage-cost"></a>儲存成本
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量
 
 ## <a name="check-storage-consumed"></a>檢查已耗用的儲存體
 
-若要檢查 Azure Cosmos 容器的儲存體耗用量，您可以在容器上執行 HEAD 或 GET 要求，然後檢查 `x-ms-request-quota` 和 `x-ms-request-usage` 標頭。 或者，在使用 .NET SDK 時，您可以使用[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))和[DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx)屬性來取得使用的儲存體。
+若要檢查 Azure Cosmos 容器的儲存體耗用量，您可以在容器上執行 HEAD 或 GET 要求，然後檢查 `x-ms-request-quota` 和 `x-ms-request-usage` 標頭。 或者，在使用 .NET SDK 時，可以使用[文檔大小配額](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))和[文檔大小用屬性](https://msdn.microsoft.com/library/azure/dn850324.aspx)來消耗存儲。
 
 ## <a name="using-sdk"></a>使用 SDK
 
@@ -55,7 +55,7 @@ Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuo
 接下來，您可以利用下列文章繼續深入了解 Azure Cosmos DB 中有關成本最佳化的詳細資訊：
 
 * 深入了解[最佳化開發與測試](optimize-dev-test.md)
-* 深入了解 [Azure Cosmos DB 上的計費](understand-your-bill.md)
+* 深入了解 [Azure Cosmos DB 帳單](understand-your-bill.md)
 * 深入了解[最佳化輸送量成本](optimize-cost-throughput.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
 * 深入了解[最佳化查詢成本](optimize-cost-queries.md)

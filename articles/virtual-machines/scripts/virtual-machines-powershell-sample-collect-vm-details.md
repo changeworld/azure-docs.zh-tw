@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 收集訂用帳戶中所有 Vm 的詳細資料
-description: 使用 PowerShell 收集訂用帳戶中所有 Vm 的詳細資料
+title: 使用 PowerShell 收集有關訂閱中所有 VM 的詳細資訊
+description: 使用 PowerShell 收集有關訂閱中所有 VM 的詳細資訊
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -16,23 +16,23 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900209"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集訂用帳戶中所有 Vm 的詳細資料
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集有關訂閱中所有 VM 的詳細資訊
 
-此腳本會建立一個 csv，其中包含所提供訂用帳戶中的 VM 名稱、資源組名、區域、虛擬網路、子網、私人 IP 位址、OS 類型，以及 Vm 的公用 IP 位址。
+此腳本創建一個 csv，其中包含提供的訂閱中 VM 名稱、資源組名稱、區域、虛擬網路、子網、私人 IP 位址、作業系統類型和公共 IP 位址。
 
-如果您沒有 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+如果沒有[Azure 訂閱](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請先創建[一個免費帳戶](https://azure.microsoft.com/free)。然後開始。
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]**** 即可。 您還可以通過 訪問[https://shell.azure.com/powershell](https://shell.azure.com/powershell)在單獨的瀏覽器選項卡中啟動雲外殼。 選擇 **"複製"** 以複製代碼塊，將其粘貼到雲外殼中，然後按 Enter 以運行它。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -70,14 +70,14 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>指令碼說明
-此腳本會使用下列命令，在訂用帳戶中建立 Vm 詳細資料的 csv 匯出。 下表中的每個命令都會連結至命令特定的文件。
+此腳本使用以下命令創建訂閱中 VM 詳細資訊的 csv 匯出。 下表中的每個命令都會連結至命令特定的文件。
 
-|命令|注意|
+|Command|注意|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|設定要在目前會話中使用之 Cmdlet 的租使用者、訂用帳戶和環境。|
+|[選擇-訂閱](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|設置租戶、訂閱和環境，供 Cmdlet 在當前會話中使用。|
 |[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|取得虛擬機器的屬性。|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|取得公用 IP 位址。|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|取得網路介面。|
+|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|獲取公共 IP 位址。|
+|[獲取阿茲網路介面](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|獲取網路介面。|
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ab12b206d5bb82956a8b607368af44ea0eaca40e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471033"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239241"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>教學課程：對 Resource Manager 範本的部署進行疑難排解
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>教學課程：對 ARM 範本部署進行疑難排解
 
-了解對 Resource Manager 範本部署錯誤進行疑難排解。 在本教學課程中，您將在範本中設定兩個錯誤，並了解如何使用活動記錄和部署歷程記錄來解決問題。
+了解如何對 Azure Resource Manager (ARM) 範本部署錯誤進行疑難排解。 在本教學課程中，您將在範本中設定兩個錯誤，並了解如何使用活動記錄和部署歷程記錄來解決問題。
 
 範本部署有兩種類型的相關錯誤：
 
@@ -39,7 +39,7 @@ ms.locfileid: "75471033"
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](use-vs-code-to-create-template.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
 
 ## <a name="create-a-problematic-template"></a>建立有問題的範本
 
@@ -128,4 +128,4 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您了解如何對 Resource Manager 範本部署錯誤進行疑難排解。  如需詳細資訊，請參閱[對使用 Azure Resource Manager 時常見的 Azure 部署錯誤進行疑難排解](common-deployment-errors.md)。
+在本教學課程中，您已了解如何對 ARM 範本部署錯誤進行疑難排解。  如需詳細資訊，請參閱[對使用 Azure Resource Manager 時常見的 Azure 部署錯誤進行疑難排解](common-deployment-errors.md)。
