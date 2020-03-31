@@ -1,6 +1,6 @@
 ---
 title: 針對 Azure 自動化共用資源的錯誤進行疑難排解
-description: 瞭解如何針對支援 runbook 的 Azure 自動化共用資源進行疑難排解及解決問題。
+description: 瞭解如何使用支援 Runbook 的 Azure 自動化共用資源來排除和解決問題。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278320"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>針對共用資源的錯誤進行疑難排解
@@ -21,11 +21,11 @@ ms.locfileid: "79278320"
 
 ## <a name="modules"></a>模組
 
-### <a name="module-stuck-importing"></a>案例：模組在匯入時卡住
+### <a name="scenario-a-module-is-stuck-importing"></a><a name="module-stuck-importing"></a>案例：模組在匯入時卡住
 
 #### <a name="issue"></a>問題
 
-當您在 Azure 自動化中匯入或更新模組時，模組會卡在 [匯入中] 狀態。
+當您在 Azure 自動化中匯入或更新模組時，模組會卡在 [匯入中]**** 狀態。
 
 #### <a name="cause"></a>原因
 
@@ -33,17 +33,17 @@ ms.locfileid: "79278320"
 
 #### <a name="resolution"></a>解決方案
 
-若要解決此問題，您必須使用 **Remove-AzureRmAutomationModule** Cmdlet 移除卡在[匯入](/powershell/module/azurerm.automation/remove-azurermautomationmodule)狀態的模組。 您可以稍後再重試匯入模組。
+若要解決此問題，您必須使用 [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) Cmdlet 移除卡在**匯入**狀態的模組。 您可以稍後再重試匯入模組。
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>案例： AzureRM 模組在嘗試更新之後會停滯在匯入
+### <a name="scenario-azurerm-modules-are-stuck-importing-after-trying-to-update-them"></a><a name="update-azure-modules-importing"></a>方案：AzureRM 模組在嘗試更新後已停止導入
 
 #### <a name="issue"></a>問題
 
-嘗試更新您的 AzureRM 模組之後，您的帳戶中會保留下列訊息的橫幅：
+嘗試更新 AzureRM 模組後，帳戶中將保留帶有以下消息的橫幅：
 
 ```error
 Azure modules are being updated
@@ -51,13 +51,13 @@ Azure modules are being updated
 
 #### <a name="cause"></a>原因
 
-有一個已知問題，就是在資源群組中的自動化帳戶中更新 AzureRM 模組，其數值名稱開頭為0。
+更新自動化帳戶中的 AzureRM 模組存在已知問題，該模組位於具有以 0 開頭的數位名稱的資源組中。
 
 #### <a name="resolution"></a>解決方案
 
-若要在您的自動化帳戶中更新 Azure 模組，它必須位於具有英數位元名稱的資源群組中。 數位名稱開頭為0的資源群組目前無法更新 AzureRM 模組。
+要更新自動化帳戶中的 Azure 模組，它必須位於具有字母數位名稱的資源組中。 以 0 開頭的具有數位名稱的資源組此時無法更新 AzureRM 模組。
 
-### <a name="module-fails-to-import"></a>案例：無法匯入模組，或無法在匯入之後執行 Cmdlet
+### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a><a name="module-fails-to-import"></a>案例：無法匯入模組，或無法在匯入之後執行 Cmdlet
 
 #### <a name="issue"></a>問題
 
@@ -76,11 +76,11 @@ Azure modules are being updated
 
 下列任何一個解決方案都可以修正此問題：
 
-* 確定模組遵循下列格式：ModuleName.Zip **->** 模組名稱或版本號碼 **->** (ModuleName.psm1、ModuleName.psd1)
+* 確保模組遵循以下格式：模組名稱.Zip**->** 模組名稱或版本號**->**（模組名稱.psm1，模組名稱.psd1）
 * 開啟 .psd1 檔案，並且查看該模組是否有任何相依性。 如果有，請將這些模組上傳至自動化帳戶。
 * 請確定任何參考的 .dll 會出現在模組資料夾。
 
-### <a name="all-modules-suspended"></a>案例： Update-azuremodule.ps1 在更新模組時暫停
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>方案：更新-AzureModule.ps1 更新模組時掛起
 
 #### <a name="issue"></a>問題
 
@@ -118,7 +118,7 @@ Azure modules are being updated
 
 ## <a name="run-as-accounts"></a>執行身分帳戶
 
-### <a name="unable-create-update"></a>案例：您無法建立或更新執行身分帳戶
+### <a name="scenario-youre-unable-to-create-or-update-a-run-as-account"></a><a name="unable-create-update"></a>方案：您無法創建或更新"運行即"帳戶
 
 #### <a name="issue"></a>問題
 
@@ -136,13 +136,13 @@ You do not have permissions to create…
 
 若要建立或更新執行身分帳戶，您必須具備執行身分帳戶所用資源的適當權限。 若要深入了解建立或更新執行身分帳戶所需的權限，請參閱[執行身分帳戶權限](../manage-runas-account.md#permissions)。
 
-如果問題是因為鎖定而造成的，請確認鎖定可以移除。 然後，瀏覽至已鎖定的資源、以滑鼠右鍵按一下鎖定，然後選擇 [刪除] 以移除鎖定。
+如果問題是因為鎖定而造成的，請確認鎖定可以移除。 然後，瀏覽至已鎖定的資源、以滑鼠右鍵按一下鎖定，然後選擇 [刪除]**** 以移除鎖定。
 
-### <a name="iphelper"></a>案例：當執行 runbook 時，您會收到「找不到 DLL ' iplpapi ' 中名為 ' GetPerAdapterInfo ' 的進入點」錯誤。
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>方案：在執行 Runbook 時，您會收到錯誤"無法在 DLL "iplpapi.dll"中找到名為"GetPerAdapterinfo"的進入點。
 
 #### <a name="issue"></a>問題
 
-執行 runbook 時，您會收到下列例外狀況：
+執行 Runbook 時，您會收到以下異常：
 
 ```error
 Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
@@ -150,11 +150,11 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>原因
 
-此錯誤很可能是因為[執行身分帳戶](../manage-runas-account.md)設定不正確所造成。
+此錯誤很可能是由配置不正確的["作為帳戶運行"](../manage-runas-account.md)引起的。
 
 #### <a name="resolution"></a>解決方案
 
-請確定已正確設定您的[執行身分帳戶](../manage-runas-account.md)。 正確設定之後，請確定您的 runbook 中有適當的程式碼可向 Azure 進行驗證。 下列範例顯示使用執行身分帳戶在 runbook 中向 Azure 進行驗證的程式碼片段。
+確保正確配置了["以帳戶身份運行](../manage-runas-account.md)"。 正確配置後，請確保 Runbook 中具有使用 Azure 進行身份驗證的正確代碼。 下面的示例顯示了使用"運行作為帳戶"在 Runbook 中向 Azure 進行身份驗證的程式碼片段。
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -167,5 +167,5 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
 * 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答
-* 與 [@AzureSupport](https://twitter.com/azuresupport) 連繫－專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，像是解答、支援及專家等。
-* 如果需要更多協助，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。
+* 與[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帳戶連接，通過將 Azure 社區連接到正確的資源（答案、支援和專家），從而改善客戶體驗。
+* 如果需要更多協助，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。

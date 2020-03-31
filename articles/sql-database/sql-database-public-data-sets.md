@@ -1,5 +1,5 @@
 ---
-title: 適用于 Azure 分析的公用資料集
+title: 用於 Azure 分析的公共資料集
 description: 了解您可以用來建立原型及測試 Azure 分析服務和解決方案的公用資料集。
 services: sql-database
 ms.service: sql-database
@@ -12,24 +12,24 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
 ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973538"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用於測試和建立原型的公用資料集
 
 瀏覽這份公用資料集清單，找出您可以用來建立原型及測試儲存體和分析服務與解決方案的資料。
 
-## <a name="us-government-and-agency-data"></a>美國政府和機構資料
+## <a name="us-government-and-agency-data"></a>美國政府和政府機構資料
 
 | 資料來源 | 關於資料 | 關於檔案 |
 |---|---|---|
-| [美國政府資料](https://catalog.data.gov/dataset) | 超過250000的資料集，涵蓋了農業、氣候、消費者、生態系統、教育、能源、財務、醫療、當地政府、製造、maritime、海運、公共安全，以及美國的科學和研究 | 各種格式 (包括 HTML、XML、CSV、JSON、Excel 和其他許多格式)、各種大小的檔案。 您可以依照檔案格式篩選可用的資料集。 |
+| [US Gov 資料](https://catalog.data.gov/dataset) | 超過 250，000 個資料集，涵蓋美國農業、氣候、消費者、生態系統、教育、能源、金融、衛生、地方政府、製造業、海洋、海洋、公共安全以及科學和研究。 | 各種格式 (包括 HTML、XML、CSV、JSON、Excel 和其他許多格式)、各種大小的檔案。 您可以依照檔案格式篩選可用的資料集。 |
 | [美國人口普查資料](https://www.census.gov/data.html) | 有關美國人口的統計資料 | 資料集採用各種格式。 |
 | [來自 NASA 的地球科學資料](https://earthdata.nasa.gov/) | 超過 32,000 個資料集合，涵蓋農業、大氣、生物圈、氣候、冰雪圈、人類範圍、水圈、地表、海洋、太陽與地球互動等資料。 | 資料集採用各種格式。 |
-| [航班延遲和其他運輸資料](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | 「美國運輸的（點）運輸統計部門（BTS）部門，會追蹤由大型空中營運之國內航班的準時效能。 這個網站上公布的摘要表會顯示準時、延遲、取消和轉降航班數目的摘要資訊。」 | 檔案採用 CSV 格式。 |
+| [航班延遲和其他運輸資料](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "美國運輸部 （DOT） 運輸統計局 （BTS） 跟蹤大型航空公司運營的國內航班的準時性能。 這個網站上公布的摘要表會顯示準時、延遲、取消和轉降航班數目的摘要資訊。」 | 檔案採用 CSV 格式。 |
 | [交通事故死亡率 - 美國事故死亡率分析報告系統 (FARS)](https://www.nhtsa.gov/FARS) | 「FARS 是一項全國人口普查，提供 NHTSA、美國國會和美國大眾有關在汽機車交通碰撞中遭受嚴重傷害的年度資料。」 | 「使用 FARS 查詢系統建立自己線上執行的事故死亡率資料。 或從 FTP 網站下載自 1975 年起的所有 FARS 資料。」 |
 | [有毒化學物質資料 - EPA 毒性預測技術 (ToxCast™) 資料](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | 「EPA 針對數千種化學物質所提供之可公開取得的最新高通量毒性資料。 這項資料是透過 EPA 的 ToxCast 研究技術產生。」 | 資料集是以各種格式提供，包括試算表、R 套件和 MySQL 資料庫檔案。 |
 | [有毒化學物質資料 - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | 「2014 Tox21 Data Challenge 主要是為了幫助科學家了解經由「21 世紀毒理學 (Toxicology in the 21st Century)」計畫測試之化學物質和化合物的潛能，進而以可能導致毒效應的方式來擾亂生物路徑。」 | 資料集是以 SMILES 和 SDF 格式提供。 此資料提供「檢驗活動資料和多達 10,000 種化合物之 Tox21 集合 (Tox21 10k) 的化學結構。」 |
@@ -41,7 +41,7 @@ ms.locfileid: "74973538"
 |---|---|---|
 | [紐約市計程車資料](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | 「計程車車程記錄的欄位會擷取上車和下車日期/時間、上車和下車地點、車程距離、車資明細、費率類型、付款類型和司機回報的乘客數。」 | 資料集依月份放在 CSV 檔案中。 |
 | [Microsoft Research 資料集 -「研究用的資料科學」](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | 多個資料集，涵蓋人機互動、音訊/視訊、資料採礦/資訊擷取、地理空間/位置、自然語言處理和機器人/電腦視覺。 | 資料集採用各種格式 (經過壓縮以供下載)。 |
-| [公用基因體資料](https://www.completegenomics.com/public-data/) | 「整個人類基因體的各種資料集都可以免費公開使用，以加強任何基因研究 ...」提供者 Complete Genomics 是私用公司。 | 解壓縮後的資料集採用 UNIX 文字格式。 您也可取得分析工具。 |
+| [公用基因體資料](https://www.completegenomics.com/public-data/) | "一組多樣化的全人類基因組資料集可免費供公眾使用，以加強任何基因組研究......"供應商，完全基因組學，是一家私人營利性公司。 | 解壓縮後的資料集採用 UNIX 文字格式。 您也可取得分析工具。 |
 | [Open Science Data Cloud 資料](https://www.opensciencedatacloud.org/projects/) | 「Open Science Data Cloud 為科學界提供用於儲存、共用及分析 TB 和 PB 規模科學資料集的資源」。| 資料集採用各種格式。 |
 | [全球氣候資料 - WorldClim](https://worldclim.org/) | 「WorldClim 是一組全球氣候圖層 (格狀氣候資料)，包含大約 1 平方公里的空間解析。 這些資料可用於對應和空間模擬。」 | 這些檔案包含地理空間資料。 如需詳細資訊，請參閱[資料格式](https://worldclim.org/formats1)。 |
 | [人類社會相關資料 - GDELT 專案](https://www.gdeltproject.org/data.html) | 「GDELT 專案是人類社會曾建立過的最大、最詳盡且最高解析度的開放資料庫。」 | 未經處理的資料檔採用 CSV 格式。 |

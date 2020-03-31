@@ -1,6 +1,6 @@
 ---
-title: 使用 Microsoft Graph Api 來設定布建 Azure Active Directory |Microsoft Docs
-description: 需要為應用程式的多個實例設定布建嗎？ 瞭解如何使用 Microsoft Graph Api 來自動化自動布建的設定，以節省時間。
+title: 使用 Microsoft 圖形 API 配置預配 - Azure 活動目錄 |微軟文檔
+description: 需要為應用程式的多個實例設置預配？ 瞭解如何使用 Microsoft 圖形 API 自動設定自動預配來節省時間。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,46 +16,46 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b59bceb07facd944d7159eeb416c7e9e91557c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481461"
 ---
-# <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 設定布建
+# <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft 圖形 API 配置預配
 
-Azure 入口網站是一次為個別應用程式設定布建的便利方式。 但是，如果您要建立應用程式的數個（甚至上百個）實例，使用 Microsoft Graph Api 來自動化建立和設定應用程式會變得更容易。 本文概述如何透過 Api 將布建設定自動化。 這個方法通常用於[Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)之類的應用程式。
+Azure 門戶是一次為單個應用配置一個應用的便捷方法。 但是，如果您正在創建應用程式的多個（甚至數百個）實例，則使用 Microsoft 圖形 API 自動創建和配置應用程式會更容易。 本文概述了如何通過 API 自動部署配置。 此方法通常用於[亞馬遜 Web 服務](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)等應用程式。
 
-**使用 Microsoft Graph Api 將布建設定自動化的步驟總覽**
+**使用 Microsoft 圖形 API 自動設定配置的步驟概述**
 
 
 |步驟  |詳細資料  |
 |---------|---------|
-|[步驟1。建立資源庫應用程式](#step-1-create-the-gallery-application)     |登入 API 用戶端 <br> 取出資源庫應用程式範本 <br> 建立資源庫應用程式         |
-|[步驟2。建立以範本為基礎的布建作業](#step-2-create-the-provisioning-job-based-on-the-template)     |取得布建連接器的範本 <br> 建立布建作業         |
-|[步驟3。授權存取](#step-3-authorize-access)     |測試應用程式的連接 <br> 儲存認證         |
-|[步驟4。開始布建作業](#step-4-start-the-provisioning-job)     |啟動工作         |
-|[步驟5。監視布建](#step-5-monitor-provisioning)     |檢查布建作業的狀態 <br> 取出布建記錄         |
+|[步驟 1.創建庫應用程式](#step-1-create-the-gallery-application)     |登錄到 API 用戶端 <br> 檢索庫應用程式範本 <br> 創建庫應用程式         |
+|[步驟 2.基於範本創建預配作業](#step-2-create-the-provisioning-job-based-on-the-template)     |檢索預配連接器的範本 <br> 創建預配作業         |
+|[步驟 3.授權訪問](#step-3-authorize-access)     |測試與應用程式的連接 <br> 保存憑據         |
+|[步驟 4.開始預配作業](#step-4-start-the-provisioning-job)     |啟動工作         |
+|[步驟 5.監視預配](#step-5-monitor-provisioning)     |檢查預配作業的狀態 <br> 檢索預配日誌         |
 
 > [!NOTE]
-> 為了方便閱讀，本文中顯示的回應物件可能會縮短。 所有屬性都會從實際的呼叫傳回。
+> 為了可讀性，本文中顯示的回應物件可能會縮短。 所有屬性都將從實際調用返回。
 
-## <a name="step-1-create-the-gallery-application"></a>步驟1：建立資源庫應用程式
+## <a name="step-1-create-the-gallery-application"></a>第 1 步：創建庫應用程式
 
-### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>登入 Microsoft Graph Explorer （建議）、Postman，或您使用的任何其他 API 用戶端
+### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>登錄到 Microsoft 圖形資源管理器（推薦）、Postman 或您使用的任何其他 API 用戶端
 
-1. 啟動[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
-1. 選取 [使用 Microsoft 登入] 按鈕，然後使用 Azure AD 全域管理員或應用程式管理員認證登入。
+1. 啟動[微軟圖形資源管理器](https://developer.microsoft.com/graph/graph-explorer)
+1. 選擇"使用 Microsoft 登錄"按鈕並使用 Azure AD 全域管理員或應用管理員憑據登錄。
 
     ![Graph 登入](./media/application-provisioning-configure-api/wd_export_02.png)
 
-1. 成功登入時，您會在左側窗格中看到使用者帳戶的詳細資料。
+1. 成功登錄後，您將在左側窗格中看到使用者帳戶詳細資訊。
 
-### <a name="retrieve-the-gallery-application-template-identifier"></a>取得資源庫應用程式範本識別碼
-Azure AD 應用程式資源庫中的應用程式都有一個[應用程式範本](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)，可描述該應用程式的中繼資料。 使用此範本，您可以在租使用者中建立應用程式和服務主體的實例以進行管理。
+### <a name="retrieve-the-gallery-application-template-identifier"></a>檢索庫應用程式範本識別碼
+Azure AD 應用程式庫中的應用程式都有一個[應用程式範本](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)，用於描述該應用程式的中繼資料。 使用此範本，可以在租戶中創建應用程式和服務主體的實例進行管理。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 
 <!-- {
   "blockType": "request",
@@ -103,11 +103,11 @@ Content-type: application/json
 }
 ```
 
-### <a name="create-the-gallery-application"></a>建立資源庫應用程式
+### <a name="create-the-gallery-application"></a>創建庫應用程式
 
-在最後一個步驟中，使用為您的應用程式抓取的範本識別碼，以在您的租使用者中建立應用程式和服務主體的[實例](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)。
+使用最後一步中為應用程式檢索的範本 ID 在租戶中創建應用程式和服務主體的[實例](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 
 <!-- {
   "blockType": "request",
@@ -170,13 +170,13 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>步驟2：建立以範本為基礎的布建作業
+## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>步驟 2：基於範本創建預配作業
 
-### <a name="retrieve-the-template-for-the-provisioning-connector"></a>取得布建連接器的範本
+### <a name="retrieve-the-template-for-the-provisioning-connector"></a>檢索預配連接器的範本
 
-資源庫中啟用布建的應用程式具有可簡化設定的範本。 使用下列要求來抓取布建設定的[範本](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)。
+庫中啟用預配的應用程式具有簡化配置的範本。 使用下面的請求[檢索預配配置的範本](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)。 請注意，您需要提供 ID。 ID 引用前面的資源，在這種情況下，它是服務主體。 
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 
 <!-- {
   "blockType": "request",
@@ -211,10 +211,10 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="create-the-provisioning-job"></a>建立布建作業
-若要啟用布建，您需要先[建立作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)。 請使用下方的要求來建立布建作業。 指定要用於作業的範本時，請使用上一個步驟中的 templateId。
+### <a name="create-the-provisioning-job"></a>創建預配作業
+要啟用預配，首先需要[創建作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)。 使用下面的請求創建預配作業。 指定要用於作業的範本時，請使用上一步的範本 Id。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 <!-- {
   "blockType": "request",
   "name": "create_synchronizationjob_from_synchronization"
@@ -262,14 +262,14 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-3-authorize-access"></a>步驟3：授權存取
+## <a name="step-3-authorize-access"></a>第 3 步：授權訪問
 
-### <a name="test-the-connection-to-the-application"></a>測試應用程式的連接
+### <a name="test-the-connection-to-the-application"></a>測試與應用程式的連接
 
-測試與協力廠商應用程式的連接。 下列範例適用于需要 clientSecret 和 secretToken 的應用程式。 每個應用程式都有其需求。 若要查看可用的選項，請參閱[API 檔](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)。 
+測試與協力廠商應用程式的連接。 下面的示例適用于需要用戶端機密和機密權杖的應用程式。 每個應用程式都有其要求。 應用程式通常使用 Base 位址代替用戶端機密。 要確定應用需要哪些憑據，請導航到應用程式的預配配置頁，並在開發人員模式下按一下測試連接。 網路流量將顯示用於憑據的參數。 憑據的完整清單[可以在這裡](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)找到。 
 
-#### <a name="request"></a>*要求*
-```http
+#### <a name="request"></a>*請求*
+```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
 { 
     credentials: [ 
@@ -288,12 +288,12 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
 HTTP/1.1 204 No Content
 ```
 
-### <a name="save-your-credentials"></a>儲存您的認證
+### <a name="save-your-credentials"></a>保存憑據
 
-設定布建需要在 Azure AD 和應用程式之間建立信任。 授權協力廠商應用程式的存取權。 下列範例適用于需要 clientSecret 和 secretToken 的應用程式。 每個應用程式都有其需求。 若要查看可用的選項，請參閱[API 檔](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)。 
+配置預配需要在 Azure AD 和應用程式之間建立信任。 授權訪問協力廠商應用程式。 下面的示例適用于需要用戶端機密和機密權杖的應用程式。 每個應用程式都有其要求。 查看[API 文檔](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)以查看可用選項。 
 
-#### <a name="request"></a>*要求*
-```json
+#### <a name="request"></a>*請求*
+```msgraph-interactive
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
  
 { 
@@ -314,11 +314,11 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 HTTP/1.1 204 No Content
 ```
 
-## <a name="step-4-start-the-provisioning-job"></a>步驟4：啟動布建作業
-現在已設定布建作業，請使用下列命令來[啟動作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)。 
+## <a name="step-4-start-the-provisioning-job"></a>第 4 步：開始預配作業
+配置預配作業後，使用以下命令[啟動作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)。 
 
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 <!-- {
   "blockType": "request",
   "name": "synchronizationjob_start"
@@ -338,13 +338,13 @@ HTTP/1.1 204 No Content
 ```
 
 
-## <a name="step-5-monitor-provisioning"></a>步驟5：監視布建
+## <a name="step-5-monitor-provisioning"></a>第 5 步：監視預配
 
-### <a name="monitor-the-provisioning-job-status"></a>監視布建作業狀態
+### <a name="monitor-the-provisioning-job-status"></a>監視預配作業狀態
 
-布建作業現在正在執行，請使用下列命令來追蹤目前布建週期的進度以及統計資料的日期，例如目標系統中已建立的使用者和群組數目。 
+現在預配作業正在運行，請使用以下命令跟蹤當前預配週期的進度以及迄今為止的統計資訊，例如目標系統中創建的使用者和組數。 
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 <!-- {
   "blockType": "request",
   "name": "get_synchronizationjob"
@@ -396,10 +396,10 @@ Content-length: 2577
 ```
 
 
-### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>使用布建記錄監視布建事件
-除了監視布建作業的狀態，您可以使用布建[記錄](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)來查詢所有發生的事件（例如，查詢特定使用者並判斷是否已成功布建）。
+### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>使用預配日誌監視預配事件
+除了監視預配作業的狀態外，還可以使用[預配日誌](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)查詢發生的所有事件（例如，查詢特定使用者的查詢並確定是否成功預配了這些事件）。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*請求*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
@@ -531,5 +531,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>相關文章
 
-- [查看同步處理 Microsoft Graph 檔](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
-- [整合自訂 SCIM 應用程式與 Azure AD](use-scim-to-provision-users-and-groups.md)
+- [查看同步 Microsoft 圖形文檔](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [將自訂 SCIM 應用與 Azure AD 集成](use-scim-to-provision-users-and-groups.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Front Service 的網域上的地區篩選
+title: Azure 前門服務域上的地理篩選
 description: 在本文中，您會了解 Azure Front Door Service 的地區篩選原則
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 7c49892f97d9c15efcaecccb6133c67133e81c87
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137555"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472600"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
 
@@ -21,7 +21,7 @@ ms.locfileid: "79137555"
 
 WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區代碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
 
-您可以使用 [Azure 入口網站]、[ [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) ] 或我們的[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)，為您的 Front 門設定地區篩選原則。
+您可以藉由使用 [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) 或[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)，來針對 Front Door 設定地區篩選原則。
 
 ## <a name="country-code-reference"></a>國家/地區代碼參考
 

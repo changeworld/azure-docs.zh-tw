@@ -1,6 +1,6 @@
 ---
-title: 建立 Azure 防禦主機：入口網站
-description: 在本文中，您將瞭解如何使用入口網站建立 Azure 防禦主機
+title: 創建 Azure 堡壘主機：門戶
+description: 在本文中，瞭解如何使用門戶創建 Azure 堡壘主機
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 14a596d78fb1f560c62013e7e439ed60d3a29b8f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79366138"
 ---
-# <a name="create-an-azure-bastion-host-using-the-portal"></a>使用入口網站建立 Azure 防禦主機
+# <a name="create-an-azure-bastion-host-using-the-portal"></a>使用門戶創建 Azure 堡壘主機
 
-本文說明如何使用 Azure 入口網站建立 Azure 防禦主機。 一旦在您的虛擬網路中布建 Azure 防禦服務，相同虛擬網路中的所有 Vm 都可以使用順暢的 RDP/SSH 體驗。 Azure Bastion 部署依虛擬網路來進行，而非以訂用帳戶/帳戶或虛擬機器為依據。
+本文介紹如何使用 Azure 門戶創建 Azure 堡壘主機。 在虛擬網路中預配 Azure Bastion 服務後，同一虛擬網路中的所有 VM 都可以使用無縫的 RDP/SSH 體驗。 Azure Bastion 部署依虛擬網路來進行，而非以訂用帳戶/帳戶或虛擬機器為依據。
 
-您可以在入口網站中建立新的防禦主機資源，方法是手動指定所有設定，或使用與現有 VM 對應的設定。 若要使用 VM 設定來建立防禦主機，請參閱[快速入門](quickstart-host-portal.md)文章。 （選擇性）您可以使用[Azure PowerShell](bastion-create-host-powershell.md)來建立 Azure 防禦主機。
+您可以通過手動指定所有設置或使用與現有 VM 對應的設置在門戶中創建新的堡壘主機資源。 要使用 VM 設置創建堡壘主機，請參閱[快速入門](quickstart-host-portal.md)文章。 或者，可以使用 Azure [PowerShell](bastion-create-host-powershell.md)創建 Azure 堡壘主機。
 
 ## <a name="before-you-begin"></a>開始之前
 
-防禦功能適用于下列 Azure 公用區域：
+堡壘在以下 Azure 公共區域中可用：
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>建立防禦主機
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>建立 Bastion 主機
 
-本節可協助您從 Azure 入口網站建立新的 Azure 防禦資源。
+此部分可説明您從 Azure 門戶創建新的 Azure 堡壘資源。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 功能表或 [**首頁**] 頁面上，選取 [**建立資源**]。
+1. 在[Azure 門戶](https://portal.azure.com)功能表或**主頁**上，選擇 **"創建資源**"。
 
-1. 在 [**新增**] 頁面的 [*搜尋 Marketplace* ] 欄位中，**輸入防禦**，然後按**Enter 鍵**以取得搜尋結果。
+1. 在 **"新建**"頁上，在 *"搜索市場"* 欄位中，鍵入 **"堡壘**"，然後按一下 **"輸入**"以獲取搜尋結果。
 
-1. 從結果中 **，按一下 [** 防禦]。 確定發行者為 *Microsoft*，且類別 [網路]。
+1. 從結果中，按一下 **"堡壘**"。 確定發行者為 *Microsoft*，且類別 [網路]**。
 
-1. 在 [**防禦**] 頁面上，按一下 [**建立**] 以開啟 [**建立**防禦] 頁面。
+1. 在 **"堡壘**"頁上，按一下"**創建**"以打開"**創建堡壘**"頁。
 
-1. 在 [**建立**防禦] 頁面上，設定新的防禦資源。 指定防禦資源的設定。
+1. 在"**創建堡壘**"頁上，配置新的堡壘資源。 指定堡壘資源的配置設置。
 
-    ![建立防禦](./media/bastion-create-host-portal/settings.png)
+    ![創建堡壘](./media/bastion-create-host-portal/settings.png)
 
-    * **訂**用帳戶：您想要用來建立新防禦資源的 Azure 訂用帳戶。
-    * **資源群組**：將在其中建立新防禦資源的 Azure 資源群組。 如果您沒有現有的資源群組，您可以建立一個新的。
-    * **名稱**：新防禦資源的名稱
-    * **區域**：將在其中建立資源的 Azure 公用區域。
-    * **虛擬網路**：將在其中建立防禦資源的虛擬網路。 在此程式期間，您可以在入口網站中建立新的虛擬網路，或使用現有的虛擬網路。 如果您使用現有的虛擬網路，請確定現有的虛擬網路有足夠的可用位址空間來容納防禦子網需求。
-    * **子網**：虛擬網路中將部署新防禦主機資源的子網。 您必須使用 [名稱] 值**AzureBastionSubnet**來建立子網。 此值可讓 Azure 知道要將防禦資源部署到哪一個子網。 這與閘道子網不同。 您必須使用至少/27 或更大（/27、/26 等）的子網。
+    * **訂閱**：要用於創建新堡壘資源的 Azure 訂閱。
+    * **資源組**：將在其中創建新堡壘資源的 Azure 資源組。 如果沒有現有資源組，則可以創建新的資源組。
+    * **名稱**： 新堡壘資源的名稱
+    * **區域**：將在 其中創建資源的 Azure 公共區域。
+    * **虛擬網路**：將在其中創建堡壘資源的虛擬網路。 在此過程中，您可以在門戶中創建新的虛擬網路，或使用現有的虛擬網路。 如果使用現有虛擬網路，請確保現有虛擬網路有足夠的可用位址空間來滿足堡壘子網要求。
+    * **子網**：將部署新堡壘主機資源的虛擬網路中的子網。 您必須使用名稱值**AzureBastion Subnet**創建子網。 此值使 Azure 知道要將堡壘資源部署到哪個子網。 這與閘道子網不同。 您必須使用至少 /27 或更大的子網（/27、/26 等）。
     
-       建立不含任何路由表或委派的**AzureBastionSubnet** 。 如果您在**AzureBastionSubnet**上使用網路安全性群組，請參閱[使用 nsg](bastion-nsg.md)一文。
-    * **公用 ip 位址**：將存取 RDP/SSH 之防禦資源的公用 ip （透過埠443）。 建立新的公用 IP，或使用現有的。 公用 IP 位址必須與您建立的防禦資源位於相同的區域中。
-    * **公用 ip 位址名稱**：公用 ip 位址資源的名稱。
-    * **公用 IP 位址 SKU**：此設定預設為 [**標準**]。 Azure 防禦僅使用/支援標準公用 IP SKU。
-    * **指派**：此設定預設會預先填入**靜態**。
+       創建**AzureBastion Subnet，** 沒有任何路由表或授權。 如果在**AzureBastionSubnet**上使用網路安全性群組，請參閱[使用 NSG](bastion-nsg.md)的文章。
+    * **公共 IP 位址**：將訪問 RDP/SSH 的堡壘資源的公共 IP（通過埠 443）。 創建新的公共 IP 或使用現有 IP。 公共 IP 位址必須與您正在創建的堡壘資源位於同一區域。
+    * **公共 IP 位址名稱**：公共 IP 位址資源的名稱。
+    * **公共 IP 位址 SKU**：此設置在預設情況下已預填充到**標準**。 Azure 堡壘僅使用/支援標準公共 IP SKU。
+    * **賦值**：此設置在預設情況下預填充為 **"靜態**"。
 
-1. 當您完成指定設定後，請按一下 [審核] [ **+ 建立**]。 這會驗證這些值。 通過驗證之後，您就可以開始建立程式。
-1. 在 [**建立**防禦] 頁面上，按一下 [**建立**]。
-1. 您會看到一則訊息，告訴您您的部署正在進行中。 當資源建立時，狀態會顯示在此頁面上。 建立和部署防禦資源需要大約5分鐘的時間。
+1. 完成指定設置後，按一下"審閱 **+ 創建**"。 這將驗證值。 驗證完成後，可以開始創建過程。
+1. 在"**創建堡壘**"頁上，按一下"**創建**"。
+1. 您將看到一條消息，通知您部署正在進行。 創建資源時，狀態將顯示在此頁面上。 創建和部署堡壘資源大約需要 5 分鐘。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需其他資訊，請閱讀防禦[常見問題](bastion-faq.md)。
+* 有關詳細資訊，請閱讀[堡壘常見問題解答](bastion-faq.md)。
 
-* 若要搭配使用網路安全性群組與 Azure 防禦子網，請參閱使用[nsg](bastion-nsg.md)。
+* 要將網路安全性群組與 Azure 堡壘子網一起使用，請參閱[使用 NSG。](bastion-nsg.md)

@@ -1,6 +1,6 @@
 ---
-title: 成為內部部署編碼器合作夥伴-Azure 媒體服務
-description: 本文討論如何驗證您的內部部署即時串流編碼器。
+title: 成為本地編碼器合作夥伴 - Azure 媒體服務
+description: 本文討論如何驗證本地即時流式處理器。
 services: media-services
 author: johndeu
 manager: johndeu
@@ -9,13 +9,13 @@ ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298626"
 ---
-# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何驗證您的內部部署即時串流編碼器
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何驗證本地即時流式處理器
 
 身為 Azure 媒體服務內部部署編碼器合作夥伴，媒體服務將會向企業客戶建議您的編碼器，以協助推廣您的產品。 若要成為內部部署編碼器合作夥伴，您必須向媒體服務驗證您內部部署編碼器的相容性。 若要這樣做，請完成下列驗證。
 
@@ -27,9 +27,9 @@ ms.locfileid: "79298626"
 2. 建立並啟動**傳遞**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL 並設定您的內部部署編碼器使用該 URL，以將多位元速率即時資料流傳送到媒體服務。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
-5. 建立新的 [資產] 物件。
-6. 建立 [即時輸出] 並使用您建立的資產名稱。
-7. 使用內建的**串流原則**類型來建立**串流定位器**。
+5. 創建新**的資產**物件。
+6. 創建**即時輸出**並使用您創建的資產名稱。
+7. 使用內置**流式處理策略**類型創建**流式處理器。**
 8. 列出**串流定位器**上的路徑，以取回要使用的 URL。
 9. 取得您想要串流的來源**串流端點**主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
@@ -46,9 +46,9 @@ ms.locfileid: "79298626"
 2. 建立並啟動**即時編碼**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL 並設定您的編碼器將單一位元速率即時資料流推送到媒體服務。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
-5. 建立新的 [資產] 物件。
-6. 建立 [即時輸出] 並使用您建立的資產名稱。
-7. 使用內建的**串流原則**類型來建立**串流定位器**。
+5. 創建新**的資產**物件。
+6. 創建**即時輸出**並使用您創建的資產名稱。
+7. 使用內置**流式處理策略**類型創建**流式處理器。**
 8. 列出**串流定位器**上的路徑，以取回要使用的 URL。
 9. 取得您想要串流的來源**串流端點**主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
@@ -69,7 +69,7 @@ ms.locfileid: "79298626"
 
 ## <a name="see-also"></a>另請參閱
 
-[已測試內部部署編碼器](recommended-on-premises-live-encoders.md)
+[測試的本地編碼器](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>後續步驟
 

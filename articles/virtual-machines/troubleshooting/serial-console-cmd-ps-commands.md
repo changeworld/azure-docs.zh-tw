@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167035"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -117,7 +117,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="disable-windows-firewall"></a>停用 Windows 防火牆
 `netsh advfirewall set allprofiles state off`
 
-您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 下次重新開機時，或當您使用下列命令啟用它時，它就會啟用。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
+您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 它將在下次重新開機時啟用，或者當您使用下面的命令啟用它時。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
 ### <a name="enable-windows-firewall"></a>啟用 Windows 防火牆
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>管理使用者和群組
@@ -195,7 +195,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="restore-file-permissions-from-acl-file"></a>從 ACL 檔案還原檔案權限
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-使用 `/restore` 時的路徑必須是您在使用 `/save` 時所指定之資料夾的上層資料夾。 在此範例中，`\RSA` 是上述 `\MachineKeys` 範例中，指定的 `/save` 資料夾的上層資料夾。
+使用 `/restore` 時的路徑必須是您在使用 `/save` 時所指定之資料夾的上層資料夾。 在此範例中，`\RSA` 是上述 `/save` 範例中，指定的 `\MachineKeys` 資料夾的上層資料夾。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>取得資料夾的 NTFS 擁有權
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>以遞迴方式授與資料夾的 NTFS 權限
@@ -320,7 +320,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `test-netconnection`
 
 > [!NOTE]
-> 寫入進度 Cmdlet 可能無法與此命令搭配使用。 作為緩和措施，您可以在 PowerShell 中執行 `$ProgressPreference = "SilentlyContinue"` 來停用進度列。
+> 寫入進度 Cmdlet 可能無法使用此命令。 作為緩解措施，您可以在 PowerShell 中運行`$ProgressPreference = "SilentlyContinue"`以禁用進度列。
 
 或
 
@@ -479,5 +479,5 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 ## <a name="next-steps"></a>後續步驟
 * 主要序列主控台 Windows 文件頁面位於[這裡](serial-console-windows.md)。
-* 序列主控台也適用於 [Linux](serial-console-linux.md) VM。
-* 深入了解[開機診斷](boot-diagnostics.md)。
+* 串列主控台也可用於[Linux](serial-console-linux.md) VM。
+* 瞭解有關[引導診斷](boot-diagnostics.md)的更多資訊。

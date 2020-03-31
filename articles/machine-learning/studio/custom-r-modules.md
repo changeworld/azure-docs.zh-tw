@@ -1,7 +1,7 @@
 ---
 title: 定義自訂 R 模組
 titleSuffix: ML Studio (classic) - Azure
-description: 本主題說明如何撰寫和部署自訂的 R Studio （傳統）。 它說明什麼是自訂 R 模組，以及使用哪些檔案定義這些模組；
+description: 本主題介紹如何創作和部署自訂 R Studio（經典版）。 它說明什麼是自訂 R 模組，以及使用哪些檔案定義這些模組；
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,24 +11,24 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218175"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定義 Azure Machine Learning Studio 的自訂 R 模組（傳統）
+# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>為 Azure 機器學習工作室定義自訂 R 模組（經典）
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-本主題說明如何撰寫和部署自訂的 R Studio （傳統）。 它說明什麼是自訂 R 模組，以及使用哪些檔案定義這些模組； 並說明如何在 Machine Learning 工作區中建構這些用來定義模組的檔案，以及如何註冊模組以進行部署。 接著，詳細說明用於自訂模組定義中的元素和屬性。 此外，也討論如何使用輔助功能和檔案以及多個輸出。 
+本主題介紹如何創作和部署自訂 R Studio（經典版）。 它說明什麼是自訂 R 模組，以及使用哪些檔案定義這些模組； 並說明如何在 Machine Learning 工作區中建構這些用來定義模組的檔案，以及如何註冊模組以進行部署。 接著，詳細說明用於自訂模組定義中的元素和屬性。 此外，也討論如何使用輔助功能和檔案以及多個輸出。 
 
 
 
 ## <a name="what-is-a-custom-r-module"></a>什麼是自訂 R 模組？
-**自訂模組**是一種使用者定義的模組，可上傳至您的工作區，並作為 Azure Machine Learning Studio （傳統）實驗的一部分來執行。 **自訂 R 模組** 是執行使用者定義之 R 函數的自訂模組。 **R** 是一種適用於統計運算和圖形的程式設計語言，由實作演算法的統計學家和資料科學家廣泛使用。 目前，R 是自訂模組中唯一支援的語言，但未來版本將新增更多語言的支援。
+**自訂模組**是使用者定義的模組，可以上載到工作區，並作為 Azure 機器學習工作室（經典）實驗的一部分執行。 **自訂 R 模組** 是執行使用者定義之 R 函數的自訂模組。 **R** 是一種適用於統計運算和圖形的程式設計語言，由實作演算法的統計學家和資料科學家廣泛使用。 目前，R 是自訂模組中唯一支援的語言，但未來版本將新增更多語言的支援。
 
-自訂模組在 Azure Machine Learning Studio （傳統）中具有**第一類狀態**，這表示它們可以像任何其他模組一樣使用。 它們可以與已發行實驗或視覺效果中包含的其他模組一起執行。 您可以控制模組實作的演算法、要使用的輸入與輸出連接埠、模型參數，以及其他多種執行階段行為。 包含自訂模組的實驗也可以發佈至 Azure AI 資源庫以輕鬆共用。
+自訂模組在 Azure 機器學習工作室（經典）中具有**一流狀態**，可以像任何其他模組一樣使用。 它們可以與已發行實驗或視覺效果中包含的其他模組一起執行。 您可以控制模組實作的演算法、要使用的輸入與輸出連接埠、模型參數，以及其他多種執行階段行為。 包含自訂模組的實驗也可以發佈至 Azure AI 資源庫以輕鬆共用。
 
 ## <a name="files-in-a-custom-r-module"></a>自訂 R 模組中的檔案
 自訂 R 模組是由至少包含兩個檔案的 .zip 檔案所定義：
@@ -57,7 +57,7 @@ ms.locfileid: "79218175"
     } 
 
 ### <a name="the-xml-definition-file"></a>XML 定義檔
-若要將此 `CustomAddRows` 函式公開為 Azure Machine Learning Studio （傳統）模組，必須建立 XML 定義檔以指定**自訂加入資料列**模組的外觀與行為。 
+要將此功能`CustomAddRows`公開為 Azure 機器學習工作室（經典）模組，必須創建 XML 定義檔以指定**自訂添加行**模組的外觀和行為。 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -94,20 +94,20 @@ ms.locfileid: "79218175"
 
 這一點很重要，請注意 XML 檔案中之 **Input** 和 **Arg** 元素的 **id** 屬性值必須完全符合在 CustomAddRows.R 檔案中 R 程式碼的函式參數名稱 (在本例中為 *dataset1*、*dataset2* 和 *swap*)。 同樣地，**Language** 元素的 **entryPoint** 屬性值必須完全符合 R 指令碼中的函式名稱 (在本例中為 *CustomAddRows*)。 
 
-相反地，**Output** 元素的 **id** 屬性不會對應至 R 指令碼中的任何變數。 如果需要多個輸入，請直接從 R 函式傳回清單，其中包含的結果會依照 *Output* 元素在 XML 檔案中宣告的**相同順序**來排列。
+相反地，**Output** 元素的 **id** 屬性不會對應至 R 指令碼中的任何變數。 如果需要多個輸入，請直接從 R 函式傳回清單，其中包含的結果會依照 **Output** 元素在 XML 檔案中宣告的*相同順序*來排列。
 
 ### <a name="package-and-register-the-module"></a>封裝並註冊模組
 將這兩個檔案另存為 *CustomAddRows.R* 和 *CustomAddRows.xml*，然後一起壓縮成 *CustomAddRows.zip* 檔案。
 
-若要在您的 Machine Learning 工作區中註冊這些專案，請移至 Azure Machine Learning Studio （傳統）中的工作區，按一下底部的 [ **+ 新增**] 按鈕，然後從 [ZIP 封裝] 選擇 [**模組->** ] 上傳新的**自訂資料列**模組。
+要在機器學習工作區中註冊它們，請轉到 Azure 機器學習工作室中的工作區（經典），按一下底部的 **"新"** 按鈕，然後選擇**MODULE -> 從 ZIP PACKAGE**上載新的**自訂添加行**模組。
 
 ![上傳 Zip 檔案](./media/custom-r-modules/upload-from-zip-package.png)
 
-[自訂新增資料列] 模組現在已經準備好，可供機器學習服務實驗存取。
+[自訂新增資料列] **** 模組現在已經準備好，可供機器學習服務實驗存取。
 
 ## <a name="elements-in-the-xml-definition-file"></a>引數
 ### <a name="module-elements"></a>Module 元素
-**Module** 元素可用來定義 XML 檔案中的自訂模組。 您可以在一個 XML 檔案中，使用多個 **Module** 元素來定義多個模組。 工作區中的每個模組都必須有唯一的名稱。 使用與現有自訂模組相同的名稱來註冊自訂模組，會以這個新模組取代現有的模組。 不過，您可以使用與現有 Azure Machine Learning Studio （傳統）模組相同的名稱來註冊自訂模組。 如果您這麼做，它們會出現在模組選擇區的 [自訂] 類別中。
+**Module** 元素可用來定義 XML 檔案中的自訂模組。 您可以在一個 XML 檔案中，使用多個 **Module** 元素來定義多個模組。 工作區中的每個模組都必須有唯一的名稱。 使用與現有自訂模組相同的名稱來註冊自訂模組，會以這個新模組取代現有的模組。 但是，自訂模組可以註冊與現有 Azure 機器學習工作室（經典）模組相同的名稱。 如果您這麼做，它們會出現在模組選擇區的 [自訂] **** 類別中。
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -125,7 +125,7 @@ Module 元素中的字元限制規則：
 * **Description** 元素的內容長度不能超過 128 個字元。
 * **Owner** 元素的內容長度不能超過 32 個字元。
 
-模組的結果可能具決定性或不具決定性。** 依預設，所有模組都視為具決定性。 也就是說，假設有一組不變的輸入參數和資料，模組應該會傳回相同的結果 Rand 或其執行的函數時間。 基於此行為，Azure Machine Learning Studio （傳統）只有在參數或輸入資料已變更時，才會將標示為具決定性的模組重新運行。 傳回快取的結果也會讓實驗的執行速度加快許多。
+模組的結果可能具決定性或不具決定性。** 依預設，所有模組都視為具決定性。 也就是說，給定一組不變的輸入參數和資料，模組應返回相同的結果 eacRAND 或運行它的函數時間。 給定此行為，Azure 機器學習工作室（經典版）僅在參數或輸入資料發生更改時重新運行標記為確定性的模組。 傳回快取的結果也會讓實驗的執行速度加快許多。
 
 也有不具決定性的函式，例如 RAND 或傳回目前日期或時間的函式。 如果您的模組使用不具決定性的函式，您可以將選擇性屬性 **isDeterministic** 設為 **FALSE**，藉此方式指定模組是不具決定性。 這可確保每次執行實驗時，都會重新執行模組，即使模組輸入和參數未變更亦然。 
 
@@ -161,7 +161,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-針對自訂 R 模組，Zip 埠的識別碼不需要符合 R 函數的任何參數。 這是因為 zip 檔案會自動解壓縮到 R 工作目錄。
+對於自訂 R 模組，Zip 埠的 ID 不必與 R 函數的任何參數匹配。 這是因為 zip 檔案會自動解壓縮到 R 工作目錄。
 
 **輸入規則：**
 
@@ -173,7 +173,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
 * 不需要 **Input** 元素的 **isOptional** 屬性值 (而且未指定時預設為 *false*)；如有指定，則必須為 *true* 或 *false*。
 
 ### <a name="output-elements"></a>Output 元素
-**標準輸出連接埠：** 輸出連接埠會對應至 R 函數中的傳回值，後續模組可以接著使用這些值。 *DataTable* 是目前唯一支援的標準輸出連接埠類型。 （即將推出*學習*和*轉換*的支援）。*DataTable*輸出的定義如下：
+**標準輸出連接埠：** 輸出連接埠會對應至 R 函數中的傳回值，後續模組可以接著使用這些值。 *DataTable* 是目前唯一支援的標準輸出連接埠類型。 （即將支援*學員*和*轉型*。*資料表*輸出定義為：
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -202,7 +202,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
     </Ports> 
 
 
-並以 ' Customaddrows.zip ' 中的正確順序傳回清單中的物件清單：
+並在"自訂 AddRows.R"中按正確順序返回清單中的物件清單：
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -227,7 +227,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
 ### <a name="arguments"></a>引數
 您可以透過 **Arguments** 元素中定義的模組參數，將其他資料傳遞至 R 函數。 選取模組時，這些參數會出現在 Machine Learning UI 最右側的屬性窗格中。 引數可以是任何支援的類型，或者您可以視需要建立自訂列舉。 類似於 **Ports** 元素，**Arguments** 元素可以有選擇性 **Description** 元素，以指定當滑鼠停留在參數名稱上時所顯示的文字。
 您可以將模組的選擇性屬性 (例如 defaultValue、minValue 和 maxValue) 新增到任何引數，做為 **Properties** 元素的屬性。 **Properties** 元素的有效屬性取決於引數類型，下一節將說明這些有效屬性和支援的引數類型。 **isOptional** 屬性設定為 **"true"** 的引數不需要使用者輸入值。 如果未提供值給引數，則不會傳遞引數給進入點函式。 選擇性的進入點函式引數必須由函式明確處理，例如在進入點函式定義中指派 NULL 預設值。 選擇性引數將只會強制執行其他引數限制 (也就是最小值或最大值，如果使用者提供值)。
-如同輸入和輸出，每個參數都必須有與其相關聯的唯一識別碼值。 在我們的快速入門範例中，相關聯的 id/參數是*swap*。
+與輸入和輸出一樣，每個參數具有與其關聯的唯一 ID 值至關重要。 在我們的快速入門示例中，關聯的 ID/參數是*交換*的。
 
 ### <a name="arg-element"></a>Arg 元素
 模組參數是使用 XML 定義檔之 **Arguments** 區段的 **Arg** 子元素所定義。 如同在 **Ports** 區段中的子元素，**Arguments** 區段中的參數順序會定義 UX 中遇到的配置。 參數會依照其在 XML 檔案中定義的相同順序，由上而下顯示在 UI 中。 Machine Learning 所支援的參數類型列示於此。 
@@ -272,7 +272,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
 
 * *選擇性屬性*：**default** 和 **isOptional**
 
-**ColumnPicker**：資料行選取參數。 此類型在 UX 中會轉譯成資料行選擇器。 這裡會使用**Property**元素來指定所選取之資料行的埠識別碼，其中目標埠類型必須是*DataTable*。 資料行選取的結果會傳遞至 R 函式，做為包含所選取資料行名稱的字串清單。 
+**ColumnPicker**：資料行選取參數。 此類型在 UX 中會轉譯成資料行選擇器。 **屬性**元素用於指定從中選擇列的埠的 ID，其中目標埠類型必須為*DataTable*。 資料行選取的結果會傳遞至 R 函式，做為包含所選取資料行名稱的字串清單。 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -280,7 +280,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
         </Arg>
 
 
-* *必要屬性*： **portId** -符合類型為*DATATABLE*之 Input 元素的識別碼。
+* *必需屬性*： **portId** - 將輸入元素的 ID 與類型*DataTable*匹配。
 * *選擇性屬性*：
   
   * **allowedTypes** - 篩選您可以從中挑選的資料行類型。 有效值包括： 
@@ -329,17 +329,17 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
     </Arg>    
 
 * *選擇性屬性*：
-  * **default** -預設屬性的值必須對應至其中一個**ITEM**元素的識別碼值。
+  * **預設值**- 預設屬性的值必須與**其中一個 Item**元素的 ID 值對應。
 
 ### <a name="auxiliary-files"></a>輔助檔案
-放在自訂模組 ZIP 檔案中的所有檔案在執行期間都可供使用。 所有存在的目錄結構皆會保留。 這表示檔案來源在本機和 Azure Machine Learning Studio （傳統）執行中的運作方式相同。 
+放在自訂模組 ZIP 檔案中的所有檔案在執行期間都可供使用。 所有存在的目錄結構皆會保留。 這意味著檔源在本地和 Azure 機器學習工作室（經典）執行中的工作方式相同。 
 
 > [!NOTE]
-> 請注意，所有檔案都會解壓縮至 ' src ' 目錄，因此所有路徑都應該有 ' src/' 前置詞。
+> 請注意，所有檔都提取到"src"目錄，因此所有路徑都應具有"src/"首碼。
 > 
 > 
 
-例如，假設您想要從資料集移除具有 NAs 的任何資料列，並在將其輸出到 Customaddrows.zip 之前移除所有重複的資料列，而且您已經撰寫在檔案 Removedupnarows.r 中執行該動作的 R 函數：
+例如，假設您要從資料集中刪除任何帶有 NA 的行，並在將其放入 CustomAddRows 之前刪除任何重複的行，並且您已經編寫了一個 R 函數，該函數在檔 RemoveDupNARows.R 中進行了這樣做：
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -361,7 +361,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
         return (dataset)
     }
 
-接下來，將包含 ' Customaddrows.zip '、' Customaddrows.zip ' 和 ' Removedupnarows.r ' 的 zip 檔案上傳為自訂 R 模組。
+接下來，上傳包含"自訂 AddRows.R"、"自訂 AddRows.xml"和"刪除 DupNARows.R"作為自訂 R 模組的 ZIP 檔案。
 
 ## <a name="execution-environment"></a>執行環境
 R 指令碼的執行環境使用與 **Execute R Script** 模組相同的 R 版本，並且可以使用相同的預設封裝。 您也可以將其他 R 封裝納入自訂模組 zip 封裝，以將其新增至自訂模組。 只要在您的 R 指令碼中載入它們，就像在您自己的 R 環境中一樣。 

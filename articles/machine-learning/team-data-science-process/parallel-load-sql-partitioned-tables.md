@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721331"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>建置和最佳化資料表，以便快速地將資料平行匯入至 Azure VM 上的 SQL Server
@@ -57,7 +57,7 @@ ms.locfileid: "76721331"
 ## <a name="create-a-partitioned-table"></a>建立資料分割資料表
 為了要根據資料結構描述建立資料分割資料表，來對應到上一個步驟建立的資料庫檔案群組，您必須先建立資料分割函數和結構描述。 將資料大量匯入資料分割資料表時，記錄將根據資料分割配置分佈於檔案群組中，如下所述。
 
-### <a name="1-create-a-partition-function"></a>1. 建立資料分割函數
+### <a name="1-create-a-partition-function"></a>1. 創建分區函數
 [建立資料分割函數](https://msdn.microsoft.com/library/ms187802.aspx)。此函數定義要在每個個別資料分割資料表中包含的值/界限範圍，例如，若要依 2013 年的月份來限制資料分割 (some\_datetime\_field)：
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -66,7 +66,7 @@ ms.locfileid: "76721331"
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. 建立資料分割配置
+### <a name="2-create-a-partition-scheme"></a>2. 創建分區方案
 [建立資料分割配置](https://msdn.microsoft.com/library/ms179854.aspx)。 此配置會將資料分割函數中的每個資料分割範圍對應至實體檔案群組，例如：
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
@@ -85,7 +85,7 @@ ms.locfileid: "76721331"
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. 建立資料分割資料表
+### <a name="3-create-a-partition-table"></a>3. 創建分區表
 根據您的資料結構描述來[建立資料分割資料表](https://msdn.microsoft.com/library/ms174979.aspx)，並指定用來為資料表進行資料分割的資料分割配置和條件約束欄位，例如：
   
         CREATE TABLE <table_name> ( [include schema definition here] )
@@ -99,7 +99,7 @@ ms.locfileid: "76721331"
 * [修改資料庫](https://msdn.microsoft.com/library/bb522682.aspx)，將交易記錄配置變更為 BULK_LOGGED，以便將記錄額外負荷降到最低，例如：
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* 若要加速資料載入，可以平行方式啟動大量匯入作業。 如需加速將大型資料大量匯入 SQL Server 資料庫的秘訣，請參閱[在1小時內載入 1 TB](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
+* 若要加速資料載入，可以平行方式啟動大量匯入作業。 有關加快將大資料大量匯入 SQL Server 資料庫的提示，請參閱[在不到 1 小時內載入 1 TB。](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)
 
 下列 PowerShell 指令碼是使用 BCP 平行載入資料的範例。
 

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409014"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 資料目錄的常見問題集
 這篇文章提供與 Azure 資料目錄服務相關的常見問題集解答。
@@ -53,13 +53,13 @@ ms.locfileid: "73152051"
 ## <a name="how-do-i-request-support-for-another-data-source"></a>如何要求另一個資料來源的支援？
 若要提交功能要求與其他意見，請前往 [Azure 意見論壇 - 資料目錄](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)。
 
-## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>當我嘗試建立新的類別目錄時，為什麼會收到錯誤*目錄*？
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>為什麼在嘗試創建新目錄時，我收到錯誤*目錄已存在*？
 
-當您購買具有 Power BI Pro 授權的 Office 365 E5 時，Microsoft 會自動在訂用帳戶的區域中建立預設目錄。 此目錄使用免費的 SKU。 Office 365/Power BI 使用者授權是在 Office 365 管理頁面中進行管理。 
+當您使用 Power BI Pro 許可證購買 Office 365 E5 時，Microsoft 會在訂閱區域中自動創建預設目錄。 此目錄使用免費 SKU。 Office 365 / Power BI 使用授權在 Office 365 管理頁中管理。 
 
-不過，這種類型的資料目錄並沒有**系統管理員選項**，而且在**Azure 入口網站**中看不到。 您無法刪除這種類型的資料目錄。 同樣地，您不能重新命名資料目錄，也無法將它移至另一個區域。 
+但是，這種類型的資料目錄沒有**管理員選項**，並且在**Azure 門戶**中不可見。 您不能刪除這種類型的資料目錄。 同樣，不允許重命名資料目錄，也不能將其移動到其他區域。 
 
-指派 Power BI Pro 授權的使用者帳戶，會在使用 Power BI Pro 授權註冊 Office 365 E5 時，自動擁有資料目錄的存取權。 這種類型的使用者在沒有系統管理許可權的情況下，具有資料目錄資產的完整存取權。 這種類型的使用者*不*是 Azure 資料目錄中**目錄使用者**角色的一部分。
+分配 Power BI Pro 許可證的使用者帳戶在使用 Power BI Pro 許可證註冊 Office 365 E5 時，根據授權合約可以訪問資料目錄。 這種類型的使用者可以完全訪問資料目錄資產，而無需管理許可權。 此類使用者*不是*Azure 資料目錄中**目錄使用者**角色的一部分。
 
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>如何開始使用資料目錄？
@@ -67,7 +67,7 @@ ms.locfileid: "73152051"
 
 ## <a name="how-do-i-register-my-data"></a>如何註冊我的資料？
 在資料目錄中註冊您的資料：
-1. 在 Azure 資料目錄入口網站的 [發佈] 區域中，啟動 Azure 資料目錄註冊工具。 
+1. 在 Azure 資料目錄入口網站的 [發佈]**** 區域中，啟動 Azure 資料目錄註冊工具。 
 2. 在資料目錄的資料來源註冊工具中，使用用以存取資料目錄入口網站的相同認證登入。
 3. 選取您要註冊的資料來源和特定資產。
 
@@ -87,7 +87,7 @@ ms.locfileid: "73152051"
 >
 
 > [!NOTE]
-> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為*內部部署*SQL Server 缺少第一類**Description**屬性的關係資料庫，資料目錄資料來源註冊工具會從物件和資料行的**ms_description**擴充屬性中，解壓縮值。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 對於缺少一流**描述**屬性*的本地*SQL Server 關係資料庫，資料目錄資料源註冊工具從物件和列**的ms_description**擴充屬性中提取該值。 SQL Azure 不支援此屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 
@@ -97,10 +97,10 @@ ms.locfileid: "73152051"
 ## <a name="how-do-i-annotate-and-enrich-the-metadata-for-my-registered-data-assets"></a>如何標註和充實已註冊資料資產的中繼資料？
 若要為已註冊的資產提供中繼資料，最簡單的方法是在資料目錄入口網站中選取資產，然後在所選物件的屬性窗格或結構描述窗格中，輸入中繼資料值。
 
-在註冊過程中，您也可以提供一些中繼資料，例如專家和標記。 在資料目錄發佈服務中提供的值，將會套用到當時註冊的所有資產。 若要在入口網站中檢視最近註冊的物件以另外標註，請在資料目錄資料來源註冊工具的最後一個畫面中選取 [檢視入口網站] 按鈕。
+在註冊過程中，您也可以提供一些中繼資料，例如專家和標記。 在資料目錄發佈服務中提供的值，將會套用到當時註冊的所有資產。 若要在入口網站中檢視最近註冊的物件以另外標註，請在資料目錄資料來源註冊工具的最後一個畫面中選取 [檢視入口網站]**** 按鈕。
 
 ## <a name="how-do-i-delete-my-registered-data-objects"></a>如何刪除我已註冊的資料物件？
-您可以從資料目錄中刪除物件，只要在入口網站中選取物件，然後按一下 [刪除] 按鈕即可。 移除物件會從資料目錄中移除其中繼資料，但不會影響基礎資料來源。
+您可以從資料目錄中刪除物件，只要在入口網站中選取物件，然後按一下 [刪除]**** 按鈕即可。 移除物件會從資料目錄中移除其中繼資料，但不會影響基礎資料來源。
 
 ## <a name="what-is-an-expert"></a>什麼是專家？
 專家是指對資料物件具有獨特見解的人。 一個物件可能有多個專家。 專家不見得是物件的「擁有者」，而只是知道應該如何運用資料的人。
@@ -125,7 +125,7 @@ ms.locfileid: "73152051"
 針對資料來源註冊工具未擷取此中繼資料的資料來源，如果您想要包含資料行/結構描述中繼資料、預覽或資料設定檔，可以使用資料目錄 API 來新增此中繼資料。 如需詳細資訊，請參閱 [Azure 資料目錄 REST API](https://docs.microsoft.com/rest/api/datacatalog/)。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>如何限制已註冊之資料資產的可見性，以限制只有特定人員才能探索它們？
-在資料目錄中選取資料資產，然後按一下 [取得擁有權] 按鈕。 資料目錄中的資料資產擁有者可以變更可見性設定，可能變更為允許所有使用者探索擁有的資產，或限定只有特定使用者才能看見。 如需詳細資訊，請參閱[在 Azure 資料目錄中管理資料資產](data-catalog-how-to-manage.md)。
+在資料目錄中選取資料資產，然後按一下 [取得擁有權]**** 按鈕。 資料目錄中的資料資產擁有者可以變更可見性設定，可能變更為允許所有使用者探索擁有的資產，或限定只有特定使用者才能看見。 如需詳細資訊，請參閱[在 Azure 資料目錄中管理資料資產](data-catalog-how-to-manage.md)。
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>如何更新資料資產的註冊，讓資料來源中的變更反映在目錄中？
 若要更新已在目錄中註冊之資料資產的中繼資料，只要重新註冊包含這些資產的資料來源即可。 資料來源中的任何變更 (例如在資料表或檢視中新增或移除資料行) 都會在目錄中更新，但會保留使用者提供的任何註解。

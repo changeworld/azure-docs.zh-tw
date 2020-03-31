@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中樞裝置布建服務-裝置概念
-description: 說明 Azure IoT 中樞裝置布建服務（DPS）的裝置重新布建概念
+title: Azure IoT 中心設備佈建服務 - 設備概念
+description: 描述 Azure IoT 中心設備佈建服務 （DPS） 的設備重新調配概念
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975341"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中樞裝置重新佈建概念
@@ -30,7 +30,7 @@ ms.locfileid: "74975341"
 
 ## <a name="device-state-data"></a>裝置狀態資料
 
-裝置狀態資料包含[裝置對應項](../iot-hub/iot-hub-devguide-device-twins.md)與裝置功能。 此資料儲存在裝置佈建服務執行個體與裝置指派後所屬的 IoT 中樞中。
+設備狀態資料由[設備孿生](../iot-hub/iot-hub-devguide-device-twins.md)和裝置功能組成。 此資料儲存在裝置佈建服務執行個體與裝置指派後所屬的 IoT 中樞中。
 
 ![使用裝置佈建服務佈建](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "74975341"
 
 根據情況，裝置通常會在重新開機時，將要求傳送至佈建服務執行個體。 它也支援依需求手動觸發佈建的方法。 註冊項目上的重新佈建原則會決定裝置佈建服務執行個體如何處理這些佈建要求。 此原則也會決定是否應該在重新佈建期間移轉裝置狀態資料。 相同原則可供個別註冊與註冊群組使用：
 
-* **重新佈建和移轉資料**：此原則為新註冊項目的預設值。 此原則會在與註冊項目關聯的裝置提交新的要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 該初始 IoT 中樞中已更新的裝置狀態資訊將會移轉至新的 IoT 中樞 (2)。 移轉期間，裝置的狀態將回報為**指派中**。
+* **重新佈建和移轉資料**：此原則為新註冊項目的預設值。 此原則會在與註冊項目關聯的裝置提交新的要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 該初始 IoT 中樞中已更新的裝置狀態資訊將會移轉至新的 IoT 中樞 (2)。 在遷移期間，設備的狀態將報告為**分配**。
 
     ![使用裝置佈建服務佈建](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **重新佈建並重設為初始設定**：此原則會在與註冊項目關聯的裝置提交新的佈建要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 系統會將佈建服務執行個體在佈建裝置時收到的初始設定資料提供給新的 IoT 中樞 (2)。 移轉期間，裝置的狀態將回報為**指派中**。
+* **重新佈建並重設為初始設定**：此原則會在與註冊項目關聯的裝置提交新的佈建要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 系統會將佈建服務執行個體在佈建裝置時收到的初始設定資料提供給新的 IoT 中樞 (2)。 在遷移期間，設備的狀態將報告為**分配**。
 
     此原則通常會用於在不變更 IoT 中樞的情況下，恢復出廠預設值。
 
@@ -89,4 +89,4 @@ ms.locfileid: "74975341"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [如何重新佈建裝置](how-to-reprovision.md)
+* [如何重新調配設備](how-to-reprovision.md)

@@ -9,25 +9,25 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898501"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure 排程器的連出驗證
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+> [Azure 邏輯應用](../logic-apps/logic-apps-overview.md)正在替換[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 計畫程式。 要繼續處理在計畫程式中設置的作業，請儘快[遷移到 Azure 邏輯應用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 >
-> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
+> 計畫程式在 Azure 門戶中不再可用，但[REST API](/rest/api/scheduler)和[Azure 計畫程式 PowerShell Cmdlet](scheduler-powershell-reference.md)此時仍然可用，以便您可以管理作業和作業集合。
 
 Azure 排程器作業可能必須呼叫要求驗證的服務，例如其他 Azure 服務、Salesforce.com、Facebook 與安全自訂網站。 被呼叫的服務可以決定排程器作業是否能存取要求的資源。 
 
 排程器支援下列驗證方法： 
 
 * *用戶端憑證*驗證 (當使用 SSL/TLS 用戶端憑證時)
-* *基本*驗證
+* *基本*身份驗證
 * *Active Directory OAuth* 驗證
 
 ## <a name="add-or-remove-authentication"></a>新增或移除驗證
@@ -45,12 +45,12 @@ Azure 排程器作業可能必須呼叫要求驗證的服務，例如其他 Azur
 
 使用 `ClientCertificate` 模型新增驗證時，請在要求主體中指定這些額外元素。  
 
-| 元素 | 必要項 | 描述 |
+| 元素 | 必要 | 描述 |
 |---------|----------|-------------|
 | **authentication** (父元素) | 要用於使用 SSL 用戶端憑證的驗證物件 |
-| **type** | 是 | 驗證類型。 若為 SSL 用戶端憑證，值為 `ClientCertificate`。 |
+| **型別** | 是 | 驗證類型。 若為 SSL 用戶端憑證，值為 `ClientCertificate`。 |
 | **pfx** | 是 | PFX 檔案的 base64 編碼內容 |
-| **password** | 是 | 用於存取 PFX 檔案的密碼 |
+| **密碼** | 是 | 用於存取 PFX 檔案的密碼 |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>回應主體 - 用戶端憑證 
@@ -60,7 +60,7 @@ Azure 排程器作業可能必須呼叫要求驗證的服務，例如其他 Azur
 | 元素 | 描述 | 
 |---------|-------------| 
 | **authentication** (父元素) | 要用於使用 SSL 用戶端憑證的驗證物件 |
-| **type** | 驗證類型。 若為 SSL 用戶端憑證，值為 `ClientCertificate`。 |
+| **型別** | 驗證類型。 若為 SSL 用戶端憑證，值為 `ClientCertificate`。 |
 | **certificateThumbprint** |憑證的指紋 |
 | **certificateSubjectName** |憑證的主體辨別名稱 |
 | **certificateExpiration** | 憑證的到期日 |
@@ -159,18 +159,18 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Basic
+## <a name="basic"></a>基本
 
 ### <a name="request-body---basic"></a>要求主體 - 基本
 
 使用 `Basic` 模型新增驗證時，請在要求主體中指定這些額外元素。
 
-| 元素 | 必要項 | 描述 |
+| 元素 | 必要 | 描述 |
 |---------|----------|-------------|
 | **authentication** (父元素) | 用於使用基本驗證的驗證物件 | 
-| **type** | 是 | 驗證類型。 若為基本驗證，值為 `Basic`。 | 
-| **username** | 是 | 要驗證的使用者名稱 | 
-| **password** | 是 | 要驗證的密碼 |
+| **型別** | 是 | 驗證類型。 若為基本驗證，值為 `Basic`。 | 
+| **使用者** | 是 | 要驗證的使用者名稱 | 
+| **密碼** | 是 | 要驗證的密碼 |
 |||| 
 
 ### <a name="response-body---basic"></a>回應主體 - 基本
@@ -180,8 +180,8 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 | 元素 | 描述 | 
 |---------|-------------|
 | **authentication** (父元素) | 用於使用基本驗證的驗證物件 |
-| **type** | 驗證類型。 針對基本驗證，值為 `Basic`。 |
-| **username** | 已驗證的使用者名稱 |
+| **型別** | 驗證類型。 針對基本驗證，值為 `Basic`。 |
+| **使用者** | 已驗證的使用者名稱 |
 ||| 
 
 ### <a name="sample-rest-request---basic"></a>範例 REST 要求 - 基本
@@ -283,14 +283,14 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 使用 `ActiveDirectoryOAuth` 模型新增驗證時，請在要求主體中指定這些額外元素。
 
-| 元素 | 必要項 | 描述 |
+| 元素 | 必要 | 描述 |
 |---------|----------|-------------|
 | **authentication** (父元素) | 是 | 用於使用 ActiveDirectoryOAuth 驗證的驗證物件 |
-| **type** | 是 | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 |
+| **型別** | 是 | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 |
 | **tenant** | 是 | Azure AD 租用戶的租用戶識別碼。 若要尋找 Azure AD 租用戶的租用戶識別碼，請在 Azure PowerShell 中執行 `Get-AzureAccount`。 |
-| **audience** | 是 | 此值會設定為 `https://management.core.windows.net/`。 | 
-| **clientId** | 是 | Azure AD 應用程式的用戶端識別碼 | 
-| **secret** | 是 | 要求權杖之用戶端的祕密 | 
+| **觀眾** | 是 | 此值會設定為 `https://management.core.windows.net/`。 | 
+| **用戶端 Id** | 是 | Azure AD 應用程式的用戶端識別碼 | 
+| **秘密** | 是 | 要求權杖之用戶端的祕密 | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>回應主體 - Active Directory OAuth
@@ -300,10 +300,10 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 | 元素 | 描述 |
 |---------|-------------|
 | **authentication** (父元素) | 用於使用 ActiveDirectoryOAuth 驗證的驗證物件 |
-| **type** | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 | 
+| **型別** | 驗證類型。 若為 ActiveDirectoryOAuth 驗證，值為 `ActiveDirectoryOAuth`。 | 
 | **tenant** | Azure AD 租用戶的租用戶識別碼 |
-| **audience** | 此值會設定為 `https://management.core.windows.net/`。 |
-| **clientId** | Azure AD 應用程式的用戶端識別碼 |
+| **觀眾** | 此值會設定為 `https://management.core.windows.net/`。 |
+| **用戶端 Id** | Azure AD 應用程式的用戶端識別碼 |
 ||| 
 
 ### <a name="sample-rest-request---active-directory-oauth"></a>範例 REST 要求 - Active Directory OAuth

@@ -1,5 +1,5 @@
 ---
-title: 雲端解決方案提供者的 Azure AD Domain Services |Microsoft Docs
+title: 面向雲解決方案供應商的 Azure AD 域服務 |微軟文檔
 description: Azure 雲端方案提供者的 Azure Active Directory Domain Services。
 services: active-directory-ds
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
 ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754431"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure 雲端方案提供者 (CSP) 的 Azure Active Directory (AD) Domain Services
@@ -28,7 +28,7 @@ ms.locfileid: "72754431"
 ## <a name="overview-of-azure-csp"></a>Azure CSP 的概觀
 Azure CSP 是針對 Microsoft 合作夥伴的方案，為各種 Microsoft 雲端服務提供授權通路。 Azure CSP 使得合作夥伴能夠管理銷售、擁有計費關係、提供技術及計費支援，並成為客戶的單一連絡窗口。 此外，Azure CSP 會提供一組完整的工具，包括自助服務入口網站和隨附的 API。 這些工具使得 CSP 合作夥伴能夠輕鬆地佈建及管理 Azure 資源，以及提供客戶和其訂用帳戶的帳單。
 
-[合作夥伴中心入口網站](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)可做為所有 Azure CSP 合作夥伴的進入點。 它提供豐富的客戶管理功能、自動化處理，還有更多功能。 Azure CSP 合作夥伴可以使用網頁型 UI 或使用 PowerShell 與各種 API 呼叫來使用合作夥伴中心的功能。
+[合作夥伴中心門戶](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)充當所有 Azure CSP 合作夥伴的進入點。 它提供豐富的客戶管理功能、自動化處理，還有更多功能。 Azure CSP 合作夥伴可以使用網頁型 UI 或使用 PowerShell 與各種 API 呼叫來使用合作夥伴中心的功能。
 
 下圖說明 CSP 模型高層的運作方式。 Contoso 有 Azure AD Active Directory。 它們與某個 CSP 有合作關係，該 CSP 會在其 Azure CSP 訂用帳戶中部署和管理資源。 Contoso 可能也有定期 (直接) 的 Azure 訂用帳戶，這部分是直接向 Contoso 計費。
 
@@ -43,7 +43,7 @@ Azure AD Domain Services 在 Azure 中提供 Windows Server AD 相容服務，�
 
 Azure AD Domain Services 現在支援 Azure CSP 訂用帳戶。 您現在可以在繫結至客戶的 Azure AD 目錄的 Azure CSP 訂用帳戶中部署應用程式。 如此一來，您的員工 (支援人員) 可以使用組織的公司認證來管理、管控和服務部署應用程式所在的虛擬機器。 此外，您可以為客戶的 Azure AD 目錄佈建 Azure AD Domain Services 受控網域。 您的應用程式會連接到您客戶的受控網域。 因此，應用程式內依賴於 Kerberos/NTLM、LDAP 或 [System.DirectoryServices API](/dotnet/api/system.directoryservices) 的功能可對客戶的目錄運作順暢。 一般客戶可因為使用您的應用程式作為服務而大幅獲益，而不需擔心維護應用程式部署所在的基礎結構。
 
-您在該訂用帳戶中所使用的所有 Azure 資源的計費 (包括 Azure AD Domain Services) 會退回給您。 在銷售、帳單、技術支援等方面，您可以完全掌控與客戶之間的關係。有了 Azure CSP 平臺的彈性，一小組的支援代理程式可以服務許多已部署您的應用程式實例的客戶。
+您在該訂用帳戶中所使用的所有 Azure 資源的計費 (包括 Azure AD Domain Services) 會退回給您。 在銷售、計費、技術支援等方面，您可以完全控制與客戶的關係。借助 Azure CSP 平臺的靈活性，小型支援代理團隊可以為部署應用程式的實例的許多此類客戶提供服務。
 
 
 ## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Azure AD 網域服務的 CSP 部署模型
@@ -56,7 +56,7 @@ Azure AD Domain Services 現在支援 Azure CSP 訂用帳戶。 您現在可以�
 
 ![直接部署模型](./media/csp/csp_direct_deployment_model.png)
 
-在此部署模型中，CSP 提供者的管理專員可以管理客戶的身分識別。 這些系統管理員代理程式能夠布建新的使用者、群組、在客戶的 Azure AD 目錄中新增應用程式等等。此部署模型可能適用于沒有專用身分識別管理員的小型組織，或不想讓 CSP 合作夥伴代表他們管理識別身分。
+在此部署模型中，CSP 提供者的管理專員可以管理客戶的身分識別。 這些管理員代理能夠預配新使用者、組、在客戶的 Azure AD 目錄中添加應用程式等。此部署模型可能適用于沒有專用標識管理員或希望 CSP 合作夥伴代表其管理標識的小型組織。
 
 
 ### <a name="peered-deployment-model"></a>對等部署模型
@@ -83,11 +83,11 @@ Azure AD Domain Services 現在支援 Azure CSP 訂用帳戶。 您現在可以�
   > 您無法使用 CSP 管理使用者的認證來登入受控網域。 請使用屬於客戶 Azure AD 目錄的使用者帳戶認證來執行此動作。 對於將虛擬機器加入受控網域、管理 DNS、管理群組原則之類工作，您需要這些認證。
   >
 
-* **針對進行中管理建立的使用者帳戶必須新增至 'AAD DC Administrators' 群組**：'AAD DC Administrators' 群組具有在受控網域上執行特定委派的系統管理工作的權限。 這些工作包括設定 DNS、建立組織單位、管理群組原則等。若要讓 CSP 合作夥伴在受控網域上執行這類工作，必須在客戶的 Azure AD 目錄內建立使用者帳戶。 您必須將此帳戶的認證與 CSP 合作夥伴的管理專員分享。 此外，必須將此使用者帳戶新增至 'AAD DC Administrators' 群組，以讓受控網域上的組態工作可使用此使用者帳戶來執行。
+* **針對進行中管理建立的使用者帳戶必須新增至 'AAD DC Administrators' 群組**：'AAD DC Administrators' 群組具有在受控網域上執行特定委派的系統管理工作的權限。 這些任務包括配置 DNS、創建組織單位、管理群組原則等。對於 CSP 合作夥伴在託管域上執行此類任務，需要在客戶的 Azure AD 目錄中創建使用者帳戶。 您必須將此帳戶的認證與 CSP 合作夥伴的管理專員分享。 此外，必須將此使用者帳戶新增至 'AAD DC Administrators' 群組，以讓受控網域上的組態工作可使用此使用者帳戶來執行。
 
 
 ## <a name="next-steps"></a>後續步驟
-* [註冊參加 Azure CSP 計畫](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program)，然後開始透過 Azure CSP 建立企業。
+* [註冊 Azure CSP 計畫](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program)，並通過 Azure CSP 開始創建業務。
 * 檢閱 [Azure CSP 中可用的 Azure 服務](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)清單。
 * [使用 PowerShell 啟用 Azure AD Domain Services](powershell-create-instance.md)
 * [開始使用 Azure AD Domain Services](tutorial-create-instance.md)

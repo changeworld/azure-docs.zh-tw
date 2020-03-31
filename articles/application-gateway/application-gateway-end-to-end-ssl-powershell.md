@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
 ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72286462"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 以應用程式閘道設定端對端 SSL
@@ -20,7 +20,7 @@ ms.locfileid: "72286462"
 
 Azure 應用程式閘道支援為流量進行端對端加密。 應用程式閘道會在應用程式閘道終止 SSL 連線。 閘道接著會對流量套用路由規則、重新加密封包，並根據所定義的路由規則將封包轉送至適當的後端伺服器。 任何來自 Web 伺服器的回應都會經歷相同的程序而回到使用者端。
 
-應用程式閘道支援定義自訂 SSL 選項。 也支援停用下列通訊協定版本：**TLSv1.0**、**TLSv1.1** 和 **TLSv1.2**，也會定義要使用哪個加密套件以及偏好的順序。 若要深入了解可設定的 SSL 選項，請參閱 [SSL 原則概觀](application-gateway-SSL-policy-overview.md)。
+應用程式閘道支援定義自訂 SSL 選項。 它也支援停用下列通訊協定版本；**TLSv1.0**、**TLSv1.1** 和 **TLSv1.2**，也會定義要使用那個加密套件以及偏好的順序。 若要深入了解可設定的 SSL 選項，請參閱 [SSL 原則概觀](application-gateway-SSL-policy-overview.md)。
 
 > [!NOTE]
 > 預設會停用 SSL 2.0 和 SSL 3.0，並且無法啟用。 這些版本被認為並不安全，因此不能搭配應用程式閘道使用。
@@ -33,7 +33,7 @@ Azure 應用程式閘道支援為流量進行端對端加密。 應用程式閘�
 
 此案例將會：
 
-* 建立名為 **appgw-rg** 的資源群組。
+* 創建名為**appgw-rg**的資源組。
 * 建立名為 **appgwvnet** 且具有 **10.0.0.0/16** 位址空間的虛擬網路。
 * 建立名為 **appgwsubnet** 和 **appsubnet** 的兩個子網路。
 * 建立支援端對端 SSL 加密 (限制 SSL 通訊協定版本和加密套件) 的小型應用程式閘道。
@@ -44,7 +44,7 @@ Azure 應用程式閘道支援為流量進行端對端加密。 應用程式閘�
 
 若要對應用程式閘道設定端對端 SSL，則需要閘道憑證和後端伺服器憑證。 閘道憑證用來根據 SSL 通訊協定規格衍生對稱金鑰。 接下來，對稱金鑰可以用來加密和解密傳送至閘道的流量。 閘道憑證必須採用「個人資訊交換」(PFX) 格式。 此檔案格式可允許將私密金鑰匯出，而應用程式閘道需要這個匯出的金鑰來執行流量的加密和解密。
 
-對於端對端 SSL 加密，應用程式閘道必須明確允許後端。 將後端伺服器的公開憑證上傳至應用程式閘道。 新增憑證可確保應用程式閘道只會與已知的後端執行個體通訊。 這會進而保護端對端通訊。
+對於端到端 SSL 加密，應用程式閘道必須顯式允許後端。 將後端伺服器的公開憑證上傳至應用程式閘道。 新增憑證可確保應用程式閘道只會與已知的後端執行個體通訊。 這會進而保護端對端通訊。
 
 下列各節將說明設定程序。
 
@@ -174,7 +174,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > 上一個步驟中提供的憑證應該是後端上的 .pfx 憑證的公開金鑰。 將安裝在後端伺服器上的憑證 (非根憑證) 以「宣告、證據和推論」(CER) 格式匯出，並將它用於此步驟。 此步驟會將後端加入到應用程式閘道的允許清單。
+   > 上一步中提供的證書應該是後端存在的 .pfx 證書的公開金鑰。 將安裝在後端伺服器上的憑證 (非根憑證) 以「宣告、證據和推論」(CER) 格式匯出，並將它用於此步驟。 此步驟會將後端加入到應用程式閘道的允許清單。
 
    如果您使用「應用程式閘道 v2 SKU」，則請建立受信任的根憑證，而不是建立驗證憑證。 如需詳細資訊，請參閱[應用程式閘道端對端 SSL 的概觀](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)：
 
@@ -200,7 +200,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. 設定應用程式閘道的執行個體大小。 可用大小是 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  容量的可用值為 **1** 到 **10**。
+10. 設定應用程式閘道的執行個體大小。 可用大小是 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  對於容量，可用值為**1**到**10**。
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -227,19 +227,19 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 
 使用上述所有步驟建立應用程式閘道。 建立閘道的執行過程需要很長一段時間。
 
-針對 V1 SKU，請使用下列命令
+對於 V1 SKU，請使用以下命令
 ```powershell
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-針對 V2 SKU，請使用下列命令
+對於 V2 SKU，請使用以下命令
 ```powershell
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
 ```
 
-## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果後端憑證已過期，則套用新的憑證
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果後端證書已過期，則應用新證書
 
-如果後端憑證已過期，請使用此程式來套用新的憑證。
+如果後端證書已過期，請使用此過程應用新證書。
 
 1. 擷取要更新的應用程式閘道。
 
@@ -247,33 +247,33 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 從 .cer 檔案加入新的憑證資源，其中包含憑證的公開金鑰，而且也可以是新增至接聽程式的憑證，以在應用程式閘道上進行 SSL 終止。
+2. 從 .cer 檔添加新的證書資源，該檔包含證書的公開金鑰，也可以與添加到攔截器以在應用程式閘道進行 SSL 終止的證書相同。
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. 將新的驗證憑證物件取得至變數（TypeName：PSApplicationGatewayAuthenticationCertificate）：）。
+3. 將新的身份驗證憑證物件放入變數（類型名稱：Microsoft.Azure.命令.網路.模型.PS應用程式閘道身份驗證憑證）。
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
    ```
  
- 4. 將新憑證指派至**BackendHttp**設定，並將它與 $AuthCert 變數一併參考。 （指定您想要變更的 HTTP 設定名稱）。
+ 4. 將新證書分配給**BackendHttp**設置，並將其與$AuthCert變數引用。 （指定要更改的 HTTP 設置名稱。
  
    ```powershell
    $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
    ```
     
- 5. 將變更認可到應用程式閘道，並傳遞包含在 $out 變數中的新設定。
+ 5. 將更改提交到應用程式閘道，並將包含的新配置傳遞到$out變數中。
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw  
    ```
 
-## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>從 HTTP 設定中移除未使用的過期憑證
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>從 HTTP 設置中刪除未使用的過期證書
 
-使用此程式可從 HTTP 設定中移除未使用的過期憑證。
+使用此過程從 HTTP 設置中刪除未使用的過期證書。
 
 1. 擷取要更新的應用程式閘道。
 
@@ -281,19 +281,19 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 列出您想要移除之驗證憑證的名稱。
+2. 列出要刪除的身份驗證憑證的名稱。
 
    ```powershell
    Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
    ```
     
-3. 從應用程式閘道移除驗證憑證。
+3. 從應用程式閘道中刪除身份驗證憑證。
 
    ```powershell
    $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
    ```
  
- 4. 認可變更。
+ 4. 提交更改。
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw
@@ -327,7 +327,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 
 建立閘道之後，下一步是設定通訊的前端。 使用公用 IP 時，應用程式閘道需要動態指派的 DNS 名稱 (不易記住)。 為了確保使用者可以叫用應用程式閘道，可使用 CNAME 記錄來指向應用程式閘道的公用端點。 如需詳細資訊，請參閱[在 Azure 中設定自訂網域名稱](../cloud-services/cloud-services-custom-domain-name-portal.md)。 
 
-若要設定別名，請使用連結至應用程式閘道的 **PublicIPAddress** 元素，擷取應用程式閘道的詳細資料及其關聯的 IP/DNS 名稱。 使用應用程式閘道的 DNS 名稱所建立的 CNAME 記錄，可將兩個 Web 應用程式指向此 DNS 名稱。 不建議使用 A-records，因為重新啟動應用程式閘道時，VIP 可能會變更。
+要配置別名，請使用附加到應用程式閘道的**PublicIP位址**元素檢索應用程式閘道及其關聯的 IP/DNS 名稱的詳細資訊。 使用應用程式閘道的 DNS 名稱所建立的 CNAME 記錄，可將兩個 Web 應用程式指向此 DNS 名稱。 不建議使用 A-records，因為重新啟動應用程式閘道時，VIP 可能會變更。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

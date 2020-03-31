@@ -1,42 +1,42 @@
 ---
-title: 使用受控識別來驗證 blob 輸出 Azure 串流分析
-description: 本文說明如何使用受控識別向 Azure Blob 儲存體輸出驗證 Azure 串流分析作業。
+title: 使用託管標識 Azure 流分析對 Blob 輸出進行身份驗證
+description: 本文介紹如何使用託管標識將 Azure 流分析作業驗證為 Azure Blob 存儲輸出。
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129966"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體輸出
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用託管標識將 Azure 流分析作業驗證為 Azure Blob 存儲輸出
 
-輸出至 Azure Blob 儲存體的[受控識別驗證](../active-directory/managed-identities-azure-resources/overview.md)可讓串流分析作業直接存取儲存體帳戶，而不是使用連接字串。 除了增強的安全性之外，這項功能也可讓您將資料寫入 Azure 中虛擬網路（VNET）的儲存體帳戶。
+用於輸出到 Azure Blob 存儲的[託管標識身份驗證](../active-directory/managed-identities-azure-resources/overview.md)使流分析作業直接存取存儲帳戶，而不是使用連接字串。 除了提高安全性外，此功能還使您能夠將資料寫入 Azure 中的虛擬網路 （VNET） 中的存儲帳戶。
 
-本文說明如何透過 Azure 入口網站以及透過 Azure Resource Manager 部署，為串流分析作業的 Blob 輸出啟用受控識別。
+本文演示如何通過 Azure 門戶和 Azure 資源管理器部署為流分析作業的 Blob 輸出啟用託管標識。
 
-## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 入口網站建立串流分析作業
+## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 門戶創建流分析作業
 
-1. 建立新的串流分析作業，或在 Azure 入口網站中開啟現有的作業。 從位於畫面左側的功能表列中，選取位於 [**設定**] 底下的 [**受控識別**]。 確定已選取 [使用系統指派的受控識別]，然後按一下畫面底部的 [**儲存**] 按鈕。
+1. 創建新的流分析作業或在 Azure 門戶中打開現有作業。 從位於螢幕左側的功能表列中，選擇位於 **"配置**"下的**託管標識**。 確保選擇"使用系統分配的託管標識"，然後按一下螢幕底部的 **"保存**"按鈕。
 
-   ![設定串流分析受控識別](./media/common/stream-analytics-enable-managed-identity.png)
+   ![配置流分析託管標識](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. 在 Azure Blob 儲存體輸出接收的 [輸出屬性] 視窗中，選取 [驗證模式] 下拉式選單，然後選擇 [**受控識別**]。 如需其他輸出屬性的相關資訊，請參閱[瞭解 Azure 串流分析的輸出](./stream-analytics-define-outputs.md)。 當您完成後，請按一下 [儲存]。
+2. 在 Azure Blob 存儲輸出接收器的輸出屬性視窗中，選擇"身份驗證模式下拉"並選擇**託管標識**。 有關其他輸出屬性的資訊，請參閱瞭解[Azure 流分析的輸出](./stream-analytics-define-outputs.md)。 當您完成後，請按一下 [儲存]****。
 
-   ![設定 Azure Blob 儲存體輸出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+   ![配置 Azure Blob 存儲輸出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
-3. 現在已建立作業，請參閱本文的[授與您儲存體帳戶的串流分析作業存取](#give-the-stream-analytics-job-access-to-your-storage-account)一節。
+3. 創建作業後，請參閱本文[的"授予流分析作業"作業對存儲帳戶的存取權限](#give-the-stream-analytics-job-access-to-your-storage-account)。
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager 部署
 
-使用 Azure Resource Manager 可讓您將串流分析作業的部署作業完全自動化。 您可以使用 Azure PowerShell 或[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)來部署 Resource Manager 範本。 下列範例使用 Azure CLI。
+使用 Azure 資源管理器可以完全自動部署流分析作業。 可以使用 Azure PowerShell 或[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)部署資源管理器範本。 以下示例使用 Azure CLI。
 
 
-1. 您可以在 Resource Manager 範本的資源區段中包含下列屬性，以建立具有受控識別的**mslearn-streamanalytics/streamingjobs**資源：
+1. 您可以通過在資源管理器範本的資源部分中包括以下屬性來創建具有託管標識的**Microsoft.StreamAnalytics/流式作業**資源：
 
     ```json
     "Identity": {
@@ -44,7 +44,7 @@ ms.locfileid: "79129966"
     },
     ```
 
-   這個屬性會告訴 Azure Resource Manager 建立和管理串流分析作業的身分識別。 以下範例 Resource Manager 範本，其會部署已啟用受控識別的串流分析作業，以及使用受控識別的 Blob 輸出接收：
+   此屬性告訴 Azure 資源管理器為流分析作業創建和管理標識。 下面是一個示例資源管理器範本，該範本部署了啟用託管標識的流分析作業和使用託管標識的 Blob 輸出接收器：
 
     ```json
     {
@@ -95,19 +95,19 @@ ms.locfileid: "79129966"
     }
     ```
 
-    您可以使用下列 Azure CLI 命令，將上述作業部署到資源群組**ExampleGroup** ：
+    可以使用以下 Azure CLI 命令將上述作業部署到資源組**示例組**：
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
-2. 建立作業之後，您可以使用 Azure Resource Manager 來取出作業的完整定義。
+2. 創建作業後，可以使用 Azure 資源管理器檢索作業的完整定義。
 
     ```azurecli
     az resource show --ids /subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.StreamAnalytics/StreamingJobs/{RESOURCE_NAME}
     ```
 
-    上述命令會傳回如下所示的回應：
+    上述命令將返回如下回應：
 
     ```json
     {
@@ -146,96 +146,96 @@ ms.locfileid: "79129966"
     }
     ```
 
-   請記下作業定義中的**principalId** ，這會在 Azure Active Directory 中識別您作業的受控識別，並將在下一個步驟中用來將串流分析作業存取權授與儲存體帳戶。
+   請注意作業定義中的**主體 Id，該定義**標識 Azure 活動目錄中作業的託管標識，並將在下一步中使用，以授予流分析作業對存儲帳戶的存取權限。
 
-3. 現在已建立作業，請參閱本文的[授與您儲存體帳戶的串流分析作業存取](#give-the-stream-analytics-job-access-to-your-storage-account)一節。
+3. 創建作業後，請參閱本文[的"授予流分析作業"作業對存儲帳戶的存取權限](#give-the-stream-analytics-job-access-to-your-storage-account)。
 
 
-## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>為串流分析作業提供儲存體帳戶的存取權
+## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>授予流分析作業對存儲帳戶的存取權限
 
-您可以選擇兩個層級的存取權，以提供您的串流分析作業：
+您可以選擇提供流分析作業的兩個級別：
 
-1. **容器層級存取：** 此選項可讓作業存取特定的現有容器。
-2. **帳戶層級存取：** 此選項會為作業提供儲存體帳戶的一般存取權，包括建立新容器的能力。
+1. **容器級別訪問：** 此選項允許作業訪問特定現有容器。
+2. **帳戶級別訪問：** 此選項允許作業對存儲帳戶的一般存取權限，包括創建新容器的能力。
 
-除非您需要代表您建立容器的作業，否則請選擇**容器層級存取**，因為此選項會授與作業所需的最低存取層級。 以下說明這兩個選項，適用于 Azure 入口網站和命令列。
+除非需要作業代表您創建容器，否則應選擇**容器級別訪問**，因為此選項將為作業授予所需的最低存取層級。 下面對 Azure 門戶和命令列說明了這兩個選項。
 
-### <a name="grant-access-via-the-azure-portal"></a>透過 Azure 入口網站授與存取權
+### <a name="grant-access-via-the-azure-portal"></a>通過 Azure 門戶授予存取權限
 
-#### <a name="container-level-access"></a>容器層級存取
+#### <a name="container-level-access"></a>容器級訪問
 
-1. 流覽至儲存體帳戶中容器的 [設定] 窗格。
+1. 導航到存儲帳戶中的容器配置窗格。
 
-2. 選取左側的 **[存取控制（IAM）** ]。
+2. 選擇左側的訪問**控制 （IAM）。**
 
-3. 在 [新增角色指派] 區段下，按一下 [**新增**]。
+3. 在"添加角色指派"部分下，按一下"**添加**"。
 
-4. 在 [角色指派] 窗格中：
+4. 在角色指派窗格中：
 
-    1. 將**角色**設定為「儲存體 Blob 資料參與者」
-    2. 確定 [**指派存取**權] 已設定為 [Azure AD 使用者、群組或服務主體]。
-    3. 在 [搜尋] 欄位中輸入串流分析作業的名稱。
-    4. 選取您的串流分析作業，然後按一下 [**儲存**]。
+    1. 將**角色**設置為"存儲 Blob 資料參與者"
+    2. 確保 **"分配對**下拉清單的訪問"設置為"Azure AD 使用者、組或服務主體"。
+    3. 在搜索欄位中鍵入流分析作業的名稱。
+    4. 選擇您的流分析作業，然後按一下"**保存**"。
 
-   ![授與容器存取權](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
+   ![授予容器訪問](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
-#### <a name="account-level-access"></a>帳戶層級存取
+#### <a name="account-level-access"></a>帳戶級別訪問
 
 1. 瀏覽至儲存體帳戶。
 
-2. 選取左側的 **[存取控制（IAM）** ]。
+2. 選擇左側的訪問**控制 （IAM）。**
 
-3. 在 [新增角色指派] 區段下，按一下 [**新增**]。
+3. 在"添加角色指派"部分下，按一下"**添加**"。
 
-4. 在 [角色指派] 窗格中：
+4. 在角色指派窗格中：
 
-    1. 將**角色**設定為「儲存體 Blob 資料參與者」
-    2. 確定 [**指派存取**權] 已設定為 [Azure AD 使用者、群組或服務主體]。
-    3. 在 [搜尋] 欄位中輸入串流分析作業的名稱。
-    4. 選取您的串流分析作業，然後按一下 [**儲存**]。
+    1. 將**角色**設置為"存儲 Blob 資料參與者"
+    2. 確保 **"分配對**下拉清單的訪問"設置為"Azure AD 使用者、組或服務主體"。
+    3. 在搜索欄位中鍵入流分析作業的名稱。
+    4. 選擇您的流分析作業，然後按一下"**保存**"。
 
-   ![授與帳戶存取權](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
+   ![授予帳戶存取權限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
-### <a name="grant-access-via-the-command-line"></a>透過命令列授與存取權
+### <a name="grant-access-via-the-command-line"></a>通過命令列授予存取權限
 
-#### <a name="container-level-access"></a>容器層級存取
+#### <a name="container-level-access"></a>容器級訪問
 
-若要授與特定容器的存取權，請使用 Azure CLI 執行下列命令：
+要授予對特定容器的存取權限，請使用 Azure CLI 運行以下命令：
 
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
    ```
 
-#### <a name="account-level-access"></a>帳戶層級存取
+#### <a name="account-level-access"></a>帳戶級別訪問
 
-若要授與整個帳戶的存取權，請使用 Azure CLI 執行下列命令：
+要授予對整個帳戶的存取權限，請使用 Azure CLI 運行以下命令：
 
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
    ```
 
-## <a name="enable-vnet-access"></a>啟用 VNET 存取
+## <a name="enable-vnet-access"></a>啟用 VNET 訪問
 
-在設定儲存體帳戶的**防火牆和虛擬網路**時，您可以選擇性地允許來自其他受信任 Microsoft 服務的網路流量。 當串流分析使用受控識別進行驗證時，它會提供要求來自受信任服務的證明。 以下是啟用此 VNET 存取例外狀況的指示。
+配置存儲帳戶的**防火牆和虛擬網路**時，可以選擇允許來自其他受信任的 Microsoft 服務的網路流量。 當流分析使用託管標識進行身份驗證時，它會提供請求源自受信任服務的證據。 下面是啟用此 VNET 訪問異常的說明。
 
-1.  在儲存體帳戶的 [設定] 窗格中，流覽至 [防火牆和虛擬網路] 窗格。
-2.  請確定已啟用 [允許信任的 Microsoft 服務存取此儲存體帳戶] 選項。
-3.  如果您已啟用它，請按一下 [**儲存**]。
+1.  導航到存儲帳戶配置窗格中的"防火牆和虛擬網路"窗格。
+2.  確保啟用"允許受信任的 Microsoft 服務訪問此存儲帳戶"選項。
+3.  如果啟用了它，請按一下"**保存**"。
 
-   ![啟用 VNET 存取](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+   ![啟用 VNET 訪問](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 
 ## <a name="limitations"></a>限制
-以下是此功能目前的限制：
+以下是此功能的當前限制：
 
-1. 傳統 Azure 儲存體帳戶。
+1. 經典 Azure 存儲帳戶。
 
-2. 沒有 Azure Active Directory 的 Azure 帳戶。
+2. 沒有 Azure 活動目錄的 Azure 帳戶。
 
-3. 不支援多租使用者存取。 針對指定串流分析作業所建立的服務主體必須位於建立作業所在的相同 Azure Active Directory 租使用者中，且不能與位於不同 Azure Active Directory 租使用者中的資源搭配使用。
+3. 不支援多租戶訪問。 為給定流分析作業創建的服務主體必須駐留在創建作業的同一 Azure 活動目錄租戶中，並且不能與駐留在其他 Azure 活動目錄租戶中的資源一起使用。
 
-4. 不支援[使用者指派](../active-directory/managed-identities-azure-resources/overview.md)的身分識別。 這表示使用者不能輸入自己的服務主體，以供其串流分析作業使用。 服務主體必須由 Azure 串流分析產生。
+4. 不支援[使用者分配標識](../active-directory/managed-identities-azure-resources/overview.md)。 這意味著使用者無法輸入自己的服務主體，以便其流分析作業使用。 服務主體必須由 Azure 流分析生成。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [了解來自 Azure 串流分析的輸出](./stream-analytics-define-outputs.md)
-* [Azure 串流分析自訂 blob 輸出資料分割](./stream-analytics-custom-path-patterns-blob-storage-output.md)
+* [Azure 串流分析自訂 Blob 輸出資料分割](./stream-analytics-custom-path-patterns-blob-storage-output.md)

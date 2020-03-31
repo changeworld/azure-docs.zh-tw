@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244962"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>新增、變更或移除 Azure 網路介面的 IP 位址
@@ -37,24 +37,24 @@ ms.locfileid: "79244962"
 - 如果您還沒有 Azure 帳戶，請註冊[免費試用帳戶](https://azure.microsoft.com/free)。
 - 如果使用入口網站，請開啟 https://portal.azure.com，並使用您的 Azure 帳戶來登入。
 - 如果使用 PowerShell 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/powershell) \(英文\) 中執行命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 本教學課程需要 Azure PowerShell 模組 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
-- 如果使用命令列介面 (CLI) 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/bash) \(英文\) 中執行命令，或從您的電腦執行 CLI。 本教學課程需要 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 Azure CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
+- 如果使用命令列介面 (CLI) 命令來完成這篇文章中的工作，請在 [Azure Cloud Shell](https://shell.azure.com/bash) \(英文\) 中執行命令，或從您的電腦執行 CLI。 本教學課程需要 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 來了解安裝的版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 Azure CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
-您登入或連線到 Azure 的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派[網路介面權限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中所列適當動作的[自訂角色](virtual-network-network-interface.md#permissions)。
+您登入或連線到 Azure 的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派[網路介面權限](virtual-network-network-interface.md#permissions)中所列適當動作的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="add-ip-addresses"></a>新增 IP 位址
 
-您可以在[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文所列的限制內，視需要將多個[私人](#private)和[公用](#public) [IPv4](#ipv4)位址新增至網路介面。 針對現有的網路介面，您可以將私人 IPv6 位址新增至一個[次要 ip](#secondary)設定（只要沒有現有的次要 ip 設定）。 每個網路介面最多隻能有一個 IPv6 私人位址。 您可以選擇性地將公用 IPv6 位址新增至 IPv6 網路介面設定。 如需使用 IPv6 位址的詳細資訊，請參閱 [IPv6](#ipv6)。
+您可以將所需的多個[私人](#private)和[公用](#public) [IPv4](#ipv4) 位址新增至網路介面，但不得超過 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文所列的限制。 您可以將專用 IPv6 位址添加到現有網路介面的一個[輔助 IP 配置](#secondary)（只要沒有現有的輔助 IP 配置）。 每個網路介面最多可能具有一個 IPv6 專用位址。 您可以選擇將公共 IPv6 位址添加到 IPv6 網路介面配置中。 如需使用 IPv6 位址的詳細資訊，請參閱 [IPv6](#ipv6)。
 
-1. 在 Azure 入口網站頂端包含「搜尋資源」文字的方塊中，輸入「網路介面」。 當**網路介面**出現於搜尋結果時，請選取它。
+1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，輸入「網路介面」**。 當**網路介面**出現於搜尋結果時，請選取它。
 2. 從清單中選取您要新增 IPv4 位址的網路介面。
-3. 在 [設定] 下，選取 [IP 設定]。
-4. 在 [IP 設定] 下，選取 [+ 新增]。
-5. 指定下列項目，然後選取 [確定]：
+3. 在 [設定]**** 下，選取 [IP 設定]****。
+4. 在 [IP 設定]**** 下，選取 [+ 新增]****。
+5. 指定下列項目，然後選取 [確定]****：
 
    |設定|必要項？|詳細資料|
    |---|---|---|
    |名稱|是|在網路介面中必須是唯一的|
-   |類型|是|由於您要新增 IP 組態至現有的網路介面，而每個網路介面都必須有一個[主要](#primary) IP 組態，所以您只能選擇 [次要]。|
+   |類型|是|由於您要新增 IP 組態至現有的網路介面，而每個網路介面都必須有一個[主要](#primary) IP 組態，所以您只能選擇 [次要]****。|
    |私人 IP 位址指派方法|是|[**動態**](#dynamic)：Azure 會為其中部署網路介面的子網路位址範圍指派下一個可用位址。 [**靜態**](#static)：您會為其中部署網路介面的子網路位址範圍指派未使用的位址。|
    |公用 IP 位址|否|**已停用：** IP 組態目前沒有相關聯的公用 IP 位址資源。 **已啟用：** 選取現有的 IPv4 公用 IP 位址，或建立一個新的。 若要了解如何建立公用 IP 位址，請閱讀[公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
 6. 請完成[將多個 IP 位址指派給虛擬機器作業系統](virtual-network-multiple-ip-addresses-portal.md#os-config)一文中的指示，以手動方式將次要私人 IP 位址新增至虛擬機器作業系統。 有關手動將 IP 位址新增至虛擬機器作業系統之前的特殊考量，請參閱[私人](#private) IP 位址。 請勿將任何公用 IP 位址新增至虛擬機器作業系統。
@@ -64,18 +64,18 @@ ms.locfileid: "79244962"
 |工具|Command|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
-|PowerShell|[新增-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
+|PowerShell|[添加-阿茲網路介面IpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>變更 IP 位址設定
 
 您可能需要變更 IPv4 位址的指派方法、變更靜態 IPv4 位址，或變更指派給網路介面的公用 IP 位址。 如果您要變更與虛擬機器中次要網路介面相關聯之次要 IP 組態的私人 IPv4 位址 (深入了解[主要和次要網路介面](virtual-network-network-interface-vm.md))，請先讓虛擬機器進入停止 (已取消配置) 狀態，再完成下列步驟︰
 
-1. 在 Azure 入口網站頂端包含「搜尋資源」文字的方塊中，輸入「網路介面」。 當**網路介面**出現於搜尋結果時，請選取它。
+1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，輸入「網路介面」**。 當**網路介面**出現於搜尋結果時，請選取它。
 2. 從清單中選取您要檢視或變更 IP 位址設定的網路介面。
-3. 在 [設定] 下，選取 [IP 設定]。
+3. 在 [設定]**** 下，選取 [IP 設定]****。
 4. 從清單中選取您要修改的 IP 設定。
 5. 使用[新增 IP 設定](#add-ip-addresses)之步驟 5 中的設定資訊，視需要變更設定。
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
 >[!NOTE]
 >如果主要網路介面有多個 IP 組態，而且您變更主要 IP 組態的私人 IP 位址，則必須以手動方式將主要和次要 IP 位址重新指派給 Windows 內的網路介面 (對 Linux 而言並非必要)。 若要以手動方式將 IP 位址指派給作業系統內的網路介面，請參閱[對虛擬機器指派多個 IP 位址](virtual-network-multiple-ip-addresses-portal.md#os-config)。 如需手動將 IP 位址新增至虛擬機器作業系統之前的特殊考量，請參閱[私人](#private) IP 位址。 請勿將任何公用 IP 位址新增至虛擬機器作業系統。
@@ -85,23 +85,23 @@ ms.locfileid: "79244962"
 |工具|Command|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[設定-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
+|PowerShell|[設置-阿茲網路介面IpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>移除 IP 位址
 
 您可以從網路介面移除[私人](#private)和[公用](#public) IP 位址，但一律必須對網路介面指派至少一個私人 IPv4 位址。
 
-1. 在 Azure 入口網站頂端包含「搜尋資源」文字的方塊中，輸入「網路介面」。 當**網路介面**出現於搜尋結果時，請選取它。
+1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，輸入「網路介面」**。 當**網路介面**出現於搜尋結果時，請選取它。
 2. 從清單中選取您要移除 IP 位址的網路介面。
-3. 在 [設定] 下，選取 [IP 設定]。
-4. 按一下右鍵並選取您要刪除的[次要](#secondary) IP 設定 (您無法刪除[主要](#primary)設定)，選取 [刪除]，然後選取 [是] 以確認刪除。 如果組態有相關聯的公用 IP 位址資源，此資源會與 IP 組態解除關聯，但不會刪除資源。
+3. 在 [設定]**** 下，選取 [IP 設定]****。
+4. 按一下右鍵並選取您要刪除的[次要](#secondary) IP 設定 (您無法刪除[主要](#primary)設定)，選取 [刪除]****，然後選取 [是]**** 以確認刪除。 如果組態有相關聯的公用 IP 位址資源，此資源會與 IP 組態解除關聯，但不會刪除資源。
 
 **命令**
 
 |工具|Command|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
-|PowerShell|[移除-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
+|PowerShell|[刪除-阿茲網路介面IpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP 組態
 
@@ -111,15 +111,15 @@ ms.locfileid: "79244962"
 
 每個網路介面都需指派一個主要 IP 組態。 主要 IP 組態：
 
-- 具有指派的[私人](#private) [IPv4](#ipv4)位址。 您無法將私人 [IPv6](#ipv6) 位址指派給主要 IP 組態。
-- 也可為它指派一個[公用](#public) IPv4 位址。 您無法將公用 IPv6 位址指派給主要（IPv4） IP 設定。 
+- 可為它指派一個[私人](#private) [IPv4](#ipv4) 位址。 您無法將私人 [IPv6](#ipv6) 位址指派給主要 IP 組態。
+- 也可為它指派一個[公用](#public) IPv4 位址。 您不能將公共 IPv6 位址分配給主 （IPv4） IP 配置。 
 
 ### <a name="secondary"></a>次要
 
 除了主要 IP 組態以外，也可為網路介面指派多個次要 IP 組態或不指派。 次要 IP 組態：
 
 - 必須為它指派私人 IPv4 或 IPv6 位址。 如果位址是 IPv6，網路介面只能有一個次要 IP 組態。 如果位址是 IPv4，可以為網路介面指派多個次要 IP 組態。 若要深入了解可為網路介面指派多少個私人和公用 IPv4 位址，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文。
-- 可能也會指派公用 IPv4 或 IPv6 位址。 將多個 IPv4 位址指派給網路介面，在下列案例中很有説明：
+- 也可能有一個公共 IPv4 或 IPv6 位址分配給它。 將多個 IPv4 位址分配給網路介面有助於以下情況：
   - 在單一伺服器上，以不同 IP 位址和 SSL 憑證裝載多個網站或服務。
   - 做為網路虛擬設備 (例如防火牆或負載平衡器) 的虛擬機器。
   - 能夠將任何網路介面的任何私人 IPv4 位址新增到 Azure Load Balancer 後端集區。 在過去，只能將主要網路介面的主要 IPv4 位址新增到後端集區。 若要深入了解如何負載平衡多個 IPv4 組態，請參閱[負載平衡多個 IP 組態](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 
@@ -131,7 +131,7 @@ ms.locfileid: "79244962"
 
 ### <a name="private"></a>Private
 
-私人[IPv4](#ipv4)或 IPv6 位址可讓虛擬機器與虛擬網路或其他已連線網路中的其他資源進行通訊。 
+專用[IPv4](#ipv4)或 IPv6 位址使虛擬機器能夠與虛擬網路或其他連接網路中的其他資源進行通信。 
 
 根據預設，Azure DHCP 伺服器會將 Azure 網路介面[主要 IP 組態](#primary)的私人 IPv4 位址指派給虛擬機器作業系統內的網路介面。 除非必要，您永遠不應手動設定虛擬機器作業系統內的網路介面 IP 位址。
 
@@ -172,10 +172,10 @@ ms.locfileid: "79244962"
 
 ### <a name="static"></a>靜態
 
-您可以（選擇性地）將公用或私用的靜態 IPv4 或 IPv6 位址指派給 IP 設定。 若要深入了解 Azure 如何指派靜態公用 IPv4 位址，請參閱[公用 IP 位址](virtual-network-public-ip-address.md)。
+您可以（可選）將公共或私有靜態 IPv4 或 IPv6 位址分配給 IP 配置。 若要深入了解 Azure 如何指派靜態公用 IPv4 位址，請參閱[公用 IP 位址](virtual-network-public-ip-address.md)。
 
 - **僅限公用**：Azure 會從每個 Azure 區域專屬的範圍指派位址。 您可以針對 Azure [公開](https://www.microsoft.com/download/details.aspx?id=56519)、[US Gov](https://www.microsoft.com/download/details.aspx?id=57063)、[中國](https://www.microsoft.com/download/details.aspx?id=57062)及[德國](https://www.microsoft.com/download/details.aspx?id=57064)雲端，下載範圍 (前置詞) 清單。 位址不會變更，除非其指派目的地的公用 IP 位址資源遭到刪除，或指派方法變更為動態。 如果公用 IP 位址資源與 IP 設定相關聯，則變更指派方法前，必須先取消與 IP 設定的關聯。
-- **僅限私人**：您選取並指派子網路位址範圍內的位址。 您指派的位址可以是子網路位址範圍內的任何位址，但該位址不是子網路位址範圍內的前四個位址之一，而且目前並未指派給子網路中的任何其他資源。 只有在刪除網路介面後，才會釋出靜態位址。 如果您將配置方法變更為靜態，Azure 會以動態方式將先前指派的動態 IP 位址指派為靜態位址，即使該位址不是子網位址範圍中的下一個可用位址。 如果網路介面已指派給相同虛擬網路內的不同子網路，位址也會跟著變更，但若要將網路介面指派給不同的子網路，您必須先將配置方法從靜態變更為動態。 一旦您將網路介面指派給不同的子網路，您即可將配置方法變回靜態，並從新的子網路位址範圍中指派 IP 位址。
+- **僅限私人**：您選取並指派子網路位址範圍內的位址。 您指派的位址可以是子網路位址範圍內的任何位址，但該位址不是子網路位址範圍內的前四個位址之一，而且目前並未指派給子網路中的任何其他資源。 只有在刪除網路介面後，才會釋出靜態位址。 如果將分配方法更改為靜態，Azure 會動態分配以前分配的動態 IP 位址作為靜態位址，即使該位址不是子網位址範圍內的下一個可用位址。 如果網路介面已指派給相同虛擬網路內的不同子網路，位址也會跟著變更，但若要將網路介面指派給不同的子網路，您必須先將配置方法從靜態變更為動態。 一旦您將網路介面指派給不同的子網路，您即可將配置方法變回靜態，並從新的子網路位址範圍中指派 IP 位址。
 
 ## <a name="ip-address-versions"></a>IP 位址版本
 
@@ -183,11 +183,11 @@ ms.locfileid: "79244962"
 
 ### <a name="ipv4"></a>IPv4
 
-每個網路介面都必須有一個具有指派[私人](#private) [IPv4](#ipv4)位址的[主要](#primary)IP 設定。 您可以新增一或多個[次要](#secondary) IP 組態，其各擁有一個 IPv4 私人及 (選擇性) 一個 IPv4 [公用](#public) IP 位址。
+每個網路介面都必須有一個[主要](#primary) IP 組態具有指派的[私人](#private) [IPv4](#ipv4) 位址。 您可以新增一或多個[次要](#secondary) IP 組態，其各擁有一個 IPv4 私人及 (選擇性) 一個 IPv4 [公用](#public) IP 位址。
 
 ### <a name="ipv6"></a>IPv6
 
-您可以指派一個私人 [IPv6](#ipv6) 位址給網路介面的次要 IP 組態 (或不指派)。 網路介面目前不能有任何次要 IP 組態。 每個網路介面最多隻能有一個 IPv6 私人位址。 您可以選擇性地將公用 IPv6 位址新增至 IPv6 網路介面設定。
+您可以指派一個私人 [IPv6](#ipv6) 位址給網路介面的次要 IP 組態 (或不指派)。 網路介面目前不能有任何次要 IP 組態。 每個網路介面最多可能具有一個 IPv6 專用位址。 您可以選擇將公共 IPv6 位址添加到 IPv6 網路介面配置中。
 
 > [!NOTE]
 > 雖然您可以使用入口網站建立具有私人 IPv6 位址的網路介面，但無法使用入口網站將現有的網路介面新增到新的或現有的虛擬機器。 使用 PowerShell 或 Azure CLI 來建立具有私人 IPv6 位址的網路介面，再於建立虛擬機器時連結該網路介面。 您無法將具有私人 IPv6 位址的網路介面連接至現有的虛擬機器。 您無法使用任何工具 (入口網站、CLI 或 PowerShell)，將私人 IPv6 位址新增至連接至虛擬機器的任一網路介面的 IP 組態。

@@ -1,15 +1,15 @@
 ---
 title: 將 Service Fabric Mesh 的現有 .NET 應用程式容器化
-description: 將 Service Fabric 網格容器協調流程支援新增至使用完整 .NET framework 的 ASP.NET 和主控台專案。
+description: 將服務結構網格容器業務流程支援添加到使用完整 .NET 框架ASP.NET和主控台專案。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462045"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>將 Service Fabric Mesh 的現有 .NET 應用程式容器化
@@ -21,9 +21,9 @@ ms.locfileid: "75462045"
 > [!NOTE]
 > 目前不支援 .NET **Core** 專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 如果您沒有 Azure 訂用帳戶，您可以在開始前[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如果沒有 Azure 訂閱，則可以在開始之前[創建一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 請確定您已[設定開發環境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)。 這包括安裝 Service Fabric 執行階段、SDK、Docker、Visual Studio 2017 和建立本機叢集。
 
@@ -45,12 +45,12 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 使用 Service Fabric Mesh 工具，為現有的 ASP.NET 或主控台專案新增容器協調流程支援，如下所示：
 
-在 Visual Studio 方案總管中，以滑鼠右鍵按一下專案名稱 (在範例中為 **eShopLegacyWebForms**)，然後選擇 [新增] > [容器協調器支援]。
-[新增容器協調器支援] 對話方塊隨即出現。
+在 Visual Studio 方案總管中，以滑鼠右鍵按一下專案名稱 (在範例中為 **eShopLegacyWebForms**)，然後選擇 [新增]**** > [容器協調器支援]****。
+[新增容器協調器支援]**** 對話方塊隨即出現。
 
 ![Visual Studio 的新增容器協調器對話方塊](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-從下拉式清單中選擇 [Service Fabric Mesh]，然後按一下 [確定]。
+從下拉式清單中選擇 [Service Fabric Mesh]****，然後按一下 [確定]****。
 
 工具接著會確認 Docker 已安裝、將 Dockerfile 新增至您的專案，然後為您的專案提取 Docker 映像。  
 Service Fabric Mesh 應用程式專案會新增至您的解決方案。 其中包含您的 Mesh 發佈設定檔和組態檔。 專案的名稱與您的專案名稱相同，結尾處會加上 'Application'，例如 **eShopLegacyWebFormsApplication**。 

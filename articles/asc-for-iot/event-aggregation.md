@@ -1,6 +1,6 @@
 ---
-title: 瞭解 IoT 事件匯總的 Azure 資訊安全中心 |Microsoft Docs
-description: 深入瞭解 IoT 事件匯總 Azure 資訊安全中心。
+title: 瞭解 IoT 事件聚合的 Azure 安全中心*微軟文檔
+description: 瞭解用於 IoT 事件聚合的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,84 +16,84 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73928964"
 ---
-# <a name="azure-security-center-for-iot-event-aggregation"></a>IoT 事件匯總的 Azure 資訊安全中心
+# <a name="azure-security-center-for-iot-event-aggregation"></a>用於 IoT 事件聚合的 Azure 安全中心
 
-Azure 資訊安全中心 IoT 安全性代理程式會從您的本機裝置收集資料和系統事件，並將此資料傳送至 Azure 雲端進行處理和分析。 安全性代理程式會收集許多類型的裝置事件，包括新的進程和新的連接事件。 新的進程和新的線上活動可能會在一秒內于裝置上合法地發生，而且對於健全且全面的安全性來說，安全性代理程式強制傳送的訊息數目可能會快速達到或超過您的 IoT 中樞配額和成本限制。 不過，這些事件包含非常重要的安全性資訊，對保護您的裝置很重要。
+IoT 安全代理 Azure 安全中心從本地設備收集資料和系統事件，並將此資料發送到 Azure 雲進行處理和分析。 安全代理收集多種類型的設備事件，包括新進程和新的連接事件。 新進程和新的連接事件可能在幾秒鐘內在設備上頻繁發生，雖然對強大和全面的安全性很重要，但安全代理強制發送的消息數可能快速到達或超過 IoT 中心配額和成本限制。 但是，這些事件包含非常有價值的安全資訊，這些資訊對於保護您的設備至關重要。
 
-為了減少額外的配額和成本，同時保護您的裝置，Azure 資訊安全中心 IoT 代理程式會匯總這些類型的事件。
+為了減少額外的配額和成本，同時保持設備受到保護，IoT 代理的 Azure 安全中心聚合這些類型的事件。
 
-事件匯總預設為**開啟**，但不建議，可以**隨時以手動方式關閉。**
+預設情況下，事件聚合處於**打開狀態**，儘管不建議這樣做，但可以隨時手動**關閉**。
 
-匯總目前適用于下列類型的事件：
-* ProcessCreate
-* ConnectionCreate
-* ProcessTerminate （僅限 Windows）
+聚合當前可用於以下類型的事件：
+* 流程創建
+* 連接創建
+* 進程終止（僅限視窗）
 
-## <a name="how-does-event-aggregation-work"></a>事件匯總如何運作？
-當事件匯總**已保留時**，IoT 代理程式 Azure 資訊安全中心會匯總間隔期間或時間範圍的事件。
-一旦超過間隔期間，代理程式就會將匯總的事件傳送至 Azure 雲端，以供進一步分析。
-匯總的事件會儲存在記憶體中，直到傳送至 Azure 雲端為止。
+## <a name="how-does-event-aggregation-work"></a>事件聚合如何工作？
+當事件聚合處於**打開狀態時**，IoT 代理的 Azure 安全中心將事件聚合為間隔期間或時間段。
+間隔期結束後，代理會將彙總事件發送到 Azure 雲進行進一步分析。
+彙總事件存儲在記憶體中，直到發送到 Azure 雲。
 
-為了降低代理程式的記憶體使用量，每當代理程式收集到已保留在記憶體中的事件時，代理程式就會增加此特定事件的計數。 當匯總時間範圍通過時，代理程式會傳送每個發生之特定事件種類的計數。 事件匯總只是每個收集之事件種類的計數匯總。
+為了減少代理的記憶體佔用空間，每當代理收集與已保存在記憶體中的事件相同的事件時，代理都會增加此特定事件的命中計數。 當聚合時間視窗過去時，代理髮送發生的每種特定類型的事件的命中計數。 事件聚合只是每個收集類型的事件的熱門計數的聚合。
 
-只有在符合下列條件時，才會將事件視為相同： 
+僅當滿足以下條件時，事件才被視為相同： 
 
-* ProcessCreate 事件-**命令列**、**可執行檔**、使用者**名稱**和**userid**都相同
-* ConnectionCreate 事件-**命令列**、 **userId**、 **direction**、**本機位址**、**遠端位址**、* * 通訊協定和**目的地埠**都相同
-* ProcessTerminate 事件-當**可執行檔**和結束**狀態**完全相同時
+* 進程創建事件 - 當**命令列**、**可執行項**、**使用者名**和**userid**相同時
+* 連接創建事件 - 當**命令列**、**使用者 Id**、**方向**、**本地位址**、**遠端位址**、_協定**和目標埠**相同時
+* 進程終止事件 - 當**可執行**和**退出狀態**相同時
 
-### <a name="working-with-aggregated-events"></a>使用匯總事件
+### <a name="working-with-aggregated-events"></a>使用彙總事件
 
-在匯總期間，系統會捨棄未匯總的事件屬性，並顯示在 log analytics 中，其值為0。 
-* ProcessCreate 事件- **processId**，而**parentProcessId**設定為0
-* ConnectionCreate 事件- **processId**，而**來源埠**設定為0
+在聚合期間，將丟棄未聚合的事件屬性，並顯示在值為 0 的日誌分析中。 
+* 進程創建事件 -**進程 Id**和**父進程Id**設置為 0
+* 連接創建事件 -**進程 Id**和**源埠**設置為 0
 
-## <a name="event-aggregation-based-alerts"></a>以事件匯總為基礎的警示 
-分析之後，適用于 IoT 的 Azure 資訊安全中心會針對可疑的匯總事件建立安全性警示。 從匯總事件建立的警示只會針對每個匯總事件出現一次。
+## <a name="event-aggregation-based-alerts"></a>基於事件聚合的警報 
+分析後，IoT Azure 安全中心會為可疑的彙總事件創建安全警報。 從彙總事件創建的警報僅為每個彙總事件顯示一次。
 
-每個事件的匯總開始時間、結束時間和計數都會記錄在 Log Analytics 中的 [事件**ExtraDetails** ] 欄位內，以供調查期間使用。 
+每個事件的聚合開始時間、結束時間和命中計數都記錄在日誌分析中的"額外**詳細資訊**"事件欄位中，以便在調查期間使用。 
 
-每個匯總事件都代表一段24小時的收集警示。 使用每個事件左上方的 [事件選項] 功能表，您可以**關閉**每個個別的匯總事件。    
+每個彙總事件表示收集的警報的 24 小時週期。 使用每個事件左上角的事件選項功能表，可以**關閉**每個彙總事件。    
 
-## <a name="event-aggregation-twin-configuration"></a>事件匯總對應項設定
-在**azureiotsecurity**模組之模組對應項識別的[agent 設定物件](how-to-agent-configuration.md)中，對 IoT 事件匯總的設定進行 Azure 資訊安全中心變更。
+## <a name="event-aggregation-twin-configuration"></a>事件聚合孿生配置
+更改**Azureiot 安全**模組模組的模組孿生標識的[代理設定物件](how-to-agent-configuration.md)內的 IoT 事件聚合 Azure 安全中心配置。
 
-| 設定名稱 | 可能的值 | 詳細資料 | 備註 |
+| 組態名稱 | 可能值 | 詳細資料 | 備註 |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | 布林值 | 啟用/停用進程建立事件的事件匯總 |
-| aggregationIntervalProcessCreate | ISO8601 Timespan 字串 | 進程建立事件的匯總間隔 |
-| aggregationEnabledConnectionCreate | 布林值| 啟用/停用連接建立事件的事件匯總 |
-| aggregationIntervalConnectionCreate | ISO8601 Timespan 字串 | 連接建立事件的匯總間隔 |
-| aggregationEnabledProcessTerminate | 布林值 | 啟用/停用進程終止事件的事件匯總 | 僅限 Windows|
-| aggregationIntervalProcessTerminate | ISO8601 Timespan 字串 | 進程終止事件的匯總間隔 | 僅限 Windows|
+| 聚合啟用進程創建 | boolean | 啟用/禁用進程創建事件的事件聚合 |
+| 聚合間隔進程創建 | ISO8601 時間跨度字串 | 進程創建事件的聚合間隔 |
+| 聚合啟用連接創建 | boolean| 啟用/禁用連接創建事件的事件聚合 |
+| 聚合間隔連接創建 | ISO8601 時間跨度字串 | 連接創建事件的聚合間隔 |
+| 聚合啟用進程終止 | boolean | 啟用/禁用進程終止事件的事件聚合 | 僅限 Windows|
+| 聚合間隔進程終止 | ISO8601 時間跨度字串 | 進程終止事件的聚合間隔 | 僅限 Windows|
 |
 
-## <a name="default-configurations-settings"></a>預設設定值
+## <a name="default-configurations-settings"></a>預設配置設置
 
-| 設定名稱 | 預設值 |
+| 組態名稱 | 預設值 |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | true |
-| aggregationIntervalProcessCreate | PT1H|
-| aggregationEnabledConnectionCreate | true |
-| aggregationIntervalConnectionCreate | PT1H|
-| aggregationEnabledProcessTerminate | true |
-| aggregationIntervalProcessTerminate | PT1H|
+| 聚合啟用進程創建 | true |
+| 聚合間隔進程創建 | "PT1H"|
+| 聚合啟用連接創建 | true |
+| 聚合間隔連接創建 | "PT1H"|
+| 聚合啟用進程終止 | true |
+| 聚合間隔進程終止 | "PT1H"|
 |
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解 IoT 安全性代理程式匯總的 Azure 資訊安全中心，以及可用的事件設定選項。
+在本文中，您瞭解了用於 IoT 安全代理聚合的 Azure 安全中心以及可用的事件配置選項。
 
-若要繼續開始使用 Azure 資訊安全中心進行 IoT 部署，請使用下列文章：
+要繼續使用用於 IoT 部署的 Azure 安全中心，請使用以下文章：
 
-- 瞭解[安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)
-- 選取並部署[安全性代理程式](how-to-deploy-agent.md)
-- 審查 IoT[服務必要條件](service-prerequisites.md)Azure 資訊安全中心
-- 瞭解如何[在您的 IoT 中樞中啟用 IoT 服務的 Azure 資訊安全中心](quickstart-onboard-iot-hub.md)
-- 深入瞭解[適用于 IoT 的 Azure 資訊安全中心](resources-frequently-asked-questions.md)的服務常見問題
+- 瞭解[安全代理身份驗證方法](concept-security-agent-authentication-methods.md)
+- 選擇並部署[安全代理](how-to-deploy-agent.md)
+- 查看 Azure 安全中心，查看 IoT[服務先決條件](service-prerequisites.md)
+- 瞭解如何在[IoT 中心啟用 IoT 服務的 Azure 安全中心](quickstart-onboard-iot-hub.md)
+- 從[IoT 常見問題解答的 Azure 安全中心](resources-frequently-asked-questions.md)瞭解有關該服務

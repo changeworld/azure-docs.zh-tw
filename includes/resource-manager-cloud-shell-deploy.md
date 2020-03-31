@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74451664"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>從 Cloud Shell 部署範本
 
 您可以使用 [Cloud Shell](../articles/cloud-shell/overview.md) 來部署您的範本。 若要部署外部範本，請提供範本的 URI，就如同您對任何外部部署所做的一樣。 若要部署本機範本，您必須先將範本載入 Cloud Shell 的儲存體帳戶。 本節說明如何將範本載入至您的 Cloud Shell 帳戶，並將其部署為本機檔案。 如果您尚未使用 Cloud Shell，請參閱 [Azure Cloud Shell 概觀](../articles/cloud-shell/overview.md)以取得如何設定的相關資訊。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
 
 1. 選取您的 Cloud Shell 資源群組。 名稱模式為 `cloud-shell-storage-<region>`。
 
@@ -25,15 +25,15 @@ ms.locfileid: "74451664"
 
    ![選取儲存體帳戶](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. 選取 [Blob]。
+1. 選擇**Blob**。
 
    ![選取 Blob](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. 選取 [+ 容器]。
+1. 選取 [+ 容器]****。
 
    ![新增容器](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. 為您的容器提供名稱和存取層級。 本文中的範例範本不包含機密資訊，因此允許匿名讀取權限。 選取 [確定]。
+1. 為您的容器提供名稱和存取層級。 本文中的範例範本不包含機密資訊，因此允許匿名讀取權限。 選取 [確定]****。
 
    ![提供容器值](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "74451664"
 
    ![選取新容器](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. 選取 [上傳]。
+1. 選取 [上傳]****。
 
    ![上傳 Blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

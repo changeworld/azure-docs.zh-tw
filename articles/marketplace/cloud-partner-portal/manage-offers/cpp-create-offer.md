@@ -1,31 +1,30 @@
 ---
-title: 建立 Marketplace 供應專案 |Azure Marketplace
+title: 創建市場優惠 |Azure 應用商店
 description: 使用 Cloud Partner 入口網站建立 Azure 和 AppSource Marketplace 上的供應項目
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: pabutler
-ms.openlocfilehash: 4aa4e154c99f20963485a98d1a21af4ae2b7a1b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286467"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>建立 Azure Marketplace 和 AppSource 的供應項目
 
-Cloud Partner 入口網站的一個基本目的是使發行者能夠建立 (並發行) Microsoft Azure 和 AppSource Marketplace 的供應項目。  這項作業始終從[新增供應項目功能表](../portal-tour/cpp-new-offer-menu.md)中選取所需的供應項目類型開始。  在回應中，將顯示該供應項目類型的適當 [新增供應項目] 頁面。  例如，下圖顯示 Azure 應用程式類型的預設 [新增供應項目] 頁面。
+Cloud Partner 入口網站的一個基本目的是使發行者能夠建立 (並發行) Microsoft Azure 和 AppSource Marketplace 的供應項目。  這項作業始終從[新增供應項目功能表](../portal-tour/cpp-new-offer-menu.md)中選取所需的供應項目類型開始。  在回應中，將顯示該供應項目類型的適當 [新增供應項目]**** 頁面。  例如，下圖顯示 Azure 應用程式類型的預設 [新增供應項目]**** 頁面。
 
 ![[新增供應項目] 預設頁面](./media/new-offer-page.png)
 
 在此頁面頂端顯示的水平功能表列中有兩個索引標籤選項： 
-- [編輯器] 索引標籤 - 允許為新的供應項目執行個體輸入資訊和上載資產。  根據預設，會顯示此索引標籤。
-- [狀態] 索引標籤 - 提供發佈狀態，並列出任何驗證和檢閱問題。 
+- [編輯器]**** 索引標籤 - 允許為新的供應項目執行個體輸入資訊和上載資產。  根據預設，會顯示此索引標籤。
+- [狀態]**** 索引標籤 - 提供發佈狀態，並列出任何驗證和檢閱問題。 
 
-當您建立供應項目時，您可以使用 [編輯器] 索引標籤來輸入該供應項目的相關資訊。 
+當您建立供應項目時，您可以使用 [編輯器]**** 索引標籤來輸入該供應項目的相關資訊。 
 
 ## <a name="editing-operations"></a>編輯作業
 
@@ -36,14 +35,14 @@ Cloud Partner 入口網站的一個基本目的是使發行者能夠建立 (並�
 | **儲存**    | 儲存任何最近的資料輸入變更。  您必須在離開該頁面之前以手動方式儲存變更，否則您的變更將會遺失。 | 
 | **捨棄** | 捨棄最近的資料輸入變更 (自上次儲存以來)             |
 | **比較** | 將目前的供應項目與已發佈的供應項目的狀態進行比較。  僅在成功發佈供應項目之後啟用。  |
-| <bpt id="p1">**</bpt>Publish<ept id="p1">**</ept> | 開始此供應項目的發佈程序                       |
+| **發佈** | 開始此供應項目的發佈程序                       |
 | **刪除**  | 請在建立之後但在發佈之前刪除此供應項目。 |
 |   |   |
 
 
 ## <a name="editing-tabs"></a>[編輯] 索引標籤
 
-建立供應項目時，您可以在 [新增供應項目] 頁面左側垂直資料行中的每個索引標籤中提供必要和選擇性資料。  標準使用者介面控制項會顯示 (例如文字方塊、下拉式清單和核取方塊) 以進行資料收集。  雖然 [編輯] 索引標籤的特定集合是根據供應項目類型而定，但下表列出了一些常見的索引標籤。
+建立供應項目時，您可以在 [新增供應項目]**** 頁面左側垂直資料行中的每個索引標籤中提供必要和選擇性資料。  標準使用者介面控制項會顯示 (例如文字方塊、下拉式清單和核取方塊) 以進行資料收集。  雖然 [編輯] 索引標籤的特定集合是根據供應項目類型而定，但下表列出了一些常見的索引標籤。
 
 |      索引標籤名稱       |   目的                                                            |
 |      --------       |   -------                                                            |

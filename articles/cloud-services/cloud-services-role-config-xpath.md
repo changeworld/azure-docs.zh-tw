@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386080"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>利用 XPath 公開角色組態設定以做為環境變數
@@ -116,7 +116,7 @@ ms.locfileid: "75386080"
 | 程式碼 |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
 
 ## <a name="example"></a>範例
-以下的背景工作角色範例會使用名為 `TestIsEmulated` 且設定為 [@emulated xpath 值](#app-running-in-emulator)的環境變數來建立啟動工作。 
+下面是一個工作角色的示例，該角色創建一個啟動任務，其環境變數`TestIsEmulated`名為[@emulatedxpath 值](#app-running-in-emulator)。 
 
 ```xml
 <WorkerRole name="Role1">

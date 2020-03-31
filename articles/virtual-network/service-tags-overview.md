@@ -1,7 +1,7 @@
 ---
-title: Azure 服務標記總覽
+title: Azure 服務標記概述
 titlesuffix: Azure Virtual Network
-description: 瞭解服務標記。 服務標籤有助於將安全性規則建立的複雜度降到最低。
+description: 瞭解服務標記。 服務標記有助於將安全規則創建的複雜性降至最低。
 services: virtual-network
 documentationcenter: na
 author: jispar
@@ -13,139 +13,139 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: e629a9dd65a20883aa605e5d1d23248bcde575b4
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79365146"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384240"
 ---
-# <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
+# <a name="virtual-network-service-tags"></a>虛擬網路服務標記
 <a name="network-service-tags"></a>
 
-服務標記代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標籤，將經常更新網路安全性規則的複雜度降到最低。
+服務標記表示給定 Azure 服務的一組 IP 位址首碼。 Microsoft 管理服務標記包含的位址首碼，並在位址更改時自動更新服務標記，從而最大限度地減少頻繁更新網路安全規則的複雜性。
 
-您可以使用服務標籤，在 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)的[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)上定義網路存取控制。 當您建立安全性規則時，請使用服務標記來取代特定的 IP 位址。 藉由在適當的*來源* 或規則的 [ *目的地* ] 欄位中指定服務標籤名稱（例如， **ApiManagement**），您可以允許或拒絕對應服務的流量。
+可以使用服務標記在[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)上定義網路訪問控制項。 創建安全規則時，使用服務標記代替特定的 IP 位址。 通過在規則的相應*源* 或 *目標* 欄位中指定服務標記名稱（例如**ApiManagement），** 可以允許或拒絕相應服務的流量。
 
-您可以使用服務標籤來達到網路隔離，並在存取具有公用端點的 Azure 服務時，從一般網際網路保護您的 Azure 資源。 建立輸入/輸出網路安全性群組規則，以拒絕進出**網際網路**的流量，並允許進出**AzureCloud**的流量，或特定 Azure 服務的其他[可用服務](#available-service-tags)標籤。
+在訪問具有公共終結點的 Azure 服務時，可以使用服務標記實現網路隔離並保護 Azure 資源免受常規 Internet 的監視。 創建入站/出站網路安全性群組規則，以拒絕進出**Internet**的流量，並允許流量進出**AzureCloud**或特定 Azure[服務的其他可用服務標記](#available-service-tags)。
 
 ## <a name="available-service-tags"></a>可用的服務標記
-下表包含可以在[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)規則中使用的所有服務標籤。
+下表包括可用於[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)規則的所有服務標記。
 
-資料行指出標記是否：
+列指示標記是否：
 
-- 適用于涵蓋輸入或輸出流量的規則。
+- 適用于涵蓋入站或出站流量的規則。
 - 支援[區域](https://azure.microsoft.com/regions)範圍。
-- 可在[Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)規則中使用。
+- 在[Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)規則中可用。
 
-根據預設，服務標記會反映整個雲端的範圍。 某些服務標籤也會藉由將對應的 IP 範圍限制為指定的區域，來提供更細微的控制。 例如，服務標籤**儲存體**代表整個雲端 Azure 儲存體，但**WestUS**會將範圍縮小為只有 WESTUS 區域的儲存體 IP 位址範圍。 下表指出每個服務標記是否支援這類區域範圍。  
+預設情況下，服務標記反映整個雲的範圍。 某些服務標記還允許通過將相應的 IP 範圍限制為指定區域來進行更精細的控制。 例如，服務標記**存儲**表示整個雲的 Azure 存儲，但**存儲.WestUS**將範圍縮小到僅存儲 IP 位址範圍（來自 WestUS 區域）。 下表指示每個服務標記是否支援此類區域作用域。  
 
-| Tag | 目的 | 可以使用輸入或輸出嗎？ | 可以是地區嗎？ | 可以與 Azure 防火牆搭配使用嗎？ |
+| Tag | 目的 | 可以使用入站或出站嗎？ | 可以是區域性的嗎？ | 可與 Azure 防火牆一起使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ActionGroup** | 動作群組。 | 輸入 | 否 | 否 |
-| **ApiManagement** | Azure API 管理-專用部署的管理流量。 <br/><br/>*注意：* 此標記代表每個區域之控制平面的 Azure API 管理服務端點。 這可讓客戶在 API 管理服務上設定的 Api、作業、原則、NamedValues 上執行管理作業。  | 輸入 | 是 | 是 |
-| **ApplicationInsightsAvailability** | Application Insights 可用性。 | 輸入 | 否 | 否 |
-| **AppConfiguration** | 應用程式組態。 | 輸出 | 否 | 否 |
-| **AppService**    | Azure App Service。 對 web 應用程式前端的輸出安全性規則，建議使用此標記。 | 輸出 | 是 | 是 |
-| **AppServiceManagement** | 專用於 App Service 環境之部署的管理流量。 | 兩者 | 否 | 是 |
+| **行動組** | 操作組。 | 輸入 | 否 | 否 |
+| **ApiManagement** | Azure API 管理專用部署的管理流量。 <br/><br/>*注：* 此標記表示每個區域控制平面的 Azure API 管理服務終結點。 這使客戶能夠對 API、操作、策略、在 API 管理服務上配置的命名值執行管理操作。  | 輸入 | 是 | 是 |
+| **應用程式洞察可用性** | 應用程式見解可用性。 | 輸入 | 否 | 否 |
+| **應用配置** | 應用配置。 | 輸出 | 否 | 否 |
+| **應用服務**    | Azure App Service。 此標記建議用於 Web 應用前端的出站安全規則。 | 輸出 | 是 | 是 |
+| **AppServiceManagement** | 專用於應用服務環境的部署的管理流量。 | 兩者 | 否 | 是 |
 | **AzureActiveDirectory** | Azure Active Directory。 | 輸出 | 否 | 是 |
-| **AzureActiveDirectoryDomainServices** | 專用於 Azure Active Directory Domain Services 之部署的管理流量。 | 兩者 | 否 | 是 |
-| **AzureAdvancedThreatProtection** | Azure 進階威脅防護。 | 輸出 | 否 | 否 |
-| **AzureBackup** |Azure 備份。<br/><br/>*注意：* 此標記相依于**儲存體**和**AzureActiveDirectory**標記。 | 輸出 | 否 | 是 |
-| **AzureBotService** | Azure Bot 服務。 | 輸出 | 否 | 否 |
-| **AzureCloud** | 所有[資料中心公用 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |
-| **AzureCognitiveSearch** | Azure 認知搜尋。 <br/><br/>這個標記或此標籤所涵蓋的 IP 位址可用來授與索引子安全存取資料來源。 如需詳細資訊，請參閱[索引子連接檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 <br/><br/> *注意*：搜尋服務的 ip 不會包含在此服務標籤的 ip 範圍清單中，而且**也必須新增**至資料來源的 ip 防火牆。 | 輸入 | 否 | 否 |
-| **AzureConnectors** | 適用于探查/後端連線的 Azure Logic Apps 連接器。 | 輸入 | 是 | 是 |
-| **AzureContainerRegistry** | Azure Container Registry。 | 輸出 | 是 | 是 |
-| **AzureCosmosDB** | Azure Cosmos DB。 | 輸出 | 是 | 是 |
-| **AzureDatabricks** | Azure Databricks。 | 兩者 | 否 | 否 |
-| **AzureDataExplorerManagement** | Azure 資料總管管理。 | 輸入 | 否 | 否 |
-| **AzureDataLake** | Azure Data Lake Storage Gen1。 | 輸出 | 否 | 是 |
-| **AzureDevSpaces** | Azure Dev Spaces。 | 輸出 | 否 | 否 |
-| **AzureEventGrid** | Azure 事件格線。 <br/><br/>*注意：* 此標記涵蓋美國中南部、美國東部、美國東部2、美國西部2和美國中部的 Azure 事件方格端點。 | 兩者 | 否 | 否 |
-| **AzureFrontDoor 前端** <br/> **AzureFrontDoor. 後端** <br/> **AzureFrontDoor.FirstParty**  | Azure Front 的大門。 | 兩者 | 否 | 否 |
-| **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**、 **AzureFrontDoor**和**AzureFrontDoor. FirstParty**標記。 | 輸出 | 否 | 否 |
-| **AzureIoTHub** | Azure IoT 中樞。 | 輸出 | 否 | 否 |
-| **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此標記與**AzureActiveDirectory**標記具有相依性。 | 輸出 | 是 | 是 |
-| **AzureLoadBalancer** | Azure 基礎結構負載平衡器。 此標籤會轉譯為 Azure 健康狀態探查所源自主機（168.63.129.16）的[虛擬 IP 位址](security-overview.md#azure-platform-considerations)。 這不會包含 Azure Load Balancer 資源的流量。 如果您不是使用 Azure Load Balancer，您可以覆寫此規則。 | 兩者 | 否 | 否 |
-| **AzureMachineLearning** | Azure Machine Learning | 兩者 | 否 | 是 |
-| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自訂計量（Gb 端點）。<br/><br/>*注意：* 針對 Log Analytics，此標記與**儲存體**標記相依。 | 輸出 | 否 | 是 |
-| **AzureOpenDatasets** | Azure 開放資料集。<br/><br/>*注意：* 此標記相依于**AzureFrontDoor**和**儲存體**標記。 | 輸出 | 否 | 否 |
-| **AzurePlatformDNS** | 基本基礎結構（預設） DNS 服務。<br/><br>您可以使用此標記來停用預設 DNS。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
-| **AzurePlatformIMDS** | Azure Instance Metadata Service （IMDS），這是基本的基礎結構服務。<br/><br/>您可以使用此標記來停用預設 IMDS。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
-| **AzurePlatformLKM** | Windows 授權或金鑰管理服務。<br/><br/>您可以使用此標記來停用授權的預設值。 當您使用此標記時，請務必小心。 我們建議您閱讀[Azure 平臺考慮](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。  我們也建議您先執行測試，再使用此標記。 | 輸出 | 否 | 否 |
-| **AzureResourceManager** | Azure Resource Manager。 | 輸出 | 否 | 否 |
-| **Azuresignalr-samples** | Azure SignalR。 | 輸出 | 否 | 否 |
-| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此標記相依于**AzureActiveDirectory**、 **AzureKeyVault**、 **EventHub**、**GuestAndHybridManagement**和**儲存體**標記。 | 輸出 | 否 | 否 |
-| **Azuretrafficmanager 僅限** | Azure 流量管理員探查 IP 位址。<br/><br/>如需流量管理員探查 IP 位址的詳細資訊，請參閱[Azure 流量管理員常見問題](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 輸入 | 否 | 是 |  
-| **BatchNodeManagement** | 專用於 Azure Batch 之部署的管理流量。 | 兩者 | 否 | 是 |
-| **CognitiveServicesManagement** | Azure 認知服務流量的位址範圍。 | 輸出 | 否 | 否 |
-| **DataFactory**  | Azure Data Factory | 輸出 | 否 | 否 |
-| **DataFactoryManagement** | Azure Data Factory 的管理流量。 | 輸入 | 否 | 否 |
-| **Dynamics365ForMarketingEmail** | Dynamics 365 行銷電子郵件服務的位址範圍。 | 輸出 | 是 | 否 |
-| **ElasticAFD** | 彈性 Azure Front。 | 兩者 | 否 | 否 |
-| **EventHub** | Azure 事件中樞。 | 輸出 | 是 | 是 |
-| **GatewayManager** | 適用于 Azure VPN 閘道和應用程式閘道專用之部署的管理流量。 | 輸入 | 否 | 否 |
-| **GuestAndHybridManagement** | Azure 自動化和來賓設定。 | 輸出 | 否 | 是 |
+| **Azure ActiveDirectory 域服務** | 專用於 Azure 活動目錄域服務的部署的管理流量。 | 兩者 | 否 | 是 |
+| **Azure 高級威脅保護** | Azure 高級威脅防護。 | 輸出 | 否 | 否 |
+| **Azure 備份** |Azure 備份。<br/><br/>*注：* 此標記依賴于**存儲**和**Azure ActiveDirectory**標記。 | 輸出 | 否 | 是 |
+| **AzureBot服務** | 建立數位代理程式 | 輸出 | 否 | 否 |
+| **AzureCloud** | 所有[資料中心的公共 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |
+| **Azure 認知搜索** | Azure 認知搜索。 <br/><br/>此標記或此標記涵蓋的 IP 位址可用於授予索引子安全訪問資料來源的許可權。 有關詳細資訊，請參閱[索引子連接文檔](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 <br/><br/> *注意*：搜索服務的 IP 不包括在此服務標記的 IP 範圍清單中，**還需要添加到**資料來源的 IP 防火牆中。 | 輸入 | 否 | 否 |
+| **Azure 連接器** | 用於探測/後端連接的 Azure 邏輯應用連接器。 | 輸入 | 是 | 是 |
+| **Azure 容器註冊** | Azure 容器註冊表。 | 輸出 | 是 | 是 |
+| **Azure 宇宙資料庫** | Azure 宇宙資料庫。 | 輸出 | 是 | 是 |
+| **Azure 資料塊** | Azure 資料塊。 | 兩者 | 否 | 否 |
+| **Azure 資料資源管理器管理** | Azure 資料資源管理器管理。 | 輸入 | 否 | 否 |
+| **Azure 資料湖** | Azure 資料存儲第 1 代。 | 輸出 | 否 | 是 |
+| **Azure 空間** | Azure 開發空間。 | 輸出 | 否 | 否 |
+| **Azure 事件網格** | Azure 事件格線。 <br/><br/>*注：* 此標記僅涵蓋美國中南部、美國東部、美國東部 2、美國西部 2 和美國中部中的 Azure 事件網格終結點。 | 兩者 | 否 | 否 |
+| **Azure 前門.前端** <br/> **Azure 前門.後端** <br/> **Azure 前門.第一方**  | Azure 前門。 | 兩者 | 否 | 否 |
+| **AzureInformationProtection** | Azure 資訊保護。<br/><br/>*注：* 此標記依賴于**Azure ActiveDirectory、Azure** **FrontDoor.前端**和**Azure FrontDoor.第一方**標記。 | 輸出 | 否 | 否 |
+| **AzureIoTHub** | Azure IoT 中心。 | 輸出 | 否 | 否 |
+| **Azure 金鑰庫** | Azure Key Vault。<br/><br/>*注：* 此標記依賴于**Azure ActiveDirectory**標記。 | 輸出 | 是 | 是 |
+| **Azure 負載平衡器** | Azure 基礎結構負載等化器。 該標記轉換為 Azure 運行狀況探測器源自的[主機的虛擬 IP 位址](security-overview.md#azure-platform-considerations)（168.63.129.16）。 這不包括 Azure 負載等化器資源的流量。 如果不使用 Azure 負載等化器，則可以重寫此規則。 | 兩者 | 否 | 否 |
+| **Azure 機器學習** | Azure Machine Learning | 兩者 | 否 | 是 |
+| **AzureMonitor** | 日誌分析、應用程式見解、AzMon 和自訂指標（GiG 終結點）。<br/><br/>*注：* 對於日誌分析，此標記依賴于**存儲**標記。 | 輸出 | 否 | 是 |
+| **Azure 開放資料集** | Azure 打開資料集。<br/><br/>*注：* 此標記依賴于**Azure FrontDoor.前端**和**存儲**標記。 | 輸出 | 否 | 否 |
+| **Azure 平臺DNS** | 基本基礎結構（預設）DNS 服務。<br/><br>您可以使用此標記禁用預設 DNS。 使用此標記時要小心。 我們建議您閱讀 Azure[平臺注意事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們還建議您在使用此標記之前執行測試。 | 輸出 | 否 | 否 |
+| **Azure 平臺** | Azure 實例中繼資料服務 （IMDS），這是一項基本基礎結構服務。<br/><br/>您可以使用此標記禁用預設的 IMDS。 使用此標記時要小心。 我們建議您閱讀 Azure[平臺注意事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我們還建議您在使用此標記之前執行測試。 | 輸出 | 否 | 否 |
+| **Azure 平臺** | Windows 許可或金鑰管理服務。<br/><br/>您可以使用此標記禁用許可的預設值。 使用此標記時要小心。 我們建議您閱讀 Azure[平臺注意事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。  我們還建議您在使用此標記之前執行測試。 | 輸出 | 否 | 否 |
+| **Azure 資源管理器** | Azure 資源管理器。 | 輸出 | 否 | 否 |
+| **AzureSignalR** | Azure 信號R。 | 輸出 | 否 | 否 |
+| **Azure 網站恢復** | Azure 網站恢復。<br/><br/>*注：* 此標記依賴于**AzureActiveDirectory、AzureKeyVault、****事件Hub、****AzureKeyVault****來賓和混合管理和****存儲**標記。 | 輸出 | 否 | 否 |
+| **AzureTrafficManager** | Azure 流量管理器探測 IP 位址。<br/><br/>有關流量管理器探測 IP 位址的詳細資訊，請參閱[Azure 流量管理器常見問題解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 輸入 | 否 | 是 |  
+| **批次處理節點管理** | 專用於 Azure 批次處理的部署的管理流量。 | 兩者 | 否 | 是 |
+| **認知服務管理** | Azure 認知服務流量的位址範圍。 | 輸出 | 否 | 否 |
+| **資料工廠**  | Azure Data Factory | 兩者 | 否 | 否 |
+| **資料工廠管理** | Azure 資料工廠的管理流量。 | 輸出 | 否 | 否 |
+| **Dynamics365 用於行銷電子郵件** | Dynamics 365 行銷電子郵件服務的位址範圍。 | 輸出 | 是 | 否 |
+| **彈性AFD** | 彈性 Azure 前門。 | 兩者 | 否 | 否 |
+| **事件中心** | Azure 事件中心。 | 輸出 | 是 | 是 |
+| **閘道管理器** | 專用於 Azure VPN 閘道和應用程式閘道的部署的管理流量。 | 輸入 | 否 | 否 |
+| **賓客和混合管理** | Azure 自動化和來賓配置。 | 輸出 | 否 | 是 |
 | **HDInsight** | Azure HDInsight。 | 輸入 | 是 | 否 |
-| **網際網路** | 位於虛擬網路外部且可由公用網際網路連線的 IP 位址空間。<br/><br/>位址範圍包含[Azure 擁有的公用 IP 位址空間](https://www.microsoft.com/download/details.aspx?id=41653)。 | 兩者 | 否 | 否 |
-| **LogicApps** | Logic Apps。 | 兩者 | 否 | 否 |
-| **LogicAppsManagement** | Logic Apps 的管理流量。 | 輸入 | 否 | 否 |
-| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 輸出 | 否 | 否 |
-| **MicrosoftContainerRegistry** | 適用于 Microsoft 容器映射的 container registry。 <br/><br/>*注意：* 此標記相依于**AzureFrontDoor. FirstParty**標記。 | 輸出 | 是 | 是 |
-| **PowerQueryOnline** | 線上 Power Query。 | 兩者 | 否 | 否 |
-| **ServiceBus** | Azure 服務匯流排使用 Premium 服務層級的流量。 | 輸出 | 是 | 是 |
-| **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此標記代表每個區域之控制平面的 Service Fabric 服務端點。 這可讓客戶從其 VNET 執行其 Service Fabric 叢集的管理作業（例如 HTTPs://westus.servicefabric.azure.com） | 兩者 | 否 | 否 |
-| **Sql** | Azure SQL Database、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標記不適用於 SQL 受控實例。 | 輸出 | 是 | 是 |
-| **SqlManagement** | 適用于 SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
-| **Storage** | Azure 儲存體。 <br/><br/>*注意：* 此標記代表服務，而不是服務的特定實例。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
-| **StorageSyncService** | 儲存體同步服務。 | 兩者 | 否 | 否 |
-| **WindowsVirtualDesktop** | Windows 虛擬桌面。 | 兩者 | 否 | 否 |
-| **VirtualNetwork** | 虛擬網路位址空間（針對虛擬網路定義的所有 IP 位址範圍）、所有已連線的內部部署位址空間、[對等互連](virtual-network-peering-overview.md)虛擬網路、連接到[虛擬網路閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虛擬網路、[主機的虛擬 IP 位址](security-overview.md#azure-platform-considerations)，以及[使用者定義的路由](virtual-networks-udr-overview.md)所使用的位址首碼。 此標記可能也會包含預設路由。 | 兩者 | 否 | 否 |
+| **網際網路** | 虛擬網路外部且可由公共互聯網覆蓋的 IP 位址空間。<br/><br/>位址範圍包括[Azure 擁有的公共 IP 位址空間](https://www.microsoft.com/download/details.aspx?id=41653)。 | 兩者 | 否 | 否 |
+| **LogicApps** | 邏輯應用。 | 兩者 | 否 | 否 |
+| **邏輯應用管理** | 邏輯應用的管理流量。 | 輸入 | 否 | 否 |
+| **微軟雲應用安全** | Microsoft Cloud App Security。 | 輸出 | 否 | 否 |
+| **微軟集裝箱註冊** | 用於 Microsoft 容器映射的容器註冊表。 <br/><br/>*注：* 此標記依賴于**Azure FrontDoor.第一方**標記。 | 輸出 | 是 | 是 |
+| **電源查詢線上** | 連線電源查詢。 | 兩者 | 否 | 否 |
+| **服務匯流排** | 使用高級服務層的 Azure 服務匯流排流量。 | 輸出 | 是 | 是 |
+| **ServiceFabric** | Azure 服務結構。<br/><br/>*注：* 此標記表示每個區域控制平面的服務結構服務終結點。 這使客戶能夠對其服務結構群集執行其 VNET（終結點，例如） 的管理操作。 HTTPs://westus.servicefabric.azure.com） | 兩者 | 否 | 否 |
+| **Sql** | Azure SQL 資料庫、MySQL 的 Azure 資料庫、PostgreSQL 的 Azure 資料庫和 Azure SQL 資料倉儲。<br/><br/>*注：* 此標記表示服務，但不表示服務的特定實例。 例如，標籤代表 SQL Database 或伺服器服務，但不代表特定的 Azure SQL Database。 此標記不適用於 SQL 託管實例。 | 輸出 | 是 | 是 |
+| **Sql管理** | 用於 SQL 專用部署的管理流量。 | 兩者 | 否 | 是 |
+| **儲存空間** | Azure 儲存體。 <br/><br/>*注：* 此標記表示服務，但不表示服務的特定實例。 例如，標籤代表 Azure 儲存體服務，但不代表特定的 Azure 儲存體帳戶。 | 輸出 | 是 | 是 |
+| **存儲同步服務** | 存儲同步服務。 | 兩者 | 否 | 否 |
+| **視窗虛擬桌面** | Windows 虛擬桌面。 | 兩者 | 否 | 否 |
+| **VirtualNetwork** | 虛擬網路位址空間（為虛擬網路定義的所有 IP 位址範圍）、所有連接的本地位址空間、[對等](virtual-network-peering-overview.md)虛擬網路、連接到[虛擬網路閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虛擬網路、[主機的虛擬 IP 位址](security-overview.md#azure-platform-considerations)以及[使用者定義的路由](virtual-networks-udr-overview.md)上使用的位址首碼。 此標記可能還包含預設路由。 | 兩者 | 否 | 否 |
 
 >[!NOTE]
->在傳統部署模型中（Azure Resource Manager 之前），會支援上表中所列標記的子集。 這些標記的拼寫方式不同：
+>在經典部署模型（在 Azure 資源管理器之前），支援上表中列出的標記的子集。 這些標記的拼寫不同：
 >
->| 傳統拼寫 | 對等 Resource Manager 標記 |
+>| 經典拼寫 | 等效資源管理器標記 |
 >|---|---|
 >| AZURE_LOADBALANCER | AzureLoadBalancer |
 >| 網際網路 | Internet |
 >| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]
-> Azure 服務的服務標記代表所使用之特定雲端中的位址首碼。 例如，對應至 Azure 公用雲端上**Sql**標記值的基礎 IP 範圍，會與 azure 中國雲端上的基礎範圍不同。
+> Azure 服務的服務標記表示正在使用的特定雲的位址首碼。 例如，與 Azure 公共雲上的**Sql**標記值對應的基礎 IP 範圍將與 Azure 中國雲的基礎範圍不同。
 
 > [!NOTE]
-> 如果您對服務 (例如 Azure 儲存體或 Azure SQL Database) 實作[虛擬網路服務端點](virtual-network-service-endpoints-overview.md)，Azure 會將[路由](virtual-networks-udr-overview.md#optional-default-routes)新增至服務的虛擬網路子網路。 路由中的位址前置詞與對應服務標籤的位址首碼相同，或 CIDR 範圍。
+> 如果您對服務 (例如 Azure 儲存體或 Azure SQL Database) 實作[虛擬網路服務端點](virtual-network-service-endpoints-overview.md)，Azure 會將[路由](virtual-networks-udr-overview.md#optional-default-routes)新增至服務的虛擬網路子網路。 路由中的位址首碼與相應服務標記的位址首碼相同，或 CIDR 範圍相同。
 
-## <a name="service-tags-on-premises"></a>內部部署服務標記  
-您可以取得目前的服務標籤和範圍資訊，以納入內部部署防火牆設定的一部分。 這項資訊是對應到每個服務標籤之 IP 範圍的目前時間點清單。 您可以透過程式設計方式或透過 JSON 檔案下載來取得資訊，如下列各節所述。
+## <a name="service-tags-on-premises"></a>本機服務標記  
+您可以獲取當前服務標記和範圍資訊，以作為本地防火牆配置的一部分進行包含。 此資訊是對應于每個服務標記的 IP 範圍的目前時間點清單。 您可以以程式設計方式或通過 JSON 檔下載獲取資訊，如以下各節所述。
 
-### <a name="use-the-service-tag-discovery-api-public-preview"></a>使用服務標記探索 API （公開預覽）
-您可以透過程式設計方式，將目前的服務標記清單與 IP 位址範圍詳細資料一起抓取：
+### <a name="use-the-service-tag-discovery-api-public-preview"></a>使用服務標籤發現 API（公共預覽）
+您可以以程式設計方式檢索當前服務標記清單以及 IP 位址範圍詳細資訊：
 
-- [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
+- [休息](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+- [Azure 電源外殼](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
-> 當它處於公開預覽狀態時，探索 API 可能會傳回的資訊不如 JSON 下載所傳回的資訊。 (請參閱下節)。
+> 當它處於公共預覽版時，發現 API 可能會返回比 JSON 下載返回的資訊更短的當前資訊。 (請參閱下節)。
 
 
-### <a name="discover-service-tags-by-using-downloadable-json-files"></a>使用可下載的 JSON 檔案探索服務標記 
-您可以下載 JSON 檔案，其中包含目前的服務標籤清單，以及 IP 位址範圍詳細資料。 這些清單會每週更新併發布。 每個雲端的位置如下：
+### <a name="discover-service-tags-by-using-downloadable-json-files"></a>使用可下載的 JSON 檔發現服務標記 
+您可以下載包含當前服務標記清單的 JSON 檔以及 IP 位址範圍詳細資訊。 這些清單每週更新和發佈一次。 每個雲的位置如下：
 
 - [Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
-- [Azure US Gov](https://www.microsoft.com/download/details.aspx?id=57063)  
-- [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
+- [Azure 美國政府](https://www.microsoft.com/download/details.aspx?id=57063)  
+- [Azure 中國](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 > [!NOTE]
->這項資訊的子集已發行到[Azure 公用](https://www.microsoft.com/download/details.aspx?id=41653)、 [Azure 中國](https://www.microsoft.com/download/details.aspx?id=42064)和[azure 德國](https://www.microsoft.com/download/details.aspx?id=54770)的 XML 檔案中。 這些 XML 下載將于2020年6月30日淘汰，而且在該日期之後將無法再使用。 您應該依照先前章節所述，使用探索 API 或 JSON 檔案下載進行遷移。
+>此資訊的子集已發佈在[Azure 公共](https://www.microsoft.com/download/details.aspx?id=41653)[、Azure 中國和](https://www.microsoft.com/download/details.aspx?id=42064)Azure[德國的](https://www.microsoft.com/download/details.aspx?id=54770)XML 檔中。 這些 XML 下載將在 2020 年 6 月 30 日前棄用，在此日期之後將不再可用。 您應該遷移到使用發現 API 或 JSON 檔下載，如前幾節所述。
 
 ### <a name="tips"></a>提示 
-- 您可以在 JSON 檔案中注明增加的*changeNumber*值，藉以偵測來自某個發行集的更新。 每個子區段（例如， **WestUS**）都有自己的*changeNumber* ，會隨著變更而遞增。 當任何小節變更時，檔案*changeNumber*的最上層會遞增。
-- 如需如何剖析服務標籤資訊的範例（例如，在 WestUS 中取得儲存體的所有位址範圍），請參閱[服務標記探索 API PowerShell](https://aka.ms/discoveryapi_powershell)檔。
+- 您可以通過注意到 JSON 檔中增加*的更改數*值來檢測從一個發佈到下一個發佈的更新。 每個子節（例如 **，Storage.WestUS）** 都有自己的*更改編號*，隨著更改發生而遞增。 更改任何子節時，檔的*更改編號*的頂層將遞增。
+- 有關如何分析服務標記資訊的示例（例如，獲取 WestUS 中存儲的所有位址範圍），請參閱[服務標記發現 API PowerShell](https://aka.ms/discoveryapi_powershell)文檔。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何[建立網路安全性群組](tutorial-filter-network-traffic.md)。
+- 瞭解如何[創建網路安全性群組](tutorial-filter-network-traffic.md)。

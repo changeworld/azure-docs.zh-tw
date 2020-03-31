@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務錯誤代碼 | Microsoft Docs
-description: 視問題而定，您可能會收到來自服務的 HTTP 錯誤碼，例如驗證權杖過期至媒體服務中不支援的動作。 本文提供 Azure 媒體服務 v2 API 錯誤碼的總覽。
+description: 您可能會從服務接收 HTTP 錯誤代碼，具體取決於諸如即將過期到媒體服務中不支援的操作的身份驗證權杖等問題。 本文概述了 Azure 媒體服務 v2 API 錯誤代碼。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887062"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒體服務錯誤代碼
-使用 Microsoft Azure 媒體服務時，您可能會根據問題從服務收到 HTTP 錯誤代碼，例如驗證權杖過期到媒體服務中不支援的動作。 以下是媒體服務可能會傳回的「HTTP 錯誤代碼」的清單，以及其可能原因。  
+使用 Microsoft Azure 媒體服務時，您可能會根據問題從服務收到 HTTP 錯誤代碼，例如驗證權杖過期到媒體服務中不支援的動作。 以下是媒體服務可能會傳回的「HTTP 錯誤代碼」**** 的清單，以及其可能原因。  
 
 ## <a name="400-bad-request"></a>400 不正確的要求
 要求包含無效的資訊，並且因為下列其中一個原因遭到拒絕︰
@@ -65,7 +65,7 @@ ms.locfileid: "74887062"
   * 嘗試覆寫某些其他媒體服務帳戶的 ContentKey。
 * 無法建立資源，因為已達到媒體服務帳戶的服務配額。 如需服務配額的詳細資訊，請參閱[配額和限制](media-services-quotas-and-limitations.md)。
 
-## <a name="404-not-found"></a>404 - 找不到
+## <a name="404-not-found"></a>404 找不到
 基於下列原因之一不允許資源的要求：
 
 * 嘗試更新不存在的實體。

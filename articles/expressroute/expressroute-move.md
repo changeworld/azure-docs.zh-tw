@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute：將線路從傳統移至 Azure Resource Manager
+title: 快速路由：將電路從經典路由移動到 Azure 資源管理器
 description: 簡述如何橋接傳統部署模型與 Resource Manager 部署模型。
 services: expressroute
 author: ganesr
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645900"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型
@@ -95,7 +95,7 @@ ExpressRoute 線路的作用就像是傳統與 Resource Manager 部署模型之�
 * 如需工作流程資訊，請參閱 [ExpressRoute 線路佈建工作流程和線路狀態](expressroute-workflows.md)。
 * 若要設定 ExpressRoute 連線：
   
-  * [建立 ExpressRoute 線路](expressroute-howto-circuit-arm.md)
+  * [創建快速路由電路](expressroute-howto-circuit-arm.md)
   * [設定路由](expressroute-howto-routing-arm.md)
-  * [將虛擬網路連結到 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)
+  * [將虛擬網路連結到 ExpressRoute 電路](expressroute-howto-linkvnet-arm.md)
 

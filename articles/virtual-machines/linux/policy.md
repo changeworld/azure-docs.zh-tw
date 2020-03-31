@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中使用 Linux Vm 上的原則強制執行安全性
-description: 如何將原則套用至 Azure Resource Manager  Linux 虛擬機器
+title: 使用 Azure 中 Linux VM 上的策略強制實施安全性
+description: 如何將原則套用至 Azure Resource Manager Linux 虛擬機器
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035325"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 將原則套用至 Linux VM
@@ -211,4 +211,4 @@ ms.locfileid: "74035325"
 ## <a name="next-steps"></a>後續步驟
 * 定義原則規則 (如上述範例所示) 之後，您必須建立原則定義，並將它指派到某個範圍。 範圍可以是訂用帳戶、資源群組或資源。 若要指派原則，請參閱[使用 Azure 入口網站來指派和管理資源原則](../../governance/policy/assign-policy-portal.md)、[使用 PowerShell 來指派原則](../../governance/policy/assign-policy-powershell.md)或[使用 Azure CLI 來指派原則](../../governance/policy/assign-policy-azurecli.md)。
 * 如需資源原則簡介，請參閱[什麼是 Azure 原則？](../../governance/policy/overview.md)。
-* 如需關於企業如何使用 Resource Manager 有效地管理訂閱的指引，請參閱 [Azure 企業 Scaffold - 規定的訂用帳戶治理](/azure/architecture/cloud-adoption-guide/subscription-governance)。
+* 如需關於企業如何使用 Resource Manager 有效地管理訂用帳戶的指引，請參閱 [Azure 企業 Scaffold - 規定的訂用帳戶治理](/azure/architecture/cloud-adoption-guide/subscription-governance)。

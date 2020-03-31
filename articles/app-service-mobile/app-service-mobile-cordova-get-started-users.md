@@ -1,30 +1,30 @@
 ---
-title: 在 Apache Cordova 上新增驗證
-description: 瞭解如何使用 Azure App Service 中的 Mobile Apps，透過 Google、Facebook、Twitter 和 Microsoft 等身分識別提供者來驗證 Apache Cordova 應用程式的使用者。
+title: 添加阿帕奇科爾多瓦的身份驗證
+description: 瞭解如何在 Azure 應用服務中使用移動應用，使用 Google、Facebook、Twitter 和 Microsoft 等身份供應商對 Apache Cordova 應用的使用者進行身份驗證。
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459383"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>新增驗證至您的 Apache Cordova 應用程式
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 在本教學課程中，您可以使用支援的身分識別提供者，將驗證加入 Apache Cordova 上的 TodoList 快速入門專案。 本教學課程以[開始使用 Mobile Apps] 為基礎，您必須先完成該教學課程。
 
-## <a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>註冊應用程式進行驗證，並設定應用程式服務
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [觀看示範類似步驟的影片](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>限制只有通過驗證的使用者具有權限
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>將許可權限制為經過身份驗證的使用者
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 現在，您可以驗證是否已停用後端的匿名存取。 在 Visual Studio 中：
@@ -35,7 +35,7 @@ ms.locfileid: "77459383"
 
 接下來，將應用程式更新為在使用者從行動應用程式後端要求資源之前，先驗證使用者。
 
-## <a name="add-authentication"></a>將驗證新增至應用程式
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>向應用添加身份驗證
 1. 在 **Visual Studio** 中開啟您的專案，然後開啟 `www/index.html` 檔案進行編輯。
 2. 找出 head 區段中的 `Content-Security-Policy` 中繼標籤。  將 OAuth 主機新增至允許的來源清單。
 
@@ -85,7 +85,7 @@ ms.locfileid: "77459383"
 4. 在您剛才加入的程式碼中，使用您的登入提供者名稱取代 `SDK_Provider_Name` 。 例如，針對 Azure Active Directory，請使用 `client.login('aad')`。
 5. 執行您的專案。  當專案完成初始化時，您的應用程式會針對選擇的驗證提供者顯示 OAuth 登入頁面。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a><a name="next-steps"></a>後續步驟
 * 深入了解 Azure App Service [驗證相關資訊] 。
 * 將 [推播通知] 新增至 Apache Cordova 應用程式，以繼續本教學課程。
 
@@ -96,10 +96,10 @@ ms.locfileid: "77459383"
 * [Node.js Server SDK]
 
 <!-- URLs. -->
-[開始使用 Mobile Apps]: app-service-mobile-cordova-get-started.md
+[開始使用移動應用]: app-service-mobile-cordova-get-started.md
 [Content-Security-Policy 文件]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
-[推播通知]: app-service-mobile-cordova-get-started-push.md
-[驗證相關資訊]: app-service-mobile-auth.md
+[推送通知]: app-service-mobile-cordova-get-started-push.md
+[關於身份驗證]: app-service-mobile-auth.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

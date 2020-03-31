@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 叢集 Resource Manager-應用程式群組
+title: 服務結構群集資源管理器 - 應用程式組
 description: Service Fabric 叢集 Resource Manager 中應用程式群組功能的概觀
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452159"
 ---
 # <a name="introduction-to-application-groups"></a>應用程式群組簡介
@@ -28,7 +28,7 @@ Service Fabric 的叢集資源管理員通常會將負載平均分配到整個�
 
 <center>
 
-定義最大節點數目的 ![應用程式實例][Image1]
+![定義節點數目上限的應用程式執行個體][Image1]
 </center>
 
 在左邊的範例中，應用程式沒有定義的節點數目上限，且提供有三項服務。 叢集資源管理員已將所有複本分散到六個可用的節點，在叢集中達到最佳平衡狀態 (預設行為)。 在右邊的範例中，我們看到相同的應用程式限制為三個節點。
@@ -110,8 +110,8 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 
 <center>
 
-![定義保留容量][Image2]
-</center> 的應用程式實例
+![定義保留容量的應用程式執行個體][Image2]
+</center>
 
 在左邊的範例中，應用程式並沒有定義任何應用程式容量。 叢集資源管理員會根據一般規則來平衡一切事物。
 
@@ -198,7 +198,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 在應用程式建立及更新期間，都會強制執行限制。
 
 ## <a name="how-not-to-use-application-capacity"></a>如何不使用應用程式容量
-- 請勿嘗試使用「應用程式群組」功能將應用程式限制到「特定」的節點子集。 換句話說，您可以指定最多在五個節點上執行應用程式，但無法指定叢集中的哪五個特定節點。 您可以使用服務的放置條件約束，將應用程式限制到特定節點。
+- 請勿嘗試使用「應用程式群組」功能將應用程式限制到「特定」__ 的節點子集。 換句話說，您可以指定最多在五個節點上執行應用程式，但無法指定叢集中的哪五個特定節點。 您可以使用服務的放置條件約束，將應用程式限制到特定節點。
 - 請勿使用「應用程式容量」來確保相同應用程式的兩個服務放在相同的節點上。 請改用[親和性](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)或[放置條件約束](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)。
 
 ## <a name="next-steps"></a>後續步驟
@@ -206,7 +206,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
 - 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)
 - 如需度量通常如何運作的詳細資訊，請繼續閱讀 [Service Fabric 負載度量](service-fabric-cluster-resource-manager-metrics.md)
-- 叢集資源管理員有許多描述叢集的選項。 若要深入了解這些選項，請參閱關於[描述 Service Fabric 叢集](service-fabric-cluster-resource-manager-cluster-description.md)一文
+- 叢集資源管理員有許多描述叢集的選項。 要瞭解有關它們的更多，請查看本文介紹[服務結構群集](service-fabric-cluster-resource-manager-cluster-description.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

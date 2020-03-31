@@ -1,5 +1,5 @@
 ---
-title: 透過連接器群組在不同的網路上發佈應用程式-Azure AD
+title: 通過連接器組在單獨的網路上發佈應用 - Azure AD
 description: 涵蓋如何建立和管理「Azure AD 應用程式 Proxy」中的連接器群組。
 services: active-directory
 author: msmimart
@@ -15,10 +15,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275572"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用連接器群組在個別的網路和位置上發佈應用程式
@@ -32,30 +32,30 @@ ms.locfileid: "74275572"
 > [!TIP]
 > 如果您有大規模的應用程式 Proxy 部署，請勿將任何應用程式指派給預設連接器群組。 如此一來，新的連接器便不會收到任何即時流量，除非您將新連接器指派給作用中的連接器群組。 此設定也可以將連接器移回預設群組的方式，藉此讓連接器進入閒置模式，如此您便可以在不影響使用者的情況下執行維護。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要將連接器組成群組，您必須確定 [已安裝多個連接器](application-proxy-add-on-premises-application.md)。 當您安裝新的連接器時，它會自動加入「預設」 連接器群組。
+若要將連接器組成群組，您必須確定 [已安裝多個連接器](application-proxy-add-on-premises-application.md)。 當您安裝新的連接器時，它會自動加入「預設」 **** 連接器群組。
 
 ## <a name="create-connector-groups"></a>建立連接器群組
 
 使用以下步驟建立您所要的連接器群組，數量不拘。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取 [Azure Active Directory]  >  [企業應用程式]  >  [應用程式 Proxy]。
-1. 選取 [新增連接器群組]。 [新增連接器群組] 刀鋒視窗隨即出現。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 選擇**Azure 活動目錄** > **企業應用程式應用程式** > **代理**。
+1. 選取 [新增連接器群組]****。 [新增連接器群組] 刀鋒視窗隨即出現。
 
-   ![顯示選取新連接器群組的畫面](./media/application-proxy-connector-groups/new-group.png)
+   ![顯示幕幕以選擇新的連接器組](./media/application-proxy-connector-groups/new-group.png)
 
 1. 指定新連接器群組的名稱，然後使用下拉式功能表來選取哪些連接器屬於此群組。
-1. 選取 [ **儲存**]。
+1. 選取 [儲存]****。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>將應用程式指派給您的連接器群組
 
 已透過應用程式 Proxy 發佈的每個應用程式均按照這些步驟處理。 您可以在首次發佈應用程式時，將應用程式指派給連接器群組，也可以隨時使用這些步驟變更指派。
 
-1. 從您目錄的管理儀表板中，選取 [企業應用程式] > [所有應用程式] > 您想要指派給連接器群組的應用程式 > [應用程式 Proxy]。
-1. 使用 [連接器群組]下拉式功能表來選取應用程式所要使用的群組。
-1. 按一下 [儲存] 以套用變更。
+1. 在目錄的管理儀表板中，選擇**企業應用程式** > **>** 要分配給連接器組的應用程式>**應用程式代理**。
+1. 使用 [連接器群組] **** 下拉式功能表來選取應用程式所要使用的群組。
+1. 按一下 [儲存] **** 以套用變更。
 
 ## <a name="use-cases-for-connector-groups"></a>連接器群組的使用案例
 
@@ -81,7 +81,7 @@ ms.locfileid: "74275572"
   
 使用 Azure AD 應用程式 Proxy 連接器群組，您可以啟用一般服務來保護所有應用程式，而無須在您的公司網路上建立其他相依性︰
 
-![Azure AD IaaS 多個雲端廠商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD IaaS 多個雲供應商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>多樹系 – 每個樹系不同的連接器群組
 
@@ -108,7 +108,7 @@ ms.locfileid: "74275572"
 
 如果您不使用連接器群組，您的組態會看起來像這樣︰
 
-![Azure AD 沒有連接器群組的範例](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![示例 Azure AD 無連接器組](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 這個組態就對小型部署和測試就已足夠。 如果您的組織具有平面網路拓撲，則它也會正常運作。
 
@@ -116,7 +116,7 @@ ms.locfileid: "74275572"
 
 此組態是預設的演化，其中有在隔離網路 (例如 IaaS 虛擬網路) 中執行的特定應用程式︰
 
-![範例 Azure AD 沒有連接器群組和隔離的網路](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![示例 Azure AD 無連接器組和隔離網路](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>建議的組態 – 幾個特定的群組和預設的閒置群組
 
@@ -124,9 +124,9 @@ ms.locfileid: "74275572"
 
 下列範例中，公司有兩個資料中心 (A 和 B)，並具有兩個連接器可為每個站台提供服務。 每個網站都有不同的應用程式在其上執行。
 
-![具有2個資料中心和2個連接器的公司範例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![具有 2 個資料中心和 2 個連接器的公司示例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)
+* [瞭解 Azure AD 應用程式代理連接器](application-proxy-connectors.md)
 * [啟用單一登入](what-is-single-sign-on.md)

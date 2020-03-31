@@ -1,15 +1,15 @@
 ---
-title: CredentialsCombo UI 元素
+title: 憑據 Combo UI 元素
 description: 描述 Azure 入口網站的 Microsoft.Compute.CredentialsCombo UI 元素。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652134"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 元素
@@ -112,7 +112,7 @@ ms.locfileid: "75652134"
 ## <a name="remarks"></a>備註
 
 - 必須指定 `osPlatform`，且可以是 **Windows** 或 **Linux**。
-- 如果將 `constraints.required` 設為 **true**，則密碼或 SSH 公開金鑰文字方塊必須具有值，才能順利通過驗證。 預設值為 **true**。
+- 如果將 `constraints.required` 設為 **true**，則密碼或 SSH 公開金鑰文字方塊必須具有值，才能順利通過驗證。 預設值**為 true**。
 - 如果將 `options.hideConfirmation` 設為 **true**，就會將確認使用者密碼的第二個文字方塊加以隱藏。 預設值為 **false**。
 - 如果將 `options.hidePassword` 設為 **true**，就會將使用密碼驗證的選項加以隱藏。 只有在 `osPlatform` 是 **Linux** 時才可以使用。 預設值為 **false**。
 - 可使用 `customPasswordRegex` 屬性將允許密碼上的其他條件約束加以實作。 密碼無法自訂驗證時，就會顯示 `customValidationMessage` 中的字串。 這兩個屬性的預設值是 **null**。

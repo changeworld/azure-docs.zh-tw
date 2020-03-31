@@ -1,14 +1,14 @@
 ---
 title: 原則範例索引
 description: Azure 原則內建的範例索引。 分類標記、法規合規性、Key Vault、Kubernetes、來賓設定等。
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.topic: sample
-ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d990f911612c8e1f5ab7cdbdae7efe362aa70bb5
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/25/2020
-ms.locfileid: "77168036"
+ms.locfileid: "80257167"
 ---
 # <a name="azure-policy-samples"></a>Azure 原則範例
 
@@ -31,6 +31,10 @@ ms.locfileid: "77168036"
 - [Count 運算子](./pattern-count-operator.md)
 - [將計畫中的原則定義進行分組](./pattern-group-with-initiative.md)
 - [使用 deployIfNotExists 部署資源](./pattern-deploy-resources.md)
+
+## <a name="other-samples"></a>其他範例
+
+- [GitHub - 社群原則存放庫](https://github.com/Azure/Community-Policy)
 
 ## <a name="next-steps"></a>後續步驟
 

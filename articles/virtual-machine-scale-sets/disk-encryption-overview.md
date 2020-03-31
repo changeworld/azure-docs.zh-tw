@@ -1,6 +1,6 @@
 ---
-title: 啟用虛擬機器擴展集的 Azure 磁碟加密
-description: 本文提供針對虛擬機器擴展集啟用 Microsoft Azure 磁片加密的指示
+title: 為虛擬機器縮放集啟用 Azure 磁片加密
+description: 本文提供有關為虛擬機器規模集啟用 Microsoft Azure 磁片加密的說明
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -8,25 +8,25 @@ ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278979"
 ---
-# <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 磁碟加密
+# <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>虛擬機器縮放集的 Azure 磁片加密
 
-Azure 磁碟加密提供虛擬機器的 OS 和資料磁片的磁片區加密，協助保護和保護您的資料，以符合組織的安全性和合規性承諾。 若要深入瞭解，請參閱[Azure 磁碟加密： Linux vm](../virtual-machines/linux/disk-encryption-overview.md)和[Azure 磁碟加密： Windows vm](../virtual-machines/windows/disk-encryption-overview.md)  
+Azure 磁片加密為虛擬機器的作業系統和資料磁片提供卷加密，有助於保護資料以滿足組織安全和合規性承諾。 要瞭解更多資訊，請參閱[Azure 磁片加密：Linux VM](../virtual-machines/linux/disk-encryption-overview.md)和[Azure 磁片加密：Windows VM](../virtual-machines/windows/disk-encryption-overview.md)  
 
-在這些情況下，Azure 磁碟加密也可以套用至 Windows 和 Linux 虛擬機器擴展集：
-- 使用受控磁片建立的擴展集。 不支援原生（或非受控）磁片擴展集的 Azure 磁片加密。
-- Windows 擴展集中的 OS 和資料磁片區。
-- Linux 擴展集內的資料磁片區。 Linux 擴展集目前不支援 OS 磁片加密。
+Azure 磁片加密還可以應用於 Windows 和 Linux 虛擬機器縮放集，在這些情況下：
+- 使用託管磁片創建的縮放集。 本機（或非託管）磁片規模集不支援 Azure 磁片加密。
+- Windows 縮放集中的作業系統和資料卷。
+- Linux 比例集中的資料卷。 目前不支援 Linux 規模集的作業系統磁片加密。
 
-只有幾分鐘的時間，您可以使用[Azure CLI 來加密虛擬機器](disk-encryption-cli.md)擴展集，或[使用 Azure PowerShell](disk-encryption-powershell.md)教學課程來加密虛擬機器擴展集，以瞭解虛擬機器擴展集 Azure 磁碟加密的基本概念。
+使用 Azure CLI 或[使用 Azure PowerShell 教程加密虛擬機器規模集](disk-encryption-powershell.md)的[虛擬機器縮放集](disk-encryption-cli.md)，只需幾分鐘即可瞭解虛擬機器縮放集的 Azure 磁片加密基礎知識。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure Resource Manager 加密虛擬機器擴展集](disk-encryption-azure-resource-manager.md)
+- [使用 Azure 資源管理器加密虛擬機器規模集](disk-encryption-azure-resource-manager.md)
 - [針對 Azure 磁碟加密建立及設定金鑰保存庫](disk-encryption-key-vault.md)
 - [使用搭配虛擬機器擴展集擴充功能排序的 Azure 磁碟加密](disk-encryption-extension-sequencing.md)

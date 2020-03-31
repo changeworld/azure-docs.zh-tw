@@ -1,6 +1,6 @@
 ---
-title: 建立和管理角色指派-Azure 數位 Twins |Microsoft Docs
-description: 瞭解如何在 Azure 數位 Twins 中建立和管理角色指派。
+title: 創建和管理角色指派 - Azure 數位孿生 |微軟文檔
+description: 瞭解如何在 Azure 數位孿生中創建和管理角色指派。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110415"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure Digital Twins 中建立及管理角色指派
@@ -72,20 +72,20 @@ Azure Digital Twins 對於角色指派支援完整的*建立*、*讀取*和*刪�
 
 將權限授與服務主體通常是使用 Azure Digital Twins 時要採取的第一步。 它需要：
 
-1. 透過[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[PowerShell](https://docs.microsoft.com/powershell/azure/)登入您的 Azure 實例。
+1. 通過[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[PowerShell](https://docs.microsoft.com/powershell/azure/)登錄到 Azure 實例。
 1. 取得您的服務主體資訊。
 1. 將所需的角色指派給服務主體。
 
 您的應用程式識別碼是在 Azure Active Directory 中提供的。 若要深入了解在 Active Directory 中設定及佈建 Azure Digital Twins，請仔細閱讀[快速入門](./quickstart-view-occupancy-dotnet.md)。
 
-一旦擁有應用程式識別碼，請執行下列其中一個命令。 在 Azure CLI：
+獲得應用程式 ID 後，執行以下命令之一。 在 Azure CLI 中：
 
 ```azurecli
 az login
 az ad sp show --id <ApplicationId>
 ```
 
-在 Powershell 中：
+在電源殼中：
 
 ```powershell
 Login-AzAccount
@@ -161,12 +161,12 @@ YOUR_MANAGEMENT_API_URL/system/roles
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **參數值** | **必要** |  **型別** |  **說明** |
+| **參數值** | **必要** |  **類型** |  **描述** |
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
 | YOUR_PATH | True | String |   用來檢查存取權的選擇路徑。 |
-| YOUR_ACCESS_TYPE |  True | String |   *讀取*、*建立*、*更新*或*刪除* |
-| YOUR_RESOURCE_TYPE | True | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*金鑰*存放區、*比對器*、*本體*、 *Report*、 *RoleDefinition*、*感應器*、 *SensorExtendedProperty*、 *Space*、 *SpaceBlobMetadata*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
+| YOUR_ACCESS_TYPE |  True | String |   *讀取*、*創建*、*更新**或刪除* |
+| YOUR_RESOURCE_TYPE | True | String |  *設備*，*設備Blob中繼資料*，*設備擴充屬性*，*擴充屬性鍵*，*擴展類型*，*終端*，*鑰匙存儲*，*匹配器*，*本體，**報告*，*角色定義*，*感應器*，*感應器擴充屬性*，*空間*，*空間Blob中繼資料*，*空間擴充屬性*，*空間資源*，*空間角色指派*，*系統*， *Uer 定義函數*、*使用者*、*使用者 Blob 中繼資料*或*使用者擴充屬性* |
 
 成功的要求會傳回布林值 `true` 或 `false`，指示是否已為指定的路徑和資源，指派存取權類型給使用者。
 
@@ -198,7 +198,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 ### <a name="revoke-a-permission"></a>撤銷權限
 
-若要撤銷收件者的許可權，請藉由提出已驗證的 HTTP DELETE 要求來刪除角色指派：
+要撤銷收件者的許可權，請通過發出經過身份驗證的 HTTP DELETE 請求來刪除角色指派：
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -240,7 +240,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 以下範例示範如何在幾個常見的角色指派案例中設定 JSON 主體。
 
-* **範例**：使用者需要租使用者空間樓層的系統管理存取權。
+* **示例**：使用者需要對租戶空間的樓層進行管理訪問。
 
    ```JSON
    {
@@ -252,7 +252,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
    }
    ```
 
-* **範例**：應用程式會執行模擬裝置和感應器的測試案例。
+* **示例**：應用程式運行測試場景，類比設備和感應器。
 
    ```JSON
    {
@@ -264,7 +264,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
    }
     ```
 
-* **範例**：屬於網域成員的所有使用者都會收到空間、感應器和使用者的讀取權限。 此存取權包含其對應的相關物件。
+* **示例**：屬於域的所有使用者都接收空間、感應器和使用者的讀取存取許可權。 此存取權包含其對應的相關物件。
 
    ```JSON
    {

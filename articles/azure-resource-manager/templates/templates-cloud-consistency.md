@@ -1,28 +1,28 @@
 ---
-title: 跨雲端重複使用範本
+title: 跨雲重用範本
 description: 開發在不同雲端環境能一致運行的 Azure Resource Manager 範本。 建立新的或更新現有的 Azure Stack 範本。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156101"
 ---
-# <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>開發針對雲端一致性的 Azure Resource Manager 範本
+# <a name="develop-arm-templates-for-cloud-consistency"></a>開發針對雲一致性的 ARM 範本
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要優點在於一致性。 對某個位置的開發投資可重複用在另一個位置。 範本讓您的部署一致且可跨環境重複，包括全球 Azure、Azure 主權雲端和 Azure Stack。 但若要跨雲端重複使用範本，您需要考慮雲端特定的相依性，如本指南所述。
+Azure 的主要優點在於一致性。 對某個位置的開發投資可重複用在另一個位置。 Azure 資源管理器 （ARM） 範本使部署跨環境（包括全域 Azure、Azure 主權雲和 Azure 堆疊）保持一致且可重複。 但若要跨雲端重複使用範本，您需要考慮雲端特定的相依性，如本指南所述。
 
 Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包括：
 
 * Microsoft 受控之全球各區域資料中心中不斷成長的網路，支援全球 Azure 平台。
-* 獨立的主權雲端，例如 Azure 德國、Azure Government 和 Azure 中國世紀。 主權雲端提供一致的平台和大多數全球 Azure 客戶都能存取的相同絕佳功能。
+* 孤立的主權雲，如 Azure 德國、Azure 政府和 Azure 中國 21Vianet。 主權雲端提供一致的平台和大多數全球 Azure 客戶都能存取的相同絕佳功能。
 * Azure Stack 是混合式雲端平台，可讓您從貴組織的資料中心提供 Azure 服務。 企業可以在自己的資料中心設定 Azure Stack，或從服務提供者取用 Azure 服務，在其設備 (有時稱為代管區域) 中執行 Azure Stack。
 
 在所有這些雲端的核心，Azure Resource Manager 提供一個 API 讓各種不同的使用者介面都能與 Azure 平台通訊。 此 API 提供您強大的基礎結構即程式碼功能。 您可以使用 Azure Resource Manager 在 Azure 雲端平台上部署並設定任何類型的可用資源。 使用單一範本，您可以將完成的應用程式部署及設定成作業結束狀態。
@@ -33,7 +33,7 @@ Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包�
 
 不過，雖然全球、主權、託管和混合式雲端能提供一致的服務，但並非所有的雲端都相同。 因此，您可以建立具有僅特定雲端所提供功能之相依性的範本。
 
-本指南其餘部分會描述，針對 Azure Stack 規劃開發新的 Azure Resource Manager 範本或更新現有的範本時，要考量的區域。 您的檢查清單一般應包含下列項目：
+本指南的其餘部分介紹了在計畫為 Azure Stack 開發新 ARM 範本時要考慮的領域。 您的檢查清單一般應包含下列項目：
 
 * 確認目標部署位置可以使用您範本中的函式、端點、服務和其他資源。
 * 將巢狀範本和設定成品儲存在可存取的位置，確保跨雲端的存取。
@@ -41,17 +41,17 @@ Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包�
 * 請確定您使用的範本參數能在目標雲端中運作。
 * 確認目標雲端可以使用資源特有的屬性。
 
-如需 Azure Resource Manger 範本的介紹，請參閱[範本部署](overview.md)。
+有關 ARM 範本的簡介，請參閱[範本部署](overview.md)。
 
 ## <a name="ensure-template-functions-work"></a>確定範本函式都能運作
 
-Resource Manager 範本的基本語法是 JSON。 範本使用 JSON 的超集，擴展運算式和函式的語法。 範本語言處理器經常更新，以支援額外的範本函式。 如需可用範本函式的詳細說明，請參閱 [Azure Resource Manager 範本函式](template-functions.md)。
+ARM 範本的基本語法是 JSON。 範本使用 JSON 的超集，擴展運算式和函式的語法。 範本語言處理器經常更新，以支援額外的範本函式。 有關可用範本函數的詳細說明，請參閱 ARM[範本函數](template-functions.md)。
 
 Azure Resource Manager 中引入的新範本函式，不能立即提供主權雲端或 Azure Stack 使用。 若要成功部署範本，範本中參考的所有函式都必須能在目標雲端中使用。
 
 Azure Resource Manager 功能一律先引入全球 Azure。 您可以使用下列 PowerShell 指令碼確認 Azure Stack 是否可以使用新引入的範本函式：
 
-1. 建立 GitHub 存放庫的複製品：[https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)。
+1. 克隆 GitHub 存儲庫： [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)。
 
 1. 一旦您有存放庫的本機複製品，請使用 PowerShell 連線至目的地的 Azure Resource Manager。
 
@@ -444,7 +444,7 @@ API 設定檔不是範本中的必要項目。 即使您新增項目，它也只
 在範本中，一般會避免硬式編碼的端點。 最佳做法是使用參考範本函式動態擷取端點。 例如，最常見的硬式編碼端點是儲存體帳戶的端點命名空間。 每個儲存體帳戶都有唯一的 FQDN，透過串連儲存體帳戶的名稱和端點命名空間所建構。 名為 mystorageaccount1 的 Blob 儲存體帳戶會導致不同的 FQDN，視雲端而定：
 
 * 在全球 Azure 雲端上建立時，**mystorageaccount1.Blob.core.windows.net**。
-* 在 Azure 中國世紀雲端中建立時的**mystorageaccount1.blob.core.chinacloudapi.cn** 。
+* 在 Azure 中國 21Vianet 雲中創建時**mystorageaccount1.blob.core.chinacloudapi.cn。**
 
 下列參考範本函式會從儲存體資源提供者擷取端點命名空間：
 
@@ -497,7 +497,7 @@ Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | 
 
 如果您讓 Azure Stack 可以使用這些 VM 映像，則會取用所有可用儲存體。 即使是最小的縮放單位，Azure Stack 為了讓您容納它，允許您選取想要新增至環境的映像。
 
-下列程式碼範例顯示一致的方法，參考您 Azure Resource Manager 範本的發行者、供應項目和 SKU 參數：
+以下代碼示例顯示了一種一致的方法，用於在 ARM 範本中引用發行者、產品/服務參數和 SKU 參數：
 
 ```json
 "storageProfile": {
@@ -651,7 +651,7 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 ## <a name="tips-for-testing-and-automation"></a>測試和自動化祕訣
 
-在撰寫範本時追蹤所有相關的設定、功能及限制是項挑戰。 常見的方法是先針對單一雲端開發與測試範本，再以其他位置為目標。 不過，愈早在撰寫程序中執行測試，您開發小組必須執行的疑難排解和程式碼重寫就愈少。 因為疑難排解位置相依性相當耗時而失敗的部署。 這就是為什麼我們建議盡早在撰寫週期中自動化測試。 最後，您會需要較少的開發時間和較少的資源，而您的雲端一致成品會變得更有價值。
+在撰寫範本時追蹤所有相關的設定、功能及限制是項挑戰。 常見的方法是先針對單一雲端開發與測試範本，再以其他位置為目標。 不過，愈早在撰寫程序中執行測試，您開發小組必須執行的疑難排解和程式碼重寫就愈少。 因為疑難排解位置相依性相當耗時而失敗的部署。 因此，我們建議在創作週期中儘早進行自動測試。 最後，您會需要較少的開發時間和較少的資源，而您的雲端一致成品會變得更有價值。
 
 下圖顯示使用整合式開發環境 (IDE) 之小組的開發程序典型範例。 在時間軸的不同階段，會執行不同的測試類型。 在這裡，兩名開發人員處理相同的解決方案，而此案例既適用於一位開發人員也適用於大型小組。 每位開發人員一般都會建立中央存放庫的本機複本，讓每個人都能在本機複本上工作，但不影響可能要使用相同檔案的其他人。
 
@@ -668,4 +668,4 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Resource Manager 範本考量](/azure-stack/user/azure-stack-develop-templates)
-* [Azure Resource Manager 範本最佳做法](template-syntax.md)
+* [ARM 範本的最佳實踐](template-syntax.md)

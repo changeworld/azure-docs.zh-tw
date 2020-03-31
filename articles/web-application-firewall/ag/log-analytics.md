@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Log Analytics 來檢查應用程式閘道 Web 應用程式防火牆記錄
-description: 本文說明如何使用 Azure Log Analytics 來檢查應用程式閘道 Web 應用程式防火牆記錄
+title: 使用 Azure 日誌分析檢查應用程式閘道 Web 應用程式防火牆日誌
+description: 本文介紹如何使用 Azure 日誌分析檢查應用程式閘道 Web 應用程式防火牆日誌
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,36 +8,36 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
 ms.openlocfilehash: e1bc3b58f425b374e4cae1da6e9800579e503f0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73516587"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>使用 Log Analytics 來檢查應用程式閘道 Web 應用程式防火牆記錄
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>使用 Log Analytics 檢查應用程式閘道 Web 應用程式防火牆記錄
 
-一旦您的應用程式閘道 WAF 可運作，您就可以啟用記錄來檢查每個要求所發生的情況。 防火牆記錄可讓您深入瞭解 WAF 的評估、比對和封鎖。 透過 Log Analytics，您可以檢查防火牆記錄內的資料，以提供更多深入資訊。 如需有關建立 Log Analytics 工作區的詳細資訊，請參閱[Azure 入口網站中的建立 Log analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。 如需記錄查詢的詳細資訊，請參閱[Azure 監視器中的記錄查詢總覽](../../azure-monitor/log-query/log-query-overview.md)。
+應用程式閘道 WAF 運行後，您可以啟用日誌來檢查每個請求發生的情況。 防火牆日誌可以深入瞭解 WAF 正在評估、匹配和阻止的內容。 使用日誌分析，您可以檢查防火牆日誌中的資料，以提供更多見解。 有關創建日誌分析工作區的詳細資訊，請參閱[在 Azure 門戶中創建日誌分析工作區](../../azure-monitor/learn/quick-create-workspace.md)。 有關日誌查詢的詳細資訊，請參閱 Azure[監視器 中的日誌查詢概述](../../azure-monitor/log-query/log-query-overview.md)。
 
-## <a name="import-waf-logs"></a>匯入 WAF 記錄
+## <a name="import-waf-logs"></a>導入 WAF 日誌
 
-若要將您的防火牆記錄匯入 Log Analytics，請參閱[應用程式閘道的後端健康情況、診斷記錄和計量](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。 當您的 Log Analytics 工作區中有防火牆記錄時，您可以查看資料、撰寫查詢、建立視覺效果，並將其新增至您的入口網站儀表板。
+要將防火牆日誌導入日誌分析，請參閱[應用程式閘道的後端運行狀況、診斷日誌和指標](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。 當您的日誌分析工作區中包含防火牆日誌時，您可以查看資料、編寫查詢、創建視覺化效果以及將它們添加到門戶儀表板。
 
-## <a name="explore-data-with-examples"></a>使用範例流覽資料
+## <a name="explore-data-with-examples"></a>使用示例流覽資料
 
-若要查看防火牆記錄中的原始資料，您可以執行下列查詢：
+要查看防火牆日誌中的原始資料，可以運行以下查詢：
 
 ```
 AzureDiagnostics 
 | where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
 ```
 
-這看起來會類似下列查詢：
+這類似于以下查詢：
 
-![Log Analytics 查詢](../media/log-analytics/log-query.png)
+![日誌分析查詢](../media/log-analytics/log-query.png)
 
-您可以從這裡向下切入資料，並繪製圖形或建立視覺效果。 請參閱下列查詢做為起點：
+您可以向下切入資料，並在此處繪製圖形或創建視覺化效果。 請參閱以下查詢作為起點：
 
-### <a name="matchedblocked-requests-by-ip"></a>依 IP 的相符/已封鎖要求
+### <a name="matchedblocked-requests-by-ip"></a>按 IP 匹配/阻止的請求
 
 ```
 AzureDiagnostics
@@ -46,7 +46,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="matchedblocked-requests-by-uri"></a>依 URI 的相符/已封鎖要求
+### <a name="matchedblocked-requests-by-uri"></a>URI 匹配/阻止的請求
 
 ```
 AzureDiagnostics
@@ -55,7 +55,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-matched-rules"></a>最符合的規則
+### <a name="top-matched-rules"></a>頂級匹配規則
 
 ```
 AzureDiagnostics
@@ -65,7 +65,7 @@ AzureDiagnostics
 | render timechart
 ```
 
-### <a name="top-five-matched-rule-groups"></a>前五個相符的規則群組
+### <a name="top-five-matched-rule-groups"></a>匹配的規則組前五個
 
 ```
 AzureDiagnostics
@@ -75,12 +75,12 @@ AzureDiagnostics
 | render piechart
 ```
 
-## <a name="add-to-your-dashboard"></a>新增至您的儀表板
+## <a name="add-to-your-dashboard"></a>添加到儀表板
 
-建立查詢之後，您就可以將它新增至儀表板。  選取 log analytics 工作區右上方的 [**釘選到儀表板**]。 過去四個釘選到範例儀表板的查詢，這就是您可以一目了然的資料：
+創建查詢後，可以將其添加到儀表板。  選擇日誌分析工作區右上角的 **"固定到儀表板**"。 將前四個查詢固定到示例儀表板，您可以一目了然地查看這些資料：
 
 ![儀表板](../media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-[應用程式閘道的後端健康情況、診斷記錄和計量](../../application-gateway/application-gateway-diagnostics.md)
+[應用程式閘道的後端運行狀況、診斷日誌和指標](../../application-gateway/application-gateway-diagnostics.md)

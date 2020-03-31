@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68963541"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安裝和操作您的 StorSimple 裝置
@@ -26,7 +26,7 @@ ms.locfileid: "68963541"
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ![警告圖示](./media/storsimple-safety/IC740879.png)
- ![閱讀安全性注意事項圖示](./media/storsimple-safety/IC740885.png) **讀取的安全性和健全狀況資訊**
+![閱讀安全性注意事項圖示](./media/storsimple-safety/IC740885.png) **讀取的安全性和健全狀況資訊**
 
 請閱讀本文中適用於 Microsoft Azure StorSimple 裝置的所有安全性和健全狀況資訊。 保留隨附於 StorSimple 裝置的所有列印指南供日後參考。 無法遵循下列指示並適當地設定、使用和照顧這項產品可能會提高嚴重傷害或人員死亡的風險，或造成裝置的損毀。 [本指南的可下載版本](https://www.microsoft.com/download/details.aspx?id=44233) 也可供使用。
 
@@ -36,7 +36,7 @@ ms.locfileid: "68963541"
 | 圖示 | 描述 |
 |:--- |:--- |
 | ![危險圖示](./media/storsimple-safety/IC740879.png) **危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/storsimple-safety/IC740879.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![警告圖示](./media/storsimple-safety/IC740879.png)**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
 | ![警告圖示](./media/storsimple-safety/IC740879.png) **小心！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
 | ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險** |高電壓 |
@@ -138,7 +138,7 @@ ms.locfileid: "68963541"
 ## <a name="battery-disposal-precautions"></a>電池處置預防措施
 電源供應器會使用特殊的電池，以在暫時的短期電源中斷期間保護記憶體的內容。 電池置於 PCM 中。 記住下列電池相關資訊。
 
-![警告圖示](./media/storsimple-safety/IC740879.png) **警告！**
+![警告圖示](./media/storsimple-safety/IC740879.png)**警告！**
 
 減少短路、火災、爆炸、傷害或死亡的風險：
 
@@ -148,7 +148,7 @@ ms.locfileid: "68963541"
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
-以空運運送或搬運電池時，請遵循 IATA 鋰電池指南文件，網址為 [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) \(英文\)
+通過空運或以其他方式運輸電池時，請按照 IATA 鋰電池指南文檔操作：：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 在您檢閱這些安全性注意事項之後，接下來的步驟是為裝置解除封裝、安裝機架和纜線。
 

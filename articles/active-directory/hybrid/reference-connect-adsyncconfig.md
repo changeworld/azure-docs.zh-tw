@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381190"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 參考
@@ -26,13 +26,13 @@ ms.locfileid: "60381190"
 ### <a name="synopsis"></a>概要
 取得每個 AD 連接器中設定的帳戶名稱與網域
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncADConnectorAccount
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 此函式使用 AAD Connect 中的 'Get-ADSyncConnector' Cmdlet，以從顯示 AD 連接器帳戶的連線參數表擷取。
 
 ### <a name="examples"></a>範例
@@ -47,13 +47,13 @@ Get-ADSyncADConnectorAccount
 ### <a name="synopsis"></a>概要
 取得已停用權限繼承的 AD 物件
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 從 SearchBase 參數開始在 AD 中搜尋，並傳回由 ObjectClass 參數所篩選目前已停用 ACL 繼承的所有物件。
 
 ### <a name="examples"></a>範例
@@ -79,7 +79,7 @@ Find all types of objects with disabled inheritance in a OU
 
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-searchbase"></a>-SearchBase
 LDAP 查詢的 SearchBase，其可以是 AD 網域 DistinguishedName 或 FQDN
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-要搜尋的物件類別可以是 '*' (適用於任何物件類別)、'user'、'group'、'container' 等。根據預設，此函式會搜尋 'organizationalUnit' 物件類別。
+要搜索的物件的類可以是"*"（適用于任何物件類）、"使用者"、組、容器等。預設情況下，此函數將搜索"組織單位"物件類。
 
 ```yaml
 Type: String
@@ -113,14 +113,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，提供基本的讀取權限。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -134,7 +134,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncBasicReadPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 對於所有子系電腦物件，其所有屬性的讀取屬性存取權
@@ -176,7 +176,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -286,14 +286,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，提供 Exchange 混合功能。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -307,7 +307,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncExchangeHybridPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 對於所有子系使用者物件，其所有屬性的讀取/寫入屬性存取權
@@ -343,7 +343,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=Azu
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -453,14 +453,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，提供 Exchange 郵件公用資料夾功能。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -475,7 +475,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncExchangeMailPublicFolderPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 對於所有子系 publicfolder 物件，其所有屬性的讀取屬性存取權
@@ -505,7 +505,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnec
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -615,14 +615,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，提供 mS-DS-ConsistencyGuid 功能。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -636,7 +636,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncMsDsConsistencyGuidPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 對於所有子系使用者物件，其 mS-DS-ConsistencyGuid 屬性的讀取/寫入屬性存取權
@@ -666,7 +666,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,O
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -776,14 +776,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，提供密碼雜湊同步處理。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -796,7 +796,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncPasswordHashSyncPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 複寫目錄變更
@@ -817,7 +817,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName 'ADConnector' -ADC
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -897,14 +897,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，從 Azure AD 提供密碼回寫。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -918,7 +918,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncPasswordWritebackPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 重設子系使用者物件上的密碼
@@ -952,7 +952,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -1062,7 +1062,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1071,14 +1071,14 @@ Accept wildcard characters: False
 典型範例是由 AAD Connect 自動建立的 AD Connect 帳戶 (MSOL)。
 此帳戶擁有所有網域的複寫權限，但很容易遭到入侵，形同未受保護。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential>
  [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncRestrictedPermissions 函式會對提供的帳戶限定權限。
 要限定權限必須執行下列步驟：
 1.
@@ -1111,7 +1111,7 @@ Set-ADSyncRestrictedPermissions 函式會對提供的帳戶限定權限。
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,DC=Contoso,DC=com" -Credential $(Get-Credential)
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
 需要限定其權限的 Active Directory 帳戶 DistinguishedName。
@@ -1193,14 +1193,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>概要
 初始化 Active Directory 樹系和網域，從 Azure AD 提供群組回寫。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -1214,7 +1214,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 Set-ADSyncUnifiedGroupWritebackPermissions 函式會將必要的權限提供給 AD 同步處理帳戶，包括下列各項：
 1.
 針對所有群組物件類型與 SubObjects，進行一般讀取/寫入、刪除、刪除樹系，以及建立\刪除子系
@@ -1245,7 +1245,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Active Directory 帳戶的名稱，由 Azure AD Connect 同步處理用來管理目錄中的物件。
@@ -1355,20 +1355,20 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>概要
 顯示所指定 AD 物件的權限。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 此函式會傳回目前為 -ADobjectDN 參數中所提供之指定 AD 物件設定的所有 AD 權限。
 ADobjectDN 必須以 DistinguishedName 格式提供。
 
@@ -1379,7 +1379,7 @@ ADobjectDN 必須以 DistinguishedName 格式提供。
 Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
 {{填寫 ADobjectDN 描述}}
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。

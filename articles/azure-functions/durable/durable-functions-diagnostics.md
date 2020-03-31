@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278190"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>在 Azure 中診斷 Durable Functions
@@ -20,15 +20,15 @@ ms.locfileid: "79278190"
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中診斷和監視的建議方式。 一樣適用於長期函式。 如需如何在您的函式應用程式中利用 Application Insights 的概觀，請參閱[監視 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions 長期延伸模組也會發出「追蹤事件」，可讓您追蹤協調流程的端對端執行。 您可以使用 Azure 入口網站中的[Application Insights 分析](../../azure-monitor/app/analytics.md)工具來尋找及查詢這些追蹤事件。
+Azure Functions 長期延伸模組也會發出「追蹤事件」**，可讓您追蹤協調流程的端對端執行。 可以使用 Azure 門戶中的[應用程式見解分析](../../azure-monitor/app/analytics.md)工具查找和查詢這些跟蹤事件。
 
 ### <a name="tracking-data"></a>追蹤資料
 
 協調流程執行個體的每個生命週期事件會讓追蹤事件寫入到 Application Insights 中的**追蹤**集合。 這個事件包含具有數個欄位的 **customDimensions** 裝載。  欄位名稱前面都會加上 `prop__`。
 
 * **hubName**：您的協調流程執行所在之工作中樞的名稱。
-* **appName**︰函式應用程式的名稱。 當您有多個函式應用程式共用相同的 Application Insights 實例時，此欄位很有用。
-* **slotName**：[部署位置](../functions-deployment-slots.md)，目前的函式應用程式在其中執行。 當您利用部署位置來進行協調流程的版本時，此欄位很有用。
+* **appName**︰函式應用程式的名稱。 當您有多個功能應用共用同一應用程式見解實例時，此欄位非常有用。
+* **slotName**：[部署位置](../functions-deployment-slots.md)，目前的函式應用程式在其中執行。 當您利用部署槽來對業務流程進行版本時，此欄位非常有用。
 * **functionName**：協調器或活動函式的名稱。
 * **functionType**：函式的類型，例如**協調器**或**活動**。
 * **instanceId**：協調流程執行個體的唯一識別碼。
@@ -39,14 +39,14 @@ Azure Functions 長期延伸模組也會發出「追蹤事件」，可讓您追�
   * **接聽**：協調器正在接聽外部事件通知。
   * **已完成**：函式已順利完成。
   * **失敗**：函式失敗，發生錯誤。
-* **原因**：與追蹤事件相關聯的其他資料。 例如，如果執行個體正在等候外部事件通知，這個欄位會指出它正在等候之事件的名稱。 如果函式失敗，此欄位將會包含錯誤詳細資料。
+* **原因**：與追蹤事件相關聯的其他資料。 例如，如果執行個體正在等候外部事件通知，這個欄位會指出它正在等候之事件的名稱。 如果函數失敗，此欄位將包含錯誤詳細資訊。
 * **isReplay**：布林值，指出追蹤事件是否要重新執行。
-* **extensionVersion**：長期工作延伸模組的版本。 當報告延伸模組中的可能 bug 時，版本資訊特別重要。 如果在長時間執行執行個體執行時發生更新，它可能會報告多個版本。
-* **sequenceNumber**：事件的執行序號。 與時間戳記結合，有助於依執行時間排序事件。 請注意，如果主機會在執行個體執行中重新啟動，這個數字將重設為零，所以務必一律先依 timestamp，然後依 sequenceNumber 進行排序。
+* **extensionVersion**：長期工作延伸模組的版本。 報告擴展中可能存在的 Bug 時，版本資訊尤為重要。 如果在長時間執行執行個體執行時發生更新，它可能會報告多個版本。
+* **sequenceNumber**：事件的執行序號。 與時間戳記結合，有助於依執行時間排序事件。 請注意，如果主機會在執行個體執行中重新啟動，這個數字將重設為零，所以務必一律先依 timestamp，然後依 sequenceNumber 進行排序。**
 
-您可以在 `host.json` 檔案的 `logger` （函數1.x）或 `logging` （函式2.0）區段中，設定發出至 Application Insights 之追蹤資料的詳細資訊。
+可跟蹤發送到應用程式見解的資料的詳細程度可以在`logger``logging``host.json`檔的 （函數 1.x） 或 （函數 2.0） 部分進行配置。
 
-#### <a name="functions-10"></a>函數1。0
+#### <a name="functions-10"></a>功能 1.0
 
 ```json
 {
@@ -60,7 +60,7 @@ Azure Functions 長期延伸模組也會發出「追蹤事件」，可讓您追�
 }
 ```
 
-#### <a name="functions-20"></a>函數2。0
+#### <a name="functions-20"></a>功能 2.0
 
 ```json
 {
@@ -74,9 +74,9 @@ Azure Functions 長期延伸模組也會發出「追蹤事件」，可讓您追�
 
 根據預設，會發出所有非重新執行的追蹤事件。 藉由將 `Host.Triggers.DurableTask` 設定為 `"Warning"` 或 `"Error"` 可以降低資料量，在此情況下，追蹤事件只會針對例外情況發出。
 
-若要啟用發出詳細的協調流程重新執行事件，在 `LogReplayEvents` 底下的 `true` 檔案中 `host.json` 可以設定為 `durableTask`，如下所示：
+若要啟用發出詳細的協調流程重新執行事件，在 `durableTask` 底下的 `host.json` 檔案中 `LogReplayEvents` 可以設定為 `true`，如下所示：
 
-#### <a name="functions-10"></a>函數1。0
+#### <a name="functions-10"></a>功能 1.0
 
 ```json
 {
@@ -86,7 +86,7 @@ Azure Functions 長期延伸模組也會發出「追蹤事件」，可讓您追�
 }
 ```
 
-#### <a name="functions-20"></a>函數2。0
+#### <a name="functions-20"></a>功能 2.0
 
 ```javascript
 {
@@ -103,7 +103,7 @@ Azure Functions 長期延伸模組也會發出「追蹤事件」，可讓您追�
 
 ### <a name="single-instance-query"></a>單一執行個體查詢
 
-下列查詢顯示 [Hello Sequence](durable-functions-sequence.md) 函式協調流程之單一執行個體的歷史追蹤資料。 它是使用 [Application Insights 查詢語言 (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) 寫入的。 它會篩選重新執行，以便僅顯示「邏輯」執行路徑。 您可以藉由排序 `timestamp` 和 `sequenceNumber` 來排序事件，如下列查詢中所示：
+下列查詢顯示 [Hello Sequence](durable-functions-sequence.md) 函式協調流程之單一執行個體的歷史追蹤資料。 它是使用 [Application Insights 查詢語言 (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) 寫入的。 它會篩選重新執行，以便僅顯示「邏輯」** 執行路徑。 您可以藉由排序 `timestamp` 和 `sequenceNumber` 來排序事件，如下列查詢中所示：
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -205,7 +205,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-產生的記錄資料看起來會像下列範例輸出：
+生成的日誌資料將類似于以下示例輸出：
 
 ```txt
 Calling F1.
@@ -221,7 +221,7 @@ Done!
 ```
 
 > [!NOTE]
-> 請記住，當記錄宣告要呼叫 F1、F2 和 F3 時，這些函式只會在第一次遇到時「實際」被呼叫。 會略過重新執行期間發生的後續呼叫，且輸出會重新執行至協調器邏輯。
+> 請記住，當記錄宣告要呼叫 F1、F2 和 F3 時，這些函式只會在第一次遇到時「實際」** 被呼叫。 會略過重新執行期間發生的後續呼叫，且輸出會重新執行至協調器邏輯。
 
 如果您只想要記錄非重新執行的執行，您可以寫入條件運算式，只有在如果 `IsReplaying` 是 `false` 時記錄。 請考慮上面的範例，但是這次使用重新執行檢查。
 
@@ -276,7 +276,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-從 Durable Functions 2.0 開始，.NET 協調器函數也可以選擇建立 `ILogger`，在重新執行期間自動篩選出記錄語句。 此自動篩選是使用 `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API 來完成。
+從持久函數 2.0 開始，.NET 協調器函數還可以選擇創建一`ILogger`個，在重播期間自動篩選出日誌語句。 此自動篩選使用`IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)`API 完成。
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,7 +295,7 @@ public static async Task Run(
 }
 ```
 
-在先前提到的變更中，記錄輸出如下所示：
+對於上述更改，日誌輸出如下所示：
 
 ```txt
 Calling F1.
@@ -305,7 +305,7 @@ Done!
 ```
 
 > [!NOTE]
-> 先前C#的範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext`，而不是 `IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
 
 ## <a name="custom-status"></a>自訂狀態
 
@@ -328,7 +328,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> 上一個C#範例是針對 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用 `DurableOrchestrationContext`，而不是 `IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
 
 ### <a name="javascript-functions-20-only"></a>JavaScript (僅限 Functions 2.0)
 
@@ -373,19 +373,19 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Functions 支援直接偵錯函式程式碼，相同支援適用於長期函式，無論是在 Azure 中或在本機執行。 不過，在偵錯時有一些要注意的行為：
 
-* 重新**執行：** [當收到](durable-functions-orchestrations.md#reliability)新的輸入時，協調器功能會定期重新執行。 此行為表示協調器函式的單一*邏輯*執行可能會導致多次叫用相同的中斷點，特別是在函式程式碼早期設定時。
-* **Await**：每當協調器函式中遇到 `await` 時，它會將控制權傳回給長期的工作架構發送器。 如果是第一次遇到特定 `await`，則*永遠不*會繼續相關聯的工作。 因為工作永遠不會繼續，所以不能在 await*上*逐步執行（在 Visual Studio 中為 F10）。 跨越只有在重新執行工作時可行。
-* **訊息超時**： Durable Functions 在內部使用佇列訊息來驅動 orchestrator、activity 和 entity 函數的執行。 在多部 VM 的環境中，中斷至偵錯一段延伸的時間可能會造成另一個 VM 選取訊息，導致重複執行。 這種行為也會結束一般佇列觸發函式，但是務必要在此內容中指出，因為佇列是實作詳細資料。
-* **停止和啟動**：長期函式中的訊息會保存在 debug 會話之間。 如果您在執行長期函式時停止偵錯工具並終止本機主機進程，該函式可能會在未來的 debug 會話中自動重新執行。 這種行為在不預期的情況下可能會造成混淆。 在 debug 會話之間清除[內部儲存體佇列](durable-functions-perf-and-scale.md#internal-queue-triggers)中的所有訊息，是避免此行為的一種方法。
+* **重播**：當收到新輸入時，協調器功能會定期[重播](durable-functions-orchestrations.md#reliability)。 此行為意味著協調器函數的單個*邏輯*執行可能導致多次擊中同一中斷點，尤其是在函數代碼早期設置時。
+* **Await**：`await`每當在協調器函數中遇到 時，它都會將控制權生成回持久任務框架調度程式。 如果這是第一次遇到特定任務`await`，*則永遠不會*恢復關聯的任務。 由於任務永遠不會恢復，因此無法*跨步執行*await（Visual Studio 中的 F10）。 跨越只有在重新執行工作時可行。
+* **消息超時**：內部持久函數使用佇列消息來推動協調器、活動和實體函數的執行。 在多部 VM 的環境中，中斷至偵錯一段延伸的時間可能會造成另一個 VM 選取訊息，導致重複執行。 這種行為也會結束一般佇列觸發函式，但是務必要在此內容中指出，因為佇列是實作詳細資料。
+* **停止和啟動**：持久函數中的消息在調試會話之間保留。 如果在執行持久函數時停止調試並終止本地主機進程，該函數可能會在將來的調試會話中自動重新執行。 此行為在不需要時可能會令人困惑。 在調試會話之間清除[內部存儲佇列](durable-functions-perf-and-scale.md#internal-queue-triggers)中的所有消息是避免此行為的一種技術。
 
 > [!TIP]
-> 在協調器函式中設定中斷點時，如果您只想要在非重新執行的執行上中斷，您可以設定只有在 `false``IsReplaying` 時才會中斷的條件中斷點。
+> 在協調器函數中設置中斷點時，如果只想在非重播執行時中斷，則可以設置條件中斷點，該中斷點僅在 為`IsReplaying``false`時中斷。
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
-根據預設，長期函式會將狀態儲存在 Azure 儲存體。 此行為表示您可以使用[Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)之類的工具來檢查協調流程的狀態。
+根據預設，長期函式會將狀態儲存在 Azure 儲存體。 此行為意味著您可以使用[Microsoft Azure 存儲資源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)等工具檢查業務流程的狀態。
 
-![Azure 儲存體總管螢幕擷取畫面](./media/durable-functions-diagnostics/storage-explorer.png)
+![Azure 存儲資源管理器螢幕截圖](./media/durable-functions-diagnostics/storage-explorer.png)
 
 這對於偵錯相當有用，因為您會確實看到協調流程的狀態。 也可以檢查佇列中的訊息來了解哪些工作擱置 (在某些情況下停滯)。
 
@@ -395,4 +395,4 @@ Azure Functions 支援直接偵錯函式程式碼，相同支援適用於長期�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入瞭解如何在 Azure Functions 中監視](../functions-monitoring.md)
+> [瞭解有關 Azure 函數中監視的更多詳細資訊](../functions-monitoring.md)

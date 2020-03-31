@@ -1,5 +1,5 @@
 ---
-title: 在本機測試 Azure 串流分析查詢 Visual Studio
+title: 在視覺化工作室中本地測試 Azure 流分析查詢
 description: 本文說明如何使用適用於 Visual Studio 的 Azure 串流分析工具在本機測試查詢。
 author: su-jie
 ms.author: sujie
@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834900"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>使用 Visual Studio 在本機測試串流分析查詢
 
-您可以使用適用于 Visual Studio 的 Azure 串流分析工具，透過範例資料或[即時資料](stream-analytics-live-data-local-testing.md)，在本機測試您的串流分析作業。 
+您可以使用 Visual Studio 的 Azure 流分析工具在本地使用示例資料或[即時資料](stream-analytics-live-data-local-testing.md)測試流分析作業。 
 
 使用此[快速入門](stream-analytics-quick-create-vs.md)了解如何使用 Visual Studio 建立串流分析工作。
 
@@ -28,11 +28,11 @@ ms.locfileid: "76834900"
  
 ### <a name="add-local-input"></a>新增本機輸入
 
-若要對本機靜態資料驗證您的查詢，請以滑鼠右鍵按一下輸入並選取 [新增本機輸入]。
+若要對本機靜態資料驗證您的查詢，請以滑鼠右鍵按一下輸入並選取 [新增本機輸入]****。
    
 ![新增本機輸入](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-在快顯視窗中，從本機路徑選取範例資料並 [儲存]。
+在快顯視窗中，從本機路徑選取範例資料並 [儲存]****。
    
 ![新增本機輸入](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
@@ -40,7 +40,7 @@ ms.locfileid: "76834900"
    
 ![本機輸入資料夾檔案清單](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-在查詢編輯器中選取 [在本機執行]。 或者，您可以按 F5。
+在查詢編輯器中選取 [在本機執行]****。 或者，您可以按 F5。
    
 ![在本機執行](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
@@ -58,15 +58,15 @@ ms.locfileid: "76834900"
    
 
 ### <a name="sample-input"></a>範例輸入
-您也可以從您的輸入來源將範例輸入資料收集到本機檔案。 以滑鼠右鍵按一下輸入設定檔，然後選取 [範例資料]。 
+您也可以從您的輸入來源將範例輸入資料收集到本機檔案。 以滑鼠右鍵按一下輸入設定檔，然後選取 [範例資料]****。 
 
 ![取樣資料](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-您只能對來自事件中樞或 IoT 中樞的資料流取樣。 不支援其他輸入來源。 在快顯對話方塊中，填入用來儲存範例資料的本機路徑並選取 [範例]。
+您只能對來自事件中樞或 IoT 中樞的資料流取樣。 不支援其他輸入來源。 在快顯對話方塊中，填入用來儲存範例資料的本機路徑並選取 [範例]****。
 
 ![範例資料設定](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
-您可以在 [輸出] 視窗中查看進度。 
+您可以在 **"輸出"** 視窗中看到進度。 
 
 ![範例資料輸出](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 

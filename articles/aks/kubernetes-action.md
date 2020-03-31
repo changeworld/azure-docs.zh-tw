@@ -1,43 +1,43 @@
 ---
-title: 使用 GitHub 動作來建立、測試容器，並將其部署至 Azure Kubernetes Service
-description: 瞭解如何使用 GitHub 動作將您的容器部署至 Kubernetes
+title: 使用 GitHub 操作將容器構建、測試和部署到 Azure 庫伯內斯服務
+description: 瞭解如何使用 GitHub 操作將容器部署到庫貝內特斯
 services: container-service
 author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595360"
 ---
-# <a name="github-actions-for-deploying-to-kubernetes-service"></a>部署至 Kubernetes 服務的 GitHub 動作
+# <a name="github-actions-for-deploying-to-kubernetes-service"></a>用於部署到庫伯奈斯服務的 GitHub 操作
 
-[GitHub 動作](https://help.github.com/en/articles/about-github-actions)可讓您彈性地建立自動化軟體發展生命週期工作流程。 Kubernetes 動作[azure/aks-set-context@v1](https://github.com/Azure/aks-set-context)有助於 Azure Kubernetes Service 叢集的部署。 動作會設定目標 AKS 叢集內容，其可供其他動作使用，例如[azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、 [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master)等，或執行任何 kubectl 命令。
+[GitHub 操作](https://help.github.com/en/articles/about-github-actions)使您能夠靈活地構建自動化的軟體發展生命週期工作流。 庫伯內斯操作[azure/aks-set-context@v1](https://github.com/Azure/aks-set-context)有助於部署到 Azure 庫伯奈斯服務群集。 該操作設置目標 AKS 群集上下文，該上下文可用於其他操作，如[azure/k8s](https://github.com/Azure/k8s-deploy/tree/master)部署[、azure/k8s 創建-機密](https://github.com/Azure/k8s-create-secret/tree/master)等，或運行任何 kubectl 命令。
 
-工作流程是由存放庫中 `/.github/workflows/` 路徑中的 YAML （. yml）檔案所定義。 此定義包含組成工作流程的各種步驟和參數。
+工作流由存儲庫中路徑中的`/.github/workflows/`YAML （.yml） 檔定義。 此定義包含構成工作流的各種步驟和參數。
 
-針對目標為 AKS 的工作流程，檔案有三個區段：
+對於面向 AKS 的工作流，該檔有三個部分：
 
 |區段  |工作  |
 |---------|---------|
-|**驗證** | 登入私人容器登錄（ACR） |
-|**建置** | 組建 & 推送容器映射  |
-|**部署** | 1. 設定目標 AKS 叢集 |
-| |2. 在 Kubernetes 叢集中建立 generic/docker-登錄秘密  |
-||3. 部署至 Kubernetes 叢集|
+|[驗證]**** | 登錄到專用容器註冊表 （ACR） |
+|**建立** | 生成&推送容器映射  |
+|**部署** | 1. 設置目標 AKS 群集 |
+| |2. 在庫伯內斯群集中創建通用/docker 註冊金鑰  |
+||3. 部署到庫伯奈斯群集|
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp create-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令來建立[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 您可以使用 Azure 入口網站中的[Azure Cloud Shell](https://shell.azure.com/)或選取 [**試試看**] 按鈕來執行此命令。
+可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/)中的[az ad sp 創建 rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令創建[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 可以使用 Azure 門戶中的[Azure 雲外殼](https://shell.azure.com/)運行此命令，也可以選擇"**試用"** 按鈕。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
-在上述命令中，將預留位置取代為您的訂用帳戶識別碼和資源群組。 輸出是可提供資源存取權的角色指派認證。 此命令應輸出類似于此的 JSON 物件。
+在上面的命令中，將預留位置替換為訂閱 ID 和資源組。 輸出是提供對資源存取權限的角色指派憑據。 該命令應輸出與此類似的 JSON 物件。
 
 ```json
   {
@@ -48,42 +48,42 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
     (...)
   }
 ```
-複製這個 JSON 物件，您可以使用它從 GitHub 進行驗證。
+複製此 JSON 物件，可用於從 GitHub 進行身份驗證。
 
-## <a name="configure-the-github-secrets"></a>設定 GitHub 秘密
+## <a name="configure-the-github-secrets"></a>配置 GitHub 機密
 
-請遵循下列步驟來設定密碼：
+按照步驟配置機密：
 
-1. 在[GitHub](https://github.com/)中，流覽至您的存放庫，選取 [設定] **> 秘密 > 新增密碼**。
+1. 在[GitHub](https://github.com/)中，流覽到您的存儲庫，選擇 **"設置>機密>添加新機密**。
 
     ![密碼](media/kubernetes-action/secrets.png)
 
-2. 將上述 `az cli` 命令的內容貼入 [秘密變數] 的值。 例如： `AZURE_CREDENTIALS` 。
+2. 將上述`az cli`命令的內容粘貼為機密變數的值。 例如： `AZURE_CREDENTIALS` 。
 
-3. 同樣地，針對容器登錄認證定義下列額外的秘密，並在 Docker 登入動作中加以設定。 
+3. 同樣，為容器註冊表憑據定義以下其他機密，並在 Docker 登錄操作中設置它們。 
 
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-4. 定義之後，您將會看到如下所示的秘密。
+4. 定義後，您將看到如下所示的機密。
 
-    ![kubernetes-秘密](media/kubernetes-action/kubernetes-secrets.png)
+    ![庫伯內斯-秘密](media/kubernetes-action/kubernetes-secrets.png)
 
-##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>建立容器映射並部署到 Azure Kubernetes Service 叢集
+##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>生成容器映射並部署到 Azure 庫伯奈斯服務群集
 
-容器映射的組建和推送是使用 `Azure/docker-login@v1` 動作來完成。 若要將容器映射部署至 AKS，您必須使用 `Azure/k8s-deploy@v1` 動作。 此動作有五個參數：
+容器映射的生成和推送使用`Azure/docker-login@v1`操作完成。 要將容器映射部署到 AKS，您需要使用該`Azure/k8s-deploy@v1`操作。 此操作有五個參數：
 
 | **參數**  | **說明**  |
 |---------|---------|
-| **namespace** | 選擇性選擇目標 Kubernetes 命名空間。 如果未提供命名空間，則命令會在預設命名空間中執行 | 
-| **mdac** |  具備資訊清單檔案的路徑，將用於部署 |
-| **images** | 選擇性要在資訊清單檔上用來替代之影像的完整資源 URL |
-| **imagepullsecrets** | 選擇性已在叢集內設定的 docker 登錄密碼名稱。 在輸入資訊清單檔中找到的工作負載的 [imagePullSecrets] 欄位下，會新增每個秘密名稱 |
-| **kubectl-版本** | 選擇性安裝特定版本的 kubectl 二進位檔 |
+| **namespace** | （可選）選擇目標庫伯內斯命名空間。 如果未提供命名空間，則命令將在預設命名空間中運行 | 
+| **體現** |  （必需）清單檔的路徑，將用於部署 |
+| **圖像** | （可選）用於清單檔替換的圖像的完全限定資源 URL |
+| **圖像拉秘** | （可選）已在群集中設置的 Docker 註冊表機密的名稱。 這些機密名稱中的每一個都添加到 imagePullSecrets 欄位下，用於輸入清單檔中找到的工作負載 |
+| **庫布克特爾版本** | （可選）安裝庫布克特爾二進位的特定版本 |
 
-### <a name="deploy-to-azure-kubernetes-service-cluster"></a>部署到 Azure Kubernetes Service 叢集
+### <a name="deploy-to-azure-kubernetes-service-cluster"></a>部署到 Azure 庫伯奈斯服務群集
 
-建立容器映射和部署到 Azure Kubernetes Service 叢集的端對端工作流程。
+端到端工作流，用於構建容器映射並部署到 Azure 庫伯奈斯服務群集。
 
 ```yaml
 on: [push]
@@ -131,18 +131,18 @@ jobs:
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 GitHub 上的不同存放庫中找到這組動作，其中每一個都包含檔和範例，以協助您使用 GitHub 來進行 CI/CD，並將您的應用程式部署至 Azure。
+您可以在 GitHub 上的不同存儲庫中找到我們的操作集，每個存儲庫都包含文檔和示例，以説明您使用 GitHub 進行 CI/CD 並將應用部署到 Azure。
 
-- [安裝程式-kubectl](https://github.com/Azure/setup-kubectl)
+- [設置-庫布ectl](https://github.com/Azure/setup-kubectl)
 
-- [k8s-設定內容](https://github.com/Azure/k8s-set-context)
+- [k8s 設置上下文](https://github.com/Azure/k8s-set-context)
 
-- [aks-設定內容](https://github.com/Azure/aks-set-context)
+- [aks 設置上下文](https://github.com/Azure/aks-set-context)
 
-- [k8s-建立密碼](https://github.com/Azure/k8s-create-secret)
+- [k8s-創建-秘密](https://github.com/Azure/k8s-create-secret)
 
-- [k8s-部署](https://github.com/Azure/k8s-deploy)
+- [k8s 部署](https://github.com/Azure/k8s-deploy)
 
-- [webapps-容器-部署](https://github.com/Azure/webapps-container-deploy)
+- [網路應用-容器部署](https://github.com/Azure/webapps-container-deploy)
 
-- [動作-工作流程-範例](https://github.com/Azure/actions-workflow-samples)
+- [操作-工作流-示例](https://github.com/Azure/actions-workflow-samples)

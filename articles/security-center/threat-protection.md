@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心內的威脅防護
-description: 本主題描述受 Azure 資訊安全中心威脅防護功能保護的資源
+title: Azure 安全中心中的威脅保護
+description: 本主題介紹受 Azure 安全中心威脅保護功能保護的資源
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,127 +8,133 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/25/2019
+ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 031423d72aecacc1feed692aaa32bcd1ff7efbab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79282701"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536321"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
+# <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心中的威脅保護
 
-此頁面簡要說明標準定價層上的使用者 Azure 資訊安全中心所顯示的安全性警示來源。
+當安全中心檢測到環境的任何區域中的威脅時，它會生成警報。 這些警報描述受影響資源的詳細資訊、建議的補救步驟，在某些情況下還描述了在回應中觸發邏輯應用的選項。
 
-當資訊安全中心在下列環境的任何區域中偵測到威脅時，它會產生警示。 這些警示會描述受影響資源的詳細資料、建議的補救步驟，以及在某些情況下觸發邏輯應用程式以回應的選項。
+Azure 安全中心的威脅防護為您的環境提供了全面的防禦：
 
-無論是由資訊安全中心產生警示，還是由不同的安全性產品資訊安全中心接收，您都可以將它匯出。 若要將您的警示匯出至 Azure Sentinel （或協力廠商 SIEM）或任何其他外部位置，請遵循[匯出警示和建議](continuous-export.md)中的指示。 
+* **Azure 計算資源的威脅保護**：Windows 電腦、Linux 電腦、Azure 應用服務和 Azure 容器
+
+* **Azure 資料資源的威脅保護**：SQL 資料庫和 SQL 資料倉儲、Azure 存儲和 Azure 宇宙資料庫
+
+* **Azure 服務層的威脅保護**：Azure 網路層、Azure 管理層（Azure 資源管理器）（預覽）和 Azure 金鑰保存庫（預覽）
+
+無論是安全中心生成警報，還是安全中心從其他安全產品接收警報，您都可以匯出警報。 要將警報匯出到 Azure Sentinel（或協力廠商 SIEM）或任何其他外部工具，請按照[將警報匯出到 SIEM](continuous-export.md)中的說明進行操作。 
 
 
 
 
-## Windows 電腦的威脅防護<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Windows 電腦的威脅保護<a name="windows-machines"></a>
 
-Azure 資訊安全中心與 Azure 服務整合，以監視及保護您的 Windows 電腦。 資訊安全中心以便於使用的格式，提供所有這些服務的警示和補救建議。
+Azure 安全中心與 Azure 服務集成，以監視和保護基於 Windows 的電腦。 安全中心以便於使用的格式提供所有這些服務的警報和補救建議。
 
-* **Microsoft defender ATP** <a name="windows-atp"></a> -藉由與 microsoft defender Advanced 威脅防護（ATP）整合，資訊安全中心擴充其雲端工作負載保護平臺。 它們一起提供完整的端點偵測和回應（EDR）功能。
+* **微軟防禦者ATP** <a name="windows-atp"></a> - 安全中心通過與微軟防禦者高級威脅保護 （ATP） 集成來擴展其雲工作負載保護平臺。 它們共同提供全面的端點檢測和回應 （EDR） 功能。
 
     > [!IMPORTANT]
-    > Microsoft Defender ATP 感應器會在使用資訊安全中心的 Windows 伺服器上自動啟用。
+    > 使用安全中心的 Windows 伺服器上會自動啟用 Microsoft Defender ATP 感應器。
 
-    當 Microsoft Defender ATP 偵測到威脅時，它會觸發警示。 警示會顯示在 [資訊安全中心] 儀表板上。 從儀表板，您可以將資料透視到 Microsoft Defender ATP 主控台，並執行詳細的調查，以找出攻擊的範圍。 如需 Microsoft Defender ATP 的詳細資訊，請參閱[將伺服器上架到 Microsoft DEFENDER atp 服務](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
+    當微軟防禦者 ATP 檢測到威脅時，它會觸發警報。 警報顯示在安全中心儀表板上。 從儀表板，您可以透視到 Microsoft Defender ATP 主控台，並執行詳細調查以發現攻擊的範圍。 有關微軟後衛 ATP 的更多資訊，請參閱[微軟防禦者 ATP 服務的板載伺服器](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
-* 損毀傾印**分析** <a name="windows-dump"></a> -當軟體當機時，損毀傾印會在當機時，捕捉記憶體的一部分。
+* **崩潰轉儲分析**<a name="windows-dump"></a>- 當軟體崩潰時，崩潰轉儲在崩潰時捕獲部分記憶體。
 
-    損毀可能是惡意軟體或包含惡意程式碼所造成。 為了避免安全性產品偵測到，各種形式的惡意程式碼都會使用 fileless 攻擊，以避免寫入磁片或加密寫入磁片的軟體元件。 使用傳統的磁片型方法，很容易偵測到這種類型的攻擊。
+    崩潰可能是由惡意軟體引起的或包含惡意軟體。 為了避免被安全產品檢測到，各種形式的惡意軟體使用無檔攻擊，避免寫入磁片或加密寫入磁片的軟體元件。 使用傳統的基於磁片的方法很難檢測到這種類型的攻擊。
 
-    不過，藉由使用記憶體分析，您可以偵測到這類攻擊。 藉由分析損毀傾印中的記憶體，資訊安全中心可以偵測到攻擊所使用的技術。 例如，攻擊可能會嘗試入侵軟體中的弱點、存取機密資料，以及暗中保存在遭入侵的電腦中。 資訊安全中心會執行這種操作，對主機的效能影響最小。
+    但是，通過使用記憶體分析，您可以檢測到這種攻擊。 通過分析崩潰轉儲中的記憶體，安全中心可以檢測攻擊正在使用的技術。 例如，攻擊可能試圖利用軟體中的漏洞，訪問機密資料，並秘密地在受攻擊的機器中持續存在。 安全中心以對主機的性能影響最小來完成此工作。
 
-    如需損毀傾印分析警示的詳細資訊，請參閱[警示的參考資料表](alerts-reference.md#alerts-windows)。
+    有關崩潰轉儲分析警報的詳細資訊，請參閱[警報的參考表](alerts-reference.md#alerts-windows)。
 
-* **Fileless 攻擊偵測** <a name="windows-fileless"></a> -以您的端點為目標的 Fileless 攻擊是常見的。 為了避免偵測，fileless 攻擊會將惡意承載插入記憶體中。 攻擊者承載會保存在遭入侵的進程記憶體中，並執行各式各樣的惡意活動。
+* **無檔攻擊檢測**<a name="windows-fileless"></a>- 針對端點的無檔攻擊很常見。 為了避免檢測，無檔攻擊將惡意負載注入記憶體。 攻擊者負載保留在受破壞進程的記憶體中，並執行各種惡意活動。
 
-    透過 fileless 攻擊偵測，自動化記憶體辨識技術可識別 fileless 攻擊工具組、技術和行為。 此解決方案會在執行時間定期掃描您的電腦，並直接從安全性關鍵進程的記憶體中抽取深入解析。
+    通過無檔攻擊檢測，自動記憶體取證技術可識別無檔攻擊工具組、技術和行為。 此解決方案會在運行時定期掃描電腦，並直接從安全關鍵型進程的記憶體中提取見解。
 
-    它會尋找入侵、程式碼插入和執行惡意承載的證據。 Fileless 攻擊偵測會產生詳細的安全性警示，以加速警示分級、相互關聯和下游回應時間。 這個方法會補充以事件為基礎的 EDR 解決方案，以提供更高的偵測涵蓋範圍。
+    它找到惡意負載的利用、代碼注入和執行的證據。 無檔攻擊檢測生成詳細的安全警報，以加快警報會審、關聯和下游回應時間。 此方法補充了基於事件的 EDR 解決方案，提供了更大的檢測覆蓋率。
 
-    如需 fileless 攻擊偵測警示的詳細資訊，請參閱[警示的參考資料表](alerts-reference.md#alerts-windows)。
-
-> [!TIP]
-> 您可以下載[Azure 資訊安全中心腳本：安全性警示](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)來模擬 Windows 警示。
-
-
-
-
-
-
-## Linux 機器的威脅防護<a name="linux-machines"></a>
-
-資訊安全中心會使用**auditd**（其中一個最常見的 linux 審核架構），從 Linux 機器收集審核記錄。 auditd 居住在主線核心中。 
-
-* **Linux auditd 警示和 Microsoft Monitoring Agent （MMA）整合** <a name="linux-auditd"></a> -auditd 系統是由核心層級子系統所組成，負責監視系統呼叫。 它會依指定的規則集篩選它們，並將訊息寫入至通訊端。 資訊安全中心會從 Microsoft Monitoring Agent （MMA）內的 auditd 套件整合功能。 這項整合可讓您在所有支援的 Linux 發行版本中收集 auditd 事件，而不需要任何必要條件。  
-
-    auditd 記錄會使用 Linux MMA 代理程式來收集、擴充及匯總至事件。 資訊安全中心持續新增使用 Linux 信號的新分析，以偵測雲端和內部部署 Linux 電腦上的惡意行為。 與 Windows 功能類似，這些分析會跨越可疑的程式、可疑登入嘗試、核心模組載入和其他活動。 這些活動可能表示電腦受到攻擊，或已被入侵。  
-
-    如需 Linux 警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-linux)。
+    有關無檔攻擊檢測警報的詳細資訊，請參閱[警報的參考表](alerts-reference.md#alerts-windows)。
 
 > [!TIP]
-> 您可以藉由下載 Azure 資訊安全中心腳本[： linux](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)偵測來模擬 Linux 警示。
+> 您可以通過下載[Azure 安全中心行動手冊：安全警報](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)來類比 Windows 警報。
 
 
 
 
 
-## Azure App Service 的威脅防護<a name="app-services"></a>
+
+## <a name="threat-protection-for-linux-machines"></a>Linux 電腦的威脅保護<a name="linux-machines"></a>
+
+安全中心使用最常見的Linux審核框架之一的**審核**框架，從Linux電腦收集審計記錄。 審核生活在主線內核中。 
+
+* **Linux 審核警報和 Microsoft 監視代理 （MMA） 集成**<a name="linux-auditd"></a>- 審核的系統由內核級子系統組成，負責監視系統調用。 它按指定的規則集篩選它們，並將它們的消息寫入通訊端。 安全中心在 Microsoft 監視代理 （MMA） 中集成了審核包的功能。 此集成支援在所有支援的 Linux 發行版本中收集審核的事件，而無需任何先決條件。  
+
+    使用 Linux MMA 代理收集、豐富和聚合到事件中審核的記錄。 安全中心不斷添加新的分析，使用 Linux 信號檢測雲和本地 Linux 電腦上的惡意行為。 與 Windows 功能類似，這些分析跨越可疑進程、可疑的登錄嘗試、內核模組載入和其他活動。 這些活動可能表明機器受到攻擊或已被入侵。  
+
+    有關 Linux 警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-linux)。
+
+> [!TIP]
+> 您可以通過下載[Azure 安全中心行動手冊：Linux 檢測](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)來類比 Linux 警報。
+
+
+
+
+
+## <a name="threat-protection-for-azure-app-service"></a>Azure 應用服務的威脅保護<a name="app-services"></a>
 
 > [!NOTE]
-> 此服務目前無法在 Azure 政府和主權雲端區域中使用。
+> 此服務當前不在 Azure 政府和主權雲區域中。
 
-資訊安全中心使用雲端的規模來識別以 App Service 執行之應用程式為目標的攻擊。 攻擊者會探查 web 應用程式，以找出併入侵弱點。 在路由傳送至特定環境之前，對 Azure 中執行之應用程式的要求會經歷數個閘道，並在其中進行檢查和記錄。 接著會使用此資料來識別入侵和攻擊者，並瞭解稍後將使用的新模式。
+安全中心使用雲的規模來識別針對通過應用服務運行的應用程式的攻擊。 攻擊者將調查 Web 應用程式以查找和利用弱點。 在路由到特定環境之前，對 Azure 中運行的應用程式的請求將經過多個閘道，其中將對其進行檢查和記錄。 然後，此資料用於識別漏洞利用和攻擊者，並瞭解稍後將使用的新模式。
 
-藉由使用 Azure 做為雲端提供者的可見度，資訊安全中心分析 App Service 內部記錄，以識別多個目標的攻擊方法。 例如，方法包含廣泛的掃描和分散式攻擊。 這種類型的攻擊通常來自于一小部分的 Ip，並顯示在多部主機上編目至類似端點的模式。 攻擊會搜尋易受攻擊的頁面或外掛程式，而無法從單一主機的觀點來識別。
+通過使用 Azure 作為雲供應商的可見度，安全中心分析應用服務內部日誌，以確定對多個目標的攻擊方法。 例如，方法包括廣泛的掃描和分散式攻擊。 這種類型的攻擊通常來自 IP 的一小部分，並顯示爬網到多個主機上的類似終結點的模式。 攻擊正在搜索易受攻擊的頁面或外掛程式，無法從單個主機的角度進行識別。
 
-如果您執行的是以 Windows 為基礎的 App Service 方案，資訊安全中心也可以存取基礎沙箱和 Vm。 除了上述的記錄資料，基礎結構也可以告訴故事，從攻擊者的新攻擊，到客戶電腦的危害。 因此，即使在惡意探索 web 應用程式之後部署資訊安全中心，它還是可能能夠偵測到進行中的攻擊。
+如果您正在運行基於 Windows 的應用服務方案，安全中心還可以訪問基礎沙箱和 VM。 與上述日誌資料一起，基礎結構可以講述故事，從在野外迴圈的新攻擊到客戶機器中的危害。 因此，即使安全中心是在 Web 應用被利用後部署的，它也可能檢測到正在進行的攻擊。
 
-如需 Azure App Service 警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azureappserv)。
+有關 Azure 應用服務警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-azureappserv)。
 
-如需 App Service 計畫的詳細資訊，請參閱[App Service 方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。
-
-
+有關應用服務方案的詳細資訊，請參閱[應用服務方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
 
 
-## Azure 容器的威脅防護<a name="azure-containers"></a>
+
+
+## <a name="threat-protection-for-azure-containers"></a>Azure 容器的威脅保護<a name="azure-containers"></a>
 
 > [!NOTE]
-> 此服務目前無法在 Azure 政府和主權雲端區域中使用。
+> 此服務當前不在 Azure 政府和主權雲區域中。
 
-資訊安全中心為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
+安全中心為您的容器化環境提供即時威脅保護，並針對可疑活動生成警報。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
 
-資訊安全中心提供不同層級的威脅防護： 
+安全中心在不同級別提供威脅保護： 
 
-* **主機層級**-資訊安全中心的代理程式（適用于標準層，如需詳細資訊，請參閱[定價](security-center-pricing.md)）監視 Linux 是否有可疑的活動。 代理程式會觸發源自節點或在其上執行之容器的可疑活動警示。 這類活動的範例包括 web 命令介面偵測，以及與已知可疑 IP 位址的連線。
+* **主機級**- 安全中心的代理（在標準層上提供，請參閱[定價](security-center-pricing.md)的詳細資訊）監視 Linux 中的可疑活動。 代理會觸發來自節點或運行在節點上的容器的可疑活動的警報。 此類活動的示例包括 Web 外殼檢測和與已知可疑 IP 位址的連接。
 
-    若要深入瞭解容器化環境的安全性，代理程式會監視容器特有的分析。 它會觸發事件的警示，例如建立許可權的容器、對 API 伺服器的可疑存取，以及在 Docker 容器內執行的安全殼層（SSH）伺服器。
+    為了更深入地瞭解容器化環境的安全性，代理監視特定于容器的分析。 它將觸發對事件警報，例如特權容器創建、對 API 伺服器的可疑訪問以及 Docker 容器內運行的安全外殼 （SSH） 伺服器。
 
     >[!IMPORTANT]
-    > 如果您選擇不在您的主機上安裝代理程式，您只會收到威脅防護權益和安全性警示的子集。 您仍然會收到與網路分析以及與惡意伺服器通訊相關的警示。
+    > 如果選擇不在主機上安裝代理，則只會收到威脅保護權益和安全警報的子集。 您仍將收到與網路分析和與惡意伺服器通信相關的警報。
 
-    如需主機層級警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-containerhost)。
+    有關主機級警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-containerhost)。
 
 
-* 在**AKS 叢集層級**，威脅防護是以分析 Kubernetes 的「audit 記錄」為基礎。 若要啟用此**無代理**程式監視，請從 [**定價 & 設定**] 頁面將 [Kubernetes] 選項新增至您的訂用帳戶（請參閱[定價](security-center-pricing.md)）。 若要在此層級產生警示，資訊安全中心使用 AKS 所取出的記錄來監視 AKS 管理的服務。 此層級的事件範例包括公開的 Kubernetes 儀表板、建立高特殊許可權的角色，以及建立敏感性裝載。
+* 在**AKS集群級別**，威脅保護基於分析庫伯內斯的審計日誌。 要啟用此**無代理**監視，請從**定價&設置**頁將 Kubernetes 選項添加到訂閱中（請參閱[定價](security-center-pricing.md)）。 若要在此級別生成警報，安全中心使用 AKS 檢索的日誌監視 AKS 託管的服務。 此級別的事件示例包括公開的 Kubernetes 儀表板、創建高特權角色以及創建敏感裝載。
 
     >[!NOTE]
-    > 資訊安全中心會針對在訂用帳戶設定上啟用 Kubernetes 選項後發生的 Azure Kubernetes Service 動作和部署產生安全性警示。 
+    > 安全中心為在訂閱設置上啟用 Kubernetes 選項後發生的 Azure 庫伯內特服務操作和部署生成安全警報。 
 
-    如需 AKS 叢集層級警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-akscluster)。
+    有關 AKS 群集級別警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-akscluster)。
 
-此外，我們的全球安全性研究人員小組會持續監視威脅的範圍。 他們會在探索到容器特有的警示和弱點時加以新增。
+此外，我們的全球安全研究人員團隊不斷監控威脅形勢。 在發現容器時，它們會添加特定于容器的警報和漏洞。
 
 > [!TIP]
-> 您可以遵循[這篇 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)中的指示來模擬容器警示。
+> 您可以按照[本博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)中的說明來類比容器警報。
 
 
 
@@ -136,154 +142,143 @@ Azure 資訊安全中心與 Azure 服務整合，以監視及保護您的 Window
 
 
 
-## Azure 網路層的威脅防護<a name="network-layer"></a>
 
-資訊安全中心的網路層分析是以範例[IPFIX 資料](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)為基礎，這是 Azure 核心路由器所收集的封包標頭。 根據此資料摘要，資訊安全中心會使用機器學習模型來識別並標示惡意的流量活動。 資訊安全中心也會使用 Microsoft 威脅情報資料庫來充實 IP 位址。
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>SQL 資料庫和 SQL 資料倉儲的威脅保護<a name="data-sql"></a>
 
-某些網路設定可能會限制資訊安全中心產生可疑網路活動的警示。 如需產生網路警示的資訊安全中心，請確定：
+Azure SQL 資料庫的高級威脅保護可檢測異常活動，指示訪問或利用資料庫的異常和潛在有害嘗試。
 
-- 您的虛擬機器具有公用 IP 位址（或位於具有公用 IP 位址的負載平衡器上）。
+當存在可疑的資料庫活動、潛在漏洞或 SQL 注入攻擊以及異常的資料庫訪問和查詢模式時，您將看到警報。
 
-- 外部識別碼解決方案不會封鎖您虛擬機器的網路輸出流量。
+Azure SQL 資料庫和 SQL 的高級威脅防護是[高級 SQL 安全功能的高級資料安全 （ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)統一包的一部分，涵蓋 Azure SQL 資料庫、Azure SQL 資料庫託管實例、Azure SQL 資料倉儲資料庫和 Azure 虛擬機器上的 SQL 伺服器。
 
-- 您的虛擬機器在發生可疑通訊的整個一小時，已指派相同的 IP 位址。 這也適用于在受控服務中建立的 Vm （例如，AKS、Databricks）。
+如需詳細資訊，請參閱
 
-如需 Azure 網路層警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azurenetlayer)。
-
-如需資訊安全中心如何使用網路相關信號來套用威脅防護的詳細資訊，請參閱[資訊安全中心中的啟發式 DNS](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)偵測。
-
+* [如何為 Azure SQL 資料庫啟用高級威脅保護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [如何為 Azure 虛擬機器上的 SQL 伺服器啟用高級威脅保護](security-center-iaas-advanced-data.md)
+* [SQL 資料庫和 SQL 資料倉儲的威脅防護警報清單](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
 
-
-
-## Azure Key Vault 的威脅防護（預覽）<a name="azure-keyvault"></a>
+## <a name="threat-protection-for-azure-storage"></a>Azure 存儲的威脅保護<a name="azure-storage"></a>
 
 > [!NOTE]
-> 此服務目前無法在 Azure 政府和主權雲端區域中使用。
+> 此服務在美國政府雲中可用，但沒有其他主權或 Azure 政府雲區域。
+
+高級存儲威脅保護（目前僅適用于 Blob 存儲）可檢測訪問或利用存儲帳戶的異常和潛在有害嘗試。 此保護層允許您解決威脅，而無需您成為安全專家，並説明您管理安全監控系統。
+
+如需詳細資訊，請參閱
+
+* [如何為 Azure 存儲啟用高級威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+* [Azure 存儲的威脅保護警報清單](alerts-reference.md#alerts-azurestorage)
+
+
+> [!TIP]
+> 您可以按照[本博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的說明來類比 Azure 存儲警報。
+
+
+
+
+## <a name="threat-protection-for-azure-cosmos-db"></a>Azure 宇宙 DB 的威脅保護<a name="cosmos-db"></a>
+
+Azure 宇宙資料庫警報由訪問或利用 Azure Cosmos DB 帳戶的異常且可能有害的嘗試生成。
+
+如需詳細資訊，請參閱
+
+* [Azure 宇宙 DB 的高級威脅保護（預覽版）](../cosmos-db/cosmos-db-advanced-threat-protection.md)
+* [Azure 宇宙 DB 的威脅保護警報清單（預覽版）](alerts-reference.md#alerts-azurecosmos)
+
+
+
+
+## <a name="threat-protection-for-azure-network-layer"></a>Azure 網路層的威脅保護<a name="network-layer"></a>
+
+安全中心網路層分析基於[示例 IPFIX 資料](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)，這些資料是由 Azure 核心路由器收集的資料包標頭。 基於此資料摘要，安全中心使用機器學習模型來識別和標記惡意流量活動。 安全中心還使用 Microsoft 威脅情報資料庫來豐富 IP 位址。
+
+某些網路設定可能會限制安全中心生成可疑網路活動的警報。 對於安全中心生成網路警報，請確保：
+
+- 您的虛擬機器具有公共 IP 位址（或位於具有公共 IP 位址的負載等化器上）。
+
+- 外部 IDS 解決方案不會阻止虛擬機器的網路出口流量。
+
+- 在發生可疑通信的整個小時內，虛擬機器都分配了相同的 IP 位址。 這也適用于作為託管服務的一部分創建的 VM（例如 AKS、資料磚）。
+
+有關 Azure 網狀圖層警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-azurenetlayer)。
+
+有關安全中心如何使用網路相關信號應用威脅保護的詳細資訊，請參閱[安全中心中的啟發式 DNS 檢測](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)。
+
+
+
+## <a name="threat-protection-for-azure-management-layer-azure-resource-manager-preview"></a>Azure 管理層（Azure 資源管理器）的威脅保護（預覽）<a name ="management-layer"></a>
+
+基於 Azure 資源管理器的安全中心保護層當前處於預覽狀態。
+
+安全中心通過使用 Azure 資源管理器事件提供額外的保護層，該事件被視為 Azure 的控制平面。 通過分析 Azure 資源管理器記錄，安全中心檢測 Azure 訂閱環境中的異常或潛在有害操作。
+
+有關 Azure 資源管理器（預覽）警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-azureresourceman)。
+
+
+
+>[!NOTE]
+> 前面的幾個分析由 Microsoft 雲應用安全支援。 要從這些分析中獲益，您必須啟動雲應用安全許可證。 如果您有雲應用安全許可證，則預設情況下將啟用這些警報。 要禁用警報：
+>
+> 1. 在 **"安全中心**"邊欄選項卡中，選擇**安全性原則**。 對於要更改的訂閱，請選擇 **"編輯設置**"。
+> 2. 選擇**威脅檢測**。
+> 3. 在**啟用集成**下，清除**允許 Microsoft 雲應用安全訪問我的資料**，然後選擇"**保存**"。
+
+>[!NOTE]
+>安全中心將安全相關的客戶資料存儲在與其資源相同的地理位置中。 如果 Microsoft 尚未在資源的地理部署安全中心，則它將資料存儲在美國。 啟用雲應用安全性後，此資訊將按照雲應用安全性的地理位置規則進行存儲。 有關詳細資訊，請參閱[非區域服務的資料存儲](https://azuredatacentermap.azurewebsites.net/)。
+
+
+
+
+
+
+
+
+## <a name="threat-protection-for-azure-key-vault-preview"></a>Azure 金鑰保存庫的威脅保護（預覽版）<a name="azure-keyvault"></a>
+
+> [!NOTE]
+> 此服務當前不在 Azure 政府和主權雲區域中。
 
 Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字串和密碼) 的雲端服務。 
 
-Azure 資訊安全中心包含適用于 Azure Key Vault 的 Azure 原生、先進的威脅防護，提供額外一層的安全性情報。 資訊安全中心偵測到不尋常且可能有害的嘗試存取或惡意探索 Key Vault 的帳戶。 這一層保護可讓您在不是安全性專家的情況下處理威脅，而不需要管理協力廠商的安全性監視系統。  
+Azure 安全中心包括 Azure 金鑰保存庫的 Azure 本機高級威脅保護，提供了額外的安全智慧層。 安全中心檢測訪問或利用金鑰保存庫帳戶的異常且可能有害的嘗試。 此保護層允許您無需成為安全專家即可應對威脅，而無需管理協力廠商安全監控系統。  
 
-發生異常活動時，資訊安全中心會顯示警示，並選擇性地透過電子郵件傳送給訂用帳戶管理員。 這些警示包括可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
+當異常活動發生時，安全中心會顯示警報，並選擇性地通過電子郵件將其發送給訂閱管理員。 這些警報包括可疑活動的詳細資訊以及如何調查和補救威脅的建議。 
 
-如需 Azure Key Vault 警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azurekv)。
-
-
+有關 Azure 金鑰保存庫警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-azurekv)。
 
 
 
 
 
+## <a name="threat-protection-for-other-microsoft-services"></a>其他 Microsoft 服務的威脅保護<a name="alerts-other"></a>
 
-## SQL Database 和 SQL 資料倉儲的威脅防護<a name="data-sql"></a>
-
-Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
-
-當有可疑的資料庫活動、潛在弱點或 SQL 插入式攻擊，以及異常的資料庫存取和查詢模式時，您會看到警示。
-
-適用于 Azure SQL Database 和 SQL 的先進威脅防護屬於先進的 SQL 安全性功能的[先進資料安全性（ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)整合套件，涵蓋 Azure SQL 資料庫、Azure SQL Database 受控實例、Azure SQL 資料倉儲資料庫和 azure 虛擬機器上的 SQL server。
-
-如需詳細資訊，請參閱
-
-* [如何為 Azure SQL Database 啟用先進的威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
-* [如何為 Azure 上的 SQL server 啟用先進的威脅防護虛擬機器](security-center-iaas-advanced-data.md)
-* [SQL Database 和 SQL 資料倉儲的威脅防護警示清單](alerts-reference.md#alerts-sql-db-and-warehouse)
-
-
-
-
-
-
-
-
-
-## Azure 儲存體的威脅防護<a name="azure-storage"></a>
-
-> [!NOTE]
-> 此服務目前無法在 Azure 政府和主權雲端區域中使用。
-
-儲存體的先進威脅防護（目前僅適用于 Blob 儲存體）會偵測到不尋常且可能有害的嘗試存取或惡意探索儲存體帳戶。 這一層保護可讓您解決威脅，而不需要您成為安全性專家，並協助您管理安全性監視系統。
-
-如需詳細資訊，請參閱
-
-* [如何為 Azure 儲存體啟用先進的威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
-* [Azure 儲存體的威脅防護警示清單](alerts-reference.md#alerts-azurestorage)
-
-
-> [!TIP]
-> 您可以遵循[這篇 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬 Azure 儲存體警示。
-
-
-
-
-
-
-## Azure Cosmos DB 的威脅防護<a name="cosmos-db"></a>
-
-Azure Cosmos DB 警示是由不尋常且可能有害的嘗試存取或惡意探索 Azure Cosmos DB 帳戶所產生。
-
-如需詳細資訊，請參閱
-
-* [Azure Cosmos DB 的先進威脅防護（預覽）](../cosmos-db/cosmos-db-advanced-threat-protection.md)
-* [Azure Cosmos DB 的威脅防護警示清單（預覽）](alerts-reference.md#alerts-azurecosmos)
-
-
-
-
-
-
-
-## Azure 管理層（Azure Resource Manager）的威脅防護（預覽）<a name ="management-layer"></a>
-
-以 Azure Resource Manager 為基礎的資訊安全中心保護層目前為預覽狀態。
-
-資訊安全中心藉由使用 Azure Resource Manager 事件來提供額外的保護層，這會被視為 Azure 的控制平面。 藉由分析 Azure Resource Manager 記錄，資訊安全中心在 Azure 訂用帳戶環境中偵測到不尋常或可能有害的作業。
-
-如需 Azure Resource Manager （預覽）警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azureresourceman)。
-
-
-
->[!NOTE]
-> 其中幾個先前的分析是由 Microsoft Cloud App Security 提供技術支援。 若要受益于這些分析，您必須啟用 Cloud App Security 授權。 如果您有 Cloud App Security 授權，則預設會啟用這些警示。 若要停用警示：
->
-> 1. 在 [**資訊安全中心**] 分頁中，選取 [**安全性原則**]。 針對您想要變更的訂用帳戶，選取 [**編輯設定**]。
-> 2. 選取 [**威脅偵測**]。
-> 3. 在 [**啟用**整合] 下，清除 [**允許 Microsoft Cloud App Security 存取我的資料**]，然後選取 [**儲存**]。
-
->[!NOTE]
->資訊安全中心會將安全性相關的客戶資料儲存在與其資源相同的地理位置。 如果 Microsoft 尚未在資源的地理位置部署資訊安全中心，則會將資料儲存在美國。 啟用 Cloud App Security 時，會根據 Cloud App Security 的地理位置規則來儲存這項資訊。 如需詳細資訊，請參閱[非區域服務的資料儲存體](https://azuredatacentermap.azurewebsites.net/)。
-
-
-
-## 來自其他 Microsoft 服務的安全性警示<a name="alerts-other"></a>
-
-### Azure WAF 的威脅防護<a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Azure WAF 的威脅保護<a name="azure-waf"></a>
 
 Azure 應用程式閘道提供了 Web 應用程式防火牆 (WAF)，可為 Web 應用程式提供集中式保護，免於遭遇常見的攻擊和弱點。
 
-Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目標。 應用程式閘道 WAF 是根據「開啟 Web 應用程式安全性」專案中的核心規則集3.0 或2.2.9。 系統會自動更新 WAF，以防止新的弱點。 
+Web 應用程式已逐漸成為利用常見已知弱點進行惡意攻擊的目標。 應用程式閘道 WAF 基於打開 Web 應用程式安全專案的核心規則集 3.0 或 2.2.9。 WAF 會自動更新，以防止新的漏洞。 
 
-如果您有 Azure WAF 的授權，您的 WAF 警示會串流處理到資訊安全中心，而不需要額外的設定。 如需 WAF 所產生警示的詳細資訊，請參閱[Web 應用程式防火牆 CRS 規則群組與規則](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)。
+如果您有 Azure WAF 的許可證，則 WAF 警報將資料流到安全中心，無需其他配置。 有關 WAF 生成的警報的詳細資訊，請參閱 Web[應用程式防火牆 CRS 規則組和規則](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)。
 
 
-### Azure DDoS 保護的威脅防護<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Azure DDoS 保護的威脅保護<a name="azure-ddos"></a>
 
-分散式阻斷服務（DDoS）攻擊已知容易執行。 它們已成為絕佳的安全性考慮，特別是當您將應用程式移至雲端時。 
+眾所周知，分散式阻斷服務 （DDoS） 攻擊很容易執行。 它們已成為一個很大的安全問題，尤其是在您將應用程式遷移到雲時。 
 
-DDoS 攻擊會嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路觸達的任何端點。
+DDoS 攻擊會嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以針對任何可以通過 Internet 到達的終結點。
 
-若要防範 DDoS 攻擊，請購買 Azure DDoS 保護的授權，並確保您遵循應用程式設計的最佳作法。 DDoS 保護提供不同的服務層級。 如需詳細資訊，請參閱[Azure DDoS 保護總覽](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
+要抵禦 DDoS 攻擊，請購買 Azure DDoS 保護許可證，並確保遵循應用程式設計最佳實踐。 DDoS 保護提供不同的服務層。 有關詳細資訊，請參閱[Azure DDoS 保護概述](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
-如需 Azure DDoS 保護警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azureddos)。
+有關 Azure DDoS 保護警報的清單，請參閱[警報的參考表](alerts-reference.md#alerts-azureddos)。
 
 
 ## <a name="next-steps"></a>後續步驟
-若要深入瞭解這些威脅防護功能的安全性警示，請參閱下列文章：
+要瞭解有關這些威脅防護功能的安全警報的更多詳細資訊，請參閱以下文章：
 
-* [所有 Azure 資訊安全中心警示的參考資料表](alerts-reference.md)
+* [所有 Azure 安全中心警報的參考表](alerts-reference.md)
 * [Azure 資訊安全中心的安全性警示](security-center-alerts-overview.md)
 * [在 Azure 資訊安全中心管理和回應安全性警示](security-center-managing-and-responding-alerts.md)
-* [匯出安全性警示和建議（預覽）](continuous-export.md)
+* [匯出安全警報和建議（預覽版）](continuous-export.md)

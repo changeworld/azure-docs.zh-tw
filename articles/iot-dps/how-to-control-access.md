@@ -1,6 +1,6 @@
 ---
 title: IoT 裝置佈建服務中的安全性端點 | Microsoft Docs
-description: 概念-如何控制後端應用程式對 IoT 裝置布建服務（DPS）的存取權。 包含安全性權杖的相關資訊。
+description: 概念 - 如何控制對後端應用的 IoT 設備佈建服務 （DPS） 的訪問。 包含安全性權杖的相關資訊。
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285145"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
 
-本文說明用來保護 IoT 裝置佈建服務的選項。 佈建服務使用權限，授與每個端點的存取權。 權限可根據功能限制服務執行個體的存取權。
+本文說明用來保護 IoT 裝置佈建服務的選項。 佈建服務使用權限**，授與每個端點的存取權。 權限可根據功能限制服務執行個體的存取權。
 
 本文章說明：
 
@@ -32,7 +32,7 @@ ms.locfileid: "79285145"
 
 您可以透過下列方式授與[權限](#device-provisioning-service-permissions)：
 
-* **共用存取授權原則**。 共用存取原則可以授與上面所列[權限](#device-provisioning-service-permissions)的任意組合。 您可以在[Azure 入口網站][lnk-management-portal]中定義原則，或使用裝置布建[服務 REST api][lnk-resource-provider-apis]以程式設計的方式。 新建立的佈建服務有下列預設原則︰
+* **共用訪問授權策略**。 共用存取原則可以授與上面所列[權限](#device-provisioning-service-permissions)的任意組合。 您可以在 [Azure 入口網站][lnk-management-portal]中定義原則，或使用 [裝置佈建服務 REST API][lnk-resource-provider-apis] 以程式設計方式定義原則。 新建立的佈建服務有下列預設原則︰
 
 * **provisioningserviceowner**︰具備所有權限的原則。
 
@@ -44,7 +44,7 @@ ms.locfileid: "79285145"
 Azure IoT 中樞裝置佈建服務可根據共用存取原則驗證權杖，以授與端點的存取權。 安全性認證 (例如對稱金鑰) 決不會在網路上傳送。
 
 > [!NOTE]
-> 裝置布建服務資源提供者會透過您的 Azure 訂用帳戶來保護，如同[Azure Resource Manager][lnk-azure-resource-manager]中的所有提供者。
+> 如同 [Azure Resource Manager][lnk-azure-resource-manager] 中的所有提供者一樣，裝置佈建服務資源提供者也是透過您的 Azure 訂用帳戶而受保護。
 
 如需如何建構和使用安全性權杖的詳細資訊，請參閱下一節。
 
@@ -57,11 +57,11 @@ SharedAccessSignature sr =
 ```
 
 > [!NOTE]
-> [Azure IoT 裝置布建服務 sdk][lnk-sdks]會在連接至服務時自動產生權杖。
+> [Azure IoT 裝置佈建服務 SDK][lnk-sdks] 會在連接至服務時自動產生權杖。
 
 ## <a name="security-tokens"></a>安全性權杖
 
-裝置佈建服務使用安全性權杖來驗證服務，以避免透過線路傳送金鑰。 此外，安全性權杖有時效性和範圍的限制。 [Azure IoT 裝置布建服務 sdk][lnk-sdks]會自動產生權杖，而不需要任何特殊設定。 在某些案例中，您必須直接產生及使用安全性權杖。 這類案例包括直接使用 HTTP 介面。
+裝置佈建服務使用安全性權杖來驗證服務，以避免透過線路傳送金鑰。 此外，安全性權杖有時效性和範圍的限制。 [Azure IoT 裝置佈建服務 SDK][lnk-sdks] 能在不需要任何特殊組態的情況下，自動產生權杖。 在某些案例中，您必須直接產生及使用安全性權杖。 這類案例包括直接使用 HTTP 介面。
 
 ### <a name="security-token-structure"></a>安全性權杖結構
 

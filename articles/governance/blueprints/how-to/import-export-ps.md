@@ -1,47 +1,47 @@
 ---
-title: 使用 PowerShell 匯入和匯出藍圖
-description: 瞭解如何使用您的藍圖定義做為程式碼。 共用、原始檔控制，並使用 export 和 import 命令來管理它們。
+title: 使用 PowerShell 導入和匯出藍圖
+description: 瞭解如何將藍圖定義用作代碼。 使用匯出和導入命令共用、原始程式碼管理並管理它們。
 ms.date: 09/03/2019
 ms.topic: how-to
 ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873194"
 ---
-# <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 匯入和匯出藍圖定義
+# <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 的導入和匯出藍圖定義
 
-Azure 藍圖可以透過 Azure 入口網站完全管理。 隨著組織繼續使用藍圖，他們應該開始將藍圖定義思考為受控碼。 這個概念通常稱為基礎結構即程式碼（IaC）。 將您的藍圖定義視為程式碼，除了 Azure 入口網站所提供的功能之外，還提供其他優點。 這些優點包括：
+Azure 藍圖可以通過 Azure 門戶完全管理。 隨著組織在使用藍圖方面的進步，他們應該開始將藍圖定義視為託管代碼。 這個概念通常被稱為基礎結構作為代碼 （IaC）。 將藍圖定義視為代碼提供了 Azure 門戶提供的其他優勢。 這些優勢包括：
 
 - 共用藍圖定義
-- 備份您的藍圖定義
-- 在不同的租使用者或訂用帳戶中重複使用藍圖定義
-- 將藍圖定義放在原始檔控制中
-  - 測試環境中藍圖定義的自動化測試
-  - 支援持續整合與持續部署（CI/CD）管線
+- 備份藍圖定義
+- 重用不同租戶或訂閱中的藍圖定義
+- 將藍圖定義置於原始程式碼管理中
+  - 測試環境中藍圖定義的自動測試
+  - 支援持續集成和持續部署 （CI/CD） 管道
 
-無論您的原因為何，以程式碼來管理您的藍圖定義都有其優點。 本文說明如何使用[Az. 藍圖](https://powershellgallery.com/packages/Az.Blueprint/)模組中的 `Import-AzBlueprintWithArtifact` 和 `Export-AzBlueprintWithArtifact` 命令。
+無論您的理由是什麼，將藍圖定義管理為代碼都有其好處。 本文演示如何在[Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) `Export-AzBlueprintWithArtifact`模組中使用`Import-AzBlueprintWithArtifact`和 命令。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-本文假設您對 Azure 藍圖進行了中等程度的工作知識。 如果您尚未這麼做，請執行下列文章：
+本文假定 Azure 藍圖具有中等的工作知識。 如果您尚未這樣做，則執行以下文章：
 
 - [在入口網站中建立藍圖](../create-blueprint-portal.md)
-- 閱讀[部署階段](../concepts/deployment-stages.md)和[藍圖生命週期的](../concepts/lifecycle.md)相關資訊
-- 使用 PowerShell[建立](../create-blueprint-powershell.md)和[管理](./manage-assignments-ps.md)藍圖定義和指派
+- 閱讀有關[部署階段](../concepts/deployment-stages.md)和[藍圖生命週期](../concepts/lifecycle.md)
+- 使用 PowerShell[創建](../create-blueprint-powershell.md)[和管理](./manage-assignments-ps.md)藍圖定義和分配
 
 如果尚未安裝 **Az.Blueprint** 模組，請依照[新增 Az.Blueprint 模組](./manage-assignments-ps.md#add-the-azblueprint-module)中的指示，從 PowerShell 資源庫安裝並驗證它。
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>藍圖定義的資料夾結構
 
-在查看匯出和匯入藍圖之前，讓我們來看看組成藍圖定義的檔案如何結構化。 藍圖定義應該儲存在自己的資料夾中。
+在查看匯出和導入藍圖之前，我們來看看構成藍圖定義的檔的構造方式。 藍圖定義應存儲在其自己的資料夾中。
 
 > [!IMPORTANT]
-> 如果未將任何值傳遞至 `Import-AzBlueprintWithArtifact` Cmdlet 的**name**參數，則會使用藍圖定義儲存所在的資料夾名稱。
+> 如果未將任何值傳遞給`Import-AzBlueprintWithArtifact`Cmdlet 的名稱參數，則將使用藍圖定義中存儲的資料夾的名稱。 **Name**
 
-除了藍圖定義（必須命名為 `blueprint.json`），也是藍圖定義組成的構件。 每個成品都必須位於名為 `artifacts`的子資料夾中。
-將您的藍圖定義結構放在一起，如同資料夾中的 JSON 檔案，其外觀如下：
+與必須命名的`blueprint.json`藍圖定義一起，是藍圖定義由工件組成的。 每個專案必須位於名為`artifacts`的子資料夾中。
+綜合起來，藍圖定義的結構作為資料夾中的 JSON 檔應如下所示：
 
 ```text
 .
@@ -56,20 +56,20 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 隨著組織繼續使
 
 ```
 
-## <a name="export-your-blueprint-definition"></a>匯出您的藍圖定義
+## <a name="export-your-blueprint-definition"></a>匯出藍圖定義
 
-匯出藍圖定義的步驟相當簡單。 匯出藍圖定義有助於共用、備份或放入原始檔控制。
+匯出藍圖定義的步驟非常簡單。 匯出藍圖定義可用於共用、備份或放入原始程式碼管理。
 
-- **藍圖**[必要]
+- **藍圖**[必需]
   - 指定藍圖定義
-  - 使用 `Get-AzBlueprint` 取得參考物件
-- **OutputPath** [必要]
-  - 指定要儲存藍圖定義 JSON 檔案的路徑
+  - 用於`Get-AzBlueprint`獲取引用物件
+- **輸出路徑**[必需]
+  - 指定將藍圖定義 JSON 檔保存到
   - 輸出檔案位於具有藍圖定義名稱的子資料夾中
-- **版本**（選擇性）
-  - 如果**藍圖**參考物件包含一個以上版本的參考，則指定要輸出的版本。
+- **版本**（可選）
+  - 如果**藍圖**引用物件包含對多個版本的引用，則指定要輸出的版本。
 
-1. 取得藍圖定義的參考，以從以 `{subId}`表示的訂用帳戶匯出：
+1. 獲取對藍圖定義的引用，以便從表示為`{subId}`的訂閱匯出：
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,31 +78,31 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 隨著組織繼續使
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. 使用 `Export-AzBlueprintWithArtifact` Cmdlet 來匯出指定的藍圖定義：
+1. 使用`Export-AzBlueprintWithArtifact`Cmdlet 匯出指定的藍圖定義：
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
    ```
 
-## <a name="import-your-blueprint-definition"></a>匯入您的藍圖定義
+## <a name="import-your-blueprint-definition"></a>導入藍圖定義
 
-一旦您有匯出的[藍圖定義](#export-your-blueprint-definition)，或在[必要的資料夾結構](#folder-structure-of-a-blueprint-definition)中有手動建立的藍圖定義之後，您就可以將該藍圖定義匯入至不同的管理群組或訂用帳戶。
+在[所需的資料夾結構](#folder-structure-of-a-blueprint-definition)中具有[匯出的藍圖定義](#export-your-blueprint-definition)或手動創建的藍圖定義後，可以將該藍圖定義導入到不同的管理組或訂閱。
 
-如需內建藍圖定義的範例，請參閱[Azure 藍圖 GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)存放庫。
+有關內置藍圖定義的示例，請參閱 Azure 藍圖[GitHub 存儲庫](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)。
 
-- **名稱**[必要]
+- **名稱**[必需]
   - 指定新藍圖定義的名稱
-- **InputPath** [必要]
-  - 指定建立藍圖定義的來源路徑
-  - 必須符合[所需的資料夾結構](#folder-structure-of-a-blueprint-definition)
-- **ManagementGroupId** （選擇性）
-  - 用來儲存藍圖定義的管理群組識別碼（如果不是目前的內容預設）
-  - 必須指定**ManagementGroupId**或**SubscriptionId**
-- **SubscriptionId** （選擇性）
-  - 用來儲存藍圖定義的訂用帳戶識別碼（如果不是目前的內容預設）
-  - 必須指定**ManagementGroupId**或**SubscriptionId**
+- **輸入路徑**[必需]
+  - 指定從
+  - 必須匹配[所需的資料夾結構](#folder-structure-of-a-blueprint-definition)
+- **管理組 Id（** 可選）
+  - 管理組 ID，用於將藍圖定義保存到當前上下文預設值（如果不是當前上下文預設）
+  - 必須指定**管理組 Id**或**訂閱 Id**
+- **訂閱 Id（** 可選）
+  - 將藍圖定義保存到當前上下文預設值（如果不是當前上下文預設值）的訂閱 ID
+  - 必須指定**管理組 Id**或**訂閱 Id**
 
-1. 使用 `Import-AzBlueprintWithArtifact` Cmdlet 匯入指定的藍圖定義：
+1. 使用`Import-AzBlueprintWithArtifact`Cmdlet 導入指定的藍圖定義：
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -110,19 +110,19 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 隨著組織繼續使
    Import-AzBlueprintWithArtifact -Name 'MyBlueprint' -ManagementGroupId 'DevMG' -InputPath 'C:\Blueprints\MyBlueprint'
    ```
 
-一旦匯入藍圖定義，請[使用 PowerShell 加以指派](./manage-assignments-ps.md#create-blueprint-assignments)。
+導入藍圖定義後，使用[PowerShell 分配它](./manage-assignments-ps.md#create-blueprint-assignments)。
 
-如需建立 advanced 藍圖定義的詳細資訊，請參閱下列文章：
+有關創建高級藍圖定義的資訊，請參閱以下文章：
 
 - 使用[靜態和動態參數](../concepts/parameters.md)。
 - 自訂[藍圖排序次序](../concepts/sequencing-order.md)。
 - 使用[藍圖資源鎖定](../concepts/resource-locking.md)來保護部署。
-- 將藍圖當做程式[代碼來管理](https://github.com/Azure/azure-blueprints/blob/master/README.md)。
+- [將藍圖管理為代碼](https://github.com/Azure/azure-blueprints/blob/master/README.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[藍圖生命週期](../concepts/lifecycle.md)。
+- 瞭解[藍圖生命週期](../concepts/lifecycle.md)。
 - 了解如何使用[靜態與動態參數](../concepts/parameters.md)。
 - 了解如何自訂[藍圖排序順序](../concepts/sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](../concepts/resource-locking.md)。
-- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。
+- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 列出 Azure RBAC 中的角色定義 |Microsoft Docs
-description: 瞭解如何使用 Azure 入口網站、Azure PowerShell 或 Azure CLI，列出 Azure RBAC 中的內建和自訂角色。
+title: 使用 Azure 門戶、Azure 電源外殼、Azure CLI 或 REST API 在 Azure RBAC 中列出角色定義 |微軟文檔
+description: 瞭解如何使用 Azure 門戶、Azure PowerShell、Azure CLI 或 REST API 在 Azure RBAC 中列出內置和自訂角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,37 +11,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 839393d7535de530a27752f77e311c87c75825d9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062991"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>列出 Azure RBAC 中的角色定義
+# <a name="list-role-definitions-in-azure-rbac"></a>在 Azure RBAC 中列出角色定義
 
-角色定義是可以執行的許可權集合，例如讀取、寫入和刪除。 它通常只稱為角色。 [Azure 角色型存取控制（RBAC）](overview.md)具有超過120的內[建角色](built-in-roles.md)，您也可以建立自己的自訂角色。 本文說明如何列出可用來授與 Azure 資源存取權的內建和自訂角色。
+角色定義是可以執行的許可權的集合，例如讀取、寫入和刪除。 一般會直接稱之為角色。 [基於 Azure 角色的存取控制 （RBAC）](overview.md)具有 120 多個[內置角色](built-in-roles.md)，也可以創建自己的自訂角色。 本文介紹如何列出可用於授予對 Azure 資源存取權限的內置和自訂角色。
 
-若要查看 Azure Active Directory 的系統管理員角色清單，請參閱[Azure Active Directory 中的系統管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+要查看 Azure 活動目錄的管理員角色清單，請參閱[Azure 活動目錄中的管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure 入口網站
 
 ### <a name="list-all-roles"></a>列出所有角色
 
-請遵循下列步驟來列出 Azure 入口網站中的所有角色。
+按照以下步驟列出 Azure 門戶中的所有角色。
 
-1. 在 Azure 入口網站中，按一下 **所有服務**，然後選取任何範圍。 例如，您可以選取 [管理群組]、[訂用帳戶]、[資源群組]或資源。
+1. 在 Azure 門戶中，按一下 **"所有服務**"，然後選擇任何範圍。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
 
-1. 按一下特定的資源。
+1. 按一下特定資源。
 
-1. 按一下 [存取控制 (IAM)]。
+1. 按一下**存取控制 （IAM）。**
 
-1. 按一下 [角色] 索引標籤以查看所有內建與自訂角色清單。
+1. 按一下 [角色]**** 索引標籤以查看所有內建與自訂角色清單。
 
-   您可以查看在目前範圍指派給每個角色的使用者和群組數目。
+   您可以看到在當前作用域中分配給每個角色的使用者和組數。
 
    ![角色清單](./media/role-definitions-list/roles-list.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "74710343"
 
 ### <a name="list-all-roles"></a>列出所有角色
 
-若要列出 Azure PowerShell 中的所有角色，請使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)。
+要列出 Azure PowerShell 中的所有角色，請使用[獲取-AzRole定義](/powershell/module/az.resources/get-azroledefinition)。
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -71,7 +71,7 @@ Automation Operator                               Automation Operators are able 
 
 ### <a name="list-a-role-definition"></a>列出角色定義
 
-若要列出特定角色的詳細資料，請使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)。
+要列出特定角色的詳細資訊，請使用[獲取-AzRole定義](/powershell/module/az.resources/get-azroledefinition)。
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -94,7 +94,7 @@ AssignableScopes : {/}
 
 ### <a name="list-a-role-definition-in-json-format"></a>以 JSON 格式列出角色定義
 
-若要以 JSON 格式列出角色，請使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)。
+要以 JSON 格式列出角色，請使用[獲取-AzRole定義](/powershell/module/az.resources/get-azroledefinition)。
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -128,7 +128,7 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 
 ### <a name="list-permissions-of-a-role-definition"></a>列出角色定義的許可權
 
-若要列出特定角色的許可權，請使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)。
+要列出特定角色的許可權，請使用[獲取-AzRole定義](/powershell/module/az.resources/get-azroledefinition)。
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -166,7 +166,7 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ### <a name="list-all-roles"></a>列出所有角色
 
-若要列出 Azure CLI 中的所有角色，請使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)。
+要列出 Azure CLI 中的所有角色，請使用[az 角色定義清單](/cli/azure/role/definition#az-role-definition-list)。
 
 ```azurecli
 az role definition list
@@ -195,7 +195,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-下列範例會列出所有內建角色。
+下面的示例列出了所有內置角色。
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -223,13 +223,13 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 
 ### <a name="list-a-role-definition"></a>列出角色定義
 
-若要列出角色的詳細資料，請使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)。
+要列出角色的詳細資訊，請使用[az 角色定義清單](/cli/azure/role/definition#az-role-definition-list)。
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-下列範例會列出「參與者」的角色定義：
+下列範例會列出「參與者」** 的角色定義：
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -269,7 +269,7 @@ az role definition list --name "Contributor"
 
 ### <a name="list-permissions-of-a-role-definition"></a>列出角色定義的許可權
 
-下列範例只會列出*參與者*角色的*動作*和*notActions* 。
+下面的示例僅列出*參與者*角色*的操作**而不是操作*。
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -288,7 +288,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-下列範例只會列出「*虛擬機器參與者*」角色的動作。
+下面的示例僅列出了*虛擬機器參與者*角色的操作。
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -312,9 +312,69 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
+## <a name="rest-api"></a>REST API
+
+### <a name="list-role-definitions"></a>列出角色定義
+
+要列出角色定義，請使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list)REST API。 若要精簡您的結果，請指定範圍和選擇性篩選條件。
+
+1. 從下列要求著手：
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
+    ```
+
+1. 在 URI 中，將 *[作用域]* 替換為要列出角色定義的範圍。
+
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
+    > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 資源 |
+
+    在前面的示例中，microsoft.web 是引用應用服務實例的資來源提供者。 同樣，您可以使用任何其他資來源提供者並指定作用域。 有關詳細資訊，請參閱[Azure 資來源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)以及支援的[Azure 資源管理器資源管理器資源管理器操作](resource-provider-operations.md)。  
+     
+1. 將 *[篩選器]* 替換為要應用於篩選角色定義清單的條件。
+
+    > [!div class="mx-tableFixed"]
+    > | Filter | 描述 |
+    > | --- | --- |
+    > | `$filter=atScopeAndBelow()` | 列出指定作用域和任何子作用域的角色定義。 |
+    > | `$filter=type+eq+'{type}'` | 列出指定類型的角色定義。 角色類型可以是`CustomRole`或`BuiltInRole`。 |
+
+### <a name="list-a-role-definition"></a>列出角色定義
+
+要列出特定角色的詳細資訊，請使用[角色定義 - 獲取](/rest/api/authorization/roledefinitions/get)或[角色定義 - 獲取 ID](/rest/api/authorization/roledefinitions/getbyid) REST API。
+
+1. 從下列要求著手：
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+    對於目錄級角色定義，可以使用此請求：
+
+    ```http
+    GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+1. 在 URI 中，將 *[作用域]* 替換為要列出角色定義的範圍。
+
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
+    > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 資源 |
+     
+1. 將 *{roleDefinitionId}* 取代為角色定義識別碼。
+
 ## <a name="next-steps"></a>後續步驟
 
 - [適用於 Azure 資源的內建角色](built-in-roles.md)
 - [適用於 Azure 資源的自訂角色](custom-roles.md)
-- [使用 Azure RBAC 和 Azure 入口網站列出角色指派](role-assignments-list-portal.md)
-- [使用 Azure RBAC 和 Azure 入口網站新增或移除角色指派](role-assignments-portal.md)
+- [使用 Azure RBAC 和 Azure 門戶列出角色指派](role-assignments-list-portal.md)
+- [使用 Azure RBAC 和 Azure 門戶添加或刪除角色指派](role-assignments-portal.md)
