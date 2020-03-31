@@ -1,6 +1,6 @@
 ---
-title: 疑難排解-Azure Event Grid IoT Edge |Microsoft Docs
-description: IoT Edge 上的事件方格中進行疑難排解。
+title: 故障排除 - Azure 事件網格 IoT 邊緣 |微軟文檔
+description: 在 IoT 邊緣的事件網格中進行故障排除。
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,19 +10,19 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73100147"
 ---
-# <a name="common-issues"></a>常見問題
+# <a name="common-issues"></a>常見的問題
 
-如果您在環境中的 IoT Edge 上使用 Azure 事件方格時遇到問題，請使用這篇文章做為疑難排解和解決方案的指南。
+如果在環境中使用 IoT Edge 上的 Azure 事件網格遇到問題，請使用本文作為故障排除和解決指南。
 
-## <a name="view-event-grid-module-logs"></a>查看事件方格模組記錄
+## <a name="view-event-grid-module-logs"></a>查看事件網格模組日誌
 
-若要進行疑難排解，您可能需要存取事件方格模組記錄。 若要這麼做，請在部署模組的 VM 上執行下列命令：
+要進行故障排除，您可能需要訪問事件網格模組日誌。 為此，在部署模組的 VM 上運行以下命令：
 
 在 Windows 上，
 
@@ -36,15 +36,15 @@ docker -H npipe:////./pipe/iotedge_moby_engine container logs eventgridmodule
 sudo docker logs eventgridmodule
 ```
 
-## <a name="unable-to-make-https-requests"></a>無法發出 HTTPS 要求
+## <a name="unable-to-make-https-requests"></a>無法發出 HTTPS 請求
 
-* 首先，請確定事件方格模組的**輸入： serverAuth： tlsPolicy**設為**strict**或**enabled**。
+* 首先確保事件網格模組已**入站：伺服器Auth：tls策略**設置為**嚴格**或**已啟用**。
 
-* 如果它的模組對模組通訊，請確定您是在埠**4438**上進行呼叫，而模組的名稱符合部署的專案。 
+* 如果模組到模組通信，請確保在埠**4438**上進行調用，模組的名稱與部署的內容匹配。 
 
-  例如，如果事件方格模組是以名稱**eventgridmodule**部署，則您的 URL 應該是 **https://eventgridmodule:4438** 。 請確定大小寫與埠號碼正確。
+  例如，如果事件網格模組使用名稱**事件網格模組**部署，則 URL 應為**https://eventgridmodule:4438**。 確保套管和埠號正確。
     
-* 如果是來自非 IoT 模組，請確定在部署期間，事件格線埠會對應到主機電腦，例如
+* 如果是來自非 IoT 模組，請確保事件網格埠在部署期間映射到主機，例如，
 
     ```json
     "HostConfig": {
@@ -58,15 +58,15 @@ sudo docker logs eventgridmodule
      }
     ```
 
-## <a name="unable-to-make-http-requests"></a>無法提出 HTTP 要求
+## <a name="unable-to-make-http-requests"></a>無法發出 HTTP 要求
 
-* 首先，請確定事件方格模組的**輸入： serverAuth： tlsPolicy**設為**enabled**或**disabled**。
+* 首先確保事件網格模組已**入站：伺服器Auth：tls策略**設置為**已啟用**或**禁用**。
 
-* 如果它的模組對模組通訊，請確定您是在埠**5888**上進行呼叫，而模組的名稱符合部署的專案。 
+* 如果模組到模組通信，請確保對埠**5888**進行調用，模組的名稱與部署的內容匹配。 
 
-  例如，如果事件方格模組是以名稱**eventgridmodule**部署，則您的 URL 應該是 **http://eventgridmodule:5888** 。 請確定大小寫與埠號碼正確。
+  例如，如果事件網格模組使用名稱**事件網格模組**部署，則 URL 應為**http://eventgridmodule:5888**。 確保套管和埠號正確。
     
-* 如果是來自非 IoT 模組，請確定在部署期間，事件格線埠會對應到主機電腦，例如
+* 如果是來自非 IoT 模組，請確保事件網格埠在部署期間映射到主機，例如，
 
     ```json
     "HostConfig": {
@@ -80,32 +80,32 @@ sudo docker logs eventgridmodule
     }
     ```
 
-## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>憑證鏈是由不受信任的授權單位所簽發
+## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>憑證連結由不信任的頒發機構頒發
 
-根據預設，事件方格模組已設定為使用 IoT Edge 安全性守護程式發行的憑證來驗證用戶端。 請確定用戶端轉譯的憑證是此鏈的根項目。
+預設情況下，事件網格模組配置為使用 IoT Edge 安全守護進程頒發的證書對用戶端進行身份驗證。 確保用戶端正在顯示根植于此鏈的證書。
 
-[https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge)中的**IoTSecurity**類別示範如何從 IoT Edge 的安全性守護程式抓取憑證，並使用它來設定傳出的呼叫。
+中的[https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) **IoTSecurity**類演示如何從 IoT 邊緣安全守護進程檢索證書，並用它來配置傳出調用。
 
-如果是非生產環境，您可以選擇關閉用戶端驗證。 如需如何執行此動作的詳細資訊，請參閱[安全性和驗證](security-authentication.md)。
+如果是非生產環境，則可以選擇關閉用戶端身份驗證。 有關如何執行此操作的詳細資訊，請參閱[安全和身份驗證](security-authentication.md)。
 
-## <a name="debug-events-not-received-by-subscriber"></a>訂閱者未收到的 Debug 事件
+## <a name="debug-events-not-received-by-subscriber"></a>訂閱者未接收的調試事件
 
-常見的原因如下：
+造成這種情況的典型原因是：
 
-* 事件從未成功張貼。 將事件張貼至事件方格模組時，應該會收到200（確定）的 HTTP StatusCode。
+* 事件從未成功發佈。 在將事件發佈到事件網格模組時，應收到 200（OK） 的 HTTP 狀態碼。
 
-* 檢查事件訂用帳戶以確認：
-    * 端點 URL 有效
-    * 訂用帳戶中的任何篩選準則都不會導致事件「捨棄」。
+* 檢查事件訂閱以驗證：
+    * 終結點 URL 有效
+    * 訂閱中的任何篩選器不會導致事件"刪除"。
 
-* 確認訂閱者模組是否正在執行
+* 驗證訂戶模組是否正在運行
 
-* 登入部署事件方格模組的 VM，並查看其記錄。
+* 登錄到部署事件網格模組的 VM 並查看其日誌。
 
-* 藉由設定**broker： logDeliverySuccess = true**並重新部署事件方格模組並重試要求，來開啟每個傳遞記錄。 開啟每個傳遞的記錄可能會影響輸送量和延遲，因此，一旦完成偵錯工具，我們的建議是將其重新設回**broker： logDeliverySuccess = false** ，並重新部署事件方格模組。
+* 通過設置**代理：logDelivery成功=true**並重新部署事件網格模組並重試請求，打開每個傳遞日誌記錄。 打開每次交付的日誌記錄可能會影響輸送量和延遲，因此一旦調試完成，我們建議將其轉回**代理：logDelivery成功—false**並重新部署事件網格模組。
 
-* 藉由設定計量來開啟計量 **： reportertype = 主控台**，並重新部署事件方格模組。 之後的任何作業都會導致計量記錄在事件方格模組的主控台上，可用來進一步進行進一步的調試。 我們的建議是只開啟用於偵錯工具的計量，並在完成後設定計量以將其關閉 **： reportertype = none**和重新部署事件方格模組。
+* 通過設置指標打開指標 **：報告器類型=主控台**和重新部署事件網格模組。 之後的任何操作都將導致指標記錄在事件網格模組的主控台上，可用於進一步調試。 我們建議僅打開用於調試的指標，並在完成一次，通過設置**指標：報告類型_none**和重新部署事件網格模組來將其關閉。
 
 ## <a name="next-steps"></a>後續步驟
 
-使用[https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)的 IoT Edge 上的事件方格，回報任何問題、建議。
+報告任何問題，建議在 IoT 邊緣使用事件網格。 [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80068000"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 常見問題
 
@@ -24,13 +24,13 @@ ms.locfileid: "79086789"
 
 ## <a name="general"></a>一般
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>哪些 Azure 角色可以對 Azure 媒體服務資源執行動作？ 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>哪些 Azure 角色可以對 Azure 媒體服務資源執行操作？ 
 
-請參閱[角色型存取控制（RBAC）以取得媒體服務帳戶](rbac-overview.md)。
+請參閱[媒體服務帳戶的基於角色的存取控制 （RBAC）。](rbac-overview.md)
 
 ### <a name="how-do-you-stream-to-apple-ios-devices"></a>如何串流至 Apple iOS 裝置？
 
-請確定您在路徑結尾處有 "（format = m3u8-m3u8-aapl-v3）" （在 URL 的 "/manifest" 部分後面），以告知串流源伺服器傳回 HLS 內容以供在 Apple iOS 原生裝置上取用（如需詳細資訊，請參閱[傳遞內容](dynamic-packaging-overview.md)）。
+請確保您的路徑末尾（URL 的"/清單"部分之後）有"（格式_m3u8-aapl）"，告訴流源伺服器返回 HLS 內容，供 Apple iOS 本機設備上使用（有關詳細資訊，請參閱[交付內容](dynamic-packaging-overview.md)）。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何設定編碼保留單元？
 
@@ -40,25 +40,40 @@ ms.locfileid: "79086789"
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>建議用來處理影片的方法為何？
 
-使用[轉換](https://docs.microsoft.com/rest/api/media/transforms)可設定視訊編碼或分析的一般工作。 每個**轉換**都會描述配方或工作流程，以便處理您的視訊或音訊檔案。 「[作業](https://docs.microsoft.com/rest/api/media/jobs)」（Job）是媒體服務將**轉換**套用到指定輸入影片或音訊內容的實際要求。 一旦建立轉換，您就可以使用媒體服務 API 或使用任何已發佈的 SDK 提交作業。 如需詳細資訊，請參閱[轉換和作業](transforms-jobs-concept.md)。
+使用[轉換](https://docs.microsoft.com/rest/api/media/transforms)可設定視訊編碼或分析的一般工作。 每個**轉換**都會描述配方或工作流程，以便處理您的視訊或音訊檔案。 [作業](https://docs.microsoft.com/rest/api/media/jobs)是媒體服務將**轉換**應用於給定輸入視頻或音訊內容的實際請求。 一旦建立轉換，您就可以使用媒體服務 API 或使用任何已發佈的 SDK 提交作業。 有關詳細資訊，請參閱[轉換和作業](transforms-jobs-concept.md)。
 
 ### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>我已上傳、編碼以及發佈視訊。 當我試著串流處理視頻時，為什麼不會播放視頻？
 
-其中一個最常見的原因是您沒有嘗試在執行狀態中播放的串流端點。
+其中一個最常見的原因就是您嘗試從中進行播放的串流端點不是處於 [執行中] 狀態。
 
 ### <a name="how-does-pagination-work"></a>分頁的運作方式為何？
 
 使用分頁時，您應一律使用下一頁連結來列舉集合，而不應依存於特定頁面大小。 如需詳細資訊和範例，請參閱[篩選、排序、分頁](entities-overview.md)。
 
-### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure 媒體服務 v3 中尚無法使用哪些功能？
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure 媒體服務 v3 中尚未提供哪些功能？
 
-如需詳細資訊，請參閱[V2 api 相關的功能差距](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+有關詳細資訊，請參閱[與 v2 API 有關的功能間隙](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>在訂閱之間移動媒體服務帳戶的程式為何？  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>在訂閱之間移動媒體服務帳戶的過程是什麼？  
 
-如需詳細資訊，請參閱[在訂閱之間移動媒體服務帳戶](media-services-account-concept.md)。
+有關詳細資訊，請參閱[在訂閱之間移動媒體服務帳戶](media-services-account-concept.md)。
 
 ## <a name="live-streaming"></a>即時串流 
+
+### <a name="how-to-stop-the-live-stream-after-the-broadcast-is-done"></a>廣播完成後如何停止直播？
+
+可以從用戶端或伺服器端接近它。
+
+#### <a name="client-side"></a>用戶端
+
+如果使用者要關閉瀏覽器，則 Web 應用程式應提示使用者結束廣播。 這是 Web 應用程式可以處理的瀏覽器事件。
+
+#### <a name="server-side"></a>伺服器端
+
+您可以通過訂閱事件網格事件來監視即時事件。 有關詳細資訊，請參閱[事件網格事件架構](media-services-event-schemas.md#live-event-types)。
+
+* 您可以[訂閱](reacting-to-media-services-events.md)流級[Microsoft.Media.LiveEventEncoder 斷開連接](media-services-event-schemas.md#liveeventencoderdisconnected)，並監視一段時間內沒有重新連接來停止和刪除即時事件。
+* 或者，您可以[訂閱](reacting-to-media-services-events.md)軌道級別[活動訊號](media-services-event-schemas.md#liveeventingestheartbeat)事件。 如果所有軌道的傳入位元速率降至 0;則為 0。或上次時間戳記不再增加，那麼您也可以安全地關閉即時事件。 每個軌道每 20 秒都會出現一次活動訊號事件，因此可能有點冗長。
 
 ###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>如何在即時資料流進行期間插入中斷/影片和影像靜態圖像？
 
@@ -68,27 +83,27 @@ ms.locfileid: "79086789"
 
 ## <a name="content-protection"></a>內容保護
 
-### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>我應該使用 AES-128 清除金鑰加密或 DRM 系統嗎？
+### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>我應該使用 AES-128 清除金鑰加密還是 DRM 系統？
 
-客戶通常不知道他們應該使用 AES 加密，還是 DRM 系統。 這兩個系統之間的主要差異是，使用 AES 加密時，會透過 TLS 將內容金鑰傳輸至用戶端，這樣金鑰就會在傳輸中加密，但不需要任何額外的加密（「明文」）。 因此，用來解密內容的金鑰可供用戶端播放人員存取，而且可以在用戶端的網路追蹤中以純文字方式來查看。 AES-128 清除金鑰加密適用于檢視器是受信任的合作物件的使用案例（例如，將公司內散佈的公司影片加密，以供員工查看）。
+客戶通常不知道他們應該使用 AES 加密，還是 DRM 系統。 兩個系統之間的主要區別是，使用 AES 加密，內容金鑰通過 TLS 傳輸到用戶端，以便金鑰在傳輸過程中加密，但無需任何其他加密（"在明確"中）。 因此，用戶端播放機可以訪問用於解密內容的金鑰，並且可以在用戶端上的網路跟蹤中以純文字形式查看。 AES-128 明明金鑰加密適用于查看者是受信任方的用例（例如，加密在公司內分發的公司視頻供員工查看）。
 
-PlayReady、Widevine 和 FairPlay 等 DRM 系統全都在用來解密內容的金鑰上提供額外的加密層級，相較于 AES-128 清除金鑰。 內容金鑰會加密為受 DRM 執行時間保護的金鑰，以供 TLS 所提供的任何傳輸層級加密使用。 此外，解密會在安全環境中，惡意使用者更難攻擊的作業系統層級上進行處理。 針對檢視者可能不是受信任的合作對象，而且您需要最高層級安全性的使用案例，建議使用 DRM。
+與 AES-128 清除金鑰相比，PlayReady、Widevine 和 FairPlay 等 DRM 系統都為解密內容的金鑰提供了額外的加密級別。 除了 TLS 提供的任何傳輸級別加密外，內容金鑰已加密到受 DRM 運行時保護的金鑰。 此外，解密會在安全環境中，惡意使用者更難攻擊的作業系統層級上進行處理。 針對檢視者可能不是受信任的合作對象，而且您需要最高層級安全性的使用案例，建議使用 DRM。
 
-### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>如何只向擁有特定許可權的使用者顯示影片，而不使用 Azure AD？
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>如何在不使用 Azure AD 的情況下僅向具有特定許可權的使用者顯示視頻？
 
-您不需要使用任何特定的權杖提供者（例如 Azure AD）。 您可以使用非對稱金鑰加密來建立自己的[JWT](https://jwt.io/)提供者（所謂的 STS、安全權杖服務）。 在您的自訂 STS 中，您可以根據您的商務邏輯新增宣告。
+您不必使用任何特定的權杖提供程式（如 Azure AD）。 您可以使用非對稱金鑰加密創建自己的[JWT](https://jwt.io/)提供程式（所謂的 STS、安全權杖服務）。 在自訂 STS 中，您可以基於業務邏輯添加聲明。
 
-請確定簽發者、物件和宣告全都完全符合 JWT 中的內容和 ContentKeyPolicy 中所使用的 ContentKeyPolicyRestriction。
+確保發行人、受眾和聲明在 JWT 中的內容與內容關鍵政策中使用的內容關鍵策略限制之間完全符合。
 
-如需詳細資訊，請參閱[使用媒體服務動態加密來保護您的內容](content-protection-overview.md)。
+有關詳細資訊，請參閱[使用媒體服務動態加密保護內容](content-protection-overview.md)。
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>如何以及在何處取得 JWT 權杖，再用來要求授權或金鑰？
 
-1. 針對生產環境，您需要有一個安全權杖服務（STS）（web 服務），它會在 HTTPS 要求發出 JWT 權杖。 用於測試時，您可以使用 **Program.cs** 中定義的 [GetTokenAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 方法所示的程式碼。
+1. 對於生產，您需要有一個安全權杖服務 （STS） （Web 服務），該服務在 HTTPS 請求時發出 JWT 權杖。 用於測試時，您可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 中定義的 **GetTokenAsync** 方法所示的程式碼。
 2. 播放器必須在使用者經過驗證之後，向 STS 提出此類權杖的要求，並將它指派為權杖的值。 您可以使用 [Azure 媒體播放器 API](https://amp.azure.net/libs/amp/latest/docs/)。
 
-* 如需執行 STS (使用對稱和非對稱金鑰) 的範例，請參閱 [https://aka.ms/jwt](https://aka.ms/jwt)。 
-* 如需以使用這類 JWT 權杖的 Azure 媒體播放器為基礎的播放器範例，請參閱 [https://aka.ms/amtest](https://aka.ms/amtest) (展開 "player_settings" 連結以查看權杖輸入)。
+* 有關運行 STS 的示例，請使用對稱鍵和非對稱鍵，請參閱[https://aka.ms/jwt](https://aka.ms/jwt)。 
+* 有關基於 Azure 媒體播放機使用此類 JWT 權杖的播放機的示例，[https://aka.ms/amtest](https://aka.ms/amtest)請參閱（展開"player_settings"連結以查看權杖輸入）。
 
 ### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>如何授權要求以使用 AES 加密來串流處理影片？
 
@@ -96,7 +111,7 @@ PlayReady、Widevine 和 FairPlay 等 DRM 系統全都在用來解密內容的�
 
 在 STS 中，根據使用者設定檔，新增不同的宣告 (例如「進階使用者」、「基本使用者」、「免費試用使用者」)。 在 JWT 中使用不同的宣告，使用者可以看見不同的內容。 當然，對於不同的內容/資產，ContentKeyPolicyRestriction 會有對應的 RequiredClaims。
 
-使用 Azure 媒體服務 Api 來設定授權/金鑰傳遞和加密您的資產（如[本範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)所示）。
+使用 Azure 媒體服務 API 配置許可證/金鑰傳遞並加密資產（[如本示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)所示）。
 
 如需詳細資訊，請參閱
 
@@ -118,7 +133,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 ### <a name="what-about-live-streaming"></a>即時串流呢？
 
-您可以使用完全相同的設計和實作，藉由將與程式相關聯的資產當成「VOD 資產」，來保護媒體服務中的即時串流。 若要提供即時內容的多重 DRM 保護，請在將資產與即時輸出產生關聯之前，將相同的設定/處理套用至資產，如同它是 VOD 資產。
+您可以使用完全相同的設計和實作，藉由將與程式相關聯的資產當成「VOD 資產」，來保護媒體服務中的即時串流。 要提供即時內容的多 DRM 保護，請對資產應用相同的設置/處理，就像將資產與即時輸出關聯之前的資產是 VOD 資產一樣。
 
 ### <a name="what-about-license-servers-outside-media-services"></a>在媒體服務外部的授權伺服器呢？
 
@@ -134,13 +149,13 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>是否可以使用 Azure 入口網站來管理 v3 資源？
 
-目前，您可以使用[Azure 入口網站](https://portal.azure.com/)來執行下列動作：
+目前，可以使用 Azure[門戶](https://portal.azure.com/)：
 
-* 管理媒體服務 v3[實況活動](live-events-outputs-concept.md)， 
-* view （不管理） v3[資產](assets-concept.md)， 
-* [取得存取 api 的相關資訊](access-api-portal.md)。 
+* 管理媒體服務 v3[即時事件](live-events-outputs-concept.md)， 
+* 視圖（未管理） v3[資產](assets-concept.md)， 
+* [獲取有關訪問 API 的資訊](access-api-portal.md)。 
 
-針對所有其他管理工作（例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md)），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+對於所有其他管理工作（例如，[轉換、作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md)），請使用[REST API](https://docs.microsoft.com/rest/api/media/) [、CLI](https://aka.ms/ams-v3-cli-ref)或受支援的[SDK](media-services-apis-overview.md#sdks)之一。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 

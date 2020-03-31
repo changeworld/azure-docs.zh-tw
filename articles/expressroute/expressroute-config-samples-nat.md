@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：路由器設定範例-NAT
+title: Azure 快速路由：路由器配置示例 - NAT
 description: 此頁面提供適用於 Cisco 和 Juniper 路由器的路由器組態範例。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072103"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>設定和管理 NAT 的路由器組態範例
@@ -56,7 +56,7 @@ ms.locfileid: "74072103"
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
 
-**組態：**
+**配置：**
 
 NAT 集區：
 
@@ -82,7 +82,7 @@ NAT 命令：
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX 系列路由器
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. 為叢集建立多餘的乙太網路介面
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. 為群集創建冗余乙太網介面
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -114,7 +114,7 @@ NAT 命令：
     }
 
 
-### <a name="2-create-two-security-zones"></a>2. 建立兩個安全性區域
+### <a name="2-create-two-security-zones"></a>2. 創建兩個安全區域
 * 內部網路的信任區域和外部網路面向邊緣路由器的未受信任區域
 * 將適當的介面指派給區域
 * 在介面上允許一些服務
@@ -122,7 +122,7 @@ NAT 命令：
     security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>3. 在區域之間建立安全性原則
+### <a name="3-create-security-policies-between-zones"></a>3. 在區域之間創建安全性原則
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -153,7 +153,7 @@ NAT 命令：
     }
 
 
-### <a name="4-configure-nat-policies"></a>4. 設定 NAT 原則
+### <a name="4-configure-nat-policies"></a>4. 配置 NAT 策略
 * 建立兩個 NAT 集區。 一個集區將用於輸出到 Microsoft 的 NAT 流量，另一個集區則用於從 Microsoft 至客戶的 NAT 流量。
 * 建立各自流量的 NAT 規則
   
@@ -212,10 +212,10 @@ NAT 命令：
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 設定 BGP 以公告每個方向的選擇性前置詞
-請參閱路由設定[範例](expressroute-config-samples-routing.md)頁面中的範例。
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 配置 BGP 以通告每個方向的選擇性首碼
+請參閱[路由配置示例](expressroute-config-samples-routing.md)頁中的示例。
 
-### <a name="6-create-policies"></a>6. 建立原則
+### <a name="6-create-policies"></a>6. 創建策略
     routing-options {
                   autonomous-system <Customer-ASN>;
     }

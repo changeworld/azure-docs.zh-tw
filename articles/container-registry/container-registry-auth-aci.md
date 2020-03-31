@@ -1,20 +1,20 @@
 ---
-title: 從容器實例存取
+title: 從容器實例訪問
 description: 了解如何使用 Azure Active Directory 服務主體，從 Azure 容器執行個體提供私人容器登錄中映像的存取權。
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456513"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用來自 Azure 容器執行個體的 Azure Container Registry 進行驗證
 
 您可以使用 Azure Active Directory (Azure AD) 服務主體，來提供 Azure Container Registry 中私人容器登錄的存取權。
 
-在本文中，您將了解如何建立及設定 Azure AD 服務主體，並使其具備您登錄的「提取」權限。 然後，您會使用服務主體進行驗證，來啟動 Azure 容器執行個體 (ACI) 中的容器，以從您的私人登錄中提取其映像。
+在本文中，您將了解如何建立及設定 Azure AD 服務主體，並使其具備您登錄的「提取」** 權限。 然後，您會使用服務主體進行驗證，來啟動 Azure 容器執行個體 (ACI) 中的容器，以從您的私人登錄中提取其映像。
 
 ## <a name="when-to-use-a-service-principal"></a>何時使用服務主體
 
@@ -45,7 +45,7 @@ az container create \
 您可以找到前述適用於 GitHub 上的 Azure CLI 的範例指令碼，以及適用於 Azure PowerShell 的版本：
 
 * [Azure CLI][acr-scripts-cli]
-* [Azure PowerShell][acr-scripts-psh]
+* [Azure 電源外殼][acr-scripts-psh]
 
 ## <a name="next-steps"></a>後續步驟
 

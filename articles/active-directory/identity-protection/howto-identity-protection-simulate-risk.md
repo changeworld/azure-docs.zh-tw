@@ -1,6 +1,6 @@
 ---
-title: 模擬 Azure AD Identity Protection 中的風險偵測
-description: 瞭解如何模擬 Identity Protection 中的風險偵測
+title: 在 Azure AD 標識保護中類比風險檢測
+description: 瞭解如何在身份保護中類比風險檢測
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,28 +12,28 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886931"
 ---
-# <a name="simulating-risk-detections-in-identity-protection"></a>模擬 Identity Protection 中的風險偵測
+# <a name="simulating-risk-detections-in-identity-protection"></a>類比身份保護中的風險檢測
 
-系統管理員可能想要在環境中模擬風險，以便完成下列專案：
+管理員可能需要類比其環境中的風險，以便完成以下項：
 
-- 藉由模擬風險偵測和弱點，在身分識別保護環境中填入資料。
-- 設定以風險為基礎的條件式存取原則，並測試這些原則的影響。
+- 通過類比風險檢測和漏洞來填充身份保護環境中的資料。
+- 設置基於風險的條件訪問策略，並測試這些策略的影響。
 
-本文提供模擬下列風險偵測類型的步驟：
+本文為您提供了類比以下風險檢測類型的步驟：
 
 - 匿名 IP 位址（簡單）
-- 不熟悉的登入屬性（適中）
-- 非典型旅遊（艱難）
+- 不熟悉的登錄屬性（中等）
+- 非典型旅行（困難）
 
-其他風險偵測無法以安全的方式模擬。
+無法以安全方式類比其他風險檢測。
 
-如需每個風險偵測的詳細資訊，請參閱[什麼是風險](concept-identity-protection-risks.md)。
+有關每個風險檢測的詳細資訊，請參閱文章"[什麼是風險](concept-identity-protection-risks.md)"。
 
 ## <a name="anonymous-ip-address"></a>匿名 IP 位址
 
@@ -45,7 +45,7 @@ ms.locfileid: "72886931"
 **若要模擬從匿名 IP 登入，請執行下列步驟**：
 
 1. 使用 [Tor 瀏覽器](https://www.torproject.org/projects/torbrowser.html.en)，瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)。   
-2. 輸入您要在 [從匿名 IP 位址登入] 報告中顯示之帳戶的認證。
+2. 輸入您要在 [從匿名 IP 位址登入] **** 報告中顯示之帳戶的認證。
 
 登入將會在 10 - 15 分鐘內顯示於 [身分識別保護] 儀表板上。 
 
@@ -61,74 +61,74 @@ ms.locfileid: "72886931"
 要完成下列程序，您必須使用符合下列條件的使用者帳戶：
 
 - 至少有 30 天的登入歷程記錄。
-- 已啟用 Azure 多重要素驗證。
+- 啟用 Azure 多重要素驗證。
 
 **若要模擬從不熟悉的位置登入，請執行下列步驟**：
 
-1. 使用測試帳戶登入時，不會通過 MFA 挑戰，導致多重要素驗證（MFA）的挑戰失敗。
-2. 使用新的 VPN 導覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)，然後輸入您測試帳戶的認證。
+1. 使用測試帳戶登錄時，通過未通過 MFA 質詢，從而失敗多重要素驗證 （MFA） 質詢。
+2. 使用新的 VPN 導航並[https://myapps.microsoft.com](https://myapps.microsoft.com)輸入測試帳戶的憑據。
 
 登入將會在 10 - 15 分鐘內顯示於 [身分識別保護] 儀表板上。
 
 ## <a name="atypical-travel"></a>非慣用登入位置
 
-模擬非典型的旅遊條件並不容易，因為演算法會使用機器學習來得費勁篩選出誤報，例如來自熟悉裝置的非典型旅遊，或從目錄中其他使用者所使用的 Vpn 登入。 此外，此演算法需要14天的登入歷程記錄和10個使用者登入，才會開始產生風險偵測。 由於有複雜的機器學習模型和上述規則，因此下列步驟可能不會導致風險偵測。 您可能想要為多個 Azure AD 帳戶複寫這些步驟，以模擬此偵測。
+類比非典型旅行條件很困難，因為演算法使用機器學習來清除誤報，例如來自熟悉設備的非典型旅行，或目錄中其他使用者使用的 VPN 登錄。 此外，該演算法需要使用者 14 天的登錄歷史記錄和 10 個登錄名，然後才能開始生成風險檢測。 由於複雜的機器學習模型和上述規則，以下步驟很可能不會導致風險檢測。 您可能希望為多個 Azure AD 帳戶複製這些步驟以類比此檢測。
 
-**若要模擬非典型的旅遊風險偵測，請執行下列步驟**：
+**要類比非典型旅行風險檢測，執行以下步驟**：
 
-1. 使用標準瀏覽器，瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)。  
-2. 輸入您要為其產生非典型旅遊風險偵測的帳號憑證。
-3. 變更您的使用者代理程式。 您可以從開發人員工具（F12）變更 Microsoft Edge 中的使用者代理程式。
-4. 變更您的 IP 位址。 您可以使用 VPN、Tor 附加元件，或在不同資料中心的 Azure 中建立新的虛擬機器，來變更您的 IP 位址。
-5. 在前次登入之後的幾分鐘內，使用與之前相同的認證登入 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
+1. 使用標準瀏覽器導航到[https://myapps.microsoft.com](https://myapps.microsoft.com)。  
+2. 輸入要生成非典型旅行風險檢測的帳戶的憑據。
+3. 變更您的使用者代理程式。 可以從開發人員工具 （F12） 更改 Microsoft Edge 中的使用者代理。
+4. 變更您的 IP 位址。 您可以通過使用 VPN、Tor 載入項或在 Azure 中在不同的資料中心創建新虛擬機器來更改 IP 位址。
+5. 登錄以[https://myapps.microsoft.com](https://myapps.microsoft.com)使用與前一次登錄後相同的憑據，並在前一次登錄後幾分鐘內登錄。
 
 登入會在 2-4 小時內顯示於 [身分識別保護] 儀表板上。
 
-## <a name="testing-risk-policies"></a>測試風險原則
+## <a name="testing-risk-policies"></a>測試風險策略
 
-本節提供測試使用者的步驟，以及[如何：設定和啟用風險原則](howto-identity-protection-configure-risk-policies.md)一文中建立的登入風險原則。
+本節為您提供了測試使用者的步驟以及文章"[如何：配置和啟用風險策略](howto-identity-protection-configure-risk-policies.md)"中創建的登錄風險策略。
 
 ### <a name="user-risk-policy"></a>使用者風險原則
 
 若要測試使用者風險安全性原則，請執行下列步驟：
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory** > **安全性** > **總覽**。
-1. 選取 [**設定使用者風險原則**]。
-   1. 在 [**指派**] 底下
-      1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
-         1. （選擇性）您可以選擇從原則中排除使用者。
-      1. **條件** - **使用者風險**Microsoft 的建議是將此選項設定為 [**高**]。
-   1. 在**控制項**底下
-      1. **存取**-Microsoft 的建議是**允許存取**，而且**需要變更密碼**。
-   1. **強制執行原則** - **關閉**
-   1. **儲存**-此動作會讓您回到 [**總覽**] 頁面。
-1. 藉由提高測試帳戶的使用者風險，例如，模擬幾次其中一項風險偵測。
-1. 等候幾分鐘，然後確認您的使用者已提升風險。 如果不是，則會為使用者模擬更多的風險偵測。
-1. 返回您的風險原則，並將 [**強制執行原則**] 設定為 [**開啟**]，然後**儲存**您的原則變更。
-1. 您現在可以使用具有提高許可權的風險層級的使用者登入，以測試以使用者風險為基礎的條件式存取。
+1. 導航到[Azure 門戶](https://portal.azure.com)。
+1. 流覽到**Azure 活動目錄** > **安全** > **概述**。
+1. 選擇 **"配置使用者風險策略**"。
+   1. 在**分配**下
+      1. **使用者**- 如果限制推出，請選擇**所有使用者**或**選擇個人和組**。
+         1. 可以選擇將使用者從策略中排除。
+      1. **條件** - **使用者風險**微軟的建議是將此選項設置為**高**。
+   1. 在**控制下**
+      1. **訪問**- 微軟的建議是**允許訪問**和**要求密碼更改**。
+   1. **強制關閉策略** -  ** **
+   1. **保存**- 此操作將返回到 **"概述"** 頁。
+1. 例如，通過多次類比其中一個風險檢測來提升測試帳戶的使用者風險。
+1. 等待幾分鐘，然後驗證使用者的風險是否升高。 否則，類比使用者的更多風險檢測。
+1. 返回到風險策略並將 **"強制策略**"設置為 **"打開**"並**保存**策略更改。
+1. 現在，您可以通過使用具有較高風險級別的使用者登錄來測試基於使用者風險的條件訪問。
 
 ### <a name="sign-in-risk-security-policy"></a>登入風險安全性原則
 
 若要測試登入風險原則，請執行下列步驟：
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory** > **安全性** > **總覽**。
-1. 選取 [**設定登入風險原則**]。
-   1. 在 [**指派**] 底下
-      1. **使用者**-選擇 [**所有使用者**] **，或選取個人和群組**（如果您要限制首度發行）。
-         1. （選擇性）您可以選擇從原則中排除使用者。
-      1. **條件** - 登**入風險**Microsoft 的建議是將此選項設定為 [**中] 和 [以上**]。
-   1. 在**控制項**底下
-      1. **存取**-Microsoft 的建議是**允許存取**，而且**需要多重要素驗證**。
-   1. **強制執行原則** ** - **
-   1. **儲存**-此動作會讓您回到 [**總覽**] 頁面。
-1. 您現在可以使用有風險的會話登入來測試登入風險型條件式存取（例如，藉由使用 Tor 瀏覽器）。 
+1. 導航到[Azure 門戶](https://portal.azure.com)。
+1. 流覽到**Azure 活動目錄** > **安全** > **概述**。
+1. 選擇**配置登錄風險策略**。
+   1. 在**分配**下
+      1. **使用者**- 如果限制推出，請選擇**所有使用者**或**選擇個人和組**。
+         1. 可以選擇將使用者從策略中排除。
+      1. **條件** - **登錄風險**微軟的建議是將此選項設置為**中和以上**。
+   1. 在**控制下**
+      1. **訪問**- 微軟的建議是**允許訪問**和**要求多重要素驗證**。
+   1. **執行策略** -  ** **
+   1. **保存**- 此操作將返回到 **"概述"** 頁。
+1. 現在，您可以通過使用風險會話（例如，通過使用 Tor 瀏覽器）登錄來測試基於登錄風險的條件訪問。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [有什麼風險？](concept-identity-protection-risks.md)
+- [什麼是風險？](concept-identity-protection-risks.md)
 
-- [如何：設定及啟用風險原則](howto-identity-protection-configure-risk-policies.md)
+- [如何：配置和啟用風險策略](howto-identity-protection-configure-risk-policies.md)
 
 - [Azure Active Directory Identity Protection](overview-identity-protection.md)

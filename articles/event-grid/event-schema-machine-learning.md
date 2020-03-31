@@ -1,6 +1,6 @@
 ---
-title: Azure 事件方格 Machine Learning 事件架構
-description: 說明使用 Azure 事件方格為 Machine Learning 工作區事件提供的屬性
+title: Azure 事件網格機器學習事件架構
+description: 描述為使用 Azure 事件網格為機器學習工作區事件事件提供的屬性
 services: event-grid
 author: jenns
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
 ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79202139"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 事件方格事件架構
+# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure 事件網格事件架構，用於 Azure 機器學習
 
-本文提供機器學習服務工作區事件的屬性和架構。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供了機器學習工作區事件的屬性和架構。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
-如需範例腳本和教學課程的清單，請參閱[AzureML 事件來源](event-sources.md#azure-machine-learning)。
+有關示例腳本和教程的清單，請參閱[AzureML 事件源](event-sources.md#azure-machine-learning)。
 
 ## <a name="available-event-types"></a>可用的事件類型
 
-Azure Machine Learning 會發出下列事件種類：
+Azure 機器學習發出以下事件種類：
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
-| Microsoft.machinelearningservices. ModelRegistered | 已成功註冊新的模型或模型版本時引發。 |
-| Microsoft.machinelearningservices. ModelDeployed | 當模型已成功部署至端點時引發。 |
-| Microsoft.machinelearningservices. RunCompleted | 成功完成執行時引發。 |
-| Microsoft.machinelearningservices. DatasetDriftDetected | 資料集漂移監視器偵測到漂移時引發。 |
-| Microsoft.machinelearningservices. RunStatusChanged | 當執行狀態變更為「失敗」時引發。 |
+| 微軟.機器學習服務.模型註冊 | 成功註冊新的模型或模型版本時引發。 |
+| 微軟.機器學習服務.模型部署 | 在模型成功部署到終結點時引發。 |
+| 微軟.機器學習服務.運行完成 | 成功完成運行後引發。 |
+| 微軟.機器學習服務.資料集漂移檢測 | 當資料集漂移監視器檢測到漂移時引發。 |
+| 微軟.機器學習服務.運行狀態已更改 | 當運行狀態更改為"失敗"時引發。 |
 
 ## <a name="the-contents-of-an-event-response"></a>事件回應的內容
 
-觸發事件時，事件方格服務會將該事件的相關資料傳送至訂閱端點。
+觸發事件時，事件網格服務會將有關該事件的資料發送到訂閱終結點。
 
-此章節包含每個事件的資料外觀範例。
+本節包含該資料在每個事件的外觀示例。
 
-### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft.machinelearningservices. ModelRegistered 事件
+### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>微軟.機器學習服務.模型註冊事件
 
 ```json
 [{
@@ -63,7 +63,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft.machinelearningservices. ModelDeployed 事件
+### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>微軟.機器學習服務.模型部署事件
 
 ```json
 [{
@@ -89,7 +89,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft.machinelearningservices. RunCompleted 事件
+### <a name="microsoftmachinelearningservicesruncompleted-event"></a>微軟.機器學習服務.運行完成事件
 
 ```json
 [{
@@ -125,7 +125,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Microsoft.machinelearningservices. DatasetDriftDetected 事件
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>微軟.機器學習服務.資料集漂移檢測到的事件
 
 ```json
 [{
@@ -149,7 +149,7 @@ Azure Machine Learning 會發出下列事件種類：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft.machinelearningservices. RunStatusChanged 事件
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>微軟.機器學習服務.運行狀態變更事件
 
 ```json
 [{
@@ -204,66 +204,66 @@ Azure Machine Learning 會發出下列事件種類：
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
-針對每個事件種類，資料物件都有下列屬性：
+資料物件具有以下每個事件種類的屬性：
 
-### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.machinelearningservices. ModelRegistered
-
-| 屬性 | 類型 | 描述 |
-| -------- | ---- | ----------- |
-| ModelName | 字串 | 已註冊的模型名稱。 |
-| ModelVersion | 字串 | 已註冊的模型版本。 |
-| ModelTags | 物件 (object) | 已註冊的模型標記。 |
-| ModelProperties | 物件 (object) | 已註冊之模型的屬性。 |
-
-### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.machinelearningservices. ModelDeployed
+### <a name="microsoftmachinelearningservicesmodelregistered"></a>微軟.機器學習服務.模型註冊
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| ServiceName | 字串 | 已部署之服務的名稱。 |
-| ServiceComputeType | 字串 | 已部署之服務的計算類型（例如 ACI、AKS）。 |
-  | ModelIds | 字串 | 以逗號分隔的模型識別碼清單。 部署在服務中的模型識別碼。 |
-| ServiceTags | 物件 (object) | 已部署之服務的標記。 |
-| ServiceProperties | 物件 (object) | 已部署之服務的屬性。 |
+| ModelName | 字串 | 已註冊的模型的名稱。 |
+| 模型版本 | 字串 | 已註冊的模型的版本。 |
+| 模型標記 | 物件 (object) | 已註冊的模型的標記。 |
+| 模型屬性 | 物件 (object) | 已註冊的模型的屬性。 |
 
-### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.machinelearningservices. RunCompleted
-
-| 屬性 | 類型 | 描述 |
-| -------- | ---- | ----------- |
-| ExperimentId | 字串 | 執行所屬之實驗的識別碼。 |
-| ExperimentName | 字串 | 執行所屬的實驗名稱。 |
-| RunId | 字串 | 已完成的執行識別碼。 |
-| RunType | 字串 | 已完成執行的執行類型。 |
-| RunTags | 物件 (object) | 已完成執行的標記。 |
-| RunProperties | 物件 (object) | 已完成執行的屬性。 |
-
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.machinelearningservices. DatasetDriftDetected
+### <a name="microsoftmachinelearningservicesmodeldeployed"></a>微軟.機器學習服務.模型部署
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| DataDriftId | 字串 | 觸發事件的資料漂移監視器識別碼。 |
-| DataDriftName | 字串 | 觸發事件的資料漂移監視名稱。 |
-| RunId | 字串 | 偵測到資料漂移的執行識別碼。 |
-| BaseDatasetId | 字串 | 用來偵測漂移的基底資料集識別碼。 |
-| TargetDatasetId | 字串 | 用來偵測漂移的目標資料集識別碼。 |
-| DriftCoefficient | double | 觸發事件的係數。 |
-| StartTime | Datetime | 導致漂移偵測的目標資料集時間序列的開始時間。  |
-| EndTime | Datetime | 導致漂移偵測的目標資料集時間序列的結束時間。 |
+| ServiceName | 字串 | 已部署的服務的名稱。 |
+| 服務計算類型 | 字串 | 已部署服務的計算類型（例如 ACI、AKS）。 |
+  | 模型 Id | 字串 | 模型指示的逗號分隔清單。 在服務中部署的模型的代號。 |
+| 服務標籤 | 物件 (object) | 已部署服務的標記。 |
+| 服務屬性 | 物件 (object) | 已部署服務的屬性。 |
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.machinelearningservices. RunStatusChanged
+### <a name="microsoftmachinelearningservicesruncompleted"></a>微軟.機器學習服務.運行完成
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| ExperimentId | 字串 | 執行所屬之實驗的識別碼。 |
-| ExperimentName | 字串 | 執行所屬的實驗名稱。 |
-| RunId | 字串 | 已完成的執行識別碼。 |
-| RunType | 字串 | 已完成執行的執行類型。 |
-| RunTags | 物件 (object) | 已完成執行的標記。 |
-| RunProperties | 物件 (object) | 已完成執行的屬性。 |
-| RunStatus | 字串 | 執行的狀態。 |
+| 實驗Id | 字串 | 運行所屬的實驗的 ID。 |
+| 實驗名稱 | 字串 | 運行所屬的實驗的名稱。 |
+| RunId | 字串 | 已完成的運行 ID。 |
+| 運行類型 | 字串 | 已完成運行的運行類型。 |
+| 運行標記 | 物件 (object) | 已完成的"運行"的標記。 |
+| 運行屬性 | 物件 (object) | 已完成的"運行"的屬性。 |
+
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>微軟.機器學習服務.資料集漂移檢測
+
+| 屬性 | 類型 | 描述 |
+| -------- | ---- | ----------- |
+| 資料漂移Id | 字串 | 觸發事件的資料漂移監視器的 ID。 |
+| 資料漂移名稱 | 字串 | 觸發事件的資料漂移監視器的名稱。 |
+| RunId | 字串 | 檢測到資料漂移的 Run 的 ID。 |
+| 基本資料集 Id | 字串 | 用於檢測漂移的基礎資料集的 ID。 |
+| 目標資料集 Id | 字串 | 用於檢測漂移的目標資料集的 ID。 |
+| 漂移係數 | double | 觸發事件的係數結果。 |
+| StartTime | Datetime | 導致漂移檢測的目標資料集時間序列的開始時間。  |
+| EndTime | Datetime | 導致漂移檢測的目標資料集時間序列的結束時間。 |
+
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>微軟.機器學習服務.運行狀態已更改
+
+| 屬性 | 類型 | 描述 |
+| -------- | ---- | ----------- |
+| 實驗Id | 字串 | 運行所屬的實驗的 ID。 |
+| 實驗名稱 | 字串 | 運行所屬的實驗的名稱。 |
+| RunId | 字串 | 已完成的運行 ID。 |
+| 運行類型 | 字串 | 已完成運行的運行類型。 |
+| 運行標記 | 物件 (object) | 已完成的"運行"的標記。 |
+| 運行屬性 | 物件 (object) | 已完成的"運行"的屬性。 |
+| 運行狀態 | 字串 | 運行的狀態。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Event Grid 的簡介，請參閱[什麼是 Event Grid？](overview.md)
-* 如需有關建立 Azure 事件方格訂用帳戶的詳細資訊，請參閱[Event grid 訂](subscription-creation-schema.md)用帳戶架構
-* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的簡介，請參閱取用[Azure Machine Learning 事件](/azure/machine-learning/service/concept-event-grid-integration)
-* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的範例，請參閱[建立事件驅動機器學習工作流程](/azure/machine-learning/service/how-to-use-event-grid)
+* 有關創建 Azure 事件網格訂閱的詳細資訊，請參閱[事件網格訂閱架構](subscription-creation-schema.md)
+* 有關將 Azure 事件網格與 Azure 機器學習一起使用的簡介，請參閱[使用 Azure 機器學習事件](/azure/machine-learning/service/concept-event-grid-integration)
+* 有關將 Azure 事件網格與 Azure 機器學習一起使用的示例，請參閱[創建事件驅動的機器學習工作流](/azure/machine-learning/service/how-to-use-event-grid)

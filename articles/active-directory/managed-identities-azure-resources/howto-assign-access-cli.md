@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI Azure AD，為受控識別指派對資源的存取權
+title: 使用 Azure CLI - Azure AD 為資源配置託管標識存取權限
 description: 以下逐步指示說明如何使用 Azure CLI 為一項資源的受控識別指派對另一項資源的存取權。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547367"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 為受控識別指派對資源的存取權
@@ -28,9 +28,9 @@ ms.locfileid: "74547367"
 
 以受控識別設定 Azure 資源後，您可以為此受控識別提供對另一項資源的存取權，就像任何安全性主體一樣。 此範例說明如何使用 Azure CLI 為 Azure 虛擬機器或虛擬機器擴展集的受控識別提供對 Azure 儲存體帳戶的存取權。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 如果您不熟悉 Azure 資源受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)** 。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 若要執行 CLI 指令碼範例，您有三個選項：
     - 從 Azure 入口網站使用 [Azure Cloud Shell](../../cloud-shell/overview.md) (請參閱下一節)。
@@ -49,7 +49,7 @@ ms.locfileid: "74547367"
    az login
    ```
 
-2. 在此範例中，我們會將 Azure 虛擬機器存取權給予儲存體帳戶。 首先，我們使用 [az resource list](/cli/azure/resource/#az-resource-list) 取得虛擬機器 myVM 的服務主體：
+2. 在此範例中，我們會將 Azure 虛擬機器存取權給予儲存體帳戶。 首先，我們使用[az 資源清單](/cli/azure/resource/#az-resource-list)來獲取名為 myVM 的虛擬機器的服務主體：
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)

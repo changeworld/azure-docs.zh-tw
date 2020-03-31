@@ -1,6 +1,6 @@
 ---
-title: Azure 事件方格-啟用主題的診斷記錄
-description: 本文提供逐步指示，說明如何啟用 Azure 事件方格主題的診斷記錄。
+title: Azure 事件網格 - 為主題啟用診斷日誌
+description: 本文提供有關如何為 Azure 事件網格主題啟用診斷日誌的分步說明。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,50 +8,50 @@ ms.topic: how-to
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: a32d26629bb9efed4a4f1f49eee2f0534e1873a9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960499"
 ---
-#  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Azure 事件方格主題的診斷記錄
-診斷設定可讓「事件方格」使用者在下列其中一個位置中，捕捉及查看發行和傳遞失敗記錄： Azure 儲存體帳戶、事件中樞或 Log Analytics 工作區。 本文提供逐步指示，說明如何啟用事件方格主題的診斷記錄。
+#  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Azure 事件網格主題的診斷日誌
+診斷設置允許事件網格使用者在以下位置之一捕獲和查看發佈和傳遞失敗日誌：Azure 存儲帳戶、事件中心或日誌分析工作區。 本文提供分步說明，用於為事件網格主題啟用診斷日誌。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 已布建的事件方格主題
-- 用於捕獲診斷記錄的已布建目的地。 它可以是下列其中一個目的地：
+- 預配事件網格主題
+- 用於捕獲診斷日誌的預配目標。 它可以是以下目標之一：
     - Azure 儲存體帳戶
     - 事件中樞
     - Log Analytics 工作區
 
 
-## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>啟用主題診斷記錄的步驟
+## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>為主題啟用診斷日誌的步驟
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 流覽至您想要啟用診斷記錄設定的事件方格主題。 
-3. 在左側功能表中，選取 [**監視**] 底下的 [**診斷設定**]。
-4. 在 [**診斷設定**] 頁面上，選取 [**新增診斷設定**]。 
+1. 登錄到 Azure[門戶](https://portal.azure.com)。
+2. 導航到要為其啟用診斷日誌設置的事件網格主題。 
+3. 在左側功能表中的 **"監視"** 下選擇**診斷設置**。
+4. 在 **"診斷設置"** 頁上，選擇"**添加新診斷設置**"。 
     
-    ![[新增診斷設定] 按鈕](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
-5. 指定診斷設定的**名稱**。 
+    ![添加診斷設置按鈕](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
+5. 為診斷設置指定**名稱**。 
 
-    ![診斷設定-名稱](./media/enable-diagnostic-logs-topic/diagnostic-settings-name.png)     
-6. 啟用記錄檔的一個或多個 capture 目的地，然後選取先前建立的 capture 資源加以設定。 
-    - 如果您選取 [封存**至儲存體帳戶**]，請選取 [**儲存體帳戶-設定**]，然後在您的 Azure 訂用帳戶中選取儲存體帳戶。 
+    ![診斷設置 - 名稱](./media/enable-diagnostic-logs-topic/diagnostic-settings-name.png)     
+6. 為日誌啟用一個或多個捕獲目標，然後通過選擇以前創建的捕獲資源來配置它們。 
+    - 如果選擇 **"存檔到存儲帳戶**"，請選擇 **"存儲帳戶 - 配置**"，然後在 Azure 訂閱中選擇存儲帳戶。 
 
-        ![封存至 Azure 儲存體帳戶](./media/enable-diagnostic-logs-topic/archive-storage.png)
-    - 如果您選取 [**串流至事件中樞**]，請選取 [**事件中樞-設定**]，然後選取 [事件中樞命名空間]、[事件中樞] 和 [存取原則]。 
-        ![串流到事件中樞](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
-    - 如果您選取 [**傳送至 Log analytics**]，請選取 [log analytics 工作區]。
+        ![存檔到 Azure 存儲帳戶](./media/enable-diagnostic-logs-topic/archive-storage.png)
+    - 如果選擇 **"流到事件中心**"，請選擇**事件中心 - 配置**，然後選擇事件中心命名空間、事件中心和訪問策略。 
+        ![資料流到事件中心](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+    - 如果選擇 **"發送到日誌分析**"，請選擇日誌分析工作區。
         ![傳送至 Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-7. 在 [**記錄**檔] 區段中選取**DeliveryFailures**和**PublishFailures**選項。 
-    ![選取失敗](./media/enable-diagnostic-logs-topic/log-failures.png)
-8. 選取 [儲存]。 選取右上角的 [ **X** ] 以關閉頁面。 
-9. 現在，回到 [**診斷設定**] 頁面，確認您在 [**診斷設定**] 資料表中看到新的專案。 
-    ![清單中的診斷設定](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+7. 在 **"日誌"** 部分中選擇 **"傳遞失敗**"和 **"發佈失敗"** 選項。 
+    ![選擇故障](./media/enable-diagnostic-logs-topic/log-failures.png)
+8. 選取 [儲存]****。 在右角選擇**X**以關閉頁面。 
+9. 現在，回到 **"診斷設置"** 頁上，確認在 **"診斷設置"** 表中看到新條目。 
+    ![清單中的診斷設置](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
-     您也可以啟用主題所有計量的收集。 
+     您還可以啟用本主題的所有指標的集合。 
 
 ## <a name="next-steps"></a>後續步驟
-如果您需要更多協助，請在[Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-eventgrid)中張貼您的問題，或開啟[支援票證](https://azure.microsoft.com/support/options/)。 
+如果您需要更多説明，請在[堆疊溢位論壇](https://stackoverflow.com/questions/tagged/azure-eventgrid)中發佈您的問題或打開[支援票證](https://azure.microsoft.com/support/options/)。 

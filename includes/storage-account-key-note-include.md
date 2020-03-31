@@ -9,14 +9,14 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75460543"
 ---
-## <a name="protect-your-access-keys"></a>保護您的存取金鑰
+## <a name="protect-your-access-keys"></a>保護您的訪問金鑰
 
-您的儲存體帳戶存取金鑰類似于儲存體帳戶的根密碼。 請務必小心保護您的存取金鑰。 使用 Azure Key Vault 來安全地管理和旋轉金鑰。 避免將存取金鑰散發給其他使用者、進行硬式編碼，或將其儲存在其他人可以存取的純文字位置。 如果您認為金鑰可能遭到入侵，請將其旋轉。
+存儲帳戶訪問金鑰類似于存儲帳戶的根密碼。 始終小心保護訪問金鑰。 使用 Azure 金鑰保存庫安全地管理和旋轉金鑰。 避免將訪問金鑰分發給其他使用者，對其進行硬編碼，或以其他人可訪問的純文字保存到任何位置。 如果您認為金鑰可能已洩露，請輪換這些金鑰。
 
-可能的話，請使用 Azure Active Directory （Azure AD）來授權對 Blob 和佇列儲存體的要求，而不是共用金鑰。 Azure AD 透過共用金鑰提供更優異的安全性和易用性。 如需使用 Azure AD 授權存取資料的詳細資訊，請參閱[使用 Azure Active Directory 授權存取 Azure blob 和佇列](../articles/storage/common/storage-auth-aad.md)。
+如果可能，請使用 Azure 活動目錄 （Azure AD） 授權對 Blob 和佇列存儲的請求，而不是共用金鑰。 與共享金鑰一起，Azure AD 提供了卓越的安全性和易用性。 有關使用 Azure AD 授權訪問資料的詳細資訊，請參閱[使用 Azure 活動目錄 授權訪問 Azure blob 和佇列](../articles/storage/common/storage-auth-aad.md)。

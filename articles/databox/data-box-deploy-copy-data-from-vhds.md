@@ -1,5 +1,5 @@
 ---
-title: 教學課程：從 Vhd 複製到受控磁片
+title: 教學課程：從 VHD 複製到受控磁碟
 titleSuffix: Azure Data Box
 description: 了解如何將 VHD 的資料從內部部署 VM 工作負載複製到 Azure 資料箱
 services: databox
@@ -9,36 +9,38 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380196"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501852"
 ---
-# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用資料箱在 Azure 中將資料匯入為受控磁片
+# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用資料箱匯入資料以作為 Azure 中的受控磁碟
 
 本教學課程示範如何使用 Azure 資料箱，將內部部署 VHD 移轉到 Azure 中的受控磁碟。 來自內部部署 VM 的 VHD 會複製到資料箱以作為分頁 Blob，並上傳至 Azure 以作為受控磁碟。 這些受控磁碟接著可以連結到 Azure VM。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 檢閱必要條件
 > * 連線至資料箱
 > * 將資料複製到資料箱
-
 
 ## <a name="prerequisites"></a>Prerequisites
 
 在您開始前，請確定：
 
 1. 您已完成[教學課程：設定 Azure 資料箱](data-box-deploy-set-up.md)。
-2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]。
+2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]  。
 3. 您已連線至高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，請使用 1 GbE 資料連結，但是複製速度會受到影響。
 4. 您已檢閱：
 
     - [Azure 物件大小限制中所支援的受控磁碟大小](data-box-limits.md#azure-object-size-limits)。
     - [Azure 受控磁碟簡介](/azure/virtual-machines/windows/managed-disks-overview)。 
+
+5. 在確認資料箱將您的資料移轉至 Azure 儲存體之前，您保留了一份來源資料複本。
 
 ## <a name="connect-to-data-box"></a>連線至資料箱
 
@@ -69,14 +71,14 @@ ms.locfileid: "78380196"
 
 如果使用 Windows Server 主機電腦，請依照下列步驟來連線至資料箱。
 
-1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 按一下 [取得認證]，以取得與您資源群組相關聯之共用的存取認證。 您也可以在 Azure 入口網站，從 [裝置詳細資料] 中取得存取認證。
+1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]  。 按一下 [取得認證]  ，以取得與您資源群組相關聯之共用的存取認證。 您也可以在 Azure 入口網站，從 [裝置詳細資料]  中取得存取認證。
 
     > [!NOTE]
     > 適用於受控磁碟之所有共用的認證均完全相同。
 
     ![取得共用認證 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. 從 [存取共用及複製資料] 對話方塊中，複製共用的**使用者名稱**和**密碼**。 按一下 [確定]。
+2. 從 [存取共用及複製資料] 對話方塊中，複製共用的**使用者名稱**和**密碼**。 按一下 [確定]  。
     
     ![取得共用認證 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -93,12 +95,12 @@ ms.locfileid: "78380196"
 
     ```
     C:\>net use \\169.254.250.200\mydbmdrgl_MDisk /u:mdisk
-    Enter the password for ‘mdisk’ to connect to '169.254.250.200':
+    Enter the password for 'mdisk' to connect to '169.254.250.200':
     The command completed successfully.
     C: \>
     ```
 
-4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>\<ShareName>`。 按一下 [確定] 以開啟檔案總管。
+4. 按 Windows + R。在 [執行]  視窗中，指定 `\\<device IP address>\<ShareName>`。 按一下 [確定]  以開啟檔案總管。
     
     ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
@@ -111,11 +113,11 @@ ms.locfileid: "78380196"
 
 如果您使用 Linux 主機電腦，請執行下列步驟設定資料箱，以允許 NFS 用戶端的存取。
 
-1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。
+1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製]  頁面。 在 [NFS 設定]  下方，按一下 [NFS 用戶端存取]  。
 
     ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
+2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]  。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]  。
 
     ![設定 NFS 用戶端存取 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -150,7 +152,7 @@ ms.locfileid: "78380196"
 
 ![[連線並複製] 頁面上沒有錯誤](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-如果複製流程中發生錯誤，請從 [連線並複製] 頁面中下載記錄。
+如果複製流程中發生錯誤，請從 [連線並複製]  頁面中下載記錄。
 
 - 如果您複製的檔案並非 512 位元組規格，則不會將該檔案以分頁 Blob 形式上傳至您的暫存儲存體帳戶。 您將在記錄中看到錯誤。 移除檔案，並複製 512 位元組規格的檔案。
 
@@ -164,7 +166,7 @@ ms.locfileid: "78380196"
     
 ![確認儀表板上的可用空間和已使用的空間](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-複製作業完成後，您就可以移至 [準備寄送]。
+複製作業完成後，您就可以移至 [準備寄送]  。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中樞將推播通知傳送至 Xamarin iOS | Microsoft Docs
+title: 使用 Azure 通知中樞將推播通知傳送至 Xamarin | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞將推播通知傳送至 Xamarin.iOS 應用程式。
 services: notification-hubs
 keywords: ios 推播通知,推播訊息,推播通知
@@ -18,12 +18,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: e693d771d9a4726a1a9d698b5b7ed61d19197bdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07417427385806e61db0d7d83624d923e92eb693
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895025"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127021"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 Xamarin.iOS 應用程式
 
@@ -44,7 +44,7 @@ ms.locfileid: "74895025"
 > * 針對 iOS 推播通知設定您的通知中樞
 > * 傳送測試推播通知
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 最新版的 [Xcode][Install Xcode]

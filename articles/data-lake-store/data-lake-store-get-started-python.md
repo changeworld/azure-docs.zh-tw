@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76290609"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 對 Azure Data Lake Storage Gen1 進行帳戶管理作業
@@ -27,15 +27,15 @@ ms.locfileid: "76290609"
 >
 >
 
-瞭解如何使用適用于 Azure Data Lake Storage Gen1 的 Python SDK 來執行基本帳戶管理作業，例如建立 Data Lake Storage Gen1 帳戶、列出 Data Lake Storage Gen1 帳戶等。如需有關如何使用 Python 在 Data Lake Storage Gen1 上執行檔案系統作業的指示，請參閱[使用 python Data Lake Storage Gen1 上的檔案系統作業](data-lake-store-data-operations-python.md)。
+瞭解如何使用 Azure 資料存儲第 1 代的 Python SDK 執行基本帳戶管理操作，例如創建資料存儲庫第 1 代帳戶、列出資料存儲庫第 1 代帳戶等。有關如何使用 Python 對資料存儲 1 執行檔案系統操作的說明，請參閱使用 Python[在資料湖存儲第 1 代上執行檔案系統操作](data-lake-store-data-operations-python.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Python**。 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
+* **Python**. 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
 
-* **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **Azure 資源群組**。 如需指示，請參閱[建立 Azure 資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md)。
+* **Azure 資源組**。 如需指示，請參閱[建立 Azure 資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 ## <a name="install-the-modules"></a>安裝模組
 
@@ -55,7 +55,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
-1. 在您選定的整合式開發環境 (IDE) 中建立新的 Python 應用程式，例如 **mysample.py**。
+1. 在您選擇的 IDE 中，創建一個新的 Python 應用程式，例如 **，mysample.py**。
 
 2. 新增以下程式碼片段以匯入必要模組
 
@@ -133,7 +133,7 @@ pip install azure-datalake-store
 ## <a name="next-steps"></a>後續步驟
 * [使用 Python 對 Data Lake Storage Gen1 進行檔案系統作業](data-lake-store-data-operations-python.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [azure-datalake-store Python (Filesystem) reference (azure-datalake-store Python (檔案系統) 參考)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [與 Azure Data Lake Storage Gen1 相容的開放原始碼巨量資料應用程式](data-lake-store-compatible-oss-other-applications.md)

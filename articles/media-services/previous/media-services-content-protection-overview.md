@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務保護您的內容 | Microsoft Docs
-description: 本文提供 Azure 媒體服務 v2 的內容保護總覽。
+description: 本文概述了 Azure 媒體服務 v2 的內容保護。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976276"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460954"
 ---
 # <a name="content-protection-overview"></a>內容保護概觀 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
 
 您可以使用 Azure 媒體服務來保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 使用媒體服務，您就能傳遞利用進階加密標準 (AES-128) 或下列三個主要數位版權管理 (DRM) 系統中任一個所動態加密的即時與隨選內容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，可傳遞 AES 金鑰和 DRM (PlayReady、Widevine 和 FairPlay) 授權給授權用戶端。 
 
@@ -35,12 +35,17 @@ ms.locfileid: "74976276"
 本文說明可了解如何使用媒體服務進行內容保護的相關概念與術語。 本文也會提供討論如何保護內容的文章連結。 
 
 ## <a name="dynamic-encryption"></a>動態加密
- 您可以使用媒體服務，來傳遞藉由使用 PlayReady、Widevine 或 FairPlay 並透過 AES 未加密金鑰或 DRM 加密所動態加密的內容。 您目前可以加密 HTTP 即時串流 (HLS)、MPEG DASH 和 Smooth Streaming 格式。 不支援在漸進式下載上加密。 每一種加密方法都支援下列串流處理通訊協定：
 
+您可以使用媒體服務，來傳遞藉由使用 PlayReady、Widevine 或 FairPlay 並透過 AES 未加密金鑰或 DRM 加密所動態加密的內容。 如果內容使用 AES 清除金鑰進行加密，並且通過 HTTPS 發送，則在到達用戶端之前不會清除內容。 
+
+每一種加密方法都支援下列串流處理通訊協定：
+ 
 - AES：MPEG DASH、 Smooth Streaming 和 HLS
 - PlayReady：MPEG DASH、 Smooth Streaming 和 HLS
 - Widevine：MPEG DASH
 - FairPlay：HLS
+
+不支援在漸進式下載上加密。 
 
 若要加密資產，您需要建立加密內容金鑰與您資產的關聯，同時也要設定金鑰的授權原則。 內容金鑰可由您指定或由媒體服務自動產生。
 
@@ -48,7 +53,7 @@ ms.locfileid: "74976276"
 
 播放程式要求串流時，媒體服務便會使用 AES 清除金鑰或 DRM 加密，使用指定的金鑰動態加密您的內容。 為了將串流解密，播放程式會向媒體服務金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 清除金鑰與 DRM
+## <a name="aes-128-clear-key-vs-drm"></a>AES-128 清除鍵與 DRM
 客戶通常不知道他們應該使用 AES 加密，還是 DRM 系統。 這兩個系統的主要差異是，使用 AES 加密時，系統會以未加密格式 (「純文字」) 將內容金鑰傳輸至用戶端。 因此，就能在用戶端的網路追蹤中，以純文字形式檢視用來加密內容的金鑰。 AES-128 未加密金鑰加密適用於檢視者為受信任合作對象的使用案例 (例如，將在公司內部散發的公司影片加密，以供員工檢視)。
 
 相較於 AES-128 未加密金鑰加密，PlayReady、Widevine 及 FairPlay 全都會提供較高層級的加密。 內容金鑰會以加密格式傳輸。 此外，解密會在安全環境中，惡意使用者更難攻擊的作業系統層級上進行處理。 針對檢視者可能不是受信任的合作對象，而且您需要最高層級安全性的使用案例，建議使用 DRM。
@@ -75,6 +80,19 @@ Playready 和 Widevine 會利用一般加密 (AES CTR 模式)。 FairPlay 會利
 
 設定權杖限制的原則時，您必須指定主要驗證金鑰、簽發者和對象參數。 主要驗證金鑰包含簽署權杖用的金鑰。 簽發者為發行權杖的安全性權杖服務。 對象 (有時稱為「範圍」) 描述權杖或權杖獲授權存取之資源的用途。 媒體服務金鑰傳遞服務會驗證權杖中的這些值符合在範本中的值。
 
+### <a name="token-replay-prevention"></a>權杖重播預防
+
+*權杖重播防止*功能允許媒體服務客戶對同一權杖可用於請求金鑰或許可證的次數設置限制。 客戶可以在權杖中添加類型`urn:microsoft:azure:mediaservices:maxuses`聲明，其中值是權杖可用於獲取許可證或金鑰的次數。 所有對金鑰傳遞具有相同權杖的後續請求都將返回未經授權的回應。 瞭解如何在[DRM 示例中](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)添加聲明。
+ 
+#### <a name="considerations"></a>考量
+
+* 客戶必須控制權杖生成。 聲明需要放在權杖本身中。
+* 使用此功能時，過期時間超過一小時，並且使用未經授權的回應拒絕具有過期時間超過一小時的權杖的請求。
+* 權杖由其簽名唯一標識。 對負載的任何更改（例如，更新到到期時間或聲明）都會更改權杖的簽名，它將算作金鑰交付以前未遇到的新權杖。
+* 如果權杖已超過客戶設置的值，`maxuses`則重播將失敗。
+* 此功能可用於所有現有的受保護內容（只需更改頒發的權杖）。
+* 此功能適用于 JWT 和 SWT。
+
 ## <a name="streaming-urls"></a>串流 URL
 如果使用一個以上 DRM 來加密您的資產，請使用串流 URL 中的加密標籤：(format='m3u8-aapl', encryption='xxx')。
 
@@ -84,20 +102,21 @@ Playready 和 Widevine 會利用一般加密 (AES CTR 模式)。 FairPlay 會利
 * 如果只有一個加密套用到資產，則無須在 URL 中指定加密類型。
 * 加密類型不區分大小寫。
 * 可以指定下列加密類型︰
+
   * **cenc**︰適用於 PlayReady 或 Widevine (一般加密)
   * **cbcs-aapl**：適用於 FairPlay (AES CBC 加密)
   * **cbc**：適用於 AES 信封加密
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* Widevine 是 Google Inc. 所提供的服務，並受到 Google，Inc. 的服務條款和隱私權原則所約束。
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="next-steps"></a>後續步驟
 下列文章描述可協助您開始使用內容保護的後續步驟：
 
 * [使用儲存體加密保護](media-services-rest-storage-encryption.md)
 * [使用 AES 加密保護](media-services-protect-with-aes128.md)
-* [使用 PlayReady 和/或 Widevine 保護](media-services-protect-with-playready-widevine.md)
+* [使用播放就緒和/或寬維文進行保護](media-services-protect-with-playready-widevine.md)
 * [使用 FairPlay 保護](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>相關連結

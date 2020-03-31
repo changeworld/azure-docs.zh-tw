@@ -1,25 +1,25 @@
 ---
-title: 地理編碼涵蓋範圍 |Microsoft Azure 對應
-description: 將位置位址轉換成緯度和經度座標的程式稱為地理編碼。 在本文中，您將瞭解 Microsoft Azure Maps 中具有地理編碼涵蓋範圍的區域。
-author: farah-alyasari
-ms.author: v-faalya
+title: 地理編碼覆蓋率 |微軟 Azure 地圖
+description: 將位置位址轉換為緯度和經度座標的過程稱為地理編碼。 在本文中，您將瞭解在 Microsoft Azure 地圖中具有地理編碼覆蓋範圍的區域。
+author: philmea
+ms.author: philmea
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335658"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure 地圖地理編碼涵蓋範圍
 
-當您使用 Azure 地圖服務搜尋位置時，搜尋服務（例如[取得搜尋位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)）會接受您的搜尋字詞，並傳回緯度和經度座標。 此程式稱為地理編碼。 不過，對於所有區域和國家/地區而言，Azure 地圖服務沒有相同層級的資訊和精確度。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。 
+使用 Azure 地圖搜索位置時，搜索服務（例如[獲取搜索位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)）會獲取搜索字詞並返回緯度和經度座標。 此過程稱為地理編碼。 但是，Azure 地圖對於所有區域和國家/地區的資訊和準確性並不相同。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。 
 
-在國家/地區地理編碼的能力取決於道路資料涵蓋範圍，以及地理編碼服務的地理編碼精確度。 下列分類是用來指定每個國家/地區的地理編碼支援層級。
+國家/地區的地理編碼能力取決於道路資料覆蓋率和地理編碼服務的地理編碼精度。 使用以下分類指定每個國家/地區的地理編碼支援級別。
 * **地址點** - 地址資料可解析為地址地塊 (屬性界限) 內的緯度/經度座標。 有時稱為「屋頂」精確。 這是地址可用的最高層級精確度。 
 * **門牌號碼** - 地址會插入到街道上的緯度/經度座標。
 * **街道層級** - 地址會解析為包含地址的街道緯度/經度座標。 可能不會處理門牌號碼。
@@ -83,8 +83,8 @@ ms.locfileid: "77210050"
 | 美國                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 烏拉圭                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 委內瑞拉                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| 英屬維爾京群島                              |                 |                |              |      ✓     |          ✓         |
-| 美國英屬維爾京群島                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 英屬維京群島                              |                 |                |              |      ✓     |          ✓         |
+| 美屬維爾京群島                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>亞太地區
 

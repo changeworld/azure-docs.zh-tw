@@ -1,97 +1,97 @@
 ---
-title: Linkerd 的總覽
-description: 取得 Linkerd 的總覽
+title: 連結概述
+description: 獲取連結的概述
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593762"
 ---
-# <a name="linkerd"></a>Linkerd
+# <a name="linkerd"></a>林克德
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-[Linkerd][linkerd]是一種便於使用且輕量的服務網格。
+[Linkerd][linkerd]是一個便於使用且輕量的服務網格。
 
 ## <a name="architecture"></a>架構
 
-Linkerd 提供由超細[Linkerd][linkerd-proxy]特殊化 proxy sidecar 組成的資料平面。 這些智慧型 proxy 會控制進出網狀應用程式和工作負載的所有網路流量。 Proxy 也會透過[Prometheus][prometheus]計量端點來公開計量。
+Linkerd 提供由超輕型[Linkerd][linkerd-proxy]專用代理側車組成的資料平面。 這些智慧代理控制網格化應用和工作負載中進出的所有網路流量。 代理還通過[Prometheus][prometheus]指標終結點公開指標。
 
-控制平面會透過下列[元件][linkerd-architecture]來管理設定和匯總的遙測：
+控制平面通過以下[元件][linkerd-architecture]管理配置和聚合遙測：
 
-- **控制器**-提供可驅動 Linkerd CLI 和儀表板的 api。 提供 proxy 的設定。
+- **控制器**- 提供驅動連結 CLI 和儀表板的 api。 為代理提供配置。
 
-- **點擊**-在要求和回應上建立即時監看式。
+- **點擊**- 建立對請求和回應的即時監視。
 
-- 身分**識別**-提供身分識別和安全性功能，允許服務之間的 mTLS。
+- **標識**- 提供允許服務之間 mTLS 的標識和安全功能。
 
-- **Web** -提供 Linkerd 儀表板。
-
-
-下列架構圖表示范資料平面和控制平面內的各種元件如何互動。
+- **Web** - 提供連結儀表板。
 
 
-![Linkerd 元件和架構的總覽。](media/servicemesh/linkerd/about-architecture.png)
+下面的體系結構圖演示了資料平面和控制平面中的各個元件如何交互。
 
 
-## <a name="selection-criteria"></a>選取準則
+![連結元件和體系結構概述。](media/servicemesh/linkerd/about-architecture.png)
 
-針對您的工作負載評估 Linkerd 時，請務必瞭解並考慮下列各方面：
+
+## <a name="selection-criteria"></a>選擇標準
+
+在評估 Linkerd 的工作負載時，瞭解並考慮以下方面非常重要：
 
 - [設計原則](#design-principles)
-- [Capabilities](#capabilities)
+- [功能](#capabilities)
 - [案例](#scenarios)
 
 
 ### <a name="design-principles"></a>設計原則
 
-下列設計原則會[引導][design-principles]Linkerd 專案：
+以下設計原則[指導][design-principles]連結專案：
 
-- **保持簡單**-必須便於使用和瞭解。
+- **保持簡單**- 必須便於使用和理解。
 
-- 將**資源需求降至最低**-讓效能和資源成本降至最低。
+- **最小化資源需求**- 將性能和資源成本降至最低。
 
-- **只需工作**-不要中斷現有的應用程式，也不需要複雜的設定。
+- **只需工作**- 不要破壞現有應用程式，也不需要複雜的配置。
 
 
 ### <a name="capabilities"></a>功能
 
-Linkerd 提供下列功能集：
+Linkerd 提供以下功能集：
 
-- **網格**–內建調試選項
+- **網格**= 內置調試選項
 
-- **流量管理**–分割、超時、重試、輸入
+- **流量管理**– 拆分、超時、重試、入口
 
-- **安全性**–加密（mTLS），每隔24小時 autorotated 憑證
+- **安全性**+ 加密 （mTLS），證書每 24 小時自動旋轉一次
 
-- **可檢視性**–黃金計量、點按、追蹤、服務設定檔和每一路線計量、具有拓撲圖形的 web 儀表板、prometheus、grafana
+- **可觀測性**– 黃金指標、點擊、跟蹤、服務設定檔和每個路由指標、帶拓撲圖的 Web 儀表板、原型、grafana
 
 
 ### <a name="scenarios"></a>案例
 
-Linkerd 非常適合和建議用於下列案例：
+Linkerd 非常適合並針對以下方案建議：
 
-- 只有基本的功能需求集可輕鬆使用
+- 簡單使用，只需基本功能要求集
 
-- 低延遲、低負擔，著重于可檢視性和簡單的流量管理
+- 低延遲、低開銷，注重可觀察性和簡單的流量管理
 
 
 ## <a name="next-steps"></a>後續步驟
 
-下列檔會說明如何在 Azure Kubernetes Service （AKS）上安裝 Linkerd：
+以下文檔介紹如何在 Azure 庫伯奈斯服務 （AKS） 上安裝 Linkerd：
 
 > [!div class="nextstepaction"]
-> [在 Azure Kubernetes Service 中安裝 Linkerd （AKS）][linkerd-install]
+> [在 Azure 庫伯奈斯服務 （AKS） 中安裝連結][linkerd-install]
 
-您也可以進一步探索 Linkerd 功能和架構：
+您還可以進一步探索 Linkerd 功能和體系結構：
 
-- [Linkerd 功能][linkerd-features]
-- [Linkerd 架構][linkerd-architecture]
+- [連結功能][linkerd-features]
+- [連結式體系結構][linkerd-architecture]
 
 <!-- LINKS - external -->
 [linkerd]: https://linkerd.io/2/overview/

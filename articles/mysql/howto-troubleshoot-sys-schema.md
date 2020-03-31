@@ -1,21 +1,21 @@
 ---
-title: 利用 sys_schema 適用於 MySQL 的 Azure 資料庫
-description: 瞭解如何使用 sys_schema 找出效能問題，並在適用於 MySQL 的 Azure 資料庫中維護資料庫。
+title: 利用sys_schema - MySQL 的 Azure 資料庫
+description: 瞭解如何使用sys_schema查找性能問題並維護 MySQL 的 Azure 資料庫中的資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
-ms.translationtype: MT
+ms.date: 3/18/2020
+ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067872"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
 
-MySQL performance_schema，第一次在 MySQL 5.5 中提供，可讓您檢測許多重要的伺服器資源，例如記憶體配置、預存程式、中繼資料鎖定等等。不過，performance_schema 包含超過80個數據表，而且取得必要的資訊通常需要在 performance_schema 中聯結資料表，以及來自 information_schema 的資料表。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
+MySQL performance_schema在 MySQL 5.5 中首次提供，它為許多重要的伺服器資源（如記憶體分配、存儲程式、中繼資料鎖定等）提供檢測。但是，performance_schema包含 80 多個表，獲取必要的資訊通常需要performance_schema聯合資料表以及information_schema表。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
 
 ![sys_schema 的檢視](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
@@ -29,7 +29,7 @@ sys_schema 中有 52 個檢視，每個檢視分別具有下列其中一個前�
 - User：使用者所耗用並依使用者分類的資源。 範例包括檔案 I/O、連線和記憶體。
 - Wait：依主機或使用者分類的等候事件。
 
-現在，讓我們看看 sys_schema 的一些常見使用模式。 首先，我們會將使用模式分成兩個類別：**效能微調**和**資料庫維護**。
+現在，讓我們來看看sys_schema的一些常見使用模式。 首先，我們將使用模式分為兩類：**性能調整**和**資料庫維護**。
 
 ## <a name="performance-tuning"></a>效能微調
 
@@ -55,7 +55,7 @@ IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_su
 
 ![依陳述式分類的摘要](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-在此範例中，適用於 MySQL 的 Azure 資料庫花費了 53 分鐘將 slog 查詢記錄排清 44579 次。 這不僅耗時，也需要許多 IO。 您可以藉由停用慢速查詢記錄，或降低慢速查詢記錄的頻率，在 Azure 入口網站中減少這項活動。
+在此範例中，適用於 MySQL 的 Azure 資料庫花費了 53 分鐘將 slog 查詢記錄排清 44579 次。 這是很長一段時間和許多I。 您可以藉由停用慢速查詢記錄，或降低慢速查詢記錄的頻率，在 Azure 入口網站中減少這項活動。
 
 ## <a name="database-maintenance"></a>資料庫維護
 

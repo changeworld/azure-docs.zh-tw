@@ -1,6 +1,6 @@
 ---
-title: 使用 HTTP 或 HTTPS 呼叫服務端點
-description: 從 Azure Logic Apps 將輸出 HTTP 或 HTTPS 要求傳送至服務端點
+title: 使用 HTTP 或 HTTPS 調用服務終結點
+description: 從 Azure 邏輯應用向服務終結點發送出站 HTTP 或 HTTPS 請求
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
 ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297185"
 ---
-# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫透過 HTTP 或 HTTPS 的服務端點
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>通過 HTTP 或 HTTPS 從 Azure 邏輯應用調用服務終結點
 
-透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和內建的 HTTP 觸發程式或動作，您可以建立自動化的工作和工作流程，以透過 HTTP 或 HTTPS 將要求傳送至服務端點。 例如，您可以根據特定排程來檢查該端點，以監視網站的服務端點。 當指定的事件發生在該端點時（例如您的網站停止運作），事件會觸發邏輯應用程式的工作流程，並在該工作流程中執行動作。 如果您想要改為接收和回應輸入 HTTPS 呼叫，請使用內建的[要求觸發程式或回應動作](../connectors/connectors-native-reqres.md)。
+使用[Azure 邏輯應用](../logic-apps/logic-apps-overview.md)和內置的 HTTP 觸發器或操作，您可以創建自動任務和工作流，通過 HTTP 或 HTTPS 向服務終結點發送請求。 例如，您可以通過按特定計劃檢查終結點來監視網站的服務終結點。 當指定的事件發生在該終結點（如您的網站關閉）時，該事件將觸發邏輯應用的工作流並運行該工作流中的操作。 如果要接收和回應入站 HTTPS 調用，請使用內置[的請求觸發器或回應操作](../connectors/connectors-native-reqres.md)。
 
 > [!NOTE]
-> 根據目標端點的功能，HTTP 連接器支援傳輸層安全性（TLS）版本1.0、1.1 和1.2。 Logic Apps 使用支援的最高版本來與端點協調。 例如，如果端點支援1.2，連接器會先使用1.2。 否則，連接器會使用下一個支援的最高版本。
+> 基於目標終結點的功能，HTTP 連接器支援傳輸層安全 （TLS） 版本 1.0、1.1 和 1.2。 邏輯應用與終結點協商，協商使用可能支援的最高版本。 例如，如果終結點支援 1.2，則連接器首先使用 1.2。 否則，連接器將使用下一個受支援的最高版本。
 
-若要依週期性排程檢查或*輪詢*端點，請[新增 HTTP 觸發](#http-trigger)程式做為工作流程中的第一個步驟。 每次觸發程式檢查端點時，觸發程式會呼叫或傳送*要求*至端點。 端點的回應會決定是否執行邏輯應用程式的工作流程。 觸發程式會將端點回應中的任何內容傳遞至邏輯應用程式中的動作。
+要按定期計畫檢查或*輪詢*終結點，[請添加 HTTP 觸發器](#http-trigger)作為工作流中的第一步。 每次觸發器檢查終結點時，觸發器都會調用終結點或向終結點發送*請求*。 端點的回應會決定是否執行邏輯應用程式的工作流程。 觸發器將終結點回應中的任何內容傳遞到邏輯應用中的操作。
 
-若要從工作流程中的任何其他位置呼叫端點，請[新增 HTTP 動作](#http-action)。 端點的回應會決定工作流程的剩餘動作如何執行。
+要從工作流中的任意位置調用終結點，[請添加 HTTP 操作](#http-action)。 端點的回應會決定工作流程的剩餘動作如何執行。
 
 > [!IMPORTANT]
-> 如果 HTTP 觸發程式或動作包含這些標頭，Logic Apps 會從產生的要求訊息中移除這些標頭，而不會顯示任何警告或錯誤：
+> 如果 HTTP 觸發器或操作包含這些標頭，邏輯應用將從生成的請求消息中刪除這些標頭，而不會顯示任何警告或錯誤：
 >
 > * `Accept-*`
 > * `Allow`
-> * `Content-*`，但有下列例外狀況： `Content-Disposition`、`Content-Encoding`和 `Content-Type`
+> * `Content-*`除這些例外情況外： `Content-Disposition` `Content-Encoding`和`Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Host`
@@ -39,85 +39,85 @@ ms.locfileid: "79297185"
 > * `Set-Cookie`
 > * `Transfer-Encoding`
 >
-> 雖然 Logic Apps 不會阻止您儲存使用 HTTP 觸發程式或動作與這些標頭的邏輯應用程式，Logic Apps 會忽略這些標頭。
+> 儘管邏輯應用不會阻止您保存使用這些標頭的 HTTP 觸發器或操作的邏輯應用，但邏輯應用會忽略這些標頭。
 
-本文說明如何將 HTTP 觸發程式或動作新增至邏輯應用程式的工作流程。
+本文演示如何向邏輯應用的工作流添加 HTTP 觸發器或操作。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 您想要呼叫的目標端點 URL
+* 要調用的目標終結點的 URL
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)？
+* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。 如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用](../logic-apps/logic-apps-overview.md)？
 
-* 您想要從中呼叫目標端點的邏輯應用程式。 若要開始使用 HTTP 觸發程式，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 動作，請使用您想要的任何觸發程式來啟動邏輯應用程式。 這個範例會使用 HTTP 觸發程式做為第一個步驟。
+* 要從何處調用目標終結點的邏輯應用。 要從 HTTP 觸發器開始，[請創建一個空白邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 要使用 HTTP 操作，請使用所需的任何觸發器啟動邏輯應用。 本示例使用 HTTP 觸發器作為第一步。
 
 <a name="http-trigger"></a>
 
-## <a name="add-an-http-trigger"></a>新增 HTTP 觸發程式
+## <a name="add-an-http-trigger"></a>添加 HTTP 觸發器
 
-此內建觸發程式會對指定的端點 URL 進行 HTTP 呼叫，並傳迴響應。
+此內置觸發器對終結點的指定 URL 進行 HTTP 調用並返回回應。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 在邏輯應用程式設計工具中開啟空白邏輯應用程式。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。 在邏輯應用設計器中打開空白邏輯應用。
 
-1. 在設計工具的搜尋方塊下，選取 [**內建**]。 在搜尋方塊中，輸入 `http` 作為篩選條件。 從**觸發**程式清單中，選取**HTTP**觸發程式。
+1. 在設計器的搜索框下，選擇**內置**。 在搜尋方塊中，輸入 `http` 作為篩選條件。 從**觸發器**清單中選擇**HTTP**觸發器。
 
    ![選取 HTTP 觸發程序](./media/connectors-native-http/select-http-trigger.png)
 
-   這個範例會將觸發程式重新命名為「HTTP 觸發程式」，讓步驟有更具描述性的名稱。 此外，此範例稍後會新增 HTTP 動作，而且這兩個名稱都必須是唯一的。
+   本示例將觸發器重命名為"HTTP 觸發器"，以便步驟具有更具描述性的名稱。 此外，該示例稍後添加一個 HTTP 操作，並且兩個名稱都必須是唯一的。
 
-1. 提供您想要包含在目標端點呼叫中的[HTTP 觸發程式參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)值。 針對您想要讓觸發程式檢查目標端點的頻率，設定週期。
+1. 提供要在調用目標終結點時包含的[HTTP 觸發器參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)的值。 設置重複，以表示您希望觸發器檢查目標終結點的頻率。
 
    ![輸入 HTTP 觸發程序參數](./media/connectors-native-http/http-trigger-parameters.png)
 
-   如果您選取 [**無**] 以外的驗證類型，驗證設定會根據您的選擇而有所不同。 如需適用于 HTTP 的驗證類型的詳細資訊，請參閱下列主題：
+   如果選擇"**無"** 以外的身份驗證類型，則身份驗證設置會因您選擇的情況而異。 有關可用於 HTTP 的身份驗證類型的詳細資訊，請參閱以下主題：
 
-   * [將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-   * [使用受控識別來驗證資源的存取權](../logic-apps/create-managed-service-identity.md)
+   * [向出站呼叫添加身份驗證](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用託管標識對資源的身份驗證存取權限](../logic-apps/create-managed-service-identity.md)
 
-1. 若要加入其他可用的參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數。
+1. 要添加其他可用參數，請打開 **"添加新參數**清單"，然後選擇所需的參數。
 
 1. 請使用當引發觸發程序時執行的動作，繼續建置邏輯應用程式的工作流程。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
+1. 完成後，請記住保存邏輯應用。 在設計工具的工具列上，選取 [儲存]****。
 
 <a name="http-action"></a>
 
-## <a name="add-an-http-action"></a>新增 HTTP 動作
+## <a name="add-an-http-action"></a>添加 HTTP 操作
 
-此內建動作會對指定的端點 URL 進行 HTTP 呼叫，並傳迴響應。
+此內置操作對終結點的指定 URL 發出 HTTP 調用並返回回應。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 在邏輯應用程式設計工具中開啟邏輯應用程式。
+1. 登錄到 Azure[門戶](https://portal.azure.com)。 在邏輯應用程式設計工具中開啟邏輯應用程式。
 
-   這個範例會使用 HTTP 觸發程式做為第一個步驟。
+   本示例使用 HTTP 觸發器作為第一步。
 
-1. 在您要新增 HTTP 動作的步驟底下，選取 [**新增步驟**]。
+1. 在要添加 HTTP 操作的步驟下，選擇 **"新建步驟**"。
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號（ **+** ），然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇顯示的加號**+**（），然後選擇 **"添加操作**"。
 
-1. 在 [選擇動作] 底下，選取 [內建]。 在搜尋方塊中，輸入 `http` 作為篩選條件。 從 [**動作**] 清單中，選取 [ **HTTP** ] 動作。
+1. 在 [選擇動作]**** 底下，選取 [內建]****。 在搜尋方塊中，輸入 `http` 作為篩選條件。 從 **"操作"** 清單中，選擇**HTTP**操作。
 
    ![選取 HTTP 動作](./media/connectors-native-http/select-http-action.png)
 
-   這個範例會將動作重新命名為「HTTP 動作」，讓步驟有更具描述性的名稱。
+   本示例將操作重命名為"HTTP 操作"，以便步驟具有更具描述性的名稱。
 
-1. 提供您想要包含在目標端點呼叫中的[HTTP 動作參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)值。
+1. 提供要在調用目標終結點時包含的[HTTP 指令引數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)的值。
 
    ![輸入 HTTP 動作參數](./media/connectors-native-http/http-action-parameters.png)
 
-   如果您選取 [**無**] 以外的驗證類型，驗證設定會根據您的選擇而有所不同。 如需適用于 HTTP 的驗證類型的詳細資訊，請參閱下列主題：
+   如果選擇"**無"** 以外的身份驗證類型，則身份驗證設置會因您選擇的情況而異。 有關可用於 HTTP 的身份驗證類型的詳細資訊，請參閱以下主題：
 
-   * [將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-   * [使用受控識別來驗證資源的存取權](../logic-apps/create-managed-service-identity.md)
+   * [向出站呼叫添加身份驗證](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用託管標識對資源的身份驗證存取權限](../logic-apps/create-managed-service-identity.md)
 
-1. 若要加入其他可用的參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數。
+1. 要添加其他可用參數，請打開 **"添加新參數**清單"，然後選擇所需的參數。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
+1. 完成後，請記住保存邏輯應用。 在設計工具的工具列上，選取 [儲存]****。
 
 ## <a name="content-with-multipartform-data-type"></a>具有多部分/表單資料類型的內容
 
-若要處理在 HTTP 要求中具有 `multipart/form-data` 類型的內容，您可以使用此格式，將包含 `$content-type` 和 `$multipart` 屬性的 JSON 物件新增至 HTTP 要求的主體。
+要處理具有`multipart/form-data`HTTP 要求類型的內容，可以使用此格式添加包含 HTTP`$content-type``$multipart`請求正文 和 屬性的 JSON 物件。
 
 ```json
 "body": {
@@ -133,11 +133,11 @@ ms.locfileid: "79297185"
 }
 ```
 
-例如，假設您有一個邏輯應用程式，它會使用支援 `multipart/form-data` 類型的網站 API，將 Excel 檔案的 HTTP POST 要求傳送至網站。 以下是此動作可能的外觀：
+例如，假設您有一個邏輯應用，它使用該網站的 API 向網站發送 Excel 檔的 HTTP POST 請求，該 API`multipart/form-data`支援該類型。 此操作的外觀：
 
 ![多部分表單資料](./media/connectors-native-http/http-action-multipart.png)
 
-以下是在基礎工作流程定義中顯示 HTTP 動作之 JSON 定義的相同範例：
+下面是在基礎工作流定義中顯示 HTTP 操作的 JSON 定義的同一示例：
 
 ```json
 {
@@ -163,20 +163,20 @@ ms.locfileid: "79297185"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需觸發程式和動作參數的詳細資訊，請參閱下列各節：
+有關觸發器和指令引數的詳細資訊，請參閱以下部分：
 
-* [HTTP 觸發程式參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
-* [HTTP 動作參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
+* [HTTP 觸發參數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP 指令引數](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>輸出詳細資料
 
-以下是 HTTP 觸發程式或動作輸出的詳細資訊，會傳回下列資訊：
+以下是有關 HTTP 觸發器或操作的輸出的詳細資訊，返回此資訊：
 
 | 屬性名稱 | 類型 | 描述 |
 |---------------|------|-------------|
-| headers | 物件 (object) | 要求的標頭 |
-| body | 物件 (object) | JSON 物件 | 具有來自要求之本文內容的物件 |
-| 狀態碼 | int | 來自要求的狀態碼 |
+| headers | 物件 (object) | 請求中的標頭 |
+| body | 物件 (object) | JSON 物件 | 具有請求中正文內容的物件 |
+| 狀態碼 | int | 請求中的狀態碼 |
 |||
 
 | 狀態碼 | 描述 |

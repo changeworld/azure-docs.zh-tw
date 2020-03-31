@@ -9,65 +9,65 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2a42ba8809e6895c9eea9f8762513b7fcaa9eb3a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775273"
 ---
-1. 在 [**建立對等互連** **] 頁面**的 [設定] 索引標籤下，填寫欄位，如下所示。
+1. 在"**創建對等"** 頁上，**在"配置"** 選項卡下填寫欄位，如下所示。
 
-    * 針對 [對**等互連類型**]，選取 [*直接*]。
-    * 針對 [ **Microsoft 網路**]，選擇 [ *AS8075*]。 請勿建立與 ASN 8069 的對等互連。 它會保留給特殊應用程式，而且僅供[Microsoft 對等互連](mailto:peering@microsoft.com)使用。
-    * 選取 [ **SKU** ] 作為 [基本] [*免費*]。 請勿選取 [ *Premium Free* ]，因為它已保留給特殊應用程式。
-    * 選擇您想要設定對等互連的**Metro**位置。
+    * 對於**對等式**，選擇 *"直接*"。
+    * 對於**微軟網路**，請選擇*AS8075。* 不要使用 ASN 8069 創建對等互連。 它保留給特殊應用程式，並且只由[微軟對等互連](mailto:peering@microsoft.com)使用。
+    * 選擇**SKU**作為*基本免費*。 不要選擇*免費高級*，因為它是為特殊應用程式保留的。
+    * 選擇要設置對等互連的 **"地鐵**"位置。
 
         > [!NOTE]
-        > 如果您在選取的**Metro**位置已經有與 Microsoft 的對等互連連線，而且第一次使用入口網站來設定該位置的對等互連，則您現有的對等互連連線會列在 [對**等**連線] 區段中，如下所示。 Microsoft 會自動將這些對等互連連線轉換成 Azure 資源，讓您可以在同一個位置，同時管理所有連線和新的連接。 如需詳細資訊，請參閱[使用入口網站將舊版直接對等互連轉換成 Azure 資源](../howto-legacy-direct-portal.md)。
+        > 如果您在所選**的 Metro**位置中已與 Microsoft 建立了對等互連連接，並且首次使用門戶在該位置設置對等互連，則現有的對等互連連接將列在 **"對等互連連接**"部分，如下所示。 Microsoft 將自動將這些對等連接轉換為 Azure 資源，以便您可以在一個位置管理這些連接以及新連接。 有關詳細資訊[，請參閱使用門戶將舊版直接對等互連轉換為 Azure 資源](../howto-legacy-direct-portal.md)。
         >
 
-1. 在 [對**等**連線] 底下，按一下 [**建立新**的]，為您要設定的每個新連接新增一行。
+1. 在 **"對等互連連接**"下，按一下 **"創建新**"以為要設置的每個新連接添加一行。
 
-    * 若要設定/修改連接設定，請按一下線條的 [編輯] 按鈕。
+    * 要配置/修改連接設置，請按一下行的編輯按鈕。
 
         > [!div class="mx-imgBorder"]
-        > ![對等互連設定-直接編輯](../media/setup-direct-conf-tab-edit.png)
+        > ![對等配置 - 直接編輯](../media/setup-direct-conf-tab-edit.png)
     
-    * 若要刪除一行，請按一下  **...**  按鈕 >**刪除**。
+    * 要刪除一行，請按一下 **...** 按鈕>**刪除**。
 
         > [!div class="mx-imgBorder"]
-        > ![對等互連設定-直接編輯](../media/setup-direct-conf-tab-delete.png)
+        > ![對等配置 - 直接編輯](../media/setup-direct-conf-tab-delete.png)
 
-    * 您必須提供連接的所有設定，如下所示。
+    * 您需要提供連接的所有設置，如下所示。
 
          > [!div class="mx-imgBorder"]
-         > ![對等互連設定-直接連線](../media/setup-direct-conf-tab-connection.png)
+         > ![對等配置 - 直接連接](../media/setup-direct-conf-tab-connection.png)
 
-        1. 選取需要設定連接的對**等互連設施**。
-        1. **會話位址提供者**是用來判斷在您的網路與 Microsoft 之間設定 BGP 會話所需的子網。 如果您能夠提供子網，請選擇 [*對等*]。 否則，請選擇**microsoft**和[microsoft 對等互連](mailto:peering@microsoft.com)來與您聯絡。 請注意，選擇此項將會花費較長的時間，讓 Microsoft 處理對等互連要求。 在某些情況下，Microsoft 可能無法提供會導致要求拒絕的子網。
-        1. 如果您選擇 [**會話位址提供者**] 作為 [*對等*]，請分別在 [**會話 Ipv4 首碼**] 和 [**會話 IPv6 首碼**] 欄位中輸入 IPv4 和 IPv6 位址以及首碼遮罩。
-        1. 在 [**最大通告的 ipv4 位址**] 和 [**最大通告的 IPv6 位址**] 欄位中，輸入您將通告的 ipv4 和 IPv6 首碼數目。
-        1. 調整 [**總頻寬**] 滑杆以反映連線的頻寬。
-        1. 按一下 **[確定]** 儲存您的連線設定。
+        1. 選擇需要設置連接的**對等設施**。
+        1. **會話位址提供程式**用於確定誰提供了在網路和 Microsoft 之間設置 BGP 會話所需的子網。 如果能夠提供子網，請選擇*對等項*。 否則選擇**微軟**和[微軟對等將](mailto:peering@microsoft.com)與您聯繫。 請注意，選擇這樣做，對於 Microsoft 來說，處理對等請求需要更長的時間。 在某些情況下，Microsoft 可能無法提供子網，這將導致請求拒絕。
+        1. 如果選擇**會話位址提供程式**作為*對等位址*，則分別在欄位 **"會話 IPv4 首碼**"和"**會話 IPv6 首碼**"欄位中輸入 IPv4 和 IPv6 位址以及首碼遮罩。
+        1. 輸入您將在欄位中通告的 IPv4 和 IPv6 首碼的數量 **"最大播發的 IPv4 位址**"和 **"最大通告的 IPv6 位址**"。
+        1. 調整**總頻寬**滑塊以反映連接的頻寬。
+        1. 按一下"**確定"** 以保存連接設置。
 
-1. 重複上述步驟，在 Microsoft 與您的網路建立關聯的任何設備上，于先前所選的**Metro**中新增更多連線。
+1. 重複上述步驟，在之前選擇的**Metro**中，在 Microsoft 與您的網路同地連接的任何設施中添加更多連接。
 
-1. 新增所有必要的連線之後，請按一下 [**審核 + 建立**]。
-
-    > [!div class="mx-imgBorder"]
-    > ![對等互連設定索引標籤的最後](../media/setup-direct-conf-tab-final.png)
-
-1. 請注意，入口網站會對您所輸入的資訊執行基本驗證。 這會顯示在頂端的功能區中，如同執行*最後的驗證 ...* 。
+1. 添加所有必需的連接後，按一下"**審閱 + 創建**"。
 
     > [!div class="mx-imgBorder"]
-    > ![對等互連驗證 索引標籤](../media/setup-direct-review-tab-validation.png)
+    > ![對等配置選項卡最終](../media/setup-direct-conf-tab-final.png)
 
-1. 轉換*通過驗證*之後，請按一下 [**建立**] 來驗證您的資訊並提交要求。 如果您需要修改要求，請按一下 [上**一步**]，然後重複上述步驟。
-
-    > [!div class="mx-imgBorder"]
-    > ![對等互連提交](../media/setup-direct-review-tab-submit.png)
-
-1. 提交要求之後，請等候它完成部署。 如果部署失敗，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。 成功的部署將會如下所示。
+1. 請注意，門戶運行您輸入的資訊的基本驗證。 這顯示在頂部的功能區中，如*正在運行最終驗證...*
 
     > [!div class="mx-imgBorder"]
-    > ![對等互連成功](../media/setup-direct-success.png)
+    > ![對等驗證選項卡](../media/setup-direct-review-tab-validation.png)
+
+1. 在它變為*驗證通過*後，驗證您的資訊，並通過按一下"**創建**"提交請求。 如果需要修改請求，請按一下 **"上一步"** 並重複上述步驟。
+
+    > [!div class="mx-imgBorder"]
+    > ![對等提交](../media/setup-direct-review-tab-submit.png)
+
+1. 提交請求後，請等待它完成部署。 如果部署失敗，請與[微軟對等互連](mailto:peering@microsoft.com)。 成功部署將顯示如下。
+
+    > [!div class="mx-imgBorder"]
+    > ![窺視成功](../media/setup-direct-success.png)

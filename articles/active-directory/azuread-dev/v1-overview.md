@@ -1,29 +1,26 @@
 ---
-title: 適用于開發人員的 Azure Active Directory （v1.0）總覽
+title: 開發人員適用的 Azure Active Directory (v1.0) 概觀
 description: 本文提供使用 Azure Active Directory v1.0 端點及平台登入 Microsoft 工作和學校帳戶的概觀。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 638c265fda3c8b331415d54047180b3c0ee2174a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ROBOTS: NOINDEX
+ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263526"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154486"
 ---
-# <a name="azure-active-directory-for-developers-v10-overview"></a>適用于開發人員的 Azure Active Directory （v1.0）總覽
+# <a name="azure-active-directory-for-developers-v10-overview"></a>開發人員適用的 Azure Active Directory (v1.0) 概觀
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -40,9 +37,9 @@ Azure Active Directory (Azure AD) 是一項雲端識別服務，可讓開發人�
 
 ## <a name="get-started"></a>開始使用
 
-v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式庫 (ADAL) SDK，在慣用平台上建置應用程式。 請參閱 **Microsoft 身分識別平台 (適用於開發人員的 Azure Active Directory)** 中的 **v1.0 快速入門**和 [v1.0 教學課程](index.yml)來開始著手。
+v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式庫 (ADAL) SDK，在慣用平台上建置應用程式。 請參閱 [Microsoft 身分識別平台 (適用於開發人員的 Azure Active Directory)](index.yml) 中的 **v1.0 快速入門**和 **v1.0 教學課程**來開始著手。
 
-## <a name="how-to-guides"></a>操作指南
+## <a name="how-to-guides"></a>作法指南
 
 請參閱 **v1.0 操作指南**，以取得 Azure AD 中最常見工作的詳細資訊和逐步解說。
 
@@ -54,11 +51,11 @@ v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式�
 | ----------------------------------------------------------------------------------| --- |
 | [驗證程式庫 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 所提供的程式庫和 SDK 概觀。 |
 | [程式碼範例](sample-v1-code.md)                                  | 所有 Azure AD 程式碼範例的清單。 |
-| [詞彙](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文件中使用的術語和文字定義。 |
+| [字彙表](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文件中使用的術語和文字定義。 |
 |  |  |
 
 ## <a name="videos"></a>影片
 
-請參閱[Azure Active Directory 開發人員平臺](videos.md)影片，以協助您遷移至新的 Microsoft 身分識別平臺。
+有關遷移到新的 Microsoft 標識平臺的説明，請參閱[Azure 活動目錄開發人員平臺視頻](videos.md)。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

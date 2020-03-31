@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault 受控儲存體帳戶 - PowerShell 版本
-description: 受控儲存體帳戶功能可提供 Azure Key Vault 與 Azure 儲存體帳戶之間的完美整合。
+description: 託管存儲帳戶功能在 Azure 金鑰保存庫和 Azure 存儲帳戶之間提供無縫集成。
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,65 +9,65 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.openlocfilehash: 833f78d89a1a9033e62c10c3b16c5adfc65e1da4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78195085"
 ---
-# <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰
+# <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用金鑰保存庫和 Azure PowerShell 管理存儲帳戶金鑰
 
-Azure 儲存體帳戶使用由帳戶名稱和金鑰組成的認證。 金鑰會自動產生並作為密碼，而不是做為加密金鑰。 Key Vault 會將儲存體帳戶金鑰儲存為[Key Vault 秘密](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)來加以管理。 
+Azure 存儲帳戶使用包含帳戶名稱和金鑰的憑據。 金鑰是自動生成的，用作密碼，而不是加密金鑰。 金鑰保存庫通過將存儲帳戶金鑰存儲為[金鑰保存庫機密](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)來管理存儲帳戶金鑰。 
 
-您可以使用 Key Vault 受控儲存體帳戶金鑰功能來列出（同步）金鑰與 Azure 儲存體帳戶，並定期重新產生（輪替）金鑰。 您可以管理儲存體帳戶和傳統儲存體帳戶的金鑰。
+可以使用金鑰保存庫託管存儲帳戶金鑰功能列出（同步）具有 Azure 存儲帳戶的金鑰，並定期重新生成（旋轉）金鑰。 您可以管理存儲帳戶和經典存儲帳戶的金鑰。
 
-當您使用受控儲存體帳戶金鑰功能時，請考慮下列幾點：
+使用託管存儲帳戶金鑰功能時，請考慮以下幾點：
 
-- 回應呼叫端時，絕對不會傳回索引鍵值。
-- 只有 Key Vault 應該管理您的儲存體帳戶金鑰。 請勿自行管理金鑰，並避免干擾 Key Vault 進程。
-- 只有單一 Key Vault 物件應該管理儲存體帳戶金鑰。 不允許從多個物件進行金鑰管理。
-- 您可以要求 Key Vault 來管理具有使用者主體的儲存體帳戶，但不能使用服務主體。
-- 僅使用 Key Vault 重新產生金鑰。 請勿手動重新產生儲存體帳戶金鑰。
+- 從不返回鍵值以回應調用方。
+- 只有金鑰保存庫應管理您的存儲帳戶金鑰。 不要自己管理金鑰，以免干擾金鑰保存庫進程。
+- 只有一個金鑰保存庫物件應管理存儲帳戶金鑰。 不允許來自多個物件的金鑰管理。
+- 您可以請求金鑰保存庫使用使用者主體管理存儲帳戶，但不能使用服務主體。
+- 僅使用金鑰保存庫重新生成金鑰。 不要手動重新產生儲存體帳戶金鑰。
 
-我們建議使用 Azure 儲存體與 Azure Active Directory （Azure AD）的整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用于[Azure blob 和佇列](../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 token 型存取（就像 Azure Key Vault）。
+我們建議將 Azure 存儲集成與 Azure 活動目錄 （Azure AD）（Microsoft 基於雲的標識和訪問管理服務）集成。 Azure AD 集成可用於[Azure blob 和佇列](../storage/common/storage-auth-aad.md)，並提供基於 OAuth2 的基於 Windows 存儲的訪問（就像 Azure 金鑰保存庫一樣）。
 
-Azure AD 可讓您使用應用程式或使用者識別，而不是儲存體帳號憑證來驗證用戶端應用程式。 當您在 Azure 上執行時，可以使用[Azure AD 受控識別](/azure/active-directory/managed-identities-azure-resources/)。 受控識別會移除用戶端驗證的需求，並將認證儲存在或應用程式中。
+Azure AD 允許您使用應用程式或使用者標識（而不是存儲帳戶憑據）對用戶端應用程式進行身份驗證。 在 Azure 上運行時，可以使用[Azure AD 託管標識](/azure/active-directory/managed-identities-azure-resources/)。 託管標識消除了對用戶端身份驗證和在應用程式中存儲憑據的需要。
 
-Azure AD 會使用角色型存取控制（RBAC）來管理授權，Key Vault 也支援這種方式。
+Azure AD 使用基於角色的存取控制 （RBAC） 來管理授權，金鑰保存庫也支援授權。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="service-principal-application-id"></a>服務主體應用程式識別碼
+## <a name="service-principal-application-id"></a>服務主體應用程式 ID
 
-Azure AD 租使用者會提供每個已註冊的應用程式與[服務主體](/azure/active-directory/develop/developer-glossary#service-principal-object)。 服務主體會作為應用程式識別碼，在授權設定期間用於透過 RBAC 存取其他 Azure 資源。
+Azure AD 租戶為每個已註冊的應用程式提供[服務主體](/azure/active-directory/develop/developer-glossary#service-principal-object)。 服務主體用作應用程式 ID，在授權設置期間用於通過 RBAC 訪問其他 Azure 資源。
 
-Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用程式。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
+金鑰保存庫是在所有 Azure AD 租戶中預先註冊的 Microsoft 應用程式。 金鑰保存庫在每個 Azure 雲中的同一應用程式 ID 下註冊。
 
-| 租用戶 | 雲端 | 應用程式識別碼 |
+| 租用戶 | Cloud | 應用程式識別碼 |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| 其他  | 任何 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本指南，您必須先執行下列動作：
+要完成本指南，您必須首先執行以下操作：
 
 - [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-2.6.0)。
-- [建立金鑰保存庫](quick-create-powershell.md)
-- [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-powershell)。 儲存體帳戶名稱必須僅使用小寫字母和數位。 名稱的長度必須介於3到24個字元之間。
+- [創建金鑰保存庫](quick-create-powershell.md)
+- [創建 Azure 存儲帳戶](../storage/common/storage-account-create.md?tabs=azure-powershell)。 存儲帳戶名稱只能使用小寫字母和數位。 名稱的長度必須介於 3 到 24 個字元之間。
       
 
-## <a name="manage-storage-account-keys"></a>管理儲存體帳戶金鑰
+## <a name="manage-storage-account-keys"></a>管理存儲帳戶金鑰
 
 ### <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 
-使用[disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) Cmdlet 來驗證您的 PowerShell 會話。 
+使用[連接-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) Cmdlet 驗證您的 PowerShell 會話。 
 
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
-如果您有多個 Azure 訂用帳戶，您可以使用[get-azsubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) Cmdlet 加以列出，並指定您想要搭配[set-azcoNtext 指令程式](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0)使用的訂用帳戶。 
+如果您有多個 Azure 訂閱，則可以使用[獲取-Az訂閱](/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)Cmdlet 列出它們，並指定要與[Set-AzCoNtext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) Cmdlet 一起使用的訂閱。 
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId <subscriptionId>
@@ -75,9 +75,9 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>設定變數
 
-首先，在下列步驟中設定 PowerShell Cmdlet 所要使用的變數。 請務必更新 [<YourResourceGroupName>]、[<YourStorageAccountName>] 和 [<YourKeyVaultName>] 預留位置，並將 $keyVaultSpAppId 設定為 [`cfa8b339-82a2-471a-a3c9-0fc0be7a4093`] （如上面的[服務主體應用程式識別碼](#service-principal-application-id)所指定）。
+首先，在以下步驟中將 PowerShell Cmdlet 使用的變數設置為使用。 請務必更新<YourResourceGroupName>、<YourStorageAccountName>和<YourKeyVaultName>預留位置，並將$keyVaultSpAppId設置為`cfa8b339-82a2-471a-a3c9-0fc0be7a4093`（如上文在[服務主體應用程式 ID](#service-principal-application-id)中指定）。
 
-我們也會使用 Azure PowerShell [set-azcoNtext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0)和[new-azstorageaccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) Cmdlet 來取得您的使用者識別碼和 Azure 儲存體帳戶的內容。
+我們還將使用 Azure PowerShell[獲取-AzCoNtext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0)和[Get-AzStorage 帳戶](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0)Cmdlet 來獲取使用者 ID 和 Azure 存儲帳戶的上下文。
 
 ```azurepowershell-interactive
 $resourceGroupName = <YourResourceGroupName>
@@ -93,11 +93,11 @@ $userId = (Get-AzContext).Account.Id
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 ```
 
-### <a name="give-key-vault-access-to-your-storage-account"></a>授與 Key Vault 對儲存體帳戶的存取權
+### <a name="give-key-vault-access-to-your-storage-account"></a>授予金鑰保存庫對存儲帳戶的存取權限
 
-在 Key Vault 可以存取並管理您的儲存體帳戶金鑰之前，您必須為它授權以存取您的儲存體帳戶。 Key Vault 應用程式需要「列出」及「重新產生」儲存體帳戶金鑰的使用權限。 這些使用權限是透過內建的 RBAC 角色[儲存體帳戶金鑰操作員服務角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)來啟用。 
+在 Key Vault 可以存取並管理您的儲存體帳戶金鑰之前，您必須為它授權以存取您的儲存體帳戶。 Key Vault 應用程式需要「列出」** 及「重新產生」** 儲存體帳戶金鑰的使用權限。 這些使用權限是透過內建的 RBAC 角色[儲存體帳戶金鑰操作員服務角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)來啟用。 
 
-使用 Azure PowerShell [new-azroleassignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) Cmdlet，將此角色指派給 Key Vault 服務主體，並將範圍限制為您的儲存體帳戶。
+使用此 Azure PowerShell[新-AzRoleAssign](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) Cmdlet 將此角色指派給金鑰保存庫服務主體，將範圍限制到存儲帳戶。
 
 ```azurepowershell-interactive
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
@@ -118,11 +118,11 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 在您的儲存體帳戶上已經被新增至該角色，您將會收到「角色指派已存在。」 錯誤內容。 您也可以使用 Azure 入口網站中該儲存體帳戶的 [存取控制 (IAM)] 頁面來驗證角色指派。  
+如果 Key Vault 在您的儲存體帳戶上已經被新增至該角色，您將會收到「角色指派已存在。」** 的錯誤。 您也可以使用 Azure 入口網站中該儲存體帳戶的 [存取控制 (IAM)] 頁面來驗證角色指派。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>將使用者帳戶使用權限授與受控儲存體帳戶
 
-使用 Azure PowerShell [set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.6.0) Cmdlet 來更新 Key Vault 存取原則，並將儲存體帳戶許可權授與您的使用者帳戶。
+使用 Azure PowerShell[集-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.6.0) Cmdlet 更新金鑰保存庫訪問策略並將存儲帳戶許可權授予使用者帳戶。
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -134,7 +134,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -
 
 ### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>將受控儲存體帳戶新增到您的 Key Vault 執行個體
 
-使用 Azure PowerShell [AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) Cmdlet，在您的 Key Vault 實例中建立受控儲存體帳戶。 `-DisableAutoRegenerateKey` 參數會指定「不」重新產生儲存體帳戶金鑰。
+使用 Azure PowerShell[添加-AzKeyVault 託管存儲帳戶](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0)Cmdlet 在金鑰保存庫實例中創建託管存儲帳戶。 `-DisableAutoRegenerateKey` 參數會指定「不」重新產生儲存體帳戶金鑰。
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
@@ -160,7 +160,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>啟用金鑰重新產生
 
-如果您想要 Key Vault 定期重新產生儲存體帳戶金鑰，您可以使用 Azure PowerShell [AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) Cmdlet 來設定重新產生期間。 在此範例中，我們會設定三天的重新產生期間。 三天后，Key Vault 會重新產生 ' key2 '，並將作用中的金鑰從 ' key2 ' 交換為 ' key1 '。
+如果希望金鑰保存庫定期重新生成存儲帳戶金鑰，則可以使用 Azure PowerShell[添加-AzKeyVault 託管存儲帳戶](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0)Cmdlet 來設置再生週期。 在此示例中，我們將再生週期設置為三天。 三天后，金鑰保存庫將重新生成"key2"並將活動金鑰從"key2"交換到"key1"。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -184,22 +184,22 @@ Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
 
-## <a name="shared-access-signature-tokens"></a>共用存取簽章權杖
+## <a name="shared-access-signature-tokens"></a>共用訪問簽名權杖
 
-您也可以要求 Key Vault 產生共用存取簽章權杖。 共用存取簽章可提供您儲存體帳戶中資源的委派存取。 您可以對用戶端授與儲存體帳戶中資源的存取權，而不需要共用您的帳戶金鑰。 共用存取簽章可讓您以安全的方式共用儲存體資源，而不會危害您的帳戶金鑰。
+您還可以要求金鑰保存庫生成共用訪問簽名權杖。 共用存取簽章可提供您儲存體帳戶中資源的委派存取。 您可以授予用戶端對存儲帳戶中的資源的存取權限，而無需共用您的帳戶金鑰。 共用訪問簽名為您提供了一種安全的方式來共用存儲資源，而不會危及您的帳戶金鑰。
 
-本節中的命令會完成下列動作：
+本節中的命令完成以下操作：
 
-- 設定帳戶共用存取簽章定義。 
-- 為 Blob、檔案、資料表和佇列服務建立帳戶共用存取簽章權杖。 權杖是針對資源類型服務、容器和物件所建立。 權杖是以擁有權限（透過 HTTPs）和指定的開始和結束日期來建立。
-- 在保存庫中設定 Key Vault 管理的儲存體共用存取簽章定義。 定義具有已建立的共用存取簽章權杖的範本 URI。 定義的共用存取簽章類型 `account`，且有效期為 N 天。
-- 確認已將共用存取簽章儲存在金鑰保存庫中做為密碼。
+- 設置帳戶共用訪問簽名定義。 
+- 為 Blob、檔、表和佇列服務創建帳戶共用訪問簽名權杖。 為資源類型服務、容器和物件創建權杖。 權杖使用擁有權限、HTTPs 以及指定的開始日期和結束日期創建。
+- 在保存庫中設置金鑰保存庫託管存儲共用訪問簽名定義。 該定義具有所創建的共用訪問簽名權杖的範本 URI。 該定義具有共用訪問簽名類型`account`，有效期為 N 天。
+- 驗證共用訪問簽名是否作為機密保存在金鑰保存庫中。
 - 
 ### <a name="set-variables"></a>設定變數
 
-首先，在下列步驟中設定 PowerShell Cmdlet 所要使用的變數。 請務必更新 <YourStorageAccountName> 和 <YourKeyVaultName> 預留位置。
+首先，在以下步驟中將 PowerShell Cmdlet 使用的變數設置為使用。 請務必更新 和<YourStorageAccountName><YourKeyVaultName>預留位置。
 
-我們也會使用 Azure PowerShell [AzStorageCoNtext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) Cmdlet 來取得 Azure 儲存體帳戶的內容。
+我們還將使用 Azure PowerShell[新存儲上下文](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0)Cmdlet 來獲取 Azure 存儲帳戶的上下文。
 
 ```azurepowershell-interactive
 $storageAccountName = <YourStorageAccountName>
@@ -208,9 +208,9 @@ $keyVaultName = <YourKeyVaultName>
 $storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
 ```
 
-### <a name="create-a-shared-access-signature-token"></a>建立共用存取簽章權杖
+### <a name="create-a-shared-access-signature-token"></a>創建共用訪問簽名權杖
 
-使用 Azure PowerShell AzStorageAccountSASToken Cmdlet 來建立共用存取[簽](/powershell/module/az.storage/new-azstorageaccountsastoken?view=azps-2.6.0)章定義。
+使用 Azure PowerShell[新存儲帳戶 AsToken](/powershell/module/az.storage/new-azstorageaccountsastoken?view=azps-2.6.0) Cmdlet 創建共用訪問簽名定義。
  
 ```azurepowershell-interactive
 $start = [System.DateTime]::Now.AddDays(-1)
@@ -218,31 +218,31 @@ $end = [System.DateTime]::Now.AddMonths(1)
 
 $sasToken = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $storageContext
 ```
-$SasToken 的值看起來會像這樣。
+$sasToken的值將與此類似。
 
 ```console
 ?sv=2018-11-09&sig=5GWqHFkEOtM7W9alOgoXSCOJO%2B55qJr4J7tHQjCId9S%3D&spr=https&st=2019-09-18T18%3A25%3A00Z&se=2019-10-19T18%3A25%3A00Z&srt=sco&ss=bfqt&sp=racupwdl
 ```
 
-### <a name="generate-a-shared-access-signature-definition"></a>產生共用存取簽章定義
+### <a name="generate-a-shared-access-signature-definition"></a>生成共用訪問簽名定義
 
-使用 Azure PowerShell AzKeyVaultManagedStorageSasDefinition Cmdlet 來建立共用存取[簽](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0)章定義。  您可以將您選擇的名稱提供給 `-Name` 參數。
+使用 Azure PowerShell[集-AzKeyVault 託管存儲Sas定義](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0)Cmdlet 創建共用訪問簽名定義。  您可以為`-Name`參數提供您選擇的名稱。
 
 ```azurepowershell-interactive
 Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
 ```
 
-### <a name="verify-the-shared-access-signature-definition"></a>驗證共用存取簽章定義
+### <a name="verify-the-shared-access-signature-definition"></a>驗證共用訪問簽名定義
 
-您可以使用 Azure PowerShell [AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret?view=azps-2.6.0) Cmdlet，確認共用存取簽章定義已儲存在金鑰保存庫中。
+您可以使用 Azure PowerShell [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret?view=azps-2.6.0) Cmdlet 驗證共用訪問簽名定義是否存儲在金鑰保存庫中。
 
-首先，在金鑰保存庫中尋找共用存取簽章定義。
+首先，在金鑰保存庫中查找共用訪問簽名定義。
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName <YourKeyVaultName>
 ```
 
-對應至您 SAS 定義的密碼將具有下列屬性：
+與 SAS 定義對應的機密將具有以下屬性：
 
 ```console
 Vault Name   : <YourKeyVaultName>
@@ -252,7 +252,7 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-您現在可以使用[AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) Cmdlet 和 secret `Name` 屬性來查看該秘密的內容。
+您現在可以使用[Get-AzKeyVault 秘密](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show)Cmdlet 和`Name`機密屬性來查看該機密的內容。
 
 ```azurepowershell-interactive
 $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
@@ -260,11 +260,11 @@ $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
 Write-Host $secret.SecretValueText
 ```
 
-此命令的輸出會顯示您的 SAS 定義字串。
+此命令的輸出將顯示您的 SAS 定義字串。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 - [受控儲存體帳戶金鑰範例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=) \(英文\)
-- [關於金鑰、密碼與憑證](about-keys-secrets-and-certificates.md)
+- [關於金鑰、機密和證書](about-keys-secrets-and-certificates.md)
 - [Key Vault PowerShell 參考](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

@@ -1,6 +1,6 @@
 ---
-title: 將資料從 Azure 資料總管使用 Sisense 視覺化
-description: 在這篇文章，了解如何設定 Azure 資料總管做為資料來源之 Sisense，並將資料視覺化。
+title: 使用 Sisense 視覺化 Azure 資料資源管理器中的資料
+description: 在本文中，瞭解如何將 Azure 資料資源管理器設置為 Sisense 的資料來源，並視覺化資料。
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,120 +8,120 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 5/29/2019
 ms.openlocfilehash: f0840b90e1036c23fa58d94515bfeb035299c07f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66358179"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>將資料從 Azure 中的資料總管 Sisense 視覺化
+# <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>在 Sisense 中視覺化來自 Azure 資料資源管理器的資料
 
-Sisense 是分析商業智慧平台，可讓您建置分析應用程式可提供高度互動的使用者體驗。 商業智慧與報告軟體的儀表板可讓您存取，並在按幾下中合併資料。 您可以連接到結構化和非結構化資料來源、 聯結多個來源的最小的指令碼和撰寫程式碼，從資料表和建立互動式 web 儀表板和報表。 在本文中，您將了解如何設定 Azure 資料總管做為資料來源之 Sisense，並將從範例的叢集中的資料視覺化。
+Sisense 是一個分析商業智慧平臺，使您能夠構建提供高度交互性使用者體驗的分析應用。 商業智慧和儀表板報告軟體允許您只需按一下幾下即可訪問和組合資料。 您可以連接到結構化和非結構化資料來源，以最少的腳本和編碼從多個源聯合資料表，以及創建互動式 Web 儀表板和報表。 在本文中，您將學習如何將 Azure 資料資源管理器設置為 Sisense 的資料來源，以及視覺化示例群集中的資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-您需要下列項目完成這篇文章：
+完成本文需要以下內容：
 
 * [下載並安裝 Sisense 應用程式](https://documentation.sisense.com/latest/getting-started/download-install.htm) 
 
-* 建立叢集和資料庫，其中包含 StormEvents 範例資料。 如需詳細資訊，請參閱[快速入門：建立 Azure 資料總管叢集與資料庫](create-cluster-database-portal.md)及[將範例資料內嵌至 Azure 資料總管](ingest-sample-data.md)。
+* 創建包含 StormEvents 示例資料的群集和資料庫。 有關詳細資訊，請參閱[快速入門：創建 Azure 資料資源管理器群集和資料庫](create-cluster-database-portal.md)，並將[示例資料引入 Azure 資料資源管理器](ingest-sample-data.md)。
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="connect-to-sisense-dashboards-using-azure-data-explorer-jdbc-connector"></a>連接到使用 Azure 資料總管 JDBC 連接器 Sisense 儀表板
+## <a name="connect-to-sisense-dashboards-using-azure-data-explorer-jdbc-connector"></a>使用 Azure 資料資源管理器 JDBC 連接器連接到 Sisense 儀表板
 
-1. 下載並複製下列 jar 檔案，以最新版本 *...\Sisense\DataConnectors\jdbcdrivers\adx* 
+1. 下載以下 jar 檔的最新版本並將其複製到 *.。[Sisense]資料連線器\jdbcdrives\adx* 
 
-    * activation-1.1.jar
+    * 啟動-1.1.jar
     * adal4j-1.6.0.jar
-    * commons-codec-1.10.jar
-    * commons-collections4-4.1.jar
-    * commons-lang3-3.5.jar
-    * gson-2.8.0.jar
-    * jcip-annotations-1.0-1.jar
+    * 公域編解碼器-1.10.jar
+    * 公地集合4-4.1.jar
+    * 公地朗3-3.5.jar
+    * 格森-2.8.0.jar
+    * jcip-注釋-1.0-1.jar
     * json-smart-1.3.1.jar
-    * lang-tag-1.4.4.jar
-    * mail-1.4.7.jar
+    * 朗標籤-1.4.4.jar
+    * 郵件-1.4.7.jar
     * mssql-jdbc-7.2.1.jre8.jar
-    * nimbus-jose-jwt-7.0.1.jar
+    * 尼姆布斯-喬瑟-jwt-7.0.1.jar
     * oauth2-oidc-sdk-5.24.1.jar
     * slf4j-api-1.7.21.jar
     
-1. 開啟**Sisense**應用程式。
-1. 選取 **資料**索引標籤，然後選取 **+ ElastiCube**來建立新的 ElastiCube 模型。
+1. 打開**Sisense**應用程式。
+1. 選擇 **"資料**"選項卡並選擇 **"ElastiCube"** 以創建新的 ElastiCube 模型。
     
-    ![選取 ElastiCube](media/sisense/data-select-elasticube.png)
+    ![選擇 ElastiCube](media/sisense/data-select-elasticube.png)
 
-1. 在 **加入新的 ElastiCube 模型**，ElastiCube 模型並**儲存**。
+1. 在**添加新的 ElastiCube 模型**中，命名 ElastiCube 模型並**保存**。
    
-    ![加入新的 ElastiCube 模型](media/sisense/add-new-elasticube-model.png)
+    ![添加新的 ElastiCube 模型](media/sisense/add-new-elasticube-model.png)
 
-1. 選取  **+ 資料**。
+1. 選擇 **= 資料**。
 
-    ![選取 [資料] 按鈕](media/sisense/select-data.png)
+    ![選擇資料按鈕](media/sisense/select-data.png)
 
-1. 在 **選取 連接器**索引標籤上，選取**一般 JDBC**連接器。
+1. 在 **"選擇連接器"** 選項卡中，選擇**通用 JDBC**連接器。
 
     ![選擇 JDBC 連接器](media/sisense/select-connector.png)
 
-1. 在 [ **Connect**索引標籤上，完成下列欄位進行**一般 JDBC**連接器，然後選取**下一步]** 。
+1. 在 **"連接"** 選項卡中，完成**通用 JDBC**連接器的以下欄位，然後選擇 **"下一步**"。
 
-    ![JDBC 連接器設定](media/sisense/jdbc-connector.png)
+    ![JDBC 連接器設置](media/sisense/jdbc-connector.png)
 
     |欄位 |描述 |
     |---------|---------|
     |連接字串     |   `jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword`      |
-    |JDBC Jar 的資料夾  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
-    |驅動程式的類別名稱    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
-    |使用者名稱   |    AAD 的使用者名稱     |
+    |JDBC JARs 資料夾  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
+    |驅動程式的類名稱    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
+    |使用者名稱   |    AAD 使用者名     |
     |密碼     |   AAD 使用者密碼      |
 
-1. 在 **選取資料**索引標籤，搜尋**選取資料庫**，選取您具有權限的相關資料庫。 在此範例中，選取*test1*。
+1. 在 **"選擇資料**"選項卡中，搜索 **"選擇資料庫**"以選擇要具有許可權的相關資料庫。 在此示例中，選擇*test1*。
 
     ![選取資料庫](media/sisense/select-database.png)
 
-1. 在 [*測試*（資料庫名稱）] 窗格：
-    1. 選取要預覽資料表，並查看資料表資料行名稱的資料表名稱。 您可以移除不必要的資料行。
-    1. 選取核取方塊以選取該資料表的相關資料表。 
-    1. 選取 [完成]  。
+1. 在*測試*（資料庫名稱）窗格中：
+    1. 選擇表名稱以預覽表並查看表列名稱。 您可以刪除不必要的列。
+    1. 選擇相關表的核取方塊以選擇該表。 
+    1. 選擇 **"完成**"。
 
     ![選取資料表](media/sisense/select-table-see-columns.png)    
 
-1. 選取 **建置**來建置您的資料集。 
+1. 選擇 **"生成"** 以生成資料集。 
 
-    * 在 **建置**視窗中，選取**建置**。
+    * 在 **"生成"** 視窗中，選擇 **"生成**"。
 
-      ![建置視窗](media/sisense/build-window.png)
+      ![生成視窗](media/sisense/build-window.png)
 
-    * 請等候建置程序完成，然後選取**建置成功**。
+    * 等待生成過程完成，然後選擇 **"生成成功**"。
 
-      ![建置成功](media/sisense/build-succeeded.png)
+      ![組建成功](media/sisense/build-succeeded.png)
 
-## <a name="create-sisense-dashboards"></a>建立 Sisense 儀表板
+## <a name="create-sisense-dashboards"></a>創建 Sisense 儀表板
 
-1. 在  **Analytics**索引標籤上，選取 **+**  > **新儀表板**上此資料集建立儀表板。
+1. 在 **"分析"** 選項卡**+** > 中，選擇 **"新建儀表板**"以在此資料集上創建儀表板。
 
     ![新增儀表板](media/sisense/new-dashboard.png)
 
-1. 選取儀表板，然後選取**建立**。 
+1. 選擇儀表板並選擇 **"創建**"。 
 
     ![建立儀表板](media/sisense/create-dashboard.png)
 
-1. 下**新的 Widget**，選取**選取 資料 +** 來建立新的 widget。 
+1. 在 **"新小部件**"下，選擇 **+選擇資料**以創建新小部件。 
 
-    ![將欄位加入至 StormEvents 儀表板](media/sisense/storm-dashboard-add-field.png)  
+    ![將欄位添加到風暴事件儀表板](media/sisense/storm-dashboard-add-field.png)  
 
-1. 選取  **+ 新增更多資料**新增至您的圖形的其他資料行。 
+1. 選擇 **= 添加更多資料**以向圖形添加其他列。 
 
-    ![將更多資料新增至圖表](media/sisense/add-more-data.png)
+    ![向圖形添加更多資料](media/sisense/add-more-data.png)
 
-1. 選取  **+ Widget**建立另一個小工具。 拖放以重新排列儀表板的小工具。
+1. 選擇 **+ 小部件**以創建另一個小部件。 拖放小部件以重新排列儀表板。
 
     ![Storm 儀表板](media/sisense/final-dashboard.png)
 
-現在可以瀏覽使用視覺化分析資料、 建立其他儀表板，並將資料轉換成可操作的見解，以對您的業務影響。
+現在，您可以使用視覺化分析流覽資料，構建其他儀表板，並將資料轉換為可操作的見解，從而對您的業務產生影響。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [撰寫 Azure 資料總管的查詢](write-queries.md)
+* [為 Azure 資料資源管理器編寫查詢](write-queries.md)
 

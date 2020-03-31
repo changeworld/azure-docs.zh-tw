@@ -1,27 +1,26 @@
 ---
-title: 連接到您的 Microsoft Azure 型虛擬機器 |Azure Marketplace
+title: 連接到基於 Microsoft Azure 的虛擬機器 |Azure 應用商店
 description: 說明如何連線到在 Azure 上建立的新虛擬機器。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432016"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278053"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>連線至您的 Azure 型虛擬機器
 
-本文將說明如何連線至並登入您在 Azure 建立的虛擬機器 (VM)。  成功連線之後，您可以使用 VM，就像您是在本機登入其主機伺服器一樣。 
+本文將說明如何連線至並登入您在 Azure 建立的虛擬機器 (VM)。  成功連接後，可以使用 VM，就像您本地登錄到其主機伺服器一樣。 
 
 ## <a name="connect-to-a-windows-based-vm"></a>連線至 Windows 型 VM
 
-您將使用遠端桌面用戶端連線至 Azure 上裝載的 Windows VM。  大部分的 Windows 版本原本就支援遠端桌面通訊協定 (RDP)。  如需其他機器的用戶端資訊，請參閱[遠端桌面用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)。  
+您將使用遠端桌面用戶端連接到 Azure 上託管的基於 Windows 的 VM。  大部分的 Windows 版本原本就支援遠端桌面通訊協定 (RDP)。  如需其他機器的用戶端資訊，請參閱[遠端桌面用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)。  
 
 下列文章詳細說明如何使用內建的 Windows RDP 支援服務連線至您的 VM：[如何連線並登入搭載 Windows 的 Azure 虛擬機器](../../../virtual-machines/windows/connect-logon.md)。  
 
@@ -31,11 +30,11 @@ ms.locfileid: "75432016"
 
 ## <a name="connect-to-a-linux-based-vm"></a>連線至 Linux 型 VM
 
-若要連線到以 Linux 為基礎的 VM，您需要一個安全的 shell 通訊協定（SSH）用戶端。  本討論會使用免費的 [PuTTY](https://www.ssh.com/ssh/putty/) SHH 終端機。
+要連接基於 Linux 的 VM，您需要一個安全的 shell 協定 （SSH） 用戶端。  本討論會使用免費的 [PuTTY](https://www.ssh.com/ssh/putty/) SHH 終端機。
 
-1. 移至 [Azure 入口網站](https://ms.portal.azure.com)。 搜尋並選取 [**虛擬機器**]。 
-2. 選取您想要連接的 VM。  
-3. **啟動**VM （如果尚未執行）。
+1. 轉到[Azure 門戶](https://ms.portal.azure.com)。 搜索並選擇**虛擬機器**。 
+2. 選擇要連接到的 VM。  
+3. 如果 VM 尚未運行，則**啟動**它。
 4. 按一下 VM 的名稱，以開啟其**概觀**頁面。
 5. 請記下您 VM 的公用 IP 位址和 DNS 名稱。  (如果尚未設定這些值，則必須[建立網路介面](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
 
@@ -47,7 +46,7 @@ ms.locfileid: "75432016"
    ![PuTTY 終端機設定](./media/publishvm_020.png)
  
 8. 按一下**開啟**以開啟 PuTTY 終端機。  
-9. 當系統提示您時，請輸入您的 Linux VM 帳戶的帳戶名稱和密碼。 
+9. 系統提示您，輸入 Linux VM 帳戶的帳戶名稱和密碼。 
 
 如有連線問題，請參閱 SSH 用戶端的文件，例如[第 10 章：常見錯誤訊息](https://www.ssh.com/ssh/putty/putty-manuals)。
 
@@ -55,7 +54,7 @@ ms.locfileid: "75432016"
 
 
 ## <a name="stop-unused-vms"></a>停止未使用的 VM
-無論 VM 為執行中*或閒置狀態*，Azure 將收取 VM 裝載費用。  因此，最佳做法是停止目前未使用的 Vm。  例如，建議您停止測試、備分或已淘汰 VM。 若要關閉 VM，請完成下列步驟：
+無論 VM 為執行中*或閒置狀態*，Azure 將收取 VM 裝載費用。  因此，最佳做法是停止當前未使用的 VM。  例如，建議您停止測試、備分或已淘汰 VM。 要關閉 VM，請完成以下步驟：
 
 1. 在**虛擬機器**刀鋒視窗中，選取您要停止的 VM。 
 2. 在靠近頁面頂端的工具列中，按一下**停止**按鈕。
@@ -69,4 +68,4 @@ Azure 會在 *deallocation* 流程中快速停止 VM，除了停止 VM 上的作
 
 ## <a name="next-steps"></a>後續步驟
 
-在遠端連線之後，您就可以開始[設定您的 VM](./cpp-configure-vm.md)。
+遠端連線後，即可[配置 VM。](./cpp-configure-vm.md)

@@ -1,23 +1,23 @@
 ---
-title: 受控磁片高載
-description: 深入瞭解磁片負載平衡，以及它如何適用于 Azure premium Ssd。
+title: 託管磁片爆發
+description: 瞭解磁片爆發及其如何適用于 Azure 高級 SSD。
 author: roygara
 ms.author: rogarana
-ms.date: 10/22/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: a5b8fe6f37e4320dd2a8de15b928dbdec51d4b1d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: add6f43ff97b60b32be76fa72ddb30d0dd026991
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705523"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385226"
 ---
-# <a name="premium-ssd-bursting-preview"></a>進階 SSD 負載平衡（預覽）
+# <a name="premium-ssd-bursting"></a>高級 SSD 爆裂
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Azure 入口網站將受控資料磁片連結至 Windows VM](attach-managed-disk-portal.md)
+[使用 Azure 入口網站將受控資料磁碟連結到 Windows VM](attach-managed-disk-portal.md)

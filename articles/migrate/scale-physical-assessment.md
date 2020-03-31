@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Migrate 評估大量的實體伺服器以遷移至 Azure |Microsoft Docs
-description: 說明如何使用 Azure Migrate 服務，評估大量的實體伺服器以遷移至 Azure。
+title: 使用 Azure 遷移評估大量物理伺服器以遷移到 Azure |微軟文檔
+description: 介紹如何使用 Azure 遷移服務評估大量物理伺服器以遷移到 Azure。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
@@ -8,79 +8,79 @@ ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
 ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76294366"
 ---
-# <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>評估大量的實體伺服器以遷移至 Azure
+# <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>評估大量物理伺服器以遷移到 Azure
 
-本文說明如何使用 Azure Migrate Server 評估工具來評估大量內部部署實體伺服器，以遷移至 Azure。
+本文介紹如何使用 Azure 遷移伺服器評估工具評估大量本地物理伺服器以遷移到 Azure。
 
 [Azure Migrate](migrate-services-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。 
 
 
 在本文中，您將學會如何：
 > [!div class="checklist"]
-> * 規劃大規模的評估。
-> * 設定 Azure 許可權，並準備要評估的實體伺服器。
-> * 建立 Azure Migrate 專案，並建立評量。
-> * 當您規劃遷移時，請檢查評量。
+> * 計畫規模評估。
+> * 配置 Azure 許可權，並準備物理伺服器進行評估。
+> * 創建 Azure 遷移專案，並創建評估。
+> * 在規劃遷移時查看評估。
 
 
 > [!NOTE]
-> 如果您想要在大規模評估之前嘗試評估幾部伺服器的概念證明，請遵循我們的[教學課程系列](tutorial-prepare-physical.md)。
+> 如果你想嘗試一個概念驗證，以評估幾個伺服器之前評估規模，請按照我們的[教程系列](tutorial-prepare-physical.md)。
 
-## <a name="plan-for-assessment"></a>規劃評估
+## <a name="plan-for-assessment"></a>評估計畫
 
-在規劃大量實體伺服器的評估時，有幾件事需要考慮：
+在規劃評估大量物理伺服器時，需要考慮幾點：
 
-- **規劃 Azure Migrate 專案**：瞭解如何部署 Azure Migrate 專案。 例如，如果您的資料中心位於不同的地理位置，或是您需要將探索、評定或遷移相關的中繼資料儲存在不同的地理位置，您可能需要多個專案。
-- **規劃設備**： Azure Migrate 使用部署在 Windows 電腦上的內部部署 Azure Migrate 設備，持續探索伺服器以進行評估和遷移。 設備會監視環境變更，例如新增 Vm、磁片或網路介面卡。 它也會將其相關的中繼資料和效能資料傳送至 Azure。 您必須找出要部署的應用裝置數量。
+- **規劃 Azure 遷移專案**：瞭解如何部署 Azure 遷移專案。 例如，如果資料中心位於不同的地理位置，或者您需要將發現、評估或遷移相關的中繼資料存儲在不同的地理位置，則可能需要多個專案。
+- **計畫設備**：Azure 遷移使用部署在 Windows 電腦上的本地 Azure 遷移設備來不斷發現用於評估和遷移的伺服器。 設備監視環境更改，如添加 VM、磁片或網路介面卡。 它還會向 Azure 發送有關中繼資料和效能資料的中繼資料和效能資料。 您需要確定要部署的設備數。
 
 
 ## <a name="planning-limits"></a>規劃限制
  
-使用此表中摘要說明的限制進行規劃。
+使用此表中總結的限制進行規劃。
 
 **規劃** | **限制**
 --- | --- 
-**Azure Migrate 專案** | 評估多達35000伺服器的專案。
-**Azure Migrate 設備** | 設備可以探索最多250部伺服器。<br/> 設備只能與單一 Azure Migrate 專案相關聯。<br/> 任何數目的設備都可以與單一 Azure Migrate 專案相關聯。 <br/><br/> 
-**群組** | 您最多可以在單一群組中新增35000部伺服器。
-**Azure Migrate 評量** | 您最多可以在單一評估中評估35000部伺服器。
+**Azure 遷移專案** | 評估專案中多達 35，000 台伺服器。
+**Azure Migrate 設備** | 設備最多可以發現 250 台伺服器。<br/> 設備只能與單個 Azure 遷移專案關聯。<br/> 任意數量的設備都可以與單個 Azure 遷移專案相關聯。 <br/><br/> 
+**組** | 單個組中最多可以添加 35，000 台伺服器。
+**Azure 遷移評估** | 您可以在單個評估中評估多達 35，000 台伺服器。
 
 
-## <a name="other-planning-considerations"></a>其他規劃考慮
+## <a name="other-planning-considerations"></a>其他規劃注意事項
 
-- 若要從設備開始探索，您必須選取每個實體伺服器。 
+- 要從設備開始發現，您必須選擇每個物理伺服器。 
 
-## <a name="prepare-for-assessment"></a>準備進行評估
+## <a name="prepare-for-assessment"></a>準備評估
 
-準備 Azure 和實體伺服器以進行伺服器評估。 
+準備 Azure 和物理伺服器以進行伺服器評估。 
 
-1. 確認[實體伺服器支援需求和限制](migrate-support-matrix-physical.md)。
-2. 設定 Azure 帳戶的許可權，以與 Azure Migrate 進行互動。
-3. 準備實體伺服器。
+1. 驗證[物理伺服器支援要求和限制](migrate-support-matrix-physical.md)。
+2. 設置 Azure 帳戶與 Azure 遷移交互的許可權。
+3. 準備物理伺服器。
 
-請遵循[本教學](tutorial-prepare-physical.md)課程中的指示來進行這些設定。
+按照[本教程](tutorial-prepare-physical.md)中的說明配置這些設置。
 
 ## <a name="create-a-project"></a>建立專案
 
-根據您的規劃需求，執行下列動作：
+根據您的規劃要求，請執行以下操作：
 
 1. 建立 Azure Migrate 專案。
-2. 將 [Azure Migrate Server 評估工具] 新增至專案。
+2. 將 Azure 遷移伺服器評估工具添加到專案中。
 
 [深入了解](how-to-add-tool-first-time.md)
 
-## <a name="create-and-review-an-assessment"></a>建立和審查評量
+## <a name="create-and-review-an-assessment"></a>創建和審核評估
 
-1. 建立實體伺服器的評量。
-1. 請參閱評估以準備進行遷移計畫。
+1. 為物理伺服器創建評估。
+1. 審查評估，為遷移規劃做準備。
 
-[深入瞭解](tutorial-assess-physical.md)如何建立和查看評量。
+[詳細瞭解](tutorial-assess-physical.md)創建和審核評估。
     
 
 ## <a name="next-steps"></a>後續步驟
@@ -88,9 +88,9 @@ ms.locfileid: "76294366"
 在本文章中，您將：
  
 > [!div class="checklist"] 
-> * 規劃調整實體伺服器的 Azure Migrate 評量。
-> * 準備好 Azure 和實體伺服器以進行評量。
-> * 建立 Azure Migrate 專案並執行評量。
-> * 已審查評估以準備進行遷移。
+> * 計畫為物理伺服器縮放 Azure 遷移評估。
+> * 已準備好的 Azure 和物理伺服器進行評估。
+> * 創建了 Azure 遷移專案並運行了評估。
+> * 審查了為遷移做準備的評估。
 
-現在，[瞭解如何](concepts-assessment-calculation.md)計算評定，以及如何[修改評](how-to-modify-assessment.md)量。
+現在，[瞭解如何](concepts-assessment-calculation.md)計算評估，以及如何[修改評估](how-to-modify-assessment.md)。

@@ -1,5 +1,5 @@
 ---
-title: 將條件陳述式加入至工作流程
+title: 將條件陳述式添加到工作流
 description: 如何建立條件以控制 Azure Logic Apps 工作流程中的動作
 services: logic-apps
 ms.suite: integration
@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793261"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>建立條件陳述式以控制 Azure Logic Apps 中的工作流程動作
@@ -22,11 +22,11 @@ ms.locfileid: "74793261"
 > [!TIP]
 > 若要根據不同的特定值執行不同步驟，可改為使用 [*Switch 陳述式*](../logic-apps/logic-apps-control-flow-switch-statement.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 
 * 若要依循本文中的範例，請使用 Outlook.com 或 Office 365 Outlook 帳戶來[建立此範例邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -36,17 +36,17 @@ ms.locfileid: "74793261"
 
 1. 在您想要的位置上新增條件。 
 
-   若要在步驟之間新增條件，請將指標移至您要新增條件的箭號上。 選擇顯示的**加號** ( **+** )，然後選擇 [新增動作]。 例如：
+   若要在步驟之間新增條件，請將指標移至您要新增條件的箭號上。 選擇顯示的**加號**（），**+** 然後選擇 **"添加操作**"。 例如：
 
    ![在步驟間新增動作](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   如果想要在工作流程結尾新增條件，請在邏輯應用程式底部，選擇 [新增步驟] > [新增動作]。
+   如果想要在工作流程結尾新增條件，請在邏輯應用程式底部，選擇 [新增步驟]** [新增動作]** > ****。
 
 1. 在搜尋方塊中，輸入「條件」作為篩選條件。 選取此動作：**條件 - 控制**
 
    ![新增條件](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
-1. 在 [條件] 方塊中，建置您的條件。 
+1. 在 [條件]**** 方塊中，建置您的條件。 
 
    1. 在左側的方塊中，指定您要比較的資料或欄位。
 
@@ -65,9 +65,9 @@ ms.locfileid: "74793261"
 
    ![完整條件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   若要為您的條件新增另一個資料列，請選擇 [新增] > [新增資料列]。 
-   若要新增含有子條件的群組，請選擇 [新增] > [新增群組]。 
-   若要將現有的資料列組成群組，請選取那些資料列的核取方塊、選擇任一資料列的省略符號 (...)，然後選擇 [將群組設為]。
+   要向條件添加另一行，請選擇**Add** > "**添加添加行**"。 
+   要添加具有子條件的組，請選擇 **"添加** > **添加組**"。 
+   若要將現有的資料列組成群組，請選取那些資料列的核取方塊、選擇任一資料列的省略符號 (...)，然後選擇 [將群組設為]****。
 
 1. 在 **If true** 和 **If false** 之下，以是否符合條件為基礎，新增要執行的步驟。 例如：
 

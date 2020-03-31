@@ -1,15 +1,15 @@
 ---
-title: 使用流量管理員控制流量
-description: 尋找當您將 Azure 流量管理員與 Azure App Service 整合時的最佳作法。
+title: 使用流量管理器控制流量
+description: 查找與 Azure 應用服務集成時配置 Azure 流量管理器的最佳做法。
 ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684093"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理員來控制 Azure App Service 流量
@@ -32,15 +32,15 @@ Azure 流量管理員使用四種不同的路由方法。 下列清單說明 Azu
 如需詳細資訊，請參閱[流量管理員路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>App Service 和流量管理員設定檔
-若要設定 App Service 應用程式流量的控制，您可以在 Azure 流量管理員中建立設定檔，以使用上述四種負載平衡方法的其中一種，然後新增您想要控制其流量的端點（在此案例中為 App Service）特徵. 系統會定期與設定檔溝通您的應用程式狀態 (執行中、已停止或已刪除)，讓 Azure 流量管理員可相應地導向流量。
+要配置應用服務應用流量的控制，請在 Azure 流量管理器中創建一個設定檔，該設定檔使用前面描述的四種負載平衡方法之一，然後將要控制流量的終結點（本例中稱為應用服務）添加到配置 檔。 系統會定期與設定檔溝通您的應用程式狀態 (執行中、已停止或已刪除)，讓 Azure 流量管理員可相應地導向流量。
 
 搭配使用 Azure 流量管理員與 Azure 時，請牢記下列重點：
 
 * 若為相同地區內的純應用程式部署，App Service 已經提供與應用程式模式無關的容錯移轉和循環配置資源功能。
 * 若是在搭配使用 App Service 與其他 Azure 雲端服務的相同地區中進行部署，您可以結合兩種端點類型來啟用混合案例。
 * 在設定檔中，您只能針對每個區域指定一個 App Service 端點。 選取一個應用程式作為某一個地區的端點時，將無法為該設定檔選擇使用該地區中其餘的應用程式。
-* 您在 Azure 流量管理員設定檔中指定的 App Service 端點，會出現在設定檔中該應用程式之 [設定] 頁面的 [網域名稱] 區段下方，但您無法在該處進行設定。
-* 將應用程式新增至設定檔後，在該應用程式之入口網站頁面的 [儀表板] 上，[網站 URL] 會顯示應用程式的自訂網域 URL (如果已設定一個)。 否則會顯示流量管理員設定檔 URL (例如，`contoso.trafficmanager.net`)。 應用程式的直接網域名稱和流量管理員 URL 都會顯示在應用程式之 [設定] 頁面的 [網域名稱] 區段下方。
+* 您在 Azure 流量管理員設定檔中指定的 App Service 端點，會出現在設定檔中該應用程式之 [設定] 頁面的 [網域名稱]**** 區段下方，但您無法在該處進行設定。
+* 將應用程式新增至設定檔後，在該應用程式之入口網站頁面的 [儀表板] 上，[網站 URL] **** 會顯示應用程式的自訂網域 URL (如果已設定一個)。 否則會顯示流量管理員設定檔 URL (例如，`contoso.trafficmanager.net`)。 應用程式的直接網域名稱和流量管理員 URL 都會顯示在應用程式之 [設定] 頁面的 [網域名稱] **** 區段下方。
 * 您的自訂網域名稱會如預期般運作，但除了將之新增至應用程式外，您還必須設定 DNS 對應以指向流量管理員 URL。 如需如何為 App Service 應用程式設定自訂網域的相關資訊，請參閱[將現有的自訂 DNS 名稱對應至 Azure App Service](app-service-web-tutorial-custom-domain.md)。
 * 您只能將標準或進階模式的應用程式新增至 Azure 流量管理員設定檔。
 

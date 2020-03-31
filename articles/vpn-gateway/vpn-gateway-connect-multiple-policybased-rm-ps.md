@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：將閘道連接到多個內部部署以原則為基礎的 VPN 裝置
+title: Azure VPN 閘道：將閘道連接到多個基於本地策略的 VPN 設備
 description: 使用 Azure Resource Manager 和 PowerShell，將以 Azure 路由為基礎的 VPN 閘道設定為多個以原則為基礎的 VPN 裝置。
 services: vpn-gateway
 author: yushwang
@@ -7,20 +7,20 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: 028ed1a632016fcbdf29bb47ab81a36f659785da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279308"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123328"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 將 Azure VPN 閘道連線至多個內部部署以原則為基礎的 VPN 裝置
 
 本文將協助您運用 S2S VPN 連線上的自訂 IPsec/IKE 原則，設定以 Azure 路由為基礎的 VPN 閘道連線至多個內部部署以原則為基礎的 VPN 裝置。
 
-## <a name="about"></a>關於以原則為基礎的 VPN 閘道和以路由為基礎的 VPN 閘道
+## <a name="about-policy-based-and-route-based-vpn-gateways"></a><a name="about"></a>關於以原則為基礎的 VPN 閘道和以路由為基礎的 VPN 閘道
 
-以原則為基礎*的路由式 VPN 裝置與在*連接上設定 IPsec 流量選取器的方式不同：
+基於策略*的 VPN*設備與基於路由的 VPN 設備在連接上設置 IPsec 流量選擇器的方式不同：
 
 * **以原則為基礎的** VPN 裝置使用這兩個網路的前置詞組合，定義如何透過 IPsec 通道來加密/解密流量。 它通常內建在執行封包篩選的防火牆裝置上。 IPsec 通道加密和解密會新增至封包篩選和處理引擎。
 * **以路由為基礎的** VPN 裝置使用任何對任何 (萬用字元) 流量選取器，並讓路由/轉接資料表將流量導向到不同 IPsec 通道。 它通常內建在路由器平台上，其中，每個 IPsec 通道都會建模為網路介面或 VTI (虛擬通道介面)。
@@ -36,11 +36,11 @@ ms.locfileid: "79279308"
 ### <a name="azure-support-for-policy-based-vpn"></a>以原則為基礎的 VPN 的 Azure 支援
 Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和以原則為基礎的 VPN 閘道。 它們內建在不同內部平台上，因而導致不同的規格：
 
-|                          | **PolicyBased VPN 閘道** | **RouteBased VPN 閘道**       |**RouteBased VPN 閘道**                          |
+|                          | **PolicyBased VPN 閘道** | **基於路由的 VPN 閘道**       |**基於路由的 VPN 閘道**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Azure 閘道 SKU**    | 基本                       | 基本                            | Standard、HighPerformance、VpnGw1、VpnGw2、VpnGw3  |
-| **IKE 版本**          | IKEv1                       | IKEv2                            | IKEv1 和 IKEv2                                    |
-| **讀數.S2S 連線** | **1**                       | 10                               |標準：10<br> 其他 Sku：30                     |
+| **Azure 閘道 SKU**    | 基本                       | 基本                            | VpnGw1， VpnGw2， VpnGw3， VpnGw4， VpnGw5  |
+| **IKE 版本**          | IKEv1                       | IKEv2                            | IKEv1 和 IKEv2                         |
+| **麥克斯。S2S 連接** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
 
 您現在可以使用自訂 IPsec/IKE 原則，設定以 Azure 路由為基礎的 VPN 閘道搭配使用以前置詞為基礎的流量選取器與 "**PolicyBasedTrafficSelectors**" 選項，以連線至內部部署以原則為基礎的 VPN 裝置。 這項功能可讓您從 Azure 虛擬網路和 VPN 閘道連線至多個內部部署以原則為基礎的 VPN/防火牆裝置，並從目前以 Azure 原則為基礎的 VPN 閘道移除單一連線限制。
@@ -56,33 +56,33 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
 
 如圖所示，Azure VPN 閘道會有從虛擬網路到每個內部部署網路前置詞的流量選取器，但不是跨連線前置詞。 例如，內部部署網站 2、網站 3 和網站 4 分別可以與 VNet1 通訊，但無法透過 Azure VPN 閘道彼此連線。 此圖顯示此設定下不適用於 Azure VPN 閘道的跨連線流量選取器。
 
-## <a name="workflow"></a>工作流程
+## <a name="workflow"></a><a name="workflow"></a>工作流程
 
 本文中的指示遵循[設定 S2S 或 VNet 對 VNet 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)中所述的相同範例，以建立 S2S VPN 連線。 如下圖所示：
 
 ![s2s-policy](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
 啟用這個連線的工作流程：
-1. 建立跨單位連線的虛擬網路、VPN 閘道和局域網路閘道。
-2. 建立 IPsec/IKE 原則。
-3. 當您建立 S2S 或 VNet 對 VNet 連線時套用原則，並在連線上**啟用以原則為基礎的流量選取器**。
-4. 如果已建立連接，您可以將原則套用或更新至現有的連接。
+1. 為跨界連接創建虛擬網路、VPN 閘道和本地網路閘道。
+2. 創建 IPsec/IKE 策略。
+3. 創建 S2S 或 VNet 到 VNet 連接時應用策略，並在連接上**啟用基於策略的流量選擇器**。
+4. 如果連接已創建，則可以將策略應用於現有連接或更新策略。
 
 ## <a name="before-you-begin"></a>開始之前
 
-* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
+* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂閱，則可以啟動[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial)。
 
 * [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="enablepolicybased"></a>啟用以原則為基礎的流量選取器
+## <a name="enable-policy-based-traffic-selectors"></a><a name="enablepolicybased"></a>啟用基於策略的流量選擇器
 
-本節說明如何在連接上啟用以原則為基礎的流量選取器。 請確定您已完成[設定 IPsec/IKE 原則文章的第3部分](vpn-gateway-ipsecikepolicy-rm-powershell.md)。 本文中的步驟會使用相同的參數。
+本節介紹如何在連接上啟用基於策略的流量選擇器。 請確保您已完成[配置 IPsec/IKE 策略文章的第 3 部分](vpn-gateway-ipsecikepolicy-rm-powershell.md)。 本文中的步驟使用相同的參數。
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>步驟1 - 建立虛擬網路、VPN 閘道和區域網路閘道
 
 #### <a name="connect-to-your-subscription-and-declare-your-variables"></a>連線至訂用帳戶並宣告變數
 
-1. 如果您是在本機電腦上執行 PowerShell，請使用*disconnect-azaccount* Cmdlet 登入。 或者，改為在瀏覽器中使用 Azure Cloud Shell。
+1. 如果您在電腦上本地運行 PowerShell，請使用*Connect-AzAccount* Cmdlet 登錄。 或者，在瀏覽器中使用 Azure 雲外殼。
 
 2. 宣告變數。 針對此練習，我們使用下列變數：
 
@@ -136,9 +136,9 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
     New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
     ```
 
-### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>步驟 2-使用 IPsec/IKE 原則建立 S2S VPN 連線
+### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>步驟 2 - 使用 IPsec/IKE 策略創建 S2S VPN 連接
 
-1. 建立 IPsec/IKE 原則。
+1. 創建 IPsec/IKE 策略。
 
    > [!IMPORTANT]
    > 您需要建立 IPsec/IKE 原則，才能在連線上啟用 "UsePolicyBasedTrafficSelectors" 選項。
@@ -150,7 +150,7 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
    ```azurepowershell-interactive
    $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
    ```
-1. 使用以原則為基礎的流量選取器和 IPsec/IKE 原則來建立 S2S VPN 連線，並套用在上一個步驟中建立的 IPsec/IKE 原則。 請注意額外的參數 "-UsePolicyBasedTrafficSelectors $True"，這會在連接上啟用以原則為基礎的流量選取器。
+1. 使用基於策略的流量選擇器和 IPsec/IKE 策略創建 S2S VPN 連接，並應用在上一步中創建的 IPsec/IKE 策略。 請注意附加參數"-基於策略的流量選擇器$True"，它支援連接上基於策略的流量選擇器。
 
    ```azurepowershell-interactive
    $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -160,8 +160,8 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
    ```
 1. 完成步驟後，S2S VPN 連線將會使用所定義的 IPsec/IKE 原則，並在連線上啟用以原則為基礎的流量選取器。 您可以重複相同的步驟，以從相同的 Azure VPN 閘道將更多的連線新增至其他內部部署以原則為基礎的 VPN 裝置。
 
-## <a name="update"></a>更新以原則為基礎的流量選取器
-本節說明如何更新現有 S2S VPN 連線的以原則為基礎的流量選取器選項。
+## <a name="to-update-policy-based-traffic-selectors"></a><a name="update"></a>更新基於策略的流量選擇器
+本節介紹如何更新現有 S2S VPN 連接的基於策略的流量選擇器選項。
 
 1. 取得連線資源。
 
@@ -170,7 +170,7 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
    $Connection16 = "VNet1toSite6"
    $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
    ```
-1. 查看以原則為基礎的流量選取器選項。
+1. 查看基於策略的流量選擇器選項。
 下行將說明是否將以原則為基礎的流量選取器用於連線：
 
    ```azurepowershell-interactive
@@ -178,9 +178,9 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
    ```
 
    如果該行傳回 "**True**"，則已在連線上設定以原則為基礎的流量選取器；否則，它會傳回 "**False**"。
-1. 取得連線資源之後，您就可以啟用或停用連線上以原則為基礎的流量選取器。
+1. 獲取連接資源後，可以在連接上啟用或禁用基於策略的流量選擇器。
 
-   - 若要啟用
+   - 啟用
 
       下列範例會啟用以原則為基礎的流量選取器選項，但 IPsec/IKE 原則保留不變：
 
@@ -192,7 +192,7 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
       Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
       ```
 
-   - 若要停用
+   - 禁用
 
       下列範例會停用以原則為基礎的流量選取器選項，但 IPsec/IKE 原則保留不變：
 

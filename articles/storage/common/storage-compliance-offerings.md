@@ -9,17 +9,17 @@ ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61483429"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 儲存體合規性供應項目
 
 為協助組織符合控管個人資料收集和使用之國家、區域和業界特定需求的標準，Microsoft Azure 與 Azure 儲存體提供任何雲端服務提供者最完整的認證和證明集。
 
-您可以在下方找到 Azure 儲存體的合規性供應項目，確保您的服務在使用 Azure 儲存體服務時受到管制。 適用於以下 Azure 儲存體供應項目：Blob、檔案、佇列、資料表、磁碟、非經常性存取層，以及進階儲存體。
+您可以在下方找到 Azure 儲存體的合規性供應項目，確保您的服務在使用 Azure 儲存體服務時受到管制。 它們是適用於下列的 Azure 儲存體供應項目：Blob、檔案、佇列、資料表、磁碟、非經常性存取儲存體和進階儲存體。
 
 ## <a name="global"></a>全域
 
@@ -79,7 +79,7 @@ ms.locfileid: "61483429"
 * [ENISA IAF (歐盟)](https://aka.ms/AzureCompliance)
 * [ENS (西班牙)](https://www.microsoft.com/trustcenter/compliance/spainens)
 * [EU-Model-Clauses](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
-* [EU-U.S.隱私盾](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
+* [歐盟-美國隱私保護](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
 * [GB 18030 (中國)](https://www.trustcenter.cn/compliance/default.html#GB18030)
 * [GDPR (歐盟)](https://www.microsoft.com/trustcenter/privacy/gdpr)
 * [IT Grundschutz Workbook (德國)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)

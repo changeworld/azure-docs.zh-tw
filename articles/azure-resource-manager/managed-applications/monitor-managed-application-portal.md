@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure 入口網站監視受管理的應用程式
+title: 使用 Azure 門戶監視託管應用
 description: 示範如何使用 Azure 入口網站來監視受控應用程式的可用性和警示。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651744"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>監視受控應用程式的已部署執行個體
@@ -22,7 +22,7 @@ ms.locfileid: "75651744"
 
    ![選取受控應用程式](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. 選取 [資源健康狀態]。
+1. 選取 [資源健康狀態]****。
 
    ![選取資源健康狀態](./media/monitor-managed-application-portal/select-resource-health.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "75651744"
 
 ## <a name="view-alerts"></a>檢視警示
 
-1. 選取 [警示]。
+1. 選取 [警示] ****。
 
    ![選取警示](./media/monitor-managed-application-portal/select-alerts.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "75651744"
 
    ![檢視警示](./media/monitor-managed-application-portal/view-alerts.png)
 
-1. 若要新增警示規則，請選取 [+ 新增警示規則]。
+1. 若要新增警示規則，請選取 [+ 新增警示規則]****。
 
    ![建立警示](./media/monitor-managed-application-portal/create-new-alert.png)
 

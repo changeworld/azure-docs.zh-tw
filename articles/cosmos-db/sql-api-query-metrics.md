@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614830"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 調整查詢效能
@@ -44,7 +44,7 @@ SDK 提供適用於查詢執行的各種選項。 例如，在 .NET 中，下列
 | `EnableScanInQuery` | 如果您已選擇不編製索引，但仍想透過掃描繼續執行查詢，就必須設定為 true。 只有在已停用針對所要求篩選路徑編製索引的功能時才適用。 | 
 | `MaxItemCount` | 在每次到伺服器的來回行程中要傳回的項目數上限。 設定為 -1，您就能讓伺服器管理項目數。 或者，您可以降低此值，以便在每次來回行程中只擷取少數項目。 
 | `MaxBufferedItemCount` | 這是用戶端選項，可在執行跨分割區 ORDER BY 時，用來限制記憶體耗用量。 較高的值有助於降低跨分割區排序的延遲。 |
-| `MaxDegreeOfParallelism` | 取得或設定在 Azure Cosmos 資料庫服務中平行查詢執行期間用戶端的並行作業數目。 正值的屬性值會將並行操作次數限制為設定的值。 如果將它設為小於 0，系統就會自動決定要執行的並行操作次數。 |
+| `MaxDegreeOfParallelism` | 在 Azure Cosmos 資料庫服務中的並行查詢執行期間獲取或設置運行用戶端的併發運算元。 正值的屬性值會將並行操作次數限制為設定的值。 如果將它設為小於 0，系統就會自動決定要執行的並行操作次數。 |
 | `PopulateQueryMetrics` | 啟用在查詢執行的各種階段 (例如，編譯時間、索引迴圈時間及文件載入時間) 所花費時間的統計資料詳細記錄。 您可以與 Azure 支援人員分享來自查詢統計資料的輸出，以診斷查詢效能問題。 |
 | `RequestContinuation` | 您可以藉由傳入任何查詢所傳回的不透明接續 Token，繼續進行查詢執行。 接續 Token 會封裝查詢執行所需的所有狀態。 |
 | `ResponseContinuationTokenLimitInKb` | 您可以限制伺服器所傳回之接續 Token 的大小上限。 如果您的應用程式主機有回應標頭大小的限制，則您可能需要設定此項。 設定此項，可能會增加整體持續時間以及針對查詢所取用的 RU。  |
@@ -136,7 +136,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 ## <a name="best-practices-for-query-performance"></a>查詢效能的最佳作法
 以下是影響 Azure Cosmos DB 查詢效能的最常見因素。 我們將在本文中更深入探討下列每個主題。
 
-| 因素 | 秘訣 | 
+| 因數 | 秘訣 | 
 | ------ | -----| 
 | 佈建的輸送量 | 測量每個查詢的 RU，並確認您擁有查詢所需的佈建輸送量。 | 
 | 分割區和分割區索引鍵 | 在篩選子句中偏好使用具有分割區索引鍵的查詢以降低延遲。 |
@@ -168,7 +168,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 若要了解如何從 Azure Cosmos DB 取得最佳用戶端效能，請參閱[效能祕訣](performance-tips.md)和[效能測試](performance-testing.md)。 這包括使用最新的 SDK、設定平台專屬設定 (例如預設的連線數目)、記憶體回收的頻率，以及使用輕量級連線選項 (例如直接/TCP)。 
 
 
-#### <a name="max-item-count"></a>項目數上限
+#### <a name="max-item-count"></a>最大項目計數
 對於查詢，`MaxItemCount` 的值可能會對端對端查詢時間有重大影響。 伺服器每次往返將會傳回不超過 `MaxItemCount` 中的項目數 (預設值是 100 個項目)。 將此設為較高的值 (-1 是最大值，建議使用)，會限制伺服器和用戶端之間的往返次數，尤其是具有大量結果集的查詢，以改善整體查詢持續時間。
 
 ```cs
@@ -216,7 +216,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ### <a name="indexing-policy"></a>編製索引原則
 若要了解編製索引路徑、種類和模式，以及它們如何影響執行查詢，請參閱[設定編製索引原則](index-policy.md)。 根據預設，編製索引原則會針對字串使用雜湊索引編製，這對於等號比較查詢很有效率，但不適用於範圍查詢/排序依據查詢。 如果您需要針對字串進行範圍查詢，我們建議針對所有字串指定範圍索引類型。 
 
-根據預設, Azure Cosmos DB 會將自動索引編制套用至所有資料。 針對高效能插入案例, 請考慮排除路徑, 因為這會降低每個插入作業的 RU 成本。 
+預設情況下，Azure Cosmos DB 將對所有資料應用自動索引。 對於高性能插入方案，請考慮排除路徑，因為這將降低每個插入操作的 RU 成本。 
 
 ## <a name="query-execution-metrics"></a>查詢執行計量
 您可以藉由傳入選擇性的 `x-ms-documentdb-populatequerymetrics` 標頭 (.NET SDK 中的 `FeedOptions.PopulateQueryMetrics`)，來取得查詢執行的詳細計量。 `x-ms-documentdb-query-metrics` 中傳回的值含有下列索引鍵/值組，適用於對查詢執行進行進階疑難排解。 
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 度量 | 單位 | 描述 | 
+| 計量 | 單位 | 描述 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查詢執行時間 | 
 | `queryCompileTimeInMs` | 毫秒 | 查詢編譯時間  | 
@@ -249,9 +249,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | 毫秒 | 載入文件所花費的時間  | 
 | `systemFunctionExecuteTimeInMs` | 毫秒 | 執行系統 (內建) 函式所花費的總時間，以毫秒為單位  | 
 | `userFunctionExecuteTimeInMs` | 毫秒 | 執行使用者定義函式所花費的總時間，以毫秒為單位 | 
-| `retrievedDocumentCount` | 計數 | 擷取的文件總數  | 
+| `retrievedDocumentCount` | count | 擷取的文件總數  | 
 | `retrievedDocumentSize` | 位元組 | 擷取的文件大小總計，以位元組為單位  | 
-| `outputDocumentCount` | 計數 | 輸出文件數目 | 
+| `outputDocumentCount` | count | 輸出文件數目 | 
 | `writeOutputTimeInMs` | 毫秒 | 查詢執行時間，以毫秒為單位 | 
 | `indexUtilizationRatio` | 比率 (<=1) | 符合篩選的文件數目與所載入文件數目的比率  | 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dbb9b0f865c7ec5d9d29e2310ae41abbec287bd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464957"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>停用 Azure VM 中的客體 OS 防火牆
 
@@ -27,7 +27,7 @@ ms.locfileid: "76718866"
 
 ## <a name="solution"></a>解決方法
 
-本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 Microsoft 的最佳作法是啟用 Windows 防火牆元件。 設定防火牆規則的方式取決於所需的 VM 存取層級。
+本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 啟用 Windows 防火牆元件是 Microsoft 最佳實踐。 如何配置防火牆規則取決於對 VM 所需的存取層級。
 
 ### <a name="online-solutions"></a>線上解決方案 
 
@@ -70,7 +70,7 @@ ms.locfileid: "76718866"
     ```
 
 > [!Note]
-> 如果防火牆是透過群組原則物件所設定，則此方法可能無法使用，因為此命令只會變更本機登錄專案。 如果已備有原則，該原則會覆寫這項變更。 
+> 如果防火牆是透過群組原則物件設定，此方法可能無效，因為這個命令只會變更本機登錄項目。 如果已備有原則，該原則會覆寫這項變更。 
 
 #### <a name="mitigation-3-pstools-commands"></a>緩解措施 3：PSTools 命令
 
@@ -90,9 +90,9 @@ ms.locfileid: "76718866"
 
 請遵循下列步驟使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在要對其進行疑難排解的 VM 上，啟動登錄編輯程式 ，然後前往 [檔案] > [連線網路登錄]。
+1.  在故障排除 VM 上，啟動登錄編輯程式，然後轉到**檔** > **連接網路註冊表**。
 
-2.  開啟*目的電腦*\SYSTEM 分支，然後指定下列值：
+2.  打開*目的機*_SYSTEM 分支，並指定以下值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,15 +100,15 @@ ms.locfileid: "76718866"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重新啟動服務。 由於您無法使用遠端登錄來執行上述作業，因此必須使用 [移除服務主控台]。
+3.  重新啟動服務。 由於無法使用遠端註冊表執行此操作，因此必須使用遠端服務主控台。
 
-4.  開啟**services.msc**的實例。
+4.  打開**服務.msc**的實例。
 
-5.  按一下 [服務 (本機)]。
+5.  按一下 [服務 (本機)]****。
 
-6.  選取 [連線到另一部電腦]。
+6.  選取 [連線到另一部電腦]****。
 
-7.  輸入問題 VM 的**私人 IP 位址（DIP）** 。
+7.  輸入問題 VM 的**私人 IP 位址 （DIP）。**
 
 8.  重新啟動本機防火牆原則。
 

@@ -1,20 +1,18 @@
 ---
 title: 支援 Azure Marketplace 和 AppSource | Azure
 description: Azure Marketplace 和 AppSource 的支援資訊和連結
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: MaggiePucciEvans
-manager: evansma
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 3/11/2020
-ms.author: evansma
-ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.topic: conceptual
+ms.date: 3/19/2020
+ms.author: dsindona
+ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79095536"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284920"
 ---
 # <a name="support-for-the-marketplace"></a>Marketplace 的支援  
 以下是 Marketplace 的支援選項清單。  
@@ -23,13 +21,13 @@ ms.locfileid: "79095536"
 
 ## <a name="onboarding"></a>登入
 
-使用 Microsoft [marketplace 發行者支援](https://aka.ms/marketplacepublishersupport)開啟票證，以取得上線和開始使用的問題。
+在 Microsoft[市場發行者的支援下](https://aka.ms/marketplacepublishersupport)，針對載入和入門問題打開票證。
 
-## <a name="partner-center-or-cloud-partner-portal"></a>合作夥伴中心或 Cloud Partner 入口網站  
+## <a name="partner-center-or-cloud-partner-portal"></a>合作夥伴中心或雲合作夥伴門戶  
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://aka.ms/marketplacepublishersupport) \(英文\) 的「建立事件」頁面</li> </ul> | 合作夥伴中心或 Cloud Partner 入口網站的支援。 | 平日24小時提供支援。 |  
+| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://aka.ms/marketplacepublishersupport) \(英文\) 的「建立事件」頁面</li> </ul> | 支援合作夥伴中心或雲合作夥伴門戶。 | 支援全天候提供。 |  
 
 ## <a name="technical"></a>技術需求  
 
@@ -48,6 +46,8 @@ ms.locfileid: "79095536"
 
 
 ## <a name="next-steps"></a>後續步驟
-請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](./marketplace-publishers-guide.md)網頁。  
- 
+
+* 訪問[Azure 應用商店和 AppSource 發行者指南頁面](https://docs.microsoft.com/azure/marketplace/)。
+* 詳細瞭解[合作夥伴中心對商業市場計畫的支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+
 ---

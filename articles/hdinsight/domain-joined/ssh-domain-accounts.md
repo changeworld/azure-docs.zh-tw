@@ -1,6 +1,6 @@
 ---
-title: 在 Azure HDInsight 中管理網域帳戶的 SSH 存取
-description: 在 HDInsight 中管理 Azure AD 帳戶之 SSH 存取的步驟。
+title: 在 Azure HDInsight 中管理域帳戶的 SSH 存取權限
+description: 在 HDInsight 中管理 Azure AD 帳戶的 SSH 訪問的步驟。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,33 +8,33 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 5529989384df75b592afa8f5e4960eb9817fb2d7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77472514"
 ---
-# <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中管理網域帳戶的 SSH 存取
+# <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中管理域帳戶的 SSH 存取權限
 
-在安全叢集上，預設會允許[AZURE AD DS](../../active-directory-domain-services/overview.md)中的所有網域使用者透過[SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)連線到前端和邊緣節點。 這些使用者不屬於 sudoers 群組，而且不會取得根存取權。 在叢集建立期間建立的 SSH 使用者將具備根存取權。
+預設情況下，在安全群集上[，Azure AD DS](../../active-directory-domain-services/overview.md)中的所有域使用者都允許[SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)進入頭節點和邊緣節點。 這些使用者不是 sudoers 組的一部分，並且不會獲取根存取權限。 在群集創建期間創建的 SSH 使用者將具有根存取權限。
 
 ## <a name="manage-access"></a>管理存取權
 
-若要修改對特定使用者或群組的 SSH 存取，請更新每個節點上的 `/etc/ssh/sshd_config`。
+要修改對特定使用者或組的 SSH 存取權限`/etc/ssh/sshd_config`，請在每個節點上更新。
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到群集。 通過將 CLUSTERNAME 替換為群集的名稱來編輯下面的命令，然後輸入以下命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 開啟 `ssh_confi`g 檔案。
+1. 打開`ssh_confi`g 檔。
 
     ```bash
     sudo nano /etc/ssh/sshd_config
     ```
 
-1. 視需要修改 `sshd_config` 檔案。 如果您將使用者限制在特定群組，則本機帳戶無法透過 SSH 連線到該節點。 以下是語法的範例：
+1. 根據需要修改`sshd_config`檔。 如果將使用者限制為特定組，則本地帳戶無法將 SSH 放入該節點。 以下只是語法的示例：
 
     ```bash
     AllowUsers useralias1 useralias2
@@ -42,7 +42,7 @@ ms.locfileid: "77472514"
     AllowGroups groupname1 groupname2
     ```
 
-    然後儲存變更： **Ctrl + X**、 **Y**、 **Enter**。
+    然後保存更改： **Ctrl = X**， **Y**，**輸入**。
 
 1. 重新開機 sshd。
 
@@ -50,15 +50,15 @@ ms.locfileid: "77472514"
     sudo systemctl restart sshd
     ```
 
-1. 針對每個節點重複上述步驟。
+1. 每個節點重複上述步驟。
 
-## <a name="ssh-authentication-log"></a>SSH 驗證記錄
+## <a name="ssh-authentication-log"></a>SSH 身份驗證日誌
 
-SSH 驗證記錄檔會寫入 `/var/log/auth.log`。 如果您看到透過 SSH 針對本機或網域帳戶的任何登入失敗，您將需要經過記錄檔以進行錯誤的檢查。 此問題通常與特定的使用者帳戶有關，而使用預設的 SSH 使用者（本機帳戶）嘗試其他使用者帳戶或 SSH 通常是很好的作法，然後嘗試 kinit。
+SSH 身份驗證日誌寫入`/var/log/auth.log`。 如果您看到本地或域帳戶通過 SSH 出現任何登錄失敗，則需要通過日誌來調試錯誤。 通常，問題可能與特定使用者帳戶相關，通常最好使用預設 SSH 使用者（本地帳戶）嘗試其他使用者帳戶或 SSH，然後嘗試 kinit。
 
-## <a name="ssh-debug-log"></a>SSH 調試記錄
+## <a name="ssh-debug-log"></a>SSH 調試日誌
 
-若要啟用詳細資訊記錄，您必須使用 [`-d`] 選項重新開機 `sshd`。 如同 `/usr/sbin/sshd -d` 您也可以在自訂埠（例如2222）執行 `sshd`，讓您不需要停止主要的 SSH 背景程式。 您也可以使用 `-v` 選項搭配 SSH 用戶端，以取得更多記錄（失敗的用戶端觀點）。
+要啟用詳細日誌記錄，您需要使用 該`sshd``-d`選項重新開機。 就像`/usr/sbin/sshd -d`您也可以在自訂埠`sshd`（如 2222）上運行一樣，您不必停止主 SSH 守護進程。 您還可以使用`-v`SSH 用戶端選項獲取更多日誌（故障的用戶端視圖）。
 
 ## <a name="next-steps"></a>後續步驟
 

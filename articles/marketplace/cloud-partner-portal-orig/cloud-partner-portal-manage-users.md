@@ -1,20 +1,18 @@
 ---
-title: 在 cloud partner 入口網站上管理使用者 |Azure Marketplace
+title: 在雲合作夥伴門戶上管理使用者 |Azure 應用商店
 description: 在 Cloud Partner 入口網站上管理使用者
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b14d40e9b3a2aa1ca71335b60e97f15b3782698f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823273"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280213"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>在 Cloud Partner 入口網站上管理使用者
 ======================================
@@ -23,17 +21,17 @@ Cloud Partner 入口網站可讓您新增具有虛擬機器供應項目之角色
 
 若要**新增使用者並指派角色**以便發佈供應項目，請遵循下列步驟︰
 
-<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>步驟 1. 若要新增使用者並指派角色，請按一下左邊瀏覽窗格上的 [使用者] 索引標籤。
+<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>步驟 1： 若要新增使用者並指派角色，請按一下左邊瀏覽窗格上的 [使用者] 索引標籤。
 --------------------------------------------------------------------------------------------
 
 ![使用者索引標籤](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
 
-<a name="step-2-click-add-user"></a>步驟 2. 按一下 [新增使用者]。
+<a name="step-2-click-add-user"></a>步驟 2： 按一下 [新增使用者]。
 -----------------------
 
 ![選取 [新增使用者]](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
-<a name="step-3-type-email-address-and-select-a-role-assignment"></a>步驟 3. 輸入電子郵件地址，然後選取角色指派。
+<a name="step-3-type-email-address-and-select-a-role-assignment"></a>步驟 3： 輸入電子郵件地址，然後選取角色指派。
 --------------------------------------------------------
 
 您可以將新使用者新增為「擁有者」或「參與者」。
@@ -51,11 +49,11 @@ o 確保在 Cloud Partner 入口網站上提供的電子郵件識別碼，在與
 
 目前只有擁有者可以存取 Insights 中的 [Azure 付款] 和 [Azure 客戶] 索引標籤。
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>步驟 4. 選取您要加入至新使用者中的 [發行者名稱]，然後按一下 [新增] 來完成使用者新增作業。
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>步驟 4： 選取您要加入至新使用者中的 [發行者名稱]，然後按一下 [新增] 來完成使用者新增作業。
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> 將您的電子郵件新增為擁有者或參與者的 [發行者名稱]，將會顯示在 [發行者] 的下拉式清單中以供選取。
+> 將電子郵件添加為擁有者或參與者的"發行者名稱"將顯示在發行者清單的下拉清單中供選擇。
 
 ![指派角色 - 選取發行者](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

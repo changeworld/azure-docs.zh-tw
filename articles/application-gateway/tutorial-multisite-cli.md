@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI Azure 應用程式閘道裝載多個網站
+title: 使用 CLI - Azure 應用程式閘道託管多個網站
 description: 了解如何使用 Azure CLI，以建立裝載多個站台的應用程式閘道。
 services: application-gateway
 author: vhorne
@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5edc2e5228146aee913027a83e495d94c003e237
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0e58d9ecfbd0731fc9bf91664763e73d8c56e64a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047341"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294758"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>使用 Azure CLI，以建立有多站台裝載的應用程式閘道
 
-您可以使用 Azure CLI，在建立[應用程式閘道](application-gateway-multi-site-overview.md)時設定[裝載多個網站](application-gateway-introduction.md)。 在本教學課程中，您可以使用虛擬機器擴展集建立後端集區。 接著，您可以根據擁有的網域來設定接聽程式和規則，確保網路流量會抵達集區中的適當伺服器。 本教學課程假設您擁有多個網域，並使用 *www.contoso.com* 和 *www.fabrikam.com* 的範例。
+您可以使用 Azure CLI，在建立[應用程式閘道](application-gateway-introduction.md)時設定[裝載多個網站](application-gateway-multi-site-overview.md)。 在本教學課程中，您可以使用虛擬機器擴展集建立後端集區。 接著，您可以根據擁有的網域來設定接聽程式和規則，確保網路流量會抵達集區中的適當伺服器。 本教程假定您擁有多個域，並使用 和`www.contoso.com``www.fabrikam.com`的示例。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 設定網路
@@ -33,13 +33,13 @@ ms.locfileid: "74047341"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group) 建立資源群組。
 
-下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
+下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -47,7 +47,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>建立網路資源 
 
-使用 *az network vnet create* 建立名為 myVNet 的虛擬網路，以及名為 myAGSubnet[](/cli/azure/network/vnet) 的子網路。 然後您可以使用 *az network vnet subnet create* 新增名為 myBackendSubnet[](/cli/azure/network/vnet/subnet) 的子網路，後端伺服器需要該子網路。 使用 *az network public-ip create* 建立名為 myAGPublicIPAddress[](/cli/azure/network/public-ip) 的公用 IP 位址。
+使用 [az network vnet create](/cli/azure/network/vnet) 建立名為 myVNet** 的虛擬網路，以及名為 myAGSubnet** 的子網路。 然後您可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 新增名為 myBackendSubnet** 的子網路，後端伺服器需要該子網路。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立名為 myAGPublicIPAddress** 的公用 IP 位址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -69,7 +69,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-您可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 來建立名為 myAppGateway 的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet 和 myAGPublicIPAddress。 
+您可以使用[az 網路應用程式閘道創建](/cli/azure/network/application-gateway)來創建名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -89,15 +89,15 @@ az network application-gateway create \
 
 可能需要幾分鐘的時間來建立應用程式閘道。 建立應用程式閘道後，您可以看到它的這些新功能：
 
-- appGatewayBackendPool - 應用程式閘道必須至少有一個後端位址集區。
-- appGatewayBackendHttpSettings - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
-- appGatewayHttpListener - 與 appGatewayBackendPool 相關聯的預設接聽程式。
-- appGatewayFrontendIP - 將 myAGPublicIPAddress 指派給 appGatewayHttpListener。
-- rule1 - 與 appGatewayHttpListener 相關聯的預設路由規則。
+- appGatewayBackendPool** - 應用程式閘道必須至少有一個後端位址集區。
+- appGatewayBackendHttpSettings** - 指定以連接埠 80 和 HTTP 通訊協定來進行通訊。
+- appGatewayHttpListener** - 與 appGatewayBackendPool** 相關聯的預設接聽程式。
+- appGatewayFrontendIP** - 將 myAGPublicIPAddress** 指派給 appGatewayHttpListener**。
+- rule1** - 與 appGatewayHttpListener** 相關聯的預設路由規則。
 
 ### <a name="add-the-backend-pools"></a>新增後端集區
 
-使用 *az network application-gateway address-pool create*，以新增包含後端伺服器所需且名為 *contosoPool* 和 [fabrikamPool](/cli/azure/network/application-gateway) 的後端集區。
+使用 [az network application-gateway address-pool create](/cli/azure/network/application-gateway)，以新增包含後端伺服器所需且名為 *contosoPool* 和 *fabrikamPool* 的後端集區。
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -112,9 +112,9 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>新增接聽程式
 
-需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在本教學課程中，您會為兩個網域建立兩個接聽程式。 在此範例中，會為 www.contoso.com 和 www.fabrikam.com 網域建立接聽程式。 
+需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在本教學課程中，您會為兩個網域建立兩個接聽程式。 在此範例中，會為 *www.contoso.com* 和 *www.fabrikam.com* 網域建立接聽程式。 
 
-使用 *az network application-gateway http-listener create*，以新增路由流量時所需且名為 *contosoListener* 和 [fabrikamListener](/cli/azure/network/application-gateway) 的接聽程式。
+使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway)，以新增路由流量時所需且名為 *contosoListener* 和 *fabrikamListener* 的接聽程式。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -162,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>建立虛擬機器擴展集
 
-在此範例中，您會建立三個虛擬機器擴展集，以支援應用程式閘道中的三個後端集區。 您所建立的擴展集名為 myvmss1、myvmss2 和 myvmss3。 每個擴展集都會包含兩個您安裝 NGINX 的虛擬機器執行個體。
+在此範例中，您會建立三個虛擬機器擴展集，以支援應用程式閘道中的三個後端集區。 您所建立的擴展集名為 myvmss1**、myvmss2** 和 myvmss3**。 每個擴展集都會包含兩個您安裝 NGINX 的虛擬機器執行個體。
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -222,7 +222,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 
-在瀏覽器的網址列中輸入您的網域名稱。 例如 HTTP\://www.contoso.com。
+在瀏覽器的網址列中輸入您的網域名稱。 例如，HTTP\://www.contoso.com。
 
 ![在應用程式閘道中測試 contoso 網站](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 

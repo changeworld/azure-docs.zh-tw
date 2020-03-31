@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254868"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 裝置管理員服務來檢視和管理作業 (Update 3 和更新版本)
 
-## <a name="overview"></a>概觀
-[作業] 刀鋒視窗提供單一中央入口網站，可針對連接到 StorSimple 裝置管理員服務的裝置，檢視及管理在裝置上啟動的作業。 您可以針對多個裝置，檢視已排程、執行中、完成、已取消和失敗的工作。 結果會以表格式格式呈現。
+## <a name="overview"></a>總覽
+[作業]**** 刀鋒視窗提供單一中央入口網站，可針對連接到 StorSimple 裝置管理員服務的裝置，檢視及管理在裝置上啟動的作業。 您可以針對多個裝置，檢視已排程、執行中、完成、已取消和失敗的工作。 結果會以表格式格式呈現。
 
 ![[作業] 刀鋒視窗](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "79254868"
 * **狀態** – 執行中、完成、已取消、失敗、取消中，或是完成但發生錯誤。
 * **實體** – 工作可以與磁碟區、備份原則或裝置相關聯。 例如，複製工作與磁碟區相關聯，而排程的備份工作則與備份原則相關聯。 裝置工作是透過災害復原 (DR) 或還原作業而建立。
 * **裝置** – 用來啟動工作之裝置的名稱。
-* **啟動於** – 啟動工作的時間。
+* **啟動**= 作業開始的時間。
 * **期間** – 完成作業所需要的時間。
 
 工作清單每隔 30 秒會重新整理。
@@ -55,9 +55,9 @@ ms.locfileid: "79254868"
 執行下列步驟來檢視任何工作的詳細資料。
 
 #### <a name="to-view-job-details"></a>若要檢視工作詳細資料
-1. 移至 StorSimple 裝置管理員服務，然後按一下 [作業]。
+1. 移至 StorSimple 裝置管理員服務，然後按一下 [作業]****。
 
-2. 在 [作業] 刀鋒視窗中，利用適當的篩選條件執行查詢，以顯示您感興趣的作業。 您可以搜尋完成、執行中或已取消工作。
+2. 在 [作業]**** 刀鋒視窗中，利用適當的篩選條件執行查詢，以顯示您感興趣的作業。 您可以搜尋完成、執行中或已取消工作。
 
     ![[作業] 刀鋒視窗](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -77,13 +77,13 @@ ms.locfileid: "79254868"
 
 
 ### <a name="to-cancel-a-job"></a>取消工作
-1. 在 [工作] 頁面上，透過搭配適當的篩選器執行查詢來顯示您要取消的執行中工作。 選取工作。
+1. 在 [工作]**** 頁面上，使用適當的篩選器執行查詢，以顯示您要取消的執行中工作。 選取工作。
 
-2. 用滑鼠右鍵按一下選取的作業以叫用操作功能表，然後按一下 [取消]。
+2. 用滑鼠右鍵按一下選取的作業以叫用操作功能表，然後按一下 [取消]****。
 
     ![工作詳細資料](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
-3. 系統提示您進行確認時，按一下 [是]。 即會取消此工作。
+3. 當提示確認時，請按一下 [是]****。 即會取消此工作。
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何 [管理您的 StorSimple 備份原則](storsimple-8000-manage-backup-policies-u2.md)。

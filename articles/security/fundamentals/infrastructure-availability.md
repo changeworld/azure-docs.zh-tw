@@ -1,6 +1,6 @@
 ---
-title: Azure 基礎結構可用性-Azure 安全性
-description: 本文提供 Microsoft 如何保護 Azure 基礎結構, 並提供客戶資料的最高可用性的相關資訊。
+title: Azure 基礎結構可用性 - Azure 安全性
+description: 本文提供有關 Microsoft 保護 Azure 基礎結構並提供客戶資料最大可用性的資訊。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727221"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure 基礎結構可用性
-本文提供 Microsoft 如何保護 Azure 基礎結構, 並提供客戶資料的最高可用性的相關資訊。 Azure 會根據透過虛擬化技術達到的龐大備援能力，提供穩定的可用性。
+本文提供有關 Microsoft 保護 Azure 基礎結構並提供客戶資料最大可用性的資訊。 Azure 會根據透過虛擬化技術達到的龐大備援能力，提供穩定的可用性。
 
 ## <a name="temporary-outages-and-natural-disaster"></a>暫時性中斷和天然災害
 Microsoft Cloud 基礎結構和營運小組負責設計、建置、運作及加強保護雲端基礎結構。 這個小組可確保 Azure 基礎結構提供高可用性和可靠性、高效率及智慧型延展性。 小組會提供更安全、更私密且受信任的雲端。
@@ -34,7 +34,7 @@ Microsoft Cloud 基礎結構和營運小組負責設計、建置、運作及加�
 
 Microsoft 可透過進階監視和事件回應、服務支援與備份容錯移轉功能來確保高可用性。 分散各地的 Microsoft 作業中心全天候運作。 Azure 網路是世界上最大的網路之一。 光纖和內容發佈網路可連接資料中心和邊緣節點，以確保高效能和可靠性。
 
-## <a name="disaster-recovery"></a>嚴重損壞修復
+## <a name="disaster-recovery"></a>災害復原
 Azure 會將您的資料長久保留在兩個位置中。 您可以選擇備份站台的位置。 在這兩個位置中，Azure 會持續維護 3 份健康情況良好的資料複本。
 
 ## <a name="database-availability"></a>資料庫可用性
@@ -46,11 +46,11 @@ Azure 會透過可高度擴充且耐久的儲存體服務提供儲存體，如�
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Microsoft 為協助保護 Azure 基礎結構執行了哪些動作，請參閱：
 
-- [Azure 設備、廠房以及實體安全性](physical-security.md)
-- [Azure 資訊系統元件和界限](infrastructure-components.md)
+- [Azure 設施、廠房以及實體安全性](physical-security.md)
+- [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL Database 安全性功能](infrastructure-sql.md)
+- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

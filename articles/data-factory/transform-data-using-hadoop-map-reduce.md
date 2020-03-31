@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop MapReduce 活動轉換資料
+title: 使用 Hadoop 映射轉換資料減少活動
 description: 了解如何從 Azure Data Factory，在 Azure HDInsight 叢集上執行 Hadoop MapReduce 程式以處理資料。
 services: data-factory
 ms.service: data-factory
@@ -11,17 +11,17 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: 5d38e3126442bcf34c96cead2b2ea59507b50b8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912873"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop MapReduce 活動轉換資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [第 1 版](v1/data-factory-map-reduce.md)
-> * [目前的版本](transform-data-using-hadoop-map-reduce.md)
+> * [版本 1](v1/data-factory-map-reduce.md)
+> * [當前版本](transform-data-using-hadoop-map-reduce.md)
 
 Data Factory [管線](concepts-pipelines-activities.md) 中的 HDInsight MapReduce 活動會在[您自己](compute-linked-services.md#azure-hdinsight-linked-service)或[隨選](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)的 HDInsight 叢集上叫用 MapReduce 程式。 本文是根據 [資料轉換活動](transform-data.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
@@ -60,18 +60,18 @@ Data Factory [管線](concepts-pipelines-activities.md) 中的 HDInsight MapRedu
 
 ## <a name="syntax-details"></a>語法詳細資料
 
-| 屬性          | 描述                              | 必要項 |
+| 屬性          | 描述                              | 必要 |
 | ----------------- | ---------------------------------------- | -------- |
-| 名稱              | 活動的名稱                     | 是      |
-| 說明       | 說明活動用途的文字 | 否       |
-| 類型              | 對於 MapReduce 活動，活動類型為 HDinsightMapReduce | 是      |
-| linkedServiceName | 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務。 若要深入了解此連結服務，請參閱[計算連結服務](compute-linked-services.md)一文。 | 是      |
+| NAME              | 活動的名稱                     | 是      |
+| description       | 說明活動用途的文字 | 否       |
+| type              | 對於 MapReduce 活動，活動類型為 HDinsightMapReduce | 是      |
+| linkedServiceName | 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
 | className         | 要執行的類別名稱         | 是      |
-| jarLinkedService  | Azure 儲存體連結服務用來儲存 Jar 檔案的參考。 如果您未指定這項連結服務，則會使用 HDInsight 連結服務中定義的 Azure 儲存體連結服務。 | 否       |
+| jarLinkedService  | Azure 儲存體連結服務用來儲存 Jar 檔案的參考。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。 | 否       |
 | jarFilePath       | 提供儲存在 jarLinkedService 引用之 Azure 儲存體中 Jar 檔案的路徑。 檔案名稱有區分大小寫。 | 是      |
 | jarlibs           | 儲存在 jarLinkedService 引用之 Azure 儲存體中作業所參考的 Jar 程式庫檔路徑字串陣列。 檔案名稱有區分大小寫。 | 否       |
 | getDebugInfo      | 指定何時將記錄檔複製到 HDInsight 叢集所使用 (或) jarLinkedService 所指定的 Azure 儲存體。 允許的值︰None、Always 或 Failure。 預設值：None。 | 否       |
-| arguments         | 指定 Hadoop 作業的引數陣列。 引數會以命令列引數的方式傳遞給每項工作。 | 否       |
+| 引數         | 指定 Hadoop 作業的引數陣列。 引數會以命令列引數的方式傳遞給每項工作。 | 否       |
 | 定義           | 指定參數作為機碼/值組，以供在 Hive 指令碼內參考。 | 否       |
 
 
@@ -117,9 +117,9 @@ Data Factory [管線](concepts-pipelines-activities.md) 中的 HDInsight MapRedu
 
 * [U-SQL 活動](transform-data-using-data-lake-analytics.md)
 * [Hive 活動](transform-data-using-hadoop-hive.md)
-* [Pig 活動](transform-data-using-hadoop-pig.md)
+* [豬活動](transform-data-using-hadoop-pig.md)
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
-* [Spark 活動](transform-data-using-spark.md)
+* [火花活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

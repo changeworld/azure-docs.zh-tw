@@ -12,17 +12,17 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
 ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023645"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>開始使用適用於 Node.js 的 Batch SDK
 
 了解如何使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中建置 Batch 用戶端的基本概念。 我們會逐步了解批次應用程式的案例，然後使用 Node.js 用戶端加以設定。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已具備 Node.js 的使用知識並熟悉 Linux。 同時假設您的 Azure 帳戶設有存取權限，可建立 Batch 和儲存體服務。
 
 建議您先閱讀 [Azure Batch 技術概觀](batch-technical-overview.md)，再進行本文概述的步驟。
@@ -43,7 +43,7 @@ Node.js 用戶端會使用準備工作部署批次作業 (稍後詳細說明) �
 
 > [!TIP]
 > 指定連結中的 Node.js 用戶端不包含要部署為 Azure 函式應用程式的特定程式碼。 您可以參考下列連結，以取得建立函式應用程式的指示。
-> - [建立函式應用程式](../azure-functions/functions-create-first-azure-function.md)
+> - [建立函數應用程式](../azure-functions/functions-create-first-azure-function.md)
 > - [建立計時器觸發程序函式](../azure-functions/functions-bindings-timer.md)
 >
 >
@@ -67,7 +67,7 @@ Node.js 用戶端會使用準備工作部署批次作業 (稍後詳細說明) �
 
 ### <a name="step-2-create-an-azure-batch-account"></a>步驟 2：建立 Azure Batch 帳戶
 
-您可以從[Azure 入口網站](batch-account-create-portal.md)或從命令列（[PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)）加以建立。
+可以從[Azure 門戶](batch-account-create-portal.md)或命令列[（PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI）](/cli/azure)創建它。
 
 以下是透過 Azure CLI 命令建立 Batch 帳戶的命令。
 

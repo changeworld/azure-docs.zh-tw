@@ -1,5 +1,5 @@
 ---
-title: 將資料從/複製到 SAP Cloud for Customer
+title: 為客戶從/複製到 SAP 雲
 description: 了解如何使用 Data Factory，將資料從 SAP Cloud for Customer 複製到支援的接收資料存放區，(或) 從支援的來源資料存放區複製到 SAP Cloud for Customer。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: 0b0352632491dbfc46ed4819653c6cb902eee4ce
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74923726"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Cloud for Customer (C4C) 複製資料
@@ -24,14 +24,14 @@ ms.locfileid: "74923726"
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Cloud for Customer (C4C) 來回複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含詳細的簡介、comparsion 和指引。
+>要瞭解 ADF 對 SAP 資料整合方案的總體支援，請參閱[使用 Azure 資料工廠白皮書進行 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，並詳細說明介紹、比較和指導。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-適用于客戶連接器的 SAP 雲端支援下列活動：
+此 SAP 雲面向客戶連接器支援以下活動：
 
-- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
-- [查閱活動](control-flow-lookup-activity.md)
+- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [查找活動](control-flow-lookup-activity.md)
 
 您可以將資料從 SAP Cloud for Customer 複製到任何支援的接收資料存放區，或將資料從任何支援的來源資料存放區複製到 SAP Cloud for Customer。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -47,18 +47,18 @@ ms.locfileid: "74923726"
 
 以下是針對 SAP Cloud for Customer 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | type 屬性必須設定為：**SapCloudForCustomer**。 | 是 |
-| URL | SAP C4C OData 服務的 URL。 | 是 |
+| type | type 屬性必須設定為：**SapCloudForCustomer**。 | 是 |
+| url | SAP C4C OData 服務的 URL。 | 是 |
 | username | 指定要連線到 SAP C4C 的使用者名稱。 | 是 |
-| password | 指定您為 username 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| 密碼 | 指定您為 username 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 否 (來源)；是 (接收) |
 
 >[!IMPORTANT]
 >若要將資料複製到 SAP Cloud for Customer，請以您 SAP Cloud for Customer 附近的位置明確[建立 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，並在已連結的服務中產生關聯，如下列範例所示：
 
-**範例：**
+**例子：**
 
 ```json
 {
@@ -83,16 +83,16 @@ ms.locfileid: "74923726"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP Cloud for Customer 資料集所支援的屬性清單。
+有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP Cloud for Customer 資料集所支援的屬性清單。
 
 若要從 SAP Cloud for Customer 複製資料，請將資料集的 type 屬性設定為 **SapCloudForCustomerResource**。 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | 資料集的 type 屬性必須設定為：**SapCloudForCustomerResource** |是 |
+| type | 資料集的 type 屬性必須設定為：**SapCloudForCustomerResource** |是 |
 | path | 指定 SAP C4C OData 實體的路徑。 |是 |
 
-**範例：**
+**例子：**
 
 ```json
 {
@@ -117,16 +117,16 @@ ms.locfileid: "74923726"
 
 ### <a name="sap-c4c-as-source"></a>將 SAP C4C 作為來源
 
-若要從 SAP Cloud for Customer 複製資料，請將複製活動中的來源類型設定為 **SapCloudForCustomerSource**。 複製活動的 **source** 區段支援下列屬性：
+若要從 SAP Cloud for Customer 複製資料，請將複製活動中的來源類型設定為 **SapCloudForCustomerSource**。 複製活動**源**部分支援以下屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | type 屬性必須設定為：**SapCloudForCustomerSource**  | 是 |
-| query | 指定自訂 OData 查詢來讀取資料。 | 否 |
+| type | type 屬性必須設定為：**SapCloudForCustomerSource**  | 是 |
+| 查詢 | 指定自訂 OData 查詢來讀取資料。 | 否 |
 
 取得特定日之資料的範例查詢：`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**範例：**
+**例子：**
 
 ```json
 "activities":[
@@ -160,15 +160,15 @@ ms.locfileid: "74923726"
 
 ### <a name="sap-c4c-as-sink"></a>將 SAP C4C 作為接收器
 
-若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動的 **sink** 區段支援下列屬性：
+若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動**接收器**部分支援以下屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| 類型 | type 屬性必須設定為：**SapCloudForCustomerSink**  | 是 |
-| writeBehavior | 作業的寫入行為。 可能是 “Insert”、“Update”。 | 不會。 預設值為 “Insert”。 |
-| writeBatchSize | 寫入作業的批次大小。 要取得最佳效能的批次大小可能會隨著資料表或伺服器而有所不同。 | 不會。 預設值為 10。 |
+| type | type 屬性必須設定為：**SapCloudForCustomerSink**  | 是 |
+| writeBehavior | 作業的寫入行為。 可能是 “Insert”、“Update”。 | 否。 預設值為 “Insert”。 |
+| writeBatchSize | 寫入作業的批次大小。 要取得最佳效能的批次大小可能會隨著資料表或伺服器而有所不同。 | 否。 預設值為 10。 |
 
-**範例：**
+**例子：**
 
 ```json
 "activities":[
@@ -216,23 +216,23 @@ ms.locfileid: "74923726"
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | 日期時間 |
+| Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |
-| Edm.Double | DOUBLE |
+| Edm.Double | Double |
 | Edm.Single | Single |
-| Edm.Guid | GUID |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | String |
-| Edm.Time | 時間範圍 |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="lookup-activity-properties"></a>查閱活動屬性
+## <a name="lookup-activity-properties"></a>查找活動屬性
 
-若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
