@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: c6a7755b692ec796707e4a22ed7e15ae2b60dfe7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440115"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215766"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站
 
@@ -62,23 +62,26 @@ ms.locfileid: "75440115"
 
    清單只會顯示 Data Factory 支援的位置，以及儲存您 Azure Data Factory 中繼資料的位置。 Data Factory 所使用的相關聯資料存放區 (如 Azure 儲存體和 Azure SQL Database) 和計算 (如 Azure HDInsight) 可在其他區域中執行。
 
-1. 選取 [建立]  。
+1. 選取 [建立]  。 在建立完成後，選取 [前往資源]  ，以瀏覽至 [資料處理站]  頁面。 
 
-1. 建立完成之後，您會看到 [Data Factory]  頁面。 選取 [編寫與監視]  圖格，以在個別的索引標籤上啟動 Azure Data Factory 使用者介面 (UI) 應用程式。
+1. 選取 [編寫與監視]  圖格，以在個別的索引標籤上啟動 Azure Data Factory 使用者介面 (UI) 應用程式。
    
    ![資料處理站的首頁，具有 [編寫與監視] 圖格](./media/doc-common-process/data-factory-home-page.png)
+   
+   > [!NOTE]
+   > 如果您看到網頁瀏覽器停滯在「授權中」，請清除 [封鎖第三方 Cookie 和網站資料]  核取方塊。 或讓其保持在選取狀態，但為 **login.microsoftonline.com** 建立例外，然後再次嘗試開啟應用程式。
+   
 1. 在 [現在就開始吧]  頁面上，切換至左面板中的 [編寫]  索引標籤。 
 
-    ![[現在就開始吧] 頁面](./media/quickstart-create-data-factory-portal/get-started-page.png)
+    ![[現在就開始吧] 頁面](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>建立連結的服務
-在此程序中，您會建立連結服務，將 Azure 儲存體帳戶連結到資料處理站。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
+在此程序中，您會建立連結服務，將 Azure 儲存體帳戶連結至資料處理站。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
 
 1. 選取 [連線]  ，然後選取工具列上的 [新增]  按鈕 ([連線]  按鈕位於 [Factory 資源]  下方的左側資料行底部)。 
 
 1. 在 [新增連結服務]  頁面上，選取 [Azure Blob 儲存體]  ，然後選取 [繼續]  。 
 
-   ![選取 [Azure Blob 儲存體] 圖格](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 1. 在 [新增連結服務 (Azure Blob 儲存體)] 頁面上，完成下列步驟： 
 
    a. 針對 [名稱]  ，輸入 **AzureStorageLinkedService**。
@@ -87,7 +90,10 @@ ms.locfileid: "75440115"
 
    c. 選取 [測試連線]  ，以確認 Data Factory 服務可連線至儲存體帳戶。 
 
-   d. 選取 [完成]  以儲存連結服務。 
+   d. 選取 [建立]  以儲存連結服務。 
+
+      ![新增連結服務](./media/quickstart-create-data-factory-portal/linked-service.png)
+
 
 ## <a name="create-datasets"></a>建立資料集
 在此程序中，您會建立兩個資料集：**InputDataset** 和 **OutputDataset**。 這些資料集的類型為 **AzureBlob**。 其會參考您在前一節中建立的 Azure 儲存體連結服務。 
@@ -103,11 +109,10 @@ ms.locfileid: "75440115"
    ![用於建立資料集的功能表](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 1. 在 [新增資料集]  頁面上，選取 [Azure Blob 儲存體]  ，然後選取 [繼續]  。 
 
-   ![選取 [Azure Blob 儲存體]](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
 1. 在 [選取格式]  頁面上，選擇您資料的格式類型，然後選取 [繼續]  。 在此情況下，如果您不剖析內容而原封不動地複製檔案，請選取 [二進位]  。
 
-    ![資料格式類型](./media/doc-common-process/select-binary.png)
-
+   ![選取格式](./media/quickstart-create-data-factory-portal/select-format.png)
+   
 1. 在 [設定屬性]  頁面上，完成下列步驟：
 
     a. 在 [名稱]  下，輸入 **InputDataset**。 
@@ -116,9 +121,9 @@ ms.locfileid: "75440115"
 
     c. 針對 [檔案路徑]  ，選取 [瀏覽]  按鈕。
 
-    d. 在 [選擇檔案或資料夾]  視窗中，瀏覽至 **adftutorial** 容器中的 **input** 資料夾，選取 **emp.txt** 檔案，然後選取 [完成]  。
+    d. 在 [選擇檔案或資料夾]  視窗中，瀏覽至 **adftutorial** 容器中的 **input** 資料夾，選取 **emp.txt** 檔案，然後選取 [確定]  。
     
-    e. 選取 [繼續]  。   
+    e. 選取 [確定]  。   
 
     ![設定 InputDataset 的屬性](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. 重複前述步驟，以建立輸出資料集：  
@@ -133,8 +138,9 @@ ms.locfileid: "75440115"
 
     e. 在 [檔案路徑]  下，輸入 **adftutorial/output**。 如果 **output** 資料夾不存在，則複製活動會在執行階段進行建立。
 
-    f. 選取 [繼續]  。   
+    f. 選取 [確定]  。   
 
+    ![設定 OutputDataset 的屬性](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
 ## <a name="create-a-pipeline"></a>建立管線 
 在此程序中，您會建立並驗證管線，其中含有使用輸入和輸出資料集的複製活動。 複製活動會將資料從您在輸入資料集設定中指定的檔案，複製到您在輸出資料集設定中指定的檔案。 如果輸入資料集僅指定資料夾 (而不是檔案名稱)，則複製活動會將來源資料夾中的所有檔案複製到目的地。 
 
@@ -143,12 +149,14 @@ ms.locfileid: "75440115"
 1. 在 [一般]  索引標籤上，指定 **CopyPipeline** 作為 [名稱]  。 
 
 1. 在 [活動]  工具箱中，展開 [移動和轉換]  。 將 [活動]  工具箱中的 [資料複製]  活動拖到管線設計工具介面。 您也可以在 [活動]  工具箱中搜尋活動。 指定 **CopyFromBlobToBlob** 作為 [名稱]  。
+   ![建立複製資料活動](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. 在複製活動設定中切換至 [來源]  索引標籤，然後選取 **InputDataset** 作為 [來源資料集]  。
 
 1. 在複製活動設定中切換至 [接收]  索引標籤，然後選取 **OutputDataset** 作為 [接收資料集]  。
 
 1. 在畫布上方的管線設定上按一下 [驗證]  ，以驗證管線設定。 確認管線已驗證成功。 若要關閉驗證輸出，請選取 **>>** (向右箭號) 按鈕。 
+   ![驗證管線](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>偵錯管線
 在此步驟中，您將在管線部署至 Data Factory 之前對其進行偵測。 
@@ -156,6 +164,8 @@ ms.locfileid: "75440115"
 1. 在畫布上方的 [管線] 工具列上，按一下 [偵錯]  以觸發的測試回合。 
     
 1. 確認您在底部管線設定的 [輸出]  索引標籤上，可檢視管線執行的狀態。 
+ 
+    ![管線執行輸出](./media/quickstart-create-data-factory-portal/pipeline-output.png)
 
 1. 確認您在 **adftutorial** 容器的 **output** 資料夾中看到輸出檔案。 如果 output 資料夾不存在，Data Factory 服務會自動加以建立。 
 
@@ -163,8 +173,8 @@ ms.locfileid: "75440115"
 在此程序中，您會將實體 (連結服務、資料集和管線) 部署至 Azure Data Factory。 然後，您會手動觸發管線執行。 
 
 1. 觸發管線之前，您必須將實體發佈至 Data Factory。 若要發佈，請選取頂端的 [全部發佈]  。 
+    ![全部發佈](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-   ![發佈按鈕](./media/quickstart-create-data-factory-portal/publish-button.png)
 1. 若要手動觸發管線，請選取管線工具列上的 [新增觸發程序]  ，然後選取 [立即觸發]  。 在 [管線執行]  頁面上，選取 [完成]  。
 
 ## <a name="monitor-the-pipeline"></a>監視管線
@@ -172,13 +182,13 @@ ms.locfileid: "75440115"
 1. 切換至左側的 [監視]  索引標籤。 使用 [重新整理]  按鈕可重新整理清單。
 
    ![用於監視管線執行的索引標籤](./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png)
-1. 選取 [動作]  下方的 [檢視活動執行]  連結。 在此頁面上，您會看到複製活動執行的狀態。 
+1. 選取 **CopyPipeline** 連結，您會在此頁面上看到複製活動執行的狀態。 
 
-1. 若要檢視關於複製作業的詳細資訊，請選取 [動作]  資料行中的 [詳細資料]  (眼鏡圖片) 連結。 如需屬性的詳細資訊，請參閱[複製活動概觀](copy-activity-overview.md)。 
+1. 若要檢視關於複製作業的詳細資訊，請選取 [詳細資料]  (眼鏡圖示) 連結。 如需屬性的詳細資訊，請參閱[複製活動概觀](copy-activity-overview.md)。 
 
    ![複製作業詳細資料](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
 1. 確認您在 **output** 資料夾中看到新的檔案。 
-1. 您可以選取 [管線執行]  連結，從 [活動執行]  檢視切換回 [管線執行]  檢視。 
+1. 您可以選取 [所有管線執行]  連結，從 [活動執行]  檢視切換回 [管線執行]  檢視。 
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>觸發排程上的管線
 此程序是本教學課程的選擇性程序。 您可以建立*排程器觸發程序*，將管線排定為定期執行 (每小時、每天等)。 在此程序中，您會建立一個觸發程序，在您指定的結束日期和日期以前，該觸發程序會每分鐘執行一次。 
@@ -189,20 +199,20 @@ ms.locfileid: "75440115"
 
 1. 在 [新增觸發程序]  頁面上，選取 [選擇觸發程序]  ，然後選取 [新增]  。 
 
-1. 在 [新增觸發程序]  頁面上，在 [結束]  之下選取 [日期]  ，將結束時間指定為目前時間之後的幾分鐘，然後選取 [套用]  。 
+1. 在 [新增觸發程序]  頁面上，在 [結束]  底下選取 [日期]  ，將結束時間指定為目前時間之後的幾分鐘，然後選取 [確定]  。 
 
    每次執行管線都會產生相關成本，因此，請將結束時間指定為開始時間的數分鐘之後。 請確定兩者是在同一天。 不過，請確定發佈時間與結束時間之間有足夠的時間可供管線執行。 在您將方案發佈至 Data Factory 之後，觸發程序才會生效，而不是在您將觸發程序儲存在 UI 時生效。 
 
-1. 在 [新增觸發程序]  頁面上，選取 [已啟動]  核取方塊，然後選取 [儲存]  。 
+1. 在 [新增觸發程序]  頁面上，選取 [已啟用]  核取方塊，然後選取 [確定]  。 
 
    ![新增觸發程序設定](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
-1. 檢閱警告訊息，然後選取 [完成]  。
+1. 檢閱警告訊息，然後選取 [確定]  。
 
 1. 選取 [全部發佈]  ，將變更發佈至 Data Factory。 
 
 1. 切換至左側的 [監視]  索引標籤。 選取 [重新整理]  即可重新整理清單。 在發佈時間到結束時間之間，您會看到管線每隔一分鐘執行一次。 
 
-   請留意 [觸發方式]  資料行中的值。 手動觸發程序執行來自於您先前完成的步驟 (**立即觸發**)。 
+   請留意 [觸發者]  資料行中的值。 手動觸發程序執行來自於您先前完成的步驟 (**立即觸發**)。 
 
 1. 切換至 [觸發程序執行]  檢視。 
 

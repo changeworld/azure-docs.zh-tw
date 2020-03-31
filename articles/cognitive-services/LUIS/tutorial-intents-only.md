@@ -1,22 +1,14 @@
 ---
 title: 教學課程：預測用意 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，建立自訂應用程式來預測使用者的用意。 此應用程式不會擷取語句文字中的各種資料元素 (例如電子郵件地址或日期)，因此是最簡單的 LUIS 應用程式類型。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 89fb76f8c5cc4323e1211524340c0965a7d0716d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 03/24/2020
+ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262739"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80286739"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教學課程：建置 LUIS 應用程式來判斷使用者意圖
 
@@ -53,7 +45,11 @@ ms.locfileid: "76262739"
 
 ## <a name="create-a-new-intent"></a>建立新意圖
 
-1. 在入口網站中，從應用程式的 [建置]  區段中選取 [+ 建立]  。 輸入新意圖名稱 `OrderPizza`，然後選取 [完成]  。
+意圖可用來根據使用者的意圖 (從自然語言文字判斷) 對使用者語句進行分類。
+
+若要將語句分類，意圖需要應歸類為此意圖的使用者語句範例。
+
+1. 在 [意圖]  頁面上的 [建置]  區段中，選取 [+ 建立]  以建立新意圖。 輸入新意圖名稱 `OrderPizza`，然後選取 [完成]  。
 
     當使用者想要訂購披薩時，系統就會預測 `OrderPizza` 意圖。
 
@@ -70,7 +66,7 @@ ms.locfileid: "76262739"
 
     ![新增範例語句](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    藉由提供_範例語句_，您可訓練 LUIS 應針對此意圖預測哪些種類的語句。
+    藉由提供_範例語句_，您可以教導 LUIS 應針對此意圖預測哪些種類的語句。
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 

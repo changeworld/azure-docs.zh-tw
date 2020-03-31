@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919357"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245305"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Java Spring 應用程式
 
@@ -31,13 +31,15 @@ ms.locfileid: "77919357"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-1. 選取 [組態總管]   >  [+ 建立]  來新增下列索引鍵/值組：
+6. 選取 [組態總管]   > [+ 建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
     | /application/config.message | 您好 |
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
+
+7. 選取 [套用]  。
 
 ## <a name="create-a-spring-boot-app"></a>建立 Spring Boot 應用程式
 
@@ -146,7 +148,7 @@ ms.locfileid: "77919357"
 
 1. 設定名為 **APP_CONFIGURATION_CONNECTION_STRING** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 在命令列執行下列命令，然後重新啟動命令提示字元，讓變更生效：
 
-    ```CLI
+    ```cmd
         setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
@@ -158,7 +160,7 @@ ms.locfileid: "77919357"
 
     如果您使用 macOS 或 Linux，請執行下列命令：
 
-    ```console
+    ```cmd
         export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
@@ -166,14 +168,14 @@ ms.locfileid: "77919357"
 
 1. 使用 Maven 建置 Spring Boot 應用程式並加以執行；例如：
 
-    ```CLI
+    ```cmd
     mvn clean package
     mvn spring-boot:run
     ```
 
 2. 在您的應用程式執行之後，使用 *curl* 來測試您的應用程式；例如：
 
-      ```CLI
+      ```cmd
       curl -X GET http://localhost:8080/
       ```
 
@@ -185,7 +187,7 @@ ms.locfileid: "77919357"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並將其與 Java Spring 應用程式搭配使用。 如需詳細資訊，請參閱 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。 若要了解如何使用 Azure 受控服務識別來簡化對應用程式組態的存取，請繼續進行下一個教學課程。
+在本快速入門中，您已建立新的應用程式組態存放區，並將其與 Java Spring 應用程式搭配使用。 如需詳細資訊，請參閱 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。 若要了解如何讓 Java Spring 應用程式以動態方式重新整理組態設定，請繼續進行下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [受控識別整合](./howto-integrate-azure-managed-service-identity.md)
+> [啟用動態組態](./enable-dynamic-configuration-java-spring-app.md)

@@ -4,12 +4,12 @@ description: 提供快速入門指示，說明如何設定使用 Azure 監視器
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 495c40ca8e383dd5a3cf3ba9e5bd42e2936ea015
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670843"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132359"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>快速入門：使用 Azure 監視器 Application Insights 開始監視您的網站
 
@@ -126,7 +126,7 @@ Application Insights 可以從任何連上網際網路的應用程式 (不論是
 > [!NOTE]
 > 如果您使用了現有的資源群組，下列指示將沒有作用，而且您只需要刪除個別的 Application Insights 資源。 請記住，每當您刪除資源群組時，將會刪除屬於該群組的所有基礎資源。
 
-1. 從 Azure 入口網站的左側功能表中，依序按一下 [資源群組]  和 [myResourceGroup]  。
+1. 在 Azure 入口網站的左側功能表中，按一下 [資源群組]  ，然後按一下 [myResourceGroup]  或暫存資源群組的名稱。
 2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入 **myResourceGroup**，然後按一下 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4508b69261cd7b1fb5e400eaf7ffaae67d5cb476
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647959"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473025"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 受控應用程式概觀
 
@@ -19,7 +19,7 @@ Azure 受控應用程式可讓您提供雲端解決方案，讓取用者方便�
 受控應用程式與 Marketplace 中的解決方案範本類似，只有一個主要差異。 在受控應用程式中，資源會部署到應用程式發行者所管理的資源群組。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。 身為發行者，您可以指定解決方案持續支援的成本。
 
 > [!NOTE]
-> 先前，Azure 客戶提供者的文件包含在受控應用程式的文件中。 該文件已移至他處。 現在，請參閱 [Azure 自訂提供者](../custom-providers/overview.md)。
+> 先前，Azure 自訂提供者的文件包含在受控應用程式的文件中。 該文件已移至他處。 現在，請參閱 [Azure 自訂提供者](../custom-providers/overview.md)。
 
 ## <a name="advantages-of-managed-applications"></a>受控應用程式的優點
 

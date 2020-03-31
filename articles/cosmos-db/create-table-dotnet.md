@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 629adfe558aec71e156e50c75aa0891eac5a8bcf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370817"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214926"
 ---
-# <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 建立資料表 API 應用程式 
+# <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 與 Azure Cosmos DB 建置資料表 API 應用程式 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -28,7 +28,7 @@ ms.locfileid: "78370817"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-如果您尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的[Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,7 +68,7 @@ ms.locfileid: "78370817"
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>在 Visual Studio 中開啟範例應用程式
 
-1. 在 Visual Studio 中，從 [檔案] 功能表上，選擇 [開啟]，然後選擇 [專案/解決方案]。 
+1. 在 Visual Studio 中，從 [檔案]  功能表上，選擇 [開啟]  ，然後選擇 [專案/解決方案]  。 
 
    ![開啟解決方案](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
@@ -78,7 +78,7 @@ ms.locfileid: "78370817"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 這可讓您的應用程式與託管資料庫進行通訊。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]。 使用視窗右方的複製按鈕來複製**主要連接字串**。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]  。 使用視窗右方的複製按鈕來複製**主要連接字串**。
 
    ![在 [連接字串] 窗格中檢視及複製主要連接字串](./media/create-table-dotnet/connection-string.png)
 
@@ -98,17 +98,17 @@ ms.locfileid: "78370817"
 
 ## <a name="build-and-deploy-the-app"></a>建置並部署應用程式
 
-1. 在 Visual Studio 中，於 [方案總管] 中的 **CosmosTableSamples** 專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 套件]。 
+1. 在 Visual Studio 中，於 [方案總管]  中的 **CosmosTableSamples** 專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 套件]  。 
 
    ![Manage NuGet Packages](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
-2. 在 NuGet [瀏覽] 方塊中，輸入Microsoft.Azure.Cosmos.Table。 這會尋找 Cosmos DB 資料表 API 用戶端程式庫。 請注意，此文件庫目前僅適用於 .NET Framework 與 .NET Standard。 
+2. 在 NuGet [瀏覽]  方塊中，輸入Microsoft.Azure.Cosmos.Table。 這會尋找 Cosmos DB 資料表 API 用戶端程式庫。 請注意，此文件庫目前僅適用於 .NET Framework 與 .NET Standard。 
    
    ![[NuGet 瀏覽] 索引標籤](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. 按一下 [安裝] 可安裝 **Microsoft.Azure.Cosmos.Table** 程式庫。 這會安裝 Azure Cosmos DB 資料表 API 套件以及所有相依性。
+3. 按一下 [安裝]  可安裝 **Microsoft.Azure.Cosmos.Table** 程式庫。 這會安裝 Azure Cosmos DB 資料表 API 套件以及所有相依性。
 
-4. 當您執行整個應用程式時，會將範例資料插入資料表實體，並於結束時刪除，因此如果您執行完整的範例，並不會看到插入任何資料。 不過，您可以插入一些中斷點來檢視資料。 開啟 BasicSamples.cs 檔案，然後以滑鼠右鍵按一下第 52 行，選取 [中斷點]，然後選取 [插入中斷點]。 在第 55 行上插入另一個中斷點。
+4. 當您執行整個應用程式時，會將範例資料插入資料表實體，並於結束時刪除，因此如果您執行完整的範例，並不會看到插入任何資料。 不過，您可以插入一些中斷點來檢視資料。 開啟 BasicSamples.cs 檔案，然後以滑鼠右鍵按一下第 52 行，選取 [中斷點]  ，然後選取 [插入中斷點]  。 在第 55 行上插入另一個中斷點。
 
    ![新增中斷點](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
 
@@ -116,7 +116,7 @@ ms.locfileid: "78370817"
     
    ![主控台輸出](media/create-table-dotnet/azure-cosmosdb-console.png)
 
-   到達第一個中斷點時，請回到 Azure 入口網站中的 [資料總管]。 按一下 [重新整理] 按鈕、展開示範 * 資料表，然後按一下 [實體]。 右側的 [實體] 索引標籤會顯示針對 Walter Harp 新增的新實體。 請注意，新實體的電話號碼為 425-555-0101。
+   到達第一個中斷點時，請回到 Azure 入口網站中的 [資料總管]。 按一下 [重新整理]  按鈕、展開示範 * 資料表，然後按一下 [實體]  。 右側的 [實體]  索引標籤會顯示針對 Walter Harp 新增的新實體。 請注意，新實體的電話號碼為 425-555-0101。
 
    ![新的實體](media/create-table-dotnet/azure-cosmosdb-entity.png)
     
@@ -130,11 +130,11 @@ ms.locfileid: "78370817"
      </ItemGroup>
    ```
 
-6. 關閉 [資料總管] 中的 [實體] 索引標籤。
+6. 關閉 [資料總管] 中的 [實體]  索引標籤。
     
 7. 按 F5 執行應用程式到下一個中斷點。 
 
-    到達中斷點時，請切換回 Azure 入口網站，再按一下 [實體] 可開啟 [實體] 索引標籤，並請注意，電話號碼已經更新為 425-555-0105。
+    到達中斷點時，請切換回 Azure 入口網站，再按一下 [實體]  可開啟 [實體]  索引標籤，並請注意，電話號碼已經更新為 425-555-0105。
 
 8. 按 F5 以執行應用程式。 
  

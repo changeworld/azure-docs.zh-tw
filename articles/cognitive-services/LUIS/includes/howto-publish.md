@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: c10065707aa3bdf27cb20ab9c03d1cd22e6db050
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 3b18e185480cc5275b97bba474f1c054c7bd1276
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279736"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80286705"
 ---
 若要在聊天機器人或其他應用程式中收到 LUIS 預測，您必須將應用程式發佈到端點。
 
@@ -23,11 +23,12 @@ ms.locfileid: "77279736"
 
     ![右上方功能表中的 LUIS 發佈到端點按鈕](../media/howto-publish/publish-button.png)
 
-2. 選取 [生產]  位置和 [發佈]  按鈕。
+2. 選取 [生產位置]  ，然後選取 [完成]  。
 
-    ![LUIS 發佈到端點](../media/howto-publish/publish-app-popup.png)
+    > [!div class="mx-imgBorder"]
+    > ![LUIS 發佈到端點](../media/howto-publish/publish-app-popup.png)
 
-3. 當您在頁面頂端看到確認成功的狀態列時，就表示發佈完成。
+3. 當您看到確認成功的通知時，表示發佈已完成。
 
     ![LUIS 發佈到端點](../media/howto-publish/publish-endpoint-success.png)
 

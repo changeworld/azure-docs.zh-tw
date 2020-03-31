@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用入口網站進行新原則指派
 description: 在本快速入門中，您會使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
-ms.date: 11/25/2019
+ms.date: 03/24/2020
 ms.topic: quickstart
-ms.openlocfilehash: ac876b546ea3bda7541db61e0ab68842a3845541
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482318"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240015"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>快速入門：建立原則指派以識別不相容資源
 
@@ -17,7 +17,7 @@ ms.locfileid: "74482318"
 
 在此程序結束時，您將會成功識別出未使用受控磁碟的虛擬機器。 它們「不符合」  原則指派的規範。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -27,15 +27,15 @@ ms.locfileid: "74482318"
 
 1. 藉由按一下 [所有服務]  然後搜尋並選取 [原則]  ，在 Azure 入口網站中啟動 Azure 原則服務。
 
-   ![搜尋所有服務中的原則](./media/assign-policy-portal/search-policy.png)
+   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="搜尋所有服務中的原則" border="false":::
 
 1. 選取 Azure 原則分頁左側的 [指派]  。 指派是已指派在特定範圍內發生的原則。
 
-   ![從 [原則概觀] 頁面選取 [指派] 頁面](./media/assign-policy-portal/select-assignments.png)
+   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="從 [原則概觀] 頁面選取 [指派] 頁面" border="false":::
 
 1. 從 [原則 - 指派]  分頁頂端選取 [指派原則]  。
 
-   ![從 [指派] 頁面指派原則定義](./media/assign-policy-portal/select-assign-policy.png)
+   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="從 [指派] 頁面指派原則定義" border="false":::
 
 1. 在 [指派原則]  頁面上，按一下省略符號並選取管理群組或訂用帳戶來選取 [範圍]  。 選擇性地選取資源群組。 範圍會決定在哪些資源或資源群組上強制執行原則指派。 然後，按一下位於 [範圍]  分頁底部的 [選取]  。
 
@@ -47,13 +47,13 @@ ms.locfileid: "74482318"
 
    - 強制執行標籤和其值
    - 套用標籤和其值
-   - 需要 SQL Server 12.0 版
+   - 從資源群組繼承標籤 (若遺漏)
 
    如需可用內建原則的部分清單，請參閱 [Azure 原則範例](./samples/index.md)。
 
 1. 搜尋原則定義清單以尋找「稽核未使用受控磁碟的 VM」  定義。 按一下該原則，然後按一下 [選取]  。
 
-   ![尋找正確的原則定義](./media/assign-policy-portal/select-available-definition.png)
+   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="尋找正確的原則定義" border="false":::
 
 1. [指派名稱]  會自動填入您選取的原則名稱，但您可加以變更。 在此範例中，請保留「稽核未使用受控磁碟的 VM」  。 您也可以新增選擇性的 [描述]  。 描述會提供有關此原則指派的詳細資料。
    **指派者**將根據登入者自動填入。 這是選擇性欄位，因此可以輸入自訂值。
@@ -68,7 +68,7 @@ ms.locfileid: "74482318"
 
 選取頁面左側的 [合規性]  。 接著，找出您所建立的 [稽核未使用受控磁碟的虛擬機器]  原則指派。
 
-![[原則合規性] 頁面上的合規性詳細資料](./media/assign-policy-portal/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="[原則合規性] 頁面上的合規性詳細資料" border="false":::
 
 如果有任何現有資源不符合這個新指派的規範，它們會顯示在 [不符合規範的資源]  下。
 
@@ -76,8 +76,8 @@ ms.locfileid: "74482318"
 
 | **資源狀態** | **效果** | **原則評估** | **合規性狀態** |
 | --- | --- | --- | --- |
-| exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合規範 |
-| exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 相容 |
+| Exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合規範 |
+| Exists | 拒絕、稽核、附加\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 相容 |
 | 新增 | 稽核、AuditIfNotExist\* | True | 不符合規範 |
 | 新增 | 稽核、AuditIfNotExist\* | False | 相容 |
 
@@ -92,7 +92,7 @@ ms.locfileid: "74482318"
 
 1. 以滑鼠右鍵按一下 [稽核不是使用受控磁碟的 VM]  原則指派，並選取 [刪除指派]  。
 
-   ![從 [合規性] 頁面刪除指派](./media/assign-policy-portal/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="從 [合規性] 頁面刪除指派" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

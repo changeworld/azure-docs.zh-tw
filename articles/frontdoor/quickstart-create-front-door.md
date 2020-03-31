@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a98a933113322509f6fda8678350e9415d0b4058
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184504"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471416"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入門：為高可用性的全球 Web 應用程式建立 Front Door
 
@@ -31,7 +31,7 @@ ms.locfileid: "74184504"
 ## <a name="sign-in-to-azure"></a>登入 Azure 
 在 https://portal.azure.com 登入 Azure 入口網站。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 要進行本快速入門，您必須部署兩個在不同 Azure 區域 (美國東部  和西歐  ) 中執行的 Web 應用程式執行個體。 這兩個 Web 應用程式執行個體都會以主動/主動模式執行，也就是，不同於主動/待命設定會將其中一個用來作為容錯移轉，它們其中任一個隨時都能接受流量。
 
 1. 在畫面左上方，選取 [建立資源]   > [Web]   > [Web 應用程式]   > [建立]  。
@@ -42,7 +42,7 @@ ms.locfileid: "74184504"
      | 名稱           | 輸入 Web 應用程式的唯一名稱  |
      | 資源群組          | 選取 [新增]  ，然後輸入 *myResourceGroupFD1* |
      | App Service 方案/位置         | 選取 [ **新增**]。  在 App Service 方案中，輸入「myAppServicePlanEastUS」  ，然後選取 [確定]  。 
-     |      位置  |   美國東部        |
+     |      Location  |   美國東部        |
     |||
 
 3. 選取 [建立]  。
@@ -54,7 +54,7 @@ ms.locfileid: "74184504"
      | 名稱           | 輸入 Web 應用程式的唯一名稱  |
      | 資源群組          | 選取 [新增]  ，然後輸入 *myResourceGroupFD2* |
      | App Service 方案/位置         | 選取 [ **新增**]。  在 App Service 方案中，輸入「myAppServicePlanWestEurope」  ，然後選取 [確定]  。 
-     |      位置  |   西歐      |
+     |      Location  |   西歐      |
     |||
 
 
@@ -82,7 +82,7 @@ ms.locfileid: "74184504"
 最後，按一下路由規則上的 [+] 圖示以設定路由規則。 這需要將您的前端主機對應到後端集區，如果要求會傳入 `myappfrontend.azurefd.net`，基本上就需要設定此對應，然後再將它轉送到後端集區 `myBackendPool`。 按一下 [新增]  ，為您的 Front Door 新增路由規則。 您現在最好應該要建立 Front Door，因此請按一下 [檢閱及建立]  。
 
 >[!WARNING]
-> 您**必須**確保 Front Door 中的每部前端主機都具有一個路由規則，其中含有與其相關聯的預設路徑 ('/\*')。 也就是，在您的所有路由規則中，至少必須有一個適用於您每部前端主機的路由規則，這類主機會以預設路徑 ('/\*') 來定義。 無法執行這項操作，可能導致您的使用者流量無法被正確路由傳送。
+> 您**必須**確保 Front Door 中的每部前端主機都具有一個路由規則，其中含有與其相關聯的預設路徑 ('/\*')。 也就是說，在您的所有路由規則中，至少必須有一個適用於您每個前端主機的路由規則，這類主機會以預設路徑 ('/\*') 來定義。 無法執行這項操作，可能導致您的使用者流量無法被正確路由傳送。
 
 ## <a name="view-front-door-in-action"></a>檢視動作中的 Front Door
 一旦建立 Front Door 之後，將需要幾分鐘的時間，才能在世界各地部署該設定。 完成後，存取您所建立的前端主機，也就是前往網頁瀏覽器並點擊 URL `myappfrontend.azurefd.net`。 您的要求將會從後端集區中指定的後端，自動路由傳送到最接近您的後端。 

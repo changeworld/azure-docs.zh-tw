@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484418"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061029"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>設定站對站 VPN 以用於 Azure 檔案儲存體
 您可以使用站對站 (S2S) VPN 連線，從內部部署網路透過 SMB 掛接 Azure 檔案共用，而不需要開啟連接埠 445。 您可以使用 [Azure VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)來設定站對站 VPN，這是一個 Azure 資源供應項目 VPN 服務，會與儲存體帳戶或其他 Azure 資源一起部署在資源群組中。
@@ -23,8 +23,10 @@ ms.locfileid: "74484418"
 
 本文將詳細說明設定站對站 VPN 以直接在內部部署掛接 Azure 檔案共用的步驟。 如果您想要透過站對站 VPN 來路由傳送 Azure 檔案同步的同步流量，請參閱[設定 Azure 檔案同步 Proxy 和防火牆設定](storage-sync-files-firewall-and-proxy.md)。
 
-## <a name="prerequisites"></a>必要條件
-- 您要在內部部署掛接的 Azure 檔案共用。 您可以將[標準](storage-how-to-create-file-share.md)或[進階 Azure 檔案共用](storage-how-to-create-premium-fileshare.md)與您的站對站 VPN 搭配使用。
+## <a name="prerequisites"></a>Prerequisites
+- 您要在內部部署掛接的 Azure 檔案共用。 Azure 檔案共用會部署在儲存體帳戶中，也就是代表儲存體共用集區的管理結構，您可以在此集區中部署多個檔案共用，以及其他儲存體資源 (例如，Blob 容器或佇列)。 您可以在[建立 Azure 檔案共用](storage-how-to-create-file-share.md)中深入了解如何部署 Azure 檔案共用和儲存體帳戶。
+
+- 要在內部部署掛接的 Azure 檔案共用所屬的儲存體帳戶私人端點。 若要深入了解如何建立私人端點，請參閱[設定 Azure 檔案儲存體網路端點](storage-files-networking-endpoints.md?tabs=azure-portal)。 
 
 - 您的內部部署資料中心內與 Azure VPN 閘道相容的網路設備或伺服器。 Azure 檔案儲存體與所選的內部部署網路設備無關，但 Azure VPN 閘道會維護[已測試的裝置清單](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)。 不同的網路設備會提供不同的功能、效能特性和管理功能，因此在選取網路設備時，請將其納入考量。
 
@@ -46,7 +48,7 @@ ms.locfileid: "74484418"
 
 為了部署 Azure VPN 閘道，您必須填入下列欄位：
 
-- **名稱**：VPN 閘道的 Azure 資源名稱。 此名稱可以是您認為在管理方面有其效用的任何名稱。
+- **Name**：VPN 閘道的 Azure 資源名稱。 此名稱可以是您認為在管理方面有其效用的任何名稱。
 - **區域**：將在其中部署 VPN 閘道的區域。
 - **閘道類型**：為了部署站對站 VPN，您必須選取 **VPN**。
 - **VPN 類型**：您可以選擇 [依路由]  * 或 [依原則]  ，視您的 VPN 裝置而定。 以路由為基礎的 VPN 支援 IKEv2，以原則為基礎的 VPN 則僅支援 IKEv1。 若要深入了解這兩種類型的 VPN 閘道，請參閱[關於以原則為基礎和以路由為基礎的 VPN 閘道](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
@@ -63,7 +65,7 @@ ms.locfileid: "74484418"
 
 為了部署區域網路閘道資源，您必須填入下列欄位：
 
-- **名稱**：區域網路閘道的 Azure 資源名稱。 此名稱可以是您認為在管理方面有其效用的任何名稱。
+- **Name**：區域網路閘道的 Azure 資源名稱。 此名稱可以是您認為在管理方面有其效用的任何名稱。
 - **IP 位址**：內部部署區域閘道的公用 IP 位址。
 - **位址空間**：此區域網路閘道所代表之網路的位址範圍。 您可以新增多個位址空間範圍，但請確定您在此處指定的範圍不會與您要連接到的其他網路範圍重疊。 
 - **設定 BGP 設定**：只有在您的組態需要此設定時，才需設定 BGP 設定。 若要深入了解此設定，請參閱[關於 BGP 與 Azure VPN 閘道](../../vpn-gateway/vpn-gateway-bgp-overview.md)。
@@ -76,27 +78,10 @@ ms.locfileid: "74484418"
 ## <a name="configure-on-premises-network-appliance"></a>設定內部部署網路設備
 設定內部部署網路設備的具體步驟，取決於您的組織選取的網路設備。 根據組織所選擇的裝置，[已測試的裝置清單](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)可能會連結至裝置廠商針對 Azure VPN 閘道的設定而提供的指示。
 
-## <a name="create-private-endpoint-preview"></a>建立私人端點 (預覽)
-為您的儲存體帳戶建立私人端點，可為您的儲存體帳戶提供虛擬網路的 IP 位址空間內的 IP 位址。 當您使用此私人 IP 位址從內部部署掛接 Azure 檔案共用時，VPN 安裝所自動定義的路由規則將會透過 VPN 將您的掛接要求路由傳送至儲存體帳戶。 
-
-在 [儲存體帳戶] 刀鋒視窗中，選取左側目錄中的 [私人端點連線]  和 [+ 私人端點]  ，以建立新的私人端點。 產生的精靈會有多個頁面需要完成：
-
-![此螢幕擷取畫面顯示 [建立私人端點] 區段的 [基本] 區段](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
-
-在 [基本]  索引標籤上，為您的私人端點選取所需的資源群組、名稱和區域。 您可以任意選取這些項目，而不一定要與儲存體帳戶相符，但您建立私人端點的所在區域，必須與您要在其中建立私人端點的虛擬網路相同。
-
-在 [資源]  索引標籤上，選取 [連線到我目錄中的 Azure 資源]  的選項按鈕。 在 [資源類型]  底下，選取 [Microsoft.Storage/storageAccounts]  作為 [資源類型]。 [資源]  欄位是您要連線到的 Azure 檔案共用所屬的儲存體帳戶。 目標子資源是**檔案**，因為這是用於 Azure 檔案儲存體的。
-
-[組態]  索引標籤可讓您選取要新增私人端點的特定虛擬網路和子網路。 選取您先前建立的虛擬網路。 您必須選取與先前新增了服務端點的子網路不同的子網路。
-
-[組態]  索引標籤也可讓您設定私人 DNS 區域。 這並非必要作業，但可讓您使用易記的 UNC 路徑 (例如 `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) 來掛接 Azure 檔案共用，而不使用具有 IP 位址的 UNC 路徑。 此作業也可在您的虛擬網路內使用您自己的 DNS 伺服器來完成。
-
-按一下 [檢閱 + 建立]  以建立私人端點。 私人端點建立後，您將會看到兩項新資源：私人端點資源和配對的虛擬網路介面。 虛擬網路介面資源將具有儲存體帳戶的專用私人 IP。 
-
 ## <a name="create-the-site-to-site-connection"></a>建立站對站連線
 若要完成 S2S VPN 的部署，您必須建立內部部署網路設備 (以區域網路閘道資源表示) 與 VPN 閘道之間的連線。 若要這麼做，請瀏覽至您先前建立的 VPN 閘道。 在 VPN 閘道的目錄中，選取 [連線]  ，然後按一下 [新增]  。 產生的 [新增連線]  窗格需要下列欄位：
 
-- **名稱**：連線的名稱。 VPN 閘道可裝載多個連線，因此請挑選有助於您進行管理的名稱，以利區分此特定連線。
+- **Name**：連線的名稱。 VPN 閘道可裝載多個連線，因此請挑選有助於您進行管理的名稱，以利區分此特定連線。
 - **連線類型**：由於這是 S2S 連線，請在下拉式清單中選取 [站對站 (IPSec)]  。
 - **虛擬網路閘道**：此欄位會自動選取為您要建立連線的 VPN 閘道，且無法變更。
 - **區域網路閘道**：這是您要連線至 VPN 閘道的區域網路閘道。 產生的選取窗格應該會有您先前建立的區域網路閘道名稱。

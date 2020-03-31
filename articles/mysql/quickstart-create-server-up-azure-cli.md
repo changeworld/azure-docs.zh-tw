@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bb5c62a7df53548ff59a03c6ccc8fb28f1503d3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7b81e88fe6f658fdf4c1857c6082100894c6f2f6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765678"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067708"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入門：使用簡單的 Azure CLI 命令建立適用於 MySQL 的 Azure 資料庫 - az mysql up (預覽)
 
@@ -22,7 +22,7 @@ ms.locfileid: "74765678"
 
 「適用於 MySQL 的 Azure 資料庫」是一個受控服務，可讓您在雲端執行、管理及調整高可用性 MySQL 資料庫。 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 [az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) 命令，使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器。 除了建立伺服器，`az mysql up` 命令還會建立範例資料庫、資料庫中的根使用者、開啟 Azure 服務的防火牆，以及建立用戶端電腦的預設防火牆規則。 這有助於加速開發程序。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -76,7 +76,7 @@ admin-password | 由系統產生 | 系統管理員使用者的密碼。
 您的伺服器建立好之後，它會隨附下列設定：
 
 - 會建立名為 "devbox" 的防火牆規則。 Azure CLI 會嘗試偵測 `az mysql up` 命令執行來源的電腦 IP 位址，並將該 IP 位址加入允許清單。
-- [允許存取 Azure 服務] 設為 [開啟]。 此設定會設定伺服器的防火牆，以接受來自所有 Azure 資源的連線，其中也包括您未訂閱的資源。
+- [允許存取 Azure 服務] 設為 [開啟]。 此設定會將伺服器的防火牆設定為接受來自所有 Azure 資源的連線，其中也包括您未訂閱的資源。
 - `wait_timeout` 參數設為 8 小時
 - 建立名為 "sampledb" 的空白資料庫
 - 建立名為 "root"，且具有 "sampledb" 權限的新使用者

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff1d34462680ddd6be7f1a47d9a27594bcce4ff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972459"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061495"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 儲存體簡介
 
@@ -23,13 +23,13 @@ ms.locfileid: "75972459"
 
 Blob 儲存體提供三種類型資源：
 
-- **儲存體帳戶**。 
+- **儲存體帳戶**
 - 儲存體帳戶中的**容器**
-- 容器中的 **Blob** 
+- 容器中的 **Blob**
 
 下圖顯示資源之間的關係。
 
-![帳戶 Blob 與容器資源之間的關係](./media/storage-blob-introduction/blob1.png)
+![顯示儲存體帳戶、容器和 Blob 之間關聯性的圖表](./media/storage-blobs-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>儲存體帳戶
 
@@ -54,9 +54,9 @@ http://mystorageaccount.blob.core.windows.net
  
 Azure 儲存體支援三種 blob 類型：
 
-* **區塊 Blob** 可儲存文字和二進位資料 (最多約 4.7 TB)。 區塊 Blob 是由可個別管理的資料區塊所組成。
-* **附加 Blob** 和區塊 Blob 相似，由區塊所組成，但已針對附加作業最佳化。 附加 Blob 很適合某些案例，例如記錄虛擬機器中的資料。
-* **分頁 Blob** 可儲存隨機存取檔案 (大小上限為 8 TB)。 分頁 Blob 存放區可儲存虛擬硬碟 (VHD) 檔案，以作為 Azure 虛擬機器的磁碟。 如需有關分頁 Blob 的詳細資訊，請參閱 [Azure 分頁 Blob 的概觀](storage-blob-pageblob-overview.md)
+- **區塊 Blob** 可儲存文字和二進位資料 (最多約 4.7 TB)。 區塊 Blob 是由可個別管理的資料區塊所組成。
+- **附加 Blob** 和區塊 Blob 相似，由區塊所組成，但已針對附加作業最佳化。 附加 Blob 很適合某些案例，例如記錄虛擬機器中的資料。
+- **分頁 Blob** 可儲存隨機存取檔案 (大小上限為 8 TB)。 分頁 Blob 存放區可儲存虛擬硬碟 (VHD) 檔案，以作為 Azure 虛擬機器的磁碟。 如需有關分頁 Blob 的詳細資訊，請參閱 [Azure 分頁 Blob 的概觀](storage-blob-pageblob-overview.md)
 
 如需不同 Blob 類型的相關詳細資訊，請參閱[了解區塊 Blob、附加 Blob 及分頁 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
@@ -74,4 +74,4 @@ Azure 儲存體支援三種 blob 類型：
 ## <a name="next-steps"></a>後續步驟
 
 - [建立儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Blob 儲存體的延展性和效能目標](scalability-targets.md)
+- [Blob 儲存體的可擴縮性和效能目標](scalability-targets.md)

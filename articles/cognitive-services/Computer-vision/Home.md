@@ -11,14 +11,16 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565956"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131756"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據您感興趣的視覺功能來處理影像並傳回資訊。 例如，電腦視覺可判斷影像中是否包含成人內容，也可以尋找影像中的所有人臉。
 
@@ -77,6 +79,6 @@ Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據�
 
 藉由遵循快速入門指南來開始使用電腦視覺：
 
-- [快速入門：電腦視覺 .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [快速入門：電腦視覺 Python SDK](quickstarts-sdk/python-sdk.md)
-- [快速入門：電腦視覺 Java SDK](quickstarts-sdk/java-sdk.md)
+- [快速入門：電腦視覺 .NET 用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+- [快速入門：電腦視覺 Python 用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
+- [快速入門：電腦視覺 Java 用戶端程式庫](./quickstarts-sdk/client-library.md?pivots=programming-language-java)

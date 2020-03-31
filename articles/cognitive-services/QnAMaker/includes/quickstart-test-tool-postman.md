@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77112326"
 ---
 這個以 Postman 為基礎的快速入門會逐步引導您從知識庫取得答案。
@@ -109,7 +109,7 @@ ms.locfileid: "77112326"
 
 偵錯資訊可協助您了解所傳回答案的判斷方式。 此資訊雖然有用，但並非必要。 若要使用偵錯資訊來產生答案，請新增 `debug` 屬性：
 
-1. 在 Postman 中，藉由新增 `debug` 屬性以便只變更主體 JSON。 JSON 應為：
+1. 在 Postman 中，藉由新增 `debug` 屬性而僅變更本文 JSON。 JSON 應為：
 
     ```json
     {
@@ -231,7 +231,7 @@ JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
 
 ## <a name="query-for-a-chit-chat-answer"></a>查詢閒聊答案
 
-1. 在 Postman 中，只將主體 JSON 變更為以對話結尾的使用者陳述。 JSON 應為：
+1. 在 Postman 中，只將本文 JSON 變更為以對話結尾的使用者陳述。 JSON 應為：
 
     ```json
     {
@@ -327,7 +327,7 @@ JSON 回應會使用與所發佈知識庫查詢相同的結構描述。
 
 您可以針對答案要求最小的閾值。 如果不符合閾值，便傳回預設的答案。
 
-1. 在 Postman 中，只將主體 JSON 變更為以對話結尾的使用者陳述。 JSON 應為：
+1. 在 Postman 中，只將本文 JSON 變更為以對話結尾的使用者陳述。 JSON 應為：
 
     ```json
     {
