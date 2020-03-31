@@ -7,22 +7,23 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572482"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205166"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入門：設定伺服器防火牆 - 入口網站
 
 本快速入門可協助您設定 Azure Analysis Services 伺服器的防火牆。 針對存取伺服器的電腦啟用防火牆並設定 IP 位址範圍，是保護伺服器和資料的重要環節。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 訂用帳戶中的 Analysis Services 伺服器。 若要深入了解，請參閱[快速入門：建立伺服器 - 入口網站](analysis-services-create-server.md)或[快速入門：建立伺服器 - PowerShell](analysis-services-create-powershell.md)
 - 用戶端電腦的一或多個 IP 位址範圍 (如有需要)。
-- 請注意，目前不支援從 Power BI Premium 匯入案例。
+- 目前不支援從 Power BI Premium 連線到 Azure Analysis Services 的某些情況 (包括資料匯入 (重新整理) 和編頁報表)，即使已啟用 [允許從 Power BI 存取] 也是如此。 支援從 Power BI Premium 中使用 Live Connect 的常見案例。 支援所有 Power BI Pro 案例。
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站 
 

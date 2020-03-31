@@ -5,102 +5,85 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: mvc
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.openlocfilehash: d908d210ff0448069a9abc76209c72d9b2a7595c
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: subject-armqs
+ms.date: 03/13/2020
+ms.openlocfilehash: f5f92044a0274b809388eeb164be9f1587013e0b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242031"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064583"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入門：使用 Resource Manager 範本在 Azure HDInsight 中建立 Apache Kafka 叢集
 
-[Apache Kafka](https://kafka.apache.org/) 是一個開放原始碼的分散式串流平台。 它通常會用來作為訊息代理程式，因為可以提供類似「發佈-訂閱」訊息佇列的功能。 
+在本快速入門中，您會使用 Azure Resource Manager 範本，在 Azure HDInsight 中建立 [Apache Kafka](./apache-kafka-introduction.md) 叢集。 Kafka 是一個開放原始碼的分散式串流平台。 它通常會用來作為訊息代理程式，因為可以提供類似「發佈-訂閱」訊息佇列的功能。
 
-在本快速入門中，您會了解如何使用 Azure Resource Manager 範本來建立 [Apache Kafka](https://kafka.apache.org) \(英文\) 叢集。 您也會了解如何使用內含的公用程式，使用 Kafka 來傳送和接收訊息。 類似範本可在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)中看到。 您可以在[這裡](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)找到範本參考。
-
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入門中，您會使用 SSH 直接存取叢集。 若要將其他服務、網路或虛擬機器連線到 Kafka，您必須先建立虛擬網路，然後建立網路中的資源。 如需詳細資訊，請參閱[使用虛擬網路連線到 Apache Kafka](apache-kafka-connect-vpn-gateway.md) 文件。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
-
-SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
 ## <a name="create-an-apache-kafka-cluster"></a>建立 Apache Kafka 叢集
 
-1. 按一下以下影像，在 Azure 入口網站中開啟範本。
+### <a name="review-the-template"></a>檢閱範本
+
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-kafka)。
+
+:::code language="json" source="~/quickstart-templates/101-hdinsight-kafka/azuredeploy.json" range="1-150":::
+
+範本中定義了兩個 Azure 資源：
+
+* [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：建立 Azure 儲存體帳戶。
+* [Microsoft HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters)：建立 HDInsight 叢集。
+
+### <a name="deploy-the-template"></a>部署範本
+
+1. 選取下方的 [部署至 Azure]  按鈕來登入 Azure，並開啟 Resource Manager 範本。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. 若要建立 Kafka 叢集，請使用下列值：
+1. 輸入或選取下列值：
 
-    | 屬性 | 值 |
-    | --- | --- |
-    | 訂用帳戶 | 您的 Azure 訂用帳戶。 |
-    | 資源群組 | 在其中建立叢集的資源群組。 |
-    | 位置 | 在其中建立叢集的 Azure 區域。 |
-    | 叢集名稱 | Kafka 叢集的名稱。 |
-    | 叢集登入使用者名稱 | 用來登入裝載於叢集上 HTTPS 型服務的帳戶名稱。 |
-    | 叢集登入密碼 | 登入使用者名稱的密碼。 |
-    | SSH 使用者名稱 | SSH 使用者名稱。 此帳戶可以使用 SSH 來存取叢集。 |
-    | SSH 密碼 | SSH 使用者的密碼。 |
+    |屬性 |描述 |
+    |---|---|
+    |訂用帳戶|從下拉式清單中，選取用於此叢集的 Azure 訂用帳戶。|
+    |資源群組|從下拉式清單中選取現有資源群組，或選取 [新建]  。|
+    |Location|此值會以資源群組所用的位置來自動填入。|
+    |叢集名稱|輸入全域唯一名稱。 針對此範本，請只使用小寫字母和數字。|
+    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin**。|
+    |叢集登入密碼|提供密碼。 密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " `)。 |
+    |SSH 使用者名稱|提供使用者名稱，預設值為 **sshuser**|
+    |SSH 密碼|請提供密碼。|
 
-    ![範本屬性的螢幕擷取畫面](./media/apache-kafka-quickstart-resource-manager-template/kafka-template-parameters.png)
+    ![範本屬性的螢幕擷取畫面](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-3. 選取 [我同意上方所述的條款及條件]  ，選取 [釘選到儀表板]  ，然後按一下 [購買]  。 建立叢集可能需要花費 20 分鐘的時間。
+1. 檢閱**條款及條件**。 然後選取 [我同意上方所述的條款及條件]  ，然後選取 [購買]  。 您會收到一則通知，內容指出您的部署正在進行中。 大約需要 20 分鐘的時間來建立叢集。
 
-## <a name="connect-to-the-cluster"></a>連接到叢集
+## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
-1. 若要連線到 Kafka 叢集的主要前端節點，請使用下列命令。 將 `sshuser` 取代為 SSH 使用者名稱。 將 `mykafka` 取代為您的 Kafka 叢集名稱。
+叢集建立好之後，您會收到**部署成功**通知，內有 [移至資源]  連結。 [資源群組] 頁面會列出新的 HDInsight 叢集以及與叢集相關聯的預設儲存體。 每個叢集都具備 [Azure 儲存體帳戶](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake Storage 帳戶](../hdinsight-hadoop-use-data-lake-store.md)相依性。 也稱為預設儲存體帳戶。 HDInsight 叢集及其預設儲存體帳戶必須共置於相同的 Azure 區域中。 刪除叢集並不會刪除儲存體帳戶。
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.net
-    ```
-
-2. 當您初次連線到叢集時，您的 SSH 用戶端可能會顯示警告，指出無法確認主機的真確性。 在系統提示時，輸入 __yes__，然後按 __Enter__ 鍵，以將主機新增至 SSH 用戶端信任的伺服器清單。
-
-3. 出現提示時，請輸入 SSH 使用者的密碼。
-
-    連線之後，您會看到類似下列文字的資訊：
-    
-    ```output
-    Authorized uses only. All activity may be monitored and reported.
-    Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
-    
-     * Documentation:  https://help.ubuntu.com
-     * Management:     https://landscape.canonical.com
-     * Support:        https://ubuntu.com/advantage
-    
-      Get cloud support with Ubuntu Advantage Cloud Guest:
-        https://www.ubuntu.com/business/services/cloud
-    
-    83 packages can be updated.
-    37 updates are security updates.
-    
-    
-    Welcome to Kafka on HDInsight.
-    
-    Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ```
-
-## <a id="getkafkainfo"></a>取得 Apache Zookeeper 和訊息代理程式主機資訊
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a>取得 Apache Zookeeper 和訊息代理程式主機資訊
 
 使用 Kafka 時，您必須知道 Apache Zookeeper  主機和「訊息代理程式」  主機。 這些主機可搭配 Kafka API 以及 Kafka 隨附的許多公用程式使用。
 
 在本節中，您會從叢集上的 Ambari REST API 取得主機資訊。
 
-1. 從連往叢集的 SSH 連線中，使用下列命令來安裝 `jq` 公用程式。 此公用程式可用來剖析 JSON 文件，而且在擷取主機資訊時很有用：
-   
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. 從 SSH 連線中，使用下列命令來安裝 `jq` 公用程式。 此公用程式可用來剖析 JSON 文件，而且在擷取主機資訊時很有用：
+
     ```bash
     sudo apt -y install jq
     ```
 
-2. 若要將環境變數設為叢集名稱，請使用下列命令：
+1. 若要將環境變數設為叢集名稱，請使用下列命令：
 
     ```bash
     read -p "Enter the Kafka on HDInsight cluster name: " CLUSTERNAME
@@ -108,7 +91,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
     出現提示時，輸入 Kafka 叢集的名稱。
 
-3. 若要使用 Zookeeper 主機資訊設定環境變數，請使用下列命令。 此命令會擷取所有的 Zookeeper 主機，然後只傳回前兩個項目。 這是因為考量備援之故，以防某一部主機無法連線。
+1. 若要使用 Zookeeper 主機資訊設定環境變數，請使用以下命令。 此命令會擷取所有的 Zookeeper 主機，然後只傳回前兩個項目。 這是因為考量備援之故，以防某一部主機無法連線。
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -116,7 +99,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
     出現提示時，輸入叢集登入帳戶 (不是 SSH 帳戶) 的密碼。
 
-4. 若要確認是否已正確設定環境變數，請使用下列命令：
+1. 若要確認是否已正確設定環境變數，請使用下列命令：
 
     ```bash
      echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
@@ -126,7 +109,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
     `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
 
-5. 若要使用 Kafka 訊息代理程式主機資訊來設定環境變數，請使用下列命令：
+1. 若要使用 Kafka 訊息代理程式主機資訊來設定環境變數，請使用下列命令：
 
     ```bash
     export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
@@ -134,14 +117,14 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
     出現提示時，輸入叢集登入帳戶 (不是 SSH 帳戶) 的密碼。
 
-6. 若要確認是否已正確設定環境變數，請使用下列命令：
+1. 若要確認是否已正確設定環境變數，請使用下列命令：
 
-    ```bash   
+    ```bash
     echo '$KAFKABROKERS='$KAFKABROKERS
     ```
 
     此命令會傳回類似以下文字的資訊：
-   
+
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
 
 ## <a name="manage-apache-kafka-topics"></a>管理 Apache Kafka 主題
@@ -154,7 +137,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    此命令會使用 `$KAFKAZKHOSTS` 中儲存的主機資訊連線到 Zookeeper。 然後建立名為 **test** 的 Kafka 主題。 
+    此命令會使用 `$KAFKAZKHOSTS` 中儲存的主機資訊連線到 Zookeeper。 然後建立名為 **test** 的 Kafka 主題。
 
     * 此主題中所儲存的資料會分割到八個分割區。
 
@@ -174,7 +157,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
         * 建立新主題或磁碟分割時
 
-        * 相應增加叢集時
+        * 擴大叢集時
 
 * **若要列出主題**，請使用下列命令：
 
@@ -208,45 +191,42 @@ Kafka 會在主題中儲存「記錄」  。 記錄是由「產生者」  產生
 若要將記錄儲存至您稍早建立的 test 主題，然後利用取用者進行讀取，請使用下列步驟：
 
 1. 若要將記錄寫入主題，請從 SSH 連線使用 `kafka-console-producer.sh` 公用程式：
-   
+
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test
     ```
-   
+
     在此命令之後，您會抵達空白行。
 
-2. 在空白行中輸入文字訊息並按一下 enter 鍵。 如此輸入幾個訊息，然後使用 **Ctrl + C** 返回一般提示。 每一行都會以個別記錄傳送至 Kafka 主題。
+1. 在空白行中輸入文字訊息並按一下 enter 鍵。 如此輸入幾個訊息，然後使用 **Ctrl + C** 返回一般提示。 每一行都會以個別記錄傳送至 Kafka 主題。
 
-3. 若要從主題讀取記錄，請從 SSH 連線使用 `kafka-console-consumer.sh` 公用程式：
-   
+1. 若要從主題讀取記錄，請從 SSH 連線使用 `kafka-console-consumer.sh` 公用程式：
+
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
-   
+
     此命令會擷取主題中的記錄並加以顯示。 使用 `--from-beginning` 告知取用者從串流的開頭開始，所以會擷取所有的記錄。
 
     如果您使用舊版 Kafka，請以 `--zookeeper $KAFKAZKHOSTS` 取代 `--bootstrap-server $KAFKABROKERS`。
 
-4. 使用 __Ctrl + C__ 來停止取用者。
+1. 使用 __Ctrl + C__ 來停止取用者。
 
 您也可以利用程式設計方式建立產生者和取用者。 如需使用此 API 的範例，請參閱[使用 Apache Kafka Producer 和 Consumer API 搭配 HDInsight](apache-kafka-producer-consumer-api.md) 文件。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您想要清除本快速入門所建立的資源，則可以刪除資源群組。 刪除資源群組也會刪除相關聯的 HDInsight 叢集，以及與資源群組相關聯的任何其他資源。
+完成此快速入門之後，您可以刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地刪除該叢集。 您也需支付 HDInsight 叢集的費用 (即使未使用該叢集)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。
 
-若要使用 Azure 入口網站移除資源群組：
+在 Azure 入口網站中瀏覽至您的叢集，然後選取 [刪除]  。
 
-1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組]  以顯示資源群組的清單。
-2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多]  按鈕 (...)。
-3. 選取 [刪除資源群組]  ，並加以確認。
+![Resource Manager 範本 HBase](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
 
-> [!WARNING]  
-> HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費是以每分鐘按比例計算，因此不再使用時，請一律刪除您的叢集。
-> 
-> 刪除 HDInsight 叢集上的 Kafka，也會刪除 Kafka 中儲存的任何資料。
+您也可以選取資源群組名稱來開啟資源群組頁面，然後選取 [刪除資源群組]  。 刪除資源群組時，會同時刪除 HDInsight 叢集及預設儲存體帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
+在本快速入門中，您已了解如何使用 Resource Manager 範本在 HDInsight 中建立 Apache Kafka 叢集。 在下篇文章中，您將了解如何建立應用程式，讓應用程式使用 Apache Kafka 串流 API，並且與 HDInsight 上的 Kafka 搭配使用。
+
 > [!div class="nextstepaction"]
-> [使用 Apache Spark 搭配 Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [在 Azure HDInsight 中使用 Apache Kafka 串流 API](./apache-kafka-streams-api.md)

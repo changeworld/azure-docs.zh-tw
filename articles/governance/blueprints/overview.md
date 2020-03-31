@@ -4,10 +4,10 @@ description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、�
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74321772"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
@@ -48,7 +48,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 藍圖是由「成品」  所組成。 藍圖目前支援下列資源作為成品：
 
-|資源  | 階層選項| 說明  |
+|資源  | 階層選項| 描述  |
 |---------|---------|---------|
 |資源群組 | 訂用帳戶 | 建立新的資源群組以供藍圖內的其他成品使用。  這些預留位置資源群組可讓您確切地以自己想要的方式組織資源，並針對包含的原則和角色指派成品以及 Azure Resource Manager 範本提供範圍限制器。 |
 |Azure Resource Manager 範本 | 訂用帳戶、資源群組 | 範本 (包括巢狀和連結的範本) 可用來撰寫複雜的環境。 範例環境：SharePoint 伺服器陣列、Azure Automation State Configuration 或 Log Analytics 工作區。 |
@@ -106,7 +106,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 可用的內建角色如下：
 
-|RBAC 角色 | 說明 |
+|RBAC 角色 | 描述 |
 |-|-|
 |[擁有者](../../role-based-access-control/built-in-roles.md#owner) | 除了其他權限之外，還包含所有與 Azure 藍圖相關的權限。 |
 |[參與者](../../role-based-access-control/built-in-roles.md#contributor) | 除了其他權限之外，還可以建立和刪除藍圖定義，但不具有藍圖指派權限。 |

@@ -1,21 +1,21 @@
 ---
 title: 快速入門：使用適用於 .NET 的 Anomaly Detector 用戶端程式庫來偵測時間序列資料中的異常情況
 titleSuffix: Azure Cognitive Services
-description: 本快速入門會說明如何使用 Anomaly Detector API 來偵測資料序列中的異常狀況 (以批次或串流資料的方式)。
+description: 了解如何使用 Anomaly Detector API 來偵測資料序列中的異常狀況 (以批次或串流資料的形式)。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: fdb35edc35e07ed4ee718281942565a8f1d061d4
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 268ceee5504e6e48b9eb8fdae18564482480e250
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402683"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239126"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>快速入門：適用於 .NET 的 Anomaly Detector 用戶端程式庫
 

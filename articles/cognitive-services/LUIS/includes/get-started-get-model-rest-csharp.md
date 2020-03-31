@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: e4f995e888d261e1a1a7cb1e63d0d222c165060f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368440"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80151357"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -21,7 +21,7 @@ ms.locfileid: "77368440"
 * 匯入來自 cognitive-services-language-understanding GitHub 存放庫的 [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) 應用程式。
 * 已匯入 TravelAgent 應用程式的 LUIS 應用程式識別碼。 應用程式識別碼會顯示在應用程式儀表板中。
 * 應用程式中用來接收表達的版本識別碼。 預設識別碼為 "0.1"。
-* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
+* [.NET Core 3.1](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>範例語句 JSON 檔案

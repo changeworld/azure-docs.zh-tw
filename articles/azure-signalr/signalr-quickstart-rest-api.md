@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157693"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入門：從主控台應用程式廣播即時訊息
@@ -19,7 +19,7 @@ Azure SignalR 服務能提供 [REST API](https://github.com/Azure/azure-signalr/
 
 在此快速入門中，您將會了解如何以 C# 從命令列應用程式將訊息傳送至已連線的用戶端應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此快速入門可以在 macOS、Windows 或 Linux 上執行。
 
@@ -111,7 +111,7 @@ broadcast
 
 您可以啟動具不同用戶端名稱的多個用戶端。
 
-## <a name="usage"> </a> 與第三方服務整合
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> 與第三方服務整合
 
 Azure SignalR 服務可讓第三方服務與系統整合。
 

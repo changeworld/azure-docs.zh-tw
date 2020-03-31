@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826865"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215486"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>快速入門：Azure SQL Database 連線和查詢
 
@@ -26,7 +26,7 @@ ms.locfileid: "73826865"
 
 | |  |
 |---|---|
-|[SQL Server Management Studio](sql-database-connect-query-ssms.md)|此快速入門示範如何使用 SSMS 來連線至 Azure SQL 資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。|
+|[Transact-SQL](sql-database-connect-query-ssms.md)|此快速入門示範如何使用 SSMS 來連線至 Azure SQL 資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。|
 |[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|此快速入門示範如何使用 Azure Data Studio 連線至 Azure SQL 資料庫，然後使用 Transact-SQL (T-SQL) 陳述式建立 Azure Data Studio 教學課程中使用的 TutorialDB。|
 |[Azure 入口網站](sql-database-connect-query-portal.md)|此快速入門會示範如何使用查詢編輯器來連線至 SQL Database，然後使用 Transact-SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。|
 |[Visual Studio Code](sql-database-connect-query-vscode.md)|此快速入門示範如何使用 Visual Studio Code 來連線至 Azure SQL 資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。|
@@ -59,7 +59,7 @@ Microsoft 針對連線至 Azure SQL Database 提供或支援的所有驅動程�
 
 下表列出連線程式庫或驅動程式  ，用戶端應用程式可以用來從各種不同的語言連線到內部部署或雲端上執行之 SQL Server 並使用。 您可以在 Linux、Windows 或 Docker 上使用它們，並使用它們來連線到 Azure SQL Database 和 Azure SQL 資料倉儲。 
 
-| 語言 | 平台 | 其他資源 | 下載 | 開始使用 |
+| Language | 平台 | 其他資源 | 下載 | 開始使用 |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下載](https://www.microsoft.com/net/download/) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows、Linux、macOS | [Microsoft JDBC Driver for SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [下載](https://go.microsoft.com/fwlink/?linkid=852460) |  [開始使用](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
@@ -67,11 +67,11 @@ Microsoft 針對連線至 Azure SQL Database 提供或支援的所有驅動程�
 | Node.js | Windows、Linux、macOS | [Node.js Driver for SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [安裝](https://msdn.microsoft.com/library/mt652094.aspx) |  [開始使用](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL 驅動程式](https://msdn.microsoft.com/library/mt652092.aspx) | 安裝選項： <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [開始使用](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [Ruby Driver for SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [安裝](https://msdn.microsoft.com/library/mt711041.aspx) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
-| C++ | Windows、Linux、macOS | [Microsoft ODBC Driver for SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [下載](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
+| C++ | Windows、Linux、macOS | [Microsoft ODBC driver for SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [下載](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
 下表列出物件關聯式對應 (ORM) 架構和 Web 架構的範例，用戶端應用程式可搭配內部部署或雲端上執行之 SQL Server 使用。 您可以在 Linux、Windows 或 Docker 上使用架構，並使用它們來連線到 SQL Database 和 SQL 資料倉儲。 
 
-| 語言 | 平台 | ORM |
+| Language | 平台 | ORM |
 | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
@@ -93,8 +93,8 @@ Microsoft 針對連線至 Azure SQL Database 提供或支援的所有驅動程�
   - [使用 Python 連接到 SQL Database](sql-database-connect-query-python.md)
   - [使用 Ruby 連接到 SQL Database](sql-database-connect-query-ruby.md)
 - 重試邏輯程式碼範例：
-  - [使用 ADO.NET 復原連接 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-  - [Step 4: Connect resiliently to SQL with PHP (步驟 4：使用 PHP 復原連接 SQL)][step-4-connect-resiliently-to-sql-with-php-p42h]
+  - [使用 ADO.NET 彈性地連接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [使用 PHP 彈性地連接到 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <!-- Link references. -->
 

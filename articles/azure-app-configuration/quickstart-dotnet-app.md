@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433627"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245390"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式設定建立 .NET Framework 應用程式
 
@@ -29,13 +29,15 @@ ms.locfileid: "75433627"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管]   > [建立]  來新增下列索引鍵/值組：
+6. 選取 [組態總管]   > [建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 應用程式設定的值 |
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
+
+7. 選取 [套用]  。
 
 ## <a name="create-a-net-console-app"></a>建立 .NET 主控台應用程式
 
@@ -92,7 +94,7 @@ ms.locfileid: "75433627"
 
 1. 將名為 **ConnectionString** 的環境變數設定為應用程式組態存放區的連接字串。 如果您使用 Windows 命令提示字元，請執行下列命令：
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: aahi
-ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197465"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79203452"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -160,7 +160,7 @@ ms.locfileid: "78197465"
 
 情感分析器會將文字明確地分類為正面或負面。 並指派範圍從 0 到 1 的分數。 接近 0.5 的值是中立或不確定的。 0\.5 的分數表示中立。 當無法針對情感分析字串，或字串沒有任何情感時，分數一律為 0.5。 例如，如果您使用英文語言代碼傳入西班牙字串，分數將會是 0.5。
 
-輸出會立即傳回。 您可以將結果串流至接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案。 然後，將輸出匯入應用程式，以便用來排序、搜尋和操作資料。
+輸出會立即傳回。 您可以將結果串流至接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案。 然後，將輸出匯入應用程式，以便用來排序、搜尋和操作資料。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱[如何處理位移](../concepts/text-offsets.md)。
 
 #### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 

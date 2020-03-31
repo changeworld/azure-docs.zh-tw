@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379259"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063035"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什麼是 Azure 資源的角色型存取控制 (RBAC)？
 
@@ -102,7 +102,7 @@ Azure 具有可讓您授與物件內資料存取權的資料作業。 例如，�
 
 ## <a name="multiple-role-assignments"></a>多角色指派
 
-所以，如果您有多個重疊的角色指派會發生什麼事？ RBAC 是加法模型，因此，您的有效權限就是角色指派的相加。 請參考下列範例，其中使用者在訂用帳戶範圍中獲派「參與者」角色，並在資源群組中獲派「讀者」角色。 「參與者」權限和「讀者」權限實際上就是資源群組的參與者角色。 因此，在此情況下，「讀者」角色的指派並沒有作用。
+所以，如果您有多個重疊的角色指派會發生什麼事？ RBAC 是加法模型，因此，您的有效權限就是角色指派的總和。 請參考下列範例，其中使用者在訂用帳戶範圍中獲派「參與者」角色，並在資源群組中獲派「讀者」角色。 「參與者」權限和「讀者」權限的總和實際上就是資源群組的參與者角色。 因此，在此情況下，「讀者」角色的指派並沒有作用。
 
 ![多角色指派](./media/overview/rbac-multiple-roles.png)
 

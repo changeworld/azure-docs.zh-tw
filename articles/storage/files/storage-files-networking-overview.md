@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 09d7f93c7a1d8ad9e567ecfe0bb3854d9d54f6e0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597740"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067157"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 檔案儲存體的網路功能考量 
 您可以透過兩種方式連線至 Azure 檔案共用：
@@ -22,7 +22,9 @@ ms.locfileid: "77597740"
 
 本文會著重在說明當您的使用案例要直接存取 Azure 檔案共用而非使用 Azure 檔案同步時，該如何設定網路功能。如需 Azure 檔案同步部署的網路考量詳細資訊，請參閱[設定 Azure 檔案同步 Proxy 和防火牆設定](storage-sync-files-firewall-and-proxy.md)。
 
-Azure 檔案共用的網路功能設定是在 Azure 儲存體帳戶上進行的。 儲存體帳戶是一種管理構造，所代表的是儲存體的共用集區，您可以在此集區中部署多個檔案共用，以及其他儲存體資源 (例如，Blob 容器或佇列)。 儲存體帳戶會公開多個設定，以協助您保護針對檔案共用的網路存取：網路端點、儲存體帳戶防火牆設定和傳輸中加密。
+Azure 檔案共用的網路功能設定是在 Azure 儲存體帳戶上進行的。 儲存體帳戶是一種管理構造，所代表的是儲存體的共用集區，您可以在此集區中部署多個檔案共用，以及其他儲存體資源 (例如，Blob 容器或佇列)。 儲存體帳戶會公開多個設定，以協助您保護針對檔案共用的網路存取：網路端點、儲存體帳戶防火牆設定和傳輸中加密。 
+
+強烈建議您先閱讀[規劃 Azure 檔案儲存體部署](storage-files-planning.md)，再遵循此概念指南。
 
 ## <a name="accessing-your-azure-file-shares"></a>存取 Azure 檔案共用
 當您在儲存體帳戶內部署 Azure 檔案共用時，透過儲存體帳戶的公用端點即可立即存取檔案共用。 這表示已完成驗證的要求 (例如，由使用者的登入身分識別所授權的要求) 便可從 Azure 內部或外部安全地產生。 
@@ -65,6 +67,8 @@ Azure 檔案儲存體支援下列機制，以在內部部署工作站和伺服�
 - 使用 VPN 或 ExpressRoute 連線與私人對等互連，安全地從內部部署網路連線到 Azure 檔案共用。
 - 藉由設定儲存體帳戶防火牆來封鎖公用端點上的所有連線，以保護 Azure 檔案共用。 根據預設，建立私人端點並不會封鎖對公用端點的連線。
 - 藉由讓您能夠封鎖從虛擬網路 (和對等互連界限) 外泄資料的可能，來提高虛擬網路的安全性。
+
+若要建立私人端點，請參閱[設定 Azure 檔案儲存體的私人端點](storage-files-networking-endpoints.md)。
 
 ### <a name="private-endpoints-and-dns"></a>私人端點和 DNS
 當您建立私人端點時，根據預設，我們也會建立與 `privatelink` 子網域對應的私人 DNS 區域，或更新現有的私人 DNS 區域。 嚴格來說，不需要建立私人 DNS 區域就能針對儲存體帳戶使用私人端點，但在使用 Active Directory 使用者主體掛接 Azure 檔案共用或從 FileREST API 存取時，一般還是會強烈建議並明確要求您這麼做。
@@ -126,7 +130,7 @@ IP4Address : 52.239.194.40
 
 - 修改用戶端上的 hosts 檔案，讓 `storageaccount.file.core.windows.net` 解析為所想要私人端點的私人 IP 位址。 生產環境非常不建議這麼做，因為您會需要對想要掛接 Azure 檔案共用的每個用戶端進行這些變更，但系統並不會自動處理您對儲存體帳戶或私人端點所進行的變更。
 - 在內部部署 DNS 伺服器中為 `storageaccount.file.core.windows.net` 建立 A 記錄。 這麼做的好處是，內部部署環境中的用戶端將能夠自動解析儲存體帳戶，而不需要設定每個用戶端，不過，此解決方案和修改 hosts 檔案一樣不方便，因為變更並不會加以放映。 雖然這個解決方案不怎麼方便，但在某些環境中卻可能是最佳選擇。
-- 將 `core.windows.net` 區域從內部部署 DNS 伺服器轉送到 Azure 私人 DNS 區域。 您可以透過只能在連結至 Azure 私人 DNS 區域的虛擬網路內存取的特殊 IP 位址 (`168.63.129.16`)，來連線到 Azure 私人 DNS 主機。 若要解決這項限制，您可以在虛擬網路內執行會將 `core.windows.net` 轉送至 Azure 私人 DNS 區域的其他 DNS 伺服器。 為簡化這項設定，我們提供了 PowerShell Cmdlet，以在 Azure 虛擬網路中自動部署 DNS 伺服器，並視需要加以設定。
+- 將 `core.windows.net` 區域從內部部署 DNS 伺服器轉送到 Azure 私人 DNS 區域。 您可以透過只能在連結至 Azure 私人 DNS 區域的虛擬網路內存取的特殊 IP 位址 (`168.63.129.16`)，來連線到 Azure 私人 DNS 主機。 若要解決這項限制，您可以在虛擬網路內執行會將 `core.windows.net` 轉送至 Azure 私人 DNS 區域的其他 DNS 伺服器。 為簡化這項設定，我們提供了 PowerShell Cmdlet，以在 Azure 虛擬網路中自動部署 DNS 伺服器，並視需要加以設定。 若要了解如何設定 DNS 轉送，請參閱[使用 Azure 檔案儲存體設定 DNS](storage-files-networking-dns.md)。
 
 ## <a name="storage-account-firewall-settings"></a>儲存體帳戶防火牆設定
 防火牆是一種網路原則，可控制哪些要求得以存取儲存體帳戶的公用端點。 使用儲存體帳戶防火牆時，您可以將對於儲存體帳戶公用端點的存取，限制在特定 IP 位址或範圍或是虛擬網路內。 一般而言，大部分的儲存體帳戶防火牆原則都會將網路存取限制在一或多個虛擬網路內。 

@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2019
-ms.openlocfilehash: 857cfb4587d7b73a59fafac83dadbef3ad920ebf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/23/2020
+ms.openlocfilehash: c94ac0c27d747da1a98cd9d67ced91a5913147e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971432"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132690"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本在 Azure Databricks 上執行 Spark 作業
 
@@ -60,6 +60,8 @@ ms.locfileid: "75971432"
 4. 工作區建立需要幾分鐘的時間。 建立工作區期間，入口網站右側會顯示 [提交 Azure Databricks 部署]  圖格。 您可能需要在儀表板上向右捲動以查看此圖格。 另外在畫面頂端附近還會顯示一個進度列。 您可以查看任何進度區域。
 
    ![Databricks 部署圖格](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks 部署圖格")
+
+   當工作區部署失敗時，工作區仍會以失敗狀態建立。 刪除失敗的工作區，並建立可解決部署錯誤的新工作區。 當您刪除失敗的工作區時，也會一併刪除受控資源群組和任何已成功部署的資源。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中建立 Spark 叢集
 

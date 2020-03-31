@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB 簡介
-description: 了解 Azure Cosmos DB。 這個全域散發的多模型資料庫是針對低延遲、彈性的延展性和高可用性而建置的，並且提供 NoSQL 資料的原生支援。
+description: 了解 Azure Cosmos DB。 這個全域散發的多模型資料庫是針對低延遲、彈性的可擴縮性和高可用性而建置的，並且提供 NoSQL 資料的原生支援。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882186"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215246"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>歡迎使用 Azure Cosmos DB
 
 現今的應用程式需要具有快速回應能力，且一律保持線上狀態。 為了達到低延遲和高可用性，這些應用程式的執行個體必須部署在接近使用者的資料中心內。 應用程式需要即時回應尖峰時間內使用量的巨變、儲存不斷增加的資料量，並在毫秒內將這些資料提供給使用者。
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 透過按鈕點選，Cosmos DB 可讓您有彈性且獨立地跨任意數目的 Azure 區域調整輸送量和儲存體。 您可以彈性地調整輸送量和儲存體，並利用 SQL、MongoDB、Cassandra，Tables 或 Gremlin 等您喜歡的 API，快速進行單一位數毫秒的資料存取。 Cosmos DB 針對輸送量、延遲、可用性和一致性的保證提供了完整的[服務等級協定](https://aka.ms/acdbsla) (SLA)，這是其他資料庫服務無法提供的。
+Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 透過按鈕點選，Cosmos DB 可讓您有彈性且獨立地跨任意數目的 Azure 區域調整輸送量和儲存體。 您可以彈性地調整輸送量和儲存體，並利用下列您喜歡的 API，快速進行單一位數毫秒的資料存取：SQL、MongoDB、Cassandra、資料表或 Gremlin。 Cosmos DB 針對輸送量、延遲、可用性和一致性的保證提供了完整的[服務等級協定](https://aka.ms/acdbsla) (SLA)，這是其他資料庫服務無法提供的。
 
-您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
+您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，而不需要 Azure 訂用帳戶 (免費且無需承諾用量)，或是使用 [Azure Cosmos DB 免費層](optimize-dev-test.md#azure-cosmos-db-free-tier)來取得帳戶，其中前 400 RU/秒和 5 GB 的儲存體免費。
 
 > [!div class="nextstepaction"]
 > [免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
@@ -38,9 +38,9 @@ Cosmos DB 允許您隨時新增任何 Azure 區域到您的 Cosmos 帳戶，或�
 
 藉由與 Azure 基礎結構的深度整合以及[明確的多重主機複寫](global-dist-under-the-hood.md)，Cosmos DB 為讀取和寫入提供了 [99.999% 高可用性](high-availability.md)。 Cosmos DB 還提供您以程式設計方式 (或透過入口網站) 叫用 Cosmos 帳戶的區域性容錯移轉功能。 此功能可協助確保您的應用程式可以在發生區域性災害時進行容錯移轉。
 
-### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>在全球彈性調整輸送量與儲存體
+### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>在全球輸送量與儲存體的彈性可擴縮性
 
-Cosmos DB 的設計包括透明的水平分割和多重主要複寫，可為您在全球各地的寫入和讀取提供前所未有的彈性延展性。 您可以透過使用單一 API 呼叫，在全球範圍內彈性地相應增加數億個要求/秒，並僅支付您所需要的輸送量 (和儲存體)。 此功能可協助您應付工作負載中非預期的暴增，而無需針對尖峰過度佈建。 如需詳細資訊，請參閱 [Cosmos DB 中的分割區](partitioning-overview.md)、[容器和資料庫上佈建的輸送量](set-throughput.md)，以及[全域調整佈建的輸送量](scaling-throughput.md)。
+Cosmos DB 的設計包括透明的水平分割和多重主要複寫，可為您在全球各地的寫入和讀取提供前所未有的彈性可擴縮性。 您可以透過使用單一 API 呼叫，在全球範圍內彈性地擴大數億個要求/秒，並僅支付您所需要的輸送量 (和儲存體)。 此功能可協助您應付工作負載中非預期的暴增，而無需針對尖峰過度佈建。 如需詳細資訊，請參閱 [Cosmos DB 中的分割區](partitioning-overview.md)、[容器和資料庫上佈建的輸送量](set-throughput.md)，以及[全域調整佈建的輸送量](scaling-throughput.md)。
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保證在第 99 個百分位數低延遲 (全球)
 

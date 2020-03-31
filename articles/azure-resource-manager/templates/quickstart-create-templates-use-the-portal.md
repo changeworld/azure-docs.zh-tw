@@ -5,16 +5,16 @@ author: mumian
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 66f730cae654c6c740e4224cfbb2ba1ae41d8df5
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: dd3d9caa8184b8637b509fc3318851751b211405
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689756"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131879"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立及部署 Azure Resource Manager 範本
+# <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立及部署 ARM 範本
 
-了解如何使用 Azure 入口網站產生 Resource Manager 範本，以及從入口網站編輯和部署該範本的程序。 Resource Manager 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
+了解如何使用 Azure 入口網站產生 Azure Resource Manager (ARM) 範本，以及從入口網站編輯和部署該範本的程序。 ARM 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
 
 ![Resource Manager 範本快速入門的入口網站圖表](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -24,7 +24,7 @@ ms.locfileid: "75689756"
 
 ## <a name="generate-a-template-using-the-portal"></a>使用入口網站產生範本
 
-從頭開始建立 Resource Manager 範本不是簡單的工作，尤其是當您不熟悉 Azure 部署及 JSON 格式時，更是如此。 您可以使用 Azure 入口網站來設定 Azure 儲存體帳戶等資源。 在部署資源之前，您可以先將組態匯入 Resource Manager 範本。 您可以儲存範本，並在未來重複加以使用。
+從頭開始建立 ARM 範本不是簡單的工作，尤其是當您不熟悉 Azure 部署及 JSON 格式時，更是如此。 您可以使用 Azure 入口網站來設定 Azure 儲存體帳戶等資源。 在部署資源之前，您可以先將組態匯入範本。 您可以儲存範本，並在未來重複加以使用。
 
 許多有經驗的範本開發人員會在嘗試部署不熟悉的 Azure 資源時，使用此方法來產生範本。 如需如何使用入口網站匯出範本的詳細資訊，請參閱[將資源群組匯出至範本](../management/manage-resource-groups-portal.md#export-resource-groups-to-templates)。 尋找可行範本的另一種方法是在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)中尋找。
 
@@ -55,7 +55,7 @@ ms.locfileid: "75689756"
 
     ![從入口網站產生範本](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    主窗格會顯示範本。 這是具有六個最上層元素的 JSON 檔案 - `schema`、`contentVersion`、`parameters`、`variables`、`resources` 和 `output`。 如需詳細資訊，請參閱[了解 Azure Resource Manager 範本的結構和語法](./template-syntax.md)
+    主窗格會顯示範本。 這是具有六個最上層元素的 JSON 檔案 - `schema`、`contentVersion`、`parameters`、`variables`、`resources` 和 `output`。 如需詳細資訊，請參閱[了解 ARM 範本的結構和語法](./template-syntax.md)
 
     已定義六個參數。 其中一個稱為**storageAccountName**。 在上述螢幕擷取畫面中，第二個醒目提示的部分會示範如何參考範本中的這個參數。 在下一節中，您會編輯此範本，以使用為儲存體帳戶所產生的名稱。
 

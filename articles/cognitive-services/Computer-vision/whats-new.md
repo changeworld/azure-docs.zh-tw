@@ -10,16 +10,20 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: c154b75fc8f8a177ab73682fc2af77d1702ae075
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207865"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80155183"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能
 
 了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+* 現在對於此服務的所有 HTTP 要求都會強制執行 TLS 1.2。 如需詳細資訊，請參閱 [Azure 認知服務安全性](../cognitive-services-security.md)。
 
 ## <a name="january-2020"></a>2020 年 1 月
 

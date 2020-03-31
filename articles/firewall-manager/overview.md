@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443139"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79366269"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>什麼是 Azure 防火牆管理員預覽？
 
@@ -80,13 +80,14 @@ Azure 防火牆管理員預覽有下列已知問題：
 
 |問題  |描述  |降低  |
 |---------|---------|---------|
-|第三方篩選限制|不支援將第三方提供者的 V2I 流量篩選與 Azure 防火牆 B2V 和 V2V 搭配使用。|目前正在調查中。|
-|目前不支援流量分割|目前不支援 Office 365 和 Azure 公用 PaaS 流量分割。 因此，若為 V2I 或 B2I 選取第三方提供者，也會透過合作夥伴服務傳送所有的 Azure 公用 PaaS 和 Office 365 流量。|目前正在調查中樞的流量分割。
-|每個區域一個安全虛擬中樞|每個區域不能有超過一個安全虛擬中樞|在區域中建立多個虛擬 WAN。|
-|基本原則必須位於與本機原則相同的區域中|在與基底原則相同的區域中建立您所有的本機原則。 您仍可將在某個區域中建立的原則套用到另一個區域的安全中樞上。|目前正在調查中。|
-|安全虛擬中樞無法執行中樞間通訊|目前尚不支援安全虛擬中樞對安全虛擬中樞的通訊。|目前正在調查中。|
+|第三方篩選限制。|不支援將第三方提供者的 V2I 流量篩選與 Azure 防火牆 B2V 和 V2V 搭配使用。|正在調查|
+|目前不支援流量分割。|目前不支援 Office 365 和 Azure 公用 PaaS 流量分割。 因此，若為 V2I 或 B2I 選取第三方提供者，也會透過合作夥伴服務傳送所有的 Azure 公用 PaaS 和 Office 365 流量。|正在調查中樞的流量分割。
+|每個區域一個安全虛擬中樞。|每個區域不能有超過一個安全虛擬中樞。|在區域中建立多個虛擬 WAN。|
+|基本原則必須位於與本機原則相同的區域中。|在與基底原則相同的區域中建立您所有的本機原則。 您仍可將在某個區域中建立的原則套用到另一個區域的安全中樞上。|正在調查|
+|安全虛擬中樞無法執行中樞間通訊|目前尚不支援安全虛擬中樞對安全虛擬中樞的通訊。|正在調查|
 |所有共用相同虛擬 WAN 的安全虛擬中樞，都必須位於相同的資源群組中。|此行為與現今的虛擬 WAN 中樞一致。|建立多個虛擬 WAN，以允許在不同的資源群組中建立安全虛擬中樞。|
-|防火牆原則不支援 IP 群組|IP 群組處於公開預覽狀態，目前僅支援傳統防火牆規則|正在修正
+|防火牆原則不支援 IP 群組。|IP 群組處於公開預覽狀態，目前僅支援傳統防火牆規則。|正在修正。
+|不支援的雲端解決方案提供者 (CSP)。|目前不支援 [CSP 訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0145p/)。|正在調查
 
 ## <a name="next-steps"></a>後續步驟
 

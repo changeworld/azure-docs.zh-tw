@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: bbf2e3204cb1e703aba445822bfb699fae13a112
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/20/2020
+ms.openlocfilehash: 50a3eebaa18674a0d0a7e9da88b8d3386e5016c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454319"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067782"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure Database for MySQL 伺服器
 
@@ -57,7 +57,7 @@ ms.locfileid: "75454319"
 
    ![建立伺服器 - 定價層視窗](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. 選取 [建立]  以佈建伺服器。 佈建作業可能需要多達 20 分鐘的時間。
+4. 選取 [檢閱+建立]  以佈建伺服器。 佈建作業可能需要多達 20 分鐘的時間。
    
 5. 在工具列上選取 [通知]  \(鈴鐺圖示) 以監視部署程序。
    
@@ -171,7 +171,7 @@ Azure Database for MySQL 服務會在伺服器層級建立防火牆。 它會防
 ## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>使用 MySQL Workbench GUI 工具連線到伺服器
 若要使用 GUI 工具 MySQL Workbench 來連線到伺服器，請採取下列步驟：
 
-1.  在您的用戶端電腦上開啟 MySQL Workbench 應用程式。 您可以從[下載 MySQL Workbench](https://dev.mysql.com/downloads/workbench/)下載並安裝 MySQL Workbench。
+1.    在您的用戶端電腦上開啟 MySQL Workbench 應用程式。 您可以從[下載 MySQL Workbench](https://dev.mysql.com/downloads/workbench/)下載並安裝 MySQL Workbench。
 
 2. 建立新的連線。 選取 [MySQL 連線]  標題旁邊的加號 (+) 圖示。
 
@@ -202,9 +202,9 @@ Azure Database for MySQL 服務會在伺服器層級建立防火牆。 它會防
 
 若要刪除整個資源群組 (包括新建立的伺服器)，請採取下列步驟：
 
-1.  在 Azure 入口網站中找出您的資源群組。 在左側的功能表上，選取 [資源群組]  ，然後選取您的資源群組名稱 (例如範例中的 **myresourcegroup**)。
+1.    在 Azure 入口網站中找出您的資源群組。 在左側的功能表上，選取 [資源群組]  ，然後選取您的資源群組名稱 (例如範例中的 **myresourcegroup**)。
 
-2.  在資源群組頁面上，選取 [刪除]  。 接著在方塊中輸入您的資源群組名稱 (例如 **myresourcegroup**) 以確認刪除，然後選取 [刪除]  。
+2.    在資源群組頁面上，選取 [刪除]  。 接著在方塊中輸入您的資源群組名稱 (例如 **myresourcegroup**) 以確認刪除，然後選取 [刪除]  。
 
 若只要刪除新建立的伺服器，請採取下列步驟：
 

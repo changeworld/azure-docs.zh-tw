@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 11/29/2019
 ms.author: scottwhi
 ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74689184"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>教學課程：將影像上傳至 Bing 圖像式搜尋 API
@@ -30,7 +30,7 @@ Bing 圖像式搜尋 API 可讓您在 Web 上搜尋類似您所上傳影像的�
 > * 在 Web 應用程式中顯示影像搜尋結果
 > * 探索該 API 所提供的不同見解
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

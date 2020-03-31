@@ -1,7 +1,7 @@
 ---
 title: 什麼是 Azure Load Balancer？
 titleSuffix: Azure Load Balancer
-description: Azure Load Balancer 功能、架構和實作的概觀。 了解 Load Balancer 的運作方式，以及如何將其用於雲端。
+description: Azure 負載平衡器功能、架構和實作的概觀。 了解 Load Balancer 的運作方式，以及如何將其用於雲端。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: ce8ae7f2f4de3659dc8dde98dc71d39886341498
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2853b1567618127866a4e9c61d81e599d3100823
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602148"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064257"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
@@ -40,7 +40,7 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 如需個別負載平衡器元件的詳細資訊，請參閱 [Azure Load Balancer 元件和限制](./concepts-limitations.md)
 
 >[!NOTE]
-> Azure 會為您的案例提供一套完整受控的負載平衡解決方案。 如果您需要高效能、低延遲、Layer 4 負載平衡，請參閱[什麼是 Azure 應用程式閘道？](../application-gateway/overview.md) 如果您要尋找全域 DNS 負載平衡，請參閱[什麼是流量管理員？](../traffic-manager/traffic-manager-overview.md) 結合這些解決方案，可能有益於您的端對端案例。
+> Azure 會為您的案例提供一套完整受控的負載平衡解決方案。 如果您需要高效能、低延遲、第 7 層負載平衡，請參閱[什麼是 Azure 應用程式閘道？](../application-gateway/overview.md) 如果您要尋找全域 DNS 負載平衡，請參閱[什麼是流量管理員？](../traffic-manager/traffic-manager-overview.md) 結合這些解決方案，可能有益於您的端對端案例。
 >
 > 如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。
 
@@ -69,7 +69,7 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 - 使用 **[HA 連接埠](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** ，同時對所有連接埠上的 TCP 和 UDP 流量進行負載平衡。
 
-### <a name="securebydefault"></a>預設保護
+### <a name="secure-by-default"></a><a name="securebydefault"></a>預設保護
 
 Standard Load Balancer 在本質上建置於零信任網路安全性模型上。 Standard Load Balancer 受到預設的保護，而且是虛擬網路的一部分。 虛擬網路是私人的隔離式網路。  這表示對於輸入流量會關閉 Standard Load Balancer 和標準公用 IP 位址，除非網路安全性群組加以開啟。 NSG 可用來明確准許允許的流量。  如果您沒有子網路的 NSG 或虛擬機器資源的 NIC，系統不會允許流量存取此資源。 若要深入了解 NSG 及如何將其套用至您的案例，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 依預設會對網際網路開放基本負載平衡器。

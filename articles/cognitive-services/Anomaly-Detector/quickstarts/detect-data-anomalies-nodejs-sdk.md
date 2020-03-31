@@ -1,21 +1,21 @@
 ---
 title: 快速入門：使用適用於 Python 的 Anomaly Detector 用戶端程式庫偵測資料異常
 titleSuffix: Azure Cognitive Services
-description: 透過本快速入門，使用 Anomaly Detector API 來偵測資料序列中的異常狀況 (以批次或串流資料的方式)。
+description: 了解如何使用 Anomaly Detector API 來偵測資料序列中的異常狀況 (以批次或串流資料的形式)。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c13657b8f2dae3868c1b9820236585aa930c6be4
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770436"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239089"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>快速入門：適用於 Node.js 的 Anomaly Detector 用戶端程式庫
 

@@ -2,20 +2,20 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0803a847e9e864b361917df9f1a9c6b059ca2fe9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203393"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240119"
 ---
 <a name="HOLTop"></a>
 
 #### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
-[v3 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [v3 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 套件 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 參考文件](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 套件 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[2.1 版](#tab/version-2)
 
@@ -27,9 +27,9 @@ ms.locfileid: "79203393"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
-    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中執行此動作。
-    * 您可以使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]  。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 

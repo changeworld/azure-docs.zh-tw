@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: f27ad43fabbba92f97a4035b00f72a8a4af4cc5c
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500205"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245373"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入門：使用應用程式設定建立 .NET Core 應用程式
 
@@ -27,13 +27,15 @@ ms.locfileid: "77500205"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管]   > [建立]  以新增下列索引鍵/值組：
+6. 選取 [組態總管]   > [建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 應用程式設定的值 |
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
+
+7. 選取 [套用]  。
 
 ## <a name="create-a-net-core-console-app"></a>建立 .NET Core 主控台應用程式
 
@@ -43,22 +45,22 @@ ms.locfileid: "77500205"
 
 2. 在新的資料夾中，執行下列命令以建立新的 ASP.NET Core 主控台應用程式專案：
 
-    ```CLI
-        dotnet new console
+    ```dotnetcli
+    dotnet new console
     ```
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
 1. 透過執行下列命令，將參考新增至 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 套件：
 
-    ```CLI
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+    ```dotnetcli
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
     ```
 
 2. 執行下列命令以還原您專案的套件：
 
-    ```CLI
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
     ```
 
 3. 開啟 Program.cs  ，並將參考新增至 .NET Core 應用程式組態提供者。
@@ -83,32 +85,34 @@ ms.locfileid: "77500205"
 
 ## <a name="build-and-run-the-app-locally"></a>於本機建置並執行應用程式
 
-1. 設定名為 **ConnectionString** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 在命令列執行下列命令，然後重新啟動命令提示字元，讓變更生效：
+1. 設定名為 **ConnectionString** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 在命令列中執行下列命令：
 
-    ```CLI
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```cmd
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
     如果您使用 Windows PowerShell，請執行下列命令：
 
     ```azurepowershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
 
     如果您使用 macOS 或 Linux，請執行下列命令：
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
+    重新啟動命令提示字元，讓變更生效。 輸出環境變數的值，以驗證其設定是否正確。
+
 2. 執行下列命令來建置主控台應用程式：
 
-    ```CLI
-        dotnet build
+    ```dotnetcli
+    dotnet build
     ```
 
 3. 建置成功完成後，請執行下列命令以於本機執行應用程式：
 
-    ```CLI
-        dotnet run
+    ```dotnetcli
+    dotnet run
     ```
 
 ## <a name="clean-up-resources"></a>清除資源

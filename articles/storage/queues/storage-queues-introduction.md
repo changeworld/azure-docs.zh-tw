@@ -3,17 +3,17 @@ title: Azure 佇列簡介 - Azure 儲存體
 description: Azure 佇列簡介
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/07/2019
+ms.date: 03/18/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 0e8bac8344bec06b58a22b8c9162cd8bd22ee700
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a2bea77578282d68d86bc1a8cea765aa2cbd555
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750442"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80060860"
 ---
 # <a name="what-are-azure-queues"></a>什麼是 Azure 佇列？
 
@@ -23,7 +23,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 使用 HTTP 或 HTT
 
 佇列服務包含下列元件：
 
-![佇列概念](./media/storage-queues-introduction/queue1.png)
+![顯示儲存體帳戶、佇列和訊息之間關聯性的圖表](./media/storage-queues-introduction/queue1.png)
 
 * **URL 格式：** 可利用下列 URL 格式來定址佇列：
 
@@ -33,7 +33,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 使用 HTTP 或 HTT
   
     `https://myaccount.queue.core.windows.net/images-to-download`
 
-* **儲存體帳戶：** 所有對 Azure 儲存體的存取都是透過儲存體帳戶進行。 如需儲存體帳戶容量的詳細資訊，請參閱[標準儲存體帳戶的延展性和效能目標](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。
+* **儲存體帳戶：** 所有對 Azure 儲存體的存取都是透過儲存體帳戶進行。 如需儲存體帳戶容量的詳細資訊，請參閱[標準儲存體帳戶的可擴縮性和效能目標](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。
 
 * **佇列：** 佇列包含一組訊息。 佇列名稱**必須**是小寫。 如需為佇列命名的詳細資訊，請參閱 [為佇列和中繼資料命名](https://msdn.microsoft.com/library/azure/dd179349.aspx)。
 

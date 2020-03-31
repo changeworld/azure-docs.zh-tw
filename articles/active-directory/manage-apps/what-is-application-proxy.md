@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f23b20d460952ae582c292c8015851b9dc2ea98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7047dfd0f02ffe95dcacfdf4ddc014047a338513
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108165"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481189"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 使用應用程式 Proxy 時，Azure AD 會追蹤需要存取內部部署環境和雲端中所發佈 Web 應用程式的使用者。 其可讓您集中管理這些應用程式。 雖非必要，但建議您也啟用 Azure AD 條件式存取。 藉由定義使用者要如何進行驗證和獲得存取權的條件，您可以進一步確保只有適當的人員能存取應用程式。
 
-**附註：** 請務必了解，Azure AD 應用程式 Proxy 的目的是要用來為需要存取內部資源的漫遊 (或遠端) 使用者取代 VPN 或反向 Proxy。 其適用對象並非是公司網路上的內部使用者。 沒必要卻使用應用程式 Proxy 的內部使用者會造成非預期且不想要的效能問題。
+**注意：** 請務必了解，Azure AD 應用程式 Proxy 的目的是要用來為需要存取內部資源的漫遊 (或遠端) 使用者取代 VPN 或反向 Proxy。 其適用對象並非是公司網路上的內部使用者。 沒必要卻使用應用程式 Proxy 的內部使用者會造成非預期且不想要的效能問題。
 
 ![Azure Active Directory 和您的所有應用程式](media/what-is-application-proxy/azure-ad-and-all-your-apps.png)
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 ![Azure AD 應用程式 Proxy 的架構](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>驗證
 
 有數種方式可用來為應用程式設定單一登入，要選取什麼方式則取決於應用程式所使用的驗證。 應用程式 Proxy 支援下列類型的應用程式：
 
@@ -145,7 +145,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 |Active Directory (AD)|Active Directory 在內部部署執行以對網域帳戶執行驗證。 設定單一登入之後，連接器將與 AD 通訊以執行所需的任何額外的驗證。|
 |內部部署應用程式|最後，使用者就能夠存取內部部署應用程式。|
 
-Azure AD 應用程式 Proxy 是由雲端式應用程式 Proxy 服務和內部部署連接器所組成的。 連接器會接聽來自應用程式 Proxy 服務的要求，並處理對內部應用程式的連線。 請務必請注意，所有通訊都會透過 SSL 發生，且一律源自於至應用程式 Proxy 服務的連接器。 也就是說，通訊只會對外輸出。 連接器會使用用戶端憑證來驗證所有呼叫的應用程式 Proxy 服務。 連線安全性的唯一例外是可供建立用戶端憑證的初始設定步驟。 如需詳細資訊，請參閱應用程式 Proxy [運作原理](application-proxy-security.md#under-the-hood)。
+Azure AD 應用程式 Proxy 是由雲端式應用程式 Proxy 服務和內部部署連接器所組成的。 連接器會接聽來自應用程式 Proxy 服務的要求，並處理對內部應用程式的連線。 請務必請注意，所有通訊都會透過 TLS 發生，且一律源自於至應用程式 Proxy 服務的連接器。 也就是說，通訊只會對外輸出。 連接器會使用用戶端憑證來驗證所有呼叫的應用程式 Proxy 服務。 連線安全性的唯一例外是可供建立用戶端憑證的初始設定步驟。 如需詳細資訊，請參閱應用程式 Proxy [運作原理](application-proxy-security.md#under-the-hood)。
 
 ### <a name="application-proxy-connectors"></a>應用程式 Proxy 連接器
 
@@ -180,7 +180,7 @@ Azure AD 應用程式 Proxy 是由雲端式應用程式 Proxy 服務和內部部
 
 ## <a name="other-use-cases"></a>其他使用案例
 
-到目前為止，我們的焦點一直放在使用應用程式 Proxy 來對外發佈內部部署應用程式，同時讓所有雲端和內部部署應用程式實現單一登入。 不過，另外還有一些值得一提的應用程式 Proxy 使用案例。 這些包括：
+到目前為止，我們的焦點一直放在使用應用程式 Proxy 來對外發佈內部部署應用程式，同時讓所有雲端和內部部署應用程式實現單一登入。 不過，另外還有一些值得一提的應用程式 Proxy 使用案例。 其中包括：
 
 * **安全發佈 REST API**。 當您讓商務邏輯或 API 在內部部署環境中執行，或裝載於雲端中的虛擬機器時，應用程式 Proxy 會提供用來進行 API 存取的公用端點。 API 端點存取可讓您控制驗證和授權，而不需要有連入連接埠。 其可透過 Azure AD Premium 功能 (例如，使用 Intune 的桌面、iOS、MAC 和 Android 裝置，會有多重要素驗證和裝置型條件式存取) 來提供額外的安全性。 若要深入了解，請參閱[如何讓原生用戶端應用程式能與 Proxy 應用程式互動](application-proxy-configure-native-client-application.md)以及[使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)。
 * **遠端桌面服務** **(RDS)** 。 需要使用開啟的輸入連線才能進行標準 RDS 部署。 不過，[使用應用程式 Proxy 的 RDS 部署](application-proxy-integrate-with-remote-desktop-services.md)具有來自連接器服務執行所在伺服器的永久輸出連線。 如此一來，您就可以透過遠端桌面服務發佈內部部署應用程式，藉此來提供更多應用程式給終端使用者。 您也可以向 RDS 提供一組有限的雙步驟驗證和條件式存取控制，來減少部署的受攻擊面。

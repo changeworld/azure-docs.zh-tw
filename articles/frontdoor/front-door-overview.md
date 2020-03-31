@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service | Microsoft Docs
-description: 本文提供 Azure Front Door 的概觀。 了解它是否為平衡應用程式使用者流量負載的最佳選擇。
+title: Azure Front Door | Microsoft Docs
+description: 本文提供 Azure Front Door 的概觀。 了解其是否為平衡應用程式使用者流量負載的最佳選擇。
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: e92e51e8aabf24f1c5c4db31e2e203f391620ecc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423482"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471638"
 ---
-# <a name="what-is-azure-front-door-service"></a>Azure 前端服務是什麼？
-Azure Front Door Service 可讓您針對最佳效能和立即全域容錯移轉以獲得高可用性最佳化，定義、管理及監視網路流量的全域路由。 透過 Front Door，您可以將全球 (多區域) 消費者和企業應用程式轉換成健全、高效能的個人化新式應用程式、API，以及觸及 Azure 全球對象的內容。
+# <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
+Azure Front Door 可讓您針對最佳效能和立即全域容錯移轉以獲得高可用性最佳化，定義、管理及監視網路流量的全域路由。 透過 Front Door，您可以將全球 (多區域) 消費者和企業應用程式轉換成健全、高效能的個人化新式應用程式、API，以及觸及 Azure 全球對象的內容。
 
 Front Door 會在第 7 層或 HTTP/HTTPS 層上運作，並使用任一傳播通訊協定搭配分割 TCP 和 Microsoft 的全球網路來改善全球連線能力。 因此，根據您在組態中選取的路由方法，您可以確保 Front Door 將用戶端要求路由傳送至最快速且最可用的應用程式後端。 應用程式後端是裝載於 Azure 內部或外部的任何網際網路對向服務。 Front Door 提供[流量路由方法](front-door-routing-methods.md)和[後端健康情況監視選項](front-door-health-probes.md)的範圍，以符合不同的應用程式需求和自動容錯移轉模型。 Front Door 類似於[流量管理員](../traffic-manager/traffic-manager-overview.md)，可針對失敗彈性應變，包括整個 Azure 區域失敗。
 
@@ -44,7 +44,7 @@ URL 路徑型路由可讓您根據要求的 URL 路徑，將流量路由傳送�
 例如，對 `http://www.contoso.com/users/*` 的要求會路由傳送至 UserProfilePool，而對 `http://www.contoso.com/products/*` 的要求則會路由傳送至 ProductInventoryPool。  Front Door 使用最佳比對演算法允許更加複雜的路由比對案例，因此如果沒有任何路徑模式相符，則會針對 `http://www.contoso.com/*` 選取您的預設路由規則，而且流量會導向預設 catch-all 路由規則。 深入了解[路由比對](front-door-route-matching.md)。
 
 ## <a name="multiple-site-hosting"></a>多網站裝載
-多網站裝載可讓您在相同的 Front Door 組態上設定多個網站。 此功能可讓您將不同的網站新增到單一 Front Door 組態，為您的部署設定更有效率的拓撲。 根據您的應用程式架構，您可以將 Azure Front Door Service 設定為將每個網站導向其自己的後端集區，或者讓各種網站導向相同的後端集區。 例如，Front Door 可以從稱為 ImagePool 和 VideoPool 的兩個後端集區，提供 `images.contoso.com` 和 `videos.contoso.com` 的流量。 或者，您可以設定兩個前端主機，將流量導向稱為 MediaPool 的單一後端集區。
+多網站裝載可讓您在相同的 Front Door 組態上設定多個網站。 此功能可讓您將不同的網站新增到單一 Front Door 組態，為您的部署設定更有效率的拓撲。 根據您的應用程式架構，您可以將 Azure Front Door 設定為將每個網站導向其自己的後端集區，或者讓各種網站導向相同的後端集區。 例如，Front Door 可以從稱為 ImagePool 和 VideoPool 的兩個後端集區，提供 `images.contoso.com` 和 `videos.contoso.com` 的流量。 或者，您可以設定兩個前端主機，將流量導向稱為 MediaPool 的單一後端集區。
 
 同樣地，您可以在同一個 Front Door 上設定兩個不同的網域 `www.contoso.com` 和 `www.fabrikam.com`。
 
@@ -66,9 +66,9 @@ Front Door 本身受到基本 [Azure DDoS 保護](../virtual-network/ddos-protec
 ## <a name="url-redirection"></a>URL 重新導向
 由於業界強烈要求僅支援安全通訊，Web 應用程式預計可自動將任何 HTTP 流量重新導向至 HTTPS。 這可確保使用者和應用程式之間的所有通訊都會發生在加密的路徑上。 
 
-傳統上，應用程式擁有者處理這項需求的方法是建立專用服務，其唯一目的是要將 HTTP 上收到的要求重新導向至 HTTPS。 AFD 支援將流量從 HTTP 重新導向至 HTTPS 的功能。 這可簡化應用程式組態、將資源使用量最佳化，並支援新的重新導向案例，包括全域和路徑式重新導向。 AFD 的 URL 重新導向並不僅限於從 HTTP 重新導向至 HTTPS，也包括重新導向至不同的主機名稱、不同的路徑，或甚至是重新導向至 URL 中新的查詢字串。
+傳統上，應用程式擁有者處理這項需求的方法是建立專用服務，其唯一目的是要將 HTTP 上收到的要求重新導向至 HTTPS。 Azure Front Door 支援將流量從 HTTP 重新導向至 HTTPS 的功能。 這可簡化應用程式組態、將資源使用量最佳化，並支援新的重新導向案例，包括全域和路徑式重新導向。 Azure Front Door 的 URL 重新導向並不僅限於從 HTTP 重新導向至 HTTPS，也包括重新導向至不同的主機名稱、不同的路徑，或甚至是重新導向至 URL 中新的查詢字串。
 
-如需詳細資訊，請參閱[使用 AFD 將流量重新導向](front-door-url-redirect.md)。
+如需詳細資訊，請參閱[使用 Azure Front Door 將流量重新導向](front-door-url-redirect.md)。
 
 ## <a name="url-rewrite"></a>URL 重寫
 Front Door 能透過允許您設定選擇性的[自訂轉送路徑](front-door-url-rewrite.md)，以用於建構要轉送至後端之要求的情況，來支援 URL 重寫功能。 Front Door 可進一步讓您將 Host 標頭設定為在將要求轉送到後端時傳送。
@@ -76,9 +76,9 @@ Front Door 能透過允許您設定選擇性的[自訂轉送路徑](front-door-u
 ## <a name="protocol-support---ipv6-and-http2-traffic"></a>通訊協定支援 - IPv6 和 HTTP/2 流量
 Azure Front Door 原本就支援端對端 IPv6 連線能力以及 HTTP/2 通訊協定。 
 
-HTTP/2 通訊協定都可透過長時間執行的 TCP 連線，讓應用程式後端與用戶端之間能進行全雙工通訊。 HTTP/2 可讓後端和用戶端之間進行互動性更高的通訊，此通訊可以是雙向的，而不需要像 HTTP 型實作所要求的進行輪詢。 不同於 HTTP，HTTP/2 通訊協定的負荷很低，而且可以對多個要求或回應重複使用相同的 TCP 連線，進而提升資源使用效率。 深入了解 [Azure Front Door Service 中的 HTTP/2 支援](front-door-http2.md)。
+HTTP/2 通訊協定都可透過長時間執行的 TCP 連線，讓應用程式後端與用戶端之間能進行全雙工通訊。 HTTP/2 可讓後端和用戶端之間進行互動性更高的通訊，此通訊可以是雙向的，而不需要像 HTTP 型實作所要求的進行輪詢。 不同於 HTTP，HTTP/2 通訊協定的負荷很低，而且可以對多個要求或回應重複使用相同的 TCP 連線，進而提升資源使用效率。 深入了解 [Azure Front Door 中的 HTTP/2 支援](front-door-http2.md)。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 如需定價資訊，請參閱 [Front Door 定價](https://azure.microsoft.com/pricing/details/frontdoor/)。
 

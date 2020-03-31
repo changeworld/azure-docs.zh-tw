@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: ebde02d222502c58536269243343b21271f19269
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168864"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79204557"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>快速入門：在 Azure Machine Learning Studio (傳統) 中建立您的第一個資料科學實驗
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -130,7 +132,7 @@ Studio (傳統) 附有多個範例資料集供您使用，或者，您可以從�
 
 ## <a name="define-features"></a>定義功能
 
-在機器學習中， *功能* 是您感興趣的某項目的個別可測量的屬性。 在我們的資料集中，每個資料列都代表一部汽車，而每個資料行是該汽車的功能。
+在機器學習中，「特徵」  是您感興趣的某項目的個別可測量屬性。 在我們的資料集中，每個資料列都代表一部汽車，而每個資料行是該汽車的功能。
 
 要找到一組理想的功能來建立預測模型，必須針對您要解決的問題進行實驗，並具備相關知識。 有些功能會比其他功能更適合用來預測目標。 此外，某些特性與其他特性具有很高的相關性，可以移除。 例如，市區油耗和高速公路油耗密切相關，我們可以保留其中一項而移除另一項，這對預測不會有大幅影響。
 

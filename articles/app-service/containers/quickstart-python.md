@@ -3,15 +3,15 @@ title: 快速入門：建立 Linux Python 應用程式
 description: 藉由將您的第一個 Python 應用程式部署至 App Service 中的 Linux 容器，在 Azure App Service 上開始使用 Linux 應用程式。
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.custom: cli-validate
+ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524058"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045659"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -90,7 +90,7 @@ Azure CLI 提供給您許多可從本機終端機使用的便利命令，以便�
 
 若要在 Azure CLI 中執行 Azure 命令，您必須先使用 `az login` 命令進行登入。 此命令會開啟瀏覽器來收集您的認證。
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -101,7 +101,7 @@ az login
 在包含範例程式碼的 *python-docs-hello-world* 資料夾中，執行下列 `az webapp up` 命令。 將 `<app-name>` 取代為全域唯一的應用程式名稱 (有效字元為 `a-z`、`0-9` 和 `-`  )。 同時將 `<location-name>` 取代為 Azure 區域，例如 **centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** 等等。 (您可藉由執行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令，擷取 Azure 帳戶的允許區域清單。)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -157,7 +157,7 @@ return "Hello Azure!"
 
 使用下列 `az webapp up` 命令來重新部署應用程式，使用您第一次用來部署應用程式的相同命令，以您之前使用的相同名稱取代 `<app-name>` 和 `<location-name>`。 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -174,13 +174,13 @@ az webapp up --sku F1 -n <app-name> -l <location-name>
 
 首先，在終端機中執行下列命令來開啟容器記錄功能，將 `<app-name>` 取代為您的應用程式名稱，並將 `<resource-group-name>`取代為您所用 `az webapp up` 命令的輸出中所顯示的資源群組名稱 (例如 "appsvc_rg_Linux_centralus")：
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 開啟容器記錄後，請執行下列命令來顯示記錄資料流：
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -217,7 +217,7 @@ App Service 功能表提供不同的頁面來設定您的應用程式。
 
 如果您未來不需要這些資源，請執行下列命令來刪除資源群組，並將 `<resource-group-name>` 取代為 `az webapp up` 命令輸出中所顯示的資源群組，例如 "appsvc_rg_Linux_centralus"。 此命令可能需要一分鐘才能完成。
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863235"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370894"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins 概觀
+# <a name="overview-of-azure-digital-twins-preview"></a>Azure Digital Twins 預覽版概觀
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital Twins 預覽版是一項 Azure IoT 服務，可建立完整的實體環境模型。 此服務可建立空間智慧圖形，用模型來呈現人員、空間和裝置之間的關聯性與互動情形。
 

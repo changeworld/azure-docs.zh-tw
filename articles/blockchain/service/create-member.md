@@ -1,15 +1,15 @@
 ---
 title: 建立 Azure 區塊鏈服務成員 - Azure 入口網站
 description: 使用 Azure 入口網站建立區塊鏈聯盟的 Azure 區塊鏈服務成員。
-ms.date: 01/23/2020
+ms.date: 03/12/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 03cd4be1228fcf6a501203e6efb40a8b45c30d0c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.reviewer: ravastra
+ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760771"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79203656"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 區塊鏈服務的區塊鏈成員
 
@@ -36,7 +36,7 @@ Azure 區塊鏈服務成員是私人聯盟區塊鏈網路中的區塊鏈節點�
     聯盟 | 針對新的聯盟，請輸入唯一名稱。 如果是透過邀請來加入聯盟，請選擇您要加入的聯盟。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
     名稱 | 選擇 Azure 區塊鏈服務成員的唯一名稱。 區塊鏈成員的名稱只能包含小寫字母和數字。 第一個字元必須是字母。 此值長度必須介於 2 至 20 個字元之間。
     成員帳戶密碼 | 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
-    定價 | 新服務的節點組態和成本。 選取 [變更]  連結，以在 [標準]  和 [基本]  層之間做選擇。
+    定價 | 新服務的節點組態和成本。 選取 [變更]  連結，以在 [標準]  和 [基本]  層之間做選擇。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。
     節點密碼 | 成員預設交易節點的密碼。 連線至區塊鏈成員的預設交易節點公用端點時，請使用此密碼進行基本驗證。
 
 1. 選取 [檢閱 + 建立]  以驗證您的設定。 選取 [建立]  以佈建服務。 佈建需要大約 10 分鐘的時間。

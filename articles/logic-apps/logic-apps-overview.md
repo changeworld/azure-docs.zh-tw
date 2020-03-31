@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/29/2018
-ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358984"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290546"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概觀 - 什麼是 Azure Logic Apps？
 
@@ -36,7 +36,7 @@ ms.locfileid: "78358984"
 
 每個邏輯應用程式都會使用觸發程序啟動，而該觸發程序會在特定事件發生時，或在可用的新資料符合特定準則時引發。 Logic Apps 中連接器提供的許多觸發程序都包含基本排程功能，以便您設定工作負載定期執行的方式。 如需更複雜的排程或進階的週期，可以在任何工作流程中使用循環觸發程序作為第一步。 深入了解[以排程為基礎的工作流程](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
-每次引發觸發程序時，Logic Apps 引擎就會建立可執行工作流程動作的邏輯應用程式執行個體。 這些動作也可以包含資料轉換和流程控制，例如條件陳述式、切換陳述式、迴圈和分支。 例如，此邏輯應用程式會使用具有「在記錄更新時」內建準則的 Dynamics 365 觸發程序啟動。 如果觸發程序偵測到符合此準則的事件，則觸發程序會引發並執行工作流程的動作。 這些動作包括 XML 轉換、資料更新、決策分支和電子郵件通知。
+每次引發觸發程序時，Logic Apps 引擎就會建立可執行工作流程動作的邏輯應用程式執行個體。 這些動作也可以包含資料轉換和工作流程控制，例如條件陳述式、切換陳述式、迴圈和分支。 例如，此邏輯應用程式會使用具有「在記錄更新時」內建準則的 Dynamics 365 觸發程序啟動。 如果觸發程序偵測到符合此準則的事件，則觸發程序會引發並執行工作流程的動作。 這些動作包括 XML 轉換、資料更新、決策分支和電子郵件通知。
 
 ![Logic Apps 設計工具 - 範例邏輯應用程式](./media/logic-apps-overview/azure-logic-apps-designer.png)
 
@@ -100,6 +100,18 @@ BizTalk Server 可以透過另一種方式，使用[適用於 Logic Apps 的 Mic
 
 建立您的邏輯應用程式作為 Azure Resource Manager 範本，以便在多個環境和區域中[自動進行邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
+### <a name="access-resources-inside-azure-virtual-networks"></a>存取 Azure 虛擬網路內的資源
+
+當您建立[整合服務環境  (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 時，邏輯應用程式可以存取 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)中的受保護資源，例如虛擬機器 (VM) 和其他系統或服務。 ISE 是 Logic Apps 服務的獨立執行個體，其使用專用資源，並與「全域」多租用戶 Logic Apps 服務分開執行。
+
+在您自己的個別獨立執行個體中執行邏輯應用程式，有助於減少其他 Azure 租用戶對您應用程式效能可能造成的影響，也就是 ["noisy neighbors" effect](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors) (相鄰干擾效應)。 ISE 也提供下列優點：
+
+* 您自己的靜態 IP 位址，這與邏輯應用程式在多租用戶服務中所共用的靜態 IP 位址不同。 您也可以設定公用、靜態且可預測的單一輸出 IP 位址，以便與目的地系統進行通訊。 如此一來，您就不需要在每個 ISE 的目的地系統上設定額外的開放式防火牆。
+
+* 增加執行期間、儲存體保留期、輸送量、HTTP 要求和回應逾時、訊息大小及自訂連接器要求的限制。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md)。
+
+當您建立 ISE 時，Azure 會在您的 Azure 虛擬網路中「插入」  或部署 ISE。 接著，您可以針對邏輯應用程式和需要存取的整合帳戶，使用此 ISE 作為其位置。 如需有關建立 ISE 的詳細資訊，請參閱[從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+
 ### <a name="built-in-extensibility"></a>內建擴充性
 
 如果找不到您想要用來執行自訂程式碼的連接器，您可以透過 [Azure Functions](../azure-functions/functions-overview.md) 建立自己的程式碼片段並依照需求進行呼叫，以擴充邏輯應用程式。 建立您可以從邏輯應用程式呼叫的自有 [API](../logic-apps/logic-apps-create-api-app.md) 和[自訂連接器](../logic-apps/custom-connector-overview.md)。
@@ -114,6 +126,10 @@ BizTalk Server 可以透過另一種方式，使用[適用於 Logic Apps 的 Mic
 * [利用 Microsoft Azure Logic App 進行企業整合](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2188)
 * [使用 Logic Apps 建立進階商務程序](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3179)
 
+## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-power-automate"></a>Logic Apps 與 Functions、WebJobs 和 Power Automate 有何不同？
+
+上述這些服務都可協助您一起「黏附」及連線不同的系統。 每個服務都各有其優點，因此把這些服務的功能結合在一起，是快速建置可調式、全功能整合系統的最佳方式。 如需詳細資訊，請參閱[在 Logic Apps、Functions、WebJobs 和 Power Automate 之間做選擇](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
+
 <a name="logic-app-concepts"></a>
 
 ## <a name="key-terms"></a>主要詞彙
@@ -127,10 +143,6 @@ BizTalk Server 可以透過另一種方式，使用[適用於 Logic Apps 的 Mic
 * **動作**：「動作」是指在觸發程序之後發生的所有步驟。 每個動作通常會對應至受控連接器、自訂 API 或自訂連接器所定義的作業。
 
 * **企業整合套件**：在更進階的整合案例中，Logic Apps 會包含來自 BizTalk Server 的功能。 企業整合套件提供的連接器可協助邏輯應用程式輕鬆地執行驗證、轉換等等。
-
-## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Logic Apps 與 Functions、WebJobs 和 Flow 有何不同？
-
-上述這些服務都可協助您一起「黏附」及連線不同的系統。 每個服務都各有其優點，因此把這些服務的功能結合在一起，是快速建置可調式、全功能整合系統的最佳方式。 如需詳細資訊，請參閱[在 Flow、Logic Apps、Functions 和 WebJobs 之間做選擇](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
 
 ## <a name="get-started"></a>開始使用
 

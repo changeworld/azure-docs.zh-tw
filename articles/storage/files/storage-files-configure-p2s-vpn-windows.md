@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560346"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061025"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>在 Windows 上設定點對站 (P2S) VPN 以用於 Azure 檔案儲存體
 您可以使用點對站 (P2S) VPN 連線，從 Azure 外部透過 SMB 掛接 Azure 檔案共用，而不需要開啟連接埠 445。 點對站 VPN 連線是 Azure 與個別用戶端之間的 VPN 連線。 若要將 P2S VPN 連線用於 Azure 檔案儲存體，必須為每個要連線的用戶端設定 P2S VPN 連線。 如果您有許多用戶端需要從內部部署網路連線至 Azure 檔案共用，您可以對每個用戶端使用站對站 (S2S) VPN 連線，而不使用點對站連線。 若要深入了解，請參閱[設定站對站 VPN 以用於 Azure 檔案儲存體](storage-files-configure-s2s-vpn.md)。
@@ -24,18 +24,9 @@ ms.locfileid: "75560346"
 ## <a name="prerequisites"></a>Prerequisites
 - 最新版本的 Azure PowerShell 模組。 如需如何安裝 Azure PowerShell 的詳細資訊，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)，並選取您的作業系統。 您也可以在 Windows 上使用 Azure CLI，但以下顯示的是適用於 Azure PowerShell 的指示。
 
-- Azure 私人 DNS PowerShell 模組。 此模組目前並未發佈為 Azure PowerShell 模組的一部分，您可以使用下列方法加以安裝：
-    ```PowerShell
-    if ($PSVersionTable.PSVersion -ge [System.Version]::new(6, 0)) {
-        Install-Module -Name Az.PrivateDns -AllowClobber -AllowPrerelease
-    } else {
-        Install-Module -Name Az.PrivateDns -RequiredVersion "0.1.3"
-    }
+- 您要在內部部署掛接的 Azure 檔案共用。 Azure 檔案共用會部署在儲存體帳戶中，也就是代表儲存體共用集區的管理結構，您可以在此集區中部署多個檔案共用，以及其他儲存體資源 (例如，Blob 容器或佇列)。 您可以在[建立 Azure 檔案共用](storage-how-to-create-file-share.md)中深入了解如何部署 Azure 檔案共用和儲存體帳戶。
 
-    Import-Module -Name Az.PrivateDns
-    ```  
-
-- 您要在內部部署掛接的 Azure 檔案共用。 您可以將[標準](storage-how-to-create-file-share.md)或[進階 Azure 檔案共用](storage-how-to-create-premium-fileshare.md)與您的點對站 VPN 搭配使用。
+- 要在內部部署掛接的 Azure 檔案共用所屬的儲存體帳戶私人端點。 若要深入了解如何建立私人端點，請參閱[設定 Azure 檔案儲存體網路端點](storage-files-networking-endpoints.md?tabs=azure-powershell)。 
 
 ## <a name="deploy-a-virtual-network"></a>部署虛擬網路
 若要透過點對站 VPN 從內部部署存取您的 Azure 檔案共用和其他 Azure 資源，您必須建立虛擬網路或 VNet。 您將自動建立的 P2S VPN 連線，是內部部署 Windows 機器與此 Azure 虛擬網路之間的聯繫管道。
@@ -85,91 +76,6 @@ $privateEndpointSubnet = $virtualNetwork.Subnets | `
     Where-Object { $_.Name -eq "PrivateEndpointSubnet" }
 $gatewaySubnet = $virtualNetwork.Subnets | ` 
     Where-Object { $_.Name -eq "GatewaySubnet" }
-```
-
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>將儲存體帳戶限定於虛擬網路
-根據預設，當您建立儲存體帳戶時，只要您有驗證要求的方法 (例如，使用您的 Active Directory 身分識別或儲存體帳戶金鑰)，就可以從世界各地存取該帳戶。 若要限制只有您剛剛建立的虛擬網路可存取此儲存體帳戶，您必須建立允許在虛擬網路中存取，而拒絕所有其他存取的網路規則集。
-
-要將儲存體帳戶限定於虛擬網路，必須使用服務端點。 服務端點是一種僅允許從虛擬網路中存取公用 DNS/公用 IP 的網路結構。 由於公用 IP 位址不一定會維持不變，因此我們最終會想要使用儲存體帳戶的私人端點，而不是服務端點，不過，除非服務端點也已公開，否則不可能限制儲存體帳戶。
-
-請記得將 `<storage-account-name>` 取代為您要存取的儲存體帳戶。
-
-```PowerShell
-$storageAccountName = "<storage-account-name>"
-
-$storageAccount = Get-AzStorageAccount `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName
-
-$networkRule = Add-AzStorageAccountNetworkRule `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName `
-    -VirtualNetworkResourceId $serviceEndpointSubnet.Id
-
-Update-AzStorageAccountNetworkRuleSet `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName `
-    -Bypass AzureServices `
-    -DefaultAction Deny `
-    -VirtualNetworkRule $networkRule | Out-Null
-``` 
-
-## <a name="create-a-private-endpoint-preview"></a>建立私人端點 (預覽)
-為您的儲存體帳戶建立私人端點，可為您的儲存體帳戶提供虛擬網路的 IP 位址空間內的 IP 位址。 當您使用此私人 IP 位址從內部部署掛接 Azure 檔案共用時，VPN 安裝所自動定義的路由規則將會透過 VPN 將您的掛接要求路由傳送至儲存體帳戶。 
-
-```PowerShell
-$internalVnet = Get-AzResource `
-    -ResourceId $virtualNetwork.Id `
-    -ApiVersion "2019-04-01"
-
-$internalVnet.Properties.subnets[1].properties.privateEndpointNetworkPolicies = "Disabled"
-$internalVnet | Set-AzResource -Force | Out-Null
-
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection `
-    -Name "myConnection" `
-    -PrivateLinkServiceId $storageAccount.Id `
-    -GroupId "file"
-
-$privateEndpoint = New-AzPrivateEndpoint `
-    -ResourceGroupName $resourceGroupName `
-    -Name "$storageAccountName-privateEndpoint" `
-    -Location $region `
-    -Subnet $privateEndpointSubnet `
-    -PrivateLinkServiceConnection $privateEndpointConnection
-
-$zone = Get-AzPrivateDnsZone -ResourceGroupName $resourceGroupName
-if ($null -eq $zone) {
-    $zone = New-AzPrivateDnsZone `
-        -ResourceGroupName $resourceGroupName `
-        -Name "privatelink.file.core.windows.net"
-} else {
-    $zone = $zone[0]
-}
-
-$link = New-AzPrivateDnsVirtualNetworkLink `
-    -ResourceGroupName $resourceGroupName `
-    -ZoneName $zone.Name `
-    -Name ($virtualNetwork.Name + "-link") `
-    -VirtualNetworkId $virtualNetwork.Id
-
-$internalNic = Get-AzResource `
-    -ResourceId $privateEndpoint.NetworkInterfaces[0].Id `
-    -ApiVersion "2019-04-01"
-
-foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
-    foreach($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.', 2)[0]
-        $dnsZone = $fqdn.split('.', 2)[1]
-        New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName `
-            -Name $recordName `
-            -RecordType A `
-            -ZoneName $zone.Name `
-            -Ttl 600 `
-            -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-                -IPv4Address $ipconfig.properties.privateIPAddress) | Out-Null
-    }
-}
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>建立 VPN 驗證的根憑證

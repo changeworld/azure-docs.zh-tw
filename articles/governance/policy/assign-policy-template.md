@@ -1,21 +1,22 @@
 ---
 title: 快速入門：使用範本進行新原則指派
 description: 在本快速入門中，使用 Resource Manager 範本建立原則指派以識別不符合規範的資源。
-ms.date: 11/25/2019
+ms.date: 03/16/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8b9b0024e5c15c78c6777b8657839791484d66b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: subject-armqs
+ms.openlocfilehash: 9f9998c407c39d11615a5997549a363a276b9e10
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980515"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471399"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 建立原則指派以識別不相容資源
 
 了解 Azure 中合規性的第一個步驟是識別您資源的狀態。
-本快速入門會逐步引導您完成程序來建立原則指派，以識別出未使用受控磁碟的虛擬機器。
+本快速入門會逐步引導您完成程序來建立原則指派，以識別出未使用受控磁碟的虛擬機器。 在此程序結束時，您將會成功識別出未使用受控磁碟的虛擬機器。 它們「不符合」  原則指派的規範。
 
-在此程序結束時，您將會成功識別出未使用受控磁碟的虛擬機器。 它們「不符合」  原則指派的規範。
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -25,10 +26,17 @@ ms.locfileid: "75980515"
 
 在本快速入門中，您會建立一個原則指派，並且指派名為「稽核未使用受控磁碟的 VM」  的內建原則定義。 如需可用內建原則的部分清單，請參閱 [Azure 原則範例](./samples/index.md)。
 
-有數種方法可建立原則指派。 在本快速入門中，您可以使用[快速入門範本](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
-以下是範本的複本：
+### <a name="review-the-template"></a>檢閱範本
 
-[!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
+
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-36" highlight="26-34":::
+
+範本中定義的資源為：
+
+- [Microsoft.Authorization/policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
+
+### <a name="deploy-the-template"></a>部署範本
 
 > [!NOTE]
 > Azure 原則服務是免費的。 如需詳細資訊，請參閱 [Azure 原則概觀](./overview.md)。
@@ -58,7 +66,7 @@ ms.locfileid: "75980515"
 - 若要了解如何開發 Resource Manager 範本，請參閱 [Azure Resource Manager 文件](../../azure-resource-manager/management/overview.md)。
 - 若要了解訂用帳戶層級的部署，請參閱[在訂用帳戶層級建立資源群組和資源](../../azure-resource-manager/templates/deploy-to-subscription.md)。
 
-## <a name="identify-non-compliant-resources"></a>識別不相容的資源
+## <a name="validate-the-deployment"></a>驗證部署
 
 選取頁面左側的 [合規性]  。 接著，找出您所建立的 [稽核未使用受控磁碟的虛擬機器]  原則指派。
 

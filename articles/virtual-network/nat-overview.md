@@ -1,5 +1,6 @@
 ---
 title: 什麼是 Azure 虛擬網路 NAT？
+titlesuffix: Azure Virtual Network
 description: 虛擬網路 NAT 功能、資源、架構和實作的概觀。 了解虛擬網路 NAT 如何運作，以及如何在雲端使用 NAT 閘道資源。
 services: virtual-network
 documentationcenter: na
@@ -11,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359245"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409893"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>什麼是虛擬網路 NAT (公開預覽版)？
+# <a name="what-is-virtual-network-nat"></a>什麼是虛擬網路 NAT？
 
 虛擬網路 NAT (網路位址轉譯) 可簡化虛擬網路的僅限輸出網際網路連線。 在子網路上設定時，所有輸出連線都會使用您指定的靜態公用 IP 位址。  在沒有負載平衡器或直接連結至虛擬機器的公用 IP 位址的情況下，可能有輸出連線能力。 NAT 完全受控且具有高度復原性。
 
@@ -36,10 +37,6 @@ ms.locfileid: "78359245"
 
 
 *圖：虛擬網路 NAT*
-
-
->[!NOTE] 
->虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>僅限輸出的靜態 IP 位址
 
@@ -91,9 +88,9 @@ NAT 的私人端會傳送「TCP 重設」封包，以嘗試在不存在的 TCP �
 
 NAT 的公用端不會產生「TCP 重設」封包或任何其他流量。  只會發出客戶的虛擬網路所產生的流量。
 
-## <a name="configurable-idle-timeout"></a>可設定的閒置逾時
+## <a name="configurable-tcp-idle-timeout"></a>可設定的 TCP 閒置逾時
 
-預設會使用 4 分鐘的閒置逾時，且最多可增加到 120 分鐘。 流量上的任何活動也都可以重設閒置計時器，包括 TCP Keepalive。
+預設 TCP 會使用 4 分鐘的閒置逾時，且最多可增加到 120 分鐘。 流量上的任何活動也都可以重設閒置計時器，包括 TCP Keepalive。
 
 ## <a name="regional-or-zone-isolation-with-availability-zones"></a>具有可用性區域的地區性或區域隔離
 
@@ -125,48 +122,6 @@ NAT 的公用端不會產生「TCP 重設」封包或任何其他流量。  只�
 
 公開上市時，NAT 資料路徑至少 99.9% 可用。
 
-## <a name = "region-availability"></a>區域可用性
-
-NAT 目前適用於下欄區域：
-
-- 西歐
-- 日本東部
-- 美國東部 2
-- 美國西部
-- 美國西部 2
-- 美國中西部
-
-## <a name = "enable-preview"></a>公開預覽參與
-
-必須註冊訂用帳戶，才得以參與公開預覽版。  參與需要兩個步驟的程序，而下面提供的指示適用於 Azure CLI 和 Azure PowerShell。  啟用可能需要幾分鐘的時間才能完成。
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. 註冊公開預覽版的訂用帳戶
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. 啟用註冊
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. 註冊公開預覽版的訂用帳戶
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. 啟用註冊
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>定價
 
@@ -180,7 +135,9 @@ NAT 閘道會使用兩個不同的計量進行計費：
 資源時數說明 NAT 閘道資源存在的持續期間。
 已處理的資料量說明 NAT 閘道資源處理的所有流量。
 
-在公開預覽期間，定價享有 50% 的折扣。
+## <a name="availability"></a>可用性
+
+虛擬網路 NAT 和 NAT 閘道資源適用於所有 Azure 公用雲端[區域](https://azure.microsoft.com/global-infrastructure/regions/)。
 
 ## <a name="support"></a>支援
 
@@ -188,11 +145,12 @@ NAT 是透過標準支援管道來支援。
 
 ## <a name="feedback"></a>意見反應
 
-我們想要知道如何改善服務。 與我們分享您對[公開預覽版的意見反應](https://aka.ms/natfeedback)。  您也可針對我們接下來應在[適用於 NAT 的 UserVoice](https://aka.ms/natuservoice) 建置的項目，提出建議和投票。
+我們想要知道如何改善服務。 請針對我們接下來應在[適用於 NAT 的 UserVoice](https://aka.ms/natuservoice) 建置的項目，提出建議和投票。
+
 
 ## <a name="limitations"></a>限制
 
-* NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。   基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
+* NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。 基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
 * 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。  NAT 無法部署在具有 IPv6 首碼的子網路上。
 * 使用 NAT 時，不支援 NSG 流量記錄。
 * NAT 無法跨越多個虛擬網路。
@@ -201,4 +159,4 @@ NAT 是透過標準支援管道來支援。
 
 * 深入了解 [NAT 閘道資源](./nat-gateway-resource.md)。
 * [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
-* [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
+

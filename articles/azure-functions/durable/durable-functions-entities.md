@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262991"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132515"
 ---
 # <a name="entity-functions"></a>實體函式
 
@@ -41,7 +41,7 @@ ms.locfileid: "76262991"
 * 目標實體的**實體識別碼**。
 * **作業名稱**，這是指定要執行之作業的字串。 例如，`Counter` 實體可支援 `add`、`get` 或 `reset` 作業。
 * **作業輸入**，這是作業的選擇性輸入參數。 例如，新增作業可接受整數數量作為輸入。
-* **排定的時間*，這是指定作業傳遞時間的選擇性參數。 例如，可以將作業可靠地排定在未來幾天執行。
+* **排定的時間**，這是指定作業傳遞時間的選擇性參數。 例如，可以將作業可靠地排定在未來幾天執行。
 
 作業可以傳回結果值或錯誤結果，例如 JavaScript 錯誤或 .NET 例外狀況。 呼叫作業的協調流程可以觀察到此結果或錯誤。
 
@@ -55,7 +55,7 @@ ms.locfileid: "76262991"
 
 **以類別為基礎的語法 (僅限 .NET)** ，其中實體和作業是由類別和方法表示。 此語法會產生更易讀取的程式碼，並允許以型別安全的方式叫用作業。 以類別為基礎的語法是以函式為基礎的語法之上的精簡層，因此這兩個變體可以在相同的應用程式中交替使用。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>範例：以函式為基礎的語法 - C#
 
@@ -109,7 +109,7 @@ public class Counter
 
 如需以類別為基礎的語法及其使用方式的詳細資訊，請參閱[定義實體類別](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="example-javascript-entity"></a>範例：JavaScript 實體
 
@@ -171,7 +171,7 @@ module.exports = df.entity(function(context) {
 
 若要從一般 Azure 函式 (也稱為用戶端函式) 存取實體，請使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)。 下列範例會說明由佇列觸發的函式，該函式會使用此繫結對實體傳送訊號。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > 為了簡單起見，下列範例會顯示用來存取實體的鬆散型別語法。 一般來說，我們建議您[透過介面存取實體](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因為此方式可提供更多類型檢查。
@@ -189,7 +189,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -209,7 +209,7 @@ module.exports = async function (context) {
 
 用戶端函式也可以查詢實體的狀態，如下列範例所示：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -223,7 +223,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -244,7 +244,7 @@ module.exports = async function (context) {
 
 協調器函式可以使用[協調流程觸發程序繫結](durable-functions-bindings.md#orchestration-trigger)上的 API 來存取實體。 下列程式碼範例說明呼叫 `Counter` 實體並對其傳送訊號的協調器函式。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -263,7 +263,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,7 +291,7 @@ module.exports = df.orchestrator(function*(context){
 實體函式可以在執行作業時傳送訊號給其他實體，甚或傳送給本身。
 例如，我們可以修改上述的 `Counter` 實體範例，以便在計數器達到值 100 時，傳送「達到里程碑」訊號給某個監視器實體。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -306,7 +306,7 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
     case "add":
@@ -321,7 +321,7 @@ module.exports = df.orchestrator(function*(context){
 
 ---
 
-## <a name="entity-coordination"></a>實體協調 (目前僅限 .NET)
+## <a name="entity-coordination-currently-net-only"></a><a name="entity-coordination"></a>實體協調 (目前僅限 .NET)
 
 有時候您可能需要協調多個實體的作業。 例如，在銀行應用程式中，您可能有代表個別銀行帳戶的實體。 將資金從某個帳戶轉移到另一個帳戶時，您必須確定來源帳戶有足夠的資金。 您也必須確定會以交易一致的方式完成來源和目的地帳戶的更新。
 

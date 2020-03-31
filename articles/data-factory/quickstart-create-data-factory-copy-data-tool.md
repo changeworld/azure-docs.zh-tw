@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/20/2018
-ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/18/2020
+ms.openlocfilehash: 26169755fbe252a4be2626dae50d40c005c7c6db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440135"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130972"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入門：使用複製資料工具複製資料
 
@@ -35,13 +35,9 @@ ms.locfileid: "75440135"
 
 1. 啟動 **Microsoft Edge** 或 **Google Chrome** 網頁瀏覽器。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 
-1. 從 Azure 入口網站功能表選取 [建立資源]  。
+1. 在 Azure 入口網站功能表中，選取 [建立資源]   > [分析]   > [Data Factory]  ：
 
-    ![從 Azure 入口網站功能表建立資源](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
-
-1. 選取 [Analytics]  ，然後選取 [Data Factory]  。
-
-   ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+    ![新資料處理站的建立](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. 在 [新增資料處理站]  頁面上，輸入 **ADFTutorialDataFactory** 作為 [名稱]  。 
  
@@ -79,11 +75,13 @@ ms.locfileid: "75440135"
 
     a. 按一下 [+ 建立新連線]  以新增連線。
 
-    b. 從資源庫選取 [Azure Blob 儲存體]  ，然後選取 [繼續]  。
+    b. 選取您要為來源連線建立的連結服務類型。 在本教學課程中，我們會使用 **Azure Blob 儲存體**。 請從資源庫中選取，然後選取 [繼續]  。
+    
+    ![選取 Blob](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. 在 [新增連結服務 (Azure Blob 儲存體)]  頁面上，指定連結服務的名稱。 從 [儲存體帳戶名稱]  清單中選取您的儲存體帳戶，並測試連線，然後選取 [完成]  。 
+    c. 在 [新增連結服務 (Azure Blob 儲存體)]  頁面上，指定連結服務的名稱。 從 [儲存體帳戶名稱]  清單中選取您的儲存體帳戶，並測試連線，然後選取 [建立]  。 
 
-   ![設定 Azure Blob 儲存體帳戶](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+    ![設定 Azure Blob 儲存體帳戶](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
     d. 選取新建立的連結服務作為來源，然後按 [下一步]  。
 
@@ -111,15 +109,19 @@ ms.locfileid: "75440135"
 
     ![[部署完成] 頁面](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. 應用程式會切換至 [監視]  索引標籤。您會在此索引標籤上看到管線的狀態。選取 [重新整理]  可重新整理清單。 
-    
-1. 選取 [動作]  資料行中的 [檢視活動執行]  連結。 管線只有一個 [複製]  類型的活動。 
-    
-1. 若要檢視關於複製作業的詳細資訊，請選取 [動作]  資料行中的 [詳細資料]  (眼鏡圖片) 連結。 如需屬性的詳細資訊，請參閱[複製活動概觀](copy-activity-overview.md)。
+1. 應用程式會切換至 [監視]  索引標籤。您會在此索引標籤上看到管線的狀態。選取 [重新整理]  可重新整理清單。 按一下 [管線名稱]  下方的連結，以檢視活動執行詳細資料，或重新執行管線。 
+   
+    ![重新整理管線](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
+
+1. 在活動執行頁面上，選取 [活動名稱]  資料行下的 [詳細資料]  連結 (眼鏡圖示)，以取得複製作業的詳細資訊。 如需屬性的詳細資訊，請參閱[複製活動概觀](copy-activity-overview.md)。 
+
+1. 若要回到管線執行檢視，請選取階層連結功能表中的 [所有管線執行]  連結。 若要重新整理檢視，請選取 [重新整理]  。 
 
 1. 確認已在 **adftutorial** 容器的 **output** 資料夾中建立 **emp.txt** 檔案。 如果 output 資料夾不存在，Data Factory 服務會自動加以建立。 
 
 1. 在左側面板上，切換至 [監視器]  索引標籤上方的 [編寫]  索引標籤，即可編輯連結服務、資料集和管線。 若要深入了解如何在 Data Factory UI 中加以編輯，請參閱[使用 Azure 入口網站建立資料處理站](quickstart-create-data-factory-portal.md)。
+
+    ![選取作者索引標籤](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
 
 ## <a name="next-steps"></a>後續步驟
 此範例中的管線會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 若想了解使用 Data Factory 的更多案例，請瀏覽[教學課程](tutorial-copy-data-portal.md)。 

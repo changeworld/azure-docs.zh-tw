@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927378"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240323"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Node.js 連線至 Azure Cosmos DB SQL API 帳戶並從中查詢資料
 
@@ -26,6 +26,12 @@ ms.locfileid: "78927378"
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 在本快速入門中，您會從 Azure 入口網站以及藉由使用從 GitHub 複製的 Node.js 應用程式，來建立和管理 Azure Cosmos DB SQL API 帳戶。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
+
+## <a name="walkthrough-video"></a>逐步解說影片
+
+如需本文內容的完整逐步解說，請觀看這段影片。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Quickstart-Use-Nodejs-to-connect-and-query-data-from-Azure-Cosmos-DB-SQL-API-account/player]
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -115,13 +121,13 @@ npm install @azure/cosmos
 - 選取「工作」資料庫。
 
   ```javascript
-  const database = await client.databases(databaseId);
+  const database = client.database(databaseId);
   ```
 
 - 選取「項目」容器/集合。
 
   ```javascript
-  const container = await client.databases(containerId);
+  const container = database.container(containerId);
   ```
 
 - 選取「項目」容器中的所有項目。
@@ -132,7 +138,7 @@ npm install @azure/cosmos
     query: "SELECT * from c"
   };
 
-  const { resources: results } = await container.items
+  const { resources: items } = await container.items
     .query(querySpec)
     .fetchAll();
   ```
@@ -149,15 +155,15 @@ npm install @azure/cosmos
   const { id, category } = createdItem;
 
   createdItem.isComplete = true;
-  const { resource: itemToUpdate } = await container
+  const { resource: updatedItem } = await container
     .item(id, category)
-    .replace(itemToUpdate);
+    .replace(createdItem);
   ```
 
 - 刪除項目
 
   ```javascript
-  const { resource: result } = await this.container.item(id, category).delete();
+  const { resource: result } = await container.item(id, category).delete();
   ```
 
 > [!NOTE]

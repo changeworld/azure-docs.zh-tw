@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70387795"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>範例：使用文字分析來偵測語言
@@ -30,7 +30,7 @@ ms.locfileid: "70387795"
 > [!TIP]
 > 文字分析也會提供可用來偵測語言的 Linux 型 Docker 容器映像，好讓您可以在接近資料的位置[安裝和執行文字分析容器](text-analytics-how-to-install-containers.md)。
 
-## <a name="preparation"></a>準備工作
+## <a name="preparation"></a>準備
 
 您必須具有此格式的 JSON 文件：識別碼和文字。
 
@@ -63,7 +63,7 @@ ms.locfileid: "70387795"
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>步驟 1：建立要求結構
+## <a name="step-1-structure-the-request"></a>步驟 1:建立要求結構
 
 如需有關要求定義的詳細資訊，請參閱[呼叫文字分析 API](text-analytics-how-to-call-api.md)。 為了方便起見，我們將重申下列各點：
 
@@ -78,7 +78,7 @@ ms.locfileid: "70387795"
 > [!Tip]
 > 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
 
-## <a name="step-2-post-the-request"></a>步驟 2：張貼要求
+## <a name="step-2-post-the-request"></a>步驟 2:張貼要求
 
 分析會在接收要求時執行。 如需您每分鐘和每秒鐘可以傳送的要求大小和數量資訊，請參閱概觀中的[資料限制](../overview.md#data-limits)一節。
 
@@ -263,7 +263,7 @@ ms.locfileid: "70387795"
     }
 ```
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在此文章中，您已了解使用 Azure 認知服務中的文字分析進行語言偵測的概念與工作流程。 已說明及示範下列幾點：
 
@@ -274,7 +274,7 @@ ms.locfileid: "70387795"
 
 ## <a name="see-also"></a>另請參閱
 
- [文字分析概觀](../overview.md)[常見問題集 (FAQ)](../text-analytics-resource-faq.md)</br>
+ [文字分析概觀](../overview.md) [常見問題集 (FAQ)](../text-analytics-resource-faq.md)</br>
  [文字分析產品頁面](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,15 +1,15 @@
 ---
 title: 建立 Azure 區塊鏈服務成員 - Azure CLI
 description: 使用 Azure CLI 建立區塊鏈聯盟的 Azure 區塊鏈服務成員。
-ms.date: 01/23/2020
+ms.date: 03/12/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 703444b6077c2301e1ffec77c8096fb76ddaa731
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.reviewer: ravastra
+ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759921"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214742"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員
 
@@ -53,12 +53,12 @@ az resource create \
 | 參數 | 描述 |
 |---------|-------------|
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 請使用您在上一節中建立的資源群組。
-| **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如：`myblockchainmember.blockchain.azure.com` 。
-| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如：`westus2` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
+| **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如： `myblockchainmember.blockchain.azure.com` 。
+| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `westus2` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
 | **password** | 成員預設交易節點的密碼。 連線至區塊鏈成員的預設交易節點公用端點時，請使用此密碼進行基本驗證。
 | **consortium** | 要加入或建立的聯盟名稱。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
 | **consortiumAccountPassword** | 聯盟帳戶密碼也稱為成員帳戶密碼。 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
-| **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。
+| **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。
 
 建立區塊鏈成員和支援的資源需要約 10 分鐘的時間。
 

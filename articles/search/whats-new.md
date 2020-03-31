@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/24/2020
+ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271312"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80247192"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -26,6 +26,12 @@ ms.locfileid: "78271312"
 Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核心作業中已展開 (但為選用功能) 的認知技能和 AI 處理的使用方式。 API 版本、NuGet 套件、命名空間和端點都沒有變更。 新的和現有的搜尋解決方案不受服務名稱變更的影響。
 
 ## <a name="feature-announcements"></a>功能公告
+
+### <a name="march-2020"></a>2020 年 3 月
+
++ [原生 Blob 虛刪除 (預覽)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) 表示 Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 Blob，並在編製索引期間移除對應的搜尋文件。
+
++ 最新且穩定的[管理 REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) 現已推出。 
 
 ### <a name="february-2020"></a>2020 年 2 月
 
