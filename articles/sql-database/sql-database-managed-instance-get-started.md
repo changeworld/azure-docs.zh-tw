@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 2af153e5cf09cf331be016066e9c9210a0d39b03
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838165"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80257609"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入門：建立 Azure SQL Database 受控執行個體
 
@@ -51,7 +51,7 @@ ms.locfileid: "73838165"
 
    使用下表作為此索引標籤上所需資訊的參考。
 
-   | 設定| 建議的值 | 說明 |
+   | 設定| 建議的值 | 描述 |
    | ------ | --------------- | ----------- |
    | **訂用帳戶** | 您的訂用帳戶。 | 讓您有權建立新資源的訂用帳戶。 |
    | **資源群組** | 新的或現有的資源群組。|如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
@@ -74,7 +74,7 @@ ms.locfileid: "73838165"
 
    使用下表作為此索引標籤上所需資訊的參考。
 
-   | 設定| 建議的值 | 說明 |
+   | 設定| 建議的值 | 描述 |
    | ------ | --------------- | ----------- |
    | **虛擬網路** | 選取 [建立新的虛擬網路]  或有效的虛擬網路與子網路。| 如果網路或子網路無法使用，您必須先[修改成符合網路需求](sql-database-managed-instance-configure-vnet-subnet.md)後，才能選取它作為新的受控執行個體目標。 如需關於設定受控執行個體網路環境的需求資訊，請參閱[設定受控執行個體的虛擬網路](sql-database-managed-instance-connectivity-architecture.md)。 |
    | **連線類型** | 在 Proxy 和重新導向連線類型之間做選擇。|如需有關連線類型的詳細資訊，請參閱 [Azure SQL Database 連線原則](sql-database-connectivity-architecture.md#connection-policy)。|
@@ -91,7 +91,7 @@ ms.locfileid: "73838165"
 
    使用下表作為此索引標籤上所需資訊的參考。
 
-   | 設定| 建議的值 | 說明 |
+   | 設定| 建議的值 | 描述 |
    | ------ | --------------- | ----------- |
    | **定序** | 選擇您要用於受控執行個體的定序。 如果您從 SQL Server 遷移資料庫，請使用 `SELECT SERVERPROPERTY(N'Collation')` 來檢查來源定序並使用該值。| 如需定序的相關資訊，請參閱[設定或變更伺服器定序](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)。|   
    | **時區** | 選取受控執行個體將要觀察的時區。|如需詳細資訊，請參閱[時區](sql-database-managed-instance-timezone.md)。|
@@ -122,6 +122,10 @@ ms.locfileid: "73838165"
 > 1. 在 Azure 入口網站中，開啟您要在其中部署受控執行個體的資源群組 (在 [基本]  索引標籤上)。
 > 2. 選取 [部署]  。
 > 3. 選取進行中的受控執行個體部署作業。
+
+> [!IMPORTANT]
+> 為了能夠取得建立受控執行個體時的狀態，您必須具有資源群組的**讀取權限**。 如果您沒有此權限，或在受控執行個體建立過程中將其撤銷，則可能會導致受控執行個體不會顯示在資源群組部署清單中。
+>
 
 ## <a name="post-deployment-operations"></a>部署後作業
 

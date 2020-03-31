@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 0a2ace3f73379cff0b9289a8cebb10cb7930348d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129080"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215026"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
 Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以透過 Cassandra 查詢語言 (CQL) v4 [有線通訊協定](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)合規性開放原始碼 Cassandra 用戶端[驅動程式](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)與 Azure Cosmos DB Cassandra API 通訊。 
 
-透過使用 Azure Cosmos DB Cassandra API，您可以享受 Apache Cassandra API 的好處，以及 Azure Cosmos DB 所提供的企業功能。 企業功能包括[全域散發](distribute-data-globally.md)、[自動相應放大分割處理](partition-data.md)、可用性與延遲保證、靜態資料加密、備份等。
+透過使用 Azure Cosmos DB Cassandra API，您可以享受 Apache Cassandra API 的好處，以及 Azure Cosmos DB 所提供的企業功能。 企業功能包括[全域散發](distribute-data-globally.md)、[自動擴增分割處理](partition-data.md)、可用性與延遲保證、靜態資料加密、備份等。
 
 ## <a name="cassandra-protocol"></a>Cassandra 通訊協定 
 
@@ -96,7 +96,7 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 
 ## <a name="cassandra-api-limits"></a>Cassandra API 限制
 
-Azure Cosmos DB Cassandra API 在資料表中存放的資料大小沒限制。 可以儲存數百 TB 或 PB 的資料，同時確保遵守資料分割金鑰。 同樣地，每個實體或資料列對等項在資料行數目上沒有任何限制。 不過，實體的總大小不應該超過 2 MB。 在所有其他 Api 中，每個分割區索引鍵的資料不能超過 20 GB。
+Azure Cosmos DB Cassandra API 在資料表中存放的資料大小沒限制。 可以儲存數百 TB 或 PB 的資料，同時確保遵守資料分割金鑰。 同樣地，每個實體或資料列對等項在資料行數目上沒有任何限制。 不過，實體的總大小不應該超過 2 MB。 就像所有其他 API 一樣，每個分割區索引鍵的資料不能超過 20 GB。
 
 ## <a name="tools"></a>工具 
 
@@ -145,7 +145,7 @@ Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
 
 * CREATE KEYSPACE (已忽略此命令的複寫設定)
 * CREATE TABLE 
-* CREATE INDEX （不指定索引名稱，以及尚未支援的完整凍結索引）
+* CREATE INDEX (不指定索引名稱，以及尚未支援完整凍結索引)
 * 允許篩選
 * ALTER TABLE 
 * USE 
@@ -181,7 +181,7 @@ Azure Cosmos DB 支援角色型存取控制 (RBAC) 來佈建、輪替金鑰、�
 
 ## <a name="keyspace-and-table-options"></a>Keyspace 和資料表選項
 
-目前已忽略 "Create Keyspace" 命令中區域名稱、類別、replication_factor 和資料中心的選項。 系統會使用基礎 Azure Cosmos DB 的[全域散發](global-dist-under-the-hood.md)複製方法來新增區域。 如果您需要資料跨區域存在，可以使用 PowerShell、CLI 或入口網站在帳戶層級加以啟用。若要深入了解，請參閱[如何新增區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)一文。 無法停用 Durable_writes，因為 Azure Cosmos DB 可確保每次寫入都是持久的。 在每個區域中，Azure Cosmos DB 會將資料複寫到由四個複本組成的複本集，而此複本集[設定](global-dist-under-the-hood.md)無法加以修改。
+目前已忽略 "Create Keyspace" 命令中區域名稱、類別、replication_factor 和資料中心的選項。 系統會使用基礎 Azure Cosmos DB 的[全域散發](global-dist-under-the-hood.md)複寫方法來新增區域。 如果您需要資料跨區域存在，可以使用 PowerShell、CLI 或入口網站在帳戶層級加以啟用。若要深入了解，請參閱[如何新增區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)一文。 無法停用 Durable_writes，因為 Azure Cosmos DB 可確保每次寫入都是持久的。 在每個區域中，Azure Cosmos DB 會將資料複寫到由四個複本組成的複本集，而此複本集[設定](global-dist-under-the-hood.md)無法加以修改。
  
 建立資料表時會忽略所有選項，但應設定為零的 gc_grace_seconds 除外。
 Keyspace 和資料表有一個名為 "cosmosdb_provisioned_throughput" 的額外選項，其最小值為 400 RU/秒。 Keyspace 輸送量可讓您跨多個資料表共用輸送量，而當所有資料表均未使用佈建的輸送量時就很有用。 Alter Table 命令可讓您變更跨區域佈建的輸送量。 

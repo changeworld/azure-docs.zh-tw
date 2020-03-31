@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/19/2020
+ms.openlocfilehash: 698220a7f81dc5fb9d70d2aa65e96dfa199af444
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432040"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063855"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>使用 Azure 入口網站建立適用於 MariaDB 的 Azure 資料庫伺服器
 
@@ -37,7 +37,7 @@ ms.locfileid: "75432040"
    ![適用於 MariaDB 的 Azure 資料庫選項](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
 3. 輸入或選取下列伺服器詳細資料：
-   
+
    ![建立伺服器表單](./media/quickstart-create-mariadb-server-database-using-azure-portal/4-create-form.png)
 
     設定 | 建議的值 | 描述
@@ -55,18 +55,16 @@ ms.locfileid: "75432040"
   
    > [!NOTE]
    > 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。 請注意，在基本定價層中建立的伺服器後續無法調整為「一般用途」或「記憶體最佳化」。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)。
-   > 
 
    ![建立伺服器 - 定價層視窗](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4.  選取 [建立]  以佈建伺服器。 佈建作業可能需要多達 20 分鐘的時間。
-   
-5.  若要監視部署程序，請在工具列上選取 [通知]  \(鈴鐺圖示\)。
-   
+4. 選取 [檢閱+建立]  以佈建伺服器。 佈建作業可能需要多達 20 分鐘的時間。
+
+5. 若要監視部署程序，請在工具列上選取 [通知]  \(鈴鐺圖示\)。
+
 根據預設，您的伺服器底下會建立下列資料庫：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
 
-
-## <a name="configure-firewall-rule"></a>設定伺服器層級防火牆規則
+## <a name="configure-a-server-level-firewall-rule"></a><a name="configure-firewall-rule"></a>設定伺服器層級防火牆規則
 
 「適用於 MariaDB 的 Azure 資料庫」服務會在伺服器層級建立防火牆。 此防火牆會防止外部應用程式和工具連線到伺服器或伺服器上的任何資料庫，除非已建立防火牆規則以針對特定的 IP 位址開啟防火牆。 
 
@@ -77,20 +75,19 @@ ms.locfileid: "75432040"
 2. 在伺服器概觀頁面上，選取 [連線安全性]  。
 
 3. 在 [防火牆規則]  之下，選取 [規則名稱]  欄中的空白文字方塊，開始建立防火牆規則。 指定將連線到這部伺服器的用戶端所屬的精確 IP 範圍。
-   
+
    ![連線安全性 - 防火牆規則](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
-4. 在 [連線安全性]  頁面的工具列上，選取 [儲存]  。 等到您看到指出更新已成功完成的通知，再繼續進行。 
+4. 在 [連線安全性]  頁面的工具列上，選取 [儲存]  。 等到您看到指出更新已成功完成的通知，再繼續進行。
 
    > [!NOTE]
    > 適用於 MariaDB 的 Azure 資料庫連線會透過連接埠 3306 進行通訊。 如果您嘗試從公司網路內部進行連線，可能不允許透過連接埠 3306 的輸出流量。 在此情況下，若要連線到伺服器，IT 部門必須開啟連接埠 3306。
-   > 
 
 ## <a name="get-connection-information"></a>取得連線資訊
 
 若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您稍早可能已在本文中記下這些值。 若未這麼做，您可以從 Azure 入口網站的伺服器 [概觀]  頁面或 [屬性]  頁面輕鬆尋找伺服器名稱和登入資訊：
 
-1. 移至伺服器的 [概觀]  頁面。 記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  的值。 
+1. 移至伺服器的 [概觀]  頁面。 記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  的值。
 
 2. 若要複製這些值，請將游標置於您想要複製的欄位上。 複製圖示會出現在文字右邊。 視需要選取複製圖示來複製值。
 
@@ -113,13 +110,13 @@ ms.locfileid: "75432040"
 
     若要使用 mysql 公用程式連線到適用於 MariaDB 的 Azure 資料庫伺服器，請使用下列格式：
 
-    ```bash
+    ```cmd
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
     ```
 
     例如，下列命令會連線至我們的範例伺服器：
 
-    ```azurecli-interactive
+    ```cmd
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -129,11 +126,11 @@ ms.locfileid: "75432040"
     --user | 伺服器管理員登入名稱  |您建立適用於 MariaDB 的 Azure 資料庫伺服器時所使用的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請完成上一節中的步驟以取得連線資訊。 格式是 *username\@servername*。
     -p | 您的密碼 <br>(等到出現提示為止) |出現提示時，輸入您用來建立伺服器的密碼。 輸入的密碼字元不會顯示在 bash 提示字元上。 輸入密碼後，請按 Enter 鍵。
 
-   連線到 mysql 公用程式時，它會顯示 `mysql>` 提示字元。 您可以在提示字元中輸入命令。 
+   連線到 mysql 公用程式時，它會顯示 `mysql>` 提示字元。 您可以在提示字元中輸入命令。
 
    以下是 mysql 輸出範例：
 
-    ```bash
+    ```output
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.39.0 MariaDB Server
@@ -209,7 +206,6 @@ ms.locfileid: "75432040"
 
     > [!NOTE]
     > 伺服器上預設會強制執行 SSL。 其需要額外設定才能成功連線。 如需詳細資訊，請參閱[在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MariaDB 的 Azure 資料庫](./howto-configure-ssl.md)。 若要在本快速入門停用 SSL，請在 Azure 入口網站中的伺服器概觀頁面上，選取功能表中的 [連線安全性]  。 針對 [強制執行 SSL 連線]  ，選取 [已停用]  。
-    >
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -217,19 +213,18 @@ ms.locfileid: "75432040"
 
 > [!TIP]
 > 此集合中的其他快速入門會以本快速入門為基礎。 如果您打算繼續進行「適用於 MariaDB 的 Azure 資料庫」快速入門，請勿清除您在此快速入門中建立的資源。 如果您不打算繼續，請使用下列步驟，刪除您在本快速入門中建立的所有資源。
->
 
 若要刪除整個資源群組 (包括新建立的伺服器)：
 
-1.  在 Azure 入口網站中找出資源群組。 在左側功能表上，選取 [資源群組]  ，然後選取資源群組名稱 (在我們的範例中為 **myresourcegroup**)。
+1. 在 Azure 入口網站中找出資源群組。 在左側功能表上，選取 [資源群組]  ，然後選取資源群組名稱 (在我們的範例中為 **myresourcegroup**)。
 
-2.  在資源群組頁面上，選取 [刪除]  。 然後，輸入資源群組名稱 (在我們的範例中為 **myresourcegroup**)，以確認刪除。 選取 [刪除]  。
+2. 在資源群組頁面上，選取 [刪除]  。 然後，輸入資源群組名稱 (在我們的範例中為 **myresourcegroup**)，以確認刪除。 選取 [刪除]  。
 
 若要刪除新建立的伺服器：
 
 1. 在 Azure 入口網站中找出伺服器 (如果您尚未將它開啟)。 在左側功能表中，選取 [所有資源]  。 然後搜尋您所建立的伺服器。
 
-2. 在 [概觀]  頁面上，按一下 [刪除]  。 
+2. 在 [概觀]  頁面上，按一下 [刪除]  。
 
    ![適用於 MariaDB 的 Azure 資料庫 - 刪除伺服器](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 

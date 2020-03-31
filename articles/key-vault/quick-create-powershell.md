@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用 PowerShell 從 Key Vault 設定及擷取祕密
-description: 在本快速入門中，您將了解如何使用 PowerShell 從 Azure Key Vault 建立、擷取和刪除秘密
+description: 在本快速入門中，您將了解如何使用 Azure PowerShell 從 Azure Key Vault 建立、擷取和刪除祕密。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f2b3b7d42ec7eac6dba402c0f553760548c78044
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 627d74f48c0f2b3da8665cd255102f36869477c2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197788"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79472753"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入門：使用 PowerShell 從 Azure Key Vault 設定及擷取祕密
 

@@ -1,15 +1,15 @@
 ---
 title: Azure 區塊鏈服務概觀
 description: Azure 區塊鏈服務的概觀
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387372"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205076"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什麼是 Azure 區塊鏈服務？
 
@@ -29,7 +29,7 @@ Azure 區塊鏈服務旨在支援多個總帳通訊協定。 目前使用 [IBFT]
 
 ### <a name="performance-and-service-tiers"></a>效能和服務層級
 
-Azure 區塊鏈服務提供兩個服務層級：「基本」  和「標準」  。 每一層均提供不同的效能和功能，以支援精簡型開發並測試工作負載，最高可達大規模的生產區塊鏈部署。 這兩個層級至少包含一個交易節點，以及一個驗證程式節點 (基本) 或兩個驗證程式節點 (標準)。
+Azure 區塊鏈服務提供兩個服務層級：「基本」  和「標準」  。 每一層均提供不同的效能和功能，以支援精簡型開發並測試工作負載，最高可達大規模的生產區塊鏈部署。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。 這兩個層級至少包含一個交易節點，以及一個驗證程式節點 (基本) 或兩個驗證程式節點 (標準)。 
 
 ![定價層](./media/overview/pricing-tiers.png)
 
@@ -45,7 +45,7 @@ Azure 區塊鏈服務是一個受控服務，可確保您的區塊鏈成員節�
 
 此外，Azure 區塊鏈服務可透過 Azure 監視器服務提供豐富的計量，進而提供節點的 CPU、記憶體和儲存體使用量深入解析。  Azure 監視器也會提供區塊鏈網路活動的實用深入解析，例如已挖掘的交易和區塊、交易佇列深度和作用中連線。  您可以自訂計量，以檢視對區塊鏈應用程式很重要的深入解析。  此外，您也可以透過警示來定義閾值，讓使用者可以觸發動作，例如，傳送電子郵件或簡訊、執行邏輯應用程式、Azure 函式或傳送至自訂定義的 Webhook。
 
-![度量](./media/overview/metrics.png)
+![計量](./media/overview/metrics.png)
 
 透過 Azure Log Analytics，使用者可以檢視與 Quorum 總帳相關的記錄或其他重要資訊，例如，已嘗試連線到交易節點。
 

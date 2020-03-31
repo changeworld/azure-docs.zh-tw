@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: bc6e43faca47e360daa8214e6b9f6e9df4a2f130
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23e7f88b23ac7af7470183877eeb1be89e79779c
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495390"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80287742"
 ---
-1. 在 LUIS 入口網站的 [管理] 區段 (右上方功能表) 的 [金鑰和端點] 頁面 (左側功能表) 中，選取頁面底部的端點 URL。
+1. 在 LUIS 入口網站的 [管理]  區段 (右上方功能表)、[Azure 資源]  頁面 (左側功能表)、[預測資源]  索引標籤上，複製頁面底部的**範例查詢**。
 
-    此動作會開啟瀏覽器索引標籤，其中網址列會顯示端點 URL。
+    將 URL 貼到新的瀏覽器索引標籤中。
 
     URL 有您的應用程式識別碼、金鑰和位置名稱。 V3 預測端點 URL 如下所示：
 
-    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=UTTERANCE-TEXT.`
+    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=YOUR_QUERY_HERE`
 

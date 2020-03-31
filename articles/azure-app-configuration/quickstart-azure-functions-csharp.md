@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207059"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245492"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Azure Functions 應用程式
 
@@ -28,13 +28,15 @@ ms.locfileid: "78207059"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管]   >  [+ 建立]  來新增下列索引鍵/值組：
+6. 選取 [組態總管]   > [+ 建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 應用程式設定的值 |
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
+
+7. 選取 [套用]  。
 
 ## <a name="create-a-functions-app"></a>建立 Functions 應用程式
 
@@ -85,7 +87,7 @@ ms.locfileid: "78207059"
 
 1. 設定名為 **ConnectionString** 的環境變數，並將其設定為應用程式組態存放區的存取金鑰。 如果您使用 Windows 命令提示字元，請執行下列命令，然後重新啟動命令提示字元以讓變更生效：
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

@@ -15,19 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 0f6a303bfa42538bf56efa7e9f669588c8bff66c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6b3dee698e63ed2b0a44f05b593b8840d1cd23ee
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082722"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80066406"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>快速入門：建立 NAT 閘道 - Resource Manager 範本
 
-使用 Azure Resource Manager 範本開始使用虛擬網路 NAT。  此範本會部署虛擬網路、NAT 閘道和 Ubuntu 虛擬機器。 Ubuntu 虛擬機器會部署到與 NAT 閘道相關聯的子網路。
-
->[!NOTE] 
->Azure 虛擬網路 NAT 目前以公開預覽形式提供，可在一組有限的[區域](https://azure.microsoft.com/global-infrastructure/regions/)中取得。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
+使用 Azure Resource Manager 範本開始使用虛擬網路 NAT。  此範本會部署虛擬網路、NAT 閘道資源和 Ubuntu 虛擬機器。 Ubuntu 虛擬機器會部署到與 NAT 閘道資源相關聯的子網路。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 設定和建立適用於 Linux (Ubuntu) 的資料科學虛擬機器以進行分析和機器學習服務。
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: quickstart
-ms.date: 12/31/2019
-ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360599"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290506"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入門：設定適用于 Linux （Ubuntu）的資料科學虛擬機器
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入門：設定適用於 Linux (Ubuntu) 的資料科學虛擬機器
 
 啟動並執行 Ubuntu 18.04 資料科學虛擬機器。
 
@@ -29,9 +29,9 @@ ms.locfileid: "78360599"
 建立資料科學虛擬機器 Ubuntu 18.04 執行個體的步驟如下：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。如果您尚未登入 Azure 帳戶，系統可能會提示您登入。
-1. 輸入「資料科學虛擬機器」並選取 [資料科學虛擬機器 - Ubuntu 18.04 預覽]，以尋找虛擬機器清單。
+1. 在 [資料科學虛擬機器] 中輸入並選取 [資料科學虛擬機器 - Ubuntu 18.04]，以尋找虛擬機器清單
 
-1. 在後續視窗上選取 [建立]。
+1. 在後續視窗上選取 [建立]  。
 
 1. 您應會重新導向至 [建立虛擬機器] 刀鋒視窗。
    
@@ -39,28 +39,28 @@ ms.locfileid: "78360599"
 
     1. **基本**：
     
-       * **訂**用帳戶：如果您有多個訂用帳戶，請選取要在其中建立和計費電腦的訂用帳戶。 您必須有此訂用帳戶的資源建立權限。
-       * **資源群組**：建立新的群組，或使用現有的群組。
+       * 訂用帳戶  ：如果您有多個訂用帳戶，請選取要在其中建立機器及計費的訂用帳戶。 您必須有此訂用帳戶的資源建立權限。
+       * **資源群組**：建立新的群組或使用現有群組。
        * **虛擬機器名稱**：輸入虛擬機器的名稱。 這就是它在 Azure 入口網站中的顯示方式。
        * **區域**：選取最適合的資料中心。 如需最快速的網路存取，請選取擁有您大部分資料或是最接近您實際位置的資訊中心。 深入了解 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)。
-       * **映射**：保留預設值。
-       * **大小**：這應該會以適用于一般工作負載的大小來自動填入。 深入了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **映像**：保留預設值。
+       * **Size**：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
        * **驗證類型**：如需更快速的設定，請選取 [密碼]。 
          
          > [!NOTE]
-         > 如果您想要使用 JupyterHub，請務必選取 [密碼]，因為 JupyterHub「未」設定為使用 SSH 公開金鑰。
+         > 如果您想要使用 JupyterHub，請務必選取 [密碼]，因為 JupyterHub「未」  設定為使用 SSH 公開金鑰。
 
-       * 使用者**名稱**：輸入系統管理員使用者名稱。 這是您將用來登入虛擬機器的使用者名稱，不需要與您的 Azure 使用者名稱相同。 請「勿」使用大寫字母。
+       * **使用者名稱**：輸入系統管理員的使用者名稱。 這是您將用來登入虛擬機器的使用者名稱，不需要與您的 Azure 使用者名稱相同。 請「勿」  使用大寫字母。
          
          > [!NOTE]
          > 如果您的使用者名稱使用大寫字母，JupyterHub 將無法運作，而且您會遇到 500 內部伺服器錯誤。
 
        * **密碼**：輸入您將用來登入虛擬機器的密碼。    
     
-   1. 選取 [檢閱 + 建立]。
+   1. 選取 [檢閱 + 建立]  。
    1. **檢閱 + 建立**
       * 請確認您輸入的所有資訊都正確無誤。 
-      * 選取 [建立]。
+      * 選取 [建立]  。
     
     佈建大約需要 5 分鐘。 狀態會顯示在 Azure 入口網站中。
 
@@ -94,18 +94,18 @@ Linux VM 已佈建了 X2Go 伺服器，且已可接受用戶端連線。 若要�
 
 1. 在所產生的組態視窗中，輸入下列組態參數：
    * **[工作階段] 索引標籤**：
-     * **主機**：輸入您稍早所記下的 VM IP 位址。
-     * **登**入：輸入 Linux VM 上的使用者名稱。
-     * **SSH 連接埠**︰保留預設值 22。
-     * **工作階段類型**︰將值變更為 **XFCE**。 Linux VM 目前僅支援 XFCE 桌面。
-   * **[媒體] 索引標籤**︰您可以關閉聲音支援和用戶端列印，如果不需要使用的話。
-   * **共用資料夾**︰如果您想要用戶端機器的目錄掛接在 Linux VM 上，請在此索引標籤上加入要與 VM 分享的目錄。
+     * **主機**：輸入您先前所記下的 VM IP 位址。
+     * **登入**：在 Linux VM 上輸入使用者名稱。
+     * **SSH 連接埠**：保留預設值 22。
+     * **工作階段類型**：將值變更為 **XFCE**。 Linux VM 目前僅支援 XFCE 桌面。
+   * **媒體索引標籤**：如果您不需要使用聲音支援和用戶端列印，可關閉這些功能。
+   * **共用資料夾**︰如果您想要將來自用戶端機器的目錄掛接在 Linux VM 上，請在此索引標籤上新增要與 VM 共用的用戶端機器目錄。
 
    ![X2go 組態](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. 選取 [確定]。
+1. 選取 [確定]  。
 1. 按一下 X2Go 視窗右窗格中的方塊，以便顯示您 VM 的登入畫面。
 1. 輸入您 VM 的密碼。
-1. 選取 [確定]。
+1. 選取 [確定]  。
 1. 您可能必須賦予 X2Go 略過您防火牆的權限，才能完成連線。
 1. 您現在應會看到 Ubuntu DSVM 的圖形化介面。 
 
@@ -118,13 +118,14 @@ Ubuntu DSVM 會執行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，�
       ![Ubuntu 電腦 IP 位址](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. 從您的本機電腦，開啟網頁瀏覽器並瀏覽至 https:\//your-vm-ip:8000，並以您先前所記下的 IP 位址取代 "your-vm-ip"。
+   1. 您的瀏覽器可能會讓您無法直接開啟頁面，並告訴您有憑證錯誤。 DSVM 會透過自我簽署憑證來提供安全性。 大部分的瀏覽器都可讓您在此警告之後進行點按。 許多瀏覽器會繼續在整個 Web 工作階段中提供有關憑證的某種視覺警告。
    1. 請輸入您用來建立 VM 的使用者名稱和密碼，然後登入。 
 
       ![輸入 Jupyter 登入](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. 瀏覽許多可用的範例筆記本。
 
-也提供 JupyterLab (新一代的 Jupyter 筆記本) 與 JupyterHub。 若要加以存取，請登入 JupyterHub，然後瀏覽至 URL https:\//your-vm-ip:8000/user/your-username/lab，並以您在設定 VM 時所選擇的使用者名稱取代 "your-username"。
+也提供 JupyterLab (新一代的 Jupyter 筆記本) 與 JupyterHub。 若要加以存取，請登入 JupyterHub，然後瀏覽至 URL https:\//your-vm-ip:8000/user/your-username/lab，並以您在設定 VM 時所選擇的使用者名稱取代 "your-username"。 同樣地，您可能一開始會因為憑證錯誤而無法存取網站。
 
 您可以在 `/etc/jupyterhub/jupyterhub_config.py` 中加入下面這一行，將 JupyterLab 設定為預設的 Notebook 伺服器：
 

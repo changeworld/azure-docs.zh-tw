@@ -1,22 +1,14 @@
 ---
 title: 教學課程：清單實體 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 取得符合預先定義項目清單的資料。 清單上的每個項目可以擁有也完全相符的同義字
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447775"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79297402"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>教學課程：使用清單實體從語句中取得文字完全相符的資料
 
@@ -42,7 +34,7 @@ ms.locfileid: "75447775"
 
 * 資料值是一組已知的值。
 * 此組合不會超過此實體類型的最大 LUIS [界限](luis-boundaries.md)。
-* 語句中的文字是與同義字或正式名稱完全相符的項目。 LUIS 不會將清單用於完全相符之文字項目以外的範圍。 詞幹分析、複數及其他變化無法僅透過清單實體來解析。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
+* 語句中的文字是與同義字或正式名稱相符的項目 (不區分大小寫)。 LUIS 不會將清單用於相符項目以外的範圍。 詞幹分析、複數及其他變化無法僅透過清單實體來解析。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
 
 > [!CAUTION]
 > 如果您不確定要使用清單實體或包含片語清單的機器學習實體作為描述項，最好且最彈性的做法是使用包含片語清單的機器學習實體作為描述項。 此方法可讓 LUIS 學習和擴充要擷取的資料值。

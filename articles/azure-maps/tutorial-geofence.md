@@ -1,20 +1,20 @@
 ---
 title: 教學課程：建立地理柵欄並在地圖上追蹤裝置 | Microsoft Azure 地圖服務
 description: 了解如何使用 Microsoft Azure 地圖服務的空間服務來設定地理柵欄，並追蹤與地理柵欄相關的裝置。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 126829f12d71e40511c26e781cb191988c1d031e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370155"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333873"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -150,13 +150,13 @@ ms.locfileid: "77370155"
    }
    ```
 
-5. 按一下 [Send] (傳送)，然後檢視回應標頭。 要求成功時，[位置]  標頭將會包含狀態 URI。 狀態 URI 的格式如下。 
+5. 按一下 [Send] (傳送)，然後檢視回應標頭。 要求成功時，[位置]  標頭將會包含狀態 URI。 狀態 URI 的格式如下。 UploadStatusId 值不放在 { } 之間。 使用 { } 通常會用來顯示使用者必須輸入的值，或不同使用者使用的不同值。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. 複製您的狀態 URI，並附加訂用帳戶金鑰。 狀態 URI 格式應會如下所示。 請注意，使用下列格式時，您會以訂用帳戶金鑰變更 {subscription-key}，包括 {} 在內。
+6. 複製您的狀態 URI，並附加訂用帳戶金鑰。 狀態 URI 格式應會如下所示。 請注意，使用下列格式時，您會以訂用帳戶金鑰變更 {subscription-key} (不含 { })。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -166,7 +166,8 @@ ms.locfileid: "77370155"
 
    ```JSON
    {
-    "udid" : "{udId}"
+    "status": "Succeeded",
+    "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udId}?api-version=1.0"
    }
    ```
 

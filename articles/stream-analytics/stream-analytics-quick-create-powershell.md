@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5fd38a781a58da530ad805bbeee352858eb33b41
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: MT
+ms.openlocfilehash: 84c132c333e4d6ba052029350f275ebf499a906f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893323"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536797"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立串流分析作業
 
@@ -28,7 +28,7 @@ ms.locfileid: "78893323"
 
 * 本快速入門需要 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 來尋找本機電腦上所安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* Azure PowerShell 不支援某些 IoT 中樞動作，而且必須使用 Azure CLI 版本2.0.70 或更新版本，以及適用于 Azure CLI 的 IoT 擴充功能來完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
+* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.70 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -104,7 +104,7 @@ New-AzResourceGroup `
 
     **輸出範例：**
 
-    ```azurecli
+    ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
@@ -178,7 +178,7 @@ New-AzStreamAnalyticsJob `
 
 使用 [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) Cmdlet 新增作業的輸入。 此 Cmdlet 會採用作業名稱、作業輸入名稱、資源群組名稱和作業輸入定義來作為參數。 作業輸入定義是 JSON 檔案，其中包含設定作業輸入所需的屬性。 在此範例中，您會建立 blob 儲存體作為輸入。
 
-在本機電腦上，建立名為 `JobInputDefinition.json` 的檔案，並於其中新增下列 JSON 資料。 務必以您在上一節中儲存的 IoT 中樞裝置連接字串的 `accesspolicykey` 部分，取代 `SharedAccessKey` 的值。
+在本機電腦上，建立名為 `JobInputDefinition.json` 的檔案，並於其中新增下列 JSON 資料。 務必以您在上一節中儲存的 IoT 中樞裝置連接字串的 `SharedAccessKey` 部分，取代 `accesspolicykey` 的值。
 
 ```json
 {
@@ -297,13 +297,14 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+
 ## <a name="run-the-iot-simulator"></a>執行 IoT 模擬器
 
 1. 開啟 [Raspberry Pi Azure IoT 線上模擬器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
 
 2. 以您在上一節中儲存的整個 Azure IoT 中樞裝置連接字串取代行 15 中的預留位置。
 
-3. 按一下 [執行]。 下列輸出會顯示傳送至 IoT 中樞的感應器資料和訊息。
+3. 按一下 **[執行]** 。 下列輸出會顯示傳送至 IoT 中樞的感應器資料和訊息。
 
     ![Raspberry Pi Azure IoT 線上模擬器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

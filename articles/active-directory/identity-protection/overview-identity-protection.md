@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/18/2019
+ms.date: 03/17/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e928d67ba7102df3d342e77705ea895f9230ff3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887698"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79497668"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 是什麼？
 
@@ -46,7 +46,7 @@ Alex Weinert 是 Microsoft 身分識別安全性與保護小組的領導人，�
 
 Identity Protection 會識別下列分類的風險：
 
-| 風險偵測類型 | 說明 |
+| 風險偵測類型 | 描述 |
 | --- | --- |
 | 非慣用登入位置 | 以使用者最近的登入為準，從非慣用的位置登入。 |
 | 匿名 IP 位址 | 從匿名 IP 位址登入 (例如：Tor 瀏覽器、Anonymizer VPN)。 |
@@ -79,21 +79,30 @@ Identity Protection 中的資料可匯出至其他工具進行封存，以及供
 
 Identity Protection 要求使用者必須是安全性讀取者、安全性操作員、安全性系統管理員、全域讀取者或全域管理員，才能加以存取。
 
+| 角色 | 可以執行 | 不可執行 |
+| --- | --- | --- |
+| 全域管理員 | 完整存取 Identity Protection |   |
+| 安全性系統管理員 | 完整存取 Identity Protection | 重設使用者的密碼 |
+| 安全性操作員 | 查看所有身分識別保護報告和 [概觀] 刀鋒視窗 <br><br> 解除使用者風險、確認安全登入、確認洩漏 | 設定或變更原則 <br><br> 重設使用者的密碼 <br><br> 設定警示 |
+| 安全性讀取者 | 查看所有身分識別保護報告和 [概觀] 刀鋒視窗 | 設定或變更原則 <br><br> 重設使用者的密碼 <br><br> 設定警示 <br><br> 在偵測上提供意見反應 |
+
+條件式存取系統管理員也可以建立原則來將登入風險視為條件，如需詳細資訊，請參閱[條件式存取：條件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)。
+
 ## <a name="license-requirements"></a>授權需求
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
 | 功能 | 詳細資料 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
 | --- | --- | --- | --- | --- |
-| 風險原則 | 使用者風險原則 (透過 Identity Protection) | yes | 否 | 否 |
-| 風險原則 | 登入風險原則 (透過 Identity Protection 或條件式存取) | yes | 否 | 否 |
-| 安全性報告 | 概觀 | yes | 否 | 否 |
+| 風險原則 | 使用者風險原則 (透過 Identity Protection) | 是 | 否 | 否 |
+| 風險原則 | 登入風險原則 (透過 Identity Protection 或條件式存取) | 是 | 否 | 否 |
+| 安全性報告 | 概觀 | 是 | 否 | 否 |
 | 安全性報告 | 具風險使用者 | 完整存取 | 有限資訊 | 有限資訊 |
 | 安全性報告 | 有風險的登入 | 完整存取 | 有限資訊 | 有限資訊 |
 | 安全性報告 | 風險偵測 | 完整存取 | 有限資訊 | 否 |
-| 通知 | 偵測到具風險使用者的警示 | yes | 否 | 否 |
-| 通知 | 每週提要 | yes | 否 | 否 |
-| | MFA 註冊原則 | yes | 否 | 否 |
+| 通知 | 偵測到具風險使用者的警示 | 是 | 否 | 否 |
+| 通知 | 每週提要 | 是 | 否 | 否 |
+| | MFA 註冊原則 | 是 | 否 | 否 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973606"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79203543"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入門：在 Web 上試用 Content Moderator
 
 在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。 如果您想要將此服務更快整合至您的應用程式，請參閱[後續步驟](#next-steps)一節中的其他快速入門。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 網頁瀏覽器
 
@@ -32,9 +32,23 @@ ms.locfileid: "74973606"
 
 ## <a name="create-a-review-team"></a>建立檢閱小組
 
-接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 目前，您只須建立小組名稱。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
+接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 若要建立小組，您必須選取 [區域]  ，並提供 [小組名稱]  和 [小組識別碼]  。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
 
-![邀請小組成員](images/QuickStart-2-small.png)
+> [!NOTE]
+> [小組名稱]  是檢閱小組的易記名稱。 這是顯示在 Azure 入口網站中的名稱。 [小組識別碼]  是用來以程式設計方式識別檢閱小組的項目。
+
+> [!div class="mx-imgBorder"]
+> ![邀請小組成員](images/create-team.png)
+
+如果您選擇使用客戶管理的金鑰 (CMK) 來加密資料，則系統會針對 E0 定價層中的內容仲裁資源提示您輸入 [資源識別碼]  。 您提供的資源必須是新的。 
+
+> [!div class="mx-imgBorder"]
+> ![使用 CMK 邀請小組成員](images/create-team-cmk.png)
+
+如果您嘗試重複使用內容仲裁資源，您會看到下列警告： 
+
+> [!div class="mx-imgBorder"]
+> ![CMK 失敗](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>上傳範例內容
 

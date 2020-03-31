@@ -6,33 +6,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 6dd2ac9c17c8e82affb647846c7650a26d784e32
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a0e6b5b7d5cedc821ee34bdd219ae07bb9d43199
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203392"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481903"
 ---
 <a name="HOLTop"></a>
 
-[參考文件](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [套件](https://search.maven.org/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3/jar) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[參考文件](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [套件](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Java 開發套件](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 含第 8 版或更新版本
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
-    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中執行此動作。
-    * 您可以使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。  在其部署後，按一下 [前往資源]  。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 
-### <a name="create-a-new-maven-project"></a>建立新的 Maven 專案
+### <a name="add-the-client-library"></a>新增用戶端程式庫
 
-將下列文字分析相依性新增至您的專案。 此版本的相依性會使用文字分析 API 的 `3.0-preview` 版。 
+在您慣用的 IDE 或開發環境中建立 Maven 專案。 然後，在專案的 *pom.xml* 檔案中新增下列相依性。 您可以在線上找到[其他建置工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3)的實作語法。
 
 ```xml
 <dependencies>
@@ -44,12 +44,10 @@ ms.locfileid: "79203392"
 </dependencies>
 ```
 
-在下列目錄中建立新的 Java 檔案：`\src\main\java`。
-
 > [!TIP]
 > 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java) 上找到該檔案，其中包含本快速入門中的程式碼範例。 
 
-開啟 Java 檔案，並新增下列 `import` 陳述式：
+建立名為 `TextAnalyticsSamples.java` 的 Java 檔案。 開啟該檔案，並新增下列 `import` 陳述式：
 
 ```java
 import com.azure.ai.textanalytics.models.*;
@@ -72,7 +70,7 @@ public class TextAnalyticsSamples {
 
 ```java
 public static void main(String[] args) {
-
+    //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
 
     sentimentAnalysisExample(client);
@@ -99,7 +97,7 @@ public static void main(String[] args) {
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-建立可使用上方所建立 `KEY` 和 `ENDPOINT` 來具現化 `TextAnalyticsClient` 物件的方法。
+建立適當方法，以使用文字分析資源的金鑰和端點將 `TextAnalyticsClient` 物件具現化。
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
