@@ -1,6 +1,6 @@
 ---
 title: 啟用或停用 Azure VM 中客體 OS 上的防火牆規則 | Microsoft Docs
-description: ''
+description: 瞭解如何使用連線或離線遠端工具或註冊表設置在遠端 Azure VM 上啟用或禁用來賓 OS 防火牆規則。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71086441"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422900"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>啟用或停用 Azure VM 客體作業系統上的防火牆規則
 
@@ -97,9 +97,9 @@ ms.locfileid: "71086441"
 
 如果虛擬機器為連線狀態，而且可以在相同的虛擬網路上存取另一個虛擬機器，您可以在其他虛擬機器上使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，啟動登錄編輯程式 （regedit.exe），然後選擇**檔** > **連接網路註冊表**。
+1.  在故障排除 VM 上,啟動註冊表編輯器 (regedit.exe),然後選擇**檔案** > **連線網路註冊表**。
 
-2.  打開*目的機器*_SYSTEM 分支，然後指定以下值：
+2.  開啟*目標機器*_SYSTEM 分支,然後指定以下值:
 
     * 若要啟用規則，請開啟下列登錄值：
     
@@ -107,7 +107,7 @@ ms.locfileid: "71086441"
     
         然後，在字串中，將 **Active=FALSE** 變更為 **Active=TRUE**：
 
-        **v2.22*操作[允許]活動_TRUE*迪爾[in]協定[6]設定檔[域]設定檔[私有]設定檔[公共]LPort_3389*應用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll，-28775*德查_\@防火牆API.dll，-28756*嵌入Ctxt_\@防火牆API.dll，-28752***
+        **v2.22*操作[允許]活動_TRUE*迪爾[in]協定[6]設定檔[網域]設定檔[私有]設定檔[公共]LPort_3389*套用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll,-28775*德查_\@防火牆API.dll,-28756*嵌入Ctxt_\@防火牆API.dll,-28752***
     
     * 若要停用規則，請開啟下列登錄值：
     
@@ -115,7 +115,7 @@ ms.locfileid: "71086441"
 
         然後，將 **Active =TRUE** 變更為 **Active=FALSE**：
         
-        **v2.22*操作[允許]活動_FALSE*迪爾[in]協定[6]設定檔[域]設定檔[私有]設定檔[公共]LPort_3389*應用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll，-28775*德查_\@防火牆API.dll，-28756*嵌入Ctxt_\@防火牆API.dll，-28752***
+        **v2.22*操作[允許]活動_FALSE*迪爾[in]協定[6]設定檔[網域]設定檔[私有]設定檔[公共]LPort_3389*套用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll,-28775*德查_\@防火牆API.dll,-28756*嵌入Ctxt_\@防火牆API.dll,-28752***
 
 3.  重新啟動虛擬機器以套用變更。
 
@@ -129,20 +129,20 @@ ms.locfileid: "71086441"
 
 2.  啟動復原 VM 的遠端桌面連線。
 
-3.  確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結系統磁碟的磁碟機代號。
+3.  確保磁碟在磁碟管理控制台中標記為**線上**。 記下指派給已連結系統磁碟的磁碟機代號。
 
 4.  進行任何變更之前，請建立 \windows\system32\config 資料夾的複本，以便在需要回復變更時使用。
 
 5.  在疑難排解虛擬機器上，啟動登錄編輯程式 (regedit.exe)。
 
-6.  突出顯示**HKEY_LOCAL_MACHINE**鍵，然後從功能表中選擇 **"檔** > **載入配置"。**
+6.  突顯**HKEY_LOCAL_MACHINE**鍵,然後從選單中選擇 **「檔** > **載入配置」。**
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  找出，然後開啟 \windows\system32\config\SYSTEM 檔案。 
 
     > [!Note]
-    > 系統會提示您輸入名稱。 輸入**BROKEN 系統**，然後**展開HKEY_LOCAL_MACHINE。** 現在您將看到一個名為 **"BROKENSYSTEM"** 的附加金鑰。 對於此故障排除，我們將這些問題配置單元安裝為**BROKENSYSTEM**。
+    > 系統會提示您輸入名稱。 輸入**BROKEN 系統**,然後**展開HKEY_LOCAL_MACHINE。** 現在您將看到一個名為 **「BROKENSYSTEM」** 的附加密鑰。 對於此故障排除,我們將這些問題配置單元安裝為**BROKENSYSTEM**。
 
 8.  在 BROKENSYSTEM 分支上進行下列變更：
 
@@ -154,7 +154,7 @@ ms.locfileid: "71086441"
         
         然後，將 **Active=FALSE** 變更為 **Active=True**。
         
-        **v2.22*操作[允許]活動_TRUE*迪爾[in]協定[6]設定檔[域]設定檔[私有]設定檔[公共]LPort_3389*應用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll，-28775*德查_\@防火牆API.dll，-28756*嵌入Ctxt_\@防火牆API.dll，-28752***
+        **v2.22*操作[允許]活動_TRUE*迪爾[in]協定[6]設定檔[網域]設定檔[私有]設定檔[公共]LPort_3389*套用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll,-28775*德查_\@防火牆API.dll,-28756*嵌入Ctxt_\@防火牆API.dll,-28752***
 
     3.  若要停用規則，請開啟下列登錄機碼：
 
@@ -162,9 +162,9 @@ ms.locfileid: "71086441"
 
         然後，將 **Active=True** 變更為 **Active=FALSE**。
         
-        **v2.22*操作[允許]活動_FALSE*迪爾[in]協定[6]設定檔[域]設定檔[私有]設定檔[公共]LPort_3389*應用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll，-28775*德查_\@防火牆API.dll，-28756*嵌入Ctxt_\@防火牆API.dll，-28752***
+        **v2.22*操作[允許]活動_FALSE*迪爾[in]協定[6]設定檔[網域]設定檔[私有]設定檔[公共]LPort_3389*套用_%系統Root%_系統32_svchost.exe]Svc_術語服務*名稱=\@防火牆API.dll,-28775*德查_\@防火牆API.dll,-28756*嵌入Ctxt_\@防火牆API.dll,-28752***
 
-9.  突出顯示**BROKEN 系統**，然後從功能表中選擇 **"檔** > **卸載 Hive"。**
+9.  突顯**系統**,然後從選單中選擇 **「檔案** > **卸載 Hive」。**
 
 10. [中斷連結系統磁碟並重新建立 VM](troubleshoot-recovery-disks-portal-windows.md)。
 

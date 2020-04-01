@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux VM 上運行自訂腳本
+title: 在 Azure 中的 Linux VM 執行自訂文稿
 description: 使用自訂指令碼延伸模組 v2，將 Linux VM 設定工作自動化
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535437"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478168"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -38,7 +38,7 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="operating-system"></a>作業系統
 
-有關詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)，Linux 的自訂腳本擴展將在擴展支援的擴展作業系統上運行。
+有關詳細資訊,請參閱[本文](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros),Linux 的自定義腳本擴展將在擴展支援的擴展操作系統上運行。
 
 ### <a name="script-location"></a>指令碼位置
 
@@ -55,13 +55,13 @@ Linux 自訂指令碼擴充功能有兩個：
 * 請確定在指令碼執行時，不需要使用者輸入。
 * 指令碼可執行的時間為 90 分鐘。若超過這個時間，將會導致擴充功能佈建失敗。
 * 請不要在指令碼內放置重新開機指令，這會造成正在安裝的其他擴充功能發生問題。也不要放置後續重新開機指令，因為擴充功能在重新啟動後不會繼續執行。 
-* 如果您有一個腳本會導致重新開機，則安裝應用程式並運行腳本等。您應該使用 Cron 作業或使用 DSC 或 Chef、Puppet 擴展等工具計畫重新開機。
-* 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用該腳本創建 SystemD 服務單元。
+* 如果您有一個腳本會導致重新啟動,則安裝應用程式並運行文稿等。您應該使用 Cron 作業或使用 DSC 或 Chef、Puppet 擴展等工具計畫重新啟動。
+* 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者,您可以使用該文本創建 SystemD 服務單元。
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Cron 作業。 
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。
-* 自訂腳本副檔名不支援代理伺服器，但您可以使用支援腳本中的代理伺服器的檔案傳輸工具，如*Curl*。 
+* 自訂文稿副檔名不支援代理伺服器,但您可以使用支援文稿中的代理伺服器的檔案傳輸工具,如*Curl*。 
 * 請留意指令碼或命令所依賴的非預設目錄位置是否具備處理此情形的邏輯。
-*  將自訂腳本部署到生產 VMSS 實例時，建議通過 json 範本進行部署，並將腳本存儲帳戶存儲在您控制 SAS 權杖的位置。 
+*  將自定義文稿部署到生產 VMSS 實例時,建議透過 json 範本進行部署,並將文本儲存帳戶存儲在您控制 SAS 權杖的位置。 
 
 
 ## <a name="extension-schema"></a>擴充功能結構描述
@@ -106,7 +106,7 @@ Linux 自訂指令碼擴充功能有兩個：
 ```
 
 >[!NOTE]
-> 託管識別屬性**不得**與存儲帳戶名稱或存儲帳戶金鑰屬性結合使用
+> 管理員**名稱**或儲存帳戶金鑰屬性結合使用
 
 ### <a name="property-values"></a>屬性值
 
@@ -123,10 +123,10 @@ Linux 自訂指令碼擴充功能有兩個：
 | timestamp (範例) | 123456789 | 32 位元整數 |
 | storageAccountName (例如) | examplestorageacct | 字串 |
 | storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字串 |
-| 託管身份（例如） | [ ] 或 " 用戶端 Id"：" 31b403a-c364-4240-a7ff-d85fb6cd7232" * 或 { "objectId"：" 12dd289c-0583-46e3-b9b4-115d5c19ef4b" | | json 物件 |
+| 託管身份(例如) | [ ] 或 " 客戶端 Id":" 31b403a-c364-4240-a7ff-d85fb6cd7232" * 或 { "objectId":" 12dd289c-0583-46e3-b9b4-115d5c19ef4b" | | json 物件 |
 
 ### <a name="property-value-details"></a>屬性值詳細資料
-* `apiVersion`：使用[資源資源管理器](https://resources.azure.com/)或使用以下命令從 Azure CLI 找到最新的 apiVersion`az provider list -o json`
+* `apiVersion`:使用[資源資源管理員](https://resources.azure.com/)或使用以下指令從 Azure CLI 找到最新的 apiVersion`az provider list -o json`
 * `skipDos2Unix`：(選擇性，布林值) 略過指令碼型檔案 URL 或指令碼的 dos2unix 轉換。
 * `timestamp` (選擇性，32 位元整數) 只有在透過變更此欄位的值來觸發指令碼的重新執行時，才需使用此欄位。  任何整數值都是可接受的；只要與先前的值不同即可。
 * `commandToExecute`：(若未設定指令碼則為**必要**，字串) 要執行的進入點指令碼。 如果您的命令包含機密資料 (例如密碼)，請改用此欄位。
@@ -134,9 +134,9 @@ Linux 自訂指令碼擴充功能有兩個：
 * `fileUris`：(選擇性，字串陣列) 要下載之檔案的 URL。
 * `storageAccountName`：(選用，字串) 儲存體帳戶的名稱。 如果您指定儲存體證明資料，則所有 `fileUris` 都必須是 Azure Blob 的 URL。
 * `storageAccountKey`：(選用，字串) 儲存體帳戶的存取金鑰
-* `managedIdentity`：（可選，json 物件）用於下載檔案的[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-  * `clientId`：（可選，字串）託管標識的用戶端 ID
-  * `objectId`：（可選，字串）託管標識的物件識別碼
+* `managedIdentity`:(可選,json 物件)用於下載檔案的[託管識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  * `clientId`:(可選,字串)託管識別的客戶端 ID
+  * `objectId`:(選擇,字串管理員管理員 ID
 
 
 下列值可以在公開或受保護的設定中設定，擴充功能將會拒絕任何同時在公開和受保護的設定中設定下列值的組態。
@@ -208,13 +208,15 @@ CustomScript 會使用下列演算法來執行指令碼。
  1. 將解碼 (並選擇性地解壓縮) 的值寫入至磁碟 (/var/lib/waagent/custom-script/#/script.sh)
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 執行指令碼。
 
-####  <a name="property-managedidentity"></a>屬性：託管標識
+####  <a name="property-managedidentity"></a>屬性:託管識別
+> [!NOTE]
+> 此屬性**必須**僅在受保護設置中指定。
 
-CustomScript（版本 2.1 以後）支援從"fileUris"設置中提供的 URL 下載檔案的[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允許 CustomScript 訪問 Azure 存儲專用 Blob 或容器，而無需使用者傳遞 SAS 權杖或存儲帳戶金鑰等機密。
+CustomScript(版本 2.1 以後)支援從'fileUris"設定中提供的網址下載檔案的[託管識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允許 CustomScript 訪問 Azure 儲存專用 Blob 或容器,而無需使用者傳遞 SAS 令牌或存儲帳戶金鑰等機密。
 
-要使用此功能，使用者必須向預期運行 CustomScript 的 VM 或 VMSS 添加[系統分配](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[使用者分配的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)標識，並[授予對 Azure 存儲容器或 blob 的託管標識存取權限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+要使用此功能,使用者必須向預期執行 CustomScript 的 VM 或 VMSS 添加[系統配置](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[使用者配置的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)識別,並[授予對 Azure 儲存容器或 blob 的託管識別存取權限](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
-要在目標 VM/VMSS 上使用系統分配的標識，將"託管標識"欄位設置為空 json 物件。 
+要在目標 VM/VMSS 上使用系統分配的標識,將「託管標識」欄位設置為空 json 物件。 
 
 > 範例：
 >
@@ -226,7 +228,7 @@ CustomScript（版本 2.1 以後）支援從"fileUris"設置中提供的 URL 下
 > }
 > ```
 
-要在目標 VM/VMSS 上使用使用者分配的標識，請使用用戶端 ID 或託管標識的物件識別碼 配置"託管標識"欄位。
+要在目標 VM/VMSS 上使用使用者分配的標識,請使用用戶端 ID 或託管標識的物件 ID 配置「託管標識」欄位。
 
 > 範例：
 >
@@ -246,7 +248,7 @@ CustomScript（版本 2.1 以後）支援從"fileUris"設置中提供的 URL 下
 > ```
 
 > [!NOTE]
-> 託管識別屬性**不得**與存儲帳戶名稱或存儲帳戶金鑰屬性結合使用
+> 管理員**名稱**或儲存帳戶金鑰屬性結合使用
 
 ## <a name="template-deployment"></a>範本部署
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行自訂指令碼擴充功能。 在 [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux) 可以找到包含自訂指令碼擴充功能的範例範本。
@@ -413,7 +415,7 @@ az vm extension set \
 /var/log/azure/custom-script/handler.log
 ```
 
-您應該查找單個執行，它將如下所示：
+您應該查找單個執行,它將如下所示:
 
 ```output
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>後續步驟
 若要查看程式碼、目前問題和版本，請參閱 [custom-script-extension-linux 存放庫](https://github.com/Azure/custom-script-extension-linux)。
-

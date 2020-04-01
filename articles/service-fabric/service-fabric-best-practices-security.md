@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258924"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478750"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全性 
 
@@ -143,9 +143,9 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 將受保護的值加密之後，[在 Service Fabric 應用程式中指定加密的祕密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)，然後[從服務程式碼將加密的秘密解密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)。
 
-## <a name="include-certificate-in-service-fabric-applications"></a>在服務結構應用程式中包括證書
+## <a name="include-certificate-in-service-fabric-applications"></a>在服務結構應用程式中包括憑證
 
-要使應用程式具有對機密的存取權限，請通過向應用程式清單添加**機密證書**元素來包括證書。
+要使應用程式具有對機密的訪問許可權,請通過向應用程式清單添加**機密證書**元素來包括證書。
 
 ```xml
 <ApplicationManifest … >
@@ -191,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在 Service Fabric 應用程式代碼中，通過使 REST 與以下內容類別似，獲取 Azure 資源管理器[的訪問權杖](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)：
+在 Service Fabric 應用程式碼中,透過使用 REST 與以下內容,取得 Azure 資源管理員[的存取權杖](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http):
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -205,16 +205,16 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全性基準
-[我們建議您實現眾所周知且經過良好測試的行業標準配置，例如 Microsoft 安全基線，而不是自己創建基線](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虛擬機器縮放集中預配這些配置的選項是使用 Azure 所需狀態配置 （DSC） 擴展處理常式，在 VM 連線時配置 VM，以便它們運行生產軟體。
+[我們建議您實現眾所周知且經過良好測試的行業標準配置,例如 Microsoft 安全基線,而不是自己創建基線](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虛擬機縮放集中預配這些配置的選項是使用 Azure 所需狀態配置 (DSC) 擴展處理程式,在 VM 連線時配置 VM,以便它們運行生產軟體。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
-[Azure 防火牆是一種託管的基於雲的網路安全服務，可保護 Azure 虛擬網路資源。它是一個完全有狀態的防火牆，作為一種具有內置高可用性和無限制的雲可擴充性的服務。](https://docs.microsoft.com/azure/firewall/overview)這使您能夠將出站 HTTP/S 流量限制為指定的完整限定功能變數名稱 （FQDN） 清單（包括萬用字元）。 這項功能不需要 SSL 終止。 它建議您利用[Azure 防火牆 FQDN 標記](https://docs.microsoft.com/azure/firewall/fqdn-tags)進行 Windows 更新，並啟用到 Microsoft Windows 更新終結點的網路流量可以流經防火牆。 [使用範本部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/deploy-template)為 Microsoft.網路/azure 防火牆資源範本定義提供了一個示例。 Service Fabric 應用程式共有的防火牆規則是允許群集虛擬網路出現以下內容：
+[Azure 防火牆是一種託管的基於雲的網路安全服務,可保護 Azure 虛擬網路資源。它是一個完全有狀態的防火牆,作為一種具有內置高可用性和無限制的雲可擴展性的服務。](https://docs.microsoft.com/azure/firewall/overview)這使您能夠將出站 HTTP/S 流量限制為指定的完整限定功能變數名稱 (FQDN) 清單(包括通配符)。 此功能不需要 TLS/SSL 終止。 它建議您利用[Azure 防火牆 FQDN 標記](https://docs.microsoft.com/azure/firewall/fqdn-tags)進行 Windows 更新,並啟用到 Microsoft Windows 更新終結點的網路流量可以流經防火牆。 [使用範本部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/deploy-template)為 Microsoft.網路/azure 防火牆資源範本定義提供了一個示例。 Service Fabric 應用程式共有的防火牆規則是允許群集虛擬網路出現以下內容:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
 - *.core.windows.net
 
-這些防火牆規則是對允許的出站網路安全性群組的補充，其中包括 ServiceFabric 和存儲（虛擬網路中允許的目標）。
+這些防火牆規則是對允許的出站網路安全組的補充,其中包括 ServiceFabric 和存儲(虛擬網路中允許的目標)。
 
 ## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
@@ -253,8 +253,8 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 > [!NOTE]
 > 如果您沒有使用 Windows Defender，請參閱您的反惡意程式碼文件，以了解設定規則。 Linux 不支援 Windows Defender。
 
-## <a name="platform-isolation"></a>平臺隔離
-預設情況下，Service Fabric 應用程式被授予對 Service Fabric 運行時本身的存取權限，該運行過程以不同形式表現出來：[環境變數](service-fabric-environment-variables-reference.md)指向與應用程式和 Fabric 檔對應的主機上的檔路徑，接受特定于應用程式的請求的進程間通信終結點，以及 Fabric 希望應用程式用來驗證自己的用戶端憑證。 如果服務託管自身不受信任的代碼，則建議禁用對 SF 運行時的此訪問，除非顯式需要。 使用應用程式清單的"策略"部分中的以下聲明刪除對運行時的訪問： 
+## <a name="platform-isolation"></a>平台隔離
+預設情況下,Service Fabric 應用程式被授予對 Service Fabric 運行時本身的訪問許可權,該運行過程以不同形式表現出來:[環境變數](service-fabric-environment-variables-reference.md)指向與應用程式和 Fabric 檔對應的主機上的檔路徑,接受特定於應用程式的請求的進程間通信終結點,以及 Fabric 希望應用程式用來驗證自己的用戶端證書。 如果服務託管自身不受信任的代碼,則建議禁用對 SF 運行時的此訪問,除非顯式需要。 使用應用程式清單的「策略」部分中的以下聲明刪除對執行時的訪問: 
 
 ```xml
 <ServiceManifestImport>
@@ -267,8 +267,8 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="next-steps"></a>後續步驟
 
-* 在 VM 或電腦上創建群集，運行 Windows 伺服器：[為 Windows 伺服器創建服務結構群集](service-fabric-cluster-creation-for-windows-server.md)。
-* 在運行 Linux 的 VM 或電腦上創建群集：[創建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
+* 在 VM 或電腦上建立叢集,執行 Windows 伺服器:[為 Windows 伺服器建立服務結構叢集](service-fabric-cluster-creation-for-windows-server.md)。
+* 在執行 Linux 的 VM 或電腦上建立叢集:[建立 Linux 叢集](service-fabric-cluster-creation-via-portal.md)。
 * 了解 [Service Fabric 支援選項](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

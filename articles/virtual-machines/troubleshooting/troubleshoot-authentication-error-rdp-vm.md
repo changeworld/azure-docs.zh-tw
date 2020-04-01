@@ -1,6 +1,6 @@
 ---
 title: 針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解 | Microsoft Docs
-description: ''
+description: 瞭解如何排除使用遠端桌面協定 (RDP) 連接到 Azure 虛擬機器 (VM) 時發生的身份驗證錯誤。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266971"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420823"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
 
@@ -31,15 +31,15 @@ ms.locfileid: "79266971"
 
 ### <a name="error-message-1"></a>錯誤訊息 1
 
-**發生了身份驗證錯誤。無法連絡當地安全機構。**
+**發生了身份驗證錯誤。無法聯繫當地安全機構。**
 
 ### <a name="error-message-2"></a>錯誤訊息 2
 
-**您嘗試連接到的遠端電腦需要網路級身份驗證 （NLA），但無法連絡 Windows 網域控制站以執行 NLA。如果您是遠端電腦上的管理員，則可以使用"系統屬性"對話方塊的"遠端"選項卡上的選項禁用 NLA。**
+**您試著連接到的遠端電腦需要網路級身份驗證 (NLA),但無法聯繫 Windows 網域控制器以執行 NLA。如果您是遠端電腦上的管理員,則可以使用"系統屬性"對話框的"遠端"選項卡上的選項禁用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>錯誤訊息 3 (一般連線錯誤)
 
-**此電腦無法連接到遠端電腦。如果問題仍然存在，請嘗試再次連接，請與遠端電腦的擁有者或網路系統管理員聯繫。**
+**此電腦無法連接到遠端電腦。如果問題仍然存在,請嘗試再次連接,請與遠端電腦的所有者或網路管理員聯繫。**
 
 ## <a name="cause"></a>原因
 

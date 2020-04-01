@@ -1,18 +1,18 @@
 ---
 title: 使用 Power BI 來連接到 Azure Analysis Services | Microsoft Docs
-description: 了解如何使用 Power BI 來連接到 Azure Analysis Services 伺服器。 連接後，使用者可以流覽模型資料。
+description: 了解如何使用 Power BI 來連接到 Azure Analysis Services 伺服器。 連接后,用戶可以流覽模型數據。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: db0c00268c343cd99e439bb49460523cf0563c3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6205c4189abfefc2ee9c4a273ebfd6773ea609b6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573107"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411365"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 進行連接
 
@@ -25,7 +25,7 @@ ms.locfileid: "73573107"
   
 ## <a name="connect-in-power-bi-desktop"></a>在 Power BI Desktop 中連線
 
-1. 在 Power BI 桌面中，按一下 **"獲取資料** > **Azure** > **Azure 分析服務"資料庫**。
+1. 在 Power BI 桌面中,按下 **「取得資料** > **Azure** > **Azure 分析服務」 資料庫**。
 
 2. 在 [伺服器]**** 中，輸入伺服器名稱。 請務必包含完整的 URL，例如 asazure://westcentralus.asazure.windows.net/advworks。
 

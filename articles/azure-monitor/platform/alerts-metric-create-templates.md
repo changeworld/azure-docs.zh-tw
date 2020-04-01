@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274979"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398103"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -21,13 +21,13 @@ ms.locfileid: "79274979"
 本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)在 Azure 監視器中設定[新版計量警示](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 Resource Manager 範本可讓您以程式設計方式，在環境中以一致且可重現的方式設定警示。 新版計量警示目前可在[這組資源類型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)上使用。
 
 > [!IMPORTANT]
-> 用於為資源類型創建指標警報的資源範本：Azure 日誌分析工作區（即），`Microsoft.OperationalInsights/workspaces`需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)上的文章。
+> 用於為資源類型創建指標警報的資源範本:Azure 日誌分析工作區(即),`Microsoft.OperationalInsights/workspaces`需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)上的文章。
 
 基本步驟如下：
 
 1. 使用下列範本之一，作為描述如何建立警示的 JSON 檔案。
-2. 編輯並使用相應的參數檔作為 JSON 來自訂警報。
-3. 有關參數`metricName`，請參閱[Azure 監視器支援的指標](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用指標。
+2. 編輯並使用相應的參數檔作為 JSON 來自定義警報。
+3. 有關參數`metricName`,請參閱[Azure 監視器支援的指標](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用指標。
 4. 使用[任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署範本。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>簡單靜態閾值的計量警示範本
@@ -565,11 +565,11 @@ az group deployment create \
 
 新版計量警示支援多維度計量警示以及支援多項準則。 可以使用以下範本在維度指標上創建更高級的指標警報規則並指定多個條件。
 
-在包含多個條件的警報規則中使用維度時，請注意以下約束：
-- 在每個條件中，每個維度只能選擇一個值。
-- 不能使用""\*作為維度值。
-- 當在不同條件中配置的指標支援同一維度時，必須以相同的方式顯式設置配置的維度值（在相關條件中）。
-    - 在下面的示例中，由於**事務**和**成功E2E延遲**指標都具有**ApiName**維度，並且條件*1*指定**ApiName**維度的 *"GetBlob"* 值，因此*條件 2*還必須為**ApiName**維度設置 *"GetBlob"* 值。
+在包含多個條件的警報規則中使用維度時,請注意以下約束:
+- 在每個條件中,每個維度只能選擇一個值。
+- 不能使用"\*作為維度值。
+- 當在不同條件中配置的指標支援同一維度時,必須以相同的方式顯式設置配置的維度值(在相關條件中)。
+    - 在下面的範例中,由於**事務**和**成功E2E延遲**指標都具有**ApiName**維度,並且條件*1*指定**ApiName**維度的 *「GetBlob」* 值,因此*條件 2*還必須為**ApiName**維度設定 *「GetBlob」* 值。
 
 
 根據本逐步解說的目的，請將以下的 JSON 儲存為 advancedstaticmetricalert.json。
@@ -804,19 +804,19 @@ az group deployment create \
 
 可以使用以下範本在維度指標上創建靜態指標警報規則。
 
-單個警報規則可以一次監視多個指標時間序列，從而導致要管理的警報規則更少。
+單個警報規則可以一次監視多個指標時間序列,從而導致要管理的警報規則更少。
 
-在下面的示例中，警報規則監視**交易記錄**指標的**回應類型**和**ApiName**維度的維度值組合：
-1. **ResponsType** - 使用""\*萬用字元意味著對於**回應類型**維度的每個值（包括未來值）分別監視不同的時間序列。
+在下面的範例中,警示規則監視**交易記錄**指標的**回應類型**和**ApiName**維度的維度值群組:
+1. **ResponsType** - 使用\*"" 通配符意味著對於**回應類型**維度的每個值(包括未來值)分別監視不同的時間序列。
 2. **ApiName** - 僅監視**GetBlob**和**PutBlob**維度值的不同時間序列。
 
-例如，此警報規則監視的一些潛在時間序列是：
-- 指標 =*事務*， 回應類型 •*成功*， Apiname =*獲取Blob*
-- 指標 =*事務*， 回應類型 •*成功*， Apiname = *PutBlob*
+例如,此警報規則監視的一些潛在時間序列是:
+- 指標 =*事務*, 回應類型 •*成功*, Apiname =*取得Blob*
+- 指標 =*事務*, 回應類型 •*成功*, Apiname = *PutBlob*
 - 指標 =*事務*、回應類型 =*伺服器超時*、Apiname = *GetBlob*
 - 指標 =*事務*、回應類型 =*伺服器超時*、Apiname = *PutBlob*
 
-為了本演練的目的，將下面的 json 保存為多維靜態測量警報.json。
+為了本演練的目的,將下面的 json 保存為多維靜態測量警報.json。
 
 ```json
 {
@@ -943,7 +943,7 @@ az group deployment create \
 
 您可以使用上述的範本以及下面提供的參數檔案。 
 
-保存並修改下面的 json 作為多維靜態測量.parameters.json，以本演練的目的。
+保存並修改下面的 json 作為多維靜態測量.parameters.json,以本演練的目的。
 
 ```json
 {
@@ -1020,19 +1020,19 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>動態閾值指標警報的範本，用於監視多個維度
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>動態閾值指標警報的範本,用於監視多個維度
 
 您可以使用以下範本在維度指標上創建更高級的動態閾值指標警報規則。
 
-單個動態閾值警報規則可以一次為數百個指標時間序列（甚至不同類型）創建量身定制的閾值，從而減少要管理的警報規則。
+單個動態閾值警報規則可以一次為數百個指標時間序列(甚至不同類型)創建量身定製的閾值,從而減少要管理的警報規則。
 
-在下面的示例中，警報規則監視**交易記錄**指標的**回應類型**和**ApiName**維度的維度值組合：
-1. **ResponsType** - 對於**回應類型**維度的每個值（包括未來值），將分別監視不同的時間序列。
+在下面的範例中,警示規則監視**交易記錄**指標的**回應類型**和**ApiName**維度的維度值群組:
+1. **ResponsType** - 對於**回應類型**維度的每個值(包括未來值),將分別監視不同的時間序列。
 2. **ApiName** - 僅監視**GetBlob**和**PutBlob**維度值的不同時間序列。
 
-例如，此警報規則監視的一些潛在時間序列是：
-- 指標 =*事務*， 回應類型 •*成功*， Apiname =*獲取Blob*
-- 指標 =*事務*， 回應類型 •*成功*， Apiname = *PutBlob*
+例如,此警報規則監視的一些潛在時間序列是:
+- 指標 =*事務*, 回應類型 •*成功*, Apiname =*取得Blob*
+- 指標 =*事務*, 回應類型 •*成功*, Apiname = *PutBlob*
 - 指標 =*事務*、回應類型 =*伺服器超時*、Apiname = *GetBlob*
 - 指標 =*事務*、回應類型 =*伺服器超時*、Apiname = *PutBlob*
 
@@ -1241,18 +1241,18 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 對於使用動態閾值的指標警報規則，當前不支援多個條件。
+> 對於使用動態閾值的指標警報規則,當前不支援多個條件。
 
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>監視自訂指標的靜態閾值指標警報的範本
 
 可以使用以下範本在自訂指標上創建更高級的靜態閾值指標警報規則。
 
-要瞭解有關 Azure 監視器中的自訂指標詳細資訊，請參閱[Azure 監視器 中的自訂指標](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
+要瞭解有關 Azure 監視器中的自訂指標詳細資訊,請參閱[Azure 監視器 中的自訂指標](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
 
-在自訂指標上創建警報規則時，需要同時指定指標名稱和指標命名空間。 您還應確保自訂指標已報告，因為無法在尚不存在的自訂指標上創建警報規則。
+在自定義指標上創建警報規則時,需要同時指定指標名稱和指標命名空間。 您還應確保自定義指標已報告,因為無法在尚不存在的自定義指標上創建警報規則。
 
-為了本演練的目的，將下面的 json 保存為自訂靜態測量警報.json。
+為了本演練的目的,將下面的 json 保存為自定義靜態測量警報.json。
 
 ```json
 {
@@ -1432,7 +1432,7 @@ az group deployment create \
 
 您可以使用上述的範本以及下面提供的參數檔案。 
 
-為了本演練的目的，保存並修改下面的 json 作為自訂靜態測量警報.parameters.json。
+為了本演練的目的,保存並修改下面的 json 作為自定義靜態測量警報.parameters.json。
 
 ```json
 {
@@ -1504,20 +1504,24 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 您可以通過[Azure 門戶流覽自訂指標](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)來查找特定自訂指標的指標命名空間
+> 您可以透過[Azure 門戶瀏覽自訂指標](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)來尋找特定自訂指標的指標命名空間
 
 
-## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>監視多個資源的指標警報範本
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>監視多個資源的指標警報樣本
 
-前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援使用單個指標警報規則監視同一 Azure 區域中存在的資源的多個資源（相同類型）。 此功能目前僅在 Azure 公共雲中支援，僅適用于虛擬機器、SQL 伺服器資料庫、SQL 伺服器彈性池和 Databox 邊緣設備。 此外，此功能僅適用于平臺指標，並且不支援自訂指標。
+前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援使用單一指標警報規則監視同一 Azure 區域中存在的資源的多個資源(相同類型)。 此功能目前僅在 Azure 公共雲中支援,僅適用於虛擬機、SQL 伺服器資料庫、SQL 伺服器彈性池和 Databox 邊緣設備。 此外,此功能僅適用於平臺指標,並且不支援自定義指標。
 
 動態閾值警示規則也可一次為數百個計量序列 (甚至不同類型) 建立合適的閾值，讓需要管理的警示規則變少。
 
 針對以單一規則監視多個資源的功能，本節將說明三種此類案例適用的 Azure Resource Manager 範本。
 
 - 監視一個或多個資源群組中的所有虛擬機器 (位於一個 Azure 區域)。
-- 監視訂閱中的所有虛擬機器（在一個 Azure 區域中）。
-- 監視訂閱中的虛擬機器清單（在一個 Azure 區域中）。
+- 監視訂閱中的所有虛擬機器(在一個 Azure 區域中)。
+- 監視訂閱中的虛擬機清單(在一個 Azure 區域中)。
+
+> [!NOTE]
+>
+> 在監視多個資源的指標警報規則中,只允許一個條件。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一個或多個資源群組中所有虛擬機器上的靜態閾值警示
 
@@ -3456,12 +3460,12 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>可用性測試範本以及指標警報
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>可用性測試樣本以及指標警報
 
-[應用程式見解可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)可説明您監控來自全球不同位置的網站/應用程式的可用性。 當可用性測試從特定位置失敗時，可用性測試警報會通知您。
-與指標警報（Microsoft.Insights/metricAlerts）相同的資源類型的可用性測試警報。 以下示例 Azure 資源管理器範本可用於設置簡單的可用性測試和相關警報。
+[應用程式見解可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)可幫助您監控來自全球不同位置的網站/應用程式的可用性。 當可用性測試從特定位置失敗時,可用性測試警報會通知您。
+與指標警報(Microsoft.Insights/metricAlerts)相同的資源類型的可用性測試警報。 以下範例 Azure 資源管理器樣本可用於設定簡單的可用性測試和相關警報。
 
-為了本演練的目的，將下面的 json 保存為可用性警報.json。
+為了本演練的目的,將下面的 json 保存為可用性警報.json。
 
 ```json
 {
@@ -3568,9 +3572,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> `&amp`;是&的 HTML 實體引用。 URL 參數仍由單個&分隔，但如果在 HTML 中提及 URL，則需要對其進行編碼。 因此，如果您的 pingURL 參數值中有任何"&"，則必須用";"`&amp`
+> `&amp`;是&的 HTML 實體引用。 URL 參數仍由單個&分隔,但如果在 HTML 中提及 URL,則需要對其進行編碼。 因此,如果您的 pingURL 參數值中有任何"&",則必須用";"`&amp`
 
-將下面的 json 保存為可用性警報.parameter.json，並根據需要對其進行修改。
+將下面的 json 保存為可用性警報.parameter.json,並根據需要對其進行修改。
 
 ```json
 {

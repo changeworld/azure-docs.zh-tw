@@ -1,23 +1,23 @@
 ---
-title: 教學課程 - Azure Toolkit for IntelliJ：Spark 應用程式 - HDInsight
-description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至 HDInsight Spark 叢集。
+title: 用於 IntelliJ 的 Azure 工具套件:Spark 應用 - HDInsight
+description: 使用適用於 IntelliJ 的 Azure 工具組來開發以 Scala 撰寫的 Spark 應用程式，並將它們提交到 HDInsight Spark 叢集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223585"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397687"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>教學課程：使用 Azure Toolkit for IntelliJ 建立適用於 HDInsight 叢集的 Apache Spark 應用程式
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>使用 Azure Toolkit for IntelliJ 建立適用於 HDInsight 叢集的 Apache Spark 應用程式
 
-本教學課程示範如何使用適用於 IntelliJ IDE 的 **Azure Toolkit** 外掛程式，在 Azure HDInsight 上開發 Apache Spark 應用程式。 [Azure HDInsight](../hdinsight-overview.md) 是雲端中的一項受控、開放原始碼分析服務，可讓您使用 Hadoop、Apache Spark、Apache Hive 和 Apache Kafka 等開放原始碼架構。
+本文演示如何使用 IntelliJ IDE 的 Azure**工具套件**外掛程式在 Azure HDInsight 上開發 Apache Spark 應用程式。 [Azure HDInsight](../hdinsight-overview.md) 是雲端中的一項受控、開放原始碼分析服務，可讓您使用 Hadoop、Apache Spark、Apache Hive 和 Apache Kafka 等開放原始碼架構。
 
 您可以透過數種方式來使用 **Azure Toolkit** 外掛程式：
 
@@ -25,7 +25,7 @@ ms.locfileid: "79223585"
 * 存取您的 Azure HDInsight Spark 叢集資源。
 * 在本機開發並執行 Scala Spark 應用程式。
 
-在本教學課程中，您會了解如何：
+在本文中，您將學會如何：
 > [!div class="checklist"]
 > * 使用 Azure Toolkit for IntelliJ 外掛程式
 > * 開發 Apache Spark 應用程式
@@ -35,7 +35,7 @@ ms.locfileid: "79223585"
 
 * HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
-* [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  本教學課程使用 Java 8.0.202 版。
+* [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  本文使用 JAVA 版本 8.0.202。
 
 * IntelliJ IDEA。 本文使用 [IntelliJ IDEA Community 版本2018.3.4](https://www.jetbrains.com/idea/download/)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "79223585"
 
     |  屬性   | 描述   |  
     | ----- | ----- |  
-    |專案名稱| 輸入名稱。  本教學課程使用 `myApp`。|  
+    |專案名稱| 輸入名稱。  本文使用 `myApp`。|  
     |專案&nbsp;位置| 輸入所要的位置以儲存您的專案。|
     |專案 SDK| 您第一次使用 IDEA 時，這可能是空白的。  選取 [新增...]  並瀏覽至您的 JDK。|
     |Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 如果 Spark 叢集版本早於 2.0，請選取 [Spark 1.x]  。 否則，請選取 [Spark 2.x]  。 此範例使用 **Spark 2.3.0 (Scala 2.11.8)** 。|
@@ -472,7 +472,7 @@ ms.locfileid: "79223585"
 
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 
-1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁選取 [...]  。
+1. 在顯示的 HDInsight 群組清單中,選擇為本文建立的叢集旁邊的 **...**
 
 1. 選取 [刪除]  。 選取 [是]  。
 
@@ -480,7 +480,7 @@ ms.locfileid: "79223585"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 Azure Toolkit for IntelliJ 外掛程式來開發以 [Scala](https://www.scala-lang.org/) 撰寫的 Apache Spark 應用程式，然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交至 HDInsight Spark 叢集。 前往下一篇文章，以查看如何將您在 Apache Spark 中註冊的資料提取至 BI 分析工具，例如 Power BI。
+在本文中,您學習了如何使用 IntelliJ 外掛程式的 Azure 工具套件來開發用[Scala](https://www.scala-lang.org/)編寫的 Apache Spark 應用程式,然後直接從 IntelliJ 整合式開發環境 (IDE) 將其提交到 HDInsight Spark 群集。 前往下一篇文章，以查看如何將您在 Apache Spark 中註冊的資料提取至 BI 分析工具，例如 Power BI。
 
 > [!div class="nextstepaction"]
 > [使用 Power BI 分析 Apache Spark 資料](apache-spark-use-bi-tools.md)

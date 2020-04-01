@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 603bffe3d28214dbdcd51888925c3c653d0759e7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 89ed0bad2729a9e0983d4ef7f8a53faa4f5426ac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068191"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415646"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>教學課程：在 Azure 中備份和還原 Windows 虛擬機器的檔案
 
@@ -33,7 +33,7 @@ ms.locfileid: "74068191"
 
 ## <a name="backup-overview"></a>備份概觀
 
-Azure 備份服務開始備份作業時，會觸發備份擴充功能以建立時間點快照集。 Azure 備份服務使用 VMSnapshot  擴充功能。 如果 VM 正在執行，會在第一次 VM 備份期間安裝此擴充功能。 如果 VM 未在執行中，則備份服務會擷取基礎儲存體的快照集 (因為 VM 停止時不會發生任何應用程式寫入)。
+Azure 備份服務開始備份作業時，會觸發備份擴充功能以建立時間點快照集。 Azure 備份服務使用 [VMSnapshot 擴充功能](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)。 如果 VM 正在執行，會在第一次 VM 備份期間安裝此擴充功能。 如果 VM 未在執行中，則備份服務會擷取基礎儲存體的快照集 (因為 VM 停止時不會發生任何應用程式寫入)。
 
 當擷取 Windows VM 的快照集時，備份服務會與磁碟區陰影複製服務 (VSS) 協調，以取得虛擬機器磁碟一致的快照集。 Azure 備份服務擷取快照集之後，資料會傳輸至保存庫。 為了能更有效率，服務只會找出並傳輸自上次備份之後有變更的資料區塊。
 

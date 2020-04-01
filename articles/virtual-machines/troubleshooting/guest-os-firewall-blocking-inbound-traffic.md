@@ -1,6 +1,6 @@
 ---
 title: Azure VM 客體 OS 防火牆封鎖輸入流量 | Microsoft Docs
-description: ''
+description: 瞭解如何修復遠端桌面門戶 (RDP) 連接問題,即來賓操作系統防火牆阻塞了入站流量。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72028802"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422547"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 客體 OS 防火牆封鎖輸入流量
 
@@ -53,7 +53,7 @@ ms.locfileid: "72028802"
 
 #### <a name="mitigation-1"></a>緩解措施 1
 
-1.  如果 Azure 代理已安裝並在 VM 上正常工作，則可以使用"僅重置配置"選項，在 VM 功能表上使用 **"支援 + 故障排除** > **重置密碼"選項**。
+1.  如果 Azure 代理已安裝在 VM 上正常工作,則可以使用「僅重置設定」選項,在 VM 選單上使用 **「支援 + 故障排除** > **重置密碼」選項**。
 
 2.  執行此復原選項時會執行下列動作：
 
@@ -102,7 +102,7 @@ ms.locfileid: "72028802"
 
 #### <a name="mitigation-2"></a>緩解措施 2
 
-1.  查詢防火牆設定檔，以確定入站防火牆策略是否設置為 *"阻止入站始終*"：
+1.  查詢防火牆配置檔,以確定入站防火牆策略是否設置為 *「阻止入站始終*」:
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "72028802"
     >    * *BlockInbound*：除非您具備允許輸入流量的有效規則，否則會封鎖所有輸入流量。
     >    * *BlockInboundAlways*：會忽略所有防火牆規則，並封鎖所有流量。
 
-2.  編輯*預設入行操作*以將這些設定檔設置為 **"允許**流量"。 若要這樣做，請執行下列命令：
+2.  編輯*預設入行操作*以將這些設定檔設定為 **「允許**流量」。 若要這樣做，請執行下列命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ ms.locfileid: "72028802"
 
 2.  啟動復原 VM 的遠端桌面連線。
 
-3.  確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結系統磁碟的磁碟機代號。
+3.  確保磁碟在磁碟管理控制台中標記為**線上**。 記下指派給已連結系統磁碟的磁碟機代號。
 
 #### <a name="mitigation-1"></a>緩解措施 1
 
@@ -150,7 +150,7 @@ ms.locfileid: "72028802"
 
 2.  啟動復原 VM 的遠端桌面連線。
 
-3.  將系統磁片連接到恢復 VM 後，請確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3.  將系統磁碟連線到回復 VM 後,請確保磁碟在磁碟管理控制台中標記為**連線**。 記下指派給已連結 OS 磁碟的磁碟機代號。
 
 4.  開啟提升權限的 CMD 執行個體，然後執行下列指令碼：
 

@@ -1,6 +1,6 @@
 ---
 title: 依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解 | Microsoft Docs
-description: ''
+description: 使用事件識別解決阻止遠端桌面協定 (RDP) 連接到 Azure 虛擬機器 (VM) 的各種問題。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154198"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437069"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解 
 
@@ -29,7 +29,7 @@ ms.locfileid: "71154198"
 
 您嘗試使用遠端桌面通訊協定 (RDP) 工作階段連線至 Azure VM。 在您輸入認證後，連線失敗，並出現下列錯誤訊息：
 
-**此電腦無法連接到遠端電腦。如果問題仍然存在，請嘗試再次連接，請與遠端電腦的擁有者或網路系統管理員聯繫。**
+**此電腦無法連接到遠端電腦。如果問題仍然存在,請嘗試再次連接,請與遠端電腦的所有者或網路管理員聯繫。**
 
 若要對此問題進行疑難排解，請檢閱 VM 上的事件記錄，並參考下列案例。
 
@@ -54,38 +54,38 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日誌名稱：**     系統 <br />
+**紀錄名稱:**     系統 <br />
 **來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1058 <br />
-**任務類別：** 沒有 <br />
-**級別：**        錯誤 <br />
-**關鍵字：**     經典 <br />
-**使用者：**         不適用 <br />
+**工作類別:** 沒有 <br />
+**等級:**        錯誤 <br />
+**關鍵字:**     經典 <br />
+**使用者:**         不要適用 <br />
 **電腦：**      *電腦* <br />
-**描述：** RD 工作階段主機伺服器無法取代 SSL 連線的 RD 工作階段主機伺服器驗證所使用的自我簽署憑證 (已過期)。 相關的狀態碼為「存取遭到拒絕」。
+**描述:** RD 工作階段主機伺服器未能替換用於 TLS 連接上的 RD 工作階段主機伺服器身份驗證的過期自簽名證書。 相關的狀態碼為「存取遭到拒絕」。
 
-**日誌名稱：**     系統 <br />
+**紀錄名稱:**     系統 <br />
 **來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1058 <br />
-**任務類別：** 沒有 <br />
-**級別：**        錯誤 <br />
-**關鍵字：**     經典 <br />
-**使用者：**         不適用 <br />
+**工作類別:** 沒有 <br />
+**等級:**        錯誤 <br />
+**關鍵字:**     經典 <br />
+**使用者:**         不要適用 <br />
 **電腦：**      *電腦* <br />
-**描述：** RD 工作階段主機伺服器無法建立新的自我簽署憑證以用於 SSL 連線的 RD 工作階段主機伺服器驗證，相關的狀態碼為「物件已存在」。
+**描述:** RD 會話主機伺服器未能創建新的自簽名證書,用於 TLS 連接上的 RD 會話主機伺服器身份驗證,相關狀態代碼已存在物件。
 
-**日誌名稱：**     系統 <br />
+**紀錄名稱:**     系統 <br />
 **來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1057 <br />
-**任務類別：** 沒有 <br />
-**級別：**        錯誤 <br />
-**關鍵字：**     經典 <br />
-**使用者：**         不適用 <br />
+**工作類別:** 沒有 <br />
+**等級:**        錯誤 <br />
+**關鍵字:**     經典 <br />
+**使用者:**         不要適用 <br />
 **電腦：**      *電腦* <br />
-**描述：** RD 工作階段主機伺服器無法建立新的自我簽署憑證，以用於 SSL 連線的 RD 工作階段主機伺服器驗證。 相關的狀態碼為「金鑰集不存在」
+**描述:** RD 工作階段主機伺服器未能建立新的自簽名證書,用於 TLS 連接上的 RD 工作階段主機伺服器身份驗證。 相關的狀態碼為「金鑰集不存在」
 
 您也可以執行下列命令，以檢查是否有 SCHANNEL 錯誤事件 36872 和 36870：
 
@@ -94,16 +94,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日誌名稱：**     系統 <br />
+**紀錄名稱:**     系統 <br />
 **來源：**        Schannel <br />
 **日期：**          — <br />
 **事件識別碼：**      36870 <br />
-**任務類別：** 沒有 <br />
-**級別：**        錯誤 <br />
-**關鍵 字：**       <br />
+**工作類別:** 沒有 <br />
+**等級:**        錯誤 <br />
+**關鍵字:**       <br />
 **使用者：**          SYSTEM <br />
 **電腦：**      *電腦* <br />
-**描述：** 嘗試存取 SSL 伺服器認證私密金鑰時發生嚴重錯誤。 從密碼編譯模組傳回的錯誤碼為 0x8009030D。  <br />
+**描述:** 嘗試造訪 TLS 伺服器認證的私密金鑰時發生致命錯誤。 從密碼編譯模組傳回的錯誤碼為 0x8009030D。  <br />
 內部錯誤狀態為 10001。
 
 ### <a name="cause"></a>原因
@@ -186,9 +186,9 @@ Start-Service -Name "SessionEnv"
 
 再次嘗試使用 RDP 存取 VM。
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>更新安全通訊端層 (SSL) 憑證
+#### <a name="update-tlsssl-certificate"></a>更新 TLS/SSL 憑證
 
-如果您將 VM 設定為使用 SSL 憑證，請執行下列命令以取得指紋。 然後，檢查該指紋是否與憑證的指紋相同：
+如果將 VM 設置為使用 TLS/SSL 憑證,則運行以下命令以獲取指紋。 然後，檢查該指紋是否與憑證的指紋相同：
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -216,13 +216,13 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RD
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日誌名稱：**     系統 <br />
+**紀錄名稱:**     系統 <br />
 **來源：**        Schannel <br />
 **日期：**          — <br />
 **事件識別碼：**      36871 <br />
-**任務類別：** 沒有 <br />
-**級別：**        錯誤 <br />
-**關鍵 字：**       <br />
+**工作類別:** 沒有 <br />
+**等級:**        錯誤 <br />
+**關鍵字:**       <br />
 **使用者：**          SYSTEM <br />
 **電腦：**      *電腦* <br />
 **描述：** 建立 TLS 伺服器認證時發生嚴重錯誤。 內部錯誤狀態為 10013。
@@ -251,8 +251,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **日期：**          *時間* <br />
 **事件識別碼：**      2056 <br />
 **工作類別：**(109) <br />
-**級別：**        錯誤 <br />
-**關鍵 字：**       <br />
+**等級:**        錯誤 <br />
+**關鍵字:**       <br />
 **使用者：**          NETWORK SERVICE <br />
 **電腦：**      *電腦 FQDN* <br />
 **描述：** 找不到來自 Microsoft-Windows-TerminalServices-SessionBroker 的事件識別碼 2056 的描述。 可能是引發此事件的元件未安裝在您的本機電腦上，或安裝已損毀。 您可以在本機電腦上安裝或修復該元件。 <br />
@@ -267,8 +267,8 @@ NULL <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1296 <br />
 **工作類別：**(104) <br />
-**級別：**        錯誤 <br />
-**關鍵 字：**       <br />
+**等級:**        錯誤 <br />
+**關鍵字:**       <br />
 **使用者：**          NETWORK SERVICE <br />
 **電腦：**      *電腦 FQDN* <br />
 **描述：** 找不到來自 Microsoft-Windows-TerminalServices-SessionBroker-Client 的事件識別碼 1296 的描述。 可能是引發此事件的元件未安裝在您的本機電腦上，或安裝已損毀。 您可以在本機電腦上安裝或修復該元件。

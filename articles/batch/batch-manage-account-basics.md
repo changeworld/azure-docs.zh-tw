@@ -1,6 +1,6 @@
 ---
-title: 管理您的帳戶 - Azure 批次處理 |微軟文檔
-description: 瞭解 Azure 批次處理帳戶的組成內容
+title: 管理您的帳戶 - Azure 批處理 |微軟文件
+description: 瞭解 Azure 批次處理帳戶的項目
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479785"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397269"
 ---
 # <a name="manage-your-batch-account"></a>管理您的批次帳戶
 
@@ -31,23 +31,23 @@ ms.locfileid: "79479785"
 
 ## <a name="components-of-the-batch-account"></a>批次處理帳戶的元件
 
-Batch 帳戶使您能夠在 Azure 中高效地運行大規模並行和高性能計算 （HPC） 批次處理作業。 在您管理的帳戶中：
+Batch 帳戶使您能夠在 Azure 中高效地運行大規模並行和高性能計算 (HPC) 批處理作業。 在您管理的帳戶中:
 
-- 正在運行的應用程式
+- 執行的應用程式
 
 - 池內池和節點的分配
 
-- 任務的數量和類型 
+- 工作的數量和類型 
 
-- 資料的輸入和輸出。 您無需安裝其他軟體來管理工作。
+- 數據的輸入和輸出。 您無需安裝其他軟體來管理任務。
 
-- 創建 Batch 帳戶時，系統會要求您為其分配名稱。 此名稱是其 ID，分配後無法更改。
+- 建立 Batch 帳戶時,系統會要求您為其分配名稱。 此名稱是其 ID,分配後無法更改。
 
-- 要更改帳戶的名稱，您需要將其刪除並創建新的 Batch 帳戶。
+- 要更改帳戶的名稱,您需要將其刪除並創建新的 Batch 帳戶。
 
 - 帳戶是在要使用的訂閱中創建的。
 
-- 使用 該帳戶從訂閱中的任何 Batch 帳戶標識和檢索主帳戶金鑰和輔助帳戶金鑰。
+- 使用 該帳戶從訂閱中的任何 Batch 帳戶標識和檢索主帳戶密鑰和輔助帳戶金鑰。
 
 - 該帳戶維護有關池分配和核心配額的資訊。  
 
@@ -57,8 +57,8 @@ Batch 帳戶使您能夠在 Azure 中高效地運行大規模並行和高性能�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用[Azure 門戶](batch-account-create-portal.md)創建批次處理帳戶。
-- 以程式設計方式創建批次處理帳戶，例如使用[批次處理管理 .NET 庫](batch-management-dotnet.md)。
-- [配置或禁用對 Azure 批次處理池中的計算節點的遠端存取](pool-endpoint-configuration.md)。
+- 使用[Azure 門戶](batch-account-create-portal.md)創建批處理帳戶。
+- 以程式設計方式建立批次處理帳戶,例如使用[批次處理管理 .NET 函式庫](batch-management-dotnet.md)。
+- [設定或關閉 Azure 批次處理的處理的處理到 Azure 處理的處理的遠端存取](pool-endpoint-configuration.md)。
 - [在 Batch 計算節點上執行作業準備和作業解除工作](batch-job-prep-release.md)
 

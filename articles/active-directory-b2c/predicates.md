@@ -1,38 +1,38 @@
 ---
 title: Predicates 與 PredicateValidations
 titleSuffix: Azure AD B2C
-description: 通過使用 Azure 活動目錄 B2C 中的自訂策略，防止將格式不正確的資料添加到 Azure AD B2C 租戶。
+description: 通過使用 Azure 活動目錄 B2C 中的自訂策略,防止將格式不正確的數據添加到 Azure AD B2C 租戶。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187231"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396895"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 與 PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**謂詞**和**謂詞驗證**元素使您能夠執行驗證過程，以確保僅將格式正確的資料輸入 Azure 活動目錄 B2C （Azure AD B2C） 租戶。
+**謂詞**和**謂詞驗證**元素使您能夠執行驗證過程,以確保僅將格式正確的數據輸入 Azure 活動目錄 B2C (Azure AD B2C) 租戶。
 
 下圖顯示元素之間的關聯性：
 
-![顯示謂詞和謂詞驗證關係的圖表](./media/predicates/predicates.png)
+![顯示謂詞與謂詞驗證關係的圖表](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>述詞
 
 **Predicate** 元素會定義基本驗證來檢查宣告類型的值，並傳回 `true` 或 `false`。 您可以使用指定的 **Method** 元素及與該方法相關聯的一組 **Parameter** 元素來完成驗證。 例如，述詞可以檢查字串宣告值的長度是否介於所指定 Minimum 和 Maximum 參數的範圍內，或者字串宣告值是否包含字元集。 **UserHelpText** 元素會在檢查失敗時，為使用者提供錯誤訊息。 **UserHelpText** 元素的值可以使用[語言自訂](localization.md)進行當地語系化。
 
-**謂詞**元素必須直接出現在[構建塊](buildingblocks.md)元素中的 **"聲明架構**"元素之後。
+**謂詞**元素必須直接出現在[構建塊](buildingblocks.md)元素中的 **「聲明架構**」元素之後。
 
 **Predicates** 元素包含下列元素：
 
@@ -45,14 +45,14 @@ ms.locfileid: "78187231"
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
-| 方法 | 是 | 要用於驗證的方法類型。 可能的值：**IsLengthRange**、**MatchesRegex**、**IncludesCharacters** 或 **IsDateRange**。 **IsLengthRange** 值可讓您檢查字串宣告值的長度是否位於所指定 Minimum 和 Maximum 參數的範圍內。 **MatchesRegex** 值會檢查字串宣告值是否符合規則運算式。 **IncludesCharacters** 值會檢查字串宣告值是否包含字元集。 **IsDateRange** 值會檢查日期宣告值是否介於所指定 Minimum 和 Maximum 參數的範圍之間。 |
+| 方法 | 是 | 要用於驗證的方法類型。 可能的值：[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters) 或 [IsDateRange](#isdaterange)。  |
 | HelpText | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
 
 **Predicate** 元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | （已棄用）如果檢查失敗，則給使用者發送錯誤訊息。 |
+| UserHelpText | 0:1 | (已棄用)如果檢查失敗,則給使用者發送錯誤消息。 |
 | 參數 | 1:1 | 適用於字串驗證方法類型的參數。 |
 
 **Parameters** 元素包含下列元素：
@@ -67,7 +67,19 @@ ms.locfileid: "78187231"
 | ------- | ----------- | ----------- |
 | Id | 1:1 | 參數的識別碼。 |
 
-下列範例顯示 `IsLengthRange` 方法，以及可指定字串長度範圍的 `Minimum` 和 `Maximum` 參數：
+### <a name="predicate-methods"></a>謂詞方法
+
+#### <a name="islengthrange"></a>是長度範圍
+
+IsLengthRange 方法檢查字串聲明值的長度是否在指定的最小參數和最大參數範圍內。 謂字元素支援以下參數:
+
+| 參數 | 必要 | 描述 |
+| ------- | ----------- | ----------- |
+| 最大值 | 是 | 可輸入的最大字元數。 |
+| 最小值 | 是 | 必須輸入的最小字元數。 |
+
+
+下面的範例顯示了具有參數`Minimum``Maximum`並指定字串長度範圍的 IsLengthRange 方法:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ ms.locfileid: "78187231"
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>符合雷格ex
+
+MatchesRegex 方法檢查字串聲明值是否與正則表達式匹配。 謂字元素支援以下參數:
+
+| 參數 | 必要 | 描述 |
+| ------- | ----------- | ----------- |
+| RegularExpression | 是 | 要比對的規則運算式模式。 |
 
 下列範例顯示 `MatchesRegex` 方法，以及可指定規則運算式的 `RegularExpression` 參數：
 
@@ -88,6 +108,14 @@ ms.locfileid: "78187231"
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>包括字元
+
+"包括字元"方法檢查字串聲明值是否包含字元集。 謂字元素支援以下參數:
+
+| 參數 | 必要 | 描述 |
+| ------- | ----------- | ----------- |
+| CharacterSet | 是 | 可以輸入的字元集。 例如,小寫`a-z`字元、大寫字元`A-Z`、`0-9`數位或符號清單(`@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`如 )。 |
+
 下列範例顯示 `IncludesCharacters` 方法，以及可指定字元集的 `CharacterSet` 參數：
 
 ```XML
@@ -98,7 +126,16 @@ ms.locfileid: "78187231"
 </Predicate>
 ```
 
-下列範例顯示 `IsDateRange` 方法，以及可使用 `yyyy-MM-dd` 和 `Today` 格式來指定日期範圍的 `Minimum` 和 `Maximum` 參數。
+#### <a name="isdaterange"></a>是日期
+
+IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最大參數範圍之間。 謂字元素支援以下參數:
+
+| 參數 | 必要 | 描述 |
+| ------- | ----------- | ----------- |
+| 最大值 | 是 | 可以輸入的最大可能日期。 日期的格式遵循`yyyy-mm-dd`慣例`Today`或 。 |
+| 最小值 | 是 | 可以輸入的最小日期。 日期的格式遵循`yyyy-mm-dd`慣例`Today`或 。|
+
+下列範例顯示 `IsDateRange` 方法，以及可使用 `yyyy-mm-dd` 和 `Today` 格式來指定日期範圍的 `Minimum` 和 `Maximum` 參數。
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -174,7 +211,7 @@ ms.locfileid: "78187231"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，該值必須匹配所有謂詞定義。 |
+| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定,該值必須匹配所有謂詞定義。 |
 
 **PredicateReferences** 元素包含下列元素：
 
@@ -197,7 +234,7 @@ ms.locfileid: "78187231"
 - 使用 `IncludesCharacters` 方法的 **Lowercase**，驗證密碼包含小寫字母。
 - 使用 `IncludesCharacters` 方法的 **Uppercase**，驗證密碼包含大寫字母。
 - 使用 `IncludesCharacters` 方法的 **Number**，驗證密碼包含數字。
-- **Symbol**使用 方法`IncludesCharacters`的符號驗證密碼是否包含多個符號字元之一。
+- **Symbol**使用方法`IncludesCharacters`的符號驗證密碼是否包含多個符號字元之一。
 - 使用 `MatchesRegex` 方法的 **PIN**，驗證密碼只包含數字。
 - 使用 `MatchesRegex` 方法的 **AllowedAADCharacters**，驗證提供了只對密碼無效的字元。
 - 使用 `MatchesRegex` 方法的 **DisallowedWhitespace**，驗證密碼不是以空白字元開始或結尾。
@@ -388,3 +425,7 @@ ms.locfileid: "78187231"
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>後續步驟
+
+- 瞭解如何使用[Azure 活動目錄 B2C 中的自訂策略](custom-policy-password-complexity.md)使用謂詞驗證配置密碼複雜性。

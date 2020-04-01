@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/09/2020
+ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: MT
+ms.openlocfilehash: ae049d7486007696d8038eb4e6593cf996df659e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967955"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372599"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -28,9 +28,9 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 在媒體服務中，[串流端點](streaming-endpoint-concept.md)代表動態 (Just-In-Time) 封裝及原始服務，其可將即時且隨選的內容直接傳遞至用戶端播放應用程式。 它會使用下節中所述的其中一種常見串流媒體通訊協定。 動態封裝是所有串流端點 (標準或進階) 均隨附的標準功能之一。
 
 > [!NOTE]
-> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作（例如，轉換和作業），請使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+> 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [即時活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md)、取得存取 API的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>準備來源檔案以進行傳遞
+## <a name="to-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>準備來源檔案以進行傳遞
 
 若要利用動態封裝功能，您必須將您的夾層 (來源) 檔案[編碼](encoding-concept.md)成一組多位元速率 MP4 (ISO 基礎媒體 14496-12) 檔案。 您必須具有內含經過編碼的 MP4 的[資產](assets-concept.md)，以及媒體服務動態封裝所需的串流設定檔。 從這組 MP4 檔案中，您可以使用動態封裝透過下面描述的串流媒體通訊協定來傳遞影片。
 
@@ -71,11 +71,14 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |Smooth Streaming 2.0 (舊版資訊清單)|根據預設，Smooth Streaming 資訊清單格式包含重複的標記 (r-tag)。 不過，有些播放程式不支援 `r-tag`。 使用這些播放程式的用戶端可以使用停用 r-tag 的格式︰<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
+> [!NOTE]
+> Smooth Streaming 需要音訊和視訊皆存在於您的串流中。
+
 ## <a name="on-demand-streaming-workflow"></a>隨選資料流處理工作流程
 
 下列步驟示範常見的媒體服務串流工作流程，其中動態封裝會與 Azure 媒體服務中的標準編碼器一起使用。
 
-1. 上傳輸入檔，例如 QuickTime/MOV 或 MXF 檔案。 此檔案也稱為夾層檔或來源檔案。 如需支援格式的清單，請參閱[媒體編碼器標準所支援的格式](media-encoder-standard-formats.md)。
+1. 上傳輸入檔，例如 QuickTime/MOV 或 MXF 檔案。 此檔案也稱為夾層檔或來源檔案。 如需支援格式的清單，請參閱[標準編碼器所支援的格式](media-encoder-standard-formats.md)。
 1. 將夾層檔[編碼](#encode-to-adaptive-bitrate-mp4s)為 H.264/AAC MP4 自適性位元速率集。
 1. 發佈包含自適性位元速率 MP4 集的輸出資產。 您會透過建立串流定位器來發佈。
 1. 建置以不同格式 (HLS、MPEG-DASH 及 Smooth Streaming) 為目標的 URL。 **串流端點**會負責處理這所有不同格式的正確資訊清單和要求。
@@ -92,11 +95,11 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 * [使用內建預設對本機檔案進行編碼](job-input-from-local-file-how-to.md)。
 * [建置自訂預設來以特定案例或裝置需求為目標](customize-encoder-presets-how-to.md)。
 
-請參閱媒體編碼器標準[格式和轉碼器](media-encoder-standard-formats.md)的清單。
+請參閱標準編碼器[格式和轉碼器](media-encoder-standard-formats.md)的清單。
 
 ## <a name="live-streaming-workflow"></a>即時串流工作流程
 
-即時事件可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 
+即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 
 
 以下是適用於動態封裝搭配即時串流的常見工作流程：
 
@@ -123,7 +126,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 > [!NOTE]
 > 最多可達 4K 的解析度，以及最多每秒 60 個畫面的畫面播放速率，皆已透過動態封裝進行測試。 [進階編碼器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支援透過舊版 v2 API 編碼成 H.265。
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>動態封裝支援的音訊轉碼器
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>動態封裝支援的音訊轉碼器
 
 動態封裝支援以下列通訊協定編碼的音訊：
 
@@ -243,7 +246,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>資訊清單中的追蹤命名
 
-如果在. ism 檔案中指定了音訊播放軌名稱，媒體服務會在 `AdaptationSet` 內加入 `Label` 專案，以指定特定音訊播放軌的 textural 資訊。輸出虛線資訊清單的範例：
+如果在 .ism 檔案中指定了曲目名稱，則媒體服務會在 `AdaptationSet`內新增 `Label` 元素，以指定特定曲目的質地資訊。輸出 DASH 資訊清單的範例：
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -265,7 +268,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 #### <a name="smooth-streaming-manifest"></a>Smooth Streaming 資訊清單
 
-如果您要播放 Smooth Streaming 資料流程，資訊清單會在 `Accessibility` 中包含值，並在該音訊曲目 `Role` 屬性。例如，`Role="alternate" Accessibility="description"` 會加入 `StreamIndex` 元素中，以表示它是音訊描述。
+如果您要播放 Smooth Streaming 資料流，則資訊清單會包含該曲目的 `Accessibility` 和 `Role` 屬性值。例如，`StreamIndex` 元素中會新增 `Role="alternate" Accessibility="description"`，以表示它是音訊描述。
 
 #### <a name="dash-manifest"></a>DASH 資訊清單
 
@@ -290,7 +293,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="dynamic-encryption"></a>動態加密
 
-您可以使用*動態加密*，以 AES-128 或下列三個主要數位版權管理（DRM）系統中的任何一種來動態加密您的即時或隨選內容： Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，傳遞 AES 金鑰和 DRM 授權給授權用戶端。 如需詳細資訊，請參閱[動態加密](content-protection-overview.md)。
+您可以使用「動態加密」  來搭配 AES-128 或下列三個主流數位版權管理 (DRM) 系統之一，以動態方式加密您的即時或隨選內容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒體服務也提供服務，傳遞 AES 金鑰和 DRM 授權給授權用戶端。 如需詳細資訊，請參閱[動態加密](content-protection-overview.md)。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。

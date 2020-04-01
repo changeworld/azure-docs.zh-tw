@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 將 Azure Stack VM 複寫至 Azure | Microsoft Docs
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.topic: conceptual
-ms.service: site-recovery
 ms.date: 08/05/2019
-ms.author: raynew
-ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426575"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478505"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>將 Azure Stack VM 複寫至 Azure
 
-本文說明如何使用 [Azure Site Recovery 服務](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)設定從 Azure Stack VM 至 Azure 的災害復原。
+本文說明如何使用 [Azure Site Recovery 服務](site-recovery-overview.md)設定從 Azure Stack VM 至 Azure 的災害復原。
 
 Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 此服務可確保當停電時，無論是計劃性或突發性，您的 VM 工作負載皆維持可供使用。
 
@@ -34,7 +29,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 > * **步驟 2：設定復原服務保存庫**。 為 Site Recovery 設定保存庫，並指定您要複寫的項目。 系統會在保存庫中設定與管理 Site Recovery 元件和動作。
 > * **步驟 3：設定來源複寫環境**。 設定 Site Recovery 組態伺服器。 組態伺服器是一部 Azure Stack VM，可執行 Site Recovery 所需的所有元件。 組態伺服器設定完成後，您可在保存庫中註冊它。
 > * **步驟 4：設定目標複寫環境**。 選取您的 Azure 帳戶、Azure 儲存體帳戶，以及您要使用的網路。 複寫期間，VM 資料會複製到 Azure 儲存體。 容錯移轉之後，Azure VM 會加入指定的網路。
-> * **步驟 5：啟用複製**。 設定複寫設定，並啟用 VM 複寫。 複寫啟用時，行動服務將會安裝在 VM 上。 Site Recovery 會執行 VM 的初始複寫，接著開始持續不間斷的複寫。
+> * **步驟 5: 啟用複製**。 設定複寫設定，並啟用 VM 複寫。 複寫啟用時，行動服務將會安裝在 VM 上。 Site Recovery 會執行 VM 的初始複寫，接著開始持續不間斷的複寫。
 > * **步驟 6：執行災難復原演練**：複寫啟動並運作時，請透過執行演練確認容錯移轉能如預期般運作。 若要展開演練，請在 Site Recovery 中執行測試容錯移轉。 測試容錯移轉不會影響生產環境。
 
 這些步驟完成時，您可以視需要執行完整容錯移轉至 Azure。
@@ -45,9 +40,9 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 **位置** | **元件** |**詳細資料**
 --- | --- | ---
-**佈建服務器** | 在單一 Azure Stack VM 上執行。 | 在每個訂用帳戶中，設定組態伺服器 VM。 此 VM 會執行下列 Site Recovery 元件：<br/><br/> - 組態伺服器：負責協調內部部署與 Azure 之間的通訊，以及管理資料複寫。 - 處理序伺服器：作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將複寫資料傳送至 Azure 儲存體。<br/><br/> 如果您要複寫的 VM 超過以下所述的限制，您可以設定個別的獨立處理序伺服器。 [深入了解](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale)。
-**行動服務** | 安裝在您要複寫的每部 VM 上。 | 在本文的步驟中，我們準備了一個帳戶，讓行動服務會在複寫啟用時自動安裝在 VM 上。 如果您不想要自動安裝服務，還有一些其他方法可以使用。 [深入了解](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service)。
-**Azure** | 在 Azure 中，您需要復原服務保存庫、儲存體帳戶，以及虛擬網路。 |  複寫的資料會儲存在儲存體帳戶中。 當容錯移轉發生時，Azure VM 會新增至 Azure 網路。 
+**設定伺服器** | 在單一 Azure Stack VM 上執行。 | 在每個訂用帳戶中，設定組態伺服器 VM。 此 VM 會執行下列 Site Recovery 元件：<br/><br/> - 組態伺服器：負責協調內部部署與 Azure 之間的通訊，以及管理資料複寫。 - 處理序伺服器：作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將複寫資料傳送至 Azure 儲存體。<br/><br/> 如果您要複寫的 VM 超過以下所述的限制，您可以設定個別的獨立處理序伺服器。 [深入了解](vmware-azure-set-up-process-server-scale.md)。
+**行動服務** | 安裝在您要複寫的每部 VM 上。 | 在本文的步驟中，我們準備了一個帳戶，讓行動服務會在複寫啟用時自動安裝在 VM 上。 如果您不想要自動安裝服務，還有一些其他方法可以使用。 [深入了解](vmware-azure-install-mobility-service.md)。
+**Azure** | 在 Azure 中，您需要復原服務保存庫、儲存體帳戶，以及虛擬網路。 |  複寫的資料會儲存在儲存體帳戶中。 當容錯移轉發生時，Azure VM 會新增至 Azure 網路。
 
 
 複寫會如下所示運作︰
@@ -67,9 +62,9 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 **要求** | **詳細資料**
 --- | ---
-**Azure 訂用帳戶** | 如果沒有 Azure 訂閱，請創建[一個免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
-**Azure 帳戶權限** | 您使用的 Azure 帳戶需要以下權限：<br/><br/> - 建立復原服務保存庫<br/><br/> - 在您用於此情節的資源群組與虛擬網路中建立虛擬機器<br/><br/> - 寫入您指定的儲存體帳戶<br/><br/> 請注意：<br/><br/> - 如果您建立帳戶，您就是訂用帳戶的管理員，並可執行所有動作。<br/><br/> - 如果您使用現有訂用帳戶，而且您不是系統管理員，則需要與系統管理員合作，讓其指派擁有者或參與者權限給您。<br/><br/> - 如果您需要更細微的權限，請檢閱[此文章](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)。 
-**Azure Stack VM** | 您的租用戶月租方案中需要有 Azure Stack VM，它將部署成 Site Recovery 組態伺服器。 
+**Azure 訂用帳戶** | 如果沒有 Azure 訂閱,請建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+**Azure 帳戶權限** | 您使用的 Azure 帳戶需要以下權限：<br/><br/> - 建立復原服務保存庫<br/><br/> - 在您用於此情節的資源群組與虛擬網路中建立虛擬機器<br/><br/> - 寫入您指定的儲存體帳戶<br/><br/> 請注意：<br/><br/> - 如果您建立帳戶，您就是訂用帳戶的管理員，並可執行所有動作。<br/><br/> - 如果您使用現有訂用帳戶，而且您不是系統管理員，則需要與系統管理員合作，讓其指派擁有者或參與者權限給您。<br/><br/> - 如果您需要更細微的權限，請檢閱[此文章](site-recovery-role-based-linked-access-control.md)。
+**Azure Stack VM** | 您的租用戶月租方案中需要有 Azure Stack VM，它將部署成 Site Recovery 組態伺服器。
 
 
 ### <a name="prerequisites-for-the-configuration-server"></a>組態伺服器必要條件
@@ -77,7 +72,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 [!INCLUDE [site-recovery-config-server-reqs-physical](../../includes/site-recovery-config-server-reqs-physical.md)]
 
 
- 
+
 ## <a name="step-1-prepare-azure-stack-vms"></a>步驟 1：準備 Azure Stack VM
 
 ### <a name="verify-the-operating-system"></a>驗證作業系統
@@ -89,7 +84,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 --- | ---
 **64 位元 Windows** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 (來自 SP1)
 **CentOS** | 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3
-**Ubuntu** | 14.04 LTS 伺服器、16.04 LTS 伺服器。 檢閱[支援的核心](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#ubuntu-kernel-versions)
+**Ubuntu** | 14.04 LTS 伺服器、16.04 LTS 伺服器。 檢閱[支援的核心](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)
 
 ### <a name="prepare-for-mobility-service-installation"></a>準備行動服務安裝
 
@@ -106,10 +101,10 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
         - 將值設定為 1。
         - 若要在命令提示字元進行，請輸入以下內容：**REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**。
 - 在所要複寫 VM 上的 Windows 防火牆中，允許「檔案及印表機共用」和 WMI。
-    - 做法是，執行 [wf.msc]**** 開啟 [Windows 防火牆] 主控台。 按右鍵**入站規則** > **新規則**。 選取 [預先定義]****，然後選取清單中的 [檔案及印表機共用]****。 完成精靈，選取允許連線 > [完成]****。
+    - 做法是，執行 [wf.msc]**** 開啟 [Windows 防火牆] 主控台。 右鍵按**下 輸入規則** > **的規則**。 選取 [預先定義]****，然後選取清單中的 [檔案及印表機共用]****。 完成精靈，選取允許連線 > [完成]****。
     - 對於網域電腦，您可以使用 GPO 這樣做。
 
-    
+
 #### <a name="linux-machines"></a>Linux 機器
 
 - 確定 Linux 電腦與處理序伺服器之間有網路連線。
@@ -142,23 +137,23 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步驟 2：建立保存庫，然後選取複寫目標
 
-1. 在 Azure 門戶中，選擇 **"創建資源** > **管理工具** > **備份和網站恢復**"。
-2. 在 **[名稱]** 中，輸入用來識別保存庫的易記名稱。 
+1. 在 Azure 門戶中,選擇 **「創建資源** > **管理工具** > **備份和網站恢復**」。。
+2. 在 **[名稱]** 中，輸入用來識別保存庫的易記名稱。
 3. 在 [資源群組]**** 中，建立或選取資源群組。 我們使用的是 [contosoRG]****。
 4. 在 [位置]**** 中，輸入 Azure 區域。 我們使用**西歐**。
-5. 要從儀表板快速訪問保存庫，請選擇 **"固定到儀表板** > **創建**"。
+5. 要從儀錶板快速存取保管庫,請選擇 **「固定到儀錶板** > **創建**」。。
 
    ![建立新保存庫](./media/azure-stack-site-recovery/new-vault-settings.png)
 
-   新保存庫將顯示在**儀表板** > **所有資源**以及主**恢復服務保存庫**頁上。
+   新保管庫將顯示在**儀表板** > **所有資源**以及主**恢復服務保管庫**頁上。
 
 ### <a name="select-a-replication-goal"></a>選取複寫目標
 
 1. 在 [復原服務保存庫]**** 中 > 指定保存庫名稱。 我們使用的是 [ContosoVMVault]****。
 2. 在 [使用者入門]**** 中，選取 Site Recovery。 然後選取 [準備基礎結構]****。
-3. 在**保護目標** > **"機器位於何處**"中，選擇 **"本地**"。
+3. 在**保護目標** > **「機器位於何處**」中,選擇 **「本地**」。。
 4. 在 [您要將電腦複寫到何處]**** 中，選取 [複製到 Azure]****。
-5. 在 [您的電腦虛擬化了嗎]**** 中，選取 [未虛擬化/其他]****。 然後選擇 **"確定**"。
+5. 在 [您的電腦虛擬化了嗎]**** 中，選取 [未虛擬化/其他]****。 然後選取 [確定]  。
 
     ![保護目標](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -166,7 +161,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 設定組態伺服器機器、在保存庫中註冊它，然後探索您要複寫的機器。
 
-1. 按一下 **"準備基礎結構** > **源**"。
+1. 按下 **「準備基礎結構** > **源**」。
 2. 在 [準備來源]**** 中，按一下 [+組態伺服器]****。
 
     ![設定來源](./media/azure-stack-site-recovery/plus-config-srv.png)
@@ -182,7 +177,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 若要安裝與登錄組態伺服器，對您用來作為組態伺服器的 VM 建立 RDP 連線，然後執行統一安裝。
 
-開始之前，請先確定時鐘與 VM 上的[時間伺服器同步](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)。 如果時間比當地時間快 5 分鐘以上，安裝就會失敗。
+開始之前，請先確定時鐘與 VM 上的[時間伺服器同步](/windows-server/networking/windows-time-service/windows-time-service-top)。 如果時間比當地時間快 5 分鐘以上，安裝就會失敗。
 
 現在安裝組態伺服器：
 
@@ -190,14 +185,14 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 > [!NOTE]
 > 組態伺服器也可從命令列安裝。 [深入了解](physical-manage-configuration-server.md#install-from-the-command-line)。
-> 
-> 可能需要 15 分鐘以上，帳戶名稱才會出現在入口網站。 要立即更新，請選擇**佈建服務器** > ***伺服器名稱*** > **刷新伺服器**。
+>
+> 可能需要 15 分鐘以上，帳戶名稱才會出現在入口網站。 要立即更新,請選擇**設定伺服器** > ***伺服器名稱*** > **刷新伺服器**。
 
 ## <a name="step-4-set-up-the-target-environment"></a>步驟 4︰設定目標環境
 
 選取並確認目標資源。
 
-1. 在 **"準備基礎結構** > **目標**"中，選擇要使用的 Azure 訂閱。
+1. 在 **「準備基礎結構** > **目標**」中,選擇要使用的 Azure 訂閱。
 2. 指定目標部署模型。
 3. Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶和網路。 如果找不到它們，您必須建立至少一個儲存體帳戶和虛擬網路，才能完成精靈。
 
@@ -206,7 +201,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 ### <a name="create-a-replication-policy"></a>建立複寫原則
 
-1. 按一下 **"準備基礎結構** > **複製設置**"。
+1. 按下 **「準備基礎結構** > **複製設置**」。
 2. 在 [建立複寫原則]**** 中，指定原則名稱。
 3. 在 [RPO 閾值]**** 中，指定復原點目標 (RPO) 限制。
     - 系統會根據設定的時間建立複寫資料的復原點。
@@ -214,7 +209,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 4. 在 [復原點保留]**** 中，指定每個復原點會保留多久的時間。 複寫的 VM 可以還原至所指定時間範圍內的任何時間點。
 5. 在 [應用程式一致快照集頻率]**** 中，指定建立應用程式一致快照集的頻率。
 
-    - 應用一致的快照是 VM 內應用資料的時間點快照。
+    - 應用一致的快照是 VM 內應用數據的時間點快照。
     - 磁碟區陰影複製服務 (VSS) 可確保在建立快照集時，VM 上的應用程式處於一致狀態。
 6. 選取 [確定]**** 以建立原則。
 
@@ -229,9 +224,9 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 請確定您已完成[步驟 1：準備機器](#step-1-prepare-azure-stack-vms)中的所有工作。 接著啟用複寫，如下所述：
 
-1. 選擇**複製應用程式** > **源**。
+1. 選擇**複製應用程式** > **來源**。
 2. 在 [來源]**** 中，選取設定伺服器。
-3. 在**機器類型**中，選擇**物理電腦**。
+3. 在**機器型態**中,選擇**物理電腦**。
 4. 選取處理序伺服器 (組態伺服器)。 然後按一下 **[確定]**。
 5. 在 [目標]**** 中，選取您想要在容錯移轉後，在其中建立 VM 的訂用帳戶和資源群組。 選擇您要用於容錯移轉 VM 的部署模型。
 6. 選取您要儲存複寫資料的 Azure 儲存體帳戶。
@@ -242,17 +237,17 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
     - 使用機器的內部 IP 位址。
     - 如果您指定公用 IP 位址，則複寫可能無法如預期般運作。
 
-10. 在**屬性** > **配置屬性**中，選擇進程伺服器將用於在電腦上自動安裝移動服務的帳戶。
-11. 在**複製設置** > **中 配置複製設置**，檢查是否選擇了正確的複寫原則。
-12. 按一下**啟用複製**。
-13. 跟蹤**設置** > **Jobs**作業 > **網站恢復作業**中的**啟用保護**作業的進度。 執行 [完成保護]**** 作業之後，機器即準備好進行容錯移轉。
+10. 在**屬性** > **配置屬性**中,選擇進程伺服器將用於在計算機上自動安裝行動服務的帳戶。
+11. 在**複製設定** > **中 設定複製設定**,檢查是否選擇了正確的複製策略。
+12. 按下**啟用複製**。
+13. 跟蹤**設定** > **Jobs** > 作業**站點恢復作業**中的**啟用保護**作業的進度。 執行 [完成保護]**** 作業之後，機器即準備好進行容錯移轉。
 
 > [!NOTE]
 > Site Recovery 會在 VM 已啟用複寫時安裝行動服務。
-> 
+>
 > 可能需要 15 分鐘或更久的時間，變更才會生效並顯示在入口網站中。
-> 
-> 要監視添加的 VM，請查看**佈建服務器** > **中上次聯繫 時**發現的時間。 若要新增 VM 而不等候已排定的探索，請醒目提示設定伺服器 (但不要選取)，然後選取 [重新整理]****。
+>
+> 要監視添加的 VM,請查看**配置伺服器** > **中上次聯繫 時**發現的時間。 若要新增 VM 而不等候已排定的探索，請醒目提示設定伺服器 (但不要選取)，然後選取 [重新整理]****。
 
 
 ## <a name="step-6-run-a-disaster-recovery-drill"></a>步驟 6：執行災害復原演練
@@ -261,16 +256,16 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 ### <a name="verify-machine-properties"></a>驗證機器屬性
 
-執行測試容錯移轉之前，請先驗證機器屬性，並確定機器符合 [Azure 需求](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)。 您可以檢視與修改屬性，如下所示：
+執行測試容錯移轉之前，請先驗證機器屬性，並確定機器符合 [Azure 需求](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。 您可以檢視與修改屬性，如下所示：
 
 1. 在 [受保護的項目]**** 中，按一下 [複寫的項目]**** > VM。
 2. 在 [複寫的項目]**** 窗格中，將會呈現 VM 資訊、健康情況狀態，以及最新可用復原點的摘要。 如需檢視詳細資訊，請按一下 [屬性]****。
 3. 在 [計算與網路]**** 中，視需要修改設定。
 
-    - 您可以修改 Azure VM 名稱、資源群組、目標大小、[可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)及受控磁碟設定。
+    - 您可以修改 Azure VM 名稱、資源群組、目標大小、[可用性設定組](/azure/virtual-machines/windows/tutorial-availability-sets)及受控磁碟設定。
     - 您也可以檢視和修改網路設定。 這些包括容錯移轉後 Azure VM 加入的網路/子網路，以及要指派給 VM 的 IP 位址。
 1. 在 [磁碟]**** 中，檢視 VM 上作業系統與資料磁碟的相關資訊。
-   
+
 
 ### <a name="run-a-test-failover"></a>執行測試容錯移轉
 
@@ -279,37 +274,37 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 1. 程式會進行必要條件檢查，以確保所有容錯移轉所需之條件都已準備就緒。
 2. 容錯移轉使用指定的復原點處理資料：
     - **最近處理**：機器容錯移轉到 Site Recovery 所處理的最新復原點。 隨即顯示時間戳記。 使用此選項時，無須花費時間處理資料，因此它會提供低 RTO (復原時間目標)。
-    - **最新的應用一致性**：電腦容錯移轉到最新的應用一致性復原點。
-    - **自訂**：選擇用於容錯移轉的復原點。
+    - **最新的應用一致性**:計算機故障轉移到最新的應用一致性恢復點。
+    - **自定義**:選擇用於故障轉移的恢復點。
 
 3. 系統使用處理後的資料建立 Azure VM。
 4. 測試容錯移轉會自動清除演練期間建立的 Azure VM。
 
 對 VM 執行測試容錯移轉，如下所示：
 
-1. 在 **"設置** > **複製專案"中**，按一下 VM > **_Test 容錯移轉**。
-2. 針對此逐步解說，我們將選擇使用 [最近處理]**** 復原點。 
+1. 在 **「設定** > **複製項目」 中**,按下 VM > _Test**故障轉移**。
+2. 針對此逐步解說，我們將選擇使用 [最近處理]**** 復原點。
 3. 在 [測試容錯移轉]**** 中，選取目標 Azure 網路。
 4. 按一下 [確定] **** 即可開始容錯移轉。
 5. 按一下 VM 開啟其屬性以追蹤進度。 或者在 [保存庫名稱]** >  [設定]**** >  [工作]**** > [Site Recovery 工作]**** 中，按一下 [測試容錯移轉]**** 工作。
 6. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器]**** 中。 檢查 VM 的大小是否合適、是否連線到正確的網路，而且正常執行中。
-7. 您現在應該能夠連線到 Azure 中複寫的 VM。 [深入了解](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)。
+7. 您現在應該能夠連線到 Azure 中複寫的 VM。 [深入了解](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 8. 若要刪除測試容錯移轉期間建立的 Azure VM，請按一下 VM 上的 [清除測試容錯移轉]****。 在 [記事]**** 中，儲存關於測試容錯移轉的任何觀察。
 
 ## <a name="fail-over-and-fail-back"></a>容錯移轉和容錯回復
 
 在您已設定複寫，並執行演練確定一切正常運作後，您可以視需要將機器容錯移轉至 Azure。
 
-在您執行容錯移轉之前，如果您要在容錯移轉後與 Azure 中的機器連線，開始連線前請先[準備連線](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)。
+在您執行容錯移轉之前，如果您要在容錯移轉後與 Azure 中的機器連線，開始連線前請先[準備連線](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 接著執行容錯移轉，如下所示：
 
 
-1. 在 **"設置** > **複製專案"** 中，按一下電腦>**容錯移轉**。
+1. 在 **「設定** > **複製項目」** 中, 按下電腦>**故障轉移**。
 2. 選取您要使用的復原點。
 3. 在 [測試容錯移轉]**** 中，選取目標 Azure 網路。
-4. 選取 [Shut down machine before beginning failover] \(先將機器關機再開始容錯移轉)****。 透過此設定，Site Recovery 在開始容錯移轉前會先嘗試將來源機器關機。 然而即使關機失敗，仍會繼續容錯移轉。 
-5. 按一下 [確定] **** 即可開始容錯移轉。 您可以按照 **"作業**"頁上的容錯移轉進度進行操作。
+4. 選取 [Shut down machine before beginning failover] \(先將機器關機再開始容錯移轉)****。 透過此設定，Site Recovery 在開始容錯移轉前會先嘗試將來源機器關機。 然而即使關機失敗，仍會繼續容錯移轉。
+5. 按一下 [確定] **** 即可開始容錯移轉。 您可以按照 **「作業**」頁上的故障轉移進度進行操作。
 6. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器]**** 中。 如果您準備在容錯移轉後連線，請檢查 VM 的大小是否合適、是否連線到正確的網路，而且正常執行中。
 7. 驗證 VM 後，按一下 [認可]**** 完成容錯移轉。 這會刪除所有可用的復原點。
 
@@ -321,18 +316,18 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 當主要網站再次啟動並執行時，您可以從 Azure 容錯回復至 Azure Stack。 做法是，您必須下載 Azure VM VHD，然後上傳到 Azure Stack。
 
-1. 將 Azure VM 關機，讓您可以下載 VHD。 
+1. 將 Azure VM 關機，讓您可以下載 VHD。
 2. 若要開始下載 VHD，請安裝 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 3. 瀏覽至 Azure 入口網站中的 VM (使用 VM 名稱)。
 4. 在 [磁碟]**** 中，按一下磁碟名稱，然後收集設定。
 
-    - 例如，用於我們測試：https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd 中的 VHD URI 可加以細分，以取得用於下載 VHD 的輸入參數。
+    - 例如，用於我們測試：`https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` 中的 VHD URI 可加以細分，以取得用於下載 VHD 的輸入參數。
         - 儲存體帳戶：502055westcentralus
         - 容器：wahv9b8d2ceb284fb59287
         - VHD 名稱： copied-3676553984.vhd
 
 5. 現在，使用 Azure 儲存體總管下載 VHD。
-6. 使用[這些步驟](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)將 VHD 上傳到 Azure Stack。
+6. 使用[這些步驟](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)將 VHD 上傳到 Azure Stack。
 7. 在現有的 VM 或新 VM 中，附加已上傳的 VHD。
 8. 檢查確認作業系統磁碟正確，然後啟動 VM。
 

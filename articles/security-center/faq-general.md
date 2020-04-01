@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心常見問題 - 一般問題
-description: 有關 Azure 安全中心的常見問題，該產品可説明您預防、檢測和回應威脅
+description: 有關 Azure 安全中心的常見問題,該產品可説明您預防、檢測和回應威脅
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661834"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436127"
 ---
-# <a name="faq---general-questions-about-azure-security-center"></a>常見問題解答 - 有關 Azure 安全中心的一般問題
+# <a name="faq---general-questions-about-azure-security-center"></a>常見問題解答 ─ 有關 Azure 安全中心的一般問題
 
 ## <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
-Azure 安全中心通過提高資源安全性的可見度和控制，説明您預防、檢測和回應威脅。 它提供您訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
+Azure 安全中心通過提高資源安全性的可見性和控制,説明您預防、檢測和回應威脅。 它提供您訂用帳戶之間的整合式安全性監視和原則管理，協助您偵測可能會忽略的威脅，且適用於廣泛的安全性解決方案生態系統。
 
-安全中心使用 Microsoft 監視代理收集和存儲資料。 有關詳細資訊，請參閱[Azure 安全中心中的資料收集](security-center-enable-data-collection.md)。
+安全中心使用日誌分析代理收集和存儲數據。 有關詳細資訊,請參閱[Azure 安全中心中的數據收集](security-center-enable-data-collection.md)。
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>我要如何取得 Azure 資訊安全中心？
-「Azure 資訊安全中心」是藉由您的 Microsoft Azure 訂用帳戶啟用，並可從 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)存取。 要訪問它，[請登錄到門戶](https://portal.azure.com)，選擇 **"流覽**"並滾動到**安全中心**。
+「Azure 資訊安全中心」是藉由您的 Microsoft Azure 訂用帳戶啟用，並可從 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)存取。 要[存取, 請登入門戶](https://portal.azure.com),選擇 **「瀏覽**」並捲軸**群組 。**
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Azure 資訊安全中心會監視哪些 Azure 資源？
 Azure 資訊安全中心會監視下列 Azure 資源：
 
-* 虛擬機器 （VM） （包括[雲服務](../cloud-services/cloud-services-choose-me.md)）
+* 虛擬機器 (VM) (包括[雲服務](../cloud-services/cloud-services-choose-me.md))
 * 虛擬機器擴展集
 * Azure 虛擬網路
 * 容器
@@ -44,11 +44,11 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 * Azure Web Apps (在 [App Service 環境](../app-service/environment/intro.md)中)
 * 與您的 Azure 訂用帳戶整合的合作夥伴解決方案，例如 VM 和 App Service 環境上的 Web 應用程式防火牆
 
-此外，Azure 安全中心也可以監視非 Azure（包括本地）電腦。 Windows[電腦](./quick-onboard-windows-computer.md)和[Linux 電腦](./quick-onboard-linux-computer.md)都受支援。
+此外,Azure 安全中心也可以監視非 Azure(包括本地)電腦。 Windows[計算機](./quick-onboard-windows-computer.md)和[Linux 電腦](./quick-onboard-linux-computer.md)都受支援。
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>我要如何查看 Azure 資源目前的安全性狀態？
-"**安全中心概述"** 頁顯示按計算、網路、存儲&資料和應用程式細分的環境的總體安全狀況。 每個資源類型都有一個指示器，顯示已識別的安全性漏洞。 按一下每個圖格都會顯示資訊安全中心所識別的安全性問題，以及訂用帳戶內資源的詳細目錄。
+"**安全中心概述"** 頁顯示按計算、網络、存儲&數據和應用程式細分的環境的總體安全狀況。 每個資源類型都有一個指示器,顯示已識別的安全漏洞。 按一下每個圖格都會顯示資訊安全中心所識別的安全性問題，以及訂用帳戶內資源的詳細目錄。
 
 
 
@@ -86,8 +86,8 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 * 來自已整合的合作夥伴安全性解決方案 (例如「反惡意程式碼」或「Web 應用程式防火牆」) 的安全性警示
 
 
-## <a name="why-did-secure-score-values-change"></a>為什麼安全分數值會更改？ <a name="secure-score-faq"></a>
-截至 2019 年 2 月，安全中心調整了一些建議的分數，以便更好地適應其嚴重性。 由於此調整，總體安全分數值可能會發生變化。  有關安全分數的詳細資訊，請參閱[安全分數計算](security-center-secure-score.md)。
+## <a name="why-did-secure-score-values-change"></a>為什麼安全分數值會更改? <a name="secure-score-faq"></a>
+截至 2019 年 2 月,安全中心調整了一些建議的分數,以便更好地適應其嚴重性。 由於此調整,總體安全分數值可能會發生變化。  關於安全分數的詳細資訊,請參閱[安全分數計算](security-center-secure-score.md)。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>在 Microsoft Security Response Center 與 Azure 資訊安全中心，偵測到威脅和收到警示有何差異？

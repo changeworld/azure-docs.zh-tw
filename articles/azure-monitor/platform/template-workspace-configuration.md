@@ -1,25 +1,25 @@
 ---
-title: 日誌分析工作區的 Azure 資源管理器範本
+title: 紀錄分析工作區的 Azure 資源管理員樣本
 description: 您可以使用 Azure Resource Manager 範本來建立和設定 Log Analytics 工作區。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054692"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477976"
 ---
-# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 資源管理器範本管理日誌分析工作區
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 資源管理員樣本管理紀錄分析工作區
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 可以使用[Azure 資源管理器範本](../../azure-resource-manager/templates/template-syntax.md)在 Azure 監視器中創建和配置日誌分析工作區。 您可以使用範本執行的工作範例包括︰
 
-* 創建工作區，包括設置定價層和容量預留
+* 建立工作區,包括設定定價層和容量預留
 * 新增解決方案
 * 建立已儲存的搜尋
 * 建立電腦群組
@@ -27,7 +27,7 @@ ms.locfileid: "80054692"
 * 從 Linux 和 Windows 電腦收集效能計數器
 * 在 Linux 電腦上收集 syslog 事件 
 * 從 Windows 事件記錄收集事件
-* 從 Windows 電腦收集自訂日誌
+* 從 Windows 電腦收集自訂紀錄
 * 將記錄分析代理程式加入至 Azure 虛擬機器
 * 設定記錄分析將 Azure 診斷所收集的資料編製索引
 
@@ -46,19 +46,22 @@ ms.locfileid: "80054692"
 
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 
-下面的示例使用本地電腦中的範本創建工作區。 JSON 範本配置為僅需要新工作區的名稱和位置。 它使用為其他工作區參數指定的值，如[存取控制模式](design-logs-deployment.md#access-control-mode)、定價層、保留和容量預留級別。
+下面的範例使用本地電腦中的範本創建工作區。 JSON 範本配置為僅需要新工作區的名稱和位置。 它使用為其他工作區參數指定的值,如[訪問控制模式](design-logs-deployment.md#access-control-mode)、定價層、保留和容量預留級別。
 
-對於容量預留，通過指定屬性`CapacityReservation``capacityReservationLevel`的 SKU 和 GB 的值來定義用於引入資料的選定容量預留。 以下清單詳細介紹了配置受支援的值和行為。
+> [!WARNING]
+> 以下範本創建日誌分析工作區並配置數據收集。 這可能會更改您的計費設置。 使用[Azure 監視器日誌查看管理使用方式和成本](manage-cost-storage.md),以瞭解日誌分析工作區中收集的數據的計費,然後再將其應用於 Azure 環境。
 
-- 設置預訂限制後，您不能在 31 天內更改為其他 SKU。
+對於容量預留,通過指定屬性`CapacityReservation``capacityReservationLevel`的 SKU 和 GB 的值來定義用於引入數據的選定容量預留。 以下清單詳細介紹了配置受支援的值和行為。
 
-- 設置預留值後，只能在 31 天內增加預訂值。
+- 設置預訂限制后,您不能在 31 天內更改為其他 SKU。
 
-- 只能以 100`capacityReservationLevel`的倍數設置 的值，最大值為 50000。
+- 設置預留值後,只能在 31 天內增加預訂值。
 
-- 如果增加預留級別，計時器將重置，並且在此更新後 31 天內無法更改計時器。  
+- 只能以 100`capacityReservationLevel`的倍數設置的值,最大值為 50000。
 
-- 如果修改工作區的任何其他屬性，但保留限制保留到同一級別，則計時器不會重置。 
+- 如果增加預留級別,計時器將重置,並且在此更新后 31 天內無法更改計時器。  
+
+- 如果修改工作區的任何其他屬性,但保留限制保留到同一級別,則計時器不會重置。 
 
 ### <a name="create-and-deploy-template"></a>建立和部署範本
 
@@ -75,7 +78,7 @@ ms.locfileid: "80054692"
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ ms.locfileid: "80054692"
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,16 +148,16 @@ ms.locfileid: "80054692"
     }
     ```
 
-> [資訊] 容量預留設置，在"sKU"下使用這些屬性：
+   >[!NOTE]
+   >對於容量預留設定,請使用「sKU」下的這些屬性:
+   >* "名稱":"容量保留",
+   >* '容量保留等級": 100
 
->   "名稱"："容量保留"，
+2. 編輯範本以符合您的需求。 請考慮創建[資源管理器參數檔](../../azure-resource-manager/templates/parameter-files.md),而不是將參數作為內聯值傳遞。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)參考，以了解支援哪些屬性和值。 
 
->   "容量保留級別"： 100
-
-
-2. 編輯範本以符合您的需求。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)參考，以了解支援哪些屬性和值。 
 3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json****。
-4. 您已準備好部署此範本。 您可以使用 PowerShell 或命令列創建工作區，將工作區名稱和位置指定為命令的一部分。 工作區名稱必須在所有 Azure 訂閱中全域唯一。
+
+4. 您已準備好部署此範本。 您可以使用 PowerShell 或命令列創建工作區,將工作區名稱和位置指定為命令的一部分。 工作區名稱必須在所有 Azure 訂閱中全域唯一。
 
    * 對於 PowerShell，從包含範本的資料夾使用下列命令：
    
@@ -176,7 +179,7 @@ ms.locfileid: "80054692"
 下列範例範本說明如何：
 
 1. 將方案加入至工作區
-2. 創建保存的搜索。 為了確保部署不會意外覆蓋保存的搜索，應在"已保存的搜索"資源中添加 eTag 屬性，以覆蓋和維護已保存搜索的陽萎性。
+2. 建立保存的搜索。 為了確保部署不會意外覆蓋已保存的搜索,應在"已保存的搜索"資源中添加 eTag 屬性,以覆蓋和維護已保存搜索的陽萎性。
 3. 建立電腦群組
 4. 從已安裝 Windows 代理程式的電腦啟用 IIS 記錄收集功能
 5. 從 Linux 電腦收集邏輯磁碟效能計數器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
@@ -184,7 +187,7 @@ ms.locfileid: "80054692"
 7. 從 Windows 電腦的應用程式事件記錄檔收集錯誤和警告事件
 8. 從 Windows 電腦收集記憶體可用 Mb 效能計數器
 9. 收集 Azure 診斷寫入儲存體帳戶的 IIS 記錄和 Windows 事件記錄
-10. 從 Windows 電腦收集自訂日誌
+10. 從 Windows 電腦收集自訂紀錄
 
 ```json
 {
@@ -197,7 +200,7 @@ ms.locfileid: "80054692"
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ ms.locfileid: "80054692"
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ ms.locfileid: "80054692"
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

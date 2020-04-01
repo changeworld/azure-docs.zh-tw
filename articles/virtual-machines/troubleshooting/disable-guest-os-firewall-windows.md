@@ -1,6 +1,6 @@
 ---
 title: 停用 Azure VM 中的客體 OS 防火牆 | Microsoft Docs
-description: ''
+description: 瞭解一種解決方法,用於排除來賓操作系統防火牆篩選部分或全部 VM 流量的情況。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: dbb9b0f865c7ec5d9d29e2310ae41abbec287bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79464957"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422371"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>停用 Azure VM 中的客體 OS 防火牆
 
@@ -27,7 +27,7 @@ ms.locfileid: "79464957"
 
 ## <a name="solution"></a>解決方法
 
-本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 啟用 Windows 防火牆元件是 Microsoft 最佳實踐。 如何配置防火牆規則取決於對 VM 所需的存取層級。
+本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 啟用 Windows 防火牆元件是 Microsoft 最佳實務。 如何配置防火牆規則取決於對 VM 所需的訪問級別。
 
 ### <a name="online-solutions"></a>線上解決方案 
 
@@ -90,9 +90,9 @@ ms.locfileid: "79464957"
 
 請遵循下列步驟使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，啟動登錄編輯程式，然後轉到**檔** > **連接網路註冊表**。
+1.  在故障排除 VM 上,啟動註冊表編輯器,然後轉到**檔案** > **連接網路註冊表**。
 
-2.  打開*目的機*_SYSTEM 分支，並指定以下值：
+2.  開啟*目標機*_SYSTEM 分支,並指定以下值:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,7 +100,7 @@ ms.locfileid: "79464957"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重新啟動服務。 由於無法使用遠端註冊表執行此操作，因此必須使用遠端服務主控台。
+3.  重新啟動服務。 由於無法使用遠端註冊表執行此操作,因此必須使用遠端服務控制台。
 
 4.  打開**服務.msc**的實例。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79464957"
 
 6.  選取 [連線到另一部電腦]****。
 
-7.  輸入問題 VM 的**私人 IP 位址 （DIP）。**
+7.  輸入問題 VM 的**專用 IP 位址 (DIP)。**
 
 8.  重新啟動本機防火牆原則。
 

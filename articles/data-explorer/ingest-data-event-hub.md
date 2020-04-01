@@ -1,18 +1,18 @@
 ---
 title: 將資料從事件中樞內嵌至 Azure 資料總管
-description: 在本文中，您將瞭解如何從事件中心將資料引入（載入）到 Azure 資料資源管理器中。
+description: 在本文中,您將瞭解如何從事件中心將資料引入(載入)到 Azure 資料資源管理器中。
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bce92eeed669628fa1b6318abd6b0c13f7e84848
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188195"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411209"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>將資料從事件中樞內嵌至 Azure 資料總管
 
@@ -20,28 +20,28 @@ ms.locfileid: "77188195"
 > * [入口網站](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
-> * [Azure 資源管理器範本](data-connection-event-hub-resource-manager.md)
+> * [Azure Resource Manager 範本](data-connection-event-hub-resource-manager.md)
 
-Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管可從事件中樞、巨量資料串流平台及事件內嵌服務進行內嵌 (載入資料)。 [事件中樞](/azure/event-hubs/event-hubs-about)可以近乎即時地每秒鐘處理數百萬個事件。 在本文中，您將創建一個事件中心，從 Azure 資料資源管理器連接到它，並查看通過系統的資料流程。
+Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 資料總管可從事件中樞、巨量資料串流平台及事件內嵌服務進行內嵌 (載入資料)。 [事件中樞](/azure/event-hubs/event-hubs-about)可以近乎即時地每秒鐘處理數百萬個事件。 在本文中,您將創建一個事件中心,從 Azure 資料資源管理器連接到它,並查看透過系統的數據流。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* [測試群集和資料庫](create-cluster-database-portal.md)。
+* [測試叢集與資料庫](create-cluster-database-portal.md)。
 * 產生資料並將其傳送至事件中樞的[範例應用程式](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 將範例應用程式下載到您的系統。
 * 用於執行範例應用程式的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登錄到 Azure[門戶](https://portal.azure.com/)。
+登入 [Azure 入口網站](https://portal.azure.com/)。
 
 ## <a name="create-an-event-hub"></a>建立事件中樞
 
-在本文中，您將生成示例資料並將其發送到事件中心。 第一個步驟是建立事件中樞。 其做法是使用 Azure 入口網站中的 Azure Resource Manager 範本。
+在本文中,您將生成範例數據並將其發送到事件中心。 第一個步驟是建立事件中樞。 其做法是使用 Azure 入口網站中的 Azure Resource Manager 範本。
 
 1. 若要建立事件中樞，請使用下列按鈕開始部署。 按一下滑鼠右鍵並選取 [在新視窗中開啟]****，以便依照本文中的其餘步驟操作。
 
-    [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![部署至 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     [部署至 Azure]**** 按鈕可將您帶往 Azure 入口網站，填寫部署表單。
 
@@ -92,7 +92,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 1. 將下列命令複製到視窗中，然後選取 [執行]**** 以將傳入的 JSON 資料對應至資料表 (TestTable) 的資料行名稱與資料類型。
 
     ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
 
 ## <a name="connect-to-the-event-hub"></a>連線至事件中樞
@@ -109,7 +109,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
     ![事件中樞連線](media/ingest-data-event-hub/event-hub-connection.png)
 
-    **資料來源：**
+    **資料來源:**
 
     **設定** | **建議的值** | **欄位描述**
     |---|---|---|
@@ -117,8 +117,8 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
     | 事件中樞命名空間 | 唯一命名空間名稱 | 您先前選擇用來辨識命名空間的名稱。 |
     | 事件中樞 | *test-hub* | 您建立的事件中樞。 |
     | 取用者群組 | *test-group* | 在您所建立事件中樞中定義的取用者群組。 |
-    | 事件系統屬性 | 選擇相關屬性 | [事件中心系統屬性](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每個事件消息有多個記錄，系統屬性將添加到第一個記錄中。 添加系統屬性時，[創建](/azure/kusto/management/create-table-command)或[更新](/azure/kusto/management/alter-table-command)表架構和[映射](/azure/kusto/management/mappings)以包括所選屬性。 |
-    | 壓縮 | *無* | 事件中心消息負載的壓縮類型。 支援的壓縮類型：*無，GZip*。|
+    | 事件系統屬性 | 選擇相關屬性 | [事件中心系統屬性](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每個事件消息有多個記錄,系統屬性將添加到第一個記錄中。 新增系統屬性時,[建立](/azure/kusto/management/create-table-command)或[更新](/azure/kusto/management/alter-table-command)表架構和[映射](/azure/kusto/management/mappings)以包括所選屬性。 |
+    | 壓縮 | *None* | 事件中心消息負載的壓縮類型。 支援的壓縮類型:*無, GZip*。|
     | | |
 
     **目標資料表：**
@@ -129,14 +129,14 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
      **設定** | **建議的值** | **欄位描述**
     |---|---|---|
     | Table | *TestTable* | 您在 **TestDatabase** 中建立的資料表。 |
-    | 資料格式 | *Json* | 支援的格式包括 Avro、CSV、JSON、多林·JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
-    | 資料行對應 | *TestMapping* | 在**測試資料庫中**創建的[映射](/azure/kusto/management/mappings)，將傳入的 JSON 資料對應到**TestTable**的列名稱和資料類型。 JSON 或 MULTILINE JSON 需要，其他格式可選。|
+    | 資料格式 | *JSON* | 支援的格式包括 Avro、CSV、JSON、多林·JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
+    | 資料行對應 | *TestMapping* | 在**測試資料庫中**創建的[映射](/azure/kusto/management/mappings),將傳入的 JSON 數據映射到**TestTable**的列名稱和數據類型。 JSON 或 MULTILINE JSON 需要,其他格式可選。|
     | | |
 
     > [!NOTE]
     > * 選取 [我的資料包含路由資訊]**** 來使用動態路由，其中您的資料會包含必要的路由資訊，如[範例應用程式](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)註解中所示。 如果靜態和動態屬性都已設定，則動態屬性會覆寫靜態屬性。 
-    > * 只有在創建資料連線後排隊的事件才會被引入。
-    > * 您還可以通過[示例應用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)中看到的動態屬性設置壓縮類型。
+    > * 只有在創建數據連接後排隊的事件才會被引入。
+    > * 您還可以透過[示例應用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)中看到的動態屬性設置壓縮類型。
     > * GZip 壓縮負載不支援 Avro、ORC 和 PARQUET 格式以及事件系統屬性。
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
@@ -149,7 +149,7 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
     ![共用存取原則](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. 複製**連接字串 - 主鍵**。 您在下一節中貼上這項資料。
+1. 複製**連線字串 - 主鍵**。 您在下一節中貼上這項資料。
 
     ![連接字串](media/ingest-data-event-hub/connection-string.png)
 
@@ -197,9 +197,9 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
     ![訊息結果集](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure 資料總管具有資料擷取的彙總 (批次處理) 原則，可將擷取程序最佳化。 預設情況下，該策略配置為 5 分鐘或 500 MB 的資料，因此可能會遇到延遲。 有關聚合選項，請參閱[批次處理策略](/azure/kusto/concepts/batchingpolicy)。 
+    > * Azure 資料總管具有資料擷取的彙總 (批次處理) 原則，可將擷取程序最佳化。 默認情況下,該策略配置為 5 分鐘或 500 MB 的數據,因此可能會遇到延遲。 有關集合模式,請參閱[批次原則](/azure/kusto/concepts/batchingpolicy)。 
     > * 事件中心引入包括事件中心回應時間 10 秒或 1 MB。 
-    > * 配置表以支援流式處理並消除回應時間的延遲。 請參閱[流式處理策略](/azure/kusto/concepts/streamingingestionpolicy)。 
+    > * 配置表以支援流式處理並消除回應時間的延遲。 請參考[流式處理原則](/azure/kusto/concepts/streamingingestionpolicy)。 
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -217,4 +217,4 @@ Azure 資料總管是一項快速又可高度調整的資料探索服務，可�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 資料資源管理器中的查詢資料](web-query-data.md)
+* [Azure 資料資源管理員中的查詢資料](web-query-data.md)

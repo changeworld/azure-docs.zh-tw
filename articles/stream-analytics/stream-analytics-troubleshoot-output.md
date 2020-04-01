@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254283"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409259"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
 
-本頁面說明輸出連線的常見問題，以及如何進行其疑難排解並加以解決。
+本文介紹了 Azure 流分析輸出連接的常見問題、如何排除輸出問題以及如何更正問題。 許多故障排除步驟都需要為流分析作業啟用診斷日誌。 如果未啟用診斷紀錄,請參閱[使用診斷紀錄對 Azure 串流分析進行故障排除](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="output-not-produced-by-job"></a>作業未產生輸出
+
 1.  對各個輸出使用 [測試連線]**** 按鈕，驗證輸出的連線能力。
 
-2.  查看 **"監視器"** 選項卡上的[**監視指標**](stream-analytics-monitoring.md)。由於這些值是聚合的，因此指標將延遲幾分鐘。
-    - 若輸入事件 > 0，則作業可以讀取輸入資料。 如果輸入事件不是 > 0，然後︰
-      - 若要查看資料來源是否為有效資料，請使用[服務匯流排總管](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)進行檢查。 此項檢查適用於使用事件中樞作為輸入的作業。
-      - 請檢查資料序列化格式及資料編碼是否正確。
-      - 如果該作業使用事件中樞，請檢查訊息本文是否為 *Null*。
+2.  檢視 **「監視器」** 選項卡上的[**監視指標**](stream-analytics-monitoring.md)。由於這些值是聚合的,因此指標將延遲幾分鐘。
+   * 如果輸入事件大於 0,則作業能夠讀取輸入數據。 如果輸入事件不大於 0,則作業的輸入出現問題。 請參閱[排除輸入連接故障](stream-analytics-troubleshoot-input.md),瞭解如何排除輸入連接問題。
+   * 如果資料轉換錯誤大於 0 並爬升,請參閱[Azure 流分析數據錯誤](data-errors.md),瞭解有關資料轉換錯誤的詳細資訊。
+   * 如果運行時錯誤大於 0,則作業可以接收數據,但在處理查詢時生成錯誤。 若要找出錯誤，請前往[稽核記錄](../azure-resource-manager/management/view-activity-logs.md)，並篩選*失敗*狀態。
+   * 如果輸入事件大於 0,並且輸出事件等於 0,則以下之一為 true:
+      * 查詢處理產生了零個輸出事件。
+      * 事件或欄位可能格式錯誤,導致查詢處理後輸出為零。
+      * 由於連線或驗證問題，作業無法將推送資料至輸出接收端。
 
-    - 若資料轉換錯誤 > 0 且持續增加中，則可能符合下列情況：
-      - 輸出事件不符合目標接收器的結構描述。
-      - 事件結構描述可能與查詢中事件的定義或預期結構描述不相符。
-      - 事件中某些欄位的資料類型可能不符合預期類型。
-
-    - 如果執行階段錯誤 > 0，則表示作業可以接收資料，但在處理查詢時會產生錯誤。
-      - 若要找出錯誤，請前往[稽核記錄](../azure-resource-manager/management/view-activity-logs.md)，並篩選*失敗*狀態。
-
-    - 如果 InputEvents > 0 且 OutputEvents = 0，則表示符合下列其中一個情況︰
-      - 查詢處理產生了零個輸出事件。
-      - 事件或其欄位可能格式錯誤，因此在查詢處理後導致零個輸出。
-      - 由於連線或驗證問題，作業無法將推送資料至輸出接收端。
-
-    - 在所有前述錯誤案例中，作業記錄訊息說明了其他詳細資料 (包括目前所發生的事)，僅有查詢邏輯篩選掉所有事件的案例除外。 如果多事件處理產生錯誤，串流分析會在 10 分鐘內將同類型的前三個錯誤記錄到作業記錄中。 接著會隱藏其他完全相同的錯誤並顯示錯誤訊息，內容為「錯誤發生次數太頻繁，因此隱藏這些錯誤」。
+   在所有前述錯誤案例中，作業記錄訊息說明了其他詳細資料 (包括目前所發生的事)，僅有查詢邏輯篩選掉所有事件的案例除外。 如果處理多個事件生成錯誤,則每 10 分鐘聚合一次錯誤。
 
 ## <a name="job-output-is-delayed"></a>作業輸出延遲
 
 ### <a name="first-output-is-delayed"></a>第一個輸出就延遲
+
 串流分析作業啟動時，會讀取輸入事件，但在某些情況下會發生輸出延遲。
 
 時態性查詢元素中的較長時間值可能會造成輸出延遲。 若要針對較長時間範圍產生正確的輸出，串流作業要先讀取最近時間 (最多七天前) 的資料，以填滿時間範圍。 在這段時間，在未處理輸入事件的讀取作業趕上之前，都不會產生任何輸出。 當系統升級串流作業，因此而重新啟動作業時，就會出現此問題。 這類升級通常每隔幾個月會發生一次。
@@ -69,6 +61,7 @@ ms.locfileid: "79254283"
    - 對於分析函數，每個事件都會產生輸出，不會有任何延遲。
 
 ### <a name="output-falls-behind"></a>輸出落後
+
 在作業的一般作業期間，如果您發現作業的輸出落後 (延遲越來越長)，便可以檢查下列因素找出根本原因：
 - 下游接收是否已節流
 - 上游來源是否已節流
@@ -88,20 +81,20 @@ ms.locfileid: "79254283"
 
 * 您無法在主索引鍵或者使用 ALTER INDEX 的唯一限制式上設定 IGNORE_DUP_KEY，您必須卸除而後重新建立索引。  
 * 您可以使用 ALTER INDEX 對唯一索引設定 IGNORE_DUP_KEY 選項，這與使用 CREATE INDEX 或 INDEX 定義建立的主索引鍵/唯一限制式不同。  
+
 * 因為您無法在這類索引上強制執行唯一性，所以 IGNORE_DUP_KEY 不適用於資料行存放區索引。  
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列名稱由 Azure 流分析小寫
-使用原始相容性級別 （1.0） 時，Azure 流分析用於將列名稱更改為小寫。 此行為在以後的相容性級別中已修復。 為了保留這種情況，我們建議客戶遷移到相容性級別 1.1 及更高版本。 您可以找到有關 Azure[流分析作業的相容性級別](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)的詳細資訊。
-
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列名稱由 Azure 串流分析小寫
+使用原始相容性級別 (1.0) 時,Azure 流分析用於將列名稱更改為小寫。 此行為在以後的相容性級別中已修復。 為了保留這種情況,我們建議客戶遷移到相容性級別 1.1 及更高版本。 您可以找到有關 Azure[流分析作業的相容性級別](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)的詳細資訊。
 
 ## <a name="get-help"></a>取得說明
 
-有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有關進一步説明,請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 串流分析開始](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

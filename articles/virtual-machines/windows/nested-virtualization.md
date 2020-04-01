@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033129"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437298"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中啟用巢狀虛擬化
 
@@ -26,7 +26,7 @@ ms.locfileid: "74033129"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>建立可使用巢狀結構的 Azure VM
 
-建立新的 Windows Server 2016 Azure VM。  為了快速參考，所有 v3 虛擬機器都支援嵌套虛擬化。 如需支援巢狀結構的虛擬機器完整清單，請參閱 [Azure 計算單位](acu.md)一文。
+建立新的 Windows Server 2016 Azure VM。 如需支援巢狀結構的虛擬機器完整清單，請參閱 [Azure 計算單位](acu.md)一文。
 
 請務必選擇大小足以支援客體虛擬機器需求的 VM。 在此範例中，我們使用的是 D3_v3 大小的 Azure VM。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "74033129"
 
 3. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後按一下 [確定]****。
 
-4. 您可能會在登入過程中收到憑證警告。 按一下"**是**"或 **"繼續**"繼續連接。
+4. 您可能會在登入過程中收到憑證警告。 按下「**是**」或 **「繼續**」繼續連接。
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>在 Azure VM 上啟用 Hyper-V 功能
 您可以手動設定這些設定，或者使用我們提供的 PowerShell 指令碼，將設定自動化。
@@ -122,7 +122,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 >[!IMPORTANT] 
 >
->嵌套 VM 上不支援 Azure 來賓代理，並可能導致主機和嵌套 VM 上出現問題。 不要在嵌套 VM 上安裝 Azure 代理，也不要使用映射創建已安裝了 Azure 來賓代理的嵌套 VM。
+>嵌套 VM 上不支援 Azure 來賓代理,並可能導致主機和嵌套 VM 上出現問題。 不要在嵌套 VM 上安裝 Azure 代理,也不要使用映射創建已安裝了 Azure 來賓代理的嵌套 VM。
 
 1. 開啟 Hyper-V 管理員，然後建立新的虛擬機器。 將虛擬機器設定為使用您建立的新內部網路。
     
@@ -172,7 +172,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 2. 以滑鼠右鍵按一下客體虛擬機器，然後按一下 [連線]。
 
-3. 登錄到來賓虛擬機器。
+3. 登錄到來賓虛擬機。
 
 4. 在客體虛擬機器上，開啟 [網路和共用中心]。
 

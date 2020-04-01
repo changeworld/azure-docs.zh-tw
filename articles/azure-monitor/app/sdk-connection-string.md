@@ -1,51 +1,51 @@
 ---
-title: Azure 應用程式見解中的連接字串 |微軟文檔
+title: Azure 應用程式見解中的連接字串 |微軟文件
 description: 如何使用連接字串。
 ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136701"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410619"
 ---
 # <a name="connection-strings"></a>連接字串
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-連接字串為應用程式洞察使用者提供單個配置設置，無需多個代理設置。 對於希望將資料發送到監視服務的 Intranet Web 服務器、主權或混合雲環境非常有用。
+連接字串為應用程式洞察使用者提供單個配置設置,無需多個代理設置。 對於希望將數據發送到監視服務的 Intranet Web 伺服器、主權或混合雲環境非常有用。
 
-鍵值對為使用者提供了一種為每個應用程式見解 （AI） 服務/產品定義首碼尾碼組合的簡單方法。
+鍵值對為使用者提供了一種為每個應用程式見解 (AI) 服務/產品定義首碼後綴組合的簡單方法。
 
 > [!IMPORTANT]
-> 我們不建議同時設置連接字串和檢測金鑰。 如果使用者同時設置兩者，則以上次設置者為准。 
+> 我們不建議同時設置連接字串和檢測密鑰。 如果用戶同時設置兩者,則以上次設置者為準。 
 
 
 ## <a name="scenario-overview"></a>案例概觀 
 
-我們視覺化的為客戶情景具有最大影響：
+我們可視化的為客戶情景具有最大影響:
 
 - 防火牆異常或代理重定向 
 
-    如果需要對 Intranet Web 服務器進行監視，我們較早的解決方案要求客戶將單個服務終結點添加到您的配置中。 如需詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
-    通過將此工作量減少到單個設置，連接字串提供了更好的替代方法。 一個簡單的首碼，尾碼修正允許自動填滿和重定向所有終結點到正確的服務。 
+    如果需要對 Intranet Web 伺服器進行監視,我們較早的解決方案要求客戶將單個服務終結點添加到您的配置中。 如需詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
+    通過將此工作量減少到單個設置,連接字串提供了更好的替代方法。 一個簡單的首碼,後綴修正允許自動填充和重定向所有終結點到正確的服務。 
 
 - 主權雲或混合雲環境
 
-    使用者可以將資料發送到定義的 Azure[政府區域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
-    連接字串允許您為 Intranet 伺服器或混合雲設置定義終結點設置。 
+    使用者可以將資料傳送到定義的 Azure[政府區域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+    連接字串允許您為 Intranet 伺服器或混合雲設置定義終結點設定。 
 
 ## <a name="getting-started"></a>開始使用
 
-### <a name="finding-my-connection-string"></a>正在查找連接字串？
+### <a name="finding-my-connection-string"></a>搜尋連接字串?
 
-連接字串顯示在應用程式見解資源的"概述"邊欄選項卡上。
+連接字串顯示在應用程式見解資源的「概述」邊欄選項卡上。
 
-![概述邊欄選項卡上的連接字串](media/overview-dashboard/overview-connection-string.png)
+![概述邊列選項卡上的連接字串](media/overview-dashboard/overview-connection-string.png)
 
 ### <a name="schema"></a>結構描述
 
@@ -55,29 +55,29 @@ ms.locfileid: "79136701"
 
 #### <a name="key-value-pairs"></a>索引鍵/值組
 
-連接字串由表示為按分號分隔的鍵值對的設置清單組成：`key1=value1;key2=value2;key3=value3`
+連接字串由表示為按分號分隔的鍵值對的設定清單組成:`key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>語法
 
-- `InstrumentationKey`（如：00000-000-000-000-00000000000000） 連接字串是**必填**欄位。
-- `Authorization`（例如：伊基）（此設置是可選的，因為今天我們僅支援 ikey 授權。
-- `EndpointSuffix`（例如：applicationinsights.azure.cn）設置終結點尾碼將指示要連接到哪個 Azure 雲的 SDK。 SDK 將組裝各個服務的終結點的其餘部分。
+- `InstrumentationKey`(如:00000-000-000-000-00000000000000) 連接字串是**必填**欄位。
+- `Authorization`(例如:伊基)(此設置是可選的,因為今天我們僅支援 ikey 授權。
+- `EndpointSuffix`(例如:applicationinsights.azure.cn)設置終結點後綴將指示要連接到哪個 Azure 雲的 SDK。 SDK將組裝各個服務的終結點的其餘部分。
 - 顯式終結點。
   可以在連接字串中顯式重寫任何服務。
-   - `IngestionEndpoint`（例如：https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`（例如：https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`（例如：https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`（例如：https://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`(例如:https://dc.applicationinsights.azure.com)
+   - `LiveEndpoint`(例如:https://live.applicationinsights.azure.com)
+   - `ProfilerEndpoint`(例如:https://profiler.applicationinsights.azure.com)
+   - `SnapshotEndpoint`(例如:https://snapshot.applicationinsights.azure.com)
 
 #### <a name="endpoint-schema"></a>端點架構
 
 `<prefix>.<suffix>`
-- 首碼：定義服務。 
-- 尾碼：定義公共功能變數名稱。
+- 首碼:定義服務。 
+- 後綴:定義公共功能變數名稱。
 
-##### <a name="valid-suffixes"></a>有效的尾碼
+##### <a name="valid-suffixes"></a>有效的後綴
 
-下面是有效的尾碼清單 
+下面是有效的後綴清單 
 - applicationinsights.azure.cn
 - applicationinsights.us
 
@@ -85,75 +85,75 @@ ms.locfileid: "79136701"
 另請參閱：https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
-##### <a name="valid-prefixes"></a>有效的首碼
+##### <a name="valid-prefixes"></a>有效的前置字串
 
-- [遙測引入](./app-insights-overview.md)：`dc`
-- [即時指標](./live-stream.md)：`live`
-- [探測器](./profiler-overview.md)：`profiler`
-- [快照](./snapshot-debugger.md)：`snapshot`
-
-
-
-## <a name="connection-string-examples"></a>連接字串示例
+- [遙測引入](./app-insights-overview.md):`dc`
+- [即時指標](./live-stream.md):`live`
+- [探測器](./profiler-overview.md):`profiler`
+- [快照](./snapshot-debugger.md):`snapshot`
 
 
-### <a name="minimal-valid-connection-string"></a>最小有效連接字串
+
+## <a name="connection-string-examples"></a>連接字串範例
+
+
+### <a name="minimal-valid-connection-string"></a>最小連線字串
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;`
 
-在此示例中，僅設置了檢測金鑰。
+在此示例中,僅設置了檢測密鑰。
 
 - 授權方案預設為"ikey" 
-- 儀器檢測金鑰：0000000-0000-0000-000000000000000000
-- 區域服務 URI 基於 SDK[預設值](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)，並將連接到公共全域 Azure：
-   - 攝入：https://dc.services.visualstudio.com/
-   - 即時指標：https://rt.services.visualstudio.com/
-   - 分析器：https://agent.azureserviceprofiler.net/
-   - 調試：https://agent.azureserviceprofiler.net/  
+- 儀器檢測密鑰:0000000-0000-0000-000000000000000000
+- 區域服務 URI 基於 SDK[預設值](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6),並將連線到公共全域 Azure:
+   - 攝入:https://dc.services.visualstudio.com/
+   - 即時指標:https://rt.services.visualstudio.com/
+   - 分析器:https://agent.azureserviceprofiler.net/
+   - 除錯:https://agent.azureserviceprofiler.net/  
 
 
 
-### <a name="connection-string-with-endpoint-suffix"></a>具有終結點尾碼的連接字串
+### <a name="connection-string-with-endpoint-suffix"></a>具有終結點後置字串
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
-在此示例中，此連接字串指定終結點尾碼，SDK 將構造服務終結點。
+在此示例中,此連接字串指定終結點後綴,SDK 將構造服務終結點。
 
 - 授權方案預設為"ikey" 
-- 儀器檢測金鑰：0000000-0000-0000-000000000000000000
-- 區域服務 URI 基於提供的終結點尾碼： 
-   - 攝入：https://dc.ai.contoso.com
-   - 即時指標：https://live.ai.contoso.com
-   - 分析器：https://profiler.ai.contoso.com 
-   - 調試：https://snapshot.ai.contoso.com   
+- 儀器檢測密鑰:0000000-0000-0000-000000000000000000
+- 區域服務 URI 基於提供的終結點後置字串: 
+   - 攝入:https://dc.ai.contoso.com
+   - 即時指標:https://live.ai.contoso.com
+   - 分析器:https://profiler.ai.contoso.com 
+   - 除錯:https://snapshot.ai.contoso.com   
 
 
 
-### <a name="connection-string-with-explicit-endpoint-overrides"></a>具有顯式終結點覆蓋的連接字串 
+### <a name="connection-string-with-explicit-endpoint-overrides"></a>具有顯示式顯示點的連接字串 
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-在此示例中，此連接字串為每個服務指定顯式覆蓋。 SDK 將使用未經修改提供的確切終結點。
+在此範例中,此連接字串為每個服務指定顯式覆蓋。 SDK 將使用未經修改提供的確切終結點。
 
 - 授權方案預設為"ikey" 
-- 儀器檢測金鑰：0000000-0000-0000-000000000000000000
-- 區域服務 URI 基於顯式覆蓋值： 
-   - 攝入： HTTPs：\//custom.com:111/
-   - 即時指標： HTTPs：\//custom.com:222/
-   - 探測器： HTTPs：\//custom.com:333/ 
-   - 調試器： HTTPs：\//custom.com:444/   
+- 儀器檢測密鑰:0000000-0000-0000-000000000000000000
+- 區域服務 URI 基於顯示式覆寫值: 
+   - 攝入: H00:\//custom.com:111/
+   - 即時指標: H0:\//custom.com:222/
+   - 探查器: H0:\//custom.com:333/ 
+   - 除錯器: Ht:\//custom.com:444/   
 
 
-## <a name="how-to-set-a-connection-string"></a>如何設置連接字串
+## <a name="how-to-set-a-connection-string"></a>如何設定連接字串
 
-以下 SDK 版本支援連接字串：
+以下 SDK 版本支援連接字串:
 - .NET 和 .NET 核心 v2.12.0
-- JAVA v2.5.1
-- JAVAscript v2.3.0
+- Java v2.5.1 和 JAva 3.0
+- Javascript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
 
-連接字串可以通過代碼、環境變數或設定檔進行設置。
+連接字串可以通過代碼、環境變數或配置檔進行設置。
 
 
 
@@ -161,11 +161,11 @@ ms.locfileid: "79136701"
 
 - 連接字串： `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>.網路 SDK 示例
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
-遙測配置.連接字串：https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+遙測設定.連接字串:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net 顯式設置：
+.Net 顯示式設定:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.淨設定檔：
+.純設定檔:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,7 +183,7 @@ var configuration = new TelemetryConfiguration
 ```
 
 
-NetCore 配置.json： 
+NetCore 設定.json: 
 
 ```json
 {
@@ -194,10 +194,10 @@ NetCore 配置.json：
 ```
 
 
-### <a name="java-sdk-example"></a>JAVA SDK 示例
+# <a name="java"></a>[Java](#tab/java)
 
 
-JAVA 顯式設置：
+Java (v2.5.x) 顯式設定:
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
@@ -210,11 +210,11 @@ ApplicationInsights.xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>JAVAscript SDK 示例
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
-重要提示：JAVAscript 不支援使用環境變數。
+重要提示:Javascript 不支援使用環境變數。
 
-使用程式碼片段：
+使用代碼段:
 
 ```javascript
 <script type="text/javascript">
@@ -227,7 +227,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ```
 
 
-手動設置：
+手動設定:
 ```javascript
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>節點 SDK 示例
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -247,11 +247,11 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;");
 appInsights.start();
 ```
 
-### <a name="python-sdk-example"></a>Python SDK 示例
+# <a name="python"></a>[Python](#tab/python)
 
-我們建議使用者設置環境變數。
+我們建議用戶設置環境變數。
 
-要顯式設置連接字串：
+要顯示式設定連接字串:
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -274,6 +274,6 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [JAVA](../../azure-monitor/app/java-get-started.md)
+* [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)

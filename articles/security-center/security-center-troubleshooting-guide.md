@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心疑難排解指南 | Microsoft Docs
-description: 本指南適用于需要解決 Azure 安全中心相關問題的 IT 專業人員、安全分析師和雲管理員。
+description: 本指南適用於需要解決 Azure 安全中心相關問題的 IT 專業人員、安全分析師和雲端管理員。
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,24 +8,24 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1c751fc31ba9066cf49eabbb86d37eda230c9c98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062894"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435536"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
 本指南適用於組織目前採用 Azure 資訊安全中心，且需要針對資訊安全中心相關問題進行疑難排解的資訊技術 (IT) 專業人員、資訊安全性分析師和雲端系統管理員。
 
-安全中心使用 Microsoft 監視代理收集和存儲資料。 若要深入了解，請參閱 [Azure 資訊安全中心平台移轉](security-center-platform-migration.md)。 本文中的資訊說明轉換至 Microsoft Monitoring Agent 後的資訊安全中心功能。
+安全中心使用日誌分析代理收集和存儲數據。 若要深入了解，請參閱 [Azure 資訊安全中心平台移轉](security-center-platform-migration.md)。 本文中的資訊表示向日誌分析代理過渡後的安全中心功能。
 
 ## <a name="troubleshooting-guide"></a>疑難排解指南
 
 本指南說明如何針對資訊安全中心相關問題進行疑難排解。
 
-警報類型：
+警示類型:
 
 * 虛擬機器行為分析 (VMBA)
 * 網路分析
@@ -52,27 +52,27 @@ ms.locfileid: "80062894"
 
 稽核記錄檔包含在您的資源上執行的所有寫入作業 (PUT、POST、DELETE)，但不包含讀取作業 (GET)。
 
-## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+## <a name="log-analytics-agent"></a>Log Analytics 代理程式
 
-安全中心使用 Microsoft 監視代理（這是 Azure 監視器服務使用的代理）從 Azure 虛擬機器收集安全資料。 啟用資料收集且代理程式已正確安裝在目標電腦之後，以下處理序應在執行中︰
+安全中心使用日誌分析代理(這是 Azure 監視器服務使用的代理)從 Azure 虛擬機收集安全數據。 啟用資料收集且代理程式已正確安裝在目標電腦之後，以下處理序應在執行中︰
 
 * HealthService.exe
 
-如果您開啟服務管理主控台 (services.msc)，您也會看到執行中的 Microsoft Monitoring Agent 服務，如下所示：
+如果打開服務管理主控台 (service.msc),您還將看到日誌分析代理服務運行如下:
 
 ![服務](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-若要查看您擁有的代理程式版本，請開啟 [工作管理員]****，在 [處理序]**** 索引標籤中找出 [Microsoft Monitoring Agent 服務]****，以滑鼠右鍵按一下它並按一下 [屬性]****。 在 [詳細資料]**** 索引標籤上，查看如下所示的檔案版本：
+要查看您擁有哪個版本的代理,請在 **「行程**」選項卡中打開**工作管理員**,找到**紀錄分析代理服務**,右鍵按下它並按下「**屬性**」 。。 在 [詳細資料]**** 索引標籤上，查看如下所示的檔案版本：
 
 ![檔案](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Microsoft Monitoring Agent 安裝案例
+## <a name="log-analytics-agent-installation-scenarios"></a>紀錄分析代理安裝方案
 
-在電腦上安裝 Microsoft Monitoring Agent 時，有兩個可產生不同結果的安裝案例。 支援的案例如下：
+在計算機上安裝日誌分析代理時,有兩種安裝方案可以產生不同的結果。 支援的案例如下：
 
-* **資訊安全中心自動安裝的代理程式**：在此案例中，您能夠在兩個位置 (資訊安全中心和記錄搜尋) 檢視警示。 您將收到到資源所屬訂閱的安全性原則中配置的電子郵件地址的電子郵件通知。
+* **資訊安全中心自動安裝的代理程式**：在此案例中，您能夠在兩個位置 (資訊安全中心和記錄搜尋) 檢視警示。 您將收到到資源所屬訂閱的安全策略中設定的電子郵件地址的電子郵件通知。
 
-* **代理手動安裝在 Azure 中的 VM 上**：在這種情況下，如果您使用的是 2017 年 2 月之前手動下載和安裝的代理，則只有在篩選工作區所屬的訂閱時，才能在安全中心門戶中查看警報。 如果在資源所屬的訂閱上篩選，則看不到任何警報。 您將收到到工作區所屬訂閱的安全性原則中配置的電子郵件地址的電子郵件通知。
+* **代理手動安裝在 Azure 中的 VM 上**:在這種情況下,如果您使用的是 2017 年 2 月之前手動下載和安裝的代理,則只有在篩選工作區所屬的訂閱時,才能在安全中心門戶中查看警報。 如果在資源所屬的訂閱上篩選,則看不到任何警報。 您將收到到工作區所屬訂閱的安全策略中配置的電子郵件地址的電子郵件通知。
 
 > [!NOTE]
 > 若要避免第二個案例中說明的行為，務必下載最新版的代理程式。
@@ -83,18 +83,18 @@ ms.locfileid: "80062894"
 
 | 監視狀態 | 描述 | 解決步驟 |
 |---|---|---|
-| 擱置代理程式安裝 | Microsoft Monitoring Agent 安裝仍在執行中。  安裝作業可能需要多達數小時的時間。 | 等到自動安裝完成為止。 |
-| 電源為關閉狀態 | VM 已停止。  Microsoft Monitoring Agent 只能安裝於執行中的 VM。 | 重新啟動 VM。 |
-| Azure VM 代理程式遺漏或無效 | 尚未安裝 Microsoft Monitoring Agent。  資訊安全中心需要有效的 Azure VM 代理程式，才能安裝擴充功能。 | 在 VM 上安裝、重新安裝或升級 Azure VM 代理程式。 |
-| VM 尚未處於安裝就緒的狀態  | 因為 VM 尚未處於安裝就緒的狀態，所以尚未安裝 Microsoft Monitoring Agent。 因為 VM 代理程式或 VM 佈建有問題，所以 VM 尚未處於安裝就緒的狀態。 | 檢查 VM 的狀態。 返回入口網站中的 [虛擬機器]**** 並選取 VM，以取得狀態資訊。 |
-|安裝失敗 - 一般錯誤 | 已安裝 Microsoft Monitoring Agent，但因為發生錯誤而失敗。 | [手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)或將擴充功能解除安裝，資訊安全中心就會嘗試再次安裝。 |
-| 安裝失敗 - 已安裝本機代理程式 | Microsoft Monitoring Agent 安裝失敗。 安全中心標識了已在 VM 上安裝的本地代理（日誌分析或系統中心操作管理器）。 為了避免多路連接的設定 (在此設定中，VM 會向兩個不同的工作區回報)，已停止 Microsoft Monitoring Agent 的安裝。 | 解決方式有兩種：[手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)並將它連線到您所需的工作區。 或者，將您所需的工作區設定為預設工作區，並啟用代理程式的自動佈建功能。  請參閱[啟用自動佈建](security-center-enable-data-collection.md)。 |
-| 代理程式無法連線到工作區 | 已安裝 Microsoft Monitoring Agent，但因為網路連線問題而失敗。  請檢查是否有網際網路存取權，或已針對代理程式設定有效的 HTTP Proxy。 | 請參閱「監視代理程式網路需求」。 |
-| 代理程式已連線到遺漏或未知的工作區 | 安全中心確認安裝在 VM 上的 Microsoft 監視代理已連接到它無法訪問的工作區。 | 有兩種情況會發生這種情形。 工作區已遭刪除而不復存在。 重新安裝具有正確工作區的代理程式，或將代理程式解除安裝並允許資訊安全中心完成其自動佈建安裝。 第二種情況是工作區屬於資訊安全中心無權存取的訂用帳戶。 資訊安全中心需有訂用帳戶，才可允許 Microsoft 安全性資源提供者進行存取。 若要啟用這項功能，請向 Microsoft 安全性資源提供者註冊訂用帳戶。 此作業可經由 API、PowerShell、入口網站完成，而在資訊安全中心的 [概觀]**** 儀表板中直接篩選訂用帳戶亦可完成。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 |
-| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理正在報告資料，但缺少 Azure 資源識別碼，因此無法將資料與 Azure VM 匹配。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |
-| 未安裝代理程式 | 資料收集已啟用。 | 在安全性原則中開啟資料收集，或手動安裝 Microsoft Monitoring Agent。 |
+| 擱置代理程式安裝 | 日誌分析代理安裝仍在運行。  安裝作業可能需要多達數小時的時間。 | 等到自動安裝完成為止。 |
+| 電源為關閉狀態 | VM 已停止。  日誌分析代理只能安裝在正在運行的 VM 上。 | 重新啟動 VM。 |
+| Azure VM 代理程式遺漏或無效 | 尚未安裝日誌分析代理。  資訊安全中心需要有效的 Azure VM 代理程式，才能安裝擴充功能。 | 在 VM 上安裝、重新安裝或升級 Azure VM 代理程式。 |
+| VM 尚未處於安裝就緒的狀態  | 日誌分析代理尚未安裝,因為 VM 尚未準備好安裝。 因為 VM 代理程式或 VM 佈建有問題，所以 VM 尚未處於安裝就緒的狀態。 | 檢查 VM 的狀態。 返回入口網站中的 [虛擬機器]**** 並選取 VM，以取得狀態資訊。 |
+|安裝失敗 - 一般錯誤 | 日誌分析代理已安裝,但因錯誤而失敗。 | [手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)或將擴充功能解除安裝，資訊安全中心就會嘗試再次安裝。 |
+| 安裝失敗 - 已安裝本機代理程式 | 日誌分析代理安裝失敗。 安全中心標識了已在 VM 上安裝的本地代理(日誌分析或系統中心操作管理員)。 為了避免多宿主配置(其中 VM 報告到兩個單獨的工作區),日誌分析代理安裝已停止。 | 解決方式有兩種：[手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)並將它連線到您所需的工作區。 或者，將您所需的工作區設定為預設工作區，並啟用代理程式的自動佈建功能。  請參閱[啟用自動佈建](security-center-enable-data-collection.md)。 |
+| 代理程式無法連線到工作區 | 日誌分析代理已安裝,但由於網路連接而失敗。  請檢查是否有網際網路存取權，或已針對代理程式設定有效的 HTTP Proxy。 | 請參閱「監視代理程式網路需求」。 |
+| 代理程式已連線到遺漏或未知的工作區 | 安全中心確認安裝在 VM 上的日誌分析代理已連接到它無法訪問的工作區。 | 有兩種情況會發生這種情形。 工作區已遭刪除而不復存在。 重新安裝具有正確工作區的代理程式，或將代理程式解除安裝並允許資訊安全中心完成其自動佈建安裝。 第二種情況是工作區屬於資訊安全中心無權存取的訂用帳戶。 資訊安全中心需有訂用帳戶，才可允許 Microsoft 安全性資源提供者進行存取。 若要啟用這項功能，請向 Microsoft 安全性資源提供者註冊訂用帳戶。 此作業可經由 API、PowerShell、入口網站完成，而在資訊安全中心的 [概觀]**** 儀表板中直接篩選訂用帳戶亦可完成。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 |
+| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者,代理正在報告數據,但缺少 Azure 資源 ID,因此無法將數據與 Azure VM 匹配。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)。 |
+| 未安裝代理程式 | 資料收集已啟用。 | 在安全策略中打開數據收集或手動安裝日誌分析代理。 |
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>故障排除監控代理網路要求<a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>容錯排除監控代理網路要求<a name="mon-network-req"></a>
 
 代理程式若要連線到資訊安全中心並向其註冊，就必須能夠存取網路資源，包括連接埠號碼和網域 URL。
 
@@ -140,8 +140,8 @@ ms.locfileid: "80062894"
 
 在本文件中，您已了解如何在「Azure 資訊安全中心」設定安全性原則。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
 
-* [Azure 安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)– 瞭解如何規劃和瞭解採用 Azure 安全中心的設計注意事項。
-* [Azure 安全中心中的安全運行狀況監視](security-center-monitoring.md)• 瞭解如何監視 Azure 資源的運行狀況
+* [Azure 安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)– 瞭解如何規劃和了解採用 Azure 安全中心的設計注意事項。
+* [Azure 安全中心中的安全執行狀況監視](security-center-monitoring.md)• 瞭解如何監視 Azure 資源的運行狀況
 * [管理和回應 Azure 安全中心中的安全警報](security-center-managing-and-responding-alerts.md)- 瞭解如何管理和回應安全警報
 * [瞭解 Azure 安全中心中的安全警報](security-center-alerts-type.md)
 * [教學課程：回應安全性事件](tutorial-security-incident.md)
@@ -151,5 +151,5 @@ ms.locfileid: "80062894"
 * [在 Azure 資訊安全中心調查事件和警示](security-center-investigation.md)
 * [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
 * [使用 Azure 安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)– 瞭解如何監視合作夥伴解決方案的運行狀況。
-* [Azure 安全中心常見問題](faq-general.md)解答 - 查找有關使用服務的常見問題
-* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)– 查找有關 Azure 安全性和合規性的博客文章
+* [Azure 安全中心常見問題](faq-general.md)解答 - 搜尋有關使用服務的常見問題
+* [Azure 安全部落格](https://blogs.msdn.com/b/azuresecurity/)- 尋找有關 Azure 安全性和合規性的部落格文章

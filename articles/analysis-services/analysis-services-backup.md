@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services 備份與還原 | Microsoft Docs
-description: 本文介紹如何從 Azure 分析服務資料庫備份和還原模型中繼資料和資料。
+description: 本文介紹如何從 Azure 分析服務資料庫備份和還原模型元數據和數據。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573439"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408663"
 ---
 # <a name="backup-and-restore"></a>備份與還原
 
@@ -23,7 +23,7 @@ ms.locfileid: "73573439"
 > 
 > 
 
-備份使用 .abf 擴展保存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
+備份使用 .abf 擴展儲存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
 
 
 ## <a name="configure-storage-settings"></a>設定儲存體設定
@@ -49,13 +49,13 @@ ms.locfileid: "73573439"
 
     ![儲存備份設定](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup 
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 來進行備份
 
 1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [備份]****。
 
-2. 在**備份資料庫** > **備份檔案中**，按一下"**流覽**"。
+2. 在**備份資料庫** > **備份檔中**,按一下「**瀏覽**」。
 
 3. 在 [另存新檔]**** 對話方塊中，確認資料夾路徑，然後輸入備份檔案的名稱。 
 

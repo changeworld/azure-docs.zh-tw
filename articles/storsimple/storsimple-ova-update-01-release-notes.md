@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array 更新版本資訊 | Microsoft Docs
+title: StorSimple 虛擬陣列更新 0.2 & 0.1 發行說明
 description: 描述執行 Update 0.2 和 0.1 的 StorSimple Virtual Array 的重大未決問題和解決方式。
 services: storsimple
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60629283"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397872"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 和 0.1 版本資訊
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 下列版本資訊指出 Microsoft Azure StorSimple Virtual Array 更新的重大未決問題和已解決問題。 (Microsoft Azure StorSimple Virtual Array 也稱為 StorSimple 內部部署虛擬裝置或 StorSimple 虛擬裝置。) 
 
 版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 部署 StorSimple 虛擬裝置之前，請仔細檢閱版本資訊中所含的資訊。

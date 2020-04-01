@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Front Door Service 的網域上進行地區篩選 | Microsoft Docs
-description: 在本文中，您會了解 Azure Front Door Service 的地區篩選原則
+title: Azure 前門域上的地理篩選 |微軟文件
+description: 在本文中,您將瞭解 Azure 前門的地理篩選策略
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -9,20 +9,20 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
-ms.translationtype: HT
+ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846417"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411173"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
 
-根據預設，不論使用者是在什麼位置提出要求，Azure Front Door Service 都會回應使用者的要求。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
+默認情況下,Azure 前門回應使用者請求,而不考慮發出請求的使用者的位置。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
 
 WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區代碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
 
@@ -53,7 +53,7 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | BH | 巴林|
 | BI | 蒲隆地|
 | BJ | 貝南|
-| BL | 聖巴泰勒米|
+| BL | 聖巴瑟米|
 | BN | 汶萊達魯薩蘭|
 | BO | 玻利維亞|
 | BR | 巴西|
@@ -62,7 +62,7 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | BW | 波札那|
 | BY | 白俄羅斯|
 | BZ | 貝里斯|
-| CA | 加拿大|
+| CA | Canada|
 | CD | 剛果民主共和國|
 | CF | 中非共和國|
 | CH | 瑞士|
@@ -89,7 +89,7 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | FJ | 斐濟|
 | FM | 密克羅尼西亞聯邦|
 | FR | 法國|
-| GB | 英國|
+| GB | United Kingdom|
 | GE | 喬治亞|
 | GF | 法屬圭亞那|
 | GH | 迦納|

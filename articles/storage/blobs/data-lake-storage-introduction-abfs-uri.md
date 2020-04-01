@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855566"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437137"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 的 URI 語法取決於您的儲存體帳戶是否設定�
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **配置識別碼**：此 `abfs` 通訊協定作為配置識別碼。 您可以選擇是否使用安全通訊端層 (SSL) 連線進行連線。 使用 `abfss` 可透過安全通訊端層連線進行連線。
+1. **配置識別碼**：此 `abfs` 通訊協定作為配置識別碼。 您可以選擇連接或不使用傳輸層安全 (TLS),以前稱為安全套接字層 (SSL) 連接。 用於`abfss`連接 TLS 連接。
 
 2. **檔案系統**：保存檔案和資料夾的上層位置。 這與 Azure 儲存體 Blob 服務中的容器相同。
 
@@ -43,7 +43,7 @@ Data Lake Storage Gen2 的 URI 語法取決於您的儲存體帳戶是否設定�
 
 1. **路徑**：正斜線分隔 (`/`) 的形式表示目錄結構。
 
-2. **檔案名**：單個檔的名稱。
+2. **檔名**:單個檔案的名稱。
 
 
 ## <a name="next-steps"></a>後續步驟
