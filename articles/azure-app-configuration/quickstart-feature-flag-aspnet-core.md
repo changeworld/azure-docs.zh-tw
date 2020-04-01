@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: a4fbba65af5afbd27a3fd2c7d41858e33b4d812c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163874"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245407"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "78163874"
     > [!div class="mx-imgBorder"]
     > ![啟用名為 Beta 的功能旗標](media/add-beta-feature-flag.png)
 
-    目前將 `label` 保留為未定義。
+    目前將 `label` 保留為未定義。 選取 [套用]  以儲存新的功能旗標。
 
 ## <a name="create-an-aspnet-core-web-app"></a>建立 ASP.NET Core Web 應用程式
 
@@ -49,41 +49,53 @@ ms.locfileid: "78163874"
 
 ## <a name="add-secret-manager"></a>新增祕密管理員
 
-將[祕密管理員工具](https://docs.microsoft.com/aspnet/core/security/app-secrets) \(機器翻譯\) 新增至您的專案。 祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
-
-> [!IMPORTANT]
-> .NET Core 2.x 與 3.x 之間有顯著的差異。  根據您的環境選取正確的語法。
+若要使用秘密管理員，請將 `UserSecretsId` 元素新增至 .csproj  檔案。
 
 1. 開啟 .csproj  檔案。
-1. 新增 `UserSecretsId` 元素 (如下列範例所示)，並將其值取代為您自己的值 (此值通常是 GUID)：
+
+1.  新增 `UserSecretsId` 元素，如下所示。 您可以使用相同的 GUID，也可以將此值取代為您自己的值。
+
+    > [!IMPORTANT]
+    > `CreateHostBuilder` 會取代 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根據您的環境選取正確的語法。
 
     #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
+        <PropertyGroup>
+            <TargetFramework>netcoreapp2.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    </ItemGroup>
+        <ItemGroup>
+            <PackageReference Include="Microsoft.AspNetCore.App" />
+            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+        </ItemGroup>
 
     </Project>
     ```
+
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
-    
+
         <PropertyGroup>
             <TargetFramework>netcoreapp3.1</TargetFramework>
             <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
         </PropertyGroup>
+
     </Project>
     ```
     ---
+
+1. 儲存 .csproj  檔案。
+
+祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
+
+> [!TIP]
+> 若要深入了解秘密管理員，請參閱[在 ASP.NET Core 中的開發中安全儲存應用程式秘密](https://docs.microsoft.com/aspnet/core/security/app-secrets)。
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
@@ -102,7 +114,7 @@ ms.locfileid: "78163874"
 
 1. 將名為 ConnectionStrings:AppConfig  的祕密新增至祕密管理員。
 
-    此祕密會包含用來存取應用程式組態存放區的連接字串。 請以應用程式組態存放區的連接字串取代下列命令中的 `<your_connection_string>` 值。
+    此祕密會包含用來存取應用程式組態存放區的連接字串。 請以應用程式組態存放區的連接字串取代下列命令中的 `<your_connection_string>` 值。 您可以在 Azure 入口網站中的 **[存取金鑰]** 下找到連接字串。
 
     此命令必須在和 *.csproj* 檔案相同的目錄中執行。
 
