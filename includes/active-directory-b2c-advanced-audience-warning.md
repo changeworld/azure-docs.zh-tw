@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183156"
 ---
 > [!NOTE]
-> 在 Azure 活動目錄 B2C 中，[自訂策略](../articles/active-directory-b2c/custom-policy-get-started.md)主要用於解決複雜方案。 對於大多數方案，我們建議您使用內置[使用者流](../articles/active-directory-b2c/user-flow-overview.md)。
+> 在 Azure 活動目錄 B2C 中,[自訂策略](../articles/active-directory-b2c/custom-policy-get-started.md)主要用於解決複雜方案。 對於大多數方案,我們建議您使用內置[使用者流](../articles/active-directory-b2c/user-flow-overview.md)。

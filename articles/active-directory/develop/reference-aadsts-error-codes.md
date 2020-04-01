@@ -1,5 +1,5 @@
 ---
-title: Azure AD 身份驗證&授權錯誤代碼
+title: Azure AD 認證&授權錯誤代碼
 description: 了解從 Azure AD 安全性權杖服務 (STS) 所傳回的 AADSTS 錯誤碼。
 services: active-directory
 documentationcenter: ''
@@ -12,30 +12,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154554"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473164"
 ---
-# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份驗證和授權錯誤代碼
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認證與授權錯誤代碼
 
 正在尋找有關從 Azure AD 安全性權杖服務 (STS) 所傳回 AADSTS 錯誤碼的資訊嗎？ 請閱讀此文件，以尋找 AADSTS 錯誤描述、修正程式，以及一些建議的因應措施。
 
 > [!NOTE]
 > 此資訊為初步資訊，隨時可能變更。 有任何疑問或找不到您要尋找的內容嗎？ 建立 GitHub 問題，或參閱[適用於開發人員的支援和協助選項](active-directory-develop-help-support.md)，了解您可以取得協助和支援的其他方法。
 >
-> 本文檔是為開發人員和管理員提供指導提供的，但用戶端本身絕不應使用本文檔。 錯誤代碼隨時可能會更改，以便提供更精細的錯誤訊息，這些錯誤訊息旨在説明開發人員構建其應用程式。 依賴于文本或錯誤代碼號的應用將隨著時間的推移而中斷。
+> 本文檔是為開發人員和管理員提供指導提供的,但用戶端本身絕不應使用本文檔。 錯誤代碼隨時可能會更改,以便提供更精細的錯誤消息,這些錯誤消息旨在幫助開發人員構建其應用程式。 依賴於文本或錯誤代碼號的應用將隨著時間的推移而中斷。
 
-## <a name="lookup-current-error-code-information"></a>查找當前錯誤代碼資訊
-錯誤代碼和消息可能會更改。  有關最新資訊，請查看`https://login.microsoftonline.com/error`頁面以查找 AADSTS 錯誤說明、修復程式以及一些建議的解決方法。  
+## <a name="lookup-current-error-code-information"></a>尋找目前的錯誤代碼資訊
+錯誤代碼和消息可能會更改。  有關最新資訊,請查看`https://login.microsoftonline.com/error`頁面以查找 AADSTS 錯誤說明、修復程式以及一些建議的解決方法。  
 
-搜索返回的錯誤代碼的數位部分。  例如，如果您收到錯誤代碼"AADSTS16000"，則搜索`https://login.microsoftonline.com/error`"16000"。  您還可以通過將錯誤代碼號添加到 URL： 直接連結到特定錯誤。 `https://login.microsoftonline.com/error?code=16000`
+搜索返回的錯誤代碼的數位部分。  例如,如果您收到錯誤代碼"AADSTS16000",則搜索`https://login.microsoftonline.com/error`"16000"。  您還可以透過錯誤代碼號加入 URL: 直接連結到特定錯誤。 `https://login.microsoftonline.com/error?code=16000`
 
 ## <a name="aadsts-error-codes"></a>AADSTS 錯誤碼
 
@@ -56,13 +56,13 @@ ms.locfileid: "80154554"
 | AADSTS50000 | TokenIssuanceError - 登入服務有問題。 請[開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md)以解決此問題。 |
 | AADSTS50001 | InvalidResource - 資源已停用或不存在。 請檢查您應用程式的程式碼，確保您已經為您嘗試存取的資源指定確切的資源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 登入失敗，因為租用戶上的 Proxy 存取受限。 如果該租用戶原則是您自有的，您可以變更受限租用戶的設定以修正此問題。 |
-| AADSTS50003 | MissingSigningKey - 登入失敗，因為遺漏簽署金鑰或憑證。 這可能是因為應用程式中未設定任何簽署金鑰。 查看 在[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured)中概述的解決方法。 如果還是有問題，請連絡應用程式擁有者或應用程式管理員。 |
-| AADSTS50005 | 設備策略錯誤 - 使用者嘗試從當前不支援的條件訪問策略的平臺登錄到設備。 |
+| AADSTS50003 | MissingSigningKey - 登入失敗，因為遺漏簽署金鑰或憑證。 這可能是因為應用程式中未設定任何簽署金鑰。 查看[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured)在 中概述的解決方法。 如果還是有問題，請連絡應用程式擁有者或應用程式管理員。 |
+| AADSTS50005 | 設備策略錯誤 - 用戶嘗試從當前不支援的條件存取策略的平臺登錄到設備。 |
 | AADSTS50006 | InvalidSignature - 簽章驗證失敗，因為簽章無效。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - 找不到此應用程式的夥伴加密憑證。 請向 Microsoft [開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md)以修正此問題。 |
 | AADSTS50008 | InvalidSamlToken - 權杖中的 SAML 判斷提示遺漏或設定不正確。 請連絡同盟提供者。 |
 | AADSTS50010 | AudienceUriValidationFailed - 應用程式的對象 URI 驗證失敗，因為未設定權杖對象。 |
-| AADSTS50011 | InvalidReplyTo - 回覆地址遺漏、設定不正確或不符合針對應用程式所設定的回覆地址。  作為解決方案，請確保將此缺少的回復位址添加到 Azure 活動目錄應用程式，或讓具有在 Active Directory 中管理應用程式的許可權的人員為您執行此操作。|
+| AADSTS50011 | InvalidReplyTo - 回覆地址遺漏、設定不正確或不符合針對應用程式所設定的回覆地址。  作為解決方案,請確保將此缺少的回覆位址添加到 Azure 活動目錄應用程式,或讓具有在 Active Directory 中管理應用程式的許可權的人員為您執行此操作。|
 | AADSTS50012 | AuthenticationFailed - 驗證因為下列其中一個原因而失敗：<ul><li>簽署憑證的主旨名稱未獲授權</li><li>已授權的主體名稱找不到相符的受信任授權原則</li><li>憑證鏈結無效</li><li>簽署憑證無效</li><li>未在租用戶上設定原則</li><li>簽署憑證的指紋未獲授權</li><li>用戶端判斷提示包含無效的簽章</li></ul> |
 | AADSTS50013 | InvalidAssertion - 判斷提示因為各種原因而無效：權杖簽發者不符合其有效時間範圍內的 API 版本；過期；格式不正確；判斷提示中的重新整理權杖不是主要的重新整理權杖。 |
 | AADSTS50014 | GuestUserInPendingState - 使用者的兌換處於擱置狀態。 來賓使用者帳戶建立尚未完成。 |
@@ -74,7 +74,7 @@ ms.locfileid: "80154554"
 | AADSTS50032 | WeakRsaKey - 表示錯誤的使用者嘗試使用弱式 RSA 金鑰。 |
 | AADSTS50033 | RetryableError - 表示與資料庫作業無關的暫時性錯誤。 |
 | AADSTS50034 | UserAccountNotFound - 若要登入此應用程式，必須將帳戶新增至目錄。 |
-| AADSTS50042 | 無法生成具有缺失鹽的配對識別碼 - 原則上缺少生成成對識別碼所需的鹽。 請連絡租用戶管理員。 |
+| AADSTS50042 | 無法生成具有缺失鹽的配對標識符 - 原則上缺少生成成對標識符所需的鹽。 請連絡租用戶管理員。 |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | SubjectMismatchesIssuer - 主體與用戶端判斷提示中的簽發者宣告不符。 請連絡租用戶管理員。 |
 | AADSTS50049 | NoSuchInstanceForDiscovery - 未知或無效的執行個體。 |
@@ -100,7 +100,7 @@ ms.locfileid: "80154554"
 | AADSTS50089 | 流程權杖過期 - 驗證失敗。 讓使用者嘗試以使用者名稱/密碼重新登入。 |
 | AADSTS50097 | DeviceAuthenticationRequired - 需要裝置驗證。 |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized - JWT 簽章無效。 |
-| AADSTS50105 | EntitlementGrantsNotFound - 未將登入的使用者指派給所登入應用程式的角色。 請將使用者指派給應用程式。 有關詳細資訊：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound - 未將登入的使用者指派給所登入應用程式的角色。 請將使用者指派給應用程式。 有關詳細資訊:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role). |
 | AADSTS50107 | InvalidRealmUri - 所要求的同盟領域物件不存在。 請連絡租用戶管理員。 |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat - JWT 標頭有問題。 請連絡租用戶管理員。 |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter - 宣告轉換所包含的輸入參數無效。 請連絡租用戶管理員以更新原則。 |
@@ -109,7 +109,7 @@ ms.locfileid: "80154554"
 | AADSTS50127 | BrokerAppNotInstalled - 使用者必須安裝訊息代理程式應用程式來存取此內容。 |
 | AADSTS50128 | 網域名稱無效 - 在要求中找不到租用戶識別資訊，或任何提供的認證均未隱含租用戶識別資訊。 |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined - 註冊裝置需加入工作場所網路。 |
-| AADSTS50131 | 條件訪問失敗 - 指示各種條件訪問錯誤，如 Windows 設備狀態不佳、因可疑活動而阻止的請求、訪問策略或安全性原則決策。 |
+| AADSTS50131 | 條件存取失敗 - 指示各種條件存取錯誤,如 Windows 設備狀態不佳、因可疑活動而阻止的請求、訪問策略或安全策略決策。 |
 | AADSTS50132 | SsoArtifactInvalidOrExpired - 工作階段因為密碼到期或近期密碼變更而無效。 |
 | AADSTS50133 | SsoArtifactRevoked - 工作階段因為密碼到期或近期密碼變更而無效。 |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter - 資料中心錯誤。 若要授權由 OAuth 2.0 裝置流程中的應用程式所起始的要求，授權方必須位於與原始要求所在相同的資料中心。 |
@@ -132,23 +132,23 @@ ms.locfileid: "80154554"
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 未針對傳遞使用者支援工作階段控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要整合式 Windows 驗證。 為租用戶啟用無縫 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服務無法執行裝置驗證。 |
-| AADSTS50196 | 檢測到迴圈 - 檢測到用戶端迴圈。 檢查應用的邏輯以確保實現了權杖緩存，並且錯誤條件得到正確處理。  該應用程式在太短的時間內提出了太多的相同請求，表明它處於錯誤狀態或濫用請求權杖。 |
-| AADSTS50199 | Cmsi中斷 - 出於安全原因，此請求需要使用者確認。  由於這是一個"interaction_required"錯誤，用戶端應該執行互動式 auth。 這是因為系統 Webview 已用於請求本機應用程式的權杖 - 必須提示使用者詢問這是否實際上是他們打算登錄的應用程式。|
+| AADSTS50196 | 偵測到迴圈 - 偵測到客戶端迴圈。 檢查應用的邏輯以確保實現了權杖緩存,並且錯誤條件得到正確處理。  該應用程式在太短的時間內提出了太多的相同請求,表明它處於錯誤狀態或濫用請求令牌。 |
+| AADSTS50199 | Cmsi中斷 - 出於安全原因,此請求需要用戶確認。  由於這是一個"interaction_required"錯誤,客戶端應該執行互動式 auth。 這是因為系統 Webview 已用於請求本機應用程式的權杖 - 必須提示使用者詢問這是否實際上是他們打算登入的應用程式。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 此功能已停用。 |
 | AADSTS51001 | DomainHintMustbePresent - 網域提示必須與內部部署安全性識別碼或 內部部署 UPN 一起顯示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目錄中不存在使用者帳戶。 |
 | AADSTS51005 | TemporaryRedirect - 相當於 HTTP 狀態 307，這表示所要求的資訊位於位置標頭中指定的 URI。 當您收到此狀態時，請遵循與回應相關聯的位置標頭。 當原始要求方法為 POST 時，重新導向的要求也會使用 POST 方法。 |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth - 需要整合式 Windows 驗證。 使用遺漏整合式 Windows 驗證宣告的工作階段權杖來登入的使用者。 請要求使用者再次登入。 |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn - 使用者尚未同意存取 LinkedIn 資源。 |
-| AADSTS53000 | 設備不符合 - 條件訪問策略需要符合要求的設備，並且設備不符合要求。 使用者必須向 Intune 等獲得核准的 MDM 提供者註冊其裝置。 |
-| AADSTS53001 | 設備非域 - 條件訪問策略需要域加入的設備，並且設備未加入域。 請使用者使用已加入網域的裝置。 |
+| AADSTS53000 | 設備不符合 - 條件存取策略需要符合要求的設備,並且設備不符合要求。 使用者必須向 Intune 等獲得核准的 MDM 提供者註冊其裝置。 |
+| AADSTS53001 | 設備非域 - 條件存取策略需要域加入的設備,並且設備未加入域。 請使用者使用已加入網域的裝置。 |
 | AADSTS53002 | 應用程式使用NotAn批准應用程式 - 使用的應用程式不是條件訪問的已批准應用程式。 使用者所使用的應用程式，必須是已核准使用的應用程式清單其中一個，才能取得存取權。 |
 | AADSTS53003 | 阻止條件訪問 - 訪問已被條件訪問策略阻止。 存取原則不允許發行權杖。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - 使用者必須先完成多重要素驗證註冊程序，才能存取此內容。 使用者應該註冊多重要素驗證。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 使用者或系統管理員尚未同意使用識別碼為 X 的應用程式。針對此使用者和資源傳送互動式授權要求。 |
 | AADSTS65004 | UserDeclinedConsent - 使用者不同意存取應用程式。 讓使用者重試登入，並同意應用程式|
-| AADSTS65005 | MisconfiguredApplication - 應用程式所需資源存取清單不包含資源可探索的應用程式，或用戶端應用程式已要求存取未在其所需資源存取清單中指定的資源，或 Graph 服務傳回不正確的要求或找不到資源。 如果應用程式支援 SAML，則可能是您在設定應用程式時所使用的識別碼 (實體) 不正確。 使用以下連結試用為 SAML 列出的解析度：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication - 應用程式所需資源存取清單不包含資源可探索的應用程式，或用戶端應用程式已要求存取未在其所需資源存取清單中指定的資源，或 Graph 服務傳回不正確的要求或找不到資源。 如果應用程式支援 SAML，則可能是您在設定應用程式時所使用的識別碼 (實體) 不正確。 使用以下連結試用為 SAML 列出的解析度:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 驗證失敗。 重新整理權杖無效。 錯誤原因如下：<ul><li>權杖繫結標頭是空的</li><li>權杖繫結雜湊不相符</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 應用程式已停用。 |
@@ -159,7 +159,7 @@ ms.locfileid: "80154554"
 | AADSTS70007 | UnsupportedResponseMode - 應用程式在要求權杖時傳回的 `response_mode` 值不受支援。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 重新整理權杖因為非使用狀態而過期。 此權杖是在 XXX 發出，而且有一段時間為非使用中。 |
 | AADSTS70011 | InvalidScope - 應用程式所要求的範圍無效。 |
-| AADSTS70012 | MsaServerError - 在驗證 MSA (取用者) 使用者時，發生伺服器錯誤。 請再試一次。 如果繼續失敗[，打開支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError - 在驗證 MSA (取用者) 使用者時，發生伺服器錯誤。 請再試一次。 如果繼續失敗[,開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 裝置流程錯誤。 授權已擱置。 裝置會重試輪詢要求。 |
 | AADSTS70018 | BadVerificationCode - 驗證碼無效，因為使用者針對裝置碼流程所輸入的使用者代碼錯誤。 授權未獲核准。 |
 | AADSTS70019 | CodeExpired - 驗證碼過期。 請讓使用者重試登入。 |
@@ -200,7 +200,7 @@ ms.locfileid: "80154554"
 | AADSTS90019 | MissingTenantRealm - Azure AD 無法判斷要求中的租用戶識別碼。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主體名稱格式無效，或不符合預期的 `name[/host][@realm]` 格式。 主體名稱為必要項目，主機和領域是選擇性項目，而且可能設定為 null。 |
 | AADSTS90023 | InvalidRequest - 驗證服務要求無效。 |
-| AADSTS9002313 | 無效請求 - 請求格式錯誤或無效。 - 此處的問題是，由於對某個終結點的請求出現問題。 對於此問題的建議是獲取錯誤發生的 fiddler 跟蹤，並查看請求是否實際格式正確。 |
+| AADSTS9002313 | 不合法請求 - 請求格式錯誤或無效。 - 此處的問題是,由於對某個終結點的請求出現問題。 對於此問題的建議是獲取錯誤發生的 fiddler 追蹤,並查看請求是否實際格式正確。 |
 | AADSTS90024 | RequestBudgetExceededError - 發生暫時性錯誤。 請再試一次。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online 目錄服務 (MSODS) 無法使用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 託管的 WCF 服務發生未預期且無法重試的錯誤。 請[開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md)，以取得有關錯誤的詳細資料。 |
@@ -208,7 +208,7 @@ ms.locfileid: "80154554"
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 此功能已停用。 |
 | AADSTS90051 | InvalidNationalCloudId - 全國性雲端識別碼包含無效的雲端識別碼。 |
 | AADSTS90055 | TenantThrottlingError - 有太多傳入要求。 此例外狀況因為封鎖的租用戶而擲回。 |
-| AADSTS90056 | BadResourceRequest - 若要兌換存取權杖的程式碼，應用程式應將 POST 要求傳送至 `/token` 端點。 此外，在此之前，您應該提供授權碼並以 POST 要求將它傳送到 `/token` 端點。 有關 OAuth 2.0 授權代碼流的概述，請參閱本文： [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code). 將使用者導向 `/authorize` 端點，這會傳回 authorization_code。 將要求張貼至 `/token` 端點，使用者就會取得存取權杖。 登入 Azure 入口網站，然後檢查 [應用程式註冊] > [端點]****，確認已正確設定兩個端點。 |
+| AADSTS90056 | BadResourceRequest - 若要兌換存取權杖的程式碼，應用程式應將 POST 要求傳送至 `/token` 端點。 此外，在此之前，您應該提供授權碼並以 POST 要求將它傳送到 `/token` 端點。 有關 OAuth 2.0 授權代碼流的概述,請參[https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)閱本文: . 將使用者導向 `/authorize` 端點，這會傳回 authorization_code。 將要求張貼至 `/token` 端點，使用者就會取得存取權杖。 登入 Azure 入口網站，然後檢查 [應用程式註冊] > [端點]****，確認已正確設定兩個端點。 |
 | AADSTS90072 | PassThroughUserMfaError - 使用者登入的外部帳戶不存在於已登入的租用戶，因此使用者不符合租用戶的 MFA 需求。 必須先在租用戶中將帳戶新增為外部使用者。 請登出並使用其他 Azure AD 使用者帳戶登入。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服務嘗試處理 WS-同盟訊息時發生錯誤。 訊息無效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支援針對要求選取的驗證原則。 |
@@ -223,7 +223,7 @@ ms.locfileid: "80154554"
 | AADSTS90094 | AdminConsentRequired - 需要系統管理員同意。 |
 | AADSTS900382 | 跨雲請求不支援機密用戶端。 |
 | AADSTS90100 | InvalidRequestParameter - 參數空白或無效。 |
-| AADSTS901002 | AADSTS901002：不支援"資源"請求參數。 |
+| AADSTS901002 | AADSTS901002:不支援"資源"請求參數。 |
 | AADSTS90101 | InvalidEmailAddress - 所提供的資料不是有效的電子郵件地址。 電子郵件地址的格式必須是 `someone@example.com`。 |
 | AADSTS90102 | InvalidUriParameter - 值必須是有效的絕對 URI。 |
 | AADSTS90107 | InvalidXml - 要求無效。 請確定您的資料不會有無效的字元。|
@@ -266,15 +266,17 @@ ms.locfileid: "80154554"
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - 此資源並未設定為接受僅限裝置的權杖。 |
 | AADSTS240001 | BulkAADJTokenUnauthorized - 使用者未經授權，無法在 Azure AD 中註冊裝置。 |
 | AADSTS240002 | RequiredClaimIsMissing - 無法使用 id_token 作為 `urn:ietf:params:oauth:grant-type:jwt-bearer` 授與。|
-| AADSTS530032 | 阻止條件訪問安全性原則 - 租戶管理員已配置了阻止此請求的安全性原則。 檢查在租戶級別上定義的安全性原則，以確定您的請求是否符合策略要求。 |
+| AADSTS530032 | 阻止條件存取安全原則 - 租戶管理員已配置了阻止此請求的安全原則。 檢查在租戶級別上定義的安全策略,以確定您的請求是否符合策略要求。 |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest - 在目錄/租用戶中找不到應用程式。 如果租用戶的系統管理員尚未安裝此應用程式或租用戶中的任何使用者尚未同意使用此應用程式，也可能會發生此錯誤。 可能是針對應用程式所設定的識別碼值不正確，或將驗證要求傳送給錯誤的租用戶。 |
 | AADSTS700020 | InteractionRequired - 存取權授與需要互動。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 所提供的輸入參數範圍值無效，因為它包含多個資源。 |
 | AADSTS700023 | InvalidResourcelessScope - 要求存取權杖時，所提供的輸入參數範圍值無效。 |
+| AADSTS7000222| 無效客戶端金鑰過期金鑰提供 - 提供的用戶端密鑰已過期。 存取 Azure 門戶為應用建立新密鑰,或考慮使用證書認證提高安全性:https://aka.ms/certCreds |
+| AADSTS700005 | 無效授予者,即為"錯誤租戶" - 提供授權代碼旨在針對其他租戶使用,因此被拒絕。 OAuth2 授權代碼必須針對為其收購的同一租戶(/公共或 /[租戶-ID](視情況而定)進行兌換 |
 | AADSTS1000000 | UserNotBoundError - 繫結 API 需要 Azure AD 使用者也向外部 IDP 進行驗證，但尚未發生。 |
 | AADSTS1000002 | BindCompleteInterruptError - 繫結已順利完成，但必須通知使用者。 |
 | AADSTS7000112 | 未經授權的用戶端應用程式已禁用 - 應用程式已禁用。 |
-| AADSTS7500529 | 值"SAMLId-Guid"不是有效的 SAML ID - Azure AD 使用此屬性填充返回的回應的 InResponseTo 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如，id6c1c178c166d486687be4aaf5e482730 是一個有效的 ID。 |
+| AADSTS7500529 | 值「SAMLId-Guid」不是有效的 SAML ID - Azure AD 使用此屬性填充返回的回應的 InResponseTo 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如,id6c1c178c166d486687be4aaf5e482730 是一個有效的 ID。 |
 
 ## <a name="next-steps"></a>後續步驟
 

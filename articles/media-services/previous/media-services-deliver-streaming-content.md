@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67051757"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476702"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 發佈媒體服務內容  
 > [!div class="op_single_selector"]
-> * [休息](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [入口網站](media-services-portal-publish.md)
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以建立隨選串流定位器及建置串流 URL，串流處理調適性位元速率 MP4 集。 [為資產編碼](media-services-encode-asset.md) 主題說明如何編碼為調適性位元速率 MP4 集。 
 
 > [!NOTE]
@@ -108,7 +108,7 @@ ms.locfileid: "67051757"
 
 
 > [!NOTE]
-> 您也可以透過 SSL 連線串流您的內容。 若要執行這個方法，請確定您的串流 URL 是以 HTTPS 開頭。 目前 AMS 不支援使用 SSL 搭配自訂網域。
+> 您還可以透過 TLS 連接流式傳輸內容。 若要執行這個方法，請確定您的串流 URL 是以 HTTPS 開頭。 目前,AMS 不支援具有自定義域的 TLS。
 > 
 > 
 
@@ -180,5 +180,5 @@ ms.locfileid: "67051757"
 
 ## <a name="next-steps"></a>後續步驟
 * [下載資產](media-services-deliver-asset-download.md)
-* [配置資產交付策略](media-services-dotnet-configure-asset-delivery-policy.md)
+* [設定資產交付原則](media-services-dotnet-configure-asset-delivery-policy.md)
 

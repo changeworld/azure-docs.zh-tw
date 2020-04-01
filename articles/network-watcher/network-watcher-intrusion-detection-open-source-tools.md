@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845018"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474920"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用網路監看員和開放原始碼工具執行網路入侵偵測
 
@@ -38,7 +38,7 @@ ms.locfileid: "76845018"
 
 ### <a name="install-suricata"></a>安裝 Suricata
 
-如需其他所有安裝方法，請瀏覽 https://suricata.readthedocs.io/en/latest/install.html
+如需其他所有安裝方法，請瀏覽 https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. 在您 VM 的命令列終端機執行下列命令︰
 
@@ -76,7 +76,7 @@ tail -f /var/log/suricata/fast.log
 
 ### <a name="set-up-the-elastic-stack"></a>設定彈性堆疊
 
-雖然 Suricata 產生的記錄包含有關我們網路上所發生事件的重要資訊，並不容易閱讀並了解這些記錄。 藉由連線 Suricata 與彈性堆疊，我們可以建立 Kibana 儀表板，讓我們可從記錄搜尋、繪圖、分析和洞察。
+雖然 Suricata 生成的日誌包含有關我們網路上發生的情況的寶貴資訊,但這些日誌檔不是最容易閱讀和理解的。 藉由連線 Suricata 與彈性堆疊，我們可以建立 Kibana 儀表板，讓我們可從記錄搜尋、繪圖、分析和洞察。
 
 #### <a name="install-elasticsearch"></a>安裝 Elasticsearch
 
@@ -254,7 +254,7 @@ tail -f /var/log/suricata/fast.log
 
 範例儀表板會提供 Suricata 警示記錄的數個視覺效果︰
 
-1. 按 GeoIP 分類的警報 – 顯示警報按其所在國家/地區（根據地理位置確定）分佈的地圖
+1. 依 GeoIP 類別的警示 - 顯示警示按其所在國家/地區(根據地理位置確定)分佈的地圖
 
     ![地理 IP][3]
 
@@ -274,7 +274,7 @@ tail -f /var/log/suricata/fast.log
 
     ![映像 7][7]
 
-如需有關建立自訂視覺效果和儀表板的文件，請參閱 [Kibana 的正式文件](https://www.elastic.co/guide/en/kibana/current/introduction.html)。
+有關建立自訂視覺化效果和儀表板的更多文件,請參閱[Kibana 的官方文件](https://www.elastic.co/guide/en/kibana/current/introduction.html)。
 
 ## <a name="conclusion"></a>結論
 

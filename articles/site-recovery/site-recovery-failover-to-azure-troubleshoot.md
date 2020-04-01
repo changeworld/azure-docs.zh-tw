@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257741"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478947"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解
 
@@ -76,10 +76,10 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 
 如果 Azure 中容錯移轉虛擬機器上的 [連線]**** 按鈕呈現灰色，而您未透過 Express Route 或網站間 VPN 連線來連線到 Azure，則請：
 
-1. 轉到**虛擬機器** > **網路**，按一下所需的網路介面的名稱。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. 轉到**虛擬機** > **網路**,按一下所需的網路介面的名稱。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. 瀏覽至 [IP 組態]****，然後按一下所需 IP 組態的名稱欄位。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. 若要啟用公用 IP 位址，請按一下 [啟用]****。 ![啟用 IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. 按一下"**配置所需設置** > **創建新**"。 ![建立新項目](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+4. 按下設定**所需設置** > **創建新**。 ![建立新項目](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. 輸入公用位址的名稱，選擇 [SKU]**** 和 [指派]**** 的預設選項，然後按一下 [確定]****。
 6. 現在，為了儲存所做的變更，請按一下 [儲存]****。
 7. 關閉面板，然後瀏覽至虛擬機器的 [概觀]**** 區段來進行連線/RDP。
@@ -106,15 +106,15 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 >[!Note]
 >若要啟用「開機診斷」以外的任何設定，將必須於容錯移轉之前，在虛擬機器中安裝「Azure VM 代理程式」
 
-## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>容錯移轉基於 UEFI 的電腦到 Azure 後無法打開串列主控台
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>容錯移基於 UEFI 的電腦到 Azure 後無法開啟串列主控台
 
-如果能夠使用 RDP 連接到電腦，但無法打開串列主控台，請按照以下步驟操作：
+如果能夠使用 RDP 連接到電腦,但無法開啟串列主控台,請按照以下步驟操作:
 
-* 如果電腦作業系統是紅帽或 Oracle Linux 7.*/8.0，則在具有根許可權的容錯移轉 Azure VM 上運行以下命令。 在命令之後重新開機 VM。
+* 如果電腦作業系統是紅帽或 Oracle Linux 7.*/8.0,則在具有根許可權的故障轉移 Azure VM 上運行以下命令。 在命令之後重新啟動 VM。
 
         grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
-* 如果電腦作業系統為 CentOS 7.*，則在具有根許可權的容錯移轉 Azure VM 上運行以下命令。 在命令之後重新開機 VM。
+* 如果電腦作業系統為 CentOS 7.*,則在具有根許可權的故障轉移 Azure VM 上運行以下命令。 在命令之後重新啟動 VM。
 
         grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
@@ -122,27 +122,27 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 
 啟動 Windows VM 容錯移轉後，如果在復原的 VM 上收到非預期性關閉訊息，表示未在用於容錯移轉的復原點中擷取 VM 關閉狀態。 當您復原至 VM 未完全關閉的時間點時，就會發生這種情況。
 
-一般而言，無須擔心此問題，對於非計劃性容錯移轉，通常可忽略此問題。 如果計畫容錯移轉，請確保在容錯移轉之前正確關閉 VM，並為本地掛起的複製資料提供足夠的時間發送到 Azure。 然後使用 [容錯移轉](site-recovery-failover.md#run-a-failover) 畫面控制項 上的 [最新]**** 選項，以便將 Azure 上的任何擱置資料處理到復原點，然後將其用於 VM 容錯移轉。
+一般而言，無須擔心此問題，對於非計劃性容錯移轉，通常可忽略此問題。 如果計劃故障轉移,請確保在故障轉移之前正確關閉 VM,並為本地掛起的複製數據提供足夠的時間發送到 Azure。 然後使用 [容錯移轉](site-recovery-failover.md#run-a-failover) 畫面控制項 上的 [最新]**** 選項，以便將 Azure 上的任何擱置資料處理到復原點，然後將其用於 VM 容錯移轉。
 
-## <a name="unable-to-select-the-datastore"></a>無法選擇資料存儲
+## <a name="unable-to-select-the-datastore"></a>無法選擇資料儲存
 
-當您在嘗試重新保護已經歷容錯移轉的虛擬機器時，無法看到 Azure 門戶中的資料存儲時，將指示此問題。 這是因為主目標無法識別為添加到 Azure 網站恢復的 vCenter 下的虛擬機器。
+當您在嘗試重新保護已經歷故障轉移的虛擬機時,無法看到 Azure 門戶中的資料儲存時,將指示此問題。 這是因為主目標無法識別為添加到 Azure 網站恢復的 vCenter 下的虛擬機器。
 
-有關重新保護虛擬電腦的詳細資訊，請參閱[在容錯移轉到 Azure 後重新保護和故障將電腦故障退到本地網站](vmware-azure-reprotect.md)。
+有關重新保護虛擬機器的詳細資訊,請參閱[在故障移轉到 Azure 後重新保護電腦並將其故障退到本地網站](vmware-azure-reprotect.md)。
 
 若要解決此問題：
 
-在管理源電腦的 vCenter 中手動創建主目標。 下一個 vCenter 發現和刷新結構操作後，資料存儲將可用。
+在管理源電腦的 vCenter 中手動創建主目標。 下一個 vCenter 發現和刷新結構操作後,數據存儲將可用。
 
 > [!Note]
 > 
 > 發現和刷新結構操作最多可能需要 30 分鐘才能完成。 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>與 CS 的 Linux 主目標注冊失敗，出現 SSL 錯誤 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>與 CS 的 Linux 主目標註冊失敗,TLS 錯誤 35 
 
-由於在主目標上啟用了經過身份驗證的代理，與佈建服務器的 Azure 網站恢復主目標注冊失敗。 
+由於在主目標上啟用了經過身份驗證的代理,與配置伺服器的 Azure 網站恢復主目標註冊失敗。 
  
-此錯誤由安裝日誌中的以下字串指示： 
+此錯誤是由安裝紀錄中的以下字串指示: 
 
 ```
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
@@ -150,21 +150,21 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 若要解決此問題：
  
-1. 在佈建服務器 VM 上，打開命令提示符並使用以下命令驗證代理設置：
+1. 在設定伺服器 VM 上,開啟命令提示符並使用以下命令認證代理設定:
 
-    貓 /等/環境回聲$HTTP_代理回聲$HTTPs_代理 
+    貓 /等/環境回聲$http_代理回聲$https_代理 
 
-2. 如果前面的命令的輸出顯示定義了HTTP_proxy或HTTPs_proxy設置，請使用以下方法之一解除阻止主目標與佈建服務器的通信：
+2. 如果前面的指令的輸出顯示定義了http_proxy或https_proxy設置,請使用以下方法之一解除阻止主目標與設定伺服器的通訊:
    
    - 下載[PsExec 工具](https://aka.ms/PsExec)。
-   - 使用該工具訪問系統使用者上下文並確定是否配置了代理位址。 
-   - 如果配置了代理，請使用 PsExec 工具在系統使用者上下文中打開 IE。
+   - 使用該工具訪問系統使用者上下文並確定是否設定了代理位址。 
+   - 如果配置了代理,請使用 PsExec 工具在系統使用者上下文中打開 IE。
   
      **psexec -s -i "%程式檔%\互聯網資源管理器\iexplore.exe"**
 
-   - 為確保主目標伺服器能夠與佈建服務器通信，可以使用以下方式進行以下操作：
+   - 為確保主目標伺服器能夠與設定伺服器通訊,可以使用以下方式進行以下操作:
   
-     - 修改 Internet 資源管理器中的代理設置，通過代理繞過主目標伺服器 IP 位址。   
+     - 修改 Internet 資源管理員中的代理設定,透過代理繞過主目標伺服器 IP 位址。   
      Or
      - 禁用主目標伺服器上的代理。 
 

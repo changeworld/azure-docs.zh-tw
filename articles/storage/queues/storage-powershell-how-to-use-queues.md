@@ -1,5 +1,5 @@
 ---
-title: 在 PowerShell 中執行 Azure 佇列存儲操作
+title: 在 PowerShell 中執行 Azure 佇列儲存操作
 description: 如何在使用 PowerShell 的 Azure 佇列儲存體上執行作業
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96828a854c340b89c26023ce60f9c85dd1bb4cdd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087065"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473923"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 執行 Azure 佇列儲存體作業
 
@@ -78,7 +78,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>建立佇列
 
-下列範例會先使用儲存體帳戶內容建立 Azure 儲存體的連線，其中包含儲存體帳戶名稱及其存取金鑰 。 接下來，它調用[New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) Cmdlet 以創建名為"howtoqueue"的佇列。
+下列範例會先使用儲存體帳戶內容建立 Azure 儲存體的連線，其中包含儲存體帳戶名稱及其存取金鑰 。 接下來,它調用[New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) cmdlet 以創建名為「howtoqueue」的佇列。
 
 ```powershell
 $queueName = "howtoqueue"
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>將訊息新增至佇列
 
-影響佇列中實際訊息的作業會使用 PowerShell 中公開的 .NET 儲存體用戶端程式庫。 要向佇列添加消息，請創建消息物件[Microsoft.Azure.Storage.Queue.CloudQueue 消息](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message)類的新實例。 接下來，調用[AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage)方法。 您可以從字串 (採用 UTF-8 格式) 或位元組陣列建立 CloudQueueMessage。
+影響佇列中實際訊息的作業會使用 PowerShell 中公開的 .NET 儲存體用戶端程式庫。 要向佇列添加消息,請創建消息物件[Microsoft.Azure.Storage.Queue.CloudQueue 消息](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage)類的新實例。 接下來,調用[AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage)方法。 您可以從字串 (採用 UTF-8 格式) 或位元組陣列建立 CloudQueueMessage。
 
 下列範例示範如何將訊息新增至佇列。
 
@@ -130,7 +130,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 此**不可見逾時**定義在重新開放處理前，訊息維持不可見的時間。 預設值為 30 秒。
 
-您的程式碼可使用兩個步驟，從佇列讀取訊息。 當您調用[Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage)方法時，您會收到佇列中的下一條消息。 從**GetMessage**返回的消息將對此佇列中讀取消息的任何其他代碼不可見。 要完成從佇列中刪除消息，請調用[Microsoft.Azure.存儲.佇列.雲佇列.刪除消息](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage)方法。
+您的程式碼可使用兩個步驟，從佇列讀取訊息。 當您調用[Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage)方法時,您會收到佇列中的下一條消息。 從**GetMessage**返回的消息將對此佇列中讀取消息的任何其他代碼不可見。 要完成從佇列中刪除消息,請調用[Microsoft.Azure.存儲.佇列.雲佇列.刪除消息](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage)方法。
 
 在下列範例中，您可以閱讀三個佇列訊息，然後等待 10 秒 (不可見逾時)。 接著重新讀取三個訊息，然後呼叫 **DeleteMessage** 來刪除讀取後的訊息。 如果嘗試在刪除訊息後讀取佇列，會將 $queueMessage 傳回成 NULL。
 

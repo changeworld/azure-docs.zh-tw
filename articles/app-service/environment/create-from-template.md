@@ -1,5 +1,5 @@
 ---
-title: 使用 ARM 創建 ASE
+title: 使用 ARM 建立 ASE
 description: 瞭解如何使用 Azure 資源管理器範本創建外部或 ILB 應用服務環境。
 author: ccompy
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1212e77db5e0ec83f8dd966a14872a682b3e0202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295540"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478316"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本立 ASE
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -36,9 +36,9 @@ ASE 可以使用 Azure 入口網站或 Azure Resource Manager 範本來建立。
 
 1. 從範本建立 ASE。 如果是建立外部 ASE，完成此步驟就建立完成。 如果是建立 ILB ASE，還要再執行一些工作。
 
-2. 建立 ILB ASE 之後，會上傳與您的 ILB ASE 網域相符的 SSL 憑證。
+2. 創建 ILB ASE 後,將上傳與您的 ILB ASE 域匹配的 TLS/SSL 憑證。
 
-3. 上傳的 SSL 憑證會指派給 ILB ASE 作為其「預設」SSL 憑證。  當 ILB ASE 上的應用使用分配給 ASE 的通用根域時，此證書用於對 ILB ASE 上的`https://someapp.mycustomrootdomain.com`應用的 SSL 流量（例如。
+3. 上載的 TLS/SSL 憑證被分配給 ILB ASE 作為其"預設"TLS/SSL 證書。  此憑證用於對 ILB ASE 上套用的 TLS/SSL 流量,當它們使用配置給 ASE`https://someapp.mycustomrootdomain.com`的通用根域時(例如 。
 
 
 ## <a name="create-the-ase"></a>建立 ASE
@@ -61,17 +61,17 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 建立 ASE 約需一小時。 然後在入口網站中，ASE 會顯示在觸發部署之訂用帳戶的 ASE 清單中。
 
-## <a name="upload-and-configure-the-default-ssl-certificate"></a>上傳和設定預設SSL 憑證
-SSL 憑證必須與 ASE 相關聯，作為用來建立應用程式的 SSL 連線的「預設」SSL 憑證。 如果 ASE 的預設 DNS 尾碼是 *internal-contoso.com*，則連線到 `https://some-random-app.internal-contoso.com` 需要 **.internal-contoso.com* 的有效 SSL 憑證。 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>上傳並設定預設「TLS/SSL 憑證
+TLS/SSL 憑證必須與 ASE 關聯,作為用於建立與應用的 TLS 連接的"預設"TLS/SSL 證書。 如果 ASE 的預設 DNS 後置字`https://some-random-app.internal-contoso.com`*internal-contoso.com,* 則連接到 需要對 **.internal-contoso.com*有效的 TLS/SSL 憑證的連接。 
 
-使用內部憑證授權單位、向外部簽發者購買憑證、或使用自我簽署的憑證，取得有效的 SSL 憑證。 無論 SSL 憑證的來源為何，都需要正確設定下列憑證屬性︰
+使用內部憑證頒發機構、從外部頒發者購買證書或使用自簽名證書獲取有效的 TLS/SSL 證書。 無論 TLS/SSL 憑證的來源如何,都必須正確設定以下憑證屬性:
 
-* **主題**： 此屬性必須設置為 **.your-root-domain-here.com*。
-* **主題替代名稱**：此屬性必須同時包括 **.your-root-domain-here.com*和 **.scm.your-root-domain-here.com*。 系統將使用 your-app-name.scm.your-root-domain-here.com ** 形式的位址，進行與每個應用程式相關聯的 SCM/Kudu 網站的 SSL 連線。
+* **主題**: 這個屬性必須設定為 **.your-root-domain-here.com*。
+* **主題替代名稱**:此屬性必須同時包括 **.your-root-domain-here.com*和 **.scm.your-root-domain-here.com*。 與每個應用程式關聯的 SCM/Kudu 網站的 TLS 連線使用表單*的位址your-app-name.scm.your-root-domain-here.com*。
 
-備妥有效的 SSL 憑證，還需要兩個額外的準備步驟。 將 SSL 憑證轉換/儲存為 .pfx 檔案。 請記住，.pfx 檔案必須包含所有中繼和根憑證。 使用密碼保護其安全。
+手頭有有效的 TLS/SSL 證書,還需要執行兩個額外的準備步驟。 將 TLS/SSL 憑證轉換為 .pfx 檔。 請記住，.pfx 檔案必須包含所有中繼和根憑證。 使用密碼保護其安全。
 
-必須將 .pfx 檔案轉換成 base64 字串，因為上傳 SSL 憑證會使用 Resource Manager 範本。 因為 Resource Manager 範本是文字檔案，所以必須將 .pfx 檔案轉換成 base64 字串， 如此才能將其納入範本參數。
+.pfx 檔需要轉換為 base64 字串,因為 TLS/SSL 證書是使用資源管理器範本上載的。 因為 Resource Manager 範本是文字檔案，所以必須將 .pfx 檔案轉換成 base64 字串， 如此才能將其納入範本參數。
 
 使用以下 PowerShell 程式碼片段來進行：
 
@@ -96,16 +96,16 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-成功產生 SSL 憑證並轉換成 base64 編碼字串後，使用 GitHub 上的[設定預設 SSL 憑證][quickstartconfiguressl]範例 Resource Manager 範本。 
+成功產生 TLS/SSL 憑證並將其轉換為基 64 編碼字串後,請使用範例資源管理員樣本 在 GitHub 上[設定預設 SSL 憑證][quickstartconfiguressl]。 
 
 azuredeploy.parameters.json** 檔案中有以下參數︰
 
-* *應用服務環境名稱*：正在配置的 ILB ASE 的名稱。
-* *現有 AseLocation*： 包含部署 ILB ASE 的 Azure 區域的文本字串。  例如："South Central US (美國中南部)"。
+* *應用服務環境名稱*:正在配置的 ILB ASE 的名稱。
+* *現有 AseLocation*: 包含部署 ILB ASE 的 Azure 區域的文字字串。  例如："South Central US (美國中南部)"。
 * pfxBlobString**：.pfx 檔案的 based64 編碼字串表示法。 使用稍早的程式碼片段，複製 "exportedcert.pfx.b64" 中的字串。 貼上字串作為 pfxBlobString** 屬性的值。
 * **: The  used to secure the .pfx file.
-* *證書拇指印*：證書的指紋。 如果您從 Powershell 擷取此值 (例如先前程式碼片段中的 $certificate.Thumbprint **)，可以直接使用該值。 如果您從 Windows 憑證對話方塊中複製此值，請記得去除多餘的空格。 *證書指紋*應類似于 AF3143EB61D43F6727842115BB7F17BCECAAE。
-* *證書名稱*：您自己選擇的友好字串識別碼，用於標識證書。 Microsoft.Web/certificates** 實體表示 SSL 憑證，而此名稱會作為實體的唯一 Resource Manager 識別碼的一部分。 名稱*必須*以以下尾碼結尾：yourASENameHere_InternalLoadBalancingASE。 \_ Azure 入口網站會以這個尾碼為指標，表示憑證要用於保護啟用 ILB 的 ASE。
+* *證書拇指印*:證書的指紋。 如果您從 Powershell 擷取此值 (例如先前程式碼片段中的 $certificate.Thumbprint **)，可以直接使用該值。 如果您從 Windows 憑證對話方塊中複製此值，請記得去除多餘的空格。 *證書指紋*應類似於 AF3143EB61D43F6727842115BB7F17BCECAAE。
+* *憑證名稱*:您自己選擇的友好字串識別碼,用於識別證書。 該名稱用作表示 TLS/SSL 憑證的*Microsoft.Web/憑證*實體的唯一資源管理器識別碼的一部分。 名稱*必須*以以下後綴結尾:yourASENameHere_InternalLoadBalancingASE。 \_ Azure 入口網站會以這個尾碼為指標，表示憑證要用於保護啟用 ILB 的 ASE。
 
 以下是 azuredeploy.parameters.json ** 的縮簡範例︰
 
@@ -136,7 +136,7 @@ azuredeploy.parameters.json** 檔案中有以下參數︰
 }
 ```
 
-填入 azuredeploy.parameters.json** 檔案後，使用下列 Powershell 程式碼片段設定預設 SSL。 將檔案路徑變更為您電腦上 Resource Manager 範本檔案的位置。 記得提供您自己的 Resource Manager 部署名稱和資源群組名稱的值：
+填寫*azuredeploy.parameters.json*檔後,請使用 PowerShell 代碼段設定預設 TLS/SSL 證書。 將檔案路徑變更為您電腦上 Resource Manager 範本檔案的位置。 記得提供您自己的 Resource Manager 部署名稱和資源群組名稱的值：
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,9 +147,9 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 每個 ASE 前端套用變更大約需要 40 分鐘。 例如，有一個預設大小的 ASE 使用兩個前端，則範本將需要大約一小時 20 分鐘的時間才能完成。 執行範本時，無法調整 ASE。  
 
-範本完成之後，可以透過 HTTPS 存取 ILB ASE 上的應用程式。 此連線使用預設 SSL 憑證加以保護。 如果 ILB ASE 上的應用程式是使用應用程式名稱加上預設主機名稱的組合來定址，則會使用預設 SSL 憑證。 例如，`https://mycustomapp.internal-contoso.com` 會使用 **.internal-contoso.com* 的預設 SSL 憑證。
+範本完成之後，可以透過 HTTPS 存取 ILB ASE 上的應用程式。 通過使用預設 TLS/SSL 憑證保護連接。 使用應用程式名稱與預設主機名的組合解決 ILB ASE 上的應用時,將使用預設 TLS/SSL 證書。 例如,`https://mycustomapp.internal-contoso.com`使用預設 TLS/SSL 憑證進行 **.internal-contoso.com*。
 
-不過，就如同在公用多租用戶服務上執行的應用程式，開發人員可以為個別的應用程式設定自訂主機名稱。 他們也可以為個別的應用程式設定唯一 SNI SSL 憑證繫結。
+不過，就如同在公用多租用戶服務上執行的應用程式，開發人員可以為個別的應用程式設定自訂主機名稱。 它們還可以為各個應用配置唯一的 SNI TLS/SSL 證書綁定。
 
 ## <a name="app-service-environment-v1"></a>App Service 環境 v1 ##
 App Service Environment 有兩個版本：ASEv1 和 ASEv2。 前述資訊架構在 ASEv2 上。 本節說明 ASEv1 與 ASEv2 之間的差異。

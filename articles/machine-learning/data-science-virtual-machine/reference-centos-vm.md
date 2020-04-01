@@ -1,5 +1,5 @@
 ---
-title: 參考： CentOS資料科學虛擬機器
+title: '參考: CentOS 資料科學虛擬機器'
 titleSuffix: Azure Data Science Virtual Machine
 description: CentOS 資料科學虛擬機器中包含的工具的詳細資訊
 author: gvashishtha
@@ -8,14 +8,14 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05da812023e7525b87a3d7ef1ce1940339f99791
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525833"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475492"
 ---
-# <a name="reference-centos-linux-data-science-virtual-machine"></a>參考： CentOS （Linux） 資料科學虛擬機器
+# <a name="reference-centos-linux-data-science-virtual-machine"></a>參考: CentOS (Linux) 資料科學虛擬機器
 
 Linux 資料科學虛擬機器 (DSVM) 是以 CentOS 為基礎的 Azure 虛擬機器。 Linux DSVM 隨附預先安裝的工具集合，可供您用來進行資料分析和機器學習。 
 
@@ -49,7 +49,7 @@ Linux DSVM 中包含的主要軟體元件如下︰
 
 Linux DSVM 可大幅減輕這樣的負擔。 使用 Linux DSVM 可以快速啟動分析專案。 Linux DSVM 可協助您用各種語言處理工作，包含 R、Python、SQL、Java 與 C++。 Eclipse 提供容易使用的 IDE，讓您開發和測試程式碼。 DSVM 中所含的 Azure SDK 可協助您在 Linux 上使用適用於 Microsoft 雲端平台的各種服務，來建置您的應用程式。 此外也會預先安裝其他語言，包括 Ruby、Perl、PHP 和 Node.js。
 
-DSVM 映像不會產生軟體費用。 您僅需支付 Azure 硬體使用費，這是根據您使用 DSVM 映像所佈建的虛擬機器大小來評估。 如需計算費用的詳細資訊，請參閱 Azure Marketplace 中的[適用於 Linux (CentOS) 的資料科學虛擬機器](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)清單。
+DSVM 映像不會產生軟體費用。 您僅需支付 Azure 硬體使用費，這是根據您使用 DSVM 映像所佈建的虛擬機器大小來評估。 有關計算費用的詳細資訊,請參閱 Azure 應用商店中[用於 Linux 的數據科學虛擬機器清單](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。
 
 
 ## <a name="machine-learning-server"></a>Machine Learning Server
@@ -58,13 +58,13 @@ R 是其中一種最受歡迎的資料分析和機器學習語言。 如果您�
 
 您可以使用 Machine Learning Server 在 Web 服務中調整和運作 R 模型。 您可以在其中一個預設編輯器 (如 RStudio、vi 或 Emacs) 中編輯您的 R 程式。 Emacs 編輯器會預先安裝在 DSVM 上。 Emacs ESS (Emacs Speaks Statistics) 套件能夠簡化在 Emacs 編輯器中處理 R 檔案的程序。
 
-要打開 R 主控台，請在 shell 中輸入**R**。此命令將帶您到互動式環境。 若要開發 R 程式，在一般情況下，您可以使用編輯器 (例如 Emacs 或 vi)，然後在 R 中執行指令碼。RStudio 提供了完整的圖形化 IDE 可用來開發 R 程式。
+要開啟 R 主控台,請在 shell 中輸入**R**。此命令將帶您到互動式環境。 若要開發 R 程式，在一般情況下，您可以使用編輯器 (例如 Emacs 或 vi)，然後在 R 中執行指令碼。RStudio 提供了完整的圖形化 IDE 可用來開發 R 程式。
 
 DSVM 中包含可用來安裝[最熱門的 20 個 R 套件](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)的 R 指令碼。 您可以在進入 R 互動式介面後執行此指令碼。 如前所述，若要開啟該介面，請在殼層中輸入 **R**。  
 
 ## <a name="python"></a>Python
 
-Anaconda Python 會隨著 Python 3.5 和 2.7 環境一起安裝。 2.7 環境稱為_root_root，3.5 環境稱為_py35_。 這個散發套件包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。
+Anaconda Python 會隨著 Python 3.5 和 2.7 環境一起安裝。 2.7 環境_root_稱為 root,3.5 環境稱為_py35_。 這個散發套件包含基本的 Python 以及大約 300 個最受歡迎的數學運算、工程設計和資料分析封裝。
 
 py35 環境是預設環境。 若要啟用根 (2.7) 環境，請使用下列命令：
 
@@ -110,7 +110,7 @@ Jupyter Notebook 伺服器已預先設定 Python 2、Python 3 及 R 核心。 �
 > [!NOTE]
 > 如果您收到任何憑證警告，請繼續。
 
-您可以從任何主機存取 Jupyter Notebook 伺服器。 輸入**\//\<HTTPs：DSVM DNS 名稱\>或 IP 位址 ：8000/**。
+您可以從任何主機存取 Jupyter Notebook 伺服器。 請輸入**\//\<HT00\>** 000 00 000 000。
 
 > [!NOTE]
 > 在佈建 DSVM 時，防火牆依預設會開啟連接埠 8000。 
@@ -161,7 +161,7 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
   
   如需詳細資訊，請參閱 [適用於 Eclipse 的 Azure 工具組](/java/azure/eclipse/azure-toolkit-for-eclipse)。
 
-* LaTeX 通過 texlive 包以及名為[AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)的 Emacs 附加元件進行安裝。 此套件可讓您更容易在 Emacs 中撰寫 LaTeX 文件。 
+* LaTeX 透過 texlive 套件以及名為[AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)的 Emacs 附加元件進行安裝。 此套件可讓您更容易在 Emacs 中撰寫 LaTeX 文件。 
 
 ## <a name="databases"></a>資料庫
 
@@ -176,7 +176,7 @@ Linux DSVM 可讓您存取數個資料庫和命令列工具。
 SQuirreL SQL 是一個圖形化 SQL 用戶端，可連線至多種不同的資料庫 (包括 SQL Server、PostgresSQL 及 MySQL)，並執行 SQL 查詢。 您可以使用桌面圖示，從圖形化桌面工作階段 (例如，透過 X2Go 用戶端) 執行 SQuirreL SQL。 或者，您可以在殼層中使用下列命令來執行用戶端：
 
 ```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
 第一次使用之前，請設定驅動程式和資料庫別名。 JDBC 驅動程式位於 /usr/share/java/jdbcdrivers 中。
@@ -187,11 +187,11 @@ SQuirreL SQL 是一個圖形化 SQL 用戶端，可連線至多種不同的資�
 
 SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
-* **bcp**： bcp 工具在 SQL Server 實例和使用者指定格式的資料檔案之間批量複製資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
+* **bcp**: bcp 工具在 SQL Server 實體和使用者指定格式的資料檔之間批次複製資料。 您可以使用 bcp 工具將大量新資料列匯入 SQL Server 資料表中，或是將資料表的資料匯出成資料檔案。 若要將資料匯入資料表中，您必須使用為該資料表建立的格式檔案。 或者，您必須了解資料表的結構，以及適用於其資料行的資料類型。
 
   如需詳細資訊，請參閱[使用 bcp 進行連線](https://msdn.microsoft.com/library/hh568446.aspx)。
 
-* **sqlcmd**：您可以使用 sqlcmd 實用程式在命令提示符下輸入 Transact-SQL 語句、系統過程和指令檔。 sqlcmd 公用程式會使用 ODBC 執行 Transact-SQL 批次。
+* **sqlcmd**:您可以使用 sqlcmd 實用程式在指令提示符下輸入 Transact-SQL 語句、系統過程和文本檔。 sqlcmd 公用程式會使用 ODBC 執行 Transact-SQL 批次。
 
   如需詳細資訊，請參閱[使用 sqlcmd 進行連線](https://msdn.microsoft.com/library/hh568447.aspx)。
 
@@ -209,21 +209,21 @@ SQL Server 的 ODBC 驅動程式封裝也隨附兩個命令列工具：
 
 DSVM 上安裝了下列 Azure 工具：
 
-* **Azure CLI**：可以使用 Azure 中的命令列介面通過 shell 命令創建和管理 Azure 資源。 若要開啟 Azure Tools，請輸入 **azure help**。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
-* **Azure 存儲資源管理器**：Azure 存儲資源管理器是一種圖形工具，可用於流覽已存儲在 Azure 存儲帳戶中的物件，以及將資料上載和從 Azure Blob 上載和下載。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉送。
-* **Azure 庫**：以下庫預先安裝在 DSVM 上：
+* **Azure CLI**:可以使用 Azure 中的命令列介面透過 shell 命令建立和管理 Azure 資源。 若要開啟 Azure Tools，請輸入 **azure help**。 如需詳細資訊，請參閱 [Azure CLI 文件頁面](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
+* **Azure 儲存資源管理員**:Azure 儲存資源管理員是一種圖形工具,可用於瀏覽已儲存在 Azure 儲存帳戶中的物件,以及將數據上載和從 Azure Blob 上載和下載。 您可以從桌面捷徑圖示存取儲存體總管。 您也可以輸入 **StorageExplorer**，從殼層提示字元加以開啟。 您必須從 X2Go 用戶端登入，或是已設定 X11 轉送。
+* **Azure 函式庫**:以下函式庫預安裝在 DSVM 上:
   
-  * **Python**： Python 中與 Azure 相關的庫是*azure、azureml、pydocumentdb*和*pyodbc*。 *azure* *pydocumentdb* 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
-  * **R**： R 中的 Azure 相關庫是 AzureML 和 RODBC。
-  * **JAVA**：Azure JAVA 庫的清單可以在 DSVM 上的目錄 /dsvm/sdk/AzureSDKJAVA 中找到。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
+  * **Python**: Python 中與 Azure 相關的函式庫是*azure、azureml、pydocumentdb*與*pyodbc*。 *azure* *pydocumentdb* 透過前三個程式庫，您可以存取 Azure 儲存體服務、Azure Machine Learning 和 Azure Cosmos DB (Azure 上的 NoSQL 資料庫)。 第四個程式庫 pyodbc (以及 Microsoft ODBC Driver for SQL Server) 可讓您使用 ODBC 介面，從 Python 中存取 SQL Server、Azure SQL Database 和 Azure SQL 資料倉儲。 輸入 **pip list** 以查看所有列出的程式庫。 請務必在 Python 2.7 和 3.5 的環境中執行此命令。
+  * **R**: R 中的 Azure 相關函式庫是 AzureML 和 RODBC。
+  * **Java**:Azure Java 庫的清單可以在 DSVM 上的目錄 /dsvm/sdk/AzureSDKJAVA 中找到。 關鍵的程式庫為 Azure 儲存體和管理 API、Azure Cosmos DB 和 JDBC Driver for SQL Server。  
 
-可以從預先安裝的 Firefox 瀏覽器訪問[Azure 門戶](https://portal.azure.com)。 在 Azure 入口網站中，您可以建立、管理和監視 Azure 資源。
+可以從預先安裝的 Firefox 瀏覽器存[取 Azure 門戶](https://portal.azure.com)。 在 Azure 入口網站中，您可以建立、管理和監視 Azure 資源。
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning 是完全受控的雲端服務，可用來建置、部署及共用預測性分析解決方案。 從 Azure 機器學習工作室（經典）構建實驗和模型。 要從 DSVM 上的 Web 瀏覽器訪問 Azure 機器學習，請訪問[Microsoft Azure 機器學習](https://studio.azureml.net)。
+Azure Machine Learning 是完全受控的雲端服務，可用來建置、部署及共用預測性分析解決方案。 從 Azure 機器學習工作室(經典)構建實驗和模型。 要從 DSVM 上的 Web 瀏覽器存取 Azure 機器學習,請造[訪 Microsoft Azure 機器學習](https://studio.azureml.net)。
 
-登錄到 Azure 機器學習工作室（經典版）後，可以使用實驗畫布為機器學習演算法構建邏輯流。 您也可以存取 Azure Machine Learning 上裝載的 Jupyter Notebook。 該筆記本可以無縫地與 Azure 機器學習工作室（經典）中的實驗配合使用。 
+登錄到 Azure 機器學習工作室(經典版)後,可以使用實驗畫布為機器學習演演演算法構建邏輯流。 您也可以存取 Azure Machine Learning 上裝載的 Jupyter Notebook。 該筆記本可以無縫地與 Azure 機器學習工作室(經典)中的實驗配合使用。 
 
 請將您建置的機器學習模型包裝在 Web 服務介面中，使其能夠運作。 讓機器學習模型能夠運作，使用任何語言撰寫的用戶端就能夠從這些模型叫用預測。 如需詳細資訊，請參閱 [機器學習文件](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -238,11 +238,11 @@ Azure Machine Learning 是完全受控的雲端服務，可用來建置、部署
 
 DSVM 隨附了一些已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包括：
 
-* **微軟認知工具組**：一個深度學習工具組。
+* **微軟認知工具組**:一個深度學習工具組。
 * **Vowpal Wabbit**：快速線上學習演算法。
-* **XGBoost**：一種提供優化、提升的樹演算法的工具。
+* **XGBoost**:一種提供優化、提升的樹演演演算法的工具。
 * **Python**：Anaconda Python 會與含有像是 Scikit-learn 的程式庫的機器學習演算法進行配套。 您可以使用 `pip install` 程式庫。
-* **R**： 機器學習函數的豐富庫可用於 R. 預先安裝的庫，包括 lm、glm、隨機林和 rpart。 您可以執行 `install.packages(<lib name>)` 來安裝其他程式庫。
+* **R**: 機器學習函數的豐富庫可用於 R. 預安裝的庫,包括 lm、glm、隨機林和 rpart。 您可以執行 `install.packages(<lib name>)` 來安裝其他程式庫。
 
 後續章節會更詳細地討論 Microsoft Cognitive Toolkit、Vowpal Wabbit 和 XGBoost。
 
@@ -330,7 +330,7 @@ rattle()
 > [!NOTE]
 > 如果您無權存取系統目錄 (預設) 中的套件，您可能會在 R 主控台視窗上看到提示，詢問是否要將套件安裝至您的個人程式庫。 如果您看到這些提示，請輸入 **y**。
 
-1. 選取 [執行] ****。
+1. 選擇 **"執行**"
 1. 此時會出現一個對話方塊，提示您載入範例天氣資料集。 請選取 [是]**** 以載入範例。
 1. 選取 [模型]**** 索引標籤。
 1. 選取 [執行]**** 以建置決策樹。
@@ -338,11 +338,11 @@ rattle()
 1. 選取 [樹系]**** 選項，然後選取 [執行]**** 以建置隨機樹系。
 1. 選取 [評估]**** 索引標籤。
 1. 選取 [風險]**** 選項，然後選取 [執行]**** 以顯示兩個 [風險 (累積)]**** 效能繪圖。
-1. 選取 [記錄]**** 索引標籤，以顯示針對先前的作業產生的 R 程式碼。 （由於 Rattle 當前版本中存在 Bug，因此必須在日誌文本中**#****匯出此日誌**前面插入一個字元。
+1. 選取 [記錄]**** 索引標籤，以顯示針對先前的作業產生的 R 程式碼。 (由於 Rattle 當前版本中存在 Bug,因此必須在日**#** 誌文本中**匯出此日誌**前面插入一個字元。
 1. 選取 [匯出]**** 按鈕，將名為 weather_script.R** 的 R 指令檔儲存到主資料夾。
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
 
 ## <a name="next-steps"></a>後續步驟
 
-仍有其他問題嗎？ 請考慮創建[支援票證](https://azure.microsoft.com/support/create-ticket/)。
+仍有其他問題嗎？ 請考慮建立[支援票證](https://azure.microsoft.com/support/create-ticket/)。
