@@ -1,33 +1,33 @@
 ---
-title: 使用 Azure CLI 配置客戶管理的金鑰
+title: 使用 Azure CLI 設定客戶管理的金鑰
 titleSuffix: Azure Storage
-description: 瞭解如何使用 Azure CLI 使用 Azure 金鑰保存庫配置客戶管理的金鑰以進行 Azure 存儲加密。
+description: 瞭解如何使用 Azure CLI 使用 Azure 密鑰保管庫配置客戶管理的密鑰以進行 Azure 儲存加密。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6be15b3fdef94c07e70eba7c4234979b5ac62344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c20fcdf6a725da9d7b053f0ad98efec6aca88f81
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061166"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478205"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>使用 Azure CLI 使用 Azure 金鑰保存庫配置客戶管理的金鑰
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>使用 Azure CLI 使用 Azure 金鑰保管庫設定客戶管理的金鑰
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文演示如何使用 Azure CLI 使用客戶管理的金鑰配置 Azure 金鑰保存庫。 若要瞭解如何使用 Azure CLI 創建金鑰保存庫，請參閱[快速入門：使用 Azure CLI 從 Azure 金鑰保存庫設置和檢索機密](../../key-vault/quick-create-cli.md)。
+本文展示如何使用 Azure CLI 使用客戶管理的密鑰配置 Azure 密鑰保管庫。 若要瞭解如何使用 Azure CLI 建立金鑰保管庫,請參閱[快速入門:使用 Azure CLI 從 Azure 金鑰保存庫設定與檢索機密](../../key-vault/quick-create-cli.md)。
 
-## <a name="assign-an-identity-to-the-storage-account"></a>將標識分配給存儲帳戶
+## <a name="assign-an-identity-to-the-storage-account"></a>將識別配置給儲存帳戶
 
-要為存儲帳戶啟用客戶管理的金鑰，請先將系統分配的託管標識分配給存儲帳戶。 您將使用此託管標識授予訪問金鑰保存庫的存儲帳戶許可權。
+要為存儲帳戶啟用客戶管理的密鑰,請先將系統分配的託管標識分配給存儲帳戶。 您將使用此託管標識授予存取金鑰保管庫的儲存帳戶許可權。
 
-要使用 Azure CLI 分配託管標識，請調用[az 存儲帳戶更新](/cli/azure/storage/account#az-storage-account-update)。 請記住將括弧中的預留位置值替換為您自己的值。
+要使用 Azure CLI 分配託管識別,請呼叫[az 儲存帳戶更新](/cli/azure/storage/account#az-storage-account-update)。 請記住將括弧中的占位符值替換為您自己的值。
 
 ```azurecli-interactive
 az account set --subscription <subscription-id>
@@ -38,13 +38,13 @@ az storage account update \
     --assign-identity
 ```
 
-有關使用 Azure CLI 配置系統分配的託管標識的詳細資訊，請參閱使用[Azure CLI 在 Azure VM 上配置 Azure 資源的託管標識](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)。
+有關使用 Azure CLI 設定系統分配的託管識別的詳細資訊,請參閱使用[Azure CLI 在 Azure VM 上設定 Azure 資源的託管識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)。
 
-## <a name="create-a-new-key-vault"></a>創建新金鑰保存庫
+## <a name="create-a-new-key-vault"></a>建立新金鑰保存庫
 
-用於存儲 Azure 存儲加密的客戶管理金鑰的金鑰保存庫必須啟用兩個金鑰保護設置，**即"虛刪除****"和"不清除**"。 要使用啟用這些設置的 PowerShell 或 Azure CLI 創建新金鑰保存庫，請執行以下命令。 請記住將括弧中的預留位置值替換為您自己的值。
+用於存儲 Azure 儲存加密的客戶管理金鑰的金鑰保管庫必須啟用兩個金鑰保護設置,**即「軟刪除****」和「不清除**」 。 要使用啟用這些設置的 PowerShell 或 Azure CLI 創建新密鑰保管庫,請執行以下命令。 請記住將括弧中的占位符值替換為您自己的值。
 
-要使用 Azure CLI 創建新金鑰保存庫，請調用[az 金鑰保存庫創建](/cli/azure/keyvault#az-keyvault-create)。 請記住將括弧中的預留位置值替換為您自己的值。
+要使用 Azure CLI 建立新金鑰保存,請呼叫[az 金鑰保存 。](/cli/azure/keyvault#az-keyvault-create) 請記住將括弧中的占位符值替換為您自己的值。
 
 ```azurecli-interactive
 az keyvault create \
@@ -55,13 +55,13 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-要瞭解如何使用 Azure CLI 在現有金鑰保存庫中啟用 **"虛刪除****"和"不清除"，** 請參閱標題為 **"啟用虛刪除**和**啟用清除保護**"的部分，瞭解如何[使用 CLI 使用虛刪除](../../key-vault/key-vault-soft-delete-cli.md)。
+要瞭解如何使用 Azure CLI 在現有金鑰保存式庫中啟用 **「軟刪除****」與「不清除」** 請參考標題為 **「啟用軟刪除**與**開啟清除保護**」的部分,瞭解如何[使用 CLI 使用軟刪除](../../key-vault/key-vault-soft-delete-cli.md)。
 
-## <a name="configure-the-key-vault-access-policy"></a>配置金鑰保存庫訪問策略
+## <a name="configure-the-key-vault-access-policy"></a>設定金鑰保存庫存取原則
 
-接下來，為金鑰保存庫配置訪問策略，以便存儲帳戶具有訪問它的許可權。 在此步驟中，您將使用以前分配給存儲帳戶的託管標識。
+接下來,為金鑰保管庫配置訪問策略,以便存儲帳戶具有訪問它的許可權。 在此步驟中,您將使用以前分配給存儲帳戶的託管標識。
 
-要設置金鑰保存庫的訪問策略，請調用[az 金鑰保存庫集策略](/cli/azure/keyvault#az-keyvault-set-policy)。 請記住將括弧中的預留位置值替換為您自己的值。
+要設定金鑰保存庫的存取政策,請呼叫[az 金鑰保管庫集原則](/cli/azure/keyvault#az-keyvault-set-policy)。 請記住將括弧中的占位符值替換為您自己的值。
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
@@ -78,7 +78,7 @@ az keyvault set-policy \
 
 ## <a name="create-a-new-key"></a>建立新的金鑰
 
-接下來，在金鑰保存庫中創建一個金鑰。 要創建金鑰，請調用[az 金鑰庫金鑰創建](/cli/azure/keyvault/key#az-keyvault-key-create)。 請記住將括弧中的預留位置值替換為您自己的值。
+接下來,在密鑰保管庫中創建一個密鑰。 要建立金鑰,請呼叫[az 金鑰庫金鑰建立](/cli/azure/keyvault/key#az-keyvault-key-create)。 請記住將括弧中的占位符值替換為您自己的值。
 
 ```azurecli-interactive
 az keyvault key create
@@ -86,11 +86,13 @@ az keyvault key create
     --vault-name <key-vault>
 ```
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>使用客戶管理的金鑰配置加密
+Azure 儲存加密僅支援 2048 位 RSA 和 RSA-HSM 密鑰。 關於金鑰的詳細資訊,請參考[「關於 Azure 金鑰保管庫金鑰、機密和憑證」](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)的**金鑰保管庫金鑰**。
 
-預設情況下，Azure 存儲加密使用 Microsoft 管理的金鑰。 為客戶管理的金鑰配置 Azure 存儲帳戶，並指定要與存儲帳戶關聯的金鑰。
+## <a name="configure-encryption-with-customer-managed-keys"></a>使用客戶管理的金鑰設定加密
 
-要更新存儲帳戶的加密設定，請調用[az 存儲帳戶更新](/cli/azure/storage/account#az-storage-account-update)，如以下示例所示。 包括參數`--encryption-key-source`並將其設置為`Microsoft.Keyvault`，以啟用存儲帳戶的客戶管理金鑰。 該示例還查詢金鑰保存庫 URI 和最新金鑰版本，這兩個值都需要將金鑰與存儲帳戶關聯。 請記住將括弧中的預留位置值替換為您自己的值。
+默認情況下,Azure 儲存加密使用Microsoft管理的密鑰。 為客戶管理的密鑰配置 Azure 儲存帳戶,並指定要與存儲帳戶關聯的金鑰。
+
+要更新存儲帳戶的加密設置,請調用[az 儲存帳戶更新](/cli/azure/storage/account#az-storage-account-update),如以下範例所示。 包括參數`--encryption-key-source`並將其設置`Microsoft.Keyvault`為 ,以啟用儲存帳戶的客戶管理金鑰。 該示例還查詢金鑰保管庫 URI 和最新密鑰版本,這兩個值都需要將密鑰與存儲帳戶關聯。 請記住將括弧中的占位符值替換為您自己的值。
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -114,15 +116,15 @@ az storage account update
 
 ## <a name="update-the-key-version"></a>更新金鑰版本
 
-創建金鑰的新版本時，需要更新存儲帳戶才能使用新版本。 首先，通過調用[az 金鑰保存庫顯示](/cli/azure/keyvault#az-keyvault-show)來查詢金鑰保存庫 URI，並通過調用[az 金鑰庫金鑰清單版本](/cli/azure/keyvault/key#az-keyvault-key-list-versions)查詢金鑰版本。 然後調用[az 存儲帳戶更新](/cli/azure/storage/account#az-storage-account-update)以更新存儲帳戶的加密設定以使用金鑰的新版本，如上一節所示。
+建立金鑰的新版本時,需要更新存儲帳戶才能使用新版本。 首先,通過調用[az 密鑰保管庫顯示](/cli/azure/keyvault#az-keyvault-show)來查詢密鑰保管庫 URI,並通過調用[az 密鑰庫金鑰清單版本](/cli/azure/keyvault/key#az-keyvault-key-list-versions)查詢密鑰版本。 然後調用[az 儲存帳戶更新](/cli/azure/storage/account#az-storage-account-update)以更新存儲帳戶的加密設置以使用密鑰的新版本,如上一節所示。
 
 ## <a name="use-a-different-key"></a>使用其他鍵
 
-要更改用於 Azure 存儲加密的金鑰，請調用[az 存儲帳戶更新](/cli/azure/storage/account#az-storage-account-update)，如[使用客戶管理的金鑰配置加密](#configure-encryption-with-customer-managed-keys)並提供新的金鑰名稱和版本。 如果新金鑰位於其他金鑰保存庫中，則還要更新金鑰保存庫 URI。
+要更改用於 Azure 儲存加密的金鑰,請呼叫[az 儲存帳戶更新](/cli/azure/storage/account#az-storage-account-update),如[使用客戶管理的金鑰設定加密](#configure-encryption-with-customer-managed-keys)並提供新的金鑰名稱和版本。 如果新密鑰位於其他密鑰保管庫中,則還要更新密鑰保管庫URI。
 
-## <a name="revoke-customer-managed-keys"></a>撤銷客戶管理的金鑰
+## <a name="revoke-customer-managed-keys"></a>復原客戶管理的金鑰
 
-如果您認為金鑰可能已洩露，則可以通過刪除金鑰保存庫訪問策略來撤銷客戶管理的金鑰。 要撤銷客戶管理的金鑰，請調用[az 金鑰庫刪除策略](/cli/azure/keyvault#az-keyvault-delete-policy)命令，如以下示例所示。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
+如果您認為密鑰可能已洩露,則可以通過刪除密鑰保管庫訪問策略來撤銷客戶管理的金鑰。 要復原客戶管理的金鑰,請呼叫[az 金鑰庫刪除策略](/cli/azure/keyvault#az-keyvault-delete-policy)命令,如以下範例所示。 請記住將括弧中的占位符值替換為您自己的值,並使用前面示例中定義的變數。
 
 ```azurecli-interactive
 az keyvault delete-policy \
@@ -130,9 +132,9 @@ az keyvault delete-policy \
     --object-id $storage_account_principal
 ```
 
-## <a name="disable-customer-managed-keys"></a>禁用客戶管理的金鑰
+## <a name="disable-customer-managed-keys"></a>關閉客戶管理的金鑰
 
-禁用客戶管理的金鑰時，您的存儲帳戶將再次使用 Microsoft 管理的金鑰進行加密。 要禁用客戶管理的金鑰，請調用[az 存儲帳戶更新](/cli/azure/storage/account#az-storage-account-update)並將`--encryption-key-source parameter``Microsoft.Storage`設置為 ，如以下示例所示。 請記住將括弧中的預留位置值替換為您自己的值，並使用前面示例中定義的變數。
+禁用客戶管理的密鑰時,您的儲存帳戶將再次使用 Microsoft 管理的密鑰進行加密。 要禁用客戶管理的密鑰,請調用[az 儲存帳戶更新](/cli/azure/storage/account#az-storage-account-update)並將`--encryption-key-source parameter``Microsoft.Storage`設置為 ,如以下範例所示。 請記住將括弧中的占位符值替換為您自己的值,並使用前面示例中定義的變數。
 
 ```azurecli-interactive
 az storage account update
@@ -143,5 +145,5 @@ az storage account update
 
 ## <a name="next-steps"></a>後續步驟
 
-- [靜態資料的 Azure 存儲加密](storage-service-encryption.md) 
-- [什麼是 Azure 金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+- [靜態資料的 Azure 儲存加密](storage-service-encryption.md) 
+- [什麼是 Azure 金鑰保存嗎](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

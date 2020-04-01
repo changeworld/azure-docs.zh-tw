@@ -1,32 +1,54 @@
 ---
 title: 設定 Azure Active Directory 驗證
-description: 瞭解如何在配置 Azure AD 後使用 Azure 活動目錄身份驗證連接到 SQL 資料庫、託管實例和 SQL 資料倉儲。
+description: 瞭解如何在配置 Azure AD 後,使用 Azure 活動目錄身份驗證連接到 SQL 資料庫、託管實例和 Azure 同步分析。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: data warehouse
+ms.custom: azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 01/07/2020
-ms.openlocfilehash: 881c7076d5131746c730757a07da6fb938429c38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/27/2020
+ms.openlocfilehash: 0e244ea185011bbb7d9f0facad399bb9b577bbc2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125046"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419868"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 設定及管理 Azure Active Directory 驗證
 
-本文介紹如何創建和填充 Azure AD，然後將 Azure AD 與 Azure [SQL 資料庫](sql-database-technical-overview.md)、[託管實例](sql-database-managed-instance.md)和[SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)一起使用。 如需概觀，請參閱 [Azure Active Directory 驗證](sql-database-aad-authentication.md)。
+本文介紹如何創建和填充 Azure AD,然後將 Azure AD 與 Azure [SQL 資料庫 (SQL DB)](sql-database-technical-overview.md)、[託管實例 (MI)](sql-database-managed-instance.md)和[Azure 突觸分析(以前的 Azure SQL 資料倉儲)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)一起使用。 如需概觀，請參閱 [Azure Active Directory 驗證](sql-database-aad-authentication.md)。
 
 > [!NOTE]
-> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
+> 本文適用於 Azure SQL 伺服器以及 SQL 資料庫和 Azure 突觸。 為簡單起見,SQL 資料庫在引用 SQL 資料庫和 Azure 突觸時使用。
 
 > [!IMPORTANT]  
 > 使用 Azure Active Directory 帳戶不支援連線到 Azure VM 上執行的 SQL Server。 請改用 Active Directory 網域帳戶。
+
+## <a name="azure-ad-authentication-methods"></a>Azure AD 驗證方法
+
+Azure AD 認證支援以下身份驗證方法:
+
+- Azure AD 僅雲識別
+- 支援的 Azure AD 混合識別:
+  - 雲身份驗證,具有兩個選項以及無縫的單登錄 (SSO)
+    - Azure AD 密碼哈希身份驗證
+    - Azure AD 直通身份驗證
+  - 同盟驗證
+
+有關 Azure AD 認證方法的詳細資訊,以及選擇哪種方法,本文包括:
+- [針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../active-directory/hybrid/choose-ad-authn.md)
+
+有關 Azure AD 混合識別、設定和同步的詳細資訊,請參閱以下文章:
+
+- 密碼的哈希身份認證 ─[實現與 Azure AD 連線同步的密碼的群組](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
+- 直通身份驗證 ─ [Azure 的目錄傳遞認證](../active-directory/hybrid/how-to-connect-pta-quick-start.md)
+- 同盟識別 - Azure 與 Azure [AD 連線和同盟](../active-directory/hybrid/how-to-connect-fed-whatis.md)[進行中部署活動目錄](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+
+SQL DB(單個資料庫和資料庫池)、託管實例和 Azure Synapse 都支援上述所有身份驗證方法。
 
 ## <a name="create-and-populate-an-azure-ad"></a>建立和填入 Azure AD
 
@@ -45,22 +67,22 @@ ms.locfileid: "80125046"
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>建立 Azure SQL 伺服器的 Azure AD 系統管理員
 
-每個 Azure SQL 伺服器 (裝載 SQL Database 或「SQL 資料倉儲」) 一開始都只有一個伺服器系統管理員帳戶，也就是整個 Azure SQL 伺服器的系統管理員。 第二個 SQL Server 系統管理員必須建立，也就是 Azure AD 帳戶。 這個主體會在 master 資料庫中建立為自主資料庫使用者。 身為系統管理員，伺服器系統管理員帳戶是每個使用者資料庫中的 **db_owner** 角色成員，並且會進入每個使用者資料庫做為 **dbo** 使用者。 如需有關伺服器管理員帳戶的詳細資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](sql-database-manage-logins.md)。
+每個 Azure SQL 伺服器(承載 SQL 資料庫或 Azure 突觸)從單個伺服器管理員帳戶開始,該帳戶是整個 Azure SQL 伺服器的管理員。 第二個 SQL Server 系統管理員必須建立，也就是 Azure AD 帳戶。 這個主體會在 master 資料庫中建立為自主資料庫使用者。 身為系統管理員，伺服器系統管理員帳戶是每個使用者資料庫中的 **db_owner** 角色成員，並且會進入每個使用者資料庫做為 **dbo** 使用者。 如需有關伺服器管理員帳戶的詳細資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](sql-database-manage-logins.md)。
 
 將 Azure Active Directory 與異地複寫搭配使用時，必須為主要和次要伺服器設定 Azure Active Directory 系統管理員。 如果伺服器沒有 Azure Active Directory 系統管理員，則 Azure Active Directory 登入和使用者將會收到「無法連線至伺服器」錯誤。
 
 > [!NOTE]
 > 使用者如果不是以 Azure AD 帳戶 (包括 Azure SQL 伺服器系統管理員帳戶) 為基礎，就無法建立以 Azure AD 為基礎的使用者，因為他們不具備向 Azure AD 驗證建議之資料庫使用者的權限。
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>為託管實例預配 Azure 活動目錄管理員
+## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>為託管實體預先定義 Azure 的目錄管理員
 
 > [!IMPORTANT]
-> 僅當預配託管實例時，才遵循這些步驟。 此操作只能由 Azure AD 中的全域/公司管理員或特權角色管理員執行。 下列步驟說明為目錄中具有不同權限的使用者授與權限的程序。
+> 僅當預配託管實例時,才遵循這些步驟。 此操作只能由 Azure AD 中的全域/公司管理員或特權角色管理員執行。 下列步驟說明為目錄中具有不同權限的使用者授與權限的程序。
 
 > [!NOTE]
-> 對於在 GA 之前創建的 MI 的 Azure AD 管理員，但在 GA 後繼續操作，現有行為沒有功能更改。 有關詳細資訊，請參閱 MI 的新[Azure AD 管理功能](#new-azure-ad-admin-functionality-for-mi)部分以瞭解更多資訊。
+> 對於在 GA 之前創建的 MI 的 Azure AD 管理員,但在 GA 後繼續操作,現有行為沒有功能更改。 有關詳細資訊,請參閱 MI 的新[Azure AD 管理功能](#new-azure-ad-admin-functionality-for-mi)部分以瞭解更多資訊。
 
-託管實例需要讀取 Azure AD 的許可權才能成功完成使用者通過安全性群組成員身份進行身份驗證或創建新使用者等任務。 為此，您需要授予託管實例讀取 Azure AD 的許可權。 執行方式有兩種：從入口網站和 PowerShell。 以下將逐步說明這兩種方法。
+託管實例需要讀取 Azure AD 的許可權才能成功完成使用者透過安全組成員身份進行身分驗證或創建新使用者等任務。 為此,您需要授予託管實例讀取 Azure AD 的許可權。 執行方式有兩種：從入口網站和 PowerShell。 以下將逐步說明這兩種方法。
 
 1. 在 Azure 入口網站的右上角，選取您的連線以顯示可能的 Active Directory 下拉式清單。
 
@@ -72,7 +94,7 @@ ms.locfileid: "80125046"
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4. 選取 [Active Directory 管理員] 頁面頂端的橫幅，並對目前的使用者授與權限。 如果您在 Azure AD 中以全域/公司管理員身份登錄，則可以從 Azure 門戶或使用 PowerShell 與下面的腳本一起執行此操作。
+4. 選取 [Active Directory 管理員] 頁面頂端的橫幅，並對目前的使用者授與權限。 如果您在 Azure AD 中以全域/公司管理員身份登錄,則可以從 Azure 門戶或使用 PowerShell 與下面的腳本一起執行此操作。
 
     ![授與權限 - 入口網站](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -130,7 +152,7 @@ ms.locfileid: "80125046"
 
     ![成功](./media/sql-database-aad-authentication/success.png)
 
-6. 現在，您可以為託管實例選擇 Azure AD 管理員。 若要這麼做，請在 [Active Directory 系統管理員] 頁面上，選取 [設定系統管理員]**** 命令。
+6. 現在,您可以為託管實例選擇 Azure AD 管理員。 若要這麼做，請在 [Active Directory 系統管理員] 頁面上，選取 [設定系統管理員]**** 命令。
 
     ![設定系統管理員](./media/sql-database-aad-authentication/set-admin.png)
 
@@ -138,7 +160,7 @@ ms.locfileid: "80125046"
 
    [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 請參閱 [Azure AD 功能和限制](sql-database-aad-authentication.md#azure-ad-features-and-limitations) 中支援的系統管理員清單。 角色型存取控制 (RBAC) 僅適用於 Azure 入口網站，不會傳播至 SQL Server。
 
-    ![添加 Azure 活動目錄管理員](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
+    ![新增 Azure 活動目錄管理員](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. 在 [Active Directory 管理員] 頁面頂端，選取 [儲存]****。
 
@@ -146,69 +168,69 @@ ms.locfileid: "80125046"
 
     變更系統管理員的程序可能需要幾分鐘的時間。 接著，新的系統管理員就會出現在 [Active Directory 系統管理員] 方塊中。
 
-為託管實例預配 Azure AD 管理員後，可以使用<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>語法開始創建 Azure AD 伺服器主體（登錄）。 有關詳細資訊，請參閱[託管實例概述](sql-database-managed-instance.md#azure-active-directory-integration)。
+為託管實例預配 Azure AD 管理員後,可以使用<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>語法開始創建 Azure AD 伺服器主體(登錄)。 有關詳細資訊,請參閱[託管實例概述](sql-database-managed-instance.md#azure-active-directory-integration)。
 
 > [!TIP]
 > 若稍後要移除系統管理員，請在 [Active Directory 系統管理員] 頁面頂端，選取 [移除系統管理員]****，然後選取 [儲存]****。
 
 ### <a name="new-azure-ad-admin-functionality-for-mi"></a>新的 AZURE AD 管理功能用於 MI
 
-下表總結了 MI 的公共預覽 Azure AD 登錄管理員的功能，而不是使用 GA 為 Azure AD 登錄提供的新功能。
+下表總結了 MI 的公共預覽 Azure AD 登入管理員的功能,而不是使用 GA 為 Azure AD 登錄提供的新功能。
 
-| 在公共預覽期間，MI 的 Azure AD 登錄管理員 | 用於 MI 的 Azure AD 管理員的 GA 功能 |
+| 在公共預覽期間,MI 的 Azure AD 登入管理員 | MI 的 Azure AD 管理員的 GA 功能 |
 | --- | ---|
-| 其運行方式與 SQL 資料庫的 Azure AD 管理員類似，該管理員啟用 Azure AD 身份驗證，但 Azure AD 管理員無法在 MI 的主 db 中創建 Azure AD 或 SQL 登錄名。 | Azure AD 管理員具有系統管理員許可權，可以在 MI 的主 db 中創建 AAD 和 SQL 登錄名。 |
-| 系統server_principals視圖中不存在 | 存在於 server_principals 視圖中 |
-| 允許將單個 Azure AD 來賓使用者設置為 MI 的 Azure AD 管理員。 有關詳細資訊，請參閱在[Azure 門戶中添加 Azure 活動目錄 B2B 協作使用者](../active-directory/b2b/add-users-administrator.md)。 | 需要創建一個 Azure AD 組，其中來賓使用者為成員，才能將此組設置為 MI 的 Azure AD 管理員。 有關詳細資訊，請參閱[Azure AD 業務到業務支援](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)。 |
+| 其運行方式與 SQL 資料庫的 Azure AD 管理員類似,該管理員啟用 Azure AD 身份驗證,但 Azure AD 管理員無法在 MI 的主 db 中創建 Azure AD 或 SQL 登錄名。 | Azure AD 管理員具有系統管理員許可權,可以在 MI 的主 db 中創建 AAD 和 SQL 登錄名。 |
+| 系統server_principals檢視中不存在 | 存在於 server_principals 檢視中 |
+| 允許將單個 Azure AD 來賓用戶設置為 MI 的 Azure AD 管理員。 有關詳細資訊,請參閱在[Azure 門戶中添加 Azure 活動目錄 B2B 協作使用者](../active-directory/b2b/add-users-administrator.md)。 | 需要創建一個 Azure AD 組,其中來賓用戶為成員,才能將此組設置為 MI 的 Azure AD 管理員。 有關詳細資訊,請參閱[Azure AD 業務到業務支援](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)。 |
 
-作為在 GA 之前創建的 MI 的現有 Azure AD 管理員的最佳做法，並且仍在運行後 GA，請使用 Azure 門戶"刪除管理員"和"設置管理員"選項為同一 Azure AD 使用者或組重置 Azure AD 管理員。
+作為在 GA 之前創建的 MI 的現有 Azure AD 管理員的最佳做法,並且仍在運行後 GA,請使用 Azure 門戶「刪除管理員」和「設定管理員」選項為同一 Azure AD 使用者或組重置 Azure AD 管理員。
 
-### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>MI 的 Azure AD 登錄 GA 的已知問題
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>MI 的 Azure AD 登入 GA 的已知問題
 
-- 如果使用 T-SQL 命令`CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`創建的 MI 主資料庫中存在 Azure AD 登錄名，則無法將其設置為 MI 的 Azure AD 管理員。 您將遇到使用 Azure 門戶、PowerShell 或 CLI 命令將登錄設置為 Azure AD 管理員以創建 Azure AD 登錄時出錯。
-  - 登錄必須使用 命令`DROP LOGIN [myaadaccount]`在主資料庫中刪除，然後才能將帳戶創建為 Azure AD 管理員。
+- 如果使用 T-SQL`CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`命令 建立的 MI 主資料庫中存在 Azure AD 登錄名,則無法將其設置為 MI 的 Azure AD 管理員。 您將遇到使用 Azure 門戶、PowerShell 或 CLI 命令將登入設定為 Azure AD 管理員以創建 Azure AD 登錄時出錯。
+  - 登錄必須使用`DROP LOGIN [myaadaccount]`命令 在主資料庫中刪除,然後才能將帳戶創建為 Azure AD 管理員。
   - `DROP LOGIN`成功後在 Azure 門戶中設置 Azure AD 管理員帳戶。 
-  - 如果無法設置 Azure AD 管理員帳戶，請簽入託管實例的主資料庫以進行登錄。 使用下列命令：`SELECT * FROM sys.server_principals`
-  - 為 MI 設置 Azure AD 管理員將自動在此帳戶的主資料庫中創建登錄名。 刪除 Azure AD 管理員將自動從主資料庫中刪除登錄名。
+  - 如果無法設置 Azure AD 管理員帳戶,請簽入託管實例的主資料庫以進行登錄。 使用下列命令：`SELECT * FROM sys.server_principals`
+  - 為 MI 設定 Azure AD 管理員將自動在此帳戶的主資料庫中創建登錄名。 刪除 Azure AD 管理員將自動從主資料庫中刪除登錄名。
 
-- 單個 Azure AD 來賓使用者不支援作為 MI 的 Azure AD 管理員。 來賓使用者必須是 Azure AD 組的一部分，才能設置為 Azure AD 管理員。目前，Azure 門戶邊欄選項卡不會灰顯另一個 Azure AD 的來賓使用者，允許使用者繼續管理設置。 將來賓使用者保存為 Azure AD 管理員將導致安裝程式失敗。
-  - 如果要使來賓使用者成為 MI 的 Azure AD 管理員，請在 Azure AD 組中包括來賓使用者，並將此組設置為 Azure AD 管理員。
+- 單個 Azure AD 來賓使用者不支援作為 MI 的 Azure AD 管理員。 來賓用戶必須是 Azure AD 組的一部分,才能設置為 Azure AD 管理員。目前,Azure 門戶邊欄選項卡不會灰顯另一個 Azure AD 的來賓使用者,允許使用者繼續管理設置。 將來賓使用者保存為 Azure AD 管理員將導致安裝程式失敗。
+  - 如果要使來賓用戶成為 MI 的 Azure AD 管理員,請在 Azure AD 組中包括來賓使用者,並將此組設置為 Azure AD 管理員。
 
-### <a name="powershell-for-sql-managed-instance"></a>用於 SQL 託管實例的電源外殼
+### <a name="powershell-for-sql-managed-instance"></a>用於 SQL 託管實體的電源外殼
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要執行 PowerShell Cmdlet，Azure PowerShell 必須已安裝且正在執行中。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 > [!IMPORTANT]
-> PowerShell Azure 資源管理器 （RM） 模組仍受 Azure SQL 資料庫支援，但所有後續開發都針對 Az.Sql 模組。 AzureRM 模組將繼續接收錯誤修復，至少直到 2020 年 12 月。  Az 模組和 AzureRm 模組中命令的參數基本相同。 有關其相容性的更多資訊，請參閱[介紹新的 Azure PowerShell Az 模組](/powershell/azure/new-azureps-module-az)。
+> PowerShell Azure 資源管理員 (RM) 模組仍受 Azure SQL 資料庫支援,但所有後續開發都針對 Az.Sql 模組。 AzureRM 模組將繼續接收錯誤修復,至少直到2020年12月。  Az 模組和 AzureRm 模組中命令的參數基本相同。 有關其相容性的更多資訊,請參閱[介紹新的 Azure PowerShell Az 模組](/powershell/azure/new-azureps-module-az)。
 
 若要佈建 Azure AD 系統管理員，請執行下列 Azure PowerShell 命令：
 
 - Connect-AzAccount
 - 選擇-訂閱
 
-用於為 SQL 託管實例預配和管理 Azure AD 管理員的 Cmdlet：
+為 SQL 託管實體預配和管理 Azure AD 管理員的 Cmdlet:
 
 | Cmdlet 名稱 | 描述 |
 | --- | --- |
-| [設置-AzSql實例主動目錄管理員](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為當前訂閱中的 SQL 託管實例提供 Azure AD 管理員。 （必須來自當前訂閱）|
-| [刪除-AzSql實例活動目錄管理員](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |刪除當前訂閱中 SQL 託管實例的 Azure AD 管理員。 |
-| [獲取-AzSql實例活動目錄管理員](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |返回有關當前訂閱中 SQL 託管實例的 Azure AD 管理員的資訊。|
+| [設定-AzSql實體主動目錄管理員](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為當前訂閱中的 SQL 託管實例提供 Azure AD 管理員。 ( 必須從目前的訂閱 )|
+| [刪除-AzSql實體活動目錄管理員](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |刪除目前訂閱中 SQL 託管實例的 Azure AD 管理員。 |
+| [取得-AzSql實體活動目錄管理員](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |返回有關當前訂閱中 SQL 託管實例的 Azure AD 管理員的資訊。|
 
-以下命令獲取有關與名為 ResourceGroup01 的資源組關聯的名為託管實例的 Azure AD 管理員的資訊。
+以下命令獲取有關與名為 Resource Group01 的資源組關聯的名為託管實例的 Azure AD 管理員的資訊。
 
 ```powershell
 Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
-以下命令為名為託管實例的託管實例（託管實例01）提供名為 DBA 的 Azure AD 管理員組。 此伺服器與資源組資源組 01 相關聯。
+以下命令為名為託管實例的託管實例(託管實例01)提供名為 DBA 的 Azure AD 管理員組。 此伺服器與資源組資源組 01 相關聯。
 
 ```powershell
 Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
 ```
 
-以下命令將刪除與資源組 ResourceGroup01 關聯的名為託管實例的 Azure AD 管理員。該實例名為託管實例Name01。
+以下命令將刪除與資源組 Resource Group01 關聯的名為託管實例的 Azure AD 管理員。該實例名為託管實例Name01。
 
 ```powershell
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
@@ -216,35 +238,35 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-還可以通過調用以下 CLI 命令為 SQL 託管實例預配 Azure AD 管理員：
+還可以透過除錯 CLI 指令為 SQL 託管實體預先使用 Azure AD 管理員:
 
 | Command | 描述 |
 | --- | --- |
-|[az sql mi 廣告管理員創建](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 為 SQL 託管實例提供 Azure 活動目錄管理員。 （必須來自當前訂閱） |
+|[az sql mi 廣告管理員建立](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 為 SQL 託管實例提供 Azure 活動目錄管理員。 ( 必須從目前的訂閱 ) |
 |[az sql mi 廣告管理員刪除](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 刪除 SQL 託管實例的 Azure 活動目錄管理員。 |
 |[az sql mi 廣告管理員清單](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | 返回有關當前為 SQL 託管實例配置的 Azure 活動目錄管理員的資訊。 |
 |[az sql mi 廣告管理員更新](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | 更新 SQL 託管實例的活動目錄管理員。 |
 
-有關 CLI 命令的詳細資訊，請參閱[az sql mi](/cli/azure/sql/mi)。
+有關 CLI 指令的詳細資訊,請參閱[az sql mi](/cli/azure/sql/mi)。
 
 * * *
 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>為 Azure SQL Database 伺服器佈建 Azure Active Directory 系統管理員
 
 > [!IMPORTANT]
-> 只有當您要佈建的是 Azure SQL Database 伺服器或「資料倉儲」時，才可依照這些步驟進行操作。
+> 僅當預配 Azure SQL 資料庫伺服器或 Azure 同步分析時,才執行這些步驟。
 
 下列兩個程序會示範如何在 Azure 入口網站以及使用 PowerShell，佈建 Azure SQL 伺服器的 Azure Active Directory 系統管理員。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的右上角，選取您的連線以顯示可能的 Active Directory 下拉式清單。 選擇正確的 Active Directory 做為預設 Azure AD。 此步驟會連結與訂用帳戶相關聯的 Active Directory 和 Azure SQL 伺服器，確定 Azure AD 和 SQL Server 使用相同的訂用帳戶。 (Azure SQL 伺服器可以裝載 Azure SQL Database 或 Azure SQL 資料倉儲。)
+1. 在 [Azure 入口網站](https://portal.azure.com/)的右上角，選取您的連線以顯示可能的 Active Directory 下拉式清單。 選擇正確的 Active Directory 做為預設 Azure AD。 此步驟會連結與訂用帳戶相關聯的 Active Directory 和 Azure SQL 伺服器，確定 Azure AD 和 SQL Server 使用相同的訂用帳戶。 (Azure SQL 伺服器可以託管 Azure SQL 資料庫或 Azure 突觸。
 
     ![choose-ad][8]
 
-2. 搜索並選擇**SQL 伺服器**。
+2. 搜尋並選擇**SQL 伺服器**。
 
-    ![搜索並選擇 SQL 伺服器](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
+    ![搜尋並選擇 SQL 伺服器](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > 在此頁面上，於選取 [SQL Server]**** 之前，您可以選取名稱旁的**星星**將該類別設為「我的最愛」**，並將 [SQL Server]**** 新增至左側的導覽列。
@@ -253,13 +275,13 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 4. 在 [Active Directory 系統管理員]**** 頁面中，選取 [設定系統管理員]****。
 
-    ![SQL 伺服器設置活動目錄管理員](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
+    ![SQL 伺服器設定活動目錄管理員](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
-5. 在"**添加管理員"** 頁中，搜索使用者，選擇使用者或組作為管理員，然後選擇 **。** [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 （請參閱 Azure **AD 功能和限制**部分中的受支援管理員清單，[這些部分"使用 Azure 活動目錄身份驗證"進行 SQL 資料庫或 SQL 資料倉儲的身份驗證](sql-database-aad-authentication.md)。基於角色的存取控制 （RBAC） 僅適用于門戶，不會傳播到 SQL Server。
+5. 在「**新增管理員」** 頁中,搜尋使用者,選擇使用者或群組作為管理員,然後選擇 **。** [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為他們不受支援成為 Azure AD 系統管理員。 ( 請參考 Azure **AD 功能與限制**部份中的受支援管理員清單,[這些部份' 使用 Azure 的目錄身份驗證'SQL 資料庫或 Azure 突觸](sql-database-aad-authentication.md)認證 。基於角色的存取控制 (RBAC) 僅適用於門戶,不會傳播到 SQL Server。
 
-    ![選擇 Azure 活動目錄管理員](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
+    ![選擇 Azure 的目錄管理員](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
-6. 在**活動目錄管理**頁的頂部，選擇 **"保存**"。
+6. 在**活動目錄管理**頁的頂部,選擇 **"儲存**"。
 
     ![儲存系統管理員](./media/sql-database-aad-authentication/save-admin.png)
 
@@ -270,22 +292,22 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 若稍後要移除系統管理員，請在 [Active Directory 系統管理員]**** 頁面頂端，選取 [移除系統管理員]****，然後選取 [儲存]****。
 
-### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>用於 Azure SQL 資料庫和 Azure SQL 資料倉儲的電源外殼
+### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>以 Azure SQL 資料庫與 Azure 突觸的電源外殼
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要執行 PowerShell Cmdlet，Azure PowerShell 必須已安裝且正在執行中。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 若要佈建 Azure AD 系統管理員，請執行下列 Azure PowerShell 命令：
 
 - Connect-AzAccount
 - 選擇-訂閱
 
-用於為 Azure SQL 資料庫和 Azure SQL 資料倉儲預配和管理 Azure AD 管理員的 Cmdlet：
+用於為 Azure SQL 資料庫與 Azure 突觸預配和管理 Azure AD 管理員的 Cmdlet:
 
 | Cmdlet 名稱 | 描述 |
 | --- | --- |
-| [設置-AzSqlServerActiveDirectory 管理員](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |佈建 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員 (必須來自目前的訂用帳戶。 （必須來自當前訂閱） |
-| [刪除-AzSqlServerActive目錄管理員](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員。 |
-| [獲取 AzSqlServerActive目錄管理員](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |傳回目前為 Azure SQL 伺服器或 Azure SQL 資料倉儲設定的 Azure Active Directory 系統管理員的相關資訊。 |
+| [設定-AzSqlServerActiveDirectory 管理員](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |為 Azure SQL 伺服器或 Azure 突觸提供 Azure 活動目錄管理員。 ( 必須從目前的訂閱 ) |
+| [刪除-AzSqlServerActive目錄管理員](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |刪除 Azure SQL 伺服器或 Azure 突觸的 Azure 活動目錄管理員。 |
+| [取得 AzSqlServerActive 目錄管理員](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |返回有關當前為 Azure SQL 伺服器或 Azure 突觸配置的 Azure 活動目錄管理員的資訊。 |
 
 使用 PowerShell 命令獲取説明查看每個命令的詳細資訊。 例如： `get-help Set-AzSqlServerActiveDirectoryAdministrator` 。
 
@@ -324,16 +346,16 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-您可以通過調用以下 CLI 命令來預配 Azure AD 管理員：
+您可以透過除錯 CLI 指令來預先使用 Azure AD 管理員:
 
 | Command | 描述 |
 | --- | --- |
-|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 佈建 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員 (必須來自目前的訂用帳戶。 （必須來自當前訂閱） |
-|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員。 |
-|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | 傳回目前為 Azure SQL 伺服器或 Azure SQL 資料倉儲設定的 Azure Active Directory 系統管理員的相關資訊。 |
-|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | 更新 Azure SQL 伺服器或 Azure SQL 資料倉儲的 Azure Active Directory 系統管理員。 |
+|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為 Azure SQL 伺服器或 Azure 突觸提供 Azure 活動目錄管理員。 ( 必須從目前的訂閱 ) |
+|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 刪除 Azure SQL 伺服器或 Azure 突觸的 Azure 活動目錄管理員。 |
+|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | 返回有關當前為 Azure SQL 伺服器或 Azure 突觸配置的 Azure 活動目錄管理員的資訊。 |
+|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | 更新 Azure SQL 伺服器或 Azure 突觸的活動目錄管理員。 |
 
-有關 CLI 命令的詳細資訊，請參閱[az sql 伺服器](/cli/azure/sql/server)。
+有關 CLI 指令的詳細資訊,請參閱[az sql 伺服器](/cli/azure/sql/server)。
 
 * * *
 
@@ -342,30 +364,30 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 ## <a name="configure-your-client-computers"></a>設定用戶端電腦
 
-在您的應用程式或使用者使用 Azure AD 身分識別連接到 Azure SQL Database 或 Azure SQL 資料倉儲的所有用戶端電腦上，您必須安裝下列軟體：
+在所有用戶端電腦上,應用程式或使用者使用 Azure AD 識別連線到 Azure SQL 資料庫或 Azure 同步程式,必須安裝以下軟體:
 
-- .NET 框架 4.6[https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)或更高版本來自 。
-- 用於 SQL 伺服器 （ADAL） 的 Azure 活動目錄身份驗證庫 *。DLL*）。 以下是安裝包含 ADAL 的最新 SSMS、ODBC 和 OLE DB 驅動程式的下載連結 *。DLL*庫。
-    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- .NET 架構 4.6[https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)或更高版本來自 。
+- SQL 伺服器 (ADAL) 的 Azure 的目錄身份認證函式庫 *。DLL*)。 以下是安裝包含 ADAL 的最新 SSMS、ODBC 與 OLE DB 驅動程式的下載連結 *。DLL*庫。
+    1. [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
     1. [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
-    1. [用於 SQL 伺服器的 OLE DB 驅動程式 18](https://www.microsoft.com/download/details.aspx?id=56730)
+    1. [SQL 伺服器的 OLE DB 驅動程式 18](https://www.microsoft.com/download/details.aspx?id=56730)
 
 您可以符合這些需求，方法如下︰
 
-- 安裝最新版本的[SQL 伺服器管理工作室](/sql/ssms/download-sql-server-management-studio-ssms)或[SQL 伺服器資料工具](/sql/ssdt/download-sql-server-data-tools-ssdt)可滿足 .NET 框架 4.6 的要求。
+- 安裝最新版本的[SQL 伺服器管理工作室](/sql/ssms/download-sql-server-management-studio-ssms)或[SQL 伺服器數據工具](/sql/ssdt/download-sql-server-data-tools-ssdt)可滿足 .NET 框架 4.6 的要求。
     - SSMS 安裝 X86 版本的*ADAL。DLL*.
     - SSDT 安裝 amd64 版本的*ADAL。DLL*.
-    - [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs)的最新視覺化工作室滿足 .NET 框架 4.6 要求，但未安裝所需的 amd64 版本的*ADAL。DLL*.
+    - [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs)的最新可視化工作室滿足 .NET 框架 4.6 要求,但未安裝所需的 amd64 版本的*ADAL。DLL*.
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>在對應至 Azure AD 身分識別的資料庫中建立自主資料庫使用者
 
 > [!IMPORTANT]
-> 託管實例現在支援 Azure AD 伺服器主體（登錄名），這使您能夠從 Azure AD 使用者、組或應用程式創建登錄名。 Azure AD 伺服器主體（登錄名）提供對託管實例進行身份驗證的能力，而無需將資料庫使用者創建為包含的資料庫使用者。 有關詳細資訊，請參閱[託管實例概述](sql-database-managed-instance.md#azure-active-directory-integration)。 如需建立 Azure AD 伺服器主體 (登入) 的語法，請參閱 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>。
+> 託管實例現在支援 Azure AD 伺服器主體(登錄名),這使您能夠從 Azure AD 使用者、組或應用程式創建登錄名。 Azure AD 伺服器主體(登錄名)提供對託管實例進行身份驗證的能力,而無需將資料庫使用者創建為包含的資料庫使用者。 有關詳細資訊,請參閱[託管實例概述](sql-database-managed-instance.md#azure-active-directory-integration)。 如需建立 Azure AD 伺服器主體 (登入) 的語法，請參閱 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>。
 
 Azure Active Directory 驗證需要建立資料庫使用者做為自主資料庫使用者。 以 Azure AD 身分識別為基礎的自主資料庫使用者係指在 master 資料庫中沒有登入身分的資料庫使用者，並且此使用者會對應至 Azure AD 目錄中與資料庫關聯的身分識別。 Azure AD 身分識別可以是個別的使用者帳戶或群組。 如需有關自主資料庫使用者的詳細資訊，請參閱 [自主資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 您無法使用 Azure 入口網站建立資料庫使用者 (系統管理員除外)。 RBAC 角色不會傳播至 SQL Server、SQL Database 或「SQL 資料倉儲」。 Azure RBAC 角色可用來管理 Azure 資源，並不會套用到資料庫權限。 例如，「SQL Server 參與者」 **** 角色不會授與可連線到 SQL Database 或「SQL 資料倉儲」的存取權。 存取權限必須使用 Transact-SQL 陳述式直接在資料庫中授與。
+> 您無法使用 Azure 入口網站建立資料庫使用者 (系統管理員除外)。 RBAC 角色不會傳播到 SQL 伺服器、SQL 資料庫或 Azure 突觸。 Azure RBAC 角色可用來管理 Azure 資源，並不會套用到資料庫權限。 例如 **,SQL 伺服器參與者**角色不授予連接到 SQL 資料庫或 Azure 突觸的許可權。 存取權限必須使用 Transact-SQL 陳述式直接在資料庫中授與。
 
 > [!WARNING]
 > 不支援在 T-SQL CREATE LOGIN 和 CREATE USER 陳述式中的使用者名稱內使用冒號 `:` 或 `&` 等特殊字元。
@@ -398,7 +420,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
 > [!NOTE]
-> 此命令要求 SQL 代表登錄使用者訪問 Azure AD（"外部提供程式"）。 有時，會出現導致 Azure AD 將異常返回到 SQL 的情況。 在這些情況下，使用者將看到 SQL 錯誤 33134，該錯誤應包含特定于 AAD 的錯誤訊息。 大多數時候，錯誤會表示訪問被拒絕，或者使用者必須註冊 MFA 才能訪問資源，或者第一方應用程式之間的存取權限必須通過預授權處理。 在前兩種情況下，問題通常是由在使用者的 AAD 租戶中設置的條件訪問策略引起的：它們阻止使用者訪問外部提供程式。 更新 CA 策略以允許訪問應用程式"0000000-0000-c000-000000000000000000000000000000000000000000000000"（AAD 圖形 API 的應用程式 ID）應能解決此問題。 如果錯誤表示第一方應用程式之間的訪問必須通過預授權處理，則問題是因為使用者以服務主體身份登錄。 如果命令由使用者執行，則該命令應成功。
+> 此命令要求 SQL 代表登錄使用者訪問 Azure AD("外部提供程式" 有時,會出現導致 Azure AD 將異常返回到 SQL 的情況。 在這些情況下,使用者將看到 SQL 錯誤 33134,該錯誤應包含特定於 AAD 的錯誤消息。 大多數時候,錯誤會表示訪問被拒絕,或者使用者必須註冊 MFA 才能訪問資源,或者第一方應用程式之間的訪問許可權必須通過預授權處理。 在前兩種情況下,問題通常是由在使用者的 AAD 租戶中設置的條件訪問策略引起的:它們阻止使用者訪問外部提供程式。 更新 CA 策略以允許訪問應用程式"0000000-0000-c000-000000000000000000000000000000000000000000000000"(AAD 圖形 API 的應用程式 ID)應能解決此問題。 如果錯誤表示第一方應用程式之間的訪問必須通過預授權處理,則問題是因為使用者以服務主體身份登錄。 如果命令由用戶執行,則該命令應成功。
 
 > [!TIP]
 > 您無法從 Azure Active Directory 直接建立使用者，除了與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 以外。 不過，在相關聯 Active Directory (稱為外部使用者) 中匯入之使用者的其他 Active Directory 成員可以新增至租用戶 Active Directory 中的 Active Directory 群組。 藉由建立該 AD 群組的自主資料庫使用者，來自外部 Active Directory 的使用者可以存取 SQL Database。
@@ -417,7 +439,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!NOTE]
 > Azure AD 使用者會在資料庫中繼資料中標示為類型 E (EXTERNAL_USER)，而群組則標示為類型 X (EXTERNAL_GROUPS)。 如需詳細資訊，請參閱 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)。
 
-## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>使用 SSMS 或 SSDT 連線至使用者資料庫或資料倉儲  
+## <a name="connect-to-the-user-database-or-azure-synapse-by-using-ssms-or-ssdt"></a>使用 SSMS 或 SSDT 連接到使用者資料庫或 Azure 突觸  
 
 若要確認 Azure AD 系統管理員已正確設定，請使用 Azure AD 系統管理員帳戶連接到 **master** 資料庫。
 若要佈建以 Azure AD 為基礎的自主資料庫使用者 (而非擁有資料庫的伺服器系統管理員)，請利用有權存取資料庫的 Azure AD 身分識別連線到資料庫。
@@ -427,35 +449,41 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>使用 Azure AD 身分識別以使用 SSMS 或 SSDT 進行連線
 
-下列程序會示範如何使用 SQL Server Management Studio 或 SQL Server 資料庫工具的 Azure AD 身分連接到 SQL 資料庫。
+下列程序會示範如何使用 SQL Server Management Studio 或 SQL Server 資料庫工具的 Azure AD 身分連接到 SQL 資料庫。 
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory 整合驗證
 
-如果您已使用 Azure Active Directory 認證從同盟網域登入 Windows，請使用這個方法。
+如果使用來自聯合域的 Azure 活動目錄認證到 Windows,或者為傳遞和密碼哈希身份驗證配置為無縫單一登錄的託管域,請使用此方法。 有關詳細資訊,請參閱[Azure 活動目錄無縫單一登入](../active-directory/hybrid/how-to-connect-sso.md)。
 
-1. 啟動 Management Studio 或 Data Tools，並在 [連線到伺服器]**** \(或 [連線到 Database Engine]****) 對話方塊的 [驗證]**** 方塊中，選取 [Active Directory - 整合式]****。 不需要密碼或沒有密碼可輸入，因為現有的認證將會在連接時出現。
+1. 啟動管理工作室或資料工具,並在連接**到伺服器**(或**連線到資料庫引擎**))「對話框中, 在 **「身份認證**」 框中選擇**Azure 的動作目錄 -整合**。 不需要密碼或沒有密碼可輸入，因為現有的認證將會在連接時出現。
 
     ![選取 AD 整合式驗證][11]
 
-2. 選取 [選項]**** 按鈕，然後在 [連線屬性]**** 頁面的 [連線到資料庫]**** 方塊中，鍵入您想要連線的使用者資料庫名稱。 ([AD 網域名稱或租用戶 ID]**** 選項僅對 [通用驗證搭配 MFA 連線]**** 選項提供支援，否則會呈現灰色。)  
+2. 選取 [選項]**** 按鈕，然後在 [連線屬性]**** 頁面的 [連線到資料庫]**** 方塊中，鍵入您想要連線的使用者資料庫名稱。 有關詳細資訊,請參閱有關 SSMS 17.x 和 18.x 連接屬性之間的差異的[多因素 AAD 認證](sql-database-ssms-mfa-authentication.md#azure-ad-domain-name-or-tenant-id-parameter)。 
 
     ![選取資料庫名稱][13]
 
-## <a name="active-directory-password-authentication"></a>Active Directory 密碼驗證
+### <a name="active-directory-password-authentication"></a>Active Directory 密碼驗證
 
-使用 Azure AD 受控網域連接到 Azure AD 主體名稱時，請使用這個方法。 您也可以將其用於沒有網域存取權的同盟帳戶，例如在遠端運作時。
+使用 Azure AD 受控網域連接到 Azure AD 主體名稱時，請使用這個方法。 您還可以將其用於聯合帳戶,而無需訪問域,例如,遠端工作時。
 
-使用此方法，可讓原生或同盟 Azure AD 使用者透過 Azure AD 對 SQL DB/DW 進行驗證。 原生使用者是在 Azure AD 中明確建立，且透過使用者名稱和密碼進行驗證的使用者，而同盟使用者則是將網域與 Azure AD 同盟的 Windows 使用者。 如果使用者想要使用他們的 Windows 認證，但其本機電腦未加入網域 (例如使用遠端存取)，則可以使用後一種方法 (利用使用者和密碼)。 在此情況下，Windows 使用者可以指定其網域帳戶和密碼，並且可使用同盟認證對 SQL DB/DW 進行驗證。
+使用此方法對 SQL DB 或 MI 進行僅 Azure AD 雲端識別使用者或使用 Azure AD 混合標識的使用者進行身份驗證。 此方法支援希望使用其 Windows 認證的使用者,但他們的本地電腦未與網域聯接(例如,使用遠端存取)。 在這種情況下,Windows 使用者可以指示其域帳戶和密碼,並可以對 SQL DB、MI 或 Azure 突觸進行身份驗證。
 
-1. 啟動 Management Studio 或 Data Tools，並在 [連線到伺服器]**** \(或 [連線到 Database Engine]****) 對話方塊的 [驗證]**** 方塊中，選取 [Active Directory - 密碼]****。
+1. 啟動管理工作室或資料工具,並在連接**到伺服器**(或**連線到資料庫引擎**))「對話框中, 在 **「身份認證**」 框中選擇**Azure 的動作目錄 - 密碼**。
 
-2. 在**使用者名**框中，以格式**使用者名\@domain.com**鍵入 Azure 活動目錄使用者名。 使用者名稱必須是來自 Azure Active Directory 的帳戶或來自與 Azure Active Directory 建立同盟之網域的帳戶。
+2. 在**使用者名**框中,以格式**使用者名\@domain.com**鍵入 Azure 活動目錄使用者名。 使用者名必須是 Azure 活動目錄的帳戶,或者來自具有 Azure 活動目錄的託管或聯合域的帳戶。
 
-3. 在 [密碼] **** 方塊中，輸入您的 Azure Active Directory 帳戶或同盟網域帳戶的使用者密碼。
+3. 在 **「密碼」** 框中,鍵入 Azure 活動目錄帳戶或託管/聯合域帳戶的使用者密碼。
 
     ![選取 AD 密碼驗證][12]
 
 4. 選取 [選項]**** 按鈕，然後在 [連線屬性]**** 頁面的 [連線到資料庫]**** 方塊中，鍵入您想要連線的使用者資料庫名稱。 (請參閱上一個選項中的圖形。)
+
+### <a name="active-directory-interactive-authentication"></a>活動目錄互動式驗證
+
+使用此方法進行具有或不帶多重身份驗證 (MFA) 的互動式身份驗證,並交互請求密碼。 此方法可用於對僅 Azure AD 雲端識別使用者或使用 Azure AD 混合標識的使用者的 SQL DB、MI 和 Azure 突觸進行身份驗證。
+
+有關詳細資訊,請參閱[將多重 AAD 身份驗證與 Azure SQL 資料庫和 Azure 突觸分析(對 MFA 的 SSMS 支援)結合](sql-database-ssms-mfa-authentication.md)使用。
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>從用戶端應用程式使用 Azure AD 身分識別來連接
 
@@ -463,9 +491,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory 整合驗證
 
-若要使用整合式 Windows 驗證，您網域的 Active Directory 必須與 Azure Active Directory 建立同盟關係。 連接到資料庫的用戶端應用程式 (或服務) 必須以使用者的網域認證在已加入網域的電腦上執行。
+要使用整合的 Windows 身份驗證,網域的活動目錄必須與 Azure 活動目錄聯合,或者應該是為無縫單一登錄配置為傳遞或密碼哈希身份驗證的託管域。 有關詳細資訊,請參閱[Azure 活動目錄無縫單一登入](../active-directory/hybrid/how-to-connect-sso.md)。
 
-若要使用整合式驗證以及 Azure AD 身分識別連接至資料庫，資料庫連接字串中的驗證關鍵字必須設定為 Active Directory 整合式。 下列 C# 程式碼範例會使用 ADO.NET。
+> [!NOTE]
+> 整合 Windows 身份驗證[的MSAL.NET(Microsoft.Identity.Client)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)不支援用於傳遞和密碼哈希身份驗證的無縫單一登錄。
+
+連接到資料庫的用戶端應用程式(或服務)必須在使用者的域憑據下在加入域的計算機上運行。
+
+要使用整合身份認證與 Azure AD 識別連線到資料庫,必須將資料庫連接字串中的身份驗證關鍵字`Active Directory Integrated`設定為 。 下列 C# 程式碼範例會使用 ADO.NET。
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -477,7 +510,7 @@ conn.Open();
 
 ### <a name="active-directory-password-authentication"></a>Active Directory 密碼驗證
 
-若要使用整合式驗證和 Azure AD 身分識別來連接到資料庫，Authentication 關鍵字就必須設定為 Active Directory Password。 連接字串必須包含使用者識別碼 (UID) 及密碼 (PWD) 關鍵字和值。 下列 C# 程式碼範例會使用 ADO.NET。
+要使用 Azure AD 只辨識使用者帳戶或使用 Azure AD 混合識別帳戶連線到資料庫,必須將身份驗證關鍵`Active Directory Password`字設定為 。 連接字串必須包含使用者識別碼 (UID) 及密碼 (PWD) 關鍵字和值。 下列 C# 程式碼範例會使用 ADO.NET。
 
 ```csharp
 string ConnectionString =
@@ -490,9 +523,9 @@ conn.Open();
 
 ## <a name="azure-ad-token"></a>Azure AD 權杖
 
-這種驗證方法可以從 Azure Active Directory (AAD) 取得權杖，讓中介層服務連接到 Azure SQL Database 或 Azure SQL 資料倉儲。 這可容許包含憑證型驗證的複雜案例。 您必須完成四個基本步驟，才能使用 Azure AD 權杖驗證︰
+此身份驗證方法允許中間層服務通過從 Azure 活動目錄 (AAD) 獲取權杖來取得[JSON Web 權杖 (JWT)](../active-directory/develop/id-tokens.md)連接到 Azure SQL 資料庫或 Azure 突觸。 此方法支援各種應用程式方案,包括服務標識、服務主體和使用基於證書的身份驗證的應用程式。 您必須完成四個基本步驟，才能使用 Azure AD 權杖驗證︰
 
-1. 將應用程式註冊到 Azure 活動目錄，並獲取代碼的用戶端 ID。
+1. 將應用程式註冊到 Azure 活動目錄,並獲取代碼的用戶端 ID。
 2. 建立代表應用程式的資料庫使用者。 (稍早在步驟 6 中已完成)。
 3. 在執行應用程式的用戶端電腦上建立憑證。
 4. 將憑證加入應用程式當做索引鍵。
@@ -513,20 +546,20 @@ conn.Open();
 下列陳述式中使用 sqlcmd 13.1 進行連線，從 [下載中心](https://www.microsoft.com/download/details.aspx?id=53591)即可取得此版本。
 
 > [!NOTE]
-> `sqlcmd`該`-G`命令不適用於系統標識，並且需要使用者主體登錄。
+> `sqlcmd`該`-G`命令不適用於系統標識,並且需要用戶主體登錄。
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="troubleshooting-azure-ad-authentication"></a>排除 Azure AD 身份驗證的故障
+## <a name="troubleshooting-azure-ad-authentication"></a>排除 Azure AD 認證的故障
 
-有關使用 Azure AD 身份驗證的故障排除問題的指導，請參閱以下博客：<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+有關使用 Azure AD 身份驗證的故障排除問題的指導,請參閱以下部落格:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關 SQL 資料庫中登錄名、使用者、資料庫角色和許可權的概述，請參閱[登錄名、使用者、資料庫角色和使用者帳戶](sql-database-manage-logins.md)。
+- 有關 SQL 資料庫中登入名、使用者、資料庫角色和權限的概述,請參閱[登名、使用者、資料庫角色和使用者帳戶](sql-database-manage-logins.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 如需資料庫角色的詳細資訊，請參閱[資料庫角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 如需 SQL Database 中防火牆規則的詳細資訊，請參閱 [SQL Database 防火牆規則](sql-database-firewall-configure.md)。

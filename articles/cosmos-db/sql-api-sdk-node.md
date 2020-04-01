@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙資料庫：SQL Node.js API、SDK &資源
+title: Azure 宇宙資料庫:SQL Node.js API、SDK &资源
 description: 了解所有 SQL Node.js API 和 SDK 相關資訊，包括發行日期、停用日期及 Azure Cosmos DB Node.js SDK 每個版本之間所做的變更。
 author: deborahc
 ms.service: cosmos-db
@@ -8,27 +8,27 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207950"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411277"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK for SQL API：版本資訊與資源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET 更改來源](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [非同步 Java](sql-api-sdk-async-java.md)
-> * [JAVA](sql-api-sdk-java.md)
+> * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [休息](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量執行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量執行器 - JAVA](sql-api-sdk-bulk-executor-java.md)
+> * [批次執行器 -.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批次執行器 -Java](sql-api-sdk-bulk-executor-java.md)
 
 |資源  |連結  |
 |---------|---------|
@@ -44,40 +44,40 @@ ms.locfileid: "70207950"
 ## <a name="release-notes"></a>版本資訊
 
 ### <a name=""></a><a name="3.1.0"/>3.1.0</a>
-* 將預設回應延續權杖限制InKB設置為 1kb。 預設情況下，我們將此限制為 1kb 以避免長標頭（Node.js 具有全域標頭大小限制）。 使用者可以將此欄位設置為允許較長的標頭，這有助於後端優化查詢執行。
-* 刪除禁用 SSL 驗證。 此選項具有[#388](https://github.com/Azure/azure-cosmos-js/pull/388)仲介紹的新備選方案
+* 將默認回應延續權杖限制InKB設置為1kb。 默認情況下,我們將此限制為 1kb 以避免長標頭(Node.js 具有全域標頭大小限制)。 用戶可以將此欄位設置為允許較長的標頭,這有助於後端優化查詢執行。
+* 刪除禁用 SSL 驗證。 這個選項具有[#388](https://github.com/Azure/azure-cosmos-js/pull/388)中介紹的新備選方案
 
 ### <a name=""></a><a name="3.0.4"/>3.0.4</a>
-* 允許初始標題顯式設置分區金鑰標頭
-* 使用包.json_檔防止發佈無關檔
-* 修復了舊版本的節點_v8上的路由映射排序錯誤
+* 允許初始標題顯示式設定分區金鑰標頭
+* 使用套件.json_檔案防止發佈無關檔
+* 修復舊版本的節點_v8上的路由映射排序錯誤
 * 當使用者提供部分重試選項時修復 Bug
 
 ### <a name=""></a><a name="3.0.3"/>3.0.3</a>
-* 防止 Webpack 解析需要調用的模組
+* 防止 Webpack 解析需要呼叫的模組
 
 ### <a name=""></a><a name="3.0.2"/>3.0.2</a>
-* 修復了一個長期未解決的 Bug，其中彙總查詢的 R 統始終報告為 0
+* 修復了一個長期未解決的 Bug,其中聚合查詢的 R 統始終報告為 0
 
 ### <a name=""></a><a name="3.0.0"/>3.0.0</a>
 
-🎉 v3 版本！ 🎉 許多新功能、錯誤修復和一些重大更改。 此版本的主要目標：
+🎉 v3 版本! 🎉 許多新功能、錯誤修復和一些重大更改。 此版本的主要目標:
 
 * 實現主要新功能
   * 二元查詢
-  * 限制/偏移查詢
-  * 使用者可取消的請求
-* 更新到最新的 Cosmos REST API 版本，其中所有容器都有無限比例
-* 更輕鬆地從瀏覽器使用宇宙
+  * 限制/位移查詢
+  * 使用者可取消的要求
+* 更新到最新的 Cosmos REST API 版本,其中所有容器都有無限比例
+* 輕鬆地從瀏覽器使用宇宙
 * 更好地與新的 Azure JS SDK 指南保持一致
 
-#### <a name="migration-guide-for-breaking-changes"></a>中斷更改的遷移指南
-##### <a name="improved-client-constructor-options"></a>改進的用戶端建構函式選項
+#### <a name="migration-guide-for-breaking-changes"></a>中斷變更的移轉指南
+##### <a name="improved-client-constructor-options"></a>改進的客戶端建構函數選項
 
-建構函式選項已簡化：
+建構函數選項已簡化:
 
-* masterKey 已重命名金鑰並移動到頂層
-* 以前在選項.auth 下的屬性已移動到頂層
+* masterKey 已重新命名金鑰並移至頂層
+* 以前在選項.auth 下的屬性已移到頂層
 
 ``` js
 // v2
@@ -95,15 +95,15 @@ const client = new CosmosClient({
 })
 ```
 
-##### <a name="simplified-queryiterator-api"></a>簡化的查詢反覆運算器 API
-在 v2 中，從查詢中反覆運算或檢索結果的方法有很多種。 我們試圖簡化 v3 API 並刪除類似或重複的 API：
+##### <a name="simplified-queryiterator-api"></a>簡化查詢反覆發程式器 API
+在 v2 中,從查詢中反覆運算或檢索結果的方法有很多種。 我們試圖簡化 v3 API 並刪除類似或重複的 API:
 
-* 刪除反覆運算器.next（） 和反覆運算器.current（）。 使用 fetchNext（） 獲取結果頁。
-* 刪除反覆運算器.foreach（）。 改用非同步反覆運算器。
-* 反覆運算器.executeNext（） 重命名為反覆運算器.fetchNext（）
-* 反覆運算器.toArray（） 重命名為反覆運算器.fetchAll（）
-* 頁面現在是正確的回應物件，而不是普通的 JS 物件
-* const 容器 = 用戶端.資料庫（dbId.容器）容器 Id
+* 刪除反覆運算器.next() 和反覆運算器.current()。 使用 fetchNext() 獲取結果頁。
+* 刪除反覆運算器.foreach()。 改用異步反覆運算器。
+* 反覆發器.executeNext() 重新命名為反覆運算器.fetchNext()
+* 反覆發代器.toArray() 重新命名為反覆運算器.fetchAll()
+* 頁面現在是正確的回應物件,而不是普通的 JS 物件
+* const 容器 = 客戶端.資料庫(dbId.容器)容器 Id
 
 ``` js
 // v2
@@ -119,14 +119,14 @@ for await(const { result: item } in client.databases.readAll().getAsyncIterator(
 }
 ```
 
-##### <a name="fixed-containers-are-now-partitioned"></a>固定容器現已分區
-Cosmos 服務現在支援所有容器的分區鍵，包括以前創建為固定容器的容器。 v3 SDK 更新到實現此更改的最新 API 版本，但它並未中斷。 如果不為操作提供分區金鑰，我們將預設為適用于所有現有容器和文檔的系統金鑰。
+##### <a name="fixed-containers-are-now-partitioned"></a>固定容器已分割區
+Cosmos 服務現在支援所有容器的分區鍵,包括以前創建為固定容器的容器。 v3 SDK 更新到實現此更改的最新 API 版本,但它並未中斷。 如果不為操作提供分區密鑰,我們將默認為適用於所有現有容器和文檔的系統金鑰。
 
-##### <a name="upsert-removed-for-stored-procedures"></a>為預存程序刪除了 Upsert
-以前允許對非分區集合進行 upsert，但隨著 API 版本更新，所有集合都進行了分區，因此我們完全刪除了它。
+##### <a name="upsert-removed-for-stored-procedures"></a>為儲存過程移除了 Upsert
+以前允許對非分區集合進行 upsert,但隨著 API 版本更新,所有集合都進行了分區,因此我們完全刪除了它。
 
 ##### <a name="item-reads-will-not-throw-on-404"></a>專案讀取不會扔在 404 上
-const 容器 = 用戶端.資料庫（dbId.容器）容器 Id
+const 容器 = 客戶端.資料庫(dbId.容器)容器 Id
 
 ``` js
 // v2
@@ -142,14 +142,14 @@ if (item === undefined) { console.log('item not found') }
 ```
 
 ##### <a name="default-multi-region-write"></a>預設多區域寫入
-如果 Cosmos 配置支援 SDK，則預設情況下，SDK 將寫入多個區域。 這是以前加入宣告的行為。
+如果 Cosmos 配置支援 SDK,則默認情況下,SDK 將寫入多個區域。 這是以前選擇加入的行為。
 
 ##### <a name="proper-error-objects"></a>正確的錯誤物件
-失敗的請求現在引發正確的錯誤或錯誤子類。 以前，他們拋出普通的JS物件。
+失敗的請求現在引發正確的錯誤或錯誤子類。 以前,他們拋出普通的JS物件。
 
 #### <a name="new-features"></a>新功能
-##### <a name="user-cancelable-requests"></a>使用者可取消的請求
-內部獲取的移動允許我們使用瀏覽器 AbortController API 來支援使用者可取消的操作。 對於可能正在進行多個請求的操作（如跨分區查詢），將取消該操作的所有請求。 現代瀏覽器使用者已經具有 AbortController。 Node.js 使用者將需要使用多填充庫
+##### <a name="user-cancelable-requests"></a>使用者可取消的要求
+內部獲取的移動允許我們使用瀏覽器 AbortController API 來支援使用者可取消的操作。 對於可能正在進行多個請求的操作(如跨分區查詢),將取消該操作的所有請求。 現代瀏覽器用戶已經具有 AbortController。 Node.js 使用者將需要使用多填充庫
 
 ``` js
  const controller = new AbortController()
@@ -157,20 +157,20 @@ if (item === undefined) { console.log('item not found') }
  controller.abort()
 ```
 
-##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>將輸送量設置為 db/容器創建操作的一部分
+##### <a name="set-throughput-as-part-of-dbcontainer-create-operation"></a>將輸送量設定為 db/容器建立操作的一部分
 ``` js
 const { database }  = client.databases.create({ id: 'my-database', throughput: 10000 })
 database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
 ##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
-標頭權杖生成被拆分為新庫@azure/cosmos-sign。 直接調用 Cosmos REST API 的任何人都可以使用它使用我們在 內部@azure/cosmos調用的代碼對標頭進行簽名。
+標頭權杖產生被分割庫@azure/cosmos-sign。 直接呼叫Cosmos REST API的任何人都可以使用它使用@azure/cosmos我們在內部呼叫的代碼對標頭進行簽名。
 
-##### <a name="uuid-for-generated-ids"></a>生成的 ID 的 UUID
-v2 具有生成專案 ID 的自訂代碼。 我們已經轉到了眾所周知和維護的社區圖書館。
+##### <a name="uuid-for-generated-ids"></a>產生的識別碼的 UUID
+v2 具有生成項目 ID 的自訂代碼。 我們已經轉到了眾所周知和維護的社區圖書館。
 
 ##### <a name="connection-strings"></a>連接字串
-現在可以傳遞從 Azure 門戶複製的連接字串：
+現在可以傳遞從 Azure 門戶複製的連接字串:
 
 ``` js
 const client = new CosmosClient("AccountEndpoint=https://test-account.documents.azure.com:443/;AccountKey=c213asdasdefgdfgrtweaYPpgoeCsHbpRTHhxuMsTaw==;")
@@ -180,54 +180,54 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>改進瀏覽器體驗
-雖然在瀏覽器中使用 v2 SDK 是可能的，但這不是理想的體驗。 您需要對多個 node.js 內置庫進行多邊填充，並使用 Webpack 或 Parcel 等捆綁包。 v3 SDK 使開箱即用的體驗對瀏覽器使用者更好。
+雖然在瀏覽器中使用 v2 SDK 是可能的,但這不是理想的體驗。 您需要對多個 node.js 內建庫進行多邊填充,並使用 Webpack 或 Parcel 等捆綁包。 v3 SDK 使開箱即用的體驗對瀏覽器使用者更好。
 
-* 將請求內部替換為提取（#245）
-* 刪除緩衝區的使用（#330）
-* 刪除節點內置用法，以選擇通用包/API （#328）
-* 切換到節點中止控制器 （#294）
+* 將要求內部取代為提取(#245)
+* 刪除緩衝區的使用(#330)
+* 刪除節點內建用法,以選擇通用包/API (#328)
+* 切換到節點中止控制器 (#294)
 
 #### <a name="bug-fixes"></a>錯誤修正
-* 修復產品/服務讀取並帶回產品/服務測試（#224）
-* 修復啟用終結點發現（#207）
-* 修復分頁結果上缺少的 R，#360）
-* 展開 SQL 查詢參數類型（#346）
-* 將 ttl 添加到專案定義 （#341）
-* 修復 CP 查詢指標 （#311）
-* 將活動 Id 添加到源回應（#293）
-* 將_ts類型從字串切換到數位（#252）（#295）
-* 修復請求費用聚合（#289）
-* 允許空白字串分區鍵 （#277）
-* 將字串添加到衝突查詢類型（#237）
-* 向容器添加唯一的關鍵策略 （#234）
+* 修復產品/服務讀取並帶回產品/服務測試(#224)
+* 修復啟用終結點發現(#207)
+* 修復分頁結果上缺少的 R,#360)
+* 展開 SQL 查詢參數型態 (#346)
+* 將 ttl 新增到項目定義 (#341)
+* 修復 CP 查詢指標 (#311)
+* 將活動 Id 加入來源回應 (#293)
+* 將_ts類型從字串切換到數位(#252)(#295)
+* 修復要求費用聚合(#289)
+* 允許空白字串分割區鍵 (#277)
+* 將字串新增到衝突查詢型態 (#237)
+* 新增為容器加入唯一的關鍵政策 (#234)
 
-#### <a name="engineering-systems"></a>工程系統
-並不總是最明顯的變化，但它們有助於我們的團隊更快地運送更好的代碼。
+#### <a name="engineering-systems"></a>專案系統
+並不總是最明顯的變化,但它們有助於我們的團隊更快地運送更好的代碼。
 
-* 對生產生成（#104）使用匯總
-* 更新至 Typescript 3.5 （#327）
-* 轉換為 TS 專案引用。 提取測試檔案夾 （#270）
-* 啟用無未使用的本地變數和未使用參數（#275）
-* 用於 CI 生成的 Azure 管道 YAML（#298）
+* 對生產產生(#104)使用匯總
+* 更新到 Typescript 3.5 (#327)
+* 轉換為 TS 專案引用。 擷取測試資料夾 (#270)
+* 開啟無未使用的本地變數和未使用參數(#275)
+* 用於 CI 產生的 Azure 管道 YAML(#298)
 
 ### <a name=""></a><a name="2.1.5"/>2.1.5</a>
-* 沒有代碼更改。 修復了 2.1.4 包中包含一些額外檔的問題。
+* 沒有代碼更改。 修復了 2.1.4 包中包含一些額外文件的問題。
 
 ### <a name=""></a><a name="2.1.4"/>2.1.4</a>
-* 修復重試策略中的區域容錯移轉
-* 修復更改源具有更多結果屬性
-* 開發依賴項更新
-* 添加 Policheck 排除.txt
+* 修復重新試策略中的區域故障移轉
+* 修復變更來源有更多結果屬性
+* 開發相依項更新
+* 新增 Policheck 排除.txt
 
 ### <a name=""></a><a name="2.1.3"/>2.1.3</a>
-* 將_ts類型從字串切換到數位
+* 將_ts類型從字串切換到數字
 * 修復預設索引測試
 * 回埠唯一的關鍵策略到 v2
-* 演示和演示調試修補程式
+* 簡報及展示除錯程式
 
 ### <a name=""></a><a name="2.1.2"/>2.1.2</a>
 * 從 v3 分支提供修復
-* 修復執行Next（） 類型簽名中的 Bug
+* 修復執行Next() 類型簽署的 Bug
 * Typo 修復
 
 ### <a name=""></a><a name="2.1.1"/>2.1.1</a>
@@ -235,16 +235,16 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 
 ### <a name=""></a><a name="2.1.0"/>2.1.0</a>
 #### <a name="new-features"></a>新功能
-* 添加了更改源支援（#196）
-* 添加了用於索引的多多邊形資料類型（#191）
-* 將"鍵"屬性添加到建構函式作為主金鑰 （#202） 的別名
+* 新增了變更來源支援(#196)
+* 新增了用於索引的多多邊形資料類型(#191)
+* 將「鍵」屬性新增到建構函數作為主金鑰 (#202) 的別名
 
 #### <a name="fixes"></a>修正
-* 修復在反覆運算器上返回錯誤值的位置
+* 修復在反覆發代器上傳回錯誤值的位置
 
-#### <a name="engineering-improvements"></a>工程改進
-* 添加類型腳本消耗的集成測試（#199）
-* 直接從 GitHub （#194） 啟用安裝
+#### <a name="engineering-improvements"></a>專案改進
+* 新增類型文稿消耗的整合測試(#199)
+* 直接從 GitHub (#194) 啟用安裝
 
 ### <a name=""></a><a name="2.0.5"/>2.0.5</a>
 * 已新增適用於節點代理程式類型的介面。 Typescript 使用者不再需要安裝 @types/node 作為相依性
@@ -318,7 +318,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * 新增彙總查詢的支援 (COUNT、MIN、MAX、SUM 和 AVG)。
 * 新增控制跨分割區查詢平行處理程度的選項。
-* 新增針對 Azure Cosmos DB 模擬器執行時停用 SSL 驗證的選項。
+* 添加了在針對 Azure Cosmos DB 模擬器運行時禁用 TLS 驗證的選項。
 * 已將分割區集合的最小輸送量從 10,100 RU/s 降低為 2500 RU/s。
 * 已修正單一資料分割集合的接續權杖錯誤。 GitHub 問題 #107。
 * 已修正將 0 做為單一參數處理的 executeStoredProcedure 錯誤。 GitHub 問題 #155。
@@ -328,7 +328,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 次要程式碼清除。
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* 當使用 SDK 以模擬器 (hostname=localhost) 為目標時，停用 SSL 驗證。
+* 使用 SDK 定位模擬器(主機名+本地主機)時禁用 TLS 驗證。
 * 在預存程序執行期間，加入支援指令碼記錄功能。
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>
@@ -336,7 +336,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 新增對已分割集合的 TOP/ORDER BY 查詢支援。
 
 ### <a name=""></a><a name="1.9.0"/>1.9.0</a>
-* 新加入已節流處理要求的重試原則支援。 （已限制的請求收到請求速率過大的異常，錯誤代碼 429。預設情況下，當遇到錯誤代碼 429 時，Azure Cosmos DB 會為每個請求重試 9 次，從而在回應標頭中遵守重試時間。 如果您想要忽略伺服器在多次重試之間傳回的 retryAfter 時間，現在可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中設定固定的重試間隔時間。 Azure Cosmos DB 現在會針對每個要進行節流處理的要求等候最多 30 秒 (不論重試計數為何)，並傳回包含錯誤碼 429 的回應。 您也可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中覆寫該時間。
+* 新加入已節流處理要求的重試原則支援。 (已限制的請求收到請求速率過大的異常,錯誤代碼 429。預設情況下,當遇到錯誤代碼 429 時,Azure Cosmos DB 會為每個請求重試 9 次,從而在響應標頭中遵守重試時間。 如果您想要忽略伺服器在多次重試之間傳回的 retryAfter 時間，現在可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中設定固定的重試間隔時間。 Azure Cosmos DB 現在會針對每個要進行節流處理的要求等候最多 30 秒 (不論重試計數為何)，並傳回包含錯誤碼 429 的回應。 您也可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中覆寫該時間。
 * Cosmos DB 現在會傳回 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 做為每個要求的回應標頭，其代表節流重試計數和要求歷經多次重試的累積時間。
 * 新增 RetryOptions 類別，以及公開 ConnectionPolicy 類別上的 RetryOptions 屬性，使其能用來覆寫某些預設的重試選項。
 
@@ -414,7 +414,7 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 服務將會拒絕使用已停用 SDK 的任何 Cosmos DB 要求。
 
 > [!WARNING]
-> SQL API 的節點用戶端 SDK 的所有版本**1.x**將于**2020 年 8 月 30**日停用。 這僅影響用戶端節點 SDK，不會影響伺服器端腳本（預存程序、觸發器和 UDF）。
+> SQL API 的節點用戶端 SDK 的所有版本**1.x**將於**2020 年 8 月 30**日停用。 這僅影響用戶端節點 SDK,不會影響伺服器端腳本(儲存過程、觸發器和 UDF)。
 > 
 >
 <br/>
@@ -425,7 +425,7 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 | [3.0.4](#3.0.4) |2019年7月22日 |--- |
 | [3.0.3](#3.0.3) |2019 年 7 月 17 日 |--- |
 | [3.0.2](#3.0.2) |2019 年 7 月 9 日 |--- |
-| [3.0.0](#3.0.0) |六月 28， 2019 |--- |
+| [3.0.0](#3.0.0) |六月 28, 2019 |--- |
 | [2.1.5](#2.1.5) |2019年3月20日 |--- |
 | [2.1.4](#2.1.4) |2019年3月15日 |--- |
 | [2.1.3](#2.1.3) |2019年3月8日 |--- |
