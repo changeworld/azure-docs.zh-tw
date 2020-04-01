@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 系列裝置的容錯移轉和災害復原
+title: 斯托簡單 8000 系列裝置的故障轉移和災難恢復
 description: 了解如何將 StorSimple 裝置容錯移轉至其本身、另一個實體裝置或雲端設備。
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 179bc5cdf982792f41e0dec209341f346959a31a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254959"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397514"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的容錯移轉和災害復原
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明 StorSimple 8000 系列裝置的裝置容錯移轉功能，以及發生災害時，如何使用此功能來復原 StorSimple 裝置。 StorSimple 會使用裝置容錯移轉將資料從資料中心的來源裝置移轉至另一個目標裝置。 本文中的指導方針適用於 StorSimple 8000 系列實體裝置和執行軟體版本 Update 3 和更新版本的雲端設備。
 
@@ -83,7 +83,7 @@ ms.locfileid: "79254959"
 
 萬一發生災害，您可以選擇將 StorSimple 裝置容錯移轉到：
 
-* [到物理設備](storsimple-8000-device-failover-physical-device.md)。
+* [到物理裝置](storsimple-8000-device-failover-physical-device.md)。
 * [到自己](storsimple-8000-device-failover-same-device.md)。
 * [雲端設備](storsimple-8000-device-failover-cloud-appliance.md)。
 

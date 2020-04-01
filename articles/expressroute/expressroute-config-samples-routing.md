@@ -1,18 +1,18 @@
 ---
-title: Azure 快速路由：路由器配置示例
+title: Azure 快速路由:路由器設定範例
 description: 此頁面提供適用於 Cisco 和 Juniper 路由器的路由器組態範例。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076655"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397739"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>設定和管理路由的路由器組態範例
 此頁面提供在使用 ExpressRoute 時適用於 Cisco IOS XE 和 Juniper MX 系列路由器的介面和路由組態範例。 這些範例僅可用作指引，不能依原樣使用。 您可以和廠商合作來擬定適合您網路的組態。 
@@ -32,7 +32,7 @@ ms.locfileid: "74076655"
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE 架構的路由器
 本節中的範例適用於任何執行 IOS-XE 作業系統系列的路由器。
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. 配置介面和子介面
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. 設定介面與子介面
 在您連線到 Microsoft 的每個路由器中，針對每個對等互連都需要有一個子介面。 子介面可使用 VLAN ID 或一組堆疊的 VLAN ID 和 IP 位址來識別。
 
 **Dot1Q 介面定義**
@@ -51,7 +51,7 @@ ms.locfileid: "74076655"
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. 設置 eBGP 會話
+### <a name="2-setting-up-ebgp-sessions"></a>2. 設定 eBGP 工作階段
 您必須針對每個對等互連，設定與 Microsoft 的 BGP 工作階段。 下列範例可讓您設定與 Microsoft 的 BGP 工作階段。 如果您針對子介面使用的 IPv4 位址是 a.b.c.d，則 BGP 芳鄰 (Microsoft) 的 IP 位址會是 a.b.c.d+1。 BGP 芳鄰的 IPv4 位址的最後一個八位元一定是偶數。
 
     router bgp <Customer_ASN>
@@ -63,7 +63,7 @@ ms.locfileid: "74076655"
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 設置要在 BGP 會話上播發的首碼
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 設定要在 BGP 工作階段上播發的前置字
 您可以設定路由器，將選取前置詞公告給 Microsoft。 您可以使用下列範例來執行此動作。
 
     router bgp <Customer_ASN>
@@ -93,11 +93,30 @@ ms.locfileid: "74076655"
      match ip address prefix-list <MS_Prefixes>
     !
 
+### <a name="5-configuring-bfd"></a>5. 設定 BFD
+
+您將在兩個位置配置 BFD。 一個在介面級別,另一個在 BGP 級別。 下面的範例用於 QinQ 介面。 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
+    !
+
 
 ## <a name="juniper-mx-series-routers"></a>Juniper MX 系列路由器
 本節中的範例適用於所有的 Juniper MX 系列路由器。
 
-### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. 配置介面和子介面
+### <a name="1-configuring-interfaces-and-sub-interfaces"></a>1. 設定介面與子介面
 
 **Dot1Q 介面定義**
 
@@ -132,7 +151,7 @@ ms.locfileid: "74076655"
         }                                   
     }                           
 
-### <a name="2-setting-up-ebgp-sessions"></a>2. 設置 eBGP 會話
+### <a name="2-setting-up-ebgp-sessions"></a>2. 設定 eBGP 工作階段
 您必須針對每個對等互連，設定與 Microsoft 的 BGP 工作階段。 下列範例可讓您設定與 Microsoft 的 BGP 工作階段。 如果您針對子介面使用的 IPv4 位址是 a.b.c.d，則 BGP 芳鄰 (Microsoft) 的 IP 位址會是 a.b.c.d+1。 BGP 芳鄰的 IPv4 位址的最後一個八位元一定是偶數。
 
     routing-options {
@@ -148,7 +167,7 @@ ms.locfileid: "74076655"
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 設置要在 BGP 會話上播發的首碼
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 設定要在 BGP 工作階段上播發的前置字
 您可以設定路由器，將選取前置詞公告給 Microsoft。 您可以使用下列範例來執行此動作。
 
     policy-options {
@@ -173,7 +192,7 @@ ms.locfileid: "74076655"
     }
 
 
-### <a name="4-route-maps"></a>4. 路線圖
+### <a name="4-route-policies"></a>4. 路線政策
 您可以使用路由對應和前置詞清單，來篩選要傳播到您網路中的前置詞。 您可以使用下列範例來完成此工作。 確定您已設定適當的前置詞清單。
 
     policy-options {
@@ -203,6 +222,24 @@ ms.locfileid: "74076655"
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4. 設定 BFD
+您將僅在協定 BGP 部分下設定 BFD。
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱〈 [ExpressRoute 常見問題集](expressroute-faqs.md) 〉。
+
+
 

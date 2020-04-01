@@ -1,6 +1,6 @@
 ---
-title: 配置單頁應用 - 微軟識別平臺 |蔚藍
-description: 瞭解如何構建單頁應用程式（應用的代碼配置）
+title: 設定單頁應用 - 微軟識別平臺 |蔚藍
+description: 瞭解如何建構單頁應用程式(應用程式的代碼設定)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -14,31 +14,31 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1799b25ec1adf44342d2305d3b2a29039c39cd4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160078"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419710"
 ---
-# <a name="single-page-application-code-configuration"></a>單頁應用程式：代碼配置
+# <a name="single-page-application-code-configuration"></a>單頁應用程式:代碼設定
 
-瞭解如何為單頁應用程式 （SPA） 配置代碼。
+瞭解如何為單頁應用程式 (SPA) 設定代碼。
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>支援隱式流的 MSAL 庫
+## <a name="msal-libraries-that-support-implicit-flow"></a>支援隱式流的 MSAL 函式庫
 
-Microsoft 標識平臺提供以下 Microsoft 身份驗證庫 （MSAL） 庫，以便使用行業推薦的安全實踐支援隱式流：  
+Microsoft 識別平臺提供以下 Microsoft 身份驗證庫 (MSAL) 函式庫,以便使用產業推薦的安全實務支援隱式流:
 
 | MSAL 程式庫 | 描述 |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | 普通 JavaScript 庫，用於通過 JavaScript 或 SPA 框架（如 Angular、Vue.js 和 React.js）構建的任何用戶端 Web 應用。 |
-| ![MSAL 角](media/sample-v2-code/logo_angular.png) <br/> [MSAL 角](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | 核心 MSAL.js 庫的包裝，以簡化通過 Angular 框架構建的單頁應用的使用。 此庫處於預覽狀態，並且某些 Angular 版本和瀏覽器都有[已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular)。 |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | 普通 JavaScript 庫,用於透過 JavaScript 或 SPA 框架(如 Angular、Vue.js 和 React.js)構建的任何用戶端 Web 應用。 |
+| ![MSAL 角](media/sample-v2-code/logo_angular.png) <br/> [MSAL 角](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | 核心 MSAL.js 庫的包裝,以簡化通過 Angular 框架構建的單頁應用的使用。 |
 
-## <a name="application-code-configuration"></a>應用程式代碼配置
+## <a name="application-code-configuration"></a>應用程式代碼設定
 
-在 MSAL 庫中，應用程式註冊資訊在庫初始化期間作為配置傳遞。
+在 MSAL 庫中,應用程式註冊資訊在庫初始化期間作為配置傳遞。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
@@ -53,21 +53,25 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-有關可配置選項的詳細資訊，請參閱[使用 MSAL.js 初始化應用程式](msal-js-initializing-client-applications.md)。
+關於可設定選項的詳細資訊,請參閱[使用 MSAL.js 初始化應用程式](msal-js-initializing-client-applications.md)。
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
-//In app.module.ts
+// App.module.ts
 import { MsalModule } from '@azure/msal-angular';
 
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id'
-            })]
-         })
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id'
+            }
+        })
+    ]
+})
 
-  export class AppModule { }
+export class AppModule { }
 ```
 
 ---

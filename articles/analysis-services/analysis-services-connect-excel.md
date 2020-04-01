@@ -1,18 +1,18 @@
 ---
 title: 使用 Excel 來連接到 Azure Analysis Services | Microsoft Docs
-description: 了解如何使用 Excel 來連接到 Azure Analysis Services 伺服器。 連接後，使用者可以創建樞紐分析表以流覽資料。
+description: 了解如何使用 Excel 來連接到 Azure Analysis Services 伺服器。 連接後,用戶可以創建數據透視表以流覽數據。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bb76accfef94327386d0ff58d003782a9fe3b0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573144"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411377"
 ---
 # <a name="connect-with-excel"></a>使用 Excel 進行連接
 
@@ -20,7 +20,7 @@ ms.locfileid: "73573144"
 
 ## <a name="before-you-begin"></a>開始之前
 
-您登入的帳戶必須屬於模型資料庫角色，且至少具有讀取權限。 要瞭解更多資訊，請參閱[身份驗證和使用者許可權](analysis-services-manage-users.md)。 
+您登入的帳戶必須屬於模型資料庫角色，且至少具有讀取權限。 要瞭解更多資訊,請參閱[身份認證與使用者權限](analysis-services-manage-users.md)。 
 
 ## <a name="connect-in-excel"></a>在 Excel 中連線
 

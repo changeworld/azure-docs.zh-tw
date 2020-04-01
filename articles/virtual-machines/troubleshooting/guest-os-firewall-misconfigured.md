@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器客體作業系統防火牆設定不正確 | Microsoft Docs
-description: ''
+description: 瞭解如何使用串列控制台或離線方法在遠端 Azure VM 上診斷和修復配置錯誤的來賓操作系統防火牆。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71153901"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422541"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure 虛擬機器客體作業系統防火牆設定不正確
 
@@ -98,7 +98,7 @@ ms.locfileid: "71153901"
 
 ### <a name="offline-mitigations"></a>離線風險降低措施
 
-1.  要啟用或禁用防火牆規則，請參閱[在 Azure VM 客體作業系統上啟用或禁用防火牆規則](enable-disable-firewall-rule-guest-os.md)。
+1.  要啟用或停用防火牆規則,請參閱[在 Azure VM 來賓作業系統上啟用或停用防火牆規則](enable-disable-firewall-rule-guest-os.md)。
 
 2.  請檢查您是否處於[客體作業系統防火牆封鎖傳入流量的情況](guest-os-firewall-blocking-inbound-traffic.md) (英文)。
 

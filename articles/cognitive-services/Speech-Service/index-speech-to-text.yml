@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 語音轉文字文件
-summary: 語音服務中的語音到文本（也稱為語音辨識）可即時批量將音訊流轉錄到文本中。
+summary: 語音服務中的語音到文字(也稱為語音辨識)可即時批量將音訊流轉錄到文本中。
 metadata:
-  title: 語音到文字文件 - 教程，API 參考 - Azure 認知服務 |微軟文檔
+  title: 語音到文字文件 - 教程,API 參考 - Azure 認知服務 |微軟文件
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
@@ -11,22 +11,22 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: dapine
-  ms.openlocfilehash: b6f2fed7b5d6722b07b7f996c46e48ea0d86f755
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: dd42fd57d8daa00d5507405a0d5e3145b335de84
+  ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "80052847"
+  ms.lasthandoff: 03/30/2020
+  ms.locfileid: "80397765"
 landingContent:
-- title: 關於語音到文本
+- title: 關於語音到文字
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是即時語音到文本？
+    - text: 什麼是實時語音到文本?
       url: speech-to-text.md
-    - text: 什麼是批量語音文本？
+    - text: 什麼是批量語音文本?
       url: batch-transcription.md
-    - text: 語音辨識基礎知識？
+    - text: 語音辨識基礎知識?
       url: speech-to-text-basics.md
   - linkListType: quickstart
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 辨識儲存在 Blob 儲存體中的語音
       url: quickstarts/from-blob.md
-- title: 使用語音到文本進行開發
+- title: 使用語音到文字進行開發
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -55,7 +55,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 為自訂語音準備資料
-      url: how-to-custom-speech-test-data.md
+      url: how-to-custom-speech-test-and-train.md
     - text: 讓自訂語音模型定型
       url: how-to-custom-speech-train-model.md
     - text: 建立人為標記的轉譯
@@ -68,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: 語音轉換文字常見問題集
       url: faq-stt.md
-    - text: 語音到文本定價
+    - text: 語音到文字定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

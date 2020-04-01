@@ -1,15 +1,15 @@
 ---
-title: 通過系統中心 DPM 備份 Exchange 伺服器
+title: 透過系統中心 DPM 備份 Exchange 伺服器
 description: 了解如何使用 System Center 2012 R2 DPM 將 Exchange Server 備份至 Azure 備份
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614377"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396412"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 將 Exchange Server 備份至 Azure 備份
 
@@ -44,12 +44,12 @@ ms.locfileid: "77614377"
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>建立 Exchange Server 的保護群組
 
 1. 在 DPM 系統管理員主控台中，按一下 [保護]****，然後按一下工具功能區上的 [新增]****，以開啟 [建立新保護群組]**** 精靈。
-2. 在嚮導**的歡迎**螢幕上，按一下 **"下一步**"。
-3. 在 **"選擇保護組類型"** 螢幕上，選擇 **"伺服器"** 並按一下 **"下一步**"。
+2. 在嚮導**的歡迎**螢幕上,按下 **「下一步**」。
+3. 在 **「選擇保護組類型」** 螢幕上,選擇 **「伺服器」** 並按**下 「下一步**」 。
 4. 選取您想要保護的 Exchange Server 資料庫，然後按 [下一步] ****。
 
    > [!NOTE]
-   > 如果您要保護 Exchange 2013，請檢查 [Exchange 2013 先決條件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))。
+   > 如果您要保護 Exchange 2013，請檢查 [Exchange 2013 先決條件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)。
    >
    >
 
@@ -62,21 +62,21 @@ ms.locfileid: "77614377"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 按 [下一步]****。
+6. 按 [下一步]  。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] **** 選項。
 
-    選取此選項之後，將會在 DPM 伺服器上執行備份一致性檢查，以避免在 Exchange Server 上執行 **eseutil** 命令所產生的 I/O 流量。
+    選擇此選項後,將在 DPM 伺服器上運行備份一致性檢查,以避免通過在 Exchange 伺服器上運行**esetil**命令生成的 I/O 流量。
 
    > [!NOTE]
    > 若要使用此選項，您必須將 Ese.dll 和 Eseutil.exe 檔案複製到 DPM 伺服器上的 C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin 目錄。 否則會觸發下列錯誤：  
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 按 [下一步]****。
+8. 按 [下一步]  。
 9. 選取用於 [複製備份]**** 的資料庫，然後按 [下一步]****。
 
    > [!NOTE]
-   > 如果您未對資料庫的至少一個 DAG 複本選取「完整備份」，則不會截斷記錄。
+   > 如果未為資料庫的至少一個 DAG 副本選擇「完全備份」,日誌將不會被截斷。
    >
    >
 10. 設定 [短期備份]**** 的目標，然後按 [下一步]****。
@@ -91,7 +91,7 @@ ms.locfileid: "77614377"
     ![指定線上備份排程](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > 請注意，線上復原點是以快速完整復原點為基礎。 因此，您必須將線上復原點排程在針對快速完整復原點指定的時間之後。
+    > 請注意，線上復原點是以快速完整復原點為基礎。 因此,您必須在為快速完全恢復點指定的時間之後安排連線恢復點。
     >
     >
 16. 設定 [Azure 備份]**** 的保留原則，然後按 [下一步]****。
@@ -101,7 +101,7 @@ ms.locfileid: "77614377"
 
     ![指定線上保留期原則](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. 確認設定，然後按一下 [建立群組] ****。
-19. 按一下 **關閉**。
+19. 按一下 [關閉]  。
 
 ## <a name="recover-the-exchange-database"></a>復原 Exchange 資料庫
 

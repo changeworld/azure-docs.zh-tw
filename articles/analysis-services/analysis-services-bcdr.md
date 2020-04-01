@@ -4,15 +4,15 @@ description: 本文介紹 Azure 分析服務如何在服務中斷期間提供高
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e750dce804ea93f3d3068ffd36bc7a73a50906a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78a6d41b638d79111a58830f0cb0d5190ea0796c
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73573366"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408675"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services 的高可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "73573366"
 
 * 將模型部署到其他區域的備援伺服器。 此方法需要平行處理主要伺服器和備援伺服器的資料，以確保所有伺服器保持同步。
 
-* 從主伺服器[備份](analysis-services-backup.md)資料庫，並在冗余伺服器上還原。 例如，您可以讓目標為 Azure 儲存體的夜間備份作業自動進行，並還原到其他區域的其他備援伺服器。 
+* 從主伺服器[備份](analysis-services-backup.md)資料庫,並在冗餘伺服器上還原。 例如，您可以讓目標為 Azure 儲存體的夜間備份作業自動進行，並還原到其他區域的其他備援伺服器。 
 
 不論是哪一種情況，如果您的主要伺服器發生中斷，您都必須將報告用戶端中的連接字串，變更為連線到不同區域資料中心的伺服器。 此變更作業應視為最後手段，只有在發生重大的區域資料中心中斷時才應考慮使用。 比較常見的情況是，您可能還未更新所有用戶端上的連線，裝載主要伺服器的資料中心就已從中斷狀態恢復為上線狀態。 
 

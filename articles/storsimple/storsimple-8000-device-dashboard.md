@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 系列裝置使用摘要 | Microsoft Docs
+title: 在 StorSimple 裝置管理員服務使用裝置摘要
 description: 描述 StorSimple 裝置管理員服務裝置摘要，以及如何用它來檢視儲存體計量和連線的啟動器，並尋找序號和 IQN。
 services: storsimple
 documentationcenter: NA
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60578155"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398256"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>使用 StorSimple 裝置管理員服務中的裝置摘要
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple 裝置摘要刀鋒視窗可提供特定 StorSimple 裝置的資訊概觀；相對於服務摘要刀鋒視窗，其提供 Microsoft Azure StorSimple 解決方案中所有裝置的相關資訊。
 
 對於已向給定 StorSimple 裝置管理員註冊的 StorSimple 8000 系列裝置，裝置摘要刀鋒視窗提供摘要檢視，並醒目提示需要系統管理員注意的裝置問題。 本教學課程介紹裝置摘要刀鋒視窗、說明內容和功能，並描述您可以從這個刀鋒視窗執行的工作。
@@ -78,7 +78,7 @@ StorSimple 裝置摘要刀鋒視窗可提供特定 StorSimple 裝置的資訊概
 
      在此圖表中，您可以檢視主要儲存體總計 (主機寫入至您的裝置的資料數量) 和您的裝置一段時間內所使用的雲端儲存體總計的度量資訊。
   
-     在此情況下，「主要儲存體」** 是指由主機寫入的資料總量，並可依磁碟區類型細分︰「主要階層式存放區」** 包含在本機儲存的資料和分層至雲端的資料。 「主要本機釘選儲存體」** 只包含在本機儲存的資料。 另一方面，*雲端儲存體*是儲存在雲端中的資料總量的度量單位。 此儲存體包括分層式資料和備份。 儲存在雲端中的資料會進行重複資料刪除和壓縮，而主要儲存體會指出進行重複資料刪除和壓縮之前已使用的儲存體數量。 （您可以比較這兩個數字，以獲得壓縮速率的概念。對於主存儲和雲存儲，顯示的金額取決於您配置的跟蹤頻率。 例如，如果您選擇一週頻率，則此圖表會顯示上週每一天的資料。
+     在此情況下，「主要儲存體」** 是指由主機寫入的資料總量，並可依磁碟區類型細分︰「主要階層式存放區」** 包含在本機儲存的資料和分層至雲端的資料。 「主要本機釘選儲存體」** 只包含在本機儲存的資料。 另一方面，*雲端儲存體*是儲存在雲端中的資料總量的度量單位。 此儲存體包括分層式資料和備份。 儲存在雲端中的資料會進行重複資料刪除和壓縮，而主要儲存體會指出進行重複資料刪除和壓縮之前已使用的儲存體數量。 (您可以比較這兩個數位,以獲得壓縮速率的概念。對於主存儲和雲端儲存,顯示的金額取決於您配置的追蹤頻率。 例如，如果您選擇一週頻率，則此圖表會顯示上週每一天的資料。
 
      若要查看一段時間所耗用的雲端儲存體數量，請選取 [CLOUD STORAGE USED]**** 選項。 若要查看主機所寫入的儲存體總量，請選取 [使用的主要分層式儲存體]**** 和 [使用的本機釘選儲存體]**** 選項。 
      如需詳細資訊，請參閱[使用 StorSimple 裝置管理員服務監視 StorSimple 裝置](storsimple-monitor-device.md)。

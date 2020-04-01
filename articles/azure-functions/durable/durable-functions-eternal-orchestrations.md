@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262974"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478813"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的永久性協調流程
 
@@ -18,11 +18,11 @@ ms.locfileid: "76262974"
 
 ## <a name="orchestration-history"></a>協調流程記錄
 
-如[業務流程歷史記錄](durable-functions-orchestrations.md#orchestration-history)主題中所述，持久任務框架跟蹤每個函數業務流程的歷史記錄。 只要協調器函式繼續排程新的工作，此記錄就會持續成長。 如果協調器函式進入無限迴圈，並持續排程工作，此記錄可能會變得非常大，而造成明顯的效能問題。 「永久協調流程」** 概念是設計讓需要無限迴圈的應用程式減少發生這類問題。
+如[業務流程歷史記錄](durable-functions-orchestrations.md#orchestration-history)主題中所述,持久任務框架跟蹤每個函數業務流程的歷史記錄。 只要協調器函式繼續排程新的工作，此記錄就會持續成長。 如果協調器函式進入無限迴圈，並持續排程工作，此記錄可能會變得非常大，而造成明顯的效能問題。 「永久協調流程」** 概念是設計讓需要無限迴圈的應用程式減少發生這類問題。
 
 ## <a name="resetting-and-restarting"></a>重設和重新啟動
 
-協調器函數不是使用無限迴圈，而是通過調用`ContinueAsNew`[業務流程綁定](durable-functions-bindings.md#orchestration-trigger)的 （.NET） 或`continueAsNew`（JavaScript） 方法來重置其狀態。 此方法接受單一 JSON 序列化參數，此參數會變成新的輸入來產生下一個協調器函式。
+協調器函數不是使用無限迴圈,而是通過調用`ContinueAsNew`[業務流程綁定](durable-functions-bindings.md#orchestration-trigger)的 (.NET) 或`continueAsNew`(JAvaScript) 方法來重置其狀態。 此方法接受單一 JSON 序列化參數，此參數會變成新的輸入來產生下一個協調器函式。
 
 呼叫 `ContinueAsNew` 時，執行個體在結束之前會將訊息加入其本身的佇列。 此訊息會以新的輸入值來重新啟動執行個體。 相同的執行個體識別碼會保留下來，但協調器函式的記錄實際上會截斷。
 
@@ -51,9 +51,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 前面的 C# 範例適用於持久函數 2.x。 對持久函數 1.x,必須`DurableOrchestrationContext`使用`IDurableOrchestrationContext`而不是 。 有關不同版本之間的差異的詳細資訊,請參閱[持久函數版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -76,10 +76,10 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="starting-an-eternal-orchestration"></a>開始永恆的編排
 
-使用`StartNewAsync`（.NET） 或`startNew`（JavaScript） 方法啟動永恆的業務流程，就像任何其他業務流程函數一樣。  
+使用`StartNewAsync`(.NET)`startNew`或 (JAVAScript) 方法啟動永恆的業務流程,就像任何其他業務流程函數一樣。  
 
 > [!NOTE]
-> 如果需要確保運行單例永久業務流程，在啟動業務流程時維護同一實例`id`非常重要。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
+> 如果需要確保運行單例永久業務流程,在啟動業務流程時維護同一實例`id`非常重要。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -90,16 +90,16 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
     [DurableClient] IDurableOrchestrationClient client)
 {
     string instanceId = "StaticId";
-    // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
-    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId, null); 
+
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId); 
     return client.CreateCheckStatusResponse(request, instanceId);
 }
 ```
 
 > [!NOTE]
-> 前面的代碼用於持久函數 2.x。 對於持久函數 1.x，必須使用`OrchestrationClient`屬性而不是`DurableClient`屬性，並且必須使用`DurableOrchestrationClient`參數類型而不是`IDurableOrchestrationClient`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 前面的代碼用於持久函數 2.x。 對於持久函數 1.x,必須`OrchestrationClient`使用`DurableClient`屬性而不是 屬性,`DurableOrchestrationClient`並且必須使用`IDurableOrchestrationClient`參數類型而不是 。 有關不同版本之間的差異的詳細資訊,請參閱[持久函數版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -122,7 +122,7 @@ module.exports = async function (context, req) {
 
 如果協調器函式最終一定要完成，則您完全「不」** 需要呼叫 `ContinueAsNew`，讓函式自然結束即可。
 
-如果協調器函數位于無限迴圈中，並且需要停止，請使用[業務流程用戶端綁定](durable-functions-bindings.md#orchestration-client)的`TerminateAsync`（.NET）`terminate`或 （JavaScript） 方法停止它。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
+如果協調器函數位於無限迴圈中,並且需要停止,請使用[業務流程用戶端綁定](durable-functions-bindings.md#orchestration-client)的`TerminateAsync`(.NET)`terminate`或 (JAVAScript) 方法停止它。 如需詳細資訊，請參閱[執行個體管理](durable-functions-instance-management.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

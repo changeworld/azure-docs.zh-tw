@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687367"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478739"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service 環境 v1 簡介
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 要瞭解有關新版本的更多，從[應用服務環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 要瞭解有關新版本的更多,從[應用服務環境簡介](intro.md)開始。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-應用服務環境是[Azure 應用服務的](../overview.md)[高級][PremiumTier]服務方案選項，它為大規模安全運行 Azure 應用服務應用（包括 Web 應用、移動應用和 API 應用）提供了完全隔離的專用環境。  
+應用服務環境是[Azure 應用服務的](../overview.md)[進階][PremiumTier]服務計畫選項,它為大規模安全運行 Azure 應用服務應用(包括 Web 應用、行動應用和 API 應用)提供了完全隔離的專用環境。  
 
 適合應用程式工作負載的 App Service 環境需要：
 
@@ -32,7 +32,7 @@ ms.locfileid: "74687367"
 
 App Service 環境已經過隔離，可執行只有單一客戶的應用程式，且一律會部署到虛擬網路。  客戶對於輸入和輸出的應用程式網路流量都有更細微的控制，且應用程式可以透過虛擬網路建立與內部部署公司資源的高速安全連線。
 
-有關應用服務環境如何實現大規模和安全網路訪問的概述，請參閱有關應用服務環境的[AzureCon 深度俯衝][AzureConDeepDive]！
+有關應用服務環境如何實現大規模和安全網路訪問的概述,請參閱有關應用服務環境的[AzureCon 深度俯衝][AzureConDeepDive]!
 
 如需使用多個 App Service Environment 水平延展的深入探討，請參閱關於如何設定[地理位置發佈的應用程式使用量][GeodistributedAppFootprint]一文。
 
@@ -48,7 +48,7 @@ App Service Environment 中的所有計算資源皆專屬於單一訂用帳戶�
 
 App Service Environment 是由前端計算資源集區，以及一到三個背景工作計算資源集區所組成。
 
-前端集區包含負責處理 SSL 終止以及 App Service Environment 中應用程式要求的自動負載平衡的計算資源。
+前端池包含負責 TLS 終止以及應用服務環境中應用請求自動負載平衡的計算資源。
 
 每個背景工作集區都含有配置給 [App Service 方案][AppServicePlan]的計算資源，其中又包含一或多個 Azure App Service 應用程式。  因為 App Service Environment 中可有多達三個不同的背景工作集區，所以您有彈性可為每個背景工作集區選擇不同的計算資源。  
 
@@ -72,7 +72,7 @@ App Service Environment 可以是具有公用 IP 位址的網際網路對向，�
 
 ## <a name="getting-started"></a>開始使用
 
-要開始使用應用服務環境，請參閱[如何創建應用服務環境][HowToCreateAnAppServiceEnvironment]
+要開始使用應用服務環境,請參閱[如何建立應用服務環境][HowToCreateAnAppServiceEnvironment]
 
 如需 App Service Environment 網路架構的概觀，請參閱[網路架構概觀][NetworkArchitectureOverview]一文。
 

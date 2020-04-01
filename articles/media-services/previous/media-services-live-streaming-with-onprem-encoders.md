@@ -14,19 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251033"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476548"
 ---
-# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用從本地編碼器接收多位元率即時流的通道
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用從本地端編碼器接收多位元率即時流的通道
 
 > [!NOTE]
 > 從 2018 年 5 月 12 日開始，即時通道將不再支援 RTP/MPEG-2 傳輸串流內嵌通訊協定。 請從 RTP/MPEG-2 移轉到 RTMP 或分散式 MP4 (Smooth Streaming) 內嵌通訊協定。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在 Azure 媒體服務中，通道** 代表處理即時串流內容的管線。 通道會以兩種方式之一收到即時輸入串流：
 
 * 內部部署即時編碼器會將多位元速率 RTMP 或 Smooth Streaming (分散式 MP4) 串流傳送到未啟用執行媒體服務即時編碼的通道。 內嵌的串流會通過通道，而不需任何進一步處理。 此方法稱為 *傳遞*。 即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 媒體服務會將串流傳遞給要求的客戶。
@@ -45,7 +45,7 @@ ms.locfileid: "79251033"
 > [!NOTE]
 > 本文討論未啟用而無法執行即時編碼的通道屬性。 如需使用已啟用執行即時編碼通道的相關資訊，請參閱 [使用 Azure 媒體服務建立多位元速率串流的即時串流](media-services-manage-live-encoder-enabled-channels.md)。
 >
->有關建議在本地編碼器上使用的資訊，請參閱[建議在本地編碼器上](media-services-recommended-encoders.md)。
+>有關建議在本地端編碼器上使用的資訊,請參閱[建議在本地編碼器上](media-services-recommended-encoders.md)。
 
 下圖顯示一個即時串流工作流程，這個流程利用內部部署即時編碼器以多位元速率 RTMP 或 Fragmented MP4 (Smooth Streaming) 串流做為輸出。
 
@@ -112,7 +112,7 @@ ms.locfileid: "79251033"
 
 當您建立通道時，您可以取得內嵌 URL。 若您要取得這些 URL，通道不一定要在 **執行** 狀態。 當您準備好開始將資料推入通道，通道必須處於 **執行** 狀態。 通道開始內嵌資料後，您可以透過預覽 URL 來預覽資料流。
 
-您可以選擇透過 SSL 連線來內嵌 Fragmented MP4 (Smooth Streaming) 即時資料流。 若要透過 SSL 擷取，請務必將擷取 URL 更新為 HTTPS。 目前，您無法內嵌 RTMP over SSL。
+您可以選擇透過 TLS 連接引入碎片 MP4(平滑流)即時流。 要透過 TLS 進行攝錄,請確保將引入的 URL 更新為 HTTPS。 目前,您不能通過 TLS 引入 RTMP。
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>主要畫面格間隔
 當您使用內部部署即時編碼器來產生多位元速率資料流時，主要畫面格間隔會指定圖片群組 (GOP) 持續期間以供該外部編碼器使用。 在通道收到此內送串流之後，您可以再將即時串流傳遞至下列任一形式的用戶端播放應用程式：Smooth Streaming、HTTP 動態調適性串流 (DASH) 及 HTTP 即時串流 (HLS)。 在執行即時資料流時，會一律動態封裝 HLS。 依預設，媒體服務會根據從即時編碼器收到的主要畫面格間隔，自動計算 HLS 區段封裝比例 (每一個區段的片段)。
@@ -229,7 +229,7 @@ ms.locfileid: "79251033"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相關主題
-[建議在本地編碼器上使用](media-services-recommended-encoders.md)
+[建議在本地端編碼器使用](media-services-recommended-encoders.md)
 
 [Azure 媒體服務的分散 MP4 即時內嵌規格](../media-services-fmp4-live-ingest-overview.md)
 

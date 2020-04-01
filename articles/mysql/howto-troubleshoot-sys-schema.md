@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 3/18/2020
-ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067872"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411099"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
 
-MySQL performance_schema在 MySQL 5.5 中首次提供，它為許多重要的伺服器資源（如記憶體分配、存儲程式、中繼資料鎖定等）提供檢測。但是，performance_schema包含 80 多個表，獲取必要的資訊通常需要performance_schema聯合資料表以及information_schema表。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
+MySQL performance_schema在 MySQL 5.5 中首次提供,它為許多重要的伺服器資源(如記憶體分配、存儲程式、元數據鎖定等)提供檢測。但是,performance_schema包含 80 多個表,獲取必要的資訊通常需要performance_schema聯接表以及information_schema表。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
 
 ![sys_schema 的檢視](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
@@ -29,7 +29,7 @@ sys_schema 中有 52 個檢視，每個檢視分別具有下列其中一個前�
 - User：使用者所耗用並依使用者分類的資源。 範例包括檔案 I/O、連線和記憶體。
 - Wait：依主機或使用者分類的等候事件。
 
-現在，讓我們來看看sys_schema的一些常見使用模式。 首先，我們將使用模式分為兩類：**性能調整**和**資料庫維護**。
+現在,讓我們來看看sys_schema的一些常見使用模式。 首先,我們將使用模式分為兩類:**效能調整**和**資料庫維護**。
 
 ## <a name="performance-tuning"></a>效能微調
 
@@ -60,6 +60,9 @@ IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_su
 ## <a name="database-maintenance"></a>資料庫維護
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> 查詢此視圖可能會影響性能。 建議在非高峰工作時間執行此故障排除。
 
 InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要快取機制。 InnoDB 緩衝集區的大小會繫結至效能層，除非選擇不同的產品 SKU，否則無法變更。 如同作業系統中的記憶體，系統會移出舊的頁面以騰出空間給最新的資料。 若要了解哪些資料表耗用了大部分的 InnoDB 緩衝集區記憶體，您可以查詢 *sys.innodb_buffer_stats_by_table* 檢視。
 

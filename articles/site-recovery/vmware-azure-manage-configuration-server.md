@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 網站恢復管理災害復原的佈建服務器
+title: 使用 Azure 站台復原管理災難復原的設定伺服器
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257273"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478462"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/物理伺服器災害復原的佈建服務器
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/物理伺服器災難復原的設定伺服器
 
 當您使用 [Azure Site Recovery](site-recovery-overview.md) 將 VMware VM 和實體伺服器災害復原到 Azure 時，便會設定內部部署設定伺服器。 設定伺服器會協調內部部署 VMware 與 Azure 之間的通訊，以及管理資料複寫。 本文摘要說明部署設定伺服器之後，管理設定伺服器的一般工作。
 
@@ -22,14 +22,14 @@ ms.locfileid: "79257273"
 
 ## <a name="update-windows-license"></a>更新 Windows 授權
 
-使用 OVF 範本所提供的授權是有效期 180 天的評估授權。 如需不中斷的使用權限，您必須使用購買的授權來啟用 Windows。 許可證更新可以通過獨立金鑰或 KMS 標準金鑰來完成。 指南可在[DISM Windows 命令列中用於運行作業系統](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)。 要獲取金鑰，請參閱[設置 KMS 用戶端](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)。
+使用 OVF 範本所提供的授權是有效期 180 天的評估授權。 如需不中斷的使用權限，您必須使用購買的授權來啟用 Windows。 許可證更新可以通過獨立密鑰或 KMS 標準密鑰來完成。 指南可在[DISM Windows 命令列中用於執行作業系統](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)。 要取得金鑰,請參閱[設定 KMS 用戶端](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)。
 
 ## <a name="access-configuration-server"></a>存取設定伺服器
 
 您可以依照下列方式存取組態伺服器：
 
 * 登入部署所在的 VM，然後從桌面捷徑啟動 **Azure Site Recovery 設定管理員**。
-* 或者，您也可以從HTTPs://*配置伺服器名稱*/：44315/遠端存取佈建服務器。 使用系統管理員認證登入。
+* 或者,您也可以從HTTPs://*配置伺服器名稱*/:44315/遠端存取配置伺服器。 使用系統管理員認證登入。
 
 ## <a name="modify-vmware-server-settings"></a>修改 VMware 伺服器設定
 
@@ -53,16 +53,16 @@ ms.locfileid: "79257273"
 
 針對您啟用複寫的 VMware VM，修改在其上自動安裝行動服務所用的認證。
 
-1. [登錄](#access-configuration-server)後，選擇 **"管理虛擬機器憑據**"
-2. 選擇要修改的帳戶，然後按一下 **"編輯"**
+1. [登錄](#access-configuration-server)後,選擇 **"管理虛擬機憑據**"
+2. 選擇要修改的帳戶,然後單擊 **"編輯"**
 3. 輸入新的認證，然後選取 [確定] ****。
 
     ![修改行動服務認證](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
 您也可以透過 CSPSConfigtool.exe 來修改認證。
 
-1. 登錄到佈建服務器並啟動 CSPSConfigtool.exe
-2. 選擇要修改的帳戶，然後按一下 **"編輯"**
+1. 登入設定伺服器並啟動 CSPSConfigtool.exe
+2. 選擇要修改的帳戶,然後單擊 **"編輯"**
 3. 輸入新的認證，然後按一下 [確定]****。
 
 ## <a name="add-credentials-for-mobility-service-installation"></a>新增行動服務安裝的認證
@@ -76,7 +76,7 @@ ms.locfileid: "79257273"
 
 您也可以透過 CSPSConfigtool.exe 來新增認證。
 
-1. 登錄到佈建服務器並啟動 CSPSConfigtool.exe
+1. 登入設定伺服器並啟動 CSPSConfigtool.exe
 2. 按一下 [新增]****，輸入新的認證，然後按一下 [確定]****。
 
 ## <a name="modify-proxy-settings"></a>修改 Proxy 設定
@@ -90,7 +90,7 @@ ms.locfileid: "79257273"
 
 開放式虛擬化格式 (OVF) 範本會部署包含單一網路介面卡的設定伺服器 VM。
 
-- 您可以將[其他配接器添加到 VM，](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)但在在保存庫中註冊佈建服務器之前必須添加它。
+- 您可以將[其他適配器添加到 VM,](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)但在在保管庫中註冊配置伺服器之前必須添加它。
 - 若要在保存庫中註冊設定伺服器之後新增介面卡，請在 VM 屬性中新增介面卡。 接著，您必須在保存庫中[重新註冊](#reregister-a-configuration-server-in-the-same-vault)伺服器。
 
 
@@ -99,12 +99,12 @@ ms.locfileid: "79257273"
 如果需要，您可以在同一個保存庫中註冊設定伺服器。 如果您除了在設定伺服器電腦上執行的預設處理伺服器之外，還有其他處理伺服器電腦，則請註冊這兩部電腦。
 
 
-1. 在保存庫中，打開**管理** > **網站恢復基礎結構** > **佈建服務器**。
+1. 在保存庫中,開啟**管理** > **站台修復基礎結構** > **設定伺服器**。
 2. 在 [伺服器]**** 中，選取 [下載註冊金鑰]**** 以下載保存庫認證檔案。
 3. 登入設定伺服器電腦。
 4. 在 **%ProgramData%\ASR\home\svsystems\bin** 中，開啟 **cspsconfigtool.exe**。
 5. 在 [保存庫註冊]**** 索引標籤上，選取 [瀏覽]**** 並找出您下載的保存庫認證檔。
-6. 如果需要，請提供 Proxy 伺服器詳細資料。 然後選擇 **"註冊**"。
+6. 如果需要，請提供 Proxy 伺服器詳細資料。 然後選擇 **「註冊**」。
 7. 開啟系統管理 PowerShell 命令視窗並執行下列命令：
    ```
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -112,7 +112,7 @@ ms.locfileid: "79257273"
    ```
 
     >[!NOTE]
-    >為了從佈建服務器**拉取最新的證書**到橫向擴展進程伺服器執行*命令"\<安裝磁碟機_微軟 Azure 網站恢復\代理_cdpcli.exe>" - 註冊mt*
+    >為了從設定伺服器**拉取最新的憑證**到橫向擴充行程伺服器執行*命令「\<安裝驅動器_微軟 Azure 網站恢復\代理_cdpcli.exe>」 - 註冊mt*
 
 8. 最後，執行下列命令以重新啟動 obengine。
    ```
@@ -152,7 +152,7 @@ ms.locfileid: "79257273"
 
 升級伺服器，如下所示：
 
-1. 在保存庫中，轉到**管理** > **網站恢復基礎結構** > **佈建服務器**。
+1. 在保存庫中,到**管理** > **站台修復基礎結構** > **設定伺服器**。
 2. 如果有可用的更新，[代理程式版本]**** > [資料行] 中會出現連結。
     ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 將更新安裝程式檔案下載到組態伺服器上。
@@ -230,7 +230,7 @@ ProxyPassword="Password"
 1. 對組態伺服器下的所有 VM [停用保護](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
 2. 將設定伺服器的所有複寫原則[解除關聯](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)並[刪除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)。
 3. [刪除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)與設定伺服器關聯的所有 vCenter 伺服器/vSphere 主機。
-4. 在保存庫中，打開**網站恢復基礎結構** > **佈建服務器**。
+4. 在保存庫中開啟**站台修復基礎結構** > **設定伺服器**。
 5. 選取您想要移除的設定伺服器。 然後在 [詳細資料]**** 頁面上選取 [刪除]****。
 
     ![刪除設定伺服器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -261,7 +261,7 @@ ProxyPassword="Password"
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> 您可以使用 Remove-AzSite 恢復Fabric中的 **-Force**選項強制刪除佈建服務器。
+> 您可以使用 Remove-AzSite 恢復 Fabric 中的 **-Force**選項強制刪除配置伺服器。
 
 ## <a name="generate-configuration-server-passphrase"></a>產生設定伺服器複雜密碼
 
@@ -270,9 +270,9 @@ ProxyPassword="Password"
 3. 若要產生複雜密碼檔案，請執行 **genpassphrase.exe -v > MobSvc.passphrase**。
 4. 您的複雜密碼將會儲存在位於 **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** 的這個檔案中。
 
-## <a name="renew-ssl-certificates"></a>更新 SSL 憑證
+## <a name="renew-tlsssl-certificates"></a>續訂 TLS/SSL 憑證
 
-設定伺服器有內建的 Web 伺服器，可協調它所連線的行動服務、處理伺服器和主要目標伺服器的活動。 Web 伺服器使用 SSL 憑證來驗證用戶端。 憑證會在三年後到期，且可隨時更新。
+設定伺服器有內建的 Web 伺服器，可協調它所連線的行動服務、處理伺服器和主要目標伺服器的活動。 Web 伺服器使用 TLS/SSL 憑證對用戶端進行身份驗證。 憑證會在三年後到期，且可隨時更新。
 
 ### <a name="check-expiry"></a>檢查到期日
 
@@ -284,16 +284,16 @@ ProxyPassword="Password"
 
 ### <a name="renew-the-certificate"></a>更新憑證
 
-1. 在保存庫中，打開**網站恢復基礎結構** > **佈建服務器**。 選取必要的設定伺服器。
+1. 在保存庫中開啟**站台修復基礎結構** > **設定伺服器**。 選取必要的設定伺服器。
 2. 到期日顯示在 [設定伺服器健康情況]**** 下。
 3. 選取 [更新憑證]****。
 
 ## <a name="refresh-configuration-server"></a>重新整理組態伺服器
 
-1. 在 Azure 門戶中，導航到**恢復服務保存庫** > **管理** > **VMware &物理電腦** > **佈建服務器**的網站**恢復基礎結構** > 
+1. 在 Azure 入口中,導航到**回復服務保管庫** > **管理** > **VMware &物理计算机** > **設定伺服器**的網站**恢復基礎結構** > 
 2. 按一下您想要重新整理的組態伺服器。
-3. 在具有所選佈建服務器詳細資訊的邊欄選項卡上，按一下 **"更多** > **刷新伺服器**"。
-4. 在**恢復服務保存庫** > **監視** > **網站恢復作業**下監視作業的進度。
+3. 在具有所選設定伺服器詳細資訊的邊欄選項卡上,按下 **「更多** > **刷新伺服器**」。
+4. 在**恢復服務保管庫** > **監視** > **站點恢復作業**下監視作業的進度。
 
 ## <a name="failback-requirements"></a>容錯回復需求
 

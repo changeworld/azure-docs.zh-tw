@@ -1,5 +1,5 @@
 ---
-title: StorSimple 裝置的安全性 | Microsoft Docs
+title: 安全性安裝及操作 StorSimple 裝置
 description: 描述安全性慣例、方針和考量，並說明如何安全地安裝和操作您的 StorSimple 裝置。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 480875c17d5ff5bb5c0d42d827b5477f45bf30f4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68963541"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396472"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安裝和操作您的 StorSimple 裝置
 
@@ -36,7 +36,7 @@ ms.locfileid: "68963541"
 | 圖示 | 描述 |
 |:--- |:--- |
 | ![危險圖示](./media/storsimple-safety/IC740879.png) **危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/storsimple-safety/IC740879.png)**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![警告圖示](./media/storsimple-safety/IC740879.png)**警告!** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
 | ![警告圖示](./media/storsimple-safety/IC740879.png) **小心！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
 | ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-safety/IC740882.png) **電擊危險** |高電壓 |
@@ -70,7 +70,7 @@ ms.locfileid: "68963541"
 降低電力連接過熱或火災的可能性：
 
 * 提供適當的電源及電力多載保護，以符合技術規格中詳細列出的需求。
-* 請勿使用分叉的電源線 ("Y" 引線)。
+* 請勿使用分叉電源線("Y"引線)。
 * 若要符合適用的安全性、放射性與熱需求，您不能移除任何封蓋且所有機架必須填入外掛程式模組或磁碟機空白。
 * 請確定以製造商所指定的方式使用設備。 如果未以製造商所指定的方式使用設備，設備所提供的保護可能會減損。
 
@@ -99,7 +99,7 @@ ms.locfileid: "68963541"
 
 * 機架應該有一個安全的電子散發系統。 它必須提供機箱的過電流保護，而且安裝的機箱總數不能超載。 應該觀察顯示在名牌上的電力消耗評等。
 * 電力發散系統必須提供可靠的地面給機架中的每個機箱。
-* 電力發散系統的設計必須考量所有機箱中所有電源供應器的總漏地電流。 請注意，每個機箱中的每個電源供應器都有最大值 1.0 mA，60 Hz、264 伏特的漏地電流。 機架可能需要加上下列標籤「高漏地電流。 在連接供應電源之前，接地 (接地) 是不可或缺的。
+* 電力發散系統的設計必須考量所有機箱中所有電源供應器的總漏地電流。 請注意，每個機箱中的每個電源供應器都有最大值 1.0 mA，60 Hz、264 伏特的漏地電流。 機架可能需要標有「高洩漏電流」的標籤。 在連接電源之前,接地(接地)連接至關重要。
 * 利用機箱設定機架時，機架上必須符合 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全性需求。
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
@@ -138,7 +138,7 @@ ms.locfileid: "68963541"
 ## <a name="battery-disposal-precautions"></a>電池處置預防措施
 電源供應器會使用特殊的電池，以在暫時的短期電源中斷期間保護記憶體的內容。 電池置於 PCM 中。 記住下列電池相關資訊。
 
-![警告圖示](./media/storsimple-safety/IC740879.png)**警告！**
+![警告圖示](./media/storsimple-safety/IC740879.png)**警告!**
 
 減少短路、火災、爆炸、傷害或死亡的風險：
 
@@ -148,7 +148,7 @@ ms.locfileid: "68963541"
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
-通過空運或以其他方式運輸電池時，請按照 IATA 鋰電池指南文檔操作：：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+通過空運或以其他方式運輸電池時,請按照 IATA 鋰電池指南文檔操作::[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 在您檢閱這些安全性注意事項之後，接下來的步驟是為裝置解除封裝、安裝機架和纜線。
 
