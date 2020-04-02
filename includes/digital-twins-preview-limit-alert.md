@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
-ms.openlocfilehash: 6ec72dfa227d62804e5cbafef0e2d1acf483e84b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370370"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80407965"
 ---
 > [!NOTE]
-> Azure Digital Twins 預覽計畫目前已達到產能。 因此不會再新增新的客戶，**目前也不會建立其他的 Azure Digital Twins 資源**。 如果已刪除某處的執行個體，則您可能已成功建立資源，而且可以繼續正常進行，但不保證情況都是如此。 請持續查看此狀態是否有任何更新。
+> 感謝您對 Azure Digital Twins 預覽程式的關注。 由於需求龐大，在我們準備即將推出新功能時期，預覽程式將會暫時關閉。 因此，您可能無法立即建立新的 Azure Digital Twins 資源。 請持續返回查看是否有新資訊。

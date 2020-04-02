@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: dee7d778c4a1c1f37ddab7b9d072f83a22acbc60
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80056675"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80502017"
 ---
 1. 在 [方案總管]  中，以滑鼠右鍵按一下專案並選取 [發佈]  。
 
@@ -44,6 +44,6 @@ ms.locfileid: "80056675"
 
 5. 選取 [建立]  以在 Azure 中使用這些設定建立函式應用程式和相關資源，並且部署函式專案程式碼。 
 
-6. 部署完成之後，請記下 [網站 URL]  值，這是 Azure 中您函式應用程式的位址。
+6. 選取 [發佈]，並在部署完成之後記下 [網站 URL]  值，這是您的函式應用程式在 Azure 中的位址。
 
     ![發行成功訊息](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)
