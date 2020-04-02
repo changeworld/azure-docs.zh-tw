@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70141475"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547589"
 ---
 # <a name="use-service-management-from-python"></a>從 Python 使用服務管理
 本指南說明如何以程式設計方式，從 Python 執行一般服務管理工作。 [適用於 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) \(英文\) 中的 **ServiceManagementService** 類別支援以程式設計方式存取 [Azure 入口網站][management-portal]中提供的大部分服務管理相關功能。 您可以使用此功能來建立、更新和刪除雲端服務、部署、資料管理服務，以及虛擬機器。 建置需要透過程式設計方式存取服務管理的應用程式時，此功能十分實用。
@@ -30,10 +30,10 @@ ms.locfileid: "70141475"
 若要使用服務管理 API，您必須 [建立 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="concepts"></a><a name="Concepts"> </a>概念
-「適用於 Python 的 Azure SDK」含有[服務管理 API][svc-mgmt-rest-api]，這是一個 REST API。 所有 API 作業都會透過 SSL 執行，並使用 X.509 v3 憑證來相互驗證。 您可以從在 Azure 中執行的服務內存取此管理服務。 此外，也可以透過網際網路，從任何可傳送 HTTPS 要求和接收 HTTPS 回應的應用程式，直接存取此管理服務。
+「適用於 Python 的 Azure SDK」含有[服務管理 API][svc-mgmt-rest-api]，這是一個 REST API。 所有 API 操作都透過 TLS 執行,並使用 X.509 v3 證書進行互身份驗證。 您可以從在 Azure 中執行的服務內存取此管理服務。 此外，也可以透過網際網路，從任何可傳送 HTTPS 要求和接收 HTTPS 回應的應用程式，直接存取此管理服務。
 
 ## <a name="installation"></a><a name="Installation"> </a>安裝
-本文中所述的所有功能都可在 `azure-servicemanagement-legacy` 套件中找到，您可以使用 pip 來安裝此套件。 如需有關安裝的詳細資訊 (例如，若您不熟悉 Python)，請參閱[安裝 Python 和 Azure SDK](/azure/python/python-sdk-azure-install)。
+本文中所述的所有功能都可在 `azure-servicemanagement-legacy` 套件中找到，您可以使用 pip 來安裝此套件。 如需有關安裝的詳細資訊 (例如，若您不熟悉 Python)，請參閱[安裝 Python 和 Azure SDK](/azure/developer/python/azure-sdk-install)。
 
 ## <a name="connect-to-service-management"></a><a name="Connect"> </a>連線到服務管理
 若要連線到服務管理端點，您必須具備 Azure 訂用帳戶 ID 和有效的管理憑證。 您可以透過 [Azure 入口網站][management-portal]取得訂用帳戶識別碼。
@@ -52,7 +52,7 @@ ms.locfileid: "70141475"
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-如需有關 Azure 憑證的詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。 有關 OpenSSL 參數的完整說明，請參閱 上的文檔[https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html)。
+如需有關 Azure 憑證的詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。 有關 OpenSSL 參數的完整說明,請參閱[https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html)上的文件 。
 
 建立這些檔案之後，請將 `.cer` 檔案上傳到 Azure。 在 [Azure 入口網站][management-portal]中的 [設定]**** 索引標籤上，選取 [上傳]****。 請記下您儲存 `.pem` 檔案的位置。
 
@@ -119,7 +119,7 @@ ms.locfileid: "70141475"
 * 澳大利亞東南部
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>建立雲端服務
-當您建立應用程式並在 Azure 中執行它時，其程式碼和設定合稱為 Azure [雲端服務][cloud service]。 （在早期 Azure 版本中稱為*託管服務*。可以使用**\_創建託管\_服務**方法創建新託管服務。 請提供託管服務名稱 (在 Azure 中必須是唯一的)、標籤 (自動編碼為 base64)、描述及位置來建立此服務。
+當您建立應用程式並在 Azure 中執行它時，其程式碼和設定合稱為 Azure [雲端服務][cloud service]。 (在早期 Azure 版本中稱為*託管服務*。可以使用**\_創建託管\_服務**方法創建新託管服務。 請提供託管服務名稱 (在 Azure 中必須是唯一的)、標籤 (自動編碼為 base64)、描述及位置來建立此服務。
 
     from azure import *
     from azure.servicemanagement import *
@@ -154,7 +154,7 @@ ms.locfileid: "70141475"
 在建立雲端服務之後，請使用 **create\_deployment** 方法將程式碼部署至服務。
 
 ## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>刪除雲端服務
-通過將服務名稱傳遞給**\_刪除託管\_服務**方法，可以刪除雲服務。
+通過將服務名稱傳遞給**\_刪除託管\_服務**方法,可以刪除雲服務。
 
     sms.delete_hosted_service('myhostedservice')
 
@@ -171,7 +171,7 @@ ms.locfileid: "70141475"
     sms.delete_deployment('myhostedservice', 'v1')
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>建立儲存體服務
-[存儲服務](../storage/common/storage-create-storage-account.md)允許您訪問 Azure [blob、](../storage/blobs/storage-python-how-to-use-blob-storage.md)[表](../cosmos-db/table-storage-how-to-use-python.md)和[佇列](../storage/queues/storage-python-how-to-use-queue-storage.md)。 若要建立儲存服務，您必須要有服務的名稱 (3 到 24 個小寫字元，且在 Azure 中是唯一的)。 此外，您還需要描述、標籤 (最多 100 個字元，會自動編碼為 base64) 及位置。 下列範例說明如何藉由指定位置來建立儲存服務：
+[儲存服務](../storage/common/storage-create-storage-account.md)允許您存取 Azure [blob、](../storage/blobs/storage-python-how-to-use-blob-storage.md)[表](../cosmos-db/table-storage-how-to-use-python.md)和[佇列](../storage/queues/storage-python-how-to-use-queue-storage.md)。 若要建立儲存服務，您必須要有服務的名稱 (3 到 24 個小寫字元，且在 Azure 中是唯一的)。 此外，您還需要描述、標籤 (最多 100 個字元，會自動編碼為 base64) 及位置。 下列範例說明如何藉由指定位置來建立儲存服務：
 
     from azure import *
     from azure.servicemanagement import *
@@ -190,7 +190,7 @@ ms.locfileid: "70141475"
 
 在上一個範例中，可將 **create\_storage\_account** 所傳回的結果傳遞給 **get\_operation\_status** 方法，以擷取 **create\_storage\_account** 作業的狀態。 
 
-您可以使用**\_清單存儲\_帳戶**方法列出存儲帳戶及其屬性。
+您可以使用**\_清單\_儲存 帳戶**方法列出存儲帳戶及其屬性。
 
     from azure import *
     from azure.servicemanagement import *
@@ -214,7 +214,7 @@ ms.locfileid: "70141475"
     sms.delete_storage_account('mystorageaccount')
 
 ## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>列出可用的作業系統
-要列出可用於託管服務的作業系統，請使用**清單\_作業系統\_** 方法。
+要列出可用於託管服務的作業系統,請使用**清單\_作業系統\_** 方法。
 
     from azure import *
     from azure.servicemanagement import *
@@ -228,7 +228,7 @@ ms.locfileid: "70141475"
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-或者，您可以使用**\_清單作業系統\_\_族**方法，該方法按族對作業系統進行分組。
+或者,您可以使用**\_清單作業\_\_系統 族**方法,該方法按族對作業系統進行分組。
 
     result = sms.list_operating_system_families()
 
@@ -241,7 +241,7 @@ ms.locfileid: "70141475"
         print('')
 
 ## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>建立作業系統映像
-要將作業系統映射添加到映射存儲庫，請使用**add\_os\_映射**方法。
+要將作業系統映射添加到映射儲存庫,請使用**\_add\_os 映射**方法。
 
     from azure import *
     from azure.servicemanagement import *
@@ -273,7 +273,7 @@ ms.locfileid: "70141475"
         print('')
 
 ## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>刪除作業系統映像
-要刪除使用者圖像，請使用**刪除\_os\_圖像**方法。
+要刪除使用者圖像,請使用**刪除\_os\_影像**方法。
 
     from azure import *
     from azure.servicemanagement import *
@@ -285,7 +285,7 @@ ms.locfileid: "70141475"
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="create-a-virtual-machine"></a><a name="CreateVM"> </a>創建虛擬機器
+## <a name="create-a-virtual-machine"></a><a name="CreateVM"> </a>建立虛擬機器
 若要建立虛擬機器，您必須先建立 [雲端服務](#CreateCloudService)。 接著，請使用 **create\_virtual\_machine\_deployment** 方法來建立虛擬機器部署。
 
     from azure import *
@@ -339,7 +339,7 @@ ms.locfileid: "70141475"
     sms.delete_hosted_service(service_name='myvm')
 
 ## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>從擷取的虛擬機器映像建立虛擬機器
-要捕獲 VM 映射，請首先調用**捕獲\_\_vm 映射**方法。
+要捕獲 VM 映射,請首先調用**捕獲\_\_vm 映射**方法。
 
     from azure import *
     from azure.servicemanagement import *
@@ -400,7 +400,7 @@ ms.locfileid: "70141475"
 若要深入了解如何在傳統部署模型中擷取 Windows 虛擬機器，請參閱[擷取 Windows 虛擬機器](../virtual-machines/windows/classic/capture-image-classic.md)。
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>後續步驟
-現在，您已經瞭解了服務管理的基礎知識，您可以訪問[Azure Python SDK 的完整 API 參考文檔](https://azure-sdk-for-python.readthedocs.org/)，並輕鬆執行複雜的任務來管理 Python 應用程式。
+現在,您已經瞭解了服務管理的基礎知識,您可以造訪[Azure Python SDK 的完整 API 參考文檔](https://azure-sdk-for-python.readthedocs.org/),並輕鬆執行複雜的任務來管理 Python 應用程式。
 
 如需詳細資訊，請參閱 [Python 開發人員中心](https://azure.microsoft.com/develop/python/)。
 

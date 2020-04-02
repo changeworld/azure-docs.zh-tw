@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 指令碼範例 - 為多層式應用程式建立網路 | Microsoft Docs
+title: Azure CLI 文稿範例 - 為多層應用程式建立網路
 description: Azure CLI 指令碼範例 - 為多層式應用程式建立虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c211a476c31e386c9c74fcb0139fc61dad0a8eb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889395"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521547"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>為多層式應用程式建立網路
 
@@ -61,4 +61,4 @@ az group delete --name MyResourceGroup --yes
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-其他網路 CLI 腳本示例可在[Azure 網路概述文檔中](../cli-samples.md)找到
+其他網路 CLI 文稿範例可在[Azure 網路概述文件中](../cli-samples.md)找不到

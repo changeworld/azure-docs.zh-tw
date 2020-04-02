@@ -1,16 +1,17 @@
 ---
-title: 將現有可執行檔部署到 Azure 服務結構
+title: 將現有執行檔部署到 Azure 服務結構
 description: 了解如何將現有應用程式封裝為來賓可執行檔，使其可以部署至 Service Fabric 叢集。
 ms.topic: conceptual
-ms.date: 07/02/2017
-ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75377101"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520494"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>將現有可執行檔封裝和部署至 Service Fabric
+
 在封裝現有可執行檔作為[來賓可執行檔](service-fabric-guest-executables-introduction.md)時，您可以選擇使用 Visual Studio 專案範本，或是[手動建立應用程式套件](#manually)。 使用 Visual Studio 時，就可讓 [新增專案範本] 為您建立應用程式套件的結構和資訊清單檔案。
 
 > [!TIP]
@@ -18,12 +19,13 @@ ms.locfileid: "75377101"
 >
 
 ## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>使用 Visual Studio 來封裝及部署現有的可執行檔
+
 Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執行檔部署至 Service Fabric 叢集。
 
-1. 選擇 **"檔** > **新專案**"並創建服務結構應用程式。
+1. 選擇 **「檔案** > **新專案**」 並建立服務結構應用程式。
 2. 選擇 [來賓執行檔]**** 做為服務範本。
-3. 按一下 **"流覽**"以選擇具有可執行檔的資料夾，並填寫創建服務的其他參數。
-   * *代碼包行為*。 可設定為將資料夾的所有內容複製到 Visual Studio 專案，這在執行檔沒有變更時很有用。 如果您預期會變更可執行檔，並想要以動態方式取得新組建，則可以選擇改為連結到資料夾。 在 Visual Studio 中建立應用程式專案時，您可以使用連結的資料夾。 這會從專案內連結到來源位置，讓您可以在來源目的地更新來賓執行檔。 在組建時使這些更新會成為應用程式套件的一部分。
+3. 按下 **「瀏覽**」以選擇具有可執行檔的資料夾,並填寫創建服務的其他參數。
+   * *程式碼包行為*。 可設定為將資料夾的所有內容複製到 Visual Studio 專案，這在執行檔沒有變更時很有用。 如果您預期會變更可執行檔，並想要以動態方式取得新組建，則可以選擇改為連結到資料夾。 在 Visual Studio 中建立應用程式專案時，您可以使用連結的資料夾。 這會從專案內連結到來源位置，讓您可以在來源目的地更新來賓執行檔。 在組建時使這些更新會成為應用程式套件的一部分。
    * 「Program」** 指定應執行以便啟動服務的執行檔。
    * 「Arguments」** 指定應傳遞至執行檔的引數。 這可以是具有引數的參數清單。
    * 「WorkingFolder」** 指定即將啟動之程序的工作目錄。 您可以指定三個值：
@@ -31,11 +33,18 @@ Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執�
      * `CodePackage` 指定工作目錄即將設為應用程式套件中的根目錄 (先前檔案結構中所示的 `GuestService1Pkg`)。
      * `Work` 指定檔案放在名為 work 的子目錄中。
 4. 指定服務的名稱，然後按一下 [確定]****。
-5. 如果服務需要用來進行通訊的端點，您現在可以將 protocol、port 和 type 新增至 ServiceManifest.xml 檔案。 例如：`<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`。
+5. 如果服務需要用來進行通訊的端點，您現在可以將 protocol、port 和 type 新增至 ServiceManifest.xml 檔案。 例如： `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />` 。
 6. 您現在可以藉由在 Visual Studio 中偵錯方案，對本機叢集執行封裝和發佈動作。 準備好時，即可將應用程式發佈至遠端叢集，或將方案簽入到原始檔控制。
 7. 請參閱[檢查您的執行中應用程式](#check-your-running-application)，以了解如何檢視 Service Fabric Explorer 中執行的來賓執行檔服務。
 
 如需逐步解說範例，請參閱[使用 Visual Studio 建立第一個客體可執行檔應用程式](quickstart-guest-app.md)。
+
+### <a name="packaging-multiple-executables-with-visual-studio"></a>使用 Visual Studio 打包多個可執行檔
+
+您可以使用 Visual Studio 生成包含多個來賓可執行檔的應用程式包。 添加第一個來賓可執行檔後,右鍵單擊應用程式專案並選擇 **「添加>新服務交換矩陣服務**,將第二個來賓可執行專案添加到解決方案中。
+
+> [!NOTE]
+> 如果您選擇在 Visual Studio 專案中連結來源，則建置 Visual Studio 方案將可確保應用程式封裝是最新的，並且含有來源中的變更。
 
 ## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>使用 Yoeman 在 Linux 上封裝及部署現有的可執行檔
 
@@ -47,9 +56,17 @@ Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執�
 
 Yeoman 會建立應用程式套件，其中包含適當的應用程式和資訊清單檔案，以及安裝和解除安裝指令碼。
 
+### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>Linux 使用 Yeoman 打包多個可執行檔
+
+若要將其他服務新增至已使用 `yo` 建立的應用程式，請執行下列步驟︰
+
+1. 將目錄變更為現有應用程式的根目錄。  例如，如果 `MyApplication` 是 Yeoman 所建立的應用程式，則為 `cd ~/YeomanSamples/MyApplication`。
+2. 執行 `yo azuresfguest:AddService` 並提供必要的詳細資料。
+
 <a id="manually"></a>
 
 ## <a name="manually-package-and-deploy-an-existing-executable"></a>手動封裝和部署現有執行檔
+
 手動封裝來賓執行檔的程序是基於下列步驟：
 
 1. 建立套件目錄結構。
@@ -57,14 +74,12 @@ Yeoman 會建立應用程式套件，其中包含適當的應用程式和資訊�
 3. 編輯服務資訊清單檔。
 4. 編輯應用程式資訊清單檔。
 
-<!--
->[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
--->
-
 ### <a name="create-the-package-directory-structure"></a>建立套件目錄結構
-可以首先創建目錄結構，如[Azure 服務結構應用包](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
+
+可以首先創建目錄結構,如[Azure 服務結構應用包](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>新增應用程式的程式碼和組態檔
+
 建立目錄結構之後，您可以在 code 和 config 目錄之下新增應用程式的程式碼和組態檔。 您也可以在 code 和 config 目錄之下建立其他目錄或子目錄。
 
 Service Fabric 會進行應用程式根目錄內容的 `xcopy`，所以除了建立兩個最上層目錄 code 和 settings 以外，沒有預先定義的結構可使用  (您可以選擇不同的名稱。 下一節中有更多詳細資訊)。
@@ -75,6 +90,7 @@ Service Fabric 會進行應用程式根目錄內容的 `xcopy`，所以除了建
 >
 
 ### <a name="edit-the-service-manifest-file"></a>編輯服務資訊清單檔
+
 下一步就是編輯服務資訊清單檔以包含下列資訊：
 
 * 服務類型的名稱。 這是 Service Fabric 用來識別服務的識別碼。
@@ -114,6 +130,7 @@ Service Fabric 會進行應用程式根目錄內容的 `xcopy`，所以除了建
 接下來幾節說明您需要更新的不同檔案部分。
 
 #### <a name="update-servicetypes"></a>更新 ServiceTypes
+
 ```xml
 <ServiceTypes>
   <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true" />
@@ -133,6 +150,7 @@ CodePackage 元素指定服務程式碼的位置 (和版本)。
 `Name` 元素用來在包含服務程式碼的應用程式套件中指定目錄的名稱。 `CodePackage` 也有 `version` 屬性。 這可用來指定程式碼的版本，而在 Service Fabric 中利用應用程式生命週期管理基礎結構，也可能用來升級服務的程式碼。
 
 #### <a name="optional-update-setupentrypoint"></a>選擇性︰更新 SetupEntrypoint
+
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -147,6 +165,7 @@ SetupEntryPoint 元素用來指定任何應在服務的程式碼啟動前執行�
 在上述範例中，SetupEntryPoint 會執行位於 code 目錄的 `scripts` 子目錄中的批次檔 `LaunchConfig.cmd` (假設 WorkingFolder 元素已設為 CodeBase)。
 
 #### <a name="update-entrypoint"></a>更新 EntryPoint
+
 ```xml
 <EntryPoint>
   <ExeHost>
@@ -171,12 +190,14 @@ SetupEntryPoint 元素用來指定任何應在服務的程式碼啟動前執行�
 WorkingFolder 適合用來設定正確的工作目錄，以便應用程式或初始化指令碼可使用相對路徑。
 
 #### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>更新端點，並向命名服務註冊以進行通訊
+
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />
 </Endpoints>
 
 ```
+
 在前述範例中，`Endpoint` 元素指定應用程式可以接聽的端點。 在此範例中，Node.js 應用程式會接聽 http 連接埠 3000。
 
 此外，您可以要求 Service Fabric 將此端點發佈至命名服務，讓其他服務可以探索這項服務的端點位址。 這可讓您在服務 (來賓可執行檔) 之間通訊。
@@ -189,9 +210,11 @@ WorkingFolder 適合用來設定正確的工作目錄，以便應用程式或初
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000"  UriScheme="http" PathSuffix="myapp/" Type="Input" />
 </Endpoints>
 ```
+
 您可以使用這些位址搭配[反向 Proxy](service-fabric-reverseproxy.md)，就能在服務之間進行通訊。
 
 ### <a name="edit-the-application-manifest-file"></a>編輯應用程式資訊清單檔
+
 設定 `Servicemanifest.xml` 檔案之後，您需要對 `ApplicationManifest.xml` 檔進行一些變更，以確保使用正確的服務類型和名稱。
 
 ```xml
@@ -204,6 +227,7 @@ WorkingFolder 適合用來設定正確的工作目錄，以便應用程式或初
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
+
 在 `ServiceManifestImport` 元素中，您可以指定要包含在應用程式中的一個或多項服務。 `ServiceManifestName` 指定 `ServiceManifest.xml` 檔案所在的目錄名稱，用來參考服務。
 
 ```xml
@@ -213,6 +237,7 @@ WorkingFolder 適合用來設定正確的工作目錄，以便應用程式或初
 ```
 
 ## <a name="set-up-logging"></a>設定記錄
+
 對於來賓可執行檔，最好能夠查看主控台記錄，以查明應用程式和設定指令碼是否顯示任何錯誤。
 在 `ServiceManifest.xml` 檔案中，可使用 `ConsoleRedirection` 元素設定主控台重新導向。
 
@@ -241,6 +266,7 @@ WorkingFolder 適合用來設定正確的工作目錄，以便應用程式或初
 記錄檔會儲存在服務的其中一個工作目錄中。 若要判斷檔案的位置，使用 Service Fabric Explorer 來判斷服務執行所在的節點以及目前使用的工作目錄。 本文稍後會說明此程序。
 
 ## <a name="deployment"></a>部署
+
 最後一個步驟是[部署應用程式](service-fabric-deploy-remove-applications.md)。 下列 PowerShell 指令碼示範如何將應用程式部署至本機開發叢集，並啟動新的 Service Fabric 服務。
 
 ```powershell
@@ -281,14 +307,14 @@ Service Fabric 服務可以各種「組態」部署。 例如，它可部署為�
 
 ![在磁碟上的位置](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-如果您使用「伺服器總管」來瀏覽至目錄，您可以找到工作目錄和服務的記錄檔資料夾，如以下螢幕擷取畫面所示： 
+如果您使用「伺服器總管」來瀏覽至目錄，您可以找到工作目錄和服務的記錄檔資料夾，如以下螢幕擷取畫面所示：
 
 ![記錄檔的位置](./media/service-fabric-deploy-existing-app/loglocation.png)
 
 ## <a name="next-steps"></a>後續步驟
+
 在本文中，您已經學會如何封裝來賓可執行檔並部署至 Service Fabric。 請參閱下列文章以了解相關資訊和工作。
 
 * [封裝和部署來賓可執行檔的範例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)，包括封裝工具預先發行版本的連結
 * [兩個客體可執行檔 (C# 和 nodejs) 使用 REST 透過命名服務進行通訊的範例](https://github.com/Azure-Samples/service-fabric-containers)
-* [部署多個來賓可執行檔](service-fabric-deploy-multiple-apps.md)
 * [使用 Visual Studio 建立第一個 Service Fabric 應用程式](service-fabric-tutorial-create-dotnet-app.md)

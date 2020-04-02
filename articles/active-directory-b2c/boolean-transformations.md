@@ -1,28 +1,28 @@
 ---
-title: 布林聲明自訂策略的轉換示例
+title: 布林聲明自訂策略的轉換範例
 titleSuffix: Azure AD B2C
-description: 布林聲明 Azure 活動目錄 B2C 的標識體驗框架 （IEF） 架構的轉換示例。
+description: 布爾聲明 Azure 活動目錄 B2C 的標識體驗框架 (IEF) 架構的轉換示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea3b273070702144d5296d07cb8712da044819a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471960"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529192"
 ---
 # <a name="boolean-claims-transformations"></a>布林值宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了在 Azure 活動目錄 B2C（Azure AD B2C） 中使用標識體驗框架架構架構的布林聲明轉換的示例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure 活動目錄 B2C(Azure AD B2C) 中使用標識體驗框架架構架構的布爾聲明轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="andclaims"></a>AndClaims
 
@@ -66,7 +66,7 @@ ms.locfileid: "79471960"
 | inputClaim | inputClaim | boolean | 要進行判斷的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比較的值 (True 或 False)。 |
 
-**AssertBooleanClaimIsEqualToValue** 宣告轉換一律會從[驗證技術設定檔](validation-technical-profile.md)執行，其會透過[自我判斷技術設定檔](self-asserted-technical-profile.md)來呼叫。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** 自我判斷技術設定檔中繼資料會控制技術設定檔要呈現給使用者的錯誤訊息。 錯誤訊息可以[當地語系化](localization-string-ids.md#claims-transformations-error-messages)。
+**AssertBooleanClaimIsEqualToValue** 宣告轉換一律會從[驗證技術設定檔](validation-technical-profile.md)執行，其會透過[自我判斷技術設定檔](self-asserted-technical-profile.md)來呼叫。 **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** 自我判斷技術設定檔中繼資料會控制技術設定檔要呈現給使用者的錯誤訊息。 錯誤訊息可以[在本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 ![AssertStringClaimsAreEqual 執行](./media/boolean-transformations/assert-execution.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "79471960"
 
 ## <a name="comparebooleanclaimtovalue"></a>比較布林索賠值
 
-檢查聲明的布林值等於`true`或`false`，並返回壓縮的結果。
+檢查聲明的布爾值等於`true``false`或 ,並返回壓縮的結果。
 
 | Item | TransformationClaimType  | 資料類型  | 注意 |
 | ---- | ------------------------ | ---------- | ----- |
@@ -125,7 +125,7 @@ ms.locfileid: "79471960"
 | OutputClaim | 比較結果 | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
 
-下列宣告轉換示範如何使用 `true` 值來檢查布林值 ClaimType 的值。 如果`IsAgeOver21Years`聲明類型的值等於`true`，則聲明轉換將返回，否則`true``false`將返回 。
+下列宣告轉換示範如何使用 `true` 值來檢查布林值 ClaimType 的值。 如果`IsAgeOver21Years`聲明型態的值`true`等於 ,則聲明轉換將`true``false`傳回,否則將傳回 。
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
@@ -136,7 +136,7 @@ ms.locfileid: "79471960"
     <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
   </InputParameters>
   <OutputClaims>
-      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+    <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -148,7 +148,7 @@ ms.locfileid: "79471960"
 - 輸入參數：
     - **valueToCompareTo**：true
 - 輸出宣告：
-    - **比較結果**： 假
+    - **比較結果**: 假
 
 
 
@@ -167,6 +167,7 @@ ms.locfileid: "79471960"
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -201,7 +202,6 @@ ms.locfileid: "79471960"
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentTOSSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation>
 </ClaimsTransformation>
 ```
 

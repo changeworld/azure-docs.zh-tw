@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f02046d1e2ee558ca4ea4472a03fddb5d0a6a16f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474524"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549329"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure 機器學習資料集
 
@@ -82,7 +82,7 @@ ms.locfileid: "80474524"
 
 #### <a name="create-a-tabulardataset"></a>建立表格資料集
 
-使用[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)`TabularDatasetFactory`類上的方法讀取 .csv 或 .tsv 格式的檔,並創建未註冊的 TabularDataset。 如果要從多個檔讀取結果,結果將聚合到一個表格表示形式中。 
+使用[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)`TabularDatasetFactory`類上的方法讀取 .csv 或 .tsv 格式的檔,並創建未註冊的 TabularDataset。 如果要從多個檔讀取結果,結果將聚合到一個表格表示形式中。 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 在表格資料集中,可以從資料中的欄或路徑模式資料儲存位置指定時間戳,以啟用時間序列特徵。 此規範允許按時間輕鬆高效地進行過濾。
 
-使用類[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)`TabularDataset`上的方法指定時間戳列,並啟用按時間進行篩選。 有關詳細資訊,請參閱帶有[NOAA 天氣資料的與 Taba 時間序列相關的 API 簡報](https://aka.ms/azureml-tsd-notebook)。
+使用類[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)`TabularDataset`上的方法指定時間戳列,並啟用按時間進行篩選。 有關詳細資訊,請參閱帶有[NOAA 天氣資料的與 Taba 時間序列相關的 API 簡報](https://aka.ms/azureml-tsd-notebook)。
 
 ```Python
 # create a TabularDataset with time series trait

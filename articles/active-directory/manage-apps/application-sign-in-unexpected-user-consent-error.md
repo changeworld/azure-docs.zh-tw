@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65824948"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519696"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
@@ -33,8 +33,11 @@ ms.locfileid: "65824948"
 
 ## <a name="requesting-not-authorized-permissions-error"></a>要求未經授權權限的錯誤
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在要求一或多個您未授權授與的權限。 請連絡系統管理員，其可代表您同意此應用程式。
+* **AADSTS90094:**&lt;用戶端AppDisplayName&gt;需要許可權才能訪問組織中只有管理員才能授予的資源。 請先要求管理員授與此應用程式的權限，您才能使用它。
 
 當非公司系統管理員的使用者嘗試使用的應用程式正在要求只有系統管理員能夠授與的權限時，會發生此錯誤。 可代表其組織授與應用程式存取權的系統管理員能夠解決此錯誤。
+
+當由於 Microsoft 檢測到許可權請求存在風險而阻止使用者同意應用程式時,也可能發生此錯誤。 在這種情況下,還將記錄審核事件,並記錄"應用程式管理"類別、"同意應用程式"的活動類型和"檢測到的 Risky 應用程式"的狀態原因。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>原則禁止授與權限錯誤
 * **AADSTS90093：**&lt;tenantDisplayName&gt; 的系統管理員設定了原則，讓您無法將 &lt;應用程式名稱&gt; 正在要求的權限授與該應用程式。 請連絡 &lt;tenantDisplayName&gt; 的系統管理員，其可代表您將權限授與此應用程式。

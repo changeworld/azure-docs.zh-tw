@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411019"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544513"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有關應用程式閘道的常見問題
 
@@ -112,7 +112,15 @@ Azure 應用程式閘道提供應用程式提供控制器 (ADC) 作為服務。 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>是否可以使用 Exchange Server 作為應用程式閘道的後端?
 
-否。 應用程式閘道不支援電子郵件協定,如 SMTP、IMAP 和 POP3。 
+否。 應用程式閘道不支援電子郵件協定,如 SMTP、IMAP 和 POP3。
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有從 v1 SKU 遷移到 v2 SKU 的指南?
+
+是。 有關詳細資訊,請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 移至 v2](migrate-v1-v2.md)。
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>應用程式閘道 v1 SKU 是否繼續受支援?
+
+是。 應用程式閘道 v1 SKU將繼續受支援。 但是,強烈建議您遷移到 v2 以利用該 SKU 中的功能更新。 有關詳細資訊,請參閱[自動縮放和區域冗餘應用程式閘道 v2。](application-gateway-autoscaling-zone-redundant.md)
 
 ## <a name="performance"></a>效能
 
@@ -203,10 +211,6 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>是否可以同時為面向公共的和面向私有的偵聽器使用相同的埠?
 
 否。
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有從 v1 SKU 遷移到 v2 SKU 的指南?
-
-是。 有關詳細資訊,請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 移至 v2](migrate-v1-v2.md)。
 
 ### <a name="does-application-gateway-support-ipv6"></a>應用程式閘道是否支援 IPv6?
 
@@ -329,10 +333,6 @@ WAF 目前支援 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 ### <a name="does-waf-support-ddos-protection"></a>WAF 是否支援 DDoS 保護?
 
 是。 您可以在部署應用程式閘道的虛擬網路上啟用 DDoS 保護。 此設定可確保 Azure DDoS 保護服務還保護應用程式閘道虛擬 IP (VIP)。
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有從 v1 SKU 遷移到 v2 SKU 的指南?
-
-是。 有關詳細資訊,請參閱[將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 移至 v2](migrate-v1-v2.md)。
 
 ## <a name="configuration---ingress-controller-for-aks"></a>設定 - AKS 的入口控制器
 

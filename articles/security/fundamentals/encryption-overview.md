@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: barclayn
-ms.openlocfilehash: 5d8fd578c5539c83e37a232d8425ad8bdf22129b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 7ac657e6627aff4eb588506118e5eeeaef70efba
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125057"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548617"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -105,7 +105,7 @@ CLE 具有內建函式，可供您使用對稱或非對稱金鑰、憑證的公�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 資料庫加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是 Microsoft 的全球分散式多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是Microsoft的全球分散式多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的待用加密
 

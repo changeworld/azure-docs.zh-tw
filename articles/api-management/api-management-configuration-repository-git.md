@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104973"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548975"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 儲存和設定 API 管理服務組態
 
@@ -52,7 +52,7 @@ ms.locfileid: "71104973"
 ![啟用 GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> 任何未定義為命名值的機密都將存儲在存儲庫中，並將保留在其歷史記錄中，直到您禁用並重新啟用 Git 存取權限。 命名值提供了一個安全的位置，用於管理所有 API 配置和策略中的恒定字串值（包括機密），因此您不必直接將它們存儲在策略語句中。 如需詳細資訊，請參閱[如何使用 Azure API 管理原則中的具名值](api-management-howto-properties.md)。
+> 任何未定義為命名值的機密都將儲存在儲存庫中,並將保留在其歷史記錄中,直到您禁用並重新啟用 Git 訪問許可權。 命名值提供了一個安全的位置,用於管理所有 API 配置和策略中的恆定字串值(包括機密),因此您不必直接將它們存儲在策略語句中。 如需詳細資訊，請參閱[如何使用 Azure API 管理原則中的具名值](api-management-howto-properties.md)。
 >
 >
 
@@ -223,7 +223,7 @@ git push
 `apis` 資料夾包含服務執行個體中每個 API 的資料夾，其中包含下列項目。
 
 * `apis\<api name>\configuration.json` - 這是 API 的組態，而且包含後端服務 URL 和作業的相關資訊。 此資訊與當您以 `application/json` 格式的 `export=true` 呼叫[取得特定 API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) 時傳回的資訊相同。
-* `apis\<api name>\api.description.html` - 這是 API 的說明，並會對應至 [API 實體](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)的 `description` 屬性。
+* `apis\<api name>\api.description.html` - 這是 API 的說明，並會對應至 [API 實體](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)的 `description` 屬性。
 * `apis\<api name>\operations\` - 此資料夾包含 `<operation name>.description.html` 檔案，該檔案對應至 API 中的作業。 每個檔案包含 API 中單一作業的說明，其會對應至 REST API 中[作業實體](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)的 `description` 屬性。
 
 ### <a name="groups-folder"></a>群組資料夾

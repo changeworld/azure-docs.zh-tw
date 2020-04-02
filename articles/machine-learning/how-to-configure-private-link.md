@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438303"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529325"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>為 Azure 機器學習工作區配置 Azure 專用連結
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>為 Azure 機器學習工作區設定 Azure 專用連結(預覽)
 
-在本文件中,您將瞭解如何將 Azure 私有連結與 Azure 機器學習工作區一起使用。 Azure 專用連結使您能夠使用專用終結點連接到工作區。 專用終結點是虛擬網路中的一組專用 IP 位址。 然後,您可以將對工作區的訪問限制為僅通過專用 IP 位址進行。 專用鏈路有助於減少數據滲漏的風險。 要瞭解有關私有終結點的更多詳細資訊,請參閱[Azure 專用連結](/azure/private-link/private-link-overview)一文。
+在本文件中,您將瞭解如何將 Azure 私有連結與 Azure 機器學習工作區一起使用。 此功能目前處於預覽狀態,在美國東部、美國西部 2、美國中南部區域提供。 
+
+Azure 專用連結使您能夠使用專用終結點連接到工作區。 專用終結點是虛擬網路中的一組專用 IP 位址。 然後,您可以將對工作區的訪問限制為僅通過專用 IP 位址進行。 專用鏈路有助於減少數據滲漏的風險。 要瞭解有關私有終結點的更多詳細資訊,請參閱[Azure 專用連結](/azure/private-link/private-link-overview)一文。
 
 > [!IMPORTANT]
 > Azure 專用連結不會影響 Azure 控制平面(管理操作),例如刪除工作區或管理計算資源。 例如,創建、更新或刪除計算目標。 這些操作正常地通過公共互聯網執行。

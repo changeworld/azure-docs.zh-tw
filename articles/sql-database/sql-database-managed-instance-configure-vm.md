@@ -1,5 +1,5 @@
 ---
-title: 連接用戶端 VM - 託管實例
+title: 連線客戶端 VM - 託管實例
 description: 使用 Azure 虛擬機器中的 SQL Server Management Studio 連線到 Azure SQL Database 受控執行個體。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839055"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528410"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入門：設定 Azure VM 以連線到 Azure SQL Database 受控執行個體
 
@@ -28,7 +28,7 @@ ms.locfileid: "73839055"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登錄到 Azure[門戶](https://portal.azure.com/)。
+登入 [Azure 入口網站](https://portal.azure.com/)。
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>在受控執行個體 VNet 中建立新的子網路
 
@@ -48,7 +48,7 @@ ms.locfileid: "73839055"
    | ---------------- | ----------------- | ----------- |
    | **名稱** | 任何有效名稱|如需有效的名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
    | **位址範圍 (CIDR 區塊)** | 有效範圍 | 針對此快速入門，使用預設值即可。|
-   | **網路安全性群組** | None | 針對此快速入門，使用預設值即可。|
+   | **網路安全組** | None | 針對此快速入門，使用預設值即可。|
    | **路由表** | None | 針對此快速入門，使用預設值即可。|
    | **服務終結點** | 已選取 0 | 針對此快速入門，使用預設值即可。|
    | **子網委派** | None | 針對此快速入門，使用預設值即可。|
@@ -67,7 +67,7 @@ ms.locfileid: "73839055"
 
 要使用所有的必要工具建立用戶端虛擬機器，最簡單的方式是使用 Azure Resource Manager 範本。
 
-1. 請確保已登錄到另一個瀏覽器選項卡中的 Azure 門戶。然後，選擇以下按鈕以創建用戶端虛擬機器並安裝 SQL 伺服器管理工作室：
+1. 請確保已登錄到另一個瀏覽器選項卡中的 Azure 門戶。然後,選擇以下按鈕以建立用戶端虛擬機並安裝 SQL 伺服器管理工作室:
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -75,11 +75,11 @@ ms.locfileid: "73839055"
 
    | 設定| 建議的值 | 描述 |
    | ---------------- | ----------------- | ----------- |
-   | **訂閱** | 有效的訂用帳戶 | 必須是您有權限在其中建立新資源的訂用帳戶。 |
-   | **資源組** |您在[建立受控執行個體](sql-database-managed-instance-get-started.md)快速入門中指定的資源群組。|此資源群組必須是 VNet 所在的資源群組。|
+   | **訂用帳戶** | 有效的訂用帳戶 | 必須是您有權限在其中建立新資源的訂用帳戶。 |
+   | **資源群組** |您在[建立受控執行個體](sql-database-managed-instance-get-started.md)快速入門中指定的資源群組。|此資源群組必須是 VNet 所在的資源群組。|
    | **位置** | 資源群組的位置 | 根據選取的資源群組填入此值。 |
    | **虛擬機器名稱**  | 任何有效名稱 | 如需有效的名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
-   |**管理員使用者名**|任何有效的使用者名稱|如需有效的名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 請勿使用 "serveradmin"，因為這是保留的伺服器層級角色。<br>您隨時要[連線至 VM](#connect-to-virtual-machine) 時，都可以使用這個使用者名稱。|
+   |**管理員使用者名稱**|任何有效的使用者名稱|如需有效的名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 請勿使用 "serveradmin"，因為這是保留的伺服器層級角色。<br>您隨時要[連線至 VM](#connect-to-virtual-machine) 時，都可以使用這個使用者名稱。|
    |**密碼**|任何有效密碼|密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。<br>您隨時要[連線至 VM](#connect-to-virtual-machine) 時，都可以使用這個密碼。|
    | **虛擬機器大小** | 任何有效大小 | 在此快速入門中，使用此範本的預設值 **Standard_B2s** 就已足夠。 |
    | **位置**|[resourceGroup().location]。| 請勿變更此值。 |
@@ -107,20 +107,20 @@ ms.locfileid: "73839055"
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. 選取 [連接]****。
+2. 選擇**連接**"連接"
 
    將顯示遠端桌面通訊協定檔案 (.rdp 檔案) 表單，其中包含虛擬機器的公用 IP 位址與連接埠號碼。
 
    ![RDP 表單](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
-3. 選擇**下載 RDP 檔**。
+3. 選擇**下載 RDP 檔案**。
 
    > [!NOTE]
    > 您也可以使用 SSH 來連線到您的 VM。
 
 4. 關閉**連線至虛擬機器**表單。
 5. 若要連線至您的 VM，請開啟下載的 RDP 檔案。
-6. 出現提示時，請選取 [連接]****。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+6. 出現提示時，請選取 [連接]****。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
 7. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後選擇 [確定]****。
 
@@ -141,6 +141,6 @@ ms.locfileid: "73839055"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關如何使用點對點連接從本地用戶端電腦進行連接的快速入門，請參閱[配置點對點連接](sql-database-managed-instance-configure-p2s.md)。
+- 有關如何使用點對點連接從本地端電腦連接的快速入門,請參閱[設定點對點連接](sql-database-managed-instance-configure-p2s.md)。
 - 如需有關應用程式連線選項的概觀，請參閱[將您的應用程式連線至受控執行個體](sql-database-managed-instance-connect-app.md)。
 - 若要將現有 SQL Server 資料庫從內部部署還原到受控執行個體，您可以使用 [Azure 資料庫移轉服務 (DMS) 來進行移轉](../dms/tutorial-sql-server-to-managed-instance.md)，或使用 [T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md)從資料庫備份檔案還原。

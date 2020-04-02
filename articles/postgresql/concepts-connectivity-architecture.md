@@ -1,30 +1,30 @@
 ---
-title: 連接體系結構 - 用於 PostgreSQL 的 Azure 資料庫 - 單個伺服器
+title: 連線架構結構 - 用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 描述後處理SQL - 單伺服器 Azure 資料庫的連接體系結構。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774852"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546604"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure 資料庫中用於 PostgreSQL 的連接體系結構
-本文介紹了用於 PostgreSQL 連接體系結構的 Azure 資料庫，以及如何將流量從 Azure 內外的用戶端定向到 Azure 資料庫的 PostgreSQL 資料庫實例。
+# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure 資料庫中用於 PostgreSQL 的連線架構結構
+本文介紹了用於 PostgreSQL 連接體系結構的 Azure 資料庫,以及如何將流量從 Azure 內外的用戶端定向到 Azure 資料庫的 PostgreSQL 資料庫實例。
 
 ## <a name="connectivity-architecture"></a>連線架構
-通過閘道建立與 PostgreSQL Azure 資料庫的連接，該閘道負責將傳入連接路由到群集中伺服器的物理位置。 下圖說明瞭流量流。
+通過閘道建立與 PostgreSQL Azure 資料庫的連接,該閘道負責將傳入連接路由到群集中伺服器的物理位置。 下圖說明瞭流量流。
 
-![連接體系結構概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![連接結構概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-當用戶端連接到資料庫時，它們會收到連接到閘道的連接字串。 此閘道具有偵聽埠 5432 的公共 IP 位址。 在資料庫群集流量內，流量將轉發到相應的 Azure 資料庫，用於 PostgreSQL。 因此，為了連接到您的伺服器（例如來自公司網路），必須打開用戶端防火牆，以便出站流量能夠到達我們的閘道。 下面您可以找到我們每個區域的閘道使用的 IP 位址的完整清單。
+當用戶端連接到資料庫時,它們會收到連接到閘道的連接字串。 此閘道具有偵聽埠 5432 的公共 IP 位址。 在資料庫群集流量內,流量將轉發到相應的 Azure 資料庫,用於 PostgreSQL。 因此,為了連接到您的伺服器(例如來自公司網路),必須打開用戶端防火牆,以便出站流量能夠到達我們的網關。 下面您可以找到我們每個區域的閘道使用的 IP 位址的完整清單。
 
-## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>用於 PostgreSQL 閘道 IP 位址的 Azure 資料庫
-下表列出了所有資料區域的 PostgreSQL 閘道 Azure 資料庫的主 IP 和輔助 IP。 主 IP 位址是閘道的當前 IP 位址，第二個 IP 位址是主位址發生故障時容錯移轉 IP 位址。 如前所述，客戶應允許向外站到兩個 IP 位址。 第二個 IP 位址不會偵聽任何服務，直到 Azure 資料庫為 PostgreSQL 啟動接受連接。
+## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>PostgreSQL 閘道 IP 位址的 Azure 資料庫
+下表列出了所有資料區域的 PostgreSQL 閘道 Azure 資料庫的主 IP 和輔助 IP。 主要 IP 位址是閘道的 IP 位址,第二個 IP 位址是主位址發生故障時故障轉移 IP 位址。 如前所述,客戶應允許向外站到兩個 IP 位址。 第二個 IP 位址不會偵聽任何服務,直到 Azure 資料庫為 PostgreSQL 啟動接受連接。
 
 | **地區名稱** | **閘道 IP 位址** |
 |:----------------|:-------------|
@@ -35,14 +35,14 @@ ms.locfileid: "76774852"
 | 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | 加拿大中部 |40.85.224.249  |
 | 加拿大東部 | 40.86.226.166    |
-| 美國中部 | 23.99.160.139, 13.67.215.62   |
+| 美國中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | 中國東部 | 139.219.130.35    |
 | 中國東部 2 | 40.73.82.1  |
 | 中國北部 | 139.219.15.17    |
 | 中國北部 2 | 40.73.50.0     |
 | 東亞 | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | 美國東部 | 40.121.158.30, 191.238.6.43  |
-| 美國東部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
+| 美國東部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | 法國中部 | 40.79.137.0, 40.79.129.1  |
 | 德國中部 | 51.4.144.100     |
 | 德國東北部 | 51.5.144.179  |
@@ -54,7 +54,7 @@ ms.locfileid: "76774852"
 | 南韓中部 | 52.231.32.42   |
 | 南韓南部 | 52.231.200.86    |
 | 美國中北部 | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| 北歐 | 40.113.93.91, 191.235.193.75    |
+| 北歐 | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | 南非北部  | 102.133.152.0    |
 | 南非西部 | 102.133.24.0   |
 | 美國中南部 |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -64,7 +64,7 @@ ms.locfileid: "76774852"
 | 英國南部 | 51.140.184.11   |
 | 英國西部 | 51.141.8.11  |
 | 美國中西部 | 13.78.145.25     |
-| 西歐 | 40.68.37.158, 191.237.232.75     |
+| 西歐 | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
 | 美國西部 | 104.42.238.205, 23.99.34.75  |
 | 美國西部 2 | 13.66.226.202  |
 ||||

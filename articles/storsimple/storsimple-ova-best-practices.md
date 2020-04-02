@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298840"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544332"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array 的最佳作法
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -121,7 +121,7 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 * 確定虛擬陣列位於它自己的 Active Directory 組織單位 (OU) 中。
 * 確定虛擬陣列沒有套用群組原則物件 (GPO)。 您可以禁止繼承，以確保虛擬陣列 (子節點) 不會自動繼承父節點的任何 GPO。 如需詳細資訊，請移至 [禁止繼承](https://technet.microsoft.com/library/cc731076.aspx)。
 
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 虛擬陣列的網路組態是透過本機 Web UI 來設定。 虛擬網路介面則是透過虛擬陣列佈建所在的 Hypervisor 來啟用。 使用 [網路設定](storsimple-virtual-array-deploy3-fs-setup.md) 頁面可設定虛擬網路介面的 IP 位址、子網路和閘道。  您也可以為裝置設定主要和次要 DNS 伺服器、時間設定和選用的 Proxy 設定。 大部分網路組態都是一次性設定。 在部署虛擬陣列之前，請檢閱 [StorSimple 網路需求](storsimple-ova-system-requirements.md#networking-requirements) 。
 
 在部署虛擬陣列時，建議您遵循下列最佳作法︰
@@ -159,10 +159,10 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 
 在虛擬裝置上佈建共用或磁碟區時，請記住下列最佳作法。
 
-* 相對於已佈建的分層式共用大小的檔案大小可能會影響分層效能。 使用大型檔可能會導致層數變慢。使用大型檔時，我們建議最大檔小於共用大小的 3%。
+* 相對於已佈建的分層式共用大小的檔案大小可能會影響分層效能。 使用大型檔可能會導致層數變慢。使用大型檔時,我們建議最大檔小於共用大小的 3%。
 * 虛擬陣列上最多可以建立 16 個磁碟區/共用。 如需本機固定和分層式磁碟區/共用的大小限制，請一律參考 [StorSimple Virtual Array 限制](storsimple-ova-limits.md)。
-* 在建立磁碟區時，請將預期的資料使用量以及未來成長量納入考量。 無法於稍後展開磁碟區。
-* 一旦建立了磁碟區，就不能縮小 StorSimple 上磁碟區的大小。
+* 在建立磁碟區時，請將預期的資料使用量以及未來成長量納入考量。 以後無法展開卷或共用。
+* 創建卷/共用後,無法縮小 StorSimple 上的卷/共用大小。
 * 在寫入 StorSimple 上的分層式磁碟區時，當磁碟區資料到達特定臨界值 (相對於保留給磁碟區的本機空間)，就會節流 IO。 繼續寫入這個磁碟區會讓 IO 明顯變慢。 雖然您可以在分層式磁碟區寫入超過其佈建容量 (我們不要主動停止使用者寫入時超出已佈建的容量)，但您會看到警示通知指出您已超過訂閱量。 一旦您看到警示，請務必採取補救措施，例如刪除磁碟區資料 (目前不支援擴充磁碟區)。
 * 針對災害復原使用案例，可允許的共用/磁碟區數目為 16 個，而且可平行處理的共用/磁碟區數目上限也是 16 個，因此共用/磁碟區數目並不會影響到 RPO 和 RTO。
 
@@ -200,7 +200,7 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 StorSimple Virtual Array 擁有資料安全性和加密功能，可確保資料的機密性和完整性。 在使用這些功能時，建議您遵循下列最佳作法︰ 
 
 * 先定義用來產生 AES-256 加密的雲端儲存體加密金鑰，再將資料從虛擬陣列傳送至雲端。 如果資料一開始就已加密，則不需要此金鑰。 使用金鑰管理系統 (例如 [Azure 金鑰保存庫](../key-vault/key-vault-overview.md)) 即可產生並妥善保存金鑰。
-* 通過 StorSimple Manager 服務配置存儲帳戶時，請確保啟用 TLS 模式，以便在 StorSimple 設備和雲之間創建用於網路通信的安全通道。
+* 通過 StorSimple Manager 服務配置儲存帳戶時,請確保啟用 TLS 模式,以便在 StorSimple 設備和雲端之間創建用於網路通訊的安全通道。
 * 定期重新產生儲存體帳戶的金鑰 (藉由存取 Azure 儲存體服務)，以說明因為系統管理員清單變更而造成的存取權變更。
 * 虛擬陣列上的資料會先壓縮並進行重複資料刪除，再傳送至 Azure。 Windows Server 主機上不建議使用「重複資料刪除」角色服務。
 

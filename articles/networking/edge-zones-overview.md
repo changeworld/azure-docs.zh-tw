@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: ganesr
-ms.openlocfilehash: 4666022fc62fcb423906b46f0ff2274a2191f341
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d04032075166d2edd273c7f22bfb0d54aeccd8b3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437615"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545808"
 ---
 # <a name="about-azure-edge-zones---preview"></a>關於 Azure 邊緣區域 - 預覽
 
@@ -73,9 +73,6 @@ Azure 邊緣區域將在以下城市中可用:
 邊緣區域將與以下營運商合作提供:
 
 - AT&T(亞特蘭大、達拉斯和洛杉磯)
-- 埃泰薩爾特
-- Rogers
-- Vodafone
 
 ## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure 專用邊緣區域
 

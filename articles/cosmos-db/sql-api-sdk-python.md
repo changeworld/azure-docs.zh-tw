@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙資料庫：SQL Python API、SDK &資源
+title: Azure 宇宙資料庫:SQL Python API、SDK &资源
 description: 了解所有 SQL Python API 和 SDK 相關資訊，包括發行日期、停用日期及 Azure Cosmos DB Python SDK 每個版本之間所做的變更。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,32 +8,32 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137332"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547708"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API：版本資訊與資源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET 更改來源](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [非同步 Java](sql-api-sdk-async-java.md)
-> * [JAVA](sql-api-sdk-java.md)
+> * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [休息](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量執行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量執行器 - JAVA](sql-api-sdk-bulk-executor-java.md)
+> * [批次執行器 -.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批次執行器 -Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**下載 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文檔**|[Python API 參考文件](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API 文件**|[Python API 參考文件](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK 安裝指示**|[SDK 安裝指示](https://github.com/Azure/azure-cosmos-python)|
 |**參與 SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
 |**開始使用**|[開始使用 Python SDK](sql-api-python-application.md)|
@@ -84,7 +84,7 @@ ms.locfileid: "70137332"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * 新增彙總查詢的支援 (COUNT、MIN、MAX、SUM 和 AVG)。
-* 新增針對 Cosmos DB 模擬器執行時停用 SSL 驗證的選項。
+* 添加了一個選項,用於在針對Cosmos DB 模擬器運行時禁用TLS驗證。
 * 移除相依要求模組必須為 2.10.0 的限制。
 * 已將分割區集合的最小輸送量從 10,100 RU/s 降低為 2500 RU/s。
 * 在預存程序執行期間，加入支援指令碼記錄功能。
@@ -100,7 +100,7 @@ ms.locfileid: "70137332"
 * 新增對已分割集合的 TOP/ORDERBY 查詢支援。
 
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
-* 新加入已節流處理要求的重試原則支援。 （已限制的請求收到請求速率過大的異常，錯誤代碼 429。預設情況下，當遇到錯誤代碼 429 時，Azure Cosmos DB 會為每個請求重試 9 次，從而在回應標頭中遵守重試時間。 如果您想要忽略伺服器在多次重試之間傳回的 retryAfter 時間，現在可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中設定固定的重試間隔時間。 Azure Cosmos DB 現在會針對每個要進行節流處理的要求等候最多 30 秒 (不論重試計數為何)，並傳回包含錯誤碼 429 的回應。 您也可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中覆寫該時間。
+* 新加入已節流處理要求的重試原則支援。 (已限制的請求收到請求速率過大的異常,錯誤代碼 429。預設情況下,當遇到錯誤代碼 429 時,Azure Cosmos DB 會為每個請求重試 9 次,從而在響應標頭中遵守重試時間。 如果您想要忽略伺服器在多次重試之間傳回的 retryAfter 時間，現在可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中設定固定的重試間隔時間。 Azure Cosmos DB 現在會針對每個要進行節流處理的要求等候最多 30 秒 (不論重試計數為何)，並傳回包含錯誤碼 429 的回應。 您也可以在 ConnectionPolicy 物件上的 RetryOptions 屬性中覆寫該時間。
 * Cosmos DB 現在會傳回 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 做為每個要求的回應標頭，其代表節流重試計數和要求歷經多次重試的累積時間。
 * 移除 RetryPolicy 類別和 document_client 類別上公開的對應屬性 (retry_policy)，改為引進公開 ConnectionPolicy 類別上的 RetryOptions 屬性，它可以用來覆寫某些預設的重試選項。
 
@@ -145,12 +145,12 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 服務會拒絕使用已停用 SDK 的任何 Cosmos DB 要求。
 
 > [!WARNING]
-> 在版本**1.0.0**之前，用於 SQL API 的所有版本的 Python SDK 均于**2016 年 2 月 29**日停用。 
+> 在版本**1.0.0**之前,用於 SQL API 的所有版本的 Python SDK 均於**2016 年 2 月 29**日停用。 
 > 
 > 
 
 > [!WARNING]
-> 用於 SQL API 的 Python SDK 的所有版本 1.x 和 2.x 將于**2020 年 8 月 30**日停用。 
+> 用於 SQL API 的 Python SDK 的所有版本 1.x 和 2.x 將於**2020 年 8 月 30**日停用。 
 > 
 > 
 

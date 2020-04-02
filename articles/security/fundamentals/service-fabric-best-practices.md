@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548814"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549237"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署應用程式很快速、輕鬆且符合成本效益。 將您的雲端應用程式部署至生產環境之前，請檢閱重要和建議最佳做法，以在應用程式中實作安全叢集。
@@ -32,7 +32,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 -   使用 X.509 憑證。
 -   設定安全性原則。
 -   實作 Reliable Actors 安全性設定。
--   設定 Azure Service Fabric 的 SSL。
+-   為 Azure 服務結構配置 TLS。
 -   使用網路隔離和安全性搭配 Azure Service Fabric。
 -   設定 Azure Key Vault 以保持安全性。
 -   將使用者指派給角色。
@@ -118,13 +118,13 @@ Service Fabric Reliable Actors 是動作項目設計模式的實作。 如同任
 [複寫器安全性設定](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用來保護在複寫期間使用的通訊通道。 此設定會使服務無法看到彼此的複寫流量，並可確保高可用性資料的安全。 依預設，空白的安全性組態區段會妨礙複寫安全性。
 複寫器組態會設定負責讓動作項目狀態提供者狀態高度可靠的複寫器。
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>設定 Azure Service Fabric 的 SSL
-伺服器驗證程序會[驗證](../../service-fabric/service-fabric-cluster-creation-via-arm.md)管理用戶端的叢集管理端點。 接著，管理用戶端會辨識其是與實際的叢集在交談。 此證書還為 HTTPS 管理 API 和 HTTPS 中的服務結構資源管理器提供[SSL。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
+## <a name="configure-tls-for-azure-service-fabric"></a>為 Azure 服務交換矩陣設定 TLS
+伺服器驗證程序會[驗證](../../service-fabric/service-fabric-cluster-creation-via-arm.md)管理用戶端的叢集管理端點。 接著，管理用戶端會辨識其是與實際的叢集在交談。 此憑證還為 HTTPS 管理 API 和 HTTPS 中的服務結構資源管理員提供[TLS。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
 您必須為您的叢集取得自訂網域名稱。 當您向憑證授權單位要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
 
-若要設定應用程式的 SSL，您必須先取得已由 CA 簽署的 SSL 憑證。 CA 是受信任的第三方，會就 SSL 安全性目的發出憑證。 如果您還沒有 SSL 憑證，就必須向銷售 SSL 憑證的公司取得。
+要為應用程式設定 TLS,首先需要獲取由 CA 簽名的 SSL/TLS 證書。 CA 是受信任的第三方,為 TLS 安全目的頒發證書。 如果您還沒有 SSL/TLS 證書,則需要從銷售 SSL/TLS 證書的公司獲得證書。
 
-憑證必須符合 Azure 中對於 SSL 憑證的下列要求：
+憑證必須滿足 Azure 中 SSL/TLS 憑證的以下要求:
 -   憑證必須包含私密金鑰。
 
 -   憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
@@ -135,13 +135,13 @@ Service Fabric Reliable Actors 是動作項目設計模式的實作。 如同任
     - 向 CA 要求包含主體名稱的憑證，可符合您服務的自訂網域名稱。 例如，如果您的自訂網域名稱為 __contoso__**.com**，您 CA 的憑證就要有 **.contoso.com** 或 __www__**.contoso.com** 主體名稱。
 
     >[!NOTE]
-    >您無法從 CA 取得 __cloudapp__**.net** 網域的 SSL 憑證。
+    >您不能從__CLOUDapp__**.net**網域的 CA 獲取 SSL/TLS 證書。
 
 -   憑證至少必須以 2,048 位元加密。
 
 HTTP 通訊協定並不安全，且會受到竊聽攻擊。 透過 HTTP 傳輸的資料是以純文字形式從網頁瀏覽器傳送到 web 伺服器，或是在其他端點之間傳送。 攻擊者可以攔截並檢視透過 HTTP 傳送的敏感性資料，例如信用卡詳細資料和帳戶登入。 當資料是透過 HTTPS 經由瀏覽器傳送或張貼時，SSL 可確保敏感性資訊經過加密及保護以避免遭到攔截。
 
-若要深入了解使用 SSL 憑證的資訊，請參閱[設定 Azure 應用程式的 SSL](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
+要瞭解有關使用 SSL/TLS 證書的更多資訊,請參閱[在 Azure 中為應用程式配置 TLS。](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>使用網路隔離和安全性搭配 Azure Service Fabric
 使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)作為範例來設定 3 節點類型安全叢集。 使用範本和網路安全性群組來控制傳入和傳出網路流量。
@@ -169,7 +169,7 @@ Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的�
 若要深入了解如何設定金鑰保存庫，請參閱[什麼是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
 ## <a name="assign-users-to-roles"></a>將使用者指派給角色
-創建表示群集的應用程式後，將使用者分配給 Service Fabric 支援的角色：唯讀和管理員。可以使用 Azure 門戶分配這些角色。
+創建表示群集的應用程式後,將使用者分配給 Service Fabric 支援的角色:唯讀和管理員。可以使用 Azure 門戶分配這些角色。
 
 >[!NOTE]
 > 如需在 Service Fabric 中使用角色的詳細資訊，請參閱[角色型存取控制 (適用於 Service Fabric 用戶端)](../../service-fabric/service-fabric-cluster-security-roles.md)。

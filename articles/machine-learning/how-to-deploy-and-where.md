@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f6bab532b872a0974993f708edcb252d8bb54432
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475616"
+ms.locfileid: "80529716"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -1167,6 +1167,11 @@ def run(request):
 > ```shell
 > pip install azureml-contrib-services
 > ```
+
+
+> [!WARNING]
+> Azure 機器學習將僅將開機自走自走和 GET 請求路由到運行評分服務的容器。 這可能導致錯誤,因為瀏覽器使用 OPTIONS 請求進行預檢 CORS 請求。
+> 
 
 ## <a name="next-steps"></a>後續步驟
 

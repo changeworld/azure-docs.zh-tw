@@ -1,17 +1,17 @@
 ---
-title: Azure 最佳做法中的管理解決方案 | Microsoft Docs
-description: ''
+title: Azure 最佳實作中的管理解決方案
+description: 在本文中,瞭解創建管理解決方案檔的提示。 瞭解如何處理數據源、運行簿、視圖和警報。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663193"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548171"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中建立管理解決方案的最佳做法 (預覽)
 > [!NOTE]

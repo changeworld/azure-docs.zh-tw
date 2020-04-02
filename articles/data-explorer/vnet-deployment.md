@@ -1,101 +1,101 @@
 ---
-title: 將 Azure 資料資源管理器部署到虛擬網路
-description: 瞭解如何將 Azure 資料資源管理器部署到虛擬網路
+title: 將 Azure 資料資源管理員部署到虛擬網路
+description: 瞭解如何將 Azure 資料資源管理員部署到虛擬網路
 author: basaba
 ms.author: basaba
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: dbc17620cda836ec0ac5c4ebc5a709fb0605c958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240050"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548840"
 ---
-# <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>將 Azure 資料資源管理器群集部署到虛擬網路
+# <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>將 Azure 資料資源管理器叢集部署到虛擬網路
 
-本文介紹將 Azure 資料資源管理器群集部署到自訂 Azure 虛擬網路時存在的資源。 此資訊將説明您將群集部署到虛擬網路 （VNet） 中的子網中。 有關 Azure 虛擬網路的詳細資訊，請參閱[什麼是 Azure 虛擬網路？](/azure/virtual-network/virtual-networks-overview)
+本文介紹將 Azure 資料資源管理器群集部署到自定義 Azure 虛擬網路時存在的資源。 此資訊將説明您將群集部署到虛擬網路 (VNet) 中的子網中。 有關 Azure 虛擬網路的詳細資訊,請參閱[什麼是 Azure 虛擬網路?](/azure/virtual-network/virtual-networks-overview)
 
    ![vnet 圖](media/vnet-deployment/vnet-diagram.png)
 
-Azure 資料資源管理器支援將群集部署到虛擬網路 （VNet） 中的子網。 此功能使您能夠：
+Azure 資料資源管理員支援將群集部署到虛擬網路 (VNet) 中的子網。 此功能使您能夠:
 
-* 在 Azure 資料資源管理器群集流量上強制實施[網路安全性群組](/azure/virtual-network/security-overview)（NSG） 規則。
+* 在 Azure 資料資源管理器群集流量上強制實施[網路安全組](/azure/virtual-network/security-overview)(NSG) 規則。
 * 將本地網路連接到 Azure 資料資源管理器群集的子網。
-* 使用[服務終結點](/azure/virtual-network/virtual-network-service-endpoints-overview)保護資料連線源（[事件中心](/azure/event-hubs/event-hubs-about)和[事件網格](/azure/event-grid/overview)）。
+* 使用[服務終結點](/azure/virtual-network/virtual-network-service-endpoints-overview)保護資料連接來源([事件中心](/azure/event-hubs/event-hubs-about)和[事件網格](/azure/event-grid/overview))。
 
-## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>在 VNet 中訪問 Azure 資料資源管理器群集
+## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>在 VNet 中存取 Azure 資料資源管理員群集
 
-您可以使用以下 IP 位址訪問 Azure 資料資源管理器群集，每個服務（引擎和資料管理服務）：
+您可以使用以下 IP 位址存取 Azure 資料資源管理員群集,每個服務(引擎和資料管理服務):
 
-* **專用 IP**：用於訪問 VNet 內的群集。
-* **公共 IP**：用於從 VNet 外部訪問群集以進行管理和監視，並作為出站連接的源位址從群集啟動。
+* **專用 IP**:用於造訪 VNet 內的群集。
+* **公共 IP**:用於從 VNet 外部存取群集以進行管理和監視,並作為出站連接的源位址從群集啟動。
 
-創建以下 DNS 記錄以訪問服務： 
+建立以下 DNS 紀錄以存取服務: 
 
-* `[clustername].[geo-region].kusto.windows.net`（發動機）`ingest-[clustername].[geo-region].kusto.windows.net` （資料管理）映射到每個服務的公共 IP。 
+* `[clustername].[geo-region].kusto.windows.net`(發動機)`ingest-[clustername].[geo-region].kusto.windows.net` (資料管理)映射到每個服務的公共 IP。 
 
-* `private-[clustername].[geo-region].kusto.windows.net`（發動機）`private-ingest-[clustername].[geo-region].kusto.windows.net` （資料管理）映射到每個服務的專用 IP。
+* `private-[clustername].[geo-region].kusto.windows.net`(發動機)`private-ingest-[clustername].[geo-region].kusto.windows.net` (數據管理)映射到每個服務的專用 IP。
 
 ## <a name="plan-subnet-size-in-your-vnet"></a>在 VNet 中規劃子網大小
 
-部署子網後，無法更改用於承載 Azure 資料資源管理器群集的子網的大小。 在 VNet 中，Azure 資料資源管理器為每個 VM 使用一個私人 IP 位址，對內部負載等化器（引擎和資料管理）使用兩個私人 IP 位址。 Azure 網路還為每個子網使用五個 IP 位址。 Azure 資料資源管理器為數據管理服務提供了兩個 VM。 引擎服務 VM 按使用者配置規模容量進行預配。
+部署子網後,無法更改用於承載 Azure 資料資源管理器群集的子網的大小。 在 VNet 中,Azure 資料資源管理員為每個 VM 使用一個專用 IP 位址,對內部負載均衡器(引擎和資料管理)使用兩個專用 IP 位址。 Azure 網路還為每個子網使用五個 IP 位址。 Azure 資料資源管理員為數據管理服務提供了兩個 VM。 引擎服務 VM 按使用者配置規模容量進行預配。
 
-IP 位址總數：
+IP 位址總數:
 
 | 使用 | 位址數目 |
 | --- | --- |
-| 發動機服務 | 每個實例 1 個 |
+| 發動機服務 | 每個實體 1 個 |
 | 資料管理服務 | 2 |
 | 內部負載平衡器 | 2 |
 | Azure 保留位址 | 5 |
 | **總** | **#engine_instances = 9** |
 
 > [!IMPORTANT]
-> 子網大小必須提前計畫，因為部署 Azure 資料資源管理器後無法更改子網大小。 因此，相應地保留所需的子網大小。
+> 子網大小必須提前計劃,因為部署 Azure 數據資源管理器後無法更改子網大小。 因此,相應地保留所需的子網大小。
 
-## <a name="service-endpoints-for-connecting-to-azure-data-explorer"></a>用於連接到 Azure 資料資源管理器的服務終結點
+## <a name="service-endpoints-for-connecting-to-azure-data-explorer"></a>連接到 Azure 資料資源管理員的服務終結點
 
 [Azure 服務終結點](/azure/virtual-network/virtual-network-service-endpoints-overview)使您能夠保護 Azure 多租戶資源到虛擬網路。
-將 Azure 資料資源管理器群集部署到子網允許您設置與[事件中心](/azure/event-hubs/event-hubs-about)或[事件網格](/azure/event-grid/overview)的資料連線，同時限制 Azure 資料資源管理器子網的基礎資源。
+將 Azure 資料資源管理器群集部署到子網允許您設置與[事件中心](/azure/event-hubs/event-hubs-about)或[事件網格](/azure/event-grid/overview)的數據連接,同時限制 Azure 資料資源管理器子網的基礎資源。
 
 > [!NOTE]
-> 將事件Grid設置與[存儲](/azure/storage/common/storage-introduction)和 [事件中心] 一起使用時，訂閱中使用的存儲帳戶可以與 Azure 資料資源管理器子網的服務終結點一起鎖定，同時允許在[防火牆配置](/azure/storage/common/storage-network-security)中使用受信任的 Azure 平臺服務，但事件中心無法啟用服務終結點，因為它不支援受信任的 Azure[平臺服務](/azure/event-hubs/event-hubs-service-endpoints)。
+> 將事件Grid設定與[儲存](/azure/storage/common/storage-introduction)和 [事件中心] 一起使用時,訂閱中使用的儲存帳戶可以與 Azure 資料資源管理器子網的服務終結點一起鎖定,同時允許在[防火牆配置](/azure/storage/common/storage-network-security)中使用受信任的 Azure 平台服務,但事件中心無法啟用終結點,因為它不支援受信任的 Azure[平台服務](/azure/event-hubs/event-hubs-service-endpoints)。
 
-## <a name="dependencies-for-vnet-deployment"></a>VNet 部署的依賴項
+## <a name="dependencies-for-vnet-deployment"></a>VNet 部署的相依項
 
-### <a name="network-security-groups-configuration"></a>網路安全性群組配置
+### <a name="network-security-groups-configuration"></a>網路安全組設定
 
-[網路安全性群組 （NSG）](/azure/virtual-network/security-overview)提供控制 VNet 內網路訪問的能力。 可以使用兩個終結點訪問 Azure 資料資源管理器：HTT（443）和 TDS （1433）。 必須配置以下 NSG 規則，以允許訪問這些終結點，以便管理、監視和正確操作群集。
+[網路安全組 (NSG)](/azure/virtual-network/security-overview)提供控制 VNet 內網路訪問的能力。 可以使用兩個終結點訪問 Azure 數據資源管理員:HTT(443)和 TDS (1433)。 必須配置以下 NSG 規則,以允許訪問這些終結點,以便管理、監視和正確操作群集。
 
-#### <a name="inbound-nsg-configuration"></a>入站 NSG 配置
+#### <a name="inbound-nsg-configuration"></a>置站 NSG 設定
 
-| **使用**   | **寄件者**   | **自**   | **協定**   |
+| **使用**   | **從**   | **自**   | **通訊協定**   |
 | --- | --- | --- | --- |
-| 管理性  |[ADX 管理位址](#azure-data-explorer-management-ip-addresses)/Azure 資料資源管理器管理（服務標籤） | ADX 子網：443  | TCP  |
-| 健康狀態監視  | [ADX 運行狀況監控位址](#health-monitoring-addresses)  | ADX 子網：443  | TCP  |
-| ADX 內部通信  | ADX 子網：所有埠  | ADX 子網：所有埠  | 全部  |
-| 允許 Azure 負載等化器入站（運行狀況探測）  | AzureLoadBalancer  | ADX 子網：80，443  | TCP  |
+| 管理性  |[ADX 管理位址](#azure-data-explorer-management-ip-addresses)/Azure 資料資源管理員管理(服務標籤) | ADX 子網:443  | TCP  |
+| 健康狀況監視  | [ADX 執行狀況監控位址](#health-monitoring-addresses)  | ADX 子網:443  | TCP  |
+| ADX 內部通訊  | ADX 子網:所有連接埠  | ADX 子網:所有連接埠  | 全部  |
+| 允許 Azure 負載均衡器入站(執行狀況探測)  | AzureLoadBalancer  | ADX 子網:80,443  | TCP  |
 
-#### <a name="outbound-nsg-configuration"></a>出站 NSG 配置
+#### <a name="outbound-nsg-configuration"></a>出站 NSG 設定
 
-| **使用**   | **寄件者**   | **自**   | **協定**   |
+| **使用**   | **從**   | **自**   | **通訊協定**   |
 | --- | --- | --- | --- |
-| 與 Azure 儲存體的相依性  | ADX 子網  | 存儲：443  | TCP  |
-| 對 Azure 資料湖的依賴  | ADX 子網  | AzureDataLake：443  | TCP  |
-| 事件中心引入和服務監視  | ADX 子網  | 活動中心：443，5671  | TCP  |
-| 發佈指標  | ADX 子網  | Azure 監視器：443 | TCP  |
-| Azure 監視器配置下載  | ADX 子網  | [Azure 監視器配置終結點位址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
-| 活動目錄（如果適用） | ADX 子網 | Azure 活動目錄：443 | TCP |
-| 憑證授權單位 | ADX 子網 | 互聯網：80 | TCP |
-| 內部通訊  | ADX 子網  | ADX 子網：所有埠  | 全部  |
-| 用於`sql\_request`和`http\_request`外掛程式的埠  | ADX 子網  | 互聯網：自訂  | TCP  |
+| 與 Azure 儲存體的相依性  | ADX 子網  | 存儲:443  | TCP  |
+| 對 Azure 資料湖的依賴  | ADX 子網  | AzureDataLake:443  | TCP  |
+| 事件中心引入和服務監視  | ADX 子網  | 活動中心:443,5671  | TCP  |
+| 發佈指標  | ADX 子網  | Azure 監視器:443 | TCP  |
+| Azure 監視器設定下載  | ADX 子網  | [Azure 監視器設定終結點位址](#azure-monitor-configuration-endpoint-addresses):443 | TCP  |
+| 動作目錄(如果適用) | ADX 子網 | Azure 活動目錄:443 | TCP |
+| 憑證授權單位 | ADX 子網 | 互聯網:80 | TCP |
+| 內部通訊  | ADX 子網  | ADX 子網:所有連接埠  | 全部  |
+| 與`sql\_request``http\_request`外掛程式的連接埠  | ADX 子網  | 互聯網:自訂  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>相關 IP 位址
 
-#### <a name="azure-data-explorer-management-ip-addresses"></a>Azure 資料資源管理器管理 IP 位址
+#### <a name="azure-data-explorer-management-ip-addresses"></a>Azure 資料資源管理員管理 IP 位址
 
 | 區域 | 位址 |
 | --- | --- |
@@ -134,7 +134,7 @@ IP 位址總數：
 | 美國西部 | 13.64.38.225 |
 | 美國西部 2 | 40.90.219.23 |
 
-#### <a name="health-monitoring-addresses"></a>運行狀況監測位址
+#### <a name="health-monitoring-addresses"></a>執行狀況監測位址
 
 | 區域 | 位址 |
 | --- | --- |
@@ -171,9 +171,9 @@ IP 位址總數：
 | 西歐 | 23.97.212.5 |
 | 印度西部 | 23.99.5.162 |
 | 美國西部 | 23.99.5.162 |
-| 美國西部 2 | 23.99.5.162 |    
+| 美國西部 2 | 23.99.5.162, 104.210.32.14 |    
 
-#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure 監視器配置終結點位址
+#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure 監視器設定終結點位址
 
 | 區域 | 位址 |
 | --- | --- |
@@ -212,13 +212,13 @@ IP 位址總數：
 | 美國西部 | 40.78.70.148 |
 | 美國西部 2 | 52.151.20.103 |
 
-## <a name="expressroute-setup"></a>快速路由設置
+## <a name="expressroute-setup"></a>快速路由設定
 
-使用 ExpressRoute 將本地網路連接到 Azure 虛擬網路。 常見設置是通過邊界閘道協定 （BGP） 會話通告預設路由 （0.0.0.0/0）。 這迫使從虛擬網路流出的流量轉發到客戶的前提網路，這可能會丟棄流量，從而導致出站流中斷。 為了克服此預設值，可以配置[使用者定義路由 （UDR）](/azure/virtual-network/virtual-networks-udr-overview#user-defined) （0.0.0.0/0），下一個躍點將是*Internet*。 由於 UDR 優先于 BGP，因此流量將發送到 Internet。
+使用 ExpressRoute 將本地網路連接到 Azure 虛擬網路。 常見設置是通過邊界網關協定 (BGP) 會話通告預設路由 (0.0.0.0/0)。 這迫使從虛擬網路流出的流量轉發到客戶的前提網路,這可能會丟棄流量,從而導致出站流中斷。 為了克服此預設值,可以設定[使用者定義路由 (UDR)](/azure/virtual-network/virtual-networks-udr-overview#user-defined) (0.0.0.0/0),下一個躍點將是*Internet*。 由於UDR優先於BGP,因此流量將發送到Internet。
 
 ## <a name="securing-outbound-traffic-with-firewall"></a>使用防火牆保護出站流量
 
-如果要使用[Azure 防火牆](/azure/firewall/overview)或任何虛擬裝置保護出站流量以限制功能變數名稱，則必須在防火牆中允許以下完全限定功能變數名稱 （FQDN）。
+如果要使用[Azure 防火牆](/azure/firewall/overview)或任何虛擬設備保護出站流量以限制網域名稱,則必須在防火牆中允許以下完全限定功能變數名稱 (FQDN)。
 
 ```
 prod.warmpath.msftcloudes.com:443
@@ -246,17 +246,17 @@ adl.windows.com:80
 crl3.digicert.com:80
 ```
 
-您還需要使用下一躍點*Internet*使用[管理位址](#azure-data-explorer-management-ip-addresses)和[運行狀況監視位址](#health-monitoring-addresses)在子網上定義[路由表](/azure/virtual-network/virtual-networks-udr-overview)，以防止出現非對稱路由問題。
+您還需要使用下一躍點*Internet*使用[管理位址](#azure-data-explorer-management-ip-addresses)和[運行狀況監視位址](#health-monitoring-addresses)在子網上定義[路由表](/azure/virtual-network/virtual-networks-udr-overview),以防止出現非對稱路由問題。
 
-例如，對於**美國西部**區域，必須定義以下 UDR：
+例如,對於**美國西部**區域,必須定義以下 UDR:
 
 | 名稱 | 位址首碼 | 下一跳 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |
 
-## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>使用 Azure 資源管理器範本將 Azure 資料資源管理器群集部署到 VNet
+## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>使用 Azure 資源管理員樣本將 Azure 資料資源管理員叢集部署到 VNet
 
-要將 Azure 資料資源管理器群集部署到虛擬網路，請使用["將 Azure 資料資源管理器"群集部署到 VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure 資源管理器範本中。
+要將 Azure 資料資源管理器群集部署到虛擬網路,請使用[「將 Azure 資料資源管理器」叢集部署到 VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure 資源管理器樣本中。
 
-此範本創建群集、虛擬網路、子網、網路安全性群組和公共 IP 位址。
+此範本創建群集、虛擬網路、子網、網路安全組和公共 IP 位址。

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed8e5eaa0ff9b58f80473b052aacfb9f01d45055
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73690712"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529212"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>使用 C 和 C++ 連接到 SQL Database
 
@@ -28,10 +28,10 @@ ms.locfileid: "73690712"
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 [免費 Azure 試用](https://azure.microsoft.com/pricing/free-trial/)。
 * [視覺工作室](https://www.visualstudio.com/downloads/)。 您必須安裝 C++ 語言元件以建置並執行此範例。
-* [Visual Studio Linux 開發](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e)。 如果您要在 Linux 上進行開發，必須也安裝 Visual Studio Linux 擴充功能。
+* [Visual Studio Linux 開發](https://docs.microsoft.com/cpp/linux/?view=vs-2019)。 如果您要在 Linux 上進行開發，必須也安裝 Visual Studio Linux 擴充功能。
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>虛擬機器上的 Azure SQL Database 和 SQL Server
-Azure SQL 建置在 Microsoft SQL Server 上，旨在提供高可用性、高效能以及可調整的服務。 透過內部部署上所執行的專屬資料庫來使用 SQL Azure 有許多好處。 使用 SQL Azure，您無需安裝、設定、維護或管理您的資料庫，只需要資料庫的內容和結構。 我們所擔心像容錯和冗餘等資料庫的一般項目皆已內建。
+Azure SQL 建置在 Microsoft SQL Server 上，旨在提供高可用性、高效能以及可調整的服務。 透過內部部署上所執行的專屬資料庫來使用 SQL Azure 有許多好處。 使用 SQL Azure,您不必安裝、設置、維護或管理資料庫,而只需要資料庫的內容和結構。 我們所擔心像容錯和冗餘等資料庫的一般項目皆已內建。
 
 Azure 目前有兩個裝載 SQL Server 工作負載的選項︰Azure SQL 資料庫 (資料庫即服務) 和虛擬機器 (VM) 上的 SQL 伺服器。 我們不會詳細說明這兩個之間的差異，除非 Azure SQL 資料庫是您新雲端應用程式，可充分節省成本的最佳選擇，且雲端服務可提供的效能最佳化。 如果您考慮將您的內部應用程式移轉或擴充至雲端，Azure 虛擬機器上的 SQL Server 可能較合適您。 若要將本文簡化，讓我們建立 Azure SQL 資料庫。
 
@@ -77,7 +77,7 @@ Azure 目前有兩個裝載 SQL Server 工作負載的選項︰Azure SQL 資料�
 恭喜！ 您現在已在 Windows 上使用 C++ 和 ODBC 成功連接至 Azure SQL。 您可以繼續閱讀，針對 Linux 平台上執行相同的作業。
 
 ## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>步驟 5：從 Linux C/C++ 應用程式連接
-如果您還沒聽過新聞，那麼 Visual Studio 現在也可讓您開發 C++ Linux 應用程式。 您可以在 [Linux 開發的 Visual C++](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) 部落格中閱讀這個新的案例。 若要針對 Linux 建置，您需要正在執行您 Linux 散發版本的遠端電腦。 如果您沒有帳戶，可以使用 [Linux Azure 虛擬機器](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速設定一個。
+如果你還沒有聽到這個消息,Visual Studio現在還允許您開發C++Linux應用程式。 您可以在 [Linux 開發的 Visual C++](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) 部落格中閱讀這個新的案例。 若要針對 Linux 建置，您需要正在執行您 Linux 散發版本的遠端電腦。 如果沒有可用虛擬機器,則可以使用[Linux Azure 虛擬機器](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速設定一個 。
 
 針對本教學課程，讓我們假設您已設定 Ubuntu 16.04 Linux 散發套件。 以下步驟應該也適用於 Ubuntu 15.10、Red Hat 6 和 Red Hat 7。
 
@@ -128,7 +128,7 @@ Azure 目前有兩個裝載 SQL Server 工作負載的選項︰Azure SQL 資料�
 * [ 範例](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29)，下載 Linux C++ ODBC 範例以連接到 Azure SQL
 
 ## <a name="next-steps"></a>後續步驟
-* 查看[SQL 資料庫開發概述](sql-database-develop-overview.md)
+* 檢視[SQL 資料庫開發概述](sql-database-develop-overview.md)
 * 更多 [ODBC API 參考](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)的相關資訊
 
 ## <a name="additional-resources"></a>其他資源

@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437950"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520686"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 應用程式服務和 Azure 函數中的身份驗證和授權
 
 > [!NOTE]
 > 此時,Azure 應用服務和 Azure 函數不支援[Azure 活動目錄 v2.0(](../active-directory/develop/v2-overview.md)包括[MSAL)。](../active-directory/develop/msal-overview.md) 請回來查看更新。
+>
+> [!NOTE]
+> 此時,ASP.NET核心當前不支援使用身份驗證/授權功能填充當前使用者。
 >
 
 Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用程式、RESTful API 和行動裝置後端以及 [Azure Functions](../azure-functions/functions-overview.md) 中幾乎不需要寫入或完全無需寫入程式碼，即可登入使用者及存取資料。 本文說明 App Service 如何協助您簡化應用程式的驗證和授權。
@@ -132,11 +137,17 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 > [!CAUTION]
 > 以這種方式限制訪問適用於對應用的所有調用,對於希望擁有公開主頁的應用,這可能不可取,如許多單頁應用程式。
 
+> [!NOTE]
+> 身份驗證/授權以前稱為「簡單身份驗證」。
+>
+
 ## <a name="more-resources"></a>其他資源
 
 [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)  
 [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  
-[自訂 App Service 中的驗證與授權](app-service-authentication-how-to.md)
+[在應用服務](app-service-authentication-how-to.md)
+[.NET 中自訂 Azure 應用服務 EasyAuth (第三方)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+的核心整合,[取得使用 .NET Core(第三方)使用的 Azure 應用服務身份驗證](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 提供者專屬的使用說明指南：
 

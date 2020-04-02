@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366235"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521021"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -44,7 +44,7 @@ Cloud Shell 會安全地自動驗證 Azure CLI 和 Azure PowerShell 的帳戶存
 
 ### <a name="azure-drive-azure"></a>Azure 磁碟機 (Azure:)
 
-Cloud Shell 中的 PowerShell 可讓您在 Azure 磁碟機 (`Azure:`) 中開始。
+雲殼中的 PowerShell 提供`Azure:`Azure 驅動器 ()。 您可以使用 切換到 Azure`cd Azure:`驅動程式`cd  ~`,然後傳回家目錄。
 Azure 磁碟機可讓您輕鬆探索和導覽與檔案系統導覽類似的 Azure 資源 (例如計算、網路、儲存體等等)。
 無論您使用哪個磁碟機，都可以繼續使用熟悉的 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure) 來管理這些資源。
 對 Azure 資源進行的任何變更 (在 Azure 入口網站中直接進行，或透過 Azure PowerShell Cmdlet) 都會反映在 Azure 磁碟機中。  您可以執行 `dir -Force` 以重新整理您的資源。
@@ -53,13 +53,13 @@ Azure 磁碟機可讓您輕鬆探索和導覽與檔案系統導覽類似的 Azur
 
 ### <a name="manage-exchange-online"></a>線上管理交換
 
-雲殼中的 PowerShell 包含 Exchange Online 模組的私有版本。  運行`Connect-EXOPSSession`以獲取 Exchange Cmdlet。
+雲殼中的 PowerShell 包含 Exchange Online 模組的私有版本。  運行`Connect-EXOPSSession`以獲取 Exchange cmdlet。
 
 ![](media/features-powershell/exchangeonline.png)
 
  執行 
 > [!NOTE]
-> 模組名稱應以`tmp_`開頭，如果已安裝具有相同首碼的模組，則其 Cmdlet 也將浮出水面。 
+> 模組名稱應以`tmp_`開頭,如果已安裝具有相同首碼的模組,則其cmdlet也將浮出水面。 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
@@ -77,12 +77,12 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 |原始檔控制         |git                    |
 |建置工具            |make<br> maven<br> npm<br> pip         |
 |容器             |[Docker 機器](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [掌舵](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|資料庫              |MySQL 用戶端<br> PostgreSql 用戶端<br> [sqlcmd 實用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|其他                  |iPython 用戶端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) \(英文\)<br> [地形](https://www.terraform.io/docs/providers/azurerm/)<br> [易失](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [木偶螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [雜湊公司包裝機](https://www.packer.io/)|
+|資料庫              |MySQL 用戶端<br> PostgreSql 用戶端<br> [sqlcmd 公用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|其他                  |iPython 用戶端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) \(英文\)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [木偶螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [哈希公司包裝機](https://www.packer.io/)|
 
 ## <a name="language-support"></a>語言支援
 
-|語言   |版本   |
+|Language   |版本   |
 |---|---|
 |.NET Core  |2.2.402       |
 |Go         |1.9        |

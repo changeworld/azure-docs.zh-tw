@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: dbcc204f71a9bfe4f48f51ab6af36014e130cb7f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411475"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548955"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>以 SMB 為 Azure 檔案分享啟用活動目錄身分驗證
 
@@ -63,11 +63,7 @@ ms.locfileid: "80411475"
 
 ## <a name="regional-availability"></a>區域可用性
 
-Azure 檔案 AD 身份驗證(預覽)[在大多數公共區域](https://azure.microsoft.com/global-infrastructure/regions/)都可用。
-
-Azure 檔案 AD 認證不:
-- 美國西部
-
+Azure 檔案 AD 身份驗證(預覽)在公共[雲中的所有區域](https://azure.microsoft.com/global-infrastructure/regions/)都可用。
 
 ## <a name="workflow-overview"></a>工作流程概觀
 

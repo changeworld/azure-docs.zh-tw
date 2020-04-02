@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器常見問題 |微軟文檔
+title: Azure 監視器常見問題 |微軟文件
 description: 回答有關 Azure 監視器的常見問題的解答。
 services: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298254"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528509"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題
 
@@ -21,121 +21,121 @@ ms.locfileid: "80298254"
 ## <a name="general"></a>一般
 
 ### <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
-[Azure 監視器](overview.md)是 Azure 中的一項服務，它為 Azure、其他雲環境或本地中的應用程式和服務提供性能和可用性監視。 Azure 監視器將資料從多個源收集到一個公共資料平臺中，可以分析其趨勢和異常。 Azure 監視器中的豐富功能可説明您快速識別和回應可能影響應用程式的關鍵情況。
+[Azure 監視器](overview.md)是 Azure 中的一項服務,它為 Azure、其他雲端環境或本地中的應用程式和服務提供性能和可用性監視。 Azure 監視器將數據從多個源收集到一個公共數據平臺中,可以分析其趨勢和異常。 Azure 監視器中的豐富功能可説明您快速識別和回應可能影響應用程式的關鍵情況。
 
-### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Azure 監視器、日誌分析和應用程式見解之間的區別是什麼？
-2018 年 9 月，Microsoft 將 Azure 監視器、日誌分析和應用程式見解合併到單個服務中，以便對應用程式及其所依賴的元件提供強大的端到端監視。 日誌分析和應用程式見解中的功能沒有改變，儘管某些功能已重命名為 Azure 監視器，以便更好地反映其新範圍。 日誌分析的日誌資料引擎和查詢語言現在稱為 Azure 監視器日誌。 請參閱[Azure 監視器術語更新](terminology.md)。
+### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Azure 監視器、日誌分析和應用程式見解之間的區別是什麼?
+2018 年 9 月,Microsoft 將 Azure 監視器、日誌分析和應用程式見解合併到單個服務中,以便對應用程式及其所依賴的元件提供強大的端到端監視。 日誌分析和應用程式見解中的功能沒有改變,儘管某些功能已重新命名為 Azure 監視器,以便更好地反映其新範圍。 日誌分析的日誌數據引擎和查詢語言現在稱為 Azure 監視器日誌。 請參考[Azure 監視器的術語更新](terminology.md)。
 
-### <a name="what-does-azure-monitor-cost"></a>Azure 監視器的成本是多少？
-自動啟用的 Azure 監視器功能（如收集指標和活動日誌）不收取任何費用。 與其他功能（如日誌查詢和警報）相關聯的成本。 有關詳細的定價資訊，請參閱[Azure 監視器定價頁](https://azure.microsoft.com/pricing/details/monitor/)。
+### <a name="what-does-azure-monitor-cost"></a>Azure 監視器的成本是多少?
+自動啟用的 Azure 監視器功能(如收集指標和活動日誌)不收取任何費用。 與其他功能(如日誌查詢和警報)相關聯的成本。 有關詳細的定價資訊,請參閱[Azure 監視器定價頁](https://azure.microsoft.com/pricing/details/monitor/)。
 
-### <a name="how-do-i-enable-azure-monitor"></a>如何啟用 Azure 監視器？
-創建新 Azure 訂閱的瞬間啟用 Azure 監視器，並自動收集[活動日誌](platform/activity-logs-overview.md)和平臺[指標](platform/data-platform-metrics.md)。 創建[診斷設置](platform/diagnostic-settings.md)以收集有關 Azure 資源操作的更多詳細資訊，並添加[監視解決方案](insights/solutions.md)和[見解](insights/insights-overview.md)，以便對特定服務收集的資料提供其他分析。 
+### <a name="how-do-i-enable-azure-monitor"></a>如何啟用 Azure 監視器?
+建立新的 Azure 訂閱的瞬間開啟 Azure 監視器,並自動收集[活動紀錄](platform/activity-logs-overview.md)與平台[指標](platform/data-platform-metrics.md)。 創建[診斷設定](platform/diagnostic-settings.md)以收集有關 Azure 資源操作的更多詳細資訊,並添加[監視解決方案](insights/solutions.md)和[見解](insights/insights-overview.md),以便對特定服務收集的數據提供其他分析。 
 
-### <a name="how-do-i-access-azure-monitor"></a>如何訪問 Azure 監視器？
-從 Azure 門戶中的 **"監視器"** 功能表訪問所有 Azure 監視器功能和資料。 不同 Azure 服務的功能表的 **"監視**"部分提供對相同工具的訪問，並篩選到特定資源的資料。 Azure 監視器資料對於使用 CLI、PowerShell 和 REST API 的各種方案也可訪問。
+### <a name="how-do-i-access-azure-monitor"></a>如何訪問 Azure 監視器?
+從 Azure 門戶中的 **「監視器」** 功能表存取所有 Azure 監視器功能和資料。 不同 Azure 服務的功能表的 **「監視**」部分提供對相同工具的訪問,並篩選到特定資源的資料。 Azure 監視器數據對於使用 CLI、PowerShell 和 REST API 的各種方案也可訪問。
 
-### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有本地版本的 Azure 監視器？
-否。 Azure 監視器是一種可擴展的雲服務，用於處理和存儲大量資料，儘管 Azure 監視器可以監視本地和其他雲中的資源。
+### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有本地版本的 Azure 監視器?
+否。 Azure 監視器是一種可擴展的雲端服務,用於處理和存儲大量資料,儘管 Azure 監視器可以監視本地和其他雲端中的資源。
 
-### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure 監視器是否可以監視本地資源？
-是的，除了從 Azure 資源收集監視資料外，Azure 監視器還可以從其他雲和本地中的虛擬機器和應用程式收集資料。 請參閱[Azure 監視器的監視資料來源](platform/data-sources.md)。
+### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure 監視器是否可以監視本地資源?
+是的,除了從 Azure 資源收集監視數據外,Azure 監視器還可以從其他雲和本地中的虛擬機和應用程式收集數據。 請參考[Azure 監視器的監視資料來源](platform/data-sources.md)。
 
-### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Azure 監視器是否與系統中心操作管理器集成？
-您可以將現有的系統中心操作管理器管理組連接到 Azure 監視器，以便從代理收集資料到 Azure 監視器日誌中。 這允許您使用日誌查詢和解決方案來分析從代理收集的資料。 還可以配置現有的系統中心操作管理器代理，將資料直接發送到 Azure 監視器。 請參閱[將操作管理器連接到 Azure 監視器](platform/om-agents.md)。
+### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Azure 監視器是否與系統中心操作管理器集成?
+您可以將現有的系統中心操作管理員管理組連接到 Azure 監視器,以便從代理收集數據到 Azure 監視器日誌中。 這允許您使用日誌查詢和解決方案來分析從代理收集的數據。 還可以配置現有的系統中心操作管理器代理,將數據直接發送到 Azure 監視器。 請參考[操作管理員連接到 Azure 監視器](platform/om-agents.md)。
 
-### <a name="what-ip-addresses-does-azure-monitor-use"></a>Azure 監視器使用哪些 IP 位址？
-有關代理和其他外部資源訪問 Azure 監視器所需的 IP 位址和埠的清單，請參閱[應用程式見解和日誌分析使用的 IP 位址](app/ip-addresses.md)。 
+### <a name="what-ip-addresses-does-azure-monitor-use"></a>Azure 監視器使用哪些 IP 位址?
+有關代理和其他外部資源存取 Azure 監視器所需的 IP 位址和連接埠的清單,請參閱[應用程式見解和紀錄分析使用的 IP 位址](app/ip-addresses.md)。 
 
 ## <a name="monitoring-data"></a>監視資料
 
-### <a name="where-does-azure-monitor-get-its-data"></a>Azure 監視器從何處獲取其資料？
-Azure 監視器從各種源收集資料，包括來自 Azure 平臺和資源的日誌和指標、自訂應用程式和在虛擬機器上運行的代理。 其他服務（如 Azure 安全中心和網路觀察程式）將資料收集到日誌分析工作區中，以便可以使用 Azure 監視器資料對其進行分析。 您還可以使用 REST API 將自訂資料發送到 Azure 監視器，用於日誌或指標。 請參閱[Azure 監視器的監視資料來源](platform/data-sources.md)。
+### <a name="where-does-azure-monitor-get-its-data"></a>Azure 監視器從何處獲取其數據?
+Azure 監視器從各種源收集數據,包括來自 Azure 平臺和資源的日誌和指標、自定義應用程式和在虛擬機器上運行的代理。 其他服務(如 Azure 安全中心和網路觀察程式)將數據收集到日誌分析工作區中,以便可以使用 Azure 監視器數據對其進行分析。 您還可以使用 REST API 將自訂資料發送到 Azure 監視器,用於日誌或指標。 請參考[Azure 監視器的監視資料來源](platform/data-sources.md)。
 
-### <a name="what-data-is-collected-by-azure-monitor"></a>Azure 監視器收集了哪些資料？ 
-Azure 監視器將資料從各種源收集到[日誌](platform/data-platform-logs.md)或[指標中](platform/data-platform-metrics.md)。 每種類型的資料都有其各自的相對優勢，並且每種資料都支援 Azure 監視器中的特定功能集。 每個 Azure 訂閱都有一個指標資料庫，同時您可以創建多個日誌分析工作區來收集日誌，具體取決於您的要求。 請參閱[Azure 監視器資料平臺](platform/data-platform.md)。
+### <a name="what-data-is-collected-by-azure-monitor"></a>Azure 監視器收集了哪些數據? 
+Azure 監視器將資料從各種來源收集到[紀錄](platform/data-platform-logs.md)或[指標中](platform/data-platform-metrics.md)。 每種類型的數據都有其各自的相對優勢,並且每種數據都支援 Azure 監視器中的特定功能集。 每個 Azure 訂閱都有一個指標資料庫,同時您可以創建多個日誌分析工作區來收集日誌,具體取決於您的要求。 請參考[Azure 監視器資料平臺](platform/data-platform.md)。
 
-### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>是否可以在 Azure 監視器中收集最大數量的資料？
-您可以收集的指標資料量沒有限制，但此資料存儲最多為 93 天。 請參閱[保留指標](platform/data-platform-metrics.md#retention-of-metrics)。 您可以收集的日誌資料量沒有限制，但可能會受您為日誌分析工作區選擇的定價層的影響。 請參閱[定價詳細資訊](https://azure.microsoft.com/pricing/details/monitor/)。
+### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>是否可以在 Azure 監視器中收集最大數量的數據?
+您可以收集的指標數據量沒有限制,但此數據存儲最多為 93 天。 請參考[保留指標](platform/data-platform-metrics.md#retention-of-metrics)。 您可以收集的日誌數據量沒有限制,但可能會受您為日誌分析工作區選擇的定價層的影響。 請參考[出出 的清單詳情](https://azure.microsoft.com/pricing/details/monitor/)。
 
-### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>如何訪問 Azure 監視器收集的資料？
-見解和解決方案為處理存儲在 Azure 監視器中的資料提供了自訂體驗。 您可以使用用 Kusto 查詢語言 （KQL） 編寫的日誌查詢直接處理日誌資料。 在 Azure 門戶中，可以使用日誌分析編寫和執行查詢並互動式分析資料。 使用指標資源管理器分析 Azure 門戶中的指標。 請參閱[在 Azure 監視器中分析日誌資料](log-query/log-query-overview.md)，然後[開始使用 Azure 指標資源管理器](platform/metrics-getting-started.md)。
+### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>如何訪問 Azure 監視器收集的數據?
+見解和解決方案為處理存儲在 Azure 監視器中的數據提供了自定義體驗。 您可以使用用 Kusto 查詢語言 (KQL) 撰寫的紀錄查詢直接處理日誌資料。 在 Azure 門戶中,可以使用日誌分析編寫和運行查詢並互動式分析數據。 使用指標資源管理器分析 Azure 門戶中的指標。 請參考[Azure 監視器中分析紀錄資料](log-query/log-query-overview.md),然後[開始使用 Azure 指標資源管理員](platform/metrics-getting-started.md)。
 
 ## <a name="solutions-and-insights"></a>解決方案和見解
 
-### <a name="what-is-an-insight-in-azure-monitor"></a>Azure 監視器中的見解是什麼？
-見解為特定的 Azure 服務提供自訂的監視體驗。 它們使用與 Azure 監視器中的其他功能相同的指標和日誌，但可能會收集其他資料並在 Azure 門戶中提供獨特的體驗。 請參閱[Azure 監視器 中的見解](insights/insights-overview.md)。
+### <a name="what-is-an-insight-in-azure-monitor"></a>Azure 監視器中的見解是什麼?
+見解為特定的 Azure 服務提供自定義的監視體驗。 它們使用與 Azure 監視器中的其他功能相同的指標和日誌,但可能會收集其他數據並在 Azure 門戶中提供獨特的體驗。 請參考[Azure 監視器 中的見解](insights/insights-overview.md)。
 
-要查看 Azure 門戶中的見解，請參閱 **"監視器"** 功能表的 **"見解"** 部分或服務功能表的 **"監視"** 部分。
+要查看 Azure 門戶中的見解,請參閱 **「監視器」** 選單的 **「見解」** 部分或服務選單的 **「監視」** 部分。
 
-### <a name="what-is-a-solution-in-azure-monitor"></a>Azure 監視器中的解決方案是什麼？
-監視解決方案是打包的邏輯集，用於根據 Azure 監視器功能監視特定應用程式或服務。 它們在 Azure 監視器中收集日誌資料，並使用 Azure 門戶中的常見體驗為其分析提供日誌查詢和視圖。 請參閱[Azure 監視器 中的監視解決方案](insights/solutions.md)。
+### <a name="what-is-a-solution-in-azure-monitor"></a>Azure 監視器中的解決方案是什麼?
+監視解決方案是打包的邏輯集,用於根據 Azure 監視器功能監視特定應用程式或服務。 它們在 Azure 監視器中收集日誌數據,並使用 Azure 門戶中的常見體驗為其分析提供日誌查詢和檢視。 請參考[Azure 監視器 中的監視解決方案](insights/solutions.md)。
 
-要查看 Azure 門戶中的解決方案，請在 **"監視器"** 功能表的 **"見解"** 部分中按一下 **"更多**"。 按一下"**添加**"以向工作區添加其他解決方案。
+要查看 Azure 門戶中的解決方案,請在 **「監視器」** 功能表的 **「見解」** 部分中按一下 **「更多**」。。 按一下「**添加**」以向工作區添加其他解決方案。
 
 ## <a name="logs"></a>記錄
 
-### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure 監視器日誌和 Azure 資料資源管理器之間的區別是什麼？
-Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 監視器日誌構建在 Azure 資料資源管理器之上，使用相同的 Kusto 查詢語言 （KQL），但存在一些細微差異。 請參閱[Azure 監視器日誌查詢語言差異](log-query/data-explorer-difference.md)。
+### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure 監視器日誌和 Azure 資料資源管理器之間的區別是什麼?
+Azure 資料總管是一項快速又可高度調整的資料探索服務，可用於處理記錄和遙測資料。 Azure 監視器日誌建構在 Azure 資料資源管理員之上,使用相同的 Kusto 查詢語言 (KQL),但存在一些細微差異。 請參考[Azure 監視器紀錄查詢語言差異](log-query/data-explorer-difference.md)。
 
-### <a name="how-do-i-retrieve-log-data"></a>如何檢索日誌資料？
-使用使用 Kusto 查詢語言 （KQL） 編寫的日誌查詢從日誌分析工作區檢索所有資料。 您可以編寫自己的查詢或使用包含特定應用程式或服務的日誌查詢的解決方案和見解。 請參閱[Azure 監視器 中的日誌查詢概述](log-query/log-query-overview.md)。
+### <a name="how-do-i-retrieve-log-data"></a>如何檢索日誌數據?
+使用使用 Kusto 查詢語言 (KQL) 撰寫的紀錄查詢從日誌分析工作區檢索所有資料。 您可以編寫自己的查詢或使用包含特定應用程式或服務的日誌查詢的解決方案和見解。 請參考[Azure 監視器 中的紀錄查詢概述](log-query/log-query-overview.md)。
 
 ### <a name="what-is-a-log-analytics-workspace"></a>什麼是 Log Analytics 工作區？
-Azure 監視器收集的所有日誌資料都存儲在日誌分析工作區中。 工作區本質上是一個容器，用於從各種源收集日誌資料。 您可能具有用於所有監視資料的單個日誌分析工作區，或者可能具有多個工作區的要求。 請參閱[設計 Azure 監視器日誌部署](platform/design-logs-deployment.md)。
+Azure 監視器收集的所有日誌數據都存儲在日誌分析工作區中。 工作區本質上是一個容器,用於從各種源收集日誌數據。 您可能具有用於所有監視數據的單個日誌分析工作區,或者可能具有多個工作區的要求。 請參考[設計 Azure 監視器紀錄部署](platform/design-logs-deployment.md)。
 
-### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>是否可以將現有的日誌分析工作區移動到另一個 Azure 訂閱？
-可以在資源組或訂閱之間移動工作區，但不能移動到其他區域。 請參閱[將日誌分析工作區移動到不同的訂閱或資源組](platform/move-workspace.md)。
+### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>是否可以將現有的日誌分析工作區移動到另一個 Azure 訂閱?
+可以在資源組或訂閱之間移動工作區,但不能移動到其他區域。 請參考[工作區移到不同的訂閱或資源群組](platform/move-workspace.md)。
 
-### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>為什麼我無法在日誌分析中看到查詢資源管理器和保存按鈕？
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>為什麼我無法在日誌分析中看到查詢資源管理員和保存按鈕?
 
-[當查詢範圍](log-query/scope.md)設置為特定資源時，**查詢資源管理器**、**保存**和**新建警報規則**按鈕不可用。 要創建警報、保存或載入查詢，日誌分析必須限定為工作區。 要在工作區上下文中打開日誌分析，請從**Azure 監視器**功能表中選擇 **"日誌**"。 已選取上次使用的工作區，但您可以選取任何其他工作區。 請參閱[Azure 監視器日誌分析中的日誌查詢範圍和時間範圍](log-query/scope.md)
+[當查詢範圍](log-query/scope.md)設定為特定資源時,**查詢資源管理員**、**保存**和**新建警報規則**按鈕不可用。 要創建警報、保存或載入查詢,日誌分析必須限定為工作區。 要在工作區上下文中打開日誌分析,請從**Azure 監視器**功能表中選擇 **「日誌**」。 已選取上次使用的工作區，但您可以選取任何其他工作區。 請參考[Azure 監視器紀錄分析中的紀錄查詢範圍和時間範圍](log-query/scope.md)
 
-### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>為什麼在從 VM 打開日誌分析時，我會收到錯誤："註冊此訂閱的資源供應商'Microsoft.Insights'以啟用此查詢"？ 
-許多資來源提供者都將自動註冊，但您可能需要手動註冊某些資來源提供者。 註冊範圍一律是訂用帳戶。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>為什麼在從 VM 打開日誌分析時,我會收到錯誤:"註冊此訂閱的資源供應商'Microsoft.Insights'以啟用此查詢"? 
+許多資源提供程式都將自動註冊,但您可能需要手動註冊某些資源提供程式。 註冊範圍一律是訂用帳戶。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>為什麼從 VM 打開日誌分析時沒有訪問錯誤訊息？ 
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>為什麼從 VM 打開日誌分析時沒有訪問錯誤消息? 
 若要檢視 VM 記錄，您必須獲得存放 VM 記錄的工作區讀取權限。 在這些情況下，系統管理員必須授與您 Azure 權限。
 
 ## <a name="alerts"></a>警示
 
-### <a name="what-is-an-alert-in-azure-monitor"></a>Azure 監視器中的警報是什麼？
-當您的監視資料中發現重要條件時，警示會主動通知您。 它們可讓您在系統使用者注意到問題之前，找出並解決問題。 警報有多種類型：
+### <a name="what-is-an-alert-in-azure-monitor"></a>Azure 監視器中的警報是什麼?
+當您的監視資料中發現重要條件時，警示會主動通知您。 它們可讓您在系統使用者注意到問題之前，找出並解決問題。 警示有多種類型:
 
-- 指標 - 指標值超過閾值。
-- 日誌查詢 - 日誌查詢的結果與定義的條件匹配。
+- 指標 – 指標值超過閾值。
+- 紀錄查詢 - 日誌查詢的結果與定義的條件匹配。
 - 活動日誌 - 活動日誌事件與定義的條件匹配。
 - Web 測試 - 可用性測試與定義的條件匹配的結果。
 
 
-請參閱[Microsoft Azure 中的警報概述](platform/alerts-overview.md)。
+請參考[Microsoft Azure 的警示概述](platform/alerts-overview.md)。
 
 
-### <a name="what-is-an-action-group"></a>什麼是行動組？
-操作組是警報可以觸發的通知和操作的集合。 多個警報可以使用單個操作組，允許您利用常見的通知和操作集。 請參閱[在 Azure 門戶中創建和管理操作組](platform/action-groups.md)。
+### <a name="what-is-an-action-group"></a>什麼是行動組?
+操作組是警報可以觸發的通知和操作的集合。 多個警報可以使用單個操作組,允許您利用常見的通知和操作集。 請參考[Azure 門戶建立與管理操作群組](platform/action-groups.md)。
 
 
-### <a name="what-is-an-action-rule"></a>什麼是操作規則？
-操作規則允許您修改一組符合特定條件的警報的行為。 這允許您執行維護時段內禁用警報操作等要求。 還可以將操作組應用於一組警報，而不是將其直接應用於警報規則。 請參閱[操作規則](platform/alerts-action-rules.md)。
+### <a name="what-is-an-action-rule"></a>什麼是操作規則?
+操作規則允許您修改一組符合特定條件的警報的行為。 這允許您執行維護時段內禁用警報操作等要求。 還可以將操作組應用於一組警報,而不是將其直接應用於警報規則。 請參考[操作規則](platform/alerts-action-rules.md)。
 
 ## <a name="agents"></a>代理程式
 
-### <a name="does-azure-monitor-require-an-agent"></a>Azure 監視器是否需要代理？
-只需代理即可從虛擬機器中的作業系統和工作負載收集資料。 虛擬機器可以位於 Azure、另一個雲環境或本地。 請參閱[Azure 監視器代理的概述](platform/agents-overview.md)。
+### <a name="does-azure-monitor-require-an-agent"></a>Azure 監視器是否需要代理?
+只需代理即可從虛擬機器中的作業系統和工作負載收集數據。 虛擬機可以位於 Azure、另一個雲端環境或本地。 請參考[Azure 監視器代理的概述](platform/agents-overview.md)。
 
 
-### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Azure 監視器代理之間的區別是什麼？
-Azure 診斷擴展適用于 Azure 虛擬機器，並將資料收集到 Azure 監視器指標、Azure 存儲和 Azure 事件中心。 日誌分析代理適用于 Azure 中的虛擬機器、另一個雲環境或本地虛擬機器，並將資料收集到 Azure 監視器日誌。 依賴項代理需要日誌分析代理並收集進程詳細資訊和依賴項。 請參閱[Azure 監視器代理的概述](platform/agents-overview.md)。
+### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Azure 監視器代理之間的區別是什麼?
+Azure 診斷擴展適用於 Azure 虛擬機,並將資料收集到 Azure 監視器指標、Azure 儲存和 Azure 事件中心。 日誌分析代理適用於 Azure 中的虛擬機器、另一個雲端環境或本地虛擬機器,並將資料收集到 Azure 監視器日誌。 依賴項代理需要日誌分析代理並收集進程詳細資訊和依賴項。 請參考[Azure 監視器代理的概述](platform/agents-overview.md)。
 
 
-### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>我的代理流量是否使用我的 ExpressRoute 連接？
-到 Azure 監視器的流量使用 Microsoft 對等快速路由電路。 有關不同類型的快速路由流量的說明，請參閱[ExpressRoute 文檔](../expressroute/expressroute-faqs.md#supported-services)。 
+### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>我的代理流量是否使用我的 ExpressRoute 連接?
+到 Azure 監視器的流量使用 Microsoft 對等快速路由電路。 有關不同類型的快速路由流量的說明,請參閱[ExpressRoute 文件](../expressroute/expressroute-faqs.md#supported-services)。 
 
-### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>如何確認日誌分析代理能夠與 Azure 監視器通信？
-從代理電腦上的控制台中，選擇 **"安全&設置**"，**微軟監控代理**。 在**Azure 日誌分析 （OMS）** 選項卡下，綠色核取記號圖示確認代理能夠與 Azure 監視器通信。 黃色警告圖示表示代理出現問題。 一個常見原因是**Microsoft 監視代理**服務已停止。 使用服務控制管理員來重新啟動服務。
+### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>如何確認日誌分析代理能夠與 Azure 監視器通信?
+從代理電腦上的控制面板中,選擇 **「安全&設定**」,**微軟監控代理**。 在**Azure 日誌分析 (OMS)** 選項卡下,綠色複選標記圖示確認代理能夠與 Azure 監視器通信。 黃色警告圖示表示代理出現問題。 一個常見原因是**Microsoft 監視代理**服務已停止。 使用服務控制管理員來重新啟動服務。
 
-### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>如何阻止日誌分析代理與 Azure 監視器通信？
-對於直接連接到日誌分析的代理，打開控制台並選擇 **"安全&設置**"，**即 Microsoft 監視代理**。 在**Azure 日誌分析 （OMS）** 選項卡下，刪除列出的所有工作區。 在"系統中心操作管理器"中，從日誌分析託管電腦清單中刪除電腦。 Operations Manager 會將代理程式的設定更新為不再向 Log Analytics 回報。 
+### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>如何阻止日誌分析代理與 Azure 監視器通信?
+對直接連線到紀錄分析的代理,開啟控制面板並選擇 **「安全&設定**」**, 即 Microsoft 監視代理**。 在**Azure 紀錄分析 (OMS)** 選項卡下,刪除列出的所有工作區。 在「系統中心作業管理器」中,從日誌分析託管計算機清單中刪除電腦。 Operations Manager 會將代理程式的設定更新為不再向 Log Analytics 回報。 
 
 ### <a name="how-much-data-is-sent-per-agent"></a>每個代理程式會傳送多少資料？
 每個代理程式所傳送的資料量取決於：
@@ -144,7 +144,7 @@ Azure 診斷擴展適用于 Azure 虛擬機器，並將資料收集到 Azure 監
 * 記錄和要收集之效能計數器的數目
 * 記錄中的資料量
 
-有關詳細資訊，請參閱[使用 Azure 監視器日誌管理使用方式和成本](platform/manage-cost-storage.md)。
+有關詳細資訊,請參閱[使用 Azure 監視器紀錄管理使用方式和成本](platform/manage-cost-storage.md)。
 
 對於可執行 WireData 代理程式的電腦，請使用下列查詢查看正在傳送的資料量：
 
@@ -155,36 +155,36 @@ WireData
 | summarize sum(TotalBytes) by Computer 
 ```
 
-### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>向 Azure 監視器發送資料時，Microsoft 管理代理 （MMA） 使用了多少網路頻寬？
+### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>向 Azure 監視器傳送資料時,Microsoft 管理代理 (MMA) 使用了多少網路頻寬?
 頻寬是關於傳送的資料量的功能。 透過網路傳送資料時，會壓縮資料。
 
 
-### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>當日志分析代理的資料收集停止時，如何通知我？
+### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>當日志分析代理的數據收集停止時,如何通知我?
 
-使用[建立新記錄警示](platform/alerts-metric.md)中所述的步驟，以在資料收集停止時收到通知。 對警報規則使用以下設置：
+使用[建立新記錄警示](platform/alerts-metric.md)中所述的步驟，以在資料收集停止時收到通知。 對警示規則使用以下設定:
 
-- **定義警示準則**：將日誌分析工作區指定為資源目標。
+- **定義警報條件**:將日誌分析工作區指定為資源目標。
 - **警示準則** 
-   - **信號名稱**：*自訂日誌搜索*
-   - **搜索查詢**：`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **警報邏輯**：**基於***結果數*，**條件***大於*，**閾值** *0*
-   - **評估基於**：**期間 （以分鐘）** *30*，**頻率 （以分鐘）** *10*
+   - **信號名稱**:*自訂紀錄搜尋*
+   - **搜尋查詢**:`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **警示邏輯**:**基於***結果數*,**條件***大於*,**閾值** *0*
+   - **評估 :****期間 (單位)** *30*,**頻率 (以分鐘)** *10*
 - **定義警示詳細資料** 
-   - **名稱**：*資料收集已停止*
-   - **嚴重性**：*警告*
+   - **名稱**:*資料收集已停止*
+   - **嚴重性**:*警告*
 
-指定現有或新的[操作組](platform/action-groups.md)，以便在日誌警報與條件匹配時，如果活動訊號丟失超過 15 分鐘，則會通知您。
+指定現有或新的[操作組](platform/action-groups.md),以便在日誌警報與條件匹配時,如果檢測信號丟失超過 15 分鐘,則會通知您。
 
 
-### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure 監視器代理的防火牆要求是什麼？
-有關防火牆要求的詳細資訊，請參閱[網路防火牆要求](platform/log-analytics-agent.md#network-firewall-requirements)。
+### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure 監視器代理的防火牆要求是什麼?
+有關防火牆要求的詳細資訊,請參閱[網路防火牆要求](platform/log-analytics-agent.md#firewall-requirements)。
 
 
 ## <a name="visualizations"></a>視覺效果
 
-### <a name="why-cant-i-see-view-designer"></a>為什麼我看不到視圖設計器？
+### <a name="why-cant-i-see-view-designer"></a>為什麼我看不到視圖設計器?
 
-視圖設計器僅適用于在日誌分析工作區中分配具有參與者許可權或更高版本的使用者。
+檢視設計器僅適用於在日誌分析工作區中分配具有參與者許可權或更高版本的使用者。
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -194,7 +194,7 @@ WireData
 * [.NET 應用程式](app/asp-net-troubleshoot-no-data.md)
 * [監視已在執行的應用程式](app/monitor-performance-live-website-now.md#troubleshoot)
 * [Azure 診斷](platform/diagnostics-extension-to-application-insights.md)
-* [JAVA Web 應用](app/java-troubleshoot.md)
+* [Java Web 應用](app/java-troubleshoot.md)
 
 我的伺服器沒有傳回資料**
 
@@ -206,7 +206,7 @@ WireData
 
 * [Azure VM 或 Azure 虛擬機器縮放集中的 IIS 伺服器上的 Web 應用](app/azure-vm-vmss-apps.md)
 * [IIS 伺服器 (內部部署或 VM 中) 上的 Web 應用程式](app/asp-net.md)
-* [JAVA Web 應用](app/java-get-started.md)
+* [Java Web 應用](app/java-get-started.md)
 * [Node.js 應用程式](app/nodejs.md)
 * [Azure 上的 Web 應用程式](app/azure-web-apps.md)
 * [Azure 上的雲端服務](app/cloudservices.md)
@@ -247,7 +247,7 @@ WireData
 * 將項目插入至：
   * Web.config
   * packages.config
-* （僅限新專案 - 如果將[應用程式見解添加到現有專案][start]，則必須手動執行此操作。將程式碼片段插入到用戶端和伺服器代碼中，以便使用應用程式見解資源識別碼 初始化它們。 例如，在 MVC 應用中，代碼插入到母版頁視圖/共用/\_佈局.cshtml 中。
+* (僅限新專案 - 如果將[應用程式見解添加到現有專案][start],則必須手動執行此操作。將代碼段插入到用戶端和伺服器代碼中,以便使用應用程式見解資源 ID 初始化它們。 例如,在 MVC 應用中,程式碼插入到母版頁檢視/\_共用/ 佈局.cshtml 中。
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>如何從舊版 SDK 升級？
 請參閱您的應用程式類型所適用之 SDK 的[版本資訊](app/release-notes.md)。
@@ -268,7 +268,7 @@ WireData
 * HTTP 要求
 * [相依項目](app/asp-net-dependencies.md)。 對下列各項的呼叫：SQL Database、對外部服務的 HTTP 呼叫、Azure Cosmos DB、資料表、Blob 儲存體及佇列。 
 * [例外狀況](app/asp-net-exceptions.md)和堆疊追蹤。
-* [效能計數器](app/performance-counters.md)- 如果使用[狀態監視器](app/monitor-performance-live-website-now.md)、[應用服務的 Azure 監視](app/azure-web-apps.md)[、VM 或虛擬機器縮放集的 Azure 監視](app/azure-vm-vmss-apps.md)，或者[應用程式見解收集編寫器](app/java-collectd.md)。
+* [效能計數器](app/performance-counters.md)─如果使用[狀態監視器](app/monitor-performance-live-website-now.md)、[應用程式服務的 Azure 監視](app/azure-web-apps.md)[、VM 或虛擬機器縮放集的 Azure 監視](app/azure-vm-vmss-apps.md),或者[應用程式見解收集編寫器](app/java-collectd.md)。
 * 您以程式碼撰寫的[自訂事件和計量](app/api-custom-events-metrics.md)。
 * [追蹤記錄](app/asp-net-trace-logs.md) - 如果您設定適當的收集器。
 
@@ -284,7 +284,7 @@ WireData
 
 * [Azure 診斷](platform/diagnostics-extension-to-application-insights.md)
 * [匯入到分析](platform/data-collector-api.md)
-* [日誌分析](platform/data-collector-api.md)
+* [紀錄分析](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>我是否可以篩選掉或修改某些遙測？
@@ -296,13 +296,13 @@ WireData
 
 深入了解 [ASP.NET](app/api-filtering-sampling.md) 或 [Java](app/java-filter-telemetry.md)。
 
-### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何計算城市、國家/地區和其他地理位置資料？
+### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何計算城市、國家/地區和其他地理位置數據?
 
 我們會使用 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 來查詢 Web 用戶端的 IP 位址 (IPv4 或 IPv6)。
 
 * 瀏覽器遙測：我們會收集傳送者的 IP 位址。
 * 伺服器遙測：Application Insights 模組會收集用戶端 IP 位址。 如果已設定 `X-Forwarded-For`，則不會收集該位址。
-* 要瞭解有關如何在應用程式見解中收集 IP 位址和地理位置資料的詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
+* 要瞭解有關如何在應用程式見解中收集 IP 位址和地理位置資料的詳細資訊,請參閱[本文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
 
 
 您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
@@ -313,9 +313,9 @@ WireData
 ### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>資料保留在入口網站多久的時間？ 是否安全？
 請參閱[資料保留和隱私權][data]。
 
-### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>當伺服器或設備與 Azure 失去連接時，應用程式洞察的遙測會發生什麼情況？
+### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>當伺服器或設備與 Azure 失去連接時,應用程式洞察的遙測會發生什麼情況?
 
-我們所有的 SDK，包括 Web SDK，都包括"可靠的傳輸"或"強大的傳輸"。 當伺服器或設備與 Azure 失去連接時，遙測資料將存儲在檔案系統（伺服器 SDK）或 HTML5 會話存儲 （Web SDK）[中。](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) SDK 將定期重試發送此遙測資料，直到我們的引入服務認為它"過時"（日誌為 48 小時，指標為 30 分鐘）。 過時的遙測資料將被刪除。 在某些情況下，例如當本機存放區已滿時，不會發生重試。
+我們所有的 SDK,包括 Web SDK,都包括"可靠的傳輸"或"強大的傳輸"。 當伺服器或設備與 Azure 失去連線時,遙測資料將儲存在檔案系統(伺服器 SDK)或 HTML5 工作階段儲存 (Web SDK)[中。](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) SDK 將定期重試發送此遙測數據,直到我們的引入服務認為它"過時"(日誌為 48 小時,指標為 30 分鐘)。 過時的遙測數據將被刪除。 在某些情況下,例如當本地存儲已滿時,不會發生重試。
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>可以在遙測中傳送個人資料嗎？
@@ -324,7 +324,7 @@ WireData
 
 在查閱地理位置屬性之後，用戶端 Web 位址的**所有**八位元資料一律會設定為 0。
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我的檢測金鑰在我的網頁源中可見。 
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我的檢測密鑰在我的網頁源中可見。 
 
 * 這在監視解決方案中是常見的做法。
 * 無法使用它來竊取您的資料。
@@ -333,7 +333,7 @@ WireData
 
 您可以：
 
-* 對用戶端和伺服器資料使用兩個單獨的檢測金鑰（單獨的應用程式見解資源）。 Or
+* 對用戶端和伺服器數據使用兩個單獨的檢測密鑰(單獨的應用程式見解資源)。 Or
 * 撰寫一個在您伺服器中執行的 Proxy，並讓 Web 用戶端透過該 Proxy 傳送資料。
 
 ### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>如何在診斷搜尋中查看 POST 資料？
@@ -401,7 +401,7 @@ WireData
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>我要如何在事件上設定警示？
 
-Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出值臨界值的自訂計量。 然後在該計量上設定警示。 每當指標在任一方向上超過閾值時，您都會收到通知;無論初始值是高還是低，直到第一次交叉，您都得不到通知;總是有幾分鐘的延遲。
+Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出值臨界值的自訂計量。 然後在該計量上設定警示。 每當指標在任一方向上超過閾值時,您都會收到通知;無論初始值是高還是低,直到第一次交叉,您都得不到通知;總是有幾分鐘的延遲。
 
 ### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Azure Web 應用程式與 Application Insights 之間的資料傳輸需要收費嗎？
 
@@ -463,10 +463,10 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 
 #### <a name="proxy-passthrough"></a>代理傳遞
 
-可以通過配置電腦級別或應用程式級代理來實現代理傳遞。
-有關詳細資訊，請參閱 dotnet 關於[預設代理](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)的文章。
+可以通過配置計算機級別或應用程式級代理來實現代理傳遞。
+有關詳細資訊,請參閱 dotnet 關於[預設代理](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)的文章。
  
- 例如 Web.config：
+ 例如 Web.config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -501,41 +501,41 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 
 此 Microsoft 常見問題集是適用於容器的 Azure 監視器常見問題清單。 若您有任何關於解決方案的其他問題，請前往[討論論壇](https://feedback.azure.com/forums/34192--general-feedback)並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
 
-### <a name="what-does-other-processes-represent-under-the-node-view"></a>"其他*進程*"視圖下表示什麼？
+### <a name="what-does-other-processes-represent-under-the-node-view"></a>"其他*行程*"視圖下表示什麼?
 
 **其他進程**旨在説明您清楚地瞭解節點上高資源使用的根本原因。 這使您能夠區分容器化流程和非容器化流程的使用方式。
 
-這些**其他流程**是什麼？ 
+這些**其他流程**是什麼? 
 
 這些是在節點上運行的非容器化進程。  
 
-我們如何計算？
+我們如何計算?
 
 **其他流程** = *容器化流程的**CAdvisor* - 使用率
 
-**其他流程**包括：
+**其他流程**包括:
 
 - 自我管理或管理的庫伯奈斯非容器化流程 
 
-- 容器運行時進程  
+- 容器執行時程序  
 
 - Kubelet  
 
-- 在節點上運行的系統進程 
+- 在節點上執行的系統程序 
 
-- 在節點硬體或 VM 上運行的其他非庫伯內特工作負載 
+- 在節點硬體或 VM 上執行的其他非庫伯內特工作負載 
 
-### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>在查詢容器日誌表時，看不到填充的"圖像和名稱"屬性值。
+### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>在查詢容器日誌表時,看不到填充的「圖像和名稱」屬性值。
 
-對於代理版本 ciprod12042019 及更高版本，預設情況下，不會為每個日誌行填充這兩個屬性，以最大程度地降低收集的日誌資料產生的成本。 有兩個選項用於查詢包含這些屬性及其值的表：
+對於代理版本 ciprod12042019 及更高版本,預設情況下,不會為每個日誌行填充這兩個屬性,以最大程度地降低收集的日誌數據產生的成本。 有兩個選項用於查詢包含這些屬性及其值的表:
 
 #### <a name="option-1"></a>選項 1 
 
-加入其他表，在結果中包括這些屬性值。
+加入其他表,在結果中包括這些屬性值。
 
-通過在容器 ID 屬性上聯接來修改查詢以包括```ContainerInventory```表中的圖像和 ImageTag 屬性。 您可以通過在"容器 ID"屬性上聯接 KubepodInventory 表的"包含名稱"欄位，包括"名稱"屬性（如之前在```ContainerLog```表中出現）。這是推薦的選項。
+通過在容器 ID 屬性上聯接來修改查詢```ContainerInventory```以包括 表中的圖像和 ImageTag 屬性。 您可以通過在「容器 ID」屬性上聯接 KubepodInventory 表的「包含名稱」欄位,包括「名稱」屬性```ContainerLog```(如之前在表中出現)。這是推薦的選項。
 
-下面的示例是一個示例詳細查詢，它解釋了如何使用聯接獲取這些欄位值。
+下面的示例是一個示例詳細查詢,它解釋了如何使用聯接獲取這些欄位值。
 
 ```
 //lets say we are querying an hour worth of logs
@@ -561,38 +561,38 @@ ContainerLog
 
 為每個容器日誌行重新啟用這些屬性的集合。
 
-如果第一個選項由於涉及的查詢更改而不方便，則可以通過在代理配置映射中啟用代理配置映射中的設置```log_collection_settings.enrich_container_logs```來重新啟用收集這些欄位，如[資料收集配置設置](insights/container-insights-agent-config.md)中所述。
+如果第一個選項由於涉及的查詢更改而不方便,則可以通過在代理配置映射中啟用代理設定映射中的```log_collection_settings.enrich_container_logs```設置 來重新啟用收集這些欄位,如[數據收集配置設置](insights/container-insights-agent-config.md)中所述。
 
 > [!NOTE]
-> 對於具有 50 個以上節點的大型群集，不建議使用第二個選項，因為它從群集中的每個節點生成 API 伺服器調用以執行此擴充。 此選項還會增加收集的每個日誌行的資料大小。
+> 對於具有 50 個以上節點的大型群集,不建議使用第二個選項,因為它從群集中的每個節點生成 API 伺服器調用以執行此擴充。 此選項還會增加收集的每個日誌行的數據大小。
 
-### <a name="can-i-view-metrics-collected-in-grafana"></a>我可以查看在格拉法納收集的指標嗎？
+### <a name="can-i-view-metrics-collected-in-grafana"></a>我可以查看在格拉法納收集的指標嗎?
 
-容器的 Azure 監視器支援查看存儲在 Grafana 儀表板中的日誌分析工作區中的指標。 我們提供了一個範本，您可以從 Grafana 的[儀表板存儲庫](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)下載該範本，以便開始並參考，以説明您瞭解如何從受監視的群集中查詢其他資料，以便在自訂 Grafana 儀表板中視覺化。 
+容器的 Azure 監視器支援查看存儲在 Grafana 儀表板中的日誌分析工作區中的指標。 我們提供了一個範本,您可以從 Grafana 的[儀表板儲存庫](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)下載該範本,以便開始並參考,以説明您瞭解如何從受監視的群集中查詢其他數據,以便在自定義 Grafana 儀表板中可視化。 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>是否可以使用 Azure 監視器監視我的 AKS 引擎群集來監視容器？
+### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>是否可以使用 Azure 監視器監視我的 AKS 引擎群集來監視容器?
 
-容器的 Azure 監視器支援監視部署到 Azure 上託管的 AKS 引擎（以前稱為 ACS 引擎）群集的容器工作負載。 有關此方案啟用監視所需的步驟的詳細資訊和概述，請參閱[使用 Azure 監視器訪問 AKS 引擎的容器](https://github.com/microsoft/OMS-docker/tree/aks-engine)。
+容器的 Azure 監視器支援監視部署到 Azure 上託管的 AKS 引擎(以前稱為 ACS 引擎)群集的容器工作負載。 有關此方案啟用監視所需的步驟的詳細資訊和概述,請參閱[使用 Azure 監視器存取 AKS 引擎的容器](https://github.com/microsoft/OMS-docker/tree/aks-engine)。
 
-### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>為什麼我看不到日誌分析工作區中的資料？
+### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>為什麼我看不到日誌分析工作區中的數據?
 
-如果您在每天的某個時間無法在日誌分析工作區中看到任何資料，則可能已達到預設的 500 MB 限制或指定用於控制每日收集的資料量的每日上限。 當滿足當天的限制時，資料收集將停止，僅在第二天恢復。 要查看資料使用方式並根據您的預期使用模式更新到不同的定價層，請參閱[記錄資料使用方式和成本](platform/manage-cost-storage.md)。 
+如果您在每天的某個時間無法在日誌分析工作區中看到任何數據,則可能已達到預設的 500 MB 限制或指定用於控制每日收集的數據量的每日上限。 當滿足當天的限制時,數據收集將停止,僅在第二天恢復。 要檢視資料使用方式並根據您的預期使用模式更新到不同的定價層,請參閱[記錄資料使用方式和成本](platform/manage-cost-storage.md)。 
 
-### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>容器清單表中指定的容器狀態是什麼？
+### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>容器清單表中指定的容器狀態是什麼?
 
 ContainerInventory 資料表包含已停止和執行中容器的相關資訊。 此資料表由代理程式內的工作流程填入，該工作流程會查詢所有 (執行中和已停用) 容器的 Docker，並將該資料轉送到 Log Analytics 工作區。
  
-### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>如何解決*缺少的訂閱註冊*錯誤？
+### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>如何解決*缺少的訂閱註冊*錯誤?
 
-如果您收到**錯誤缺少 Microsoft.操作管理訂閱註冊**，可以通過註冊資來源提供者**Microsoft.操作管理**來解決它。 您可以在[這裡](../azure-resource-manager/templates/error-register-resource-provider.md)找到作法的相關文件。
+如果您收到**錯誤缺少 Microsoft.操作管理訂閱註冊**,可以通過註冊資源提供程式**Microsoft.操作管理**來解決它。 您可以在[這裡](../azure-resource-manager/templates/error-register-resource-provider.md)找到作法的相關文件。
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>是否支援支援支援 RBAC 的 AKS 群集？
+### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>是否支援支援支援 RBAC 的 AKS 群集?
 
-容器監視解決方案不支援 RBAC，但容器的 Azure 監視器支援它。 解決方案詳細資料頁面不會在顯示這些叢集資料的刀鋒視窗中顯示正確的資訊。
+容器監視解決方案不支援 RBAC,但容器的 Azure 監視器支援它。 解決方案詳細資料頁面不會在顯示這些叢集資料的刀鋒視窗中顯示正確的資訊。
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>我如何透過 Helm 在 kube 系統命名空間中啟用容器的記錄檔收集？
 
-kube 系統命名空間中容器的記錄檔收集預設為停用。 透過設定 omsagent 上的環境變數，可啟用記錄檔收集。 有關詳細資訊，請參閱容器 GitHub 頁的[Azure 監視器](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers)。 
+kube 系統命名空間中容器的記錄檔收集預設為停用。 透過設定 omsagent 上的環境變數，可啟用記錄檔收集。 有關詳細資訊,請參閱容器 GitHub 頁的[Azure 監視器](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers)。 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>如何將 omsagent 更新為最新的發行版本？
 
@@ -600,7 +600,7 @@ kube 系統命名空間中容器的記錄檔收集預設為停用。 透過設�
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>如何啟用多行記錄？
 
-目前，容器的 Azure 監視器不支援多行日誌記錄，但有可用的解決方法。 您可以設定使用 JSON 格式寫入所有的服務，之後 Docker/Moby會將所有服務寫成一行。
+目前,容器的 Azure 監視器不支援多行日誌記錄,但有可用的解決方法。 您可以設定使用 JSON 格式寫入所有的服務，之後 Docker/Moby會將所有服務寫成一行。
 
 例如，您可以將記錄檔包裝在 JSON 物件，如以下範例中範例 node.js 應用程式所示：
 
@@ -613,26 +613,26 @@ console.log(json.stringify({
       }));
 ```
 
-此資料在查詢日誌時，與 Azure 監視器中日誌中的以下示例類似：
+此資料在查詢紀錄時,與 Azure 監視器中紀錄中的以下範例類似:
 
 ```
 LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
-有關此問題的詳細資訊，請查看以下[GitHub 連結](https://github.com/moby/moby/issues/22920)。
+有關此問題的詳細資訊,請檢視以下[GitHub 連結](https://github.com/moby/moby/issues/22920)。
 
-### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>啟用即時日誌時如何解決 Azure AD 錯誤？ 
+### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>啟用即時紀錄時如何解決 Azure AD 錯誤? 
 
-您可能會看到以下錯誤：**請求中指定的回復 URL 與為應用程式佈建的回復 URL 不匹配："<應用程式 ID"。\> ** 解決方法可以在"[如何使用容器 Azure 監視器即時查看容器資料](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)"一文中找到。 
+您可能會看到以下錯誤:**請求中指定的回覆 URL 與為應用程式配置的回覆 URL\>不匹配:"<应用程序 ID"。** 解決方法可以在「[如何使用容器 Azure 監視器即時查看容器資料](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)」一文中找到。 
 
-### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>為什麼在入職後無法升級群集？
+### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>為什麼在入職后無法升級群集?
 
-如果在為 AKS 群集啟用 Azure 監視器的容器後，將刪除群集正在將其資料發送到的日誌分析工作區，則在嘗試升級群集時，該群集將失敗。 要解決此問題，您必須禁用監視，然後重新啟用它引用訂閱中不同的有效工作區。 當您嘗試再次執行群集升級時，它應該成功處理和完成。  
+如果在為 AKS 群集啟用 Azure 監視器的容器後,將刪除群集正在將其數據發送到的日誌分析工作區,則在嘗試升級群集時,該群集將失敗。 要解決此問題,您必須禁用監視,然後重新啟用它引用訂閱中不同的有效工作區。 當您嘗試再次執行群集升級時,它應該成功處理和完成。  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>我需要為代理打開/白名單哪些埠和域？
+### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>我需要為代理打開/白名單哪些埠和域?
 
-有關使用 Azure、Azure US 政府和 Azure 中國 21Vianet 雲的容器化代理所需的代理和防火牆配置資訊，請參閱[網路防火牆要求](insights/container-insights-onboard.md#network-firewall-requirements)。
+有關使用 Azure、Azure US 政府和 Azure 中國 21Vianet 雲的容器化代理所需的代理和防火牆配置資訊,請參閱[網路防火牆要求](insights/container-insights-onboard.md#network-firewall-requirements)。
 
 ## <a name="azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器
 此 Microsoft 常見問題集是適用於 VM 的 Azure 監視器常見問題清單。 若您有任何關於解決方案的其他問題，請前往[討論論壇](https://feedback.azure.com/forums/34192--general-feedback)並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
@@ -644,10 +644,10 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ### <a name="can-i-onboard-to-a-new-workspace"></a>我可以上線到新的工作區嗎？ 
 如果您的 VM 目前並未連線到現有的 Log Analytics 工作區，您需要建立新的工作區來儲存資料。 如果您透過 Azure 入口網站為適用於 VM 的 Azure 監視器設定單一 Azure VM，建立新的預設工作區即會自動完成。
 
-如果選擇使用基於腳本的方法，這些步驟將[包含在使用 Azure PowerShell 或資源管理器範本的"為 VM 啟用 Azure 監視器"範本](insights/vminsights-enable-at-scale-powershell.md)一文中。 
+如果選擇使用基於腳本的方法,這些步驟將[包含在使用 Azure PowerShell 或資源管理器範本的「為 VM 啟用 Azure 監視器」樣本](insights/vminsights-enable-at-scale-powershell.md)一文中。 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>如果我的 VM 已經向現有的工作區回報，我該怎麼做？
-如果您已經從虛擬機器收集資料，則您可能已經將它設為向現有的 Log Analytics 工作區回報資料。  只要該工作區位於我們支援的其中一個區域，您就可以針對該預先存在的工作區啟用適用於 VM 的 Azure 監視器。  如果您已在使用的工作區不在我們支援的區域之一，此時您將無法將 VM 的 Azure 監視器載板。  我們正積極努力地支援更多區域。
+如果您已經從虛擬機器收集資料，則您可能已經將它設為向現有的 Log Analytics 工作區回報資料。  只要該工作區位於我們支援的其中一個區域，您就可以針對該預先存在的工作區啟用適用於 VM 的 Azure 監視器。  如果您已在使用的工作區不在我們支援的區域之一,此時您將無法將 VM 的 Azure 監視器載板。  我們正積極努力地支援更多區域。
 
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>為什麼無法將我的 VM 上線？
@@ -657,15 +657,15 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 * 如果決定需要使用 Log Analytics 代理程式，可使用 VM 延伸模組在 Azure VM 上進行安裝。  
 * 如果決定需要使用適用於 VM 的 Azure 監視器對應 Dependency Agent，可使用延伸模組在 Azure VM 上進行安裝。 
 
-在上線過程中，我們會檢查上述每一項的狀態，以便在入口網站中將通知狀態傳回給您。 設定工作區與代理程式安裝通常需要 5 至 10 分鐘。 在門戶中查看監視資料需要額外 5 到 10 分鐘。  
+在上線過程中，我們會檢查上述每一項的狀態，以便在入口網站中將通知狀態傳回給您。 設定工作區與代理程式安裝通常需要 5 至 10 分鐘。 在門戶中查看監視數據需要額外 5 到 10 分鐘。  
 
 如果您已初始上線，並看到一則訊息指出必須將 VM 上線，則允許 VM 最多 30 分鐘的時間來完成此程序。 
 
 
-### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我的 VM 的性能圖表中看不到部分或全部資料
-我們的性能圖表已更新，以使用存儲在*InsightsMetrics*表中的資料。  要查看這些圖表中的資料，您需要升級才能使用新的 VM 見解解決方案。  有關其他資訊，請參閱我們的[GA 常見問題解答](insights/vminsights-ga-release-faq.md)。
+### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我的 VM 的效能圖表中看不到部分或全部資料
+我們的性能圖表已更新,以使用存儲在*InsightsMetrics*表中的數據。  要查看這些圖表中的數據,您需要升級才能使用新的 VM 見解解決方案。  有關其他資訊,請參閱我們的[GA 常見問題解答](insights/vminsights-ga-release-faq.md)。
 
-如果在磁片表或某些性能圖表中看不到效能資料，則效能計數器可能無法在工作區中配置。 若要解決此問題，請執行下列 [PowerShell 指令碼](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
+如果在磁碟錶或某些性能圖表中看不到性能數據,則性能計數器可能無法在工作區中配置。 若要解決此問題，請執行下列 [PowerShell 指令碼](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>適用於 VM 的 Azure 監視器對應功能與服務對應有何不同？
@@ -677,7 +677,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 * 受監視的 VM 現在包含於用戶端群組節點中，而環圈圖會顯示群組中受監視與未受監視的虛擬機器比例。  它也可以在展開群組時用來篩選機器清單。
 * 受監視的虛擬機器現在包含於伺服器連接埠群組節點中，而環圈圖會顯示群組中受監視與未受監視的機器比例。  它也可以在展開群組時用來篩選機器清單。
 * 對應樣式已更新，以便與 Application Insights 的應用程式對應更為一致。
-* 側面板已更新，並且沒有服務映射中支援的完整集成集 - 更新管理、更改跟蹤、安全和服務台。 
+* 側面板已更新,並且沒有服務映射中支援的完整整合集 -更新管理、更改追蹤、安全和服務台。 
 * 用來選擇要對應之群組與機器的選項已更新，現在支援訂用帳戶、資源群組、Azure 虛擬機器擴展集和雲端服務。
 * 您無法在適用於 VM 的 Azure 監視器對應功能中建立新的服務對應機器群組。  
 
@@ -701,24 +701,24 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>[效能] 索引標籤上的網路圖表為什麼看起來與 [Azure VM 概觀] 頁面上的網路圖表不同呢？
 
-適用於 Azure 虛擬機器的概觀頁面會根據客體 VM 中主機的活動量值來顯示圖表。  至於 [Azure VM 概觀] 上的網路圖表，它只會顯示將收費的網路流量。  這不包括虛擬網路間流量。  為 VM Azure 監視器顯示的資料和圖表基於來自來賓 VM 的資料，網狀圖表顯示該 VM 入站和出站的所有 TCP/IP 流量，包括虛擬間網路。
+適用於 Azure 虛擬機器的概觀頁面會根據客體 VM 中主機的活動量值來顯示圖表。  至於 [Azure VM 概觀] 上的網路圖表，它只會顯示將收費的網路流量。  這不包括虛擬網路間流量。  為 VM Azure 監視器顯示的數據和圖表基於來自來賓 VM 的數據,網路圖表顯示該 VM 入站和出站的所有 TCP/IP 流量,包括虛擬間網路。
 
-### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>如何測量 VMConnect 中存儲並顯示在連接面板和活頁簿中的資料的回應時間？
+### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>如何測量 VMConnect 中儲存並顯示在連接面板和工作簿中的數據的回應時間?
 
-回應時間是近似值。 由於我們不檢測應用程式的代碼，所以我們並不真正知道請求何時開始以及回應何時到達。 相反，我們會觀察在連接上發送的資料，然後看到該連接上返回的資料。 我們的代理跟蹤這些發送和接收並嘗試配對：發送序列，後跟接收序列被解釋為請求/回應對。 這些操作之間的計時是回應時間。 它將包括網路延遲和伺服器處理時間。
+回應時間是近似值。 由於我們不檢測應用程式的代碼,所以我們並不真正知道請求何時開始以及回應何時到達。 相反,我們會觀察在連接上發送的數據,然後看到該連接上返回的數據。 我們的代理追蹤這些發送和接收並嘗試配對:發送序列,後跟接收序列被解釋為請求/回應對。 這些操作之間的計時是回應時間。 它將包括網路延遲和伺服器處理時間。
 
-此近似值適用于基於請求/回應的協定：連接上發出單個請求，單個回應到達。 HTTP（S）（沒有管道），但對其他協定不滿意。"
+此近似值適用於基於請求/回應的協定:連接上發出單個請求,單個回應到達。 HTTP(S)(沒有管道),但對其他協定不滿意。"
 
 ### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我採用 Log Analytics 免費定價方案，有何限制？
 如果您使用「免費」** 定價層設定了具有 Log Analytics 工作區的 Azure 監視器，則適用於 VM 的 Azure 監視器的對應功能僅支援五部已連線到工作區的電腦。 如果您有五部連線至免費工作區的 VM，您可中斷其中一部 VM 的連線，然後連線新的 VM，則新的 VM 不受監視，而且不會反映於 [對應] 頁面。  
 
-在這種情況下，當您打開 VM 並從左側窗格中選擇 **"見解"** 時，即使已在 VM 上安裝"**立即試用"** 選項，系統也會提示您。  不過，如果此 VM 並未在適用於 VM 的 Azure 監視器上線，就不會以通常會出現的選項提示您。 
+在這種情況下,當您打開 VM 並從左方窗格中選擇 **「見解」** 時,即使已在 VM 上安裝「**立即試用」** 選項,系統也會提示您。  不過，如果此 VM 並未在適用於 VM 的 Azure 監視器上線，就不會以通常會出現的選項提示您。 
 
 
 ## <a name="next-steps"></a>後續步驟
-如果您的問題未在此處回答，您可以參考以下論壇，以查找其他問題和答案。
+如果您的問題未在此處回答,您可以參考以下論壇,以查找其他問題和答案。
 
-- [日誌分析](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [紀錄分析](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
-有關 Azure 監視器的一般回饋，請訪問[回饋論壇](https://feedback.azure.com/forums/34192--general-feedback)。
+有關 Azure 監視器的一般回饋,請造[訪 回饋論壇](https://feedback.azure.com/forums/34192--general-feedback)。

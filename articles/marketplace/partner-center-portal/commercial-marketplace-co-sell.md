@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475168"
+ms.locfileid: "80517932"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作夥伴中心中的聯合銷售選項
 
-在「共同銷售」選項卡上提供資訊是完全可選的。 它需要實現聯合銷售就緒和IP共同銷售就緒狀態。 Microsoft 銷售團隊將使用您提供的資訊,在評估解決方案是否適合客戶需求時瞭解有關解決方案的更多資訊。 它不能直接提供給客戶。 有關詳細資訊,請參閱通過[Microsoft 銷售](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)。
+在「共同銷售」選項卡上提供資訊是完全可選的。 它需要實現聯合銷售就緒和IP共同銷售就緒狀態。 Microsoft 銷售團隊將使用您提供的資訊,在評估解決方案是否適合客戶需求時瞭解有關解決方案的更多資訊。 它不能直接提供給客戶。 有關詳細資訊,請參閱通過[Microsoft 銷售](https://partner.microsoft.com/membership/sell-with-microsoft)。
 
 合作夥伴中心中的共同銷售選項當前可用於某些產品/服務類型。 隨著時間的推移,將提供對其他優惠類型的支援。
 
 | **優惠類型** | **合作夥伴中心提供共同銷售頁面** |
 |    -----------------------    |    -----------------------------  |
-| 軟體即服務 (SaaS) |     2020 年 4 月左右一般供貨     |
+| 軟體即服務 (SaaS) |     2020 年 4 月一般供應      |
 | 面向客戶互動&電源應用的動態 365      |     現已推出      |
 | Dynamics 365 for Operations     |     現已推出       |
-| Dynamics 365 Business Central      |  2020 年 4 月左右一般供貨    |
-| Azure 應用程式     |     2020 年 4 月左右一般供貨     |
+| Dynamics 365 Business Central      |  2020 年 4 月一般供應     |
+| Azure 應用程式     |     2020 年 4 月一般供應     |
 | Azure 虛擬機器      |     即將宣布       |
 | Azure 容器     |     即將宣布       |
 | 諮詢服務      |     即將宣布       |
@@ -66,8 +66,7 @@ ms.locfileid: "80475168"
 
 | **文件**    | **說明**  |
 | :------------------- | :-------------------|
-| *客戶一頁* | 客戶就緒的產品描述。 Microsoft 銷售團隊可能會與客戶共用此資訊,以幫助確定您的產品是否適合您的產品,並確保其準備好客戶。 <br> <br> 使用合作夥伴中心中提供的相關範本之一: <br> <ul> <li> 微軟 Azure 單頁機範本 </li> <li> 微軟動態 365 單頁機範本 </li> <li> Office 365 單頁機範本 </li> <li> Windows 10 單頁碼範本 </li> </ul>
- |
+| *客戶一頁* | 客戶就緒的產品描述。 Microsoft 銷售團隊可能會與客戶共用此資訊,以幫助確定您的產品是否適合您的產品,並確保其準備好客戶。 <br> <br> 使用合作夥伴中心中提供的相關範本之一: <br> <ul> <li> 微軟 Azure 單頁機範本 </li> <li> 微軟動態 365 單頁機範本 </li> <li> Office 365 單頁機範本 </li> <li> Windows 10 單頁碼範本 </li> </ul> |
 | *客戶演示* | 幻燈片平臺,以推銷您的解決方案及其價值主張。 在確保您的產品/服務已做好客戶準備後,Microsoft 銷售團隊可能會與客戶共用演示文稿,以闡明兩家公司在部署聯合解決方案時帶來的價值。 演示文稿應介紹您的解決方案的作用、如何幫助客戶、解決方案面向哪些行業以及解決方案與競爭解決方案的比較情況。 <br> <br> 使用合作夥伴中心中可用的範本。|
 | *客戶案例研究* | 此信息顯示了潛在客戶您和Microsoft在以前情況下如何成功部署此解決方案。 <br> <br> 使用合作夥伴中心中可用的範本。 |
 | *可驗證的客戶獲勝(可選)* | 部署解決方案後客戶成功的具體範例。 |

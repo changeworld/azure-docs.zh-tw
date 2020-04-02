@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET 檔約定庫將輸出資料持久化到 Azure 存儲 - Azure 批次處理
-description: 瞭解如何使用 .NET 的 Azure 批次檔約定庫將批次處理任務&作業輸出保存到 Azure 存儲，並在 Azure 門戶中查看該輸出。
+title: 使用 .NET 檔約定函式庫將輸出資料持久化到 Azure 儲存 - Azure 批次處理
+description: 瞭解如何使用 .NET 的 Azure 批次處理檔約定庫將批次處理工作&作業輸出保存到 Azure 儲存,並在 Azure 入口中查看該輸出。
 services: batch
 documentationcenter: .net
 author: LauraBrenner
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 693017e529f2869c16d94c30cdf48ec228df3276
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e331dcfc9acf7a5e8a83be788b566cf92eaeb8f4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022863"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548037"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用適用於 .NET 的 Batch 檔案慣例程式庫將作業和工作輸出保存到 Azure 儲存體
 
@@ -68,7 +68,7 @@ Azure Batch 提供多個方法來保存工作輸出。 檔案慣例最適合這�
 如需在 Azure 儲存體中使用容器和 Blob 的詳細資訊，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
 
 > [!WARNING]
-> 使用檔案慣例程式庫保存的所有作業和工作輸出，都會儲存在相同容器中。 如果大量任務嘗試同時保留檔，則可能會強制執行 Azure 存儲限制。 有關限制限制的詳細資訊，請參閱[Blob 存儲的性能和可伸縮性檢查表](../storage/blobs/storage-performance-checklist.md)。
+> 使用檔案慣例程式庫保存的所有作業和工作輸出，都會儲存在相同容器中。 如果大量任務嘗試同時保留檔,則可能會強制執行 Azure 存儲限制。 有關限制限制的詳細資訊,請參閱[Blob 儲存的效能和可伸縮性檢查表](../storage/blobs/storage-performance-checklist.md)。
 
 ### <a name="create-storage-container"></a>建立儲存體容器
 
@@ -109,7 +109,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-[TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) 方法的 `kind` 參數會分類保存的檔案。 有四種預定義的[任務輸出類型][net_taskoutputkind]： `TaskOutput`， `TaskPreview` `TaskLog`，`TaskIntermediate.`還可以定義自訂的輸出類別。
+[TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) 方法的 `kind` 參數會分類保存的檔案。 有四種預定義的[任務輸出類型][net_taskoutputkind] `TaskPreview` `TaskLog`:`TaskIntermediate.` `TaskOutput`, , 還可以定義自定義的輸出類別。
 
 這些輸出類型可供您在稍後針對特定工作的保存輸出查詢 Batch 時，指定要列出的輸出類型。 換句話說，當您列出某個工作的輸出時，可以根據其中一個輸出類型來篩選清單。 例如，「給我工作 *109* 的 *preview* 輸出」。 本文稍後的「擷取輸出」會提供列出和擷取輸出的詳細資訊。
 
@@ -166,7 +166,7 @@ using (ITrackedSaveOperation stdout =
 節點代理程式是一項程式，會在集區中的每個節點上執行，並在節點與 Batch 服務之間提供命令和控制介面。 `Task.Delay` 呼叫在此 `using` 區塊的結尾是必要的，以確保節點代理程式有時間清除節點上 stdout.txt 檔案的標準內容。 若沒有此延遲，就可能會遺漏輸出的最後幾秒。 此延遲可能並非所有檔案都需要。
 
 > [!NOTE]
-> 使用**SaveTrackAsync**啟用檔跟蹤時，僅將追蹤檔案*追加*到 Azure 存儲。 請只將此方法用於追蹤非輪替記錄檔，或其他使用附加作業寫入至結尾的檔案。
+> 使用**SaveTrackAsync**啟用檔案追蹤時,僅將追蹤檔*追加*到 Azure 儲存。 請只將此方法用於追蹤非輪替記錄檔，或其他使用附加作業寫入至結尾的檔案。
 
 ## <a name="retrieve-output-data"></a>擷取輸出資料
 
@@ -197,7 +197,7 @@ Azure 入口網站會顯示使用 [Batch 檔案慣例標準](https://github.com/
 若要讓您的輸出檔案顯示在入口網站中，您必須滿足下列需求：
 
 1. 將 Azure 儲存體帳戶連結到您的 Batch 帳戶。
-1. 保存輸出時，依照預先定義的儲存體容器命名與檔案命名慣例。 您可以在檔約定庫[README][github_file_conventions_readme]中找到這些約定的定義。 如果您使用 [Azure Batch 檔案慣例][nuget_package]程式庫來保存您的輸出，您的檔案會根據檔案慣例標準進行保存。
+1. 保存輸出時，依照預先定義的儲存體容器命名與檔案命名慣例。 您可以在文件約定庫[README][github_file_conventions_readme]中找到這些約定的定義。 如果您使用 [Azure Batch 檔案慣例][nuget_package]程式庫來保存您的輸出，您的檔案會根據檔案慣例標準進行保存。
 
 若要在 Azure 入口網站中檢視工作輸出檔案和記錄，請瀏覽到您對其輸出有興趣的工作，然後按一下 [已儲存的輸出檔案]**** 或 [已儲存的記錄]****。 此影像顯示識別碼為 "007" 之工作的 [已儲存的輸出檔案] **** ：
 
@@ -234,7 +234,7 @@ Azure 入口網站會顯示使用 [Batch 檔案慣例標準](https://github.com/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage._cloud_storage_account
+[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
@@ -251,5 +251,5 @@ Azure 入口網站會顯示使用 [Batch 檔案慣例標準](https://github.com/
 [portal]: https://portal.azure.com
 [storage_explorer]: https://storageexplorer.com/
 
-[1]: ./media/batch-task-output/task-output-01.png "在門戶中保存的輸出檔案和保存的日誌選擇器"
+[1]: ./media/batch-task-output/task-output-01.png "在門戶儲存的輸出檔及儲存的紀錄選擇器"
 [2]: ./media/batch-task-output/task-output-02.png "Azure 門戶中的任務輸出邊欄選項卡"

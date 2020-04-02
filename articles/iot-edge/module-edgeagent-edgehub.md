@@ -8,24 +8,24 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284833"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546197"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理程式和 IoT Edge 中樞模組對應項的屬性
 
-IoT Edge 代理程式和 IoT Edge 中樞是構成 IoT Edge 執行階段的兩個模組。 有關每個運行時模組的職責的詳細資訊，請參閱[瞭解 Azure IoT 邊緣運行時及其體系結構](iot-edge-runtime.md)。
+IoT Edge 代理程式和 IoT Edge 中樞是構成 IoT Edge 執行階段的兩個模組。 有關每個執行時模組的職責的詳細資訊,請參閱[瞭解 Azure IoT 邊緣執行時及其體系結構](iot-edge-runtime.md)。
 
-本文提供執行階段模組對應項的所需屬性和報告屬性。 有關如何在 IoT Edge 設備上部署模組的詳細資訊，請參閱[瞭解如何在 IoT 邊緣中部署模組和建立路由](module-composition.md)。
+本文提供執行階段模組對應項的所需屬性和報告屬性。 有關如何在 IoT Edge 裝置上部署模組的詳細資訊,請參閱[瞭解如何在 IoT 邊緣中部署模組和建立路由](module-composition.md)。
 
-模組孿生包括：
+模組孿生包括:
 
-* **所需屬性**。 解決方案後端可以設置所需的屬性，模組可以讀取它們。 模組還可以接收所需屬性中的更改通知。 所需屬性與報告的屬性一起使用，以同步模組配置或條件。
+* **所需屬性**。 解決方案後端可設定所需的屬性,模組可以讀取它們。 模組還可以接收所需屬性中的更改通知。 所需屬性與報告的屬性一起使用,以同步模組配置或條件。
 
-* **報告屬性**。 模組可以設置報告的屬性，解決方案後端可以讀取和查詢它們。 報告的屬性與所需屬性一起使用以同步模組配置或條件。
+* **報告屬性**。 模組可以設置報告的屬性,解決方案後端可以讀取和查詢它們。 報告的屬性與所需屬性一起使用以同步模組配置或條件。
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent 的所需屬性
 
@@ -41,7 +41,7 @@ IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝�
 | runtime.settings.registryCredentials<br>.{registryId}.password | 容器登錄的密碼。 | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.address | 容器登錄的位址。 Azure Container Registry 的位址通常是 {登錄名稱}.azurecr.io**。 | 否 |  
 | systemModules.edgeAgent.type | 必須為「docker」 | 是 |
-| systemModules.edgeAgent.settings.image | IoT Edge 代理程式映像的 URI。 目前，IoT Edge 代理無法自行更新。 | 是 |
+| systemModules.edgeAgent.settings.image | IoT Edge 代理程式映像的 URI。 目前,IoT Edge 代理無法自行更新。 | 是 |
 | systemModules.edgeAgent.settings<br>.createOptions | stringified JSON，包含 IoT Edge 代理程式容器的建立選項。 [Docker 建立選項](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | systemModules.edgeAgent.configuration.id | 部署此模組之部署的識別碼。 | 使用部署來套用資訊清單時，IoT 中樞會設定這個屬性。 非部署資訊清單的一部分。 |
 | systemModules.edgeHub.type | 必須為「docker」 | 是 |
@@ -53,8 +53,9 @@ IoT Edge 代理程式的模組對應項稱為 `$edgeAgent`，並且會協調裝�
 | modules.{moduleId}.version | 使用者定義的字串，表示此模組的版本。 | 是 |
 | modules.{moduleId}.type | 必須為「docker」 | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
-| modules.{moduleId}.restartPolicy | {"從不""\|失敗""\|處於不正常""\|始終"* | 是 |
-| 模組。[模組 Id].圖像拉取策略 | {"在創建時""\|從不"* | 否 |
+| modules.{moduleId}.restartPolicy | {"從不""\|失敗""\|處於不正常\|"" 始終"* | 是 |
+| 模組。[模組 Id].影像拉取策略 | {"在建立時""\|從不"* | 否 |
+| 模組。[模組 Id].env | 要傳遞給模組的環境變數的清單。 採用格式`"<name>": {"value": "<value>"}` | 否 |
 | modules.{moduleId}.settings.image | 模組映像的 URI。 | 是 |
 | modules.{moduleId}.settings.createOptions | stringified JSON，包含模組容器的建立選項。 [Docker 建立選項](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | modules.{moduleId}.configuration.id | 部署此模組之部署的識別碼。 | 使用部署來套用資訊清單時，IoT 中樞會設定這個屬性。 非部署資訊清單的一部分。 |
@@ -77,7 +78,7 @@ IoT Edge 代理程式報告屬性包含三個主要部分資訊：
 | 屬性 | 描述 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整數代表 IoT Edge 代理程式處理之所需屬性的最後版本。 |
-| lastDesiredStatus.code | 此狀態碼引用 IoT Edge 代理看到的最後一個所需屬性。 允許的值：`200` 成功、`400` 無效的設定、`412` 無效的結構描述版本、`417` 預期屬性是空的、`500` 失敗 |
+| lastDesiredStatus.code | 此狀態代碼引用 IoT Edge 代理看到的最後一個所需屬性。 允許的值：`200` 成功、`400` 無效的設定、`412` 無效的結構描述版本、`417` 預期屬性是空的、`500` 失敗 |
 | lastDesiredStatus.description | 狀態的文字描述 |
 | deviceHealth | 如果所有模組的執行階段狀態為 `running`、`stopped` 時，則為 `healthy`，否則為 `unhealthy` |
 | configurationHealth.{deploymentId}.health | 如果部署 {deploymentId} 設定之所有模組的執行階段狀態為 `running` 或 `stopped` 時，則為 `healthy`，否則為 `unhealthy` |
@@ -87,14 +88,14 @@ IoT Edge 代理程式報告屬性包含三個主要部分資訊：
 | systemModules.edgeAgent.statusDescription | IoT Edge 代理程式之報告狀態的文字描述。 |
 | systemModules.edgeHub.runtimeStatus | IoT Edge 中樞的狀態：{ "running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
 | systemModules.edgeHub.statusDescription | 狀況不良時，IoT Edge 中樞狀態的文字描述。 |
-| systemModules.edgeHub.exitCode | 如果容器退出，IoT Edge 中心容器報告的結束代碼 |
+| systemModules.edgeHub.exitCode | 如果容器離開,IoT Edge 中心容器報告的離開代碼 |
 | systemModules.edgeHub.startTimeUtc | IoT Edge 中樞的上次啟動時間 |
 | systemModules.edgeHub.lastExitTimeUtc | IoT Edge 中樞的上次結束時間 |
 | systemModules.edgeHub.lastRestartTimeUtc | IoT Edge 中樞的上次重新啟動時間 |
 | systemModules.edgeHub.restartCount | 此模組重新啟動的次數，作為重新啟動原則的一部分。 |
 | modules.{moduleId}.runtimeStatus | 模組的狀態：{ "running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
 | modules.{moduleId}.statusDescription | 狀況不良時，模組狀態的文字描述。 |
-| modules.{moduleId}.exitCode | 如果容器退出，模組容器報告的結束代碼 |
+| modules.{moduleId}.exitCode | 如果容器退出,模組容器報告的宣告代碼 |
 | modules.{moduleId}.startTimeUtc | 模組的上次啟動時間 |
 | modules.{moduleId}.lastExitTimeUtc | 模組的上次結束時間 |
 | modules.{moduleId}.lastRestartTimeUtc | 模組的上次重新啟動時間 |
@@ -107,15 +108,15 @@ IoT Edge 中樞的模組對應項稱為 `$edgeHub`，並且會協調裝置與 Io
 | 屬性 | 描述 | 部署資訊清單中的必要項目 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必須為「1.0」 | 是 |
-| routes.{routeName} | 字串，表示 IoT Edge 中樞路由。 有關詳細資訊，請參閱[聲明路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但為空白。 |
-| storeAndForwardConfiguration.timeToLiveSecs | 如果 IoT Edge 中心與路由終結點（無論是 IoT 中心還是本地模組）斷開連接，則保留消息的時間（以秒為單位）。 該值可以是任何正整數。 | 是 |
+| routes.{routeName} | 字串，表示 IoT Edge 中樞路由。 有關詳細資訊,請參閱[聲明路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但為空白。 |
+| storeAndForwardConfiguration.timeToLiveSecs | 如果 IoT Edge 中心與路由終結點(無論是 IoT 中心還是本地模組)斷開連接,則保留消息的時間(以秒為單位)。 該值可以是任何正整數。 | 是 |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub 的報告屬性
 
 | 屬性 | 描述 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整數代表 IoT Edge 中樞處理之所需屬性的最後版本。 |
-| lastDesiredStatus.code | 引用 IoT Edge 中心看到的最後一個所需屬性的狀態碼。 允許的值：`200` 成功、`400` 無效的設定、`500` 失敗 |
+| lastDesiredStatus.code | 引用 IoT Edge 中心看到的最後一個所需屬性的狀態代碼。 允許的值：`200` 成功、`400` 無效的設定、`500` 失敗 |
 | lastDesiredStatus.description | 狀態的文本說明。 |
 | clients.{device or moduleId}.status | 此裝置或模組的連線狀態。 可能的值 {"connected" \| "disconnected"}。 只有模組身分識別可以處於中斷連線狀態。 連線到 IoT Edge 中樞的下游裝置只會在連線時顯示。 |
 | clients.{device or moduleId}.lastConnectTime | 上次連接設備或模組時。 |

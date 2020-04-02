@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
-ms.author: barclayn
-ms.openlocfilehash: 5635a9e1403731eabc20a04be880fd0aeb24d729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68727345"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548596"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何記錄安全性事件支援票證
 
@@ -28,11 +28,11 @@ ms.locfileid: "68727345"
 
     ![事件類型和定義](./media/event-support-ticket/chart.png)
 
-3. 選擇"問題類型和類別"後，按一下"**開始請求**"按鈕。 提供下列資訊，以協助我們更了解問題。
+3. 選擇「問題類型和類別」後,按一下「**開始請求**」按鈕。 提供下列資訊，以協助我們更了解問題。
 
     i. 問題和/或弱點是什麼？
 
-    ii. 對於漏洞，請提供 CVE （mitre.org） 或填寫的 CVSS3 v3 計算機 （。https://www.first.org/cvss/calculator/3.0)
+    ii. 對於漏洞,請提供 CVE (mitre.org) 或填寫的 CVSS3 v3 計算機 (。https://www.first.org/cvss/calculator/3.0)
 
     iii. 有任何解決方式或緩解功能嗎？ 如果有，則請提供補救步驟。
 

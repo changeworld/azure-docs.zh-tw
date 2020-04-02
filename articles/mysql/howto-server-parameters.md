@@ -1,17 +1,17 @@
 ---
-title: 佈建服務器參數 - Azure 門戶 - MySQL 的 Azure 資料庫
+title: 設定伺服器參數 ─ Azure 門戶 - MySQL 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定 MySQL 伺服器參數。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: fc2b1bbe0a3249014e663d43ee4db87cab5eedcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 715f1028597d76915d833b0ade66bc03d939030d
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063255"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546454"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
 
@@ -24,7 +24,7 @@ MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如
 ![Azure 入口網站伺服器參數頁面](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 3. 找出您需要調整的任何設定。 檢閱 [描述]**** 資料行，以了解用途和允許的值。
 ![列舉下拉按鈕](./media/howto-server-parameters/3-toggle_parameter.png)
-4. 按一下 **"保存"** 以保存更改。
+4. 按下 **「儲存」** 以儲存變更。
 ![儲存或捨棄變更](./media/howto-server-parameters/4-save_parameters.png)
 5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-server-parameters/5-reset_parameters.png)
@@ -35,9 +35,9 @@ MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如
 
 ## <a name="non-configurable-server-parameters"></a>無法設定的伺服器參數
 
-InnoDB 緩衝區池大小不可配置，並綁定到[定價層](concepts-service-tiers.md)。
+InnoDB 緩衝區池大小不可設定,並綁定到[定價層](concepts-service-tiers.md)。
 
-|**定價層**|**虛擬核心**|**InnoDB 緩衝區池大小（MB）（<br>支援最多 4 TB 存儲的伺服器）**| **InnoDB 緩衝區池大小（MB）（<br>支援多達 16 TB 存儲的伺服器）**|
+|**定價層**|**虛擬核心**|**InnoDB 緩衝區池大小(MB)(<br>支援最多 4 TB 儲存的伺服器)**| **InnoDB 緩衝區池大小(MB)(<br>支援多達 16 TB 儲存的伺服器)**|
 |:---|---:|---:|---:|
 |基本| 1| 832| |
 |基本| 2| 2560| |
@@ -68,17 +68,17 @@ InnoDB 緩衝區池大小不可配置，並綁定到[定價層](concepts-service
 
 ### <a name="populating-the-time-zone-tables"></a>填入時區資料表
 
-伺服器上的時區資料表，可以藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `az_load_timezone` 預存程序來填入。
+伺服器上的時區資料表，可以藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。
 
 > [!NOTE]
-> 如果您是從 MySQL Workbench 執行 `az_load_timezone` 命令，您可能需要先執行 `SET SQL_SAFE_UPDATES=0;` 以關閉安全更新模式。
+> 如果您是從 MySQL Workbench 執行 `mysql.az_load_timezone` 命令，您可能需要先執行 `SET SQL_SAFE_UPDATES=0;` 以關閉安全更新模式。
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 應重新開機伺服器以確保時區表已正確填充。 要重新開機伺服器，請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
+> 應重新啟動伺服器以確保時區表已正確填充。 要重新啟動伺服器,請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 若要檢視可用的時區值，請執行以下命令：
 
@@ -104,4 +104,4 @@ SET time_zone = 'US/Pacific';
 
 ## <a name="next-steps"></a>後續步驟
 
-- [MySQL Azure 資料庫的連接庫](concepts-connection-libraries.md)。
+- [MySQL Azure 資料庫的連線庫](concepts-connection-libraries.md)。

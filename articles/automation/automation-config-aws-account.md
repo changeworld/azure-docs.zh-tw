@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366935"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520824"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 驗證 Runbook
 
@@ -26,7 +26,7 @@ ms.locfileid: "75366935"
 
 若要讓 Azure 自動化與 AWS 通訊，您必須先擷取 AWS 認證，並將它們儲存為 Azure 自動化中的資產。 執行 AWS 文件[管理 AWS 帳戶的存取金鑰](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)中記載的下列步驟，以建立存取金鑰並複製**存取金鑰識別碼**和**密碼存取金鑰** (亦可選擇下載金鑰檔以將其儲存在某處安全的地方)。
 
-建立並複製 AWS 安全性金鑰後，您必須使用 Azure 自動化帳戶建立認證資產以安全地儲存金鑰，並讓金鑰與 Runbook 參照。 遵循 [Azure 自動化中的認證資產](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal)一文中，＜建立新認證＞**** 一節中的步驟，並輸入以下資訊：
+建立並複製 AWS 安全性金鑰後，您必須使用 Azure 自動化帳戶建立認證資產以安全地儲存金鑰，並讓金鑰與 Runbook 參照。 遵循 [Azure 自動化中的認證資產](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal)一文中，＜建立新認證＞**** 一節中的步驟，並輸入以下資訊：
 
 1. 在 [名稱]**** 方塊中，輸入 **AWScred** 或遵循您的命名標準的適當值。
 2. 在 [使用者名稱]**** 方塊中輸入您的**存取識別碼**，並在 [密碼]**** 和 [確認密碼]**** 方塊中輸入您的**密碼存取金鑰**。

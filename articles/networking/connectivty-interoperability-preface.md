@@ -1,5 +1,5 @@
 ---
-title: Azure 後端連線功能的互通性：測試設定 | Microsoft Docs
+title: Azure 中的互操作性 :測試設置 |微軟文件
 description: 本文說明的測試設定可供您分析 Azure 中 ExpressRoute、站對站 VPN 及虛擬網路對等互連之間的互通性。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873790"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518198"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure 後端連線功能的互通性：測試設定
+# <a name="interoperability-in-azure--test-setup"></a>Azure 的相互操作性 :測試設定
 
 本文說明的測試設定，可供您分析 Azure 網路服務如何在控制平面層級和資料平面層級進行相互操作。 讓我們簡短探討 Azure 網路元件：
 

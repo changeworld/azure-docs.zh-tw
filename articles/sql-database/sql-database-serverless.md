@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474018"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549146"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 資料庫無伺服器
 
@@ -151,7 +151,7 @@ SQL 快取會隨著資料以與預配資料庫相同的速度和速度從磁碟�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客戶託管的透明資料加密 (BYOK)
 
-如果使用[客戶託管的透明數據加密](transparent-data-encryption-byok-azure-sql.md)(BYOK) 和無伺服器資料庫在密鑰刪除或吊銷時自動暫停,則資料庫將保持自動暫停狀態。  在這種情況下,當資料庫下次恢復時,資料庫將保持連線狀態,直到大約 10 分鐘或更少後其狀態轉換到無法訪問。  一旦資料庫變得無法訪問,恢復過程與預配計算資料庫的過程相同。  如果發生密鑰刪除或吊銷時無伺服器資料庫處於連線狀態,則資料庫在大約 10 分鐘或更少後也會變得不可訪問,其方式與預配計算資料庫的方式相同。
+如果使用[客戶託管的透明數據加密](transparent-data-encryption-byok-azure-sql.md)(BYOK) 和無伺服器資料庫在密鑰刪除或吊銷時自動暫停,則資料庫將保持自動暫停狀態。  在這種情況下,在下次恢復資料庫后,資料庫在大約 10 分鐘內變得無法訪問。  一旦資料庫變得無法訪問,恢復過程與預配計算資料庫的過程相同。  如果發生密鑰刪除或吊銷時無伺服器資料庫處於連線狀態,則資料庫在大約 10 分鐘或更少後也會變得不可訪問,其方式與預配計算資料庫的方式相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>進入無伺服器計算層
 

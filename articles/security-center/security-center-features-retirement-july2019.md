@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435899"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521425"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>安全中心停用功能(2019年7月)
 
@@ -169,7 +169,7 @@ Azure 安全中心當前使用 Azure 監視器日誌搜索來檢索和分析安�
 
 Azure 資訊安全中心會套用一組[具有超過 150 個建議規則的集合](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (英文)，以此方式監視安全性設定以強化作業系統。 這些規則涉及防火牆、審核、密碼策略等。 如果發現電腦設定有弱點，資訊安全中心會產生安全性建議。 [「編輯安全設定」螢幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)允許客戶自定義安全中心的預設作業系統安全配置。
 
-我們停用了此預覽功能。 要在停用日期后將安全配置重置回其預設值,請使用[以下說明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)通過 API 或 Powershell 執行此操作。
+我們停用了此預覽功能。 要在停用日期后將安全配置重置回其預設值,請使用[以下說明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)通過 API 或 Powershell 執行此操作。
 
 ![編輯安全性設定][17]
 
