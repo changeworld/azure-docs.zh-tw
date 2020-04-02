@@ -1,24 +1,26 @@
 ---
-title: Azure 中 Cloudyn 的常見問題集 | Microsoft Docs
+title: Azure 中的 Cloudyn 常見問題集
 description: 本文提供一些關於 Cloudyn 常見問題的解答。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770069"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411246"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn 的常見問題集
 
 本文說明 Cloudyn 的一些常見問題。 如果您有關於 Cloudyn 的問題，可在 [Cloudyn 的常見問題集](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn)發問。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>如何解決常見的間接企業設定問題？
 
@@ -58,13 +60,13 @@ ms.locfileid: "76770069"
 
 若要啟動帳戶：
 
-1.  在 Cloudyn 入口網站中，按一下右上角的 [設定]  並選取 [雲端帳戶]  。
-2.  在 [Microsoft Azure 帳戶] 索引標籤中，尋找具有 [未啟動]  訂用帳戶的帳戶。
-3.  在未啟動之帳戶的右邊，按一下類似鉛筆的 [編輯]  符號。
-4.  系統會自動偵測您的租用戶識別碼和速率識別碼。 按 [下一步]  。
-5.  系統會將您重新導向至 Azure 入口網站。 登入入口網站，並授權 Cloudyn Collector 存取您的 Azure 資料。
-6.  接下來，系統會將您重新導向至 Cloudyn Accounts 管理頁面，而且您的訂用帳戶會更新為**作用中**帳戶狀態。 它會顯示綠色核取記號。
-7.  如果您沒有看到一或多個訂用帳戶有綠色核取記號，這表示您沒有建立訂用帳戶之讀取器應用程式 (CloudynCollector) 的權限。 具有訂用帳戶較高權限的使用者必須重複步驟 3 和 4。  
+1.    在 Cloudyn 入口網站中，按一下右上角的 [設定]  並選取 [雲端帳戶]  。
+2.    在 [Microsoft Azure 帳戶] 索引標籤中，尋找具有 [未啟動]  訂用帳戶的帳戶。
+3.    在未啟動之帳戶的右邊，按一下類似鉛筆的 [編輯]  符號。
+4.    系統會自動偵測您的租用戶識別碼和速率識別碼。 按 [下一步]  。
+5.    您會被重新導向至 Azure 入口網站。 登入入口網站，並授權 Cloudyn Collector 存取您的 Azure 資料。
+6.    接下來，系統會將您重新導向至 Cloudyn Accounts 管理頁面，而且您的訂用帳戶會更新為**作用中**帳戶狀態。 它會顯示綠色核取記號。
+7.    如果您沒有看到一或多個訂用帳戶有綠色核取記號，這表示您沒有建立訂用帳戶的讀取器應用程式 (CloudynCollector) 的權限。 具有訂用帳戶較高權限的使用者必須重複步驟 3 和 4。  
 
 完成上述步驟之後，您可以在一到兩天內看到最佳化工具建議。 不過，最多可能需要五天，完整的最佳化資料才可供使用。
 
@@ -95,7 +97,7 @@ Cloudyn 使用者帳戶使用單一登入從 Azure 連線。 如果使用者輸�
 
 如果您無法登入 Cloudyn 入口網站，請確定您使用正確的 URL 登入 Cloudyn。 使用 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade)。
 
-請避免使用 Cloudyn 直接 URL https://app.cloudyn.com 。
+請避免使用 Cloudyn 直接 URL `https://app.cloudyn.com`。
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>如何使用 Azure 認證啟用尚未啟用的帳戶？
 
