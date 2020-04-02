@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72437947"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547789"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>採用 Azure Resource Manager 範本的預期狀態設定延伸模組
 
-本文說明適用於[預期狀態設定 (DSC) 延伸模組處理常式](dsc-overview.md)的 Azure Resource Manager 範本。 許多範例都使用 **RegistrationURL** (以字串形式提供) 與 **RegistrationKey** (以 [PSCredential](/dotnet/api/system.management.automation.pscredential) 形式提供) 以使用 Azure 自動化來上線。 如需有關如何取得那些值的詳細資訊，請參閱 [將機器上架以供 Azure Automation State Configuration 管理 - 保護註冊安全](/azure/automation/automation-dsc-onboarding#secure-registration)。
+本文說明適用於[預期狀態設定 (DSC) 延伸模組處理常式](dsc-overview.md)的 Azure Resource Manager 範本。 許多範例都使用 **RegistrationURL** (以字串形式提供) 與 **RegistrationKey** (以 [PSCredential](/dotnet/api/system.management.automation.pscredential) 形式提供) 以使用 Azure 自動化來上線。 如需有關如何取得那些值的詳細資訊，請參閱 [將機器上架以供 Azure Automation State Configuration 管理 - 保護註冊安全](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)。
 
 > [!NOTE]
 > 您可能會遇到略為不同的結構描述範例。 結構描述變更出現在 2016 年 10 月的版本中。 如需詳細資料，請參閱[從先前的格式更新](#update-from-a-previous-format)。
@@ -185,7 +185,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 | settings.configuration.function |字串 |指定 DSC 組態的名稱。 所命名的設定必須包含在 **settings.onfiguration.script** 所定義的指令碼中。 如果已定義 **settings.configuration.url** 或 **settings.configuration.function**，就需要這個屬性。 如果沒有為這些屬性指定值，延伸模組就會呼叫預設設定指令碼來設定 LCM 中繼資料，而應該提供引數。 |
 | settings.configurationArguments |集合 |定義任何您想要傳遞給 DSC 設定的參數。 這個屬性並未加密。 |
 | settings.configurationData.url |字串 |指定 URL，從中下載您的組態資料 (.psd1) 檔案以做為 DSC 組態的輸入。 如果所提供的 URL 需要 SAS 權杖才能存取，請將 **protectedSettings.configurationDataUrlSasToken** 屬性設定為您 SAS 權杖的值。 |
-| settings.privacy.dataCollection |字串 |啟用或停用遙測收集。 此屬性的唯一可能值是**啟用**、**禁用****、''或****$null**。 將此屬性保持空白或 null 即可啟用遙測。 預設值為 **'。** 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。 |
+| settings.privacy.dataCollection |字串 |啟用或停用遙測收集。 此屬性的唯一可能值是**開啟**、**關閉****、'或****$null**。 將此屬性保持空白或 null 即可啟用遙測。 默認值為 **'。** 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。 |
 | settings.advancedOptions.downloadMappings |集合 |定義要從中下載 WMF 的替代位置。 如需詳細資訊，請參閱 [Azure DSC 延伸模組 2.8 及如何將延伸模組相依性的下載對應至您自己的位置](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)(英文\)。 |
 | protectedSettings.configurationArguments |集合 |定義任何您想要傳遞給 DSC 設定的參數。 這個屬性已加密。 |
 | protectedSettings.configurationUrlSasToken |字串 |指定用來存取 **settings.onfiguration.url** 所定義 URL 的 SAS 權杖。 這個屬性已加密。 |
@@ -255,7 +255,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 下列範例來自 [DSC 延伸模組處理常式概觀](dsc-overview.md)。
 此範例使用 Resource Manager 範本 (而不是Cmdlet) 來部署擴充功能。
-保存 IisInstall.ps1 配置，將其放在 .ZIP 檔案中（例如`iisinstall.zip`：），然後將檔上載到可訪問的 URL 中。
+保存 IisInstall.ps1 配置,將其放在 .zip`iisinstall.zip`檔中(例如 :),然後將檔上載到可存取的 URL 中。
 此範例會使用 Azure Blob 儲存體，但您可以從任意位置下載 .zip 檔案。
 
 在 Resource Manager 範本中，下列程式碼會指示 VM 下載正確的檔案，然後執行適當的 PowerShell 函式：
@@ -356,7 +356,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 「WmfVersion 為 '{0}'。
 可能的值為 … 和 'latest'"。
 
-**問題**：不允許提供的值。
+**問題**:不允許提供的值。
 
 **解決方式**︰將無效的值變更為有效的值。
 如需詳細資訊，請參閱[詳細資料](#details)中的表格。
@@ -365,9 +365,9 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 「ConfigurationData.url 為 '{0}'。 這不是有效的 URL」「DataBlobUri 為 '{0}'。 這不是有效的 URL」「Configuration.url 為 '{0}'。 這不是有效的 URL」
 
-**問題**：提供的 URL 無效。
+**問題**:提供的 URL 無效。
 
-**解決方案**：檢查所有提供的 URL。
+**解決方案**:檢查所有提供的網址。
 請確定所有 URL 都會解析成延伸模組可在遠端電腦上存取的有效位置。
 
 ### <a name="invalid-registrationkey-type"></a>無效的 RegistrationKey 類型
@@ -420,7 +420,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 
 **問題**︰已定義的屬性需要另一個屬性，但遺漏該屬性。
 
-**解決方案**：
+**解決方案**:
 
 - 提供遺漏的屬性。
 - 移除需要遺漏屬性的屬性。

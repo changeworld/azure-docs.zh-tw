@@ -1,43 +1,31 @@
 ---
-title: 使用範本部署 Azure Spot VM（預覽）
+title: 使用樣本部署 Azure Spot VM
 description: 瞭解如何使用範本部署 Spot VM 以節省成本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1352761e308aa2e26864654dae65c290df47102b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082790"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548245"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用資源管理器範本部署 Spot VM
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用資源管理員樣本部署 Spot VM
 
-使用[Spot VM](spot-vms.md)使您能夠利用我們未使用的容量，從而顯著節省成本。 在 Azure 需要返回容量的任何時間點，Azure 基礎結構將驅逐 Spot VM。 因此，Spot VM 非常適合處理批次處理作業、開發/測試環境、大型計算工作負載等中斷的工作負載。
+使用[Spot VM](spot-vms.md)使您能夠利用我們未使用的容量,從而顯著節省成本。 在 Azure 需要返回容量的任何時間點,Azure 基礎結構將驅逐 Spot VM。 因此,Spot VM 非常適合處理批次處理作業、開發/測試環境、大型計算工作負載等中斷的工作負載。
 
-現貨 VM 的定價基於區域和 SKU 是可變的。 有關詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。
+現貨 VM 的定價基於區域和 SKU 是可變的。 有關詳細資訊,請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。
 
-您可以選擇為 VM 設置您願意每小時支付的最高價格。 Spot VM 的最高價格可以用美元 （USD） 設置，最多使用 5 個小數位。 例如，該值`0.98765`將是每小時 0.98765 美元的最高價格。 如果將最高價格設置為`-1`，則 VM 不會根據價格被逐出。 VM 的價格將是 Spot 的當前價格或標準 VM 的價格，只要容量和配額可用，標準 VM 的價格就更少了。 有關設置最高價格的詳細資訊，請參閱[現貨 VM - 定價](spot-vms.md#pricing)。
+您可以選擇為 VM 設置您願意每小時支付的最高價格。 Spot VM 的最高價格可以用美元 (USD) 設置,最多使用 5 個小數位。 例如,該值`0.98765`將是每小時 0.98765 美元的最高價格。 如果將最高價格設置為`-1`,則 VM 不會根據價格被逐出。 VM 的價格將是 Spot 的當前價格或標準 VM 的價格,只要容量和配額可用,標準 VM 的價格就更少了。 有關設置最高價格的詳細資訊,請參閱[現貨 VM - 定價](spot-vms.md#pricing)。
 
-> [!IMPORTANT]
-> 競價實例當前處於公共預覽版中。
-> 不建議生產工作負載使用此預覽版本。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
 
 ## <a name="use-a-template"></a>使用範本
 
-對於 Spot 範本部署，`"apiVersion": "2019-03-01"`請使用或更高版本。 在範本`priority`中`evictionPolicy`添加`billingProfile`和 屬性：
+對於 Spot 範本`"apiVersion": "2019-03-01"`部署, 請使用或更高版本。 `priority``billingProfile`新增與`evictionPolicy`屬性:
 
 ```json
 "priority": "Spot",
@@ -47,7 +35,7 @@ ms.locfileid: "79082790"
 }
 ```
 
-下面是一個示例範本，其中包含 Spot VM 的添加屬性。 將資源名稱替換為您自己的資源名稱，`<password>`並在 VM 上用本地管理員帳戶的密碼替換資源名稱。
+下面是一個範例範本,其中包含 Spot VM 的添加屬性。 將資源名稱取代為您自己的資源名稱,`<password>`並在 VM 上用本地管理員帳戶的密碼替換資源名稱。
 
 ```json
 {
@@ -188,4 +176,4 @@ ms.locfileid: "79082790"
 
 您還可以使用[Azure PowerShell](../windows/spot-powershell.md)或[Azure CLI](spot-cli.md)創建 Spot VM。
 
-如果遇到錯誤，請參閱[錯誤代碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果遇到錯誤,請參閱[錯誤代碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

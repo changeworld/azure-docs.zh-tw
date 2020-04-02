@@ -1,28 +1,28 @@
 ---
-title: 使用自訂策略配置資源擁有者密碼憑據流
+title: 使用自訂策略設定資源擁有者密碼認證串流
 titleSuffix: Azure AD B2C
-description: 瞭解如何使用 Azure 活動目錄 B2C 中的自訂策略配置資源擁有者密碼憑據 （ROPC） 流。
+description: 瞭解如何使用 Azure 活動目錄 B2C 中的自訂策略配置資源擁有者密碼認證認證 (ROPC) 流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186982"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529177"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>在 Azure Active Directory B2C 中使用自訂原則來設定資源擁有者密碼認證流程
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-在 Azure 活動目錄 B2C（Azure AD B2C）中，資源擁有者密碼憑據 （ROPC） 流是 OAuth 標準身份驗證流。 在此流程中，應用程式 (也稱為信賴憑證者) 會以有效的認證交換權杖。 認證包含使用者識別碼和密碼。 傳回的權杖為識別碼權杖、存取權杖及重新整理權杖。
+在 Azure 活動目錄 B2C(Azure AD B2C)中,資源擁有者密碼認證認證 (ROPC) 串流是 OAuth 標準身分驗證流。 在此流程中，應用程式 (也稱為信賴憑證者) 會以有效的認證交換權杖。 認證包含使用者識別碼和密碼。 傳回的權杖為識別碼權杖、存取權杖及重新整理權杖。
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
@@ -124,7 +124,7 @@ ms.locfileid: "78186982"
     </TechnicalProfile>
     ```
 
-    將**client_id**的**預設值**替換為您在先決條件教程中創建的代理身份體驗框架應用程式的應用程式 ID。 然後，將**resource_id**的**預設值**替換為您在先決條件教程中創建的標識體驗框架應用程式的應用程式 ID。
+    將**client_id**的**預設值**替換為您在先決條件教程中創建的代理身份體驗框架應用程式的應用程式 ID。 然後,將**resource_id**的**預設值**替換為您在先決條件教程中創建的標識體驗框架應用程式的應用程式 ID。
 
 5. 將下列 **ClaimsProvider** 元素及其技術設定檔一起新增至 **ClaimsProviders** 元素：
 
@@ -239,7 +239,7 @@ ms.locfileid: "78186982"
     ```
 
 5. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
-6. **啟用覆蓋策略（如果存在**），然後流覽並選擇*ROPC_Auth.xml*檔。
+6. **啟用覆蓋策略(如果存在**),然後瀏覽並選擇*ROPC_Auth.xml*檔。
 7. 按一下 [上傳]****。
 
 ## <a name="test-the-policy"></a>測試原則
