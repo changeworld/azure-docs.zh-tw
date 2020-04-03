@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: tzvikei
-author: tsikiksr
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/04/2020
+ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129685"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366532"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -53,7 +53,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 您會透過 Azure Machine Learning 在 https://ml.azure.com 中完成下列實驗設定及執行步驟；這是統一的 Web 介面，為所有技能等級的資料科學從業人員，提供執行資料科學案例的機器學習工具。 Internet Explorer 瀏覽器不支援此介面。
 
-1. 在 https://ml.azure.com 登入 Azure Machine Learning。
+1. 登入 [Azure Machine Learning](https://ml.azure.com)。
 
 1. 選取訂用帳戶與您建立的工作區。
 
@@ -201,9 +201,9 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 ### <a name="delete-the-deployment-instance"></a>刪除部署執行個體
 
-如果您想保留資源群組與工作區以進行其他教學課程和探索，可以在 https://ml.azure.com/ 中只刪除 Azure Machine Learning 的部署執行個體。 
+如果您想保留資源群組與工作區以進行其他教學課程和探索，可以在 https:\//ml.azure.com/ 只刪除 Azure Machine Learning 的部署執行個體。 
 
-1. 移至 https://ml.azure.com/ 的 Azure Machine Learning。 瀏覽至您的工作區，並在左側的 [資產]  窗格下，選取 [端點]  。 
+1. 移至 [Azure Machine Learning](https://ml.azure.com/)。 瀏覽至您的工作區，並在左側的 [資產]  窗格下，選取 [端點]  。 
 
 1. 選取您想要刪除的部署，然後選取 [刪除]  。 
 

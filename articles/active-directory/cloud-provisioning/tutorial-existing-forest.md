@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa612ad30ae0faa42071613be15c1d91fb96b8f6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74868672"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332271"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>將現有及全新樹系與單一 Azure AD 租用戶整合
 
@@ -43,7 +43,7 @@ ms.locfileid: "74868672"
 
      | 連接埠號碼 | 使用方式 |
      | --- | --- |
-     | **80** | 驗證 SSL 憑證時下載憑證撤銷清單 (CRL) |
+     | **80** | 驗證 TLS/SSL 憑證時下載憑證撤銷清單 (CRL) |
      | **443** | 處理所有與服務之間的輸出通訊 |
      | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站上。 |
      
