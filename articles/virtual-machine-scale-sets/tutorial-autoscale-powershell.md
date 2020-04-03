@@ -190,8 +190,8 @@ mstsc /v 52.168.121.216:50001
 
 - 選取 [確定]  ，以接受 [使用建議的安全性、隱私權與相容性設定]  的提示
 - 在網址列中輸入 *http://download.sysinternals.com/files/CPUSTRES.zip* 。
-- 在啟用 [Internet Explorer 增強式安全性設定] 的情況下，選擇將  *網域 http://download.sysinternals.com 新增*至信任網站清單。
-- 在出現檔案下載的提示時，選取 [開啟]  ，然後選取並**執行***CPUSTRES.EXE* 工具。
+- 在啟用 [Internet Explorer 增強式安全性設定] 的情況下，選擇將 *http://download.sysinternals.com* 網域**新增**至信任網站清單。
+- 在出現檔案下載的提示時，選取 [開啟]  ，然後選取並**執行** *CPUSTRES.EXE* 工具。
 
 若要產生一些 CPU 負載，請勾選**作用中**執行緒的兩個方塊。 從這兩個執行緒的 [活動]  下拉式功能表中，選取 [最大值]  。 您可以開啟工作管理員，確認 VM 的 CPU 負載是 100%。
 
@@ -235,7 +235,7 @@ MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6        
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Deleting
 ```
 
-使用 *結束*while`Ctrl-c`。 擴展集會繼續每隔 5 分鐘縮減一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
+使用 `Ctrl-c` 結束 *while*。 擴展集會繼續每隔 5 分鐘縮減一次，並移除一個 VM 執行個體，直到達到最小執行個體計數 (兩個) 為止。
 
 
 ## <a name="clean-up-resources"></a>清除資源
