@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: 62c1e29b668c3ef58b0e26e2749c55b913279425
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545683"
+ms.locfileid: "80585861"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -86,7 +86,7 @@ Azure 監視器現已可支援[新的計量警示類型](../../azure-monitor/pla
 |Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [套用服務環境多角色池](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [套用服務環境輔助池](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | 是 | 否 | [套用服務計劃](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/sites | 是 | 否 | [應用程式服務](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites)|
+|Microsoft.Web/sites | 是 | 否 | [App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) 與[函式](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [App Service 位置](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>承載結構描述

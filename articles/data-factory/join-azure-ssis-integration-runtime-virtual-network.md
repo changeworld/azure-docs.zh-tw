@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: e94eef3072b9636c8022a5949b05519c1554cb9e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521952"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585781"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
@@ -229,11 +229,12 @@ else
 -   埠 443 的目標為 Azure 雲服務。
 
     如果使用 Azure 防火牆,則可以使用 Azure 雲端服務標記指定網路規則。 對於其他類型的防火牆,您可以簡單地允許埠 443 的所有目標,也可以根據 Azure 環境的類型在 FQDN 下方允許:
+
     | Azure 環境 | 端點                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure 公用      | <ul><li><b>Azure 資料工廠(管理)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure 儲存(管理)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure 容器註冊表(自訂設定)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中心(紀錄紀錄)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>微軟記錄服務(內部使用)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
-    | Azure Government  | <ul><li><b>Azure 資料工廠(管理)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure 儲存(管理)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure 容器註冊表(自訂設定)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.us</li></ul></li><li><b>事件中心(紀錄紀錄)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>微軟記錄服務(內部使用)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure China 21Vianet     | <ul><li><b>Azure 資料工廠(管理)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure 儲存(管理)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure 容器註冊表(自訂設定)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.cn</li></ul></li><li><b>事件中心(紀錄紀錄)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>微軟記錄服務(內部使用)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+    | Azure 公用      | <ul><li><b>Azure 資料工廠(管理)</b><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure 儲存(管理)</b><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure 容器註冊表(自訂設定)</b><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中心(紀錄紀錄)</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>微軟記錄服務(內部使用)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure 資料工廠(管理)</b><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure 儲存(管理)</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure 容器註冊表(自訂設定)</b><ul><li>\*.azurecr.us</li></ul></li><li><b>事件中心(紀錄紀錄)</b><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>微軟記錄服務(內部使用)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure 資料工廠(管理)</b><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure 儲存(管理)</b><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure 容器註冊表(自訂設定)</b><ul><li>\*.azurecr.cn</li></ul></li><li><b>事件中心(紀錄紀錄)</b><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>微軟記錄服務(內部使用)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     對於 Azure 儲存、Azure 容器註冊錶和事件中心的 FQDN,您還可以選擇為虛擬網路啟用以下服務終結點,以便對這些終結點的網路流量通過 Azure 骨幹網,而不是路由到防火牆設備:
     -  Microsoft.Storage

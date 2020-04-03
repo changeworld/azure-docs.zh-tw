@@ -22,6 +22,8 @@
       href: Quickstarts/quickstart-sdk.md
 - name: 教學課程
   items:
+    - name: 與 Power Virtual Agents 整合
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: 使用批次檔進行測試
       href: Quickstarts/batch-testing.md
 - name: 概念

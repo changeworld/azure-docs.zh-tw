@@ -4,18 +4,18 @@ description: 瞭解 Azure 監視器中的操作規則以及如何配置和管理
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0498325984641641d6dfc9ee6b89f66800b5c7d2
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546491"
+ms.locfileid: "80618980"
 ---
 # <a name="action-rules-preview"></a>操作規則(預覽)
 
 操作規則可説明您在任何 Azure 資源管理員範圍(Azure 訂閱、資源組或目標資源)上定義或禁止操作。 它們具有各種篩選器,可説明您縮小要操作的特定警報實例子集。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
 ## <a name="why-and-when-should-you-use-action-rules"></a>為什麼要和何時使用操作規則?
 

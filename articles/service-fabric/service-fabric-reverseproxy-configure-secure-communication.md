@@ -1,16 +1,16 @@
 ---
-title: Azure 服務結構反向代理安全通信
+title: Azure 服務結構反向代理安全通訊
 description: 配置反向代理以在 Azure 服務結構應用程式中啟用安全的端到端通信。
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282246"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617119"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>安全服務與反向 Proxy 的連線
 
@@ -77,7 +77,7 @@ ms.locfileid: "79282246"
 
    若要指定服務的通用名稱和簽發者指紋清單，請在 **fabricSettings** 下方新增 [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) 區段，如下所示。 您可在**參數**陣列中新增多組憑證通用名稱和簽發者指紋。 
 
-   當反向 Proxy 要連接某個端點時，若該端點出示的憑證通用名稱和簽發者指紋符合此處指定的任何值，即會建立 SSL 通道。 
+   如果終結點反向代理連接到顯示公共名稱證書,並且頒發者指紋與此處指定的任何值匹配,則建立 TLS 通道。
    如果憑證詳細資料比對發生錯誤，反向 Proxy 就無法完成用戶端的要求，並會顯示狀態碼 502 (閘道錯誤)。 HTTP 狀態行也會出現「SSL 憑證無效」的句子。 
 
    ```json
@@ -143,7 +143,7 @@ ms.locfileid: "79282246"
    }
    ```
 
-   如果這個設定項目中有列入伺服器憑證的指紋，反向 Proxy 的 SSL 連線即可成功。 否則，它會終止連線而無法完成用戶端的要求，並顯示 502 (閘道錯誤)。 HTTP 狀態行也會出現「SSL 憑證無效」的句子。
+   如果伺服器證書的指紋列在此配置條目中,則反向代理將繼承 TLS 連接。 否則，它會終止連線而無法完成用戶端的要求，並顯示 502 (閘道錯誤)。 HTTP 狀態行也會出現「SSL 憑證無效」的句子。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>當服務公開安全與不安全端點時的端點選取邏輯
 Service Fabric 支援設定多個服務端點。 如需詳細資訊，請參閱[在服務資訊清單中指定資源](service-fabric-service-manifest-resources.md)。
@@ -173,12 +173,12 @@ Service Fabric 支援設定多個服務端點。 如需詳細資訊，請參閱[
 > 在 **SecureOnlyMode** 中運作時，如果用戶端指定的 **ListenerName** 是對應至 HTTP (不安全) 端點，則反向 Proxy 無法完成要求，並會顯示 HTTP 狀態碼 404 (找不到)。
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>設定透過反向 Proxy 的用戶端憑證驗證
-當反向 Proxy 端發生 SSL 終止時，所有用戶端憑證資料都會遺失。 若要讓服務執行用戶端憑證驗證，請在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 區段中，指定 **ForwardClientCertificate** 設定。
+TLS 終止發生在反向代理處,並且所有用戶端證書數據都丟失。 若要讓服務執行用戶端憑證驗證，請在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 區段中，指定 **ForwardClientCertificate** 設定。
 
-1. 如果 **ForwardClientCertificate** 設為 **false**，則在反向 Proxy 與用戶端的 SSL 交握期間，將不會要求用戶端憑證。
+1. 當**轉發用戶端證書**設置為**false**時,反向代理將不會在 TLS 與用戶端握手期間請求客戶端證書。
 此為預設行為。
 
-2. 如果 **ForwardClientCertificate** 設為 **true**，則在反向 Proxy 與用戶端的 SSL 交握期間，會要求用戶端憑證。
+2. 當**轉發用戶端證書**設置為**true**時,反向代理在與用戶端的 TLS 握手期間請求客戶端的證書。
 接著，它會使用名為 **X-Client-Certificate** 的自訂 HTTP 標頭來轉送用戶端憑證資料。 標頭值是用戶端憑證的 PEM 格式字串 (base64 編碼)。 檢查憑證資料之後，服務或許能成功完成要求，也可能無法完成要求，並顯示適當的狀態碼。
 如果用戶端未出示憑證，反向 Proxy 會轉送空白標頭，以讓服務處理這種情況。
 
@@ -188,7 +188,7 @@ Service Fabric 支援設定多個服務端點。 如需詳細資訊，請參閱[
 
 ## <a name="next-steps"></a>後續步驟
 * [在叢集上安裝及設定反向 Proxy](service-fabric-reverseproxy-setup.md)。
-* 請參閱[配置反向代理以連接到安全服務](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
+* 請參考[設定反向代理以連線到安全服務](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
 * 請參閱 [GitHub 上的範例專案](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)中服務之間的 HTTP 通訊範例。
 * [使用 Reliable Services 遠端服務進行遠端程序呼叫](service-fabric-reliable-services-communication-remoting.md)
 * [在 Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)

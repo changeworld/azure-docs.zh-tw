@@ -1,24 +1,24 @@
 ---
-title: Azure 監視器的常見警報架構定義
-description: 瞭解 Azure 監視器的常見警報架構定義
+title: Azure 監視器的常見警示定義
+description: 瞭解 Azure 監視器的常見警示定義
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cda3beb23581941dc5a475a86dde446f7c64ed3c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275018"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616308"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 
-本文介紹了 Azure 監視器[的常見警報架構定義](https://aka.ms/commonAlertSchemaDocs)，包括 Webhook、Azure 邏輯應用、Azure 函數和 Azure 自動化 Runbook 的警報架構定義。 
+本文介紹了 Azure 監視器[的常見警報架構定義](https://aka.ms/commonAlertSchemaDocs),包括 Webhook、Azure 邏輯應用、Azure 函數和 Azure 自動化 Runbook 的警報架構定義。 
 
-任何警報實例都描述受影響的資源和警報的原因。 這些實例在以下各節中的通用架構仲介紹：
-* **要點**：一組標準化欄位，在所有警報類型中很常見，用於描述警報所打開的資源，以及其他常見警報中繼資料（例如，嚴重性或描述）。 
-* **警報上下文**：一組描述警報原因的欄位，欄位因警報類型而異。 例如，指標警報包括諸如警報上下文中的指標名稱和指標值等欄位，而活動日誌警報包含有關生成警報的事件的資訊。 
+任何警報實例都描述受影響的資源和警報的原因。 這些實例在以下各節中的通用架構中介紹:
+* **要點**:一組標準化欄位,在所有警報類型中很常見,用於描述警報所打開的資源,以及其他常見警報元數據(例如,嚴重性或描述)。 
+* **警報上下文**:一組描述警報原因的欄位,欄位因警報類型而異。 例如,指標警報包括諸如警報上下文中的指標名稱和指標值等欄位,而活動日誌警報包含有關生成警報的事件的資訊。 
 
 **樣品警報有效負載**
 ```json
@@ -74,18 +74,18 @@ ms.locfileid: "79275018"
 | 欄位 | 描述|
 |:---|:---|
 | alertId | 識別警報實例的 GUID 唯一標識。 |
-| 警報規則 | 生成警報實例的警報規則的名稱。 |
-| Severity | 警報的嚴重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
-| 信號類型 | 標識定義警報規則的信號。 可能的值：指標、日誌或活動日誌。 |
-| 監視器條件 | 警報觸發時，警報的監視器條件設置為 **"已觸發**"。 當導致警報觸發的基本條件清除時，監視器條件設置為 **"已解決**"。   |
+| 警示規則 | 生成警報實例的警報規則的名稱。 |
+| Severity | 警報的嚴重性。 可能的值:Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
+| 信號類型 | 標識定義警報規則的信號。 可能的值:指標、日誌或活動日誌。 |
+| 監視器條件 | 警報觸發時,警報的監視器條件設置為 **「已觸發**」。。 當導致警報觸發的基本條件清除時,監視器條件設置為 **「已解決**」。。   |
 | 監控服務 | 生成警報的監視服務或解決方案。 警報上下文的欄位由監視服務指定。 |
-| 警報目標Ids | 受警報影響的 Azure 資源管理器標識的清單。 對於在日誌分析工作區或應用程式見解實例上定義的日誌警報，它是相應的工作區或應用程式。 |
-| 起源警報Id | 警報實例的 ID，由生成警報實例的監視服務生成。 |
-| 已觸發日期時間 | 在協調通用時間 （UTC） 中觸發警報實例的日期和時間。 |
-| 已解決日期時間 | 警報實例的監視器條件設置為 UTC**中已解決**的日期和時間。 當前僅適用于指標警報。|
-| description | 描述，如警報規則中定義的。 |
+| 警示目標Ids | 受警報影響的 Azure 資源管理員標識的清單。 對於在日誌分析工作區或應用程式見解實例上定義的日誌警報,它是相應的工作區或應用程式。 |
+| 起源警報Id | 警報實例的 ID,由生成警報實例的監視服務生成。 |
+| 已觸發日期時間 | 在協調通用時間 (UTC) 中觸發警報實例的日期和時間。 |
+| 已解決日期時間 | 警報實例的監視器條件設置為 UTC**中已解決**的日期和時間。 當前僅適用於指標警報。|
+| description | 描述,如警報規則中定義的。 |
 |本質版本| 要點部分的版本號。|
-|警報上下文版本 | 分區的版本`alertContext`號。 |
+|警示內容 | 分區的版本`alertContext`號。 |
 
 **樣本值**
 ```json
@@ -149,7 +149,7 @@ ms.locfileid: "79275018"
 ### <a name="log-alerts"></a>記錄警示
 
 > [!NOTE]
-> 對於定義了自訂電子郵件主題和/或 JSON 負載的日誌警報，啟用通用架構會將電子郵件主題和/或有效負載架構還原到如下所示的模式。 啟用了通用架構的警報的上限為每個警報 256 KB。 如果搜尋結果導致警報大小超過此閾值，則搜尋結果不會嵌入到日誌警報負載中。 您可以通過檢查標誌`IncludeSearchResults`來確定這一點。 如果不包括搜尋結果，則應將搜索查詢與[日誌分析 API](https://docs.microsoft.com/rest/api/loganalytics/query/get)結合使用。 
+> 對於定義了自定義電子郵件主題和/或 JSON 負載的日誌警報,啟用通用架構會將電子郵件主題和/或有效負載架構還原到如下所示的模式。 啟用了通用架構的警報的上限為每個警報 256 KB。 如果搜尋結果導致警報大小超過此閾值,則搜尋結果不會嵌入到日誌警報負載中。 您可以通過檢查`IncludeSearchResults`標誌 來確定這一點。 如果不包括搜尋結果,則應將搜索查詢與[日誌分析 API](https://docs.microsoft.com/rest/api/loganalytics/query/get)結合使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -171,7 +171,7 @@ ms.locfileid: "79275018"
     "SearchIntervalInMinutes": "15",
     "Threshold": 10000,
     "Operator": "Less Than",
-    "SearchResult": {
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -234,7 +234,7 @@ ms.locfileid: "79275018"
     "Threshold": 10000,
     "Operator": "Less Than",
     "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
-    "SearchResult": {
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -482,5 +482,5 @@ ms.locfileid: "79275018"
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解有關[常見警報架構](https://aka.ms/commonAlertSchemaDocs)的更多。
-- [瞭解如何創建使用通用警報架構來處理所有警報的邏輯應用](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)。 
+- [瞭解如何建立使用通用警報架構來處理所有警示的邏輯應用](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)。 
 

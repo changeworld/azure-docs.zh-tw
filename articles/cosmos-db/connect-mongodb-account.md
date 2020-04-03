@@ -1,6 +1,6 @@
 ---
 title: 將 MongoDB 應用程式連接到 Azure Cosmos DB
-description: 瞭解如何通過從 Azure 門戶獲取連接字串將 MongoDB 應用連接到 Azure Cosmos DB
+description: 瞭解如何透過 Azure 門戶取得連接字串將 MongoDB 應用連接到 Azure Cosmos DB
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e3ab6282a3c61e12dce5dd17bc0859c0d73a7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051696"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617044"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>將 MongoDB 應用程式連接到 Azure Cosmos DB
 
@@ -22,7 +22,7 @@ ms.locfileid: "80051696"
 本教學課程提供兩種方式來擷取連接字串資訊︰
 
 - [快速啟動方法](#get-the-mongodb-connection-string-by-using-the-quick-start)，用來搭配 .NET、Node.js、MongoDB Shell、Java 和 Python 驅動程式
-- [自訂連接字串方法](#get-the-mongodb-connection-string-to-customize)，用於其他驅動程式
+- [自訂連接字串方法](#get-the-mongodb-connection-string-to-customize),用於其他驅動程式
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -51,19 +51,19 @@ ms.locfileid: "80051696"
 ## <a name="connection-string-requirements"></a>連接字串需求
 
 > [!Important]
-> Azure Cosmos DB 有嚴格的安全性需求和標準。 Azure Cosmos DB 帳戶需要通過*SSL*進行身份驗證和安全通信。 
+> Azure Cosmos DB 有嚴格的安全性需求和標準。 Azure Cosmos DB 帳戶需要透過*TLS*進行身分驗證和安全通訊。 
 >
 >
 
-Azure Cosmos DB 支援標準 MongoDB 連接字串 URI 格式，有幾個特定需求︰Azure Cosmos DB 帳戶需要驗證和透過 SSL 的安全通訊。 所以，連接字串格式為：
+Azure Cosmos DB 支援標準的 MongoDB 連接字串 URI 格式,具有幾個特定要求:Azure Cosmos DB 帳戶需要透過 TLS 進行身份驗證和安全通訊。 所以，連接字串格式為：
 
     mongodb://username:password@host:port/[database]?ssl=true
 
 在先前顯示的 [連接字串]**** 刀鋒視窗中可取得此字串的值：
 
-* 使用者名（必需）：宇宙帳戶名稱。
-* 密碼（必需）：宇宙帳戶密碼。
-* 主機（必需）：科斯莫斯帳戶的 FQDN。
+* 使用者名(必需):宇宙帳戶名稱。
+* 密碼(必需):宇宙帳戶密碼。
+* 主機(必需):科斯莫斯帳戶的 FQDN。
 * 連接埠 (必要)：10255。
 * 資料庫 (選用)：連線所使用的資料庫。 如果未提供資料庫，則預設資料庫是 "test"。
 * ssl=true (必要)

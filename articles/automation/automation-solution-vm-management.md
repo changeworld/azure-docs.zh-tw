@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548378"
+ms.locfileid: "80607484"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自動化中的「停機期間啟動/停止 VM」解決方案
 
@@ -140,8 +140,8 @@ ms.locfileid: "80548378"
 |External_Stop_ResourceGroupNames | 使用逗號分隔值指定一或多個作為停止動作目標的資源群組。|
 |External_WaitTimeForVMRetrySeconds |在序列啟動/停止執行簿的 VM 上執行操作的等待時間(以秒為單位)。<br> 默認值為 2100 秒,支援配置為最大值 10800 或 3 小時。|
 |Internal_AutomationAccountName | 指定自動化帳戶的名稱。|
-|Internal_AutoSnooze_ARM_WebhookURI | 為經典 VM 的自動停止方案指定 Webhook URI。|
-|Internal_AutoSnooze_WebhookUri | 指定針對 AutoStop 案例呼叫的 Webhook URI。|
+|Internal_AutoSnooze_ARM_WebhookURI | 為 VM 的自動停止方案指定 Webhook URI。|
+|Internal_AutoSnooze_WebhookUri | 為經典 VM 的自動停止方案指定 Webhook URI。|
 |Internal_AzureSubscriptionId | 指定 Azure 訂用帳戶識別碼。|
 |Internal_ResourceGroupName | 指定自動化帳戶資源群組名稱。|
 

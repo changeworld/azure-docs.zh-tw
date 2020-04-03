@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: b4601968a318388086a60ef98e4359ae01f652ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662097"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585703"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure 監視器記錄查詢語言差異
 
@@ -29,19 +29,18 @@ ms.locfileid: "77662097"
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的函式
 
-* [群集（）](/azure/kusto/query/clusterfunction)
+* [叢集()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current()、current_cursor()](/azure/kusto/query/cursorcurrent)
-* [資料庫（）](/azure/kusto/query/databasefunction)
+* [資料庫()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
 
 ### <a name="operators-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的運算子
 
-* [跨群集聯接](/azure/kusto/query/joincrosscluster)
-* [externaldata 運算子](/azure/kusto/query/externaldata-operator)
+* [跨群集聯結](/azure/kusto/query/joincrosscluster)
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的外掛程式
 
@@ -52,8 +51,8 @@ ms.locfileid: "77662097"
 ## <a name="additional-operators-in-azure-monitor"></a>Azure 監視器中的其他運算子
 下列運算子支援特定 Azure 監視器功能，且無法在 Azure 監視器以外的地方使用。
 
-* [應用程式（）](app-expression.md)
-* [工作區（）](workspace-expression.md)
+* [應用程式()](app-expression.md)
+* [工作區()](workspace-expression.md)
 
 ## <a name="next-steps"></a>後續步驟
 

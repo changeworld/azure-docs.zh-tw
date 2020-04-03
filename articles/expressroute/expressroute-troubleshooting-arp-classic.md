@@ -1,18 +1,18 @@
 ---
-title: Azure 快速路由：ARP 表 - 故障排除：經典
+title: Azure 快速路由:ARP 表 - 故障排除:經典
 description: 此頁面提供指示，說明如何取得適用於 ExpressRoute 線路 的 ARP 資料表 - 傳統部署模型。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 01/30/2017
-ms.author: ganesr
-ms.openlocfilehash: 7c223e3802d499e002b12580b17cb9ee3f1bea97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076619"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618630"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在傳統部署模型中取得 ARP 表格
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ARP 表格可協助您驗證第 2 層組態，並針對基本的第 2 層連線�
 繼續操作之前，請確定您已備妥以下必要條件：
 
 * 至少使用一個對等互連設定的有效 ExpressRoute 線路。 線路必須由連線提供者完全設定。 您 (或您的連線提供者) 必須在這個線路上至少設定一個對等互連 (Azure 私用、Azure 公用或 Microsoft)。
-* 用來設定對等互連 (Azure 私用、Azure 公用和 Microsoft) 的 IP 位址範圍。 查看[ExpressRoute 路由要求頁](expressroute-routing.md)中的 IP 位址分配示例，瞭解 IP 位址如何映射到您端和 ExpressRoute 端的介面。 您可以藉由檢閱 [ExpressRoute 對等互連組態頁面](expressroute-howto-routing-classic.md)來取得對等互連組態的相關資訊。
+* 用來設定對等互連 (Azure 私用、Azure 公用和 Microsoft) 的 IP 位址範圍。 查看[ExpressRoute 路由要求頁](expressroute-routing.md)中的 IP 位址分配範例,瞭解 IP 位址如何映射到您端和 ExpressRoute 端的介面。 您可以藉由檢閱 [ExpressRoute 對等互連組態頁面](expressroute-howto-routing-classic.md)來取得對等互連組態的相關資訊。
 * 由網路團隊或連線提供者所提供的資訊，其與這些 IP 位址搭配使用之介面的 MAC 位址相關。
 * 適用於 Azure 的最新 Windows PowerShell 模組 (1.50 或更新版本)。
 

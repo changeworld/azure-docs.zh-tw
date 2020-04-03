@@ -24,17 +24,11 @@
           href: quickstarts/ruby.md
         - name: 使用 Go
           href: quickstarts/go.md
-    - name: SDK
+    - name: 用戶端程式庫
       expanded: true
       items:
-        - name: '使用 C#'
-          href: visual-search-sdk-c-sharp.md
-        - name: 使用 Node.js
-          href: visual-search-sdk-node.md
-        - name: 使用 Python
-          href: visual-search-sdk-python.md
-        - name: 使用 Java
-          href: visual-search-sdk-java.md
+        - name: Bing 圖像式搜尋用戶端程式庫
+          href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 上傳影像

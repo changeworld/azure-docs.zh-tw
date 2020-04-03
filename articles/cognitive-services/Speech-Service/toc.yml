@@ -56,7 +56,7 @@
     - name: 自訂
       items:
         - name: 準備自訂語音的資料
-          href: how-to-custom-speech-test-data.md
+          href: how-to-custom-speech-test-and-train.md
         - name: 檢查自訂語音資料
           href: how-to-custom-speech-inspect-data.md
         - name: 評估自訂語音精確度
@@ -67,10 +67,6 @@
           href: how-to-custom-speech-deploy-model.md
         - name: 建立人為標記的轉譯
           href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: 自訂關鍵字命名方針
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: 找出自訂關鍵字
-          href: speech-devices-sdk-create-kws.md
     - name: 參考
       items:
         - name: 語音 SDK API
@@ -448,6 +444,10 @@
         - name: Azure 容器執行個體上的語音容器
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
+    - name: 資源
+      items:
+        - name: 容器常見問題集
+          href: speech-container-faq.md
 - name: 語音 SDK
   items:
     - name: 概觀

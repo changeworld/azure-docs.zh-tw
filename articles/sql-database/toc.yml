@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: 概念
   items:
-    - name: 常見功能文件
-      href: sql-database-paas-index.yml
     - name: 功能比較
       href: sql-database-features.md
     - name: 操作指南
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: 延展性
       items:
-        - name: 延展性文件
-          href: sql-database-scalability-index.yml
         - name: 擴大/縮小
           href: sql-database-scale-resources.md
         - name: 讀取向外延展
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: 資料庫功能
       items:
-        - name: 資料庫功能文件
-          href: sql-database-features-index.yml
         - name: 多模型功能
           href: sql-database-multi-model-features.md
         - name: 記憶體內
@@ -685,7 +679,6 @@
         - name: 程式碼範例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL 受控執行個體
-  href: sql-database-managed-instance-index.yml
   items:
     - name: 概觀
       items:

@@ -1,6 +1,6 @@
 ---
-title: 使用 IDENTITY 創建代理項
-description: 使用 IDENTITY 屬性在 SQL Analytics 中的表上創建代理項的建議和示例。
+title: 使用 IDENTITY 建立代理項
+description: 使用 IDENTITY 屬性在 Synapse SQL 池中的表上創建代理項的建議和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351301"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586340"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>使用 IDENTITY 在 SQL 分析中創建代理金鑰
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中建立代理項
 
-使用 IDENTITY 屬性在 SQL Analytics 中的表上創建代理項的建議和示例。
+使用 IDENTITY 屬性在 Synapse SQL 池中的表上創建代理項的建議和示例。
 
 ## <a name="what-is-a-surrogate-key"></a>什麼是代理金鑰
 
-資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料建模者喜歡在設計 SQL Analytics 模型時在其表上創建代理項。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。  
+資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
-IDENTITY 屬性旨在橫向擴展到 SQL Analytics 資料庫中的所有分佈，而不會影響負載性能。 因此，IDENTITY 的實作便是為了達成這些目標。
+IDENTITY 屬性旨在橫向擴展到 Synapse SQL 池中的所有分佈,而不會影響負載性能。 因此，IDENTITY 的實作便是為了達成這些目標。
 
 您在初次建立資料表時，可以使用類似下列陳述式的語法，將資料表定義為具有 IDENTITY 屬性：
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的配置
 
-IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 但是，在 SQL 分析中，缺少保證更為明顯。
+IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 但是,在 Synapse SQL 池中,缺少保證更為明顯。
 
 下列範例將做出說明：
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) 會遵循針對 SELECT..INTO 記錄的相同 SQL S
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>明確地將值插入 IDENTITY 資料行
 
-SQL 分析`SET IDENTITY_INSERT <your table> ON|OFF`支援語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
+突觸 SQL`SET IDENTITY_INSERT <your table> ON|OFF`池支援 語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
 
 許多資料製造模型者喜歡在其維度的特定資料列中使用預先定義的負數值。 其中一個範例為 -1 或「未知的成員」資料列。
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 目前在使用 IDENTITY 資料行將資料載入資料表時，並無法使用 `CREATE TABLE AS SELECT`。
 >
 
-有關載入資料的詳細資訊，請參閱為 SQL 分析和[載入最佳實踐](guidance-for-loading-data.md)[設計提取、載入和轉換 （ELT）。](design-elt-data-loading.md)
+有關載入資料的詳細資訊,請參閱為[Synapse SQL 池設計擷取、載入和轉換 (ELT)](design-elt-data-loading.md)與[載入最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系統檢視表
 
@@ -195,9 +195,9 @@ AND     tb.name = 'T1'
 - 資料行也是散發索引鍵時
 - 資料表為外部資料表時
 
-SQL 分析不支援以下相關功能：
+Synapse SQL 池不支援以下相關功能:
 
-- [身份（）](/sql/t-sql/functions/identity-function-transact-sql)
+- [身份()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
@@ -243,4 +243,4 @@ AND     tb.name = 'T1'
 
 - [表概述](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
 - [CREATE TABLE (Transact-SQL) IDENTITY (屬性)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
-- [DBCC 檢查縮進](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
+- [DBCC 檢查縮排](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
