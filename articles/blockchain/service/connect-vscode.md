@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 連線至 Azure 區塊鏈服務
 description: 在 Visual Studio Code 中使用適用於 Ethereum 的 Azure 區塊鏈開發套件擴充功能連線到 Azure 區塊鏈服務聯盟網路
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.topic: quickstart
-ms.reviewer: chrisseg
-ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: caleteet
+ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74977049"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348589"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>快速入門：使用 Visual Studio Code 連線至 Azure 區塊鏈服務聯盟網路
 
@@ -22,7 +22,7 @@ ms.locfileid: "74977049"
 * 完成[快速入門：使用 Azure 入口網站建立區塊鏈成員](create-member.md)或[快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [適用於 Ethereum 的 Azure 區塊鏈服務開發套件擴充功能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x 或更高版本](https://nodejs.org/download)
+* [Node.js 10.15.x 或更高版本](https://nodejs.org)
 * [Git 2.10.x 或更高版本](https://git-scm.com)
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) 將 python.exe 新增至您的路徑。 Azure 區塊鏈服務開發套件需要您的路徑中有 Python 2.7.15 版。
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)

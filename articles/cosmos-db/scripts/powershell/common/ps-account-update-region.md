@@ -1,19 +1,19 @@
 ---
-title: 此 PowerShell 指令碼用以建立具有 IP 防火牆的 Azure Cosmos DB 帳戶
-description: Azure PowerShell 指令碼範例 - 建立具有 IP 防火牆的 Azure Cosmos DB 帳戶
+title: 此 PowerShell 指令碼用以更新 Azure Cosmos 帳戶的區域
+description: Azure PowerShell 指令碼範例 - 更新 Azure Cosmos 帳戶的區域
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 03/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
+ms.openlocfilehash: 4a8e24b4445e2bf29b35e87600de260c523d4376
 ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365674"
+ms.locfileid: "80367171"
 ---
-# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>建立具有 IP 防火牆的 Azure Cosmos DB 帳戶
+# <a name="update-an-azure-cosmos-accounts-regions-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos 帳戶的區域
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,11 @@ ms.locfileid: "80365674"
 ## <a name="sample-script"></a>範例指令碼
 
 > [!NOTE]
-> 此範例會示範如何使用 SQL (核心) API 帳戶。 若要針對其他 API 使用此範例，請複製相關的屬性，並套用至您的 API 專屬指令碼
+> 您不能在相同的作業中修改區域和變更其他 Cosmos 帳戶屬性。 這些必須以兩個不同的作業來完成。
+> [!NOTE]
+> 此範例會示範如何使用 SQL (核心) API 帳戶。 若要針對其他 API 使用此範例，請複製相關的屬性，並套用至您的 API 專屬指令碼。
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-firewall-create.ps1 "Create an Azure Cosmos account with IP Firewall")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update-region.ps1 "Update Azure Cosmos account regions")]
 
 ## <a name="clean-up-deployment"></a>清除部署
 
@@ -40,8 +42,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 注意 |
 |---|---|
-|**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 建立新的 Cosmos DB 帳戶。 |
+|**Azure 資源**| |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | 更新資源。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 9bbe74bd2f3137443b4e239201c604d9de52582e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 786a906241b355cdae403c6ed08b60eb27045d6f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72245688"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385243"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立和加密 Windows 虛擬機器
 
@@ -21,7 +21,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立 VM。 下列範例會建立名為 myVM  的 VM。 此範例會以 azureuser  作為系統管理使用者名稱並以 myPassword12  作為密碼。 
+使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立 VM。 下列範例會建立名為 myVM  的 VM。 此範例會以 azureuser  作為系統管理使用者名稱並以 myPassword12  作為密碼。
 
 ```azurecli-interactive
 az vm create \
@@ -46,7 +46,7 @@ az vm create \
 
 建立虛擬機器和支援資源需要幾分鐘的時間。 下列範例輸出顯示 VM 建立作業成功。
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -65,7 +65,7 @@ Azure 磁碟加密會將其加密金鑰儲存在 Azure Key Vault 中。 使用 [
 > [!Important]
 > 每個金鑰保存庫必須有唯一的名稱。 下列範例會建立名為 *myKV* 的金鑰保存庫，但您必須為自己的金鑰保存庫命名不同名稱。
 
-```azurecli
+```azurecli-interactive
 az keyvault create --name "myKV" --resource-group "myResourceGroup" --location eastus --enabled-for-disk-encryption
 ```
 
@@ -85,13 +85,13 @@ az vm show --name MyVM -g MyResourceGroup
 
 您也會在傳回的輸出中看到下列文字：
 
-```azurecli-interactive
+```
 "EncryptionOperation": "EnableEncryption"
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，您可以使用 [az group delete](/cli/azure/group) 命令來移除資源群組、VM 和金鑰保存庫。 
+若不再需要，您可以使用 [az group delete](/cli/azure/group) 命令來移除資源群組、VM 和金鑰保存庫。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -103,4 +103,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [Azure 磁碟加密概觀](disk-encryption-overview.md)
-

@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 12/31/2019
-ms.openlocfilehash: ea53ee3f3c1d39652982b6343b1e634dac1fbc75
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: a5fbcc1eef8717fdb1aa7f914c3e0ba6594fc27a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281794"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>適用於 Linux 和 Windows 的 Azure 資料科學虛擬機器是什麼？
 
 資料科學虛擬機器 (DSVM) 是 Azure 雲端平台上的自訂 VM 映像，專為進行資料科學建置。 它已預先安裝和預先設定許多常用的資料科學工具，以開始建置智慧應用程式進行進階分析。 
 
 下列項目有提供 DSVM：
-+ **Windows Server 2019 (預覽)**
-+ **Ubuntu 18.04 LTS (預覽)**
++ **Windows Server 2019**
++ **Ubuntu 18.04 LTS**
 + Windows Server 2016
 + Ubuntu 16.04 LTS 和 CentOS 7.4
 
@@ -33,7 +33,7 @@ ms.locfileid: "78360600"
 
 
 ## <a name="why-choose-the-dsvm"></a>為何選擇 DSVM？
-資料科學虛擬機器的目標在於提供無衝突、預先設定的資料科學環境，讓所有技能等級和各個企業的資料專業人員使用。 您可以布建 DSVM，而不是自行推出可比較的工作區。 該選擇可以為您省下幾天或甚至是「幾周」的安裝、設定和套件管理程序。 配置 DSVM 之後，您可以立即開始進行資料科學專案。
+資料科學虛擬機器的目標在於提供無衝突、預先設定的資料科學環境，讓所有技能等級和各個企業的資料專業人員使用。 您可以布建 DSVM，而不是自行推出可比較的工作區。 該選擇可以為您省下幾天或甚至是「幾周」  的安裝、設定和套件管理程序。 配置 DSVM 之後，您可以立即開始進行資料科學專案。
 
 ## <a name="sample-use-cases"></a>範例使用案例
 

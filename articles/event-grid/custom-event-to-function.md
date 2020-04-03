@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708841"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292157"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入門：使用事件方格將自訂事件路由至 Azure 函式
 
@@ -124,7 +124,7 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 ### <a name="azure-powershell"></a>Azure PowerShell
 第二個範例會使用 PowerShell 執行類似的步驟。
 
-1. 在 Azure 入口網站中選取 [Cloud Shell]  (或者，移至 https://shell.azure.com/) 。 在 Cloud Shell 視窗的左上角，選取 [PowerShell]  。 請參閱 Azure CLI 區段中的範例 **Cloud Shell** 視窗映像。
+1. 在 Azure 入口網站中選取 [Cloud Shell]  (或者，移至 `https://shell.azure.com/`)。 在 Cloud Shell 視窗的左上角，選取 [PowerShell]  。 請參閱 Azure CLI 區段中的範例 **Cloud Shell** 視窗映像。
 2. 設定下列變數。 在您複製並貼上每個命令之後，請先更新 [主題名稱]  和 [資源群組名稱]  ，再執行命令：
 
     ```powershell

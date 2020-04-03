@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: f8ff3dc71727abf9e276cccc951c4d1143f4200d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4e40d26e392219fb751328bc54855d87e80bae19
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583105"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346001"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教學課程：使用媒體服務 v3 上傳、編碼和串流處理影片
 
@@ -40,7 +40,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您未安裝 Visual Studio，您可以取得 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
@@ -72,7 +72,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 6. 建立**串流定位器**。
 7. 建置串流 URL。
 
-### <a name="a-idstart_using_dotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />開始使用媒體服務 API 搭配 .NET SDK
+### <a name="start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />開始使用媒體服務 API 搭配 .NET SDK
 
 若要開始搭配使用媒體服務 API 與 .NET，您需要建立 **AzureMediaServicesClient** 物件。 若要建立物件，您需要提供必要的認證，讓用戶端使用 Azure AD 連線至 Azure。 在您於本文一開始複製的程式碼中，**GetCredentialsAsync** 函式會根據本機組態檔中提供的認證建立 ServiceClientCredentials 物件。
 
@@ -88,6 +88,8 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 * 建立**資產**。
 * 取得可寫入的 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)，以存取[儲存體中的資產容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)。
+
+    如果使用資產的 [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) 函式來取得 SAS URL，請注意到此函式會傳回多個 SAS URL，因為每個儲存體帳戶都有兩個儲存體帳戶金鑰。 儲存體帳戶之所以有兩個金鑰，是因為其允許無縫輪替儲存體帳戶金鑰 (例如，在使用一個金鑰時變更另一個金鑰，然後開始使用新金鑰並輪替另一個金鑰)。 第一個 SAS URL 代表儲存體金鑰 1，而第二個代表儲存體金鑰 2。
 * 使用 SAS URL，將檔案上傳至儲存體中的容器。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -132,7 +134,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ### <a name="get-a-streaming-locator"></a>取得串流定位器
 

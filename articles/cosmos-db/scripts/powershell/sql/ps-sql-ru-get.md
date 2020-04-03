@@ -1,20 +1,20 @@
 ---
-title: 此 PowerShell 指令碼用以取得 Azure Cosmos DB SQL (Core) API 的佈建輸送量 (RU/秒)
-description: Azure PowerShell 指令碼 - Azure Cosmos DB 取得 SQL (Core) API 的佈建輸送量 (RU/秒)
+title: 用來取得 Azure Cosmos DB SQL API 資料庫或容器輸送量 (RU/秒) 的 PowerShell 指令碼
+description: 用來取得 Azure Cosmos DB SQL API 資料庫或容器輸送量 (RU/秒) 的 Azure PowerShell 指令碼
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441338"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365604"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>取得 Azure Cosmos DB 資料庫或容器的佈建輸送量 (RU/秒) - SQL (Core) API
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>取得 Azure Cosmos DB SQL API 資料庫或容器的輸送量 (RU/秒)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441338"
 
 ## <a name="sample-script"></a>範例指令碼
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput (RU/s) for Azure Cosmos DB SQL API database or container")]
 
 ## <a name="clean-up-deployment"></a>清除部署
 
@@ -38,8 +38,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 注意 |
 |---|---|
-|**Azure 資源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 建立資源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | 取得在 Azure Cosmos DB SQL API 資料庫上佈建的輸送量。 |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | 取得在 Azure Cosmos DB SQL API 容器上佈建的輸送量。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

@@ -3,12 +3,12 @@ title: 模式：原則定義的效果
 description: 此 Azure 原則模式提供如何使用不同原則定義效果的範例。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: b86a24bc0af6c9bdd7b29bb0a931d6c78865218b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170456"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372643"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure 原則模式：效果
 
@@ -22,7 +22,7 @@ Azure 原則有許多[效果](../concepts/effects.md)，可決定服務如何回
 
 ### <a name="sample-1-explanation"></a>範例 1：說明
 
-:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="30-34":::
+:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
 **modify** 效果需要 **policyRule.then.details** 區塊，以定義 **roleDefinitionIds** 和 **operations**。 這些參數會告知 Azure 原則需要哪些角色才能新增標記並補救資源，以及要執行哪個 **modify** 作業。 在此範例中，**作業**是「新增」  ，而參數則是用來設定標記和其值。
 

@@ -1,19 +1,19 @@
 ---
-title: 此 PowerShell 指令碼用以變更 Azure Cosmos 帳戶的容錯移轉優先順序
-description: Azure PowerShell 指令碼範例 - 針對 Azure Cosmos 帳戶變更容錯移轉優先順序或觸發容錯移轉
+title: 此 PowerShell 指令碼用以變更單一主機 Azure Cosmos 帳戶的容錯移轉優先順序
+description: Azure PowerShell 指令碼範例 - 針對 Azure Cosmos DB 單一主機帳戶變更容錯移轉優先順序或觸發容錯移轉
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441513"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366119"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 對 Azure Cosmos 帳戶變更容錯移轉優先順序或觸發容錯移轉
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>使用 PowerShell 對 Azure Cosmos DB 單一主機帳戶變更容錯移轉優先順序或觸發容錯移轉
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -42,8 +42,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 注意 |
 |---|---|
-|**Azure 資源**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | 對資源叫用動作。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帳戶，或取得指定的 Cosmos DB 帳戶。 |
+| [Update-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | 更新 Cosmos DB 帳戶區域的容錯移轉優先順序。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

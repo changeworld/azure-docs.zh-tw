@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8fe877760b32b33da0c1e0dd318e0bca52c2bee5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1fcded19731d412a4892e231f4445c51b330b1b4
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75445154"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366140"
 ---
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>建立 Azure Cosmos DB Kyspace 和資料表 - Cassandra API
 
@@ -40,6 +40,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 |---|---|
 |**Azure 資源**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 建立資源。 |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | 建立或更新 Cosmos DB Cassandra API Keyspace。 |
+| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | 建立新的 CosmosDB Cassandra 叢集金鑰。 |
+| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | 建立新的 CosmosDB Cassandra 資料行。 |
+| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | 建立新的 CosmosDB Cassandra 結構描述。 |
+| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | 建立或更新 Cosmos DB Cassandra API 資料表。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

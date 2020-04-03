@@ -5,16 +5,52 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 09fe8396b6f0033a2c01d1ef056060a855b23d0a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761452"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80386124"
 ---
+### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
+
+虛擬 WAN 提供內建在單一窗格中的許多功能，例如站對站 VPN 連線、使用者/P2S 連線、ExpressRoute 連線、虛擬網路連線、VPN ExpressRoute 相互連線、VNET 對 VNET 的可轉移連線、集中式路由、Azure 防火牆和防火牆管理員安全性、監視、ExpressRoute 加密，以及許多其他功能。 您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 只要一個使用案例即可開始使用。 虛擬 WAN 架構是中樞與輪輻架構，具有內建的規模和效能，其中分支 (VPN/SD-WAN 裝置)、使用者 (Azure VPN 用戶端、openVPN 或 IKEv2 用戶端)、ExpressRoute 線路和虛擬網路都會作為虛擬中樞的輪輻。 所有中樞都會在標準虛擬 WAN 中以完整網格連線，讓使用者可以輕鬆地使用 Microsoft 骨幹進行任意點對任意點 (任何輪輻) 的連線。 針對具有 SD-WAN/VPN 裝置的中樞與輪輻，使用者可以在 Azure 虛擬 WAN 入口網站中手動設定，或使用虛擬 WAN 合作夥伴 CPE (SD-WAN/VPN) 來設定與 Azure 的連線。 虛擬 WAN 合作夥伴提供自動連線功能，可將裝置資訊匯出至 Azure、下載 Azure 設定，以及建立與 Azure 虛擬 WAN 中樞的連線。 針對點對站/使用者 VPN 連線能力，我們支援 [Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 用戶端。 
+
+### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure 虛擬 WAN 使用者 VPN (點對站) 支援哪些用戶端？
+
+虛擬 WAN 支援 [Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 用戶端或任何 IKEv2 用戶端。 Azure VPN Client 支援 Azure AD 驗證，但至少需要 Windows 10 用戶端作業系統版本 17763.0 或更高版本。  OpenVPN 用戶端可以支援憑證型驗證。 在閘道上選取憑證型驗證之後，您就會看到可下載到您裝置的 .ovpn 檔案。 IKEv2 也支援憑證和 RADIUS 驗證。 
+
+### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>針對使用者 VPN (點對站)，為什麼 P2S 用戶端集區會分割成兩個路由？
+
+每個閘道都有兩個執行個體，分割可讓每個閘道執行個體為連線的用戶端獨立配置用戶端 IP，而來自虛擬網路的流量也會路由回正確的閘道執行個體，以避開閘道間的執行個體躍點。
+
+### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>如何新增 P2S 用戶端的 DNS 伺服器？
+
+有兩個選項可新增 P2S 用戶端的 DNS 伺服器。
+
+1. 向 Microsoft 開啟支援票證，並讓他們將您的 DNS 伺服器新增至中樞
+2. 或者，如果您使用適用於 Windows 10 的 Azure VPN Client，您可以修改下載的設定檔 XML 檔案，並在匯入該檔案之前，新增 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 標記。
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>使用者 VPN (點對站) 可支援多少用戶端？
+
+每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-10 支援 5000 個連線、縮放單位 11+ 支援最多 10,000 個連線。 例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位表示已部署的主動-主動閘道，而每個執行個體 (在此案例中為 2 個) 會支援最多 500 個連線。 因此，每個閘道可以有 500 * 2 個連線，但不表示您要為此縮放單位規劃 1000 個連線 (而不是 500 個)，因為如果您超過建議的連線計數，額外 500 個連線的連線能力可能會中斷，進而造成執行個體需要支援。
+
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虛擬網路閘道 (VPN 閘道) 與 Azure 虛擬 WAN VPN 閘道之間有何差異？
 
 虛擬 WAN 提供大規模站對站連線，而且是針對輸送量、延展性和易用性而建置的。 當您將網站連線到虛擬 WAN VPN 閘道時，它與使用閘道類型「VPN」的一般虛擬網路閘道不同。 同樣地，當您將 ExpressRoute 線路連線到虛擬 WAN 中樞時，它會使用與使用閘道類型「ExpressRoute」的一般虛擬網路閘道不同的 ExpressRoute 閘道資源。 虛擬 WAN 為 VPN 和 ExpressRoute 最多支援 20 Gbps 的彙總輸送量。 虛擬 WAN 也有自動化功能，可與 CPE 分支裝置夥伴的生態系統建立連線。 CPE 分支裝置有內建的自動化功能，可自動佈建和連線至 Azure 虛擬 WAN。 這些裝置都可以從 SD-WAN 和 VPN 合作夥伴日益成長的生態系統中取用。 請參閱[慣用的夥伴清單](../articles/virtual-wan/virtual-wan-locations-partners.md)。

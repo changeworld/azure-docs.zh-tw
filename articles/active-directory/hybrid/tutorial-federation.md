@@ -14,14 +14,14 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60296553"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80330999"
 ---
-# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教學課程：將單一 AD 樹系環境與雲端建立同盟
+# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教學課程：將單一 AD 樹系環境整合至雲端
 
 ![建立](media/tutorial-federation/diagram.png)
 
@@ -88,7 +88,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 5. 按一下 [立即安裝]  。
 6. 輸入您的授權金鑰，然後按一下 [下一步]  。
 7. 選取 [我接受授權條款]，然後按一下 [下一步]  。
-8. 選取 [自訂：只安裝 Windows (進階)] 
+8. 選取**自訂：只安裝 Windows (進階)**
 9. 按 **[下一步]**
 10. 安裝完成之後，請重新啟動虛擬機器、登入並執行 Windows 更新，以確保 VM 為最新。  安裝最新的更新。
 
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-a-certificate-for-ad-fs"></a>為 AD FS 建立憑證
-現在我們將建立將由 AD FS 使用的 SSL 憑證。  這將會是自我簽署憑證，而且僅供測試用途使用。  Microsoft 建議您不要在生產環境中使用自我簽署憑證。 執行下列動作：
+現在我們將建立將由 AD FS 使用的 TLS/SSL 憑證。  這將會是自我簽署憑證，而且僅供測試用途使用。  Microsoft 建議您不要在生產環境中使用自我簽署憑證。 執行下列動作：
 
 1. 以系統管理員身分開啟 PowerShell ISE。
 2. 執行下列指令碼。

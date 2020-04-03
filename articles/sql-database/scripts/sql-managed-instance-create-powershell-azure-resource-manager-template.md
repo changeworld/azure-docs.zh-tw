@@ -1,6 +1,6 @@
 ---
 title: 範本範例 - 在 Azure SQL Database 中建立受控執行個體
-description: 在 Azure SQL Database 中建立受控執行個體的 Azure PowerShell 範例指令碼
+description: 使用此 Azure PowerShell 範例指令碼在 Azure SQL Database 中建立受控執行個體。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: be6aa73fe72568e9762e5b7249bedc2e8c7d3bf7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a349be9ada756742f5fd5ba4819caa1d2a2d3268
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73691431"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80373159"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>使用 PowerShell 與 Azure Resource Manager 範本在 Azure SQL Database 中建立受控執行個體
 

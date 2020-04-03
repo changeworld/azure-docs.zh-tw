@@ -1,20 +1,20 @@
 ---
-title: 此 PowerShell 指令碼用以更新 Azure Cosmos DB (Core) API 的 RU/秒
-description: 使用 PowerShell 指令碼來更新 Azure Cosmos 資料庫或容器的輸送量 - SQL (Core) API
+title: 為 Azure Cosmos DB SQL API 資料庫或容器更新輸送量 (RU/秒) 的 PowerShell 指令碼
+description: 為 Azure Cosmos DB SQL API 資料庫或容器更新輸送量 (RU/秒) 的 PowerShell 指令碼
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 70dd5810d3549f19075b437044ce0dd332c45c49
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 950a76c2caaffe6eef578d5614e9469c5942e08c
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75444963"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365987"
 ---
-# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>更新 Azure Cosmos DB 資料庫和容器的 RU/秒 - SQL (Core) API
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>為 Azure Cosmos DB SQL API 資料庫或容器更新輸送量 (RU/秒)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75444963"
 
 ## <a name="sample-script"></a>範例指令碼
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput on a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput (RU/s) for an Azure Cosmos DB SQL API Database or Container")]
 
 ## <a name="clean-up-deployment"></a>清除部署
 
@@ -38,8 +38,10 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 注意 |
 |---|---|
-|**Azure 資源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 建立資源。 |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | 建立新的或更新現有的 Cosmos DB SQL Database。 |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | 取得 Cosmos DB SQL 容器。 |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | 建立新的或更新現有的 Cosmos DB SQL 容器。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

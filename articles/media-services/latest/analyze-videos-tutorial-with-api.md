@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: abd4a3a3a3e8494ea325e65a78eea7fb56b78f94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7864d89cc14a1473fd43e94bfe74c368bcb391d
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76988357"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349491"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教學課程：透過媒體服務 v3 分析影片
 
@@ -92,6 +92,8 @@ ms.locfileid: "76988357"
 
 * 建立資產。
 * 取得可寫入的 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)，以存取[儲存體中的資產容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)。
+
+    如果使用資產的 [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) 函式來取得 SAS URL，請注意到此函式會傳回多個 SAS URL，因為每個儲存體帳戶都有兩個儲存體帳戶金鑰。 儲存體帳戶之所以有兩個金鑰，是因為其允許無縫輪替儲存體帳戶金鑰 (例如，在使用一個金鑰時變更另一個金鑰，然後開始使用新金鑰並輪替另一個金鑰)。 第一個 SAS URL 代表儲存體金鑰 1，而第二個代表儲存體金鑰 2。
 * 使用 SAS URL，將檔案上傳至儲存體中的容器。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]

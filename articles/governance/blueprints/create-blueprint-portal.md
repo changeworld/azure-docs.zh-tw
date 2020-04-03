@@ -1,14 +1,14 @@
 ---
 title: 快速入門：在入口網站中建立藍圖
 description: 在本快速入門中，您將在 Azure 入口網站中使用 Azure 藍圖建立、定義和部署成品。
-ms.date: 11/21/2019
+ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282047"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入門：在入口網站中定義和指派藍圖
 
@@ -29,6 +29,8 @@ ms.locfileid: "75436624"
    或者，在 [開始使用]  頁面中選取 [建立]  ，以直接建立藍圖。
 
    ![在 [藍圖定義] 頁面中建立藍圖](./media/create-blueprint-portal/create-blueprint-button.png)
+
+1. 從內建藍圖清單頂端的卡片中，選取 [從空白藍圖開始]  。
 
 1. 提供 [藍圖名稱]  ，例如 **MyBlueprint**。 (最多可使用 48 個字母和數字，但不含空格或特殊字元)。 暫時將 [藍圖描述]  保留為空白。
 

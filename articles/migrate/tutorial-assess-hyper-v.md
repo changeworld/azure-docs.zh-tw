@@ -1,22 +1,19 @@
 ---
 title: 使用 Azure Migrate 來評估 Hyper-V VM 是否可移轉至 Azure | Microsoft Docs
-description: 說明如何使用 Azure Migrate 來評估內部部署 Hyper-V VM 是否可移轉至 Azure。
+description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部署 Hyper-V VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 03/23/2020
 ms.custom: mvc
-ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222005"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80336781"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
-本文說明如何使用 Azure Migrate 來評估內部部署 Hyper-V VM：伺服器評量工具。
-
-[Azure Migrate](migrate-services-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。
-
+本文說明如何使用「[Azure Migrate：伺服器評量](migrate-services-overview.md#azure-migrate-server-assessment-tool)」工具來評估內部部署 Hyper-V VM。
 
 
 本教學課程是一個系列中的第二篇，會示範如何評估 Hyper-V VM 並將其遷移至 Azure。 在本教學課程中，您會了解如何：
@@ -38,9 +35,9 @@ ms.locfileid: "79222005"
 
 - [完成](tutorial-prepare-hyper-v.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
-    - 針對 Azure Migrate [設定 Azure 權限](tutorial-prepare-hyper-v.md#prepare-azure)。
-    - [準備 Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) 叢集、主機和 VM 以便進行評估。
-    - [準備 Azure Migrate 設備的部署](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)，以用於 Hyper-V VM 的探索和評量。
+    - [準備 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以使用 Azure Migrate。
+    - [準備 Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) 主機和 VM 評量。
+    - [確認](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)您需要哪些內容，才能部署 Hyper-V 評量所需的 Azure Migrate 設備。
 
 ## <a name="set-up-an-azure-migrate-project"></a>設定 Azure Migrate 專案
 
@@ -52,22 +49,12 @@ ms.locfileid: "79222005"
 
 4. 在 [開始使用]  中，按一下 [新增工具]  。
 5. 在 [遷移專案]  索引標籤中，選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有資源群組的話)。
-6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的區域。
-
-
-    ![建立 Azure Migrate 專案](./media/tutorial-assess-hyper-v/migrate-project.png)
-
-    您可以在這些區域建立 Azure Migrate 專案。
-
-    **地理位置** | **區域**
-    --- | ---
-    Asia  | 東南亞
-    歐洲 | 北歐或西歐
-    United Kingdom |  英國南部或英國西部
-    美國 | 美國東部、美國西部 2 或美國中西部
+6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的區域。 [請檢閱](migrate-support-matrix.md#supported-geographies)您可以在其中建立 Azure Migrate 專案的區域。
 
     - 專案區域只會用來儲存從內部部署 VM 收集到的中繼資料。
     - 遷移 VM 時可選取不同的 Azure 目標區域。 所有 Azure 區域都支援作為移轉目標。
+
+    ![建立 Azure Migrate 專案](./media/tutorial-assess-hyper-v/migrate-project.png)
 
 7. 按 [下一步]  。
 8. 在 [選取評量工具]  中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]  。
@@ -78,18 +65,13 @@ ms.locfileid: "79222005"
 10. 在 [檢閱 + 新增工具]  中檢閱設定，然後按一下 [新增工具]  。
 11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器]  來存取。
 
+## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
+Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。
+- 您可以使用下載的 Hyper-V VHD，在 Hyper-V VM 上設定設備。 或者，您也可以使用 PowerShell 安裝程式指令碼，在 VM 或實體機器上設定設備。
+- 本教學課程會使用 VHD。 如果您想要使用指令碼來設定設備，請參閱[本文](deploy-appliance-script.md)。
 
-
-## <a name="set-up-the-appliance-vm"></a>設定設備 VM
-
-Azure Migrate 伺服器評估會執行輕量型 Hyper-V VM 設備。
-
-- 此設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。
-- 若要設定設備，請：
-    - 從 Azure 入口網站下載壓縮的 Hyper-V VHD。
-    - 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
-    - 第一次設定設備，並向 Azure Migrate 專案進行註冊。
+建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
 
 ### <a name="download-the-vhd"></a>下載 VHD
 
@@ -150,6 +132,9 @@ Azure Migrate 伺服器評估會執行輕量型 Hyper-V VM 設備。
 ### <a name="configure-the-appliance"></a>設定設備
 
 第一次設定設備。
+
+> [!NOTE]
+> 如果您使用 [PowerShell 指令碼](deploy-appliance-script.md)來設定設備 (而非使用下載的 VHD)，則此程序中的前兩個步驟將與之無關。
 
 1. 在 [Hyper-V 管理員] > [虛擬機器]  中，以滑鼠右鍵按一下 [VM] > [連線]  。
 2. 提供設備的語言、時區和密碼。

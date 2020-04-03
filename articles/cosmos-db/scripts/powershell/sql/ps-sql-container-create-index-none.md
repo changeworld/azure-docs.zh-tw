@@ -1,20 +1,20 @@
 ---
-title: 此 PowerShell 指令碼用以在 Azure Cosmos 帳戶中建立沒有索引的容器
-description: Azure PowerShell 指令碼範例 - 在 Azure Cosmos 帳戶中建立已關閉索引編製功能的容器
+title: 此 PowerShell 指令碼用來在 Azure Cosmos DB 帳戶中建立已關閉索引編製功能的容器
+description: Azure PowerShell 指令碼範例 - 在 Azure Cosmos DB 帳戶中建立已關閉索引編製功能的容器
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 13bec89b0c6f713a4b8c66f7bab6cda3d6513ef9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e4cf09ede1ea532d784b6d486cdb54d510d13652
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441377"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365638"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>在 Azure Cosmos 帳戶中使用 PowerShell 建立已關閉索引編製功能的容器
+# <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>在 Azure Cosmos DB 帳戶中使用 PowerShell 建立已關閉索引編製功能的容器
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441377"
 
 ## <a name="sample-script"></a>範例指令碼
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container indexing turned off in an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container with indexing turned off in an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>清除部署
 
@@ -38,8 +38,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 注意 |
 |---|---|
-|**Azure 資源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 建立資源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 建立新的 Cosmos DB 帳戶。 |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | 建立新的或更新現有的 Cosmos DB SQL Database。 |
+| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | 建立 PSSqlIndexingPolicy 類型的新物件，以作為 Set-AzCosmosDBSqlContainer 的參數使用。 |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | 建立新的或更新現有的 Cosmos DB SQL 容器。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

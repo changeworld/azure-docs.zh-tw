@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74276083"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382846"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入門：診斷虛擬機器網路流量篩選問題 - Azure CLI
 
@@ -33,7 +33,7 @@ ms.locfileid: "74276083"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本快速入門的 CLI 命令會經過格式化以在 Bash 殼層中執行。
+如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本快速入門的 Azure CLI 命令會經過格式化以在 Bash 殼層中執行。
 
 ## <a name="create-a-vm"></a>建立 VM
 
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-建立 VM 需要幾分鐘的時間。 在建立 VM 且 CLI 傳回輸出之前，請勿繼續進行其餘步驟。
+建立 VM 需要幾分鐘的時間。 在建立 VM 且 Azure CLI 傳回輸出之前，請勿繼續進行其餘步驟。
 
 ## <a name="test-network-communication"></a>測試網路通訊
 
@@ -134,7 +134,7 @@ az network nic list-effective-nsg \
 
 對於在[使用 IP 流量驗證](#use-ip-flow-verify) 底下的先前步驟中允許對外存取 www.bing.com 的 **AllowInternetOutbound** 規則，傳回的輸出包含下列文字：
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -175,7 +175,7 @@ az network nic list-effective-nsg \
 
 當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試輸出至 172.131.0.100 的通訊時，輸出會告知您 **DefaultOutboundDenyAll** 規則拒絕通訊。 **DefaultOutboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllOutBound** 規則：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +208,7 @@ az network nic list-effective-nsg \
 
 當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試從 172.131.0.100 輸入的通訊時，輸出會告知您 **DefaultInboundDenyAll** 規則拒絕通訊。 **DefaultInboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllInBound** 規則：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},

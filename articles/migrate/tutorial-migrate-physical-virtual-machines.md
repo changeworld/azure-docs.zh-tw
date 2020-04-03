@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azu
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388891"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80298008"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
@@ -149,7 +149,8 @@ ms.locfileid: "78388891"
     ![下載提供者](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 10. 將設備安裝程式檔案和金鑰檔案複製到您為設備建立的 Windows Server 2016 機器。
-11. 依照下一個程序中的說明，執行複寫設備安裝檔案。
+11. 依照下一個程序中的說明，執行複寫設備安裝檔案。 安裝完成之後，系統會自動啟動設備設定精靈 (您也可以使用在設備桌面上建立的 cspsconfigtool 捷徑來手動啟動精靈)。 使用精靈的 [管理帳戶] 索引標籤，新增要用於行動服務推送安裝的帳戶詳細資料。 在本教學課程中，我們將在要複寫的機器上手動安裝行動服務，因此請在此步驟中建立虛擬帳戶並繼續進行。
+
 12. 在安裝後重新啟動設備之後，在 [探索機器]  的 [選取組態伺服器]  中選取新設備，然後按一下 [完成註冊]  。 完成註冊作業會執行數項最終工作，以備妥複寫設備。
 
     ![完成註冊](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -223,7 +224,7 @@ ms.locfileid: "78388891"
 2. 在 [複寫]  > [來源設定]  [您的電腦虛擬化了嗎] >   中，選取 [未虛擬化/其他]  。
 3. 在 [內部部署設備]  中，選取您設定的 Azure Migrate 設備的名稱。
 4. 在 [處理序伺服器]  中，選取複寫設備的名稱。
-6. 在 [來賓認證]  中，您可以指定行動服務的推送安裝所將使用的 VM 管理員帳戶。 在本教學課程中，我們將手動安裝行動服務，因此您可以新增任何虛擬帳戶。 然後按 [下一步：**虛擬機器]** 。
+6. 在 [來賓認證]  中，您可以指定用來手動安裝行動服務的虛擬帳戶 (在實體中不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。
 
     ![複寫 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
@@ -314,14 +315,19 @@ ms.locfileid: "78388891"
 
 2. 在 [複寫機器]  中，以滑鼠右鍵按一下 VM > [遷移]  。
 3. 在 [遷移]   > [將虛擬機器關機，在沒有資料遺失的情況下執行計劃性移轉]  中，選取 [是]   > [確定]  。
-    - 根據預設，Azure Migrate 會關閉內部部署 VM，並執行隨選複寫，以同步處理上次複寫執行後發生的任何 VM 變更。 這樣可確保不會遺失任何資料。
     - 如果您不想關閉 VM，請選取 [否] 
+
+    注意:針對實體伺服器移轉，建議您將應用程式降低為移轉視窗的一部份 (不要讓應用程式接受任何連線)，然後起始移轉 (伺服器必須保持執行狀態，讓其餘的變更可以同步處理)，才能完成移轉。
+
 4. VM 會啟動移轉作業。 請在 Azure 通知中追蹤該作業。
 5. 作業完成後，您可以從 [虛擬機器]  頁面檢視及管理 VM。
 
 ## <a name="complete-the-migration"></a>完成移轉
 
-1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]  。 這會停止內部部署機器的複寫，並清除 VM 的複寫狀態資訊。
+1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]  。 這會執行以下動作：
+    - 停止內部部署機器的複寫。
+    - 從 Azure Migrate 中的**複寫伺服器**計數移除機器：伺服器移轉。
+    - 清除機器的複寫狀態資訊。
 2. 在已遷移的機器上安裝 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理程式。
 3. 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。
 4. 在現在於 Azure 中執行的已移轉應用程式上，執行最終的應用程式和移轉接受度測試。

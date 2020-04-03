@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 03/25/2020
+ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76841075"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369716"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>快速入門：在入口網站中建立搜尋應用程式 (Azure 認知搜尋)
 
@@ -23,13 +23,13 @@ ms.locfileid: "76841075"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-目前，在本快速入門中，您應升級至[最新版的 Microsoft Edge](https://www.microsoft.com/edge)，或使用 Google 的 Chrome 瀏覽器。
+未使用本快速入門，請升級至[最新版的 Microsoft Edge](https://www.microsoft.com/edge)，或使用 Google 的 Chrome 瀏覽器。
 
 [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 [建立索引](search-create-index-portal.md)來作為您應用程式的基礎。 
 
-本快速入門會使用內建的房地產資料和索引範例，因為其具有縮圖影像。 若要建立此練習中所用的索引，請執行**匯入資料**精靈，並選擇 realestate-us-sample  資料來源。
+本快速入門會使用內建的房地產資料和索引範例，因為其具有縮圖影像 (精靈可支援將影像新增至結果頁面)。 若要建立此練習中所用的索引，請執行**匯入資料**精靈，並選擇 realestate-us-sample  資料來源。
 
 ![資料範例的資料來源頁面](media/search-create-app-portal/import-data-realestate.png)
 

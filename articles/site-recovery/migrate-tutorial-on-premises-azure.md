@@ -7,18 +7,20 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73939626"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388911"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>將內部部署機器移轉至 Azure
 
 
-本文說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 將內部部署機器移轉至 Azure。 一般而言，Site Recovery 用於管理及協調內部部署機器和 Azure VM 的災害復原。 不過，也可用來移轉。 移轉會使用與災害復原相同的步驟，但有一個例外狀況。 在移轉時，從您的內部部署網站容錯移轉機器是最後一個步驟。 不同於災害復原，您無法容錯回復到移轉案例中的內部部署環境。
+本文說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 將內部部署機器移轉至 Azure。 
+
+> [!TIP]
+> 您現在應該使用 Azure Migrate 將內部部署機器遷移至 Azure，而不是 Azure Site Recovery 服務。 [深入了解](../migrate/migrate-services-overview.md)。
 
 
 本教學課程說明如何將內部部署 VM 和實體伺服器移轉至 Azure。 您會了解如何：
@@ -36,7 +38,7 @@ ms.locfileid: "73939626"
 
 ## <a name="before-you-start"></a>開始之前
 
-請注意，不支援並行虛擬驅動程式匯出的裝置。
+不支援並行虛擬驅動程式所匯出的裝置。
 
 
 ## <a name="prepare-azure-and-on-premises"></a>準備 Azure 與內部部署環境
@@ -51,9 +53,9 @@ ms.locfileid: "73939626"
 1. 按一下 [復原服務保存庫]  > 保存庫。
 2. 在 [資源功能表] 中，按一下 [Site Recovery]   > [準備基礎結構]   > [保護目標]  。
 3. 在 [保護目標]  中，選取您需要移轉的項目。
-    - **VMware**：選取 [至 Azure]   > [es, with VMWare vSphere Hypervisor] \(是，使用 VMware vSphere Hypervisor)  。
+    - **VMware**：選取 [至 Azure]   > [是，使用 VMware vSphere Hypervisor]  。
     - **實體機器**：選取 [至 Azure]   > [未虛擬化/其他]  。
-    - **Hyper-V**：選取 [至 Azure]   > [Yes, with Hyper-V] \(是，使用 Hyper-V)  。 如果 Hyper-V VM 是由 VMM 管理，請選取 [是]  。
+    - **Hyper-V**：選取 [至 Azure]   > [是，使用 Hyper-V]  。 如果 Hyper-V VM 是由 VMM 管理，請選取 [是]  。
 
 
 ## <a name="set-up-the-source-environment"></a>設定來源環境
@@ -115,7 +117,7 @@ Hyper-V | [啟用複寫](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 
 
 > [!WARNING]
-> **不要取消正在進行的容錯移轉**：在啟動容錯移轉之前，已停止 VM 複寫。 如果您取消正在進行的容錯移轉，容錯移轉會停止，但 VM 不會再次複寫。
+> **請勿取消正在進行中的容錯移轉**：在容錯移轉開始之前，VM 複寫已停止。 如果您取消正在進行的容錯移轉，容錯移轉會停止，但 VM 不會再次複寫。
 
 在某些情況下，容錯移轉需要額外的處理，這會耗費約 8 到 10 分鐘的時間來完成。 您可能注意到下列項目的測試容錯移轉時間較久：實體伺服器、VMware Linux 機器、未啟用 DHCP 服務的 VMware VM，以及沒有下列開機驅動程式的 VMware VM：storvsc、vmbus、storflt、intelide、atapi。
 
@@ -136,8 +138,8 @@ Hyper-V | [啟用複寫](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
     - 如果您要將 Hyper-V VM 移轉至 Azure，請在移轉後將 Azure VM 代理程式安裝在 Azure VM 上。
 - 請從 VM 中手動移除任何 Site Recovery 提供者/代理程式。 如果您遷移 VMware VM 或實體伺服器，請將行動服務從 VM 解除安裝。
 - 針對提升復原能力：
-    - 使用「Azure 備份」服務來備份 Azure VM 以維護資料安全。 [詳細資訊]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
-    - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [詳細資訊](azure-to-azure-quickstart.md)。
+    - 使用「Azure 備份」服務來備份 Azure VM 以維護資料安全。 [深入了解]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
+    - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](azure-to-azure-quickstart.md)。
 - 針對提升安全性：
     - 使用「Azure 資訊安全中心」[Just-In-Time 系統管理]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time)來鎖定並限制輸入流量存取
     - 使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)來限制傳送至管理端點的網路流量。

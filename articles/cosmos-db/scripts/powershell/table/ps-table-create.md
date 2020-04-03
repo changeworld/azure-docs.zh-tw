@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 12/05/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: b99d4ed9043e0411216b953829a40eb2ee71fc30
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9ea03996c793c3d53e4a3657c537f9354892c647
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441309"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365582"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>建立 Azure Cosmos DB 資料表 - 資料表 API
 
@@ -40,6 +40,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 |---|---|
 |**Azure 資源**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 建立資源。 |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | 建立或更新 Cosmos DB 資料表 API 的資料表。 |
 |**Azure 資源群組**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||

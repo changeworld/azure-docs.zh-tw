@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046729"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384104"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceNow 整合
 
@@ -93,11 +93,18 @@ ms.locfileid: "77046729"
 
    ![醒目提示畫筆圖示的 [以 SAML 設定單一登入] 頁面螢幕擷取畫面](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  區段中，執行下列步驟：
+1. 在 [基本 SAML 組態]  區段中，執行下列步驟：
 
-    a. 在 [登入 URL]  中，輸入採用下列模式的 URL：`https://<instance-name>.service-now.com/navpage.do`
+    a. 在 [登入 URL]  中，輸入採用下列模式的 URL：`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. 在 [識別碼 (實體識別碼)]  中，輸入採用下列模式的 URL：`https://<instance-name>.service-now.com`
+
+    c. 針對 [回覆 URL]  ，輸入下列其中一個 URL：
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > 這些都不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -160,9 +167,16 @@ ms.locfileid: "77046729"
 
 4. 在 [基本 SAML 組態]  區段中，執行下列步驟：
 
-    a. 針對 [登入 URL]  ，輸入採用下列模式的 URL：`https://<instance-name>.service-now.com/navpage.do`
+    a. 針對 [登入 URL]  ，輸入採用下列模式的 URL：`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. 針對 [識別碼 (實體識別碼)]  ，輸入採用下列模式的 URL：`https://<instance-name>.service-now.com`
+
+    c. 針對 [回覆 URL]  ，輸入下列其中一個 URL：
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > 這些都不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -183,7 +197,7 @@ ms.locfileid: "77046729"
 
 1. 以系統管理員身分登入您的 ServiceNow 應用程式。
 
-2. 依照下列步驟啟用 [整合 - 多個提供者單一登入安裝程式]  外掛程式︰
+1. 依照下列步驟啟用 [整合 - 多個提供者單一登入安裝程式]  外掛程式︰
 
     a. 在左窗格中，從搜尋方塊搜尋 [系統定義]  區段，然後選取 [外掛程式]  。
 
@@ -201,11 +215,11 @@ ms.locfileid: "77046729"
 
      ![[啟用外掛程式] 對話方塊的螢幕擷取畫面，其中已醒目提示 [啟用]](./media/servicenow-tutorial/tutorial_activate1.png "啟用外掛程式")
 
-3. 在左窗格中，從搜尋列搜尋 [多重提供者 SSO]  區段，然後選取 [屬性]  。
+1. 在左窗格中，從搜尋列搜尋 [多重提供者 SSO]  區段，然後選取 [屬性]  。
 
     ![[多重提供者 SSO] 區段的螢幕擷取畫面，其中已醒目提示 [多重提供者 SSO] 和 [屬性]](./media/servicenow-tutorial/tutorial_servicenow_06.png "設定應用程式 URL")
 
-4. 在 [多重提供者 SSO 屬性]  對話方塊上，執行下列步驟：
+1. 在 [多重提供者 SSO 屬性]  對話方塊上，執行下列步驟：
 
     ![[多重提供者 SSO 屬性] 對話方塊的螢幕擷取畫面](./media/servicenow-tutorial/ic7694981.png "設定應用程式 URL")
 
@@ -215,11 +229,11 @@ ms.locfileid: "77046729"
 
     * 針對 [啟用偵錯記錄以供多個提供者 SSO 整合]  ，選取 [是]  。
 
-    * 針對 [使用者資料表上的欄位...]  ，輸入 **user_name**。
+    * 針對 [使用者資料表上的欄位...]  ，輸入**電子郵件**。
   
     * 選取 [儲存]  。
 
-6. 您可以自動或手動設定 ServiceNow。 若要自動設定 ServiceNow，請依照下列步驟操作：
+1. 您可以自動或手動設定 ServiceNow。 若要自動設定 ServiceNow，請依照下列步驟操作：
 
     1. 返回 Azure 入口網站中的 [ServiceNow]  單一登入頁面。
 
@@ -274,11 +288,16 @@ ms.locfileid: "77046729"
 
              ![頁面的螢幕擷取畫面，其中已醒目提示 [測試連線]](./media/servicenow-tutorial/tutorial_activate2.png "啟用外掛程式")
 
+             > [!NOTE]
+             > 如果測試連線失敗，而且您也無法啟動此連線的話，ServiceNow 就會提供覆寫參數。 您必須在 [搜尋導覽]  中輸入 **Sys_properties.LIST**，新的 [系統屬性] 頁面會隨即開啟。 在這裡，您必須建立新的屬性，並將名稱設為 **glide.authenticate.multisso.test.connection.mandatory**、將 [資料類型]  設為 **True/False**，然後將 [值]  設為 **False**。
+
+             > ![[測試結果] 頁面的螢幕擷取畫面](./media/servicenow-tutorial/testconnection-fail.png "設定單一登入")
+        
           1. 在系統要求您提供認證時，輸入您的認證。 您會看見下列頁面。 出現 **SSO 登出測試結果**錯誤是預期的行為。 請忽略錯誤，然後選取 [啟用]  。
 
              ![[測試結果] 頁面的螢幕擷取畫面](./media/servicenow-tutorial/servicenowactivate.png "設定單一登入")
   
-6. 若要手動設定 **ServiceNow**，請依照下列步驟操作：
+1. 若要手動設定 **ServiceNow**，請依照下列步驟操作：
 
     1. 以系統管理員身分登入您的 ServiceNow 應用程式。
 
@@ -319,12 +338,17 @@ ms.locfileid: "77046729"
 
         * 確認 [NameID 原則]  設定為 `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 值。
 
-        * 選取 [進階]  。 在 [使用者欄位]  中輸入 **email** 或 **user_name**，這取決於會用哪一個欄位來唯一識別 ServiceNow 部署中的使用者。
+        * 選取 [進階]  。 在 [使用者欄位]  中，輸入**電子郵件**。
 
             > [!NOTE]
             > 您可以設定 Azure AD 以發出 Azure AD 使用者識別碼 (使用者主體名稱) 或電子郵件地址，作為 SAML 權杖中的唯一識別碼。 若要這麼做，請移至 Azure 入口網站的 [ServiceNow]   > [屬性]   > [單一登入]  區段，並將所需的欄位對應至 **nameidentifier** 屬性。 所選屬性儲存在 Azure AD 中的值 (例如使用者主體名稱) 必須符合所輸入欄位 (例如 user_name) 儲存在 ServiceNow 中的值。
 
         * 在頁面的右上角選取 [測試連線]  。
+
+          > [!NOTE]
+          > 如果測試連線失敗，而且您也無法啟動此連線的話，ServiceNow 就會提供覆寫參數。 您必須在 [搜尋導覽]  中輸入 **Sys_properties.LIST**，新的 [系統屬性] 頁面會隨即開啟。 在這裡，您必須建立新的屬性，並將名稱設為 **glide.authenticate.multisso.test.connection.mandatory**、將 [資料類型]  設為 **True/False**，然後將 [值]  設為 **False**。
+
+          > ![[測試結果] 頁面的螢幕擷取畫面](./media/servicenow-tutorial/testconnection-fail.png "設定單一登入")
 
         * 在系統要求您提供認證時，輸入您的認證。 您會看見下列頁面。 出現 **SSO 登出測試結果**錯誤是預期的行為。 請忽略錯誤，然後選取 [啟用]  。
 
@@ -420,7 +444,7 @@ ms.locfileid: "77046729"
 
     d. 針對 [時鐘誤差]  ，輸入 **60**。
 
-    e. 針對 [使用者欄位]  ，輸入 **email** 或 **user_name**，這取決於會用哪一個欄位來唯一識別 ServiceNow 部署中的使用者。
+    e. 針對 [使用者欄位]  ，輸入**電子郵件**。
 
     > [!NOTE]
     > 您可以設定 Azure AD 以發出 Azure AD 使用者識別碼 (使用者主體名稱) 或電子郵件地址，作為 SAML 權杖中的唯一識別碼。 若要這麼做，請移至 Azure 入口網站的 [ServiceNow]   > [屬性]   > [單一登入]  區段，並將所需的欄位對應至 **nameidentifier** 屬性。 所選屬性儲存在 Azure AD 中的值 (例如使用者主體名稱) 必須符合所輸入欄位 (例如 user_name) 儲存在 ServiceNow 中的值。
@@ -450,7 +474,7 @@ ms.locfileid: "77046729"
     *  輸入 [使用者名稱]  ，例如 B.simon@contoso.com。
 
     *  選取 [新增外部登入]  。 系統會將您重新導向至 Azure AD 頁面進行登入。
-    
+
     *  輸入認證。 如果啟用了任何第三方驗證或任何其他安全性功能，使用者就必須據以因應。 應用程式的**首頁**會隨即出現。
 
         ![應用程式首頁的螢幕擷取畫面](./media/servicenow-tutorial/test02.png)
@@ -467,6 +491,6 @@ ms.locfileid: "77046729"
 
 - [使用 Azure AD 來試用 ServiceNow](https://aad.portal.azure.com)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
 
-- [如何使用進階可見性和控制項保護 ServiceNow](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [如何使用進階可見性和控制項保護 ServiceNow](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

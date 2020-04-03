@@ -13,16 +13,16 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2b9b98b3ade46abd670283d0e68dc62fda9d8d0a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2ef8f322ff17eeb5d75d3cc8e4f8604f02d4ef0e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75526612"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366550"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>在 Azure 中建立安全的 Service Fabric Linux 叢集
 
-此命令會建立自我簽署的憑證，然後將其加入金鑰保存庫並在本機下載憑證。  新的憑證會用來在部署叢集時保護叢集。  您也可以使用現有的憑證，而不用建立新的。  無論是哪一方法，憑證的主體名稱必須與您用來存取 Service Fabric 叢集的網域相符。 必須如此相符，才能為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 SSL。 您無法從 CA 取得 `.cloudapp.azure.com` 網域的 SSL 憑證。 您必須為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
+此命令會建立自我簽署的憑證，然後將其加入金鑰保存庫並在本機下載憑證。  新的憑證會用來在部署叢集時保護叢集。  您也可以使用現有的憑證，而不用建立新的。  無論是哪一方法，憑證的主體名稱必須與您用來存取 Service Fabric 叢集的網域相符。 必須如此相符，才能為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS。 您無法從 CA 取得 `.cloudapp.azure.com` 網域的 TLS/SSL 憑證。 您必須為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
 
 視需要安裝 [Azure CLI](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
 

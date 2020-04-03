@@ -1,14 +1,14 @@
 ---
 title: 教學課程：新環境的藍圖範例
 description: 在本教學課程中，您將使用藍圖範例建立藍圖定義，以設定兩個資源群組及其各自的角色指派。
-ms.date: 11/21/2019
+ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321741"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80282013"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教學課程：從藍圖範例建立環境
 
@@ -21,9 +21,9 @@ ms.locfileid: "74321741"
 > - 將您的範例複本標記為**已發佈**
 > - 將您的藍圖複本指派給現有的訂用帳戶
 > - 檢查為指派部署的資源
-> - 取消指派藍圖以移除鎖定
+> - 取消指派藍圖來移除鎖定
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "74321741"
 
 1. 在左側的 [快速入門]  頁面上，選取 [建立藍圖]  **下方的 [建立]** 按鈕。
 
-1. 在 [其他範例]  下方尋找 [具有 RBAC 的資源群組]  藍圖範例，然後選取 [使用此範例]  。
+1. 在 [其他範例]  下方尋找 [具有 RBAC 的資源群組]  藍圖範例，然後將其選取。
 
 1. 輸入藍圖範例的 [基本資料]  ：
 
@@ -96,15 +96,15 @@ ms.locfileid: "74321741"
 
    - 構件參數
 
-     本節中定義的參數會套用至其定義所屬的成品。 這些參數是[動態參數](../concepts/parameters.md#dynamic-parameters)，因為定義於藍圖指派期間。 針對每個成品，將其參數值設定為 [值]  資料行中所定義的值。 針對 `{Your ID}`，請選取 Azure 使用者帳戶。
+     本節中定義的參數會套用至其定義所屬的成品。 這些參數是[動態參數](../concepts/parameters.md#dynamic-parameters)，因為定義於藍圖指派期間。 針對 [值]  資料行中定義的內容，為每個成品設定參數值。 針對 `{Your ID}`，請選取 Azure 使用者帳戶。
 
-     |成品名稱|成品類型|參數名稱|值|說明|
+     |成品名稱|成品類型|參數名稱|值|描述|
      |-|-|-|-|-|
      |ProdRG 資源群組|資源群組|名稱|ProductionRG|定義第一個資源群組的名稱。|
-     |ProdRG 資源群組|資源群組|位置|美國西部 2|設定第一個資源群組的位置。|
+     |ProdRG 資源群組|資源群組|Location|美國西部 2|設定第一個資源群組的位置。|
      |參與者|角色指派|使用者或群組|{您的識別碼}|定義要對第一個資源群組內的哪些使用者或群組授與「參與者」  角色指派。|
      |PreProdRG 資源群組|資源群組|名稱|PreProductionRG|定義第二個資源群組的名稱。|
-     |PreProdRG 資源群組|資源群組|位置|美國西部|設定第二個資源群組的位置。|
+     |PreProdRG 資源群組|資源群組|Location|美國西部|設定第二個資源群組的位置。|
      |擁有者|角色指派|使用者或群組|{您的識別碼}|定義要對第二個資源群組內的哪些使用者或群組授與「擁有者」  角色指派。|
      |讀取者|角色指派|使用者或群組|{您的識別碼}|定義要對第二個資源群組內的哪些使用者或群組授與「讀取者」  角色指派。|
 

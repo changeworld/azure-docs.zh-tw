@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276456"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>快速入門：在 Visual Studio Code 中建立 Azure Functions 專案
 
@@ -32,7 +32,7 @@ ms.locfileid: "77208943"
 + [Node.js](https://nodejs.org/)、作用中 LTS 和維修 LTS 版本 (建議使用 10.14.1)。 請使用 `npm --version` 命令來檢查您的版本。
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3.7](https://www.python.org/downloads/release/python-375/) 或 [Python 3.6](https://www.python.org/downloads/release/python-368/)(如Azure Functions 支援)。 尚不支援 Python 3.8。 
++ Azure Functions (x64) 支援 [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -41,7 +41,7 @@ ms.locfileid: "77208943"
 ::: zone-end  
 + 其中一個[支援的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上有 [Visual Studio Code](https://code.visualstudio.com/)。  
 ::: zone pivot="programming-language-csharp"  
-+ 適用於 Visual Studio Code 的 [ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。  
++ 適用於 Visual Studio Code 的 [ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。  
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + 適用於 Visual Studio Code 的 [Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。  
@@ -52,7 +52,7 @@ ms.locfileid: "77208943"
 
 + 適用於 Visual Studio Code 的 [Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
 
-## <a name="create-an-azure-functions-project"></a>建立本機專案 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>建立本機專案 
 
 在這一節中，您會使用 Visual Studio Code 在您所選的語言中建立本機 Azure Functions 專案。 稍後在本文中，您會將函式程式碼發佈至 Azure。 
 

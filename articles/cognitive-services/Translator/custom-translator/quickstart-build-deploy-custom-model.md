@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75446738"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370233"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入門：建置、部署和使用自訂模型來進行翻譯
 
@@ -26,7 +26,21 @@ ms.locfileid: "75446738"
 
 2. 可透過 Azure 入口網站來使用的翻譯工具文字 API 訂用帳戶。 您必須有翻譯工具文字 API 訂用帳戶金鑰，才能與工作區相關聯。 請參閱[如何註冊翻譯工具文字 API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
 
-3. 上述兩項皆具備時，請登入[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站。 進入自訂翻譯工具入口網站後，請瀏覽至 [設定] 頁面，在其中將 Microsoft 翻譯工具文字 API 訂用帳戶金鑰與工作區相關聯。
+3. 當您擁有上述兩帳戶時，請登入[自訂翻譯](https://portal.customtranslator.azure.ai)入口網站來建立工作區、專案、上傳檔案，以及建立/部署模型。
+
+## <a name="create-a-workspace"></a>建立工作區
+
+如果您是第一次登入的使用者，系統會要求您先同意服務條款，才能建立工作區，並將您的工作區與 Microsoft 翻譯工具文字 API 訂用帳戶建立關聯。
+
+![建立工作區](media/quickstart/terms-of-service.png)
+![建立工作區](media/quickstart/create-workspace-1.png)
+![建立工作區](media/quickstart/create-workspace-2.png)
+![建立工作區e](media/quickstart/create-workspace-3.png)
+![建立工作區](media/quickstart/create-workspace-4.png)
+![建立工作區](media/quickstart/create-workspace-5.png)
+![建立工作區](media/quickstart/create-workspace-6.png)
+
+之後造訪自訂翻譯入口網站時，您可以瀏覽至可管理工作區的 [設定] 頁面來建立更多工作區、將 Microsoft 翻譯工具文字 API 訂用帳戶金鑰與您的工作區建立關聯、新增共同擁有者，以及變更訂用帳戶金鑰。
 
 ## <a name="create-a-project"></a>建立專案
 

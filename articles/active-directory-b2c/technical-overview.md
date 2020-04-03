@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78186891"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332538"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -195,7 +195,7 @@ Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客�
 * Azure AD B2C 在目錄中建立新帳戶之後
 * Azure AD B2C 發出存取權杖之前
 
-若要瞭解如何在 Azure AD B2C 中使用自訂原則來整合 RESTful API，請參閱[在 Azure AD B2C 使用者旅程圖中整合 REST API 宣告交換](rest-api-claims-exchange-dotnet.md)。
+若要了解如何在 Azure AD B2C 中使用自訂原則來整合 RESTful API，請參閱[在 Azure AD B2C 自訂原則中整合 REST API 宣告交換](custom-policy-rest-api-intro.md)。
 
 ## <a name="protect-customer-identities"></a>保護客戶身分識別
 

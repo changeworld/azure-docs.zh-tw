@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a54b096019e9e38bc800ae313016a430062dab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46c48d6f7d751e6d767921fad21e6213c6b1203b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74964305"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384019"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教學課程：整合 Atlassian Cloud 與 Azure Active Directory
 
@@ -31,7 +30,7 @@ ms.locfileid: "74964305"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Atlassian Cloud。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +46,7 @@ ms.locfileid: "74964305"
 
 * Atlassian Cloud 支援由 **SP 和 IDP** 初始化的 SSO
 * Atlassian Cloud 支援[自動化的使用者佈建和取消佈建](atlassian-cloud-provisioning-tutorial.md)
-
+* 設定 Atlassian Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>從資源庫新增 Atlassian Cloud
 
 若要設定將 Atlassian Cloud 整合到 Azure AD 中，您需要從資源庫將 Atlassian Cloud 新增到受控 SaaS 應用程式清單。
@@ -93,7 +92,7 @@ ms.locfileid: "74964305"
     d. 在 [轉送狀態]  文字方塊中，使用下列模式輸入 URL：`https://<instancename>.atlassian.net`
 
     > [!NOTE]
-    > 上述值並非真正的值。 請使用實際的識別碼和回覆 URL 來更新這些值。 您會從 [Atlassian Cloud SAML 組態]  畫面取得這些真正的值，本教學課程稍的**設定 Atlassian Cloud 單一登入**會予以說明。
+    > 上述值並非真正的值。 請使用實際的識別碼和回覆 URL 來更新這些值。 您會從 [Atlassian Cloud SAML 組態]  畫面取得這些真正的值，本教學課程稍後會在＜**設定 Atlassian Cloud 單一登入**＞的步驟 7 中說明。
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
@@ -222,8 +221,12 @@ ms.locfileid: "74964305"
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Atlassian Cloud](https://aad.portal.azure.com/)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 Atlassian Cloud](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

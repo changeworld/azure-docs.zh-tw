@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: sample
 author: peterclu
 ms.author: peterlu
-ms.date: 03/10/2020
-ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/29/2020
+ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037290"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389336"
 ---
 # <a name="designer-sample-pipelines"></a>設計工具範例管線
 
@@ -30,6 +30,8 @@ ms.locfileid: "79037290"
 
 設計工具會將範例管線的複本儲存至您的工作室工作區。 您可以編輯管線以符合您的需求，並以您自己的方式加以儲存。 使用這些資訊開始進行專案。
 
+### <a name="open-a-sample-pipeline"></a>開啟範例管線
+
 1. 登入 <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>，並選取您要使用的工作區。
 
 1. 選取 [設計工具]  。
@@ -37,6 +39,31 @@ ms.locfileid: "79037290"
 1. 在 [新增管線]  區段下，選取範例管線。
 
     如需完整的範例清單，請選取 [顯示更多範例]  。
+
+### <a name="submit-a-pipeline-run"></a>提交管線執行
+
+若要執行管線，您必須先設定要在其上執行管線的預設計算目標。
+
+1. 在畫布右側的 [設定]  窗格中，選取 [選取計算目標]  。
+
+1. 在出現的對話方塊中，選取現有計算目標或建立新的計算目標。 選取 [儲存]  。
+
+1. 選取畫布頂端的 [提交]  以提交管線執行。
+
+視範例管線和計算設定而定，執行可能需要一些時間才能完成。 預設計算設定的最小節點大小為 0，這表示設計工具必須在閒置之後配置資源。 重複的管線執行花費較少的時間，因為已經配置計算資源。 此外，設計工具會針對每個模組使用快取的結果，進一步提升效率。
+
+
+### <a name="review-the-results"></a>檢閱結果
+
+在管線完成執行之後，您可以檢閱管線及檢視每個模組的輸出，以便深入了解。
+
+請使用下列步驟來檢視模組輸出：
+
+1. 選取畫布中的模組。
+
+1. 在畫布右側的 [模組詳細資料] 窗格中，選取 [輸出 + 記錄]  。 選取圖形圖示![視覺化圖示](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)，以查看每個模組的結果。 
+
+針對一些最常見的機器學習案例，使用範例作為起點。
 
 ## <a name="regression-samples"></a>迴歸範例
 
