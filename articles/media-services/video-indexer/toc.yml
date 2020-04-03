@@ -97,7 +97,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
@@ -111,3 +111,5 @@
       href: release-notes.md
     - name: User Voice
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: 部落格
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

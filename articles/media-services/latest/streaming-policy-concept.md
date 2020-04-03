@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66392915"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582766"
 ---
 # <a name="streaming-policies"></a>串流原則
 
-Azure 媒體服務 v3 中，[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)可讓您設定[串流定位器](streaming-locators-concept.md)的串流通訊協定和加密選項。 媒體服務 v3 提供了一些預定義的流式處理策略，以便您可以直接使用它們進行試用或生產。 
+Azure 媒體服務 v3 中，[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)可讓您設定[串流定位器](streaming-locators-concept.md)的串流通訊協定和加密選項。 媒體服務 v3 提供了一些預定義的流式處理策略,以便您可以直接使用它們進行試用或生產。 
 
-當前可用的預定義流式處理策略：<br/>
+目前可用的預先定義串流式處理原則:<br/>
 * "Predefined_DownloadOnly"
 * "Predefined_ClearStreamingOnly"
 * 'Predefined_DownloadAndClearStreaming'
@@ -30,11 +30,11 @@ Azure 媒體服務 v3 中，[串流原則](https://docs.microsoft.com/rest/api/m
 * 'Predefined_MultiDrmCencStreaming' 
 * "Predefined_MultiDrmStreaming"
 
-以下"決策樹"可説明您為方案選擇預定義的流式處理策略。
+以下「決策樹」可説明您為方案選擇預定義的流式處理策略。
 
 > [!IMPORTANT]
 > * 屬於日期時間類型的**串流原則**屬性一律為 UTC 格式。
-> * 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 如需詳細資訊，請參閱 [配額和限制](limits-quotas-constraints.md)。
+> * 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 有關詳細資訊,請參閱[配額和限制](limits-quotas-constraints.md)。
 
 ## <a name="decision-tree"></a>決策樹
 
@@ -42,13 +42,13 @@ Azure 媒體服務 v3 中，[串流原則](https://docs.microsoft.com/rest/api/m
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-如果加密內容，則需要創建[內容金鑰策略](content-key-policy-concept.md)，不需要清除流式處理或下載**內容金鑰策略**。 
+如果加密內容,則需要建立[內容金鑰政策](content-key-policy-concept.md),不需要清除流式處理或下載**內容金鑰原則**。 
 
-如果您有特殊要求（例如，如果要指定不同的協定、需要使用自訂金鑰傳遞服務或使用清晰的音軌），則可以[創建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)自訂流式處理策略。 
+如果您有特殊要求(例如,如果要指定不同的協定、需要使用自訂密鑰傳遞服務或使用清晰的音軌),則可以[創建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)自定義流式處理策略。 
 
-## <a name="get-a-streaming-policy-definition"></a>獲取流式處理策略定義  
+## <a name="get-a-streaming-policy-definition"></a>取得流式處理原則定義  
 
-如果要查看流式處理策略的定義，請使用[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get)並指定策略名稱。 例如：
+如果要查看流式處理策略的定義,請使用[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get)並指定策略名稱。 例如：
 
 ### <a name="rest"></a>REST
 

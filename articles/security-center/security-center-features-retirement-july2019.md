@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521425"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583227"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>安全中心停用功能(2019年7月)
 
@@ -97,7 +97,7 @@ Azure 安全中心當前使用 Azure 監視器日誌搜索來檢索和分析安�
 
 ## <a name="security-events-map"></a>安全事件對應<a name="menu_securityeventsmap"></a>
 
-安全中心為您提供[安全警報映射](https://docs.microsoft.com/azure/security-center/security-center-threat-intel),以幫助識別安全威脅。 **該地圖中的「轉到安全事件映射」** 按鈕將打開一個儀表板,允許您查看所選工作區上的原始安全事件。
+安全中心為您提供安全警報映射,以幫助識別安全威脅。 **該地圖中的「轉到安全事件映射」** 按鈕將打開一個儀表板,允許您查看所選工作區上的原始安全事件。
 
 我們刪除了 **「轉到安全事件映射」** 按鈕和每個工作區儀錶板。
 
@@ -136,7 +136,7 @@ Azure 安全中心當前使用 Azure 監視器日誌搜索來檢索和分析安�
 
 ## <a name="security-alerts-investigation"></a>安全警報調查<a name="menu_investigate"></a>
 
-安全中心[中的"調查"功能](https://docs.microsoft.com/azure/security-center/security-center-investigation)可説明您對潛在的安全事件進行會審。 該功能允許您瞭解事件的範圍並跟蹤其根本原因。 我們從安全中心刪除了此功能,因為它已被[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)中改進的體驗所取代。
+安全中心中的"調查"功能可説明您對潛在的安全事件進行會審。 該功能允許您瞭解事件的範圍並跟蹤其根本原因。 我們從安全中心刪除了此功能,因為它已被[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)中改進的體驗所取代。
 
 ![安全性事件][14]
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60691077"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616441"
 ---
 # <a name="set-up-a-capacity-pool"></a>設定容量集區
 
@@ -47,7 +47,7 @@ ms.locfileid: "60691077"
 
    * **服務等級**   
      此欄位會顯示容量集區的目標效能。  
-     指定容量池的服務等級：[**高級**](azure-netapp-files-service-levels.md#Premium)或[**標準**](azure-netapp-files-service-levels.md#Standard)。
+     指定容量池的服務等級:[**超**](azure-netapp-files-service-levels.md#Ultra)容量、[**進階**](azure-netapp-files-service-levels.md#Premium)或[**標準**](azure-netapp-files-service-levels.md#Standard)。
 
    * **大小**     
      指定您購買的容量集區大小。        
@@ -55,7 +55,7 @@ ms.locfileid: "60691077"
       
      ![新增容量集區](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 按一下 [確定]****。
+4. 按一下 [確定]  。
 
 ## <a name="next-steps"></a>後續步驟 
 

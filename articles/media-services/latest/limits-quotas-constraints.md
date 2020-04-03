@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 6fb2f8f9172533a2c7f4aa03e99bd08e16a1f1dc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545919"
+ms.locfileid: "80582328"
 ---
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒體服務配額和限制
 
@@ -87,7 +87,7 @@ ms.locfileid: "80545919"
 
 | 資源 | 預設限制 | 
 | --- | --- | 
-| 每個媒體服務帳號[的流式處理終結點](streaming-endpoint-concept.md)(已停止或執行)|2 (固定)|
+| 每個媒體服務帳號[的流式處理終結點](streaming-endpoint-concept.md)(已停止或執行)|2 |
 | [動態資訊清單篩選條件](filters-dynamic-manifest-overview.md)|100|
 | [串流原則](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | 一次與資產關聯的唯一[流式處理器](streaming-locators-concept.md) | 100<sup>(7) (</sup>固定) |

@@ -246,6 +246,8 @@
       items:
         - name: Azure 入口網站
           href: howto-data-encryption-portal.md
+        - name: Azure CLI
+          href: howto-data-encryption-cli.md
     - name: Azure AD 整合
       items:
         - name: 設定 Azure AD 整合

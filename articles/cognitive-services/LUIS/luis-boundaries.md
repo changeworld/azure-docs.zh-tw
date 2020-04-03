@@ -1,22 +1,14 @@
 ---
 title: 限制 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 本文包含 Azure 認知服務 Language Understanding (LUIS) 的已知限制。 LUIS 句有數個界線領域。 模型界線可控制 LUIS 中的意圖、實體和特性。 以金鑰類型為基礎的配額限制。 鍵盤組合可控制 LUIS 網站。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/07/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/02/2020
+ms.openlocfilehash: 4aa69cb0fd36fe5bf4ea2928022aea602b8830d6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520947"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618858"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的界限
 LUIS 句有數個界線領域。 第一個是[模型界線](#model-boundaries)，其控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個界線領域是用來控制 LUIS 網站的[鍵盤組合](#keyboard-controls)。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -45,7 +37,7 @@ LUIS 句有數個界線領域。 第一個是[模型界線](#model-boundaries)�
 | [規則運算式實體](./luis-concept-entity-types.md)|20 個實體<br>每個規則運算式實體模式 具有 500 個字元的上限|
 | [角色](luis-concept-roles.md)|每個應用程式 300 個角色。 每個實體 10 個角色|
 | [語句][utterances] | 500 個字元|
-| [語句][utterances] | 每個應用程式 15,000 ─ 每個意圖的話語次數沒有限制|
+| [表達方式][utterances] | 每個應用程式 15,000 ─ 每個意圖的話語次數沒有限制|
 | [版本](luis-concept-version.md)| 每個應用程式 100 個版本 |
 | [版本名稱][luis-how-to-manage-versions] | 10 個字元，限制為英數字元和句號 (.) |
 
@@ -77,26 +69,41 @@ LUIS 句有數個界線領域。 第一個是[模型界線](#model-boundaries)�
 |意向、實體和角色名稱|`:`<br>`$` <br> `&`|
 |版本名稱|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>金鑰使用量
+## <a name="resource-usage-and-limits"></a>資源使用和限制
 
-Language Understand 有不同的金鑰，一種適用於撰寫，一種適用於查詢預測端點。 若要深入了解金鑰類型之間的差異，請參閱 [LUIS 中的撰寫與查詢預測端點金鑰](luis-concept-keys.md)。
+語言理解有單獨的資源,一種類型用於創作,一種類型用於查詢預測終結點。 若要深入了解金鑰類型之間的差異，請參閱 [LUIS 中的撰寫與查詢預測端點金鑰](luis-concept-keys.md)。
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>資源金鑰限制
+### <a name="authoring-resource-limits"></a>創作資源限制
 
-資源鍵對創作和終結點有不同的限制。 LUIS 預測查詢終結點密鑰僅適用於終結點查詢。
+篩選_kind_Azure`LUIS.Authoring`門戶中的資源時,請使用 類型 ,。 LUIS 限制每個 Azure 創作資源 500 個應用程式。
 
-* 每個 Azure 創作資源 500 個應用程式
+|創作資源|創作 TPS|
+|--|--|
+|入門|1 百萬個/月，5 個/秒|
+|F0 - 免費套餐 |1 百萬個/月，5 個/秒|
 
-|Key|編寫|端點|目的|
-|--|--|--|--|
-|入門|1 百萬個/月，5 個/秒|1 千個/月，5 個/秒|撰寫 LUIS 應用程式|
-|F0 - 免費套餐 |1 百萬個/月，5 個/秒|1 萬個/月，5 個/秒|查詢 LUIS 端點|
-|S0 - 基本層|-|50 個/秒|查詢 LUIS 端點|
-|S0 - 標準層|-|50 個/秒|查詢 LUIS 端點|
-|[情感分析整合](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|無需其他 Azure 資源即可添加情緒資訊(包括關鍵短語數據提取)。 |
-|[語音整合](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|單位成本 1,00 個端點請求|將口語語句轉換成文字語句並傳回 LUIS 結果|
+* TPS = 每秒事務
+
+[詳細了解定價。][pricing]
+
+### <a name="query-prediction-resource-limits"></a>查詢預測資源限制
+
+篩選_kind_Azure`LUIS`門戶中的資源時,請使用 類型 ,。在運行時使用的 LUIS 查詢預測終結點資源僅適用於終結點查詢。
+
+|查詢預測資源|查詢 TPS|
+|--|--|
+|F0 - 免費套餐 |1 萬個/月，5 個/秒|
+|S0 - 標準層|50 個/秒|
+
+### <a name="sentiment-analysis"></a>情感分析
+
+[提供情緒資訊的情緒分析整合](luis-how-to-publish-app.md#enable-sentiment-analysis)式無需其他 Azure 資源即可提供。
+
+### <a name="speech-integration"></a>語音整合
+
+[語音整合](../speech-service/how-to-recognize-intents-from-speech-csharp.md)提供 1000 個每單位成本的終結點請求。
 
 [詳細了解定價。][pricing]
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9f0a7425fc09d391828a748832f662f02c6022cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970789"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582280"
 ---
 # <a name="scaling-media-processing"></a>調整媒體處理
 
@@ -33,9 +33,9 @@ Azure 媒體服務可讓您藉由管理媒體保留單元 (MRU)，在帳戶中�
 
 |RU 類型|狀況|[7 分鐘 1080p 視訊](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)的結果範例|
 |---|---|---|
-| **S1**|單一位元速率編碼。 <br/>在 SD或如下解決方法的檔案、對時間不敏感、低成本。|使用"H264單位元速率 SD SD 16x9"編碼到單位元速率 SD 解析度 MP4 檔大約需要 7 分鐘。|
-| **S2**|單一位元速率和多重位元速率編碼。<br/>SD 和 HD 編碼的一般使用方式。|使用"H264 單位元速率 720p"預設進行編碼大約需要 6 分鐘。<br/><br/>使用"H264 多位元率 720p"預設進行編碼大約需要 12 分鐘。|
-| **S3**|單一位元速率和多重位元速率編碼。<br/>Full HD 和 4K 解析度影片。 對時間敏感、周轉時間更快的編碼。|使用"H264 單位元速率 1080p"預設進行編碼大約需要 3 分鐘。<br/><br/>具有「H264 多重位元速率 1080p」預設值的編碼需要大約 8 分鐘。|
+| **S1**|單一位元速率編碼。 <br/>在 SD或如下解決方法的檔案、對時間不敏感、低成本。|使用"H264單比特率 SD SD 16x9"編碼到單比特率 SD 解析度 MP4 檔案大約需要 7 分鐘。|
+| **S2**|單一位元速率和多重位元速率編碼。<br/>SD 和 HD 編碼的一般使用方式。|使用"H264 單比特率 720p"預設進行編碼大約需要 6 分鐘。<br/><br/>使用"H264 多比特率 720p"預設進行編碼大約需要 12 分鐘。|
+| **S3**|單一位元速率和多重位元速率編碼。<br/>Full HD 和 4K 解析度影片。 對時間敏感、周轉時間更快的編碼。|使用"H264 單比特率 1080p"預設進行編碼大約需要 3 分鐘。<br/><br/>具有「H264 多重位元速率 1080p」預設值的編碼需要大約 8 分鐘。|
 
 ## <a name="considerations"></a>考量
 
@@ -49,7 +49,7 @@ Azure 媒體服務可讓您藉由管理媒體保留單元 (MRU)，在帳戶中�
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-[創建媒體服務帳戶](create-account-cli-how-to.md)。
+[建立媒體服務帳號](create-account-cli-how-to.md)。
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 

@@ -404,8 +404,6 @@
           items:
             - name: 部署來賓可執行檔
               href: service-fabric-deploy-existing-app.md
-            - name: 部署多個來賓可執行檔
-              href: service-fabric-deploy-multiple-apps.md
         - name: 建置容器服務
           items:
             - name: Docker Compose (預覽)
@@ -880,7 +878,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
     - name: Azure Resource Manager 部署限制
       href: service-fabric-azure-resource-manager-guardrails.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

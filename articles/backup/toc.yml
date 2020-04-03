@@ -166,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Azure 檔案共用備份
       items:
+        - name: 概觀
+          href: azure-file-share-backup-overview.md
         - name: 從 Azure 入口網站
           items:
-            - name: 概觀
-              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: 還原
@@ -338,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
+        - name: 概觀
+          href: security-overview.md
         - name: 角色型存取控制
           href: backup-rbac-rs-vault.md
         - name: 雲端工作負載的安全性
@@ -384,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: 資源
   items:
+    - name: 法規遵循
+      href: compliance-offerings.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 論壇

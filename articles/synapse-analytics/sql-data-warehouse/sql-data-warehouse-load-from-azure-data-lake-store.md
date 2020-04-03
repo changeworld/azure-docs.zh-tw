@@ -1,6 +1,6 @@
 ---
-title: 教程從 Azure 資料湖存儲載入資料
-description: 使用 PolyBase 外部表從 Azure 資料湖存儲載入資料以進行 SQL 分析。
+title: 教學從 Azure 資料的資料儲存載入資料
+description: 使用 PolyBase 外部表從 Azure 數據湖儲存載入資料以進行 Synapse SQL。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,43 +11,44 @@ ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b9e28f41b251ea526044bf88dc3e79c0374fe369
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7d599ce121b4c53662b91e5aab94130b0f3f4458
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350375"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583944"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>載入 Azure 資料存儲中的資料以進行 SQL 分析
-本指南概述了如何使用 PolyBase 外部表從 Azure 資料湖存儲載入資料。 儘管您可以對資料存儲在資料湖存儲中的資料運行臨時查詢，但我們建議導入資料以獲得最佳性能。 
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>載入 Azure 資料湖儲存中的資料,用於 Synapse SQL
+
+本指南概述了如何使用 PolyBase 外部表從 Azure 數據湖存儲載入數據。 儘管您可以對數據存儲在數據湖存儲中的數據運行臨時查詢,但我們建議導入數據以獲得最佳性能。 
 
 > [!NOTE]  
-> 載入的替代是當前在公共預覽中的[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。  COPY 語句提供了最大的靈活性。 要提供有關 COPY 語句的回饋，請發送電子郵件至以下通訊群組清單： sqldwcopypreview@service.microsoft.com。
+> 載入的替代為目前在公共預覽的[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。  COPY 語句提供了最大的靈活性。 要提供有關 COPY 語句的回饋,請傳送電子郵件至以下通訊sqldwcopypreview@service.microsoft.com群組清單: 。
 >
 > [!div class="checklist"]
 
-> * 創建從資料湖存儲載入所需的資料庫物件。
-> * 連接到資料湖存儲目錄。
-> * 將資料載入到資料倉儲中。
+> * 創建從數據湖儲存載入所需的資料庫物件。
+> * 連接到數據湖存儲目錄。
+> * 將數據載入到數據倉庫中。
 
-如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
+如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>開始之前
 開始本教學課程之前，請下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 若要執行此教學課程，您需要：
 
-* SQL 池。 請參閱[創建 SQL 池和查詢資料](create-data-warehouse-portal.md)。
-* 資料湖存儲帳戶。 請參閱[開始使用 Azure 資料存儲](../../data-lake-store/data-lake-store-get-started-portal.md)。 對於此存儲帳戶，您需要配置或指定要載入的以下憑據之一：存儲帳戶金鑰、Azure 目錄應用程式使用者或具有相應 RBAC 角色的 AAD 使用者。 
+* SQL 池。 請參考[SQL 池與查詢資料](create-data-warehouse-portal.md)。
+* 數據湖存儲帳戶。 請參考[啟動的 Azure 資料儲存](../../data-lake-store/data-lake-store-get-started-portal.md)。 對於此儲存帳戶,您需要配置或指定要載入的以下認證之一:儲存帳戶金鑰、Azure 目錄應用程式使用者或具有相應 RBAC 角色的 AAD 使用者。 
 
 ##  <a name="create-a-credential"></a>建立認證
-使用 AAD 直通驗證時，可以跳過此部分並繼續"創建外部資料源"。 使用 AAD 傳遞時不需要創建或指定資料庫作用域憑據，但請確保 AAD 使用者具有存儲帳戶的相應 RBAC 角色（存儲 Blob 資料讀取器、參與者或擁有者角色）。 更多細節[將在這裡](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)概述。 
+使用 AAD 直通驗證時,可以跳過此部分並繼續"創建外部數據源」。 使用 AAD 傳遞時不需要建立或指定資料庫作用域認證,但請確保 AAD 使用者具有儲存帳戶的相應 RBAC 角色(儲存 Blob 資料讀取器、參與者或擁有者角色)。 更多細節[將在這裡](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)概述。 
 
-要訪問資料湖存儲帳戶，您需要創建資料庫主金鑰來加密憑據金鑰。 然後創建資料庫作用域憑據來存儲機密。 使用服務主體（Azure 目錄應用程式使用者）進行身份驗證時，資料庫作用域憑據將存儲在 AAD 中設置的服務主體憑據。 您還可以使用資料庫作用域憑據存儲 Gen2 的存儲帳戶金鑰。
+要存取資料湖儲存帳戶,您需要創建資料庫主金鑰來加密認證認證。 然後創建資料庫作用域憑據來儲存機密。 使用服務主體(Azure 目錄應用程式使用者)進行身份驗證時,資料庫作用域憑據將存儲在 AAD 中設置的服務主體認證。 您還可以使用資料庫作用域憑據存儲 Gen2 的儲存帳戶密鑰。
 
-要使用服務主體連接到資料湖存儲，必須**首先**創建 Azure 活動目錄應用程式、創建訪問金鑰以及授予應用程式對資料湖存儲帳戶的存取權限。 有關說明，請參閱[使用活動目錄對 Azure 資料湖存儲進行身份驗證](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)。
+要使用服務主體連接到資料湖存儲,必須**首先**創建 Azure 活動目錄應用程式、創建存取金鑰以及授予應用程式對資料湖存儲帳戶的存取許可權。 有關說明,請參閱[使用活動目錄對 Azure 資料湖儲存進行身份認證](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)。
 
-使用具有 CONTROL 級別許可權的使用者登錄到 SQL 池，並針對資料庫執行以下 SQL 語句：
+使用具有 CONTROL 等級權限的使用者登入 SQL 池,並針對資料庫執行以下 SQL 語句:
 
 ```sql
 -- A: Create a Database Master Key.
@@ -89,7 +90,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>建立外部資料來源
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 命令以儲存資料的位置。 如果使用 AAD 直通進行身份驗證，則不需要"憑據"參數。 
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 命令以儲存資料的位置。 如果使用 AAD 直通進行身份驗證,則不需要「憑據」參數。 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -118,7 +119,7 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>設定資料格式
-要從資料存儲庫導入資料，需要指定外部檔案格式。 此物件定義檔在資料湖存儲中寫入的方式。
+要從資料儲存庫導入資料,需要指定外部檔案格式。 此物件定義檔在資料湖存儲中寫入的方式。
 如需完整清單，請查閱我們的 T-SQL 文件＜[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)＞
 
 ```sql
@@ -179,7 +180,7 @@ REJECT_TYPE 和 REJECT_VALUE 選項可讓您定義最終的資料表中必須出
 Data Lake Storage Gen1 使用角色型存取控制 (RBAC) 來控制資料存取。 這表示服務主體必須具有在位置參數中所定義之目錄，以及最終目錄和檔案之子系的讀取權限。 這可讓 PolyBase 驗證及載入該資料。 
 
 ## <a name="load-the-data"></a>載入資料
-要從資料存儲載入資料，請使用["創建表作為選擇"（轉算-SQL）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)語句。 
+要從資料儲存載入資料,請使用[「創建表作為選擇」(轉算-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)語句。 
 
 CTAS 建立新的資料表，並將選取陳述式的結果填入該資料表。 CTAS 定義新資料表，以使它擁有和選取陳述式之結果相同的資料行和資料類型。 如果您選取外部資料表上的所有資料行，則新資料表會是外部資料表中資料行和資料類型的複本。
 
@@ -196,7 +197,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>最佳化資料行存放區壓縮
-預設情況下，表定義為群集列存儲索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  有許多原因會導致發生此情況。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
+默認情況下,表定義為群集列存儲索引。 載入完成後，某些資料列可能不會被壓縮為資料行存放區。  有許多原因會導致發生此情況。 若要深入了解，請參閱[管理資料行存放區索引](sql-data-warehouse-tables-index.md)。
 
 若要最佳化載入後的查詢效能和資料行存放區壓縮，請重建資料表以強制資料行存放區索引對所有資料列進行壓縮。
 
@@ -214,7 +215,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 下列範例為建立統計資料的好起點。 它會在維度資料表中的每個資料行上，以及在事實資料表中的每個聯結資料行上建立單一資料行統計資料。 您之後隨時可以將單一或多個資料行統計資料新增到其他事實資料表資料行上。
 
 ## <a name="achievement-unlocked"></a>成就解鎖！
-您已成功將資料載入到資料倉儲中。 太棒了！
+您已成功將資料載入資料主目錄中。 太棒了！
 
 ## <a name="next-steps"></a>後續步驟 
 在本教學課程中，您已建立外部資料表來定義儲存在 Data Lake Storage Gen1 中的資料結構，然後使用 PolyBase CREATE TABLE AS SELECT 陳述式將資料載入資料倉儲。 
@@ -222,12 +223,12 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 您進行了下列事項：
 > [!div class="checklist"]
 >
-> * 創建從資料湖存儲載入所需的資料庫物件。
-> * 連接到資料湖存儲目錄。
-> * 將資料載入到資料倉儲中。
+> * 創建從數據湖儲存載入所需的資料庫物件。
+> * 連接到數據湖存儲目錄。
+> * 將數據載入到數據倉庫中。
 >
 
-載入資料是使用 Azure 同步分析開發資料倉儲解決方案的第一步。 請參閱我們的開發資源。
+載入資料是使用 Azure 同步分析開發數據倉庫解決方案的第一步。 請參閱我們的開發資源。
 
 > [!div class="nextstepaction"]
-> [瞭解如何為資料倉儲開發表](sql-data-warehouse-tables-overview.md)
+> [瞭解如何為資料主目錄開發表](sql-data-warehouse-tables-overview.md)

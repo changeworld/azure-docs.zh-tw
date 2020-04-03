@@ -1,6 +1,6 @@
 ---
-title: 連接到 Azure SQL 資料倉儲
-description: 連線到 Azure SQL 資料倉儲。
+title: 連接到 Synapse SQL 池
+description: 連接到 SQL 池。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 72825f588ff92383858020cdbcd92c7de3078ed5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 70dd1ae883ee1f44672dccb802c0e770d7676440
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350648"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619061"
 ---
-# <a name="connect-to-azure-sql-data-warehouse"></a>連接到 Azure SQL 資料倉儲
-連線到 Azure SQL 資料倉儲。
+# <a name="connect-to-synapse-sql-pool"></a>連接到 Synapse SQL 池
+連接到 SQL 池。
 
 ## <a name="find-your-server-name"></a>尋找您的伺服器名稱
-下列範例中的伺服器名稱是 samplesvr.database.windows.net。 若要尋找完整的伺服器名稱：
+以下範例中的伺服器名稱sqlpoolservername.database.windows.net。 若要尋找完整的伺服器名稱：
 
-1. 轉到[Azure 門戶][Azure portal]。
-2. 按一下 [SQL 資料倉儲]****。
-3. 按一下您想連線的資料倉儲。
+1. 跳到[Azure 門戶](https://portal.azure.com)。
+2. 點選**Azure 同步分析**。
+3. 按下要連接到的 SQL 池。
 4. 找出完整的伺服器名稱。
    
     ![完整伺服器名稱](media/sql-data-warehouse-connect-overview/server-connect.PNG)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支援的驅動程式和連接字串
-Azure SQL 資料倉儲支援 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 和 [JDBC][JDBC]。 若要尋找最新版本和文件，請按一下前述的其中一個驅動程式。 若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，按一下前述範例中的 [顯示資料庫連接字串]****。 下列一些範例顯示每個驅動程式的連接字串。
+SQL[ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)池 支援[ADO.NET、ODBC、PHP](https://msdn.microsoft.com/library/jj730314.aspx)和[JDBC。](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx) [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 若要尋找最新版本和文件，請按一下前述的其中一個驅動程式。 
+
+若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，按一下前述範例中的 [顯示資料庫連接字串]****。 下列一些範例顯示每個驅動程式的連接字串。
 
 > [!NOTE]
 > 請考慮將連線逾時設定為 300 秒，以便在短時間無法使用時能夠維持連線。
@@ -60,36 +62,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>連線設定
-SQL 資料倉儲會在連線和物件建立期間將一些設定標準化。 這些設定不能覆寫，其中包括︰
+SQL 池在連接和物件創建期間標準化某些設置。 這些設定不能覆寫，其中包括︰
 
 | 資料庫設定 | 值 |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |開啟 |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |開啟 |
-| [DATEFORMAT][DATEFORMAT] |mdy |
-| [DATEFIRST][DATEFIRST] |7 |
+| [ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx) |開啟 |
+| [QUOTED_IDENTIFIERS](https://msdn.microsoft.com/library/ms174393.aspx) |開啟 |
+| [DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx) |mdy |
+| [DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx) |7 |
 
 ## <a name="next-steps"></a>後續步驟
-若要使用 Visual Studio 連接及查詢，請參閱 [使用 Visual Studio 查詢][Query with Visual Studio]。 若要深入了解驗證選項，請參閱 [適用於 Azure SQL 資料倉儲的驗證][Authentication to Azure SQL Data Warehouse]。
-
-<!--Articles-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-[Authentication to Azure SQL Data Warehouse]:sql-data-warehouse-authentication.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-[ANSI_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
-[QUOTED_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
-[DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
-[DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-
-<!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
-
+若要使用 Visual Studio 連接及查詢，請參閱 [使用 Visual Studio 查詢](sql-data-warehouse-query-visual-studio.md)。 要瞭解有關身份驗證選項的詳細資訊,請參閱[Azure 同步分析的身份驗證](sql-data-warehouse-authentication.md)。
 

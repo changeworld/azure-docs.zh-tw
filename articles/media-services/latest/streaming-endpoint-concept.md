@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478093"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582736"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流式處理終結點(原點)
 
@@ -43,7 +43,7 @@ ms.locfileid: "80478093"
 * 流式處理終結點名稱的最大值為 24 個字元。
 * 名稱應遵循此[regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)`^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`模式: 。
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
 有兩種**串流式處理終結點**型態:**標準**(預覽)和**進階**。 類型會根據您為串流端點配置的縮放單位數 (`scaleUnits`) 來定義。
 

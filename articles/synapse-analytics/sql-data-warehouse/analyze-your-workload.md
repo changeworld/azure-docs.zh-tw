@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351209"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586085"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure 突觸分析中分析工作負荷
 
-在 Azure 同步分析中分析 SQL 分析工作負荷的技術。
+在 Azure 突觸分析中分析 Synapse SQL 工作負荷的技術。
 
 ## <a name="resource-classes"></a>資源課程
 
-SQL 分析提供資源類，用於將系統資源配置給查詢。  有關資源類的詳細資訊，請參閱[資源類&工作負載管理](resource-classes-for-workload-management.md)。  如果分配給查詢的資源類需要的資源比當前可用資源多，則查詢將等待。
+突觸 SQL 提供資源類,用於將系統資源分配給查詢。  有關資源類的詳細資訊,請參閱[資源類&工作負載管理](resource-classes-for-workload-management.md)。  如果分配給查詢的資源類需要的資源比當前可用資源多,則查詢將等待。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>已排入佇列的查詢偵測和其他 DMV
 
@@ -63,12 +63,12 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL 分析具有以下等待類型：
+突觸 SQL 具有以下等待類型:
 
 * **LocalQueriesConcurrencyResourceType**：位於並行存取插槽架構外部的查詢。 DMV 查詢及 `SELECT @@VERSION` 這類的系統函數是本機查詢的範例。
 * **UserConcurrencyResourceType**：位於並行存取插槽架構內部的查詢。 針對使用者資料表的查詢代表會使用此資源類型的範例。
 * **DmsConcurrencyResourceType**：資料移動作業所產生的等候。
-* **BackupConcurrencyResourceType**：此等候指出正在備份資料庫。 此資源類型的最大值為 1。 如果在同一時間要求多個備份，其他備份會排入佇列。 通常，我們建議在連續快照之間至少 10 分鐘。 
+* **BackupConcurrencyResourceType**：此等候指出正在備份資料庫。 此資源類型的最大值為 1。 如果在同一時間要求多個備份，其他備份會排入佇列。 通常,我們建議在連續快照之間至少 10 分鐘。 
 
 `sys.dm_pdw_waits` DMV 可用來查看要求正在等待哪些資源。
 
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>後續步驟
 
-有關管理資料庫使用者和安全的詳細資訊，請參閱 SQL [Analytics 中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有關管理資料庫使用者和安全的詳細資訊,請參閱[在 Synapse SQL 中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

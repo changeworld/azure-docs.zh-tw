@@ -1,6 +1,6 @@
 ---
 title: 索引表
-description: 用於在 SQL 分析中索引表的建議和示例。
+description: 有關 Synapse SQL 池中索引表的建議和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ced965f94808bdc672f694bede5c239178891f97
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351278"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583276"
 ---
-# <a name="indexing-tables-in-sql-analytics"></a>SQL 分析中的索引表
+# <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的索引表
 
-用於在 SQL 分析中索引表的建議和示例。
+有關 Synapse SQL 池中索引表的建議和示例。
 
 ## <a name="index-types"></a>索引類型
 
-SQL Analytics 提供了多個索引選項，包括[群集列存儲索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、[群集索引和非群集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)，以及也稱為[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)的非索引選項。  
+Synapse SQL 池提供了多個索引選項,包括[群集列存儲索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、[群集索引和非群集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described),以及也稱為[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)的非索引選項。  
 
-要創建具有索引的表，請參閱[創建表 （SQL 分析）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)文檔。
+要建立具有索引的表,請參閱[創建表(合成 SQL 池)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)文檔。
 
 ## <a name="clustered-columnstore-indexes"></a>叢集資料行存放區索引
 
-預設情況下，SQL Analytics 在表上未指定索引選項時創建群集列存儲索引。 叢集資料行存放區資料表提供最高層級的資料壓縮，以及最佳的整體查詢效能。  叢集資料行存放區資料表通常勝過叢集索引或堆積資料表，而且通常是大型資料表的最佳選擇。  基於這些理由，叢集資料行存放區是您不確定如何編製資料表索引時的最佳起點。  
+默認情況下,Synapse SQL 池在表上未指定索引選項時創建群集列存儲索引。 叢集資料行存放區資料表提供最高層級的資料壓縮，以及最佳的整體查詢效能。  叢集資料行存放區資料表通常勝過叢集索引或堆積資料表，而且通常是大型資料表的最佳選擇。  基於這些理由，叢集資料行存放區是您不確定如何編製資料表索引時的最佳起點。  
 
 若要建立叢集資料行存放區資料表，只要在 WITH 子句中指定 CLUSTERED COLUMNSTORE INDEX，或省略 WITH 子句︰
 
@@ -48,13 +48,13 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 - 資料行存放區資料表不支援 varchar(max)、nvarchar(max) 和 varbinary(max)。 請改為考慮堆積或叢集索引。
 - 資料行存放區資料表可能比暫時性資料沒有效率。 請考慮堆積，甚至是暫時性資料表。
-- 少於 6000 萬行的小表。 請考慮堆積資料表。
+- 少於6000萬行的小表。 請考慮堆積資料表。
 
 ## <a name="heap-tables"></a>堆積資料表
 
-當您在 SQL Analytics 中臨時登陸資料時，您可能會發現使用堆表可以更快地完成整個過程。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  
+當您暫時將數據在 Synapse SQL 池中登錄時,您可能會發現使用堆錶可以更快地完成整個過程。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  
 
-對於小於 6000 萬行的小型查閱資料表，堆表通常有意義。  一旦超過 6000 萬行，群集列存儲表開始實現最佳壓縮。
+對於小於 6000 萬行的小型查找表,堆表通常有意義。  一旦超過 6000 萬行,群集列存儲表開始實現最佳壓縮。
 
 若要建立堆積資料表，只需在 WITH 子句中指定 HEAP︰
 
@@ -70,7 +70,7 @@ WITH ( HEAP );
 
 ## <a name="clustered-and-nonclustered-indexes"></a>叢集與非叢集索引
 
-需要快速擷取單一資料列時，叢集索引可能會優於叢集資料行存放區資料表。 對於需要以極快的速度執行單個或極少數行查找的查詢，請考慮群集索引或非群集輔助索引。 使用叢集索引的缺點是受益的只有在叢集索引資料行上使用高度選擇性篩選的查詢。 若要改善其他資料行的篩選，可以將非叢集索引加入至其他資料行。 不過，每個加入資料表的索引皆會增加載入的空間和處理時間。
+需要快速擷取單一資料列時，叢集索引可能會優於叢集資料行存放區資料表。 對於需要以極快的速度執行單個或極少數行查找的查詢,請考慮群集索引或非群集輔助索引。 使用叢集索引的缺點是受益的只有在叢集索引資料行上使用高度選擇性篩選的查詢。 若要改善其他資料行的篩選，可以將非叢集索引加入至其他資料行。 不過，每個加入資料表的索引皆會增加載入的空間和處理時間。
 
 若要建立叢集索引資料表，只要在 WITH 子句中指定 CLUSTERED INDEX︰
 
@@ -84,7 +84,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-要在表上添加非群集索引，請使用以下語法：
+要在表上添加非群集索引,請使用以下語法:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -171,7 +171,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 | [OPEN_rowgroup_rows_MAX] |同上。 |
 | [OPEN_rowgroup_rows_AVG] |同上。 |
 | [CLOSED_rowgroup_rows] |查看關閉的資料列群組資料列做為例行性檢查。 |
-| [CLOSED_rowgroup_count] |如果發現任何關閉資料列群組，其數目應該很小。 使用 ALTER INDEX 可以將封閉行組轉換為壓縮行組...重新組織命令。 不過，通常並不需要。 關閉群組會透過背景 "tuple mover" 程序自動轉換成資料行存放區的資料列群組。 |
+| [CLOSED_rowgroup_count] |如果發現任何關閉資料列群組，其數目應該很小。 使用 ALTER INDEX 可以將封閉列組轉換為壓縮列群組...重新組織命令。 不過，通常並不需要。 關閉群組會透過背景 "tuple mover" 程序自動轉換成資料行存放區的資料列群組。 |
 | [CLOSED_rowgroup_rows_MIN] |關閉資料列群組應該具有極高的填滿率。 如果關閉資料列群組的填滿率很低，就需要進一步分析資料行存放區。 |
 | [CLOSED_rowgroup_rows_MAX] |同上。 |
 | [CLOSED_rowgroup_rows_AVG] |同上。 |
@@ -190,7 +190,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="memory-pressure-when-index-was-built"></a>建立索引時的記憶體壓力
 
-每個壓縮資料列群組的資料列數目，直接與資料列寬度以及可用來處理資料列群組的記憶體數量相關。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  因此，最佳做法是盡可能讓寫入至您的資料行存放區索引資料表的工作階段能存取較多的記憶體。  由於記憶體和併發之間存在權衡，因此有關正確記憶體分配的指南取決於表每行中的資料、分配給系統的 SQL Analytics 單元以及您可以為會話提供併發槽的數量，即將資料寫入表。
+每個壓縮資料列群組的資料列數目，直接與資料列寬度以及可用來處理資料列群組的記憶體數量相關。  當資料列在記憶體不足的狀態下寫入資料行存放區資料表時，資料行存放區區段品質可能會降低。  因此，最佳做法是盡可能讓寫入至您的資料行存放區索引資料表的工作階段能存取較多的記憶體。  因為記憶體與並行存取之間有所取捨，正確的記憶體配置指引取決於您的資料表的每個資料列中的資料、配置給系統的資料倉儲單位，以及您可以提供給將資料寫入至資料表的工作階段的並行存取插槽數目。
 
 ### <a name="high-volume-of-dml-operations"></a>大量的 DML 作業
 
@@ -200,17 +200,17 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 - 插入資料列會將資料列新增至名為差異資料列群組的內部資料列存放區資料表。 在差異資料列群組已滿且標示為已關閉之前，插入的資料列不會轉換成資料行存放區。 一旦達到 1,048,576 個資料列的容量上限，資料列群組就會關閉。
 - 更新資料行存放區格式的資料列會做為邏輯刪除和插入來處理。 插入的資料列可儲存在差異存放區。
 
-針對每個資料分割對齊分佈的 102,400 個資料列大量臨界值，超出臨界值的批次更新和插入作業會直接進入資料行存放區格式。 不過，假設在平均分佈情況下，您將需要在單一作業中修改超過 6.144 百萬個資料列才會發生這種情況。 如果給定分區對齊的分佈的行數小於 102，400，則行將轉到增量存儲並保留在那裡，直到插入或修改足夠的行以關閉行組或重新生成索引。
+針對每個資料分割對齊分佈的 102,400 個資料列大量臨界值，超出臨界值的批次更新和插入作業會直接進入資料行存放區格式。 不過，假設在平均分佈情況下，您將需要在單一作業中修改超過 6.144 百萬個資料列才會發生這種情況。 如果給定分區對齊的分佈的行數小於 102,400,則行將轉到增量存儲並保留在那裡,直到插入或修改足夠的行以關閉行組或重新生成索引。
 
 ### <a name="small-or-trickle-load-operations"></a>小型或緩慢移動的載入作業
 
-流入 SQL 分析資料庫的小負載有時也稱為滴流負載。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
+流入 Synapse SQL 池的小負載有時也稱為滴流負載。 它們通常代表系統接近連續擷取的串流。 不過，因為這個串流已接近連續狀態，所以資料列的容量並沒有特別大。 通常資料遠低於直接載入資料行存放區格式所需的閾值。
 
 在這些情況下，最好先將資料登陸到 Azure Blob 儲存體中，並讓它在載入之前累積。 這項技術通常稱為 *微批次處理*。
 
 ### <a name="too-many-partitions"></a>太多資料分割
 
-另一個考慮事項是資料分割對於叢集資料行存放區資料表的影響。  在分區之前，SQL Analytics 已經將您的資料劃分為 60 個資料庫。  進一步分割會分割您的資料。  如果您將資料分割，請考慮到**每個**資料分割需要有至少 1 百萬個資料列，使用叢集資料行存放區索引才會有幫助。  如果將表劃分為 100 個分區，則表至少需要 60 億行才能從群集列存儲索引（60 個分佈*100 個分區 100*個行）中獲益。 如果您的 100 個分割資料表沒有 60 億個資料列，請減少資料分割數目，或考慮改用堆積資料表。
+另一個考慮事項是資料分割對於叢集資料行存放區資料表的影響。  在分區之前,Synapse SQL 池已經將您的數據劃分為 60 個資料庫。  進一步分割會分割您的資料。  如果您將資料分割，請考慮到**每個**資料分割需要有至少 1 百萬個資料列，使用叢集資料行存放區索引才會有幫助。  如果將表劃分為 100 個分區,則表至少需要 60 億行才能從群集列存儲索引(60 個分佈*100 個分區 100*個行)中獲益。 如果您的 100 個分割資料表沒有 60 億個資料列，請減少資料分割數目，或考慮改用堆積資料表。
 
 您的資料表載入一些資料之後，請依照下列步驟來識別並重建具有次佳叢集資料行存放區索引的資料表。
 
@@ -228,9 +228,9 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>步驟 2︰使用較高的資源類別使用者重建叢集資料行存放區索引
 
-從步驟 1（例如 LoadUser）以使用者身份登錄，該步驟現在使用較高的資源類，並執行 ALTER INDEX 語句。 請確定這個使用者對於重建索引的資料表擁有 ALTER 權限。 這些範例示範如何重建整個資料行存放區索引或如何重建單一資料分割。 在大型資料表上，比較適合一次重建單一資料分割的索引。
+從步驟 1(例如 LoadUser)以使用者身份登錄,該步驟現在使用較高的資源類,並執行 ALTER INDEX 語句。 請確定這個使用者對於重建索引的資料表擁有 ALTER 權限。 這些範例示範如何重建整個資料行存放區索引或如何重建單一資料分割。 在大型資料表上，比較適合一次重建單一資料分割的索引。
 
-或者，可以使用[CTAS](sql-data-warehouse-develop-ctas.md)將表複製到新表，而不是重新生成索引。 哪一種方式最好？ 針對大量的資料，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 來得快。 針對較小量的資料，ALTER INDEX 較為容易使用，且您不需要交換出資料表。
+或者,可以使用[CTAS](sql-data-warehouse-develop-ctas.md)將表複製到新錶,而不是重新生成索引。 哪一種方式最好？ 針對大量的資料，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 來得快。 針對較小量的資料，ALTER INDEX 較為容易使用，且您不需要交換出資料表。
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 SQL 分析中重建索引是離線操作。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 中的 ALTER INDEX REBUILD 區段。
+在 Synapse SQL 池中重建索引是離線操作。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 中的 ALTER INDEX REBUILD 區段。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步驟 3︰確認已改善叢集資料行存放區區段品質
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-有關使用 CTAS 重新創建分區的更多詳細資訊，請參閱[在 SQL Analytics 中使用分區](sql-data-warehouse-tables-partition.md)。
+有關使用 CTAS 重新建立分區的詳細資訊,請參閱[在 Synapse SQL 池中使用分割區](sql-data-warehouse-tables-partition.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

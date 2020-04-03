@@ -1,6 +1,6 @@
 ---
-title: 提高列存儲索引性能
-description: 減少記憶體要求或增加可用記憶體，以最大化每個行組中的行數。
+title: 提高列儲存索引性能
+description: 減少記憶體要求或增加可用記憶體,以最大化每個行組中的行數。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350313"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586542"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
 
@@ -34,13 +34,13 @@ ms.locfileid: "80350313"
 
 在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當有記憶體不足的壓力時，資料行存放區索引會修剪資料列群組大小，因此會成功壓縮到資料行存放區內。 
 
-當記憶體不足，無法將至少 10，000 行壓縮到每個行組中時，將建置錯誤。
+當記憶體不足,無法將至少 10,000 行壓縮到每個行組中時,將生成錯誤。
 
 如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何監視資料列群組品質
 
-DMV[sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含與 SQL DB 匹配的視圖定義），它公開有用的資訊，如行組中的行數以及如果存在修剪時修剪的原因。 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
+DMV[sys.dm_pdw_nodes_db_column_store_row_group_physical_stats(sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含與 SQL DB 匹配的視圖定義),它公開有用的資訊,如行組中的行數以及如果存在修剪時修剪的原因。 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -68,7 +68,7 @@ from cte;
 ```
 
 trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_TRIM 表示沒有修剪，且資料列群組屬於最佳品質)。 下列修剪原因表示過早修剪了資料列群組：
-- BULKLOAD：當傳入的負載資料列批次具有少於 1 百萬個的資料列時，會使用這個修剪原因。 如果插入了多於 100,000 個資料列 (而不是插入到差異存放區)，則引擎會建立壓縮的資料列群組，但是會將修剪原因設定為大量載入。 在這種情況下，請考慮增加批次處理負載以包含更多行。 此外，重新評估您的資料分割配置，確保它不會太過細微，因為資料列群組不能跨越資料分割界限。
+- BULKLOAD：當傳入的負載資料列批次具有少於 1 百萬個的資料列時，會使用這個修剪原因。 如果插入了多於 100,000 個資料列 (而不是插入到差異存放區)，則引擎會建立壓縮的資料列群組，但是會將修剪原因設定為大量載入。 在這種情況下,請考慮增加批處理負載以包含更多行。 此外，重新評估您的資料分割配置，確保它不會太過細微，因為資料列群組不能跨越資料分割界限。
 - MEMORY_LIMITATION：若要建立包含 1 百萬個資料列的資料列群組，引擎會需要特定數量的工作記憶體。 當載入工作階段的可用記憶體小於所需的工作記憶體時，會提前修剪資料列群組。 下列各節說明如何評估所需記憶體及配置更多記憶體。
 - DICTIONARY_SIZE：這個修剪原因表示因為至少有一個字串資料行具有寬/或高基數字串而發生資料列群組修剪。 記憶體中的字典大小限制為 16 MB，且一旦達到此限制，便會壓縮資料列群組。 如果您遇到這種情況，請考慮將問題資料行隔離到單獨的資料表中。
 
@@ -81,7 +81,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 要壓縮一個資料列群組所需的最大記憶體大約是
 
 - 72 MB +
-- \#行\*\#列\*8 位元組 |
+- \#\*\#列\*列 8 位元組 |
 - \#行\*\#短字串列\*32 位元組 |
 - \#長字串資料行 \* 壓縮字典 16 MB
 
@@ -89,7 +89,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典** 來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
 
-有關列存儲記憶體需求的深入討論，請參閱視頻[SQL 分析擴展：配置和指導](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有關列存儲記憶體需求的深入討論,請參閱影片[突觸 SQL 縮放:設定和指導](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>減少記憶體需求的方式
 
@@ -109,7 +109,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免過度分割
 
-資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 對於 Azure Synapse 分析中的資料倉儲，分區數量會快速增長，因為資料是分散式的，並且每個分發都進行了分區。 如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少的資料列在壓縮期間不會建立記憶體不足的壓力，但這會造成無法達到最佳資料行存放區的資料列群組查詢效能。
+資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 對於 Azure Synapse 分析中的數據倉庫,分區數量會快速增長,因為數據是分散式的,並且每個分發都進行了分區。 如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少的資料列在壓縮期間不會建立記憶體不足的壓力，但這會造成無法達到最佳資料行存放區的資料列群組查詢效能。
 
 要避免過度磁碟分割的另一個原因，是有額外負荷的記憶體將資料列載入分割資料表上的資料行存放區索引。 在載入期間，許多資料分割可能會收到內送資料列並保留在記憶體中，直到每個分割區有足夠的資料列可壓縮為止。 具有太多資料分割會建立額外的記憶體不足壓力。
 
@@ -141,4 +141,4 @@ DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-要找到更多方法來提高 SQL 分析的性能，請參閱[性能概述](cheat-sheet.md)。
+要找到更多方法來提高 Synapse SQL 的效能,請參閱[效能概述](cheat-sheet.md)。

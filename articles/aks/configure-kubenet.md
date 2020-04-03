@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368463"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617250"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 kubenet 網路與您自己的 IP 位址範圍
 
@@ -24,13 +24,13 @@ ms.locfileid: "79368463"
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * 請勿在相同子網路中建立多個 AKS 叢集。
-* AKS 群集不得使用`169.254.0.0/16` `172.30.0.0/16`、、`172.31.0.0/16`或`192.0.2.0/24`用於庫伯奈斯服務位址範圍。
-* AKS 叢集所使用的服務主體在您虛擬網路內的子網路上必須至少具有[網路參與者](../role-based-access-control/built-in-roles.md#network-contributor)權限。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
+* AKS 群集不得`169.254.0.0/16``172.30.0.0/16`使用`172.31.0.0/16`、、 或`192.0.2.0/24`用於庫伯奈斯服務位址範圍。
+* AKS 群集使用的服務主體必須在虛擬網路中的子網上至少具有[網路參與者](../role-based-access-control/built-in-roles.md#network-contributor)角色。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
-> 要使用 Windows Server 節點池（當前在 AKS 中預覽），必須使用 Azure CNI。 使用 kubenet 作為網路模型不適用於 Windows Server 容器。
+> 要使用 Windows Server 節點池(目前在 AKS 中預覽),必須使用 Azure CNI。 使用 kubenet 作為網路模型不適用於 Windows Server 容器。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -44,9 +44,9 @@ ms.locfileid: "79368463"
 
 ![Kubenet 網路模型與 AKS 叢集](media/use-kubenet/kubenet-overview.png)
 
-Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 個節點的 AKS 叢集。 *kubenet*不支援 AKS[虛擬節點][virtual-nodes]和 Azure 網路原則。  您可以使用[Calico 網路原則][calico-network-policies]，因為它們受 kubenet 支援。
+Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 個節點的 AKS 叢集。 *kubenet*不支援 AKS[虛擬節點][virtual-nodes]和 Azure 網路策略。  您可以使用[Calico 網路策略][calico-network-policies],因為它們受 kubenet 支援。
 
-使用 *Azure CNI*，每個 Pod 都會接收 IP 子網路中的 IP 位址，並可以直接與其他 Pod 和服務進行通訊。 您的叢集可以與您指定的 IP 位址範圍一樣大。 不過，必須事先規劃 IP 位址範圍，並且 AKS 節點根據它們可以支援的最大 Pod 數目來使用所有 IP 位址。 *Azure CNI*支援高級網路功能和方案，如[虛擬節點][virtual-nodes]或網路原則（Azure 或 Calico）。
+使用 *Azure CNI*，每個 Pod 都會接收 IP 子網路中的 IP 位址，並可以直接與其他 Pod 和服務進行通訊。 您的叢集可以與您指定的 IP 位址範圍一樣大。 不過，必須事先規劃 IP 位址範圍，並且 AKS 節點根據它們可以支援的最大 Pod 數目來使用所有 IP 位址。 *Azure CNI*支援進階網路功能和方案,如[虛擬節點][virtual-nodes]或網路策略(Azure 或 Calico)。
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP 位址可用性與耗盡
 
@@ -54,7 +54,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 作為折衷方案，您可以建立使用 *kubenet* 並連接到現有虛擬網路子網路的 AKS 叢集。 此方法可讓節點接收定義的 IP 位址，而無需事先為叢集中可能執行的所有潛在 Pod 保留大量的 IP 位址。
 
-使用 *kubenet*，您可以使用更小的 IP 位址範圍，並能夠支援大型叢集和應用程式需求。 例如，即使具有 */27* IP 位址範圍，您也可以執行具有足夠擴充或升級空間的 20-25 節點叢集。 此叢集大小可支援最多 *2,200-2,750* 個 Pod (每個節點預設最多 110 個 Pod)。 每個節點的最大窗格數，您可以使用 AKS 中的*kubenet*配置。
+使用 *kubenet*，您可以使用更小的 IP 位址範圍，並能夠支援大型叢集和應用程式需求。 例如，即使具有 */27* IP 位址範圍，您也可以執行具有足夠擴充或升級空間的 20-25 節點叢集。 此叢集大小可支援最多 *2,200-2,750* 個 Pod (每個節點預設最多 110 個 Pod)。 每個節點的最大窗格數,您可以使用 AKS 中的*kubenet*配置。
 
 下列基本計算會比較網路模型中的差異：
 
@@ -68,7 +68,7 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>虛擬網路對等互連和 ExpressRoute 連線
 
-若要提供內部部署連線能力，*kubenet* 和 *Azure-CNI* 網路方法都可以使用 [Azure 虛擬網路對等互連][vnet-peering]或是 [ExpressRoute 連線][express-route]。 仔細規劃您的 IP 位址範圍，以避免重疊和不正確的流量路由。 例如，許多內部部署網路使用透過 ExpressRoute 連線通告的 *10.0.0.0/8* 位址範圍。 建議在此位址範圍之外（如*172.16.0.0/16）* 之外將 AKS 群集創建到 Azure 虛擬網路子網中。
+若要提供內部部署連線能力，*kubenet* 和 *Azure-CNI* 網路方法都可以使用 [Azure 虛擬網路對等互連][vnet-peering]或是 [ExpressRoute 連線][express-route]。 仔細規劃您的 IP 位址範圍，以避免重疊和不正確的流量路由。 例如，許多內部部署網路使用透過 ExpressRoute 連線通告的 *10.0.0.0/8* 位址範圍。 建議在此位址範圍之外(如*172.16.0.0/16)* 之外將 AKS 叢集創建到 Azure 虛擬網路子網中。
 
 ### <a name="choose-a-network-model-to-use"></a>選擇要使用的網路模型
 
@@ -78,26 +78,26 @@ Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 �
 
 - 您的 IP 位址空間有限。
 - 大部分的 Pod 通訊是在叢集內。
-- 不需要高級 AKS 功能（如虛擬節點或 Azure 網路原則）。  使用[卡利科網路原則][calico-network-policies]。
+- 不需要進階 AKS 功能(如虛擬節點或 Azure 網路策略)。  使用[卡利科網路原則][calico-network-policies]。
 
 *Azure CNI* 使用時機：
 
 - 您有可用的 IP 位址空間。
 - 大部分的 Pod 通訊是在叢集外部的資源。
 - 您不想管理 UDR。
-- 您需要 AKS 高級功能，如虛擬節點或 Azure 網路原則。  使用[卡利科網路原則][calico-network-policies]。
+- 您需要 AKS 進階功能,如虛擬節點或 Azure 網路策略。  使用[卡利科網路原則][calico-network-policies]。
 
-有關詳細資訊，以説明您決定要使用的網路模型，請參閱[比較網路模型及其支援範圍][network-comparisons]。
+有關詳細資訊,以説明您決定要使用的網路模型,請參閱[比較網路模型及其支援範圍][network-comparisons]。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>建立虛擬網路和子網路
 
-若要開始使用 *kubenet* 和您自己的虛擬網路子網路，請首先使用 [az group create][az-group-create] 命令建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
+若要開始使用 *kubenet* 和您自己的虛擬網路子網路，請首先使用 [az group create][az-group-create] 命令建立資源群組。 下面的範例在*東區*位置建立名為*myResourceGroup*的資源群組:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-如果您沒有要使用的現有虛擬網路和子網路，請使用 [az network vnet create][az-network-vnet-create] 命令建立這些網路資源。 在下面的示例中，虛擬網路名為*myVnet，* 位址首碼為*192.168.0.0/16*。 創建名為*myAKSSubnet*的子網，位址首碼*為 192.168.1.0/24*。
+如果您沒有要使用的現有虛擬網路和子網路，請使用 [az network vnet create][az-network-vnet-create] 命令建立這些網路資源。 在下面的範例中,虛擬網路名為*myVnet,* 位址前置碼為*192.168.0.0/16*。 建立名為*myAKSSubnet*的子網,位址前綴*為 192.168.1.0/24*。
 
 ```azurecli-interactive
 az network vnet create \
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-現在，使用 [az role assignment create][az-role-assignment-create] 命令為虛擬網路上的 AKS 叢集「參與者」** 權限指派服務主體。 提供您自己的*\<appId>，* 如上一命令的輸出中所示，用於創建服務主體：
+現在，使用 [az role assignment create][az-role-assignment-create] 命令為虛擬網路上的 AKS 叢集「參與者」** 權限指派服務主體。 提供您自己的*\<appId>,* 如上一指令的輸出中所示,用於建立服務主體:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,17 +147,17 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>在虛擬網路中建立 AKS 叢集
 
-您現在已經建立虛擬網路和子網路，並為服務主體建立並指派使用這些網路資源的權限。 現在，使用 [az aks create][az-aks-create] 命令在虛擬網路和子網路中建立 AKS 叢集。 定義您自己的服務主體*\<appId>* 和*\<密碼>*，如上一個命令的輸出中用於創建服務主體的輸出所示。
+您現在已經建立虛擬網路和子網路，並為服務主體建立並指派使用這些網路資源的權限。 現在，使用 [az aks create][az-aks-create] 命令在虛擬網路和子網路中建立 AKS 叢集。 定義您自己的服務主體*\<appId>* 和*\<密碼>*,如上一個命令的輸出中用於創建服務主體的輸出所示。
 
 下列 IP 位址範圍也定義為叢集建立程序的一部分：
 
-* *--service-cidr* 用於為 AKS 叢集中的內部服務指派 IP 位址。 此 IP 位址範圍應該是您的網路環境中其他未使用的位址空間。 如果使用快速路由或網站到網站 VPN 連接連接或計畫連接 Azure 虛擬網路，則此範圍包括任何本地網路範圍。
+* *--service-cidr* 用於為 AKS 叢集中的內部服務指派 IP 位址。 此 IP 位址範圍應該是您的網路環境中其他未使用的位址空間。 如果使用快速路由或網站到網站 VPN 連接連接或計畫連接 Azure 虛擬網路,則此範圍包括任何本地網路範圍。
 
 * *--dns-service-ip* 位址應該是服務 IP 位址範圍的 *.10* 位址。
 
-* *--pod-cidr* 應該是您的網路環境中未使用的大型位址空間。 如果使用快速路由或網站到網站 VPN 連接連接或計畫連接 Azure 虛擬網路，則此範圍包括任何本地網路範圍。
+* *--pod-cidr* 應該是您的網路環境中未使用的大型位址空間。 如果使用快速路由或網站到網站 VPN 連接連接或計畫連接 Azure 虛擬網路,則此範圍包括任何本地網路範圍。
     * 此位址範圍必須大到足以容納您希望相應增加的節點數目。 如果您需要更多位址用於其他節點，則無法在部署叢集之後變更此位址範圍。
-    * Pod IP 位址範圍用來為叢集中的每個節點指派 */24* 位址空間。 在下面的示例中 *，10.244.0.0/16*的 *--pod-cidr*分配了第一個節點*10.244.0.0/24，* 第二個節點*10.244.1.0/24，* 第三個節點*10.244.2.0/24*。
+    * Pod IP 位址範圍用來為叢集中的每個節點指派 */24* 位址空間。 在下面的範例中 *,10.244.0.0/16*的 *--pod-cidr*分配了第一個節點*10.244.0.0/24,* 第二個節點*10.244.1.0/24,* 第三個節點*10.244.2.0/24*。
     * 隨著叢集縮放比例或升級，Azure 平台會繼續為每個新的節點指派一個 Pod IP 位址範圍。
     
 * *-docker-bridge 位址*允許 AKS 節點與底層管理平臺通信。 此 IP 位址不能在您叢集的虛擬網路 IP 位址範圍內，而且不應該與您網路上使用中的其他位址範圍重疊。
@@ -178,7 +178,7 @@ az aks create \
 ```
 
 > [!Note]
-> 如果希望使 AKS 群集包含[Calico 網路原則][calico-network-policies]，可以使用以下命令。
+> 如果希望使 AKS 群集包含[Calico 網路策略][calico-network-policies],可以使用以下命令。
 
 ```azurecli-interactive
 az aks create \
@@ -195,7 +195,7 @@ az aks create \
     --client-secret <password>
 ```
 
-當您建立 AKS 叢集時，會建立網路安全群組和路由表。 這些網路資源由 AKS 控制平面管理。 網路安全性群組會自動與節點上的虛擬 NIC 相關聯。 路由表將自動與虛擬網路子閘道聯。 網路安全性群組規則和路由表，並在創建和公開服務時自動更新。
+當您建立 AKS 叢集時，會建立網路安全群組和路由表。 這些網路資源由 AKS 控制平面管理。 網路安全組會自動與節點上的虛擬 NIC 相關聯。 路由表將自動與虛擬網路子網關聯。 在創建和公開服務時,網路安全組規則和路由表會自動更新。
 
 ## <a name="next-steps"></a>後續步驟
 

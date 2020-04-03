@@ -1,5 +1,5 @@
 ---
-title: 資訊安全中心規劃和操作指南 | Microsoft Docs
+title: 安全中心規劃和操作指南
 description: 本文件可協助您在採用 Azure 資訊安全中心和日常作業相關考量之前進行規劃。
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435623"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586006"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Azure 資訊安全中心規劃和操作指南
+# <a name="planning-and-operations-guide"></a>規劃和運營指南
 本指南面向計劃使用 Azure 安全中心的資訊技術 (IT) 專業人員、IT 架構師、資訊安全分析師和雲端管理員。
 
 
@@ -135,7 +135,7 @@ Azure 安全中心使用日誌分析代理(這是 Azure 監視器服務使用的
 
 ### <a name="agent"></a>代理程式
 
-在安全策略中啟用自動預配後,日誌分析代理(用於[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents))將安裝在所有受支援的 Azure VM 上,以及創建的任何新 VM 上。 如果 VM 或電腦已安裝日誌分析代理,Azure 安全中心將利用當前已安裝的代理。 代理程式的程序會設計為非侵入式，對 VM 效能的影響很少。
+在安全策略中啟用自動預配後,日誌分析代理(用於[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents))將安裝在所有受支援的 Azure VM 上,以及創建的任何新 VM 上。 如果 VM 或電腦已安裝日誌分析代理,Azure 安全中心將利用當前已安裝的代理。 代理的過程設計為非侵入性的,對 VM 性能的影響非常小。
 
 Windows 的日誌分析代理需要使用 TCP 埠 443。 如需詳細資訊，請參閱[疑難排解文章](security-center-troubleshooting-guide.md)。
 
@@ -181,7 +181,7 @@ Windows 的日誌分析代理需要使用 TCP 埠 443。 如需詳細資訊，�
 
 [偵測] **** 區段的反應會更明顯，這些是正在發生，或過去曾發生，且資訊安全中心控制項和第三方系統所偵測到之問題的相關警示。 "安全警報"磁貼將顯示條形圖,這些圖表表示每天發現的警報數及其在不同嚴重性類別(低、中、高)之間的分佈。 如需安全性警示的詳細資訊，請閱讀 [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)。
 
-計劃造訪[威脅情報](https://docs.microsoft.com/azure/security-center/security-center-threat-intel)選項，作為每日安全性作業的一部分。 您可以在那裡識別會對環境造成威脅的安全性威脅，例如識別特定電腦是否為殭屍網路的一份子。
+計劃造訪威脅情報選項，作為每日安全性作業的一部分。 您可以在那裡識別會對環境造成威脅的安全性威脅，例如識別特定電腦是否為殭屍網路的一份子。
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>監視新的或已變更的資源
 大多數 Azure 環境都是動態的,資源定期被創建、向上或向下旋轉、重新配置和更改。 資訊安全中心有助於確保您看得到這些新資源的安全性狀態。
@@ -213,7 +213,7 @@ Windows 的日誌分析代理需要使用 TCP 埠 443。 如需詳細資訊，�
 ## <a name="incident-response"></a>事件回應
 資訊安全中心會偵測並在發生威脅時警示您。 組織應監視新的安全性警示並視需要採取動作，進一步調查或修補攻擊。 有關安全中心威脅保護的工作原理的詳細資訊,請閱讀 Azure[安全中心如何檢測和回應威脅](security-center-alerts-overview.md#detect-threats)。
 
-雖然本文目的並非要幫助您建立自己的事件回應計劃，但我們會在雲端生命週期中使用 Microsoft Azure 安全性回應做為事件回應階段的基礎。 這些階段如下圖所示：
+雖然本文無意説明您創建自己的事件回應計劃,但我們將使用雲生命週期中的 Microsoft Azure 安全回應作為事件回應階段的基礎。 這些階段如下圖所示：
 
 ![可疑的活動](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ Windows 的日誌分析代理需要使用 TCP 埠 443。 如需詳細資訊，�
 
 此分頁會顯示有關攻擊發生時間、來源主機名稱、目標 VM 的詳細資訊，也會提供建議步驟。 在某些情況下,攻擊的源資訊可能為空。 如需有關這類行為的詳細資訊，請閱讀 [Azure 資訊安全中心警示中的缺少來源資訊](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) 。
 
-您也可以從這個分頁開始[調查](https://docs.microsoft.com/azure/security-center/security-center-investigation)，以更加了解攻擊的時間軸、攻擊如何發生、哪些系統可能會被入侵、哪些認證會被使用，以及查看整個攻擊鏈的圖形化表示法。
+您也可以從這個分頁開始調查，以更加了解攻擊的時間軸、攻擊如何發生、哪些系統可能會被入侵、哪些認證會被使用，以及查看整個攻擊鏈的圖形化表示法。
 
 識別受攻擊的系統後,可以執行以前建立的[工作流自動化](workflow-automation.md)。 這些是一個過程的集合,一旦警報觸發,可以從安全中心執行。
 

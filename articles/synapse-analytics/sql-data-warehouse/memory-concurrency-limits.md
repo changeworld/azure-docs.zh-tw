@@ -1,5 +1,5 @@
 ---
-title: 記憶體和併發限制
+title: 記憶體及併發限制
 description: 查看在 Azure Synapse 分析中分配給各種性能級別和資源類的記憶體和併發限制。
 services: synapse-analytics
 author: ronortloff
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350995"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586060"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure 突觸分析的記憶體和併發限制
 查看在 Azure Synapse 分析中分配給各種性能級別和資源類的記憶體和併發限制。  
@@ -26,7 +26,7 @@ ms.locfileid: "80350995"
 
 ### <a name="service-levels"></a>服務等級
 
-服務等級範圍從 DW100c 到 DW30000c。
+服務級別範圍從 DW100c 到 DW30000c。
 
 | 效能等級 | 計算節點數量 | 每個計算節點上的散發數量 | 每個資料倉儲的記憶體 (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
@@ -47,10 +47,10 @@ ms.locfileid: "80350995"
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-最大服務等級為 DW30000c，它有 60 個計算節點和每個計算節點的一個分佈。 例如，DW30000c 上 600 TB 的資料倉儲大約可針對每個節點處理 10 TB。
+最大服務級別為 DW30000c,它有 60 個計算節點和每個計算節點的一個分佈。 例如，DW30000c 上 600 TB 的資料倉儲大約可針對每個節點處理 10 TB。
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>工作負載組的併發最大值
-隨著[工作負載組的](sql-data-warehouse-workload-isolation.md)引入，併發槽的概念不再適用。  每個請求的資源按百分比分配，並在工作負載組定義中指定。  但是，即使刪除併發槽，根據服務等級，每個查詢所需的資源也最少。  下表定義了每個查詢跨服務等級和可以實現的關聯併發所需的最小資源量。 
+隨著[工作負載組的](sql-data-warehouse-workload-isolation.md)引入,併發槽的概念不再適用。  每個請求的資源按百分比分配,並在工作負載組定義中指定。  但是,即使刪除併發槽,根據服務級別,每個查詢所需的資源也最少。  下表定義了每個查詢跨服務級別和可以實現的關聯併發所需的最小資源量。 
 
 |服務等級|並行查詢數目上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT支援的最小百分比|
 |---|---|---|
@@ -73,7 +73,7 @@ ms.locfileid: "80350995"
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>資源類的併發最大值
-為了確保每個查詢都有足夠的資源來高效地執行，Azure Synapse 中的 SQL 分析通過將併發槽分配給每個查詢來跟蹤資源利用率。 系統根據重要性和併發槽將查詢放入佇列中。 查詢在佇列中等待，直到有足夠的併發槽可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和併發性槽決定了 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
+為了確保每個查詢有足夠的資源來高效地執行,通過為每個查詢分配併發槽來跟蹤資源利用率。 系統根據重要性和併發槽將查詢放入佇列中。 查詢在佇列中等待,直到有足夠的併發槽可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和併發性槽決定了 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
 
 **靜態資源類別**
 
@@ -100,7 +100,7 @@ ms.locfileid: "80350995"
 
 **動態資源類別**
 
-下表針對每個[動態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。 動態資源類對所有服務等級的小型大中型資源類使用 3-10-22-70 記憶體百分比分配。
+下表針對每個[動態資源類別](resource-classes-for-workload-management.md)顯示並行查詢數量和並行位置數量的最大值。 動態資源類對所有服務級別的小型大中型資源類使用 3-10-22-70 記憶體百分比分配。
 
 | 服務等級 | 並行查詢數目上限 | 可用的並行位置數量 | Smallrc 所使用的插槽 | Mediumrc 所使用的插槽 | Largerc 所使用的插槽 | Xlargerc 所使用的插槽 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
@@ -122,7 +122,7 @@ ms.locfileid: "80350995"
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
 
-當沒有足夠的併發槽自由啟動查詢執行時，查詢將根據重要性進行排隊和執行。  如果存在等效的重要性，則查詢將先到先出的基礎上執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。 
+當沒有足夠的併發槽自由啟動查詢執行時,查詢將根據重要性進行排隊和執行。  如果存在等效的重要性,則查詢將先到先出的基礎上執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。 
 
 ## <a name="next-steps"></a>後續步驟
 

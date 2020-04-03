@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477838"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618568"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 認知服務支援與回饋選項
 
-您是否剛剛開始探索 Azure 認知服務的功能? 也許您正在應用程式中實現一項新功能。 或者使用服務后,您有如何改進服務的建議嗎? 以下是您可以獲得支援、保持最新狀態和提供認知服務反饋的選項。
+您是否剛剛開始探索 Azure 認知服務的功能? 也許您正在應用程式中實現一項新功能。 或者使用服務后,您有如何改進服務的建議嗎? 以下是您可以獲取支援、保持最新、提供反饋和報告認知服務 Bug 的選項。
 
 ## <a name="get-support"></a>取得支援
 
@@ -83,7 +83,7 @@ ms.locfileid: "80477838"
 
  - [自訂視覺](custom-vision-service/release-notes.md)
  - [臉部](face/releasenotes.md)
- - [語言理解 (LUIS)](luis/whats-new.md)
+ - [語言理解 (LUIS)](LUIS/whats-new.md)
  - [語音服務](speech-service/releasenotes.md)
  - [語音服務 SDK](speech-service/devices-sdk-release-notes.md)
  - [文字分析](text-analytics/whats-new.md)

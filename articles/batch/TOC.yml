@@ -69,6 +69,8 @@
   items:
     - name: 管理 Batch 帳戶
       items:
+        - name: 管理您的帳戶
+          href: batch-manage-account-basics.md
         - name: 透過入口網站管理 Batch 帳戶
           href: batch-account-create-portal.md
         - name: 使用 Batch Management .NET 管理 Batch 帳戶
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: 使用 Batch 安全地存取 Key Vault
           href: credential-access-key-vault.md
+    - name: 使用應用程式封裝
+      href: batch-application-packages.md
     - name: 將檔案和應用程式複製到集區節點
       items:
+        - name: 將應用程式和資料複製到集區節點
+          href: batch-applications-to-pool-nodes.md
         - name: 使用應用程式封裝
           href: batch-application-packages.md
         - name: 建立資源檔案
@@ -245,7 +251,7 @@
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Azure 上的 HPC
       href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

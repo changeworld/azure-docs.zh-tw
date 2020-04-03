@@ -1,6 +1,6 @@
 ---
 title: 分散式表設計指南
-description: 在 SQL 分析中設計雜湊分佈和迴圈分散式表的建議。
+description: 在 Synapse SQL 池中設計哈希分佈和迴圈分散式表的建議。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351343"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583510"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>在 SQL 分析中設計分散式表的指導
-在 SQL 分析中設計雜湊分佈和迴圈分散式表的建議。
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中設計分散式表的指南
 
-本文假定您熟悉 SQL 分析中的資料分發和資料移動概念。有關詳細資訊，請參閱[SQL Analytics 大規模並行處理 （MPP） 體系結構](massively-parallel-processing-mpp-architecture.md)。 
+在 Synapse SQL 池中設計哈希分佈和迴圈分散式表的建議。
+
+本文假定您熟悉 Synapse SQL 池中的數據分發和數據移動概念。有關詳細資訊,請參閱[Azure 突觸分析大規模並行處理 (MPP) 體系結構](massively-parallel-processing-mpp-architecture.md)。 
 
 ## <a name="what-is-a-distributed-table"></a>什麼是分散式資料表？
+
 分散式資料表會顯示為單一資料表，但資料列實際上會儲存在 60 個散發。 這些資料列是透過雜湊或循環配置資源演算法來散發。  
 
 **雜湊分散式資料表**是本文的重點，其可改善大型事實資料表的查詢效能。 **循環配置資源資料表**可用於改善載入速度。 這些設計選擇對於改善查詢和載入效能有顯著的影響。
@@ -34,15 +36,16 @@ ms.locfileid: "80351343"
 
 - 資料表的大小為何？   
 - 資料表的重新整理頻率為何？   
-- 我在 SQL 分析資料庫中有事實和維度表嗎？   
+- Synapse SQL 池中有事實和維度表嗎?   
 
 
 ### <a name="hash-distributed"></a>雜湊分散式
+
 雜湊分散式資料表會使用確定性雜湊函式，將每個資料列指派給一個[散發](massively-parallel-processing-mpp-architecture.md#distributions)，藉此將資料表的資料列散發於計算節點。 
 
 ![分散式資料表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分散式資料表")  
 
-由於相同的值始終散列到相同的分佈，因此 SQL Analytics 內置了行位置的知識。 SQL Analytics 使用此知識將查詢期間的資料移動降至最低，從而提高了查詢性能。 
+因為相同的值一律會雜湊到相同的散發，所以資料倉儲具有資料列位置的內建知識。 在 Synapse SQL 池中,此資訊用於最小化查詢期間的數據移動,從而提高查詢性能。 
 
 雜湊分散式資料表適合用於處理星型結構描述中的大型事實資料表。 這類資料表可能有非常大量的資料列，但仍可達到高效能。 當然，也會有一些設計考量可協助您取得分散式系統設計所要提供的效能。 選擇良好的散發資料行是這類考量的其中一項 (敘述於本文中)。 
 
@@ -52,6 +55,7 @@ ms.locfileid: "80351343"
 - 資料表有頻繁的插入、更新及刪除作業。 
 
 ### <a name="round-robin-distributed"></a>循環配置資源分散式
+
 循環配置資源分散式資料表會將資料表的資料列平均散發於所有散發。 散發的資料列指派是隨機的。 不同於雜湊分散式資料表，具有相等值的資料列不保證會指派給相同的散發。 
 
 因此，系統有時候需要叫用資料移動作業，才能在解析查詢前，更加妥善地組織您的資料。  此額外步驟會使您的查詢變慢。 例如，加入循環配置資源資料表時通常需要重組資料列，而這會影響效能。
@@ -60,12 +64,12 @@ ms.locfileid: "80351343"
 
 - 以簡單的起點開始使用時 (因為這是預設值)
 - 如果沒有明顯的聯結索引鍵
-- 如果沒有用於分發表的雜湊的良好候選列
+- 如果沒有用於分發表的哈希的良好候選列
 - 如果資料表並未與其他資料表共用常見的聯結索引鍵
 - 如果此聯結比查詢中的其他聯結較不重要
 - 當資料表是暫存預備資料表時
 
-本教程["載入紐約計程車"資料](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了將資料載入到 SQL Analytics 中的迴圈過渡表中的示例。
+教程[「載入紐約計程車」數據](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了將數據載入到循環過渡表中的範例。
 
 
 ## <a name="choosing-a-distribution-column"></a>選擇散發資料行
@@ -105,16 +109,16 @@ WITH
 
 - **有許多唯一值。** 資料行可能有一些重複值。 然而，所有具有相同值的資料列都會指派至相同的散發。 由於有 60 個散發，因此資料行應至少有 60 個唯一值。  唯一值的數目通常會更大。
 - **沒有 Null，或只有少數 Null。** 舉一個極端的例子，如果資料行中所有的值都是 NULL，則所有資料列都會指派至相同的散發。 如此一來，查詢處理就會偏斜至某一個散發，因而失去平行處理的好處。 
-- **不是日期列**。 日期相同的所有資料都會落在同一個散發。 如果以相同的日期上篩選出多位使用者，則 60 個散發中只有 1 個散發會進行所有處理工作。 
+- **不是日期欄**。 日期相同的所有資料都會落在同一個散發。 如果以相同的日期上篩選出多位使用者，則 60 個散發中只有 1 個散發會進行所有處理工作。 
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>選擇可將資料移動降到最低的散發資料行
 
-為了取得正確的查詢結果，查詢可能會在計算節點間移動資料。 當查詢有分散式資料表的聯結和彙總時，通常會發生資料移動。 選擇有助於最小化資料移動的分發列是優化 SQL Analytics 資料庫性能的最重要策略之一。
+為了取得正確的查詢結果，查詢可能會在計算節點間移動資料。 當查詢有分散式資料表的聯結和彙總時，通常會發生資料移動。 選擇有助於最小化資料移動的分布列是優化 Synapse SQL 池性能的最重要策略之一。
 
 若要將資料移動降至最低，請選取具有下列條件的散發資料行：
 
 - 在 `JOIN`、`GROUP BY`、`DISTINCT`、`OVER` 和 `HAVING` 子句中使用。 當兩個大型事實資料表有頻繁的聯結時，如果您在其中一個聯結資料行上散發這兩個資料表，即可改善查詢效能。  當資料表未使用於聯結時，請考慮在經常出現於 `GROUP BY` 子句中的資料行上散發資料表。
-- *不*用於`WHERE`子句。 這可能會縮小查詢範圍，使其無法在所有散發上執行。 
+- *不*`WHERE`用於 子句。 這可能會縮小查詢範圍，使其無法在所有散發上執行。 
 - 「不」** 是日期資料行。 WHERE 子句通常會依日期篩選。  在這種情況下，所有處理都只能在少數散發上執行。
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>沒有資料行是理想的散發資料行時該怎麼辦
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要建立分散式資料表，請使用下列其中一個陳述式：
 
-- [創建表（SQL 分析）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [創建表格作為選擇（SQL 分析）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [建立表(合成 SQL 池)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [以選擇身份建立表(同步 SQL 池)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

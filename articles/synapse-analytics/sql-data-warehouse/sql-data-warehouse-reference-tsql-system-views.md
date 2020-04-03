@@ -1,6 +1,6 @@
 ---
 title: 系統檢視表
-description: 指向 SQL Analytics 中支援的系統檢視的文檔的連結。
+description: 指向 Synapse SQL 池中支援的系統檢視的文件的連結。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,25 +11,26 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b3089cfbd0abb4bafe160b07fd75df877d61741b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1cc6627599a533238aae742b0358c13e1a7eab8a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350257"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586348"
 ---
-# <a name="system-views-supported-in-sql-analytics"></a>SQL 分析中支援的系統檢視
-指向 SQL 分析中支援的 T-SQL 語句文檔的連結。
+# <a name="system-views-supported-in-synapse-sql-pool"></a>Synapse SQL 池中支援的系統檢視
 
-## <a name="sql-analytics-catalog-views"></a>SQL 分析目錄檢視
+指向 Synapse SQL 池中支援的 T-SQL 語句文件的連結。
+
+## <a name="synapse-sql-pool-catalog-views"></a>突觸 SQL 池目錄檢視
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
 * [sys.pdw_loader_backup_run_details](https://msdn.microsoft.com/library/mt203877.aspx)
 * [sys.pdw_loader_backup_runs](https://msdn.microsoft.com/library/mt203884.aspx)
-* [系統pdw_materialized_view_column_distribution_properties（](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-column-distribution-properties-transact-sql?view=azure-sqldw-latest)預覽）
-* [系統pdw_materialized_view_distribution_properties（](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-distribution-properties-transact-sql?view=azure-sqldw-latest)預覽）
-* [系統pdw_materialized_view_mappings（](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-mappings-transact-sql?view=azure-sqldw-latest)預覽）
+* [系統pdw_materialized_view_column_distribution_properties(](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-column-distribution-properties-transact-sql?view=azure-sqldw-latest)預覽 )
+* [系統pdw_materialized_view_distribution_properties(](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-distribution-properties-transact-sql?view=azure-sqldw-latest)預覽 )
+* [系統pdw_materialized_view_mappings(](/sql/relational-databases/system-catalog-views/sys-pdw-materialized-view-mappings-transact-sql?view=azure-sqldw-latest)預覽 )
 * [sys.pdw_nodes_column_store_dictionaries](https://msdn.microsoft.com/library/mt203902.aspx)
 * [sys.pdw_nodes_column_store_row_groups](https://msdn.microsoft.com/library/mt203880.aspx)
 * [sys.pdw_nodes_column_store_segments](https://msdn.microsoft.com/library/mt203916.aspx)
@@ -45,6 +46,7 @@ ms.locfileid: "80350257"
 * [系統workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>SQL 資料倉儲動態管理檢視 (DMV)
+
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
@@ -63,16 +65,18 @@ ms.locfileid: "80350257"
 * [sys.dm_pdw_sys_info](https://msdn.microsoft.com/library/mt203900.aspx)
 * [sys.dm_pdw_wait_stats](https://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
-* [系統dm_workload_management_workload_groups_stats（](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql)預覽）
+* [系統dm_workload_management_workload_groups_stats(](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql)預覽 )
 
-## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>適用于 SQL 分析的 SQL 伺服器 DMV
-以下 DMV 適用于 SQL 分析，但必須通過連接到**主**資料庫來執行。
+## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>適用於突觸 SQL 池的 SQL 伺服器 DMV
+
+以下 DMV 適用於 Synapse SQL 池,但必須透過連接到**主**資料庫來執行。
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
-* [系統fn_helpcollations（）](https://msdn.microsoft.com/library/ms187963.aspx)
+* [系統fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>SQL Server 目錄檢視
+
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](https://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
@@ -145,17 +149,18 @@ ms.locfileid: "80350257"
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-analytics"></a>SQL 伺服器 DMV 在 SQL 分析中可用
-SQL 分析公開了許多 SQL Server 動態管理檢視 （DMV）。 這些視圖在 SQL Analytics 中查詢時，將報告在分發上運行的 SQL 資料庫的狀態。
+## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>Sql 伺服器 DMV 在 Synapse SQL 池中可用
 
-SQL 分析和並行資料倉儲 （PDW） 使用相同的系統檢視。 每個 DMV 都有名為 pdw_node_id 的資料行，這是計算節點的識別碼。 
+突觸 SQL 池公開了許多 SQL Server 動態管理檢視 (DMV)。 這些檢視在 Synapse SQL 池中查詢時,會報告在分發上運行的 SQL 資料庫的狀態。
+
+突觸 SQL 池和並行數據倉庫 (PDW) 使用相同的系統檢視。 每個 DMV 都有名為 pdw_node_id 的資料行，這是計算節點的識別碼。 
 
 > [!NOTE]
-> 要使用這些視圖，請在名稱中插入"pdw_nodes_"，如下表所示：
+> 要使用這些檢視,請在名稱中插入「pdw_nodes_」,如下表所示:
 > 
 > 
 
-| SQL 分析中的 DMV 名稱 | SQL Server Transact-SQL 文章|
+| Synapse SQL 池中的 DMV 名稱 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +222,9 @@ SQL 分析和並行資料倉儲 （PDW） 使用相同的系統檢視。 每個 
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>SQL 伺服器 2016 PolyBase DMV 在 SQL 分析中可用
-以下 DMV 適用于 SQL 分析，但必須通過連接到**主**資料庫來執行。
+## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>SQL 伺服器 2016 PolyBase DMV 在 Synapse SQL 池中可用
+
+以下 DMV 適用於 Synapse SQL 池,但必須透過連接到**主**資料庫來執行。
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [系統dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -232,15 +238,17 @@ SQL 分析和並行資料倉儲 （PDW） 使用相同的系統檢視。 每個 
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
 ## <a name="sql-server-information_schema-views"></a>SQL Server INFORMATION_SCHEMA 檢視表
+
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
-* [列](https://msdn.microsoft.com/library/ms188348.aspx)
+* [欄](https://msdn.microsoft.com/library/ms188348.aspx)
 * [參數](https://msdn.microsoft.com/library/ms173796.aspx)
 * [ROUTINES](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)
 * [表](https://msdn.microsoft.com/library/ms186224.aspx)
 * [VIEW_COLUMN_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)
 * [VIEW_TABLE_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
-* [視圖](https://msdn.microsoft.com/library/ms181381.aspx)
+* [檢視](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>後續步驟
-有關詳細資訊參考資訊，請參閱[SQL 分析 中的 T-SQL 語句](sql-data-warehouse-reference-tsql-statements.md)和[SQL 分析 中的 T-SQL 語言元素](sql-data-warehouse-reference-tsql-language-elements.md)。
+
+有關詳細資訊,請參閱[Synapse SQL 池中的 T-SQL 語句](sql-data-warehouse-reference-tsql-statements.md),以及[Synapse SQL 池中的 T-SQL 語言元素](sql-data-warehouse-reference-tsql-language-elements.md)。

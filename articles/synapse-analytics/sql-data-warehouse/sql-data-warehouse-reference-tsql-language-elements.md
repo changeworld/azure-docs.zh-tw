@@ -1,6 +1,6 @@
 ---
 title: T-SQL 語言項目
-description: 指向 SQL 分析中支援的 T-SQL 語句文檔的連結。
+description: 指向 Synapse SQL 池中支援的 T-SQL 語句文件的連結。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351425"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586403"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL 分析中支援的 T-SQL 語言元素
-指向 SQL 分析中支援的 T-SQL 語言元素的文檔的連結。
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Synapse SQL 池中支援的 T-SQL 語言元素
+
+指向 Synapse SQL 池中支援的 T-SQL 語言元素的文件的連結。
 
 ## <a name="core-elements"></a>核心元素
+
 * [語法慣例](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [物件命名規則](https://msdn.microsoft.com/library/ms175874.aspx)
 * [保留關鍵字](https://msdn.microsoft.com/library/ms189822.aspx)
@@ -29,14 +31,15 @@ ms.locfileid: "80351425"
 * [評論](https://msdn.microsoft.com/library/ms181627.aspx)
 * [常數](https://msdn.microsoft.com/library/ms179899.aspx)
 * [資料類型](https://msdn.microsoft.com/library/ms187752.aspx)
-* [執行](https://msdn.microsoft.com/library/ms188332.aspx)
-* [表達 式](https://msdn.microsoft.com/library/ms190286.aspx)
+* [執行 CREATE 陳述式之前，請先執行](https://msdn.microsoft.com/library/ms188332.aspx)
+* [運算式](https://msdn.microsoft.com/library/ms190286.aspx)
 * [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [IDENTITY 屬性因應措施](https://msdn.microsoft.com/library/ms186775.aspx)
 * [列印](https://msdn.microsoft.com/library/ms176047.aspx)
 * [使用](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>批次、流程控制和變數
+
 * [BEGIN...END](https://msdn.microsoft.com/library/ms190487.aspx)
 * [打破](https://msdn.microsoft.com/library/ms181271.aspx)
 * [宣佈@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
@@ -48,34 +51,37 @@ ms.locfileid: "80351425"
 * [而](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>運算子
+
 * [+ (加)](https://msdn.microsoft.com/library/ms178565.aspx)
-* [* （串串串）](https://msdn.microsoft.com/library/ms177561.aspx)
-* [- （負）](https://msdn.microsoft.com/library/ms189480.aspx)
+* [* (串串)](https://msdn.microsoft.com/library/ms177561.aspx)
+* [- (負)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [- (減)](https://msdn.microsoft.com/library/ms189518.aspx)
 * [* (乘)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (除)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [模](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>相配的萬用字元
+
 * [= (等於)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (大於)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [< (小於)](https://msdn.microsoft.com/library/ms179873.aspx)
 * [>= (大於或等於)](https://msdn.microsoft.com/library/ms181567.aspx)
 * [<= (小於或等於)](https://msdn.microsoft.com/library/ms174978.aspx)
-* [<> （不等於）](https://msdn.microsoft.com/library/ms176020.aspx)
-* [！* （不等於）](https://msdn.microsoft.com/library/ms190296.aspx)
+* [<> (不等於)](https://msdn.microsoft.com/library/ms176020.aspx)
+* [!* (不等於)](https://msdn.microsoft.com/library/ms190296.aspx)
 * [和](https://msdn.microsoft.com/library/ms188372.aspx)
 * [之間](https://msdn.microsoft.com/library/ms187922.aspx)
 * [存在](https://msdn.microsoft.com/library/ms188336.aspx)
 * [在](https://msdn.microsoft.com/library/ms177682.aspx)
-* [為 [非] Null](https://msdn.microsoft.com/library/ms188795.aspx)
+* [為 [非] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
 * [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
 * [不](https://msdn.microsoft.com/library/ms189455.aspx)
-* [或](https://msdn.microsoft.com/library/ms188361.aspx)
+* [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>位元運算子
+
 * [& (位元 AND)](https://msdn.microsoft.com/library/ms174965.aspx)
-* [|（從位或）](https://msdn.microsoft.com/library/ms186714.aspx)
+* [|( 從位或)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (位元互斥 OR)](https://msdn.microsoft.com/library/ms190277.aspx)
 * [~ (位元 NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
 * [^= (位元互斥 OR EQUALS)](https://msdn.microsoft.com/library/cc627413.aspx)
@@ -83,6 +89,7 @@ ms.locfileid: "80351425"
 * [&= (位元 AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>函式
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -138,7 +145,7 @@ ms.locfileid: "80351425"
 * [EXP](https://msdn.microsoft.com/library/ms179857.aspx)
 * [FIRST_VALUE](https://msdn.microsoft.com/library/hh213018.aspx)
 * [FLOOR](https://msdn.microsoft.com/library/ms178531.aspx)
-* [獲取日期](https://msdn.microsoft.com/library/ms188383.aspx)
+* [取得日期](https://msdn.microsoft.com/library/ms188383.aspx)
 * [GETUTCDATE](https://msdn.microsoft.com/library/ms178635.aspx)
 * [HAS_DBACCESS](https://msdn.microsoft.com/library/ms187718.aspx)
 * [HASHBYTES](https://msdn.microsoft.com/library/ms174415.aspx)
@@ -151,8 +158,8 @@ ms.locfileid: "80351425"
 * [導致](https://msdn.microsoft.com/library/hh213125.aspx)
 * [離開](https://msdn.microsoft.com/library/ms177601.aspx)
 * [萊恩](https://msdn.microsoft.com/library/ms190329.aspx)
-* [日誌](https://msdn.microsoft.com/library/ms190319.aspx)
-* [日誌10](https://msdn.microsoft.com/library/ms175121.aspx)
+* [記錄](https://msdn.microsoft.com/library/ms190319.aspx)
+* [紀錄10](https://msdn.microsoft.com/library/ms175121.aspx)
 * [降低](https://msdn.microsoft.com/library/ms174400.aspx)
 * [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
 * [麥克斯](https://msdn.microsoft.com/library/ms187751.aspx)
@@ -227,12 +234,15 @@ ms.locfileid: "80351425"
 * [XACT_STATE ](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>交易
+
 * [交易](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>診斷工作階段
+
 * [CREATE DIAGNOSTICS SESSION](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>程序
+
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ ms.locfileid: "80351425"
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>SET 陳述式
+
 * [SET ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ ms.locfileid: "80351425"
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>後續步驟
-有關詳細資訊參考，請參閱[SQL 分析 中的 T-SQL 語句](sql-data-warehouse-reference-tsql-statements.md)，以及 SQL 分析[中的系統檢視](sql-data-warehouse-reference-tsql-system-views.md)。
+
+有關詳細資訊,請參閱[Synapse SQL 池中的 T-SQL 語句](sql-data-warehouse-reference-tsql-statements.md),以及[Synapse SQL 池中的系統檢視](sql-data-warehouse-reference-tsql-system-views.md)。
 

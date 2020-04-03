@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 22a24d01f606cd3f76a0de950351feb3d964da54
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478910"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619382"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和 Azure 機器學習故障排除
 
@@ -48,16 +48,6 @@ ms.locfileid: "80478910"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **錯誤訊息:找不到 Azureml-資料準備本機的符合分配**
-
-    Anaconda 的 Python 3.7.4 發行版存在中斷 azureml-sdk 安裝的錯誤。 此問題在此[GitHub 問題](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中討論
-    
-    這可以透過使用此指令建立新的 Conda 環境來解決:
-    ```bash
-    conda create -n <env-name> python=3.7.3
-    ```
-    使用 Python 3.7.3 創建 Conda 環境,該環境不存在 3.7.4 中的安裝問題。
-
 * **安裝套件時繼資料**
 
     安裝更多包時,Azure 機器學習 SDK 安裝在 Azure 數據塊上失敗。 有些套件 (例如 `psutil`) 會導致發生衝突。 為了避免安裝錯誤,請通過凍結庫版本來安裝包。 此問題與數據磚塊無關,而不是與 Azure 機器學習 SDK 相關。 您可能也會在其他庫中遇到此問題。 範例：
@@ -89,10 +79,9 @@ ms.locfileid: "80478910"
 
 * **資料塊 FailtoSendFeather:** 如果在`FailToSendFeather`讀取 Azure 資料塊群集上的資料時看到錯誤,請參閱以下解決方案:
     
-        * Upgrade `azureml-sdk[automl]` package to the latest version.
-        * Add `azureml-dataprep` version 1.1.8 or above.
-        * Add `pyarrow` version 0.11 or above.
-        `
+    * 將`azureml-sdk[automl]`包升級到最新版本。
+    * 添加`azureml-dataprep`版本1.1.8或以上。
+    * 添加`pyarrow`版本0.11或以上。
 
 ## <a name="create-and-manage-workspaces"></a>建立及管理工作區
 
@@ -113,9 +102,7 @@ ms.locfileid: "80478910"
 
 如果您將檔案共享用於其他工作負荷(如資料傳輸),則建議使用 blob,以便檔案共用可以自由地用於提交運行。 您還可以在兩個不同的工作區之間拆分工作負荷。
 
-### <a name="datasets-and-data-preparation"></a>資料集與資料準備
-
-這些是 Azure 機器學習數據集的已知問題。
+### <a name="passing-data-as-input"></a>將資料作為輸入傳遞
 
 *  **類型錯誤:檔未找到:沒有此類檔或目錄**:如果您提供的檔案路徑不在檔案所在的位置,則會發生此錯誤。 您需要確保引用檔的方式與在計算目標上裝載數據集的位置一致。 為了確保確定性狀態,我們建議在將數據集安裝到計算目標時使用抽象路徑。 例如,在以下代碼中,我們將資料集載入到計算目標檔案系統的根目錄下`/tmp`。 
     
@@ -128,8 +115,7 @@ ms.locfileid: "80478910"
 
     如果不包括前導前斜杠"/",則需要在計算目標`/mnt/batch/.../tmp/dataset`上對工作目錄進行前綴,以指示要將數據集裝載到何處。
 
-### <a name="data-labeling-projects-issues"></a>資料標記項目問題
-
+### <a name="data-labeling-projects"></a>資料標籤項目
 
 |問題  |解決方案  |
 |---------|---------|
@@ -138,9 +124,9 @@ ms.locfileid: "80478910"
 |檢視影像時,不會顯示新標記的影像     |   要載入所有標記的影像,請選擇 **「第一」** 按鈕。 「**第一個**」按鈕將帶您返回清單的前面,但載入所有標記的資料。      |
 |在標記物件檢測時按下 Esc 鍵會在左上角創建零尺寸標籤。 在此狀態下提交標籤失敗。     |   按下標籤旁邊的交叉標記,刪除標籤。  |
 
-## <a name="azure-machine-learning-designer-issues"></a>Azure 機器學習設計器問題
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning 設計工具
 
-設計器的已知問題。
+已知問題：
 
 * **較長的計算準備時間**:當您第一次連接到或創建計算目標時,可能需要幾分鐘甚至更長時間。 
 

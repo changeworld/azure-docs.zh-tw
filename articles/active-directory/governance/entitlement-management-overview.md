@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546150"
+ms.locfileid: "80582548"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
 
@@ -43,7 +43,7 @@ Azure AD 授權管理可説明您更有效地管理對內部使用者以及組�
 - 任何人都不得知道其他組織目錄中的所有特定個人能夠邀請他們
 - 即使他們能夠邀請這些用戶,該組織中任何人都不會記得始終如一地管理使用者的所有訪問許可權
 
-Azure AD 授權管理可幫助應對這些挑戰。  要詳細瞭解客戶如何使用 Azure AD 授權管理,請閱讀[埃維諾案例研究](https://aka.ms/AvanadeELMCase)和[Centrica 案例研究](https://aka.ms/CentricaELMCase)。  本視訊概述了授權管理及其價值:
+Azure AD 授權管理可幫助應對這些挑戰。  要詳細瞭解客戶如何使用 Azure AD 授權管理,請閱讀[埃維諾案例研究](https://customers.microsoft.com/story/avanade-professional-services-azure-canada)和[Centrica 案例研究](https://customers.microsoft.com/story/757467-centrica-energy-azure)。  本視訊概述了授權管理及其價值:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 

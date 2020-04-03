@@ -1,19 +1,19 @@
 ---
-title: Azure 快速路由：ARP 表 - 故障排除
+title: Azure 快速路由:ARP 表 - 故障排除
 description: 此頁面提供相關指示，協助您取得適用於 ExpressRoute 線路的 ARP 表格
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 01/30/2017
-ms.author: ganesr
+ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 4f1bd064dbc0909be3deba9180be1d8b3c066fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b31e9eb852c69d5f02eb855e319d2a4901942994
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076574"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618527"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中取得 ARP 表格
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ ARP 表格可協助您驗證第 2 層組態，並為第 2 層的基礎連線問�
 * 您必須擁有適用於 Azure 的最新 PowerShell 模組 (版本 1.50 或更新版本)。
 
 > [!NOTE]
-> 如果第 3 層由服務提供者提供，並且下面的門戶/輸出中的 ARP 表為空，請使用門戶上的刷新按鈕刷新電路配置。 此作業將套用在您線路上的正確路由組態。 
+> 如果第 3 層由服務提供者提供,並且下面的門戶/輸出中的 ARP 表為空,請使用門戶上的刷新按鈕刷新電路配置。 此作業將套用在您線路上的正確路由組態。 
 >
 >
 
@@ -148,7 +148,7 @@ ARP 表格可協助您驗證第 2 層組態，並為第 2 層的基礎連線問�
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>當內部部署 / 連線提供者端發生問題時的 ARP 表格
-如果本地或連接提供程式出現問題，您可能會看到 ARP 表中只會顯示一個條目，或者本地 MAC 位址將顯示不完整。 並為 Microsoft 端所使用的 MAC 位址與 IP 位址顯示其間的對應。 
+如果本地或連接提供程式出現問題,您可能會看到 ARP 表中只會顯示一個條目,或者本地 MAC 位址將顯示不完整。 並為 Microsoft 端所使用的 MAC 位址與 IP 位址顯示其間的對應。 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    

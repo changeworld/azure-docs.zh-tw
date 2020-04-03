@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437394"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607604"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推理作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Azure 機器學習依賴於其他 Azure 服務來計算資源。 計算資源或
 > 除非明確調用,否則在虛擬網路中使用存儲帳戶或計算目標等資源將同時使用機器學習管道和非管道工作流(如腳本運行)。
 
 > [!WARNING]
-> Microsoft 不支援使用 Azure 機器學習設計器或自動化機器學習(從工作室)與虛擬網路內的資源。
+> 如果基礎存儲已啟用虛擬網路,Microsoft 不支援使用 Azure 機器學習工作室功能,如自動 ML、資料集、數據標記、設計器和筆記本。
 
 ## <a name="prerequisites"></a>Prerequisites
 

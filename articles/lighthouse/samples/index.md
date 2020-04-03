@@ -2,13 +2,13 @@
 title: Azure Lighthouse 範例和範本
 description: 這些範例和 Azure Resource Manager 範本會示範如何將客戶上線，以管理 Azure 委派的資源並支援 Azure Lighthouse 案例。
 ms.topic: sample
-ms.date: 10/17/2019
-ms.openlocfilehash: e7a3c761d3eff1e5ef44e46517bae839dedbd9f3
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.date: 03/30/2020
+ms.openlocfilehash: 9e0ba8175931e277357e5b65e7e9ebded908a675
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75456741"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421132"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse 範例
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 912677a10d7098b891a4f6972b61761cd72cf292
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520750"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585934"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 託管磁碟的伺服器端加密
 
@@ -34,7 +34,11 @@ ms.locfileid: "80520750"
 
 ## <a name="customer-managed-keys"></a>客戶管理的金鑰
 
-您可以選擇使用自己的金鑰在每個託管磁碟級別管理加密。 使用客戶託管金鑰的託管磁碟的伺服器端加密提供了 Azure 密鑰保管庫的整合體驗。 您可以將[RSA 金鑰](../../key-vault/key-vault-hsm-protected-keys.md)匯入金鑰保管庫,或在 Azure 密鑰保管庫生成新的 RSA 金鑰。 Azure 託管磁碟使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式處理加密和解密。 它使用基於[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的資料加密金鑰 (DEK) 加密數據,而密鑰又使用金鑰進行保護。 您必須授予對金鑰保管庫中的託管磁碟的訪問許可權,才能使用密鑰加密和解密 DEK。 這允許您完全控制數據和密鑰。 您可以隨時禁用金鑰或撤銷對託管磁碟的訪問許可權。 還可以使用 Azure 金鑰保管庫監視審核加密金鑰使用方式,以確保只有託管磁碟或其他受信任的 Azure 服務才能存取金鑰。
+您可以選擇使用自己的金鑰在每個託管磁碟級別管理加密。 使用客戶託管金鑰的託管磁碟的伺服器端加密提供了 Azure 密鑰保管庫的整合體驗。 您可以將[RSA 金鑰](../../key-vault/key-vault-hsm-protected-keys.md)匯入金鑰保管庫,或在 Azure 密鑰保管庫生成新的 RSA 金鑰。 
+
+Azure 託管磁碟使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式處理加密和解密。 它使用基於[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的資料加密金鑰 (DEK) 加密數據,而密鑰又使用金鑰進行保護。 儲存服務生成資料加密金鑰,並使用 RSA 加密使用客戶管理的密鑰對其進行加密。 信封加密允許您根據合規性策略定期輪換(更改)密鑰,而不會影響 VM。 旋轉金鑰時,儲存服務使用新的客戶管理密鑰重新加密數據加密密鑰。 
+
+您必須授予對金鑰保管庫中的託管磁碟的訪問許可權,才能使用密鑰加密和解密 DEK。 這允許您完全控制數據和密鑰。 您可以隨時禁用金鑰或撤銷對託管磁碟的訪問許可權。 還可以使用 Azure 金鑰保管庫監視審核加密金鑰使用方式,以確保只有託管磁碟或其他受信任的 Azure 服務才能存取金鑰。
 
 對於進階 SSD、標準 SSD 和標準 HDD:當您關閉或刪除金鑰時,任何使用該金鑰的磁碟的 VM 將自動關閉。 在此之後,除非再次啟用密鑰或您分配新密鑰,否則 VM 將不可用。
 
@@ -187,6 +191,32 @@ az disk create -n $diskName -g $rgName -l $location --encryption-type Encryption
 diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
 
 az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
+
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>變更磁碟加密集的鍵以旋轉參考磁碟加密集的所有資源的金鑰
+
+```azurecli
+
+rgName=yourResourceGroupName
+keyVaultName=yourKeyVaultName
+keyName=yourKeyName
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+
+keyVaultId=$(az keyvault show --name $keyVaultName--query [id] -o tsv)
+
+keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+
+az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url $keyVaultKeyUrl --source-vault $keyVaultId
+
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>尋找磁碟伺服器端加密的狀態
+
+```azurecli
+
+az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] -o tsv
 
 ```
 

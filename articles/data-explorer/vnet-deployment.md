@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548840"
+ms.locfileid: "80618653"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>將 Azure 資料資源管理器叢集部署到虛擬網路
 
@@ -106,7 +106,7 @@ IP 位址總數:
 | 巴西南部 | 191.233.25.183 |
 | 加拿大中部 | 40.82.188.208 |
 | 加拿大東部 | 40.80.255.12 |
-| 印度中部 | 40.81.249.251 |
+| 印度中部 | 40.81.249.251, 104.211.98.159 |
 | 美國中部 | 40.67.188.68 |
 | 美國中部 EUAP | 40.89.56.69 |
 | 東亞 | 20.189.74.103 |
@@ -125,12 +125,12 @@ IP 位址總數:
 | 南非西部 | 102.133.0.97 |
 | 美國中南部 | 20.45.3.60 |
 | 東南亞 | 40.119.203.252 |
-| 印度南部 | 40.81.72.110 |
+| 印度南部 | 40.81.72.110, 104.211.224.189 |
 | 英國南部 | 40.81.154.254 |
 | 英國西部 | 40.81.122.39 |
 | 美國中西部 | 52.159.55.120 |
 | 西歐 | 51.145.176.215 |
-| 印度西部 | 40.81.88.112 |
+| 印度西部 | 40.81.88.112, 104.211.160.120 |
 | 美國西部 | 13.64.38.225 |
 | 美國西部 2 | 40.90.219.23 |
 

@@ -1,15 +1,15 @@
 ---
 title: 為 Azure Kubernetes Service (AKS) 叢集建立 HTTPS 輸入
-description: 瞭解如何安裝和配置 NGINX 入口控制器，該控制器使用"讓我們加密"在 Azure Kubernetes 服務 （AKS） 群集中自動生成 TLS 證書。
+description: 瞭解如何安裝和配置 NGINX 入口控制器,該控制器使用「讓我們加密」在 Azure Kubernetes 服務 (AKS) 群集中自動生成 TLS 證書。
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d0edcac86bebb77495907ec43debf077448b8ac
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191311"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617235"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -29,23 +29,23 @@ ms.locfileid: "78191311"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-本文還假定您具有與 AKS 群集在同一資源組中具有[DNS 區域][dns-zone]的[自訂域][custom-domain]。
+本文還假定您具有與 AKS 群組在同一資源群組中具有[DNS 區域][dns-zone]的[自訂網域][custom-domain]。
 
-本文使用 Helm 來安裝 NGINX 輸入控制器、cert-manager 及範例 Web 應用程式。 請確定您使用的是 Helm 的最新版本。 有關升級說明，請參閱[Helm 安裝文檔][helm-install]。有關配置和使用 Helm 的詳細資訊，請參閱在[Azure 庫伯奈斯服務 （AKS） 中使用 Helm 安裝應用程式][use-helm]。
+本文使用 Helm 來安裝 NGINX 輸入控制器、cert-manager 及範例 Web 應用程式。 請確定您使用的是 Helm 的最新版本。 有關升級說明,請參閱[Helm 安裝文件][helm-install]。有關設定和使用 Helm 的詳細資訊,請參閱在[Azure 庫伯奈斯服務 (AKS) 中使用 Helm 安裝應用程式][use-helm]。
 
-本文還要求您運行 Azure CLI 版本 2.0.64 或更高版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+本文還要求您運行 Azure CLI 版本 2.0.64 或更高版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級,請參閱[安裝 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-ingress-controller"></a>建立輸入控制器
 
-要創建入口控制器，請使用 命令`helm`安裝*nginx 入口*。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
+要建立入口控制器,請使用指令`helm`安裝*nginx 。* 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
 
-輸入控制器也需要在 Linux 節點上排程。 Windows 伺服器節點（當前在 AKS 中處於預覽狀態）不應運行入口控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
+輸入控制器也需要在 Linux 節點上排程。 Windows 伺服器節點(目前在 AKS 中處於預覽狀態)不應運行入口控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
 > 下面的示例為名為入口*基本的*入口資源創建一個 Kubernetes 命名空間。 根據需要為您自己的環境指定命名空間。
 
 > [!TIP]
-> 如果要為群集中容器的請求啟用[用戶端源 IP 保留][client-source-ip]，請添加到`--set controller.service.externalTrafficPolicy=Local`Helm 安裝命令。 用戶端源 IP 存儲在*X-前轉 -for*下的請求標頭中。 當使用啟用用戶端源 IP 保留的入口控制器時，SSL 傳遞將不起作用。
+> 如果要為群集中容器的請求啟用[用戶端源 IP 保留][client-source-ip]`--set controller.service.externalTrafficPolicy=Local`,請添加到 Helm 安裝命令。 用戶端來源 IP 儲存在*X-前轉 -for*下的請求標頭中。 當使用啟用用戶端源 IP 保留的入口控制器時,SSL 傳遞將不起作用。
 
 ```console
 # Create a namespace for your ingress resources
@@ -76,20 +76,20 @@ nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <
 
 尚未建立任何輸入規則。 如果您瀏覽至公用 IP 位址，即會顯示 NGINX 輸入控制器的預設 404 頁面。
 
-## <a name="add-an-a-record-to-your-dns-zone"></a>將 A 記錄添加到 DNS 區域
+## <a name="add-an-a-record-to-your-dns-zone"></a>將 A 紀錄加入 DNS 區域
 
-使用[az 網路 dns 記錄設置附加記錄][az-network-dns-record-set-a-add-record]，使用 NGINX 服務的外部 IP 位址將*A*記錄添加到 DNS 區域。
+使用[az 網路 dns 記錄設定附加記錄][az-network-dns-record-set-a-add-record],使用 NGINX 服務的外部 IP 位址將*A*記錄添加到 DNS 區域。
 
 ```console
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name * \
+    --record-set-name '*' \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
 > [!NOTE]
-> 或者，您可以為入口控制器 IP 位址配置 FQDN，而不是自訂域。 請注意，此示例適用于 Bash 外殼。
+> 或者,您可以為入口控制器 IP 位址配置 FQDN,而不是自訂網域。 請注意,此示例適用於 Bash 外殼。
 > 
 > ```azurecli-interactive
 > # Public IP address of your ingress controller
@@ -112,7 +112,7 @@ az network dns record-set a add-record \
 
 NGINX 輸入控制器支援 TLS 終止。 有數種方式可擷取和設定 HTTPS 的憑證。 本文示範如何使用 [cert-manager][cert-manager]，其會提供自動化的 [Lets Encrypt][lets-encrypt] 憑證產生與管理功能。
 
-要安裝證書管理器控制器：
+要安裝憑證管理員控制器:
 
 ```console
 # Install the CustomResourceDefinition resources separately
@@ -168,21 +168,21 @@ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
 
 ## <a name="run-demo-applications"></a>執行示範應用程式
 
-輸入控制器和憑證管理解決方案皆已設定。 現在讓我們在您的 AKS 叢集中執行兩個示範應用程式。 在此示例中，Helm 用於部署簡單*Hello world*應用程式的兩個實例。
+輸入控制器和憑證管理解決方案皆已設定。 現在讓我們在您的 AKS 叢集中執行兩個示範應用程式。 在此示例中,Helm 用於部署簡單*Hello world*應用程式的兩個實例。
 
-在安裝示例 Helm 圖表之前，請將 Azure 示例存儲庫添加到 Helm 環境。
+在安裝範例 Helm 圖表之前,請將 Azure 範例儲存庫添加到 Helm 環境。
 
 ```console
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
-使用*azure 示例/aks-helloworld*赫爾姆圖創建名為*aks-helloworld*的演示應用程式。
+使用*azure 範例/aks-helloworld*赫爾姆圖創建名為*aks-helloworld*的演示應用程式。
 
 ```console
 helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
-創建名為*aks-helloworld-2*的演示應用程式的第二個實例。 指定一個新的標題和唯一的服務名稱，以便使用 *-set*使兩個應用程式在視覺上不同。
+創建名為*aks-helloworld-2*的演示應用程式的第二個實例。 指定一個新的標題和唯一的服務名稱,以便使用 *-set*使兩個應用程式在視覺上不同。
 
 ```console
 helm install aks-helloworld-two azure-samples/aks-helloworld \
@@ -193,11 +193,11 @@ helm install aks-helloworld-two azure-samples/aks-helloworld \
 
 ## <a name="create-an-ingress-route"></a>建立輸入路由
 
-這兩個應用程式現在都已在您的 Kubernetes 叢集上執行。 但是，它們配置了類型的`ClusterIP`服務，並且無法從 Internet 訪問。 若要使其可公開使用，請建立 Kubernetes 輸入資源。 輸入資源會設定將流量路由至這兩個應用程式之一的規則。
+這兩個應用程式現在都已在您的 Kubernetes 叢集上執行。 但是,它們配置了類型的`ClusterIP`服務,並且無法從 Internet 訪問。 若要使其可公開使用，請建立 Kubernetes 輸入資源。 輸入資源會設定將流量路由至這兩個應用程式之一的規則。
 
-在下面的示例中，位址的流量*hello 世界入口。MY_CUSTOM_DOMAIN*路由到*aks-helloworld*服務。 到位址的流量*hello 世界入口。MY_CUSTOM_DOMAIN/hello-world-2*被路由到*aks-helloworld-2*服務。 到*你好世界入口的交通。MY_CUSTOM_DOMAIN/靜態*路由到名為*aks-helloworld*的服務，用於靜態資產。
+在下面的示例中,位址的流量*hello 世界入口。MY_CUSTOM_DOMAIN*路由到*aks-helloworld*服務。 到位址的流量*hello 世界入口。MY_CUSTOM_DOMAIN/hello-world-2*被路由到*aks-helloworld-2*服務。 到*你好世界入口的交通。MY_CUSTOM_DOMAIN/靜態*路由到名為*aks-helloworld*的服務,用於靜態資產。
 
-使用以下示例`hello-world-ingress.yaml`YAML 創建名為的檔。 將 *hosts* 和 *host* 更新為您在上一個步驟中建立的 DNS 名稱。
+使用以下範例`hello-world-ingress.yaml`YAML 建立名為的檔案。 將 *hosts* 和 *host* 更新為您在上一個步驟中建立的 DNS 名稱。
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -255,11 +255,11 @@ spec:
 kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 ```
 
-## <a name="verify-a-certificate-object-has-been-created"></a>驗證已創建證書物件
+## <a name="verify-a-certificate-object-has-been-created"></a>驗證已建立憑證物件
 
-接下來，必須建立憑證資源。 憑證資源會定義所需的 X.509 憑證。 有關詳細資訊，請參閱[證書管理器證書][cert-manager-certificates]。 Cert 管理器已使用入口-shim 自動為您創建一個證書物件，該物件自 v0.2.2 起自動與證書管理器一起部署。 如需詳細資訊請，請參閱 [ingress-shim 文件][ingress-shim] \(英文\)。
+接下來，必須建立憑證資源。 憑證資源會定義所需的 X.509 憑證。 有關詳細資訊,請參閱[憑證管理員憑證][cert-manager-certificates]。 Cert 管理員已使用入口-shim 自動為您創建一個證書物件,該物件自 v0.2.2 起自動與證書管理器一起部署。 如需詳細資訊請，請參閱 [ingress-shim 文件][ingress-shim] \(英文\)。
 
-要驗證憑證是否成功創建，請使用`kubectl get certificate --namespace ingress-basic`命令並驗證*READY*為*True*，這可能需要幾分鐘時間。
+要驗證證書是否成功創建,請使用`kubectl get certificate --namespace ingress-basic`命令並驗證*READY*為*True*,這可能需要幾分鐘時間。
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -270,21 +270,21 @@ tls-secret   True    tls-secret   11m
 
 ## <a name="test-the-ingress-configuration"></a>測試輸入組態
 
-打開 Web 瀏覽器以*進入 hello 世界。MY_CUSTOM_DOMAIN*庫伯內斯入口控制器。 請注意，您將重定向到使用 HTTPS，證書受信任，演示應用程式顯示在 Web 瀏覽器中。 添加 */hello-world-world-2*路徑，並注意到顯示帶有自訂標題的第二個演示應用程式。
+打開 Web 瀏覽器以*進入 hello 世界。MY_CUSTOM_DOMAIN*庫伯內斯入口控制器。 請注意,您將重定向到使用 HTTPS,證書受信任,演示應用程式顯示在 Web 瀏覽器中。 添加 */hello-world-world-2*路徑,並注意到顯示帶有自定義標題的第二個演示應用程式。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-本文使用 Helm 來安裝輸入元件、憑證及範例應用程式。 部署 Helm 圖表時會建立一些 Kubernetes 資源。 這些資源包含 Pod、部署和服務。 要清理這些資源，可以刪除整個示例命名空間或單個資源。
+本文使用 Helm 來安裝輸入元件、憑證及範例應用程式。 部署 Helm 圖表時會建立一些 Kubernetes 資源。 這些資源包含 Pod、部署和服務。 要清理這些資源,可以刪除整個範例命名空間或單個資源。
 
-### <a name="delete-the-sample-namespace-and-all-resources"></a>刪除示例命名空間和所有資源
+### <a name="delete-the-sample-namespace-and-all-resources"></a>刪除範例命名空間與所有資源
 
-要刪除整個示例命名空間，請使用 命令`kubectl delete`並指定命名空間名稱。 命名空間中的所有資源都將被刪除。
+要刪除整個範例命名空間,請使用指令`kubectl delete`並指定命名空間名稱。 命名空間中的所有資源都將被刪除。
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-然後，刪除 AKS hello 世界應用程式的 Helm 回購：
+然後,刪除 AKS hello 世界應用程式的 Helm 回購:
 
 ```console
 helm repo remove azure-samples
@@ -292,7 +292,7 @@ helm repo remove azure-samples
 
 ### <a name="delete-resources-individually"></a>單獨刪除資源
 
-或者，更精細的方法是刪除創建的單個資源。 首先，刪除群集頒發者資源：
+或者,更精細的方法是刪除創建的單個資源。 首先,刪除群組頒發者資源:
 
 ```console
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
@@ -333,7 +333,7 @@ helm repo remove azure-samples
 kubectl delete -f hello-world-ingress.yaml --namespace ingress-basic
 ```
 
-最後，您可以刪除自身命名空間。 使用`kubectl delete`命令並指定命名空間名稱：
+最後,您可以刪除自身命名空間。 使用`kubectl delete`指令並指定命名空間名稱:
 
 ```console
 kubectl delete namespace ingress-basic

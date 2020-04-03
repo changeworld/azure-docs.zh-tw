@@ -1,26 +1,26 @@
 ---
-title: 共同銷售州代碼 |Azure 應用商店
-description: 在優惠的"共同銷售"頁面上提供聯繫資訊時，請使用這些州/省代碼。
+title: 共同銷售州和省代碼 |Azure 應用商店
+description: 在優惠的「共同銷售」頁面上提供聯繫資訊時,請使用這些州和省代碼。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277034"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619350"
 ---
-# <a name="co-sell-state-codes"></a>共同銷售州代碼
+# <a name="co-sell-state-and-province-codes"></a>共同銷售州和省代碼
 
-如果適用，在[提供優惠共同銷售頁面的聯繫資訊](commercial-marketplace-co-sell.md#contacts)時，使用這些代碼提供州/省資訊。
+如果適用,在[提供優惠共同銷售頁面的聯繫資訊](commercial-marketplace-co-sell.md#contacts)時,使用這些代碼提供州/省資訊。
 
-## <a name="stateprovince-table"></a>州/省表
+## <a name="us-states-and-territories"></a>美國各州和地區
 
-|   州/省名稱               |   程式碼    |
+|   州與地區名稱          |   程式碼    |
 |-------------------------------------|-----------|
 | Alabama                             | 美國-阿爾     |
 | 阿拉斯加                              | 美國-AK     |
@@ -33,7 +33,7 @@ ms.locfileid: "80277034"
 | Florida                             | 美國-FL     |
 | 喬治亞                             | 美國-GA     |
 | Hawaii                              | 美國-HI     |
-| 愛達荷                               | 美國 ID     |
+| 愛達荷                               | 美國識別碼     |
 | 伊利諾州                            | 美國-IL     |
 | 印第安納                             | 美國     |
 | 愛荷華州                                | 美國-IA     |
@@ -60,7 +60,7 @@ ms.locfileid: "80277034"
 | Oklahoma                            | 美-奧克     |
 | Oregon                              | 美國-或     |
 | Pennsylvania                        | 美國-PA     |
-| 羅德島                        | 美國-裡     |
+| 羅德島                        | 美國-里     |
 | South Carolina                      | 美國 SC     |
 | 南達科他                        | 美國-SD     |
 | Tennessee                           | 美國-TN     |
@@ -78,7 +78,40 @@ ms.locfileid: "80277034"
 | 北馬利安納群島            | 美國MP     |
 | 波多黎各                         | 美國-PR     |
 | 美國本土外小島嶼 | 美-烏姆    |
-|美屬維京群島                 | 美國-VI     |
+| 美屬維京群島                 | 美國-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>加拿大各省和地區
+
+|   省和地區名稱       |   程式碼    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| British Columbia                    |  CA-BC    |
+| 曼尼托巴                            |  CA-MB    |
+| 新布藍茲維                       |  CA-NB    |
+| 紐芬蘭及拉布拉多           |  CA-NL    |
+| 新斯科細亞                         |  CA-NS    |
+| 安大略                             |  CA-ON    |
+| 愛德華王子島                |  CA-PE    |
+| 魁北克                              |  CA-QC    |
+| 薩克其萬                        |  CA-SK    |
+| 西北領地               |  CA-NT    |
+| 努納福特                             |  CA-NU    |
+| 育空                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>澳大利亞各州和地區
+
+|   州與地區名稱          |   程式碼    |
+|-------------------------------------|-----------|
+| 新南威爾斯                     |  AU-NSW   |
+| 昆士蘭                          |  AU-QLD   |
+| 澳洲南部                     |  AU-SA    |
+| 塔斯馬尼亞                            |  AU-TAS   |
+| 維多利亞                            |  AU-VIC   |
+| 西澳洲                   |  AU-WA    |
+| 澳洲首都特區        |  AU-ACT   |
+| 北領地                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>後續步驟
 

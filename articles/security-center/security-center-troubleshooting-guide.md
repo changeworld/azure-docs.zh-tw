@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435536"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585332"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
@@ -148,7 +148,6 @@ ms.locfileid: "80435536"
 * [Azure 資訊安全中心的警示驗證](security-center-alert-validation.md)
 * [Azure 資訊安全中心的電子郵件通知](security-center-provide-security-contact-details.md)
 * [在 Azure 資訊安全中心處理安全性事件](security-center-incident.md)
-* [在 Azure 資訊安全中心調查事件和警示](security-center-investigation.md)
 * [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
 * [使用 Azure 安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)– 瞭解如何監視合作夥伴解決方案的運行狀況。
 * [Azure 安全中心常見問題](faq-general.md)解答 - 搜尋有關使用服務的常見問題

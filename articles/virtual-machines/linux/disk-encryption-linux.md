@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529458"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586036"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -407,6 +407,8 @@ Azure 磁碟加密不適用於以下 Linux 方案、功能和技術:
 - 共用/分散式檔案系統的加密,如(但不限於):DFS、GFS、DRDB 和 CephFS。
 - 將加密的 VM 放在其他訂閱。
 - 內核崩潰轉儲(轉儲)。
+- 甲骨文ACFS(ASM集叢檔案系統)
+- 第 2 代 VM(請參閱:[對 Azure 上第 2 代 VM 的支援](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Lsv2 系列 VM(參見[:Lsv2 系列](../lsv2-series.md))
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: 常見問題解答 - 適用于 Linux VM 的 Azure 磁片加密
-description: 本文提供了有關 Linux IaaS VM 的 Microsoft Azure 磁片加密的常見問題的解答。
+title: 常見問題解答 ─ 適用於 Linux VM 的 Azure 磁碟加密
+description: 本文提供了有關 Linux IaaS VM 的 Microsoft Azure 磁碟加密的常見問題的解答。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,77 +8,77 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: b285daa465c8d069b359e94c9203c1ffbea24c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970673"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584046"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM 適用的 Azure 磁碟加密常見問題集
 
-本文提供了有關 Linux VM Azure 磁片加密的常見問題 （FAQ） 的答案。 有關此服務的詳細資訊，請參閱[Azure 磁片加密概述](disk-encryption-overview.md)。
+本文提供了有關 Linux VM Azure 磁碟加密的常見問題 (FAQ) 的答案。 有關此服務的詳細資訊,請參閱[Azure 磁碟加密概述](disk-encryption-overview.md)。
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Azure 磁碟加密會在那裡正式運作 (GA)？
 
-所有 Azure 公共區域中，Linux VM 的 Azure 磁片加密處於常規可用性。
+所有 Azure 公共區域中,Linux VM 的 Azure 磁碟加密處於常規可用性。
 
 ## <a name="what-user-experiences-are-available-with-azure-disk-encryption"></a>Azure 磁碟加密有哪些使用者體驗？
 
-Azure 磁碟加密 GA 支援 Azure Resource Manager 範本、Azure PowerShell 和 Azure CLI。 不同的使用者體驗可為您賦予彈性。 對於 VM 啟用磁片加密，您有三種不同的選項。 有關使用者體驗的詳細資訊和 Azure 磁片加密中提供的分步指南，請參閱 Linux 的[Azure 磁片加密方案](disk-encryption-linux.md)。
+Azure 磁碟加密 GA 支援 Azure Resource Manager 範本、Azure PowerShell 和 Azure CLI。 不同的使用者體驗可為您賦予彈性。 對於 VM 啟用磁碟加密,您有三種不同的選項。 有關使用者體驗的詳細資訊和 Azure 磁碟加密中提供的分步指南,請參閱 Linux 的[Azure 磁碟加密方案](disk-encryption-linux.md)。
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Azure 磁碟加密如何收費？
 
-使用 Azure 磁片加密對 VM 磁片進行加密是免費的，但使用 Azure 金鑰保存庫需要支付相關費用。 如需 Azure Key Vault 成本的詳細資訊，請參閱 [Key Vault 價格](https://azure.microsoft.com/pricing/details/key-vault/)頁面。
+使用 Azure 磁碟加密對 VM 磁碟進行加密是免費的,但使用 Azure 密鑰保管庫需要支付相關費用。 如需 Azure Key Vault 成本的詳細資訊，請參閱 [Key Vault 價格](https://azure.microsoft.com/pricing/details/key-vault/)頁面。
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>如何開始使用 Azure 磁碟加密？
 
 若要開始使用，請參閱 [Azure 磁碟加密概觀](disk-encryption-overview.md)。
 
-## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>哪些 VM 大小和作業系統支援 Azure 磁片加密？
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>哪些 VM 大小和作業系統支援 Azure 磁碟加密?
 
-[Azure 磁片加密概述](disk-encryption-overview.md)一文列出了支援 Azure 磁片加密的[VM 大小](disk-encryption-overview.md#supported-vm-sizes)和 VM[作業系統](disk-encryption-overview.md#supported-operating-systems)。
+[Azure 磁碟加密概述](disk-encryption-overview.md)一文列出支援 Azure 磁碟加密的[VM 大小](disk-encryption-overview.md#supported-vms)和 VM[作業系統](disk-encryption-overview.md#supported-operating-systems)。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁碟加密來加密開機和資料磁碟區？
 
-可以，您可以同時加密開機磁碟區和資料卷，也可以加密資料卷，而無需首先加密作業系統卷。 
+可以,您可以同時加密啟動卷和資料卷,也可以加密資料卷,而無需首先加密操作系統卷。 
 
-加密作業系統卷後，不支援禁用作業系統卷上的加密。 對於規模集中的 Linux VM，只能加密資料卷。
+加密作業系統捲後,不支援禁用作業系統卷上的加密。 對於規模集中的 Linux VM,只能加密數據卷。
 
-## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>是否可以使用 Azure 磁片加密加密未安裝的卷？
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>是否可以使用 Azure 磁碟加密加密未安裝的捲?
 
-否，Azure 磁片加密僅加密裝載的卷。
+否,Azure 磁碟加密僅加密裝載的卷。
 
-## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何輪換機密或加密金鑰？
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何輪換機密或加密密鑰?
 
-要旋轉機密，只需調用最初用於啟用磁片加密的相同命令，指定其他金鑰保存庫。 要旋轉金鑰加密金鑰，請調用最初用於啟用磁片加密的相同命令，指定新的金鑰加密。 
+要旋轉機密,只需調用最初用於啟用磁碟加密的相同命令,指定其他密鑰保管庫。 要旋轉金鑰加密金鑰,請呼叫最初用於啟用磁碟加密的相同命令,指定新的金鑰加密。 
 
 >[!WARNING]
-> - 如果您以前通過指定 Azure AD 憑據來加密此 VM，[從而對 Azure AD 應用使用了 Azure 磁片加密](disk-encryption-linux-aad.md)，則必須繼續使用此選項來加密 VM。 您無法在此加密的 VM 上使用 Azure 磁碟加密，因為這不是支援的案例，表示尚未對此加密的 VM 支援從 AAD 應用程式離開。
+> - 如果您以前通過指定 Azure AD 認證此 VM,[從而對 Azure AD 應用使用了 Azure 磁碟加密](disk-encryption-linux-aad.md),則必須繼續使用此選項來加密 VM。 不能在此加密 VM 上使用 Azure 磁碟加密,因為這不是受支援的方案,這意味著尚不支援出於此加密 VM 從 AAD 應用程式切換。
 
-## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>如果我最初沒有使用金鑰加密金鑰，如何添加或刪除金鑰加密金鑰？
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>如果我最初沒有使用金鑰加密密鑰,如何添加或刪除金鑰加密金鑰?
 
-要添加金鑰加密金鑰，請再次調用啟用命令傳遞金鑰加密金鑰參數。 要刪除金鑰加密金鑰，請再次調用啟用命令，而不使用金鑰加密金鑰參數。
+要加入金鑰加密金鑰,請再次呼叫啟用命令傳遞金鑰加密金鑰參數。 要刪除金鑰加密金鑰,請再次呼叫啟用命令,而不使用金鑰加密金鑰參數。
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Azure 磁碟加密可讓您使用攜帶自己的金鑰 (BYOK) 嗎？
 
-是，您可以提供自己的金鑰加密金鑰。 這些金鑰會在 Azure Key Vault 中受到保護，這是 Azure 磁碟加密的金鑰儲存區。 有關金鑰加密金鑰支援方案的詳細資訊，請參閱[創建和配置 Azure 磁片加密的金鑰保存庫](disk-encryption-key-vault.md)。
+是，您可以提供自己的金鑰加密金鑰。 這些金鑰會在 Azure Key Vault 中受到保護，這是 Azure 磁碟加密的金鑰儲存區。 有關金鑰加密金鑰支援方案的詳細資訊,請參閱[建立與設定 Azure 磁碟加密的金鑰保管庫](disk-encryption-key-vault.md)。
 
 ## <a name="can-i-use-an-azure-created-key-encryption-key"></a>是否可以使用 Azure 建立的金鑰加密金鑰？
 
-是，您可以使用 Azure Key Vault 來產生金鑰加密金鑰以供 Azure 磁碟加密使用。 這些金鑰會在 Azure Key Vault 中受到保護，這是 Azure 磁碟加密的金鑰儲存區。 有關金鑰加密金鑰的詳細資訊，請參閱[創建和配置 Azure 磁片加密的金鑰保存庫](disk-encryption-key-vault.md)。
+是，您可以使用 Azure Key Vault 來產生金鑰加密金鑰以供 Azure 磁碟加密使用。 這些金鑰會在 Azure Key Vault 中受到保護，這是 Azure 磁碟加密的金鑰儲存區。 關於金鑰加密金鑰的詳細資訊,請參考[建立與設定 Azure 磁碟加密的金鑰保存 。](disk-encryption-key-vault.md)
 
 ## <a name="can-i-use-an-on-premises-key-management-service-or-hsm-to-safeguard-the-encryption-keys"></a>是否可以使用內部部署金鑰管理服務或 HSM 來保護加密金鑰？
 
-您無法使用內部部署金鑰管理服務或 HSM 來保護 Azure 磁碟加密的加密金鑰。 只能使用 Azure Key Vault 服務來保護加密金鑰。 有關金鑰加密金鑰支援方案的詳細資訊，請參閱[創建和配置 Azure 磁片加密的金鑰保存庫](disk-encryption-key-vault.md)。
+您無法使用內部部署金鑰管理服務或 HSM 來保護 Azure 磁碟加密的加密金鑰。 只能使用 Azure Key Vault 服務來保護加密金鑰。 有關金鑰加密金鑰支援方案的詳細資訊,請參閱[建立與設定 Azure 磁碟加密的金鑰保管庫](disk-encryption-key-vault.md)。
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>設定 Azure 磁碟加密的必要條件為何？
 
-Azure 磁碟加密有其先決條件。 請參閱[為 Azure 磁片加密創建和配置金鑰保存庫](disk-encryption-key-vault.md)一文，以創建新的金鑰保存庫，或為磁片加密訪問設置現有金鑰保存庫，以啟用加密並保護機密和金鑰。 有關金鑰加密金鑰支援方案的詳細資訊，請參閱[創建和配置 Azure 磁片加密的金鑰保存庫](disk-encryption-key-vault.md)。
+Azure 磁碟加密有其先決條件。 請參閱[為 Azure 磁碟加密創建和設定金鑰保管庫](disk-encryption-key-vault.md)一文,以建立新的密鑰保管庫,或為磁碟加密存取設定現有金鑰保管庫,以啟用加密並保護機密和密鑰。 有關金鑰加密金鑰支援方案的詳細資訊,請參閱[建立與設定 Azure 磁碟加密的金鑰保管庫](disk-encryption-key-vault.md)。
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 應用程式 (舊版) 來設定 Azure 磁碟加密的必要條件為何？
 
-Azure 磁碟加密有其先決條件。 請參閱[Azure 磁片加密與 Azure AD](disk-encryption-linux-aad.md)內容創建 Azure 活動目錄應用程式、創建新金鑰保存庫或設置磁片加密訪問的現有金鑰保存庫以啟用加密並保護機密和金鑰。 有關金鑰加密金鑰支援方案的詳細資訊，請參閱使用 Azure [AD 創建和配置 Azure 磁片加密的金鑰保存庫](disk-encryption-key-vault-aad.md)。
+Azure 磁碟加密有其先決條件。 請參閱[Azure 磁碟加密與 Azure AD](disk-encryption-linux-aad.md)內容建立 Azure 活動目錄應用程式、創建新密鑰保管庫或設定磁碟加密存取的現有金鑰保管庫以啟用加密並保護機密和密鑰。 關於金鑰加密金鑰支援機制的詳細資訊,請參考使用[Azure AD 建立與設定 Azure 磁碟加密的金鑰保存 。](disk-encryption-key-vault-aad.md)
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍支援使用 Azure AD 應用程式 (舊版) 來進行 Azure 磁碟加密？
 是。 仍支援使用 Azure AD 應用程式來進行磁碟加密。 不過，在加密新的 VM 時，建議您使用新的方法，而不要使用 Azure AD 應用程式來加密。 
@@ -91,9 +91,9 @@ Azure 磁碟加密有其先決條件。 請參閱[Azure 磁片加密與 Azure AD
 使用最新版的 Azure PowerShell SDK 來設定 Azure 磁碟加密。 下載最新版的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 1.1.0 版「不」** 支援 Azure 磁碟加密。
 
 > [!NOTE]
-> Linux Azure 磁片加密預覽擴展"Microsoft.OSTC 擴展.Azure 磁片加密為 Linux"被棄用。 此擴展發佈用於 Azure 磁片加密預覽版本。 不應在測試或生產部署中使用擴展的預覽版本。
+> Linux Azure 磁碟加密預覽擴展"Microsoft.OSTC 擴展.Azure 磁碟加密為 Linux"被棄用。 此擴展發佈用於 Azure 磁碟加密預覽版本。 不應在測試或生產部署中使用擴展的預覽版本。
 
-> 對於 Azure 資源管理器 （ARM） 等部署方案，需要為 Linux VM 部署 Azure 磁片加密擴展以在 Linux IaaS VM 上啟用加密，則必須使用 Azure 磁片加密生產支援的擴展"微軟.Azure.安全.Azure磁片加密為Linux"。
+> 對於 Azure 資源管理員 (ARM) 等部署方案,需要為 Linux VM 部署 Azure 磁碟加密擴展以在 Linux IaaS VM 上啟用加密,則必須使用 Azure 磁碟加密生產支援的擴展"Microsoft.Azure.Security.AzureDisk加密ForLinux"。
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>是否可以在我的自訂 Linux 映像上套用 Azure 磁碟加密？
 
@@ -101,7 +101,7 @@ Azure 磁碟加密有其先決條件。 請參閱[Azure 磁片加密與 Azure AD
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>是否可使用 Yum 更新將更新套用至 Linux Red Hat VM？
 
-可以，您可以在紅帽 Linux VM 上執行 yum 更新。  有關詳細資訊，請參閱[隔離網路上的 Azure 磁片加密](disk-encryption-isolated-network.md)。
+可以,您可以在紅帽 Linux VM 上執行 yum 更新。  有關詳細資訊,請參閱[隔離網路上的 Azure 磁碟加密](disk-encryption-isolated-network.md)。
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>若為 Linux，建議使用何種 Azure 磁碟加密工作流程？
 
@@ -115,24 +115,24 @@ Azure 磁碟加密有其先決條件。 請參閱[Azure 磁片加密與 Azure AD
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>什麼是磁碟 "Bek Volume" 或 "/mnt/azure_bek_disk"？
 
-"Bek 卷"是一個本地資料卷，用於安全地存儲加密金鑰以用於加密 Azure VM。
+"Bek 卷"是一個本地資料卷,用於安全地存儲加密密鑰以用於加密 Azure VM。
 > [!NOTE]
 > 請勿刪除或編輯此磁碟中的任何內容。 由於 IaaS VM 上的任何加密作業都需要加密金鑰存在，因此請勿卸載該磁碟。
 
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure 磁碟加密會使用何種加密方法？
 
-Azure 磁片加密使用具有 256 位卷主金鑰的 aes-xts-plain64 的解密預設值。
+Azure 磁碟加密使用具有 256 位卷主密鑰的 aes-xts-plain64 的解密預設值。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll，並指定所有的磁碟區類型，是否會因此從已加密的資料磁碟機上清除資料？
 否，不會從已使用「Azure 磁碟加密」進行加密的資料磁碟機中清除資料。 就像 EncryptFormatAll 不會重新加密 OS 磁碟機一樣，它也不會重新加密已加密的資料磁碟機。 如需詳細資訊，請參閱 [EncryptFormatAll 準則](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。        
 
-## <a name="is-xfs-filesystem-supported"></a>是否支援 XFS 檔案系統？
-僅使用加密格式所有資料磁片加密，支援 XFS 卷。 這將格式化卷，並會重複以前存在的任何資料。 如需詳細資訊，請參閱 [EncryptFormatAll 準則](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
+## <a name="is-xfs-filesystem-supported"></a>是否支援 XFS 檔案系統?
+僅使用加密格式所有資料磁碟加密,支援 XFS 卷。 這將格式化卷,並會重複以前存在的任何數據。 如需詳細資訊，請參閱 [EncryptFormatAll 準則](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
 
-## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>我可以備份和還原加密的 VM 嗎？ 
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>我可以備份和還原加密的 VM 嗎? 
 
-Azure 備份提供了一種機制，用於在同一訂閱和地區中備份和還原加密 VM。  有關說明，請參閱使用[Azure 備份 備份和還原加密虛擬機器](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。  當前不支援將加密 VM 還原到其他區域。  
+Azure 備份提供了一種機制,用於在同一訂閱和地區中備份和還原加密 VM。  有關說明,請參閱使用[Azure 備份 備份和還原加密虛擬機器](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。  當前不支援將加密 VM 還原到其他區域。  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>我可以在哪裡提出問題或意見反應？
 
@@ -141,6 +141,6 @@ Azure 備份提供了一種機制，用於在同一訂閱和地區中備份和�
 ## <a name="next-steps"></a>後續步驟
 在本文件中，您已了解有關 Azure 磁碟加密的常見問題。 如需此服務的詳細資訊，請參閱下列文章：
 
-- [Azure 磁片加密概述](disk-encryption-overview.md)
+- [Azure 磁碟加密概述](disk-encryption-overview.md)
 - [在 Azure 資訊安全中心套用磁碟加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [待用 Azure 資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

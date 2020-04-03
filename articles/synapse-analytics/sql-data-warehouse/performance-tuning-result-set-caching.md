@@ -1,6 +1,6 @@
 ---
 title: 使用結果集快取進行效能微調
-description: Azure 突觸分析中 SQL 分析的結果集緩存功能概述
+description: Azure 突觸分析中突觸 SQL 池的結果集緩存功能概述
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,26 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ef5be63b2068297aedf4cf12d914da09b1efed41
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474474"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583809"
 ---
-# <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調  
-啟用結果集緩存後,SQL Analytics 會自動緩存用戶資料庫中的查詢結果,以便重複使用。  這允許後續查詢執行直接從持久緩存獲取結果,因此不需要重新計算。   結果集緩存提高了查詢性能,減少了計算資源使用。  此外,使用緩存結果集的查詢不使用任何併發槽,因此不計入現有併發限制。 出於安全考慮,使用者只有在具有與創建緩存結果的使用者具有相同的數據訪問許可權時才能訪問緩存的結果。  
+# <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
+
+啟用結果集緩存後,Synapse SQL 池會自動緩存用戶資料庫中的查詢結果,以便重複使用。  這允許後續查詢執行直接從持久緩存獲取結果,因此不需要重新計算。   結果集緩存提高了查詢性能,減少了計算資源使用。  此外,使用緩存結果集的查詢不使用任何併發槽,因此不計入現有併發限制。 出於安全考慮,使用者只有在具有與創建緩存結果的使用者具有相同的數據訪問許可權時才能訪問緩存的結果。  
 
 ## <a name="key-commands"></a>鍵命令
-[開啟/關閉使用者資料庫的結果集快取](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
-[開啟/關閉工作階段的結果集快取](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+[開啟/關閉使用者資料庫的結果集快取](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[檢查快取結果集大小](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+[開啟/關閉工作階段的結果集快取](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[清除快取](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+[檢查快取結果集大小](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+
+[清除快取](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="whats-not-cached"></a>未快取的內容  
 
@@ -39,7 +41,7 @@ ms.locfileid: "80474474"
 - 傳回資料的資料列大小超過 64KB 的查詢
 
 > [!IMPORTANT]
-> 創建結果集緩存並從緩存中檢索數據的操作發生在 SQL Analytics 實例的控制節點上。
+> 創建結果集緩存並從緩存中檢索數據的操作發生在 Synapse SQL 池實例的控制節點上。
 > 當結果集快取開啟時，執行傳回大型結果集的查詢 (例如，> 1 百萬個資料列) 可能會導致控制節點上的 CPU 使用率過高，並使執行個體的整體查詢回應變慢。  這些查詢通常會在資料探索或 ETL 作業期間使用。 若要避免對控制節點造成壓力並導致效能問題，使用者應該先關閉資料庫的結果集快取，再執行這些類型的查詢。  
 
 執行此查詢的結果集快取操作所佔用的時間:
@@ -76,7 +78,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 結果集快取的大小上限是每個資料庫 1 TB。  當基礎查詢數據發生更改時,緩存的結果將自動失效。  
 
-快取逐出由 SQL 分析按照此計劃自動管理: 
+快取逐出計劃按照此計劃自動管理: 
 - 如果結果集尚未使用或已失效,則每 48 小時一次。 
 - 當結果集緩存接近最大大小時。
 
@@ -87,4 +89,5 @@ WHERE request_id = <'Your_Query_Request_ID'>
 暫停資料庫不會為緩存的結果集清空。  
 
 ## <a name="next-steps"></a>後續步驟
+
 如需更多開發秘訣，請參閱[開發概觀](sql-data-warehouse-overview-develop.md)。 

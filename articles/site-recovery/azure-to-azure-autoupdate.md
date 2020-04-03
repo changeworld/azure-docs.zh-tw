@@ -1,73 +1,79 @@
 ---
-title: Azure 網站恢復中的移動服務自動更新
-description: 使用 Azure 網站恢復複製 Azure VM 時自動更新移動服務的概述。
+title: Azure 網站回復中的行動服務自動更新
+description: 使用 Azure 網站恢復複製 Azure VM 時自動更新行動服務的概述。
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: 3a9b0717368fa67f5a7dd477e018a68e048b6740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67298ecf0c17feee2d36bb8774cae37b1ca81381
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451396"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618966"
 ---
-# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 複製中的移動服務自動更新
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 複製中的行動服務自動更新
 
-Azure 網站恢復使用每月發佈節奏來修復任何問題並增強現有功能或添加新功能。 要保持服務的最新狀態，您必須計畫每月進行修補程式部署。 為了避免與每次升級關聯的開銷，您可以改為允許網站恢復管理元件更新。
+Azure 網站恢復使用每月發佈節奏來修復任何問題並增強現有功能或添加新功能。 要保持服務的最新狀態,您必須計劃每月進行修補程式部署。 為了避免與每次升級關聯的開銷,可以允許網站恢復管理元件更新。
 
-如[Azure 到 Azure 災害復原體系結構](azure-to-azure-architecture.md)中所述，移動服務安裝在為其啟用複製的所有 Azure 虛擬機器 （VM） 上，同時將 VM 從一個 Azure 區域複製到另一個 Azure 區域。 使用自動更新時，每個新版本都會更新移動服務擴展。
- 
+如[Azure 到 Azure 災難復原體系結構](azure-to-azure-architecture.md)中所述,行動服務安裝在所有 Azure 虛擬機器 (VM) 上,這些虛擬機器已啟用從一個 Azure 區域到另一個 Azure 區域。 使用自動更新時,每個新版本都會更新行動服務擴展。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="how-automatic-updates-work"></a>自動更新的工作原理
 
-使用網站恢復來管理更新時，它會通過與保存庫在同一訂閱中創建的自動化帳戶部署全域 Runbook（由 Azure 服務使用）。 每個保存庫使用一個自動化帳戶。 Runbook 檢查保存庫中的每個 VM 以進行主動自動更新，並在有較新版本可用時升級移動服務擴展。
+使用網站恢復來管理更新時,它會通過與保管庫在同一訂閱中創建的自動化帳戶部署全域 Runbook(由 Azure 服務使用)。 每個保管庫使用一個自動化帳戶。 對於保管庫中的每個 VM,Runbook 將檢查活動自動更新。 如果行動服務擴展的較新版本可用,則安裝更新。
 
-預設 Runbook 計畫每天上午 12：00 在複製 VM 的地理區重複出現。 您還可以通過自動化帳戶更改 Runbook 計畫。
+預設 Runbook 計劃每天上午 12:00 在複製 VM 的地理位置的時區發生。 您還可以透過自動化帳戶更改 Runbook 計畫。
 
 > [!NOTE]
-> 從更新彙總套件 35 開始，您可以選擇用於更新的現有自動化帳戶。 在此更新之前，預設情況下，網站恢復創建了此帳戶。 請注意，只有在為 VM 啟用複製時，才能選擇此選項。 它不適用於複製 VM。 您選擇的設置將應用於在同一保存庫中保護的所有 Azure VM。
- 
-> 打開自動更新不需要重新開機 Azure VM 或影響正在進行的複製。
+> 從[更新匯總 35](site-recovery-whats-new.md#updates-march-2019)開始,您可以選擇用於更新的現有自動化帳戶。 在更新匯總 35 之前,默認情況下,網站恢復創建了自動化帳戶。 僅當為 VM 啟用複製時,才能選擇此選項。 它不適用於已啟用複製的 VM。 您選擇的設定將應用於同一保管庫中保護的所有 Azure VM。
 
-> 自動化帳戶中的作業計費基於一個月內使用的作業運行時分鐘數。 預設情況下，500 分鐘作為自動化帳戶的免費單位包含在內。 作業執行每天需要幾秒鐘到大約一分鐘，並作為免費單元進行覆蓋。
+打開自動更新不需要重新啟動 Azure VM 或影響正在進行的複製。
 
-| 包括免費單位（每月） | Price |
+自動化帳戶中的作業計費基於一個月內使用的作業運行時分鐘數。 作業執行每天需要幾秒鐘到大約一分鐘,並作為免費單元進行覆蓋。 預設情況下,500 分鐘作為自動化帳戶的可用單位包含在內,如下表所示:
+
+| 包括免費單位(每月) | Price |
 |---|---|
-| 作業運行時 500 分鐘 | ±0.14/分鐘
+| 工作執行時 500 分鐘 | ±0.14/分鐘
 
 ## <a name="enable-automatic-updates"></a>啟用自動更新
 
-您可以允許網站恢復以以下方式管理更新。
+站台恢復可透過多種方式管理延伸更新:
 
-### <a name="manage-as-part-of-the-enable-replication-step"></a>作為啟用複製步驟的一部分進行管理
+- [開啟複製步驟的一部份進行管理](#manage-as-part-of-the-enable-replication-step)
+- [切換保存庫內的擴充功能更新設定](#toggle-the-extension-update-settings-inside-the-vault)
+- [手動管理更新](#manage-updates-manually)
 
-當您啟用[從 VM 視圖](azure-to-azure-quickstart.md)或[恢復服務保存庫](azure-to-azure-how-to-enable-replication.md)開始的 VM 複製時，可以允許網站恢復管理網站恢復擴展的更新或手動管理它。
+### <a name="manage-as-part-of-the-enable-replication-step"></a>開啟複製步驟的一部份進行管理
 
-![擴展設置](./media/azure-to-azure-autoupdate/enable-rep.png)
+當您啟用[從 VM 檢視](azure-to-azure-quickstart.md)或[恢復服務保管庫](azure-to-azure-how-to-enable-replication.md)開始的 VM 複製時,可以允許網站恢復管理站點恢復擴展的更新或手動管理它。
+
+:::image type="content" source="./media/azure-to-azure-autoupdate/enable-rep.png" alt-text="延伸設定":::
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>切換保存庫內的擴充功能更新設定
 
-1. 在保存庫內，轉到**管理** > **網站恢復基礎結構**。
-2. **在"對於 Azure 虛擬機器** > **擴展更新設置"** 下，打開 **"允許網站恢復以管理**切換"。 要手動管理，請將其關閉。 
-3. 選取 [儲存]****。
+1. 從回復服務保存庫到**管理** > **站台修復基礎結構**。
+1. **在"對於 Azure 虛擬機器** > **擴展更新設定** > **"下,允許網站恢復管理**,選擇 **"打開**"。
 
-![擴展更新設置](./media/azure-to-azure-autoupdate/vault-toggle.png)
+   要手動管理擴展,請選擇 **"關閉**"。
 
-> [!Important]
-> 當您選擇**允許網站恢復管理**時，該設置將應用於相應保存庫中的所有 VM。
+1. 選取 [儲存]  。
 
-
-> [!Note]
-> 任一選項都通知您用於管理更新的自動化帳戶。 如果您首次在保存庫中使用此功能，則預設情況下將創建新的自動化帳戶。 或者，您可以自訂設置，並選擇現有的自動化帳戶。 同一保存庫中的所有後續啟用複製都使用以前創建的複製。 目前，下拉清單將僅列出與保存庫位於同一資源組中的自動化帳戶。  
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="延伸更新設定":::
 
 > [!IMPORTANT]
-> 以下腳本需要在自動化帳戶的上下文中運行 對於自訂自動化帳戶，請使用以下腳本：
+> 當您選擇**允許網站恢復管理**時,該設置將應用於保管庫中的所有 VM。
+
+> [!NOTE]
+> 任一選項都通知您用於管理更新的自動化帳戶。 如果您首次在保管庫中使用此功能,則默認情況下將創建新的自動化帳戶。 或者,您可以自定義設置,並選擇現有的自動化帳戶。 要在同一保管庫中啟用複製的所有後續節拍都將使用以前創建的自動化帳戶。 目前,下拉菜單將僅列出與保管庫位於同一資源組中的自動化帳戶。
+
+> [!IMPORTANT]
+> 需要在自動化帳戶的上下文中運行以下腳本。
+對於自訂自動化帳戶,請使用以下文稿:
 
 ```azurepowershell
 param(
@@ -96,32 +102,32 @@ $Timeout = "160"
 
 function Throw-TerminatingErrorMessage
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     throw ("Message: {0}, TaskId: {1}.") -f $Message, $TaskId
 }
 
 function Write-Tracing
 {
-    Param
+        Param
     (
-        [Parameter(Mandatory=$true)]      
+        [Parameter(Mandatory=$true)]
         [ValidateSet("Informational", "Warning", "ErrorLevel", "Succeeded", IgnoreCase = $true)]
-        [String]
+                [String]
         $Level,
 
         [Parameter(Mandatory=$true)]
         [String]
         $Message,
 
-        [Switch]
+            [Switch]
         $DisplayMessageToUser
-    )
+        )
 
     Write-Output $Message
 
@@ -129,12 +135,12 @@ function Write-Tracing
 
 function Write-InformationTracing
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     Write-Tracing -Message $Message -Level Informational -DisplayMessageToUser
 }
@@ -183,14 +189,14 @@ function Initialize-SubscriptionId()
         $Tokens = $VaultResourceId.SubString(1).Split("/")
 
         $Count = 0
-        $ArmResources = @{}
+                $ArmResources = @{}
         while($Count -lt $Tokens.Count)
         {
             $ArmResources[$Tokens[$Count]] = $Tokens[$Count+1]
             $Count = $Count + 2
         }
-        
-        return $ArmResources["subscriptions"]
+
+                return $ArmResources["subscriptions"]
     }
     catch
     {
@@ -207,7 +213,7 @@ function Invoke-InternalRestMethod($Uri, $Headers, [ref]$Result)
     {
         try
         {
-            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers    
+            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers
             ($Result.Value) += ($ResultObject)
             break
         }
@@ -253,7 +259,7 @@ function Invoke-InternalWebRequest($Uri, $Headers, $Method, $Body, $ContentType,
 }
 
 function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionName){
-    try 
+    try
     {
         $RunAsConnection = Get-AutomationConnection -Name $RunAsConnectionName
         $TenantId = $RunAsConnection.TenantId
@@ -284,14 +290,14 @@ function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionN
 
 function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
 {
-    try 
+    try
     {
         Write-InformationTracing ("Get protection container mappings : {0}." -f $VaultResourceId)
         $ContainerMappingListUrl = $ArmEndPoint + $VaultResourceId + "/replicationProtectionContainerMappings" + "?api-version=" + $AsrApiVersion
-        
+
         Write-InformationTracing ("Getting the bearer token and the header.")
         Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-        
+
         $Result = @()
         Invoke-InternalRestMethod -Uri $ContainerMappingListUrl -Headers $header -Result ([ref]$Result)
         $ContainerMappings = $Result[0]
@@ -389,7 +395,7 @@ try
     try {
             $UpdateUrl = $ArmEndPoint + $Mapping + "?api-version=" + $AsrApiVersion
             Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-            
+
             $Result = @()
             Invoke-InternalWebRequest -Uri $UpdateUrl -Headers $Header -Method 'PATCH' `
                 -Body $InputJson  -ContentType "application/json" -Result ([ref]$Result)
@@ -479,7 +485,7 @@ catch
 {
     $ErrorMessage = ("Tracking modify cloud pairing jobs failed with [Exception: {0}]." -f $_.Exception)
     Write-Tracing -Level ErrorLevel -Message $ErrorMessage  -DisplayMessageToUser
-    Throw-TerminatingErrorMessage -Message $ErrorMessage 
+    Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 
 Write-InformationTracing ("Tracking modify cloud pairing jobs completed.")
@@ -491,7 +497,7 @@ Write-InformationTracing ("Modify cloud pairing jobs timedout: {0}." -f $JobsTim
 if($JobsTimedOut -gt  0)
 {
     $ErrorMessage = "One or more modify cloud pairing jobs has timedout."
-    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)   
+    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
@@ -506,44 +512,44 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>手動管理更新
 
-1. 如果 VM 上安裝了移動服務的新更新，您將看到以下通知："新網站恢復複製代理更新可用。 按一下以安裝"
+1. 如果 VM 上安裝了行動服務的新更新,您將看到以下通知:**新網站恢復複製代理更新可用。單擊以進行安裝。**
 
-     ![[複寫的項目] 視窗](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-2. 選擇通知以打開 VM 選擇頁。
-3. 選擇要升級的 VM，然後選擇 **"確定**"。 將為每個選定的 VM 啟動更新移動服務。
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="[複寫的項目] 視窗":::
 
-     ![複寫的項目 VM 清單](./media/vmware-azure-install-mobility-service/update-okpng.png)
+1. 選擇通知以打開 VM 選擇頁。
+1. 選擇要升級的 VM,然後選擇 **「確定**」。 將為每個選定的 VM 啟動更新行動服務。
 
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="複寫的項目 VM 清單":::
 
 ## <a name="common-issues-and-troubleshooting"></a>常見問題和故障排除
 
-如果自動更新有問題，您將在保存庫儀表板中的 **"配置"問題**下看到錯誤通知。
+如果自動更新有問題,您將在保管庫儀錶板中的 **「配置」問題**下看到錯誤通知。
 
-如果無法啟用自動更新，請參閱以下常見錯誤和建議的操作：
+如果無法開啟自動更新,請參閱以下常見錯誤和建議的操作:
 
 - **錯誤**：您沒有權限，無法建立 Azure 執行身分帳戶 (服務主體) 以及將參與者角色授與服務主體。
 
-   **建議的操作**：請確保已登錄帳戶已分配為"參與者"，然後重試。 請參閱["使用門戶"中所需的許可權部分，以創建 Azure AD 應用程式和服務主體，該應用程式和服務主體可以訪問資源，](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)瞭解有關分配許可權的詳細資訊。
- 
-   要在啟用自動更新後修復大多數問題，請選擇 **"修復**"。 如果修復按鈕不可用，請參閱擴展更新設置窗格中顯示的錯誤訊息。
+  **建議的操作**:請確保已登錄帳戶已分配為"參與者",然後重試。 有關分配許可權的詳細資訊,請參閱[「如何:使用門戶創建可以存取資源的 Azure AD 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)」所需的許可權部分。
 
-   ![擴展更新設置中的網站恢復服務修復按鈕](./media/azure-to-azure-autoupdate/repair.png)
+  要在啟用自動更新后修復大多數問題,請選擇 **「修復**」。。 如果修復按鈕不可用,請參閱擴展更新設置窗格中顯示的錯誤消息。
+
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="延伸更新設定中的站台復原服務修復按鈕":::
 
 - **錯誤**：執行身分帳戶沒有存取復原服務資源的權限。
 
-    **建議的操作**：刪除，然後[重新創建"運行為"帳戶](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。 或者，確保自動化運行為帳戶的 Azure 活動目錄應用程式有權訪問恢復服務資源。
+  **建議的操作**:刪除,然後[重新建立「執行為「帳戶](/azure/automation/automation-create-runas-account)。 或者,確保自動化運行為帳戶的 Azure 活動目錄應用程式可以訪問恢復服務資源。
 
-- **錯誤**：找不到執行身分帳戶。 下列其中一個項目已刪除或未建立：Azure Active Directory 應用程式、服務主體、角色、自動化憑證資產、自動化連線資產，或憑證與連線之間的指紋不相同。 
+- **錯誤**：找不到執行身分帳戶。 下列其中一個項目已刪除或未建立：Azure Active Directory 應用程式、服務主體、角色、自動化憑證資產、自動化連線資產，或憑證與連線之間的指紋不相同。
 
-    **建議的操作**：刪除，然後[重新創建"運行為"帳戶](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
+  **建議的操作**:刪除,然後[重新建立「執行為「帳戶](/azure/automation/automation-create-runas-account)。
 
--  **錯誤**： 自動化帳戶使用的 Azure 運行為證書即將過期。 
+- **錯誤**: 自動化帳戶使用的 Azure 執行為憑證即將過期。
 
-    為"運行"帳戶創建的自簽章憑證自創建之日起一年過期。 您可以在該憑證到期前隨時更新憑證。 如果您已註冊電子郵件通知，則當需要從您方面執行操作時，您還會收到電子郵件。 此錯誤將在到期日期前兩個月顯示，如果證書已過期，則將更改為嚴重錯誤。 證書過期後，在續訂後，自動更新將不起作用。
+  為「運行」帳戶創建的自簽名證書自創建之日起一年過期。 您可以在該憑證到期前隨時更新憑證。 如果您已註冊電子郵件通知,則當需要從您方面執行操作時,您還會收到電子郵件。 此錯誤將在到期日期前兩個月顯示,如果證書已過期,則將更改為嚴重錯誤。 證書過期后,在續訂后,自動更新將不起作用。
 
-   **建議的操作**：按一下"修復"，然後按一下"續訂證書"以解決此問題。
-    
-   ![更新證書](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+  **建議的操作**:要解決此問題,請選擇 **「修復**」,然後**選擇續訂證書**。
 
-> [!NOTE]
-> 續訂證書後，請刷新頁面，以便更新目前狀態。
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="更新憑證":::
+
+  > [!NOTE]
+  > 續訂證書後,刷新頁面以顯示當前狀態。

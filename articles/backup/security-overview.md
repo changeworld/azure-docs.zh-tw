@@ -3,12 +3,12 @@ title: 安全功能概述
 description: 瞭解 Azure 備份中的安全功能,這些功能可説明您保護備份數據並滿足企業的安全需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423180"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585825"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中安全功能概述
 
@@ -66,6 +66,8 @@ Azure 備份服務使用 Microsoft Azure 恢複服務 (MARS) 代理從本地電�
 * 每當執行重要作業 (如變更複雜密碼) 時，就會多一道驗證。 這項驗證用來確保只有具備有效 Azure 認證的使用者，才能執行這類作業。 [詳細瞭解防止攻擊的功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)。
 
 * 已刪除的備份數據將從刪除之日起再保留 14 天。 這可確保數據在給定時間段內的可恢復性,因此即使發生攻擊,也會丟失數據。 而且會維護更多的復原點，以防範資料損毀。 [瞭解有關恢復已刪除的備份數據的更多。](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data)
+
+* 對於使用 Microsoft Azure 恢複服務 (MARS) 代理備份的數據,密碼用於確保數據在上載到 Azure 備份之前進行加密,並且僅在從 Azure 備份下載後解密。 密碼詳細資訊僅對創建密碼短語的使用者和設定密碼短語的代理可用。 不會與服務傳輸或共用任何內容。 這可確保數據的完整安全性,因為任何無意中公開的數據(如網路上的中間人攻擊)在沒有密碼的情況下無法使用,並且密碼不會在網路上發送。
 
 ## <a name="compliance-with-standardized-security-requirements"></a>符合標準化的安全要求
 
