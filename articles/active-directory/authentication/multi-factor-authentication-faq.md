@@ -1,22 +1,22 @@
 ---
-title: Azure 多重要素驗證常見問題解答 - Azure 活動目錄
+title: Azure 多重身份驗證常見問題解答 - Azure 活動目錄
 description: 與 Azure Multi-Factor Authentication 相關的常見問題與答案。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 186e5a533bac5d7adac8b0423eff6c05f797c56f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425145"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652138"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>與 Azure Multi-Factor Authentication 相關的常見問題
 
@@ -25,13 +25,13 @@ ms.locfileid: "75425145"
 ## <a name="general"></a>一般
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 將不再為新部署提供 MFA 伺服器。 希望使用者進行多重要素驗證的新客戶應使用基於雲的 Azure 多重要素驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動憑據。
+> 自 2019 年 7 月 1 日起,Microsoft 將不再為新部署提供 MFA 伺服器。 希望用戶進行多重身份驗證的新客戶應使用基於雲的 Azure 多重身份驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動認證。
 > 
-> 自 2018 年 9 月 1 日起，新客戶不再使用基於消費的許可。
-> 自 2018 年 9 月 1 日起，可能不再創建新身份檢查器提供者。 現有的驗證提供者可繼續使用與更新。 多重要素驗證將繼續為 Azure AD Premium 授權中的可用功能。
+> 自 2018 年 9 月 1 日起,新客戶不再使用基於消費的許可。
+> 自 2018 年 9 月 1 日起,可能不再創建新身份驗證提供者。 現有的驗證提供者可繼續使用與更新。 多重要素驗證將繼續為 Azure AD Premium 授權中的可用功能。
 
 > [!NOTE]
-> 下面共用的有關 Azure 多重要素驗證伺服器的資訊僅適用于已運行 MFA 伺服器的使用者。
+> 下面共用的有關 Azure 多重身份驗證伺服器的資訊僅適用於已運行 MFA 伺服器的使用者。
 
 **問：Azure Multi-Factor Authentication Server 如何處理使用者資料？**
 
@@ -40,12 +40,12 @@ ms.locfileid: "75425145"
 驗證要求傳送至雲端服務時，會收集資料以用於驗證和使用方式報告。 雙步驟驗證記錄中包含的資料欄位如下：
 
 * **唯一識別碼** (使用者名稱或內部部署 Multi-Factor Authentication Server 識別碼兩者之一)
-* **名字和姓氏**（可選）
-* **電子郵件地址**（可選）
+* **名稱與姓氏**(選擇性的)
+* **電子郵件地址**(選擇性的)
 * **電話號碼** (進行語音通話或簡訊驗證時)
 * **裝置權杖** (執行行動應用程式驗證時)
 * **驗證模式**
-* **身份驗證結果**
+* **驗證結果**
 * **Multi-Factor Authentication Server 名稱**
 * **Multi-Factor Authentication Server IP**
 * **用戶端 IP** (如果有的話)
@@ -68,7 +68,7 @@ ms.locfileid: "75425145"
    * 759731 
    * 673801
 
-Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的多重要素驗證即時交付。 為了使用者的利益，Microsoft 可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短程式碼。 除美國和加拿大外，Microsoft 不支援國家/地區的短代碼。
+Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的多重要素驗證即時交付。 為了使用者的利益，Microsoft 可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短程式碼。 除美國和加拿大外,Microsoft 不支援國家/地區的短代碼。
 
 ## <a name="billing"></a>計費
 
@@ -96,7 +96,7 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或以語音為基礎的�
 
 在某些情況下，是的。
 
-Azure 管理員的多重要素驗證提供 Azure MFA 功能的子集，無需付費訪問 Microsoft 線上服務，包括[Azure 門戶](https://portal.azure.com)和[Microsoft 365 管理中心](https://admin.microsoft.com)。 若 Azure Active Directory 執行個體中的全域系統管理員沒有透過 MFA 授權、組合或以獨立使用作為基礎的提供者取得完整版 Azure MFA，則僅適用此供應項目。 如果您的管理員是使用免費版本，然後您購買完整版的 Azure MFA，就會自動將所有全域管理員提升為付費版本。
+Azure 管理員的多重身份驗證提供 Azure MFA 功能的子集,無需付費存取 Microsoft 線上服務,包括[Azure 門戶](https://portal.azure.com)和[Microsoft 365 管理中心](https://admin.microsoft.com)。 若 Azure Active Directory 執行個體中的全域系統管理員沒有透過 MFA 授權、組合或以獨立使用作為基礎的提供者取得完整版 Azure MFA，則僅適用此供應項目。 如果您的管理員是使用免費版本，然後您購買完整版的 Azure MFA，就會自動將所有全域管理員提升為付費版本。
 
 適用於 Office 365 使用者的 Multi-Factor Authentication 提供免費的 Azure MFA 功能子集，讓您可存取 Office 365 服務，包括 Exchange Online 和 SharePoint Online。 若使用者擁有指派的 Office 365 授權，但相對應的 Azure Active Directory 執行個體沒有透過 MFA 授權、組合或獨立使用型提供者取得完整版 Azure MFA 時，則適用此供應項目。
 
@@ -104,7 +104,7 @@ Azure 管理員的多重要素驗證提供 Azure MFA 功能的子集，無需付
 
 如果貴組織購買的 MFA 是使用量計費型獨立服務，則您可以在建立 MFA 提供者時選擇計費模式。 您無法在 MFA 提供者建立之後變更計費模型。 
 
-如果 MFA 提供程式*未*連結到 Azure AD 租戶，或者將新的 MFA 提供程式連結到其他 Azure AD 租戶，則不會傳輸使用者設置和配置選項。 此外，現有 Azure MFA 伺服器也需要使用新 MFA 提供者產生的啟用認證重新啟動。 重新啟用 MFA 伺服器以將其連結至新的 MFA 提供者，並不會影響電話和簡訊驗證，但所有使用者的行動裝置應用程式通知將會停止運作，直到他們重新啟動行動裝置應用程式。
+如果 MFA 提供者*未*連結到 Azure AD 租戶,或者將新的 MFA 提供程式連結到其他 Azure AD 租戶,則不會傳輸使用者設置和配置選項。 此外，現有 Azure MFA 伺服器也需要使用新 MFA 提供者產生的啟用認證重新啟動。 重新啟用 MFA 伺服器以將其連結至新的 MFA 提供者，並不會影響電話和簡訊驗證，但所有使用者的行動裝置應用程式通知將會停止運作，直到他們重新啟動行動裝置應用程式。
 
 於[開始使用 Azure Multi-Factor Auth 提供者](concept-mfa-authprovider.md)中深入了解 MFA 提供者。
 
@@ -124,7 +124,7 @@ Azure 管理員的多重要素驗證提供 Azure MFA 功能的子集，無需付
 
 ## <a name="manage-and-support-user-accounts"></a>管理和支援使用者帳戶
 
-**問：如果使用者在手機上沒有收到回應，我應該告訴使用者怎麼做？**
+**問:如果使用者在手機上沒有收到回應,我應該告訴用戶怎麼做?**
 
 讓使用者在 5 分鐘內最多嘗試 5 次進行電話通話或簡訊的驗證。 Microsoft 會使用多個提供者提供電話及簡訊。 如果這個作法無效，請向 Microsoft 提出支援案例，進行後續疑難排解。
 
@@ -149,11 +149,11 @@ Azure 管理員的多重要素驗證提供 Azure MFA 功能的子集，無需付
 > [!NOTE]
 > 適用於 Office 2013 用戶端的新式驗證
 >
-> 只有不支援最新驗證方式的應用程式需要應用程式密碼。 Office 2013 用戶端支援最新的驗證通訊協定，但需要設定。 現在，運行 Office 2013 3 月或更高版本更新的任何客戶都可以使用現代身份驗證。 有關詳細資訊，請參閱博客文章更新 Office [365 現代身份驗證](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
+> 只有不支援最新驗證方式的應用程式需要應用程式密碼。 Office 2013 用戶端支援最新的驗證通訊協定，但需要設定。 現在,運行 Office 2013 3 月或更高版本更新的任何客戶都可以使用現代身份驗證。 有關詳細資訊,請參閱博客文章更新 Office [365 現代身份驗證](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
 
-**問：我的使用者說，有時他們沒有收到短信或驗證超時。**
+**問:我的使用者說,有時他們沒有收到簡訊或驗證超時。**
 
-SMS 消息的傳遞不保證，因為有一些無法控制的因素可能會影響服務的可靠性。 這些因素包括目的地國家/地區、行動電話運營商和信號強度。
+SMS 消息的傳遞不保證,因為有一些無法控制的因素可能會影響服務的可靠性。 這些因素包括目的地國家/地區、行動電話營運商和信號強度。
 
 如果您的使用者時常無法收到簡訊，請告訴他們改用行動裝置應用程式或撥打電話的方式。 行動應用程式可以透過行動數據和 Wi-Fi 連接接收通知。 此外，即使裝置收不到訊號，行動應用程式可以產生驗證碼。 Microsoft 驗證器應用程式適用於 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
@@ -199,15 +199,15 @@ Windows Server 2012 R2 中的安全性變更已改變 Azure Multi-Factor Authent
 
 - 使用者已透過他們 Azure AD 中的系統管理者啟用 MFA，但尚未在他們的帳戶中註冊安全性資訊。
 - 使用者已在 Azure AD 中啟用自助式密碼重設。 如果他們之後忘記密碼，安全性資訊將會協助他們重設密碼。
-- 使用者存取具有條件式存取原則的應用程式來要求 MFA，但先前未註冊過 MFA。
+- 使用者存取具有條件存取策略以需要 MFA 且以前未註冊 MFA 的應用程式。
 - 使用者正在透過 Azure AD (包括 Azure AD Join) 註冊裝置，而貴組織要求使用 MFA 進行裝置註冊，但使用者先前未註冊過 MFA。
-- 使用者正在 Windows 10 上註冊 Windows Hello 企業版 (需使用 MFA)，但先前未註冊過 MFA。
+- 使用者正在 Windows 10 中為企業生成 Windows Hello(這需要 MFA),並且以前尚未註冊 MFA。
 - 組織建立已套用至使用者的 MFA 註冊原則並加以啟用。
 - 使用者先前已註冊過 MFA，但選擇的驗證方法已由系統管理員停用。 使用者必須因此再次進行 MFA 註冊，以選取新的預設驗證方法。
 
 ## <a name="errors"></a>Errors
 
-**問：如果使用者在使用行動應用程式通知時看到「驗證要求不適用於已啟用的帳戶」錯誤訊息，應該怎麼辦？**
+**問:如果使用者在使用移動應用通知時看到「身份驗證請求不適用於已啟動的帳戶」錯誤消息,該怎麼辦?**
 
 請告訴他們遵循這個從行動應用程式移除其帳戶的程序，然後重新新增帳戶︰
 

@@ -1,28 +1,28 @@
 ---
 title: 監視本地 Azure AD 密碼保護
-description: 瞭解如何監視和查看本地活動目錄域服務環境的 Azure AD 密碼保護日誌
+description: 瞭解如何監控及檢視本地活動目錄網域服務環境的 Azure AD 密碼保護紀錄
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671648"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652619"
 ---
-# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>監視和查看本地 Azure AD 密碼保護環境的日誌
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>監視並檢視本地 Azure AD 密碼保護環境的紀錄
 
 部署 Azure AD 密碼保護之後，監視和報告即為必要工作。 本文將深入探討以協助您了解各種監視技術，包括每個服務要將資訊記錄於何處，以及如何報告 Azure AD 密碼保護的使用情形。
 
-監視和報告由事件日誌消息或運行 PowerShell Cmdlet 來完成。 DC 代理和代理服務都記錄事件日誌消息。 下面介紹的所有 PowerShell Cmdlet 僅在代理伺服器上可用（請參閱 AzureAD密碼保護 PowerShell 模組）。 DC 代理軟體不安裝 PowerShell 模組。
+監視和報告由事件日誌消息或運行 PowerShell cmdlet 來完成。 DC 代理和代理服務都記錄事件日誌消息。 下面介紹的所有 PowerShell cmdlet 僅在代理伺服器上可用(請參閱 AzureAD密碼保護 PowerShell 模組)。 DC 代理軟體不安裝 PowerShell 模組。
 
 ## <a name="dc-agent-event-logging"></a>DC 代理程式事件記錄
 
@@ -94,11 +94,11 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-此 Cmdlet 的報告範圍可使用 –Forest、-Domain 或 –DomainController 參數其中之一來加以影響。 未指定參數意指 –Forest。
+cmdlet 的報告範圍可能會使用 _Forest、-Domain 或 _DomainController 參數之一受到影響。 未指定參數意指 –Forest。
 
-`Get-AzureADPasswordProtectionSummaryReport` Cmdlet 的運作方式是查詢 DC 代理程式系統管理事件記錄檔，然後計算對應至每個顯示之結果類別的事件總數。 下表包含每個結果與其相應的事件 ID 之間的映射：
+`Get-AzureADPasswordProtectionSummaryReport` Cmdlet 的運作方式是查詢 DC 代理程式系統管理事件記錄檔，然後計算對應至每個顯示之結果類別的事件總數。 下表包含每個結果與其相應的事件 ID 之間的映射:
 
-|Get-AzureADPasswordProtectionSummaryReport 屬性 |相應的事件 ID|
+|Get-AzureADPasswordProtectionSummaryReport 屬性 |相關的事件識別碼|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -117,7 +117,7 @@ PasswordSetErrors               : 1
 > 此 Cmdlet 的運作方式是針對每個網域控制站開啟 PowerShell 工作階段。 每個網域控制站上都必須啟用 PowerShell 遠端供作階段支援，且用戶端必須要有足夠權限，才能成功。 如需 PowerShell 遠端工作階段需求的詳細資訊，請在 Powershell 視窗中，執行 'Get-help about_Remote_Troubleshooting'。
 
 > [!NOTE]
-> 從遠端查詢每個 DC 代理程式服務的系統管理事件記錄即可讓此 Cmdlet 運作。 如果事件記錄包含大量事件，此 Cmdlet 可能需要很長的時間才能完成。 此外，透過網路大量查詢大型資料集可能會影響網域控制站的效能。 因此，在生產環境中請小心使用這個 Cmdlet。
+> 此 cmdlet 的工作原理是遠端查詢每個 DC 代理服務的管理事件日誌。 如果事件記錄包含大量事件，此 Cmdlet 可能需要很長的時間才能完成。 此外，透過網路大量查詢大型資料集可能會影響網域控制站的效能。 因此，在生產環境中請小心使用這個 Cmdlet。
 
 ### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>事件識別碼 10014 (成功密碼變更) 的範例事件記錄檔訊息
 
@@ -265,15 +265,15 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 每個 DC 代理程式服務大約每小時會更新一次各種屬性。 資料仍會受限於 Active Directory 複寫延遲。
 
-此 Cmdlet 的查詢範圍可使用 –Forest 或 –Domain 參數來變更。
+cmdlet 查詢的範圍可能會使用 _Forest 或 _Domain 參數受到影響。
 
 如果 HeartbeatUTC 值過時，這可能是一個徵兆：該網域控制站上的 Azure AD 密碼保護 DC 代理程式並未執行或已解除安裝，或者該機器已降級且不再是網域控制站。
 
-如果密碼原則DateUTC值過時，這可能是該電腦上的 Azure AD 密碼保護 DC 代理無法正常工作的症狀。
+如果密碼策略DateUTC值過時,這可能是該電腦上的 Azure AD 密碼保護 DC 代理無法正常工作的症狀。
 
-## <a name="dc-agent-newer-version-available"></a>DC 代理較新版本可用
+## <a name="dc-agent-newer-version-available"></a>DC 代理已新版本
 
-DC 代理服務在檢測到 DC 代理軟體的較新版本可用後，將 30034 警告事件記錄到動作記錄，例如：
+DC 代理服務在偵測到 DC 代理軟體的較新版本可用後,將 30034 警告事件記錄到操作日誌,例如:
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,10 +287,10 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-上述事件未指定較新版本的版本。 您應該轉到事件消息中的連結以獲取有關該資訊。
+上述事件未指定較新版本的版本。 您應該轉到事件訊息中的連結以獲取有關該資訊。
 
 > [!NOTE]
-> 儘管上述事件消息中引用了"自動升級"，但 DC 代理軟體當前不支援此功能。
+> 儘管上述事件消息中引用了"自動升級",但 DC 代理軟體當前不支援此功能。
 
 ## <a name="proxy-service-event-logging"></a>Proxy 服務事件記錄
 
@@ -335,7 +335,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters
 
 導致狀態變更的 PowerShell Cmdlet (例如 Register-AzureADPasswordProtectionProxy) 通常會將結果事件記錄到作業記錄。
 
-此外，大多數 Azure AD 密碼保護 PowerShell Cmdlet 將寫入位於以下的文本日誌：
+此外,大多數 Azure AD 密碼保護 PowerShell cmdlet 將寫入位於以下的文本日誌:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
@@ -357,13 +357,13 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 每個 Proxy 服務大約每小時都會更新各種屬性。 資料仍會受限於 Active Directory 複寫延遲。
 
-此 Cmdlet 的查詢範圍可使用 –Forest 或 –Domain 參數來變更。
+cmdlet 查詢的範圍可能會使用 _Forest 或 _Domain 參數受到影響。
 
 如果 HeartbeatUTC 值過時，這可能是一個徵兆：該機器上的 Azure AD 密碼保護 Proxy 並未執行或已解除安裝。
 
 ## <a name="proxy-agent-newer-version-available"></a>代理更新版本可用
 
-代理服務在檢測到代理軟體的較新版本可用後，將 20002 警告事件記錄到動作記錄，例如：
+代理服務在偵測到代理軟體的較新版本可用後,將 20002 警告事件記錄到操作日誌,例如:
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,9 +378,9 @@ Current version: 1.2.116.0
 .
 ```
 
-上述事件未指定較新版本的版本。 您應該轉到事件消息中的連結以獲取有關該資訊。
+上述事件未指定較新版本的版本。 您應該轉到事件訊息中的連結以獲取有關該資訊。
 
-即使啟用了自動升級配置代理，也會發出此事件。
+即使啟用了自動升級配置代理,也會發出此事件。
 
 ## <a name="next-steps"></a>後續步驟
 

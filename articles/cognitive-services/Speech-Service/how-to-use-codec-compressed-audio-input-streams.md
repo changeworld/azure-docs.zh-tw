@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: 6aabd27ae38cac0bb9effad2adcadc4935a28c6e
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409662"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637288"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>將編解碼器壓縮音訊輸入與語音 SDK 一起使用
 
 語音服務 SDK**壓縮音訊輸入流**API 提供了`PullStream`一種使用 或將壓縮音訊流`PushStream`式傳輸到語音服務 的方法。
 
-> [!IMPORTANT]
-> 當前支援 C#、C++、Linux 上的 Java(Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8)的流壓縮輸入音訊。 在 Android 和 iOS 平臺中,JAVA 和 Objective-C 也支援它。
-> 語音 SDK 版本 1.7.0 或更高版本是必需的(RHEL 8 版本 1.10.0 或更高版本,CentOS 8)。
+當前支援 C#、C++、Windows 上的 Java(不支援 UWP 應用程式)和 Linux(Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8)的流壓縮輸入音訊。 在 Android 和 iOS 平臺中,JAVA 和 Objective-C 也支援它。
+* RHEL 8 和 CentOS 8 需要語音 SDK 版本 1.10.0 或更高版本
+* Windows 需要語音 SDK 版本 1.11.0 或更高版本。
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

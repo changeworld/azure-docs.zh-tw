@@ -1,6 +1,6 @@
 ---
-title: 使用 sqlcmd 連接
-description: 使用 sqlcmd 命令列公用程式來連線及查詢 Azure SQL 資料倉儲。
+title: 使用 sqlcmd 連線
+description: 使用 sqlcmd 命令列實用程式連接到和查詢 Synapse SQL 池。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,31 +11,31 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 118997c39b56254eb47bc24350a0558e0b7620f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cfb1b7558f8d7675009a0ebc729cc1a560f03d12
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350496"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633384"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 連接到 SQL 資料倉儲
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 連線到 Synapse SQL 池
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure 機器學習](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-使用[sqlcmd][sqlcmd]命令列實用程式連接到和查詢 Azure SQL 資料倉儲。  
+使用 [sqlcmd][sqlcmd] 命令行實用程式連接到和查詢 SQL 池。  
 
-## <a name="1-connect"></a>1. 連接
-若要開始使用 [sqlcmd][sqlcmd]，請開啟命令提示字元，然後輸入 **sqlcmd** 並在後面加上 SQL 資料倉儲資料庫的連接字串。 連接字串需要下列參數：
+## <a name="1-connect"></a>1. 連線
+要開始使用 [sqlcmd][sqlcmd],請打開命令提示符並輸入**sqlcmd,** 然後輸入 SQL 池資料庫的連接字串串。 連接字串需要下列參數：
 
 * **伺服器 (-S)：** 採用 `<`Server Name`>`.database.windows.net 格式的伺服器
-* **資料庫 （-d）：** 資料庫名稱。
-* **啟用引號識別碼 (-I)：** 必須啟用引號識別碼，才能連接到 SQL 資料倉儲執行個體。
+* **資料庫 (-d):** 資料庫名稱。
+* **開啟報價識別碼 (-I):** 必須啟用已引用的標識符才能連接到 SQL 池實例。
 
 若要使用 SQL Server 驗證，您需要新增使用者名稱/密碼參數︰
 
@@ -84,14 +84,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>後續步驟
-如需 sqlcmd 中可用選項的詳細資訊，請參閱 [sqlcmd 文件][sqlcmd]。
-
-<!--Image references-->
-
-<!--Article references-->
-
-<!--MSDN references--> 
-[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
-[Azure portal]: https://portal.azure.com
-
-<!--Other Web references-->
+關於 sqlcmd 中可用選項的詳細資訊,請參閱[sqlcmd 文件](https://msdn.microsoft.com/library/ms162773.aspx)。
