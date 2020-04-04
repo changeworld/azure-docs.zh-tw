@@ -10,21 +10,23 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a42ec523bb1f77c48f7382283a52565c9c9273b6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584490"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631940"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure 突觸分析(以前是 SQL DW)體系結構 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure 突觸分析(以前是 SQL DW)體系結構
 
 Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 Azure Synapse 將這兩個世界與統一體驗相結合,可進行攝用、準備、管理和服務數據,以滿足即時 BI 和機器學習需求。
 
  Azure Synapse 有四個元件：
-- 突觸 SQL:基於 T-SQL 的完整分析 
-    - SQL 池(按 DWU 預配付費) = 一般可用
-    - SQL 隨選 (依據處理的 TB 量付費) – (預覽)
+
+- SQL 分析:完成基於 T-SQL 分析
+
+  - SQL 池(按 DWU 預配付費) = 一般可用
+  - SQL 隨選 (依據處理的 TB 量付費) – (預覽)
 - 火花:深度集成的阿帕奇火花(預覽)
 - 資料整合式:混合資料整合(預覽)
 - 工作室:統一的用戶體驗。  (預覽)
@@ -37,24 +39,24 @@ Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨
 
 ![突觸 SQL 架構結構](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-突觸 SQL 使用基於節點的體系結構。 應用程式將 T-SQL 命令連接到 Control 節點,該節點是 Synapse SQL 池的單個入口點。 控制節點運行 MPP 引擎,該引擎優化用於並行處理的查詢,然後將操作傳遞給計算節點以並行執行其工作。 
+SQL 分析使用基於節點的體系結構。 應用程式將 T-SQL 命令連接到 Control 節點,該節點是 SQL 分析的單一入口點。 控制節點運行 MPP 引擎,該引擎優化用於並行處理的查詢,然後將操作傳遞給計算節點以並行執行其工作。
 
-計算節點會在 Azure 儲存體中儲存所有使用者資料，並執行平行查詢。 資料移動服務 (DMS) 是系統層級的內部服務，其會視需要在節點之間移動資料，以平行方式執行查詢並傳回精確的結果。 
+計算節點會在 Azure 儲存體中儲存所有使用者資料，並執行平行查詢。 資料移動服務 (DMS) 是系統層級的內部服務，其會視需要在節點之間移動資料，以平行方式執行查詢並傳回精確的結果。
 
 使用分離儲存和計算時,使用 Synapse SQL 池可以:
 
-* 獨立估算計算能力，而不論您的儲存體需求為何。
-* 在 SQL 池(數據倉庫)內增大或縮小計算能力,而無需移動數據。
-* 暫停計算容量，同時讓資料保持不變，因此您只需支付儲存體的費用。
-* 在營運時間期間繼續計算容量。
+- 獨立估算計算能力，而不論您的儲存體需求為何。
+- 在 SQL 池(數據倉庫)內增大或縮小計算能力,而無需移動數據。
+- 暫停計算容量，同時讓資料保持不變，因此您只需支付儲存體的費用。
+- 在營運時間期間繼續計算容量。
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
 Synapse SQL 利用 Azure 儲存來保證使用者數據的安全。  由於數據由 Azure 存儲存儲存儲和管理,因此存儲消耗需要單獨收費。 將數據分片分到**分佈中**,以優化系統的性能。 當您定義資料表時，可以選擇要用來散發資料的分區化模式。 支援這些分片模式:
 
-* 雜湊
-* 循環配置資源
-* 複寫
+- 雜湊
+- 循環配置資源
+- 複寫
 
 ### <a name="control-node"></a>控制節點
 
@@ -68,27 +70,29 @@ Synapse SQL 利用 Azure 儲存來保證使用者數據的安全。  由於數�
 
 ### <a name="data-movement-service"></a>資料移動服務
 
-資料移動服務 (DMS) 是資料傳輸技術，可協調計算節點之間的資料移動。 某些查詢需要資料移動，以確保平行查詢會傳回精確的結果。 若資料移動是必要的，DMS 確保正確的資料會到達正確的位置。 
+資料移動服務 (DMS) 是資料傳輸技術，可協調計算節點之間的資料移動。 某些查詢需要資料移動，以確保平行查詢會傳回精確的結果。 若資料移動是必要的，DMS 確保正確的資料會到達正確的位置。
 
 ## <a name="distributions"></a>散發
 
-散發是儲存體的基本單位，可處理在分散式資料上執行的平行查詢。 運行查詢時,該工作將分為 60 個並行運行的較小查詢。 
+散發是儲存體的基本單位，可處理在分散式資料上執行的平行查詢。 當 SQL Analytics 運行查詢時,工作將分為 60 個並行運行的較小查詢。
 
 這 60 個較小查詢中的每一個都會在其中一個資料散發中執行。 每個計算節點都會管理這 60 個散發中的一或多個。 具有最大計算資源的 SQL 池每個計算節點有一個分佈。 具有最小計算資源的 SQL 池具有一個計算節點上的所有分佈。  
 
 ## <a name="hash-distributed-tables"></a>雜湊分散式資料表
 
-雜湊分散式資料表可以針對大型資料表上的聯結和彙總提供最高查詢效能。 
+雜湊分散式資料表可以針對大型資料表上的聯結和彙總提供最高查詢效能。
+
+雜湊分散式資料表可以針對大型資料表上的聯結和彙總提供最高查詢效能。
 
 要將數據分片分到哈希分佈的表中,哈希函數用於確定將每行分配給一個分佈。 在資料表定義中，其中一個資料行會指定為發佈資料行。 雜湊函式會使用散發資料行中的值，將每個資料列指派給一個散發。
 
-下圖說明完整 (非分散式資料表) 會如何儲存為雜湊分散式資料表。 
+下圖說明完整 (非分散式資料表) 會如何儲存為雜湊分散式資料表。
 
 ![分散式資料表](./media/massively-parallel-processing-mpp-architecture/hash-distributed-table.png "分散式資料表")  
 
-* 每個資料列屬於一種發佈。  
-* 具決定性的雜湊演算法會將每個資料列指派給一個發佈。  
-* 每個發佈的資料表資料列數目會隨著顯示不同資料表大小而有所不同。
+- 每個資料列屬於一種發佈。  
+- 具決定性的雜湊演算法會將每個資料列指派給一個發佈。  
+- 每個發佈的資料表資料列數目會隨著顯示不同資料表大小而有所不同。
 
 選取散發資料行有效能考量，例如區分、資料扭曲，以及在系統上執行的查詢類型。
 
@@ -106,8 +110,17 @@ Synapse SQL 利用 Azure 儲存來保證使用者數據的安全。  由於數�
 
 下圖顯示了緩存在每個計算節點上的第一個分佈上的複製表。  
 
-![複寫的資料表](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "複寫的資料表") 
+![複寫的資料表](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "複寫的資料表")
 
 ## <a name="next-steps"></a>後續步驟
 
-現在,您已經瞭解了 Azure 突觸,請瞭解如何快速[創建 SQL 池](create-data-warehouse-portal.md)並[載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)。 如果您不熟悉 Azure，您可能會發現 [Azure 詞彙](../../azure-glossary-cloud-terminology.md) 在您遇到新術語時很有幫助。 或者查看這些其他 Azure 同步資源。  
+現在,您已經瞭解了 Azure 突觸,請瞭解如何快速[創建 SQL 池](create-data-warehouse-portal.md)並[載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)。 如果您不熟悉 Azure，您可能會發現 [Azure 詞彙](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 在您遇到新術語時很有幫助。 或者查看這些其他 Azure 同步資源。  
+
+- [客戶成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [部落格](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+- [功能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+- [影片](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+- [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md)
+- [MSDN 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Twitter](https://twitter.com/hashtag/SQLDW)

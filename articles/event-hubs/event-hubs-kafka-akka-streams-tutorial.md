@@ -4,21 +4,19 @@ description: 本文提供有關如何將 Akka 流連接到 Azure 事件中心的
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521827"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632847"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>使用 Akka Streams 搭配適用於 Apache Kafka 的事件中樞
 本教程介紹如何在不更改協定用戶端或運行自己的群集的情況下將 Akka 流連接到事件中心。 卡夫卡的 Azure 事件中心支援[Apache Kafka 版本 1.0。](https://kafka.apache.org/10/documentation.html)
@@ -140,22 +138,11 @@ mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 如需有關 Akka Streams 的詳細資訊，請參閱 [Akka Streams Kafka 指南](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) \(英文\)。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學中,您學習了如何在不更改協定客戶端或運行自己的群集的情況下將 Akka 流連接到事件中心。 適用於 Kafka 的 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。 您在本教學課程中執行了下列動作： 
+要瞭解有關卡夫卡事件中心(Kafka)活動中心的更多詳細資訊,請參閱以下文章:  
 
-> [!div class="checklist"]
-> * 建立事件中樞命名空間
-> * 複製範例專案
-> * 執行 Akka Streams 生產者 
-> * 執行 Akka Streams 取用者
-
-若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列主題：  
-
-- [了解事件中樞](event-hubs-what-is-event-hubs.md)
-- [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何建立事件中心](event-hubs-create.md)
-- [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
 - [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
 - [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
 - [將卡夫卡連線與事件中心整合](event-hubs-kafka-connect-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
+- [Azure 活動中心 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

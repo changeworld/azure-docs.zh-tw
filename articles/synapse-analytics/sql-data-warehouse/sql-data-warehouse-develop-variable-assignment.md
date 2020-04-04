@@ -1,6 +1,6 @@
 ---
-title: 分配變數
-description: 在 Azure SQL 資料倉儲中指派 T-SQL 變數以便開發解決方案的秘訣。
+title: 配置變數
+description: 在本文中,您將找到在 SQL 池中分配 T-SQL 變數的基本提示。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,27 +11,27 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0adcd9bdf92b7ec649b7d91ca0e655fc006b3549
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351655"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633413"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中指派變數
+# <a name="assign-variables-in-synapse-sql-pool"></a>在 Synapse SQL 池中配置變數
 
-在 Azure SQL 資料倉儲中指派 T-SQL 變數以便開發解決方案的秘訣。
+在本文中,您將找到在 SQL 池中分配 T-SQL 變數的基本提示。
 
-## <a name="setting-variables-with-declare"></a>使用 DECLARE 設定宣告
+## <a name="set-variables-with-declare"></a>使用 DECLARE 設定變數
 
-SQL 資料倉儲中的變數是使用 `DECLARE` 陳述式或 `SET` 陳述式進行設定的。 使用 DECLARE 初始化變數是在 SQL 資料倉儲中設定變數值的其中一種最具彈性的方式。
+SQL 池中的變數使用`DECLARE`語句`SET`或 語句進行設置。 使用 DECLARE 初始化變數是在 SQL 池中設置變數值的最靈活方法之一。
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-您也可以使用 DECLARE，一次設定一個以上的變數。 您無法使用 SELECT 或 UPDATE 來執行下列動作：
+您也可以使用 DECLARE，一次設定一個以上的變數。 無法使用 SELECT 或更新執行以下操作:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-您無法在相同的 DECLARE 陳述式中初始化並使用變數。 為了說明這點，**不**允許下列範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 下列範例會顯示錯誤。
+不能在同一 DECLARE 語句中初始化和使用變數。 為了說明這點，**不**允許下列範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 因此,以下範例給出錯誤:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>使用 SET 設定值
+## <a name="set-values-with-set"></a>使用 SET 設定值
 
 SET 是設定單一變數時常見的方法。
 

@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586060"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632672"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure 突觸分析的記憶體和併發限制
+
 查看在 Azure Synapse 分析中分配給各種性能級別和資源類的記憶體和併發限制。  
 
 ## <a name="data-warehouse-capacity-settings"></a>資料倉儲容量設定
+
 下表顯示不同效能等級的資料倉儲最大容量。 若要變更效能等級，請參閱[調整計算能力 - 入口網站](quickstart-scale-compute-portal.md)。
 
 ### <a name="service-levels"></a>服務等級
@@ -50,7 +52,8 @@ ms.locfileid: "80586060"
 最大服務級別為 DW30000c,它有 60 個計算節點和每個計算節點的一個分佈。 例如，DW30000c 上 600 TB 的資料倉儲大約可針對每個節點處理 10 TB。
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>工作負載組的併發最大值
-隨著[工作負載組的](sql-data-warehouse-workload-isolation.md)引入,併發槽的概念不再適用。  每個請求的資源按百分比分配,並在工作負載組定義中指定。  但是,即使刪除併發槽,根據服務級別,每個查詢所需的資源也最少。  下表定義了每個查詢跨服務級別和可以實現的關聯併發所需的最小資源量。 
+
+隨著[工作負載組的](sql-data-warehouse-workload-isolation.md)引入,併發槽的概念不再適用。  每個請求的資源按百分比分配,並在工作負載組定義中指定。  但是,即使刪除併發槽,根據服務級別,每個查詢所需的資源也最少。  下表定義了每個查詢跨服務級別和可以實現的關聯併發所需的最小資源量。
 
 |服務等級|並行查詢數目上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT支援的最小百分比|
 |---|---|---|
@@ -73,7 +76,8 @@ ms.locfileid: "80586060"
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>資源類的併發最大值
-為了確保每個查詢有足夠的資源來高效地執行,通過為每個查詢分配併發槽來跟蹤資源利用率。 系統根據重要性和併發槽將查詢放入佇列中。 查詢在佇列中等待,直到有足夠的併發槽可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和併發性槽決定了 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
+
+為了確保每個查詢都有足夠的資源來高效地執行,Azure Synapse 中的 SQL 分析通過將併發槽分配給每個查詢來追蹤資源利用率。 系統根據重要性和併發槽將查詢放入佇列中。 查詢在佇列中等待,直到有足夠的併發槽可用。 [重要性](sql-data-warehouse-workload-importance.md)和併發性槽決定了 CPU 優先順序。 如需詳細資訊，請參閱[分析工作負載](analyze-your-workload.md)。
 
 **靜態資源類別**
 
@@ -121,11 +125,11 @@ ms.locfileid: "80586060"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-當沒有足夠的併發槽自由啟動查詢執行時,查詢將根據重要性進行排隊和執行。  如果存在等效的重要性,則查詢將先到先出的基礎上執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。 
+當沒有足夠的併發槽自由啟動查詢執行時,查詢將根據重要性進行排隊和執行。  如果存在等效的重要性,則查詢將先到先出的基礎上執行。  當一個查詢完成，且查詢與位置的數目低於限制時，SQL 資料倉儲就會釋出已排入佇列的查詢。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解如何運用資源類別，進一步將您的工作負載最佳化，請檢閱下列文章：
+
 * [適用於工作負載管理的資源類別](resource-classes-for-workload-management.md)
 * [分析工作負載](analyze-your-workload.md)

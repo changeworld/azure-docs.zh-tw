@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 114f8d637a927a899807a676fb3e1b45f5c7687c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585754"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633329"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>管理和監視 Azure 突觸分析中的工作負載重要性
 
@@ -24,7 +24,7 @@ ms.locfileid: "80585754"
 
 ## <a name="monitor-importance"></a>監控重要性
 
-使用[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)動態管理視圖中的新重要性列監視重要性。
+使用[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)動態管理視圖中的新重要性列監視重要性。
 以下監視查詢顯示查詢的提交時間和開始時間。 查看提交時間和開始時間以及重要性,瞭解重要性如何影響日程安排。
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-目錄檢視[sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest)包含有關創建分類器中使用的參數的資訊。  下面的查詢顯示 ExecReportsClassifier 是在具有```membername```執行報告 的值的參數上建立的:
+目錄檢視[sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)包含有關創建分類器中使用的參數的資訊。  下面的查詢顯示 ExecReportsClassifier 是在具有```membername```執行報告 的值的參數上建立的:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 - 有關分類的詳細資訊,請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。
 - 有關重要性的詳細資訊,請參閱[工作負載重要性](sql-data-warehouse-workload-importance.md)
 

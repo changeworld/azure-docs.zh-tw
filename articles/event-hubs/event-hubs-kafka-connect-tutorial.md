@@ -4,23 +4,21 @@ description: 本文提供有關如何將 Apache Spark 與「適用於 Kafka 的 
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
-manager: timlt
 ms.service: event-hubs
-ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 60c6207b1c90ca40f02097a1c82d2811a50f664d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76119511"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632839"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援 (預覽)
-隨著擷取商務需求的情況增加，對於擷取各種外部來源和接收的需求也隨之增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 會提供這類架構，以便在任何外部系統 (例如，MySQL、HDFS 以及透過 Kafka 叢集的檔案系統) 往返連線和匯入/匯出資料。 本教學課程會逐步引導您搭配使用 Kafka Connect 架構與已啟用 Kafka 的事件中樞。
+隨著擷取商務需求的情況增加，對於擷取各種外部來源和接收的需求也隨之增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 會提供這類架構，以便在任何外部系統 (例如，MySQL、HDFS 以及透過 Kafka 叢集的檔案系統) 往返連線和匯入/匯出資料。 本教學將引導您使用 Kafka 連接框架與事件中心。
 
-本教學課程會逐步引導您整合 Kafka Connect 與已啟用 Kafka 的 Azure 事件中樞，以及部署基本的 FileStreamSource 和 FileStreamSink 連接器。 此功能目前為預覽狀態。 雖然這些連接器並非用於生產環境，但可示範 Azure 事件中樞會作為 Kafka 訊息代理程式的端對端 Kafka Connect 案例。
+本教學將 Kafka Connect 與事件中心整合,並部署基本的 FileStreamSource 和 FileStreamSink 連接器。 此功能目前為預覽狀態。 雖然這些連接器並非用於生產環境，但可示範 Azure 事件中樞會作為 Kafka 訊息代理程式的端對端 Kafka Connect 案例。
 
 > [!NOTE]
 > 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) 上取得此範例。
@@ -44,7 +42,7 @@ ms.locfileid: "76119511"
 - 請參閱[適用於 Apache Kafka 的事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview)簡介文章
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
-您需要事件中樞命名空間，才能從任何事件中樞服務傳送和接收。 如需有關取得事件中樞 Kafka 端點的指示，請參閱[建立啟用 Kafka 的事件中樞](event-hubs-create.md)。 請取得事件中樞連接字串和完整網域名稱 (FQDN) 以供稍後使用。 如需相關指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 
+您需要事件中樞命名空間，才能從任何事件中樞服務傳送和接收。 請參閱[創建事件中心](event-hubs-create.md)以提供創建命名空間和事件中心的說明。 請取得事件中樞連接字串和完整網域名稱 (FQDN) 以供稍後使用。 如需相關指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 
 
 ## <a name="clone-the-example-project"></a>複製範例專案
 請複製 Azure 事件中樞存放庫，並瀏覽至 tutorials/connect 子資料夾： 
@@ -159,14 +157,11 @@ Kafka Connect 會建立事件中樞主題，以儲存即使在 Connect 叢集關
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列主題：  
+要瞭解有關卡夫卡事件中心(Kafka)活動中心的更多詳細資訊,請參閱以下文章:  
 
-- [了解事件中樞](event-hubs-what-is-event-hubs.md)
-- [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何建立已啟用 Kafka 的事件中樞](event-hubs-create-kafka-enabled.md)
-- [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [在已啟用 Kafka 的事件中樞中鏡射 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
-- [將 Apache Spark 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-spark-tutorial.md)
-- [將 Apache Flink 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-flink-tutorial.md)
-- [將 Akka Streams 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
+- [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
+- [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
+- [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
+- [將 Akka 串流連線到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 活動中心 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

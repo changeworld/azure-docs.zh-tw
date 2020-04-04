@@ -3,12 +3,12 @@ title: Azure 中的 IP 位址 中的 IP 位址
 description: 了解如何尋找函式應用程式的輸入和輸出 IP 位址，以及造成其變更的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276487"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656775"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure 中的 IP 位址 中的 IP 位址
 
@@ -25,7 +25,7 @@ IP 位址與函式應用程式相關聯，而非與個別函式相關聯。 傳�
 
 每個函式應用程式都有單一輸入 IP 位址。 若要尋找該 IP 位址：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 巡覽至函式應用程式。
 3. 選取 [平台功能]****。
 4. 選取 [屬性]****，以及 [虛擬 IP 位址]**** 之下的輸入 IP 位址。
@@ -86,9 +86,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 刪除函式應用程式，並在不同資源群組中重建。
 - 刪除資源群組和區域組合中的最後一個函式應用程式，並予以重建。
-- 刪除 SSL 綁定，例如證書[續訂](../app-service/configure-ssl-certificate.md#renew-certificate)期間。
+- 刪除 TLS 綁定,例如[在證書續訂](../app-service/configure-ssl-certificate.md#renew-certificate)期間。
 
-當函數應用在[消耗計畫中](functions-scale.md#consumption-plan)運行時，即使尚未採取任何操作（如[上面列出的](#inbound-ip-address-changes)操作），入站 IP 位址也可能更改。
+當函數應用在[消耗計劃中](functions-scale.md#consumption-plan)運行時,即使尚未採取任何操作(如[上面列出的](#inbound-ip-address-changes)操作),入站 IP 位址也可能更改。
 
 ## <a name="outbound-ip-address-changes"></a>輸出 IP 位址變更
 
@@ -97,7 +97,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 採取任何可變更輸入 IP 位址的動作。
 * 變更您的 App Service 方案定價層。 您的應用程式可使用的所有可能輸出 IP 位址清單 (適用於所有定價層) 位於 `possibleOutboundIPAddresses` 屬性中。 請參閱[尋找輸出 IP](#find-outbound-ip-addresses)。
 
-當函數應用在[消耗計畫中](functions-scale.md#consumption-plan)運行時，即使尚未採取任何操作（如[上面列出的](#inbound-ip-address-changes)操作），出站 IP 位址也可能更改。
+當函數應用在[消耗計劃中](functions-scale.md#consumption-plan)運行時,即使尚未採取任何操作(如[上面列出的](#inbound-ip-address-changes)操作),出站 IP 位址也可能更改。
 
 若要故意強制輸出 IP 位址變更：
 
@@ -115,7 +115,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 若要找出您的函式應用程式是否在 App Service 環境中執行：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 巡覽至函式應用程式。
 3. 選取 [概觀]**** 索引標籤。
 4. App Service 方案層會出現在 **App Service 方案/定價層**之下。 App Service 環境定價層為 [隔離]****。

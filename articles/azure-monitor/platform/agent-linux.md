@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: aa2356901403c7a63aa4aa96dcb38f9c0c971e58
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528355"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637512"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>將 Linux 電腦連接到 Azure 監視器
 
@@ -22,7 +22,7 @@ ms.locfileid: "80528355"
 * [手動下載並安裝](#install-the-agent-manually)代理。 當 Linux 計算機無法存取 Internet 並透過[日誌分析閘道](gateway.md)與 Azure 監視器或 Azure 自動化通訊時,這是必需的。 
 * 使用 GitHub 上託管[的包裝文稿安裝 Linux 的代理](#install-the-agent-using-wrapper-script)程式 。 當電腦直接或透過代理伺服器與 Internet 連接時,這是安裝和升級代理的推薦方法。
 
-若要了解支援的組態，請檢閱[支援的 Linux 作業系統](log-analytics-agent.md#supported-linux-operating-systems)和[網路防火牆組態](log-analytics-agent.md#firewall-requirements)。
+若要了解支援的組態，請檢閱[支援的 Linux 作業系統](log-analytics-agent.md#supported-linux-operating-systems)和[網路防火牆組態](log-analytics-agent.md#network-requirements)。
 
 >[!NOTE]
 >適用於 Linux 的 Log Analytics 代理程式無法設定為回報多個 Log Analytics 工作區。 只能將其配置為同時向系統中心操作管理員管理組和日誌分析工作區報告,也可以單獨報告。

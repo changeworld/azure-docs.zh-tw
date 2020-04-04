@@ -1,17 +1,17 @@
 ---
-title: 創建使用者 - MariaDB 的 Azure 資料庫
+title: 建立使用者 - MariaDB 的 Azure 資料庫
 description: 本文描述如何建立新的使用者帳戶，來與「適用於 MariaDB 的 Azure 資料庫」伺服器互動。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/2/2020
+ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530167"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632278"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中建立使用者 
 本文描述如何在適用於 MariaDB 的 Azure 資料庫中建立使用者。
@@ -21,6 +21,9 @@ ms.locfileid: "79530167"
 伺服器管理員使用者可取得您伺服器的某些權限，如下所列：SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER
 
 建立適用於 MariaDB 的 Azure 資料庫伺服器之後，您可以使用第一個伺服器管理員使用者帳戶，建立其他使用者並授與其管理員存取權。 此外，伺服器管理員帳戶可以用來建立較低權限的使用者，以存取個別資料庫結構描述。
+
+> [!NOTE]
+> 不支援 SUPER 特權和 DBA 角色。 查看限制文章中[的許可權](concepts-limits.md#privilege-support),瞭解服務中不支援的內容。
 
 ## <a name="create-additional-admin-users"></a>建立其他管理使用者
 1. 取得連線資訊和管理員使用者名稱。

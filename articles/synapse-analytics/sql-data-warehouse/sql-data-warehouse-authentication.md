@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ccc5db828a03c37d3fc4f49b13883ac3eeda2368
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d0a246b111e4ab27a9e595952bb029fa62fe976d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584221"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633661"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>對 Azure 同步分析進行認證
 
-瞭解如何使用 Azure 活動目錄 (Azure AD) 或 SQL Server 身份驗證對 Azure 突觸中的 Synapse SQL poool 進行身份驗證。
+瞭解如何使用 Azure 活動目錄 (AAD) 或 SQL Server 身份驗證對 Azure 突觸中的 SQL 分析進行身份驗證。
 
 要連接到 SQL 池,必須傳遞安全認證以進行身份驗證。 建立連線時，會設定特定的連線設定，以做為建立查詢工作階段的一部分。  
 
@@ -44,12 +44,10 @@ ms.locfileid: "80584221"
 
 > [!NOTE]
 > 變更連線的資料庫時，Transact-SQL 陳述式 **USE MyDatabase;** 不受支援。 有關使用 SSDT 連接到 SQL 池的指導,請參閱[使用 Visual Studio 的查詢](sql-data-warehouse-query-visual-studio.md)一文。
-> 
-> 
 
-## <a name="azure-active-directory-azure-ad-authentication"></a>Azure 動作目錄 (Azure AD) 認證
+## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) 驗證
 
-[Azure 活動目錄](../../active-directory/fundamentals/active-directory-whatis.md)身份驗證是使用 Azure 活動目錄 (Azure AD) 中的識別連接到 SQL 池的機制。 您可以使用 Azure Active Directory 驗證，在單一中央位置集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 中央 ID 管理提供了管理 Azure 突觸使用者的單一位置,並簡化了許可權管理。 
+[Azure 活動目錄](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)身份驗證是使用 Azure 活動目錄 (Azure AD) 中的識別連接到 SQL 池的機制。 您可以使用 Azure Active Directory 驗證，在單一中央位置集中管理資料庫使用者和其他 Microsoft 服務的身分識別。 中央 ID 管理提供了管理 Azure 突觸使用者的單一位置,並簡化了許可權管理。
 
 ### <a name="benefits"></a>優點
 
@@ -62,12 +60,10 @@ Azure Active Directory 的優點包括：
 * 藉由啟用整合式 Windows 驗證和 Azure Active Directory 支援的其他形式驗證來避免儲存密碼。
 * 使用自主資料庫使用者，在資料庫層級驗證身分。
 * 支援連接到 SQL 池的應用程式基於權杖的身份驗證。
-* 支援透過主動目錄通用身份驗證對各種工具(包括 SQL[伺服器管理工作室](../../sql-database/sql-database-ssms-mfa-authentication.md)和[SQL Server 資料工具](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json))進行多重身份驗證。
+* 支援透過主動目錄通用身份驗證對各種工具(包括 SQL[伺服器管理工作室](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和[SQL Server 資料工具](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest))進行多重身份驗證。
 
 > [!NOTE]
-> Azure Active Directory 相對來說仍較新，且具有一些限制。 若要確定 Azure Active Directory 適合您的環境，請參閱 [Azure AD 功能和限制](../../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)，特別是＜其他考量＞。
-> 
-> 
+> Azure Active Directory 相對來說仍較新，且具有一些限制。 若要確定 Azure Active Directory 適合您的環境，請參閱 [Azure AD 功能和限制](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)，特別是＜其他考量＞。
 
 ### <a name="configuration-steps"></a>組態步驟
 
@@ -80,12 +76,12 @@ Azure Active Directory 的優點包括：
 5. 在對應至 Azure AD 身分識別的資料庫中建立自主資料庫使用者
 6. 使用 Azure AD 識別連線到 SQL 池
 
-Azure Active Directory 使用者目前不會顯示在 SSDT 物件總管中。 解決方法是在 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) 中檢視使用者。
+Azure Active Directory 使用者目前不會顯示在 SSDT 物件總管中。 解決方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql??toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations) 中檢視使用者。
 
 ### <a name="find-the-details"></a>尋找詳細資料
 
-* 對於 Azure SQL 資料庫和 Azure 突觸 SQL 池,配置和使用 Azure 活動目錄身份驗證的步驟幾乎相同。 按照主題"通過使用 Azure[活動目錄身份驗證連接到 SQL 資料庫或 SQL 池中的](../../sql-database/sql-database-aad-authentication.md)詳細步驟。
-* 建立自訂資料庫角色，並加入使用者至角色。 然後授與角色細微的權限。 如需詳細資訊，請參閱 [資料庫引擎權限使用者入門](https://msdn.microsoft.com/library/mt667986.aspx)。
+* 在 Azure Synaps 中配置和使用 Azure 活動目錄身份驗證的步驟幾乎相同。 按照主題"通過使用 Azure[活動目錄身份驗證連接到 SQL 資料庫或 SQL 池中的](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)詳細步驟。
+* 建立自訂資料庫角色，並加入使用者至角色。 然後授與角色細微的權限。 如需詳細資訊，請參閱 [資料庫引擎權限使用者入門](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="next-steps"></a>後續步驟
 

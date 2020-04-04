@@ -1,18 +1,18 @@
 ---
-title: 佈建服務器參數 - Azure CLI - MariaDB 的 Azure 資料庫
+title: 設定伺服器參數 ─ Azure CLI - MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 命令列公用程式，在適用於 MariaDB 的 Azure 資料庫中設定服務參數。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527668"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632310"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自訂伺服器設定參數
 您可以使用 Azure CLI (Azure 命令列公用程式)，來列出、顯示和更新適用於 MariaDB 的 Azure 資料庫伺服器的設定參數。 有一部分的引擎設定會在伺服器層級公開而且可供修改。
@@ -59,17 +59,17 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 ### <a name="populating-the-time-zone-tables"></a>填入時區資料表
 
-伺服器上的時區資料表，可以藉由從 MariaDB 命令列或 MariaDB Workbench 等工具呼叫 `az_load_timezone` 預存程序來填入。
+伺服器上的時區資料表，可以藉由從 MariaDB 命令列或 MariaDB Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。
 
 > [!NOTE]
-> 如果您是從 MariaDB Workbench 執行 `az_load_timezone` 命令，您可能需要先執行 `SET SQL_SAFE_UPDATES=0;` 以關閉安全更新模式。
+> 如果您是從 MariaDB Workbench 執行 `mysql.az_load_timezone` 命令，您可能需要先執行 `SET SQL_SAFE_UPDATES=0;` 以關閉安全更新模式。
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 應重新開機伺服器以確保時區表已正確填充。 要重新開機伺服器，請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
+> 應重新啟動伺服器以確保時區表已正確填充。 要重新啟動伺服器,請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 若要檢視可用的時區值，請執行以下命令：
 

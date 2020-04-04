@@ -11,49 +11,49 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0b240c45afcb2374f41eb26e86e46b106e314e76
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582231"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631324"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql"></a>在 SynapsE SQL 中使用複製表的設計指南
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>以在 SQL 分析中使用複製表的設計指南
 
-本文提供了在 Synapse SQL 架構中設計複製表的建議。 您可以使用這些建議來降低資料移動和查詢的複雜性，以提升查詢效能。
+本文提供了在 SQL Analytics 架構中設計複製表的建議。 您可以使用這些建議來降低資料移動和查詢的複雜性，以提升查詢效能。
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假定您熟悉 Synapse SQL 中的數據分發和數據移動概念。如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)文章。 
+本文假定您熟悉 SQL 分析中的數據分發和數據移動概念。如需詳細資訊，請參閱[架構](massively-parallel-processing-mpp-architecture.md)文章。
 
 在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。例如，請思考一下下列問題：
 
-- 資料表的大小為何？   
-- 資料表的重新整理頻率為何？   
-- Synapse SQL 資料庫中有事實和維度表嗎?   
+- 資料表的大小為何？
+- 資料表的重新整理頻率為何？
+- 我在 SQL 分析資料庫中有事實和維度表嗎?
 
 ## <a name="what-is-a-replicated-table"></a>什麼是複寫資料表？
 
 複寫資料表在每個計算節點上都有一份可存取的完整資料表複本。 複寫資料表可使在進行聯結或彙總之前，不需要在計算節點之間傳輸資料。 由於資料表有多個複本，因此當資料表大小在壓縮後小於 2 GB 時，複寫資料表的運作效能最佳。  2 GB 不是硬限制。  如果數據是靜態的,並且不更改,則可以複製較大的表。
 
-下圖顯示每個計算節點上可存取的複寫資料表。 在 Synapse SQL 中,複製的表將完全複製到每個計算節點上的分發資料庫。 
+下圖顯示每個計算節點上可存取的複寫資料表。 在 SQL 分析中,複製的表將完全複製到每個計算節點上的分發資料庫。
 
 ![複寫的資料表](./media/design-guidance-for-replicated-tables/replicated-table.png "複寫的資料表")  
 
-複製的表非常適合星形架構中的維度表。 維度表通常與與維度表不同的事實數據表聯接。  維度的大小通常使存儲和維護多個副本變得可行。 維度會儲存變更緩慢的描述性資料，例如客戶名稱和地址，以及產品詳細資料。 數據的性質變化緩慢,導致複製表的維護減少。 
+複製的表非常適合星形架構中的維度表。 維度表通常與與維度表不同的事實數據表聯接。  維度的大小通常使存儲和維護多個副本變得可行。 維度會儲存變更緩慢的描述性資料，例如客戶名稱和地址，以及產品詳細資料。 數據的性質變化緩慢,導致複製表的維護減少。
 
 在下列情況下，請考慮使用複寫資料表：
 
-- 磁碟上的資料表大小小於 2 GB，不論它有幾個資料列。 若要了解資料表的大小，您可以使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令：`DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`。 
+- 磁碟上的資料表大小小於 2 GB，不論它有幾個資料列。 若要了解資料表的大小，您可以使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令：`DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`。
 - 資料表用於需要進行資料移動的聯結中。 加入未分佈在同一資料行的資料表時 (例如雜湊分散式資料表至循環配置資源資料表)，需要移動資料才能完成查詢。  如果其中一個資料表是小型資料表，請考慮使用複寫資料表。 建議您在大多數情況下都使用複寫資料表，而不要使用循環配置資源資料表。 若要檢視查詢計劃中的資料移動作業，請使用 [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  BroadcastMoveOperation 是典型的資料移動作業，可以使用複寫資料表刪除。  
- 
+
 在下列情況下，複寫資料表可能無法產生最佳查詢效能：
 
 - 資料表有頻繁的插入、更新及刪除作業。數據操作語言 (DML) 操作需要重建複製的表。經常重建會導致效能變差。
-- 同步 SQL 資料庫經常縮放。 縮放資料庫會更改計算節點的數量,這會導致重建複製的表。
-- 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要數據移動時,僅移動請求列的數據。
+- SQL 分析資料庫經常縮放。 擴展 SQL 分析資料庫會更改計算節點的數量,這會導致重建複製的表。
+- 資料表有大量資料行，但資料作業通常只存取少數資料行。 在此情況下散發資料表，然後針對經常存取的資料行建立索引，可能會比複寫整個資料表還要有效。 當查詢需要數據移動時,SQL Analytics 僅移動請求列的數據。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>使用複寫資料表搭配簡單查詢述詞
 
@@ -68,36 +68,37 @@ ms.locfileid: "80582231"
 
 ```sql
 
-SELECT EnglishProductName 
-FROM DimProduct 
+SELECT EnglishProductName
+FROM DimProduct
 WHERE EnglishDescription LIKE '%frame%comfortable%'
-       
-```       
-           
+
+```
+
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>將現有的循環配置資源資料表轉換成分散式資料表
-如果您已有迴圈表,我們建議將它們轉換為複製的表(如果它們符合本文中概述的條件)。 複寫資料表可提升循環配置資源資料表的效能，因為它們不需進行資料移動。  循環配置資源資料表針對聯結一律需要進行資料移動。 
+
+如果您已有迴圈表,我們建議將它們轉換為複製的表(如果它們符合本文中概述的條件)。 複寫資料表可提升循環配置資源資料表的效能，因為它們不需進行資料移動。  循環配置資源資料表針對聯結一律需要進行資料移動。
 
 此範例使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 將 DimSalesTerritory 資料表變更為複寫資料表。 不論 DimSalesTerritory 是雜湊分散式還是循環配置資源資料表，此範例都有效。
 
 ```sql
-CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
-WITH   
-  (   
+CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
+WITH
+  (
     CLUSTERED COLUMNSTORE INDEX,  
     DISTRIBUTION = REPLICATE  
   )  
 AS SELECT * FROM [dbo].[DimSalesTerritory]
-OPTION  (LABEL  = 'CTAS : DimSalesTerritory_REPLICATE') 
+OPTION  (LABEL  = 'CTAS : DimSalesTerritory_REPLICATE')
 
 -- Switch table names
 RENAME OBJECT [dbo].[DimSalesTerritory] to [DimSalesTerritory_old];
 RENAME OBJECT [dbo].[DimSalesTerritory_REPLICATE] TO [DimSalesTerritory];
 
 DROP TABLE [dbo].[DimSalesTerritory_old];
-``` 
-    
-### <a name="query-performance-example-for-round-robin-versus-replicated"></a>循環配置資源與複寫之查詢效能比較範例 
-    
+```
+
+### <a name="query-performance-example-for-round-robin-versus-replicated"></a>循環配置資源與複寫之查詢效能比較範例
+
 複寫資料表針對聯結不需要進行任何資料移動，因為整個資料表已經存在於每個計算節點上。 如果維度資料表是循環配置資源分散式資料表，聯結就會將整個維度資料表複製到每個計算節點。 為了移動資料，查詢計劃會包含一個名為 BroadcastMoveOperation 的作業。 這類資料移動作業會降低查詢效能，而使用複寫資料表則可免除這類作業。 若要檢視查詢計劃步驟，請使用 [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 系統目錄檢視。  
 
 例如，在以下針對 AdventureWorks 結構描述執行的查詢中，`FactInternetSales` 資料表是雜湊分散式資料表。 `DimDate` 和 `DimSalesTerritory` 資料表是較小型的維度資料表。 此查詢會傳回 2004 會計年度北美的總銷售額：
@@ -112,38 +113,41 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-我們已將 `DimDate` 和 `DimSalesTerritory` 重新建立成循環配置資源資料表。 因此，此查詢顯示了以下查詢計劃，其中包含多個廣播移動作業： 
- 
-![循環配置資源的查詢計劃](./media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
+
+我們已將 `DimDate` 和 `DimSalesTerritory` 重新建立成循環配置資源資料表。 因此，此查詢顯示了以下查詢計劃，其中包含多個廣播移動作業：
+
+![循環配置資源的查詢計劃](./media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg)
 
 我們已將 `DimDate` 和 `DimSalesTerritory` 重新建立成複寫資料表，並已重新執行查詢。 產生的查詢計劃長度變短許多，且沒有任何廣播移動。
 
-![複寫的查詢計劃](./media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
-
+![複寫的查詢計劃](./media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg)
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改複寫資料表時的效能考量
 
-通過維護表的主版本實現複製的表。 它會將主要版本複製到每個計算節點上的一個散發資料庫。 發生更改時,將首先更新主錶。 然後重新生成每個計算節點上的表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW400 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都存儲在分發資料庫中,以支援更快的數據修改語句和靈活的縮放操作。 
+SQL Analytics 通過維護表的主版本實現複製的表。 它會將主要版本複製到每個計算節點上的一個散發資料庫。 當發生更改時,SQL Analytics 首先更新主錶。 接著，它會重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW400 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL Analytics 使用此模型支援更快的數據修改語句和靈活的縮放操作。
 
 在執行下列動作之後，必須進行重建：
+
 - 載入或修改資料
 - 突觸 SQL 實體被縮放到其他等級
 - 更新資料表定義
 
 在執行下列動作之後，不須進行重建：
+
 - 暫停作業
 - 繼續作業
 
-在修改資料之後，不會立即進行重建。 取而代之的是，會在查詢從資料表選取資料時觸發重建。  以非同步方式將資料複製到每個計算節點時，觸發重建的查詢會立即讀取主要版本的資料表。 資料複製完成之前，後續的查詢將會繼續使用主要版本的資料表。  如果對強制執行另一次重建的複寫資料表發生任何活動，則資料複本將失效，且下一個 Select 陳述式將會再觸發一次資料複製。 
+在修改資料之後，不會立即進行重建。 取而代之的是，會在查詢從資料表選取資料時觸發重建。  以非同步方式將資料複製到每個計算節點時，觸發重建的查詢會立即讀取主要版本的資料表。 資料複製完成之前，後續的查詢將會繼續使用主要版本的資料表。  如果對強制執行另一次重建的複寫資料表發生任何活動，則資料複本將失效，且下一個 Select 陳述式將會再觸發一次資料複製。
 
 ### <a name="use-indexes-conservatively"></a>謹慎地使用索引
 
-標準索引編製做法適用於複寫資料表。 每個複製的表索引都作為索引重建的一部分進行重建。 請只有在效能的提升超過重建索引的代價時，才使用索引。  
- 
-### <a name="batch-data-loads"></a>批次資料載入
+標準索引編製做法適用於複寫資料表。 SQL Analytics重建每個複製的表索引作為重建的一部分。 請只有在效能的提升超過重建索引的代價時，才使用索引。
+
+### <a name="batch-data-load"></a>批次處理資料載入
+
 將資料載入複寫資料表時，請嘗試一起批次載入，以將重建次數降到最低。 請在執行 select 陳述式之前，先執行所有批次處理的載入。
 
-例如，以下載入模式會從四個來源載入資料，然後叫用四次重建。 
+例如，以下載入模式會從四個來源載入資料，然後叫用四次重建。
 
         Load from source 1.
 - Select 陳述式觸發重建 1。
@@ -164,22 +168,22 @@ WHERE d.FiscalYear = 2004
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>在批次載入後重建複寫資料表
 
-為了確保查詢執行時間一致，請在批次載入後，考慮強制建立複寫資料表。 否則，第一個查詢仍然會使用資料移動方式來完成查詢。 
+為了確保查詢執行時間一致，請在批次載入後，考慮強制建立複寫資料表。 否則，第一個查詢仍然會使用資料移動方式來完成查詢。
 
 此查詢使用 [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV 來列出已修改但未重建的複寫資料表。
 
-```sql 
+```sql
 SELECT [ReplicatedTable] = t.[name]
   FROM sys.tables t  
   JOIN sys.pdw_replicated_table_cache_state c  
-    ON c.object_id = t.object_id 
-  JOIN sys.pdw_table_distribution_properties p 
-    ON p.object_id = t.object_id 
+    ON c.object_id = t.object_id
+  JOIN sys.pdw_table_distribution_properties p
+    ON p.object_id = t.object_id
   WHERE c.[state] = 'NotReady'
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
- 
-若要觸發重建，請針對上面輸出中的每個資料表執行下列陳述式。 
+
+若要觸發重建，請針對上面輸出中的每個資料表執行下列陳述式。
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
@@ -189,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 若要建立複寫資料表，請使用下列其中一個陳述式：
 
-- [建立表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [以選擇身份建立表](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [建立表(SQL 分析)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [建立表格作為選擇(SQL 分析)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 如需分散式資料表的概觀，請參閱[分散式資料表](sql-data-warehouse-tables-distribute.md)。

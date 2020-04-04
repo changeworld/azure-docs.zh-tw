@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531935"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632331"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫相關限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。
 
 ## <a name="server-parameters"></a>伺服器參數
 
-幾個常用伺服器參數的最小值和最大值由定價層和 vCore 決定。 有關限制，請參閱下表。
+幾個常用伺服器參數的最小值和最大值由定價層和 vCore 決定。 有關限制,請參閱下表。
 
 ### <a name="max_connections"></a>max_connections
 
@@ -42,20 +42,20 @@ ms.locfileid: "79531935"
 > 錯誤 1040 (08004)：太多的連接
 
 > [!IMPORTANT]
-> 為了獲得最佳體驗，我們建議您使用代理SQL 等連接池程式來高效地管理連接。
+> 為了獲得最佳體驗,我們建議您使用代理SQL等連接池程式來高效地管理連接。
 
-創建到 MariaDB 的新用戶端連接需要時間，一旦建立，這些連接將佔用資料庫資源，即使處於空閒狀態也是如此。 大多數應用程式都要求許多短壽命連接，這加劇了這種情況。 結果是實際工作負載可用的資源更少，導致性能下降。 減少空閒連接並重用現有連接的連接池將有助於避免這種情況。 要瞭解如何設置 ProxySQL，請訪問我們的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+創建到 MariaDB 的新用戶端連接需要時間,一旦建立,這些連接將佔用資料庫資源,即使處於空閒狀態也是如此。 大多數應用程式都要求許多短壽命連接,這加劇了這種情況。 結果是實際工作負載可用的資源更少,導致性能下降。 減少空閒連接並重用現有連接的連接池將有助於避免這種情況。 要瞭解如何設定 ProxySQL,請造訪我們的[部落格文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
 ### <a name="query_cache_size"></a>query_cache_size
 
-預設情況下，查詢緩存處於關閉狀態。 要啟用查詢緩存，請配置參數`query_cache_type`。 
+默認情況下,查詢緩存處於關閉狀態。 要啟用查詢快取,請設定參數`query_cache_type`。 
 
-查看[MariaDB 文檔](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)以瞭解有關此參數的更多詳細資訊。
+查看[MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)以瞭解有關此參數的更多詳細資訊。
 
 |**定價層**|**虛擬核心**|**預設值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|基本層中不可配置|N/A|N/A|
-|基本|2|基本層中不可配置|N/A|N/A|
+|基本|1|基本層中無法設定|N/A|N/A|
+|基本|2|基本層中無法設定|N/A|N/A|
 |一般用途|2|0|0|16777216|
 |一般用途|4|0|0|33554432|
 |一般用途|8|0|0|67108864|
@@ -70,12 +70,12 @@ ms.locfileid: "79531935"
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
-查看[MariaDB 文檔](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size)以瞭解有關此參數的更多詳細資訊。
+查看[MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size)以瞭解有關此參數的更多詳細資訊。
 
 |**定價層**|**虛擬核心**|**預設值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|基本層中不可配置|N/A|N/A|
-|基本|2|基本層中不可配置|N/A|N/A|
+|基本|1|基本層中無法設定|N/A|N/A|
+|基本|2|基本層中無法設定|N/A|N/A|
 |一般用途|2|524288|32768|4194304|
 |一般用途|4|524288|32768|8388608|
 |一般用途|8|524288|32768|16777216|
@@ -90,12 +90,12 @@ ms.locfileid: "79531935"
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
-查看[MariaDB 文檔](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size)以瞭解有關此參數的更多詳細資訊。
+查看[MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size)以瞭解有關此參數的更多詳細資訊。
 
 |**定價層**|**虛擬核心**|**預設值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|基本層中不可配置|N/A|N/A|
-|基本|2|基本層中不可配置|N/A|N/A|
+|基本|1|基本層中無法設定|N/A|N/A|
+|基本|2|基本層中無法設定|N/A|N/A|
 |一般用途|2|262144|128|268435455|
 |一般用途|4|262144|128|536870912|
 |一般用途|8|262144|128|1073741824|
@@ -110,12 +110,12 @@ ms.locfileid: "79531935"
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
-查看[MariaDB 文檔](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size)以瞭解有關此參數的更多詳細資訊。
+查看[MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size)以瞭解有關此參數的更多詳細資訊。
 
 |**定價層**|**虛擬核心**|**預設值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|基本層中不可配置|N/A|N/A|
-|基本|2|基本層中不可配置|N/A|N/A|
+|基本|1|基本層中無法設定|N/A|N/A|
+|基本|2|基本層中無法設定|N/A|N/A|
 |一般用途|2|16777216|16384|268435455|
 |一般用途|4|16777216|16384|536870912|
 |一般用途|8|16777216|16384|1073741824|
@@ -130,12 +130,12 @@ ms.locfileid: "79531935"
 
 ### <a name="tmp_table_size"></a>tmp_table_size
 
-查看[MariaDB 文檔](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size)以瞭解有關此參數的更多詳細資訊。
+查看[MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size)以瞭解有關此參數的更多詳細資訊。
 
 |**定價層**|**虛擬核心**|**預設值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|基本層中不可配置|N/A|N/A|
-|基本|2|基本層中不可配置|N/A|N/A|
+|基本|1|基本層中無法設定|N/A|N/A|
+|基本|2|基本層中無法設定|N/A|N/A|
 |一般用途|2|16777216|1024|67108864|
 |一般用途|4|16777216|1024|134217728|
 |一般用途|8|16777216|1024|268435456|
@@ -147,6 +147,10 @@ ms.locfileid: "79531935"
 |記憶體最佳化|8|16777216|1024|536870912|
 |記憶體最佳化|16|16777216|1024|1073741824|
 |記憶體最佳化|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+可以通過從 MySQL`mysql.az_load_timezone`命令行或 MySQL 工作台等工具調用存儲過程來填充時區表。 有關如何調用存儲過程並設置全域或會話級時區,請參閱[Azure 門戶](howto-server-parameters.md#working-with-the-time-zone-parameter)或[Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter)文章。
 
 ## <a name="storage-engine-support"></a>儲存引擎支援
 
@@ -163,8 +167,8 @@ ms.locfileid: "79531935"
 
 ### <a name="unsupported"></a>不支援
 - DBA 角色：許多伺服器參數與設定可能會在無意中造成伺服器效能降級，或是取消 DBMS 的 ACID 屬性。 因此，為了維護產品層級的服務完整性與 SLA，此服務並不會公開 DBA 角色。 在建立新資料庫行個體時所建構的預設使用者帳戶，可讓使用者在受管理的資料庫執行個體中執行大部分的 DDL 與 DML 陳述式。
-- 超級特權：同樣[超級特權](https://mariadb.com/kb/en/library/grant/#global-privileges)也受到限制。
-- 定義：需要超級許可權才能創建並且受到限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
+- 超級特權:同樣[超級特權](https://mariadb.com/kb/en/library/grant/#global-privileges)也受到限制。
+- 定義:需要超級許可權才能創建並且受到限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>資料操作陳述式支援
 
@@ -194,7 +198,7 @@ ms.locfileid: "79531935"
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
 ### <a name="storage-size"></a>儲存體大小
-- 有關每個定價層的存儲大小限制，請參閱[定價層](concepts-pricing-tiers.md)。
+- 有關每個定價層的儲存大小限制,請參閱[定價層](concepts-pricing-tiers.md)。
 
 ## <a name="current-known-issues"></a>目前已知問題
 - MariaDB 伺服器執行個體於建立連線後會顯示不正確的伺服器版本。 若要取得正確的伺服器執行個體引擎版本，請使用 `select version();` 命令。

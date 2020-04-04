@@ -6,16 +6,15 @@ documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: conceptual
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521746"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632774"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>使用 Kafka MirrorMaker 搭配適用於 Apache Kafka 的事件中樞
 
@@ -127,23 +126,11 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 - [在 Azure 容器實體執行的 Azure 事件中心卡夫卡鏡像製造商](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>後續步驟
+要瞭解有關卡夫卡事件中心(Kafka)活動中心的更多詳細資訊,請參閱以下文章:  
 
-在本教學課程中，您會了解如何：
-> [!div class="checklist"]
-> * 建立事件中樞命名空間
-> * 複製範例專案
-> * 設定 Kafka 叢集
-> * 設定 Kafka MirrorMaker
-> * 執行 Kafka MirrorMaker
-
-若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列主題：  
-
-- [了解事件中樞](event-hubs-what-is-event-hubs.md)
-- [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何建立事件中心](event-hubs-create.md)
-- [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
 - [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md)
 - [將卡夫卡連線與事件中心整合](event-hubs-kafka-connect-tutorial.md)
-- [將 Akka 串流連線到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
+- [將 Akka 串流連線到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 活動中心 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619050"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633520"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>依 Synapse SQL 池中的選項群組
 
@@ -24,7 +24,7 @@ ms.locfileid: "80619050"
 
 ## <a name="what-does-group-by-do"></a>GROUP BY 有什麼用途？
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL 子句可將資料彙總至摘要的一組資料列。 GROUP BY 具有 SQL 池不支援的一些選項。 這些選項具有解決方法,如下所示:
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句可將資料彙總至摘要的一組資料列。 GROUP BY 具有 SQL 池不支援的一些選項。 這些選項具有解決方法,如下所示:
 
 * GROUP BY 搭配 ROLLUP
 * GROUPING SETS
@@ -35,6 +35,7 @@ ms.locfileid: "80619050"
 此處最簡單的選項是使用 UNION ALL 執行匯總,而不是依賴顯式語法。 結果完全相同。
 
 下列範例使用 GROUP BY 陳述式搭配 ROLLUP 選項：
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,9 +85,10 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 若要取代 GROUPING SETS，則適用範例原則。 您只需要針對想要查看的彙總層級建立 UNION ALL 區段。
 
 ## <a name="cube-options"></a>Cube 選項
+
 可以使用"全聯盟"方法創建具有 CUBE 的組。 問題是程式碼可能很快就會很麻煩且不易處理。 要緩解此問題,可以使用此更高級的方法。
 
-使用前面的示例,第一步是定義「多維數據集」,該「多維數據集」定義我們想要創建的所有聚合級別。 
+使用前面的示例,第一步是定義「多維數據集」,該「多維數據集」定義我們想要創建的所有聚合級別。
 
 請注意兩個派生表的 CROSS JOIN,因為這為我們生成所有級別。 代碼的其餘部份用於格式化:
 
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 通過將代碼分解為多個部分並生成迴圈構造,代碼變得更加可管理和可維護。
 
 ## <a name="next-steps"></a>後續步驟
-如需更多開發秘訣，請參閱[開發概觀](sql-data-warehouse-overview-develop.md)。
 
+如需更多開發秘訣，請參閱[開發概觀](sql-data-warehouse-overview-develop.md)。

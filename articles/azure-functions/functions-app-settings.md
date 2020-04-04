@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277826"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656792"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -20,26 +20,34 @@ ms.locfileid: "79277826"
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-使用 Application Insights 時的 Application Insights 檢測金鑰。 請參閱[監視 Azure Functions](functions-monitoring.md)。
+應用程式見解的檢測密鑰。 僅使用`APPINSIGHTS_INSTRUMENTATIONKEY``APPLICATIONINSIGHTS_CONNECTIONSTRING`或的一個。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md)。 
 
 |Key|範例值|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+
+## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+
+應用程式見解的連接字串。 使用`APPLICATIONINSIGHTS_CONNECTIONSTRING``APPINSIGHTS_INSTRUMENTATIONKEY`而不是當函數應用需要使用連接字串支援添加的自定義項時。 有關詳細資訊,請參閱[連接字串](../azure-monitor/app/sdk-connection-string.md)。 
+
+|Key|範例值|
+|---|------------|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|檢測鍵[鍵];引入終結點[url];實時終結點\url;探查器終結點\url};快照終結點\url;;|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-在函數運行時的版本 2.x 和更高版本中，根據運行時環境配置應用行為。 此值在[初始化期間讀取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 您可以`AZURE_FUNCTIONS_ENVIRONMENT`設置為任何值，但支援[三個值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[暫存](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)和生產 。 [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production) 未`AZURE_FUNCTIONS_ENVIRONMENT`設置時，它預設在`Development`本地環境和`Production`Azure 上。 應使用此設置而不是`ASPNETCORE_ENVIRONMENT`設置運行時環境。 
+在函數運行時的版本 2.x 和更高版本中,根據運行時環境配置應用行為。 這個值在[初始化期間讀取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 您可以`AZURE_FUNCTIONS_ENVIRONMENT`設定為任何值,但支援[三個值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname):[開發](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development),[暫存](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)與生產 。 [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production) 未`AZURE_FUNCTIONS_ENVIRONMENT`設置時,它預設在`Development`本地環境和`Production`Azure 上。 應使用此設置而不是`ASPNETCORE_ENVIRONMENT`設置運行時環境。 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器]**** 索引標籤中。 此設置僅適用于以 Azure 函數執行階段版本 1.x 為目標的應用。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 要瞭解更多資訊，請參閱[存儲帳戶要求](storage-considerations.md#storage-account-requirements)。
+選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器]**** 索引標籤中。 此設定僅適用於以 Azure 函數運行時版本 1.x 為目標的應用。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 要瞭解更多資訊,請參閱[儲存帳戶要求](storage-considerations.md#storage-account-requirements)。
 
 |Key|範例值|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
 > [!NOTE]
-> 為了更好的性能和體驗，執行階段版本 2.x 和更高版本使用APPINSIGHTS_INSTRUMENTATIONKEY和應用見解進行監視，而不是`AzureWebJobsDashboard`。
+> 為了更好的性能和體驗,執行時版本 2.x 和更高版本使用APPINSIGHTS_INSTRUMENTATIONKEY和應用見解進行監視`AzureWebJobsDashboard`,而不是 。
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -111,29 +119,29 @@ Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函�
 
 ## <a name="functions_v2_compatibility_mode"></a>功能\_\_V2\_相容模式
 
-此設置使函數應用能夠在版本 3.x 運行時的 2.x 相容模式下運行。 僅當在[將函數應用從運行時的版本 2.x 升級到 3.x](functions-versions.md#migrating-from-2x-to-3x)時遇到問題時，才使用此設置。 
+此設定使函數應用能夠在版本 3.x 運行時的 2.x 相容模式下運行。 僅當在[將函數應用從運行時的版本 2.x 升級到 3.x](functions-versions.md#migrating-from-2x-to-3x)時遇到問題時,才使用此設置。 
 
 >[!IMPORTANT]
-> 當您更新應用以在版本 3.x 上正確運行時，此設置僅用於短期解決方法。 只要[支援 2.x 運行時，就支援](functions-versions.md)此設置。 如果您在不使用此設置的情況下遇到阻止應用在版本 3.x 上運行的問題，請[報告您的問題](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
+> 當您更新應用以在版本 3.x 上正確運行時,此設置僅用於短期解決方法。 只要[支援 2.x 運行時,就支援](functions-versions.md)此設置。 如果您在不使用此設定的情況下遇到阻止應用程式在版本 3.x 上執行的問題,請[回報您的問題](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
 
-要求將[功能\_擴展\_版本](functions-app-settings.md#functions_extension_version)設置為`~3`。
+要求新增[裝置\_的\_裝置設定](functions-app-settings.md#functions_extension_version)為`~3`。
 
 |Key|範例值|
 |---|------------|
 |功能\_\_V2\_相容模式|true|
 
-## <a name="functions_worker_process_count"></a>函數\_工作人員\_流程\_計數
+## <a name="functions_worker_process_count"></a>函數\_\_工作人員\_流程 計數
 
-指定語言輔助進程的最大數量，預設值為`1`。 允許的最大值為`10`。 函式呼叫在語言輔助進程之間均勻分佈。 語言輔助進程每 10 秒生成一次，直到達到"\_功能\_工作者\_"計算計數設置的計數。 使用多種語言輔助進程與[縮放](functions-scale.md)不同。 當您的工作負載混合使用 CPU 綁定和 I/O 綁定調用時，請考慮使用此設置。 此設置適用于所有non-.NET語言。
+指定語言的建立程序的最大數量,預設值`1`為 。 允許的最大值為`10`。 函數調用在語言輔助進程之間均勻分佈。 語言輔助行程每 10 秒產生一次,直到\_達到\_「\_功能 工作者 」計算計數設置的計數。 使用多種語言輔助進程與[縮放](functions-scale.md)不同。 當您的工作負載混合使用 CPU 綁定和 I/O 綁定調用時,請考慮使用此設置。 此設定適用於所有non-.NET語言。
 
 |Key|範例值|
 |---|------------|
-|函數\_工作人員\_流程\_計數|2|
+|函數\_\_工作人員\_流程 計數|2|
 
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函式應用程式中載入的語言背景工作角色執行階段。  這會對應至您應用程式 (例如，"dotnet") 中所使用的語言。 對於使用多種語言的函式，您必須將其發佈到多個應用程式，每個都有對應的背景工作角色執行階段值。  有效值包括`dotnet` `node` （C#/F#）、（JavaScript/TypeScript）、（JAVA）、（PowerShell）`java``powershell`和`python`（Python）。
+要在函式應用程式中載入的語言背景工作角色執行階段。  這會對應至您應用程式 (例如，"dotnet") 中所使用的語言。 對於使用多種語言的函式，您必須將其發佈到多個應用程式，每個都有對應的背景工作角色執行階段值。  有效值包括`dotnet``node``java``powershell`(C#/F#)、(JavaScript/TypeScript)、(Java)、(PowerShell)`python`和 (Python)。
 
 |Key|範例值|
 |---|------------|
@@ -141,7 +149,7 @@ Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函�
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-僅用於消費&高級計畫。 函式應用程式碼和設定儲存所在之儲存體帳戶的連接字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
+僅用於消費&高級計劃。 函式應用程式碼和設定儲存所在之儲存體帳戶的連接字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
 
 |Key|範例值|
 |---|------------|
@@ -149,7 +157,7 @@ Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函�
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-僅用於消費&高級計畫。 函式應用程式碼和設定的檔案路徑。 Used with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. 預設值是開頭為函式應用程式名稱的唯一字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
+僅用於消費&高級計劃。 函式應用程式碼和設定的檔案路徑。 Used with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. 預設值是開頭為函式應用程式名稱的唯一字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
 
 |Key|範例值|
 |---|------------|
@@ -169,7 +177,7 @@ Azure Functions 執行階段會將此儲存體帳戶連接字串用於所有函�
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
 _僅限視窗。_  
-設置在 Windows 上運行函數應用時要使用的 Node.js 版本。 應使用波浪線 （*） 讓運行時使用目標主要版本的最新版本。 例如，當設置為`~10`時，將使用最新版本的 Node.js 10。 當主要版本以波浪線為目標時，您不必手動更新次要版本。 
+設置在 Windows 上運行函數應用時要使用的 Node.js 版本。 應使用波浪線 (*) 讓運行時使用目標主要版本的最新版本。 例如,當設置為`~10`時,將使用最新版本的 Node.js 10。 當主要版本以波浪線為目標時,您不必手動更新次要版本。 
 
 |Key|範例值|
 |---|------------|
@@ -191,8 +199,8 @@ _僅限視窗。_
 
 |Key|值|描述|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|具有指向本地函數應用中的函數的後端 URL 的調用將不再直接發送到該函數，而是將定向回函數應用的 HTTP 前端|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|這是預設值。 具有指向本地函數應用中的函數的後端 URL 的調用將直接轉發到該函數|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|有指向本地函數應用中的函數的後端網址的呼叫將不再直接傳送到此函數,而是將定向回函數應用的 HTTP 前端介面|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|這是預設值。 有指向本地函數應用中的函數的後端網址的呼叫將直接轉寄到該函式|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES

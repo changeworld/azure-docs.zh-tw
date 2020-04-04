@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520781"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632065"
 ---
 ### <a name="portal"></a>入口網站
 
@@ -21,7 +21,7 @@ ms.locfileid: "80520781"
 
 #### <a name="setting-up-your-azure-key-vault"></a>設定 Azure 金鑰保存庫
 
-1. 登入[Azure 門戶](https://portal.azure.com/)並搜尋金鑰保管庫
+1. 登入[Azure 門戶](https://portal.azure.com/)。
 1. 搜尋並選擇**金鑰保存庫**。
 
     [![sse-鍵-保管庫-門戶搜索.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ ms.locfileid: "80520781"
     > Azure 密鑰保管庫、磁碟加密集、VM、磁碟和快照必須都位於同一區域中,並且要成功部署。
 
 1. 選擇 **「新增」** 以建立新的密鑰保管庫。
-1. 建立新的資源群組
+1. 建立新的資源群組。
 1. 輸入金鑰保管庫名稱,選擇區域,然後選擇定價層。
 1. 選擇 **「審閱 」 建立**「,驗證您的選擇,然後選擇 **」創建**」。
 
@@ -38,7 +38,7 @@ ms.locfileid: "80520781"
 
 1. 金鑰保管庫完成部署後,選擇它。
 1. 在 **「設定」** 選擇 **「鍵**」 。
-1. 選擇 **"生成/導入"**
+1. 選擇 **「生成/匯入**」 。
 
     !["金鑰保管庫"資源設置窗格的屏幕截圖。 在設置中顯示生成/導入按鈕。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -49,15 +49,8 @@ ms.locfileid: "80520781"
 
 #### <a name="setting-up-your-disk-encryption-set"></a>設定磁碟加密集
 
-要建立與設定磁碟加密集,必須使用以下連結: https://aka.ms/diskencryptionsets。 如果您位於 Microsoft Azure 政府區域,則必須改用[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)此連結: 。 磁碟加密集創建在全域 Azure 門戶中尚不可用。
-
-1. 開啟適合您所在地區的磁碟加密集連結:
-
-    公共區域:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure 政府區域:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-    
-1. 選擇 **+新增**。
+1. 搜索**磁碟加密集**並選擇它。
+1. 在 **「磁碟加密集**」邊欄選項卡上選擇 **「添加**」 。
 
     ![磁片加密門戶主螢幕的螢幕截圖。 突顯「新增」按鈕](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -82,12 +75,6 @@ ms.locfileid: "80520781"
 現在,您已經創建並設置了密鑰保管庫和磁碟加密集,您可以使用加密部署 VM。
 VM 部署過程與標準部署過程類似,唯一的區別是您需要將 VM 部署到與其他資源相同的區域中,並且選擇使用客戶託管金鑰。
 
-1. 開啟適合您所在地區的磁碟加密集連結:
-
-    公共區域:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure 政府區域:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-
 1. 搜尋**虛擬機**並選擇 **「添加」** 以建立 VM。
 1. 在 **「基本」** 選項卡上,選擇與磁碟加密集和 Azure 密鑰保管庫相同的區域。
 1. 根據需要在 **「基本」** 選項卡上填寫其他值。
@@ -102,16 +89,8 @@ VM 部署過程與標準部署過程類似,唯一的區別是您需要將 VM 部
 
 #### <a name="enable-on-an-existing-disk"></a>在現有磁碟上開啟
 
-要管理與設定現有磁碟上的磁碟加密,必須使用以下連結: https://aka.ms/diskencryptionsets。 在全域 Azure 門戶中尚未啟用現有磁碟上的客戶管理密鑰。
-
 > [!CAUTION]
 > 在連接到 VM 的任何磁碟上啟用磁碟加密需要停止 VM。
-
-1. 開啟適合您所在地區的磁碟加密集連結:
-
-    公共區域:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure 政府區域:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
     
 1. 導航到與磁碟加密集之一位於同一區域的 VM。
 1. 打開 VM 並選擇 **「停止**」。

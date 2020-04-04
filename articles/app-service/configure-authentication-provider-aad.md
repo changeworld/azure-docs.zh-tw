@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438024"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632577"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>套用服務或 Azure 功能應用設定為使用 Azure AD 登入名稱
 
@@ -78,7 +78,7 @@ ms.locfileid: "80438024"
 1. 創建應用註冊後,請複製**應用程式(用戶端)ID**和**目錄(租戶)ID,** 以便以後使用。
 1. 選取 [驗證]****。 在**隱式授予**下,啟用**ID 權杖**以允許 App 服務中的 OpenID 連接用戶登入。
 1. ( 選擇性的 )選擇**品牌**。 在**主頁網址**中,輸入應用服務應用的網址 並選擇「**儲存**」 。
-1. 選擇 **「公開 API** > **集**」。 貼上套用服務應用的網址並選擇 **"儲存**"
+1. 選擇 **「公開 API** > **集**」。 對於單租戶應用,請粘貼到應用服務應用的 URL 中,然後選擇 **"保存**"和"多租戶應用",將貼上到基於租戶驗證域的 URL 中,然後選擇"**保存**"。
 
    > [!NOTE]
    > 此值是應用註冊**的應用程式 ID URI。** 如果 Web 應用需要存取雲中的 API,則在配置雲端應用服務資源時需要 Web 應用程式**的應用程式 ID URI。** 例如,如果您希望雲服務顯式授予對 Web 應用的訪問許可權,則可以使用此方法。

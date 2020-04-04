@@ -1,5 +1,5 @@
 ---
-title: Azure 網站恢復中的 VMware VM 災害復原體系結構
+title: Azure 網站恢復中的 VMware VM 災難復原體系結構
 description: 本文概述使用 Azure Site Recovery 來設定從內部部署 VMware VM 至 Azure 的災害復原時，所使用的元件和架構
 author: rayne-wiselman
 ms.service: site-recovery
@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514862"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632530"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 至 Azure 災害復原架構
 
@@ -25,15 +25,14 @@ ms.locfileid: "76514862"
 
 **元件** | **要求** | **詳細資料**
 --- | --- | ---
-**Azure** | Azure 訂閱、緩存的 Azure 存儲帳戶、託管磁片和 Azure 網路。 | 來自本地 VM 的複製資料存儲在 Azure 存儲中。 從內部部署環境容錯移轉至 Azure 時，會以複寫的資料建立 Azure VM。 Azure VM 在建立後會連線到 Azure 虛擬網路。
+**Azure** | Azure 訂閱、緩存、託管磁碟和 Azure 網路的 Azure 儲存帳戶。 | 來自本地 VM 的複製數據儲存在 Azure 儲存中。 從內部部署環境容錯移轉至 Azure 時，會以複寫的資料建立 Azure VM。 Azure VM 在建立後會連線到 Azure 虛擬網路。
 **組態伺服器電腦** | 單一的內部部署電腦。 建議您將其當作可從下載的 OVF 範本部署的 VMware VM 來執行。<br/><br/> 此機器會執行所有的內部部署 Site Recovery 元件，包括組態伺服器、處理序伺服器和主要目標伺服器。 | **組態伺服器**：負責協調內部部署與 Azure 之間的通訊，以及管理資料複寫。<br/><br/> **處理序伺服器**：依預設會安裝在組態伺服器上。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將複寫資料傳送至 Azure 儲存體。 處理序伺服器也會在您要複寫的 VM 上安裝 Azure Site Recovery 行動服務，並自動探索內部部署機器。 隨著部署規模擴大，您可以新增額外的個別處理序伺服器，以處理日較大的複寫流量。<br/><br/> **主要目標伺服器**：預設會安裝在組態伺服器上。 負責處理從 Azure 進行容錯回復期間的複寫資料。 針對大型部署，您可以新增額外的個別主要目標伺服器進行容錯回復。
 **VMware 伺服器** | VMware VMs 會裝載於內部部署 vSphere ESXi 伺服器。 我們建議以 vCenter 伺服器管理主機。 | 在 Site Recovery 部署期間，您可將 VMware 伺服器新增至復原服務保存庫。
-**複寫的機器** | 行動服務會安裝在您複寫的每個 VMware VM 上。 | 建議您允許從處理序伺服器自動安裝。 或者，您可以手動安裝服務或使用自動部署方法，如組態管理員。
+**複寫的機器** | 行動服務會安裝在您複寫的每個 VMware VM 上。 | 建議您允許從處理序伺服器自動安裝。 或者,您可以手動安裝服務或使用自動部署方法,如配置管理器。
 
 **VMware 至 Azure 架構**
 
 ![元件](./media/vmware-azure-architecture/arch-enhanced.png)
-
 
 
 ## <a name="replication-process"></a>複寫程序
@@ -42,25 +41,34 @@ ms.locfileid: "76514862"
     - 如為 VMware VM，複寫程序為區塊層級、幾乎連續性，並會使用在 VM 執行的流動性服務代理程式。
     - 任何複寫原則設定均會套用：
         - **RPO 閾值**. 此設定不會影響複寫。 其可協助進行監視。 如果目前的 RPO 超過您指定的閾值限制，則系統會引發事件並選擇性傳送電子郵件。
-        - **復原點保留**。 發生中斷時，此設定會指定您所希望回溯的時間。 進階儲存體中的保留期上限為 24 小時。 標準儲存體則為 72 小時。 
-        - **應用程式一致快照集**。 應用程式快照集會視應用程式的需求每隔 1 至 12 小時拍攝一次。 快照集為標準的 Azure blob 快照集。 在 VM 執行的流動性代理程式會根據此設定要求 VSS 快照集，並在複寫串流中將該時間點標記為應用程式一致時間點。
+        - **回復點保留**。 發生中斷時，此設定會指定您所希望回溯的時間。 進階儲存體中的保留期上限為 24 小時。 標準儲存體則為 72 小時。 
+        - **應用程式一致快照集**。 應用一致的快照可以每 1 到 12 小時拍攝一次,具體取決於應用需求。 快照集為標準的 Azure blob 快照集。 在 VM 執行的流動性代理程式會根據此設定要求 VSS 快照集，並在複寫串流中將該時間點標記為應用程式一致時間點。
 
-2. 流量會透過網際網路複寫到 Azure 儲存體的公用端點。 或者，您可以將 Azure ExpressRoute 與[Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)一起使用。 不支援從內部部署網站透過站對站虛擬私人網路 (VPN) 將流量複寫至 Azure。
-3. 初始複寫完成之後，就會開始將差異變更複寫到 Azure。 機器的追蹤變更會傳送至流程伺服器。
+2. 流量會透過網際網路複寫到 Azure 儲存體的公用端點。 或者,您可以將 Azure ExpressRoute 與[Microsoft 對等互連](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)一起使用。 不支援從內部部署網站透過站對站虛擬私人網路 (VPN) 將流量複寫至 Azure。
+3. 初始複製操作可確保在啟用複製時電腦上的整個資料發送到 Azure。 初始複寫完成之後，就會開始將差異變更複寫到 Azure。 機器的追蹤變更會傳送至流程伺服器。
 4. 進行通訊的過程如下：
 
     - VM 會在輸入連接埠 HTTPS 443 上與內部部署設定伺服器進行通訊，以進行複寫管理。
     - 設定伺服器會透過輸出連接埠 HTTPS 443 與 Azure 協調複寫。
     - VM 會透過輸入連接埠 HTTPS 9443 將複寫資料傳送至處理伺服器 (在設定伺服器電腦上執行)。 您可以修改此連接埠。
-    - 處理伺服器會透過輸出連接埠 443 接收複寫資料、將其最佳化並加密，然後傳送至 Azure 儲存體。
-5. 複製資料首先記錄在 Azure 中的緩存存儲帳戶中。 這些日誌將處理，並將資料存儲在 Azure 託管磁片（稱為 asr 種子磁片）中。 復原點在此磁片上創建。
-
-
-
+    - 進程伺服器接收複製數據、優化和加密數據,然後通過埠 443 出站將其發送到 Azure 儲存。
+5. 複製數據首先記錄在 Azure 中的快取儲存帳戶中。 這些日誌將處理,並將數據存儲在 Azure 託管磁碟(稱為 asr 種子磁碟)中。 恢復點在此磁碟上創建。
 
 **VMware 到 Azure 複寫程序**
 
 ![複寫程序](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+
+## <a name="resynchronization-process"></a>重新同步處理程序
+
+1. 有時,在初始複製期間或傳輸增量更改時,源計算機之間可能會存在網路連接問題,以處理伺服器或進程伺服器之間到 Azure。 其中任一都可能導致數據傳輸到 Azure 時暫時失敗。
+2. 為了避免數據完整性問題,並最大程度地降低數據傳輸成本,網站恢復標記了一台用於重新同步的計算機。
+3. 也可以標記電腦以在以下情況下重新同步,以保持源電腦和儲存在 Azure 中的數據之間的一致性
+    - 如果機器受到強制關閉
+    - 如果電腦的硬體設定變更 (如磁碟大小調整(將磁碟大小從 2 TB 修改為 4 TB)
+4. 重新同步僅向 Azure 發送增量數據。 通過在源電腦和存儲在 Azure 中的數據之間計算數據校驗和,最小化本地和 Azure 之間的數據傳輸。
+5. 根據預設，重新同步處理會排程在上班時間以外的時間自動執行。 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 為此,請轉到 Azure 門戶,選擇 VM >**重新同步**。
+6. 如果預設重新同步在辦公時間以外失敗,並且需要手動干預,則在 Azure 門戶中的特定電腦上生成錯誤。 您可以解決錯誤並手動觸發重新同步。
+7. 完成重新同步後,增量更改的複製將恢復。
 
 ## <a name="failover-and-failback-process"></a>容錯移轉和容錯回復程序
 

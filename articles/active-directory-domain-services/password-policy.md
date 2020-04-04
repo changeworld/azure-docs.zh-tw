@@ -8,15 +8,15 @@ ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476033"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654874"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>受控網域上的密碼和帳戶鎖定原則
 
@@ -45,6 +45,11 @@ ms.locfileid: "80476033"
 ## <a name="default-password-policy-settings"></a>預設密碼原則設定
 
 細粒度密碼策略 (FGP) 允許您對網域中的不同使用者應用密碼和帳戶鎖定策略的特定限制。 例如,要保護特權帳戶,您可以應用比常規非特權帳戶更嚴格的帳戶鎖定設置。 您可以在 Azure AD DS 託管域中創建多個 FGP,並指定優先順序順序以將其應用於使用者。
+
+有關密碼策略和使用活動目錄管理中心的詳細資訊,請參閱以下文章:
+
+* [瞭解細粒度密碼原則](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [使用 AD 管理中心設定小細階性密碼原則](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 策略通過 Azure AD DS 託管域中的組關聯分發,所做的任何更改都應用於下一個用戶登錄。 更改策略不會解鎖已鎖定的使用者帳戶。
 

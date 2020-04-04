@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125792"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633873"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array 上的磁碟區
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務，在 StorSimple Virtual Array 上建立和管理磁碟區。
 
@@ -44,7 +44,7 @@ StorSimple 磁碟區可以是：
 | 分層磁碟區的大小下限                            | 500 GB        |
 | 分層磁碟區的大小上限                            | 5 TB          |
 | 固定在本機的磁碟區的大小下限                    | 50 GB         |
-| 固定在本機的磁碟區的大小上限                    | 500 GB        |
+| 固定在本機的磁碟區的大小上限                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>[磁碟區] 刀鋒視窗
 StorSimple 服務摘要刀鋒視窗的 [磁碟區]**** 功能表會顯示給定 StorSimple 陣列上的儲存體磁碟區清單，還可讓您管理它們。

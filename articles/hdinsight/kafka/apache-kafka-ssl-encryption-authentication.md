@@ -2,18 +2,18 @@
 title: 阿帕奇卡夫卡TLS加密&認證 - Azure HDInsight
 description: 設置TLS加密,用於卡夫卡客戶與卡夫卡經紀人之間以及卡夫卡經紀人之間的通信。 設置用戶端的 SSL 身份驗證。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.author: hrasheed
-ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437001"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657096"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中為 Apache Kafka 設定 TLS 加密與身分驗證
 
@@ -312,13 +312,13 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  啟動主控台產生器,並提供`client-ssl-auth.properties`作為生成器的設定檔的路徑。
+1. 啟動主控台產生器,並提供`client-ssl-auth.properties`作為生成器的設定檔的路徑。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1.  打開另一個連接到用戶端電腦並啟動主控台消費者的 ssh 連接`client-ssl-auth.properties`,並為消費者提供作為設定檔的路徑。
+1. 打開另一個連接到用戶端電腦並啟動主控台消費者的 ssh 連接`client-ssl-auth.properties`,並為消費者提供作為設定檔的路徑。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -332,13 +332,13 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  啟動主控台產生器,並提供用戶端-ssl-auth.屬性的路徑,作為生產者的配置檔。
+1. 啟動主控台產生器,並提供用戶端-ssl-auth.屬性的路徑,作為生產者的配置檔。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-3.  打開另一個連接到用戶端電腦並啟動主控台消費者的 ssh 連接`client-ssl-auth.properties`,並為消費者提供作為設定檔的路徑。
+1. 打開另一個連接到用戶端電腦並啟動主控台消費者的 ssh 連接`client-ssl-auth.properties`,並為消費者提供作為設定檔的路徑。
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

@@ -1,21 +1,21 @@
 ---
 title: Azure Kubernetes Service (AKS) 上的 HTTP 應用程式路由附加元件
-description: 使用 Azure Kubernetes Service (AKS) 上的 HTTP 應用程式路由附加元件。
+description: 使用 HTTP 應用程式路由載入項存取 Azure 庫伯奈斯服務 (AKS) 上部署的應用程式。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 5794e46f10abec1ceef4c79a881f7f353e729634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595683"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632412"
 ---
 # <a name="http-application-routing"></a>HTTP 應用程式路由
 
-HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kubernetes Service (AKS) 叢集的應用程式。 啟用解決方案後，它將在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 部署應用程式時，此解決方案也會針對應用程式端點建立可公開存取的 DNS 名稱。
+HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kubernetes Service (AKS) 叢集的應用程式。 開啟解決方案後,它將在 AKS 群組集中設定[。](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) 部署應用程式時，此解決方案也會針對應用程式端點建立可公開存取的 DNS 名稱。
 
 啟用附加元件時，它會在您的訂用帳戶中建立 DNS 區域。 如需 DNS 成本的詳細資訊，請參閱 [DNS 定價][dns-pricing]。
 
@@ -24,9 +24,9 @@ HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kuber
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解決方案概觀
 
-該載入項部署兩個元件[：Kubernetes 入口控制器][ingress]和[外部 DNS][external-dns]控制器。
+該載入項部署兩個元件[:Kubernetes 入口控制器][ingress]和[外部 DNS][external-dns]控制器。
 
-- **輸入控制器**：輸入控制器會使用 LoadBalancer 類型的 Kubernetes 服務來向網際網路公開。 入口控制器監視並實現[Kubernetes 入口資源][ingress-resource]，從而創建到應用程式終結點的路由。
+- **輸入控制器**：輸入控制器會使用 LoadBalancer 類型的 Kubernetes 服務來向網際網路公開。 入口控制器監視並實現[Kubernetes 入口資源][ingress-resource],從而創建到應用程式終結點的路由。
 - **External-DNS 控制器**：監看 Kubernetes 輸入資源，並在叢集特有的 DNS 區域中建立 DNS A 記錄。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI

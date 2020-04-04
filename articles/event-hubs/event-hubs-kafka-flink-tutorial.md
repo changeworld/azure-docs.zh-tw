@@ -6,16 +6,15 @@ documentationcenter: ''
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521792"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632817"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>使用 Apache Flink 搭配適用於 Apache Kafka 的 Azure 事件中樞
 本教程介紹如何在不更改協定用戶端或運行自己的群集的情況下將 Apache Flink 連接到事件中心。 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
@@ -124,22 +123,11 @@ mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 如需有關將 Flink 連線至 Kafka 的詳細資訊，請參閱 [Flink 的 Kafka 連接器指南](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) \(英文\)。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學中,您學習了如何在不更改協定客戶端或運行自己的叢集的情況下將 Apache Flink 連接到事件中心。 您已在本教學課程進行期間執行下列步驟： 
+要瞭解有關卡夫卡事件中心(Kafka)活動中心的更多詳細資訊,請參閱以下文章:  
 
-> [!div class="checklist"]
-> * 建立事件中樞命名空間
-> * 複製範例專案
-> * 執行 Flink 生產者 
-> * 執行 Flink 取用者
-
-若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列主題：  
-
-- [了解事件中樞](event-hubs-what-is-event-hubs.md)
-- [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [建立事件中樞](event-hubs-create.md)
-- [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [在事件中樞中鏡像 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
 - [將 Apache Spark 連線到事件中樞](event-hubs-kafka-spark-tutorial.md)
 - [將卡夫卡連線與事件中心整合](event-hubs-kafka-connect-tutorial.md)
-- [將 Akka 串流連線到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
 - [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\)
+- [將 Akka 串流連線到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 活動中心 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

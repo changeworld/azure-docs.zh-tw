@@ -1,22 +1,22 @@
 ---
-title: 基於證書的身份驗證 - Azure 活動目錄
+title: 基於憑證的身份認證 ─ Azure 的項目
 description: 了解如何在環境中設定憑證式驗證
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b57c4f474b0b9def08005f32f48225d36ea8cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848828"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654345"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
 
@@ -36,16 +36,16 @@ ms.locfileid: "74848828"
 
 若要設定憑證式驗證，必須符合下列陳述：
 
-- 基於證書的身份驗證 （CBA） 僅支援用於瀏覽器應用程式的聯合環境、使用現代身份驗證 （ADAL） 的本機用戶端或 MSAL 庫。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
+- 基於證書的身份驗證 (CBA) 僅支援用於瀏覽器應用程式的聯合環境、使用現代身份驗證 (ADAL) 的本機用戶端或 MSAL 庫。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
 - 務必要在 Azure Active Directory 中設定根憑證授權單位和任何中繼憑證授權單位。
 - 每個憑證授權單位都必須有一份可透過網際網路對應 URL 來參考的憑證撤銷清單 (CRL)。
 - 您至少必須在 Azure Active Directory 中設定一個憑證授權單位。 您可以在[設定憑證授權單位](#step-2-configure-the-certificate-authorities)一節中找到相關步驟。
-- (僅 Exchange ActiveSync 用戶端適用) 用戶端憑證必須將 Exchange Online 中可路由傳送的使用者電子郵件地址，放在 [主體別名] 欄位的 [主體名稱] 或 [RFC822 名稱] 值中。 Azure Active Directory 要將 RFC822 值對應到目錄中的 [Proxy 位址] 屬性。
+- 對於 Exchange ActiveSync 用戶端,用戶端證書必須在 Exchange 中聯機具有使用者可路由的電子郵寄地址,位於"主體替代名稱"欄位的主名稱或 RFC822 名稱值中。 Azure Active Directory 要將 RFC822 值對應到目錄中的 [Proxy 位址] 屬性。
 - 您的用戶端裝置必須至少可以存取一個發出用戶端憑證的憑證授權單位。
 - 用於戶端驗證的用戶端憑證必須已經發給您的用戶端。
 
 >[!IMPORTANT]
->Azure 活動目錄成功下載和緩存的 CRL 的最大大小為 20MB，下載 CRL 所需的時間不得超過 10 秒。  如果 Azure 活動目錄無法下載 CRL，則使用相應 CA 頒發的證書的基於證書的身份驗證將失敗。 確保 CRL 檔在大小限制範圍內的最佳做法是，將證書存留期保持在合理的限制範圍內，並清理過期的證書。 
+>Azure 活動目錄成功下載和緩存的 CRL 的最大大小為 20MB,下載 CRL 所需的時間不得超過 10 秒。  如果 Azure 活動目錄無法下載 CRL,則使用相應 CA 頒發的證書的基於證書的身份驗證將失敗。 確保CRL檔在大小限制範圍內的最佳做法是,將證書存留期保持在合理的限制範圍內,並清理過期的證書。 
 
 ## <a name="step-1-select-your-device-platform"></a>步驟 1︰選取裝置平台
 

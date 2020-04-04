@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583147"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632463"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure 突觸分析工作負荷重要性
 
@@ -64,6 +64,6 @@ ms.locfileid: "80583147"
 
 - 有關創建分類器的詳細資訊,請參閱[創建任務程式(轉算 SQL)。](/sql/t-sql/statements/create-workload-classifier-transact-sql)  
 - 有關工作負載分類的詳細資訊,請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。  
-- 有關如何建立工作負載分類器,請參閱快速入門[建立工作負載分類器](quickstart-create-a-workload-classifier-tsql.md)。 
+- 有關如何建立工作負載分類器,請參閱快速入門[建立工作負載分類器](quickstart-create-a-workload-classifier-tsql.md)。
 - 請參閱[設定工作負載的重要性](sql-data-warehouse-how-to-configure-workload-importance.md)的操作說明文章，以及如何[管理並監視工作負載管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
 - 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 以檢視查詢和所指派的重要性。

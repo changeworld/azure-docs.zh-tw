@@ -11,22 +11,21 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 44d7b4196e53bfcc89105236e446c74d50e7812a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586432"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633123"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>在 Azure 同步器中保護資料庫
 
 > [!div class="op_single_selector"]
+>
 > * [安全概述](sql-data-warehouse-overview-manage-security.md)
 > * [驗證][](sql-data-warehouse-authentication.md)
 > * [加密 (入口網站)](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
 
 本文將引導您介紹保護 Synapse SQL 池的基礎知識。 特別是,本文將介紹使用使用 SQL 池預配的資料庫上的訪問、保護數據和監視活動的資源。
 
@@ -34,21 +33,21 @@ ms.locfileid: "80586432"
 
 「連線安全性」是指如何使用防火牆規則和連線加密，限制和保護資料庫的連線。
 
-伺服器和資料庫都使用防火牆規則來拒絕未明確白名單的 IP 位址的連接嘗試。 若要允許來自應用程式或用戶端機器之公用 IP 位址的連線，您必須先使用 Azure 入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。 
+伺服器和資料庫都使用防火牆規則來拒絕未明確白名單的 IP 位址的連接嘗試。 若要允許來自應用程式或用戶端機器之公用 IP 位址的連線，您必須先使用 Azure 入口網站、REST API 或 PowerShell 建立伺服器層級的防火牆規則。
 
 最好的作法是，您應該盡可能限制允許穿透您伺服器防火牆的 IP 位址範圍。  要從本地電腦訪問 SQL 池,請確保網路上的防火牆和本地電腦上的防火牆允許在 TCP 埠 1433 上進行傳出通信。  
 
-Azure 同步分析使用伺服器級 IP 防火牆規則。 它不支援資料庫級 IP 防火牆規則。 有關詳細資訊,請參閱 Azure [SQL 資料庫防火牆規則](../../sql-database/sql-database-firewall-configure.md)
+Azure 同步分析使用伺服器級 IP 防火牆規則。 它不支援資料庫級 IP 防火牆規則。 有關詳細資訊,請參閱 Azure [SQL 資料庫防火牆規則](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 默認情況下,與 SQL 池的連接是加密的。  停用加密的修改連線設定會被忽略。
 
 ## <a name="authentication"></a>驗證
 
-「驗證」是指連線到資料庫時如何證明身分識別。 SQL 池目前支援 SQL 伺服器身份驗證,使用使用者名和密碼以及 Azure 活動目錄。 
+「驗證」是指連線到資料庫時如何證明身分識別。 SQL 池目前支援 SQL 伺服器身份驗證,使用使用者名和密碼以及 Azure 活動目錄。
 
 當您為資料庫建立邏輯伺服器時，採取使用者名稱和密碼指定了「伺服器管理員」登入。 使用這些認證，您就可以透過 SQL Server 驗證，使用資料庫擁有者或 "dbo" 的身分驗證該伺服器上的任何資料庫。
 
-但是,最佳做法是,組織的用戶應該使用不同的帳戶進行身份驗證。 因為萬一應用程式的程式碼容易受到 SQL 插入式攻擊，您就可以限制授與應用程式的權限，並降低惡意活動的風險。 
+但是,最佳做法是,組織的用戶應該使用不同的帳戶進行身份驗證。 因為萬一應用程式的程式碼容易受到 SQL 插入式攻擊，您就可以限制授與應用程式的權限，並降低惡意活動的風險。
 
 若要建立 SQL Server 驗證使用者，請使用伺服器管理員登入連接到您伺服器上的 **master** 資料庫，並建立新的伺服器登入。  最好在主資料庫中創建使用者。 在主要資料庫中建立使用者，可讓使用者使用類似 SSMS 的工具登入，而不用指定資料庫名稱。  它也可讓使用者使用物件總管來檢視 SQL Server 上的所有資料庫。
 
@@ -65,11 +64,12 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-若要提供使用者執行其他作業 (例如建立登入或建立新資料庫) 的權限，請為他們指派主要資料庫中的 `Loginmanager` 和 `dbmanager` 角色。 
+若要提供使用者執行其他作業 (例如建立登入或建立新資料庫) 的權限，請為他們指派主要資料庫中的 `Loginmanager` 和 `dbmanager` 角色。
 
-如需有關這些額外角色及向 SQL Database 驗證的詳細資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](../../sql-database/sql-database-manage-logins.md)。  有關使用 Azure 活動目錄進行連線的詳細資訊,請參閱[使用 Azure 的目錄身份驗證連線](sql-data-warehouse-authentication.md)。
+如需有關這些額外角色及向 SQL Database 驗證的詳細資訊，請參閱[管理 Azure SQL Database 的資料庫和登入](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。  有關使用 Azure 活動目錄進行連線的詳細資訊,請參閱[使用 Azure 的目錄身份驗證連線](sql-data-warehouse-authentication.md)。
 
 ## <a name="authorization"></a>授權
+
 授權是指在進行身份驗證並連接后,可以在資料庫中執行哪些操作。 授權權限取決於角色成員資格和權限。 最好的作法是，您應該授與使用者所需的最低權限。 若要管理角色，您可以使用下列預存程序：
 
 ```sql
@@ -81,11 +81,12 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 有一些方法可以進一步限制使用者在資料庫中可以做什麼:
 
-* 細微的[權限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15)可讓您控制可對資料庫中的個別資料行、資料表、檢視、結構描述、程序和其他物件執行哪些作業。 使用細微權限，以擁有最大控制權，並授與所需的最小權限。 
+* 細微的[權限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15)可讓您控制可對資料庫中的個別資料行、資料表、檢視、結構描述、程序和其他物件執行哪些作業。 使用細微權限，以擁有最大控制權，並授與所需的最小權限。
 * 除了 db_datareader 和 db_datawriter 以外，[資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15)均可以用來建立權力較大的應用程式使用者帳戶，或權力較小的管理帳戶。 內建固定資料庫角色提供簡單的方式來授與權限，但可能會導致授與的權限多於所需的權限。
 * [預存程序](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15) 可用來限制對資料庫可採取的動作。
 
 下列範例會針對使用者定義結構描述授予讀取權限。
+
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
@@ -94,11 +95,13 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 從 Azure 入口網站或使用 Azure Resource Manager API 管理資料庫和邏輯伺服器的能力，是由您入口網站使用者帳戶的角色指派所控制。 如需詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure)。
 
 ## <a name="encryption"></a>加密
-透明數據加密 (TDE) 通過加密和解密靜態數據,有助於防止惡意活動的威脅。 當您加密資料庫時，相關聯的備份和交易記錄檔就會加密，完全不需要變更您的應用程式。 TDE 會使用稱為資料庫加密金鑰的對稱金鑰來加密整個資料庫的儲存體。 
+
+透明數據加密 (TDE) 通過加密和解密靜態數據,有助於防止惡意活動的威脅。 當您加密資料庫時，相關聯的備份和交易記錄檔就會加密，完全不需要變更您的應用程式。 TDE 會使用稱為資料庫加密金鑰的對稱金鑰來加密整個資料庫的儲存體。
 
 在 SQL Database 中，資料庫加密金鑰是由內建伺服器憑證保護。 內建伺服器憑證對每個 SQL Database 伺服器都是唯一的。 Microsoft 會每隔 90 天自動輪換這些憑證。 使用的加密演演演算法為 AES-256。 如需 TDE 的一般描述，請參閱 [透明資料加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)。
 
 您可以使用 [Azure 入口網站](sql-data-warehouse-encryption-tde.md)或 [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) 將資料庫加密。
 
 ## <a name="next-steps"></a>後續步驟
+
 有關使用不同協定連接到主目錄的詳細資訊和範例,請參閱連接到 SQL[池](sql-data-warehouse-connect-overview.md)。

@@ -1,25 +1,25 @@
 ---
-title: 添加用於保護對自訂 API 的調用的身份驗證
-description: 如何設置身份驗證以提高從 Azure 邏輯應用調用自訂 API 的安全性
+title: 新增用於保護對自訂 API 的呼叫的身份驗證
+description: 如何設定驗證以提高從 Azure 邏輯應用呼叫自訂 API 的安全性
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191398"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656227"
 ---
-# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>提高從 Azure 邏輯應用調用自訂 API 的安全性
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>提高從 Azure 邏輯應用呼叫自訂 API 的安全性
 
-為了提高對 API 呼叫的安全性，可以通過 Azure 門戶設置 Azure 活動目錄 （Azure AD） 身份驗證，這樣您就不必更新代碼。 或者，您可以透過您的 API 程式碼要求並強制執行驗證。
+為了提高對 API 調用的安全性,可以通過 Azure 門戶設置 Azure 活動目錄 (Azure AD) 身份驗證,這樣您就不必更新代碼。 或者，您可以透過您的 API 程式碼要求並強制執行驗證。
 
 ## <a name="authentication-options-for-your-api"></a>您 API 的驗證選項
 
-您可以通過以下方式提高對自訂 API 呼叫的安全性：
+您可以透過以下方式提高對自訂 API 呼叫的安全性:
 
 * [無程式碼變更](#no-code)：透過 Azure 入口網站使用 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 來保護您的 API，因此您不需要更新程式碼或重新部署您的 API。
 
@@ -51,7 +51,7 @@ ms.locfileid: "77191398"
 2. 請確認您與 web 應用程式或 API 應用程式位於相同的目錄中。
 
    > [!TIP]
-   > 若要切換目錄，請選擇您的設定檔，然後選取另一個目錄。 或者，選擇 **"概述** > **切換"目錄**。
+   > 若要切換目錄，請選擇您的設定檔，然後選取另一個目錄。 或者,選擇 **「概述** > **切換」 目錄**。
 
 3. 在 [目錄] 功能表的 [管理]**** 下，選擇 [應用程式註冊]**** > [新增應用程式註冊]****。
 
@@ -150,7 +150,7 @@ ms.locfileid: "77191398"
 
 **在您使用 Azure Resource Manager 範本進行部署時開啟驗證**
 
-您仍然需要為 Web 應用或 API 應用創建不同于邏輯應用的應用標識的 Azure AD 應用程式標識。 若要建立應用程式識別碼，請遵循第 2 部分中 Azure 入口網站的先前步驟。 
+您仍然需要為 Web 應用或 API 應用創建不同於邏輯應用的應用識別的 Azure AD 應用程式標識。 若要建立應用程式識別碼，請遵循第 2 部分中 Azure 入口網站的先前步驟。 
 
 您也可以遵循第 1 部分中的步驟，但請務必使用您的 web 應用程式或 API 應用程式適用於**登入 URL** 和**應用程式識別碼 URI** 的實際 `https://{URL}`。 在這些步驟中，您必須儲存用戶端識別碼和租用戶識別碼，以在您應用程式的部署範本以及用於第 3 部分中使用。
 
@@ -179,13 +179,13 @@ ms.locfileid: "77191398"
 
 若要自動將空白 web 應用程式和邏輯應用程式與 Azure Active Directory 驗證共同部署，請[在這裡檢視完整範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)，或在這裡按一下 [部署至 Azure]****：
 
-[![部署到 Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![部署至 Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>第 3 部分：填入邏輯應用程式中的授權區段
 
 前一個範本已設定此授權區段，但如果您要直接撰寫邏輯應用程式，則必須包含完整的授權區段。
 
-在代碼視圖中打開邏輯應用定義，轉到**HTTP**操作定義，查找 **"授權"** 部分，並包括以下屬性：
+在程式碼檢視開啟邏輯應用程式定義,轉到**HTTP**操作定義,尋找 **「授權」** 部分,並包括以下屬性:
 
 ```json
 {
@@ -238,7 +238,7 @@ ms.locfileid: "77191398"
 
 若要驗證邏輯應用程式傳入 Web 應用程式或 API 應用程式中的要求，您可以使用用戶端憑證。 如需設定程式碼，請了解[如何設定 TLS 相互驗證](../app-service/app-service-web-configure-tls-mutual-auth.md)。
 
-在 **"授權"** 部分中，包括以下屬性：
+在 **「授權」** 部分中,包括以下屬性:
 
 ```json
 {
@@ -250,7 +250,7 @@ ms.locfileid: "77191398"
 
 | 屬性 | 必要 | 描述 |
 | -------- | -------- | ----------- |
-| `type` | 是 | 驗證類型。 若為 SSL 用戶端憑證，值必須是 `ClientCertificate`。 |
+| `type` | 是 | 驗證類型。 對 TLS/SSL 客戶端憑證`ClientCertificate`,該值必須為 。 |
 | `password` | 否 | 用以存取用戶端憑證的密碼 (PFX 檔案) |
 | `pfx` | 是 | 用戶端憑證的 Base64 編碼內容 (PFX 檔案) |
 ||||
@@ -261,7 +261,7 @@ ms.locfileid: "77191398"
 
 若要驗證邏輯應用程式傳入 Web 應用程式或 API 應用程式中的要求，您可以使用基本驗證，例如使用者名稱和密碼。 基本驗證的常見模式，任何用來建置 Web 應用程式或 API 應用程式的語言都可以使用此驗證。
 
-在 **"授權"** 部分中，包括以下屬性：
+在 **「授權」** 部分中,包括以下屬性:
 
 ```json
 {

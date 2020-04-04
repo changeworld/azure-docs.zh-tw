@@ -1,6 +1,6 @@
 ---
-title: 使用事務
-description: 在 Azure SQL 資料倉儲中實作交易以便開發解決方案的秘訣。
+title: 在 Synapse SQL 池中使用事務
+description: 本文包括在 Synapse SQL 池中實現事務和開發解決方案的提示。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,37 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351582"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633420"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>在 SQL 資料倉儲中使用交易
-在 Azure SQL 資料倉儲中實作交易以便開發解決方案的秘訣。
+# <a name="use-transactions-in-synapse-sql-pool"></a>在 Synapse SQL 池中使用事務
+本文包括在 SQL 池中實現事務和開發解決方案的提示。
 
 ## <a name="what-to-expect"></a>未來展望
-如您所預期，SQL 資料倉儲支援交易做為資料倉儲工作負載的一部分。 不過，為了確保 SQL 資料倉儲的效能維持在一定的程度，某些功能會受到限制 (相較於 SQL Server)。 本文特別強調差異，並列出其他交易。 
+如您所料,SQL 池支援事務作為數據倉庫工作負載的一部分。 但是,為了確保 SQL 池保持規模,與 SQL Server 相比,某些功能是有限的。 本文重點介紹了這些差異。 
 
 ## <a name="transaction-isolation-levels"></a>交易隔離層級
-SQL 資料倉儲實作 ACID 交易。 事務支援的隔離等級預設為"讀取未提交"。  在連接到主資料庫時，可以通過打開使用者資料庫的READ_COMMITTED_SNAPSHOT資料庫選項將其更改為"讀取共用快照"。  啟用後，此資料庫中的所有事務都將在"讀取"狀態下執行，並且在會話級別設置"未執行"將不受遵守。 有關詳細資訊，請查看[ALTER 資料庫設置選項（轉算-SQL）。](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提交」。  在連接到主資料庫時,可以通過打開用戶資料庫的READ_COMMITTED_SNAPSHOT資料庫選項將其更改為「讀取共用快照」。  
+
+啟用後,此資料庫中的所有事務都將在"讀取"狀態下執行,並且在會話級別設置"未執行"將不受遵守。 有關詳細資訊,請查看[ALTER 資料庫設置選項(轉算-SQL)。](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
 ## <a name="transaction-size"></a>交易大小
-單一資料修改交易的大小是有限制的。 每個散發都會套用的限制。 因此，將限制乘以散發計數可算出總配置。 若要大致估計交易中的資料列總數，請將散發容量除以每個資料列的大小總計。 針對可變動的長度資料行，請考慮取得平均資料行長度，而不是使用大小上限。
+單一資料修改交易的大小是有限制的。 每個散發都會套用的限制。 因此，將限制乘以散發計數可算出總配置。 
 
-在下表中，已進行下列假設：
+若要大致估計交易中的資料列總數，請將散發容量除以每個資料列的大小總計。 針對可變動的長度資料行，請考慮取得平均資料行長度，而不是使用大小上限。
+
+在下表中,已作出兩項假設:
 
 * 已發生的資料平均散發 
 * 平均資料列長度是 250 個位元組
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | 每個分發上限 （GB） | 散發的數目 | 最大事務大小 （GB） | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](sql-data-warehouse-overview-what-is.md) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -58,7 +62,7 @@ SQL 資料倉儲實作 ACID 交易。 事務支援的隔離等級預設為"讀�
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | 每個分發上限 （GB） | 散發的數目 | 最大事務大小 （GB） | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](sql-data-warehouse-overview-what-is.md) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -84,14 +88,17 @@ SQL 資料倉儲實作 ACID 交易。 事務支援的隔離等級預設為"讀�
 > 
 
 ## <a name="transaction-state"></a>交易狀態
-SQL 資料倉儲會使用 XACT_STATE() 函式 (採用值 -2) 來報告失敗的交易。 這個值表示交易已失敗並標示為僅可復原。
+SQL 池使用 XACT_STATE() 函數使用值 -2 報告失敗的事務。 這個值表示交易已失敗並標示為僅可復原。
 
 > [!NOTE]
-> XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如，`SELECT 1/0` 會導致錯誤，但不會強制交易進入無法認可的狀態。 SQL Server 也允許讀取無法認可的交易。 不過，SQL 資料倉儲不會讓您這樣做作。 如果 SQL 資料倉儲交易內部發生錯誤，就會自動進入 -2 狀態，而且您不能進行任何進一步的 Select 陳述式，直到陳述式回復為止。 因此，檢查您的應用程式程式碼是否使用 XACT_STATE() 就相當重要，因為您可能需要修改程式碼。
-> 
-> 
+> XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如,`SELECT 1/0`會導致錯誤,但不會強制事務進入不可提交狀態。 
 
-比方說，在 SQL Server 中，您可能會看到如下所示的交易：
+SQL Server 也允許讀取無法認可的交易。 但是,SQL 池不允許您執行此操作。 如果 SQL 池事務中發生錯誤,它將自動進入 -2 狀態,在語句回滾之前,您將無法進行任何進一步的選擇語句。 
+
+因此,請務必檢查應用程式代碼是否使用XACT_STATE(),因為您可能需要進行代碼修改。
+
+
+例如,在 SQL Server 中,您可能會看到如下所示的事務:
 
 ```sql
 SET NOCOUNT ON;
@@ -131,11 +138,11 @@ SELECT @xact_state AS TransactionState;
 
 前述程式碼會產生下列錯誤訊息：
 
-Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並已回復任何暫止的變更。 原因︰處於僅限復原狀態中的交易，未在使用 DDL、DML 或 SELECT 陳述式之前明確復原。
+Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並已回復任何暫止的變更。 此問題的原因是,在 DDL、DML 或 SELECT 語句之前,未顯式回滾處於僅回滾狀態的事務。
 
 您不會收到 ERROR_* 函式的輸出。
 
-SQL 資料倉儲中的程式碼需要稍微變更：
+在 SQL 池中,需要稍微更改代碼:
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +184,19 @@ SELECT @xact_state AS TransactionState;
 唯一的變更就是交易的 ROLLBACK 必須在讀取 CATCH 區塊中的錯誤資訊之前發生。
 
 ## <a name="error_line-function"></a>Error_Line() 函式
-另外值得注意的是，SQL 資料倉儲不會實作或支援 ERROR_LINE() 函式。 如果您的程式碼中有此函式，您必須將它移除才能符合 SQL 資料倉儲規範。 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](sql-data-warehouse-develop-label.md) 文章。
+還值得注意的是,SQL 池不實現或支援ERROR_LINE() 函數。 如果代碼中具有此內容,則需要將其刪除以符合 SQL 池。 
+
+在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](sql-data-warehouse-develop-label.md) 文章。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
-THROW 是在 SQL 資料倉儲中引發例外狀況的新式作法，但也支援 RAISERROR。 不過，有一些值得注意的差異。
+THROW 是用於在 SQL 池中引發異常的更現代的實現,但也支援 RAISERROR。 不過，有一些值得注意的差異。
 
 * 對於 THROW，使用者定義的錯誤訊息數目不能在 100,000 - 150,000 範圍內
 * RAISERROR 錯誤訊息固定為 50,000
 * 不支援使用 sys.messages
 
 ## <a name="limitations"></a>限制
-SQL 資料倉儲有一些與交易相關的其他限制。
+SQL 池確實有一些與事務相關的其他限制。
 
 如下所示：
 
@@ -199,5 +208,5 @@ SQL 資料倉儲有一些與交易相關的其他限制。
 * 使用者定義的交易內部不支援 DDL，例如 CREATE TABLE
 
 ## <a name="next-steps"></a>後續步驟
-若要深入了解最佳化交易，請參閱[交易的最佳做法](sql-data-warehouse-develop-best-practices-transactions.md)。 若要深入了解其他 SQL 資料倉儲最佳作法，請參閱 [SQL 資料倉儲最佳做法](sql-data-warehouse-best-practices.md)。
+若要深入了解最佳化交易，請參閱[交易的最佳做法](sql-data-warehouse-develop-best-practices-transactions.md)。 要瞭解其他 SQL 池最佳實務,請參閱[SQL 池最佳實務](sql-data-warehouse-best-practices.md)。
 

@@ -1,6 +1,6 @@
 ---
 title: 設計表
-description: 在 Azure SQL 資料倉儲中設計資料表的簡介。
+description: 在 Synapse SQL 池中設計表的簡介。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,146 +11,176 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f116897bdaffa765404aa47fda4ae32a49fa99ac
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351275"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631273"
 ---
-# <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 資料倉儲中設計資料表
+# <a name="design-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的設計表
 
-瞭解在 Azure SQL 資料倉儲中設計資料表的重要概念。 
+本文提供了用於在 SQL 池中設計表的關鍵介紹性概念。
 
-## <a name="determine-table-category"></a>決定資料表類別 
+## <a name="determine-table-category"></a>決定資料表類別
 
-[星狀結構描述](https://en.wikipedia.org/wiki/Star_schema)會將資料分類為事實和維度資料表。 某些資料表用於資料移至事實或維度資料表之前的整合或暫存。 設計資料表時，請決定資料表的資料將屬於事實、維度還是整合資料表。 此決定將使資料表具有適當的結構和散發機制。 
+[星狀結構描述](https://en.wikipedia.org/wiki/Star_schema)會將資料分類為事實和維度資料表。 某些資料表用於資料移至事實或維度資料表之前的整合或暫存。 設計資料表時，請決定資料表的資料將屬於事實、維度還是整合資料表。 此決定將使資料表具有適當的結構和散發機制。
 
-- **事實資料表**包含通常在事務系統中生成的定量資料，然後載入到資料倉儲中。 例如，零售商每天都會產生銷售交易，然後將資料載入資料倉儲事實資料表中，以進行分析。
+- **事實表**包含通常在事務系統中生成的定量數據,然後載入到 SQL 池中。 例如,零售企業每天生成銷售交易記錄,然後將數據載入到 SQL 池事實表中進行分析。
 
-- **維度資料表**包含可能會變更、但變更頻率通常不高的屬性資料。 例如，客戶的名稱和地址會儲存在維度資料表中，但只有在客戶的設定檔有所變更時，才會更新。 若要降低大型事實資料表的大小，則不需將客戶的名稱和地址放在事實資料表的每個資料列中。 此時，事實資料表與維度資料表可以共用客戶識別碼。 查詢可以聯結兩個資料表，使客戶的設定檔與交易產生關聯。 
+- **維度資料表**包含可能會變更、但變更頻率通常不高的屬性資料。 例如，客戶的名稱和地址會儲存在維度資料表中，但只有在客戶的設定檔有所變更時，才會更新。 為了最小化大型事實表的大小,客戶的姓名和位址不需要出現在事實數據表的每一行中。 此時，事實資料表與維度資料表可以共用客戶識別碼。 查詢可以聯結兩個資料表，使客戶的設定檔與交易產生關聯。
 
 - **整合資料表**可用來整合或暫存資料。 您可以建立整合資料表作為一般資料表、外部資料表或暫存資料表。 例如，您可以將資料載入至暫存資料表、對暫存的資料執行轉換，然後將該資料插入生產資料表中。
 
 ## <a name="schema-and-table-names"></a>結構描述和資料表名稱
-架構是一種將表分組的好方法，以類似方式一起使用。  如果要將多個資料庫從前置解決方案遷移到 SQL 資料倉儲，最好將所有事實、維度和集成表遷移到 SQL 資料倉儲中的一個架構。 例如，您可以將[WideWorld 導入者DW](/sql/sample/world-wide-importers/database-catalog-wwi-olap)示例資料倉儲中的所有表存儲在一個稱為 wwi 的架構中。 以下代碼創建一個稱為 wwi[的使用者定義的架構](/sql/t-sql/statements/create-schema-transact-sql)。
+
+架構是一種將表分組的好方法,以類似方式一起使用。  如果要將多個資料庫從 prem 解決方案遷移到 SQL 池,最好將所有事實、維度和整合式表遷移到 SQL 池中的一個架構。
+
+例如,您可以將[WideWorld 導入者DW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)範例 SQL 池中的所有表儲存在一個稱為 wwi 的架構中。 以下代碼建立一個稱為 wwi[的使用者定義的架構](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-若要在 SQL 資料倉儲中顯示資料表的組織，可以使用 fact、dim、int 作為資料表名稱的前置詞。 下表顯示 WideWorldImportersDW 的一些結構描述和資料表名稱。  
+要在 SQL 池中顯示表的組織,可以使用事實、暗和 int 作為表名稱的前置碼。 下表顯示 WideWorldImportersDW 的一些結構描述和資料表名稱。  
 
-| WideWorldImportersDW 資料表  | 資料表類型 | SQL 資料倉儲 |
+| WideWorldImportersDW 資料表  | 資料表類型 | SQL 池 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
 | 單 | 事實 | wwi.FactOrder |
 
+## <a name="table-persistence"></a>資料表持續性
 
-## <a name="table-persistence"></a>資料表持續性 
-
-資料表可以在 Azure 儲存體中永久儲存資料、在 Azure 儲存體暫時儲存資料，或將資料儲存在資料倉儲外部的資料存放區中。
+表將資料永久存儲在 Azure 儲存中、臨時在 Azure 儲存中或存儲在 SQL 池外部的數據存儲中。
 
 ### <a name="regular-table"></a>一般資料表
 
-一般資料表會將資料儲存在 Azure 儲存體中，作為資料倉儲的一部分。 無論工作階段是否開啟，資料表和資料都會持續保存。  此範例會建立具有兩個資料行的一般資料表。 
+常規表將資料存儲在 Azure 儲存中作為 SQL 池的一部分。 無論工作階段是否開啟，資料表和資料都會持續保存。  下面的範例創建一個包含兩列的常規表。
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
 ```
 
 ### <a name="temporary-table"></a>暫存資料表
-暫存資料表只存在於工作階段執行期間。 您可以使用臨時表來防止其他使用者看到臨時結果，並減少清理的需要。  臨時表利用本機存放區提供快速性能。  如需詳細資訊，請參閱[暫存資料表](sql-data-warehouse-tables-temporary.md)。
+
+暫存資料表只存在於工作階段執行期間。 您可以使用臨時表來防止其他使用者看到臨時結果,並減少清理的需要。  
+
+臨時表利用本地存儲提供快速性能。  如需詳細資訊，請參閱[暫存資料表](sql-data-warehouse-tables-temporary.md)。
 
 ### <a name="external-table"></a>外部資料表
-外部資料表會指向位於 Azure 儲存體 blob 或 Azure Data Lake Store 中的資料。 與 CREATE TABLE AS SELECT 陳述式搭配使用時，如果從外部資料表選取，資料將會匯入 SQL 資料倉儲中。 因此，外部資料表對於載入資料有所助益。 如需載入的教學課程，請參閱[使用 PolyBase 從 Azure Blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
+
+外部資料表會指向位於 Azure 儲存體 blob 或 Azure Data Lake Store 中的資料。 當與"創建表作為選擇"語句結合使用時,從外部表中選擇將數據導入 SQL 池。
+
+因此,外部表可用於載入數據。 如需載入的教學課程，請參閱[使用 PolyBase 從 Azure Blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="data-types"></a>資料類型
-SQL 資料倉儲支援最常用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 參考中 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 如需資料類型的使用指引，請參閱[資料類型](sql-data-warehouse-tables-data-types.md)。
+
+SQL 池支援最常用的數據類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 參考中 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes)。 如需資料類型的使用指引，請參閱[資料類型](sql-data-warehouse-tables-data-types.md)。
 
 ## <a name="distributed-tables"></a>分散式資料表
-SQL 資料倉儲的一個基本功能是它可以跨[分佈](massively-parallel-processing-mpp-architecture.md#distributions)在表上存儲和操作。  SQL 資料倉儲支援三種用於分發資料的方法，即迴圈（預設）、雜湊和複製。
+
+SQL 池的一個基本功能是它可以跨[分佈](massively-parallel-processing-mpp-architecture.md#distributions)在表上存儲和操作的方式。  SQL 池支援三種分發數據的方法:迴圈(預設)、哈希和複製。
 
 ### <a name="hash-distributed-tables"></a>雜湊分散式資料表
-雜湊分散式表根據分佈列中的值分佈行。 雜湊分散式表旨在實現對大型表上的查詢的高性能。 選擇分佈列時，需要考慮幾個因素。 
+
+哈希分散式表根據分佈列中的值分佈行。 哈希分散式表旨在實現對大型表上的查詢的高性能。 選擇分佈列時,需要考慮幾個因素。
 
 如需詳細資訊，請參閱[分散式資料表的設計指引](sql-data-warehouse-tables-distribute.md)。
 
 ### <a name="replicated-tables"></a>複寫資料表
-複寫資料表有一個可在每個計算節點上使用的完整資料表複本。 複寫資料表的聯結不需要移動資料，因此對複寫資料表的查詢得以快速執行。 不過，複寫需要額外的儲存體，且對於大型資料表並不實用。 
+
+複寫資料表有一個可在每個計算節點上使用的完整資料表複本。 查詢在複製的表上運行很快,因為複製表上的聯接不需要數據移動。 但是,複製需要額外的存儲,對於大型表來說並不實用。
 
 如需詳細資訊，請參閱[複寫資料表的設計指引](design-guidance-for-replicated-tables.md)。
 
 ### <a name="round-robin-tables"></a>循環配置資源資料表
-循環配置資源資料表會將資料表的資料列平均散發於所有散發。 資料列會隨機分散。 資料可以快速載入循環配置資源資料表。  但是，查詢可能需要比其他散發方法更多的資料移動。 
+
+循環配置資源資料表會將資料表的資料列平均散發於所有散發。 資料列會隨機分散。 資料可以快速載入循環配置資源資料表。  請記住,查詢可能需要比其他分發方法更多的數據移動。
 
 如需詳細資訊，請參閱[分散式資料表的設計指引](sql-data-warehouse-tables-distribute.md)。
 
 ### <a name="common-distribution-methods-for-tables"></a>資料表常用的散發方法
-資料表類別通常會決定應選擇哪個選項來散發資料表。 
+
+資料表類別通常會決定應選擇哪個選項來散發資料表。
 
 | 資料表類別 | 建議的散發選項 |
 |:---------------|:--------------------|
 | 事實           | 使用具有叢集資料行存放區索引的雜湊散發。 在相同的散發資料行上聯結兩個雜湊資料表時，可以改善效能。 |
 | 維度      | 對較小的資料表使用複寫。 如果資料表太大而無法儲存在每個計算節點上，請使用雜湊散發。 |
-| 預備        | 對暫存資料表使用循環配置資源。 使用 CTAS 的載入速度較快。 資料在暫存表中後，請使用 INSERT...選擇以將資料移動到生產表。 |
+| 預備        | 對暫存資料表使用循環配置資源。 使用 CTAS 的載入速度較快。 資料在暫存表中後,請使用 INSERT...選擇以將數據移動到生產表。 |
 
 ## <a name="table-partitions"></a>資料表的資料分割
-分割的資料表會並根據資料範圍儲存在資料表資料列上，並執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。 您也可以透過資料分割切換來維護資料。 由於 SQL 資料倉儲中的資料已散發，資料分割過多可能會降低查詢效能。 如需詳細資訊，請參閱[資料分割指引](sql-data-warehouse-tables-partition.md)。  當分區切換到不為空的表分區時，請考慮在[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)語句中使用TRUNCATE_TARGET選項，如果現有資料要截斷。 以下代碼將轉換後的資料轉換為 SalesFact 覆蓋任何現有資料。 
+
+分割的資料表會並根據資料範圍儲存在資料表資料列上，並執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。 您也可以透過資料分割切換來維護資料。 由於 SQL 資料倉儲中的資料已散發，資料分割過多可能會降低查詢效能。 如需詳細資訊，請參閱[資料分割指引](sql-data-warehouse-tables-partition.md)。  當分區切換到不為空的表分區時,請考慮在[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句中使用TRUNCATE_TARGET選項,如果現有數據要截斷。 以下代碼將轉換後的數據轉換為 SalesFact 覆蓋任何現有數據。
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ## <a name="columnstore-indexes"></a>資料行存放區索引
-根據預設，SQL 資料倉儲會將資料表儲存為叢集資料行存放區索引。 這種形式的資料儲存對於大型資料表可達到高度的資料壓縮和查詢效能。  叢集資料行存放區索引通常是最佳選擇，但在某些情況下，叢集索引或堆積會是更適當的儲存結構。  堆表對於載入瞬態資料（如轉換為最終表的過渡表）特別有用。
+
+默認情況下,SQL 池將表存儲為群集列存儲索引。 這種形式的資料儲存對於大型資料表可達到高度的資料壓縮和查詢效能。  
+
+叢集資料行存放區索引通常是最佳選擇，但在某些情況下，叢集索引或堆積會是更適當的儲存結構。  
+
+> [!TIP]
+> 堆表對於載入瞬態數據(如轉換為最終表的過渡表)特別有用。
 
 如需資料行存放區功能的清單，請參閱[資料行存放區索引的新功能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)。 若要改善資料行存放區索引效能，請參閱[盡可能提高資料行存放區索引的資料列群組品質](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 ## <a name="statistics"></a>統計資料
-查詢最佳化工具在建立執行查詢的計劃時，會使用資料行層級的統計資料。 為了提高查詢性能，對單個列（尤其是查詢聯接中使用的列）進行統計資訊非常重要。 [創建統計資訊](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)會自動進行。  但是，更新統計資料不會自動進行。 在新增或變更大量的資料列之後，請更新統計資料。 例如，請在載入之後更新統計資料。 如需詳細資訊，請參閱[統計資料指引](sql-data-warehouse-tables-statistics.md)。
 
-## <a name="primary-key-and-unique-key"></a>主鍵和唯一鍵
-僅當同時使用非強制和未執行時，才支援主金鑰。  僅使用"不強制"時支援唯一約束。  檢查[SQL 資料倉儲表約束](sql-data-warehouse-table-constraints.md)。
+查詢最佳化工具在建立執行查詢的計劃時，會使用資料行層級的統計資料。
+
+為了提高查詢性能,對單個列(尤其是查詢聯接中使用的列)進行統計資訊非常重要。 [創建統計資訊](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)會自動進行。  
+
+更新統計資訊不會自動進行。 在新增或變更大量的資料列之後，請更新統計資料。 例如，請在載入之後更新統計資料。 如需詳細資訊，請參閱[統計資料指引](sql-data-warehouse-tables-statistics.md)。
+
+## <a name="primary-key-and-unique-key"></a>主鍵與唯一鍵
+
+僅當同時使用非強制和未執行時,才支援主密鑰。  僅使用「不強制」時支援唯一約束。  檢查[SQL 池表規範](sql-data-warehouse-table-constraints.md)。
 
 ## <a name="commands-for-creating-tables"></a>建立資料表的命令
+
 您可以將資料表建立為新的空資料表。 您也可以在建立資料表後填入 Select 陳述式的結果。 以下是用來建立資料表的 T-SQL 命令。
 
 | T-SQL 陳述式 | 描述 |
 |:----------------|:------------|
-| [創建表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | 藉由定義所有的資料表資料行和選項，建立空的資料表。 |
-| [創建外部表](/sql/t-sql/statements/create-external-table-transact-sql) | 建立外部資料表。 資料表的定義會儲存在 SQL 資料倉儲中。 資料表的資料會儲存在 Azure 儲存體或 Azure Data Lake Store 中。 |
+| [建立表](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | 藉由定義所有的資料表資料行和選項，建立空的資料表。 |
+| [建立外部表](/sql/t-sql/statements/create-external-table-transact-sql) | 建立外部資料表。 表的定義存儲在 SQL 池中。 資料表的資料會儲存在 Azure 儲存體或 Azure Data Lake Store 中。 |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | 在新的資料表中填入 Select 陳述式的結果。 資料表資料行和資料類型皆以 Select 陳述式的結果為基礎。 若要匯入資料，此陳述式可從外部資料表進行選取。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | 藉由將 Select 陳述式的結果匯出至外部位置，建立新的外部資料表。  其位置為 Azure Blob 儲存體或 Azure Data Lake Store。 |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>找出資料倉儲對應的資料來源
+## <a name="aligning-source-data-with-the-sql-pool"></a>將來源資料與 SQL 池對齊
 
-資料倉儲資料表會在您從其他資料來源載入資料時填入。 若要執行成功的載入，來源資料中的資料行在數目和資料類型方面，都必須與資料倉儲中的資料表定義相符。 取得相符的資料，可能是設計資料表時最困難的環節。 
+SQL 池表通過從其他數據源載入數據來填充。 要執行成功的載入,源資料中的欄的數量和資料類型必須與 SQL 池中的表定義一致。 取得相符的資料，可能是設計資料表時最困難的環節。
 
-如果資料來自多個資料存放區，您可以將資料放入資料倉儲中，並將其儲存於整合資料表。 資料放入整合資料表後，您可以使用 SQL 資料倉儲的功能執行轉換作業。 資料備妥後，您可以將它插入生產資料表。
+如果數據來自多個數據存儲,則將數據載入到 SQL 池並將其存儲在整合式表中。 數據在整合表中後,可以使用 SQL 池的強大功能執行轉換操作。 資料備妥後，您可以將它插入生產資料表。
 
 ## <a name="unsupported-table-features"></a>不支援的資料表功能
-SQL 資料倉儲支援其他資料庫所提供的多項 (但並非所有) 資料表功能。  下列清單列出 SQL 資料倉儲不支援的部分資料表功能。
 
-- 外鍵，檢查[表約束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-- [計算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
-- [索引檢視表](/sql/relational-databases/views/create-indexed-views)
-- [序列](/sql/t-sql/statements/create-sequence-transact-sql)
-- [稀疏列](/sql/relational-databases/tables/use-sparse-columns)
+SQL 池支援其他資料庫提供的許多(但不是全部)表功能。  下面的清單顯示 SQL 池中不支援的一些表功能:
+
+- 外鍵,檢查[表約束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [計算欄位](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [索引檢視表](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [序列](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [疏疏列](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - Surrogate 索引鍵。 使用[身分識別](sql-data-warehouse-tables-identity.md)進行實作。
-- [同義字](/sql/t-sql/statements/create-synonym-transact-sql)
-- [觸發器](/sql/t-sql/statements/create-trigger-transact-sql)
-- [唯一索引](/sql/t-sql/statements/create-index-transact-sql)
-- [使用者定義類型](/sql/relational-databases/native-client/features/using-user-defined-types)
+- [同義字](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [觸發程序](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [唯一索引](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [使用者定義類型](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="table-size-queries"></a>資料表大小查詢
+
 識別資料表在每個散發 (共 60 個) 中所耗用的空間和資料列數的其中一種簡單方式，就是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-不過，使用 DBCC 命令相當受限。  動態管理檢視 (DMV) 會比 DBCC 命令顯示更多詳細資料。 首先請建立此檢視。
+不過，使用 DBCC 命令相當受限。  動態管理檢視 (DMV) 會比 DBCC 命令顯示更多詳細資料。 首先建立此檢視:
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -158,7 +188,7 @@ AS
 WITH base
 AS
 (
-SELECT 
+SELECT
  GETDATE()                                                             AS  [execution_time]
 , DB_NAME()                                                            AS  [database_name]
 , s.name                                                               AS  [schema_name]
@@ -179,15 +209,15 @@ SELECT
 , nps.[partition_number]                                               AS  [partition_nmbr]
 , nps.[reserved_page_count]                                            AS  [reserved_space_page_count]
 , nps.[reserved_page_count] - nps.[used_page_count]                    AS  [unused_space_page_count]
-, nps.[in_row_data_page_count] 
-    + nps.[row_overflow_used_page_count] 
+, nps.[in_row_data_page_count]
+    + nps.[row_overflow_used_page_count]
     + nps.[lob_used_page_count]                                        AS  [data_space_page_count]
-, nps.[reserved_page_count] 
- - (nps.[reserved_page_count] - nps.[used_page_count]) 
- - ([in_row_data_page_count] 
+, nps.[reserved_page_count]
+ - (nps.[reserved_page_count] - nps.[used_page_count])
+ - ([in_row_data_page_count]
          + [row_overflow_used_page_count]+[lob_used_page_count])       AS  [index_space_page_count]
 , nps.[row_count]                                                      AS  [row_count]
-from 
+from
     sys.schemas s
 INNER JOIN sys.tables t
     ON s.[schema_id] = t.[schema_id]
@@ -260,17 +290,17 @@ SELECT
 ,  ([index_space_page_count]  * 8.0)/1000000000                        AS [index_space_TB]
 FROM base
 )
-SELECT * 
+SELECT *
 FROM size
 ;
 ```
 
 ### <a name="table-space-summary"></a>資料表空間摘要
 
-此查詢會傳回資料表的資料列和空格。  它可讓您查看哪些資料表是最大的資料表，及其屬於循環配置資源、複寫還是雜湊分散式資料表。  若為雜湊分散式資料表，則查詢也會顯示散發資料行。  
+此查詢會傳回資料表的資料列和空格。  它允許您查看哪些表是您最大的表,以及它們是迴圈、複製還是哈希分佈。  若為雜湊分散式資料表，則查詢也會顯示散發資料行。  
 
 ```sql
-SELECT 
+SELECT
      database_name
 ,    schema_name
 ,    table_name
@@ -283,9 +313,9 @@ SELECT
 ,    SUM(data_space_GB)             as table_data_space_GB
 ,    SUM(index_space_GB)            as table_index_space_GB
 ,    SUM(unused_space_GB)           as table_unused_space_GB
-FROM 
+FROM
     dbo.vTableSizes
-GROUP BY 
+GROUP BY
      database_name
 ,    schema_name
 ,    table_name
@@ -300,7 +330,7 @@ ORDER BY
 ### <a name="table-space-by-distribution-type"></a>依散發類型的資料表空間
 
 ```sql
-SELECT 
+SELECT
      distribution_policy_name
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
@@ -315,7 +345,7 @@ GROUP BY distribution_policy_name
 ### <a name="table-space-by-index-type"></a>依索引類型的資料表空間
 
 ```sql
-SELECT 
+SELECT
      index_type_desc
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
@@ -330,7 +360,7 @@ GROUP BY index_type_desc
 ### <a name="distribution-space-summary"></a>散發空間摘要
 
 ```sql
-SELECT 
+SELECT
     distribution_id
 ,    SUM(row_count)                as total_node_distribution_row_count
 ,    SUM(reserved_space_MB)        as total_node_distribution_reserved_space_MB
@@ -344,4 +374,5 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>後續步驟
-為您的資料倉儲建立資料表之後，下一個步驟是將資料載入資料表中。  如需載入教學課程，請參閱[載入資料到 SQL 資料倉儲](load-data-wideworldimportersdw.md)。
+
+為 SQL 池創建表後,下一步是將數據載入到表中。  有關載入教學,請參閱[將資料載入 SQL 池](load-data-wideworldimportersdw.md)。

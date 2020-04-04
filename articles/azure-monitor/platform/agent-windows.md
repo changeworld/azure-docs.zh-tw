@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 65a6f51d0eef28ea33adcc755d3d51f1e06a5341
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528327"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637476"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>將 Windows 電腦連接到 Azure 監視器
 
@@ -32,14 +32,14 @@ ms.locfileid: "80528327"
 
 如果需要將代理配置為向多個工作區報告,則在初始設置期間無法執行此操作,只能在之後通過更新"添加[或刪除工作區](agent-manage.md#adding-or-removing-a-workspace)"中所述的"控制面板"或 PowerShell 中的設置來執行。  
 
-若要了解支援的組態，請檢閱[支援的 Windows 作業系統](log-analytics-agent.md#supported-windows-operating-systems)和[網路防火牆組態](log-analytics-agent.md#firewall-requirements)。
+若要了解支援的組態，請檢閱[支援的 Windows 作業系統](log-analytics-agent.md#supported-windows-operating-systems)和[網路防火牆組態](log-analytics-agent.md#network-requirements)。
 
 ## <a name="obtain-workspace-id-and-key"></a>取得工作區識別碼和金鑰
 安裝適用於 Windows 的 Log Analytics 代理程式之前，您需要 Log Analytics 工作區的工作區識別碼和金鑰。  在設置過程中,需要從每個安裝方法中提供此資訊,以便正確配置代理並確保它可以在 Azure 商業和美國政府雲中成功與 Azure 監視器通信。 
 
 1. 在 Azure 門戶中,搜尋並選擇**日誌分析工作區**。
 2. 在您的 Log Analytics 工作區清單中，選取您要設定讓代理程式向哪個工作區報告。
-3. 選取 [進階設定]****。<br><br> ![Log Analytics 進階設定](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
+3. 選擇 **「進階設定**」 。<br><br> ![Log Analytics 進階設定](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. 選取 [連接的來源]****，然後選取 [Windows 伺服器]****。   
 5. 將 [工作區識別碼]**** 和 [主要金鑰]**** 複製並貼到您最愛的編輯器。    
    
@@ -136,44 +136,44 @@ ms.locfileid: "80528327"
 若要直接從代理程式安裝套件擷取產品代碼，您可以使用[適用於 Windows Installer 開發人員的 Windows SDK 元件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) (Windows 軟體開發套件的元件之一) 中的 Orca.exe，或依循 Microsoft Valuable Professional (MVP) 撰寫的[範例指令碼](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)使用 PowerShell。  針對任一方法，您都必須先從 MMASetup 安裝套件擷取 **MOMagent.msi** 檔案。  這在前面[使用命令列安裝代理程式](#install-the-agent-using-the-command-line)一節底下的第一個步驟中有所敘述。  
 
 1. 將 xPS 希望狀態配置[https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration)DSC 模組從 Azure 自動化導入。  
-1. 建立 Azure 自動化的 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 變數資產。 將 OPSINSIGHTS_WS_ID** 設定為您的 Log Analytics 工作區識別碼，將 OPSINSIGHTS_WS_KEY** 設定為您的工作區主索引鍵。
-1. 複製指令碼，並將其儲存為 MMAgent.ps1。
+2.    建立 Azure 自動化的 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 變數資產。 將 OPSINSIGHTS_WS_ID** 設定為您的 Log Analytics 工作區識別碼，將 OPSINSIGHTS_WS_KEY** 設定為您的工作區主索引鍵。
+3.    複製指令碼，並將其儲存為 MMAgent.ps1。
 
-   ```powershell
-   Configuration MMAgent
-   {
-       $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-       $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-       $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-       Import-DscResource -ModuleName xPSDesiredStateConfiguration
-       Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-       Node OMSnode {
-           Service OIService
-           {
-               Name = "HealthService"
-               State = "Running"
-               DependsOn = "[Package]OI"
-           }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-           xRemoteFile OIPackage {
-               Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-               DestinationPath = $OIPackageLocalPath
-           }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-           Package OI {
-               Ensure = "Present"
-               Path  = $OIPackageLocalPath
-               Name = "Microsoft Monitoring Agent"
-               ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-               Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + '      OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-               DependsOn = "[xRemoteFile]OIPackage"
-           }
-       }
-   }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
+        }
+    }
+}
 
-   ```
+```
 
 4. 使用稍早建議的方法，將指令碼中的 `ProductId` 值更新為從最新版代理程式安裝套件擷取的產品代碼。 
 5. [將 MMAgent.ps1 設定指令碼匯入](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)您的自動化帳戶。 

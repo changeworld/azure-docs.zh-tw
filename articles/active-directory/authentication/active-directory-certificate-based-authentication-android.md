@@ -1,22 +1,22 @@
 ---
-title: 基於 Android 證書的身份驗證 - Azure 活動目錄
+title: 基於 Android 憑證的身份驗證 ─ Azure 的項目
 description: 了解在有 Android 裝置的解決方案中，設定憑證式驗證的支援案例和需求
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f38c160a72b6c414cdde7d29e4056a4068cdc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848811"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654388"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上的 Azure Active Directory 憑證式驗證
 
@@ -66,7 +66,7 @@ ADFS 權杖必須要有下列宣告，Azure Active Directory 才能撤銷用戶�
 
 如需詳細資訊，請參閱[自訂 AD FS 登入頁面](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 應用程式 (已啟用新式驗證) 會在其要求中將 ‘*prompt=login*’ 傳送至 Azure AD。 根據預設，Azure AD 會將對 ADFS 的要求中的 ‘*prompt=login*’ 轉譯成 ‘*wauth=usernamepassworduri*’ (請求 ADFS 進行 U/P 驗證) 和 ‘*wfresh=0*’ (請求 ADFS 忽略 SSO 狀態並進行全新驗證)。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 將您的同盟網域設定中的 'PromptLoginBehavior'** 設定為 ‘Disabled‘**。
+某些 Office 應用(啟用了現代身份驗證)在其請求中向 Azure AD 發送「*提示」登錄*」。。 預設情況下,Azure AD 在請求 ADFS 時將「*提示=登入*」轉換為「*哇*」(要求 ADFS 執行 U/P Auth)和 *「wfresh_0」(* 要求 ADFS 忽略 SSO 狀態並進行新的身份驗證)。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 將聯合網域設定中的「*提示登入行為*」設置為「*已禁用*」 。
 您可以使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) Cmdlet 來執行這項工作︰
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
