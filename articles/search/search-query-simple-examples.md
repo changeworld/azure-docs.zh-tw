@@ -1,33 +1,33 @@
 ---
 title: 建立簡易查詢
 titleSuffix: Azure Cognitive Search
-description: 通過基於全文檢索搜尋、篩選器搜索、地理搜索、針對 Azure 認知搜索索引的分面搜索的簡單語法執行查詢，按示例進行學習。
+description: 通過基於全文搜索、篩選器搜索、地理搜索、針對 Azure 認知搜索索引的分面搜索的簡單語法運行查詢,按示例進行學習。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808186"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656413"
 ---
-# <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜索中創建簡單查詢
+# <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立簡單查詢
 
-在 Azure 認知搜索中，[簡單查詢語法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)調用預設查詢解析器以針對索引執行全文檢索搜尋查詢。 此解析器速度快，可處理常見方案，包括全文檢索搜尋、篩選和分面搜索以及地理搜索。 
+在 Azure 認知搜尋中,[簡單查詢語法](query-simple-syntax.md)調用預設查詢解析器以針對索引執行全文搜尋查詢。 此解析器速度快,可處理常見方案,包括全文搜索、篩選和分面搜索以及地理搜索。 
 
-在本文中，我們使用示例來說明簡單的語法。
+在本文中,我們使用示例來說明簡單的語法。
 
-另一種查詢語法是[Full Lucene，](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)它支援更複雜的查詢結構，如模糊和萬用字元搜尋，這可能需要額外的時間來處理。 有關詳細資訊和演示完整語法的示例，請參閱[使用完整的 Lucene 語法](search-query-lucene-examples.md)。
+另一種查詢語法是[Full Lucene,](query-lucene-syntax.md)它支援更複雜的查詢結構,如模糊和通配符搜索,這可能需要額外的時間來處理。 有關詳細資訊和展示完整語法的範例,請參閱[使用完整的 Lucene 語法](search-query-lucene-examples.md)。
 
 ## <a name="formulate-requests-in-postman"></a>以 Postman 編寫要求
 
-下列範例會根據 [紐約市 OpenData](https://nycopendata.socrata.com/) 計劃所提供的資料集，利用由可用工作組成的 NYC 工作搜尋索引。 這項資料不應視為目前的或已完成。 索引位於 Microsoft 提供的沙箱服務上，這意味著您不需要 Azure 訂閱或 Azure 認知搜索來嘗試這些查詢。
+下列範例會根據 [紐約市 OpenData](https://nycopendata.socrata.com/) 計劃所提供的資料集，利用由可用工作組成的 NYC 工作搜尋索引。 這項資料不應視為目前的或已完成。 索引位於 Microsoft 提供的沙箱服務上,這意味著您不需要 Azure 訂閱或 Azure 認知搜尋來嘗試這些查詢。
 
-您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 有關詳細資訊，請參閱[快速入門：使用郵遞員探索 Azure 認知搜索 REST API。](search-get-started-postman.md)
+您的需要是 Postman，或可對 GET 發出 HTTP 要求的對等工具。 有關詳細資訊,請參閱[快速入門:使用郵遞員探索 Azure 認知搜索 REST API。](search-get-started-postman.md)
 
 ### <a name="set-the-request-header"></a>設定要求標頭
 
@@ -41,31 +41,31 @@ ms.locfileid: "72808186"
 
 ### <a name="set-the-request-url"></a>設定要求 URL
 
-請求是一個 GET 命令，它與包含 Azure 認知搜索終結點和搜索字串的 URL 配對。
+請求是一個 GET 命令,它與包含 Azure 認知搜索終結點和搜索字串的 URL 配對。
 
   ![Postman 要求標頭](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 組合具有下列元素：
 
-+ **`https://azs-playground.search.windows.net/`** 是 Azure 認知搜索開發團隊維護的沙箱搜索服務。 
++ **`https://azs-playground.search.windows.net/`** 是 Azure 認知搜索開發團隊維護的沙盒搜索服務。 
 + **`indexes/nycjobs/`** 是該服務索引集合中的 NYC 作業索引。 要求上必須同時有服務名稱和索引。
-+ **`docs`** 是包含所有可搜索內容的文件組合。 要求標頭中提供的查詢 API 金鑰僅適用於以文件集合為目標的讀取作業。
-+ **`api-version=2019-05-06`** 設置 api 版本，它是每個請求所需的參數。
-+ **`search=*`** 查詢字串，在初始查詢中為空，返回前 50 個結果（預設情況下）。
++ **`docs`** 是包含所有可搜尋內容的文檔集合。 要求標頭中提供的查詢 API 金鑰僅適用於以文件集合為目標的讀取作業。
++ **`api-version=2019-05-06`** 設置 api 版本,它是每個請求所需的參數。
++ **`search=*`** 查詢字串,在初始查詢中為空,返回前 50 個結果(預設情況下)。
 
 ## <a name="send-your-first-query"></a>傳送第一個查詢
 
-在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]****。 結果會以詳細 JSON 文件的形式傳回。 返回整個文檔，這允許您查看所有欄位和所有值。
+在驗證步驟中，將下列要求貼到 GET 中，然後按一下 [傳送]****。 結果會以詳細 JSON 文件的形式傳回。 傳回整個文件,這允許您查看所有欄位和所有值。
 
-將此 URL 粘貼到 REST 用戶端作為驗證步驟，並查看文檔結構。
+將此 URL 貼上到 REST 用戶端作為驗證步驟,並查看文件結構。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-查詢字串**`search=*`** 是等效于空搜索或空搜索的未指定的搜索。 其功用並不高，卻是最方便執行的搜尋。
+查詢字串**`search=*`** 是等效於空搜索或空搜索的未指定的搜索。 其功用並不高，卻是最方便執行的搜尋。
 
-或者，您可以添加到**`$count=true`** URL 以返回與搜尋條件匹配的文檔計數。 在空的搜尋字串上，這會是索引中的所有文件 (在 NYC 作業的案例中大約有 2800 份)。
+或者,您可以添加到**`$count=true`** URL 以傳回與搜尋條件匹配的文件計數。 在空的搜尋字串上，這會是索引中的所有文件 (在 NYC 作業的案例中大約有 2800 份)。
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>如何叫用簡單查詢剖析
 
@@ -77,13 +77,13 @@ URL 組合具有下列元素：
 
 為求簡潔，查詢僅以 *business_title* 欄位為目標，且指定僅傳回公司職稱。 語法為 **searchFields** 可將執行查詢限制為只有 business_title 欄位，而 **select** 可指定要包含在回應中的欄位。
 
-### <a name="partial-query-string"></a>部分查詢字串
+### <a name="partial-query-string"></a>部份查詢字串
 
 ```http
 searchFields=business_title&$select=business_title&search=*
 ```
 
-下面是逗號分隔清單中具有多個欄位的相同查詢。
+下面是逗號分隔清單中具有多個字段的相同查詢。
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
@@ -141,7 +141,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-組合篩選器和搜索的另一種強大方法是**`search.ismatch*()`** 在篩選器運算式中，您可以在篩選器中使用搜索查詢。 這個篩選運算式在 *plan* 上使用萬用字元來選取包含 term plan、planner、planning 等等的 business_title。
+組合篩選器和搜索的另一種強大方法是**`search.ismatch*()`** 在篩選器運算式中,您可以在篩選器中使用搜尋查詢。 這個篩選運算式在 *plan* 上使用萬用字元來選取包含 term plan、planner、planning 等等的 business_title。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
@@ -151,9 +151,9 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-4-range-filters"></a>範例 4︰範圍篩選條件
 
-通過**`$filter`** 任何資料類型的運算式支援範圍篩選。 下列範例會搜尋數值和字串欄位。 
+通過**`$filter`** 任何數據類型的表達式支援範圍篩選。 下列範例會搜尋數值和字串欄位。 
 
-資料類型在範圍篩選條件中很重要，而當數值資料位於數值欄位且字串資料位於字串欄位時效果最好。 字串欄位中的數位資料不適合範圍，因為數位字串在 Azure 認知搜索中不可比較。 
+資料類型在範圍篩選條件中很重要，而當數值資料位於數值欄位且字串資料位於字串欄位時效果最好。 字串欄位中的數位資料不適合範圍,因為數位字串在 Azure 認知搜尋中不可比較。 
 
 下列範例採用 POST 格式，以方便閱讀 (數值範圍，後面接著文字範圍)：
 
@@ -211,7 +211,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-要獲得更具可讀性的結果，將修剪搜尋結果以包括作業 ID、作業標題和工作地點。 起始座標是從索引中的隨機文件取得 (在此例中為史泰登島上的工作地點)。
+要獲得更具可讀性的結果,將修剪搜尋結果以包括作業 ID、作業標題和工作地點。 起始座標是從索引中的隨機文件取得 (在此例中為史泰登島上的工作地點)。
 
 您也可以使用 GET 在 Postman 中試用看看：
 
@@ -223,19 +223,19 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 字詞查詢是個別評估的單一字詞 (可能有許多個)。 片語查詢會以引號括住，並以逐字字串的形式評估。 比對的精確度由運算子和 searchMode 所控制。
 
-示例 1：**`&search=fire`** 返回 150 個結果，其中所有匹配項都包含文檔中某處的"火"一詞。
+示例 1:**`&search=fire`** 傳回 150 個結果,其中所有匹配項都包含文檔中某處的「火」一詞。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
-示例 2：**`&search=fire department`** 返回 2002 年的結果。 系統會針對包含 fire 或 department 的文件傳回相符項目。
+示例 2:**`&search=fire department`** 返回 2002 年的結果。 系統會針對包含 fire 或 department 的文件傳回相符項目。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-示例 3：**`&search="fire department"`** 返回 82 個結果。 以引號括住字串時會對這兩個字詞進行逐字搜尋，並從索引中包含此組合字詞的權杖化字詞尋找相符項目。 這解釋了為什麼類似**`search=+fire +department`** 搜索不等效。 這兩個字詞都必須存在，但兩者的掃描會個別執行。 
+示例 3:**`&search="fire department"`** 返回 82 個結果。 以引號括住字串時會對這兩個字詞進行逐字搜尋，並從索引中包含此組合字詞的權杖化字詞尋找相符項目。 這解釋了為什麼類似**`search=+fire +department`** 搜索不等效。 這兩個字詞都必須存在，但兩者的掃描會個別執行。 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"

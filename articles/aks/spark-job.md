@@ -1,21 +1,21 @@
 ---
 title: 透過 Azure Kubernetes Service (AKS) 執行 Apache Spark 作業
-description: 使用 Azure Kubernetes Service (AKS) 執行 Apache Spark 作業
+description: 使用 Azure 庫伯奈斯服務 (AKS) 創建並運行用於大規模數據處理的 Apache Spark 作業。
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473620"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632695"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 上執行 Apache Spark 作業
 
-[Apache Spark][apache-spark]是大規模資料處理的快速引擎。 從 [Spark 2.3.0 版][spark-latest-release] 開始，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
+[Apache Spark][apache-spark]是大規模數據處理的快速引擎。 從 [Spark 2.3.0 版][spark-latest-release] 開始，Apache Spark 支援與 Kubernetes 叢集的原生整合。 Azure Kubernetes Service (AKS) 是在 Azure 中執行的受控 Kubernetes 環境。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上準備和執行 Apache Spark 作業的做法。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,13 +40,13 @@ Spark 會用於大規模的資料處理，而且需要將 Kubernetes 節點的�
 az group create --name mySparkCluster --location eastus
 ```
 
-為群集創建服務主體。 創建後，您將需要下一個命令的服務主體應用 Id 和密碼。
+為群集創建服務主體。 創建後,您將需要下一個命令的服務主體應用 Id 和密碼。
 
 ```azurecli
 az ad sp create-for-rbac --name SparkSP
 ```
 
-創建具有大小`Standard_D3_v2`節點的 AKS 群集，並將 appId 和密碼的值作為服務主體和用戶端機密參數傳遞。
+創建具有大小`Standard_D3_v2`節點的 AKS 群集,並將 appId 和密碼的值作為服務主體和用戶端機密參數傳遞。
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/2/2020
+ms.date: 04/3/2020
 ms.author: raiye
-ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618686"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656359"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
@@ -26,26 +26,25 @@ ms.locfileid: "80618686"
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Windows 安全性  | [2.96] | 2020年3月10日 |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2.96], [3.83], [4.76] | 2020年3月10日 |
-|  Rel 20-03  |  [4540694]  |  Windows 安全性  | [3.83] | 2020年3月10日 |
-|  Rel 20-03  |  [4541505]  |  Windows 安全性  | [4.76] | 2020年3月10日 |
-|  Rel 20-03  |  [4540670]  |  最新累積更新 (LCU)  | [5.41] | 2020年3月10日 |
-|  Rel 20-03  |  [4538461]  |  最新累積更新 (LCU)  | [6.17] | 2020年3月10日 |
-|  Rel 20-03  |  [4537820]  |  每月匯總  | [2.96] | 2 月 11, 2020 |
-|  Rel 20-03  |  [4537814]  |  每月匯總  | [3.83] | 2 月 11, 2020 |
-|  Rel 20-03  |  [4537821]  |  每月匯總  | [4.76] | 2 月 11, 2020 |
+|  Rel 20-03  |  [4541500]  |  Windows 安全性  | [2.96] | 2020年3月10日 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2.96], [3.83], [4.76] | 2020年3月10日 |
+|  Rel 20-03  |  [4540694]  |  Windows 安全性  | [3.83] | 2020年3月10日 |
+|  Rel 20-03  |  [4541505]  |  Windows 安全性  | [4.76] | 2020年3月10日 |
+|  Rel 20-03  |  [4540670]  |  最新累積更新 (LCU)  | [5.41] | 2020年3月10日 |
+|  Rel 20-03  |  [4538461]  |  最新累積更新 (LCU)  | [6.17] | 2020年3月10日 |
+|  Rel 20-03  |  [4537820]  |  每月匯總  | [2.96] | 2 月 11, 2020 |
+|  Rel 20-03  |  [4537814]  |  每月匯總  | [3.83] | 2 月 11, 2020 |
+|  Rel 20-03  |  [4537821]  |  每月匯總  | [4.76] | 2 月 11, 2020 |
 
-[4541500]: https://support.microsoft.com/kb/4541500 
-[4540671]: https://support.microsoft.com/kb/4540671 
-[4540694]: https://support.microsoft.com/kb/4540694 
-[4541505]: https://support.microsoft.com/kb/4541505 
-[4540670]: https://support.microsoft.com/kb/4540670 
-[4538461]: https://support.microsoft.com/kb/4538461 
-[4537820]: https://support.microsoft.com/kb/4537820  
-[4537814]: https://support.microsoft.com/kb/4537814 
-[4537821]: https://support.microsoft.com/kb/4537821 
-
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
 
 [6.17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 [5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases

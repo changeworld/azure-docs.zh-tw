@@ -1,6 +1,6 @@
 ---
 title: 暫存資料表
-description: 在 Azure SQL 資料倉儲中使用臨時表的基本指南，突出顯示會話級別臨時表的原則。
+description: 在 Synapse SQL 池中使用暫時長表的基本指南,突出顯示工作階段級別暫時臨時表的原則。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,24 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3a8772550e67c250b1a84dbae17d1d3fe6c5c90e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351163"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632476"
 ---
-# <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 資料倉儲中的暫存資料表
-本文包含使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。 使用這份文件中的資訊可協助您將程式碼模組化，以提高程式碼的重複使用性，維護起來更簡單。
+# <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的暫存表
+本文包含使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。 
+
+使用本文中的資訊可以説明您模組化代碼,提高可重用性和易於維護性。
 
 ## <a name="what-are-temporary-tables"></a>什麼是暫存資料表？
-暫存資料表在處理資料時很有用 - 尤其是具有暫時性中繼結果的轉換期間。 在 SQL 資料倉儲中，暫存資料表存在於工作階段層級。  它們只出現在建立它們的工作階段中，工作階段登出時就會自動卸除它們。  暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是它的效能優點。
+臨時表在處理數據時很有用,尤其是在轉換期間,中間結果是暫時的。 在 SQL 池中,臨時表存在於會話級別。  
+
+臨時表僅對創建臨時表的會話可見,並且當該會話註銷時會自動刪除。  
+
+暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是它的效能優點。
 
 ## <a name="create-a-temporary-table"></a>建立暫存資料表
 建立暫存資料表時會在資料表名稱前面加上 `#`。  例如：
@@ -91,7 +97,9 @@ GROUP BY
 > 
 
 ## <a name="dropping-temporary-tables"></a>捨棄暫存資料表
-建立新的工作階段時，不應該存在任何暫存資料表。  不過，如果您呼叫同一個預存程序來建立具有相同名稱的暫存資料表，為了確保 `CREATE TABLE` 陳述式成功執行，可使用 `DROP` 進行簡單的預先存在性檢查，如下列範例所示︰
+建立新的工作階段時，不應該存在任何暫存資料表。  
+
+如果要呼叫同一儲存過程(建立具有相同名稱的臨時過程,以確保`CREATE TABLE`語句成功,則使用`DROP`a 的簡單存在前檢查可以使用,如以下範例所示:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -100,14 +108,18 @@ BEGIN
 END
 ```
 
-為了維持編寫程式碼的一致性，資料表和暫存資料表最好都採用此模式。  當您在程式碼中完成使用暫存資料表之後，使用 `DROP TABLE` 加以移除也是一個很好的做法。  在預存程序開發期間，在程序結尾一併搭配 drop 命令以確保會清除這些物件，也是常見的做法。
+對於編碼一致性,最好將此模式同時用於表和臨時表。  在代碼中完成臨時表後,最好`DROP TABLE`使用它刪除臨時表。  
+
+在存儲過程開發中,通常可以看到放置命令在過程結束時捆綁在一起,以確保清理這些物件。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>模組化程式碼
-因為在使用者工作階段中的任何位置均可看見暫存資料表，這可用於協助您將應用程式程式碼模組化。  例如，下列預存程序會產生 DDL，根據統計資料名稱來更新資料庫中的所有統計資料。
+由於在使用者作業階段的任意位置都可以看到臨時表,因此可以利用此功能説明您模組化應用程式代碼。  
+
+例如,以下儲存過程生成 DDL 以按統計名稱更新資料庫中的所有統計資訊:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -181,7 +193,13 @@ FROM    t1
 GO
 ```
 
-在此階段，發生的唯一操作是創建一個預存程序，該過程生成具有 DDL 語句的臨時表#stats_ddl。  如果 #stats_ddl 已經存在，這個預存程序會卸除它，以確保在工作階段中執行一次以上時不會失敗。  不過，因為預存程序結尾沒有任何 `DROP TABLE`，當預存程序完成時，它會保留建立的資料表，以便能夠從預存程序之外讀取。  不同於其他 SQL Server 資料庫，在 SQL 資料倉儲中，從建立暫存資料表的程序之外能夠使用此暫存資料表。  工作階段內的 **任何位置** 都可以使用 SQL 資料倉儲暫存資料表。 這可以產生更具模組化和更易於管理的程式碼，如下列範例所示：
+在此階段,發生的唯一操作是創建一個存儲過程,該過程生成具有 DDL 語句的臨時表#stats_ddl。  
+
+此存儲過程將刪除現有#stats_ddl以確保在會話中運行多次時不會失敗。  
+
+不過，因為預存程序結尾沒有任何 `DROP TABLE`，當預存程序完成時，它會保留建立的資料表，以便能夠從預存程序之外讀取。  
+
+在 SQL 池中,與其他 SQL Server 資料庫不同,可以在創建它的過程之外使用臨時表。  SQL 池臨時表可以在會話內的**任意位置**使用。 此功能可以帶來更模組化和可管理的代碼,如以下範例所示:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -203,7 +221,9 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>暫存資料表限制
-SQL 資料倉儲在實作暫存資料表時的確有一些限制。  目前，僅支援工作階段範圍內的暫存資料表。  不支援全域暫存資料表。  此外，無法在暫存資料表上建立檢視。  只能使用雜湊或迴圈分佈創建臨時表。  不支援複製的臨時表分發。 
+在實現臨時表時,SQL 池確實會施加一些限制。  目前，僅支援工作階段範圍內的暫存資料表。  不支援全域臨時表。  
+
+此外,無法在臨時表上創建檢視。  只能使用哈希或迴圈分佈創建臨時表。  不支援複製的臨時表分發。 
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解如何開發資料表，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)。

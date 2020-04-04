@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420560"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631439"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>什麼是 Azure 虛擬網路的 IPv6?
 
@@ -57,7 +57,8 @@ Azure VNet 的 IPv6 包括以下功能:
     - 可選的出站規則,可對出站連接提供完全聲明性控制,以根據特定需求擴展和調整此功能。
     - 可選的多種前端配置,使單個負載均衡器能夠使用多個 IPv6 公共 IP 位址 - 相同的前端協定和埠可以在前端位址之間重複使用。
     - 選擇的 IPv6 連接埠可以使用負載平衡規則的*浮動 IP*功能在後端介面上重複使用 
-- [標準 IPv6 內部負載均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支援在 Azure VNET 中創建彈性多層應用程式。  
+    - 注意:負載平衡不執行任何協定轉換(無 NAT64)。 
+- [標準 IPv6 內部負載均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支援在 Azure VNET 中創建彈性多層應用程式。   
 - 基本 IPv6 公共負載均衡器支援與舊部署相容
 - [保留的 IPv6 公共 IP 位址和位址範圍](ipv6-public-ip-address-prefix.md)提供穩定、可預測的 IPv6 位址,便於為公司和客戶提供 Azure 託管應用程式的白名單。
 - 實例級公共 IP 直接向各個 VM 提供 IPv6 互聯網連接。
@@ -72,8 +73,9 @@ Azure VNET 的 IPv6 是一個基本功能集,使客戶能夠在 Azure 中託管�
 
 ## <a name="limitations"></a>限制
 Azure 虛擬網路版本的目前 IPv6 具有以下限制:
-- Azure 虛擬網路的IPv6在所有全域 Azure 區域中都可用,但僅在全域 Azure 中可用,但尚未在政府雲中提供。
-- ExpressRoute 和 VPN 閘道不能在啟用 IPv6 的 VNET 中使用,直接使用或與「使用遠端閘道」對等。 
+- Azure 虛擬網路的 IPv6 在所有全域 Azure 商業區域中都使用所有部署方法可用。  美國政府雲中的部署暫時僅限於 ARM (JSON) 範本、命令行介面 (CLI) 和 Powershell。  美國政府雲門戶中的 IPv6 支援將很快可用。  
+- 在啟用了 IPv6 的 VNET 中,ExpressRoute 閘道可用於僅 IPv4 流量。  對IPv6流量的支援已在我們的路線圖中。   
+- VPN 閘道不能在啟用 IPv6 的 VNET 中使用,直接使用或與「使用遠端閘道」對等。
 - Azure 平臺 (AKS 等) 不支援容器的 IPv6 通訊。  
 
 ## <a name="pricing"></a>定價

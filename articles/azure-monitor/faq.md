@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528509"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637778"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題
 
@@ -177,7 +177,7 @@ WireData
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure 監視器代理的防火牆要求是什麼?
-有關防火牆要求的詳細資訊,請參閱[網路防火牆要求](platform/log-analytics-agent.md#firewall-requirements)。
+有關防火牆要求的詳細資訊,請參閱[網路防火牆要求](platform/log-analytics-agent.md#network-requirements)。
 
 
 ## <a name="visualizations"></a>視覺效果
@@ -284,7 +284,7 @@ WireData
 
 * [Azure 診斷](platform/diagnostics-extension-to-application-insights.md)
 * [匯入到分析](platform/data-collector-api.md)
-* [紀錄分析](platform/data-collector-api.md)
+* [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>我是否可以篩選掉或修改某些遙測？
@@ -718,7 +718,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ## <a name="next-steps"></a>後續步驟
 如果您的問題未在此處回答,您可以參考以下論壇,以查找其他問題和答案。
 
-- [紀錄分析](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 有關 Azure 監視器的一般回饋,請造[訪 回饋論壇](https://feedback.azure.com/forums/34192--general-feedback)。

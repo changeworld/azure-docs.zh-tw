@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 21fa1c4faa4a080b9b495e1481fdadcd7e8bea10
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619484"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638002"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自動化中的 Az 模組支援
 
@@ -18,20 +18,27 @@ Azure 自動化支援在 Runbook 中使用[Azure PowerShell Az 模組](/powershe
 
 ## <a name="considerations"></a>考量
 
-在 Azure 自動化中使用匯總 Az 模組時,需要考慮許多事項。 自動化帳戶中的更高級別的解決方案可以使用 Runbook 和模組。 編輯 Runbook 或升級模組可能會導致 Runbook 的問題。 在導入新的 Az 模組之前,應在單獨的自動化帳戶中仔細測試所有 Runbook 和解決方案。 對模組的任何修改都會對[開始/停止](automation-solution-vm-management.md)解決方案產生負面影響。 我們不建議在包含任何解決方案的自動化帳戶中更改模組和 Runbook。 此行為不是 Az 模組的特定項目。 在向自動化帳戶引入任何更改時,應考慮這一點。
+在 Azure 自動化中使用 Az 模組時,需要考慮以下幾點:
 
-在自動化帳戶中導入 Az 模組不會自動在 Runbook 使用的 PowerShell 工作階段中導入該模組。 模組會在下列情況下匯入到 PowerShell 工作階段：
+* 自動化帳戶中的更高級別解決方案可以使用 Runbook 和模組。 因此,編輯 Runbook 或升級模組可能會導致解決方案出現問題。 在導入新的 Az 模組之前,應在單獨的自動化帳戶中仔細測試所有 Runbook 和解決方案。 
 
-* 當 Runbook 從模組呼叫 cmdlet 時
-* 當 Runbook`Import-Module`使用 cmdlet 顯式匯入模組時
-* 當 Runbook 匯入另一個模組時,具體取決於模組
+* 對模組的任何修改都會對[開始/停止](automation-solution-vm-management.md)解決方案產生負面影響。 
+
+* 在自動化帳戶中導入 Az 模組不會自動在 Runbook 使用的 PowerShell 工作階段中導入該模組。 模組會在下列情況下匯入到 PowerShell 工作階段：
+
+    * 當 Runbook 從模組呼叫 cmdlet 時
+    * 當 Runbook`Import-Module`使用 cmdlet 顯式匯入模組時
+    * 當 Runbook 匯入另一個模組時,具體取決於模組
+
+> [!NOTE]
+> 我們不建議在包含任何解決方案的自動化帳戶中更改模組和 Runbook。 此規定並非特定於 Az 模組。 在向自動化帳戶引入任何更改時,應考慮這一點。
 
 > [!IMPORTANT]
 > 確保自動化帳戶中的 Runbook 將 Az 模組或[AzureRM](https://www.powershellgallery.com/packages/AzureRM/6.13.1)模組(但不是兩者)導入 PowerShell 作業階段。 如果 Runbook 在 AzureRM 模組之前導入 Az 模組,則 Runbook 將完成。 但是,引用[Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) cmdlet 的錯誤顯示在作業流中,cmdlet 可能無法正確執行。 如果 Runbook 在 Az 模組之前導入 AzureRM 模組,則 Runbook 也會完成。 但是,在這種情況下,您在作業流中收到一個錯誤,指出無法在同一會話中導入 Az 和 AzureRM 或在同一 Runbook 中使用。
 
 ## <a name="migrating-to-az-modules"></a>遷移至 Az 模組
 
-建議您在測試自動化帳戶中測試遷移到 Az 模組。 創建此帳戶后,可以使用本節中的說明處理模組。
+我們建議您在測試自動化帳戶中測試遷移到 Az 模組。 創建帳戶后,可以使用本節中的說明處理模組。
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>停止並取消計畫使用 AzureRM 模組的所有 Runbook
 

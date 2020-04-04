@@ -1,5 +1,5 @@
 ---
-title: 排除 Azure 自動化所需狀態配置 （DSC） 的故障
+title: 排除 Azure 自動化狀態配置 (DSC) 的故障
 description: 本文提供有關針對 Desired State Configuration (DSC) 問題進行疑難排解的資訊
 services: automation
 ms.service: automation
@@ -9,54 +9,54 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99220fdf5dfb47f235637f83ba9be4ec015758bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294429"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631485"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>解決 Azure 自動化所需狀態配置 （DSC） 的問題
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>解決 Azure 自動化狀態配置 (DSC) 的問題
 
 本文提供有關針對 Desired State Configuration (DSC) 問題進行疑難排解的資訊。
 
 ## <a name="diagnosing-an-issue"></a>診斷問題
 
-在 Azure 狀態配置中編譯或部署配置時出錯時，下面是説明您診斷問題的幾個步驟。
+在 Azure 狀態配置中編譯或部署配置時出錯時,下面是説明您診斷問題的幾個步驟。
 
-### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. 確保您的配置在本地電腦上成功編譯
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. 確保您的設定在本地電腦上成功編譯
 
-Azure 狀態配置基於 PowerShell DSC 構建。 您可以在[PowerShell DSC 文檔中](https://docs.microsoft.com/powershell/scripting/overview)找到 DSC 語言和語法的文檔。
+Azure 狀態配置基於 PowerShell DSC 構建。 您可以在[PowerShell DSC 文件中](https://docs.microsoft.com/powershell/scripting/overview)找到 DSC 語言和語法的文檔。
 
-通過在本地電腦上編譯 DSC 配置，可以發現並解決常見錯誤，例如：
+透過在本地電腦上編譯 DSC 設定,可以發現並解決常見錯誤,例如:
 
    - 缺少模組
    - 語法錯誤
    - 邏輯錯誤
 
-### <a name="2-view-dsc-logs-on-your-node"></a>2. 在節點上查看 DSC 日誌
+### <a name="2-view-dsc-logs-on-your-node"></a>2. 在節點上檢視 DSC 紀錄
 
-如果您的配置編譯成功，但在應用於節點時失敗，則可以在 DSC 日誌中找到詳細資訊。 有關在哪裡可以找到這些日誌的資訊，請參閱[DSC 事件日誌在哪裡](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
+如果您的配置編譯成功,但在應用於節點時失敗,則可以在 DSC 日誌中找到詳細資訊。 有關在哪裡可以找到這些日誌的資訊,請參閱[DSC 事件紀錄在哪裡](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
 
-[xDsc診斷](https://github.com/PowerShell/xDscDiagnostics)模組可以説明您分析來自 DSC 日誌的詳細資訊。 如果您聯繫支援部門，他們需要這些日誌來診斷您的問題。
+[xDsc診斷](https://github.com/PowerShell/xDscDiagnostics)模組可以説明您分析來自 DSC 日誌的詳細資訊。 如果您聯繫支援部門,他們需要這些日誌來診斷您的問題。
 
 您可以使用[安裝穩定版本模組](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的說明在本地電腦上安裝 xDsc診斷模組。
 
-要在 Azure 電腦上安裝 xDsc診斷模組，請使用[Invoke-AzVMRun命令](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 您還可以在門戶中使用 **"運行"命令**選項，通過按照[Windows VM 中的運行 PowerShell 腳本中的步驟使用運行命令](../../virtual-machines/windows/run-command.md)。
+在 Azure 電腦上安裝 xDsc診斷模組,請使用[Invoke-AzVMRun 命令](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 您還可以在門戶中使用 **「執行」指令**選項,透過您的[Windows VM 中的執行 PowerShell 文稿中的步驟使用執行指令](../../virtual-machines/windows/run-command.md)。
 
-有關使用 xDsc診斷的資訊，請參閱[使用 xDsc診斷來分析 DSC 日誌](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另請參閱[xDsc診斷 Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
+有關使用 xDsc診斷的資訊,請參閱[使用 xDsc 診斷來分析 DSC 紀錄](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另請參考[xDsc 診斷 Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
 
-### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. 確保節點和自動化工作區具有所需的模組
+### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. 確保節點與自動化工作區具有所需的模組
 
-DSC 取決於節點上安裝的模組。 使用 Azure 自動化狀態配置時，請使用導入模組 中列出的步驟將任何必需[的模組](../shared-resources/modules.md#import-modules)導入自動化帳戶。 配置還可以依賴于模組的特定版本。 有關詳細資訊，請參閱[故障排除模組](shared-resources.md#modules)。
+DSC取決於節點上安裝的模組。 使用 Azure 自動化狀態配置時,請使用導入模組 中列出的步驟將任何必需[的模組](../shared-resources/modules.md#importing-modules)導入自動化帳戶。 配置還可以依賴於模組的特定版本。 有關詳細資訊,請參閱[故障排除模組](shared-resources.md#modules)。
 
-## <a name="common-errors-when-working-with-dsc"></a>使用 DSC 時的常見錯誤
+## <a name="common-errors-when-working-with-dsc"></a>使用 DSC 時的錯誤
 
-### <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>方案：無法從門戶中刪除具有特殊字元的配置
+### <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>專案:無法從門戶中移除有特殊字元的設定
 
 #### <a name="issue"></a>問題
 
-嘗試從門戶中刪除 DSC 配置時，您將看到以下錯誤：
+試著從門戶中移除 DSC 設定時,您將看到以下錯誤:
 
 ```error
 An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
@@ -64,19 +64,19 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 #### <a name="cause"></a>原因
 
-此錯誤是計畫要解決的臨時問題。
+此錯誤是計劃要解決的臨時問題。
 
 #### <a name="resolution"></a>解決方案
 
-* 使用 Az Cmdlet"刪除-Az自動化配置"刪除配置。
-* 此 Cmdlet 的文檔尚未更新。  在此之前，請參閱 AzureRM 模組的文檔。
-  * [刪除 AzureRm 自動化DSC配置](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
+* 使用 Az Cmdlet"刪除-Az自動化配置" 刪除設定。
+* 此 cmdlet 的文檔尚未更新。  在此之前,請參閱 AzureRM 模組的文檔。
+  * [移除 AzureRm 自動化DSC設定](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>方案：無法註冊 Dsc 代理
+### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>方案:無法註冊 Dsc 代理
 
 #### <a name="issue"></a>問題
 
-嘗試運行`Set-DscLocalConfigurationManager`或其他 DSC Cmdlet 時，您會收到錯誤：
+試著`Set-DscLocalConfigurationManager`執行或 DSC cmdlet 時, 您會收到錯誤:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -95,13 +95,13 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 #### <a name="resolution"></a>解決方案
 
-驗證電腦有權訪問 Azure 自動化 DSC 的正確終結點，然後重試。 有關所需的埠和位址的清單，請參閱[網路規劃](../automation-dsc-overview.md#network-planning)
+驗證電腦有權訪問 Azure 自動化 DSC 的正確終結點,然後重試。 有關所需的連接埠和地址的清單,請參閱[網路規劃](../automation-dsc-overview.md#network-planning)
 
-### <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>方案：狀態報表返回回應代碼"未授權"
+### <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>方案:狀態報告返回回應代碼"未授權"
 
 #### <a name="issue"></a>問題
 
-使用狀態配置 （DSC） 註冊節點時，您會收到以下錯誤訊息之一：
+使用狀態設定 (DSC) 註冊節點時,您會收到以下錯誤訊息之一:
 
 ```error
 The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
@@ -113,27 +113,27 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-此問題是由證書損壞或過期引起的。  有關詳細資訊，請參閱[證書過期和重新註冊](../automation-dsc-onboarding.md#re-registering-a-node)。
+此問題是由證書損壞或過期引起的。  有關詳細資訊,請參閱[憑證過期和重新註冊](../automation-dsc-onboarding.md#re-registering-a-node)。
 
 ### <a name="resolution"></a>解決方案
 
 按照下面列出的步驟重新註冊失敗的 DSC 節點。
 
-首先，使用以下步驟取消註冊節點。
+首先,使用以下步驟取消註冊節點。
 
-1. 從 Azure 門戶，**在家庭** -> **自動化帳戶**下 -> [您的自動化帳戶] ->**狀態配置 （DSC）**
-2. 按一下"節點"，然後按一下遇到故障的節點。
-3. 按一下"取消註冊"以取消註冊節點。
+1. 從 Azure 門戶,**在家庭** -> **自動化帳戶**下 -> [您的自動化帳戶] ->**狀態配置 (DSC)**
+2. 按下"節點",然後單擊遇到故障的節點。
+3. 單擊"取消註冊"以取消註冊節點。
 
-其次，從節點卸載 DSC 擴展。
+其次,從節點卸載 DSC 擴展。
 
-1. 從 Azure 門戶，**在家庭** -> **虛擬機器**-> [失敗節點] ->**擴展**
-2. 按一下"微軟.電源外殼.DSC"。
-3. 按一下"卸載"，卸載 PowerShell DSC 擴展。
+1. 從 Azure 門戶,**在家庭** -> **虛擬機器**-> [失敗節點] ->**擴展**
+2. 單擊「微軟.電源外殼.DSC」。。
+3. 單擊"卸載",卸載 PowerShell DSC 擴展。
 
-第三，從節點中刪除所有損壞或過期的證書。
+第三,從節點中刪除所有損壞或過期的證書。
 
-在提升的 Powershell 提示器中的故障節點上，運行以下操作：
+在提升的 Powershell 提示器中的故障節點上,執行以下操作:
 
 ```powershell
 $certs = @()
@@ -151,13 +151,13 @@ If (($certs.Count) -gt 0)
 }
 ```
 
-最後，使用以下步驟重新註冊故障節點。
+最後,使用以下步驟重新註冊故障節點。
 
-1. 從 Azure 門戶，**在家庭** -> **自動化帳戶**下 -> [您的自動化帳戶] ->**狀態配置 （DSC）**
-2. 按一下"節點"。
-3. 按一下"添加"按鈕。
+1. 從 Azure 門戶,**在家庭** -> **自動化帳戶**下 -> [您的自動化帳戶] ->**狀態配置 (DSC)**
+2. 單擊"節點"。
+3. 按下「添加」按鈕。
 4. 選擇故障節點。
-5. 按一下"連接"，然後選擇所需的選項。
+5. 按下"連接",然後選擇所需的選項。
 
 ### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>案例：節點處於失敗狀態，並發生「找不到」錯誤
 
@@ -175,13 +175,13 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 #### <a name="resolution"></a>解決方案
 
-* 請確保為節點分配的是"節點配置名稱"，而不是"配置名稱"。
+* 請確保為節點分配的是「節點配置名稱」,而不是「設定名稱」。
 * 您可以使用 Azure 入口網站或使用 PowerShell Cmdlet，將節點組態指派至節點。
 
-  * 要使用 Azure 門戶將節點配置分配給節點，請打開**DSC 節點**頁面，然後選擇一個節點，然後按一下"**分配節點配置**"按鈕。
-  * 要使用 PowerShell Cmdlet 將節點配置分配給節點，請使用**Set-AzureRmAutomationDnode** Cmdlet
+  * 要使用 Azure 門戶將節點配置分配給節點,請打開**DSC 節點**頁面,然後選擇一個節點,然後按一下「**分配節點設定**」按鈕。
+  * 要使用 PowerShell cmdlet 將節點設定配置給節點,請使用**Set-AzureRmAutomationDnode** cmdlet
 
-### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a><a name="no-mof-files"></a>方案：編譯配置時未生成節點配置（MOF 檔案）
+### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a><a name="no-mof-files"></a>配置:編譯設定時未產生節點設定(MOF 檔案)
 
 #### <a name="issue"></a>問題
 
@@ -218,9 +218,9 @@ No instance found with given property values
 
 #### <a name="resolution"></a>解決方案
 
-要解決此問題，請按照[DSC 已知問題和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)文章中的說明進行操作。
+要解決此問題,請按照[DSC 已知問題和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)文章中的說明進行操作。
 
-### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>方案：無法在 DSC 配置中使用憑據
+### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>方案:無法在 DSC 設定中使用認證
 
 #### <a name="issue"></a>問題
 
@@ -232,17 +232,17 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="cause"></a>原因
 
-您在配置中使用了憑據，但沒有提供適當的**配置資料**來為每個節點配置設置**PSDscAllowPlainTextPassword**為 true。
+您在配置中使用了認證,但沒有提供適當的**配置資料**來為每個節點設定設定**PSDscAllowPlainTextPassword**為 true。
 
 #### <a name="resolution"></a>解決方案
 
-* 請確保在適當的**配置資料**中傳遞，以便針對配置中提到的每個節點配置將**PSDscAllowPlainTextPassword**設置為 true。 有關詳細資訊，請參閱在[Azure 自動化狀態配置中編譯 DSC 配置](../automation-dsc-compile.md)。
+* 請確保在適當的**配置資料**中傳遞,以便針對配置中提到的每個節點配置將**PSDscAllowPlainTextPassword**設置為 true。 有關詳細資訊,請參閱在[Azure 自動化狀態設定中編譯 DSC 設定](../automation-dsc-compile.md)。
 
-### <a name="scenario-onboarding-from-dsc-extension-failure-processing-extension-error"></a><a name="failure-processing-extension"></a>方案：從 dsc 擴展載入，"失敗處理擴展"錯誤
+### <a name="scenario-onboarding-from-dsc-extension-failure-processing-extension-error"></a><a name="failure-processing-extension"></a>方案:從 dsc 擴充載入,失敗處理延伸「錯誤
 
 #### <a name="issue"></a>問題
 
-使用 DSC 擴展載入時，將發生包含錯誤的失敗：
+使用 DSC 延伸載入時,將發生包含錯誤的失敗:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -250,18 +250,18 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 #### <a name="cause"></a>原因
 
-當為節點分配服務中不存在的節點配置名稱時，通常會發生此錯誤。
+當為節點分配服務中不存在的節點配置名稱時,通常會發生此錯誤。
 
 #### <a name="resolution"></a>解決方案
 
-* 請確保為節點分配的節點具有與服務中的名稱完全符合的節點配置名稱。
-* 您可以選擇不包括節點配置名稱，這將導致節點入入，但不會分配節點配置
+* 請確保為節點分配的節點具有與服務中的名稱完全匹配的節點配置名稱。
+* 您可以選擇不包括節點設定名稱,這會導致節點入入,但不會分配節點設定
 
-### <a name="scenario-registering-a-node-with-powershell-returns-the-error-one-or-more-errors-occurred"></a><a name="cross-subscription"></a>方案：使用 PowerShell 註冊節點將返回錯誤"發生一個或多個錯誤"
+### <a name="scenario-registering-a-node-with-powershell-returns-the-error-one-or-more-errors-occurred"></a><a name="cross-subscription"></a>方案:使用 PowerShell 註冊節點將返回錯誤"發生一個或多個錯誤"
 
 #### <a name="issue"></a>問題
 
-使用`Register-AzAutomationDSCNode`或`Register-AzureRMAutomationDSCNode`註冊節點時，您會收到以下錯誤。
+使用`Register-AzAutomationDSCNode``Register-AzureRMAutomationDSCNode`或 註冊節點時,您會收到以下錯誤。
 
 ```error
 One or more errors occurred.
@@ -269,7 +269,7 @@ One or more errors occurred.
 
 #### <a name="cause"></a>原因
 
-當您嘗試註冊與自動化帳戶分開的訂閱中的節點時，將發生此錯誤。
+當您嘗試註冊與自動化帳戶分開的訂閱中的節點時,將發生此錯誤。
 
 #### <a name="resolution"></a>解決方案
 
@@ -277,14 +277,14 @@ One or more errors occurred.
 
 按照以下步驟註冊節點。
 
-* Windows -[本地或 Azure/AWS 以外的雲中的物理/虛擬 Windows 電腦](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)。
-* Linux -[本地或 Azure 以外的雲中的物理/虛擬 Linux 電腦](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
+* Windows -[本地或 Azure/AWS 以外的雲端/虛擬 Windows 電腦](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)。
+* Linux -[本地或 Azure 以外的雲端或虛擬 Linux 電腦](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
 
-### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>方案：錯誤訊息 - "預配失敗"
+### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>方案:錯誤消息 - "預配失敗"
 
 #### <a name="issue"></a>問題
 
-註冊節點時，您會看到錯誤：
+註冊節點時,您會看到錯誤:
 
 ```error
 Provisioning has failed
@@ -292,19 +292,19 @@ Provisioning has failed
 
 #### <a name="cause"></a>原因
 
-當節點和 Azure 之間存在連接問題時，將發生此消息。
+當節點和 Azure 之間存在連接問題時,將發生此消息。
 
 #### <a name="resolution"></a>解決方案
 
-確定節點是否位於專用虛擬網路中，還是連接到 Azure 時還有其他問題。
+確定節點是否位於專用虛擬網路中,還是連接到 Azure 時還有其他問題。
 
-有關詳細資訊，請參閱[在加入解決方案時排除錯誤](onboarding.md)。
+有關詳細資訊,請參閱[在加入解決方案時排除錯誤](onboarding.md)。
 
-### <a name="scenario-applying-a-configuration-in-linux-a-failure-occurs-with-a-general-error"></a><a name="failure-linux-temp-noexec"></a>方案：在 Linux 中應用配置，失敗時會出現一般錯誤
+### <a name="scenario-applying-a-configuration-in-linux-a-failure-occurs-with-a-general-error"></a><a name="failure-linux-temp-noexec"></a>方案:在 Linux 中應用設定,失敗時會出現一般錯誤
 
 #### <a name="issue"></a>問題
 
-在 Linux 中應用配置時，將發生包含錯誤的失敗：
+在 Linux 中應用設定時,將發生包含錯誤的失敗:
 
 ```error
 This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
@@ -312,19 +312,19 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>原因
 
-客戶已確定，如果`/tmp`位置設置為`noexec`，則當前版本的 DSC 將無法應用配置。
+客戶已確定,如果`/tmp`位置設置為`noexec`,則當前版本的 DSC 將無法應用配置。
 
 #### <a name="resolution"></a>解決方案
 
-* 從`/tmp`位置`noexec`中刪除該選項。
+* 從`/tmp``noexec`位置中刪除該選項。
 
-### <a name="scenario-node-configuration-names-that-overlap-could-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>方案：重疊的節點配置名稱可能會導致發佈錯誤
+### <a name="scenario-node-configuration-names-that-overlap-could-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>配置:重疊的節點設定名稱可能會導致發佈錯誤
 
 #### <a name="issue"></a>問題
 
-如果單個配置腳本用於生成多個節點配置，並且某些節點配置的名稱是其他配置的子集，則編譯服務中的問題可能會導致分配錯誤的配置。  僅當使用單個腳本生成每個節點具有配置資料的配置時，並且僅當名稱重疊發生在字串的開頭時，才會發生這種情況。
+如果單個配置腳本用於生成多個節點配置,並且某些節點配置的名稱是其他配置的子集,則編譯服務中的問題可能會導致分配錯誤的配置。  僅當使用單個腳本生成每個節點具有配置數據的配置時,並且僅當名稱重疊發生在字串的開頭時,才會發生這種情況。
 
-例如，如果單個配置腳本用於根據使用 Cmdlet 作為雜湊表傳遞的節點資料組建組態，並且節點資料包括名為"伺服器"和"1server"的伺服器。
+例如,如果單個配置腳本用於根據使用 cmdlet 作為哈希表傳遞的節點數據生成配置,並且節點數據包括名為「伺服器」和「1server」的伺服器。
 
 #### <a name="cause"></a>原因
 
@@ -332,13 +332,13 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="resolution"></a>解決方案
 
-最好的解決方法是在本地或 CI/CD 管道中編譯，並將 MOF 檔案直接上載到服務。  如果服務中的編譯是必需的，則下一個最佳解決方法是拆分編譯作業，以便名稱沒有重疊。
+最好的解決方法是在本地或 CI/CD 管道中編譯,並將 MOF 檔直接上傳到服務。  如果服務中的編譯是必需的,則下一個最佳解決方法是拆分編譯作業,以便名稱沒有重疊。
 
-### <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>方案：DSC 配置上載上的閘道逾時錯誤
+### <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>配置:DSC 設定上載上的閘道逾時錯誤
 
 #### <a name="issue"></a>問題
 
-上傳 DSC 配置時收到`GatewayTimeout`錯誤。 
+上傳 DSC 設定`GatewayTimeout`時收到 錯誤。 
 
 #### <a name="cause"></a>原因
 
@@ -346,12 +346,12 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="resolution"></a>解決方案
 
-通過顯式包含任何`ModuleName``Import-DscResource`調用的參數，可以使 DSC 配置解析得更快。 有關詳細資訊，請參閱[使用導入 DSC 資源](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1)。
+通過顯式包含任何`ModuleName``Import-DscResource`調用的參數,可以使 DSC 配置解析得更快。 有關詳細資訊,請參閱[使用導入 DSC 資源](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1)。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
 * 通過[Azure 論壇](https://azure.microsoft.com/support/forums/)從 Azure 專家那裡獲得答案。
-* 與[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帳戶連接，通過將 Azure 社區連接到正確的資源（答案、支援和專家），從而改善客戶體驗。
-* 如果需要更多協助，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+* 與[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帳戶連接,通過將 Azure 社區連接到正確的資源(答案、支援和專家),從而改善客戶體驗。
+* 如果需要更多協助，您可以提出 Azure 支援事件。 跳到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **「取得支援**」。

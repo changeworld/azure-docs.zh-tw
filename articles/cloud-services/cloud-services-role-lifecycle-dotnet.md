@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385808"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652085"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自訂 Web 或背景工作角色的生命週期
 當您建立背景工作角色時，擴充可為您提供覆寫方法並讓您回應生命週期事件的 [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 類別。 若是 Web 角色，此類別是選擇性的，因此您必須使用它來回應生命週期事件。
@@ -23,7 +23,7 @@ ms.locfileid: "75385808"
 
 擴充 **RoleEntryPoint** 時，應留意下列方法的行為：
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) 和 [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) 方法會傳回布林值，因此可能會從這些方法傳回 **false**。
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))方法返回布爾值,因此可以從此方法返回**false。**
   
    如果您的程式碼傳回 **false**，會突然終止角色處理序，而不會執行您既有的任何關機順序。 一般而言，您應該避免從 **OnStart** 方法傳回 **false**。
 * **RoleEntryPoint** 方法多載未能攔截的任何例外狀況，將一律視為未處理的例外狀況。

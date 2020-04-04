@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549146"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657070"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 資料庫無伺服器
 
@@ -151,13 +151,13 @@ SQL 快取會隨著資料以與預配資料庫相同的速度和速度從磁碟�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客戶託管的透明資料加密 (BYOK)
 
-如果使用[客戶託管的透明數據加密](transparent-data-encryption-byok-azure-sql.md)(BYOK) 和無伺服器資料庫在密鑰刪除或吊銷時自動暫停,則資料庫將保持自動暫停狀態。  在這種情況下,在下次恢復資料庫后,資料庫在大約 10 分鐘內變得無法訪問。  一旦資料庫變得無法訪問,恢復過程與預配計算資料庫的過程相同。  如果發生密鑰刪除或吊銷時無伺服器資料庫處於連線狀態,則資料庫在大約 10 分鐘或更少後也會變得不可訪問,其方式與預配計算資料庫的方式相同。
+如果使用[客戶託管的透明數據加密](transparent-data-encryption-byok-azure-sql.md)(BYOK) 和無伺服器資料庫在密鑰刪除或吊銷時自動暫停,則資料庫將保持自動暫停狀態。  在這種情況下,在下次恢復資料庫后,資料庫在大約 10 分鐘內變得無法訪問。  一旦資料庫變得無法訪問,恢復過程與預配計算資料庫的過程相同。  如果無伺服器資料庫在發生密鑰刪除或吊銷時處於連線狀態,則資料庫在大約 10 分鐘內也會以與預配計算資料庫相同的方式無法訪問。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>進入無伺服器計算層
 
 創建新資料庫或將現有資料庫移動到無伺服器計算層遵循與在預配計算層中創建新資料庫相同的模式,並涉及以下兩個步驟。
 
-1. 指定服務目標名稱。 服務目標規定了服務層、硬體生成和最大 vCore。 下表顯示服務目標選項：
+1. 指定服務目標。 服務目標規定了服務層、硬體生成和最大 vCore。 下表顯示服務目標選項：
 
    |服務目標名稱|服務層|硬體世代|虛擬核心數上限|
    |---|---|---|---|
@@ -176,12 +176,12 @@ SQL 快取會隨著資料以與預配資料庫相同的速度和速度從磁碟�
    |參數|值選擇|預設值|
    |---|---|---|---|
    |最小 vCores|設定的最大 vCore - 請參考[資源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。|0.5 個虛擬核心|
-   |自動暫停延遲|最少:60分鐘(1小時)<br>最多:10080 分鐘(7 天)<br>遞增: 60 分鐘<br>停用自動暫停：-1|60 Minuten|
+   |自動暫停延遲|最少:60分鐘(1小時)<br>最多:10080 分鐘(7 天)<br>遞增: 10 分鐘<br>停用自動暫停：-1|60 Minuten|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>在無伺服器計算層中建立新資料庫 
 
-以下範例在無伺服器計算層中創建新資料庫。 這些示例顯式指定最小 vCore、最大 vCore 和自動暫停延遲。
+以下範例在無伺服器計算層中創建新資料庫。
 
 #### <a name="use-azure-portal"></a>使用 Azure 入口網站
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用交易 SQL (T-SQL)
 
-下面的範例在無伺服器計算層中創建一個新資料庫。
+使用 T-SQL 時,將應用預設值進行最小 vcore 和自動暫停延遲。
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>將資料庫從預先計算層移至無伺服器計算層
 
-以下範例將資料庫從預配計算層移動到無伺服器計算層。 這些示例顯式指定最小 vCore、最大 vCore 和自動暫停延遲。
+以下範例將資料庫從預配計算層移動到無伺服器計算層。
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用交易 SQL (T-SQL)
 
-下面的範例將資料庫從預配計算層移動到無伺服器計算層。
+使用 T-SQL 時,將應用預設值進行最小 vcore 和自動暫停延遲。
 
 ```sql
 ALTER DATABASE testdb 

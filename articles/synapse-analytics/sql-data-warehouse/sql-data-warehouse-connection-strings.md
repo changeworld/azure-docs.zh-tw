@@ -1,6 +1,6 @@
 ---
 title: 連接字串
-description: 適用於 SQL 資料倉儲的連接字串
+description: Synapse SQL 池的連接字串
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,15 +11,17 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f64c584ea5a32f371f84facc195cd02ef6ffdff0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4c3f73fb763fa28ac826ebb97c3c325a2408542c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350630"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633583"
 ---
-# <a name="connection-strings-for-azure-sql-data-warehouse"></a>適用於 Azure SQL 資料倉儲的連接字串
-您可以使用數個不同的應用程式通訊協定 (例如[ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 及 [JDBC][JDBC]) 連線到 SQL 資料倉儲。 以下是每個通訊協定連接字串的一些範例。  您也可以使用 Azure 入口網站來建立連接字串。  若要使用 Azure 入口網站建置連接字串，請瀏覽至您資料庫的刀鋒視窗，在 [程式集]** 底下，按一下 [顯示資料庫連接字串]**。
+# <a name="connection-strings-for-synapse-sql-pool"></a>Synapse SQL 池的連接字串
+您可以使用多個不同的應用程式協定連線到 SQL 池,例如[,ADO.NET、ODBC、PHP](https://msdn.microsoft.com/library/jj730314.aspx)[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)和[ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)[JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 以下是每個通訊協定連接字串的一些範例。  您也可以使用 Azure 入口網站來建立連接字串。  
+
+若要使用 Azure 入口網站建置連接字串，請瀏覽至您資料庫的刀鋒視窗，在 [程式集]** 底下，按一下 [顯示資料庫連接字串]**。
 
 ## <a name="sample-adonet-connection-string"></a>範例 ADO.NET 連接字串
 ```csharp
@@ -47,17 +49,4 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 
 ## <a name="next-steps"></a>後續步驟
-若要透過 Visual Studio 和其他應用程式開始查詢您的資料倉儲，請參閱[使用 Visual Studio 查詢][Query with Visual Studio]。
-
-<!--Image references-->
-
-<!--Azure.com references-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-
-<!--Other references-->
+要開始使用 Visual Studio 和其他應用程式查詢 SQL 池,請參閱[使用 Visual Studio 查詢](sql-data-warehouse-query-visual-studio.md)。

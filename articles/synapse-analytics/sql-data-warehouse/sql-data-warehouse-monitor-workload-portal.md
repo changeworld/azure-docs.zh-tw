@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 9eacb813c3ddce028fcd9b24c86c6d32ed7a7584
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586562"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633215"
 ---
 # <a name="monitor-workload---azure-portal"></a>監視工作負荷 - Azure 門戶
 
@@ -24,11 +24,11 @@ ms.locfileid: "80586562"
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-- SQL 池:我們將為 SQL 池收集日誌。 如果沒有預配 SQL 池,請參閱[創建 SQL 池](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)中的說明。
+- SQL 池:我們將為 SQL 池收集日誌。 如果沒有預配 SQL 池,請參閱[創建 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)中的說明。
 
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 
-導覽到紀錄分析工作區的瀏覽邊欄選項卡,並建立工作區 
+導覽到紀錄分析工作區的瀏覽邊欄選項卡,並建立工作區
 
 ![Log Analytics 工作區](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "80586562"
 
 ![新增分析工作區](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-關於工作區的詳細資訊,請造訪以下[文件](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)。
+關於工作區的詳細資訊,請造訪以下[文件](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
 
 ## <a name="turn-on-diagnostic-logs"></a>開啟診斷紀錄
 
@@ -47,7 +47,6 @@ ms.locfileid: "80586562"
 - [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=aps-pdw-2016-au7)
-
 
 ![啟用診斷記錄](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
@@ -64,39 +63,38 @@ ms.locfileid: "80586562"
 - 建立記錄警示
 - 將查詢結果固定到儀表板
 
-關於紀錄查詢功能的詳細資訊,請造訪以下[文件](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)。
+關於紀錄查詢功能的詳細資訊,請造訪以下[文件](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ![紀錄分析工作區編輯器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
-
-
 
 ![紀錄分析工作區查詢](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_queries.png)
 
 ## <a name="sample-log-queries"></a>範例紀錄查詢
 
-
-
 ```Kusto
-//List all queries 
+//List all queries
 AzureDiagnostics
 | where Category contains "ExecRequests"
 | project TimeGenerated, StartTime_t, EndTime_t, Status_s, Command_s, ResourceClass_s, duration=datetime_diff('millisecond',EndTime_t, StartTime_t)
 ```
+
 ```Kusto
 //Chart the most active resource classes
 AzureDiagnostics
 | where Category contains "ExecRequests"
 | where Status_s == "Completed"
 | summarize totalQueries = dcount(RequestId_s) by ResourceClass_s
-| render barchart 
+| render barchart
 ```
+
 ```Kusto
 //Count of all queued queries
 AzureDiagnostics
-| where Category contains "waits" 
+| where Category contains "waits"
 | where Type_s == "UserConcurrencyResourceType"
 | summarize totalQueuedQueries = dcount(RequestId_s)
 ```
+
 ## <a name="next-steps"></a>後續步驟
 
 現在,您已經設置並配置了 Azure 監視器日誌,[請自定義 Azure 儀表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)以跨團隊共用。

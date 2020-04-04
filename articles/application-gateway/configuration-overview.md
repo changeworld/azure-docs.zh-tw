@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585913"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632182"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定概述
 
@@ -118,7 +118,7 @@ Azure 還在每個子網中保留五個 IP 位址供內部使用:前四個 IP �
 
   **方案 1**: 虛擬裝置的 UDR
 
-  v2 公共預覽不支援任何需要通過任何虛擬設備、集線器/輻條虛擬網路或內部(強制隧道)重定向 0.0.0.0 或方案。 
+  V2 不支援任何需要通過任何虛擬設備、集線器/分支虛擬網路或內部(強制隧道)重定向 0.0.0.0/0 的方案。
 
 ## <a name="front-end-ip"></a>前端 IP
 
