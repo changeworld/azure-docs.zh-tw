@@ -1,15 +1,16 @@
 ---
-title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的叢集安全性
+title: 叢集安全的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中管理叢集安全性和升級的最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f02f6588946e2b63a1a092aba15603d1685e8207
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d4e8577116ba1d78aaa881887f64e71c04af4f2
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594799"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668337"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中叢集安全性和升級的最佳做法
 
@@ -21,11 +22,11 @@ ms.locfileid: "77594799"
 > * 使用 Azure Active Directory 和角色型存取控制來保護 API 伺服器存取
 > * 保護容器對節點資源的存取
 > * 將 AKS 叢集升級至最新版 Kubernetes
-> * 使節點保持最新並自動應用安全修補程式
+> * 使節點保持最新並自動套用安全修補程式
 
 您也可以閱讀適用於[容器映像管理][best-practices-container-image-management]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-您還可以使用 Azure [Kubernetes 服務與安全中心集成][security-center-aks]來説明檢測威脅並查看用於保護 AKS 群集的建議。
+您還可以使用 Azure [Kubernetes 服務與安全中心整合][security-center-aks]來幫助檢測威脅並查看用於保護 AKS 叢集的建議。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>保護對 API 伺服器和叢集節點的存取
 
@@ -49,7 +50,7 @@ Azure Active Directory (AD) 提供符合企業需求且能與 AKS 叢集整合�
 
 就如同您應授與使用者或群組所需的最低權限一樣，也應限制容器只能執行所需的動作和處理。 為了將攻擊風險降到最低，請勿將應用程式和容器設定為需要提升權限或根存取。 例如，在 Pod 資訊清單中設定 `allowPrivilegeEscalation: false`。 這些「Pod 資訊安全內容」** 內建在 Kubernetes 中，並可讓您定義其他權限，例如要執行的使用者或群組身分，或要公開哪些 Linux 功能。 如需最佳做法詳細資訊，請參閱[保護 Pod 對資源的存取][pod-security-contexts]。
 
-若要針對容器動作進行更細微的控制，您也可以使用內建的 Linux 安全性功能，例如 *AppArmor* 和 *Seccomp*。 這些功能在節點層級定義，然後透過 Pod 資訊清單實作。 內置 Linux 安全功能僅在 Linux 節點和 Pod 上可用。
+若要針對容器動作進行更細微的控制，您也可以使用內建的 Linux 安全性功能，例如 *AppArmor* 和 *Seccomp*。 這些功能在節點層級定義，然後透過 Pod 資訊清單實作。 內建 Linux 安全功能僅在 Linux 節點和 Pod 上可用。
 
 > [!NOTE]
 > 多租用戶如有惡意的使用，AKS 或其他位置中的 Kubernetes 環境就並不完全安全。 進一步其他安全功能 (例如 *AppArmor*、*seccomp*、*Pod 安全性原則*，或更精細的角色型存取控制 (RBAC)) 用於節點，可以提高攻擊的難度。 不過，在執行惡意的多租用戶工作負載時若要保有真正的安全性，Hypervisor 才是您唯一可信賴的安全性層級。 Kubernetes 的安全性網域會成為整個叢集，而非個別節點。 對於這些類型的惡意多租用戶工作負載，您應使用實際隔離的叢集。
@@ -192,13 +193,13 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 如需有關在 AKS 中升級的詳細資訊，請參閱 [AKS 中支援的 Kubernetes 版本][aks-supported-versions]和[升級 AKS 叢集][aks-upgrade]。
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>使用 kured 處理 Linux 節點更新和重新開機
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>使用 kured 處理 Linux 節點更新和重新啟動
 
-**最佳實踐指南**- AKS 自動在每個 Linux 節點上下載並安裝安全修補程式，但必要時不會自動重新開機。 使用 `kured` 來監看擱置的重新啟動，然後安全地封鎖並清空節點，以讓節點重新啟動，套用更新，並盡可能如 OS 預期地安全。 對於 Windows Server 節點（當前在 AKS 中處於預覽狀態），定期執行 AKS 升級操作，以安全隔離和排空 pod 並部署更新的節點。
+**最佳實務指南**- AKS 自動在每個 Linux 節點上下載並安裝安全修補程式,但必要時不會自動重新啟動。 使用 `kured` 來監看擱置的重新啟動，然後安全地封鎖並清空節點，以讓節點重新啟動，套用更新，並盡可能如 OS 預期地安全。 對於 Windows Server 節點(目前在 AKS 中處於預覽狀態),定期執行 AKS 升級操作,以安全隔離和排空 pod 並部署更新的節點。
 
-每天晚上，AKS 中的 Linux 節點都會通過其發行版本更新通道獲取可用的安全修補程式。 在節點部署到 AKS 叢集當中時，已自動設定此行為。 為了盡可能減少中斷，並降低對正在執行之工作負載的可能影響，如果安全性修補程式或核心更新需要重新啟動時，節點不會自動重新啟動。
+每天晚上,AKS 中的 Linux 節點都會通過其發行版更新通道獲取可用的安全修補程式。 在節點部署到 AKS 叢集當中時，已自動設定此行為。 為了盡可能減少中斷，並降低對正在執行之工作負載的可能影響，如果安全性修補程式或核心更新需要重新啟動時，節點不會自動重新啟動。
 
-Weaveworks 的開放原始碼 [Kured (KUbernetes REboot Daemon)][kured] 專案可監看擱置的節點重新啟動。 當 Linux 節點應用需要重新開機的更新時，該節點將安全封鎖並排空，以移動和安排群集中其他節點上的 pod。 一旦節點重新啟動之後，便會新增回叢集中，且 Kubernetes 會繼續安排其上的 Pod。 為了盡可能減少中斷，`kured` 一次只允許重新啟動一個節點。
+Weaveworks 的開放原始碼 [Kured (KUbernetes REboot Daemon)][kured] 專案可監看擱置的節點重新啟動。 當 Linux 節點應用需要重新啟動的更新時,該節點將安全封鎖並排空,以移動和安排群集中其他節點上的 pod。 一旦節點重新啟動之後，便會新增回叢集中，且 Kubernetes 會繼續安排其上的 Pod。 為了盡可能減少中斷，`kured` 一次只允許重新啟動一個節點。
 
 ![使用 Kured 的 AKS 節點重新啟動程序](media/operator-best-practices-cluster-security/node-reboot-process.png)
 

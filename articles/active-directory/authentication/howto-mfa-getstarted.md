@@ -1,6 +1,6 @@
 ---
-title: 部署 Azure 多重身份認證 - Azure 活動目錄
-description: 微軟 Azure 多重身份驗證部署規劃
+title: Azure 多重身份驗證的部署注意事項
+description: 瞭解成功實現 Azure 多重身份驗證的部署注意事項和策略
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653948"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667351"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>規劃雲端式 Azure Multi-Factor Authentication 部署 \(部分機器翻譯\)
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>規劃 Azure 多重身份驗證部署
 
 在日益複雜的場景中,人們正在連接到組織資源。 人們使用智慧手機、平板電腦、PC 和筆記型電腦(通常在多個平臺上)在公司網路上和公司網路外使用組織擁有、個人和公共設備進行連接。 在這個始終連接、多設備和多平臺的世界中,使用者帳戶的安全性比以往任何時候都更加重要。 跨設備、網路和平臺使用的密碼無論其複雜性如何,都已不足以確保使用者帳戶的安全性,尤其是在使用者傾向於跨帳戶重複使用密碼時。 複雜的網路釣魚和其他社交工程攻擊可能導致使用者名和密碼在暗網中發佈和銷售。
 
 [Azure 多重身份驗證 (MFA)](concept-mfa-howitworks.md)有助於保護對數據和應用程式的訪問。 它使用第二種身份驗證形式提供額外的安全層。 組織可以使用[條件存取](../conditional-access/overview.md)使解決方案滿足其特定需求。
+
+此部署指南示範如何規劃然後測試 Azure 多重身份驗證推出。
+
+要快速查看 Azure 多重身份驗證的生效,然後回來瞭解其他部署注意事項:
+
+> [!div class="nextstepaction"]
+> [啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -173,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 如果使用者啟用了每個使用者並強制執行了 Azure 多重身份驗證,則以下 PowerShell 可以説明您轉換為基於條件訪問的 Azure 多重身份驗證。
 
-在 ISE 視窗中執行此 PowerShell 或另存為 。要在本地運行的 PS1 檔。
+在 ISE 視窗中執行此 PowerShell,或`.PS1`另存為檔以在本地運行。
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -317,7 +324,7 @@ NPS 擴展充當 RADIUS 和基於雲端的 Azure MFA 之間的適配器,以提�
 
 如果憑證的有效期接近過期,請在每個 AD [FS 伺服器產生並驗證新的 MFA 憑證](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)。
 
-以下指南詳細介紹了如何在 AD FS 伺服器上管理 Azure MFA 證書。 使用 Azure MFA 配置 AD`New-AdfsAzureMfaTenantCertificate`FS 時, 透過 PowerShell cmdlet 生成的憑證的有效期為 2 年。 在過期之前續訂並安裝續訂的證書,以在 MFA 服務中取消中斷。
+以下指南詳細介紹了如何在 AD FS 伺服器上管理 Azure MFA 證書。 使用 Azure MFA 配置 AD`New-AdfsAzureMfaTenantCertificate`FS 時, 透過 PowerShell cmdlet 生成的憑證有效期為兩年。 在過期之前續訂並安裝續訂的證書,以在 MFA 服務中取消中斷。
 
 ## <a name="implement-your-plan"></a>實施您的計劃
 
@@ -357,6 +364,7 @@ Azure 多重身份驗證通過 Azure 門戶提供報告:
 
 ## <a name="next-steps"></a>後續步驟
 
-* [驗證方法有哪些？](concept-authentication-methods.md)
-* [啟用 Azure Multi-Factor Authentication 的聚合式註冊和 Azure AD 自助密碼重設](concept-registration-mfa-sspr-converged.md)
-* 系統會還是不會提示使用者執行 MFA 的原因？ 請參閱＜Azure Multi-Factor Authentication 中的報告＞文件中的 [Azure AD 登入報告](howto-mfa-reporting.md#azure-ad-sign-ins-report)一節。
+要查看 Azure 多重身份驗證,請完成以下教程:
+
+> [!div class="nextstepaction"]
+> [啟用 Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)

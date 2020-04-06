@@ -1,6 +1,6 @@
 ---
-title: 自助服務密碼重置部署 ─ Azure 活動目錄
-description: 成功測試 Azure AD 自助服務密碼重置的策略
+title: Azure 活動目錄自助服務密碼重置的部署注意事項
+description: 瞭解成功實作 Azure AD 自助服務密碼重置的部署注意事項和策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652396"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667323"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>計畫 Azure 活動目錄自助服務密碼重置
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure 活動目錄自助密碼重置部署
 
-> [!NOTE]
-> 此部署計畫提供了部署 Azure AD 自助服務密碼重置 (SSPR) 的規劃指南和最佳實務。 <br>**如果您要尋找 SSPR 工具來傳回您的帳號,請[https://aka.ms/sspr](https://aka.ms/sspr)轉到**。
+> [!IMPORTANT]
+> 此部署計畫提供了部署 Azure AD 自助服務密碼重置 (SSPR) 的指南和最佳實務。
+>
+> **如果您是最終使用者,需要傳回您的帳號,請轉到[https://aka.ms/sspr](https://aka.ms/sspr)**。
 
-[自助服務密碼重置 (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8)是 Azure 活動目錄 (AD) 功能,使用戶能夠重置其密碼,而無需聯繫 IT 人員尋求説明。 用戶可以快速解除自我阻止,並繼續工作,無論他們在哪裡或一天的時間。 通過允許員工自行解除阻止,您的組織可以減少大多數常見與密碼相關的問題的非生產時間和高支援成本。 
+[自助服務密碼重置 (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8)是 Azure 活動目錄 (AD) 功能,使用戶能夠重置其密碼,而無需聯繫 IT 人員尋求説明。 用戶可以快速解除自我阻止,並繼續工作,無論他們在哪裡或一天的時間。 通過允許員工自行解除阻止,您的組織可以減少大多數常見與密碼相關的問題的非生產時間和高支援成本。
 
 SSPR 具有以下關鍵功能:
 
 * 自助服務允許最終使用者重置其過期或未過期的密碼,而無需聯繫管理員或説明台尋求支援。
-
 * [密碼回寫](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)允許管理本地密碼,並解決通過雲的帳戶鎖定問題。
-
 * 密碼管理活動報告使管理員能夠深入瞭解其組織中發生的密碼重置和註冊活動。
+
+此部署指南演示如何規劃然後測試 SSPR 推出。
+
+要快速檢視 SSPR 的操作,然後回來瞭解其他部署注意事項:
+
+> [!div class="nextstepaction"]
+> [開啟自助服務密碼重置 (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>瞭解 SSPR
 
@@ -213,7 +220,7 @@ Microsoft 建議組織啟用 SSPR 和多重身份驗證的組合註冊體驗。 
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>具有多個識別管理系統的環境
 
-某些環境具有多個標識管理系統。 預置識別管理員(如 Oracle AM 和 SiteMinder)需要與 AD 同步才能獲得密碼。 您可以使用 Microsoft 識別管理員 (MIM) 的密碼更改通知服務 (PCNS) 等工具執行此操作。 要查找有關此更複雜的方案的資訊,請參閱在[域控制器上部署 MIM 密碼更改通知服務](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
+某些環境具有多個標識管理系統。 本地識別管理員(如 Oracle AM 和 SiteMinder)需要與 AD 同步才能獲得密碼。 您可以使用 Microsoft 識別管理員 (MIM) 的密碼更改通知服務 (PCNS) 等工具執行此操作。 要查找有關此更複雜的方案的資訊,請參閱在[域控制器上部署 MIM 密碼更改通知服務](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
 
 ## <a name="plan-testing-and-support"></a>排建測試並支援
 
@@ -255,7 +262,7 @@ Microsoft 建議組織啟用 SSPR 和多重身份驗證的組合註冊體驗。 
 | 使用者無法設定新密碼| 使用者在密碼重置流期間完成驗證,但無法設置新密碼。 |
 | 使用者在 Windows 10 裝置上看不到重置密碼連結| 使用者嘗試從 Windows 10 鎖定螢幕介面重置密碼,但裝置未加入 Azure AD,或者未啟用 Intune 裝置策略 |
 
-### <a name="plan-roll-back"></a>排程
+### <a name="plan-rollback"></a>排程
 
 要回捲動部署:
 
@@ -295,7 +302,7 @@ Microsoft 建議組織啟用 SSPR 和多重身份驗證的組合註冊體驗。 
 1. [內部部署整合](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
 
 ### <a name="enable-sspr-in-windows"></a>在視窗中啟用 SSPR
-對於執行 Windows 7、8、8.1 與 10 的電腦,您可以[允許使用者在 Windows 登入螢幕重置密碼](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
+對於執行 Windows 7、8、8.1 與 10 的電腦,您可以[允許使用者在 Windows 登入螢幕重置其密碼](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
 
 ## <a name="manage-sspr"></a>管理 SSPR
 
@@ -336,7 +343,7 @@ Azure AD 可以通過審核和報告提供有關 SSPR 性能的其他資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要開始部署 SSPR,請參閱[完成 Azure AD 自助密碼重置試驗推出](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)
+* 要開始部署 SSPR,請參閱[啟用 Azure AD 自助服務密碼重置](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
 
 * [考慮 azure AD 密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

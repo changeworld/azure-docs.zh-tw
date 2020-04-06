@@ -1,15 +1,16 @@
 ---
-title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的儲存體
+title: 儲存和備份的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行儲存、資料加密及備份時的最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399470"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668107"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
 
@@ -75,7 +76,7 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ![Azure Kubernetes Service (AKS) 叢集中的永續性磁碟區宣告](media/concepts-storage/persistent-volume-claims.png)
 
-永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中，您請求創建卷並將其附加到指定的裝載路徑。
+永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中,您請求建立卷並將其附加到指定的裝載路徑。
 
 如需如何動態建立及使用磁碟區的概念，請參閱[永續性磁碟區宣告][aks-concepts-storage-pvcs]。
 
@@ -87,9 +88,9 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ## <a name="secure-and-back-up-your-data"></a>保護並備份您的資料
 
-**最佳實踐指南**- 使用適合存儲類型的工具（如 Velero 或 Azure 網站恢復）備份資料。 驗證那些備份的完整性及安全性。
+**最佳實務指南**- 使用適合儲存類型的工具(如 Velero 或 Azure 網站恢復)備份資料。 驗證那些備份的完整性及安全性。
 
-當您的應用程式儲存及使用保存在磁碟上或檔案中的資料時，您必須對該資料進行定期備份或擷取快照集。 Azure 磁碟可以使用內建的快照集技術。 在執行快照操作之前，可能需要查找應用程式以刷新寫入磁片。 [Velero][velero]可以備份持久性卷以及其他群集資源和配置。 如果您無法[從應用程式移除狀態][remove-state]，請備份來自永續性磁碟區的資料並定期測試還原作業，以確認資料完整性及必要的處理程序。
+當您的應用程式儲存及使用保存在磁碟上或檔案中的資料時，您必須對該資料進行定期備份或擷取快照集。 Azure 磁碟可以使用內建的快照集技術。 在執行快照操作之前,可能需要查找應用程式以刷新寫入磁碟。 [Velero][velero]可以備份持久性卷以及其他群集資源和配置。 如果您無法[從應用程式移除狀態][remove-state]，請備份來自永續性磁碟區的資料並定期測試還原作業，以確認資料完整性及必要的處理程序。
 
 請了解不同資料備份方法的限制，以及您是否需要在擷取快照集之前使資料靜止。 資料備份並不一定能讓您還原您的叢集部署應用程式環境。 如需那些案例的詳細資訊，請參閱 [AKS 中商務持續性和災害復原的最佳做法][best-practices-multi-region]。
 

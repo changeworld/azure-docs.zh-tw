@@ -1,6 +1,6 @@
 ---
-title: 排除域和 SSL 憑證的故障
-description: 查找在 Azure 應用服務中配置域或 SSL 憑證時可能會遇到的常見問題的解決方案。
+title: 排除網域與 TLS/SSL 憑證的故障
+description: 尋找在 Azure 應用服務中配置域或 TLS/SSL 證書時可能會遇到的常見問題的解決方案。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966984"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668030"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>在 Azure App Service 中對網域和 SSL 憑證問題進行疑難排解
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>在 Azure 應用服務中排除網域和 TLS/SSL 憑證問題
 
-本文列出在 Azure App Service 中為 Web 應用程式設定網域或 SSL 憑證時，可能會遇到的常見問題。 文中也會描述這些問題的可能原因和解決方案。
+本文列出了在 Azure 應用服務中為 Web 應用配置域或 TLS/SSL 證書時可能會遇到的常見問題。 文中也會描述這些問題的可能原因和解決方案。
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 跳到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **「取得支援**」。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>憑證問題
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>您無法對應用程式新增 SSL 憑證繫結 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>無法新增 TLS/SSL 憑證繫結 
 
 #### <a name="symptom"></a>徵狀
 
-當您新增 SSL 繫結時，收到下列錯誤訊息：
+新增 TLS 繫結時,您會收到以下錯誤訊息:
 
 「無法新增 SSL 繫結。 無法為現有 VIP 設定憑證，因為已經有另一個 VIP 使用該憑證。」
 
 #### <a name="cause"></a>原因
 
-多個應用程式之間，如果有多個基於相同 IP 位址的 IP 為主 SSL 繫結，可能會發生此問題。 例如，應用程式 A 的以 IP 為主 SSL 使用舊憑證。 應用程式 B 的以 IP 為主 SSL 使用同一個 IP 位址的新憑證。 當您更新使用新憑證的應用程式 SSL 繫結時，由於另一個應用程式也使用相同的 IP 位址，因此更新會失敗，而且會出現這個錯誤。 
+多個應用程式之間，如果有多個基於相同 IP 位址的 IP 為主 SSL 繫結，可能會發生此問題。 例如，應用程式 A 的以 IP 為主 SSL 使用舊憑證。 應用程式 B 的以 IP 為主 SSL 使用同一個 IP 位址的新憑證。 使用新證書更新應用 TLS 綁定時,它將失敗,因為同一 IP 位址正用於其他應用。 
 
 #### <a name="solution"></a>解決方法 
 
@@ -51,7 +51,7 @@ ms.locfileid: "75966984"
 
 當您嘗試刪除憑證時，收到下列錯誤訊息：
 
-「無法刪除憑證，因為 SSL 繫結正在使用中。 您必須先移除 SSL 繫結，才可以刪除憑證。」
+無法刪除憑證,因為它當前正在 TLS/SSL 綁定中使用。 必須先刪除 TLS 綁定,然後才能刪除證書。
 
 #### <a name="cause"></a>原因
 
@@ -59,7 +59,7 @@ ms.locfileid: "75966984"
 
 #### <a name="solution"></a>解決方法
 
-從應用程式移除該憑證的 SSL 繫結。 接著再嘗試刪除憑證。 如果您仍然無法刪除憑證，請清除網際網路瀏覽器快取，然後在新的瀏覽器視窗中重新開啟 Azure 入口網站。 接著再嘗試刪除憑證。
+從應用中刪除該證書的 TLS 綁定。 接著再嘗試刪除憑證。 如果您仍然無法刪除憑證，請清除網際網路瀏覽器快取，然後在新的瀏覽器視窗中重新開啟 Azure 入口網站。 接著再嘗試刪除憑證。
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>您無法購買 App Service 憑證 
 
@@ -69,9 +69,9 @@ ms.locfileid: "75966984"
 #### <a name="cause-and-solution"></a>原因和解決方案
 以下是這個問題發生的原因：
 
-- App Service 方案為免費或共用。 這些定價層不支援 SSL。 
+- App Service 方案為免費或共用。 這些定價層不支援 TLS。 
 
-    **解決方案**：將應用的應用服務方案升級到標準版。
+    **解決方案**:將應用的應用服務計劃升級到標準版。
 
 - 訂用帳戶的信用卡無效。
 
@@ -84,15 +84,15 @@ ms.locfileid: "75966984"
 - 訂用帳戶已達到單一訂用帳戶允許的購買限制。
 
     **解決方案**：隨用隨付和 EA 訂用帳戶類型的 App Service 憑證有購買 10 個憑證的限制。 其他訂用帳戶類型的限制則為 3 個。 若要提高限制，請連絡 [Azure支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- App Service 憑證已標示為詐騙。 您收到以下錯誤訊息：「您的憑證已被標幟為可能是詐騙。 要求目前正在進行檢閱。 如果證書在 24 小時內不可用，請與 Azure 支援部門聯繫。
+- App Service 憑證已標示為詐騙。 您收到以下錯誤訊息：「您的憑證已被標幟為可能是詐騙。 要求目前正在進行檢閱。 如果證書在 24 小時內不可用,請與 Azure 支援部門聯繫。
 
     **解決方案**：如果憑證被標示為詐騙，而且在接下來的 24 小時內未能解決，請遵循以下步驟：
 
-    1. 登錄到 Azure[門戶](https://portal.azure.com)。
+    1. 登入 [Azure 入口網站](https://portal.azure.com)。
     2. 前往 [App Service 憑證]****，然後選取憑證。
-    3. 選擇**證書配置** > **步驟 2：驗證** > **域驗證**。 此步驟會傳送電子郵件通知給 Azure 憑證提供者，尋求解決問題。
+    3. 選擇**憑證設定** > **步驟 2: 驗證** > **網域認證**。 此步驟會傳送電子郵件通知給 Azure 憑證提供者，尋求解決問題。
 
-## <a name="custom-domain-problems"></a>自訂域問題
+## <a name="custom-domain-problems"></a>自訂網域問題
 
 ### <a name="a-custom-domain-returns-a-404-error"></a>自訂網域傳回 404 錯誤 
 
@@ -131,7 +131,7 @@ ms.locfileid: "75966984"
 #### <a name="solution"></a>解決方法
 
 - 請洽詢訂用帳戶管理員，確認您擁有將主機名稱新增至應用程式的權限。
-- 如果需要更多子域，我們建議您將託管的域更改為 Azure 功能變數名稱服務 （DNS）。 只要使用 Azure DNS，您就可以將 500 個主機名稱新增至應用程式。 如需詳細資訊，請參閱[新增子網域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+- 如果需要更多子域,我們建議您將託管的域更改為 Azure 域名服務 (DNS)。 只要使用 Azure DNS，您就可以將 500 個主機名稱新增至應用程式。 如需詳細資訊，請參閱[新增子網域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
 
 ### <a name="dns-cant-be-resolved"></a>無法解析 DNS
 
@@ -161,11 +161,11 @@ ms.locfileid: "75966984"
 訂用帳戶的擁有者可能已意外刪除網域。
 
 #### <a name="solution"></a>解決方法
-如果網域遭到刪除的時間距離今天不到七天，網域的刪除程序可能尚未開始。 此時，您可以 Azure 入口網站中以同一個訂用帳戶再次購買相同的網域。 （請確保在搜索框中鍵入確切的功能變數名稱。您不會再為此域付費。 如果域在七天前被刪除，請與[Azure 支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)聯繫，以尋求有關還原域的説明。
+如果網域遭到刪除的時間距離今天不到七天，網域的刪除程序可能尚未開始。 此時，您可以 Azure 入口網站中以同一個訂用帳戶再次購買相同的網域。 (請確保在搜索框中鍵入確切的功能變數名稱。您不會再為此域付費。 如果域在七天前被刪除,請與[Azure 支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)聯繫,以尋求有關還原域的説明。
 
 ## <a name="domain-problems"></a>網域問題
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>您買到錯誤網域的 SSL 憑證
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>您為錯誤的網域購買 TLS/SSL 憑證
 
 #### <a name="symptom"></a>徵狀
 
@@ -184,14 +184,14 @@ ms.locfileid: "75966984"
 App Service 憑證已更新，不過使用 App Service 憑證的應用程式仍然使用舊憑證。 此外，您收到必須使用 HTTPS 通訊協定的警告。
 
 #### <a name="cause"></a>原因 
-應用服務可在 48 小時內自動同步您的證書。 當您輪替或更新憑證時，有時候應用程式仍會擷取舊憑證，而非更新後的憑證。 這是因為同步處理憑證資源的作業尚未執行。 按一下"同步"。同步操作會自動更新應用服務中證書的主機名稱綁定，而不會導致應用出現任何停機時間。
+應用服務可在 48 小時內自動同步您的證書。 當您輪替或更新憑證時，有時候應用程式仍會擷取舊憑證，而非更新後的憑證。 這是因為同步處理憑證資源的作業尚未執行。 單擊"同步"。同步操作會自動更新應用服務中證書的主機名綁定,而不會導致應用出現任何停機時間。
  
 #### <a name="solution"></a>解決方法
 
 您可以強制同步處理憑證：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 選取 [App Service 憑證]****，然後選取憑證。
-2. 選擇 **"重鍵"和"同步**"，然後選擇 **"同步**"。同步需要一些時間才能完成。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [App Service 憑證]****，然後選取憑證。
+2. 選擇 **「重鍵」和「同步**」,然後選擇 **「同步」。** 同步需要一些時間才能完成。 
 3. 當同步完成時，您會看見以下通知：「已成功將所有資源更新為最新憑證」。
 
 ### <a name="domain-verification-is-not-working"></a>網域驗證無法運作 
@@ -268,56 +268,56 @@ App Service 憑證必須經過網域驗證才能使用。 當您選取 [驗證]*
 
 ## <a name="faq"></a>常見問題集
 
-**購買網站後，是否必須為其網站配置自訂域？**
+**購買網站后,是否必須為其網站配置自定義域?**
 
-從 Azure 門戶購買域時，應用服務應用程式將自動設定為使用該自訂域。 您無需採取任何其他步驟。 有關詳細資訊，請觀看[Azure 應用服務自助：](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)在通道 9 上添加自訂功能變數名稱。
+從 Azure 門戶購買域時,應用服務應用程式將自動配置為使用該自定義域。 您無需採取任何其他步驟。 有關詳細資訊,請觀看[Azure 應用服務自助:](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)在通道 9 上添加自定義功能變數名稱。
 
-**是否可以使用 Azure 門戶中購買的域來指向 Azure VM？**
+**是否可以使用 Azure 門戶中購買的域來指向 Azure VM?**
 
-可以，您可以將域指向 VM。 如需詳細資訊，請參閱[使用 Azure DNS 為 Azure 服務提供自訂網域設定](../dns/dns-custom-domain.md)。
+可以,您可以將域指向 VM。 如需詳細資訊，請參閱[使用 Azure DNS 為 Azure 服務提供自訂網域設定](../dns/dns-custom-domain.md)。
 
-**我的域是否由 GoDaddy 或 Azure DNS 託管？**
+**我的域是否由 GoDaddy 或 Azure DNS 託管?**
 
-應用服務域使用 GoDaddy 進行域註冊，Azure DNS 託管域。 
+應用服務域使用 GoDaddy 進行域註冊,Azure DNS 託管域。 
 
-**我已啟用自動續訂，但仍通過電子郵件收到我的域的續訂通知。我該怎麼辦？**
+**我已啟用自動續訂,但仍通過電子郵件收到我的域的續訂通知。我該怎麼辦?**
 
-如果啟用了自動續訂，則無需執行任何操作。 提供通知電子郵件是為了通知您域即將過期，如果未啟用自動續訂，則手動續訂。
+如果啟用了自動續訂,則無需執行任何操作。 提供通知電子郵件是為了通知您域即將過期,如果未啟用自動續訂,則手動續訂。
 
-**託管我的域的 Azure DNS 是否會向我收費？**
+**託管我的域的 Azure DNS 是否會向我收費?**
 
-功能變數名稱購買的初始成本僅適用于域註冊。 除了註冊成本外，Azure DNS 還會根據使用方式產生費用。 有關詳細資訊，請參閱[Azure DNS 定價](https://azure.microsoft.com/pricing/details/dns/)以瞭解更多詳細資訊。
+功能變數名稱購買的初始成本僅適用於域註冊。 除了註冊成本外,Azure DNS 還會根據使用方式產生費用。 有關詳細資訊,請參閱[Azure DNS 定價](https://azure.microsoft.com/pricing/details/dns/)以瞭解更多詳細資訊。
 
-**我較早從 Azure 門戶購買了我的域，並希望從 GoDaddy 託管移動到 Azure DNS 託管。我該怎麼做？**
+**我較早從 Azure 門戶購買了我的域,並希望從 GoDaddy 託管移動到 Azure DNS 託管。我該怎麼做?**
 
-不強制遷移到 Azure DNS 託管。 如果確實要遷移到 Azure DNS，則 Azure 門戶中的域管理體驗提供有關移動到 Azure DNS 所需的步驟的資訊。 如果域是通過應用服務購買的，則從 GoDaddy 託管遷移到 Azure DNS 的過程相對無縫。
+不強制遷移到 Azure DNS 託管。 如果確實要遷移到 Azure DNS,則 Azure 門戶中的域管理體驗提供有關移動到 Azure DNS 所需的步驟的資訊。 如果域是通過應用服務購買的,則從 GoDaddy 託管遷移到 Azure DNS 的過程相對無縫。
 
-**我想從應用服務域購買我的域，但是否可以在 GoDaddy 而不是 Azure DNS 上託管我的域？**
+**我想從應用服務域購買我的域,但是否可以在 GoDaddy 而不是 Azure DNS 上託管我的域?**
 
-從 2017 年 7 月 24 日開始，在門戶中購買的應用服務域託管在 Azure DNS 上。 如果您喜歡使用其他託管供應商，則必須轉到他們的網站以獲取域託管解決方案。
+從 2017 年 7 月 24 日開始,在門戶中購買的應用服務域託管在 Azure DNS 上。 如果您喜歡使用其他託管供應商,則必須轉到他們的網站以獲取域託管解決方案。
 
-**我是否必須支付我的功能變數名稱的隱私保護費用？**
+**我是否必須支付我的域名的隱私保護費用?**
 
-通過 Azure 門戶購買域時，可以選擇添加隱私，無需額外費用。 這是通過 Azure 應用服務購買域的好處之一。
+通過 Azure 門戶購買域時,可以選擇添加隱私,無需額外費用。 這是通過 Azure 應用服務購買域的好處之一。
 
-**如果我決定不再想要我的功能變數名稱，我可以收回我的錢嗎？**
+**如果我決定不再想要我的功能變數名稱,我可以收回我的錢嗎?**
 
-購買域時，您不會收取五天的費用，在此期間，您可以決定不需要域。 如果您確實決定不希望該域在五天內使用，則不向您收費。 （.uk 域是此例外。 如果您購買了 .uk 功能變數名稱，則立即向您收費，且無法退款。
+購買域時,您不會收取五天的費用,在此期間,您可以決定不需要域。 如果您確實決定不希望該域在五天內使用,則不向您收費。 (.uk 網域是此例外。 如果您購買了 .uk 功能變數名稱,則立即向您收費,且無法退款。
 
-**是否可以在訂閱中的另一個 Azure 應用服務應用中使用域？**
+**是否可以在訂閱中的另一個 Azure 應用服務應用中使用域?**
 
-是。 在 Azure 門戶中訪問自訂域和 SSL 邊欄選項卡時，可以看到已購買的域。 您可以將應用配置為使用這些域中的任何一個。
+是。 在 Azure 門戶中訪問自定義域和 TLS 邊欄選項卡時,可以看到已購買的域。 您可以將應用配置為使用這些域中的任何一個。
 
-**我可以將域從一個訂閱轉移到另一個訂閱嗎？**
+**我可以將域從一個訂閱轉移到另一個訂閱嗎?**
 
-您可以使用[移動-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell Cmdlet 將域移動到其他訂閱/資源組。
+您可以使用[移動-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 將域移動到其他訂閱/資源組。
 
-**如果當前沒有 Azure 應用服務應用，如何管理我的自訂域？**
+**如果當前沒有 Azure 應用服務應用,如何管理我的自定義域?**
 
-即使您沒有應用服務 Web 應用，也可以管理域。 域可用於 Azure 服務，如虛擬機器、存儲等。如果要將域用於應用服務 Web 應用，則需要包含不在免費應用服務方案中的 Web 應用，以便將域綁定到 Web 應用。
+即使您沒有應用服務 Web 應用,也可以管理域。 域可用於 Azure 服務,如虛擬機、存儲等。如果要將域用於應用服務 Web 應用,則需要包含不在免費應用服務計畫中的 Web 應用,以便將域綁定到 Web 應用。
 
-**是否可以將具有自訂域的 Web 應用移到其他訂閱，也可以將應用服務環境 v1 移動到 V2？**
+**是否可以將具有自訂網域的 Web 應用移到其他訂閱,也可以將應用服務環境 v1 移動到 V2?**
 
-可以，您可以在訂閱之間移動 Web 應用。 按照["如何在 Azure 中移動資源"中的](../azure-resource-manager/management/move-resource-group-and-subscription.md)指南操作。 移動 Web 應用時有一些限制。 有關詳細資訊，請參閱[移動應用服務資源的限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
+可以,您可以在訂閱之間移動 Web 應用。 按照[「如何在 Azure 中移動資源」 中的](../azure-resource-manager/management/move-resource-group-and-subscription.md)指南操作。 移動 Web 應用時有一些限制。 有關詳細資訊,請參閱[移動應用服務資源的限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
-移動 Web 應用後，自訂域設置中的域的主機名稱綁定應保持不變。 無需執行其他步驟即可配置主機名稱綁定。
+移動 Web 應用後,自定義域設置中的域的主機名綁定應保持不變。 無需執行其他步驟即可配置主機名綁定。

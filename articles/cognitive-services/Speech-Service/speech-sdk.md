@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656596"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668751"
 ---
 # <a name="about-the-speech-sdk"></a>關於語音 SDK
 
@@ -69,21 +69,11 @@ ms.locfileid: "80656596"
 
 ## <a name="rest-api"></a>REST API
 
-雖然語音 SDK 涵蓋語音服務的許多功能功能,但對於某些方案,您可能需要使用 REST API。 例如,終結點管理僅通過 REST API 公開。
-
-> [!TIP]
-> 依賴 REST API 時,使用 Swagger 編輯器自動生成用戶端庫。 例如,生成批處理轉錄用戶端庫。
-> 1. 複製下面的範例網址:
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. 瀏覽到<a href="https://editor.swagger.io/" target="_blank">斯瓦格編輯<span class="docon docon-navigate-external x-hidden-focus"></span>器</a>
-> 1. 選擇**檔案** > **匯入網址**並貼上網網網網
-> 1. 選擇 **'產生用戶端**' 並選擇所需的程式設計語言
+雖然語音 SDK 涵蓋語音服務的許多功能功能,但對於某些方案,您可能需要使用 REST API。
 
 ### <a name="batch-transcription"></a>批次轉譯
 
-[批處理轉錄](batch-transcription.md)支援對大量數據的非同步語音轉錄。 批處理轉錄只能從 REST API 進行。
+[批處理轉錄](batch-transcription.md)支援對大量數據的非同步語音轉錄。 批處理轉錄只能從 REST API 進行。 除了將語音音訊轉換為文本外,批量語音到文本還允許分二化和情緒分析。
 
 ## <a name="customization"></a>自訂
 

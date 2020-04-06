@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421254"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668859"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Data Lake Storage Gen1 複製到 Gen2
 
@@ -33,7 +33,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果沒有 Azure 訂閱,請先創建[一個免費帳戶](https://azure.microsoft.com/free/)。"
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * 內有資料的 Azure Data Lake Storage Gen1 帳戶。
 * 啟用了數據存儲第 2 代的 Azure 儲存帳戶。 如果您沒有儲存帳號,[請建立帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 
@@ -137,7 +137,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
 ## <a name="best-practices"></a>最佳作法
 
-要評估從 Azure 資料儲存第 1 代升級到 Azure 資料儲存湖儲存第 2 代,請參閱[將大數據分析解決方案從 Azure 資料儲存庫第 1 代升級到 Azure 資料儲存湖儲存第 2 代](../storage/blobs/data-lake-storage-upgrade.md)。 以下各節介紹使用數據工廠將數據升級到數據湖存儲第 1 代的最佳做法。
+要評估從 Azure 資料儲存第 1 代升級到 Azure 資料儲存湖儲存第 2 代,請參閱[將大數據分析解決方案從 Azure 資料儲存庫第 1 代升級到 Azure 資料儲存湖儲存第 2 代](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)。 以下各節介紹使用數據工廠將數據升級到數據湖存儲第 1 代的最佳做法。
 
 ### <a name="data-partition-for-historical-data-copy"></a>歷史資料複本的資料分割區
 

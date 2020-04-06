@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655990"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666775"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Azure 認知搜尋查詢中的部分術語搜尋(通配符、正則運算、模糊搜尋、模式)
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>具有特殊字元的部分術語搜尋與模式 - Azure 認知搜尋(通配元、正則運算式、模式)
 
-*部分術語搜索*是指由術語片段組成的查詢,例如字串的第一個、最後或內部部分,或由片段組合組成的模式,通常由特殊字元(如短劃線或斜杠)分隔。 常見用例包括查詢電話號碼、URL、人員或產品代碼或複合詞的某些部分。
+*部分術語搜索*是指由術語片段組成的查詢,例如字串的第一個、最後一個或內部部分。 *模式*可能是片段的組合,有時具有特殊字元(如破折號或斜杠)是查詢的一部分。 常見用例包括查詢電話號碼、URL、人員或產品代碼或複合詞的某些部分。
 
-部分搜索可能存在問題,因為索引本身通常不會以有利於部分字串和模式匹配的方式存儲術語。 在索引的文本分析階段,將丟棄特殊字元,將複合字串和複合字串拆分,導致找不到匹配時模式查詢失敗。 例如,電話號碼`+1 (425) 703-6214`(令牌化`"1"`為`"425"``"703"``"6214"`,、、)`"3-62"`不會顯示在查詢中,因為索引中實際上不存在該內容。 
+如果索引沒有模式匹配所需的格式的字詞,則部分搜索可能會有問題。 在索引的文本分析階段,使用預設標準分析器,將丟棄特殊字元,將複合字串和複合字串拆分,導致找不到匹配時模式查詢失敗。 例如,電話號碼`+1 (425) 703-6214`(令牌化`"1"`為`"425"``"703"``"6214"`,、、)`"3-62"`不會顯示在查詢中,因為索引中實際上不存在該內容。 
 
-解決方案是在索引中儲存這些字串的完整版本,以便您可以支援部分搜索方案。 為完整字串創建附加欄位,以及使用內容保留分析器,是解決方案的基礎。
+解決方案是調用保留完整字串(如有必要)包括空格和特殊字元的分析器,以便您可以支援部分術語和模式。 為完整字串創建附加欄位,以及使用內容保留分析器,是解決方案的基礎。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 認知搜尋中的部分搜尋是什麼
 
-在 Azure 認知搜尋中,部分搜尋以以下形式提供:
+在 Azure 認知搜尋中,部分搜尋和模式以以下形式提供:
 
 + [首碼搜尋](query-simple-syntax.md#prefix-search),`search=cap*`如 ,匹配"Cap'n Jack 的海濱旅館"或"Gacc 資本"。 您可以使用簡單的查詢語法進行前置字串搜尋。
-+ [連接字](query-lucene-syntax.md#bkmk_wildcard)串的樣式或搜尋嵌入字串的模式或部份(包括後綴)的[正規表示式](query-lucene-syntax.md#bkmk_regex)。 例如,給定術語「字母數位」,您將使用通配符搜索`search=/.*numeric.*/`( ) 來匹配該術語的後綴查詢匹配項。 通配符和正則表達式需要完整的 Lucene 語法。
 
-當用戶端應用程式中需要上述任何查詢類型時,請按照本文中的步驟操作,以確保索引中存在必要的內容。
++ [連接字](query-lucene-syntax.md#bkmk_wildcard)串的樣式或搜尋嵌入字串的模式或部份(包括後綴)的[正規表示式](query-lucene-syntax.md#bkmk_regex)。 通配符和正則表達式需要完整的 Lucene 語法。 
+
+  部分術語搜索的一些示例包括以下內容。 對於後綴查詢,給定術語"字母數位",您將使用通配符搜索 ()`search=/.*numeric.*/`來尋找匹配項。 對於包含字元(如 URL 片段)的部分術語,可能需要添加轉義字元。 在 JSON`/`中, 向前斜杠用向`\`後斜杠 轉出。 因此,URL`search=/.*microsoft.com\/azure\/.*/`片段的語法「microsoft.com/azure/」。
+
+如前所述,上述所有要求索引包含有利於模式匹配的格式的字串,而標準分析器未提供這種格式。 通過按照本文中的步驟,可以確保存在支持這些方案所需的內容。
 
 ## <a name="solving-partial-search-problems"></a>解決部分搜尋問題
 

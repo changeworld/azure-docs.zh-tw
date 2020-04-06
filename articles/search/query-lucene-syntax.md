@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656905"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668598"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Lucene 查詢文法
 
@@ -104,7 +104,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="or-operator-or-or-"></a>OR 運算子 `OR` 或 `||`
 
-OR 運算子是分隔號或直立線字元。 例如：`wifi || luxury` 會搜尋包含 "wifi" 或 "luxury" (或兩者) 的文件。 OR 是預設的連接詞運算子，因此您也可以將其省略，而使 `wifi luxury` 相當於 `wifi || luxuery`。
+OR 運算子是分隔號或直立線字元。 例如：`wifi || luxury` 會搜尋包含 "wifi" 或 "luxury" (或兩者) 的文件。 OR 是預設的連接詞運算子，因此您也可以將其省略，而使 `wifi luxury` 相當於 `wifi || luxury`。
 
 ### <a name="and-operator-and--or-"></a>AND 運算子 `AND`、`&&` 或 `+`
 
@@ -162,6 +162,8 @@ NOT 運算子是驚歎號或負號。 例如：`wifi !luxury` 會搜尋含有 "w
  規則運算式搜尋會根據正斜線 "/" 之間的內容尋找相符項目，如 [RegExp 類別](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所記錄。  
 
  例如，若要尋找包含 "motel" 或 "hotel" 的文件，請指定 `/[mh]otel/`。 規則運算式搜尋會比對單字。
+
+某些工具和語言施加了額外的轉義字元要求。 對於 JSON,包含前斜杠的字串將用向後斜杠轉出:"microsoft.com/azure/"成為`search=/.*microsoft.com\/azure\/.*/``search=/.* <string-placeholder>.*/`設置 正則表達式的位置`microsoft.com\/azure\/`,並且 是具有轉義向前斜杠的字串。
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>通配符搜尋  
  您可以使用一般辨識語法進行多個 (*) 或單一 (?) 字元的萬用字元搜尋。 請注意，Lucene 查詢剖析器支援搭配使用這些符號與單一詞彙，而不是片語。

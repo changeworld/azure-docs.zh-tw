@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 9ad9e13667791c38a8bf8be01919bcdbd0032102
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519594"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668011"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -74,13 +74,15 @@ Azure NetApp 檔案支援 NFS 和 SMBv3 卷。 磁碟區的容量耗用量是根
 
     請參考設計有關 AD 網站與服務[的網站拓撲](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
-* Azure NetApp 檔案支援 DES、Kerberos AES 128 和 Kerberos AES 256 加密類型(從最不安全到最安全)。 用於加入活動目錄的使用者憑據必須啟用與為活動目錄啟用的功能匹配的最高相應帳戶選項。   
+<!--
+* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
 
-    例如,如果活動目錄僅具有 AES-128 功能,則必須為使用者憑據啟用 AES-128 帳戶選項。 如果您的 Active Directory 具有 AES-256 功能,則必須啟用 AES-256 帳戶選項(該選項還支援 AES-128)。 如果活動目錄沒有任何 Kerberos 加密功能,則 Azure NetApp 檔案預設使用 DES。  
+    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    您可以在作用目錄使用者與電腦 MMC 主控台屬性開啟帳號選項:   
+    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
 
-    ![動作目錄使用者和電腦 MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+-->
 
 有關其他 AD 資訊,請參閱 Azure NetApp 檔案[SMB 常見問題解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
 

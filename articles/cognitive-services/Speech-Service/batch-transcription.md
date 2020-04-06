@@ -10,38 +10,38 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131592"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668842"
 ---
-# <a name="what-is-batch-transcription"></a>什麼是批次轉錄？
+# <a name="what-is-batch-transcription"></a>什麼是批次轉錄?
 
-批次處理轉錄是一組 REST API 操作，使您能夠在存儲中轉錄大量音訊。 您可以使用共用訪問簽名 （SAS） URI 指向音訊檔，並非同步接收轉錄結果。
+批次處理轉錄是一組 REST API 操作,使您能夠在儲存中轉錄大量音訊。 您可以使用共享訪問簽名 (SAS) URI 指向音訊檔,並非同步接收轉錄結果。
 
-非同步語音轉文本轉錄只是其中一個功能。 您可以使用批次處理轉錄 REST API 呼叫以下方法：
+非同步語音轉文字轉錄只是其中一個功能。 您可以使用批次處理轉錄 REST API 呼叫以下方法:
 
 
 
-|    批次轉錄操作                                             |    方法    |    REST API 呼叫                                   |
+|    批次轉錄作業                                             |    方法    |    REST API 呼叫                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    創建新的轉錄。                                              |    POST      |    api/語音文本/v2.0/轉錄            |
-|    檢索已身份驗證訂閱的轉錄清單。    |    GET       |    api/語音文本/v2.0/轉錄            |
-|    獲取離線轉錄受支援地區設定的清單。              |    GET       |    api/語音文本/v2.0/轉錄/地區設定    |
-|    更新其 ID 標識的轉錄的可變詳細資訊。    |    PATCH     |    api/語音文本/v2.0/轉錄/{id}       |
-|    刪除指定的轉錄任務。                                 |    刪除    |    api/語音文本/v2.0/轉錄/{id}       |
-|    獲取給定 ID 標識的轉錄。                        |    GET       |    api/語音文本/v2.0/轉錄/{id}       |
+|    創建新的轉錄。                                              |    POST      |    api/語音文字/v2.0/轉錄            |
+|    檢索已身份驗證訂閱的轉錄清單。    |    GET       |    api/語音文字/v2.0/轉錄            |
+|    獲取離線轉錄受支援區域設置的清單。              |    GET       |    api/語音文字/v2.0/轉錄/區域設定    |
+|    更新其 ID 標識的轉錄的可變詳細資訊。    |    PATCH     |    api/語音文字/v2.0/轉錄/{id}       |
+|    刪除指定的轉錄任務。                                 |    刪除    |    api/語音文字/v2.0/轉錄/{id}       |
+|    獲取給定 ID 標識的轉錄。                        |    GET       |    api/語音文字/v2.0/轉錄/{id}       |
 
 
 
 
-您可以在標題`Custom Speech transcriptions`下查看和測試詳細的 API，該 API 可作為[Swagger 文檔](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)提供。
+您可以在標題`Custom Speech transcriptions`下查看和測試詳細的 API,該 API 可作為[Swagger 文件](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)提供。
 
-批次處理轉錄作業是盡最大努力安排的。 當前，無法估計作業何時更改為運行狀態。 在正常系統負載下，應在幾分鐘內發生。 一旦處於運行狀態，實際轉錄的處理速度將快于音訊即時處理。
+批處理轉錄作業是盡最大努力安排的。 當前,無法估計作業何時更改為運行狀態。 在正常系統負載下,應在幾分鐘內發生。 一旦處於運行狀態,實際轉錄的處理速度將快於音訊即時處理。
 
-在便於使用的 API 旁邊，您不需要部署自訂終結點，並且沒有任何併發要求需要遵守。
+在易於使用的 API 旁邊,您不需要部署自定義終結點,並且沒有任何併發要求需要遵守。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -50,11 +50,11 @@ ms.locfileid: "80131592"
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](get-started.md)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
 >[!NOTE]
-> 語音服務的標準訂閱 （S0） 需要使用批次處理轉錄。 免費訂閱金鑰 （F0） 不起作用。 有關詳細資訊，請參閱[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 語音服務的標準訂閱 (S0) 需要使用批處理轉錄。 免費訂閱密鑰 (F0) 不起作用。 有關詳細資訊,請參閱[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="custom-models"></a>自訂模型
 
-如果您計畫自訂聲學或語言模型，請按照[自訂聲學模型](how-to-customize-acoustic-models.md)和[設計自訂語言模型](how-to-customize-language-model.md)中的步驟操作。 要在批次處理轉錄中使用創建的模型，您需要其模型 I。 在檢查模型的詳細資訊時，可以檢索模型 ID。 批次處理轉錄服務不需要部署的自訂終結點。
+如果您計劃自定義聲學或語言模型,請按照[自定義聲學模型](how-to-customize-acoustic-models.md)和[設計自定義語言模型](how-to-customize-language-model.md)中的步驟操作。 要在批次處理轉錄中使用建立的模型,您需要其模型 I。 在檢查模型的詳細資訊時,可以檢索模型 ID。 批處理轉錄服務不需要部署的自定義終結點。
 
 ## <a name="the-batch-transcription-api"></a>Batch 轉譯 API
 
@@ -64,11 +64,11 @@ Batch 轉譯 API 支援下列格式：
 
 | [格式] | 轉碼器 | Bitrate | 採樣速率                     |
 |--------|-------|---------|---------------------------------|
-| WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz，單聲道或身歷聲 |
-| MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz，單聲道或身歷聲 |
-| OGG    | OPUS  | 16 位元  | 8 kHz 或 16 kHz，單聲道或身歷聲 |
+| WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz,單聲道或立體聲 |
+| MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz,單聲道或立體聲 |
+| OGG    | OPUS  | 16 位元  | 8 kHz 或 16 kHz,單聲道或立體聲 |
 
-對於身歷聲音訊流，在轉錄過程中將拆分左右聲道。 對於每個通道，正在創建一個 JSON 結果檔。 通過每個陳述生成的時間戳記，開發人員可以創建有序的最終成績單。
+對於立體聲音頻流,在轉錄過程中將拆分左右聲道。 對於每個通道,正在創建一個 JSON 結果檔。 通過每個陳述生成的時間戳,開發人員可以創建有序的最終成績單。
 
 ### <a name="configuration"></a>組態
 
@@ -94,49 +94,49 @@ Batch 轉譯 API 支援下列格式：
 
 ### <a name="configuration-properties"></a>設定屬性
 
-使用這些可選屬性配置轉錄：
+使用這些選擇屬性設定轉錄:
 
 :::row:::
    :::column span="1":::
       **參數**
    :::column-end:::
    :::column span="2":::
-      **描述**
+      **說明**
 :::row-end:::
 :::row:::
    :::column span="1":::
       `ProfanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      指定如何處理辨識結果中的不雅內容。 接受的值是`None`禁用褻瀆篩選，`Masked`用星號取代褻瀆，`Removed`從結果中刪除所有褻瀆，或`Tags`添加"褻瀆"標記。 預設值是 `Masked`。
+      指定如何處理辨識結果中的不雅內容。 接受的值是`None`禁用褻瀆篩選`Masked`, 用星號取代褻`Removed`瀆, 從結果中刪除所有褻`Tags`瀆,或添加"褻瀆"標記。 預設值是 `Masked`。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `PunctuationMode`
    :::column-end:::
    :::column span="2":::
-      指定如何處理辨識結果中的標點符號。 接受的值是`None`禁用標點符號，`Dictated`表示顯式（口頭）標點符號，`Automatic`讓解碼器處理標點符號，或使用`DictatedAndAutomatic`聽寫和自動標點符號。 預設值是 `DictatedAndAutomatic`。
+      指定如何處理辨識結果中的標點符號。 接受的值是`None`關閉標點符號,`Dictated`表示顯示式(口頭)標點符號`Automatic`, 讓解碼器處理標點符號,`DictatedAndAutomatic`或使用聽寫和自動標點符號。 預設值是 `DictatedAndAutomatic`。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddWordLevelTimestamps`
    :::column-end:::
    :::column span="2":::
-      指定是否將字組層級時間戳記新增至輸出。 接受的值是`true`啟用單詞級時間戳記和`false`（預設值）來禁用它。
+      指定是否將字組層級時間戳記新增至輸出。 接受的值是`true`啟用單詞級時間戳`false`和 (預設值)來禁用它。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      指定是否應將情緒分析應用於陳述。 接受的值是`true`啟用和`false`（預設值）來禁用它。
+      指定是否應將情緒分析應用於陳述。 接受的值是`true`啟用`false`和 (預設值)來禁用它。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddDiarization`
    :::column-end:::
    :::column span="2":::
-      指定應在輸入上執行二分化分析，該輸入預期是包含兩個語音的單聲道。 接受的值啟用`true`二分化和`false`（預設值）來禁用它。 它還需要`AddWordLevelTimestamps`設置為 true。
+      指定應在輸入上執行二分化分析,該輸入預期是包含兩個語音的單聲道。 接受的值啟用`true`二分化`false`和 (預設值)來禁用它。 它還需要`AddWordLevelTimestamps`設置為 true。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -148,11 +148,11 @@ Batch 轉譯 API 支援下列格式：
 
 ### <a name="storage"></a>存放裝置
 
-批次處理轉錄支援[Azure Blob 存儲](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)，用於讀取音訊並將轉錄寫入存儲。
+批次處理轉錄支援[Azure Blob 儲存](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview),用於讀取音訊並將轉錄寫入儲存。
 
 ## <a name="the-batch-transcription-result"></a>批次處理轉錄結果
 
-對於單聲道輸入音訊，正在創建一個轉錄結果檔。 對於身歷聲輸入音訊，正在創建兩個轉錄結果檔。 每個結構都有此結構：
+對於單聲道輸入音訊,正在創建一個轉錄結果檔。 對於立體聲輸入音訊,正在創建兩個轉錄結果檔。 每個結構都有此結構:
 
 ```json
 {
@@ -216,22 +216,22 @@ Batch 轉譯 API 支援下列格式：
 }
 ```
 
-結果包含以下表單：
+結果包含以下表單:
 
 | 表單        | 內容                                                                                                                                                  |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Lexical`   | 識別的實際單詞。                                                                                                                             |
-| `ITN`       | 識別文本的反向文本正常化形式。 應用縮寫（"醫生史密斯"到"醫生史密斯"），電話號碼和其他轉換。 |
+| `ITN`       | 識別文本的反向文本規範化形式。 應用縮寫("醫生史密斯"到"醫生史密斯"),電話號碼和其他轉換。 |
 | `MaskedITN` | 應用了帶有褻瀆性蒙版的 ITN 形式。                                                                                                             |
 | `Display`   | 識別文本的顯示形式。 包括添加的標點符號和大小寫。                                                             |
 
-## <a name="speaker-separation-diarization"></a>揚聲器分離（分離）
+## <a name="speaker-separation-diarization"></a>揚聲器分離(分離)
 
-二化是將揚聲器分離到音訊片段的過程。 我們的 Batch 管道支援二分化，並能夠在單通道錄製上識別兩個揚聲器。 該功能在身歷聲錄製中不可用。
+二化是將揚聲器分離到音訊片段的過程。 我們的 Batch 管道支援二分化,並能夠在單通道錄製上識別兩個揚聲器。 該功能在立體聲錄製中不可用。
 
-所有轉錄輸出都包含 。 `SpeakerId` 如果未使用二分法，則它在 JSON 輸出中顯示`"SpeakerId": null`。 對於二分化，我們支援兩個聲音，因此揚聲器被標識為`"1"``"2"`或 。
+所有轉錄輸出都包含`SpeakerId`。 如果未使用二分法,則它在 JSON 輸出`"SpeakerId": null`中顯示 。 對於二分化,我們支援兩個聲音,因此揚聲器被標識為`"1"``"2"`或 。
 
-要請求二分化，只需在 HTTP 要求中添加相關參數，如下所示。
+要請求二分化,只需在 HTTP 請求中添加相關參數,如下所示。
 
  ```json
 {
@@ -247,21 +247,21 @@ Batch 轉譯 API 支援下列格式：
 }
 ```
 
-Word 級別時間戳記也必須"打開"，如上述請求中的參數所示。
+Word 級別時間戳也必須"打開",如上述請求中的參數所示。
 
 ## <a name="sentiment-analysis"></a>情感分析
 
-情緒特徵估計音訊中表達的情緒。 情緒由 0 和 1 之間的`Negative`值表示`Neutral`，和`Positive`情緒。 例如，情緒分析可用於話務中心方案：
+情緒特徵估計音訊中表達的情緒。 情緒由 0 和`Negative`1`Neutral`之間的`Positive`值表示 ,和 情緒。 例如,情緒分析可用於呼叫中心方案:
 
 - 深入瞭解客戶滿意度
-- 深入瞭解代理的性能（團隊接聽電話）
-- 查找呼叫轉向負方向的確切時間點
-- 把負呼叫變成積極方向時，什麼進展順利
-- 確定客戶喜歡什麼，不喜歡什麼產品或服務
+- 深入瞭解代理的性能(團隊接聽電話)
+- 尋找撥號轉到負方向的確切時間點
+- 把負呼叫變成積極方向時,什麼進展順利
+- 確定客戶喜歡什麼,不喜歡什麼產品或服務
 
-根據詞法形式，每個音訊段對情緒進行評分。 該音訊段中的整個文本用於計算情緒。 沒有計算整個轉錄的總情緒。 目前情緒分析僅適用于英語。
+根據詞法形式,每個音訊段對情緒進行評分。 該音訊段中的整個文本用於計算情緒。 沒有計算整個轉錄的總情緒。 目前情緒分析僅適用於英語。
 
-JSON 輸出示例如下所示：
+JSON 輸出示例如下所示:
 
 ```json
 {
@@ -299,24 +299,21 @@ JSON 輸出示例如下所示：
 
 ## <a name="best-practices"></a>最佳作法
 
-轉錄服務可以處理大量提交的轉錄。 您可以通過`GET`[轉錄方法](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)查詢轉錄的狀態。 通過指定`take`參數（幾百個），使資訊返回到合理的大小。 檢索結果後，定期從服務[中刪除轉錄](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 這保證了從轉錄管理調用的快速答覆。
+轉錄服務可以處理大量提交的轉錄。 您可以`GET`通過[轉錄方法](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)查詢轉錄的狀態。 通過指定`take`參數(幾百個),使資訊返回到合理的大小。 檢索結果後,定期從服務[中刪除轉錄](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 這保證了從轉錄管理調用的快速答覆。
 
 ## <a name="sample-code"></a>範例程式碼
 
-完整的示例可在子目錄中的`samples/batch` [GitHub 示例存儲庫](https://aka.ms/csspeech/samples)中找到。
-
-> [!NOTE]
-> 批次處理轉錄功能通過上述 REST API 公開。 因此，批次處理轉錄可以從幾乎任何支援 REST 的程式設計語言或環境中使用。 下面的示例和 GitHub 中的示例只是具有代表性的，**並不**表示對可以使用 API 的位置的限制。
+完整的範例可在子目錄中的`samples/batch` [GitHub 範例儲存庫](https://aka.ms/csspeech/samples)中找到。
 
 您自訂的範例程式碼要有訂用帳戶資訊、服務區域、指向音訊檔的 SAS URI 以轉譯，以及模型識別碼，以防您想要使用自訂原音或語言模型。
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-示例代碼設置用戶端並提交轉錄請求。 然後，它會輪詢狀態資訊並列印有關轉錄進度的詳細資訊。
+範例代碼設置用戶端並提交轉錄請求。 然後,它會輪詢狀態資訊並列印有關轉錄進度的詳細資訊。
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-有關上述呼叫的完整詳細資訊，請參閱我們的[斯瓦格文檔](https://westus.cris.ai/swagger/ui/index)。 如需此處所顯示的完整範例，請前往 `samples/batch` 子目錄中的 [GitHub](https://aka.ms/csspeech/samples)。
+有關上述話務的完整詳細資訊,請參閱我們的[斯瓦格文件](https://westus.cris.ai/swagger/ui/index)。 如需此處所顯示的完整範例，請前往 `samples/batch` 子目錄中的 [GitHub](https://aka.ms/csspeech/samples)。
 
 請留意張貼音訊和接收轉譯狀態的非同步設定。 您建立的用戶端是 .NET HTTP 用戶端。 `PostTranscriptions` 方法可傳送音訊檔案詳細資料，而 `GetTranscriptions` 方法可接收結果。 `PostTranscriptions` 會傳回控制代碼，然後 `GetTranscriptions` 使用它來取得轉譯狀態。
 

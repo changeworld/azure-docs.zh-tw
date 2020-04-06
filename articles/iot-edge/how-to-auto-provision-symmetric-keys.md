@@ -1,37 +1,37 @@
 ---
-title: 使用對稱金鑰認證預配設備 - Azure IoT 邊緣
-description: 使用對稱金鑰認證使用設備預配服務測試 Azure IoT 邊緣的自動設備配置
+title: 使用對稱金鑰認證預配裝置 - Azure IoT 邊緣
+description: 使用對稱金鑰認證使用裝置預先服務測試 Azure IoT 邊緣的自動裝置設定
 author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535913"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668662"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用對稱金鑰認證創建和預配 IoT 邊緣設備
+# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用對稱金鑰認證建立與預配 IoT 邊緣裝置
 
-可以使用[設備預配服務](../iot-dps/index.yml)自動預配 Azure IoT 邊緣設備，就像未啟用邊緣的設備一樣。 如果您不熟悉自動預配過程，請查看[自動預配概念](../iot-dps/concepts-auto-provisioning.md)，然後再繼續。
+可以使用[設備預配服務](../iot-dps/index.yml)自動預配 Azure IoT 邊緣設備,就像未啟用邊緣的設備一樣。 如果您不熟悉自動預配過程,請查看[自動預配概念](../iot-dps/concepts-auto-provisioning.md),然後再繼續。
 
-本文演示如何在 IoT Edge 設備上使用對稱金鑰認證創建設備預配服務個人註冊，並執行以下步驟：
+本文展示如何在 IoT Edge 裝置上使用對稱金鑰認證創建設備預配服務個人註冊,並執行以下步驟:
 
 * 建立 IoT 中樞裝置佈建服務 (DPS) 的執行個體。
 * 建立裝置的個別註冊。
-* 安裝 IoT 邊緣運行時並連接到 IoT 中心。
+* 安裝 IoT 邊緣執行時並連接到 IoT 中心。
 
-對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用[TPM](../iot-dps/concepts-tpm-attestation.md)或[X.509 憑證](../iot-dps/concepts-security.md#x509-certificates)的設備證明更安全，應用於更嚴格的安全要求。
+對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用[TPM](../iot-dps/concepts-tpm-attestation.md)或[X.509 憑證](../iot-dps/concepts-security.md#x509-certificates)的設備證明更安全,應用於更嚴格的安全要求。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 活動 IoT 中心
-* 物理或虛擬裝置
+* 實體或虛擬裝置
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>設定 IoT 中樞裝置佈建服務
 
@@ -43,40 +43,43 @@ ms.locfileid: "79535913"
 
 必須定義唯一的註冊識別碼以識別每個裝置。 您可以使用 MAC 位址、序號或裝置的任何唯一資訊。
 
-在此示例中，我們使用 MAC 位址和序號的組合，組成以下字串的註冊 ID： `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
+這個選項, 您使用 MAC 位址與序列號的組合,組成以下字串的註冊代碼: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
 
 為您的裝置建立唯一的註冊識別碼。 有效字元為小寫英數字元與破折號 ('-')。
 
 ## <a name="create-a-dps-enrollment"></a>建立 DPS 註冊
 
-使用設備的註冊 ID 在 DPS 中創建個人註冊。
+使用設備的註冊ID在DPS中創建個人註冊。
 
 在 DPS 中建立註冊時，您就有機會宣告**初始裝置對應項狀態**。 在裝置對應項中，您可以根據解決方案中需要的任何計量 (例如區域、環境、位置或裝置類型) 來設定標記，進而將裝置分組。 這些標記會用來建立[自動部署](how-to-deploy-monitor.md)。
 
 > [!TIP]
-> 使用對稱金鑰證明時，也可以進行組註冊，並且涉及與單個註冊相同的決策。
+> 使用對稱密鑰證明時,也可以進行組註冊,並且涉及與單個註冊相同的決策。
 
-1. 在[Azure 門戶](https://portal.azure.com)中，導航到 IoT 中心設備預配服務的實例。
+1. 在[Azure 門戶](https://portal.azure.com)中,導航到 IoT 中心設備預配服務的實例。
 
 1. 在 [設定]**** 下方，選取 [管理註冊]****。
 
 1. 選取 [新增個別註冊]****，然後完成下列步驟以設定註冊：  
 
-   1. 對於**機制**，選擇**對稱鍵**。
+   1. 對**機制**,選擇**對稱鍵**。
 
-   1. 選擇 **"自動生成金鑰**"核取方塊。
+   1. 選擇 **「自動產生金鑰**」 「複選框」。
 
-   1. 提供您為設備創建的**註冊 ID。**
+   1. 提供您為設備創建的**註冊ID。**
 
-   1. 如果需要，可為設備提供**IoT 中心裝置識別碼。** 您可以使用裝置識別碼，將個別裝置設為模組部署的目標。 如果您不提供裝置識別碼，則使用註冊 ID。
+   1. 如果需要,可為設備提供**IoT中心設備ID。** 您可以使用裝置識別碼，將個別裝置設為模組部署的目標。 如果您不提供設備 ID,則使用註冊 ID。
 
-   1. 選擇**True**可聲明註冊適用于 IoT 邊緣設備。 對於組註冊，所有設備都必須是 IoT Edge 設備，或者它們都不能是。
+   1. 選擇**True**可聲明註冊適用於 IoT 邊緣設備。 對於組註冊,所有設備都必須是 IoT Edge 設備,或者它們都不能是。
 
-   1. 接受設備預配服務分配策略中的預設值，**瞭解如何將設備分配給集線器**或選擇特定于此註冊的不同值。
+   > [!TIP]
+   > 在 Azure CLI 中,您可以建立[註冊](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[註冊組](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group),並使用**啟用邊緣**的標誌指定設備或設備組是 IoT Edge 裝置。
 
-   1. 選擇您的裝置所要連接的連結 **IoT 中樞**。 您可以選擇多個集線器，並且設備將根據所選的分配策略分配給其中一個集線器。
+   1. 接受裝置預配服務分配策略中的預設值,**瞭解如何將設備分配給集線器**或選擇特定於此註冊的不同值。
 
-   1. 選擇您希望在設備首次請求預配時**在重新預配時如何處理設備資料**。
+   1. 選擇您的裝置所要連接的連結 **IoT 中樞**。 您可以選擇多個集線器,並且設備將根據所選的分配策略分配給其中一個集線器。
+
+   1. 選擇您希望在裝置設定預先設定時 **, 在重新預先使用裝置資料**。
 
    1. 視需要將標記值新增至 [初始裝置對應項狀態]****。 您可以使用標記將裝置群組設定為模組部署的目標。 例如：
 
@@ -91,20 +94,20 @@ ms.locfileid: "79535913"
       }
       ```
 
-   1. 確保**啟用條目**設置為**啟用**。
+   1. 開啟**此選項,** 啟用項目設定為**開啟**。
 
-   1. 選取 [儲存]****。
+   1. 選取 [儲存]  。
 
-現在，此設備存在註冊，IoT Edge 運行時可以在安裝過程中自動預配設備。 請務必複製註冊的主**金鑰**值，以便安裝 IoT Edge 運行時時使用，或者如果要創建設備金鑰以與組註冊一起使用。
+現在,此設備存在註冊,IoT Edge 運行時可以在安裝過程中自動預配設備。 請務必複製註冊的主**密鑰**值,以便安裝 IoT Edge 運行時時使用,或者如果要創建設備密鑰以與組註冊一起使用。
 
 ## <a name="derive-a-device-key"></a>衍生裝置金鑰
 
 > [!NOTE]
-> 僅當使用組註冊時，才需要此部分。
+> 僅當使用組註冊時,才需要此部分。
 
-每個設備使用其派生的設備金鑰與唯一的註冊 ID 在預配期間對註冊執行對稱金鑰認證。 要生成設備金鑰，請使用從 DPS 註冊中複製的金鑰來計算裝置的唯一註冊 ID 的[HMAC-SHA256，](https://wikipedia.org/wiki/HMAC)並將結果轉換為 Base64 格式。
+每個設備使用其派生的設備密鑰與唯一的註冊 ID 在預配期間對註冊執行對稱密鑰認證。 要生成設備密鑰,請使用從 DPS 註冊中複製的密鑰來計算裝置的唯一註冊 ID 的[HMAC-SHA256,](https://wikipedia.org/wiki/HMAC)並將結果轉換為 Base64 格式。
 
-請勿在設備代碼中包含註冊的主金鑰或輔助金鑰。
+請勿在設備代碼中包含註冊的主密鑰或輔助密鑰。
 
 ### <a name="linux-workstations"></a>Linux 工作站
 
@@ -153,22 +156,22 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
 
-預配設備時，您需要以下資訊：
+預配裝置時,您需要以下資訊:
 
 * DPS **ID 範圍**值
-* 您創建的設備**註冊 ID**
+* 您建立的裝置**註冊識別碼**
 * 從 DPS 註冊複製**的主金鑰**
 
 > [!TIP]
-> 對於組註冊，您需要每個設備的[衍生金鑰](#derive-a-device-key)，而不是 DPS 註冊金鑰。
+> 對於組註冊,您需要每個設備的[派生密鑰](#derive-a-device-key),而不是 DPS 註冊金鑰。
 
-### <a name="linux-device"></a>Linux 設備
+### <a name="linux-device"></a>Linux 裝置
 
 按照設備體系結構的說明進行操作。 請務必將 IoT Edge 執行階段設定為自動佈建，而不是手動佈建。
 
-[在 Linux 上安裝 Azure IoT 邊緣運行時](how-to-install-iot-edge-linux.md)
+[在 Linux 安裝 Azure IoT 邊緣執行時](how-to-install-iot-edge-linux.md)
 
-用於對稱金鑰預配的設定檔中的部分如下所示：
+用於對稱金鑰預配的設定檔中的部分如下所示:
 
 ```yaml
 # DPS symmetric key provisioning configuration
@@ -182,28 +185,28 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-將`<SCOPE_ID>`的預留位置值`<REGISTRATION_ID>`替換為`<SYMMETRIC_KEY>`前面收集的資料。 確保**預配：** 行沒有前面的空格，並且嵌套項由兩個空格縮進。
+將`<SCOPE_ID>`的占位符值`<REGISTRATION_ID>`替換`<SYMMETRIC_KEY>`為 前面收集的數據。 確保**預配:** 行沒有前面的空格,並且嵌套項由兩個空格縮進。
 
 ### <a name="windows-device"></a>Windows 裝置
 
-在為其生成派生設備金鑰的設備上安裝 IoT Edge 運行時。 您將為自動（而不是手動）預配配置 IoT Edge 運行時。
+在為其生成派生設備密鑰的設備上安裝 IoT Edge 運行時。 您將為自動(而不是手動)預配配置 IoT Edge 執行時。
 
-有關在 Windows 上安裝 IoT Edge 的更多詳細資訊，包括管理容器和更新 IoT Edge 等任務的先決條件和說明，請參閱[在 Windows 上安裝 Azure IoT 邊緣運行時](how-to-install-iot-edge-windows.md)。
+有關在 Windows 上安裝 IoT Edge 的詳細資訊,包括管理容器和更新 IoT Edge 等工作的先決條件和說明,請參閱[在 Windows 上安裝 Azure IoT 邊緣執行時](how-to-install-iot-edge-windows.md)。
 
-1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝物聯網邊緣時，請務必使用 AMD64 電源外殼會話，而不是 PowerShell （x86）。
+1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝物聯網邊緣時,請務必使用 AMD64 電源外殼會話,而不是 PowerShell (x86)。
 
-1. **Deploy-IoTEdge**命令檢查 Windows 電腦是否位於受支援的版本上，打開容器功能，然後下載 moby 運行時和 IoT Edge 運行時。 該命令預設為使用 Windows 容器。
+1. **Deploy-IoTEdge**命令檢查 Windows 電腦是否位於受支援的版本上,打開容器功能,然後下載 moby 運行時和 IoT Edge 運行時。 該命令預設為使用 Windows 容器。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. 此時，IoT Core 設備可能會自動重新開機。 其他 Windows 10 或 Windows 伺服器設備可能會提示您重新開機。 如果是，請立即重新開機設備。 設備準備就緒後，再次以管理員身份運行 PowerShell。
+1. 此時,IoT Core 設備可能會自動重新啟動。 其他 Windows 10 或 Windows 伺服器設備可能會提示您重新啟動。 如果是,請立即重新啟動設備。 設備準備就緒后,再次以管理員身份運行 PowerShell。
 
-1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 該命令預設為手動預配 Windows 容器，`-Dps`除非您使用該標誌使用自動預配。
+1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 該指令預設為手動預配 Windows`-Dps`容器, 除非您使用該標誌使用自動預配。
 
-   將`{scope_id}`的預留位置值`{registration_id}`替換為`{symmetric_key}`前面收集的資料。
+   將`{scope_id}`的占位符值`{registration_id}`替換`{symmetric_key}`為 前面收集的數據。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -214,7 +217,7 @@ provisioning:
 
 如果執行階段順利啟動，您可以移至 IoT 中樞，並開始將 IoT Edge 模組部署到您的裝置。 請在您的裝置上使用下列命令，確認執行階段已成功安裝並啟動。
 
-### <a name="linux-device"></a>Linux 設備
+### <a name="linux-device"></a>Linux 裝置
 
 檢查 IoT Edge 服務的狀態。
 
@@ -254,8 +257,8 @@ Get-Service iotedge
 iotedge list
 ```
 
-您可以驗證您在設備預配服務中創建的單個註冊是否已使用。 導航到 Azure 門戶中的設備預配服務實例。 打開您創建的單個註冊的註冊詳細資訊。 請注意，已**分配**註冊狀態並列出裝置識別碼。
+您可以驗證您在設備預配服務中創建的單個註冊是否已使用。 導航到 Azure 門戶中的設備預配服務實例。 打開您創建的單個註冊的註冊詳細資訊。 請注意,已**分配**註冊狀態並列出設備 ID。
 
 ## <a name="next-steps"></a>後續步驟
 
-佈建新裝置時，裝置佈建服務註冊程序可讓您同時設定裝置識別碼和裝置對應項標記。 您可以使用這些值來鎖定要使用自動裝置管理的個別裝置或裝置群組。 瞭解如何使用 Azure 門戶或使用[Azure CLI](how-to-deploy-monitor-cli.md)[大規模部署和監視 IoT 邊緣模組](how-to-deploy-monitor.md)。
+佈建新裝置時，裝置佈建服務註冊程序可讓您同時設定裝置識別碼和裝置對應項標記。 您可以使用這些值來鎖定要使用自動裝置管理的個別裝置或裝置群組。 瞭解如何使用 Azure 門戶或使用[Azure CLI](how-to-deploy-monitor-cli.md)[大規模部署與監視 IoT 邊緣模組](how-to-deploy-monitor.md)。

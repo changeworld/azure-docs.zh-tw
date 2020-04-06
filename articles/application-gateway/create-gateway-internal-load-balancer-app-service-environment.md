@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121959"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668565"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>使用內部負載平衡器搭配 App Service Environment 的應用程式閘道並未將後端伺服器憑證列入允許清單
 
-本文會針對下列問題進行疑難排解：當您在 Azure 中使用端對端 SSL，於後端使用內部負載平衡器 (ILB) 搭配 App Service Environment (ASE) 來建立應用程式閘道時，憑證並未列入允許清單。
+本文針對以下問題:在 Azure 中使用端到端 TLS 時,使用內部負載均衡器 (ILB) 和後端的應用服務環境 (ASE) 一起創建應用程式網關時,證書未列入白名單。
 
 ## <a name="symptoms"></a>徵狀
 
@@ -32,13 +32,13 @@ ms.locfileid: "71121959"
 **應用程式閘道組態：**
 
 - **接聽程式：** 多網站
-- **埠：** 443
+- **連接埠:** 443
 - **主機名稱：** test.appgwtestase.com
 - **SSL 憑證：** CN=test.appgwtestase.com
 - **後端集區：** IP 位址或 FQDN
 - **IP 位址：** 10.1.5.11
 - **HTTP 設定：** HTTPS
-- **埠：**： 443
+- **連接埠:**: 443
 - **自訂探查：** 主機名稱 – test.appgwtestase.com
 - **驗證憑證：** test.appgwtestase.com 的 .cer
 - **後端健康情況：** 狀況不良 – 後端伺服器憑證不會列入應用程式閘道的允許清單。
@@ -52,7 +52,7 @@ ms.locfileid: "71121959"
 
 當您存取應用程式閘道時，您會因為後端伺服器狀況不良而收到下列錯誤訊息：
 
-**502 – Web 服務器在充當閘道或代理伺服器時收到無效回應。**
+**502 – Web 伺服器在充當閘道或代理伺服器時收到無效回應。**
 
 ## <a name="solution"></a>解決方法
 
@@ -68,7 +68,7 @@ ms.locfileid: "71121959"
 
 - 將應用程式閘道的 [為應用程式服務使用]**** 選項取消選取，以免您是使用 ILB 的 IP 位址。
 
-若要減少額外負荷，您可以上傳 HTTP 設定中的 ILB 憑證，以進行探查路徑工作。 (此步驟只適用於加入允許清單。 它不會用於 SSL 通信。您可以通過從 HTTPS 上的瀏覽器訪問 ILB 及其 IP 位址，然後以 Base-64 編碼的 CER 格式匯出 SSL 憑證，並在相應的 HTTP 設置上上載證書來檢索 ILB 證書。
+若要減少額外負荷，您可以上傳 HTTP 設定中的 ILB 憑證，以進行探查路徑工作。 (此步驟只適用於加入允許清單。 它不會用於 TLS 通信。您可以通過從 HTTPS 上的瀏覽器存取 ILB 及其 IP 位址,然後以 Base-64 編碼的 CER 格式匯出 TLS/SSL 憑證,並在相應的 HTTP 設定上上傳證書來檢索 ILB 憑證。
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 

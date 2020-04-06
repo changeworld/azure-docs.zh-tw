@@ -1,5 +1,5 @@
 ---
-title: Azure 庫伯奈斯服務 (AKS) 的高可用性和災難恢復
+title: AKS 業務連續性和災難復原的最佳實務
 description: 瞭解群集操作員的最佳做法,以實現應用程式的最大發佈時間,在 Azure Kubernetes 服務 (AKS) 中提供高可用性併為災難恢復做好準備。
 services: container-service
 author: lastcoolnameleft
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6aff60cbc4a4cab557e6e202ea1181d5b20bbd20
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7aa93d8ba21cafddc5511e16fa430b76942b1a6d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655875"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668298"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>因應 Azure Kubernetes Service (AKS) 中商務持續性和災害復原的最佳做法
 

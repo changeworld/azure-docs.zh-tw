@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 0bf8960f1e97de45d5369f69c698311d0b4e3dbb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584520"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666824"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>以 SMB 為 Azure 檔案分享啟用活動目錄身分驗證
 
@@ -34,6 +34,9 @@ ms.locfileid: "80584520"
 通過 SMB 為 Azure 檔案共享啟用 AD 時,AD 網域聯接的電腦可以使用現有的 AD 認證載入 Azure 檔案共用。 此功能可以通過託管在預處理計算機或 Azure 中託管的 AD 環境啟用。
 
 用於存取 Azure 檔案共享的 AD 識別必須同步到 Azure AD,以便透過基於角色的標準[存取控制 (RBAC)](../../role-based-access-control/overview.md)模型強制實施共用層級檔案許可權。 將保留並強制執行從現有檔案伺服器結轉的檔案/目錄上的[Windows 樣式 DACL。](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 此功能提供與企業 AD 域基礎架構的無縫整合。 當您使用 Azure 檔共享替換上置前檔案伺服器時,現有使用者可以通過單個登入體驗從其當前用戶端訪問 Azure 檔案共用,而無需對正在使用的認證進行任何更改。  
+
+> [!NOTE]
+> 為了説明您為常見用例設置 Azure 檔案 AD 身份驗證,我們發布[了 兩個影片](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos),並逐步指導將本地檔案伺服器替換為 Azure 檔,並使用 Azure 檔案作為 Windows 虛擬桌面的設定檔容器。
  
 ## <a name="prerequisites"></a>Prerequisites 
 
@@ -69,15 +72,17 @@ Azure 檔案 AD 身份驗證(預覽)在公共[雲中的所有區域](https://azu
 
 在為 Azure 檔共享啟用透過 SMB 進行 AD 身份驗證之前,我們建議您演練 [先決條件](#prerequisites) 並確保已完成所有步驟。 先決條件驗證 AD、Azure AD 和 Azure 儲存環境是否已正確配置。 
 
-接下來,使用 AD 認證所授予對 Azure 檔資源的權限: 
+接下來,按照以下步驟設定用於 AD 身份驗證的 Azure 檔: 
 
-- 在儲存帳戶上啟用 Azure 檔案 AD 身份驗證。  
+1. 在儲存帳戶上啟用 Azure 檔案 AD 身份驗證。 
 
-- 將共用的存取許可權分配給與目標 AD 識別同步的 Azure AD 識別(使用者、組或服務主體)。 
+2. 將共用的存取許可權分配給與目標 AD 識別同步的 Azure AD 識別(使用者、組或服務主體)。 
 
-- 通過 SMB 配置目錄和檔的 ACL。 
+3. 通過 SMB 配置目錄和檔的 ACL。 
 
-- 從 AD 網域聯接的 VM 裝載 Azure 檔共用。 
+4. 從 AD 網域聯接的 VM 裝載 Azure 檔共用。 
+
+5. 旋轉廣告帳戶密碼(選擇性的)
 
 下圖說明了用於透過 SMB 為 Azure 檔案共享啟用 Azure AD 身份驗證的端到端工作流。 
 
@@ -86,25 +91,28 @@ Azure 檔案 AD 身份驗證(預覽)在公共[雲中的所有區域](https://azu
 > [!NOTE]
 > Azure 檔案共用的 SMB 上的 AD 驗證僅在執行在比 Windows 7 或 Windows Server 2008 R2 更新的作業系統版本的電腦上或 VM 上支援。 
 
-## <a name="enable-ad-authentication-for-your-account"></a>為您的帳號啟用 AD 認證 
+## <a name="1-enable-ad-authentication-for-your-account"></a>1. 為您的帳戶啟用 AD 認證 
 
 要透過 SMB 對 Azure 檔案共享啟用 AD 身份驗證,需要先向 AD 註冊儲存帳戶,然後在儲存帳戶上設置所需的域屬性。 在存儲帳戶上啟用該功能時,它適用於帳戶中的所有新檔和現有文件共用。 用於`join-AzStorageAccountForAuth`啟用該功能。 您可以在下面的部分中找到端到端工作流的詳細說明。 
 
 > [!IMPORTANT]
 > `Join-AzStorageAccountForAuth` cmdlet 將修改您的 AD 環境。 閱讀以下說明,以更好地瞭解它正在採取哪些措施來確保您具有執行命令的適當許可權,並確保應用的更改與合規性和安全策略保持一致。 
 
-cmdlet`Join-AzStorageAccountForAuth`將代表指示的存儲帳戶執行等效的離線域聯接。 它將在 AD 網域建立帳戶,即[電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)或服務[登入帳號](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)。 創建的 AD 帳戶表示 AD 網域中的儲存帳戶。 如果 AD 帳戶是在強制密碼過期的 AD 組織單位 (OU) 下創建的,則必須在最大密碼期限之前更新密碼。 訪問 Azure 檔案共享時,無法更新 AD 帳戶密碼將導致身份驗證失敗。 要瞭解如何更新密碼,請參閱[更新 AD 帳號密碼](#update-ad-account-password)。
+cmdlet`Join-AzStorageAccountForAuth`將代表指示的存儲帳戶執行等效的離線域聯接。 它將在 AD 網域建立帳戶,即[電腦帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)(預設)[或服務登入帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)。 創建的 AD 帳戶表示 AD 網域中的儲存帳戶。 如果 AD 帳戶是在強制密碼過期的 AD 組織單位 (OU) 下創建的,則必須在最大密碼期限之前更新密碼。 訪問 Azure 檔案共享時,無法更新 AD 帳戶密碼將導致身份驗證失敗。 要瞭解如何更新密碼,請參閱[更新 AD 帳號密碼](#5-update-ad-account-password)。
 
 您可以使用以下文稿執行註冊並啟用該功能,也可以手動執行腳本將執行的操作。 這些操作在腳本之後的部分中介紹。 您不需要同時執行這兩個操作。
 
-### <a name="1-check-prerequisites"></a>1. 檢查先決條件
+### <a name="11-check-prerequisites"></a>1.1 檢查先決條件
 - [下載並解壓縮 AzFiles 混合模組](https://github.com/Azure-Samples/azure-files-samples/releases)
 - 在具有 AD 認證的網域加入 AD 的裝置中安裝並執行模組,該認證具有在目標 AD 建立服務登錄帳戶或電腦帳戶的許可權。
 -  使用同步到 Azure AD 的 AD 認證執行文稿。 AD 認證必須具有儲存帳戶擁有者或參與者 RBAC 角色許可權。
 - 請確定您的儲存帳戶位於[受支援的區域](#regional-availability)。
 
-### <a name="2-domain-join-your-storage-account"></a>2. 網域名稱加入您的儲存帳戶
+### <a name="12-domain-join-your-storage-account"></a>1.2 網域加入您的儲存帳戶
 在 PowerShell 中執行占位符之前,請記住在下面的參數中將占位符值替換為您自己的占位符值。
+> [!IMPORTANT]
+> 我們建議您提供不強制密碼過期的 AD 組織單位 (OU)。 如果使用配置了密碼過期的 OU,則必須在最大密碼期限之前更新密碼。 訪問 Azure 檔案共享時,無法更新 AD 帳戶密碼將導致身份驗證失敗。 要瞭解如何更新密碼,請參閱[更新 AD 帳號密碼](#5-update-ad-account-password)。
+
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -123,19 +131,19 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
-# You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName.
+# You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
 # You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName "<resource-group-name-here>" `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
-        -OrganizationalUnitName "<ou-name-here>"
+        -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
 ```
 
 以下說明總結了執行`Join-AzStorageAccountForAuth`cmdlet 時執行的所有操作。 如果您不希望使用以下命令,則可以手動執行這些步驟:
 
 > [!NOTE]
-> 如果您已成功執行上述`Join-AzStorageAccountForAuth`腳本,請訪問下一節"3"。 確認功能已啟用」。 您無需再次執行以下操作。
+> 如果您已成功執行上述`Join-AzStorageAccountForAuth`文稿,請轉到下一節"1.3 確認功能已啟用"。 您無需再次執行以下操作。
 
 #### <a name="a-checking-environment"></a>a. 檢查環境
 
@@ -147,7 +155,7 @@ Join-AzStorageAccountForAuth `
 
 擁有該密鑰後,在 OU 下創建服務或計算機帳戶。 使用以下規範:SPN:"cIFs/您的儲存帳戶名稱-此處.file.core.windows.net"密碼:存儲帳戶的 Kerberos 密鑰。
 
-如果 OU 強制密碼過期,則必須在最大密碼期限之前更新密碼,以防止在訪問 Azure 檔共享時出現身份驗證失敗。 有關詳細資訊,請參閱[更新 AD 帳號密碼](#update-ad-account-password)。
+如果 OU 強制密碼過期,則必須在最大密碼期限之前更新密碼,以防止在訪問 Azure 檔共享時出現身份驗證失敗。 有關詳細資訊,請參閱[更新 AD 帳號密碼](#5-update-ad-account-password)。
 
 保留新創建的帳戶的 SID,下一步將需要它。 您剛剛建立的表示儲存帳戶的 AD 識別不需要同步到 Azure AD。
 
@@ -170,7 +178,7 @@ Set-AzStorageAccount `
 ```
 
 
-### <a name="3-confirm-that-the-feature-is-enabled"></a>3. 確認功能已開啟
+### <a name="13-confirm-that-the-feature-is-enabled"></a>1.3 確認功能已開啟
 
 您可以檢查以確認此功能是否已在儲存帳戶上啟用,您可以使用以下文稿:
 
@@ -191,9 +199,9 @@ $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-現在,您已成功通過 SMB 啟用 AD 身份驗證,並分配了一個自定義角色,該角色提供對具有 AD 標識的 Azure 檔共享的訪問。 要給其他使用者存取存取權限,請按照[「分配權限」](#assign-access-permissions-to-an-identity)中的說明使用識別,[並在 SMB 部份上設定 NTFS 權限](#configure-ntfs-permissions-over-smb)。
+現在,您已成功通過 SMB 啟用 AD 身份驗證,並分配了一個自定義角色,該角色提供對具有 AD 標識的 Azure 檔共享的訪問。 要給其他使用者存取存取權限,請按照[「分配權限」](#2-assign-access-permissions-to-an-identity)中的說明使用識別,[並在 SMB 部份上設定 NTFS 權限](#3-configure-ntfs-permissions-over-smb)。
 
-## <a name="update-ad-account-password"></a>更新 AD 帳號密碼
+## <a name="5-update-ad-account-password"></a>5. 更新 AD 帳號密碼
 
 如果您在強制密碼過期時間的 OU 下註冊了表示存儲帳戶的 AD 標識/帳戶,則必須在最大密碼期限之前輪換密碼。 無法更新 AD 帳戶的密碼將導致身份驗證無法存取 Azure 檔共用。  
 

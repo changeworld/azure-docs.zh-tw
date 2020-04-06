@@ -1,17 +1,18 @@
 ---
-title: 教學課程 - 使用 Jenkins 從 GitHub 部署至 Azure Kubernetes Service (AKS)
+title: 與 Jenkins 一起從 GitHub 部署到 AKS
+titleSuffix: Azure Kubernetes Service
 description: 設定 Jenkins 以進行從 GitHub 的持續整合 (CI) 以及對 Azure Kubernetes Service (AKS) 的持續部署 (CD)
 services: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: eb48a8558aab6c7a832efe45650686d9df0d7426
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a93cfc77178ff7638217663c2ceda500aae4cfd7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624744"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668628"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>教學課程：使用 Jenkins 持續整合和部署從 GitHub 部署至 Azure Kubernetes Service (AKS)
 
@@ -40,7 +41,7 @@ ms.locfileid: "77624744"
 
 - [安裝在](https://docs.docker.com/install/)開發系統上的 Docker
 
-- 在開發系統上安裝 GitHub 帳戶[、GitHub 個人訪問權杖](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)和 Git 用戶端
+- 在開發系統上安裝 GitHub 帳號[、GitHub 個人存取權杖和 Git](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)用戶端
 
 - 如果您提供自己的 Jenkins 執行個體，而不是此範例指令碼方式來部署 Jenkins，則 Jenkins 執行個體需要[安裝及設定 Docker](https://docs.docker.com/install/) 和 [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 
@@ -49,9 +50,9 @@ ms.locfileid: "77624744"
 在此文章中，您會使用一個範例 Azure 投票應用程式，此應用程式包含一個裝載在一或多個 Pod 中的 Web 介面，以及裝載 Redis 來作為暫時資料儲存體的第二個 Pod。 在您整合 Jenkins 與 AKS 來進行自動化部署之前，請先將 Azure 投票應用程式手動備妥並部署至 AKS 叢集。 此手動部署是該應用程式的第一版，可讓您了解該應用程式的實際運作情況。
 
 > [!NOTE]
-> 示例 Azure 投票應用程式使用計畫在 Linux 節點上運行的 Linux 窗格。 本文中概述的流也適用于在 Windows Server 節點上安排的 Windows Server pod。
+> 範例 Azure 投票應用程式使用計畫在 Linux 節點上執行的 Linux 窗格。 本文中概述的流也適用於在 Windows Server 節點上安排的 Windows Server pod。
 
-為應用程式範例分叉以下 GitHub 存儲庫[https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis)- 。 若要將存放庫分支至您自己的 GitHub 帳戶，請選取右上角的 [分支]**** 按鈕。
+為範例應用程式分叉以下 GitHub[https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis)儲存函式庫 - 。 若要將存放庫分支至您自己的 GitHub 帳戶，請選取右上角的 [分支]**** 按鈕。
 
 將該分岔複製到您的開發系統。 複製此存放庫時，請務必使用分岔的 URL：
 
@@ -137,7 +138,7 @@ azure-vote-front   LoadBalancer   10.0.215.27   40.117.57.239   80:30747/TCP   2
 > [!WARNING]
 > 此範例指令碼僅用於示範，說明如何快速佈建可在 Azure VM 上執行的 Jenkins 環境。 它會使用 Azure 自訂指令碼擴充功能來設定 VM，然後顯示所需的認證。 您的 ~/.kube/config** 會複製到 Jenkins VM。
 
-請執行下列命令來下載及執行指令碼。 在運行腳本之前，應查看任何腳本的內容 。 [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh)
+請執行下列命令來下載及執行指令碼。 在執行文稿之前,應檢視任何文稿的內容[https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh)。
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
@@ -165,7 +166,7 @@ Enter the following to Unlock Jenkins:
 
 Jenkins 環境變數可用來存放 ACR 登入伺服器名稱。 進行 Jenkins 組建作業期間會參考此變數。 若要建立此環境變數，請完成下列步驟：
 
-- 在 Jenkins 門戶的左側，選擇 **"管理詹金斯** > **配置系統**"
+- 在 Jenkins 門戶的左側,選擇 **"管理詹金斯** > **配置系統**"
 - 在 [Global Properties] \(全域屬性\)**** 底下，選取 [Environment variables] \(環境變數\)****。 新增名稱為 `ACR_LOGINSERVER` 的變數，以及您 ACR 登入伺服器的值。
 
     ![Jenkins 環境變數](media/jenkins-continuous-deployment/env-variables.png)
@@ -210,7 +211,7 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 
 在 Azure 中建立角色指派之後，現在請將 ACR 認證儲存在 Jenkins 認證物件中。 進行 Jenkins 組建作業時，會參考這些認證。
 
-返回 Jenkins 門戶的左側，按一下**憑據** > **Jenkins** > **全域憑據（無限制）** > **添加憑據**
+返回 Jenkins 門戶的左側,按一**下 憑據** > **Jenkins** > **全域認證(無限制)** > **添加認證**
 
 確定認證種類是 [Username with password] \(使用者名稱搭配密碼\)****，然後輸入下列項目：
 
@@ -229,8 +230,8 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 從 Jenkins 入口網站首頁的左側，選取 [New item] \(新增項目\)****：
 
 1. 輸入 *azure-vote* 作為作業名稱。 選擇 [Freestyle project] \(自由樣式專案\)****，然後選取 [OK] \(確定\)****
-1. 在 **"常規**"部分下，選擇**GitHub 專案**並輸入分叉存儲庫 URL，例如*\/HTTPs：/github.com/\<您的 github 帳戶\>/azure 投票-應用-redis*
-1. 在**原始程式碼管理**部分下，選擇**Git**，輸入分叉存儲庫 *.git* URL，如*HTTPs：\/\</github.com/您的 github\>帳戶 /azure 投票-app-redis.git*
+1. 在 **"一般**' 部分下,選擇**GitHub 專案**並輸入分叉儲存庫網址,例如*\/HT:/github.com/\<您的 github 帳號\>/azure 投票-應用-redis*
+1. 在**源代碼管理**部份下,選擇**Git**,輸入分叉儲存庫 *.git* URL,如*\/\<Htt: /github.com/您的 github\>帳戶 /azure 投票-app-redis.git*
 
 1. 在 [Build Triggers] \(建置觸發程序\)**** 底下，選取 [GitHub hook trigger for GITscm polling] \(GITScm 輪詢的 GitHub 勾點觸發程序\)****
 1. 在 [Build Environment] \(建置環境\)**** 底下，選取 [Use secret texts or files] \(使用祕密文字或檔案\)****
@@ -280,7 +281,7 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 1. 在網頁瀏覽器中瀏覽至分岔的 GitHub 存放庫。
 1. 選取 [設定]****，然後選取左側的 [Webhook]****。
 1. 選擇 [新增 Webhook]****。 針對 [Payload URL] \(承載 URL\)**，輸入 `http://<publicIp:8080>/github-webhook/`，其中 `<publicIp>` 是 Jenkins 伺服器的 IP 位址。 請務必包含尾端的斜線 (/)。 保留內容類型的其他預設值，並針對「推送」** 事件觸發。
-1. 選擇 **"添加網路鉤子**"。
+1. 選擇 **「添加網路鉤子**」。
 
     ![為 Jenkins 建立 GitHub Webhook](media/jenkins-continuous-deployment/webhook.png)
 

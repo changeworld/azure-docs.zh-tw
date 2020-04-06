@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116665"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668557"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>關於 Azure 儲存體移轉的常見問題集
 
@@ -64,7 +64,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
  您可以使用 [Blob 移轉指令碼](../scripts/storage-common-transfer-between-storage-accounts.md)來達成。
  
-## <a name="migration-or-backup"></a>遷移或備份
+## <a name="migration-or-backup"></a>移轉或備份
 
 **如何在儲存體容器之間移動資料？**
 
@@ -82,7 +82,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 請使用 AzCopy 將大型 .csv 檔案上傳到 Azure 儲存體。 如需詳細資訊，請參閱[使用 AzCopy on Windows 傳送資料](storage-use-azcopy.md)和[使用 AzCopy on Linux 傳送資料](storage-use-azcopy-linux.md)。
 
-**我必須每天將日誌從磁碟機 D 移動到 Azure 存儲帳戶。如何自動執行此功能？**
+**我必須每天將日誌從驅動器 D 移至 Azure 儲存帳戶。如何自動執行此功能?**
 
 您可以使用 AzCopy，並在工作排程器中建立工作。 請使用 AzCopy 批次指令碼，將檔案上傳到 Azure 儲存體帳戶。 如需詳細資訊，請參閱[如何設定和執行雲端服務的啟動工作](../../cloud-services/cloud-services-startup-tasks.md)。
 
@@ -202,9 +202,9 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 執行此命令之後，容器檔案會移到目標儲存體帳戶。
 
 > [!NOTE]
-> 當您從一個 Azure Blob 複製到另一個 Azure Blob 時，AzCopy CLI 不能與**模式**開關協同工作。
+> 當您從一個 Azure Blob 複製到另一個 Azure Blob 時,AzCopy CLI 不能與**模式**開關協同工作。
 >
-> 您可以直接複製和編輯 AzCopy 命令，並交叉檢查以確定 **Pattern** 符合來源。 另請確認 **/S** 萬用字元有效。 有關詳細資訊，請參閱[AzCopy 參數](storage-use-azcopy.md)。
+> 您可以直接複製和編輯 AzCopy 命令，並交叉檢查以確定 **Pattern** 符合來源。 另請確認 **/S** 萬用字元有效。 有關詳細資訊,請參閱[AzCopy 參數](storage-use-azcopy.md)。
 
 **如何備份 Azure 檔案儲存體？**
 
@@ -225,9 +225,9 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 查看下列文章：
 
--  [Azure 存儲安全指南](../blobs/security-recommendations.md)
+-  [Azure 儲存安全指南](../blobs/security-recommendations.md)
 
--  [靜態資料的 Azure 存儲服務加密](storage-service-encryption.md)
+-  [靜態資料的 Azure 儲存服務加密](storage-service-encryption.md)
 
 **如何加密儲存體帳戶的資料？**
 
@@ -243,7 +243,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 Azure 檔案共用不允許使用進階儲存體。
 
-**如何從標準存儲帳戶升級到高級存儲帳戶？如何從高級存儲帳戶降級到標準存儲帳戶？**
+**如何從標準存儲帳戶升級到高級存儲帳戶?如何從高級存儲帳戶降級到標準存儲帳戶?**
 
 您必須建立目的地儲存體帳戶，將資料從來源帳戶複製到目的地帳戶，然後刪除來源帳戶。 您可以使用 AzCopy 之類的工具來複製資料。
 
@@ -267,12 +267,12 @@ Azure 檔案共用不允許使用進階儲存體。
 
 -   如果您安裝的是 64 位元版本，則位於：**%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy**。
 
-**如何使用 HTTPS 自訂域與存儲帳戶一起使用？例如，如何使"HTTPs：\//mystorageaccountname.blob.core.windows.net/images/image.gif"顯示為"HTTPs：/www.contoso.com/images/image.gif"？\/**
+**如何使用 HHTH 透過使用 HTt 的功能上使用儲存帳戶使用?例如,如何使"HTt:/mystorageaccountname.blob.core.windows.net/images/image.gif"\/顯示為"H.h'/www.contoso.com/images/image.gif"?\/**
 
-具有自訂網域的儲存體帳戶目前不支援 SSL。
+當前,具有自定義域的存儲帳戶不支援 TLS/SSL。
 但可以使用非 HTTPS 的自訂網域。 如需詳細資訊，請參閱[針對 Blob 儲存體端點設定自訂網域名稱](../blobs/storage-custom-domain-name.md)。
 
-## <a name="access-to-storage"></a>訪問存儲
+## <a name="access-to-storage"></a>存取記憶體
 
 **如何在虛擬機器上對應容器資料夾？**
 
@@ -294,7 +294,7 @@ Azure 檔案共用不允許使用進階儲存體。
 
     - **SAS 權杖**︰使用 SAS 權杖以存取來自端點的資料。 如需詳細資訊，請參閱[使用共用存取簽章](storage-sas-overview.md)。
 
-**如何使用 FTP 訪問存儲帳戶中的資料？**
+**如何使用 FTP 存取儲存帳戶中的數據?**
 
 無法使用 FTP 直接存取儲存體帳戶。 不過可以安裝一個 Azure 虛擬機器，然後將 FTP 伺服器安裝在虛擬機器上。 您可以讓 FTP 伺服器將檔案儲存在 Azure 檔案共用中，或是儲存在虛擬機器可用的資料磁碟裡。
 
