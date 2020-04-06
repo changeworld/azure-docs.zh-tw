@@ -13,7 +13,7 @@
           href: storage-blobs-introduction.md
     - name: 快速入門
       items:
-        - name: 無需程式碼也能管理 Blob
+        - name: 使用 Blob
           items:
             - name: Azure 入口網站
               href: storage-quickstart-blobs-portal.md
@@ -23,8 +23,6 @@
               href: storage-quickstart-blobs-powershell.md
             - name: CLI
               href: storage-quickstart-blobs-cli.md
-        - name: 使用 Blob 開發
-          items:
             - name: .NET
               items:
                 - name: .NET (v12 SDK)

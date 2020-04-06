@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: 對稱金鑰證明
           href: how-to-auto-provision-symmetric-keys.md
-    - name: 開發自訂模組並對其進行偵錯
+    - name: 開發自訂模組
       items:
-        - name: Visual Studio 2019
+        - name: 使用 Visual Studio 2019 進行開發
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: 使用 Visual Studio Code 開發
           href: how-to-vs-code-develop-module.md
+        - name: 設定模組 createOptions
+          items:
+            - name: 了解及使用 createOptions
+              href: how-to-use-create-options.md
+            - name: 提供模組存取裝置本機儲存體的權限
+              href: how-to-access-host-storage-from-module.md
     - name: 部署模組
       items:
         - name: 部署至個別裝置
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: 設定 Proxy 支援
       href: how-to-configure-proxy-support.md
-    - name: 在 Edge 中儲存資料
+    - name: IoT Edge 上的 Azure Blob 儲存體
       items:
-        - name: 提供模組存取裝置本機儲存體的權限
-          href: how-to-access-host-storage-from-module.md
-        - name: IoT Edge 上的 Azure Blob 儲存體
+        - name: 了解邊緣的 Blob 儲存體
           href: how-to-store-data-blob.md
         - name: 部署 Blob 儲存體模組
           href: how-to-deploy-blob.md

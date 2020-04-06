@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: 使用 Azure PowerShell 建立
       href: quick-create-powershell.md
-    - name: 使用範本建立
+    - name: 使用 ARM 範本建立
       items:
         - name: Linux 擴展集
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows 擴展集
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: 教學課程
   items:
@@ -305,7 +307,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 價格
+    - name: 定價
       items:
         - name: Linux
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'

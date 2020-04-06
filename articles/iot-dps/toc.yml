@@ -103,6 +103,8 @@
       href: concepts-tpm-attestation.md
     - name: 對稱金鑰證明
       href: concepts-symmetric-key-attestation.md
+    - name: 裝置製造商的安全性作法
+      href: concepts-device-oem-security-practices.md
 - name: 操作指南
   items:
     - name: 將 MXChip IoT DevKit 連線到 IoT 中樞

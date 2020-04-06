@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: 使用 Azure 監視器活頁簿分析稽核事件
           href: use-azure-monitor-workbooks.md
+        - name: 安全的遠端存取 VM
+          href: secure-remote-vm-access.md
     - name: 加入網域 VM
       items:
         - name: 來自範本的 Windows Server VM
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: 相容的第三方軟體
-      href: compatible-software.md
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Azure AD 意見反應論壇
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: 與我們連絡
-      href: contact-us.md
     - name: 在 Azure CSP 訂用帳戶中使用 Azure AD Domain Services
       href: csp.md

@@ -15,22 +15,26 @@
     - name: 管理自動化執行身分帳戶
       href: manage-runas-account.md
       displayName: certificate renewal
-    - name: 透過 AWS 設定驗證
-      href: automation-config-aws-account.md
-    - name: Azure 自動化中的安全資產加密
-      href: automation-secure-asset-encryption.md
     - name: 管理角色型存取控制
       href: automation-role-based-access-control.md
       displayName: RBAC
+    - name: 在 Azure 自動化中使用 Azure AD 對 Azure 進行驗證
+      href: automation-use-azure-ad.md
+    - name: 使用 Azure 自動化管理 Office 365 服務
+      href: manage-office-365.md
+    - name: 透過 AWS 設定驗證
+      href: automation-config-aws-account.md
+    - name: 將 Azure 自動化中的安全資產加密
+      href: automation-secure-asset-encryption.md
     - name: 將您的自動化帳戶移至另一個訂用帳戶
       href: how-to/move-account.md
     - name: 自動化服務的自動上線
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
-    - name: Log Analytics 工作區對應的支援區域
-      href: how-to/region-mappings.md
     - name: 管理 Azure 自動化資料
       href: automation-managing-data.md
       displayName: backup
+    - name: Log Analytics 工作區對應的支援區域
+      href: how-to/region-mappings.md
     - name: 疑難排解
       items:
         - name: 自動化帳戶疑難排解
@@ -56,7 +60,15 @@
     - name: 使用說明指南
       items:
         - name: 於下班時間啟動/停止虛擬機器
-          href: automation-solution-vm-management.md
+          items:
+            - name: 概觀
+              href: automation-solution-vm-management.md
+            - name: 啟用解決方案
+              href: automation-solution-vm-management-enable.md
+            - name: 設定解決方案
+              href: automation-solution-vm-management-config.md
+            - name: 使用日誌查詢分析資料
+              href: automation-solution-vm-management-logs.md
         - name: 管理 Runbook
           href: manage-runbooks.md
         - name: 建立 Runbook
@@ -317,9 +329,9 @@
       href: shared-resources/credentials.md
     - name: PowerShell 模組
       items:
-        - name: 模組
+        - name: 在 Azure 自動化中管理模組
           href: shared-resources/modules.md
-        - name: 在 Azure 自動化中使用 Az 模組
+        - name: Azure 自動化中的 Az 模組支援
           href: az-modules.md
         - name: 更新 Azure PowerShell 模組
           href: automation-update-azure-modules.md

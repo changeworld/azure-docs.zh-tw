@@ -26,6 +26,8 @@
     - name: 單一頁面應用程式
       displayName: SPA
       items:
+        - name: Angular
+          href: quickstart-v2-angular.md
         - name: JavaScript
           href: quickstart-v2-javascript.md
     - name: Web 應用程式
@@ -69,6 +71,8 @@
     - name: 單一頁面應用程式
       displayName: SPA
       items:
+        - name: Angular
+          href: tutorial-v2-angular.md
         - name: JavaScript
           href: tutorial-v2-javascript-spa.md
     - name: Web 應用程式
@@ -219,8 +223,12 @@
               href: scenario-mobile-app-configuration.md
             - name: 行動平台特定設定
               items:
+                - name: 適用於 Apple 裝置的 Microsoft 企業單一登入外掛程式
+                  href: apple-sso-plugin.md
                 - name: 適用於 Android 裝置的共用裝置模式
-                  href: shared-device-mode.md
+                  href: msal-android-shared-devices.md
+                - name: 適用於 iOS 裝置的共用裝置模式
+                  href: msal-ios-shared-devices.md
                 - name: Xamarin Android
                   href: msal-net-xamarin-android-considerations.md
                 - name: Android 上的系統瀏覽器
@@ -248,7 +256,7 @@
           href: authorization-agents.md
         - name: 訊息代理程式驗證 - Android
           href: brokered-auth.md
-        - name: 移轉
+        - name: 遷移
           items:
             - name: 概觀
               href: msal-migration.md
@@ -308,6 +316,17 @@
           href: msal-handling-exceptions.md
         - name: 記錄
           href: msal-logging.md
+        - name: 共用的裝置
+          items:
+            - name: 概觀 - 共用裝置
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker'
+            - name: 適用於 iOS 裝置的共用裝置模式
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
+            - name: 適用於 Android 裝置的共用裝置模式
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
         - name: 單一登入
           displayName: SSO
           items:

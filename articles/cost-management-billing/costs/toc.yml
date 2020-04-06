@@ -32,6 +32,8 @@
           href: migrate-cost-management-api.md
     - name: 操作指南
       items:
+        - name: 預防和分析非預期的費用
+          href: ../manage/getting-started.md
         - name: 將存取權指派給資料
           href: assign-access-acm-data.md
         - name: 對一般工作使用成本分析

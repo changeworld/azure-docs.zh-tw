@@ -150,6 +150,8 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: 從同盟遷移至 PTA
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: 將群組從一個樹系移到另一個
+              href: how-to-connect-migrate-groups.md
         - name: 混合式身分識別設計考量
           items:
             - name: 混合式身分識別設計考量概觀

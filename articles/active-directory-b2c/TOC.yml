@@ -74,6 +74,8 @@
           href: custom-policy-overview.md
     - name: 使用者帳戶
       href: user-overview.md
+    - name: 使用者設定檔屬性
+      href: user-profile-attributes.md
 - name: 操作指南
   items:
     - name: 應用程式整合
@@ -231,18 +233,16 @@
               href: direct-signin.md
         - name: 新增您自己的商務邏輯
           items:
+            - name: 整合 REST API
+              href: custom-policy-rest-api-intro.md
             - name: 驗證使用者輸入
               href: custom-policy-rest-api-claims-validation.md
               displayName: 'rest claims validation, validate'
             - name: 取得額外宣告
               href: custom-policy-rest-api-claims-exchange.md
               displayName: rest claims exchange
-            - name: 新增您自己的 RESTful API
-              href: rest-api-claims-exchange-dotnet.md
-            - name: 透過基本驗證保護 RESTful API
-              href: secure-rest-api-dotnet-basic-auth.md
-            - name: 透過憑證驗證保護 RESTful API
-              href: secure-rest-api-dotnet-certificate-auth.md
+            - name: 保障 REST API 的安全
+              href: secure-rest-api.md
         - name: 定義自訂屬性
           href: custom-policy-custom-attributes.md
         - name: 疑難排解
@@ -309,13 +309,15 @@
                   items:
                     - name: 關於技術設定檔
                       href: technical-profiles-overview.md
+                    - name: 關於驗證技術設定檔
+                      href: validation-technical-profile.md
+                    - name: Application Insights
+                      href: application-insights-technical-profile.md
+                    - name: Azure Active Directory
+                      href: active-directory-technical-profile.md
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
-                    - name: 宣告解析程式
-                      href: claim-resolver-overview.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
                     - name: 宣告轉換
                       href: claims-transformation-technical-profile.md
                     - name: JWT 權杖簽發者
@@ -329,6 +331,8 @@
                       displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
+                    - name: 電話因素
+                      href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
                     - name: SAML
@@ -340,12 +344,12 @@
                     - name: SSO 工作階段
                       href: custom-policy-reference-sso.md
                       displayName: single sign-on
-                    - name: 驗證
-                      href: validation-technical-profile.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty
               href: relyingparty.md
+            - name: 宣告解析程式
+              href: claim-resolver-overview.md
     - name: 使用 b2clogin.com
       items:
         - name: b2clogin.com 概觀
@@ -389,28 +393,28 @@
           href: user-migration.md
 - name: 參考
   items:
-    - name: Identity Experience Framework 版本資訊
-      href: custom-policy-developer-notes.md
+    - name: 計費模式
+      href: billing.md
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
-    - name: 頁面配置版本
-      href: page-layout.md
     - name: Cookie 定義
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
     - name: 錯誤碼
       href: error-codes.md
+    - name: 擴充功能應用程式
+      href: extensions-app.md
+    - name: IEF 版本資訊
+      href: custom-policy-developer-notes.md
     - name: Microsoft Graph API 作業
       href: microsoft-graph-operations.md
+    - name: 頁面配置版本
+      href: page-layout.md
     - name: 區域可用性與資料落地
       href: data-residency.md
-    - name: 計費模式
-      href: billing.md
     - name: 威脅管理
       href: threat-management.md
       displayName: security
-    - name: 擴充功能應用程式
-      href: extensions-app.md
     - name: 使用者流程版本
       href: user-flow-versions.md
 - name: 資源

@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: 教學課程
   items:
+    - name: 規劃與操作指南
+      href: security-center-planning-and-operations-guide.md
     - name: 保護您的資源
       href: tutorial-protect-resources.md
     - name: 回應事件
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: 雲端智慧警示相互關聯 (事件)
           href: security-center-alerts-cloud-smart.md
-        - name: 安全性警示地圖和威脅情報
-          href: security-center-threat-intel.md
+        - name: 威脅報告
+          href: security-center-threat-report.md
         - name: 警示驗證 (EICAR 測試檔案)
           href: security-center-alert-validation.md
 - name: 操作指南
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: 管理身分識別和存取
           href: security-center-identity-access.md
+        - name: 管理調查使用者資料
+          href: security-center-investigation-user-data.md
     - name: 套用雲端防禦
       items:
         - name: 管理 Just-In-Time 存取
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: 自適性網路強化
           href: security-center-adaptive-network-hardening.md
-    - name: 封存
-      items:
-        - name: 套用磁碟加密
-          href: security-center-apply-disk-encryption.md
-        - name: 套用系統更新
-          href: security-center-apply-system-updates.md
-        - name: 安裝端點保護
-          href: security-center-install-endpoint-protection.md
-        - name: 威脅報告
-          href: security-center-threat-report.md
-        - name: 警示信賴分數
-          href: security-center-confidence-score.md
-        - name: 調查
-          href: security-center-investigation.md
-        - name: 管理調查使用者資料
-          href: security-center-investigation-user-data.md
-        - name: 規劃與作業
-          href: security-center-planning-and-operations-guide.md
 - name: 參考
   items:
     - name: REST API

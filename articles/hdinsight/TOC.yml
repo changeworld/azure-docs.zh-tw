@@ -697,6 +697,10 @@
       items:
         - name: 使用互動式查詢分析資料
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: 概念
+      items:
+        - name: 閘道最佳做法
+          href: ./interactive-query/gateway-best-practices.md
     - name: 如何
       items:
         - name: 開發
@@ -816,6 +820,8 @@
       items:
         - name: 使用 Apache Storm 寫入儲存體
           href: ./storm/apache-storm-write-data-lake-store.md
+        - name: Apache Kafka 與 Apache Storm (Java)
+          href: ./hdinsight-apache-storm-with-kafka.md
     - name: 如何
       items:
         - name: 將 Storm 遷移至 Spark
@@ -836,10 +842,6 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: 串流管線
               items:
-                - name: Apache Kafka 與 Apache Storm (Java)
-                  href: ./hdinsight-apache-storm-with-kafka.md
-                - name: 事件中樞、儲存體和 Data Lake Storage (Java)
-                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: '事件中樞與 Apache Storm (C# 和 Java)'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理

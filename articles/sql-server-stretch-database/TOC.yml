@@ -1,5 +1,5 @@
-- name: SQL Server Stretch Database 文件
-  href: index.md
+- name: Azure SQL Server Stretch Database 文件
+  href: index.yml
 - name: 概觀
   items:
     - name: 什麼是 Stretch Database？
@@ -32,7 +32,7 @@
           href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
         - name: 備份
           href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
-        - name: '{1}還原{2}'
+        - name: 還原
           href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
         - name: 停用 Stretch Database
           href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data
@@ -46,7 +46,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 部落格
       href: 'https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/sql-server-stretch-database/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

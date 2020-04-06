@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: 使用搜尋總管進行查詢
           href: search-explorer.md
+    - name: ARM 範本
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 範例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: 訓練
-  items:
-    - name: 簡介 (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: 將搜尋新增至應用程式 (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: 開發人員課程 (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: 概念
   items:
     - name: 全文檢索搜尋
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: 使用完整 Lucene 語法
           href: search-query-lucene-examples.md
-        - name: 特殊字元和部分條款
+        - name: 部分條款和特殊字元
           href: search-query-partial-matching.md
         - name: 從 Power Apps 查詢
           href: search-howto-powerapps.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: 結果
       items:
-        - name: 網頁相關功能
+        - name: 處理結果
           href: search-pagination-page-layout.md
         - name: 評分調整 (評分設定檔)
           href: index-add-scoring-profiles.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: 搜尋使用案例
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: 訓練
+      items:
+        - name: 簡介 (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: 將搜尋新增至應用程式 (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: 開發人員課程 (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: 常見問題集
       href: search-faq-frequently-asked-questions.md
     - name: 定價

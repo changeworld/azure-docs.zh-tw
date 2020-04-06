@@ -85,6 +85,10 @@
           items:
             - name: 建立 Azure Active Directory Domain Services 執行個體
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: 邊緣區域文件
+      items:
+        - name: 什麼是邊緣區域？
+          href: ../networking/edge-zones-overview.md
 - name: 災害復原
   items:
     - name: 使用 Azure Site Recovery

@@ -120,7 +120,7 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: 適用於 JavaScript 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST
+        - name: REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 功能管理
       items:
@@ -128,6 +128,10 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
         - name: .NET Core 篩選程式庫
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+    - name: 設定存放區管理
+      items:
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
 - name: 資源
   items:
     - name: 定價

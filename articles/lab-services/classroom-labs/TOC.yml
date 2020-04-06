@@ -102,6 +102,8 @@
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: 準備 Windows 範本 VM
           href: how-to-prepare-windows-template.md
+        - name: 控制 Windows 關機行為
+          href: how-to-windows-shutdown.md
         - name: 檢視支援資訊 (講師)
           href: lab-creator-support-information.md
     - name: 在教室實驗室中連線至 VM (學生)

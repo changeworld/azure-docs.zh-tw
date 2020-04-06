@@ -39,6 +39,8 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: 存取 Azure 虛擬網路
       href: connect-virtual-network-vnet-isolated-environment-overview.md
+    - name: 商務持續性和災害復原
+      href: business-continuity-disaster-recovery-guidance.md
 - name: 操作指南
   items:
     - name: 開發
@@ -395,7 +397,7 @@
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

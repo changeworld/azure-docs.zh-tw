@@ -149,6 +149,8 @@
           items:
             - name: 讀取複本
               href: concepts-read-replicas.md
+            - name: 邏輯解碼
+              href: concepts-logical.md
     - name: 超大規模資料庫 (Citus)
       items:
         - name: 節點
@@ -269,6 +271,8 @@
           items:
             - name: Azure 入口網站
               href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
         - name: 重新啟動伺服器
           items:
             - name: Azure 入口網站

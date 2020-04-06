@@ -67,7 +67,13 @@
     - name: 擷取資料
       items:
         - name: 單鍵擷取
-          href: ingest-data-one-click.md
+          items:
+            - name: 單鍵擷取概觀
+              href: ingest-data-one-click.md
+            - name: 單鍵擷取至新資料表
+              href: one-click-ingestion-new-table.md
+            - name: 單鍵擷取至現有的資料表
+              href: one-click-ingestion-existing-table.md
         - name: 串流擷取
           href: ingest-data-streaming.md
         - name: 使用 LightIngest
@@ -188,6 +194,8 @@
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager 範本
               href: customer-managed-keys-resource-manager.md
+        - name: 建立 Azure AD 應用程式
+          href: provision-azure-ad-app.md
     - name: 管理
       items:
         - name: 叢集
@@ -208,6 +216,8 @@
                   href: cluster-principal-python.md
                 - name: Azure Resource Manager 範本
                   href: cluster-principal-resource-manager.md
+            - name: 管理叢集語言延伸模組
+              href: language-extensions.md
         - name: 資料庫
           items:
             - name: 追蹤者資料庫
@@ -240,6 +250,8 @@
           href: using-diagnostic-logs.md
         - name: 使用計量來監視叢集健康情況
           href: using-metrics.md
+        - name: 使用資源健康情況來監視叢集健康情況
+          href: monitor-with-resource-health.md
     - name: 與其他工具整合
       items:
         - name: Azure Data Factory
@@ -264,6 +276,8 @@
           href: connect-from-databricks.md
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析資料
           href: kqlmagic.md
+        - name: 分析 Azure Notebooks 中的資料
+          href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
     - name: 疑難排解

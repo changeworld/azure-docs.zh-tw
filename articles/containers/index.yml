@@ -1,80 +1,165 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure for Containers
+### YamlMime:Hub
+title: 容器服務文件
+summary: 了解如何使用 Azure 容器服務來管理和開發以雲端為基礎的容器應用程式。
+brand: azure
 metadata:
-  title: Azure for Containers - 快速入門、教學課程和 API 參考
-  description: 使用容器的快速入門、教學課程和工具，開始使用 Azure 管理和部署容器應用程式。
-  keywords: 'Azure, 容器, Docker, API, Kubernetes'
-  author: dlepow
-  ms.author: danlep
-  ms.date: 01/08/2019
-  ms.topic: article
-  ms.prod: azure
-  featureFlags:
-    - clicktale
-  ms.technology: azure
-  ms.devlang: multiple
-  ms.service: multiple
-sections:
-  - items:
-      - type: markdown
-        text: |
-          使用 Azure 容器的工具和服務，開始部署和管理容器應用程式。 
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何透過 Azure 服務來使用容器。
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: ../aks/kubernetes-walkthrough.md
-            title: 以 Azure Kubernetes Service (AKS) 建立 Kubernetes 叢集
-            image:
-              src: /azure/media/index/ContainerService.svg
-          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
-            title: 透過 Service Fabric 部署 Windows 容器應用程式
-            image:
-              src: /azure/media/index/Fabric.svg
-          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
-            title: 透過 Azure Web App for Containers 建立容器化應用程式
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
-            title: 在 Azure Container Registry 中建立私人 Docker 登錄
-            image:
-              src: /azure/media/index/container-registry.svg
-          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-            title: 在 Azure 容器執行個體中隨需執行容器應用程式
-            image:
-              src: /azure/media/index/containerinstances.svg
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure 服務部署、管理和更新容器應用程式
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">建立容器並將其部署至 Azure Kubernetes Service</a>
-          - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">建立 .NET 容器應用程式並將其部署至 Azure Service Fabric</a>
-          - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">在用於容器的 Web App 中建立多容器應用程式</a>
-          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">使用 Azure Container Registry 工作建置和部署容器映像</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">將容器部署至 Azure Container Instances</a>
-          - html: <a href="/azure/openshift/tutorial-create-cluster">建立 Azure Red Hat OpenShift 叢集</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用 Azure 容器執行個體執行 Docker 容器
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-              href: /learn/modules/run-docker-with-azure-container-instances/
-          - title: 使用 Azure Container Registry 建置及存放容器映像
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
+  title: Microsoft Azure 容器服務文件 | Microsoft Docs
+  description: 了解如何使用 Azure 容器服務來管理和開發以雲端為基礎的容器應用程式。
+  ms.topic: hub-page
+  ms.openlocfilehash: 740b95a28e8437defb1929003a74c53cacdcaa70
+  ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/01/2020
+  ms.locfileid: "80478129"
+highlightedContent:
+  items:
+  - itemType: whats-new
+    title: Azure 容器的新功能為何？
+    url: https://azure.microsoft.com/updates/?category=containers
+  - itemType: concept
+    title: 應用程式的微服務方式
+    url: /azure/service-fabric/service-fabric-overview-microservices
+  - itemType: concept
+    title: 了解 Kubernetes
+    url: /azure/aks/concepts-clusters-workloads
+conceptualContent:
+  items:
+  - title: 在 Azure 上部署 Kubernetes
+    links:
+    - url: /azure/aks/intro-kubernetes
+      itemType: overview
+      text: 什麼是 Azure Kubernetes Service？
+    - url: /azure/aks/tutorial-kubernetes-prepare-app
+      itemType: tutorial
+      text: 為 AKS 準備應用程式
+    - url: /azure/aks/kubernetes-walkthrough
+      itemType: tutorial
+      text: 建立 AKS 叢集 (CLI)
+    footerLink:
+      url: /azure/aks/
+      text: 查看更多
+  - title: 測試和開發 AKS 應用程式
+    links:
+    - url: /azure/dev-spaces/about
+      itemType: overview
+      text: 什麼是 Azure Dev Spaces？
+    - url: /azure/dev-spaces/quickstart-netcore
+      itemType: quickstart
+      text: 執行和偵錯微服務
+    - url: /azure/dev-spaces/quickstart-team-development
+      itemType: quickstart
+      text: 在一組微服務中與小組共同作業
+    footerLink:
+      url: /azure/dev-spaces/
+      text: 查看更多
+  - title: 建立 Web 和行動裝置的雲端應用程式
+    links:
+    - url: /azure/app-service/overview
+      itemType: overview
+      text: 什麼是 App Service？
+    - url: /azure/app-service/app-service-web-tutorial-custom-domain
+      itemType: get-started
+      text: 將自訂網域對應至應用程式
+    - url: /azure/app-service/configure-ssl-bindings
+      itemType: tutorial
+      text: 使用 SSL 繫結保護自訂網域
+    - url: /azure/app-service/app-service-web-get-started-windows-container
+      itemType: get-started
+      text: 執行自訂 Windows 容器
+    - url: /azure/app-service/quickstart-docker
+      itemType: quickstart
+      text: 執行自訂的 Linux 容器
+    - url: /azure/app-service/quickstart-multi-container
+      itemType: quickstart
+      text: 建立 Linux 多容器應用程式
+    footerLink:
+      url: /azure/app-service/
+      text: 查看更多
+  - title: 在 Azure 上執行容器
+    links:
+    - url: /azure/container-instances/container-instances-overview
+      itemType: overview
+      text: 容器執行個體概觀
+    - url: https://docs.microsoft.com/learn/modules/run-docker-with-azure-container-instances/
+      itemType: learn
+      text: 使用 Azure Container Instances 執行容器化應用程式
+    - url: /azure/container-instances/container-instances-using-azure-container-registry
+      itemType: how-to-guide
+      text: 從 Azure Container Registry 部署映像
+    - url: /azure/container-registry/container-registry-quick-task-cli
+      itemType: get-started
+      text: 使用 Azure CLI 建置、推送並執行映像
+    footerLink:
+      url: /azure/container-instances/
+      text: 查看更多
+  - title: 工作排程和計算管理
+    links:
+    - url: /azure/batch/batch-technical-overview
+      itemType: overview
+      text: 什麼是 Batch？
+    - url: /azure/batch/quick-create-cli
+      itemType: get-started
+      text: 使用 Azure CLI 執行您的第一個 Batch 作業
+    - url: /azure/batch/tutorial-parallel-dotnet
+      itemType: tutorial
+      text: 使用 .NET API 透過 Azure Batch 執行平行工作負載
+    footerLink:
+      url: /azure/batch/
+      text: 查看更多
+  - title: 微服務開發和容器協調流程
+    links:
+    - url: /azure/service-fabric/service-fabric-overview
+      itemType: overview
+      text: 什麼是 Azure Service Fabric？
+    - url: /azure/service-fabric/service-fabric-quickstart-dotnet
+      itemType: quickstart
+      text: 將 .NET 可靠服務應用程式部署至 Service Fabric
+    - url: /azure/service-fabric/service-fabric-cluster-creation-for-windows-server
+      itemType: how-to-guide
+      text: 建立在 Windows Server 上執行的獨立叢集
+    footerLink:
+      url: /azure/service-fabric/
+      text: 查看更多
+  - title: 儲存和管理容器映像
+    links:
+    - url: /azure/container-registry/container-registry-intro
+      itemType: overview
+      text: 什麼是 Azure 容器登錄庫？
+    - url: /azure/container-registry/container-registry-get-started-azure-cli
+      itemType: get-started
+      text: 使用 Azure CLI 建立私人容器登錄
+    - url: /azure/container-registry/container-registry-quick-task-cli
+      itemType: get-started
+      text: 使用 Azure CLI 建置、推送並執行映像
+    footerLink:
+      url: /azure/container-registry/
+      text: 查看更多
+  - title: 受控 OpenShift 服務
+    links:
+    - url: /azure/openshift/intro-openshift
+      itemType: overview
+      text: 什麼是 Azure Red Hat OpenShift？
+    - url: /azure/openshift/howto-setup-environment
+      itemType: how-to-guide
+      text: 設定您的 Azure Red Hat OpenShift 開發環境
+    - url: /azure/openshift/tutorial-create-cluster
+      itemType: tutorial
+      text: 建立 Azure Red Hat OpenShift 叢集
+    footerLink:
+      url: /azure/openshift/
+      text: 查看更多
+  - title: 無伺服器應用程式開發
+    links:
+    - url: /azure/azure-functions/functions-overview
+      itemType: overview
+      text: Azure Functions 簡介
+    - url: /azure/azure-functions/functions-create-first-function-vs-code
+      itemType: quickstart
+      text: 建立您的第一個函式
+    - url: /azure/azure-functions/functions-triggers-bindings
+      itemType: overview
+      text: 與其他 Azure 服務整合
+    footerLink:
+      url: /azure/azure-functions/
+      text: 查看更多
