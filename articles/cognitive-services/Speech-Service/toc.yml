@@ -456,8 +456,6 @@
           href: speech-sdk.md
         - name: 案例可用性
           href: scenario-availability.md
-        - name: 交付應用程式
-          href: ship-application.md
     - name: 快速入門
       items:
         - name: 設定語音 SDK
@@ -472,6 +470,9 @@
         - name: 設定適用於 Linux 的 OpenSSL
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
           href: how-to-configure-openssl-linux.md
+        - name: 設定 RHEL/CentOS 7
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
     - name: 範例
       items:
         - name: 語音 SDK 範例 (GitHub)

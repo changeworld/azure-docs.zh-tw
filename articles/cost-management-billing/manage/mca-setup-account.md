@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200637"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258051"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>設定 Microsoft 客戶合約的計費帳戶
 
@@ -21,7 +21,7 @@ ms.locfileid: "77200637"
 1. 接受新的 Microsoft 客戶合約。 請與您的 Microsoft 現場代表合作，以了解詳細資料並接受新的合約。
 2. 設定為新的 Microsoft 客戶合約建立的新計費帳戶。
 
-若要設定計費帳戶，您必須將 Azure 訂用帳戶的帳單從 Enterprise 合約註冊轉換至新帳戶。 此設定不會影響在您的訂用帳戶中執行的 Azure 服務。 不過，這會變更您管理訂用帳戶計費的方式。
+若要設定計費帳戶，您必須將 Azure 訂用帳戶的帳單從 Enterprise 合約註冊轉換至新帳戶。 此設定不會影響您訂用帳戶中執行的 Azure 服務。 不過，這會變更您管理訂用帳戶計費的方式。
 
 - 您將在 [Azure 入口網站](https://portal.azure.com)中管理 Azure 服務和帳單，而不是 [EA 入口網站](https://ea.azure.com)。
 - 您會按月收到費用的數位發票。 您可以在 Azure 的 [成本管理 + 帳單] 頁面中檢視和分析發票。
@@ -81,7 +81,7 @@ ms.locfileid: "77200637"
 1. 您可以使用計費帳戶來管理 Microsoft 客戶合約的帳單。 企業系統管理員會成為計費帳戶的擁有者。 若要深入了解計費帳戶，請參閱[了解計費帳戶](../understand/mca-overview.md#your-billing-account)。
 2. 您可以使用帳單設定檔來管理組織的帳單，如同使用您的 Enterprise 合約註冊。 企業系統管理員會成為帳單設定檔的擁有者。 若要深入了解帳單設定檔，請參閱[了解帳單設定檔](../understand/mca-overview.md#billing-profiles)。
 3. 您可以使用發票區段根據您的需求彙整成本，如同使用 Enterprise 合約註冊中的部門。 部門會成為發票區段，而部門系統管理員會成為個別發票區段的擁有者。 若要深入了解發票區段，請參閱[了解發票區段](../understand/mca-overview.md#invoice-sections)。
-4. 新的計費帳戶不支援在您的 Enterprise 合約中建立的帳戶。 帳戶的訂用帳戶屬於其部門的個別發票區段。 帳戶擁有者可建立及管理其發票區段的訂用帳戶。
+4. 新的計費帳戶不支援在您 Enterprise 合約中建立的帳戶。 帳戶的訂用帳戶屬於其部門的個別發票區段。 帳戶擁有者可建立及管理其發票區段的訂用帳戶。
 
 ## <a name="changes-to-billing-administrator-access"></a>計費管理員存取權的變更
 
@@ -97,7 +97,7 @@ ms.locfileid: "77200637"
 
 在接受您的 Microsoft 客戶合約時，會為新的計費帳戶選取 Azure Active Directory (AD) 租用戶。 如果您的組織沒有租用戶，則會建立新的租用戶。 租用戶代表您在 Azure Active Directory 內的組織。 組織中的全域租用戶管理員會使用租用戶來管理您組織中的應用程式和資料存取。
 
-您的新帳戶僅支援在簽署 Microsoft 客戶合約時所選取之租用戶中的使用者。 如果您的 Enterprise 合約上具有系統管理權限的使用者屬於該租用戶，他們將在設定期間取得新計費帳戶的存取權。 如果他們不屬於該租用戶，則無法存取新的計費帳戶，除非獲得您的邀請。
+您的新帳戶僅支援在簽署 Microsoft 客戶合約時所選取之租用戶中的使用者。 如果您的 Enterprise 合約上具有系統管理權限的使用者屬於該租用戶，其將在設定期間取得新計費帳戶的存取權。 如果他們不屬於該租用戶，則無法存取新的計費帳戶，除非獲得您的邀請。
 
 使用者獲得您的邀請後，會以來賓使用者的身分新增至租用戶，並取得計費帳戶的存取權。 若要邀請使用者，必須開啟租用戶的來賓存取權。 如需詳細資訊，請參閱[控制 Azure Active Directory 中的來賓存取權](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果來賓存取權關閉，請要求租用戶的全域管理員加以開啟。 <!-- Todo - How can they find their global administrator -->
 
@@ -115,7 +115,7 @@ ms.locfileid: "77200637"
 
 ### <a name="spending-quotas"></a>消費配額
 
-為您 Enterprise 合約註冊中的部門設定的消費配額，已取代為新計費帳戶中的預算。 為註冊中的部門設定的每個消費配額，都會建立預算。 如需預算的詳細資訊，請參閱[建立和管理 Azure 預算](../cloudyn/manage-budgets.md)。
+為您 Enterprise 合約註冊中的部門設定的消費配額，已取代為新計費帳戶中的預算。 為註冊中的部門設定的每個消費配額，都會建立預算。 如需預算的詳細資訊，請參閱[教學課程：建立和管理 Azure 預算](../costs/tutorial-acm-create-budgets.md)。
 
 ### <a name="cost-centers"></a>成本中心
 
@@ -181,7 +181,7 @@ ms.locfileid: "77200637"
 
     - 新的計費帳戶中會建立與您的 Enterprise 合約階層相對應的計費階層。 如需詳細資訊，請參閱[了解您計費階層的變更](#understand-changes-to-your-billing-hierarchy)。
     - Enterprise 合約註冊中的系統管理員會獲得新計費帳戶的存取權，而能夠繼續管理組織的帳單。
-    - Azure 訂用帳戶的帳單會轉換至新的帳戶。 **在此轉換期間，您的 Azure 服務將不受任何影響。它們會繼續執行，而不會發生任何中斷**。
+    - Azure 訂用帳戶的帳單會轉換至新的帳戶。 **在此轉換期間，您的 Azure 服務將不受任何影響。服務會繼續執行，而不會發生任何中斷**。
     - 如果您有 Azure 保留，這些保留會移至新的計費帳戶，其權益或期限不變。
 
 4. 您可以在 [轉換狀態]  頁面上監視轉換的狀態。

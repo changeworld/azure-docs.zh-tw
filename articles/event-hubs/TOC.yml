@@ -21,8 +21,8 @@
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
-        - name: Azure Resource Manager 範本
-          displayName: ARM
+        - name: ARM 範本
+          displayName: Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: 傳送及接收事件
       items:
@@ -115,13 +115,19 @@
                   href: authenticate-application.md
             - name: 使用共用存取簽章進行驗證
               href: authenticate-shared-access-signature.md
+        - name: 網路安全性
+          href: network-security.md
         - name: 內建安全性控制
           href: event-hubs-security-controls.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: AMQP 1.0 通訊協定指南
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: 操作指南
   items:
+    - name: 使用 Blob 儲存體作為 Azure Stack Hub 上的檢查點存放區
+      href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: 從 Azure Service Manager (傳統) API 遷移至 Resource Manager API
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: 開發
@@ -156,17 +162,17 @@
           maintainContext: true
     - name: 與 Apache Kafka 整合
       items:
-        - name: 建立啟用 Apache kafka 的事件中樞
-          href: event-hubs-create-kafka-enabled.md
-        - name: 在已啟用 Apache Kafka 的事件中樞中鏡射 Kafka 訊息代理程式
+        - name: 事件中樞的 Kafka 開發人員指南
+          href: apache-kafka-developer-guide.md
+        - name: 在事件中樞中鏡像 Kafka 訊息代理程式
           href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: 將 Apache Spark 連線到已啟用 Apache Kafka 的事件中樞
+        - name: 將 Apache Spark 連線到事件中樞
           href: event-hubs-kafka-spark-tutorial.md
-        - name: 將 Apache Flink 連線到已啟用 Apache Kafka 的事件中樞
+        - name: 將 Apache Flink 連線到事件中樞
           href: event-hubs-kafka-flink-tutorial.md
-        - name: 整合 Apache Kafka Connect 與已啟用 Kafka 的事件中樞 (預覽)
+        - name: 將 Apache Kafka Connect 與中樞進行整合 (預覽)
           href: event-hubs-kafka-connect-tutorial.md
-        - name: 將 Akka Streams 連線到已啟用 Apache Kafka 的事件中樞
+        - name: 將 Akka 串流連線到事件中樞
           href: event-hubs-kafka-akka-streams-tutorial.md
     - name: 管理和監視
       items:
@@ -182,13 +188,13 @@
           href: event-hubs-management-libraries.md
     - name: 安全
       items:
-        - name: 使用防火牆
+        - name: 設定 IP 防火牆
           href: event-hubs-ip-filtering.md
-        - name: 使用虛擬網路服務端點
+        - name: 設定虛擬網路服務端點
           href: event-hubs-service-endpoints.md
-        - name: 在事件中樞命名空間中啟用虛擬網路整合和防火牆
-          href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: 設定客戶管理的金鑰來加密待用資料
+        - name: 設定私人端點 (預覽)
+          href: private-link-service.md
+        - name: 設定客戶管理的金鑰
           href: configure-customer-managed-key.md
     - name: 疑難排解
       items:

@@ -3,16 +3,16 @@ title: Azure 成本管理中常見的成本分析用途
 description: 本文說明如何在 Azure 成本管理中取得常見成本分析工作的結果。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 901f271ac401cb985e59c434b9e6d7f8db03889f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203095"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520869"
 ---
 # <a name="common-cost-analysis-uses"></a>常見的成本分析用途
 
@@ -26,7 +26,7 @@ ms.locfileid: "79203095"
 1. 選取 [依服務區分的成本]  ，然後依 [服務層級]  進行分組。
 1. 將檢視變更為 [資料表]  。
 
-![依 Azure 服務顯示的成本明細](./media/cost-analysis-common-uses/breakdown-by-service.png)
+[![依 Azure 服務顯示的成本明細](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>依 Azure 資源檢視成本明細
 
@@ -36,7 +36,7 @@ ms.locfileid: "79203095"
 1. 選取 [依資源區分的成本]  。
 1. 將檢視變更為 [資料表]  。
 
-![依 Azure 資源檢視成本明細](./media/cost-analysis-common-uses/cost-by-resource.png)
+[![依 Azure 資源檢視成本明細](./media/cost-analysis-common-uses/cost-by-resource.png)](./media/cost-analysis-common-uses/cost-by-resource.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-selected-dimensions"></a>依選取的維度檢視成本明細
 
@@ -44,10 +44,10 @@ ms.locfileid: "79203095"
 
 1. 在 Azure 入口網站中，瀏覽至您的範圍的成本分析。 例如：[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
 1. 選取 [群組依據]  篩選條件。  
-    ![選取群組依據項目](./media/cost-analysis-common-uses/group-by.png)
+    [![依項目選取群組](./media/cost-analysis-common-uses/group-by.png)](./media/cost-analysis-common-uses/group-by.png#lightbox)
 1. (選擇性) 您可以儲存檢視以供後續使用。
 1. 按一下圖形下方的圓形圖，以檢視更詳細的資料。  
-    ![依選取的維度檢視成本明細](./media/cost-analysis-common-uses/drill-down.png)
+    [![依選取的維度檢視成本明細](./media/cost-analysis-common-uses/drill-down.png)](./media/cost-analysis-common-uses/drill-down.png#lightbox)
 
 ## <a name="view-costs-per-day-or-by-month"></a>每天或每月檢視成本
 
@@ -56,7 +56,58 @@ ms.locfileid: "79203095"
 1. 在 Azure 入口網站中，瀏覽至您的範圍的成本分析。 例如：[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
 1. 將 [細微性]  設定為 [每月]  或 [每日]  。
 
-![每天檢視成本](./media/cost-analysis-common-uses/daily-granularity.png)
+[![每天檢視成本](./media/cost-analysis-common-uses/daily-granularity.png)](./media/cost-analysis-common-uses/daily-granularity.png#lightbox)
+
+
+## <a name="view-your-spot-vm-charges"></a>檢視您的 Spot VM 費用
+
+Spot VM 可為可處理中斷的工作負載省下大量的成本。 工作負載會在未使用的 Azure 容量上執行。 由於工作負載可以隨時收回，所以 Spot VM 可獲得顯著的折扣。 請使用下列步驟來檢視 Spot VM 費用。
+
+1. 在 Azure 入口網站中，瀏覽至您的範圍的成本分析。 例如，[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
+2. 新增篩選條件，用於 [計價模式：  Spot]。
+
+![顯示 Spot VM 篩選條件的範例](./media/cost-analysis-common-uses/spot-vm-filter.png)
+
+[計價模式] 維度也會用來視需要和保留費用以進行查看。
+
+## <a name="view-your-reservation-charges"></a>檢視您的保留費用
+
+保留執行個體可讓您使用 Azure 節省成本。 您可以利用保留，在一段時間內提前支付指定數量的資源費用。 成本分析會顯示您帳單上所顯示的費用。 費用會顯示為實際成本，或在您的保留期間內分攤。
+
+1. 在 Azure 入口網站中，瀏覽至您的範圍的成本分析。 例如，[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
+1. 新增篩選條件，用於 [計價模式：  保留]。
+1. 在 [範圍]  底下和所顯示成本旁邊，按一下向下箭號符號，然後選取 [實際成本]  或 [分攤成本]  計量。
+
+![選取成本計量](./media/cost-analysis-common-uses/metric-cost.png)
+
+每個計量都會影響您保留費用的顯示方式。
+
+**實際成本** - 顯示您帳單上所顯示的購買。 例如，如果您在 1 月花費 $1200 購買一年的保留，則成本分析會在 1 月份顯示保留的成本 $1200。 其不會顯示該年其他月份的保留成本。 如果您依 VM 將實際成本進行群組，則收到給定月份之保留權益的 VM，該月份將沒有成本。
+
+**分攤成本** - 將保留購買分割顯示為保留期限期間的分攤成本。 使用上述相同的範例，如果您在 1 月花費 $1200 購買了一年的保留，成本分析就會顯示一年中每個月 $100 的成本。 如果您在此範例中依 VM 將成本進行群組，您就會看到歸屬於每個收到保留權益的 VM 成本。
+
+## <a name="view-your-reservation-utilization"></a>檢視保留使用率
+
+購買保留之後，請務必追蹤其使用率，以取得您所支付的費用。 例如，如果您一年購買 10 部 VM，且只使用其中 5 部，則基本上會浪費一半的購買。 有兩種不同的方式可評估您的使用率：
+
+### <a name="view-unused-ri-costs-in-cost-analysis"></a>在成本分析中檢視未使用的 RI 成本
+
+若要識別您的保留購買目前每個月浪費多少成本，請遵循下列步驟。
+
+1. 在 Azure 入口網站中，導覽至套用保留之範圍內的成本分析。 例如，[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
+1. 新增篩選條件，用於 [計價模式：  保留]。
+1. 選取 [分攤成本]  檢視。
+1. 將細微性設定為 [每月]  。
+1. 將時間週期設定為目前年份或保留期限。
+1. 將圖表類型設定為 [資料行 (堆疊)]  。
+1. 依 [費用類型]  進行群組。
+1. 檢閱 `unusedreservation` 值的結果。
+
+[![顯示保留使用的範例](./media/cost-analysis-common-uses/view-reservation-cost.png)](./media/cost-analysis-common-uses/view-reservation-cost.png#lightbox)
+
+### <a name="view-utilization-in-reservations"></a>檢視保留的使用率
+
+如需詳細指示，請參閱[將保留使用最佳化](../reservations/manage-reserved-vm-instance.md#optimize-reservation-use)。
 
 ## <a name="view-costs-for-a-specific-tag"></a>檢視特定標記的成本
 
@@ -67,7 +118,7 @@ ms.locfileid: "79203095"
 1. 在 Azure 入口網站中，瀏覽至您的範圍的成本分析。 例如：[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
 1. 針對您的標記選取 [群組依據]  。
 
-![檢視特定標記的成本](./media/cost-analysis-common-uses/tag.png)
+[![檢視特定標記的成本](./media/cost-analysis-common-uses/tag.png)](./media/cost-analysis-common-uses/tag.png#lightbox)
 
 ## <a name="download-your-usage-details"></a>下載使用情況詳細資料
 
@@ -75,7 +126,7 @@ ms.locfileid: "79203095"
 
 1. 在 Azure 入口網站中，瀏覽至計費帳戶或訂用帳戶的 [使用方式和費用]  索引標籤。 例如：[成本管理 + 計費]   > [計費]   > [使用方式 + 費用]  。
 1. 選取要下載的明細項目，然後按一下下載符號。  
-    ![下載使用方式和費用](./media/cost-analysis-common-uses/download1.png)
+    [![下載使用方式和費用](./media/cost-analysis-common-uses/download1.png)](./media/cost-analysis-common-uses/download1.png#lightbox)
 1.  選取要下載的使用方式檔案。  
     ![選擇要下載的使用方式檔案](./media/cost-analysis-common-uses/download2.png)
 
@@ -88,9 +139,9 @@ ms.locfileid: "79203095"
 
 1. 在 Azure 入口網站中，瀏覽至 [成本管理 + 計費]   > [概觀]  。
 1. 按一下現行月份的 [明細]  ，並檢視您的預付金額度。  
-    ![EA 成本概觀 - 明細摘要](./media/cost-analysis-common-uses/breakdown1.png)
+    [![EA 成本概觀 - 明細摘要](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  按一下 [使用方式和費用]  索引標籤，然後在選擇的時間範圍內檢視先前月份的明細。  
-    ![使用方式和費用索引標籤](./media/cost-analysis-common-uses/breakdown2.png)
+    [![使用方式和費用索引標籤](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)
 
 ## <a name="view-enrollment-monthly-cost-by-term"></a>依期間檢視每月註冊費用
 
@@ -102,7 +153,7 @@ ms.locfileid: "79203095"
 
 您可以分組並篩選您的資料，以進行更詳細的分析。
 
-![依期間顯示的每月註冊費用](./media/cost-analysis-common-uses/enrollment-term1.png)
+[![依期限顯示的每月註冊費用](./media/cost-analysis-common-uses/enrollment-term1.png)](./media/cost-analysis-common-uses/enrollment-term1.png#lightbox)
 
 ## <a name="view-ea-enrollment-accumulated-costs"></a>檢視 EA 註冊累積成本
 
@@ -111,7 +162,7 @@ ms.locfileid: "79203095"
 1. 在 Azure 入口網站中，瀏覽至您的範圍的成本分析。 例如：[成本管理 + 計費]   > [成本管理]   > [成本分析]  。
 1. 選取您的註冊，然後檢視目前的累積成本。
 
-![註冊累積成本](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+[![註冊累積成本](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)](./media/cost-analysis-common-uses/cost-analysis-enrollment.png#lightbox)
 
 ## <a name="next-steps"></a>後續步驟
 - 如果您尚未完成成本管理的第一個快速入門，請在[開始分析成本](quick-acm-cost-analysis.md)閱讀它。

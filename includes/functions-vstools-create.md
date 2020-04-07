@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056599"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657589"
 ---
 Visual Studio 中的 Azure Functions 專案範本會建立可發行至 Azure 中函式應用程式的專案。 您可以使用函式應用程式將多個函式群組為邏輯單位，以方便管理、部署、調整和共用資源。
 
-1. 在 Visual Studio 中，於 [檔案]  功能表上選取 [新增]   > [專案]  。
+1. 在 Visual Studio 功能表中，選取 [檔案]   >  [新增]   >  [專案]  。
 
-1. 在 [建立新專案]  的搜尋方塊中輸入*函式*，然後選擇 [Azure Functions]  範本。
+1. 在 [建立新專案]  的搜尋方塊中輸入*函式*，選擇 [Azure Functions]  範本，然後選取 [下一步]  。
 
 1. 在 [設定您的新專案]  中，輸入專案的**專案名稱**，然後選取 [建立]  。 函式應用程式名稱必須是有效的 C# 命名空間，因此不會使用底線、連字號或任何其他非英數字元。
 
-1. 針對 [新專案-&lt;您的專案名稱&gt;]  設定，請使用下表中的值：
+1. 針對 [建立新的 Azure Function 應用程式]  設定，請使用下表中的值：
 
     | 設定      | 值  | 描述                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ Visual Studio 中的 Azure Functions 專案範本會建立可發行至 Azure 中
 
     請確定您將 [存取權限]  設為 [匿名]  。 如果您選擇**函式**的預設層級，必須在要求中提供[函式金鑰](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)以存取您的函式端點。
 
-1. 選取 [確定]  以建立函式專案和由 HTTP 觸發的函式。
+1. 選取 [建立]  以建立函式專案和 HTTP 觸發程序函數。

@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235641"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396706"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -20,7 +20,7 @@ Azure 保留可協助您藉由承諾多項產品一年或三年期的方案來�
 
 您可以預先或每月支付保留費用。 預付和每月付款的保留總費用是相同的，當您選擇按月支付時，您不需要支付任何額外費用。 每月付款僅適用於 Azure 保留，而不是第三方產品。
 
-您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)購買保留。
+您可以在 Azure 入口網站購買保留，網址為：[https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)。
 
 ## <a name="why-buy-a-reservation"></a>為何要購買保留？
 
@@ -34,6 +34,48 @@ Azure 保留可協助您藉由承諾多項產品一年或三年期的方案來�
 
 如需保留範圍運作方式的詳細資訊，請參閱[設定保留範圍](prepare-buy-reservation.md#scope-reservations)。
 
+## <a name="determine-what-to-purchase"></a>決定要購買的項目 
+
+除了 Azure Databricks 以外，所有保留都會以小時為單位套用。 根據您一致的基本使用方式，考慮保留購買。 您可以藉由分析使用方式資料或使用保留建議，來判斷要購買的保留。 以下可查看提供的建議：
+
+- Azure Advisor (僅限 VM)
+- Azure 入口網站中的保留購買體驗
+- 成本管理 Power BI 應用程式
+- API 
+
+如需詳細資訊，請參閱 [判斷要購買的保留](determine-reservation-purchase.md) 
+
+## <a name="buying-a-reservation"></a>購買保留 
+
+您可以從 Azure 入口網站、API、PowerShell 和 CLI 來購買保留。 
+
+移至 Azure 入口網站進行購買 (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+
+如需詳細資訊，請參閱 [購買保留](prepare-buy-reservation.md) 
+
+## <a name="how-is-a-reservation-billed"></a>保留的計費方式為何？ 
+
+保留會計費至與訂用帳戶繫結的付款方式。 保留成本是從您的預付餘額扣除 (如果有的話)。 當您的預付餘額未涵蓋保留的成本時，您會支付超額部分。 如果您有來自個別方案的訂用帳戶採用隨用隨付費率，您的帳戶所擁有的信用卡會立即被收取預付費用。 每月付款會出現在您的發票上，且您的信用卡會每月扣款。 當您透過發票計費時，您會在下一張發票上看到費用。 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>檢視及管理保留的權限 
+
+購買保留的使用者以及用來計費保留的訂用帳戶管理員，都會取得保留順序和保留的擁有者角色。
+
+您可以透過將人員新增到保留順序或保留上的角色，來委派保留的管理。 您可以使用 API 和 PowerShell 來指派 Azure 入口網站中的角色。 
+
+如需詳細資訊，請參閱 [新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>購買後取得保留詳細資料和使用率
+
+如果您有檢視保留的權限，可以在 Azure 入口網站中看到保留及其用法。 您也可以使用 API 來取得資料。 
+
+如需如何在 Azure 入口網站中查看保留的詳細資訊，請參閱 [檢視 Azure 入口網站中的保留](view-reservations.md) 
+
+## <a name="manage-reservations-after-purchase"></a>在購買後管理保留 
+
+購買 Azure 保留之後，您可以更新範圍，將保留套用至不同的訂用帳戶、變更可以管理保留的人員、將保留分割為較小的部分，或變更執行個體大小彈性。 
+
+如需詳細資訊，請參閱 [管理 Azure 資源的保留](manage-reserved-vm-instance.md) 
 
 ## <a name="flexibility-with-azure-reservations"></a>Azure 保留的彈性
 
@@ -54,7 +96,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 - **適用於 MySQL 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 MySQL Database 伺服器相關聯的軟體、網路或儲存體費用。
 - **適用於 PostgreSQL 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 PostgreSQL Database 伺服器相關聯的軟體、網路或儲存體費用。
 - **適用於 MariaDB 的 Azure 資料庫** - 保留僅包含計算成本。 保留並未涵蓋與 MariaDB Database 伺服器相關聯的軟體、網路或儲存體費用。
-- **Azure 資料總管** - 保留涵蓋加成費用。 保留並未涵蓋與叢集相關聯的計算、網路或儲存體費用。
+- **Azure 資料總管** - 保留涵蓋加成費用。 保留並不適用於與叢集相關聯的計算、網路或儲存體費用。
 - **Azure Cache for Redis** - 保留僅包含計算成本。 保留並未涵蓋與 Redis 快取執行個體相關聯的網路或儲存體費用。
 - **Azure 專用主機** - 專用主機只會包含計算成本。
 - **Azure 磁碟儲存體保留** - 保留僅涵蓋 P30 大小或更大的進階 SSD。 其中並不涵蓋任何其他磁碟類型或小於 P30 的大小。

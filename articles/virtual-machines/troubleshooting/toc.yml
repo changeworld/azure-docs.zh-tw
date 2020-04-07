@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: 重要服務已失敗
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 套用本機使用者和群組原則時，VM 沒有回應
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: 不是可開機磁碟
           href: troubleshoot-guide-not-bootable-disk.md
         - name: 重新開機迴圈
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: 因 Windows 開機管理程式導致 VM無法開機
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: VM 因為更新而沒有回應
+          href: unresponsive-vm-apply-windows-update.md
 - name: 無法連接到我的 VM
   items:
     - name: RDP

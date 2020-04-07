@@ -3,15 +3,15 @@ title: 使用 REST API 檢閱 Azure 服務資源使用量
 description: 了解如何使用 Azure REST API 檢閱 Azure 服務資源使用量。
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202840"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521207"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>使用 REST API 檢閱 Azure 資源使用量
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` 參數為必要，且應包含可使用 API 權杖中提供認證來讀取的訂用帳戶識別碼。 `{reportName}`
+`{subscriptionGuid}` 參數為必要，且應包含可使用 API 權杖中提供認證來讀取的訂用帳戶識別碼。 
+
+`{reportName}` 參數會指定報告的名稱。 若要取得報表名稱的清單，您可以使用 Reports_List 作業來取得清單：`/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`。 在 [GitHub](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json) 上檢視範例輸出。
 
 以下是必要標頭：
 

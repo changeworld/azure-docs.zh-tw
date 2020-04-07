@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: 安全性基準
           href: security-baseline.md
+        - name: 內建安全性
+          href: key-vault-security-controls.md
         - name: 安全性環境
           href: key-vault-ovw-security-worlds.md
         - name: 保護您的金鑰保存庫
@@ -200,7 +202,7 @@
       href: common-parameters-and-headers.md
     - name: 客戶資料
       href: key-vault-customer-data.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'

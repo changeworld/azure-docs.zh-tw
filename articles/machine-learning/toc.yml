@@ -17,18 +17,22 @@
   items:
     - name: Studio 和設計工具
       items:
-        - name: 設計工具：1. 定型迴歸模型
-          displayName: studio
-          href: tutorial-designer-automobile-price-train-score.md
-        - name: 設計工具：2. 部署該模型
-          displayName: studio
-          href: tutorial-designer-automobile-price-deploy.md
-        - name: 建立自動化 ML 實驗
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-first-experiment-automated-ml.md
-        - name: 使用自動化機器學習預測需求 (單車共享資料)
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-automated-ml-forecast.md
+        - name: 設計工具 (拖放)
+          items:
+            - name: 設計工具：1. 定型迴歸模型
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 設計工具：2. 部署該模型
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: 自動化 ML (UI)
+          items:
+            - name: 建立自動化 ML 實驗
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: 使用自動化機器學習預測需求 (單車共享資料)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: 建立第一個 ML 實驗
@@ -139,6 +143,9 @@
             - name: 使用虛擬網路
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
+            - name: 使用 Private Link
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
             - name: 使用 SSL 保護 Web 服務
               href: how-to-secure-web-service.md
             - name: 在 AKS 部署中使用 Azure AD 身分識別
@@ -254,8 +261,6 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-        - name: Chainer
-          href: how-to-train-chainer.md
     - name: 解譯模型
       displayName: interpretability
       items:

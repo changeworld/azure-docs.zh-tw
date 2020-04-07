@@ -18,6 +18,14 @@
       items:
         - name: Azure CDN 上的 Web 應用程式防火牆
           href: ./cdn/cdn-overview.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 應用程式閘道
+      items:
+        - name: 部署 WAF v2 - ARM 範本
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: 教學課程
   items:
     - name: 應用程式閘道

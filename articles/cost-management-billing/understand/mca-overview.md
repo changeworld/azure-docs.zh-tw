@@ -1,18 +1,18 @@
 ---
-title: 開始使用 Microsoft 客戶合約計費 - Azure
+title: 開始使用 Microsoft 客戶合約計費帳戶 - Azure
 description: 了解您的 Microsoft 客戶合約計費帳戶
 author: bandersmsft
 ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: a580dd1fb9d2965a9da1e4918733bd5cf137e443
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df54109010c694934dda005d6e8f1c219ec49efc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79139941"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370997"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>開始使用您的 Microsoft 客戶合約計費帳戶
 
@@ -34,7 +34,7 @@ Microsoft 客戶合約的計費帳戶包含一或多個帳單設定檔，可讓�
 
 帳單設定檔可讓您管理發票和付款方式。 您帳戶中的每個帳單設定檔都會在月初產生每月發票。 發票會分別包含所有 Azure 訂用帳戶以及上個月的其他購買所產生的個別費用。
 
-系統會自動為您的計費帳戶建立帳單設定檔。 根據預設，會包含一個發票區段。 視您的需求而定，您可依專案、部門或開發環境來建立其他區段，以輕鬆追蹤和彙整成本。 您會看到帳單設定檔的這些發票區段反映出每個訂用帳戶的使用量和指派給該訂用帳戶的購買。
+系統會自動為您的計費帳戶建立帳單設定檔。 根據預設，會包含一個發票區段。 視您的需求而定，您可依專案、部門或開發環境來建立其他區段，以輕鬆追蹤和彙整成本。 您會看到帳單設定檔的這些發票區段反映出每個訂用帳戶的使用方式及指派給該訂用帳戶的購買。
 
 帳單設定檔上的角色有權檢視和管理發票和付款方式。 請將這些角色指派給支付發票費用的使用者，例如組織中會計小組成員。 如需詳細資訊，請參閱[帳單設定檔角色和工作](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。
 

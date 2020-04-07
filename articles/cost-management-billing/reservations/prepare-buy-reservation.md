@@ -1,20 +1,20 @@
 ---
-title: 準備購買 Azure 保留
-description: 購買 Azure 保留之前，請先了解相關要點。
+title: 購買 Azure 保留
+description: 了解相關要點可協助您購買 Azure 保留。
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235659"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436975"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>準備購買保留
+# <a name="buy-a-reservation"></a>購買保留項目
 
 Azure 保留可協助您藉由承諾多項 Azure 資源一年或三年期的方案來節省成本。 在您輸入承諾用量以購買保留之前，請務必先參閱下列各節，以做好購買的準備。
 
@@ -50,6 +50,17 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 
 ![顯示保留範圍變更的範例](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>折扣的訂用帳戶和供應項目類型
+
+保留折扣適用於下列合格訂用帳戶和供應項目類型。
+
+- Enterprise 合約 (供應項目號碼：MS-AZR-0017P 或 MS-AZR-0148 P)
+- Microsoft 客戶合約訂用帳戶。
+- 以隨用隨付費率計費的個別方案 (供應項目號碼：MS-AZR-0003P 或 MS-AZR-0023P)
+- CSP 訂用帳戶
+
+在具有其他優惠類型的訂用帳戶中執行的資源，將無法收到保留折扣。
+
 ## <a name="purchase-reservations"></a>購買保留
 
 您可以從 Azure 入口網站、API、PowerShell、CLI 來購買保留。 當您準備好要購買保留時，請閱讀下列適用的文章：
@@ -66,6 +77,54 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 - [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL 資料倉儲](prepay-sql-data-warehouse-charges.md)
 - [虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>購買或每月付款的 Azure 保留
+
+您可以透過每月付款的方式購買 Azure 保留。 不同於需支付全額的預先購買，每月付款選項會將保留的總費用平均分配至期限中的每一個月份。 預付和每月付款的保留總費用是相同的，當您選擇按月支付時，您不需要支付任何額外費用。
+
+如果是使用 Microsoft 客戶合約 (MCA) 購買保留，則您的月付金額可能會依當地貨幣的當月市場匯率而異。
+
+每月付款不適用於：Databricks、SUSE Linux 保留、Red Hat 方案和 Azure Red Hat OpenShift Compute。
+
+### <a name="view-payments-made"></a>檢視已支付的款項
+
+您可以使用 API、使用量資料和成本分析來檢視已支付的款項。 針對每月付款的保留，使用量資料和保留費用 API 中的頻率值會顯示為**定期**。 針對預先付款的保留，此值會顯示為**一次性**。
+
+成本分析會在預設檢視中顯示每月的購買。 在 [費用類型]  上套用 [購買]  ，以及在 [頻率]  上套用 [定期]  來進行篩選，即可查看所有購買。 若只要檢視保留，請篩選 [保留]  。
+
+![在成本分析中顯示保留購買費用的範例](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>交換和退款
+
+就像其他保留一樣，您可以針對以每月計費購買的保留進行退款或交換。 
+
+當您交換每月付款的保留時，新購買項目的總存留期費用應大於退回保留而取消的剩餘款項。 交換並不沒有其他限制或費用。 您可以交換預先付款的保留，改為購買每月計費的新保留。 不過，新保留的存留期值應該大於退回保留的比例分配值。
+
+如果您取消每月付款的保留，已取消的未來付款將會累積到 50,000 美元的退款限制。
+
+如需有關交換和退款的詳細資訊，請參閱 [Azure 保留的自助式交換和退款](exchange-and-refund-azure-reservations.md)。
+
+## <a name="reservation-notifications"></a>保留通知
+
+根據您支付 Azure 訂用帳戶的方式，我們會透過電子郵件，將保留通知傳送給貴組織中的下列使用者。 系統會針對各種事件傳送通知，包括： 
+
+- 購買
+- 即將到期的保留期限
+- Expiry
+- 續約
+- 取消
+- 範圍變更
+
+針對具有 EA 訂用帳戶的客戶：
+
+- 通知只會傳送給 EA 通知連絡人。
+- 使用 RBAC (IAM) 權限新增至保留的使用者，不會收到任何電子郵件通知。
+
+針對具有個別訂用帳戶的客戶：
+
+- 購買者會收到購買通知。
+- 在購買時，訂用帳戶計費帳戶擁有者會收到購買通知。
+- 帳戶擁有者會收到所有其他通知。
 
 ## <a name="next-steps"></a>後續步驟
 

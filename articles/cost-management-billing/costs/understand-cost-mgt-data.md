@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203010"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477607"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -94,9 +94,9 @@ _<sup>**4**</sup> 點數型和預付型訂用帳戶的歷程記錄資料可能�
 
 _<sup>**5**</sup> Azure 服務使用量是依據保留和議定價格。_
 
-_<sup>**6**</sup> Marketplace 購買目前不適用於隨用隨付、MSDN 和 Visual Studio 供應項目。_
+_<sup>**6**</sup> Marketplace 購買目前不適用於 MSDN 和 Visual Studio 供應項目。_
 
-_<sup>**7**</sup> 保留購買目前僅適用於 Enterprise 合約 (EA) 帳戶。_
+_<sup>**7**</sup> 保留購買目前僅適用於 Enterprise 合約 (EA) 和 Microsoft 客戶合約帳戶。_
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用量資料中使用標記
 

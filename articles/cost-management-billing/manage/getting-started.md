@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 中避免非預期的成本及管理計費
-description: 了解如何避免 Azure 帳單上的意外費用。 使用 Azure 帳戶的成本追蹤與管理功能。
+title: 使用 Azure 成本管理與計費來避免及分析非預期的費用
+description: 了解如何避免您的 Azure 帳單上產生非預期的費用，並針對您的 Azure 帳戶使用成本追蹤和管理功能。
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238137"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475271"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>使用 Azure 計費與成本管理避免非預期的費用
 
@@ -112,11 +112,6 @@ ms.locfileid: "79238137"
 
 請參閱[透過建議最佳化成本](../costs/tutorial-acm-opt-recommendations.md)教學課程，以取得有關 Advisor 節省成本建議的引導式教學課程。
 
-## <a name="review-charges-against-your-latest-invoice"></a>根據您最新的發票來檢閱費用
-
-在計費週期結束時，即可取得您的發票。 您可以[下載發票和詳細使用量檔案](download-azure-invoice-daily-usage-date.md)並加以比較，確定已向您正確收費。 如需比較每日使用量和發票的詳細資訊，請參閱[了解 Microsoft Azure 帳單](../understand/review-individual-bill.md)。
-
-如果您是透過 Microsoft 客戶合約 (MCA) 使用 Azure，您也可以[比較您的發票與交易](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal)，以了解發票上的費用。
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>整合帳單與使用量 API
 
@@ -178,9 +173,65 @@ SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 S
 
 如需詳細資訊，請參閱[服務等級協定](https://azure.microsoft.com/support/legal/sla/)和 [Azure 服務的 SLA 摘要](https://azure.microsoft.com/support/legal/sla/summary/)文件。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
+## <a name="analyze-unexpected-charges"></a>分析非預期的費用
 
-如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+您針對貴組織建立的雲端資源基礎結構可能很複雜。 許多 Azure 資源類型可能有不同類型的費用。 Azure 資源可能由貴組織中的不同小組所擁有，且可能會有不同的計費模型類型適用於各種資源。 若要進一步了解費用，請使用下列各節中的一個或多個策略開始進行分析。
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>檢閱您的發票並識別負責收費的資源
+
+您購買 Azure 服務的方式可協助您判斷您在識別與費用相關聯的資源時，可供您使用的方法和工具。 若要判斷您適用哪一種方法，請先[判斷您的 Azure 供應項目類型](../costs/understand-cost-mgt-data.md#determine-your-offer-type)。 然後，在[支援的 Azure 供應項目](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)清單中識別您的客戶類別。
+
+下列文章提供詳細的步驟，說明如何根據您的客戶類型來檢閱您的帳單。 在每篇文章中都有相關指示，說明如何下載 CSV 檔案，其中包含指定計費週期的使用量和成本詳細資料。
+
+- [隨用隨付帳單檢閱流程](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Enterprise 合約帳單檢閱流程](../understand/review-enterprise-agreement-bill.md)
+- [Microsoft 客戶合約檢閱流程](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Microsoft 合作夥伴合約檢閱流程](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+您的 Azure 帳單會根據每個_計量_來匯總當月費用。 計量是用來追蹤一段時間的資源使用量，並用來計算您的帳單。 當您建立單一 Azure 資源 (例如虛擬機器) 時，會針對該資源建立一或多個計量執行個體。
+
+根據您所要分析帳單上顯示的 _MeterName_ 篩選使用量 CSV 檔案，以查看適用於計量表的所有明細項目。 明細項目的 _InstanceID_ 會對應到產生費用的實際 Azure 資源。
+
+當您識別出有問題的資源時，可以在 Azure 成本管理中使用成本分析，進一步分析資源的相關成本。 若要深入了解如何使用成本分析，請參閱[開始分析成本](../costs/quick-acm-cost-analysis.md)。
+
+### <a name="identify-spikes-in-cost-over-time"></a>識別一段時間的成本尖峰
+
+有時候，您可能不知道哪些最近的成本導致計費費用上的變更。 若要了解變更的內容，您可以使用成本分析來[查看一段時間內每日或每月的成本明細](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month)。 建立視圖之後，請依 [服務]  或 [資源]  將您的費用群組以識別變更。 您也可以將您的視圖變更為 [線條]  圖表，以更好的視覺化方式呈現資料。
+
+![在成本分析中顯示一段時間的成本範例](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>判斷資源定價並了解其計費模型
+
+單一資源可能會在多個 Azure 產品和服務之間產生費用。 如需深入了解每個 Azure 服務的定價，請參閱 [Azure 各項產品的定價](https://azure.microsoft.com/pricing/#product-pricing)頁面。 例如，在 Azure 中建立的單一虛擬機器 (VM) 可能會建立下列計量來追蹤其使用量。 每個都可能有不同的定價。
+
+- 計算時數
+- IP 位址時數
+- 資料傳入
+- 資料傳出
+- 標準受控磁碟
+- 標準受控磁碟作業
+- 標準 IO 磁碟
+- 標準 IO - 區塊 Blob 讀取
+- 標準 IO - 區塊 Blob 寫入
+- 標準 IO - 區塊 Blob 刪除
+
+建立 VM 後，每個計量便會開始發出使用量記錄。 Azure 計量系統中會追蹤使用量和計量的價格。 您可以在使用量 CSV 檔案中查看用來計算費用的計量。
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>尋找負責資源的人員並與他們互動
+
+通常，負責指定資源的小組會知道已對資源所做的變更。 與這些小組互動很有用，因為您可以識別可能出現費用的原因。 例如，主控小組最近可能已建立資源、更新其 SKU (因而變更資源費率)，或因為程式碼變更而增加資源的負載。 繼續閱讀下列各節，以了解判斷哪些人員擁有資源的更多技巧。
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>分析資源的稽核記錄
+
+如果您擁有檢視資源的許可權，您應該能夠存取其稽核記錄。 請檢閱記錄，以尋找負責資源最新變更的使用者。 若要深入了解，請參閱[檢視及擷取 Azure 活動記錄事件](../../azure-monitor/platform/activity-log-view.md)。
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>分析使用者對資源父範圍的許可權
+
+具有訂用帳戶或資源群組寫入存取權的人員，通常會有建立資源的相關資訊。 他們應該能夠說明資源的用途，或將您指引至知道的人員。 若要識別擁有訂用帳戶範圍許可權的人員，請參閱[檢視角色指派](../../role-based-access-control/check-access.md#view-role-assignments)。 您可以使用類似流程來處理資源群組。
+
+### <a name="get-help-to-identify-charges"></a>取得識別費用的協助
+
+如果您已使用上述策略，但仍無法了解為何會收到費用，或如果您需要帳單問題的其他協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>後續步驟
 - 了解如何使用[消費限制](spending-limit.md)來避免超支。
