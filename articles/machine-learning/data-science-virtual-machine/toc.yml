@@ -17,8 +17,6 @@
       href: provision-vm.md
     - name: 建立 Ubuntu 資料科學虛擬機器
       href: dsvm-ubuntu-intro.md
-    - name: 建立 CentOS 資料科學虛擬機器
-      href: linux-dsvm-intro.md
     - name: 建立地區人工智慧資料科學虛擬機器
       href: provision-geo-ai-dsvm.md
 - name: 概念
@@ -67,8 +65,6 @@
   items:
     - name: Ubuntu 資料科學虛擬機器
       href: reference-ubuntu-vm.md
-    - name: CentOS 資料科學虛擬機器
-      href: reference-centos-vm.md
     - name: 版本資訊
       href: release-notes.md
     - name: 已知問題

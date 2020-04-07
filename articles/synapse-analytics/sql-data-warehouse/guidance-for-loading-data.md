@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e5ad5f6f2f5be239af23ee4802cf09c388c93ae9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632916"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745505"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 池載入資料的最佳做法
 
@@ -104,7 +104,7 @@ User_A和user_B現在被鎖定在其他部門的架構之外。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 時增加批次處理大小
 
-使用 PolyBase 載入將提供 SQL 池的最高輸送量。 如果無法使用 PolyBase 載入,並且必須使用[SqLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)或[bcp,](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15)則應考慮增加批次處理大小以提高輸送量。
+使用 PolyBase 載入將提供 SQL 池的最高輸送量。 如果無法使用 PolyBase 載入,並且必須使用[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或[bcp,](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)則應考慮增加批次處理大小以提高輸送量。
 
 > [!TIP]
 > 100 K 到 1M 行之間的批處理大小是確定最佳批處理大小容量的建議基線。
@@ -120,7 +120,7 @@ User_A和user_B現在被鎖定在其他部門的架構之外。
 
 若要修正「錯誤」記錄，請確定您的外部資料表及外部檔案格式定義皆正確，且這些定義與您的外部資料相符。
 
-如果外部資料記錄的子集是臟的,則可以選擇使用[「創建外部表」(Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15)中的拒絕選項來拒絕這些查詢記錄。
+如果外部資料記錄的子集是臟的,則可以選擇使用[「創建外部表」(Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒絕選項來拒絕這些查詢記錄。
 
 ## <a name="inserting-data-into-a-production-table"></a>將資料插入生產資料表中
 

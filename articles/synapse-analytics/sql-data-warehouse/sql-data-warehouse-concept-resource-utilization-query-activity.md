@@ -11,12 +11,12 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633609"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745298"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure 突觸分析中的資源利用率與查詢活動
 
@@ -24,7 +24,7 @@ Azure Synapse 分析在 Azure 門戶中提供了豐富的監視體驗,以顯示�
 
 ## <a name="resource-utilization"></a>資源使用率
 
-以下指標在 Azure 門戶中可用於 SQL 分析。 我們透過 [Azure 監視器](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)提供這些計量。
+以下指標在 Azure 門戶中可用於 SQL 分析。 我們透過 [Azure 監視器](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)提供這些計量。
 
 | 標準名稱             | 描述                                                  | 彙總類型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |

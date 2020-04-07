@@ -3,12 +3,12 @@ title: 瞭解 Azure 服務結構應用程式安全性
 description: 如何安全地在 Service Fabric 上執行微服務應用程式的概觀。 深入了解如何在不同的安全性帳戶底下執行服務和啟動指令碼、驗證和授權使用者、管理應用程式祕密、保護服務通訊、使用 API 閘道，以及保護應用程式待用資料。
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452246"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756231"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 應用程式和服務安全性
 微服務架構可以帶來[許多優點](service-fabric-overview-microservices.md)。 不過，管理微服務的安全性是一種挑戰，而且與管理傳統的整合型應用程式安全性有所不同。 
@@ -25,7 +25,7 @@ ms.locfileid: "75452246"
 
 如果可以直接存取服務，則驗證服務 (例如 Azure Active Directory 或專用驗證微服務) 會作為安全性權杖服務 (STS)，可用來驗證使用者。 信任決策會在服務與安全性權杖或 Cookie 之間共用。 
 
-針對 ASP.NET Core，[驗證使用者](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要機制是 ASP.NET Core 身分識別成員資格系統。 ASP.NET Core 身分識別會將使用者資訊 (包括登入資訊、角色及宣告) 儲存在由開發人員設定的資料存放區中。 ASP.NET Core 身分識別支援雙因素驗證。  外部身份驗證供應商也受支援，因此使用者可以使用來自 Microsoft、Google、Facebook 或 Twitter 等供應商的現有身份驗證進程登錄。
+針對 ASP.NET Core，[驗證使用者](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要機制是 ASP.NET Core 身分識別成員資格系統。 ASP.NET Core 身分識別會將使用者資訊 (包括登入資訊、角色及宣告) 儲存在由開發人員設定的資料存放區中。 ASP.NET Core 身分識別支援雙因素驗證。  外部身份驗證供應商也受支援,因此使用者可以使用來自 Microsoft、Google、Facebook 或 Twitter 等供應商的現有身份驗證進程登錄。
 
 ### <a name="authorization"></a>授權
 驗證之後，服務需要授權使用者存取權，或判斷使用者可以執行哪些作業。 這個程序允許服務讓 API 可供某些已驗證的使用者使用，而不是所有使用者都可使用。 授權與驗證彼此獨立且互不影響，後者是查明使用者是誰的程序。 驗證可為目前使用者建立一或多個身分識別。
@@ -33,14 +33,14 @@ ms.locfileid: "75452246"
 [ASP.NET Core 授權](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)可以根據使用者的角色或根據自訂原則來進行，其中包含檢查宣告或其他啟發學習法。
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>使用 API 閘道來限制和保護存取權
-雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 [API 閘道](/azure/architecture/microservices/gateway)位於用戶端與服務之間，這是通往您應用程式所提供之所有服務的進入點。 它會作為反向 Proxy，將要求從用戶端路由傳送到服務。 它也會執行各種跨領域工作，例如驗證和授權、SSL 終止和速率限制。 如果您未部署閘道，用戶端就必須將要求直接傳送給前端服務。
+雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 [API 閘道](/azure/architecture/microservices/gateway)位於用戶端與服務之間，這是通往您應用程式所提供之所有服務的進入點。 它會作為反向 Proxy，將要求從用戶端路由傳送到服務。 它還可能執行各種跨領域任務,如身份驗證和授權、TLS終止和速率限制。 如果您未部署閘道，用戶端就必須將要求直接傳送給前端服務。
 
 在 Service Fabric 中，閘道可以是任何無狀態服務 (例如 [ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md))，或是為流量輸入設計的另一個服務 (例如，[Traefik](https://docs.traefik.io/)、[事件中樞](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management))。
 
 「API 管理」直接與 Service Fabric 整合，可讓您將具有一組豐富路由規則的 API 發佈至後端 Service Fabric 服務。  您可以保護後端服務的存取、使用節流來預防 DOS 攻擊，或驗證 API 金鑰、JWT 權杖、憑證和其他認證。 若要深入了解，請參閱 [Service Fabric 搭配 Azure API 管理概觀](service-fabric-api-management-overview.md)。
 
 ## <a name="manage-application-secrets"></a>管理應用程式密碼
-密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。 本文使用 Azure Key Vault 來管理金鑰和祕密。 但是，在應用程式中*使用*機密與雲平臺無關，允許將應用程式部署到任何位置託管的群集。
+密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。 本文使用 Azure Key Vault 來管理金鑰和祕密。 但是,在應用程式中*使用*機密與雲平台無關,允許將應用程式部署到任何位置託管的群集。
 
 建議透過[服務組態套件][config-package]來管理服務組態設定。 組態套件會有各種版本，並可透過含有健全狀況驗證和自動復原的受控輪流升級來進行升級。 這是慣用的全域組態，因為可以減少全域服務中斷的機會。 加密的密碼也不例外。 Service Fabric 具有內建的功能，可使用憑證加密來加密或解密組態套件 Settings.xml 檔案中的值。
 

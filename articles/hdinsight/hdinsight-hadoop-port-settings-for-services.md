@@ -1,47 +1,47 @@
 ---
 title: HDInsight 上 Hadoop 服務所使用的連接埠 - Azure
-description: 本文提供了在 Azure HDInsight 中運行的 Apache Hadoop 服務使用的埠清單
+description: 本文提供了在 Azure HDInsight 執行的 Apache Hadoop 服務使用的連接埠清單
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314686"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754218"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上 Apache Hadoop 服務所使用的連接埠
 
-本文檔提供了在 HDInsight 群集上運行的 Apache Hadoop 服務使用的埠的清單。 此外，也提供用來連線到使用 SSH 之叢集的連接埠相關資訊。
+本文件提供了在 HDInsight 群集上運行的 Apache Hadoop 服務使用的連接埠的清單。 此外，也提供用來連線到使用 SSH 之叢集的連接埠相關資訊。
 
 ## <a name="public-ports-vs-non-public-ports"></a>公用連接埠與非公用連接埠
 
-以 Linux 為基礎的 HDInsight 叢集只會在網際網路上公開三個公開連接埠：22、23 和 443。 這些連接埠用來使用 SSH 以及透過安全 HTTPS 通訊協定公開的服務安全地存取叢集。
+基於 Linux 的 HDInsight 群集僅公開公開公開公開顯示 Internet 上的三個埠:22、23 和 443。 這些埠使用通過安全 HTTPS 協定公開的 SSH 和服務來保護群集訪問。
 
-在內部，HDInsight 由數個在 Azure 虛擬網路上執行的 Azure 虛擬機器 (叢集內的節點) 實作。 您可以從虛擬網路存取不是透過網際網路公開的連接埠。 例如，如果您使用 SSH 連接到其中一個前端節點，您可以從此前端節點直接存取在叢集節點上執行的服務。
+HDInsight 由在 Azure 虛擬網路上運行的多個 Azure 虛擬機器(群集節點)實現。 您可以從虛擬網路存取不是透過網際網路公開的連接埠。 如果通過 SSH 連接到頭節點,則可以直接訪問群集節點上運行的服務。
 
 > [!IMPORTANT]  
-> 如果您沒有將 Azure 虛擬網路指定為 HDInsight 的設定選項，則會自動建立一個。 但是，不能將其他電腦（如其他 Azure 虛擬機器或用戶端開發電腦）加入到此虛擬網路。
+> 如果您沒有將 Azure 虛擬網路指定為 HDInsight 的設定選項，則會自動建立一個。 但是,不能將其他電腦(如其他 Azure 虛擬機器或用戶端開發電腦)加入到此虛擬網路。
 
-若要將其他電腦加入至虛擬網路，您必須先建立虛擬網路，然後在建立 HDInsight 叢集時進行指定。 有關詳細資訊，請參閱為[HDInsight 規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
+若要將其他電腦加入至虛擬網路，您必須先建立虛擬網路，然後在建立 HDInsight 叢集時進行指定。 有關詳細資訊,請參閱為[HDInsight 規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
 
 ## <a name="public-ports"></a>公用連接埠
 
-HDInsight 群集中的所有節點都位於 Azure 虛擬網路中，無法直接從 Internet 訪問。 公用閘道提供下列連接埠 (常見於所有的 HDInsight 叢集類型) 的網際網路存取。
+HDInsight 群集中的所有節點都位於 Azure 虛擬網路中。 無法直接從 Internet 訪問節點。 公用閘道提供下列連接埠 (常見於所有的 HDInsight 叢集類型) 的網際網路存取。
 
 | 服務 | 連接埠 | 通訊協定 | 描述 |
 | --- | --- | --- | --- |
-| sshd |22 |SSH |將用戶端連接到主要前端節點上的 sshd。 有關詳細資訊，請參閱將[SSH 與 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
-| sshd |22 |SSH |將用戶端連接至邊緣節點上的 sshd。 有關詳細資訊，請參閱將[SSH 與 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
-| sshd |23 |SSH |將用戶端連接到次要前端節點上的 sshd。 有關詳細資訊，請參閱將[SSH 與 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
+| sshd |22 |SSH |將用戶端連接到主要前端節點上的 sshd。 有關詳細資訊,請參閱將[SSH 與 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
+| sshd |22 |SSH |將用戶端連接至邊緣節點上的 sshd。 有關詳細資訊,請參閱將[SSH 與 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
+| sshd |23 |SSH |將用戶端連接到次要前端節點上的 sshd。 有關詳細資訊,請參閱將[SSH 與 HDInsight 一起使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
 | Ambari |443 |HTTPS |Ambari Web UI。 請參閱 [使用 Apache Ambari Web UI 來管理 HDInsight](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari REST API。 請參閱[使用 Apache Ambari REST API 來管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API。 請參閱[使用帶捲曲的映射縮減](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API。 請參考[使用帶捲曲的映射縮減](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |使用 ODBC 連接至 Hive。 請參閱 [使用 Microsoft ODBC 驅動程式將 Excel 連接到 HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。 |
 | HiveServer2 |443 |JDBC |使用 JDBC 來連線至 Hive。 請參閱[使用 Hive JDBC 驅動程式來連線至 HDInsight 上的 Apache Hive](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
@@ -49,11 +49,11 @@ HDInsight 群集中的所有節點都位於 Azure 虛擬網路中，無法直接
 
 | 服務 | 連接埠 | 通訊協定 | 叢集類型 | 描述 |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |hbase |HBase REST API。 請參閱[開始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |hbase |HBase REST API。 請參閱[開始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API。 請參閱[使用 Apache Livy 從遠端提交 Apache Spark 作業](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift 伺服器 |443 |HTTPS |Spark |用來提交 Hive 查詢的 Spark Thrift 伺服器。 請參閱[使用 Beeline 搭配 HDInsight 上的 Apache Hive](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm Web UI。 請參閱[部署和管理 HDInsight 上的 Apache Storm 拓撲](storm/apache-storm-deploy-monitor-topology-linux.md) |
-| 卡夫卡休息代理 |443 |HTTPS |Kafka |卡夫卡 REST API. 請參閱[使用 REST 代理在 Azure HDInsight 中與 Apache Kafka 群集進行交互](kafka/rest-proxy.md) |
+| 卡夫卡休息代理 |443 |HTTPS |Kafka |卡夫卡 REST API. 請參考[使用 REST 代理在 Azure HDInsight 中與 Apache Kafka 叢集進行互動](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>驗證
 
@@ -89,7 +89,7 @@ HDInsight 群集中的所有節點都位於 Azure 虛擬網路中，無法直接
 | --- | --- | --- | --- | --- |
 | NameNode Web UI |前端節點 |30070 |HTTPS |用以檢視狀態的 Web UI |
 | NameNode 中繼資料服務 |前端節點 |8020 |IPC |檔案系統中繼資料 |
-| DataNode |所有背景工作節點 |30075 |HTTPS |用以檢視狀態、記錄等的 Web UI |
+| DataNode |所有背景工作節點 |30075 |HTTPS |Web UI 以查看狀態、日誌等。 |
 | DataNode |所有背景工作節點 |30010 |&nbsp; |資料傳輸 |
 | DataNode |所有背景工作節點 |30020 |IPC |中繼資料作業 |
 | 次要 NameNode |前端節點 |50090 |HTTP |NameNode 中繼資料的檢查點 |
@@ -100,11 +100,11 @@ HDInsight 群集中的所有節點都位於 Azure 虛擬網路中，無法直接
 | --- | --- | --- | --- | --- |
 | Resource Manager |前端節點 |8088 |HTTP |適用於 Resource Manager 的 Web UI |
 | Resource Manager |前端節點 |8090 |HTTPS |適用於 Resource Manager 的 Web UI |
-| Resource Manager 系統管理介面 |前端節點 |8141 |IPC |適用於應用程式提交 (Hive、Hive 伺服器、Pig 等) |
+| Resource Manager 系統管理介面 |前端節點 |8141 |IPC |對於應用程式提交(Hive、Hive 伺服器、Pig等)。 |
 | Resource Manager 排程器 |前端節點 |8030 |HTTP |系統管理介面 |
 | Resource Manager 應用程式介面 |前端節點 |8050 |HTTP |應用程式管理員介面的位址 |
 | NodeManager |所有背景工作節點 |30050 |&nbsp; |容器管理員的位址 |
-| NodeManager Web UI |所有背景工作節點 |30060 |HTTP |資源管理器介面 |
+| NodeManager Web UI |所有背景工作節點 |30060 |HTTP |資源管理員介面 |
 | Timeline 位址 |前端節點 |10200 |RPC |Timeline 服務 RPC 服務。 |
 | Timeline Web UI |前端節點 |8188 |HTTP |Timeline 服務 Web UI |
 
@@ -158,7 +158,7 @@ HDInsight 群集中的所有節點都位於 Azure 虛擬網路中，無法直接
 | --- | --- | --- | --- | --- |
 | Broker |背景工作節點 |9092 |[Kafka Wire Protocol (Kafka 有線通訊協定)](https://kafka.apache.org/protocol.html) |用於用戶端通訊 |
 | &nbsp; |Zookeeper 節點 |2181 |&nbsp; |用戶端用於連接至 ZooKeeper 的連接埠 |
-| REST 代理 | 卡夫卡管理節點 |9400 |HTTPS |[卡夫卡 REST 規格](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
+| REST 代理程式 | 卡夫卡管理節點 |9400 |HTTPS |[卡夫卡 REST 規格](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark 連接埠
 

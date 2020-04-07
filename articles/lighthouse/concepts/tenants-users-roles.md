@@ -3,12 +3,12 @@ title: Azure Lighthouse 案例中的租用戶、角色和使用者
 description: 了解 Azure Active Directory 租用戶、使用者和角色的概念，以及如何在 Azure Lighthouse 案例中使用它們。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4734f12c8b4b25bf75ecabc39d9e99d8ebe0951c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 32d9214e4d0d204db39b6e6decab4665e9b55069
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668865"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754092"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租用戶、角色和使用者
 
@@ -41,7 +41,6 @@ Azure 委派的資源管理目前支援所有[內建角色](../../role-based-acc
 - 請務必遵循最少特殊權限準則，讓使用者只具備完成其工作所需的權限，以協助減少發生意外錯誤的機會。 如需詳細資訊，請參閱[建議的安全性作法](../concepts/recommended-security-practices.md)。
 - 包含具有[受控服務註冊指派刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的使用者，讓您可以在稍後，視需要[移除對委派的存取權](../how-to/onboard-customer.md#remove-access-to-a-delegation)。 如果未指派此角色，則只有客戶租用戶中的使用者可以移除委派的資源。
 - 請確定需要[在 Azure 入口網站檢視 [我的客戶] 頁面](../how-to/view-manage-customers.md)的任何使用者都具有[讀取者](../../role-based-access-control/built-in-roles.md#reader)角色 (或包含讀取者存取權的其他內建角色)。
-- 管理租戶中的使用者將無法訪問查看委派的客戶訂閱的計費資訊,即使他們具有通常允許訪問的內置角色。 這是因為對計費資訊的訪問需要當前僅支援同一租戶中使用者的其他步驟。
 
 > [!IMPORTANT]
 > 為了新增 Azure AD 組的權限,**群組類型**必須是 **「安全」** 而不是**Office 365**。 建立群組時選擇此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。

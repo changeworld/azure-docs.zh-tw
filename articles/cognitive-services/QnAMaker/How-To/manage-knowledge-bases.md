@@ -3,22 +3,22 @@ title: 管理知識庫 - QnA 製造商
 description: QnA Maker 允許您通過提供對知識庫設置和內容的訪問來管理知識庫。
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071233"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756813"
 ---
-# <a name="create-knowledge-base-and-manage-settings"></a>創建知識庫和管理設置
+# <a name="create-knowledge-base-and-manage-settings"></a>建立知識庫與管理設定
 
-QnA Maker 允許您通過提供對知識庫設置和資料來源的訪問來管理知識庫。
+QnA Maker 允許您通過提供對知識庫設置和數據源的訪問來管理知識庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
-> * 如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
-> * 在 Azure 門戶中創建的[QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
+> * 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * 在 Azure 門戶建立的[QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 請記住您在建立資源時選取的 Azure Active Directory 識別碼、訂用帳戶、QnA 資源名稱。
 
 ## <a name="create-a-knowledge-base"></a>建立知識庫
 
@@ -36,7 +36,7 @@ QnA Maker 允許您通過提供對知識庫設置和資料來源的訪問來管�
 
    ![選取 QnA Maker 服務知識庫的螢幕擷取畫面](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 在**步驟 3**中，命名`My Sample QnA KB`您的知識庫。
+1. 在**步驟 3**`My Sample QnA KB`中,命名您的知識庫。
 
 1. 在 [步驟 4]**** 中，使用下表進行設定：
 
@@ -69,12 +69,12 @@ QnA Maker 允許您通過提供對知識庫設置和資料來源的訪問來管�
        |--|--|
        |新增 URL|您可以藉由按一下 [管理知識庫] -> [+ 新增 URL]**** 連結來新增 URL，以便將新的常見問題集內容新增至知識庫。|
        |刪除 URL|您可以選取刪除圖示 (即垃圾桶)，以刪除現有 URL。|
-       |刷新內容|如果您想要讓知識庫搜耙現有 URL 的最新內容，請選取 [重新整理]**** 核取方塊。 這將使用最新的 URL 內容更新一次知識庫。 這不是設置定期更新計畫。|
+       |更新內容|如果您想要讓知識庫搜耙現有 URL 的最新內容，請選取 [重新整理]**** 核取方塊。 這將使用最新的 URL 內容更新一次知識庫。 這不是設置定期更新計劃。|
        |新增檔案|您可以藉由選取 [管理知識庫]**** 和 [+ 新增檔案]****，將受支援的檔案文件新增為知識庫的一部分|
-    |匯入|您還可以通過選擇 **"導入知識庫"** 按鈕導入任何現有知識庫。 |
-    |更新|知識庫的更新取決於當建立與知識庫相關聯的 QnA Maker 服務時，所使用的**管理定價層**。 如有必要，還可以從 Azure 門戶更新管理層。
+    |匯入|您還可以通過選擇 **「導入知識庫」** 按鈕導入任何現有知識庫。 |
+    |更新|知識庫的更新取決於當建立與知識庫相關聯的 QnA Maker 服務時，所使用的**管理定價層**。 如有必要,還可以從 Azure 門戶更新管理層。
 
-  1. 完成對知識庫的更改後，選擇頁面右上角的 **"保存"並訓練**，以便保留更改。
+  1. 完成對知識庫的更改後,選擇頁面右上角的 **「保存」並訓練**,以便保留更改。
 
        ![儲存並訓練](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
@@ -85,15 +85,15 @@ QnA Maker 允許您通過提供對知識庫設置和資料來源的訪問來管�
 
 ## <a name="manage-large-knowledge-bases"></a>管理大型知識庫
 
-* **資料來源組**：QnA 按從中提取它們的資料來源分組。 您可以展開或摺疊資料來源。
+* **資料來源組**:QnA 按從中擷取它們的資料來源群組。 您可以展開或摺疊資料來源。
 
     ![使用 QnA Maker 資料來源列來摺疊和展開資料來源問題和答案](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **搜索知識庫**：您可以通過在知識庫表頂部的文字方塊中鍵入來搜索知識庫。 按一下輸入來搜尋問題、答案或中繼資料內容。 按一下 X 圖示移除搜尋篩選條件。
+* **搜尋知識庫**:您可以通過在知識庫表頂部的文本框中鍵入來搜索知識庫。 按一下輸入來搜尋問題、答案或中繼資料內容。 按一下 X 圖示移除搜尋篩選條件。
 
     ![使用問題和答案上方的 QnA Maker 搜尋方塊，將檢視縮小為僅限符合篩選條件的項目](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **分頁**：快速流覽資料來源以管理大型知識庫
+* **分頁**:快速瀏覽資料來源以管理大型知識庫
 
     ![使用問題和答案上方的 QnA Maker 分頁功能來瀏覽問題和答案頁面](../media/qnamaker-how-to-edit-kb/pagination.png)
 
@@ -101,11 +101,11 @@ QnA Maker 允許您通過提供對知識庫設置和資料來源的訪問來管�
 
 刪除知識庫 (KB) 是永久性的作業。 該作業無法復原。 刪除知識庫之前，您應該從 QnA Maker 入口網站的 [設定]**** 頁面將知識庫匯出。
 
-如果您與協作者共用知識庫，*（協作-知識-base.md），然後將其刪除，則每個人都無法訪問知識庫。
+如果您與協作者共用知識庫,*(協作-知識-base.md),然後將其刪除,則每個人都無法訪問知識庫。
 
 ## <a name="next-steps"></a>後續步驟
 
 瞭解如何管理資源中所有知識庫[的語言](language-knowledge-base.md)。
 
-* 編輯 QnA 集
+* 編輯 QnA 對
 * 管理 QnA 製造商使用的 Azure 資源

@@ -4,14 +4,14 @@ description: 瞭解如何將應用程式從使用批次執行器庫移至 Azure 
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/06/2020
 ms.author: maquaran
-ms.openlocfilehash: e1a2a5d849d3c94d62b8645c41f288ba130aa6a4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479327"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755968"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>從批次執行器庫移到 Azure Cosmos DB .NET V3 SDK 中的批次支援
 
@@ -73,6 +73,15 @@ ms.locfileid: "80479327"
 1. 成功操作的數量。
 1. 已使用的請求單位總數。
 1. 如果存在失敗,它將顯示包含異常的元數清單以及用於日誌記錄和標識目的的關聯項。
+
+## <a name="retry-configuration"></a>重試設定
+
+批次執行器庫具有重新[試選項](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions)`0``MaxRetryWaitTimeInSeconds`設定為`MaxRetryAttemptsOnThrottledRequests`將控制項的權子派給函式庫[的指導](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)。
+
+對於 .NET SDK 中的批量支援,沒有隱藏行為。 您可以透過[宇宙用戶端選項](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests)直接配置重試[CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)選項。
+
+> [!NOTE]
+> 如果預配的請求單位根據數據量遠低於預期值,則可能需要考慮將這些單位設置為高值。 批量操作需要更長的時間,但由於重試度較高,因此完全成功的可能性更大。
 
 ## <a name="performance-improvements"></a>效能改善
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633700"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743259"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure 突觸分析資源類的工作負載管理
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 資源類別會藉由將使用者指派給資料庫角色來實作。 當使用者執行查詢時，查詢會利用使用者的資源類別來執行。 例如,如果使用者是 staticrc10 資料庫角色的成員,則其查詢會以少量記憶體運行。 如果資料庫使用者是 xlargec 或 staticrc80 資料庫角色的成員,則其查詢會大量記憶體運行。
 
-要增加使用者的資源類,請使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)將使用者添加到大型資源類的資料庫角色。  以下代碼將使用者添加到較大的 c 資料庫角色。  每個請求獲取 22% 的系統記憶體。
+要增加使用者的資源類,請使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)將使用者添加到大型資源類的資料庫角色。  以下代碼將使用者添加到較大的 c 資料庫角色。  每個請求獲取 22% 的系統記憶體。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-若要減少資源類別，使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) \(英文\)。  如果「載入使用者」不是成員或任何其他資源類,則它們將進入預設的 Smallrc 資源類,並給予 3% 記憶體。  
+若要減少資源類別，使用 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) \(英文\)。  如果「載入使用者」不是成員或任何其他資源類,則它們將進入預設的 Smallrc 資源類,並給予 3% 記憶體。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

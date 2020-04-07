@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631932"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755278"
 ---
 # <a name="conditional-access-users-and-groups"></a>條件存取:使用者和群組
 
@@ -35,9 +35,9 @@ ms.locfileid: "80631932"
 - 所有使用者
    - 目錄中存在的所有使用者,包括 B2B 來賓。
 - 選取使用者和群組
-   - 所有訪客和外部使用者(預覽版)
+   - 所有來賓和外部使用者
       - 此選項包括任何 B2B 來賓和外部使用者`user type`,包括`guest`屬性設置為的任何使用者。 此選項也適用於來自其他組織(如雲端解決方案供應商 (CSP) 的任何外部使用者登錄。 
-   - 目錄角色(預覽)
+   - 目錄角色
       - 允許管理員選擇用於確定分配的特定 Azure AD 目錄角色。 例如,組織可能會對分配全域管理員角色的用戶創建更嚴格的策略。
    - 使用者和群組
       - 允許定位特定使用者集。 例如,當將HR應用選擇為雲應用時,組織可以選擇包含人力資源部門所有成員的組。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。
@@ -51,9 +51,9 @@ ms.locfileid: "80631932"
 
 創建條件訪問策略時,可以使用以下選項進行排除。
 
-- 所有訪客和外部使用者(預覽版)
+- 所有來賓和外部使用者
    - 此選項包括任何 B2B 來賓和外部使用者`user type`,包括`guest`屬性設置為的任何使用者。 此選項也適用於來自其他組織(如雲端解決方案供應商 (CSP) 的任何外部使用者登錄。 
-- 目錄角色(預覽)
+- 目錄角色
    - 允許管理員選擇用於確定分配的特定 Azure AD 目錄角色。 例如,組織可能會對分配全域管理員角色的用戶創建更嚴格的策略。
 - 使用者和群組
    - 允許定位特定使用者集。 例如,當將HR應用選擇為雲應用時,組織可以選擇包含人力資源部門所有成員的組。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。

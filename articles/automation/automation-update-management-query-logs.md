@@ -3,14 +3,14 @@ title: 查詢 Azure 更新管理紀錄
 description: 本文介紹如何在日誌分析工作區中查詢日誌以進行更新管理。
 services: automation
 ms.subservice: update-management
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437851"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743878"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>在 Azure 監視器紀錄中查詢更新管理記錄
 
@@ -112,7 +112,7 @@ ms.locfileid: "80437851"
 | CorrelationId | 運行更新的 Runbook 作業的唯一標識符。 |
 | EndTime | 同步過程結束的時間。 | 
 | 錯誤結果 | 如果更新安裝失敗,則生成 Windows 更新錯誤代碼。 | 
-| 安裝狀態 | 用戶端電腦上的更新的可能安裝狀態「*正在進行*」 ,*成功*「*部份失敗*」 。 |
+| 安裝狀態 | 用戶端計算機上的更新的可能安裝狀態,<br> *未啟動*- 作業尚未觸發。<br> *無法啟動*- 無法在電腦上啟動作業。<br> *作業*已啟動但異常失敗。<br> *進度*- 正在進行的工作。<br> *維護視窗超過*- 如果執行仍然存在,但達到維護視窗間隔。<br> *成功*- 工作成功.<br> *安裝失敗*- 更新失敗,無法成功安裝。<br> *不包括*<br> *已排除* |
 | KBID | Windows 更新的知識庫文章 ID。 | 
 | ManagementGroupName | 操作管理員管理組或日誌分析工作區的名稱。 |
 | OSType | 指定作業系統 *、Windows*或*Linux*的類型。 | 

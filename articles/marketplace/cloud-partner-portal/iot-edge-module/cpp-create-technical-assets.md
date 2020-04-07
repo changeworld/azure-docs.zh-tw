@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9cd9f3986ef1944d9f9119296af5512b352d1d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285209"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744312"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
+
+>[!Important]
+>從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureIoTTechAsset)中的說明進行操作,以管理遷移的優惠。
 
 本文會說明 IoT Edge 模組技術資產在發佈到 Azure Marketplace 之前，必須先達到的需求。
 
@@ -69,7 +72,7 @@ IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引
 - 預設**路由**
 - 預設**雙對所需屬性**
 - 預設**環境變數**
-- 預設**創建選項**
+- 預設**建立選項**
 
 在此案例中，預設值所需的參數無任何意義 (例如：客戶伺服器的 IP 位址)，您可新增參數做為預設值。 此值會以方括號括住並大寫顯示。 在此例中，請設定下列環境變數：
 
@@ -79,11 +82,11 @@ IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引
 
 #### <a name="configuration-documentation"></a>設定文件
 
-必須清楚地記錄 IoT Edge 模組的所有配置設置（如何使用其路由、雙所需屬性、環境變數、創建選項等）。提供指向文檔的連結，或者文檔必須是您的產品/sku 說明的一部分。
+必須清楚地記錄 IoT Edge 模組的所有配置設定(如何使用其路由、雙所需屬性、環境變數、創建選項等)。提供指向文件的連結,或者文檔必須是您的產品/sku 說明的一部分。
 
 ### <a name="tags-and-versioning"></a>標籤與版本控制
 
-客戶必須能夠輕鬆部署模組並自動從市場獲取更新（在開發人員方案中）。他們還必須能夠使用和凍結他們測試的精確版本（在生產方案中）。
+客戶必須能夠輕鬆部署模組並自動從市場獲取更新(在開發人員方案中)。他們還必須能夠使用和凍結他們測試的精確版本(在生產方案中)。
 
 為了符合客戶的上述期望並在市集中發佈，IoT Edge 模組必須符合下列需求：
 
@@ -104,7 +107,7 @@ IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引
 - [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-- [JAVA](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
+- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 對於未使用 IoT 模組 SDK 的模組，由 Cloud Partner 入口網站提供的深入解析會較不精確，例如下載數。
 

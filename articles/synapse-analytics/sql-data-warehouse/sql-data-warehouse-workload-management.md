@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a6d46c2adf1d886f804a3a542a208558d7f935b9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632380"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744230"
 ---
 # <a name="what-is-workload-management"></a>什麼是工作負載管理？
 
@@ -44,7 +44,7 @@ ms.locfileid: "80632380"
 
 Azure Synapse 中的突觸 SQL 池工作負載管理由三個進階概念組成:[工作負載分類](sql-data-warehouse-workload-classification.md),[工作負載重要性](sql-data-warehouse-workload-importance.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能使您能夠更控制系統工作負載如何利用系統資源。
 
-工作負載分類是將請求分配給工作負載組並設置重要性級別的概念。  從歷史上看,此任務是通過使用[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)的角色成員身份來完成的。  這現在可以通過[創造任務程式](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)來完成。  分類功能提供了一組更豐富的選項,如標籤、會話和對請求進行分類的時間。
+工作負載分類是將請求分配給工作負載組並設置重要性級別的概念。  從歷史上看,此任務是通過使用[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)的角色成員身份來完成的。  這現在可以通過[創造任務程式](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)來完成。  分類功能提供了一組更豐富的選項,如標籤、會話和對請求進行分類的時間。
 
 工作負載重要性會影響請求訪問資源的順序。  在繁忙的系統上,具有更高重要性的請求可以首先訪問資源。  重要性還可以確保對鎖的有序訪問。
 

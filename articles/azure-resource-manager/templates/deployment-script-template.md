@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437886"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743307"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在樣本中使用部署文稿(預覽)
 
@@ -33,6 +33,8 @@ ms.locfileid: "80437886"
 - 允許指定用於執行腳本的標識。 目前,僅支援[Azure 使用者分配的託管識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 - 允許將命令列參數傳遞給腳本。
 - 可以指定腳本輸出並將其傳回部署。
+
+部署文本資源僅在 Azure 容器實例可用的區域可用。  請參考[Azure 區域中的 Azure 容器實體的資源可用性](../../container-instances/container-instances-region-availability.md)。
 
 > [!IMPORTANT]
 > 系統會在相同的資源群組中建立兩個部署指令碼資源 (儲存體帳戶和容器執行個體)，用以執行指令碼和疑難排解。 當部署文本執行處於終端狀態時,腳本服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 要瞭解更多資訊,請參閱[清理部署文稿資源](#clean-up-deployment-script-resources)。
@@ -189,6 +191,8 @@ Write-Host "Press [ENTER] to continue ..."
 要檢視範例, 請[在此處](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)選擇 。
 
 外部文本文件必須可訪問。  要保護儲存在 Azure 儲存帳號中的文稿檔,請參閱[教學:Azure 資源管理員樣本部署中的安全專案](./template-tutorial-secure-artifacts.md)。
+
+您有責任確保部署文稿引言的文稿(**主要文稿庫**或**支援文稿 Uri)的完整性**。  僅引用您信任的文稿。
 
 ## <a name="use-supporting-scripts"></a>使用支援文稿
 

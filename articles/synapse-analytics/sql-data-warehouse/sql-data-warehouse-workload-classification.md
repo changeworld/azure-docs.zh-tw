@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583145"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743647"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure 突觸分析工作負荷分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "80583145"
 
 ## <a name="classification-process"></a>分類程序
 
-Azure Synapse 中的 Synapse SQL 池的分類今天通過將使用者分配給具有相應資源類的角色(使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql))來實現。 使用此功能,在登錄到資源類之外對請求進行特徵描述的能力受到限制。 現在,使用[CREATE 工作分類語法](/sql/t-sql/statements/create-workload-classifier-transact-sql)提供了更豐富的分類方法。  使用此語法,Synapse SQL 池`workload_group`使用者可以通過 參數分配重要性以及將多少系統資源分配給請求。 
+Azure Synapse 中的 Synapse SQL 池的分類今天通過將使用者分配給具有相應資源類的角色(使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest))來實現。 使用此功能,在登錄到資源類之外對請求進行特徵描述的能力受到限制。 現在,使用[CREATE 工作分類語法](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)提供了更豐富的分類方法。  使用此語法,Synapse SQL 池`workload_group`使用者可以通過 參數分配重要性以及將多少系統資源分配給請求。
 
 > [!NOTE]
 > 根據請求評估分類。 單個會話中的多個請求可以分類不同。
@@ -76,7 +76,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 - 為了測試新的分類語法,資料庫角色 DBARole(DBAUser 是其成員)為其創建了一個分類器,將它們映射到中度和重要性。
 - 當 DBAUser 登錄並運行查詢時,查詢將分配給更大的 c。 因為使用者優先於角色成員身份。
 
-為了簡化故障排除錯誤分類,我們建議您在創建工作負載分類器時刪除資源類角色映射。  下面的代碼返回現有資源類角色成員身份。  對於從相應資源類返回的每個成員名稱運行[sp_droprolemember。](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)
+為了簡化故障排除錯誤分類,我們建議您在創建工作負載分類器時刪除資源類角色映射。  下面的代碼返回現有資源類角色成員身份。  對於從相應資源類返回的每個成員名稱運行[sp_droprolemember。](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -92,7 +92,7 @@ sp_droprolemember '[Resource Class]', membername
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關創建分類器的詳細資訊,請參閱[創建任務程式(轉算 SQL)。](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)  
+- 有關創建分類器的詳細資訊,請參閱[創建任務程式(轉算 SQL)。](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 - 有關如何創建工作負載分類器[創建工作負載分類器](quickstart-create-a-workload-classifier-tsql.md),請參閱快速入門。
 - 請參考[設定工作負載重要性](sql-data-warehouse-how-to-configure-workload-importance.md)的「如何」 的文章以及如何[管理和監控工作負載管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
-- 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以檢視查詢和所指派的重要性。
+- 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 以檢視查詢和所指派的重要性。

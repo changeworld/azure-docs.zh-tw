@@ -4,15 +4,15 @@ description: AAzure 監視器每一個資源類型的可用計量清單。
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586029"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754657"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>支援 Azure 監視器的計量
 
@@ -1999,11 +1999,11 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |dwu_used|已使用 DWU|Count|最大值|使用了 DWU。 僅適用於數據倉庫。|None|
 |cache_hit_percent|快取命中的百分比|百分比|最大值|緩存命中百分比。 僅適用於數據倉庫。|None|
 |cache_used_percent|已用快取的百分比|百分比|最大值|緩存使用的百分比。 僅適用於數據倉庫。|None|
-|sqlserver_process_core_percent|SQL 伺服器行程核心百分比|百分比|最大值|SQL Server 進程的 CPU 使用率百分比,由作業系統測量。|None|
-|sqlserver_process_memory_percent|SQL 伺服器行程記憶體百分比|百分比|最大值|SQL Server 進程的記憶體使用百分比,由作業系統測量。|None|
-|tempdb_data_size|Tempdb 資料檔案大小千位元組|Count|最大值|Tempdb 資料檔大小千位元組。 不適用於數據倉庫。|None|
-|tempdb_log_size|Tempdb 紀錄檔案大小千位元組|Count|最大值|Tempdb 紀錄檔大小千位元組。 不適用於數據倉庫。|None|
-|tempdb_log_used_percent|使用 Tempdb 百分比紀錄|百分比|最大值|使用百分比日誌。 不適用於數據倉庫。|None|
+|sqlserver_process_core_percent<sup>1</sup> |SQL 伺服器行程核心百分比|百分比|最大值|SQL Server 進程的 CPU 使用率百分比,由作業系統測量。|None|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL 伺服器行程記憶體百分比|百分比|最大值|SQL Server 進程的記憶體使用百分比,由作業系統測量。|None|
+|tempdb_data_size<sup>2</sup> |Tempdb 資料檔案大小千位元組|Count|最大值|Tempdb 資料檔大小千位元組。|None|
+|tempdb_log_size<sup>2</sup> |Tempdb 紀錄檔案大小千位元組|Count|最大值|Tempdb 紀錄檔大小千位元組。|None|
+|tempdb_log_used_percent<sup>2</sup> |使用 Tempdb 百分比紀錄|百分比|最大值|使用百分比日誌。|None|
 |local_tempdb_usage_percent|本機 tempdb 百分比|百分比|Average|本地溫度百分比。 僅適用於數據倉庫。|None|
 |app_cpu_billed|應用程式 CPU 計費|Count|總計|應用 CPU 計費。 適用於無伺服器資料庫。|None|
 |app_cpu_percent|套用 CPU 百分比|百分比|Average|應用 CPU 百分比。 適用於無伺服器資料庫。|None|
@@ -2028,6 +2028,9 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |snapshot_backup_size_bytes|快照備份儲存大小|位元組|最大值|累積快照備份存儲大小。 應用於超大規模資料庫。|None|
 |base_blob_size_bytes|基本 Blob 儲存大小|位元組|最大值|基本 blob 儲存大小。 應用於超大規模資料庫。|None|
 
+<sup>1</sup>此指標可用於使用 vCore 購買模型的資料庫,該模型具有 2 個 vCore 和更高版本,或者 200 DTU 和更高版本可用於基於 DTU 的採購模型。 
+
+<sup>2</sup>此指標可用於使用 vCore 購買模型的資料庫,該模型具有 2 個 vCore 和更高版本,或者 200 DTU 和更高版本可用於基於 DTU 的採購模型。 此指標當前不適用於超大規模資料庫或數據倉庫。
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2057,14 +2060,19 @@ Azure 監視器提供數種與計量進行互動的方式，包括在入口網�
 |database_cpu_limit|CPU 限制|Count|Average|CPU 限制|DatabaseResourceId|
 |cpu_used|使用的 CPU|Count|Average|使用的 CPU。 適用於基於 vCore 的彈性池。|None|
 |database_cpu_used|使用的 CPU|Count|Average|使用的 CPU|DatabaseResourceId|
-|sqlserver_process_core_percent|SQL 伺服器行程核心百分比|百分比|最大值|SQL Server 進程的 CPU 使用率百分比,由作業系統測量。 適用於彈性池。|None|
-|sqlserver_process_memory_percent|SQL 伺服器行程記憶體百分比|百分比|最大值|SQL Server 進程的記憶體使用百分比,由作業系統測量。 適用於彈性池。|None|
-|tempdb_data_size|Tempdb 資料檔案大小千位元組|Count|最大值|Tempdb 資料檔案大小千位元組|None|
-|tempdb_log_size|Tempdb 紀錄檔案大小千位元組|Count|最大值|Tempdb 紀錄檔案大小千位元組|None|
-|tempdb_log_used_percent|使用 Tempdb 百分比紀錄|百分比|最大值|使用 Tempdb 百分比紀錄|None|
+|sqlserver_process_core_percent<sup>1</sup>|SQL 伺服器行程核心百分比|百分比|最大值|SQL Server 進程的 CPU 使用率百分比,由作業系統測量。 適用於彈性池。 |None|
+|sqlserver_process_memory_percent<sup>1</sup>|SQL 伺服器行程記憶體百分比|百分比|最大值|SQL Server 進程的記憶體使用百分比,由作業系統測量。 適用於彈性池。 |None|
+|tempdb_data_size<sup>2</sup>|Tempdb 資料檔案大小千位元組|Count|最大值|Tempdb 資料檔大小千位元組。|None|
+|tempdb_log_size<sup>2</sup>|Tempdb 紀錄檔案大小千位元組|Count|最大值|Tempdb 紀錄檔大小千位元組。 |None|
+|tempdb_log_used_percent<sup>2</sup>|使用 Tempdb 百分比紀錄|百分比|最大值|使用百分比日誌。|None|
 |allocated_data_storage|已配置的資料空間|位元組|Average|已配置的資料空間|None|
 |database_allocated_data_storage|已配置的資料空間|位元組|Average|已配置的資料空間|DatabaseResourceId|
 |allocated_data_storage_percent|配置的資料空間百分比|百分比|最大值|配置的資料空間百分比|None|
+
+<sup>1</sup>此指標可用於使用 vCore 購買模型的資料庫,該模型具有 2 個 vCore 和更高版本,或者 200 DTU 和更高版本可用於基於 DTU 的採購模型。 
+
+<sup>2</sup>此指標可用於使用 vCore 購買模型的資料庫,該模型具有 2 個 vCore 和更高版本,或者 200 DTU 和更高版本可用於基於 DTU 的採購模型。 此指標當前不適用於超大規模資料庫。
+
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
 

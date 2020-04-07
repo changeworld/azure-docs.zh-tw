@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0257f4f063361a96e6bb4560a6e101a383b02992
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c3e7b1a656c92e37a709b57dae463f6644003e42
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631841"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755199"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>條件存取:要求所有使用者使用 MFA
 
@@ -32,7 +32,7 @@ ms.locfileid: "80631841"
 
 * **緊急訪問**或**破玻璃**帳戶,以防止租戶範圍的帳戶鎖定。 在不太可能的情況下,所有管理員都鎖定在租戶之外,您的緊急訪問管理帳戶可用於登錄到租戶,採取措施恢復訪問許可權。
    * 有關詳細資訊,請參閱[" 在 Azure AD 中管理緊急訪問帳戶](../users-groups-roles/directory-emergency-access.md)「一文。
-* **服務帳戶****和服務主體**,如 Azure AD 連接同步帳戶。 服務帳戶是非與任何特定使用者關聯的非互動式帳戶。 它們通常由允許以程式設計方式訪問應用程式的後端服務使用,但也用於登錄系統以進行管理。 應排除類似這樣的服務帳戶,因為無法以程式設計方式完成 MFA。
+* **服務帳戶****和服務主體**,如 Azure AD 連接同步帳戶。 服務帳戶是非與任何特定使用者關聯的非互動式帳戶。 它們通常由允許以程式設計方式訪問應用程式的後端服務使用,但也用於登錄系統以進行管理。 應排除類似這樣的服務帳戶,因為無法以程式設計方式完成 MFA。 條件訪問不會阻止服務主體進行的呼叫。
    * 如果您的組織在指令碼或程式碼中使用這些帳戶，請考慮將它們取代為[受管理的身分識別](../managed-identities-azure-resources/overview.md)。 作為臨時解決方法,可以從基線策略中排除這些特定帳戶。
 
 ## <a name="application-exclusions"></a>應用程式排除

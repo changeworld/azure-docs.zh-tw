@@ -3,17 +3,17 @@ title: 在 Azure 入口網站中建立 Service Fabric 叢集
 description: 了解如何使用 Azure 入口網站和 Azure Key Vault 在 Azure 中建立安全的 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258794"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754101"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure 中建立 Service Fabric 叢集
 > [!div class="op_single_selector"]
-> * [Azure 資源管理器](service-fabric-cluster-creation-via-arm.md)
-> * [Azure 門戶](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+> * [Azure 入口網站](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -35,14 +35,14 @@ ms.locfileid: "79258794"
 #### <a name="cluster-and-server-certificate-required"></a>叢集和伺服器憑證 (必要)
 需要此憑證來保護叢集安全及防止未經授權存取叢集。 它會透過幾種方式提供叢集安全性：
 
-* **群集身份驗證：** 驗證群集聯合的節點到節點通信。 只有可使用此憑證提供其身分識別的節點可以加入叢集。
-* **伺服器身份驗證：** 向管理用戶端驗證群集管理終結點，以便管理用戶端知道正在與實際群集進行對話。 此憑證也會為 HTTPS 管理 API，以及為透過 HTTPS 使用的 Service Fabric Explorer 提供 SSL。
+* **叢集身份驗證:** 驗證群集聯合的節點到節點通信。 只有可使用此憑證提供其身分識別的節點可以加入叢集。
+* **伺服器身份驗證:** 向管理用戶端驗證群集管理終結點,以便管理用戶端知道正在與實際群集進行對話。 此憑證還為 HTTPS 管理 API 和 HTTPS 中的服務結構資源管理員提供 TLS。
 
 為用於這些用途，憑證必須符合下列要求：
 
 * 憑證必須包含私密金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
-* 證書的主題**名稱必須與**用於訪問 Service Fabric 群集的域匹配。 這是必要的，以便為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 SSL。 您無法向憑證授權單位 (CA) 取得 `.cloudapp.azure.com` 網域的 SSL 憑證。 為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用於您叢集的自訂網域名稱。
+* 證書的主題**名稱必須與**用於訪問 Service Fabric 群集的域匹配。 這需要為群集的 HTTPS 管理終結點和服務結構資源管理員提供 TLS。 您不能從`.cloudapp.azure.com`網域的憑證頒發機構 (CA) 取得 TLS/SSL 憑證。 為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用於您叢集的自訂網域名稱。
 
 #### <a name="client-authentication-certificates"></a>用戶端驗證憑證
 其他用戶端憑證會驗證系統管理員以執行叢集管理工作。 Service Fabric 有兩個存取層級：[系統管理員]**** 和 [唯讀使用者]****。 您至少應使用一個單一憑證以用於進行系統管理存取。 若要進行其他使用者層級存取，則必須提供個別憑證。 如需存取角色的詳細資訊，請參閱[角色型存取控制 (適用於 Service Fabric 用戶端)][service-fabric-cluster-security-roles]。
@@ -68,7 +68,7 @@ ms.locfileid: "79258794"
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>搜尋 Service Fabric 叢集資源
 
-登錄到 Azure[門戶][azure-portal]。
+登入 [Azure 入口網站][azure-portal]。
 按一下 [建立資源]**** 以新增新的資源範本。 在 [全部內容]**** 下方的 [Marketplace]**** 中搜尋 Service Fabric 叢集範本。
 選取清單中的 [Service Fabric 叢集] **** 。
 
@@ -76,7 +76,7 @@ ms.locfileid: "79258794"
 
 瀏覽至 [Service Fabric 叢集]**** 刀鋒視窗，並按一下 [建立]****。
 
-**"創建服務結構"群集**邊欄選項卡包含以下四個步驟：
+**"建立服務結構"叢集**邊欄選項卡包含以下四個步驟:
 
 ### <a name="1-basics"></a>1. 基礎知識
 ![創建新資源組的螢幕截圖。][CreateRG]
@@ -86,7 +86,7 @@ ms.locfileid: "79258794"
 1. 輸入您的叢集名稱。
 2. 輸入 VM 遠端桌面的 [使用者名稱]**** 和 [密碼]****。
 3. 請務必選取您要部署叢集的 [訂用帳戶] **** ，尤其是在您擁有多個訂用帳戶時。
-4. 創建新**的資源組**。 最好讓它與叢集同名，因為這有助於稍後尋找它們，尤其是當您嘗試變更您的部署及刪除您的叢集時，特別有用。
+4. 建立新**資源群組**。 最好讓它與叢集同名，因為這有助於稍後尋找它們，尤其是當您嘗試變更您的部署及刪除您的叢集時，特別有用。
    
    > [!NOTE]
    > 雖然您可以決定使用現有的資源群組，但最好還是建立新的資源群組。 這可讓您輕鬆地刪除叢集及其所使用的所有資源。
@@ -94,7 +94,7 @@ ms.locfileid: "79258794"
    > 
 5. 選取您要在其中建立叢集的 [位置]****。 如果您打算使用您已上傳至金鑰保存庫的現有憑證，您必須使用與金鑰保存庫所在位置相同的區域。 
 
-### <a name="2-cluster-configuration"></a>2. 群集配置
+### <a name="2-cluster-configuration"></a>2. 叢集設定
 ![建立節點類型][CreateNodeType]
 
 設定您的叢集節點。 可用來定義定義 VM 的大小、VM 的數目，以及 VM 的屬性。 您的叢集可以有多個節點類型，但主要節點類型 (您在入口網站定義的第一個節點類型) 必須至少有 5 個 VM。這是 Service Fabric 系統服務放置所在的節點類型。 請勿設定 [放置屬性]****，因為會自動新增 "NodeTypeName" 預設放置屬性。
@@ -108,18 +108,18 @@ ms.locfileid: "79258794"
 3. 選取**虛擬機器大小**。 D 系列 VM 擁有 SSD 磁碟機，且強烈建議用於具狀態應用程式。 請勿使用任何只有部分核心或可用磁碟容量少於 10 GB 的 VM SKU。 如需有關選取 VM 大小的說明，請參閱 [Service Fabric 叢集規劃考量文件][service-fabric-cluster-capacity]。
 4.  **單一節點叢集與三個節點叢集**僅供測試使用。 這些節點叢集不支援任何執行中的生產工作負載。
 5. 選擇節點類型的**初始 VM 擴展集容量**。 您可以在稍後將節點類型中的 VM 數目相應增加或相應減少，但在主要節點類型上，生產工作負載的數目下限是五個。 其他節點類型可以有 1 個 VM 的下限。 叢集的**可靠性**取決於主要節點類型的 VM **數目**下限。  
-6. 配置**自訂終結點**。 此欄位可讓您輸入以逗號區隔的連接埠清單，您可以透過 Azure Load Balancer 針對您的應用程式向公用網際網路公開這些連接埠。 例如，如果您計劃對您的叢集部署 Web 應用程式，請在這裡輸入「80」來允許連接埠 80 的流量進入您的叢集。 如需端點的詳細資訊，請參閱[與應用程式通訊][service-fabric-connect-and-communicate-with-services]
+6. 設定**自訂的終結點**。 此欄位可讓您輸入以逗號區隔的連接埠清單，您可以透過 Azure Load Balancer 針對您的應用程式向公用網際網路公開這些連接埠。 例如，如果您計劃對您的叢集部署 Web 應用程式，請在這裡輸入「80」來允許連接埠 80 的流量進入您的叢集。 如需端點的詳細資訊，請參閱[與應用程式通訊][service-fabric-connect-and-communicate-with-services]
 7. **啟用反向 Proxy**。  [Service Fabric 反向 Proxy](service-fabric-reverseproxy.md) 可協助在 Service Fabric 叢集中執行的微服務進行探索，並與其他擁有 http 端點的服務通訊。
 8. 回到 [叢集設定]**** 刀鋒視窗，在 [+ 顯示選用設定]**** 下，設定叢集**診斷**。 預設會在您的叢集上啟用診斷功能，以協助排解疑難問題。 如果您要停用診斷，請將其 [狀態]**** 切換至 [關閉]****。 **不**建議將診斷關閉。 如果您已經建立了 Application Insights 專案，那麼請提供其密鑰，以便將應用程式追蹤透過路由方式傳送至該專案。
 9. **包含 DNS 服務**。  [DNS 服務](service-fabric-dnsservice.md)可讓您尋找使用 DNS 通訊協定的其他服務所用的選用服務。
-10. 選擇要將群集設置為的 **"結構升級"模式**。 如果您要讓系統自動挑選最新可用的版本，並嘗試將叢集升級到此版本，請選取 [自動] ****。 如果您想要選擇支援的版本，將模式設定為 [手動] ****。 如需 Fabric 升級模式的詳細資訊，請參閱 [Service Fabric 叢集升級文件][service-fabric-cluster-upgrade]。
+10. 選擇要將叢集設定為的 **「結構升級」 模式**。 如果您要讓系統自動挑選最新可用的版本，並嘗試將叢集升級到此版本，請選取 [自動] ****。 如果您想要選擇支援的版本，將模式設定為 [手動] ****。 如需 Fabric 升級模式的詳細資訊，請參閱 [Service Fabric 叢集升級文件][service-fabric-cluster-upgrade]。
 
 > [!NOTE]
 > 我們支援的叢集限於執行支援的 Service Fabric 版本。 如果選取 [手動] **** 模式，您必須負責將叢集升級到支援的版本。
 > 
 
 ### <a name="3-security"></a>3. 安全性
-![Azure 門戶上安全配置的螢幕截圖。][BasicSecurityConfigs]
+![Azure 門戶上安全配置的屏幕截圖。][BasicSecurityConfigs]
 
 為了讓您輕鬆設定安全的測試叢集，我們已提供 [基本]**** 選項。 如果您已擁有憑證，並且已將憑證上傳至[金鑰保存庫](/azure/key-vault/) (且已啟用金鑰保存庫以供部署)，則請使用 [自訂]**** 選項
 
@@ -173,14 +173,14 @@ ms.locfileid: "79258794"
 
 若要完成叢集建立作業，請按一下 [建立]****。 您也可以選擇性下載此範本。
 
-![總結]
+![摘要]
 
-您可以在通知功能中看到叢集的建立進度。 （按一下螢幕右上角狀態列附近的"Bell"圖示。如果在創建群集時按一下"**固定到開始板**"，您將看到 **"部署"服務結構群集**固定到 **"開始"** 板。 此程序需要一些時間。 
+您可以在通知功能中看到叢集的建立進度。 (按一下螢幕右上角狀態列附近的"Bell"圖示。如果在建立群集時按下「**固定到開始板**」,您將看到 **「部署」服務結構群集**固定到 **「開始」** 板。 此程序需要一些時間。 
 
 若要使用 Powershell 或 CLI 在您的叢集上執行管理作業，您需要連接至叢集，請參閱如何[連接至您的叢集](service-fabric-connect-to-secure-cluster.md)，了解更多資訊。
 
 ## <a name="view-your-cluster-status"></a>檢視叢集狀態
-![儀表板中群集詳細資訊的螢幕截圖。][ClusterDashboard]
+![儀錶板中群集詳細信息的屏幕截圖。][ClusterDashboard]
 
 建立叢集之後，您就可以在入口網站檢查您的叢集：
 

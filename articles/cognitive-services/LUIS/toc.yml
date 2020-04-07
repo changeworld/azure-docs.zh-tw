@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: 管理應用程式
       items:
-        - name: 撰寫和執行階段金鑰
+        - name: Azure 資源
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: 遷移為編寫金鑰
+        - name: 遷移至製作資源
           items:
             - name: 概觀
               href: luis-migration-authoring.md

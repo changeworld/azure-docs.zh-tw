@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b24706943cdf59fba89a8007c4914b628b9e34d5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632973"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743660"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>在 Azure 突觸中排除 SQL 分析的疑難排解
 
@@ -30,13 +30,13 @@ ms.locfileid: "80632973"
 | 伺服器主體 "MyUserName" 在目前的資訊安全內容下無法存取「主要」資料庫。 無法開啟使用者預設資料庫。 登入失敗。 使用者 'MyUserName' 登入失敗。 (Microsoft SQL Server，錯誤：916) | 當 Azure AD 使用者嘗試連接到主資料庫,但主資料庫中沒有使用者時,將發生此錯誤。  要更正此問題,請指定要在連接時連接到的 SQL 池,或者將使用者添加到主資料庫。  有關詳細資訊,請參閱[安全概述](sql-data-warehouse-overview-manage-security.md)文章。 |
 | CTAIP 錯誤                                                  | 在 SQL 伺服器主資料庫上創建登錄名,但在 SQL 資料庫中未創建登錄名時,可能會發生此錯誤。  如果您遇到這個錯誤，請查看 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。  本文介紹如何在主資料庫上創建登錄名和使用者,以及如何在 SQL 資料庫中創建使用者。 |
 | 遭到防火牆封鎖                                          | SQL 池受防火牆保護,以確保只有已知的 IP 位址才能訪問資料庫。 防火牆預設將會受到保護，因此您在可以連線之前，必須明確啟用單一 IP 位址或位址範圍。  若要設定防火牆的存取，請遵循[佈建指示](create-data-warehouse-portal.md)中[設定用戶端 IP 的伺服器防火牆存取](create-data-warehouse-portal.md)的步驟。 |
-| 無法與工具或驅動程式連線                           | Synapse SQL 池建議使用[SSMS、SSDT 用於可視化工作室](sql-data-warehouse-install-visual-studio.md),或[sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)來查詢您的數據。 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) 有關驅動程式和連接到 Azure 突觸的詳細資訊,請參閱 Azure[突觸的驅動程式](sql-data-warehouse-connection-strings.md)和[連接到 Azure 突觸](sql-data-warehouse-connect-overview.md)的文章。 |
+| 無法與工具或驅動程式連線                           | Synapse SQL 池建議使用[SSMS、SSDT 用於可視化工作室](sql-data-warehouse-install-visual-studio.md),或[sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)來查詢您的數據。 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 有關驅動程式和連接到 Azure 突觸的詳細資訊,請參閱 Azure[突觸的驅動程式](sql-data-warehouse-connection-strings.md)和[連接到 Azure 突觸](sql-data-warehouse-connect-overview.md)的文章。 |
 
 ## <a name="tools"></a>工具
 
 | 問題                                                        | 解決方案                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 視覺化工作室物件資源管理程式缺少 Azure AD 使用者           | 這是已知的問題。  解決方法是在 [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15) 中檢視使用者。  請參閱[對 Azure Synaps 的身份驗證](sql-data-warehouse-authentication.md),瞭解有關將 Azure 活動目錄與 Synapse SQL 池使用有關。 |
+| 視覺化工作室物件資源管理程式缺少 Azure AD 使用者           | 這是已知的問題。  解決方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中檢視使用者。  請參閱[對 Azure Synaps 的身份驗證](sql-data-warehouse-authentication.md),瞭解有關將 Azure 活動目錄與 Synapse SQL 池使用有關。 |
 | 手動編寫文稿、使用文稿精靈或透過 SSMS 連線速度緩慢、無法回應或產生錯誤 | 請確定已在主要資料庫中建立使用者。 在文本選項中,還要確保引擎版本設置為「Microsoft Azure SQL 數據倉庫版本」,引擎類型為「Microsoft Azure SQL 資料庫」。 |
 | 無法在 SSMS 中產生指令碼                               | 如果選項"為從屬物件生成腳本"選項設置為"True",則為 Synapse SQL 池生成腳本將失敗。 作為解決方法,使用者必須手動轉到**工具 -> 選項 ->SQL Server 物件資源管理員 ->生成从属选项的脚本,並將其設定為 false** |
 
@@ -59,7 +59,7 @@ ms.locfileid: "80632973"
 | 訊息 40847：無法執行這項作業，因為伺服器可能會超過允許的資料庫交易單位配額 45000。 | 減少您正在嘗試建立的資料庫 [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md)，或是[要求增加配額](sql-data-warehouse-get-started-create-support-ticket.md)。 |
 | 調查空間使用量                              | 請參閱[資料表大小](sql-data-warehouse-tables-overview.md#table-size-queries)，以了解您系統的空間使用量。 |
 | 協助管理資料表                                    | 請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)一文，以協助管理您的資料表。  本文還包含更詳細主題的連結，例如[資料表的資料類型](sql-data-warehouse-tables-data-types.md)、[散發資料表](sql-data-warehouse-tables-distribute.md)、[編製資料表的索引](sql-data-warehouse-tables-index.md)、[分割資料表](sql-data-warehouse-tables-partition.md)、[維護資料表統計資料](sql-data-warehouse-tables-statistics.md)和[暫存資料表](sql-data-warehouse-tables-temporary.md)。 |
-| 透明資料加密 (TDE) 進度列未在 Azure 門戶中更新 | 您可以透過 [PowerShell (英文)](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) 檢視 TDE 的狀態。 |
+| 透明資料加密 (TDE) 進度列未在 Azure 門戶中更新 | 您可以透過 [PowerShell (英文)](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 檢視 TDE 的狀態。 |
 
 ## <a name="differences-from-sql-database"></a>與 SQL Database 不同之處
 
@@ -70,7 +70,7 @@ ms.locfileid: "80632973"
 | DELETE 和 UPDATE 限制         | 請參閱 [UPDATE 因應措施](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements)、[DELETE 因應措施](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements)和[使用 CTAS 來解決不支援 UPDATE 和 DELETE 語法的問題](sql-data-warehouse-develop-ctas.md)。 |
 | 不支援 MERGE 陳述式      | 請參閱 [MERGE 因應措施](sql-data-warehouse-develop-ctas.md#replace-merge-statements)。                  |
 | 預存程序限制          | 請參閱[預存程序限制](sql-data-warehouse-develop-stored-procedures.md#limitations)，以了解預存程序的一些限制。 |
-| UDF 不支援 SELECT 陳述式 | 這是 UDF 目前的限制。  關於我們支援的語法，請參閱 [CREATE FUNCTION](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7)。 |
+| UDF 不支援 SELECT 陳述式 | 這是 UDF 目前的限制。  關於我們支援的語法，請參閱 [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
 
 ## <a name="next-steps"></a>後續步驟
 

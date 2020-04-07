@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633822"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743183"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能微調
 
@@ -32,7 +32,7 @@ SQL 池支持標準和具體化視圖。  兩者都是使用 SELECT 運算式創
 
 具體化檢視在 SQL 池中預先計算、存儲和維護其數據,就像表一樣。  每次使用具體化視圖時,無需重新計算。  這就是為什麼在具體化檢視中使用所有數據或子集的查詢可以獲得更快的性能。  更妙的是,查詢可以使用具體化視圖而不直接引用它,因此無需更改應用程式代碼。  
 
-標準視圖上的大多數要求仍適用於具體化視圖。 有關具體化檢視語法和其他要求的詳細資訊,請參閱[建立重要性檢視作為 SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)。
+標準視圖上的大多數要求仍適用於具體化視圖。 有關具體化檢視語法和其他要求的詳細資訊,請參閱[創建重要性視圖作為選擇](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | 比較                     | 檢視                                         | 具體化檢視
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ SQL 池支持標準和具體化視圖。  兩者都是使用 SELECT 運算式創
 與其他資料倉儲提供者相比,在 Azure SQL 資料倉儲中實現的具體化檢視還提供以下其他好處:
 
 - 自動和同步數據刷新,在基表中進行數據更改。 使用者不必採取任何動作。
-- 廣泛的聚合功能支援。 請參閱[將具體化檢視創建為選擇(轉算 SQL)。](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)
-- 對特定於查詢的具體具體具體化視圖建議的支援。  請參考[EXPLAIN(轉用 SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)。
+- 廣泛的聚合功能支援。 請參閱[將具體化檢視創建為選擇(轉算 SQL)。](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- 對特定於查詢的具體具體具體化視圖建議的支援。  請參考[EXPLAIN(轉用 SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="common-scenarios"></a>常見的案例  
 

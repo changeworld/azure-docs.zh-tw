@@ -11,12 +11,12 @@ ms.date: 11/4/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a249dfc4f04fbd7b6b73a0e9f37d53106bf82efd
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633350"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745182"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>將資源類別轉換為工作負荷組
 
@@ -53,7 +53,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>建立分類器
 
-以前,查詢到資源類的映射是使用[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)完成的。  要實現相同的功能並將要求映射到工作負載群組,請使用[「建立工作」語法](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)。  使用sp_addrolemember僅允許您根據登錄將資源映射到請求。  分類器提供登入之外的其他選項,例如:
+以前,查詢到資源類的映射是使用[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)完成的。  要實現相同的功能並將要求映射到工作負載群組,請使用[「建立工作」語法](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  使用sp_addrolemember僅允許您根據登錄將資源映射到請求。  分類器提供登入之外的其他選項,例如:
     - 標籤
     - 工作階段 (session)
     - 時間 以下範例將具有[選項](sql-data-warehouse-develop-label.md)`factloads`LABEL 設定為 上面建立`wgDataLoads``AdfLogin`的工作負載組的 登錄名的查詢分配。

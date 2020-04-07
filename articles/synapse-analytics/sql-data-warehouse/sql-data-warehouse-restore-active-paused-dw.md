@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632257"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745223"
 ---
 # <a name="restore-an-existing-sql-pool"></a>回復的 SQL 池
 
@@ -28,12 +28,12 @@ ms.locfileid: "80632257"
 
 ## <a name="before-you-begin"></a>開始之前
 
-1. 請確定安裝[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+1. 請確定安裝[Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 具有要還原的現有還原點。 如果要建立新還原,請參閱[教學以建立新的使用者定義的還原點](sql-data-warehouse-restore-points.md)。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>透過 PowerShell 還原現有 SQL 池
 
-要從還原點還原現有 SQL 池,請使用[還原-AzSql 資料庫](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)PowerShell cmdlet。
+要從還原點還原現有 SQL 池,請使用[還原-AzSql 資料庫](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)PowerShell cmdlet。
 
 1. 開啟 PowerShell。
 
@@ -45,7 +45,7 @@ ms.locfileid: "80632257"
 
 5. 使用 RestorePointCreationDate 挑選出想要的還原點。
 
-6. 使用[還原-AzSql資料庫](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)PowerShell cmdlet 將 SQL 池還原到所需的還原點。
+6. 使用[還原-AzSql資料庫](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)PowerShell cmdlet 將 SQL 池還原到所需的還原點。
         1. 要將 SQL 池還原到其他邏輯伺服器,請確保指定其他邏輯伺服器名稱。  此邏輯伺服器也可以位於不同的資源組和地區中。
         2. 要還原到其他訂閱,請使用「移動」按鈕將邏輯伺服器移動到其他訂閱。
 

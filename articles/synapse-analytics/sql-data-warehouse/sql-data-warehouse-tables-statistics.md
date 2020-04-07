@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80628641"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742656"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表統計資訊
 
@@ -70,9 +70,9 @@ SET AUTO_CREATE_STATISTICS ON
 為了避免可衡量的性能下降,您應該首先通過在分析系統之前執行基準工作負載來創建統計資訊。
 
 > [!NOTE]
-> 統計資訊的創建[將記錄在不同的](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)使用者上下文中dm_pdw_exec_requests。
+> 統計資訊的創建[將記錄在不同的](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)使用者上下文中dm_pdw_exec_requests。
 
-當自動統計資料建立完成時，會採用以下格式：_WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>。 您可以檢視透過[執行 DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest)指令建立的統計資訊:
+當自動統計資料建立完成時，會採用以下格式：_WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>。 您可以檢視透過[執行 DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)指令建立的統計資訊:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -93,7 +93,7 @@ table_name是包含要顯示的統計資訊的表的名稱。 此表不能是外
 |||
 |-|-|
 | **統計資料更新的頻率**  | 保守：每日 </br> 載入或轉換資料之後 |
-| **採樣** |  少於 10 億行,使用預設採樣(20%)。 </br> 擁有超過10億行,使用採樣的2%。 |
+| **取樣** |  少於 10 億行,使用預設採樣(20%)。 </br> 擁有超過10億行,使用採樣的2%。 |
 
 為查詢疑難排解時，首先要詢問的問題之一就是「統計資料是最新的嗎？」****
 
@@ -142,7 +142,7 @@ WHERE
 
 如果您的 SQL 池僅包含一個性別,並且新的要求會導致多個性別,則需要更新性別列的統計資訊。
 
-如需詳細資訊，請參閱[統計資料](/sql/relational-databases/statistics/statistics)的一般指引。
+如需詳細資訊，請參閱[統計資料](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的一般指引。
 
 ## <a name="implementing-statistics-management"></a>實作統計資料管理
 
@@ -158,7 +158,7 @@ WHERE
 - 考慮較不常更新靜態散發資料行。
 - 請記得，每個統計資料物件會依序更新。 僅只實作 `UPDATE STATISTICS <TABLE_NAME>` 不一定理想，尤其是對具有許多統計資料物件的寬型資料表而言。
 
-如需詳細資訊，請參閱[基數估計](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
+如需詳細資訊，請參閱[基數估計](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="examples-create-statistics"></a>範例：建立統計資料
 
@@ -227,7 +227,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-如需完整參考，請參閱 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql)。
+如需完整參考，請參閱 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ### <a name="create-multi-column-statistics"></a>建立多重資料行統計資料
 
@@ -420,7 +420,7 @@ UPDATE STATISTICS dbo.table1;
 
 如需 `UPDATE STATISTICS` 程序的實作，請參閱[暫存資料表](sql-data-warehouse-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
 
-如需完整語法，請參閱[更新統計資料](/sql/t-sql/statements/update-statistics-transact-sql)。
+如需完整語法，請參閱[更新統計資料](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="statistics-metadata"></a>統計資料中繼資料
 
@@ -432,13 +432,13 @@ UPDATE STATISTICS dbo.table1;
 
 | 目錄檢視 | 描述 |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |每個資料行有一個資料列。 |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |資料庫中每個物件有一個資料列。 |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |資料庫中每個結構描述有一個資料列。 |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |每個統計資料物件有一個資料列。 |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |統計資料物件中每個資料行有一個資料列。 連結回到 sys.columns。 |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |每個資料表 (包括外部資料表) 有一個資料列。 |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |每個資料類型有一個資料列。 |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |每個資料行有一個資料列。 |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |資料庫中每個物件有一個資料列。 |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |資料庫中每個結構描述有一個資料列。 |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |每個統計資料物件有一個資料列。 |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |統計資料物件中每個資料行有一個資料列。 連結回到 sys.columns。 |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |每個資料表 (包括外部資料表) 有一個資料列。 |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |每個資料類型有一個資料列。 |
 
 ### <a name="system-functions-for-statistics"></a>統計資料的系統函式
 
@@ -446,8 +446,8 @@ UPDATE STATISTICS dbo.table1;
 
 | 系統函式 | 描述 |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |上次更新統計資料物件的日期。 |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |有關統計資料物件所理解之值散發的摘要層級和詳細資訊。 |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |上次更新統計資料物件的日期。 |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |有關統計資料物件所理解之值散發的摘要層級和詳細資訊。 |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>將統計資料資料行和函式結合成一個檢視
 

@@ -5,21 +5,24 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281726"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745109"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge 模組 Marketplace 索引標籤
+
+>[!Important]
+>從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
 
 在 [新增供應項目]**** 頁面的 [Marketplace]**** 索引標籤上，可提供行銷、銷售和法律方面的資訊與合約給您的潛在客戶，並管理 Marketplace 產生的潛在客戶。 這個長表單分成四個區段：**概觀**、**行銷成品**、**潛在客戶管理**和**法律聲明**。
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在本區段中，可以輸入 Azure Marketplace Offer 的一般資訊。  欄位名稱上附加的星號 (*) 表示此為必填欄位。
 
@@ -27,10 +30,10 @@ ms.locfileid: "80281726"
 
 下表說明這些欄位的用途和內容。 必要欄位由星號 (*) 標示。
 
-|  **領域**                |     **描述**                                                          |
+|  **欄位**                |     **說明**                                                          |
 |  ---------                |     ---------------                                                          |
 | **標題\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限為 50 個字元。 <!--ADD PICTURE IN ACTION-->|
-| **總結\***               | 供應項目的簡短摘要。 長度上限是 100 個字元。 <!--ADD PICTURE IN ACTION-->|
+| **摘要\***               | 供應項目的簡短摘要。 長度上限是 100 個字元。 <!--ADD PICTURE IN ACTION-->|
 | **長摘要\***          | 供應項目的完整摘要 (雖然可能與**摘要**相同)。  長度上限為 256 個字元。 <!--ADD PICTURE IN ACTION-->|
 | **描述\***           | 供應項目的說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。<br/> 尾端必須提供*最低硬體需求*段落。 例如： <br/> <p><u>最低硬體需求：</u>Linux x64 和 arm32 OS，1 GB 的 RAM，500 Mb 的儲存空間</p>
 | **行銷識別碼\***  | 與本供應項目相關聯的唯一不重複網址，通常會包含您的組織與解決方案名稱，長度上限是 50 個字元。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
@@ -82,7 +85,7 @@ ms.locfileid: "80281726"
 
 ![虛擬機器 [新增供應項目] 表單上的 [Marketplace] 索引標籤行銷成品區段](./media/publishvm_009.png)
 
-|  **領域**                |     **描述**                                                          |
+|  **欄位**                |     **說明**                                                          |
 |  ---------                |     ---------------                                                          |
 | *標誌*  | 請參閱先前的螢幕擷取畫面，了解標誌的使用方式和位置。  |
 | **小型\***                 | 40x40 像素的 PNG 格式                                                     |
@@ -162,11 +165,11 @@ As an example, the following hero icon is for the Azure Container Service.
 
 可在此區段提供每個供應項目兩份必要的法律文件：隱私權原則和使用條款。
 
-|  **領域**                    |     **描述**                                                          |
+|  **欄位**                    |     **說明**                                                          |
 |  ---------                    |     ---------------                                                          |
 | **隱私權原則 URL\***      | 張貼隱私權原則的 URL                                            |
-| **使用標準缺點\***  | 是否使用標準的 Microsoft 合約範本。  有關詳細資訊，請參閱[標準合同](https://docs.microsoft.com/azure/marketplace/standard-contract)。   |
-| **使用條款\***            | *使用條款*作為內聯簡單 HTML 或指向您發佈的使用條款頁面的連結     |
+| **使用標準缺點\***  | 是否使用標準的 Microsoft 合同範本。  有關詳細資訊,請參閱[標準合同](https://docs.microsoft.com/azure/marketplace/standard-contract)。   |
+| **使用條款\***            | *使用條款*為內聯簡單 HTML 或指向您發布的使用條款頁面的連結     |
 |  |  |
 
 

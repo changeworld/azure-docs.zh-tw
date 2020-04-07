@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437479"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756561"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 機器學習的企業安全性
 
@@ -134,7 +134,15 @@ Azure 機器學習依賴於其他 Azure 服務來計算資源。 計算資源 (�
 ### <a name="encryption-at-rest"></a>待用加密
 
 > [!IMPORTANT]
-> 如果您的工作區包含敏感資料,我們建議您在建立工作區時設定[hbi_workspace標誌](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 這將控制 Microsoft 為診斷目的收集的數據量,並在 Microsoft 託管環境中啟用其他加密。
+> 如果您的工作區包含敏感資料,我們建議您在建立工作區時設定[hbi_workspace標誌](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 
+
+該`hbi_workspace`標誌控制 Microsoft 為診斷目的收集的數據量,並在 Microsoft 託管環境中啟用其他加密。 此外,它還支援以下功能:
+
+* 如果您尚未在該訂閱中創建任何以前的群集,則開始加密 Amlcompute 群集中的本地暫存磁碟。 否則,您需要提高支援票證以啟用對計算群集的暫存磁碟進行加密 
+* 在執行間清除本地暫存磁碟
+* 使用金鑰保管庫將儲存帳戶、容器註冊表和 SSH 帳戶的認證安全地從執行層傳遞到計算群集
+* 啟用 IP 篩選,以確保 Azure 機器學習服務以外的任何外部服務無法呼叫基礎批次處理池
+
 
 有關靜態加密在 Azure 中的工作方式的詳細資訊,請參閱[靜態的 Azure 資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 

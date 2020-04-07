@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 20aa55f9fc4ea65da1973628aeec313a5367816a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632042"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754308"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 託管磁碟的伺服器端加密
 
@@ -90,10 +90,13 @@ Azure 託管磁碟使用[信封加密](../../storage/common/storage-client-side-
 
     創建金鑰保管庫實例時,必須啟用軟刪除和清除保護。 軟刪除可確保金鑰保管庫在給定保留期(預設為 90 天)保留已刪除的密鑰。 清除保護可確保在保留期結束之前不能永久刪除已刪除的密鑰。 這些設定可保護您不因意外刪除而丟失資料。 使用金鑰保管庫加密託管磁碟時,這些設置是必需的。
 
+    > [!IMPORTANT]
+    > 不要駱駝的情況下,如果這樣做,在 Azure 門戶中為資源分配其他磁碟時可能會遇到問題。
+
     ```azurecli
     subscriptionId=yourSubscriptionID
     rgName=yourResourceGroupName
-    location=WestCentralUS
+    location=westcentralus
     keyVaultName=yourKeyVaultName
     keyName=yourKeyName
     diskEncryptionSetName=yourDiskEncryptionSetName
@@ -134,7 +137,7 @@ Azure 託管磁碟使用[信封加密](../../storage/common/storage-client-side-
 ```azurecli
 rgName=yourResourceGroupName
 vmName=yourVMName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -162,7 +165,7 @@ az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCus
 ```azurecli
 rgName=yourResourceGroupName
 vmssName=yourVMSSName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -179,7 +182,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskSkuName=Premium_LRS
 diskSizeinGiB=30
-location=WestCentralUS
+location=westcentralus
 diskLUN=2
 diskEncryptionSetName=yourDiskEncryptionSetName
 

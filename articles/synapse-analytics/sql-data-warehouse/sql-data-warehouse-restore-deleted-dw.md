@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633056"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745124"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>使用 Azure 同步分析回復已移除的 SQL 池
 
@@ -30,9 +30,9 @@ ms.locfileid: "80633056"
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>以 PowerShell 回復的資料主目錄
 
-要還原已刪除的 SQL 池,請使用[還原-AzSql 資料庫](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)cmdlet。 如果相應的邏輯伺服器也被刪除,則無法還原該數據倉庫。
+要還原已刪除的 SQL 池,請使用[還原-AzSql 資料庫](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)cmdlet。 如果相應的邏輯伺服器也被刪除,則無法還原該數據倉庫。
 
-1. 開始之前,請確保安裝 Azure [PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+1. 開始之前,請確保安裝 Azure [PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 開啟 PowerShell。
 3. 連接到您的 Azure 帳戶，然後列出與您帳戶關聯的所有訂用帳戶。
 4. 選擇包含要還原的已刪除數據倉庫的訂閱。

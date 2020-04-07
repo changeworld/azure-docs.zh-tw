@@ -11,12 +11,12 @@ ms.date: 02/19/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 87b33e91076f8f7f31740795f0ec05cea49a1e83
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631195"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744952"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL 池的資料載入策略
 
@@ -24,7 +24,7 @@ ms.locfileid: "80631195"
 
 使用提取、載入和轉換 (ELT) 過程利用 MPP 並消除載入前資料轉換所需的資源。
 
-雖然 SQL 池支援許多載入方法,包括流行的 SQL Server 選項(如[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[SqlBulkCopy API),](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)但載入資料的最快、最可擴充的方式是透過 PolyBase 外部表和[COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(預覽)。
+雖然 SQL 池支援許多載入方法,包括流行的 SQL Server 選項(如[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[SqlBulkCopy API),](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)但載入資料的最快、最可擴充的方式是透過 PolyBase 外部表和[COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(預覽)。
 
 使用 PolyBase 和 COPY 語句,您可以透過 T-SQL 語言存取儲存在 Azure Blob 儲存或 Azure 資料湖儲存中的外部資料。 為了在載入時具有最大的靈活性,我們建議使用 COPY 語句。
 
@@ -58,7 +58,7 @@ ms.locfileid: "80631195"
 
 使用 PolyBase 和 COPY 語句,您可以載入來自 UTF-8 和 UTF-16 編碼的分隔文字或 CSV 檔案的資料。 除了分隔文本或 CSV 檔外,它還會從 Hadoop 檔案格式(如 ORC 和 Parquet)載入。 PolyBase 和 COPY 語句還可以載入來自 Gzip 和 Snappy 壓縮檔案的資料。
 
-不支援延伸的 ASCII、固定寬度格式和嵌套格式(如 WinZip 或 XML)。 如果要從 SQL Server 匯出,則可以使用[bcp 命令列工具](/sql/tools/bcp-utility?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)將數據匯出到分隔的文本檔中。
+不支援延伸的 ASCII、固定寬度格式和嵌套格式(如 WinZip 或 XML)。 如果要從 SQL Server 匯出,則可以使用[bcp 命令列工具](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)將數據匯出到分隔的文本檔中。
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. 將資料放入 Azure Blob 儲存或 Azure 資料湖儲存
 
@@ -141,10 +141,10 @@ ms.locfileid: "80631195"
 
 ### <a name="other-loading-options"></a>其他載入選項
 
-除了 PolyBase 和 COPY 語句之外,您還可以使用[bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15)或[SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)。 bcp 直接載入到資料庫而不經過 Azure Blob 儲存,並且僅用於小負載。
+除了 PolyBase 和 COPY 語句之外,您還可以使用[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)或[SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 bcp 直接載入到資料庫而不經過 Azure Blob 儲存,並且僅用於小負載。
 
 > [!NOTE]
-> 請注意,這些選項的負載性能比 PolyBase 和 COPY 語句慢。
+> 這些選項的負載性能比 PolyBase 和 COPY 語句慢。
 
 ## <a name="5-transform-the-data"></a>5. 轉換資料
 

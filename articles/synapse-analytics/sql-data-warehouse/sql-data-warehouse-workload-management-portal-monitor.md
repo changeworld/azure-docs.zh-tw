@@ -11,30 +11,30 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1f21a996f7394def4d6b1e8bde9a5ccdf703dbb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a79e6fb2be717b5ecee243b26824039630e1a416
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632414"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744282"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure 突觸分析 + 工作負載管理門戶監視(預覽)
 
 本文介紹如何監視[工作負載組](sql-data-warehouse-workload-isolation.md#workload-groups)資源利用率和查詢活動。
 有關如何配置 Azure 指標資源管理員的詳細資訊,請參閱[使用 Azure 指標資源管理器入門](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)一文。  有關如何監視系統資源消耗的詳細資訊,請參閱 Azure Synapse 分析監視文檔中的資源[利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)部分。
-為監視工作負載管理提供了兩種不同類別的工作負荷組指標:資源分配和查詢活動。  這些指標可以按工作負載組拆分和篩選。  指標可以拆分和篩選,具體取決於它們是系統定義的(資源類工作負載組)還是使用者定義的指標(由使用者使用[CREATE 工作組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語法創建)。
+為監視工作負載管理提供了兩種不同類別的工作負荷組指標:資源分配和查詢活動。  這些指標可以按工作負載組拆分和篩選。  指標可以拆分和篩選,具體取決於它們是系統定義的(資源類工作負載組)還是使用者定義的指標(由使用者使用[CREATE 工作組](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法創建)。
 
 ## <a name="workload-management-metric-definitions"></a>工作負載管理指標定義
 
 |標準名稱                    |描述  |彙總類型 |
 |-------------------------------|-------------|-----------------|
-|有效上限資源百分比 | *有效上限資源百分比*是工作負載組可存取的資源百分比的硬限制,同時考慮到分配給其他工作負載組*的有效最小資源百分比*。 使用[創建工作組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語`CAP_PERCENTAGE_RESOURCE`法中的 參數配置*有效上限資源百分比*指標。  此處介紹了有效值。<br><br>`DataLoads`例如,如果使用`CAP_PERCENTAGE_RESOURCE`= 100 創建工作負荷組,並且創建另一個工作負荷組,有效最小資源百分比為`DataLoads`25%, 則工作負荷組*的有效上限資源百分比*為 75%。<br><br>*有效上限資源百分比*確定工作負載組可以達到的併發性(以及潛在輸送量)的上限。  如果需要超出*有效上限資源百分比*指標當前報告的額外輸送量,請增加`CAP_PERCENTAGE_RESOURCE`、減少`MIN_PERCENTAGE_RESOURCE`其他工作負荷組或向上擴展實例以添加更多資源。  減少`REQUEST_MIN_RESOURCE_GRANT_PERCENT`可能會增加併發性,但可能不會增加總體輸送量。| 最小值,平均,最大值 |
-|有效最小資源百分比 |*有效最小資源百分比*是為工作負載組保留和隔離的資源的最小百分比,同時考慮到服務級別最小值。  使用[CREATE 工作組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)`MIN_PERCENTAGE_RESOURCE`語法中的 參數配置有效最小資源百分比指標。  [此處](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values)介紹了有效值。<br><br>當此指標未篩選且未拆分時,請使用 Sum 聚合類型來監視系統上配置的總工作負載隔離。<br><br>*有效最小資源百分比*確定工作負載組可以實現的保證併發性(從而保證輸送量)的下限。  如果需要超出*有效最小資源百分比*指標當前報告的其他保證資源,則增加為工作負載組`MIN_PERCENTAGE_RESOURCE`配置的參數。  減少`REQUEST_MIN_RESOURCE_GRANT_PERCENT`可能會增加併發性,但可能不會增加總體輸送量。 |最小值,平均,最大值|
+|有效上限資源百分比 | *有效上限資源百分比*是工作負載組可存取的資源百分比的硬限制,同時考慮到分配給其他工作負載組*的有效最小資源百分比*。 使用[創建工作組](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語`CAP_PERCENTAGE_RESOURCE`法中的 參數配置*有效上限資源百分比*指標。  此處介紹了有效值。<br><br>`DataLoads`例如,如果使用`CAP_PERCENTAGE_RESOURCE`= 100 創建工作負荷組,並且創建另一個工作負荷組,有效最小資源百分比為`DataLoads`25%, 則工作負荷組*的有效上限資源百分比*為 75%。<br><br>*有效上限資源百分比*確定工作負載組可以達到的併發性(以及潛在輸送量)的上限。  如果需要超出*有效上限資源百分比*指標當前報告的額外輸送量,請增加`CAP_PERCENTAGE_RESOURCE`、減少`MIN_PERCENTAGE_RESOURCE`其他工作負荷組或向上擴展實例以添加更多資源。  減少`REQUEST_MIN_RESOURCE_GRANT_PERCENT`可能會增加併發性,但可能不會增加總體輸送量。| 最小值,平均,最大值 |
+|有效最小資源百分比 |*有效最小資源百分比*是為工作負載組保留和隔離的資源的最小百分比,同時考慮到服務級別最小值。  使用[CREATE 工作組](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)`MIN_PERCENTAGE_RESOURCE`語法中的 參數配置有效最小資源百分比指標。  [此處](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)介紹了有效值。<br><br>當此指標未篩選且未拆分時,請使用 Sum 聚合類型來監視系統上配置的總工作負載隔離。<br><br>*有效最小資源百分比*確定工作負載組可以實現的保證併發性(從而保證輸送量)的下限。  如果需要超出*有效最小資源百分比*指標當前報告的其他保證資源,則增加為工作負載組`MIN_PERCENTAGE_RESOURCE`配置的參數。  減少`REQUEST_MIN_RESOURCE_GRANT_PERCENT`可能會增加併發性,但可能不會增加總體輸送量。 |最小值,平均,最大值|
 |工作負載群組活動查詢  |此指標報告工作負荷組中的活動查詢。  使用此指標未篩選和未拆分將顯示系統上運行的所有活動查詢。|Sum         |
 |依最大資源百分比分配工作負載組 |此指標顯示相對於每個工作負載組*的有效上限資源百分比*的資源分配的百分比。  此指標提供工作負載組的有效利用。<br><br>考慮有效*上限資源百分比為*75%且配置為 25% 的`REQUEST_MIN_RESOURCE_GRANT_PERCENT``DataLoads`工作負載組。  *依最大資源百分比值劃分的工作負載組分配*`DataLoads`值 將篩選為 33%(25% / 75%)如果此工作負荷組中運行了單個查詢。<br><br>使用此指標可以標識工作負荷組的利用率。  接近 100% 的值表示正在使用工作負載組的所有可用資源。  此外,顯示值大於零的同一工作負荷組的*工作負載組排隊查詢指標*將指示工作負荷組在分配時將利用其他資源。  相反,如果此指標始終較低,並且*工作負載組活動查詢*較低,則未使用工作負載組。  如果*有效上限資源百分比*大於零,則這種情況尤其成問題,因為這將指示[未充分利用的工作負載隔離](#underutilized-workload-isolation)。|最小值,平均,最大值 |
 |依系統百分比分配工作負載器 | 此指標顯示相對於整個系統的資源分配的百分比。<br><br>考慮配置為`DataLoads`25%`REQUEST_MIN_RESOURCE_GRANT_PERCENT`的 工作負載組。  *按系統百分比值*`DataLoads`篩選 為 25%(25% / 100%)的工作負載組分配如果此工作負荷組中運行了單個查詢。|最小值,平均,最大值 |
-|工作負載組查詢逾時 |已超時的工作負載組的查詢。 此指標報告的查詢超時僅在查詢開始執行后(不包括由於鎖定或資源等待而導致的等待時間)。<br><br>使用`QUERY_EXECUTION_TIMEOUT_SEC`[創建工作組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語法中的參數配置查詢超時。  增加該值可以減少查詢超時數。<br><br>請考慮增加工作負載`REQUEST_MIN_RESOURCE_GRANT_PERCENT`組的參數,以減少超時量,併為每個查詢分配更多資源。  請注意,增加`REQUEST_MIN_RESOURCE_GRANT_PERCENT`可減少工作負載組的併發量。 |Sum |
-|工作負載組排佇查詢 | 當前排隊等待開始執行的工作負載組的查詢。  查詢可以是佇列,因為它們正在等待資源或鎖。<br><br>查詢可能等待的原因有很多。  如果系統超載,並且併發需求大於可用需求,查詢將排隊。<br><br>請考慮通過增加`CAP_PERCENTAGE_RESOURCE`[「創建工作群體」](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)語句中的參數,向工作負載組添加更多資源。  如果`CAP_PERCENTAGE_RESOURCE`大於*有效上限資源百分比*指標,則其他工作負載組的已配置工作負載隔離會影響分配給此工作負載組的資源。  請考慮降低`MIN_PERCENTAGE_RESOURCE`其他工作負荷組或向上擴展實例以添加更多資源。 |Sum |
+|工作負載組查詢逾時 |已超時的工作負載組的查詢。 此指標報告的查詢超時僅在查詢開始執行后(不包括由於鎖定或資源等待而導致的等待時間)。<br><br>使用`QUERY_EXECUTION_TIMEOUT_SEC`[創建工作組](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法中的參數配置查詢超時。  增加該值可以減少查詢超時數。<br><br>請考慮增加工作負載`REQUEST_MIN_RESOURCE_GRANT_PERCENT`組的參數,以減少超時量,併為每個查詢分配更多資源。  請注意,增加`REQUEST_MIN_RESOURCE_GRANT_PERCENT`可減少工作負載組的併發量。 |Sum |
+|工作負載組排佇查詢 | 當前排隊等待開始執行的工作負載組的查詢。  查詢可以是佇列,因為它們正在等待資源或鎖。<br><br>查詢可能等待的原因有很多。  如果系統超載,並且併發需求大於可用需求,查詢將排隊。<br><br>請考慮通過增加`CAP_PERCENTAGE_RESOURCE`[「創建工作群體」](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句中的參數,向工作負載組添加更多資源。  如果`CAP_PERCENTAGE_RESOURCE`大於*有效上限資源百分比*指標,則其他工作負載組的已配置工作負載隔離會影響分配給此工作負載組的資源。  請考慮降低`MIN_PERCENTAGE_RESOURCE`其他工作負荷組或向上擴展實例以添加更多資源。 |Sum |
 
 ## <a name="monitoring-scenarios-and-actions"></a>監察機制和操作
 
@@ -86,6 +86,6 @@ WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
 ## <a name="next-steps"></a>後續步驟
 
 - [快速入門:使用 T-SQL 設定工作負載隔離](quickstart-configure-workload-isolation-tsql.md)<br>
-- [CREATE WORKLOAD GROUP (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)<br>
-- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)<br>
+- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br>
+- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br>
 - [監視資源利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md)

@@ -3,12 +3,12 @@ title: 樣本函數 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478268"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745002"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本資源函數
 
@@ -444,12 +444,12 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字串 |資源的名稱或唯一識別碼。 當參考目前範本中的資源時，只會提供資源名稱做為參數。 引用以前部署的資源或資源的名稱不明確時,請提供資源 ID。 |
-| apiVersion |否 |字串 |指定的資源的 API 版本。 如果在相同的範本內未供應資源，則請包含此參數。 一般而言，格式為 **yyyy-mm-dd**。 有關資源的有效 API 版本,請參考[樣本參考](/azure/templates/)。 |
+| apiVersion |否 |字串 |指定的資源的 API 版本。 **當資源未預配在同一範本中時,需要此參數。** 一般而言，格式為 **yyyy-mm-dd**。 有關資源的有效 API 版本,請參考[樣本參考](/azure/templates/)。 |
 | 'Full' |否 |字串 |值，指定是否要傳回完整資源物件。 如果您未指定 `'Full'`，則只會傳回資源的屬性物件。 完整物件包括例如資源識別碼和位置的值。 |
 
 ### <a name="return-value"></a>傳回值
 
-每種資源類型都會針對 reference 函式傳回不同屬性。 此函式不會傳回單一的預先定義格式。 此外，傳回值會根據您是否指定完整物件而不同。 若要查看資源類型的屬性，請在輸出區段中傳回物件，如範例所示。
+每種資源類型都會針對 reference 函式傳回不同屬性。 此函式不會傳回單一的預先定義格式。 此外,傳回的值因參數的值而`'Full'`異 。 若要查看資源類型的屬性，請在輸出區段中傳回物件，如範例所示。
 
 ### <a name="remarks"></a>備註
 
@@ -514,7 +514,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-引用未在同一範本中部署的資源時,請提供資源 ID。
+參考未在同一樣本中部署的資源時,請提供資源 ID`apiVersion`和 。
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

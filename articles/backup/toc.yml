@@ -32,8 +32,6 @@
       href: tutorial-sql-backup.md
     - name: 將 SAP Hana 資料庫備份到 Azure VM
       href: tutorial-backup-sap-hana-db.md
-    - name: 備份 Azure 檔案儲存體檔案共用
-      href: tutorial-backup-azure-files.md
     - name: 備份 Windows Server
       href: tutorial-backup-windows-server-to-azure.md
     - name: 將檔案還原到 Windows Server

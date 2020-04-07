@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398103"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677000"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>監視多個條件的靜態閾值指標警報的範本
 
-新版計量警示支援多維度計量警示以及支援多項準則。 可以使用以下範本在維度指標上創建更高級的指標警報規則並指定多個條件。
+較新的指標警報支援多維指標警報,並支援定義多個條件(每個警報規則最多 5 個條件)。 可以使用以下範本在維度指標上創建更高級的指標警報規則並指定多個條件。
 
 在包含多個條件的警報規則中使用維度時,請注意以下約束:
 - 在每個條件中,每個維度只能選擇一個值。

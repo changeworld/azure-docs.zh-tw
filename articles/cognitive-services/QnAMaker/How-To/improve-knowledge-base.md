@@ -2,13 +2,13 @@
 title: 改善知識庫 - QnA Maker
 description: 通過積極學習提高知識庫的品質。 審核、接受或拒絕,添加而不刪除或更改現有問題。
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/06/2020
+ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474896"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756730"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>在知識庫中接受主動學習建議的問題
 
@@ -33,7 +33,7 @@ ms.locfileid: "80474896"
 
 1. 每個 QnA 對都建議使用複選標記的新問題備`✔`選方案 ,以接受`x`問題或拒絕 建議。 選取核取記號可新增問題。
 
-    [![通過選擇綠色複選標記或紅色刪除標記,選擇或拒絕活動學習建議的問題備選方案。](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![通過選擇綠色複選標記或紅色刪除標記,選擇或拒絕活動學習建議的問題備選方案。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     您可以通過選擇 **'或****'拒絕**上下文工具列中的所有建議'來新增或刪除_所有建議_。
 

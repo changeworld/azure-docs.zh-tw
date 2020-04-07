@@ -1,16 +1,16 @@
 ---
-title: 快速入門：創建、培訓和發佈知識庫 - QnA 製造商
+title: 快速入門:建立、培訓和發佈知識庫 - QnA 製造商
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79221435"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756817"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：創建、培訓和發佈 QnA Maker 知識庫
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門:創建、培訓和發佈 QnA Maker 知識庫
 
 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 
@@ -124,7 +124,7 @@ ms.locfileid: "79221435"
 
 
 1. 建立 Bot 之後，請開啟 [Bot 服務]**** 資源。
-1. 在**機器人管理**下，選擇 **"網路聊天中的測試**"。
+1. 在**機器人管理**下,選擇 **「網路聊天中的測試**」。。
 1. 在 [輸入您的訊息]**** 聊天提示中，輸入：
 
     `Azure services?`
@@ -135,7 +135,7 @@ ms.locfileid: "79221435"
 
 ## <a name="what-did-you-accomplish"></a>您完成了哪些工作？
 
-您已建立新的知識庫、將公用 URL 新增至知識庫、新增自己的 QnA 集、定型、測試及發佈知識庫。
+您創建了一個新的知識庫,向知識庫添加了公共 URL,添加了您自己的 QnA 對、培訓、測試和發佈知識庫。
 
 在發佈知識庫之後，您已建立 Bot 並測試 Bot。
 
