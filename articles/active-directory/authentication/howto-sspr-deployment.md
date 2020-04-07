@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667323"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676732"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure 活動目錄自助密碼重置部署
 
@@ -343,7 +343,7 @@ Azure AD 可以通過審核和報告提供有關 SSPR 性能的其他資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要開始部署 SSPR,請參閱[啟用 Azure AD 自助服務密碼重置](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
+* 要開始部署 SSPR,請參閱[啟用 Azure AD 自助服務密碼重置](tutorial-enable-sspr.md)
 
 * [考慮 azure AD 密碼保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

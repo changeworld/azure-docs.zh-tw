@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80419204"
 ---
 標準化虛擬機 (VM) 映像允許組織遷移到雲並確保部署的一致性。 映像通常包括預定義的安全和配置設置以及必要的軟體。 設置自己的映射管道需要時間、基礎結構和設置,但使用 Azure VM 映射生成器,只需提供描述映射的簡單配置,將其提交到服務,並生成映射並分發映射即可。

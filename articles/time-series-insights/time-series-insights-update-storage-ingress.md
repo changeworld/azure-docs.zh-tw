@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618327"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673907"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的資料儲存體和輸入
 
@@ -42,7 +42,7 @@ Azure 時間序列的預覽支援以下事件來源:
 - [Azure IoT 中樞](../iot-hub/about-iot-hub.md)
 - [Azure 事件中樞](../event-hubs/event-hubs-about.md)
 
-Azure 時間序列見解預覽版每個實例最多支援兩個事件源。
+Azure 時間序列見解預覽版每個實例最多支援兩個事件源。 連接事件來源時,TSI 環境將讀取當前儲存在 Iot 或事件中心中的所有事件,從最早的事件開始。 
 
 > [!IMPORTANT] 
 > * 將事件源附加到預覽環境時,可能會遇到較高的初始延遲。 
@@ -59,8 +59,8 @@ Azure 時間序列見解支援從 Azure IoT 中心或 Azure 事件中心發送�
 |---|---|
 | **bool** | 具有兩種狀態的一個資料型`true`態`false`: 或 。 |
 | **Datetime** | 表示時間的瞬間，通常以一天的日期和時間表示。 以[ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)格式表示。 |
-| **雙** | 雙精度 64 位[IEEE 754](https://ieeexplore.ieee.org/document/8766229)浮點。 |
-| **字串** | Unicode 字元所組成的文字值。          |
+| **double** | 雙精度 64 位[IEEE 754](https://ieeexplore.ieee.org/document/8766229)浮點。 |
+| **string** | Unicode 字元所組成的文字值。          |
 
 #### <a name="objects-and-arrays"></a>物件和陣列
 

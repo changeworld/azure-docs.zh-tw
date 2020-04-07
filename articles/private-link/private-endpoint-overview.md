@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656263"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742903"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 專用終結點?
 
@@ -73,7 +73,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure 事件網格** | Microsoft.EventGrid/topics  | 主題 |
 |**Azure 事件網格** | 微軟.事件網格/域 | 網域 |
 |**Azure WebApps** | Microsoft.Web/sites    | site |
-|**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces  | 工作區 |
+|**Azure 機器學習** | Microsoft.MachineLearningServices/workspaces  | 工作區 |
   
  
 ## <a name="network-security-of-private-endpoints"></a>專用終結點的網路安全 
@@ -144,7 +144,7 @@ Alias 是服務擁有者在標準負載均衡器後面創建專用鏈路服務�
 |Azure 轉送(微軟.中繼/命名空間) | namespace |privatelink.servicebus.windows.net|
 |Azure 事件網格(微軟.事件網格/主題)   | 主題 | 主題。[區域].私人連結.事件網格.azure.net|
 |Azure 事件網格(微軟.事件網格/域) | 網域 | 域。[區域].私人連結.事件網格.azure.net |
-|Azure WebApps(微軟.網站/網站) | site | privatelink.azurewebsites.net |
+|Azure WebApps(微軟.Web/網站)    | site | privatelink.azurewebsites.net |
 |Azure 機器學習(微軟.機器學習服務/工作區)   | 工作區 | privatelink.api.azureml.ms |
  
 Azure 將在公共 DNS 上建立規範名稱 DNS 記錄 (CNAME), 以將解析重定向到建議的網功能變數名稱。 您可以使用專用終結點的專用 IP 位址覆蓋解析度。 

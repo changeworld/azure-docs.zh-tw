@@ -11,46 +11,48 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8e78ad26701bae1357ef6a2a0a03dff1319f0efe
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d2cbe9b94c4698a93b93c032ee4dcb421a78e59b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633176"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743081"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化資料行存放區的資料列群組品質
 
 資料列群組品質取決於資料列群組中的資料列數目。 增加可用記憶體可以最大化列存儲索引壓縮到每個行組中的行數。  使用這些方法來改善壓縮率和查詢資料行存放區索引的效能。
 
 ## <a name="why-the-rowgroup-size-matters"></a>為什麼資料列群組很重要
-因為資料行存放區索引會藉由掃描個別資料列群組的資料行區段來掃描資料表，最大化每個資料列群組的資料列數目可以提升查詢效能。 
+
+因為資料行存放區索引會藉由掃描個別資料列群組的資料行區段來掃描資料表，最大化每個資料列群組的資料列數目可以提升查詢效能。
 
 當資料列群組會有大量的資料列時，可改善資料壓縮，這表示從磁碟讀取的資料比較少。
 
-如需關於資料列群組的詳細資訊，請參閱[資料行存放區索引指南](https://msdn.microsoft.com/library/gg492088.aspx)。
+如需關於資料列群組的詳細資訊，請參閱[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="target-size-for-rowgroups"></a>資料列群組的目標大小
-為了達到最佳查詢效能，目標是最大化存放區索引中每個資料行的資料列數目。 一個資料列群組最多可有 1,048,576 個資料列。 
+
+為了達到最佳查詢效能，目標是最大化存放區索引中每個資料行的資料列數目。 一個資料列群組最多可有 1,048,576 個資料列。
 
 每個資料列群組沒有資料列數目上限也沒關係。 當資料列群組擁有至少 100,000 個資料列時，資料行存放區索引會獲得良好效能。
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>資料列群組可以在壓縮期間進行修剪
 
-在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當存在記憶體壓力時,列存儲索引會修剪行組大小,以便壓縮到列存儲中可以成功。 
+在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當存在記憶體壓力時,列存儲索引會修剪行組大小,以便壓縮到列存儲中可以成功。
 
 當記憶體不足,無法將至少 10,000 行壓縮到每個行組中時,將生成錯誤。
 
-如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )。
+如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何監視資料列群組品質
 
-DMV[sys.dm_pdw_nodes_db_column_store_row_group_physical_stats(sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含與 SQL DB 匹配的視圖定義),它公開有用的資訊,如行組中的行數和修剪的原因(如果存在修剪)。 
+DMV[sys.dm_pdw_nodes_db_column_store_row_group_physical_stats(sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)包含與 SQL DB 匹配的視圖定義),它公開有用的資訊,如行組中的行數和修剪的原因(如果存在修剪)。
 
 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
-as 
+as
 with cte
 as
 (
@@ -62,18 +64,19 @@ select   tb.[name]                    AS [logical_table_name]
 ,        rg.[trim_reason_desc]        AS trim_reason_desc
 ,        mp.[physical_name]           AS physical_name
 FROM    sys.[schemas] sm
-JOIN    sys.[tables] tb               ON  sm.[schema_id]          = tb.[schema_id]                             
+JOIN    sys.[tables] tb               ON  sm.[schema_id]          = tb.[schema_id]
 JOIN    sys.[pdw_table_mappings] mp   ON  tb.[object_id]          = mp.[object_id]
 JOIN    sys.[pdw_nodes_tables] nt     ON  nt.[name]               = mp.[physical_name]
 JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  rg.[object_id]     = nt.[object_id]
                                                                             AND rg.[pdw_node_id]   = nt.[pdw_node_id]
-                                        AND rg.[distribution_id]    = nt.[distribution_id]                                              
+                                        AND rg.[distribution_id]    = nt.[distribution_id]
 )
 select *
 from cte;
 ```
 
 trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_TRIM 表示沒有修剪，且資料列群組屬於最佳品質)。 下列修剪原因表示過早修剪了資料列群組：
+
 - BULKLOAD：當傳入的負載資料列批次具有少於 1 百萬個的資料列時，會使用這個修剪原因。 如果插入了多於 100,000 個資料列 (而不是插入到差異存放區)，則引擎會建立壓縮的資料列群組，但是會將修剪原因設定為大量載入。 在這種情況下,請考慮增加批處理負載以包含更多行。 此外,重新評估分區方案,以確保它不太精細,因為行組不能跨越分區邊界。
 - MEMORY_LIMITATION：若要建立包含 1 百萬個資料列的資料列群組，引擎會需要特定數量的工作記憶體。 當載入工作階段的可用記憶體小於所需的工作記憶體時，會提前修剪資料列群組。 以下各節說明如何估計所需的記憶體和分配更多記憶體。
 - DICTIONARY_SIZE：這個修剪原因表示因為至少有一個字串資料行具有寬/或高基數字串而發生資料列群組修剪。 記憶體中的字典大小限制為 16 MB，且一旦達到此限制，便會壓縮資料列群組。 如果您遇到這種情況，請考慮將問題資料行隔離到單獨的資料表中。
@@ -103,12 +106,13 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 使用下列技巧來減少記憶體需求，以將資料列群組壓縮到資料行存放區索引。
 
 ### <a name="use-fewer-columns"></a>使用較少的資料行
-可能的話，設計較少資料行的資料表。 當資料列群組壓縮至資料行存放區內時，資料行存放區索引會個別壓縮每個資料行區段。 
+
+可能的話，設計較少資料行的資料表。 當資料列群組壓縮至資料行存放區內時，資料行存放區索引會個別壓縮每個資料行區段。
 
 因此,壓縮行組的記憶體要求隨著列數的增加而增加。
 
-
 ### <a name="use-fewer-string-columns"></a>使用較少的字串資料行
+
 字串資料類型的資料行比數字和日期資料類型需要更多的記憶體。 若要減少記憶體需求，請考慮從事實資料表中移除字串資料行，並將其放在較小的維度資料表中。
 
 字串壓縮的其他記憶體需求︰
@@ -118,11 +122,11 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免過度分割
 
-資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 對於 Azure 同步分析中的 SQL 池,分區數量會快速增長,因為數據是分散式的,並且每個分佈都進行了分區。 
+資料行存放區索引針對每個資料分割會建立一個或多個資料列群組。 對於 Azure 同步分析中的 SQL 池,分區數量會快速增長,因為數據是分散式的,並且每個分佈都進行了分區。
 
 如果資料表有太多資料分割，則可能沒有足夠的資料列可填滿資料列群組。 缺少行不會在壓縮期間產生記憶體壓力。 但是,它會導致行組無法獲得最佳列存儲查詢性能。
 
-要避免過度磁碟分割的另一個原因，是有額外負荷的記憶體將資料列載入分割資料表上的資料行存放區索引。 
+要避免過度磁碟分割的另一個原因，是有額外負荷的記憶體將資料列載入分割資料表上的資料行存放區索引。
 
 在載入期間，許多資料分割可能會收到內送資料列並保留在記憶體中，直到每個分割區有足夠的資料列可壓縮為止。 具有太多資料分割會建立額外的記憶體不足壓力。
 
@@ -130,14 +134,14 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 資料庫會共用在查詢中所有運算子之間的查詢記憶體授權。 當載入查詢具有複雜的排序和聯結時，可供壓縮的記憶體便會減少。
 
-設計負載查詢以僅著重於載入查詢。 如果您需要在資料上執行轉換，從載入查詢個別執行它們。 例如，接移堆積資料表中的資料、執行轉換，然後將暫存資料表載入資料行存放區索引。 
+設計負載查詢以僅著重於載入查詢。 如果您需要在資料上執行轉換，從載入查詢個別執行它們。 例如，接移堆積資料表中的資料、執行轉換，然後將暫存資料表載入資料行存放區索引。
 
 > [!TIP]
 > 您可以也先載入資料，然後使用 MPP 系統來轉換資料。
 
 ### <a name="adjust-maxdop"></a>調整 MAXDOP
 
-當有多個 CPU 核心可供每個散發使用時，每個散發會將資料列群組平行壓縮到資料行存放區。 
+當有多個 CPU 核心可供每個散發使用時，每個散發會將資料列群組平行壓縮到資料行存放區。
 
 平行處理原則需要額外的記憶體資源，可能會導致記憶體不足的壓力和調整資料列群組。
 
@@ -152,7 +156,7 @@ OPTION (MAXDOP 1);
 
 ## <a name="ways-to-allocate-more-memory"></a>配置更多記憶體的方式
 
-DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用者查詢。 
+DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用者查詢。
 
 若要增加負載查詢的記憶體授權，您可以增加 DWU 數目或增加資源類別。
 

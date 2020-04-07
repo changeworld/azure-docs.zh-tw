@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583510"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742877"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中設計分散式表的指南
 
 在 Synapse SQL 池中設計哈希分佈和迴圈分散式表的建議。
 
-本文假定您熟悉 Synapse SQL 池中的數據分發和數據移動概念。有關詳細資訊,請參閱[Azure 突觸分析大規模並行處理 (MPP) 體系結構](massively-parallel-processing-mpp-architecture.md)。 
+本文假定您熟悉 Synapse SQL 池中的數據分發和數據移動概念。有關詳細資訊,請參閱[Azure 突觸分析大規模並行處理 (MPP) 體系結構](massively-parallel-processing-mpp-architecture.md)。
 
 ## <a name="what-is-a-distributed-table"></a>什麼是分散式資料表？
 
@@ -30,33 +30,32 @@ ms.locfileid: "80583510"
 
 **雜湊分散式資料表**是本文的重點，其可改善大型事實資料表的查詢效能。 **循環配置資源資料表**可用於改善載入速度。 這些設計選擇對於改善查詢和載入效能有顯著的影響。
 
-另一個資料表儲存體選項是將小型資料表複寫到所有計算節點。 如需詳細資訊，請參閱[複寫資料表的設計指引](design-guidance-for-replicated-tables.md)。 若要在三個選項中快速做選擇，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)中的分散式資料表。 
+另一個資料表儲存體選項是將小型資料表複寫到所有計算節點。 如需詳細資訊，請參閱[複寫資料表的設計指引](design-guidance-for-replicated-tables.md)。 若要在三個選項中快速做選擇，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)中的分散式資料表。
 
 在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。例如，請思考一下下列問題：
 
-- 資料表的大小為何？   
-- 資料表的重新整理頻率為何？   
-- Synapse SQL 池中有事實和維度表嗎?   
-
+- 資料表的大小為何？
+- 資料表的重新整理頻率為何？
+- Synapse SQL 池中有事實和維度表嗎?
 
 ### <a name="hash-distributed"></a>雜湊分散式
 
-雜湊分散式資料表會使用確定性雜湊函式，將每個資料列指派給一個[散發](massively-parallel-processing-mpp-architecture.md#distributions)，藉此將資料表的資料列散發於計算節點。 
+雜湊分散式資料表會使用確定性雜湊函式，將每個資料列指派給一個[散發](massively-parallel-processing-mpp-architecture.md#distributions)，藉此將資料表的資料列散發於計算節點。
 
 ![分散式資料表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分散式資料表")  
 
-因為相同的值一律會雜湊到相同的散發，所以資料倉儲具有資料列位置的內建知識。 在 Synapse SQL 池中,此資訊用於最小化查詢期間的數據移動,從而提高查詢性能。 
+因為相同的值一律會雜湊到相同的散發，所以資料倉儲具有資料列位置的內建知識。 在 Synapse SQL 池中,此資訊用於最小化查詢期間的數據移動,從而提高查詢性能。
 
-雜湊分散式資料表適合用於處理星型結構描述中的大型事實資料表。 這類資料表可能有非常大量的資料列，但仍可達到高效能。 當然，也會有一些設計考量可協助您取得分散式系統設計所要提供的效能。 選擇良好的散發資料行是這類考量的其中一項 (敘述於本文中)。 
+雜湊分散式資料表適合用於處理星型結構描述中的大型事實資料表。 這類資料表可能有非常大量的資料列，但仍可達到高效能。 當然，也會有一些設計考量可協助您取得分散式系統設計所要提供的效能。 選擇良好的散發資料行是這類考量的其中一項 (敘述於本文中)。
 
 請在下列時機考慮使用雜湊分散式資料表：
 
 - 磁碟上的資料表大小為 2 GB 以上。
-- 資料表有頻繁的插入、更新及刪除作業。 
+- 資料表有頻繁的插入、更新及刪除作業。
 
 ### <a name="round-robin-distributed"></a>循環配置資源分散式
 
-循環配置資源分散式資料表會將資料表的資料列平均散發於所有散發。 散發的資料列指派是隨機的。 不同於雜湊分散式資料表，具有相等值的資料列不保證會指派給相同的散發。 
+循環配置資源分散式資料表會將資料表的資料列平均散發於所有散發。 散發的資料列指派是隨機的。 不同於雜湊分散式資料表，具有相等值的資料列不保證會指派給相同的散發。
 
 因此，系統有時候需要叫用資料移動作業，才能在解析查詢前，更加妥善地組織您的資料。  此額外步驟會使您的查詢變慢。 例如，加入循環配置資源資料表時通常需要重組資料列，而這會影響效能。
 
@@ -71,11 +70,11 @@ ms.locfileid: "80583510"
 
 教程[「載入紐約計程車」數據](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了將數據載入到循環過渡表中的範例。
 
-
 ## <a name="choosing-a-distribution-column"></a>選擇散發資料行
+
 雜湊分散式資料表中有一個散發資料行，也就是雜湊索引鍵。 例如，下列程式碼會建立以 ProductKey 作為散發資料行的雜湊分散式資料表。
 
-```SQL
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -91,12 +90,13 @@ WITH
 ,  DISTRIBUTION = HASH([ProductKey])
 )
 ;
-``` 
+```
 
-選擇散發資料行是很重要的設計決策，因為此資料行中的值會決定資料列的散發方式。 最佳選擇取決於許多因素，通常需要權衡取捨。 不過，如果您未在第一次就選擇最佳資料行，您可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 來重建具有不同散發資料行的資料表。 
+選擇散發資料行是很重要的設計決策，因為此資料行中的值會決定資料列的散發方式。 最佳選擇取決於許多因素，通常需要權衡取捨。 不過，如果您未在第一次就選擇最佳資料行，您可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來重建具有不同散發資料行的資料表。
 
 ### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>選擇不需要更新的散發資料行
-除非您刪除資料列並以更新後的值插入新資料列，否則無法更新散發資料行。 因此，請選取具有靜態值的資料行。 
+
+除非您刪除資料列並以更新後的值插入新資料列，否則無法更新散發資料行。 因此，請選取具有靜態值的資料行。
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>選擇資料平均散發的散發資料行
 
@@ -108,8 +108,8 @@ WITH
 若要使平行處理達到平衡，請選取具有下列條件的散發資料行：
 
 - **有許多唯一值。** 資料行可能有一些重複值。 然而，所有具有相同值的資料列都會指派至相同的散發。 由於有 60 個散發，因此資料行應至少有 60 個唯一值。  唯一值的數目通常會更大。
-- **沒有 Null，或只有少數 Null。** 舉一個極端的例子，如果資料行中所有的值都是 NULL，則所有資料列都會指派至相同的散發。 如此一來，查詢處理就會偏斜至某一個散發，因而失去平行處理的好處。 
-- **不是日期欄**。 日期相同的所有資料都會落在同一個散發。 如果以相同的日期上篩選出多位使用者，則 60 個散發中只有 1 個散發會進行所有處理工作。 
+- **沒有 Null，或只有少數 Null。** 舉一個極端的例子，如果資料行中所有的值都是 NULL，則所有資料列都會指派至相同的散發。 如此一來，查詢處理就會偏斜至某一個散發，因而失去平行處理的好處。
+- **不是日期欄**。 日期相同的所有資料都會落在同一個散發。 如果以相同的日期上篩選出多位使用者，則 60 個散發中只有 1 個散發會進行所有處理工作。
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>選擇可將資料移動降到最低的散發資料行
 
@@ -118,20 +118,22 @@ WITH
 若要將資料移動降至最低，請選取具有下列條件的散發資料行：
 
 - 在 `JOIN`、`GROUP BY`、`DISTINCT`、`OVER` 和 `HAVING` 子句中使用。 當兩個大型事實資料表有頻繁的聯結時，如果您在其中一個聯結資料行上散發這兩個資料表，即可改善查詢效能。  當資料表未使用於聯結時，請考慮在經常出現於 `GROUP BY` 子句中的資料行上散發資料表。
-- *不*`WHERE`用於 子句。 這可能會縮小查詢範圍，使其無法在所有散發上執行。 
+- *不*`WHERE`用於 子句。 這可能會縮小查詢範圍，使其無法在所有散發上執行。
 - 「不」** 是日期資料行。 WHERE 子句通常會依日期篩選。  在這種情況下，所有處理都只能在少數散發上執行。
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>沒有資料行是理想的散發資料行時該怎麼辦
 
 若您的資料行都沒有散發資料行所需的足夠相異值，您可以建立新資料行以作為一或多個值的複合。 為避免查詢執行期間的資料移動，請在查詢中使用複合散發資料行作為聯結資料行。
 
-設計雜湊分散式資料表後，下一個步驟是將資料載入資料表中。  如需載入指引，請參閱[載入概觀](design-elt-data-loading.md)。 
+設計雜湊分散式資料表後，下一個步驟是將資料載入資料表中。  如需載入指引，請參閱[載入概觀](design-elt-data-loading.md)。
 
 ## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>如何分辨您的散發資料行是否為理想的選擇
-將資料載入雜湊分散式資料表之後，請查看資料列如何平均散發於 60 個散發。 每個發佈區的資料列最多可有 10% 的變化，而且不會對效能產生顯著影響。 
+
+將資料載入雜湊分散式資料表之後，請查看資料列如何平均散發於 60 個散發。 每個發佈區的資料列最多可有 10% 的變化，而且不會對效能產生顯著影響。
 
 ### <a name="determine-if-the-table-has-data-skew"></a>判斷資料表是否有資料扭曲
-快速檢查資料扭曲的方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)。 下列 SQL 程式碼會傳回在 60 個散發的每個散發中儲存的資料表資料列數目。 為了達到平衡的效能，分散式資料表中的資料列應平均散發於所有散發。
+
+快速檢查資料扭曲的方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 下列 SQL 程式碼會傳回在 60 個散發的每個散發中儲存的資料表資料列數目。 為了達到平衡的效能，分散式資料表中的資料列應平均散發於所有散發。
 
 ```sql
 -- Find data skew for a distributed table
@@ -159,6 +161,7 @@ order by two_part_name, row_count
 ```
 
 ### <a name="check-query-plans-for-data-movement"></a>檢查資料移動的查詢計劃
+
 理想的散發資料行可讓聯結和彙總具有最低的資料移動。 這會影響聯結的撰寫方式。 若要讓兩個雜湊分散式資料表上的聯結具有最低的資料移動，其中一個聯結資料行必須是散發資料行。  如果有兩個雜湊分散式資料表在相同資料類型的散發資料行上聯結，該聯結不需要移動資料。 聯結可以使用其他資料行，而不會造成資料移動。
 
 若要避免在聯結期間發生資料移動：
@@ -170,8 +173,8 @@ order by two_part_name, row_count
 
 若要查看查詢是否遇到資料移動，您可以查看查詢計劃。  
 
-
 ## <a name="resolve-a-distribution-column-problem"></a>解決散發資料行問題
+
 您不需要解決所有的資料扭曲情況。 散發資料就是找出將資料扭曲降至最低與將資料移動降至最低兩者之間的適當平衡。 您不一定能夠同時將資料扭曲和資料移動降低最低。 有時候，具有最少資料移動的好處可能勝過具有資料扭曲的影響。
 
 若要決定是否應該解決資料表中的資料扭曲，您應該盡可能了解工作負載中的資料磁區和查詢。 您可以使用[查詢監視](sql-data-warehouse-manage-monitor.md)一文中的步驟，來監視查詢效能偏斜的影響。 具體而言，就是找出在個別散發上完成大型查詢所花費的時間。
@@ -179,7 +182,8 @@ order by two_part_name, row_count
 由於您無法變更現有資料表上的散發資料行，所以解決資料扭曲的典型方式就是重建具有不同散發資料行的資料表。  
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>重建具有新散發資料行的資料表
-此範例會使用 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) 來重建具有不同雜湊散發資料行的資料表。
+
+此範例會使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來重建具有不同雜湊散發資料行的資料表。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -221,7 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要建立分散式資料表，請使用下列其中一個陳述式：
 
-- [建立表(合成 SQL 池)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [以選擇身份建立表(同步 SQL 池)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
-
-
+- [建立表(合成 SQL 池)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [以選擇身份建立表(同步 SQL 池)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

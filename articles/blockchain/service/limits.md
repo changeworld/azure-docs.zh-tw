@@ -1,15 +1,15 @@
 ---
 title: Azure 區塊鏈服務限制
 description: Azure 區塊鏈服務中的服務和功能限制概述
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529565"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676525"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 區塊鏈服務中的限制
 
@@ -35,7 +35,6 @@ Azure 區塊鏈服務具有服務和功能限制,例如成員可以擁有的節�
 每個節點可用於分類帳數據和日誌的最大存儲量為 1.8 TB。
 
 不支援減小分類帳和日誌存儲大小。
-
 ## <a name="consortium-limits"></a>聯盟限制
 
 * **聯盟和成員名稱必須與**Azure 區塊鏈服務中的其他聯合體和成員名稱是唯一的。
@@ -59,6 +58,12 @@ Azure 區塊鏈服務具有服務和功能限制,例如成員可以擁有的節�
 * **以同一個識別中的所有成員必須使用相同的類別帳戶**
 
     有關 Azure 區塊鏈服務中提供的修補、更新和分類帳版本的詳細資訊,請參閱[修補、更新和版本](ledger-versions.md)。
+
+## <a name="performance"></a>效能
+
+不要對每個事務提交使用*eth.估計*氣體函數。 *eth.估計*函數佔用大量記憶體。 多次調用函數可大大減少每秒的事務。
+
+如果可能,請使用保守的氣體值提交交易,並盡量減少*eth.estimate 的使用*。
 
 ## <a name="next-steps"></a>後續步驟
 

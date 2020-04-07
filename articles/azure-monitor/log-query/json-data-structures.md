@@ -1,22 +1,22 @@
 ---
 title: 在 Azure 監視器記錄查詢中使用字串 |Microsoft Docs
-description: 本文提供了一個教程，用於在 Azure 門戶中使用 Azure 監視器日誌分析來查詢和分析 Azure 監視器中的日誌資料。
+description: 本文提供了一個教程,用於在 Azure 門戶中使用 Azure 監視器日誌分析來查詢和分析 Azure 監視器中的日誌數據。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 8be4f318149590ff08b73fda719e99a17220ec2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670146"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672965"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中處理 JSON 與資料結構
 
 > [!NOTE]
-> 在完成本課程之前，應完成[Azure 監視器日誌分析](get-started-portal.md)入門以及[Azure 監視器日誌查詢入門](get-started-queries.md)。
+> 在完成本課程之前,應完成[Azure 監視器紀錄分析](get-started-portal.md)入門以及[Azure 監視器紀錄查詢入門](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "77670146"
 ## <a name="working-with-json-strings"></a>處理 JSON 字串
 使用 `extractjson` 來存取已知路徑中的特定 JSON 元素。 此功能需要使用下列慣例的路徑運算式。
 
-- _$_ 引用根資料夾
+- _$_ 參考根資料夾
 - 使用括弧或點標記法來代表索引與元素，如下列範例中所示。
 
 
@@ -48,7 +48,7 @@ print hosts_report
 若只有一個元素，您可以只使用點標記法：
 
 ```Kusto
-let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
+let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
 print hosts_report 
 | extend status = hosts_report.status
 ```

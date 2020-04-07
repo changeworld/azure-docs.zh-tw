@@ -3,12 +3,12 @@ title: Azure 網站恢復中 VMware/物理災難恢復的支援矩陣
 description: 使用 Azure 網站恢復匯總對 VMware VM 和物理伺服器的災難恢復的支援。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478420"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672445"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -51,7 +51,7 @@ RAM | 16 GB
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 配置伺服器版本[9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)或更高版本不需要。
 Windows Server 角色 | 不啟用活動目錄域服務;互聯網資訊服務 (IIS) 或超 V。
 群組原則| - 防止存取命令提示字元。 <br/> - 防止存取登錄編輯工具。 <br/> - 檔案附件的信任邏輯。 <br/> - 開啟指令碼執行。 <br/> - [深入了解](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | 請確定您已執行下列動作：<br/><br/> - 沒有預先存在的預設網站 <br/> - 啟用[匿名驗證](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - 啟用 [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) 設定  <br/> - 沒有預先存在的網站/應用程式接聽連接埠 443<br/>
+IIS | 請確定您已執行下列動作：<br/><br/> - 沒有預先存在的預設網站 <br/> - 啟用[匿名驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定  <br/> - 沒有預先存在的網站/應用程式接聽連接埠 443<br/>
 NIC 類型 | VMXNET3 (部署為 VMware VM 時)
 IP 位址類型 | 靜態
 連接埠 | 443 用於控制通道編排<br/>9443 用於資料傳輸
@@ -66,7 +66,8 @@ Site Recovery 支援複寫任何執行於所支援機器上的工作負載。
 **元件** | **詳細資料**
 --- | ---
 機器設定 | 複寫到 Azure 的電腦必須符合 [Azure 需求](#azure-vm-requirements)。
-機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [深入了解](site-recovery-workload.md)。
+機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [深入了解](https://aka.ms/asr_workload)。
+電腦名稱 | 要使用電腦的顯示名稱不屬於[Azure 保留資源名稱](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> 邏輯卷名稱不區分大小寫。 確保設備上沒有兩個卷具有相同的名稱。 例如:名稱為"voLUME1","卷 1"的卷無法通過 Azure 網站恢復進行保護。
 Windows Server 2019 | 支援[從更新匯總 34](https://support.microsoft.com/help/4490016) (版本 9.22 的行動服務) 開始.
 視窗伺服器 2016 64 位元 | 支援伺服器核心,具有桌面體驗的伺服器。
 視窗伺服器 2012 R2 / 視窗伺服器 2012 | 支援。
@@ -118,16 +119,16 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 至 3.16.0-10-amd64,4.9.0-0.bpo.4-am
 
 **釋放** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | [9.32][9.32 UR] | 支援所有[庫存 SUSE 12 SP1、SP2、SP3、SP4 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure,</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  |
-SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | [9.31][9.31 UR] | 支援所有[庫存 SUSE 12 SP1、SP2、SP3、SP4 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure,</br>4.12.14-6.3-azure 至 4.12.14-6.29-azure  |
-SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | [9.30][9.30 UR] | 支援所有[庫存 SUSE 12 SP1、SP2、SP3、SP4 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure,</br>4.12.14-6.3-azure 至 4.12.14-6.26-azure  |
-SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | [9.29][9.29 UR] | 支援所有[庫存 SUSE 12 SP1、SP2、SP3、SP4 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure,</br>4.12.14-6.3-azure 至 4.12.14-6.23-azure  |
+SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.28][9.28 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-預設為 3.12.74-60.64.118 預設值</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73 預設為 4.4.121-92.117 預設值</br></br>SP3 4.4.73-5 預設為 4.4.180-94.100 預設值</br></br>SP3 4.4.138-4.7-azure 至 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41 預設為 4.12.14-95.29 默認值</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.23-azure |
+SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-預設值為 3.12.74-60.64.115 預設值</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73 預設為 4.4.121-92.114 預設值</br></br>SP3 4.4.73-5 預設為 4.4.180-94.97 預設值</br></br>SP3 4.4.138-4.7-azure 至 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41 預設為 4.12.14-95.19 默認值</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.15-azure |
+SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-預設為 3.12.74-60.64.110 預設值</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73 預設為 4.4.121-92.109 預設值</br></br>SP3 4.4.73-5 預設為 4.4.178-94.91 預設值</br></br>SP3 4.4.138-4.7-azure 至 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41 預設為 4.12.14-95.16 預設值</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.9-azure |
+SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 至 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73 預設為 4.4.121-92.104 預設值</br></br>SP3 4.4.73-5 預設為 4.4.176-94.88 默認值</br></br>SP3 4.4.138-4.7-azure 至 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41 預設為 4.12.14-95.13 默認值</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.9-azure |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux 企業伺服器 15 支援核心版本
 
 **釋放** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux 企業伺服器 15 和 15 SP1 | 9.32 | 支援所有[股票 SUSE 15 與 15 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
+SUSE Linux 企業伺服器 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支援所有[股票 SUSE 15 與 15 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 檔案系統/客體儲存體
 
@@ -138,8 +139,8 @@ SUSE Linux 企業伺服器 15 和 15 SP1 | 9.32 | 支援所有[股票 SUSE 15 �
 並行虛擬存放裝置 | 不支援並行虛擬驅動程式所匯出的裝置。
 多佇列區塊 IO 裝置 | 不支援。
 使用 HP CCISS 儲存體控制器的實體伺服器 | 不支援。
-裝置/掛接點的命名慣例 | 裝置名稱或掛接點名稱應該是唯一名稱。<br/> 確保沒有兩個設備/安裝點具有區分大小寫的名稱。 例如,不支援將同一 VM 的設備命名為*設備 1* *和設備1。*
-目錄 | 如果您執行的行動服務版本早於版本 9.20(在[更新匯總 31](https://support.microsoft.com/help/4478871/)中發表),則這些限制適用:<br/><br/> - 這些目錄(如果設置為單獨的分區/檔案系統)必須位於源伺服器上的同一操作系統磁碟上:/(根)、/引導、/usr、/usr/local、/var、/等。</br> - /boot 目錄應位於磁碟分割區上,而不是 LVM 卷。<br/><br/> 從版本 9.20 開始,這些限制不適用。
+裝置/掛接點的命名慣例 | 裝置名稱或掛接點名稱應該是唯一名稱。<br/> 確保沒有兩個設備/安裝點具有區分大小寫的名稱。 例如,不支援將同一 VM 的設備命名為*Device1*和設備*1。*
+目錄 | 如果您執行的行動服務版本早於版本 9.20(在[更新匯總 31](https://support.microsoft.com/help/4478871/)中發表),則這些限制適用:<br/><br/> - 這些目錄(如果設置為單獨的分區/檔案系統)必須位於源伺服器上的同一操作系統磁碟上:/(根)、/引導、/usr、/usr/local、/var、/等。</br> - /boot 目錄應位於磁碟分割區上,而不是 LVM 卷。<br/><br/> 從版本 9.20 開始,這些限制不適用。 
 開機目錄 | - 引導磁碟不能採用 GPT 分區格式。 這是 Azure 體系結構限制。 GPT 磁碟支援為數據磁碟。<br/><br/> 不支援虛擬機器上的多個開機磁碟<br/><br/> - 不支援跨多個磁碟在 LVM 捲上啟動/ 啟動。<br/> - 無法複製沒有引導磁碟的電腦。
 可用空間需求| /root 分割區上為 2 GB <br/><br/> 安裝資料夾上為 250 MB
 XFSv5 | 支援 XFS 檔案系統上的 XFSv5 功能,如中繼資料驗證和(行動服務版本 9.10 以後)。<br/> 使用 xfs_info 公用程式來檢查磁碟分割的 XFS 超級區塊。 如果`ftype`設置為 1,則使用 XFSv5 功能。
@@ -231,7 +232,7 @@ ReFS | 移動服務版本 9.23 或更高版本支援彈性檔案系統
 經常性存取儲存體| 否
 區塊 Blob | 否
 靜態加密 (SSE)| 是
-靜態加密 (CMK)| 是(透過 Powershell Az 3.3.0 模組開始)
+靜態加密 (CMK)| 是(透過 PowerShell Az 3.3.0 模組開始)
 進階儲存體 | 是
 匯入/匯出服務 | 否
 VNet 的 Azure 儲存防火牆 | 是。<br/> 在目標存儲/快取儲存帳戶上配置(用於儲存複製資料)。

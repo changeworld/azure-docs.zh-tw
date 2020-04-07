@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478462"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672746"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/物理伺服器災難復原的設定伺服器
 
@@ -45,7 +45,7 @@ ms.locfileid: "80478462"
 
 您也可以透過 CSPSConfigtool.exe 來修改認證。
 
-1. 登入設定伺服器，並啟動 CSPSConfigtool.exe
+1. 登入設定伺服器並啟動 CSPSConfigtool.exe
 2. 選擇您要修改的帳戶類型，然後按一下 [編輯]****。
 3. 輸入已修改的認證，然後按一下 [確定]****
 
@@ -93,6 +93,32 @@ ms.locfileid: "80478462"
 - 您可以將[其他適配器添加到 VM,](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)但在在保管庫中註冊配置伺服器之前必須添加它。
 - 若要在保存庫中註冊設定伺服器之後新增介面卡，請在 VM 屬性中新增介面卡。 接著，您必須在保存庫中[重新註冊](#reregister-a-configuration-server-in-the-same-vault)伺服器。
 
+## <a name="how-to-renew-ssl-certificates"></a>如何續訂 SSL 憑證
+
+配置伺服器具有內置 Web 伺服器,用於協調所有受保護電腦上的行動代理、內置/橫向擴展進程伺服器以及連接到它的主目標伺服器的活動。 Web 伺服器使用 SSL 憑證來驗證用戶端。 憑證會在三年後到期，且可隨時更新。
+
+### <a name="check-expiry"></a>檢查到期日
+
+到期日顯示在 [設定伺服器健康情況]**** 下。 針對在 2016 年 5 月之前部署的設定伺服器，憑證到期設定為一年。 如果您有即將到期的憑證，會發生以下狀況：
+
+- 當到期日是兩個月或少於兩個月時，服務會開始在入口網站傳送通知，以及透過電子郵件傳送通知 (如果您已訂閱 Site Recovery 通知)。
+- 通知橫幅會出現在保存庫資源頁面上。 如需詳細資訊，請選取橫幅。
+- 如果您看到 [立即升級]**** 按鈕，表示您的環境中有些元件尚未升級至 9.4.xxxx.x 或更新版本。 更新憑證之前請先升級元件。 您不能在舊版上更新。
+
+### <a name="if-certificates-are-yet-to-expire"></a>如果憑證尚未過期
+
+1. 要續訂,在保管庫中開啟**站台恢復基礎結構** > **設定伺服器**。 選取必要的設定伺服器。
+2. 確保所有受保護電腦上的所有元件橫向擴展進程伺服器、主目標伺服器和行動代理處於最新版本且處於連接狀態。
+3. 現在,選擇**續訂憑證**。
+4. 請仔細按照此頁面上的說明操作,然後單擊"確定"以在選定的配置伺服器上續訂證書,該證書是關聯的元件。
+
+### <a name="if-certificates-have-already-expired"></a>如果憑證已過期
+
+1. 過期後,**無法從 Azure 門戶續訂**證書。 在繼續操作之前,請確保所有受保護電腦上的所有元件橫向擴展進程伺服器、主目標伺服器和行動代理都處於最新版本且處於連接狀態。
+2. **僅當證書已過期時,才遵循此過程。** 登錄到設定伺服器,導航到 C 驅動器>程序數據>網站恢復>家庭> svsystems > bin 和執行"RenewCerts"執行器工具作為管理員。
+3. PowerShell 執行視窗彈出並觸發證書續訂。 這項作業可能需要 15 分鐘的時間。 在完成續訂之前,不要關閉視窗。
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="續訂憑證":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>在同一個保存庫中註冊設定伺服器
 
@@ -112,7 +138,7 @@ ms.locfileid: "80478462"
    ```
 
     >[!NOTE]
-    >為了從設定伺服器**拉取最新的憑證**到橫向擴充行程伺服器執行*命令「\<安裝驅動器_微軟 Azure 網站恢復\代理_cdpcli.exe>」 - 註冊mt*
+    >為了從設定伺服器**拉取最新的憑證**到橫向擴充行程伺服器執行*命令「\<安裝驅動器_微軟 Azure 網站恢復\代理_cdpcli.exe>」 - 寄存器mt*
 
 8. 最後，執行下列命令以重新啟動 obengine。
    ```
@@ -269,24 +295,6 @@ ProxyPassword="Password"
 2. 若要將目錄切換至 bin 資料夾，執行命令 **cd %ProgramData%\ASR\home\svsystems\bin**
 3. 若要產生複雜密碼檔案，請執行 **genpassphrase.exe -v > MobSvc.passphrase**。
 4. 您的複雜密碼將會儲存在位於 **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** 的這個檔案中。
-
-## <a name="renew-tlsssl-certificates"></a>續訂 TLS/SSL 憑證
-
-設定伺服器有內建的 Web 伺服器，可協調它所連線的行動服務、處理伺服器和主要目標伺服器的活動。 Web 伺服器使用 TLS/SSL 憑證對用戶端進行身份驗證。 憑證會在三年後到期，且可隨時更新。
-
-### <a name="check-expiry"></a>檢查到期日
-
-針對在 2016 年 5 月之前部署的設定伺服器，憑證到期設定為一年。 如果您有即將到期的憑證，會發生以下狀況：
-
-- 當到期日是兩個月或少於兩個月時，服務會開始在入口網站傳送通知，以及透過電子郵件傳送通知 (如果您已訂閱 Site Recovery 通知)。
-- 通知橫幅會出現在保存庫資源頁面上。 如需詳細資訊，請選取橫幅。
-- 如果您看到 [立即升級]**** 按鈕，表示您的環境中有些元件尚未升級至 9.4.xxxx.x 或更新版本。 更新憑證之前請先升級元件。 您不能在舊版上更新。
-
-### <a name="renew-the-certificate"></a>更新憑證
-
-1. 在保存庫中開啟**站台修復基礎結構** > **設定伺服器**。 選取必要的設定伺服器。
-2. 到期日顯示在 [設定伺服器健康情況]**** 下。
-3. 選取 [更新憑證]****。
 
 ## <a name="refresh-configuration-server"></a>重新整理組態伺服器
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545666"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672453"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
 
@@ -236,7 +236,7 @@ Azure Cosmos DB 會強制執行嚴格的安全性需求和標準。 Azure Cosmos
 
 是的，您可以使用 Simba 的 Mongo ODBC 驅動程式搭配適用於 MongoDB 的 Azure Cosmos DB API
 
-## <a name="table-api"></a><a id="table"></a>表 API
+## <a name="table-api"></a><a id="table"></a>資料表 API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>如何使用資料表 API 供應項目？
 
@@ -638,9 +638,9 @@ g.V('mary').out('knows').executionProfile()
 
 上述配置檔的輸出顯示獲取頂點物件、邊緣物件以及工作數據集的大小所花費的時間。 這與 Azure Cosmos DB 查詢的標準成本量值相關。
 
-## <a name="cassandra-api"></a><a id="cassandra"></a> Cassandra API
+## <a name="cassandra-api"></a><a id="cassandra"></a>卡桑德拉 API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB Cassandra API 支援的協定版本是什麼? 是否打算支援其他通訊協定？
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure 宇宙 DB Cassandra API 支援的協定版本是什麼? 是否打算支援其他通訊協定？
 
 Azure Cosmos DB 的 Apache Cassandra API 目前支援 CQL 第 4 版。 如果您有關於支援其他通訊協定的意見反應，請透過 [User Voice 意見反應](https://feedback.azure.com/forums/263030-azure-cosmos-db)讓我們知道，或傳送電子郵件到 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)。
 
