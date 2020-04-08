@@ -597,6 +597,8 @@
           items:
             - name: 彈性擴縮
               href: manage-scale-cassandra.md
+            - name: 次要索引
+              href: cassandra-secondary-index.md
         - name: 操作指南
           items:
             - name: 變更摘要
@@ -1012,12 +1014,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 設定跨原始資源共用 (CORS)
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: 使用受控識別的安全金鑰
+        - name: 使用受控識別來存取資料
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: 使用 Azure AD 的憑證式驗證
+        - name: 使用憑證來存取資料
           href: certificate-based-authentication.md
-        - name: 使用 Key Vault 的安全金鑰
+        - name: 使用 Azure Key Vault 來存取資料
           href: access-secrets-from-keyvault.md
         - name: 限制使用者只能存取資料作業
           href: how-to-restrict-user-data.md

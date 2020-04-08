@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: 測試
           href: How-To/test-knowledge-base.md
-    - name: 管理 QnA 集合
+    - name: 管理 QnA 配對
       items:
-        - name: 編輯 QnA 集
+        - name: 編輯 QnA 配對
           href: How-To/edit-knowledge-base.md
         - name: 新增後續提示
           href: How-To/multiturn-conversation.md

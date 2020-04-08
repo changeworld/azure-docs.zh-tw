@@ -1,0 +1,20 @@
+- name: Azure 遠端轉譯文件
+  href: index.yml
+- name: 概觀
+  expanded: true
+  href: overview/toc.yml
+- name: 快速入門
+  expanded: true
+  href: quickstarts/toc.yml
+- name: 教學課程
+  href: tutorials/toc.yml
+- name: 範例
+  href: samples/toc.yml
+- name: 概念
+  href: concepts/toc.yml
+- name: 操作指南
+  href: how-tos/toc.yml
+- name: 參考
+  href: reference/toc.yml
+- name: 資源
+  href: resources/toc.yml

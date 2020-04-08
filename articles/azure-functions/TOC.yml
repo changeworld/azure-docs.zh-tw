@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令列
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: 連線至儲存體
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: 命令列
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: 教學課程
   items:
     - name: 搭配使用 Functions 與 Logic Apps
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: 使用 Gradle 的 Java
+                  href: functions-create-first-java-gradle.md
                 - name: 使用 Eclipse 的 Java
                   href: functions-create-maven-eclipse.md
                 - name: 使用 IntelliJ IDEA 的 Java
                   href: functions-create-maven-intellij.md
+                - name: 使用 Maven 的 Kotlin
+                  href: functions-create-first-kotlin-maven.md
+                - name: 使用 IntelliJ 的 Kotlin
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: Linux App Service 方案
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 使用量方案
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: 儲存體 - Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: 儲存體 - Java/Gradle
+              href: functions-add-output-binding-storage-queue-java.md
         - name: 偵錯和測試
           items:
             - name: 測試函式

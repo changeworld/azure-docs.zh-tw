@@ -1,23 +1,23 @@
 ### YamlMime:Landing
-title: 歡迎使用 Microsoft 的商業市集
-summary: 了解 Microsoft 的商業市集，這是一個提供應用程式和服務的線上市集，可讓小至新創公司、大到成熟企業的各個實體為全球各地的客戶提供解決方案。
+title: 歡迎使用商業市集
+summary: 了解商業市集，這是一個提供應用程式和服務的線上市集，可讓各種規模的企業為全球各地的客戶提供解決方案。
 metadata:
-  title: 歡迎使用 Microsoft 的商業市集
-  description: 了解 Microsoft 的商業市集，這是一個提供應用程式和服務的線上市集，可讓小至新創公司、大到成熟企業的各個實體為全球各地的客戶提供解決方案。
+  title: 歡迎使用商業市集
+  description: 了解商業市集，這是一個提供應用程式和服務的線上市集，可讓各種規模的企業為全球各地的客戶提供解決方案。
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
   author: MaggiePucciEvans
   ms.author: evansma
-  ms.date: 03/04/2020
-  ms.openlocfilehash: 3dced8953c09520b96a9aa24cf7b5db1022de6ce
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/02/2020
+  ms.openlocfilehash: 6351a18cf2e56152adfc0ad8433ee40cec4e9d9c
+  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78927591"
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80756309"
 landingContent:
-- title: 在 Microsoft 的商業市集中工作
+- title: 使用商業市集
   linkLists:
   - linkListType: get-started
     links:
@@ -25,44 +25,52 @@ landingContent:
       url: ./partner-center-portal/create-account.md
     - text: 決定您的發佈選項
       url: ./determine-your-listing-type.md
+    - text: 原則和條款
+      url: ./policies-terms.md
     - text: Microsoft 商業市集的常見問題集
       url: ./marketplace-faq-publisher-guide.md
     - text: 版本資訊
       url: https://aka.ms/publicmarketplaceroadmap
-    - text: 原則和條款
-      url: ./policies-terms.md
 - title: 常見的案例和工作
   linkLists:
   - linkListType: overview
     links:
-    - text: 行銷最佳做法
-      url: ./gtm-marketing-best-practices.md
-    - text: 陳列供應項目的最佳做法
-      url: ./gtm-offer-listing-best-practices.md
     - text: SaaS 應用程式供應項目發佈指南
       url: ./marketplace-saas-applications-technical-publishing-guide.md
+    - text: 行銷最佳做法
+      url: ./gtm-marketing-best-practices.md
+    - text: 雲端解決方案提供者
+      url: ./cloud-solution-providers.md
+    - text: 陳列供應項目的最佳做法
+      url: ./gtm-offer-listing-best-practices.md
   - linkListType: get-started
     links:
+    - text: 來自您的市集供應項目的潛在客戶
+      url: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - text: 合作夥伴中心內的共同銷售選項
+      url: ./partner-center-portal/commercial-marketplace-co-sell.md
+    - text: 共同銷售合作夥伴參與
+      url: ./marketplace-co-sell.md
+    - text: 在 Microsoft AppSource 和 Office 中提供解決方案
+      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
     - text: 參與 Azure Marketplace 和 AppSource 社區論壇
       url: https://aka.ms/MarketplaceCommunity
     - text: 註冊加入網路研討會來參與討論，或之後以隨選方式觀看
       url: https://aka.ms/allwebinars
-    - text: 在 Microsoft AppSource 和 Office 中提供解決方案
-      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
 - title: 分析供應項目和客戶資料
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 摘要儀表板
       url: ./partner-center-portal/summary-dashboard.md
-    - text: 訂單儀表板
-      url: ./partner-center-portal/orders-dashboard.md
-    - text: 客戶儀表板
-      url: ./partner-center-portal/customer-dashboard.md
-    - text: 使用量儀表板
-      url: ./partner-center-portal/usage-dashboard.md
     - text: Marketplace 見解儀表板
       url: ./partner-center-portal/insights-dashboard.md
+    - text: 使用量儀表板
+      url: ./partner-center-portal/usage-dashboard.md
+    - text: 客戶儀表板
+      url: ./partner-center-portal/customer-dashboard.md
+    - text: 訂單儀表板
+      url: ./partner-center-portal/orders-dashboard.md
     - text: 下載儀表板
       url: ./partner-center-portal/downloads-dashboard.md
     - text: 評分與評論儀表板
@@ -71,61 +79,61 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure 應用程式供應項目
-      url: ./partner-center-portal/create-new-azure-apps-offer.md
-    - text: Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
-      url: ./partner-center-portal/create-new-customer-engagement-offer.md
-    - text: Dynamics 365 for Operations 供應項目
-      url: ./partner-center-portal/create-new-operations-offer.md
-    - text: Dynamics 365 Business Central 供應項目
-      url: ./partner-center-portal/create-new-business-central-offer.md
     - text: SaaS 供應項目
       url: ./partner-center-portal/create-new-saas-offer.md
     - text: 虛擬機器供應項目
       url: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+    - text: Azure 應用程式供應項目
+      url: ./partner-center-portal/create-new-azure-apps-offer.md
+    - text: Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
+      url: ./partner-center-portal/create-new-customer-engagement-offer.md
+    - text: Dynamics 365 Business Central 供應項目
+      url: ./partner-center-portal/create-new-business-central-offer.md
+    - text: Dynamics 365 for Operations 供應項目
+      url: ./partner-center-portal/create-new-operations-offer.md
     - text: 其他供應項目類型
       url: ./cloud-partner-portal/cpp-marketplace-offers.md
 - title: 付費
   linkLists:
   - linkListType: concept
     links:
-    - text: 設定支出帳戶和稅賦形式
-      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-    - text: 商業市集計費
-      url: ./partner-center-portal/billing-details.md
-    - text: 付款閾值、方法和時間範圍
-      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
     - text: 付款報告
       url: ./partner-center-portal/payout-summary.md
+    - text: 付款閾值、方法和時間範圍
+      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+    - text: 設定支出帳戶和稅賦形式
+      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
     - text: 稅賦詳細資訊
       url: ./partner-center-portal/tax-details-paid-transactions.md
+    - text: 商業市集計費
+      url: ./partner-center-portal/billing-details.md
 - title: API 參考資料
   linkLists:
   - linkListType: reference
     links:
-    - text: API 必要條件
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
     - text: SaaS 履行 API
       url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
-    - text: Cloud Partner 入口網站 API 參考
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
     - text: Marketplace 計量服務 API
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-    - text: 建立或修改供應項目
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - text: Cloud Partner 入口網站 API 參考
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - text: API 必要條件
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
     - text: 擷取供應項目
       url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-    - text: 上線
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - text: 建立或修改供應項目
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
     - text: 虛擬機器供應項目定價
       url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+    - text: 上線
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
 - title: 取得支援
   linkLists:
   - linkListType: get-started
     links:
     - text: 支援選項
       url: ./partner-center-portal/support.md
-    - text: 各地區上市情況和貨幣
-      url: ./marketplace-geo-availability-currencies.md
     - text: 針對驗證錯誤進行疑難排解
       url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - text: 各地區上市情況和貨幣
+      url: ./marketplace-geo-availability-currencies.md

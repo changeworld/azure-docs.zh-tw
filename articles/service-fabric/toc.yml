@@ -366,7 +366,7 @@
           href: service-fabric-get-started.md
         - name: Linux
           href: service-fabric-get-started-linux.md
-        - name: Mac OS
+        - name: macOS
           href: service-fabric-get-started-mac.md
         - name: 設定 Service Fabric CLI
           href: service-fabric-cli.md
@@ -675,6 +675,8 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: 遠端連線到叢集節點 VM
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+                - name: 升級叢集節點以使用受控磁碟
+                  href: upgrade-managed-disks.md
         - name: 獨立叢集
           items:
             - name: 建立

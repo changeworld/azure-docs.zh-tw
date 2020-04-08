@@ -83,7 +83,7 @@
         - name: 3 - 建立管線
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: 進階
+    - name: 進階範本
       items:
         - name: 利用範本參考
           href: template-tutorial-use-template-reference.md
@@ -101,23 +101,21 @@
         - name: 整合 Key Vault
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: 建立連結的範本
-          href: template-tutorial-create-linked-templates.md
         - name: 部署 VM 延伸模組
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: 部署 SQL 延伸模組
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: 保護成品
-          href: template-tutorial-secure-artifacts.md
+        - name: 針對範本部署進行疑難排解
+          href: template-tutorial-troubleshoot.md
+    - name: 部署管理員
+      items:
         - name: 使用安全部署實務
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: 在部署管理員中使用健康情況檢查
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: 針對範本部署進行疑難排解
-          href: template-tutorial-troubleshoot.md
 - name: 範例
   items:
     - name: Azure 快速入門範本

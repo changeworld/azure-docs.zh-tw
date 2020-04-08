@@ -2,19 +2,19 @@
 title: Azure Kubernetes Service (AKS)
 summary: AKS 可讓您在 Azure 中快速部署可進行生產的 Kubernetes 叢集。 了解如何透過這些快速入門、教學課程和範例使用 AKS。
 metadata:
-  title: Azure Kubernetes Service (AKS)
+  title: Azure Kubernetes Service (AKS) 文件
   description: AKS 可讓您在 Azure 中快速部署可進行生產的 Kubernetes 叢集。 了解如何透過這些快速入門、教學課程和範例使用 AKS。
   ms.service: container-service
   ms.topic: landing-page
   author: laurenhughes
   ms.author: lahugh
   ms.date: 03/25/2020
-  ms.openlocfilehash: 7482eb14fb6bcb80bc8f8b9d06057287cb862a27
-  ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+  ms.openlocfilehash: 4829b95fb62a33406248f503e646238e116cb413
+  ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/27/2020
-  ms.locfileid: "80335996"
+  ms.lasthandoff: 04/07/2020
+  ms.locfileid: "80803274"
 landingContent:
 - title: 關於 Azure Kubernetes Service (AKS)
   linkLists:

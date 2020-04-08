@@ -453,6 +453,12 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: 用於上線的 API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: 諮詢服務
+          items:
+            - name: Prerequisites
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: 建立諮詢服務供應項目
+              href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Dynamics 365 供應項目
           items:
             - name: 建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
@@ -461,6 +467,22 @@
               href: ./partner-center-portal/create-new-operations-offer.md
             - name: 建立 Dynamics 365 Business Central 供應項目
               href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: IoT Edge 模組供應項目
+          items:
+            - name: 預備 IoT Edge 模組技術資產
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+            - name: 建立 IoT Edge 模組供應項目
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+        - name: 受控服務供應項目
+          items:
+            - name: 建立受控服務供應項目
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Power BI 應用程式供應項目
+          items:
+            - name: 發佈概觀
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: 建立 Power BI 應用程式供應項目
+              href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS 供應項目
           items:
             - name: SaaS 供應項目建立檢查清單
