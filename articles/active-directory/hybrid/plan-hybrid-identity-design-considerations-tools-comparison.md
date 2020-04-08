@@ -11,94 +11,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 04/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 052d99a819aee415d5e7ad6dc00b8c786af0f636
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456912"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811086"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合式身分識別目錄整合工具比較
-目錄整合工具已經經過多年的成長和發展。  本文件是為了整合檢視這些工具，並比較各個工具中所提供的功能。
+目錄整合工具已經經過多年的成長和發展。  
 
-<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [!NOTE]
-> Azure AD 連接合並了以前作為 Dirsync 和 AAD 同步發佈的元件和功能。這些工具不再單獨發佈，所有未來的改進都將包含在 Azure AD Connect 的更新中，以便始終知道在哪裡獲取最新的功能。
-> 
-> DirSync 和 Azure AD Sync 已被取代。 如需詳細資訊，請參閱 [這裡](reference-connect-dirsync-deprecated.md)。
-> 
-> 
+- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29)和[MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016)仍然受支援,主要支援本地系統之間的同步。   FIM 和 MIM 都支援[FIM Windows Azure AD 連接器](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN),但不建議用於新部署 - 具有本地源(如 Notes 或 SAP HCM)的客戶應使用 MIM 填充活動目錄域服務 (AD DS),然後使用 Azure AD 連接同步或 Azure AD 連接雲端配置從 AD DS 同步到 Azure AD。
+- [Azure AD 連接同步](how-to-connect-sync-whatis.md)合併了之前在 DirSync 和 Azure AD 同步中發布的元件和功能,用於在 AD DS 林和 Azure AD 之間進行同步。  
+- [Azure AD Connect 雲端配置](../cloud-provisioning/what-is-cloud-provisioning.md)是一種新的 Microsoft 代理,用於從 AD DS 到 Azure AD 進行同步,適用於合併和獲取等方案,其中被收購公司的 AD 林與母公司的 AD 林隔離。
 
-為每個資料表使用下列機碼。
-
-●  = 目前已可供使用  
-FR = 未來的版本  
-PP = 公開預覽  
-
-## <a name="on-premises-to-cloud-synchronization"></a>內部部署至雲端同步處理
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步處理服務 (AAD Sync) - 不再支援 | Azure Active Directory 同步處理工具 (DirSync) - 不再支援 | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| 連接到單一內部部署 AD 樹系 |● |● |● |● |● |
-| 連接到多個內部部署 AD 樹系 |● |● | |● |● |
-| 連接到多個內部部署 Exchange 組織 |● | | | | |
-| 連接到單一內部部署 LDAP 目錄 |●* | | |● |● | 
-| 連接到多個內部部署 LDAP 目錄 |●*  | | |● |● | 
-| 連接到內部部署 AD 和內部部署 LDAP 目錄 |●* | | |● |● | 
-| 連接到自訂系統 (亦即 SQL、Oracle、MySQL 等) |FR | | |● |● |
-| 同步處理客戶定義的屬性 (目錄擴充功能) |● | | | | |
-| 連接到內部部署人力資源系統 (例如 SAP、Oracle eBusiness、PeopleSoft) |FR | | |● |● |
-| 支援 FIM 同步處理規則和連接器，以供佈建到內部部署系統。 | | | |● |● |
-
- 
-&#42; 目前這有兩個支援的選項。  其中包括： 
-
-   1. 您可以使用泛型 LDAP 連接器，並在 Azure AD Connect 之外啟用。  這很複雜，且需要夥伴才能上架，以及頂級支援合約來維護。  此選項可以處理單一和多個 LDAP 目錄。 
-
-   2. 您可以開發自己的解決方案，將物件從 LDAP 移至 Active Directory。  然後使用 Azure AD Connect 將物件同步。  MIM 或 FIM 可用來作為移動物件的可能解決方案。 
-
-## <a name="cloud-to-on-premises-synchronization"></a>雲端至內部部署同步處理
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步處理服務 - 不再支援  | Azure Active Directory 同步處理工具 (DirSync) - 不再支援  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| 裝置的回寫 |● | |● | | |
-| 屬性回寫 (用於 Exchange 混合部署) |● |● |● |● |● |
-| 群組物件的回寫 |● | | | | |
-| 密碼的回寫 (從自助式密碼重設 (SSPR) 和密碼變更) |● |● | | | |
-
-## <a name="authentication-feature-support"></a>驗證功能支援
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步處理服務 - 不再支援  | Azure Active Directory 同步處理工具 (DirSync) - 不再支援  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| 單一內部部署 AD 樹系的密碼雜湊同步處理 |●|●|● | | |
-| 多個內部部署 AD 樹系的密碼雜湊同步處理 |●|● | | | |
-| 單一內部部署 AD 樹系的傳遞驗證 |●| | | | |
-| 使用同盟進行單一登入 |● |● |● |● |● |
-| 無縫單一登入|● |||||
-| 密碼的回寫 (從 SSPR 和密碼變更) |● |● | | | |
-
-## <a name="set-up-and-installation"></a>設定與安裝
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步處理服務 - 不再支援  | Azure Active Directory 同步處理工具 (DirSync) - 不再支援  | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|
-| 支援在網域控制站上安裝 |● |● |● | |
-| 支援使用 SQL Express 安裝 |● |● |● | |
-| 從 DirSync 輕鬆升級 |● | | | |
-| 系統管理員 UX 至 Windows Server 語言的當地語系化 |● |● |● | |
-| 一般使用者 UX 至 Windows Server 語言的當地語系化 | | | |● |
-| Windows Server 2008 和 Windows Server 2008 R2 的支援 |● 用於同步，不用於同盟 |● |● |● |
-| Windows Server 2012 和 Windows Server 2012 R2 的支援 |● |● |● |● |
-
-## <a name="filtering-and-configuration"></a>篩選和組態
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步處理服務 - 不再支援  | Azure Active Directory 同步處理工具 (DirSync) - 不再支援  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| 針對網域及組織單位篩選 |● |● |● |● |● |
-| 針對物件的屬性值篩選 |● |● |● |● |● |
-| 允許同步處理一組最基本的屬性 (MinSync) |● |● | | | |
-| 允許針對屬性流程套用不同的服務範本 |● |● | | | |
-| 允許移除從 AD 流向 Azure AD 的屬性 |● |● | | | |
-| 允許屬性流程的進階自訂 |● |● | |● |● |
+要瞭解有關 Azure AD 連接同步和 Azure AD 連接雲端預配之間的區別,請參閱文章[「什麼是 Azure AD 連接雲端資源?](../cloud-provisioning/what-is-cloud-provisioning.md)
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726685"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811421"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客戶資料保護   
 預設會拒絕 Microsoft 運作與支援人員對於客戶資料的存取。 授與客戶資料的存取權時，需要經由主管核准，才能仔細管理和記錄存取權。 存取控制需求是由下列 Azure 安全性原則所建立：
@@ -45,12 +45,12 @@ Azure 以預設和設為客戶選項的方式為客戶提供強大的資料安�
 - 客戶與雲端。
 - Azure 系統與資料中心之間的內部通訊。
 
-**加密**：客戶可以部署儲存體資料和傳輸中資料的加密，作為確保資料機密性與完整性的最佳做法。 客戶可以直接設定其 Azure 雲端服務，以使用 SSL 來保護來自網際網路的通訊，甚至保護其 Azure 託管 VM 之間的通訊。
+**加密**：客戶可以部署儲存體資料和傳輸中資料的加密，作為確保資料機密性與完整性的最佳做法。 客戶將 Azure 雲端服務配置為使用 TLS 來保護 Internet 通訊,甚至 Azure 託管的 VM 之間的通訊,這非常簡單。
 
 **資料備援**：如果資料中心發生網路攻擊或實體損毀，Microsoft 可協助確保資料受到保護。 客戶可以選擇：
 
-- 國內/區域記憶體儲，考慮合規性或延遲。
-- 用於安全或災害復原目的的國外/區域外存儲。
+- 國內/區域內存儲,考慮合規性或延遲。
+- 用於安全或災難恢復目的的國外/區域外存儲。
 
 資料可以在所選地理區域內複寫以提供備援性，但不會傳輸到其外部。 客戶有多個選項可複寫資料，包括複本數目以及複寫資料中心的的數目和數目。
 

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386165"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811333"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何建立和部署雲端服務
 Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快速建立」** 和「自訂建立」**。
@@ -30,7 +30,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 
 * **服務定義**  
    雲端服務定義檔 (.csdef) 定義服務模型，包括角色數目。
-* **服務組態**  
+* **服務設定**  
    雲端服務組態檔 (.cscfg) 提供雲端服務和個別角色的組態設定，包括角色執行個體數。
 * **服務包**  
    服務封裝 (.cspkg) 包含應用程式程式碼和組態以及服務定義檔。
@@ -42,9 +42,9 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 
 三個雲端服務功能需要特別組態，您才能匯出服務封裝：
 
-* 如果您要部署使用安全通訊端層 (SSL) 進行資料加密的雲端服務，請針對 SSL [設定應用程式](cloud-services-configure-ssl-certificate-portal.md#modify) 。
+* 如果要部署使用傳輸層安全 (TLS)(以前稱為安全套接字層 (SSL) 的雲端服務進行資料加密,請為 TLS[設定應用程式](cloud-services-configure-ssl-certificate-portal.md#modify)。
 * 如果您要設定角色執行個體的遠端桌面連線，請 [設定遠端桌面的角色](cloud-services-role-enable-remote-desktop-new-portal.md) 。
-* 如果您要設定雲端服務的詳細資訊監視，請啟用雲端服務的 Azure 診斷。 *最小監視* (預設監視層級) 使用從角色執行個體 (虛擬機器) 的主機作業系統收集的效能計數器。 *詳細監視*基於角色實例中的效能資料收集其他指標，以便更仔細地分析應用程式處理過程中出現的問題。 要瞭解如何啟用 Azure 診斷，請參閱[在 Azure 中啟用診斷](cloud-services-dotnet-diagnostics.md)。
+* 如果您要設定雲端服務的詳細資訊監視，請啟用雲端服務的 Azure 診斷。 *最小監視* (預設監視層級) 使用從角色執行個體 (虛擬機器) 的主機作業系統收集的效能計數器。 *詳細監視*基於角色實例中的性能數據收集其他指標,以便更仔細地分析應用程式處理過程中出現的問題。 要瞭解如何啟用 Azure 診斷,請參閱[在 Azure 中啟用診斷](cloud-services-dotnet-diagnostics.md)。
 
 若要使用 Web 角色或背景工作角色的部署來建立雲端服務，您必須 [建立服務封裝](cloud-services-model-and-package.md#servicepackagecspkg)。
 
@@ -53,12 +53,12 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 * 如果任何角色執行個體需要憑證，請建立憑證。 雲端服務需要含有私密金鑰的 .pfx 檔。 您建立並部署雲端服務時，可以將憑證上傳至 Azure。
 
 ## <a name="create-and-deploy"></a>建立和部署
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入 Azure[門戶](https://portal.azure.com/)。
 2. 按一下 [建立資源] > [計算]****，然後向下捲動至 [雲端服務]**** 並按一下。
 
     ![發佈您的雲端服務](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 在新的 [雲端服務]**** 窗格中，輸入 [DNS 名稱]**** 的值。
-4. 創建新的資源組或選擇現有**資源組**。
+4. 建立新的資源群組或選擇現有**資源群組**。
 5. 選擇**位置**。
 6. 按一下 **[封裝]**。 這會開啟 [上傳套件]**** 窗格。 填寫必要欄位。 如果您的任一個角色包含單一執行個體，請確定核取 [即使一個或多個角色包含單一執行個體，也要部署] **** 。
 7. 請確定已選取 [開始部署] **** 。
@@ -70,7 +70,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 ## <a name="upload-a-certificate"></a>上傳憑證
 如果您的部署套件 [設定為使用憑證](cloud-services-configure-ssl-certificate-portal.md#modify)，您現在可以上傳憑證。
 
-1. 選取 [憑證]****，然後在 [新增憑證]**** 窗格中選取 SSL 憑證 .pfx 檔案，並提供憑證的 [密碼]****。
+1. 選擇**憑證**,在 **'新增憑證**'窗格中,選擇 TLS/SSL 憑證 .pfx 檔案,然後提供憑證的**密碼**,
 2. 按一下 [附加憑證]****，然後按一下 [新增憑證]**** 窗格中的 [確定]****。
 3. 按一下 [雲端服務]**** 窗格中的 [建立]****。 當部署達到了 [就緒] **** 狀態時，您可以繼續進行接下來的步驟。
 
@@ -90,7 +90,7 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
 * 設定 [自訂網域名稱](cloud-services-custom-domain-name-portal.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
-* 設定 [SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
+* 設定[TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
 
 
 

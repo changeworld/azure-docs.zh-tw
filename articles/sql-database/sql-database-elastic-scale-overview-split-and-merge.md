@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421566"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811314"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在向外延展的雲端資料庫之間移動資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "74421566"
 
 分割合併工具執行的方式如同 Azure Web 服務。 系統管理員或開發人員使用工具在不同的資料庫 (分區) 之間移動 Shardlet (分區的資料)。 此工具會使用分區對應管理來維護服務中繼資料資料庫，並確保一致的對應。
 
-![總覽][1]
+![概觀][1]
 
 ## <a name="download"></a>下載
 
@@ -33,12 +33,12 @@ ms.locfileid: "74421566"
 ## <a name="documentation"></a>文件
 
 1. [彈性資料庫分割合併工具教學課程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [拆分合併安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
+2. [分割組態安全設定](sql-database-elastic-scale-split-merge-security-configuration.md)
 3. [分割合併安全性考量](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [分區對應管理](sql-database-elastic-scale-shard-map-management.md)
 5. [將現有的資料庫移轉到相應放大的資料庫](sql-database-elastic-convert-to-use-elastic-tools.md)
 6. [彈性資料庫功能概觀](sql-database-elastic-scale-introduction.md)
-7. [彈性資料庫工具詞彙表](sql-database-elastic-scale-glossary.md)
+7. [彈性資料庫工具詞彙](sql-database-elastic-scale-glossary.md)
 
 ## <a name="why-use-the-split-merge-tool"></a>為何使用分割合併工具？
 
@@ -62,7 +62,7 @@ ms.locfileid: "74421566"
 
 - **客戶主控式服務**
 
-  分割合併提供為客戶主控式服務。 您必須將服務部署並裝載於 Microsoft Azure 訂用帳戶中。 您從 NuGet 下載的封裝包含設定範本，可加入您特定部署的資訊而使之完備。 如需詳細資訊，請參閱 [分割合併教學課程](sql-database-elastic-scale-configure-deploy-split-and-merge.md) 。 因為服務是在您的 Azure 訂用帳戶中執行，您可以控制和設定服務的大部分安全性層面。 預設範本包含設定 SSL、以憑證為基礎的用戶端驗證、加密儲存的認證、DoS 防護及 IP 限制等選項。 您可以在下列文件中找到安全性層面的詳細資訊： [分割合併安全性組態](sql-database-elastic-scale-split-merge-security-configuration.md)。
+  分割合併提供為客戶主控式服務。 您必須將服務部署並裝載於 Microsoft Azure 訂用帳戶中。 您從 NuGet 下載的封裝包含設定範本，可加入您特定部署的資訊而使之完備。 如需詳細資訊，請參閱 [分割合併教學課程](sql-database-elastic-scale-configure-deploy-split-and-merge.md) 。 因為服務是在您的 Azure 訂用帳戶中執行，您可以控制和設定服務的大部分安全性層面。 默認範本包括設定 TLS 的選項、基於憑證的用戶端身份驗證、儲存認證的加密、DoS 防護和 IP 限制。 您可以在下列文件中找到安全性層面的詳細資訊： [分割合併安全性組態](sql-database-elastic-scale-split-merge-security-configuration.md)。
 
   預設部署服務以一個背景工作角色和一個 Web 角色執行。 各角色在 Azure 雲端服務中使用 A1 VM 大小。 雖然您無法在部署封裝時修改這些設定，但可以在部署成功後在執行中的雲端服務中變更它們 (透過 Azure 入口網站)。 請注意，基於技術原因，不可以將背景工作角色設定多個執行個體。
 
@@ -190,7 +190,7 @@ ms.locfileid: "74421566"
 
   要求開始的時間和日期。
 
-- **操作 Id**
+- **操作代碼**
 
   可唯一識別要求的 GUID。 這項要求也可用來取消仍在進行中的作業。
 
@@ -219,7 +219,7 @@ ms.locfileid: "74421566"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
+> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組,但所有後續開發都針對 Az.Sql 模組。 有關這些 cmdlet,請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
 
 針對 NuGet 封裝所提供的 Web 和背景工作角色，若要使用診斷組態啟用監視和診斷，請使用 Azure PowerShell 執行下列命令：
 

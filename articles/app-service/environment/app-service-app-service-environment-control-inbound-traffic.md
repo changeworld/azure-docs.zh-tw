@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687400"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804396"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制 App Service 環境的輸入流量
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 可以在 Azure 資源管理器虛擬網路**或**經典部署模型[虛擬網路][virtualnetwork]**中創建**應用服務環境。  建立 APP Service 環境時，可以定義新的虛擬網路和新的子網路。  或者亦可在先前既存的虛擬網路和既存的子網路中建立 APP Service 環境。  在 2016 年 6 月所進行的變更之後，ASE 也可以部署到使用公用位址範圍或 RFC1918 位址空間 (也就是私人位址) 的虛擬網路。  如需有關建立 App Service Environment 的詳細資訊，請參閱[如何建立 App Service Environment][HowToCreateAnAppServiceEnvironment]。
 
 App Service 環境必須一律建立於子網路中，因為子網路可提供網路界限以便用來鎖定上游裝置和服務背後的輸入流量，因此只接受來自特定上游 IP 位址的 HTTP 和 HTTPS 流量。
@@ -31,10 +31,10 @@ App Service 環境必須一律建立於子網路中，因為子網路可提供�
 
 以下是 App Service 環境所使用的連接埠清單。 除非明確註明，否則所有連接埠為 **TCP**：
 
-* 454：Azure 基礎結構用於通過 SSL 管理和維護應用服務環境**所需的埠**。  不會封鎖對此連接埠的流量。  此連接埠一律繫結至 ASE 的公用 VIP。
-* 455：Azure 基礎結構用於通過 SSL 管理和維護應用服務環境**所需的埠**。  不會封鎖對此連接埠的流量。  此連接埠一律繫結至 ASE 的公用 VIP。
+* 454:Azure 基礎結構用於透過 TLS 管理和維護應用服務環境**所需的連接埠**。  不會封鎖對此連接埠的流量。  此連接埠一律繫結至 ASE 的公用 VIP。
+* 455:Azure 基礎結構用於透過 TLS 管理和維護應用服務環境**所需的連接埠**。  不會封鎖對此連接埠的流量。  此連接埠一律繫結至 ASE 的公用 VIP。
 * 80：對於在 App Service 環境的 App Service 方案中執行的應用程式，其輸入 HTTP 流量的預設連接埠。  在啟用 ILB 的 ASE 上，此連接埠繫結至 ASE 的 ILB 位址。
-* 443：對於在 App Service 環境的 App Service 方案中執行的應用程式，其輸入 SSL 流量的預設連接埠。  在啟用 ILB 的 ASE 上，此連接埠繫結至 ASE 的 ILB 位址。
+* 443:用於在應用服務環境中在應用服務計劃中運行的應用的入站 TLS 流量的預設埠。  在啟用 ILB 的 ASE 上，此連接埠繫結至 ASE 的 ILB 位址。
 * 21：FTP 的控制通道。  如果未使用 FTP，就可以安全地封鎖此連接埠。  在啟用 ILB 的 ASE 上，此連接埠可以繫結至 ASE 的 ILB 位址。
 * 990：FTPS 的控制通道。  如果未使用 FTPS，就可以安全地封鎖此連接埠。  在啟用 ILB 的 ASE 上，此連接埠可以繫結至 ASE 的 ILB 位址。
 * 10001-10020：FTP 的資料通道。  如同控制通道，若未使用 FTP，即可安全地封鎖這些連接埠。  在啟用 ILB 的 ASE 上，此連接埠可以繫結至 ASE 的 ILB 位址。
@@ -62,7 +62,7 @@ App Service 環境需要針對虛擬網路設定的有效 DNS 基礎結構。  �
 
 建立網路安全性群組後，會加入一或多個網路安全性規則。  由於這組規則會隨著時間改變，所以建議區隔用於規則優先順序的編號配置，以便陸續插入其他規則。
 
-下列範例顯示的規則可明確授與以下連接埠的存取權：Azure 基礎結構管理和維護 App Service 環境所需的管理連接埠。  請注意，所有管理流量都會透過 SSL 傳送並受用戶端憑證保護，因此即使連接埠已開啟，Azure 管理基礎結構以外的任何實體都無法予以存取。
+下列範例顯示的規則可明確授與以下連接埠的存取權：Azure 基礎結構管理和維護 App Service 環境所需的管理連接埠。  請注意,所有管理流量都流經 TLS,並且由用戶端證書保護,因此即使打開埠,Azure 管理基礎結構以外的任何實體都無法訪問這些流量。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

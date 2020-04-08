@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 02/17/2020
-ms.openlocfilehash: b80b58d64ea27df95c2704243d8a89fa6ca12e2a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/06/2020
+ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548499"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810444"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>建立與使用活動異地複製
 
@@ -101,7 +101,7 @@ ms.locfileid: "80548499"
 
 - **使用者控制的容錯移轉和容錯回復**
 
-  應用程式或使用者可以隨時明確也將次要資料庫切換到主要角色。 在實際的中斷期間，應該使用「非計劃性」選項，這樣會立即將次要升級為主要。 當失敗的主要資料庫復原，並且可再次使用時，系統會自動將復原的主要資料庫標示為次要資料庫，並讓它與新的主要資料庫保持更新。 由於複寫的非同步本質，如果主要資料庫在將最新的變更複寫至次要資料庫之前失敗，則非計劃的容錯移轉期間會有少量的資料遺失。 當具有多個次要資料庫的主要資料庫容錯移轉時，系統會自動重新設定複寫關聯性，並且將剩餘的次要資料庫連結至新升級的主要資料庫，而不需要任何使用者介入。 解決造成容錯移轉的中斷之後，可能想要讓應用程式返回主要區域。 若要這麼做，應該使用「計劃」選項叫用容錯移轉命令。
+  應用程式或使用者可以隨時明確也將次要資料庫切換到主要角色。 在實際中斷期間,應使用"計劃外"選項,這立即將輔助選項提升為主項。 當失敗的主要資料庫復原，並且可再次使用時，系統會自動將復原的主要資料庫標示為次要資料庫，並讓它與新的主要資料庫保持更新。 由於複寫的非同步本質，如果主要資料庫在將最新的變更複寫至次要資料庫之前失敗，則非計劃的容錯移轉期間會有少量的資料遺失。 當具有多個次要資料庫的主要資料庫容錯移轉時，系統會自動重新設定複寫關聯性，並且將剩餘的次要資料庫連結至新升級的主要資料庫，而不需要任何使用者介入。 解決造成容錯移轉的中斷之後，可能想要讓應用程式返回主要區域。 為此,故障轉移命令應使用「計劃」選項呼叫。
 
 ## <a name="preparing-secondary-database-for-failover"></a>為故障移轉準備輔助資料庫
 
@@ -113,14 +113,19 @@ ms.locfileid: "80548499"
 
 ## <a name="configuring-secondary-database"></a>設定輔助資料庫
 
-主要和次要資料庫必須有相同的服務層級。 此外也強烈建議您使用與主要資料庫相同的計算大小 (DTU 或虛擬核心) 來建立次要資料庫。 如果主資料庫遇到繁重的寫入工作負載,則計算大小較低的輔助資料庫可能無法跟上它。 這將導致輔助延遲和潛在不可用。 如果需要強制故障轉移,滯後於主資料庫的輔助資料庫也面臨大量數據丟失的風險。 為了減輕這些風險,有效的活動異地複製將限制主的日誌速率,使其輔助資料庫能夠趕上。 二次配置不平衡的另一個後果是,故障轉移后,由於新主伺服器的計算能力不足,應用程式的性能將受到影響。 需要將其升級到更高的計算級別,這在緩解中斷之前是不可能的。 
+主要和次要資料庫必須有相同的服務層級。 此外也強烈建議您使用與主要資料庫相同的計算大小 (DTU 或虛擬核心) 來建立次要資料庫。 如果主資料庫遇到繁重的寫入工作負載,則計算大小較低的輔助資料庫可能無法跟上它。 這將導致輔助資料庫的重做延遲,並且可能不可用輔助資料庫。 如果需要強制故障轉移,滯後於主資料庫的輔助資料庫也面臨大量數據丟失的風險。 為了減輕這些風險,活動異地複製將限制主日誌速率(如有必要),以便其輔助資料庫趕上。 
 
+二次配置不平衡的另一個後果是,故障轉移后,由於新主伺服器的計算能力不足,應用程式性能可能會受到影響。 在這種情況下,有必要將資料庫服務目標擴展到必要的級別,這可能需要大量時間和計算資源,並且需要在擴展過程結束時[進行高可用性](sql-database-high-availability.md)故障轉移。
 
 > [!IMPORTANT]
-> 除非輔助資料庫配置與主資料庫相同的計算大小,否則無法保證已發佈的 RPO = 5 秒。 
+> 除非輔助資料庫配置與主資料庫相同或更高的計算大小,否則無法保證已發佈的 5 秒 RPO SLA。 
 
+如果決定創建計算大小較低的輔助資料庫,Azure 門戶中的日誌 IO 百分比圖表提供了一種估計輔助資料庫的最小計算大小的好方法,該次表是維持複製負載所必需的。 例如,如果主資料庫為 P6 (1000 DTU),其日誌寫入百分比為 50%,則輔助資料庫至少需要 P4 (500 DTU)。 若要檢索歷史日誌 IO 資料,請使用[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)檢視。 若要檢索具有更高粒度、更好地反映日誌速率中短期峰值的最近日誌寫入數據,請使用[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)視圖。 
 
-如果您決定建立具有較低計算大小的次要資料庫，您可以利用 Azure 入口網站上的記錄 IO 百分比圖表，來預估次要資料庫承受複寫負載所需的最低計算大小。 例如，如果您的主要資料庫是 P6 (1000 DTU) 和其記錄 IO 百分比為 50%，則次要資料庫必須至少是 P4 (500 DTU)。 您也可以使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 資料庫檢視來擷取記錄 IO 資料。  在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)資料庫檢視中,限制報告為HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO等待狀態。 
+主資料庫上的事務日誌速率限制由於輔助資料庫的計算大小較低,使用HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO等待類型報告,該等待類型在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)資料庫視圖中可見。 
+
+> [!NOTE]
+> 由於與輔助資料庫上較低的計算大小無關的原因,主資料庫上的事務日誌速率可能會受到限制。 即使輔助項的計算大小與主級相同或更高,也可能發生此類限制。 有關詳細資訊(包括不同類型的紀錄速率限制的等待類型),請參閱[事務日誌速率治理](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)。
 
 如需 SQL Database 計算大小的詳細資訊，請參閱 [SQL Database 服務層是什麼](sql-database-purchase-models.md)。
 

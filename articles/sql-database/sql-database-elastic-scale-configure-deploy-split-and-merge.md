@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421026"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810197"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署分割合併服務以在分區化資料庫之間移動資料
 
@@ -34,11 +34,11 @@ ms.locfileid: "74421026"
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**內容_拆分合併_服務**子目錄中查找拆分合併服務檔，在**內容_拆分合併\powershell**子目錄中查找拆分合併 PowerShell 腳本（和必需的用戶端 dlls）。
+檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**內容_分割合併_服務**子目錄中尋找分割合併服務檔,在**內容_分割合併\powershell**子目錄中尋找分割合併PowerShell腳本(和必需的用戶端 dlls)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-1. 建立用來作為分割合併狀態資料庫的 Azure SQL DB 資料庫。 轉到[Azure 門戶](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
+1. 建立用來作為分割合併狀態資料庫的 Azure SQL DB 資料庫。 移至 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
 1. 請確定您的 Azure SQL DB 伺服器允許 Azure 服務進行連接。 在入口網站的 [防火牆設定]**** 中，確定 [允許存取 Azure 服務]**** 設定設為 [開啟]****。 按一下儲存圖示。
 
@@ -63,7 +63,7 @@ ms.locfileid: "74421026"
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. 在 ElasticScaleMetadata 設置中的**SplitMergeWeb**和**SplitMergeWorker 角色**部分的 *.cscfg*檔中輸入此連接字串。
+1. 在 ElasticScaleMetadata 設定中的**SplitMergeWeb**和**SplitMergeWorker 角色**部分的 *.cscfg*檔中輸入此連接字串。
 
 1. 針對 **SplitMergeWorker** 角色，在 **WorkerRoleSynchronizationStorageAccountConnectionString** 設定中輸入有效的連接字串以連接至 Azure 儲存體。
 
@@ -107,7 +107,7 @@ ms.locfileid: "74421026"
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>將 PFX 檔案上傳至雲端服務
 
-1. 轉到[Azure 門戶](https://portal.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [雲端服務] ****。
 3. 選取您先前為分割/合併服務建立的雲端服務。
 4. 按一下頂端功能表的 [憑證] **** 。
@@ -140,7 +140,7 @@ Web 角色：
 
 ## <a name="deploy-your-service"></a>部署您的服務
 
-1. 轉到[Azure 門戶](https://portal.azure.com)
+1. 跳到[Azure 門戶](https://portal.azure.com)
 2. 選取您稍早建立的雲端服務。
 3. 按一下 [概觀]****。
 4. 選擇預備環境，然後按一下 [上傳]****。
@@ -150,7 +150,7 @@ Web 角色：
 
 ## <a name="troubleshoot-the-deployment"></a>疑難排解部署
 
-如果 Web 角色無法上線，安全性設定可能有問題。 請檢查 SSL 的設定如上所述。
+如果 Web 角色無法上線，安全性設定可能有問題。 檢查 TLS/SSL 是否按照上述配置。
 
 如果背景工作角色無法上線，但 Web 角色成功上線，很可能是無法連接至您稍早建立的狀態資料庫。
 
@@ -230,13 +230,13 @@ Web 角色：
 2. 建立 Azure SQL Database 伺服器 (或選擇現有的伺服器)，其中將會建立分區對應管理員和分區。
 
    > [!NOTE]
-   > 預設情況下，*安裝程式SampleSplitMergeEe環境.ps1*腳本在同一伺服器上創建所有這些資料庫，以保持腳本簡單。 這不是分割合併服務本身的限制。
+   > 預設情況下,*安裝程式SampleSplitMergeEe環境.ps1*腳本在同一伺服器上創建所有這些資料庫,以保持腳本簡單。 這不是分割合併服務本身的限制。
 
    需要有具備 DB 讀取/寫入存取權的 SQL 驗證登入，分割合併服務才能移動資料和更新分區對應。 因為分割合併服務是在雲端執行，目前不支援整合式驗證。
 
    請確定 Azure SQL server 設定為允許從執行這些指令碼的電腦 IP 位址存取。 您可以在 [Azure SQL server / 設定 / 允許的 IP 位址] 下找到這項設定。
 
-3. 執行*安裝程式示例拆分合併環境.ps1*腳本以創建示例環境。
+3. 執行*安裝程式範例拆分合併環境.ps1*腳本以建立範例環境。
 
    執行這個指令碼將會從分區對應管理員資料庫和分區上，清除任何現有的分區對應管理資料結構。 如果您想要重新初始化分區對應或分區，最好重新執行此指令碼。
 
@@ -254,7 +254,7 @@ Web 角色：
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. 執行*ExecuteSampleSplitMerge.ps1*腳本以執行拆分操作（將第一個分片上一半的資料移動到第二個分片），然後執行合併作業（將資料移回第一個分片）。 如果您設定 SSL，而且保持停用 http 端點，請確定您改為使用 https:// 端點。
+5. 執行*ExecuteSampleSplitMerge.ps1*文本以執行分割操作(將第一個分片上一半的數據移動到第二個分片),然後執行合併操作(將數據移回第一個分片)。 如果配置 TLS 並禁用 HTTP 終結點,請確保改用HTTPs://終結點。
 
    範例命令列：
 
@@ -333,7 +333,7 @@ Web 角色：
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-此錯誤表示您的 SSL 憑證未正確設定。 請遵循＜使用網頁瀏覽器連接＞一節的指示。
+此錯誤表示未正確配置 TLS/SSL 憑證。 請遵循＜使用網頁瀏覽器連接＞一節的指示。
 
 若無法提交要求，您可能會看到：
 

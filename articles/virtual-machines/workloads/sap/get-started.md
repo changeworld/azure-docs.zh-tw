@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/06/2020
+ms.date: 04/07/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df7461443fc9e89209545e8a2dfb9ad0addf3f3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757146"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811260"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 託管與執行 SAP 工作負載方案
 
@@ -110,6 +110,7 @@ SAP HANA Azure 的獨特性是使 Azure 與眾不同的一個產品/ 為了啟�
 
 
 ## <a name="change-log"></a>變更記錄檔
+- 04/07/2020:在[Azure 中的 SLES 上設定起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以澄清雲網配置-azure 指令的更改
 - 04/06/2020: [SAP HANA 橫向擴展與 Azure VM 上的備用節點與 Azure NetApp 檔在 SLES 上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)和 SAP [HANA 橫向擴展與 Azure VM 上的備用節點與 AZURE NetApp 檔案在 RHEL 上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)刪除對 NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf)的引用 (替換為[TR-4746)](https://www.netapp.com/us/media/tr-4746.pdf)
 - 03/31/2020:在[SLES 上的 Azure VM 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability),在[RHEL 上的 Azure VM 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel),以添加在創建條帶卷時如何指定條帶大小的說明
 - 2020 年 3 月 27 日:[在 SLES 上的 Azure VM 上 SAP NW 的高可用性變化與 SAP 應用程式進行 ANF,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)以便將檔案系統載入選項與 NetApp TR-4746 對齊(刪除同步安裝選項)

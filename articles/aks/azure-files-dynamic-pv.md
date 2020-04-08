@@ -1,21 +1,22 @@
 ---
-title: 在 Azure Kubernetes Service (AKS) 中以動態方式建立適用於多個 Pod 的檔案磁碟區
+title: 動態建立 Azure 檔案分享
+titleSuffix: Azure Kubernetes Service
 description: 了解如何透過 Azure 檔案服務以動態方式建立永續性磁碟區，以搭配 Azure Kubernetes Service (AKS) 中的多個平行 Pod 使用
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 3628a9243d849cdb2f3143209dc239be5ac846b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297787"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803529"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 檔案服務的永續性磁碟區
 
 永續性磁碟區代表一塊已佈建來與 Kubernetes Pod 搭配使用的儲存體。 永續性磁碟區可供一個或多個 Pod 使用，且可以動態或靜態方式佈建。 如果有多個 Pod 需要並行存取相同的儲存體磁碟區，您可以透過[伺服器訊息區 (SMB) 通訊協定][smb-overview]來使用 Azure 檔案服務進行連線。 本文會示範如何在 Azure Kubernetes Service (AKS) 叢集中以動態方式建立 Azure 檔案共用，以供多個 Pod 使用。
 
-有關 Kubernets 卷的詳細資訊，請參閱[AKS 中應用程式的存儲選項][concepts-storage]。
+有關 Kubernets 卷的詳細資訊,請參閱[AKS 中應用程式的儲存選項][concepts-storage]。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -25,19 +26,19 @@ ms.locfileid: "80297787"
 
 ## <a name="create-a-storage-class"></a>建立儲存體類別
 
-儲存體類別可用來定義 Azure 檔案共用的建立方式。 在[節點資源組中][node-resource-group]自動創建存儲帳戶，以便與存儲類一起保存 Azure 檔共用。 為 *skuName* 選擇下列 [Azure 儲存體備援][storage-skus]：
+儲存體類別可用來定義 Azure 檔案共用的建立方式。 在[節點資源組中][node-resource-group]自動建立儲存帳戶,以便與存儲類一起保存 Azure 檔共用。 為 *skuName* 選擇下列 [Azure 儲存體備援][storage-skus]：
 
 * *Standard_LRS* - 標準本地備援儲存體 (LRS)
 * *Standard_GRS* - 標準異地備援儲存體 (GRS)
-* *Standard_ZRS* - 標準區域冗余存儲 （ZRS）
+* *Standard_ZRS* - 標準區域冗餘儲存 (ZRS)
 * *Standard_RAGRS* - 標準讀取權限異地備援儲存體 (RA-GRS)
-* *Premium_LRS* - 優質本地冗余存儲 （LRS）
-* *Premium_ZRS* - 高級區域冗余存儲 （GRS）
+* *Premium_LRS* - 優質本地冗餘儲存 (LRS)
+* *Premium_ZRS* - 進階區域冗餘儲存 (GRS)
 
 > [!NOTE]
-> Azure 檔支援運行 Kubernets 1.13 或更高、最小高級檔共用為 100GB 的 AKS 群集中的高級存儲
+> Azure 檔案支援執行 Kubernets 1.13 或更高、最小進階檔案分享為 100GB 的 AKS 群組的進階儲存
 
-有關 Azure 檔的庫伯奈斯存儲類的詳細資訊，請參閱[庫伯奈斯存儲類][kubernetes-storage-classes]。
+有關 Azure 檔的庫伯奈斯儲存類別的詳細資訊,請參閱[庫伯奈斯儲存類][kubernetes-storage-classes]。
 
 建立名為 `azure-file-sc.yaml` 的檔案，然後將下列資訊清單範例複製進來。 如需 mountOptions** 的詳細資訊，請參閱[掛接選項][mount-options]一節。
 
@@ -58,7 +59,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-使用[kubectl 應用][kubectl-apply]命令創建存儲類：
+使用[kubectl 應用程式][kubectl-apply]使用指令建立儲存類別:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
@@ -85,9 +86,9 @@ spec:
 ```
 
 > [!NOTE]
-> 如果對存儲類使用*Premium_LRS* sku，*則存儲*的最小值必須為*100Gi*。
+> 如果儲存*類別的*Premium_LRS sku,*則儲存*的最小值必須為*100Gi*。
 
-使用[kubectl 應用][kubectl-apply]命令創建持久卷聲明：
+使用[kubectl 應用程式][kubectl-apply]使用指令建立持久卷聲明:
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
@@ -104,7 +105,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-下列 YAML 所建立的 Pod，會使用永續性磁碟區宣告 azurefile**，將 Azure 檔案共用裝載在 /mnt/azure** 路徑。 對於 Windows 伺服器容器（當前在 AKS 中預覽），使用 Windows 路徑約定（如 *"D："）* 指定*裝載路徑*。
+下列 YAML 所建立的 Pod，會使用永續性磁碟區宣告 azurefile**，將 Azure 檔案共用裝載在 /mnt/azure** 路徑。 對於 Windows 伺服器容器(目前在 AKS 中預覽),使用 Windows 路徑約定(如 *"D:")* 指定*載入路徑*。
 
 建立名為 `azure-pvc-files.yaml` 的檔案，然後將下列 YAML 複製進來。 請確定claimName** 與最後一個步驟中建立的 PVC 相符。
 
@@ -164,7 +165,7 @@ Volumes:
 
 ## <a name="mount-options"></a>掛接選項
 
-對於 Kubernetes 版本 1.13.0 及以上，*檔案模式*和*dirMode*的預設值為*0777。* 如果使用存儲類動態創建持久卷，則可以在存儲類物件上指定裝載選項。 下列範例會設定 0777**：
+對於 Kubernetes 版本 1.13.0 及以上,*檔案模式*和*dirMode*的預設值為*0777。* 如果使用存儲類動態創建持久卷,則可以在存儲類物件上指定裝載選項。 下列範例會設定 0777**：
 
 ```yaml
 kind: StorageClass
@@ -185,7 +186,7 @@ parameters:
 
 ## <a name="next-steps"></a>後續步驟
 
-有關相關的最佳實踐，請參閱[AKS 中存儲和備份的最佳做法][operator-best-practices-storage]。
+有關相關的最佳實務,請參閱[AKS 中儲存和備份的最佳做法][operator-best-practices-storage]。
 
 使用「Azure 檔案」來深入了解 Kubernetes 永續性磁碟區。
 

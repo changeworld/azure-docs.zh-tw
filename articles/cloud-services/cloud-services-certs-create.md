@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248134"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811451"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 雲端服務的憑證概觀
 在 Azure 中，憑證用於雲端服務 ([服務憑證](#what-are-service-certificates)) 與驗證管理 API ([管理憑證](#what-are-management-certificates))。 本主題提供兩種憑證類型、如何[建立](#create)這些憑證類型，以及如何將其部署到 Azure 的一般概觀。
@@ -55,7 +55,7 @@ Azure 所使用的憑證可以包含私密或公開金鑰。 憑證具有指紋�
 * 針對金鑰交換 (.pfx 檔案) 而建立。
 * 主體名稱必須符合用來存取雲端服務的網域。
 
-    > 您無法取得 cloudapp.net 網域 (或針對任何 Azure 相關網域) 的 SSL 憑證；憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如，**contoso.net**，而非 **contoso.cloudapp.net**。
+    > 不能為cloudapp.net(或任何與 Azure 相關的)域獲取 TLS/SSL 證書;因此,您可以獲取 CLOUDAPP.NET/SSL 證書。證書的主題名稱必須與用於訪問應用程式的自定義功能變數名稱匹配。 例如，**contoso.net**，而非 **contoso.cloudapp.net**。
 
 * 至少為 2048 位元加密。
 * **僅限服務憑證**：用戶端憑證必須位於 *個人* 憑證存放區。

@@ -2,13 +2,13 @@
 title: 樣本函數 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745002"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804753"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本資源函數
 
@@ -496,7 +496,9 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 ### <a name="valid-uses"></a>有效用途
 
-參考函式只能用在資源定義的屬性中，以及範本或部署的輸出區段中。 當與[屬性反覆運算](copy-properties.md)一起使用 時,可以使用`input`引用函數 ,因為表達式已分配給資源屬性。 不能使用它,`count`因為在解決引用函數之前必須確定計數。
+參考函式只能用在資源定義的屬性中，以及範本或部署的輸出區段中。 當與[屬性反覆運算](copy-properties.md)一起使用 時,可以使用`input`引用函數 ,因為表達式已分配給資源屬性。
+
+不能使用引用函數在複製迴圈中設置`count`屬性的值。 可以使用 設置迴圈中的其他屬性。 count 屬性的引用被阻止,因為在解決引用函數之前必須確定該屬性。
 
 不能在[嵌套範本](linked-templates.md#nested-template)的輸出中使用引用函數來返回已部署在嵌套範本中的資源。 而是使用[連結的樣本](linked-templates.md#linked-template)。
 

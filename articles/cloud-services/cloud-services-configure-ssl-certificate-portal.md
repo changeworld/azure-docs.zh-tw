@@ -1,6 +1,6 @@
 ---
-title: 設定雲端服務的 SSL | Microsoft Docs
-description: 了解如何為 Web 角色指定 HTTPS 端點，以及如何上傳 SSL 憑證來保護應用程式的安全。 這些範例使用 Azure 入口網站。
+title: 為雲服務配置 TLS |微軟文件
+description: 瞭解如何為 Web 角色指定 HTTPS 終結點,以及如何上傳 TLS/SSL 憑證來保護應用程式。 這些範例使用 Azure 入口網站。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273133"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811673"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 設定應用程式的 SSL
+# <a name="configuring-tls-for-an-application-in-azure"></a>為 Azure 的應用程式設定 TLS
 
-安全通訊端層 (SSL) 加密是最常用來保護在網際網路上傳送之資料的方法。 此常見工作會討論如何為 Web 角色指定 HTTPS 端點，以及如何上傳 SSL 憑證來保護應用程式的安全。
+傳輸層安全 (TLS) 以前稱為安全套接字層 (SSL) 加密,是保護通過互聯網發送的數據最常用的方法。 此常見任務討論如何為 Web 角色指定 HTTPS 終結點以及如何上傳 TLS/SSL 憑證來保護應用程式。
 
 > [!NOTE]
 > 此工作的程序適用於 Azure 雲端服務，若為應用程式服務，請參閱 [此處](../app-service/configure-ssl-bindings.md)。
@@ -27,14 +27,14 @@ ms.locfileid: "79273133"
 
 如果尚未建立雲端服務，請先閱讀 [這裡](cloud-services-how-to-create-deploy-portal.md) 。
 
-## <a name="step-1-get-an-ssl-certificate"></a>步驟 1：取得 SSL 憑證
-若要設定應用程式的 SSL，首先您需要取得已由憑證授權單位 (CA) (專門核發憑證的受信任第三方) 簽署的 SSL 憑證。 如果您還沒有此類憑證，則必須向銷售 SSL 憑證的公司取得。
+## <a name="step-1-get-a-tlsssl-certificate"></a>第一步:取得 TLS/SSL 憑證
+要為應用程式設定 TLS,首先需要獲得由證書頒發機構 (CA) 簽署的 TLS/SSL 證書,證書頒發證書的可信第三方會為此頒發證書。 如果您還沒有,則需要從銷售 TLS/SSL 證書的公司獲得一個證書。
 
-憑證必須符合 Azure 中對於 SSL 憑證的下列要求：
+憑證必須滿足 Azure 中 TLS/SSL 憑證的以下要求:
 
 * 憑證必須包含私密金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
-* 憑證的主體名稱必須符合用來存取雲端服務的網域。 您無法向憑證授權單位 (CA) 取得 cloudapp.net 網域的 SSL 憑證。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如，如果您的自訂功能變數名稱**contoso.com，** 您將從 CA 請求用於 ***.contoso.com**或**\.www contoso.com**的證書。
+* 憑證的主體名稱必須符合用來存取雲端服務的網域。 您不能從cloudapp.net網域的證書頒發機構 (CA) 獲取 TLS/SSL 證書。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如,如果您的自定義功能變數名稱**contoso.com,** 您將從 CA 請求**\.** 用於 ***.contoso.com**或 www contoso.com的證書。
 * 憑證至少必須以 2048 位元加密。
 
 基於測試目的，您可以 [建立](cloud-services-certs-create.md) 並使用自我簽署憑證。 自我簽署憑證不是由 CA 驗證，因此可以使用 cloudapp.net 網域做為網站 URL。 例如，以下工作即使用自我簽署憑證，該憑證中使用的一般名稱 (CN) 為 **sslexample.cloudapp.net**。
@@ -166,7 +166,7 @@ ms.locfileid: "79273133"
    ![網站預覽](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > 若要對預備部署而不是對生產部署使用 SSL，首先您需要判定要在預備部署中使用的 URL。 部署雲端服務之後，預備環境的 URL 即由**部署 ID** GUID 決定，格式如下：`https://deployment-id.cloudapp.net/`  
+   > 如果要將 TLS 用於臨時部署而不是生產部署,則首先需要確定用於暫存部署的 URL。 部署雲端服務之後，預備環境的 URL 即由**部署 ID** GUID 決定，格式如下：`https://deployment-id.cloudapp.net/`  
    >
    > 建立一般名稱 (CN) 等於 GUID 型 URL (如 **328187776e774ceda8fc57609d404462.cloudapp.net**) 的憑證。 使用入口網站將憑證新增至預備的雲端服務。 接著，將憑證資訊新增至 CSDEF 和 CSCFG 檔案、重新封裝應用程式，然後更新預備的部署以使用新套件。
    >

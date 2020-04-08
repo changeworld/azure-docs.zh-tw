@@ -2,20 +2,20 @@
 title: 標記資源支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657568"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802487"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
-本文將說明資源類型是否支援[標記](tag-resources.md)。 標記為 **"支援"標記**的列指示資源類型是否具有標記的屬性。 成本**報表中標記為"標記"的**列指示該資源類型是否將標記傳遞到成本報表。 您可以在[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)以及[Azure 計費發票和每日使用方式資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中按標記查看成本。
+本文將說明資源類型是否支援[標記](tag-resources.md)。 標記為**支援標記**的列指示資源類型是否具有標記的屬性。 成本**報表中標記為"標記"的**列指示該資源類型是否將標記傳遞到成本報表。 您可以在[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)以及[Azure 計費發票和每日使用方式數據](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中按標記查看成本。
 
 若要以逗號區隔值檔案的形式取得相同資料，請下載 [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)。
 
-跳轉到資來源提供者命名空間：
+跳到資源提供者命名空間:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
 > - [Microsoft.Addons](#microsoftaddons)
@@ -24,7 +24,7 @@ ms.locfileid: "77657568"
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [微軟.應用程式佈建](#microsoftappconfiguration)
+> - [微軟.應用程式設定](#microsoftappconfiguration)
 > - [微軟.AppPlatform](#microsoftappplatform)
 > - [Microsoft.Attestation](#microsoftattestation)
 > - [微軟.授權](#microsoftauthorization)
@@ -32,12 +32,13 @@ ms.locfileid: "77657568"
 > - [微軟.阿茲康菲格](#microsoftazconfig)
 > - [Microsoft.Azure.Geneva](#microsoftazuregeneva)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
-> - [微軟.Azure資料](#microsoftazuredata)
+> - [微軟.Azure數據](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [微軟.區塊鏈權杖](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
@@ -55,10 +56,9 @@ ms.locfileid: "77657568"
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [微軟.客戶鎖定箱](#microsoftcustomerlockbox)
-> - [微軟.自訂提供程式](#microsoftcustomproviders)
+> - [微軟客戶鎖定箱](#microsoftcustomerlockbox)
+> - [微軟.自訂提供者](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
@@ -67,7 +67,7 @@ ms.locfileid: "77657568"
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
 > - [Microsoft.DataMigration](#microsoftdatamigration)
-> - [微軟.資料共用](#microsoftdatashare)
+> - [微軟.資料共享](#microsoftdatashare)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -83,6 +83,7 @@ ms.locfileid: "77657568"
 > - [微軟.企業知識圖](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [微軟.法爾肯](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomics](#microsoftgenomics)
@@ -99,11 +100,13 @@ ms.locfileid: "77657568"
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [微軟.鑰匙庫](#microsoftkeyvault)
+> - [微軟.庫伯內斯](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [微軟.維護](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [微軟.託管服務](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
@@ -114,7 +117,7 @@ ms.locfileid: "77657568"
 > - [Microsoft.Media](#microsoftmedia)
 > - [微軟.微服務4春天](#microsoftmicroservices4spring)
 > - [Microsoft.Migrate](#microsoftmigrate)
-> - [微軟.混合現實](#microsoftmixedreality)
+> - [微軟.混合實境](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [微軟.網路](#microsoftnetwork)
 > - [微軟.筆記本](#microsoftnotebooks)
@@ -122,13 +125,14 @@ ms.locfileid: "77657568"
 > - [微軟.物件商店](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [微軟.運營管理](#microsoftoperationsmanagement)
+> - [微軟運營管理](#microsoftoperationsmanagement)
 > - [微軟.對等](#microsoftpeering)
 > - [微軟.政策見解](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
-> - [微軟.專案巴比靈斯](#microsoftprojectbabylon)
+> - [微軟.專案巴比隆](#microsoftprojectbabylon)
+> - [微軟.昆騰](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [微軟.遠端應用程式](#microsoftremoteapp)
@@ -146,14 +150,14 @@ ms.locfileid: "77657568"
 > - [微軟.服務](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
-> - [微軟.軟體計畫](#microsoftsoftwareplan)
+> - [微軟.軟體計劃](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [微軟.拼車服務](#microsoftspoolservice)
 > - [微軟.SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
-> - [微軟.存儲緩存](#microsoftstoragecache)
-> - [微軟.存儲複製](#microsoftstoragereplication)
+> - [微軟儲存快取](#microsoftstoragecache)
+> - [微軟儲存複製](#microsoftstoragereplication)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -162,7 +166,7 @@ ms.locfileid: "77657568"
 > - [Microsoft.Subscription](#microsoftsubscription)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [微軟.VMware雲簡單](#microsoftvmwarecloudsimple)
-> - [微軟.Vnf管理器](#microsoftvnfmanager)
+> - [微軟.Vnf管理員](#microsoftvnfmanager)
 > - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsDefenderATP](#microsoftwindowsdefenderatp)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
@@ -174,7 +178,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | DomainServices | 是 | 是 |
-> | 域服務/ ou容器 | 否 | 否 |
+> | 網域服務/ ou容器 | 否 | 否 |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -217,12 +221,10 @@ ms.locfileid: "77657568"
 > | actionRules | 是 | 是 |
 > | alerts | 否 | 否 |
 > | alertsList | 否 | 否 |
-> | 警報MetaData | 否 | 否 |
+> | 警示MetaData | 否 | 否 |
 > | alertsSummary | 否 | 否 |
 > | alertsSummaryList | 否 | 否 |
-> | 意見回應 | 否 | 否 |
 > | smartDetectorAlertRules | 是 | 是 |
-> | smartDetectorRuntimeEnvironments | 否 | 否 |
 > | smartGroups | 否 | 否 |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -241,13 +243,13 @@ ms.locfileid: "77657568"
 > | 服務 | 是 | 是 |
 > | validateServiceName | 否 | 否 |
 
-## <a name="microsoftappconfiguration"></a>微軟.應用程式佈建
+## <a name="microsoftappconfiguration"></a>微軟.應用程式設定
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 配置存儲 | 是 | 是 |
-> | 配置存儲/事件網格篩選器 | 否 | 否 |
+> | 設定儲存 | 是 | 是 |
+> | 設定儲存/事件網格篩選器 | 否 | 否 |
 
 ## <a name="microsoftappplatform"></a>微軟.AppPlatform
 
@@ -272,7 +274,7 @@ ms.locfileid: "77657568"
 > | 資料別名 | 否 | 否 |
 > | denyAssignments | 否 | 否 |
 > | elevateAccess | 否 | 否 |
-> | 查找孤兒角色指派 | 否 | 否 |
+> | 尋找孤兒角色分配 | 否 | 否 |
 > | locks | 否 | 否 |
 > | 權限 | 否 | 否 |
 > | policyAssignments | 否 | 否 |
@@ -280,7 +282,7 @@ ms.locfileid: "77657568"
 > | policySetDefinitions | 否 | 否 |
 > | providerOperations | 否 | 否 |
 > | roleAssignments | 否 | 否 |
-> | 角色指派使用指標 | 否 | 否 |
+> | 角色配置使用指標 | 否 | 否 |
 > | roleDefinitions | 否 | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -289,12 +291,12 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | automationAccounts | 是 | 是 |
-> | 自動化帳戶/配置 | 是 | 是 |
-> | 自動化會計/作業 | 否 | 否 |
-> | 自動化帳戶 /專用端接策略 | 否 | 否 |
+> | 自動化帳戶/設定 | 是 | 是 |
+> | 自動化會計或作業 | 否 | 否 |
+> | 自動化帳號 /專用端接原則 | 否 | 否 |
 > | 自動化帳戶/專用端點連接 | 否 | 否 |
-> | 自動化帳戶/私人連結資源 | 否 | 否 |
-> | 自動化帳簿/運行簿 | 是 | 是 |
+> | 自動化帳號/私人連結資源 | 否 | 否 |
+> | 自動化帳錄/執行簿 | 是 | 是 |
 > | 自動化帳戶/軟體更新配置 | 否 | 否 |
 > | 自動化帳戶/網路鉤子 | 否 | 否 |
 
@@ -303,8 +305,8 @@ ms.locfileid: "77657568"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 配置存儲 | 是 | 是 |
-> | 配置存儲/事件網格篩選器 | 否 | 否 |
+> | 設定儲存 | 是 | 是 |
+> | 設定儲存/事件網格篩選器 | 否 | 否 |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 
@@ -314,7 +316,7 @@ ms.locfileid: "77657568"
 > | environments | 否 | 否 |
 > | 環境/帳戶 | 否 | 否 |
 > | 環境/帳戶/命名空間 | 否 | 否 |
-> | 環境 / 帳戶 / 命名空間 / 配置 | 否 | 否 |
+> | 環境/ 帳戶 / 命名空間 / 設定 | 否 | 否 |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
@@ -324,14 +326,13 @@ ms.locfileid: "77657568"
 > | b2cDirectories | 是 | 否 |
 > | b2c租戶 | 否 | 否 |
 
-## <a name="microsoftazuredata"></a>微軟.Azure資料
+## <a name="microsoftazuredata"></a>微軟.Azure數據
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 混合資料管理器 | 是 | 是 |
+> | 混合資料管理員 | 是 | 是 |
 > | 後實例 | 是 | 是 |
-> | sqlBigData 集群 | 是 | 是 |
 > | sqlInstances | 是 | 是 |
 > | sqlServer 註冊 | 是 | 是 |
 > | sqlServer 註冊 / sqlServer | 否 | 否 |
@@ -341,10 +342,10 @@ ms.locfileid: "77657568"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
+> | 雲清單檔 | 否 | 否 |
 > | registrations | 是 | 是 |
 > | 註冊/客戶訂閱 | 否 | 否 |
 > | 註冊/產品 | 否 | 否 |
-> | 驗證金鑰 | 否 | 否 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -361,83 +362,83 @@ ms.locfileid: "77657568"
 > | billingAccounts | 否 | 否 |
 > | 帳單帳戶/協定 | 否 | 否 |
 > | 計費帳戶/計費許可權 | 否 | 否 |
-> | 帳單帳戶/帳單設定檔 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 計費許可權 | 否 | 否 |
-> | 帳單帳戶 / 計費設定檔 / 計費角色指派 | 否 | 否 |
-> | 帳單帳戶/帳單設定檔/計費角色定義 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 計費訂閱 | 否 | 否 |
-> | 計費帳戶 /計費設定檔 / 創建計費角色指派 | 否 | 否 |
-> | 帳單帳戶/帳單設定檔/客戶 | 否 | 否 |
-> | 帳單帳戶/帳單設定檔/說明 | 否 | 否 |
+> | 帳號/帳號/帳戶/帳戶 | 否 | 否 |
+> | 帳號 / 帳號設定檔 / 計費權限 | 否 | 否 |
+> | 帳號 / 計費設定檔 / 計費角色分配 | 否 | 否 |
+> | 帳單帳號/帳單配置檔/計費角色定義 | 否 | 否 |
+> | 帳號 / 帳號設定檔 / 計費訂閱 | 否 | 否 |
+> | 計費帳號 /計費設定檔 / 建立計費角色分配 | 否 | 否 |
+> | 帳單帳號/帳單設定檔/客戶 | 否 | 否 |
+> | 帳單帳號/帳單設定檔/說明 | 否 | 否 |
 > | 帳單帳目 / 帳單設定檔 / 發票 | 否 | 否 |
 > | 帳單帳目 / 帳單設定檔 / 發票 / 價格表 | 否 | 否 |
 > | 帳單帳目 / 帳單設定檔 / 發票 / 交易記錄 | 否 | 否 |
 > | 帳單帳目 / 帳單設定檔 / 發票節 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節 / 計費許可權 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節 / 計費角色指派 | 否 | 否 |
+> | 帳號 / 帳號設定檔 / 發票節 / 計費權限 | 否 | 否 |
+> | 帳號 / 帳號/ rectccco/ stccs 設定檔 / 發票節 / 計費角色分配 | 否 | 否 |
 > | 帳單科目 / 帳單設定檔 / 發票節 / 計費角色定義 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節 / 計費訂閱 | 否 | 否 |
-> | 帳單帳目 / 帳單設定檔 / 發票節 / 創建計費角色指派 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節 / 啟動轉移 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節 / 產品 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票部分 / 產品 / 轉讓 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節 / 產品 / 更新自動續訂 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票節/ 交易記錄 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 發票部分 / 轉帳 | 否 | 否 |
-> | 帳單帳戶 / 計費設定檔 / 修補程式操作 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 付款條件 | 否 | 否 |
-> | 帳單帳戶 /帳單設定檔/策略 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 價格表 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 價格表下載操作 | 否 | 否 |
-> | 帳單帳戶 / 帳單設定檔 / 產品 | 否 | 否 |
-> | 帳單帳戶/帳單設定檔/交易 | 否 | 否 |
-> | 計費帳戶/計費角色指派 | 否 | 否 |
+> | 帳號 / 帳號設定檔 / 發票節 / 計費訂閱 | 否 | 否 |
+> | 帳單帳目 / 帳單設定檔 / 發票節 / 建立計費角色分配 | 否 | 否 |
+> | 帳號 / 帳單設定檔 / 發票節 / 啟動轉移 | 否 | 否 |
+> | 帳號帳號 / 帳單設定檔 / 發票節 / 產品 | 否 | 否 |
+> | 帳號 / 帳單設定檔 / 發票部份 / 產品 / 轉讓 | 否 | 否 |
+> | 帳號 / 帳號/ 帳號 / 發票節 / 產品 / 更新自動續訂 | 否 | 否 |
+> | 帳號 / 帳單設定檔 / 發票節/ 交易記錄 | 否 | 否 |
+> | 帳號帳號 / 帳單設定檔 / 發票部份 / 轉帳 | 否 | 否 |
+> | 帳單帳號 / 計費設定檔 / 修補程式操作 | 否 | 否 |
+> | 帳單帳號 / 帳單設定檔 / 付款條件 | 否 | 否 |
+> | 帳單帳號 /帳單設定檔/原則 | 否 | 否 |
+> | 帳號帳號 / 帳單設定檔 / 價格表 | 否 | 否 |
+> | 帳號/ 帳單設定檔 / 價格表下載操作 | 否 | 否 |
+> | 帳單帳號 / 帳單設定檔 / 產品 | 否 | 否 |
+> | 帳單帳號/帳單配置檔/交易 | 否 | 否 |
+> | 計費帳戶/計費角色分配 | 否 | 否 |
 > | 計費帳戶/計費角色定義 | 否 | 否 |
 > | 計費帳戶/計費訂閱 | 否 | 否 |
-> | 帳單帳戶 / 帳單訂閱 / 發票 | 否 | 否 |
-> | 計費帳戶/ 創建計費角色指派 | 否 | 否 |
+> | 帳號/ 帳號訂閱 / 發票 | 否 | 否 |
+> | 計費帳號/ 建立計費角色分配 | 否 | 否 |
 > | 計費帳戶/創建發票節操作 | 否 | 否 |
-> | 帳單帳戶/客戶 | 否 | 否 |
+> | 帳單帳號/客戶 | 否 | 否 |
 > | 計費帳戶/客戶/計費許可權 | 否 | 否 |
 > | 帳單帳戶/客戶/計費訂閱 | 否 | 否 |
-> | 帳單帳戶/客戶/啟動轉帳 | 否 | 否 |
-> | 帳單帳戶/客戶/政策 | 否 | 否 |
-> | 帳單帳戶/客戶/產品 | 否 | 否 |
-> | 帳單帳戶/客戶/交易 | 否 | 否 |
-> | 帳單帳戶/客戶/轉帳 | 否 | 否 |
-> | 帳單帳戶/部門 | 否 | 否 |
+> | 帳單帳號/客戶/啟動轉帳 | 否 | 否 |
+> | 帳單帳號/客戶/政策 | 否 | 否 |
+> | 帳單帳號/客戶/產品 | 否 | 否 |
+> | 帳單帳號/客戶/交易 | 否 | 否 |
+> | 帳單帳號/客戶/轉帳 | 否 | 否 |
+> | 帳號/部門 | 否 | 否 |
 > | 帳單帳目/註冊帳目 | 否 | 否 |
 > | 帳單帳目/發票 | 否 | 否 |
 > | 帳單科目 /發票部分 | 否 | 否 |
-> | 帳單帳戶 / 發票節 / 計費訂閱移動操作 | 否 | 否 |
-> | 帳單帳戶 / 發票節 / 計費訂閱 | 否 | 否 |
-> | 帳單帳戶 / 發票節 / 計費訂閱 / 轉帳 | 否 | 否 |
+> | 帳號/ 發票節 / 計費訂閱移動操作 | 否 | 否 |
+> | 帳號 / 發票節 / 計費訂閱 | 否 | 否 |
+> | 帳號 / 發票節 / 計費訂閱 / 轉帳 | 否 | 否 |
 > | 帳單科目 / 發票節 / 提升 | 否 | 否 |
 > | 帳單科目 /發票節 / 啟動轉移 | 否 | 否 |
 > | 帳單帳目 / 發票節 / 修補程式操作 | 否 | 否 |
 > | 帳單科目 / 發票節 / 產品移動操作 | 否 | 否 |
-> | 帳單科目 / 發票部分 / 產品 | 否 | 否 |
-> | 帳單帳戶 / 發票部分 / 產品 / 轉移 | 否 | 否 |
-> | 帳單帳戶 / 發票部分 / 產品 / 更新自動續訂 | 否 | 否 |
-> | 帳單科目 / 發票部分 / 交易記錄 | 否 | 否 |
-> | 帳單科目 / 發票部分 / 轉帳 | 否 | 否 |
+> | 帳單科目 / 發票部份 / 產品 | 否 | 否 |
+> | 帳號/ 發票部份 / 產品 / 轉移 | 否 | 否 |
+> | 帳號/ 發票部份 / 產品 / 更新自動續訂 | 否 | 否 |
+> | 帳單科目 / 發票部份 / 交易記錄 | 否 | 否 |
+> | 帳單科目 / 發票部份 / 轉帳 | 否 | 否 |
 > | 帳單帳戶/信用額度 | 否 | 否 |
 > | 計費帳戶/修補程式操作 | 否 | 否 |
-> | 帳單帳戶/付款條件 | 否 | 否 |
+> | 帳單帳號/付款條件 | 否 | 否 |
 > | 帳單帳戶/產品 | 否 | 否 |
-> | 帳單帳戶/交易 | 否 | 否 |
+> | 帳單帳號/交易 | 否 | 否 |
 > | billingPeriods | 否 | 否 |
-> | 計費許可權 | 否 | 否 |
+> | 計費權限 | 否 | 否 |
 > | billingProperty | 否 | 否 |
-> | 計費角色指派 | 否 | 否 |
+> | 計費角色分配 | 否 | 否 |
 > | 計費角色定義 | 否 | 否 |
-> | 創建計費角色指派 | 否 | 否 |
+> | 建立計費角色配置 | 否 | 否 |
 > | departments | 否 | 否 |
 > | enrollmentAccounts | 否 | 否 |
 > | invoices | 否 | 否 |
 > | transfers | 否 | 否 |
 > | 轉讓/接受轉移 | 否 | 否 |
-> | 轉移/拒絕轉移 | 否 | 否 |
+> | 轉移/ 拒絕轉移 | 否 | 否 |
 > | 轉移/操作狀態 | 否 | 否 |
 > | 傳輸/驗證傳輸 | 否 | 否 |
 > | 驗證位址 | 否 | 否 |
@@ -459,14 +460,25 @@ ms.locfileid: "77657568"
 > | 臍帶成員 | 是 | 是 |
 > | 觀察家 | 是 | 是 |
 
+## <a name="microsoftblockchaintokens"></a>微軟.區塊鏈權杖
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 在成本報告中標記 |
+> | ------------- | ----------- | ----------- |
+> | 權杖服務 | 是 | 是 |
+> | 權杖服務 / 區塊鏈網路 | 否 | 否 |
+> | 權杖服務/ 群組 | 否 | 否 |
+> | 權杖服務 / 群組 / 帳戶 | 否 | 否 |
+> | 權杖服務/權杖範本 | 否 | 否 |
+
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | blueprintAssignments | 否 | 否 |
-> | 藍圖分配/分配操作 | 否 | 否 |
-> | 藍圖分配/操作 | 否 | 否 |
+> | 藍圖配置/配置操作 | 否 | 否 |
+> | 藍圖配置/操作 | 否 | 否 |
 > | blueprints | 否 | 否 |
 > | 藍圖/工件 | 否 | 否 |
 > | 藍圖/版本 | 否 | 否 |
@@ -479,7 +491,7 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | botServices | 是 | 是 |
 > | 機器人服務/頻道 | 否 | 否 |
-> | 機器人服務/ 連接 | 否 | 否 |
+> | 機器人服務/ 連線 | 否 | 否 |
 > | 語言 | 否 | 否 |
 > | 範本 | 否 | 否 |
 
@@ -522,13 +534,14 @@ ms.locfileid: "77657568"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | CdnWeb應用程式防火牆管理規則集 | 否 | 否 |
-> | CdnWeb應用程式防火牆策略 | 是 | 是 |
+> | CdnWeb 應用程式防火牆管理規則集 | 否 | 否 |
+> | CdnWeb 應用程式防火牆原則 | 是 | 是 |
 > | edgenodes | 否 | 否 |
 > | 設定檔 | 是 | 是 |
-> | 設定檔/端點 | 是 | 是 |
-> | 設定檔 / 終結點 / 自訂域 | 否 | 否 |
-> | 設定檔/端點/原點 | 否 | 否 |
+> | 設定檔案/點端點 | 是 | 是 |
+> | 設定檔案 / 終結點 / 自訂網域 | 否 | 否 |
+> | 設定檔/終結點/原點組 | 否 | 否 |
+> | 設定檔/連接點/原點 | 否 | 否 |
 > | validateProbe | 否 | 否 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -537,7 +550,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | certificateOrders | 是 | 是 |
-> | 證書訂單/證書 | 否 | 否 |
+> | 憑證訂單/證書 | 否 | 否 |
 > | validateCertificateRegistrationInformation | 否 | 否 |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
@@ -548,12 +561,12 @@ ms.locfileid: "77657568"
 > | capabilities | 否 | 否 |
 > | domainNames | 否 | 否 |
 > | 功能變數名稱/功能 | 否 | 否 |
-> | 功能變數名稱/內部負載平衡器 | 否 | 否 |
-> | 功能變數名稱/服務證書 | 否 | 否 |
+> | 網域名稱/內部負載平衡器 | 否 | 否 |
+> | 網域名稱/服務憑證 | 否 | 否 |
 > | 功能變數名稱/插槽 | 否 | 否 |
-> | 功能變數名稱 / 插槽 / 角色 | 否 | 否 |
-> | 功能變數名稱 / 插槽 / 角色 / 指標定義 | 否 | 否 |
-> | 功能變數名稱 / 插槽 / 角色 / 指標 | 否 | 否 |
+> | 網域名稱 / 插槽 / 角色 | 否 | 否 |
+> | 網域名稱 / 插槽 / 角色 / 指標定義 | 否 | 否 |
+> | 網域名稱 / 插槽 / 角色 / 指標 | 否 | 否 |
 > | moveSubscriptionResources | 否 | 否 |
 > | operatingSystemFamilies | 否 | 否 |
 > | operatingSystems | 否 | 否 |
@@ -561,7 +574,7 @@ ms.locfileid: "77657568"
 > | resourceTypes | 否 | 否 |
 > | validateSubscriptionMoveAvailability | 否 | 否 |
 > | virtualMachines | 否 | 否 |
-> | 虛擬機器/診斷設置 | 否 | 否 |
+> | 虛擬機器/診斷設定 | 否 | 否 |
 > | 虛擬機器/指標定義 | 否 | 否 |
 > | 虛擬機器/指標 | 否 | 否 |
 
@@ -601,17 +614,17 @@ ms.locfileid: "77657568"
 > | publicImages | 否 | 否 |
 > | quotas | 否 | 否 |
 > | storageAccounts | 否 | 否 |
-> | 存儲帳戶/blob 服務 | 否 | 否 |
-> | 存儲帳戶/檔服務 | 否 | 否 |
-> | 存儲帳戶/指標定義 | 否 | 否 |
-> | 存儲帳戶/指標 | 否 | 否 |
-> | 存儲帳戶/佇列服務 | 否 | 否 |
-> | 存儲帳戶/服務 | 否 | 否 |
-> | 存儲帳戶/服務 / 診斷設置 | 否 | 否 |
-> | 存儲帳戶 / 服務 / 指標定義 | 否 | 否 |
-> | 存儲帳戶/服務 / 指標 | 否 | 否 |
-> | 存儲帳戶/表服務 | 否 | 否 |
-> | 存儲帳戶/ vmImage | 否 | 否 |
+> | 儲存帳號/blob 服務 | 否 | 否 |
+> | 儲存帳號/檔案服務 | 否 | 否 |
+> | 儲存帳戶/指標定義 | 否 | 否 |
+> | 儲存帳戶/指標 | 否 | 否 |
+> | 儲存帳戶/佇列服務 | 否 | 否 |
+> | 儲存帳戶/服務 | 否 | 否 |
+> | 儲存帳號/服務 / 診斷設定 | 否 | 否 |
+> | 儲存帳號/ 服務 / 指標定義 | 否 | 否 |
+> | 儲存帳戶/服務 / 指標 | 否 | 否 |
+> | 儲存帳戶/表服務 | 否 | 否 |
+> | 儲存帳號/ vmImage | 否 | 否 |
 > | vmImages | 否 | 否 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
@@ -635,31 +648,34 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | availabilitySets | 是 | 是 |
-> | 磁片加密集 | 是 | 是 |
+> | 磁碟加密集 | 是 | 是 |
 > | disks | 是 | 是 |
 > | galleries | 是 | 是 |
 > | 畫廊/應用程式 | 否 | 否 |
 > | 畫廊 / 應用程式 / 版本 | 否 | 否 |
 > | 畫廊/圖片 | 否 | 否 |
-> | 畫廊 / 圖像 / 版本 | 否 | 否 |
+> | 畫廊 / 影像 / 版本 | 否 | 否 |
 > | 主機組 | 是 | 是 |
 > | 主機組/主機 | 是 | 是 |
 > | images | 是 | 是 |
-> | 鄰近放置組 | 是 | 是 |
+> | 鄰近放置群組 | 是 | 是 |
 > | restorePointCollections | 是 | 是 |
 > | 還原點集合/還原點 | 否 | 否 |
+> | 共用 VM 延伸 | 是 | 是 |
+> | 共用VM延伸/版本 | 否 | 否 |
 > | sharedVMImages | 是 | 是 |
-> | 共用VM圖像/版本 | 否 | 否 |
+> | 共用VM影像/版本 | 否 | 否 |
 > | snapshots | 是 | 是 |
+> | sshPublicKeys | 是 | 是 |
 > | virtualMachines | 是 | 是 |
 > | 虛擬機器/擴展 | 是 | 是 |
 > | 虛擬機器/指標定義 | 否 | 否 |
 > | virtualMachineScaleSets | 是 | 是 |
-> | 虛擬機器級表集/擴展 | 否 | 否 |
-> | 虛擬機器級表集/網路介面 | 否 | 否 |
+> | 虛擬機器表集/擴充 | 否 | 否 |
+> | 虛擬機器表集/網路介面 | 否 | 否 |
 > | 虛擬機器級集/公共 IP 位址 | 否 | 否 |
 > | 虛擬機器規模集/虛擬機器 | 否 | 否 |
-> | 虛擬機器級表集 / 虛擬機器 / 網路介面 | 否 | 否 |
+> | 虛擬機器表集/ 虛擬機器/ 網路介面 | 否 | 否 |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
@@ -701,34 +717,35 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | registries | 是 | 是 |
-> | 註冊表/生成 | 否 | 否 |
-> | 註冊表 / 生成 / 取消 | 否 | 否 |
-> | 註冊表 / 生成 / 獲取日誌連結 | 否 | 否 |
-> | 註冊表/生成任務 | 是 | 是 |
-> | 註冊表/ 生成任務 / 步驟 | 否 | 否 |
+> | 註冊表/代理池 | 是 | 是 |
+> | 註冊表/產生 | 否 | 否 |
+> | 註冊表 / 產生 / 取消 | 否 | 否 |
+> | 註冊表 / 產生 / 取得紀錄連結 | 否 | 否 |
+> | 註冊表/產生工作 | 是 | 是 |
+> | 註冊表/ 產生工作 / 步驟 | 否 | 否 |
 > | 註冊表/事件網格篩選器 | 否 | 否 |
-> | 註冊表/生成憑據 | 否 | 否 |
-> | 註冊表 / 獲取構建源Url | 否 | 否 |
-> | 註冊/ 獲取憑據 | 否 | 否 |
-> | 註冊表/導入圖像 | 否 | 否 |
-> | 註冊表 / 私有端接連接 Proxies | 否 | 否 |
-> | 註冊表 / 私有端接連接Proxies / 驗證 | 否 | 否 |
+> | 註冊表/生成認證 | 否 | 否 |
+> | 註冊表 / 取得編譯來源網址 | 否 | 否 |
+> | 註冊/ 取得認證 | 否 | 否 |
+> | 登錄表/匯入影像 | 否 | 否 |
+> | 註冊表 / 私有端接連線 Proxies | 否 | 否 |
+> | 註冊表 / 私有端接連線Proxies / 驗證 | 否 | 否 |
 > | 註冊表/專用端點連接 | 否 | 否 |
 > | 註冊/ 私人連結資源 | 否 | 否 |
-> | 註冊表/佇列生成 | 否 | 否 |
-> | 註冊表/再生憑據 | 否 | 否 |
-> | 註冊表/再生憑據 | 否 | 否 |
-> | 註冊表/複製 | 是 | 是 |
-> | 註冊表/運行 | 否 | 否 |
-> | 註冊表 / 運行 / 取消 | 否 | 否 |
-> | 註冊表/計畫運行 | 否 | 否 |
+> | 註冊表/佇列產生 | 否 | 否 |
+> | 註冊表/再生認證 | 否 | 否 |
+> | 註冊表/再生認證 | 否 | 否 |
+> | 登錄表/複製 | 是 | 是 |
+> | 註冊表/執行 | 否 | 否 |
+> | 註冊表 / 執行 / 取消 | 否 | 否 |
+> | 註冊表/計劃執行 | 否 | 否 |
 > | 註冊表/範圍圖 | 否 | 否 |
-> | 註冊表/任務運行 | 是 | 是 |
+> | 登錄表格表 | 是 | 是 |
 > | 註冊表/任務 | 是 | 是 |
 > | 註冊表/權杖 | 否 | 否 |
-> | 註冊表/更新策略 | 否 | 否 |
+> | 登錄表格/更新原則 | 否 | 否 |
 > | 註冊表/網鉤 | 是 | 是 |
-> | 註冊表 / 網鉤 / 獲取回撥 Config | 否 | 否 |
+> | 註冊表 / 網鉤 / 取得回撥 Config | 否 | 否 |
 > | 註冊表 / 網鉤 / ping | 否 | 否 |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
@@ -739,13 +756,6 @@ ms.locfileid: "77657568"
 > | containerServices | 是 | 是 |
 > | managedClusters | 是 | 是 |
 > | 開放式轉移託管集群 | 是 | 是 |
-
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-
-> [!div class="mx-tableFixed"]
-> | 資源類型 | 支援標記 | 在成本報告中標記 |
-> | ------------- | ----------- | ----------- |
-> | accounts | 是 | 是 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -763,7 +773,7 @@ ms.locfileid: "77657568"
 > | 出口 | 否 | 否 |
 > | 外部結算帳戶 | 否 | 否 |
 > | 外部結算帳戶/警報 | 否 | 否 |
-> | 外部計費帳戶 / 維度 | 否 | 否 |
+> | 外部計費帳號 / 維度 | 否 | 否 |
 > | 外部結算帳戶/預測 | 否 | 否 |
 > | 外部計費帳戶/查詢 | 否 | 否 |
 > | 外部訂閱 | 否 | 否 |
@@ -780,14 +790,14 @@ ms.locfileid: "77657568"
 > | 顯示回法規則 | 否 | 否 |
 > | 檢視 | 否 | 否 |
 
-## <a name="microsoftcustomerlockbox"></a>微軟.客戶鎖定箱
+## <a name="microsoftcustomerlockbox"></a>微軟客戶鎖定箱
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | requests | 否 | 否 |
 
-## <a name="microsoftcustomproviders"></a>微軟.自訂提供程式
+## <a name="microsoftcustomproviders"></a>微軟.自訂提供者
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
@@ -816,7 +826,7 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 否 |
 > | 工作區/資料庫工作區 | 否 | 否 |
-> | 工作區/存儲加密 | 否 | 否 |
+> | 工作區/儲存加密 | 否 | 否 |
 > | 工作區/虛擬網路對等互連 | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -837,11 +847,11 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | dataFactories | 是 | 否 |
-> | 資料工廠/診斷設置 | 否 | 否 |
+> | 資料工廠/診斷設定 | 否 | 否 |
 > | 資料工廠/指標定義 | 否 | 否 |
 > | dataFactorySchema | 否 | 否 |
 > | factories | 是 | 否 |
-> | 工廠/集成執行時間 | 否 | 否 |
+> | 工廠/整合執行時間 | 否 | 否 |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
@@ -849,10 +859,10 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
-> | 帳戶/資料湖存儲帳戶 | 否 | 否 |
-> | 帳戶/存儲帳戶 | 否 | 否 |
-> | 帳戶 / 存儲帳戶 / 容器 | 否 | 否 |
-> | 帳戶/轉帳分析單位 | 否 | 否 |
+> | 帳號/資料湖儲存帳戶 | 否 | 否 |
+> | 帳戶/儲存帳戶 | 否 | 否 |
+> | 帳號/ 儲存帳號 / 容器 | 否 | 否 |
+> | 帳號/轉帳分析單位 | 否 | 否 |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
@@ -860,8 +870,8 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
-> | 帳戶/事件網格篩選器 | 否 | 否 |
-> | 帳戶/防火牆規則 | 否 | 否 |
+> | 帳號/事件網格篩選器 | 否 | 否 |
+> | 帳號/防火牆規則 | 否 | 否 |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -871,21 +881,21 @@ ms.locfileid: "77657568"
 > | 服務 | 否 | 否 |
 > | 服務/專案 | 否 | 否 |
 
-## <a name="microsoftdatashare"></a>微軟.資料共用
+## <a name="microsoftdatashare"></a>微軟.資料共享
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
 > | 帳戶/股份 | 否 | 否 |
-> | 帳戶/ 共用 / 資料集 | 否 | 否 |
-> | 帳戶/ 股票 / 邀請 | 否 | 否 |
-> | 帳戶/共用 / 供應商共用訂閱 | 否 | 否 |
-> | 帳戶/ 共用 / 同步設置 | 否 | 否 |
-> | 帳戶/共用訂閱 | 否 | 否 |
-> | 帳戶 / 共用訂閱 / 消費者來源資料集組 | 否 | 否 |
-> | 帳戶/共用訂閱/資料集映射 | 否 | 否 |
-> | 帳戶 / 共用訂閱 / 觸發器 | 否 | 否 |
+> | 帳號/ 分享/ 資料集 | 否 | 否 |
+> | 帳號/ 股票 / 邀請 | 否 | 否 |
+> | 帳號/共用 / 提供者共用訂閱 | 否 | 否 |
+> | 帳號/ 共用 / 同步設定 | 否 | 否 |
+> | 帳號/共用訂閱 | 否 | 否 |
+> | 帳號/ 分享訂閱 / 使用者來源資料集群組 | 否 | 否 |
+> | 帳號/共用訂閱/資料集映射 | 否 | 否 |
+> | 帳號/ 共用訂閱 / 觸發器 | 否 | 否 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -895,12 +905,12 @@ ms.locfileid: "77657568"
 > | servers | 是 | 是 |
 > | 伺服器/顧問 | 否 | 否 |
 > | 伺服器/金鑰 | 否 | 否 |
-> | 伺服器/專用端接連接Proxies | 否 | 否 |
+> | 伺服器/專用端接連線Proxies | 否 | 否 |
 > | 伺服器/專用端點連接 | 否 | 否 |
 > | 伺服器/專用連結資源 | 否 | 否 |
-> | 伺服器/查詢文本 | 否 | 否 |
-> | 伺服器/可恢復伺服器 | 否 | 否 |
-> | 伺服器/頂級查詢統計資訊 | 否 | 否 |
+> | 伺服器/查詢文字 | 否 | 否 |
+> | 伺服器/可復原伺服器 | 否 | 否 |
+> | 伺服器/頂層查詢統計資訊 | 否 | 否 |
 > | 伺服器/虛擬網路規則 | 否 | 否 |
 > | 伺服器/等待統計 | 否 | 否 |
 
@@ -912,12 +922,12 @@ ms.locfileid: "77657568"
 > | servers | 是 | 是 |
 > | 伺服器/顧問 | 否 | 否 |
 > | 伺服器/金鑰 | 否 | 否 |
-> | 伺服器/專用端接連接Proxies | 否 | 否 |
+> | 伺服器/專用端接連線Proxies | 否 | 否 |
 > | 伺服器/專用端點連接 | 否 | 否 |
 > | 伺服器/專用連結資源 | 否 | 否 |
-> | 伺服器/查詢文本 | 否 | 否 |
-> | 伺服器/可恢復伺服器 | 否 | 否 |
-> | 伺服器/頂級查詢統計資訊 | 否 | 否 |
+> | 伺服器/查詢文字 | 否 | 否 |
+> | 伺服器/可復原伺服器 | 否 | 否 |
+> | 伺服器/頂層查詢統計資訊 | 否 | 否 |
 > | 伺服器/虛擬網路規則 | 否 | 否 |
 > | 伺服器/等待統計 | 否 | 否 |
 
@@ -930,15 +940,16 @@ ms.locfileid: "77657568"
 > | servers | 是 | 是 |
 > | 伺服器/顧問 | 否 | 否 |
 > | 伺服器/金鑰 | 否 | 否 |
-> | 伺服器/專用端接連接Proxies | 否 | 否 |
+> | 伺服器/專用端接連線Proxies | 否 | 否 |
 > | 伺服器/專用端點連接 | 否 | 否 |
 > | 伺服器/專用連結資源 | 否 | 否 |
-> | 伺服器/查詢文本 | 否 | 否 |
-> | 伺服器/可恢復伺服器 | 否 | 否 |
-> | 伺服器/頂級查詢統計資訊 | 否 | 否 |
+> | 伺服器/查詢文字 | 否 | 否 |
+> | 伺服器/可復原伺服器 | 否 | 否 |
+> | 伺服器/頂層查詢統計資訊 | 否 | 否 |
 > | 伺服器/虛擬網路規則 | 否 | 否 |
 > | 伺服器/等待統計 | 否 | 否 |
 > | 伺服器v2 | 是 | 是 |
+> | 單伺服器 | 是 | 是 |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -949,7 +960,7 @@ ms.locfileid: "77657568"
 > | rollouts | 是 | 是 |
 > | 服務拓撲 | 是 | 是 |
 > | 服務拓撲/服務 | 是 | 是 |
-> | 服務中心 / 服務 / 服務單位 | 是 | 是 |
+> | 服務機構 / 服務 / 服務單位 | 是 | 是 |
 > | steps | 是 | 是 |
 
 ## <a name="microsoftdesktopvirtualization"></a>微軟.桌面虛擬化
@@ -957,14 +968,14 @@ ms.locfileid: "77657568"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 應用程式組 | 是 | 是 |
-> | 應用程式組/應用程式 | 否 | 否 |
-> | 應用程式組/桌面 | 否 | 否 |
-> | 應用程式組/啟動功能表項目 | 否 | 否 |
+> | 應用程式群組 | 是 | 是 |
+> | 應用程式群組/應用程式 | 否 | 否 |
+> | 應用程式群組/桌面 | 否 | 否 |
+> | 應用程式群組/啟動選單項目 | 否 | 否 |
 > | 主機池 | 是 | 是 |
 > | 主機池/工作階段主機 | 否 | 否 |
 > | 主機池/工作階段主機/使用者會話 | 否 | 否 |
-> | 主機池/使用者會話 | 否 | 否 |
+> | 主機池/使用者工作階段 | 否 | 否 |
 > | workspaces | 是 | 是 |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -974,10 +985,10 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | 彈性池 | 是 | 是 |
 > | 彈性池 / IotHub租戶 | 是 | 是 |
-> | 彈性池 / IotHub租戶 / 安全設置 | 否 | 否 |
+> | 彈性池 / IotHub租戶 / 安全設定 | 否 | 否 |
 > | IotHubs | 是 | 是 |
 > | IotHubs / 事件網格篩選器 | 否 | 否 |
-> | IotHubs / 安全設置 | 否 | 否 |
+> | IotHubs / 安全設定 | 否 | 否 |
 > | ProvisioningServices | 是 | 是 |
 > | usages | 否 | 否 |
 
@@ -1003,7 +1014,7 @@ ms.locfileid: "77657568"
 > | labcenters | 是 | 是 |
 > | labs | 是 | 是 |
 > | 實驗室/環境 | 是 | 是 |
-> | 實驗室/服務運行者 | 是 | 是 |
+> | 實驗室/服務執行者 | 是 | 是 |
 > | 實驗室/虛擬機器 | 是 | 是 |
 > | schedules | 是 | 是 |
 
@@ -1021,7 +1032,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | domains | 是 | 是 |
-> | 域 /域擁有權識別碼 | 否 | 否 |
+> | 網域 /網域擁有權識別碼 | 否 | 否 |
 > | generateSsoRequest | 否 | 否 |
 > | topLevelDomains | 否 | 否 |
 > | validateDomainRegistrationInformation | 否 | 否 |
@@ -1032,8 +1043,8 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | lcsprojects | 否 | 否 |
-> | lcs專案/雲部署 | 否 | 否 |
-> | lcs專案/ 連接器 | 否 | 否 |
+> | lcs 專案/雲部署 | 否 | 否 |
+> | lcs 專案/ 連接器 | 否 | 否 |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>微軟.企業知識圖
 
@@ -1048,11 +1059,11 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | domains | 是 | 是 |
-> | 域/主題 | 否 | 否 |
+> | 網域/佈景主題 | 否 | 否 |
 > | eventSubscriptions | 否 | 否 |
 > | extensionTopics | 否 | 否 |
 > | 合作夥伴命名空間 | 是 | 是 |
-> | 合作夥伴命名空間/ 事件通道 | 否 | 否 |
+> | 合作夥伴命名空間/ 事件頻道 | 否 | 否 |
 > | 合作夥伴註冊 | 是 | 是 |
 > | 合作夥伴主題 | 是 | 是 |
 > | 合作夥伴主題/活動訂閱 | 否 | 否 |
@@ -1069,19 +1080,28 @@ ms.locfileid: "77657568"
 > | clusters | 是 | 是 |
 > | 命名空間 | 是 | 是 |
 > | 命名空間/授權規則 | 否 | 否 |
-> | 命名空間/災害復原配置 | 否 | 否 |
+> | 命名空間/災難修復設定 | 否 | 否 |
 > | 命名空間/事件中心 | 否 | 否 |
 > | 命名空間/ 事件中心 / 授權規則 | 否 | 否 |
 > | 命名空間 / 事件中心 / 消費組 | 否 | 否 |
 > | 命名空間/網路規則集 | 否 | 否 |
+
+## <a name="microsoftfalcon"></a>微軟.法爾肯
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 在成本報告中標記 |
+> | ------------- | ----------- | ----------- |
+> | 命名空間 | 是 | 是 |
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
+> | 功能提供者 | 否 | 否 |
 > | 特性 | 否 | 否 |
 > | 提供者 | 否 | 否 |
+> | 訂閱功能註冊 | 否 | 否 |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -1094,8 +1114,8 @@ ms.locfileid: "77657568"
 > | myareas | 否 | 否 |
 > | 我的區域/地區 | 否 | 否 |
 > | 我的區域 / 區域 / 區域 | 否 | 否 |
-> | 我的區域 / 區域 / 區域 / 畫廊專案 | 否 | 否 |
-> | 我的區域 / 區域 / 畫廊專案 | 否 | 否 |
+> | 我的區域 / 區域 / 區域 / 畫廊項目 | 否 | 否 |
+> | 我的區域 / 區域 / 畫廊項目 | 否 | 否 |
 > | 我的區域 / 畫廊專案 | 否 | 否 |
 > | 註冊 | 否 | 否 |
 > | resources | 否 | 否 |
@@ -1114,8 +1134,8 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | 自動管理帳戶 | 是 | 是 |
-> | 自動管理Vm配置設定檔 | 是 | 是 |
-> | 配置設定檔分配 | 否 | 否 |
+> | 自動管理Vm設定設定檔 | 是 | 是 |
+> | 設定設定檔配置 | 否 | 否 |
 > | guestConfigurationAssignments | 否 | 否 |
 > | software | 否 | 否 |
 > | 軟體更新設定檔 | 否 | 否 |
@@ -1142,7 +1162,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
-> | 群集/應用程式 | 否 | 否 |
+> | 叢集/應用程式 | 否 | 否 |
 
 ## <a name="microsofthealthcareapis"></a>微軟.醫療保健Apis
 
@@ -1164,7 +1184,7 @@ ms.locfileid: "77657568"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 資料管理器 | 是 | 是 |
+> | 資料管理員 | 是 | 是 |
 
 ## <a name="microsofthydra"></a>微軟.海德拉
 
@@ -1212,9 +1232,16 @@ ms.locfileid: "77657568"
 > | deletedVaults | 否 | 否 |
 > | hsmPools | 是 | 是 |
 > | vaults | 是 | 是 |
-> | 保存庫/訪問策略 | 否 | 否 |
+> | 保存庫/存取原則 | 否 | 否 |
 > | 保存庫/事件網格篩選器 | 否 | 否 |
-> | 保存庫/機密 | 否 | 否 |
+> | 保管庫/機密 | 否 | 否 |
+
+## <a name="microsoftkubernetes"></a>微軟.庫伯內斯
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 在成本報告中標記 |
+> | ------------- | ----------- | ----------- |
+> | 連接的集群 | 是 | 是 |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -1222,13 +1249,14 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
-> | 群集/附加資料庫配置 | 否 | 否 |
-> | 群集/資料庫 | 否 | 否 |
-> | 群集 / 資料庫 / 資料連線 | 否 | 否 |
-> | 群集/資料庫/事件點連接 | 否 | 否 |
-> | 群集/資料庫/委託分配 | 否 | 否 |
-> | 群集/主體分配 | 否 | 否 |
-> | 群集/共用實體 | 否 | 否 |
+> | 叢集/附加資料庫設定 | 否 | 否 |
+> | 叢集/資料庫 | 否 | 否 |
+> | 叢集 / 資料庫 / 資料連線 | 否 | 否 |
+> | 叢集/資料庫/事件點連接 | 否 | 否 |
+> | 叢集/資料庫/委託分配 | 否 | 否 |
+> | 叢集/資料連線 | 否 | 否 |
+> | 叢集/主體分配 | 否 | 否 |
+> | 叢集/共用實體 | 否 | 否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1268,6 +1296,16 @@ ms.locfileid: "77657568"
 > | 工作區/計算 | 否 | 否 |
 > | 工作區/事件網格篩選器 | 否 | 否 |
 
+## <a name="microsoftmaintenance"></a>微軟.維護
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 在成本報告中標記 |
+> | ------------- | ----------- | ----------- |
+> | 套用更新 | 否 | 否 |
+> | 設定配置 | 否 | 否 |
+> | 維護設定 | 是 | 是 |
+> | 更新 | 否 | 否 |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1282,7 +1320,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | 市場註冊定義 | 否 | 否 |
-> | 註冊分配 | 否 | 否 |
+> | 註冊配置 | 否 | 否 |
 > | 註冊定義 | 否 | 否 |
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
@@ -1292,7 +1330,7 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | getEntities | 否 | 否 |
 > | managementGroups | 否 | 否 |
-> | 管理組/設置 | 否 | 否 |
+> | 管理群組/設定 | 否 | 否 |
 > | resources | 否 | 否 |
 > | startTenantBackfill | 否 | 否 |
 > | tenantBackfillStatus | 否 | 否 |
@@ -1303,7 +1341,8 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
-> | 帳戶/事件網格篩選器 | 否 | 否 |
+> | 帳號/事件網格篩選器 | 否 | 否 |
+> | 帳號/ 私人地圖集 | 是 | 是 |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1313,17 +1352,20 @@ ms.locfileid: "77657568"
 > | offers | 否 | 否 |
 > | offerTypes | 否 | 否 |
 > | 優惠類型/發佈商 | 否 | 否 |
-> | 產品類型 / 發佈商 / 優惠 | 否 | 否 |
-> | 優惠類型 / 發佈商 / 優惠 / 計畫 | 否 | 否 |
-> | 優惠類型 / 發佈商 / 優惠 / 計畫 / 協定 | 否 | 否 |
-> | 報價類型 / 發佈商 / 優惠 / 計畫 / 配置 | 否 | 否 |
-> | 報價類型 / 發佈商 / 優惠 / 計畫 / 配置 / 導入圖像 | 否 | 否 |
+> | 產品型態 / 發行者 / 優惠 | 否 | 否 |
+> | 優惠型態 / 發佈者 / 優惠 / 計劃 | 否 | 否 |
+> | 優惠型態 / 發行者 / 優惠 / 排程 / 協定 | 否 | 否 |
+> | 報價型態 / 發行者 / 優惠 / 排程 / 設定 | 否 | 否 |
+> | 報價類型 / 發行者 / 優惠 / 排程 / 匯入影像 | 否 | 否 |
 > | privategalleryitems | 否 | 否 |
-> | 專用存儲用戶端 | 否 | 否 |
+> | 專用儲存用戶端 | 否 | 否 |
+> | 私人商店 | 否 | 否 |
+> | 私人商店/優惠 | 否 | 否 |
 > | products | 否 | 否 |
 > | 發行者 | 否 | 否 |
 > | 出版商/優惠 | 否 | 否 |
-> | 出版商/ 優惠 / 修訂 | 否 | 否 |
+> | 出版者/ 優惠 / 修訂 | 否 | 否 |
+> | 註冊 | 否 | 否 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1349,7 +1391,7 @@ ms.locfileid: "77657568"
 > | mediaservices | 是 | 是 |
 > | 媒體服務/帳戶篩選器 | 否 | 否 |
 > | 媒體服務/資產 | 否 | 否 |
-> | 媒體服務 / 資產 / 資產篩檢程式 | 否 | 否 |
+> | 媒體服務 / 資產 / 資產過濾器 | 否 | 否 |
 > | 媒體服務/內容關鍵政策 | 否 | 否 |
 > | 媒體服務/事件網格篩選器 | 否 | 否 |
 > | 媒體服務 / 即時活動操作 | 否 | 否 |
@@ -1359,10 +1401,10 @@ ms.locfileid: "77657568"
 > | 媒體服務/媒體圖 | 否 | 否 |
 > | 媒體服務/流式處理 | 否 | 否 |
 > | 媒體服務/流式處理端點 | 是 | 是 |
-> | 媒體服務/流媒體定位器 | 否 | 否 |
-> | 媒體服務/流式處理策略 | 否 | 否 |
+> | 媒體服務/串流定位器 | 否 | 否 |
+> | 媒體服務/串流式處理原則 | 否 | 否 |
 > | 媒體服務/轉換 | 否 | 否 |
-> | 媒體服務 / 轉換 / 作業 | 否 | 否 |
+> | 媒體服務 / 轉換/ 工作 | 否 | 否 |
 
 ## <a name="microsoftmicroservices4spring"></a>微軟.微服務4春天
 
@@ -1381,16 +1423,15 @@ ms.locfileid: "77657568"
 > | 移動集合 | 是 | 是 |
 > | projects | 是 | 是 |
 
-## <a name="microsoftmixedreality"></a>微軟.混合現實
+## <a name="microsoftmixedreality"></a>微軟.混合實境
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | 全息圖形廣播帳戶 | 是 | 是 |
 > | 物件理解帳戶 | 是 | 是 |
-> | 遠端渲染帳戶 | 是 | 是 |
+> | 遠端成像帳戶 | 是 | 是 |
 > | 空間錨定帳戶 | 是 | 是 |
-> | 表面重建帳戶 | 是 | 是 |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1398,9 +1439,10 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | 淨應用帳戶 | 是 | 否 |
-> | 淨應用帳戶/容量池 | 是 | 否 |
-> | 淨應用帳戶 / 容量池 / 卷 | 是 | 否 |
-> | 淨應用帳戶 / 容量池 / 卷 / 快照 | 否 | 否 |
+> | 淨應用帳號/帳戶備份 | 否 | 否 |
+> | 淨應用帳號/容量池 | 是 | 否 |
+> | 淨應用帳號 / 容量池 / 卷 | 是 | 否 |
+> | 淨應用帳號 / 容量池 / 卷 / 快照 | 否 | 否 |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1408,7 +1450,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | applicationGateways | 是 | 是 |
-> | 應用程式閘道Web應用程式防火牆策略 | 是 | 是 |
+> | 應用程式閘道Web應用程式防火牆原則 | 是 | 是 |
 > | applicationSecurityGroups | 是 | 是 |
 > | azureFirewallFqdnTags | 否 | 否 |
 > | azureFirewalls | 是 | 否 |
@@ -1420,7 +1462,7 @@ ms.locfileid: "77657568"
 > | dnsOperationStatuses | 否 | 否 |
 > | dnszones | 是 | 是 |
 > | dns 區域 / A | 否 | 否 |
-> | dns區域 / AAAA | 否 | 否 |
+> | dns 區域 / AAAA | 否 | 否 |
 > | dns 區域 / 所有 | 否 | 否 |
 > | dns 區域 / CAA | 否 | 否 |
 > | dns 區域 / CNAME | 否 | 否 |
@@ -1430,16 +1472,16 @@ ms.locfileid: "77657568"
 > | dns 區域 / 記錄集 | 否 | 否 |
 > | dns 區域 / SOA | 否 | 否 |
 > | dns 區域 / SRV | 否 | 否 |
-> | dns區域 / TXT | 否 | 否 |
+> | dns 區域 / TXT | 否 | 否 |
 > | expressRouteCircuits | 是 | 是 |
 > | expressRouteCrossConnections | 是 | 是 |
 > | 快遞閘道 | 是 | 是 |
-> | 快速路由埠 | 是 | 是 |
+> | 快速路由連接埠 | 是 | 是 |
 > | expressRouteServiceProviders | 否 | 否 |
 > | 防火牆策略 | 是 | 是 |
-> | frontdoors | 是，但有限（見[下面的注釋](#frontdoor)） | 是 |
-> | 前門Web應用程式防火牆管理規則集 | 是，但有限（見[下面的注釋](#frontdoor)） | 否 |
-> | frontdoorWebApplicationFirewallPolicies | 是，但有限（見[下面的注釋](#frontdoor)） | 是 |
+> | frontdoors | 是,但有限(見[下面的註釋](#frontdoor)) | 是 |
+> | 前門Web應用程式防火牆管理規則集 | 是,但有限(見[下面的註釋](#frontdoor)) | 否 |
+> | frontdoorWebApplicationFirewallPolicies | 是,但有限(見[下面的註釋](#frontdoor)) | 是 |
 > | getDnsResourceReference | 否 | 否 |
 > | internalNotify | 否 | 否 |
 > | loadBalancers | 是 | 否 |
@@ -1453,19 +1495,19 @@ ms.locfileid: "77657568"
 > | 網路觀察器/ 連接監視器 | 是 | 否 |
 > | 網路觀察家/鏡頭 | 是 | 否 |
 > | 網路觀察家 / pingMeshes | 是 | 否 |
-> | p2sVpn閘道 | 是 | 是 |
+> | p2sVpn 閘道 | 是 | 是 |
 > | 私有Dns操作狀態 | 否 | 否 |
-> | 私有 Dns 區 | 是 | 是 |
+> | 私有 Dns 區塊 | 是 | 是 |
 > | 私有 Dns 區 / A | 否 | 否 |
 > | 專用 Dns 區 / AAAA | 否 | 否 |
 > | 私有 Dns 區域 / 所有 | 否 | 否 |
 > | 私有 Dns 區域 / CNAME | 否 | 否 |
-> | 專用 Dns 區 / MX | 否 | 否 |
-> | 專用 Dns 區 / PTR | 否 | 否 |
+> | 私人 Dns 區 / MX | 否 | 否 |
+> | 私人 Dns 區 / PTR | 否 | 否 |
 > | 私有 Dns 區域 / SOA | 否 | 否 |
 > | 專用 Dns 區 / SRV | 否 | 否 |
-> | 專用 Dns 區 / TXT | 否 | 否 |
-> | 專用 Dns 區域 / 虛擬網路連結 | 是 | 是 |
+> | 私人 Dns 區 / TXT | 否 | 否 |
+> | 私人 Dns 區域 / 虛擬網路連結 | 是 | 是 |
 > | 私有終結點 | 是 | 是 |
 > | privateLinkServices | 是 | 是 |
 > | publicIPAddresses | 是 | 是 |
@@ -1476,7 +1518,7 @@ ms.locfileid: "77657568"
 > | trafficManagerGeographicHierarchies | 否 | 否 |
 > | trafficmanagerprofiles | 是 | 是 |
 > | trafficmanagerprofiles/heatMaps | 否 | 否 |
-> | 流量管理器使用者指標鍵 | 否 | 否 |
+> | 流量管理員使用者指標鍵 | 否 | 否 |
 > | virtualHubs | 是 | 是 |
 > | virtualNetworkGateways | 是 | 是 |
 > | virtualNetworks | 是 | 是 |
@@ -1489,7 +1531,7 @@ ms.locfileid: "77657568"
 <a id="frontdoor" />
 
 > [!NOTE]
-> 對於 Azure 前門服務，可以在創建資源時應用標記，但當前不支援更新或委任標記。
+> 對於 Azure 前門服務,可以在創建資源時應用標記,但當前不支援更新或添加標記。
 
 
 ## <a name="microsoftnotebooks"></a>微軟.筆記本
@@ -1520,7 +1562,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | 超級網站 | 是 | 是 |
-> | 導入網站 | 是 | 是 |
+> | 匯入網站 | 是 | 是 |
 > | 伺服器網站 | 是 | 是 |
 > | VMwareSites | 是 | 是 |
 
@@ -1536,9 +1578,7 @@ ms.locfileid: "77657568"
 > | 工作區/資料匯出 | 否 | 否 |
 > | 工作區/資料來源 | 否 | 否 |
 > | 工作區/連結服務 | 否 | 否 |
-> | 工作區/專用端接Proxie | 否 | 否 |
-> | 工作區/專用端點連接 | 否 | 否 |
-> | 工作區/專用連結資源 | 否 | 否 |
+> | 工作區/連結的儲存帳戶 | 否 | 否 |
 > | 工作區/查詢 | 否 | 否 |
 > | 工作區/作用域私人連結 Proxies | 否 | 否 |
 
@@ -1570,7 +1610,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | policyEvents | 否 | 否 |
-> | 策略中繼資料 | 否 | 否 |
+> | 原則中繼資料 | 否 | 否 |
 > | policyStates | 否 | 否 |
 > | policyTrackedResources | 否 | 否 |
 > | remediations | 否 | 否 |
@@ -1598,12 +1638,19 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | capacities | 是 | 是 |
 
-## <a name="microsoftprojectbabylon"></a>微軟.專案巴比靈斯
+## <a name="microsoftprojectbabylon"></a>微軟.專案巴比隆
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
+
+## <a name="microsoftquantum"></a>微軟.昆騰
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 在成本報告中標記 |
+> | ------------- | ----------- | ----------- |
+> | 工作區 | 是 | 是 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1620,8 +1667,8 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | 命名空間 | 是 | 是 |
 > | 命名空間/授權規則 | 否 | 否 |
-> | 命名空間/混合連接 | 否 | 否 |
-> | 命名空間 /混合連接/授權規則 | 否 | 否 |
+> | 命名空間/混合連線 | 否 | 否 |
+> | 命名空間 /混合連線/授權規則 | 否 | 否 |
 > | 命名空間 / wcfrelay | 否 | 否 |
 > | 命名空間 / wcfrelay / 授權規則 | 否 | 否 |
 
@@ -1634,7 +1681,7 @@ ms.locfileid: "77657568"
 > | 集合 | 是 | 是 |
 > | 集合/應用程式 | 否 | 否 |
 > | 集合/安全主體 | 否 | 否 |
-> | 範本圖像 | 否 | 否 |
+> | 樣本影像 | 否 | 否 |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
@@ -1642,8 +1689,8 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | 查詢 | 是 | 是 |
-> | 資源更改詳細資訊 | 否 | 否 |
-> | 資源更改 | 否 | 否 |
+> | 資源變更詳細資訊 | 否 | 否 |
+> | 資源變更 | 否 | 否 |
 > | resources | 否 | 否 |
 > | 資源歷史 | 否 | 否 |
 > | subscriptionsStatus | 否 | 否 |
@@ -1669,8 +1716,8 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | deployments | 是 | 否 |
 > | 部署/操作 | 否 | 否 |
-> | 部署腳本 | 是 | 是 |
-> | 部署腳本/日誌 | 否 | 否 |
+> | 部署文稿 | 是 | 是 |
+> | 部署文稿/紀錄 | 否 | 否 |
 > | 連結 | 否 | 否 |
 > | notifyResourceJobs | 否 | 否 |
 > | 提供者 | 否 | 否 |
@@ -1699,26 +1746,26 @@ ms.locfileid: "77657568"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 自我調整網路強化 | 否 | 否 |
+> | 自我適應網路強化 | 否 | 否 |
 > | advancedThreatProtectionSettings | 否 | 否 |
 > | alerts | 否 | 否 |
 > | allowedConnections | 否 | 否 |
 > | applicationWhitelistings | 否 | 否 |
 > | 評估中繼資料 | 否 | 否 |
 > | 評量 | 否 | 否 |
-> | 自動關閉警報規則 | 否 | 否 |
+> | 自動關閉警示規則 | 否 | 否 |
 > | 自動化 | 是 | 是 |
 > | AutoProvisioningSettings | 否 | 否 |
 > | Compliances | 否 | 否 |
 > | dataCollectionAgents | 否 | 否 |
-> | 設備安全性群組 | 否 | 否 |
+> | 裝置安全組 | 否 | 否 |
 > | discoveredSecuritySolutions | 否 | 否 |
 > | externalSecuritySolutions | 否 | 否 |
 > | InformationProtectionPolicies | 否 | 否 |
 > | iot安全解決方案 | 是 | 是 |
-> | iot安全解決方案 / 分析模型 | 否 | 否 |
-> | iot安全解決方案 / 分析模型 / 聚合警報 | 否 | 否 |
-> | iot安全解決方案 / 分析模型 / 匯總建議 | 否 | 否 |
+> | iot 安全解決方案 / 分析模型 | 否 | 否 |
+> | iot 安全解決方案 / 分析模型 / 聚合警報 | 否 | 否 |
+> | iot 安全解決方案 / 分析模型 / 匯總建議 | 否 | 否 |
 > | jitNetworkAccessPolicies | 否 | 否 |
 > | 網路資料 | 否 | 否 |
 > | 原則 | 否 | 否 |
@@ -1726,6 +1773,10 @@ ms.locfileid: "77657568"
 > | 監管合規標準 | 否 | 否 |
 > | 法規合規性標準/法規合規性控制 | 否 | 否 |
 > | 法規合規性標準/法規合規性控制/法規合規性評估 | 否 | 否 |
+> | 安全分割控制定義 | 否 | 否 |
+> | 安全分割控制 | 否 | 否 |
+> | 安全分數 | 否 | 否 |
+> | 安全分數/安全分數控制 | 否 | 否 |
 > | securityContacts | 否 | 否 |
 > | securitySolutions | 否 | 否 |
 > | securitySolutionsReferenceData | 否 | 否 |
@@ -1752,12 +1803,12 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | aggregations | 否 | 否 |
-> | 警報規則 | 否 | 否 |
-> | 警報規則範本 | 否 | 否 |
+> | 警示規則 | 否 | 否 |
+> | 警示規則樣本 | 否 | 否 |
 > | 書籤 | 否 | 否 |
 > | 案例 | 否 | 否 |
-> | 資料連線器 | 否 | 否 |
-> | 資料連線器檢查要求 | 否 | 否 |
+> | 資料連接器 | 否 | 否 |
+> | 資料連接器檢查要求 | 否 | 否 |
 > | 實體 | 否 | 否 |
 > | 實體查詢 | 否 | 否 |
 > | 事件 | 否 | 否 |
@@ -1771,15 +1822,15 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | 命名空間 | 是 | 否 |
 > | 命名空間/授權規則 | 否 | 否 |
-> | 命名空間/災害復原配置 | 否 | 否 |
+> | 命名空間/災難修復設定 | 否 | 否 |
 > | 命名空間/事件網格篩選器 | 否 | 否 |
 > | 命名空間/網路規則集 | 否 | 否 |
 > | 命名空間/佇列 | 否 | 否 |
 > | 命名空間/佇列/授權規則 | 否 | 否 |
-> | 命名空間/主題 | 否 | 否 |
+> | 命名空間/佈景主題 | 否 | 否 |
 > | 命名空間/主題/授權規則 | 否 | 否 |
-> | 命名空間 / 主題 / 訂閱 | 否 | 否 |
-> | 命名空間 / 主題 / 訂閱 / 規則 | 否 | 否 |
+> | 命名空間 / 佈景主題 / 訂閱 | 否 | 否 |
+> | 命名空間 / 佈景主題 / 訂閱 / 規則 | 否 | 否 |
 > | premiumMessagingRegions | 否 | 否 |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
@@ -1789,13 +1840,13 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | 應用程式所需 | 是 | 是 |
 > | clusters | 是 | 是 |
-> | 群集/應用程式 | 否 | 否 |
+> | 叢集/應用程式 | 否 | 否 |
 > | containerGroups | 是 | 是 |
-> | 容器組集 | 是 | 是 |
+> | 容器群組集 | 是 | 是 |
 > | edgeclusters | 是 | 是 |
-> | 邊緣群集/應用程式 | 否 | 否 |
+> | 邊緣叢集/應用程式 | 否 | 否 |
 > | managedclusters | 是 | 是 |
-> | 託管群集/節點類型 | 否 | 否 |
+> | 託管叢集/節點類型 | 否 | 否 |
 > | networks | 是 | 是 |
 > | secretstores | 是 | 是 |
 > | 秘密商店/證書 | 否 | 否 |
@@ -1820,7 +1871,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | providerRegistrations | 否 | 否 |
-> | 供應商註冊/資源類型註冊 | 否 | 否 |
+> | 提供者註冊/資源類型註冊 | 否 | 否 |
 > | rollouts | 是 | 是 |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -1838,7 +1889,7 @@ ms.locfileid: "77657568"
 > | ------------- | ----------- | ----------- |
 > | SiteRecoveryVault | 是 | 是 |
 
-## <a name="microsoftsoftwareplan"></a>微軟.軟體計畫
+## <a name="microsoftsoftwareplan"></a>微軟.軟體計劃
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
@@ -1869,25 +1920,25 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | 託管實例/資料庫 | 是（見[以下注釋](#sqlnote)） | 是 |
+> | 託管實例/資料庫 | 是(見[以下註解](#sqlnote)) | 是 |
 > | 託管實例/資料庫/備份短期保留原則 | 否 | 否 |
-> | 託管實例 / 資料庫 / 架構 / 表 / 列 / 敏感度標籤 | 否 | 否 |
+> | 託管實例 / 資料庫 / 架構 / 表 / 欄/ 敏感度標籤 | 否 | 否 |
 > | 託管實例 / 資料庫 / 漏洞評估 | 否 | 否 |
 > | 託管實例 / 資料庫 / 漏洞評估 / 規則 / 基線 | 否 | 否 |
 > | 託管實例/加密保護器 | 否 | 否 |
 > | 託管實例/金鑰 | 否 | 否 |
-> | 託管實例/可還原丟棄資料庫/備份短期保留原則 | 否 | 否 |
+> | 託管實例/可還原丟棄資料庫/備份短期保留策略 | 否 | 否 |
 > | 託管實例/漏洞評估 | 否 | 否 |
 > | servers | 是 | 是 |
 > | 伺服器/管理員 | 否 | 否 |
 > | 伺服器/通訊連結 | 否 | 否 |
-> | 伺服器/資料庫 | 是（見[以下注釋](#sqlnote)） | 是 |
+> | 伺服器/資料庫 | 是(見[以下註解](#sqlnote)) | 是 |
 > | 伺服器/加密保護器 | 否 | 否 |
 > | 伺服器/防火牆規則 | 否 | 否 |
 > | 伺服器/金鑰 | 否 | 否 |
 > | 伺服器/可恢復丟棄資料庫 | 否 | 否 |
 > | 伺服器/服務目標 | 否 | 否 |
-> | 伺服器/ tde證書 | 否 | 否 |
+> | 伺服器/ tde 憑證 | 否 | 否 |
 > | 虛擬叢集 | 否 | 否 |
 
 <a id="sqlnote" />
@@ -1901,7 +1952,7 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | SqlVirtualMachineGroups | 是 | 是 |
-> | Sql虛擬電腦群組/可用性組攔截器 | 否 | 否 |
+> | Sql虛擬電腦群組/可用性組偵聽器 | 否 | 否 |
 > | SqlVirtualMachines | 是 | 是 |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -1910,29 +1961,29 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | storageAccounts | 是 | 是 |
-> | 存儲帳戶/blob 服務 | 否 | 否 |
-> | 存儲帳戶/檔服務 | 否 | 否 |
-> | 存儲帳戶/佇列服務 | 否 | 否 |
-> | 存儲帳戶/服務 | 否 | 否 |
-> | 存儲帳戶 / 服務 / 指標定義 | 否 | 否 |
-> | 存儲帳戶/表服務 | 否 | 否 |
+> | 儲存帳號/blob 服務 | 否 | 否 |
+> | 儲存帳號/檔案服務 | 否 | 否 |
+> | 儲存帳戶/佇列服務 | 否 | 否 |
+> | 儲存帳戶/服務 | 否 | 否 |
+> | 儲存帳號/ 服務 / 指標定義 | 否 | 否 |
+> | 儲存帳戶/表服務 | 否 | 否 |
 > | usages | 否 | 否 |
 
-## <a name="microsoftstoragecache"></a>微軟.存儲緩存
+## <a name="microsoftstoragecache"></a>微軟儲存快取
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 緩存 | 是 | 是 |
-> | 緩存/存儲目標 | 否 | 否 |
+> | 快取 | 是 | 是 |
+> | 快取/儲存目標 | 否 | 否 |
 > | 使用模型 | 否 | 否 |
 
-## <a name="microsoftstoragereplication"></a>微軟.存儲複製
+## <a name="microsoftstoragereplication"></a>微軟儲存複製
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 複製組 | 否 | 否 |
+> | 複製群組 | 否 | 否 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1940,11 +1991,11 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | storageSyncServices | 是 | 是 |
-> | 存儲同步服務/註冊伺服器 | 否 | 否 |
-> | 存儲同步服務/同步組 | 否 | 否 |
-> | 存儲同步服務 / 同步組 / 雲終結點 | 否 | 否 |
-> | 存儲同步服務 / 同步組 / 伺服器終結點 | 否 | 否 |
-> | 存儲同步服務/工作流 | 否 | 否 |
+> | 儲存同步服務/註冊伺服器 | 否 | 否 |
+> | 儲存同步服務/同步群組 | 否 | 否 |
+> | 儲存同步服務 / 同步群組 / 雲終結點 | 否 | 否 |
+> | 儲存同步服務/ 同步群組 / 伺服器終結點 | 否 | 否 |
+> | 儲存同步服務/工作流 | 否 | 否 |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 
@@ -1952,11 +2003,11 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | storageSyncServices | 是 | 是 |
-> | 存儲同步服務/註冊伺服器 | 否 | 否 |
-> | 存儲同步服務/同步組 | 否 | 否 |
-> | 存儲同步服務 / 同步組 / 雲終結點 | 否 | 否 |
-> | 存儲同步服務 / 同步組 / 伺服器終結點 | 否 | 否 |
-> | 存儲同步服務/工作流 | 否 | 否 |
+> | 儲存同步服務/註冊伺服器 | 否 | 否 |
+> | 儲存同步服務/同步群組 | 否 | 否 |
+> | 儲存同步服務 / 同步群組 / 雲終結點 | 否 | 否 |
+> | 儲存同步服務/ 同步群組 / 伺服器終結點 | 否 | 否 |
+> | 儲存同步服務/工作流 | 否 | 否 |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
 
@@ -1964,11 +2015,11 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | storageSyncServices | 是 | 是 |
-> | 存儲同步服務/註冊伺服器 | 否 | 否 |
-> | 存儲同步服務/同步組 | 否 | 否 |
-> | 存儲同步服務 / 同步組 / 雲終結點 | 否 | 否 |
-> | 存儲同步服務 / 同步組 / 伺服器終結點 | 否 | 否 |
-> | 存儲同步服務/工作流 | 否 | 否 |
+> | 儲存同步服務/註冊伺服器 | 否 | 否 |
+> | 儲存同步服務/同步群組 | 否 | 否 |
+> | 儲存同步服務 / 同步群組 / 雲終結點 | 否 | 否 |
+> | 儲存同步服務/ 同步群組 / 伺服器終結點 | 否 | 否 |
+> | 儲存同步服務/工作流 | 否 | 否 |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
@@ -1998,6 +2049,7 @@ ms.locfileid: "77657568"
 > | 重新命名 | 否 | 否 |
 > | SubscriptionDefinitions | 否 | 否 |
 > | SubscriptionOperations | 否 | 否 |
+> | subscriptions | 否 | 否 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2005,8 +2057,8 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | environments | 是 | 否 |
-> | 環境/訪問策略 | 否 | 否 |
-> | 環境/事件源 | 是 | 否 |
+> | 環境/存取原則 | 否 | 否 |
+> | 環境/事件來源 | 是 | 否 |
 > | 環境/參考資料集集 | 是 | 否 |
 
 ## <a name="microsoftvmwarecloudsimple"></a>微軟.VMware雲簡單
@@ -2018,7 +2070,7 @@ ms.locfileid: "77657568"
 > | 專用雲服務 | 是 | 是 |
 > | virtualMachines | 是 | 是 |
 
-## <a name="microsoftvnfmanager"></a>微軟.Vnf管理器
+## <a name="microsoftvnfmanager"></a>微軟.Vnf管理員
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
@@ -2027,7 +2079,8 @@ ms.locfileid: "77657568"
 > | 註冊訂閱 | 否 | 否 |
 > | 廠商 | 否 | 否 |
 > | 供應商 / 斯克烏斯 | 否 | 否 |
-> | 供應商 / vnfs | 否 | 否 |
+> | 供應商/ vnfs | 否 | 否 |
+> | 虛擬網路功能 | 否 | 否 |
 > | 文夫斯 | 是 | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2036,15 +2089,15 @@ ms.locfileid: "77657568"
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
 > | apiManagementAccounts | 否 | 否 |
-> | api管理帳戶 / apiAcl | 否 | 否 |
-> | api管理帳戶 / aapi | 否 | 否 |
-> | api管理帳戶 / aapi / apiAcls | 否 | 否 |
-> | api管理帳戶 / apis / 連接Acl | 否 | 否 |
-> | api管理帳戶 / apis / 連接 | 否 | 否 |
-> | api管理帳戶 / apis / 連接 / 連接Acls | 否 | 否 |
-> | api管理帳戶 / ais / 當地語系化定義 | 否 | 否 |
-> | api管理帳戶/ 連接Acl | 否 | 否 |
-> | api管理帳戶/連接 | 否 | 否 |
+> | api管理帳號 / apiAcl | 否 | 否 |
+> | api管理帳號 / aapi | 否 | 否 |
+> | api管理帳號 / aapi / apiAcls | 否 | 否 |
+> | api管理帳號 / apis / 連接Acl | 否 | 否 |
+> | api管理帳號 / apis / 連接 | 否 | 否 |
+> | api管理帳號 / apis / 連接/ 連線Acls | 否 | 否 |
+> | api管理帳號 / ais / 當地語系化定義 | 否 | 否 |
+> | api管理帳戶/ 連線Acl | 否 | 否 |
+> | api管理帳號/連線 | 否 | 否 |
 > | billingMeters | 否 | 否 |
 > | certificates | 是 | 是 |
 > | connectionGateways | 是 | 是 |
@@ -2055,6 +2108,7 @@ ms.locfileid: "77657568"
 > | 託管環境/事件網格篩選器 | 否 | 否 |
 > | 託管環境/多角色池 | 否 | 否 |
 > | 託管環境/輔助池 | 否 | 否 |
+> | 庫貝環境 | 是 | 是 |
 > | publishingUsers | 否 | 否 |
 > | Mahout | 否 | 否 |
 > | resourceHealthMetadata | 否 | 否 |
@@ -2062,15 +2116,15 @@ ms.locfileid: "77657568"
 > | serverFarms | 是 | 是 |
 > | 伺服器農場/事件網格篩選器 | 否 | 否 |
 > | sites | 是 | 是 |
-> | 網站/配置  | 否 | 否 |
+> | 網站/設定  | 否 | 否 |
 > | 網站/事件網格篩選器 | 否 | 否 |
-> | 網站/主機名稱綁定 | 否 | 否 |
+> | 網站/主機名綁定 | 否 | 否 |
 > | 網站 /網路設定 | 否 | 否 |
-> | 網站 / 首播 | 是 | 是 |
+> | 網站/ 首播 | 是 | 是 |
 > | 網站/插槽 | 是 | 是 |
 > | 網站 / 插槽 / 事件網格篩選器 | 否 | 否 |
-> | 網站 / 插槽 / 主機名稱稱綁定 | 否 | 否 |
-> | 網站 / 插槽 / 網路設定 | 否 | 否 |
+> | 網站/ 插槽 / 主機名稱繫結 | 否 | 否 |
+> | 網站/ 插槽 / 網路設定 | 否 | 否 |
 > | sourceControls | 否 | 否 |
 > | 靜態網站 | 是 | 是 |
 > | validate | 否 | 否 |

@@ -1,6 +1,6 @@
 ---
 title: 加強 Azure 中的遠端管理安全性 | Microsoft Docs
-description: 本文討論在管理 Microsoft Azure 環境（包括雲服務、虛擬機器和自訂應用程式）時增強遠端系統管理安全性的步驟。
+description: 本文討論在管理 Microsoft Azure 環境(包括雲服務、虛擬機和自定義應用程式)時增強遠端管理安全性的步驟。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73643788"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811264"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
-Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下，管理功能通過基於 Web 的主控台（如[Azure 門戶](https://azure.microsoft.com/features/azure-portal/)）執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
+Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下,管理功能通過基於 Web 的主控台(如[Azure 門戶](https://azure.microsoft.com/features/azure-portal/))執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
 
 雖然多項存取和管理功能可提供一組豐富的選項，但選項太多也可能會讓雲端部署承受巨大風險。 因而難以管理、追蹤和稽核管理動作。 選項太多也可能會因為用來管理雲端服務之用戶端端點所進行的存取不受管制而招致安全性威脅。 使用一般工作站或私人工作站來開發和管理基礎結構將會打開無法預期的威脅媒介，例如網頁瀏覽 (例如水坑攻擊) 或電子郵件 (例如社交工程和網路釣魚)。
 
@@ -119,7 +119,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 協助保護搭配雲端使用之系統管理員工作站的做法，通常會與用於任何內部部署工作站的做法類似 - 例如，最小化的組建和嚴格的權限。 雲端管理的幾項特點則更類似於遠端或頻外企業管理。 這些特點包括使用和稽核認證、增強安全性的遠端存取以及威脅偵測和回應。
 
 ### <a name="authentication"></a>驗證
-您可以使用 Azure 登入限制來限制用於存取系統管理工具的來源 IP 位址和稽核存取要求。 若要協助 Azure 識別管理用戶端 (工作站及/或應用程式)，您可以同時設定 SMAPI (透過客戶開發的工具，例如 Windows PowerShell Cmdlet) 和 Azure 入口網站，要求除了 SSL 憑證外，還必須安裝用戶端管理憑證。 我們也建議系統管理員存取需要 Multi-Factor Authentication。
+您可以使用 Azure 登入限制來限制用於存取系統管理工具的來源 IP 位址和稽核存取要求。 為了説明 Azure 標識管理用戶端(工作站和/或應用程式),可以配置 SMAPI(透過客戶開發的工具(如 Windows PowerShell cmdlet)和 Azure 門戶,以除 TLS/SSL 證書外,還需要安裝用戶端管理證書。 我們也建議系統管理員存取需要 Multi-Factor Authentication。
 
 您部署至 Azure 的某些應用程式或服務可能會針對使用者和系統管理員存取擁有自己的驗證機制，而其他應用程式或服務則會充分利用 Azure AD。 根據您是透過 Active Directory Federation Services (AD FS)、使用目錄同步作業或僅在雲端中維護使用者帳戶來同盟認證，使用 [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium 的一部分) 可協助您管理資源之間的身分識別生命週期。
 
@@ -188,7 +188,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 | 不要做的事 | 要做的事 |
 | --- | --- |
-| 請勿以電子郵件寄送用於系統管理員存取權或其他機密資料的認證 (例如 SSL 或管理憑證) |用聲音提供帳戶名稱和密碼 (但不要將它們儲存在語音郵件中) 以維持機密性、遠端安裝用戶端/伺服器憑證 (透過加密工作階段)、從受保護的網路共用下載，或透過卸除式媒體手動發佈。 |
+| 不要透過電子郵件傳送認證以取得管理員存取權限或其他機密(例如,TLS/SSL 或管理憑證) |用聲音提供帳戶名稱和密碼 (但不要將它們儲存在語音郵件中) 以維持機密性、遠端安裝用戶端/伺服器憑證 (透過加密工作階段)、從受保護的網路共用下載，或透過卸除式媒體手動發佈。 |
 | - | 主動管理您的管理憑證生命週期。 |
 | 請勿在應用程式儲存體中儲存未加密或未雜湊的帳戶密碼 (例如在試算表、SharePoint 網站或檔案共用中)。 |建立安全性管理原則和系統強化原則，並將它們套用至您的開發環境。 |
 | - | 使用 [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) 憑證釘選規則，以確保能正確存取 Azure SSL/TLS 網站。 |
@@ -218,7 +218,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。 如果您使用 Windows To Go，請只搭配 BitLocker 使用加密的 USB 金鑰。
 * 控管。 使用 AD DS GPO 來控制所有系統管理員的 Windows 介面，例如檔案共用。 將管理工作站納入稽核、監視和記錄程序內。 追蹤所有系統管理員和開發人員的存取和使用活動。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 使用強化後的工作站組態來管理 Azure 雲端服務、虛擬機器和應用程式，可協助您避免遠端管理重要 IT 基礎結構所產生的眾多風險和威脅。 Azure 和 Windows 皆可提供相關機制供您保護和控制通訊、驗證和用戶端行為。
 
 ## <a name="next-steps"></a>後續步驟
@@ -226,4 +226,4 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 * [保護特殊權限存取](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – 取得設計和建置安全的系統管理工作站以管理 Azure 的技術詳細資料
 * [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/cloudservices/azure) - 了解可保護 Azure 網狀架構和在 Azure 上執行之工作負載的 Azure 平台功能
-* [Microsoft 安全回應中心](https://www.microsoft.com/msrc)-- 微軟安全性漏洞（包括 Azure 問題）可以報告或通過電子郵件發送到[secure@microsoft.com](mailto:secure@microsoft.com)
+* [Microsoft 安全回應中心](https://www.microsoft.com/msrc)-- 微軟安全漏洞(包括 Azure 問題)可以報告或透過電子郵件發送到[secure@microsoft.com](mailto:secure@microsoft.com)

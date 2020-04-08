@@ -4,12 +4,12 @@ description: 有關 QnA Maker 服務的最常見問題列表將説明您更快�
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474952"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804345"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA 製造商的故障排除
 
@@ -142,7 +142,7 @@ ms.locfileid: "80474952"
 * 檔案 - 不支援
 
 #### <a name="answer-text-in-markdown"></a>以標記形式回答文字
-一旦 QnA 集位於知識庫中,您可以編輯答案的標記文本,以包括公共 URL 中可用的媒體連結。
+一旦 QnA 對進入知識庫,您可以編輯答案的標記文本,以包括公共 URL 中可用的媒體連結。
 
 
 </details>

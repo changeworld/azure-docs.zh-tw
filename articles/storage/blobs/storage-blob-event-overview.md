@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755011"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811536"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
@@ -98,7 +98,7 @@ Blob 儲存體事件的主體使用格式：
 > * 同樣地，檢查 eventType 也是必須進行的步驟之一，而且不要假設您收到的所有事件都是您預期的類型。
 > * 由於消息可能會在一些延遲後到達,請使用 etag 欄位來瞭解有關物件的資訊是否仍然是最新的。 要瞭解如何使用 etag 欄位,請參閱[在 Blob 儲存中管理並發](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。 
 > * 由於消息可能無序到達,請使用序列器欄位瞭解任何特定物件上事件的順序。 序列器欄位是一個字串值,表示任何特定 Blob 名稱的事件的邏輯序列。 可以使用標準字串比較來瞭解同一 blob 名稱上的兩個事件的相對序列。
-> 存儲事件保證至少一次傳遞到訂閱者,這可確保輸出所有消息。 但是,由於重試或訂閱的可用性,偶爾會發生重複的消息。
+> * 存儲事件保證至少一次傳遞到訂閱者,這可確保輸出所有消息。 但是,由於重試或訂閱的可用性,偶爾會發生重複的消息。 要瞭解有關郵件傳遞和重試的更多資訊,請參閱[事件網格訊息傳遞和重試](../../event-grid/delivery-and-retry.md)。
 > * 請使用 [blobType] 欄位以了解 Blob 允許何種類型的作業，以及您應該使用何種類型的用戶端程式庫來存取 Blob。 有效值為 `BlockBlob` 或 `PageBlob`。 
 > * 請使用帶有 `CloudBlockBlob` 和 `CloudAppendBlob` 建構函式的 [url] 欄位存取 Blob。
 > * 請忽略您不了解的欄位。 此做法將有助於保持未來可能新增功能的彈性。

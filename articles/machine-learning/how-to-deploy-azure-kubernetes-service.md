@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475393"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811760"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure 庫伯奈斯服務群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -233,10 +233,28 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 > 通過 VS 代碼進行部署需要提前創建 AKS 群集或連接到工作區。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控部署(預覽)將模型部署到 AKS
-使用端點以受控方式分析和推廣模型版本。 在單個終結點後面部署最多 6 個版本,並將評分流量的百分比配置為每個部署的版本。 您可以啟用應用見解以查看終結點和已部署版本的操作指標。
+
+使用端點以受控方式分析和推廣模型版本。 您可以在單個終結點後面部署最多六個版本。 終結點提供以下功能:
+
+* 設定__設定到每個終結點的評分流量的百分比__。 例如,將 20% 的流量路由到端點「測試」,將 80% 的流量路由到「生產」。
+
+    > [!NOTE]
+    > 如果不考慮流量的 100%,則任何剩餘百分比將路由到__默認__終結點版本。 例如,如果將終結點版本「測試」設定為獲取 10% 的流量,將「prod」設定為 30%,則剩餘的 60% 將發送到預設終結點版本。
+    >
+    > 建立的第一個終結點版本將自動配置為預設值。 您可以在創建或更新終結點版本`is_default=True`時設置此設定來更改此設置。
+     
+* 將終結點版本標記為__控制項__或__處理__。 例如,當前生產終結點版本可能是控件,而潛在的新模型將作為處理版本部署。 評估處理版本的性能後,如果性能優於當前控制,則可能會將其提升為新的生產/控制。
+
+    > [!NOTE]
+    > 您只能有__一個__控制項。 你可以進行多種治療。
+
+您可以啟用應用見解以查看終結點和已部署版本的操作指標。
 
 ### <a name="create-an-endpoint"></a>建立端點
-準備好部署模型後,創建評分終結點並部署第一個版本。 下面的步驟演示如何使用 SDK 部署和創建終結點。 第一個部署將定義為預設版本,這意味著所有版本中未指定的流量百分位數將轉到預設版本。  
+準備好部署模型後,創建評分終結點並部署第一個版本。 下面的範例展示如何使用 SDK 部署和創建終結點。 第一個部署將定義為預設版本,這意味著所有版本中未指定的流量百分位數將轉到預設版本。  
+
+> [!TIP]
+> 在下面的範例中,配置將初始終結點版本設置以處理 20% 的流量。 由於這是第一個終結點,因此也是預設版本。 由於我們沒有其他版本的其他 80% 的流量,因此它也路由到預設值。 在部署佔用一定流量百分比的其他版本之前,此版本實際上接收100%的流量。
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>更新版本並將新增到終結點
 
 向終結點添加另一個版本,並配置要向該版本添加的評分流量百分位數。 有兩種類型的版本,一種控制項和一個處理版本。 可以有多個處理版本來幫助與單個控制版本進行比較。
+
+> [!TIP]
+> 第二個版本由以下代碼段創建,接受 10% 的流量。 第一個版本配置為 20%,因此只有 30% 的流量配置為特定版本。 剩餘的 70% 將發送到第一個終結點版本,因為它也是預設版本。
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-更新現有版本或在終結點中刪除它們。 您可以更改版本的預設類型、控制項類型和流量百分位數。
+更新現有版本或在終結點中刪除它們。 您可以更改版本的預設類型、控制項類型和流量百分位數。 在下面的示例中,第二個版本的流量增加到 40%,現在默認為預設版本。
+
+> [!TIP]
+> 在以下代碼段之後,第二個版本現在預設為預設版本。 現在配置為 40%,而原始版本仍配置為 20%。 這意味著 40% 的流量不由版本配置來考慮。 剩餘流量將路由到第二個版本,因為它現在預設。 它有效地接收了 80% 的流量。
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 

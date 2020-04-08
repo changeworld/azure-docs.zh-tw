@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435445"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810302"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>微軟防禦者高級威脅防護與 Azure 安全中心
 
@@ -36,7 +36,7 @@ Azure 安全中心正在通過與[Microsoft 防禦者高級威脅防護](https:/
 
 以下功能現在可在 Azure 安全中心中提供:
 
-- **自動載入**:微軟防禦者 ATP 感測器自動啟用到 Azure 安全中心板載的 Windows 伺服器。
+- **自動載入**:Microsoft Defender ATP 感測器自動啟用已載入 Azure 安全中心的 Windows 伺服器(運行 Windows Server 2019 的伺服器除外)。
 
 - **單個窗格**:Azure 安全中心控制台顯示 Microsoft Defender ATP 警報。
 
@@ -60,7 +60,7 @@ Azure 安全中心正在通過與[Microsoft 防禦者高級威脅防護](https:/
 要將伺服器載入安全中心,請按一下 **「轉到 Azure 安全中心」,從**Microsoft Defender ATP 伺服器載入板載伺服器。
 
 1. 在 **「入職」** 區域中,選擇或創建一個工作區,用於存儲數據。 <br>
-2. 如果您看不到所有的工作區，可能是因為權限不足，請確定您的工作區設定為 Azure 安全性標準層。 有關詳細資訊,請參閱[升級到安全中心的標準層,以提高安全性](security-center-pricing.md)。
+2. 如果無法查看所有工作區,可能是由於許可權不足,請確保工作區已設置為 Azure 安全標準層。 有關詳細資訊,請參閱[升級到安全中心的標準層,以提高安全性](security-center-pricing.md)。
     
 3. 選擇 **「新增伺服器**」以檢視有關如何安裝日誌分析代理的說明。 
 
@@ -107,11 +107,11 @@ Azure 安全中心正在通過與[Microsoft 防禦者高級威脅防護](https:/
 
    ![內含上述命令的命令提示字元視窗](media/security-center-wdatp/image4.jpeg)
 
-3. 如果命令成功,您將在 Azure 安全中心儀表板和 Microsoft Defender ATP 門戶上看到新的警報。 此警示可能需要幾分鐘才會顯示。
+1. 如果命令成功,您將在 Azure 安全中心儀表板和 Microsoft Defender ATP 門戶上看到新的警報。 此警示可能需要幾分鐘才會顯示。
 
-4. 要檢視安全中心的警報,請存**取安全警報** > **可疑電源 Shell 命令列**。
+1. 要檢視安全中心的警報,請存**取安全警報** > **可疑電源 Shell 命令列**。
 
-5. 從調查視窗,選擇要轉到 Microsoft Defender ATP 門戶的連結。
+1. 從調查視窗,選擇要轉到 Microsoft Defender ATP 門戶的連結。
 
 ## <a name="next-steps"></a>後續步驟
 

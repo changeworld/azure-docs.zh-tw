@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 機器學習設計器重新訓練模型（預覽版）
+title: 使用 Azure 機器學習設計器重新訓練模型(預覽版)
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure 機器學習設計器（預覽）中使用已發佈的管道重新訓練模型。
+description: 瞭解如何在 Azure 機器學習設計器(預覽)中使用已發布的管道重新訓練模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.author: keli19
 author: likebupt
-ms.date: 02/24/2020
-ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/06/2020
+ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389030"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810370"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在本操作操作者文章中，您將瞭解如何使用 Azure 機器學習設計器重新訓練機器學習模型。 瞭解如何使用已發佈的管道自動執行機器學習工作流以進行再培訓。
+在本操作操作者文章中,您將瞭解如何使用 Azure 機器學習設計器重新訓練機器學習模型。 您將使用已發布的管道來自動執行工作流並設置參數,以根據新資料訓練模型。 
 
 在本文中，您將學會如何：
 
@@ -27,99 +27,103 @@ ms.locfileid: "80389030"
 > * 將機器學習模型定型。
 > * 創建管道參數。
 > * 發佈培訓管道。
-> * 重新訓練模型。
+> * 使用新參數重新訓練模型。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果沒有 Azure 訂閱，請創建[一個免費帳戶](https://aka.ms/AMLFree)。
-* 具有企業 SKU 的 Azure 機器學習工作區。
+* 具備 Enterprise SKU 的 Azure Machine Learning 工作區。
+* 設計器可訪問的數據集。 這可以是下列項目之一：
+   * Azure 機器學習註冊資料集
+    
+     **-或-**
+   * 存儲在 Azure 機器學習數據存儲中的數據檔。
+   
+有關使用設計器存取資料的資訊,請參考[如何匯入設計器](how-to-designer-import-data.md)。
 
-本文假定您具備在設計器中構建管道的基本知識。 如需設計工具的導引簡介，請完成[教學課程](tutorial-designer-automobile-price-train-score.md)。 
+本文還假定您具備在設計器中構建管道的基本知識。 有關指導性介紹,請完成[教程](tutorial-designer-automobile-price-train-score.md)。 
 
 ### <a name="sample-pipeline"></a>範例管線
 
-本文中使用的管道是[示例 3：收入預測](how-to-designer-sample-classification-predict-income.md)中找到的管道的更改版本。 它使用[導入資料](algorithm-module-reference/import-data.md)模組而不是示例資料集來演示如何使用自己的資料訓練模型。
+本文中使用的管道是[示例 3:收入預測](samples-designer.md#classification-samples)的更改版本。 管道使用[匯入資料](algorithm-module-reference/import-data.md)模組而不是示例數據集來演示如何使用您自己的數據訓練模型。
 
-![螢幕截圖，顯示修改的示例管道，並帶有突出顯示導入資料模組的框](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![螢幕截圖,顯示修改的範例導管,並帶有突顯匯入資料模組的框](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
-## <a name="train-a-machine-learning-model"></a>訓練機器學習模型
+## <a name="create-a-pipeline-parameter"></a>建立導管參數
 
-要重新訓練模型，您需要一個初始模型。 在本節中，您將瞭解如何使用設計器訓練模型並訪問保存的模型。
+創建管道參數以在運行時動態設置變數。 在此範例中,您將訓練數據路徑從固定值更改為參數,以便可以根據不同資料重新訓練模型。
 
-1. 選擇 **"導入資料**"模組。
-1. 在屬性窗格中，指定資料來源。
+1. 選擇 **「導入資料**」 模組。
 
-   ![顯示導入資料模組的示例配置的螢幕截圖](./media/how-to-retrain-designer/import-data-settings.png)
+    > [!NOTE]
+    > 本示例使用導入數據模塊訪問已註冊數據存儲中的數據。 但是,如果使用替代數據訪問模式,可以執行類似的步驟。
 
-   在此示例中，資料存儲在[Azure 資料存儲](how-to-access-data.md)中。 如果還沒有資料存儲，則可以現在通過選擇 **"新建資料存儲**"來創建一個資料存儲。
+1. 在畫布右側的模組詳細資訊窗格中,選擇數據源。
 
-1. 指定資料的路徑。 您還可以選擇 **"流覽路徑"** 以流覽到資料存儲。 
-1. 在畫布頂部選擇 **"提交**"。
-    
-   > [!NOTE]
-   > 如果已為此管道草稿設置預設計算，則管道將自動運行。 否則，您可以按照設置窗格上的提示立即設置設置。
+1. 輸入數據的路徑。 您還可以選擇 **「瀏覽路徑」** 來瀏覽檔案樹。 
 
-### <a name="find-your-trained-model"></a>查找您訓練的模型
+1. 滑鼠懸停**路徑**欄位,然後選擇顯示的**路徑**欄位上方的橢圓。
 
-設計器將所有管道輸出（包括經過訓練的模型）保存到預設存儲帳戶。 但是，您也可以直接在設計器中訪問經過訓練的模型：
+    ![展示如何建立導管參數的螢幕擷取](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. 等待管道完成運行。
-1. 選取 **訓練模型** 模組。
-1. 在"設置"窗格中，選擇 **"輸出\日誌**"。
-1. 選擇 **"查看輸出**"圖示，然後按照快顯視窗中的說明查找已訓練的模型。
+1. 選擇 **'新增到導管' 參數**。
 
-![顯示如何下載訓練的模型的螢幕截圖](./media/how-to-retrain-designer/trained-model-view-output.png)
-
-## <a name="create-a-pipeline-parameter"></a>創建管道參數
-
-將管道參數添加到運行時動態設置變數。 對於此管道，為訓練資料路徑添加參數，以便您可以在新資料集上重新訓練模型。
-
-1. 選擇 **"導入資料**"模組。
-1. 在"設置"窗格中，選擇 **"路徑"** 欄位上方的橢圓。
-1. 選擇 **"添加到管道"參數**。
 1. 提供參數名稱和預設值。
 
    > [!NOTE]
-   > 您可以通過選擇管道拔模標題旁邊的 **"設置**齒輪"圖示來檢查和編輯管道參數。 
+   > 您可以通過選擇管道拔模標題旁邊的 **「設置**齒輪」圖示來檢查和編輯管道參數。 
 
-![演示如何創建管道參數的螢幕截圖](media/how-to-retrain-designer/add-pipeline-parameter.png)
+1. 選取 [儲存]  。
+
+1. 提交管道運行。
+
+## <a name="find-a-trained-model"></a>查找經過培訓的模型
+
+設計器將所有管道輸出(包括經過訓練的模型)保存到預設工作區存儲帳戶。 您還可以直接在設計器中存取經過訓練的模型:
+
+1. 等待管道完成運行。
+1. 選取 **訓練模型** 模組。
+1. 在「模組詳細資訊」窗格中,在畫布右側選擇 **「輸出 + 日誌**」。。
+1. 您可以在**其他輸出**中尋找模型以及執行紀錄。
+1. 或者,選擇 **「查看輸出**」圖示。 在此處,您可以按照對話框中的說明直接導航到數據存儲。 
+
+![顯示如何下載訓練的模型的螢幕擷取](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>發佈培訓管道
 
-發佈管道時，它會創建管道終結點。 管道終結點允許您重用和管理管道，實現可重複性和自動化。 在此示例中，您已設置用於重新訓練的管道。
+將管道發佈到管道終結點,以便將來輕鬆重用管道。 管道終結點將創建一個 REST 終結點來調用將來的管道。 在此範例中,管道終結點允許您重用管道以重新訓練不同數據的模型。
 
-1. 選擇 **"在**設計器畫布上方發佈"。
+1. 選擇 **「在**設計器畫布上方發佈」。
 1. 選擇或創建管道終結點。
 
    > [!NOTE]
-   > 您可以將多個管道發佈到單個終結點。 終結點中的每個管道都提供一個版本號，您可以在調用管道終結點時指定該版本號。
+   > 您可以將多個管道發佈到單個終結點。 指定的分態的每個導管都會獲得一個版本號,您可以在調用管道終結點時指定該版本號。
 
-1. 選取 [發行]****。
+1. 選取 [發佈]  。
 
 ## <a name="retrain-your-model"></a>重新訓練模型
 
-現在，您已經發佈了培訓管道，您可以使用它使用新資料重新訓練模型。 可以從 Azure 門戶提交從管道終結點提交的運行，也可以以程式設計方式提交。
+現在,您已經發佈了培訓管道,您可以使用它重新訓練模型的新數據。 可以從工作室工作區或以程式設計方式提交從管道終結點的運行。
 
-### <a name="submit-runs-by-using-the-designer"></a>使用設計器提交運行
+### <a name="submit-runs-by-using-the-designer"></a>使用設計器提交執行
 
-使用以下步驟提交從設計器運行的管道終結點：
+使用以下步驟提交從設計器執行的參數化管道終結點:
 
-1. 轉到 **"終結點"** 頁。
-1. 選擇 **"管道終結點**"選項卡。
-1. 選擇管道終結點。
-1. 選擇 **"已發佈管道"** 選項卡。
-1. 選擇要運行的管道。
-1. 選取 [提交]****。
-1. 在設置對話方塊中，可以為輸入資料路徑值指定新值。 此值指向新資料集。
+1. 轉到工作室工作區中的 **「終結點」** 頁面。
+1. 選擇 **「管道終結點**」 選項卡。然後,選擇管道終結點。
+1. 選擇 **「已發布管道」** 選項卡。然後,選擇要運行的管道版本。
+1. 選取 [提交]  。
+1. 在「設定」對話框中,可以指定運行的參數值。 在此示例中,更新數據路徑以使用非美國數據集訓練模型。
 
-![演示如何設置在設計器中運行的參數化管道的螢幕截圖](./media/how-to-retrain-designer/published-pipeline-run.png)
+![展示如何設定在設計器中執行的參數化導管的螢幕擷取](./media/how-to-retrain-designer/published-pipeline-run.png)
 
-### <a name="submit-runs-by-using-code"></a>使用代碼提交運行
+### <a name="submit-runs-by-using-code"></a>使用代碼提交執行
 
-您可以在概述面板中找到已發佈管道的 REST 終結點。 通過調用終結點，可以重新訓練已發佈的管道。
+您可以在概述面板中找到已發佈管道的 REST 終結點。 通過調用終結點,可以重新訓練已發佈的管道。
 
-要進行 REST 調用，您需要一個 OAuth 2.0 承載式身份驗證標頭。 有關將身份驗證設置為工作區和進行參數化 REST 調用的資訊，請參閱構建[Azure 機器學習管道以進行批次處理評分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)。
+要進行 REST 呼叫,您需要一個 OAuth 2.0 承載式身份驗證標頭。 有關將身份驗證設定為工作區與參數化 REST 呼叫的資訊,請參考建[構 Azure 機器學習管線以進行批次處理評分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)。
 
 ## <a name="next-steps"></a>後續步驟
 
-按照[設計器教程](tutorial-designer-automobile-price-train-score.md)來訓練和部署回歸模型。
+在本文中,您學習了如何使用設計器創建參數化訓練管道終結點。
+
+有關如何部署模型進行預測的完整演練,請參閱[設計器教程](tutorial-designer-automobile-price-train-score.md)以訓練和部署回歸模型。

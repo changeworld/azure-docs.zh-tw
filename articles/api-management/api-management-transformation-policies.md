@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047687"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803240"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>轉換策略
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>轉換原則
 
 -   [將 JSON 轉換成 XML](api-management-transformation-policies.md#ConvertJSONtoXML) - 將要求或回應內文從 JSON 轉換成 XML。
 
@@ -214,7 +214,7 @@ ms.locfileid: "80047687"
 ```
 
 > [!NOTE]
-> 後端實體可以通過管理[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。
+> 後端實體可以透過管理[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。
 
 ### <a name="example"></a>範例
 
@@ -269,7 +269,7 @@ ms.locfileid: "80047687"
 |名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |base-url|新的後端服務基底 URL。|或`base-url``backend-id`必須存在。|N/A|
-|backend-id|要傳送至的後端識別碼。 （後端實體通過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。|或`base-url``backend-id`必須存在。|N/A|
+|backend-id|要傳送至的後端識別碼。 (後端實體透過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。|或`base-url``backend-id`必須存在。|N/A|
 |sf-partition-key|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 用於從名稱解析服務解析特定資料分割。|否|N/A|
 |sf-replica-type|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 控制要求應移至資料分割的主要或次要複本。 |否|N/A|
 |sf-resolve-condition|僅適用於後端為 Service Fabric 服務時。 識別新的解析是否必須重複呼叫 Service Fabric 後端的條件。|否|N/A|
@@ -384,7 +384,7 @@ ms.locfileid: "80047687"
 </set-body>
 ```
 
-#### <a name="transform-json-using-a-liquid-template"></a>使用液體範本轉換 JSON
+#### <a name="transform-json-using-a-liquid-template"></a>使用液體樣本轉換 JSON
 ```xml
 {
 "order": {
@@ -468,14 +468,14 @@ OriginalUrl.
 
 ### <a name="examples"></a>範例
 
-#### <a name="example---adding-header-override-existing"></a>示例 - 添加標頭，覆蓋現有
+#### <a name="example---adding-header-override-existing"></a>範例 - 新增標頭,覆寫現有
 
 ```xml
 <set-header name="some header name" exists-action="override">
     <value>20</value>
 </set-header>
 ```
-#### <a name="example---removing-header"></a>示例 - 刪除標頭
+#### <a name="example---removing-header"></a>範例 - 刪除標頭
 
 ```xml
  <set-header name="some header name" exists-action="delete" />
@@ -497,14 +497,14 @@ OriginalUrl.
  如需詳細資訊，請參閱[原則運算式](api-management-policy-expressions.md)和[內容變數](api-management-policy-expressions.md#ContextVariables)。
 
 > [!NOTE]
-> 標頭的多個值將串聯到 CSV 字串中，例如：`headerName: value1,value2,value3`
+> 標頭的多個值將串聯到 CSV 字串中,例如:`headerName: value1,value2,value3`
 >
 > 例外狀況包括值具有下列情況的標準化標頭：
 > - 可能包含逗號 (`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`)，
 > - 可能包含日期 (`Cookie`、`Set-Cookie`、`Warning`)，
 > - 包含日期 (`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`)。
 >
-> 如果這些異常，多個標頭值將不會串聯到一個字串中，並將作為單獨的標頭傳遞，例如：`User-Agent: value1`
+> 如果這些異常,多個標頭值將不會串聯到一個字串中,並將作為單獨的標頭傳遞,例如:`User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
@@ -540,17 +540,12 @@ OriginalUrl.
 </set-query-parameter>
 ```
 
-### <a name="examples"></a>範例
-
 #### <a name="example"></a>範例
 
 ```xml
 
-<set-query-parameter>
-  <parameter name="api-key" exists-action="skip">
-    <value>12345678901</value>
-  </parameter>
-  <!-- for multiple parameters with the same name add additional value elements -->
+<set-query-parameter name="api-key" exists-action="skip">
+  <value>12345678901</value>
 </set-query-parameter>
 
 ```

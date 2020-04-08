@@ -1,30 +1,30 @@
 ---
 title: 設定 TLS 相互驗證
-description: 瞭解如何在 TLS 上對用戶端憑證進行身份驗證。 Azure 應用服務可以使用戶端憑證可供應用代碼驗證。
+description: 瞭解如何在 TLS 上對用戶端證書進行身份驗證。 Azure 應用服務可以使用戶端證書可供應用代碼驗證。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300993"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811738"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>為 Azure 應用服務配置 TLS 相互身份驗證
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>為 Azure 應用服務設定 TLS 相互身份驗證
 
-為 Azure App Service 應用程式啟用不同類型的驗證，即可限制其存取。 一種方法是在用戶端請求通過 TLS/SSL 時請求用戶端憑證並驗證憑證。 此機制稱為 TLS 相互驗證或用戶端憑證驗證。 本文演示如何將應用設置為使用用戶端憑證身份驗證。
+為 Azure App Service 應用程式啟用不同類型的驗證，即可限制其存取。 一種方法是在用戶端請求通過 TLS/SSL 時請求客戶端證書並驗證證書。 此機制稱為 TLS 相互驗證或用戶端憑證驗證。 本文演示如何將應用設置為使用用戶端證書身份驗證。
 
 > [!NOTE]
-> 如果您透過 HTTP 存取您的網站，而非 HTTPS，將不會收到任何用戶端憑證。 因此，如果應用程式需要用戶端憑證，則不應允許通過 HTTP 向應用程式請求。
+> 如果您透過 HTTP 存取您的網站，而非 HTTPS，將不會收到任何用戶端憑證。 因此,如果應用程式需要客戶端證書,則不應允許通過 HTTP 向應用程式請求。
 >
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 ## <a name="enable-client-certificates"></a>啟用用戶端憑證
 
-要將應用設置為需要用戶端憑證，需要將應用`clientCertEnabled`的設置設置為`true`。 要設置此設置，在[雲殼](https://shell.azure.com)中運行以下命令。
+要將應用程式設定為需要客戶端憑證,需要將`clientCertEnabled`套用的設定`true`設定為 。 要設置此設置,在[雲殼](https://shell.azure.com)中運行以下命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -32,22 +32,22 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>排除需要身份驗證的路徑
 
-當您為應用程式啟用互認時，應用根目錄下的所有路徑都需要用戶端憑證才能訪問。 要允許某些路徑保持打開狀態以進行匿名存取，可以將排除路徑定義為應用程式佈建的一部分。
+當您為應用程式啟用互認時,應用根目錄下的所有路徑都需要用戶端證書才能訪問。 要允許某些路徑保持打開狀態以進行匿名訪問,可以將排除路徑定義為應用程式配置的一部分。
 
-可以通過選擇 **"配置** > **常規設置**"和定義排除路徑來配置排除路徑。 在此示例中，應用程式路徑下`/public`的任何內容不會請求用戶端憑證。
+可以通過選擇 **「設定** > **常規設定**」和定義排除路徑來配置排除路徑。 在此範例中,應用程式路徑下`/public`的任何內容不會請求客戶端證書。
 
-![證書排除路徑][exclusion-paths]
+![憑證排除路徑][exclusion-paths]
 
 
-## <a name="access-client-certificate"></a>訪問用戶端憑證
+## <a name="access-client-certificate"></a>存取客戶端憑證
 
-在應用服務中，請求的 SSL 終止發生在前端負載等化器處。 當在[啟用了用戶端憑證](#enable-client-certificates)的情況下將請求轉發到應用代碼時，應用服務會向`X-ARR-ClientCert`用戶端憑證注入請求標頭。 應用服務不執行此用戶端憑證的任何操作，而不是將其轉發到你的應用。 你的應用代碼負責驗證用戶端憑證。
+在應用服務中,請求的 TLS 終止發生在前端負載均衡器處。 當在[啟用了客戶端證書](#enable-client-certificates)的情況下將請求轉發到應用代碼時,應用`X-ARR-ClientCert`服務會向 用戶端證書注入請求標頭。 應用服務不執行此用戶端證書的任何操作,而不是將其轉發到你的應用。 你的應用代碼負責驗證客戶端證書。
 
-對於ASP.NET，用戶端憑證可通過**HttpRequest.Client 證書**屬性獲得。
+對於ASP.NET,用戶端證書可通過**HTTPRequest.Client 證書**屬性獲得。
 
-對於其他應用程式堆疊（Node.js、PHP 等），用戶端憑證通過`X-ARR-ClientCert`請求標頭中的 base64 編碼值在應用中可用。
+對於其他應用程式堆疊(Node.js、PHP等),用戶端證書通過`X-ARR-ClientCert`請求標頭中的 base64 編碼值在應用中可用。
 
-## <a name="aspnet-sample"></a>ASP.NET樣本
+## <a name="aspnet-sample"></a>ASP.NET 樣本
 
 ```csharp
     using System;
@@ -171,9 +171,9 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
     }
 ```
 
-## <a name="nodejs-sample"></a>Node.js 示例
+## <a name="nodejs-sample"></a>Node.js 範例
 
-以下 Node.js 示例代碼獲取`X-ARR-ClientCert`標頭並使用[節點偽造](https://github.com/digitalbazaar/forge)將基64 編碼的 PEM 字串轉換為證書物件並對其進行驗證：
+以下 Node.js 範例`X-ARR-ClientCert`代碼取得 標頭並使用[節點偽造](https://github.com/digitalbazaar/forge)將基64 編碼的 PEM 字串轉換為憑證物件並對其進行驗證:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -218,7 +218,7 @@ export class AuthorizationHandler {
 
 ## <a name="java-sample"></a>Java 範例
 
-以下 JAVA 類將證書從`X-ARR-ClientCert`編碼到`X509Certificate`實例。 `certificateIsValid()`驗證憑證的指紋與建構函式中給出的指紋匹配，並且證書尚未過期。
+以下 JAVA 類將`X-ARR-ClientCert`證書從`X509Certificate`編碼到 實例。 `certificateIsValid()`驗證證書的指紋與構造函數中給出的指紋匹配,並且證書尚未過期。
 
 
 ```java
