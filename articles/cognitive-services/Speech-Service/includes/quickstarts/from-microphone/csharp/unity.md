@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925188"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671105"
 ---
 > [!NOTE]
 > 適用於 Unity 的語音 SDK 支援 Windows Desktop (x86 和 x64) 或通用 Windows 平台 (x86、x64、ARM/ARM64)、Android (x86、ARM32/64) 以及 iOS (x64 模擬器、ARM32 和 ARM64)
@@ -25,7 +25,7 @@ ms.locfileid: "78925188"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * 確定您可以存取麥克風以擷取音訊
 
 如果您已經這麼做，很棒。 讓我們繼續進行。
@@ -133,4 +133,4 @@ ms.locfileid: "78925188"
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

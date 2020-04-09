@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720883"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985553"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>教學課程：使用 Xamarin 和 Azure Cosmos DB 建置行動應用程式
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 * 快速的輸送量。 只需要幾毫秒就能使用 Azure Cosmos DB 讀取和寫入文件。 開發人員可以指定他們需要的輸送量，Azure Cosmos DB 則以 99.99% 可用性的 SLA 加以實現，適用於一致性很寬鬆的所有單一區域帳戶和所有多重區域帳戶，而所有多重區域資料庫帳戶則有 99.999% 的讀取可用性。
 * 規模無限制。 您的 Azure Cosmos 容器可[隨著應用程式成長](partition-data.md)。 您可以從小型資料大小和每秒數百個要求的輸送量著手。 您的集合或資料庫可以成長至數 PB 的資料以及每秒數億個要求的極大輸送量。
 * 散布世界各地。 行動應用程式使用者總是忙個不停，經常在世界各地奔波。 Azure Cosmos DB 是[分散在世界各地的資料庫](distribute-data-globally.md)。 按一下地圖，讓使用者能夠存取您的資料。
-* 內建豐富授權。 使用 Azure Cosmos DB 就能輕鬆實作熱門模式，例如[每位使用者的資料](https://aka.ms/documentdb-xamarin-todouser)或多位使用者共用的資料，而不需要複雜的自訂授權程式碼。
+* 內建豐富授權。 使用 Azure Cosmos DB 就能輕鬆實作熱門模式，例如[每位使用者的資料](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)或多位使用者共用的資料，而不需要複雜的自訂授權程式碼。
 * 地理空間查詢。 許多行動應用程式目前都有提供地理情境體驗。 透過一流的[地理空間類型](geospatial.md)支援，Azure Cosmos DB 可讓您輕鬆實現這些體驗。
 * 二進位附件。 您的應用程式資料通常包含二進位 Blob。 原生的附件支援可讓您更輕鬆地使用 Azure Cosmos DB 做為應用程式資料的集散中心。
 
@@ -83,7 +83,7 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 
   4. 修改應用程式以使用 Facebook 向資源權杖訊息代理程式驗證，並且向已登入的 Facebook 使用者要求資源權杖。 然後您可以存取其在 UserItems 集合中的資料。  
 
-您可以在 [GitHub 上的資源權杖訊息代理程式](https://aka.ms/documentdb-xamarin-todouser)中找到此模式的完整程式碼範例。 下圖可說明解決方案︰
+您可以在 [GitHub 上的資源權杖訊息代理程式](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)中找到此模式的完整程式碼範例。 下圖可說明解決方案︰
 
 ![Azure Cosmos DB 使用者和權限訊息代理程式](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

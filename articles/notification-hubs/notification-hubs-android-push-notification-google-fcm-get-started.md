@@ -18,12 +18,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127544"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521561"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>教學課程：使用 Firebase 將推播通知傳送至 Android 裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "80127544"
 
 本教學課程說明如何使用 Azure 通知中樞和 Firebase 雲端通訊 (FCM)，將通知推送至 Android 應用程式。 在本教學課程中，您會建立空白的 Android 應用程式，其可使用 Firebase 雲端通訊 (FCM) 接收推播通知。
 
-您可以[從 GitHub](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp) 下載本教學課程的完整程式碼。
+您可以[從 GitHub](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp) 下載本教學課程的完整程式碼。
 
 在本教學課程中，您會執行下列步驟：
 
