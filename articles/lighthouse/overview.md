@@ -3,12 +3,12 @@ title: 什麼是 Azure Lighthouse ？
 description: Azure Lighthouse 能讓服務提供者以高度自動化且有效率的方式為其客戶傳遞受控服務。
 ms.date: 11/11/2019
 ms.topic: overview
-ms.openlocfilehash: 0bec1f5b727ca3ecd604d2654358ca9a5507abe4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d4d33238f30c2a579c6a0da6a39238207db4f4a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646189"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982781"
 ---
 # <a name="what-is-azure-lighthouse"></a>什麼是 Azure Lighthouse ？
 
@@ -32,7 +32,7 @@ Azure Lighthouse 包含多種方法，可協助簡化客戶業務開發及管理
 
 - **Azure 委派的資源管理**：從您自己的租用戶內安全地管理客戶的 Azure 資源，而不需要切換內容和控制平面。 如需詳細資訊，請參閱 [Azure 委派的資源管理](concepts/azure-delegated-resource-management.md) \(英文\)。
 - **新的 Azure 入口網站體驗**：在 [Azure 入口網站](https://portal.azure.com)的新 [我的客戶]  頁面中檢視跨租用戶資訊。 相對應的 [服務提供者]  刀鋒視窗能讓您的客戶檢視及管理服務提供者存取權。 如需詳細資訊，請參閱[檢視和管理客戶](./how-to/view-manage-customers.md)與[檢視和管理服務提供者](how-to/view-manage-service-providers.md)。
-- **Azure Resource Manager 範本**：更輕鬆地執行管理工作，包括針對 Azure 委派的資源管理對客戶進行上線。 如需詳細資訊，請參閱我們的[範例存放庫](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) \(英文\)，以及[讓客戶在 Azure 委派的資源管理中上線](how-to/onboard-customer.md)。
+- **Azure Resource Manager 範本**：更輕鬆地執行管理工作，包括針對 Azure 委派的資源管理對客戶進行上線。 如需詳細資訊，請參閱我們的[範例存放庫](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) \(英文\)，以及[讓客戶在 Azure 委派的資源管理中上線](how-to/onboard-customer.md)。
 - **Azure Marketplace 中的受控服務供應項目**：透過私人或公用供應項目來將服務提供給客戶，並讓系統將他們自動上線至 Azure 委派的資源管理，作為使用 Azure Resource Manager 範本進行上線的替代方案。 如需詳細資訊，請參閱 [Azure Marketplace 中的受控服務供應項目](concepts/managed-services-offers.md)。
 - **Azure 受控應用程式**：封裝並交付客戶能輕鬆部署，並用於其訂用帳戶的應用程式。 應用程式會被部署至您可從自己的租用戶存取的資源群組中，這能讓您以和整體 Azure Lighthouse 體驗整合在一起的形式來管理該服務。 如需詳細資訊，請參閱 [Azure 受控應用程式概觀](../azure-resource-manager/managed-applications/overview.md)。
 

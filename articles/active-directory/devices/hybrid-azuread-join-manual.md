@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222945"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802547"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教學課程：手動設定已加入混合式 Azure Active Directory 的裝置
 
@@ -85,7 +85,7 @@ Azure AD Connect：
 | 設定服務連接點 | ![勾選][1] | ![勾選][1] | ![勾選][1] |
 | 設定宣告的發行 |     | ![勾選][1] | ![勾選][1] |
 | 啟用非 Windows 10 裝置 |       |        | ![勾選][1] |
-| 確認加入的裝置 | ![勾選][1] | ![勾選][1] | [檢查][1] |
+| 確認加入的裝置 | ![勾選][1] | ![勾選][1] | ![勾選][1] |
 
 ## <a name="configure-a-service-connection-point"></a>設定服務連接點
 
