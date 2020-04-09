@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure Active Directory 應用程式資訊清單 | Microsoft Docs
+title: 瞭解 Azure 活動目錄的清單
 description: 詳細說明 Azure Active Directory 應用程式資訊清單；此資訊清單代表應用程式在 Azure AD 租用戶中的身分識別組態，可用來協助進行 OAuth 授權、同意體驗等等。
 services: active-directory
 author: rwike77
@@ -12,28 +12,28 @@ ms.date: 03/23/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6d9a4af5ee814282589959fcf840c1061358ca18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383934"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883469"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 應用程式資訊清單
 
-應用程式資訊清單包含 Microsoft 身分識別平台中應用程式物件的所有屬性定義。 它也可作為更新應用程式物件的機制。 有關應用程式實體及其架構的詳細資訊，請參閱[圖形 API 應用程式實體文檔](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。
+應用程式資訊清單包含 Microsoft 身分識別平台中應用程式物件的所有屬性定義。 它也可作為更新應用程式物件的機制。 有關應用程式實體及其架構的詳細資訊,請參閱[圖形 API 應用程式實體文件](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。
 
-您可以通過 Azure 門戶配置應用的屬性，也可以使用[REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)或[PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)以程式設計方式配置應用的屬性。 不過，在某些情況下，您需要編輯應用程式資訊清單，以設定應用程式的屬性。 這些案例包括：
+您可以通過 Azure 門戶配置應用的屬性,也可以使用[REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)或[PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)以程式設計方式配置應用的屬性。 不過，在某些情況下，您需要編輯應用程式資訊清單，以設定應用程式的屬性。 這些案例包括：
 
-* 如果將應用註冊為 Azure AD 多租戶和個人 Microsoft 帳戶，則無法更改 UI 中支援的 Microsoft 帳戶。 相反地，您必須使用應用程式資訊清單編輯器來變更支援的帳戶類型。
+* 如果將應用註冊為 Azure AD 多租戶和個人 Microsoft 帳戶,則無法更改 UI 中支援的 Microsoft 帳戶。 相反地，您必須使用應用程式資訊清單編輯器來變更支援的帳戶類型。
 * 如果您需要定義應用程式支援的權限和角色，則必須修改應用程式資訊清單。
 
 ## <a name="configure-the-app-manifest"></a>設定應用程式資訊清單
 
 若要設定應用程式資訊清單：
 
-1. 轉到[Azure 門戶](https://portal.azure.com)。 搜索並選擇**Azure 活動目錄**服務。
-1. 選擇**應用註冊**。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。 搜索並選擇**Azure 活動目錄**服務。
+1. 選擇**應用程式 。**
 1. 選取您要設定的應用程式。
 1. 從應用程式的 [概觀]**** 頁面，選取 [資訊清單]**** 區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內編輯資訊清單。 或者，您也可以選取 [下載]**** 在本機編輯資訊清單，然後使用 [上傳]**** 將其重新套用到您的應用程式。
 
@@ -41,19 +41,19 @@ ms.locfileid: "80383934"
 
 本節介紹應用程式清單中的屬性。
 
-### <a name="accesstokenacceptedversion-attribute"></a>訪問權杖接受版本屬性
+### <a name="accesstokenacceptedversion-attribute"></a>存取權杖接受版本屬性
 
 | Key | 值類型 |
 | :--- | :--- |
-| 訪問權杖接受版本 | 可為 null 的 Int32 |
+| 存取權杖接受版本 | 可為 null 的 Int32 |
 
-指定資源所需的存取權杖版本。 此參數更改生成的 JWT 的版本和格式，而獨立于用於請求訪問權杖的終結點或用戶端。
+指定資源所需的存取權杖版本。 此參數更改生成的 JWT 的版本和格式,而獨立於用於請求訪問權杖的終結點或用戶端。
 
 由客戶端選擇的使用端點 v1.0 或 v2.0 僅影響 id_tokens 的版本。 資源必須明確設定 `accesstokenAcceptedVersion`，以表示支援的存取權杖格式。
 
-`accesstokenAcceptedVersion` 的可能值為 1、2 或 Null。 如果值為 null，則此參數預設為 1，對應于 v1.0 終結點。
+`accesstokenAcceptedVersion` 的可能值為 1、2 或 Null。 如果值為 null,則此參數預設為 1,對應於 v1.0 終結點。
 
-如果`signInAudience``AzureADandPersonalMicrosoftAccount`為 ，則值`2`必須為 。
+如果`signInAudience``AzureADandPersonalMicrosoftAccount`為 ,則`2`值 必須為 。
 
 範例：
 
@@ -61,13 +61,13 @@ ms.locfileid: "80383934"
     "accessTokenAcceptedVersion": 2,
 ```
 
-### <a name="addins-attribute"></a>添加項屬性
+### <a name="addins-attribute"></a>新增項目屬性
 
 | Key | 值類型 |
 | :--- | :--- |
 | addIns | 集合 |
 
-定義取用服務可用來在特定內容中呼叫應用程式的自訂行為。 例如，可以呈現檔流的應用程式可能會為其"FileHandler"功能設置`addIns`屬性。 此參數將允許 Office 365 等服務在使用者正在處理的文檔的上下文中調用應用程式。
+定義取用服務可用來在特定內容中呼叫應用程式的自訂行為。 例如,可以呈現檔流的應用程式可能會為其「FileHandler」功能設定`addIns`屬性。 此參數將允許 Office 365 等服務在使用者正在處理的文檔的上下文中調用應用程式。
 
 範例：
 
@@ -92,7 +92,7 @@ ms.locfileid: "80383934"
 | :--- | :--- |
 | 允許公共用戶端 | Boolean |
 
-指定後援應用程式類型。 根據預設，Azure AD 會從 replyUrlsWithType 推斷應用程式類型。 在某些情況下，Azure AD 無法確定用戶端應用類型。 例如，其中一種情況是[ROPC](https://tools.ietf.org/html/rfc6749#section-4.3)流，其中 HTTP 要求在沒有 URL 重定向的情況下發生。 在這些情況下，Azure AD 將根據此屬性的值解釋應用程式類型。 如果此值設為 true，後援應用程式類型就會設定為公用用戶端，例如在行動裝置上執行的已安裝應用程式。 預設值為 false，這表示後援應用程式類型是機密用戶端，例如 Web 應用程式。
+指定後援應用程式類型。 根據預設，Azure AD 會從 replyUrlsWithType 推斷應用程式類型。 在某些情況下,Azure AD 無法確定客戶端應用類型。 例如,其中一種情況是[ROPC](https://tools.ietf.org/html/rfc6749#section-4.3)流,其中 HTTP 請求在沒有 URL 重定向的情況下發生。 在這些情況下,Azure AD 將根據此屬性的值解釋應用程式類型。 如果此值設為 true，後援應用程式類型就會設定為公用用戶端，例如在行動裝置上執行的已安裝應用程式。 預設值為 false，這表示後援應用程式類型是機密用戶端，例如 Web 應用程式。
 
 範例：
 
@@ -106,10 +106,10 @@ ms.locfileid: "80383934"
 | :--- | :--- |
 | availableToOtherTenants | Boolean |
 
-如果應用程式與其他租戶共用，則設置為 true;否則，假。
+如果應用程式與其他租戶共用,則設置為 true;否則,假。
 
 > [!NOTE]
-> 此屬性僅在**應用註冊（舊版）** 體驗中可用。 替換為`signInAudience`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
+> 此屬性僅在**應用註冊(舊版)** 體驗中可用。 替換為`signInAudience`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
 
 ### <a name="appid-attribute"></a>appId 屬性
 
@@ -125,13 +125,13 @@ ms.locfileid: "80383934"
     "appId": "601790de-b632-4f57-9523-ee7cb6ceba95",
 ```
 
-### <a name="approles-attribute"></a>應用角色屬性
+### <a name="approles-attribute"></a>套用角色屬性
 
 | Key | 值類型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
-指定應用程式可以宣告的角色集合。 這些角色可以指派給使用者、群組或服務主體。 有關詳細資訊示例和資訊，請參閱[在應用程式中添加應用角色，並在權杖中接收它們](howto-add-app-roles-in-azure-ad-apps.md)。
+指定應用程式可以宣告的角色集合。 這些角色可以指派給使用者、群組或服務主體。 有關詳細資訊範例和資訊,請參閱[在應用程式中添加應用角色,並在權杖中接收它們](howto-add-app-roles-in-azure-ad-apps.md)。
 
 範例：
 
@@ -159,9 +159,9 @@ ms.locfileid: "80383934"
 應用程式的顯示名稱。
 
 > [!NOTE]
-> 此屬性僅在**應用註冊（舊版）** 體驗中可用。 替換為`name`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
+> 此屬性僅在**應用註冊(舊版)** 體驗中可用。 替換為`name`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
 
-### <a name="errorurl-attribute"></a>錯誤Url屬性
+### <a name="errorurl-attribute"></a>錯誤網址屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -169,7 +169,7 @@ ms.locfileid: "80383934"
 
 不支援。
 
-### <a name="groupmembershipclaims-attribute"></a>組成員要求屬性
+### <a name="groupmembershipclaims-attribute"></a>群組成員要求屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -187,7 +187,7 @@ ms.locfileid: "80383934"
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>主頁屬性
+### <a name="homepage-attribute"></a>首頁屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -196,7 +196,7 @@ ms.locfileid: "80383934"
 應用程式首頁的 URL。
 
 > [!NOTE]
-> 此屬性僅在**應用註冊（舊版）** 體驗中可用。 替換為`signInUrl`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
+> 此屬性僅在**應用註冊(舊版)** 體驗中可用。 替換為`signInUrl`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
 
 ### <a name="objectid-attribute"></a>物件 Id 屬性
 
@@ -206,7 +206,7 @@ ms.locfileid: "80383934"
 
 目錄中應用程式的唯一識別碼。
 
-這僅在**應用註冊（舊版）** 體驗中可用。 替換為`id`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
+這僅在**應用註冊(舊版)** 體驗中可用。 替換為`id`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
 
 範例：
 
@@ -214,7 +214,7 @@ ms.locfileid: "80383934"
     "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="optionalclaims-attribute"></a>可選索賠屬性
+### <a name="optionalclaims-attribute"></a>選擇索賠屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -222,7 +222,7 @@ ms.locfileid: "80383934"
 
 由此特定應用程式的安全性權杖服務在權杖中傳回的選擇性宣告。
 
-此時，同時支援個人帳戶和 Azure AD (透過應用程式註冊入口網站註冊) 的應用程式無法使用選擇性宣告。 不過，使用 v2.0 端點只註冊 Azure AD 的應用程式，可在資訊清單中取得所要求的選擇性宣告。 有關詳細資訊，請參閱[可選聲明](active-directory-optional-claims.md)。
+此時，同時支援個人帳戶和 Azure AD (透過應用程式註冊入口網站註冊) 的應用程式無法使用選擇性宣告。 不過，使用 v2.0 端點只註冊 Azure AD 的應用程式，可在資訊清單中取得所要求的選擇性宣告。 有關詳細資訊,請參閱[可選聲明](active-directory-optional-claims.md)。
 
 範例：
 
@@ -244,7 +244,7 @@ ms.locfileid: "80383934"
     "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="identifieruris-attribute"></a>識別碼 Uris 屬性
+### <a name="identifieruris-attribute"></a>識別碼的 Uris 屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -262,7 +262,7 @@ ms.locfileid: "80383934"
 
 | Key | 值類型 |
 | :--- | :--- |
-| 資訊 Url | String |
+| 資訊網址 | String |
 
 指定應用程式服務條款和隱私權聲明的連結。 使用者會透過使用者同意體驗看到服務條款和隱私權聲明。 如需詳細資訊，請參閱[如何：新增 Azure AD 註冊應用程式的服務條款和隱私權聲明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -277,13 +277,13 @@ ms.locfileid: "80383934"
     },
 ```
 
-### <a name="keycredentials-attribute"></a>鍵憑據屬性
+### <a name="keycredentials-attribute"></a>鍵認證屬性
 
 | Key | 值類型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
-保留對應用程式指定認證、字串型的共用密碼以及 X.509 憑證的參考。 這些憑據在請求訪問權杖時（當應用充當用戶端而不是作為資源時）使用。
+保留對應用程式指定認證、字串型的共用密碼以及 X.509 憑證的參考。 這些憑據在請求訪問權杖時(當應用充當用戶端而不是作為資源時)使用。
 
 範例：
 
@@ -301,13 +301,13 @@ ms.locfileid: "80383934"
     ],
 ```
 
-### <a name="knownclientapplications-attribute"></a>已知用戶端應用程式屬性
+### <a name="knownclientapplications-attribute"></a>已知客戶端應用程式屬性
 
 | Key | 值類型 |
 | :--- | :--- |
 | knownClientApplications | 字串陣列 |
 
-如果您有包含兩個組件 (用戶端應用程式及自訂 Web API 應用程式) 的解決方案，則用來統合同意。 如果您將此值輸入為用戶端應用程式的 appID ，則使用者只需同意用戶端應用程式一次。 Azure AD 將知道同意用戶端意味著隱式同意 Web API。 它將自動同時為用戶端和 Web API 預配服務主體。 用戶端與 Web API 應用程式都必須在相同的租用戶中註冊。
+如果您有包含兩個組件 (用戶端應用程式及自訂 Web API 應用程式) 的解決方案，則用來統合同意。 如果您將此值輸入為用戶端應用程式的 appID ，則使用者只需同意用戶端應用程式一次。 Azure AD 將知道同意客戶端意味著隱式同意 Web API。 它將自動同時為用戶端和 Web API 預配服務主體。 用戶端與 Web API 應用程式都必須在相同的租用戶中註冊。
 
 範例：
 
@@ -319,7 +319,7 @@ ms.locfileid: "80383934"
 
 | Key | 值類型 |
 | :--- | :--- |
-| 標誌Url | String |
+| 標誌網址 | String |
 
 此為唯讀值，會指向入口網站中已上傳標誌的 CDN URL。
 
@@ -329,7 +329,7 @@ ms.locfileid: "80383934"
     "logoUrl": "https://MyRegisteredAppLogo",
 ```
 
-### <a name="logouturl-attribute"></a>登出Url屬性
+### <a name="logouturl-attribute"></a>登出網址屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -363,7 +363,7 @@ ms.locfileid: "80383934"
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Boolean |
 
-指定此 Web 應用程式可否要求 OAuth2.0 隱含流程存取權杖。 預設值為 false。 此標誌用於基於瀏覽器的應用，如 JavaScript 單頁應用。 若要進一步了解，請在目錄中輸入 `OAuth 2.0 implicit grant flow` 並查看隱含流程相關主題。
+指定此 Web 應用程式可否要求 OAuth2.0 隱含流程存取權杖。 預設值為 false。 此標誌用於基於瀏覽器的應用,如 JavaScript 單頁應用。 若要進一步了解，請在目錄中輸入 `OAuth 2.0 implicit grant flow` 並查看隱含流程相關主題。
 
 範例：
 
@@ -377,7 +377,7 @@ ms.locfileid: "80383934"
 | :--- | :--- |
 | oauth2AllowIdToken隱式流 | Boolean |
 
-指定此 Web 應用程式可否要求 OAuth2.0 隱含流程識別碼權杖。 預設值為 false。 此標誌用於基於瀏覽器的應用，如 JavaScript 單頁應用。
+指定此 Web 應用程式可否要求 OAuth2.0 隱含流程識別碼權杖。 預設值為 false。 此標誌用於基於瀏覽器的應用,如 JavaScript 單頁應用。
 
 範例：
 
@@ -385,7 +385,7 @@ ms.locfileid: "80383934"
     "oauth2AllowIdTokenImplicitFlow": false,
 ```
 
-### <a name="oauth2permissions-attribute"></a>oauth2許可權屬性
+### <a name="oauth2permissions-attribute"></a>oauth2 權限屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -424,11 +424,11 @@ ms.locfileid: "80383934"
     "oauth2RequirePostResponse": false,
 ```
 
-### <a name="parentalcontrolsettings-attribute"></a>家長監護設置屬性
+### <a name="parentalcontrolsettings-attribute"></a>家長控制設定屬性
 
 | Key | 值類型 |
 | :--- | :--- |
-| 家長監護設置 | String |
+| 家長控制設定 | String |
 
 - `countriesBlockedForMinors` 指定會對未成年人封鎖此應用程式的國家/地區。
 - `legalAgeGroupRule` 指定會套用到應用程式使用者的法定年齡群組規則。 可以設定為 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。  
@@ -442,7 +442,7 @@ ms.locfileid: "80383934"
     },
 ```
 
-### <a name="passwordcredentials-attribute"></a>密碼憑據屬性
+### <a name="passwordcredentials-attribute"></a>密碼認證內容
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -485,7 +485,7 @@ ms.locfileid: "80383934"
     ],
 ```
 
-### <a name="publicclient-attribute"></a>公共用戶端屬性
+### <a name="publicclient-attribute"></a>公開用戶端屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -493,9 +493,9 @@ ms.locfileid: "80383934"
 
 指定此應用程式是否為公用的用戶端 (例如行動裝置上執行的已安裝應用程式)。 
 
-此屬性僅在**應用註冊（舊版）** 體驗中可用。 替換為`allowPublicClient`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
+此屬性僅在**應用註冊(舊版)** 體驗中可用。 替換為`allowPublicClient`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
 
-### <a name="publisherdomain-attribute"></a>發行者域屬性
+### <a name="publisherdomain-attribute"></a>發行者網域屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -509,7 +509,7 @@ ms.locfileid: "80383934"
     "publisherDomain": "https://www.contoso.com",
 ````
 
-### <a name="replyurls-attribute"></a>回復 Urls 屬性
+### <a name="replyurls-attribute"></a>回覆網址
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -517,20 +517,20 @@ ms.locfileid: "80383934"
 
 傳回權杖時，此多值屬性會保留 Azure AD 接受作為目的地的已註冊 redirect_uri 值清單。
 
-此屬性僅在**應用註冊（舊版）** 體驗中可用。 替換為`replyUrlsWithType`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
+此屬性僅在**應用註冊(舊版)** 體驗中可用。 替換為`replyUrlsWithType`[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗。
 
-### <a name="replyurlswithtype-attribute"></a>回復Urls與類型屬性
+### <a name="replyurlswithtype-attribute"></a>回覆網址的屬性
 
 | Key | 值類型 |
 | :--- | :--- |
-| 回復 Urls 與類型 | 集合 |
+| 回覆網址 s 與類型 | 集合 |
 
-傳回權杖時，此多值屬性會保留 Azure AD 接受作為目的地的已註冊 redirect_uri 值清單。 每個 URI 值都應包含關聯的應用類型值。 支援的類型值包括：
+傳回權杖時，此多值屬性會保留 Azure AD 接受作為目的地的已註冊 redirect_uri 值清單。 每個 URI 值都應包含關聯的應用類型值。 支援的類型值包括:
 
 - `Web`
 - `InstalledClient`
 
-要瞭解更多資訊，請參閱[回復 Url 限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
+要瞭解更多資訊,請參閱[回覆網址限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
 
 範例：
 
@@ -543,13 +543,13 @@ ms.locfileid: "80383934"
     ],
 ```
 
-### <a name="requiredresourceaccess-attribute"></a>所需的資源訪問屬性
+### <a name="requiredresourceaccess-attribute"></a>需要的資源存取屬性
 
 | Key | 值類型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
-在動態同意的情況下，`requiredResourceAccess` 可對使用靜態同意的使用者，推動系統管理員同意體驗和使用者同意體驗。 但是，此參數不會驅動一般情況的使用者同意體驗。
+在動態同意的情況下，`requiredResourceAccess` 可對使用靜態同意的使用者，推動系統管理員同意體驗和使用者同意體驗。 但是,此參數不會驅動一般情況的使用者同意體驗。
 
 - `resourceAppId` 是應用程式所需存取資源的唯一識別碼。 此值應該等於目標資源應用程式上宣告的 appId。
 - `resourceAccess` 是一個陣列，其中列出應用程式向指定的資源要求的 OAuth2.0 權限範圍和應用程式角色。 包含所指定資源的 `id` 和 `type` 值。
@@ -605,8 +605,8 @@ ms.locfileid: "80383934"
 | 符號在觀眾 | String |
 
 指定目前的應用程式支援哪些 Microsoft 帳戶。 支援的值為：
-- `AzureADMyOrg`- 在組織的 Azure AD 租戶中具有 Microsoft 工作或學校帳戶的使用者（例如，單個租戶）
-- `AzureADMultipleOrgs`- 在任何組織的 Azure AD 租戶中具有 Microsoft 工作或學校帳戶的使用者（例如，多租戶）
+- `AzureADMyOrg`- 在組織的 Azure AD 租戶中具有 Microsoft 工作或學校帳戶的使用者(例如,單個租戶)
+- `AzureADMultipleOrgs`- 在任何組織的 Azure AD 租戶中具有 Microsoft 工作或學校帳戶的使用者(例如,多租戶)
 - `AzureADandPersonalMicrosoftAccount`- 具有個人 Microsoft 帳戶或任何組織的 Azure AD 租戶中的工作或學校帳戶的使用者
 - `PersonalMicrosoftAccount`- 用於登錄到 Xbox 和 Skype 等服務的個人帳戶。
 
@@ -616,7 +616,7 @@ ms.locfileid: "80383934"
     "signInAudience": "AzureADandPersonalMicrosoftAccount",
 ```
 
-### <a name="tags-attribute"></a>標記屬性
+### <a name="tags-attribute"></a>標籤屬性
 
 | Key | 值類型 |
 | :--- | :--- |
@@ -636,16 +636,16 @@ ms.locfileid: "80383934"
 
 ### <a name="manifest-limits"></a>清單限制
 
-應用程式清單具有多個稱為集合的屬性;例如，應用角色、金鑰憑據、已知用戶端應用程式、識別碼 Uris、重定向 Uris、所需的資源訪問和 oauth2 許可權。 在任何應用程式的完整應用程式清單中，所有集合中合併的條目總數上限為 1200。 如果以前在應用程式清單中指定 100 個重定向 URI，則僅剩 1100 個條目可用於構成清單的所有其他集合。
+應用程式清單具有多個稱為集合的屬性;例如,應用角色、密鑰憑據、已知用戶端應用程式、標識符 Uris、重定向 Uris、所需的資源訪問和 oauth2 許可權。 在任何應用程式的完整應用程式清單中,所有集合中合併的條目總數上限為 1200。 如果以前在應用程式清單中指定 100 個重定向 URI,則僅剩 1100 個條目可用於構成清單的所有其他集合。
 
 > [!NOTE]
-> 如果您嘗試在應用程式清單中添加超過 1200 個條目，您可能會看到一個錯誤 **"無法更新應用程式 xxxxxx"。錯誤詳細資訊：清單的大小已超過其限制。請減少值數並重試您的請求。**
+> 如果您嘗試在應用程式清單中添加超過 1200 個條目,您可能會看到一個錯誤 **"無法更新應用程式 xxxxxx"。錯誤詳細資訊:清單的大小已超過其限制。請減少值數並重試您的請求。**
 
 ### <a name="unsupported-attributes"></a>不支援的屬性
 
-應用程式清單表示 Azure AD 中基礎應用程式模型的架構。 隨著基礎架構的發展，清單編輯器將不時更新以反映新架構。 因此，您可能會注意到應用程式清單中顯示的新屬性。 在極少數情況下，您可能會注意到現有屬性中的語法或語義更改，或者您可能會發現以前存在的屬性不再受支援。 例如，您將在[應用註冊中](https://go.microsoft.com/fwlink/?linkid=2083908)看到新屬性，這些屬性在應用註冊（舊版）體驗中使用不同的名稱已知。
+應用程式清單表示 Azure AD 中基礎應用程式模型的架構。 隨著基礎架構的發展,清單編輯器將不時更新以反映新架構。 因此,您可能會注意到應用程式清單中顯示的新屬性。 在極少數情況下,您可能會注意到現有屬性中的語法或語義更改,或者您可能會發現以前存在的屬性不再受支援。 例如,您將在[應用註冊中](https://go.microsoft.com/fwlink/?linkid=2083908)看到新屬性,這些屬性在應用註冊(舊版)體驗中使用不同的名稱已知。
 
-| 應用註冊（舊版）| 應用程式註冊           |
+| 套用註冊(舊版)| 應用程式註冊           |
 |---------------------------|-----------------------------|
 | `availableToOtherTenants` | `signInAudience`            |
 | `displayName`             | `name`                      |
@@ -655,25 +655,25 @@ ms.locfileid: "80383934"
 | `publicClient`            | `allowPublicClient`         |
 | `replyUrls`               | `replyUrlsWithType`         |
 
-有關這些屬性的說明，請參閱[清單參考](#manifest-reference)部分。
+有關這些屬性的說明,請參閱[清單參考](#manifest-reference)部分。
 
-當您嘗試上傳以前下載的清單時，您可能會看到以下錯誤之一。 此錯誤可能是因為清單編輯器現在支援較新版本的架構，該版本與您嘗試上載的架構不匹配。
+當您嘗試上傳以前下載的清單時,您可能會看到以下錯誤之一。 此錯誤可能是因為清單編輯器現在支援較新版本的架構,該版本與您嘗試上載的架構不匹配。
 
-* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊：不正確物件識別碼"未定義"。 []."
-* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊：指定的一個或多個屬性值無效。 []."
-* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊：不允許在此 api 版本中為其他租戶設置可用以進行更新。 []."
-* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊：此應用程式不允許更新"回復 Urls"屬性。 改用"回復UrlsWithType"屬性。 []."
-* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊：找到沒有類型名稱的值，並且沒有可用的預期類型。 指定模型時，有效負載中的每個值都必須具有可在有效負載中指定的類型、由調用方顯式或從父值隱式推斷的類型。 []"
+* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊:無效的對象識別碼"未定義" []."
+* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊:指定的一個或多個屬性值無效。 []."
+* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊:不允許在此 api 版本中為其他租戶設置可用以進行更新。 []."
+* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊:此應用程式不允許更新"回復 Urls"屬性。 改用"回復UrlsWithType"屬性。 []."
+* "無法更新 xxxxxx 應用程式。 錯誤詳細資訊:找到沒有類型名稱的值,並且沒有可用的預期類型。 指定模型時,有效負載中的每個值都必須具有可在有效負載中指定的類型、由調用方顯式或從父值隱式推斷的類型。 []"
 
-當您看到以下錯誤之一時，我們建議執行以下操作：
+當您看到以下錯誤之一時,我們建議執行以下操作:
 
-1. 在清單編輯器中單獨編輯屬性，而不是上載以前下載的清單。 使用[清單引用](#manifest-reference)表瞭解新舊屬性的語法和語義，以便成功編輯感興趣的屬性。 
-1. 如果您的工作流要求您將清單保存在源存儲庫中以供以後使用，我們建議您使用**應用註冊**體驗中看到的清單重新設置存儲庫中保存的清單。
+1. 在清單編輯器中單獨編輯屬性,而不是上載以前下載的清單。 使用[清單引用](#manifest-reference)表瞭解新舊屬性的語法和語義,以便成功編輯感興趣的屬性。 
+1. 如果您的工作流要求您將清單保存在源存儲庫中以供以後使用,我們建議您使用**應用註冊**體驗中看到的清單重新設置存儲庫中保存的清單。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關應用的應用程式和服務主體物件之間的關係的詳細資訊，請參閱[Azure AD 中的應用程式和服務主體物件](app-objects-and-service-principals.md)。
-* 有關一些核心 Microsoft 標識平臺開發人員概念的定義，請參閱[Microsoft 標識平臺開發人員術語表](developer-glossary.md)。
+* 有關應用的應用程式和服務主體物件之間的關係的詳細資訊,請參閱[Azure AD 中的應用程式和服務主體物件](app-objects-and-service-principals.md)。
+* 有關一些核心 Microsoft 識別平台開發人員概念的定義,請參閱[Microsoft 識別平台開發人員術語表](developer-glossary.md)。
 
 使用下列意見區段來提供意見反應，以協助改善及塑造我們的內容。
 

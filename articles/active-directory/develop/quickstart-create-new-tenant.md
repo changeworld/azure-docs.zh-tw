@@ -1,10 +1,9 @@
 ---
-title: 建立 Azure Active Directory 租用戶 | Microsoft Docs
+title: 建立 Azure Active Directory 租用戶
 description: 了解如何建立 Azure AD 租用戶，以供註冊及建置應用程式使用。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -13,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 1d2140ca0064e2eb6b12726bcee7bf5362de8fbe
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408278"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883808"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 

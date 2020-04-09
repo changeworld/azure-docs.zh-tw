@@ -1,28 +1,23 @@
 ---
-title: 微軟身份平台的代碼示例 |微軟文件
+title: 微軟識別平台的代碼範例
 description: 提供可用 Microsoft 識別平臺 (v2.0 終結點) 代碼範例的索引,按方案組織。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d8f69096544b0c3b51513d0cb5c4330fcbb1c18c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5596f5f40e293a7bd11ac6a5f900e05c0b8d3b0e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419838"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883129"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>微軟識別平台代碼範例 (v2.0 終結點)
 

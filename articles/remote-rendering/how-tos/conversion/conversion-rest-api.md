@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681502"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887039"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型轉換 REST API
 
@@ -77,7 +77,7 @@ Azure 遠端呈現帳戶需要按照有關如何[連結存儲帳戶](../create-a
 
 | 端點 | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/**帳戶 ID**/轉換/建立分享存取簽名 | POST |
+| /v1/帳戶/**帳戶 ID**/轉化/建立共享存取簽名 | POST |
 
 返回在 JSON 文件中包裝的持續轉換的 ID。 欄位名稱為"轉換ID"。
 
@@ -128,5 +128,5 @@ Azure 遠端呈現帳戶需要按照有關如何[連結存儲帳戶](../create-a
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure Blob 儲存的模型轉換](blob-storage.md)
+- [使用 Azure Blob 儲存體進行模型轉換](blob-storage.md)
 - [模型轉換](model-conversion.md)

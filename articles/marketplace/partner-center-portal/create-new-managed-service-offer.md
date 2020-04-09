@@ -7,15 +7,18 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 3d7015d5e1c3b67b271e89b5653f56415bfb722e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/08/2020
+ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674198"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983207"
 ---
 # <a name="create-a-new-managed-service-offer"></a>建立新的託管服務產品/服務
+
+> [!IMPORTANT]
+> 我們將託管服務產品的管理從雲合作夥伴門戶轉移到合作夥伴中心。 在遷移產品/服務之前,請按照[向 Azure 應用商店發佈託管服務產品/服務以](../../lighthouse/how-to/publish-managed-services-offers.md)管理產品/服務的說明進行操作。
 
 託管服務提供了啟用[Azure 燈塔](../../lighthouse/overview.md)方案的説明。 當客戶接受託管服務產品/服務時,他們將能夠將資源用於 Azure[委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
 

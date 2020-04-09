@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: cd9cd9f3986ef1944d9f9119296af5512b352d1d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: b36d03695c107054549fba716f4cc27ecb7bba26
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744312"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983478"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureIoTTechAsset)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureIoTTechAsset)中的說明進行操作,以管理遷移的優惠。
 
 本文會說明 IoT Edge 模組技術資產在發佈到 Azure Marketplace 之前，必須先達到的需求。
 

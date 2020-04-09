@@ -2,15 +2,15 @@
 title: 手動執行非 HTTP 觸發的 Azure 函式
 description: 使用 HTTP 要求執行非 HTTP 觸發的 Azure 函式
 author: craigshoemaker
-ms.topic: tutorial
+ms.topic: article
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75769127"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892354"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手動執行非 HTTP 觸發的函式
 

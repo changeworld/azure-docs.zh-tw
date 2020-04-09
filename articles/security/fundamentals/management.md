@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811264"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981302"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
 Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下,管理功能通過基於 Web 的主控台(如[Azure 門戶](https://azure.microsoft.com/features/azure-portal/))執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
@@ -145,9 +145,6 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 | - | 清楚區分職責 | - |
 | 以公司電腦做為虛擬機器 |降低硬體成本 | - |
 | - | 隔離角色和應用程式 | - |
-| Windows To Go 與 BitLocker 磁碟機加密 |與大部分電腦相容 |資產追蹤 |
-| - | 符合成本效益且具有可攜性 | - |
-| - | 隔離的管理環境 |- |
 
 請務必讓強化後的工作站做為主機而非客體，且主機作業系統和硬體之間沒有任何東西。 遵循「乾淨來源原則」(也稱為「安全來源」) 表示主機應該是最安全的。 否則，強化後的工作站 (客體) 在其裝載所在的系統上將容易受到攻擊。
 
@@ -170,15 +167,6 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 若要避免使用單一工作站來進行系統管理和其他日常工作所可能引發的諸多安全性風險，您可以在強化後的工作站部署 Windows Hyper-V 虛擬機器。 此虛擬機器可以做為公司電腦來使用。 公司電腦環境可以與主機保持區隔，以減少其受攻擊面，並讓使用者的日常活動 (例如電子郵件) 不會與敏感的系統管理工作共存。
 
 公司電腦虛擬機器會在受保護的空間內執行，並提供使用者應用程式。 主機仍是「乾淨來源」，並且會在根作業系統中強制執行嚴格的網路原則 (例如，封鎖來自虛擬機器的 RDP 存取)。
-
-### <a name="windows-to-go"></a>Windows To Go
-需要獨立的強化後工作站的另一個替代方式是使用 [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) 磁碟機，這個功能可支援用戶端 USB 開機功能。 Windows To Go 可讓使用者將相容的電腦開機到從加密 USB 快閃磁碟機執行的隔離系統映像。 因為映像可以完全由公司的 IT 團隊負責管理、有嚴格的安全性原則、最小的作業系統組建和 TPM 支援，因此Windows To Go 可以提升對遠端系統管理端點的控制能力。
-
-在下圖中，可攜式映像是已加入網域的系統，其已預先設定為僅連線至 Azure、需要 Multi-Factor Authentication，並且會封鎖所有非管理流量。 如果使用者將同一部電腦開機到標準公司映像，並嘗試存取 Azure 管理工具的 RD 閘道，工作階段即會遭到封鎖。 Windows To Go 會成為根層級作業系統，而且不需要可能更容易遭受外部攻擊的其他層 (主機作業系統、Hypervisor、虛擬機器)。
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-請務必注意，比起一般的桌上型電腦，USB 快閃磁碟機更容易遺失。 使用 BitLocker 來加密整個磁碟區時若能搭配強式密碼，攻擊者就更不可能使用磁碟機映像來進行有害活動。 此外，如果遺失 USB 快閃磁碟機，則撤銷和[發出新的管理憑證](https://technet.microsoft.com/library/hh831574.aspx)以及快速重設密碼可以降低風險。 系統管理稽核記錄存放在 Azure 而非用戶端，將可進一步減少遺失資料的可能性。
 
 ## <a name="best-practices"></a>最佳作法
 當您管理 Azure 中的應用程式和資料時，請考慮下列額外的方針。
@@ -215,7 +203,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 群組原則。 建立全域系統管理原則以套用至任何用於管理的網域工作站 (並封鎖來自其他所有用途的存取)，以及套用至在這些工作站上進行驗證的使用者帳戶。
 * 已增強安全性的佈建。 保護您的基準強化後工作站映像以防遭到竄改。 使用加密和隔離等安全性措施來儲存映像、虛擬機器和指令碼，並限制存取 (或許是使用可稽核的簽入/簽出程序)。
 * 修補。 維護一致的組建 (或針對開發、作業和其他系統管理工作使用不同的映像)、定期掃描變更和惡意程式碼、讓組建保持最新狀態，並且只在需要時才啟用機器。
-* 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。 如果您使用 Windows To Go，請只搭配 BitLocker 使用加密的 USB 金鑰。
+* 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。
 * 控管。 使用 AD DS GPO 來控制所有系統管理員的 Windows 介面，例如檔案共用。 將管理工作站納入稽核、監視和記錄程序內。 追蹤所有系統管理員和開發人員的存取和使用活動。
 
 ## <a name="summary"></a>摘要

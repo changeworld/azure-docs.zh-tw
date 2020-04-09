@@ -3,7 +3,6 @@ title: 連線至 Azure AD 時對 MVC 專案所做的變更
 description: 說明您使用 Visual Studio 已連線服務連線至 Azure AD 時，MVC 專案會有何狀況
 author: ghogen
 manager: jillfra
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79036965"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886104"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
 
@@ -24,15 +23,15 @@ ms.locfileid: "79036965"
 > - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生了什麼事](vs-active-directory-dotnet-what-happened.md)
 
-本文標識在使用 Visual Studio 添加[Azure 活動目錄連接服務](vs-active-directory-add-connected-service.md)時對 mVC 專案ASP.NET的確切更改。
+本文識別在使用 Visual Studio 添加[Azure 活動目錄連接服務](vs-active-directory-add-connected-service.md)時對 mVC 專案 ASP.NET 的確切更改。
 
 如需使用連線服務的相關資訊，請參閱[開始使用](vs-active-directory-dotnet-getting-started.md)。
 
 ## <a name="added-references"></a>新增的參考
 
-影響專案檔案（*.NET引用）和`packages.config`（NuGet引用）。
+影響專案檔(*.NET引用)和`packages.config`(NuGet引用)。
 
-| 類型 | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -47,7 +46,7 @@ ms.locfileid: "79036965"
 
 您選取了 [讀取目錄資料]**** 選項時的其他參考：
 
-| 類型 | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (僅限 Visual Studio 2015) |
@@ -61,7 +60,7 @@ ms.locfileid: "79036965"
 
 下列參考已移除 (僅限 ASP.NET 4 專案，如同在 Visual Studio 2015 中)：
 
-| 類型 | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -159,9 +158,9 @@ ms.locfileid: "79036965"
 - 已在您於新增連線服務時選取的網域中建立 Azure AD 應用程式。
 - 已更新應用程式，以在選取了 [讀取目錄資料]**** 選項時包含「讀取目錄資料」權限。
 
-[瞭解有關 Azure 活動目錄 的更多內容](https://azure.microsoft.com/services/active-directory/)。
+[瞭解有關 Azure 活動目錄的更多內容](https://azure.microsoft.com/services/active-directory/)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 活動目錄的身份驗證方案](authentication-scenarios.md)
+- [Azure 活動目錄的身份驗證機制](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

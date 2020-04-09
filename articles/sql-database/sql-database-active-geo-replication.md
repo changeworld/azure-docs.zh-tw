@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810444"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887345"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>建立與使用活動異地複製
 
@@ -113,14 +113,11 @@ ms.locfileid: "80810444"
 
 ## <a name="configuring-secondary-database"></a>設定輔助資料庫
 
-主要和次要資料庫必須有相同的服務層級。 此外也強烈建議您使用與主要資料庫相同的計算大小 (DTU 或虛擬核心) 來建立次要資料庫。 如果主資料庫遇到繁重的寫入工作負載,則計算大小較低的輔助資料庫可能無法跟上它。 這將導致輔助資料庫的重做延遲,並且可能不可用輔助資料庫。 如果需要強制故障轉移,滯後於主資料庫的輔助資料庫也面臨大量數據丟失的風險。 為了減輕這些風險,活動異地複製將限制主日誌速率(如有必要),以便其輔助資料庫趕上。 
+主要和次要資料庫必須有相同的服務層級。 此外也強烈建議您使用與主要資料庫相同的計算大小 (DTU 或虛擬核心) 來建立次要資料庫。 如果主資料庫遇到繁重的寫入工作負載,則計算大小較低的輔助資料庫可能無法跟上它。 這將導致輔助資料庫的重做延遲,並且可能不可用輔助資料庫。 為了減輕這些風險,活動異地複製將限制主的事務日誌速率(如有必要),以便其輔助資料庫趕上。 
 
-二次配置不平衡的另一個後果是,故障轉移后,由於新主伺服器的計算能力不足,應用程式性能可能會受到影響。 在這種情況下,有必要將資料庫服務目標擴展到必要的級別,這可能需要大量時間和計算資源,並且需要在擴展過程結束時[進行高可用性](sql-database-high-availability.md)故障轉移。
+輔助配置不平衡的另一個後果是,在故障轉移后,應用程式性能可能會因新主伺服器的計算能力不足而受到影響。 在這種情況下,有必要將資料庫服務目標擴展到必要的級別,這可能需要大量時間和計算資源,並且需要在擴展過程結束時[進行高可用性](sql-database-high-availability.md)故障轉移。
 
-> [!IMPORTANT]
-> 除非輔助資料庫配置與主資料庫相同或更高的計算大小,否則無法保證已發佈的 5 秒 RPO SLA。 
-
-如果決定創建計算大小較低的輔助資料庫,Azure 門戶中的日誌 IO 百分比圖表提供了一種估計輔助資料庫的最小計算大小的好方法,該次表是維持複製負載所必需的。 例如,如果主資料庫為 P6 (1000 DTU),其日誌寫入百分比為 50%,則輔助資料庫至少需要 P4 (500 DTU)。 若要檢索歷史日誌 IO 資料,請使用[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)檢視。 若要檢索具有更高粒度、更好地反映日誌速率中短期峰值的最近日誌寫入數據,請使用[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)視圖。 
+如果決定創建計算大小較低的輔助資料庫,Azure 門戶中的日誌 IO 百分比圖表提供了一種估計輔助資料庫的最小計算大小的好方法,該次表是維持複製負載所必需的。 例如,如果主資料庫為 P6 (1000 DTU),其日誌寫入百分比為 50%,則輔助資料庫至少需要 P4 (500 DTU)。 若要檢索歷史日誌 IO 資料,請使用[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)檢視。 若要檢索具有更高粒度、更好地反映日誌速率中短期峰值的最近日誌寫入數據,請使用[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)視圖。
 
 主資料庫上的事務日誌速率限制由於輔助資料庫的計算大小較低,使用HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO等待類型報告,該等待類型在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)資料庫視圖中可見。 
 

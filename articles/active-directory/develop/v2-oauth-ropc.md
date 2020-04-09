@@ -1,57 +1,53 @@
 ---
-title: 使用資源擁有者密碼憑據授予登錄 |蔚藍
+title: 使用資源擁有者密碼認證認證的授予登入 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 使用資源擁有者密碼憑據 （ROPC） 授予支援無瀏覽器身份驗證流。
+description: 使用資源擁有者密碼認證 (ROPC) 授予支援無瀏覽器身份驗證流。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f632a6baed0179b7b4facd2962f9c9764af47
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700680"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886325"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>微軟標識平臺和 OAuth 2.0 資源擁有者密碼憑據
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>微軟識別平臺和 OAuth 2.0 資源擁有者密碼認證
 
-Microsoft 身份平臺支援[OAuth 2.0 資源擁有者密碼憑據 （ROPC） 授予](https://tools.ietf.org/html/rfc6749#section-4.3)，它允許應用程式通過直接處理使用者的密碼來登錄使用者。  本文介紹如何直接針對應用程式中的協定進行程式設計。  如果可能，我們建議您使用受支援的 Microsoft 身份驗證庫 （MSAL） 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的應用程式範例](sample-v2-code.md)。
+Microsoft 身份平臺支援[OAuth 2.0 資源擁有者密碼認證認證 (ROPC) 授予](https://tools.ietf.org/html/rfc6749#section-4.3),它允許應用程式透過直接處理使用者的密碼來登入使用者。  本文介紹如何直接針對應用程式中的協議進行程式設計。  如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
 
 > [!WARNING]
-> Microsoft 建議您_不要_使用 ROPC 流。 在大多數情況下，可以使用和推薦更安全的替代方案。 此流要求對應用程式高度信任，並承擔其他流中不存在的風險。 僅當無法使用其他更安全的流時，才應使用此流。
+> Microsoft 建議您_不要_使用 ROPC 流。 在大多數情況下,可以使用和推薦更安全的替代方案。 此流要求對應用程式高度信任,並承擔其他流中不存在的風險。 僅當無法使用其他更安全的流時,才應使用此流。
 
 > [!IMPORTANT]
 >
-> * Microsoft 標識平臺終結點僅支援 Azure AD 租戶的 ROPC，不支援個人帳戶。 因此您必須使用租用戶特定端點 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 端點。
+> * Microsoft 識別平台終結點僅支援 Azure AD 租戶的 ROPC,不支援個人帳戶。 因此您必須使用租用戶特定端點 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 端點。
 > * 受邀加入 Azure AD 租用戶的個人帳戶無法使用 ROPC。
 > * 沒有密碼的帳戶無法透過 ROPC 登入。 針對此案例，建議您改用不同的應用程式流程。
 > * 如果使用者必須使用多重要素驗證 (MFA) 來登入應用程式，則會遭到封鎖。
-> * [混合標識聯合](/azure/active-directory/hybrid/whatis-fed)方案（例如，用於驗證本地帳戶的 Azure AD 和 ADFS）不支援 ROPC。 如果使用者的整頁重定向到本地標識提供程式，Azure AD 將無法針對該標識提供程式測試使用者名和密碼。 但是，ROPC 支援[直通身份驗證](/azure/active-directory/hybrid/how-to-connect-pta)。
+> * [混合識別聯合](/azure/active-directory/hybrid/whatis-fed)方案(例如,用於驗證本地帳戶的 Azure AD 和 ADFS)不支援 ROPC。 如果使用者的整頁重定向到本地標識提供者,Azure AD將無法針對該標識提供程式測試使用者名和密碼。 但是,ROPC 支援[直通身份驗證](/azure/active-directory/hybrid/how-to-connect-pta)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
 下圖顯示 ROPC 流程。
 
-![顯示資源擁有者密碼憑據流的圖表](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![顯示資源擁有者密碼認證串流的圖表](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>授權要求
 
-ROPC 流是單個請求：它將用戶端標識和使用者的憑據發送到 IDP，然後接收權杖作為回報。 用戶端這麼做之前，必須先要求使用者的電子郵件地址 (UPN) 和密碼。 要求成功之後，用戶端應該就會立即從記憶體安全地釋出使用者的認證。 用戶端永遠不得儲存這些認證。
+ROPC 流是單個請求:它將客戶端標識和使用者的憑據發送到 IDP,然後接收權杖作為回報。 用戶端這麼做之前，必須先要求使用者的電子郵件地址 (UPN) 和密碼。 要求成功之後，用戶端應該就會立即從記憶體安全地釋出使用者的認證。 用戶端永遠不得儲存這些認證。
 
 > [!TIP]
 > 嘗試在 Postman 中執行這項要求！
-> [![嘗試在郵遞員中運行此請求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![試著在郵遞員中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -71,17 +67,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 參數 | 條件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 您想要將使用者登入的目標目錄租用戶。 這可以採用 GUID 或易記名稱格式。 此參數無法設為 `common` 或 `consumers`，但可設定為 `organizations`。 |
-| `client_id` | 必要 | Azure 門戶的應用程式（用戶端）ID - 分配給應用[的應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁。 | 
+| `client_id` | 必要 | Azure 門戶的應用程式(用戶端)ID - 分配給應用[的應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁。 | 
 | `grant_type` | 必要 | 必須設為 `password`。 |
 | `username` | 必要 | 使用者的電子郵件地址。 |
 | `password` | 必要 | 使用者的密碼。 |
-| `scope` | 建議 | 以空格分隔的[範圍](v2-permissions-and-consent.md)清單或應用程式所需的權限。 在互動式流中，管理員或使用者必須提前同意這些作用域。 |
-| `client_secret`| 有時需要 | 如果應用是公共用戶端，則 無法包括`client_secret``client_assertion`或。  如果應用是機密用戶端，則必須包括它。 | 
-| `client_assertion` | 有時需要 | 使用證書生成的不同`client_secret`形式的 。  有關詳細資訊，請參閱[證書憑據](active-directory-certificate-credentials.md)。 | 
+| `scope` | 建議 | 以空格分隔的[範圍](v2-permissions-and-consent.md)清單或應用程式所需的權限。 在互動式流中,管理員或用戶必須提前同意這些作用域。 |
+| `client_secret`| 有時需要 | 如果應用是公共用戶端,則無法包括`client_secret``client_assertion`或。  如果應用是機密用戶端,則必須包括它。 | 
+| `client_assertion` | 有時需要 | 使用憑證產生的不同`client_secret`形式的 。  有關詳細資訊,請參閱[憑證認證](active-directory-certificate-credentials.md)。 | 
 
 ### <a name="successful-authentication-response"></a>成功驗證回應
 
-下面的示例顯示了成功的權杖回應：
+下面的範例顯示了成功的權杖回應:
 
 ```json
 {
@@ -111,10 +107,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 錯誤 | 描述 | 用戶端動作 |
 |------ | ----------- | -------------|
-| `invalid_grant` | 驗證失敗 | 認證不正確，或用戶端沒有同意所要求的範圍。 如果未授予作用域，將返回錯誤`consent_required`。 如果發生這種情況，用戶端應使用 WebView 或瀏覽器將使用者傳送至互動式提示。 |
+| `invalid_grant` | 驗證失敗 | 認證不正確，或用戶端沒有同意所要求的範圍。 如果未授予作用的功能,將傳`consent_required`回錯誤 。 如果發生這種情況，用戶端應使用 WebView 或瀏覽器將使用者傳送至互動式提示。 |
 | `invalid_request` | 要求未正確建構 | 在`/common`或`/consumers`身份驗證上下文中不支援授予類型。  而是`/organizations`使用或租戶 ID。 |
 
 ## <a name="learn-more"></a>深入了解
 
 * 使用[範例主控台應用程式](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)自行試用 ROPC。
-* 要確定是否應使用 v2.0 終結點，請閱讀有關[Microsoft 標識平臺限制](active-directory-v2-limitations.md)。
+* 要確定是否應使用 v2.0 終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。

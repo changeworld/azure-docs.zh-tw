@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547083"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886971"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的輸出連線
 
@@ -193,11 +193,11 @@ SNAT 連接埠配置為 IP 傳輸通訊協定專屬 (TCP 和 UDP 會個別維護
 本節的用意是協助您降低 Azure 中輸出連線可能會發生的 SNAT 耗盡。
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>管理 SNAT (PAT) 連接埠耗盡
-用於[PAT](#pat)的[延伸](#preallocatedports)埠是一種可耗盡的資源,如獨立[VM 中所述,沒有公共 IP 位址](#defaultsnat),[負載平衡 VM 沒有公共 IP 位址](#lb)。
+用於[PAT](#pat)的[延伸](#preallocatedports)埠是一種可耗盡的資源,如獨立[VM 中所述,沒有公共 IP 位址](#defaultsnat),[負載平衡 VM 沒有公共 IP 位址](#lb)。您可以監視臨時埠的使用,並與當前分配進行比較,以確定 SNAT 排泄的風險,或者使用[本指南](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)確認 SNAT 的外化。
 
 如果您知道將會對相同的目的地 IP 位址和連接埠起始許多輸出 TCP 或 UDP 連線，並且觀察到失敗的輸出連線，或是支援人員告知您 SNAT 連接埠 ([PAT](#pat) 使用的預先配置[暫時連接埠](#preallocatedports)) 將耗盡，您有數個可緩和這些問題的一般選項。 請檢閱這些選項並判斷哪一個可用且最適合您的案例。 可能會有一或多個選項有助於管理此案例。
 
-如果您在了解輸出連線行為方面遇到問題，您可以使用 IP 堆疊統計資料 (netstat)。 或是使用封包擷取來觀察連線行為，也會很有幫助。 您可以在您執行個體的客體 OS 中執行這些封包擷取，或使用[網路監看員來進行封包擷取](../network-watcher/network-watcher-packet-capture-manage-portal.md)。
+如果您在了解輸出連線行為方面遇到問題，您可以使用 IP 堆疊統計資料 (netstat)。 或是使用封包擷取來觀察連線行為，也會很有幫助。 您可以在您執行個體的客體 OS 中執行這些封包擷取，或使用[網路監看員來進行封包擷取](../network-watcher/network-watcher-packet-capture-manage-portal.md)。 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>將應用程式修改成重複使用連線 
 您可以在應用程式中重複使用連線，以降低對用於 SNAT 之暫時連接埠的需求。 對於 HTTP/1.1 之類的通訊協定尤其如此，因為預設會重複使用連線。 而其他使用 HTTP 作為其傳輸方式的通訊協定 (例如 REST) 也會因而受益。 

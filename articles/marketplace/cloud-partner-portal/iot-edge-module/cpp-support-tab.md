@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743981"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981863"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge 模組支援索引標籤
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
 
 使用 [新增供應項目]**** 頁面中的 [支援]**** 索引標籤來協助您為供應項目提供技術及使用者支援資源。  支援表單上包括下列需要填寫的欄位：**工程連絡人**、**客戶支援**和**支援 URL**。 欄位名稱上附加的星號 (*) 表示此為必填欄位。
 

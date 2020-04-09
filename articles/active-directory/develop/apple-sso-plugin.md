@@ -1,5 +1,5 @@
 ---
-title: 適用於 Apple 裝置的微軟企業 SSO 外掛程式
+title: 適用於 Apple 裝置的 Microsoft 企業單一登入外掛程式
 titleSuffix: Microsoft identity platform | Azure
 description: 瞭解適用於 iOS 和 macOS 裝置的 Microsoft Azure 活動目錄 SSO 外掛程式。
 services: active-directory
@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7233a0bba5cf30eab018bfa744a7322303300604
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550314"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982577"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用於 Apple 裝置的微軟企業 SSO 外掛程式(預覽版)
 
@@ -27,7 +27,7 @@ ms.locfileid: "80550314"
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-*適用於 Apple 裝置的 Microsoft 企業 SSO 外掛程式*為支援 Apple[企業單一登入](https://developer.apple.com/documentation/authenticationservices)功能的所有應用程式的活動目錄帳戶提供單一登錄 (SSO)。 微軟與蘋果密切合作,開發此外掛程式,以提高應用程式的可用性,同時提供蘋果和微軟所能提供的最佳保護。
+*適用於 Apple 裝置的 Microsoft 企業 SSO 外掛程式*為 Azure 活動目錄 (Azure AD) 帳戶提供單個登錄 (SSO) 功能,適用於支援 Apple[企業單一登錄](https://developer.apple.com/documentation/authenticationservices)功能的所有應用程式。 微軟與蘋果密切合作,開發此外掛程式,以提高應用程式的可用性,同時提供蘋果和微軟所能提供的最佳保護。
 
 在此公共預覽版本中,企業 SSO 外掛程式僅適用於 iOS 設備,並在某些 Microsoft 應用程式中分發。
 
@@ -37,7 +37,7 @@ ms.locfileid: "80550314"
 
 適用於 Apple 裝置的 Microsoft 企業 SSO 外掛程式具有以下優點:
 
-- 為支援 Apple 的企業單一登入功能的所有應用程式為活動目錄帳戶提供 SSO。
+- 為支援 Apple 企業單一登入功能的所有應用程式的 Azure AD 帳戶提供 SSO。
 - 在 Microsoft 身份驗證器中自動交付,並且可以通過任何行動裝置管理 (MDM) 解決方案啟用。
 
 ## <a name="requirements"></a>需求

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 70256046089a59df1de79b78124c5d60fde77080
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705933"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887209"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>離線公平播放流式處理 iOS 與媒體服務 v3
 
@@ -38,8 +38,8 @@ ms.locfileid: "76705933"
 除了透過各種不同的串流處理通訊協定來保護內容進行線上串流處理，受保護內容的離線模式也是一個經常被要求的功能。 下列案例需要離線模式支援：
 
 * 在無法使用網際網路連線 (例如旅行期間) 時播放。
-* 某些內容提供者可能會禁止將 DRM 許可證交付到國家/區域邊界以外。 如果使用者想要在國家/地區之外旅行時觀看內容，則需要離線下載。
-* 在某些國家/地區，互聯網可用性和/或頻寬仍然有限。 使用者可選擇先下載內容，才能觀賞解析度夠高的內容，從而獲得滿意的觀賞體驗。 因此，問題通常不在於網路可用性，而是網路頻寬有限。 Over-the-top (OTT)/線上視訊平台 (OVP) 提供者會要求離線模式支援。
+* 某些內容供應商可能會禁止將 DRM 許可證交付到國家/區域邊界以外。 如果使用者想要在國家/地區之外旅行時觀看內容,則需要脫機下載。
+* 在某些國家/地區,互聯網可用性和/或頻寬仍然有限。 使用者可選擇先下載內容，才能觀賞解析度夠高的內容，從而獲得滿意的觀賞體驗。 因此，問題通常不在於網路可用性，而是網路頻寬有限。 Over-the-top (OTT)/線上視訊平台 (OVP) 提供者會要求離線模式支援。
 
 本文會說明 FairPlay 串流 (FPS) 離線模式支援，此支援是以執行 iOS 10 或更新版本的裝置為目標。 其他 Apple 平台 (例如 watchOS、tvOS 或 macOS 上的 Safari) 則不支援此功能。
 
@@ -54,7 +54,7 @@ ms.locfileid: "76705933"
 
     - [Apple FairPlay 授權需求和設定](fairplay-license-overview.md)
     - [使用 DRM 動態加密與授權傳遞服務](protect-with-drm.md)
-    - 包含線上 FPS 流配置的 .NET 示例：[配置公平播放策略選項](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - 包含線上 FPS 串流設定的 .NET 範例:[設定公平播放原則選項](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * 從 Apple 開發人員網路取得 FPS SDK。 FPS SDK 包含兩個元件：
 
     - FPS Server SDK，內含金鑰安全性模組 (KSM)、用戶端範例、規格，以及一組測試向量。
@@ -123,7 +123,7 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
 FPS 離線模式支援僅適用於 iOS 10 和更新版本。 FPS Server SDK (3.0 版或更新版本) 包含有關於 FPS 離線模式的文件和範例。 具體來說，FPS Server SDK (3.0 版或更新版本) 包含下列兩個與離線模式相關的項目：
 
 * 文件：《Offline Playback with FairPlay Streaming and HTTP Live Streaming》(使用 FairPlay 串流和 HTTP 即時串流進行離線播放)。 Apple，2016 年 9 月 14 日發行。 在 FPS Server SDK 4.0 版中，這份文件會合併到主要 FPS 文件中。
-* 示例代碼：HLSCatalog 示例（Apple FPS 伺服器 SDK 的一部分）用於 FPS 離線模式，適用于 [公平播放流式伺服器 SDK 版本 3.1]開發\用戶端\HLSCatalog_With_FPS_HLSCatalog]。 HLSCatalog 應用程式範例會使用下列程式碼檔案來實作離線模式功能：
+* 範例代碼:HLSCatalog 範例(Apple FPS 伺服器 SDK 的一部分)用於 FPS 離線模式,適用於 [公平播放流式伺服器 SDK 版本 3.1]開發\用戶端\HLSCatalog_With_FPS_HLSCatalog]。 HLSCatalog 應用程式範例會使用下列程式碼檔案來實作離線模式功能：
 
     - AssetPersistenceManager.swift 程式碼檔案：AssetPersistenceManager 是此範例中的主類別，會示範如何進行下列操作：
 
@@ -203,45 +203,7 @@ func requestApplicationCertificate() throws -> Data {
 
 ## <a name="faq"></a>常見問題集
 
-下列常見問題集可協助您進行疑難排解：
-
-- **為何在離線模式期間只播放音訊，但不會播放影片呢？** 這個行為似乎是範例應用程式的設計使然。 當在離線模式下存在備用音軌（HLS 就是這種情況），iOS 10 和 iOS 11 預設為備用音軌。要補償 FPS 離線模式的此行為，請從流中刪除備用音軌。 若要對媒體服務執行此操作，請新增動態資訊清單篩選條件 "audio-only=false"。 換言之，HLS URL 的結尾是 .ism/manifest(format=m3u8-aapl,audio-only=false)。 
-- **當我新增 audio-only=false 之後，為什麼它在離線模式期間仍舊只播放音訊，而不會播放影片呢？** 系統可能會根據內容傳遞網路 (CDN) 快取索引鍵設計來快取內容。 所以，請清除快取。
-- **除了 iOS 10，iOS 11 也支援 FPS 離線模式嗎？** 是。 iOS 10 和 iOS 11 均可支援 FPS 離線模式。
-- **為什麼我在 FPS Server SDK 中找不到《Offline Playback with FairPlay Streaming and HTTP Live Streaming》(使用 FairPlay 串流和 HTTP 即時串流進行離線播放) 文件呢？** 從 FPS Server SDK 第 4 版開始，此文件已合併至《FairPlay Streaming Programming Guide》(FairPlay 串流程式設計指南)。
-- **在 iOS 裝置上的下載/離線檔案結構為何？** iOS 裝置上所下載的檔案結構看起來如下列螢幕擷取畫面。 `_keys` 資料夾會儲存下載的 FPS 授權，每個授權服務主機一個存放區檔案。 `.movpkg` 資料夾會儲存音訊和影片內容。 第一個資料夾名稱的結尾是一個破折號後面接著一個數字，此資料夾包含影片內容。 數值為影片轉譯的 PeakBandwidth。 第二個資料夾名稱的結尾是一個破折號後面接著 0，此資料夾包含音訊內容。 第三個名為 "Data" 的資料夾包含 FPS 內容的主要播放清單。 最後，boot.xml 會提供 `.movpkg` 資料夾內容的完整描述。 
-
-![離線 FairPlay iOS 範例應用程式檔案結構](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
-
-範例 boot.xml 檔案：
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
-  <Version>1.0</Version>
-  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
-  <Streams>
-    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-  </Streams>
-  <MasterPlaylist>
-    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
-  </MasterPlaylist>
-  <DataItems Directory="Data">
-    <DataItem>
-      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
-      <Category>Playlist</Category>
-      <Name>master.m3u8</Name>
-      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
-      <Role>Master</Role>
-    </DataItem>
-  </DataItems>
-</HLSMoviePackage>
-```
+請參閱[常見問題,提供有關故障排除的説明](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 
 ## <a name="next-steps"></a>後續步驟
 

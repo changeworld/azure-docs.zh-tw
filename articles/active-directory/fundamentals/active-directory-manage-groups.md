@@ -1,5 +1,5 @@
 ---
-title: 使用組管理應用&資源訪問 - Azure AD
+title: 使用群組管理應用程式&資源存取 - Azure AD
 description: 了解如何使用 Azure Active Directory 群組來管理貴組織雲端式應用程式、內部部署應用程式以及資源的存取權。
 services: active-directory
 author: msaburnley
@@ -13,25 +13,23 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768005"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982594"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>使用 Azure Active Directory 群組來管理應用程式和資源的存取權
-Azure 活動目錄 （Azure AD） 允許您使用組來管理對基於雲的應用、本地應用和資源的訪問。 您的資源可以是 Azure AD 組織的一部分，例如通過 Azure AD 中的角色管理物件的許可權，也可以是組織外部的許可權，例如"軟體即服務 "（SaaS） 應用、Azure 服務、SharePoint 網站和本地資源。
+Azure 活動目錄 (Azure AD) 允許您使用組來管理對基於雲端的應用、本地應用和資源的存取。 您的資源可以是 Azure AD 組織的一部分,例如透過 Azure AD 中的角色管理物件的許可權,也可以是組織外部的許可權,例如「軟體即服務 」(SaaS) 應用、Azure 服務、SharePoint 網站和本地資源。
 
 >[!NOTE]
->若要使用 Azure Active Directory，您需要 Azure 帳戶。 如果您沒有帳戶，您可以 [註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
->
-> 在 Azure 門戶中，可以看到某些組的成員身份和組詳細資訊無法在門戶中管理：
+> 在 Azure 門戶中,可以看到某些組的成員身份和組詳細資訊無法在門戶中管理:
 >
 > - 從本地活動目錄同步的組只能在本地活動目錄中進行管理。
-> - 其他組類型（如通訊群組清單和啟用郵件的安全性群組）僅在 Exchange 管理中心或 Microsoft 365 管理中心進行管理。 您必須登錄到 Exchange 管理中心或 Microsoft 365 管理中心才能管理這些組。
+> - 其他組類型(如通訊組清單和啟用郵件的安全組)僅在 Exchange 管理中心或 Microsoft 365 管理中心進行管理。 您必須登錄到 Exchange 管理中心或 Microsoft 365 管理中心才能管理這些組。
 
-## <a name="how-access-management-in-azure-ad-works"></a>Azure AD 中的訪問管理的工作原理
+## <a name="how-access-management-in-azure-ad-works"></a>Azure AD 中的存取管理的工作原理
 
 Azure AD 可協助您藉由對單一使用者或整個 Azure AD 群組提供存取權限，來提供貴組織資源的存取權。 使用群組可讓資源擁有者 (或 Azure AD 目錄的擁有者) 將一組存取權限指派給群組內的所有成員，而不必逐一提供權限。 資源或目錄的擁有者也可以將成員清單的管理權限提供給其他人 (例如，部門經理或服務台系統管理員)，讓該人員新增和移除成員。 如需如何管理群組擁有者的詳細資訊，請參閱[管理群組擁有者](active-directory-accessmanagement-managing-group-owners.md)
 
@@ -45,7 +43,7 @@ Azure AD 可協助您藉由對單一使用者或整個 Azure AD 群組提供存�
 
 - **組分配。** 資源擁有者可將 Azure AD 群組指派給資源，以自動對所有群組成員提供資源的存取權。 群組成員資格會由群組擁有者和資源擁有者共同管理，讓任一擁有者可以在群組中新增或移除成員。 如需新增或移除群組成員資格的詳細資訊，請參閱[如何：使用 Azure Active Directory 入口網站從某個群組新增或移除另一個群組](active-directory-groups-membership-azure-portal.md)。 
 
-- **以規則為基礎的指派。** 資源擁有者可建立群組，並使用規則來定義要將哪些使用者指派給特定資源。 此規則會以指派給個別使用者的屬性為基礎。 資源擁有者可管理規則，決定需要有哪些屬性和值才能允許存取資源。 有關詳細資訊，請參閱[創建動態組並檢查狀態](../users-groups-roles/groups-create-rule.md)。
+- **以規則為基礎的指派。** 資源擁有者可建立群組，並使用規則來定義要將哪些使用者指派給特定資源。 此規則會以指派給個別使用者的屬性為基礎。 資源擁有者可管理規則，決定需要有哪些屬性和值才能允許存取資源。 關於詳細資訊,請參閱[建立動態群組並檢查狀態](../users-groups-roles/groups-create-rule.md)。
 
     您也可以觀看下面這段簡短的影片，來快速了解如何建立和使用動態群組：
 

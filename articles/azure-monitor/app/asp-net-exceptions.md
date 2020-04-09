@@ -3,12 +3,12 @@ title: 使用 Azure 應用程式見解診斷故障和異常
 description: 擷取從 ASP.NET 應用程式與所要求遙測的例外狀況。
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294697"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892337"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 在 Web 應用程式中診斷例外狀況
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 會回報您即時 Web 應用程式中的例外狀況。 您可以在用戶端和伺服器端讓失敗的要求與例外狀況及其他事件相互關聯，以便快速地診斷原因。
@@ -16,10 +16,10 @@ ms.locfileid: "80294697"
 ## <a name="set-up-exception-reporting"></a>設定例外狀況報告
 * 讓伺服器應用程式回報例外狀況︰
   * Azure Web 應用程式：新增 [Application Insights 擴充功能](../../azure-monitor/app/azure-web-apps.md)
-  * Azure VM 和 Azure 虛擬機器縮放集 IIS 託管應用：添加[應用程式監視擴展](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * Azure VM 和 Azure 虛擬機器縮放集 IIS 託管應用:新增[應用程式監視擴展](../../azure-monitor/app/azure-vm-vmss-apps.md)
   * 在應用程式程式碼中安裝 [Application Insights SDK](../../azure-monitor/app/asp-net.md)，或
   * IIS Web 伺服器：執行 [Application Insights 代理程式](../../azure-monitor/app/monitor-performance-live-website-now.md)；或
-  * Java Web 應用程式：安裝 [Java 代理程式](../../azure-monitor/app/java-agent.md)
+  * Java Web 應用程式:啟用[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * 在您的網頁中安裝 [JavaScript 程式碼片段](../../azure-monitor/app/javascript.md)來攔截瀏覽器例外狀況。
 * 在某些應用程式架構中或搭配某些設定時，您必須採取一些額外的步驟，才能攔截較多的例外狀況：
   * [Web 表單](#web-forms)
@@ -28,7 +28,7 @@ ms.locfileid: "80294697"
   * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
-  本文從代碼示例的角度專門介紹 .NET 框架應用。 在 .NET 核心 SDK 中，用於 .NET 框架的一些方法已過時。 如果您有 .NET 核心應用，請參閱[.NET 核心 SDK 文檔](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
+  本文從代碼示例的角度專門介紹 .NET 框架應用。 在 .NET 核心 SDK 中,用於 .NET 框架的一些方法已過時。 如果您有 .NET 核心應用,請參閱[.NET 核心 SDK 文件](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>使用 Visual Studio 診斷例外狀況
 在 Visual Studio 中開啟應用程式解決方案以協助偵錯。
@@ -41,7 +41,7 @@ ms.locfileid: "80294697"
 
 請注意，您可以篩選報告僅顯示例外狀況。
 
-*沒有例外顯示？請參閱[捕獲異常](#exceptions)。*
+*沒有例外顯示?請參考[捕獲例外](#exceptions)。*
 
 按一下例外狀況報告以顯示其堆疊追蹤。
 按一下堆疊追蹤中的行參考，以開啟相關程式碼檔案。
@@ -52,21 +52,21 @@ ms.locfileid: "80294697"
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>使用 Azure 入口網站診斷失敗
 Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應用程式中的失敗。 若要開始，請按一下位於 [調查] 區段 Application Insights 資源功能表中的 [失敗] 選項。
-您應該會看到全螢幕檢視，其中顯示要求的失敗率趨勢、有多少個失敗的要求，以及多少個使用者受到影響。 在右側，您將看到一些特定于所選失敗操作的最有用的分佈，包括前三個回應代碼、前三個異常類型和前三個失敗的依賴項類型。
+您應該會看到全螢幕檢視，其中顯示要求的失敗率趨勢、有多少個失敗的要求，以及多少個使用者受到影響。 在右側,您將看到一些特定於所選失敗操作的最有用的分佈,包括前三個回應代碼、前三個異常類型和前三個失敗的依賴項類型。
 
 ![失敗分級檢視 ([作業] 索引標籤)](./media/asp-net-exceptions/failures0719.png)
 
-只需按一下一下，即可查看每個操作子集的代表示例。 特別是，要診斷異常，可以按一下要顯示的"端到端事務詳細資訊"選項卡（如：
+只需單擊一下,即可查看每個操作子集的代表示例。 特別是,要診斷異常,可以按下要顯示的「端到端事務詳細資訊」選項卡(如:
 
-![端到端事務詳細資訊選項卡](./media/asp-net-exceptions/end-to-end.png)
+![端到端交易詳細資訊選項卡](./media/asp-net-exceptions/end-to-end.png)
 
-**或者，** 無需查看特定失敗操作的異常，而是可以通過切換到頂部的"例外"選項卡從異常的總體視圖開始。 您可以在此處查看為您的受監視應用程式收集的所有例外狀況。
+**或者,** 無需查看特定失敗操作的異常,而是可以通過切換到頂部的"例外"選項卡從異常的總體視圖開始。 您可以在此處查看為您的受監視應用程式收集的所有例外狀況。
 
-*沒有例外顯示？請參閱[捕獲異常](#exceptions)。*
+*沒有例外顯示?請參考[捕獲例外](#exceptions)。*
 
 
 ## <a name="custom-tracing-and-log-data"></a>自訂追蹤和記錄資料
-若要取得您的 app 的特定診斷資料，您可以插入程式碼以傳送您自己的遙測資料。 這在診斷搜索中與請求、網頁檢視和其他自動收集的資料一起顯示。
+若要取得您的 app 的特定診斷資料，您可以插入程式碼以傳送您自己的遙測資料。 這在診斷搜索中與請求、頁面檢視和其他自動收集的數據一起顯示。
 
 您有幾種選項：
 
@@ -75,12 +75,12 @@ Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應
 * [TrackException()](#exceptions) 會傳送堆疊追蹤。 [深入了解例外狀況](#exceptions)。
 * 如果您已經使用 Log4Net 或 NLog 等記錄架構，您可以[擷取這些記錄](asp-net-trace-logs.md)，然後在診斷搜尋中將它們連同要求和例外狀況資料一起檢視。
 
-要查看這些事件，請從左側功能表打開["搜索"，](../../azure-monitor/app/diagnostic-search.md)選擇下拉式功能表**事件種類**，然後選擇"自訂事件"、"跟蹤"或"異常"。
+要查看這些事件,請從左側選單打開[「搜尋」,](../../azure-monitor/app/diagnostic-search.md)選擇下拉菜單**事件類型**,然後選擇「自定義事件」、「跟蹤」或「異常」。
 
 ![鑽研](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> 如果您的應用程式會產生大量遙測，調適性取樣模型會自動藉由僅傳送事件代表性片段，減少傳送到入口網站的量。 為相同作業之一部分的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 [瞭解採樣。](../../azure-monitor/app/sampling.md)
+> 如果您的應用程式會產生大量遙測，調適性取樣模型會自動藉由僅傳送事件代表性片段，減少傳送到入口網站的量。 為相同作業之一部分的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 [了解採樣。](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -157,14 +157,14 @@ Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應
 ## <a name="browser-exceptions"></a>瀏覽器例外狀況
 大部分的瀏覽器例外狀況都會報告。
 
-如果網頁包含來自內容交付網路或其他域的指令檔，請確保腳本標記具有 屬性```crossorigin="anonymous"```，並且伺服器發送[CORS 標頭](https://enable-cors.org/)。 這可讓您從這些資源取得未處理 JavaScript 例外狀況的堆疊追蹤和詳細資料。
+如果網頁包含來自內容傳遞網路或其他網域的文稿檔,請確保文稿標記具有```crossorigin="anonymous"```屬性 ,並且伺服器傳送[CORS 標頭](https://enable-cors.org/)。 這可讓您從這些資源取得未處理 JavaScript 例外狀況的堆疊追蹤和詳細資料。
 
-## <a name="reuse-your-telemetry-client"></a>重用遙測用戶端
+## <a name="reuse-your-telemetry-client"></a>重用遙測客戶端
 
 > [!NOTE]
-> 建議遙測用戶端具現化一次，並在應用程式的整個生命週期內重複使用。
+> 建議遙測用戶端實例化一次,並在應用程式的整個生命週期內重複使用。
 
-下面是正確使用遙測用戶端的示例。
+下面是正確使用遙測客戶端的範例。
 
 ```csharp
 public class GoodController : ApiController
@@ -255,7 +255,7 @@ public class GoodController : ApiController
     ...
 ```
 
-[樣品](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[範例](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 註冊 `AiHandleErrorAttribute` 做為 Global.asax.cs 中的全域篩選器：
@@ -270,7 +270,7 @@ public class GoodController : ApiController
      ...
 ```
 
-[樣品](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[範例](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4、MVC5
 註冊 AiHandleErrorAttribute 做為 FilterConfig.cs 中的全域篩選器：
@@ -286,7 +286,7 @@ public class GoodController : ApiController
     }
 ```
 
-[樣品](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[範例](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Web API
 從 Application Insights Web SDK 2.6 版 (beta3 和更新版本) 開始，Application Insights 會自動針對 WebAPI 2+ 收集在控制器方法中擲回的未處理例外狀況。 如果您先前已新增自訂處理常式來追蹤此類例外狀況 (如下列範例中所述)，您可以將其移除，以避免重複追蹤例外狀況。
@@ -354,7 +354,7 @@ public class GoodController : ApiController
     }
 ```
 
-[樣品](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[範例](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Web API 2.x
 新增 IExceptionLogger 的實作：
@@ -409,7 +409,7 @@ public class GoodController : ApiController
      }
 ```
 
-[樣品](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[範例](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 做為替代方案，您可以：
 
@@ -479,12 +479,12 @@ Add the attribute to the service implementations:
          ...
 ```
 
-[樣品](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[範例](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>例外狀況效能計數器
 如果您已在伺服器上[安裝 Application Insights代理程式](../../azure-monitor/app/monitor-performance-live-website-now.md)，您便可取得由 .NET 測量的例外狀況比率圖表。 這包括已處理和未處理的 .NET 例外狀況。
 
-打開指標資源管理器選項卡，添加新圖表，並選擇"效能計數器"下列出的 **"例外率**"。
+打開指標資源管理器選項卡,添加新圖表,並選擇"性能計數器"下列出的 **"例外率**"。
 
 .NET framework 會計算間隔中的例外狀況次數並除以間隔長度，以計算得出例外狀況比率。
 

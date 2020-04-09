@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397763"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887328"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>以及時存取保護管理埠
 
@@ -74,7 +74,7 @@ ms.locfileid: "80397763"
 
      1. 按一下 [確定]  。
 
-1. 按一下 [儲存]****。
+1. 按一下 [檔案]  。
 
 > [!NOTE]
 >為 VM 啟用 JIT VM 訪問後,Azure 安全中心會為與之關聯的網路安全組中的選定埠及其 Azure 防火牆創建"拒絕所有入站流量"規則。 如果為所選埠創建了其他規則,則現有規則優先於新的"拒絕所有入站流量"規則。 如果所選埠上沒有現有規則,則新的"拒絕所有入站流量"規則將在網路安全組和 Azure 防火牆中佔據最高優先順序。
@@ -211,7 +211,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
 1.    指派一個變數，為虛擬機器保留 Just-In-Time 虛擬機器存取原則：
 
-        $JitPolicy = (*id="/訂閱/訂閱 ID/資源組/資源組/資源組/提供者/微軟.計算/虛擬機/VMNAME"埠=({編號=22;       協定*\";       允許的Source位址首碼\("");*       最大請求訪問持續時間="PT3H"*,[數位=3389;       協定*\";       允許的Source位址首碼\("");*       最大請求存取持續時間=「PT3H」*))
+        $JitPolicy = (*id="/訂閱/訂閱 ID/資源組/資源組/資源組/提供者/微軟.計算/虛擬機/VMNAME"埠=({編號=22;       協定\";\*       允許的Source位址首碼\("");\*       最大請求訪問持續時間="PT3H"*,[數位=3389;       協定\";\*       允許的Source位址首碼\("");\*       最大請求存取持續時間=「PT3H」*))
 
 2.    將虛擬機器 Just-In-Time 虛擬機器存取原則插入陣列中：
     

@@ -1,28 +1,24 @@
 ---
-title: Azure AD 權杖&聲明類型 |微軟文檔
+title: Azure AD 權杖&宣告類型
 description: 可供了解及評估 Azure Active Directory (AAD) 所簽發之 SAML 2.0 和 JSON Web Token (JWT) 權杖中的宣告的指南。
 documentationcenter: na
 author: rwike77
 services: active-directory
 manager: CelesteDG
-editor: ''
-ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7ba4abd45fff8548c361f5e5ed44ef45fe32bbe
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299749"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883435"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 權杖參考
 
@@ -156,7 +152,7 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 
 ## <a name="related-content"></a>相關內容
 
-* 請參閱[策略資源](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)，瞭解有關使用 Microsoft 圖形 API 管理權杖存留期策略的更多資訊。
+* 請參閱[策略資源](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta),瞭解有關使用 Microsoft 圖形 API 管理權杖存留期策略的更多資訊。
 * 如需透過 PowerShell Cmdlet 管理原則的詳細資訊和範例，包括範例，請參閱[在 Azure AD 中設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 
 * 將[自訂和選擇性宣告](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)新增至應用程式的權杖。
 * 搭配使用 [SAML 與單一登入 (SSO)](single-sign-on-saml-protocol.md)。

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745037"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983342"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge 模組供應項目發佈概觀
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
 
 <table> <tr> <td>本節說明如何將新的 Azure IoT Edge 模組供應項目發佈至 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>。 IoT Edge 模組是專門設計在 IoT Edge 裝置上執行的 Docker 相容容器。 Azure IoT Edge 模組是 IoT Edge 管理的最小計算單位，可以包含 Azure 服務或自訂的解決方案程式碼。 </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
@@ -38,7 +38,7 @@ ms.locfileid: "80745037"
 以下文章概括了 IoT Edge 模組供應項目的各主要部分細項。
 
 - [先決條件](./cpp-prerequisites.md) <br>本文列出建立或發行的 IoT Edge 模組前需符合的技術和商業需求。
-- [建立 IoT Edge 模組技術資產](./cpp-create-technical-assets.md) <br>本文說明如何準備 IoT Edge 模組之技術資產。 這些資產必須符合所有技術準則，才能將 IoT Edge 模組發佈至 Microsoft Azure Marketplace。
+- [預備 IoT Edge 模組技術資產](./cpp-create-technical-assets.md) <br>本文說明如何準備 IoT Edge 模組之技術資產。 這些資產必須符合所有技術準則，才能將 IoT Edge 模組發佈至 Microsoft Azure Marketplace。
 - [建立 IoT Edge 模組供應項目](./cpp-create-offer.md) <br>本文列出使用 [Cloud Partner 入口網站](https://cloudpartner.azure.com) 建立新 IoT Edge 供應項目所需步驟。
 - [發佈 IoT Edge 模組供應項目](./cpp-publish-offer.md)<br> 本文說明如何將供應項目提交至 Microsoft Azure Marketplace 並發佈。
 

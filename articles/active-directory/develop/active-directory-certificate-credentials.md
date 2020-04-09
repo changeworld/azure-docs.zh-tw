@@ -1,11 +1,10 @@
 ---
-title: 微軟標識平臺證書憑據
+title: 微軟標識平台證書認證
 titleSuffix: Microsoft identity platform
 description: 本文討論了證書憑據對應用程式身份驗證的註冊和使用。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -14,21 +13,21 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5587d0bf2c6cdeb2a6ad5e7dc3a078097c48c7ea
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399021"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884557"
 ---
-# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>微軟標識平臺應用程式身份驗證憑證憑據
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>微軟識別平台應用程式身份驗證憑證認證
 
-Microsoft 標識平臺允許應用程式使用自己的憑據進行身份驗證，例如，在[OAuth 2.0 用戶端憑據授予流2.0](v2-oauth2-client-creds-grant-flow.md)和[代表流](v2-oauth2-on-behalf-of-flow.md)中。
+Microsoft 標識平台允許應用程式使用自己的認證進行身份驗證,例如,在[OAuth 2.0用戶端認證授權的授予流2.0](v2-oauth2-client-creds-grant-flow.md)和[代表流](v2-oauth2-on-behalf-of-flow.md)中。
 
 應用程式可用於驗證的認證形式之一，是以應用程式擁有的憑證簽署的 JSON Web 權杖 (JWT) 判斷提示。
 
 ## <a name="assertion-format"></a>判斷提示格式
-Microsoft 標識平臺 要計算斷言，可以使用您選擇的語言中的許多[JSON Web 權杖](https://jwt.ms/)庫之一。 權杖所承載的資訊如下︰
+Microsoft 識別平台 要計算斷言,可以使用您選擇的語言中的許多[JSON Web 令牌](https://jwt.ms/)庫之一。 權杖所承載的資訊如下︰
 
 ### <a name="header"></a>頁首
 
@@ -42,7 +41,7 @@ Microsoft 標識平臺 要計算斷言，可以使用您選擇的語言中的許
 
 | 參數 |  備註 |
 | --- | --- |
-| `aud` | 受眾：應**https://login.microsoftonline.com/*tenant_Id*tenant_Id/auth2/token** |
+| `aud` | 受眾:應**https://login.microsoftonline.com/*tenant_Id*tenant_Id/auth2/token** |
 | `exp` | 到期日：權杖到期的日期。 時間會表示為從 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 到權杖有效時間到期的秒數。|
 | `iss` | 簽發者︰應該是 client_id (用戶端服務的應用程式識別碼) |
 | `jti` | GUID：JWT ID |
@@ -86,17 +85,17 @@ Microsoft 標識平臺 要計算斷言，可以使用您選擇的語言中的許
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-microsoft-identity-platform"></a>通過 Microsoft 身份平臺註冊證書
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>透過 Microsoft 身份平台註冊憑證
 
-可以使用以下任一方法將證書憑據與 Microsoft 標識平臺中的用戶端應用程式關聯：
+可以使用以下任一方法將證書認證與 Microsoft 識別平臺中的用戶端應用程式關聯:
 
 ### <a name="uploading-the-certificate-file"></a>上傳憑證檔案
 
 在用戶端應用程式的 Azure 應用程式註冊中：
 1. 選取 [憑證和秘密]****。
-2. 按一下 **"上載證書**"並選擇要上載的證書檔。
+2. 按下 **「上傳證書**」並選擇要上傳的憑證檔。
 3. 按一下 **[新增]**。
-  上載證書後，將顯示指紋、開始日期和過期值。
+  上載證書後,將顯示指紋、開始日期和過期值。
 
 ### <a name="updating-the-application-manifest"></a>更新應用程式資訊清單
 
@@ -108,7 +107,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 您也必須提供 GUID 來識別應用程式資訊清單中的金鑰 (`$keyId`)。
 
 在用戶端應用程式的 Azure 應用程式註冊中：
-1. 選擇 **"清單"** 以打開應用程式清單。
+1. 選擇 **「清單」** 以打開應用程式清單。
 2. 使用下列結構描述，將 *keyCredentials* 屬性取代為您新的憑證資訊。
 
    ```JSON
@@ -122,13 +121,13 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
        }
    ]
    ```
-3. 將編輯內容保存到應用程式清單，然後將該清單上載到 Microsoft 標識平臺。
+3. 將編輯內容保存到應用程式清單,然後將該清單上載到 Microsoft 標識平臺。
 
    `keyCredentials` 屬性是多重值，因此您可以上傳多個憑證以進行更豐富的金鑰管理。
 
 ## <a name="code-sample"></a>程式碼範例
 
 > [!NOTE]
-> 您必須使用證書的雜湊將 X5T 標頭轉換為基 64 字串來計算它。 在 C# 中執行此操作的代碼為`System.Convert.ToBase64String(cert.GetCertHash());`。
+> 您必須使用證書的哈希將 X5T 標頭轉換為基 64 字串來計算它。 在 C# 中執行此操作的`System.Convert.ToBase64String(cert.GetCertHash());`代碼為 。
 
-代碼示例[.NET Core 守護程式主控台應用程式使用 Microsoft 標識平臺](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)顯示應用程式如何使用自己的憑據進行身份驗證。 此外也說明如何使用 `New-SelfSignedCertificate` PowerShell 命令[建立自我簽署憑證](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)。 您也可以利用[應用程式建立指令碼](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)來建立憑證、計算指紋，和執行其他作業。
+代碼示例[.NET Core 守護程式主控台應用程式使用 Microsoft 識別平台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)顯示應用程式如何使用自己的認證進行身份驗證。 此外也說明如何使用 `New-SelfSignedCertificate` PowerShell 命令[建立自我簽署憑證](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)。 您也可以利用[應用程式建立指令碼](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)來建立憑證、計算指紋，和執行其他作業。
