@@ -3,12 +3,12 @@ title: Azure 資源 - QnA 製造商
 description: QnA Maker 使用多個 Azure 源,每個源具有不同的用途。 瞭解它們是如何單獨使用的,您可以規劃和選擇正確的定價層,或知道何時更改定價層。 瞭解它們的組合使用方式,可以在問題發生時查找和修復問題。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804294"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873900"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA 製造商的 Azure 資源
 
@@ -49,6 +49,16 @@ QnA Maker 使用多個 Azure 源,每個源具有不同的用途。 瞭解它們�
 | 測試        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
 | 開發/測試環境   | 標準 SKU         | 共用      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
 | 生產環境 | 標準 SKU         | 基本       | 標準     | 最多發佈 49 個 KB，大小為 25 GB |
+
+## <a name="recommended-settings"></a>建議的設定
+
+|目標 QPS | App Service 方案 | Azue 認知搜尋 |
+| -------------------- | ----------- | ------------ |
+| 3             | S1,1 個實體   | S1,1 個實體    |
+| 50         | S3,10 個實體       | S1, 12 實體         |
+| 80         | S3,10 個實體      |  S3, 12 實體  |
+| 100         | P3V2,10 個實體  | S3,12 個實例,3 個分區   |
+| 200 到 250         | P3V2,20 個實體 | S3,12 個實例,3 個分區    |
 
 ## <a name="when-to-change-a-pricing-tier"></a>何時變更定價層
 

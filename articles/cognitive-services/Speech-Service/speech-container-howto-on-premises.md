@@ -1,56 +1,56 @@
 ---
 title: 使用具有庫伯奈斯和赫爾姆的語音服務容器
 titleSuffix: Azure Cognitive Services
-description: 使用 Kubernetes 和 Helm 定義語音到文本和文本到語音的容器映射，我們將創建一個 Kubernetes 包。 此包將部署到本地的 Kubernetes 群集。
+description: 使用 Kubernetes 和 Helm 定義語音到文本和文字到語音的容器映射,我們將創建一個 Kubernetes 包。 此包將部署到本地的 Kubernetes 群集。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: 6ad5a843c8cc287834305e09b48cd3fafe09ca51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 3c183f6d0e2d80ed497654448a726a1562bd046c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474759"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874331"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>使用具有庫伯奈斯和赫爾姆的語音服務容器
 
-本地管理語音容器的一個選項是使用庫伯內特斯和赫爾姆。 使用 Kubernetes 和 Helm 定義語音到文本和文本到語音的容器映射，我們將創建一個 Kubernetes 包。 此包將部署到本地的 Kubernetes 群集。 最後，我們將探討如何測試已部署的服務和各種配置選項。 有關在沒有 Kubernetes 業務流程的情況下運行 Docker 容器的詳細資訊，請參閱[安裝和運行語音服務容器](speech-container-howto.md)。
+本地管理語音容器的一個選項是使用庫伯內特斯和赫爾姆。 使用 Kubernetes 和 Helm 定義語音到文本和文字到語音的容器映射,我們將創建一個 Kubernetes 包。 此包將部署到本地的 Kubernetes 群集。 最後,我們將探討如何測試已部署的服務和各種配置選項。 有關在沒有 Kubernetes 業務流程的情況下執行 Docker 容器的詳細資訊,請參閱[安裝和執行語音服務容器](speech-container-howto.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在本地使用語音容器之前，以下先決條件：
+在本地使用語音容器之前,以下先決條件:
 
 | 必要 | 目的 |
 |----------|---------|
 | Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][free-azure-account]。 |
-| 容器註冊表訪問 | 為了使 Kubernetes 將 Docker 映射拉入群集，它將需要訪問容器註冊表。 |
-| 庫伯內斯 CLI | [庫伯內斯 CLI][kubernetes-cli]是管理容器註冊表中的共用憑據所必需的。 在赫爾姆之前也需要庫伯內特斯，這是庫伯內斯的包經理。 |
-| Helm CLI | 安裝[Helm CLI][helm-install]，用於安裝掌舵圖（容器包定義）。 |
-|語音資源 |若要使用這些容器，您必須具備：<br><br>用於獲取關聯的計費金鑰和計費終結點 URI 的_語音_Azure 資源。 這兩個值在 Azure 門戶的**語音**概述和金鑰頁上都可用，並且需要啟動容器。<br><br>**[API_KEY]**： 資源鍵<br><br>**[ENDPOINT_URI]**： 終結點 URI 示例是：`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| 容器登錄 | 為了使 Kubernetes 將 Docker 映射拉入群集,它將需要存取容器註冊表。 |
+| 庫伯內斯 CLI | [庫伯內斯 CLI][kubernetes-cli]是管理容器註冊表中的共用憑據所必需的。 在赫爾姆之前也需要庫伯內特斯,這是庫伯內斯的包經理。 |
+| Helm CLI | 安裝[Helm CLI][helm-install],用於安裝掌舵圖(容器包定義)。 |
+|語音資源 |若要使用這些容器，您必須具備：<br><br>用於獲取關聯的計費密鑰和計費終結點URI的_語音_Azure 資源。 這兩個值在 Azure 門戶的**語音**概述和密鑰頁上都可用,並且需要啟動容器。<br><br>**[API_KEY]**: 資源鍵<br><br>**[ENDPOINT_URI]**: 終結點 URI 範例是:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
-## <a name="the-recommended-host-computer-configuration"></a>推薦的主機配置
+## <a name="the-recommended-host-computer-configuration"></a>建議的主機設定
 
-請參閱[語音服務容器主機電腦][speech-container-host-computer]詳細資訊作為參考。 此*掌舵圖*根據使用者指定的解碼（併發請求）數自動計算 CPU 和記憶體要求。 此外，它將根據音訊/文本輸入的優化是否配置為`enabled`進行調整。 掌舵圖預設為兩個併發請求和禁用優化。
+請參閱[語音服務容器主機計算機][speech-container-host-computer]詳細資訊作為參考。 此*掌舵圖*根據使用者指定的解碼(併發請求)數自動計算 CPU 和記憶體要求。 此外,它將根據音訊/文本輸入的優化是否配置為`enabled`進行調整。 掌舵圖預設為兩個併發請求和禁用優化。
 
 | 服務 | CPU / 容器 | 記憶體/容器 |
 |--|--|--|
-| **語音到文本** | 一個解碼器至少需要 1，150 毫芯。 如果啟用`optimizedForAudioFile`，則需要 1，950 毫芯。 （預設值：兩個解碼器） | 需要： 2 GB<br>受限： 4 GB |
-| **文字轉換語音** | 一個併發請求至少需要 500 毫芯。 如果啟用`optimizeForTurboMode`，則需要 1，000 毫芯。 （預設值：兩個併發請求） | 需要： 1 GB<br> 受限： 2 GB |
+| **語音轉文字** | 一個解碼器至少需要 1,150 毫芯。 如果啟用`optimizedForAudioFile`,則需要 1,950 毫芯。 (預設值:兩個解碼器) | 需要: 2 GB<br>受限: 4 GB |
+| **文字轉換語音** | 一個併發請求至少需要 500 毫芯。 如果啟用`optimizeForTurboMode`,則需要 1,000 毫芯。 (預設值:兩個併發請求) | 需要: 1 GB<br> 受限: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>連接到庫伯內特斯群集
 
-主機應具有可用的庫伯內斯群集。 有關[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)的本教程，瞭解如何將 Kubernetes 群集部署到主機的概念性理解。
+主機應具有可用的庫伯內斯群集。 有關[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)的本教程,瞭解如何將 Kubernetes 群集部署到主機的概念性理解。
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>與庫伯內斯群集共用 Docker 憑據
+### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>與庫伯內斯群集共用 Docker 認證
 
-要允許 Kubernetes 群集`docker pull`從`containerpreview.azurecr.io`容器註冊表到配置的映射，您需要將 Docker 憑據傳輸到群集中。 執行下面的[`kubectl create`][kubectl-create]命令，根據從容器註冊表訪問先決條件提供的憑據創建*Docker 註冊表金鑰*。
+要允許 Kubernetes`docker pull`群`containerpreview.azurecr.io`集 從 容器註冊表到配置的映射,您需要將 Docker 認證到群集中。 執行下面的[`kubectl create`][kubectl-create]指令,根據從容器註冊表存取先決條件提供的認證為*Docker 註冊表金鑰*。
 
-從您選擇的命令列介面中，運行以下命令。 請確保將 和`<username>``<password>``<email-address>`替換為容器註冊表憑據。
+從您選擇的命令列介面中,執行以下命令。 請確保將和`<username>``<password>``<email-address>`替換為容器註冊表憑據。
 
 ```console
 kubectl create secret docker-registry mcr \
@@ -61,20 +61,20 @@ kubectl create secret docker-registry mcr \
 ```
 
 > [!NOTE]
-> 如果您已經有權訪問容器註冊表，`containerpreview.azurecr.io`則可以使用泛型標誌創建 Kubernetes 機密。 請考慮以下針對 Docker 配置 JSON 執行的命令。
+> 如果您已經有權存取容器註冊表`containerpreview.azurecr.io`, 則可以使用泛型標誌創建 Kubernetes 機密。 請考慮以下針對 Docker 配置 JSON 執行的命令。
 > ```console
 >  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-成功創建機密後，將以下輸出列印到主控台。
+成功創建機密後,將以下輸出列印到主控台。
 
 ```console
 secret "mcr" created
 ```
 
-要驗證已創建機密，請使用[`kubectl get`][kubectl-get]`secrets`標誌執行 。
+要驗證已建立機密,請使用[`kubectl get`][kubectl-get]`secrets`旗標執行 。
 
 ```console
 kubectl get secrets
@@ -87,15 +87,15 @@ NAME    TYPE                              DATA    AGE
 mcr     kubernetes.io/dockerconfigjson    1       30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>配置用於部署的 Helm 圖表值
+## <a name="configure-helm-chart-values-for-deployment"></a>設定用於部署的 Helm 圖表值
 
-訪問[微軟頭盔中心][ms-helm-hub]，獲取微軟提供的所有公開提供的掌舵圖。 在 Microsoft Helm Hub 中，您將找到**認知服務語音本地圖表**。 **本地認知服務語音**是我們將安裝的圖表，但我們必須首先創建具有`config-values.yaml`顯式配置的檔。 讓我們首先將 Microsoft 存儲庫添加到我們的 Helm 實例中。
+訪問[微軟頭盔中心][ms-helm-hub],獲取微軟提供的所有公開提供的掌舵圖。 在 Microsoft Helm Hub 中,您會找到**認知服務語音本機圖表**。 **本地認知服務語音**是我們將安裝的圖表,但我們必須首先創建`config-values.yaml`具有 顯式配置的檔。 讓我們首先將Microsoft儲存庫添加到我們的Helm實例中。
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-接下來，我們將配置 Helm 圖表值。 複製以下 YAML 並將其粘貼到名為`config-values.yaml`的檔中。 有關自訂**認知服務語音本地頭盔圖**的詳細資訊，請參閱[自訂掌舵圖](#customize-helm-charts)。 將`# {ENDPOINT_URI}`和`# {API_KEY}`注釋替換為您自己的值。
+接下來,我們將配置 Helm 圖表值。 複製以下 YAML 並將其貼上`config-values.yaml`到名為的檔案中。 有關自定義**認知服務語音本地頭盔圖**的詳細資訊,請參閱[自定義掌舵圖](#customize-helm-charts)。 將`# {ENDPOINT_URI}`和`# {API_KEY}`註釋替換為您自己的值。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -134,19 +134,19 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> 如果未提供`billing``apikey`和 值，則服務將在 15 分鐘後過期。 同樣，驗證將失敗，因為服務將不可用。
+> 如果未提供`billing``apikey`和值,則服務將在 15 分鐘後過期。 同樣,驗證將失敗,因為服務將不可用。
 
-### <a name="the-kubernetes-package-helm-chart"></a>庫伯內斯包（赫爾姆圖）
+### <a name="the-kubernetes-package-helm-chart"></a>庫伯內斯包(赫爾姆圖)
 
-*Helm 圖表*包含從容器註冊表中提取的 Docker 映射的`containerpreview.azurecr.io`配置。
+*Helm 圖表*包含從容器註冊錶中提取的 Docker`containerpreview.azurecr.io`映射的 配置。
 
-> [Helm 圖表][helm-charts]是描述一組相關的庫伯奈斯資源的檔的集合。 單個圖表可用於部署簡單內容，如 memcached pod 或複雜內容，例如包含 HTTP 伺服器、資料庫、緩存等的完整 Web 應用堆疊。
+> [Helm 圖表][helm-charts]是描述一組相關的庫伯奈斯資源的檔的集合。 單個圖表可用於部署簡單內容,如 memcached pod 或複雜內容,例如包含 HTTP 伺服器、資料庫、緩存等的完整 Web 應用堆疊。
 
-提供的*Helm 圖表*從`containerpreview.azurecr.io`容器註冊表中提取語音服務的 Docker 圖像，包括文本到語音和語音到文本服務。
+提供的*Helm 圖表*從`containerpreview.azurecr.io`容器註冊表中提取語音服務的 Docker 圖像,包括文本到語音和語音到文本服務。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在庫伯內斯群集上安裝赫爾姆圖
 
-要安裝*掌舵圖*，我們需要執行[`helm install`][helm-install-cmd]該命令，用相應的路徑和檔`<config-values.yaml>`名參數替換 。 下面`microsoft/cognitive-services-speech-onpremise`引用的赫爾姆圖表[可在此處的 Microsoft 頭盔中心上][ms-helm-hub-speech-chart]查閱。
+要安裝*掌舵圖*,我們[`helm install`][helm-install-cmd]需要執行 此指令,用相應的`<config-values.yaml>`路徑和檔案 名參數取代 。 下面`microsoft/cognitive-services-speech-onpremise`引用的赫爾姆圖表[可在此處的 Microsoft 頭盔中心上][ms-helm-hub-speech-chart]查閱。
 
 ```console
 helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
@@ -154,7 +154,7 @@ helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
     --values <config-values.yaml> 
 ```
 
-下面是一個示例輸出，您可能期望從成功的安裝執行中看到：
+下面是一個範例輸出,您可能期望從成功的安裝執行中看到:
 
 ```console
 NAME:   onprem-speech
@@ -196,13 +196,13 @@ cognitive-services-speech-onpremise has been installed!
 Release is named onprem-speech
 ```
 
-庫伯內斯的部署可能需要幾分鐘才能完成。 要確認 pod 和服務都已正確部署且可用，請執行以下命令：
+庫伯內斯的部署可能需要幾分鐘才能完成。 要確認 pod 和服務都已正確部署且可用,請執行以下命令:
 
 ```console
 kubectl get all
 ```
 
-您應該會看到類似于以下輸出的內容：
+您應該會看到類似於以下輸出的內容:
 
 ```console
 NAME                                  READY     STATUS    RESTARTS   AGE
@@ -231,16 +231,16 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>使用 Helm 測試驗證 Helm 部署
 
-安裝的Helm圖表定義了*Helm測試*，這為驗證提供了方便。 這些測試驗證服務就緒性。 要驗證**語音到文本**和**文本到語音服務**，我們將執行[Helm 測試][helm-test]命令。
+安裝的Helm圖表定義了*Helm測試*,這為驗證提供了方便。 這些測試驗證服務就緒性。 要驗證**語音到文本**和**文本到語音服務**,我們將執行[Helm 測試][helm-test]命令。
 
 ```console
 helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> 如果 POD 狀態未處於或部署未`Running`列在`AVAILABLE`列下，則這些測試將失敗。 要有耐心，因為這可能需要十多分鐘才能完成。
+> 如果 POD 狀態未處於或`Running`部署未`AVAILABLE`列在 列下,則這些測試將失敗。 要有耐心,因為這可能需要十多分鐘才能完成。
 
-這些測試將輸出各種狀態結果：
+這些測試將輸出各種狀態結果:
 
 ```console
 RUNNING: speech-to-text-readiness-test
@@ -249,11 +249,11 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-作為執行*helm 測試*的替代方法，可以從`kubectl get all`命令收集外部*IP*位址和相應的埠。 使用 IP 和埠，打開 Web 瀏覽器並`http://<external-ip>:<port>:/swagger/index.html`導航到以查看 API 搖擺頁。
+作為執行*helm 測試*的替代方法,`kubectl get all`可以從命令收集外部*IP*位址和相應的埠。 使用 IP 和埠,打開 Web`http://<external-ip>:<port>:/swagger/index.html`瀏覽器並瀏覽到以檢視 API 搖擺頁。
 
 ## <a name="customize-helm-charts"></a>自訂頭盔圖表
 
-赫爾姆圖是階層式。 分層允許圖表繼承，它還迎合了特定性的概念，其中更具體的設置重寫繼承了規則。
+赫爾姆圖是分層的。 分層允許圖表繼承,它還迎合了特定性的概念,其中更具體的設置重寫繼承了規則。
 
 [!INCLUDE [Speech umbrella-helm-chart-config](includes/speech-umbrella-helm-chart-config.md)]
 
@@ -263,7 +263,7 @@ PASSED: text-to-speech-readiness-test
 
 ## <a name="next-steps"></a>後續步驟
 
-有關在 Azure 庫伯奈斯服務 （AKS） 中使用 Helm 安裝應用程式的更多詳細資訊，[請訪問此處][installing-helm-apps-in-aks]。
+有關在 Azure 函式庫伯奈斯服務 (AKS) 中使用 Helm 安裝應用程式的更多詳細資訊,[請存取此處][installing-helm-apps-in-aks]。
 
 > [!div class="nextstepaction"]
 > [認知服務容器][cog-svcs-containers]

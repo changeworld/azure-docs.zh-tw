@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668842"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892456"
 ---
 # <a name="what-is-batch-transcription"></a>什麼是批次轉錄?
 
@@ -129,7 +129,7 @@ Batch 轉譯 API 支援下列格式：
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      指定是否應將情緒分析應用於陳述。 接受的值是`true`啟用`false`和 (預設值)來禁用它。
+      指定是否應將情緒分析應用於陳述。 接受的值是`true`啟用`false`和 (預設值)來禁用它。 有關詳細資訊[,請參閱情緒分析](#sentiment-analysis)。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -146,7 +146,7 @@ Batch 轉譯 API 支援下列格式：
       具有服務[SAS 的](../../storage/common/storage-sas-overview.md)可選 URL 到 Azure 中的可寫入容器。 結果存儲在此容器中。
 :::row-end:::
 
-### <a name="storage"></a>存放裝置
+### <a name="storage"></a>儲存體
 
 批次處理轉錄支援[Azure Blob 儲存](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview),用於讀取音訊並將轉錄寫入儲存。
 
@@ -218,12 +218,41 @@ Batch 轉譯 API 支援下列格式：
 
 結果包含以下表單:
 
-| 表單        | 內容                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | 識別的實際單詞。                                                                                                                             |
-| `ITN`       | 識別文本的反向文本規範化形式。 應用縮寫("醫生史密斯"到"醫生史密斯"),電話號碼和其他轉換。 |
-| `MaskedITN` | 應用了帶有褻瀆性蒙版的 ITN 形式。                                                                                                             |
-| `Display`   | 識別文本的顯示形式。 包括添加的標點符號和大小寫。                                                             |
+:::row:::
+   :::column span="1":::
+      **表單**
+   :::column-end:::
+   :::column span="2":::
+      **內容**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      識別的實際單詞。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      識別文本的反向文本規範化形式。 應用縮寫("醫生史密斯"到"醫生史密斯"),電話號碼和其他轉換。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      應用了帶有褻瀆性蒙版的 ITN 形式。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      識別文本的顯示形式。 包括添加的標點符號和大小寫。
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>揚聲器分離(分離)
 
@@ -260,6 +289,10 @@ Word 級別時間戳也必須"打開",如上述請求中的參數所示。
 - 確定客戶喜歡什麼,不喜歡什麼產品或服務
 
 根據詞法形式,每個音訊段對情緒進行評分。 該音訊段中的整個文本用於計算情緒。 沒有計算整個轉錄的總情緒。 目前情緒分析僅適用於英語。
+
+> [!NOTE]
+> 我們建議改用 Microsoft 文本分析 API。 它提供了超越情緒分析的更高級的功能,如關鍵短語提取、自動語言檢測等。 您可以在[文字分析文件中](https://azure.microsoft.com/services/cognitive-services/text-analytics/)找到資訊和範例。
+>
 
 JSON 輸出示例如下所示:
 

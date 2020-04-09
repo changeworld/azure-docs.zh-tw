@@ -1,22 +1,22 @@
 ---
-title: 配置容器 - 面
+title: 設定容器 - 面
 titleSuffix: Azure Cognitive Services
 description: 臉部容器執行階段環境可使用 `docker run` 命令引數來設定。 有必需和可選設置。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76167969"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878420"
 ---
 # <a name="configure-face-docker-containers"></a>設定臉部 Docker 容器
 
@@ -27,15 +27,15 @@ ms.locfileid: "76167969"
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`Billing`](#billing-configuration-setting) [`Eula`](#eula-setting)和[`ApiKey`](#apikey-configuration-setting)設置一起使用，您必須為所有三個設置提供有效值;因此，您必須為所有三個設置提供有效值。否則您的容器將無法啟動。 如需使用這些組態設定來將容器具現化的詳細資訊，請參閱[帳單](face-how-to-install-containers.md#billing)。
+> [`Billing`](#billing-configuration-setting)與[`ApiKey`](#apikey-configuration-setting)設定一起使用,您必須為所有三個設置提供有效值;因此,您必須為所有三個設置[`Eula`](#eula-setting)提供有效值。否則您的容器將無法啟動。 如需使用這些組態設定來將容器具現化的詳細資訊，請參閱[帳單](face-how-to-install-containers.md#billing)。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 組態設定
 
-`ApiKey` 設定會指定用來追蹤容器帳單資訊的 Azure資源金鑰。 您必須為 ApiKey 指定值，並且該值必須是為[`Billing`](#billing-configuration-setting)配置設置指定的_認知服務_資源的有效金鑰。
+`ApiKey` 設定會指定用來追蹤容器帳單資訊的 Azure資源金鑰。 您必須為 ApiKey 指定值,並且該值必須[`Billing`](#billing-configuration-setting)是為 設定設定指定的_認知服務_資源的有效金鑰。
 
 此設定可在下列位置找到：
 
-* Azure 門戶：在**金鑰**下**進行認知服務**資源管理
+* Azure 門戶:在**金鑰**下**進行認知服務**資源管理
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -43,17 +43,17 @@ ms.locfileid: "76167969"
 
 ## <a name="billing-configuration-setting"></a>Billing 組態設定
 
-該`Billing`設置指定 Azure 上的_認知服務_資源的終結點 URI，用於計量容器的計費資訊。 您必須為此配置設置指定值，並且該值必須是 Azure 上的_認知服務_資源的有效終結點 URI。 容器會每隔 10 到 15 分鐘回報使用量。
+該`Billing`設置指定 Azure 上的_認知服務_資源的終結點 URI,用於計量容器的計費資訊。 您必須為此設定設定指定值,並且該值必須是 Azure 上的_認知服務_資源的有效終結點 URI。 容器會每隔 10 到 15 分鐘回報使用量。
 
 此設定可在下列位置找到：
 
-* Azure 門戶：**認知服務**概述，標記為`Endpoint`
+* Azure 門戶:**認知服務**概述 標記為`Endpoint`
 
-請記住將_面_路由添加到終結點 URI，如示例所示。 
+請記住將_面_路由添加到終結點 URI,如示例所示。 
 
 |必要| 名稱 | 資料類型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 計費終結點 URI。 有關獲取計費 URI 的詳細資訊，請參閱[收集所需的參數](face-how-to-install-containers.md#gathering-required-parameters)。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../cognitive-services-custom-subdomains.md)。 |
+|是| `Billing` | String | 計費終結點URI。 有關取得計費 URI 的詳細資訊,請參閱[收集所需的參數](face-how-to-install-containers.md#gathering-required-parameters)。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](../cognitive-services-custom-subdomains.md)。 |
 
 <!-- specific to face only -->
 
@@ -131,21 +131,21 @@ ms.locfileid: "76167969"
 
 下列範例會使用組態設定來說明如何撰寫和使用 `docker run` 命令。  開始執行後，容器就會持續執行，直到您加以[停止](face-how-to-install-containers.md#stop-the-container)。
 
-* **行延續字元**：以下部分中的 Docker 命令使用反斜線 ，`\`作為行延續字元。 請根據您主機作業系統的需求加以替換或移除。 
-* **參數順序**：除非非常熟悉 Docker 容器，否則不要更改參數的順序。
+* **行延續字元**:以下部分中的 Docker 命令使用反`\`斜杠 , 作為行延續字元。 請根據您主機作業系統的需求加以替換或移除。 
+* **參數順序**:除非非常熟悉 Docker 容器,否則不要更改參數的順序。
 
 請將 {_argument_name_} 取代為您自己的值：
 
 | 預留位置 | 值 | 格式或範例 |
 |-------------|-------|---|
 | **[API_KEY]** | Azure`Face``Face`鍵頁上資源的終結點鍵。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **[ENDPOINT_URI]** | 計費終結點值在 Azure`Face`概述頁上可用。| 有關顯式示例，請參閱[收集所需的參數](face-how-to-install-containers.md#gathering-required-parameters)。 |
+| **[ENDPOINT_URI]** | 計費終結點值在 Azure`Face`概述頁上可用。| 有關顯式範例,請參閱[收集所需的參數](face-how-to-install-containers.md#gathering-required-parameters)。 |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](face-how-to-install-containers.md#billing)。
-> ApiKey 值是 Azure`Cognitive Services`資源鍵頁中的 **"鍵**"。 
+> ApiKey 值是 Azure`Cognitive Services`資源鍵頁中的 **「鍵**」。 
 
 ## <a name="face-container-docker-examples"></a>臉部容器 Docker 範例
 
@@ -161,7 +161,7 @@ ms.locfileid: "76167969"
   ApiKey={API_KEY} 
   ```
 
-### <a name="logging-example"></a>日誌記錄示例 
+### <a name="logging-example"></a>紀錄記錄範例 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \

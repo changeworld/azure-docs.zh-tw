@@ -1,24 +1,24 @@
 ---
-title: 情緒分析容器碼頭示例
+title: 情緒分析容器碼頭範例
 titleSuffix: Azure Cognitive Services
-description: 情緒分析容器碼頭示例
+description: 情緒分析容器碼頭範例
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
-ms.author: dapine
-ms.openlocfilehash: c384d9d8af932db343aad106b6e89ea87821d900
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: e1d80f2ee869b2d71a536e499f900c7e8d6e425d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71148375"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878648"
 ---
-### <a name="sentiment-analysis-container-docker-examples"></a>情緒分析容器碼頭示例
+### <a name="sentiment-analysis-container-docker-examples"></a>情緒分析容器碼頭範例
 
-以下 docker 示例適用于情緒分析容器。
+以下 docker 範例適用於情緒分析容器。
 
 #### <a name="basic-example"></a>基本範例 
 
@@ -30,7 +30,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} 
   ```
 
-#### <a name="logging-example"></a>日誌記錄示例 
+#### <a name="logging-example"></a>紀錄記錄範例 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

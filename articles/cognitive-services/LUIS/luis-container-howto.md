@@ -3,48 +3,48 @@ title: 碼頭集裝箱 - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 容器會將您已定型或發佈的應用程式載入 Docker 容器中，並提供從容器的 API 端點存取查詢預測的權限。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: dapine
-ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: fec6b16eb7f80369904eefc407a9a9c8d6629c9a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79221317"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879319"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安裝和執行 LUIS Docker 容器
  
-語言理解 （LUIS） 容器載入您訓練或發佈的語言理解模型。 作為[LUIS 應用](https://www.luis.ai)，docker 容器提供從容器的 API 終結點訪問查詢預測。 可以從容器收集查詢日誌並將其上載回"語言理解"應用，以提高應用的預測準確性。
+語言理解 (LUIS) 容器載入您訓練或發布的語言理解模型。 作為[LUIS 應用](https://www.luis.ai),docker 容器提供從容器的 API 終結點訪問查詢預測。 可以從容器收集查詢日誌並將其上傳回"語言理解"應用,以提高應用的預測準確性。
 
 以下影片將示範如何使用此容器。
 
-[![認知服務的容器演示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![認知服務的容器展示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-要運行 LUIS 容器，請注意以下先決條件：
+要執行 LUIS 容器,請注意以下先決條件:
 
 |必要|目的|
 |--|--|
-|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
+|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
-|Azure`Cognitive Services`資源和 LUIS[打包的應用](luis-how-to-start-new-app.md)檔 |若要使用此容器，您必須具備：<br><br>•_認知服務_Azure 資源和關聯的計費金鑰計費終結點 URI。 這兩個值都可以在資源的"概述"和"鍵"頁上使用，並且需要啟動容器。 <br>* 已定型或發佈的應用程式，並封裝為掛接形式連同相關聯的應用程式識別碼輸入容器中。 可以從 LUIS 門戶或創作 API 獲取打包的檔。 如果你從[創作API](#authoring-apis-for-package-file)獲得LUIS打包的應用程式，你還需要你的_創作金鑰_。<br><br>這些需求可用來將命令列引數傳至下列變數：<br><br>**[AUTHORING_KEY]：** 此金鑰用於從雲中的 LUIS 服務獲取打包的應用，並將查詢日誌上載回雲。 格式為 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**[APP_ID]**：此 ID 用於選擇應用。 格式為 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**[API_KEY]：** 此金鑰用於啟動容器。 您可以在兩個位置找到端點金鑰。 第一個是_認知服務_資源金鑰清單中的 Azure 門戶。 端點金鑰也可以在 LUIS 入口網站中的 [金鑰和端點] 設定頁面上取得。 請勿使用入門金鑰。<br><br>**[ENDPOINT_URI]**： 概述頁上提供的終結點。<br><br>[撰寫金鑰和端點金鑰](luis-boundaries.md#key-limits)有不同的用途。 請勿將其交替使用。 |
+|Azure`Cognitive Services`資源與 LUIS[包裝的應用程式](luis-how-to-start-new-app.md)檔案 |若要使用此容器，您必須具備：<br><br>•_認知服務_Azure 資源和關聯的計費密鑰計費終結點 URI。 這兩個值都可以在資源的「概述」和「鍵」頁上使用,並且需要啟動容器。 <br>* 已定型或發佈的應用程式，並封裝為掛接形式連同相關聯的應用程式識別碼輸入容器中。 可以從 LUIS 門戶或創作 API 獲取打包的檔。 如果你從[創作API](#authoring-apis-for-package-file)獲得LUIS打包的應用程式,你還需要你的_創作金鑰_。<br><br>這些需求可用來將命令列引數傳至下列變數：<br><br>**[AUTHORING_KEY]:** 此金鑰用於從雲中的 LUIS 服務獲取打包的應用,並將查詢日誌上傳回雲。 格式為 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**[APP_ID]**:此 ID 用於選擇應用。 格式為 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**[API_KEY]:** 此金鑰用於啟動容器。 您可以在兩個位置找到端點金鑰。 第一個是_認知服務_資源密鑰清單中的 Azure 門戶。 端點金鑰也可以在 LUIS 入口網站中的 [金鑰和端點] 設定頁面上取得。 請勿使用入門金鑰。<br><br>**[ENDPOINT_URI]**: 概述頁上提供的終結點。<br><br>[撰寫金鑰和端點金鑰](luis-boundaries.md#key-limits)有不同的用途。 請勿將其交替使用。 |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="authoring-apis-for-package-file"></a>為包檔編寫 API
+### <a name="authoring-apis-for-package-file"></a>為套件檔案寫入 API
 
-為打包的應用創作 API：
+為打包的應用創作 API:
 
-* [已發佈的包 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [已發布的套件 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
 * [未發佈、僅培訓的包 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>主機電腦
@@ -55,9 +55,9 @@ ms.locfileid: "79221317"
 
 此容器支援設定的最小值和建議值：
 
-|容器| 最小值 | 建議 | Tps<br>（最小，最大）|
+|容器| 最小值 | 建議 | Tps<br>(最小,最大)|
 |-----------|---------|-------------|--|
-|LUIS|1 個內核，2 GB 記憶體|1 核，4 GB 記憶體|20, 40|
+|LUIS|1 個內核,2 GB 記憶體|1 核,4 GB 記憶體|20, 40|
 
 * 每個核心必須至少 2.6 GHz 或更快。
 * TPS - 每秒的交易數
@@ -66,7 +66,7 @@ ms.locfileid: "79221317"
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 取得容器映像
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令從`mcr.microsoft.com/azure-cognitive-services/luis`存儲庫下載容器映射：
+使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)指令`mcr.microsoft.com/azure-cognitive-services/luis`從儲存函式庫下載容器映像:
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
@@ -83,7 +83,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ![使用 Language Understanding (LUIS) 容器的程序](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. 從 LUIS 入口網站或 LUIS API 為容器[匯出套件](#export-packaged-app-from-luis)。
-1. 將套件檔案移至[主機電腦](#the-host-computer)上所需的**輸入**目錄中。 不要重命名、更改、覆蓋或解壓縮 LUIS 包檔。
+1. 將套件檔案移至[主機電腦](#the-host-computer)上所需的**輸入**目錄中。 不要重新命名、更改、覆蓋或解壓縮 LUIS 套件檔。
 1. 使用所需的_輸入掛接_和計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](luis-container-configuration.md#example-docker-run-commands)可供參考。 
 1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。 
 1. 容器使用完畢後，請從 LUIS 入口網站中的輸出掛接[匯入端點記錄](#import-the-endpoint-logs-for-active-learning)，並[停止](#stop-the-container)容器。
@@ -103,16 +103,16 @@ LUIS 容器需要以已定型或發佈的 LUIS 應用程式來回應使用者語
 
 ### <a name="package-types"></a>套件類型
 
-輸入裝載目錄可以同時包含應用程式的**生產**、**暫存**和**版本化**模型。 所有套件都會掛接。
+輸入載入目錄可以同時包含應用程式的**生產**、**暫存**和**版本化**模型。 所有套件都會掛接。
 
 |套件類型|查詢端點 API|查詢可用性|套件檔案名稱格式|
 |--|--|--|--|
-|版本|獲取， 發佈|僅限容器|`{APP_ID}_v{APP_VERSION}.gz`|
-|預備|獲取， 發佈|Azure 和容器|`{APP_ID}_STAGING.gz`|
-|Production|獲取， 發佈|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
+|版本|取得, 發佈|僅限容器|`{APP_ID}_v{APP_VERSION}.gz`|
+|預備|取得, 發佈|Azure 和容器|`{APP_ID}_STAGING.gz`|
+|Production|取得, 發佈|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
-> 不要重命名、更改、覆蓋或解壓縮 LUIS 包檔。
+> 不要重新命名、更改、覆蓋或解壓縮 LUIS 套件檔。
 
 ### <a name="packaging-prerequisites"></a>封裝必要條件
 
@@ -143,7 +143,7 @@ LUIS [入口網站](https://www.luis.ai)可讓您匯出已定型或發佈的應�
 
 ### <a name="export-versioned-apps-package-from-luis-portal"></a>從 LUIS 門戶匯出版本化應用的包
 
-版本化應用的包可從 **"版本"** 清單頁獲得。
+版本化應用的套件可從 **「版本」** 清單頁獲得。
 
 1. 登入 LUIS [入口網站](https://www.luis.ai)。
 1. 選取清單中的應用程式。 
@@ -173,9 +173,9 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **[AUTHORING_KEY]** | 已發佈 LUIS 應用程式的 LUIS 帳戶所適用的撰寫金鑰。<br/>您可以從 LUIS 入口網站中的 [使用者設定]**** 頁面取得撰寫金鑰。 |
 | **[AZURE_REGION]** | 適當的 Azure 區域：<br/><br/>`westus` - 美國西部<br/>`westeurope` - 西歐<br/>`australiaeast` - 澳大利亞東部 |
 
-要下載已發佈的包，請參閱此處的[API 文檔][download-published-package]。 如果成功下載，回應是 LUIS 包檔。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。 
+要下載已發布的套件,請參閱此處的[API 文件][download-published-package]。 如果成功下載,回應是 LUIS 包檔。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。 
 
-### <a name="export-versioned-apps-package-from-api"></a>從 API 匯出版本化應用的包
+### <a name="export-versioned-apps-package-from-api"></a>從 API 匯出版本化應用的套件
 
 使用下列 REST API 方法，封裝您已[定型](luis-how-to-train.md)的 LUIS 應用程式。 使用 HTTP 規格下方的表格，以您自己的適當值取代 API 呼叫中的預留位置。
 
@@ -192,13 +192,13 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **[AUTHORING_KEY]** | 已發佈 LUIS 應用程式的 LUIS 帳戶所適用的撰寫金鑰。<br/>您可以從 LUIS 入口網站中的 [使用者設定]**** 頁面取得撰寫金鑰。 |
 | **[AZURE_REGION]** | 適當的 Azure 區域：<br/><br/>`westus` - 美國西部<br/>`westeurope` - 西歐<br/>`australiaeast` - 澳大利亞東部 |
 
-要下載版本化包，請參閱此處的[API 文檔][download-versioned-package]。 如果成功下載，回應是 LUIS 包檔。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。 
+要下載版本化套件,請參閱此處的[API 文件][download-versioned-package]。 如果成功下載,回應是 LUIS 包檔。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。 
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 有關如何獲取 和`{ENDPOINT_URI}``{API_KEY}`值的詳細資訊，請參閱[收集所需的參數](#gathering-required-parameters)。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 有關如何取得與`{ENDPOINT_URI}``{API_KEY}`值的詳細資訊,請參考[收集所需的參數](#gathering-required-parameters)。
 
-[命令的示例可用。](luis-container-configuration.md#example-docker-run-commands) `docker run`
+[命令的範例可用。](luis-container-configuration.md#example-docker-run-commands) `docker run`
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -212,24 +212,24 @@ Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
 ```
 
-* 本示例使用`C:`磁碟機上的目錄來避免 Windows 上的任何許可權衝突。 如果您需要使用特定目錄作為輸入目錄，您可能需要授與 Docker 服務權限。 
-* 除非熟悉 docker 容器，否則不要更改參數的順序。
-* 如果您使用的是其他作業系統，請使用正確的主控台/終端、裝載的資料夾語法和系統的行延續字元。 這些示例假定具有行延續字元`^`的 Windows 主控台。 由於容器是 Linux 作業系統，因此目標裝載使用 Linux 風格的資料夾語法。
+* 本示例使用`C:`驅動器上的目錄來避免 Windows 上的任何許可權衝突。 如果您需要使用特定目錄作為輸入目錄，您可能需要授與 Docker 服務權限。 
+* 除非熟悉 docker 容器,否則不要更改參數的順序。
+* 如果您使用的是其他作業系統,請使用正確的主控台/終端、裝載的資料夾語法和系統的行延續字元。 這些示例假定具有行延續字元`^`的 Windows 主控台。 由於容器是 Linux 作業系統,因此目標裝載使用 Linux 風格的資料夾語法。
 
 此命令：
 
 * 從 LUIS 容器映像執行容器
-* 從*C：\input*的輸入裝載載入 LUIS 應用，位於容器主機上
+* 從*C:\input*的輸入載入 LUIS 應用,位於容器主機上
 * 配置兩個 CPU 核心和 4 GB 的記憶體
 * 公開 TCP 連接埠 5000，並為容器配置虛擬 TTY
-* 將容器和 LUIS 日誌保存到位於容器主機上的*C：\輸出*處的輸出裝載
+* 將容器與 LUIS 紀錄儲存到位於容器主機上的*C:\輸出*處的輸出載入
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。 
 
 `docker run` 命令有相關[範例](luis-container-configuration.md#example-docker-run-commands)可供參考。 
 
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。
-> ApiKey 值是 LUIS 門戶中的**Azure 資源**頁中的 **"金鑰"，** 在 Azure`Cognitive Services`資源鍵頁上也可用。  
+> ApiKey 值是 LUIS 門戶中的**Azure 資源**頁中的 **「密鑰」,** 在 Azure`Cognitive Services`資源鍵頁上也可用。  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -239,7 +239,7 @@ ApiKey={API_KEY}
 
 ## <a name="query-the-containers-prediction-endpoint"></a>查詢容器的預測端點
 
-容器會提供以 REST 為基礎的查詢預測端點 API。 已發佈（暫存或生產）應用的終結點與版本化應用的終結點_具有不同的_路由。
+容器會提供以 REST 為基礎的查詢預測端點 API。 已發佈(暫存或生產)應用的終結點與版本化應用的終結點_具有不同的_路由。
 
 針對容器 API 請使用主機 `http://localhost:5000`。
 
@@ -247,24 +247,24 @@ ApiKey={API_KEY}
 
 |套件類型|HTTP 指令動詞|路由|查詢參數|
 |--|--|--|--|
-|已發行|獲取， 發佈|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
-|版本|獲取， 發佈|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|已發行|取得, 發佈|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|版本|取得, 發佈|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
 查詢參數會設定傳回查詢回應的方式和內容：
 
 |查詢參數|類型|目的|
 |--|--|--|
 |`query`|字串|使用者的語句。|
-|`verbose`|boolean|指示是否返回預測模型的所有中繼資料的布林值。 預設值為 false。|
+|`verbose`|boolean|指示是否返回預測模型的所有元數據的布爾值。 預設值為 false。|
 |`log`|boolean|記錄查詢，可供後續的[主動式學習](luis-how-to-review-endpoint-utterances.md)使用。 預設值為 false。|
-|`show-all-intents`|boolean|表示是否僅返回所有意圖或頂級評分意圖的布林值。 預設值為 false。|
+|`show-all-intents`|boolean|表示是否僅返回所有意圖或頂級評分意圖的布爾值。 預設值為 false。|
 
 # <a name="v2-prediction-endpoint"></a>[V2 預測端點](#tab/v2)
 
 |套件類型|HTTP 指令動詞|路由|查詢參數|
 |--|--|--|--|
-|已發行|[獲取](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)，[發佈](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
-|版本|獲取， 發佈|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
+|已發行|[取得](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78),[發佈](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
+|版本|取得, 發佈|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
 
 查詢參數會設定傳回查詢回應的方式和內容：
 
@@ -278,13 +278,13 @@ ApiKey={API_KEY}
 
 ***
 
-### <a name="query-the-luis-app"></a>查詢 LUIS 應用
+### <a name="query-the-luis-app"></a>查詢 LUIS 應用程式
 
 對容器查詢已發佈應用程式的範例 CURL 命令為：
 
 # <a name="v3-prediction-endpoint"></a>[V3 預測端點](#tab/v3)
 
-要查詢槽中的模型，請使用以下 API：
+要查詢槽中的模型,請使用以下 API:
 
 ```bash
 curl -G \
@@ -294,11 +294,11 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-要對**暫存**環境進行查詢，請將路由`production`中替換為`staging`：
+要對**暫存**環境查詢,請將路`production`由 中`staging`取代為 :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
-要查詢版本化模型，請使用以下 API：
+要查詢版本化模型,請使用以下 API:
 
 ```bash
 curl -G \
@@ -310,7 +310,7 @@ curl -G \
 
 # <a name="v2-prediction-endpoint"></a>[V2 預測端點](#tab/v2)
 
-要查詢槽中的模型，請使用以下 API：
+要查詢槽中的模型,請使用以下 API:
 
 ```bash
 curl -X GET \
@@ -321,7 +321,7 @@ curl -X GET \
 
 `staging=true`
 
-要查詢版本化模型，請使用以下 API：
+要查詢版本化模型,請使用以下 API:
 
 ```bash
 curl -X GET \
@@ -334,7 +334,7 @@ curl -X GET \
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>匯入用於主動式學習的端點記錄
 
-如果為 LUIS 容器指定了輸出裝載，則應用查詢日誌檔將保存在輸出目錄中，容器 ID`{INSTANCE_ID}`所在的位置是該目錄。 應用程式查詢記錄中包含已提交至 LUIS 容器的每個預測查詢的查詢、回應和時間戳記。 
+如果為 LUIS 容器指定了輸出裝載,則應用查詢日誌檔將保存在輸出目錄中,`{INSTANCE_ID}`容器 ID 所在的位置是該目錄。 應用程式查詢記錄中包含已提交至 LUIS 容器的每個預測查詢的查詢、回應和時間戳記。 
 
 下列位置會顯示容器記錄檔的巢狀目錄結構。
 ```
@@ -372,7 +372,7 @@ LUIS 容器使用 Azure 帳戶上的_認知服務_資源向 Azure 發送計費�
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已了解下載、安裝及執行 Language Understanding (LUIS) 容器的概念和工作流程。 摘要說明：
 
@@ -387,8 +387,8 @@ LUIS 容器使用 Azure 帳戶上的_認知服務_資源向 Azure 發送計費�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 查看[配置容器](luis-container-configuration.md)的配置設置。
-* 有關已知功能限制，請參閱[LUIS 容器限制](luis-container-limitations.md)。
+* 查看[配置容器](luis-container-configuration.md)的配置設定。
+* 有關已知功能限制,請參閱[LUIS 容器限制](luis-container-limitations.md)。
 * 請參閱[疑難排解](troubleshooting.md)來解決與 LUIS 功能相關的問題。
 * 使用更多[認知服務容器](../cognitive-services-container-support.md)
 

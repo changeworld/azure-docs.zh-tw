@@ -1,31 +1,31 @@
 ---
-title: 驗證語言檢測容器實例
+title: 驗證語言偵測容器實體
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何驗證語言檢測容器實例。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: f4e0770bc052044a408f2c4088f2bd5ead225aa3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: dc52586550f89ddae147d79458584331ed984eea
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70968553"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876396"
 ---
-### <a name="verify-the-language-detection-container-instance"></a>驗證語言檢測容器實例
+### <a name="verify-the-language-detection-container-instance"></a>驗證語言偵測容器實體
 
-1. 選擇 **"概述"** 選項卡，然後複製 IP 位址。
-1. 打開新的瀏覽器選項卡，然後輸入 IP 位址。 例如，輸入`http://<IP-address>:5000 (http://55.55.55.55:5000`。 將顯示容器的主頁，讓您知道容器正在運行。
+1. 選擇 **「概述」** 選項卡,然後複製 IP 位址。
+1. 開啟新的瀏覽器選項卡,然後輸入 IP 位址。 例如,輸入`http://<IP-address>:5000 (http://55.55.55.55:5000`。 將顯示容器的主頁,讓您知道容器正在運行。
 
-    ![查看容器主頁以驗證其是否正在運行](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![檢視容器主頁以驗證是否正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. 選擇 **"服務 API 描述"** 連結以轉到容器的 Swagger 頁面。
+1. 選擇 **「服務 API 描述」** 連結以轉到容器的 Swagger 頁面。
 
-1. 選擇任選**點**API，然後選擇 **"試用"。** 將顯示參數，其中包括此示例輸入：
+1. 選擇任選**點**API,然後選擇 **「試用」。** 將顯示參數,其中包括此範例輸入:
 
     ```json
     {
@@ -49,13 +49,13 @@ ms.locfileid: "70968553"
     }
     ```
 
-1. 將 **"顯示"設置**為`true`。
+1. 將 **「顯示」**`true`設定為 。
 
-1. 選擇 **"執行"** 以確定文本的情緒。
+1. 選擇 **「執行」** 以確定文本的情緒。
 
-    包裝在容器中的模型生成介於 0 到 1 的分數，其中 0 為負情緒，1 為正情緒。
+    包裝在容器中的模型生成介於 0 到 1 的分數,其中 0 為負情緒,1 為正情緒。
 
-    返回的 JSON 回應包括更新的文本輸入的情緒：
+    傳回的 JSON 回應包括更新的文字輸入的情緒:
 
     ```json
     {
@@ -127,4 +127,4 @@ ms.locfileid: "70968553"
     }
     ```
 
-我們現在可以通過相應的將回應有效負載的 JSON 資料的文檔與其原始請求有效負載文檔相關聯`id`。 每個文檔都單獨處理，其中包含各種統計資訊，`characterCount`如`transactionCount`和 。 此外，每個`detectedLanguages`生成的文檔都有包含 的`name`陣列`iso6391Name`，每個`score`語言都檢測到 。 當檢測到多種語言時，`score`用於確定最可能的語言。
+我們可以透過對對對媒體的 JSON 資料的文件與其原始要求有效負載文件相關聯`id`。 每個文件都單獨處理,其中包含各種統計資訊,`characterCount``transactionCount`如與 。 此外,每個`detectedLanguages`產生的文件都有包含的`name`陣列`iso6391Name`,每個`score`語言都偵測到 。 當檢測到多種語言時,`score`用於確定最可能的語言。
