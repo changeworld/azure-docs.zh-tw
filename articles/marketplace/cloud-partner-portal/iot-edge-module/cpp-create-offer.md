@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 112c2ba831ab27faaca755079e9d20e2aebfcf9f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ab40a0e90bee8f034d811aac2781192359cbc109
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744408"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981744"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>使用 Cloud Partner 入口網站建立新 IoT Edge 模組供應項目
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
 
 本文說明如何建立及發佈 Microsoft Azure Marketplace 的 IoT Edge 模組供應項目。 每個供應項目在 Microsoft Azure Marketplace 中皆為獨立實體，會與一或多個 SKU 相關聯。  IoT Edge 模組供應項目是由下列資產群組和支援服務所組成：
 
@@ -38,7 +38,7 @@ ms.locfileid: "80744408"
 
 IoT Edge 模組供應項目型別的**新增供應項目**頁面上，會提供一組索引標籤和表單欄位，方便您建立新供應項目。 下列文章將分別說明如何使用索引標籤，以便用於定義資產群組及新 IoT Edge 模組供應項目的支援服務。
 
-- [「提供設定」選項卡](./cpp-offer-settings-tab.md)
+- [供應項目設定索引標籤](./cpp-offer-settings-tab.md)
 - [SKU 索引標籤](./cpp-skus-tab.md)
 - [Marketplace 索引標籤](./cpp-marketplace-tab.md)
 - [支援索引標籤](./cpp-support-tab.md)

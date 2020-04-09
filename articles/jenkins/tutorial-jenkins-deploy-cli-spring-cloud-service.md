@@ -3,12 +3,12 @@ title: 使用 Jenkins 和 Azure CLI 將應用程式部署至 Azure Spring Cloud
 description: 了解如何在持續整合及部署管線中使用 Azure CLI 將微服務部署至 Azure Spring Cloud 服務
 ms.topic: tutorial
 ms.date: 01/07/2020
-ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc48eecc9e73b95fd9112d645135409c24369e10
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75732851"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810215"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>教學課程：使用 Jenkins 和 Azure CLI 將應用程式部署至 Azure Spring Cloud
 
@@ -28,7 +28,7 @@ ms.locfileid: "75732851"
 >[!Note]
 > Azure Spring Cloud 目前提供公開預覽版。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需有關預覽期間支援的詳細資訊，請參閱我們的[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)以深入了解。
 
-[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * GitHub 帳戶。 如果您沒有 GitHub 帳戶，請在開始之前[建立免費帳戶](https://github.com/) \(英文\)。
 

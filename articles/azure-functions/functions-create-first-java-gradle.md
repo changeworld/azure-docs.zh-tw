@@ -4,19 +4,20 @@ description: 使用 Java 和 Gradle 創建 HTTP 觸發的函數並將其發表�
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
-ms.date: 08/10/2018
-ms.openlocfilehash: 1a24569a89755a33a80b7f884b803bd36f38ca3f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/08/2020
+ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757136"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886597"
 ---
-# <a name="quickstart-use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>快速入門:使用 Java 和 Gradle 建立函數並將其發表到 Azure
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 與 Gradle 建立函數並將其發表到 Azure
 
 本文介紹如何使用 Gradle 命令列工具將 Java 函數專案構建併發佈到 Azure 函數。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。 
 
-您還可以使用[Maven 原型](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)從命令列構建和發佈 Java 函數專案。
+> [!NOTE]
+> 如果Gradle不是您喜歡的開發工具,請查看我們類似的教程,使用[Maven,IntelliJIDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions)和[VS代碼](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)JAvadever。 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -172,4 +173,4 @@ Hello AzureFunctions!
 
 
 [Azure CLI]: /cli/azure
-[Azure 入口網站]: https://portal.azure.com
+[Azure 門戶]: https://portal.azure.com

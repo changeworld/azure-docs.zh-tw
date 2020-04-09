@@ -2,26 +2,22 @@
 title: Azure AD 認證&授權錯誤代碼
 description: 了解從 Azure AD 安全性權杖服務 (STS) 所傳回的 AADSTS 錯誤碼。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473164"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875923"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認證與授權錯誤代碼
 
@@ -133,6 +129,7 @@ ms.locfileid: "80473164"
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要整合式 Windows 驗證。 為租用戶啟用無縫 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服務無法執行裝置驗證。 |
 | AADSTS50196 | 偵測到迴圈 - 偵測到客戶端迴圈。 檢查應用的邏輯以確保實現了權杖緩存,並且錯誤條件得到正確處理。  該應用程式在太短的時間內提出了太多的相同請求,表明它處於錯誤狀態或濫用請求令牌。 |
+| AADSTS50197 | 衝突身份 ─找不到使用者。 請嘗試再次登錄。 |
 | AADSTS50199 | Cmsi中斷 - 出於安全原因,此請求需要用戶確認。  由於這是一個"interaction_required"錯誤,客戶端應該執行互動式 auth。 這是因為系統 Webview 已用於請求本機應用程式的權杖 - 必須提示使用者詢問這是否實際上是他們打算登入的應用程式。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 此功能已停用。 |
 | AADSTS51001 | DomainHintMustbePresent - 網域提示必須與內部部署安全性識別碼或 內部部署 UPN 一起顯示。 |

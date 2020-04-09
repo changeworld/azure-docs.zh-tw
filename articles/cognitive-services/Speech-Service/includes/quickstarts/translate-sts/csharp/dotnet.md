@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 37de11cae72bc884311d925e2b37a00905d790ac
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: cee0f5c1cdb71f182399356cc7e1dce8d738fd4e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925228"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671586"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -23,7 +23,7 @@ ms.locfileid: "78925228"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 

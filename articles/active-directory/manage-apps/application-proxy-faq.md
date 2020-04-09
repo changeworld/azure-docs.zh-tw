@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410725"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877298"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>活動目錄 (Azure AD) 應用程式代理常見問題
 
@@ -48,10 +48,6 @@ ms.locfileid: "80410725"
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>我的後端應用程式託管在多個 Web 伺服器上,需要使用者會話持久性(粘性)。 如何實現會話持久性? 
 
 有關建議,請參閱[應用程式代理連接器和應用程式的高可用性和負載平衡](application-proxy-high-availability-load-balancing.md)。
-
-### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>是否可以在連接器伺服器和後端應用程式伺服器之間放置轉發代理設備?
-
-不,不支援此方案。 只能將連接器和更新服務配置為使用轉發代理來向 Azure 的出站流量。 請參考[使用現有本地代理伺服器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>是否支援從連接器伺服器到 Azure 的流量上的 TLS 終止(TLS/HTTPS 檢查或加速)?
 

@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529342"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985791"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
-Azure 磁碟加密使用 BitLocker 外部金鑰保護器為 Azure 虛擬機器 (VM) 的作業系統和資料磁碟提供卷加密,並與 Azure 金鑰保管庫整合,以説明您控制和管理磁碟加密密鑰和機密。 有關服務的概述,請參閱 Windows [VM 的 Azure 磁碟加密](disk-encryption-overview.md)。
+適用於 Windows 虛擬機器 (VM) 的 Azure 磁碟加密使用 Windows 的 Bitlocker 功能來提供 WindOS 磁碟和資料磁碟的完整磁碟加密。 此外,當 VolumeType 參數為「全部」時,它提供臨時資源磁碟的加密。
 
-有許多磁碟加密方案,步驟可能因方案而異。 以下各節更詳細地介紹 Windows VM 的方案。
+Azure 磁碟加密[與 Azure 金鑰保管庫集成](disk-encryption-key-vault.md),可説明您控制和管理磁碟加密密鑰和機密。 有關服務的概述,請參閱 Windows [VM 的 Azure 磁碟加密](disk-encryption-overview.md)。
 
 您只能將磁碟加密應用於[受支援的 VM 大小和作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)的虛擬機器。 您必須滿足以下先決條件:
 
@@ -39,9 +39,6 @@ Azure 磁碟加密使用 BitLocker 外部金鑰保護器為 Azure 虛擬機器 (
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>在現有或正在執行的 Windows VM 上啟用加密
 在這個案例中，您可以使用 Resource Manager 範本、PowerShell Cmdlet 或 CLI 命令啟用加密。 若您需要虛擬機器擴充功能之結構描述資訊，請參閱 [Windows 擴充功能的 Azure 磁碟加密](../extensions/azure-disk-enc-windows.md)一文。
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a> 在現有或執行中的 IaaS Windows VM 上啟用加密
-您可以使用範本、PowerShell cmdlet 或 CLI 命令啟用加密。 若您需要虛擬機器擴充功能之結構描述資訊，請參閱 [Windows 擴充功能的 Azure 磁碟加密](../extensions/azure-disk-enc-windows.md)一文。
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>透過 Azure PowerShell 在現有或執行中的 VM 上啟用加密 
 使用[Set-AzVM 磁碟加密擴展](/powershell/module/az.compute/set-azvmdiskencryptionextension)cmdlet 在 Azure 中正在運行的 IaaS 虛擬機器上啟用加密。 

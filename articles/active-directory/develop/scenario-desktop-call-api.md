@@ -1,29 +1,26 @@
 ---
 title: 從桌面應用調用 Web API - 微軟身份平臺 |蔚藍
-description: 瞭解如何構建調用 Web API 的桌面應用
+description: 瞭解如何建構 Web API 的桌面應用程式
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702159"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882959"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>調用 Web API 的桌面應用：調用 Web API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>呼叫 Web API 的桌面應用:呼叫 Web API
 
-現在您有了權杖，就可以調用受保護的 Web API。
+現在您有了權杖,就可以呼叫受保護的 Web API。
 
 ## <a name="call-a-web-api"></a>呼叫 Web API
 
@@ -44,7 +41,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -65,9 +62,9 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 # <a name="macos"></a>[MacOS](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>在 MSAL 中調用 iOS 和 macOS 的 Web API
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>在 MSAL 中呼叫 iOS 和 macOS 的 Web API
 
-獲取權杖的方法返回物件`MSALResult`。 `MSALResult`公開可用於調用`accessToken`Web API 的屬性。 在調用訪問受保護的 Web API 之前，向 HTTP 授權標頭添加訪問權杖。
+取得權杖的傳回`MSALResult`物件 。 `MSALResult`公開可用於調用`accessToken`Web API 的屬性。 在調用存取受保護的 Web API 之前,向 HTTP 授權標頭添加訪問權杖。
 
 Objective-C：
 
@@ -95,9 +92,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>調用多個 API：增量同意和條件訪問
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>呼叫多個 API:增量同意和條件存取
 
-要為同一使用者調用多個 API，請在第一個 API 的權杖後調用`AcquireTokenSilent`。 大多數時候，您將以靜默方式獲取其他 API 的權杖。
+要為同一使用者呼叫多個 API,請在第一個 API 的權杖`AcquireTokenSilent`後呼叫 。 大多數時候,您將以靜默方式獲取其他 API 的權杖。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -107,10 +104,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-在：
+在:
 
-- 使用者同意第一個 API，但現在需要同意更多作用域。 這種同意稱為增量同意。
-- 第一個 API 不需要多重要素驗證，但下一個 API 不需要身份驗證。
+- 使用者同意第一個 API,但現在需要同意更多作用域。 這種同意稱為增量同意。
+- 第一個 API 不需要多重身份驗證,但下一個 API 不需要身份驗證。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

@@ -5,12 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行�
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668107"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877893"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
 
@@ -40,7 +40,7 @@ ms.locfileid: "80668107"
 
 AKS 中針對磁碟區所提供的兩個主要儲存體類型，是由 Azure 磁碟或 Azure 檔案所支援。 為了提升安全性，這兩種儲存體預設都會使用 Azure 儲存體服務加密 (SSE) 來對待用資料進行加密。 目前磁碟無法在 AKS 節點層級使用 Azure 磁碟加密進行加密。
 
-Azure 檔案目前可於「標準」效能層級取得。 Azure 磁碟可於「標準」和「進階」效能層級取得：
+Azure 檔案與 Azure 磁碟在標準效能和進階效能層中都可用:
 
 - 「進階」** 磁碟是由高效能固態硬碟 (SSD) 所支援。 針對所有生產環境工作負載，都建議使用進階磁碟。
 - 「標準」** 磁碟是由一般磁碟 (HDD) 所支援，且適用於封存或不常存取的資料。

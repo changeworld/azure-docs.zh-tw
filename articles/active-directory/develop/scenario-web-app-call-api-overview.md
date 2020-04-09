@@ -2,24 +2,21 @@
 title: 構建一個調用 Web API 的 Web 應用程式 - 微軟身份平臺 |蔚藍
 description: 瞭解如何建構 Web API 的 Web 應用(概述)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 14f513306b3f0bc0c06a4143e5174c3ecddaef62
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617173"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881718"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>專案:呼叫 Web API 的 Web 應用
 
@@ -32,7 +29,7 @@ ms.locfileid: "80617173"
 此方案假定您已經經歷了以下方案:
 
 > [!div class="nextstepaction"]
-> [在使用者中簽名的 Web 應用](scenario-web-app-sign-user-overview.md)
+> [登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)
 
 ## <a name="overview"></a>概觀
 

@@ -1,34 +1,30 @@
 ---
-title: 獲取權杖來調用 Web API（守護進程應用） - 微軟身份平臺 |蔚藍
-description: 瞭解如何構建調用 Web API 的守護進程應用（獲取權杖）
+title: 取得權碼來呼叫 Web API(守護程序應用) - 微軟身份平臺 |蔚藍
+description: 瞭解如何建構 Web API 的守護程式應用程式(取得權杖)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f1010949a72f95ef2836c43666e6cea9281e04d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a81f3ffb7ec190943c50127b129523badf0ef0a7
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262642"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882976"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>調用 Web API 的守護程式應用 - 獲取權杖
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>呼叫 Web API 的守護程式應用 - 取得權杖
 
-構造機密用戶端應用程式後，可以通過調用`AcquireTokenForClient`、傳遞作用域以及選擇性地強制刷新權杖來獲取應用程式的權杖。
+建構機密客戶端應用程式後,可以通過`AcquireTokenForClient`調用、傳遞作用域以及選擇性地強制刷新權杖來取得應用程式的權杖。
 
-## <a name="scopes-to-request"></a>要請求的範圍
+## <a name="scopes-to-request"></a>要要求的範圍
 
-請求用戶端憑據流的範圍是後跟`/.default`的資源的名稱。 此標記法告訴 Azure 活動目錄 （Azure AD） 使用應用程式*級許可權*在應用程式註冊期間靜態聲明。 此外，租戶管理員必須授予這些 API 許可權。
+請求客戶端憑據流的範圍是後`/.default`跟的資源的名稱。 此表示法告訴 Azure 活動目錄 (Azure AD) 使用應用程式*級許可權*在應用程式註冊期間靜態聲明。 此外,租戶管理員必須授予這些 API 許可權。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -39,7 +35,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="python"></a>[Python](#tab/python)
 
-在 MSAL Python 中，設定檔如下所示的程式碼片段：
+在 MSAL Python 中,設定檔如下所示的代碼段:
 
 ```Json
 {
@@ -47,7 +43,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 }
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
@@ -55,17 +51,17 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="azure-ad-v10-resources"></a>Azure AD （v1.0） 資源
+### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) 資源
 
-用於用戶端憑據的範圍應始終為 後跟的資源`/.default`ID。
+用於用戶端憑據的範圍應始終為 後跟的`/.default`資源 ID。
 
 > [!IMPORTANT]
-> 當 MSAL 請求接受版本 1.0 訪問權杖的資源的訪問權杖時，Azure AD 會通過在最後一個斜杠之前獲取所有內容並將其用作資源識別碼，從請求的作用域解析所需的訪問群體。
-> 因此，如果與 Azure SQL 資料庫 **（HTTPs：\//database.windows.net）** 一樣，資源需要以斜杠結束（`https://database.windows.net/`對於 Azure SQL 資料庫），則需要請求`https://database.windows.net//.default`的範圍。 （注意雙斜杠。另請參閱MSAL.NET問題[#747：資源 URL 的尾隨斜杠被省略，這會導致 sql auth 失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 當 MSAL 請求接受版本 1.0 訪問權杖的資源的訪問權杖時,Azure AD 會透過在最後一個斜杠之前獲取所有內容並將其用作資源標識符,從請求的作用域解析所需的訪問群體。
+> 因此,如果與 Azure SQL 資料庫 **(Hth)s:\//database.windows.net)** 一`https://database.windows.net/`樣,資源需要以斜杠結束( 對於 Azure SQL 資料庫),則需要請求`https://database.windows.net//.default`的範圍。 (注意雙斜杠。另請參閱MSAL.NET問題[#747:資源 URL 的尾隨斜杠被省略,這會導致 sql auth 失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
-## <a name="acquiretokenforclient-api"></a>獲取權杖用於用戶端 API
+## <a name="acquiretokenforclient-api"></a>取得權杖以客戶端 API
 
-要獲取應用的權杖，您將使用`AcquireTokenForClient`或等效應用，具體取決於平臺。
+要獲取應用的權杖,您將使用`AcquireTokenForClient`或等效應用,具體取決於平臺。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -120,9 +116,9 @@ else:
     print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-此代碼是從[MSAL JAVA 開發示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)中提取的。
+此代碼是從[MSAL Java 開發範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)中提取的。
 
 ```Java
 private static IAuthenticationResult acquireToken() throws Exception {
@@ -173,9 +169,9 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 ### <a name="protocol"></a>通訊協定
 
-如果尚未為所選語言建立庫，則可能需要直接使用該協定：
+如果尚未為所選語言建立庫,則可能需要直接使用該協定:
 
-#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一種情況：使用共用金鑰訪問權杖請求
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一種方式:使用分享金鑰存取權杖請求
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
@@ -188,7 +184,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二種情況：使用證書訪問權杖請求
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二種方式:使用憑證存取權杖請求
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
@@ -202,22 +198,22 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-有關詳細資訊，請參閱協定文檔[：Microsoft 標識平臺和 OAuth 2.0 用戶端憑據流](v2-oauth2-client-creds-grant-flow.md)。
+有關詳細資訊,請參閱協議文件[:Microsoft 識別平臺和 OAuth 2.0 客戶端認證串流](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="application-token-cache"></a>應用程式權杖緩存
+## <a name="application-token-cache"></a>應用程式權杖快取
 
-在MSAL.NET，`AcquireTokenForClient`使用應用程式權杖緩存。 （所有其他獲取權杖*XX*方法都使用使用者權杖緩存。`AcquireTokenSilent`在調用`AcquireTokenForClient`之前不要調用，因為`AcquireTokenSilent`使用*使用者*權杖緩存。 `AcquireTokenForClient`檢查*應用程式*權杖緩存本身並對其進行更新。
+在MSAL.NET,`AcquireTokenForClient`使用應用程式權杖快取。 (所有其他獲取權杖*XX*方法都使用使用者令牌緩存。`AcquireTokenSilent`在調用`AcquireTokenForClient`之前不要調用,`AcquireTokenSilent`因為使用*使用者*令牌緩存。 `AcquireTokenForClient`檢查*應用程式*令牌緩存本身並對其進行更新。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>您是否使用資源/.預設作用域？
+### <a name="did-you-use-the-resourcedefault-scope"></a>您是否使用資源/.預設作用域?
 
-如果收到一條錯誤訊息，告訴您使用了無效作用域，則可能沒有使用該`resource/.default`作用域。
+如果收到一條錯誤消息,告訴您使用了無效作用域,則可能沒有使用該`resource/.default`作用域。
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>您是否忘記提供管理員同意？ 守護神應用程式需要它！
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>您是否忘記提供管理員同意? 守護神應用程式需要它!
 
-如果在調用 API 時獲得**完成操作錯誤的許可權不足**，租戶管理員需要向應用程式授予許可權。 請參閱上面註冊用戶端應用的步驟 6。
-您通常會看到如下所示的錯誤：
+如果在調用 API 時獲得**完成操作錯誤的許可權不足**,租戶管理員需要向應用程式授予許可權。 請參閱上面註冊用戶端應用的步驟 6。
+您通常會看到以下的錯誤:
 
 ```JSon
 Failed to call the web API: Forbidden
@@ -238,16 +234,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [守護進程應用 - 調用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [守護程式應用程式 - 呼叫 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [守護進程應用 - 調用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [守護程式應用程式 - 呼叫 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [守護進程應用 - 調用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [守護程式應用程式 - 呼叫 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
 
 ---

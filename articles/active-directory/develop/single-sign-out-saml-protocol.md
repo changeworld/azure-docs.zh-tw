@@ -1,28 +1,23 @@
 ---
-title: Azure 單一登出 SAML 通訊協定 | Microsoft Docs
+title: Azure 單簽出 SAML 協定
 description: 本文說明 Azure Active Directory 中的單一登出 SAML 通訊協定
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701360"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881260"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
 
@@ -71,9 +66,9 @@ Azure AD 會傳送 `LogoutResponse` 以回應 `LogoutRequest` 元素。 下列�
 Azure AD 會設定 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它也會將 `InResponseTo` 元素設定為導出回應的 `LogoutRequest` 的 `ID` 屬性值。
 
 ### <a name="issuer"></a>簽發者
-Azure AD 將此值`https://login.microsoftonline.com/<TenantIdGUID>/`設置\<到租戶 IdGUID>是 Azure AD 租戶的租戶 ID 的位置。
+Azure AD 將`https://login.microsoftonline.com/<TenantIdGUID>/`此\<值 設置 到租戶 IdGUID>是 Azure AD 租戶的租戶 ID 的位置。
 
 若要評估 `Issuer` 元素的值，請使用應用程式註冊期間提供的 **應用程式識別碼 URI** 的值。
 
 ### <a name="status"></a>狀態
-Azure AD`StatusCode`使用元素中`Status`的元素來指示登出的成功或失敗。當登出嘗試失敗時，`StatusCode`該元素還可以包含自訂錯誤訊息。
+Azure`StatusCode`AD 使用`Status`元素中 的元素來指示註銷的成功或失敗。當登出嘗試失敗時,`StatusCode`該元素還可以包含自定義錯誤訊息。

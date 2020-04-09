@@ -3,8 +3,8 @@ title: 為 Azure VM 設定 WinRM 存取權限
 description: 設定 WinRM 存取給 Resource Manager 部署模型中建立的 Azure 虛擬機器使用。
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
-ms.author: kasing
-ms.openlocfilehash: 3dd56682022bfb5dc620beb06d401910726894b9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.author: mimckitt
+ms.openlocfilehash: 317e9376e0b8242758cd6e3f455b3f3dc9c0dc78
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631534"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879559"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>在 Azure Resource Manager 中設定虛擬機器的 WinRM 存取
 

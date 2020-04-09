@@ -1,5 +1,5 @@
 ---
-title: 快速入門：搜尋影像 REST API 和 PHP - Bing 影像搜尋
+title: 快速入門：使用 Bing 影像搜尋 REST API 和 PHP 來搜尋影像
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 PHP 來傳送影像搜尋要求給「Bing 影像搜尋 REST API」，並接收 JSON 回應。
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: fffe56986a3b3a64910678d19321e2d04b8fcc55
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74930756"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478557"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>快速入門：使用 Bing 影像搜尋 REST API 和 PHP 來搜尋影像
 

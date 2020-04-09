@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521057"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887107"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
 
@@ -69,8 +69,6 @@ Azure 門戶通過"指標"頁公開負載均衡器指標,該頁在特定資源�
 
 如需可供擷取多維度計量定義和值的 API 指導方針，請參閱 [Azure 監視 REST API 逐步解說](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)。 這些指標只能通過"所有指標"選項寫入存儲帳戶。 
 
-### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常見診斷案例與建議的檢視
-
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>為多維指標設定警示 ###
 
 Azure 標準負載均衡器支援多維指標的易於配置的警報。 為特定指標配置自定義閾值以觸發嚴重程度不同的警報,從而提供無接觸的資源監視體驗。
@@ -82,10 +80,11 @@ Azure 標準負載均衡器支援多維指標的易於配置的警報。 為特�
     1.  ( 選擇性的 )新增自動修復操作群組
     1.  分配警報嚴重性、名稱和描述,以便做出直觀的反應
 
-
   >[!NOTE]
   >警示條件設定視窗將顯示訊號歷史記錄的時間序列。 可以選擇按後端 IP 等維度篩選此時間序列。 這將篩選時間序列圖,**但不會**篩選警報本身。 您不能為特定的後端 IP 位址設定警報。
-  
+
+### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常見診斷案例與建議的檢視
+
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>資料路徑已經啟用，且可以讓我的負載平衡器 VIP 使用嗎？
 
 「VIP 可用性」計量會描述區域內資料路徑 (此路徑通往 VM 所在的計算主機) 的健康情況。 此計量是 Azure 基礎結構的健康情況反映。 您可以使用此計量：

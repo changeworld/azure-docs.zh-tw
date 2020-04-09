@@ -1,28 +1,24 @@
 ---
-title: Azure 單一登入 SAML 通訊協定 | Microsoft Docs
+title: SAML 協定上的 Azure 單一符號
 description: 本文說明 Azure Active Directory 中的單一登入 SAML 通訊協定
 services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262421"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881277"
 ---
 # <a name="single-sign-on-saml-protocol"></a>單一登入 SAML 通訊協定
 
@@ -55,7 +51,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ForceAuthn | 選用 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
 | IsPassive | 選用 | 這是布林值，指定 Azure AD 是否以無訊息模式驗證使用者，不需要使用者互動，如果有工作階段 cookie 的話則使用此 cookie。 如果是這種情況，Azure AD 會嘗試使用工作階段 cookie 驗證使用者。 |
 
-所有其他`AuthnRequest`屬性（如同意、目標、斷言消費者服務索引、屬性消費者服務索引和供應商名稱）將被**忽略**。
+所有其他`AuthnRequest`屬性(如同意、目標、斷言消費者服務索引、屬性消費者服務索引和提供者名稱)將被**忽略**。
 
 Azure AD 也會忽略 `AuthnRequest` 中的 `Conditions` 元素。
 
@@ -89,7 +85,7 @@ Azure AD 也會忽略 `AuthnRequest` 中的 `Conditions` 元素。
 Azure AD 會忽略 `AllowCreate` 屬性。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 元素會指定所需的驗證方法。 在傳送至 Azure AD 的 `AuthnRequest` 元素中，它是選擇性的。 Azure AD`AuthnContextClassRef`支援等`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`值。
+`RequestedAuthnContext` 元素會指定所需的驗證方法。 在傳送至 Azure AD 的 `AuthnRequest` 元素中，它是選擇性的。 Azure`AuthnContextClassRef`AD`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`支援等 值。
 
 ### <a name="scoping"></a>範圍
 包含識別提供者清單的 `Scoping` 元素在傳送至 Azure AD 的 `AuthnRequest` 元素中是選擇性的。
@@ -157,7 +153,7 @@ Azure AD 會忽略 `AuthnRequest` 元素中的 `Subject` 元素。
 
 ### <a name="issuer"></a>簽發者
 
-Azure AD`Issuer`將元素`https://login.microsoftonline.com/<TenantIDGUID>/`設置\<到租戶 IDGUID>是 Azure AD 租戶的租戶 ID 的位置。
+Azure`Issuer`AD`https://login.microsoftonline.com/<TenantIDGUID>/`將\<元素 設置 到租戶 IDGUID>是 Azure AD 租戶的租戶 ID 的位置。
 
 例如，具有 Issuer 元素的回應看起來會像下列範例︰
 
@@ -270,7 +266,7 @@ Azure AD 會簽署判斷提示以回應成功的登入。 `Signature` 元素包�
 </AttributeStatement>
 ```        
 
-* **名稱聲明**-`Name`屬性 （`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`） 的值是經過身份驗證的使用者的使用者主體名稱，如`testuser@managedtenant.com`。
+* **名稱聲明**`Name`─`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`屬性 ( ) 的值是經過身份認證的使用者的`testuser@managedtenant.com`使用者主體名稱,如 。
 * **ObjectIdentifier 宣告** - `ObjectIdentifier` 屬性的值 (`http://schemas.microsoft.com/identity/claims/objectidentifier`) 是目錄物件的 `ObjectId`，代表 Azure AD 中已驗證的使用者。 `ObjectId` 是不可變的、全域唯一的，且重複使用已驗證使用者的安全識別碼。
 
 #### <a name="authnstatement"></a>AuthnStatement

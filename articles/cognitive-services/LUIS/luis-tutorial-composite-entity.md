@@ -1,22 +1,14 @@
 ---
 title: 教學課程：複合實體教學課程 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，新增複合實體，以便將擷取的各類型資料組合為單一包含實體。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 03/31/2020
+ms.openlocfilehash: 5b8185a56c54ec92ce8ceaf1cd029dd31f6e709c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75447954"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478678"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教學課程：擷取將相關的資料組成群組並加以擷取
 在本教學課程中，新增複合實體，以便將擷取的各類型資料組合為單一包含實體。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。
@@ -108,11 +100,11 @@ LUIS 提供數個預先建置的實體來擷取常見的資料。
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>訓練應用程式，因此可以測試意圖的變更
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+若要將應用程式定型，請選取 [定型]  。 在定型後，會將變更 (例如新的實體和加上標籤的語句) 套用至使用中模型。
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>發佈應用程式，因此可以從端點查詢已定型的模型
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>發佈應用程式以便從 HTTP 端點加以存取
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>從端點取得意圖和實體預測
 
@@ -186,9 +178,7 @@ LUIS 提供數個預先建置的實體來擷取常見的資料。
 
    這個語句會傳回複合實體陣列。 系統會為每個實體指定類型和值。 若要針對每個子實體獲取更高的精確度，請使用來自複合陣列項目的類型和值組合，來尋找實體陣列中的對應項目。
 
-## <a name="clean-up-resources"></a>清除資源
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>相關資訊
 

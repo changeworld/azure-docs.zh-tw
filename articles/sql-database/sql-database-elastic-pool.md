@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256272"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981421"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>彈性集區可協助您管理及調整多個 Azure SQL 資料庫
 
@@ -24,7 +24,7 @@ SQL Database 彈性集區是簡單、符合成本效益的解決方案，可用�
 
 ## <a name="what-are-sql-elastic-pools"></a>SQL 彈性集區是什麼
 
-SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應用程式。 常見的應用程式模式是為每個客戶佈建單一資料庫。 但是，不同的客戶通常具有不同且不可預測的使用模式，並且很難預測每個資料庫使用者的資源需求。 您通常有兩個選項：
+SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應用程式。 常見的應用程式模式是為每個客戶佈建單一資料庫。 但是,不同的客戶通常具有不同且不可預測的使用模式,並且很難預測每個資料庫用戶的資源需求。 您通常有兩個選項：
 
 - 根據尖峰使用量額外佈建資源並額外付款，或是
 - 少量佈建來節省成本，但會降低尖峰期間的效能和客戶滿意度。
@@ -48,7 +48,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 集區很適合具備特定使用模式的大量資料庫。 針對指定的資料庫，此模式的特徵是低平均使用量與相對不頻繁的使用量高峰。
 
-您可以加入集區的資料庫愈多，可獲得的節約就愈高。 根據應用程式利用率模式，只要使用兩個 S3 資料庫就可以節省成本。
+您可以加入集區的資料庫愈多，可獲得的節約就愈高。 根據應用程式利用率模式,只要使用兩個 S3 資料庫就可以節省成本。
 
 下列各節會協助您了解如何評估您特定的資料庫集合是否可以因為位於集區而受益。 範例會使用標準集區，但是相同的原則也適用於基本和進階的集區。
 
@@ -95,13 +95,13 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 為了降低 200 個 eDTU 集區中 3 個 S3 資料庫的成本，最多可以有 2 個資料庫同時到達其使用量尖峰。 否則，如果 4 個 S3 資料庫中超過 2 個同時尖峰，則必須將集區調整為超過 200 個 eDTU。 如果將集區調整大小為超過 200 個 eDTU，則需要加入更多的 S3 資料庫至集區，以使成本保持低於單一資料庫的計算大小。
 
-請注意，此示例不考慮池中其他資料庫的利用率。 如果所有資料庫在任何指定的時間點都有一些使用量，則可同時到達尖峰的資料庫會少於 2/3 (或 67%)。
+請注意,此示例不考慮池中其他資料庫的利用率。 如果所有資料庫在任何指定的時間點都有一些使用量，則可同時到達尖峰的資料庫會少於 2/3 (或 67%)。
 
 ### <a name="resource-utilization-per-database"></a>每個資料庫的資源使用量
 
 資料庫的尖峰和平均使用量之間的差異為，長時間的低使用量和短時間的高使用量。 這個使用量模式非常適合在資料庫之間共用資源。 若資料庫的尖峰使用量為平均使用量的 1.5 倍大，就應該將該資料庫視為集區。
 
-**基於 DTU 的採購模型示例**：峰值達到 100 DTU 且平均使用 67 個 DTU 或更少的 S3 資料庫是在池中共用 eDTU 的良好候選物件。 或者，尖峰為 20 個 DTU 且平均使用 13 個 DTU 或更少的 S1 資料庫是集區的良好候選項目。
+**基於 DTU 的採購模型範例**:峰值達到 100 DTU 且平均使用 67 個 DTU 或更少的 S3 資料庫是在池中共用 eDTU 的良好候選物件。 或者，尖峰為 20 個 DTU 且平均使用 13 個 DTU 或更少的 S1 資料庫是集區的良好候選項目。
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>如何選擇正確的集區大小
 
@@ -143,7 +143,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
   還原時間點會自動備份資料庫，以將集區中的資料庫復原到特定的時間點。 請參閱 [還原時間點](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **地理恢復**
+- **地理復原**
 
   異地還原會在資料庫因裝載區域中的事件而無法使用時，提供預設復原選項。 請參閱 [還原 Azure SQL Database 或容錯移轉到次要資料庫](sql-database-disaster-recovery.md)
 
@@ -155,14 +155,14 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 在 Azure 入口網站中建立彈性集區的方式有兩種。
 
-1. 轉到[Azure 門戶](https://portal.azure.com)以創建彈性池。 搜索並選擇**Azure SQL**。
-2. 選取 [+ 新增]**** 以開啟 [選取 SQL 部署選項]**** 頁面。 您可以通過在 **"資料庫"** 磁貼上選擇 **"顯示詳細資訊**"來查看有關彈性池的其他資訊。
-3. 在 **"資料庫"** 磁貼上，在 **"資源類型**"下拉下拉下拉清單中選擇 **"彈性池**"，**然後選擇：**
+1. 轉到[Azure 門戶](https://portal.azure.com)以創建彈性池。 搜尋並選擇**Azure SQL**。
+2. 選取 [+ 新增]**** 以開啟 [選取 SQL 部署選項]**** 頁面。 您可以通過在 **「資料庫」** 磁貼上選擇 **「顯示詳細資訊**」來查看有關彈性池的其他資訊。
+3. 在 **「資料庫」** 磁貼上,在 **「資源類型**」下拉下拉下拉清單中選擇 **「彈性池**」,**然後選擇:**
 
    ![建立彈性集區](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
-1. 或者，您可以通過導航到現有 Azure SQL 伺服器並按一下 "**新建池**"來直接創建該伺服器池來創建彈性池。
+1. 或者,您可以通過導航到現有 Azure SQL 伺服器並按一下 「**新建池**」來直接創建該伺服器池來創建彈性池。
 
 > [!NOTE]
 > 您可以在伺服器上建立多個集區，但無法將來自不同伺服器的資料庫新增到相同的集區。
@@ -177,7 +177,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 在 Azure 入口網站中，您可以監視彈性集區與集區內資料庫的使用率。 也可以對彈性集區進行一些變更，並且一次提交所有的變更。 這些變更包括新增或移除資料庫、變更您的彈性集區設定，或變更您的資料庫設定。
 
-若要開始監視您的彈性集區，請在入口網站中尋找並開啟彈性集區。 您將首先看到一個螢幕，該螢幕概述了彈性池的狀態。 這包括：
+若要開始監視您的彈性集區，請在入口網站中尋找並開啟彈性集區。 您將首先看到一個屏幕,該螢幕概述了彈性池的狀態。 這包括：
 
 - 監視圖表會顯示彈性集區的資源使用量
 - 彈性集區的最近警示和建議 (如果有的話)
@@ -210,11 +210,11 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 - [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
 
-  SnelStart 使用具有 Azure SQL 資料庫的彈性池，以每月 1，000 個新的 Azure SQL 資料庫的速度快速擴展其業務服務。
+  SnelStart 使用具有 Azure SQL 資料庫的彈性池,以每月 1,000 個新的 Azure SQL 資料庫的速度快速擴展其業務服務。
 
 - [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
 
-  Umbraco 使用具有 Azure SQL 資料庫的彈性池來快速為雲中的數千個租戶預配和擴展服務。
+  Umbraco 使用具有 Azure SQL 資料庫的彈性池來快速為雲端中的數千個租戶預配和擴展服務。
 
 - [達克斯科/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
@@ -222,9 +222,8 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關定價資訊，請參閱[彈性池定價](https://azure.microsoft.com/pricing/details/sql-database/elastic)。
+- 有關定價資訊,請參閱[彈性池定價](https://azure.microsoft.com/pricing/details/sql-database/elastic)。
 - 若要調整彈性集區，請參閱[調整彈性集區](sql-database-elastic-pool-scale.md)和[調整彈性集區 - 範例程式碼](scripts/sql-database-monitor-and-scale-pool-powershell.md)
-- 若要觀賞影片，請參閱[有關 Azure SQL Database 彈性功能的 Microsoft Virtual Academy 視訊課程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 - 如需使用彈性集區的 SaaS 教學課程，請參閱 [Wingtip SaaS 應用程式簡介](sql-database-wtp-overview.md)。
-- 要瞭解具有許多資料庫的彈性池中的資源管理，請參閱[密集彈性池中的資源管理](sql-database-elastic-pool-resource-management.md)。
+- 要瞭解具有許多資料庫的彈性池中的資源管理,請參閱[密集彈性池中的資源管理](sql-database-elastic-pool-resource-management.md)。

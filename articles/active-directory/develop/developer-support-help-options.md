@@ -1,10 +1,9 @@
 ---
-title: Azure AD 應用程式開發人員的支援和協助選項 | Microsoft Docs
+title: Azure AD 應用程式開發人員支援與說明選項
 description: 了解如何在建立應用程式以與 Microsoft 身分識別 (Azure Active Directory 和 Microsoft 帳戶) 整合時，取得開發相關疑難和問題的協助和支援
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160962"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885526"
 ---
 # <a name="support-and-help-options-for-developers"></a>開發人員的支援和協助選項
 
@@ -77,10 +76,10 @@ Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始�
 
 如果您發現與我們的程式庫有關的錯誤或問題，請在我們的 GitHub 存放庫上提出問題。 我們的程式庫屬於開放原始碼，因此您也可以提交提取要求。
 
-有關庫及其 GitHub 存儲庫的清單，請參閱以下內容：
+有關庫及其 GitHub 儲存函式庫的清單,請參閱以下內容:
 
-* [Azure 活動目錄身份驗證庫 （ADAL）](../azuread-dev/active-directory-authentication-libraries.md)庫和 GitHub 存儲庫
-* [微軟身份驗證庫 （MSAL）](reference-v2-libraries.md)庫和 GitHub 存儲庫
+* [Azure 的目錄認證函式庫 (ADAL)](../azuread-dev/active-directory-authentication-libraries.md)函式庫與 GitHub 儲存函式庫
+* [微軟驗證庫 (MSAL)](reference-v2-libraries.md)函式庫與 GitHub 儲存函式庫
 
 ## <a name="open-a-support-request"></a>開啟支援要求
 

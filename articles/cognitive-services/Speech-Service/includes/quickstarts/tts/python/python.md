@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 19/14/2020
+ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 58f2b3693b924197dda1e396ae71192776ca276e
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 239bb1e43b6a89ed1e8a18d544cf646b5f2de9b9
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925841"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671699"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -23,7 +23,7 @@ ms.locfileid: "78925841"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
 ## <a name="support-and-updates"></a>支援及更新
 

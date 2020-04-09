@@ -1,5 +1,5 @@
 ---
-title: 為託管實例創建虛擬網路
+title: 為託管實例建立虛擬網路
 description: 本文說明如何建立可在其中部署 Azure SQL Database 受控執行個體的虛擬網路。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823369"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878845"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>建立 Azure SQL Database 受控執行個體的虛擬網路
 
@@ -29,13 +29,13 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路](../vir
 - 將受控執行個體連線到連結的伺服器或其他內部部署資料存放區
 - 將受控執行個體連線到 Azure 資源  
 
-> [!Note]
+> [!NOTE]
 > 請先[決定受控執行個體的子網路大小](sql-database-managed-instance-determine-size-vnet-subnet.md)，再部署第一個執行個體。 在其中放入資源後，就無法再調整子網路的大小。
 >
 > 如果您打算使用現有的虛擬網路，您需要修改該網路組態以順應您的受控執行個體。 如需詳細資訊，請參閱[針對受控執行個體修改現有的虛擬網路](sql-database-managed-instance-configure-vnet-subnet.md)。
 >
-> 創建託管實例後，不支援將託管實例或 VNet 移動到其他資源組或訂閱。
-
+> 創建託管實例後,不支援將託管實例或 VNet 移動到其他資源組或訂閱。  不支援將託管實例移動到另一個子網。
+>
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
@@ -64,4 +64,4 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路](../vir
 - 深入了解[受控執行個體連線架構](sql-database-managed-instance-connectivity-architecture.md)。
 - 了解如何[為受控執行個體修改現有的虛擬網路](sql-database-managed-instance-configure-vnet-subnet.md)。
 - 如需示範如何建立虛擬網路、建立受控執行個體，以及從資料庫備份還原資料庫的教學課程，請參閱[建立 Azure SQL Database 受控執行個體](sql-database-managed-instance-get-started.md)。
-- 有關 DNS 問題，請參閱[配置自訂 DNS](sql-database-managed-instance-custom-dns.md)。
+- 有關 DNS 問題,請參考[設定自訂 DNS](sql-database-managed-instance-custom-dns.md)。

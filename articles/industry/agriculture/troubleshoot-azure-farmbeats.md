@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585301"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886478"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
 本文提供了常見 Azure 農場節拍問題的解決方案。 若需其他說明,請聯絡我們[支援論壇](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)或傳送farmbeatssupport@microsoft.com電子郵件至 。
+
+> [!NOTE]
+  > 如果您在 4 月安裝了 FarmBeats,並且作業因空錯誤消息而失敗,則由於所有資源都用於緊急、醫療和其他關鍵需求,您的安裝可能尚未分配任何批處理配額。 您需要請求將 VM 分配給批處理帳戶。
 
 ## <a name="install-issues"></a>安裝問題
 
@@ -198,7 +201,7 @@ ms.locfileid: "80585301"
 
   **更新哨兵使用者名稱**
 
-    1. 登入[Azure 門戶](https://portal.azure.com)。
+    1. 登入 [Azure 入口網站](https://portal.azure.com)。
     2. 在 **「搜尋」** 框中,搜尋伺服器場節拍 Datahub 資源組。
     3. 選擇儲存帳號儲存* >**容器** > **批次處理準備檔案** > **to_vm** > **設定.ini**
     4. 選擇**編輯**
@@ -206,7 +209,7 @@ ms.locfileid: "80585301"
 
   **更新哨兵密碼**
 
-    1. 登入[Azure 門戶](https://portal.azure.com)。
+    1. 登入 [Azure 入口網站](https://portal.azure.com)。
     2. 在 **「搜尋」** 框中,搜尋伺服器場節拍 Datahub 資源組。
     3. 選擇金鑰庫 *
     4. 在「設定」下選擇存取原則

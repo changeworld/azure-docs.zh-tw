@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619135"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985281"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 的安全性 - 概觀
 
@@ -23,7 +23,7 @@ ms.locfileid: "80619135"
 
 ## <a name="how-do-i-secure-my-database"></a>如何保護資料庫
 
-資料安全性是您、客戶和資料庫提供者之間共同的責任。 根據您選擇的資料庫提供者而定，您承擔的責任也有所不同。 如果您選擇內部部署解決方案，您需要負責從端點保護到硬體實體安全性的一切事項，這並不容易。 如果您選擇 PaaS 雲端資料庫提供者，例如 Azure Cosmos DB，您關切的領域會大幅縮小。 下圖取自 Microsoft 的[雲端運算共同責任 (英文)](https://aka.ms/sharedresponsibility) 技術白皮書，顯示您的責任如何藉助於 PaaS 提供者 (例如 Azure Cosmos DB) 而減輕。
+資料安全性是您、客戶和資料庫提供者之間共同的責任。 根據您選擇的資料庫提供者而定，您承擔的責任也有所不同。 如果您選擇內部部署解決方案，您需要負責從端點保護到硬體實體安全性的一切事項，這並不容易。 如果您選擇 PaaS 雲端資料庫提供者，例如 Azure Cosmos DB，您關切的領域會大幅縮小。 下圖取自 Microsoft 的[雲端運算共同責任 (英文)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) 技術白皮書，顯示您的責任如何藉助於 PaaS 提供者 (例如 Azure Cosmos DB) 而減輕。
 
 ![客戶和資料庫提供者的責任](./media/database-security/nosql-database-security-responsibilities.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "80619135"
 |還原已刪除的資料|自動化線上備份可用來復原您不小心刪除的資料，最多可還原意外發生後 30 天內的資料。 <br><br>使用[Azure Cosmos DB 在自動連線備份和還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)中瞭解更多資訊|
 |保護並隔離機密資料|新功能中所列的區域中的所有資料均已加密靜止。<br><br>個人資料和其他機密資料可隔離至特定容器來進行讀寫，或限制為只對特定使用者提供唯讀存取權。|
 |監視攻擊|您可以使用[稽核記錄和活動記錄](logging.md)，以監視帳戶的正常和異常活動。 您可以檢視資源上執行的作業、誰起始作業、作業何時發生、作業的狀態等等，如本表格之後的螢幕擷取畫面所示。|
-|回應攻擊|一旦您連絡 Azure 支援來報告潛在的攻擊，就會展開 5 步驟的事件回應程序。 5 步驟程序的目標是在偵測到問題並展開調查之後，儘快恢復正常的服務安全性和作業。<br><br>請參閱[雲端的 Microsoft Azure 安全性回應](https://aka.ms/securityresponsepaper)以深入了解。|
+|回應攻擊|一旦您連絡 Azure 支援來報告潛在的攻擊，就會展開 5 步驟的事件回應程序。 5 步驟程序的目標是在偵測到問題並展開調查之後，儘快恢復正常的服務安全性和作業。<br><br>請參閱[雲端的 Microsoft Azure 安全性回應](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)以深入了解。|
 |異地隔離|Azure Cosmos DB 可確保主權區域 (例如，德國、中國、US Gov) 的資料控管。|
 |受保護的設施|Azure Cosmos DB 中的資料儲存在 Azure 受保護資料中心內的 SSD 上。<br><br>請參閱 [Microsoft 全球資料中心](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)以深入了解|
 |HTTPS/SSL/TLS 加密|與 Azure 宇宙資料庫的所有連接都支援 HTTPS。 Azure 宇宙 DB 還支援 TLS 1.2。<br>可以強制實施最小 TLS 版本伺服器端。 此,請聯繫[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)。|

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804855"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884863"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>解決 Azure 到 Azure VM 網路連線問題
 
@@ -18,8 +18,8 @@ ms.locfileid: "80804855"
 
 若要使 Site Recovery 複寫正常運作，VM 需要特定 URL 或 IP 範圍的輸出連線能力。 如果您的 VM 位於防火牆後方，或使用網路安全性群組 (NSG) 規則控制輸出連線能力，您可能會遇到下列其中一個問題。
 
-| **URL** | **詳細資料** |
-| --- | --- |
+| URL | 詳細資料 |
+|---|---|
 | `*.blob.core.windows.net` | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道 VM 的所有快取儲存帳戶,則可以使用特定儲存帳戶網址的允許清單。 例如,`cache1.blob.core.windows.net``cache2.blob.core.windows.net``*.blob.core.windows.net`而不是 。 |
 | `login.microsoftonline.com` | 需要此項目方可進行 Site Recovery 服務 URL 的授權和驗證。 |
 | `*.hypervrecoverymanager.windowsazure.com` | 需要此項目方可從 VM 進行 Site Recovery 服務通訊。 如果您的防火牆代理支援 IP,則可以使用相應的_站點恢復 IP。_ |
@@ -82,7 +82,7 @@ ms.locfileid: "80804855"
 
 1. 為與目標位置對應的站台復原 IP 建立 HTTPS 連接埠 443 出站規則:
 
-   | **位置** | **Site Recovery 位址** |  **Site Recovery 監視 IP 位址** |
+   | Location | Site Recovery 位址 | Site Recovery 監視 IP 位址 |
    | --- | --- | --- |
    | 美國中部 | 40.69.144.231 | 52.165.34.144 |
 
@@ -102,7 +102,7 @@ ms.locfileid: "80804855"
 
 1. 為與來源位置對應的站台復原 IP 建立 HTTPS 連接埠 443 出站規則:
 
-   |**位置** | **Site Recovery 位址** |  **Site Recovery 監視 IP 位址** |
+   | Location | Site Recovery 位址 | Site Recovery 監視 IP 位址 |
    | --- | --- | --- |
    | 美國東部 | 13.82.88.226 | 104.45.147.24 |
 
@@ -138,7 +138,8 @@ ms.locfileid: "80804855"
    Port=567
    ```
 
-1. Azure 網站恢復行動服務代理伺服器不**支援 未經身份認證的代理**程式 。
+> [!NOTE]
+> Azure 網站恢復行動服務代理伺服器不**支援 未經身份認證的代理**程式 。
 
 ### <a name="fix-the-problem"></a>修正問題
 
@@ -146,4 +147,4 @@ ms.locfileid: "80804855"
 
 ## <a name="next-steps"></a>後續步驟
 
-[複寫 Azure 虛擬機器](site-recovery-replicate-azure-to-azure.md)
+[將 Azure VM 複製到另一個 Azure 區域](azure-to-azure-how-to-enable-replication.md)

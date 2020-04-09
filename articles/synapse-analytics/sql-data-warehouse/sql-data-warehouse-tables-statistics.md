@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742656"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985859"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表統計資訊
 
@@ -146,11 +146,11 @@ WHERE
 
 ## <a name="implementing-statistics-management"></a>實作統計資料管理
 
-擴充您的資料載入程序通常是個不錯的主意，可確保在載入結束時更新統計資料。
+通常最好擴展數據載入過程,以確保在載入結束時更新統計資訊,以避免/最小化併發查詢之間的阻塞或資源爭用。  
 
 當資料表變更其大小和/或其值散發時，資料載入最為頻繁。 數據載入是實現某些管理過程的邏輯位置。
 
-以下提供指導原則，以便在載入過程中更新您的統計資料：
+更新統計資訊提供以下指導原則:
 
 - 確保每個載入的資料表至少都更新一個統計資料物件。 這會在統計資料更新過程中更新資料表大小 (資料列計數和頁面計數) 資訊。
 - 將焦點放在參與 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的資料行。

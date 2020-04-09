@@ -233,6 +233,24 @@
         - name: 容器限制
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: 相關服務
+      items:
+        - name: Azure Bot 服務
+          href: 'https://dev.botframework.com/'
+        - name: 'Bot 建立器 4.x SDK C#'
+          href: 'https://github.com/Microsoft/botbuilder-dotnet'
+        - name: QnA Maker
+          href: 'https://qnamaker.ai/'
+        - name: Bing 語音 API
+          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+        - name: Bing 拼字檢查 API
+          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+        - name: 文字分析
+          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+        - name: 辨識器 - 文字
+          href: 'https://github.com/Microsoft/Recognizers-Text'
+        - name: 智慧型資訊站
+          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: 參考
   items:
     - name: 開發人員參考
@@ -370,24 +388,6 @@
       href: reference-pattern-syntax.md
     - name: 情感
       href: luis-reference-prebuilt-sentiment.md
-- name: 相關參考
-  items:
-    - name: Azure Bot 服務
-      href: 'https://dev.botframework.com/'
-    - name: 'Bot 建立器 4.x SDK C#'
-      href: 'https://github.com/Microsoft/botbuilder-dotnet'
-    - name: QnA Maker
-      href: 'https://qnamaker.ai/'
-    - name: Bing 語音 API
-      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
-    - name: Bing 拼字檢查 API
-      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-    - name: 文字分析
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: 辨識器 - 文字
-      href: 'https://github.com/Microsoft/Recognizers-Text'
-    - name: 智慧型資訊站
-      href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: 資源
   items:
     - name: 程式碼範例

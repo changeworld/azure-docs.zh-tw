@@ -5,7 +5,6 @@ description: Microsoft 應用註冊門戶中功能的說明。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -14,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 26ebee446523c138569b9d5379c9a5e1b9e93e7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76698436"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885628"
 ---
 # <a name="app-registration-reference"></a>App 註冊參考
 
@@ -27,7 +26,7 @@ ms.locfileid: "76698436"
 
 ## <a name="my-applications-or-converged-applications"></a>我的應用程式或交集的應用程式
 
-此清單包含註冊供 Microsoft 標識平臺 （v2.0） 終結點使用的所有應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 要瞭解有關標識平臺終結點的詳細資訊，請參閱[v2.0 概述](active-directory-appmodel-v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
+此清單包含註冊供 Microsoft 標識平臺 (v2.0) 終結點使用的所有應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 要瞭解有關標識平台終結點的詳細資訊,請參閱[v2.0 概述](active-directory-appmodel-v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
 
 ## <a name="azure-ad-only-applications"></a>僅限 Azure AD 的應用程式
 
@@ -52,8 +51,8 @@ ms.locfileid: "76698436"
 
 ## <a name="live-sdk-support"></a>Live SDK 支援
 
-當您啟用「Live SDK 支援」時，即會將您建立的任何應用程式密碼佈建到 Azure AD 與 Microsoft 帳戶資料存放區。 這讓您的應用程式能夠直接與 Microsoft 帳戶服務 (login.live.com) 整合。 如果您希望直接使用 Microsoft 帳戶構建應用（而不是使用 v2.0 終結點），則應確保啟用了即時 SDK 支援。
+當您啟用「Live SDK 支援」時，即會將您建立的任何應用程式密碼佈建到 Azure AD 與 Microsoft 帳戶資料存放區。 這讓您的應用程式能夠直接與 Microsoft 帳戶服務 (login.live.com) 整合。 如果您希望直接使用 Microsoft 帳戶構建應用(而不是使用 v2.0 終結點),則應確保啟用了即時 SDK 支援。
 
 停用 Live SDK 支援可確保系統只會將應用程式密碼寫入 Azure AD 資料存放區。 Azure AD 資料存放區包含企業級法規，使其符合特定的標準，例如 FISMA 相容性。 如果您啟用 Live SDK 支援，您的應用程式可能不會遵守這其中的部分標準。
 
-如果您只計畫使用 v2.0 終結點，則可以安全地禁用即時 SDK 支援。
+如果您只計劃使用 v2.0 終結點,則可以安全地禁用即時 SDK 支援。

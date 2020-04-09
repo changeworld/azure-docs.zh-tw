@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411277"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982883"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK for SQL API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "80411277"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [Sql](sql-api-query-reference.md)
 > * [批次執行器 -.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批次執行器 -Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -295,14 +295,14 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * 新增工作階段一致性的支援。
-* 此 SDK 版本需要使用從 https://aka.ms/cosmosdb-emulator 下載之最新版本的 Azure Cosmos DB 模擬器。
+* 此 SDK 版本需要最新版本的[Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)。
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * 分割已經過證明的跨分割區查詢。
 * 新增對資源連結開頭和尾端斜線 (和對應的測試) 的支援。
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   修正的 npm 文件。
+*    修正的 npm 文件。
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * 已修正 executeStoredProcedure 中的錯誤，其中涉及的文件有特殊 Unicode 字元 (LS、PS)。
@@ -356,7 +356,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 修正 hashPartitionResolver resolveForRead()：所提供的資料分割索引鍵都未擲回例外狀況時，而不會傳回所有已註冊連結的清單。
 
 ### <a name=""></a><a name="1.5.4"/>1.5.4</a>
-* 修正問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100)- HTTPS 專用代理程式：避免基於 Azure Cosmos DB 用途而修改全域代理程式。 針對所有 lib 要求使用專用的代理程式。
+* 修正問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100)- HTTPS 專用代理程式：避免基於 Azure Cosmos DB 用途而修改全域代理程式。 對所有 lib 的請求使用專用代理。
 
 ### <a name=""></a><a name="1.5.3"/>1.5.3</a>
 * 修正問題 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - 正確處理媒體識別碼中的連字號。

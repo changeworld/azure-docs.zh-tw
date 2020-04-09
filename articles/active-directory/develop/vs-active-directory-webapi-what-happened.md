@@ -1,9 +1,8 @@
 ---
-title: 連接到 Azure AD 時對 WebAPI 專案所做的更改
+title: 連接到 Azure AD 時對 WebAPI 專案所做的變更
 description: 描述使用視覺化工作室連接到 Azure AD 時 WebAPI 專案會發生什麼情況
 author: ghogen
 manager: jillfra
-ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.workload: azure-vs
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 595a89ca58e970a9c886d0b6c2dd05aecd1411ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46fb0ad37b872a1d7ca72114f2f263df776aabf1
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159381"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886053"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 專案 (Visual Studio Azure Active Directory 連線服務) 發生什麼狀況
 
@@ -32,7 +31,7 @@ ms.locfileid: "77159381"
 
 會影響專案檔 *.NET 參考和 `packages.config` (NuGet 參考)。
 
-| 類型 | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -45,7 +44,7 @@ ms.locfileid: "77159381"
 
 您選取了 [讀取目錄資料]**** 選項時的其他參考：
 
-| 類型 | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (僅限 Visual Studio 2015) |
@@ -59,7 +58,7 @@ ms.locfileid: "77159381"
 
 下列參考已移除 (僅限 ASP.NET 4 專案，如同在 Visual Studio 2015 中)：
 
-| 類型 | 參考資料 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -124,9 +123,9 @@ ms.locfileid: "77159381"
 - 已在您於新增連線服務時選取的網域中建立 Azure AD 應用程式。
 - 已更新應用程式，以在選取了 [讀取目錄資料]**** 選項時包含「讀取目錄資料」權限。
 
-[瞭解有關 Azure 活動目錄 的更多內容](https://azure.microsoft.com/services/active-directory/)。
+[瞭解有關 Azure 活動目錄的更多內容](https://azure.microsoft.com/services/active-directory/)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 活動目錄的身份驗證方案](authentication-scenarios.md)
+- [Azure 活動目錄的身份驗證機制](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

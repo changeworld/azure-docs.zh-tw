@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280638"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874937"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作夥伴客戶使用狀況屬性
 
@@ -20,27 +20,27 @@ ms.locfileid: "80280638"
 
 Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤客戶在 Azure 上部署之軟體的 Azure 使用狀況。 這個新方法使用 Azure Resource Manager 來協調 Azure 服務的部署。
 
-身為 Microsoft 合作夥伴，您可以將 Azure 使用狀況與您代表客戶佈建的任何 Azure 資源相關聯。 您可以透過 Azure Marketplace、快速入門存放庫、私人 GitHub 存放庫與一對一客戶支援來構成此關聯關係。 客戶使用方式歸因支援三個部署選項：
+身為 Microsoft 合作夥伴，您可以將 Azure 使用狀況與您代表客戶佈建的任何 Azure 資源相關聯。 您可以透過 Azure Marketplace、快速入門存放庫、私人 GitHub 存放庫與一對一客戶支援來構成此關聯關係。 客戶使用方式歸因支援三個部署選項:
 
-- Azure 資源管理器範本：合作夥伴可以使用資源管理器範本部署 Azure 服務來運行合作夥伴的軟體。 合作夥伴可建立 Resource Manager 範本以定義其 Azure 解決方案的基礎結構與設定。 Resource Manager 範本可讓您與您的客戶在其生命週期中部署您的解決方案。 您可以確信您的資源會以一致的狀態部署。
+- Azure 資源管理器範本:合作夥伴可以使用資源管理器範本部署 Azure 服務來運行合作夥伴的軟體。 合作夥伴可建立 Resource Manager 範本以定義其 Azure 解決方案的基礎結構與設定。 Resource Manager 範本可讓您與您的客戶在其生命週期中部署您的解決方案。 您可以確信您的資源會以一致的狀態部署。
 - Azure Resource Manager API：合作夥伴可直接呼叫 Resource Manager API，來部署 Resource Manager 範本或產生 API 呼叫以直接佈建 Azure 服務。
-- Terraform：合作夥伴可以使用雲協調器（如 Terraform）來部署資源管理器範本或直接部署 Azure 服務。
+- Terraform:合作夥伴可以使用雲端協調器(如Terraform)來部署資源管理器範本或直接部署Azure服務。
 
-客戶使用方式歸因用於新部署，不支援標記已部署的現有資源。
+客戶使用方式歸因用於新部署,不支援標記已部署的現有資源。
 
-[Azure 應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)：解決方案範本產品 /發佈到 Azure 應用商店上，需要客戶使用方式歸因。
+[Azure 應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer):解決方案範本產品 /發佈到 Azure 應用商店上,需要客戶使用方式歸因。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本
-使用資源管理器範本在客戶的訂閱上部署許多合作夥伴解決方案。 如果 Azure 應用商店、GitHub 或作為快速入門有可用的資源管理器範本，則修改範本以啟用客戶使用方式歸因的過程應該是直接的。
+使用資源管理器範本在客戶的訂閱上部署許多合作夥伴解決方案。 如果 Azure 應用商店、GitHub 或作為快速入門有可用的資源管理器範本,則修改範本以啟用客戶使用方式歸因的過程應該是直接的。
 
 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
 
-* [創建並部署第一個資源管理器範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+* [建立並部署第一個資源管理員樣本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 * [Azure 應用程式產品 /服務](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
-* 視頻：[為 Azure 應用商店構建解決方案範本和託管應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
+* 視訊:[為 Azure 應用程式的應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
 
 ## <a name="add-a-guid-to-your-template"></a>將 GUID 新增到您的範本
@@ -92,7 +92,7 @@ Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤�
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>使用 Resource Manager API 標記部署
 
-要啟用客戶使用方式歸因，在設計 API 呼叫時，請在請求中的使用者代理標頭中包括 GUID。 針對每個供應項目或 SKU 新增 GUID。 使用 **pid-** 前置詞設定字串格式，並包括合作夥伴產生的 GUID。 以下是可插入到使用者代理程式中的 GUID 格式範例：
+要啟用客戶使用方式歸因,在設計 API 調用時,請在請求中的使用者代理標頭中包括 GUID。 針對每個供應項目或 SKU 新增 GUID。 使用 **pid-** 前置詞設定字串格式，並包括合作夥伴產生的 GUID。 以下是可插入到使用者代理程式中的 GUID 格式範例：
 
 ![範例 GUID 格式](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
@@ -123,13 +123,13 @@ Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤�
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-有關詳細資訊，請參閱[Azure SDK。](https://docs.microsoft.com/azure/go/)
+有關詳細資訊,請參閱[Azure SDK。](https://docs.microsoft.com/azure/go/)
 
 ## <a name="use-terraform"></a>使用地形
 
-對 Terraform 的支援可通過 Azure 提供程式的 1.21.0[https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)版本獲得： 。  此支援適用于通過 Terraform 部署其解決方案的所有合作夥伴，以及 Azure 提供程式部署和計量的所有資源（版本 1.21.0 或更高版本）。
+對 Terraform 的支援可透過 Azure 提供者的 1.21.0[https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)版本取得: 。  此支援適用於透過 Terraform 部署其解決方案的所有合作夥伴,以及 Azure 提供程式部署和計量的所有資源(版本 1.21.0 或更高版本)。
 
-Terraform 的 Azure 提供程式添加了一個名為[*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id)的新可選欄位，該欄位是指定用於解決方案的跟蹤 GUID 的位置。 此欄位的值也可以從*ARM_PARTNER_ID*環境變數中獲取。
+Terraform 的 Azure 提供程式添加了一個名為[*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id)的新可選欄位,該欄位是指定用於解決方案的追蹤 GUID 的位置。 此欄位的值也可以從*ARM_PARTNER_ID*環境變數中獲取。
 
 ```
 provider "azurerm" {
@@ -139,17 +139,17 @@ provider "azurerm" {
           # new stuff for ISV attribution
           partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
-希望通過 Terraform 通過客戶使用方式歸因跟蹤其部署的合作夥伴需要執行以下操作：
+希望透過 Terraform 透過客戶使用方式歸因追蹤其部署的合作夥伴需要執行以下操作:
 
-* 創建 GUID（應為每個優惠或 SKU 添加 GUID）
-* 更新其 Azure 提供程式以將*partner_id*的值設置為 GUID（不要用"pid-"預先修復 GUID，只需將其設置為實際 GUID）
+* 建立 GUID(應為每個優惠或 SKU 添加 GUID)
+* 更新其 Azure 提供程式以將*partner_id*的值設定為 GUID(不要用"pid-"預先修復 GUID,只需將其設定為實際 GUID)
 
 ## <a name="create-guids"></a>建立 GUID
 
 GUID 是具有 32 個十六進位數字的參考號碼。 若要建立 GUID 來進行追蹤，您應該使用 GUID 產生器。 Azure 儲存體小組已建立 [GUID 產生器表單](https://aka.ms/StoragePartners)，其會透過電子郵件傳送正確格式的 GUID 給您，且可跨不同追蹤系統重複使用。
 
 > [!Note]
-> 強烈建議您使用[Azure 存儲的 GUID 產生器表單](https://aka.ms/StoragePartners)來創建 GUID。 如需詳細資訊，請參閱[常見問題集](#faq)。
+> 強烈建議您使用[Azure 儲存的 GUID 生成器表單](https://aka.ms/StoragePartners)來創建 GUID。 如需詳細資訊，請參閱[常見問題集](#faq)。
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
@@ -168,32 +168,32 @@ GUID 是具有 32 個十六進位數字的參考號碼。 若要建立 GUID 來�
 
 範本 GUID 的所有註冊都在合作夥伴中心內完成。
 
-將 GUID 添加到範本或使用者代理中，並在合作夥伴中心註冊 GUID 後，將跟蹤所有部署。
+將 GUID 添加到範本或使用者代理中,並在合作夥伴中心註冊 GUID 後,將追蹤所有部署。
 
-1. 註冊為[商業市場出版商](https://aka.ms/JoinMarketplace)。
+1. 註冊為[商業市場出版者](https://aka.ms/JoinMarketplace)。
 
    * 合作夥伴必須在[合作夥伴中心中擁有設定檔](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
    * 合作夥伴可以註冊多個 GUID。
    * 合作夥伴可以註冊為非 Marketplace 解決方案範本與供應項目註冊 GUID。
 
-1. 登錄到[合作夥伴中心](https://partner.microsoft.com/dashboard)。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
 
-1. 在右上角，選擇設置齒輪圖示，然後選擇 **"開發人員"設置**。
+1. 在右上角,選擇設定齒輪圖示,然後選擇 **「開發人員」 設定**。
 
-1. 在 **"帳戶設置"頁上**，選擇 **"添加跟蹤 GUID"。**
+1. 在 **「帳戶設定」頁上**,選擇 **「添加跟蹤 GUID」。。**
 
-1. 在**GUID**框中，輸入您的跟蹤 GUID。 只輸入 GUID，不要輸入 **pid-** 前置詞。 在 **"描述"** 框中，輸入您的產品/服務名稱或說明。
+1. 在**GUID**框中,輸入您的追蹤 GUID。 只輸入 GUID，不要輸入 **pid-** 前置詞。 在 **「描述」** 框中,輸入您的產品/服務名稱或說明。
 
 1. 若要註冊多個 GUID，請再次選取 [新增追蹤 GUID]****。 頁面上會出現額外的方塊。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 
 ## <a name="verify-the-guid-deployment"></a>驗證 GUID 部署
 
 在您修改範本並執行測試部署之後，您可以使用下列 PowerShell 指令碼來擷取您已部署並標記的資源。
 
-您可以使用指令碼來確認 GUID 是否已成功加入至您的 Resource Manager 範本。 該腳本不適用於資源管理器 API 或 Terraform 部署。
+您可以使用指令碼來確認 GUID 是否已成功加入至您的 Resource Manager 範本。 該文本不適用於資源管理器 API 或 Terraform 部署。
 
 登入 Azure。 選取具有您想要在執行指令碼之前驗證之部署的訂用帳戶。 在部署的訂用帳戶內容中執行指令碼。
 
@@ -232,9 +232,9 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Report
 
-您可以在合作夥伴中心分析儀表板中找到客戶使用方式歸因的報告。 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). 要查看報表，您必須使用合作夥伴中心憑據才能登錄。 如果遇到報告或登錄的任何問題，請按照"獲取支援"部分中的說明創建支援請求。
+您可以在合作夥伴中心儀錶板 ()[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)中找到客戶使用方式歸因的報告。 要查看報表,您必須使用合作夥伴中心憑據才能登錄。 如果遇到報告或登錄的任何問題,請按照"獲取支援"部分中的說明創建支援請求。
 
-在合作夥伴關聯類型下拉清單中選擇"跟蹤範本"以查看報表。
+在合作夥伴關聯類型下拉清單中選擇「跟蹤範本」以查看報表。
 
 ![客戶使用方式歸因報告](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
 
@@ -252,13 +252,13 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>取得支援
 
-有兩個支援管道，具體取決於您面臨的問題。
+有兩個支援管道,具體取決於您面臨的問題。
 
-如果您在合作夥伴中心遇到任何問題（如查看客戶使用方式歸因報告或登錄），請在此處與合作夥伴中心支援小組創建支援請求：[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+如果您在合作夥伴中心遇到任何問題(如查看客戶使用方式歸因報告或登入),請在此處與合作夥伴中心支援團隊建立支援請求:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-如果您需要有關應用商店入職和/或客戶使用一般歸因的説明，例如如何設置客戶使用方式歸因，請按照以下步驟操作：
+如果您需要有關應用商店入職和/或客戶使用一般歸因的説明,例如如何設置客戶使用情況歸因,請按照以下步驟操作:
 
 1. 移至[支援連結](https://go.microsoft.com/fwlink/?linkid=844975)。
 
@@ -267,7 +267,7 @@ foreach ($deployment in $deployments){
 1. 針對您的問題選擇 [類別]****：
 
    - 針對使用狀況關聯問題，請選取 [其他]****。
-   - 針對 Azure Marketplace CPP 存取問題，請選取 [存取問題]****。
+   - 對於 Azure 應用商店的訪問問題,請選擇 **「訪問問題**」。。
 
      ![選擇問題類別](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -284,44 +284,44 @@ foreach ($deployment in $deployments){
 
 1. 完成表單，然後選取 [提交]****。
 
-您還可以從 Microsoft 合作夥伴技術顧問那裡獲得技術銷售前、部署和應用開發方案的技術指導，以瞭解並納入客戶使用方式歸因。
+您還可以從 Microsoft 合作夥伴技術顧問那裡獲得技術銷售前、部署和應用開發方案的技術指導,以瞭解並納入客戶使用方式歸因。
 
-### <a name="how-to-submit-a-technical-consultation-request"></a>如何提交技術諮詢請求
+### <a name="how-to-submit-a-technical-consultation-request"></a>如何提交技術諮詢要求
 
-1. 訪問[https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney).
-1. 選擇雲基礎架構和管理，將打開一個新頁面，供您查看技術之旅。
-1. 在"部署服務"下，按一下"提交請求"按鈕
-1. 使用您的 MSA （MPN 帳戶） 或 AAD（合作夥伴儀表板帳戶）登錄;根據您的登錄憑據，將打開連線請求表單：
-    * 填寫/查看聯繫資訊。
+1. 存[https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)取 .
+1. 選擇雲端基礎架構和管理,將打開一個新頁面,供您查看技術之旅。
+1. 在「部署服務」下,按下「提交請求」按鈕
+1. 使用您的 MSA (MPN 帳戶) 或 AAD(合作夥伴儀錶板帳戶)登錄;根據您的登入認證,將開啟線上碼表單:
+    * 填寫/查看聯絡資訊。
     * 諮詢詳細資訊可以預先填充或從下拉清單中選擇。
-    * 輸入標題和問題描述（提供盡可能多的詳細資訊）。
+    * 輸入標題和問題描述(提供盡可能多的詳細資訊)。
 1. 按一下 [提交]
 
-查看分步說明，並在 上[https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)使用螢幕截圖。
+查看分步說明,並在上[https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)使用屏幕截圖。
 
 ### <a name="whats-next"></a>後續步驟
 
-Microsoft 合作夥伴技術顧問將與您聯繫，以設置呼叫範圍，以滿足您的需求範圍。
+Microsoft 合作夥伴技術顧問將與您聯繫,以設置呼叫範圍,以滿足您的需求範圍。
 
 ## <a name="faq"></a>常見問題集
 
 **將 GUID 加入至範本的優點為何？**
 
-Microsoft 為合作夥伴提供客戶部署其解決方案的視圖，以及對其影響使用方式的見解。 Microsoft 與合作夥伴也可以使用此資訊來加強與銷售團隊之間的合作關係。 Microsoft 與合作夥伴可以使用該資料來取得個別合作夥伴對 Azure 成長的更一致檢視。
+Microsoft 為合作夥伴提供客戶部署其解決方案的視圖,以及對其影響使用方式的見解。 Microsoft 與合作夥伴也可以使用此資訊來加強與銷售團隊之間的合作關係。 Microsoft 與合作夥伴可以使用該資料來取得個別合作夥伴對 Azure 成長的更一致檢視。
 
 **加入 GUID 之後能否予以變更？**
 
-是，客戶或實作合作夥伴可自訂範本並能變更或移除該 GUID。 我們建議合作夥伴主動向客戶和合作夥伴描述資源和 GUID 的作用，以防止刪除或編輯 GUID。 變更 GUID 只會影響新的部署和資源，現有的部署和資源不受影響。
+是，客戶或實作合作夥伴可自訂範本並能變更或移除該 GUID。 我們建議合作夥伴主動向客戶和合作夥伴描述資源和 GUID 的作用,以防止刪除或編輯 GUID。 變更 GUID 只會影響新的部署和資源，現有的部署和資源不受影響。
 
 **我可以從類似 GitHub 的非 Microsoft 存放庫追蹤部署的範本嗎？**
 
-是，只要有 GUID，當範本部署時，都會追蹤使用量。 合作夥伴必須在 CPP 中具有設定檔，以註冊用於在 Azure 應用商店外部部署的 GUID。
+是，只要有 GUID，當範本部署時，都會追蹤使用量。 合作夥伴必須在合作夥伴中心的商業市場註冊中具有配置檔,以註冊用於在 Azure 應用商店外部署的 GUID。
 
 **客戶也會收到報告嗎？**
 
 客戶可以在 Azure 入口網站內，追蹤其個別資源或客戶所定義資源群組的使用情況。
 
-**此方法是否類似于記錄的數位合作夥伴 （DPOR）？**
+**此方法是否類似於記錄的數位合作夥伴 (DPOR)?**
 
 這種將部署與使用狀況連結至合作夥伴解決方案的新方法，提供將合作夥伴解決方案連結到 Azure 使用量的機制。 DPOR 可將諮詢 (系統整合者) 或管理 (受控服務提供者) 合作夥伴與客戶的 Azure 訂用帳戶建立關聯。
 
@@ -329,15 +329,15 @@ Microsoft 為合作夥伴提供客戶部署其解決方案的視圖，以及對�
 
 Azure 儲存體的 GUID 產生器表單保證會產生所需格式的 GUID。 此外，如果您是使用任何 Azure 儲存體的資料平面追蹤方法，可以利用相同的 GUID 來追蹤 Marketplace 控制平面。 這可讓您運用夥伴屬性的單一整合 GUID，而不需要維護個別的 GUID。
 
-**是否可以在 Azure 應用商店中使用私有自訂 VHD 作為解決方案範本產品？**
+**是否可以在 Azure 應用商店中使用私有自定義 VHD 作為解決方案範本產品?**
 
-不，你不能。 虛擬機器映射必須來自 Azure 應用商店，請參閱： [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)。
+不,你不能。 虛擬機器映像必須來自 Azure 應用商店,請參[https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)閱: 。
 
-您可以使用自訂 VHD 在市場中創建 VM 產品/服務，並將其標記為私有，以便任何人都看不到它。 然後在解決方案範本中引用此 VM。
+您可以使用自訂 VHD 在市場中創建 VM 產品/服務,並將其標記為私有,以便任何人都看不到它。 然後在解決方案範本中引用此 VM。
 
-**無法更新主範本*的內容版本*屬性？**
+**無法更新主範本*的內容版本*屬性?**
 
-在某些情況下，使用來自另一個範本的 TemplateLink 部署範本時，可能是一個 Bug，該範本由於某種原因預期舊內容版本。 解決方法是使用中繼資料屬性：
+在某些情況下,使用來自另一個範本的 TemplateLink 部署範本時,可能是一個 Bug,該範本由於某種原因預期舊內容版本。 解決方法是使用中繼資料屬性:
 
 ```
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

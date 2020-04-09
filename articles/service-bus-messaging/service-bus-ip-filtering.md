@@ -1,5 +1,5 @@
 ---
-title: 為 Azure 服務匯流排配置 IP 防火牆規則
+title: 為 Azure 服務組態 IP 防火牆規則
 description: 如何使用「防火牆規則」允許從特定 IP 位址連線至「Azure 服務匯流排」。
 services: service-bus
 documentationcenter: ''
@@ -11,41 +11,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475938"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878182"
 ---
-# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>為 Azure 服務匯流排配置 IP 防火牆規則
-預設情況下，只要請求附帶有效的身份驗證和授權，服務匯流排命名空間即可從 Internet 訪問。 使用 IP 防火牆，您可以進一步將其限制為[CIDR（無類域間路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)標記法中的一組 IPv4 位址或 IPv4 位址範圍。
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>為 Azure 服務組態 IP 防火牆規則
+默認情況下,只要請求附帶有效的身份驗證和授權,服務總線命名空間即可從 Internet 訪問。 使用 IP 防火牆,您可以進一步將其限制為[CIDR(無類域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的一組 IPv4 位址或 IPv4 位址範圍。
 
-此功能在 Azure 服務匯流排應僅從某些已知網站訪問的情況下非常有用。 防火牆規則使您能夠配置規則以接受來自特定 IPv4 位址的流量。 例如，如果將服務匯流排與 Azure[快速路由][express-route]一起使用 ，則可以創建**防火牆規則**，僅允許來自本地基礎結構 IP 位址或公司 NAT 閘道位址的流量。 
+此功能在 Azure 服務總線應僅從某些已知網站訪問的情況下非常有用。 防火牆規則使您能夠配置規則以接受來自特定 IPv4 位址的流量。 例如,如果將服務總線與 Azure[快速路由][express-route]一起使用 ,則可以創建**防火牆規則**,僅允許來自本地基礎結構 IP 位址或公司 NAT 閘道位址的流量。 
+
+> [!IMPORTANT]
+> 防火牆和虛擬網路僅在**服務**總線的高級層中支援。 如果升級到**首選層**不是一個選項,我們建議您保持共享訪問簽名 (SAS) 令牌的安全,並僅與授權使用者共用。 關於 SAS 認證資訊,請參考[身份認證與授權](service-bus-authentication-and-authorization.md#shared-access-signature)。
 
 ## <a name="ip-firewall-rules"></a>IP 防火牆規則
-IP 防火牆規則在服務匯流排命名空間級別應用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 任何來自某個 IP 位址的連線嘗試，只要不符合「服務匯流排」命名空間上的允許 IP 規則，系統就會將它視為未經授權而予以拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
+IP 防火牆規則在服務總線命名空間級別應用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 任何來自某個 IP 位址的連線嘗試，只要不符合「服務匯流排」命名空間上的允許 IP 規則，系統就會將它視為未經授權而予以拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
-本節介紹如何使用 Azure 門戶為服務匯流排命名空間創建 IP 防火牆規則。 
+本節介紹如何使用 Azure 門戶為服務總線命名空間創建 IP 防火牆規則。 
 
-1. 導航到[Azure 門戶](https://portal.azure.com)中的**服務匯流排命名空間**。
-2. 在左側功能表上，選擇 **"網路**"選項。 預設情況下，選擇"**所有網路**"選項。 服務匯流排命名空間接受來自任何 IP 位址的連接。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+1. 瀏覽到[Azure 門戶](https://portal.azure.com)中的**服務匯流命名空間**。
+2. 在左側選單上,選擇 **「網路**」選項。 預設情況下,選擇所有**網路**「選項」。 服務總線命名空間接受來自任何 IP 位址的連接。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
-    ![防火牆 - 選擇的所有網路選項](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-1. 選擇頁面頂部的 **"選定網路**"選項。 在 **"防火牆"** 部分中，按照以下步驟操作：
-    1. 選擇 **"添加用戶端 IP 位址**"選項，使當前用戶端 IP 有權訪問命名空間。 
-    2. 對於**位址範圍**，在 CIDR 標記法中輸入特定的 IPv4 位址或 IPv4 位址範圍。 
+    ![防火牆 ─ 選擇的所有網路選項](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. 選擇頁面頂部的 **「選定網路**」選項。 在 **「防火牆」** 部分中,按照以下步驟操作:
+    1. 選擇 **「新增用戶端 IP 位址**」選項,使目前用戶端 IP 有權存取命名空間。 
+    2. 對於**位址範圍**,在 CIDR 表示法中輸入特定的 IPv4 位址或 IPv4 位址範圍。 
     3. 指定是否要**允許受信任的 Microsoft 服務繞過此防火牆**。 
 
-        ![防火牆 - 選擇的所有網路選項](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
-3. 選擇 **"在**工具列上保存"以保存設置。 等待幾分鐘，確認顯示在門戶通知上。
+        ![防火牆 ─ 選擇的所有網路選項](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. 選擇 **「在**工具列上保存」 以儲存設定。 等待幾分鐘,確認顯示在門戶通知上。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 本節具有創建虛擬網路和防火牆規則的示例 Azure 資源管理器範本。
 
-> [!IMPORTANT]
-> 防火牆和虛擬網路僅在**服務**匯流排的高級層中支援。
 
 下列 Resource Manager 範本可讓您將虛擬網路規則新增至現有的服務匯流排命名空間。
 

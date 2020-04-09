@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: 8ca97be2863bd8e45ac7937c49c464fa2f216b11
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1633586a77465d9d5f605b17727f2531430d1cbd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925354"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671147"
 ---
 > [!NOTE]
 > 通用 Windows 平台可讓您開發應用程式，以在任何支援 Windows 10 的裝置 (包括 PC、Xbox、Surface Hub 與其他裝置) 上執行。
@@ -26,7 +26,7 @@ ms.locfileid: "78925354"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 

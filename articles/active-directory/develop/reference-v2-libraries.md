@@ -1,28 +1,23 @@
 ---
-title: 微軟身份平臺身份驗證庫 |微軟文件
+title: 微軟身份平台身份驗證庫
 description: 用於 Microsoft 識別平台終結點的相容用戶端庫和伺服器中間件庫以及相關庫、源和示例連結。
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
-ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c8f0d5d948ff54522e951b7b5d18c7018ae6d34a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 22e2ee0e3596bc996482a090af7509db4c415e61
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419812"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883486"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>微軟身份平台身份驗證庫
 

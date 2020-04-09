@@ -1,14 +1,14 @@
 ---
-title: 創建 Azure 服務結構群集範本
+title: 建立 Azure 服務結構叢集範本
 description: 了解如何為 Service Fabric 叢集建立 Resource Manager 範本。 為用戶端驗證設定安全性、Azure Key Vault 與 Azure Active Directory (Azure AD)。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258872"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985366"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>建立 Service Fabric 叢集 Resource Manager 範本
 
@@ -30,10 +30,10 @@ ms.locfileid: "79258872"
 > 針對國家雲 (Azure Government、Azure 中國、Azure 德國)，您也應將下列 `fabricSettings` 新增至您的範本：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
 
 ## <a name="add-certificates"></a>新增憑證
-您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 將這些金鑰保存庫參數和值添加到資源管理器範本參數檔 *（azuredeploy.parameters.json*） 中。
+您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 將這些密鑰保管庫參數和值添加到資源管理器範本參數檔 *(azuredeploy.parameters.json*) 中。
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>將所有憑證都新增到虛擬機器擴展集 osProfile
-群集中安裝的每個證書都必須在規模集資源的**osProfile**部分（Microsoft.Compute/VirtualMachineScaleSet）中配置。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
+群集中安裝的每個證書都必須在規模集資源的**osProfile**部分(Microsoft.Compute/VirtualMachineScaleSet)中配置。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
 
 ```json
 {
@@ -84,7 +84,7 @@ ms.locfileid: "79258872"
       "extensionProfile": {
         "extensions": [
           {
-            "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+            "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType0Name'))]",
             "properties": {
               ...
               "settings": {
@@ -132,10 +132,10 @@ ms.locfileid: "79258872"
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>新增 Azure AD 設定以針對用戶端存取使用 Azure AD
 
-您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 將這些 Azure AD 參數和值添加到資源管理器範本參數檔 *（azuredeploy.parameter.json*） 中。 
+您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 將這些 Azure AD 參數和值添加到資源管理器範本參數檔 *(azuredeploy.parameter.json*) 中。 
 
 > [!NOTE]
-> 在 Linux 上，必須在創建群集之前創建 Azure AD 租戶和使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
+> 在 Linux 上,必須在創建群集之前創建 Azure AD 租戶和使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
 
 ```json
 {
@@ -253,7 +253,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 若要深入了解本文中所部署資源的 JSON 語法和屬性，請參閱：
 
 * [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
-* [微軟.存儲/存儲帳戶](/azure/templates/microsoft.storage/storageaccounts)
+* [微軟儲存記憶體](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 * [微軟.網路/公共IP位址](/azure/templates/microsoft.network/publicipaddresses)
 * [微軟.網路/負載平衡器](/azure/templates/microsoft.network/loadbalancers)

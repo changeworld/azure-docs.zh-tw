@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79deb2f33a11e8ccb6f059bde7590b7cc0fe20c0
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215266"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521114"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入門：從 Azure 入口網站建立 Azure Cosmos 帳戶、資料庫、容器和項目
 
@@ -40,7 +40,38 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>建立 Azure Cosmos DB 帳戶
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+移至 [Azure 入口網站](https://portal.azure.com/)來建立 Azure Cosmos DB 帳戶。 搜尋並選取 [Azure Cosmos DB]  。
+
+   ![Azure 入口網站資料庫窗格](./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png)
+
+1. 選取 [新增]  。
+1. 在 [建立 Azure Cosmos DB 帳戶]  頁面上，輸入新 Azure Cosmos 帳戶的基本設定。 
+
+    |設定|值|描述 |
+    |---|---|---|
+    |訂用帳戶|訂閱名稱|選取要用於此 Azure Cosmos 帳戶的 Azure 訂用帳戶。 |
+    |資源群組|資源群組名稱|選取資源群組，或選取 [新建]  ，然後輸入新資源群組的唯一名稱。 |
+    |帳戶名稱|唯一的名稱|輸入名稱來識別您的 Azure Cosmos 帳戶。 因為 documents.azure.com  會附加到您所提供的名稱以建立 URI，請使用唯一名稱。<br><br>名稱只能包含小寫字母、數字及連字號 (-) 字元。 其長度必須介於 3 到 31 個字元之間。|
+    |API|要建立的帳戶類型|選取 [Core(SQL)]  ，以使用 SQL 語法建立文件資料庫並進行查詢。 <br><br>API 會決定要建立的帳戶類型。 Azure Cosmos DB 提供五個 API：Core(SQL) 和 MongoDB (適用於文件資料)、Gremlin (適用於圖形資料)、Azure 資料表及 Cassandra。 目前，您必須為每個 API 建立個別個帳戶。 <br><br>[進一步了解 SQL API](introduction.md)。|
+    |申請免費層折扣|適用或不適用|使用 Azure Cosmos DB 免費層，您將可在帳戶中免費取得前 400 RU/秒和 5 GB 的儲存體。 深入了解[免費層](https://azure.microsoft.com/pricing/details/cosmos-db/)。|
+    |Location|最接近使用者的區域|選取用來裝載 Azure Cosmos DB 帳戶的地理位置。 使用最接近使用者的位置，讓他們能以最快速度存取資料。|
+    |帳戶類型|生產或非生產|如果帳戶將用於生產工作負載，請選取 [生產]  。 如果帳戶將用於非生產工作負載 (例如開發、測試、QA 或預備)，請選取 [非生產]  。 這是一種 Azure 資源標記設定，可調整入口網站體驗，但不會影響基礎 Azure Cosmos DB 帳戶。 您可以隨時變更此值。|
+
+
+> [!NOTE]
+> 每個 Azure 訂用帳戶最多可以有一個免費層的 Azure Cosmos DB 帳戶，而且必須在建立帳戶時選擇加入。 如果您看不到套用免費層折扣的選項，這表示訂用帳戶中的另一個帳戶已透過免費層啟用。
+   
+   ![Azure Cosmos DB 的新帳戶頁面](./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png)
+
+1. 選取 [檢閱 + 建立]  。 您可以略過 [網路]  和 [標記]  區段。
+
+1. 檢閱帳戶設定，然後選取 [建立]  。 建立帳戶需要幾分鐘的時間。 等候入口網站頁面顯示 [您的部署已完成]  訊息。 
+
+    ![Azure 入口網站的 [通知] 窗格](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png)
+
+1. 選取 [移至資源]  以移至 Azure Cosmos DB 帳戶頁面。 
+
+    ![Azure Cosmos DB 帳戶頁面](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png)
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>新增資料庫和容器 

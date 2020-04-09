@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 93e5ee9b46fb3387b70dd5092f72efcaa8a2bc19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223065"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676599"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教學課程：在混合式環境的 Azure Active Directory Domain Services 中啟用密碼同步處理
 
@@ -68,7 +68,7 @@ Azure AD Connect 可以設定成會同步處理 Azure AD DS 所需的 NTLM 或 K
 
     在此範例螢幕擷取畫面中，會使用下列連接器：
 
-    * Azure AD 連接器的名稱為「aaddscontoso.onmicrosoft.com - AAD」 
+    * Azure AD 連接器的名稱為 *contoso.onmicrosoft.com - AAD*
     * 內部部署 AD DS 連接器的名稱為 *onprem.contoso.com*
 
 1. 將下列 PowerShell 指令碼複製並貼到已安裝 Azure AD Connect 的電腦。 指令碼會觸發包含舊版密碼雜湊的完整密碼同步作業。 使用上一個步驟中的連接器名稱來更新 `$azureadConnector` 和 `$adConnector` 變數。

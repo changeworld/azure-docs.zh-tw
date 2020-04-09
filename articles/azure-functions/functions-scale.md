@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656944"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985876"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的規模調整和主控
 
@@ -57,7 +57,7 @@ ms.locfileid: "80656944"
 
 要瞭解有關如何在消費計劃中運行時估計成本的更多,請參閱[瞭解消費計劃成本](functions-consumption-costs.md)。
 
-## <a name="premium-plan"></a><a name="premium-plan"></a>保費計劃
+## <a name="premium-plan"></a><a name="premium-plan"></a>進階方案
 
 使用進階計畫時,將根據傳入事件的數量(如消耗計畫)添加和刪除 Azure 函數主機的實例。  進階計劃支援以下功能:
 
@@ -109,7 +109,7 @@ ms.locfileid: "80656944"
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>確定現有應用程式的託管計劃
 
-要確定函數應用使用的託管計劃,請參閱[Azure 門戶](https://portal.azure.com)中的「**概述」** 選項卡中**的應用服務計畫**。 要查看定價層,請選擇**應用服務計劃**的名稱,然後從左側窗格中選擇 **「屬性**」。。
+若要判斷您函式應用程式所用的主控方案，請在 [Azure 入口網站](https://portal.azure.com)中，參閱函式應用程式 [概觀]**** 中的 [App Service 方案 / 定價層]****。 如果是 App Service 方案，則會同時指出定價層。
 
 ![在入口網站中檢視調整方案](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>儲存體帳戶的需求
 
-在任何計畫中,函數應用都需要一個常規的 Azure 儲存帳戶,該帳戶支援 Azure Blob、佇列、檔和表存儲。 這是因為 Azure 函數依賴於 Azure 儲存來執行諸如管理觸發器和日誌記錄函數執行等操作,但某些儲存帳戶不支援佇列和表。 這些帳戶 (包括僅限 Blob 的儲存體帳戶 (包含進階儲存體) 和搭配區域備援儲存體複寫的一般用途儲存體帳戶) 會在您建立函式應用程式時，從現有**儲存體帳戶**選項中篩選出來。
+在任何計畫中,函數應用都需要一個常規的 Azure 儲存帳戶,該帳戶支援 Azure Blob、佇列、檔和表存儲。 這是因為函式依賴 Azure 儲存體來執行作業，例如管理觸發程序和記錄函式執行等，但有些儲存體帳戶不支援佇列和表格。 這些帳戶 (包括僅限 Blob 的儲存體帳戶 (包含進階儲存體) 和搭配區域備援儲存體複寫的一般用途儲存體帳戶) 會在您建立函式應用程式時，從現有**儲存體帳戶**選項中篩選出來。
 
 函數應用使用的相同存儲帳戶也可以由觸發器和綁定用於存儲應用程序數據。 但是,對於存儲密集型操作,應使用單獨的存儲帳戶。  
 
@@ -132,9 +132,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-若要深入了解儲存體帳戶類型，請參閱 [Azure 儲存體服務簡介](../storage/common/storage-introduction.md#azure-storage-services)。
+若要深入了解儲存體帳戶類型，請參閱 [Azure 儲存體服務簡介](../storage/common/storage-introduction.md#core-storage-services)。
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>消費和高級計劃的工作原理
+## <a name="how-the-consumption-and-premium-plans-work"></a>消費和保費計劃如何運作
 
 在消耗和高級計劃中,Azure 函數基礎結構會根據其函數觸發的事件數添加函數主機的其他實例來擴展 CPU 和記憶體資源。 消耗計劃中的函數主機的每個實例都限制為 1.5 GB 記憶體和一個 CPU。  主機的實例是整個函數應用,這意味著函數應用中的所有函數共用實例內的資源並同時縮放。 共用相同取用方案的函數應用程式會個別進行調整。  在進階計畫中,計劃大小將確定該實例上該計劃中所有應用的可用記憶體和 CPU。  
 
@@ -162,7 +162,7 @@ Azure 函數的縮放單位是函數應用。 當函式應用程式相應放大�
 
 函數應用程式中有多個面向會影響其調整規模的效果，包括主機設定、執行階段耗用量和資源效率。  如需詳細資訊，請參閱[效能考量文章中的延展性一節](functions-best-practices.md#scalability-best-practices)。 您也應了解在縮放函式應用程式後，連線會如何運作。 如需詳細資訊，請參閱[如何管理 Azure Functions 中的連線](manage-connections.md)。
 
-有關在 Python 和 Node.js 中縮放的詳細資訊,請參閱[Azure 函數 Python 開發人員指南 - 縮放和併發和併發](functions-reference-python.md#scaling-and-concurrency)和[Azure 函數 Node.js 開發人員指南 - 縮放和併發](functions-reference-node.md#scaling-and-concurrency)。
+有關在 Python 和 Node.js 中縮放的其他資訊,請參閱[Azure 函數 Python 開發人員指南 - 縮放和併發和併發](functions-reference-python.md#scaling-and-concurrency)和[Azure 函數 Node.js 開發人員指南 - 縮放和併發](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>計費模式
 

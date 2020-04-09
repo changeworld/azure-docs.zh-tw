@@ -3,25 +3,22 @@ title: 建置呼叫 Web API 的移動應用 |蔚藍
 titleSuffix: Microsoft identity platform | Azure
 description: 瞭解如何建構 Web API 的行動應用程式(概述)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.reviwer: brandwe
+ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546096"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882568"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>專案:呼叫 Web API 的行動應用程式
 
@@ -66,4 +63,4 @@ ms.locfileid: "80546096"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [應用註冊](scenario-mobile-app-registration.md)
+> [應用程式註冊](scenario-mobile-app-registration.md)

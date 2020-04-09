@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 9/19/2019
+ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: 73a4477547c562a9960fe72b352e906676eadae5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 3a40dd445384ac35749ff2b016c672fb3c40dfb0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78924805"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671790"
 ---
 > [!NOTE]
 > Unity 支援 Windows Desktop (x86 和 x64) 或通用 Windows 平台 (x86、x64、ARM/ARM64)、Android (x86、ARM32/64) 以及 iOS (x64 模擬器、ARM32 和 ARM64)。
@@ -26,7 +26,7 @@ ms.locfileid: "78924805"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 
 ## <a name="add-a-ui"></a>加入 UI
 

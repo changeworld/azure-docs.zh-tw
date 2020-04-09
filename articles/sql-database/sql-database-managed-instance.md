@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585362"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879066"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什麼是 Azure SQL 資料庫託管實例?
 
@@ -46,7 +46,7 @@ ms.locfileid: "80585362"
 | --- | --- |
 |無須硬體採購和管理 <br>沒有管理基礎結構的管理負擔 <br>快速佈建和服務調整 <br>自動修補和版本升級 <br>與其他 PaaS 資料服務整合 |99.99% 的 SLA 運作時間  <br>內建[高可用性](sql-database-high-availability.md) <br>使用[自動備份](sql-database-automated-backups.md)保護資料 <br>客戶可設定的備份保留期限 <br>使用者起始的[備份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[資料庫還原時間點](sql-database-recovery-using-backups.md#point-in-time-restore)功能 |
 |**安全性與合規性** | **管理**|
-|隔離的環境 ([VNet 整合](sql-database-managed-instance-connectivity-architecture.md)、單一租用戶服務、專用的運算和儲存體) <br>[透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 驗證](sql-database-aad-authentication.md)、單一登入支援 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 伺服器主體(登錄名)</a>  <br>與 Azure SQL 資料庫遵循相同的合規性標準 <br>[SQL 稽核](sql-database-managed-instance-auditing.md) <br>[進階威脅防護](sql-database-managed-instance-threat-detection.md) |用於自動化服務佈建與調整的 Azure Resource Manager API <br>用於手動服務佈建與調整的 Azure 入口網站功能 <br>資料移轉服務
+|隔離的環境 ([VNet 整合](sql-database-managed-instance-connectivity-architecture.md)、單一租用戶服務、專用的運算和儲存體) <br>[透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 驗證](sql-database-aad-authentication.md)、單一登入支援 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 伺服器主體(登錄名)</a>  <br>與 Azure SQL 資料庫遵循相同的合規性標準 <br>[SQL 稽核](sql-database-managed-instance-auditing.md) <br>[高級威脅防護](sql-database-managed-instance-threat-detection.md) |用於自動化服務佈建與調整的 Azure Resource Manager API <br>用於手動服務佈建與調整的 Azure 入口網站功能 <br>資料移轉服務
 
 > [!IMPORTANT]
 > Azure SQL 資料庫(所有部署選項)已根據許多合規性標準進行了認證。 有關詳細資訊,請參閱 Microsoft [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942),您可以在其中找到最新的 SQL 資料庫合規性認證清單。
@@ -121,7 +121,7 @@ ms.locfileid: "80585362"
 
 Azure SQL Database 提供管理作業，可讓您在不再需要時，用來自動部署新的受控執行個體、更新執行個體屬性和刪除執行個體。 本節提供有關管理操作及其典型持續時間的資訊。
 
-為了支援[Azure 虛擬網路 (VNet) 中的部署](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks),並為客戶提供隔離和安全,託管實例依賴於[虛擬群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture),虛擬群集表示部署在客戶虛擬網路子網內的專用隔離虛擬機集。 從本質上講,空子網中的每個託管實例部署都會導致新的虛擬群集構建。
+為了支援[Azure 虛擬網路 (VNet) 中的部署](../virtual-network/virtual-network-for-azure-services.md),並為客戶提供隔離和安全,託管實例依賴於[虛擬群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture),虛擬群集表示部署在客戶虛擬網路子網內的專用隔離虛擬機集。 從本質上講,空子網中的每個託管實例部署都會導致新的虛擬群集構建。
 
 對已部署的託管實例的後續操作也可能對其基礎虛擬群集產生影響。 這會影響管理操作的持續時間,因為部署其他虛擬機附帶了在規劃現有託管實例的新部署或更新時需要考慮的開銷。
 
@@ -239,9 +239,9 @@ Azure SQL Database 提供一組可用來保護資料的進階安全性功能。
 - [託管實例審核](sql-database-managed-instance-auditing.md)跟蹤資料庫事件並將其寫入放置在 Azure 儲存帳戶中的審核日誌檔。 稽核有助於保持法規遵循、了解資料庫活動，以及深入了解可指出商務考量或疑似安全違規的不一致和異常。
 - 移動中資料加密 - 受控執行個體會使用傳輸層安全性對移動中的資料加密，藉此保護您的資料。 除了傳輸層安全性，受控執行個體部署選項會使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 來保護傳輸中、待用和查詢處理期間的敏感性資料。 Always Encrypted 是業界優先，可提供無與倫比的資料安全性，以對抗涉及重要資料竊取的入侵。 例如，透過 Always Encrypted，信用卡號碼會永遠加密儲存在資料庫中，即使在查詢處理期間，都允許需要處理該資料的已授權人員或應用程式在使用時解密。
 - [高級威脅防護](sql-database-managed-instance-threat-detection.md)通過提供服務中內置的附加安全智能層來補充[審核](sql-database-managed-instance-auditing.md),這些智慧可檢測訪問或利用資料庫的異常和潛在有害嘗試。 系統會警示您有關可疑活動、潛在弱點、SQL 插入式攻擊和異常資料庫存取模式。 可以從[Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高級威脅防護警報,並提供可疑活動的詳細資訊,並建議如何調查和緩解威脅的操作。  
-- [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)可藉由遮罩處理，使不具權限的使用者無法看見敏感性資料。 動態資料遮罩可讓您在應用程式層級受到最小影響的情況下指定要顯示多少敏感性資料，而協助防止未經授權者存取敏感性資料。 這項原則式安全性功能會將機密資料隱藏在指定資料庫欄位的查詢結果集內，而資料庫中的資料則不會變更。
+- [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)可藉由遮罩處理，使不具權限的使用者無法看見敏感性資料。 動態資料遮罩可讓您在應用程式層級受到最小影響的情況下指定要顯示多少敏感性資料，而協助防止未經授權者存取敏感性資料。 這項原則式安全性功能會將敏感性資料隱藏在指定資料庫欄位的查詢結果集內，而資料庫中的資料則不會變更。
 - [資料列層級安全性](/sql/relational-databases/security/row-level-security)讓您能夠根據執行查詢之使用者的特性 (例如，依群組成員資格或執行內容) 來控制資料庫資料表中的資料列存取。 資料列層級安全性 (RLS) 可簡化應用程式安全性的設計和編碼。 RLS 可讓您實作資料的資料列存取限制。 例如，確保背景工作角色只能存取其部門相關資料列，或將資料存取權限制為僅限相關資料。
-- [透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 會將受控執行個體的資料檔案加密，也稱為「待用資料加密」。 TDE 會執行資料和記錄檔的即時 I/O 加密和解密。 加密會使用資料庫加密金鑰 (DEK)，此金鑰會儲存在資料庫開機記錄中，以在復原期間提供可用性。 您可以使用透明資料加密來保護受控執行個體中的所有資料庫。 TDE 是 SQL Server 經實證的靜態加密技術，許多合規性標準都需要這項技術才能防禦儲存媒體的竊取。
+- [透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 會將受控執行個體的資料檔案加密，也稱為「待用資料加密」。 TDE 會執行資料和記錄檔的即時 I/O 加密和解密。 加密會使用資料庫加密金鑰 (DEK)，此金鑰會儲存在資料庫開機記錄中，以在復原期間提供可用性。 您可以使用透明資料加密來保護受控執行個體中的所有資料庫。 TDE 是 SQL Server 久經考驗的靜態加密技術,許多合規性標準都要求該技術防止存儲介質被盜。
 
 透過 Azure 資料庫移轉服務 (DMS) 或原生還原，可支援將加密的資料庫遷移到受控執行個體。 如果計劃使用本機還原遷移加密資料庫,則需要將現有 TDE 證書從本地 SQL Server 或虛擬機器中的 SQL Server 移到託管實例。 如需移轉選項的詳細資訊，請參閱[將 SQL Server 執行個體移轉至受控執行個體](sql-database-managed-instance-migrate.md)。
 

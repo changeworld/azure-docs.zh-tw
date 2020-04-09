@@ -1,24 +1,19 @@
 ---
-title: 使用 Azure Migrate 伺服器評估來評估 VMware VM 是否可移轉至 Azure
-description: 說明如何使用 Azure Migrate 來評估內部部署 VMware VM 是否可移轉至 Azure。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: 評估 VMware VM 以移轉至 Azure
+description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部署 VMware VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: hamusa
-ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/23/2019
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223285"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548753"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 VMware VM
 
-本文說明如何使用 Azure Migrate 中的伺服器評估工具來評估內部部署 VMware 虛擬機器 (VM)。
+本文說明如何使用 [Azure Migrate：伺服器評量](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具來評估內部部署 VMware 虛擬機器 (VM)。
 
-[Azure Migrate](migrate-services-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含了 Azure Migrate 工具和來自 Microsoft 合作夥伴的獨立軟體廠商 (ISV) 供應項目。
 
 本教學課程是一個系列中的第二篇，會示範如何評估 VMware VM 並將其遷移至 Azure。 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -35,17 +30,11 @@ ms.locfileid: "79223285"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[完成](tutorial-prepare-vmware.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
-
-您在第一個教學課程中應該已完成下列作業：
-
-- 針對 Azure Migrate [設定 Azure 權限](tutorial-prepare-vmware.md#prepare-azure)。
-- [準備 VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) 以進行評估：
-   - [確認](migrate-support-matrix-vmware.md#vmware-requirements) VMware 設定。
-   - 在 VMware 中設定可使用 OVA 範本建立 VMware VM 的權限。
-   - 設定[用於 VM 探索的帳戶](migrate-support-matrix-vmware.md#vmware-requirements)。 
-   - 讓[所需的連接埠](migrate-support-matrix-vmware.md#port-access)可供使用。
-   - 得知要存取 Azure [所需的 URL](migrate-replication-appliance.md#url-access)。
+- [完成](tutorial-prepare-vmware.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
+- 您在第一個教學課程中應該已完成下列作業：
+    - [準備 Azure](tutorial-prepare-vmware.md#prepare-azure) 以使用 Azure Migrate。
+    - [準備VMware 以進行評量](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 這包括檢查 VMware 設定、設定 Azure Migrate 可用來存取 vCenter Server 的帳戶。
+    - [確認](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)您需要哪些內容，才能部署 VMware 評量所需的 Azure Migrate 設備。
 
 ## <a name="set-up-an-azure-migrate-project"></a>設定 Azure Migrate 專案
 
@@ -74,17 +63,15 @@ ms.locfileid: "79223285"
 1. 在 [檢閱 + 新增工具]  中檢閱設定，然後選取 [新增工具]  。
 1. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器]  來存取。
 
-## <a name="set-up-the-appliance-vm"></a>設定設備 VM
+## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
-Azure Migrate 伺服器評估會執行輕量型 VMware VM 設備。 此設備會執行 VM 探索，並收集 VM 中繼資料和效能資料。
+Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。
+- 您可以使用下載的 OVA 範本，在 VMware VM 上設定設備。 或者，您也可以使用 PowerShell 安裝程式指令碼，在 VM 或實體機器上設定設備。
+- 本教學課程會使用 OVA 範本。 如果您想要使用指令碼來設定設備，請參閱[本文](deploy-appliance-script.md)。
 
-若要設定設備，請：
+建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
 
-- 下載 OVA 範本檔案，並將其匯入 vCenter Server。
-- 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
-- 第一次設定設備，並向 Azure Migrate 專案進行註冊。
 
-您可以為單一 Azure Migrate 專案設定多個設備。 在所有設備中，伺服器評估最多可支援探索 35,000 個 VM。 每個設備最多可探索 10,000 部伺服器。
 
 ### <a name="download-the-ova-template"></a>下載 OVA 範本
 
@@ -134,7 +121,10 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="configure-the-appliance"></a>設定設備
 
-請使用下列步驟來設定設備：
+第一次設定設備。
+
+> [!NOTE]
+> 如果您使用 [PowerShell 指令碼](deploy-appliance-script.md)來設定設備 (而非使用下載的 OVA)，則此程序中的前兩個步驟將與之無關。
 
 1. 在 vSphere 用戶端主控台中，以滑鼠右鍵按一下 VM，然後選取 [開啟主控台]  。
 1. 提供設備的語言、時區和密碼。
@@ -164,77 +154,30 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
 1. 選取 [註冊]  。
 
+
 ## <a name="start-continuous-discovery"></a>開始連續探索
 
 設備必須連線到 vCenter Server，才能探索 VM 的設定與效能資料。
 
 ### <a name="specify-vcenter-server-details"></a>指定 vCenter Server 詳細資料
 1. 在 [指定 vCenter Server 詳細資料]  中，指定 vCenter Server 執行個體的名稱 (FQDN) 或 IP 位址。 您可以保留預設的連接埠，或指定 vCenter Server 接聽的自訂連接埠。
-1. 在 [使用者名稱]  和 [密碼]  中，指定設備要用來在 vCenter Server 執行個體上探索 VM 的 vCenter Server 帳戶認證。 
+2. 在 [使用者名稱]  和 [密碼]  中，指定設備要用來在 vCenter Server 執行個體上探索 VM 的 vCenter Server 帳戶認證。 
 
-   請確定帳戶具有[探索所需的權限](migrate-support-matrix-vmware.md#vmware-requirements)。 您可以藉由限制對 vCenter 帳戶的存取權，來[界定探索範圍](tutorial-assess-vmware.md#set-the-scope-of-discovery)。
-1. 選取 [驗證連線]  以確定設備可以連線到 vCenter Server。
+    - 您應該已在[上一個教學課程](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)中設定具有必要權限的帳戶。
+    - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
 
-### <a name="specify-vm-credentials"></a>指定 VM 認證
-若要探索應用程式、角色和功能，以及視覺化 VM 的相依性，您可以提供可存取 VMware VM 的 VM 認證。 您可以新增一個適用於 Windows VM 的認證，以及一個適用於 Linux VM 的認證。 [深入了解](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)必要的存取權限。
+3. 選取 [驗證連線]  以確定設備可以連線到 vCenter Server。
+4. 在 [探索 VM 上的應用程式和相依性]  中，選擇性地按一下 [新增認證]  ，並指定與認證相關的作業系統，以及認證的使用者名稱和密碼。 然後按一下 [新增]  。
 
-> [!NOTE]
-> 您可以選擇是否輸入，但如果您想要啟用應用程式探索和無代理程式相依性視覺效果，就必須輸入。
+    - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
+    - 如果您不使用這些功能，則可以略過這項設定。
+    - 請檢閱[應用程式探索](migrate-support-matrix-vmware.md#application-discovery)或[無代理程式分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)所需的認證。
 
-1. 在 [探索 VM 上的應用程式和相依性]  中，選取 [新增認證]  。
-1. 選取 [作業系統]  。
-1. 為認證提供易記名稱。
-1. 在 [使用者名稱]  與 [密碼]  中，指定至少在 VM 上具有來賓存取權的帳戶。
-1. 選取 [新增]  。
+5. **儲存並啟動探索**，即可啟動 VM 探索。
 
-在指定了 vCenter Server 執行個體與 VM 認證 (選擇性) 後，請選取 [儲存並開始探索]  以開始探索內部部署環境。
-
-所探索到 VM 的中繼資料會在大約 15 分鐘後出現在入口網站中。 探索已安裝的應用程式、角色和功能需要花一點時間。 時間長短取決於所探索的 VM 數目。 針對 500 部 VM，應用程式清查大約需要 1 小時才會出現在 Azure Migrate 入口網站中。
-
-### <a name="set-the-scope-of-discovery"></a>設定探索範圍
-
-藉由限制用於探索的 vCenter 帳戶存取權，即可界定探索範圍。 您可以將範圍設定為 vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別 VM。
-
-若要設定範圍，請執行下列程序。
-
-#### <a name="1-create-a-vcenter-user-account"></a>1.建立 vCenter 使用者帳戶
-1.  以 vCenter Server 系統管理員身分登入 vSphere Web 用戶端。
-1.  選取 [系統管理]   > [SSO 使用者和群組]  ，然後選取 [使用者]  索引標籤。
-1.  選取 [新增使用者]  圖示。
-1.  填入必要的資訊以建立新的使用者，然後選取 [確定]  。
-
-#### <a name="2-define-a-new-role-with-required-permission"></a>2.定義具有必要權限的新角色
-若要進行無代理程式伺服器移轉，就必須執行此程序。
-1.  以 vCenter Server 系統管理員身分登入 vSphere Web 用戶端。
-1.  瀏覽至 [管理]   > [角色管理員]  。
-1.  從下拉式功能表中選取您的 vCenter Server 執行個體。
-1.  選取 [建立角色]  。
-1.  輸入新角色的名稱 (例如，<em>Azure_Migrate</em>)。
-1.  將[權限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)指派給新定義的角色。
-1.  選取 [確定]  。
-
-#### <a name="3-assign-permissions-on-vcenter-objects"></a>3.指派 vCenter 物件的權限
-
-有兩種方法可將 vCenter 中清查物件的權限指派給已獲派角色的 vCenter 使用者帳戶。
-
-若要評估伺服器，則必須針對所要探索 VM 裝載所在的所有父物件，將**唯讀**角色套用至其中的 vCenter 使用者帳戶。 所有父物件都會包含在內：階層中的主機、主機資料夾、叢集和叢集資料夾，一直到資料中心為止。 這些權限會傳播到階層中的子物件。
-
-同樣地，若要移轉伺服器，則必須針對所要遷移 VM 裝載所在的所有父物件，將具有[權限](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)的使用者定義角色套用至其中的 vCenter 使用者帳戶。 此角色可以命名為 <em>Azure _Migrate</em>。
-
-![指派權限](./media/tutorial-assess-vmware/assign-perms.png)
-
-替代方法是在資料中心層級指派使用者帳戶和角色，並將其傳播到子物件。 然後，針對您不想要探索/移轉的每個物件 (例如 VM)，為帳戶提供**無存取**角色。 
-
-這樣的替代設定很麻煩。 它會意外公開存取控制，因為會對每個新的子物件自動授與從父物件繼承的存取權。 因此，建議採用第一種方法。
-
-> [!NOTE]
-> 目前，如果 vCenter 帳戶具有在 vCenter VM 資料夾層級上授與的存取權，則伺服器評估無法探索 VM。 如果您想要依 VM 資料夾來界定探索範圍，則可以使用下列程序來進行。 此程序可確保 vCenter 帳戶具有在 VM 層級上指派的唯讀權限。
->
-> 1. 在您要設定探索範圍的 VM 資料夾中，為所有 VM 指派唯讀權限。
-> 1. 對所有裝載 VM 的父物件授與唯讀存取權。 到資料中心為止的階層中，所有父物件 (主機、主機的資料夾、叢集、叢集的資料夾) 都會包含在內。 您不需要將權限傳播給所有子物件。
-> 1. 藉由選取資料中心作為 [集合範圍]  ，來使用用於探索的認證。 所設定的角色型存取控制會確保對應的 vCenter 使用者只能存取租用戶特定 VM。
->
-> 請注意，主機和叢集的資料夾都可支援。
+探索的運作方式如下：
+- 所探索到的 VM 中繼資料會在大約 15 分鐘後出現在入口網站中。
+- 探索已安裝的應用程式、角色和功能需要花一點時間。 時間長短取決於所探索的 VM 數目。 針對 500 部 VM，應用程式清查大約需要一小時才會出現在 Azure Migrate 入口網站中。
 
 ### <a name="verify-vms-in-the-portal"></a>在入口網站中確認 VM
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78943022"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421169"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教學課程：將 Azure 函式部署為 IoT Edge 模組
 
@@ -31,9 +31,6 @@ ms.locfileid: "78943022"
 
 ![圖表 - 教學課程架構：階段和部署函式模組](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
-
->[!NOTE]
->Azure IoT Edge 上的 Azure Function 模組目前為[公開預覽版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您於此教學課程中建立的 Azure 函式，能夠篩選由您裝置所產生的溫度資料。 函式只有在溫度超過指定的閾值時，才會將訊息往上游傳送至 Azure IoT 中樞。
 

@@ -6,13 +6,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 01/22/2020
-ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/07/2020
+ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435224"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878798"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>將靜態網站與 Azure CDN 整合
 
@@ -26,19 +26,17 @@ ms.locfileid: "80435224"
 
 1. 在 Azure 入口網站中找出您的儲存體帳戶，然後顯示帳戶概觀。
 
-2. 選取 [Blob 服務]**** 功能表底下的 [Azure CDN]**** 以設定 Azure CDN。
+1. 在**Blob 服務**選單下,選擇**Azure CDN**以開啟**Azure CDN**頁面:
 
-    [Azure CDN]**** 頁面隨即顯示。
+    ![建立 CDN 端點](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 
-    ![建立 CDN 端點](../../cdn/media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
+1. 在**CDN 設定檔**部分中,指定是創建新 CDN 設定檔還是使用現有 CDN 設定檔。 CDN 設定檔是共享定價層和提供程式的 CDN 終結點的集合。 然後輸入訂閱中唯一的 CDN 的名稱。
 
-3. 在 [CDN 設定檔]**** 區段中，指定新的或現有的 CDN 設定檔。 
+1. 指定 CDN 端點的定價層。 要瞭解有關定價的更多資訊,請參閱[內容交付網路定價](https://azure.microsoft.com/pricing/details/cdn/)。 關於每個層可用的功能的詳細資訊,請參閱比較 Azure [CDN 產品功能](../../cdn/cdn-features.md)。
 
-4. 指定 CDN 端點的定價層。 要瞭解有關定價的更多資訊,請參閱[內容交付網路定價](https://azure.microsoft.com/pricing/details/cdn/)。 關於每個層可用的功能的詳細資訊,請參閱比較 Azure [CDN 產品功能](../../cdn/cdn-features.md)。
+1. 在 [CDN 端點名稱]**** 欄位中，指定 CDN 端點的名稱。 CDN 終結點必須在 Azure 中是唯一的,並提供終結點 URL 的第一部分。 該窗體驗證終結點名稱是否唯一。
 
-5. 在 [CDN 端點名稱]**** 欄位中，指定 CDN 端點的名稱。 CDN 端點在整個 Azure 中必須是唯一的。
-
-6. 在 [原始主機名稱]**** 欄位中指定靜態網站端點。 
+1. 在 **「原點」主機名**欄位中指定靜態網站終結點。 
 
    若要尋找靜態網站端點，請瀏覽至儲存體帳戶的 [靜態網站]**** 設定。  複製主終結點並將其貼上到 CDN 設定中。
 
@@ -49,15 +47,15 @@ ms.locfileid: "80435224"
 
    ![螢幕擷取畫面：顯示 CDN 端點設定範例](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-7. 選擇 **"創建**",然後等待其傳播。 端點建立之後，即會出現在端點清單中。
+1. 選擇 **"建立**",然後等待 CDN 進行預配。 端點建立之後，即會出現在端點清單中。 (如果窗體中有任何錯誤,則該欄位旁邊會顯示一個感嘆號。
 
-8. 為了確認 CDN 端點是否已正確設定，請按一下端點以瀏覽至其設定。 從儲存體帳戶的 CDN 概觀，找出端點主機名稱，並瀏覽到端點，如下圖所示。 CDN 端點的格式會類似 `https://staticwebsitesamples.azureedge.net`。
+1. 為了確認 CDN 端點是否已正確設定，請按一下端點以瀏覽至其設定。 從儲存體帳戶的 CDN 概觀，找出端點主機名稱，並瀏覽到端點，如下圖所示。 CDN 端點的格式會類似 `https://staticwebsitesamples.azureedge.net`。
 
     ![螢幕擷取畫面：顯示 CDN 端點概觀](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-9. CDN 端點傳播完成後，瀏覽至 CDN 端點便會顯示您先前上傳至靜態網站的 index.html 檔案內容。
+1. 預先光 CDN 終結點後,瀏覽到 CDN 終結點將顯示您以前上傳到靜態網站的 index.html 檔案的內容。
 
-10. 若要檢閱 CDN 端點的原始設定，請瀏覽至 CDN 端點 [設定]**** 區段底下的 [原始來源]****。 您會看到 [原始來源類型]**** 欄位設定為 [自訂原始來源]** 且 [原始主機名稱]**** 欄位會顯示靜態網站端點。
+1. 若要檢閱 CDN 端點的原始設定，請瀏覽至 CDN 端點 [設定]**** 區段底下的 [原始來源]****。 您會看到 [原始來源類型]**** 欄位設定為 [自訂原始來源]** 且 [原始主機名稱]**** 欄位會顯示靜態網站端點。
 
     ![螢幕擷取畫面：顯示 CDN 端點的原始來源設定](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 

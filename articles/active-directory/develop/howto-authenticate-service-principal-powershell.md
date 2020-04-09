@@ -1,11 +1,10 @@
 ---
-title: 創建 Azure 應用標識（PowerShell） |蔚藍
+title: 創建 Azure 應用標識(PowerShell) |蔚藍
 titleSuffix: Microsoft identity platform
 description: 描述如何使用 Azure PowerShell 建立 Azure Active Directory 應用程式和服務主體，並透過角色型存取控制將存取權授與資源。 它示範如何使用憑證來驗證應用程式。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bd8c3b25c23ba8586e38ec8eb7d1baefaa21633
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262954"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884164"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>操作說明：使用 Azure PowerShell 建立具有憑證的服務主體
 
@@ -46,14 +45,14 @@ ms.locfileid: "79262954"
 ## <a name="assign-the-application-to-a-role"></a>指派角色給應用程式
 若要存取您的訂用帳戶中的資源，您必須將應用程式指派給角色。 決定哪個角色可提供應用程式的適當權限。 若要深入了解可用的角色，請參閱 [RBAC：內建角色](/azure/role-based-access-control/built-in-roles)。
 
-您可以針對訂用帳戶、資源群組或資源的層級設定範圍。 較低的範圍層級會繼承較高層級的權限。 例如，將應用程式添加到資源組的*Reader*角色意味著它可以讀取資源組及其包含的任何資源。 要允許應用程式執行重新開機、啟動和停止實例等操作，請選擇 *"參與者"* 角色。
+您可以針對訂用帳戶、資源群組或資源的層級設定範圍。 較低的範圍層級會繼承較高層級的權限。 例如,將應用程式添加到資源組的*Reader*角色意味著它可以讀取資源組及其包含的任何資源。 要允許應用程式執行重新啟動、啟動和停止實例等操作,請選擇 *「參與者」* 角色。
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自我簽署憑證建立服務主體
 
-下列範例涵蓋簡單的案例。 它使用[New-AzADService 委託創建](/powershell/module/az.resources/new-azadserviceprincipal)具有自簽章憑證的服務主體，並使用[New-AzRoleAssign](/powershell/module/az.resources/new-azroleassignment)將[讀取器](/azure/role-based-access-control/built-in-roles#reader)角色指派給服務主體。 角色指派的範圍僅限於您目前所選的 Azure 訂用帳戶。 若要選取不同的訂用帳戶，請使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+下列範例涵蓋簡單的案例。 它使用[New-AzADService 委託建立](/powershell/module/az.resources/new-azadserviceprincipal)具有自簽名證書的服務主體,並使用[New-AzRoleAssign](/powershell/module/az.resources/new-azroleassignment)將[讀取器](/azure/role-based-access-control/built-in-roles#reader)角色分配給服務主體。 角色指派的範圍僅限於您目前所選的 Azure 訂用帳戶。 若要選取不同的訂用帳戶，請使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
-> PowerShell 核心中當前不支援"新自簽章憑證 Cmdlet"和 PKI 模組。 
+> PowerShell 核心中目前不支援"新自簽名證書 cmdlet"和 PKI 模組。 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -217,7 +216,7 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 建立服務主體時，您可能會遇到下列錯誤︰
 
-* **Authentication_Unauthorized」** 或 **「在內容中找不到訂用帳戶。」** - 當您的帳戶在 Azure AD 上未具備註冊應用程式的[必要權限](#required-permissions)時，您就會看到此錯誤。 通常，當 Azure 活動目錄中的管理員使用者可以註冊應用且您的帳戶不是管理員時，您會看到此錯誤。請管理員將您分配到管理員角色，或使使用者能夠註冊應用。
+* **Authentication_Unauthorized」** 或 **「在內容中找不到訂用帳戶。」** - 當您的帳戶在 Azure AD 上未具備註冊應用程式的[必要權限](#required-permissions)時，您就會看到此錯誤。 通常,當 Azure 活動目錄中的管理員用戶可以註冊應用且您的帳戶不是管理員時,您會看到此錯誤。請管理員將您分配到管理員角色,或使用戶能夠註冊應用。
 
 * 您的帳戶 **「沒有在範圍 '/subscriptions/{guid}' 中執行 'Microsoft.Authorization/roleAssignments/write' 動作的權限。」** - 當您的帳戶沒有足夠權限可將角色指派給身分識別時，您就會看到此錯誤。 要求訂用帳戶管理員將您新增至「使用者存取系統管理員」角色。
 

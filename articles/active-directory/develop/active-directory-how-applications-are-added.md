@@ -5,7 +5,6 @@ description: 對於應用程式來說，新增至 Azure AD 有何意義，以及
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263136"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884268"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>將應用程式加入至 Azure AD 的方式和原因
 
@@ -47,7 +46,7 @@ ms.locfileid: "79263136"
 * Azure 入口網站中的應用程式註冊
 * 使用 Visual Studio 建立新的應用程式，並將它設定為使用 Azure AD 驗證
 * 當系統管理員從應用程式庫新增應用程式時 (這也會建立服務主體)
-* 使用 Microsoft 圖形 API 或 PowerShell 創建新應用程式
+* 使用 Microsoft 圖形 API 或 PowerShell 建立新應用程式
 * 許多其他路徑，包括 Azure 中的各種開發人員經驗，以及在跨開發人員中心的 API 總管體驗
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>什麼是服務主體，其來自何處？
@@ -60,7 +59,7 @@ ms.locfileid: "79263136"
 * 本機使用者和群組應用程式角色指派的記錄
 * 針對已授與應用程式的本機使用者和系統管理員權限所做的記錄
   * 例如：應用程式用來存取特定使用者電子郵件的權限
-* 本地策略的記錄，包括條件訪問策略
+* 本地策略的記錄,包括條件存取原則
 * 應用程式替代本機設定的記錄
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
@@ -77,7 +76,7 @@ ms.locfileid: "79263136"
 * 當系統管理員從應用程式庫新增應用程式時 (這也會建立基礎應用程式物件)
 * 新增應用程式來使用 [Azure AD 應用程式 Proxy](/azure/active-directory/manage-apps/application-proxy)
 * 連接應用程式以便啟用 SAML 單一登入或密碼單一登入 (SSO)
-* 通過 Microsoft 圖形 API 或 PowerShell 以程式設計方式
+* 透過 Microsoft 圖形 API 或 PowerShell 以程式設計方式
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>應用程式物件和服務主體彼此之間如何建立關聯性？
 
@@ -100,11 +99,11 @@ ms.locfileid: "79263136"
 
 ### <a name="notes-and-exceptions"></a>附註及例外狀況
 
-* 並非所有服務主體都會往回指向應用程式物件。 原先建置 Azure AD 時提供給應用程式的服務會有更多限制，而且服務主體就足以建立應用程式識別碼。 原先服務主體的功能狀況接近 Windows Server Active Directory 服務帳戶。 基於這個原因，您還是可以透過不同路徑來建立服務主體 (例如使用 Azure AD PowerShell)，而無需先建立應用程式物件。 在創建服務主體之前，Microsoft 圖形 API 需要應用程式物件。
+* 並非所有服務主體都會往回指向應用程式物件。 原先建置 Azure AD 時提供給應用程式的服務會有更多限制，而且服務主體就足以建立應用程式識別碼。 原先服務主體的功能狀況接近 Windows Server Active Directory 服務帳戶。 基於這個原因，您還是可以透過不同路徑來建立服務主體 (例如使用 Azure AD PowerShell)，而無需先建立應用程式物件。 在創建服務主體之前,Microsoft 圖形 API 需要應用程式物件。
 * 並非所有上述資訊目前都處於以程式設計方式公開的狀態。 以下功能僅適用於 UI：
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
-* 有關服務主體和應用程式物件的詳細資訊，請參閱 Microsoft 圖形 API 參考文檔：
+* 有關服務主體和應用程式物件的詳細資訊,請參閱 Microsoft 圖形 API 參考文檔:
   * [應用程式](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
   * [服務主體](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 

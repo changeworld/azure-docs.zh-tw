@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205812"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398001"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -35,6 +35,10 @@ ms.locfileid: "78205812"
 ## <a name="set-up-the-sample-labeling-tool"></a>設定範例標籤工具
 
 您將使用 Docker 引擎來執行範例標籤工具。 請依照下列步驟來設定 Docker 容器。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。
+
+> [!TIP]
+> OCR 表單標籤工具也可作為 GitHub 上的開放原始碼專案。 此工具是使用 React + Redux 建置的 Web 應用程式，並以 TypeScript 撰寫。 若要深入了解或參與，請參閱 [OCR 表單標籤工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)。
+
 1. 首先，在主機電腦上安裝 Docker。 本指南將說明如何使用本機電腦作為主機。 如果您想要在 Azure 中使用 Docker 主機服務，請參閱[部署範例標籤工具](../deploy-label-tool.md)操作指南。 
 
    主機電腦必須符合下列硬體需求：
@@ -46,7 +50,7 @@ ms.locfileid: "78205812"
    遵循您作業系統的適當指示，在電腦上安裝 Docker： 
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
-   * [Linux](https://docs.docker.com/install/)。
+   * [Linux](https://docs.docker.com/install/)
 
 1. 使用 `docker pull` 命令取得範例標籤工具容器。
     ```
@@ -185,6 +189,7 @@ ms.locfileid: "78205812"
 想要繼續執行專案時，您必須先建立對相同 Blob 儲存體容器的連線。 請重複進行上述步驟來執行此動作。 然後，移至應用程式設定頁面 (齒輪圖示)，並確認您專案的安全性權杖位於該處。 如果不在該處，請新增安全性權杖，並以其覆寫先前步驟中的權杖名稱和金鑰。 然後，按一下 [儲存設定]。 
 
 ### <a name="resume-a-project"></a>繼續執行專案
+
 最後，移至主頁面 (房屋圖示)，然後按一下 [開啟雲端專案]。 接著，選取 Blob 儲存體連線，再選取專案的 *.vott* 檔案。 應用程式會載入所有專案的設定，因為它具有安全性權杖。
 
 ## <a name="next-steps"></a>後續步驟

@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631439"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984005"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>什麼是 Azure 虛擬網路的 IPv6?
 
@@ -73,7 +73,7 @@ Azure VNET 的 IPv6 是一個基本功能集,使客戶能夠在 Azure 中託管�
 
 ## <a name="limitations"></a>限制
 Azure 虛擬網路版本的目前 IPv6 具有以下限制:
-- Azure 虛擬網路的 IPv6 在所有全域 Azure 商業區域中都使用所有部署方法可用。  美國政府雲中的部署暫時僅限於 ARM (JSON) 範本、命令行介面 (CLI) 和 Powershell。  美國政府雲門戶中的 IPv6 支援將很快可用。  
+- Azure 虛擬網路的 IPv6 在所有全域 Azure 商業區域中都使用所有部署方法可用。  美國政府雲中的部署暫時僅限於 ARM (JSON) 範本、命令行介面 (CLI) 和 Powershell。  美國政府雲門戶中的 IPv6 支援將很快提供。  
 - 在啟用了 IPv6 的 VNET 中,ExpressRoute 閘道可用於僅 IPv4 流量。  對IPv6流量的支援已在我們的路線圖中。   
 - VPN 閘道不能在啟用 IPv6 的 VNET 中使用,直接使用或與「使用遠端閘道」對等。
 - Azure 平臺 (AKS 等) 不支援容器的 IPv6 通訊。  

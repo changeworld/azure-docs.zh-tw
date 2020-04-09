@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 702df1bfaf0701a40e514f8a47151f96917adf38
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811591"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879049"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面上使用 Microsoft 團隊
 
@@ -40,7 +40,7 @@ ms.locfileid: "80811591"
 ```shell
   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
   Type: REG_DWORD
-  Value: 0x1
+  Value: 1
 ```
 
 ### <a name="install-microsoft-teams"></a>安裝微軟團隊
@@ -66,4 +66,4 @@ ms.locfileid: "80811591"
       ```
 
       > [!NOTE]
-      > 如果安裝具有 MSI 設置「ALLUSERS_1」的團隊,將自動更新將被禁用。 我們建議您確保每月至少更新一次 Teams。
+      > 如果安裝具有 MSI 設定 ALLUSER_1 的團隊,將自動更新將被禁用。 我們建議您確保每月至少更新一次 Teams。

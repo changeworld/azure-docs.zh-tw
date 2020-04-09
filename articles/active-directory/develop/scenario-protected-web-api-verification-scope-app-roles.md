@@ -1,45 +1,41 @@
 ---
 title: 驗證受保護的 Web API 的範圍和應用角色 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何構建受保護的 Web API 並配置應用程式的代碼。
+description: 瞭解如何建構受保護的 Web API 並設定應用程式的代碼。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 816a9620a3486b534f9293084b7c4f5b4f748033
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe029cdec5bca8885a78267c45bace51e7b3c141
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76768125"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882364"
 ---
-# <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保護的 Web API：驗證作用域和應用角色
+# <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保護的 Web API:驗證範圍與應用程式角色
 
-本文介紹如何向 Web API 添加授權。 此保護可確保僅由以下者調用 API：
+本文介紹如何向 Web API 添加授權。 此保護可確保僅由以下者呼叫 API:
 
-- 代表具有正確作用域的使用者的應用程式。
+- 代表具有正確作用域的用戶的應用程式。
 - 具有正確應用程式角色的守護進程應用。
 
 > [!NOTE]
-> 本文的程式碼片段是從以下示例中提取的，這些示例功能齊全：
+> 本文的代碼段是從以下範例中提取的,這些範例功能齊全:
 >
-> - [ASP.NET GitHub 上的核心 Web API 增量教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37)
-> - [ASP.NET Web API 示例](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
+> - [ASP.NET GitHub 上的核心 Web API 增量教學](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37)
+> - [ASP.NET Web API 範例](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
 
-要保護ASP.NET或ASP.NET核心 Web API，必須將`[Authorize]`該屬性添加到以下專案之一：
+要保護ASP.NET或ASP.NET核心 Web API,`[Authorize]`必須將 該屬性添加到以下專案之一:
 
-- 如果希望保護所有控制器操作，則控制器本身
-- API 的單個控制器操作
+- 如果希望保護所有控制器操作,則控制器本身
+- API 的單一控制器操作
 
 ```csharp
     [Authorize]
@@ -49,14 +45,14 @@ ms.locfileid: "76768125"
     }
 ```
 
-但是這種保護是不夠的。 它僅保證ASP.NET，ASP.NET核心驗證權杖。 API 需要驗證用於調用 API 的權杖是否與預期聲明一起請求。 這些索賠尤其需要核實：
+但是這種保護是不夠的。 它僅保證ASP.NET,ASP.NET核心驗證權杖。 API 需要驗證用於呼叫 API 的權杖是否與預期聲明一起請求。 這些索賠尤其需要核實:
 
-- 代表使用者調用 API 時*的範圍*。
-- 可以從守護進程應用調用 API 時 *，應用角色*。
+- 代表使用者呼叫 API 時*的範圍*。
+- 可以從守護程式應用呼叫 API 時 *,應用程式角色*。
 
-## <a name="verify-scopes-in-apis-called-on-behalf-of-users"></a>驗證代表使用者調用的 API 中的範圍
+## <a name="verify-scopes-in-apis-called-on-behalf-of-users"></a>驗證代表使用者呼叫的 API 中的範圍
 
-如果用戶端應用代表使用者調用 API，則 API 需要請求具有 API 特定作用域的承載權杖。 有關詳細資訊，請參閱[代碼配置 |承載權杖](scenario-protected-web-api-app-configuration.md#bearer-token).
+如果用戶端應用代表使用者調用 API,則 API 需要請求具有 API 特定作用域的承載權杖。 有關詳細資訊,請參閱[代碼配置 |承載權杖](scenario-protected-web-api-app-configuration.md#bearer-token).
 
 ```csharp
 [Authorize]
@@ -80,9 +76,9 @@ public class TodoListController : Controller
 }
 ```
 
-該方法`VerifyUserHasAnyAcceptedScope`執行以下步驟：
+該方法`VerifyUserHasAnyAcceptedScope`執行以下步驟:
 
-- 驗證有名為`http://schemas.microsoft.com/identity/claims/scope`或`scp`的聲明。
+- 驗證有名為`http://schemas.microsoft.com/identity/claims/scope``scp`或的聲明。
 - 驗證聲明具有包含 API 預期範圍的值。
 
 ```csharp
@@ -113,13 +109,13 @@ public class TodoListController : Controller
     }
 ```
 
-前面的[示例代碼](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)用於ASP.NET核心。 對於ASP.NET，只需替換為`HttpContext.User``ClaimsPrincipal.Current`，並將聲明類型`"http://schemas.microsoft.com/identity/claims/scope"`替換為`"scp"`。 本文稍後將查看程式碼片段。
+前面的[範例代碼](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)用於ASP.NET核心。 對於ASP.NET,只需取代為`HttpContext.User``ClaimsPrincipal.Current`,並將聲明`"http://schemas.microsoft.com/identity/claims/scope"`類型`"scp"`替換為 。 本文稍後將查看代碼段。
 
-## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>驗證守護進程應用調用的 API 中的應用角色
+## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>驗證守護程式應用呼叫的 API 中的應用程式角色
 
-如果 Web API 由[守護進程應用](scenario-daemon-overview.md)調用，則該應用應需要 Web API 的應用程式許可權。 如[公開應用程式許可權（應用角色）所示](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)，API 公開此類許可權。 應用角色就是一`access_as_application`個示例。
+如果 Web API 由[守護程序應用](scenario-daemon-overview.md)呼叫,則該應用應需要 Web API 的應用程式許可權。 如[公開應用程式許可權(應用角色)所示](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles),API 公開此類許可權。 應用角色就是一`access_as_application`個示例。
 
-現在，您需要讓 API 驗證它收到的權杖是否包含`roles`聲明，以及此聲明是否具有預期值。 驗證代碼類似于驗證委派許可權的代碼，只不過控制器操作測試角色而不是作用域：
+現在,您需要讓 API 驗證它收到的權杖`roles`是否包含聲明,以及此聲明是否具有預期值。 驗證代碼類似於驗證委派權限的代碼,只不過控制器操作測試角色而不是作用域:
 
 ```csharp
 [Authorize]
@@ -132,7 +128,7 @@ public class TodoListController : ApiController
     }
 ```
 
-該方法`ValidateAppRole`可以是這樣的：
+該方法`ValidateAppRole`可以是這樣的:
 
 ```csharp
 private void ValidateAppRole(string appRole)
@@ -153,13 +149,13 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-這一次，程式碼片段用於ASP.NET。 對於ASP.NET核心，只需替換為`ClaimsPrincipal.Current``HttpContext.User`，並將`"roles"`聲明名稱替換為`"http://schemas.microsoft.com/identity/claims/roles"`。 另請參閱本文前面的程式碼片段。
+這一次,代碼段用於ASP.NET。 對於ASP.NET核心,只需替換為`ClaimsPrincipal.Current``HttpContext.User`,`"roles"`並將宣告名稱替換`"http://schemas.microsoft.com/identity/claims/roles"`為 。 另請參閱本文前面的代碼段。
 
-### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>如果僅由守護程式應用調用 Web API，則接受僅應用權杖
+### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>如果僅由守護程式應用呼叫 Web API,則接受僅應用程式杖
 
-使用者還可以在使用者分配模式中使用角色聲明，如["如何：在應用程式中添加應用角色並在權杖中接收它們](howto-add-app-roles-in-azure-ad-apps.md)"。 如果角色可以分配給這兩個角色，則檢查角色將允許應用以使用者身份登錄，使用者可以以應用身份登錄。 我們建議您為使用者和應用聲明不同的角色，以防止這種混淆。
+使用者還可以在使用者分配模式中使用角色聲明,如[「如何:在應用程式中添加應用角色並在權杖中接收它們](howto-add-app-roles-in-azure-ad-apps.md)」。 如果角色可以分配給這兩個角色,則檢查角色將允許應用以使用者身份登錄,用戶可以以應用身份登錄。 我們建議您為使用者和應用聲明不同的角色,以防止這種混淆。
 
-如果只想守護進程應用調用 Web API，請添加驗證應用角色時權杖為僅應用權杖的條件。
+如果只想守護程序應用調用 Web API,請添加驗證應用角色時令牌為僅應用權杖的條件。
 
 ```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
@@ -167,7 +163,7 @@ string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;
 ```
 
-檢查相反條件只允許登錄使用者的應用調用 API。
+檢查相反條件只允許登錄使用者的應用呼叫 API。
 
 ## <a name="next-steps"></a>後續步驟
 

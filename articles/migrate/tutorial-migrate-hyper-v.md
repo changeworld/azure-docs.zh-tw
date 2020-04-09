@@ -3,13 +3,15 @@ title: 使用 Azure Migrate 伺服器移轉將 Hyper-V VM 遷移至 Azure
 description: 了解如何使用 Azure Migrate 伺服器移轉將內部部署 Hyper-V VM 遷移至 Azure
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: MVC
-ms.openlocfilehash: e1b670db3399857278c646d3793e8ec946d385b0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.custom:
+- MVC
+- fasttrack-edit
+ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943306"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422689"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>將 Hyper-V VM 遷移至 Azure 
 
@@ -50,7 +52,7 @@ ms.locfileid: "78943306"
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>新增 Azure Migrate 伺服器移轉工具
 
-如果您未遵循第二個教學課程來評估 Hyper-V VM，您必須[遵循這些指示](how-to-add-tool-first-time.md)來設定 Azure Migrate 專案，並將 Azure Migrate 伺服器移轉工具加入專案。
+如果您未遵循第二個教學課程來評估 Hyper-V VM，您必須[遵循這些指示](how-to-add-tool-first-time.md)來設定 Azure Migrate 專案，並將 Azure Migrate 伺服器評量工具加入專案。
 
 如果您已遵循第二個教學課程並已有 Azure Migrate 專案，請新增 Azure Migrate：伺服器移轉工具，如下所示：
 
@@ -67,10 +69,10 @@ ms.locfileid: "78943306"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
-Azure Migrate 伺服器移轉會執行輕量型 Hyper-V VM 設備。
+Azure Migrate 伺服器移轉會在 Hyper-V 主機或叢集節點上執行軟體代理程式，以協調和複寫資料至 Azure Migrate，而且不需要專用的設備來進行移轉。
 
-- 此設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至「Azure Migrate 伺服器移轉」。
-- 「Azure Migrate：伺服器評量」工具也會使用設備來將 Hyper-V VM 遷移到 Azure。
+- Azure Migrate：伺服器評量會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至「Azure Migrate 伺服器移轉」。
+- 移轉協調流程和資料複寫會由 Microsoft Azure Site Recovery 提供者和 Microsoft Azure 復原服務代理程式來處理。
 
 設定設備：
 - 如果您已遵循第二個教學課程來評估 Hyper-V VM，您便已在該教學課程進行期間設定好設備，無須再設定一次。

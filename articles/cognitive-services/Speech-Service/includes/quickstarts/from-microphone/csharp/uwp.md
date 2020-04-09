@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 93a5a29c225912a48cf99ba6126690c298dfef9d
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 9a3f478604547819162ad13d39a9383263321857
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925069"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671182"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -22,7 +22,7 @@ ms.locfileid: "78925069"
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * 確定您可以存取麥克風以擷取音訊
 
 如果您已經這麼做，很棒。 讓我們繼續進行。
@@ -93,4 +93,4 @@ ms.locfileid: "78925069"
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

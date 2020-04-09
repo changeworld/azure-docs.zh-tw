@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab129315f398061eaa427f05f3bd4b1cabff0dc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 35f8172d418cb9926ba0be2de945ff559fba14cf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046779"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Box 整合
 
@@ -87,6 +87,8 @@ ms.locfileid: "77046779"
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.account.box.com`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`box.net`
+
+    c. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://sso.services.box.net/sp/ACS.saml2`
 
     > [!NOTE]
     > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Box 用戶端支援小組](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

@@ -1,10 +1,9 @@
 ---
-title: Azure AD 如何使用 SAML 通訊協定 | Microsoft Docs
+title: Azure AD 如何使用 SAML 通訊協定
 description: 這篇文章提供 Azure Active Directory 中單一登入和單一登出 SAML 設定檔的概觀。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 88125cfc-45c1-448b-9903-a629d8f31b01
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -13,12 +12,12 @@ ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161166"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885645"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 如何使用 SAML 通訊協定
 
@@ -32,8 +31,8 @@ Azure AD 會使用雲端服務的**中繼資料 URI** 來擷取簽署金鑰和�
 
 Azure Active Directory 會公開租用戶專屬和一般 (租用戶獨立) 單一登入和單一登出端點。 這些 URL 代表可定址的位置 (它們不只是識別碼)，因此您可以前往端點來讀取中繼資料。
 
-* 租用戶專屬端點位於 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。 租戶功能變數名稱>預留位置表示 Azure AD 租戶的註冊功能變數名稱或租戶 ID GUID。 * \< * 例如，contoso.com 租用戶的同盟中繼資料在：https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* 租用戶專屬端點位於 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。 租戶功能變數名稱>占位符表示 Azure AD 租戶的註冊功能變數名稱或租*\<* 戶 ID GUID。 例如，contoso.com 租用戶的同盟中繼資料在：https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * 租用戶獨立端點位於 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。 在此端點位址中會出現 **common**，而不是租用戶網域名稱或識別碼。
 
-有關 Azure AD 發佈的聯合中繼資料文檔的資訊，請參閱[聯合中繼資料](../azuread-dev/azure-ad-federation-metadata.md)。
+有關 Azure AD 發布的同一個同資料文件的資訊,請參考[聯合中繼資料](../azuread-dev/azure-ad-federation-metadata.md)。

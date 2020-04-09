@@ -6,20 +6,22 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ce8df36d3417417a5f70a5385aa94d9c8c7ff0cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/06/2020
+ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674276"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873815"
 ---
-# <a name="consulting-service-creation-overview"></a>諮詢服務建立概述
+# <a name="create-a-consulting-service-offer"></a>建立諮詢服務產品
 
 > [!IMPORTANT]
 > 我們將您的諮詢服務服務服務從雲合作夥伴門戶遷移到合作夥伴中心。 在遷移產品/服務之前,請按照 Azure[和 Dynamics 365 雲合作夥伴門戶諮詢服務產品提供](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)的說明進行管理產品/服務。
 
-本文介紹如何將諮詢服務產品發佈到[Azure 應用商店](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 列出基於微軟[動態365](https://dynamics.microsoft.com/)和AppSource上的電源平臺的諮詢服務優惠。 在 Azure 應用商店中基於 Microsoft Azure 列出諮詢服務產品/
+本文介紹如何將諮詢服務產品發佈到[Azure 應用商店](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 基於微軟[動態365](https://dynamics.microsoft.com/)和AppSource上的電源平臺提供諮詢服務。 基於 Azure 應用商店上的 Microsoft Azure 的諮詢服務產品。
+
+要在 Azure 應用商店或 AppSource 諮詢服務中創建諮詢服務產品,您必須首先[在合作夥伴中心中擁有發行者帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account),並且必須在商業市場計劃中註冊您的帳戶。 在建立產品/服務之前,請查看[諮詢服務先決條件中的先決條件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)。
 
 ## <a name="publishing-benefits"></a>發佈的優點
 
@@ -30,58 +32,7 @@ ms.locfileid: "80674276"
 - 從這些市場獲得高質量的潛在客戶。
 - 讓 Microsoft 現場和電話銷售團隊推廣您的服務
 
-## <a name="requirements"></a>需求
-
-### <a name="business-requirements"></a>商業需求
-
-對於選擇 Azure 作為主要產品的產品/服務,您的產品/服務必須列出至少以下完全獲得的能力之一:
-
-- 應用程式開發
-- 應用程式整合
-- 應用程式生命週期管理
-- 雲端平台
-- 資料分析
-- 資料中心
-- 資料平台
-- DevOps
-
-對於選擇以下選項之一作為主要產品的優惠,您必須滿足列出的相應資格要求,或對服務產品相關的主要產品提供共同銷售產品。
-
-**客戶互動應用程式**
-
-- **適用於**: 動態 365 銷售, 動態 365 行銷, 動態 365 客戶服務, 動態 365 現場服務, 動態 365 人力資源
-
-- **標準**:必須在[雲業務應用程式能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)中獲得金牌或銀牌認證,以便獲得客戶參與選項。
-
-**財務與營運應用程式**
-
-- **適用於**: 動態 365 財務, 動態 365 運營, 動態 365 商務, 動態 365 人力資源, 動態 365 專案服務自動化
-
-- **標準**:必須在[雲業務應用程式能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)中獲得統一操作選項的金或銀認證。
-
-**Dynamics 365 Customer Insights**
-
-- **標準**: 必須至少有一個動態[365 客戶洞察](https://dynamics.microsoft.com/ai/customer-insights/)的在生產中成功實施,至少五個度量和五個市場區隔。
-
-**動態 365 商務中心**
-
-- **標準**:必須是[企業資源規劃能力](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)中的金或銀認證,並至少為三個客戶提供服務,或在 Microsoft AppSource 中發布了業務中心應用程式。
-
-**Power BI**
-
-- **條件**: 必須列在[Power BI 合作夥伴展示。](https://powerbi.microsoft.com/partner-showcase/)
-
-**Power Apps**
-
-- **標準**: 必須有資格享受[電源應用合作夥伴](https://aka.ms/PowerAppsPartner)計劃的高級福利。
-
-有關滿足這些先決條件的詳細資訊,請參閱[諮詢服務先決條件](consulting-service-prerequisites.md)。
-
-### <a name="logistical-requirements"></a>後勤需求
-
-要在 Azure 應用商店或 AppSource 諮詢服務中創建諮詢服務產品,您必須首先[在合作夥伴中心中擁有發行者帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account),並且必須在商業市場計劃中註冊您的帳戶。
-
-## <a name="create-a-new-consulting-service-offer-in-partner-center"></a>在合作夥伴中心創建新的諮詢服務產品
+## <a name="create-a-new-offer"></a>建立新的供應項目
 
 滿足上述要求后,請按照以下步驟創建諮詢服務產品。
 
@@ -153,7 +104,7 @@ ms.locfileid: "80674276"
 1. 如果選擇**Azure**的主要產品,請選擇最多三個**解決方案區域**。 這些功能使 Azure 應用商店中的客戶更容易找到您的產品/服務。 如果未&#39;未選擇 Azure,請跳過此步驟。
 2. 如果選擇了 Azure_以外的_主要產品,請選擇最多三個**適用產品**。 這些使 AppSource 中的客戶更容易找到您的產品/服務。 有關詳細資訊,請參閱[Microsoft AppSource 諮詢服務列表指南](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)(PDF)。
 3. 最多選擇您優惠的六**個產業**。 這將使客戶更容易找到您的產品/服務。
-4. 將貴公司獲得的三**項能力**添加到您的諮詢服務產品清單中。 除了 Azure 專家 MSP&#39;和 Azure 網路 MSP&#39;, 至少需要一項能力。
+4. 將貴公司獲得的三**項能力**添加到諮詢服務產品清單中。 除了 Azure 專家 MSP&#39;和 Azure 網路 MSP&#39;, 至少需要一項能力。
 
 選擇 **"保存"草稿**,然後再繼續下一節"優惠清單"。
 

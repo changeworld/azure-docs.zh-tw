@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b2de4114e8a1b48de2ad64b783d15f56fef4fc30
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743757"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985077"
 ---
 # <a name="publish-a-consulting-service-offer"></a>發佈諮詢服務供應項目
 
 >[!Important]
->從 2020 年 3 月 30 日起,我們將開始將諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
 
 當您完成 [供應項目設定]****、[電子店面詳細資料]**** 和 [連絡人]**** 之後，請選取 [發佈]**** 並提供電子郵件地址。 當 Microsoft 準備發佈您的供應項目時，您會收到一封電子郵件，讓您在上線之前先預覽。 您隨時可以返回入口網站來檢查供應項目的狀態。
 

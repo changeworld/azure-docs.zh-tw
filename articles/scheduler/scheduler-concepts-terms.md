@@ -9,19 +9,19 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898580"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878386"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 排程器中的概念、術語及實體
 
 > [!IMPORTANT]
-> [Azure 邏輯應用](../logic-apps/logic-apps-overview.md)正在替換[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 計畫程式。 要繼續處理在計畫程式中設置的作業，請儘快[遷移到 Azure 邏輯應用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 邏輯應用](../logic-apps/logic-apps-overview.md)正在替換[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 計劃程式。 要繼續處理在計畫程式中設定的作業,請儘快[移到 Azure 邏輯應用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 >
-> 計畫程式在 Azure 門戶中不再可用，但[REST API](/rest/api/scheduler)和[Azure 計畫程式 PowerShell Cmdlet](scheduler-powershell-reference.md)此時仍然可用，以便您可以管理作業和作業集合。
+> 計劃程式在 Azure 門戶中不再可用,但[REST API](/rest/api/scheduler)和[Azure 計畫程式 PowerShell cmdlet](scheduler-powershell-reference.md)此時仍然可用,以便您可以管理作業和作業集合。
 
 ## <a name="entity-hierarchy"></a>實體階層
 
@@ -29,7 +29,7 @@ Azure 排程器 REST API 會公開並使用這些主要實體或資源：
 
 | 單位 | 描述 |
 |--------|-------------|
-| **工作** | 定義單一週期性動作，以及簡單或複雜的執行策略。 動作可能包括 HTTP、儲存體佇列、服務匯流排佇列或服務匯流排主題要求。 | 
+| **工作 (Job)** | 定義單一週期性動作，以及簡單或複雜的執行策略。 動作可能包括 HTTP、儲存體佇列、服務匯流排佇列或服務匯流排主題要求。 | 
 | **工作集合** | 包含作業群組，並維護集合中作業所共用的設定、配額及節流。 身為 Azure 訂用帳戶擁有者，您可以建立作業集合，並根據作業的使用方式或應用程式界限將作業群組在一起。 作業集合具有下列屬性： <p>- 受限於一個區域。 <br>- 可讓您強制執行配額，以限制集合中所有作業的使用方式。 <br>- 配額包含 MaxJobs 和 MaxRecurrence。 | 
 | **工作歷史記錄** | 描述作業執行的詳細資料，例如，狀態和任何回應詳細資料。 |
 ||| 
@@ -40,7 +40,7 @@ Azure 排程器 REST API 會公開並使用這些主要實體或資源：
 
 ### <a name="job-management"></a>作業管理
 
-支援建立和編輯作業的作業。 所有作業都必須屬於現有作業集合，因此沒有隱含的建立作業。 如需詳細資訊，請參閱[排程器 REST API - 作業](https://docs.microsoft.com/rest/api/scheduler/jobs)。 以下是以下操作的 URI 位址：
+支援建立和編輯作業的作業。 所有作業都必須屬於現有作業集合，因此沒有隱含的建立作業。 如需詳細資訊，請參閱[排程器 REST API - 作業](https://docs.microsoft.com/rest/api/scheduler/jobs)。 以下是以下操作的 URI 位址:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>作業集合管理
 
-支援建立和編輯作業及作業集合的作業，這會對應到配額和共用設定。 例如，配額會指定最大作業數目和最小週期間隔。 如需詳細資訊，請參閱[排程器 REST API - 作業集合](https://docs.microsoft.com/rest/api/scheduler/jobcollections)。 以下是以下操作的 URI 位址：
+支援建立和編輯作業及作業集合的作業，這會對應到配額和共用設定。 例如，配額會指定最大作業數目和最小週期間隔。 如需詳細資訊，請參閱[排程器 REST API - 作業集合](https://docs.microsoft.com/rest/api/scheduler/jobcollections)。 以下是以下操作的 URI 位址:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>作業記錄管理
 
-支援使用 GET 作業擷取 60 天的作業執行記錄，例如作業經歷時間和作業執行結果。 包含根據狀況和狀態篩選的查詢字串參數支援。 如需詳細資訊，請參閱[排程器 REST API - 作業 - 列出作業記錄](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory)。 下面是此操作的 URI 位址：
+支援使用 GET 作業擷取 60 天的作業執行記錄，例如作業經歷時間和作業執行結果。 包含根據狀況和狀態篩選的查詢字串參數支援。 如需詳細資訊，請參閱[排程器 REST API - 作業 - 列出作業記錄](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory)。 下面是此操作的 URI 位址:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure 排程器支援多個作業類型： 
 
-* HTTP 作業 (包括支援 SSL 的 HTTPS 作業)，如果您有現有服務或工作負載的端點，適用此類型
+* HTTP 工作(包括支援 TLS 的 HTTPS 作業),用於現有服務或工作負載的終結點
 * 儲存體佇列作業，適用於使用儲存體佇列的工作負載，例如將訊息張貼到儲存體佇列
 * 服務匯流排佇列作業，適用於使用服務匯流排佇列的工作負載
 * 服務匯流排主題佇列作業，適用於使用服務匯流排主題的工作負載
@@ -86,11 +86,11 @@ Azure 排程器支援多個作業類型：
 |---------|----------|-------------| 
 | [**開始時間**](#start-time) | 否 | 包含時區位移的作業開始時間，格式為 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**行動**](#action) | 是 | 主要動作的詳細資料，其中可包括 **errorAction** 物件 | 
-| [**錯誤操作**](#error-action) | 否 | 次要動作 (在主要動作失敗時執行) 的詳細資料 |
+| [**錯誤動作**](#error-action) | 否 | 次要動作 (在主要動作失敗時執行) 的詳細資料 |
 | [**復發**](#recurrence) | 否 | 週期性作業的詳細資料，例如頻率和間隔 | 
-| [**重試策略**](#retry-policy) | 否 | 重試動作的頻率詳細資料 | 
+| [**重試原則**](#retry-policy) | 否 | 重試動作的頻率詳細資料 | 
 | [**狀態**](#state) | 是 | 作業目前狀態的詳細資料 |
-| [**status**](#status) | 是 | 作業目前狀態的詳細資料，而狀態會由服務控制 |
+| [**地位**](#status) | 是 | 作業目前狀態的詳細資料，而狀態會由服務控制 |
 ||||
 
 以下範例說明 HTTP 動作的完整作業定義，其中包含更完整的元素詳細資料，將在後面幾節中加以描述： 

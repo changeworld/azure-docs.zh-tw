@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745669"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981336"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 與 Dynamcis 365 諮詢服務供應項目
 
 >[!Important]
->從 2020 年 3 月 30 日起,我們將開始將諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
 
 本文說明如何將諮詢服務供應項目發佈至 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> 或 <a href="https://appsource.microsoft.com">AppSource</a>。 基於微軟<a href="https://dynamics.microsoft.com">動態365、Power</a> <a href="https://powerbi.microsoft.com">BI</a>和<a href="https://powerapps.microsoft.com">電源應用</a>的解決方案可以列在AppSource上。 以其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服務</a>為基礎的其他供應項目可以在 Azure Marketplace 中列出。
 

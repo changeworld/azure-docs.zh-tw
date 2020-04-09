@@ -1,11 +1,10 @@
 ---
-title: 生成在 Azure AD 使用者中登錄的應用
+title: 產生在 Azure AD 使用者登入的應用程式
 titleSuffix: Microsoft identity platform
 description: 演示如何構建可以從任何 Azure 活動目錄租戶登錄使用者的多租戶應用程式。
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,18 +13,18 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e15fb60ec339eae45f9f14a3333e8afe51fc05c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480856"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884081"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
-如果您提供「軟體即服務」(SaaS) 應用程式給許多組織，您可以將應用程式設定為可接受來自任何 Azure Active Directory (Azure AD) 租用戶的登入。 此配置稱為*使應用程式多租戶*。 任何 Azure AD 租用戶中的使用者在同意搭配您的應用程式使用其帳戶之後，便可登入您的應用程式。
+如果您提供「軟體即服務」(SaaS) 應用程式給許多組織，您可以將應用程式設定為可接受來自任何 Azure Active Directory (Azure AD) 租用戶的登入。 此設定為*應用程式多租戶*。 任何 Azure AD 租用戶中的使用者在同意搭配您的應用程式使用其帳戶之後，便可登入您的應用程式。
 
-如果您的現有應用程式有自身的帳戶系統，或支援其他雲端提供者的其他登入方式，您就可以輕鬆新增任何租用戶的 Azure AD 登入功能。 只需註冊應用，通過 OAuth2、OpenID 連接或 SAML 添加登錄代碼，並在應用程式中放置["使用 Microsoft 登錄"按鈕][AAD-App-Branding]。
+如果您的現有應用程式有自身的帳戶系統，或支援其他雲端提供者的其他登入方式，您就可以輕鬆新增任何租用戶的 Azure AD 登入功能。 只需註冊應用程式,透過 OAuth2、OpenID 連線或 SAML 新增登入程式碼,並在應用程式中放置['使用 Microsoft 登入"按鈕][AAD-App-Branding]。
 
 > [!NOTE]
 > 本文假設您已經熟悉如何為 Azure AD 建置單一租用戶應用程式。 如果您並不熟悉，請由[開發人員指南首頁][AAD-Dev-Guide]的其中一堂快速入門開始。
@@ -37,18 +36,18 @@ ms.locfileid: "79480856"
 3. [更新您的程式碼以處理多個簽發者值](#update-your-code-to-handle-multiple-issuer-values)
 4. [取得使用者和系統管理員的同意並進行適當的程式碼變更](#understand-user-and-admin-consent)
 
-讓我們仔細看看每個步驟。 您還可以直接跳轉到[示例"構建一個多租戶 SaaS Web 應用程式，該應用程式使用 Azure AD 和 OpenID 連接調用 Microsoft 圖形](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)。
+讓我們仔細看看每個步驟。 您還可以直接跳到[範例"建構多租戶 SaaS Web 應用程式,該應用程式使用 Azure AD 和 OpenID 連接呼叫 Microsoft 圖形](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>將註冊更新成多租用戶
 
-Azure AD 中的 Web 應用程式/API 註冊預設是單一租用戶。 您可以通過在[Azure 門戶][AZURE-portal]中的應用程式註冊的 **"身份驗證"** 窗格上查找 **"支援帳戶類型"** 開關並將其設置為**任何組織目錄中的帳戶**，從而使註冊成為多租戶。
+Azure AD 中的 Web 應用程式/API 註冊預設是單一租用戶。 您可以通過在[Azure 門戶][AZURE-portal]中的應用程式註冊的 **「身份驗證」** 窗格上查找 **「支援帳戶類型」** 開關並將其設置為**任何組織目錄中的帳戶**,從而使註冊成為多租戶。
 
 在 Azure AD 中，應用程式的「應用程式識別碼 URI」必須具全域唯一性，您才能將其設為多租用戶應用程式。 「應用程式識別碼 URI」是其中一種可在通訊協定訊息中識別應用程式的方式。 在單一租用戶應用程式中，只要該租用戶內有唯一的應用程式識別碼 URI 就已足夠。 就多租用戶應用程式而言，該 URI 則必須具全域唯一性，Azure AD 才能在所有租用戶中找到該應用程式。 系統會透過要求「應用程式識別碼 URI」必須具有與已驗證的 Azure AD 租用戶網域相符的主機名稱，來強制執行全域唯一性。
 
 根據預設，透過 Azure 入口網站建立的應用程式具有在建立應用程式時設定的全域唯一應用程式識別碼 URI，但您可以變更此值。 例如，如果租用戶的名稱是 contoso.onmicrosoft.com，則有效的「應用程式識別碼 URI」會是 `https://contoso.onmicrosoft.com/myapp`。 如果租用戶具有已驗證的網域 `contoso.com`，則有效的「應用程式識別碼 URI」也會是 `https://contoso.com/myapp`。 如果「應用程式識別碼 URI」沒有按照這個模式，將應用程式設定成多租用戶時就會失敗。
 
 > [!NOTE]
-> 預設情況下，本機用戶端註冊以及[Microsoft 標識平臺應用程式](./active-directory-appmodel-v2-overview.md)是多租戶的。 因此，您不需要採取任何動作來將這些應用程式註冊轉換成多租用戶。
+> 默認情況下,本機客戶端註冊以及[Microsoft標識平臺應用程式](./active-directory-appmodel-v2-overview.md)是多租戶的。 因此，您不需要採取任何動作來將這些應用程式註冊轉換成多租用戶。
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>將您的程式碼更新成將要求傳送給 /common
 
@@ -56,7 +55,7 @@ Azure AD 中的 Web 應用程式/API 註冊預設是單一租用戶。 您可以
 
 使用多租用戶應用程式時，應用程式事先並不知道使用者來自哪個租用戶，因此您無法將要求傳送給租用戶的端點。 反之，其會將要求傳送給在跨所有 Azure AD 租用戶進行多工作業的端點：`https://login.microsoftonline.com/common`
 
-當 Microsoft 標識平臺收到 /common 終結點上的請求時，它會在使用者中簽名，並因此發現使用者來自哪個租戶。 /公共終結點適用于 Azure AD 支援的所有身份驗證協定：OpenID 連接、OAuth 2.0、SAML 2.0 和 WS-聯合。
+當 Microsoft 標識平臺收到 /common 終結點上的請求時,它會在使用者中簽名,並因此發現使用者來自哪個租戶。 /公共終結點適用於 Azure AD 支援的所有身份驗證協定:OpenID 連接、OAuth 2.0、SAML 2.0 和 WS-聯合。
 
 然後，傳給應用程式的登入回應會包含代表使用者的權杖。 權杖中的簽發者值會告知應用程式該使用者來自哪個租用戶。 從 /common 端點傳回回應時，權杖中的簽發者值會與使用者的租用戶對應。
 
@@ -68,7 +67,7 @@ Azure AD 中的 Web 應用程式/API 註冊預設是單一租用戶。 您可以
 Web 應用程式和 Web API 從 Microsoft 標識平臺接收和驗證權杖。
 
 > [!NOTE]
-> 當本機用戶端應用程式請求和接收來自 Microsoft 標識平臺的權杖時，它們會將它們發送到 API，在那裡對其進行驗證。 原生應用程式不會驗證權杖，而且必須將它們視為不透明。
+> 當本機客戶端應用程式請求和接收來自 Microsoft 標識平臺的權杖時,它們會將它們發送到 API,在那裡對其進行驗證。 原生應用程式不會驗證權杖，而且必須將它們視為不透明。
 
 讓我們來看看應用程式如何驗證它從 Microsoft 標識平臺收到的權杖。 單一租用戶應用程式通常會採用類似以下的端點值：
 
@@ -104,7 +103,7 @@ Web 應用程式和 Web API 從 Microsoft 標識平臺接收和驗證權杖。
 
 ![說明對單層應用的同意][Consent-Single-Tier]
 
-這個同意體驗會受到應用程式所要求的權限影響。 Microsoft 標識平臺支援兩種許可權，即僅限應用的許可權和委派許可權。
+這個同意體驗會受到應用程式所要求的權限影響。 Microsoft 標識平台支援兩種許可權,即僅限應用的許可權和委派許可權。
 
 * 委派的權限可讓應用程式能夠充當登入的使用者來執行該使用者所能執行的一部分操作。 例如，您可以授與應用程式委派的權限來讀取登入之使用者的行事曆。
 * 僅限應用程式的權限會直接授與應用程式的識別身分。 例如，您可以將僅限應用程式的權限授與應用程式來讀取租用戶中的使用者清單，而且不論是誰登入此應用程式。
@@ -119,14 +118,14 @@ Web 應用程式和 Web API 從 Microsoft 標識平臺接收和驗證權杖。
 
 如果您的應用程式使用需要系統管理員同意的權限，您就必須要有相關的表示，例如可供系統管理員起始動作的按鈕或連結。 您的應用程式針對此動作傳送的要求是一個一般的 OAuth2/OpenID Connect 授權要求，其中也包含 `prompt=admin_consent` 查詢字串參數。 在系統管理員同意且系統已在客戶的租用戶中建立服務主體之後，後續的登入要求就不再需要 `prompt=admin_consent` 參數。 由於系統管理員已決定可接受要求的權限，因此從該時間點之後，就不會再提示租用戶中的任何其他使用者行使同意權。
 
-租用戶系統管理員可以停用一般使用者對應用程式行使同意權的能力。 如果停用這項功能，就一律需要系統管理員同意，才能在租用戶中使用應用程式。 如果要在禁用最終使用者同意的情況下測試應用程式，可以在**企業應用程式**下的**["使用者設置"](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** 部分的 Azure[門戶][AZURE-portal]中找到配置開關。
+租用戶系統管理員可以停用一般使用者對應用程式行使同意權的能力。 如果停用這項功能，就一律需要系統管理員同意，才能在租用戶中使用應用程式。 如果要在禁用最終使用者同意的情況下測試應用程式,可以在**企業應用程式**下的**[「使用者設置」](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** 部分的 Azure[門戶][AZURE-portal]中找到配置開關。
 
 如果應用程式要求的權限不需要系統管理員同意，則應用程式也可以使用 `prompt=admin_consent` 參數。 這項作業的使用時機範例如下：如果應用程式需要租用戶系統管理員「註冊」一次，之後就不會再提示其他使用者表示同意的情況。
 
 如果應用程式需要系統管理員同意，但系統管理員登入時未傳送 `prompt=admin_consent` 參數，則當系統管理員順利同意此應用程式時，**只會針對其使用者帳戶**套用該參數。 一般使用者將仍然無法登入此應用程式或對其行使同意權。 當您想要先讓租用戶系統管理員能夠瀏覽您的應用程式，然後才允許其他使用者存取時，這個功能相當有用。
 
 > [!NOTE]
-> 有些應用程式想要提供一種體驗，讓一般使用者能夠一開始即表示同意，之後應用程式即可讓系統管理員參與操作並要求需要系統管理員同意的權限。 今天，在 Azure AD 中註冊 v1.0 應用程式時，無法執行此操作;但是，使用 Microsoft 標識平臺 （v2.0） 終結點允許應用程式在運行時請求許可權，而不是在註冊時請求許可權，從而啟用此方案。 有關詳細資訊，請參閱[Microsoft 標識平臺終結點][AAD-V2-Dev-Guide]。
+> 有些應用程式想要提供一種體驗，讓一般使用者能夠一開始即表示同意，之後應用程式即可讓系統管理員參與操作並要求需要系統管理員同意的權限。 今天,在 Azure AD 中註冊 v1.0 應用程式時,無法執行此操作;但是,使用 Microsoft 標識平臺 (v2.0) 終結點允許應用程式在運行時請求許可權,而不是在註冊時請求許可權,從而啟用此方案。 有關詳細資訊,請參閱[Microsoft 標識平台終結點][AAD-V2-Dev-Guide]。
 
 ### <a name="consent-and-multi-tier-applications"></a>同意和多層應用程式
 
@@ -140,29 +139,29 @@ Web 應用程式和 Web API 從 Microsoft 標識平臺接收和驗證權杖。
 
 在本文最後的[相關內容](#related-content)一節中，會使用一個由多層原生用戶端呼叫 Web API 的範例來示範做法。 下圖為針對單一租用戶中註冊的多層應用程式表示同意的概觀。
 
-![說明對多層已知用戶端應用的同意][Consent-Multi-Tier-Known-Client]
+![說明對多層已知客戶端應用的同意][Consent-Multi-Tier-Known-Client]
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>多個租用戶中的多層
 
 如果在不同的租用戶中註冊不同的應用程式層，將會發生類似的情況。 例如，想像建置一個會呼叫 Office 365 Exchange Online API 的原生用戶端應用程式的情況。 若要開發此原生應用程式，然後讓此原生應用程式在客戶的租用戶中執行，就必須要有 Exchange Online 服務主體。 在此情況下，開發人員和客戶必須購買 Exchange Online，如此才能在其租用戶中建立服務主體。
 
-如果 API 是由 Microsoft 以外的組織構建的 API，則 API 的開發人員需要提供一種方式，讓客戶同意應用程式到其客戶的租戶中。 建議的設計是讓協力廠商開發人員構建 API，以便它也可以充當 Web 用戶端來實現註冊。 作法：
+如果 API 是由 Microsoft 以外的組織建構的 API,則 API 的開發人員需要提供一種方式,讓客戶同意應用程式到其客戶的租戶中。 建議的設計是讓第三方開發人員構建 API,以便它也可以充當 Web 用戶端來實現註冊。 作法：
 
 1. 遵循先前的章節，確保 API 實作多租用戶應用程式註冊/程式碼的需求。
-2. 除了公開 API 的作用域/角色外，請確保註冊包含"登錄和讀取使用者設定檔"許可權（預設情況下提供）。
+2. 除了公開 API 的作用域/角色外,請確保註冊包含「登錄和讀取使用者設定檔」許可權(預設情況下提供)。
 3. 在 Web 用戶端實作登入/註冊頁面，並依照[管理員同意](#admin-consent)指引操作。
 4. 當使用者同意應用程式後，就會在其租用戶中建立服務主體和同意委派連結，而原生應用程式可以取得 API 的權杖。
 
 下圖為針對不同租用戶中註冊的多層應用程式表示同意的概觀。
 
-![演示對多層多方應用的同意][Consent-Multi-Tier-Multi-Party]
+![展示對多層多方應用的同意][Consent-Multi-Tier-Multi-Party]
 
 ### <a name="revoking-consent"></a>撤銷同意
 
 使用者和系統管理員可以隨時撤銷對您應用程式的同意：
 
 * 使用者可藉由將個別應用程式從其[存取面板應用程式][AAD-Access-Panel]清單中移除，來撤銷對這些應用程式的存取權。
-* 管理員通過使用[Azure 門戶][AZURE-portal]的["企業應用程式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)"部分刪除應用程式來撤銷對應用程式的存取權限。
+* 管理員通過使用[Azure 門戶][AZURE-portal]的[「企業應用程式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)」部分刪除應用程式來撤銷對應用程式的訪問許可權。
 
 如果是由系統管理員代表租用戶中的所有使用者對應用程式行使同意權，使用者就不能個別撤銷存取權。 只有系統管理員才能撤銷存取權，並且只能針對整個應用程式撤銷。
 
@@ -176,7 +175,7 @@ Web 應用程式和 Web API 從 Microsoft 標識平臺接收和驗證權杖。
 
 ## <a name="related-content"></a>相關內容
 
-* [多租戶應用程式示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
+* [多租戶應用程式範例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
 * [應用程式品牌指南][AAD-App-Branding]
 * [應用程式物件和服務主體物件][AAD-App-SP-Objects]
 * [整合應用程式與 Azure Active Directory][AAD-Integrating-Apps]

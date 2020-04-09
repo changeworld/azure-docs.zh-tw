@@ -2,20 +2,20 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 818a7abe6799846470ba60871ba01ea0ced80382
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925149"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671621"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
@@ -102,7 +102,7 @@ ms.locfileid: "78925149"
 
 1. 將字串 `YourSubscriptionKey` 取代為您的訂用帳戶金鑰。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `YourServiceRegion`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `westus` 字串。
+1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
 
 1. 以您自己的檔案名稱取代字串 `helloworld.wav`。
 

@@ -1,10 +1,9 @@
 ---
-title: 選擇給定 API 的許可權 |微軟文檔
+title: 選擇給定 API 的權限
 description: 了解權限要求如何針對您正在開發之應用程式的用戶端及資源應用程式運作
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -12,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: cf28677e143b66a16b69c4363602537073f0be5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76704233"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883885"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何為指定的 API 選取權限 
 

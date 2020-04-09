@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7afba24d6334991a694d43b2258244ec425884d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478168"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985502"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -448,7 +448,7 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 * 擴充功能下載檔案及其結果。
 * 正在執行的命令和結果。
 
-您也可以使用 Azure CLI 來擷取「自訂指令碼擴充功能」的執行狀態：
+還可以檢索自定義文稿擴展的執行狀態,包括`commandToExecute`使用 Azure CLI 作為 傳遞的實際參數:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
@@ -457,13 +457,44 @@ az vm extension list -g myResourceGroup --vm-name myVM
 輸出看起來會像下列文字：
 
 ```output
-info:    Executing command vm extension get
-+ Looking up the VM "scripttst001"
-data:    Publisher                   Name                                      Version  State
-data:    --------------------------  ----------------------------------------  -------  ---------
-data:    Microsoft.Azure.Extensions  CustomScript                              2.0      Succeeded
-data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2.3      Succeeded
-info:    vm extension get command OK
+[
+  {
+    "autoUpgradeMinorVersion": true,
+    "forceUpdateTag": null,
+    "id": "/subscriptions/subscriptionid/resourceGroups/rgname/providers/Microsoft.Compute/virtualMachines/vmname/extensions/customscript",
+    "resourceGroup": "rgname",
+    "settings": {
+      "commandToExecute": "sh script.sh > ",
+      "fileUris": [
+        "https://catalogartifact.azureedge.net/publicartifacts/scripts/script.sh",
+        "https://catalogartifact.azureedge.net/publicartifacts/scripts/script.sh"
+      ]
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "typeHandlerVersion": "2.0",
+    "virtualMachineExtensionType": "CustomScript"
+  },
+  {
+    "autoUpgradeMinorVersion": true,
+    "forceUpdateTag": null,
+    "id": "/subscriptions/subscriptionid/resourceGroups/rgname/providers/Microsoft.Compute/virtualMachines/vmname/extensions/OmsAgentForLinux",
+    "instanceView": null,
+    "location": "eastus",
+    "name": "OmsAgentForLinux",
+    "protectedSettings": null,
+    "provisioningState": "Succeeded",
+    "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+    "resourceGroup": "rgname",
+    "settings": {
+      "workspaceId": "workspaceid"
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "typeHandlerVersion": "1.0",
+    "virtualMachineExtensionType": "OmsAgentForLinux"
+  }
+]
 ```
 
 ## <a name="next-steps"></a>後續步驟

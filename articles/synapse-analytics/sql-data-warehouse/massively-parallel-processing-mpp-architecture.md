@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744207"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884827"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure 突觸分析(以前是 SQL DW)體系結構
 
@@ -79,8 +79,6 @@ Synapse SQL 利用 Azure 儲存來保證使用者數據的安全。  由於數�
 這 60 個較小查詢中的每一個都會在其中一個資料散發中執行。 每個計算節點都會管理這 60 個散發中的一或多個。 具有最大計算資源的 SQL 池每個計算節點有一個分佈。 具有最小計算資源的 SQL 池具有一個計算節點上的所有分佈。  
 
 ## <a name="hash-distributed-tables"></a>雜湊分散式資料表
-
-雜湊分散式資料表可以針對大型資料表上的聯結和彙總提供最高查詢效能。
 
 雜湊分散式資料表可以針對大型資料表上的聯結和彙總提供最高查詢效能。
 

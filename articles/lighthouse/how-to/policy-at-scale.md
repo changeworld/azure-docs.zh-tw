@@ -3,12 +3,12 @@ title: 大規模地將 Azure 原則部署至委派的訂用帳戶
 description: 了解 Azure 委派資源管理如何讓您跨多個租用戶部署原則定義和原則指派。
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9015351c3fc8f374c5ce85712907fa05249cde11
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456850"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984567"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>大規模地將 Azure 原則部署至委派的訂用帳戶
 
@@ -18,7 +18,7 @@ ms.locfileid: "75456850"
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客戶租用戶之間進行查詢
 
-您可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml)，在您所管理客戶租用戶中的所有訂用帳戶之間進行查詢。 在此範例中，我們將識別這些訂用帳戶中目前不需要 HTTPS 流量的任何儲存體帳戶。  
+您可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml)，在您所管理客戶租用戶中的所有訂用帳戶之間進行查詢。 在此示例中,我們將標識這些訂閱中當前不需要 HTTPS 流量的任何存儲帳戶。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -32,7 +32,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 ## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>在多個客戶租用戶之間部署原則
 
-下列範例顯示如何使用 [Azure Resource Manager 範本](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json)，在多個客戶租用戶中的委派訂用帳戶之間，部署原則定義和原則指派。 此原則定義會要求所有儲存體帳戶都使用 HTTPS 流量，以防止建立不符合規範的任何新儲存體帳戶，以及將沒有設定的現有儲存體帳戶標示為不符合規範。
+下列範例顯示如何使用 [Azure Resource Manager 範本](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)，在多個客戶租用戶中的委派訂用帳戶之間，部署原則定義和原則指派。 此策略定義要求所有儲存帳戶使用 HTTPS 流量,防止創建不符合的任何新存儲帳戶,並在未將設置設置為不合規的情況下將現有存儲帳戶標記為不合規。
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -43,14 +43,14 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
     New-AzDeployment -Name mgmt `
                      -Location eastus `
-                     -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
+                     -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
                      -AsJob
 }
 ```
 
 ## <a name="validate-the-policy-deployment"></a>驗證原則部署
 
-部署 Azure Resource Manager 範本之後，您可以藉由嘗試在其中一個委派訂用帳戶中，建立其 **EnableHttpsTrafficOnly** 設定為 **false** 的儲存體帳戶，以確認已成功套用原則定義。 因為原則指派，所以您應該無法建立此儲存體帳戶。  
+部署 Azure 資源管理器樣本後,可以通過嘗試在其中一個委派訂閱中創建啟用**HSTrafficOnly**設定為**false**的儲存帳戶來確認策略定義已成功應用。 因為原則指派，所以您應該無法建立此儲存體帳戶。  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -63,7 +63,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您完成時，請移除部署所建立的原則定義和指派。
+完成後,刪除部署創建的策略定義和分配。
 
 ```powershell
 foreach ($ManagedSub in $ManagedSubscriptions)

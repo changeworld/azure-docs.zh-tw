@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632695"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877622"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 上執行 Apache Spark 作業
 
@@ -293,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 在上述範例中，Spark jar 檔案已上傳至 Azure 儲存體。 另一個選項是將 jar 檔案封裝至自訂建置的 Docker 映像。
 
-若要這樣做，請找出 Spark 映像 (位於 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目錄) 的 `dockerfile`。 為 `WORKDIR` 與 `ENTRYPOINT` 宣告之間某個位置的 Spark 作業 `jar` 新增 `ADD` 陳述式。
+若要這樣做，請找出 Spark 映像 (位於 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目錄) 的 `dockerfile`。 在`ADD``jar``WORKDIR``ENTRYPOINT`和聲明之間的某處添加Spark作業的語句。
 
 將 jar 路徑更新為您的開發系統上 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 檔案的位置。 您也可以使用自己的自訂 jar 檔案。
 

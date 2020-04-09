@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673919"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985723"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -342,7 +342,7 @@ ACU：180 - 240
 <sup>1</sup> 執行個體會隔離至單一客戶專用的硬體。
 <br>
 
-# <a name="nv-series"></a>NV 系列
+## <a name="nv-series"></a>NV 系列
 **比較新的大小推薦**: [NVv3 系列](nvv3-series.md)與[NVv4 系列](nvv4-series.md)
 
 NV 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) \(英文\) GPU 和 NVIDIA GRID 技術提供技術支援，適用於桌面加速應用程式和虛擬桌面，可供客戶將其資料或模擬視覺化。 使用者能夠在 NV 執行個體上，將其圖形密集型工作流程視覺化以獲得較佳的圖形功能，此外還能夠執行單精確度工作負載，例如編碼和轉譯。 NV 系列 VM 還由英特爾至強 E5-2690 v3 (Haswell) CPU 提供支援。

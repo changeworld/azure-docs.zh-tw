@@ -1,6 +1,6 @@
 ---
-title: Azure 前門 - 路由規則匹配監視 |微軟文檔
-description: 本文可説明您瞭解 Azure 前門如何匹配用於傳入請求的路由規則
+title: Azure 前門 - 路由規則匹配監視 |微軟文件
+description: 本文可說明您瞭解 Azure 前門如何符合用於傳入請求的路由規則
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471586"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878590"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 比對要求與路由規則的方式
 
-建立連線並進行 SSL 交握之後，當要求進入 Front Door 環境時，Front Door 首先會從所有設定中判斷符合該要求的特定路由規則，然後再執行定義的動作。 下列文件說明 Front Door 在處理 HTTP 要求時，如何判斷要使用的路由設定。
+建立連接並執行 TLS 握手後,當請求落在前門環境上時,前門首先做的一件事就是從所有配置中確定要匹配請求的特定路由規則,然後執行定義的操作。 下列文件說明 Front Door 在處理 HTTP 要求時，如何判斷要使用的路由設定。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door 路由設定的結構
 Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右邊」。 我們會比對連入要求與左邊的路由，而右邊則定義處理要求的方式。
@@ -29,7 +29,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 下列屬性可判斷連入要求與路由規則 (或左邊) 是否相符：
 
 * **HTTP 通訊協定** (HTTP/HTTPS)
-* **主機**（例如，www\.foo.com，.bar.com） \*
+* **主機**(例如,www\.foo.com,.bar.com) \*
 * **路徑** (例如 /\*、/users/\*、/file.gif)
 
 這些屬性是從內部展開，因此通訊協定/主機/路徑的每個組合都是可能的相符項目集合。
@@ -52,7 +52,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
-| C | foo.adventure-works.com，fabrikam.com\.  | /\*、/images/\* |
+| C | foo.adventure-works.com,fabrikam.com\.  | /\*、/images/\* |
 
 如果已將下列連入要求傳送到 Front Door，則會由上而下來比對下列路由規則：
 

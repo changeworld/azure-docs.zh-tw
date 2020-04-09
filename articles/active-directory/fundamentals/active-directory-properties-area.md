@@ -13,17 +13,17 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897575"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876179"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 新增組織的隱私權資訊
-本文說明租用戶系統管理員如何透過 Azure 入口網站，將隱私權相關資訊新增至組織的 Azure Active Directory (Azure AD) 租用戶。
+本文介紹租戶管理員如何通過 Azure 門戶向組織的 Azure 活動目錄 (Azure AD) 租戶添加與隱私相關的資訊。
 
-強烈建議您將全球隱私權連絡人和貴組織的隱私權聲明一併加入，讓內部員工和外部來賓均能檢閱您的原則。 由於隱私權聲明是為每個企業量身打造、專屬於該家企業，強烈建議您洽詢律師尋求協助。
+我們強烈建議您添加您的全球隱私聯繫人和您組織的隱私聲明,以便您的內部員工和外部訪客可以查看您的政策。 由於隱私權聲明是為每個企業量身打造、專屬於該家企業，強烈建議您洽詢律師尋求協助。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -32,29 +32,29 @@ ms.locfileid: "76897575"
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>若要存取 [屬性面板] 區域並新增隱私權資訊
 
-1.  以租用戶系統管理員身分登入 Azure 入口網站。
+1.    以租用戶系統管理員身分登入 Azure 入口網站。
 
-2.  在左導覽列中，選取 [Azure Active Directory]****，然後選取 [屬性面板]****。
+2.    在左導覽列中，選取 [Azure Active Directory]****，然後選取 [屬性面板]****。
 
     [屬性面板] **** 區域隨即出現。
 
     ![標明隱私權資訊區域的 [Azure AD 屬性面板] 區域](media/active-directory-properties-area/properties-area.png)
 
-3.  為您的員工新增隱私權資訊：
+3.    為您的員工新增隱私權資訊：
 
     - **技術聯絡人。** 請輸入組織中技術支援聯絡人的電子郵件地址。
     
     - **全域隱私權聯絡人。** 請輸入負責處理個人資料隱私權問題的聯絡人電子郵件地址。 若發生資料外洩情事，Microsoft 也會連繫此人員。 如果此處沒有列出人員，Microsoft 會聯絡您的全域系統管理員。
 
-    - **隱私權聲明 URL。** 請輸入貴組織用以說明內部及外部來賓資料隱私權處理方式的文件連結。
+    - **隱私權聲明 URL。** 鍵入指向組織文檔的連結,該連結描述您的組織如何處理內部和外部來賓的數據隱私。
 
         >[!Important]
-        >如果未加入自己的隱私權聲明或隱私權聯絡人，外部來賓會在 [檢閱使用權限] **** 方塊中看到文字說明：**<_您的組織名稱_ > 並未提供可供檢閱的條款連結**。 例如，來賓使用者在受邀透過 B2B 共同作業存取組織時，便會看到此訊息。
+        >如果您不包含自己的隱私聲明或隱私連絡人,您的外部訪客將在 **「審閱權限」** 框中看到文字,該文字顯示,**<_您的組織名稱_>未提供指向其条款的链接,供您查看**。 例如，來賓使用者在受邀透過 B2B 共同作業存取組織時，便會看到此訊息。
 
         ![顯示該訊息的 [B2B 共同作業檢閱使用權限] 方塊](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  選取 [儲存]****。
+4.    選取 [儲存]  。
 
 ## <a name="next-steps"></a>後續步驟
-- [Azure Active Directory B2B 共同作業邀請兌換](https://aka.ms/b2bredemption)
+- [Azure Active Directory B2B 共同作業邀請兌換](../b2b/redemption-experience.md)
 - [在 Azure Active Directory 中新增或變更使用者的設定檔資訊](active-directory-users-profile-azure-portal.md)

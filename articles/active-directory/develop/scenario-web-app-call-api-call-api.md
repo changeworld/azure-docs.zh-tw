@@ -1,33 +1,30 @@
 ---
-title: 從 Web 應用程式調用 Web api - 微軟身份平臺 |蔚藍
-description: 瞭解如何構建調用 Web API 的 Web 應用（調用受保護的 Web API）
+title: 從 Web 應用程式呼叫 Web api - 微軟身份平臺 |蔚藍
+description: 瞭解如何建構 Web API 的 Web 應用(呼叫受保護的 Web API)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758966"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881803"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>調用 Web API 的 Web 應用：調用 Web API
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>呼叫 Web API 的 Web 應用:呼叫 Web API
 
-現在您有了權杖，就可以調用受保護的 Web API。
+現在您有了權杖,就可以呼叫受保護的 Web API。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-下面是 的簡化代碼。 `HomeController` 此代碼獲取一個權杖，稱為 Microsoft 圖形。 已添加代碼以演示如何將 Microsoft 圖形稱為 REST API。 Microsoft 圖形 API 的 URL 在 appsettings.json 檔中提供，並在名為`webOptions`的變數中讀取：
+下面是的簡化代碼。 `HomeController` 此代碼獲取一個令牌,稱為 Microsoft 圖形。 已添加代碼以展示如何將 Microsoft 圖形稱為 REST API。 Microsoft 圖形 API 的 URL 在 appsettings.json`webOptions`檔中提供,並在名為的變數中讀取:
 
 ```JSon
 {
@@ -84,9 +81,9 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > 您可以使用同一原則調用任何 Web API。
 >
-> 大多數 Azure Web API 都提供了一個 SDK，該 SDK 簡化了調用 API 的 SDK。 微軟圖形也是如此。 在下一篇文章中，您將瞭解在哪裡可以找到說明 API 使用的教程。
+> 大多數 Azure Web API 都提供了一個 SDK,該 SDK 簡化了呼叫 API 的 SDK。 微軟圖形也是如此。 在下一篇文章中,您將瞭解在哪裡可以找到說明 API 使用的教程。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {

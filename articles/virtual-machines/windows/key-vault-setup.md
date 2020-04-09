@@ -1,10 +1,10 @@
 ---
-title: 在 Azure 資源管理器中為 Windows VM 設置金鑰保存庫
+title: 在 Azure 資源管理員中為 Windows VM 設定金鑰保管庫
 description: 如何設定要與 Azure Resource Manager 虛擬機器搭配使用的金鑰保存庫。
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
-ms.author: kasing
-ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 3dcf82a8d4bc698c1900903649a2dd5a383f64b4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243142"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878403"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>為 Azure Resource Manager 中的虛擬機器設定金鑰保存庫
 
@@ -51,7 +51,7 @@ ms.locfileid: "79243142"
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-然後，要啟用用於範本部署的金鑰保存庫，運行以下命令：
+然後,要啟用用於範本部署的金鑰保管庫,運行以下命令:
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
@@ -70,4 +70,4 @@ ms.locfileid: "79243142"
       }
     }
 
-有關使用範本創建金鑰保存庫時可以配置的其他選項，請參閱[創建金鑰保存庫](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。
+有關使用樣本建立金鑰保存式庫時可以設定的其他選項,請參考[金鑰保存庫](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。

@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 0f7c48c47e400c2db53b024267fbf9d9690ea404
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a39cd7aa2c15fedeaf69408d8c8ae8c6b0848fed
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204676"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677394"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Azure 保留折扣如何套用至 Azure 專用主機
 
@@ -21,7 +21,7 @@ ms.locfileid: "79204676"
 
 保留折扣採「不用則作廢」  的原則。 因此，如果您有任何一小時沒有相符的資源，就會失去該小時的保留數量。 您無法遞轉未使用的保留時數。
 
-當您刪除專用主機時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」 ** 保留時數。
+當您刪除專用主機時，保留折扣會自動套用至指定範圍中另一個相符的資源。 如果在指定的範圍內找不到相符的資源，則會「失去」  保留時數。
 
 ## <a name="reservation-discount-for-dedicated-hosts"></a>專用主機的保留折扣
 

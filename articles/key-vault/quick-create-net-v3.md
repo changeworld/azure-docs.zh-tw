@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 67dedfce4be81fdf686918a310b89cf463ed389a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dc9c55c7caf2f78d66d8873e2da8ed7efdbdcec9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457248"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411628"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>快速入門：適用於 .NET 的 Azure Key Vault 用戶端程式庫 (SDK v3)
 
@@ -153,13 +153,26 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 在建置和執行應用程式前，請先使用 `setx` 命令將 `akvClientId`、`akvClientSecret`、`akvTenantId` 和 `akvSubscriptionId` 環境變數設定為您在前面記下的值。
 
+**Windows**
+
 ```console
-setx akvClientId <your-clientID>
+setx akvClientId "<your-clientID>"
+setx akvClientSecret "<your-clientSecret>"
+```
 
-setx akvClientSecret <your-clientSecret>
-````
+**Linux**
 
-每次呼叫 `setx` 時，都應該會收到「成功：指定的值已儲存」的回應。
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
+
+**MacOS**
+
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
 
 請將這些環境變數指派給程式碼中的字串，然後藉由將字串傳遞至 [KeyVaultClient 類別](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)來驗證應用程式：
 

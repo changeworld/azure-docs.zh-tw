@@ -4,10 +4,10 @@ description: 本教學課程示範如何使用批次測試來驗證 Language Und
 ms.topic: tutorial
 ms.date: 03/02/2020
 ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78250484"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教學課程：批次測試資料集

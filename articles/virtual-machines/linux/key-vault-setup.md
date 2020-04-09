@@ -1,19 +1,19 @@
 ---
-title: 為 Linux VM 設置 Azure 金鑰保存庫
+title: 為 Linux VM 設定 Azure 金鑰保管庫
 description: 如何使用 Azure CLI 設定要與 Azure Resource Manager 虛擬機器搭配使用的 Key Vault。
-author: singhkays
-manager: gwallace
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
-ms.author: kasing
-ms.openlocfilehash: c9659c38e349bd62f22ed0d0839d97651b1b3b66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944809"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879474"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>如何使用 Azure CLI 設定虛擬機器的 Key Vault
 

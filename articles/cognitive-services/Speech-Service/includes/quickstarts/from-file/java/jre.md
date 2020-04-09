@@ -2,20 +2,20 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/10/2020
+ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 4e0959155b3f3e0821ffece9de0faba92486d503
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: a33bc7dd59f8f5ac04d9d016c11e44efa438158d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79082547"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671174"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -109,7 +109,7 @@ ms.locfileid: "79082547"
 
 1. 將字串 `YourSubscriptionKey` 取代為您的訂用帳戶金鑰。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `YourServiceRegion`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `westus` 字串。
+1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
 
 1. 以您自己的檔案名稱取代字串 `whatstheweatherlike.wav`。
 
