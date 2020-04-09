@@ -1,6 +1,6 @@
 ---
-title: 隔離 Azure 服務匯流排應用程式，防止中斷和災難
-description: 本文提供了保護應用程式免受 Azure 服務匯流排中斷的技術。
+title: 隔離 Azure 服務總線應用程式,防止中斷和災難
+description: 本文提供了保護應用程式免受 Azure 服務總線中斷的技術。
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259249"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984941"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>將應用程式與服務匯流排中斷和災難隔絕的最佳做法
 
@@ -29,11 +29,11 @@ ms.locfileid: "79259249"
 
 ### <a name="geo-disaster-recovery"></a>異地災害復原
 
-「服務匯流排進階層」支援命名空間層級的異地災害復原。 有關詳細資訊，請參閱[Azure 服務匯流排地質災害恢復](service-bus-geo-dr.md)。 災害復原功能僅適用於[進階 SKU](service-bus-premium-messaging.md)，其會實作中繼資料災害復原，並依賴主要和次要災害復原命名空間。
+「服務匯流排進階層」支援命名空間層級的異地災害復原。 有關詳細資訊,請參閱[Azure 服務總線地質災害恢復](service-bus-geo-dr.md)。 災害復原功能僅適用於[進階 SKU](service-bus-premium-messaging.md)，其會實作中繼資料災害復原，並依賴主要和次要災害復原命名空間。
 
 ### <a name="availability-zones"></a>可用性區域
 
-「服務匯流排進階 SKU」支援[可用性區域](../availability-zones/az-overview.md)，可在 Azure 區域內提供錯誤隔離位置。
+「服務匯流排進階 SKU」支援[可用性區域](../availability-zones/az-overview.md)，可在 Azure 區域內提供錯誤隔離位置。 服務總線管理消息存儲的三個副本(1 個主存儲和 2 個輔助副本)。 服務總線使所有三個副本同步用於數據和管理操作。 如果主副本失敗,其中一個輔助副本將提升為主副本,而沒有察覺到的停機時間。 如果應用程式看到與服務總線的暫時斷開連接,SDK 中的重試邏輯將自動重新連接到服務總線。 
 
 > [!NOTE]
 > 「Azure 服務匯流排進階層」的「可用性區域」支援僅適用於有可用性區域存在的 [Azure 區域](../availability-zones/az-overview.md#services-support-by-region)。
@@ -78,7 +78,7 @@ ms.locfileid: "79259249"
 [搭配服務匯流排標準層的異地複寫][Geo-replication with Service Bus Standard Tier] \(英文\) 範例示範傳訊實體的被動複寫。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>保護轉送端點免於發生資料中心中斷或災害
-[Azure 中繼](../service-bus-relay/relay-what-is-it.md)終結點的異地複製允許在存在服務匯流排中斷時訪問公開中繼終結點的服務。 若要達到異地複寫，服務必須在不同的命名空間中建立兩個轉送端點。 命名空間必須位於不同的資料中心而兩個端點必須具有不同的名稱。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下找到主要端點，並在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下找到其次要的對應項目。
+[Azure 中繼](../service-bus-relay/relay-what-is-it.md)終結點的異地複製允許在存在服務總線中斷時訪問公開中繼終結點的服務。 若要達到異地複寫，服務必須在不同的命名空間中建立兩個轉送端點。 命名空間必須位於不同的資料中心而兩個端點必須具有不同的名稱。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下找到主要端點，並在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下找到其次要的對應項目。
 
 然後服務會接聽這兩個端點，且用戶端可以透過任一端點叫用服務。 用戶端應用程式會隨機挑選其中一個轉送做為主要端點，並將其要求傳送至作用中的端點。 如果作業失敗並出現錯誤代碼，此失敗代表轉送端點無法使用。 應用程式會開啟備份端點的通道並重新發出要求。 作用中和備份端點會在這一點交換角色：用戶端應用程式會將舊的使用中端點視為新的備份端點，而將舊的備份端點視為新的作用中端點。 如果這兩個傳送作業都失敗，兩個實體的角色會保持不變並傳回錯誤。
 

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: a989113c80cd8189cce9da959fe27509297f677a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745698"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983325"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模組 SKU 索引標籤
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
 
 可使用 [新增供應項目]**** 頁面的 [SKU]**** 索引標籤，建立一個或一個以上的 SKU，並建立 SKU 與新供應項目之間的關聯性。  可以使用不同的 SKU，依功能集、帳單模式或其他部分特性，讓解決方案彼此互有差異。
 
@@ -112,7 +112,7 @@ ms.locfileid: "80745698"
 | **資源群組名稱\***      | ACR 的資源群組名稱。|
 | **登錄表格名稱\***  | 您的 ACR 登錄名稱。 只會複製登錄名稱，而不是登入伺服器名稱 (例如，不含 `azurecr.io`。) |
 | **儲存機制名稱\***  | ACR 的存放庫名稱包含您的 IoT Edge 模組。 **注意：** 設定名稱之後，即無法變更。 請使用唯一不重複的名稱，以確保您帳戶中不會有其他相同名稱的供應項目。 |
-| **使用者名稱\*** | 與 ACR 相關聯的使用者名稱 (系統管理員使用者名稱)。 |
+| **使用者\*** | 與 ACR 相關聯的使用者名稱 (系統管理員使用者名稱)。 |
 | **密碼\*** | 與 ACR 相關聯的密碼。 |
 |    |  ***影像版本***   |
 | **影像標記或摘要\*** | 其必須至少包含 `latest` 標籤和版本標籤 (例如，以 `xx.xx.xx-` 開頭，其中 xx 是數字)， 且應是[資訊清單標籤](https://github.com/estesp/manifest-tool)，以將多個平台設為目標。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 您可以使用標籤來新增多個版本的 IoT Edge 模組。 所有資訊清單標籤 (除了 `latest` 以外) 必須以 `X.Y-` 或 `X.Y.Z-` 開頭，其中 X、Y、Z 是整數。 請至[「準備 IoT Edge 模組的技術資產」一文的標籤和版本設定段落](./cpp-create-technical-assets.md)進一步了解。 <br/> 例如，如果 `latest` 標籤指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32`，以及 `1.0.1-windows-arm32`，則需要在此處加入這 6 個標籤。 |

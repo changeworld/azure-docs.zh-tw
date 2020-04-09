@@ -3,12 +3,12 @@ title: 監視管理租戶中的委派變更
 description: 瞭解如何監視從客戶租戶到管理租戶的委派活動。
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421913"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985145"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視管理租戶中的委派變更
 
@@ -73,7 +73,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 創建具有監視讀取器訪問許可權的新服務主體帳戶後,可以使用該帳戶查詢和報告租戶中的委派活動。 
 
-[此 Azure PowerShell 文稿](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes)可用於查詢過去 1 天的活動,並報告任何添加或刪除的代表團(或未成功的嘗試)。 它查詢[租戶活動日誌](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List)數據,然後構造以下值以報告添加或刪除的代表團:
+[此 Azure PowerShell 文稿](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)可用於查詢過去 1 天的活動,並報告任何添加或刪除的代表團(或未成功的嘗試)。 它查詢[租戶活動日誌](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List)數據,然後構造以下值以報告添加或刪除的代表團:
 
 - **委派資源 Id:** 委派的訂閱或資源群組的 ID
 - **客戶租戶 ID**:客戶租戶 ID

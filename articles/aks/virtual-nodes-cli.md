@@ -1,15 +1,16 @@
 ---
-title: 在 Azure Kubernetes Service (AKS) 中使用 Azure CLI 建立虛擬節點
+title: 使用 Azure CLI 建立虛擬節點
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure CLI 建立使用虛擬節點執行 Pod 的 Azure Kubernetes Service (AKS) 叢集。
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616472"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984669"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -66,7 +67,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [主機別名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI 中執行官[的論據](../container-instances/container-instances-exec.md#restrictions)
 * [守護程式不會](concepts-clusters-workloads.md#statefulsets-and-daemonsets)將窗格部署到虛擬節點
-* 與虛擬節點一起不支援[Windows 伺服器節點(目前在 AKS 中預覽)。](windows-container-cli.md) 您可以使用虛擬節點來計畫 Windows Server 容器,而無需在 AKS 群集中使用 Windows 伺服器節點。
+* 虛擬節點支援調度 Linux pod。 您可以手動安裝開源[虛擬庫貝萊特 ACI](https://github.com/virtual-kubelet/azure-aci)提供程式,以將 Windows 伺服器容器安排到 ACI。 
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
@@ -74,7 +75,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 若要開啟 Cloud Shell，請選取程式碼區塊右上角的 [試試看]****。 您還可以通過訪問[https://shell.azure.com/bash](https://shell.azure.com/bash)在單獨的瀏覽器選項卡中啟動雲外殼。 選擇**複製程式**以複製代碼塊,將其貼到雲外殼中,然後按 Enter 以執行它。
 
-如果您偏好在本機安裝和使用 CLI，本文需要有 Azure CLI 2.0.49 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級,請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您偏好在本機安裝和使用 CLI，本文需要有 Azure CLI 2.0.49 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 

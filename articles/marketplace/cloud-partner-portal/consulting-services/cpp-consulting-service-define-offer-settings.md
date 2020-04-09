@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7b2c9d136a32e54ce5b5db8f6ce9ba8cd63a4f3c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3c168d0bd13e7c335841ac4016f18464cd50d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745641"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985111"
 ---
 # <a name="offer-settings-tab"></a>供應項目設定索引標籤
 
 >[!Important]
->從 2020 年 3 月 30 日起,我們將開始將諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
 
 在新**優惠**螢幕上,第一步是創建產品/服務標識。 供應項目身分識別由三個部分組成：**供應項目識別碼**、**發行者識別碼**及**名稱**。 以下各節會分別說明上述各部分。
 

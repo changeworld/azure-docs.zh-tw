@@ -3,13 +3,13 @@ title: 在 Azure 庫伯奈斯服務 (AKS) 中使用多個節點池
 description: 瞭解如何在 Azure 庫伯奈斯服務 (AKS) 中為叢集建立和管理多個節點池
 services: container-service
 ms.topic: article
-ms.date: 03/10/2020
-ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.date: 04/08/2020
+ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616503"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984907"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure 庫伯奈斯服務 (AKS) 中為群集建立和管理多個節點池
 
@@ -22,7 +22,7 @@ ms.locfileid: "80616503"
 
 ## <a name="before-you-begin"></a>開始之前
 
-您需要 Azure CLI 版本 2.2.0 或更高版本安裝和配置。 執行 `az --version` 以尋找版本。 如果需要安裝或升級,請參閱[安裝 Azure CLI][install-azure-cli]。
+您需要 Azure CLI 版本 2.2.0 或更高版本安裝和配置。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations"></a>限制
 
@@ -513,9 +513,9 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     ...
     "provisioningState": "Creating",
     ...
-    "nodeTaints":  {
-      "sku": "gpu:NoSchedule"
-    },
+    "nodeTaints":  [
+      "sku=gpu:NoSchedule"
+    ],
     ...
   },
  ...

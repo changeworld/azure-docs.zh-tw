@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452076"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984532"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動調整簡介
 自動調整是 Service Fabric 的一項額外功能，可根據服務所回報的負載，或根據其資源使用情況，來動態調整服務。 自動調整提供絕佳的彈性，並可讓您依需求佈建額外的服務執行個體或分割區。 整個自動調整程序是自動化並在背景執行的，在您於服務上設定原則之後，即無須在服務層級進行手動調整作業。 您可以在建立服務時，或隨時藉由更新服務，來開啟自動調整功能。
@@ -40,7 +40,7 @@ ms.locfileid: "75452076"
 第一種觸發程序所根據的是無狀態服務分割區中的執行個體負載。 計量負載會先經過平滑處理以取得分割區每個執行個體的負載，然後從分割區的所有執行個體中算出這些值的平均值。 決定服務調整時機的因素有三個：
 
 * _較低的負載閾值_是確定何時在**中縮放**服務的值。 如果分割區的所有執行個體平均負載低於此值，就會相應縮小服務規模。
-* _上負載閾值_是確定何時**將服務橫向擴展**的值。如果分區的所有實例的平均負載高於此值，則服務將縮小。
+* _上負載閾值_是確定何時**將服務橫向擴展**的值。如果分區的所有實例的平均負載高於此值,則服務將縮小。
 * 「調整間隔」__ 會決定檢查觸發程序的頻率。 檢查觸發程序之後，如果需要調整，就會套用此機制。 如果不需要調整，則不會執行任何動作。 在這兩種情況下，在調整間隔再次到期之前，都不會再次檢查觸發程序。
 
 此觸發程序只能與無狀態服務 (無狀態容器或 Service Fabric 服務) 搭配使用。 如果服務有多個分割區，將會針對每個分割區個別評估觸發程序，而且每個分割區會獨立套用指定的機制。 因此，在此情況下，根據分割區的負載，服務可能會同時有一些分割區將相應放大規模，有一些將相應縮小規模，以及一些將完全不調整。
@@ -110,7 +110,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 第二種觸發程序乃是根據一個服務的所有分割區負載。 計量負載會先經過平滑處理以取得分割區每個複本或執行個體的負載。 就具狀態服務而言，分割區的負載被視為是主要複本的負載，而就無狀態服務而言，分割區的負載則是分割區所有執行個體的平均負載。 系統會從服務的所有分割區中算出這些值的平均值，然後使用此值來觸發自動調整。 與前一個機制相同，決定服務調整時機的因素有三個：
 
 * _較低的負載閾值_是確定何時在**中縮放**服務的值。 如果服務的所有分割區平均負載低於此值，就會相應縮小服務規模。
-* _上負載閾值_是確定何時**將服務橫向擴展**的值。如果服務的所有分區的平均負載高於此值，則服務將縮小。
+* _上負載閾值_是確定何時**將服務橫向擴展**的值。如果服務的所有分區的平均負載高於此值,則服務將縮小。
 * 「調整間隔」__ 會決定檢查觸發程序的頻率。 檢查觸發程序之後，如果需要調整，就會套用此機制。 如果不需要調整，則不會執行任何動作。 在這兩種情況下，在調整間隔再次到期之前，都不會再次檢查觸發程序。
 
 此觸發程序可以同時與具狀態和無狀態服務搭配使用。 唯一能夠與此觸發程序搭配使用的機制是 AddRemoveIncrementalNamedPartitionScalingMechanism。 當服務相應放大規模時，就會新增一個分割區，而當服務相應縮小規模時，則會移除其中一個現有的分割區。 建立或更新服務時，會檢查一些限制，而如果不符合下列條件，服務的建立/更新就會失敗：
@@ -136,6 +136,9 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 
 ### <a name="using-application-manifest"></a>使用應用程式資訊清單
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

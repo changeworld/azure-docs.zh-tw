@@ -1,5 +1,5 @@
 ---
-title: 使用流量管理器跨多個 Azure CDN 終結點進行容錯移轉
+title: 使用流量管理器跨多個 Azure CDN 終結點進行故障轉移
 description: 了解如何設定 Azure 流量管理員與 Azure CDN 端點。
 services: cdn
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d44e53520481e4ada5c2f16f0c56a4a6a724ec1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083010"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892473"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理員設定多個 Azure CDN 端點之間的容錯移轉
 
@@ -77,12 +77,12 @@ ms.locfileid: "74083010"
     >
 
 
-2.  從您的 Azure CDN 設定檔中，選取第一個 CDN 端點 (Akamai)。 選擇**添加自訂域**並輸入*cdndemo101.dddogpetcare.online*. 確認用來驗證自訂網域的核取記號為綠色。 
+2.  從您的 Azure CDN 設定檔中，選取第一個 CDN 端點 (Akamai)。 選擇**自訂網**並輸入*cdndemo101.dddogpetcare.online*. 確認用來驗證自訂網域的核取記號為綠色。 
 
     Azure CDN 會使用 cdnverify** 子網域來驗證 DNS 對應，以完成此註冊程序。 如需詳細資訊，請參閱[建立 CNAME DNS 記錄](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 這個步驟可讓 Azure CDN 辨識自訂網域，以便回應其要求。
     
     > [!NOTE]
-    > 要從 Akamai 設定檔在**Azure CDN**上啟用 SSL，必須直接將自訂域命名為終結點。 尚未支援啟用 SSL 的 cdn 驗證。 
+    > 要從 Akamai 設定檔在**Azure CDN**上啟用 TLS,必須直接將自訂域命名為終結點。 尚未支援啟用 TLS 的 cdn 驗證。 
     >
 
 3.  請返回自訂網域網域提供者的網站，並且更新您建立的第一個 DNS 對應，以便將自訂網域對應至第二個 CDN 端點。
@@ -91,7 +91,7 @@ ms.locfileid: "74083010"
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. 從您的 Azure CDN 設定檔中，選取第二個 CDN 端點 (Verizon)，然後重複步驟 2。 選擇 **"添加自訂域**"，然後輸入*cdndemo101.dddogpetcare.online*.
+4. 從您的 Azure CDN 設定檔中，選取第二個 CDN 端點 (Verizon)，然後重複步驟 2。 選擇 **'新增自訂網**域 ',然後輸入*cdndemo101.dddogpetcare.online*.
  
 完成這些步驟之後，就會以 Azure 流量管理員設定具有容錯移轉功能的多 CDN 服務。 您將能夠從自訂網域存取測試 URL。 若要測試功能，請停用主要 CDN 端點，並確認該要求已正確移往次要 CDN 端點。 
 

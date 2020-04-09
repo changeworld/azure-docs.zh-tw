@@ -1,67 +1,63 @@
 ---
-title: 配置調用 Web API 的守護程式應用 - 微軟身份平臺 |蔚藍
-description: 瞭解如何為調用 Web API（應用配置）的守護程式應用程式佈建代碼
+title: 設定呼叫 Web API 的守護程式應用 - 微軟身份平臺 |蔚藍
+description: 瞭解如何為呼叫 Web API(應用設定)的守護程式應用程式設定碼
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb2cc90e586f71bb7c90efd62ba3705cd9223bc5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611832"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885492"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>調用 Web API 的守護程式應用 - 代碼配置
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 Web API 的守護程式應用程式 - 程式碼設定
 
-瞭解如何為調用 Web API 的守護進程應用程式佈建代碼。
+瞭解如何為呼叫 Web API 的守護程式應用程式設定代碼。
 
-## <a name="msal-libraries-that-support-daemon-apps"></a>支援守護程式應用的 MSAL 庫
+## <a name="msal-libraries-that-support-daemon-apps"></a>支援守護應用程式應用程式應用程式的 MSAL 函式庫
 
-這些 Microsoft 庫支援守護進程應用：
+這些 Microsoft 函式庫支援守護程式應用程式:
 
   MSAL 程式庫 | 描述
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET 框架和 .NET 核心平臺支援用於構建守護進程應用程式。 （不支援 UWP、Xamarin.iOS 和 Xamarin.Android，因為這些平臺用於構建公共用戶端應用程式。
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支援 Python 中的守護進程應用程式。
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支援 JAVA 中的守護進程應用程式。
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET 框架和 .NET 核心平台支援用於建置守護程序應用程式。 (不支援 UWP、Xamarin.iOS 和 Xamarin.Android,因為這些平臺用於建置公共用戶端應用程式。
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支援 Python 中的守護程序應用程式。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支援 Java 中的守護程序應用程式。
 
-## <a name="configure-the-authority"></a>配置許可權
+## <a name="configure-the-authority"></a>設定權限
 
-守護進程應用程式使用應用程式許可權，而不是委派的許可權。 因此，他們支援的帳戶類型不能是任何組織目錄中的帳戶或任何個人 Microsoft 帳戶（例如，Skype、Xbox、Outlook.com）。 沒有租戶管理員同意 Microsoft 個人帳戶的守護進程應用程式。 您需要選擇*我的組織中的帳戶*或*任何組織的帳戶*。
+守護程序應用程式使用應用程式許可權,而不是委派的許可權。 因此,他們支援的帳戶類型不能是任何組織目錄中的帳戶或任何個人 Microsoft 帳戶(例如,Skype、Xbox、Outlook.com)。 沒有租戶管理員同意 Microsoft 個人帳戶的守護程序應用程式。 您必須選擇*我的組織的帳戶*或*任何組織的帳戶*。
 
-因此，應租戶應用程式佈建中指定的許可權（指定租戶 ID 或與組織關聯的功能變數名稱）。
+因此,應租戶應用程式配置中指定的許可權(指定租戶ID或與組織關聯的功能變數名稱)。
 
-如果您是 ISV，並且想要提供多租戶工具，則可以使用`organizations`。 但請記住，您還需要向客戶解釋如何授予管理員同意。 有關詳細資訊，請參閱[請求整個租戶的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，MSAL 中當前存在限制：`organizations`僅當用戶端憑據是應用程式機密（而不是證書）時才允許。
+如果您是 ISV,並且想要提供多租戶工具,則可以`organizations`使用 。 但請記住,您還需要向客戶解釋如何授予管理員同意。 有關詳細資訊,請參閱[請求整個租戶的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外,MSAL 中當前存在限制`organizations`: 僅當用戶端憑據是應用程式機密(而不是證書)時才允許。
 
-## <a name="configure-and-instantiate-the-application"></a>配置和具現化應用程式
+## <a name="configure-and-instantiate-the-application"></a>設定與實體化應用程式
 
-在 MSAL 庫中，用戶端憑據（機密憑據或證書）作為機密用戶端應用程式構造的參數傳遞。
+在 MSAL 庫中,用戶端認證(機密認證及證書)作為機密用戶端應用程式構造的參數傳遞。
 
 > [!IMPORTANT]
-> 即使您的應用程式是作為服務運行的主控台應用程式，如果它是守護進程應用程式，它也需要是一個機密的用戶端應用程式。
+> 即使您的應用程式是作為服務運行的主控台應用程式,如果它是守護程序應用程式,它也需要是一個機密的用戶端應用程式。
 
 ### <a name="configuration-file"></a>組態檔
 
-設定檔定義：
+設定檔定義:
 
-- 許可權或雲實例和租戶 ID。
-- 從應用程式註冊中得到的用戶端 ID。
+- 許可權或雲端實例和租戶 ID。
+- 從應用程式註冊中得到的客戶端 ID。
 - 用戶端金鑰或證書。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[應用設置.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)從[.NET 核心主控台守護進程](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例。
+[應用設置.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)從[.NET 核心控制台守護行程](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)範例。
 
 ```JSon
 {
@@ -73,11 +69,11 @@ ms.locfileid: "77611832"
 }
 ```
 
-您提供 或`ClientSecret` `CertificateName`。 這些設置是獨佔的。
+您提供`ClientSecret``CertificateName`或 。 這些設置是獨佔的。
 
 # <a name="python"></a>[Python](#tab/python)
 
-當您使用用戶端機密構建機密用戶端時[，Python 守護進程](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的[參數.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json)設定檔如下所示：
+當您使用客戶端機密建構機密用戶端時[,Python 守護程式範例](https://github.com/Azure-Samples/ms-identity-python-daemon)的[參數.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json)設定檔如下所示:
 
 ```Json
 {
@@ -89,7 +85,7 @@ ms.locfileid: "77611832"
 }
 ```
 
-使用證書構建機密用戶端時[，Python 守護進程](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的[參數.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json)設定檔如下所示：
+使用憑證建構機密用戶端時[,Python 守護程式](https://github.com/Azure-Samples/ms-identity-python-daemon)範例中的[參數.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json)設定檔如下所示:
 
 ```Json
 {
@@ -102,7 +98,7 @@ ms.locfileid: "77611832"
 }
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
  private final static String CLIENT_ID = "";
@@ -113,21 +109,21 @@ ms.locfileid: "77611832"
 
 ---
 
-### <a name="instantiate-the-msal-application"></a>具現化 MSAL 應用程式
+### <a name="instantiate-the-msal-application"></a>實體化 MSAL 應用程式
 
-要具現化 MSAL 應用程式，您需要添加、引用或導入 MSAL 包（具體取決於語言）。
+要實例化 MSAL 應用程式,您需要添加、引用或導入 MSAL 包(具體取決於語言)。
 
-構造是不同的，具體取決於您是使用用戶端機密還是證書（或者，作為高級方案，簽名斷言）。
+建構是不同的,具體取決於您是使用用戶端機密還是證書(或者,作為高級方案,簽名斷言)。
 
-#### <a name="reference-the-package"></a>引用包
+#### <a name="reference-the-package"></a>參考包
 
 在應用程式代碼中引用 MSAL 包。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 將[Microsoft.身份用戶端](https://www.nuget.org/packages/Microsoft.Identity.Client)NuGet 包添加到您的應用程式。
-在MSAL.NET，機密用戶端應用程式由`IConfidentialClientApplication`介面表示。
-在原始程式碼中使用MSAL.NET命名空間。
+在MSAL.NET,機密用戶端應用程式由`IConfidentialClientApplication`介面表示。
+在原始碼中使用MSAL.NET命名空間。
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -140,7 +136,7 @@ IConfidentialClientApplication app;
 import msal
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 import com.microsoft.aad.msal4j.ClientCredentialFactory;
@@ -154,9 +150,9 @@ import com.microsoft.aad.msal4j.SilentParameters;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>使用用戶端機密具現化機密用戶端應用程式
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>使用用戶端機密實體化機密用戶端應用程式
 
-下面是使用用戶端機密具現化機密用戶端應用程式的代碼：
+下面是使用客戶端機密實例化機密客戶端應用程式的代碼:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -182,7 +178,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
@@ -196,9 +192,9 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>使用用戶端憑證具現化機密用戶端應用程式
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>使用用戶端憑證實例化機密用戶端應用程式
 
-下面是使用證書構建應用程式的代碼：
+下面是使用憑證建構應用程式的代碼:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -225,9 +221,9 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-在 MSAL JAVA 中，有兩個產生器使用證書具現化機密用戶端應用程式：
+在 MSAL Java 中,有兩個產生器使用憑證實例化機密用戶端應用程式:
 
 ```Java
 
@@ -260,18 +256,18 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高級方案：使用用戶端斷言具現化機密用戶端應用程式
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>進階專案:使用客戶端斷言實體化機密客戶端應用程式
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-機密用戶端應用程式還可以通過使用用戶端斷言來證明其身份，而不是用戶端機密或證書。
+機密用戶端應用程式還可以通過使用用戶端斷言來證明其身份,而不是用戶端機密或證書。
 
-MSAL.NET有兩種方法可以向機密用戶端應用提供簽名的斷言：
+MSAL.NET有兩種方法可以向機密用戶端應用提供簽名的斷言:
 
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-使用`WithClientAssertion`時，需要提供簽名的 JWT。 此高級方案在[用戶端斷言中](msal-net-client-assertions.md)詳細說明。
+使用`WithClientAssertion`時,需要提供簽名的 JWT。 此高級方案在[用戶端斷言中](msal-net-client-assertions.md)詳細說明。
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -280,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-使用`WithClientClaims`時，MSAL.NET將生成一個簽名的斷言，其中包含 Azure AD 預期的聲明，以及要發送的其他用戶端聲明。
-此代碼演示如何執行此操作：
+使用`WithClientClaims`時,MSAL.NET將生成一個簽名的斷言,其中包含 Azure AD 預期的聲明,以及要發送的其他用戶端聲明。
+此程式碼簡用如何執行此操作:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -293,11 +289,11 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();```
 ```
 
-同樣，有關詳細資訊，請參閱[用戶端斷言](msal-net-client-assertions.md)。
+同樣,有關詳細資訊,請參閱[客戶端斷言](msal-net-client-assertions.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-在 MSAL Python 中，您可以使用將由此`ConfidentialClientApplication`私密金鑰簽名的聲明來提供用戶端聲明。
+在 MSAL Python 中,您可以`ConfidentialClientApplication`使用將由此 私鑰簽名的聲明來提供客戶端聲明。
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -313,9 +309,9 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-有關詳細資訊，請參閱[機密用戶端應用程式的](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)MSAL Python 參考文檔。
+有關詳細資訊,請參閱[機密用戶端應用程式的](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)MSAL Python 參考文檔。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 IClientCredential credential = ClientCredentialFactory.createFromClientAssertion(assertion);
@@ -334,16 +330,16 @@ ConfidentialClientApplication cca =
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [守護程式應用 - 獲取應用的權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+> [守護應用程式套用 - 取得應用程式的權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [守護程式應用 - 獲取應用的權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+> [守護應用程式套用 - 取得應用程式的權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [守護程式應用 - 獲取應用的權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+> [守護應用程式套用 - 取得應用程式的權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
 
 ---

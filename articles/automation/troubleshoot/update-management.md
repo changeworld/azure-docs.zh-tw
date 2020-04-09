@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 900853b1ca68c1c540223db670b1173f5bb2fa2b
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754437"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984618"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>針對更新管理問題進行疑難排解
 
@@ -21,7 +21,7 @@ ms.locfileid: "80754437"
 
 混合輔助角色代理有一個代理疑難解答,用於確定根本問題。 若要深入了解疑難排解員，請參閱[針對更新代理程式問題進行疑難排解](update-agent-issues.md)。 對於所有其他問題,請使用以下故障排除指南。
 
-如果在虛擬機 (VM) 上加入解決方案時遇到問題,請查看本地電腦上的 **「應用程式和服務日誌**」下**的操作管理員**日誌。 尋找事件 ID 4502 的事件`Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`和包含的事件詳細資訊。
+如果在虛擬機 (VM) 上加入解決方案時發現問題,請查看本地電腦上的 **「應用程式和服務日誌**」下**的操作管理員**日誌。 尋找事件 ID 4502 的事件`Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`和包含的事件詳細資訊。
 
 以下部分重點介紹特定錯誤消息和每個錯誤消息的可能解決方法。 有關其他載入問題,請參閱[載入的疑難排解解決方案](onboarding.md)。
 
@@ -39,7 +39,7 @@ Error details: Failed to enable the Update solution
 
 下列原因會發生此錯誤：
 
-* 日誌分析代理的網路防火牆要求可能未正確配置。 這可能會導致代理在解決 DNS URL 時失敗。
+* 日誌分析代理的網路防火牆要求可能未正確配置。 此情況可能導致代理在解決 DNS URL 時失敗。
 
 * 解決方案定位配置錯誤,計算機未按預期接收更新。
 
@@ -61,7 +61,7 @@ Error details: Failed to enable the Update solution
 
 ### <a name="issue"></a>問題
 
-舊更新出現在自動化帳戶中的"更新管理"中,即使它們已被取代,也顯示為丟失。 取代的更新是您不必安裝的更新,因為稍後的更新可以更正相同的漏洞。 更新管理忽略被取代的更新,使其不適用於取代的更新。 有關相關問題的資訊,請參閱[更新被取代](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
+對於自動化帳戶,舊更新顯示為丟失,即使它們已被取代。 取代的更新是您不必安裝的更新,因為稍後的更新可以更正相同的漏洞。 更新管理忽略被取代的更新,使其不適用於取代的更新。 有關相關問題的資訊,請參閱[更新被取代](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)。
 
 ### <a name="cause"></a>原因
 
@@ -73,7 +73,7 @@ Error details: Failed to enable the Update solution
 
 1. 在"自動化"帳戶中,選擇 **"更新管理**"以查看計算機狀態。 請參考[查詢更新 。](../manage-update-multi.md#view-an-update-assessment)
 
-2. 檢查被取代的更新,以確保它是 100% 不適用。 
+2. 檢查被取代的更新,以確保它 100% 不適用。 
 
 3. 除非對更新有疑問,否則將更新標記為已拒絕。 
 
@@ -101,11 +101,11 @@ Error details: Failed to enable the Update solution
 
 ### <a name="cause"></a>原因
 
-此問題可能由本地配置問題或配置不正確的範圍配置引起。
+此問題可能由本地配置問題或配置不正確的範圍配置引起。 可能的具體原因是:
 
-您可能需要重新註冊並重新安裝混合 Runbook 輔助角色。
+* 您可能需要重新註冊並重新安裝混合 Runbook 輔助角色。
 
-您可能已在工作區中定義了已達到的配額,這阻止了進一步的數據存儲。
+* 您可能已在工作區中定義了已達到的配額,這阻止了進一步的數據存儲。
 
 ### <a name="resolution"></a>解決方案
 
@@ -113,28 +113,30 @@ Error details: Failed to enable the Update solution
 
 2. 確保計算機報告到正確的工作區。 有關如何驗證此方面的指導,請參閱[驗證代理連線到日誌分析](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)。 還要確保此工作區連結到 Azure 自動化帳戶。 要確認,請轉到您的自動化帳戶,並在 **「相關資源**」下選擇 **「連結工作區**」。
 
-3. 確保電腦顯示在日誌分析工作區中。 在連結到自動化帳戶的紀錄分析工作區中執行以下查詢:
+3. 確保電腦顯示在連結到您的自動化帳戶的日誌分析工作區中。 在日誌分析工作區中運行以下查詢。
 
-  ```loganalytics
-  Heartbeat
-  | summarize by Computer, Solutions
-  ```
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
 
 4. 如果在查詢結果中看不到計算機,則計算機最近未簽入。 可能存在本地端設定問題,[您應該重新安裝代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)程式 。 
 
-5. 如果電腦顯示在查詢結果中,請檢查範圍配置問題。 [範圍配置](../automation-onboard-solutions-from-automation-account.md#scope-configuration)確定為解決方案配置了哪些計算機。 如果電腦顯示在工作區中,但未顯示在_Update管理門戶中,則必須配置範圍配置以目標計算機為目標。 要瞭解如何執行此操作,請參閱[工作區中的板載入電腦](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)。
+5. 如果電腦顯示在查詢結果中,請檢查範圍配置問題。 [範圍配置](../automation-onboard-solutions-from-automation-account.md#scope-configuration)確定為解決方案配置了哪些計算機。 
 
-6. 在工作區中,執行以下查詢:
+6. 如果電腦顯示在工作區中,但未顯示在更新管理中,則必須將範圍配置配置為以計算機為目標。 要瞭解如何執行此操作,請參閱[工作區中的板載入電腦](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)。
 
-  ```loganalytics
-  Operation
-  | where OperationCategory == 'Data Collection Status'
-  | sort by TimeGenerated desc
-  ```
+7. 在工作區中,運行此查詢。
 
-7. 如果得到結果`Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`,工作區上定義了已到達的配額,並且阻止保存數據。 在工作區中,轉到 **"使用方式"下****的數據卷管理**以及估計成本,並檢查配額或刪除配額。
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
 
-8. 如果問題仍未解決,請按照[「部署 Windows 混合 Runbook 輔助角色」](../automation-windows-hrw-install.md)中的步驟重新安裝 Windows 的混合輔助角色。 對於 Linux,請按照[部署 Linux 混合 Runbook 輔助手冊 中](../automation-linux-hrw-install.md)的步驟操作。
+8. 如果得到結果`Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`,則已達到工作區上定義的配額,從而阻止保存數據。 在工作區中,轉到 **"使用方式"和"估計成本**"下**的數據卷管理**,然後更改或刪除配額。
+
+9. 如果問題仍未解決,請按照[「部署 Windows 混合 Runbook 輔助角色」](../automation-windows-hrw-install.md)中的步驟重新安裝 Windows 的混合輔助角色。 對於 Linux,請按照[部署 Linux 混合 Runbook 輔助手冊 中](../automation-linux-hrw-install.md)的步驟操作。
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>專案:無法註冊訂閱的自動化資源提供者
 
@@ -152,51 +154,132 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 ### <a name="resolution"></a>解決方案
 
-要註冊自動化資源提供者,請在 Azure 門戶中執行以下步驟:
+要註冊自動化資源提供程式,請在 Azure 門戶中執行以下步驟。
 
 1. 在門戶底部的 Azure 服務清單中,選擇 **「所有服務**」,然後在「常規服務」群組中選擇 **「訂閱**」。
-2. 選取您的訂用帳戶。
-3. 在 **「設定」** 下,選擇 **「資源提供程式**」 。。
-4. 從資源提供程式清單中,驗證`Microsoft.Automation`資源提供程式是否已註冊。
-5. 如果未列出,請按照`Microsoft.Automation`[資源提供程式註冊"解決錯誤"](/azure/azure-resource-manager/resource-manager-register-provider-errors)中的步驟註冊提供程式。
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="update-missed-machines"></a>方案:計劃更新,動態計劃未命中某些電腦
+2. 選取您的訂用帳戶。
+
+3. 在 **「設定」** 下,選擇 **「資源提供程式**」 。。
+
+4. 從資源提供程式清單中驗證 Microsoft.自動化資源提供程式是否註冊。
+
+5. 如果未列出,請按照[「解決資源提供程序註冊錯誤」](/azure/azure-resource-manager/resource-manager-register-provider-errors)中的步驟註冊 Microsoft.自動化提供程式。
+
+## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>方案:計劃更新,動態計劃未命中某些電腦
 
 ### <a name="issue"></a>問題
 
-更新中包含的預覽電腦並不都顯示在計劃運行期間修補的計算機清單中。
+更新預覽中包含的電腦並不都顯示在計劃運行期間修補的計算機清單中。
 
 ### <a name="cause"></a>原因
 
 此問題可能有以下原因之一:
 
-* 動態查詢中定義的訂閱未為註冊的自動化資源提供程式配置。 
+* 動態查詢中定義的訂閱未為註冊的自動化資源提供程式配置。
+
 * 執行計劃時,計算機不可用或沒有適當的標記。
 
 ### <a name="resolution"></a>解決方案
 
 #### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>未為已註冊的自動化資源提供程式設定的訂閱
 
-如果未為自動化資源提供程式配置訂閱,則無法查詢或獲取該訂閱中的計算機上的資訊。 使用以下步驟確保訂閱的註冊。
+如果您的訂閱未為自動化資源提供程式配置,則無法查詢或獲取該訂閱中的計算機上的資訊。 使用以下步驟驗證訂閱的註冊。
 
 1. 在[Azure 門戶](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)中,訪問 Azure 服務清單。
+
 2. 選擇 **"所有服務**",然後在"常規服務"組中選擇 **"訂閱**"。 
+
 3. 查找部署範圍中定義的訂閱。
+
 4. 在 **「設定」** 下,選擇 **「資源提供程式**」 。。
-5. 驗證`Microsoft.Automation`資源提供程式是否已註冊。
-6. 如果未列出,請按照`Microsoft.Automation`[資源提供程式註冊"解決錯誤"](/azure/azure-resource-manager/resource-manager-register-provider-errors)中的步驟註冊提供程式。
+
+5. 驗證Microsoft.自動化資源提供程式是否已註冊。
+
+6. 如果未列出,請按照[「解決資源提供程序註冊錯誤」](/azure/azure-resource-manager/resource-manager-register-provider-errors)中的步驟註冊 Microsoft.自動化提供程式。
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>執行計畫時電腦無法使用或未正確標記
 
 如果您的訂閱已配置為自動化資源提供程式,但使用指定的[動態組](../automation-update-management-groups.md)運行更新計畫時錯過了某些計算機,請使用以下過程。
 
 1. 在 Azure 門戶中,打開自動化帳戶並選擇 **「更新管理**」。
+
 2. 檢查[更新管理歷史記錄](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment)以確定運行更新部署的確切時間。 
-3. 對於您懷疑更新管理遺漏的電腦,請使用 Azure 資源圖[尋找電腦變更](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)。 
+
+3. 對於您懷疑更新管理遺漏的電腦,請使用 Azure 資源圖 (ARG)[尋找電腦變更](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)。 
+
 4. 在運行更新部署之前,搜索相當長一段時間內的更改,例如一天。
+
 5. 檢查搜尋結果中是否有任何系統更改(如刪除或更新更改)到此時間段內的電腦。 這些更改可以更改計算機狀態或標記,以便在部署更新時不會在電腦清單中選擇計算機。
+
 6. 根據需要調整計算機和資源設置,以更正計算機狀態或標記問題。
+
 7. 重新執行更新計畫,以確保具有指定動態組的部署包括所有計算機。
+
+## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>方案:動態組的預覽中未顯示預期電腦
+
+### <a name="issue"></a>問題
+
+動態組選定作用域的虛擬機未顯示在 Azure 門戶預覽清單中。 此清單由所選作用域的 ARG 查詢檢索的所有電腦組成。 作用域將篩選為安裝了混合 Runbook 工作台且您具有訪問許可權的計算機。 
+
+### <a name="cause"></a>原因
+ 
+以下是此問題的可能原因:
+
+* 所選作用域上沒有正確的訪問許可權。
+* ARG 查詢不檢索預期計算機。
+* 計算機上未安裝混合 Runbook 工作線程。
+
+### <a name="resolution"></a>解決方案 
+
+#### <a name="incorrect-access-on-selected-scopes"></a>對選取的範圍的存取不正確
+
+Azure 門戶僅顯示在給定作用域中具有寫入訪問許可權的計算機。 如果作用網域沒有正確的存取權限,請參閱[教學:使用 RBAC 和 Azure 入口授予使用者對 Azure 資源的存取權限](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+
+#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG 查詢不傳回預期電腦
+
+按照以下步驟了解查詢是否正常工作。
+
+1. 運行在 Azure 門戶中的「資源圖資源管理器」邊欄選項卡中格式化的 ARG 查詢。 此查詢模擬您在更新管理中創建動態群組時選擇的篩選器。 請參考[動態群組與更新管理一起使用](https://docs.microsoft.com/azure/automation/automation-update-management-groups)。 
+
+    ```kusto
+    where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
+    | project id, location, name, tags = todynamic(tolower(tostring(tags)))
+    | where  (tags[tolower("<tagKey1>")] =~ "<tagValue1>" and tags[tolower("<tagKey2>")] =~ "<tagValue2>") // use this if "All" option selected for tags
+    | where  (tags[tolower("<tagKey1>")] =~ "<tagValue1>" or tags[tolower("<tagKey2>")] =~ "<tagValue2>") // use this if "Any" option selected for tags
+    | project id, location, name, tags
+    ```
+
+   範例如下：
+
+    ```kusto
+    where (subscriptionId in~ ("20780d0a-b422-4213-979b-6c919c91ace1", "af52d412-a347-4bc6-8cb7-4780fbb00490") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "Windows" and resourceGroup in~ ("testRG","withinvnet-2020-01-06-10-global-resources-southindia") and location in~ ("australiacentral","australiacentral2","brazilsouth") )
+    | project id, location, name, tags = todynamic(tolower(tostring(tags)))
+    | where  (tags[tolower("ms-resource-usage")] =~ "azure-cloud-shell" and tags[tolower("temp")] =~ "temp")
+    | project id, location, name, tags
+    ```
+ 
+2. 檢查要查找的計算機是否列在查詢結果中。 
+
+3. 如果未列出計算機,則動態組中選擇的篩選器可能存在問題。 根據需要調整組配置。
+
+#### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>未安裝在電腦上的混合 Runbook 工作線程
+
+計算機確實顯示在 ARG 查詢結果中,但仍未顯示在動態組預覽中。 在這種情況下,計算機可能無法指定為混合工作,因此無法運行 Azure 自動化和更新管理作業。 為確保您希望看到的電腦設定為混合 Runbook 工作簿:
+
+1. 在 Azure 門戶中,轉到未正確顯示的電腦的自動化帳戶。
+
+2. 在 **「過程自動化**」 選擇**混合工作群組**。
+
+3. 選擇 **「系統混合輔助角色群組**」選項卡。
+
+4. 驗證該計算機是否存在混合工作線程。
+
+5. 如果電腦未設置為混合輔助角色,請使用[「混合 Runbook 輔助角色」在資料中心或雲端中的自動化資源處使用](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)說明進行調整。
+
+6. 將電腦加入混合 Runbook 工作群體。
+
+7. 對於未在預覽中顯示的所有計算機,請重複上述步驟。
 
 ## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>方案:啟用了用於更新管理解決方案的元件,而 VM 繼續顯示為已配置
 
@@ -220,7 +303,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 ### <a name="resolution"></a>解決方案
 
-為了説明確定 VM 的確切問題,請在連結到自動化帳戶的日誌分析工作區中運行以下查詢:
+為了説明確定 VM 的確切問題,請在連結到自動化帳戶的日誌分析工作區中運行以下查詢。
 
 ```
 Update
@@ -242,7 +325,7 @@ Update
 
 1. 在日誌分析工作區中,如果顯示`MicrosoftDefaultScopeConfig-Updates`範圍配置,則從保存的搜索中刪除 VM。 您可以在工作區中的 [一般]**** 底下找到儲存的搜尋。
 
-2. 執行下列 Cmdlet：
+2. 運行以下 cmdlet。
 
     ```azurepowershell-interactive
     Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
@@ -250,7 +333,7 @@ Update
 
 3. 運行`Restart-Service HealthService`以重新啟動運行狀況服務。 此操作將重新建立金鑰並生成新的 UUID。
 
-4. 如果此方法不起作用,請先在映射上運行 sysprep,然後安裝 MMA。
+4. 如果此方法不起作用,請先在映射上運行 Sysprep,然後安裝 MMA。
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>方案:在為另一個 Azure 租戶中的電腦建立更新部署時,您會收到連結的訂閱錯誤
 
@@ -317,19 +400,19 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="resolution"></a>解決方案
 
-如果適用,請對更新部署使用[動態群組](../automation-update-management-groups.md)。 此外：
+如果適用,請對更新部署使用[動態群組](../automation-update-management-groups.md)。 此外,您可以執行以下步驟。
 
-* 驗證機器是否仍然存在且可到達。 
-* 如果電腦不存在,請編輯部署並刪除電腦。
-* 有關更新管理所需的埠和位址的清單,請參閱[網路規劃](../automation-update-management.md#ports)部分,然後驗證計算機是否滿足這些要求。
-* 使用混合 Runbook 工作線程代理疑難解答驗證與混合 Runbook 輔助角色的連接。 若要深入了解疑難排解員，請參閱[針對更新代理程式問題進行疑難排解](update-agent-issues.md)。
-* 在日誌分析中運行以下查詢,以查找源計算機 ID 已更改的環境中的電腦。 查找具有相同`Computer`值但值`SourceComputerId`不同的 電腦。
+1. 驗證機器是否仍然存在且可到達。 
+2. 如果電腦不存在,請編輯部署並刪除電腦。
+3. 有關更新管理所需的埠和位址的清單,請參閱[網路規劃](../automation-update-management.md#ports)部分,然後驗證計算機是否滿足這些要求。
+4. 使用混合 Runbook 工作線程代理疑難解答驗證與混合 Runbook 輔助角色的連接。 若要深入了解疑難排解員，請參閱[針對更新代理程式問題進行疑難排解](update-agent-issues.md)。
+5. 在日誌分析中運行以下查詢,以查找源計算機 ID 已更改的環境中的電腦。 查找具有相同`Computer`值但值`SourceComputerId`不同的 電腦。
 
-   ```loganalytics
+   ```kusto
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
 
-* 找到受影響的電腦後,編輯針對這些電腦的更新部署,然後刪除並讀取它們,`SourceComputerId`以反映正確的值。
+6. 找到受影響的電腦後,編輯針對這些電腦的更新部署,然後刪除並讀取它們,`SourceComputerId`以反映正確的值。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>方案:在不部署的情況下安裝更新
 
@@ -452,7 +535,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
   * 如果電腦配置為 Windows 更新,請確保可以到達[HTTP/代理問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中描述的終結點。
   * 如果電腦設定為 Windows 伺服器更新服務 (WSUS),請確保可以到達[由 WUServer 註冊表項](/windows/deployment/update/waas-wu-settings)配置的 WSUS 伺服器。
 
-如果看到 HRESULT,按兩下以紅色顯示的異常以查看整個異常消息。 檢視下表,查看潛在的解決方案或建議的操作:
+如果看到 HRESULT,按兩下以紅色顯示的異常以查看整個異常消息。 查看下表,查看潛在的解決方案或建議的操作。
 
 |例外狀況  |解決或行動  |
 |---------|---------|
@@ -466,14 +549,14 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |`0x80070005`| 存取被拒絕錯誤可能由以下任一原因引起:<br> 受感染的電腦<br> 未正確設定的 Windows 更新設定<br> 包含 %WinDir%_軟體分發資料夾的檔案權限錯誤<br> 系統驅動器 (C:) 上的磁碟空間不足。
 |任何其他一般例外狀況     | 在網路上搜索可能的解決方案,並與您的本地 IT 支援合作。         |
 
-檢視 %Windir%*Windowsupdate.log 檔還可以幫助您確定可能的原因。 有關如何讀取紀錄的詳細資訊,請參閱[如何讀取 Windowsupdate.log 檔](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)。
+檢視 **%Windir%*Windowsupdate.log**檔還可以幫助您確定可能的原因。 有關如何讀取紀錄的詳細資訊,請參閱[如何讀取 Windowsupdate.log 檔](https://support.microsoft.com/help/902093/how-to-read-the-windowsupdate-log-file)。
 
 您還可以下載並運行 Windows[更新疑難排解](https://support.microsoft.com/help/4027322/windows-update-troubleshooter),以檢查電腦上的 Windows 更新是否有任何問題。
 
 > [!NOTE]
 > [Windows 更新疑難排](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)解 文件指示它用於 Windows 用戶端,但它也適用於 Windows 伺服器。
 
-## <a name="scenario-update-run-returns-failed-status-linux"></a>方案:更新執行回覆回失敗狀態(Linux)
+## <a name="scenario-update-run-returns-failed-status-linux"></a>專案:更新執行回失敗狀態(Linux)
 
 ### <a name="issue"></a>問題
 
@@ -495,11 +578,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 如果在作業失敗之前立即看到特定的修補程式、包或更新,則可以嘗試從下一個更新部署[中排除](../automation-tutorial-update-management.md#schedule-an-update-deployment)這些專案。 要從 Windows 更新收集紀錄資訊,請參閱[Windows 更新紀錄檔](/windows/deployment/update/windows-update-logs)。
 
-如果無法解決修補問題,請複製以下日誌檔,並在下一次更新部署開始之前保留該檔以進行故障排除。
-
-```bash
-/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
-```
+如果無法解決修補問題,請複製 **/var/opt/microsoft/omsagent/運行/自動化工作人員/omsupdatemgmt.log**檔,並在下一次更新部署開始之前保留該檔以進行故障排除。
 
 ## <a name="patches-arent-installed"></a>未安裝修補程式
 
@@ -515,9 +594,9 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 您可以通過在本文`UseWUServer`的[註冊表部分](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)中將註冊表鍵交叉引用註冊表項來檢查計算機是否配置為 WSUS 和 SCCM。
 
-如果 WSUS 中未批准更新,則不會安裝更新。 您可以通過執行以下查詢來檢查日誌分析中的未批准更新。
+如果 WSUS 中未批准更新,則未安裝更新。 您可以通過執行以下查詢來檢查日誌分析中的未批准更新。
 
-  ```loganalytics
+  ```kusto
   Update | where UpdateState == "Needed" and ApprovalSource == "WSUS" and Approved == "False" | summarize max(TimeGenerated) by Computer, KBID, Title
   ```
 
@@ -535,8 +614,8 @@ KB2267602 是 [Windows Defender 定義更新](https://www.microsoft.com/wdsi/def
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到問題或無法解決問題,請嘗試以下管道之一以獲取其他支援:
+如果您沒有看到問題或無法解決問題,請嘗試以下管道之一以獲取其他支援。
 
 * 通過[Azure 論壇](https://azure.microsoft.com/support/forums/)從 Azure 專家那裡獲得答案。
-* 與[@AzureSupport](https://twitter.com/azuresupport)連接 ,官方 Microsoft Azure 帳戶通過將 Azure 社區連接到正確的資源(答案、支援和專家)來改善客戶體驗。
+* 與[@AzureSupport](https://twitter.com/azuresupport)連接 ,用於改善客戶體驗的官方 Microsoft Azure 帳戶。
 * 提出 Azure 支援事件。 跳到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **「取得支援**」。

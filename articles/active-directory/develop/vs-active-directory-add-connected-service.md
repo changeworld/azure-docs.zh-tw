@@ -1,9 +1,8 @@
 ---
-title: 使用活動目錄連接的服務（視覺化工作室）
+title: 使用活動目錄連接的服務(視覺化工作室)
 description: 使用 Visual Studio 的 [加入已連接服務] 對話方塊加入 Azure Active Directory
 author: ghogen
 manager: jillfra
-ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
@@ -11,14 +10,14 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: f139fc8cb59c40ea169e195312326773296b0592
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159620"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886155"
 ---
-# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在視覺化工作室中使用連接的服務添加 Azure 活動目錄
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在視覺化工作室中使用連線的服務加入 Azure 活動目錄
 
 藉由使用 Azure Active Directory (Azure AD)，您便可以針對 ASP.NET MVC Web 應用程式支援「單一登入」(SSO)，或在 Web API 服務中支援「Active Directory 驗證」。 在使用 Azure AD 驗證的情況下，您的使用者可以從 Azure Active Directory 使用其帳戶來連線到您的 Web 應用程式。 透過 Web API 的 Azure AD 驗證優點包括從 Web 應用程式公開 API 時的資料安全性會增強。 有了 Azure AD，您不必以各自的帳戶和使用者管理作業來管理個別的驗證系統。
 
@@ -45,7 +44,7 @@ ms.locfileid: "77159620"
 
     ![[簡介] 頁面](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. 在 [單一登入]**** 頁面上，從 [網域]**** 下拉式清單中選取網域。 該清單包含視覺化工作室的帳戶設置對話方塊中列出的帳戶可訪問的所有域（**檔>帳戶設置...** 作為替代方法，如果您找不到要查找的功能變數名稱（如`mydomain.onmicrosoft.com`），則可以輸入功能變數名稱。 您可以選擇可建立 Azure Active Directory 應用程式的選項，或是使用來自現有 Azure Active Directory 應用程式的設定。 完成時，選取 [下一步]****。
+1. 在 [單一登入]**** 頁面上，從 [網域]**** 下拉式清單中選取網域。 此清單包含視覺化工作室的帳號設定對話框中列出的帳戶可存取的所有網域(**檔案>帳戶設定...** 作為替代方法,如果您找不到要查找的功能變數名稱(`mydomain.onmicrosoft.com`如 ),則可以輸入功能變數名稱。 您可以選擇可建立 Azure Active Directory 應用程式的選項，或是使用來自現有 Azure Active Directory 應用程式的設定。 完成時，選取 [下一步]****。
 
     ![[單一登入] 頁面](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
@@ -69,9 +68,9 @@ ms.locfileid: "77159620"
 當您新增連線服務精靈時，Visual Studio 會將 Azure Active Directory 和關聯的參考新增到您的專案。 您專案中的組態檔和程式碼也會進行修改，以加入 Azure AD 支援。 Visual Studio 所做的特定修改視專案類型而定。 如需詳細資料，請參閱下文：
 
 - [我的 .NET MVC 專案發生什麼情形？](vs-active-directory-dotnet-what-happened.md)
-- [我的 Web API 專案發生了什麼？](vs-active-directory-webapi-what-happened.md)
+- [我的 Web API 專案發生了什麼?](vs-active-directory-webapi-what-happened.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 活動目錄的身份驗證方案](authentication-scenarios.md)
+- [Azure 活動目錄的身份驗證機制](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

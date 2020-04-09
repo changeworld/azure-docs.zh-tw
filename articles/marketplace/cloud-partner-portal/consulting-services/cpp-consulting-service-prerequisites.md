@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 24d62ac04cd70832e7c092b903b6936836a866e9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 35ef732111ff0b75bba7397f7cc22b3ff08c00d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745625"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985094"
 ---
 # <a name="consulting-service-prerequisites"></a>諮詢服務必要條件
 
 >[!Important]
->從 2020 年 3 月 30 日起,我們將開始將諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
 
 在[Azure 應用商店和 AppSource 諮詢服務](../../consulting-services.md)中查看此產品/服務類型的說明和要求。  以下特定諮詢服務類型具有其他要求:
 

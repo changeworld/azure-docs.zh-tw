@@ -3,7 +3,6 @@ title: 在 .NET MVC 專案中開始使用 Azure AD |蔚藍
 description: 使用 Visual Studio 連線服務連線至 Azure AD 或建立 Azure AD 後，如何在 .NET MVC 專案中開始使用 Azure Active Directory
 author: ghogen
 manager: jillfra
-ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: eae649a4de88373ee79e49ecb7d5f14564a3054b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe408e965c528db1d82b73ee7b20bbe3b3933657
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159483"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886121"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>開始使用 Azure Active Directory (ASP.NET MVC 專案)
 
@@ -83,5 +82,5 @@ ms.locfileid: "77159483"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 活動目錄的身份驗證方案](authentication-scenarios.md)
+- [Azure 活動目錄的身份驗證機制](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

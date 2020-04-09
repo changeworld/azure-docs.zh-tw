@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: e085c465ecdd21452e8f0ca5aa721ad0059caf30
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: b7365babd9a6cdba28da59a9113edf32d2974fb0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744333"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984822"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI 應用程式的 [連絡人] 索引標籤
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
 
 使用 [新增供應項目]**** 頁面的 [連絡人]**** 索引標籤，為您的供應項目提供技術和使用者支援資源。 它分為兩個部份:**專案和****客戶支援**。
 

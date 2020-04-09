@@ -1,15 +1,15 @@
 ---
-title: 從 Azure 門戶建立函數應用
+title: 從 Azure 入口網站建立函數應用程式
 description: 從門戶在 Azure 中創建新的函數應用。
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 6c17dc28d7eea4897759c1c832fdb1aba7f1e445
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756537"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985009"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>從 Azure 入口網站建立函數應用程式
 
@@ -36,7 +36,7 @@ Azure 函數有三種不同的服務計劃:消耗計劃、高級計劃和專用(
 >[!NOTE]
 >當使用「使用情況主控方案」時，您的函式程式碼和繫結組態檔會儲存在主要儲存體帳戶中的 Azure 檔案儲存體中。 當您刪除主要儲存體帳戶時，會刪除此內容且無法復原。
 
-要瞭解有關儲存帳戶類型詳細資訊,請參閱[介紹 Azure 儲存服務](../storage/common/storage-introduction.md#azure-storage-services)。 
+要瞭解有關儲存帳戶類型詳細資訊,請參閱[介紹 Azure 儲存服務](../storage/common/storage-introduction.md#core-storage-services)。 
 
 ## <a name="next-steps"></a>後續步驟
 

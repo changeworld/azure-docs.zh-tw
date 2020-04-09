@@ -4,12 +4,12 @@ description: 開始使用 Application Insights。 分析內部部署或 Microsof
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275616"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985060"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -26,8 +26,7 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 * [ASP.NET Web 應用程式](../../azure-monitor/app/asp-net.md)
   * [加入例外狀況監視](../../azure-monitor/app/asp-net-exceptions.md)
   * [加入相依性監視](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web 應用程式](../../azure-monitor/app/java-get-started.md)
-  * [加入相依性監視](../../azure-monitor/app/java-agent.md)
+* [Java EE Web 應用程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>探索效能度量
 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您為應用程式設定的 Application Insights 資源。 概觀刀鋒視窗會顯示基本的效能資料：
@@ -103,7 +102,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 * 比較要求計數與其他度量，了解失敗或回應過慢的情況是否與負載有關。
 * 在程式碼中[插入及搜尋追蹤陳述式][diagnostic]有助於找出問題所在。
 * 使用[即時計量資料流][livestream]監視作業中的 Web 應用程式。
-* 使用[快照調試器][snapshot]捕獲 .NET 應用程式的狀態。
+* 使用[快照除錯器][snapshot]擷取 .NET 應用程式的狀態。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>使用效能調查體驗尋找及修正效能瓶頸
 

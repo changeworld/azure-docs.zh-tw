@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743307"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984788"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在樣本中使用部署文稿(預覽)
 
@@ -313,7 +313,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 部署腳本執行是一種冪等操作。 如果未更改任何部署腳本資源屬性(包括內聯腳本),則在重新部署範本時不會執行該腳本。 部署腳本服務將範本中的資源名稱與同一資源組中的現有資源進行比較。 如果要多次執行同一部署腳本,有兩個選項:
 
-- 更改部署文本資源的名稱。 例如,使用[utcNow](./template-functions-string.md#utcnow)範本函數作為資源名稱或資源名稱的一部分。 更改資源名稱將創建新的部署腳本資源。 它有利於保留腳本執行歷史記錄。
+- 更改部署文本資源的名稱。 例如,使用[utcNow](./template-functions-date.md#utcnow)範本函數作為資源名稱或資源名稱的一部分。 更改資源名稱將創建新的部署腳本資源。 它有利於保留腳本執行歷史記錄。
 
     > [!NOTE]
     > utcNow 函數只能在參數的預設值中使用。
