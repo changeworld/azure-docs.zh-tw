@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420696"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632373"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教學課程：從 Azure 自動化 Runbook傳送電子郵件
 
@@ -149,7 +149,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 7. 選取 [發佈]  來儲存並發佈 Runbook。
 
-若要確認 Runbook 是否順利執行，您可以依照[測試 Runbook](manage-runbooks.md#test-a-runbook) 或[啟動 Runbook](start-runbooks.md) 下的步驟操作。
+若要確認 Runbook 是否順利執行，您可以依照[測試 Runbook](manage-runbooks.md#testing-a-runbook) 或[啟動 Runbook](start-runbooks.md) 下的步驟操作。
 如果您一開始未看到測試電子郵件，請查看  **垃圾郵件**資料夾。
 
 ## <a name="clean-up"></a>清除
