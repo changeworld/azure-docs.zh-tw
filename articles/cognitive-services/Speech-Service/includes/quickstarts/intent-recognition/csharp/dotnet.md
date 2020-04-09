@@ -2,22 +2,22 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/27/2020
+ms.date: 04/04/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 4f8fe92a0a36bae2d5e7595bee7bf71fcd926da9
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 5e6e2c7686c61fa03639566b2b37dc0fb8dbc924
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925096"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671050"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">為您的開發環境安裝語音 SDK 並建立空白範例專案<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp" target="_blank">為您的開發環境安裝語音 SDK 並建立空白範例專案<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>建立意圖辨識的 LUIS 應用程式
 

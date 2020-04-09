@@ -2,26 +2,21 @@
 title: 建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 description: 在本教學課程中，了解如何從 Windows 桌面 (WPF) 應用程式，呼叫受 Azure Active Directory 保護的 ASP.NET Web API。 WPF 用戶端會驗證使用者、要求存取權杖，以及呼叫 Web API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129960"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880868"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 

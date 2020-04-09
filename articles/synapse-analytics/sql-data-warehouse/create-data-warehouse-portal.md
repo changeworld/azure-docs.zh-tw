@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5d5b2509b212172758fa867d9f27b829f43aeeaa
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349105"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631358"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
 
@@ -29,7 +29,7 @@ ms.locfileid: "80349105"
    > [!NOTE]
    > 在 Azure Synapse 中建立 SQL 集區可能會產生新的可計費服務。 如需詳細資訊，請參閱 [Azure Synapse Analytics 定價](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
 
-2. 下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
+2. 下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -37,7 +37,7 @@ ms.locfileid: "80349105"
 
 ## <a name="create-a-sql-pool"></a>建立 SQL 集區
 
-資料倉儲會使用 Azure Synapse Analytics 中的 SQL 集區來建立。 SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md)來建立。 此資料庫建立於 [Azure 資源群組](../../azure-resource-manager/management/overview.md)和 [Azure SQL 邏輯伺服器](../../sql-database/sql-database-servers.md)內。
+資料倉儲會使用 Azure Synapse Analytics 中的 SQL 集區來建立。 SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md)來建立。 此資料庫建立於 [Azure 資源群組](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [Azure SQL 邏輯伺服器](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)內。
 
 請遵循下列步驟來建立包含 **AdventureWorksDW** 範例資料的 SQL 集區。
 
@@ -54,9 +54,9 @@ ms.locfileid: "80349105"
    | 設定 | 建議的值 | 描述 |
    | :------ | :-------------- | :---------- |
    | **訂用帳戶** | 您的訂用帳戶 | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
-   | **資源群組** | myResourceGroup | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
-   | **SQL 集區名稱** | 任何全域唯一名稱 (例如 *mySampleDataWarehouse*) | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 請注意，SQL 集區是其中一種資料庫類型。 |
-   | **Server** | 任何全域唯一名稱 | 選取現有的伺服器，或建立新的伺服器名稱，然後選取 [新建]  。 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
+   | **資源群組** | myResourceGroup | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 |
+   | **SQL 集區名稱** | 任何全域唯一名稱 (例如 *mySampleDataWarehouse*) | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 請注意，SQL 集區是其中一種資料庫類型。 |
+   | **Server** | 任何全域唯一名稱 | 選取現有的伺服器，或建立新的伺服器名稱，然後選取 [新建]  。 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 |
 
    ![建立資料倉儲的基本詳細資料](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "80349105"
 
 ## <a name="create-a-server-level-firewall-rule"></a>建立伺服器層級防火牆規則
 
-Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防止外部應用程式和工具連線到伺服器或伺服器上的任何資料庫。 若要啟用連線，您可以新增防火牆規則以啟用特定 IP 位址之連線。 遵循以下步驟建立用戶端 IP 位址的[伺服器層級防火牆規則](../../sql-database/sql-database-firewall-configure.md)。
+Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防止外部應用程式和工具連線到伺服器或伺服器上的任何資料庫。 若要啟用連線，您可以新增防火牆規則以啟用特定 IP 位址之連線。 遵循以下步驟建立用戶端 IP 位址的[伺服器層級防火牆規則](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 > [!NOTE]
 > Azure Synapse 會透過連接埠 1433 進行通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若情況如此，除非 IT 部門開啟連接埠 1433，否則您無法連線至 Azure SQL Database 伺服器。
@@ -124,7 +124,7 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以伺服器系統管理員身分連線到伺服器
 
-本節使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 建立對 Azure SQL Server 的連線。
+本節使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 建立對 Azure SQL Server 的連線。
 
 1. 開啟 SQL Server Management Studio。
 
@@ -141,11 +141,11 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
    ![連線至伺服器](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. 選取 [連線]  。 [物件總管] 視窗會在 SSMS 中開啟。 
+3. 選取 [連線]  。 [物件總管] 視窗會在 SSMS 中開啟。
 
 4. 在 [物件總管] 中展開 [資料庫]  。 然後展開 [mySampleDatabase]  可檢視新資料庫中的物件。
 
-   ![資料庫物件](./media/create-data-warehouse-portal/connected-ssms.png) 
+   ![資料庫物件](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>執行一些查詢
 
@@ -163,7 +163,7 @@ SQL 資料倉儲會使用 T-SQL 作為查詢語言。 若要開啟查詢視窗�
 
    ![查詢資料庫](./media/create-data-warehouse-portal/query-databases.png)
 
-4. 若要查看一些資料，請使用下列命令以查看姓氏為 Adams 且家裡有三個孩子的客戶數目。 結果列出 6 個客戶。 
+4. 若要查看一些資料，請使用下列命令以查看姓氏為 Adams 且家裡有三個孩子的客戶數目。 結果列出 6 個客戶。
 
     ```sql
     SELECT LastName, FirstName FROM dbo.dimCustomer
@@ -196,4 +196,4 @@ SQL 資料倉儲會使用 T-SQL 作為查詢語言。 若要開啟查詢視窗�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解如何將資料載入到 SQL 集區，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。 
+若要深入了解如何將資料載入到 SQL 集區，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76773501"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478647"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入門：透過 Python 使用 Azure 服務匯流排佇列
 
@@ -32,7 +32,7 @@ ms.locfileid: "76773501"
 ## <a name="prerequisites"></a>Prerequisites
 - Azure 訂用帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 服務匯流排命名空間，遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)中的步驟加以建立。 從 [共用存取原則]  畫面複製主要連接字串，以供本文稍後使用。 
-- Python 3.4x 或更新版本，已安裝 [Python Azure 服務匯流排][Python Azure Service Bus package]套件。 如需詳細資訊，請參閱 [Python 安裝指南](/azure/python/python-sdk-azure-install)。 
+- Python 3.4x 或更新版本，已安裝 [Python Azure 服務匯流排][Python Azure Service Bus package]套件。 如需詳細資訊，請參閱 [Python 安裝指南](/azure/developer/python/azure-sdk-install)。 
 
 ## <a name="create-a-queue"></a>建立佇列
 

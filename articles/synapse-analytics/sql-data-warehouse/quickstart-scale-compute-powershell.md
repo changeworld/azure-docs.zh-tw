@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c7ec8db212a24f1f23f393e4cb0e7f4150605a56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350784"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633788"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 調整 Synapse SQL 集區的計算
 
-您可以使用 Azure PowerShell 來調整 Synapse SQL 集區 (資料倉儲) 的計算。 [擴增計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。 
+您可以使用 Azure PowerShell 來調整 Synapse SQL 集區 (資料倉儲) 的計算。 [擴增計算](sql-data-warehouse-manage-compute-overview.md)以提升效能，或將計算調整回來以節省成本。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -32,19 +32,19 @@ ms.locfileid: "80350784"
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
-使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登入 Azure 訂用帳戶並遵循畫面上的指示。
+使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 命令登入 Azure 訂用帳戶並遵循畫面上的指示。
 
 ```powershell
 Connect-AzAccount
 ```
 
-若要查看您正在使用的訂用帳戶，請執行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)。
+若要查看您正在使用的訂用帳戶，請執行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```powershell
 Get-AzSubscription
 ```
 
-如果需要使用不同於預設值的訂用帳戶，請執行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext)。
+如果需要使用不同於預設值的訂用帳戶，請執行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -69,7 +69,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 在 SQL 集區中，您可以藉由調整資料倉儲單位來增加或減少計算資源。 [建立與連線 - 入口網站](create-data-warehouse-portal.md)已建立 **mySampleDataWarehouse**，並以 400 DWU 加以初始化。 下列步驟會調整 **mySampleDataWarehouse** 的 DWU。
 
-若要變更資料倉儲單位，請使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell Cmdlet。 下列範例將資料庫 **mySampleDataWarehouse** 的資料倉儲單位設定為 DW300c，此資料庫裝載於伺服器 **sqlpoolservername** 上的資源群組 **resourcegroupname** 中。
+若要變更資料倉儲單位，請使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell Cmdlet。 下列範例將資料庫 **mySampleDataWarehouse** 的資料倉儲單位設定為 DW300c，此資料庫裝載於伺服器 **sqlpoolservername** 上的資源群組 **resourcegroupname** 中。
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>檢查資料倉儲狀態
 
-若要查看資料倉儲的目前狀態，請使用 [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell Cmdlet。 此 Cmdlet 會取得資源群組 **resourcegroupname** 和伺服器 **sqlpoolservername.database.windows.net** 中的 **mySampleDataWarehouse** 資料庫的狀態。
+若要查看資料倉儲的目前狀態，請使用 [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell Cmdlet。 此 Cmdlet 會取得資源群組 **resourcegroupname** 和伺服器 **sqlpoolservername.database.windows.net** 中的 **mySampleDataWarehouse** 資料庫的狀態。
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -120,6 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 您現在已了解如何調整 SQL 集區的計算。 若要深入了解 SQL 集區，請繼續進行載入資料的教學課程。
 
 > [!div class="nextstepaction"]

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: af303928490d2570fa9430bd4b9d30c4a49df304
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675481"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586606"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -33,7 +33,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 * [使用 C# Proxy 透過 IoT 中樞裝置串流進行 SSH/RDP 輸送](./quickstart-device-streams-proxy-csharp.md)
 * [使用 NodeJS Proxy 透過 IoT 中樞裝置串流進行 SSH/RDP 輸送](./quickstart-device-streams-proxy-nodejs.md)。
 
-![本機 Proxy 設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![本機 Proxy 設定](./media/quickstart-device-streams-proxy-c/device-stream-proxy-diagram.png)
 
 1. 服務本機 Proxy 連線至 IoT 中樞，並啟動對目標裝置的裝置串流。
 
@@ -48,7 +48,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 

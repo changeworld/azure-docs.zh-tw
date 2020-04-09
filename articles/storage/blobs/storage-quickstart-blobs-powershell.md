@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061412"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474013"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入門：使用 PowerShell 上傳、下載及列出 Blob
 
@@ -28,7 +28,7 @@ ms.locfileid: "80061412"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本快速入門需要 Azure PowerShell 模組 Az 0.7 版或更新版本。 執行 `Get-InstalledModule -Name Az -AllVersions | select Name,Version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
+本快速入門需要 Azure PowerShell 模組 Az 0.7 版或更新版本。 執行 `Get-InstalledModule -Name Az -AllVersions | select Name,Version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "80061412"
 
 Blob 一律會上傳到容器中。 您可以組織 Blob 群組，如同在電腦的資料夾中組織檔案一般。
 
-設定容器名稱，然後使用 [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) 來建立容器。 請設定 `blob` 的權限，以允許檔案的公用存取。 此範例中的容器名稱是 *quickstartblobs*。
+設定容器名稱，然後使用 [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) 來建立容器。 請設定 `blob` 的權限，以允許檔案的公用存取。 此範例中的容器名稱是 *quickstartblobs*。
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -47,7 +47,7 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 用來備份 IaaS VM 的 VHD 檔案是分頁 Blob。 附加 Blob 可用於記錄，例如，當您想要寫入檔案，並繼續新增更多資訊時。 儲存在 Blob 儲存體中的大部分檔案都是區塊 Blob。 
 
-若要將檔案上傳至區塊 Blob，請取得容器參考，然後取得該容器中區塊 Blob 的參考。 取得 Blob 參考之後，即可使用 [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent) 將資料上傳至 Blob。 如果 Blob 不存在，此作業會予以建立，若已存在，則加以覆寫。
+若要將檔案上傳至區塊 Blob，請取得容器參考，然後取得該容器中區塊 Blob 的參考。 取得 Blob 參考之後，即可使用 [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) 將資料上傳至 Blob。 如果 Blob 不存在，此作業會予以建立，若已存在，則加以覆寫。
 
 下列範例會將本機磁碟上 *D:\\_TestImages* 資料夾中的 *Image001.jpg* 和 *Image002.png* 上傳至您所建立的容器。
 
@@ -69,7 +69,7 @@ Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-使用 [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob) 來取得容器中 Blob 的清單。 此範例只會顯示已上傳之 Blob 的名稱。
+使用 [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) 來取得容器中 Blob 的清單。 此範例只會顯示已上傳之 Blob 的名稱。
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -77,7 +77,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>下載 Blob
 
-將 blob 下載到本機磁碟。 針對您要下載每個 Blob，請設定名稱並呼叫[Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) 以下載 Blob。
+將 blob 下載到本機磁碟。 針對您要下載每個 Blob，請設定名稱並呼叫[Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) 以下載 Blob。
 
 此範例會將 Blob 下載到本機磁碟上的 *D:\\_TestImages\Downloads*。 
 

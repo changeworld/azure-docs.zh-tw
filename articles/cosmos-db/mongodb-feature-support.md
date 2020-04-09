@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72754992"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981880"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>適用於 MongoDB (3.2 版) 的 Azure Cosmos DB API：支援的功能和語法
 
@@ -77,7 +77,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 ## <a name="aggregation-pipelinea"></a>彙總管線 </a>
 
-Cosmos DB 支援 MongoDB 3.2 公開預覽版中的彙總管線。 請參閱 [Azure 部落格](https://aka.ms/mongodb-aggregation)，以取得如何開始使用公開預覽版的指示。
+Cosmos DB 支援 MongoDB 3.2 公開預覽版中的彙總管線。 請參閱 [Azure 部落格](https://azure.microsoft.com/blog/azure-cosmosdb-extends-support-for-mongodb-aggregation-pipeline-unique-indexes-and-more/)，以取得如何開始使用公開預覽版的指示。
 
 ### <a name="aggregation-commands"></a>彙總命令
 

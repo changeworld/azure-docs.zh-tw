@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 1287eb5de1391f40c4409d5d10522d8979ae4207
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78384091"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658663"
 ---
 若要建立 C++ 桌面開發的 Visual Studio 專案，您必須設定 Visual Studio 的開發選項、建立專案、選取目標架構，然後安裝語音 SDK。
 
@@ -77,4 +77,4 @@ ms.locfileid: "78384091"
 
 1. 在 [預覽變更]  對話方塊中，選取 [確定]  。
 
-1. 在 [接受授權]  對話方塊中，檢視授權，然後選取 [我接受]  。 套件安裝隨即開始，而且當安裝完成時，[輸出]  窗格會顯示類似下列文字的訊息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`。
+1. 在 [接受授權]  對話方塊中，檢視授權，然後選取 [我接受]  。 套件安裝隨即開始，而且當安裝完成時，[輸出]  窗格會顯示類似下列文字的訊息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`。

@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76774552"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478064"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入門：透過 Python 使用服務匯流排主題和訂用帳戶
 
@@ -35,7 +35,7 @@ ms.locfileid: "76774552"
 ## <a name="prerequisites"></a>Prerequisites
 - Azure 訂用帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 服務匯流排命名空間，遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)中的步驟加以建立。 從 [共用存取原則]  畫面複製命名空間名稱、共用存取金鑰名稱和主要金鑰值，以便稍後在本快速入門中使用。 
-- Python 3.4x 或更新版本，已安裝 [Python SDK][Azure Python package] 套件。 如需詳細資訊，請參閱 [Python 安裝指南](/azure/python/python-sdk-azure-install)。
+- Python 3.4x 或更新版本，已安裝 [Python SDK][Azure Python package] 套件。 如需詳細資訊，請參閱 [Python 安裝指南](/azure/developer/python/azure-sdk-install)。
 
 ## <a name="create-a-servicebusservice-object"></a>建立 ServiceBusService 物件
 

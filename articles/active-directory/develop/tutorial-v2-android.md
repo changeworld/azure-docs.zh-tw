@@ -2,25 +2,22 @@
 title: 將使用者登入/登出及呼叫 Microsoft Graph (Android) - Microsoft 身分識別平台 | Azure
 description: 從 Microsoft 身分識別平台取得存取權杖，並呼叫 Microsoft Graph 或需要存取權杖的 API (Android)
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: hahamil
-ms.reviwer: brandwe
+ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a5333d5a8f0972dac80efe6c641c515102a2d714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5c8bd5accefceee042601c3cf7d71f5e9131e04e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77917929"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880817"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph 
 

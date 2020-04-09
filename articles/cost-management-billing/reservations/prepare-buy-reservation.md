@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436975"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886512"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -43,8 +43,6 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 1. 範圍設定為資源群組的保留
 2. 單一範圍保留
 3. 共用範圍保留
-
-單一資源群組可根據您設定保留範圍的方式，從多個保留取得保留折扣。
 
 您一律可以在購買保留之後變更範圍。 若要這麼做，請移至保留，按一下 [設定]  ，然後重新設定保留範圍。 重新設定保留範圍不算是商業交易。 您的保留期限不會變更。 如需有關更新範圍的詳細資訊，請參閱[在購買保留後更新範圍](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
