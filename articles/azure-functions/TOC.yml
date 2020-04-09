@@ -207,7 +207,7 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: 儲存體 - Visual Studio
               href: add-output-binding-storage-queue-vs.md
-            - name: 儲存體 - Java/Gradle
+            - name: 儲存體 - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: 偵錯和測試
           items:

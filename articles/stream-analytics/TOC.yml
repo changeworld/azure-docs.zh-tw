@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: 選擇作業的開發工具
       href: feature-comparison.md
+    - name: 本機開發
+      href: develop-locally.md
     - name: 作業的輸入類型
       items:
         - name: 輸入概觀

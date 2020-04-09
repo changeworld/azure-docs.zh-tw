@@ -62,6 +62,8 @@
           href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
     - name: 資源
       items:
+        - name: 成本管理影片
+          href: 'https://www.youtube.com/c/AzureCostManagement'
         - name: 透過 Microsoft Learn 增進您的技巧
           href: /learn/browse/?products=azure-cost-management
         - name: 成本管理意見反應論壇
