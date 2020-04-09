@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 02f2f8ce523e9316b749a9639112176a74da66d2
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ee8f67a41d339e6e5f65548867c5458739857d50
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745541"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981251"
 ---
 # <a name="update-a-power-bi-app-offer"></a>更新 Power BI 應用產品/服務
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
 
 本文介紹如何在[雲合作夥伴門戶](https://cloudpartner.azure.com/)中更新 Microsoft Power BI 應用產品/服務,然後重新發佈產品/服務。 以下是更新產品/服務的常見原因:
 

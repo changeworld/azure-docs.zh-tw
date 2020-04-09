@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618920"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982849"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 網路服務遠端工作
 
@@ -80,16 +80,16 @@ Azure 還具有一組豐富的生態系統合作夥伴。 我們的合作夥伴 
 
 以下文章討論了如何使用不同的 Azure 網路功能來擴展使用者以遠端工作:
 
-| **文章** | **上次更新** |
+| **文章** | **說明** |
 | --- | --- |
-| [如何使用使用者能夠遠端工作](../vpn-gateway/work-remotely-support.md) | 2020年3月23日 |
-| [努力滿足家庭需求的工作?這裡是 Azure 虛擬 WAN 可以提供説明的地方](../virtual-wan/work-remotely-support.md) | 2020年3月23日 |
-| [應用程式閘道高流量支援](../application-gateway/high-traffic-support.md) | 2020年3月23日 |
-| [遠端工作的網路虛擬裝置 (NVA) 注意事項](../vpn-gateway/nva-work-remotely-support.md)| 2020年3月23日 |
-| [從 SSTP 過渡到 OpenVPN 協定或 IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | 2020年3月23日 |
-| [使用 Azure 堡壘遠端工作](../bastion/work-remotely-support.md) | 2020年3月23日 |
-| [使用 Azure 快速路由建立混合連線以支援遠端使用者](../expressroute/work-remotely-support.md) | 2020年3月23日 |
-| [Azure 防火牆遠端工作支援](../firewall/remote-work-support.md)|2020年3月25日|
+| [如何使用使用者能夠遠端工作](../vpn-gateway/work-remotely-support.md) | 查看可用選項,為使用者設置遠程存訪問,或為組織補充其現有解決方案。|
+| [努力滿足家庭需求的工作?這裡是 Azure 虛擬 WAN 可以提供説明的地方](../virtual-wan/work-remotely-support.md) | 使用 Azure 虛擬 WAN 滿足組織的遠端連接需求。|
+| [應用程式閘道高流量支援](../application-gateway/high-traffic-support.md) | 將應用程式閘道與 Web 應用程式防火牆 (WAF) 一起用於可擴展且安全的方式來管理 Web 應用程式的流量。 |
+| [遠端工作的網路虛擬裝置 (NVA) 注意事項](../vpn-gateway/nva-work-remotely-support.md)|查看有關利用 Azure 中的 NVA 提供遠端存取解決方案的指導。 |
+| [從 SSTP 過渡到 OpenVPN 協定或 IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | 通過過渡到 OpenVPN 協定或 IKEv2,克服了 SSTP 的 128 個併發連接限制。|
+| [使用 Azure 堡壘遠端工作](../bastion/work-remotely-support.md) | 直接在 Azure 門戶中向 Azure 虛擬網路中的虛擬機提供安全和無縫的 RDP/SSH 連接,而無需使用公共 IP 位址。 |
+| [使用 Azure 快速路由建立混合連線以支援遠端使用者](../expressroute/work-remotely-support.md) | 將 ExpressRoute 用於混合連接,使組織中的用戶能夠遠端工作。|
+| [Azure 防火牆遠端工作支援](../firewall/remote-work-support.md)|使用 Azure 防火牆保護 Azure 虛擬網路資源。 |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

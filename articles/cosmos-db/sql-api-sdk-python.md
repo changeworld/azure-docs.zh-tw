@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547708"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982900"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "80547708"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [Sql](sql-api-query-reference.md)
 > * [批次執行器 -.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批次執行器 -Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -36,7 +36,7 @@ ms.locfileid: "80547708"
 |**API 文件**|[Python API 參考文件](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK 安裝指示**|[SDK 安裝指示](https://github.com/Azure/azure-cosmos-python)|
 |**參與 SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**開始使用**|[開始使用 Python SDK](sql-api-python-application.md)|
+|**開始**|[開始使用 Python SDK](sql-api-python-application.md)|
 |**目前支援的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>版本資訊
@@ -71,7 +71,7 @@ ms.locfileid: "80547708"
 * 更新參考 Azure Cosmos DB 而非 Azure DocumentDB 的文件。
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* 此 SDK 版本需要使用從 https://aka.ms/cosmosdb-emulator 下載之最新版本的 Azure Cosmos DB 模擬器。
+* 此 SDK 版本需要最新版本的[Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)。
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * 彙總字典的修正錯誤。

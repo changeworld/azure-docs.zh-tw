@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745582"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981285"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>電源 BI 應用應用商店詳細資訊選項卡
 
 >[!Important]
->從 2020 年 3 月 30 日開始,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
+>從 2020 年 4 月 13 日起,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
 
 在 **「新優惠**」頁上,使用 **「網店詳細資訊」** 選項卡為您的潛在客戶提供行銷、銷售和法律資訊。 在此選項卡上,還可以為 Azure 應用商店生成的潛在顧客設置管理。 這一長形式分為六個部分:**報價詳情**、**上市詳情**、**行銷工件**、**法律**,**客戶支援**與**潛在客戶管理**。  欄位標籤末尾的星號 (*) 表示需要該欄位。
 
@@ -114,7 +114,7 @@ ms.locfileid: "80745582"
 |------------------------|--------------------------------------            |
 |  **None**              | 不收集任何潛在顧客。 這是預設選項。  |
 | **Azure Blob (已淘汰)** | 使用容器名稱與連接字串指定[Azure Blob 儲存](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)。  此選項已棄用。 變更**Azure 表**。  |
-| **Azure 表**        | 使用連接字串指定[Azure 儲存儲存](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview)。  |
+| **Azure 資料表**        | 使用連接字串指定[Azure 儲存儲存](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview)。  |
 | **動態 CRM 線上** | 使用 URL 和身份驗證認證認證的選擇[Dynamics 365。](https://dynamics.microsoft.com/) |
 | **HTTPS 終結點**     | 使用 JSON 負載指定 HTTPS 終結點。   |
 | **Marketo**            | 使用伺服器 ID、munchkin ID 和表單 ID 指定[Marketo](https://www.marketo.com/)實例。   |

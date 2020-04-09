@@ -1,5 +1,5 @@
 ---
-title: 使用圖形大容量執行器 .NET 庫與 Azure 宇宙 DB Gremlin API
+title: 使用圖形大容量執行器 .NET 函式庫與 Azure 宇宙 DB Gremlin API
 description: 了解如何使用大量執行程式程式庫將圖形資料大量匯入 Azure Cosmos DB Gremlin API 容器中。
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442175"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982698"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>在 Azure Cosmos DB Gremlin API 中使用圖形大量執行程式 .NET 程式庫執行大量作業
 
 本教學課程說明如何使用 Azure Cosmos DB 的大量執行程式 .NET 程式庫，將圖形物件匯入並更新至 Azure Cosmos DB Gremlin API 容器中。 此程序會使用[大量執行程式程式庫](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview)中的圖形類別，以程式設計方式建立頂點和邊緣物件，繼而為個別的網路要求插入其中多項。 此行為可透過大量執行程式程式庫進行設定，以充分運用資料庫和本機記憶體資源。
 
-不同於將 Gremlin 查詢傳送至資料庫時，命令會逐一受到評估繼而執行，使用大量執行程式程式庫時，將必須在本機建立及驗證物件。 建立物件之後，此程式庫可讓您以循序方式將圖形物件傳送至資料庫服務。 使用此方法時，資料擷取速度最多可增加 100 倍，因此這種方法非常適用於初始資料移轉或定期資料移動作業。 若要深入了解，請瀏覽 [Azure Cosmos DB 圖形大量執行程式範例應用程式](https://aka.ms/graph-bulkexecutor-sample)的 GitHub 頁面。
+不同於將 Gremlin 查詢傳送至資料庫時，命令會逐一受到評估繼而執行，使用大量執行程式程式庫時，將必須在本機建立及驗證物件。 建立物件之後，此程式庫可讓您以循序方式將圖形物件傳送至資料庫服務。 使用此方法時，資料擷取速度最多可增加 100 倍，因此這種方法非常適用於初始資料移轉或定期資料移動作業。 若要深入了解，請瀏覽 [Azure Cosmos DB 圖形大量執行程式範例應用程式](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)的 GitHub 頁面。
 
 ## <a name="bulk-operations-with-graph-data"></a>圖形資料的大量作業
 
@@ -77,7 +77,7 @@ catch (Exception e)
 
 承載必須具現化為 `GremlinVertex` 和 `GremlinEdge` 物件。 這些物件的建立方式如下：
 
-**頂點**：
+**頂點**:
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -115,12 +115,12 @@ e.AddProperty("customProperty", "value");
 
 ### <a name="prerequisites"></a>Prerequisites
 * 啟用 Azure 開發工作負載的 Visual Studio 2019。 您可以使用免費的 [Visual Studio 2019 Community 版本](https://visualstudio.microsoft.com/downloads/)展開工作。
-* Azure 訂用帳戶。 您可以在此處創建[一個免費的 Azure 帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，您可以透過[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 建立 Cosmos 資料庫帳戶，而不需要 Azure 訂用帳戶。
+* Azure 訂用帳戶。 您可以建立[一個免費的 Azure 帳號](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，您可以透過[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 建立 Cosmos 資料庫帳戶，而不需要 Azure 訂用帳戶。
 * 透過**無限制集合**建立 Azure Cosmos DB Gremlin API 資料庫。 本指南將說明如何開始使用 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)。
 * Git。 如需詳細資訊，請參閱 [Git 下載頁面](https://git-scm.com/downloads)。
 
 ### <a name="clone-the-sample-application"></a>複製範例應用程式
-在本教學課程中，我們將使用裝載於 GitHub 上的 [Azure Cosmos DB 圖形大量執行程式範例](https://aka.ms/graph-bulkexecutor-sample)，逐步完成開始使用的步驟。 此應用程式包含一個 .NET 解決方案，會隨機產生頂點和邊緣物件，然後對指定的圖形資料庫帳戶執行大量插入。 若要取得應用程式，請執行下列 `git clone` 命令：
+在本教學課程中，我們將使用裝載於 GitHub 上的 [Azure Cosmos DB 圖形大量執行程式範例](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)，逐步完成開始使用的步驟。 此應用程式包含一個 .NET 解決方案，會隨機產生頂點和邊緣物件，然後對指定的圖形資料庫帳戶執行大量插入。 若要取得應用程式，請執行下列 `git clone` 命令：
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

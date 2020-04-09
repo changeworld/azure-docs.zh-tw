@@ -1,6 +1,6 @@
 ---
-title: IPv6 概述 - Azure 負載等化器
-description: 通過此學習路徑，開始使用對 Azure 負載等化器和負載平衡 VM 的 IPv6 支援。
+title: IPv6 概述 ─ Azure 負載均衡器
+description: 通過此學習路徑,開始使用對 Azure 負載均衡器和負載平衡 VM 的 IPv6 支援。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931976"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981846"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer 的 IPv6 概觀
 
 
 >[!NOTE] 
->此內容已被[IPv6 取代，用於 Azure VNet 概述](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。 Azure 建議使用新的 IPv6 進行新的 IPv6 部署，用於 Azure 虛擬網路功能。
+>此內容已被[IPv6 取代,用於 Azure VNet 概述](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。 Azure 建議使用新的 IPv6 進行新的 IPv6 部署,用於 Azure 虛擬網路功能。
 
 >[!NOTE]
 >Azure Load Balancer 支援兩種不同類型：基本和標準。 本文討論基本 Load Balancer。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](load-balancer-standard-overview.md)。
 
-基本 SKU 面向 Internet 的負載等化器可以使用 IPv6 位址進行部署。 除了 IPv4 連線功能，這還具有下列功能︰
+基本 SKU 面向 Internet 的負載均衡器可以使用 IPv6 位址進行部署。 除了 IPv4 連線功能，這還具有下列功能︰
 
 * 原生端對端 IPv6 連線能力 - 在公用網際網路用戶端和 Azure 虛擬機器 (VM) 之間透過負載平衡器連接。
 * 原生端對端 IPv6 輸出連線能力 - 在 VM 和公用網際網路上已啟用 IPv6 的用戶端之間。
@@ -81,6 +81,7 @@ ms.locfileid: "75931976"
 * **目前不支援**變更 IPv6 的 loadDistributionMethod 參數。
 * **目前不支援**保留的 IPv6 IP (其中 IPAllocationMethod = 靜態)。
 * 不支援 NAT64 (IPv6 至 IPv4 的轉譯)。
+* **當前不支援**將引用 IPv6 子網的輔助 NIC 附加到後端池。
 
 ## <a name="next-steps"></a>後續步驟
 

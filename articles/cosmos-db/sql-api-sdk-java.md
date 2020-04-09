@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙資料庫：SQL JAVA API、SDK &資源
+title: Azure 宇宙資料庫:SQL JAva API、SDK &资源
 description: 了解所有 SQL Java API 和 SDK 相關資訊，包括發行日期、停用日期及 Azure Cosmos DB SQL Java SDK 每個版本之間所做的變更。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,54 +8,54 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558923"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983597"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API：版本資訊與資源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET 更改來源](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [非同步 Java](sql-api-sdk-async-java.md)
-> * [JAVA](sql-api-sdk-java.md)
+> * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [休息](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 資源提供者](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [批量執行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量執行器 - JAVA](sql-api-sdk-bulk-executor-java.md)
+> * [Sql](sql-api-query-reference.md)
+> * [批次執行器 -.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批次執行器 -Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API Java SDK 支援同步作業。 如需非同步支援，請使用 [SQL API Async Java SDK](sql-api-sdk-async-java.md)。 
 
 | |  |
 |---|---|
 |**SDK 下載**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
-|**API 文檔**|[Java API 參考文件](/java/api/com.microsoft.azure.documentdb)|
+|**API 文件**|[Java API 參考文件](/java/api/com.microsoft.azure.documentdb)|
 |**參與 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**開始使用**|[開始使用 Java SDK](sql-api-java-get-started.md)|
+|**開始**|[開始使用 Java SDK](sql-api-java-get-started.md)|
 |**Web 應用程式教學課程**|[使用 Azure Cosmos DB 進行 Web 應用程式開發](sql-api-java-application.md)|
-|**最低支援執行階段**|[Java 開發套件 (JDK) 7+](https://aka.ms/azure-jdks)|
+|**最低支援執行階段**|[Java 開發套件 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>版本資訊
 
 ### <a name="247"></a><a name="2.4.7"/>2.4.7
 * 修復了連接池超時問題。
-* 修復內部重試的身份驗證權杖刷新。
+* 修復內部重試的身份驗證令牌刷新。
 
 ### <a name="246"></a><a name="2.4.6"/>2.4.6
-* 更新了資料庫帳戶上的正確用戶端副本策略標記，並使得資料庫帳戶配置從緩存讀取。
+* 更新了資料庫帳戶上的正確用戶端副本策略標記,並使得資料庫帳戶配置從緩存讀取。
 
 ### <a name="245"></a><a name="2.4.5"/>2.4.5
-* 如果使用者提供 pkRangeId，則避免重試不正確分區金鑰範圍錯誤。
+* 如果使用者提供 pkRangeId,則避免重試無效的分區密鑰範圍錯誤。
 
 ### <a name="244"></a><a name="2.4.4"/>2.4.4
 * 優化分區金鑰範圍緩存刷新。
-* 修復了 SDK 不接受伺服器分區拆分提示，導致用戶端路由緩存刷新不正確的情況。
+* 修復了 SDK 不接受伺服器分區拆分提示,導致用戶端路由緩存刷新不正確的情況。
 
 ### <a name="242"></a><a name="2.4.2"/>2.4.2
 * 優化的集合緩存刷新。
@@ -70,16 +70,16 @@ SQL API Java SDK 支援同步作業。 如需非同步支援，請使用 [SQL AP
 * 為直接模式添加了單獨的超時支援。
 
 ### <a name="223"></a><a name="2.2.3"/>2.2.3
-* 使用來自服務的空錯誤訊息並生成文檔用戶端異常。
+* 使用來自服務的空錯誤消息並生成文檔客戶端異常。
 
 ### <a name="222"></a><a name="2.2.2"/>2.2.2
-* 通訊端連接改進，添加 SoKeepAlive 預設值 true。
+* 套接字連接改進,添加 SoKeepAlive 預設值 true。
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * 添加了請求診斷字串支援。
 
 ### <a name="213"></a><a name="2.1.3"/>2.1.3
-* 修復了雜湊 V2 的分區金鑰中的 Bug。
+* 修復了哈希 V2 的分區密鑰中的 Bug。
 
 ### <a name="212"></a><a name="2.1.2"/>2.1.2
 * 添加了對複合索引的支援。
@@ -87,7 +87,7 @@ SQL API Java SDK 支援同步作業。 如需非同步支援，請使用 [SQL AP
 * 修復了直接模式下預置條件的 upsert 的 Bug。
 
 ### <a name="211"></a><a name="2.1.1"/>2.1.1
-* 修復了閘道位址緩存中的 Bug。
+* 修復了閘道位址快取中的 Bug。
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * 針對直接模式新增多重區域寫入支援。
@@ -131,7 +131,7 @@ SQL API Java SDK 支援同步作業。 如需非同步支援，請使用 [SQL AP
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * 以改善的 Json 序列化效能。
-* 此 SDK 版本需要使用從 https://aka.ms/cosmosdb-emulator 下載之最新版本的 Azure Cosmos DB 模擬器。
+* 此 SDK 版本需要最新版本的[Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)。
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Microsoft 贊助者程式庫的內部變更。
@@ -162,7 +162,7 @@ SQL API Java SDK 支援同步作業。 如需非同步支援，請使用 [SQL AP
 * 新增變更摘要的支援。
 * 新增透過 RequestOptions.setPopulateQuotaInfo 收集配額資訊的支援。
 * 新增透過 RequestOptions.setScriptLoggingEnabled 進行預存程序指令碼記錄的支援。
-* 修復了在 DirectHttps 模式下的查詢在遇到油門故障時可能會停止回應的 Bug。
+* 修復了在 DirectHH 模式下的查詢在遇到油門故障時可能會停止回應的 Bug。
 * 修正工作階段一致性模式中的錯誤。
 * 修正當要求率過高時，可能在 HttpContext 中造成 NullReferenceException 的錯誤。
 * 改善 DirectHttps 模式的效能。
@@ -250,7 +250,7 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 服務將會拒絕使用已停用 SDK 的任何 Cosmos DB 要求。
 
 > [!WARNING]
-> JAVA SQL SDK 的所有版本**1.x**將于**2020 年 5 月 30**日停用。
+> Java SQL SDK 的所有版本**1.x**將於**2020 年 5 月 30**日停用。
 > 
 >
 
@@ -267,15 +267,15 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 | [2.4.6](#2.4.6) |2020年1月24日 |--- |
 | [2.4.5](#2.4.5) |2019年11月10日 |--- |
 | [2.4.4](#2.4.4) |2019年10月24日 |--- |
-| [2.4.2](#2.4.2) |九月 26， 2019 |--- |
-| [2.4.1](#2.4.1) |七月 18， 2019 |--- |
-| [2.4.0](#2.4.0) |五月 04， 2019 |--- |
+| [2.4.2](#2.4.2) |九月 26, 2019 |--- |
+| [2.4.1](#2.4.1) |七月 18, 2019 |--- |
+| [2.4.0](#2.4.0) |五月 04, 2019 |--- |
 | [2.3.0](#2.3.0) |2019年4月24日 |--- |
 | [2.2.3](#2.2.3) |2019年4月16日 |--- |
 | [2.2.2](#2.2.2) |2019年04月05日 |--- |
-| [2.2.0](#2.2.0) |三月 27， 2019 |--- |
-| [2.1.3](#2.1.3) |三月 13， 2019 |--- |
-| [2.1.2](#2.1.2) |三月 09， 2019 |--- |
+| [2.2.0](#2.2.0) |三月 27, 2019 |--- |
+| [2.1.3](#2.1.3) |三月 13, 2019 |--- |
+| [2.1.2](#2.1.2) |三月 09, 2019 |--- |
 | [2.1.1](#2.1.1) |2018年12月13日 |--- |
 | [2.1.0](#2.1.0) |2018年11月20日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
