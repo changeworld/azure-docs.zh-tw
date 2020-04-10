@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607541"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011441"
 ---
 # <a name="sql-database-release-notes"></a>SQL 資料庫發行說明
 
@@ -22,12 +22,11 @@ ms.locfileid: "80607541"
 
 ## <a name="features-in-public-preview"></a>公開預覽的功能
 
-### <a name="single-database"></a>[單一資料庫](#tab/single-database)
+### <a name="single-database"></a>[單個資料庫](#tab/single-database)
 
 | 功能 | 詳細資料 |
 | ---| --- |
 | 全新 Fsv2 系列與 M 系列硬體系列| 有關詳細資訊,請參閱[硬體代](sql-database-service-tiers-vcore.md#hardware-generations)。|
-| [Azure 專用連結](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| 專用連結通過保留 Azure 網路上的數據來簡化網路體系結構並保護 Azure 中的終結點之間的連接,從而消除了對 Internet 的暴露。 專用連結還使您能夠在 Azure 上創建和呈現自己的服務。 |
 | 使用單一個資料庫和彈性池加快資料庫復原 | 有關詳細資訊,請參閱[加速資料庫恢復](sql-database-accelerated-database-recovery.md)。|
 |近似的相異計數|有關詳細資訊,請參閱[近似計數唯一](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)。|
 |列儲存中的批次處理模式 (相容性等級 150 下)|有關詳細資訊,請參閱[行儲存上的批次處理模式](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)。|
@@ -48,7 +47,7 @@ ms.locfileid: "80607541"
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">執行個體集區</a> | 將較小的 SQL 實例遷移到雲的便捷且經濟高效的方法。 |
 | <a href="https://aka.ms/managed-instance-aadlogins">實體級 Azure AD 伺服器主體(登入名)</a> | 使用<a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">「從外部提供程式」創建登錄,創建</a>伺服器級登錄。 |
-| [交易複製](sql-database-managed-instance-transactional-replication.md) | 將表的更改複製到放置在託管實例、單個資料庫或 SQL Server 實例上的其他資料庫,或者在其他託管實例或 SQL Server 實例中更改某些行時更新表。 有關詳細資訊,請參閱[在 Azure SQL 資料庫託管實例資料庫中設定複製](replication-with-sql-database-managed-instance.md)。 |
+| [異動複寫](sql-database-managed-instance-transactional-replication.md) | 將表的更改複製到放置在託管實例、單個資料庫或 SQL Server 實例上的其他資料庫,或者在其他託管實例或 SQL Server 實例中更改某些行時更新表。 有關詳細資訊,請參閱[在 Azure SQL 資料庫託管實例資料庫中設定複製](replication-with-sql-database-managed-instance.md)。 |
 | 威脅偵測 |有關詳細資訊,請參閱[在 Azure SQL 資料庫託管實例中設定威脅偵測](sql-database-managed-instance-threat-detection.md)。|
 
 ---

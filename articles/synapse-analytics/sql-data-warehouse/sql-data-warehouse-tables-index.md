@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742702"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011016"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的索引表
 
@@ -52,9 +52,9 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>堆積資料表
 
-當您暫時將數據在 Synapse SQL 池中登錄時,您可能會發現使用堆錶可以更快地完成整個過程。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  
+當您暫時將數據在 Synapse SQL 池中登錄時,您可能會發現使用堆錶可以更快地完成整個過程。 這是因為堆積的載入速度比索引資料表還要快，而在某些情況下，可以從快取進行後續的讀取。  如果您載入資料只是在做執行更多轉換之前的預備，將資料表載入堆積資料表會遠快於將資料載入叢集資料行存放區資料表。 此外，將資料載入[暫存資料表](sql-data-warehouse-tables-temporary.md)會比將資料表載入永久儲存體快速。  載入資料後,可以在表中創建索引,以加快查詢性能。  
 
-對於小於 6000 萬行的小型查找表,堆表通常有意義。  一旦超過 6000 萬行,群集列存儲表開始實現最佳壓縮。
+一旦超過 6000 萬行,群集列存儲表開始實現最佳壓縮。  對於少於 6000 萬行的小型查找表,請考慮使用 HEAP 或群集索引來提高查詢性能。 
 
 若要建立堆積資料表，只需在 WITH 子句中指定 HEAP︰
 

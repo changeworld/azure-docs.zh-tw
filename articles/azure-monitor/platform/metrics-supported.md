@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754657"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991887"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>支援 Azure 監視器的計量
 
 > [!NOTE]
 > 此清單大部分是從 Azure 監視器指標 REST API 自動生成的。 通過 Github 對此清單所做的任何修改都可以在沒有警告的情況下寫入。 有關如何進行永久更新的詳細資訊,請與本文的作者聯繫。
 
-Azure 監視器提供數種與計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 以下是目前可供 Azure 監視器計量管線使用的所有計量完整清單。 其他計量可在入口網站中或使用舊版 API 提供。 下列清單只包含使用彙總 Azure 監視器計量管線時可供使用的計量。 指標按命名空間組織。 有關屬於它們的服務和命名空間的清單,請參閱[Azure 服務的資源提供者](../../azure-resource-manager/management/azure-services-resource-providers.md)。 要以程式設計方式查詢和存取這些指標,請使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Azure 監視器提供數種與計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 
+
+本文是 Azure 監視器的整合指標管道當前可用的所有平臺(即自動收集)指標的完整清單。 該清單上次更新於 2020 年 3 月 27 日。 在此日期之後更改或添加的指標可能不會顯示在下面。 要以程式設計查詢和存取指標清單,請使用[2018-01-01 api 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+
+其他計量可在入口網站中或使用舊版 API 提供。 此處**未**列出在 Azure 虛擬機器、服務交換矩陣和雲端服務中運行的來賓作業系統(來賓作業系統)的指標。 這些必須通過運行在作業系統或作為作業系統的一個或多個代理進行收集。 您可以使用目前處於公共預覽的[自訂指標](metrics-custom-overview.md)API 將代理指標發送到平臺指標資料庫。 然後,您可以繪製圖表、警報,並以其他方式使用來賓 os 指標(如平臺指標)。 有關詳細資訊,請參閱[監視代理概述](agents-overview.md)。    
+
+指標按命名空間組織。 有關屬於它們的服務和命名空間的清單,請參閱[Azure 服務的資源提供者](../../azure-resource-manager/management/azure-services-resource-providers.md)。 
 
 > [!NOTE]
 > 目前不支援透過診斷設定傳送多維度計量。 跨維度值所彙總的維度計量會匯出為扁平化單一維度計量。

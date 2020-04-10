@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666775"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998338"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>具有特殊字元的部分術語搜尋與模式 - Azure 認知搜尋(通配元、正則運算式、模式)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>具有特殊字元的部分術語搜尋和模式(通配元、正規表示式、模式)
 
 *部分術語搜索*是指由術語片段組成的查詢,例如字串的第一個、最後一個或內部部分。 *模式*可能是片段的組合,有時具有特殊字元(如破折號或斜杠)是查詢的一部分。 常見用例包括查詢電話號碼、URL、人員或產品代碼或複合詞的某些部分。
 
 如果索引沒有模式匹配所需的格式的字詞,則部分搜索可能會有問題。 在索引的文本分析階段,使用預設標準分析器,將丟棄特殊字元,將複合字串和複合字串拆分,導致找不到匹配時模式查詢失敗。 例如,電話號碼`+1 (425) 703-6214`(令牌化`"1"`為`"425"``"703"``"6214"`,、、)`"3-62"`不會顯示在查詢中,因為索引中實際上不存在該內容。 
 
-解決方案是調用保留完整字串(如有必要)包括空格和特殊字元的分析器,以便您可以支援部分術語和模式。 為完整字串創建附加欄位,以及使用內容保留分析器,是解決方案的基礎。
+解決方案是調用保留完整字串(如有必要)包括空格和特殊字元的分析器,以便可以匹配部分術語和模式。 為完整字串創建附加欄位,以及使用內容保留分析器,是解決方案的基礎。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 認知搜尋中的部分搜尋是什麼
 
@@ -64,7 +64,7 @@ ms.locfileid: "80666775"
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

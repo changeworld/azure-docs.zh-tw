@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666829"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011410"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向識別分配存取權限
 
-要使用基於識別的身份驗證訪問 Azure 檔資源,標識(使用者、組或服務主體)必須在共用級別具有必要的許可權。 此過程類似於指定 Windows 共享許可權,其中指定特定使用者對檔共享的訪問類型。 一般建議是使用共用級別許可權對團隊或組進行高級存取管理,然後利用NTFS許可權在目錄/檔級別進行精細存取控制。 本節中的指引示範如何將檔案共用的讀取、寫入或刪除權限指派給身分識別。 
+要使用基於識別的身份驗證訪問 Azure 檔資源,標識(使用者、組或服務主體)必須在共用級別具有必要的許可權。 此過程類似於指定 Windows 共享許可權,其中指定特定使用者對檔共享的訪問類型。 本節中的指引示範如何將檔案共用的讀取、寫入或刪除權限指派給身分識別。 
 
 我們引入了三個 Azure 內建角色,用於向使用者授予共用級許可權:
 
@@ -32,6 +32,8 @@ ms.locfileid: "80666829"
 
 > [!NOTE]
 > 如果計劃使用 AD 進行身份驗證,請記住將 AD 認證同步到 Azure AD。 從 AD 到 Azure AD 的密碼哈希同步是可選的。 共用等級權限將授予從 AD 同步的 Azure AD 標識。
+
+一般建議是,對表示一組使用者和身份的 AD 組使用高級別訪問管理共用級別許可權,然後利用 NTFS 許可權在目錄/檔級別進行精細存取控制。 
 
 #### <a name="azure-portal"></a>Azure 入口網站
 要將 RBAC 角色分配給 Azure AD 識別,請使用[Azure 門戶](https://portal.azure.com),請按照以下步驟操作:

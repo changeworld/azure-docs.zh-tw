@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982050"
+ms.locfileid: "80991223"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -129,6 +129,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>啟用 Java 應用程式的 W3C 分散式追蹤支援
 
+#### <a name="java-30-agent"></a>Java 3.0 代理
+
+  Java 3.0 代理支援 W3C 開箱即用,無需其他配置。 
+
+#### <a name="java-sdk"></a>Java SDK
 - **連入設定**
 
   - 對於 Java EE 應用程式`<TelemetryModules>`,請向應用程式 Insights.xml 中的標記新增以下內容:
@@ -320,17 +325,32 @@ ASP.NET Core 2.0 支援提取 HTTP 標頭並啟動新活動。
 Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource` 和 `Activity` 來收集遙測，並將它與目前活動建立關聯。
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java"></a>Java 中的遙測相關性
+## <a name="telemetry-correlation-in-java"></a>Java 中的遙測相關性
 
-[應用程式見解 Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[Java SDK](../../azure-monitor/app/java-get-started.md)版本 2.0.0 或更高版本支援遙測的自動關聯。 它會自動填充`operation_id`在請求範圍內發出的所有遙測數據(如跟蹤、異常和自定義事件)。 如果[配置了 Java SDK 代理](../../azure-monitor/app/java-agent.md),它還通過 HTTP 傳播服務到服務調用的相關標頭(前面所述)。
+[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[JAVA SDK](../../azure-monitor/app/java-get-started.md)版本 2.0.0 或更高版本支援自動關聯遙測。 它會自動填充`operation_id`在請求範圍內發出的所有遙測數據(如跟蹤、異常和自定義事件)。 如果[配置了 Java SDK 代理](../../azure-monitor/app/java-agent.md),它還通過 HTTP 傳播服務到服務調用的相關標頭(前面所述)。
 
 > [!NOTE]
 > 應用程式見解 Java 代理自動收集 JMS、卡夫卡、Netty/Webflux 等的請求和依賴項。 對於 Java SDK,僅支援透過 Apache HttpClient 進行的呼叫,用於相關功能。 SDK 不支援跨消息傳遞技術(如 Kafka、RabbitMQ 和 Azure 服務總線)進行自動上下文傳播。 
 
-<a name="java-role-name"></a>
-## <a name="role-name"></a>角色名稱
+> [!NOTE]
+> 要收集自定義遙測數據,您需要使用 JAVA 2.6 SDK 對應用程式進行檢測。 
+
+### <a name="role-names"></a>角色名稱
 
 您可能希望自訂元件名稱在[應用程式映射](../../azure-monitor/app/app-map.md)中的顯示方式。 此,您可以透過以下操作之一手動設定`cloud_RoleName`:
+
+- 對於應用程式見解 JAVA 代理 3.0,請設置雲角色名稱,如下所示:
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    您還可以使用環境變數`APPLICATIONINSIGHTS_ROLE_NAME`設置雲角色名稱。
 
 - 使用應用程式的 Java SDK 2.5.0`cloud_RoleName`與更高版本`<RoleName>`, 您可以透過新增到應用程式 Insights.xml 檔來指定 :
 

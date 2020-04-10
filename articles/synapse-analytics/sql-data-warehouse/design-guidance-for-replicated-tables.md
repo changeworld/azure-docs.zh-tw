@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631324"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990781"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>以在 SQL 分析中使用複製表的設計指南
 
@@ -124,7 +124,7 @@ WHERE d.FiscalYear = 2004
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改複寫資料表時的效能考量
 
-SQL Analytics 通過維護表的主版本實現複製的表。 它會將主要版本複製到每個計算節點上的一個散發資料庫。 當發生更改時,SQL Analytics 首先更新主錶。 接著，它會重建每個計算節點上的資料表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如，DW400 上的複寫資料表有 5 份資料。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL Analytics 使用此模型支援更快的數據修改語句和靈活的縮放操作。
+SQL Analytics 通過維護表的主版本實現複製的表。 它將主版本複製到每個計算節點上的第一個分發資料庫。 當發生更改時,SQL Analytics 首先更新主版本,然後重新生成每個計算節點上的表。 重建複寫資料表包括將資料表複製到每個計算節點，然後建立索引。  例如,DW2000c 上的複製表具有 5 個數據副本。  主要複本以及每個計算節點上的完整複本。  所有資料都會儲存在散發資料庫中。 SQL Analytics 使用此模型支援更快的數據修改語句和靈活的縮放操作。
 
 在執行下列動作之後，必須進行重建：
 

@@ -3,12 +3,12 @@ title: 學習稽核虛擬機器的內容
 description: 瞭解 Azure 策略如何使用來賓配置代理審核虛擬機器內的設置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985315"
+ms.locfileid: "80998847"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -91,6 +91,13 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 要與 Azure 中的來賓配置資源提供程式通訊,電腦需要對埠**443**上的 Azure 資料中心進行出站訪問。 如果在 Azure 中使用不允許出站流量的專用虛擬網路,請使用[網路安全組](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則配置異常。
 [服務標籤](../../../virtual-network/service-tags-overview.md)「來賓和混合管理」可用於引用來賓配置服務。
+
+## <a name="azure-managed-identity-requirements"></a>Azure 託管識別要求
+
+將擴展添加到虛擬機器的**DeployIf NotExists**策略還啟用系統分配的託管標識(如果不存在)。
+
+> [!WARNING]
+> 避免在啟用系統分配託管標識的策略範圍內為虛擬機器啟用使用者分配的託管標識。 使用者分配的標識將被替換,並且計算機可能會無回應。
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 

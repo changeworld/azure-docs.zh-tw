@@ -3,18 +3,21 @@ title: 為邏輯組織標記資源、資源組和訂閱
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548486"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010795"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記組織 Azure 資源和管理層次結構
 
 將標記應用於 Azure 資源、資源組和訂閱,以邏輯方式將它們組織到分類中。 每個標記都是由一個名稱和一個值配對組成。 例如，您可以將「環境」名稱和「生產」值套用至生產環境中的所有資源。
 
 有關如何實現標記策略的建議,請參閱[資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。
+
+> [!IMPORTANT]
+> 標記名稱不區分大小寫。 標記值區分大小寫。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 

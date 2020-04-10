@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 38f5778e363a16117bab482a758666ec81352afd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 62c10a2ada9ff7d3bf7090028dd9684192517d02
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887563"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991382"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>如何監控 Azure Cosmos DB 容器或帳戶中操作的伺服器端延遲
 
@@ -35,11 +35,11 @@ Azure Cosmos DB 的 Azure 監視器提供了一個指標檢視,用於監視您�
 
 1. 從 **「指標」** 窗格>**選擇資源**>选择所需的**訂閱**與資源**群組**。 對於**資源類型**,選擇**Azure 宇宙資料庫帳戶**,選擇現有 Azure Cosmos 帳戶之一,然後選擇 **"應用**"。
    
-   ![選擇 Cosmos DB 帳號以檢視指標](./media/monitor-server-side-latency/select-cosmosdb-account.png)
+   ![選擇 Cosmos DB 帳號以檢視指標](./media/monitor-server-side-latency/select-cosmos-db-account.png)
 
 1. 接下來,從可用指標清單中選擇**伺服器端延遲**指標。 要詳細瞭解此清單中的所有可用指標,請參閱[按類別的指標](monitor-cosmos-db-reference.md)。 在此範例中,讓我們選擇**伺服器端延遲**和**Avg**作為聚合值。 除了這些詳細資訊之外,您還可以選擇指標**的時間範圍**和**時間粒度**。 最多時,您可以查看過去 30 天的指標。  應用篩選器後,會根據您的篩選器顯示圖表。 您可以看到所選期間每分鐘消耗的請求單位的平均數量。  
 
-   ![從 Azure 門戶選擇伺服器端延遲指標](./media/monitor-server-side-latency/serverside-latency-metric.png)
+   ![從 Azure 門戶選擇伺服器端延遲指標](./media/monitor-server-side-latency/server-side-latency-metric.png)
 
 ## <a name="filters-for-server-side-latency"></a>伺服器端延遲的篩選器
 
@@ -49,7 +49,7 @@ Azure Cosmos DB 的 Azure 監視器提供了一個指標檢視,用於監視您�
 
 每個操作的**伺服器端延遲**指標如下所示:
 
-![伺服器端延遲指標的篩選器](./media/monitor-server-side-latency/serverside-latency-filters.png)
+![伺服器端延遲指標的篩選器](./media/monitor-server-side-latency/server-side-latency-filters.png)
 
 您還可以使用 **「應用分割**」選項對指標進行分組。  
 

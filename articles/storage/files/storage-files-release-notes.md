@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804872"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991921"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -25,6 +25,7 @@ Azure 檔案同步代理程式支援下列版本：
 
 | 里程碑 | 代理程式版本號碼 | 發行日期 | 狀態 |
 |----|----------------------|--------------|------------------|
+| V10 版本 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 支援 |
 | 2019 年 12 月更新匯總 - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支援 |
 | V9 版本 - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019 年 12 月 2 日 | 支援 |
 | V8 版本 - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支援 |
@@ -42,6 +43,87 @@ Azure 檔案同步代理程式支援下列版本：
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 檔案同步代理程式更新原則
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10000"></a>代理版本 10.0.0.0.0
+以下發行說明適用於 Azure 檔同步代理的版本 10.0.0.0.0(2020 年 4 月 9 日發布)。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>增強功能和已修正的問題
+
+- 改進門戶中的同步進度
+    - 使用 V10 代理版本,Azure 門戶將很快開始顯示正在運行的同步作業階段的類型。 例如 初始下載、定期下載、後台回憶(快速災難恢復案例)等。 
+
+- 改進的雲分層門戶體驗
+    - 如果檔案無法分層或調用,現在可以查看伺服器終結點屬性中的分層錯誤。
+    - 伺服器終結點提供其他雲分層資訊:
+        - 本地快取大小
+        - 快取使用效率
+        - 雲分層策略詳細資訊:卷大小、當前可用空間或本地緩存中最舊文件的最後一次訪問時間。
+    - 這些更改將在初始 V10 代理版本後不久在 Azure 門戶中提供。
+
+- 支援儲存同步服務與/或儲存帳戶移到其他 Azure 的目錄 (AAD) 租戶
+    - Azure 檔案同步現在支援將儲存同步服務和/或儲存帳戶移動到其他資源組、訂閱或 Azure AD 租戶。
+    
+- 評估工具目前識別以句點結尾的檔案或目錄
+    - [評估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)已更新,以標識以句點結尾的檔或目錄。 Azure 檔案同步目前不支援以句點結尾的檔案或目錄。要使用[評估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)的更新版本,請安裝[Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)的最新版本。
+ 
+- 各種效能與可靠性改進
+    - 如果在儲存帳戶上配置了虛擬網路 (VNET) 和防火牆規則,則 Azure 檔共用上的更改檢測可能會失敗。
+    - 不再對同步可自由存取控制清單 (DACL) 的 2KB 安全描述符限制。  
+    - 減少與召回相關的記憶體消耗。 
+    - 使用[調用-Azstorage 同步更改檢測](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)cmdlet 時提高了性能。
+    - 其他雜項可靠性改進。 
+    
+### <a name="evaluation-tool"></a>評估工具
+在部署 Azure 檔案同步之前，您應該使用 Azure 檔案同步評估工具來評估其是否與您的系統相容。 此工具是 Azure PowerShell Cmdlet，可檢查檔案系統和資料集的潛在問題，例如不支援的字元或 OS 版本。 關於安裝和使用方式指示，請參閱規劃指南中[評估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)小節。 
+
+### <a name="agent-installation-and-server-configuration"></a>代理程式安裝和伺服器設定
+如需如何使用 Windows Server 安裝及設定 Azure 檔案同步代理程式的詳細資訊，請參閱[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)和[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
+
+- 必須以提升的 (系統管理員) 權限安裝代理程式安裝套件。
+- 納米伺服器部署選項不支援代理。
+- 只有 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2 可支援此代理程式。
+- 代理程式需要至少 2 GiB 的記憶體。 如果伺服器在啟用動態記憶體的虛擬機器中執行，則 VM 的記憶體應最少設定為 2048 MiB。
+- 在已將系統磁碟區資訊 (SVI) 目錄壓縮的磁碟區上，儲存體同步代理程式 (FileSyncSvc) 服務不支援其中的伺服器端點。 此設定會導致非預期的結果。
+
+### <a name="interoperability"></a>互通性
+- 防毒程式、備份及其他存取階層式檔案的應用程式，除非採用離線屬性並略過讀取這些檔案的內容，否則將會導致不想要的重新叫用。 如需詳細資訊，請參閱[針對 Azure 檔案同步進行疑難排解](storage-sync-files-troubleshoot.md)。
+- 如果檔案因為檔案檢測而遭到封鎖，檔案伺服器資源管理員 (FSRM) 檔案檢測會造成無止盡的同步處理失敗。
+- 不支援在安裝了 Azure 檔案同步代理的伺服器上運行 sysprep,並可能導致意外的結果。 在部署伺服器映像並完成 sysprep 迷你設定之後，請安裝 Azure 檔案同步代理程式。
+
+### <a name="sync-limitations"></a>同步限制
+下列項目不會同步，但是系統的其餘部分會繼續正常運作：
+- 具有不受支援字元的檔案。 如需不受支援字元的清單，請參閱[疑難排解指南](storage-sync-files-troubleshoot.md#handling-unsupported-characters)。
+- 以句點結尾的檔案或目錄。
+- 長度超過 2048 個字元的路徑。
+- 用於稽核之安全性描述元的系統存取控制清單 (SACL) 部分。
+- 擴充屬性。
+- 替代資料流。
+- 重新分析點。
+- 永久連結。
+- 如果變更從其他端點同步至該檔案，則不會保存壓縮 (如果設定於伺服器檔案上)。
+- 任何使用 EFS (或其他使用者模式加密) 加密的檔案，會阻止服務讀取資料。
+
+    > [!Note]  
+    > Azure 檔案同步永遠會加密傳輸中的資料。 資料待用時一律會在 Azure 中加密。
+ 
+### <a name="server-endpoint"></a>伺服器端點
+- 只能在 NTFS 磁碟區上建立伺服器端點。 Azure 檔案同步目前不支援 ReFS、FAT、FAT32 及其他檔案系統。
+- 系統磁碟區上不支援雲端階層。 若要在系統磁碟區上建立伺服器端點，請於建立伺服器端點時，停用雲端階層處理。
+- 只有叢集磁碟才支援容錯移轉叢集，但叢集共用磁碟區 (CSV) 不提供支援。
+- 伺服器端點無法為巢狀。 它可與其他端點平行並存於相同的磁碟區上。
+- 請勿在伺服器端點位置內儲存 OS 或應用程式分頁檔。
+- 如果將伺服器重新命名，並不會更新入口網站中的伺服器名稱。
+
+### <a name="cloud-endpoint"></a>雲端端點
+- Azure 檔案同步支援直接對 Azure 檔案共用進行變更。 不過，在 Azure 檔案共用上所做的任何變更，都必須先由 Azure 檔案同步變更偵測作業做出探索。 針對雲端端點的變更偵測作業，每隔 24 小時會起始一次。 要立即同步 Azure 檔案共享中更改的檔案,可以使用[Invoke-AzStorageSyncChange 檢測](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)電源 Shell cmdlet 手動啟動檢測 Azure 檔案共享中的更改。 此外，透過 REST 通訊協定對 Azure 檔案共用所做的變更，將不會更新 SMB 上次修改時間，而且將不會同步顯示為變更。
+- 可將儲存體同步服務及 (或) 儲存體帳戶移至現有 Azure AD 租用戶中的不同資源群組或訂用帳戶。 如果移動儲存體帳戶，您需要將儲存體帳戶的存取權給予混合式檔案同步服務 (請參閱[確保 Azure 檔案同步有儲存體帳戶的存取權](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac))。
+
+    > [!Note]  
+    > 創建雲終結點時,存儲同步服務和存儲帳戶必須位於同一 Azure AD 租戶中。 創建雲終結點后,存儲同步服務和存儲帳戶可以移動到不同的 Azure AD 租戶。
+
+### <a name="cloud-tiering"></a>雲端階層處理
+- 如果使用 Robocopy 將階層式檔案複製到另一個位置，則所產生的檔案不會進行階層處理。 因為 Robocopy 未正確地在複製作業中包含該屬性，所以可能設定離線屬性。
+- 使用 robocopy 複製檔案時，請使用 /MIR 選項來保留檔案的時間戳記。 這可確保較舊的檔案會比最近存取的檔案更快進行階層處理。
 
 ## <a name="agent-version-9100"></a>代理版本 9.1.0.0
 以下發行說明適用於 2019 年 12 月 12 日發布的 Azure 檔同步代理版本 9.1.0.0。 這些註釋是版本 9.0.0.0 列出的發行說明的補充。

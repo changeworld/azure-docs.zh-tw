@@ -1,5 +1,5 @@
 ---
-title: 使用舊版複製蒙戈DB的資料
+title: 使用舊版複製蒙戈DB的數據
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 MongoDB 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31588f9657a883e9c4a5600d2d164125a5f68edf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892562"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991938"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure Data Factory 從 MongoDB 複製資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-on-premises-mongodb-connector.md)
-> * [當前版本](connector-mongodb.md)
+> * [目前版本](connector-mongodb.md)
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 MongoDB 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
@@ -61,15 +61,15 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 | 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |是 |
 | 連接埠 |MongoDB 伺服器用來接聽用戶端連線的 TCP 連接埠。 |否 (預設值為 27017) |
 | databaseName |您想要存取之 MongoDB 資料庫的名稱。 |是 |
-| authenticationType | 用來連線到 MongoDB 資料庫的驗證類型。<br/>允許的值是：**基本**和**匿名**。 |是 |
+| authenticationType | 用來連線到 MongoDB 資料庫的驗證類型。<br/>允許的值是:**基本**與**匿名**。 |是 |
 | username |用來存取 MongoDB 的使用者帳戶。 |是 (如果使用基本驗證)。 |
 | 密碼 |使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 (如果使用基本驗證)。 |
 | authSource |您想要用來檢查驗證所用之認證的 MongoDB 資料庫名稱。 |否。 就基本驗證而言，預設會使用以 databaseName 屬性指定的系統管理員帳戶和資料庫。 |
-| enableSsl | 指定是否使用 SSL 來加密與伺服器的連線。 預設值為 false。  | 否 |
+| enableSsl | 指定與伺服器的連接是否使用 TLS 進行加密。 預設值為 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | 否 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -103,7 +103,7 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 | type | 資料集的類型屬性必須設定為：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 資料庫中集合的名稱。 |是 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -127,14 +127,14 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 ### <a name="mongodb-as-source"></a>MongoDB 作為來源
 
-複製活動**源**部分支援以下屬性：
+複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為：**MongoDbSource** | 是 |
 | 查詢 |使用自訂的 SQL-92 查詢來讀取資料。 例如：select * from MyTable。 |否 (如果已指定資料集中 "collectionName") |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -226,7 +226,7 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 MongoDB 資�
 * 資料在原始陣列之位置的指示
 * 陣列內每個元素的展開資料
 
-**表"ExampleTable_Invoices"：**
+**表"ExampleTable_Invoices":**
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | 折扣 |
 | --- | --- | --- | --- | --- | --- |
@@ -234,7 +234,7 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 MongoDB 資�
 | 1111 |1 |124 |oven |1235 |0.2 |
 | 2222 |0 |135 |fridge |12543 |0.0 |
 
-**表"ExampleTable_Ratings"：**
+**表"ExampleTable_Ratings":**
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |

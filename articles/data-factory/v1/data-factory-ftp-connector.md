@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281401"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992040"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 FTP 伺服器移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -44,13 +44,13 @@ ms.locfileid: "79281401"
 
 建立管線的最簡單方式就是使用「資料處理站複製精靈」****。 如需快速逐步解說，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您還可以使用以下工具創建管道：**視覺化工作室****、PowerShell、Azure****資源管理器範本** **、.NET API**和**REST API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您還可以使用以下工具建立管道:**視覺化工作室****、PowerShell、Azure****資源管理員樣本****、.NET API**和**REST API**。 有關建立具有複製活動的導管的分步說明,請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 創建**資料集**以表示複製操作的輸入和輸出資料。
-3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。
+2. 創建**資料集**以表示複製操作的輸入和輸出數據。
+3. 建立具有資料集作為輸入與資料集輸出的複製活動的**管道**。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義這些資料處理站實體。 如需相關範例，其中含有用來從 FTP 資料存放區複製資料的資料處理站實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 FTP 伺服器複製到 Azure Blob](#json-example-copy-data-from-ftp-server-to-azure-blob) 一節。
 
@@ -73,7 +73,7 @@ ms.locfileid: "79281401"
 | gatewayName |指定資料管理閘道中連結至內部部署 FTP 伺服器的閘道器名稱。 |否 |&nbsp; |
 | 連接埠 |指定 FTP 伺服器所接聽的連接埠 |否 |21 |
 | enableSsl |指定是否使用透過 SSL/TLS 的 FTP 通道。 |否 |true |
-| enableServerCertificateValidation |指定是否在使用透過 SSL/TLS 的 FTP 通道時啟用伺服器 SSL 憑證驗證。 |否 |true |
+| enableServerCertificateValidation |指定在 SSL/TLS 通道上使用 FTP 時是否啟用伺服器 TLS/SSL 憑證驗證。 |否 |true |
 
 >[!NOTE]
 >FTP 連接器支援以未加密或明確的 SSL/TLS 加密方式存取 FTP 伺服器；它不支援隱含的 SSL/TLS 加密。
@@ -158,7 +158,7 @@ ms.locfileid: "79281401"
 | fileName |如果您要資料表參照資料夾中的特定檔案，請在 **folderPath** 中指定檔案名稱。 如果沒有為此屬性指定任何值，資料表會指向資料夾中的所有檔案。<br/><br/>若未指定輸出資料集的 fileName****，所產生檔案的名稱是下列格式︰ <br/><br/>`Data.<Guid>.txt` (例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |否 |
 | fileFilter |指定要用來在 folderPath ****(而不是所有檔案) 中選取檔案子集的篩選器。<br/><br/>允許的值為︰`*` (多個字元) 和 `?` (單一字元)。<br/><br/>範例 1：`"fileFilter": "*.log"`<br/>範例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter **** 適用於輸入 FileShare 資料集。 這個屬性不支援 Hadoop 分散式檔案系統 (HDFS)。 |否 |
 | partitionedBy |用來指定時間序列資料的動態 folderPath**** 和 filename****。 例如，您可以指定每小時資料參數化的 **folderPath**。 |否 |
-| format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type]**** 屬性設定為下列其中一個值。 有關詳細資訊，請參閱[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)[、Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)[、Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)[、Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和[鑲木地板格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 |否 |
+| format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type]**** 屬性設定為下列其中一個值。 有關詳細資訊,請參閱[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)[、Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)[、Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)[、Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和[鑲木地板格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。 |否 |
 | compression | 指定此資料的壓縮類型和層級。 支援的類型為：GZip****、Deflate****、BZip2**** 和 ZipDeflate****，而支援的層級為：最佳**** 和最快****。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 | useBinaryTransfer |指定是否使用二進位傳輸模式。 值對二進位模式為真 (為預設值)，對 ASCII 為則為假。 只有在相關聯的連結服務類型的類型為 FtpServer 時，才可以使用這個屬性。 |否 |
 
@@ -199,7 +199,7 @@ ms.locfileid: "79281401"
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需可用來定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
 
-另一方面，活動**類型屬性**部分中可用的屬性隨每個活動類型而異。 就複製活動而言，類型屬性會根據來源和接收的類型而有所不同。
+另一方面,活動**類型屬性**部分中可用的屬性隨每個活動類型而異。 就複製活動而言，類型屬性會根據來源和接收的類型而有所不同。
 
 在複製活動中，如果來源的類型為 FileSystemSource****，則 typeProperties**** 區段會有下列可用屬性：
 
@@ -210,13 +210,13 @@ ms.locfileid: "79281401"
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON 範例：將資料從 FTP 伺服器複製到 Azure Blob
 此範例示範如何將資料從 FTP 伺服器複製至 Azure Blob 儲存體。 不過，您可以使用資料處理站中的複製活動，把資料直接複製到 [支援的資料存放區及格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文中所述的任何接收器。
 
-以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)創建管道的示例 JSON 定義：
+以下範例提供[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立導管的範例 JSON 定義:
 
 * [FtpServer](#linked-service-properties)類型的連結服務
-* [Azure 存儲](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務
+* [Azure 儲存](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務
 * [FileShare](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)
-* 具有使用[檔案系統源](#copy-activity-properties)和[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)的複製活動的[管道](data-factory-create-pipelines.md)
+* 具有使用[檔案系統來源](#copy-activity-properties)與[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)的[複製活動的導管](data-factory-create-pipelines.md)
 
 範例會每隔一小時就把 FTP 伺服器的資料複製到 Azure Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
@@ -261,7 +261,7 @@ ms.locfileid: "79281401"
 
 此資料及係指 FTP 資料夾 `mysharedfolder` 和 `test.csv` 檔案。 管線會將檔案複製至目的地。
 
-設置為**true** **外部**會通知資料工廠服務資料集是資料工廠的外部，並且不是由資料工廠中的活動生成的。
+設置為**true** **外部**會通知數據工廠服務數據集是數據工廠的外部,並且不是由數據工廠中的活動生成的。
 
 ```JSON
 {

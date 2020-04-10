@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb0e20a96bebec22dff99d89c6be0a6d294c80a1
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754130"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992142"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 HubSpot 複製資料 (預覽)
 
@@ -27,10 +27,10 @@ ms.locfileid: "75754130"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-以下活動支援此 HubSpot 連接器：
+以下活動支援此 HubSpot 連接器:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 
 您可以將資料從 HubSpot 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
@@ -51,14 +51,14 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為：**Hubspot** | 是 |
 | clientId | 與 HubSpot 應用程式關聯的用戶端 ID。 瞭解如何[在此處](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)在 HubSpot 中創建應用。 | 是 |
-| clientSecret | 與 HubSpot 應用程式關聯的用戶端金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| accessToken | 一開始驗證您 OAuth 整合時所取得的存取權杖。 瞭解如何獲取訪問權杖與您的用戶端 ID 和[機密從這裡。](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens) 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| clientSecret | 與 HubSpot 應用程式關聯的用戶端密鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| accessToken | 一開始驗證您 OAuth 整合時所取得的存取權杖。 瞭解如何獲取訪問權杖與您的用戶端ID和[機密從這裡。](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens) 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 一開始驗證您 OAuth 整合時所取得的重新整理權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
-| useHostVerification | 指定在透過 SSL 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 SSL 連線時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| useHostVerification | 指定在透過 TLS 連接時,是否要求伺服器證書中的主機名與伺服器的主機名匹配。 預設值為 true。  | 否 |
+| usePeerVerification | 指定在透過 TLS 連接時是否驗證伺服器的標識。 預設值為 true。  | 否 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -86,13 +86,13 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 HubSpot 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 HubSpot 資料集所支援的屬性清單。
 
 若要從 HubSpot 複製資料，請將資料集的 type 屬性設定為 **HubspotObject**。 以下是支援的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設置為：**中心點物件** | 是 |
+| type | 資料集的類型屬性必須設定為:**中心點物件** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
@@ -118,14 +118,14 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ### <a name="hubspotsource-as-source"></a>將 HubspotSource 作為來源
 
-若要從 HubSpot 複製資料，請將複製活動中的來源類型設定為 **HubspotSource**。 複製活動**源**部分支援以下屬性：
+若要從 HubSpot 複製資料，請將複製活動中的來源類型設定為 **HubspotSource**。 複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為：**HubspotSource** | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否 (如果已指定資料集中的 "tableName") |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Companies where Company_Id = xxx"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -157,9 +157,9 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 
 ## <a name="next-steps"></a>後續步驟

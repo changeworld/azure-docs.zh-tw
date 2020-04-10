@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823520"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011356"
 ---
 # <a name="split-merge-security-configuration"></a>分割合併安全性設定
 
@@ -26,7 +26,7 @@ ms.locfileid: "73823520"
 
 憑證有兩種設定方式。 
 
-1. [設定 SSL 憑證](#to-configure-the-ssl-certificate)
+1. [設定 TLS/SSL 憑證](#to-configure-the-tlsssl-certificate)
 2. [設定用戶端憑證](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>取得憑證
@@ -49,26 +49,26 @@ ms.locfileid: "73823520"
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 * 從 [Windows 8.1：下載套件與工具](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
-## <a name="to-configure-the-ssl-certificate"></a>設定 SSL 憑證
+## <a name="to-configure-the-tlsssl-certificate"></a>設定 TLS/SSL 憑證
 
-需要 SSL 憑證，才能將通訊加密和驗證伺服器。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
+需要 TLS/SSL 憑證來加密通信和對伺服器進行身份驗證。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
 
 ### <a name="create-a-new-self-signed-certificate"></a>建立新的自我簽署憑證
 
 1. [建立自我簽署憑證](#create-a-self-signed-certificate)
-2. [建立自我簽署 SSL 憑證的 PFX 檔案](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [將 SSL 憑證上傳至雲端服務](#upload-ssl-certificate-to-cloud-service)
-4. [更新服務設定檔中的 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
-5. [匯入 SSL 憑證授權單位](#import-ssl-certification-authority)
+2. [為自簽署 TLS/SSL 憑證建立 PFX 檔案](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [將 TLS/SSL 憑證上傳到雲端服務](#upload-tlsssl-certificate-to-cloud-service)
+4. [更新服務設定檔中的 TLS/SSL 憑證](#update-tlsssl-certificate-in-service-configuration-file)
+5. [進口 TLS/SSL 認證機構](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>如何從憑證存放區使用現有的憑證
-1. [從憑證存放區匯出 SSL 憑證](#export-ssl-certificate-from-certificate-store)
-2. [將 SSL 憑證上傳至雲端服務](#upload-ssl-certificate-to-cloud-service)
-3. [更新服務設定檔中的 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
+1. [從憑證儲存匯出 TLS/SSL 憑證](#export-tlsssl-certificate-from-certificate-store)
+2. [將 TLS/SSL 憑證上傳到雲端服務](#upload-tlsssl-certificate-to-cloud-service)
+3. [更新服務設定檔中的 TLS/SSL 憑證](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>如何使用 PFX 檔案中現有的憑證
-1. [將 SSL 憑證上傳至雲端服務](#upload-ssl-certificate-to-cloud-service)
-2. [更新服務設定檔中的 SSL 憑證](#update-ssl-certificate-in-service-configuration-file)
+1. [將 TLS/SSL 憑證上傳到雲端服務](#upload-tlsssl-certificate-to-cloud-service)
+2. [更新服務設定檔中的 TLS/SSL 憑證](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>設定用戶端憑證
 需要用戶端憑證，才能驗證服務的要求。 從以下三種案例中選擇最適用的案例，然後執行其所有步驟：
@@ -102,7 +102,7 @@ ms.locfileid: "73823520"
 
 ### <a name="use-a-new-self-signed-certificate"></a>使用新的自我簽署憑證
 1. [建立自我簽署憑證](#create-a-self-signed-certificate)
-2. [建立自我簽署加密憑證的 PFX 檔案](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [建立自我簽署加密憑證的 PFX 檔案](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [將加密憑證上傳至雲端服務](#upload-encryption-certificate-to-cloud-service)
 4. [在服務組態檔中更新加密憑證](#update-encryption-certificate-in-service-configuration-file)
 
@@ -120,7 +120,7 @@ ms.locfileid: "73823520"
 預設組態會允許對 HTTPS 端點的所有存取。 這項設定可能會進一步限制。
 
 ### <a name="changing-the-configuration"></a>變更組態
-應用於 和 終結點的存取控制規則組在**服務設定檔**中的**\<endpoint>** 部分中配置。
+應用於和終結點的存取控制規則組在**服務配置檔**中的**\<endpoint>** 部分中配置。
 
 ```xml
 <EndpointAcls>
@@ -129,7 +129,7 @@ ms.locfileid: "73823520"
 </EndpointAcls>
 ```
 
-存取控制組中的規則在服務設定檔的\<AccessControl 名稱\"> 部分中配置。 
+存取控制群組中的規則在服務配置檔\<的 AccessControl 名稱\"> 部分中配置。 
 
 網路存取控制清單文件會說明其格式。
 例如，若只要允許範圍 100.100.0.0 至 100.100.255.255 中的 IP 存取 HTTPS 端點，則規則看起來如下：
@@ -186,7 +186,7 @@ ms.locfileid: "73823520"
 ## <a name="operations-for-configuring-service-certificates"></a>設定服務憑證的作業
 本主題僅供參考。 遵循以下所述的設定步驟：
 
-* 設定 SSL 憑證
+* 設定 TLS/SSL 憑證
 * 設定用戶端憑證
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
@@ -204,7 +204,7 @@ ms.locfileid: "73823520"
 * -n 與服務 URL。 支援萬用字元 ("CN=*.cloudapp.net") 和替代名稱 ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net")。
 * -e 與憑證到期日 建立強式密碼，並於提示時指定它。
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>建立自我簽署 SSL 憑證的 PFX 檔案
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>為自簽署 TLS/SSL 憑證建立 PFX 檔案
 執行：
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ ms.locfileid: "73823520"
 * 是，匯出私密金鑰
 * 匯出所有延伸內容
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>從憑證存放區匯出 SSL 憑證
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>從憑證儲存匯出 TLS/SSL 憑證
 * 尋找憑證
 * 按一下 [動作] -> [所有工作] -> [匯出...]
 * 使用這些選項將憑證匯出至 .PFX 檔案：
   * 是，匯出私密金鑰
   * 如果可能的話，包含憑證路徑中的所有憑證 *匯出所有延伸內容
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>將 SSL 憑證上傳至雲端服務
-連同現有或產生的 .PFX 檔案及 SSL 金鑰組一起上傳憑證：
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>將 TLS/SSL 憑證上傳到雲端服務
+將憑證上傳到現有或產生的 。帶有 TLS 金鑰對的 PFX 檔:
 
 * 輸入密碼以保護私密金鑰資訊
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>在服務組態檔中更新 SSL 憑證
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>更新服務設定檔中的 TLS/SSL 憑證
 使用上傳至雲端服務的憑證指紋，在服務組態檔中更新下列設定的指紋值：
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>匯入 SSL 憑證授權單位
+## <a name="import-tlsssl-certification-authority"></a>匯入 TLS/SSL 認證機構
 在所有會與服務通訊的帳戶/電腦中，遵循下列步驟：
 
 * 在 Windows 檔案總管中按兩下 .CER 檔案
@@ -248,7 +248,7 @@ ms.locfileid: "73823520"
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-接著，在 CA 憑證設定中複製與 SSL 憑證相同的憑證指紋：
+然後,在 CA 憑證設定中複製與 TLS/SSL 憑證相同的指紋:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -358,8 +358,8 @@ ms.locfileid: "73823520"
 * 請確定 [顯示] 是顯示 [全部]
 * 在清單中選取名為 [憑證指紋] 的欄位
 * 複製指紋的值
-  * 刪除第一個數位前面的不可見的 Unicode 字元
-  * 刪除所有空格
+  * 刪除第一個數字的不可見的 Unicode 字元
+  * 移除所有空白
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>在服務組態檔中設定允許的用戶端
 使用允許存取服務的用戶端憑證指紋的逗號分隔清單，在服務組態檔中更新下列設定的值：
@@ -411,7 +411,7 @@ ms.locfileid: "73823520"
 ```
 
 ## <a name="common-certificate-operations"></a>常見的憑證作業
-* 設定 SSL 憑證
+* 設定 TLS/SSL 憑證
 * 設定用戶端憑證
 
 ## <a name="find-certificate"></a>尋找憑證
@@ -422,8 +422,8 @@ ms.locfileid: "73823520"
 3. 選取 [ **憑證**]。
 4. 按一下 **[新增]**。
 5. 選擇憑證存放區位置。
-6. 按一下 **[完成]**。
-7. 按一下 [確定]****。
+6. 按一下 [完成]  。
+7. 按一下 [確定]  。
 8. 展開 [ **憑證**]。
 9. 展開憑證存放區節點。
 10. 展開 [憑證] 子節點。
@@ -432,18 +432,18 @@ ms.locfileid: "73823520"
 ## <a name="export-certificate"></a>匯出憑證
 在 [ **憑證匯出精靈**] 中：
 
-1. 按 [下一步]****。
+1. 按 [下一步]  。
 2. 選取 [是]****，再選取 [匯出私密金鑰]****。
-3. 按 [下一步]****。
+3. 按 [下一步]  。
 4. 選取想要的輸出檔案格式。
 5. 核取所需的選項。
 6. 核取 [ **密碼**]。
 7. 輸入強式密碼並加以確認。
-8. 按 [下一步]****。
+8. 按 [下一步]  。
 9. 輸入或瀏覽至用來儲存憑證的檔案名稱 (使用 .PFX 副檔名)。
-10. 按 [下一步]****。
-11. 按一下 **[完成]**。
-12. 按一下 [確定]****。
+10. 按 [下一步]  。
+11. 按一下 [完成]  。
+12. 按一下 [確定]  。
 
 ## <a name="import-certificate"></a>匯入憑證
 在 [憑證匯入精靈] 中：
@@ -452,7 +452,7 @@ ms.locfileid: "73823520"
    
    * 如果只有在目前使用者下執行的處理程序會存取服務，請選取 [ **目前使用者** ]
    * 如果這台電腦中的其他處理程序會存取服務，請選取 [ **本機電腦** ]
-2. 按 [下一步]****。
+2. 按 [下一步]  。
 3. 如果從檔案匯入，請確認檔案路徑。
 4. 如果匯入 .PFX 檔案：
    1. 輸入密碼以保護私密金鑰
@@ -460,7 +460,7 @@ ms.locfileid: "73823520"
 5. 選取將憑證「放入」以下的存放區
 6. 按一下 [瀏覽]****。
 7. 選取所需的存放區。
-8. 按一下 **[完成]**。
+8. 按一下 [完成]  。
    
    * 若已選擇 [受信任的根憑證授權單位] 存放區，請按一下 [ **是**]。
 9. 在所有對話方塊視窗上，按一下 [ **確定** ]。
@@ -477,7 +477,7 @@ ms.locfileid: "73823520"
 7. 完成後，從清單中的新項目複製憑證指紋。
 
 ## <a name="other-security-considerations"></a>其他安全性考量
-使用 HTTPS 端點時，這份文件中所述的 SSL 設定會加密服務和用戶端之間的通訊。 這很重要，因為通訊中包含用來存取資料庫和其他可能機密資訊的認證。 但是請注意，服務會將內部狀態 (包括認證) 保存在 Microsoft Azure SQL 資料庫的內部資料表中 (您在 Microsoft Azure 訂用帳戶中已提供作為中繼資料儲存體)。 在服務組態檔中 (.CSCFG 檔案)，下列設定中已定義該資料庫： 
+本文件中描述的 TLS 設置在使用 HTTPS 終結點時加密服務與其用戶端之間的通信。 這很重要，因為通訊中包含用來存取資料庫和其他可能機密資訊的認證。 但是請注意，服務會將內部狀態 (包括認證) 保存在 Microsoft Azure SQL 資料庫的內部資料表中 (您在 Microsoft Azure 訂用帳戶中已提供作為中繼資料儲存體)。 在服務組態檔中 (.CSCFG 檔案)，下列設定中已定義該資料庫： 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

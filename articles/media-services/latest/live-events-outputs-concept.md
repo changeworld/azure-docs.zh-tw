@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985893"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010574"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時事件與即時輸出
 
@@ -111,7 +111,7 @@ Azure 媒體服務允許您在 Azure 雲端上向客戶傳遞即時事件。 要
 
 * 虛名 URL
 
-    虛榮模式是使用硬體廣播編碼器且不想在啟動即時事件時重新配置其編碼器的大型媒體廣播公司的首選。 他們想要一個預測引入 URL,不會隨時間而變化。
+    虛榮模式是使用硬體廣播編碼器且不想在啟動即時事件時重新配置其編碼器的大型媒體廣播公司的首選。 這些廣播公司想要一個預測性引入 URL,不會隨時間而變化。
     
     > [!NOTE]
     > 在 Azure 門戶中,虛榮人 URL 名為「*持久輸入 URL」。。*

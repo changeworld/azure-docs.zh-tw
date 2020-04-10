@@ -2,13 +2,13 @@
 title: 升級叢集節點以使用 Azure 託管磁碟
 description: 下面瞭解如何升級現有 Service Fabric 群集,以使用群集很少或沒有停機時間的 Azure 託管磁碟。
 ms.topic: how-to
-ms.date: 3/01/2020
-ms.openlocfilehash: 2bda5572eda5579bb31c3613b220885f27220d99
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 4/07/2020
+ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758049"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991206"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>升級叢集節點以使用 Azure 託管磁碟
 
@@ -27,11 +27,11 @@ ms.locfileid: "80758049"
 > [!CAUTION]
 > 僅當對群集 DNS 具有依賴項(例如存[取 服務結構資源管理員](service-fabric-visualizing-your-cluster.md))時,才會遇到此過程中斷。 [前端服務的體系結構最佳做法](https://docs.microsoft.com/azure/architecture/microservices/design/gateway)是在節點類型前面設置某種[負載均衡器](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview),使節點交換成為可能,而不會中斷。
 
-下面是用於完成升級方案的 Azure 資源管理器的[範本和 cmdlet。](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) 樣本更改將在[「部署以下主節點類型的升級規模集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)」中解釋。
+下面是用於完成升級方案的 Azure 資源管理器的[範本和 cmdlet。](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) 樣本更改將在[「部署以下主節點類型的升級規模集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)」中解釋。
 
 ## <a name="set-up-the-test-cluster"></a>設定測試叢集
 
-讓我們設置初始服務結構測試群集。 首先,[下載](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)我們將用來完成此方案的 Azure 資源管理器範例樣本。
+讓我們設置初始服務結構測試群集。 首先,[下載](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)我們將用來完成此方案的 Azure 資源管理器範例樣本。
 
 接下來,登錄到 Azure 帳戶。
 
@@ -370,6 +370,6 @@ foreach($name in $nodeNames){
 
 另請參閱：
 
-* [範例:升級叢集節點以使用 Azure 託管磁碟](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)
+* [範例:升級叢集節點以使用 Azure 託管磁碟](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
 * [垂直調整考量](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

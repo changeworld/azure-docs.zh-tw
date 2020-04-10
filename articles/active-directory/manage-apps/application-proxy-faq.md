@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877298"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990900"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>活動目錄 (Azure AD) 應用程式代理常見問題
 
@@ -52,6 +52,9 @@ ms.locfileid: "80877298"
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>是否支援從連接器伺服器到 Azure 的流量上的 TLS 終止(TLS/HTTPS 檢查或加速)?
 
 應用程式代理連接器對 Azure 執行基於證書的身份驗證。 TLS 終止(TLS/HTTPS 檢查或加速)會破壞此身份驗證方法,不受支援。 從連接器到 Azure 的流量必須繞過執行 TLS 終止的任何設備。  
+
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>是否可以在連接器伺服器和後端應用程式伺服器之間放置轉發代理設備?
+是的,支援從連接器版本 1.5.1526.0 開始此方案。 請參考[使用現有的本地代理伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>我應該創建專用帳戶以將連接器註冊到 Azure AD 應用程式代理?
 

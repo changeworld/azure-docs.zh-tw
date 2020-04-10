@@ -4,12 +4,12 @@ description: 使用應用程式對應監視複雜的應用程式拓撲
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657382"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989522"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 
@@ -155,7 +155,25 @@ ASP.NET Web 應用程式的替代方法是在程式碼中實體化初始化程�
 
 # <a name="java"></a>[Java](#tab/java)
 
-從應用程式見解 Java SDK 2.5.0 開始,`<RoleName>`您`ApplicationInsights.xml`可以通過添加到 檔案來指定雲角色名稱,例如,
+**Java 代理**
+
+對於[JAVA 代理 3.0,](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)雲角色名稱的設置如下:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+您還可以使用環境變數```APPLICATIONINSIGHTS_ROLE_NAME```設置雲角色名稱。
+
+**Java SDK**
+
+如果使用 SDK,從應用程式見解 Java SDK 2.5.0`<RoleName>`開始`ApplicationInsights.xml`,可以通過添加到 檔來指定雲角色名稱,例如。
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

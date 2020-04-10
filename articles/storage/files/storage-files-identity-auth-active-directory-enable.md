@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ae575eebf700f5495ea20d2bd3732ca21ad32315
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666824"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011409"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>以 SMB 為 Azure 檔案分享啟用活動目錄身分驗證
 
@@ -36,7 +36,9 @@ ms.locfileid: "80666824"
 用於存取 Azure 檔案共享的 AD 識別必須同步到 Azure AD,以便透過基於角色的標準[存取控制 (RBAC)](../../role-based-access-control/overview.md)模型強制實施共用層級檔案許可權。 將保留並強制執行從現有檔案伺服器結轉的檔案/目錄上的[Windows 樣式 DACL。](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 此功能提供與企業 AD 域基礎架構的無縫整合。 當您使用 Azure 檔共享替換上置前檔案伺服器時,現有使用者可以通過單個登入體驗從其當前用戶端訪問 Azure 檔案共用,而無需對正在使用的認證進行任何更改。  
 
 > [!NOTE]
-> 為了説明您為常見用例設置 Azure 檔案 AD 身份驗證,我們發布[了 兩個影片](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos),並逐步指導將本地檔案伺服器替換為 Azure 檔,並使用 Azure 檔案作為 Windows 虛擬桌面的設定檔容器。
+> 為了説明您為常見用例設置 Azure 檔 AD 身份驗證,我們發布[了 兩個視頻](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos),並逐步指導 
+> * 將本地檔案伺服器取代為 Azure 檔(包括在檔案和 AD 身份驗證的專用連結)
+> * 使用 Azure 檔案為 Windows 虛擬桌面的設定檔容器(包括 AD 身份驗證與 FSLogix 設定的設定)
  
 ## <a name="prerequisites"></a>Prerequisites 
 
@@ -111,8 +113,7 @@ cmdlet`Join-AzStorageAccountForAuth`將代表指示的存儲帳戶執行等效�
 ### <a name="12-domain-join-your-storage-account"></a>1.2 網域加入您的儲存帳戶
 在 PowerShell 中執行占位符之前,請記住在下面的參數中將占位符值替換為您自己的占位符值。
 > [!IMPORTANT]
-> 我們建議您提供不強制密碼過期的 AD 組織單位 (OU)。 如果使用配置了密碼過期的 OU,則必須在最大密碼期限之前更新密碼。 訪問 Azure 檔案共享時,無法更新 AD 帳戶密碼將導致身份驗證失敗。 要瞭解如何更新密碼,請參閱[更新 AD 帳號密碼](#5-update-ad-account-password)。
-
+> 下面的域聯接 cmdlet 將創建一個 AD 帳戶來表示 AD 中的儲存帳戶(檔案共用)。 您可以選擇註冊為計算機帳戶或服務登錄帳戶。 對於計算機帳戶,AD 中默認密碼過期期限設置為 30 天。 同樣,服務登錄帳戶可能在 AD 域或組織單位 (OU) 上設置了默認密碼過期期限。 我們強烈建議您檢查 AD 環境中設定的密碼過期期限,並計劃在最大密碼期限之前更新以下 AD 帳戶的[AD 帳號密碼](#5-update-ad-account-password)。 訪問 Azure 檔案共享時,無法更新 AD 帳戶密碼將導致身份驗證失敗。 您可以考慮在[AD 中建立新的 AD 組織單位 (OU),](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps)並相應地禁用[電腦帳戶](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN)或服務登錄帳戶上的密碼過期策略。 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -138,6 +139,11 @@ Join-AzStorageAccountForAuth `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
         -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
+
+#If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
+
+#
+
 ```
 
 以下說明總結了執行`Join-AzStorageAccountForAuth`cmdlet 時執行的所有操作。 如果您不希望使用以下命令,則可以手動執行這些步驟:

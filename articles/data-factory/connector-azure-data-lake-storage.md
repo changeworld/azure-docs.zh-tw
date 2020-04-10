@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a061df302680488377c3006dcef57b818a101d67
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887260"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011526"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 資料工廠複製並轉換 Azure 資料湖儲存第 2 代中的資料
 
 Azure 資料儲存第 2 代 (ADLS Gen2) 是一組專用於[Azure Blob 儲存](../storage/blobs/storage-blobs-introduction.md)中內建的大數據分析功能。 您可以使用檔案系統和物件儲存範例與資料進行介面。
 
 本文概述了如何使用 Azure 資料工廠中的複製活動從 Azure 資料儲存第 2 代複製數據,以及使用資料流轉換 Azure 資料湖儲存 Gen2 中的數據。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
+
+>[!TIP]
+>對於資料湖或資料倉庫遷移方案,請從[使用 Azure 資料工廠將數據從資料湖或數據倉庫遷移到 Azure](data-migration-guidance-overview.md)中瞭解詳細資訊。
 
 ## <a name="supported-capabilities"></a>支援的功能
 

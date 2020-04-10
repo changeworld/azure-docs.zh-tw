@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 58548c5cb1aa6aba6dda09d5d420b36bb8154726
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656403"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992006"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 管理 Azure 資料系統儲存 Gen2 中的目錄、檔案和 ACL(預覽版)
 
@@ -151,7 +151,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 > [!NOTE]
 > 如果要在沒有`-Force`提示的情況下覆蓋,請使用 參數。
 
-本示例將名為`my-directory`的目錄移動到名為`my-directory-2``my-subdirectory`的子目錄。 此示例還會將 umask 應用於子目錄。
+本示例將名為`my-directory`的目錄移動到名為`my-directory-2``my-subdirectory`的子目錄。 
 
 ```powershell
 $filesystemName = "my-file-system"

@@ -11,26 +11,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6aac3f1bb29ccfab0de4cb0a807ca0831a62af7e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892838"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991547"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure Data Factory 從 Cassandra 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-onprem-cassandra-connector.md)
-> * [當前版本](connector-cassandra.md)
+> * [目前版本](connector-cassandra.md)
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Cassandra 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-以下活動支援此 Cassandra 連接器：
+以下活動支援此 Cassandra 連接器:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 您可以從 Cassandra 資料庫將資料複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -63,15 +63,15 @@ ms.locfileid: "75892838"
 | type |類型屬性必須設定為：**Cassandra** |是 |
 | 主機 |一或多個 Cassandra 伺服器 IP 位址或主機名稱。<br/>指定以逗號分隔的 IP 位址或主機名稱清單，以同時連線到所有伺服器。 |是 |
 | 連接埠 |Cassandra 伺服器用來接聽用戶端連線的 TCP 連接埠。 |否 (預設值為 9042) |
-| authenticationType | 用來連接到 Cassandra 資料庫的驗證類型。<br/>允許的值是：**基本**和**匿名**。 |是 |
+| authenticationType | 用來連接到 Cassandra 資料庫的驗證類型。<br/>允許的值是:**基本**與**匿名**。 |是 |
 | username |指定使用者帳戶的使用者名稱。 |是，如果 authenticationType 設定為 [基本]。 |
 | 密碼 |指定使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是，如果 authenticationType 設定為 [基本]。 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
->目前不支援使用 SSL 與 Cassandra 連線。
+>當前不支援使用 TLS 連接到卡桑德拉。
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -97,7 +97,7 @@ ms.locfileid: "75892838"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Cassandra 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Cassandra 資料集所支援的屬性清單。
 
 若要從 Cassandra 複製資料，請將資料集的類型屬性設定為 **CassandraTable**。 以下是支援的屬性：
 
@@ -107,7 +107,7 @@ ms.locfileid: "75892838"
 | keyspace |Cassandra 資料庫中的 Keyspace 或結構描述名稱。 |否 (如果已指定「CassandraSource」的「查詢」) |
 | tableName |Cassandra 資料庫中資料表的名稱。 |否 (如果已指定「CassandraSource」的「查詢」) |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -134,7 +134,7 @@ ms.locfileid: "75892838"
 
 ### <a name="cassandra-as-source"></a>Cassandra 作為來源
 
-若要從 Cassandra 複製資料，請將複製活動中的來源類型設定為 **CassandraSource**。 複製活動**源**部分支援以下屬性：
+若要從 Cassandra 複製資料，請將複製活動中的來源類型設定為 **CassandraSource**。 複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -142,7 +142,7 @@ ms.locfileid: "75892838"
 | 查詢 |使用自訂查詢來讀取資料。 SQL-92 查詢或 CQL 查詢。 請參閱 [CQL 參考資料](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)。 <br/><br/>在使用 SQL 查詢時，指定 **keyspace name.table 名稱** 來代表您想要查詢的資料表。 |否 (如果已指定資料集中的「tableName」和「keyspace」)。 |
 | consistencyLevel |一致性層級可指定必須先有多少複本回應讀取要求，才會將資料傳回用戶端應用程式。 Cassandra 會檢查要讓資料滿足讀取要求的指定複本數目。 如需詳細資訊，請參閱 [設定資料一致性](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 。<br/><br/>允許的值為：**ONE**、**TWO**、**THREE**、**QUORUM**、**ALL**、**LOCAL_QUORUM**、**EACH_QUORUM** 和 **LOCAL_ONE**。 |否 (預設值為 `ONE`) |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -265,9 +265,9 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 Cassandra �
 | 3 |A |
 | 3 |E |
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

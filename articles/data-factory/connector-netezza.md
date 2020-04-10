@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 69e2a0fe63be65a2b5d51f7bd2e0885fcbfc5bbb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422853"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991666"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Netezza 複製資料
 
@@ -63,8 +63,8 @@ Azure Data Factory 會提供內建的驅動程式來啟用連線。 您不需要
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| SecurityLevel | 驅動程式用來連線到資料存放區的安全性 (SSL/TLS) 層級。 範例： `SecurityLevel=preferredSecured`. 支援的值為：<br/>- **僅限未受保護連線** (**onlyUnSecured**)：驅動程式不會使用 SSL。<br/>- **偏好未受保護連線 (preferredUnSecured) (預設值)**：如果伺服器提供選擇，則驅動程式不使用 SSL。 <br/>- **首選安全(首選安全):** 如果伺服器提供選擇,驅動程式將使用 SSL。 <br/>- **僅限受保護連線 (onlySecured)**：除非有 SSL 連線，否則驅動程式不會連線。 | 否 |
-| CaCertFile | 伺服器所用 SSL 憑證的完整路徑。 範例： `CaCertFile=<cert path>;`| 是，如果已啟用 SSL |
+| SecurityLevel | 驅動程式用來連線到資料存放區的安全性 (SSL/TLS) 層級。 範例： `SecurityLevel=preferredSecured`. 支援的值為：<br/>- **只有不安全的**(**僅無安全**): 驅動程式不使用 TLS。<br/>- **首選不安全(首選不安全)(預設):** 如果伺服器提供選擇,驅動程式不使用 TLS。 <br/>- **首選安全(首選安全):** 如果伺服器提供選擇,驅動程式將使用 TLS。 <br/>- **僅安全(僅安全):** 除非 TLS 連接可用,否則驅動程式不會連接。 | 否 |
+| CaCertFile | 伺服器使用的 TLS/SSL 憑證的完整路徑。 範例： `CaCertFile=<cert path>;`| 是,如果啟用 TLS |
 
 **範例**
 

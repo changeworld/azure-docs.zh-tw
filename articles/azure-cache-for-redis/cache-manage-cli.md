@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure 經典 CLI 管理 Redis 的 Azure 緩存
+title: 使用 Azure 經典 CLI 管理 Redis 的 Azure 快取
 description: 了解如何在任何平台上安裝 Azure 傳統 CLI、如何使用它來連線到您的 Azure 帳戶，以及如何從傳統 CLI 建立及管理「Azure Redis 快取」。
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277982"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010829"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 傳統 CLI 來建立及管理 Azure Redis 快取
 > [!div class="op_single_selector"]
-> * [電源外殼](cache-how-to-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure 經典 CLI](cache-manage-cli.md)
 >
 
@@ -43,15 +43,15 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
 | location |-l, --location |要建立快取的位置。 |
 | size |-z, --size |「Azure Redis 快取」的大小。 有效的值：[C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Redis SKU。 應為其中一個：[Basic, Standard, Premium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |「Azure Redis 快取」的 EnableNonSslPort 屬性。 如果您想針對您的快取啟用非 SSL 連接埠，則加入此旗標 |
+| EnableNonSslPort |-e, --enable-non-ssl-port |「Azure Redis 快取」的 EnableNonSslPort 屬性。 如果要為快取開啟非 TLS/SSL 連接埠,請新增此標誌 |
 | Redis 組態 |-c, --redis-configuration |Redis 組態。 在這裡輸入組態金鑰和值的 JSON 格式字串。 格式："{"":"","":""}" |
 | Redis 組態 |-f, --redis-configuration-file |Redis 組態。 在這裡輸入包含組態金鑰和值的檔案路徑。 檔案項目的格式：{"":"","":""} |
 | 分區計數 |-r, --shard-count |建立在具有叢集之進階叢集快取的分區數目。 |
 | 虛擬網路 |-v, --virtual-network |當快取裝載在 VNET 中時，會指定虛擬網路的確切 ARM 資源識別碼，以將「Azure Redis 快取」部署到其中。 範例格式：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 金鑰類型 |-t, --key-type |要更新的金鑰類型。 有效的值：[Primary, Secondary] |
-| StaticIP |-p， --靜態\<ip 靜態 ip\> |當快取是裝載在 VNET 中，為快取在子網路中指定唯一 IP 位址。 如果未提供，則會從子網路中為您選擇一個。 |
-| 子網路 |t， --\<子網子網\> |當快取是裝載在 VNET 中，指定要在其中部署快取的子網路。 |
-| VirtualNetwork |-v， -- 虛擬\<網路虛擬網路\> |當快取裝載在 VNET 中時，會指定虛擬網路的確切 ARM 資源識別碼，以將「Azure Redis 快取」部署到其中。 範例格式：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p, --靜\<態 ip 靜態 ip\> |當快取是裝載在 VNET 中，為快取在子網路中指定唯一 IP 位址。 如果未提供，則會從子網路中為您選擇一個。 |
+| 子網路 |t,\<-- 子網子網\> |當快取是裝載在 VNET 中，指定要在其中部署快取的子網路。 |
+| VirtualNetwork |-v, --\<虛擬網路虛擬網路\> |當快取裝載在 VNET 中時，會指定虛擬網路的確切 ARM 資源識別碼，以將「Azure Redis 快取」部署到其中。 範例格式：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 訂用帳戶 |-s, --subscription |訂用帳戶識別碼。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>查看所有 Azure Redis 快取命令
@@ -108,7 +108,7 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache

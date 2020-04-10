@@ -4,18 +4,18 @@ description: 支援 Azure 資源和 Azure AD 驗證受控識別的服務清單
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656039"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991274"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -109,7 +109,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 請參閱下列清單來設定 Azure Logic Apps 的受控識別 (若區域提供)：
 
 - [Azure 入口網站](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager 範本](/azure/app-service/overview-managed-identity)
+- [Azure Resource Manager 範本](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -184,7 +184,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 - [透過 Azure CLI 分配存取權限](howto-assign-access-CLI.md)
 - [透過 Azure 資源管理員樣本配置存取權限](../../role-based-access-control/role-assignments-template.md)
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://management.azure.com/`| ![可用][check] |
 | Azure Government | `https://management.usgovcloudapi.net/` | ![可用][check] |
@@ -193,7 +193,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-key-vault"></a>Azure 金鑰保存庫
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://vault.azure.net`| ![可用][check] |
 | Azure Government | `https://vault.usgovcloudapi.net` | ![可用][check] |
@@ -202,7 +202,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://datalake.azure.net/` | ![可用][check] |
 | Azure Government |  | 無法使用 |
@@ -211,7 +211,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-sql"></a>Azure SQL 
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://database.windows.net/` | ![可用][check] |
 | Azure Government | `https://database.usgovcloudapi.net/` | ![可用][check] |
@@ -220,7 +220,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://eventhubs.azure.net` | ![可用][check] |
 | Azure Government |  | 無法使用 |
@@ -229,7 +229,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-service-bus"></a>Azure 服務匯流排
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://servicebus.azure.net`  | ![可用][check] |
 | Azure Government |  | ![可用][check] |
@@ -246,7 +246,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure 儲存 Blob 和佇列
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![可用][check] |
 | Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![可用][check] |
@@ -264,12 +264,15 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Cloud | 資源識別碼 | 狀態 |
+| 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
 | Azure 全域 | `https://*.asazure.windows.net` | ![可用][check] |
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![可用][check] |
 | Azure Germany | `https://*.asazure.cloudapi.de` | ![可用][check] |
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![可用][check] |
+
+> [!Note]
+> 微軟 Power BI 還[支援託管識別](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
 
 
 [check]: media/services-support-managed-identities/check.png "可用"

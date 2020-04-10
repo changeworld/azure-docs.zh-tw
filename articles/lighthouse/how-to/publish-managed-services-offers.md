@@ -1,21 +1,21 @@
 ---
 title: 向 Azure 應用商店發佈託管服務產品/服務
-description: 了解如何發佈將客戶上線至 Azure 委派資源管理的受控服務。
+description: 瞭解如何發佈託管服務產品,將客戶主機板到 Azure 委派的資源管理。
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984549"
+ms.locfileid: "80991904"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>向 Azure 應用商店發佈託管服務產品/服務
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 14 日起,我們將開始將託管服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建新託管服務產品/服務產品/服務/服務中的](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)說明進行管理遷移的優惠。
+> 從 2020 年 4 月 13 日起,我們將開始將託管服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建新託管服務產品/服務產品/服務的說明](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)進行操作,以管理遷移的優惠。
 
-在本文中,您將瞭解如何使用[雲合作夥伴門戶](https://cloudpartner.azure.com/)將公共或私有託管服務產品發佈到 Azure[應用商店](https://azuremarketplace.microsoft.com)。 然後,購買產品/服務的客戶將能夠將訂閱和資源組用於[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)。
+在本文中,您將瞭解如何使用[雲合作夥伴門戶](https://cloudpartner.azure.com/)向[Azure 應用商店](https://azuremarketplace.microsoft.com)發佈公共或私有託管服務產品/ 然後,購買產品/服務的客戶將能夠將訂閱和資源組用於[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)。
 
 ## <a name="publishing-requirements"></a>發佈需求
 
@@ -28,7 +28,7 @@ ms.locfileid: "80984549"
 > [!NOTE]
 > 如果您不想將供應項目發佈至 Azure Marketplace，您可以使用 Azure Resource Manager 範本手動讓客戶上線。 如需詳細資訊，請參閱[讓客戶在 Azure 委派的資源管理中上線](onboard-customer.md)。
 
-發佈受控服務供應項目，類似於將任何其他類型供應項目發佈至 Azure Marketplace。 要瞭解常規發佈過程,請參閱[Azure 應用商店和 AppSource 發表指南](../../marketplace/marketplace-publishers-guide.md)。 您也應檢閱[商業市集認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)，尤其是[受控服務](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)一節。
+發佈託管服務產品/服務產品/服務類似於向 Azure 應用商店發佈任何其他類型的產品/服務。 要瞭解常規發佈過程,請參閱[Azure 應用商店和 AppSource 發表指南](../../marketplace/marketplace-publishers-guide.md)。 您也應檢閱[商業市集認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)，尤其是[受控服務](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)一節。
 
 客戶新增產品/服務後,他們將能夠委派一個或多個訂閱或資源組,然後這些訂閱或資源組將[註冊用於 Azure 委派的資源管理](#the-customer-onboarding-process)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "80984549"
 
 |欄位  |描述  |
 |---------|---------|
-|**標題**     | 方案所顯示的易記名稱。 長度上限為 50 個字元。        |
+|**Title**     | 方案所顯示的易記名稱。 長度上限為 50 個字元。        |
 |**摘要**     | 顯示在標題下的方案簡短說明。 長度上限是 100 個字元。        |
 |**說明**     | 描述文字，提供詳細的方案說明。         |
 |**計費模式**     | 這裡顯示 2 個計費模型，但您必須為受控服務供應項目選擇 [自備授權]****。 這表示您會直接向您的客戶收取此供應項目的相關費用，而且 Microsoft 不會向您收取任何費用。   |
@@ -112,7 +112,7 @@ ms.locfileid: "80984549"
 
 |欄位  |描述  |
 |---------|---------|
-|**標題**     |  供應項目的標題，通常是較長的正式名稱。 這個標題會醒目顯示在 Marketplace 中。 長度上限為 50 個字元。 在多數情況下，這應該與您在 [供應項目設定]**** 區段中所提供的 [名稱]**** 相同。       |
+|**Title**     |  供應項目的標題，通常是較長的正式名稱。 這個標題會醒目顯示在 Marketplace 中。 長度上限為 50 個字元。 在多數情況下，這應該與您在 [供應項目設定]**** 區段中所提供的 [名稱]**** 相同。       |
 |**摘要**     | 您供應項目的用途或功能簡介。 此項目通常顯示在標題底下。 長度上限是 100 個字元。        |
 |**完整摘要**     | 您供應項目用途或功能的較長摘要。 長度上限為 256 個字元。        |
 |**說明**     | 關於供應項目的詳細資訊。 此欄位的最大長度為 3000 個字元，且支援簡單 HTML 格式設定。 您必須在描述中的某處包含「受控服務」這些字。       |

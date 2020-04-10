@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 1ce91aede9328237aef8e5d5b7d74a3b72f10d50
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cbf43f60a438c740c087ddd2344c982da09da634
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887407"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007846"
 ---
 下表顯示了 Azure 地圖 S0 定價層的使用限制。 使用量限制取決於定價層。 
 
@@ -26,6 +26,7 @@ ms.locfileid: "80887407"
 
 | 資源                              | 限制 |
 |---------------------------------------|:---------------------:|
-| 資料大小上限 |   1 GB  |
+| 資料大小上限 |   50 MB  |
+
 
 有關 Azure 地圖定價層的詳細資訊,請參閱[Azure 地圖定價](https://azure.microsoft.com/pricing/details/azure-maps/)。

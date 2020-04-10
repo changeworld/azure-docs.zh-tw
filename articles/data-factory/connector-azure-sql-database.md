@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437786"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011696"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 資料工廠複製並轉換 Azure SQL 資料庫中的資料
 
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**選項 2:** 您可以選擇[複製活動中呼叫儲存 。](#invoke-a-stored-procedure-from-a-sql-sink) 此方法運行源表中的每一行,而不是使用批量插入作為複製活動中的預設方法,這不適用於大規模 upsert。
+**選項 2:** 您可以選擇[複製活動中呼叫儲存 。](#invoke-a-stored-procedure-from-a-sql-sink) 此方法在源表中運行每個批處理(由`writeBatchSize`屬性控制),而不是在複製活動中使用批量插入作為預設方法。
 
 ### <a name="overwrite-the-entire-table"></a>覆寫整個表
 
@@ -508,10 +508,7 @@ END
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 從 SQL 接收叫用預存程序
 
-將資料複製到 Azure SQL 資料庫時,還可以配置和調用使用者指定的儲存過程,並包含其他參數。 儲存程序使用[表數值參數](https://msdn.microsoft.com/library/bb675163.aspx)。
-
-> [!TIP]
-> 調用存儲過程逐行處理數據,而不是使用批量操作,我們不建議進行大規模複製。 從將數據[載入 Azure SQL 資料庫的最佳做法中](#best-practice-for-loading-data-into-azure-sql-database)瞭解詳細資訊。
+將資料複製到 Azure SQL 資料庫時,還可以配置和調用使用者指定的儲存過程,並在源表的每一批上使用其他參數。 儲存程序使用[表數值參數](https://msdn.microsoft.com/library/bb675163.aspx)。
 
 當內建的複製機制無法滿足需求時，您可以使用預存程序。 例如,您希望在最終將源數據插入目標表之前應用額外處理。 當您想要合並列、查找其他值並插入到多個表中時,將介紹一些額外的處理示例。
 

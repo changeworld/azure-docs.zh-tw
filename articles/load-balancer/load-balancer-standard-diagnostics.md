@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887107"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991768"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
 
@@ -86,6 +86,7 @@ Azure 標準負載均衡器支援多維指標的易於配置的警報。 為特�
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常見診斷案例與建議的檢視
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>資料路徑已經啟用，且可以讓我的負載平衡器 VIP 使用嗎？
+<details><summary>展開</summary>
 
 「VIP 可用性」計量會描述區域內資料路徑 (此路徑通往 VM 所在的計算主機) 的健康情況。 此計量是 Azure 基礎結構的健康情況反映。 您可以使用此計量：
 - 監視服務的外部可用性
@@ -113,9 +114,11 @@ VIP 可用性會因為下列原因而失敗：
 出於診斷目的,您可以將[資料路徑可用性指標與執行狀況偵測狀態一起使用](#vipavailabilityandhealthprobes)。
 
 在大部分的情況下，請使用**平均**彙總。
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP 的後端執行個體會回應探查嗎？
-
+<details>
+  <summary>展開</summary>
 「健康情況探查狀態」計量會描述應用程式部署的健康情況，這個部署是在您設定負載平衡器健康情況探查時由您所設定。 負載平衡器使用健康情況探查的狀態來判斷新流程要傳送到哪裡。 健康情況探查源自 Azure 基礎結構的位址，在 VM 的客體 OS 內可以看到。
 
 要獲取標準負載均衡器資源的運行狀況探測狀態,請進行以下檢查:
@@ -127,9 +130,11 @@ VIP 可用性會因為下列原因而失敗：
 - 網路安全性群組、VM 的客體 OS 防火牆或應用程式層篩選不允許您的探查。
 
 在大部分的情況下，請使用**平均**彙總。
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>如何查看我的輸出連線統計資料？ 
-
+<details>
+  <summary>展開</summary>
 「SNAT 連線」計量會描述[輸出流程](https://aka.ms/lboutbound)的成功和失敗連線數量。
 
 失敗連線數量大於零，表示 SNAT 連接埠耗盡。 您必須進一步調查，以判斷造成失敗的原因。 SNAT 連接埠耗盡的外在表現就是無法建立[輸出流程](https://aka.ms/lboutbound)。 請參閱輸出連線的文章，以了解案例和運作機制，以及了解如何減輕及設計以避免 SNAT 連接埠耗盡。 
@@ -140,11 +145,13 @@ VIP 可用性會因為下列原因而失敗：
 
 ![SNAT 連線](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-圖：Load Balancer SNAT 連線計數**
+*圖:負載均衡器 SNAT 連接計數*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>如何檢查我的 SNAT 連接埠使用方式和分配?
-
+<details>
+  <summary>展開</summary>
 SNAT 使用情況指標指示 Internet 源與後端 VM 或虛擬機器規模集之間建立的唯一流數,該流位於負載均衡器後面且沒有公共 IP 位址。 通過與 SNAT 分配指標進行比較,可以確定服務是否遇到或面臨 SNAT 耗盡和導致出站流故障的風險。 
 
 如果您的指標指示[出站流](https://aka.ms/lboutbound)失敗的風險,請參閱本文並採取措施來緩解這種情況,以確保服務運行狀況。
@@ -166,20 +173,24 @@ SNAT 使用情況指標指示 Internet 源與後端 VM 或虛擬機器規模集�
 ![後端介面的 SNAT 使用方式](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *圖:每個後端介面的 TCP SNAT 連接埠使用方式*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何查看服務的輸入/輸出連線嘗試？
-
+<details>
+  <summary>展開</summary>
 「SYN 封包」計量會描述 TCP SYN 封包的數量，涵括與特定前端相關聯的已抵達或已傳送 (針對[輸出流程](https://aka.ms/lboutbound)) 封包。 您可以使用此計量來了解服務的 TCP 連線嘗試。
 
 在大部分的情況下，請使用**總計**彙總。
 
 ![SYN 連線](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-圖：Load Balancer SYN 計數**
+*圖:負載均衡器 SYN 計數*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>如何查看我的網路頻寬耗用？ 
-
+<details>
+  <summary>展開</summary>
 「位元組和封包計數器」計量會描述您的服務在每個前端上所傳送或接收的位元組和封包數量。
 
 在大部分的情況下，請使用**總計**彙總。
@@ -192,10 +203,12 @@ SNAT 使用情況指標指示 Internet 源與後端 VM 或虛擬機器規模集�
 
 ![位元組計數](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-圖：Load Balancer 位元組計數**
+*圖:負載均衡器位元組計數*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>我要如何診斷我的負載平衡器部署？
-
+<details>
+  <summary>展開</summary>
 在單一圖表上結合 VIP 可用性和健康情況探查計量，可讓您找出問題所在並解決問題。 您可以確定 Azure 正常運作，並利用此知識確定地判斷設定或應用程式是根本原因。
 
 您可以透過健康情況探查計量來了解 Azure 依據您所提供的設定如何看待部署的健康情況。 查看健康情況探查永遠是監視或判斷原因時最好的第一步驟。
@@ -211,6 +224,7 @@ SNAT 使用情況指標指示 Internet 源與後端 VM 或虛擬機器規模集�
 - 由紫色跟蹤指示的運行狀況探測狀態 (DIP 可用性)在圖表的開頭為 0%。 綠色圓圈區域突出顯示運行狀況探測狀態 (DIP 可用性)變得正常,此時客戶的部署能夠接受新流。
 
 此圖表讓客戶可以自行針對部署進行疑難排解，不必猜測或要求支援找出是否發生其他問題。 由於設定不正確或應用程式失敗導致健康情況探查失敗，所以服務變得無法使用。
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>資源健康情況狀態
 

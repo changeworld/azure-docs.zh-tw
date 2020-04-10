@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中選擇 Windows VM 映射
+title: 在 Azure 中選擇 Windows VM 映像
 description: 使用 Azure PowerSHell 來判斷 Marketplace VM 映像的發行者、供應項目、SKU 及版本。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a96cf4b07e6d564be1cac7fbb62a45d2d9ea7943
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266802"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011152"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像
 
@@ -45,8 +45,7 @@ ms.locfileid: "79266802"
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftDynamicsNAV |DynamicsNAV |2017 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
+| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
 | MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
 | MicrosoftRServer |RServer-WS2016 |Enterprise |
 
@@ -212,7 +211,7 @@ DataDiskImages   : []
 
 ```
 
-下面的示例顯示了*資料科學虛擬機器 - Windows 2016*`PurchasePlan`映射的類似命令，該映射具有以下屬性： `name`、`product`和`publisher`。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
+下面的範例顯示了*資料科學虛擬機 - Windows 2016*`PurchasePlan`映像的類似命令,該映`name`射`product`具有`publisher`以下屬性: 、 和 。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -325,6 +324,6 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 若要使用基本映像資訊透過 `New-AzVM` Cmdlet 快速建立虛擬機器，請參閱[使用 PowerShell 來建立 Windows 虛擬機器](quick-create-powershell.md)。
 
 
-請參閱 PowerShell 腳本示例以創建[完全配置的虛擬機器](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
+請參考 PowerShell 文稿範例以建立[完全設定的虛擬機器](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
 
 

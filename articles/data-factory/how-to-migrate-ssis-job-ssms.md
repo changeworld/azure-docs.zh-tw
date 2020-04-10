@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: c65fbd9bbd83db9c7c8ec0e9041d08372243b72f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887641"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989437"
 ---
-# <a name="migrate-on-premises-ssis-jobs-to-azure-data-factory"></a>將本地 SSIS 工作移至 Azure 資料工廠
+# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 將 SQL 伺服器代理作業移至 ADF
 
 在遷移 SSIS 套件後[,將本地 SQL 伺服器整合服務 (SSIS) 工作負載遷移到 ADF 中的 SSIS](scenario-ssis-migration-overview.md)時,可以透過 SQL 伺服器管理工作室 (SSMS) **SSIS 作業遷移向導**對 SQL Server 代理作業進行批處理遷移,該作業步驟類型為 SQL Server 整合服務包到 Azure 數據工廠 (ADF) 管道/活動/計劃觸發器。
 

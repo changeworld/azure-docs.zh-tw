@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981421"
+ms.locfileid: "80998982"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>彈性集區可協助您管理及調整多個 Azure SQL 資料庫
 
@@ -110,9 +110,9 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 - 集區中所有資料庫利用的資源上限 (DTU 上限或虛擬核心上限，這取決於您的資源模型選擇)。
 - 集區中所有資料庫使用的最大儲存體位元組。
 
-如需每個資源模型的可用服務層，請參閱[以 DTU 為基礎的購買模型](sql-database-service-tiers-dtu.md)或[以虛擬核心為基礎的購買模型](sql-database-service-tiers-vcore.md)。
+有關每個資源模型的可用服務層和限制,請參閱基於[DTU 的採購模型](sql-database-service-tiers-dtu.md)或基於[vCore 的採購模型](sql-database-service-tiers-vcore.md)。
 
-在無法使用工具的情況下，下列步驟可協助您預估集區是否比單一資料庫更符合成本效益：
+以下步驟可以幫助您估計池是否比單個資料庫更具成本效益:
 
 1. 估計集區所需的 eDTU 或虛擬核心，如下所示：
 
@@ -126,6 +126,10 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 3. 針對以 DTU 為基礎的購買模型，採用步驟 1 和步驟 2 中較大的 eDTU 估計值。 針對以虛擬核心為基礎的購買模型，採用步驟 1 中的虛擬核心估計值。
 4. 請參閱 [SQL Database 價格頁面](https://azure.microsoft.com/pricing/details/sql-database/)並尋找大於步驟 3 估計值的最小集區大小。
 5. 將步驟 5 的集區價格與單一資料庫適當計算大小的價格相比較。
+
+> [!IMPORTANT]
+> 如果池中的資料庫數接近受支援的最大數量,請確保考慮[密集彈性池中的資源管理](sql-database-elastic-pool-resource-management.md)。
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>搭配彈性集區使用其他的 SQL Database 功能
 
@@ -218,7 +222,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 - [達克斯科/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI 使用具有 Azure SQL 資料庫的彈性池來加速其開發週期並增強其客戶服務和性能。   
+   Daxko/CSI 使用具有 Azure SQL 資料庫的彈性池來加速其開發週期並增強其客戶服務和性能。    
 
 ## <a name="next-steps"></a>後續步驟
 

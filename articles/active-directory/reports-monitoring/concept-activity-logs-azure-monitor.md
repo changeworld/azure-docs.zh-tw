@@ -1,6 +1,6 @@
 ---
-title: Azure 活動目錄活動日誌在 Azure 監視器 |微軟文檔
-description: Azure 監視器中的 Azure 活動目錄活動日誌簡介
+title: Azure 活動目錄活動日誌在 Azure 監視器 |微軟文件
+description: Azure 監視器中的 Azure 活動目錄活動紀錄簡介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/22/2019
+ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266542"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991240"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視中的 Azure AD 活動日誌
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視中的 Azure AD 活動紀錄
 
-您可以將 Azure 活動目錄 （Azure AD） 活動日誌路由到多個終結點，以便進行長期保留和資料洞察。 此功能可讓您：
+您可以將 Azure 活動目錄 (Azure AD) 活動日誌路由到多個終結點,以便進行長期保留和資料洞察。 此功能可讓您：
 
 * 將 Azure AD 活動記錄封存到 Azure 儲存體帳戶，以長時間保存資料。
 * 將 Azure AD 活動記錄串流至 Azure 事件中樞，以便使用 Splunk 和 QRadar 等常用的安全性資訊與事件管理 (SIEM) 工具進行分析。
@@ -70,7 +70,7 @@ ms.locfileid: "79266542"
 
 ### <a name="storage-size-for-activity-logs"></a>活動記錄的儲存體大小
 
-每個稽核記錄事件會使用約 2KB 的資料儲存體。 登錄事件日誌約為 4 KB 的資料存儲。 對具有 100,000 名使用者的租用戶而言，每天大約會產生 150 萬個事件，因此您每天需要約 3 GB 的資料儲存體。 由於寫入會以約 5 分鐘的批次執行，因此您可以預期每個月大概會有 9000 個寫入作業。 
+每個稽核記錄事件會使用約 2KB 的資料儲存體。 登錄事件日誌約為 4 KB 的數據存儲。 對具有 100,000 名使用者的租用戶而言，每天大約會產生 150 萬個事件，因此您每天需要約 3 GB 的資料儲存體。 由於寫入會以約 5 分鐘的批次執行，因此您可以預期每個月大概會有 9000 個寫入作業。 
 
 
 下表包含以租用戶大小為準的估計成本，儲存體帳戶是位於美國西部的一般用途 v2 帳戶，保留期間至少一年。 若要針對您預期應用程式將使用的資料量建立更精確的估計值，請使用 [Azure 儲存體定價計算機](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -110,9 +110,9 @@ ms.locfileid: "79266542"
 
 
 
-| 記錄分類       | 使用者人數 | 每日事件數 | 每月活動（30天） | 每月成本（美元）（最） |
+| 記錄分類       | 使用者人數 | 每日事件數 | 每月活動(30天) | 每月成本(美元)(最) |
 | :--                | ---             | ---            | ---                        | --:                          |
-| 審核和登錄 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| 稽核和登入 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
 | 稽核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
 | 登入           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
 
@@ -149,9 +149,9 @@ ms.locfileid: "79266542"
 
 ---
 
-**問：如果管理員更改診斷設置的保留期，會發生什麼情況？**
+**問:如果管理員更改診斷設置的保留期,會發生什麼情況?**
 
-**A**： 新的保留原則將應用於更改後收集的日誌。 原則變更前所收集的記錄不受影響。
+**A**: 新的保留策略將應用於更改後收集的紀錄。 原則變更前所收集的記錄不受影響。
 
 ---
 
@@ -179,7 +179,7 @@ ms.locfileid: "79266542"
 
 **問: 目前支援哪些 SIEM 工具？** 
 
-**答**: 目前支援 Azure 監視器的有 [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、QRadar 及 [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)。 如需連接器運作方式的詳細資訊，請參閱[將 Azure 監視資料串流至事件中樞以供外部工具取用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+**A** ** **: 目前,Azure 監視器由[Splunk、IBM](tutorial-integrate-activity-logs-with-splunk.md)QRadar、[相撲邏輯](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)[、ArcSight、LogRhythm](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)和 Logz.io 支援。 如需連接器運作方式的詳細資訊，請參閱[將 Azure 監視資料串流至事件中樞以供外部工具取用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ---
 
@@ -197,7 +197,7 @@ ms.locfileid: "79266542"
 
 **問: 是否可在不使用外部 SIEM 工具的情況下從事件中樞存取資料？** 
 
-**答**：是的。 若要從自訂應用程式存取記錄，您可以使用[事件中樞 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**:是的。 若要從自訂應用程式存取記錄，您可以使用[事件中樞 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b3c47e1bbe5efdc5ee303305e52a785a49d0c00
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586869"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998483"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>設定 Azure 多重身份驗證
+# <a name="set-up-azure-multi-factor-authentication"></a>設定 Azure Multi-Factor Authentication
 
 Windows 虛擬桌面的 Windows 用戶端是將 Windows 虛擬桌面與本地電腦整合的絕佳選項。 但是,當您將 Windows 虛擬桌面帳戶配置為 Windows 用戶端時,您需要採取某些措施來保護自己和使用者的安全。
 
@@ -32,7 +32,7 @@ Windows 虛擬桌面的 Windows 用戶端是將 Windows 虛擬桌面與本地電
   - Azure 活動目錄進階 P1 或 P2
   - 企業移動性 + 安全 E3 或 E5
 - 將使用者分配為組成員的 Azure 活動目錄組。
-- 為所有用戶啟用 Azure MFA。 有關如何執行此操作的詳細資訊,請參閱[如何要求使用者進行兩步驗證](/active-directory/authentication/howto-mfa-userstates)。
+- 為所有用戶啟用 Azure MFA。 有關如何執行此操作的詳細資訊,請參閱[如何要求使用者進行兩步驗證](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)。
 
 >[!NOTE]
 >以下設定也適用於[Windows 虛擬桌面 Web 用戶端](https://rdweb.wvd.microsoft.com/webclient/index.html)。

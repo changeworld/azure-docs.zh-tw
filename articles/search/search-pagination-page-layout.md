@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656020"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998400"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中處理搜尋結果
 
@@ -94,7 +94,11 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 點擊突出顯示是指應用於結果匹配術語的文本格式(如粗體或黃色突出顯示),便於發現匹配項。 [查詢請求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出顯示說明。 The search engine encloses the matching `highlightPreTag` term in tags, and `highlightPostTag`, and your code handles the response (for example, applying a bold font).
 
-格式應用於整個術語查詢。 在下面的示例中,在"描述"欄位中找到的術語"沙","沙子","海灘","海灘"被標記為突出顯示。 對部分術語(如模糊搜索或通配符搜索)的查詢(如導致引擎中查詢擴展)不能使用命中突出顯示。
+格式應用於整個術語查詢。 在下面的示例中,在"描述"欄位中找到的術語"沙","沙子","海灘","海灘"被標記為突出顯示。 觸發引擎中查詢擴展的查詢(如模糊搜索和通配符搜索)對命中突出顯示的支援有限。
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

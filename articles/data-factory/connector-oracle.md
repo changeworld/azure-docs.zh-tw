@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422511"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011645"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Oracle 複製資料及將資料複製到該處
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -37,6 +37,7 @@ ms.locfileid: "80422511"
 具體而言,此 Oracle 連接器支援:
 
 - 以下版本的 Oracle 資料庫:
+    - 甲骨文 19c R1 (19.1) 及以上
     - 甲骨文 18c R1 (18.1) 及以上
     - 甲骨文 12c R1 (12.1) 及以上
     - 甲骨文 11g R1 (11.1) 及以上
@@ -84,9 +85,9 @@ Oracle 連結服務支援以下屬性:
 
 -   要在 Oracle 伺服器端使用**三重 DES 加密 (3DES) 和進階加密標準 (AES),** 請轉到 Oracle 進階安全 (OAS) 並設定加密設定。 有關詳細資訊,請參閱此[Oracle 文件](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)。 Oracle 應用程式開發框架 (ADF) 連接器自動協商加密方法,以在建立與 Oracle 的連線時使用您在 OAS 中設定的加密方法。
 
--   要使用**SSL**:
+-   要使用**TLS**:
 
-    1.  獲取 SSL 憑證資訊。 取得 SSL 憑證的可分辨編碼規則 (DER) 編碼的憑證資訊,並儲存輸出(-----開始憑證... End Certificate -----) 儲存為文字檔。
+    1.  獲取 TLS/SSL 憑證資訊。 取得 TLS/SSL 憑證的可分辨編碼規則 (DER) 編碼的憑證資訊,並儲存輸出(-----開始憑證... End Certificate -----) 儲存為文字檔。
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

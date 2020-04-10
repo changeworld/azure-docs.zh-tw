@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867360"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990883"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "75867360"
 具體而言，此泛型 REST 連接器支援：
 
 - 使用 **GET** 或 **POST** 方法，從 REST 端點擷取資料。
-- 使用以下身份驗證之一檢索資料 **：Azure**資源的匿名身份驗證、**基本**身份驗證 **、AAD 服務主體**和**託管標識**。
+- 使用以下身份驗證的匿名身份驗證 :**Azure**資源的匿名身份驗證、**基本**身份驗證 **、AAD 服務主體**與**託管識別**。
 - REST API 中的**[分頁](#pagination-support)**。
 - 複製 REST JSON 回應的[原狀](#export-json-response-as-is)或使用[結構描述對應](copy-activity-schema-and-type-mapping.md#schema-mapping)加以剖析。 僅支援 **JSON** 格式的回應承載。
 
@@ -58,9 +58,9 @@ ms.locfileid: "75867360"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **類型**屬性必須設置為**RestService**。 | 是 |
+| type | **類型**屬性必須設定為**RestService**。 | 是 |
 | url | REST 服務的基底 URL。 | 是 |
-| enableServerCertificateValidation | 連接到終結點時是否驗證服務器端 SSL 憑證。 | 否<br /> （預設值為**true）** |
+| enableServerCertificateValidation | 在連接到終結點時是否驗證伺服器端 TLS/SSL 憑證。 | 否<br /> ( 預設值為**true)** |
 | authenticationType | 用來連線到 REST 服務的驗證類型。 允許的值為 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 請分別參閱下列有關更多屬性和範例的對應區段。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，此屬性會使用預設的 Azure Integration Runtime。 |否 |
 
@@ -173,11 +173,11 @@ ms.locfileid: "75867360"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設定為 [RestResource]****。 | 是 |
-| relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器從組合 URL 複製資料`[URL specified in linked service]/[relative URL specified in dataset]`： 。 | 否 |
+| relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器從組合網址`[URL specified in linked service]/[relative URL specified in dataset]`複製資料 : 。 | 否 |
 
-如果設置`requestMethod`，`additionalHeaders``requestBody`並在`paginationRules`資料集中，它仍然支援"以" ，同時建議您今後在活動源中使用新模型。
+如果設置`requestMethod``additionalHeaders``requestBody`,`paginationRules`並在 資料集中,它仍然支援" 以「 以」 ,同時建議您今後在活動來源中使用新模型。
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -204,7 +204,7 @@ ms.locfileid: "75867360"
 
 ### <a name="rest-as-source"></a>REST 作為來源
 
-複製活動**源**部分支援以下屬性：
+複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -217,9 +217,9 @@ ms.locfileid: "75867360"
 | requestInterval | 傳送下一個頁面要求之前的等候時間。 預設值為 [00:00:01]**** |  否 |
 
 >[!NOTE]
->REST 連接器忽略 中`additionalHeaders`指定的任何"接受"標頭。 由於 REST 連接器僅支援 JSON 中的回應，它將自動生成`Accept: application/json`標頭。
+>REST 連接器忽略`additionalHeaders`中 指定的任何"接受"標頭。 由於 REST 連接器僅支援 JSON 中的回應,`Accept: application/json`它將自動生成標頭。
 
-**示例 1：將 Get 方法與分形一起使用**
+**範例 1: 將 Get 方法與分形一起使用**
 
 ```json
 "activities":[
@@ -293,18 +293,18 @@ ms.locfileid: "75867360"
 
 ## <a name="pagination-support"></a>分頁支援
 
-通常，REST API 在合理數量下限制單個請求的回應負載大小;在返回大量資料的同時，它會將結果拆分為多個頁面，並要求調用方發送連續請求以獲取結果的下一頁。 通常，單一頁面要求是動態的，並且由前頁回應所傳回的資訊所組成。
+通常,REST API 在合理數量下限制單個請求的回應負載大小;在返回大量數據的同時,它會將結果拆分為多個頁面,並要求調用方發送連續請求以獲取結果的下一頁。 通常，單一頁面要求是動態的，並且由前頁回應所傳回的資訊所組成。
 
 此泛型 REST 連接器支援下列分頁模式： 
 
-* 下一個請求的絕對或相對 URL = 當前回應正文中的屬性值
-* 下一個請求的絕對或相對 URL = 當前回應標頭中的標頭值
+* 下一個要求的絕對或相對網址 = 目前回應正文中的屬性值
+* 下一個要求的絕對或相對網址 = 目前回應標頭中的標頭值
 * 下一個要求的查詢參數 = 目前回應本文中的屬性值
 * 下一個要求的查詢參數 = 目前回應標頭中的標頭值
 * 下一個要求的標頭 = 目前回應本文中的屬性值
 * 下一個要求的標頭 = 目前回應標頭中的標頭值
 
-**暫定規則**被定義為資料集中的字典，其中包含一個或多個區分大小寫的鍵值對。 此設定將用來產生從第二個頁面開始的要求。 當連接器獲得 HTTP 狀態碼 204（無內容）時將停止反覆運算，或者"暫停規則"中的任何 JSONPath 運算式返回 null。
+**暫定規則**被定義為數據集中的字典,其中包含一個或多個區分大小寫的鍵值對。 此設定將用來產生從第二個頁面開始的要求。 當連接器獲得 HTTP 狀態代碼 204(無內容)時將停止反覆運算,或者「暫停規則」中的任何 JSONPath 運算式傳回 null。
 
 分頁規則中的**支援金鑰**：
 
@@ -321,7 +321,7 @@ ms.locfileid: "75867360"
 | Headers.*response_header* 或 Headers['response_header'] | 使用者定義的 "response_header" 會參考目前 HTTP 回應中的一個標頭名稱，其值會用來發出下一個要求。 |
 | JSONPath 運算式會以 "$" 開頭 (代表回應本文的根) | 回應本文應只包含一個 JSON 物件。 JSONPath 運算式應會傳回單一基本值，而這會用來發出下一個要求。 |
 
-**例子：**
+**範例:**
 
 Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下個頁面的 URL 會在 ***paging.next*** 中指出：
 
@@ -355,7 +355,7 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 }
 ```
 
-相應的 REST 複製活動源配置尤其`paginationRules`如下：
+相應的 REST 複製活動來源`paginationRules`設定尤其如下:
 
 ```json
 "typeProperties": {
@@ -373,72 +373,72 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 ```
 
 ## <a name="use-oauth"></a>使用 OAuth
-本節介紹如何使用解決方案範本使用 OAuth 將資料從 REST 連接器複製到以 JSON 格式複製到 Azure 資料湖存儲中。 
+本節介紹如何使用解決方案範本使用 OAuth 將數據從 REST 連接器複製到以 JSON 格式複製到 Azure 數據湖儲存中。 
 
 ### <a name="about-the-solution-template"></a>關於解決方案範本
 
-該範本包含兩個活動：
-- **Web**活動檢索無記名權杖，然後將其作為授權傳遞給後續複製活動。
-- **將**活動複製資料從 REST 複製到 Azure 資料湖存儲。
+此樣本包含兩個活動:
+- **Web**活動檢索無記名令牌,然後將其作為授權傳遞給後續複製活動。
+- **將**活動複製資料從 REST 複製到 Azure 資料湖儲存。
 
 範本定義兩個參數：
 - **Sink 容器**是將資料複製到 Azure 資料湖存儲中的根資料夾路徑。 
-- **SinkDirectory**是根目錄下的目錄路徑，將資料複製到 Azure 資料湖存儲中。 
+- **SinkDirectory**是根目錄下的目錄路徑,將數據複製到 Azure 數據湖儲存中。 
 
 ### <a name="how-to-use-this-solution-template"></a>如何使用此解決方案範本
 
-1. **使用 OAuth**範本轉到從 REST 或 HTTP 複製。 為源連接創建新連接。 
-    ![創建新連接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+1. **使用 OAuth**樣本轉到從 REST 或 HTTP 複製。 為源連接創建新連接。 
+    ![建立新連線](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
-    以下是新連結服務 （REST） 設置的關鍵步驟：
+    以下是新連結服務 (REST) 設定的關鍵步驟:
     
-     1. 在**基本 URL**下 ，指定您自己的源 REST 服務的 URL 參數。 
-     2. 對於**身份驗證類型**，請選擇 *"匿名*"。
-        ![新的 REST 連接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+     1. 在**基本 URL**下 ,指定您自己的源 REST 服務的 URL 參數。 
+     2. 對於**驗證類型**,請選擇 *「匿名*」。
+        ![新的 REST 連線](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
 
 2. 為目標連接創建新連接。  
-    ![新第 2 代連接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+    ![新第 2 代連線](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
-3. 選擇**使用此範本**。
+3. 選擇**此樣本**。
     ![使用此範本](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 您將看到創建的管道，如以下示例所示：![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 您將看到建立的導管,例如以下範例的![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. 選擇**Web**活動。 在 **"設置"中**，指定相應的**URL、****方法**、**標題**和**正文**，以便從要從中複製資料的服務的登錄 API 中檢索 OAuth 承載權杖。 範本中的預留位置顯示 Azure 活動目錄 （AAD） OAuth 的示例。 注意 AAD 身份驗證由 REST 連接器本機支援，這裡只是 OAuth 流的示例。 
+5. 選擇**Web**活動。 在 **「設定」中**,指定相應的**URL、****方法**、**標題**和**正文**,以便從要從中複製資料的服務的登入 API 中檢索 OAuth 承載權杖。 樣本中的佔位符顯示 Azure 活動目錄 (AAD) OAuth 的範例。 注意 AAD 身份驗證由 REST 連接器本機支援,這裡只是 OAuth 流的範例。 
 
     | 屬性 | 描述 |
     |:--- |:--- |:--- |
-    | URL |指定要從中檢索 OAuth 承載權杖的 URL。 在樣品中，它https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
-    | 方法 | HTTP 方法。 允許的值是 **"過帳"** 和"**獲取**"。 | 
-    | headers | 標頭是使用者定義的，它引用 HTTP 要求中的一個標頭名稱。 | 
+    | URL |指定要從中檢索 OAuth 承載權杖的網址。 在樣品中,它https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | 方法 | HTTP 方法。 允許的值是 **「過帳」** 和「**獲取**」。 | 
+    | headers | 標頭是使用者定義的,它引用 HTTP 請求中的一個標頭名稱。 | 
     | body | HTTP 要求的主體。 | 
 
     ![管線](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. 在 **"複製資料**活動"中，選擇 *"源*"選項卡，您可以看到從上一步中檢索的無記名權杖 （access_token） 將作為"其他標頭下**的授權"** 傳遞給複製資料活動。 在啟動管道運行之前，確認以下屬性的設置。
+6. 在 **「複製資料**活動」 中,選擇 *「源*」選項卡,您可以看到從上一步中檢索的無記名權杖 (access_token) 將作為「其他標頭下**的授權」** 傳遞給複製數據活動。 在啟動管道運行之前,確認以下屬性的設置。
 
     | 屬性 | 描述 |
     |:--- |:--- |:--- | 
     | 要求方法 | HTTP 方法。 允許的值為 **Get** (預設值) 和 **Post**。 | 
     | 其他標頭 | 其他 HTTP 要求標頭。| 
 
-   ![複製源身份驗證](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   ![複製來源身分驗證](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
-7. 選擇 **"調試**"，輸入**參數**，然後選擇 **"完成**"。
+7. 選擇 **「除錯**」,輸入**參數**,然後選擇 **"完成**"。
    ![管線執行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. 當管道運行成功完成時，您將看到類似于以下示例的結果：![管道運行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. 當導管執行成功完成時,您將看到類似於以下範例的結果![: 導管執行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
-9. 按一下 **"操作**中 Web 活動"的"輸出"圖示，您將看到服務返回access_token。
+9. 按下 **「操作**中 Web 活動」的「輸出」圖示,您將看到服務返回access_token。
 
    ![權杖輸出](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
 
-10. 按一下 **"操作**中複製活動"的"輸入"圖示，您將看到 WebActivity 檢索access_token傳遞給複製活動進行身份驗證。 
+10. 按下 **「操作**中複製活動」的「輸入」圖示,您將看到 WebActivity 檢索access_token傳遞給複製活動進行身份驗證。 
 
     ![權杖輸入](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
         
     >[!CAUTION] 
-    >為避免以純文字記錄權杖，請在 Web 活動中啟用"安全輸出"，在"複製"活動中啟用"安全輸入"。
+    >為避免以純文本記錄權杖,請在 Web 活動中啟用「安全輸出」,在「複製」活動中啟用「安全輸入」。
 
 
 ## <a name="export-json-response-as-is"></a>匯出 JSON 回應的原狀

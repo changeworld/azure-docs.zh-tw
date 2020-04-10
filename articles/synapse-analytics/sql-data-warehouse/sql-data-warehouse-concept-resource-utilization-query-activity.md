@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745298"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011101"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure 突觸分析中的資源利用率與查詢活動
 
@@ -33,8 +33,8 @@ Azure Synapse 分析在 Azure 門戶中提供了豐富的監視體驗,以顯示�
 | 記憶體百分比       | 資料倉儲所有節點的記憶體利用率 (SQL Server) | 平均,最小,最大值   |
 | 活動查詢          | 在系統上執行的活動查詢數             | Sum              |
 | 佇列查詢          | 等待開始執行的佇列查詢數          | Sum              |
-| 成功的連線  | 資料的成功連數目                 | 總和,計數       |
-| 失敗的連線      | 資料倉儲的失敗連線數量           | 總和,計數       |
+| 成功的連線  | 針對資料庫的成功連線(登入次數) | 總和,計數       |
+| 失敗的連線      | 針對資料庫的失敗連線(登入次數) | 總和,計數       |
 | 遭到防火牆封鎖     | 資料倉儲的已封鎖登入數目     | 總和,計數       |
 | DWU 限制               | 資料倉儲的服務等級目標                | 平均,最小,最大值    |
 | DWU 百分比          | CPU 百分比與資料 IO 百分比之間的最大值        | 平均,最小,最大值    |
@@ -42,7 +42,7 @@ Azure Synapse 分析在 Azure 門戶中提供了豐富的監視體驗,以顯示�
 | 快取命中的百分比    | (快取命中數 / 快取遺漏) * 100  其中快取命中數是在本機 SSD 快取中所有資料行存放區的區段命中數總和，而快取遺漏是本機 SSD 快取中資料行存放區的區段遺漏數 (從所有節點上加總) | 平均,最小,最大值    |
 | 已用快取的百分比   | (已用快取 / 快取容量) * 100 其中已用快取是本機 SSD 快取 (跨所有節點) 中的所有位元組總和，而快取容量是本機 SSD 快取 (跨所有節點) 的儲存體容量總和 | 平均,最小,最大值    |
 | 本機 tempdb 百分比 | 跨所有計算節點的本機 tempdb 使用率 - 此值每五分鐘發出一次 | 平均,最小,最大值    |
-| 資料儲存大小 (GB) | 載入資料庫中的數據的總大小。 這包括駐留在 CCI 和非 CCI 表中的資料,其中非 CCI 表的大小由資料庫檔案總大小衡量 | Sum |
+| 資料儲存大小 (GB) | 資料庫的總大小。 這包括已使用、保留和未分配的空間。 保留未分配的空間供資料庫優化查詢和載入性能。 | Sum |
 | 災害回復大小 (GB) | 每 24 小時進行一次的地理備份的總大小 | Sum |
 | 快照儲存大小 (GB) | 為提供資料庫還原點而拍攝的快照的總大小。 這包括自動快照和使用者定義的快照。 | Sum |
 

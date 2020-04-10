@@ -11,29 +11,29 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd8e400b978b2139de7a9f53b87cf6ec04e7484
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471154"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991989"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure Data Factory 從 MySQL 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-onprem-mysql-connector.md)
-> * [當前版本](connector-mysql.md)
+> * [目前版本](connector-mysql.md)
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 MySQL 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!NOTE]
->要將資料從或複製到[Azure 資料庫以進行 MySQL](../mysql/overview.md)服務，請使用[MySQL 連接器的](connector-azure-database-for-mysql.md)專用 Azure 資料庫。
+>要將資料從或複製到[Azure 資料庫以進行 MySQL](../mysql/overview.md)服務,請使用[MySQL 連接器的](connector-azure-database-for-mysql.md)專用 Azure 資料庫。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 MySQL 連接器支援用於以下活動：
+此 MySQL 連接器支援用於以下活動:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 您可以將資料從 MySQL 資料庫複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -65,10 +65,10 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 | 屬性 | 描述 | 選項。 | 必要 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 此選項指定驅動程式在連接到 MySQL 時，是否會使用 SSL 加密及驗證。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(預設)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLMode | 這個選項指定驅動程式在連接到 MySQL 時是否使用 TLS 加密和驗證。 例如,`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(預設)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此選項指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 例如 `UseSystemTrustStore=<0/1>;`| 啟用 (1) / 停用 (0) **(預設)** | 否 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -140,13 +140,13 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 MySQL 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 MySQL 資料集所支援的屬性清單。
 
-要從 MySQL 複製資料，請支援以下屬性：
+要從 MySQL 複製資料,請支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設置為 **：MySqlTable** | 是 |
+| type | 資料集的類型屬性必須設定為 **:MySqlTable** | 是 |
 | tableName | MySQL 資料庫中的資料表名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
@@ -167,7 +167,7 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 }
 ```
 
-如果使用`RelationalTable`類型化資料集，則仍支援該資料集，同時建議您今後使用新資料集。
+如果使用`RelationalTable`類型化數據集,則仍支援該數據集,同時建議您今後使用新數據集。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -175,14 +175,14 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 ### <a name="mysql-as-source"></a>MySQL 作為來源
 
-要從 MySQL 複製資料，複製活動**源**部分中支援以下屬性：
+要從 MySQL 複製資料,複製活動**來源**部分支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須將複製活動源的類型屬性設置為 **：MySqlSource** | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如：`"SELECT * FROM MyTable"`。 | 否 (如果已指定資料集中的 "tableName") |
+| type | 必須複製活動來源類型屬性設定**為 :MySqlSource** | 是 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -214,7 +214,7 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 ]
 ```
 
-如果使用`RelationalSource`類型化源，它仍然支援按"當前"，同時建議您今後使用新的源。
+如果使用`RelationalSource`類型化源,它仍然支援按"當前",同時建議您今後使用新的源。
 
 ## <a name="data-type-mapping-for-mysql"></a>MySQL 的資料類型對應
 
@@ -264,9 +264,9 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 | `year` |`Int` |
 
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

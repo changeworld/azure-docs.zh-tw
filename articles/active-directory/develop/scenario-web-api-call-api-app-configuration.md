@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4129f1a89575c9a0e7cd6a0090168df659356c1b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885101"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991002"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 Web API 的 Web API:代碼設定
 
@@ -214,7 +214,7 @@ class MsalAuthHelper {
 
 代表 (OBO) 串流用於獲取呼叫下游 Web API 的權杖。 在此流中,Web API 從用戶端應用程式接收具有使用者委派許可權的承載令牌,然後將此令牌交換為另一個訪問權杖以調用下游 Web API。
 
-Python Web API 需要使用一些中間件來驗證從用戶端收到的無記名權杖。 然後,Web API 可以使用 MSAL Python 庫調用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法獲取下游 API 的訪問權杖。 使用 MSAL Python 展示此流的範例尚不可用。
+Python Web API 需要使用一些中間件來驗證從用戶端收到的無記名權杖。 然後,Web API 可以使用 MSAL Python 庫調用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法獲取下游 API 的訪問權杖。 有關使用此 API 的範例,請參閱[GitHub 上的 Microsoft 身份驗證庫 for python 的測試程式](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)碼 。 另請參閱同一存儲庫中[討論問題 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)的方法,該方法繞過了中間層應用程式的需求。
 
 ---
 

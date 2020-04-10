@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure CLI 管理虛擬機器縮放集
 description: 用於管理虛擬機器擴展集 (例如如何啟動和停止執行個體，或變更擴展集容量) 的一般 Azure CLI 命令。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275741"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011577"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虛擬機器擴展集
 在虛擬機器擴展集生命週期期間，您可能需要執行一或多個管理工作。 此外，您可以建立指令碼來自動化各種生命週期工作。 此文章詳述一些可讓您執行這些工作的一般 Azure CLI 命令。
@@ -49,7 +49,7 @@ az vmss get-instance-view \
 
 
 ## <a name="list-connection-information-for-vms"></a>列出 VM 的連線資訊
-若要連線至擴展集中的 VM，您可以 SSH 或 RDP 到指派的公用 IP 位址和連接埠號碼。 網路位址轉譯 (NAT) 規則預設會新增至 Azure 負載平衡器，以將遠端連線流量轉送給每部虛擬機器。 要列出要在比例集中連接到 VM 實例的位址和埠，請使用[az vmss 清單實例-連接資訊](/cli/azure/vmss)。 下列範例列出 myScaleSet** 擴展集和 myResourceGroup** 資源群組中虛擬機器執行個體的連線資訊。 針對這些名稱提供您自己的值：
+若要連線至擴展集中的 VM，您可以 SSH 或 RDP 到指派的公用 IP 位址和連接埠號碼。 網路位址轉譯 (NAT) 規則預設會新增至 Azure 負載平衡器，以將遠端連線流量轉送給每部虛擬機器。 要列出在比例集中連線到 VM 實體的位址和連接埠,請使用[az vmss 清單實例-連線資訊](/cli/azure/vmss)。 下列範例列出 myScaleSet** 擴展集和 myResourceGroup** 資源群組中虛擬機器執行個體的連線資訊。 針對這些名稱提供您自己的值：
 
 ```azurecli
 az vmss list-instance-connection-info \
