@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: 新增自訂應用程式
               href: index-add-custom-analyzers.md
-        - name: 預先鍵入
-          items:
-            - name: 建立建議工具
-              href: index-add-suggesters.md
-            - name: 新增建議或自動完成
-              href: search-autocomplete-tutorial.md
         - name: 同義字
           items:
             - name: 新增同義字
@@ -230,6 +224,14 @@
           href: search-query-lucene-examples.md
         - name: 部分條款和特殊字元
           href: search-query-partial-matching.md
+        - name: 模糊搜尋
+          href: search-query-fuzzy.md
+        - name: 自動完成「在輸入期中進行搜尋」
+          items:
+            - name: 建立建議工具
+              href: index-add-suggesters.md
+            - name: 新增建議或自動完成
+              href: search-autocomplete-tutorial.md
         - name: 從 Power Apps 查詢
           href: search-howto-powerapps.md
         - name: 語法參考

@@ -4,6 +4,8 @@
   items:
     - name: 什麼是 Azure Blob 儲存體？
       href: storage-blobs-overview.md
+    - name: 比較核心儲存體服務
+      href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
 - name: Blob 儲存體
   items:

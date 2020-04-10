@@ -161,8 +161,13 @@
         - name: 以程式碼為基礎的監視
           items:
             - name: ASP.NET Core
-              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
-              href: app/asp-net-core.md
+              items:
+                - name: ASP.NET Core 應用程式監視
+                  displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+                  href: app/asp-net-core.md
+                - name: ILogger
+                  displayname: 'ilogger, logging, log'
+                  href: app/ilogger.md
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
@@ -172,9 +177,6 @@
             - name: .NET 主控台
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
-            - name: ILogger
-              displayname: 'ilogger, logging, log'
-              href: app/ilogger.md
             - name: Java
               items:
                 - name: Web 應用程式
@@ -224,6 +226,8 @@
               href: app/remove-application-insights.md
         - name: 無程式碼監視
           items:
+            - name: 任何環境 - Java (預覽)
+              href: app/java-in-process-agent.md
             - name: Azure VM 和擴展集
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service

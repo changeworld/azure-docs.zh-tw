@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Azure VM 中的解決方案
       href: oracle-vm-solutions.md
-    - name: OCI 解決方案 - 預覽
+    - name: 使用 OCI 的解決方案
       href: oracle-oci-overview.md
 - name: 快速入門
   items:
@@ -32,7 +32,7 @@
       href: oracle-disaster-recovery.md
 - name: 操作指南
   items:
-    - name: 將 Azure 和 OCI 互相連線 - 預覽
+    - name: 將 Azure 和 OCI 互相連線
       href: configure-azure-oci-networking.md
 - name: 資源
   items:

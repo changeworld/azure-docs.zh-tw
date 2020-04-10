@@ -113,6 +113,8 @@
       items:
         - name: 什麼是文字轉換語音？
           href: text-to-speech.md
+        - name: 文字轉換語音基本概念
+          href: text-to-speech-basics.md
     - name: 快速入門
       items:
         - name: 將語音合成至喇叭
@@ -545,6 +547,8 @@
       href: sovereign-clouds.md
     - name: 價格和限制
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: 定價計算機
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密

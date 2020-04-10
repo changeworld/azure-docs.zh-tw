@@ -213,6 +213,8 @@
     - name: 疑難排解
       items:
         - name: 疑難排解指南
+          href: service-bus-troubleshooting-guide.md
+        - name: 傳訊例外狀況
           href: service-bus-messaging-exceptions.md
         - name: 資源管理員例外狀況
           href: service-bus-resource-manager-exceptions.md

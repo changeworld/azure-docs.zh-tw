@@ -26,10 +26,8 @@
           href: quickstarts/ruby.md
     - name: 用戶端程式庫
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Go
-          href: quickstarts/go-sdk.md
+        - name: Bing 自動建議用戶端程式庫
+          href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 單一頁面 Web 應用程式

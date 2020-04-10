@@ -480,6 +480,8 @@
       items:
         - name: 變更摘要概觀
           href: change-feed.md
+        - name: 變更摘要設計模式
+          href: change-feed-design-patterns.md
         - name: 讀取變更摘要
           href: read-change-feed.md
         - name: 變更摘要處理器
@@ -1033,6 +1035,8 @@
       items:
         - name: 監視 Cosmos DB
           href: monitor-cosmos-db.md
+        - name: 監視伺服器端延遲
+          href: monitor-server-side-latency.md
         - name: 使用診斷記錄進行監視
           href: cosmosdb-monitor-resource-logs.md
         - name: 稽核控制平面記錄
@@ -1155,7 +1159,7 @@
     - name: 查詢速查表
       href: query-cheat-sheet.md
     - name: SQL 園地
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: 常見問題集
       href: faq.md
     - name: 白皮書

@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: 進階範本
       items:
-        - name: 利用範本參考
+        - name: 使用範本參考
           href: template-tutorial-use-template-reference.md
         - name: 建立多個執行個體
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: 比較函式
           href: template-functions-comparison.md
+        - name: 日期函式
+          href: template-functions-date.md
         - name: 部署函式
           href: template-functions-deployment.md
         - name: 邏輯函式

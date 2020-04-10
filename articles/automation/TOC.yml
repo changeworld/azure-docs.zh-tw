@@ -278,18 +278,15 @@
         - name: 將伺服器設定為所需狀態並透過 State Configuration 管理漂移
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: 上架管理機器
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
         - name: 編譯 DSC 設定
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
         - name: 補救不相容的 DSC 伺服器
           href: automation-dsc-remediate.md
           displayName: 'state configuration, DSC, remediate'
-        - name: 設定使用複合資源撰寫 DSC
+        - name: 使用複合資源撰寫 DSC 設定
           href: compose-configurationwithcompositeresources.md
-        - name: 使用 Chocolatey 持續進行部署
+        - name: 使用 Chocolatey 提供持續部署
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: 將 State Configuration 報告資料轉送至 Azure 監視器記錄
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: 疑難排解
       items:
-        - name: 登入
+        - name: 對上架進行疑難排解
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: 針對狀態設定 (DSC) 進行疑難排解
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: 參考
       items:
         - name: 社群解決方案

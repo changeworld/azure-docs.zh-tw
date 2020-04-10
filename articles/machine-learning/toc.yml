@@ -15,24 +15,27 @@
 - name: 教學課程
   expanded: true
   items:
-    - name: Studio 和設計工具
+    - name: Studio
       items:
         - name: 設計工具 (拖放)
           items:
-            - name: 設計工具：1. 定型迴歸模型
+            - name: 1. 定型迴歸模型
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 設計工具：2. 部署該模型
+            - name: 2. 部署該模型
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: 自動化 ML (UI)
           items:
-            - name: 建立自動化 ML 實驗
+            - name: 建立自動化機器學習實驗
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: 使用自動化機器學習預測需求 (單車共享資料)
+            - name: 預測需求 (自行車共用資料)
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: 標籤影像資料
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Python SDK
       items:
         - name: 建立第一個 ML 實驗
@@ -78,14 +81,14 @@
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Azure 開放資料集
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: 設計工具資料集
       href: sample-designer-datasets.md
+    - name: 設計工具範例管線
+      href: samples-designer.md
     - name: 端對端 MLOps 範例
       href: 'https://github.com/microsoft/MLOps'
-    - name: 設計工具管線
-      href: samples-designer.md
+    - name: 開放資料集 (公開)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
     - name: 工作區
@@ -115,10 +118,10 @@
       href: /azure/machine-learning/algorithm-cheat-sheet
     - name: 如何選取演算法
       href: /azure/machine-learning/how-to-select-algorithms
-    - name: 自動化機器學習
+    - name: 自動化 ML
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: 管理 ML 陷阱
+    - name: 過度學習和不平衡的資料
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: 計算執行個體
@@ -351,6 +354,8 @@
       items:
         - name: 建立 ML 管線 (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: 將資料匯入 ML 管線步驟並在其中來回移動 (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: 排程管線 (Python)
           href: how-to-schedule-pipelines.md
         - name: 觸發管線

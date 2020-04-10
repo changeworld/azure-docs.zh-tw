@@ -140,10 +140,14 @@
           href: cluster-autoscaler.md
         - name: 使用可用性區域
           href: availability-zones.md
-        - name: 使用多個節點集區
-          href: use-multiple-node-pools.md
-        - name: 使用定點節點集區 (預覽)
-          href: spot-node-pool.md
+        - name: 使用節點集區
+          items:
+            - name: 使用多個節點集區
+              href: use-multiple-node-pools.md
+            - name: 使用定點節點集區 (預覽)
+              href: spot-node-pool.md
+            - name: 使用系統節點集區
+              href: use-system-pools.md
         - name: 使用 Terraform 部署 AKS
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0f0b9aa0109b7e63bffcbd330dbef3276821698e
-  ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+  ms.openlocfilehash: 43bd0afd1f3d40c144003b2c2cadfdcb885989a9
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80743918"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991308"
 highlightedContent:
   items:
   - title: 什麼是語音服務？
@@ -52,14 +52,14 @@ conceptualContent:
   - title: 文字轉換語音
     links:
     - itemType: quickstart
+      text: 語音合成基本概念
+      url: text-to-speech-basics.md
+    - itemType: quickstart
       text: 將語音合成至喇叭
       url: quickstarts/text-to-speech.md
     - itemType: quickstart
       text: 將語音合成至音訊檔案
       url: quickstarts/text-to-speech-audio-file.md
-    - itemType: quickstart
-      text: 為應用程式自訂語音合成
-      url: how-to-custom-voice.md
     footerLink:
       text: 查看更多
       url: index-text-to-speech.yml
