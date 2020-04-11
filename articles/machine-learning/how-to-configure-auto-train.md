@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618546"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115408"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ ms.locfileid: "80618546"
 
 在自動化和調整程序期間，自動化機器學習支援下列演算法。 身為使用者，您不需要指定演算法。
 
+> [!NOTE]
+> 如果您計劃將自動 ML 創建的模型匯出到[ONNX 模型](concept-onnx.md),則只有使用 * 指示的演演演算法才能轉換為 ONNX 格式。 瞭解有關[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)的更多資訊。 <br> <br> 另請注意,ONNX 目前僅支援分類和回歸任務。 
+
 分類 | 迴歸 | 時間序列預測
 |-- |-- |--
-[邏輯回歸](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[決策樹](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)|[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K 最近鄰演算法](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 最近鄰演算法](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 最近鄰演算法](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[線性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[支援向量類別 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 類別器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN 線性類別器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線性迴歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[線性迴歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[快速線性迴充器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[線上漸層下降迴歸器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[先知](https://facebook.github.io/prophet/docs/quick_start.html)
+[邏輯回歸](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [彈性網](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[輕型 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[輕型 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[漸層提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[漸層提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[決策樹](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)* |[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K 最近鄰](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 最近鄰](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 最近鄰演算法](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[線性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[拉爾斯·拉索](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[支援向量類別 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[隨機林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[極隨機的樹](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極隨機的樹](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN 類別器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN 回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN 線性類別器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[線性迴歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[線性迴歸器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[天真的貝葉斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速線性迴充器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[線上漸層下降迴歸器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[先知](https://facebook.github.io/prophet/docs/quick_start.html)
 |[平均感知器分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||預測TCN
-|[線性 SVM 分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[線性 SVM 分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 使用建構`task`函數`AutoMLConfig`中的 參數指定實驗類型。
 

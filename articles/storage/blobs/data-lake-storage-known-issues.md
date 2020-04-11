@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985417"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115335"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -112,8 +112,8 @@ Blob API 和資料存儲第 2 代 API 可以對相同的資料進行操作。
 
 如果已授予對容器的[匿名讀取訪問許可權](storage-manage-access-to-resources.md),則 ACL 對該容器或該容器中的檔沒有影響。
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Windows Azure 儲存 Blob (WASB) 驅動程式(ADLS Gen2 不支援)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure 儲存 Blob (WASB) 驅動程式(資料湖儲存第 2 代不支援)
 
-目前,WASB 驅動程式(設計為僅使用 Blob API)在一些常見方案中遇到問題,即當它是啟用命名空間的存儲帳戶的用戶端時。 請注意,多協定訪問 (MPA) 也不會緩解這些問題。 
+目前,WASB 驅動程式設計為僅與 Blob API 配合使用,但在一些常見方案中遇到問題。 具體來說,當它是支援分層命名空間的存儲帳戶的用戶端時。 數據湖存儲上的多協定訪問無法緩解這些問題。 
 
-目前(而且很可能是可預見的未來),我們不會支援使用 WASB 驅動程式作為用戶端的客戶訪問啟用命名空間的存儲帳戶。 相反,我們建議您選擇在 Hadoop 環境中使用[Azure Blob 檔案系統 (ABFS)](data-lake-storage-abfs-driver.md)驅動程式。 如果您嘗試移轉出具有早於 Hadoop 分支 3 版本的本地 Hadoop 環境,請打開 Azure 支援票證,以便我們可以在您和您的組織前進的正確路徑上與您聯繫。
+目前(而且很可能是可預見的未來),我們不會支援使用 WASB 驅動程式作為客戶端的客戶到支援分層命名空間的存儲帳戶。 相反,我們建議您選擇在 Hadoop 環境中使用[Azure Blob 檔案系統 (ABFS)](data-lake-storage-abfs-driver.md)驅動程式。 如果您嘗試移轉出具有早於 Hadoop 分支 3 版本的本地 Hadoop 環境,請打開 Azure 支援票證,以便我們可以在您和您的組織前進的正確路徑上與您聯繫。

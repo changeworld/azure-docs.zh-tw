@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677438"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113562"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -172,17 +172,11 @@ Azure 防火牆必須在擴展時預配更多虛擬機器實例。 /26 位址空
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火牆輸送量?
 
-Azure 防火牆的初始輸送量容量為 2.5 - 3 Gbps,並且擴展到 30 Gbps。 它根據 CPU 使用率和輸送量進行擴展。 請與支援部門聯繫,以提高防火牆的輸送量。
+Azure 防火牆的初始輸送量容量為 2.5 - 3 Gbps,並且擴展到 30 Gbps。 它根據 CPU 使用率和輸送量自動擴展。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火牆要擴展多長時間?
 
-Azure 防火牆需要 5 到 7 分鐘才能橫向擴展。如果發生需要更快自動縮放的突發,請與支援部門聯繫,以提高防火牆的初始輸送量容量。
-
-在測試防火牆自動縮放時,應考慮以下幾點:
-
-- 單個 TCP 流量性能限制為 1.4 Gbps。 因此,效能測試需要建立多個 TCP 流。
-- 性能工具必須不斷建立新的連接,以便它們與擴展的後端防火牆實例連接。 如果測試在開始時建立一次連接,則這些連接將僅與初始後端實例連接。 即使防火牆擴展,您也不會看到任何性能提高,因為連接與初始實例相關聯。
-
+當平均輸送量或 CPU 消耗達到 60% 時,Azure 防火牆會逐漸擴展。 橫向擴展需要五到七分鐘。 在效能測試時,請確保測試至少 10 到 15 分鐘,並啟動新連接以利用新創建的防火牆節點。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>預設情況下,Azure 防火牆是否允許訪問活動目錄?
 

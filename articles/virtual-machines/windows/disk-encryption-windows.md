@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f7b6e667df95d9279ad5c44caa4ba33a17909935
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985791"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113149"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
-適用於 Windows 虛擬機器 (VM) 的 Azure 磁碟加密使用 Windows 的 Bitlocker 功能來提供 WindOS 磁碟和資料磁碟的完整磁碟加密。 此外,當 VolumeType 參數為「全部」時,它提供臨時資源磁碟的加密。
+適用於 Windows 虛擬機器 (VM) 的 Azure 磁碟加密使用 Windows 的 Bitlocker 功能來提供作業系統磁碟和資料磁碟的完整磁碟加密。 此外,當 VolumeType 參數為「全部」時,它提供臨時資源磁碟的加密。
 
 Azure 磁碟加密[與 Azure 金鑰保管庫集成](disk-encryption-key-vault.md),可説明您控制和管理磁碟加密密鑰和機密。 有關服務的概述,請參閱 Windows [VM 的 Azure 磁碟加密](disk-encryption-overview.md)。
 

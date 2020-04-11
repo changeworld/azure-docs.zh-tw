@@ -1,22 +1,22 @@
 ---
-title: 在商業市場創建新的動態 365 商業中心產品
-description: 如何使用 Microsoft 合作夥伴中心上的商業市場門戶創建新的 Dynamics 365 商業中心產品/服務,用於在 Azure 應用商店、AppSource 或透過雲端解決方案供應商 (CSP) 計畫上市或銷售。
+title: 在微軟商業市場創建新的 Dynamics 365 商業中心產品
+description: 如何創建新的 Dynamics 365 商業中心產品/服務,用於在 Azure 應用商店、Microsoft AppSource 中列出或銷售,或者使用 Microsoft 合作夥伴中心的商業市場門戶透過雲端解決方案供應商 (CSP) 計畫進行上市或銷售。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529407"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115271"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>建立新的 Dynamics 365 商業中心產品/服務
 
-本主題介紹如何創建新的 Dynamics 365 業務中心產品/服務。 [Microsoft Dynamics 365 商業中心](https://dynamics.microsoft.com/business-central)是一個企業資源規劃 (ERP) 系統,可處理各種業務流程,包括財務、運營、供應鏈、CRM 以及專案管理和電子商務。 高級軟體包還支援經典部署模型和製造。 Dynamics 365 商務中心的所有優惠都必須經過我們的認證流程。
+本文介紹如何創建新的 Dynamics 365 業務中心產品/ [Microsoft Dynamics 365 商業中心](https://dynamics.microsoft.com/business-central)是一個企業資源規劃 (ERP) 系統,可處理各種業務流程,包括財務、運營、供應鏈、CRM 以及專案管理和電子商務。 高級軟體包還支援經典部署模型和製造。 Dynamics 365 商務中心的所有優惠都必須經過我們的認證流程。
 
 要開始創建 Dynamics 365 商業中心產品/服務,請確保首先[創建合作夥伴中心帳戶](./create-account.md)並打開[商業市場儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers),並選擇 **「概述」** 頁。
 
@@ -113,16 +113,14 @@ ms.locfileid: "80529407"
 
 ## <a name="offer-listing"></a>優惠清單
 
-"產品/服務"列表頁顯示您的優惠將在其中列出的語言。 目前,**英語(美國)** 是唯一可用的選項。
-
-您需要為每個語言/市場定義市場詳細資訊(報價名稱、說明、圖像等)。 選擇語言/市場名稱以提供此資訊。
+"產品/服務"列表頁是定義產品/服務的詳細資訊(如名稱、說明、圖像等)的位置。
 
 > [!NOTE]
-> 報價清單內容(如說明、文檔、螢幕截圖、使用條款等)不需要以英文表示,只要要約說明以短語開頭,"此應用程式僅以 [非英語語言]提供。 提供*有用的連結 URL*以提供產品/服務列表內容中所用語言以外的語言提供內容也是可接受的。
+> 您只能提供一種語言的優惠清單詳細資訊。 它不需要是英文的,只要報價說明以短語開頭,"此應用程式僅以[非英語]提供。 提供*幫助連結 URL*以提供產品/服務列表內容中所用語言以外的語言也是可以接受的。
 
 ### <a name="name"></a>名稱
 
-您在此處輸入的名稱將作為產品/服務列表的標題顯示給客戶。 此欄位預填充了創建產品/服務時為 **「產品/服務」別名**輸入的文本,但您可以更改此值。 此名稱可以註冊商標(您可以包括商標或版權符號)。 名稱不能超過 50 個字元,不能包含任何表情符號。
+您在此處輸入的名稱將作為產品/服務列表的標題顯示給客戶。 此欄位預填充了創建**產品/服務時為"產品/服務"別名**輸入的文本,但您可以更改此值。 此名稱可以註冊商標(您可以包括商標或版權符號)。 名稱不能超過 50 個字元,不能包含任何表情符號。
 
 ### <a name="short-description"></a>簡短描述
 
@@ -169,23 +167,23 @@ ms.locfileid: "80529407"
 
 如果您想讓客戶知道你的應用適用於特定產品,請在此處輸入最多三個產品名稱。
 
-### <a name="support-urls"></a>支援網址
+### <a name="helpprivacy-urls"></a>說明/隱私網址
 
 本部分允許您提供連結,幫助客戶更好地瞭解您的產品/服務。
 
 #### <a name="help-link"></a>協助連結
 
-輸入客戶可以詳細瞭解您的優惠的 URL。
+輸入客戶可以詳細瞭解您的優惠的 URL。 **您的幫助連結**不能與您的**支援 URL**相同(如下所述)。
 
-#### <a name="privacy-policy-url"></a>隱私權原則 URL
+#### <a name="privacy-policy-link"></a>隱私政策連結
 
 輸入組織隱私政策的 URL。 您有責任確保您的應用符合隱私法律和法規,並提供有效的隱私政策。
 
-### <a name="contacts"></a>連絡人
+### <a name="contact-information"></a>連絡資訊
 
 在本節中,您必須提供**支援聯繫人**和**工程聯繫人**的姓名、電子郵件和電話號碼。 此資訊不會向客戶顯示,但可供 Microsoft 使用,並且可能會提供給 CSP 合作夥伴。
 
-在 **"支援"連絡人**部分中,還必須提供**支援 URL,** 其中 CSP 合作夥伴可以找到對您的產品/服務的支援。
+在 **"支援"連絡人**部分中,還必須提供**支援 URL,** 其中 CSP 合作夥伴可以找到對您的產品/服務的支援。 您的支援 URL 不能與您的**幫助連結**相同。
 
 ### <a name="supporting-documents"></a>證明檔案
 
@@ -193,15 +191,7 @@ ms.locfileid: "80529407"
 
 ### <a name="marketplace-images"></a>市場映射
 
-在本節中,您可以提供向客戶展示產品/服務時將使用的徽標和圖像。 所有圖像必須採用 .png 格式。
-
-#### <a name="store-logos"></a>Microsoft Store標誌。
-
-提供兩種尺寸的產品徽標:**小 (48 x 48)** **和大 (216 x 216)。**
-
-#### <a name="hero"></a>主圖
-
-英雄形象是可選的。 如果提供一個,它必須測量 815 x 290 圖元。
+在本節中,您可以提供向客戶展示產品/服務時將使用的徽標和圖像。 所有圖像必須採用 .png 格式。 上傳您的優惠徽標有兩種尺寸:**小 (48 x 48)** **和大 (216 x 216)**。
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -350,7 +340,11 @@ Microsoft 可以通過託管和維護使用此類測試驅動器的服務預配�
 
 ### <a name="test-drive-marketplace-listings"></a>試駕市場清單
 
-**測試驅動器**選項卡下的 **「應用商店列表**」選項顯示您的試駕可用的語言。 目前**英語(美國)** 是唯一可用的地點。 選擇語言名稱以輸入描述試駕體驗的資訊。
+測試**驅動器**「選項卡下的 **」應用商店清單**」選項是定義試駕體驗詳細資訊的位置。
+
+> [!NOTE]
+> 您只能以一種語言提供試駕清單詳細資訊。 它不需要是英文的,只要報價說明以短語開頭,"此應用程式僅以[非英語]提供。 也可以提供*幫助連結 URL*以測試驅動器列表內容中使用的語言以外的語言提供內容。
+
 
 - **說明**(必需):描述您的試駕、演示的內容、供用戶試驗的目標、要流覽的功能以及任何相關資訊,以説明使用者確定是否獲取您的產品/服務。 此欄位中最多可輸入 3,000 個字元的文本。 
 

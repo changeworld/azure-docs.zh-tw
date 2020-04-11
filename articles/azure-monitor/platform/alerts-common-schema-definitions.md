@@ -1,16 +1,16 @@
 ---
-title: Azure 監視器的常見警示定義
+title: Azure 監視器中的警示定義
 description: 瞭解 Azure 監視器的常見警示定義
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: fda2aa905577c19e5a90772ac87c6788198c2d0b
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 62b2738324f4c728cd4b5959c04c93649c156afb
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672913"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114450"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991921"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113282"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -25,7 +25,7 @@ Azure 檔案同步代理程式支援下列版本：
 
 | 里程碑 | 代理程式版本號碼 | 發行日期 | 狀態 |
 |----|----------------------|--------------|------------------|
-| V10 版本 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 支援 |
+| V10 版本 - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 飛行中 |
 | 2019 年 12 月更新匯總 - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支援 |
 | V9 版本 - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019 年 12 月 2 日 | 支援 |
 | V8 版本 - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支援 |
@@ -68,7 +68,6 @@ Azure 檔案同步代理程式支援下列版本：
  
 - 各種效能與可靠性改進
     - 如果在儲存帳戶上配置了虛擬網路 (VNET) 和防火牆規則,則 Azure 檔共用上的更改檢測可能會失敗。
-    - 不再對同步可自由存取控制清單 (DACL) 的 2KB 安全描述符限制。  
     - 減少與召回相關的記憶體消耗。 
     - 使用[調用-Azstorage 同步更改檢測](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection)cmdlet 時提高了性能。
     - 其他雜項可靠性改進。 

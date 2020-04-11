@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607604"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115303"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推理作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,6 +43,11 @@ Azure 機器學習依賴於其他 Azure 服務來計算資源。 計算資源或
 + 預先存在的虛擬網路和子網,用於計算資源。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>為工作區使用儲存帳戶
+
+> [!WARNING]
+> 如果數據科學家使用 Azure 機器學習設計器,則在虛擬網路內從存儲帳戶可視化數據時,他們將收到錯誤。 以下文字是它們收到的錯誤:
+>
+> __錯誤:無法分析此資料集。這可能是因為您的數據存儲在虛擬網路後面,或者您的數據不支援配置檔。__
 
 要在虛擬網路中對工作區使用 Azure 儲存帳戶,請使用以下步驟:
 

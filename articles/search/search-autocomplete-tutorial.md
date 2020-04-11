@@ -1,27 +1,27 @@
 ---
-title: 在搜尋方塊中新增建議和自動完成
+title: 在搜尋框中新增自動完成與建議
 titleSuffix: Azure Cognitive Search
-description: 藉由建立建議工具，並制定以已完成的字詞或片語填入搜尋方塊的要求，在 Azure 認知搜尋中啟用自動提示查詢動作。
+description: 通過創建建議器並編寫使用已完成的字詞或短語自動完成搜尋框的請求,在 Azure 認知搜尋中啟用"即用即用即搜尋"查詢操作。 您還可以返回建議的匹配項。
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792513"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114952"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>將建議或自動完成新增至您的 Azure 認知搜尋應用程式
 
 在本文中，您將了解如何使用 [建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)來建置功能強大的搜尋方塊，以支援在輸入期間進行搜尋的行為。
 
-+ 「建議」  是您輸入時所產生的建議結果，其中的每個建議分別是索引中與您到目前為止輸入的內容相符的單一結果。 
++ *建議*在鍵入時生成搜尋結果,其中每個建議都是單個結果,或者索引中的搜索文檔與您到目前為止鍵入的內容相匹配。 
 
-+ 「自動完成」  會「完成」使用者目前輸入的單字或片語。 它不會傳回結果，而是會完成查詢，讓您可接著執行以傳回結果。 如同建議，查詢中完成的單字或片語取決於索引中的相符項目。 此服務提供的查詢不會從索引傳回零個結果。
++ *通過*「整理」單詞或短語自動完成生成查詢。 它不會傳回結果，而是會完成查詢，讓您可接著執行以傳回結果。 如同建議，查詢中完成的單字或片語取決於索引中的相符項目。 此服務提供的查詢不會從索引傳回零個結果。
 
 您可以從 **DotNetHowToAutocomplete** 下載並執行範例程式碼，以評估這些功能。 範例程式碼以填入 [NYCJobs 示範資料](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)的預建索引為目標。 NYCJobs 索引包含[建議工具建構](index-add-suggesters.md)，這是使用建議或自動完成功能的必要項目。 您可以使用在沙箱服務中裝載的既有索引，也可以使用 NYCJobs 解決方案範例中的資料載入器來[填入您自己的索引](#configure-app)。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "72792513"
 
 Azure 認知搜尋服務在此練習中是選擇性的，因為解決方案所使用的即時沙箱服務裝載了備妥的 NYCJobs 示範索引。 如果您想要在自己的搜尋服務上執行此範例，請參閱[設定 NYC 作業索引](#configure-app)以取得相關指示。
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 的任何版本。 範例程式碼和指示已在免費的 Community 版本上經過測試。
+* [視覺工作室 2017,](https://visualstudio.microsoft.com/downloads/)任何版本. 範例程式碼和指示已在免費的 Community 版本上經過測試。
 
 * 下載 [DotNetHowToAutoComplete 範例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)。
 
@@ -315,7 +315,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 在後續步驟中，請試著將建議和自動完成整合到搜尋體驗中。 下列參考文章應該有所幫助。
 
 > [!div class="nextstepaction"]
-> [自動完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
-> [建議 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
-> [建立索引 REST API 上的 Facet 索引屬性](https://docs.microsoft.com/rest/api/searchservice/create-index)
+> [建立](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> 索引 REST API 上自動完成 REST API[建議 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [的功能索引屬性](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

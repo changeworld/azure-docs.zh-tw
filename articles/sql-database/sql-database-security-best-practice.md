@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673598"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115378"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL 資料庫解決常見安全要求的劇本
 
@@ -89,14 +89,14 @@ ms.locfileid: "80673598"
 
 - 創建 Azure AD 租戶並[創建使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)以表示人工使用者並創建[服務主體](../active-directory/develop/app-objects-and-service-principals.md)以表示應用、服務和自動化工具。 服務主體等效於 Windows 和 Linux 中的服務帳戶。 
 
-- 通過組分配向 Azure AD 主體分配資源存取權限:創建 Azure AD 組、授予對組的許可權以及向組添加單個成員。 在資料庫中,創建映射 Azure AD 組的包含資料庫使用者。 要在資料庫中分配許可權,請將使用者置於具有相應許可權的資料庫角色中。
+- 通過組分配向 Azure AD 主體分配資源存取權限:創建 Azure AD 組、授予對組的許可權以及向組添加單個成員。 在資料庫中,創建映射 Azure AD 組的包含資料庫使用者。 要在資料庫中分配許可權,請將與 Azure AD 組關聯的使用者放在具有相應許可權的資料庫角色中。
   - 請參考此文章,[使用 SQL 設定與管理 Azure 的目錄身份認證](sql-database-aad-authentication-configure.md),[並使用 Azure AD 進行 SQL 認證](sql-database-aad-authentication.md)。
   > [!NOTE]
   > 在託管實例中,還可以創建映射到主資料庫中的 Azure AD 主體的登錄名。 請參閱[創建登錄(轉用 SQL)。](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)
 
 - 使用 Azure AD 組可簡化許可權管理和組擁有者,並且資源擁有者可以添加/刪除組成員。 
 
-- 為 SQL DB 伺服器為 Azure AD 管理員創建單獨的組。
+- 為每個 SQL DB 伺服器為 Azure AD 管理員創建單獨的組。
 
   - 請參閱文章"[為 Azure SQL 資料庫伺服器預配 Azure 活動目錄管理員](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)。
 
@@ -108,7 +108,7 @@ ms.locfileid: "80673598"
 > [!NOTE]
 > - Azure AD 認證記錄在 Azure SQL 審核紀錄中,但不記錄在 Azure AD 登入日誌中。
 > - 在 Azure 中授予的 RBAC 許可權不適用於 Azure SQL DB 許可權。 此類許可權必須在 SQL DB 中使用現有 SQL 許可權手動創建/映射。
-> - 在用戶端 Azure AD 身份驗證上,需要存取 Internet 或透過使用者定義的路由 (UDR) 存取 VNet。
+> - 在用戶端上,Azure AD 身份驗證需要存取 Internet 或透過使用者定義的路由 (UDR) 存取 VNet。
 > - Azure AD 訪問權杖緩存在用戶端上,其存留期取決於權杖配置。 請參考文章[「Azure」 的項目中設定權杖存留期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 > - 有關解決 Azure AD 身份驗證問題的解決方案,請參閱以下部落格:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
@@ -213,7 +213,7 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
 
 ## <a name="access-management"></a>存取管理
 
-訪問管理是控制和管理授權使用者對 Azure SQL 資料庫的訪問許可權和許可權的過程。
+訪問管理(也稱為授權)是控制和管理授權使用者對 Azure SQL 資料庫的訪問許可權和許可權的過程。
 
 ### <a name="implement-principle-of-least-privilege"></a>實現最低特權原則
 
@@ -225,7 +225,7 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
 
 只配置完成所需的工作需要的[權限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine):
 
-- 在 SQL 資料平面中: 
+- 在 SQL 資料庫中: 
     - 使用粒度權限和使用者定義的資料庫角色(或 MI 中的伺服器角色): 
         1. 建立所需的角色
             - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -236,7 +236,7 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
             - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
             - [變更伺服器角色](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
         1. 然後為角色分配許可權。 
-            - [授予](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) 
+            - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) 
     - 確保不要將使用者分配給不必要的角色。
 
 - 在 Azure 資源管理員中:
@@ -294,7 +294,7 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
   - 為託管實例中的伺服器範圍任務(創建新登錄名、資料庫)創建伺服器角色。 
   - 為資料庫級任務創建資料庫角色。
 
-- 對於某些敏感任務,請考慮創建由證書簽名的特殊存儲過程,以代表使用者執行任務。 
+- 對於某些敏感任務,請考慮創建由證書簽名的特殊存儲過程,以代表使用者執行任務。 數位簽名存儲過程的一個重要優點是,如果更改了該過程,將立即刪除授予該過程早期版本的許可權。
   - 範例:[教學:使用憑證存取儲存程序](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - 在 Azure 金鑰保管庫中使用客戶管理的密鑰實施透明數據加密 (TDE),以便在數據擁有者和安全擁有者之間實現職責分離。 
@@ -303,7 +303,7 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
 - 為了確保 DBA 看不到被視為高度敏感但仍可以執行 DBA 任務的數據,可以使用「始終加密」與角色分離。 
   - 請參考文章[,「永遠加密的金鑰管理概述](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)」 ,[使用角色分離進行金鑰設定](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles),以及[具有角色分離的欄位金鑰的輪換](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)。 
 
-- 如果至少如果沒有可能導致系統幾乎無法使用的重大成本和努力,則至少不可行,則可以通過使用補償控制(如: 
+- 在使用「始終加密」不可行的情況下,或者至少不會沒有可能使系統幾乎無法使用的重大成本和努力,則可以通過使用補償控制(如: 
   - 進程中的人工干預。 
   - 稽核追蹤 – 有關稽核的詳細資訊,請參閱[審核關鍵安全事件](#audit-critical-security-events)。
 
@@ -315,11 +315,11 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
 
 - 當權限與所需的許可權完全匹配時,請使用內建角色 - 如果多個內建角色的所有許可權聯合導致 100% 匹配,也可以同時分配多個角色。 
 
-- 當內置角色授予的許可權過多或許可權不足時,創建和使用自定義角色。 
+- 當內置角色授予的許可權過多或許可權不足時,創建和使用使用者定義的角色。 
 
 - 角色分配也可以臨時完成,也稱為動態職責分離 (DSD),無論是在 T-SQL 中的 SQL 代理作業步驟中,還是使用 Azure PIM 執行 RBAC 角色。 
 
-- 確保 DBA 無權訪問加密密鑰或密鑰存儲,並且有權訪問密鑰的安全管理員反過來無法訪問資料庫。 
+- 確保 DBA 無權訪問加密密鑰或密鑰存儲,並且有權訪問密鑰的安全管理員反過來無法訪問資料庫。 使用[可擴充金鑰管理 (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以使這種分離更容易實現。 [Azure 密鑰保管庫](https://azure.microsoft.com/services/key-vault/)可用於實現 EKM。 
 
 - 始終確保具有與安全相關的操作的審核跟蹤。 
 
@@ -436,11 +436,11 @@ SQL 認證是指使用使用者名稱和密碼連接到 Azure SQL 資料庫時�
 
 - 如果需要支援對數據的計算(相等),請使用確定性加密。 否則,請使用隨機加密。 避免對低熵數據集或具有已知分佈的數據集使用確定性加密。 
 
-- 如果您擔心未經您的同意合法訪問數據,請確保所有有權訪問純文本密鑰和數據的應用程式和工具都在 Microsoft Azure 雲端之外運行。 如果沒有對密鑰的訪問,第三方將無法解密數據,除非他們繞過加密。
+- 如果您擔心第三方在未經您同意的情況下合法訪問您的數據,請確保所有有權訪問純文本密鑰和數據的應用程式和工具都在 Microsoft Azure 雲端之外運行。 如果沒有對密鑰的訪問,第三方將無法解密數據,除非他們繞過加密。
 
 - 始終加密不容易支援授予對密鑰(和受保護數據)的臨時訪問許可權。 例如,如果需要與 DBA 共用密鑰,以便 DBA 對敏感和加密數據執行一些清理操作。 可靠性從 DBA 撤銷對數據的訪問的唯一方法是輪換列加密密鑰和保護數據的列主密鑰,這是一項昂貴的操作。 
 
-- 要存取加密列中的純文字值,使用者需要有權存取保護列的 CMK,該列在保存 CMK 的密鑰儲存中配置。 使用者還需要具有 **「查看任何」主金鑰定義**「並**查看任何」控制密鑰定義資料庫**許可權。
+- 要存取加密列中的純文字值,使用者需要有權存取保護列的主鍵 (CMK),該列在保存 CMK 的金鑰存儲中配置。 使用者還需要具有 **「查看任何」主金鑰定義**「並**查看任何」控制密鑰定義資料庫**許可權。
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>透過加密控制應用程式使用者對敏感資料的存取
 

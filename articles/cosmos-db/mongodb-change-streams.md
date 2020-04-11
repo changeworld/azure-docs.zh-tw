@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: ecfa98241f74aac43a827b645a6ed877624d643d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437813"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114156"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>變更 Azure 宇宙 DB MongoDB 的 API 中的串流
 
@@ -26,7 +26,8 @@ ms.locfileid: "80437813"
 使用變更串流時,以下限制適用:
 
 * 輸出`operationType`文件`updateDescription`中 尚不支援和 屬性。
-* 當前`insert`支援`update`和`replace`操作類型。 尚不支援刪除操作或其他事件。
+* 當前`insert`支援`update`和`replace`操作類型。 
+* 尚不支援刪除操作或其他事件。
 
 由於這些限制,需要$match階段、$project階段和完整文檔選項,如前面的示例所示。
 

@@ -3,12 +3,12 @@ title: 容器和服務的資源管理
 description: Azure Service Fabric 可讓您針對在容器內部或外部執行的服務指定資源限制。
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772375"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115135"
 ---
 # <a name="resource-governance"></a>資源管理
 
@@ -23,7 +23,7 @@ Service Fabric 可依[服務套件](service-fabric-application-model.md)支援�
 
 * *CPU* (計量名稱 `servicefabric:/_CpuCores`)：主機上提供的邏輯核心。 所有節點上的所有核心加權都相同。
 
-* *記憶體*（指標名稱`servicefabric:/_MemoryInMB`）：記憶體以百萬位元組表示，並映射到電腦上可用的實體記憶體。
+* *記憶體*(指標名稱`servicefabric:/_MemoryInMB`):記憶體以兆位元組表示,並映射到電腦上可用的實體記憶體。
 
 針對這兩個計量，[叢集資源管理員](service-fabric-cluster-resource-manager-cluster-description.md)會追蹤叢集總容量、叢集中每個節點上的負載，以及叢集中剩餘的資源數。 這兩個計量相當於其他任何使用者或自訂計量。 所有現有的功能都可以搭配這些計量使用：
 
@@ -31,7 +31,8 @@ Service Fabric 可依[服務套件](service-fabric-application-model.md)支援�
 * 叢集可以根據這兩個計量來進行[重組](service-fabric-cluster-resource-manager-defragmentation-metrics.md)。
 * 在[描述叢集](service-fabric-cluster-resource-manager-cluster-description.md)時，可以為這兩個計量設定緩衝處理的容量。
 
-這些計量不支援[動態負載報告](service-fabric-cluster-resource-manager-metrics.md)，而這些計量的負載則是在建立時定義。
+> [!NOTE]
+> 這些指標不支援[動態負載報告](service-fabric-cluster-resource-manager-metrics.md);這些指標的負載在創建時定義。
 
 ## <a name="resource-governance-mechanism"></a>資源控管機制
 
@@ -65,7 +66,7 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
 </Section>
 ```
 
-對於大多數客戶和方案，建議配置自動檢測 CPU 和記憶體的節點容量（預設情況下自動檢測處於打開狀態）。 但是，如果需要完全手動設置節點容量，可以使用描述群集中的節點的機制配置每個節點類型。 下面是如何使用四個內核和 2 GB 記憶體設置節點類型的示例：
+對於大多數客戶和方案,建議配置自動檢測 CPU 和記憶體的節點容量(預設情況下自動檢測處於打開狀態)。 但是,如果需要完全手動設置節點容量,可以使用描述群集中的節點的機制配置每個節點類型。 下面是如何使用四個內核和 2 GB 記憶體設定節點類型的範例:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -100,16 +101,16 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
 ```
 
 > [!IMPORTANT]
-> 從 Service Fabric 版本 7.0 開始，我們更新了在使用者手動提供節點資源容量值的情況下如何計算節點資源容量的規則。 讓我們考慮以下方案：
+> 從 Service Fabric 版本 7.0 開始,我們更新了在使用者手動提供節點資源容量值的情況下如何計算節點資源容量的規則。 讓我們考慮以下方案:
 >
 > * 節點上共有 10 個 cpu 內核
-> * SF 配置為將使用者服務總資源的 80%用於使用者服務（預設設置），這為在節點上運行的其他服務（包括 Service Fabric 系統服務）留下 20% 的緩衝區
-> * 使用者決定手動覆蓋 cpu 內核指標的節點資源容量，並將其設置為 5 個內核
+> * SF 設定為將使用者服務總資源的 80%用於使用者服務(預設設定),這為在節點上運行的其他服務(包括 Service Fabric 系統服務)留下 20% 的緩衝區
+> * 使用者決定手動覆蓋 cpu 核心指標的節點資源容量,並將其設定為 5 個內核
 >
-> 我們更改了有關如何按以下方式計算 Service Fabric 使用者服務的可用容量的規則：
+> 我們更改了有關如何按以下方式計算 Service Fabric 使用者服務的可用容量的規則:
 >
-> * 在 Service Fabric 7.0 之前，使用者服務的可用容量將計算為**5 個內核**（容量緩衝區為 20% 忽略）
-> * 從 Service Fabric 7.0 開始，使用者服務的可用容量將計算為**4 個內核**（容量緩衝區為 20%不會忽略）
+> * 在 Service Fabric 7.0 之前,用戶服務的可用容量將計算為**5 個內核**(容量緩衝區為 20% 忽略)
+> * 從 Service Fabric 7.0 開始,用戶服務的可用容量將計算為**4 個內核**(容量緩衝區為 20% 不會忽略)
 
 ## <a name="specify-resource-governance"></a>指定資源控管
 
@@ -134,7 +135,7 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
   </ServiceManifestImport>
 ```
 
-在此範例中，稱為 **ServicePackageA** 的服務套件在其所在的節點上獲得一個核心。 此服務包包含兩個代碼包 **（CodeA1**和**CodeA2），** 並且`CpuShares`都指定參數。 CpuShares 的比例 512:256 會將核心在這兩個程式碼套件做分配。
+在此範例中，稱為 **ServicePackageA** 的服務套件在其所在的節點上獲得一個核心。 此服務包包含兩個程式碼包 **(CodeA1**和**CodeA2),** 並且`CpuShares`都指定參數。 CpuShares 的比例 512:256 會將核心在這兩個程式碼套件做分配。
 
 因此，在此範例中，CodeA1 會獲得 2/3 的核心，CodeA2 則獲得 1/3 的核心 (並具有同樣的彈性保證保留)。 如果未針對程式碼套件指定 CpuShares，Service Fabric 就會在它們之間平均分配核心。
 
@@ -142,7 +143,7 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
 
 ### <a name="using-application-parameters"></a>使用應用程式參數
 
-指定資源治理設置時，可以使用[應用程式參數](service-fabric-manage-multiple-environment-app-configuration.md)來管理多個應用配置。 下列範例會示範應用程式參數的使用方式：
+指定資源治理設置時,可以使用[應用程式參數](service-fabric-manage-multiple-environment-app-configuration.md)來管理多個應用配置。 下列範例會示範應用程式參數的使用方式：
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -189,13 +190,13 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
 
 ## <a name="enforcing-the-resource-limits-for-user-services"></a>實施使用者服務的資源限制
 
-雖然將資源治理應用於 Service Fabric 服務可確保這些資源管理的服務不能超過其資源配額，但許多使用者仍然需要在不受治理模式下運行某些服務交換矩陣服務。 使用不受治理的服務交換矩陣服務時，可能會遇到"失控"未受治理的服務佔用 Service Fabric 節點上所有可用資源的情況，這可能導致嚴重的問題，例如：
+雖然將資源治理應用於 Service Fabric 服務可確保這些資源管理的服務不能超過其資源配額,但許多使用者仍然需要在不受治理模式下運行某些服務交換矩陣服務。 使用不受治理的服務交換矩陣服務時,可能會遇到「失控」未受治理的服務佔用 Service Fabric 節點上所有可用資源的情況,這可能導致嚴重的問題,例如:
 
-* 在節點上運行的其他服務（包括服務交換矩陣系統服務）的資源不足
+* 在節點上執行的其他服務(包括服務交換矩陣系統服務)的資源不足
 * 節點最終處於不正常狀態
-* 無回應的服務結構群集管理 API
+* 沒有回應的服務結構叢集管理 API
 
-為了防止發生這些情況，Service Fabric 允許您 *對在節點上運行的所有 Service Fabric 使用者服務（* 受治理和未受治理）強制實施資源限制，以確保使用者服務使用的資源量不會超過指定數量。 這是通過在群集清單的"放置和載入平衡"部分中將強制使用者服務指標容量配置的值設置為 true 來實現的。 預設情況下，此設置處於關閉狀態。
+為了防止發生這些情況,Service Fabric 允許您 *對在節點上運行的所有 Service Fabric 用戶服務(* 受治理和未受治理)強制實施資源限制,以確保使用者服務使用的資源量不會超過指定數量。 這是通過在群集清單的「放置和載入平衡」 部分中將強制使用者服務指標容量配置的值設置為 true 來實現的。 默認情況下,此設置處於關閉狀態。
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -203,10 +204,10 @@ Service Fabric 執行階段目前不提供資源的保留。 當開啟處理序�
 </Section>
 ```
 
-其他備註：
+其他備註:
 
-* 資源限制實施僅適用于`servicefabric:/_CpuCores`和資源指標`servicefabric:/_MemoryInMB`
-* 僅當 Service Fabric 可通過自動檢測機制或通過使用者手動指定節點容量（如[啟用資源治理的群集設置](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分中所述）使用資源指標的節點容量時，資源限制實施才有效。如果未配置節點容量，則無法使用資源限制實施功能，因為 Service Fabric 無法知道為使用者服務預留了多少資源。如果"強制使用者服務指標容量"為 true，但未配置節點容量，則服務結構將發出運行狀況警告。
+* 資源限制已適用於`servicefabric:/_CpuCores`與資源指標`servicefabric:/_MemoryInMB`
+* 僅當 Service Fabric 可透過自動檢測機制或透過使用者手動指定節點容量(如[啟用資源治理的群集設置](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分中所述)使用資源指標的節點容量時,資源限制實施才有效。如果未配置節點容量,則無法使用資源限制實施功能,因為 Service Fabric 無法知道為用戶服務預留了多少資源。如果「強制用戶服務指標容量」為 true,但未配置節點容量,則服務結構將發出運行狀況警告。
 
 ## <a name="other-resources-for-containers"></a>容器的其他資源
 

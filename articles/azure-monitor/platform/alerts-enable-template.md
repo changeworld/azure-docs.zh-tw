@@ -1,22 +1,22 @@
 ---
-title: 使用 Resource Manager 範本在 Azure 中建立傳統計量警示
+title: 資源管理員樣本 - 建立指標警報
 description: 了解如何使用 Resource Manager 範本來建立傳統計量警示，以接收電子郵件或 Webhook 的通知。
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037230"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114421"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立傳統計量警示
 > [!WARNING]
 > 
-> 本文說明如何使用 Resource Manager 範本建立**傳統計量警示**。 經典警報于 2019 年 8 月停用，並定于 2020 年 6 月完全棄用。 不能創建新的經典警報公共 Azure。 某些區域版本的 Azure 可能仍然具有此選項，但我們建議您盡可能使用範本創建[較新的指標警報](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [本文](alerts-metric-create-templates.md)提供了詳細資訊。
+> 本文說明如何使用 Resource Manager 範本建立**傳統計量警示**。 經典警報於 2019 年 8 月停用,並定於 2020 年 6 月完全棄用。 不能創建新的經典警報公共 Azure。 某些區域版本的 Azure 可能仍然具有這個選項,但我們建議您盡可能使用樣本建立[較新的指標警報](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [本文](alerts-metric-create-templates.md)提供了詳細資訊。
 >
 
 本文演示如何使用[Azure 資源管理器範本](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 經典指標警報。 這可讓您在建立警示以確保正確地監視所有資源時，自動在您的資源上設定警示。
@@ -24,7 +24,7 @@ ms.locfileid: "79037230"
 基本步驟如下：
 
 1. 建立一個描述如何建立警示的 JSON 檔案做為範本。
-2. [使用任何部署方法部署範本](../../azure-resource-manager/templates/deploy-powershell.md)。
+2. [使用任何部署方法部署樣本](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 下面我們會先單獨針對警示，然後針對建立其他資源期間的警示，描述如何建立 Resource Manager 範本。
 

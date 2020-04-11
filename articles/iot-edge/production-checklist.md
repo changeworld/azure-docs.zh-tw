@@ -8,12 +8,12 @@ ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 6bc74e82dd04e5845e95bdec5c841d0264dd1d3e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618307"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115091"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
@@ -134,25 +134,28 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
   * 管理您的容器登錄存取權
   * 使用標籤來管理版本
 
-### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>使用服務主體管理對容器註冊表的存取
+### <a name="manage-access-to-your-container-registry"></a>管理您的容器登錄存取權
 
 將模組部署到生產 IoT Edge 裝置之前，請務必控管容器登錄的存取權，避免他人存取或變更您的容器映像。 您可以使用非公開的私人容器登錄來管理容器映像。
 
-在教學課程和其他說明文件中，我們會指示您在 IoT Edge 裝置使用與開發電腦上所用相同的容器登錄認證。 這些指示僅協助您更輕鬆地設定測試和開發環境，在生產情節中不應遵照這些指示。 Azure 容器註冊表建議在應用程式或服務以自動或其他無人值守的方式(無頭)提取容器映射時[使用服務主體進行身份驗證](../container-registry/container-registry-auth-service-principal.md),就像 IoT Edge 設備那樣。
+在教學課程和其他說明文件中，我們會指示您在 IoT Edge 裝置使用與開發電腦上所用相同的容器登錄認證。 這些指示僅協助您更輕鬆地設定測試和開發環境，在生產情節中不應遵照這些指示。
 
-要創建服務主體,請運行[創建服務主體](../container-registry/container-registry-auth-aci.md#create-a-service-principal)中所述的兩個腳本。 這些文稿執行以下工作:
+要取得對註冊表的更安全存取,您可以選擇[認證選項](../container-registry/container-registry-authentication.md)。 常用和推薦的身份驗證是使用 Active Directory 服務主體,該主體非常適合應用程式或服務以自動或其他無人值守(無頭)方式拉取容器映射,就像 IoT Edge 設備那樣。
+
+要創建服務主體,請運行[創建服務主體](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述的兩個腳本。 這些文稿執行以下工作:
 
 * 第一個腳本創建服務主體。 它輸出服務主體 ID 和服務主體密碼。 將這些值安全地存儲在記錄中。
 
-* 第二個腳本創建角色分配以授予服務主體,如果需要,可以隨後運行。 我們建議為`role`參數應用**acrPull**使用者角色。 有關角色清單,請參閱[Azure 容器註冊表角色和許可權](../container-registry/container-registry-roles.md)
+* 第二個腳本創建角色分配以授予服務主體,如果需要,可以隨後運行。 我們建議為`role`參數應用**acrPull**使用者角色。 有關角色清單,請參閱[Azure 容器註冊表角色和權限](../container-registry/container-registry-roles.md)。
 
-要使用服務主體進行身份驗證,請提供從第一個腳本獲取的服務主體 ID 和密碼。
+要使用服務主體進行身份驗證,請提供從第一個腳本獲取的服務主體 ID 和密碼。 在部署清單中指定這些憑據。
 
 * 對於使用者名或客戶端 ID,請指定服務主體 ID。
 
 * 對於密碼或客戶端機密,請指定服務主體密碼。
 
-有關使用 Azure CLI 啟動容器實體的範例,請參考[使用服務主體進行身份驗證](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)。
+> [!NOTE]
+> 實現增強的安全身份驗證后,禁用**管理員用戶**設置,以便默認使用者名/密碼訪問不再可用。 在 Azure 門戶中的容器註冊表中,從 **「設定」** 下的左側窗格選單中,選擇 **「訪問鍵**」。
 
 ### <a name="use-tags-to-manage-versions"></a>使用標籤來管理版本
 

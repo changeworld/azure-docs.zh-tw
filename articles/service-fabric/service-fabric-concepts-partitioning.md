@@ -3,12 +3,12 @@ title: 分割 Service Fabric 服務
 description: 描述如何分割 Service Fabric 具狀態服務。 資料分割可讓資料儲存在本機電腦上，因此可以一起調整資料和計算。
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258612"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115152"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>分割 Service Fabric 可靠服務
 這篇文章介紹分割 Azure Service Fabric 可靠服務的基本概念。 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上也提供本文中使用的原始碼。
@@ -44,11 +44,11 @@ Service Fabric 提供一流的方法來分割狀態 (資料)，讓您輕鬆開�
 如此一來，因為來自用戶端要求會分散到各電腦而達成相應放大，應用程式的整體效能獲得改善，也減少競爭存取資料區塊的情況。
 
 ## <a name="plan-for-partitioning"></a>規劃分割
-在實現服務之前，應始終考慮橫向擴展所需的分區策略。有不同的方法，但它們都側重于應用程式需要實現的目標。 在這篇文章中，讓我們看一些更重要的層面。
+在實現服務之前,應始終考慮橫向擴展所需的分區策略。有不同的方法,但它們都側重於應用程式需要實現的目標。 在這篇文章中，讓我們看一些更重要的層面。
 
 第一步先思考必須分割的狀態結構是個不錯的方法。
 
-我們來看一個簡單的範例。 如果要為全縣範圍的投票構建服務，則可以為縣中的每個城市創建分區。 然後，您可以將城市中每一個人的投票存放在對應到該城市的資料分割中。 圖 3 說明一組人及其居住城市。
+我們來看一個簡單的範例。 如果要為全縣範圍的投票構建服務,則可以為縣中的每個城市創建分區。 然後，您可以將城市中每一個人的投票存放在對應到該城市的資料分割中。 圖 3 說明一組人及其居住城市。
 
 ![簡單資料分割](./media/service-fabric-concepts-partitioning/cities.png)
 
@@ -115,7 +115,7 @@ Service Fabric 有三個資料分割配置可選擇：
 > 
 > 
 
-1. 打開**視覺工作室** > **檔** > **新專案** > **。**
+1. 開啟**視覺工作室** > **檔** > **新專案** > **。**
 2. 在 [新增專案] **** 對話方塊中，選擇 Service Fabric 應用程式
 3. 將專案命名為 "AlphabetPartitions"。
 4. 在 [建立服務]**** 對話方塊中，選擇 [具狀態]**** 服務並且命名為 "Alphabet.Processing"。
@@ -152,7 +152,7 @@ Service Fabric 有三個資料分割配置可選擇：
    
     相同電腦上可能裝載此服務的多個複本，因此複本的此位址必須是唯一的。 這就是為什麼我們在 URL 中有資料分割識別碼 + 複本識別碼。 只要 URL 首碼是唯一的，HttpListener 就可以在相同連接埠上的多個位址接聽。
    
-    在進階案例中，次要複本也會接聽唯讀要求，所以有額外 GUID。 在這種情況下，從主要轉換到次要時，您想要確保使用新的唯一位址以強制用戶端重新解析位址。 "+"在此處用作位址，以便副本偵聽所有可用的主機（IP、FQDN、本地主機等）下面的代碼顯示了一個示例。
+    在進階案例中，次要複本也會接聽唯讀要求，所以有額外 GUID。 在這種情況下，從主要轉換到次要時，您想要確保使用新的唯一位址以強制用戶端重新解析位址。 "+"在此處用作位址,以便副本偵聽所有可用的主機(IP、FQDN、本地主機等)下面的代碼顯示了一個示例。
    
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -348,9 +348,6 @@ Service Fabric 有三個資料分割配置可選擇：
     ![瀏覽器螢幕擷取畫面](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 範例的完整原始程式碼位於 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和 Reliable Actor 分叉處理子程序
-Service Fabric 不支援 Reliable Services 和後續 Reliable Actors 分叉處理子程序。 舉例來說，不支援的原因是 [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 無法用來註冊不支援的子程序，且取消 Token 只會傳送到已註冊的程序；在父程序收到取消 Token 之後，子程序並未關閉，因而導致各種問題，例如升級失敗。 
 
 ## <a name="next-steps"></a>後續步驟
 如需 Service Fabric 概念的資訊，請參閱下列項目：

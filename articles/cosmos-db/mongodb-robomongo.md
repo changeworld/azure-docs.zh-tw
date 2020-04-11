@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 68b880957754439b3b88a0cccff2218a5942f967
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 627849acb902a721c80b98adbd16103b4729591b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548820"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114199"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Robo 3T 搭配 Azure Cosmos DB 適用於 MongoDB 的 API
 
@@ -31,7 +31,7 @@ ms.locfileid: "80548820"
 1. 使用[這裡](connect-mongodb-account.md)的指示，擷取由 Azure Cosmos DB API MongoDB 為您的 Cosmos 帳戶設定的連線資訊。
 
     ![[連接字串] 刀鋒視窗的螢幕擷取畫面](./media/mongodb-robomongo/connectionstringblade.png)
-2. 執行 *Robomongo.exe*
+2. 運行*Robomongo*應用程式。
 
 3. 按一下 [檔案]**** 下的 [連接] 按鈕來管理您的連接。 然後，按一下 [MongoDB 連接]**** 視窗中的 [建立]****，將會開啟 [連接設定]**** 視窗。
 

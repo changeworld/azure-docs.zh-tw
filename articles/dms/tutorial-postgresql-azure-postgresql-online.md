@@ -1,7 +1,7 @@
 ---
-title: 教程：通過 Azure CLI 將 PostgreSQL 遷移到 Azure 資料庫，以便線上發佈後SQL
+title: 教學:透過 Azure CLI 將 PostgreSQL 移至 Azure 資料庫,以便線上發佈後SQL
 titleSuffix: Azure Database Migration Service
-description: 通過 CLI 使用 Azure 資料庫移轉服務，瞭解如何執行從 PostgreSQL 本地到 Azure 資料庫的線上遷移。
+description: 通過 CLI 使用 Azure 資料庫遷移服務,瞭解如何執行從 PostgreSQL 本地到 Azure 資料庫的線上遷移。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -11,15 +11,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/17/2020
-ms.openlocfilehash: 44df35957dfbd3aa4856d256dc1a7d9e6527fde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240680"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113878"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通過 Azure CLI 使用 DMS 將 PostgreSQL 遷移到 Azure 資料庫以連線使用 PostgreSQL
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教學:透過 Azure CLI 使用 DMS 將 PostgreSQL 移至 Azure 資料庫以上線使用 PostgreSQL
 
 您可以使用 Azure 資料庫移轉服務，在最短的停機時間內將資料庫從內部部署 PostgreSQL 執行個體移轉至[適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)。 換句話說，可在最短的應用程式停機時間內完成移轉。 在此教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **DVD Rental** 範例資料庫從內部部署的 PostgreSQL 9.6 執行個體移轉至適用於 PostgreSQL 的 Azure 資料庫。
 
@@ -33,7 +33,7 @@ ms.locfileid: "80240680"
 > * 監視移轉。
 
 > [!NOTE]
-> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 我們加密磁片，以防止遷移過程中的資料被盜。
+> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 我們加密磁碟,以防止遷移過程中的數據被盜。
 
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
@@ -44,13 +44,13 @@ ms.locfileid: "80240680"
 
 * 下載並安裝 [PostgreSQL 社群版](https://www.postgresql.org/download/) 9.5、9.6 或 10。 來源 PostgreSQL 伺服器版本必須是 9.5.11、9.6.7、10 或更新版本。 如需詳細資訊，請參閱[支援的 PostgreSQL 資料庫版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
 
-    此外，內部部署 PostgreSQL 版本必須符合適用於 PostgreSQL 的 Azure 資料庫版本。 例如，PostgreSQL 9.5.11.5 只能移轉至「適用於 PostgreSQL 的 Azure 資料庫」9.5.11，而無法移轉至 9.6.7。
+    另請注意,PostgreSQL 版本的目標 Azure 資料庫必須等於或晚於本地 PostgreSQL 版本。 例如,PostgreSQL 9.6 只能遷移到 PostgreSQL 9.6、10 或 11 的 Azure 資料庫,但不能遷移到 PostgreSQL 9.5 的 Azure 資料庫。
 
-* [在 Azure 資料庫中為 PostgreSQL 創建實例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)，或[為 PostgreSQL- 超大規模 （Citus） 伺服器創建 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
-* 通過使用 Azure 資源管理器部署模型為 Azure 資料庫移轉服務創建 Microsoft Azure 虛擬網路，該模型通過使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供到本地源伺服器的網站到網站的連接。 有關創建虛擬網路的詳細資訊，請參閱[虛擬網路文檔](https://docs.microsoft.com/azure/virtual-network/)，尤其是包含分步詳細資訊的快速入門文章。
+* [在 Azure 資料庫中為 PostgreSQL 建立實體 ,](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或[為 PostgreSQL- 超大規模 (Citus) 伺服器建立 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
+* 通過使用 Azure 資源管理器部署模型為 Azure 資料庫遷移服務創建 Microsoft Azure 虛擬網路,該模型透過使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供到本地源伺服器的網站到網站的連接。 有關創建虛擬網路的詳細資訊,請參閱[虛擬網路文檔](https://docs.microsoft.com/azure/virtual-network/),尤其是包含分步詳細資訊的快速入門文章。
 
     > [!NOTE]
-    > 在虛擬網路設置期間，如果將 ExpressRoute 與網路對等互連到 Microsoft，則向將服務預配的子網添加以下服務[終結點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)：
+    > 在虛擬網路設定期間,如果將 ExpressRoute 與網路對等互連到 Microsoft,則向將服務預配的子網路新增以下服務[終結點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview):
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -58,11 +58,11 @@ ms.locfileid: "80240680"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確保虛擬網路網路安全性群組 （NSG） 規則不會阻止以下到 Azure 資料庫移轉服務的入站通訊連接埠：443、53、9354、445、12000。 有關虛擬網路 NSG 流量篩選的更多詳細資訊，請參閱文章["使用網路安全性群組篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)"。
+* 確保虛擬網路網路安全組 (NSG) 規則不會阻止以下到 Azure 資料庫遷移服務的入站通信埠:443、53、9354、445、12000。 有關虛擬網路 NSG 流量篩選的更多詳細資訊,請參閱文章[「使用網路安全組篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)」。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 PostgreSQL Server (依預設會使用 TCP 連接埠 5432)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
-* 為適用於 PostgreSQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務的虛擬網路的子網範圍。
+* 為適用於 PostgreSQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫遷移服務的虛擬網路的子網範圍。
 * 叫用 CLI 有兩種方法：
 
   * 在 Azure 入口網站右上角，選取 [Cloud Shell] 按鈕：
@@ -100,7 +100,7 @@ ms.locfileid: "80240680"
 
 2. 在您的目標環境中建立一個空的資料庫，即適用於 PostgreSQL 的 Azure 資料庫。
 
-    有關如何連接和創建資料庫的詳細資訊，請參閱在[Azure 門戶中為 PostgreSQL 伺服器創建 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或為 Azure[門戶中為 PostgreSQL-超大規模 （Citus） 伺服器創建 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
+    有關如何連線和建立資料庫的詳細資訊,請參閱在[Azure 門戶中為 PostgreSQL 伺服器建立 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或為 Azure[入口中為 PostgreSQL-超大規模 (Citus) 伺服器建立 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
 
 3. 透過還原結構描述傾印檔案，將結構描述匯入到您所建立的目標資料庫中。
 

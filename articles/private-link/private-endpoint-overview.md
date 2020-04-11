@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742903"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115251"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 專用終結點?
 
@@ -55,7 +55,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**專用連結服務**(您自己的服務)   |  微軟.網路/私人連結服務       | empty |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  Sql 伺服器 (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql 伺服器 (sqlServer)        | 
-|**Azure 儲存體**  | Microsoft.Storage/storageAccounts    |  Blob(blob,blob_secondary)<BR> 表(表,table_secondary)<BR> 佇列(佇列、queue_secondary)<BR> 檔案(檔案,file_secondary)<BR> 網路(網路,web_secondary)        |
+|**Azure 儲存**  | Microsoft.Storage/storageAccounts    |  Blob(blob,blob_secondary)<BR> 表(表,table_secondary)<BR> 佇列(佇列、queue_secondary)<BR> 檔案(檔案,file_secondary)<BR> 網路(網路,web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob(blob,blob_secondary)<BR> 資料系統第二代(dfs,dfs_secondary)       |
 |**Azure Cosmos DB** | 微軟.AzureCosmosDB/資料庫帳戶 | Sql, 蒙戈DB, 卡桑德拉, 格雷姆林, 表|
 |**PostgreSQL - 單一伺服器的 Azure 資料庫** | Microsoft.DBforPostgreSQL/servers   | 後格雷sqlServer |
@@ -73,7 +73,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure 事件網格** | Microsoft.EventGrid/topics  | 主題 |
 |**Azure 事件網格** | 微軟.事件網格/域 | 網域 |
 |**Azure WebApps** | Microsoft.Web/sites    | site |
-|**Azure 機器學習** | Microsoft.MachineLearningServices/workspaces  | 工作區 |
+|**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces  | 工作區 |
   
  
 ## <a name="network-security-of-private-endpoints"></a>專用終結點的網路安全 
@@ -113,7 +113,7 @@ Alias 是服務擁有者在標準負載均衡器後面創建專用鏈路服務�
 > [!IMPORTANT]
 > 不建議覆蓋主動用於解析公共終結點的區域。 如果沒有 DNS 轉發到公共 DNS,則無法正確解析與資源的連接。 為避免出現問題,請創建不同的功能變數名稱或按照以下每個服務的建議名稱進行操作。 
  
-對於 Azure 服務,請使用下表中所述的建議區域名稱:
+對於 Azure 服務,請使用下表中所述的區域名稱:
 
 |私人連結資源類型   |子資源  |區域名稱  |
 |---------|---------|---------|

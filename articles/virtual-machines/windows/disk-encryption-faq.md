@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984328"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114973"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>適用於 Windows 虛擬機器的 Azure 磁碟加密常見問題解答
 
@@ -64,7 +64,7 @@ Azure 磁碟加密使用客戶管理的密鑰為 OS 磁碟、數據磁碟和臨�
 
 - 如果要求包括加密上述所有加密和端到端加密,請使用 Azure 磁碟加密。 
 - 如果要求包括僅使用客戶管理的金鑰加密靜態資料,則使用[伺服器端加密與客戶管理的金鑰一起使用](disk-encryption.md)。 不能使用客戶託管金鑰對磁碟進行 Azure 磁碟加密和儲存伺服器端加密。
-* 如果您使用的是[Windows 不支援的機制](disk-encryption-windows.md#unsupported-scenarios),請考慮[使用客戶管理的金鑰來伺服器端加密](disk-encryption.md)。 
+- 如果使用在[Windows 不支援機制中](disk-encryption-windows.md#unsupported-scenarios)呼叫的機制,請考慮[使用客戶管理的金鑰來伺服器端加密](disk-encryption.md)。 
 - 如果組織的策略允許您使用 Azure 管理的密鑰加密靜態內容,則無需執行任何操作 - 預設情況下對內容進行加密。 對於託管磁碟,默認情況下,使用平臺管理的密鑰對存儲內的內容進行加密。 金鑰由 Azure 儲存服務管理。 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何輪換機密或加密密鑰?

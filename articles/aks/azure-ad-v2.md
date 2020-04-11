@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984703"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114652"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Azure 庫伯奈斯服務中整合 Azure AD(預覽版)
 
@@ -98,12 +98,12 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
 建立群組並新增自己作為成員(和其他人)後,可以使用以下指令使用 Azure AD 群組更新叢集
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 或者,如果首先創建組並添加成員,則可以使用以下命令在創建時間啟用 Azure AD 組,
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 成功建立 Azure AD v2 叢集在回應正文中具有以下部分

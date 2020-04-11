@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80573200"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112854"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>網路限制 - Azure 資源管理員
 以下限制僅適用於每個訂閱每個訂閱通過**Azure 資源管理員**管理的網路資源。 瞭解如何[根據訂閱限制目前資源使用方式](../articles/networking/check-usage-against-limits.md)。
@@ -74,7 +74,7 @@ ms.locfileid: "80573200"
 | 後端集區大小                       | 1,000 個 IP 設定,單一虛擬網路 |
 | 每個負載平衡器<sup>的後端介面資源 1<sup> | 150                   |
 | 高可用性埠                 | 每個內部前端 1 個       |
-| 每個負載均衡器的出站規則        | 20                            |
+| 每個負載均衡器的出站規則        | 600                           |
 | [TCP 空閒逾時](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分鐘/30 分鐘          |
 
 <sup>1</sup>限制最多為 150 個資源,包括獨立虛擬機器資源、可用性集資源和虛擬機縮放集資源的任何組合。

@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure 監視器建立、檢視及管理傳統計量警示
+title: 使用 Azure 監視器建立及管理經典指標警報
 description: 了解如何使用 Azure 入口網站、CLI 或 Powershell 來建立、檢視及管理傳統計量警示規則。
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668310"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114589"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理傳統計量警示
 
@@ -34,7 +34,7 @@ ms.locfileid: "77668310"
 
 6. 如果您想要讓系統管理員和共同管理員在警示引發時收到電子郵件通知，請選取 [電子郵件的擁有者...] ****。
 
-7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 以以下格式分隔多封分號電子郵件：*\@電子郵件\@contoso.com;email2 contoso.com*
+7. 如果您想要在警示引發時傳送通知給其他電子郵件地址，請在 [其他管理員的電子郵件]**** 欄位中新增。 以以下格式分隔多封分號電子郵件:*\@電子\@郵件 contoso.com;email2 contoso.com*
 
 8. 如果您想在警示引發時呼叫 Webhook，在 [Webhook] **** 欄位中放入有效的 URI。
 
@@ -88,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 此節示範如何使用 PowerShell 命令建立、檢視及管理傳統計量警示。文章中的範例說明針對傳統計量警示使用 Azure 監視器 Cmdlet 的方式。
 
-1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 有關詳細資訊，請參閱[如何安裝和配置 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
+1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 有關詳細資訊,請參閱[如何安裝和設定 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
 
 2. 首先，登入您的 Azure 訂用帳戶。
 
@@ -126,7 +126,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. 無法再透過 PowerShell 建立傳統的警示規則。 要創建警報規則，您需要使用新的["添加-AzMetricAlertRule"命令](/powershell/module/az.monitor/add-azmetricalertrule)。
+8. 無法再透過 PowerShell 建立傳統的警示規則。 要建立警示規則,您需要使用新的[「新增-AzMetricAlertRule」指令](/powershell/module/az.monitor/add-azmetricalertrule)。
 
 ## <a name="next-steps"></a>後續步驟
 

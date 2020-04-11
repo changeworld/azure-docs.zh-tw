@@ -3,12 +3,12 @@ title: 學習稽核虛擬機器的內容
 description: 瞭解 Azure 策略如何使用來賓配置代理審核虛擬機器內的設置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998847"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113421"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -26,32 +26,11 @@ ms.locfileid: "80998847"
 
 ### <a name="limits-set-on-the-extension"></a>在延伸上設定的限制
 
-為了限制擴展影響在計算機內運行的應用程式,來賓配置不允許超過 CPU 利用率的 5%。 對於內置定義和自定義定義,都存在此限制。
+為了限制擴展影響在計算機內運行的應用程式,不允許來賓配置超過 CPU 的 5%。 對於內置定義和自定義定義,都存在此限制。
 
 ## <a name="register-guest-configuration-resource-provider"></a>註冊來賓設定資源提供者
 
-您必須先註冊資源提供者，才能使用「來賓設定」。 您可以透過入口網站或透過 PowerShell 註冊。 如果通過門戶分配來賓配置策略,則會自動註冊資源提供程式。
-
-### <a name="registration---portal"></a>註冊 - 入口網站
-
-若要透過 Azure 入口網站註冊「來賓設定」的資源提供者，請依照下列步驟進行操作：
-
-1. 啟動 Azure 入口網站，然後按一下 [所有服務]****。 搜尋並選取 [訂用帳戶]****。
-
-1. 尋找並按一下您想要啟用「來賓設定」的訂用帳戶。
-
-1. 在 [訂用帳戶]**** 頁面的左側功能表中，按一下 [資源提供者]****。
-
-1. 篩選或捲動，直到找出 **Microsoft.GuestConfiguration** 為止，然後按一下同一列上的 [註冊]****。
-
-### <a name="registration---powershell"></a>註冊 - PowerShell
-
-若要透過 PowerShell 註冊「來賓設定」的資源提供者，請執行下列命令：
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
-```
+您必須先註冊資源提供者，才能使用「來賓設定」。 您可以通過[門戶](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)或 Azure [CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)進行註冊。 如果通過門戶分配來賓配置策略,則會自動註冊資源提供程式。
 
 ## <a name="validation-tools"></a>驗證工具
 
@@ -89,7 +68,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-extension-network-requirements"></a>來賓設定延伸網路要求
 
-要與 Azure 中的來賓配置資源提供程式通訊,電腦需要對埠**443**上的 Azure 資料中心進行出站訪問。 如果在 Azure 中使用不允許出站流量的專用虛擬網路,請使用[網路安全組](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則配置異常。
+要與 Azure 中的來賓配置資源提供程式通訊,電腦需要對埠**443**上的 Azure 資料中心進行出站訪問。 如果 Azure 中的網路不允許出站流量,請使用[網路安全組](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則配置異常。
 [服務標籤](../../../virtual-network/service-tags-overview.md)「來賓和混合管理」可用於引用來賓配置服務。
 
 ## <a name="azure-managed-identity-requirements"></a>Azure 託管識別要求
@@ -101,7 +80,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 
-來賓配置運行的每個審核都需要兩個策略定義:**部署IfNotExists**定義和**AuditIfNot存在**定義。 **DeployIfNotExists**定義用於使用來賓設定代理和其他元件準備電腦以支援[驗證工具](#validation-tools)。
+來賓配置運行的每個審核都需要兩個策略定義:**部署IfNotExists**定義和**AuditIfNot存在**定義。 
 
 **DeployIfNotExists** 原則定義會驗證並修正下列項目：
 
@@ -112,24 +91,24 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 如果**DeployIfNotExists**分配不符合要求,則可以使用[修正工作](../how-to/remediate-resources.md#create-a-remediation-task)。
 
-**部署非存在**分配符合時,**審核非存在**策略分配將使用本地驗證工具來確定配置分配是合規還是不合規。 驗證工具會將結果提供給「來賓設定」用戶端。 用戶端會將結果轉送至「來賓延伸模組」，以便透過「來賓設定」資源提供者提供結果。
+一旦**部署非存在分配**符合要求,**審核非存在**策略分配將確定來賓分配是合規還是不合規。 驗證工具會將結果提供給「來賓設定」用戶端。 用戶端會將結果轉送至「來賓延伸模組」，以便透過「來賓設定」資源提供者提供結果。
 
 「Azure 原則」會使用「來賓設定」資源提供者 **complianceStatus** 屬性在 [合規性]**** 節點中回報合規性。 如需詳細資訊，請參閱[取得合規性資料](../how-to/get-compliance-data.md)。
 
 > [!NOTE]
 > **"已部署不存在'** 策略是 **"審核不存在"** 策略返回結果所必需的。 如果沒有**部署"不存在"****審核不存在**策略將顯示" 0 的 0" 資源作為狀態。
 
-「來賓設定」的所有內建原則都包含在一個方案中，以聚集要在指派中使用的定義。 名為_\[「預\]覽 :審核 Linux 和 Windows 計算機內密碼安全設定_」的內建計畫包含 18 個策略。 針對 Windows 有 6 組 **DeployIfNotExists** 和 **AuditIfNotExists**，針對 Linux 則有 3 組。 [策略定義](definition-structure.md#policy-rule)邏輯驗證是否僅評估目標操作系統。
+「來賓設定」的所有內建原則都包含在一個方案中，以聚集要在指派中使用的定義。 名為_\[「預\]覽 :在 Linux 和 Windows 計算機中審核密碼安全性_」的內建計畫包含 18 個策略。 針對 Windows 有 6 組 **DeployIfNotExists** 和 **AuditIfNotExists**，針對 Linux 則有 3 組。 [策略定義](definition-structure.md#policy-rule)邏輯驗證是否僅評估目標操作系統。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>依產業基線稽核作業系統設定
 
-Azure 策略中提供的一個計畫提供了根據 Microsoft 的「基線」審核虛擬機器內的作業系統設置的功能。 定義:_\[預\]覽 :審核與 Azure 安全基線設定不匹配_的 Windows VM 包括一組完整的審核規則,這些規則基於活動目錄組策略的設置。
+Azure 策略中的一個計劃提供了按照"基線"審核操作系統設置的功能。 定義:_\[預\]覽 :審核與 Azure 安全基線設定不匹配_的 Windows VM 包括一組基於活動目錄組策略的規則。
 
-大多數設置都可以作為參數提供。 此功能允許您自定義審核的內容,以使策略與組織要求保持一致,或者將策略映射到第三方資訊(如行業監管標準)。
+大多數設置都可以作為參數提供。 參數允許您自定義審核的內容。 使政策符合您的要求,或將政策映射到第三方資訊(如行業監管標準)。
 
-某些參數支援整數值範圍。 例如,可以使用範圍運算符設置最大密碼期限參數,以便機器擁有者具有靈活性。 您可以審核要求使用者更改密碼的有效組策略設置不應超過 70 天,但不應少於一天。 如資訊氣泡中所述的參數,要使此業務策略成為有效的審核值,將值設置為"1,70"。
+某些參數支援整數值範圍。 例如,"最大密碼期限"設置可以審核有效的組策略設置。 "1,70"範圍將確認用戶必須至少每 70 天更改一次密碼,但不少於一天。
 
-如果使用 Azure 資源管理員部署範本分配策略,則可以使用參數檔從原始程式碼管理管理這些設置。 使用 Git 等工具管理對審核策略的更改,並在每次簽入時提供註釋,可以證明為什麼分配應該是預期值的例外。
+如果使用 Azure 資源管理器部署範本分配策略,請使用參數檔來管理異常。 將檔簽入版本控制系統(如 Git)。 有關檔更改的註釋提供了為什麼分配是預期值的例外的證據。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用來賓設定應用設定
 
@@ -162,7 +141,7 @@ Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 #### <a name="windows"></a>Windows
 
-要使用 Azure VM 執行命令功能從 Windows 電腦中的日誌檔捕獲資訊,以下範例 PowerShell 腳本非常有用。 有關詳細資訊,請參閱[使用執行命令在 Windows VM 中執行 PowerShell 文稿](../../../virtual-machines/windows/run-command.md)。
+使用 Azure VM[執行命令](../../../virtual-machines/windows/run-command.md)從日誌檔中捕獲資訊,以下示例 PowerShell 腳本可能很有用。
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -173,7 +152,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 #### <a name="linux"></a>Linux
 
-要使用 Azure VM 執行命令功能從 Linux 電腦中的日誌檔中捕獲資訊,以下範例 Bash 文本可能很有用。 有關詳細資訊,請參閱[使用執行命令在 Linux VM 中執行 shell 文稿](../../../virtual-machines/linux/run-command.md)
+使用 Azure VM[執行命令](../../../virtual-machines/linux/run-command.md)從日誌檔中捕獲資訊,下面的示例 Bash 腳本可能很有用。
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -184,7 +163,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>來賓設定範例
 
-策略來賓設定內建計畫的來源可在以下位置提供:
+以主要設定的原則範例在以下位置可用:
 
 - [內建策略定義 ─ 來賓設定](../samples/built-in-policies.md#guest-configuration)
 - [內建計劃 ─ 訪客設定](../samples/built-in-initiatives.md#guest-configuration)
@@ -192,6 +171,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="next-steps"></a>後續步驟
 
+- 瞭解如何從[來賓配置合規性檢視](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)查看每個設置的詳細資訊
 - 查看[Azure 策略範例](../samples/index.md)中的範例。
 - 檢閱 [Azure 原則定義結構](definition-structure.md)。
 - 檢閱[了解原則效果](effects.md)。
