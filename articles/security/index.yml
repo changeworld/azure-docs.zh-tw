@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: 37427277a8d4b7bde5e5671510a8f5cdb9979483
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
+  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75980353"
+  ms.lasthandoff: 04/10/2020
+  ms.locfileid: "81115372"
 highlightedContent:
   items:
   - title: Azure 安全性簡介
@@ -219,12 +219,12 @@ conceptualContent:
       text: 安全性設定建議
   - title: 資料庫安全性
     links:
-    - url: ./fundamentals/database-security-overview.md
+    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
       itemType: overview
-      text: 安全性概觀
-    - url: ./fundamentals/database-best-practices.md
+      text: 資料安全性
+    - url: ./fundamentals/paas-applications-using-sql.md
       itemType: concept
-      text: 安全性最佳做法
+      text: 適用於 PaaS 資料庫的最佳做法
     - url: ./fundamentals/database-security-checklist.md
       itemType: concept
       text: 安全性檢查清單

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77123133"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007876"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>產生憑證簽署要求檔案
 
@@ -74,11 +74,21 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
 
 4. 在 [憑證、識別碼與設定檔]  頁面的 [識別碼]  底下，找出您剛才建立的應用程式識別碼明細項目，然後選取其資料列以顯示 [編輯您的應用程式識別碼設定]  畫面。
 
-5. 向下瀏覽至已核取的 [推播通知]  選項，然後選取 [設定]  來建立憑證。
+## <a name="creating-a-certificate-for-notification-hubs"></a>建立通知中樞的憑證
+需要憑證才能搭配使用通知中樞與 **APNS**。 完成此步驟的方式有兩種：
+
+1. 建立可直接上傳至通知中樞的 **.p12**。  
+2. 建立 **.p8**，其可用於[權杖型驗證](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) (*較新的方法*)。
+
+較新的方法具有許多優點 (相較於使用憑證)，如 [APNS 權杖型 (HTTP/2) 驗證](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)中所述。 不過，已經為這兩種方法提供步驟。 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>選項 1：建立可直接上傳至通知中樞的 .p12 推送憑證
+
+1. 向下瀏覽至已核取的 [推播通知]  選項，然後選取 [設定]  來建立憑證。
 
     ![編輯應用程式識別碼頁面](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. [Apple 推播通知服務 SSL 憑證]  視窗隨即出現。 在 [開發 SSL 憑證]  區段下方，選取 [建立憑證]  按鈕。
+2. [Apple 推播通知服務 SSL 憑證]  視窗隨即出現。 在 [開發 SSL 憑證]  區段下方，選取 [建立憑證]  按鈕。
 
     ![為應用程式識別碼建立憑證的按鈕](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
     > [!NOTE]
     > 本教學課程使用開發憑證。 註冊生產憑證時，將使用同一個程序。 只要確定在傳送通知時使用相同的憑證類型即可。
 
-1. 選取 [選擇檔案]  ，瀏覽到您在第一個工作中儲存 CSR 檔案的位置，然後按兩下憑證名稱來將其下載。 然後選取 [繼續]  。
+3. 選取 [選擇檔案]  ，瀏覽到您在第一個工作中儲存 CSR 檔案的位置，然後按兩下憑證名稱來將其下載。 然後選取 [繼續]  。
 
-1. 在入口網站建立憑證之後，請選取 [下載]  按鈕。 儲存憑證，並記住其儲存位置。
+4. 在入口網站建立憑證之後，請選取 [下載]  按鈕。 儲存憑證，並記住其儲存位置。
 
     ![產生的憑證 CSR 下載頁面](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
     > [!NOTE]
     > 依預設，下載的開發憑證會名為 **aps_development.cer**。
 
-1. 按兩下下載的推播憑證 **aps_development.cer**。 此動作會將新的憑證安裝在金鑰鏈中，如下圖所示：
+5. 按兩下下載的推播憑證 **aps_development.cer**。 此動作會將新的憑證安裝在金鑰鏈中，如下圖所示：
 
     ![顯示新憑證的金鑰鏈存取憑證清單](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > 雖然憑證中的名稱可能會不同，不過名稱會加上 **Apple Development iOS Push Services** 前置詞。
 
-1. 在 Keychain Access 中，以滑鼠右鍵按一下您在 [憑證]  類別中建立的新推播憑證。 選取 [匯出]  、為檔案命名、選取 [.p12]  格式，然後選取 [儲存]  。
+6. 在 Keychain Access 中，以滑鼠右鍵按一下您在 [憑證]  類別中建立的新推播憑證。 選取 [匯出]  、為檔案命名、選取 [.p12]  格式，然後選取 [儲存]  。
 
     ![以 p12 格式匯出憑證](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
 
     > [!NOTE]
     > 您的 .p12 檔案名稱和位置可能與本教學課程中所顯示的不同。
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>選項 2：建立可用於權杖型驗證的 .p8 憑證
+
+1. 記下下列詳細資料：
+
+    - **應用程式識別碼首碼** (這是**小組識別碼**)
+    - **套件組合識別碼**
+    
+2. 回到 [憑證、識別碼與設定檔]  中，按一下 [金鑰]  。
+
+   > [!NOTE]
+   > 如果您已為 **APNS** 設定金鑰，則可重複使用在建立之後所下載的 .p8 憑證。 若是如此，您可以忽略 **3** 到 **5** 的步驟。
+
+3. 按一下 [ **+** ] 按鈕 (或 [建立金鑰]  按鈕) 以建立新的金鑰。
+4. 提供適當的**金鑰名稱**值，然後勾選 [Apple Push Notifications service (APN)]  選項，接著在下一個畫面上，依序按一下 [繼續]  、[註冊]  。
+5. 按一下 [下載]  然後將 **.p8** 檔案 (前置為 *AuthKey_* ) 移至安全的本機目錄，然後按一下 [完成]  。
+
+   > [!NOTE] 
+   > 請務必將您的 .p8 檔案保留在安全的位置 (並儲存備份檔案)。 下載完您的金鑰之後，就無法再重新下載，因為伺服器複本已移除。
+  
+6. 在 [金鑰]  上，按一下剛才建立的金鑰 (如果選擇改用現有的金鑰，則按一下現有金鑰)。
+7. 請記下**金鑰識別碼**的值。
+8. 在所選擇的適當應用程式中開啟您的 .p8 憑證，例如 [**Visual Studio Code**](https://code.visualstudio.com)，然後記下金鑰值。 這是 **-----BEGIN PRIVATE KEY-----** 和 **-----END PRIVATE KEY-----** 之間的值。
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > 這是稍後將用來設定**通知中樞**的**權杖值**。 
+
+在這些步驟的最後，您應該具有下列資訊，以便稍後在[使用 APN 資訊設定通知中樞](#configure-your-notification-hub-with-apns-information)中使用：
+
+- **小組識別碼** (請參閱步驟 1)
+- **套件組合識別碼** (請參閱步驟 1)
+- **金鑰識別碼** (請參閱步驟 7)
+- **權杖值** 例如，.p8 金鑰值 (請參閱步驟8)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>建立應用程式的佈建設定檔
 
@@ -153,13 +202,18 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
 
 ## <a name="create-a-notification-hub"></a>建立通知中樞
 
-在本節中，您會建立通知中樞，並使用您先前建立的 .p12 推播憑證，設定以 APNs 進行驗證的機制。 如果您想要使用已經建立的通知中樞，可以跳至步驟 5。
+在本節中，您會建立一個通知中樞，並透過 .p12 推播憑證或權杖型驗證，使用 APN 來設定驗證。 如果您想要使用已經建立的通知中樞，可以跳至步驟 5。
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>使用 APNs 資訊設定您的通知中樞
 
-1. 在 [Notification Services]  下，選取 [Apple (APNS)]  。
+在 [Notification Services]  下，選取 [Apple (APNS)]  ，然後遵循先前在＜[建立通知中樞的憑證](#creating-a-certificate-for-notification-hubs)＞一節中選擇的方法進行適當的步驟。  
+
+> [!NOTE]
+> 只有在您想傳送推播通知給從市集購買應用程式的使用者時，才可使用 [生產]  的 [應用程式模式]  。
+
+### <a name="option-1-using-a-p12-push-certificate"></a>選項 1：使用 .p12 推送憑證
 
 1. 選取 [憑證]  。
 
@@ -169,10 +223,23 @@ Apple Push Notification Service (APNs) 使用憑證來驗證您的通知服務�
 
 1. 若有需要，請指定正確的密碼。
 
-1. 選取 [沙箱]  模式。 只有在您想傳送推播通知給從市集購買應用程式的使用者時，才可使用 [生產]  模式。
+1. 選取 [沙箱]  模式。
 
     ![在 Azure 入口網站中設定 APNS 憑證](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. 選取 [儲存]  。
+
+### <a name="option-2-using-token-based-authentication"></a>選項 2：使用權杖型驗證
+
+1. 選取**權杖**。
+1. 輸入您稍早取得的下列值：
+
+    - **金鑰識別碼**
+    - **套件組合識別碼**
+    - **小組識別碼**
+    - **權杖** 
+
+1. 選擇 [沙箱] 
+1. 選取 [儲存]  。 
 
 您現在已使用 APNs 來設定通知中樞。 您也擁有可用來註冊應用程式和傳送推播通知的連接字串。

@@ -1007,6 +1007,40 @@
         - name: 安全性概觀
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: 存取控制
+          items:
+            - name: 存取控制概觀
+              href: /azure/databricks/security/access-control/index
+              maintainContext: true
+            - name: 工作區存取控制
+              href: /azure/databricks/security/access-control/workspace-acl
+              maintainContext: true
+            - name: 叢集存取控制
+              href: /azure/databricks/security/access-control/cluster-acl
+              maintainContext: true
+            - name: 集區存取控制
+              href: /azure/databricks/security/access-control/pool-acl
+              maintainContext: true
+            - name: 作業存取控制
+              href: /azure/databricks/security/access-control/job-acl
+              maintainContext: true
+            - name: 資料表存取控制
+              items:
+                - name: 資料表存取控制概觀
+                  href: /azure/databricks/security/access-control/table-acls/index
+                  maintainContext: true
+                - name: 啟用叢集的資料表存取控制
+                  href: /azure/databricks/security/access-control/table-acls/table-acl
+                  maintainContext: true
+                - name: 資料物件權限
+                  href: /azure/databricks/security/access-control/table-acls/object-privileges
+                  maintainContext: true
+            - name: 秘密存取控制
+              href: /azure/databricks/security/access-control/secret-acl
+              maintainContext: true
+        - name: 使用 Azure Active Directory 認證向 Azure Data Lake Storage 進行驗證
+          href: /azure/databricks/security/credential-passthrough/adls-passthrough
+          maintainContext: true
         - name: 密碼
           items:
             - name: 使用秘密保護資料
@@ -1018,9 +1052,6 @@
             - name: 密碼
               href: /azure/databricks/security/secrets/secrets
               maintainContext: true
-            - name: 秘密存取控制
-              href: /azure/databricks/security/secrets/secret-acl
-              maintainContext: true
             - name: 祕密修訂
               href: /azure/databricks/security/secrets/redaction
               maintainContext: true
@@ -1028,11 +1059,11 @@
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
         - name: 加密叢集背景工作節點之間的流量
-          href: /azure/databricks/security/encrypt-otw
+          href: /azure/databricks/security/encryption/encrypt-otw
         - name: 為 Notebooks 啟用客戶管理的金鑰
-          href: /azure/databricks/security/customer-managed-key-notebook
+          href: /azure/databricks/security/keys/customer-managed-key-notebook
         - name: 為 DBFS 啟用客戶管理的金鑰
-          href: /azure/databricks/security/customer-managed-keys-dbfs
+          href: /azure/databricks/security/keys/customer-managed-keys-dbfs
     - name: 系統管理
       items:
         - name: 系統管理概觀
@@ -1080,30 +1111,22 @@
             - name: 存取控制概觀
               href: /azure/databricks/administration-guide/access-control/index
               maintainContext: true
-            - name: 叢集存取控制
-              href: /azure/databricks/administration-guide/access-control/cluster-acl
-              maintainContext: true
-            - name: 集區存取控制
-              href: /azure/databricks/administration-guide/access-control/pool-acl
-              maintainContext: true
-            - name: 作業存取控制
-              href: /azure/databricks/administration-guide/access-control/jobs-acl
-              maintainContext: true
-            - name: 資料表存取控制
-              items:
-                - name: 資料表存取控制概觀
-                  href: /azure/databricks/administration-guide/access-control/table-acls/index
-                  maintainContext: true
-                - name: 啟用資料表存取控制
-                  href: /azure/databricks/administration-guide/access-control/table-acls/table-acl
-                  maintainContext: true
-                - name: 設定資料物件的權限
-                  href: /azure/databricks/administration-guide/access-control/table-acls/object-privileges
-                  maintainContext: true
-            - name: 工作區存取控制
+            - name: 啟用工作區存取控制
               href: /azure/databricks/administration-guide/access-control/workspace-acl
               maintainContext: true
-            - name: 啟用以權杖為基礎的驗證
+            - name: 啟用叢集存取控制
+              href: /azure/databricks/administration-guide/access-control/cluster-acl
+              maintainContext: true
+            - name: 啟用集區存取控制
+              href: /azure/databricks/administration-guide/access-control/pool-acl
+              maintainContext: true
+            - name: 啟用作業存取控制
+              href: /azure/databricks/administration-guide/access-control/jobs-acl
+              maintainContext: true
+            - name: 啟用資料表存取控制
+              href: /azure/databricks/administration-guide/access-control/table-acl
+              maintainContext: true
+            - name: 啟用權杖型驗證
               href: /azure/databricks/administration-guide/access-control/tokens
               maintainContext: true
             - name: 條件式存取
@@ -1688,6 +1711,9 @@
           items:
             - name: 平台版本資訊
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020 年 4 月
+              href: /azure/databricks/release-notes/product/2020/april
               maintainContext: true
             - name: 2020 年 3 月
               href: /azure/databricks/release-notes/product/2020/march

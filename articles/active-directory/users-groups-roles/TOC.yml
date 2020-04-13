@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: 動態群組規則語法
               href: groups-dynamic-membership.md
+            - name: 驗證成員資格規則
+              href: groups-dynamic-rule-validation.md
             - name: 變更群組成員資格類型
               href: groups-change-type.md
     - name: 指派授權

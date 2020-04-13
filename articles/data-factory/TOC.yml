@@ -511,7 +511,7 @@
           href: data-flow-new-branch.md
         - name: 樞紐
           href: data-flow-pivot.md
-        - name: Select
+        - name: 選取
           href: data-flow-select.md
         - name: 接收
           href: data-flow-sink.md
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: 使用彈性資料庫作業清除 SSISDB 記錄
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: 使用 SSMS 移轉 SSIS 作業
+          href: how-to-migrate-ssis-job-ssms.md
     - name: 建立觸發程序
       items:
         - name: 建立事件型觸發程序
@@ -705,7 +707,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 要求功能
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 依區域的可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

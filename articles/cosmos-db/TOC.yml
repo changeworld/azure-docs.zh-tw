@@ -1037,6 +1037,8 @@
           href: monitor-cosmos-db.md
         - name: 監視伺服器端延遲
           href: monitor-server-side-latency.md
+        - name: 監視要求單位使用量
+          href: monitor-request-unit-usage.md
         - name: 使用診斷記錄進行監視
           href: cosmosdb-monitor-resource-logs.md
         - name: 稽核控制平面記錄
