@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985281"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273506"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 的安全性 - 概觀
 
@@ -66,8 +66,8 @@ ms.locfileid: "80985281"
 |全球複寫|Azure Cosmos DB 提供現成的全域散發，您只要按一下按鈕，就能將資料複寫至 Azure 的任何一個全球資料中心。 全球複寫可讓您擴大到全球規模，確保存取世界各地資料時的低延遲性。<br><br>在安全性方面，全域複寫可確保資料不受區域性失敗影響。<br><br>請參閱[將資料分散到全球](distribute-data-globally.md)以深入了解。|
 |區域性容錯移轉|如果您已將資料複寫至多個資料中心，萬一某個區域資料中心離線，Azure Cosmos DB 會自動轉移您的作業。 您可以使用已複寫資料的區域，建立容錯移轉區域的優先順序清單。 <br><br>請參閱 [Azure Cosmos DB 的區域性容錯移轉](high-availability.md)以深入了解。|
 |區域複寫|即使在單一資料中心內，Azure Cosmos DB 也會自動複寫資料來達到高可用性，還可讓您選擇[一致性層級](consistency-levels.md)。 此複製可確保所有單一區域帳戶和所有多區域帳戶的 99.99%[可用性 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)具有寬鬆的一致性,並且所有多區域資料庫帳戶的讀取可用性為 99.99%。|
-|自動化線上備份|Azure Cosmos 資料庫定期備份並存儲在地理冗餘存儲中。 <br><br>請參閱[使用 Azure Cosmos DB 進行自動線上備份及還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)以深入了解。|
-|還原已刪除的資料|自動化線上備份可用來復原您不小心刪除的資料，最多可還原意外發生後 30 天內的資料。 <br><br>使用[Azure Cosmos DB 在自動連線備份和還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)中瞭解更多資訊|
+|自動化線上備份|Azure Cosmos 資料庫定期備份並存儲在地理冗餘存儲中。 <br><br>請參閱[使用 Azure Cosmos DB 進行自動線上備份及還原](online-backup-and-restore.md)以深入了解。|
+|還原已刪除的資料|自動化線上備份可用來復原您不小心刪除的資料，最多可還原意外發生後 30 天內的資料。 <br><br>使用[Azure Cosmos DB 在自動連線備份和還原](online-backup-and-restore.md)中瞭解更多資訊|
 |保護並隔離機密資料|新功能中所列的區域中的所有資料均已加密靜止。<br><br>個人資料和其他機密資料可隔離至特定容器來進行讀寫，或限制為只對特定使用者提供唯讀存取權。|
 |監視攻擊|您可以使用[稽核記錄和活動記錄](logging.md)，以監視帳戶的正常和異常活動。 您可以檢視資源上執行的作業、誰起始作業、作業何時發生、作業的狀態等等，如本表格之後的螢幕擷取畫面所示。|
 |回應攻擊|一旦您連絡 Azure 支援來報告潛在的攻擊，就會展開 5 步驟的事件回應程序。 5 步驟程序的目標是在偵測到問題並展開調查之後，儘快恢復正常的服務安全性和作業。<br><br>請參閱[雲端的 Microsoft Azure 安全性回應](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)以深入了解。|

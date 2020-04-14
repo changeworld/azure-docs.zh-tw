@@ -3,7 +3,7 @@ title: 在 Azure Linux 虛擬機器上設定 Oracle ASM | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle ASM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: a27d4c1712e9d65afcfc8792eac88be468829f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 88fd740cad74b12860b6d367c501ba84635f9592
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536372"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263160"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上設定 Oracle ASM  
 
@@ -33,7 +33,7 @@ Azure 虛擬機器提供完全可設定且彈性的計算環境。 本教學課�
 > * 建立受 ASM 管理的 Oracle DB
 
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="prepare-the-environment"></a>準備環境
 
@@ -210,7 +210,7 @@ ssh <publicIpAddress>
    fdisk /dev/sdc
    ```
    
-   使用上面提供的答案，該命令的`fdisk`輸出應如下所示：
+   使用上面提供的答案,該命令的`fdisk`輸出應如下所示:
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -246,7 +246,7 @@ ssh <publicIpAddress>
    Syncing disks.
    ```
 
-4. `fdisk`對`/dev/sdd`的 重複上述`/dev/sde`命令`/dev/sdf`， 和 。
+4. `fdisk`對`/dev/sdd`的重複的`/dev/sde`指令`/dev/sdf`, 與 。
 
 5. 檢查磁碟組態︰
 
@@ -427,7 +427,7 @@ ssh <publicIpAddress>
    > 金鑰中必須包含字串 `ssh-rsa`。 此外，金鑰的內容必須是單行文字。
    >  
 
-6. 在用戶端系統上，啟動 PuTTY。 在 **"類別"** 窗格中，**轉到連接** > **SSH** > **Auth**。在**用於身份驗證的專用金鑰檔中**，流覽到之前生成的金鑰。
+6. 在用戶端系統上，啟動 PuTTY。 在 **「類別」** 窗格中,**跳到連接** > **SSH** > **Auth**。在**用於身份驗證的專用金鑰檔中**,流覽到之前生成的密鑰。
 
    ![SSH 驗證選項的螢幕擷取畫面](./media/oracle-asm/setprivatekey.png)
 

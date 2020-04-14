@@ -1,5 +1,5 @@
 ---
-title: 獲取基於 Microsoft Azure 的 VM 映射的共用訪問簽名 URI |Azure 應用商店
+title: 取得基於 Microsoft Azure 的 VM 映像的共享存取簽名 URI |Azure 應用商店
 description: 說明如何取得 VM 映像的共用存取簽章 (SAS) URI。
 author: dsindona
 ms.service: marketplace
@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277798"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273846"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>取得 VM 映像的共用存取簽章 URI
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照獲取 VM[映像的共享訪問簽名 URI](https://aka.ms/GetSASURI)中的說明進行操作,以管理遷移的優惠。
 
 在發行過程中，您必須為每個與 SKU 相關聯的虛擬硬碟 (VHD) 提供統一資源識別項 (URI)。 Microsoft 需要在認證程序期間存取這些 VHD。 本文說明如何為每個 VHD 產生共用存取簽章 (SAS) URI。 請在 Cloud Partner 入口網站的 [SKU]**** 索引標籤中，輸入此 URI。
 
@@ -120,7 +123,7 @@ ms.locfileid: "80277798"
 
 請使用下列檢查清單，檢閱並驗證每個產生 SAS URI。  驗證：
 
-- URI 的形式為： `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` +`<sas-connection-string>`
+- URI 的形式為`<blob-service-endpoint-url>`+`/vhds/`+`<vhd-name>?`+:`<sas-connection-string>`
 - URI 包含您的 VHD 映像檔案名稱，包括檔案名稱的副檔名「.vhd」。
 - 在 URI 的中間，出現 `sp=rl`。 此字串表示已指定 `Read` 和 `List` 存取權。
 - 之後，也會出現 `sr=c`。 此字串表示已指定容器層級存取權。

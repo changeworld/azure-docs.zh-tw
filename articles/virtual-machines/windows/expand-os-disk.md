@@ -1,10 +1,10 @@
 ---
-title: 在 Azure 中擴展 Windows VM 的操作系統磁碟機
+title: 在 Azure 中延伸 Windows VM 的作業系統驅動器
 description: 使用 Resource Manager 部署模型中的 Azure PowerShell，擴充虛擬機器的 OS 磁碟機大小。
 services: virtual-machines-windows
 documentationcenter: ''
-author: kirpasingh
-manager: roshar
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: kirpas
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208438b5bc600fa09584ca34c72b1981d9eda399
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033507"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261392"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
 
@@ -31,7 +31,7 @@ ms.locfileid: "74033507"
 
 
 > [!IMPORTANT]
-> 調整 Azure 虛擬機器的 OS 磁片大小需要處理虛擬機器。
+> 調整 Azure 虛擬機器的 OS 磁碟大小需要處理虛擬機器。
 >
 > 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
 > 
@@ -135,7 +135,7 @@ ms.locfileid: "74033507"
 以下為受控和非受控磁碟的完整指令碼，供您參考：
 
 
-**託管磁片**
+**託管磁碟**
 
 ```Powershell
 Connect-AzAccount
@@ -176,7 +176,7 @@ $disk.DiskSizeGB = 1023
 ```
 
 
-**非託管磁片**
+**非託管磁碟**
 
 ```powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
@@ -193,7 +193,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 (Get-AzDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
 
-**非託管磁片**
+**非託管磁碟**
 
 ```powershell
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023

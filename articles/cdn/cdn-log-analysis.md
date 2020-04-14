@@ -3,7 +3,7 @@ title: 分析 Azure CDN 使用模式 | Microsoft Docs
 description: 本文說明適用於 Azure CDN 產品的不同分析報告類型。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
-ms.author: magattus
-ms.openlocfilehash: 238dea3c136daf13d3db7be41bed103a0cbf7636
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c78dff9f5258023d90100c70bd244e8e0d016d6f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593673"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253606"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
 
@@ -31,11 +31,11 @@ ms.locfileid: "67593673"
 
 ## <a name="verizon-core-reports"></a>Verizon 核心報告
 
-身為具有**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**設定檔的 Azure CDN 使用者，您可以在 Verizon 補充入口網站中檢視 Verizon 核心報告。 Verizon 核心報告可通過 Azure 門戶的 **"管理"** 選項訪問，並提供各種圖形和視圖。 如需詳細資訊，請參閱 [Verizon 核心報告](cdn-analyze-usage-patterns.md)。
+身為具有**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**設定檔的 Azure CDN 使用者，您可以在 Verizon 補充入口網站中檢視 Verizon 核心報告。 Verizon 核心報告可透過 Azure 入口的 **「管理」** 選項存取,並提供各種圖形和檢視。 如需詳細資訊，請參閱 [Verizon 核心報告](cdn-analyze-usage-patterns.md)。
 
 ## <a name="verizon-custom-reports"></a>Verizon 自訂報告
 
-身為具有**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**設定檔的 Azure CDN 使用者，您可以在 Verizon 補充入口網站中檢視 Verizon 自訂報告。 Verizon 自訂報表可通過 Azure 門戶的 **"管理**"選項進行訪問。 [Verizon 自訂報告] 頁面會針對屬於 Azure CDN 設定檔的每個邊緣 CName 顯示點擊次數或傳輸的資料。 此資料可依照任何一段時間的 HTTP 回應碼或快取狀態進行分組。 如需詳細資訊，請參閱 [Verizon 自訂報告](cdn-verizon-custom-reports.md)。
+身為具有**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**設定檔的 Azure CDN 使用者，您可以在 Verizon 補充入口網站中檢視 Verizon 自訂報告。 Verizon 自定義報表可透過 Azure 入口的 **「管理**」選項進行存取。 [Verizon 自訂報告] 頁面會針對屬於 Azure CDN 設定檔的每個邊緣 CName 顯示點擊次數或傳輸的資料。 此資料可依照任何一段時間的 HTTP 回應碼或快取狀態進行分組。 如需詳細資訊，請參閱 [Verizon 自訂報告](cdn-verizon-custom-reports.md)。
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>來自 Verizon 的進階 Azure CDN 報告
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632557"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263466"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在適用於 MySQL 的 Azure 資料庫伺服器中建立使用者
 
@@ -92,4 +92,4 @@ ms.locfileid: "80632557"
 
 針對新使用者機器的 IP 位址開啟防火牆，讓使用者能夠連線：[使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md)。
 
-如需有關使用者帳戶管理的詳細資訊，請參閱 MySQL 產品文件中的[使用者帳戶管理](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html)、[GRANT 語法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[特殊權限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。
+如需有關使用者帳戶管理的詳細資訊，請參閱 MySQL 產品文件中的[使用者帳戶管理](https://dev.mysql.com/doc/refman/5.7/en/access-control.html)、[GRANT 語法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[特殊權限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277866"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273914"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>虛擬硬碟部署範本 
+# <a name="virtual-hard-disk-deployment-template"></a>虛擬硬碟部署範本
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Azure VM 映像認證](https://aks.ms/CertifyVMimage)中的說明來管理遷移的優惠。
 
 下列 Azure Resource Manager 範本定義從本機虛擬硬碟 (VHD) 建立的新 Azure 虛擬機器 (VM) 執行個體。  此範本用於[從使用者 VHD 部署 Azure VM](./cpp-deploy-vm-user-image.md) 一文中。 
 

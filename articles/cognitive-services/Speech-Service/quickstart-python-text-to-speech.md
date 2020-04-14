@@ -1,32 +1,32 @@
 ---
 title: 將文字轉換為語音，Python - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將學習如何使用 Python 和文本到語音 REST API 將文本轉換為語音。 本指南中所包含的範例文字已建構為語音合成標記語言 (SSML)。 這可讓您選擇語音回應的語音和語言。
+description: 在本文中,您將學習如何使用 Python 和文字到語音 REST API 將文字轉換為語音。 本指南中所包含的範例文字已建構為語音合成標記語言 (SSML)。 這可讓您選擇語音回應的語音和語言。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 04/13/2020
 ms.author: dapine
-ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ea3f63bea0701dcd0f4b38f6584816d9a1bfbc7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365787"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258421"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 將文字轉換為語音
 
-在本文中，您將學習如何使用 Python 和文本到語音轉換 REST API 將文本轉換為語音。 本指南中的要求本文已結構化為[語音合成標記語言 (SSML)](speech-synthesis-markup.md)，這可讓您選擇回應的語音和語言。
+在本文中,您將學習如何使用 Python 和文字到語音轉換 REST API 將文字轉換為語音。 本指南中的要求本文已結構化為[語音合成標記語言 (SSML)](speech-synthesis-markup.md)，這可讓您選擇回應的語音和語言。
 
 本文需要具有語音[服務資源的 Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Python 2.7.x 或 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)，或您最愛的文字編輯器
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">視覺工作室<span class="docon docon-navigate-external x-hidden-focus"></span></a>,<a href="https://code.visualstudio.com/download" target="_blank">視覺<span class="docon docon-navigate-external x-hidden-focus"></span>工作室碼</a>, 或您最喜愛的文字編輯器
 * 適用於語音服務的 Azure 訂用帳戶金鑰
 
 ## <a name="create-a-project-and-import-required-modules"></a>建立專案，並匯入所需的模組

@@ -3,7 +3,7 @@ title: Azure 診斷記錄 | Microsoft Docs
 description: 客戶可以啟用 Azure CDN 的記錄分析功能。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594216"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254796"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診斷記錄
 
@@ -27,7 +27,7 @@ ms.locfileid: "67594216"
 
  - Azure 儲存體帳戶
  - Azure 事件中心
- - [日誌分析工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Log Analytics 工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 這項功能適用於所有定價層的 CDN 端點。 
 
@@ -35,7 +35,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 - 匯出資料至 Blob 儲存體、匯出至 CSV，以及在 Excel 中產生圖表。
 - 匯出資料至事件中樞，並將資料與其他 Azure 服務相互關聯。
-- 將資料匯出到 Azure 監視器日誌並在您自己的日誌分析工作區中查看資料
+- 將資料匯出到 Azure 監視器紀錄, 並在您自己的紀錄分析工作區中檢視資料
 
 下圖說明典型的 CDN 核心分析資料檢視。
 
@@ -51,7 +51,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 請遵循下列步驟，使用 CDN 核心分析來啟用記錄功能：
 
-登錄到 Azure[門戶](https://portal.azure.com)。 如果您尚未針對工作流程啟用 CDN，請先[建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)，然後再繼續。
+登入 [Azure 入口網站](https://portal.azure.com)。 如果您尚未針對工作流程啟用 CDN，請先[建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)，然後再繼續。
 
 1. 在 Azure 入口網站中，瀏覽到 **CDN 設定檔**。
 
@@ -77,7 +77,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. 選擇**存儲帳戶**。
+3. 選擇**儲存帳號**。
 
     [選取儲存體帳戶]**** 頁面隨即出現。
 
@@ -87,15 +87,15 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 5. 當您完成診斷記錄設定之後，選取 [儲存]****。
 
-### <a name="logging-with-azure-monitor"></a>使用 Azure 監視器進行日誌記錄
+### <a name="logging-with-azure-monitor"></a>使用 Azure 監視器進行紀錄記錄
 
-要使用 Azure 監視器存儲日誌，請按照以下步驟操作：
+要使用 Azure 監視器儲存紀錄,請按照以下步驟操作:
 
 1. 從 [診斷記錄]**** 頁面中，選取 [傳送至 Log Analytics]****。 
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. 選擇 **"配置**以配置 Azure 監視器日誌記錄"。 
+2. 選擇 **「設定**以設定 Azure 監視器紀錄記錄」。 
 
    隨即會顯示 [Log Analytics 工作區]**** 頁面。
 
@@ -135,7 +135,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    您的 Log Analytics 工作區現在已經可以記錄資料。 為了使用這些資料，必須使用本文後面介紹的[Azure 監視器日誌解決方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)。
+    您的 Log Analytics 工作區現在已經可以記錄資料。 為了使用這些資料,必須使用本文後面介紹的[Azure 監視器日誌解決方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)。
 
 如需有關記錄資料延遲的詳細資訊，請參閱[記錄資料延遲](#log-data-delays)。
 
@@ -172,7 +172,7 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管
 首先您需要一個可存取儲存體帳戶中內容的工具，才能夠存取 Azure 儲存體帳戶的核心分析資料。 雖然市場中有數種工具可使用，但我們建議使用 Microsoft Azure 儲存體總管。 若要下載此工具，請參閱 [Azure 儲存體總管](https://storageexplorer.com/)。 下載並安裝軟體後，請將其設定為使用同一個已設定為 CDN 診斷記錄目的地的 Azure 儲存體帳戶。
 
-1.  打開**微軟 Azure 存儲資源管理器**
+1.  開啟**Microsoft Azure 資源管理員**
 2.  找到儲存體帳戶
 3.  展開此儲存體帳戶下方的 [Blob 容器]**** 節點。
 4.  選取名為 *insights-logs-coreanalytics* 的容器。
@@ -206,16 +206,16 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 以下為使用此工具的方式：
 
-1.  訪問 GitHub 連結：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  存取 GitHub 連結:[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下載程式碼。
 3.  依照指示編譯與設定。
 4.  執行工具。
 5.  產生的 CSV 檔案會以簡單的平面階層顯示分析資料。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>從 Log Analytics 工作區取用診斷記錄
-Azure 監視器是一種 Azure 服務，用於監視雲和本地環境，以保持其可用性和性能。 它會收集您的雲端和內部部署環境中的資源所產生的資料，以及從其他監視工具提供橫跨多個來源的分析。 
+Azure 監視器是一種 Azure 服務,用於監視雲和本地環境,以保持其可用性和性能。 它會收集您的雲端和內部部署環境中的資源所產生的資料，以及從其他監視工具提供橫跨多個來源的分析。 
 
-要使用 Azure 監視器，必須[啟用登錄到](#enable-logging-with-azure-storage)Azure 日誌分析工作區，本文前面將對此進行討論。
+要使用 Azure 監視器,必須[啟用登錄到](#enable-logging-with-azure-storage)Azure 日誌分析工作區,本文前面將對此進行討論。
 
 ### <a name="using-the-log-analytics-workspace"></a>使用 Log Analytics 工作區
 
@@ -227,11 +227,11 @@ Azure 監視器是一種 Azure 服務，用於監視雲和本地環境，以保�
 
 您可以使用管理解決方案，以各種方式顯示資料。 您可以從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) 取得管理解決方案。
 
-您可以通過選擇每個解決方案底部的"**立即獲取解決方案"** 連結，從 Azure 應用商店安裝監視解決方案。
+您可以通過選擇每個解決方案底部的「**立即獲取解決方案」** 連結,從 Azure 應用商店安裝監視解決方案。
 
-### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>添加 Azure 監視器 CDN 監視解決方案
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>新增 Azure 監視器 CDN 監視解決方案
 
-按照以下步驟添加 Azure 監視器監視解決方案：
+按照以下步驟添加 Azure 監視器監視解決方案:
 
 1.   使用 Azure 訂用帳戶登入 Azure 入口網站，然後前往您的儀表板。
     ![Azure 儀表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -443,7 +443,7 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Azure 診斷日誌](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure 診斷紀錄](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [分析 Azure CDN 使用模式](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
 * [Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)

@@ -3,7 +3,7 @@ title: Azure CDN 規則引擎的 X-EC-Debug HTTP 標頭 | Microsoft Docs
 description: X-EC-Debug 快取要求標頭會提供與要求的資產所套用的快取原則有關的其他資訊。 這些標頭是 Verizon 特有的標頭。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: magattus
-ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593830"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260491"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 X-EC-Debug HTTP 標頭
 偵錯快取要求標頭 `X-EC-Debug` 會提供與要求的資產所套用的快取原則有關的其他資訊。 這些標頭是**來自 Verizon 的 Azure CDN 進階**產品特有的標頭。
@@ -74,7 +74,7 @@ X-EC-Debug 標頭會以下列格式報告快取狀態碼資訊：
 
 - 平台：表示在其上要求內容的平台。 下列程式碼適用於此欄位：
 
-    程式碼  | Platform
+    程式碼  | 平台
     ------| --------
     ECAcc | HTTP Large
     ECS   | HTTP Small
@@ -151,7 +151,7 @@ UNKNOWN | 指出伺服器無法評估要求的資產是否可快取。 此狀態
 
 - MATimePeriod：將最大存留期值 (也就是 MASeconds) 轉換為採用較大單位 (例如天) 的近似對等值。 
 
-- UnixTime：指示在 Unix 時間（也稱為 POSIX 時間或 Unix 紀元）中請求內容的緩存時間戳記。 快取時間戳記可指出資產的 TTL 開始進行計算的日期/時間。 
+- UnixTime:指示在 Unix 時間(也稱為 POSIX 時間或 Unix 紀元)中請求內容的緩存時間戳。 快取時間戳記可指出資產的 TTL 開始進行計算的日期/時間。 
 
     如果原始伺服器未使用第三方 HTTP 快取伺服器，或該伺服器未傳回 Age 回應標頭，則在擷取或重新驗證資產時，快取時間戳記將一律為日期/時間。 否則，POP 伺服器將使用 [存留期] 欄位來計算資產的 TTL，如下所示：Retrieval/RevalidateDateTime - Age。
 

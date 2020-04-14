@@ -5,27 +5,29 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: a1f15e269481b9706f81fd02f19effc9ad37df32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0413bc71c113bf1eef9f761dbeed4c0d0afe735c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280485"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255952"
 ---
 <a name="retrieve-offers"></a>擷取供應項目
 ===============
+
+> [!NOTE]
+> 雲合作夥伴門戶 API 與合作夥伴中心集成,在您的產品/服務遷移到合作夥伴中心後將繼續工作。 集成引入了小更改。 查看[雲合作夥伴門戶 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改,以確保代碼在遷移到合作夥伴中心後繼續工作。
 
 在發行者命名空間下擷取摘述的供應項目清單。
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-| **名稱**         |  **描述**                         |  **資料類型** |
+| **名稱**         |  **說明**                         |  **資料類型** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | 發行者識別碼，例如 `contoso` |   String    |
 |  api-version     | API 的最新版本                    |    Date        |
@@ -35,7 +37,7 @@ ms.locfileid: "80280485"
 <a name="header"></a>頁首
 ------
 
-|  **名稱**        |         **價值**       |
+|  **名稱**        |         **ReplTest1**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  授權   | `Bearer YOUR_TOKEN`     |
@@ -66,7 +68,7 @@ ms.locfileid: "80280485"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**       |       **描述**                                                                                                  |
+|  **名稱**       |       **說明**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | 指出供應項目類型                                                                                           |
 |  publisherId    | 可唯一識別發行者的識別碼                                                                      |
@@ -80,7 +82,7 @@ ms.locfileid: "80280485"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **代碼**  |  **描述**                                                                                                   |
+| **程式碼**  |  **說明**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功處理要求，且發行者下的所有供應項目已傳回給用戶端。  |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                                    |
@@ -91,7 +93,7 @@ ms.locfileid: "80280485"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    | **描述**                                  |
+|  **名稱**                    | **說明**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                  |
 |  NotStarted                  | 供應項目是新的，但未啟動。                 |

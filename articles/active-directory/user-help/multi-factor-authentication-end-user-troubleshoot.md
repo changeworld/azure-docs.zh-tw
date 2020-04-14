@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632903"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271687"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙重驗證和您的工作或學校帳戶的常見問題
 
@@ -65,6 +65,7 @@ ms.locfileid: "80632903"
 關閉 請勿打擾 | 請確保您尚未打開行動裝置的 **「請勿打擾**」功能。 開啟此功能後,不允許通知在行動裝置上提醒您。 有關如何關閉此功能的說明,請參閱行動裝置手冊。
 取消封鎖電話號碼 | 在美國,來自 Microsoft 的語音呼叫來自以下號碼:+1 (866) 539 4191、+1 (855) 330 8653 和 +1 (877) 668 6536。
 檢查電池相關設定 | 從表面上看,這一點似乎有點奇怪,但如果您設置了電池優化,以阻止使用較少的應用在後台保持活動狀態,則通知系統很可能受到影響。 要嘗試解決此問題,請關閉身份驗證應用和消息應用的電池優化,然後嘗試再次登錄到您的帳戶。
+關閉第三方安全應用 | 如果您有一個保護簡訊或電話呼叫以盡量減少未知呼叫者的應用,則可能會阻止接收驗證碼。 嘗試禁用手機上的任何第三方安全應用,然後請求發送另一個驗證碼。
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>系統不會提示我提供第二個驗證資訊
 

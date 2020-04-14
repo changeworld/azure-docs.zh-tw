@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755138"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257142"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 中使用 Linux 資料科學虛擬機器的數據科學
 
@@ -29,7 +29,7 @@ ms.locfileid: "80755138"
 在使用 Linux DSVM 之前,必須具備以下先決條件:
 
 * **Azure 訂閱**。 要取得 Azure 訂閱,請參閱[今天建立免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* [**Linux資料科學虛擬機器**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。 有關預先介面的虛擬機器的資訊,請參閱預先用 Linux[資料科學虛擬機器](linux-dsvm-intro.md)。
+* [**Linux資料科學虛擬機器**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 有關預先介面的虛擬機器的資訊,請參閱預先用 Linux[資料科學虛擬機器](linux-dsvm-intro.md)。
 * [**X2Go**](https://wiki.x2go.org/doku.php)安裝在您的電腦上,並帶有打開的 XFCE 工作階段。 有關詳細資訊,請參閱[安裝和設定 X2Go 用戶端](linux-dsvm-intro.md#x2go)。
 * 為了更流暢的滾動體驗,在 DSVM 的 Firefox`gfx.xrender.enabled`Web`about:config`瀏覽器中 ,在 中切換標誌。 [深入了解](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 還要考慮設定為`mousewheel.enable_pixel_scrolling``False`。 [深入了解](https://support.mozilla.org/questions/981140)。
 * **Azure 機器學習帳戶**。 如果還沒有,請在[Azure 機器學習主頁](https://azure.microsoft.com/free/services/machine-learning//)上註冊新帳戶。
@@ -508,7 +508,7 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 1. 輸入您的使用者名稱和密碼。
 1. 選取 [確定]  。
 1. 若要開啟 [連線]**** 視窗，請按兩下**垃圾郵件資料庫**別名。
-1. 選擇**連接**"連接"
+1. 選取 [連接]  。
 
 若要執行一些查詢︰
 

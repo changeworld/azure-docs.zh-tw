@@ -1,19 +1,19 @@
 ---
 title: Azure 虛擬機器擴展集的網路
-description: 如何為 Azure 虛擬機器縮放集配置一些更高級的網路屬性。
-author: mayanknayar
+description: 如何為 Azure 虛擬機器縮放集配置一些更進階的網路屬性。
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
-ms.author: manayar
-ms.openlocfilehash: d0b7288d5232e296a36708a08ea2ad9f8df5ee1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531051"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270514"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -68,7 +68,7 @@ az vmss create \
 ```
 
 >[!NOTE]
-> 創建比例集後，無法為負載等化器的運行狀況探測使用的負載平衡規則修改後端埠。 要更改埠，可以通過更新 Azure 虛擬機器縮放集、更新埠然後再次配置運行狀況探測來刪除運行狀況探測。 
+> 創建比例集後,無法為負載均衡器的運行狀況探測使用的負載平衡規則修改後埠。 要更改埠,可以通過更新 Azure 虛擬機縮放集、更新埠然後再次配置運行狀況探測來刪除運行狀況探測。 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>建立參考應用程式閘道的擴展集
 若要建立使用應用程式閘道的擴展集，請和此 ARM 範本設定中一樣，參考擴展集 ipConfigurations 區段中的應用程式閘道後端位址集區：

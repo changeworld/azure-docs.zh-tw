@@ -3,7 +3,7 @@ title: 在 Azure CDN 中壓縮檔案以改善效能 | Microsoft Docs
 description: 了解如何藉由在 Azure CDN 中壓縮檔案來改善檔案傳輸速度並增加頁面載入效能。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: magattus
-ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593792"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253759"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>在 Azure CDN 中壓縮檔案以改善效能
 檔案壓縮是簡單且有效的方法，可提升檔案傳輸速度，並且在檔案從伺服器傳送出去之前先減少其大小，以增加頁面載入效能。 檔案壓縮可降低頻寬成本，並提供回應速度更快的體驗給使用者。
@@ -27,7 +27,7 @@ ms.locfileid: "67593792"
 有兩種方式可啟用檔案壓縮︰
 
 - 在原始伺服器上啟用壓縮。 在此情況下，Azure CDN 會傳遞壓縮的檔案，遞交給提出要求的用戶端。
-- 直接在 CDN POP 伺服器上啟用*壓縮（動態壓縮*）。 在此情況下，CDN 會壓縮檔案並將其提供給終端使用者，即使原始伺服器未壓縮這些檔案也是如此。
+- 直接在 CDN POP 伺服器上啟用*壓縮(動態壓縮*)。 在此情況下，CDN 會壓縮檔案並將其提供給終端使用者，即使原始伺服器未壓縮這些檔案也是如此。
 
 > [!IMPORTANT]
 > Azure CDN 組態變更會需要一些時間才能傳播至整個網路： 
@@ -139,7 +139,7 @@ ms.locfileid: "67593792"
 下列資料表描述每個案例的 Azure CDN 壓縮行為：
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>已停用壓縮或檔案不適合進行壓縮
-| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備&nbsp;&nbsp;&nbsp;注&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備&nbsp;&nbsp;&nbsp;註&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed | |
 | Compressed |未壓縮 |未壓縮 | |

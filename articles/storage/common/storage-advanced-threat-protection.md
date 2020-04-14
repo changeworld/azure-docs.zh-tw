@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422789"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251685"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>為 Azure 儲存設定進階威脅保護
 
@@ -23,10 +23,16 @@ Azure 儲存的先進威脅保護提供額外的安全智慧式,用於偵測存�
 
 當活動異常發生時,將觸發安全警報。 這些安全警報與 Azure[安全中心](https://azure.microsoft.com/services/security-center/)集成,並且也通過電子郵件發送給訂閱管理員,其中詳細介紹了可疑活動,並就如何調查和修復威脅提出了建議。
 
-> [!NOTE]
-> Azure 儲存的進階威脅保護目前僅適用於 Blob 儲存。 此服務在美國政府雲中可用,但沒有其他主權或 Azure 政府雲區域。 有關定價詳細資訊(包括 30 天免費試用版),請參閱[Azure 安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+服務引入讀取、寫入和刪除到 Blob 儲存的請求以進行威脅檢測的診斷日誌。 要調查來自高級威脅防護的警報,可以使用存儲分析日誌記錄查看相關的存儲活動。 有關詳細資訊,請參閱在[Azure 門戶中](storage-monitor-storage-account.md#configure-logging)**設定紀錄紀錄**。
 
-Azure 儲存的進階威脅保護可引入讀取、寫入和刪除到 Blob 儲存的請求以偵測威脅的診斷日誌。 要調查來自高級威脅防護的警報,可以使用存儲分析日誌記錄查看相關的存儲活動。 有關詳細資訊,請參閱在[Azure 門戶中](storage-monitor-storage-account.md#configure-logging)**設定紀錄紀錄**。
+## <a name="availability"></a>可用性
+
+Azure 儲存的進階威脅保護目前僅適用於 Blob[儲存](https://azure.microsoft.com/services/storage/blobs/)。 
+
+此服務在所有公共雲和美國政府雲中都可用,但沒有其他主權或 Azure 政府雲區域。
+
+有關定價詳細資訊(包括 30 天免費試用版),請參閱[Azure 安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+
 
 ## <a name="set-up-advanced-threat-protection"></a>設置高級威脅防護
 
@@ -42,7 +48,7 @@ Azure 儲存的進階威脅保護可引入讀取、寫入和刪除到 Blob 儲�
 
     ![開啟 Azure 儲存體進階威脅防護](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="azure-security-center"></a>[Azure 安全中心](#tab/azure-security-center)
+### <a name="azure-security-center"></a>[Azure 資訊安全中心](#tab/azure-security-center)
 
 訂閱 Azure 安全中心中的標準層時,所有存儲帳戶上會自動設置高級威脅保護。 您可以在特定訂閱下為儲存帳戶啟用或禁用進階威脅保護,如下所示:
 
@@ -56,9 +62,9 @@ Azure 儲存的進階威脅保護可引入讀取、寫入和刪除到 Blob 儲�
 1. 在「**按資源類型選擇定價層」** 部分中,在 **「存儲帳戶**」 行中,按一下「**已啟用**」 或 **「已禁用**」 。
 
     ![在安全中心啟用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 按一下 [儲存]****。
+1. 按一下 [檔案]  。
 
-### <a name="template"></a>[樣本](#tab/template)
+### <a name="template"></a>[範本](#tab/template)
 
 使用 Azure 資源管理器樣本部署啟用了進階威脅保護的 Azure 儲存帳戶。 有關詳細資訊,請參閱[具有進階威脅保護的儲存帳戶](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 

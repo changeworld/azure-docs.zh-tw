@@ -3,12 +3,12 @@ title: 標記資源支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982322"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255021"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標記為**支援標記**的列指示資源類型是否具有標記的屬性。 成本**報表中標記為"標記"的**列指示該資源類型是否將標記傳遞到成本報表。 您可以在[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)以及[Azure 計費發票和每日使用方式數據](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中按標記查看成本。
@@ -96,6 +96,7 @@ ms.locfileid: "80982322"
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [微軟.海德拉](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
+> - [微軟.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
@@ -1201,6 +1202,33 @@ ms.locfileid: "80982322"
 > | ------------- | ----------- | ----------- |
 > | jobs | 是 | 是 |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 在成本報告中標記 |
+> | ------------- | ----------- | ----------- |
+> | actionGroups | 是 | 是 |
+> | activityLogAlerts | 是 | 是 |
+> | alertrules | 是 | 是 |
+> | autoscalesettings | 是 | 是 |
+> | components | 是 | 是 |
+> | 元件/連結的儲存帳戶 | 否 | 否 |
+> | 元件 /主動偵測設定 | 否 | 否 |
+> | diagnosticSettings | 否 | 否 |
+> | 來賓診斷設定 | 是 | 是 |
+> | 來賓診斷設置協會 | 是 | 是 |
+> | logprofiles | 是 | 是 |
+> | metricAlerts | 是 | 是 |
+> | 私有連結範圍 | 是 | 是 |
+> | 私有連結範圍/ 專用端點連接 | 否 | 否 |
+> | 私有連結範圍 / 範圍資源 | 否 | 否 |
+> | 查詢包 | 是 | 是 |
+> | 查詢包/查詢 | 否 | 否 |
+> | 排程查詢規則 | 是 | 是 |
+> | webtests | 是 | 是 |
+> | workbooks | 是 | 是 |
+> | 工作簿範本 | 是 | 是 |
+
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
@@ -1454,7 +1482,7 @@ ms.locfileid: "80982322"
 > | applicationSecurityGroups | 是 | 是 |
 > | azureFirewallFqdnTags | 否 | 否 |
 > | azureFirewalls | 是 | 否 |
-> | 堡壘主機 | 是 | 是 |
+> | 堡壘主機 | 是 | 否 |
 > | bgpServiceCommunities | 否 | 否 |
 > | connections | 是 | 是 |
 > | ddosCustomPolicies | 是 | 是 |
@@ -1484,14 +1512,14 @@ ms.locfileid: "80982322"
 > | frontdoorWebApplicationFirewallPolicies | 是,但有限(見[下面的註釋](#frontdoor)) | 是 |
 > | getDnsResourceReference | 否 | 否 |
 > | internalNotify | 否 | 否 |
-> | loadBalancers | 是 | 否 |
+> | loadBalancers | 是 | 是 |
 > | localNetworkGateways | 是 | 是 |
 > | natGateways | 是 | 是 |
 > | networkIntentPolicies | 是 | 是 |
 > | networkInterfaces | 是 | 是 |
 > | networkProfiles | 是 | 是 |
 > | networkSecurityGroups | 是 | 是 |
-> | networkWatchers | 是 | 否 |
+> | networkWatchers | 是 | 是 |
 > | 網路觀察器/ 連接監視器 | 是 | 否 |
 > | 網路觀察器/ 串流紀錄 | 否 | 否 |
 > | 網路觀察家/鏡頭 | 是 | 否 |
@@ -1524,8 +1552,8 @@ ms.locfileid: "80982322"
 > | virtualNetworkGateways | 是 | 是 |
 > | virtualNetworks | 是 | 是 |
 > | virtualNetworkTaps | 是 | 是 |
-> | virtualWans | 是 | 是 |
-> | vpnGateways | 是 | 否 |
+> | virtualWans | 是 | 否 |
+> | vpnGateways | 是 | 是 |
 > | vpnSites | 是 | 是 |
 > | webApplicationFirewallPolicies | 是 | 是 |
 
@@ -1821,7 +1849,7 @@ ms.locfileid: "80982322"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 在成本報告中標記 |
 > | ------------- | ----------- | ----------- |
-> | 命名空間 | 是 | 否 |
+> | 命名空間 | 是 | 是 |
 > | 命名空間/授權規則 | 否 | 否 |
 > | 命名空間/災難修復設定 | 否 | 否 |
 > | 命名空間/事件網格篩選器 | 否 | 否 |

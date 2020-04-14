@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 0882eaa8b54966c7a804cf78a3928771b238e056
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80884999"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271296"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排除 Azure 到 Azure VM 複製錯誤
 
@@ -169,11 +169,11 @@ Site Recovery configuration failed.
    -rw-r--r-- 1 root root 1774 Jan  8 09:52 b204d74a.0
    ```
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP 範圍的輸出連線能力 (錯誤碼 151037 或 151072)
+## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>出站網址或 IP 範圍 (錯誤代碼 151037 或 151072)
 
 要使網站恢復複製正常工作,需要 VM 與特定 URL 的出站連接。 如果您的 VM 位於防火牆後方，或使用網路安全性群組 (NSG) 規則控制輸出連線能力，您可能會遇到下列其中一個問題。 儘管我們繼續支援通過 URL 進行出站訪問,但不再支援使用允許的 IP 範圍清單。
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>問題 1：無法向 Site Recovery 註冊 Azure 虛擬機器 (151195)
+### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>問題 1:未能將 Azure VM 註冊到網站恢復 (151195)
 
 #### <a name="possible-causes"></a>可能的原因
 
@@ -216,7 +216,7 @@ Azure 網站恢復需要訪問 Office 365 IP 範圍進行身份驗證。
 
 如果使用 Azure 網路安全組 (NSG) 規則/ 防火牆代理來控制 VM 上的出站網路連接,請確保使用服務標記。 我們不再支援使用透過 NSG 的 IP 位址允許清單進行 Azure 網站恢復。
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:當網路流量通過本地代理伺服器 (151072) 時,Azure 到 Azure 複製失敗
+### <a name="issue-4-replication-fails-when-network-traffic-uses-on-premises-proxy-server-151072"></a>問題 4:當網路流量使用本地代理伺服器 (151072) 時,複製失敗
 
 #### <a name="possible-cause"></a>可能的原因
 
@@ -245,7 +245,7 @@ Azure 網站恢復需要訪問 Office 365 IP 範圍進行身份驗證。
 
 要指定[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或所需的[IP 範圍](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags),請按照[Azure 到 Azure 複製中的「關於網路」中的](azure-to-azure-about-networking.md)指南進行操作。
 
-## <a name="disk-not-found-in-the-machine-error-code-150039"></a>在機器中找不到磁碟 (錯誤碼 150039)
+## <a name="disk-not-found-in-vm-error-code-150039"></a>在 VM 中找不到磁碟(錯誤代碼 150039)
 
 必須先將連接到 VM 的新磁碟初始化。 如果未找到磁碟,將顯示以下訊息:
 
@@ -267,7 +267,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 若問題持續發生，請連絡支援服務。
 
-## <a name="one-or-more-disks-are-available-for-protection-error-code-153039"></a>一個或多個磁碟可供保護(錯誤代碼 153039)
+## <a name="multiple-disks-available-for-protection-error-code-153039"></a>多個磁碟可用於保護(錯誤代碼 153039)
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -292,7 +292,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="關閉新磁碟警告。":::
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information-error-code-150225"></a>從已完成的資訊(錯誤代碼 150225)的保管庫中刪除虛擬機器
+## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>從函式庫移除的 VM 已提供資訊(錯誤代碼 150225)
 
 當網站恢復保護虛擬機器時,它會在源虛擬機器上創建連結。 刪除保護或禁用複製時,網站恢復將刪除這些連結作為清理作業的一部分。 如果虛擬機具有資源鎖定,則清理作業將隨資訊完成。 該資訊表示虛擬機已從恢復服務保管庫中刪除,但源計算機上無法清理某些陳舊連結。
 
@@ -317,7 +317,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 1. 執行文稿,_清理-陳舊-設定-Azure-VM.ps1_。 將**訂閱ID、VM****資源組**和**VM名稱**作為參數提供。
 1. 如果系統提示您使用 Azure 認證,請提供它們。 然後驗證腳本是否運行沒有任何失敗。
 
-## <a name="replication-cant-be-enabled-because-of-stale-resource-links-on-the-vm-error-code-150226"></a>由於 VM 上陳舊的資源連結(錯誤代碼 150226),無法啟用複製
+## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>在具有陳舊資源的 VM 上未開啟複製(錯誤代碼 150226)
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -342,9 +342,9 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 1. 執行文稿,_清理-陳舊-設定-Azure-VM.ps1_。 將**訂閱ID、VM****資源組**和**VM名稱**作為參數提供。
 1. 如果系統提示您使用 Azure 認證,請提供它們。 然後驗證腳本是否運行沒有任何失敗。
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>無法在開啟複製工作中查看所選取的 Azure VM 或資源群組
+## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>無法在開啟複製工作中選擇 VM 或資源群組
 
-### <a name="issue-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>問題 1: 資源群組和來源虛擬機器位於不同位置
+### <a name="issue-1-the-resource-group-and-source-vm-are-in-different-locations"></a>問題 1: 資源群組和來源 VM 位於不同位置
 
 網站恢復當前要求源區域資源組和虛擬機位於同一位置。 否則,當您嘗試應用保護時,您將無法找到虛擬機或資源組。
 
@@ -375,7 +375,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 1. 執行文稿,_清理-陳舊-設定-Azure-VM.ps1_。 將**訂閱ID、VM****資源組**和**VM名稱**作為參數提供。
 1. 如果系統提示您使用 Azure 認證,請提供它們。 然後驗證腳本是否運行沒有任何失敗。
 
-## <a name="unable-to-select-a-virtual-machine-for-protection"></a>無法選擇虛擬機器進行保護
+## <a name="unable-to-select-a-vm-for-protection"></a>無法選擇 VM 進行保護
 
 ### <a name="possible-cause"></a>可能的原因
 
@@ -385,7 +385,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 轉到**虛擬機** > **設定** > **擴展,** 並檢查任何處於失敗狀態的擴展。 卸載任何失敗的擴展,然後重試以保護虛擬機。
 
-## <a name="the-vms-provisioning-state-isnt-valid-error-code-150019"></a>VM 的預先狀態無效(錯誤代碼 150019)
+## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>VM 預先狀態無效 (錯誤代碼 150019)
 
 要在 VM 上啟用複製,必須**成功**其預配狀態。 依以下步驟檢查預配狀態:
 
@@ -400,15 +400,15 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 - 如果**預配狀態****失敗**,請與支援人員聯繫以進行故障排除。
 - 如果**預配狀態****正在更新**,則可能正在部署另一個擴展。 檢查 VM 上是否有任何正在進行的操作,等待它們完成,然後重試失敗的網站恢復作業以啟用複製。
 
-## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>無法選擇目標 VM(網路選擇選項卡不可用)
+## <a name="unable-to-select-target-vm"></a>無法選擇目標 VM
 
-### <a name="issue-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>問題 1: 您的 VM 已連線到已映射到目標網路的網路
+### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>問題 1:VM 連接到已映射到目標網路的網路
 
 如果源 VM 是虛擬網路的一部分,並且來自同一虛擬網路的另一個 VM 已與目標資源組中的網路映射,則默認情況下網路選擇下拉列表框不可用(顯示為灰色)。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="網路選擇清單不可用。":::
 
-### <a name="issue-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>問題 2:您以前使用網站恢復保護 VM,然後關閉複製
+### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>問題 2:您以前保護 VM,然後關閉複製
 
 關閉 VM 複製不會刪除網路映射。 必須從保護 VM 的恢復服務保管庫中刪除映射。 跳到**修復服務保存庫** > **站台修復基礎結構** > **網路映射**。
 
@@ -420,9 +420,9 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 更改網路映射會影響使用同一網路映射的所有受保護 VM。
 
-## <a name="com-or-volume-shadow-copy-service-error-error-code-151025"></a>COM+ 或捲影影複製服務錯誤(錯誤代碼 151025)
+## <a name="com-or-vss-error-code-151025"></a>COM+ 或 VSS(錯誤代碼 151025)
 
-發生此錯誤時,將顯示以下訊息:
+當出現 COM+ 或陰影影影複製服務 (VSS) 錯誤時,將顯示以下訊息:
 
 ```Output
 Site Recovery extension failed to install.
@@ -458,7 +458,7 @@ Protection couldn't be enabled for the virtual machine as it has <DiskName> with
 
 請確保磁碟大小在支援的大小範圍內,然後重試該操作。
 
-## <a name="protection-wasnt-enabled-because-the-grub-configuration-includes-the-device-name-instead-of-the-uuid-error-code-151126"></a>未開啟保護,因為 GRUB 設定包括裝置名稱而不是 UUID(錯誤代碼 151126)
+## <a name="protection-not-enabled-when-grub-uses-device-name-error-code-151126"></a>當 GRUB 使用裝置名稱時未開啟保護(錯誤代碼 151126)
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -493,7 +493,7 @@ Linux 大統一引導載入程式 (GRUB) 設定檔 _(/boot/grub/menu.lst,_ _/boo
 
 1. 重試保護。
 
-## <a name="enable-protection-failed-because-the-device-mentioned-in-the-grub-configuration-doesnt-exist-error-code-151124"></a>開啟保護失敗,因為 GRUB 設定中提到的裝置不存在(錯誤代碼 151124)
+## <a name="protection-failed-because-grub-device-doesnt-exist-error-code-151124"></a>保護失敗,因為 GRUB 裝置不存在(錯誤代碼 151124)
 
 ### <a name="possible-cause"></a>可能的原因
 
@@ -517,7 +517,7 @@ GRUB設定檔 _(/boot/grub/menu.lst_, _/引導/grub/grub.cfg,_ _/引導/grub2/gr
 
 如果 LVM 裝置不存在,請創建該設備或從 GRUB 設定檔中刪除相應的參數。 然後,請重試以啟用保護。
 
-## <a name="a-site-recovery-mobility-service-update-finished-with-warnings-error-code-151083"></a>網站恢復行動服務更新已完成警告(錯誤代碼 151083)
+## <a name="mobility-service-update-finished-with-warnings-error-code-151083"></a>移動服務更新已完成警告(錯誤代碼 151083)
 
 網站恢復移動性服務具有許多元件,其中一個元件稱為篩選器驅動程式。 篩選器驅動程式僅在系統重新啟動期間載入到系統記憶體中。 每當行動服務更新包含篩選器驅動程式更改時,計算機都會更新,但仍會看到一條警告,指出某些修補程式需要重新啟動。 出現此警告是因為篩選器驅動程式修復僅在載入新篩選器驅動程式時才能生效,這僅在重新啟動期間發生。
 
@@ -526,7 +526,9 @@ GRUB設定檔 _(/boot/grub/menu.lst_, _/引導/grub/grub.cfg,_ _/引導/grub2/gr
 >
 > 除了篩選器驅動程式之外,行動服務更新中任何其他增強和修復的好處都生效,無需重新啟動。
 
-## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>無法啟用保護,因為目標資源組中已存在複本託管磁碟,沒有預期標記(錯誤代碼 150161)
+## <a name="protection-not-enabled-if-replica-managed-disk-exists"></a>如果存在副本託管磁碟,則未啟用保護
+
+當複製副本託管磁碟在目標資源組中已存在,沒有預期標記時,將發生此錯誤。
 
 ### <a name="possible-cause"></a>可能的原因
 

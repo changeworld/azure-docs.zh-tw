@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 4eef8a3a83456a9f2066311b9339b26b83afa009
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633794"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273404"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
 
@@ -71,10 +71,10 @@ WHERE request_id  = <'request_id'>;
 - 新查詢與產生結果集快取的上一個查詢完全相符。
 - 產生快取結果集的來源資料表中沒有資料或結構描述變更。
 
-執行此命令來檢查所執行查詢的結果快取是否有命中。 result_set_cache列返回 1 表示緩存命中,0 表示緩存未命中,負值返回,以說明未使用結果集緩存的原因。 有關詳細資訊[,請查看 sys.dm_pdw_exec_requests。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+執行此命令來檢查所執行查詢的結果快取是否有命中。 result_cache_hit列返回 1 表示緩存命中,0 返回緩存未命中,負值返回,以說明未使用結果集緩存的原因。 有關詳細資訊[,請查看 sys.dm_pdw_exec_requests。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
-SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984430"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261749"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -217,7 +217,7 @@ ms.locfileid: "80984430"
 * <a id="ad-aad-smb-files"></a>
 **如何檢查我的儲存帳戶和 AD 網域資訊是否啟用了 AD 身份驗證?**
 
-    您可以參考[此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的說明,以驗證儲存帳戶上是否啟用了 Azure 檔案 AD 身份驗證並檢索 AD 域資訊。
+    您可以參考[此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)提供的說明,以驗證儲存帳戶上是否啟用了 Azure 檔案 AD 身份驗證並檢索 AD 域資訊。
     
 * <a id="encryption-at-rest"></a>
 **如何確保我的 Azure 檔案共用會進行待用加密？**  

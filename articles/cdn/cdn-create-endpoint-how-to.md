@@ -3,7 +3,7 @@ title: 建立 Azure CDN 端點 | Microsoft Docs
 description: 此文章示範如何建立新的 Azure 內容傳遞網路 (CDN) 端點，包括進階設定。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593942"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254010"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>建立 Azure CDN 端點
 此文章說明在現有 CDN 設定檔中建立 [Azure 內容傳遞網路 (CDN)](cdn-overview.md) 端點的所有設定。 建立設定檔與端點之後，即可開始將內容傳遞給您的客戶。 如需建立設定檔與端點的快速入門，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
@@ -62,7 +62,7 @@ ms.locfileid: "67593942"
    > 某些類型的原始來源 (例如 Azure 儲存體和 Web Apps) 要求主機標頭必須符合原始來源的網域。 除非您的原始來源需要與其網域不同的主機標頭，否則您應該保留預設值。
    > 
     
-8. 針對 [通訊協定]**** 與 [來源連接埠]****，指定通訊協定與連接埠以用來存取原始伺服器上的資源。 至少必須選取一個通訊協定 (HTTP 或 HTTPS)。 使用 CDN 提供的域（_\<終結點名稱>_.azureedge.net）訪問 HTTPS 內容。 
+8. 針對 [通訊協定]**** 與 [來源連接埠]****，指定通訊協定與連接埠以用來存取原始伺服器上的資源。 至少必須選取一個通訊協定 (HTTP 或 HTTPS)。 使用 CDN 提供的網域(_\<終結點名稱>_.azureedge.net)存取 HTTPS 內容。 
    
    > [!NOTE]
    > [來源連接埠]**** 值只會決定端點用來從原始伺服器擷取資訊的連接埠。 不論 [原始連接埠]**** 的值為何，端點本身只會透過預設 HTTP 和 HTTPS 連接埠 (80 和 443) 提供給終端用戶端使用。  
@@ -74,14 +74,14 @@ ms.locfileid: "67593942"
 9. 針對 [最佳化對象]****，選取最符合案例的最佳化類型，以及您想要端點傳送的內容類型。 如需詳細資訊，請參閱[ 針對內容傳遞類型將 Azure CDN 最佳化](cdn-optimization-overview.md)。
 
     目前根據設定檔類型支援下列最佳化類型設定：
-    - **來自微軟設定檔的 Azure CDN 標準**：
+    - **從微軟設定檔的 Azure CDN 標準**:
        - [**一般 Web 傳遞**](cdn-optimization-overview.md#general-web-delivery)
 
     - **來自 Verizon 的 Azure CDN 標準**與**來自 Verizon 的 Azure CDN 進階**設定檔：
        - [**一般 Web 傳遞**](cdn-optimization-overview.md#general-web-delivery)
        - [**動態網站加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
-    - **來自 Akamai 設定檔的 Azure CDN 標準**：
+    - **從 Akamai 設定檔的 Azure CDN 標準**:
        - [**一般 Web 傳遞**](cdn-optimization-overview.md#general-web-delivery)
        - [**一般媒體串流處理**](cdn-optimization-overview.md#general-media-streaming)
        - [**點播視訊媒體串流**](cdn-optimization-overview.md#video-on-demand-media-streaming)

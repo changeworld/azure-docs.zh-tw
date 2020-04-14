@@ -3,7 +3,7 @@ title: 來自 Verizon 的自訂報告 | Microsoft Docs
 description: 您可以使用下列報告檢視 CDN 的使用模式：頻寬、傳輸的資料、點擊、快取狀態、快取點擊率、已傳輸的 IPV4/IPV6 資料。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: magattus
-ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593305"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259743"
 ---
 # <a name="custom-reports-from-verizon"></a>來自 Verizon 的自訂報告
 
@@ -82,7 +82,7 @@ Edge CNAMES 自訂報告提供已啟用自訂報告記錄之 Edge CNAMEs 的命�
 | 遺漏                    | 指出產生快取遺漏 (TCP_CLIENT_REFRESH_MISS、TCP_EXPIRED_MISS 或 TCP_MISS) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 當接受要求的 Edge Server 上未快取要求的內容時，就會發生快取遺漏。 | 
 | 無快取                  | 指出產生 CONFIG_NOCACHE 快取狀態碼之 Edge CNAME 的要求總數或已傳輸資料 (MB)。  |
 | 其他                     | 指出 Edge CNAME 中產生 2xx - 5xx 範圍以外之 HTTP 狀態碼的要求總數或已傳輸資料 (MB)。 |
-| Platform                  | 指出處理 Edge CNAME 流量的平台。 |
+| 平台                  | 指出處理 Edge CNAME 流量的平台。 |
 | 未指定               | 指出未記錄快取狀態碼或 HTTP 狀態碼資訊之 Edge CNAME 的要求總數或已傳輸資料 (MB)。  |
 | 無法快取               | 指出產生 UNCACHEABLE 快取狀態碼之 Edge CNAME 的要求總數或已傳輸資料 (MB)。  |
 

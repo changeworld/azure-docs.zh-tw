@@ -1,17 +1,17 @@
 ---
 title: 限制的 vCPU 大小
 description: 列出具有受限 vCPU 計數的 VM 大小。
-author: jonbeck7
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/09/2018
-ms.author: jonbeck
-ms.openlocfilehash: 4b481d3ef61a0b7e52d3b4c4855634ec3efa0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 70e6d043b3ad033e1a43c566e5d1da49a1447c6b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969710"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273557"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>具有受限 vCPU 的 VM 大小
 
@@ -21,7 +21,7 @@ ms.locfileid: "78969710"
 
 ## <a name="other-sizes"></a>其他大小
 - [計算最佳化](../windows/sizes-compute.md)
-- [記憶體優化](sizes-memory.md)
+- [記憶體最佳化](sizes-memory.md)
 - [儲存體最佳化](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)

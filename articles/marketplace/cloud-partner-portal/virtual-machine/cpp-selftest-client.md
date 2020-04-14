@@ -1,5 +1,5 @@
 ---
-title: 自測試用戶端以預驗證虛擬機器 |Azure 應用商店
+title: 自測試客戶端以預驗證虛擬機 |Azure 應用商店
 description: 如何建立對 Azure Marketplace 的虛擬機器映像進行預先驗證的自我測試用戶端。
 author: dsindona
 ms.service: marketplace
@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286416"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273149"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>建立用來預先驗證 Azure 虛擬機器映像的自我測試用戶端
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Azure VM 映像認證](https://aks.ms/CertifyVMimage)中的說明來管理遷移的優惠。
 
 依據本文的指引，建立使用自我測試 API 的用戶端服務。 您可以使用自我測試 API 預先驗證虛擬機器 (VM)，以確保該機器符合最新的 Azure Marketplace 發佈需求。 此用戶端服務可讓您先對 VM 進行測試，再將供應項目提交給 Microsoft 認證。
 
 ## <a name="development-and-testing-overview"></a>開發與測試概觀
 
-作為自測試過程的一部分，您將創建一個本地用戶端，該用戶端連接到 Azure 應用商店以驗證在 Azure 訂閱中運行的 VM。 VM 可在 Windows 或 Linux 作業系統中執行。
+作為自測試過程的一部分,您將創建一個本地用戶端,該用戶端連接到 Azure 應用商店以驗證在 Azure 訂閱中運行的 VM。 VM 可在 Windows 或 Linux 作業系統中執行。
 
 本機用戶端會執行使用自我測試 API 進行驗證的指令碼、傳送連線資訊，並接收測試結果。
 
@@ -64,7 +67,7 @@ Request body:    The Request body parameters should use the following JSON forma
 
 |      欄位         |    描述    |
 |  ---------------   |  ---------------  |
-|  授權     |  "承載 xxx-xxx-xxx-xxxxxx"字串包含 Azure 活動目錄 （AD） 用戶端權杖，可以使用 PowerShell 創建。          |
+|  授權     |  "承載 xxx-xxx-xxx-xxxxxx"字串包含 Azure 活動目錄 (AD) 用戶端令牌,可以使用 PowerShell 創建。          |
 |  DNS 名稱           |  要測試的 VM 所具備的 DNS 名稱    |
 |  User              |  用來登入 VM 的使用者名稱         |
 |  密碼          |  用來登入 VM 的密碼          |
@@ -219,7 +222,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 使用下列步驟，選擇您要在其中建立應用程式的 Azure AD 租用戶。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在頂端功能表列上選取您的帳戶，然後在 [目錄] 清單下方，選擇您要在其中註冊應用程式的 Active Directory 租用戶。 或者，選取 [目錄 + 訂用帳戶]**** 圖示，以查看全域訂用帳戶篩選。 下列螢幕擷取畫面顯示此篩選的範例。
 
    ![選取訂用帳戶篩選](./media/stclient-subscription-filter.png)
@@ -230,7 +233,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
    **若要取得租用戶資訊：**
 
-   在**Azure 活動目錄概述中**，搜索"屬性"，然後選擇**屬性**。 請以下列螢幕擷取畫面作為範例：
+   在**Azure 活動目錄概述中**,搜尋屬性,然後選擇**屬性**。 請以下列螢幕擷取畫面作為範例：
 
    - **名稱** - 租用戶名稱或目錄名稱
    - **目錄識別碼** - 租用戶識別碼或目錄識別碼，或是使用捲軸來尋找屬性。
@@ -245,11 +248,11 @@ https://isvapp.azurewebsites.net/selftest-vm
 2. 在 [應用程式註冊]**** 下方，選取 [+ 新增應用程式註冊]****。
 3. 在 [建立]**** 下方，提供下列欄位的必要資訊：
 
-   - **名稱**- 輸入應用的易記名稱。 例如，"自測試用戶端"。
-   - **應用程式類型**- 選擇**Web 應用/API**
-   - **登錄 URL** - 鍵入"HTTPs：\//isvapp.azurewebsites.net/selftest-vm"
+   - **名稱**- 輸入應用的友好名稱。 例如,"自測試用戶端"。
+   - **應用程式型態**- 選擇**Web 應用程式/API**
+   - **登錄 URL** - 鍵入"Htt:\//isvapp.azurewebsites.net/selftest-vm"
 
-4. 選取 [建立]****。
+4. 選取 [建立]  。
 5. 在 [應用程式註冊]**** 或 [註冊的應用程式]**** 下方，複製 [應用程式識別碼]****。
 
    ![取得應用程式識別碼](./media/stclient-app-id.png)
@@ -258,34 +261,34 @@ https://isvapp.azurewebsites.net/selftest-vm
 7. 選取 [必要權限]**** 以設定應用程式的權限。
 8. 在 [必要權限]**** 下方，選取 [+ 新增]****。
 9. 在 [新增 API 存取權]**** 下方，選擇 [選取 API]****。
-10. 在 **"選擇 API"** 下，鍵入"Windows Azure 經典部署模型"以搜索 API。
+10. 在 **「選擇 API」** 下,鍵入「Windows Azure 經典部署模型」以搜尋 API。
 11. 在搜尋結果中選擇 [Windows Azure 傳統部署模型]****，然後按一下 [選取]****。
 
     ![為應用程式設定多租用戶](./media/stclient-select-api.png)
 
 12. 在 [新增 API 存取權]**** 下方，選擇 [選取權限]****。
-13. 選擇 **"訪問"Windows Azure 服務管理 API"。**
+13. 選擇 **「存取」Windows Azure 服務管理 API"。**
 
     ![為應用程式啟用 API 存取](./media/stclient-enable-api-access.png)
 
-14. 按一下 **"選擇**"。
-15. 選擇 **"完成**"。
+14. 按下 **「選擇**」。
+15. 選取 [完成]  。
 16. 在 [設定]**** 下方，選取 [屬性]****。
-17. 在 [屬性]**** 下方，向下捲動至 [多租用戶]****。 選取 [是]****。
+17. 在 [屬性]**** 下方，向下捲動至 [多租用戶]****。 選取 [是]  。
 
     ![為應用程式設定多租用戶](./media/stclient-yes-multitenant.png)
 
-18. 選取 [儲存]****。
+18. 選取 [儲存]  。
 19. 在 [設定]**** 下方，選取 [金鑰]****。
 20. 選取金鑰的 [描述]**** 文字方塊以建立祕密金鑰。 設定下列欄位：
 
-    - 輸入金鑰名稱。 例如，"自測用戶端"
-    - 在 **"過期**"下拉清單中，選擇"1 年內"。
+    - 輸入金鑰名稱。 例如,"自測用戶端"
+    - 在 **「過期**」下拉清單中,選擇「1 年內」。
     - 選取 [儲存]**** 以產生金鑰。
     - 在 [值]**** 下方複製金鑰。
 
       >[!Important]
-      >退出 **"金鑰"** 表單後，您將無法看到金鑰值。
+      >離開 **「密鑰」** 窗體後,您將無法看到金鑰值。
 
     ![金鑰值表單](./media/stclient-create-key.png)
 
@@ -300,7 +303,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 ### <a name="to-create-and-get-a-token-using-postman"></a>使用 Postman 建立和取得權杖
 
- 要向 Auth0 請求任何授權應用程式的權杖，請對[https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)具有以下格式的有效負載的終結點執行 POST 操作：
+ 要向 Auth0 要求任何授權應用程式的權杖,[https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)請對具有以下格式的有效負載的終結點執行 POST 操作:
 
 ```
 Method Type : POST
@@ -329,7 +332,7 @@ Content-Type: application/x-www-form-urlencoded
 
 ### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>在 Linux 中使用 cURL 建立和取得權杖
 
-要向 Auth0 請求任何授權應用程式的權杖，請對[https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)具有以下格式的有效負載的終結點執行 POST 操作：
+要向 Auth0 要求任何授權應用程式的權杖,[https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)請對具有以下格式的有效負載的終結點執行 POST 操作:
 
 ```
 Request:
@@ -350,7 +353,7 @@ Response:
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>使用 C&#35; 建立和取得權杖
 
-要向 Auth0 請求任何授權應用程式的權杖，請對 HTTPs 執行 POST 操作\/：/soamtenant.auth0.com/oauth/token具有以下格式的有效負載的終結點：
+要向 Auth0 請求任何授權應用程式的權杖,請對 Ht\/執行 POST 操作 :/soamtenant.auth0.com/oauth/token具有以下格式的有效負載的終結點:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -373,7 +376,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>使用 PowerShell 建立和取得權杖
 
-要向 Auth0 請求任何授權應用程式的權杖，請對 HTTPs 執行 POST 操作\/：/soamtenant.auth0.com/oauth/token具有以下格式的有效負載的終結點：
+要向 Auth0 請求任何授權應用程式的權杖,請對 Ht\/執行 POST 操作 :/soamtenant.auth0.com/oauth/token具有以下格式的有效負載的終結點:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";

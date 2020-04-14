@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ff9191c0994d4e26da69e1c4ceaf7ef6c93e9960
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113265"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253147"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>靜態資料的 Azure 儲存加密
 
@@ -45,7 +45,7 @@ Azure 儲存中的數據使用 256 位[元 AES 加密](https://en.wikipedia.org/
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密作業    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    支援 Azure 儲存服務    |    全部                                                |    Blob 儲存,Azure 檔案<sup>1,2</sup>                                                                                                               |    Blob 儲存體                                                                  |
-|    金鑰儲存                         |    Microsoft S-Microt    |    Azure 金鑰保存庫                                                                                                                              |    Azure 金鑰保存庫或任何其他金鑰儲存                                                                 |
+|    金鑰儲存                         |    Microsoft S-Microt    |    Azure 金鑰保存庫                                                                                                                              |    客戶自己的金鑰儲存                                                                 |
 |    關鍵輪換責任         |    Microsoft                                          |    客戶                                                                                                                                     |    客戶                                                                      |
 |    金鑰控制                          |    Microsoft                                     |    客戶                                                                                                                    |    客戶                                                                 |
 

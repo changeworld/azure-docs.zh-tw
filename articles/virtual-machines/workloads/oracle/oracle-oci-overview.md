@@ -3,7 +3,7 @@ title: 將微軟 Azure 與 Oracle 雲端基礎架構整合 |微軟文件
 description: 瞭解將在 Microsoft Azure 上運行的 Oracle 應用與 Oracle 雲端基礎架構 (OCI) 中的資料庫整合的解決方案。
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 178fb805f4bfc0762ce7e4a320752e5afa00cef5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878284"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271857"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>整合微軟 Azure 和 Oracle 雲端基礎架構的 Oracle 應用程式解決方案
 
@@ -55,6 +55,7 @@ Microsoft 和 Oracle 已合作提供低延遲、高吞吐量的跨雲端連接,�
 * Azure UK 南部(英國南部)& OCI 倫敦(英國南部)
 * Azure 加拿大中部(加拿大中部)& OCI 多倫多(加拿大東南部)
 * Azure 西歐(西歐) & OCI 阿姆斯特丹 (荷蘭西北部)
+* Azure 日本東部(日本東部) & OCI 東京 (中央外電東京) (中央外電)
 
 ## <a name="networking"></a>網路功能
 

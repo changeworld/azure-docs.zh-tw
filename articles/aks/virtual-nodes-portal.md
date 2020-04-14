@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 入口網站建立使用虛擬節點執行
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616416"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259114"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>在 Azure 入口網站中建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [主機別名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI 中執行官[的論據](../container-instances/container-instances-exec.md#restrictions)
 * [守護程式不會](concepts-clusters-workloads.md#statefulsets-and-daemonsets)將窗格部署到虛擬節點
-* 與虛擬節點一起不支援[Windows 伺服器節點(目前在 AKS 中預覽)。](windows-container-cli.md) 您可以使用虛擬節點來計畫 Windows Server 容器,而無需在 AKS 群集中使用 Windows 伺服器節點。
+* 虛擬節點支援調度 Linux pod。 您可以手動安裝開源[虛擬庫貝萊特 ACI](https://github.com/virtual-kubelet/azure-aci)提供程式,以將 Windows 伺服器容器安排到 ACI。 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -93,7 +93,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 叢集也會針對進階網路功能進行設定。 虛擬節點會設定為使用自己的 Azure 虛擬網路子網路。 此子網路具有委派的權限，可連線 AKS 叢集之間的 Azure 資源。 如果您還沒有委派的子網路，Azure 入口網站會建立並設定 Azure 虛擬網路和子網路，以搭配虛擬節點使用。
 
-選擇 **「檢視」 = 建立**。 驗證完成之後，請選取 [建立]****。
+選取 [檢閱 + 建立]  。 驗證完成之後，請選取 [建立]****。
 
 從建立 AKS 叢集到可供使用需要幾分鐘的時間。
 

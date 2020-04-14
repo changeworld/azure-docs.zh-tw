@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547561"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257224"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 機器學習建立、檢視並部署自動化機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -155,7 +155,6 @@ Variance| 衡量此列數據與其平均值的分佈距離。
 偏度| 衡量此列的數據與正態分佈的不同程度。
 峰度| 測量與正態分佈相比,此列數據的跟蹤程度。
 
-
 <a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>進階壯舉選項
@@ -164,12 +163,15 @@ Variance| 衡量此列數據與其平均值的分佈距離。
 
 ### <a name="preprocessing"></a>前置處理
 
+> [!NOTE]
+> 如果您計劃將自動 ML 創建的模型匯出到[ONNX 型號](concept-onnx.md),則僅支援 ONNX 格式中帶有 * 的奇才化選項。 瞭解有關[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)的更多資訊。 
+
 |預處理&nbsp;步驟| 描述 |
 | ------------- | ------------- |
-|卸除高基數或無變異數特徵|從訓練和驗證集中刪除這些值,包括缺少所有值、所有行中的值相同或基數極高(例如,哈希、I 或 GUID)。|
-|插補遺漏值|對於數值要素,用列中值的平均值進行歸因。<br/><br/>對於分類要素,具有最頻繁的值。|
-|產生其他特徵|對於 DateTime 功能:年、月、日、星期一、一年中的一天、季度、一年中的一周、小時、分鐘、秒。<br/><br/>對於文本功能:基於單格、雙克和三字元克的術語頻率。|
-|轉換和編碼 |具有很少唯一值的數位要素將轉換為分類要素。<br/><br/>為低基數分類執行一熱編碼;對於高基數,一熱哈希編碼。|
+|刪除高基數或無方差特徵* |從訓練和驗證集中刪除這些值,包括缺少所有值、所有行中的值相同或基數極高(例如,哈希、I 或 GUID)。|
+|已歸名缺失值* |對於數值要素,用列中值的平均值進行歸因。<br/><br/>對於分類要素,具有最頻繁的值。|
+|產生其他功能* |對於 DateTime 功能:年、月、日、星期一、一年中的一天、季度、一年中的一周、小時、分鐘、秒。<br/><br/>對於文本功能:基於單格、雙克和三字元克的術語頻率。|
+|轉換和編碼 ||具有很少唯一值的數位要素將轉換為分類要素。<br/><br/>為低基數分類執行一熱編碼;對於高基數,一熱哈希編碼。|
 |單字嵌入|使用預先訓練的模型將文本標記的向量轉換為句子向量的文本計算機。 每個單詞在文檔中的嵌入向量聚合在一起以生成文檔要素向量。|
 |目標編碼|對於分類要素,使用回歸問題的平均目標值映射每個類別,以及分類問題的每個類的類概率。 應用基於頻率的加權和 k 折交叉驗證來減少稀疏數據類別導致的映射過度擬合和雜訊。|
 |文字目標編碼|對於文本輸入,使用帶有單詞袋的堆疊線性模型來生成每個類的概率。|
@@ -178,19 +180,13 @@ Variance| 衡量此列數據與其平均值的分佈距離。
 
 ### <a name="data-guardrails"></a>資料護欄
 
-啟用自動壯舉或將驗證設置為自動驗證時,將應用數據保護程式。數據保護欄可説明您識別數據的潛在問題(例如缺少值、類不平衡),並幫助採取糾正措施以改進結果。 有許多最佳實踐可用,可以應用,以實現可靠的結果。 用戶可以在自動 ML 運行**的數據護欄**選項卡中查看演播室中的資料護欄,或者在使用 Python SDK```show_output=True```提交實驗時設定數據護欄。 下表描述了當前支持的數據護欄,以及使用者在提交實驗時可能會遇到的關聯狀態。
+啟用自動壯舉或將驗證設置為自動驗證時,將應用數據保護程式。數據保護欄可説明您識別數據的潛在問題(例如缺少值、類不平衡),並幫助採取糾正措施以改進結果。 
 
-護欄|狀態|觸發&nbsp;條件&nbsp;
----|---|---
-缺少歸因要素值 |**已通過** <br><br><br> **完成**| 在訓練數據中未檢測到缺少的要素值。 瞭解有關[缺少值歸因](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多資訊。 <br><br> 在訓練資料中偵測到缺少特徵值並歸為
-高基數特徵處理 |**已通過** <br><br><br> **完成**| 對輸入進行了分析,未檢測到高基數特徵。 瞭解有關[高基數特徵檢測](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多詳細資訊。 <br><br> 在輸入中檢測到高基數特徵並處理。
-驗證分割處理 |**完成**| *驗證配置設置為"自動",訓練數據包含**少於**20,000 行。* <br> 通過交叉驗證驗證了訓練模型的每個反覆運算。 瞭解有關[驗證數據的更多詳細資訊。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *驗證配置設置為"自動",訓練數據包含 20,000**多**行。* <br> 輸入數據已拆分為訓練數據集和驗證數據集,用於驗證模型。
-類平衡檢測 |**已通過** <br><br><br><br> **提醒** | 您的輸入已分析,所有課程在培訓數據中處於平衡。 如果每個類在數據集中具有良好的表示形式(以樣本的數量和比率來衡量),則數據集被視為平衡數據集。 <br><br><br> 在輸入中檢測到不平衡類。 要修復模型偏差,修復平衡問題。 瞭解有關[不平衡數據的更多。](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
-記憶體問題偵測 |**已通過** <br><br><br><br> **完成** |<br> 分析了選定的[視界、滯後、滾動視窗]值,未檢測到潛在的記憶體不足問題。 瞭解有關時間序列[預測配置](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)的更多資訊。 <br><br><br>已分析選定的[視界、延遲、滾動視窗]值,並可能導致實驗記憶體不足。 已關閉延遲或滾動視窗配置。
-頻率偵測 |**已通過** <br><br><br><br> **完成** |<br> 分析了時間序列,所有數據點與檢測到的頻率對齊。 <br> <br> 分析了時間序列,並檢測到與檢測到的頻率不一致的數據點。 這些數據點從資料集中刪除。 詳細瞭解[時間序列預測的數據準備。](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+用戶可以在自動 ML 運行**的數據護欄**選項卡中查看演播室中的資料護欄,或者在使用 Python SDK```show_output=True```提交實驗時設定數據護欄。 
 
 #### <a name="data-guardrail-states"></a>資料保護軌狀態
-數據保護欄將顯示三種狀態之一:"通過","完成"或"警報"。
+
+資料保護列將顯示三種狀態之一:**已透過**、**完成**或**警示**。
 
 State| 描述
 ----|----
@@ -198,7 +194,19 @@ State| 描述
 完成| 更改已應用於您的數據。 我們鼓勵使用者查看自動 ML 採取的糾正措施,以確保更改與預期結果保持一致。 
 提醒| 檢測到無法補救的數據問題。 我們鼓勵使用者修改和修復該問題。 
 
-自動 ML 的早期版本顯示第四種狀態:「已修復」。 較新的實驗將不會顯示此狀態,所有顯示"固定"狀態的護欄現在都將顯示"完成"。   
+>[!NOTE]
+> 早期版本的自動 ML 實驗顯示第四種狀態:**固定**。 較新的實驗將不會顯示此狀態,並且顯示 **「固定**」狀態的所有護欄現在都將顯示 **「完成**」。   
+
+下表描述了當前支持的數據護欄,以及使用者在提交實驗時可能會遇到的關聯狀態。
+
+護欄|狀態|觸發&nbsp;條件&nbsp;
+---|---|---
+缺少歸因要素值 |**已通過** <br><br><br> **完成**| 在訓練數據中未檢測到缺少的要素值。 瞭解有關[缺少值歸因](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多資訊。 <br><br> 在訓練資料中偵測到缺少特徵值並歸為
+高基數特徵處理 |**已通過** <br><br><br> **完成**| 對輸入進行了分析,未檢測到高基數特徵。 瞭解有關[高基數特徵檢測](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options)的更多詳細資訊。 <br><br> 在輸入中檢測到高基數特徵並處理。
+驗證分割處理 |**完成**| *驗證配置設置為"自動",訓練數據包含**少於**20,000 行。* <br> 通過交叉驗證驗證了訓練模型的每個反覆運算。 瞭解有關[驗證數據的更多詳細資訊。](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *驗證配置設置為"自動",訓練數據包含 20,000**多**行。* <br> 輸入數據已拆分為訓練數據集和驗證數據集,用於驗證模型。
+類平衡檢測 |**已通過** <br><br><br><br> **提醒** | 您的輸入已分析,所有課程在培訓數據中處於平衡。 如果每個類在數據集中具有良好的表示形式(以樣本的數量和比率來衡量),則數據集被視為平衡數據集。 <br><br><br> 在輸入中檢測到不平衡類。 要修復模型偏差,修復平衡問題。 瞭解有關[不平衡數據的更多。](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
+記憶體問題偵測 |**已通過** <br><br><br><br> **完成** |<br> 分析了選定的[視界、滯後、滾動視窗]值,未檢測到潛在的記憶體不足問題。 瞭解有關時間序列[預測配置](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)的更多資訊。 <br><br><br>已分析選定的[視界、延遲、滾動視窗]值,並可能導致實驗記憶體不足。 已關閉延遲或滾動視窗配置。
+頻率偵測 |**已通過** <br><br><br><br> **完成** |<br> 分析了時間序列,所有數據點與檢測到的頻率對齊。 <br> <br> 分析了時間序列,並檢測到與檢測到的頻率不一致的數據點。 這些數據點從資料集中刪除。 詳細瞭解[時間序列預測的數據準備。](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
 
 ## <a name="run-experiment-and-view-results"></a>執行實驗並檢視結果
 
@@ -246,7 +254,7 @@ State| 描述
 
     *"進階"* 選單提供預設部署功能,如[資料收集](how-to-enable-app-insights.md)和資源利用率設定。 如果要重寫這些預設值,可以在此功能表中執行此操作。
 
-1. 選取 [部署]****。 部署可能需要大約 20 分鐘才能完成。
+1. 選取 [部署]  。 部署可能需要大約 20 分鐘才能完成。
 
 現在,您有一個可操作的 Web 服務來生成預測! 您可以通過從[Power BI 內置的 Azure 機器學習支援](how-to-consume-web-service.md#consume-the-service-from-power-bi)中查詢服務來測試預測。
 

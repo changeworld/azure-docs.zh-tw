@@ -5,35 +5,37 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016794"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272469"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure App Service 中設定 PHP
 
 ## <a name="introduction"></a>簡介
 
-本指南示範如何為 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的 Web 應用程式、行動後端和 API 應用程式設定內建的 PHP 執行階段，提供自訂的 PHP 執行階段，以及啟用延伸模組。 若要使用 App Service，請註冊 [免費試用]。 若要充分利用本指南，您應該先在 App Service 中建立 PHP 應用程式。
+本指南介紹如何在[Azure 應用服務](https://go.microsoft.com/fwlink/?LinkId=529714)中為 Web 應用和 API 應用配置內建 PHP 運行時、提供自訂 PHP 執行時以及啟用擴展。 若要使用 App Service，請註冊 [免費試用]。 若要充分利用本指南，您應該先在 App Service 中建立 PHP 應用程式。
 
 ## <a name="how-to-change-the-built-in-php-version"></a>作法：變更內建 PHP 版本
 
-當您建立 App Service 應用程式時，預設會安裝 PHP 5.6 並立即可供使用。 若要查看可用的修訂版、其預設組態及啟用的擴充，最好的方法是部署呼叫 [phpinfo()] 函數的指令碼。
+建立 Web 應用程式時,您可以選擇將設定的 PHP 版本。 有關當前支援版本的最新資訊,請參閱[應用服務上的 PHP。](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)
 
-PHP 7.0 和 PHP 7.2 版本同樣可供使用，但預設並未啟用。 若要更新 PHP 版本，請遵循下列方法其中之一：
+要檢查應用的現有運行時版本,可以部署調用[phpinfo()]函數的腳本。
+
+若要更新 PHP 版本，請遵循下列方法其中之一：
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 流覽到[Azure 門戶](https://portal.azure.com)中的應用，然後滾動到 **"配置"** 頁。
+1. 瀏覽到[Azure 門戶](https://portal.azure.com)中的應用,然後滾動到 **「配置」** 頁。
 
-2. 從**配置**中選擇 **"常規設置"** 並選擇新的 PHP 版本。
+2. 從**設定**選擇 **「常規設定」** 並選擇新的 PHP 版本。
 
-3. 按一下 **"常規設置**"邊欄選項卡頂部的 **"保存**"按鈕。
+3. 按下 **「常規設定**」邊欄選項卡頂部的 **「儲存**」按鈕。
 
 ### <a name="azure-cli"></a>Azure CLI 
 
@@ -49,7 +51,7 @@ PHP 7.0 和 PHP 7.2 版本同樣可供使用，但預設並未啟用。 若要�
 
 2. 設定應用程式的 PHP 版本。
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. PHP 版本現在已設定完成。 您可確認這些設定：
 
@@ -79,7 +81,7 @@ PHP 7.0 和 PHP 7.2 版本同樣可供使用，但預設並未啟用。 若要�
 
 1. 使用機碼 `PHP_INI_SCAN_DIR` 和值 `d:\home\site\ini` 將應用程式設定新增至應用程式
 1. 在 `d:\home\site\ini` 目錄中使用 Kudo 主控台 (http://&lt;site-name&gt;.scm.azurewebsite.net) 建立 `settings.ini` 檔案。
-1. 使用在 `php.ini` 檔案中使用的相同語法，將組態設定新增至 `settings.ini` 檔案。 例如，如果要將 `curl.cainfo` 設定指向 `*.crt` 檔案並將 'wincache.maxfilesize' 設定設定為 512K，您的 `settings.ini` 檔案應該包含以下文字：
+1. 使用在 `php.ini` 檔案中使用的相同語法，將組態設定新增至 `settings.ini` 檔案。 例如,如果要將`curl.cainfo`設定`*.crt`指向 檔並將「wincache.maxfilesize」設定設定為 512`settings.ini`K,則 檔將包含以下文本:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -108,10 +110,10 @@ PHP 7.0 和 PHP 7.2 版本同樣可供使用，但預設並未啟用。 若要�
 1. 將 `bin` 目錄新增至根目錄。
 2. 將 `.dll` 擴充檔放入 `bin` 目錄中 (例如，`php_xdebug.dll`)。 請確定擴充功能與預設的 PHP 版本相容，並且與 VC9 及非執行緒安全 (nts) 相容。
 3. 部署您的應用程式。
-4. 流覽到 Azure 門戶中的應用，然後按一下 **"設置"** 部分下的 **"配置**"。
-5. 從 **"配置"** 邊欄選項卡中，選擇 **"應用程式設定**"。
-6. 在"**應用程式設定"** 部分中，按一下 **" 新建應用程式"設置**並創建**PHP_EXTENSIONS**鍵。 此索引鍵的值是相對於網站根目錄的路徑：**bin\your-ext-file**。
-7. 按一下底部的 **"更新**"按鈕，然後按一下"**應用程式設定"** 選項卡上方的 **"保存**"。
+4. 瀏覽到 Azure 門戶中的應用,然後按下 **「設置」** 部分下的 **「設定**」。
+5. 從 **「設定」** 邊欄選項卡中,選擇 **「應用程式設定**」 。
+6. 在「**應用程式設定」** 部分中,按一下 **「新建應用程式」設置**並創建**PHP_EXTENSIONS**鍵。 此索引鍵的值是相對於網站根目錄的路徑：**bin\your-ext-file**。
+7. 按下底部的 **「更新**」按鈕,然後按下「**應用程式設定」** 選項卡上方的 **「儲存**」。
 
 Zend 擴充功能也支援使用 **PHP_ZENDEXTENSIONS** 索引鍵。 若要啟用多個擴充功能，請針對應用程式設定值包含以逗號分隔的 `.dll` 檔案清單。
 
@@ -119,15 +121,15 @@ Zend 擴充功能也支援使用 **PHP_ZENDEXTENSIONS** 索引鍵。 若要啟�
 
 除了預設的 PHP 執行階段之外，App Service 也可以使用您提供的 PHP 執行階段來執行 PHP 指令碼。 您提供的執行階段可以由也是您提供的 `php.ini` 檔案加以設定。 若要使用自訂 PHP 執行階段搭配 App Service，請遵循下列步驟。
 
-1. 取得 PHP for Windows 的非安全執行緒 VC9 或 VC11 相容版本。 Windows 的 PHP 最新版本可在此處找到： [https://windows.php.net/download/]。 較舊的版本可在此處的存檔中找到： [https://windows.php.net/downloads/releases/archives/]。
+1. 取得 PHP for Windows 的非安全執行緒 VC9 或 VC11 相容版本。 Windows 的 PHP 最新版本可在此[https://windows.php.net/download/]處找到: 。 較舊的版本可在此處的封存檔中找到[https://windows.php.net/downloads/releases/archives/]: 。
 2. 為您的執行階段修改 `php.ini` 檔案。 App Service 將忽略僅系統層級指示詞的任何組態設定。 (如需僅系統層級指示詞的資訊，請參閱 [php.ini 指示詞的清單] (英文))。
 3. 或者，將擴充功能新增至 PHP 執行階段，並且在 `php.ini` 檔案中啟用這些擴充功能。
 4. 將 `bin` 目錄新增至根目錄，並在其中放入包含 PHP 執行階段的目錄 (例如，`bin\php`)。
 5. 部署您的應用程式。
-6. 流覽到 Azure 門戶中的應用，然後按一下 **"配置"** 邊欄選項卡。
-8. 從 **"配置"** 邊欄選項卡中，選擇**路徑映射**。 
-9. 按一下 **" 新處理常式**"並添加到`*.php`"擴展"欄位，並將路徑`php-cgi.exe`添加到**腳本處理器**中的可執行檔。 如果您將 PHP 執行階段放入應用程式根目錄內的 `bin` 目錄中，該路徑將是 `D:\home\site\wwwroot\bin\php\php-cgi.exe`。
-10. 在底部，按一下 **"更新"** 以完成添加處理常式映射。
+6. 瀏覽到 Azure 門戶中的應用,然後按下 **「配置」** 邊欄選項卡。
+8. 從 **「設定」** 邊列選項卡中, 選擇**路徑映射**。 
+9. 按下 **「新處理程式**」並添加`*.php`到「擴展」欄位,並將`php-cgi.exe`路徑添加到**文稿處理器**中的可執行檔。 如果您將 PHP 執行階段放入應用程式根目錄內的 `bin` 目錄中，該路徑將是 `D:\home\site\wwwroot\bin\php\php-cgi.exe`。
+10. 在底部,按兩下 **「更新」** 以完成添加處理程式映射。
 11. 按一下 [儲存]**** 來儲存變更。
 
 <a name="composer" />

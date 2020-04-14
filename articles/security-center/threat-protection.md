@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心中的威脅保護
+title: Azure 資訊安全中心內的威脅防護
 description: 本主題介紹受 Azure 安全中心威脅保護功能保護的資源
 services: security-center
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435338"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263449"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心中的威脅保護
+# <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
 當安全中心檢測到環境的任何區域中的威脅時,它會生成警報。 這些警報描述受影響資源的詳細資訊、建議的補救步驟,在某些情況下還描述了在回應中觸發邏輯應用的選項。
 
@@ -159,19 +159,20 @@ Azure SQL 資料庫和 SQL 的進階威脅防護是[進階 SQL 安全功能的�
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Azure 儲存的威脅保護<a name="azure-storage"></a>
 
-> [!NOTE]
-> 此服務在美國政府雲中可用,但沒有其他主權或 Azure 政府雲區域。
+高級存儲威脅保護可檢測訪問或利用存儲帳戶的異常且可能有害的嘗試。 此保護層允許您解決威脅,而無需您成為安全專家,並説明您管理安全監控系統。
 
-進階儲存威脅保護(目前僅適用於 Blob 儲存)可檢測存取或利用儲存帳戶的異常和潛在有害嘗試。 此保護層允許您解決威脅,而無需您成為安全專家,並説明您管理安全監控系統。
+Azure 儲存的進階威脅保護目前僅適用於 Blob[儲存](https://azure.microsoft.com/services/storage/blobs/)。 
+
+此服務在所有公共雲和美國政府雲中都可用,但沒有其他主權或 Azure 政府雲區域。
+
+有關定價詳細資訊(包括 30 天免費試用版),請參閱[Azure 安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 如需詳細資訊，請參閱
 
 * [如何為 Azure 儲存啟用進階威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 儲存的威脅保護警報清單](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > 您可以按照[本部落格文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的說明來類比 Azure 儲存警報。

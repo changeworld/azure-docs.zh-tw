@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755371"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262982"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>針對 Salesforce 設定潛在客戶管理
 
@@ -64,11 +64,15 @@ ms.locfileid: "80755371"
 
 1. 在"連接詳細資訊"彈出視窗上,選擇 **「潛在顧客目標****」的 Salesforce,** 然後`oid`按照前面的步驟貼到 **「組織」標識字**段,從 Web 到潛在顧客窗體。
 
-1. 選取 [儲存]  。 
+1. **聯繫電子郵件**- 為公司中應接收新潛在顧客的電子郵件通知的人員提供電子郵件。 您可以通過用分號分隔它們來提供多封電子郵件。
 
-    >[!Note]
-    >您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。
+1. 選擇 **"確定**"。
 
-    ![連線詳細資訊 ─ 選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+要確保已成功連接到潛在顧客目標,請單擊驗證按鈕。 如果成功,您將在潛在顧客目標中具有測試潛在顧客。
 
-    ![連線詳細資訊 ─ 選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。
+
+![連線詳細資訊 ─ 選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![連線詳細資訊 ─ 選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

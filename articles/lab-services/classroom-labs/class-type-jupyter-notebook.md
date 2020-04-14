@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478228"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257720"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>設定實驗室,使用 Python 和 Jupyter 筆記本教授數據科學
 
@@ -26,7 +26,7 @@ ms.locfileid: "80478228"
 
 ## <a name="lab-configuration"></a>實驗室組態
 
-要設置此實驗,需要 Azure 訂閱和實驗室帳戶才能開始。 如果沒有 Azure 訂閱,請先創建[一個免費帳戶](https://azure.microsoft.com/free/)。" 獲取 Azure 訂閱後,可以在 Azure 實驗室服務中創建新的實驗室帳戶。 有關創建新實驗室帳戶的詳細資訊,請參閱[設置實驗室帳戶的教程](tutorial-setup-lab-account.md)。  您還可以使用現有的實驗室帳戶。
+要設置此實驗,需要 Azure 訂閱和實驗室帳戶才能開始。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 獲取 Azure 訂閱後,可以在 Azure 實驗室服務中創建新的實驗室帳戶。 有關創建新實驗室帳戶的詳細資訊,請參閱[設置實驗室帳戶的教程](tutorial-setup-lab-account.md)。  您還可以使用現有的實驗室帳戶。
 
 ### <a name="lab-account-settings"></a>實驗室帳戶設定
 
@@ -37,7 +37,7 @@ ms.locfileid: "80478228"
 | 市場映射 | 啟用[數據科學虛擬機 - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)映射,以便在實驗室帳戶中使用。 |
 
 >[!TIP]
->本文將重點介紹使用 Windows Server 作業系統的範本電腦。  還可以使用 Azure 應用商店中[針對 Linux (Ubuntu) 映像的數據科學虛擬機](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)設置包含 Python 和 Jupyter 筆記本的數據科學類。
+>本文將重點介紹使用 Windows Server 作業系統的範本電腦。  還可以使用 Azure 應用商店中[針對 Linux (Ubuntu) 映像的數據科學虛擬機](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)設置包含 Python 和 Jupyter 筆記本的數據科學類。
 
 ### <a name="lab-settings"></a>實驗室設定
 

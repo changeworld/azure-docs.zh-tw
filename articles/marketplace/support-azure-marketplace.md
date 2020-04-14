@@ -1,5 +1,5 @@
 ---
-title: 支援 Azure Marketplace 和 AppSource | Azure
+title: 支援商業市場 |蔚藍
 description: Azure Marketplace 和 AppSource 的支援資訊和連結
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284920"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252229"
 ---
 # <a name="support-for-the-marketplace"></a>Marketplace 的支援  
 以下是 Marketplace 的支援選項清單。  
@@ -21,9 +21,9 @@ ms.locfileid: "80284920"
 
 ## <a name="onboarding"></a>登入
 
-在 Microsoft[市場發行者的支援下](https://aka.ms/marketplacepublishersupport)，針對載入和入門問題打開票證。
+在 Microsoft[市場發布者的支援下](https://aka.ms/marketplacepublishersupport),針對載入和入門問題打開票證。
 
-## <a name="partner-center-or-cloud-partner-portal"></a>合作夥伴中心或雲合作夥伴門戶  
+## <a name="partner-center-or-cloud-partner-portal"></a>合作夥伴中心或雲端合作夥伴門戶  
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
@@ -40,14 +40,14 @@ ms.locfileid: "80284920"
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
-| 電子郵件：[cosell@microsoft.com](mailto:cosell@microsoft.com) | 支援上架程序和有關共同銷售計劃的問題。 | 以美國太平洋時區為準。 |  
-| 電子郵件：[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
-| 電子郵件：[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
+| 電子郵件:[cosell@microsoft.com](mailto:cosell@microsoft.com) | 支援上架程序和有關共同銷售計劃的問題。 | 以美國太平洋時區為準。 |  
+| 電子郵件:[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
+| 電子郵件:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 訪問[Azure 應用商店和 AppSource 發行者指南頁面](https://docs.microsoft.com/azure/marketplace/)。
-* 詳細瞭解[合作夥伴中心對商業市場計畫的支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+* 存取[商業市場出版者指南頁](https://docs.microsoft.com/azure/marketplace/)。
+* 詳細瞭解[合作夥伴中心對商業市場計劃的支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
 
 ---

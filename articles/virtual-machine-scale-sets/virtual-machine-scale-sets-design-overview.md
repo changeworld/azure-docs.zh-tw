@@ -2,20 +2,20 @@
 title: Azure 虛擬機器縮放集的設計注意事項
 description: 瞭解 Azure 虛擬機器縮放集的設計注意事項。 將比例集功能與 VM 功能進行比較。
 keywords: linux 虛擬機器, 虛擬機器擴展集
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 06/01/2017
-ms.author: manayar
-ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250773"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273761"
 ---
 # <a name="design-considerations-for-scale-sets"></a>擴展集的設計考量
 本文會討論虛擬機器擴展集的設計考量。 如需虛擬機器擴展集的相關資訊，請參閱 [虛擬機器擴展集概觀](virtual-machine-scale-sets-overview.md)。
@@ -25,7 +25,7 @@ ms.locfileid: "79250773"
 
 ### <a name="scale-set-specific-features"></a>擴展集特定的功能
 
-- 指定比例集配置後，可以更新*容量*屬性以並行部署更多 VM。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
+- 指定比例集配置後,可以更新*容量*屬性以並行部署更多 VM。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
 - 您可以[使用 Azure 自動調整規模自動調整擴展集](./virtual-machine-scale-sets-autoscale-overview.md)，但無法針對個別 VM 執行。
 - 您可以[重新安裝擴展集 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)，但[無法針對個別 VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) 執行。
 - 您可以[過度佈建](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)擴展集 VM，以提高可靠性並加快部署速度。 除非您撰寫自訂程式碼來執行這個動作，否則無法過度佈建個別 VM。
@@ -39,7 +39,7 @@ ms.locfileid: "79250773"
 - 您可以將個別 VM 從原生磁碟移轉至受控磁碟，但無法移轉擴展集中的 VM 執行個體。
 - 您可以將 IPv6 公用 IP 位址指派給個別 VM 虛擬網路介面卡 (NIC)，但無法針對擴展集中的 VM 執行個體執行此操作。 您可以將 IPv6 公用 IP 位址指派給個別 VM或擴展集 VM 之前的負載平衡器。
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>包含 Azure 受控磁碟的擴展集
 擴展集可以使用 [Azure 受控磁碟](../virtual-machines/windows/managed-disks-overview.md)來建立，而不是傳統的 Azure 儲存體帳戶。 受控磁碟可提供下列優點：

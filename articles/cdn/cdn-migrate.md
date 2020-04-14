@@ -1,9 +1,9 @@
 ---
-title: 將 Azure CDN 設定檔從 Verizon 標準遷移到 Verizon 高級版
+title: 將 Azure CDN 設定檔從 Verizon 標準移轉到 Verizon 進階版
 description: 了解如何將設定檔從 Verizon 標準移轉至 Verizon 進階的詳細資料。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 8ab66117be4f05550b00defafc883108646be283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61c472281c64fba451bb9b05f69ebee09bc763fd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083048"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260428"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>將 Azure CDN 設定檔從標準 Verizon 移轉至進階 Verizon
 

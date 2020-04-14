@@ -3,8 +3,8 @@ title: 使用服務管理 API (Python) - 功能指南
 description: 了解如何透過程式設計從 Python 執行一般服務管理工作。
 services: cloud-services
 documentationcenter: python
-author: lmazuel
-manager: wpickett
+author: tanmaygore
+manager: vashan
 editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: lmazuel
-ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.author: tagore
+ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547589"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253351"
 ---
 # <a name="use-service-management-from-python"></a>從 Python 使用服務管理
 本指南說明如何以程式設計方式，從 Python 執行一般服務管理工作。 [適用於 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) \(英文\) 中的 **ServiceManagementService** 類別支援以程式設計方式存取 [Azure 入口網站][management-portal]中提供的大部分服務管理相關功能。 您可以使用此功能來建立、更新和刪除雲端服務、部署、資料管理服務，以及虛擬機器。 建置需要透過程式設計方式存取服務管理的應用程式時，此功能十分實用。

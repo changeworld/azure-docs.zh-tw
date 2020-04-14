@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411616"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262905"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在應用內嵌影像的索引器小元件
 
@@ -265,7 +265,7 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 ## <a name="code-samples"></a>程式碼範例
 
-請參考包含影片索引器 API 與小工具範例[的程式碼範例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets):
+請參考包含影片索引器 API 與小工具範例[的程式碼範例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets):
 
 | 檔案/資料夾                       | 描述                                |
 |-----------------------------------|--------------------------------------------|

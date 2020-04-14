@@ -1,19 +1,19 @@
 ---
 title: Azure 虛擬機器擴展集常見問題集
 description: 獲取有關 Azure 中虛擬機縮放集的最常見問題。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.author: manayar
-ms.openlocfilehash: 3b34708d6e91da627ff44018778318337ddb6b06
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: mimckitt
+ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879491"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273710"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虛擬機器擴展集常見問題集
 

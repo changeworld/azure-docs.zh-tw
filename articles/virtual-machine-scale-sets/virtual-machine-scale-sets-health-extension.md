@@ -1,18 +1,18 @@
 ---
-title: 將應用程式運行狀況擴展與 Azure 虛擬機器縮放集一起使用
+title: 將應用程式執行狀況延伸與 Azure 虛擬機器縮放集一起使用
 description: 了解如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275883"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273727"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>搭配虛擬機器擴展集使用應用程式健康狀態延伸模組
 監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。
@@ -21,7 +21,7 @@ ms.locfileid: "76275883"
 
 ## <a name="prerequisites"></a>Prerequisites
 本文假設您已熟悉以下各項：
--   Azure 虛擬機器[擴展](../virtual-machines/extensions/overview.md)
+-   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集
 
 ## <a name="when-to-use-the-application-health-extension"></a>使用應用程式健康狀態延伸模組的時機
@@ -141,7 +141,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set)，可將應用程式健康狀態延伸模組新增至擴展集模型定義。
 
-下面的示例將應用程式運行狀況擴展添加到基於 Linux 的比例集的比例集模型。
+下面的範例將應用程式運行狀況擴展添加到基於 Linux 的比例集的比例集模型。
 
 ```azurecli-interactive
 az vmss extension set \
@@ -152,7 +152,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-副檔名.json 檔內容。
+擴展名.json 文件內容。
 
 ```json
 {

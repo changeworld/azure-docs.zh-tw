@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 939a5f6a4c70a8a1229507e0357cb588c17152fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f2ae9fe6f006b5418ebee82b08a44188b7c58d3
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288762"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273064"
 ---
 # <a name="virtual-machine-offer"></a>虛擬機器供應項目
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器產品/服務](https://aka.ms/CreateAzureVMoffer)中的說明進行操作,以管理遷移的優惠。
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|

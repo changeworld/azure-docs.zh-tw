@@ -3,12 +3,12 @@ title: 備份檔案與資料夾 ─常見問題
 description: 解決有關使用 Azure 備份備份檔和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421312"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254745"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>有關備份檔案與資料夾的常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "80421312"
 
 ### <a name="how-long-are-vault-credentials-valid"></a>保管庫憑據的有效期是多少?
 
-保存庫認證將於 48 小時後過期。 如果憑據檔過期,請再次從 Azure 門戶下載該檔。
+保管庫憑據將在 10 天后過期。 如果憑據檔過期,請再次從 Azure 門戶下載該檔。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以從哪些驅動器備份檔和資料夾?
 
@@ -185,7 +185,6 @@ Azure 備份代理需要密碼(您在註冊期間提供)才能在還原期間解
 | --- | --- | --- |
 | 未能拿下 |可用 |您可以在另一台電腦上安裝和註冊 MARS 代理,其密碼與註冊原始電腦時提供的相同密碼相同。 選擇 **「恢復選項** > **」「其他位置**」 以執行還原。 有關詳細資訊,請參閱[本文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | 未能拿下 |未能拿下 |無法回復資料或資料無法使用 |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果我取消進行中的還原作業，會發生什麼事？
 

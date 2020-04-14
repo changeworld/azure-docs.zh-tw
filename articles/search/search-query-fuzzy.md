@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000657"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262429"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>模糊搜尋以更正拼字錯誤與拼字錯誤
 
@@ -71,7 +71,7 @@ Azure 認知搜尋支援模糊搜索,這是一種查詢類型,用於補償輸入
 > [!NOTE]
 > 在查詢處理過程中,模糊查詢不經過[詞法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)。 查詢輸入直接添加到查詢樹中並展開以創建術語圖。 執行的唯一轉換是較低的套管。
 
-## <a name="how-to-test-fuzzy-search"></a>如何測試模糊搜尋
+## <a name="testing-fuzzy-search"></a>測試模糊搜尋
 
 對於簡單的測試,我們建議[搜索資源管理器](search-explorer.md)或[Postman](search-get-started-postman.md)在查詢運算式上反覆運算。 這兩種工具都是互動式的,這意味著您可以快速單步執行術語的多個變體,並評估返回的回應。
 

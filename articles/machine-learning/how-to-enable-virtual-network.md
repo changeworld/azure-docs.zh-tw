@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115303"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257244"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推理作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -546,7 +546,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
     > [!IMPORTANT]
     > 存儲帳戶、計算群集和 Azure 容器註冊表必須都位於虛擬網路的同一子網中。
     
-    有關詳細資訊,請參閱[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)方法引用。
+    有關詳細資訊,請參閱[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-)方法引用。
 
 1. 如果對 Azure 機器學習工作區使用專用連結,並將工作區的 Azure 容器註冊表放在虛擬網路中,則還必須應用以下 Azure 資源管理器範本。 此範本使工作區能夠通過專用鏈路與 ACR 通信。
 

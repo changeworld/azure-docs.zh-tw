@@ -1,5 +1,5 @@
 ---
-title: 日期時間V2預構建實體 - LUIS
+title: 日期時間 V2 預建構實體 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中 datetimeV2 預先建置的實體資訊。
 services: cognitive-services
@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270743"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272605"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 DatetimeV2 預先建置實體
 
 **datetimeV2** 預先建置的實體會擷取日期和時間值。 這些值會以標準化格式解析，以供用戶端程式取用。 當語句中有不完整的日期或時間時，LUIS 會在端點回應中包括「過去與未來值」__。 因為此實體已經定型，所以您不需要將包含 datetimeV2 的範例語句加入應用程式意圖。
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 類型
-日期時間V2由[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml)GitHub 存儲庫管理。
+日期時間V2由[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml)GitHub 儲存庫管理。
 
 ## <a name="example-json"></a>範例 JSON
 
@@ -145,10 +145,10 @@ ms.locfileid: "78270743"
 
 |屬性名稱|屬性描述|
 |--|--|
-|timex|以遵循 [ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)的 TIMEX 格式表示的時間、日期或日期範圍，並對註解的 TIMEX3 屬性使用 TimeML 語言。 此註解會在 [TIMEX 指導方針](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf) \(英文\) 中說明。|
-|mod|術語用於描述如何使用值，如`before`。 `after`|
-|type|子類型可以是以下項之一`datetime`： 、 `date`、 `time`、 `daterange`、 `timerange`、 `datetimerange` `duration`、 `set`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、|
-|value|**選。** 格式 yyyy-MM-dd（日期）、HH：mm：ss（時間）yyyy-MM-dd HH：mm：ss（日期時間）中的約會時間物件。 如果 `type` 是 `duration`，則值會是秒數 (duration) <br/> 只有當 `type` 是 `datetime` 或 `date`、`time` 或 `duration 時才能使用。|
+|timex|以遵循 [ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)的 TIMEX 格式表示的時間、日期或日期範圍，並對註解的 TIMEX3 屬性使用 TimeML 語言。|
+|mod|字語用於描述如何使用值,如`before` `after` 。|
+|type|子類型可以是以下項目之一`datetime`: `date` `time`、 `daterange` `timerange`、 `datetimerange` `duration` `set`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、|
+|value|**選。** 格式 yyyy-MM-dd(日期)、HH:mm:ss(時間)yyyy-MM-dd HH:mm:ss(日期時間)中的約會時間物件。 如果 `type` 是 `duration`，則值會是秒數 (duration) <br/> 只有當 `type` 是 `datetime` 或 `date`、`time` 或 `duration 時才能使用。|
 
 ## <a name="valid-date-values"></a>有效的日期值
 
@@ -162,7 +162,7 @@ ms.locfileid: "78270743"
 
 如果可以是過去或未來的日期，LUIS 會兩個值都提供。 例如，語句包含月份與日期，但不含年份。
 
-例如，給定以下表述：
+例如,給定以下表述:
 
 `May 2nd`
 
@@ -172,7 +172,7 @@ ms.locfileid: "78270743"
 下列範例顯示「5 月 2 日」實體的解析。 此解析假設今天的日期介於 2017 年 5 月 2 日到 2018 年 5 月 1 日之間。
 `timex` 欄位中包含 `X` 的欄位，是語句中未明確指定的日期部分。
 
-## <a name="date-resolution-example"></a>日期解析示例
+## <a name="date-resolution-example"></a>日期解析範例
 
 
 以下陳述及其部分 JSON 回應如下所示。
@@ -274,7 +274,7 @@ ms.locfileid: "78270743"
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>數值日期的日期範圍解析範例
 
-`datetimeV2` 實體會擷取日期和時間範圍。 `start` 和 `end` 欄位可指定範圍的開頭和結尾。 對於陳述`May 2nd to May 5th`，LUIS 提供當前年份和下一年的**日期範圍**值。 在 `timex` 欄位中，`XXXX` 值表示年份的語意模糊。 `P3D` 表示時間週期長達三天。
+`datetimeV2` 實體會擷取日期和時間範圍。 `start` 和 `end` 欄位可指定範圍的開頭和結尾。 對於陳述`May 2nd to May 5th`,LUIS 提供當前年份和下一年的**日期範圍**值。 在 `timex` 欄位中，`XXXX` 值表示年份的語意模糊。 `P3D` 表示時間週期長達三天。
 
 以下陳述及其部分 JSON 回應如下所示。
 
@@ -378,7 +378,7 @@ ms.locfileid: "78270743"
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>星期幾的日期範圍解析範例
 
-下面的示例顯示了 LUIS 如何使用**datetimeV2**來解決話語`Tuesday to Thursday`。 在此範例中，目前日期為 6 月 19 日。 LUIS 包含兩個日期範圍的 **daterange** 值，分別在目前日期之前與之後。
+下面的範例顯示了 LUIS 如何使用**datetimeV2**`Tuesday to Thursday`來解決話語 。 在此範例中，目前日期為 6 月 19 日。 LUIS 包含兩個日期範圍的 **daterange** 值，分別在目前日期之前與之後。
 
 以下陳述及其部分 JSON 回應如下所示。
 
@@ -482,11 +482,11 @@ ms.locfileid: "78270743"
 
 ## <a name="time-range-resolution-example"></a>時間範圍解析範例
 
-日期時間V2 JSON回應在 API V3 中已更改。 下列範例示範 LUIS 如何使用 **datetimeV2** 解析有時間範圍的語句。
+日期時間V2 JSON回應在API V3中已更改。 下列範例示範 LUIS 如何使用 **datetimeV2** 解析有時間範圍的語句。
 
-API V2 的更改：
-* `datetimeV2.timex.type`屬性不再返回，因為它在父級別返回 。 `datetimev2.type`
-* 該`datetimeV2.value`屬性已重命名為`datetimeV2.timex`。
+API V2 的變更:
+* `datetimeV2.timex.type`屬性不再返回,因為它在父級別返回`datetimev2.type`。
+* 該`datetimeV2.value`屬性已重新命名`datetimeV2.timex`。
 
 以下陳述及其部分 JSON 回應如下所示。
 
@@ -494,7 +494,7 @@ API V2 的更改：
 
 #### <a name="v3-response"></a>[V3 回應](#tab/5-1)
 
-以下 JSON 的`verbose`參數設置為`false`：
+以下 JSON`verbose`的`false`參數設定為 :
 
 ```JSON
 
@@ -519,7 +519,7 @@ API V2 的更改：
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/5-2)
 
-以下 JSON 的`verbose`參數設置為`true`：
+以下 JSON`verbose`的`true`參數設定為 :
 
 ```json
 
@@ -582,7 +582,7 @@ API V2 的更改：
 
 * * *
 
-## <a name="time-resolution-example"></a>時間解析度示例
+## <a name="time-resolution-example"></a>時間解析度範例
 
 以下陳述及其部分 JSON 回應如下所示。
 

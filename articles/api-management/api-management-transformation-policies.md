@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803240"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260899"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -214,7 +214,7 @@ ms.locfileid: "80803240"
 ```
 
 > [!NOTE]
-> 後端實體可以透過管理[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。
+> 後端實體可以透過管理[API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。
 
 ### <a name="example"></a>範例
 
@@ -269,7 +269,7 @@ ms.locfileid: "80803240"
 |名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
 |base-url|新的後端服務基底 URL。|或`base-url``backend-id`必須存在。|N/A|
-|backend-id|要傳送至的後端識別碼。 (後端實體透過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。|或`base-url``backend-id`必須存在。|N/A|
+|backend-id|要傳送至的後端識別碼。 (後端實體透過[API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend)和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)進行管理。|或`base-url``backend-id`必須存在。|N/A|
 |sf-partition-key|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 用於從名稱解析服務解析特定資料分割。|否|N/A|
 |sf-replica-type|僅適用於後端為 Service Fabric 服務並使用 'backend-id' 指定時。 控制要求應移至資料分割的主要或次要複本。 |否|N/A|
 |sf-resolve-condition|僅適用於後端為 Service Fabric 服務時。 識別新的解析是否必須重複呼叫 Service Fabric 後端的條件。|否|N/A|

@@ -1,5 +1,5 @@
 ---
-title: 為 Azure 應用商店創建虛擬機器產品/服務的技術資產
+title: 為 Azure 應用商店創建虛擬機產品/服務的技術資產
 description: 說明如何在 Azure Marketplace 中為虛擬機器供應項目建立技術資產。
 author: dsindona
 ms.service: marketplace
@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278019"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273965"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>建立虛擬機器供應項目的技術資產
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始向合作夥伴中心移動 Azure 虛擬機器產品/ 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器技術資產](https://aka.ms/AzureVMTechAsset)中的說明進行操作,以管理遷移的優惠。
 
 本節會逐步說明如何建立和設定 Azure Marketplace 虛擬機器 (VM) 供應項目的技術資產。  虛擬機器包含兩個元件：解決方案的虛擬硬碟 (VHD)，以及選擇性的關聯資料磁碟。  
 
@@ -34,27 +37,27 @@ VM 映像包含一個作業系統磁碟以及零或多個資料磁碟。 每個�
 
 ## <a name="fundamental-technical-knowledge"></a>基本技術知識
 
-設計、構建和測試這些資產需要時間，需要對 Azure 平臺和用於構建產品/服務的技術進行技術知識。 除了解決方案領域之外，您的工程團隊還應瞭解以下 Microsoft 技術： 
--   對於 [Azure 服務](https://azure.microsoft.com/services/)的基本了解 
--   如何[設計和架構 Azure 應用程式](https://azure.microsoft.com/solutions/architecture/)
--   具備 [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)、[Azure 儲存體](https://azure.microsoft.com/services/?filter=storage)和 [Azure 網路](https://azure.microsoft.com/services/?filter=networking)的運用知識
--   具備 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) 的運用知識
--   具備 [JSON](https://www.json.org/) 的運用知識
+設計、構建和測試這些資產需要時間,需要對 Azure 平臺和用於構建產品/服務的技術進行技術知識。 除了解決方案領域之外,您的工程團隊還應瞭解以下 Microsoft 技術: 
+-    對於 [Azure 服務](https://azure.microsoft.com/services/)的基本了解 
+-    如何[設計和架構 Azure 應用程式](https://azure.microsoft.com/solutions/architecture/)
+-    具備 [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)、[Azure 儲存體](https://azure.microsoft.com/services/?filter=storage)和 [Azure 網路](https://azure.microsoft.com/services/?filter=networking)的運用知識
+-    具備 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) 的運用知識
+-    具備 [JSON](https://www.json.org/) 的運用知識
 
 
 ## <a name="suggested-tools"></a>建議的工具 
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理 VHD 和虛擬機器：
--   [Azure 電源外殼](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 此外也建議您新增下列工具至開發環境： 
 
--   [Azure 存儲資源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [視覺工作室代碼](https://code.visualstudio.com/)
-    *   延伸模組：[Azure Resource Manager 工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   延伸模組：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   延伸模組：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    延伸模組：[Azure Resource Manager 工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    延伸模組：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    延伸模組：[Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 也建議您至 [Azure 開發人員工具](https://azure.microsoft.com/tools/) 頁面查看可用的工具，若您使用 Visual Studio，也請查看 [Visual Studio Marketplace](https://marketplace.visualstudio.com/)。
 

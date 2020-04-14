@@ -4,14 +4,14 @@ description: 使用 Azure CLI 來管理您的 Azure Cosmos DB 帳戶、資料庫
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 325840f8961fac49e599f1aa567ad8d4137820b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f86468bcafe3d7ce78827aba761bb4e1bf920fa
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251878"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273625"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 資源
 
@@ -19,14 +19,14 @@ ms.locfileid: "79251878"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-azure-cosmos-db-account"></a>建立 Azure Cosmos DB 帳戶
 
-使用 SQL API 創建 Azure Cosmos DB 帳戶，在西部美國 2 和東美國 2 區域創建會話一致性：
+使用 SQL API 建立 Azure Cosmos DB 帳戶,在西部美國 2 和東美國 2 區域建立會話一致性:
 
 > [!IMPORTANT]
-> Azure Cosmos 帳戶名稱必須小寫，且少於 31 個字元。
+> Azure Cosmos 帳戶名稱必須小寫,且少於 31 個字元。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -42,42 +42,42 @@ az cosmosdb create \
 
 ## <a name="add-or-remove-regions"></a>新增或移除區域
 
-創建具有兩個區域的 Azure Cosmos 帳戶，添加區域並刪除區域。
+創建具有兩個區域的 Azure Cosmos 帳戶,添加區域並刪除區域。
 
 > [!NOTE]
 > 您不能同時新增或移除 `locations` 區域，以及變更 Azure Cosmos 帳戶的其他屬性。 修改區域必須與帳戶資源的任何其他變更分開作業。
 > [!NOTE]
-> 此命令可讓您新增及移除區域，但不允許您修改容錯移轉優先順序或觸發手動容錯移轉。 請參閱[設置容錯移轉優先順序](#set-failover-priority)和[觸發手動容錯移轉](#trigger-manual-failover)。
+> 此命令可讓您新增及移除區域，但不允許您修改容錯移轉優先順序或觸發手動容錯移轉。 請參考[設定錯轉接優先權](#set-failover-priority)與[觸發手動錯 。](#trigger-manual-failover)
 
 ```azurecli-interactive
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount' # must be lower case and <31 characters
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount' # must be lower case and <31 characters
 
 # Create an account with 2 regions
 az cosmosdb create --name $accountName --resource-group $resourceGroupName \
-    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
-    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
+    --locations regionName="West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False
 
 # Add a region
 az cosmosdb update --name $accountName --resource-group $resourceGroupName \
-    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
-    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False \
-    --locations regionName= "South Central US" failoverPriority=2 isZoneRedundant=False
+    --locations regionName="West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False \
+    --locations regionName="South Central US" failoverPriority=2 isZoneRedundant=False
 
 # Remove a region
 az cosmosdb update --name $accountName --resource-group $resourceGroupName \
-    --locations regionName= "West US 2" failoverPriority=0 isZoneRedundant=False \
-    --locations regionName= "East US 2" failoverPriority=1 isZoneRedundant=False
+    --locations regionName="West US 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>啟用多個寫入區域
+## <a name="enable-multiple-write-regions"></a>開啟多個寫入區域
 
 為 Cosmos 帳戶啟用多主機
 
 ```azurecli-interactive
 # Update an Azure Cosmos account from single to multi-master
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -85,14 +85,14 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>設置容錯移轉優先順序
+## <a name="set-failover-priority"></a>設定容錯移優先權
 
-為為自動容錯移轉配置的 Azure Cosmos 帳戶設置容錯移轉優先順序
+為自動故障轉移設定的 Azure Cosmos 帳戶設定故障轉移優先權
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -106,8 +106,8 @@ az cosmosdb failover-priority-change --ids $accountId \
 
 ```azurecli-interactive
 # Enable automatic failover on an existing account
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -118,12 +118,12 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 ## <a name="trigger-manual-failover"></a>觸發手動容錯移轉
 
 > [!CAUTION]
-> 將優先順序 = 0 更改區域將觸發 Azure Cosmos 帳戶的手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
+> 將優先順序 = 0 更改區域將觸發 Azure Cosmos 帳戶的手動故障轉移。 變更其他優先順序則不會觸發容錯移轉。
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -135,7 +135,7 @@ az cosmosdb failover-priority-change --ids $accountId \
 
 ## <a name="list-all-account-keys"></a><a id="list-account-keys"></a>列出所有帳戶金鑰
 
-獲取 Cosmos 帳戶的所有金鑰。
+獲取Cosmos帳戶的所有金鑰。
 
 ```azurecli-interactive
 # List all account keys
@@ -149,7 +149,7 @@ az cosmosdb keys list \
 
 ## <a name="list-read-only-account-keys"></a>列出唯讀帳戶金鑰
 
-獲取 Cosmos 帳戶的唯讀金鑰。
+獲取Cosmos帳戶的唯讀金鑰。
 
 ```azurecli-interactive
 # List read-only account keys
@@ -179,7 +179,7 @@ az cosmosdb keys list \
 
 ## <a name="regenerate-account-key"></a>重新產生帳戶金鑰
 
-重新生成 Cosmos 帳戶的新金鑰。
+重新生成Cosmos帳戶的新密鑰。
 
 ```azurecli-interactive
 # Regenerate secondary account keys
@@ -205,9 +205,9 @@ az cosmosdb sql database create \
     -n $databaseName
 ```
 
-## <a name="create-a-database-with-shared-throughput"></a>創建具有共用輸送量的資料庫
+## <a name="create-a-database-with-shared-throughput"></a>建立具有共享輸送量的資料庫
 
-創建具有共用輸送量的 Cosmos 資料庫。
+創建具有共用輸送量的Cosmos資料庫。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -222,9 +222,9 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>更改資料庫的輸送量
+## <a name="change-the-throughput-of-a-database"></a>變更資料庫的輸送量
 
-將 Cosmos 資料庫的輸送量提高 1000 RU/s。
+將Cosmos資料庫的輸送量提高1000 RU/s。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -267,28 +267,28 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-## <a name="create-a-container-with-ttl"></a>使用 TTL 創建容器
+## <a name="create-a-container-with-ttl"></a>使用 TTL 建立容器
 
 創建啟用 TTL 的 Cosmos 容器。
 
 ```azurecli-interactive
 # Create an Azure Cosmos container with TTL of one day
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
-databaseName = 'database1'
-containerName = 'container1'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 az cosmosdb sql container update \
     -g $resourceGroupName \
     -a $accountName \
     -d $databaseName \
     -n $containerName \
-    --ttl = 86400
+    --ttl=86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>使用自訂索引策略創建容器
+## <a name="create-a-container-with-a-custom-index-policy"></a>使用自訂索引政策建立容器
 
-使用自訂索引策略、空間索引、複合索引、分區鍵和 400 的 RU/s 創建 Cosmos 容器。
+使用自定義索引策略、空間索引、複合索引、分區鍵和 400 的 RU/s 創建 Cosmos 容器。
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -340,7 +340,7 @@ rm -f "idxpolicy-$uniqueId.json"
 
 ## <a name="change-the-throughput-of-a-container"></a>變更容器的輸送量
 
-將 Cosmos 容器的輸送量提高 1000 RU/s。
+將Cosmos容器的輸送量提高1000 RU/s。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

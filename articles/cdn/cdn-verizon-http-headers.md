@@ -3,7 +3,7 @@ title: Azure CDN 規則引擎的 Verizon 專屬 HTTP 標頭 | Microsoft Docs
 description: 本文說明如何使用 Verizon 專屬 HTTP 標頭搭配 Azure CDN 規則引擎。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: magattus
-ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593254"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253555"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 Verizon 專屬 HTTP 標頭
 
@@ -54,7 +54,7 @@ X-EC-_&lt;名稱&gt;_ | 開頭為 X-EC** 的要求標頭 (例如，X-EC-Tag、[X
 
 - 平台：表示在其上要求內容的平台。 下列程式碼適用於此欄位： 
 
-    程式碼 | Platform
+    程式碼 | 平台
     -----|---------
     ECAcc | HTTP Large
     ECS   | HTTP Small

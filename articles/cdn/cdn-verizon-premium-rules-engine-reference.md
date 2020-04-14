@@ -2,19 +2,19 @@
 title: Azure CDN 規則引擎參考 | Microsoft Docs
 description: Azure CDN 規則引擎比對條件和功能的參考文件。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69996761"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253385"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>來自 Verizon 高級規則引擎引用的 Azure CDN
+# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>從 Verizon 進階規則引擎引用的 Azure CDN
 
 本文會針對 Azure 內容傳遞網路 (CDN) [規則引擎](cdn-verizon-premium-rules-engine.md)列出可用比對條件和功能的詳細描述。
 
@@ -71,11 +71,11 @@ Space | 空白字元，表示比對條件可能藉由指定值或模式獲得滿
 Space | 空白字元通常會被視為常值字元。
 'value' | 單引號會被視為常值字元。 單引號組不具有特殊意義。
 
-匹配支援正則運算式的條件和功能接受 Perl 相容正則運算式 （PCRE） 定義的模式。
+匹配支援正則表達式的條件和功能接受 Perl 相容正則運算式 (PCRE) 定義的模式。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [規則引擎匹配條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [規則引擎符合條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [規則引擎條件運算式](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [規則引擎功能](cdn-verizon-premium-rules-engine-reference-features.md)
 - [使用規則引擎覆寫 HTTP 行為](cdn-verizon-premium-rules-engine.md)

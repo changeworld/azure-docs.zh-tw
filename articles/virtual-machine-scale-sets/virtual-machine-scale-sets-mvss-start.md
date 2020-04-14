@@ -1,22 +1,22 @@
 ---
 title: 了解虛擬機器擴展集範本
-description: 瞭解如何通過幾個簡單步驟為 Azure 虛擬機器縮放集創建基本比例集範本。
-author: mayanknayar
+description: 瞭解如何通過幾個簡單步驟為 Azure 虛擬機縮放集創建基本比例集範本。
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 24db9b2d39771c481a8c43e2b55f12cef381b4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 9c6a30a5f08b33adfa515973962236516f34fbf3
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271898"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273387"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虛擬機器擴展集範本
-[Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署相關資源群組的絕佳方式。 本教程系列演示如何創建基本比例集範本以及如何修改此範本以適應各種方案。 所有範例皆來自這個 [GitHub 存放庫](https://github.com/gatneil/mvss)。
+[Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署相關資源群組的絕佳方式。 本教學系列展示如何創建基本比例集範本以及如何修改此範本以適應各種方案。 所有範例皆來自這個 [GitHub 存放庫](https://github.com/gatneil/mvss)。
 
 此範本已刻意簡化。 如需較完整的擴展集範本範例，請參閱 [Azure 快速入門範本 GitHub 存放庫](https://github.com/Azure/azure-quickstart-templates)，然後搜尋包含 `vmss` 字串的資料夾。
 
@@ -124,7 +124,7 @@ Resource Manager 範本也可讓您定義以後要在範本中使用的變數。
 ```
 
 ### <a name="choose-type-of-updates"></a>選擇更新類型
-擴展集也需要知道如何處理擴展集上的更新。 目前，有三個選項，`Manual``Rolling`和`Automatic`。 如需有關兩者之間差異的詳細資訊，請參閱有關[如何升級擴展集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)的文件。
+擴展集也需要知道如何處理擴展集上的更新。 目前,有三個選項,`Manual``Rolling``Automatic`和 。 如需有關兩者之間差異的詳細資訊，請參閱有關[如何升級擴展集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)的文件。
 
 ```json
        "properties": {

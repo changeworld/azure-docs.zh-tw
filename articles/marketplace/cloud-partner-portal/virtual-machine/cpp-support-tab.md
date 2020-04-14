@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2734bc0868584f9d02147abb953458bbcdec205e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288847"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273098"
 ---
 # <a name="virtual-machine-support-tab"></a>虛擬機器支援索引標籤
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器產品/服務](https://aka.ms/CreateAzureVMoffer)中的說明進行操作,以管理遷移的優惠。
 
 [新增供應項目]**** 頁面中的 [支援]**** 索引標籤可協助提供供應項目所需的技術及使用者支援資源。  其劃分成三個部分：**工程**、**客戶支援**以及**支援 URL**。
 
@@ -27,11 +30,11 @@ ms.locfileid: "80288847"
 |         欄位                 |       描述                                                        |
 |        -------                |       ------------                                                       |
 | *工程連絡人*     | Microsoft 與貴組織的技術連絡人 | 
-| **名字\***                | 負責技術/工程支援的人員或群組名稱     |
+| **名稱\***                | 負責技術/工程支援的人員或群組名稱     |
 | **電子郵件\***               | 此技術連絡人的電子郵件地址                                      |
 | **電話\***               | 此技術連絡人的電話號碼                                           |
 | *客戶支援*        | 接收客戶在 Azure 中開啟的支援票證 |
-| **名字\***                | 負責客戶支援的人員或群組名稱                  |
+| **名稱\***                | 負責客戶支援的人員或群組名稱                  |
 | **電子郵件\***               | 客戶支援部門的電子郵件地址                                            |
 | **電話\***               | 客戶支援部門的電話號碼                                            |
 | *支援 URL*            | 當您的客戶開啟支援票證時，Microsoft 會使用這些支援網站 |
@@ -42,4 +45,4 @@ ms.locfileid: "80288847"
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，如果您尚未這樣做，請最終確定[虛擬機器技術資產](./cpp-create-technical-assets.md)。
+接下來,如果您尚未這樣做,請最終確定[虛擬機器技術資產](./cpp-create-technical-assets.md)。

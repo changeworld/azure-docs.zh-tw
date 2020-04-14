@@ -3,8 +3,8 @@ title: 適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充
 description: 使用虛擬機器擴充功能在 Windows 虛擬機器上部署網路監看員代理程式。
 services: virtual-machines-windows
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073695"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261664"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>適用於 Windows 的網路監看員代理程式虛擬機器擴充功能
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure 網路監看員](../../network-watcher/network-watcher-monitoring-overview.md)是網路效能的監視、診斷和分析服務，可讓您監視 Azure 網路。 依需求擷取網路流量及 Azure 虛擬機器上的其他進階功能，都需要網路監看員代理程式虛擬機器擴充功能。
 
@@ -109,4 +109,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 ### <a name="support"></a>支援
 
-如果關於本文有任何需要協助的地方，您可以參閱網路監看員使用者指南文件，或連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇"獲取支援"。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果關於本文有任何需要協助的地方，您可以參閱網路監看員使用者指南文件，或連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇「獲取支援」。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

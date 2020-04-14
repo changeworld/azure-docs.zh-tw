@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/08/2019
 ms.custom: include file
-ms.openlocfilehash: bfce10b0c9c55012c3ba2fb25121b28157f203b8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78672114"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81274959"
 ---
 1. 移至 [Azure 入口網站](https://portal.azure.com/)來建立 Azure Cosmos DB 帳戶。 搜尋並選取 [Azure Cosmos DB]  。
 
@@ -32,9 +32,8 @@ ms.locfileid: "78672114"
     |Location|最接近使用者的區域|選取用來裝載 Azure Cosmos DB 帳戶的地理位置。 使用最接近使用者的位置，讓他們能以最快速度存取資料。|
     |帳戶類型|生產或非生產|如果帳戶將用於生產工作負載，請選取 [生產]  。 如果帳戶將用於非生產工作負載 (例如開發、測試、QA 或預備)，請選取 [非生產]  。 這是一種 Azure 資源標記設定，可調整入口網站體驗，但不會影響基礎 Azure Cosmos DB 帳戶。 您可以隨時變更此值。|
 
-
-> [!NOTE]
-> 每個 Azure 訂用帳戶最多可以有一個免費層的 Azure Cosmos DB 帳戶，而且必須在建立帳戶時選擇加入。 如果您看不到套用免費層折扣的選項，這表示訂用帳戶中的另一個帳戶已透過免費層啟用。
+    > [!NOTE]
+    > 每個 Azure 訂用帳戶最多可以有一個免費層的 Azure Cosmos DB 帳戶，而且必須在建立帳戶時選擇加入。 如果您看不到套用免費層折扣的選項，這表示訂用帳戶中的另一個帳戶已透過免費層啟用。
    
    ![Azure Cosmos DB 的新帳戶頁面](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
 

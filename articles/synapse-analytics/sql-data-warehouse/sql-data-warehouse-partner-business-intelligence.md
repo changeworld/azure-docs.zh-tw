@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0994e1af8ca6deccbe6224625a5320fb195a10a1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586509"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256003"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure 同步分析商業智慧合作夥伴
 
@@ -37,7 +37,7 @@ ms.locfileid: "80586509"
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>。 使用 Qlik Sense，您組織中的所有人都可以輕鬆建立彈性、互動式的視覺效果和制訂有意義的決策。 |[產品頁面](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense 是全方位的「商業智慧」軟體，隨附企業進行資料分析和視覺化所需的工具：高效能分析資料庫、可結合多個來源的功能、簡易資料擷取 (ETL) 及 Web 式資料視覺化。 立即使用 SiSense BI 和分析來開始分析和視覺化大型資料集。 |[產品頁面](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau 的自助服務分析可説明任何人查看和理解其數據,包括從平面文件到資料庫的多種數據。 Tableau 具有 Synapse SQL 池的本機優化連接器,支援即時數據和記憶體分析。 |[產品頁面](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
-| ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**塔吉特 (決策套件)**<br>Targit Decision Suite 提供 BI 和分析平台，以單一且一致的解決方案提供即時儀表板、自助分析、方便使用的報告、令人讚嘆的行動功能和簡單的資料探索技術。 Targit 帶給企業行動的勇氣。 |[產品頁面](https://www.targit.com/en/software/deployment/targitonazure)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**塔吉特 (決策套件)**<br>Targit Decision Suite 提供 BI 和分析平台，以單一且一致的解決方案提供即時儀表板、自助分析、方便使用的報告、令人讚嘆的行動功能和簡單的資料探索技術。 Targit 帶給企業行動的勇氣。 |[產品頁面](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>黃鰭是 BARC 臨時報告和儀錶板的最高評級雲 BI 供應商;BI 調查。 連接到 Synapse SQL 池,然後創建和共用漂亮的報表和儀錶板,並具有屢獲殊榮的協作 BI 和位置智慧功能。 |[產品頁面](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

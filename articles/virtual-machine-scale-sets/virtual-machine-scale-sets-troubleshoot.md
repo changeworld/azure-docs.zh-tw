@@ -1,20 +1,20 @@
 ---
-title: 使用虛擬機器縮放集進行自動縮放故障解答
+title: 使用虛擬機縮放集進行自動縮放故障
 description: 針對使用虛擬機器擴展集的自動調整進行疑難排解。 了解所遇到的一般問題和解決方式。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: windows
 ms.topic: conceptual
 ms.date: 11/16/2017
-ms.author: manayar
-ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76272421"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273370"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
 **問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。

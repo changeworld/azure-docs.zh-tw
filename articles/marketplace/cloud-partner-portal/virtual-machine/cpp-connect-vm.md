@@ -1,5 +1,5 @@
 ---
-title: 連接到基於 Microsoft Azure 的虛擬機器 |Azure 應用商店
+title: 連接到基於 Microsoft Azure 的虛擬機 |Azure 應用商店
 description: 說明如何連線到在 Azure 上建立的新虛擬機器。
 author: dsindona
 ms.service: marketplace
@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278053"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272656"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>連線至您的 Azure 型虛擬機器
 
-本文將說明如何連線至並登入您在 Azure 建立的虛擬機器 (VM)。  成功連接後，可以使用 VM，就像您本地登錄到其主機伺服器一樣。 
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始向合作夥伴中心移動 Azure 虛擬機器產品/ 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器技術資產](https://aka.ms/AzureVMTechAsset)中的說明進行操作,以管理遷移的優惠。
+
+本文將說明如何連線至並登入您在 Azure 建立的虛擬機器 (VM)。  成功連接後,可以使用 VM,就像您本地登錄到其主機伺服器一樣。 
 
 ## <a name="connect-to-a-windows-based-vm"></a>連線至 Windows 型 VM
 
@@ -30,11 +33,11 @@ ms.locfileid: "80278053"
 
 ## <a name="connect-to-a-linux-based-vm"></a>連線至 Linux 型 VM
 
-要連接基於 Linux 的 VM，您需要一個安全的 shell 協定 （SSH） 用戶端。  本討論會使用免費的 [PuTTY](https://www.ssh.com/ssh/putty/) SHH 終端機。
+要連接基於 Linux 的 VM,您需要一個安全的 shell 協定 (SSH) 用戶端。  本討論會使用免費的 [PuTTY](https://www.ssh.com/ssh/putty/) SHH 終端機。
 
-1. 轉到[Azure 門戶](https://ms.portal.azure.com)。 搜索並選擇**虛擬機器**。 
+1. 移至 [Azure 入口網站](https://ms.portal.azure.com)。 搜尋並選擇**虛擬機器**。 
 2. 選擇要連接到的 VM。  
-3. 如果 VM 尚未運行，則**啟動**它。
+3. 如果 VM 尚未運行,則**啟動**它。
 4. 按一下 VM 的名稱，以開啟其**概觀**頁面。
 5. 請記下您 VM 的公用 IP 位址和 DNS 名稱。  (如果尚未設定這些值，則必須[建立網路介面](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
 
@@ -46,7 +49,7 @@ ms.locfileid: "80278053"
    ![PuTTY 終端機設定](./media/publishvm_020.png)
  
 8. 按一下**開啟**以開啟 PuTTY 終端機。  
-9. 系統提示您，輸入 Linux VM 帳戶的帳戶名稱和密碼。 
+9. 系統提示您,輸入 Linux VM 帳戶的帳戶名稱和密碼。 
 
 如有連線問題，請參閱 SSH 用戶端的文件，例如[第 10 章：常見錯誤訊息](https://www.ssh.com/ssh/putty/putty-manuals)。
 
@@ -54,7 +57,7 @@ ms.locfileid: "80278053"
 
 
 ## <a name="stop-unused-vms"></a>停止未使用的 VM
-無論 VM 為執行中*或閒置狀態*，Azure 將收取 VM 裝載費用。  因此，最佳做法是停止當前未使用的 VM。  例如，建議您停止測試、備分或已淘汰 VM。 要關閉 VM，請完成以下步驟：
+無論 VM 為執行中*或閒置狀態*，Azure 將收取 VM 裝載費用。  因此,最佳做法是停止當前未使用的 VM。  例如，建議您停止測試、備分或已淘汰 VM。 要關閉 VM,請完成以下步驟:
 
 1. 在**虛擬機器**刀鋒視窗中，選取您要停止的 VM。 
 2. 在靠近頁面頂端的工具列中，按一下**停止**按鈕。
@@ -68,4 +71,4 @@ Azure 會在 *deallocation* 流程中快速停止 VM，除了停止 VM 上的作
 
 ## <a name="next-steps"></a>後續步驟
 
-遠端連線後，即可[配置 VM。](./cpp-configure-vm.md)
+遠端連接後,即可[配置 VM。](./cpp-configure-vm.md)

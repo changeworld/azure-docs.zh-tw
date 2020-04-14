@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114971"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262871"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>具有特殊字元的部分術語搜尋和模式(通配元、正規表示式、模式)
 
@@ -22,6 +22,9 @@ ms.locfileid: "81114971"
 如果索引沒有預期格式的術語,則部分和模式搜索可能會有問題。 在索引的[詞法分析階段](search-lucene-query-architecture.md#stage-2-lexical-analysis)(假設默認標準分析器),將丟棄特殊字元,拆分複合字串和複合字串,刪除空白;當找不到匹配項時,所有這些都可能導致模式查詢失敗。 例如,電話號碼`+1 (425) 703-6214`(令牌化`"1"`為`"425"``"703"``"6214"`,、、)`"3-62"`不會顯示在查詢中,因為索引中實際上不存在該內容。 
 
 解決方案是調用保留完整字串(如有必要)包括空格和特殊字元的分析器,以便可以匹配部分術語和模式。 為完整字串創建附加欄位,以及使用內容保留分析器,是解決方案的基礎。
+
+> [!TIP]
+> 熟悉郵遞員和 REST API? [下載查詢範例集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)以查詢本文中描述的部分術語和特殊字元。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 認知搜尋中的部分搜尋是什麼
 
@@ -74,6 +77,7 @@ ms.locfileid: "81114971"
 
 | 分析器 | 行為 |
 |----------|-----------|
+| [語言分析儀](index-add-language-analyzers.md) | 在複合詞或字串、元音突變和動詞形式中保留連字元。 如果查詢模式包含破折號,則使用語言分析器可能就足夠了。 |
 | [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | 整個欄位的內容被標記為單個術語。 |
 | [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | 僅在空白上分隔。 包含破折號或其他字元的術語被視為單個令牌。 |
 | [自訂分析器](index-add-custom-analyzers.md) | (推薦)通過創建自定義分析器,可以同時指定標記器和令牌篩選器。 以前的分析儀必須原樣使用。 自訂分析器允許您選擇要使用的標記器和權杖篩選器。 <br><br>建議的組合是具有[小寫標記篩選器的](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)[關鍵字標記器](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)。 就其本身而言,預定義的[關鍵字分析器](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)不會小寫任何大寫文本,這可能導致查詢失敗。 自訂分析器為您提供了添加小寫權杖篩選器的機制。 |
@@ -151,7 +155,9 @@ ms.locfileid: "81114971"
 
 ### <a name="use-built-in-analyzers"></a>使用內建分析器
 
-內置或預定義的分析器可以在欄位定義的`analyzer`屬性上按名稱指定,索引中不需要其他配置。 下面的範例展示如何在`whitespace`欄位上設定分析器。 有關可用內建分析器的詳細資訊,請參閱[預先定義分析器清單](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
+內置或預定義的分析器可以在欄位定義的`analyzer`屬性上按名稱指定,索引中不需要其他配置。 下面的範例展示如何在`whitespace`欄位上設定分析器。 
+
+有關其他方案並瞭解有關其他內建分析器的詳細資訊,請參閱[預定義分析器清單](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
 
 ```json
     {

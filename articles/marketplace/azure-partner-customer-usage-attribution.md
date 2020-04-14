@@ -1,53 +1,95 @@
 ---
-title: Azure 合作夥伴和客戶使用方式歸因 |Azure 應用商店
-description: 有關如何追蹤客戶 Azure Marketplace 解決方案使用狀況的概觀
+title: 商業市場合作夥伴和客戶使用歸因
+description: 獲取 Azure 應用商店解決方案追蹤客戶使用方式的概述。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 9/23/2019
+ms.date: 04/13/2020
 ms.author: dsindona
-ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874937"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256564"
 ---
-# <a name="azure-partner-customer-usage-attribution"></a>Azure 合作夥伴客戶使用狀況屬性
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業市場合作夥伴和客戶使用歸因
 
-身為 Azure 的軟體合作夥伴，您的解決方案需要 Azure 元件或必須直接部署在 Azure 基礎結構上。 部署合作夥伴解決方案並佈建其自有 Azure 資源的客戶會發現深入了解部署狀態以及對 Azure 成長的影響並不容易。 獲得概略的部署狀況資訊之後，您就可獲得與 Microsoft 銷售團隊相同的資訊，並獲得 Microsoft 合作夥伴計劃的信用額度。
+客戶使用方式歸因是一種將客戶訂閱中運行的 Azure 資源(部署以運行解決方案)與您作為合作夥伴相關聯的方法。 在 Microsoft 內部系統中形成這些關聯可提高運行軟體的 Azure 佔用空間的可見性。 當您採用此跟蹤功能時,您可以與 Microsoft 銷售團隊保持一致,並為 Microsoft 合作夥伴計畫贏得讚譽。
 
-Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤客戶在 Azure 上部署之軟體的 Azure 使用狀況。 這個新方法使用 Azure Resource Manager 來協調 Azure 服務的部署。
+您可以通過 Azure 應用商店、快速入門存儲庫、專用 GitHub 儲存庫和創建持久 IP(如應用開發)的 1:1 客戶參與來形成關聯。
 
-身為 Microsoft 合作夥伴，您可以將 Azure 使用狀況與您代表客戶佈建的任何 Azure 資源相關聯。 您可以透過 Azure Marketplace、快速入門存放庫、私人 GitHub 存放庫與一對一客戶支援來構成此關聯關係。 客戶使用方式歸因支援三個部署選項:
+客戶使用方式歸因支援三個部署選項:
 
 - Azure 資源管理器範本:合作夥伴可以使用資源管理器範本部署 Azure 服務來運行合作夥伴的軟體。 合作夥伴可建立 Resource Manager 範本以定義其 Azure 解決方案的基礎結構與設定。 Resource Manager 範本可讓您與您的客戶在其生命週期中部署您的解決方案。 您可以確信您的資源會以一致的狀態部署。
 - Azure Resource Manager API：合作夥伴可直接呼叫 Resource Manager API，來部署 Resource Manager 範本或產生 API 呼叫以直接佈建 Azure 服務。
-- Terraform:合作夥伴可以使用雲端協調器(如Terraform)來部署資源管理器範本或直接部署Azure服務。
+- Terraform:合作夥伴可以使用 Terraform 部署資源管理器範本或直接部署 Azure 服務。
 
-客戶使用方式歸因用於新部署,不支援標記已部署的現有資源。
-
-[Azure 應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer):解決方案範本產品 /發佈到 Azure 應用商店上,需要客戶使用方式歸因。
-
+>[!IMPORTANT]
+>- 客戶使用方式歸因不是用於追蹤系統整合者、託管服務提供者或旨在部署和管理在 Azure 上運行的軟體的工具的工作。
+>
+>- 客戶使用方式歸因用於新部署,不支援標記已部署的現有資源。
+>
+>- 發佈到 Azure 應用商店的[Azure 應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)產品/服務需要客戶使用方式歸因。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="create-guids"></a>建立 GUID
+
+GUID 是具有 32 個十六進位數位的唯一引用標識符。 若要建立 GUID 來進行追蹤，您應該使用 GUID 產生器。 Azure 儲存體小組已建立 [GUID 產生器表單](https://aka.ms/StoragePartners)，其會透過電子郵件傳送正確格式的 GUID 給您，且可跨不同追蹤系統重複使用。
+
+> [!NOTE]
+> 強烈建議您使用[Azure 儲存的 GUID 生成器表單](https://aka.ms/StoragePartners)來創建 GUID。 如需詳細資訊，請參閱[常見問題集](#faq)。
+
+建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
+
+如果使用範本部署產品,並且該產品在 Azure 應用商店和 GitHub 上都可用,則可以創建和註冊兩個不同的 GUIDS:
+
+- Azure Marketplace 中的產品 A
+- GitHub 上的產品 A
+
+報告由Microsoft合作夥伴網路 ID 和 GUID 完成。
+
+您還可以通過註冊其他 GUID 並在計畫之間更改 GUID(其中計劃是產品/服務變體)來追蹤更精細級別的使用方式。
+
+## <a name="register-guids"></a>註冊 GUID
+
+GUID 必須在合作夥伴中心註冊,以啟用客戶使用方式歸因。
+
+將 GUID 添加到範本或使用者代理中,並在合作夥伴中心註冊 GUID 後,將追蹤將來的部署。
+
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
+
+1. 註冊為[商業市場出版者](https://aka.ms/JoinMarketplace)。
+
+   * 合作夥伴必須在[合作夥伴中心中擁有設定檔](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
+   * 合作夥伴可以註冊多個 GUID。
+   * 合作夥伴可以註冊非市場解決方案範本和優惠的 GUID。
+
+1. 在右上角,選擇設定齒輪圖示,然後選擇 **「開發人員」 設定**。
+
+1. 在 **「帳戶設定」頁上**,選擇 **「添加跟蹤 GUID」。。**
+
+1. 在**GUID**框中,輸入您的追蹤 GUID。 只輸入 GUID，不要輸入 **pid-** 前置詞。 在 **「描述」** 框中,輸入您的產品/服務名稱或說明。
+
+1. 若要註冊多個 GUID，請再次選取 [新增追蹤 GUID]****。 頁面上會出現額外的方塊。
+
+1. 選取 [儲存]  。
+
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本
-使用資源管理器範本在客戶的訂閱上部署許多合作夥伴解決方案。 如果 Azure 應用商店、GitHub 或作為快速入門有可用的資源管理器範本,則修改範本以啟用客戶使用方式歸因的過程應該是直接的。
+使用 Azure 資源管理器範本部署許多合作夥伴解決方案。 如果 Azure 應用商店、GitHub 或作為快速入門有可用的資源管理器範本,則修改範本以啟用客戶使用方式歸因的過程是直接的。
 
-如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
+> [!NOTE]
+> 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
+> * [建立並部署第一個資源管理員樣本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+>* [Azure 應用程式產品 /服務](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
+>* 視訊:[為 Azure 應用程式的應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
-* [建立並部署第一個資源管理員樣本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
-* [Azure 應用程式產品 /服務](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
-* 視訊:[為 Azure 應用程式的應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)
-
-
-## <a name="add-a-guid-to-your-template"></a>將 GUID 新增到您的範本
 
 若要新增全域唯一識別碼 (GUID)，您只需要在主要範本檔案中進行一處修改：
 
-1. 使用建議的方法[建立 GUID](#create-guids) 並[註冊 GUID](#register-guids-and-offers)。
+1. 使用建議的方法[建立 GUID](#create-guids) 並[註冊 GUID](#register-guids)。
 
 1. 開啟 Resource Manager 範本。
 
@@ -96,7 +138,7 @@ Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤�
 
 ![範例 GUID 格式](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
-> [!Note]
+> [!NOTE]
 > 此字串的格式至關重要。 若未包括 **pid-** 前置詞，就無法查詢資料。 不同的 SDK 會以不同的方式追蹤。 若要實作此方法，請檢閱支援和適用於慣用 Azure SDK 的方法。
 
 #### <a name="example-the-python-sdk"></a>範例：Python SDK
@@ -105,7 +147,7 @@ Microsoft 現在提供一個模型，協助合作夥伴以更好的方式追蹤�
 
 ![將屬性新增到使用者代理程式](media/marketplace-publishers-guide/python-for-lu.PNG)
 
-> [!Note]
+> [!NOTE]
 > 為每個用戶端新增屬性。 沒有全域靜態設定。 您可以標記用戶端處理站，以確定每個用戶端都在正在追蹤。 如需詳細資訊，請參閱 [GitHub 上的此用戶端處理站範例](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)。
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>使用 Azure PowerShell 標記部署
@@ -143,50 +185,6 @@ provider "azurerm" {
 
 * 建立 GUID(應為每個優惠或 SKU 添加 GUID)
 * 更新其 Azure 提供程式以將*partner_id*的值設定為 GUID(不要用"pid-"預先修復 GUID,只需將其設定為實際 GUID)
-
-## <a name="create-guids"></a>建立 GUID
-
-GUID 是具有 32 個十六進位數字的參考號碼。 若要建立 GUID 來進行追蹤，您應該使用 GUID 產生器。 Azure 儲存體小組已建立 [GUID 產生器表單](https://aka.ms/StoragePartners)，其會透過電子郵件傳送正確格式的 GUID 給您，且可跨不同追蹤系統重複使用。
-
-> [!Note]
-> 強烈建議您使用[Azure 儲存的 GUID 生成器表單](https://aka.ms/StoragePartners)來創建 GUID。 如需詳細資訊，請參閱[常見問題集](#faq)。
-
-建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
-
-若您使用範本部署產品，且該產品在 Azure Marketplace 與 GitHub 上都有提供，您必須建立並註冊 2 個相異的 GUID：
-
-*   Azure Marketplace 中的產品 A
-*   GitHub 上的產品 A
-
-報告是由合作夥伴值 (Microsoft 合作夥伴 ID) 與 GUID 所完成。
-
-您也能以更細微的層級來追蹤 GUID (例如，供應項目的變體 SKU)。
-
-## <a name="register-guids-and-offers"></a>註冊 GUID 與供應項目
-
-必須註冊 GUID 才能啟用客戶使用方式歸因。
-
-範本 GUID 的所有註冊都在合作夥伴中心內完成。
-
-將 GUID 添加到範本或使用者代理中,並在合作夥伴中心註冊 GUID 後,將追蹤所有部署。
-
-1. 註冊為[商業市場出版者](https://aka.ms/JoinMarketplace)。
-
-   * 合作夥伴必須在[合作夥伴中心中擁有設定檔](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
-   * 合作夥伴可以註冊多個 GUID。
-   * 合作夥伴可以註冊為非 Marketplace 解決方案範本與供應項目註冊 GUID。
-
-1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
-
-1. 在右上角,選擇設定齒輪圖示,然後選擇 **「開發人員」 設定**。
-
-1. 在 **「帳戶設定」頁上**,選擇 **「添加跟蹤 GUID」。。**
-
-1. 在**GUID**框中,輸入您的追蹤 GUID。 只輸入 GUID，不要輸入 **pid-** 前置詞。 在 **「描述」** 框中,輸入您的產品/服務名稱或說明。
-
-1. 若要註冊多個 GUID，請再次選取 [新增追蹤 GUID]****。 頁面上會出現額外的方塊。
-
-1. 選取 [儲存]  。
 
 
 ## <a name="verify-the-guid-deployment"></a>驗證 GUID 部署
@@ -273,11 +271,11 @@ foreach ($deployment in $deployments){
 
 1. 選取 [提出要求]****。
 
-1. 在下一頁，輸入必要值。 選取 **[繼續]**。
+1. 在下一頁，輸入必要值。 選取 [繼續]  。
 
 1. 在下一頁，輸入必要值。
 
-   > [!Important]
+   > [!IMPORTANT]
    > 在 [事件標題]**** 方塊中，輸入 **ISV 使用狀況追蹤**。 請詳細描述您的問題。
 
    ![輸入事件標題的 ISV 使用狀況追蹤](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
@@ -315,11 +313,11 @@ Microsoft 為合作夥伴提供客戶部署其解決方案的視圖,以及對其
 
 **我可以從類似 GitHub 的非 Microsoft 存放庫追蹤部署的範本嗎？**
 
-是，只要有 GUID，當範本部署時，都會追蹤使用量。 合作夥伴必須在合作夥伴中心的商業市場註冊中具有配置檔,以註冊用於在 Azure 應用商店外部署的 GUID。
+是，只要有 GUID，當範本部署時，都會追蹤使用量。 合作夥伴仍必須註冊其 GUID。
 
 **客戶也會收到報告嗎？**
 
-客戶可以在 Azure 入口網站內，追蹤其個別資源或客戶所定義資源群組的使用情況。
+客戶可以在 Azure 入口網站內，追蹤其個別資源或客戶所定義資源群組的使用情況。 客戶看不到 GUID 中斷的使用。
 
 **此方法是否類似於記錄的數位合作夥伴 (DPOR)?**
 

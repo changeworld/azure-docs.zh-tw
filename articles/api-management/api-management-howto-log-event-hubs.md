@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898782"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260933"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何將事件記錄到 Azure API 管理中的 Azure 事件中樞
 事件中樞是可高度調整的資料輸入服務，每秒可擷取數百萬個事件，可讓您處理和分析連接的裝置和應用程式所產生的大量資料。 事件中樞能做為事件管線的「大門」，一旦收集的資料進入事件中樞，它可以使用任何即時分析提供者或批次/儲存配接器轉換及儲存資料。 事件中樞能分隔事件串流的生產與這些事件的使用，讓事件消費者依照自己的排程存取事件。
@@ -30,9 +30,9 @@ ms.locfileid: "76898782"
 如需如何建立事件中樞，並取得在事件中樞傳送及接收事件所需之連接字串的詳細步驟，請參閱[使用 Azure 入口網站建立事件中樞命名空間和事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
 
 ## <a name="create-an-api-management-logger"></a>建立 API 管理記錄器
-現在您已經有事件中樞，下一步是在 API 管理服務中設定 [記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) ，以將事件記錄至事件中樞。
+現在您已經有事件中樞，下一步是在 API 管理服務中設定 [記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) ，以將事件記錄至事件中樞。
 
-可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 有關詳細的請求示例，請參閱[如何創建記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)。
+可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 有關詳細的請求範例,請參考[如何建立紀錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
 
 ## <a name="configure-log-to-eventhubs-policies"></a>設定 log-to-eventhubs 原則
 
@@ -46,7 +46,7 @@ ms.locfileid: "76898782"
 6. 在 [輸入處理] 或 [輸出處理] 視窗中，按一下三角形 (鉛筆旁邊)。
 7. 選取 [程式碼編輯器]。 如需詳細資訊，請參閱[如何設定或編輯原則](set-edit-policies.md)。
 8. 將游標置於 `inbound` 或 `outbound` 原則區段。
-9. 在右側的視窗中，選擇 **"高級策略** > **登錄到事件中心**"。 這會插入 `log-to-eventhub` 原則陳述式範本。
+9. 在右側的視窗中,選擇 **「高級策略** > **登錄到事件中心**」。。 這會插入 `log-to-eventhub` 原則陳述式範本。
 
 ```xml
 <log-to-eventhub logger-id ='logger-id'>
@@ -65,7 +65,7 @@ ms.locfileid: "76898782"
   * [使用 EventProcessorHost 接收訊息](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [事件中樞程式設計指南](../event-hubs/event-hubs-programming-guide.md)
 * 深入了解 API 管理和事件中樞的整合
-  * [記錄器實體參考](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [記錄器實體參考](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [log-to-eventhub 原則參考](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [利用 Azure API 管理、事件中樞與 Moesif 監視您的 API](api-management-log-to-eventhub-sample.md)  
 * 深入了解如何[與 Azure Application Insights 整合](api-management-howto-app-insights.md)

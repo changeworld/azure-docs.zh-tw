@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: 部署行動服務
               items:
-                - name: 行動服務概觀和安裝
+                - name: 關於行動服務安裝
                   href: vmware-physical-mobility-service-overview.md
                 - name: 準備推入安裝
                   href: vmware-azure-install-mobility-service.md

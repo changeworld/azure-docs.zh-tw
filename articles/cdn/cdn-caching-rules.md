@@ -3,7 +3,7 @@ title: 使用快取規則來控制 Azure CDN 快取行為 | Microsoft Docs
 description: 您可以使用 CDN 快取規則，以全域及有條件 (例如 URL 路徑和副檔名) 的方式設定或修改預設快取到期行為。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: magattus
-ms.openlocfilehash: ddd7dc7e1245c2a77e866a454bf6bfa3c1f16f88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74278143"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254235"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用快取規則來控制 Azure CDN 快取行為
 
@@ -56,7 +56,7 @@ ms.locfileid: "74278143"
 
 - **略過快取**：不要快取並忽略原始提供的快取指示詞標頭。
 
-- **覆蓋**：忽略源提供的緩存持續時間;而是使用提供的緩存持續時間。 這不會覆蓋緩存控制：無緩存。
+- **覆蓋**:忽略源提供的緩存持續時間;而是使用提供的緩存持續時間。 這不會覆蓋緩存控制:無緩存。
 
 - **缺少時才設定**：如果原始提供的快取指示詞標頭存在，就優先採用它們；否則，使用提供的快取持續時間。
 
@@ -103,7 +103,7 @@ ms.locfileid: "74278143"
    - 快取行為：**缺少時才設定**
    - 快取到期期間：3 天
 
-設置這些規則後，_&lt;終結點主機名稱&gt;_.azureedge.net/home/index.html 的請求會觸發自訂緩存規則#2，該規則設置為：**如果缺少，則設置為：如果缺少，則設置為**3 天。 因此，如果 index.html** 檔案具有 `Cache-Control` 或 `Expires` HTTP 標頭，則會優先採用它們，否則，如果未設定這些標頭，就會將檔案快取 3 天。
+設定這些規則后,_&lt;終結點主機&gt;名_.azureedge.net/home/index.html 的請求會觸發自定義緩存規則#2,該規則設置為:**如果缺少,則設置為:如果缺少,則設置為**3 天。 因此，如果 index.html** 檔案具有 `Cache-Control` 或 `Expires` HTTP 標頭，則會優先採用它們，否則，如果未設定這些標頭，就會將檔案快取 3 天。
 
 > [!NOTE] 
 > 在規則變更之前快取的檔案會維持其原始的快取持續時間設定。 若要重設它們的快取持續時間，您必須[清除檔案](cdn-purge-endpoint.md)。 

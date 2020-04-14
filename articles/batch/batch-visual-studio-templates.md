@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022744"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254558"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 專案範本快速啟動 Batch 解決方案
 
@@ -67,7 +67,7 @@ Batch 的**作業管理員**和**工作處理器 Visual Studio 範本**提供了
 ## <a name="preparation"></a>準備
 我們建議您建立可在其中包含作業管理員和工作處理器的方案，因為這樣便能更輕鬆地在作業管理員和工作處理器程式之間共用程式碼。 若要建立此方案，請依照下列步驟執行︰
 
-1. 打開視覺化工作室並選擇 **"檔** > **新專案** > **"。**
+1. 打開視覺化工作室並選擇 **「檔** > **新專案** > **」。**
 2. 在 [範本]**** 底下展開 [其他專案類型]****、按一下 [Visual Studio 方案]****，然後選取 [空白方案]****。
 3. 輸入可描述應用程式和此方案用途的名稱 (例如，「LitwareBatchTaskPrograms」)。
 4. 若要建立新方案，請按一下 [確定] ****。
@@ -87,7 +87,7 @@ Batch 的**作業管理員**和**工作處理器 Visual Studio 範本**提供了
 若要在稍早建立的方案中新增作業管理員，請遵循下列步驟︰
 
 1. 在 Visual Studio 中開啟現有方案。
-2. 在"解決方案資源管理器"中，按右鍵解決方案，按一下"**添加新** > **專案**"。
+2. 在「解決方案資源管理器」中,右鍵單擊解決方案,按下「**添加新** > **專案**」。
 3. 在 [Visual C#]**** 底下按一下 [雲端]****，然後按一下 [具有作業分割器的 Azure Batch 作業管理員]****。
 4. 輸入可描述應用程式並將此專案識別為作業管理員的名稱 (例如"LitwareJobManager")。
 5. 若要建立專案，按一下 [確定] ****。
@@ -97,7 +97,7 @@ Batch 的**作業管理員**和**工作處理器 Visual Studio 範本**提供了
 當您使用作業管理員範本建立專案時，它會產生三組程式碼檔案︰
 
 * 主要程式檔 (Program.cs)。 這包含程式進入點和最上層的例外狀況處理。 通常來說，您應該不需要修改此檔案。
-* 架構目錄。 這包含負責作業管理器程式完成的"樣板"工作的檔 - 解包參數、向批次處理作業添加任務等。通常不需要修改這些檔。
+* 架構目錄。 這包含負責作業管理員完成的「樣板」工作的檔 - 解包參數、向批次處理作業添加任務等。通常不需要修改這些檔。
 * 作業分割器檔案 (JobSplitter.cs)。 此處可供存放用於將作業分割成多個工作的應用程式特定邏輯。
 
 當然，您可以根據作業分割邏輯的複雜度，視需要新增其他檔案來支援作業分割器程式碼。
@@ -233,7 +233,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 用戶端應使用 *resourceFiles* 或 *applicationPackageReferences* 集合，將作業管理員可執行檔 (和其所需的 DLL) 部署至計算節點。
 
-根據預設，作業管理員在失敗時不會重試。 根據作業管理器邏輯，用戶端可能希望通過*約束*/*maxTaskRetryCount*啟用重試。
+根據預設，作業管理員在失敗時不會重試。 根據作業管理器邏輯,用戶端可能希望通過*約束*/*maxTaskRetryCount*啟用重試。
 
 **作業設定**
 
@@ -266,7 +266,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 當您使用工作處理器範本建立專案時，它會產生三組程式碼檔案︰
 
 * 主要程式檔 (Program.cs)。 這包含程式進入點和最上層的例外狀況處理。 通常來說，您應該不需要修改此檔案。
-* 架構目錄。 這包含負責作業管理器程式完成的"樣板"工作的檔 - 解包參數、向批次處理作業添加任務等。通常不需要修改這些檔。
+* 架構目錄。 這包含負責作業管理員完成的「樣板」工作的檔 - 解包參數、向批次處理作業添加任務等。通常不需要修改這些檔。
 * 工作處理器檔案 (TaskProcessor.cs)。 此檔案可供存放用於執行工作的應用程式特定邏輯 (通常是藉由向外呼叫現有的可執行檔)。 前置和後置處理程式碼 (例如下載額外資料或上傳結果檔案) 也存放在此。
 
 當然，您可以根據作業分割邏輯的複雜度，視需要新增其他檔案來支援工作處理器程式碼。
@@ -444,7 +444,7 @@ parameters.json 的資源檔案，如果找到，即會將它載入以做為參�
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

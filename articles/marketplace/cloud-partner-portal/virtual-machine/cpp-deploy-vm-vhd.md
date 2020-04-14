@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277934"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273894"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>從您的 VHD 部署 VM
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始向合作夥伴中心移動 Azure 虛擬機器產品/ 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器技術資產](https://aka.ms/AzureVMTechAsset)中的說明進行操作,以管理遷移的優惠。
 
 本節說明如何從 Azure 部署的虛擬硬碟 (VHD) 部署虛擬機器 (VM)。  文中會列出必要的工具，並說明如何使用這些工具建立使用者 VM 映像，然後再使用 PowerShell 指令碼將該映像部署至 Azure。
 
@@ -55,14 +58,14 @@ VM 部署完成後，您就準備好來[認證您的 VM 映像](./cpp-certify-vm
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **參數**              |   **描述**                                                            |
+   |  **參數**              |   **說明**                                                            |
    |  -------------              |   ---------------                                                            |
    | 儲存體帳戶名稱   | 一般化 VHD 所在的儲存體帳戶名稱                    |
    | 輸入儲存體容器名稱 | 一般化 VHD 所在的容器名稱                          |
-   | 公用 IP 的 DNS 名稱      | 公共 IP DNS 名稱。 DNS 名稱是 VM 的，在部署產品/服務後，您將在 Azure 門戶中定義此名稱。  |
+   | 公用 IP 的 DNS 名稱      | 公共 IP DNS 名稱。 DNS 名稱是 VM 的,在部署產品/服務後,您將在 Azure 門戶中定義此名稱。  |
    | 管理員使用者名稱             | 新 VM 系統管理員帳戶的使用者名稱                                  |
    | 管理員密碼              | 新 VM 管理員帳戶密碼                                  |
-   | OS 類型                     | VM 作業系統： `Windows` \|`Linux`                                    |
+   | OS 類型                     | VM 作業系統`Windows`\|:`Linux`                                    |
    | 訂用帳戶識別碼             | 讓選取的訂用帳戶取得安全性建議                                      |
    | Location                    | 部署的地理位置                                        |
    | VM 大小                     | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如`Standard_A2` |

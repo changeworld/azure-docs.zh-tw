@@ -1,5 +1,5 @@
 ---
-title: Azure 容器映射的應用商店設置 |Azure 應用商店
+title: Azure 容器映像的應用商店設置 |Azure 應用商店
 description: 設定 Azure 容器的 Marketplace 設定。
 author: dsindona
 ms.service: marketplace
@@ -7,18 +7,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: e272a95c5eb7d00b7c2169acb820ec8e4e8d9614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb879a9578a550e972ed7874a42cf389271abf47
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280043"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270293"
 ---
 # <a name="container-marketplace-tab"></a>容器 Marketplace 索引標籤
 
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 容器產品的管理移動到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[「創建 Azure 容器產品/服務](https://aka.ms/CreateContainerOffer)」中的說明進行操作,以管理遷移的優惠。
+
 在 [新增供應項目]**** 頁面的 [Marketplace]**** 索引標籤上，可提供行銷、銷售和法律方面的資訊與合約給您的潛在客戶，並管理 Marketplace 產生的潛在客戶。 將您的行銷專屬內容加入至 [概觀]**** 區段。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在本區段中，可以輸入 Azure Marketplace Offer 的一般資訊。  欄位名稱上附加的星號 (*) 表示此為必填欄位。
 
@@ -28,12 +31,12 @@ ms.locfileid: "80280043"
 
 |    欄位                  |       描述                                                            |
 |  ---------                |     ---------------                                                          |
-| **標題\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限是 50 個字元。 |
+| **Title\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限是 50 個字元。 |
 | **總結\***               | 供應項目的簡短摘要。 長度上限是 100 個字元。 |
 | **長摘要\***          | 供應項目的完整摘要 (雖然可能與**摘要**相同)。  長度上限是 256 個字元。 |
 | **描述\***           | 供應項目的說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。
 | **行銷識別碼**  | 與本供應項目相關聯的唯一 URL，通常會包含您的組織與解決方案名稱。 長度上限是 50 個字元。   |
-| **預覽訂閱 ID\*** | 可新增 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些列入允許清單的訂閱帳戶，待供應項目一發佈，即能在供應項目上線前先行存取。 |
+| **預覽訂閱識別碼\*** | 可新增 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些列入允許清單的訂閱帳戶，待供應項目一發佈，即能在供應項目上線前先行存取。 |
 |  |  |
 
 

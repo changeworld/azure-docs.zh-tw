@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475512"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273302"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 機器學習發行說明
 
@@ -22,6 +22,54 @@ ms.locfileid: "80475512"
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
 
+## <a name="2020-04-13"></a>2020-04-13
+
+### <a name="azure-machine-learning-sdk-for-python-v130"></a>適用於 Python v1.3.0 的 Azure 機器學習 SDK
+
++ **錯誤修復與改進**
+  + **azureml-automl-core**
+    + 添加了有關訓練后操作的其他遙測數據。
+    + 使用條件平方和 (CSS) 訓練,對長度超過 100 的系列進行加速自動 ARIMA 訓練。 請注意,使用的長度儲存為恆定ARIMA_TRIGGER_CSS_TRAINING_LENGTH w/在 TimeSeries 內部類在 /src/azureml-automl-core/azureml/automl/core/共用/常量.py
+    + 預測執行的使用者紀錄記錄得到了改進,現在紀錄中將顯示有關目前正在執行的階段的詳細資訊
+    + 不允許target_rolling_window_size設定為小於 2 值值
+  + **azureml-自動ml-執行時間**
+    + 改進了找到重複的時間戳時顯示的錯誤消息。
+    + 不允許target_rolling_window_size設置為小於 2 的值。
+    + 修復了滯后歸因故障。 造成這一問題的原因是,季節性分解一系列數據所需的觀測數量不足。 "去季節性"資料用於計算部分自相關函數 (PACF) 以確定滯後長度。
+    + 啟用列用途壯舉自定義,用於按壯舉配置預測任務。現在支援數位和分類作為預測任務的列用途。
+    + 啟用的放置列壯舉自定義,用於按壯舉配置預測任務。
+    + 啟用的歸因自定義,用於按壯舉配置預測任務。現在支援對訓練數據的目標列和平均值、中位數、most_frequent和常量值歸因的常量值歸因。
+  + **azureml-contrib-管道步驟**
+    + 接受要傳遞 ParallelRunconfig 的字串計算名稱
+  + **azureml-core**
+    +  新增環境.複製(new_name)API 以建立環境物件的複本
+    +  環境.docker.base_dockerfile接受文件路徑。 如果能夠解析檔案,內容將讀取到base_dockerfile環境屬性
+    + 當使用者在 Environment.docker 中手動設定值時,自動重置base_image和base_dockerfile的互斥值
+    +  資料集:如果包含單碼字元的資料路徑,修復資料集下載失敗
+    +  數據集:改進了數據集裝載緩存機制,以遵守 Azure 機器學習計算中的最低磁碟空間要求,從而避免使節點不可用並導致作業被取消
+    + 在 RSection 中添加了user_managed標誌,指示環境是由使用者管理還是由 AzureML 管理。
+    + 數據集:當您將時間序列數據集作為熊貓數據幀訪問時,我們會添加時間序列列的索引,這些數據幀用於加快訪問基於時間序列的數據集的數據。  以前,索引的名稱與時間戳列相同,使用戶感到困惑,因為哪個是實際的時間戳列,哪個是索引。 現在,我們不給索引任何特定的名稱,因為它不應用於列。 
+  + **azurem 資料準備**
+    + 修復了主權雲中的數據集身份驗證問題
+    + 修復從`Dataset.to_spark_dataframe`Azure PostgreSQL 資料儲存建立的資料集的故障
+  + **azureml-interpret**
+    + 如果本地重要性值稀疏,則向可視化添加全域分數
+    + 更新的 azureml 解釋以使用解釋社區 0.9.*
+    + 修復了具有稀疏評估資料的下載說明的問題
+    + 在 AutoML 中新增對解釋物件稀疏格式的支援
+  + **azureml-pipeline-core**
+    + 在導管中支援計算實體為計算目標
+  + **azureml-train-automl-client**
+    + 添加了有關訓練后操作的其他遙測數據。
+    + 在早期停止時修復回歸
+    + 棄用的 azureml.dprep.數據流作為輸入數據的有效類型。
+    +  將預設的 AutoML 實驗超時更改為 6 天。
+  + **azureml-火車-自動-運行時間**
+    + 添加了有關訓練后操作的其他遙測數據。
+    + 新增了稀疏自動 ml e2e 支援
+  + **azureml 開啟資料集**
+    + 為服務監視器添加了其他遙測數據。
+    + 開啟 Blob 的前門以提高穩定性 
 ## <a name="2020-03-23"></a>2020-03-23
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>適用於 Python v1.2.0 的 Azure 機器學習 SDK
@@ -260,7 +308,7 @@ ms.locfileid: "80475512"
     + "y_query"從多米尼克的橙汁筆記本服務請求部分中刪除。
     + 修復了阻止在已部署的模型上預測的錯誤,在具有日期時間列的數據集上運行。
     + 添加了 Matthews 相關係數作為分類指標,用於二進位和多類分類。
-  + **azureml-contrib-解釋**
+  + **azureml-contrib-interpret**
     + 從 azureml-contrib 解釋中刪除的文本解釋器作為文本解釋已移動到即將發佈的解釋文本回購。
   + **azureml-core**
     + 數據集:文件數據集的用法不再依賴於要安裝在 python env 中的數位和熊貓。
@@ -1330,7 +1378,7 @@ Azure 機器學習現在是事件網格的資源提供程式,您可以通過 Azu
   + 現在,從 Azure Blob 儲存讀取時可以使用 _ globing。
     + 例如，`dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
-+ **錯誤修復**
++ **錯誤修正**
   + 修復了與從遠端源 (Azure Blob) 讀取 Parquet 文件相關的 Bug。
 
 ## <a name="2019-05-14"></a>2019-05-14
@@ -1628,7 +1676,7 @@ Azure 機器學習 SDK,適用於 Python v1.0.30 發佈。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure Machine Learning Data Prep SDK v1.0.8
 
-+ **錯誤修復**
++ **錯誤修正**
   + 提高了獲取數據配置檔的性能。
   + 已修正與錯誤報告相關的輕微錯誤。
 
@@ -1662,7 +1710,7 @@ Azure 機器學習 SDK,適用於 Python v1.0.30 發佈。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure Machine Learning 資料準備 SDK v1.0.6
 
-+ **錯誤修復**
++ **錯誤修正**
   + 已修正與從 Spark 上公開可讀取的 Azure Blob 容器讀取相關的 Bug
 
 ## <a name="2018-12-20"></a>2018-12-20
@@ -1678,7 +1726,7 @@ Azure 機器學習 SDK,適用於 Python v1.0.30 發佈。
   + 新增了功能，會檢查某些運算式的傳回類型，以確保類型一致性，並及早失敗。
   + 您現在可以呼叫 `parse_json`，以將資料行中的值剖析為 JSON 物件，並將其展開成多個資料行。
 
-+ **錯誤修復**
++ **錯誤修正**
   + 已修正錯誤，該錯誤會讓 Python 3.5.2 中的 `set_column_types` 損毀。
   + 已修正會在使用 AML 映像連線至資料存放區時當機的錯誤。
 

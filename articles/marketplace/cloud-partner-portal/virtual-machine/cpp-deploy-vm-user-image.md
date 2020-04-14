@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277951"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273880"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>從使用者 VHD 部署 Azure VM
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Azure VM 映像認證](https://aks.ms/CertifyVMimage)中的說明來管理遷移的優惠。
 
 本文說明如何使用提供的 Azure Resource Manager 範本和 Azure PowerShell 指令碼，來部署通用的 VHD 映像以建立新的 Azure VM 資源。
 
@@ -24,7 +27,7 @@ ms.locfileid: "80277951"
 
 將適用於 [VHD 部署](cpp-deploy-json-template.md)的 Azure Resource Manager 範本複製到名為 `VHDtoImage.json` 的本機檔案。  編輯此檔案以提供下列參數值。 
 
-|  **參數**             |   **描述**                                                              |
+|  **參數**             |   **說明**                                                              |
 |  -------------             |   ---------------                                                              |
 | resourceGroupName          | 現有的 Azure 資源群組名稱。  通常會使用與您金鑰保存庫相關聯的相同 RG  |
 | TemplateFile               | 檔案 `VHDtoImage.json` 的完整路徑名稱                                    |

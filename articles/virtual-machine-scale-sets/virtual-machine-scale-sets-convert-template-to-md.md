@@ -1,24 +1,24 @@
 ---
 title: 將擴展集範本轉換為使用受控磁碟
-description: 將 Azure 資源管理器虛擬機器縮放集範本轉換為託管磁片規模集範本。
+description: 將 Azure 資源管理器虛擬機縮放集範本轉換為託管磁碟規模集範本。
 keywords: 虛擬機器擴展集
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278117"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270650"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>轉換擴展集範本至受控磁碟擴展集範本
 
-使用 Resource Manager 範本來建立不使用受控磁碟之擴展集的客戶可能希望修改它以使用受控磁碟。 本文說明如何使用受控磁碟，來作為 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) (提供 Resource Manager 範本範例的社群導向存放庫) 的提取要求範例。 完整的拉取請求可以在此處看到：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)和差異的相關部分如下，以及說明：
+使用 Resource Manager 範本來建立不使用受控磁碟之擴展集的客戶可能希望修改它以使用受控磁碟。 本文說明如何使用受控磁碟，來作為 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) (提供 Resource Manager 範本範例的社群導向存放庫) 的提取要求範例。 完整的拉取請求可以在此處看到:[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)和差異的相關部分如下,以及說明:
 
 ## <a name="making-the-os-disks-managed"></a>將 OS 磁碟設定為受控磁碟
 
@@ -137,7 +137,7 @@ ms.locfileid: "76278117"
 
 
 ## <a name="next-steps"></a>後續步驟
-例如，使用比例集的資源管理器範本，在[Azure 快速入門範本 GitHub 存儲庫](https://github.com/Azure/azure-quickstart-templates)中搜索"vmss"。
+例如,使用比例集的資源管理器範本,在[Azure 快速入門範本 GitHub 儲存庫](https://github.com/Azure/azure-quickstart-templates)中搜索「vmss」。。
 
 如需一般資訊，請參閱 [擴展集的主要登陸頁面](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
 

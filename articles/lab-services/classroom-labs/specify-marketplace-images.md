@@ -1,5 +1,5 @@
 ---
-title: 為 Azure 實驗室服務中的實驗室指定市場映射
+title: 為 Azure 實驗室服務中的實驗室指定市場映像
 description: 本文介紹如何指定實驗室建立者可用於在 Azure 實驗室服務中的實驗室帳戶中創建實驗室的應用商店映射。
 services: lab-services
 documentationcenter: na
@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444663"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257688"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>指定實驗室建立者可用的 Marketplace 映像
 身為實驗室帳戶擁有者的您，可以指定實驗室建立者可用來在實驗室帳戶中建立實驗室的 Marketplace 映像。 
 
-## <a name="select-images-available-for-labs"></a>選擇可用於實驗室的圖像
-選取左側功能表上的 [Marketplace 映像]****。 根據預設，您會看到映像 (包括已啟用和停用) 的完整清單。 您可以通過從頂部的下拉清單中選擇/**"僅啟用"/** 禁用的"**Enabled only**選項"來篩選清單，以僅查看已啟用/禁用的圖像。 
+## <a name="select-images-available-for-labs"></a>選擇可用於實驗室的影像
+選取左側功能表上的 [Marketplace 映像]****。 根據預設，您會看到映像 (包括已啟用和停用) 的完整清單。 您可以通過從頂部的下拉清單中/選擇 **「僅啟用」/** 禁**Enabled only**用的「選項」來篩選清單,以僅查看已啟用/禁用的圖像。 
     
 ![Marketplace 映像頁面](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
@@ -34,22 +34,35 @@ ms.locfileid: "77444663"
 - 使用 Azure Resource Manager 來佈建 VM
 - 不需要購買額外的授權方案
 
-## <a name="disable-images-for-a-lab"></a>禁用實驗室的圖像 
-要禁用實驗室的單個圖像，請選擇 **...（省略）** 在最後一列中，並選擇 **"禁用圖像**"。 
+## <a name="disable-images-for-a-lab"></a>關閉實驗室的影像 
+要關閉實驗室的影像,請選擇 **...(省略)** 在最後一列中,並選擇 **「禁用圖像**」。。 
 
 ![停用一個映像](../media/tutorial-setup-lab-account/disable-one-image.png) 
 
-或者，選擇圖像名稱前的核取方塊，然後選擇工具列上的 **"禁用選定圖像**"。 
+或者,選擇圖像名稱前的複選框,然後選擇工具列上的 **「禁用選定圖像**」。 
 
-要同時禁用多個圖像，請在圖像名稱之前選擇核取方塊，然後選擇**工具列上的"禁用所選圖像**"。 
+要同時禁用多個圖像,請在圖像名稱之前選擇複選框,然後選擇**工具列上的"禁用所選圖像**"。 
 
 ![停用多個映像](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
 
 
-## <a name="enable-images-for-a-lab"></a>為實驗室啟用圖像
-要啟用禁用的圖像，請選擇 **...（省略）** 在最後一列中，選擇 **"啟用圖像**"。 或者，選擇圖像名稱前的核取方塊，然後選擇工具列上的 **"啟用選定的圖像**"。 
+## <a name="enable-images-for-a-lab"></a>為實驗室啟用影像
+要啟用關閉的影像,請選擇 **...(省略)** 在最後一列中,選擇 **「啟用圖像**」。 或者,選擇圖像名稱前的複選框,然後選擇工具列上的 **「啟用選定的圖像**」。 
 
-要同時禁用多個圖像，請在圖像名稱之前選擇核取方塊，然後選擇工具列上的 **"啟用選定圖像**"。 
+要同時禁用多個圖像,請在圖像名稱之前選擇複選框,然後選擇工具列上的 **「啟用選定圖像**」。 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>在實驗室建立時開啟影像
+您可以在實驗室建立時啟用更多影像: 
+
+1. 使用**實驗室帳戶擁有者**認證到[Azure 實驗室服務網站](https://labs.azure.com)
+2. 選擇預設虛擬機映射或向下箭頭。 
+3. 選擇 **「開啟更多影像」 選項**。 
+
+    ![開啟更多影像選項](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. 按照上一節的說明啟用您選擇的圖像。 
+5. 您可能需要關閉 **「新建」實驗室**視窗並重新打開它才能查看在上一步驟中選擇的圖像。 
+
+
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：

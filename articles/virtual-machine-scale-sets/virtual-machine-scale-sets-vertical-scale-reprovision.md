@@ -1,7 +1,7 @@
 ---
 title: 垂直縮放 Azure 虛擬機器縮放集
 description: 如何垂直調整虛擬機器大小以回應 Azure 自動化的監視警示
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: manayar
-ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: c28c50ef78f67daa6adc4022d8feb559f5c1c1f0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274440"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273353"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虛擬機器擴展集垂直自動調整
 
@@ -38,7 +38,7 @@ ms.locfileid: "76274440"
 4. 使用 Webhook 通知將警示加入至您的虛擬機器擴展集。
 
 > [!NOTE]
-> 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 此外，不支援限制虛擬機器大小向上/向下擴展。 您可以在以下大小配對之間選擇調整︰
+> 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 此外,不支援限制虛擬機大小向上/向下擴展。 您可以在以下大小配對之間選擇調整︰
 > 
 > | 成對的調整 VM 大小 |  |
 > | --- | --- |

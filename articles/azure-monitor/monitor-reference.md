@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408498"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255323"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文介紹了 Azure 監視器監視的不同應用程式和服務。 
@@ -31,7 +31,7 @@ ms.locfileid: "80408498"
 | [網路 Azure 監視器(預覽版)](insights/network-insights-overview.md) | 為所有網路資源提供運行狀況和指標的全面視圖。 高級搜索功能可説明您識別資源依賴項,通過搜索網站名稱,啟用標識託管網站的資源等方案。 |
 [資源群組的 Azure 監視器(預覽)](insights/resource-group-insights.md) |  對單個資源遇到的任何問題進行會審和診斷,同時提供資源組整體運行狀況和性能的上下文。 |
 | [用於儲存的 Azure 監視器(預覽)](insights/storage-insights-overview.md) | 通過提供 Azure 儲存服務性能、容量和可用性的統一視圖,全面監視 Azure 儲存帳戶。 |
-| [虛擬機器的 Azure 監視器(預覽版)](insights/container-insights-overview.md) | 大規模監視 Azure 虛擬機器 (VM) 和虛擬機器縮放集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
+| [虛擬機器的 Azure 監視器](insights/container-insights-overview.md) | 大規模監視 Azure 虛擬機器 (VM) 和虛擬機器縮放集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
 
 ### <a name="core-solutions"></a>核心解決方案
 
@@ -176,13 +176,13 @@ ms.locfileid: "80408498"
 |:---|:---|
 | [Azure 自動化](/azure/automation/) | 管理作業系統更新並跟蹤 Windows 和 Linux 電腦上的更改。 請參考[追蹤](../automation/change-tracking.md)並[更新管理](../automation/automation-update-management.md)。 |
 | [Azure 資訊保護](https://docs.microsoft.com/azure/information-protection/) | 對文件和電子郵件進行分類並選擇性地保護文檔和電子郵件。 請參閱[Azure 資訊保護的中央報告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
-| [Azure 安全中心](/azure/security-center/) | 收集和分析安全事件並執行威脅分析。 請參閱[Azure 安全中心中的數據收集](/azure/security-center/security-center-enable-data-collection) |
+| [Azure 資訊安全中心](/azure/security-center/) | 收集和分析安全事件並執行威脅分析。 請參閱[Azure 安全中心中的數據收集](/azure/security-center/security-center-enable-data-collection) |
 | [Azure Sentinel](/azure/sentinel/) | 連接到不同的來源,包括 Office 365 和 Amazon Web 服務雲端追蹤。 請參考[連線資料來源](/azure/sentinel/connect-data-sources)。 |
 | [金鑰保存庫分析](insights/azure-key-vault.md) | 分析 Azure 金鑰保管庫審核事件日誌。 |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | 創建診斷設置以將日誌發送到 Azure 監視器。 請參考[在 Intune(預覽)中將紀錄資料傳送到儲存、事件中心或紀錄分析](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
 | 網路  | [網路效能監視器](insights/network-performance-monitor.md)- 監控與服務和應用程式終結點的網路連接和性能。<br>[Azure 應用程式閘道](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)- 分析 Azure 應用程式閘道的紀錄和指標。<br>[流量分析](/azure/network-watcher/traffic-analytics)- 分析網路觀察程式網路安全組 (NSG) 流日誌,以便深入瞭解 Azure 雲中的流量流。 |
-| [辦公室 365](insights/solution-office-365.md) | 監視 Office 365 環境。 更新的版本,可通過 Azure Sentinel 提供改進的載入服務。 |
-| [SQL 分析](insights/azure-sql.md) | 大規模監視 Azure SQL 資料庫、彈性池和託管實例的性能,並跨多個訂閱。 |
+| [Office 365](insights/solution-office-365.md) | 監視 Office 365 環境。 更新的版本,可通過 Azure Sentinel 提供改進的載入服務。 |
+| [SQL Analytics](insights/azure-sql.md) | 大規模監視 Azure SQL 資料庫、彈性池和託管實例的性能,並跨多個訂閱。 |
 | [Surface Hub](insights/surface-hubs.md) | 跟蹤曲面集線器設備的運行狀況和使用。 |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 通過將管理組連接到 Azure 監視器,從操作管理器代理收集數據。 請參考[操作管理員連接到 Azure 監視器](platform/om-agents.md)<br> 使用[運營經理評估](insights/scom-assessment.md)解決方案評估系統中心運營經理管理團隊的風險和運行狀況。 |
 | [微軟團隊會議室](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | 微軟團隊會議室設備的集成端到端管理。 |

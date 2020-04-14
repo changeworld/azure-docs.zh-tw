@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: fe1397d7ad00a2eb6e9fe04d8bfa50e49839fe34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288779"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273047"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure Marketplace 中的現有虛擬機器供應項目
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器產品/服務](https://aka.ms/CreateAzureVMoffer)中的說明進行操作,以管理遷移的優惠。
 
 本文將逐步說明在 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)更新虛擬機器 (VM) 供應項目並重新發佈的各個層面。 
 
@@ -29,7 +32,7 @@ ms.locfileid: "80288779"
 為了協助您修改這些項目，入口網站提供了 **「比較」** 與 **「記錄」** 的功能。  
 
 >[!Note]
->雲解決方案供應商 （CSP） 合作夥伴管道加入宣告現已可用。  有關通過 Microsoft CSP 合作夥伴管道行銷產品/服務的更多資訊[，請參閱雲解決方案供應商](../../cloud-solution-providers.md)。
+>雲端解決方案供應商 (CSP) 合作夥伴通路選擇加入現已可用。  有關透過 Microsoft CSP 合作夥伴通路行銷產品/服務的更多資訊[,請參閱雲解決方案供應商](../../cloud-solution-providers.md)。
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>不允許對虛擬機器供應項目或 SKU 進行的變更
 
@@ -118,7 +121,7 @@ ms.locfileid: "80288779"
 
 ### <a name="update-pricing-on-published-offers"></a>更新已發佈供應項目的價格
 
-發佈隨用隨付的供應項目後，就無法直接提高 SKU 的價格。  （但是，您可以在同一產品/服務下創建新的 SKU，刪除舊的 SKU，然後為新客戶重新發佈產品/服務。 相反，您可以使用以下步驟降低已發佈產品/服務的價格：
+發佈隨用隨付的供應項目後，就無法直接提高 SKU 的價格。  (但是,您可以在同一產品/服務下創建新的 SKU,刪除舊的 SKU,然後為新客戶重新發佈產品/服務。 相反,您可以使用以下步驟降低已發佈產品/服務的價格:
 
 1.  登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 
@@ -128,7 +131,7 @@ ms.locfileid: "80288779"
 
 4.  如果您已在 1x1 GUI 中設定價格，則可直接在 UI 中變更價格。 如果您是以匯入/匯出試算表的方式設定價格，則只能以匯入/匯出功能來降低價格。
 
-3.  按一下 [儲存]****。
+3.  按一下 [檔案]  。
 
 4.  按一下 [發佈]**** 啟動工作流程，以發佈您的變更。
 

@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288558"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255969"
 ---
 <a name="api-prerequisites"></a>API 先決條件
 ================
+
+> [!NOTE]
+> 雲合作夥伴門戶 API 與合作夥伴中心集成,在您的產品/服務遷移到合作夥伴中心後將繼續工作。 集成引入了小更改。 查看[雲合作夥伴門戶 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改,以確保代碼在遷移到合作夥伴中心後繼續工作。
 
 有兩個您需要使用 Cloud Partner 入口網站 API 的必要程式設計資產：服務主體和 Azure Active Directory (Azure AD) 存取權杖。
 
@@ -41,7 +44,7 @@ ms.locfileid: "80288558"
 3. 從 [類型]**** 下拉式清單中，選取 [服務主體]****，並新增下列詳細資料：
 
 -   服務主體的**易記名稱**，例如 `spAccount`。
--   **應用程式識別碼**。 若要尋找此識別碼，請前往 [Azure 入口網站](https://portal.azure.com)，按一下 [Azure Active Directory]****，選擇 [應用程式註冊]****，然後按一下您的應用程式。
+-   **應用程式識別碼**。 要查找此識別碼,請轉到[Azure 門戶](https://portal.azure.com),按**下 Azure 活動目錄**,選擇**應用註冊**,然後單擊應用。
 -   Azure AD 租用戶的**租用戶識別碼**也稱為**目錄識別碼**。 您可以在 [Azure 入口網站](https://portal.azure.com) [Azure Active Directory] 頁面中 [屬性]**** 底下找到此識別碼。
 -   服務主體物件的**物件識別碼**。 您可以從 Azure 入口網站中取得此識別碼。 移至 [Azure Active Directory]****，選擇 [應用程式註冊]****，按一下您的應用程式，然後按一下 [本機目錄中受控的應用程式]**** 底下的應用程式名稱。 接著，移至 [屬性]**** 頁面，尋找物件識別碼。 請確定您不會抓取初始位於您的應用程式，而是在受管理的應用程式中的物件識別碼的物件識別碼。
 -   與帳戶相關聯的**角色**，將用於 RBAC。

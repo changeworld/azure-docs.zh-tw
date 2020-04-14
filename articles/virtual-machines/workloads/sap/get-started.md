@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811260"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273217"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 託管與執行 SAP 工作負載方案
 
@@ -110,6 +110,7 @@ SAP HANA Azure 的獨特性是使 Azure 與眾不同的一個產品/ 為了啟�
 
 
 ## <a name="change-log"></a>變更記錄檔
+- 04/13/2020:正確精確到[SAP ASE Azure 虛擬機器 DBMS 部署中用於 SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)的 SAP ASE 版本號
 - 04/07/2020:在[Azure 中的 SLES 上設定起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以澄清雲網配置-azure 指令的更改
 - 04/06/2020: [SAP HANA 橫向擴展與 Azure VM 上的備用節點與 Azure NetApp 檔在 SLES 上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)和 SAP [HANA 橫向擴展與 Azure VM 上的備用節點與 AZURE NetApp 檔案在 RHEL 上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)刪除對 NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf)的引用 (替換為[TR-4746)](https://www.netapp.com/us/media/tr-4746.pdf)
 - 03/31/2020:在[SLES 上的 Azure VM 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability),在[RHEL 上的 Azure VM 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel),以添加在創建條帶卷時如何指定條帶大小的說明
@@ -173,11 +174,6 @@ SAP HANA Azure 的獨特性是使 Azure 與眾不同的一個產品/ 為了啟�
 - 2019 年 10 月 11 日:更改超磁碟儲存配置,並在[SAP HANA Azure 虛擬機器儲存配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中引入 ANF
 - 2019 年 10 月 10 日:使用 SAP 應用程式更改[Azure 接近放置組的圖形,以實現最佳的網路延遲](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios),以更清晰
 - 2019 年 10 月 10 日:更改[Azure 上的 SAP HANA 基礎結構配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations),以更正有關 /hana/共用的高可用性 NFS 共用的聲明。 
-- 09/28/2019:在[Azure 中的紅帽企業 Linux 上設置起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)以澄清 SBD,因為 RHEL 群集不支援遮罩機制  
-- 09/17/2019:NetWeaver 規劃和部署指南的更改,以統一 SAP 的 VM 擴展術語  
-- 08/22/2019:在[Azure 中的 SUSE Linux 企業伺服器上設定起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以更新自定義角色創建的網址的更改  
-- 08/16/2019:在[Azure 中的紅帽企業 Linux 上設置起搏器的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)更改,以提醒客戶在自定義角色中更新操作(如果更新到新版本的 Azure 圍欄代理)  
-- 08/15/2019:SAP [HANA Azure 虛擬機儲存配置的變化](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage),以反映超磁碟(以前超 SSD)的通用可用性
-- 08/01/2019:在[Azure 中的 SUSE Linux 企業伺服器上設置起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)的更改,以整合專為 SLES 15 所做的更改 
+
 
 

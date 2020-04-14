@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479366"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262055"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>使用資源執行狀況監視 Azure 資料資源管理員(預覽)
 
@@ -44,7 +44,7 @@ Azure 資料資源管理員[的資源運行狀況](/azure/service-health/resourc
 
 ### <a name="unavailable"></a>無法使用
 
-運行狀況為 **「不可用**」表示 Azure 資料資源管理員資源存在持續問題,導致它無法用於查詢和引入。 例如,Azure 資料資源管理器資源中的節點可能意外重新啟動。 如果 Azure 資料資源管理員資源長時間處於此狀態,請與[支援]()人員聯絡 。
+運行狀況為 **「不可用**」表示 Azure 資料資源管理員資源存在持續問題,導致它無法用於查詢和引入。 例如,Azure 資料資源管理器資源中的節點可能意外重新啟動。 如果 Azure 資料資源管理器資源長時間處於此狀態,請與支援人員聯繫。
 
 ![無法使用](media/monitor-with-resource-health/unavailable.png)
 

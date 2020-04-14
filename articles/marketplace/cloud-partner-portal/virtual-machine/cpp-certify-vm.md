@@ -1,5 +1,5 @@
 ---
-title: 為 Azure 應用商店驗證 VM 映射
+title: 為 Azure 應用商店驗證 VM 映像
 description: 說明如何測試和提交 VM 映像供 Azure Marketplace 認證。
 author: dsindona
 ms.service: marketplace
@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278190"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273489"
 ---
 # <a name="certify-your-vm-image"></a>認證您的 VM 映像
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Azure VM 映像認證](https://aks.ms/CertifyVMimage)中的說明來管理遷移的優惠。
 
 建立和部署虛擬機器 (VM) 後，必須測試並提交 VM 映像以供 Azure Marketplace 認證。 本文說明可在何處取得 *Azure 認證的認證測試工具*，並解釋如何使用此工具認證您的 VM 映像，以及如何將驗證結果上傳至您 VHD 所在的 Azure 容器。 
 
