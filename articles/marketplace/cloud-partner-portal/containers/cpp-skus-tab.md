@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: adbe3d4c498c8f4e4968ca903f78c34aedca9a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279992"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270191"
 ---
 # <a name="container-skus-tab"></a>容器 SKU 索引標籤
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 容器產品的管理移動到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[「創建 Azure 容器產品/服務](https://aka.ms/CreateContainerOffer)」中的說明進行操作,以管理遷移的優惠。
 
 可使用 [新增供應項目]**** 頁面的 [SKU]**** 索引標籤，建立一個或一個以上的 SKU，並建立 SKU 與新供應項目之間的關聯性。  您可以使用不同的 SKU，依功能集、帳單模式或其他特性來區分解決方案。
 
@@ -45,14 +48,14 @@ SKU 中繼資料包含容器清單的店面顯示資訊。
 
 ![容器中繼資料](./media/containers-image-repository.png)
     
-上一個螢幕捕獲中**的圖像存儲庫詳細資訊**包含以下欄位。  必要欄位由星號 (*) 標示。
+上一個螢幕擷取中**的影像儲存庫詳細資訊**包含以下欄位。  必要欄位由星號 (*) 標示。
 
 -   **訂閱\*ID** - 存在 ACR 的 Azure 訂閱 ID。
--   **資源組名稱\***- ACR 的資源組名稱。
--   **登錄機碼\***- ACR 名稱。
--   **存儲庫名稱\***- 存儲庫名稱。 設定此名稱之後，就無法變更這個值。 使用唯一的名稱避免與您帳戶中的其他供應項目發生衝突。
--   **使用者名\***- 與 ACR 映射關聯的使用者名（管理員使用者名）。
--   **密碼\***- 與 ACR 映射關聯的密碼。
+-   **資源群組名稱\***- ACR 的資源群組名稱。
+-   **註冊表項\***- ACR 名稱。
+-   **儲存庫名稱\***- 儲存庫名稱。 設定此名稱之後，就無法變更這個值。 使用唯一的名稱避免與您帳戶中的其他供應項目發生衝突。
+-   **使用者名\***- 與 ACR 映像關聯的使用者名稱(管理員使用者名)。
+-   **密碼\***- 與 ACR 映像關聯的密碼。
 
     >[!NOTE]
     >必須提供使用者名稱和密碼，以確保合作夥伴在發佈程序中能存取先前所述的 ACR。
@@ -62,7 +65,7 @@ SKU 中繼資料包含容器清單的店面顯示資訊。
 
 發佈容器映像時，您可以提供一個或多個映像標籤以及 SHA 訊息摘要。
 
-**圖像標記\*或摘要**
+**影像標籤\*或摘要**
  
 - 此標籤或訊息摘要必須包含 `latest` 標籤和版本標籤 (例如，以 `xx.xx.xx-` 開頭，其中 xx 是數字)， 且應是[資訊清單標籤](https://github.com/estesp/manifest-tool)，以將多個平台設為目標。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 
 - 您可以使用標籤來新增數個版本的容器。 所有資訊清單標籤 (除了 `latest` 以外) 必須以 `X.Y-` 或 `X.Y.Z-` 開頭，其中 X、Y、Z 是整數。 <br/> 例如，如果 `latest` 標籤指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32`，以及 `1.0.1-windows-arm32`，則需要在此處加入這些標籤。

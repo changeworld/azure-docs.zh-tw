@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656413"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261800"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立簡單查詢
 
 在 Azure 認知搜尋中,[簡單查詢語法](query-simple-syntax.md)調用預設查詢解析器以針對索引執行全文搜尋查詢。 此解析器速度快,可處理常見方案,包括全文搜索、篩選和分面搜索以及地理搜索。 
 
-在本文中,我們使用示例來說明簡單的語法。
+在本文中,我們使用示例來說明簡單的語法,填充`search=`[搜索文檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作的參數。
 
 另一種查詢語法是[Full Lucene,](query-lucene-syntax.md)它支援更複雜的查詢結構,如模糊和通配符搜索,這可能需要額外的時間來處理。 有關詳細資訊和展示完整語法的範例,請參閱[使用完整的 Lucene 語法](search-query-lucene-examples.md)。
 

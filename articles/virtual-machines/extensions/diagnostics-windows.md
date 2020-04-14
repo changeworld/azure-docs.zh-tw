@@ -3,7 +3,7 @@ title: 使用 Azure PowerShell 在 Windows VM 上啟用診斷
 services: virtual-machines-windows
 documentationcenter: ''
 description: 了解如何使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
-author: sbtron
+author: mimckitt
 manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
-ms.author: saurabh
-ms.openlocfilehash: 55afeb52323ead7db8be7e8fd1dabc880328e888
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 16e1dba8c430a5c1e1d1d69910b8ed2c8d0b8138
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921533"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262837"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
 
@@ -42,9 +42,9 @@ Azure 診斷是 Azure 中可對部署的應用程式啟用診斷資料收集的�
 
 如果診斷組態檔以儲存體帳戶名稱指定 **StorageAccount** 元素，則 *Set-AzVMDiagnosticsExtension* 指令碼會自動設定診斷擴充功能，以將診斷資料傳送至該儲存體帳戶。 若要讓此做法能夠運作，儲存體帳戶必須與 VM 位於相同的訂用帳戶中。
 
-如果您未在診斷組態中指定 **StorageAccount** ，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果指定*了 StorageAccountName*參數，則 Cmdlet 將始終使用參數中指定的存儲帳戶，而不是診斷設定檔中指定的存儲帳戶。
+如果您未在診斷組態中指定 **StorageAccount** ，則需要將 *StorageAccountName* 參數傳入 Cmdlet。 如果指定*了 StorageAccountName*參數,則 cmdlet 將始終使用參數中指定的儲存帳戶,而不是診斷配置檔中指定的儲存帳戶。
 
-如果診斷儲存體帳戶位於與 VM 不同的訂用帳戶，您就必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳送給 Cmdlet。 當診斷存儲帳戶位於同一訂閱中時，不需要*存儲帳戶金鑰*參數，因為 Cmdlet 可在啟用診斷擴展時自動查詢和設置金鑰值。 但是，如果診斷存儲帳戶位於其他訂閱中，則 Cmdlet 可能無法自動獲取金鑰，您需要通過*StorageAccountKey*參數顯式指定金鑰。  
+如果診斷儲存體帳戶位於與 VM 不同的訂用帳戶，您就必須明確地將 *StorageAccountName* 和 *StorageAccountKey* 參數傳送給 Cmdlet。 當診斷存儲帳戶位於同一訂閱中時,不需要*儲存帳戶密鑰*參數,因為 cmdlet 可在啟用診斷擴展時自動查詢和設置密鑰值。 但是,如果診斷存儲帳戶位於其他訂閱中,則 cmdlet 可能無法自動獲取密鑰,您需要通過*StorageAccountKey*參數顯式指定金鑰。  
 
     Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 

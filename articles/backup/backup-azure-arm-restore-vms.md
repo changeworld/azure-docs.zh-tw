@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677554"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254915"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 門戶中還原 Azure VM 資料
 
@@ -28,8 +28,6 @@ Azure 備份提供數種方法來還原 VM。
 
 > [!NOTE]
 > 您也可以復原 Azure VM 上的特定檔案和資料夾。 [深入了解](backup-azure-restore-files-from-vm.md)。
->
-> 如果您執行[最新版](backup-instant-restore-capability.md)適用於 Azure VM 的 Azure 備份 (又稱為立即還原)，則快照集可保留最多七天，而且您可以在備份資料傳送至保存庫之前，從快照集還原 VM。 如果您想要從過去七天的備份還原 VM，從快照集還原會比從保存庫還原還快。
 
 ## <a name="storage-accounts"></a>儲存體帳戶
 

@@ -5,19 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f4b0805e2a9247aff881a9e34b0bd1cd4c6ca27
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 7b619d3c9b4b334e637d6a1c456256cb33ad5134
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550405"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261375"
 ---
 # <a name="enable-azure-startstop-vms-solution"></a>開啟 Azure 啟動/停止 VM 解決方案
 
 執行以下步驟,將非工作時間解決方案的啟動/停止 VM 添加到新的或現有的自動化帳戶和連結的日誌分析工作區。 完成載入過程後,配置變數以自定義解決方案。
 
 >[!NOTE]
->要將此解決方案與經典 VM 一起使用,您需要一個經典 RunAs 帳戶,預設情況下不創建該帳戶。 有關創建經典 RunAs 帳號的說明,請參閱[經典執行帳戶](automation-create-standalone-account.md#classic-run-as-accounts)。
+>要將此解決方案與經典 VM 一起使用,您需要一個經典運行作為帳戶,預設情況下不創建該帳戶。 有關創建經典"作為"帳戶的說明,請參閱[創建經典運行作為帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
 >
 
 ## <a name="enable-solution"></a>啟用解決方案

@@ -4,7 +4,7 @@ description: 了解如何在您的 Azure 環境中備份及復原 Oracle Databas
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: gwallace
+manager: mimckitt
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: bae7e53a316fa6ca3158639cc551a0a3de5cb952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 9e2fcc9533c183a356b19c369777e1319ca7f9ae
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536916"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263194"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫
 
 您可以使用 Azure CLI 在命令提示字元或使用指令碼建立和管理 Azure 資源。 在本文中，我們會使用 Azure CLI 指令碼，從 Azure Marketplace 資源庫映像部署 Oracle Database 12c 資料庫。
 
-在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊，請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊,請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
@@ -286,11 +286,11 @@ ms.locfileid: "79536916"
 
     ![復原服務保存庫備份頁面](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在 [備份目標]**** 刀鋒視窗上，使用 [Azure]**** 和 [虛擬機器]**** 預設值。 按一下 [確定]****。
+5.  在 [備份目標]**** 刀鋒視窗上，使用 [Azure]**** 和 [虛擬機器]**** 預設值。 按一下 [確定]  。
 
     ![復原服務保存庫詳細資料頁面](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  在 [備份原則]**** 中，使用 **DefaultPolicy**，或選取 [建立新原則]****。 按一下 [確定]****。
+6.  在 [備份原則]**** 中，使用 **DefaultPolicy**，或選取 [建立新原則]****。 按一下 [確定]  。
 
     ![復原服務保存庫備份原則詳細資料頁面](./media/oracle-backup-recovery/recovery_service_06.png)
 
@@ -508,7 +508,7 @@ ms.locfileid: "79536916"
 
     ![公用 IP 位址的清單](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  在 [公用 IP 位址]**** 刀鋒視窗上，按一下 [新增]****。 在 [建立公用 IP 位址]**** 刀鋒視窗上，於 [名稱]**** 中選取公用 IP 名稱。 針對 [資源群組]****，選取 [使用現有的]****。 然後，按一下"**創建**"。
+2.  在 [公用 IP 位址]**** 刀鋒視窗上，按一下 [新增]****。 在 [建立公用 IP 位址]**** 刀鋒視窗上，於 [名稱]**** 中選取公用 IP 名稱。 針對 [資源群組]****，選取 [使用現有的]****。 然後,按一下"**創建**。
 
     ![建立 IP 位址](./media/oracle-backup-recovery/create_ip_01.png)
 

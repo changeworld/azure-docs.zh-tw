@@ -3,7 +3,7 @@ title: 在 Azure Linux 虛擬機器上實作 Oracle Data Guard | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Data Guard。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 7a165935e2c232167a0752272d244ce98bf6aff2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 6edb75f00a1ff38dbb1bd3822a704fa808e21caa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534400"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262939"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本文說明如何使用 Azure CLI，從 Azure Marketplace 映像部署 Oracle Database 12c 資料庫。 本文接著會為您逐步說明如何安裝及設定 Azure 虛擬機器 (VM) 上的 Data Guard。
 
-在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊，請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊,請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 ### <a name="assumptions"></a>假設
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-打開閃回（這使得恢復變得容易得多），並將"備用檔\_\_管理"設置為自動。之後退出 SQL+Plus。
+打開閃回(這使得恢復變得容易得多),並將"備用檔\_\_管理"設置為自動。之後退出 SQL+Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -512,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1 (主要) 上設定 Data Guard Broker
 
-啟動 Data Guard Manager，並使用 SYS 和密碼登入。 （不要使用作業系統身份驗證。執行以下操作：
+啟動 Data Guard Manager，並使用 SYS 和密碼登入。 (不要使用作業系統身份驗證。執行以下操作:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

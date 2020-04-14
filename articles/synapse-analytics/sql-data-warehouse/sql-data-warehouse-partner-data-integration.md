@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 587b2aa23aa822f44d7763cbfec21eb36055b091
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 395f0ff2880f4889cb0c214772f1056e26f1c616
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583720"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253082"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure 同步分析資料整合合作夥伴
 
@@ -33,6 +33,7 @@ ms.locfileid: "80583720"
 | ![五特蘭](./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png) |**五特蘭**<br>Fivetran 可説明您集中來自不同來源的數據。 它具有零維護、零配置數據管道產品,並列出了越來越多的所有常用數據源的內置連接器。 在驗證數據源和目標數據倉庫后,安裝程式需要五分鐘。|[產品頁面](https://fivetran.com/)<br> |
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1.Azure 資訊雲服務**<br> Informatica 雲為自助服務數據遷移、整合和管理功能提供了一流的解決方案。 客戶可以快速可靠地從不同類型的源將 PB 的數據匯出到 Azure。 Azure 資訊雲服務提供與 Azure 突觸、SQL 資料庫、Blob 儲存、資料湖儲存和 Azure Cosmos DB 的本機、高容量、高性能連接。 <br><br> **2.資訊電源中心**PowerCenter 是一個元數據驅動的數據集成平臺,它啟動並加快了數據集成專案,以便比手動編碼更快地將數據交付給企業。 它作為資料整合投資的基礎 |**適用於 Azure 的 Informatica 雲服務**<br>[產品頁面](https://www.informatica.com/products/cloud-integration.html)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[產品頁面](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![資訊編譯者](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**資訊編譯者(Omni-Gen 資料管理)**<br>資訊構建器的 Omni-Gen 資料管理平臺提供資料整合、資料品質和主資料管理解決方案。 無論格式、位置、體積或延遲如何,它都能輕鬆訪問、移動和混合所有數據。|[產品頁面](https://www.informationbuilders.com/3i-platform)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
+| ![馬蒂利翁](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**馬蒂利翁**<br>Matillion 是雲數據倉庫的數據轉換軟體。 只有 Matillion 是專為 Azure Synapse 而構建的,使企業能夠實現新的簡單性、速度、規模和節約水準。 Matillion 產品受到各種規模的公司的高度評價和信賴,以滿足其數據集成和轉型需求。 詳細瞭解如何使用 Matillion 基於雲端的數據轉換方法釋放數據潛力。| [產品頁面](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [要求早期存取](https://www.matillion.com/lp/etl-azure-synapse-access) |
 | ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole 提供了一個雲原生平臺,使用戶能夠執行 ETL、分析和 AI/ML 工作負載。 它支援不同類型的開源引擎 - 阿帕奇火花,TensorFlow,普雷斯托,氣流,哈多普,蜂巢,以及更多。 它提供了易於使用的最終使用者工具,用於從 SQL 查詢工具到筆記本和利用強大開源引擎的儀表板的數據處理。|[產品頁面](https://www.qubole.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
 | ![區段](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**區段**<br>細分是一種數據管理和分析解決方案,可説明您了解來自各種來源的客戶數據。 它允許您將數據連接到 200 多個工具,以創建更好的決策、產品和體驗。 段將使用內建資料連接器將多個資料來源轉換並載入主目錄中|[產品頁面](https://segment.com/)<br> |
 | ![天空](./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png) |**Skyvia(資料整合)**<br>Skyvia 數據整合提供了一個可自動導入數據的嚮導。 此精靈允許您在不同類型的源之間遷移資料 - VM、應用程序資料庫、CSV 檔等。 |[產品頁面](https://skyvia.com/)<br> |

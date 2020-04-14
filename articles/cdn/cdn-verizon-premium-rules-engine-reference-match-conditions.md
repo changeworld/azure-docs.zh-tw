@@ -1,29 +1,29 @@
 ---
-title: 來自 Verizon 高級規則的 Azure CDN 引擎匹配條件 |微軟文檔
-description: 來自 Verizon 高級版中 Azure 內容交付網路的參考文檔會管理引擎匹配條件。
+title: 來自 Verizon 高級規則的 Azure CDN 引擎符合條件 |微軟文件
+description: 來自 Verizon 高級版中 Azure 內容交付網路的參考文件會管理引擎匹配條件。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593208"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253436"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>來自 Verizon 高級規則的 Azure CDN 規則引擎匹配條件
+# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>從 Verizon 進階規則的 Azure CDN 規則引擎符合條件
 
-本文列出了來自 Verizon 高級[規則引擎](cdn-verizon-premium-rules-engine.md)的 Azure 內容交付網路 （CDN） 的可用匹配條件的詳細說明。
+本文列出了來自 Verizon 高級[規則引擎](cdn-verizon-premium-rules-engine.md)的 Azure 內容交付網路 (CDN) 的可用匹配條件的詳細說明。
 
 規則的第二個部分是比對條件。 比對條件會識別特定類型的要求，系統將針對這類要求執行一組功能。
 
 例如，您可以使用比對條件：
 
 - 篩選特定位置的內容要求。
-- 篩選從特定 IP 位址或國家/地區生成的請求。
+- 篩選從特定 IP 位址或國家 / 地區生成的請求。
 - 依標頭資訊篩選要求。
 
 ## <a name="always-match-condition"></a>一律比對條件
@@ -32,7 +32,7 @@ ms.locfileid: "67593208"
 
 名稱 | 目的
 -----|--------
-[總是](#always) | 將一組預設功能套用至所有要求。
+[永遠](#always) | 將一組預設功能套用至所有要求。
 
 ## <a name="device-match-condition"></a>裝置比對條件
 
@@ -112,7 +112,7 @@ ms.locfileid: "67593208"
 
 AS 號碼網路是由其自發系統編號 (ASN) 所定義。 
 
-/"**Matches****匹配不匹配"** 選項確定滿足 AS 編號匹配條件的條件：
+/'**Matches****符合不符合選項**的選項決定滿足 AS 編號符合條件的條件:
 
 - **符合**：用戶端網路的 ASN 必須符合其中一個指定的 ASN。 
 - **不符合**：用戶端網路的 ASN 不得符合任何一個指定的 ASN。
@@ -157,7 +157,7 @@ AS 號碼網路是由其自發系統編號 (ASN) 所定義。
 
 ### <a name="client-ip-address"></a>用戶端 IP 位址
 
-/"**Matches****匹配不匹配"** 選項確定滿足用戶端 IP 位址匹配條件的條件：
+/'**Matches****符合不符合選項**的設定值為符合客戶端 IP 位址符合條件的條件:
 
 - **符合**：用戶端的 IP 位址必須符合其中一個指定的 IP 位址。 
 - **不符合**：用戶端的 IP 位址不得符合任何一個指定的 IP 位址。 
@@ -186,7 +186,7 @@ AS 號碼網路是由其自發系統編號 (ASN) 所定義。
 
 ### <a name="cookie-parameter"></a>Cookie 參數
 
-/"**Matches****匹配不匹配"** 選項確定滿足 Cookie 參數匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 Cookie 參數匹配條件的條件。
 
 - **符合**：要求必須包含指定的 Cookie，且其值至少符合此比對條件中所定義的其中一個值。
 - **不符合**：要求必須符合下列任一準則：
@@ -220,7 +220,7 @@ AS 號碼網路是由其自發系統編號 (ASN) 所定義。
 
 「Cookie 參數 Regex」比對條件會定義 Cookie 名稱和值。 您可以使用[規則運算式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)來定義所需的 Cookie 值。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 Cookie 參數 Regex 匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 Cookie 參數 Regex 匹配條件的條件。
 
 - **符合**：要求必須包含指定的 Cookie，且其值符合指定的規則運算式。
 - **不符合**：要求必須符合下列任一準則：
@@ -253,7 +253,7 @@ AS 號碼網路是由其自發系統編號 (ASN) 所定義。
 
 您可以透過國碼 (地區碼) 來指定國家/地區。 
 
-/"**Matches****匹配不匹配"** 選項確定滿足國家/地區匹配條件的條件：
+/'**Matches****符合不符合選項**確定滿足國家/地區符合條件的條件:
 
 - **符合**：要求必須包含指定的國碼 (地區碼) 值。 
 - **不符合**：要求不得包含指定的國碼 (地區碼) 值。
@@ -311,7 +311,7 @@ AS 號碼網路是由其自發系統編號 (ASN) 所定義。
 
 「裝置」比對條件可識別從行動裝置根據其屬性所提出的要求。 行動裝置偵測可以透過 [WURFL](http://wurfl.sourceforge.net/) 達成。 
 
-/"**Matches****匹配不匹配"** 選項確定滿足設備匹配條件的條件：
+/'**Matches****符合不符合選項**的參數來符合裝置符合條件的條件:
 
 - **符合**：要求者的裝置必須符合指定的值。 
 - **不符合**：要求者的裝置不得符合指定的值。
@@ -398,7 +398,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 與提出內容要求之查閱者建立關聯的主機名稱決定是否符合「參考網域」比對條件。
 
-/"**Matches****匹配不匹配"** 選項確定滿足參考網域匹配條件的條件：
+/'**Matches****符合不符合選項**的參數: 符合參考網域符合條件的條件:
 
 - **符合**：參考的主機名稱必須符合指定的值。 
 - **不符合**：參考的主機名稱不得符合指定的值。
@@ -424,7 +424,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 ### <a name="request-header-literal"></a>要求標頭常值
 
-/"**Matches****匹配不匹配"** 選項確定滿足請求標頭文本匹配條件的條件。
+/「**Matches****匹配不匹配」** 選項確定滿足請求標頭文字匹配條件的條件。
 
 - **符合**：要求必須包含指定的標頭。 其值必須符合此比對條件中所定義的值。
 - **不符合**：要求必須符合下列任一準則：
@@ -449,9 +449,9 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 ### <a name="request-header-regex"></a>要求標頭 Regex
 
-"**匹配**/**不匹配"** 選項確定滿足請求標頭 Regex 匹配條件的條件。
+「**匹配**/**不符合」** 選項確定滿足請求標頭 Regex 匹配條件的條件。
 
-- **符合**：要求必須包含指定的標頭。 其值必須與在指定的[正則運算式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)中定義的模式匹配。
+- **符合**：要求必須包含指定的標頭。 其值必須與在指定的[正規表示式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)中定義的模式匹配。
 - **不符合**：要求必須符合下列任一準則：
   - 它不包含指定的標頭。
   - 它包含指定的標頭，但其值不符合指定的規則運算式。
@@ -480,7 +480,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 ### <a name="request-header-wildcard"></a>要求標頭萬用字元
 
-/"**Matches****匹配不匹配"** 選項確定滿足請求標頭萬用字元匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足請求標頭通配符匹配條件的條件。
 
 - **符合**：要求必須包含指定的標頭。 其值必須至少符合此比對條件中所定義的其中一個值。
 - **不符合**：要求必須符合下列任一準則：
@@ -565,7 +565,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 依要求的相對路徑來加以識別，但不包括所要求資產的檔案名稱。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 路徑目錄匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 路徑目錄匹配條件的條件。
 
 - **符合**：要求必須包含相對的 URL 路徑，但不包括符合指定 URL 模式的檔案名稱。
 - **不符合**：要求必須包含相對的 URL 路徑，但不包括不符合指定 URL 模式的檔案名稱。
@@ -583,7 +583,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
   例如：https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
 
-  此 URL 指向以下 Verizon CDN 主機名稱\/： HTTP： /wpc.0001。&lt;域&gt;/800001/我的原點/**我的資料夾**/索引.htm
+  此網址指向以下 Verizon CDN\/主機名稱 : http: /wpc.0001。&lt;網&gt;域 /800001/我的原點/**我的資料夾**/索引.htm
 
 - 在 URL 比較之前，邊緣 CNAME URL 會重寫為 CDN URL。
 
@@ -623,7 +623,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 依所要求資產的副檔名來識別要求。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 路徑擴展匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 路徑擴展匹配條件的條件。
 
 - **符合**：要求的 URL 必須包含精確符合指定之模式的副檔名。
 
@@ -647,7 +647,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 下列範例設定會假設當要求符合其中一個指定的副檔名時，就符合比對條件。
 
-值規範：asp aspx php html
+值規格:asp aspx php html
 
 當此比對條件找到以下列副檔名結尾的 URL 時，就符合此比對條件：
 
@@ -666,7 +666,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 依所要求資產的檔案名稱來識別要求。 基於這個比對條件的目的，檔案名稱會包含所要求資產的名稱、句號和副檔名 (例如，index.html)。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 路徑檔案名匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 路徑檔名匹配條件的條件。
 
 - **符合**：要求必須在其 URL 路徑中包含符合指定之模式的檔案名稱。
 - **不符合**：要求必須在其 URL 路徑中包含不符合指定之模式的檔案名稱。
@@ -697,7 +697,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 比較要求的 URL 路徑 (包括檔案名稱) 與指定的值。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 路徑文本匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 路徑文字符合條件的條件。
 
 - **符合**：要求必須包含符合指定之模式的 URL 路徑。
 - **不符合**：要求必須包含不符合指定之模式的 URL 路徑。
@@ -709,13 +709,13 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
     下列的值可供 [相對於]**** 選項使用：
   - **根**：表示 URL 比較點會緊接在 CDN 主機名稱之後。
 
-    例如：HTTP：\//wpc.0001。&lt; &gt;域/**800001/myorigin/myfolder/index.htm**
+    例如:http:\//wpc.0001。&lt;/**800001/myorigin/myfolder/index.htm**域 800001/myorigin/myfolder/index.htm &gt;
 
   - **原點**：表示 URL 比較點會在內容存取點 (例如，/000001 或 /800001/myorigin) 之後。 相對於原點目錄，\*.azureedge.net CNAME 依預設會建立在 Verizon CDN 主機名稱上，因此 Azure CDN 使用者應該使用**原點**值。 
 
-    例如\//&lt;：HTTPs：終結點&gt;.azureedge.net/myfolder/index.htm** **
+    \//例如&lt;:H0:終結&gt;點**myfolder/index.htm**.azureedge.net/myfolder/index.htm
 
-  此 URL 指向以下 Verizon CDN 主機名稱\/： HTTP： /wpc.0001。&lt;域&gt;/800001/myorigin/**myfolder/index.htm**
+  此網址指向以下 Verizon CDN\/主機名稱 : http: /wpc.0001。&lt;網&gt;域 /800001/myorigin/**myfolder/index.htm**
 
 - 在 URL 比較之前，邊緣 CNAME URL 會重寫為 CDN URL。
 
@@ -746,7 +746,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 比較要求的 URL 路徑與指定的[規則運算式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 路徑 Regex 匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 路徑 Regex 匹配條件的條件。
 
 - **符合**：要求必須包含符合指定之規則運算式的 URL 路徑。
 - **不符合**：要求必須包含不符合指定之規則運算式的 URL 路徑。
@@ -781,7 +781,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 比較要求的相對 URL 路徑與指定的萬用字元模式。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 路徑萬用字元匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 路徑通配符匹配條件的條件。
 
 - **符合**：要求必須包含符合指定之萬用字元模式的 URL 路徑。
 - **不符合**：要求必須包含不符合指定之萬用字元模式的 URL 路徑。
@@ -793,13 +793,13 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
    這個選項具有下列值：
      - **根**：表示 URL 比較點會緊接在 CDN 主機名稱之後。
 
-       例如：HTTP：\//wpc.0001。&lt; &gt;域/**800001/myorigin/myfolder/index.htm**
+       例如:http:\//wpc.0001。&lt;/**800001/myorigin/myfolder/index.htm**域 800001/myorigin/myfolder/index.htm &gt;
 
      - **原點**：表示 URL 比較點會在內容存取點 (例如，/000001 或 /800001/myorigin) 之後。 相對於原點目錄，\*.azureedge.net CNAME 依預設會建立在 Verizon CDN 主機名稱上，因此 Azure CDN 使用者應該使用**原點**值。 
 
-       例如\//&lt;：HTTPs：終結點&gt;.azureedge.net/myfolder/index.htm** **
+       \//例如&lt;:H0:終結&gt;點**myfolder/index.htm**.azureedge.net/myfolder/index.htm
 
-     此 URL 指向以下 Verizon CDN 主機名稱\/： HTTP： /wpc.0001。&lt;域&gt;/800001/myorigin/**myfolder/index.htm**
+     此網址指向以下 Verizon CDN\/主機名稱 : http: /wpc.0001。&lt;網&gt;域 /800001/myorigin/**myfolder/index.htm**
 
 - 在 URL 比較之前，邊緣 CNAME URL 會重寫為 CDN URL。
 
@@ -847,7 +847,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 比較要求的查詢字串與指定的值。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 查詢文本匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 查詢文字符合條件的條件。
 
 - **符合**：要求必須包含符合指定之查詢字串的 URL 查詢字串。
 - **不符合**：要求必須包含不符合指定之查詢字串的 URL 查詢字串。
@@ -884,7 +884,7 @@ HTML 慣用 DTD | %{wurfl_cap_html_preferred_dtd} | 字串，表示 HTML 內容�
 
 識別包含指定之查詢字串參數的要求。 這個參數會設定為符合指定之模式的值。 要求 URL 中的查詢字串參數 (例如，parameter=value) 會決定是否符合此條件。 此比對條件會依查詢字串參數的名稱來識別查詢字串參數，並接受一個或多個參數值的值。 
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 查詢參數匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 查詢參數匹配條件的條件。
 
 - **符合**：要求必須包含指定的參數，且其值至少符合此比對條件中所定義的其中一個值。
 - **不符合**：要求必須符合下列任一準則：
@@ -969,7 +969,7 @@ User  | *     | 當所要求 URL 的查詢字串包含 User 參數時，會比�
 
 識別包含指定之查詢字串參數的要求。 這個參數會設定為符合指定之[規則運算式](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)的值。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 查詢 Regex 匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 查詢 Regex 匹配條件的條件。
 
 - **符合**：要求必須包含符合指定之規則運算式的 URL 查詢字串。
 - **不符合**：要求必須包含不符合指定之規則運算式的 URL 查詢字串。
@@ -1017,7 +1017,7 @@ User  | *     | 當所要求 URL 的查詢字串包含 User 參數時，會比�
 
 根據要求的查詢字串來比較指定的值。
 
-/"**Matches****匹配不匹配"** 選項確定滿足 URL 查詢萬用字元匹配條件的條件。
+/「**Matches****匹配不符合」** 選項確定滿足 URL 查詢通配符匹配條件的條件。
 
 - **符合**：要求必須包含符合指定之萬用字元值的 URL 查詢字串。
 - **不符合**：要求必須包含不符合指定之萬用字元值的 URL 查詢字串。
@@ -1025,7 +1025,7 @@ User  | *     | 當所要求 URL 的查詢字串包含 User 參數時，會比�
 重要資訊：
 
 - 基於此選項的目的，查詢字串是從查詢字串的問號 (?) 分隔符號之後的第一個字元為開頭。
-- 參數值可以包括[萬用字元值](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)：
+- 參數值可以包含[通配符值](cdn-verizon-premium-rules-engine-reference.md#wildcard-values):
    - 每個參數值模式可包含一個或多個星號 (*)，其中每個星號都可能符合一個或多個字元序列。
    - 某些字元需要 URL 編碼。 使用百分比符號以 URL 編碼下列字元：
 
@@ -1056,7 +1056,7 @@ User  | *     | 當所要求 URL 的查詢字串包含 User 參數時，會比�
  名稱                 | 描述
  ---------------------|------------
 user=joe              | 當所要求 URL 的查詢字串為 "?user=joe" 時，會比對此模式。
-\*使用者*\*\*退出宣告*\* | 當 CDN URL 查詢包含 user 或 optout 參數時，會比對此模式。
+\*使用者*\*\*選擇離開*\* | 當 CDN URL 查詢包含 user 或 optout 參數時，會比對此模式。
 
 [回到頁首](#reference-for-rules-engine-match-conditions)
 

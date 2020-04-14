@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfe450972acda3affbea6cbe3d262bc4b1956dc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69900357"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262854"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>在有中速至高速的網路頻寬之情況下進行大型資料集的資料轉送
  
@@ -51,7 +51,7 @@ ms.locfileid: "69900357"
 
 - **AzCopy**：使用此命令列工具可獲得最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
 - **Azure 儲存體 REST API/SDK**：當您在建置應用程式時，您可以針對 Azure 儲存體 REST API 來開發應用程式，並使用以多種語言提供的 Azure SDK。
-- **用於連線傳輸的 Azure 資料框系列**– 資料框邊緣和資料框閘道是連線網路設備，可將資料移入和移出 Azure。 當在上傳資料之前，同時需要持續擷取資料及預先處理資料時，使用 Data Box Edge 實體裝置。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。 在每個案例中，資料轉送都是由裝置管理。
+- **用於上線傳輸的 Azure 資料框系列**– 資料框邊緣和資料框閘道是連線網路設備,可將資料移入和移出 Azure。 當在上傳資料之前，同時需要持續擷取資料及預先處理資料時，使用 Data Box Edge 實體裝置。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。 在每個案例中，資料轉送都是由裝置管理。
 - **Azure Data Factory** - Data Factory 應該用於擴充轉送作業，如果需要協調流程和監視功能也可以使用它。 使用 Azure Data Factory 以在數個 Azure 服務、內部部署之間或這兩者的組合之間，定期轉送檔案。 您可以使用 Data Factory 來建立資料驅動的工作流程 (管線) 並進行排程，工作流程會從不同的資料存放區內嵌資料，並自動進行資料移動和資料轉送。
 
 ## <a name="comparison-of-key-capabilities"></a>主要功能的比較
@@ -73,7 +73,7 @@ ms.locfileid: "69900357"
 |    加密                       |    AES 128 位元                  |    AES 256 位元                                   |    AES 256 位元                           |    AES 128 位元                         |
 |    硬體                         |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客戶提供                   |
 |    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
-|    夥伴整合              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
+|    夥伴整合              |    部分                         |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    部分                                |
 |    運送中                         |    Microsoft 管理            |    Microsoft 管理                             |    Microsoft 管理                     |    由客戶管理                    |
 | 當資料移動時的使用         |在商務服務界限內|在商務服務界限內|在商務服務界限內|跨越地理界限，例如美國到歐洲|
 |    定價                          |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
@@ -83,7 +83,7 @@ ms.locfileid: "69900357"
 
 ### <a name="high-network-bandwidth"></a>高速網路頻寬
 
-|                                     |    工具 AzCopy、 <br>Azure PowerShell、 <br>Azure CLI             |    Azure 儲存體 REST API、SDK                   |    資料框閘道或資料框邊緣          |    Azure Data Factory                                            |
+|                                     |    工具 AzCopy、 <br>Azure PowerShell、 <br>Azure CLI             |    Azure 儲存體 REST API、SDK                   |    資料盒閘道或資料框邊緣          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    資料類型                  |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案、Azure 資料表    |    Azure Blob、Azure 檔案                           |   支援 70 種以上的資料存放區和格式化資料連接器    |
 |    板型規格                |    命令列工具                        |    程式設計介面                    |    Microsoft 提供的虛擬 <br>或實體裝置     |    Azure 入口網站中的服務                                            |

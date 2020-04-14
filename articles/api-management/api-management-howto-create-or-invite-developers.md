@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072456"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260967"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理使用者帳戶
 
-在 API 管理中，開發人員是指您使用 API 管理所公開之 API 的使用者。 本指南示範如何建立並邀請開發人員使用您以 API 管理執行個體提供給他們的 API 和產品。 如需以程式設計方式管理使用者帳戶的相關資訊，請參閱 [API 管理 REST](/rest/api/apimanagement/) 參考中的[使用者實體](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)文件。
+在 API 管理中，開發人員是指您使用 API 管理所公開之 API 的使用者。 本指南示範如何建立並邀請開發人員使用您以 API 管理執行個體提供給他們的 API 和產品。 如需以程式設計方式管理使用者帳戶的相關資訊，請參閱 [API 管理 REST](/rest/api/apimanagement/) 參考中的[使用者實體](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)文件。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "70072456"
 若要新增使用者，請遵循本節中的步驟：
 
 1. 選取畫面左側的 [使用者]**** 索引標籤。
-2. 按 **+添加**。
+2. 按 **+新增**。
 3. 輸入使用者的適當資訊。
 4. 按 [新增] ****。
 
@@ -68,10 +68,10 @@ ms.locfileid: "70072456"
 
 ## <a name="reset-a-user-password"></a>重設使用者密碼
 
-要以程式設計方式處理使用者帳戶，請參閱 API 管理 REST [API](/rest/api/apimanagement/)引用中的使用者實體文檔。 若要將使用者帳戶密碼重設為特定值，您可以使用 [更新使用者](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 作業並指定所要的密碼。
+要以程式設計方式處理使用者帳戶,請參閱 API 管理 REST [API](/rest/api/apimanagement/)引用中的使用者實體文檔。 若要將使用者帳戶密碼重設為特定值，您可以使用 [更新使用者](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 作業並指定所要的密碼。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
-建立開發人員帳戶之後，您可以將它與角色建立關聯，並讓它訂閱產品和 API。 有關詳細資訊，請參閱[如何創建和使用組][How to create and use groups]。
+建立開發人員帳戶之後，您可以將它與角色建立關聯，並讓它訂閱產品和 API。 有關詳細資訊,請參閱[如何建立與使用群組][How to create and use groups]。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991240"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261018"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視中的 Azure AD 活動紀錄
 
@@ -98,12 +98,13 @@ ms.locfileid: "80991240"
 
 例如，使用者人數超過 100,000 名的大型租用戶每秒通常會有約 18 個事件，相當於每 5 分鐘有 5,400 個事件。 稽核記錄是每個事件約 2 KB，因為這相當於 10.8 MB 的資料。 因此，有 43 則訊息會在該五分鐘間隔內傳送至事件中樞。 
 
-下表包含美國西部基本事件中樞的每月估計成本 (視事件資料量而定)。 若要針對您預期應用程式將使用的資料量計算精確的估計值，請使用[事件中樞定價計算機](https://azure.microsoft.com/pricing/details/event-hubs/)。
+下表包含美國西部基本事件中心每月的估計成本,具體取決於事件數據的數量,根據使用者登錄行為等許多因素,事件數據可能因租戶而異。要準確估計應用程式的預期資料量,請使用[事件中心定價計算機](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 | 記錄分類 | 使用者人數 | 每秒事件數 | 每 5 分鐘間隔的事件數 | 每一間隔的數量 | 每一間隔的訊息數 | 每月訊息數 | 每月成本 (估計值) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | 稽核 | 100,000 | 18 | 5,400 | 10.8 MB | 43 | 371,520 | $10.83 |
 | 稽核 | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | $10.80 |
+| 登入 | 100,000 | 18000 | 5,400,000 | 10.8 GB | 42188 | 364,504,320 | $23.9 |  
 | 登入 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure 監視器記錄成本考量

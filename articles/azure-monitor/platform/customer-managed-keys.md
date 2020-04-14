@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/08/2020
-ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.date: 04/12/2020
+ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892320"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260851"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 監視器客戶管理的關鍵設定 
 
@@ -95,8 +95,7 @@ UI 目前不支援該過程,並且通過 REST API 執行預配過程。
 例如：
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -106,8 +105,8 @@ Authorization: Bearer eyJ0eXAiO....
 
 1. 使用[應用註冊](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)方法。
 2. 在 Azure 入口網站
-    1. 在開發人員工具 (F12) 中導航到 Azure 門戶
-    1. 在「批次處理 api 版本」實體之一的請求標頭下搜尋授權字串。 它看起來像:「授權:承載\<」令牌」。\> 
+    1. 在「開發人員工具」(F12)中導航到 Azure 門戶
+    1. 在「批次處理 api 版本」實體之一的請求標頭下搜尋授權字串。 它看起來像:"授權:持有人eyJ0eXAIO..."..." 
     1. 根據以下範例複製並將其添加到API呼叫中。
 3. 導航到 Azure REST 文件網站。 按任何 API 上的「試用」並複製承載權杖。
 
@@ -115,29 +114,52 @@ Authorization: Bearer eyJ0eXAiO....
 
 此配置過程中的某些操作以非同步方式運行,因為它們無法快速完成。 非同步操作的回應最初傳回 HTTP 狀態代碼 200 (OK) 和具有*Azure-Async 操作*屬性的標頭,當接受時:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
 可以通過向*Azure-Async 操作*標頭值傳送 GET 請求來檢查非同步操作的狀態:
 ```rst
-GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-來自操作的回應正文包含有關操作的資訊,"*狀態"* 屬性指示其狀態。 此設定過程中的非同步操作與狀態為:
+回應包含有關操作及其*狀態的資訊*。 它可以是以下項之一:
 
-**建立*叢集*資源**
-* 預先設定帳號 -- ADX 叢集正在預先使用 
-* 成功 -- ADX 叢集預先完成
+操作正在進行中
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
 
-**給金鑰保存的權限**
-* 更新 -- 金鑰識別碼詳細資訊更新正在進行中
-* 成功 -- 更新已完成
+操作已完成
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
 
-**關聯紀錄分析工作區**
-* 連結 -- 工作區關聯到叢集正在進行中
-* 成功 - 關聯已完成
-
+操作失敗
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>訂閱白名單
 
@@ -149,6 +171,8 @@ CMK 功能是一種早期訪問功能。 計劃創建*群集*資源的訂閱必�
 ### <a name="storing-encryption-key-kek"></a>儲存加密金鑰 (KEK)
 
 創建或使用已必須生成的 Azure 金鑰保管庫,或導入用於數據加密的金鑰。 Azure 密鑰保管庫必須配置為可恢復,以保護密鑰和對 Azure 監視器中數據的訪問。 您可以在金鑰保存的屬性下驗證此設定,應開啟*軟刪除*與*清除保護*。
+
+![軟刪除及清除保護設定](media/customer-managed-keys/soft-purge-protection.png)
 
 這些設定可透過 CLI 與 PowerShell 取得:
 - [虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -189,11 +213,10 @@ Content-type: application/json
 
 **回應**
 
-200 OK 和標頭時接受。
->[!Important]
-> 在功能的早期訪問期間,ADX 群集是手動預配的。 雖然需要預配不足的 ADX 群集一段時間才能完成,但您可以通過兩種方式檢查預配狀態:
-> 1. 從回應複製*Azure-Async 操作*網址,並將其用於[非同步操作](#asynchronous-operations-and-status-check)中的作業狀態檢查
-> 2. 在*群組*資源上發送 GET 請求,並查看*預先狀態*值。 它是*預配時預配帳戶*,完成後*已成功*預配帳戶。
+200 確定和標頭。
+在功能的早期訪問期間,ADX 群集是手動預配的。 雖然需要預配不足的 ADX 群集一段時間才能完成,但您可以通過兩種方式檢查預配狀態:
+1. 從回應複製 Azure-Async 操作網址,然後按照[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+2. 在*群組*資源上發送 GET 請求,並查看*預先狀態*值。 它是*預配時預配帳戶*,完成後*已成功*預配帳戶。
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure 監視器資料儲存 (ADX 叢集) 預先
 
@@ -205,7 +228,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> 複製並保存回應,因為您將在後續步驟中需要其詳細資訊
+> 複製並保存回應,因為您將在接下來的步驟中需要詳細資訊。
 
 **回應**
 
@@ -260,11 +283,11 @@ Authorization: Bearer <token>
 
 此資源管理員請求是非同步操作。
 
->[!Warning]
+> [!Warning]
 > 您必須在*群組*資源更新中提供完整的正文,其中包括*識別**、sKU、KeyVault**屬性*和*位置*。 找不到*KeyVault 屬性*詳細資訊會移除金*鑰*的金鑰識別碼,並造成[金鑰撤銷](#cmk-kek-revocation)。
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +313,10 @@ Content-type: application/json
 
 **回應**
 
-200 OK 和標頭時接受。
->[!Important]
-> 完成密鑰標識符的傳播需要幾分鐘時間。 您可以通過兩種方式檢查預先狀態:
-> 1. 從回應複製*Azure-Async 操作*網址,並將其用於[非同步操作](#asynchronous-operations-and-status-check)中的作業狀態檢查
-> 2. 在*群組資源*上送出 GET 要求,並檢視*KeyVault 屬性屬性*。 最近更新的密鑰標識符詳細資訊應在回應中返回。
+200 確定和標頭。
+完成密鑰標識符的傳播需要幾分鐘時間。 您可以通過兩種方式檢查預先狀態:
+1. 從回應複製 Azure-Async 操作網址,然後按照[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+2. 在*群組資源*上送出 GET 要求,並檢視*KeyVault 屬性屬性*。 最近更新的密鑰標識符詳細資訊應在回應中返回。
 
 完成金鑰識別碼更新後,對*群集*資源上的 GET 請求的回應應如下所示:
 
@@ -330,8 +352,6 @@ Content-type: application/json
 ### <a name="workspace-association-to-cluster-resource"></a>工作區關聯到*叢集*資源
 對於應用見解 CMK 配置,請按照此步驟的附錄內容操作。
 
-此資源管理員請求是非同步操作。
-
 執行此操作(包括以下操作)需要對工作區和*群集*資源具有「寫入」許可權:
 
 - 在工作區中:微軟.操作見解/工作空間/寫入
@@ -345,7 +365,7 @@ Content-type: application/json
 此資源管理員請求是非同步操作。
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -358,15 +378,13 @@ Content-type: application/json
 
 **回應**
 
-200 OK 和標頭時接受。
->[!Important]
-> 操作時間可達 90 分鐘。 引入工作區的數據僅在工作區關聯成功后使用託管密鑰進行加密存儲。
-> 要檢查工作區關聯狀態,請從回應中複製*Azure-Async 操作*網址 值,並將其用於[非同步操作](# asynchronous-operations-and-status-check)中的作業狀態檢查
-
-您可以透過工作區發送 GET 請求來檢查與工作區關聯的*群集*資源[- 獲取](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)並觀察回應。 *叢集資源 Id*上指示*群集*資源 ID。
+200 確定和標頭。
+引入後的數據在關聯操作后使用託管密鑰進行加密存儲,這可能需要長達 90 分鐘才能完成。 您可以通過兩種方式檢查工作區關聯狀態:
+1. 從回應複製 Azure-Async 操作網址,然後按照[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+2. 發送[工作區 – 取得](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)請求並觀察回應,關聯的工作區將在"功能"下具有群集 ResourceId。
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **回應**
@@ -455,7 +473,7 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 - 取得資源群組的所有*群組*資源:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -492,7 +510,7 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 - 取得訂閱所有*群組*資源:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -503,8 +521,7 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 - 刪除*群集*資源 -- 執行軟刪除操作,以便在 14 天內恢復群集資源、數據和相關工作區,無論刪除是意外的還是有意的。 叢集*資源*名稱在軟刪除期間保持保留狀態,無法建立具有該名稱的新群集。 在軟刪除期間之後 *,群集資源和*資料不可恢復。 關聯的工作區從*群集*資源取消關聯,新數據被引入到共用存儲和使用 Microsoft 密鑰進行加密。
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -540,8 +557,10 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 
 **建立**
 
+此資源管理員請求是非同步操作。
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -562,10 +581,10 @@ Content-type: application/json
 
 **回應**
 
-202 已接受。 這是非同步操作的標準資源管理員回應。
-
->[!Important]
-> 完成不足 ADX 群集的預配需要幾分鐘時間。 在*群組資源*上執行 GET REST API 呼叫並查看預先狀態值時,可以驗證*預先狀態*。 它是*預配時預配帳戶*,完成後為"成功"。
+200 確定和標頭。
+在功能的早期訪問期間,ADX 群集是手動預配的。 雖然需要預配不足的 ADX 群集一段時間才能完成,但您可以通過兩種方式檢查預配狀態:
+1. 從回應複製 Azure-Async 操作網址,然後按照[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+2. 在*群組*資源上發送 GET 請求,並查看*預先狀態*值。 它是*預配時預配帳戶*,完成後*已成功*預配帳戶。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用元件將元件關聯到*群組*資源 -[建立或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API
 
@@ -579,7 +598,7 @@ Content-type: application/json
 > 要驗證 ADX 群組是否預先,請執行*叢集*資源取得 REST API 並檢查*預先狀態*值是否*成功*。
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -614,7 +633,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> 複製並保留"原則 id"值,因為在接下來的步驟中您將需要它。
+> 複製並保留回應,因為在接下來的步驟中您將需要它。
 
 **關聯元件**
 

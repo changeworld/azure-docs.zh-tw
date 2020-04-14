@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bca9c0e4c0695b6180775051d8b018930f8b808f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548690"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256462"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB Azure 資料庫的 Azure 安全基線
 
@@ -138,7 +138,7 @@ MariaDB Azure 資料庫的 Azure 安全基線包含一些建議,可説明您改�
 
 如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-網路的 Azure 政策範例:https://docs.microsoft.com/azure/governance/policy/samples/#network
+網路的 Azure 政策範例:https://docs.microsoft.com/azure/governance/policy/samples/
 
 如何建立 Azure 藍圖:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 

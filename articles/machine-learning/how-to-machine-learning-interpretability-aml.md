@@ -1,5 +1,5 @@
 ---
-title: 本地與遠端執行的可解釋性模型
+title: 解釋機器學習模型和預測
 titleSuffix: Azure Machine Learning
 description: 瞭解如何獲取有關機器學習模型如何確定功能重要性的說明,並在使用 Azure 機器學習 SDK 時進行預測。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 04/12/2020
+ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632033"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257193"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>本地與遠端執行的可解釋性模型
+# <a name="explain-machine-learning-models-and-predictions"></a>解釋機器學習模型和預測
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,6 @@ ms.locfileid: "80632033"
 
 * 解釋 Azure 中整個模型和單個預測的行為。
 
- 
 * 使用可視化儀錶板與模型說明進行交互。
 
 * 在模型旁邊部署評分解釋器,以觀察推斷過程中的說明。

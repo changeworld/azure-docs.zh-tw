@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d26dc55cfd0f2ef0bb78e4153fffe3f1cb910b73
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474879"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256513"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
@@ -49,7 +49,7 @@ Microsoft 對於 Windows 和 Linux 所提供的資料科學虛擬機器，包含
 
 目前 DSVM 可用於 **Windows** 和 **Linux CentOS** 作業系統。 根據您規劃在上面執行之資料科學專案的需要，選擇 DSVM 的大小(CPU 核心數目和記憶體數量)。 
 
-有關 DSVM 的 Windows 版本的詳細資訊,請參閱 Azure 應用商店上的[Microsoft 資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)。 對於 Linux 版本 DSVM，請參閱 [Linux 資料科學虛擬機器](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。
+有關 DSVM 的 Windows 版本的詳細資訊,請參閱 Azure 應用商店上的[Microsoft 資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)。 對於 Linux 版本 DSVM，請參閱 [Linux 資料科學虛擬機器](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。
 
 要瞭解如何在 DSVM 上高效地執行一些常見數據科學任務,請參閱在[資料科學虛擬機器上可以執行的 10 件事](../data-science-virtual-machine/vm-do-ten-things.md)
 

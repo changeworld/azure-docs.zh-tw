@@ -1,22 +1,22 @@
 ---
 title: 地理可用性和貨幣支援 |蔚藍
-description: Azure 應用商店和應用程式源中的地理可用性
+description: 商業市場的地理可用性
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288422"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262004"
 ---
 # <a name="geographic-availability-and-currency-support"></a>地理可用性和貨幣支援
 
-Azure 應用商店和 AppSource 產品可以在客戶帳單位址定義的 141 個地理位置購買，並且事務可以以 17 種貨幣完成。 下表列出了每個支援的地理位置[、ISO 3166 兩位數位 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的貨幣。
+商業市場產品可以在 141 個地理位置購買,由客戶的帳單位址定義,交易可以以 17 種貨幣完成。 下表列出了每個支援的地理位置[、ISO 3166 兩位數位 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的貨幣。
 
 |   國家/地區名稱               |   ISO-2   |   貨幣   |
 |-------------------------------------|-----------|--------------|
@@ -87,7 +87,7 @@ Azure 應用商店和 AppSource 產品可以在客戶帳單位址定義的 141 �
 | 約旦                              | JO        | 美元          |
 | 哈薩克                          | KZ        | 美元          |
 | 肯亞                               | KE        | 美元          |
-| 韓國（韓國）                       | KR        | 韓元          |
+| 韓國(韓國)                       | KR        | 韓元          |
 | 科威特                              | KW        | 美元          |
 | 吉爾吉斯                          | KG        | 美元          |
 | 拉脫維亞                              | LV        | 歐元          |
@@ -148,7 +148,7 @@ Azure 應用商店和 AppSource 產品可以在客戶帳單位址定義的 141 �
 | 突尼西亞                             | TN        | 美元          |
 | 土耳其                              | TR        | 美元          |
 | 土庫曼                        | TM        | 美元          |
-| 梵蒂岡城（羅馬教廷）             | VA        | 歐元          |
+| 梵蒂岡城(羅馬教廷)             | VA        | 歐元          |
 | 美屬維爾京群島 | VI        | 美元          |
 | 烏干達                              | UG        | 美元          |
 | 烏克蘭                             | UA        | 美元          |
@@ -164,6 +164,6 @@ Azure 應用商店和 AppSource 產品可以在客戶帳單位址定義的 141 �
 | 辛巴威                            | ZW        | 美元          |
 |   |   |   |
 
-\*對於巴西的客戶，通過雲解決方案供應商 （CSP） 的應用商店使用 USD。
+\*對於巴西的客戶,通過雲端解決方案供應商 (CSP) 的應用商店使用 USD。
 
 \** 僅限免費和 BYOL VM 映射。

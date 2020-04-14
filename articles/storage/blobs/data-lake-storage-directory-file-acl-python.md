@@ -3,17 +3,17 @@ title: Azure 資料儲存 Gen2 Python SDK,用於& ACL 的檔案
 description: 在啟用了分層命名空間 (HNS) 的儲存帳戶中使用 Python 管理目錄以及檔案和目錄存取控制列表 (ACL)。
 author: normesta
 ms.service: storage
-ms.date: 03/20/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a00713df2cdda626a76cc648826f7e56df214232
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668717"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262344"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure 資料系統儲存 Gen2 中的目錄、檔案與 ACL
 
@@ -32,7 +32,7 @@ ms.locfileid: "80668717"
 使用[pip](https://pypi.org/project/pip/)為 Python 安裝 Azure 資料儲存庫用戶端庫。
 
 ```
-pip install azure-storage-file-datalake --pre
+pip install azure-storage-file-datalake
 ```
 
 將這些導入語句添加到代碼文件的頂部。

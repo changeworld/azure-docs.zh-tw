@@ -1,5 +1,5 @@
 ---
-title: Azure 容器映射產品 / |Azure 應用商店
+title: Azure 容器映像產品 / |Azure 應用商店
 description: 在 Azure Marketplace 上發佈容器供應項目的流程概觀。
 author: dsindona
 ms.service: marketplace
@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 9c0b4ca6e9a26f13d1539845ca9fb43f31a1a9dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9f98d42efcb35dbab4f3c0a06c5a11360e36b6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281709"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270344"
 ---
 # <a name="containers"></a>容器
+
+> [!IMPORTANT]
+> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 容器產品的管理移動到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[「創建 Azure 容器產品/服務](https://aka.ms/CreateContainerOffer)」中的說明進行操作,以管理遷移的優惠。
 
 <table> <tr> <td>本節說明如何將容器映像發佈到 <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>。  
 容器供應項目類型支援當作 <a href="https://docs.microsoft.com/azure/aks/index">Azure Kubernetes Service</a> 執行個體或 <a href="https://docs.microsoft.com/azure/container-instances/container-instances-overview">Azure Container Instances</a> 佈建，並裝載於 <a href="https://docs.microsoft.com/azure/container-registry">Azure Container Registry</a> 存放庫的 Docker 容器映像。 </td> <td><img src="./media/container-icon.png"  alt="Azure container icon" /></td> </tr> </table>

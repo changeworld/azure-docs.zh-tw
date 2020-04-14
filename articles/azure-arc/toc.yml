@@ -1,21 +1,23 @@
 - name: Azure Arc 文件
   href: index.yml
 - name: 概觀
-  expanded: true
   items:
     - name: 什麼是適用於伺服器的 Azure Arc？
       href: ./servers/overview.md
-- name: 連線至 Azure Arc
-  expanded: true
+- name: 操作指南
   items:
-    - name: 從 Azure 入口網站將機器連線到 Azure Arc
-      href: ./servers/onboard-portal.md
-    - name: 使用服務主體大規模地連線機器
-      href: ./servers/onboard-service-principal.md
-    - name: 使用 PowerShell DSC 將機器連線至 Azure Arc
-      href: ./servers/onboard-dsc.md
-- name: 管理代理程式
-  href: ./servers/manage-agent.md
+    - name: 連線至 Azure Arc
+      items:
+        - name: 從 Azure 入口網站將機器連線到 Azure Arc
+          href: ./servers/onboard-portal.md
+        - name: 使用服務主體大規模地連線機器
+          href: ./servers/onboard-service-principal.md
+        - name: 使用 PowerShell DSC 將機器連線至 Azure Arc
+          href: ./servers/onboard-dsc.md
+    - name: 管理
+      items:
+        - name: 管理代理程式
+          href: ./servers/manage-agent.md
 - name: 參考
   items:
     - name: Azure 連線的機器代理程式 CLI 介面

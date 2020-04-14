@@ -3,7 +3,7 @@ title: 使用 PowerShell 管理 Azure CDN | Microsoft Docs
 description: 了解如何使用 Azure PowerShell Cmdlet 管理 Azure CDN。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: magattus
-ms.openlocfilehash: 476779eff41cb9ce1c0a9c79430813ce9a39e91f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74286653"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260542"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>使用 PowerShell 管理 Azure CDN
 PowerShell 提供一種最具彈性的方法，以管理您的 Azure CDN 設定檔和端點。  您可以用互動方式使用 PowerShell 或透過撰寫指令碼來自動進行管理工作。  本教學課程會示範數個您可透過 PowerShell 完成的最常見工作，以管理 Azure CDN 設定檔和端點。
@@ -250,8 +250,8 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Stop-AzCdnEndpoint
 Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
-## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>創建標準規則引擎策略並應用於現有 CDN 終結點
-`New-AzCdnDeliveryRule``New=AzCdnDeliveryRuleCondition`，`New-AzCdnDeliveryRuleAction`並可用於從 Microsoft 設定檔在 Azure CDN 上配置 Azure CDN 標準規則引擎。 
+## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>建立標準規則引擎原則並套用到 CDN 終結點
+`New-AzCdnDeliveryRule``New=AzCdnDeliveryRuleCondition`,`New-AzCdnDeliveryRuleAction`並可用於從 Microsoft 設定檔在 Azure CDN 上配置 Azure CDN 標準規則引擎。 
 
 ```powershell
 # Create a new http to https redirect rule

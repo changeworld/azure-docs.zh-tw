@@ -9,21 +9,21 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998491"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262803"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用「完整」Lucene 搜尋語法(Azure 認知搜尋中的進階查詢)
 
 為 Azure 認知搜尋建構查詢時,可以將預設[的簡單查詢解析器](query-simple-syntax.md)替換為 Azure 認知搜索中較寬泛的[Lucene 查詢解析器](query-lucene-syntax.md),以制定專門和高級的查詢定義。 
 
-Lucene 解析器支援複雜的查詢建構,例如欄位範圍查詢、模糊和首配符搜索、鄰近搜索、術語提升和正則表達式搜索。 額外的處理需求需要更多能源，因此，您應該預期執行時間會略久。 在本文中，您可以逐步執行範例，以示範使用完整語法時可用的查詢作業。
+Lucene 解析器支援複雜的查詢建構,例如欄位範圍查詢、模糊搜索、內綴和後綴通配符搜索、鄰近搜索、術語提升和正則運算式搜索。 額外的處理需求需要更多能源，因此，您應該預期執行時間會略久。 在本文中，您可以逐步執行範例，以示範使用完整語法時可用的查詢作業。
 
 > [!Note]
-> 許多透過完整 Lucene 查詢語法來啟用的特製化查詢建構都不是[文字分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，因此如果您預期的是詞幹分析或詞形歸併還原，可能會感到意外。 只能對完整詞彙執行語彙分析 (詞彙查詢或片語查詢)。 不完整詞彙的查詢類型 (前置詞查詢、萬用字元查詢、Regex 查詢、模糊查詢) 會直接新增至查詢樹狀結構，並略過分析階段。 只能對不完整的查詢詞彙執行小寫轉換。 
+> 許多透過完整 Lucene 查詢語法來啟用的特製化查詢建構都不是[文字分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，因此如果您預期的是詞幹分析或詞形歸併還原，可能會感到意外。 只能對完整詞彙執行語彙分析 (詞彙查詢或片語查詢)。 不完整詞彙的查詢類型 (前置詞查詢、萬用字元查詢、Regex 查詢、模糊查詢) 會直接新增至查詢樹狀結構，並略過分析階段。 對部分查詢詞執行的唯一轉換是低寫。 
 >
 
 ## <a name="formulate-requests-in-postman"></a>以 Postman 編寫要求

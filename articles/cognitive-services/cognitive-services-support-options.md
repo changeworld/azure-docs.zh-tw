@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637115"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258418"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 認知服務支援與回饋選項
 
@@ -59,10 +59,7 @@ ms.locfileid: "80637115"
 
 如果找不到「堆疊溢出」上的搜索框問題的答案,請提交一個新問題。 Stack Overflow 是適用於開發相關問題的慣用管道。 堆疊溢出社區成員和Microsoft團隊成員直接參與説明您解決問題。
 
- 制訂問題時，請使用下列其中一個標記：
-
- - [微軟認知](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure 認知服務](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+[在此處](https://go.microsoft.com/fwlink/?linkid=2126464)發佈問題。 為您的問題使用適當的標記,因此我們一定會看到問題。
 
 > [!TIP]
 > Stack Overflow 的下列貼文包含如何提出問題以及新增原始程式碼的提示。 遵循這些指導方針有助於增加社群成員快速評估並回應您問題的機會：

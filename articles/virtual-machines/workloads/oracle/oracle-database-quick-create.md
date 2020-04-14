@@ -3,7 +3,7 @@ title: 在 Azure VM 中建立 Oracle 資料庫 | Microsoft Docs
 description: 在您的 Azure 環境中快速啟動並執行 Oracle Database 12c 資料庫。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 9f4b9d53aaa1cac17fbaae4b638e144654fad4e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 901a6ed9075f7e368c0706ac6ba5fc2900bea9a8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535624"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262123"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -27,13 +27,13 @@ ms.locfileid: "79535624"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
+下面的範例在*東部*位置創建名為*myResourceGroup*的資源組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -143,14 +143,14 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 
 3. 設定 Oracle 變數
 
-在連接之前，您需要設置兩個環境變數 *：ORACLE_HOME*和*ORACLE_SID*。
+在連線之前,您需要設定兩個環境變數 *:ORACLE_HOME*和*ORACLE_SID*。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這將保存環境變數以供將來登錄。 確認以下語句已使用您選擇的編輯器添加到`~/.bashrc`檔中。
+您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供將來登入。 確認以下文句已使用您選擇的編輯器加入`~/.bashrc`檔案中。
 
 ```bash
 # Add ORACLE_HOME. 

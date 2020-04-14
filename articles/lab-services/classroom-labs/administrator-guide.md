@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115031"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257771"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 實驗室服務 - 管理員指南
 管理大學雲資源的資訊技術 (IT) 管理員通常負責為其學校設置實驗室帳戶。 設置實驗室帳戶后,管理員或教育工作者將創建實驗室帳戶中包含的教室實驗室。 本文提供了所涉及的 Azure 資源的高級概述以及創建這些資源的指導。
@@ -59,7 +59,7 @@ ms.locfileid: "81115031"
     
     設定實驗室帳戶時,將設置適用於實驗室帳戶下*所有*教室實驗室的策略,例如:
     - 具有教室實驗室可以訪問的共享資源的 Azure 虛擬網路。 例如,您可能有一組需要訪問虛擬網路中的共享數據集的教室實驗室。
-    - 教室實驗室可用於創建 VM 的虛擬機器 (VM) 映射。 例如,您可能有一組教室實驗室需要訪問用於 Linux 應用商店映像[的數據科學 VM。](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) 
+    - 教室實驗室可用於創建 VM 的虛擬機器 (VM) 映射。 例如,您可能有一組教室實驗室需要訪問用於 Linux 應用商店映像[的數據科學 VM。](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 
     
     如果您有具有彼此獨特策略要求的教室實驗室,則創建單獨的實驗室帳戶以單獨管理這些教室實驗室可能是有益的。
 

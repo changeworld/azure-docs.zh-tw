@@ -5,26 +5,27 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280502"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255904"
 ---
-<a name="retrieve-offer-status"></a>擷取供應項目狀態 
-=====================
+# <a name="retrieve-offer-status"></a>擷取供應項目狀態
+
+> [!NOTE]
+> 雲合作夥伴門戶 API 與合作夥伴中心集成,在您的產品/服務遷移到合作夥伴中心後將繼續工作。 集成引入了小更改。 查看[雲合作夥伴門戶 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改,以確保代碼在遷移到合作夥伴中心後繼續工作。
 
 擷取供應項目的目前狀態。
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI 參數
---------------
+## <a name="uri-parameters"></a>URI 參數
 
-|  **名稱**       |   **描述**                            |  **資料類型** |
+|  **名稱**       |   **說明**                            |  **資料類型** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | 發行者識別碼，例如 `Contoso`  |     String     |
 |  offerId        | 可唯一識別供應項目的 GUID      |     String     |
@@ -32,8 +33,8 @@ ms.locfileid: "80280502"
 |  |  |
 
 
-<a name="header"></a>頁首
-------
+## <a name="header"></a>頁首
+
 
 |  名稱           |  值               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ ms.locfileid: "80280502"
 |  授權  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>本文範例
 
-<a name="body-example"></a>本文範例
-------------
 
 ### <a name="response"></a>回應
 
@@ -115,14 +115,13 @@ ms.locfileid: "80280502"
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**             |    **描述**                                                                             |
+|  **名稱**             |    **說明**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | 供應項目的狀態。 如需可能值清單，請參閱下面的[供應項目狀態](#offer-status)。 |
 |  messages             | 與供應項目相關聯的訊息陣列                                                    |
@@ -134,25 +133,23 @@ ms.locfileid: "80280502"
 |  status               | 步驟的狀態。 如需可能值清單，請參閱下面的[步驟狀態](#step-status)。    |
 |  messages             | 與步驟相關聯的訊息陣列                                                          |
 |  processPercentage    | 步驟的完成百分比                                                              |
-|  previewLinks         | *當前未實施*                                                                    |
-|  liveLinks            | *當前未實施*                                                                    |
-|  notificationEmails   | 以逗號分隔的電子郵件地址清單；系統會向這些地址傳送發佈進度通知        |
+|  previewLinks         | *目前未實施*                                                                    |
+|  liveLinks            | *目前未實施*                                                                    |
+|  notificationEmails   | 已棄用的優惠遷移到合作夥伴中心。 遷移優惠的通知電子郵件將發送到「帳戶設置」中的「賣家聯繫資訊」下指定的電子郵件。<br><br>對於非遷移優惠,將通知操作進度的電子郵件地址的逗號分隔清單        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **代碼** |   **描述**                                                                                 |
+| **程式碼** |   **說明**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` - 已成功處理要求，並已傳回供應項目的最新狀態。 |
 |  400     | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                 |
 |  404     | `Not found` - 指定的實體不存在。                                                |
 |  |  |
 
-
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    |    **描述**                                       |
+|  **名稱**                    |    **說明**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                          |
 |  NotStarted                  | 供應項目是新的，且未啟動。                            |
@@ -163,10 +160,9 @@ ms.locfileid: "80280502"
 |  失敗                      | 供應項目提交失敗。                                 |
 |  |  |
 
-
 ### <a name="step-status"></a>步驟狀態
 
-|  **名稱**                    |    **描述**                           |
+|  **名稱**                    |    **說明**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步驟尚未啟動。                        |
 |  InProgress                  | 步驟正在執行。                             |

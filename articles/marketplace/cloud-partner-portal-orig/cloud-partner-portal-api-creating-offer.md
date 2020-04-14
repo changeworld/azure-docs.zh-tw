@@ -1,21 +1,24 @@
 ---
-title: 創建或修改產品/服務 |Azure 應用商店
+title: 建立或修改產品/服務 |Azure 應用商店
 description: 用於建立新的或更新以及現有的供應項目的 API。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288609"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256343"
 ---
 <a name="create-or-modify-an-offer"></a>建立或修改供應項目
 =========================
+
+> [!NOTE]
+> 雲合作夥伴門戶 API 與合作夥伴中心集成,在您的產品/服務遷移到合作夥伴中心後將繼續工作。 集成引入了小更改。 查看[雲合作夥伴門戶 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改,以確保代碼在遷移到合作夥伴中心後繼續工作。
 
 此呼叫會更新發行者命名空間內的特定供應項目，或建立新的供應項目。
 
@@ -25,7 +28,7 @@ ms.locfileid: "80288609"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**         |  **描述**                      |  **資料類型**  |
+|  **名稱**         |  **說明**                      |  **資料類型**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  發行者識別碼，例如 `contoso` |   String |
 | offerId           |  供應項目識別碼                     |   String        |
@@ -35,7 +38,7 @@ ms.locfileid: "80288609"
 <a name="header"></a>頁首
 ------
 
-|  **名稱**        |  **價值**               |
+|  **名稱**        |  **ReplTest1**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授權    | `Bearer YOUR_TOKEN`      |
@@ -244,7 +247,7 @@ ms.locfileid: "80288609"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **代碼**  |  **描述**                                                                            |
+| **程式碼**  |  **說明**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 已成功處理要求，並已成功修改供應項目。           |
 |  201      | `Created`. 已成功處理要求，並已成功建立供應項目。   |

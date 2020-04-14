@@ -4,12 +4,12 @@ description: 使用 Azure 門戶創建和管理 Azure 區塊鏈服務的區塊�
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529606"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260593"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 入口網站設定區塊鏈資料管理員
 
@@ -28,7 +28,7 @@ ms.locfileid: "80529606"
 
 ## <a name="create-instance"></a>建立執行個體
 
-區塊鏈資料管理員執行個體都連線至 Azure 區塊鏈服務交易節點，並加以監視。 只有有權訪問事務節點的使用者才能創建連接。 執行個體會從該交易節點中擷取所有的原始區塊和原始交易資料。
+區塊鏈資料管理員執行個體都連線至 Azure 區塊鏈服務交易節點，並加以監視。 只有有權訪問事務節點的使用者才能創建連接。 執行個體會從該交易節點中擷取所有的原始區塊和原始交易資料。 區塊鏈數據管理器發佈**RawBlock 和交易Msg**消息,該消息是從 Web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock)返回的資訊集,獲取[交易](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)查詢。
 
 輸出連線會將區塊鏈資料傳送至 Azure 事件方格。 您在建立執行個體時，會設定單一輸出連線。 區塊鏈資料管理員會針對任何指定的區塊鏈資料管理員執行個體，支援多個事件方格主題輸出連線。 您可將區塊鏈資料傳送至單一目的地，或將區塊鏈資料傳送至多個目的地。 要添加其他目標,只需向實例添加其他出站連接。
 

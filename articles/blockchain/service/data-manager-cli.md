@@ -4,12 +4,12 @@ description: 使用 Azure CLI 建立及管理 Azure 區塊鏈服務的區塊鏈�
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529597"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254405"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 設定區塊鏈資料管理員
 
@@ -40,7 +40,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下面的範例在*東區*位置建立名為*myResourceGroup*的資源群組:
+使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>建立執行個體
 
-區塊鏈數據管理器實例監視 Azure 區塊鏈服務事務節點。 執行個體會從該交易節點中擷取所有的原始區塊和原始交易資料。
+區塊鏈數據管理器實例監視 Azure 區塊鏈服務事務節點。 執行個體會從該交易節點中擷取所有的原始區塊和原始交易資料。 區塊鏈數據管理器發佈**RawBlock 和交易Msg**消息,該消息是從 Web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock)返回的資訊集,獲取[交易](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction)查詢。
 
 ``` azurecli
 az resource create \

@@ -214,6 +214,8 @@
       items:
         - name: 什麼是語音翻譯？
           href: speech-translation.md
+        - name: 語音翻譯基本概念
+          href: speech-translation-basics.md
     - name: 快速入門
       items:
         - name: 翻譯語音轉換文字

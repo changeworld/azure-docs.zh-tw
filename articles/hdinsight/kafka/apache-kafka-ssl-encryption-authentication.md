@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657096"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261766"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中為 Apache Kafka 設定 TLS 加密與身分驗證
 
@@ -22,8 +22,9 @@ ms.locfileid: "80657096"
 > [!Important]
 > 有兩個用戶端可用於 Kafka 應用程式:JAVA 用戶端和主控台用戶端。 只有 Java`ProducerConsumer.java`用戶端可以使用 TLS 來生成和使用。 主控台產生器`console-producer.sh`客戶端 不適用於 TLS。
 
-> [!Note] 
+> [!Note]
 > HDInsight Kafka 主控台製作器版本 1.1 不支援 SSL。
+
 ## <a name="apache-kafka-broker-setup"></a>阿帕奇卡夫卡經紀人設置
 
 Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
@@ -136,7 +137,7 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
 
     ![在 Ambari 中編輯 kafka ssl 設定屬性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 向伺服器.屬性檔添加新的配置屬性。
+1. 對於 HDI 版本 3.6,轉到 Ambari UI,並在**高級 kafka-env**和**kafka-env 範本**屬性下添加以下配置。
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -151,7 +152,7 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. 跳到 Ambari 設定 UI 並驗證新屬性是否顯示在**高級 kafka-env**和**kafka-env 範本**屬性下。
+1. 下面是顯示 Ambari 配置 UI 的螢幕截圖,這些更改。
 
     對於 HDI 版本 3.6:
 
@@ -159,10 +160,9 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
 
     對於 HDI 版本 4.0:
 
-     ![在 Ambari 四中編輯 kafka-env 範本屬性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
+     ![在 Ambari 四中編輯 kafka-env 範本屬性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. 重新啟動所有 Kafka 訊息代理程式。
-1. 使用生產者和使用者選項啟動管理用戶端,以驗證生產者和消費者是否都在埠 9093 上工作。
 
 ## <a name="client-setup-without-authentication"></a>用戶端設定 (不搭配驗證)
 
@@ -208,13 +208,15 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. 建立檔案 `client-ssl-auth.properties`。 應該具有下列幾行：
+1. 在用戶端電腦`client-ssl-auth.properties`(hn1) 上建立檔案。 應該具有下列幾行：
 
     ```config
     security.protocol=SSL
     ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
     ssl.truststore.password=MyClientPassword123
     ```
+
+1. 使用生產者和使用者選項啟動管理用戶端,以驗證生產者和消費者是否都在埠 9093 上工作。 有關使用主控台生產者/使用者驗證設置所需的步驟,請參閱下面的[驗證](apache-kafka-ssl-encryption-authentication.md#verification)部分。
 
 ## <a name="client-setup-with-authentication"></a>用戶端設定 (搭配驗證)
 
@@ -278,17 +280,24 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. 使用簽署憑證建立客戶端儲存,並將 ca 憑證匯入金鑰庫與信任儲存:
+    1. 登錄到用戶端計算機(備用頭節點)並導航到 ssl 目錄。
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. 建立檔案`client-ssl-auth.properties`。 應該具有下列幾行：
+1. 使用簽署憑證建立客戶端儲存,並將 ca cert 匯入客戶端電腦上的金鑰庫和信任儲存 (hn1):
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. 在用戶端電腦`client-ssl-auth.properties`(hn1) 上建立檔案。 應該具有下列幾行：
 
     ```bash
     security.protocol=SSL
@@ -300,6 +309,8 @@ Kafka TLS 代理設定將採用以下方式使用四個 HDInsight 叢集 VM:
     ```
 
 ## <a name="verification"></a>驗證
+
+在用戶端計算機上運行這些步驟。
 
 > [!Note]
 > 如果安裝了 HDInsight 4.0 和 Kafka 2.1,則可以使用控制台製作者/消費者來驗證您的設置。 如果沒有,請運行埠 9092 上的 Kafka 生成器並將消息發送到主題,然後在使用 TLS 的埠 9093 上使用 Kafka 消費者。

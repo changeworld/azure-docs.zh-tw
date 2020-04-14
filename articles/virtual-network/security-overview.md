@@ -1,7 +1,7 @@
 ---
-title: Azure 網路安全性群組概述
+title: Azure 網路安全組概述
 titlesuffix: Azure Virtual Network
-description: 瞭解網路安全性群組。 網路安全性群組可説明您篩選 Azure 資源之間的網路流量。
+description: 了解網路安全組。 網路安全組可説明您篩選 Azure 資源之間的網路流量。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123342"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269868"
 ---
 # <a name="network-security-groups"></a>網路安全性群組
 <a name="network-security-groups"></a>
 
-您可以透過網路安全性群組，篩選在 Azure 虛擬網路中進出 Azure 資源的網路流量。 網路安全性群組包含安全性規則，可允許或拒絕進出於多種 Azure 資源類型的輸入和輸出網路流量。 若要了解虛擬網路中可部署哪些 Azure 資源，並使這些資源與網路安全性群組產生關聯，請參閱 [Azure 服務的虛擬網路整合](virtual-network-for-azure-services.md)。 您可以為每個規則指定來源和目的地、連接埠及通訊協定。
+可以使用 Azure 網路安全組篩選 Azure 虛擬網路中的 Azure 資源中的網路流量。 網路安全組包含允許或拒絕從多種類型的 Azure 資源到或從中流出網路流量的安全[規則](#security-rules)。 您可以為每個規則指定來源和目的地、連接埠及通訊協定。
+本文介紹網路安全組規則的屬性、應用的[預設安全規則](#default-security-rules)以及可以修改以建立[增強安全規則的規則屬性](#augmented-security-rules)。
 
-本文將說明網路安全性群組的概念，協助您有效地使用此功能。 如果您從未建立過網路安全性群組，可以完成快速[教學課程](tutorial-filter-network-traffic.md)，以取得一些建立體驗。 如果您熟悉網路安全性群組，並且有管理需求，請參閱[管理網路安全性群組](manage-network-security-group.md)。 如果您有通訊問題，因而需要對網路安全性群組進行疑難排解，請參閱[診斷虛擬機器網路流量篩選問題](diagnose-network-traffic-filter-problem.md)。 您可以啟用[網路安全性群組流程記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，針對與網路安全性群組相關聯的資源，分析進出其中的網路流量。
-
-## <a name="security-rules"></a>安全性規則
+## <a name="security-rules"></a><a name="security-rules"></a>安全規則
 
 視 Azure 訂用帳戶[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)而定，網路安全性群組可包含零個或多個規則。 每個規則都會指定下列屬性：
 
@@ -35,7 +34,7 @@ ms.locfileid: "80123342"
 |---------|---------|
 |名稱|網路安全性群組中的唯一名稱。|
 |優先順序 | 100 和 4096 之間的數字。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。|
-|來源或目的地| 任何或個別的 IP 位址、無類別網域間路由 (CIDR) 區塊 (例如 10.0.0.0/24)、[服務標籤](service-tags-overview.md)或[應用程式安全性群組](#application-security-groups)。 當您指定 Azure 資源的位址時，可以指定指派給資源的私人 IP 位址。 在 Azure 針對輸入流量將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出流量將私人 IP 位址轉譯為公用 IP 位址之前，網路安全性群組會進行處理。 深入了解 Azure [IP 位址](virtual-network-ip-addresses-overview-arm.md)。 指定範圍、服務標籤或應用程式安全性群組，可讓您建立較少的安全性規則。 在規則中指定多個單獨的 IP 位址和範圍（無法指定多個服務標記或應用程式組）的能力稱為[增強安全規則](#augmented-security-rules)。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立的網路安全性群組中指定多個 IP 位址與 IP 位址範圍。 瞭解有關[Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的更多。|
+|來源或目的地| 任何或個別的 IP 位址、無類別網域間路由 (CIDR) 區塊 (例如 10.0.0.0/24)、[服務標籤](service-tags-overview.md)或[應用程式安全性群組](#application-security-groups)。 當您指定 Azure 資源的位址時，可以指定指派給資源的私人 IP 位址。 在 Azure 針對輸入流量將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出流量將私人 IP 位址轉譯為公用 IP 位址之前，網路安全性群組會進行處理。 深入了解 Azure [IP 位址](virtual-network-ip-addresses-overview-arm.md)。 指定範圍、服務標籤或應用程式安全性群組，可讓您建立較少的安全性規則。 在規則中指定多個單獨的 IP 位址與範圍(無法指定多個服務標記或應用程式群組)的能力稱為[增強安全規則](#augmented-security-rules)。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立的網路安全性群組中指定多個 IP 位址與 IP 位址範圍。 瞭解有關[Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的更多。|
 |通訊協定     | TCP、UDP、ICMP 或任何。|
 |方向| 規則是否套用至輸入或輸出流量。|
 |連接埠範圍     |您可以指定個別連接埠或連接埠範圍。 例如，您可以指定 80 或 10000-10005。 指定範圍可讓您建立較少的安全性規則。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立之網路安全性群組的相同安全性規則中指定多個連接埠與連接埠範圍。   |
@@ -46,7 +45,7 @@ ms.locfileid: "80123342"
 
 您可以在網路安全性群組中建立的安全性規則數量會有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-### <a name="default-security-rules"></a>預設安全性規則
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>預設安全規則
 
 Azure 會在您建立的每個網路安全性群組中，建立下列預設規則：
 
@@ -90,23 +89,23 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒絕 |
 
-在 [來源]**** 和 [目的地]**** 欄中，*VirtualNetwork*、*AzureLoadBalancer*和 *Internet* 都是[服務標籤](service-tags-overview.md)，而不是 IP 位址。 在協定列中，"**任意"** 包含 TCP、UDP 和 ICMP。 創建規則時，可以指定 TCP、UDP、ICMP 或 Any。 [來源]**** 和 [目的地]**** 欄中的 *0.0.0.0/0* 代表所有位址。 Azure 門戶、Azure CLI 或 PowerShell 等用戶端可以為此運算式使用 * 或任何。
+在 [來源]**** 和 [目的地]**** 欄中，*VirtualNetwork*、*AzureLoadBalancer*和 *Internet* 都是[服務標籤](service-tags-overview.md)，而不是 IP 位址。 在協定列中,「**任意」** 包含 TCP、UDP 和 ICMP。 創建規則時,可以指定 TCP、UDP、ICMP 或 Any。 [來源]**** 和 [目的地]**** 欄中的 *0.0.0.0/0* 代表所有位址。 Azure 門戶、Azure CLI 或 PowerShell 等用戶端可以為此運算式使用 * 或任何。
  
 您無法移除預設規則，但可以建立較高優先順序的規則來覆寫預設規則。
 
-### <a name="augmented-security-rules"></a>增強型安全性規則
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>增強安全規則
 
-增強型安全性規則可簡化虛擬網路的安全性定義，讓您定義更大且複雜的網路安全性原則 (但規則比較少)。 您可以將多個連接埠和多個明確 IP 位址與範圍，合併成易於了解的單一安全性規則。 在規則的來源、目的地和連接埠欄位中使用增強型規則。 為了簡化安全規則定義的維護，請將增強安全規則與[服務標記](service-tags-overview.md)或[應用程式安全性群組](#application-security-groups)相結合。 您可以在規則中指定的位址、範圍和連接埠數量會有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+增強型安全性規則可簡化虛擬網路的安全性定義，讓您定義更大且複雜的網路安全性原則 (但規則比較少)。 您可以將多個連接埠和多個明確 IP 位址與範圍，合併成易於了解的單一安全性規則。 在規則的來源、目的地和連接埠欄位中使用增強型規則。 為了簡化安全規則定義的維護,請將增強安全規則與[服務標記](service-tags-overview.md)或[應用程式安全組](#application-security-groups)相結合。 您可以在規則中指定的位址、範圍和連接埠數量會有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 #### <a name="service-tags"></a>服務標籤
 
-服務標記表示給定 Azure 服務的一組 IP 位址首碼。 它有助於將網路安全規則頻繁更新的複雜性降至最低。
+服務標記表示給定 Azure 服務的一組 IP 位址前綴。 它有助於將網路安全規則頻繁更新的複雜性降至最低。
 
-有關詳細資訊，請參閱[Azure 服務標記](service-tags-overview.md)。 有關如何使用存儲服務標記限制網路訪問的示例，請參閱[限制網路訪問 PaaS 資源](tutorial-restrict-network-access-to-resources.md)。
+有關詳細資訊,請參閱[Azure 服務標記](service-tags-overview.md)。 有關如何使用儲存服務標記限制網路存取的範例,請參閱[限制網路存取 PaaS 資源](tutorial-restrict-network-access-to-resources.md)。
 
 #### <a name="application-security-groups"></a>應用程式安全性群組
 
-應用程式安全性群組可讓您將網路安全性設定為應用程式結構的自然擴充功能，讓您將虛擬機器分組，並定義以這些群組為基礎的網路安全性原則。 您可以大規模重複使用您的安全性原則，而不需進行明確 IP 位址的手動維護。 要瞭解更多資訊，請參閱[應用程式安全性群組](application-security-groups.md)。
+應用程式安全性群組可讓您將網路安全性設定為應用程式結構的自然擴充功能，讓您將虛擬機器分組，並定義以這些群組為基礎的網路安全性原則。 您可以大規模重複使用您的安全性原則，而不需進行明確 IP 位址的手動維護。 要瞭解更多資訊,請參閱[應用程式安全群組](application-security-groups.md)。
 
 ## <a name="how-traffic-is-evaluated"></a>評估流量的方式
 
@@ -139,21 +138,21 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ### <a name="intra-subnet-traffic"></a>子網內流量
 
-請務必注意，與子閘道聯的 NSG 中的安全規則可能會影響其內部 VM 之間的連接。 例如，如果將規則添加到*NSG1，* 該規則拒絕所有入站和出站流量，*則 VM1*和*VM2*將不再能夠相互通信。 必須特別添加另一條規則才能允許這樣做。 
+請務必注意,與子網關聯的 NSG 中的安全規則可能會影響其內部 VM 之間的連接。 例如,如果將規則添加到*NSG1,* 該規則拒絕所有入站和出站流量,*則 VM1*和*VM2*將不再能夠相互通信。 必須特別添加另一條規則才能允許這樣做。 
 
 
 
 藉由檢視網路介面的[有效安全性規則](virtual-network-network-interface.md#view-effective-security-rules)，可以輕鬆地檢視套用至網路介面的彙總規則。 您也可以使用 Azure 網路監看員中的 [IP 流量確認](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能來判斷是否允許網路介面的雙向通訊。 IP 流量確認會告訴您已允許會拒絕通訊，以及哪個網路安全性規則允許或拒絕流量。
 
 > [!NOTE]
-> 網路安全性群組與子網或部署在經典部署模型中的虛擬機器和雲服務以及資源管理器部署模型中的子網或網路介面相關聯。 若要深入了解 Azure 部署模型，請參閱[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+> 網路安全組與子網或部署在經典部署模型中的虛擬機和雲端服務以及資源管理器部署模型中的子網或網路介面相關聯。 若要深入了解 Azure 部署模型，請參閱[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 > [!TIP]
 > 除非您有特殊原因要這麼做，否則我們建議您讓網路安全性群組與子網路或網路介面的其中一個建立關聯，而非同時與這兩者建立關聯。 因為如果與子網路相關聯的網路安全性群組中，以及與網路介面相關聯的網路安全性群組中都存在規則，則這兩個規則可能會發生衝突，您可能會遇到需要進行疑難排解的非預期通訊問題。
 
 ## <a name="azure-platform-considerations"></a>Azure 平台的考量
 
-- **主機節點的虛擬 IP：** 通過虛擬化主機 IP 位址 168.63.129.16 和 169.254 提供的基本基礎設施服務，如 DHCP、DNS、IMDS 和運行狀況監視。 這些 IP 位址屬於 Microsoft，而且是針對此目的唯一用於所有地區的虛擬 IP。 有效的安全規則和有效的路由不包括這些平臺規則。 要覆蓋此基本基礎結構通信，可以創建安全規則，通過使用網路安全性群組規則上的以下[服務標記](service-tags-overview.md)來拒絕流量：AzurePlatformDNS、AzurePlatformIMDS、AzurePlatformLKM。 瞭解如何[診斷網路流量篩選](diagnose-network-traffic-filter-problem.md)和[診斷網路路由](diagnose-network-routing-problem.md)。
+- **主機節點的虛擬 IP:** 透過虛擬化主機 IP 位址 168.63.129.16 和 169.254 提供的基本基礎設施服務,如 DHCP、DNS、IMDS 和運行狀況監視。 這些 IP 位址屬於 Microsoft，而且是針對此目的唯一用於所有地區的虛擬 IP。 有效的安全規則和有效的路由不包括這些平台規則。 要覆蓋此基本基礎結構通信,可以創建安全規則,通過使用網路安全組規則上的以下[服務標記](service-tags-overview.md)來拒絕流量:AzurePlatformDNS、AzurePlatformIMDS、AzurePlatformLKM。 瞭解如何[診斷網路流量篩選](diagnose-network-traffic-filter-problem.md)與[診斷網路路由](diagnose-network-routing-problem.md)。
 - **授權 (金鑰管理服務)**：必須授權在虛擬機器中執行的 Windows 映像。 若要確保授權，授權要求會傳送至處理此類查詢的金鑰管理服務主機伺服器。 此要求是透過連接埠 1688 輸出。 若為使用[預設路由 0.0.0.0/0](virtual-networks-udr-overview.md#default-route)組態的部署，將會停用此平台規則。
 - **負載平衡集區中的虛擬機器**：套用的來源連接埠和位址範圍是來自原始電腦，而不是負載平衡器。 目的地連接埠和位址範圍屬於目的地電腦，而不是負載平衡器。
 - **Azure 服務執行個體**：虛擬網路子網路中會部署數個 Azure 服務的執行個體，例如 HDInsight、應用程式服務環境及虛擬機器擴展集。 如需您可以部署到虛擬網路的完整服務清單，請參閱 [Azure 服務的虛擬網路](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)。 將網路安全性群組套用至部署資源的子網路之前，請先確定您熟悉每個服務的連接埠需求。 如果您拒絕服務所需要的連接埠，服務就無法正常運作。
@@ -170,4 +169,8 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[建立網路安全性群組](tutorial-filter-network-traffic.md)。
+* 要瞭解哪些 Azure 資源可以部署到虛擬網路並使其具有關聯的網路安全組,請參閱[Azure 服務的虛擬網路整合](virtual-network-for-azure-services.md)
+* 如果您從未建立過網路安全性群組，可以完成快速[教學課程](tutorial-filter-network-traffic.md)，以取得一些建立體驗。 
+* 如果您熟悉網路安全性群組，並且有管理需求，請參閱[管理網路安全性群組](manage-network-security-group.md)。 
+* 如果您有通訊問題，因而需要對網路安全性群組進行疑難排解，請參閱[診斷虛擬機器網路流量篩選問題](diagnose-network-traffic-filter-problem.md)。 
+* 瞭解如何啟用[網路安全組流日誌](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)來分析進出具有關聯網路安全組的資源的網路流量。

@@ -3,7 +3,7 @@ title: 在 Azure CDN 中管理 Web 內容的到期 | Microsoft Docs
 description: 了解如何在 Azure CDN 中管理 Azure Web Apps/雲端服務、ASP.NET 或 IIS 內容的到期。
 services: cdn
 documentationcenter: .NET
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: magattus
-ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593708"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260559"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 內容的到期
 > [!div class="op_single_selector"]
 > * [Azure 網頁內容](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob 儲存體](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob 儲存](cdn-manage-expiration-of-blob-content.md)
 > 
 
 來自可公開存取的原始 Web 伺服器的檔案均可在 Azure 內容傳遞網路 (CDN) 中加以快取，直到其存留時間 (TTL) 結束。 TTL 是由來自原始伺服器之 HTTP 回應中的 `Cache-Control` 標頭所決定。 本文說明如何設定 Microsoft Azure App Service 之 Web Apps 功能、Azure Cloud Services、ASP.NET 應用程式、Internet Information Services (IIS) 網站的 `Cache-Control` 標頭，上述所有項目的設定方式均類似。 您可以使用組態檔，或以程式設計方式來設定 `Cache-Control` 標頭。 
@@ -66,7 +66,7 @@ ms.locfileid: "67593708"
 
    這個全域快取規則會設定一小時的快取期間，並影響針對端點的所有要求。 它會覆寫由端點指定之原始伺服器所傳送的任何 `Cache-Control` 或 `Expires` HTTP 標頭。   
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 **使用自訂快取規則設定 Web 伺服器檔案的 Cache-Control 標頭：**
 
@@ -80,7 +80,7 @@ ms.locfileid: "67593708"
 
     第一個自訂快取規則會替您的端點指定之原始伺服器上 `/webfolder1` 資料夾中的所有檔案，設定四個小時的快取期間。 第二個規則只會針對 `file1.txt` 檔案覆寫第一個規則，並為其設定兩個小時的快取期間。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用組態檔設定 Cache-Control 標頭
@@ -106,7 +106,7 @@ ms.locfileid: "67593708"
 </configuration>
 ```
 
-若要使用 **cacheControlMaxAge** 屬性，您必須將 **cacheControlMode** 屬性的值設為 `UseMaxAge`。 此設定會產生要新增至回應的 HTTP 標頭及指示詞，`Cache-Control: max-age=<nnn>`。 **cacheControlMaxAge** 屬性的時間範圍值格式為 `<days>.<hours>:<min>:<sec>`。 其值轉換為秒，並用作`Cache-Control``max-age`指令的值。 有關該`<clientCache>`元素的詳細資訊，請參閱[用戶端緩存\<用戶端緩存>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
+若要使用 **cacheControlMaxAge** 屬性，您必須將 **cacheControlMode** 屬性的值設為 `UseMaxAge`。 此設定會產生要新增至回應的 HTTP 標頭及指示詞，`Cache-Control: max-age=<nnn>`。 **cacheControlMaxAge** 屬性的時間範圍值格式為 `<days>.<hours>:<min>:<sec>`。 其值轉換為秒,並用作`Cache-Control``max-age`指令的值。 有關該`<clientCache>`元素的詳細資訊,請參閱[用戶端\<快取 客戶端快取>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>以程式設計方式設定 Cache-Control 標頭
 針對 ASP.NET 應用程式，設定 .NET API 的 **HttpResponse.Cache** 屬性即可透過程式設計方式控制 CDN 快取行為。 如需 **HttpResponse.Cache** 屬性的資訊，請參閱 [HttpResponse.Cache 屬性](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache)和 [HttpCachePolicy 類別](/dotnet/api/system.web.httpcachepolicy)。  
@@ -133,5 +133,5 @@ Response.Cache.SetLastModified(DateTime.Now);
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 **clientCache** 項目](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [閱讀 **HttpResponse.Cache** 屬性的文件](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
-* [閱讀**HttpCache 策略類**的文檔](/dotnet/api/system.web.httpcachepolicy)  
+* [閱讀**HTTPCache 政策類別**的文件](/dotnet/api/system.web.httpcachepolicy)  
 * [了解快取概念](cdn-how-caching-works.md)

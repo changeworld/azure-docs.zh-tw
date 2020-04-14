@@ -3,7 +3,7 @@ title: 了解 Azure CDN 計費 | Microsoft Docs
 description: 本常見問題集描述 Azure CDN 的計費方式。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
-ms.author: magattus
-ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: d3a2dfba98f83d34c3e83ec865e3b692f7dbacd2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73495484"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254218"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
 
@@ -62,7 +62,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - 傳輸量 (GB)：填滿 CDN 快取的資料傳輸量。
 
 > [!NOTE]
-> 從 2019 年 10 月開始，如果您使用 Microsoft 的 Azure CDN，則從 Azure 中託管的源到 CDN POP 的資料傳輸成本是免費的。 來自 Verizon 的 Azure CDN 和 Akamai 的 Azure CDN 受以下描述費率的約束。
+> 從 2019 年 10 月開始,如果您使用 Microsoft 的 Azure CDN,則從 Azure 中託管的來源到 CDN POP 的數據傳輸成本是免費的。 來自 Verizon 的 Azure CDN 和 Akamai 的 Azure CDN 受以下描述費率的約束。
 
 如需 Azure 儲存體計費的詳細資訊，請參閱[了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
@@ -87,8 +87,8 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 
 - TTL 影響：物件的 TTL 越高，表示從來源擷取的頻率越低。 這也代表用戶端 (如瀏覽器) 將物件留在快取中的時間較長，因此能減少 CDN 的交易數。
 
-## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服務有資格使用 Microsoft 的 Azure CDN 進行免費資料傳輸？ 
-如果使用以下 Azure 服務之一作為 CDN 源，則從源到 CDN POP 的資料傳輸不會向您收費。 
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服務有資格使用 Microsoft 的 Azure CDN 進行免費資料傳輸? 
+如果使用以下 Azure 服務之一作為 CDN 源,則從源到 CDN POP 的數據傳輸不會向您收費。 
 
 - Azure 儲存體
 - Azure 媒體服務

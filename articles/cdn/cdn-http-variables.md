@@ -3,7 +3,7 @@ title: Azure CDN 規則引擎的 HTTP 變數 | Microsoft Docs
 description: HTTP 變數可讓您擷取 HTTP 要求和回應中繼資料。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: magattus
-ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593825"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253691"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 HTTP 變數
 HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中繼資料可以接著用來動態調整要求或回應。 HTTP 變數的使用，僅限於下列規則引擎功能：
@@ -62,7 +62,7 @@ HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中�
 | 要求配置 | %{scheme} | 表示要求配置。 |http |
 | 要求 URI (相對) | %{request_uri} | 表示定義於要求 URI 中的相對路徑 (包括查詢字串)。 | /marketing/foo.js?loggedin=true |
 | 要求 URI (相對，不含查詢字串) | %{uri} | 表示被要求內容的相對路徑。 <br /><br/>重要資訊：<br />- 此相對路徑不包含查詢字串。<br />- 此相對路徑會反映 URL 重寫。 URL 將會在下列情況下被重寫：<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- URL 重寫功能：此功能會對定義於要求 URI 中的相對路徑進行重寫。<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 邊緣 CNAME URL：此類型的要求會被重寫至相對應的 CDN URL。 |/800001/corigin/rewrittendir/foo.js |
-| 要求 URI | %{request} | 描述要求。 <br />語法：HTTP &lt; &gt; &lt;方法相對&gt;&lt;路徑 HTTP 協定&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
+| 要求 URI | %{request} | 描述要求。 <br />語法:HTTP&lt;&gt;&lt;方法&gt;&lt;相對 路徑 HTTP 協定&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
 | 回應標頭值 | %{resp_&lt;ResponseHeader&gt;} | 傳回 &lt;ResponseHeader&gt; 字詞所識別回應標頭的對應值。 <br /><br />如果回應標頭包含破折號 (例如 User-Agent)，則會以底線來取代 (例如 User_Agent)。 | 範例用法：%{resp_Content_Length}<br /><br />範例值：100 |
 
 ## <a name="usage"></a>使用量
@@ -127,9 +127,9 @@ HTTP 變數名稱僅支援字母字元和底線。 系統會將不支援的字�
 
 | 條件 | 語法 | 範例 | 描述 |
 | --------- | ------ | --------| ----------- |
-| 在標頭符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏標頭 <br /><br />- 標頭值已設為 NULL。| %{Variable:=Value} | %[HTTP_referrer：[未指定] | 僅當引用器標頭丟失或設置為 Null 時，才會將其設置為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
-| 在遺漏標頭的情況下，將標頭設定為預設值。 | %{Variable=Value} | %[HTTP_referrer[未指定] | 僅當缺少引用器標頭時，才會將其設置為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
-| 在標頭不符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏<br /><br /> - 設定為 NULL。 | %{Variable:+Value} | %[HTTP_referrer：[未指定] | 僅當向其分配了值時，引用者標頭才會設置為*未指定*。 在遺漏或設定為 NULL 的情況下，系統將不會採取任何動作。 |
+| 在標頭符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏標頭 <br /><br />- 標頭值已設為 NULL。| %{Variable:=Value} | %[http_referrer:[未指定] | 只選擇引言標頭遺失或設定為 NULL 時,才會將其設定為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
+| 在遺漏標頭的情況下，將標頭設定為預設值。 | %{Variable=Value} | %[http_referrer[未指定] | 只有找不到引用器標頭時,才會設定為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
+| 在標頭不符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏<br /><br /> - 設定為 NULL。 | %{Variable:+Value} | %[http_referrer:[未指定] | 只當指定指定值時,參考者標頭才會設定為*未指定*。 在遺漏或設定為 NULL 的情況下，系統將不會採取任何動作。 |
 
 ## <a name="manipulating-variables"></a>操作變數
 變數可以透過下列方式進行操作：
@@ -192,7 +192,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | 由於變數是以該模式作為開頭，因此會被取代。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | 由於變數沒有以該模式作為結尾，因此沒有任何變更。|
 
-### <a name="find-and-replace"></a>尋找並取代
+### <a name="find-and-replace"></a>尋找和取代
 下表描述尋找並取代的語法。
 
 | 語法 | 動作 |
