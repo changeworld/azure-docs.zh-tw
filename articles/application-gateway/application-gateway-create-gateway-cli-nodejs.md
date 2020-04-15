@@ -1,5 +1,5 @@
 ---
-title: 創建 Azure 應用程式閘道 - Azure 經典 CLI
+title: 建立 Azure 應用程式閘道 - Azure 經典 CLI
 description: 了解如何使用 Resource Manager 中的 Azure 傳統 CLI 建立應用程式閘道
 services: application-gateway
 author: vhorne
@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095977"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312637"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 建立應用程式閘道
 
-Azure 應用程式閘道是第 7 層負載平衡器。 不論是在雲端或內部部署中，此閘道均提供在不同伺服器之間進行容錯移轉及效能路由傳送 HTTP 要求。 應用程式閘道具有下列應用程式傳遞功能：HTTP 負載平衡、以 Cookie 為基礎的工作階段同質性、「安全通訊端層」(SSL) 卸載、自訂健康狀態探查，以及多站台支援。
+Azure 應用程式閘道是第 7 層負載平衡器。 不論是在雲端或內部部署中，此閘道均提供在不同伺服器之間進行容錯移轉及效能路由傳送 HTTP 要求。 應用程式閘道具有以下應用程式交付功能:HTTP 負載平衡、基於 Cookie 的作業階段關聯和傳輸層安全 (TLS),以前稱為安全套接字層 (SSL)、卸載、自訂運行狀況探測器以及對多網站的支援。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>必要條件：安裝 Azure CLI
 
-要執行本文中的步驟，需要安裝 Azure [CLI，](../xplat-cli-install.md)並且需要在[Azure 中簽名](/cli/azure/authenticate-azure-cli)。 
+要執行本文中的步驟,需要安裝 Azure [CLI,](../xplat-cli-install.md)並且需要在[Azure 中簽名](/cli/azure/authenticate-azure-cli)。 
 
 > [!NOTE]
 > 如果您沒有 Azure 帳戶，就需要申請一個。 請 [在此處註冊免費試用](../active-directory/fundamentals/sign-up-organization.md)。
@@ -135,7 +135,7 @@ azure network application-gateway create \
 
 參閱 [建立自訂健康狀態探查](application-gateway-create-probe-portal.md)
 
-參閱 [設定 SSL 卸載](application-gateway-ssl-arm.md)
+瞭解如何透過存[取 設定 TLS 卸載](application-gateway-ssl-arm.md)來設定 TLS 卸載,並將昂貴的 TLS 解密從 Web 伺服器中移除
 
 <!--Image references-->
 

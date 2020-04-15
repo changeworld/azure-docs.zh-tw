@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985451"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313617"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
 
 Linux 虛擬機器 (VM) 的 Azure 磁碟加密使用 Linux 的 DM-Crypt 功能來提供作業系統磁碟和資料磁碟的完整磁碟加密。 此外,在使用加密格式所有功能時,它還提供臨時資源磁碟的加密。
 
-Azure 磁碟加密[與 Azure 金鑰保管庫集成](disk-encryption-key-vault.md),可説明您控制和管理磁碟加密密鑰和機密。 有關服務的概述,請參閱 Windows [VM 的 Azure 磁碟加密](disk-encryption-overview.md)。
+Azure 磁碟加密[與 Azure 金鑰保管庫集成](disk-encryption-key-vault.md),可説明您控制和管理磁碟加密密鑰和機密。 有關服務的概述,請參閱 Linux [VM 的 Azure 磁碟加密](disk-encryption-overview.md)。
 
 您只能將磁碟加密應用於[受支援的 VM 大小和作業系統](disk-encryption-overview.md#supported-vms-and-operating-systems)的虛擬機器。 您必須滿足以下先決條件:
 

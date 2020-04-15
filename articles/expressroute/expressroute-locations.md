@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6482040f0d50f08f04ea87384a99af556f694075
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 913bc16f7408acebb0e65359e8845ce0f6a3a2f4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478807"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314261"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -45,7 +45,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **澳洲政府** |澳大利亞中部、澳大利亞中部 2 |坎培拉、坎培拉 2 |
 | **歐洲** | 法國中部、法國南部、德國北部、德國中西部、北歐、挪威東部、挪威西部、瑞士北部、瑞士西部、英國西部、英國南部、西歐 |阿姆斯特丹、阿姆斯特丹2、哥本哈根、都柏林、法蘭克福、日內瓦、倫敦、倫敦2、馬賽、米蘭、慕尼黑、紐波特(威爾士)、奧斯陸、巴黎、斯塔萬格、斯德哥爾摩、蘇黎世 |
 | **北美洲** |美國東部、美國西部、美國東部 2、美國西部 2、美國中部、美國中南部、美國中北部、美國中西部、加拿大中部、加拿大東部 |亞特蘭大、芝加哥、達拉斯、丹佛、拉斯維加斯、洛杉磯、邁阿密、紐約、聖安東尼奧、西雅圖、矽谷、矽谷2、華盛頓特區、華盛頓特區、蒙特利爾、魁北克城、多倫多、溫哥華 |
-| **亞洲** | 東亞、東南亞 | 曼谷, 香港, 香港2, 雅加達, 吉隆坡, 新加坡, 新加坡2, 臺北 |
+| **Asia** | 東亞、東南亞 | 曼谷, 香港, 香港2, 雅加達, 吉隆坡, 新加坡, 新加坡2, 臺北 |
 | **印度** | 印度西部、印度中部、印度南部 |辰內、辰內 2、孟買、孟買 2 |
 | **日本** | 日本西部、日本東部 |大阪, 東京, 東京2 |
 | **大洋洲** | 澳大利亞東南部、澳大利亞東部 |奧克蘭、 墨爾本、 珀斯、 悉尼、 悉尼2 |
@@ -74,7 +74,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 
 ### <a name="global-commercial-azure"></a>全球商業 Azure
 
-| **服務提供者** | **Microsoft Azure** | **辦公室 365**  | **位置** |
+| **服務提供者** | **Microsoft Azure** | **Office 365**  | **位置** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |支援 |支援 |墨爾本、雪梨 |
 | **[艾爾特爾](https://www.airtel.in/business/#/)** | 支援 | 支援 | 辰內 2、孟買 2 |
@@ -94,7 +94,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **中國移動國際** |支援 |支援 | 新加坡 |
 | **China Telecom Global** |支援 |支援 |香港 |
 | **中國聯通全球** |支援 |支援 | 新加坡 2 |
-| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支援 |支援 |芝加哥、達拉斯、蒙特婁、多倫多、華盛頓特區 |
+| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支援 |支援 |芝加哥、達拉斯、蒙特利爾、多倫多、溫哥華、華盛頓特區 |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支援 |支援 |阿姆斯特丹,阿姆斯特丹2,芝加哥,都柏林,法蘭克福,倫敦,倫敦2,紐波特,紐約,大阪,巴黎,矽谷,矽谷2,新加坡2,東京,華盛頓特區 |
 | **[康卡斯特](https://business.comcast.com/landingpage/microsoft-azure)** |支援 |支援 |芝加哥、矽谷、華盛頓特區 |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支援 |支援 |芝加哥、丹佛、洛杉磯、紐約、矽谷、矽谷2、華盛頓特區、華盛頓特區2 |
@@ -174,7 +174,7 @@ Azure 國家雲彼此隔離,與全域商業 Azure 隔離。 一個 Azure 雲的 
 
 ### <a name="us-government-cloud"></a>美國政府雲端
 
-| **服務提供者** | **Microsoft Azure** | **辦公室 365** | **位置** |
+| **服務提供者** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |芝加哥, 鳳凰城, 矽谷, 華盛頓特區 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支援 |支援 |紐約, 鳳凰城, 聖安東尼奧, 華盛頓特區 |
@@ -185,7 +185,7 @@ Azure 國家雲彼此隔離,與全域商業 Azure 隔離。 一個 Azure 雲的 
 
 ### <a name="china"></a>中國
 
-| **服務提供者** | **Microsoft Azure** | **辦公室 365** | **位置** |
+| **服務提供者** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **China Telecom** |支援 |不支援 |北京, 北京2, 上海, 上海2 |
 | **中國聯通** | 支援 | 不支援 | 北京 2 |
@@ -195,7 +195,7 @@ Azure 國家雲彼此隔離,與全域商業 Azure 隔離。 一個 Azure 雲的 
 
 ### <a name="germany"></a>德國
 
-| **服務提供者** | **Microsoft Azure** | **辦公室 365** | **位置** |
+| **服務提供者** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支援 |不支援 |法蘭克福 |
 | **[埃基尼克斯](https://www.equinix.com/partners/microsoft-azure/)** |支援 |不支援 |法蘭克福 |
@@ -296,7 +296,7 @@ Azure 國家雲彼此隔離,與全域商業 Azure 隔離。 一個 Azure 雲的 
 
 ## <a name="connectivity-through-datacenter-providers"></a>透過資料中心提供者連線
 
-| **供應商** | **裝置** |
+| **提供者** | **裝置** |
 | --- | --- |
 | **[CyrusOne](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/cloud-connectivity-reaching-amazon-microsoft-google-and-more/microsoft-azure-expressroute/?doing_wp_cron=1498512235.6733090877532958984375)** | 巨型埠,封包交換 |
 | **[Cyxtera](https://www.cyxtera.com/data-center-services/interconnection)** | 巨型埠,封包交換 |
@@ -313,7 +313,7 @@ Azure 國家雲彼此隔離,與全域商業 Azure 隔離。 一個 Azure 雲的 
 
 ## <a name="connectivity-through-national-research-and-education-networks-nren"></a>通過國家研究與教育網路實現連接
 
-| **供應商**|
+| **提供者**|
 | --- |
 | **AARNET**| 
 | **DeIC，透過 GÉANT**|
