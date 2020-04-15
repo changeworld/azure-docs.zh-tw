@@ -336,6 +336,8 @@
       href: reference-connect-faq.md
     - name: Azure AD Connect Health 常見問題集
       href: reference-connect-health-faq.md
+    - name: Azure Government 的混合式身分識別考量
+      href: reference-connect-government-cloud.md
     - name: Azure AD Connect 使用者隱私權
       href: reference-connect-user-privacy.md
     - name: Azure AD Connect Health 使用者隱私權

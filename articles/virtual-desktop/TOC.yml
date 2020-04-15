@@ -50,6 +50,8 @@
           href: create-host-pools-user-profile.md
         - name: 使用 Azure NetApp Files
           href: create-fslogix-profile-container.md
+        - name: 使用 Azure Files 和 Azure AD DS
+          href: create-profile-container-adds.md
     - name: 設定主機集區設定
       items:
         - name: RDP 屬性

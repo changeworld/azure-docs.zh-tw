@@ -83,10 +83,12 @@
           href: logic-apps-author-definitions.md
         - name: 處理內容類型
           href: logic-apps-content-type.md
-        - name: 處理錯誤和例外狀況
+        - name: 處理例外狀況
           href: logic-apps-exception-handling.md
         - name: 處理大型訊息
           href: logic-apps-handle-large-messages.md
+        - name: 處理節流問題或 429 錯誤
+          href: handle-throttling-problems-429-errors.md
         - name: 安全
           items:
             - name: 改善邏輯應用程式的安全性

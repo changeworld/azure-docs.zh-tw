@@ -42,17 +42,13 @@
       items:
         - name: MFA 的運作方式
           href: concept-mfa-howitworks.md
-        - name: 授權您的使用者
-          href: concept-mfa-licensing.md
-        - name: 管理驗證提供者
-          href: concept-mfa-authprovider.md
-        - name: 安全性指導
-          href: multi-factor-authentication-security-best-practices.md
         - name: 資料存留處
           href: concept-mfa-data-residency.md
+        - name: 授權
+          href: concept-mfa-licensing.md
         - name: MFA for Office 365
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: MFA 常見問題集
+        - name: 常見問題集
           href: multi-factor-authentication-faq.md
     - name: Azure AD 密碼保護
       items:
@@ -72,16 +68,18 @@
           href: howto-sspr-authenticationdata.md
         - name: 適用於 Windows 用戶端的 SSPR
           href: howto-sspr-windows.md
-    - name: 雲端式 MFA
+    - name: Azure Multi-Factor Authentication
       items:
         - name: 部署指南
           href: howto-mfa-getstarted.md
-        - name: 每個使用者 MFA
-          href: howto-mfa-userstates.md
-        - name: 使用者與裝置設定
-          href: howto-mfa-userdevicesettings.md
         - name: 進行設定
           href: howto-mfa-mfasettings.md
+        - name: 設定使用者
+          href: howto-mfa-userdevicesettings.md
+        - name: 啟用每位使用者的 MFA
+          href: howto-mfa-userstates.md
+        - name: 設定驗證提供者
+          href: concept-mfa-authprovider.md
         - name: 目錄同盟
           items:
             - name: Windows Server 2016 AD FS 介面卡
@@ -140,6 +138,8 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello 企業版
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: 使用 SMS 式驗證 (預覽)
+      href: howto-authentication-sms-signin.md
     - name: 憑證式驗證
       items:
         - name: 開始使用憑證驗證
@@ -225,7 +225,7 @@
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md

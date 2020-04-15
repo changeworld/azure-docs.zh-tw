@@ -1,11 +1,11 @@
-- name: Azure Marketplace 和 AppSource 文件
+- name: 商業市集文件
   href: index.yml
   items:
-    - name: Azure Marketplace 和 AppSource 藍圖
+    - name: 商業市集藍圖
       href: ./marketplace-roadmap.md
-    - name: Azure Marketplace 原則和條款
+    - name: 商業市集原則和條款
       href: ./policies-terms.md
-    - name: Azure Marketplace 和 AppSource 概觀和優點
+    - name: 商業市集概觀和權益
       href: ./marketplace-publishers-guide.md
       items:
         - name: 一個市集，二間店面
@@ -15,7 +15,7 @@
           items:
             - name: 潛在客戶管理
               href: ./lead-management-for-cloud-marketplace.md
-            - name: 在 Azure Marketplace 中交易
+            - name: 在商業市集中交易
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: 私人供應項目
               href: ./private-offers.md
@@ -66,7 +66,7 @@
               href: ./preferred-solutions.md
             - name: 整合式解決方案
               href: ./integrated-solutions.md
-        - name: 支援 Azure Marketplace 和 AppSource
+        - name: 支援商業市集
           href: ./support-azure-marketplace.md
           items:
             - name: Marketplace 常見問題集
@@ -78,6 +78,8 @@
   items:
     - name: 從 Cloud Partner 入口網站遷移到合作夥伴中心
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
+    - name: 移轉常見問題集
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: 入口網站導覽
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -427,12 +429,10 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 取得支援
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: 合作夥伴中心中的商務 Marketplace 入口網站
+- name: 合作夥伴中心中的商業市集
   items:
-    - name: 概觀
-      items:
-        - name: 什麼是商務 Marketplace？
-          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: 商業市集概觀
+      href: ./partner-center-portal/commercial-marketplace-overview.md
     - name: 帳戶管理
       items:
         - name: 建立新的合作夥伴中心帳戶
@@ -453,6 +453,30 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: 用於上線的 API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Azure 容器供應項目
+          items:
+            - name: 預備技術資產
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: 建立 Azure 容器供應項目
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: 虛擬機器供應項目
+          items:
+            - name: 建立 Azure 虛擬機器供應項目
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: 建立 Azure VM 技術資產
+              items:
+                - name: 建立 Azure VM 技術資產
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Azure VM 技術資產常見問題集
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: 認證 Azure VM 映像
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: SAS URI
+                  items:
+                    - name: 取得 SAS URI
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: SAS URI 常見問題集
+                      href: ./partner-center-portal/common-sas-uri-issues.md
         - name: 諮詢服務
           items:
             - name: Prerequisites

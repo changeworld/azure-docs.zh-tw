@@ -3,12 +3,12 @@ title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78196819"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383534"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -38,7 +38,7 @@ ms.locfileid: "78196819"
 
 ## <a name="samples-strategy"></a>範例策略
 
-![藍圖範例的這略](../media/blueprint-samples-strategy.png)
+:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="藍圖範例策略" border="false":::
 
 CAF 基礎和 CAF 移轉登陸區域藍圖會假設客戶正在準備現有的全新單一訂用帳戶，以便將內部部署資產及工作負載遷移至 Azure。
 (圖中的區域 A 和 B)。  

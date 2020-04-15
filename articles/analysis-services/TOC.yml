@@ -10,6 +10,9 @@
       href: analysis-services-create-server.md
     - name: 建立伺服器 - PowerShell
       href: analysis-services-create-powershell.md
+    - name: 建立伺服器 - ARM 範本
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: 設定伺服器防火牆 - 入口網站
       href: analysis-services-qs-firewall.md
 - name: 教學課程
@@ -122,7 +125,7 @@
       href: 'https://azure.microsoft.com/status/'
     - name: 意見反應
       href: 'https://feedback.azure.com/forums/556165-azure-analysis-services'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

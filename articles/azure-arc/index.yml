@@ -10,12 +10,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/04/2019
   ms.author: robreed
-  ms.openlocfilehash: 2ff0b9a194faf4d5a6b9e5181c52dc135208bdee
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508545"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81261273"
 landingContent:
 - title: Azure Arc 概觀
   linkLists:
@@ -31,7 +31,9 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
-    - text: 使用適用於伺服器的 Azure Arc 將機器連線至 Azure - 入口網站
-      url: ./servers/quickstart-onboard-portal.md
-    - text: 使用適用於伺服器的 Azure Arc 將機器連線至 Azure - PowerShell
-      url: ./servers/quickstart-onboard-portal.md
+    - text: 從 Azure 入口網站將機器連線到 Azure Arc
+      url: ./servers/onboard-portal.md
+    - text: 使用服務主體大規模地連線機器
+      url: ./servers/onboard-service-principal.md
+    - text: 使用 PowerShell DSC 將機器連線至 Azure
+      url: ./servers/onboard-dsc.md

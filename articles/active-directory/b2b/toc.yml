@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: 資訊背景工作新增 B2B 使用者
               href: add-users-information-worker.md
+            - name: 邀請內部使用者加入 B2B
+              href: invite-internal-users.md
             - name: Google 同盟
               href: google-federation.md
             - name: 單次密碼驗證
@@ -115,7 +117,7 @@
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
         - name: MSDN 論壇
           href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 價格
+        - name: 定價
           href: 'https://azure.microsoft.com/pricing/details/active-directory/'
         - name: 定價計算機
           href: 'https://azure.microsoft.com/pricing/calculator/'
