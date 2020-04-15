@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI - Azure 應用程式閘道進行 SSL 終止
-description: 了解如何使用 Azure CLI 建立應用程式閘道，並新增 SSL 終止的憑證。
+title: 使用 CLI - Azure 應用程式閘道終止 TLS
+description: 瞭解如何使用 Azure CLI 創建應用程式閘道和添加 TLS 終止證書。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246620"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311967"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>使用 Azure CLI 建立包含 SSL 終止的應用程式閘道
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>使用 Azure CLI 建立具有 TLS 中止的應用程式閘道
 
-可以使用 Azure CLI 創建具有[SSL 終止](ssl-overview.md)證書[的應用程式閘道](overview.md)。 對於後端伺服器，可以使用[虛擬機器縮放集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
+可以使用 Azure CLI 建立具有[TLS 中止](ssl-overview.md)憑證[的應用程式閘道](overview.md)。 對於後端伺服器,可以使用[虛擬機器縮放集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。
 
 在本文中，您將學會如何：
 
@@ -33,7 +33,7 @@ ms.locfileid: "78246620"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-將公用 IP 位址複製並貼到您瀏覽器的網址列。 在此示例中，URL 為： **https://52.170.203.149**。
+將公用 IP 位址複製並貼到您瀏覽器的網址列。 這個選項, 選擇此網址**https://52.170.203.149**為: 。
 
 ![安全警告](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

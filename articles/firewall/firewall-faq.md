@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113562"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383060"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -72,7 +72,7 @@ Web 應用程式防火牆 (WAF) 是應用程式閘道的一個功能，可提供
 
 「Azure 防火牆」服務可補足網路安全性群組功能。 兩者結合時，可提供更好的「深度防禦」網路安全性。 網路安全性群組提供分散式網路層流量篩選，可限制每個訂用帳戶中虛擬網路內資源的流量。 「Azure 防火牆」是完全具狀態的集中式網路防火牆即服務，可跨不同的訂用帳戶和虛擬網路，提供網路層級和應用程式層級的保護。
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Azure 防火牆子網上支援網路安全組 (NSG)嗎?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Azure 防火牆子網支援網路安全組 (NSG)嗎?
 
 Azure 防火牆是具有多個保護層的託管服務,包括具有 NIC 級別 NSG 的平台保護(不可查看)。  Azure 防火牆子網不需要子網級別 NSG,並且已禁用以確保沒有服務中斷。
 

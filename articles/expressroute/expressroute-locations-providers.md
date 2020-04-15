@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0b8c8a0baba5a80c6a383e6f8f14e29b482dbc82
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 0133322eab9a554cf28c0a90fbadf9afe6fbcd64
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878607"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314274"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -137,7 +137,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **東京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本東部 | 10G, 100G | Aryaka網络, AT&T NetBond, BBIX, 英國電信, 世紀連結雲連接, 科爾特, Equinix, 互聯網倡議日本公司 - IIJ, 兆港, NTT通信, NTT EAST, 奧蘭治, 軟銀, Verizon |
 | **東京2** | [在東京](https://www.attokyo.com/) | 2 | 日本東部 | 10G, 100G | 在東京 |
 | **多倫多** | [科洛尼克斯TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | 加拿大中部 | 10G, 100G | AT&T NetBond、貝爾加拿大、世紀鏈接雲連接、科洛尼克斯、Equinix、IX 到達兆港、泰魯斯、威瑞森、扎約 |
-| **溫哥華** | [科洛尼克斯范1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | n/a | 10G, 100G | |
+| **溫哥華** | [科洛尼克斯范1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | Cologix | 10G, 100G | |
 | **華盛頓** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 美國東部,美國東部 2 | 10G, 100G | 阿裡亞卡網路, AT&T NetBond, 英國電信, 世紀鏈接雲連接, 科洛尼克斯, 科爾特, 康卡斯特, 核心網站, Equinix, Internet2, InterCloud, IX 覆蓋, 3 級通信, 兆端口, 中子網路, NTT通信, 橙色, 包布,SES, 衝刺, 塔塔通信, 泰利亞運營商, Verizon, Zayo |
 | **華盛頓特區2** | [核心網站雷斯頓](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | 美國東部,美國東部 2 | 10G, 100G | 世紀連結雲連線, 核心網站, Intelsat, 維亞盛, 扎約 | 
 | **蘇黎世** | [聯交 ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | 瑞士北部 | 10G, 100G | 雲間, 國際, 兆港, 瑞士 |

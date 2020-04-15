@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d905be7c4a922a1a7eb3d1318be28da896e8a7e9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77251714"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312012"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>使用 Azure PowerShell 以建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
-您可以使用 Azure PowerShell，以建立包含 SSL 終止憑證的[應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
+可以使用 Azure PowerShell 建立使用 TLS/SSL 取消憑證[的應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
 
 在本文中，您將學會如何：
 
@@ -99,7 +99,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>建立 IP 設定與前端連接埠
 
-使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)，讓先前建立的 *myAGSubnet* 與應用程式閘道產生關聯。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)，將 *myAGPublicIPAddress* 指派給應用程式閘道。 然後，您可以使用[新阿茲應用程式閘道前端埠](/powershell/module/az.network/new-azapplicationgatewayfrontendport)創建 HTTPS 埠。
+使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)，讓先前建立的 *myAGSubnet* 與應用程式閘道產生關聯。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)，將 *myAGPublicIPAddress* 指派給應用程式閘道。 然後,您可以使用[新阿茲應用程式閘道前埠](/powershell/module/az.network/new-azapplicationgatewayfrontendport)創建 HTTPS 連接埠。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -136,7 +136,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 需要接聽程式才能讓應用程式閘道將流量適當地路由到後端集區。 在此範例中，您會建立基本接聽程式，接聽根 URL 的 HTTPS 流量。 
 
-使用[New-AzAppGatewaySsl 證書](/powershell/module/az.network/new-azapplicationgatewaysslcertificate)創建證書物件，然後使用[New-AzAppGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener)使用以前創建的前端配置、前端埠和證書創建名為*appGatewayHttpListener*的攔截器。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 來建立名為 *rule1* 的基本規則。
+使用[New-AzAppGatewaySsl 憑證](/powershell/module/az.network/new-azapplicationgatewaysslcertificate)建立證書物件,然後使用[New-AzAppGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener)使用以前創建的前端配置、前端埠和證書創建名為*appGatewayHttpListener*的偵聽器。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 來建立名為 *rule1* 的基本規則。
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -189,7 +189,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="add-the-http-port"></a>新增 HTTP 連接埠
 
-使用[Add-Az應用程式閘道前端埠](/powershell/module/az.network/add-azapplicationgatewayfrontendport)將 HTTP 埠添加到應用程式閘道。
+使用[Add-Az 應用程式閘道前埠](/powershell/module/az.network/add-azapplicationgatewayfrontendport)將 HTTP 埠添加到應用程式閘道。
 
 ```powershell
 $appgw = Get-AzApplicationGateway `
@@ -203,7 +203,7 @@ Add-AzApplicationGatewayFrontendPort `
 
 ### <a name="add-the-http-listener"></a>新增 HTTP 接聽程式
 
-使用[Add-Az應用程式閘道HttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)將名為*myListener 的*HTTP 攔截器添加到應用程式閘道。
+使用[Add-Az 應用程式閘道HTTPListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)將名為*myListener 的*HTTP 偵聽器添加到應用程式閘道。
 
 ```powershell
 $fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
@@ -222,7 +222,7 @@ Add-AzApplicationGatewayHttpListener `
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-使用[Add-Az應用程式閘道重定向配置](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration)將 HTTP 添加到 HTTPS 重定向配置到應用程式閘道。
+使用[Add-Az 應用程式閘道重定向配置](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration)將 HTTP 新增到 HTTPS 重定向設定到應用程式閘道。
 
 ```powershell
 $defaultListener = Get-AzApplicationGatewayHttpListener `
@@ -238,7 +238,7 @@ Add-AzApplicationGatewayRedirectConfiguration -Name httpToHttps `
 
 ### <a name="add-the-routing-rule"></a>新增路由規則
 
-使用[Add-Az應用程式閘道請求路由規則](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule)將帶有重定向配置的路由規則添加到應用程式閘道。
+使用[Add-Az 應用程式閘道請求路由規則](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule)將帶有重定向配置的路由規則添加到應用程式閘道。
 
 ```powershell
 $myListener = Get-AzApplicationGatewayHttpListener `

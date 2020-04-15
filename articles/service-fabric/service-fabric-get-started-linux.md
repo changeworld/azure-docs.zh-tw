@@ -1,14 +1,14 @@
 ---
-title: 在 Linux 上設置開發環境
+title: 在 Linux 上設定開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258430"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309124"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "79258430"
 
 若要在 Linux 開發機器上部署和執行 [Azure Service Fabric 應用程式](service-fabric-application-model.md) ，請安裝執行階段和通用 SDK。 您也可以安裝 Java 和 .NET Core 開發的選擇性 SDK。 
 
-本文中的步驟假設您要在 Linux 上進行原生安裝，或使用 Service Fabric OneBox 容器映像 `microsoft/service-fabric-onebox`。
+本文中的步驟假設您要在 Linux 上進行原生安裝，或使用 Service Fabric OneBox 容器映像 `mcr.microsoft.com/service-fabric/onebox:latest`。
 
 不支援在適用於 Linux 的 Windows 子系統上安裝 Service Fabric 執行階段。 您可以使用支援的 Azure Service Fabric 命令列介面 (CLI)，管理裝載於雲端或內部部署中其他地方的 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
@@ -179,7 +179,7 @@ RHEL | - | OpenJDK 1.8 | 內含於 npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 打開 Web 瀏覽器並轉到[服務結構資源管理器](http://localhost:19080/Explorer)`http://localhost:19080/Explorer`（）。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
+2. 打開 Web 瀏覽器並轉到[服務結構資源管理員](http://localhost:19080/Explorer)`http://localhost:19080/Explorer`()。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -261,13 +261,13 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 > 
 > 在 Ubuntu 上，建議您直接從 Eclipse 網站安裝，而不要使用套件安裝程式 (`apt` 或 `apt-get`)。 這麼做可確保您會取得最新版的 Eclipse。 您可以安裝適用於 Java 開發人員或 Java EE 開發人員的 Eclipse IDE。
 
-1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 通過選擇"**關於 Eclipse** > **安裝詳細資訊****的説明"，** > 檢查已安裝元件的版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
+1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 通過選擇 **「關於 Eclipse** > **安裝詳細資訊****的説明」** > 檢查已安裝元件的版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
 
-2. 要安裝服務交換矩陣外掛程式，請選擇 **"説明** > **安裝新軟體**"。
+2. 要安裝服務交換矩陣外掛程式,請選擇 **「幫助** > **安裝新軟體**」。
 
 3. 在 [使用]**** 方塊中，輸入 **https://dl.microsoft.com/eclipse**。
 
-4. 選取 [加入]****。
+4. 選取 [新增]  。
 
     ![可用的軟體頁面][sf-eclipse-plugin]
 
@@ -275,7 +275,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 6. 執行安裝步驟。 然後接受使用者授權合約。
 
-如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 通過選擇 **"有關 Eclipse** > **安裝詳細資訊****的説明"** > 進行檢查。 然後在已安裝的外掛程式清單中搜索服務結構。如果較新版本可用，請選擇 **"更新**"。
+如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 通過選擇 **「有關 Eclipse** > **安裝詳細資訊****的説明」** > 進行檢查。 然後在已安裝的外掛程式清單中搜索服務結構。如果較新版本可用,請選擇 **「更新**」 。
 
 如需詳細資訊，請參閱[適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式](service-fabric-get-started-eclipse.md)。
 

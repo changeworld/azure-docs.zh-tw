@@ -1,6 +1,6 @@
 ---
-title: 適用于 IoT 的 Azure 安全中心的可自訂安全警報指南*微軟文檔
-description: 使用 Azure 安全中心瞭解可自訂的安全警報和建議進行補救的 IoT 功能和服務。
+title: 可自訂的安全性警示
+description: 使用 Azure 安全中心瞭解可自定義的安全警報和建議進行補救的 IoT 功能和服務。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299568"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311628"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>適用於 IoT 的 Azure 資訊安全中心的安全性警示
 
-IoT Azure 安全中心使用高級分析和威脅情報持續分析 IoT 解決方案，以提醒您注意惡意活動。
+IoT Azure 安全中心使用進階分析和威脅情報持續分析IoT解決方案,以提醒您注意惡意活動。
 
-我們鼓勵您根據您對預期設備行為的瞭解創建自訂警報，以確保警報在獨特的組織部署和環境中成為潛在危害的最有效指標。 
+我們鼓勵您根據您對預期設備行為的瞭解創建自定義警報,以確保警報在獨特的組織部署和環境中成為潛在危害的最有效指標。
 
-以下 IoT 警報 Azure 安全中心清單由您根據預期的 IoT 中心和/或設備行為進行定義。 有關如何自訂每個警報的更多詳細資訊，請參閱[創建自訂警報](quickstart-create-custom-alerts.md)。
+以下 IoT 警報 Azure 安全中心清單由您根據預期的 IoT 中心和/或設備行為進行定義。 有關如何自定義每個警報的更多詳細資訊,請參閱[建立自訂警報](quickstart-create-custom-alerts.md)。
 
-## <a name="iot-hub-alerts-available-for-customization"></a>IoT 中心警報可用於自訂 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>IoT 中心警示可用於自訂
 
 | Severity | 警示名稱 | 資料來源 | 描述 | 建議的補救措施|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ IoT Azure 安全中心使用高級分析和威脅情報持續分析 IoT 解決�
 | 低      | 自訂警示 - 未經授權的作業數目超出允許的範圍  | IoT 中樞     | 特定時間範圍內未經授權的作業數量超出目前設定和允許的範圍。|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>可用於自訂的代理警報 
+## <a name="agent-alerts-available-for-customization"></a>可用於自訂的代理警報
 
 | Severity | 警示名稱 | 資料來源 | 描述 | 建議的補救措施|
 |---|---|---|---|---|
@@ -66,5 +64,5 @@ IoT Azure 安全中心使用高級分析和威脅情報持續分析 IoT 解決�
 
 - 瞭解如何[自訂警報](quickstart-create-custom-alerts.md)
 - 用於 IoT 服務[概述](overview.md)的 Azure 安全中心
-- 瞭解如何[訪問安全資料](how-to-security-data-access.md)
-- 瞭解有關[調查設備的資訊](how-to-investigate-device.md)
+- 瞭解如何[存取安全資料](how-to-security-data-access.md)
+- 瞭解有關[調查裝置的資訊](how-to-investigate-device.md)

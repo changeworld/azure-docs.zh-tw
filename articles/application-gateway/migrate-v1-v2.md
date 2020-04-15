@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475185"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312040"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>將 Azure 應用程式閘道和 Web 應用程式防火牆從 v1 移至 v2
 
@@ -36,7 +36,7 @@ Azure PowerShell 文稿可用於執行以下操作:
 
 * 新的 v2 閘道具有新的公共和專用 IP 位址。 無法將與現有 v1 閘道關聯的 IP 位址無縫移動到 v2。 但是,您可以將現有(未分配)公共或專用 IP 位址分配給新的 v2 閘道。
 * 您必須為 v1 閘道所在的虛擬網路中的另一個子網路提供 IP 位址空間。 文本無法在任何已具有 v1 閘道的現有子網中創建 v2 閘道。 但是,如果現有子網已具有 v2 閘道,則只要有足夠的 IP 位址空間,該閘道可能仍然有效。
-* 要遷移 SSL 設定,必須指定 v1 閘道中使用的所有 SSL 憑證。
+* 要遷移 TLS/SSL 配置,必須指定 v1 閘道中使用的所有 TLS/SSL 憑證。
 * 如果 V1 閘道啟用了 FIPS 模式,則不會將其遷移到新的 v2 閘道。 v2 不支援 FIPS 模式。
 * v2 不支援 IPv6,因此不會遷移啟用 IPv6 的 v1 閘道。 如果運行腳本,它可能未完成。
 * 如果 v1 閘道只有專用 IP 位址,則文本會為新 v2 閘道創建公共 IP 位址和專用 IP 位址。 v2 閘道目前不支援專用 IP 位址。
@@ -101,7 +101,7 @@ Azure PowerShell 文稿可用於執行以下操作:
 
    * **子網位址範圍: [String]: 必需**- 這是您為包含新 v2 閘道的新子網分配(或想要分配)的 IP 位址空間。 必須在 CIDR 符號中指定這一點。 例如:10.0.0.0/24。 您無需提前創建此子網。 如果腳本不存在,則為其創建它。
    * **套用名稱: [字串]: 選擇**。 這是指定用作新Standard_v2或WAF_v2閘道的名稱的字串。 如果未提供此參數,則現有 v1 閘道的名稱將與附加的後綴 *_v2*一起使用。
-   * **ssl 憑證: [PS應用程式閘道Ssl憑證]: 選擇 。**  您必須將創建以表示來自 v1 閘道的 SSL 憑證的 PSApplicationGatewaySsl 憑證物件的逗號分隔清單上傳到新的 v2 閘道。 對於為標準 v1 或 WAF v1 閘道配置的每個 SSL 憑證,您可以`New-AzApplicationGatewaySslCertificate`透過此處顯示的命令建立新的 PSApplicationGatewaySsl 憑證物件。 您需要 SSL 憑證檔和密碼的路徑。
+   * **ssl 憑證: [PS應用程式閘道Ssl憑證]: 選擇 。**  您必須將創建以表示 v1 閘道的 TLS/SSL 憑證的 PSApplicationGatewaySsl 憑證物件的逗號分隔清單上傳到新的 v2 閘道。 對於為標準 v1 或 WAF v1 閘道設定的每個 TLS/SSL 憑證,您可以`New-AzApplicationGatewaySslCertificate`透過此處顯示的命令建立新的 PSApplicationGatewaySsl 憑證物件。 您需要 TLS/SSL 憑證檔和密碼的路徑。
 
      如果您沒有為 v1 閘道或 WAF 設定 HTTPS 偵聽器,則此參數僅可選。 如果至少有一個 HTTPS 偵聽器設置,則必須指定此參數。
 

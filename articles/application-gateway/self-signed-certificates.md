@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548872"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311947"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自訂根 CA 產生 Azure 應用程式閘道自簽署憑證
 
-應用程式閘道 v2 SKU 引入了使用受信任的根證書來允許後端伺服器。 這將刪除 v1 SKU 中所需的身份驗證證書。 *根證書*是 Base-64 編碼的 X.509(。CER) 從後端憑證伺服器格式化根證書。 它識別頒發伺服器證書的根證書頒發機構 (CA),然後伺服器證書用於 SSL 通訊。
+應用程式閘道 v2 SKU 引入了使用受信任的根證書來允許後端伺服器。 這將刪除 v1 SKU 中所需的身份驗證證書。 *根證書*是 Base-64 編碼的 X.509(。CER) 從後端憑證伺服器格式化根證書。 它識別頒發伺服器證書的根證書頒發機構 (CA),然後伺服器證書用於 TLS/SSL 通訊。
 
-如果網站由知名 CA(例如 GoDaddy 或 DigiCert)簽名,則應用程式閘道預設信任網站的證書。 在這種情況下,您不需要顯式上載根證書。 有關詳細資訊,請參閱[SSL 終止概述以及使用應用程式閘道端到端 SSL。](ssl-overview.md) 但是,如果您有開發/測試環境,並且不想購買經過驗證的 CA 簽名證書,則可以創建自己的自定義 CA 並使用它創建自簽名證書。 
+如果網站由知名 CA(例如 GoDaddy 或 DigiCert)簽名,則應用程式閘道預設信任網站的證書。 在這種情況下,您不需要顯式上載根證書。 有關詳細資訊,請參閱[使用應用程式閘道的 TLS 中止和端到端 TLS 概述](ssl-overview.md)。 但是,如果您有開發/測試環境,並且不想購買經過驗證的 CA 簽名證書,則可以創建自己的自定義 CA 並使用它創建自簽名證書。 
 
 > [!NOTE]
 > 默認情況下,自簽名證書不受信任的,並且可能難以維護。 此外,他們可能使用過時的哈希和密碼套件,可能不強。 為了更好地安全,購買由知名證書頒發機構簽名的證書。
@@ -125,15 +125,15 @@ CSR 是請求證書時提供給 CA 的公開金鑰。 CA 為此特定請求頒�
    - 法布里卡姆.crt
    - 法布里卡姆.鍵
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>在 Web 伺服器的 SSL 設定中設定憑證
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 Web 伺服器的 TLS 設定中設定憑證
 
-在 Web 伺服器中,使用 fabrikam.crt 和 fabrikam.key 檔配置 SSL。 如果 Web 伺服器無法取得兩個檔,則可以使用 OpenSSL 命令將它們合併到單個 .pem 或 .pfx 檔中。
+在 Web 伺服器中,使用 fabrikam.crt 和 fabrikam.key 檔配置 TLS。 如果 Web 伺服器無法取得兩個檔,則可以使用 OpenSSL 命令將它們合併到單個 .pem 或 .pfx 檔中。
 
 ### <a name="iis"></a>IIS
 
 有關如何在 IIS 上匯入憑證並將其上傳為伺服器憑證的說明,請參閱[操作操作:在 Windows Server 2003 中的 Web 伺服器上安裝匯入的憑證](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
 
-有關 SSL 綁定說明,請參閱[如何在 IIS 7 上設置 SSL。](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
+有關 TLS 綁定說明,請參閱[如何在 IIS 7 上設置 SSL。](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ CSR 是請求證書時提供給 CA 的公開金鑰。 CA 為此特定請求頒�
 
 ### <a name="nginx"></a>NGINX
 
-以下設定是具有 SSL 設定的[NGINX 伺服器區](https://nginx.org/docs/http/configuring_https_servers.html)圖樣範例:
+以下設定是具有 TLS 設定的[NGINX 伺服器區塊](https://nginx.org/docs/http/configuring_https_servers.html)的範例:
 
-![帶 SSL 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
+![帶 TLS 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>存取伺服器以驗證設定
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關應用程式閘道中的 SSL_TLS 的詳細資訊,請參閱[SSL 終止概述以及使用應用程式閘道端到端 SSL。](ssl-overview.md)
+要瞭解有關應用程式閘道中的 SSL_TLS的詳細資訊,請參閱[TLS 終止概述以及使用應用程式閘道端到端 TLS](ssl-overview.md)的 TLS 概述。
 

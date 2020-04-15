@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262242"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383895"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
@@ -324,6 +324,30 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 目前,您可以考慮使用適用於以下規則的新域 DNS 名稱重新部署 AAD DS:
 - 名稱不能以數字字元開頭。
 - 名稱必須長 3 到 63 個字元。
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>無法將 Azure 檔案載入為 AD 認證 
+
+### <a name="self-diagnostics-steps"></a>自診斷步驟
+首先,請確保已執行所有四個步驟[來啟用 Azure 檔 AD 身份驗證](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)。
+
+其次,嘗試[使用儲存帳戶金鑰安裝 Azure 檔案共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)。 如果裝載失敗,請下載[AzFile診斷.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)來協助驗證用戶端執行環境,檢測導致 Azure 檔訪問失敗的不相容用戶端配置,提供有關自我修復的規範性指導,並收集診斷跟蹤。
+
+第三,您可以運行除錯-AzStorageAccountAuth cmdlet,以便使用登入的AD使用者對AD配置執行一組基本檢查。 此 cmdlet 支援[AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)。 您需要使用在目標儲存帳戶上具有擁有者權限的 AD 使用者執行此 cmdlet。  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+cmdlet 按順序執行以下檢查,並提供故障指南:
+1. 檢查連接埠445連接:檢查埠 445 是否開啟以進行 SMB 連接
+2. 選取的網域:驗證客戶端電腦是否已加入 AD
+3. CheckADObject:確認登入使用者在 AD 網域中具有儲存帳戶與儲存帳戶關聯的有效表示形式
+4. 檢查GetKerberos票務:嘗試取得 Kerberos 票證以連接到儲存帳戶 
+5. CheckADObjectPasswordIs正確:確保表示儲存帳戶的 AD 識別上設定的密碼與儲存帳戶 kerb 金鑰的密碼比對
+6. 檢查 SidHasAadUser:檢查登入的 AD 使用者是否同步到 Azure AD
+
+我們正在積極擴展此診斷 cmdlet,以提供更好的故障排除指導。
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員。
 如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。

@@ -1,5 +1,5 @@
 ---
-title: State Configuration 概觀
+title: Azure 自動化狀態設定概述
 description: Azure 自動化狀態配置 (DSC)、其術語和已知問題的概述
 keywords: powershell dsc, 需要的狀態組態, powershell dsc azure
 services: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010251"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383193"
 ---
 # <a name="state-configuration-overview"></a>State Configuration 概觀
 
@@ -123,6 +123,7 @@ Azure ExpressRoute 使用者應該注意到，在每個月的第一週，此檔�
 - 要開始在 Azure 自動化狀態設定中使用 DSC,請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
 - 要瞭解如何載入節點,請參閱[載入電腦來進行 Azure 自動化狀態設定進行管理](automation-dsc-onboarding.md)。
 - 要瞭解如何編譯 DSC 設定以便將它們分配給目標節點,請參閱[在 Azure 自動化狀態設定中編譯設定](automation-dsc-compile.md)。
-- 有關 PowerShell cmdlet 引用,請參閱[Azure 自動化狀態設定 cmdlet](/powershell/module/azurerm.automation/#automation)。
+- 有關 PowerShell cmdlet 引用,請參閱[Az.自動化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
 - 有關定價資訊,請參閱[Azure 自動化狀態設定定價](https://azure.microsoft.com/pricing/details/automation/)。
 - 要檢視在連續部署導管中使用 Azure 自動化狀態設定的範例,請參考[Azure 自動化狀態設定和巧克力的持續部署](automation-dsc-cd-chocolatey.md)。

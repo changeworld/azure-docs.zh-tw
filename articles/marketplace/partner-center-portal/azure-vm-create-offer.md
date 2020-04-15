@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266080"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383793"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>建立 Azure 虛擬機器產品/服務
 
@@ -116,9 +116,9 @@ ms.locfileid: "81266080"
 
 此頁面允許您定義用於在市場對產品/服務進行分組的類別和行業、應用版本和支援您的產品/服務的法律合同。
 
-### <a name="category"></a>類別
+### <a name="categories"></a>類別
 
-選擇至少一個,最多選擇三個類別。 這些類別用於將產品/服務放置在相應的市場搜索區域。 在產品/服務說明中,說明您的優惠如何支援這些類別。 虛擬機產品/服務顯示在 Azure 應用商店中的 **「計算**」類別下。
+選擇至少 1 個類別,最多選擇五個類別。 這些類別用於將產品/服務放置在相應的市場搜索區域。 在產品/服務說明中,說明您的優惠如何支援這些類別。 虛擬機產品/服務顯示在 Azure 應用商店中的 **「計算**」類別下。
 
 ### <a name="legal"></a>法律
 
@@ -234,7 +234,6 @@ ms.locfileid: "81266080"
 
 - Azure 全球支援網站
 - Azure 政府支援網站
-- 依此類推
 
 ### <a name="partner-support-contact"></a>合作夥伴支援聯絡人
 
@@ -389,6 +388,8 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 如果您已為計劃設定價格(美元),並添加其他市場位置,則新市場的價格將根據當前匯率計算。 在出版之前,務必查看每個市場的價格。 儲存變更後,使用 **「匯出價格 (xlsx)」** 連結查看價格。
 
+刪除市場時,使用活動部署的客戶將無法創建新部署或擴展其現有部署。 現有部署不會受到影響。
+
 #### <a name="pricing"></a>定價
 
 **許可證模型**– 選擇**基於使用方式的每月計費計劃**,以設定此計劃的定價,或**自帶許可證**,讓客戶使用此計劃及其現有許可證。
@@ -421,7 +422,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 #### <a name="hide-plan"></a>隱藏排程
 
-如果虛擬機僅打算透過其他解決方案樣本或託管應用程式間接使用,請選擇此框以發佈虛擬機器或提供,但會直接隱藏虛擬機器的客戶搜尋和流覽虛擬機器。
+如果虛擬機僅打算透過其他解決方案樣本或託管應用程式間接使用,請選擇此框以發佈虛擬機器,但直接從客戶搜尋和瀏覽虛擬機時將其隱藏。
 
 > [!NOTE]
 > 隱藏計劃不支援預覽連結。
@@ -430,7 +431,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 ### <a name="technical-configuration"></a>技術設定
 
-提供與此計劃關聯的圖像和其他技術屬性。
+提供與此計劃關聯的圖像和其他技術屬性。 有關詳細資訊,請參閱[創建 Azure VM 技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
 
 > [!NOTE]
 > 如果您使用此計劃重用 **「計劃設定**」選項卡上其他計劃的包,則不顯示此選項卡。
@@ -459,7 +460,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 #### <a name="vm-images"></a>VM 映像
 
-為虛擬機映射提供磁碟版本和 SAS URI。 為每個 VM 映射添加最多 16 個數據磁碟。 在給定提交中,每個計劃僅提供一個新映射版本。 發佈圖像后,無法對其進行編輯,但可以將其刪除。 刪除版本將阻止使用者部署已刪除版本的新實例。
+為虛擬機映射提供磁碟版本和 SAS URI。 為每個 VM 映射添加最多 16 個數據磁碟。 在給定提交中,每個計劃僅提供一個新映射版本。 發佈圖像后,無法對其進行編輯,但可以將其刪除。 刪除版本將阻止新使用者和現有使用者部署已刪除版本的新實例。
 
 - **光碟版本**是您提供的圖像的版本。
 - **SAS URI**是 Azure 儲存中儲存作業系統 VHD 的位置。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 79eaac74fd4475a613c0309476a12292e400dbaa
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010965"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383268"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用自動化狀態設定和巧克力提供虛擬機器的持續部署
 
@@ -39,10 +39,9 @@ Azure 自動化是Microsoft Azure 中的託管服務,允許您使用Runbook、�
 [像apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool)這樣的包管理器在Linux世界中是眾所周知的,但在Windows世界卻不是那麼廣為人知。
 [巧克力](https://chocolatey.org/)就是這樣的東西,斯科特·漢塞爾曼的[博客上](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx)關於這個話題是一個很好的介紹。 簡而言之,Chocolatey 允許您使用命令列將包從中央存儲庫安裝到 Windows 作業系統上。 您可以建立和管理您自己的儲存機制，而 Chocolatey 可以從您指定的任何數量的儲存機制來安裝封裝。
 
-[電源外殼 DSC](/powershell/scripting/dsc/overview/overview))是一個 PowerShell 工具,允許您聲明所需的電腦配置。 例如,如果您希望安裝巧克力、安裝 IIS、打開埠 80 以及安裝網站版本 1.0.0,DSC 本地配置管理員 (LCM) 實現該配置。 DSC 拉取伺服器為您的電腦保存配置存儲庫。 每台電腦上的 LCM 會定期檢查電腦的組態是否符合已儲存的組態。 它可能報告狀態，也可能嘗試讓電腦回復到符合已儲存的組態。 您可以編輯提取伺服器上儲存的組態，讓一台電腦或一群電腦符合已變更的組態。
+[PowerShell DSC](/powershell/scripting/dsc/overview/overview)是一種 PowerShell 工具,允許您聲明所需的機器配置。 例如,如果您希望安裝巧克力、安裝 IIS、打開埠 80 以及安裝網站版本 1.0.0,DSC 本地配置管理員 (LCM) 實現該配置。 DSC 拉取伺服器為您的電腦保存配置存儲庫。 每台電腦上的 LCM 會定期檢查電腦的組態是否符合已儲存的組態。 它可能報告狀態，也可能嘗試讓電腦回復到符合已儲存的組態。 您可以編輯提取伺服器上儲存的組態，讓一台電腦或一群電腦符合已變更的組態。
 
-DSC 資源是具有特定功能的程式碼模組,例如管理網路、活動目錄或 SQL Server。 Chocolatey DSC 資源知道如何存取 NuGet 伺服器 (還有其他)、下載封裝、安裝封裝...等等。 [PowerShell 資源庫](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)中有許多其他 DSC 資源。
-這些模組會安裝到您的 Azure 自動化狀態設定提取伺服器 (由您安裝)，供您的組態使用。
+DSC 資源是具有特定功能的程式碼模組,例如管理網路、活動目錄或 SQL Server。 Chocolatey DSC 資源知道如何存取 NuGet 伺服器 (還有其他)、下載封裝、安裝封裝...等等。 [PowerShell 資源庫](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)中有許多其他 DSC 資源。 在 Azure 自動化狀態配置拉取伺服器上安裝這些模組,供配置使用。
 
 資源管理器範本提供了生成基礎結構的聲明性方法,例如網路、子網、網路安全和路由、負載均衡器、NIC、VM等。 本文將資源管理員部署[article](../azure-resource-manager/management/deployment-models.md)模型(聲明性)與 Azure 服務管理 (ASM 或經典) 部署模型(命令)進行比較。 本文包括核心資源提供程式(計算、存儲和網路)的討論。
 
@@ -50,16 +49,15 @@ DSC 資源是具有特定功能的程式碼模組,例如管理網路、活動目
 
 ## <a name="quick-trip-around-the-diagram"></a>圖表速覽
 
-從頂部開始,您可以編寫代碼、構建代碼、測試代碼,然後創建一個安裝包。 Chocolatey 可以處理各種類型的安裝封裝，例如 MSI、MSU、ZIP 等。 如果 Chocolatey 的本機功能不能滿足,則 PowerShell 完全有能力進行實際安裝。 將包放入可到達的某個位置 — 包存儲庫。 這個使用範例使用 Azure blob 儲存體帳戶中的公用資料夾，但可以是任何位置。 Chocolatey 可自然搭配 NuGet 伺服器和其他一些工具，一起管理封裝中繼資料。 [這篇文章](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) 說明選項。 這個使用範例使用 NuGet。 Nuspec 是封裝的中繼資料。 Nuspec 被編譯「到 NuPkg 的,並存儲在 NuGet 伺服器中。 當設定按名稱請求包並引用 NuGet 伺服器時,VM 上的巧克力 DSC 資源會抓取該包並為您安裝。 您也可以要求特定版本的封裝。
+從頂部開始,您可以編寫代碼、構建代碼、測試代碼,然後創建一個安裝包。 Chocolatey 可以處理各種類型的安裝封裝，例如 MSI、MSU、ZIP 等。 如果 Chocolatey 的本機功能不能滿足,則 PowerShell 完全有能力進行實際安裝。 將包放入可到達的某個位置 — 包存儲庫。 這個使用範例使用 Azure blob 儲存體帳戶中的公用資料夾，但可以是任何位置。 Chocolatey 可自然搭配 NuGet 伺服器和其他一些工具，一起管理封裝中繼資料。 [這篇文章](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) 說明選項。 使用範例使用 NuGet。 Nuspec 是封裝的中繼資料。 Nuspec 資訊被編譯為 NuPkg 並儲存在 NuGet 伺服器上。 當配置按名稱請求包並引用 NuGet 伺服器時,VM 上的巧克力 DSC 資源會抓取套件並安裝它。 您也可以要求特定版本的封裝。
 
-在圖片的左下角,有一個 Azure 資源管理器範本。 在此使用範例中,VM 擴展將 VM 註冊為 Azure 自動化狀態配置拉取伺服器作為節點。 組態儲存在提取伺服器中。
-實際上,它存儲了兩次:一次為純文本,一次編譯為 MOF 檔。 在 Azure 門戶中,MOF 是「節點配置」(而不是簡單的」配置」。)。 它是與節點關聯的專案,因此節點將瞭解其配置。 下列詳細資料示範如何將節點組態指派給節點。
+在圖片的左下角,有一個 Azure 資源管理器範本。 在此使用範例中,VM 擴展將 VM 註冊為 Azure 自動化狀態配置拉取伺服器作為節點。 配置存儲在拉取伺服器中兩次:一次為純文本,一次編譯為 MOF 檔。 在 Azure 門戶中,MOF 表示節點配置,而不是簡單的配置。 它是與節點關聯的專案,因此節點將瞭解其配置。 下列詳細資料示範如何將節點組態指派給節點。
 
-創建 nuspec、編譯它並將其儲存在 NuGet 伺服器中是一件小事。 您已開始管理 VM。 
+創建 Nuspec、編譯它並將其儲存在 NuGet 伺服器中是一件小事。 您已開始管理 VM。 
 
-採取持續部署的下一步需要設置一次拉取伺服器,註冊節點(一次),並在那裡創建和存儲初始配置。 然後,當包升級並部署到存儲庫時,您只需要根據需要刷新拉取伺服器中的配置和節點配置。 
+採取持續部署的下一步需要設置一次拉取伺服器,一次註冊節點,並在伺服器上創建和存儲初始配置。 升級包並部署到儲存庫后,只需根據需要刷新拉取伺服器上的配置和節點配置。
 
-如果您不是從資源管理器範本開始,則沒關係。 有 PowerShell 可説明您在拉取伺服器和所有其他功能中註冊 VM。 有關詳細資訊,請參閱本文:[由 Azure 自動化狀態設定進行管理的載入電腦](automation-dsc-onboarding.md)。
+如果您不是從資源管理器範本開始,這很好。 有 PowerShell 命令可説明您在拉取伺服器註冊 VM。 有關詳細資訊,請參閱[載入電腦,以便由 Azure 自動化狀態設定進行管理](automation-dsc-onboarding.md)。
 
 ## <a name="about-the-usage-example"></a>關於使用範例
 
@@ -97,31 +95,40 @@ PowerShell 資源庫會自動將 DSC 資源安裝到您的 Azure 自動化帳戶
 
 最近添加到 Azure 門戶的另一種技術允許您提取新模組或更新現有模組。 單擊"自動化帳戶資源"、"資產"磁貼,最後單擊"模組"磁貼。 "流覽庫"圖示允許您查看庫中的模組清單,深入瞭解詳細資訊並最終導入自動化帳戶。 這是讓您的模組隨時保持最新狀態的絕佳方法。 而且，匯入功能會檢查與其他模組的相依性以確保所有模組都保持同步。
 
-或者，您可以使用手動方法。 適用於 Windows 電腦的 PowerShell 整合模組的資料夾結構，與 Azure 自動化所需的資料夾結構稍有不同。
-您需要稍微調整一下。 但是這並不難,而且每個資源只完成一次(除非您希望將來升級它)。有關創作 PowerShell 整合模組的詳細資訊,請參閱本文:為[Azure 自動化創作整合模組](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+或者，您可以使用手動方法。 除非以後要升級,否則每個資源只使用此方法一次。 有關創作 PowerShell 整合模組的詳細資訊,請參閱[為 Azure 自動化撰寫模組](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)。
 
-- 將您需要的模組安裝在工作站，如下所示：
-  - 安裝 [Windows Management Framework v5](https://aka.ms/wmf5latest) (Windows 10 不需安裝)
-  - `Install-Module –Name MODULE-NAME`    <—從 PowerShell 資源庫抓取模組
-- 從 `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` 模組資料夾複製到暫存資料夾
-- 刪除主要資料夾中的範例和文件
-- 壓縮主要資料夾，ZIP 檔案的命名與資料夾完全相同 
-- 將 ZIP 檔案放到可存取的 HTTP 位置，例如 Azure 儲存體帳戶中的 Blob 儲存體。
-- 執行此 PowerShell：
+>[!NOTE]
+>Windows 計算機的 PowerShell 整合模組的資料夾結構與 Azure 自動化預期的資料夾結構略有不同。 
 
-  ```powershell
-  New-AzAutomationModule `
-    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-    -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
-  ```
+1. 安裝[Windows 管理框架 v5(Windows](https://aka.ms/wmf5latest) 10 不需要)。
+
+2. 安裝集成模組。
+
+    ```azurepowershell-interactive
+    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    ```
+
+3. 將模組資料夾從**c:\程式檔案\WindowsPowerShell_Module_MODULE-NAME**複製到暫存資料夾。
+
+4. 從主資料夾中刪除範例和文件。
+
+5. 壓縮主資料夾,使用資料夾的名稱命名 ZIP 檔。
+
+6. 將 ZIP 檔放入可存取的 HTTP 位置,例如 Azure 儲存帳戶中的 Blob 儲存。
+
+7. 執行下列命令。
+
+    ```azurepowershell-interactive
+    New-AzAutomationModule `
+      -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
+      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+    ```
 
 包含的範例為 cChoco 和 xNetworking 實現這些步驟。 
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>步驟 4: 將節點配置加入到拉取伺服器
 
-第一次將組態匯入到提取伺服器並編譯，並沒有什麼特殊之處。 所有以後導入或編譯相同配置的外觀完全相同。 每次更新封裝且需要向外推送到生產環境時，在確定組態檔正確之後 (包括封裝的新版本)，就會執行此步驟。 組態檔和 PowerShell 如下：
-
-ISVBoxConfig.ps1：
+第一次將組態匯入到提取伺服器並編譯，並沒有什麼特殊之處。 所有以後導入或編譯相同配置的外觀完全相同。 每次更新封裝且需要向外推送到生產環境時，在確定組態檔正確之後 (包括封裝的新版本)，就會執行此步驟。 這裡是設定檔**ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -166,7 +173,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-新設定文稿.ps1(修改為使用 Az 模組):
+下面是**新設定文稿.ps1**文稿(修改為使用 Az 模組):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
@@ -185,7 +192,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-這些步驟導致在拉取伺服器上放置名為"ISVBoxConfig.isvbox"的新節點配置。 節點配置名稱生成為"配置名稱.nodename"。
+這些步驟導致將名為**ISVBoxConfig.isvbox**的新節點配置放置在拉取伺服器上。 節點設定名稱作為 生`configurationName.nodeName`成 。
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>第 5 步:建立與維護套件中繼資料
 
@@ -205,9 +212,10 @@ Get-AzAutomationDscCompilationJob `
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需概觀，請參閱 [Azure 自動化狀態設定](automation-dsc-overview.md)
-- 若要開始使用，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)
-- 若要了解如何編譯 DSC 組態，以將它們指派給目標節點，請參閱[編譯 Azure Automation State Configuration 中的組態](automation-dsc-compile.md)
-- 如需 PowerShell Cmdlet 參考，請參閱 [Azure 自動化狀態設定 Cmdlet](/powershell/module/azurerm.automation/#automation)
-- 如需定價資訊，請參閱 [Azure 自動化狀態設定的定價](https://azure.microsoft.com/pricing/details/automation/)
-- 若要查看在持續部署管線中使用 Azure 自動化狀態設定的範例，請參閱[使用 Azure 自動化狀態設定和 Chocolatey 的持續部署](automation-dsc-cd-chocolatey.md)
+- 有關概述,請參閱[Azure 自動化狀態設定](automation-dsc-overview.md)。
+- 要開始,請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
+- 要瞭解如何編譯 DSC 設定以便將它們分配給目標節點,請參閱[在 Azure 自動化狀態設定中編譯設定](automation-dsc-compile.md)。
+- 有關 PowerShell cmdlet 引用,請參閱[Az.自動化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
+- 有關定價資訊,請參閱[Azure 自動化狀態設定定價](https://azure.microsoft.com/pricing/details/automation/)。
+- 要檢視在連續部署導管中使用 Azure 自動化狀態設定的範例,請參考[Azure 自動化狀態設定進行持續部署和巧克力](automation-dsc-cd-chocolatey.md)。

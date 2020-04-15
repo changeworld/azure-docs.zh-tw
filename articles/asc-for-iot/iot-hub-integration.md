@@ -1,6 +1,6 @@
 ---
-title: 開始使用 Azure 安全中心進行 IoT 內置 IoT 中心整合服務*微軟文檔
-description: 開始使用適用于 IoT 服務的 Azure 安全中心的內置工作流。
+title: 沒有安全代理服務
+description: 開始使用適用於 IoT 服務的 Azure 安全中心的內建工作流。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,30 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: ef2affcd0cf7f6bd0a8ef0ec2dbc0244a971a57e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 175ed3b06e9d2b0293dd6c72e9a0713ca01be4a3
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600510"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310897"
 ---
-# <a name="get-started-with-built-in-iot-hub-integration"></a>開始內置 IoT 中心集成 
+# <a name="get-started-with-built-in-iot-hub-integration"></a>開始內建物聯網中心整合
 
 此選項使您能夠不使用 Azure 安全中心進行 IoT 安全代理使用服務。
 
-## <a name="enable-built-in-iot-hub-integration"></a>實現內置 IoT 中心集成
-要啟用監視設備標識管理、設備到雲和雲到設備通訊模式，請執行以下操作以啟動服務： 
+## <a name="enable-built-in-iot-hub-integration"></a>實現內建 IoT 中心整合
 
-1. 打開**IoT 中心**。
-1. 選擇 **"安全概述"** 功能表。 
-1. 按一下 **"保護您的 IoT 解決方案**並填寫入職表單"。 
+要啟用監視裝置識別管理、裝置到雲端和雲端到裝置通訊模式,請執行以下操作以啟動服務:
 
-恭喜！ 您已完成在 IoT 中心啟用 IoT 服務的 Azure 安全中心。 
+1. 開啟**IoT 中心**。
+1. 選擇 **「安全概述」** 選單。
+1. 按下 **「保護您的 IoT 解決方案**並填寫入職表單」。
+
+恭喜！ 您已完成在 IoT 中心啟用 IoT 服務的 Azure 安全中心。
 
 ## <a name="next-steps"></a>後續步驟
 
-
-- 配置[解決方案](quickstart-configure-your-solution.md)
+- 設定[解決方案](quickstart-configure-your-solution.md)
 - [建立安全性模組](quickstart-create-security-twin.md)
-- 配置[自訂警報](quickstart-create-custom-alerts.md)
-
+- 設定[自訂警示](quickstart-create-custom-alerts.md)

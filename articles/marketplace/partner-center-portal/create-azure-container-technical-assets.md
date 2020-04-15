@@ -1,5 +1,5 @@
 ---
-title: 準備 Azure 容器技術資產
+title: 建立 Azure VM 技術資產
 description: 本文介紹了在 Azure 應用商店上配置容器產品提供的步驟和要求。
 author: anbene
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 62c77681accb19183b5e8aa3ae8d80c225b2d284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266015"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383734"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>準備 Azure 容器技術資產
+# <a name="create-an-azure-vm-technical-asset"></a>建立 Azure VM 技術資產
 
 > [!IMPORTANT]
 > 我們將 Azure 容器產品的管理從雲端合作夥伴門戶遷移到合作夥伴中心。 在遷移產品/服務之前,請按照雲合作夥伴門戶[準備容器技術資產](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets)以管理優惠的說明進行操作。

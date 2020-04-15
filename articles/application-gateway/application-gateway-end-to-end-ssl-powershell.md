@@ -1,26 +1,26 @@
 ---
-title: 以 Azure 應用程式閘道設定端對端 SSL
-description: 本文說明如何使用 PowerShell 以 Azure 應用程式閘道設定端對端 SSL
+title: 使用 Azure 應用程式閘道設定端到端 TLS
+description: 本文介紹如何使用 PowerShell 使用 Azure 應用程式閘道配置端到端 TLS
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286462"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312506"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 以應用程式閘道設定端對端 SSL
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>使用與 PowerShell 使用應用程式閘道來設定端到端 TLS
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-Azure 應用程式閘道支援為流量進行端對端加密。 應用程式閘道會在應用程式閘道終止 SSL 連線。 閘道接著會對流量套用路由規則、重新加密封包，並根據所定義的路由規則將封包轉送至適當的後端伺服器。 任何來自 Web 伺服器的回應都會經歷相同的程序而回到使用者端。
+Azure 應用程式閘道支援為流量進行端對端加密。 應用程式閘道在應用程式閘道終止 TLS/SSL 連接。 閘道接著會對流量套用路由規則、重新加密封包，並根據所定義的路由規則將封包轉送至適當的後端伺服器。 任何來自 Web 伺服器的回應都會經歷相同的程序而回到使用者端。
 
-應用程式閘道支援定義自訂 SSL 選項。 它也支援停用下列通訊協定版本；**TLSv1.0**、**TLSv1.1** 和 **TLSv1.2**，也會定義要使用那個加密套件以及偏好的順序。 若要深入了解可設定的 SSL 選項，請參閱 [SSL 原則概觀](application-gateway-SSL-policy-overview.md)。
+應用程式閘道支援定義自訂 TLS 選項。 它也支援停用下列通訊協定版本；**TLSv1.0**、**TLSv1.1** 和 **TLSv1.2**，也會定義要使用那個加密套件以及偏好的順序。 要瞭解有關可設定 TLS 選項的詳細資訊,請參閱[TLS 策略概述](application-gateway-SSL-policy-overview.md)。
 
 > [!NOTE]
 > 預設會停用 SSL 2.0 和 SSL 3.0，並且無法啟用。 這些版本被認為並不安全，因此不能搭配應用程式閘道使用。
@@ -29,22 +29,22 @@ Azure 應用程式閘道支援為流量進行端對端加密。 應用程式閘�
 
 ## <a name="scenario"></a>狀況
 
-在此案例中，您將了解如何使用 PowerShell 來建立使用端對端 SSL 的應用程式閘道。
+在此方案中,您將瞭解如何使用 PowerShell 的端到端 TLS 來創建應用程式閘道。
 
 此案例將會：
 
 * 創建名為**appgw-rg**的資源組。
 * 建立名為 **appgwvnet** 且具有 **10.0.0.0/16** 位址空間的虛擬網路。
 * 建立名為 **appgwsubnet** 和 **appsubnet** 的兩個子網路。
-* 建立支援端對端 SSL 加密 (限制 SSL 通訊協定版本和加密套件) 的小型應用程式閘道。
+* 創建支援端到端 TLS 加密的小型應用程式閘道,以限制 TLS 協定版本和密碼套件。
 
 ## <a name="before-you-begin"></a>開始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要對應用程式閘道設定端對端 SSL，則需要閘道憑證和後端伺服器憑證。 閘道憑證用來根據 SSL 通訊協定規格衍生對稱金鑰。 接下來，對稱金鑰可以用來加密和解密傳送至閘道的流量。 閘道憑證必須採用「個人資訊交換」(PFX) 格式。 此檔案格式可允許將私密金鑰匯出，而應用程式閘道需要這個匯出的金鑰來執行流量的加密和解密。
+要使用應用程式閘道配置端到端 TLS,閘道需要證書,後端伺服器需要證書。 閘道憑證用於根據 TLS 協定規範派生對稱密鑰。 接下來，對稱金鑰可以用來加密和解密傳送至閘道的流量。 閘道憑證必須採用「個人資訊交換」(PFX) 格式。 此檔案格式可允許將私密金鑰匯出，而應用程式閘道需要這個匯出的金鑰來執行流量的加密和解密。
 
-對於端到端 SSL 加密，應用程式閘道必須顯式允許後端。 將後端伺服器的公開憑證上傳至應用程式閘道。 新增憑證可確保應用程式閘道只會與已知的後端執行個體通訊。 這會進而保護端對端通訊。
+對於端到端 TLS 加密,應用程式閘道必須顯式允許後端。 將後端伺服器的公開憑證上傳至應用程式閘道。 新增憑證可確保應用程式閘道只會與已知的後端執行個體通訊。 這會進而保護端對端通訊。
 
 下列各節將說明設定程序。
 
@@ -154,20 +154,20 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > 此範例會設定 SSL 連接所使用的憑證。 憑證必須是 .pfx 格式，而密碼則必須介於 4 到 12 個字元。
+   > 此範例設定用於 TLS 連接的憑證。 憑證必須是 .pfx 格式，而密碼則必須介於 4 到 12 個字元。
 
-6. 建立應用程式閘道的 HTTP 接聽程式。 指派要使用的前端 IP 設定、連接埠和 SSL 憑證。
+6. 建立應用程式閘道的 HTTP 接聽程式。 配置要使用的前端 IP 配置、埠和 TLS/SSL 憑證。
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. 上傳要在已啟用 SSL 的後端集區資源上使用的憑證。
+7. 上傳要在啟用 TLS 的後端池資源上使用的證書。
 
    > [!NOTE]
-   > 預設探查可從後端 IP 位址上的*預設* SSL 繫結取得公開金鑰，並將所收到的公開金鑰值與您在此處提供的公開金鑰值做比較。 
+   > 默認探測器從後端 IP 位址上的*預設*TLS 綁定獲取公開金鑰,並將它收到的公開金鑰值與您在此處提供的公開金鑰值進行比較。 
    > 
-   > 如果您在後端上使用主機標頭和伺服器名稱指示 (SNI)，擷取的公開金鑰不一定就是流量要流向的預定網站。 如果不能確定，請在後端伺服器造訪 https://127.0.0.1/ 以確認要將哪一個憑證用於*預設* SSL 繫結。 請使用來自本節該要求的公開金鑰。 如果您在 HTTPS 繫結上使用主機標頭和 SNI，且並未從對於後端伺服器上 https://127.0.0.1/ 的手動瀏覽器要求收到回應和憑證，您必須在後端伺服器上設定預設 SSL 繫結。 如果您未這麼做，探查將會失敗，而且後端不會加入允許清單。
+   > 如果您在後端上使用主機標頭和伺服器名稱指示 (SNI)，擷取的公開金鑰不一定就是流量要流向的預定網站。 如果您有疑問,請造https://127.0.0.1/訪 後端伺服器以確認哪個證書用於*預設*TLS 綁定。 請使用來自本節該要求的公開金鑰。 如果您在 HTTPS 綁定上使用主機標頭和 SNI,並且未收到從手動https://127.0.0.1/瀏覽器請求到 後端伺服器上的回應和證書,則必須在它們上設置預設 TLS 綁定。 如果您未這麼做，探查將會失敗，而且後端不會加入允許清單。
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > [!NOTE]
    > 上一步中提供的證書應該是後端存在的 .pfx 證書的公開金鑰。 將安裝在後端伺服器上的憑證 (非根憑證) 以「宣告、證據和推論」(CER) 格式匯出，並將它用於此步驟。 此步驟會將後端加入到應用程式閘道的允許清單。
 
-   如果您使用「應用程式閘道 v2 SKU」，則請建立受信任的根憑證，而不是建立驗證憑證。 如需詳細資訊，請參閱[應用程式閘道端對端 SSL 的概觀](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)：
+   如果您使用「應用程式閘道 v2 SKU」，則請建立受信任的根憑證，而不是建立驗證憑證。 有關詳細資訊,請參閱[使用應用程式閘道的端到端 TLS 概述](ssl-overview.md#end-to-end-tls-with-the-v2-sku):
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -200,7 +200,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. 設定應用程式閘道的執行個體大小。 可用大小是 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  對於容量，可用值為**1**到**10**。
+10. 設定應用程式閘道的執行個體大小。 可用大小是 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  對容量,可用值為**1**到**10**。
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -209,7 +209,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
     > [!NOTE]
     > 若要進行測試，可以選擇執行個體計數 1。 請務必了解 SLA 不涵蓋任何低於兩個執行個體的執行個體計數，因此不建議使用。 小型閘道適用於開發測試，不適合在生產環境中使用。
 
-11. 設定要在應用程式閘道上使用的 SSL 原則。 應用程式閘道支援將 SSL 通訊協定版本設為最小版本的能力。
+11. 配置要在應用程式閘道上使用的 TLS 策略。 應用程式閘道支援為 TLS 協定版本設定最小版本的能力。
 
     下列值是可以定義的通訊協定版本清單：
 
@@ -227,19 +227,19 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 
 使用上述所有步驟建立應用程式閘道。 建立閘道的執行過程需要很長一段時間。
 
-對於 V1 SKU，請使用以下命令
+對於 V1 SKU,請使用以下命令
 ```powershell
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-對於 V2 SKU，請使用以下命令
+對於 V2 SKU,請使用以下命令
 ```powershell
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
 ```
 
-## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果後端證書已過期，則應用新證書
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>如果後端憑證已過期,則應用新證書
 
-如果後端證書已過期，請使用此過程應用新證書。
+如果後端憑證已過期,請使用此過程應用新證書。
 
 1. 擷取要更新的應用程式閘道。
 
@@ -247,33 +247,33 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 從 .cer 檔添加新的證書資源，該檔包含證書的公開金鑰，也可以與添加到攔截器以在應用程式閘道進行 SSL 終止的證書相同。
+2. 從 .cer 檔添加新的證書資源,該檔包含證書的公開金鑰,也可以與添加到偵聽器以在應用程式閘道進行 TLS 終止的憑證相同。
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. 將新的身份驗證憑證物件放入變數（類型名稱：Microsoft.Azure.命令.網路.模型.PS應用程式閘道身份驗證憑證）。
+3. 將新的身份驗證證書物件放入變數(類型名稱:Microsoft.Azure.命令.網路.模型.PS應用程式閘道身份驗證證書)。
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
    ```
  
- 4. 將新證書分配給**BackendHttp**設置，並將其與$AuthCert變數引用。 （指定要更改的 HTTP 設置名稱。
+ 4. 將新證書分配給**BackendHTTP**設置,並將其與$AuthCert變數引用。 ( 指定要變更的 HTTP 設定名稱。
  
    ```powershell
    $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
    ```
     
- 5. 將更改提交到應用程式閘道，並將包含的新配置傳遞到$out變數中。
+ 5. 將更改提交到應用程式閘道,並將包含的新配置傳遞到$out變數中。
  
    ```powershell
    Set-AzApplicationGateway -ApplicationGateway $gw  
    ```
 
-## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>從 HTTP 設置中刪除未使用的過期證書
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>從 HTTP 設定中移除未使用的過期憑證
 
-使用此過程從 HTTP 設置中刪除未使用的過期證書。
+使用此過程從 HTTP 設定中刪除未使用的過期證書。
 
 1. 擷取要更新的應用程式閘道。
 
@@ -281,13 +281,13 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. 列出要刪除的身份驗證憑證的名稱。
+2. 列出要刪除的身份驗證證書的名稱。
 
    ```powershell
    Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
    ```
     
-3. 從應用程式閘道中刪除身份驗證憑證。
+3. 從應用程式閘道中刪除身份驗證證書。
 
    ```powershell
    $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
@@ -300,9 +300,9 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>限制現有應用程式閘道上的 SSL 通訊協定版本
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>限制現有應用程式閘道上的 TLS 協定版本
 
-上述步驟會引導您建立具有端對端 SSL 的應用程式並停用特定的 SSL 通訊協定版本。 下列範例會停用現有應用程式閘道上的特定 SSL 原則。
+前面的步驟通過創建具有端到端 TLS 的應用程式並禁用某些 TLS 協定版本來完成。 以下範例禁用現有應用程式閘道上的某些 TLS 策略。
 
 1. 擷取要更新的應用程式閘道。
 
@@ -310,14 +310,14 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. 定義 SSL 原則。 在下列範例中，會停用 **TLSv1.0** 和 **TLSv1.1**，且只有 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, and **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** 是允許的加密套件。
+2. 定義 TLS 策略。 在下列範例中，會停用 **TLSv1.0** 和 **TLSv1.1**，且只有 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, and **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** 是允許的加密套件。
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. 最後，更新閘道。 此最後一個步驟是漫長的工作。 完成時，應用程式閘道上便已設定端對端 SSL。
+3. 最後，更新閘道。 此最後一個步驟是漫長的工作。 完成後,在應用程式閘道上配置端到端 TLS。
 
    ```powershell
    $gw | Set-AzApplicationGateway
@@ -327,7 +327,7 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 
 建立閘道之後，下一步是設定通訊的前端。 使用公用 IP 時，應用程式閘道需要動態指派的 DNS 名稱 (不易記住)。 為了確保使用者可以叫用應用程式閘道，可使用 CNAME 記錄來指向應用程式閘道的公用端點。 如需詳細資訊，請參閱[在 Azure 中設定自訂網域名稱](../cloud-services/cloud-services-custom-domain-name-portal.md)。 
 
-要配置別名，請使用附加到應用程式閘道的**PublicIP位址**元素檢索應用程式閘道及其關聯的 IP/DNS 名稱的詳細資訊。 使用應用程式閘道的 DNS 名稱所建立的 CNAME 記錄，可將兩個 Web 應用程式指向此 DNS 名稱。 不建議使用 A-records，因為重新啟動應用程式閘道時，VIP 可能會變更。
+要配置別名,請使用附加到應用程式閘道的**PublicIP 位址**元素檢索應用程式閘道及其關聯的 IP/DNS 名稱的詳細資訊。 使用應用程式閘道的 DNS 名稱所建立的 CNAME 記錄，可將兩個 Web 應用程式指向此 DNS 名稱。 不建議使用 A-records，因為重新啟動應用程式閘道時，VIP 可能會變更。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

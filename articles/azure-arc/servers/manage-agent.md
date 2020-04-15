@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528579"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308963"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理並維護連線的電腦代理
 
@@ -113,6 +113,78 @@ Windows 和 Linux 的 Azure 連接電腦代理可以手動或自動升級到最�
 
 [zypper](https://en.opensuse.org/Portal:Zypper)指令的操作 (如套件的安裝與刪除)會記錄在紀錄檔`/var/log/zypper.log`中 。 
 
+## <a name="about-the-azcmagent-tool"></a>關於阿茲cmagent工具
+
+Azcmagent 工具 (Azcmagent.exe) 用於在安裝過程中為伺服器(預覽)連接的電腦代理設定 Azure Arc,或在安裝後修改代理的初始配置。 Azcmagent.exe 提供指令列參數以自訂代理並查看其狀態:
+
+* **連線**- 將電腦連線到 Azure 弧線
+
+* **離線**- 斷開電腦與 Azure 弧的連線
+
+* **重新連線**- 將斷線連接的電腦重新連線到 Azure 弧
+
+* **顯示**- 查看代理狀態及其配置屬性(資源組名稱、訂閱 ID、版本等),這些屬性在解決代理問題時會有所説明。
+
+* **-h 或 -- 說明**- 顯示可用的指令列參數
+
+    例如,要檢視 **「重新連線**」參數的詳細說明,請`azcmagent reconnect -h`鍵入 。 
+
+* **-v 或 - 詳細**- 開啟詳細紀錄記錄
+
+您可以在互動登入時手動執行**連接**、**斷開連線**和**重新連接**,或者使用用於將多個代理或 Microsoft 識別平台[存取權杖](../../active-directory/develop/access-tokens.md)的同一服務主體自動執行。 如果未使用服務主體將計算機註冊到 Azure Arc 伺服器(預覽),請參閱以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)以創建服務主體。
+
+### <a name="connect"></a>連線
+
+這裡指定 Azure 資源管理員中代表在 Azure 中建立電腦的資源。 資源位於指定的訂閱和資源組中,有關計算機的數據存儲在`--location`設置指定的 Azure 區域中。 如果未指定,預設資源名稱是此電腦的主機名。
+
+然後,在本地下載並存儲與機器的系統分配標識對應的證書。 完成此步驟後,Azure 連接的計算機元數據服務和來賓配置代理將開始與伺服器的 Azure Arc 同步(預覽)。
+
+要使用服務主體進行連接,請運行以下命令:
+
+`azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+要使用存取權杖進行連線,請執行以下指令:
+
+`azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+要使用提升的登入認證(互動式)進行連接,請執行以下命令:
+
+`azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
+
+### <a name="disconnect"></a>中斷連接
+
+此參數指定 Azure 資源管理員中表示在 Azure 中刪除電腦的資源。 它不會從電腦中刪除代理,這必須作為單獨的步驟完成。 斷開電腦後,如果要將其重新註冊到伺服器 Azure Arc(預覽),`azcmagent connect`請使用 ,以便在 Azure 中為其創建新資源。
+
+要使用服務主體斷開連接,請運行以下命令:
+
+`azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+要使用存取權杖斷連線,請執行以下指令:
+
+`azcmagent disconnect --access-token <accessToken>`
+
+要斷開與提升的登入認證(互動式)的連線,請執行以下命令:
+
+`azcmagent disconnect --tenant-id <tenantID>`
+
+### <a name="reconnect"></a>重新連接
+
+此參數將已註冊或連接的電腦與伺服器 Azure Arc 重新連接(預覽)。 如果機器已關閉至少 45 天,其證書過期,則可能需要這樣做。 此參數使用提供的身份驗證選項來檢索對應於表示此計算機的 Azure 資源管理器資源的新認證。
+
+此命令需要比[Azure 連接的電腦載入](overview.md#required-permissions)角色更高的許可權。
+
+要使用服務主體重新連接,請運行以下命令:
+
+`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
+
+要使用存取權杖重新連線,請執行以下指令:
+
+`azcmagent reconnect --access-token <accessToken>`
+
+要重新連接已提升的登入認證(互動式),請執行以下命令:
+
+`azcmagent reconnect --tenant-id <tenantID>`
+
 ## <a name="remove-the-agent"></a>移除代理程式
 
 執行以下方法之一,從電腦卸載 Windows 或 Linux 連接的電腦代理。 刪除代理不會將電腦與 Arc 登出為伺服器(預覽),這是當您不再需要在 Azure 中管理電腦時執行的單獨過程。
@@ -184,7 +256,7 @@ Windows 和 Linux 的 Azure 連接電腦代理可以手動或自動升級到最�
 
 ## <a name="unregister-machine"></a>取消註冊電腦
 
-如果計劃停止使用 Azure 中的支援服務管理電腦,請執行以下步驟,將電腦與 Arc 登出以用於伺服器(預覽)。 您可以在從機器中刪除已連接的電腦代理之前或之後執行這些步驟。
+如果計劃停止使用 Azure 中的支援服務管理電腦,請執行以下步驟,將電腦與 Arc 登出以用於伺服器(預覽)。 您可以在從電腦中刪除已連接的電腦代理之前或之後執行這些步驟。
 
 1. 移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)來開啟適用於伺服器的 Azure Arc (預覽)。
 

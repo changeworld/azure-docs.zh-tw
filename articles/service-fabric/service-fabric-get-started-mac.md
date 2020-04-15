@@ -1,16 +1,16 @@
 ---
-title: 在 macOS 上設置開發環境
-description: 安裝執行階段、SDK 和工具，並建立本機開發叢集。 完成此設置後，即可在 macOS 上構建應用程式。
+title: 在 macOS 上設定開發環境
+description: 安裝執行階段、SDK 和工具，並建立本機開發叢集。 完成此設置後,即可在 macOS 上構建應用程式。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e278bcedc48226a59f258ad7d7064fa224737496
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722572"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308993"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上設定開發環境
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     
     >[!NOTE]
     >
-    >建議直接在 Docker 中修改守護進程，因為守護進程.json 檔的位置可能因電腦而異。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
+    >建議直接在 Docker 中修改守護程式,因為守護行程.json 檔案的位置可能因電腦而異。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
     >
 
     >[!TIP]
@@ -57,7 +57,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
 2. 在新目錄中建立一個名為 `Dockerfile` 的檔案，以建置 Service Fabric 映像：
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -76,7 +76,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     >例如，新增 `RUN apt-get install nodejs -y` 將允許以客體可執行檔形式支援 `nodejs` 應用程式。
     
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 有關特定修訂，請訪問 Docker[中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 有關特定修訂,請造訪 Docker[中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
 
 3. 若要從 `Dockerfile` 建置可重複使用的映像，請開啟終端機並 `cd` 到直接保留的 `Dockerfile`，然後執行：
 
@@ -98,10 +98,10 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     >
     >如果您的應用程式正在特定連接埠上接聽，這些連接埠就必須使用額外的 `-p` 標籤來加以指定。 例如，如果您的應用程式正在連接埠 8080 上接聽，請新增下列 `-p` 標籤：
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 叢集需要一些時間來啟動。 運行時，可以使用以下命令查看日誌，也可以跳轉到儀表板以查看群集運行狀況[http://localhost:19080](http://localhost:19080)：
+5. 叢集需要一些時間來啟動。 執行時,可以使用以下指令檢視日誌,也可以跳轉到儀表板以檢視群組執行狀況[http://localhost:19080](http://localhost:19080):
 
     ```bash 
     docker logs sftestcluster
@@ -197,7 +197,7 @@ Azure Service Fabric 會針對 Java IDE 提供 Eclipse Neon (或更新版本) �
 最後一個步驟是使用與您的主機共用的路徑將容器具現化。 外掛程式需要這種類型的具現化，才能在您的 Mac 上使用 Docker 容器。 例如：
 
 ```bash
-docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
+docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
 ```
 
 屬性的定義如下：
@@ -214,7 +214,7 @@ docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:
 ## <a name="next-steps"></a>後續步驟
 <!-- Links -->
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
-* [使用 Eclipse 的服務交換矩陣外掛程式在 Linux 上創建和部署第一個 Service Fabric JAVA 應用程式](service-fabric-get-started-eclipse.md)
+* [使用 Eclipse 服務交換矩陣外掛程式在 Linux 建立並部署第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)
 * [在 Azure 入口網站中建立 Service Fabric 叢集](service-fabric-cluster-creation-via-portal.md)
 * [使用 Azure Resource Manager 來建立 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)
 * [了解 Service Fabric 應用程式模型](service-fabric-application-model.md)

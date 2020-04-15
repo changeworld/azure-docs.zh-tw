@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c718b9a66b378044618c8c52eec3a1a498ace83c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410943"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383212"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>將機器上架交由 Azure Automation State Configuration 管理
 
@@ -39,6 +39,9 @@ Azure Automation State Configuration 可以用來管理各種不同的機器：
 > 如果已安裝的 Azure VM 所需狀態配置擴展版本大於 2.70,則包含使用 Azure 自動化狀態配置管理 Azure VM 不收取額外費用。 有關詳細資訊,請參閱[**自動化定價頁**](https://azure.microsoft.com/pricing/details/automation/)。
 
 本文的以下各節概述了如何將上面列出的計算機板載到 Azure 自動化狀態配置。
+
+>[!NOTE]
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
 
 ## <a name="onboarding-azure-vms"></a>載入 Azure VM
 
@@ -280,15 +283,15 @@ Azure 自動化狀態設定允許您使用 Azure 門戶、Azure 資源管理器�
 如果 PowerShell DSC LCM 預設值與您的用例匹配,並且您希望將電腦從 Azure 自動化狀態配置中拉出並報告,則可以更簡單地使用 Azure 自動化 cmdlet 生成所需的 DSC 元配置。
 
 1. 在本地環境中的電腦上以管理員身份打開 PowerShell 主控台或 VSCode。
-2. 使用 `Connect-AzAccount` 連線到 Azure Resource Manager
+2. 使用[連接-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)連接到 Azure 資源管理員。
 3. 從要在其中設置節點的自動化帳戶下載要上載的計算機的 PowerShell DSC 元配置。
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
-       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
-       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation account
+       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation account where you want a node on-boarded to
+       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the metaconfiguration will be generated for
        OutputFolder = "$env:UserProfile\Desktop\";
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
@@ -296,7 +299,7 @@ Azure 自動化狀態設定允許您使用 Azure 門戶、Azure 資源管理器�
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. 現在應該有一個名為**DscMetaConfigs 的**資料夾,其中包含用於已上載電腦的 PowerShell DSC 元配置(作為管理員)。
+1. 現在,您應該有一個**DscMetaConfigs**資料夾,其中包含用於已上載電腦的PowerShell DSC元配置(作為管理員)。
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -325,7 +328,7 @@ Azure 自動化狀態設定允許您使用 Azure 門戶、Azure 資源管理器�
 
 - **對 DSC LCM 值的更改。** 您可能需要更改在節點初始註冊期間設置的[PowerShell DSC LCM](/powershell/scripting/dsc/managing-nodes/metaConfig4)`ConfigurationMode`值,例如。 目前,您只能通過重新註冊來更改這些 DSC 代理值。 一個例外是分配給節點的節點配置值。 您可以在 Azure 自動化 DSC 中直接更改此更改。
 
-您可以使用本文檔中描述的任何載入方法,以最初註冊節點的方式重新註冊節點。 在重新註冊節點之前,不需要從 Azure 自動化狀態配置中取消註冊節點。
+您可以使用本文檔中描述的任何載入方法重新註冊節點,就像最初註冊節點一樣。 在重新註冊節點之前,不需要從 Azure 自動化狀態配置中取消註冊節點。
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>疑難排解 Azure 虛擬機器上架
 
@@ -347,6 +350,7 @@ Azure Automation State Configuration 可讓您輕鬆地將 Azure Windows VM 上�
 
 - 要開始,請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
 - 要瞭解如何編譯 DSC 設定以便將它們分配給目標節點,請參閱[在 Azure 自動化狀態設定中編譯設定](automation-dsc-compile.md)。
-- 有關 PowerShell cmdlet 引用,請參閱[Azure 自動化狀態設定 cmdlet](/powershell/module/az.automation#automation)。
+- 有關 PowerShell cmdlet 引用,請參閱[Az.自動化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。
 - 有關定價資訊,請參閱[Azure 自動化狀態設定定價](https://azure.microsoft.com/pricing/details/automation/)。
 - 有關在連續部署導管中使用 Azure 自動化狀態設定的範例,請參閱[使用範例:使用 Azure 自動化狀態設定對虛擬機器的連續部署和巧克力](automation-dsc-cd-chocolatey.md)。

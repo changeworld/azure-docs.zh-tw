@@ -1,24 +1,25 @@
 ---
 title: 建立管理群組以組織資源 - Azure 治理
 description: 了解如何使用入口網站、Azure PowerShell 和 Azure CLI 建立 Azure 管理群組來管理多個資源。
-ms.date: 12/18/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273183"
+ms.locfileid: "81381592"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>建立用於資源組織及管理的管理群組
 
 管理群組是可協助您跨多個訂用帳戶管理容器存取、原則及合規性的容器。 建立這些容器來建置可與 [Azure 原則](../policy/overview.md)和 [Azure 角色型存取控制](../../role-based-access-control/overview.md)搭配使用的高效率階層。 如需有關管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](overview.md)。
 
-在目錄中建立的第一個管理群組可能需要 15 分鐘的時間才能完成。 第一次在 Azure 中設定目錄的管理群組服務時會執行一些程序。 程序完成時，您會收到通知。 有關詳細資訊,請參閱[管理群組的初始設定](./overview.md#initial-setup-of-management-groups)。 
+在目錄中建立的第一個管理群組可能需要 15 分鐘的時間才能完成。 第一次在 Azure 中設定目錄的管理群組服務時會執行一些程序。 程序完成時，您會收到通知。 有關詳細資訊,請參閱[管理群組的初始設定](./overview.md#initial-setup-of-management-groups)。
 
 ## <a name="create-a-management-group"></a>建立管理群組
 
-租戶中的任何 Azure AD 使用者可以創建管理組,而無需分配給該使用者的管理組寫入許可權。  此新管理組將是根管理組的子組,建立者將獲得"擁有者"角色分配。 管理組服務允許此功能,因此在根級別不需要角色分配。 創建根管理組時,沒有使用者有權訪問該組。  為了避免找到 Azure AD 全域管理員開始使用管理組的障礙,我們允許在根級別創建初始管理組。      
+租戶中的任何 Azure AD 使用者可以創建管理組,而無需分配給該使用者的管理組寫入許可權。 此新管理組將是根管理組的子組,建立者將獲得"擁有者"角色分配。 管理組服務允許此功能,因此在根級別不需要角色分配。 創建根管理組時,沒有使用者有權訪問該組。 為了避免找到 Azure AD 全域管理員開始使用管理群組的障礙,我們允許在根目錄創建初始管理群組  
+水準。
 
 可以使用門戶、[資源管理器範本](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell或 Azure CLI 創建管理組。
 
@@ -34,14 +35,15 @@ ms.locfileid: "81273183"
 
 1. 選擇 **= 新增管理群組**。
 
-   ![使用管理群組的頁面](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="使用管理群組的頁面" border="false":::
 
 1. 填寫管理群組識別碼欄位。
 
    - [管理群組識別碼]**** 是用來在此管理群組上提交命令的目錄唯一識別碼。 此識別碼在建立後即無法編輯，因為整個 Azure 系統會使用它來識別此群組。 [根管理組](overview.md#root-management-group-for-each-directory)使用 Azure 活動目錄 ID 的 ID 自動建立。 對於所有其他管理組,分配唯一 ID。
-   - [顯示名稱] 欄位是顯示在 Azure 入口網站內的名稱。 在建立管理群組時，不同的顯示名稱是選擇性欄位，並且可以隨時進行變更。  
+   - [顯示名稱] 欄位是顯示在 Azure 入口網站內的名稱。 建立管理群組時,單獨的顯示名稱是可選欄位,可在任何  
+     時間的多個數列。
 
-   ![建立新的管理群組的選項窗格](./media/create_context_menu.png)  
+   :::image type="content" source="./media/create_context_menu.png" alt-text="建立新的管理群組的選項窗格" border="false":::
 
 1. 選取 [儲存]  。
 
@@ -94,8 +96,8 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 若要深入了解管理群組，請參閱：
 
-- [建立管理群組以組織 Azure 資源](create.md)
-- [如何變更、刪除或管理您的管理群組](manage.md)
+- [建立管理群組以組織 Azure 資源](./create.md)
+- [如何變更、刪除或管理您的管理群組](./manage.md)
 - [檢閱 Azure PowerShell 資源模組中的管理群組](/powershell/module/az.resources#resources)
 - [檢閱 REST API 中的管理群組](/rest/api/resources/managementgroups)
 - [檢閱 Azure CLI 中的管理群組](/cli/azure/account/management-group)

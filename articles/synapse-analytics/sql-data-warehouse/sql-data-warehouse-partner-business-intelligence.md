@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256003"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313697"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure 同步分析商業智慧合作夥伴
 
@@ -38,6 +38,7 @@ ms.locfileid: "81256003"
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense 是全方位的「商業智慧」軟體，隨附企業進行資料分析和視覺化所需的工具：高效能分析資料庫、可結合多個來源的功能、簡易資料擷取 (ETL) 及 Web 式資料視覺化。 立即使用 SiSense BI 和分析來開始分析和視覺化大型資料集。 |[產品頁面](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau 的自助服務分析可説明任何人查看和理解其數據,包括從平面文件到資料庫的多種數據。 Tableau 具有 Synapse SQL 池的本機優化連接器,支援即時數據和記憶體分析。 |[產品頁面](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**塔吉特 (決策套件)**<br>Targit Decision Suite 提供 BI 和分析平台，以單一且一致的解決方案提供即時儀表板、自助分析、方便使用的報告、令人讚嘆的行動功能和簡單的資料探索技術。 Targit 帶給企業行動的勇氣。 |[產品頁面](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![思想點](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**思想點**<br>全球最具創新力的企業使用 InsightsSpot 增強組織中的每個人的能力,從 C-Suite 高管到一線員工,能夠快速發現數據驅動的見解。 借助 InsightsSpot,商務人士可以鍵入簡單的搜索,以立即分析數十億行數據,並利用人工智慧獲得信任的相關見解,作為他們可能沒有想到的數千個問題的答案。 思想Spot足夠簡單,可供任何業務人員使用,但功能強大,即使在不犧牲速度、安全性或治理的情況下也能處理最大、最複雜的企業數據。 這就是為什麼像沃爾瑪、7-11、英國電信、戴姆勒、埃克森美孚、Hulu、加拿大皇家銀行、西部銀行和全國建築協會這樣的客戶轉向思想Spot來轉變他們的決策文化,而分析公司Gartner在2020年魔力象限中被評為"思想Spot"。"。 通過讓洞察成為每個對話和每個決策的一部分,思想Spot正在重新構想數據在創建一個更加事實驅動的世界中的作用。 |[產品頁面](https://www.thoughtspot.com)<br>|
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>黃鰭是 BARC 臨時報告和儀錶板的最高評級雲 BI 供應商;BI 調查。 連接到 Synapse SQL 池,然後創建和共用漂亮的報表和儀錶板,並具有屢獲殊榮的協作 BI 和位置智慧功能。 |[產品頁面](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

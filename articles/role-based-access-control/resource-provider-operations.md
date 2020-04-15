@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548326"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383755"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 資源提供者作業
 
@@ -1506,7 +1506,7 @@ Azure 服務:經典部署模型虛擬機器
 > | 動作 | Microsoft.ClassicCompute/operations/read | 取得作業的清單。 |
 > |  | **操作 狀態** |  |
 > | 動作 | Microsoft.ClassicCompute/operationStatuses/read | 讀取資源的作業狀態。 |
-> |  | **quotas** |  |
+> |  | **配額** |  |
 > | 動作 | Microsoft.ClassicCompute/quotas/read | 取得訂用帳戶配額。 |
 > |  | **資源類型/skus** |  |
 > | 動作 | Microsoft.ClassicCompute/resourceTypes/skus/read | 取得受支援之資源類型的 SKU 清單。 |
@@ -1599,7 +1599,7 @@ Azure 服務:經典部署模型虛擬網路
 > | 動作 | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/operationStatuses/read | 讀取網路安全性群組安全性規則的作業狀態。 |
 > |  | **操作** |  |
 > | 動作 | Microsoft.ClassicNetwork/operations/read | 取得傳統網路作業。 |
-> |  | **quotas** |  |
+> |  | **配額** |  |
 > | 動作 | Microsoft.ClassicNetwork/quotas/read | 取得訂用帳戶配額。 |
 > |  | **保留 Ip** |  |
 > | 動作 | Microsoft.ClassicNetwork/reservedIps/read | 取得保留的 IP |
@@ -1693,7 +1693,7 @@ Azure 服務:經典部署模型存儲
 > | 動作 | Microsoft.ClassicStorage/osPlatformImages/read | 取得作業系統平台映像。 |
 > |  | **publicImages** |  |
 > | 動作 | Microsoft.ClassicStorage/publicImages/read | 取得公用虛擬機器映像。 |
-> |  | **quotas** |  |
+> |  | **配額** |  |
 > | 動作 | Microsoft.ClassicStorage/quotas/read | 取得訂用帳戶配額。 |
 > |  | **storageAccounts** |  |
 > | 動作 | Microsoft.ClassicStorage/storageAccounts/read | 傳回具有給定帳戶的儲存體帳戶。 |
@@ -2392,7 +2392,7 @@ Azure 服務:[成本管理](../cost-management-billing/index.yml)
 > | 動作 | Microsoft.Consumption/reservationSummaries/read | 依保留順序或管理群組列出保留執行個體的使用率摘要。 摘要資料位於每月或每日層級。 |
 > |  | **預訂交易** |  |
 > | 動作 | Microsoft.Consumption/reservationTransactions/read | 依管理群組列出保留執行個體的交易記錄。 |
-> |  | **「標記」** |  |
+> |  | **標籤** |  |
 > | 動作 | Microsoft.Consumption/tags/read | 列出 EA 和訂用帳戶的標記。 |
 > |  | **租戶** |  |
 > | 動作 | Microsoft.Consumption/tenants/register/action | 依某個租用戶註冊 Microsoft.Consumption 範圍的動作。 |
@@ -5180,7 +5180,7 @@ Azure 服務:[金鑰保存庫](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Azure 服務[:Azure 資料資源管理員](../data-explorer/index.yml)
+Azure 服務[:Azure 資料資源管理員](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | 動作類型 | 作業 | 描述 |
@@ -8324,7 +8324,7 @@ Azure 服務[:Azure 資源管理員](../azure-resource-manager/index.yml)
 > | 動作 | Microsoft.Resources/subscriptions/tagNames/tagValues/read | 取得或列出訂用帳戶標記值。 |
 > | 動作 | Microsoft.Resources/subscriptions/tagNames/tagValues/write | 新增訂用帳戶標記值。 |
 > | 動作 | Microsoft.Resources/subscriptions/tagNames/tagValues/delete | 刪除訂用帳戶標記值。 |
-> |  | **「標記」** |  |
+> |  | **標籤** |  |
 > | 動作 | 微軟.資源/標籤/讀取 | 獲取資源上的所有標記。 |
 > | 動作 | 微軟.資源/標籤/寫入 | 通過將現有標記替換為一組新的標記或刪除現有標記,更新資源上的標記。 |
 > | 動作 | 微軟.資源/標籤/刪除 | 刪除資源上的所有標記。 |
@@ -10040,7 +10040,7 @@ Azure 服務[:Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > |  | **帳號/專案** |  |
 > | 動作 | Microsoft.VisualStudio/Account/Project/Read | 讀取帳戶/專案 |
 > | 動作 | Microsoft.VisualStudio/Account/Project/Write | 讀取帳戶/專案 |
-> |  | **延伸** |  |
+> |  | **分機** |  |
 > | 動作 | Microsoft.VisualStudio/Extension/Write | 設定擴充功能 |
 > | 動作 | Microsoft.VisualStudio/Extension/Delete | 刪除擴充功能 |
 > | 動作 | Microsoft.VisualStudio/Extension/Read | 讀取擴充功能 |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879049"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314059"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面上使用 Microsoft 團隊
 
@@ -67,3 +67,7 @@ ms.locfileid: "80879049"
 
       > [!NOTE]
       > 如果安裝具有 MSI 設定 ALLUSER_1 的團隊,將自動更新將被禁用。 我們建議您確保每月至少更新一次 Teams。
+      
+### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>主機池自訂遠端桌面協定屬性
+自訂主機池的遠端桌面協定 (RDP) 屬性(如多監視器體驗、啟用麥克風和音訊重定向)可讓您根據使用者的需求為使用者提供最佳體驗。 您可以使用**Set-RdsHostPool** cmdlet 中的 **-CustomRdp屬性**參數自訂 Windows 虛擬桌面中的 RDP 屬性。
+有關受支援屬性及其預設值的完整清單,請參閱[支援的 RDP 檔設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)。

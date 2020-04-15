@@ -1,22 +1,15 @@
 ---
-title: 常見問題 （FAQ） - LUIS
-titleSuffix: Azure Cognitive Services
+title: 常見問題 (FAQ) - LUIS
 description: 本文包含 Language Understanding (LUIS) 常見問題集的解答。
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235eba7f80778b8a60ba880616cf80f2c14ccba1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79221277"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382176"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding 常見問題集 (FAQ)
 
@@ -24,7 +17,7 @@ ms.locfileid: "79221277"
 
 ## <a name="whats-new"></a>新功能
 
-[詳細瞭解](whats-new.md)語言理解 （LUIS） 中的新增功能。
+[詳細瞭解](whats-new.md)語言理解 (LUIS) 中的新增功能。
 
 <a name="luis-authoring"></a>
 
@@ -59,7 +52,10 @@ ms.locfileid: "79221277"
 請參閱[實體](luis-concept-entity-types.md)和[資料擷取](luis-concept-data-extraction.md)。
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>範例語句的變化應該包括標點符號嗎？
-將不同的變化當成範例語句新增至意圖，或使用[略過標點符號語法](luis-concept-patterns.md#pattern-syntax)新增範例語句模式。
+使用下列其中一個解決方案：
+* 忽略[標點符號](luis-reference-application-settings.md#punctuation-normalization)
+* 將不同的變體為範例陳述新增到意圖中
+* 使用語法添加範例陳述的模式[以忽略](luis-concept-patterns.md#pattern-syntax)標點符號。
 
 ### <a name="does-luis-currently-support-cortana"></a>LUIS 目前支援 Cortana 嗎？
 
@@ -68,11 +64,11 @@ Cortana 預先建置的應用程式已在 2017 年被取代。 它們不再受�
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>如何移轉 LUIS 應用程式的擁有權？
 若要將 LUIS 應用程式傳送至不同的 Azure 訂用帳戶，請匯出 LUIS 應用程式，並使用新的帳戶匯入它。 在呼叫 LUIS 應用程式的用戶端應用程式中，更新 LUIS 應用程式識別碼。 新應用程式可能會傳回與原始應用程式略為不同的 LUIS 分數。
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>預構建實體在示例陳述中標記，而不是我的自訂實體。 我要如何修正此問題？ 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>預建實體在示例陳述中標記,而不是我的自定義實體。 我要如何修正此問題？
 
-在 LUIS 門戶中，您可以為感興趣的提取的確切實體標記文本。 如果 LUIS 門戶未顯示正確的實體預測，則可能需要添加更多陳述並在文本中標記實體或添加描述項（如功能）。 
+在 LUIS 入口中,您可以為感興趣的提取的確切實體標記文本。 如果 LUIS 門戶未顯示正確的實體預測,則可能需要添加更多陳述並在文本中標記實體或添加描述符(如功能)。
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我試圖導入應用程式或版本檔，但我有一個錯誤，發生了什麼？ 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我試圖導入應用程式或版本檔,但我有一個錯誤,發生了什麼?
 
 閱讀有關[版本導入錯誤](luis-how-to-manage-versions.md#import-errors)的更多內容。
 
@@ -82,55 +78,55 @@ Cortana 預先建置的應用程式已在 2017 年被取代。 它們不再受�
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>如何使用 Azure Active Directory (Azure AD) 或角色型存取控制 (RBAC)，來為共同作業者提供存取 LUIS 的權限？
 
-若要了解如何為共同作業者提供存取權限，請參閱 [Azure Active Directory 資源](luis-how-to-collaborate.md#azure-active-directory-resources)和 [Azure Active Directory 租用戶使用者](luis-how-to-collaborate.md#azure-active-directory-tenant-user)。 
+若要了解如何為共同作業者提供存取權限，請參閱 [Azure Active Directory 資源](luis-how-to-collaborate.md#azure-active-directory-resources)和 [Azure Active Directory 租用戶使用者](luis-how-to-collaborate.md#azure-active-directory-tenant-user)。
 
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>端點
 
-### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了 HTTP 403 錯誤狀態碼。 如何修正問題？
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了 HTTP 403 錯誤狀態代碼。 如何修正問題？
 
-當您超過每秒的事務或定價層每月的交易記錄時，您將獲得 403 和 429 錯誤狀態碼。 提高定價層，或使用語言理解[容器](luis-container-howto.md)。
+當您超過每秒的事務或定價層每月的交易記錄時,您將獲得 403 和 429 錯誤狀態代碼。 提高定價層,或使用語言理解[容器](luis-container-howto.md)。
 
-當您使用所有這些免費的 1000 終結點查詢或超過定價層的每月交易記錄配額時，您將收到一個 HTTP 403 錯誤狀態碼。 
+當您使用所有這些免費的 1000 終結點查詢或超過定價層的每月交易記錄配額時,您將收到一個 HTTP 403 錯誤狀態代碼。
 
-要修復此錯誤，您需要將[定價層更改為](luis-how-to-azure-subscription.md#change-pricing-tier)更高層，或者[創建新資源](get-started-portal-deploy-app.md#create-the-endpoint-resource)[並將其分配給應用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+要修復此錯誤,您需要將[定價層改變為](luis-how-to-azure-subscription.md#change-pricing-tier)更高層,或[建立新資源](get-started-portal-deploy-app.md#create-the-endpoint-resource)[並將其分配給套用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
 
-此錯誤的解決方案包括：
+此錯誤的解決方案包括:
 
-* 在[Azure 門戶](https://portal.azure.com)中，在"語言理解"資源（"語言理解"資源）上，**在資源管理 ->定價層**上，將定價層更改為更高的 TPS 層。 如果資源已分配給"語言理解"應用，則無需在"語言理解"門戶中執行任何操作。
-*  如果您的使用量超過最高定價層，請添加更多具有負載等化器的"語言理解"資源。 帶有 Kubernetes 或 Docker Compose[的語言理解容器](luis-container-howto.md)可以對此提供説明。
+* 在[Azure 門戶](https://portal.azure.com)中,在「語言理解」資源(「語言理解」資源)上,**在資源管理 ->定价层**上,將定價層更改為更高的 TPS 層。 如果資源已分配給"語言理解"應用,則無需在"語言理解"門戶中執行任何操作。
+*  如果您的使用量超過最高定價層,請添加更多具有負載均衡器的"語言理解"資源。 帶有 Kubernetes 或 Docker Compose[的語言理解容器](luis-container-howto.md)可以對此提供説明。
 
-### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了 HTTP 429 錯誤狀態碼。 如何修正問題？
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了 HTTP 429 錯誤狀態代碼。 如何修正問題？
 
-當您超過每秒的事務或定價層每月的交易記錄時，您將獲得 403 和 429 錯誤狀態碼。 提高定價層，或使用語言理解[容器](luis-container-howto.md)。
+當您超過每秒的事務或定價層每月的交易記錄時,您將獲得 403 和 429 錯誤狀態代碼。 提高定價層,或使用語言理解[容器](luis-container-howto.md)。
 
-當每秒的事務超過定價層時，將返回此狀態碼。  
+當每秒的事務超過定價層時,將返回此狀態代碼。
 
-解決方案包括：
+解決方案包括:
 
-* 如果你不在最高層，你可以[增加你的定價層](luis-how-to-azure-subscription.md#change-pricing-tier)。
-* 如果您的使用量超過最高定價層，請添加更多具有負載等化器的"語言理解"資源。 帶有 Kubernetes 或 Docker Compose[的語言理解容器](luis-container-howto.md)可以對此提供説明。
-* 您可以在獲取此狀態碼時，使用自己實現的[重試策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)對用戶端應用程式請求進行封閉。 
+* 如果你不在最高層,你可以[增加你的定價層](luis-how-to-azure-subscription.md#change-pricing-tier)。
+* 如果您的使用量超過最高定價層,請添加更多具有負載均衡器的"語言理解"資源。 帶有 Kubernetes 或 Docker Compose[的語言理解容器](luis-container-howto.md)可以對此提供説明。
+* 您可以在獲取此狀態代碼時,使用自己實現的[重試策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)對用戶端應用程式請求進行封閉。
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>端點查詢傳回非預期的結果。 我該怎麼辦？
 
-非預期查詢預測結果是根據已發佈模型的狀態而定。 若要更正模型，您可能需要變更模型、定型和重新發行。 
+非預期查詢預測結果是根據已發佈模型的狀態而定。 若要更正模型，您可能需要變更模型、定型和重新發行。
 
 模型更正要先從[主動式學習](luis-how-to-review-endpoint-utterances.md)開始。
 
 您可以更新[應用程式版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)，移除非確定性的定型，以便使用所有定型資料。
 
-如需其他提示，請檢閱[最佳做法](luis-concept-best-practices.md)。 
+如需其他提示，請檢閱[最佳做法](luis-concept-best-practices.md)。
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>為什麼 LUIS 在查詢周圍或字組中間新增空格？
 LUIS 會根據[文化特性 (Culture)](luis-language-support.md#tokenization) 將語句[權杖化](luis-glossary.md#token)。 原始值和權杖化值可供[資料擷取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何建立和指派 LUIS 端點金鑰？
-Azure 中針對[服務](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)層級[建立端點金鑰](luis-how-to-azure-subscription.md)。 在**[Azure 資源](luis-how-to-azure-subscription.md)** 頁上[分配金鑰](luis-how-to-azure-subscription.md)。 此動作沒有任何對應的 API。 您接著必須將 HTTP 要求變更為端點，以[使用新端點金鑰](luis-concept-keys.md)。
+Azure 中針對[服務](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)層級[建立端點金鑰](luis-how-to-azure-subscription.md)。 在**[Azure 資源](luis-how-to-azure-subscription.md)** 頁上[配置金鑰](luis-how-to-azure-subscription.md)。 此動作沒有任何對應的 API。 您接著必須將 HTTP 要求變更為端點，以[使用新端點金鑰](luis-concept-keys.md)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解譯 LUIS 分數？
-您的系統應該使用最高分數意圖，而不論其值為何。 例如，低於 0.5 (小於 50%) 的分數不一定表示 LUIS 具有低的信賴度。 提供更多的培訓資料有助於提高最可能意圖[的分數](luis-concept-prediction-score.md)。
+您的系統應該使用最高分數意圖，而不論其值為何。 例如，低於 0.5 (小於 50%) 的分數不一定表示 LUIS 具有低的信賴度。 提供更多的訓練資料有助於提高最可能意圖[的分數](luis-concept-prediction-score.md)。
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>為什麼在應用程式儀表板中看不到我的端點叫用？
 應用程式儀表板中的端點叫用總數均會定期更新，但會更頻繁地更新 Azure 入口網站中與 LUIS 端點金鑰相關聯的計量。
@@ -145,10 +141,10 @@ Azure 中針對[服務](https://azure.microsoft.com/pricing/details/cognitive-se
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
-``` 
+```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>LUIS 應用程式昨天還可以運作，但現在我收到 403 錯誤。 我未變更應用程式。 如何修正問題？
-按照這些[說明](#how-do-i-create-and-assign-a-luis-endpoint-key)創建 LUIS 終結點金鑰並將其分配給應用。 然後，必須將用戶端應用程式的 HTTP 要求更改為終結點才能[使用新的終結點金鑰](luis-concept-keys.md)。 如果在不同的區域中創建新資源，請更改 HTTP 用戶端請求的區域。
+按照這些[說明](#how-do-i-create-and-assign-a-luis-endpoint-key)創建 LUIS 終結點密鑰並將其分配給應用。 然後,必須將客戶端應用程式的 HTTP 請求更改為終結點才能[使用新的終結點密鑰](luis-concept-keys.md)。 如果在不同的區域中創建新資源,請更改 HTTP 用戶端請求的區域。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>如何保護 LUIS 端點？
 請參閱[保護端點](luis-concept-keys.md#securing-the-endpoint)。
@@ -186,7 +182,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 請參閱[相同應用程式之不同複本的預測差異](luis-concept-prediction-score.md#review-intents-with-similar-scores)。
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>我對應用程式進行變更後，一些語句的意圖錯誤。 此問題似乎會隨機消失。 如何修正問題？ 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>我對應用程式進行變更後，一些語句的意圖錯誤。 此問題似乎會隨機消失。 如何修正問題？
 
 請參閱[以所有資料進行訓練](luis-how-to-train.md#train-with-all-data)。
 
@@ -202,27 +198,27 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>為什麼指派給應用程式的端點金鑰數目比我指派的還多？
-每個 LUIS 應用程式都會在端點清單中納入撰寫/起始金鑰，以便使用。 此金鑰僅允許數次端點叫用，以便讓您試用 LUIS。  
+每個 LUIS 應用程式都會在端點清單中納入撰寫/起始金鑰，以便使用。 此金鑰僅允許數次端點叫用，以便讓您試用 LUIS。
 
 如果您的應用程式在 LUIS 正式推出 (GA) 之前即已存在，就會自動指派您訂用帳戶中的 LUIS 端點金鑰。 完成這項作業，即可簡化 GA 移轉。 Azure 入口網站中任何新的 LUIS 端點金鑰都_不會_自動指派給 LUIS。
 
 ## <a name="key-management"></a>金鑰管理
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>如何知道我需要哪個金鑰、可在何處取得，以及如何運用它？ 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>如何知道我需要哪個金鑰、可在何處取得，以及如何運用它？
 
-請參閱[LUIS 中創作和查詢預測終結點鍵](luis-concept-keys.md)，以瞭解創作金鑰和預測運行時金鑰之間的差異。 
+請參閱[LUIS 中創作和查詢預測終結點鍵](luis-concept-keys.md),以瞭解創作密鑰和預測運行時密鑰之間的差異。
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到了有關超出配額的錯誤。 如何修正問題？ 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到了有關超出配額的錯誤。 如何修正問題？
 
-有關詳細資訊，請參閱修復 HTTP 狀態碼[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429。](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
+有關詳細資訊,請參閱修復 HTTP 狀態代碼[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429。](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>我需要處理更多端點查詢。 該怎麼做？ 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>我需要處理更多端點查詢。 該怎麼做？
 
-有關詳細資訊，請參閱修復 HTTP 狀態碼[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429。](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
+有關詳細資訊,請參閱修復 HTTP 狀態代碼[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429。](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
 
-### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我創建了一個創作金鑰，但它未顯示在 LUIS 門戶中。 發生什麼情形？
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我創建了一個創作密鑰,但它未顯示在 LUIS 門戶中。 發生什麼情形？
 
-在[遷移到創作金鑰體驗](luis-migration-authoring.md)後，在 LUIS 門戶中可以使用創作金鑰。  
+在[遷移到創作金鑰體驗](luis-migration-authoring.md)后,在 LUIS 門戶中可以使用創作密鑰。
 
 ## <a name="app-management"></a>應用程式管理
 
@@ -242,7 +238,7 @@ LUIS 應用程式預設會記錄使用者的語句。 若要下載使用者傳�
 ### <a name="can-i-delete-data-from-luis"></a>可以從 LUIS 刪除資料嗎？
 
 * 您一律可以刪除用於訓練 LUIS 的範例語句。 若您從 LUIS 應用程式刪除範例語句，則會從 LUIS Web 服務中予以移除，而且無法用於匯出。
-* 可以從 LUIS 在 **"審閱終結點**陳述"頁中建議的使用者陳述清單中刪除陳述。 從此清單中刪除語句可防止系統建議這些語句，但並不會從記錄中刪除它們。
+* 可以從 LUIS 在 **「審閱終結點**陳述」頁中建議的使用者陳述清單中刪除陳述。 從此清單中刪除語句可防止系統建議這些語句，但並不會從記錄中刪除它們。
 * 如果您刪除帳戶，系統就會刪除所有應用程式及其範例語句和記錄。 資料會在伺服器上保留 60 天後再永久刪除。
 
 ### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Microsoft 如何管理我傳送至 LUIS 的資料？
@@ -266,28 +262,28 @@ LUIS 應用程式預設會記錄使用者的語句。 若要下載使用者傳�
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>我的 LUIS Bot 無法運作。 該怎麼辦？
 
-第一個問題是找出問題是否與 LUIS 有關，或發生在 LUIS 中介軟體之外。 
+第一個問題是找出問題是否與 LUIS 有關，或發生在 LUIS 中介軟體之外。
 
 #### <a name="resolve-issue-in-luis"></a>解決 LUIS 中的問題
 從 [LUIS 端點](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) 傳遞相同的語句至 LUIS。 如果您收到錯誤，請解決 LUIS 中的問題，直到錯誤不再傳回。 常見錯誤包括：
 
-* `Out of call volume quota. Quota will be replenished in <time>.` - 此問題表示您須從撰寫金鑰變更為[端點金鑰](luis-how-to-azure-subscription.md)，或者您必須變更[服務層級](luis-how-to-azure-subscription.md#change-pricing-tier)。 
+* `Out of call volume quota. Quota will be replenished in <time>.` - 此問題表示您須從撰寫金鑰變更為[端點金鑰](luis-how-to-azure-subscription.md)，或者您必須變更[服務層級](luis-how-to-azure-subscription.md#change-pricing-tier)。
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>解決 Azure Bot Service 中的問題
 
 如果您使用的是 Azure Bot Service，且問題是**網路聊天中的測試**傳回 `Sorry, my bot code is having an issue`，請檢查您的記錄：
 
 1. 在 Azure 入口網站中，針對您的 Bot，從 [Bot 管理]**** 區段中選取 [建置]****。
-1. 開啟線上程式碼編輯器。 
+1. 開啟線上程式碼編輯器。
 1. 在最上層的藍色導覽列中，選取 Bot 名稱 (右側的第二個項目)。
 1. 在產生的下拉式清單中，選取 [開啟 Kudu 主控台]****。
-1. 選取 [記錄檔]****，然後選取 [應用程式]****。 檢閱所有記錄檔。 如果您在應用程式資料夾中沒有看到錯誤，請檢閱 [記錄檔]****。 
+1. 選取 [記錄檔]****，然後選取 [應用程式]****。 檢閱所有記錄檔。 如果您在應用程式資料夾中沒有看到錯誤，請檢閱 [記錄檔]****。
 1. 如果您正在使用已編譯的語言，例如 C#，請記得重建您的專案。
 
-> [!Tip] 
-> 主控台也會安裝封裝。 
+> [!Tip]
+> 主控台也會安裝封裝。
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>使用 Bot Framework 在本機電腦上偵錯時解決問題。 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>使用 Bot Framework 在本機電腦上偵錯時解決問題。
 
 若要深入了解的本機對 Bot 進行偵錯，請參閱[對 Bot 進行偵錯](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)。
 
@@ -303,35 +299,35 @@ LUIS 應用程式預設會記錄使用者的語句。 若要下載使用者傳�
 
 ## <a name="api-programming-strategies"></a>API 程式設計策略
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>如何以程式設計方式取得資源的 LUIS 區域？ 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>如何以程式設計方式取得資源的 LUIS 區域？
 
-使用 LUIS 範例以程式設計方式[尋找區域](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) (使用 C# 或 Node.Js)。 
+使用 LUIS 範例以程式設計方式[尋找區域](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) (使用 C# 或 Node.Js)。
 
 ## <a name="luis-service"></a>LUIS 服務
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Language Understanding (LUIS) 可以在內部部署或私人雲端中使用嗎？
 
-是，如果您必須測量連線使用量，可以在這些情況下，使用 LUIS [容器](luis-container-howto.md)。 
+是，如果您必須測量連線使用量，可以在這些情況下，使用 LUIS [容器](luis-container-howto.md)。
 
-## <a name="migrating-to-the-next-version"></a>遷移到下一個版本
+## <a name="migrating-to-the-next-version"></a>移至下一個版本
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>如何遷移到預覽 V3 API？ 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>如何遷移到預覽 V3 API?
 
-請參閱[LUIS 應用的 API v2 到 v3 遷移指南](luis-migration-api-v3.md)
+請參考[LUIS 應用程式的 API v2 到 v3 移轉指南](luis-migration-api-v3.md)
 
 ## <a name="build-2019-conference-announcements"></a>發佈 2019 年會議公告
 
-在 2019 年構建大會上發佈了以下功能：
+在 2019 年構建大會上發佈了以下功能:
 
-* [V3 API 遷移指南預覽](luis-migration-api-v3.md)
-* [改進的分析儀表板](luis-how-to-use-dashboard.md)
-* [改進的預構建域](luis-reference-prebuilt-domains.md) 
+* [V3 API 移轉指南預覽](luis-migration-api-v3.md)
+* [改進分析儀表板](luis-how-to-use-dashboard.md)
+* [改進的預建網](luis-reference-prebuilt-domains.md)
 * [動態清單實體](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部實體](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 影片：
 
-* [如何使用 Azure 對話 AI 為下一代擴展業務](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+* [如何使用 Azure 對話 AI 為下一代擴充業務](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>後續步驟
 

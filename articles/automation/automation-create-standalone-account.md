@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261324"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383310"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>建立獨立的 Azure 自動化帳戶
 
@@ -41,7 +41,7 @@ ms.locfileid: "81261324"
 驗證使用者角色：
 
 1. 在 Azure 入口網站中，移至 [Azure Active Directory]**** 窗格。
-1. 選擇**使用者與群組**。
+1. 選取 [使用者和群組]  。
 1. 選擇**所有使用者**。
 1. 當您選取特定的使用者之後，選取 [設定檔]****。 使用者設定檔下方的 [使用者類型]**** 屬性值不應為 [來賓]****。
 
@@ -92,11 +92,11 @@ ms.locfileid: "81261324"
 | AzureRunAsCertificate |在建立自動化帳戶時自動建立，或針對現有帳戶使用 PowerShell 指令碼建立的憑證資產。 此憑證會向 Azure 進行驗證，讓您可以從 Runbook 管理 Azure Resource Manager 資源。 此憑證有一年的有效期。 |
 | AzureRunAsConnection |在建立自動化帳戶時自動建立，或針對現有帳戶使用 PowerShell 指令碼建立的連線資產。 |
 
-## <a name="create-a-classic-run-as-account"></a>建立經典執行身份帳戶
+## <a name="create-a-classic-run-as-account"></a>建立傳統執行為帳戶
 
-默認情況下,在創建 Azure 自動化帳戶時,將不再創建經典運行-As 帳戶。 如果您仍然需要經典運行作為帳戶,請執行以下步驟。
+默認情況下,在創建 Azure 自動化帳戶時,將不再創建"經典運行為帳戶" 如果您仍然需要經典執行作為帳戶:
 
-1. 從 **「自動化帳戶」** 頁面中,選擇 **「 在帳戶設置**下**以帳戶身份運行**」。
+1. 從您的自動化帳戶中,選擇「**在帳戶設置**下**以帳戶身份運行**」。
 2. 選擇**Azure 的經典執行為帳號**。
 3. 按下"**創建**「以繼續創建經典」作為帳戶」。
 
@@ -105,5 +105,6 @@ ms.locfileid: "81261324"
 * 要瞭解有關圖形創作的更多資訊,請參閱[Azure 自動化 中的圖形創作](automation-graphical-authoring-intro.md)。
 * 要開始使用 PowerShell 執行簿,請參閱[我的第一個 PowerShell 執行簿](automation-first-runbook-textual-powershell.md)。
 * 要開始使用 PowerShell 工作流執行簿,請參閱[我的第一個 PowerShell 工作流執行簿](automation-first-runbook-textual.md)。
-* 要開始使用 Python2 執行簿,請參考[我的第一個 Python2 執行簿](automation-first-runbook-textual-python2.md)。
-
+* 要開始使用 Python 2 執行簿,請參考[我的第一個 Python2 執行簿](automation-first-runbook-textual-python2.md)。
+* 有關 PowerShell cmdlet 引用,請參閱[Az.自動化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

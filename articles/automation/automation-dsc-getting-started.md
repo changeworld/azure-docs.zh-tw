@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010319"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383245"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>開始使用 Azure 自動化狀態設定
 
@@ -59,7 +59,7 @@ ms.locfileid: "81010319"
         }
     }
     ```
-1. 將檔案儲存為 `TestConfig.ps1`。
+1. 將檔案另存為**TestConfig.ps1**。
 
 此設定會在每個節點區塊中呼叫一個資源 ( [WindowsFeature 資源](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource))，這可確保 **Web 伺服器** 功能是否存在。
 
@@ -105,7 +105,7 @@ ms.locfileid: "81010319"
    ![醒目提示 [編譯] 按鈕之 TestConfig 設定頁面的螢幕擷取畫面](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> 當您在 Azure 自動化中編譯組態時，它會自動將任何已建立的節點組態 MOF 部署至提取伺服器。
+> 在 Azure 自動化中編譯配置時,它會自動將任何創建的節點配置 MOF 檔部署到拉取伺服器。
 
 ## <a name="viewing-a-compilation-job"></a>檢視編譯作業
 
@@ -123,7 +123,7 @@ ms.locfileid: "81010319"
 
 ## <a name="viewing-node-configurations"></a>檢視節點組態
 
-成功完成編譯作業會建立一或多個新的節點組態。 節點組態是已部署到提取伺服器且準備由一或多個節點提取並套用的 MOF 文件。 您可以在 [State Configuration (DSC)]**** 頁面中檢視您自動化帳戶的節點組態。 節點組態的名稱格式為 ConfigurationName**.NodeName**。
+成功完成編譯作業會建立一或多個新的節點組態。 節點組態是已部署到提取伺服器且準備由一或多個節點提取並套用的 MOF 文件。 您可以在**狀態配置 (DSC)** 頁上查看自動化帳戶中的節點配置。 節點配置具有窗體`ConfigurationName.NodeName`的名稱。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源]**** 和您的自動化帳戶名稱。
@@ -134,7 +134,7 @@ ms.locfileid: "81010319"
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>將 Azure VM 上架交由 Azure Automation State Configuration 管理
 
-您可以使用 Azure Automation State Configuration 來管理 Azure VM (傳統和 Resource Manager)、內部部署 VM、Linux 機器、AWS VM 和內部部署實體機器。 在本文中，您將了解如何只將 Azure Resource Manager VM 上線。 如需將其他類型的機器上架的詳細資訊，請參閱[將機器上架交由 Azure Automation State Configuration 管理](automation-dsc-onboarding.md)。
+可以使用 Azure 自動化狀態配置來管理 Azure VM(經典 VM 和資源管理器)、本地 VM、Linux 電腦、AWS VM 和本地物理電腦。 在本文中，您將了解如何只將 Azure Resource Manager VM 上線。 如需將其他類型的機器上架的詳細資訊，請參閱[將機器上架交由 Azure Automation State Configuration 管理](automation-dsc-onboarding.md)。
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>將 Azure Resource Manager VM 上架交由 Azure Automation State Configuration 管理
 

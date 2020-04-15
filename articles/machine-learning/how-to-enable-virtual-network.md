@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257244"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383484"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推理作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 > 當前,在現有群集上執行__附加__操作時,無法配置負載均衡器。 必須首先附加群集,然後執行更新操作以更改負載均衡器。
 
 有關將內部負載均衡器與 AKS 一起使用的詳細資訊,請參閱[使用 Azure Kubernetes 服務使用內部負載均衡器](/azure/aks/internal-lb)。
+
+## <a name="use-azure-container-instances-aci"></a>使用 Azure 容器實體 (ACI)
+
+部署模型時動態創建 Azure 容器實例。 要使 Azure 機器學習能夠在虛擬網路內建立 ACI,必須為部署使用的子網路啟用__子網委派__。
+
+要在虛擬網路中使用 ACI 到工作區,請使用以下步驟:
+
+1. 要在虛擬網路上啟用子網委派,請使用['添加或刪除子網委派](../virtual-network/manage-subnet-delegation.md)"文章中的資訊。 您可以在創建虛擬網路時啟用委派,也可以將其添加到現有網路。
+
+    > [!IMPORTANT]
+    > 啟用委派時,用作`Microsoft.ContainerInstance/containerGroups`__委託子網以服務__值。
+
+2. 使用[AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)部署模型`vnet_name``subnet_name`,使用 和 參數。 將這些參數設置為啟用委派的虛擬網路名稱和子網。
+
+
 
 ## <a name="use-azure-firewall"></a>使用 Azure 防火牆
 

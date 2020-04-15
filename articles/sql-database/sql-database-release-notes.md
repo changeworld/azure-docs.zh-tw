@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011441"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383378"
 ---
 # <a name="sql-database-release-notes"></a>SQL 資料庫發行說明
 
@@ -49,6 +49,7 @@ ms.locfileid: "81011441"
 | <a href="https://aka.ms/managed-instance-aadlogins">實體級 Azure AD 伺服器主體(登入名)</a> | 使用<a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">「從外部提供程式」創建登錄,創建</a>伺服器級登錄。 |
 | [異動複寫](sql-database-managed-instance-transactional-replication.md) | 將表的更改複製到放置在託管實例、單個資料庫或 SQL Server 實例上的其他資料庫,或者在其他託管實例或 SQL Server 實例中更改某些行時更新表。 有關詳細資訊,請參閱[在 Azure SQL 資料庫託管實例資料庫中設定複製](replication-with-sql-database-managed-instance.md)。 |
 | 威脅偵測 |有關詳細資訊,請參閱[在 Azure SQL 資料庫託管實例中設定威脅偵測](sql-database-managed-instance-threat-detection.md)。|
+| 長期備份保留期 | 有關詳細資訊,請參閱[在 Azure SQL 資料庫託管實例中設定長期備份保留](sql-database-managed-instance-long-term-backup-retention-configure.md)。 | 
 
 ---
 
@@ -167,7 +168,7 @@ SQL 伺服器/管理管實體[不允許使用者刪除不為空的檔案](/sql/r
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>不支援 Azure AD 登入類型的化
 
 不支援使用`EXECUTE AS USER``EXECUTE AS LOGIN`或 以下 AAD 主體進行模擬:
--   別名 AAD 使用者。 在這種情況下`15517`,將返回以下錯誤。
+-    別名 AAD 使用者。 在這種情況下`15517`,將返回以下錯誤。
 - AAD 登錄和基於 AAD 應用程式或服務主體的使用者。 在這種情況下`15517`,將傳回以下錯誤`15406`, 與 。
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail不支援參數

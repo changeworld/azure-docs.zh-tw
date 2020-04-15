@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261749"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383920"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -199,16 +199,6 @@ ms.locfileid: "81261749"
 
     否,不支援來自 Linux VM 的身份驗證。
 
-* <a id="ad-multiple-forest"></a>
-**Azure 檔案 AD 認證是否支援使用多個林與 AD 環境整合?**    
-
-    Azure 檔案 AD 身份驗證僅與儲存帳戶註冊的 AD 網域服務的林整合。 要支援來自其他 AD 林的身份驗證,您的環境必須正確配置林信任。 Azure 檔案註冊到 AD 網域服務的方式與常規檔案伺服器大致相同,在 AD 中創建標識(電腦或服務登錄帳戶)以進行身份驗證。 唯一的區別是,存儲帳戶的已註冊的 SPN 以與域後綴不匹配的"file.core.windows.net"結尾。 請諮詢域管理員,瞭解是否需要對 DNS 路由策略進行任何更新,才能由於不同的域後綴而啟用多個林身份驗證。
-
-* <a id=""></a>
-**哪些區域可用於 Azure 檔案 AD 身份驗證(預覽)?**
-
-    有關詳細資訊,請參閱[AD 區域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
-
 * <a id="ad-aad-smb-afs"></a>
 **是否可以在 Azure 檔案同步管理的檔案分享上利用 Azure 檔案 Azure 檔案 AD DS 身份驗證或活動目錄 (AD) 身份驗證(預覽)?**
 
@@ -218,7 +208,7 @@ ms.locfileid: "81261749"
 **如何檢查我的儲存帳戶和 AD 網域資訊是否啟用了 AD 身份驗證?**
 
     您可以參考[此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)提供的說明,以驗證儲存帳戶上是否啟用了 Azure 檔案 AD 身份驗證並檢索 AD 域資訊。
-    
+
 * <a id="encryption-at-rest"></a>
 **如何確保我的 Azure 檔案共用會進行待用加密？**  
 
@@ -243,6 +233,37 @@ ms.locfileid: "81261749"
 **Azure 檔案服務支援哪些資料合規性原則？**  
 
    Azure 檔案服務和 Azure 儲存體的其他儲存體中所使用的服務都是在相同的儲存體架構上運作。 Azure 檔案服務會套用其他 Azure 儲存體服務中所使用的相同資料合規性原則。 如需 Azure 儲存體資料合規性的詳細資訊，您可以參閱 [Azure 儲存體合規性供應項目](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)，並前往 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
+   
+### <a name="ad-authentication"></a>AD 驗證
+* <a id=""></a>
+**Azure 檔案 Azure AD 認證是否支援 Linux VM?**
+
+    否,不支援來自 Linux VM 的身份驗證。
+
+* <a id="ad-multiple-forest"></a>
+**Azure 檔案 AD 認證是否支援使用多個林與 AD 環境整合?**    
+
+    Azure 檔案 AD 身份驗證僅與儲存帳戶註冊的 AD 網域服務的林整合。 要支援來自其他 AD 林的身份驗證,您的環境必須正確配置林信任。 Azure 檔案註冊到 AD 網域服務的方式與常規檔案伺服器大致相同,在 AD 中創建標識(電腦或服務登錄帳戶)以進行身份驗證。 唯一的區別是,存儲帳戶的已註冊的 SPN 以與域後綴不匹配的"file.core.windows.net"結尾。 請諮詢域管理員,瞭解是否需要對 DNS 路由策略進行任何更新,才能由於不同的域後綴而啟用多個林身份驗證。
+
+* <a id=""></a>
+**哪些區域可用於 Azure 檔案 AD 身份驗證(預覽)?**
+
+    有關詳細資訊,請參閱[AD 區域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
+
+* <a id="ad-aad-smb-afs"></a>
+**是否可以在 Azure 檔案同步管理的檔案分享上利用 Azure 檔案活動目錄 (AD) 身份驗證(預覽)?**
+
+    可以,您可以在 Azure 檔案同步管理的檔案共享上啟用 AD 身份驗證。對本地檔案伺服器上的目錄/檔案 NTFS ACL 的更改將分層到 Azure 檔,反之亦然。
+
+* <a id="ad-aad-smb-files"></a>
+**如何檢查我的儲存帳戶和 AD 網域資訊是否啟用了 AD 身份驗證?**
+
+    您可以參考[此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的說明,以驗證儲存帳戶上是否啟用了 Azure 檔案 AD 身份驗證並檢索 AD 域資訊。
+
+* <a id="ad-aad-smb-files"></a>
+**在 AD 中創建電腦帳戶或服務登錄帳戶以表示我的儲存帳戶是否有任何區別?**
+
+    創建[計算機帳戶](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)(預設)[或服務登錄帳戶](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)與身份驗證如何使用 Azure 檔沒有區別。 您可以自行選擇如何在 AD 環境中將儲存帳戶表示為標識。 在聯接-AzStorage 帳戶"cmdlet"中設置的默認域帳戶類型是計算機帳戶。 但是,在 AD 環境中設定的密碼過期期限對於電腦或服務登入帳戶可能不同,您需要考慮在[AD 中更新儲存帳戶識別的密碼](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)。
 
 ## <a name="on-premises-access"></a>內部部署存取
 

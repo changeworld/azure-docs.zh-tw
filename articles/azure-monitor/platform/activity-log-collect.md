@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396809"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382862"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>在 Azure 監視器中收集和分析 Azure 活動紀錄
 [Azure 活動日誌](platform-logs-overview.md)是一個[平台日誌](platform-logs-overview.md),用於深入瞭解 Azure 中發生的訂閱級事件。 雖然可以在 Azure 門戶中查看活動日誌,但應將其配置為發送到日誌分析工作區以啟用 Azure 監視器的其他功能。 本文介紹如何執行此配置以及如何將活動日誌發送到 Azure 存儲和事件中心。
@@ -25,7 +25,8 @@ ms.locfileid: "80396809"
 - 存儲活動日誌條目超過 90 天。
 - 將多個 Azure 訂閱和租戶的日誌條目合併到一個位置,以便一起分析。
 
-
+> [!IMPORTANT]
+> 跨租戶收集紀錄需要[Azure 燈塔](/azure/lighthouse)。
 
 ## <a name="collecting-activity-log"></a>收集活動記錄
 活動紀錄將自動收集,以便[在 Azure 門戶中檢視](activity-log-view.md)。 要在紀錄分析工作區中收集它或將其傳送 Azure 儲存或事件中心,請建立[一個診斷設定](diagnostic-settings.md)。 這是資源日誌使用的方法,使其對所有[平台日誌](platform-logs-overview.md)保持一致。  

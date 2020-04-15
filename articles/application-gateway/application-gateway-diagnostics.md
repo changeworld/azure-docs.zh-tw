@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411049"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312659"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>應用程式閘道的後端執行狀況與診斷紀錄
 
@@ -172,7 +172,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |receivedBytes     | 接收的封包大小，單位為位元組。        |
 |sentBytes| 傳送的封包大小，單位為位元組。|
 |timeTaken| 處理要求並傳送其回應所花費的時間長度，單位為毫秒。 算法是從應用程式閘道收到 HTTP 要求的回應第一個位元組的時間，到回應傳送作業完成時的時間間隔。 請務必注意，timeTaken 欄位通常包含要求和回應封包在網路上傳輸的時間。 |
-|sslEnabled| 與後端集區的通訊是否使用 SSL。 有效值為 on 和 off。|
+|sslEnabled| 與後端池的通訊是否使用 TLS/SSL。 有效值為 on 和 off。|
 |主機| 請求已發送到後端伺服器的主機名。 如果後端主機名被重寫,此名稱將反映這一點。|
 |原始主機| 應用程式閘道從用戶端接收請求的主機名。|
 ```json
@@ -215,9 +215,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |receivedBytes     | 接收的封包大小，單位為位元組。        |
 |sentBytes| 傳送的封包大小，單位為位元組。|
 |timeTaken| 處理請求所需的時間長度(以**秒**為單位),併發送其回應。 算法是從應用程式閘道收到 HTTP 要求的回應第一個位元組的時間，到回應傳送作業完成時的時間間隔。 請務必注意，timeTaken 欄位通常包含要求和回應封包在網路上傳輸的時間。 |
-|sslEnabled| 與後端集區的通訊是否使用 SSL。 有效值為 on 和 off。|
-|sslCipher| 用於 SSL 通訊的密碼套件(如果啟用了 SSL)。|
-|sslProtocol| 正在使用的 SSL/TLS 協定(如果啟用了 SSL)。|
+|sslEnabled| 與後端池的通訊是否使用 TLS。 有效值為 on 和 off。|
+|sslCipher| 用於 TLS 通訊的密碼套件(如果啟用了 TLS)。|
+|sslProtocol| 正在使用的 SSL/TLS 協定(如果啟用了 TLS)。|
 |伺服器路由| 應用程式閘道將請求路由到的後端伺服器。|
 |serverStatus| 後端伺服器的 HTTP 狀態代碼。|
 |伺服器回應延遲| 來自後端伺服器的回應延遲。|

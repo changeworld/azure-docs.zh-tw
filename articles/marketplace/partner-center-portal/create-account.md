@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261732"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383764"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心創建商業市場帳戶
 
@@ -100,7 +100,7 @@ ms.locfileid: "81261732"
 
 如果您已註冊 Microsoft 合作夥伴網路,請使用此部分直接從合作夥伴中心創建您的帳戶。
 
-使用 Microsoft 合作夥伴網路帳戶登入[合作夥伴中心](https://partner.microsoft.com/),以便將公司的工作電子郵件帳戶域連結到新的合作夥伴中心帳戶。 通過關聯這些帳戶,您的公司員工可以使用其工作帳戶使用者名和密碼登錄合作夥伴中心。
+使用 Microsoft 合作夥伴網路帳戶登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership),以便將公司的工作電子郵件帳戶域連結到新的合作夥伴中心帳戶。 通過關聯這些帳戶,您的公司員工可以使用其工作帳戶使用者名和密碼登錄合作夥伴中心。
 
 >[!NOTE]
 >要檢查您的公司是否已具有合作夥伴中心工作帳戶、如何建立新的工作帳戶,以及如何設置多個工作帳戶以與合作夥伴中心一起使用,請造訪[您的公司工作帳戶和合作夥伴中心](./company-work-accounts.md)。
@@ -130,7 +130,7 @@ ms.locfileid: "81261732"
 >
 >個人帳戶是為獨立工作的單個開發人員。 公司帳戶適用於組織和企業。 公司帳戶允許您使用附加功能提交應用。 在您註冊后,我們需要對公司帳戶進行更大的驗證,以確認您已獲得為公司設置帳戶的授權。 驗證可能需要花費數天至數個星期，且通常會電話連絡您的公司。 這兩種類型的帳戶都允許您提交應用、載入項和服務。 有關詳細資訊,請參閱 [帳號類型、位置和費用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
 
-使用 Microsoft[合作夥伴中心帳戶登錄合作夥伴中心](https://partner.microsoft.com/),以在同一帳戶下註冊商業市場計畫。 通過使用同一帳戶註冊商業市場,您可以在合作夥伴中心的左側導航功能表中查看現有計劃註冊和商業市場。
+使用 Microsoft[合作夥伴中心帳戶登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership),以在同一帳戶下註冊商業市場計畫。 通過使用同一帳戶註冊商業市場,您可以在合作夥伴中心的左側導航功能表中查看現有計劃註冊和商業市場。
 
 登入後,請使用以下步驟完成帳戶設置:
 

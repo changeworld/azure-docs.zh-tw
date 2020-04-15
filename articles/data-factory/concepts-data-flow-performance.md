@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409848"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382789"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射資料串流效能和調優指南
 
@@ -31,13 +31,13 @@ ms.locfileid: "80409848"
 
  您可以使用此資訊來估計數據流針對不同大小的資料來源的性能。 有關詳細資訊,請參閱[監視映射資料串](concepts-data-flow-monitoring.md)流 。
 
-![資料流程監視](media/data-flow/mon003.png "資料流程監視器 3")
+![資料流程監控](media/data-flow/mon003.png "資料流程監視器 3")
 
  對於管道調試運行,暖群集需要大約一分鐘的群集設置時間。 如果要初始化預設 Azure 整合執行時,則啟動時間可能需要大約 5 分鐘。
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>在 Azure 整合時增加計算大小
 
-具有更多內核的整合式執行時會增加Spark計算環境中的節點數,並提供更多的處理能力來讀取、寫入和轉換資料。
+具有更多內核的整合式執行時會增加Spark計算環境中的節點數,並提供更多的處理能力來讀取、寫入和轉換資料。 ADF 資料流利用Spark進行計算引擎。 Spark 環境非常適合記憶體優化的資源。
 * 如果希望處理速率高於輸入速率,請嘗試**計算優化**群集。
 * 如果要在記憶體中緩存更多數據,請嘗試**記憶體優化**群集。 與計算優化相比,經過優化的記憶體每個核心的價格點更高,但可能會導致更快的轉換速度。
 
@@ -49,7 +49,11 @@ ms.locfileid: "80409848"
 
 默認情況下,打開除錯將使用為每個資料工廠自動建立的預設 Azure 整合執行時。 此預設 Azure IR 設置為八個內核,4 個為驅動程式節點,4 個設置為輔助節點,使用常規計算屬性。 使用較大資料進行測試時,可以通過創建具有較大配置的 Azure IR 來增加調試群集的大小,並在打開調試時選擇此新的 Azure IR。 這將指示 ADF 使用此 Azure IR 進行數據預覽和管道調試,並處理數據流。
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>最佳化 Azure SQL 資料庫與 Azure SQL 資料倉儲
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>使用 TTL 減少叢集計算時間
+
+數據流屬性下的 Azure IR 中有一個屬性,該屬性允許您為工廠建立群集計算資源池。 使用此池,您可以按順序提交數據流活動以執行。 建立池后,每個後續作業將需要 1-2 分鐘,按需 Spark 群集執行作業。 資源池的初始設置大約需要6分鐘。 指定您希望在存留時間 (TTL) 設置中維護資源池的時間量。
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>最佳化 Azure SQL 資料庫與 Azure SQL 資料倉儲突觸
 
 ### <a name="partitioning-on-source"></a>在源上分割區
 

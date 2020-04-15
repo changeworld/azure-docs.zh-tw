@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure 自動化
-ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 575f954b346edb7d682e3fd0b432a257486bbfbb
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366629"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383287"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自動化 PowerShell Runbook 中部署 Azure Resource Manager 範本
 
@@ -21,14 +21,17 @@ ms.locfileid: "75366629"
 
 在此文章中，我們會建立使用儲存在 [Azure 儲存體](../storage/common/storage-introduction.md)中 Resource Manager 範本的 PowerShell Runbook，來部署新的 Azure 儲存體帳戶。
 
+>[!NOTE]
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
+
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列項目：
 
-* Azure 訂用帳戶。 如果您還沒有，您可以[啟動您的 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[註冊一個免費帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您還沒有,您可以[啟動您的 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[註冊一個免費帳戶](https://azure.microsoft.com/free/)。
 * [自動化帳戶](automation-sec-configure-azure-runas-account.md) ，用來保存 Runbook 以及向 Azure 資源驗證。  此帳戶必須擁有啟動和停止虛擬機器的權限。
 * 用來儲存 Resource Manager 範本的 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)
-* 本機電腦上安裝的 Azure Powershell。 如需如何取得 Azure PowerShell 的詳細資訊，請參閱[安裝和設定 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
+* Azure PowerShell 安裝在本地電腦上。 有關如何取得 Azure PowerShell 的資訊,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。
 
 ## <a name="create-the-resource-manager-template"></a>建立 Resource Manager 範本
 
@@ -88,21 +91,21 @@ ms.locfileid: "75366629"
 }
 ```
 
-將檔案本機儲存為 `TemplateTest.json`。
+將檔案儲存在本地為**樣本測試.json**。
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>在 Azure 儲存體中儲存 Resource Manager 範本
 
-現在我們可以使用 PowerShell 來建立 Azure 儲存體檔案共用，並上傳 `TemplateTest.json` 檔案。
+現在,我們使用 PowerShell 創建 Azure 儲存檔案共用並上傳**樣本Test.json**檔。
 如需如何在 Azure 入口網站建立檔案共用並上傳檔案的指示，請參閱[在 Windows 上開始使用 Azure 檔案儲存體](../storage/files/storage-dotnet-how-to-use-files.md)。
 
 在您的本機電腦上啟動 PowerShell 並執行下列命令，可建立檔案共用，並將 Resource Manager 範本上傳至該檔案共用。
 
 ```powershell
-# Login to Azure
-Connect-AzureRmAccount
+# Log into Azure
+Connect-AzAccount
 
 # Get the access key for your storage account
-$key = Get-AzureRmStorageAccountKey -ResourceGroupName 'MyAzureAccount' -Name 'MyStorageAccount'
+$key = Get-AzStorageAccountKey -ResourceGroupName 'MyAzureAccount' -Name 'MyStorageAccount'
 
 # Create an Azure Storage context using the first access key
 $context = New-AzureStorageContext -StorageAccountName 'MyStorageAccount' -StorageAccountKey $key[0].value
@@ -118,7 +121,7 @@ Set-AzureStorageFileContent -ShareName $fileShare.Name -Context $context -Source
 
 ## <a name="create-the-powershell-runbook-script"></a>建立 PowerShell Runbook 指令碼
 
-現在我們建立的 PowerShell 指令碼，會從 Azure 儲存體取得 `TemplateTest.json` 檔案，並部署範本來建立新的 Azure 儲存體帳戶。
+現在,我們創建一個 PowerShell 腳本,該腳本從 Azure 儲存獲取**範本Test.json**檔,並部署範本以創建新的 Azure 儲存帳戶。
 
 在文字編輯器中，貼上下列文字：
 
@@ -141,13 +144,11 @@ param (
     $StorageFileName
 )
 
-
-
 # Authenticate to Azure if running from Azure Automation
 $ServicePrincipalConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
-Connect-AzureRmAccount `
+Connect-AzAccount `
     -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
+    -Tenant $ServicePrincipalConnection.TenantId `
     -ApplicationId $ServicePrincipalConnection.ApplicationId `
     -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint | Write-Verbose
 
@@ -164,17 +165,17 @@ Get-AzureStorageFileContent -ShareName 'resource-templates' -Context $Context -p
 $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 
 # Deploy the storage account
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-將檔案本機儲存為 `DeployTemplate.ps1`。
+將檔保存在本地為 **「部署範本.ps1」。。**
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>將 Runbook 匯入您的 Azure 自動化帳戶並加以發佈
 
 現在，我們會使用 PowerShell 將 Runbook 匯入您的 Azure 自動化帳戶，然後發佈 Runbook。
 如需關於如何在 Azure 入口網站中匯入並發佈 Runbook 的資訊，請參閱[在 Azure 自動化中管理 Runbook](manage-runbooks.md)。
 
-若要將 `DeployTemplate.ps1` 匯入您的自動化帳戶中作為 PowerShell Runbook，請執行下列 PowerShell 命令：
+要將**DeployTemplate.ps1**匯入您的自動化帳戶作為 PowerShell 執行簿,請執行以下 PowerShell 命令:
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1
@@ -186,7 +187,7 @@ $importParams = @{
     AutomationAccountName = 'MyAutomationAccount'
     Type = 'PowerShell'
 }
-Import-AzureRmAutomationRunbook @importParams
+Import-AzAutomationRunbook @importParams
 
 # Publish the runbook
 $publishParams = @{
@@ -194,14 +195,13 @@ $publishParams = @{
     AutomationAccountName = 'MyAutomationAccount'
     Name = 'DeployTemplate'
 }
-Publish-AzureRmAutomationRunbook @publishParams
+Publish-AzAutomationRunbook @publishParams
 ```
 
 ## <a name="start-the-runbook"></a>啟動 Runbook
 
-現在我們會呼叫 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) Cmdlet 來啟動 Runbook。
-
-如需關於如何在 Azure 入口網站中啟動 Runbook 的資訊，請參閱[在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md)。
+現在,我們通過調用[開始-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0
+) cmdlet 來啟動 Runbook。 如需關於如何在 Azure 入口網站中啟動 Runbook 的資訊，請參閱[在 Azure 自動化中啟動 Runbook](automation-starting-a-runbook.md)。
 
 在 PowerShell 主控台中執行下列命令：
 
@@ -214,7 +214,7 @@ $runbookParams = @{
     StorageFileName = 'TemplateTest.json' 
 }
 
-# Set up parameters for the Start-AzureRmAutomationRunbook cmdlet
+# Set up parameters for the Start-AzAutomationRunbook cmdlet
 $startParams = @{
     ResourceGroupName = 'MyResourceGroup'
     AutomationAccountName = 'MyAutomationAccount'
@@ -223,26 +223,27 @@ $startParams = @{
 }
 
 # Start the runbook
-$job = Start-AzureRmAutomationRunbook @startParams
+$job = Start-AzAutomationRunbook @startParams
 ```
 
 Runbook 執行時，您可以執行 `$job.Status` 來檢查其狀態。
 
 Runbook 會取得 Resource Manager 範本，並使用它來部署新的 Azure 儲存體帳戶。
 您可以執行下列命令來看到建立的新儲存體帳戶：
+
 ```powershell
-Get-AzureRmStorageAccount
+Get-AzStorageAccount
 ```
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-就這麼簡單！ 現在您可以使用 Azure 自動化和 Azure 儲存體，以及 Resource Manager 範本來部署您所有的 Azure 資源。
+就這麼簡單！ 現在,您可以將 Azure 自動化和 Azure 儲存與資源管理器範本一起部署所有 Azure 資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解 Resource Manager 範本，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)
+* 要瞭解有關資源管理員樣本的詳細資訊,請參閱 Azure[資源管理器概述](../azure-resource-manager/management/overview.md)。
 * 若要開始使用 Azure 儲存體，請參閱 [Azure 儲存體簡介](../storage/common/storage-introduction.md)。
 * 若要尋找其他實用的 Azure 自動化 Runbook，請參閱 [Azure 自動化的 Runbook 和模組資源庫](automation-runbook-gallery.md)。
-* 若要尋找其他實用的 Resource Manager 範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)
-
-
+* 要尋找其他有用的資源管理員樣本,請參閱[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)。
+* 有關 PowerShell cmdlet 引用,請參閱[Az.自動化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

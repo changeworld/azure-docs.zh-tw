@@ -1,14 +1,14 @@
 ---
 title: 使用參數建立動態藍圖
 description: 瞭解靜態和動態參數以及如何使用它們創建安全和動態藍圖。
-ms.date: 03/12/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677575"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383605"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>透過參數建立動態藍圖
 
@@ -28,8 +28,7 @@ ms.locfileid: "80677575"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 與 secureObject 參數
 
-雖然 Resource Manager 範本「成品」__ 支援 **secureString** 與 **secureObject** 類型的參數，Azure 藍圖要求每個都要與 Azure Key Vault 連線。
-此安全性措施可防止將祕密與藍圖儲存在一起的這種不安全做法，並鼓勵採用安全模式。 Azure 藍圖支援此種安全性措施，並在 Resource Manager 範本「成品」__ 中偵測是否包含任何一個安全參數。 服務接著會在指派期間，針對每個偵測到的安全參數提示下列 Key Vault 屬性：
+雖然 Resource Manager 範本「成品」__ 支援 **secureString** 與 **secureObject** 類型的參數，Azure 藍圖要求每個都要與 Azure Key Vault 連線。 此安全性措施可防止將祕密與藍圖儲存在一起的這種不安全做法，並鼓勵採用安全模式。 Azure 藍圖支援此種安全性措施，並在 Resource Manager 範本「成品」__ 中偵測是否包含任何一個安全參數。 服務接著會在指派期間，針對每個偵測到的安全參數提示下列 Key Vault 屬性：
 
 - Key Vault 資源識別碼
 - Key Vault 祕密名稱
@@ -62,11 +61,11 @@ ms.locfileid: "80677575"
 
 1. 新增到具有參數選項之藍圖的成品會在 [參數]**** 欄中顯示 [已填入 X 個參數 (共 Y 個)]****。 按一下成品列來編輯成品參數。
 
-   ![藍圖定義的藍圖參數](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="藍圖定義的藍圖參數" border="false":::
 
 1. [編輯成品]**** 頁面會顯示適用於所按下之成品的值選項。 成品中的每個參數都有標題、值方塊與核取方塊。 將此方塊設定為未選取狀態，以使其成為**靜態參數**。 在下列範例中，只有「位置」__ 是**靜態參數**，因為它已取消選取且 [資源群組名稱]__ 已選取。
 
-   ![藍圖工件上的靜態參數藍圖](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="藍圖工件上的靜態參數藍圖" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>從 REST API 設定靜態參數
 
@@ -177,7 +176,7 @@ ms.locfileid: "80677575"
 
 1. 在 **「分配藍圖」** 頁上,查找 **「工件」參數**部分。 至少具有一個**動態參數**的每個成品都會顯示成品與設定選項。 指派藍圖之前，請先為參數提供所需的值。 在下列範例中，「名稱」__ 是必須先定義才能完成藍圖指派的**動態參數**。
 
-   ![藍圖分配期間的藍圖動態參數](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="藍圖分配期間的藍圖動態參數" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>從 REST API 設定動態參數
 

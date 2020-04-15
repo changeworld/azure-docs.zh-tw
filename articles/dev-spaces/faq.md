@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 尋找有關 Azure 開發空間的一些常見問題的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 1fd176084cd0737a290e037ed19af510fcab3e78
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998723"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382005"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>有關 Azure 開發空間的常見問題
 
@@ -79,7 +79,7 @@ ms.locfileid: "80998723"
 
 ## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>是否可以使用具有 Azure 開發空間的窗格託管標識?
 
-目前,Azure 開發人員空間不支援在啟用 Azure 開發空間的 AKS 群集上使用[pod 託管標識][aks-pod-managed-id]。 如果安裝了 pod 託管標識,並希望卸載它,則可以在[卸載說明][aks-pod-managed-id-uninstall]中找到更多詳細資訊。
+可以,可以在啟用 Azure 開發人員空間的 AKS 群集上使用[pod 託管識別][aks-pod-managed-id],但在群集上啟用具有 pod 託管識別的 Azure 開發人員空間後,還有其他[設定步驟][dev-spaces-pod-managed-id-steps]。 如果安裝了 pod 託管標識,並希望卸載它,則可以在[卸載說明][aks-pod-managed-id-uninstall]中找到更多詳細資訊。
 
 ## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>是否可以將 Azure 開發人員空間與應用程式中的多個微服務一起使用?
 
@@ -98,6 +98,7 @@ ms.locfileid: "80998723"
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
+[dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller

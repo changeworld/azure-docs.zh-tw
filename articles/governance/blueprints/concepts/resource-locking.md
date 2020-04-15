@@ -3,12 +3,12 @@ title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項,以在分配藍圖時保護資源。
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676758"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383599"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -103,7 +103,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 如果指派選取了 [唯讀]**** 或 [不要刪除]**** 選項，則在藍圖指派期間，會將 RBAC [拒絕指派](../../../role-based-access-control/deny-assignments.md)的拒絕動作套用到成品資源。 拒絕動作會由藍圖指派的受控身分識別來新增，並且只能透過相同的受控身分識別從成品資源中移除。 此安全措施強制實施鎖定機制,並防止在 Azure 藍圖之外刪除藍圖鎖。
 
-![藍圖拒絕資源組派](../media/resource-locking/blueprint-deny-assignment.png)
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="藍圖拒絕資源組派" border="false":::
 
 每個模式的[拒絕分配屬性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示:
 

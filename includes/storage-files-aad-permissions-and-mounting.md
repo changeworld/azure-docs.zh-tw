@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011410"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383854"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向識別分配存取權限
 
@@ -98,7 +98,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>從命令提示字元裝載檔案共用
 
-使用 Windows **net use** 命令以裝載 Azure 檔案共用。 請記住,將以下範例中的占位符值替換為您自己的值。 有關安裝檔案分享的詳細資訊,請參閱使用[Windows 檔案分享](../articles/storage/files/storage-how-to-use-files-windows.md)。
+使用 Windows **net use** 命令以裝載 Azure 檔案共用。 請記住,將以下範例中的占位符值替換為您自己的值。 有關安裝檔案分享的詳細資訊,請參閱使用[Windows 檔案分享](../articles/storage/files/storage-how-to-use-files-windows.md)。 
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -123,7 +123,7 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 
 ![螢幕擷取畫面顯示使用者驗證的 Azure AD 登入畫面](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-使用以下命令裝載 Azure 文件共用。 請記得以您自己的值取代預留位置值。 由於已過身份驗證,因此無需提供存儲帳戶密鑰、AD 認證或 Azure AD 認證。 支援使用 AD 或 Azure AD DS 進行身份驗證的單一登錄體驗。
+使用以下命令裝載 Azure 文件共用。 請記得以您自己的值取代預留位置值。 由於已過身份驗證,因此無需提供存儲帳戶密鑰、AD 認證或 Azure AD 認證。 支援使用 AD 或 Azure AD DS 進行身份驗證的單一登錄體驗。 如果在使用 AD 認證時遇到問題,請檢查[Windows 中的「解決 Azure 檔案問題」 程式,](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以便進行自我診斷指導。
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

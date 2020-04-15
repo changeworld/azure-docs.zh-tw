@@ -7,20 +7,20 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 8e223d0c6243bfddc1e5a56867c4c69de5e2a62e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822446"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382900"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>針對 SQL 資料同步的問題進行疑難排解
 
-本文介紹如何解決 Azure SQL 資料同步的已知問題。如果有問題的解決方案，它在此處提供。
+本文介紹如何解決 Azure SQL 數據同步的已知問題。如果有問題的解決方案,它在此處提供。
 
 如需 SQL 資料同步的概觀，請參閱[使用 Azure SQL 資料同步，跨多個雲端和內部部署資料庫同步處理資料](sql-database-sync-data.md)。
 
@@ -29,9 +29,9 @@ ms.locfileid: "73822446"
 
 ## <a name="sync-issues"></a>同步問題
 
-- [與用戶端代理關聯的本機資料庫的門戶 UI 中的同步失敗](#sync-fails)
+- [與客戶端代理關聯的本地資料庫的門戶 UI 中的同步失敗](#sync-fails)
 
-- [同步組已卡在處理狀態](#sync-stuck)
+- [同步群組已卡處理狀態](#sync-stuck)
 
 - [我在表中看到錯誤的資料](#sync-baddata)
 
@@ -39,9 +39,9 @@ ms.locfileid: "73822446"
 
 - [我看到性能顯著下降](#sync-perf)
 
-- [我看到此消息："無法將值 Null 插入列\<列>。列不允許 null。這意味著什麼，我怎樣才能修復它？](#sync-nulls)
+- [我看到此消息:"無法將值 NULL\<插入列 列>。列不允許 null。這意味著什麼,我怎樣才能修復它?](#sync-nulls)
 
-- [資料同步如何處理循環參考？也就是說，當同一資料在多個同步組中同步，並因此不斷更改時？](#sync-circ)
+- [數據同步如何處理迴圈引用?也就是說,當同一數據在多個同步組中同步,並因此不斷更改時?](#sync-circ)
 
 ### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a> 與用戶端代理程式建立關聯的內部部署資料庫的入口網站 UI 同步失敗
 
@@ -72,10 +72,10 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
 
 - **解決方案**。 重新啟動 SQL 資料同步服務。
 
-    1. 在 **"開始"** 功能表中，搜索**服務**。
-    1. 在搜尋結果中，選擇 **"服務**"。
-    1. 查找**SQL 資料同步**服務。
-    1. 如果服務狀態**為"已停止"，** 請按右鍵服務名稱，然後選擇"**開始**"。
+    1. 在 **「開始」** 選單中,搜尋**服務**。
+    1. 在搜尋結果中,選擇 **「服務**」。。
+    1. 尋找**SQL 資料同步**服務。
+    1. 如果服務狀態**為"已停止",** 請右鍵單擊服務名稱,然後選擇"**開始**"。
 
 > [!NOTE]
 > 如果上述資訊未讓您的同步群組脫離處理中狀態，Microsoft 支援人員可以重設您的同步群組的狀態。 若要讓您同步群組的狀態重設，請在 [Azure SQL Database 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)中建立文章。 在文章中，新增您的訂用帳戶識別碼和需要重設之群組的同步群組識別碼。 Microsoft 支援工程師會回應您的文章，並在已重設狀態時告訴您。
@@ -88,7 +88,7 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
 
 - **解決方案**。 確定同步牽涉的資料表名稱彼此不同，即使資料裝屬於資料庫中的不同結構描述。
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>成功同步後，我看到不一致的主鍵資料
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>成功同步后,我看到不一致的主鍵數據
 
 同步報告為成功，且記錄檔顯示沒有任何失敗或略過的資料列，但您發現主索引鍵資料在同步群組中的資料庫之間不一致。
 
@@ -104,13 +104,13 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
 
 - **解決方案**。 最佳的修正方式就是預防。 確保您的同步群組中沒有循環參考。 由某個同步群組同步的任何資料列不能同步至另一個同步群組。
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>我看到此消息："無法將值 Null 插入列\<列>。 資料行不允許 Null。」 這是什麼意思，該如何修正？ 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>我看到此消息:"無法將值 NULL\<插入列 列>。 資料行不允許 Null。」 這是什麼意思，該如何修正？ 
 此錯誤訊息表示發生了下列兩種問題的其中之一：
 -  資料表沒有主索引鍵。 若要修正此問題，請將主索引鍵新增至要同步的所有資料表。
 -  在 CREATE INDEX 陳述式中可能有 WHERE 子句。 資料同步不會處理這個狀況。 若要修正此問題，請移除 WHERE 子句或手動變更所有資料庫。 
  
 ### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> 資料同步如何處理循環參考？ 也就是，相同的資料已在多個同步群組中同步，且因此持續變更？
-資料同步不會處理循環參考。 請務必避免。 
+數據同步不處理迴圈引用。 請務必避免。 
 
 ## <a name="client-agent-issues"></a>用戶端代理程式問題
 
@@ -120,7 +120,7 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
 
 - [我收到「磁碟空間不足」的訊息](#setup-space)
 
-- [無法刪除同步組](#setup-delete)
+- [無法移除同步群組](#setup-delete)
 
 - [無法取消註冊本地 SQL Server 資料庫](#setup-unreg)
 
@@ -128,13 +128,13 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
 
 - [資料庫具有「過期」狀態](#setup-date)
 
-- [同步組具有"過期"狀態](#setup-date2)
+- [同步組有「過期」狀態](#setup-date2)
 
-- [在卸載或停止代理後的三分鐘內無法刪除同步組](#setup-delete2)
+- [在卸載或停止代理後的三分鐘內無法刪除同步群組](#setup-delete2)
 
 - [當我還原遺失或損毀的資料庫時，會發生什麼情況？](#setup-restore)
 
-### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>我收到一條"磁碟空間不足"消息
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>我收到一條「磁碟空間不足」消息
 
 - **原因**。 如果必須刪除剩餘的檔案，可能會出現「磁碟空間不足」訊息。 這可能是因為防毒軟體，或是嘗試進行刪除作業時檔案開啟。
 
@@ -185,7 +185,7 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
   1. 選取 [編輯認證]****，然後輸入資料庫的認證。
   1. 繼續進行取消註冊。
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>我沒有足夠的許可權啟動系統服務
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>沒有足夠的權限啟動系統服務
 
 - **原因**。 有兩種情況會發生此錯誤：
   -   使用者名稱及/或密碼不正確。
@@ -193,13 +193,13 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
 
 - **解決方案**。 授與以服務方式登入的服務認證給使用者帳戶：
 
-  1. 轉到**啟動** > **控制台** > **管理工具** > **本地安全性原則** > **本地策略** > **使用者版權管理**。
+  1. 跳到**啟動** > **控制面板** > **管理工具** > **本地安全原則** > **本地原則** > **使用者權限管理**。
   1. 選取 [以服務方式登入]****。
   1. 在 [內容]**** 對話方塊中，新增使用者帳戶。
   1. 選取 [套用]****，然後選取 [確定]****。
   1. 關閉所有視窗。
 
-### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>資料庫具有"過期"狀態
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>資料庫具有「過期」狀態
 
 - **原因**。 SQL 資料同步會從服務移除已離線 45 天以上 (從資料庫離線的時開始計算) 的資料庫。 如果資料庫離線 45 天以上，然後再恢復上線，其狀態是**過期**。
 
@@ -234,7 +234,7 @@ SQL 資料同步中的同步群組已處於處理中狀態一段時間。 它不
     b.  在內部部署電腦上安裝代理程式 (可在相同或不同電腦上)。 然後提交在入口網站中為顯示為離線之代理程式所產生的代理程式金鑰。  
     c. 嘗試刪除同步群組。
 
-### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>還原丟失或損壞的資料庫時會發生什麼情況？
+### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>還原丟失或損壞的資料庫時會發生什麼情況?
 
 如果您從備份還原遺失或損毀的資料庫，資料庫所屬的同步群組中可能有無法聚合的資料。
 

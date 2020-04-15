@@ -85,8 +85,6 @@
   items:
     - name: TLS 支援
       href: iot-hub-tls-support.md
-    - name: TLS 1.0 和 1.1 淘汰
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: 虛擬網路支援
       href: virtual-network-support.md
     - name: 訊息擴充 概觀
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: 移轉至診斷設定
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: TLS 1.0 和 1.1 淘汰
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: 資源
   items:
     - name: 支援和協助選項

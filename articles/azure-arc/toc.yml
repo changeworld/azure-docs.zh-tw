@@ -18,7 +18,3 @@
       items:
         - name: 管理代理程式
           href: ./servers/manage-agent.md
-- name: 參考
-  items:
-    - name: Azure 連線的機器代理程式 CLI 介面
-      href: ./servers/azcmagent-reference.md

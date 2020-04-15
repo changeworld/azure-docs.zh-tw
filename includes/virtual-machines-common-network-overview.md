@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9e6eafc4e2f6ae4a0cf1d99cb63bfed53db77f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029318"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81384915"
 ---
 當您建立 Azure 虛擬機器 (VM) 時，您必須建立[虛擬網路](../articles/virtual-network/virtual-networks-overview.md) (VNet)，或使用現有的 VNet。 您也需要決定如何在 VNet 上存取您的 VM。 請務必[在建立資源前進行規劃](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)，並確定您已了解[網路資源的限制](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
@@ -38,14 +38,14 @@ ms.locfileid: "77029318"
 
 您可以使用多個 NIC 來建立 VM，並透過 VM 的生命週期來新增或移除 NIC。 多個 NIC 允許 VM 連線到不同的子網路，並透過最適當的介面來傳送或接收流量。 有任意多個網路介面的 VM (最多可達 VM 大小所支援的數目) 可存在於相同的可用性設定組中。 
 
-連接到 VM 的每個 NIC 都必須與 VM 位於相同的位置和訂用帳戶。 每個 NIC 都必須連接到與 NIC 位於相同 Azure 位置和訂用帳戶中的 VNet。 您可以變更 VM 建立之後所要連線的子網路，但無法變更它所連線的 VNet。 連接到 VM 的每個 NIC 會被指派 MAC 位址，該 MAC 位址在 VM 刪除前不會變更。
+連接到 VM 的每個 NIC 都必須與 VM 位於相同的位置和訂用帳戶。 每個 NIC 都必須連接到與 NIC 位於相同 Azure 位置和訂用帳戶中的 VNet。 您可以變更 VM 建立之後所要連線的子網路，但無法變更它所連線的 VNet。 連接到 VM 的每個 NIC 都會分配一個 MAC 位址,在刪除 VM 之前不會更改該位址。
 
 下表列出可用於建立網路介面的方法。
 
 | 方法 | 描述 |
 | ------ | ----------- |
 | Azure 入口網站 | 當您在 Azure 入口網站中建立 VM 時，系統會自動為您建立網路介面 (您無法使用您個別建立的 NIC)。 入口網站會建立只有一個 NIC 的 VM。 如果您想要建立具有多個 NIC 的 VM，您必須使用不同的方法來建立它。 |
-| [Azure 電源外殼](../articles/virtual-machines/windows/multiple-nics.md) | 使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) \(英文\) 搭配 **-PublicIpAddressId** 參數，來提供您先前建立之公用 IP 位址的識別碼。 |
+| [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | 使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) \(英文\) 搭配 **-PublicIpAddressId** 參數，來提供您先前建立之公用 IP 位址的識別碼。 |
 | [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 若要提供您先前建立之公用 IP 位址的識別碼，請使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) 搭配 **--public-ip-address** 參數。 |
 | [範本](../articles/virtual-network/template-samples.md) | 使用[虛擬網路中具有公用 IP 位址的網路介面](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)做為使用範本部署網路介面的指南。 |
 
@@ -66,8 +66,8 @@ ms.locfileid: "77029318"
 
 | 方法 | 描述 |
 | ------ | ----------- |
-| [Azure 門戶](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 依照預設，公用 IP 位址是動態的，而且與其相關聯的位址可能會在停止或刪除 VM 時變更。 若要保證 VM 一律使用相同的公用 IP 位址，請建立靜態公用 IP 位址。 根據預設，入口網站會在建立 VM 時將動態私人 IP 位址指派給 NIC。 您可以在 VM 建立後，將此 IP 位址變更為靜態。|
-| [Azure 電源外殼](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | 您可以使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) \(英文\) 搭配 Dynamic 或 Static 的 **-AllocationMethod** 參數。 |
+| [Azure 入口網站](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 依照預設，公用 IP 位址是動態的，而且與其相關聯的位址可能會在停止或刪除 VM 時變更。 若要保證 VM 一律使用相同的公用 IP 位址，請建立靜態公用 IP 位址。 根據預設，入口網站會在建立 VM 時將動態私人 IP 位址指派給 NIC。 您可以在 VM 建立後，將此 IP 位址變更為靜態。|
+| [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | 您可以使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) \(英文\) 搭配 Dynamic 或 Static 的 **-AllocationMethod** 參數。 |
 | [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | 您可使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 搭配 [動態] 或 [靜態] 的 **--allocation-method** 參數。 |
 | [範本](../articles/virtual-network/template-samples.md) | 使用[虛擬網路中具有公用 IP 位址的網路介面](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)做為使用範本部署公用 IP 位址的指南。 |
 
@@ -79,18 +79,18 @@ ms.locfileid: "77029318"
 
 當您設定 VNet 時，您可以指定拓撲，包括可用的位址空間和子網路。 如果 VNet 要連接至其他 Vnet 或內部部署網路，您必須選取不重疊的位址範圍。 IP 位址是私人位址而無法從網際網路存取，此情況只有針對不可路由傳送的 IP 位址才成立，例如 10.0.0.0/8、172.16.0.0/12 或 192.168.0.0/16。 現在，Azure 會將任何位址範圍視為私人 VNet IP 位址空間的一部分，而該位址空間僅能在 VNet、互連式 VNet 中，以及從內部部署位置進行存取。 
 
-如果您在由他人負責內部網路的組織中工作，您應該先洽詢該人員，再選取您的位址空間。 請確定沒有重疊，並且讓他們知道您想要使用的空間，他們才不會嘗試使用相同的 IP 位址範圍。 
+如果您在由他人負責內部網路的組織中工作，您應該先洽詢該人員，再選取您的位址空間。 確保沒有重疊,並讓他們知道要使用的空間,以便他們不要嘗試使用相同的 IP 位址範圍。 
 
 根據預設，子網路之間沒有任何安全界限，所以每個子網路中的 VM 都可以彼此通訊。 不過，您可以設定網路安全性群組 (NSG)，以便控制往返子網路及往返 VM 的流量。 
 
-下表列出可用於建立 VNet 和子網路的方法。 
+下表列出可用於建立 VNet 和子網路的方法。    
 
 | 方法 | 描述 |
 | ------ | ----------- |
-| [Azure 門戶](../articles/virtual-network/quick-create-portal.md) | 如果您讓 Azure 在您建立 VM 時建立 VNet，則名稱為包含 VNet 和 **-vnet** 的資源群組名稱組合。 位址空間是 10.0.0.0/24，必要的子網路名稱是**default**，而子網路位址範圍是 10.0.0.0/24。 |
-| [Azure 電源外殼](../articles/virtual-network/quick-create-powershell.md) | 您可以使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) \(英文\) 和 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) \(英文\) 來建立子網路和 VNet。 您也可以使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) \(英文\) 來將子網路新增至現有的 VNet。 |
+| [Azure 入口網站](../articles/virtual-network/quick-create-portal.md) | 如果您讓 Azure 在您建立 VM 時建立 VNet，則名稱為包含 VNet 和 **-vnet** 的資源群組名稱組合。 位址空間是 10.0.0.0/24，必要的子網路名稱是**default**，而子網路位址範圍是 10.0.0.0/24。 |
+| [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | 您可以使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) \(英文\) 和 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) \(英文\) 來建立子網路和 VNet。 您也可以使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) \(英文\) 來將子網路新增至現有的 VNet。 |
 | [Azure CLI](../articles/virtual-network/quick-create-cli.md) | 子網路和 VNet 會在同一時間建立。 將 **--subnet-name** 參數提供給包含子網路名稱的 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)。 |
-| [範本] | 創建 VNet 和子網的最簡單方法是下載現有範本，例如[具有兩個子網的虛擬網路](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)，並根據需要對其進行修改。 |
+| [範本] | 創建 VNet 和子網的最簡單方法是下載現有範本,例如[具有兩個子網的虛擬網路](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets),並根據需要對其進行修改。 |
 
 ## <a name="network-security-groups"></a>網路安全性群組
 
@@ -108,8 +108,8 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 
 | 方法 | 描述 |
 | ------ | ----------- |
-| [Azure 門戶](../articles/virtual-network/tutorial-filter-network-traffic.md) | 當您在 Azure 入口網站中建立 VM 時，NSG 會自動建立並與入口網站所建立的 NIC 產生關聯。 NSG 名稱是 VM 名稱與 **-nsg** 的組合。 此 NSG 包含一個輸入規則，其優先順序為 1000、服務設定為 RDP、通訊協定設定為 TCP、連接埠設定為 3389，而動作設定為 [允許]。 如果想要允許 VM 的任何其他輸入流量，您必須將其他規則新增至 NSG。 |
-| [Azure 電源外殼](../articles/virtual-network/tutorial-filter-network-traffic.md) | 使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) \(英文\) 並提供必要的規則資訊。 使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) \(英文\) 來建立 NSG。 使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) \(英文\) 來設定子網路的 NSG。 使用 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) \(英文\) 來將 NSG 新增至 VNet。 |
+| [Azure 入口網站](../articles/virtual-network/tutorial-filter-network-traffic.md) | 當您在 Azure 入口網站中建立 VM 時，NSG 會自動建立並與入口網站所建立的 NIC 產生關聯。 NSG 名稱是 VM 名稱與 **-nsg** 的組合。 此 NSG 包含一個輸入規則，其優先順序為 1000、服務設定為 RDP、通訊協定設定為 TCP、連接埠設定為 3389，而動作設定為 [允許]。 如果想要允許 VM 的任何其他輸入流量，您必須將其他規則新增至 NSG。 |
+| [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | 使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) \(英文\) 並提供必要的規則資訊。 使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) \(英文\) 來建立 NSG。 使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) \(英文\) 來設定子網路的 NSG。 使用 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) \(英文\) 來將 NSG 新增至 VNet。 |
 | [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) 初始建立 NSG。 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg/rule) 將規則新增至 NSG。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet) 將 NSG 新增至子網路。 |
 | [範本](../articles/virtual-network/template-samples.md) | 使用[建立網路安全性群組](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create)做為使用範本部署網路安全性群組的指南。 |
 
@@ -121,18 +121,19 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 
 當您建立負載平衡器時，您也必須考慮下列組態元素︰
 
-- **前端 IP 組態** – 負載平衡器可以包含一或多個前端 IP 位址 (亦稱為虛擬 IP (VIP))。 這些 IP 位址做為流量的輸入。
+- **前端 IP 設定**– 負載均衡器可以包括一個或多個前端 IP 位址。 這些 IP 位址做為流量的輸入。
 - **後端位址集區** – 與 NIC 相關聯的 IP 位址，而負載會散發到該 NIC。
-- **NAT 規則** - 定義輸入流量流經前端 IP 並散發到後端 IP 的方式。
+- **[埠轉寄](../articles/load-balancer/tutorial-load-balancer-port-forwarding-portal.md)**- 定義入站流量如何串流經前端 IP,以及如何利用入站 NAT 規則分發到後端 IP。
 - **負載平衡器規則** - 將指定的前端 IP 與連接埠組合對應到一組後端 IP 位址與連接埠組合。 單一負載平衡器可以有多個負載平衡規則。 每個規則都是與 VM 相關聯的前端 IP 和連接埠以及後端 IP 和連接埠的組合。
 - **[探查](../articles/load-balancer/load-balancer-custom-probe-overview.md)** - 監視 VM 的健康狀態。 當探查無法回應時，負載平衡器會停止將新的連線傳送至狀況不良的 VM。 現有的連線不會受到影響，而新的連線會傳送到狀況良好的 VM。
+- **[出站規則](../articles/load-balancer/load-balancer-outbound-rules-overview.md)**- 出站規則為標準負載均衡器後端池標識的所有虛擬機器或實例配置出站網路位址轉換 (NAT), 以便轉換為前端。
 
 下表列出可用於建立網際網路面向負載平衡器的方法。
 
 | 方法 | 描述 |
 | ------ | ----------- |
 | Azure 入口網站 |  您可以使用[Azure 門戶將平衡 Internet 流量載入到 VM。](../articles/load-balancer/tutorial-load-balancer-standard-manage-portal.md) |
-| [Azure 電源外殼](/azure/load-balancer/load-balancer-get-started-ilb-arm-ps) | 若要提供您先前建立之公用 IP 位址的識別碼，請使用 [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PublicIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
+| [Azure PowerShell](/azure/load-balancer/load-balancer-get-started-ilb-arm-ps) | 若要提供您先前建立之公用 IP 位址的識別碼，請使用 [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PublicIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
 | [Azure CLI](../articles/load-balancer/load-balancer-get-started-internet-arm-cli.md) | 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) 建立初始的負載平衡器組態。 使用 [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) 新增您先前建立的公用 IP 位址。 使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) 新增後端位址集區的組態。 使用 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) 新增 NAT 規則。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) 新增負載平衡器規則。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) 新增探查。 |
 | [範本](../articles/load-balancer/quickstart-load-balancer-standard-public-template.md) | 以[負載平衡器中的 2 部 VM 並在 LB 上設定 NAT 規則](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create)做為使用範本部署負載平衡器的指南。 |
     
@@ -140,10 +141,31 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 
 | 方法 | 描述 |
 | ------ | ----------- |
-| Azure 入口網站 | 您可以在[Azure 門戶中與基本負載等化器平衡內部流量負載](../articles/load-balancer/tutorial-load-balancer-basic-internal-portal.md)。 |
-| [Azure 電源外殼](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | 若要在網路子網路中提供私人 IP 位址，請使用 [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PrivateIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
+| Azure 入口網站 | 您可以在[Azure 門戶中與負載均衡器平衡內部流量負載](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md)。 |
+| [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | 若要在網路子網路中提供私人 IP 位址，請使用 [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) \(英文\) 搭配 **-PrivateIpAddress** 參數。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) \(英文\) 來建立後端位址集區的設定。 使用 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) \(英文\) 來建立與您建立之前端 IP 設定相關聯的輸入 NAT 規則。 使用 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) \(英文\) 來建立您所需的探查。 使用 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) \(英文\) 來建立負載平衡器設定。 使用 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) \(英文\) 來建立負載平衡器。|
 | [Azure CLI](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md) | 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) 命令建立初始的負載平衡器組態。 若要定義私人 IP 位址，請使用 [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) 搭配 **--private-ip-address** 參數。 使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) 新增後端位址集區的組態。 使用 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) 新增 NAT 規則。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) 新增負載平衡器規則。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) 新增探查。|
 | [範本](../articles/load-balancer/load-balancer-get-started-ilb-arm-template.md) | 以[負載平衡器中的 2 部 VM 並在 LB 上設定 NAT 規則](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)做為使用範本部署負載平衡器的指南。 |
+
+### <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
+
+使用虛擬機秤集和負載均衡器時,應考慮以下事項:
+
+* **多個虛擬機器規模集不能使用相同的負載均衡器**。
+* **連接埠轉寄與輸入的站 NAT 規則**:
+  * 每個虛擬機規模集必須具有入站 NAT 規則。
+  * 當在負載均衡器的後端池中使用虛擬機器比例設置時,將自動創建預設入站 NAT 規則,這是設計。
+* **負載平衡規則**：
+  * 當在負載均衡器的後端池中使用虛擬機比例設置時,將自動創建預設負載平衡規則,這是設計。
+* **出站規則**:
+  *  要為負載平衡規則已引用的後端池建立出站規則,您需要在創建入站負載平衡規則時,首先在門戶中將 **「創建隱式出站規則」** 標記為 **「否**」 。
+
+  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="負載平衡規則建立" border="true":::
+
+以下方法可用於部署具有現有 Azure 負載均衡器的虛擬機規模集。
+
+* [使用 Azure 門戶使用現有 Azure 負載均衡器設定虛擬機器規模集](../articles/load-balancer/configure-vm-scale-set-portal.md)。
+* [使用 Azure PowerShell 使用現有的 Azure 負載均衡器設定虛擬機器規模集](../articles/load-balancer/configure-vm-scale-set-powershell.md)。
+* [使用 Azure CLI 設定具有現有 Azure 負載均衡器的虛擬機器規模集](../articles/load-balancer/configure-vm-scale-set-cli.md)。
 
 ## <a name="vms"></a>VM
 
@@ -157,8 +179,8 @@ VM 會在部署時被指派 IP 位址。 如果您將多部 VM 部署至 VNet �
 
 | 方法 | 描述 |
 | ------ | ----------- |
-| [Azure 門戶](../articles/virtual-machines/windows/quick-create-portal.md) | 使用先前所述的預設網路設定來建立具有單一 NIC 的 VM。 若要建立具有多個 NIC 的 VM，您必須使用不同的方法。 |
-| [Azure 電源外殼](../articles/virtual-machines/windows/tutorial-manage-vm.md) | 包含使用 [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) \(英文\) 來將先前建立的 NIC 新增至 VM 設定。 |
+| [Azure 入口網站](../articles/virtual-machines/windows/quick-create-portal.md) | 使用先前所述的預設網路設定來建立具有單一 NIC 的 VM。 若要建立具有多個 NIC 的 VM，您必須使用不同的方法。 |
+| [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | 包含使用 [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) \(英文\) 來將先前建立的 NIC 新增至 VM 設定。 |
 | [Azure CLI](../articles/virtual-machines/linux/create-cli-complete.md) | 建立 VM 並加以連線至 Vnet、子網路以及建置作為個別步驟的 NIC。 |
 | [範本](../articles/virtual-machines/windows/ps-template.md) | 使用[非常簡單的 Windows VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)做為使用範本部署 VM 的指南。 |
 
@@ -170,4 +192,4 @@ VM 會在部署時被指派 IP 位址。 如果您將多部 VM 部署至 VNet �
 - 了解如何設定[使用者定義的路由和 IP 轉送](../articles/virtual-network/virtual-networks-udr-overview.md)。 
 - 了解如何設定 [VNet 對 VNet 連接](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 - 了解如何[針對路由進行疑難排解](../articles/virtual-network/diagnose-network-routing-problem.md)。
-- 瞭解有關[虛擬機器網路頻寬](../articles/virtual-network/virtual-machine-network-throughput.md)的更多資訊。
+- 瞭解有關[虛擬機網路頻寬](../articles/virtual-network/virtual-machine-network-throughput.md)的更多資訊。

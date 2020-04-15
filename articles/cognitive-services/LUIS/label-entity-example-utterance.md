@@ -1,21 +1,14 @@
 ---
 title: 標記實體範例語句
-titleSuffix: Azure Cognitive Services
 description: 了解如何在 LUIS 入口網站的意圖詳細資料頁面中，以範例語句中的子元件標記機器學習實體。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898364"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382408"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在範例語句中標記機器學習實體
 
@@ -87,6 +80,10 @@ ms.locfileid: "78898364"
 1. 開啟實體選擇區之後，請從實體清單中選取實體。
 1. 移至 [實體偵測器]****，然後選取現有的角色或建立新的角色。
 1. 在範例語句文字中，以實體角色標記文字。
+
+## <a name="labeling-for-punctuation"></a>標點符號的標籤
+
+您無需為標點符號添加標籤。 使用[應用程式設置](luis-reference-application-settings.md)控制標點符號是否影響陳述預測。
 
 ## <a name="unlabel-entities"></a>將實體取消標記
 

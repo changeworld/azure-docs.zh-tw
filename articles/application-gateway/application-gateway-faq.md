@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544513"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312475"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有關應用程式閘道的常見問題
 
@@ -28,11 +28,11 @@ Azure 應用程式閘道提供應用程式提供控制器 (ADC) 作為服務。 
 
 ### <a name="what-features-does-application-gateway-support"></a>應用程式閘道支援哪些功能？
 
-應用程式閘道支援自動縮放、SSL 卸載和端到端 SSL、Web 應用程式防火牆 (WAF)、基於 Cookie 的作業階段關聯性、基於 URL 路徑的路由、多網站託管和其他功能。 如需完整的支援功能清單，請參閱[應用程式閘道簡介](application-gateway-introduction.md)。
+應用程式閘道支援自動縮放、TLS 卸載和端到端 TLS、Web 應用程式防火牆 (WAF)、基於 Cookie 的作業階段關聯性、基於 URL 路徑的路由、多網站託管和其他功能。 如需完整的支援功能清單，請參閱[應用程式閘道簡介](application-gateway-introduction.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>應用程式閘道和 Azure 負載均衡器有何不同?
 
-應用程式閘道是第 7 層負載均衡器,這意味著它僅適用於 Web 流量(HTTP、HTTPS、WebSocket 和 HTTP/2)。 它支援 SSL 終止、基於 Cookie 的會話相關性和負載平衡流量的循環等功能。 負載均衡器負載平衡層 4 層(TCP 或 UDP)的流量。
+應用程式閘道是第 7 層負載均衡器,這意味著它僅適用於 Web 流量(HTTP、HTTPS、WebSocket 和 HTTP/2)。 它支援諸如 TLS 終止、基於 Cookie 的工作階段關聯和負載平衡流量的循環等功能。 負載均衡器負載平衡層 4 層(TCP 或 UDP)的流量。
 
 ### <a name="what-protocols-does-application-gateway-support"></a>應用程式閘道支援哪些通訊協定？
 
@@ -98,7 +98,7 @@ Azure 應用程式閘道提供應用程式提供控制器 (ADC) 作為服務。 
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>應用程式閘道 v2 是否支援使用者定義的路由 (UDR)?
 
-是,但僅限於特定方案。 有關詳細資訊,請參閱[應用程式閘道設定概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。
+是,但僅限於特定方案。 如需詳細資訊，請參閱[應用程式閘道設定概觀](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>應用程式閘道是否支援 x-forwarded-for 標頭？
 
@@ -216,7 +216,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 應用程式閘道 v2 目前不支援 IPv6。 它只能使用 IPv4 在雙堆疊 VNet 中運行,但閘道網必須僅 IPv4。 應用程式閘道 v1 不支援雙堆疊 VNet。 
 
-## <a name="configuration---ssl"></a>設定 - SSL
+## <a name="configuration---tls"></a>設定 - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>應用程式閘道支援哪些證書?
 
@@ -255,13 +255,13 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-關於如何自訂 SSL 選項的資訊,請參考[在應用程式閘道上設定 SSL 政策版本與密碼套件](application-gateway-configure-ssl-policy-powershell.md)。
+關於如何自訂 TLS 選項的資訊,請參考[在應用程式閘道上設定 TLS 策略版本與密碼套件](application-gateway-configure-ssl-policy-powershell.md)。
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>應用程式閘道是否支援對後端的流量重新加密?
 
-是。 應用程式閘道支援 SSL 卸載和端到端 SSL,後者將流量重新加密到後端。
+是。 應用程式閘道支援 TLS 卸載和端到端 TLS,後者重新加密到後端的流量。
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>是否可以配置 SSL 策略來控制 SSL 協定版本?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以配置 TLS 策略來控制 TLS 協定版本嗎?
 
 是。 您可以將應用程式閘道配置為拒絕 TLS1.0、TLS1.1 和 TLS1.2。 默認情況下,SSL 2.0 和 3.0 已禁用,並且不可配置。
 
@@ -278,9 +278,9 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 應用程式閘道使用 SHA256 進行後端管理。
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>應用程式閘道支援多少個 SSL 憑證?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>應用程式閘道支援多少個 TLS/SSL 憑證?
 
-應用程式閘道最多支援 100 個 SSL 憑證。
+應用程式閘道最多支援 100 個 TLS/SSL 憑證。
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>應用程式閘道支援多少個後端重新加密身份驗證證書?
 
@@ -288,7 +288,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>應用程式閘道是否本機與 Azure 金鑰保管庫整合?
 
-是的,應用程式閘道 v2 SKU 支援金鑰保管庫。 關於詳細資訊,請參閱[使用金鑰保管庫憑證的 SSL 終止](key-vault-certs.md)。
+是的,應用程式閘道 v2 SKU 支援金鑰保管庫。 關於詳細資訊,請參閱[使用金鑰保管庫憑證的 TLS 終止](key-vault-certs.md)。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>如何為 .com 和 .net 網站設定 HTTPS 偵聽器? 
 
@@ -338,7 +338,7 @@ WAF 目前支援 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 ### <a name="what-is-an-ingress-controller"></a>什麼是入口控制器?
 
-Kubernetes 允許`deployment``service`建立 和資源來在群集內部公開一組 pod。 為了在外部公開同一服務,定義了[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)提供負載平衡、SSL 終止和基於名稱的虛擬託管的資源。
+Kubernetes 允許`deployment``service`建立 和資源來在群集內部公開一組 pod。 為了在外部公開同一服務,定義了[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)提供負載平衡、TLS 終止和基於名稱的虛擬託管的資源。
 為了滿足此`Ingress`資源,需要一個入口控制器,用於偵`Ingress`聽 對資源的任何更改並配置負載均衡器策略。
 
 應用程式閘道閘道控制器允許將[Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/)用作[Azure 庫伯奈斯服務](https://azure.microsoft.com/services/kubernetes-service/)的入口,也稱為 AKS 群集。

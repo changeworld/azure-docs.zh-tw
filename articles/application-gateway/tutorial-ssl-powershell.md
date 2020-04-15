@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 進行 SSL 終止
+title: 使用 PowerShell 的 TLS 連接
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure PowerShell 建立應用程式閘道，並新增 SSL 終止的憑證。
+description: 瞭解如何使用 Azure PowerShell 創建應用程式閘道並添加 TLS 終止證書。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2ce5b8472fe10b51cff34677c9ce5a89888bdc01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075070"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311928"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>使用 Azure PowerShell 建立包含 SSL 終止的應用程式閘道
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>使用 Azure PowerShell 建立具有 TLS 終止的應用程式閘道
 
-您可以使用 Azure PowerShell 來建立[應用程式閘道](overview.md)，當中包含使用[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作為後端伺服器的 [SSL 終止](ssl-overview.md)憑證。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。 
+可以使用 Azure PowerShell 建立具有[TLS/SSL 終止](ssl-overview.md)憑證[的應用程式閘道](overview.md),該憑證使用虛擬機器[擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的後端伺服器。 在此範例中，該擴展集包含兩個虛擬機器執行個體，這些執行個體會新增至應用程式閘道的預設後端集區。 
 
 在本文中，您將學會如何：
 
@@ -36,7 +36,7 @@ ms.locfileid: "74075070"
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
-若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在本文中，您將使用[New-Selfsigned 證書](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate)創建自簽章憑證。 您可以使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。
+若要在生產環境中使用，您應該匯入由受信任提供者所簽署的有效憑證。 在本文中,您將使用[New-Selfsigned 證書](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate)創建自簽名證書。 您可以使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。
 
 ```powershell
 New-SelfSignedCertificate `

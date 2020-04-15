@@ -25,7 +25,7 @@
         - name: Databricks
           href: prepay-databricks-reserved-capacity.md
         - name: 資料總管
-          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 磁碟儲存體
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 專用主機

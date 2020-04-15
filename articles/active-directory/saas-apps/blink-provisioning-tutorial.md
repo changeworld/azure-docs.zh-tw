@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618347"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381031"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教學:自動使用者預配設定閃爍
 
@@ -113,7 +113,7 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]****。
+7. 按一下 [檔案]  。
 
 8. 在 **「映射」** 部分下,選擇 **「將 Azure 活動目錄使用者同步到閃爍**」。。
 
@@ -121,7 +121,7 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
 9. 在**屬性映射**部分中查看從 Azure AD 同步到閃爍的使用者屬性。 選擇為 **「匹配屬性」** 的屬性用於符合 Blink 中的使用者帳戶以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
 
-    ![閃爍使用者屬性](media/blink-provisioning-tutorial/User_attributes.png)
+    ![閃爍使用者屬性](media/blink-provisioning-tutorial/user-attributes.png)
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

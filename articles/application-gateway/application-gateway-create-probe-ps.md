@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 創建自訂探測器
+title: 使用 PowerShell 建立自訂偵測器
 titleSuffix: Azure Application Gateway
 description: 了解如何在資源管理員中使用 PowerShell 建立應用程式閘道的自訂探查
 services: application-gateway
@@ -8,17 +8,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075265"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312594"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用 Azure 資源管理員的 PowerShell 建立 Azure 應用程式閘道的自訂探查
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](application-gateway-create-probe-portal.md)
+> * [Azure 入口網站](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 經典電源外殼](application-gateway-create-probe-classic-ps.md)
 
@@ -87,14 +87,14 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 您先設定所有組態項目，再建立應用程式閘道。 下列範例會建立應用程式閘道資源所需的組態項目。
 
-| **元件** | **描述** |
+| **元件** | **說明** |
 |---|---|
 | **閘道 IP 設定** | 應用程式閘道的 IP 設定。|
 | **後端池** | 這是應用程式伺服器的 IP 位址、FQDN 或 NIC 的集區，此應用程式伺服器負責裝載 Web 應用程式|
-| **健康探頭** | 用於監視後端集區成員健康狀態的自訂探查|
-| **HTTP 設置** | 包括連接埠、通訊協定、以 Cookie 為依據的親和性、探查和逾時等設定的集合。  這些設定會決定流量路由傳送到後端集區成員的方式|
+| **健全狀況探查** | 用於監視後端集區成員健康狀態的自訂探查|
+| **HTTP 設定** | 包括連接埠、通訊協定、以 Cookie 為依據的親和性、探查和逾時等設定的集合。  這些設定會決定流量路由傳送到後端集區成員的方式|
 | **前端連接埠** | 應用程式閘道接聽流量的連接埠|
-| **聽眾** | 通訊協定、前端 IP 設定以及前端連接埠的組合。 這是用於接聽傳入要求的項目。
+| **接聽程式** | 通訊協定、前端 IP 設定以及前端連接埠的組合。 這是用於接聽傳入要求的項目。
 |**規則**| 根據 HTTP 設定，將流量路由傳送至適當的後端。|
 
 ```powershell
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>後續步驟
 
-通過訪問瞭解如何配置 SSL 卸載：[配置 SSL 卸載](application-gateway-ssl-arm.md)
+透過存取如何設定 TLS 卸載:[設定 TLS 卸載](application-gateway-ssl-arm.md)
 

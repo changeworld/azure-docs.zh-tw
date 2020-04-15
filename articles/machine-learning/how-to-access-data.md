@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668650"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383450"
 ---
 # <a name="connect-to-azure-storage-services"></a>連接到 Azure 儲存服務
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ ms.locfileid: "80668650"
 創建工作區時,Azure Blob 容器和 Azure 檔共享將自動註冊到工作區。 它們分別被命名`workspaceblobstore`與`workspacefilestore`。 `workspaceblobstore`用於存儲工作區工件和機器學習實驗日誌。 `workspacefilestore`用於存儲通過[計算實例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授權的筆記本和 R 腳本。 容器`workspaceblobstore`設定為默認數據存儲。
 
 > [!IMPORTANT]
-> 在設計器主頁中打開範例時,Azure 機器學習設計器(預覽版)將自動創建名為**azureml_globaldatasets**的數據存儲。 此資料存儲僅包含示例數據集。 **請不要**使用此資料儲存進行任何機密數據存取!
+> 在設計器主頁中打開範例時,Azure 機器學習設計器(預覽版)將自動創建名為**azureml_globaldatasets**的數據存儲。 此資料存儲僅包含示例數據集。 **請不要**使用此數據存儲進行任何機密數據訪問。
 > ![自動建立設計器範例資料集的資料儲存](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ ms.locfileid: "80668650"
 您可以在 Azure`register()`[門戶](https://portal.azure.com)上找到填充方法所需的資訊。
 選擇左側窗格中的**存儲帳戶**,然後選擇要註冊的存儲帳戶。 **"概述"** 頁提供帳戶名稱、容器和檔共用名稱等資訊。 
 
-* 對身份認證項目(如帳號金鑰或 SAS 權杖),轉到 **「設定」** 的**帳號 。** 
+* 對於認證認證(如帳號金鑰或 SAS 權杖),轉到 **「設定」** 窗格上的 **「存取金鑰**」 。 
 
 * 對於服務主體專案(如租戶ID和用戶端ID),請轉到**應用註冊**並選擇要使用的應用。 其相應的 **「概述」** 頁將包含這些專案。
 
@@ -107,13 +107,13 @@ ms.locfileid: "80668650"
 
 要將 Azure Blob 容器註冊為[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)資料儲存, 請使用 。
 
-以下代碼創建`blob_datastore_name`資料存儲並將註冊到`ws`工作區。 此資料存儲通過使用提供的帳戶密鑰`my-container-name`存取儲存帳戶上的`my-account-name`Blob 容器。
+以下代碼創建`blob_datastore_name`資料存儲並將註冊到`ws`工作區。 此資料存儲通過使用提供的帳戶存取`my-container-name`密鑰存取儲存`my-account-name`帳戶 上的Blob容器。
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 要將 Azure 檔案分享註冊為資料儲存,[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)請使用 。 
 
-以下代碼創建`file_datastore_name`資料存儲並將註冊到`ws`工作區。 此資料存儲通過使用提供的帳戶密鑰`my-fileshare-name`存取儲存帳戶上`my-account-name`的文件共用。
+以下代碼創建`file_datastore_name`資料存儲並將註冊到`ws`工作區。 此資料存儲通過使用提供的帳戶存取`my-fileshare-name`密鑰存取儲存`my-account-name`帳戶 上的檔共用。
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
   
 您可以在[Azure 門戶](https://portal.azure.com)上找到填充窗體所需的資訊。 選擇左側窗格中的**存儲帳戶**,然後選擇要註冊的存儲帳戶。 **"概述"** 頁提供帳戶名稱、容器和檔共用名稱等資訊。 
 
-* 對身份認證項目(如帳號金鑰或 SAS 權杖),轉到 **「設定」** 的**帳號 。** 
+* 對於認證認證(如帳號金鑰或 SAS 權杖),轉到 **「設定」** 窗格上的 **「存取金鑰**」 。 
 
 * 對於服務主體專案(如租戶ID和用戶端ID),請轉到**應用註冊**並選擇要使用的應用。 其相應的 **「概述」** 頁將包含這些專案。 
 

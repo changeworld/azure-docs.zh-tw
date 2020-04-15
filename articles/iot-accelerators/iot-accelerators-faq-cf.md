@@ -1,6 +1,6 @@
 ---
 title: 連線處理站解決方案的常見問題集 - Azure | Microsoft Docs
-description: 本文回答了連接工廠解決方案加速器的常見問題。 它包括指向 GitHub 存儲庫的連結。
+description: 本文回答了連接工廠解決方案加速器的常見問題。 它包括指向 GitHub 儲存庫的連結。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826286"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313593"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
 
@@ -125,7 +125,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何檢查模擬是否傳送資料至雲端？
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) \(英文\) 或 [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) \(英文\) 命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) \(英文\) 或 [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) \(英文\) 命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 檢查由其中一個發行工具裝置傳送的資料：
 
@@ -148,7 +148,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]****，您可以在此找到 [應用程式設定]**** 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]****，並重新啟動 App Service。
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>如何創建 Azure 地圖帳戶？
+### <a name="how-do-i-create-an-azure-maps-account"></a>如何創建 Azure 地圖帳戶?
 
 請參閱[如何管理 Azure 地圖服務帳戶和金鑰](../azure-maps/how-to-manage-account-keys.md)。
 

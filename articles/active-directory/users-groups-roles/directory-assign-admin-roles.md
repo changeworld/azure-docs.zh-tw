@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877910"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382647"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -228,12 +228,11 @@ ms.locfileid: "80877910"
 
 ### <a name="global-reader"></a>[全域讀者](#global-reader-permissions)
 
-此角色中的用戶可以讀取 Microsoft 365 服務的設置和管理資訊,但不能執行管理操作。 全域讀取器是全域管理員的唯讀對應器。 分配全域讀取器而不是全域管理員進行規劃、審核或調查。 將全域讀取器與其他有限的管理員角色(如 Exchange Admin)結合使用,使其在未分配全域管理員角色的情況下更輕鬆地完成工作。 全球閱讀器與Microsoft 365管理中心、交換管理中心、團隊管理中心、安全中心、合規性中心、Azure AD管理中心和設備管理管理中心合作。
+此角色中的用戶可以讀取 Microsoft 365 服務的設置和管理資訊,但不能執行管理操作。 全域讀取器是全域管理員的唯讀對應器。 分配全域讀取器而不是全域管理員進行規劃、審核或調查。 將全域讀取器與其他有限的管理員角色(如 Exchange Admin)結合使用,使其在未分配全域管理員角色的情況下更輕鬆地完成工作。 全球閱讀器與Microsoft 365管理中心、交換管理中心、SharePoint管理中心、團隊管理中心、安全中心、合規性中心、Azure AD管理中心和設備管理管理中心合作。
 
 > [!NOTE]
 > 全球讀者角色現在有一些限制 -
 >
->- SharePoint 管理中心 - SharePoint 管理中心不支援全球讀者角色。 在[Microsoft 365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)的管理中心下,您不會在左側窗格中看到"SharePoint"。
 >- [OneDrive 管理中心](https://admin.onedrive.com/)- OneDrive 管理中心不支援全域閱讀器角色。
 >- [Azure AD 門戶](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)- 全域讀取器無法讀取企業應用的預配模式。
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)- 全域讀取器無法讀取客戶密碼箱請求。 在 M365 管理中心左邊窗格中的 **「支援」** 下找不到 **「客戶密碼箱請求**」選項卡。
@@ -370,7 +369,7 @@ Azure 進階威脅防護 | 監視及回應可疑的安全性活動
 Windows Defender ATP 和 EDR | 指派角色<br>管理電腦群組<br>設定端點威脅偵測和自動補救<br>檢視、調查及回應警示
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 檢視使用者、裝置、註冊、設定及應用程式資訊<br>無法對 Intune 進行變更
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 新增管理員、新增原則和設定、上傳記錄及執行治理動作
-[Azure 安全中心](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議
+[Azure 資訊安全中心](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議
 [Office 365 服務健康情況](https://docs.microsoft.com/office365/enterprise/view-service-health) | 檢視 Office 365 服務的健康情況
 
 ### <a name="security-operator"></a>[安全操作員](#security-operator-permissions)
@@ -401,7 +400,7 @@ Windows Defender ATP 和 EDR | 「安全性讀取者」角色的所有權限<br>
 Windows Defender ATP 和 EDR | 查看和調查警報。 當您在 Windows Defender ATP 中打開基於角色的訪問控制項時,具有唯讀權限(如 Azure AD 安全讀取器角色)的使用者將無法存取,直到他們被分配到 Windows Defender ATP 角色。
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 檢視使用者、裝置、註冊、設定及應用程式資訊。 無法對 Intune 進行變更。
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 具有唯讀權限，並可管理警示
-[Azure 安全中心](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 可檢視建議和警示、檢視安全性原則、檢視安全性狀態，但無法進行變更
+[Azure 資訊安全中心](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 可檢視建議和警示、檢視安全性原則、檢視安全性狀態，但無法進行變更
 [Office 365 服務健康情況](https://docs.microsoft.com/office365/enterprise/view-service-health) | 檢視 Office 365 服務的健康情況
 
 ### <a name="service-support-administrator"></a>[服務支援管理員](#service-support-administrator-permissions)

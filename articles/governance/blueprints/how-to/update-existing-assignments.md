@@ -1,14 +1,14 @@
 ---
-title: 從門戶更新現有分配
+title: 從門戶更新現有配置
 description: 瞭解從 Azure 藍圖中的門戶更新現有藍圖分配的機制。
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264657"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381797"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新現有的藍圖指派
 
@@ -20,24 +20,24 @@ ms.locfileid: "79264657"
 
 ## <a name="updating-assignments"></a>更新指派
 
-1. 在左側窗格中選取 [所有服務]****。 搜尋並選取 [藍圖]****。
+1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
 
-1. 從左側的頁面選擇 **"已分配的藍圖**"。
+1. 選取頁面左側的 [指派的藍圖]  。
 
-1. 在藍圖清單中，以滑鼠左鍵按一下藍圖指派。 然後按一下 **"更新分配"** 按鈕或按右鍵藍圖分配並選擇 **"更新分配**"。
+1. 在藍圖清單中，以滑鼠左鍵按一下藍圖指派。 然後按下 **「更新分配」** 按鈕或右鍵按一下藍圖分配並選擇 **「更新分配**」 。
 
-   ![更新現有藍圖分配](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="更新現有藍圖配置" border="false":::
 
 1. "**分配藍圖"** 頁將預先載入原始分配中的所有值。
    您可以變更**藍圖定義版本**、**鎖定指派**狀態，以及任何存在於藍圖定義的動態參數。 完成變更後，按一下 [指派]****。
 
 1. 在更新後的指派詳細資料頁面上，查看新的狀態。 在此範例中，我們對指派新增了**鎖定**。
 
-   ![更新了現有藍圖分配 - 鎖定模式已更改](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="更新現有藍圖配置 ─ 鎖定模式已變更" border="false":::
 
 1. 使用下拉清單流覽有關其他**分配操作**的詳細資訊。 **託管資源**表按選定的分配操作更新。
 
-   ![藍圖分配的分配操作](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="藍圖配置的配置操作" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>用於更新指派的規則
 

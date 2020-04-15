@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: fbda28ce588aad5f6bc0d89de60069c4220fa523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266171"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313093"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>伺服器場災難復原
 
@@ -34,7 +34,7 @@ FarmBeats 將資料儲存在三個 Azure 第一方服務中,即**Azure 儲存**,
 
 ## <a name="restore-service-from-online-backup"></a>從線上備份復原服務
 
-您可以啟動故障轉移並恢復存儲的資料,其中每個資料存儲用於伺服器場Beats部署。 回復 Azure 儲存和 Cosmos DB 的資料後,在 Azure 配對區域中建立另一個伺服器場 Beats 部署,然後使用以下步驟配置新部署以使用還原的資料儲存(即 Azure 儲存和 Cosmos DB)中的數據:
+您可以啟動故障轉移並恢復儲存的數據,這些資料存儲用於 FarmBeats 部署。 回復 Azure 儲存和 Cosmos DB 的資料後,在 Azure 配對區域中建立另一個伺服器場 Beats 部署,然後使用以下步驟配置新部署以使用還原的資料儲存(即 Azure 儲存和 Cosmos DB)中的數據:
 
 1. [設定 Cosmos DB](#configure-cosmos-db)
 2. [設定儲存帳戶](#configure-storage-account)
@@ -45,18 +45,18 @@ FarmBeats 將資料儲存在三個 Azure 第一方服務中,即**Azure 儲存**,
 複製還原的 Cosmos DB 的訪問金鑰並更新新的 FarmBeats Datahub 金鑰保管庫。
 
 
-  ![災害復原](./media/disaster-recovery-for-farmbeats/keyvault-secrets.png)
+  ![災害復原](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > 複製還原的 Cosmos DB 的 URL 並在新的伺服器場節拍 Datahub 應用服務配置中更新它。 您現在可以在新的伺服器場節拍部署中刪除 Cosmos DB 帳戶。
 
-  ![災害復原](./media/disaster-recovery-for-farmbeats/northeu-ehub-api-configuration.png)
+  ![災害復原](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>設定儲存帳戶
 
 複製還原的儲存帳戶的訪問密鑰,並在新的 FarmBeats Datahub 金鑰保管庫中更新它。
 
-![災害復原](./media/disaster-recovery-for-farmbeats/keyvault-7udqm-secrets.png)
+![災害復原](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > 確保在新的伺服器場節拍批處理 VM 設定檔中更新存儲帳戶名稱。

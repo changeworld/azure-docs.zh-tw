@@ -1,28 +1,28 @@
 ---
-title: 使用 PowerShell - Azure 應用程式閘道卸載 SSL
-description: 本文提供使用 Azure 傳統部署模型建立具有 SSL 卸載之應用程式閘道的指示
+title: 使用 PowerShell - Azure 應用程式閘道卸載
+description: 本文提供 Azure 經典部署模型建立 TLS 卸載的應用程式閘道的說明
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047908"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312330"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>使用傳統部署模型設定適用於 SSL 卸載的應用程式閘道
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>使用傳統部署模型為 TLS 卸載設定應用程式閘道
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](application-gateway-ssl-portal.md)
+> * [Azure 入口網站](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure 傳統 PowerShell](application-gateway-ssl.md)
 > * [Azure CLI](application-gateway-ssl-cli.md)
 
-Azure 應用程式閘道可以設定為在閘道終止安全通訊端層 (SSL) 工作階段，以避免 Web 伺服陣列發生高成本的 SSL 解密工作。 SSL 卸載也可以簡化 Web 應用程式的前端伺服器設定和管理。
+Azure 應用程式閘道可以配置為終止傳輸層安全 (TLS),以前稱為安全套接字層 (SSL))在閘道上的作業階段,以避免在 Web 場中執行代價高昂的 TLS 解密任務。 TLS 卸載還簡化了 Web 應用程式的前端伺服器設置和管理。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -30,11 +30,11 @@ Azure 應用程式閘道可以設定為在閘道終止安全通訊端層 (SSL) �
 2. 請確認您的運作中虛擬網路具有有效子網路。 請確定沒有虛擬機器或是雲端部署正在使用子網路。 應用程式閘道必須單獨位於虛擬網路子網路中。
 3. 您要設定來使用應用程式閘道的伺服器必須存在，或是在虛擬網路中建立其端點，或是已指派公用 IP 位址或虛擬 IP 位址 (VIP)。
 
-若要在應用程式閘道上設定 SSL 卸載，請依列出的順序完成下列步驟：
+要在應用程式閘道上設定 TLS 卸載,請按列出的順序完成以下步驟:
 
-1. [創建應用程式閘道](#create-an-application-gateway)
-2. [上傳 SSL 憑證](#upload-ssl-certificates)
-3. [配置閘道](#configure-the-gateway)
+1. [建立應用程式閘道](#create-an-application-gateway)
+2. [上傳 TLS/SSL 憑證](#upload-tlsssl-certificates)
+3. [設定閘道](#configure-the-gateway)
 4. [設定閘道組態](#set-the-gateway-configuration)
 5. [啟動閘道](#start-the-gateway)
 6. [確認閘道狀態](#verify-the-gateway-status)
@@ -49,13 +49,13 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 若要驗證已建立閘道，您可以輸入 `Get-AzureApplicationGateway` Cmdlet。
 
-在範例中，**Description**、**InstanceCount** 及 **GatewaySize** 是選用參數。 **InstanceCount** 的預設值是 **2**，且最大值是 **10**。 **閘道大小的**預設值為 **"中等**"。 Small 和 Large 也是可用的值。 因為尚未啟動閘道，所以 **VirtualIPs** 和 **DnsName** 會顯示為空白。 閘道處於執行中狀態之後，就會建立這些值。
+在範例中，**Description**、**InstanceCount** 及 **GatewaySize** 是選用參數。 **InstanceCount** 的預設值是 **2**，且最大值是 **10**。 **閘道大小的**預設值為 **「中等**」。 Small 和 Large 也是可用的值。 因為尚未啟動閘道，所以 **VirtualIPs** 和 **DnsName** 會顯示為空白。 閘道處於執行中狀態之後，就會建立這些值。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>上傳 SSL 憑證
+## <a name="upload-tlsssl-certificates"></a>上傳 TLS/SSL 憑證
 
 輸入 `Add-AzureApplicationGatewaySslCertificate`，將伺服器憑證 (PFX 格式) 上傳至應用程式閘道。 憑證名稱是使用者選擇的名稱，而且必須在應用程式閘道中是唯一的。 應用程式閘道上的所有憑證管理作業會使用此名稱參考該憑證。
 
@@ -92,15 +92,15 @@ State..........: Provisioned
 
 值如下：
 
-* **後端伺服器池**：後端伺服器的 IP 位址清單。 列出的 IP 位址應屬於虛擬網路子網路或是公用 IP 或 VIP 位址。
+* **後端伺服器池**:後端伺服器的 IP 位址清單。 列出的 IP 位址應屬於虛擬網路子網路或是公用 IP 或 VIP 位址。
 * **後端伺服器集區設定**：每個集區都包括一些設定，例如連接埠、通訊協定和 Cookie 親和性。 這些設定會繫結至集區，並套用至集區內所有伺服器。
-* **前端埠**：此埠是在應用程式閘道上打開的公共埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
-* **接聽程式**：接聽程式具有前端連接埠、通訊協定 (Http 或 Https，這些值都區分大小寫) 和 SSL 憑證名稱 (如果已設定 SSL 卸載)。
+* **前埠連接埠**:此埠是在應用程式閘道上打開的公共埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
+* **偵聽**器 :偵聽器具有前埠、協議(HTTP 或 HtH;這些值區分大小寫)和 TLS/SSL 憑證名稱(如果配置 TLS 卸載)。
 * **規則**：規則會繫結接聽程式和後端伺服器集區，並定義流量叫用特定接聽程式時，應該導向至哪個後端伺服器集區。 目前只支援 *基本* 規則。 *基本* 規則是循環配置資源的負載分配。
 
 **其他組態注意事項**
 
-針對 SSL 憑證組態，**HttpListener** 中的通訊協定應該變更為 **Https** (區分大小寫)。 將 **SslCert** 元素新增到 **HttpListener** 中，其值會設定為在[上傳 SSL 憑證](#upload-ssl-certificates)一節中所使用的相同名稱。 前端埠應更新為**443**。
+對於 TLS/SSL 憑證配置 **,HttpListener**中的協定應更改為**Htd(** 區分大小寫)。 將**SslCert**元素新增到**HttpListener,** 將值設定為[「上傳 TLS/SSL 憑證](#upload-tlsssl-certificates)」部分中使用的相同名稱。 前端埠應更新為**443**。
 
 **啟用 Cookie 親和性**：您可以設定應用程式閘道，以確保來自用戶端工作階段的要求一律會導向至 Web 伺服陣列中的相同 VM。 若要完成這項作業，請插入允許閘道適當導向流量的工作階段 Cookie。 若要啟用以 Cookie 為基礎的同質性，請在 **BackendHttpSettings** 元素中將 **CookieBasedAffinity** 設定為 **Enabled**。
 
@@ -202,5 +202,5 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 如需一般負載平衡選項的詳細資訊，請參閱：
 
-* [Azure 負載等化器](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
+* [Azure 負載均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure 流量管理員](https://azure.microsoft.com/documentation/services/traffic-manager/)

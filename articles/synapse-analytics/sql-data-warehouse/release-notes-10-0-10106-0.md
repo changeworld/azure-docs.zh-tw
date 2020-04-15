@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743131"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313600"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure 突觸分析發行說明
 
@@ -40,18 +40,13 @@ ms.locfileid: "80743131"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>2020 年 3 月
-
-| 服務改進功能                                         | 詳細資料                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[視覺化工作室 16.6 預覽 2](/visualstudio/releases/2019/release-notes-preview) - SQL 伺服器資料工具 (SSDT)** | 此版本包括以下改進與修復: </br> </br> - 解決了變更的詳細檢視 (MV) 引用的表導致產生 MV 不支援的「更改檢視」語句的問題<br/><br/> - 實現更改,以確保在資料庫或專案中存在行級安全物件時,架構比較操作不會失敗。 SSDT 當前不支援行級安全物件。  <br/><br/> - SQL Server 物件資源管理器超時閾值已提高,以避免在資料庫中列出大量物件時超時<br/><br/> - 最佳化 SQL Server 物件資源管理員檢索資料庫物件清單的方式,以減少在填充物件資源管理員時的不穩定性並提高性能 |
-
-## <a name="february-2020"></a>2020 年 2 月
+## <a name="april-2020"></a>2020 年 4 月
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
 |**資料庫相容性等級(預覽)**| 使用此版本,用戶現在可以設置資料庫的相容性級別,以獲取 Synapse SQL 引擎的特定版本的 Transact-SQL 語言和查詢處理行為。 有關詳細資訊,請參閱[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [並變更資料庫範圍設定](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**Sp_describe_undeclared_parameters**| 允許使用者查看有關 Transact-SQL 批處理中未聲明參數的元數據。 有關詳細資訊,請參閱[sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
+|**[視覺化工作室 16.6 預覽 2](/visualstudio/releases/2019/release-notes-preview) - SQL 伺服器資料工具 (SSDT)** | 此版本包括以下 SSDT 的改進與修復: </br> </br> - 解決了變更的詳細檢視 (MV) 引用的表導致產生 MV 不支援的「更改檢視」語句的問題<br/><br/> - 實現更改,以確保在資料庫或專案中存在行級安全物件時,架構比較操作不會失敗。 SSDT 當前不支援行級安全物件。  <br/><br/> - SQL Server 物件資源管理器超時閾值已提高,以避免在資料庫中列出大量物件時超時<br/><br/> - 最佳化 SQL Server 物件資源管理員檢索資料庫物件清單的方式,以減少在填充物件資源管理員時的不穩定性並提高性能 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
