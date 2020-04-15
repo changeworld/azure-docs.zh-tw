@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用策略定義為組織中的 Azure 資源建立約定。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638083"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314008"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -252,11 +252,13 @@ Azure 策略為資源建立約定。 策略定義描述資源合規性[條件](#
 - `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
-- `"less": "value"`
-- `"lessOrEquals": "value"`
-- `"greater": "value"`
-- `"greaterOrEquals": "value"`
+- `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
+- `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
+- `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
+
+對於**較少的****「小於或相等」、****更大**和**更大的 OrEquals,** 如果屬性類型與條件類型不匹配,則引發錯誤。 使用`InvariantCultureIgnoreCase`進行字串比較。
 
 使用 **like** 和 **notLike** 條件時，您可以在值中提供 `*` 萬用字元。
 值不應包含多個 `*` 萬用字元。

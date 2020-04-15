@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b72d52463164c2a059fce316cc11a63aad62e7c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771678"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380939"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 資料同步最佳做法 
 
@@ -41,7 +41,7 @@ ms.locfileid: "75771678"
 
 -   **針對同步安裝**。 建立/更改資料表、更改資料庫、建立程序、選取/更改結構描述、建立使用者定義型別。
 
--   **對於持續同步**。選擇/插入/更新/刪除為同步而選擇的表，以及同步中繼資料和跟蹤表;對服務創建的預存程序執行許可權;對使用者定義的表類型執行許可權。
+-   **對持續同步**。選擇/插入/更新/刪除為同步而選擇的表,以及同步中繼資料和追蹤表;對服務創建的存儲過程執行許可權;對使用者定義的表類型執行許可權。
 
 -   **針對取消佈建**。 在同步作業中針對資料表所做的更改、針對同步處理中繼資料資料表的選取/刪除、針對同步處理追蹤資料表、預存程序和使用者定義型別的控制。
 
@@ -94,7 +94,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 -   不會佈建來源資料表上的現有觸發程序。  
 -   不會在目的地資料庫上建立檢視和預存程序。
 -   目的地資料表中不會針對外部索引鍵限制式重新建立 ON UPDATE CASCADE 和 ON DELETE CASCADE 動作。
--   如果小數列或數位列的精度大於 28，則 SQL 資料同步在同步期間可能會遇到轉換溢出問題。我們建議您將小數列或數位列的精度限制為 28 或更少。
+-   如果小數列或數位列的精度大於 28,則 SQL 資料同步在同步期間可能會遇到轉換溢出問題。我們建議您將小數列或數位列的精度限制為 28 或更少。
 
 #### <a name="recommendations"></a>建議
 
@@ -218,13 +218,13 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 如果您嘗試移除資料庫，然後編輯同步群組而不先部署其中一項變更，則其中一項作業會失敗。 入口網站介面也可能會呈現不一致的狀態。 發生這種情況時，您可以重新整理頁面以還原正確狀態。
 
-### <a name="avoid-schema-refresh-timeout"></a>避免架構刷新超時
+### <a name="avoid-schema-refresh-timeout"></a>避免架構刷新逾時
 
-如果要同步的複雜架構，則如果同步中繼資料資料庫的 SKU 較低（例如：基本），則在架構刷新期間可能會遇到"操作超時"。 
+如果要同步的複雜架構,則如果同步元數據資料庫的 SKU 較低(例如:基本),則在架構刷新期間可能會遇到"操作超時"。 
 
 #### <a name="solution"></a>解決方法
 
-要緩解此問題，請向上擴展同步中繼資料資料庫以具有更高的 SKU，如 S3。 
+要緩解此問題,請向上擴展同步元數據資料庫以具有更高的 SKU,如 S3。 
 
 ## <a name="next-steps"></a>後續步驟
 如需有關 SQL 資料同步的詳細資訊，請參閱：

@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f28269b067ee98d69a97799911fd2d84a7f91e34
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256467"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381155"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>複寫至 SQL Database 單一資料庫與集區資料庫
 
@@ -32,14 +32,14 @@ ms.locfileid: "79256467"
 
 ## <a name="versions"></a>版本  
 
-本地 SQL Server 發行者和分發伺服器必須使用以下版本之一（至少）：  
+本地 SQL Server 發行者和分發伺服器必須使用以下版本之一(至少):  
 
 - SQL 伺服器 2016 及更高
-- SQL 伺服器 2014 [RTM CU10 （12.0.4427.24）](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 （12.0.2556.4）](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL 伺服器 2012 [SP2 CU8 （11.0.5634.1）](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 （11.0.6020.0）](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL 伺服器 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL 伺服器 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
 
 > [!NOTE]
-> 嘗試使用不支援的版本配置複製可能會導致錯誤編號MSSQL_REPL20084（進程無法連接到訂閱伺服器）和MSSQL_REPL40532（無法打開>登錄請求的伺服器\<名稱。 登入失敗。)。  
+> 嘗試使用不支援的版本配置複製可能會導致錯誤編號MSSQL_REPL20084(進程無法連接到訂閱伺服器)和MSSQL_REPL40532(無法打開>登錄請求的伺服器\<名稱。 登入失敗。)。  
 
 若要使用 Azure SQL Database 的所有功能，您必須使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
 
@@ -108,14 +108,14 @@ Azure SQL Database 訂閱不支援下列選項：
 
 建立發行集和發送訂閱。 如需詳細資訊，請參閱
   
-- [創建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是使用 Azure SQL Database 伺服器名稱作為訂閱者 (例如 **N'azuresqldbdns.database.windows.net'**)，並使用 Azure SQL 資料庫名稱作為目的地資料庫 (例如 **AdventureWorks**)。  
 
 ## <a name="see-also"></a>另請參閱  
 
-- [異動複寫](sql-database-managed-instance-transactional-replication.md)
-- [創建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [交易複製](sql-database-managed-instance-transactional-replication.md)
+- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [複寫的類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [複寫類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [監視 (複寫)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [初始化訂閱](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
