@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544271"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655518"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services
 
@@ -25,12 +25,16 @@ ms.locfileid: "76544271"
 
 * **Active Directory Domain Services (AD DS)** - 符合企業需求的輕量型目錄存取通訊協定 (LDAP) 伺服器，提供身分識別及驗證、電腦物件管理、群組原則和信任等主要功能。
     * AD DS 在許多具有內部部署 IT 環境的組織中是中央元件，並提供核心使用者帳戶驗證和電腦管理功能。
+    * 如需詳細資訊，請參閱 [Windows 伺服器文件中的 Active Directory Domain Services 概觀][overview-adds]。
 * **Azure Active Directory (Azure AD)** - 以雲端為基礎的身分識別和行動裝置管理，可為 Office 365、Azure 入口網站或 SaaS 應用程式等資源提供使用者帳戶和驗證服務。
     * Azure AD 可以與內部部署 AD DS 環境同步，為雲端中以原生方式運作的使用者提供單一身分識別。
+    * 如需 Azure AD 的詳細資訊，請參閱[什麼是Azure Active Directory？][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** - 提供受控網域服務，其中有一小部分能與傳統 AD DS 功能完全相容，例如，網域加入、群組原則、LDAP 和 Kerberos / NTLM 驗證等功能。
     * Azure AD DS 與 Azure AD 整合，其本身可與內部部署 AD DS 環境進行同步處理。 這項功能可將中央身分識別使用案例延伸到在 Azure 中執行的傳統 Web 應用程式，作為隨即轉移策略的一部分。
 
 此概觀文章會比較和對比這些身分識別解決方案搭配使用或個別使用的方式 (視組織的需求而定)。
+
+若要開始使用，請[使用 Azure 入口網站建立 Azure AD DS 受控網域][tutorial-create]。
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS 和自我管理 AD DS
 
@@ -118,3 +122,5 @@ Azure AD 聯結裝置提供下列優點：
 [manage-gpos]: manage-group-policy.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-create]: tutorial-create-instance.md
+[whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
+[overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview

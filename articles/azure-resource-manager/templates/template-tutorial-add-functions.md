@@ -2,19 +2,19 @@
 title: 教學課程 - 新增範本函式
 description: 將範本函式新增至 Azure Resource Manager 範本，以建構值。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773214"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410969"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教學課程：將範本函式新增至 Resource Manager 範本
+# <a name="tutorial-add-template-functions-to-your-arm-template"></a>教學課程：將範本函式新增至 ARM 範本
 
-在此教學課程中，您會了解如何將[範本函式](template-functions.md)新增至範本。 您可以使用函式，以動態方式建構值。 除了這些系統提供的範本函式之外，您也可以建立[使用者定義的函式](./template-user-defined-functions.md)。 完成此教學課程需要 **7 分鐘**。
+在本教學課程中，您將了解如何將[範本函式](template-functions.md)新增至 Azure Resource Manager (ARM) 範本。 您可以使用函式，以動態方式建構值。 除了這些系統提供的範本函式之外，您也可以建立[使用者定義的函式](./template-user-defined-functions.md)。 完成此教學課程需要 **7 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -48,7 +48,7 @@ ms.locfileid: "76773214"
 
 如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -58,10 +58,12 @@ New-AzResourceGroupDeployment `
   -storageName "{new-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要執行此部署命令，您必須擁有[最新版](/cli/azure/install-azure-cli)的 Azure CLI。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addlocationparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -69,6 +71,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
 
 ## <a name="verify-deployment"></a>驗證部署
 

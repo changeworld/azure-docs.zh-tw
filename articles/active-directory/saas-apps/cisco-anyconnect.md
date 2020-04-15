@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385300"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891623"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cisco AnyConnect 整合
 
@@ -96,6 +96,9 @@ ms.locfileid: "80385300"
 1. 在 [設定 Cisco AnyConnect]  區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> 如果您想讓伺服器上的多個 TGT 上架，則必須從資源庫新增多個 Cisco AnyConnect 應用程式執行個體。 此外，您也可以選擇在 Azure AD 中，針對所有這些應用程式執行個體上傳您自己的憑證。 如此一來，您的應用程式就能使用相同的憑證，但可以為每個應用程式設定不同的識別碼和回覆 URL。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

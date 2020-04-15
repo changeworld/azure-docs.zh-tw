@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 PowerShell，將 W
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551704"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756047"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教學課程：將執行 Windows 的 Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -156,7 +156,7 @@ ms.locfileid: "75551704"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>設定 Azure Active Directory 用戶端驗證
 對於部署在裝載於 Azure 上之公用網路中的 Service Fabric 叢集，我們建議從用戶端到節點的相互驗證應採用：
 * 使用 Azure Active Directory 進行用戶端識別。
-* 使用憑證進行伺服器識別，並對 HTTP 通訊使用 SSL 加密。
+* 使用憑證進行伺服器識別，並對 HTTP 通訊使用 TLS 加密。
 
 [建立叢集](#createvaultandcert)之前，必須先設定 Azure Active Directory (Azure AD) 以驗證 Service Fabric 叢集的用戶端。 Azure AD 可讓組織 (稱為租用戶) 管理使用者對應用程式的存取。 
 

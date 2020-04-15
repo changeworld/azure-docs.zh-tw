@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767976"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667312"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats 概觀 (預覽)
 
@@ -42,6 +42,24 @@ Datahub 會設計為可延伸的 API 平台。 我們正與更多供應商合作
 ## <a name="accelerator"></a>加速器
 
 Azure FarmBeats 加速器是以 Datahub 為基礎所建置的範例 Web 應用程式。 此加速器會快速啟動使用者介面和模型的開發。 Azure FarmBeats 加速器會使用 Azure FarmBeats 的 API。 其會將內嵌感應器資料視覺化為圖表，並將模型輸出視覺化為地圖。 例如，您可以使用此加速器來快速建立農場，並輕鬆取得該農場的植被指數圖或感應器放置圖。
+
+## <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
+
+管理員可以針對使用其中一個預先定義角色的 Azure FarmBeats，為其定義存取規則。 角色會決定使用者可存取的應用程式區域，以及他們可以執行的動作。 Azure FarmBeats 中有兩種角色，分別適用於使用者和合作夥伴。
+
+### <a name="user-roles"></a>使用者角色
+
+[管理員可以新增及管理使用者](manage-users-in-azure-farmbeats.md)並根據兩個使用者角色定義其存取層級：管理員和唯讀。
+
+### <a name="partner-roles"></a>夥伴角色
+
+管理員可以將多個合作夥伴新增為 Azure FarmBeats 的資料提供者。 以下摘要說明 FarmBeats 中的可用合作夥伴角色及其權限：
+
+| 合作夥伴類型    |   動作  | 影響範圍 |
+| ---- | -------- | -------- |
+| 感應器合作夥伴  |   建立、讀取、更新 <br/> <br/> 讀取、更新 | DeviceModel、Device、SensorModel Sensor <br/> <br/> ExtendedType |
+| 映像合作夥伴  |   建立、讀取、更新 <br/> <br/> 讀取、更新 <br/> <br/> 讀取 | Scene、SceneFile <br/> <br/> ExtendedType <br/> <br/> Farm |
+| 氣象合作夥伴* <br/> <br/>  (*即將推出) |   建立、讀取、更新 <br/> <br/> 讀取、更新 <br/> <br/> 讀取 | WeatherDataModel、WeatherDataLocation、JobType <br/> <br/> ExtendedType <br/> <br/> Farm |
 
 ## <a name="resources"></a>資源
 

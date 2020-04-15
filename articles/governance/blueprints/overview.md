@@ -3,12 +3,12 @@ title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321772"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677404"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 
@@ -22,17 +22,17 @@ ms.locfileid: "74321772"
 - 資源群組
 
 Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/introduction.md) 所支援。
-藍圖物件會複寫至多個 Azure 區域。 此複寫可針對您的藍圖物件提供低延遲、高可用性和一致的存取，無論「藍圖」將您的資源部署至哪個區域。
+藍圖物件會複寫至多個 Azure 區域。 此複寫可針對您的藍圖物件提供低延遲、高可用性和一致的存取，無論 Azure 藍圖將您的資源部署至哪個區域。
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>它與 Resource Manager 範本有何不同
 
 服務的設計目的是協助進行「環境設定」  。 此設定通常包含一組資源群組、原則、角色指派和 Resource Manager 範本部署。 藍圖是一種套件，可讓這些「成品」  類型集合在一起，並可讓您撰寫及控制該套件的版本，包括透過 CI/CD 管線。 最終，每個成品都可在單一可稽核且可追蹤的作業中指派給訂用帳戶。
 
-你想要在藍圖中為部署所納入的一切，幾乎都可使用 Resource Manager 範本來完成。 不過，Resource Manager 範本並非原生存在於 Azure 中的文件，而是分別儲存在本機或原始檔控制中。 範本可用來部署一或多個 Azure 資源，但是一旦部署那些資源之後，就會失去與範本間的有效聯繫和關聯性。
+您想要在 Azure 藍圖中為部署所納入的一切，幾乎都可使用 Resource Manager 範本來完成。 不過，Resource Manager 範本並非原生存在於 Azure 中的文件，而是分別儲存在本機或原始檔控制中。 範本可用來部署一或多個 Azure 資源，但是一旦部署那些資源之後，就會失去與範本間的有效聯繫和關聯性。
 
-透過藍圖，藍圖定義 (「應該被」  部署的) 和藍圖指派 (「已被」  部署的) 之間的關聯性就得以保留。 此聯繫有助於改善部署的追蹤和稽核。 藍圖也可同時升級由相同藍圖控管的數個訂用帳戶。
+透過 Azure 藍圖，藍圖定義 (「應該加以」  部署的) 和藍圖指派 (「已」  部署的) 之間的關聯性就得以保留。 此聯繫有助於改善部署的追蹤和稽核。 Azure 藍圖也可同時升級由相同藍圖控管的數個訂用帳戶。
 
-您不需要在 Resource Manager 範本和藍圖之間做出取捨。 每個藍圖可以包含多個 Resource Manager 範本「成品」  ，或是不包含。 此支援表示先前開發及維護 Resource Manager 範本程式庫所投入的心力，也可用在藍圖中。
+您不需要在 Resource Manager 範本和藍圖之間做出取捨。 每個藍圖可以包含多個 Resource Manager 範本「成品」  ，或是不包含。 此支援表示先前開發及維護 Resource Manager 範本程式庫所投入的心力，也可用在 Azure 藍圖中。
 
 ## <a name="how-its-different-from-azure-policy"></a>它與 Azure 原則有何不同
 
@@ -46,7 +46,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 ## <a name="blueprint-definition"></a>藍圖定義
 
-藍圖是由「成品」  所組成。 藍圖目前支援下列資源作為成品：
+藍圖是由「成品」  所組成。 Azure 藍圖目前支援下列資源作為成品：
 
 |資源  | 階層選項| 描述  |
 |---------|---------|---------|

@@ -3,17 +3,17 @@ title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155931"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874274"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -25,7 +25,7 @@ ms.locfileid: "80155931"
 
 此教學課程的範例會引導您針對 Azure Enterprise 合約 (EA) 訂用帳戶建立和編輯預算。
 
-觀看[使用 Azure 入口網站將預算套用至訂用帳戶](https://www.youtube.com/watch?v=UrkHiUx19Po)影片，以了解如何在 Azure 中建立預算以監視支出。
+觀看[使用 Azure 入口網站將預算套用至訂用帳戶](https://www.youtube.com/watch?v=UrkHiUx19Po)影片，以了解如何在 Azure 中建立預算以監視支出。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ ms.locfileid: "80155931"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-不同的 Azure 帳戶類型均支援預算。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。 若要檢視預算，您至少需要 Azure 帳戶的讀取存取。
+預算受下列類型的 Azure 帳戶類型和範圍支援：
+
+- Azure 角色型存取控制範圍
+    - 管理群組
+    - 訂用帳戶
+- Enterprise 合約範圍
+    - 計費帳戶
+    - department
+    - 註冊帳戶
+- 個別合約
+    - 計費帳戶
+- Microsoft 客戶合約範圍
+    - 計費帳戶
+    - 帳單設定檔
+    - 發票區段
+    - 客戶
+- AWS 範圍
+    - 外部帳戶
+    - 外部訂用帳戶
+
+
+若要檢視預算，您至少需要 Azure 帳戶的讀取存取。
 
 如果您有新的訂用帳戶，就無法立即建立預算或使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
-針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。 若要建立及管理預算，您必須具有參與者權限。 您可以個別為 EA 訂用帳戶和資源群組建立預算。 不過，您無法為 EA 帳單帳戶建立預算。
+針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。 若要建立及管理預算，您必須具有參與者權限。
 
 使用者和群組針對預算的每個訂用帳戶支援下列 Azure 權限或範圍。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
@@ -58,7 +79,7 @@ ms.locfileid: "80155931"
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 入口網站中建立預算
 
-您可以針對每月、每季或每年期間建立 Azure 訂用帳戶預算。 您在 Azure 入口網站中的瀏覽內容會決定您是否要針對訂用帳戶或管理群組建立預算。
+您可以針對每月、每季或每年期間建立 Azure 訂用帳戶預算。
 
 若要建立或檢視預算，請在 Azure 入口網站中開啟所需的範圍，然後在功能表中選取 [預算]  。 例如，瀏覽至 [訂用帳戶]  、從清單中選取訂用帳戶，然後在功能表中選取 [預算]  。 使用 [範圍]  框切換至 [預算] 中的不同範圍，例如管理群組。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
@@ -110,15 +131,11 @@ ms.locfileid: "80155931"
 
 當您針對訂用帳戶或資源群組範圍建立或編輯預算時，您可以設定該預算以呼叫動作群組。 動作群組可在達到預算閾值時執行各種動作。 目前僅支援將動作群組用於訂用帳戶和資源群組範圍。 如需動作群組的詳細資訊，請參閱[在 Azure 入口網站中建立和管理動作群組](../../azure-monitor/platform/action-groups.md)。 如需以預算為基礎的自動化與動作群組搭配使用的詳細資訊，請參閱[使用 Azure 預算來管理成本](../manage/cost-management-budget-scenario.md)。
 
-
-
 若要建立或更新動作群組，請在建立或編輯預算時選取 [管理動作群組]  。
 
 ![建立預算以顯示管理動作群組的範例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 接著，選取 [新增動作群組]  ，並建立動作群組。
-
 
 ![新增動作群組方塊的影像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

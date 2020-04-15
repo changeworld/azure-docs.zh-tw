@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462457"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668787"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>適用於 MongoDB (3.6 版) 的 Azure Cosmos DB API：支援的功能和語法
 
@@ -44,7 +44,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 |getPrevError | 否  |
 |insert  |   是  |
 |parallelCollectionScan  | 是   |
-|resetError |   否  |
+|resetError |    否  |
 |update  |   是  |
 |[變更資料流](mongodb-change-streams.md)  |  是  |
 |GridFS |   是  |
@@ -88,7 +88,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|buildInfo       |   是      |
+|buildInfo         |   是      |
 |collStats    |  是       |
 |connPoolStats     |  否       |
 |connectionStatus     |  否       |
@@ -99,7 +99,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 |explain: executionStats     |     否    |
 |特性     |    否     |
 |hostInfo     |   否      |
-|listDatabases       |   是      |
+|listDatabases         |   是      |
 |listCommands     |  否       |
 |profiler     |  否       |
 |serverStatus     |  否       |
@@ -123,31 +123,31 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|$collStats |否|
-|$project   |是|
-|$match |是|
-|$redact|   是|
-|$limit |是|
-|$skip  |是|
-|$unwind|   是|
-|$group |   是|
-|$sample|       是|
-|$sort  |是|
-|$geoNear|  否|
-|$lookup    |   是|
-|$out       |是|
-|$indexStats|       否|
-|$facet |否|
-|$bucket|   否|
-|$bucketAuto|   否|
-|$sortByCount|  是|
-|$addFields |是|
-|$replaceRoot|  是|
-|$count |是|
+|$collStats    |否|
+|$project    |是|
+|$match    |是|
+|$redact|    是|
+|$limit    |是|
+|$skip    |是|
+|$unwind|    是|
+|$group    |    是|
+|$sample|        是|
+|$sort    |是|
+|$geoNear|    否|
+|$lookup    |    是|
+|$out        |是|
+|$indexStats|        否|
+|$facet    |否|
+|$bucket|    否|
+|$bucketAuto|    否|
+|$sortByCount|    是|
+|$addFields    |是|
+|$replaceRoot|    是|
+|$count    |是|
 |$currentOp|    否|
-|$listLocalSessions |否|
-|$listSessions  |否|
-|$graphLookup   |否|
+|$listLocalSessions    |否|
+|$listSessions    |否|
+|$graphLookup    |否|
 
 ### <a name="boolean-expressions"></a>布林運算式
 
@@ -174,14 +174,14 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 |Command  |支援 |
 |---------|---------|
 |$cmp     |  是       |
-|$eq|   是| 
-|$gt |  是| 
-|$gte|  是| 
+|$eq|    是| 
+|$gt |    是| 
+|$gte|    是| 
 |$lt    |是|
-|$lte|  是| 
-|$ne    |   是| 
-|$in    |   是| 
-|$nin   |   是| 
+|$lte|    是| 
+|$ne    |    是| 
+|$in    |    是| 
+|$nin    |    是| 
 
 ### <a name="arithmetic-expressions"></a>算術運算式
 
@@ -230,66 +230,66 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|$arrayElemAt   |   是|
+|$arrayElemAt    |    是|
 |$arrayToObject|    是|
-|$concatArrays  |   是|
-|$filter    |   是|
-|$indexOfArray  |是|
-|$isArray   |   是|
-|$objectToArray |是|
-|$range |是|
-|$reverseArray  |   是|
-|$reduce|   是|
-|$size  |   是|
-|$slice |   是|
-|$zip   |   是|
-|$in    |   是|
+|$concatArrays    |    是|
+|$filter    |    是|
+|$indexOfArray    |是|
+|$isArray    |    是|
+|$objectToArray    |是|
+|$range    |是|
+|$reverseArray    |    是|
+|$reduce|    是|
+|$size    |    是|
+|$slice    |    是|
+|$zip    |    是|
+|$in    |    是|
 
 ### <a name="variable-operators"></a>變數運算子
 
 |Command  |支援 |
 |---------|---------|
-|$map   |否|
-|$let   |是|
+|$map    |否|
+|$let    |是|
 
 ### <a name="system-variables"></a>系統變數
 
 |Command  |支援 |
 |---------|---------|
-|$$CURRENT| 是|
-|$$DESCEND|     是|
-|$$KEEP     |是|
-|$$PRUNE    |   是|
-|$$REMOVE   |是|
-|$$ROOT     |是|
+|$$CURRENT|    是|
+|$$DESCEND|        是|
+|$$KEEP        |是|
+|$$PRUNE    |    是|
+|$$REMOVE    |是|
+|$$ROOT        |是|
 
 ### <a name="literal-operator"></a>常值運算子
 
 |Command  |支援 |
 |---------|---------|
-|$literal   |是|
+|$literal    |是|
 
 ### <a name="date-expressions"></a>日期運算式
 
 |Command  |支援 |
 |---------|---------|
-|$dayOfYear |是    |
-|$dayOfMonth|   是 |
-|$dayOfWeek |是    |
-|$year  |是    |
-|$month |是|   
-|$week  |是    |
-|$hour  |是    |
-|$minute|   是|    
+|$dayOfYear    |是    |
+|$dayOfMonth|    是    |
+|$dayOfWeek    |是    |
+|$year    |是    |
+|$month    |是|    
+|$week    |是    |
+|$hour    |是    |
+|$minute|    是|    
 |$second    |是    |
-|$millisecond|  是|    
-|$dateToString  |是    |
-|$isoDayOfWeek  |是    |
-|$isoWeek   |是    |
-|$dateFromParts|    否| 
-|$dateToParts   |否 |
-|$dateFromString|   否|
-|$isoWeekYear   |是    |
+|$millisecond|    是|    
+|$dateToString    |是    |
+|$isoDayOfWeek    |是    |
+|$isoWeek    |是    |
+|$dateFromParts|    否|    
+|$dateToParts    |否    |
+|$dateFromString|    否|
+|$isoWeekYear    |是    |
 
 ### <a name="conditional-expressions"></a>條件運算式
 
@@ -309,16 +309,16 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|$sum   |是    |
-|$avg   |是    |
+|$sum    |是    |
+|$avg    |是    |
 |$first|    是|
-|$last  |是    |
-|$max   |是    |
-|$min   |是    |
-|$push| 是|
-|$addToSet| 是|
-|$stdDevPop|    否  |
-|$stdDevSamp|   否|
+|$last    |是    |
+|$max    |是    |
+|$min    |是    |
+|$push|    是|
+|$addToSet|    是|
+|$stdDevPop|    否    |
+|$stdDevSamp|    否|
 
 ### <a name="merge-operator"></a>合併運算子
 
@@ -330,25 +330,25 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|Double |是    |
-|String |是    |
-|Object |是    |
-|Array  |是    |
-|Binary Data    |是|   
-|ObjectId   |是    |
+|Double    |是    |
+|String    |是    |
+|Object    |是    |
+|Array    |是    |
+|Binary Data    |是|    
+|ObjectId    |是    |
 |Boolean    |是    |
-|Date   |是    |
-|Null   |是    |
-|32 位元整數 (int)   |是    |
-|時間戳記  |是    |
-|64 位元整數 (long)  |是    |
-|MinKey |是    |
-|MaxKey |是    |
-|Decimal128 |是|   
-|規則運算式 |是|
-|JavaScript |是|
-|JavaScript (具範圍)|   是 |
-|未定義  |是    |
+|Date    |是    |
+|Null    |是    |
+|32 位元整數 (int)    |是    |
+|時間戳記    |是    |
+|64 位元整數 (long)    |是    |
+|MinKey    |是    |
+|MaxKey    |是    |
+|Decimal128    |是|    
+|規則運算式    |是|
+|JavaScript    |是|
+|JavaScript (具範圍)|    是    |
+|未定義    |是    |
 
 ## <a name="indexes-and-index-properties"></a>索引和索引屬性
 
@@ -356,23 +356,23 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|單一欄位索引 |是    |
-|複合索引 |是    |
-|多重索引鍵索引 |是    |
-|文字索引 |否|
-|2dsphere   |是    |
-|2d 索引   |否 |
-|雜湊索引   | 是|
+|單一欄位索引    |是    |
+|複合索引    |是    |
+|多重索引鍵索引    |是    |
+|文字索引    |否|
+|2dsphere    |是    |
+|2d 索引    |否    |
+|雜湊索引    | 是|
 
 ### <a name="index-properties"></a>索引屬性
 
 |Command  |支援 |
 |---------|---------|
-|TTL|   是 |
-|唯一 |是|
-|部分|   否|
-|不區分大小寫   |否|
-|疏鬆 |否 |
+|TTL|    是    |
+|唯一    |是|
+|部分|    否|
+|不區分大小寫    |否|
+|疏鬆    |否 |
 |背景|    是 |
 
 ## <a name="operators"></a>操作員
@@ -381,28 +381,28 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 |Command  |支援 |
 |---------|---------|
-|$or    |   是|
-|$and   |   是|
-|$not   |   是|
-|$nor   |   是| 
+|$or    |    是|
+|$and    |    是|
+|$not    |    是|
+|$nor    |    是| 
 
 ### <a name="element-operators"></a>元素運算子
 
 |Command  |支援 |
 |---------|---------|
-|$exists|   是|
-|$type  |   是|
+|$exists|    是|
+|$type    |    是|
 
 ### <a name="evaluation-query-operators"></a>評估查詢運算子
 
 |Command  |支援 |
 |---------|---------|
-|$expr  |   否|
-|$jsonSchema    |   否|
-|$mod   |   是|
-|$regex |   是|
-|$text  | 否 (不支援。 請改用 $regex。)| 
-|$where |否| 
+|$expr    |    否|
+|$jsonSchema    |    否|
+|$mod    |    是|
+|$regex |    是|
+|$text    | 否 (不支援。 請改用 $regex。)| 
+|$where    |否| 
 
 在 $regex 查詢中，左側錨點運算式允許索引搜尋。 不過，使用 'i' 修飾詞 (不區分大小寫) 和 'm' 修飾詞 (多行) 會在所有運算式中造成集合掃描。
 
@@ -430,9 +430,9 @@ $comment |是|
 
 |Command  |支援 |
 |---------|---------|
-|$elemMatch |是|
-|$meta| 否|
-|$slice | 是|
+|$elemMatch    |是|
+|$meta|    否|
+|$slice    | 是|
 
 ### <a name="update-operators"></a>更新運算子
 
@@ -440,28 +440,28 @@ $comment |是|
 
 |Command  |支援 |
 |---------|---------|
-|$inc   |   是|
-|$mul   |   是|
-|$rename    |   是|
-|$setOnInsert|  是|
-|$set   |是|
+|$inc    |    是|
+|$mul    |    是|
+|$rename    |    是|
+|$setOnInsert|    是|
+|$set    |是|
 |$unset| 是|
-|$min   |是|
-|$max   |是|
-|$currentDate   | 是|
+|$min    |是|
+|$max    |是|
+|$currentDate    | 是|
 
 #### <a name="array-update-operators"></a>陣列更新運算子
 
 |Command  |支援 |
 |---------|---------|
-|$  |是|
-|$[]|   是|
-|$[<identifier>]|   是|
-|$addToSet  |是|
-|$pop   |是|
-|$pullAll|  是|
-|$pull  |是|
-|$push  |是|
+|$    |是|
+|$[]|    是|
+|$[<identifier>]|    是|
+|$addToSet    |是|
+|$pop    |是|
+|$pullAll|    是|
+|$pull    |是|
+|$push    |是|
 |$pushAll| 是|
 
 
@@ -469,20 +469,20 @@ $comment |是|
 
 |Command  |支援 |
 |---------|---------|
-|$each  |   是|
-|$slice |是|
-|$sort  |是|
-|$position  |是|
+|$each    |    是|
+|$slice    |是|
+|$sort    |是|
+|$position    |是|
 
 #### <a name="bitwise-update-operator"></a>位元更新運算子
 
 |Command  |支援 |
 |---------|---------|
-| $bit  |   是|    
-|$bitsAllSet    |   否|
-|$bitsAnySet    |   否|
-|$bitsAllClear  |否|
-|$bitsAnyClear  |否|
+| $bit    |    是|    
+|$bitsAllSet    |    否|
+|$bitsAnySet    |    否|
+|$bitsAllClear    |否|
+|$bitsAnyClear    |否|
 
 ### <a name="geospatial-operators"></a>地理空間運算子
 
@@ -504,37 +504,37 @@ $polygon |  是 |
 
 |Command  |支援 |
 |---------|---------|
-|cursor.batchSize() |   是|
-|cursor.close() |是|
-|cursor.isClosed()|     是|
+|cursor.batchSize()    |    是|
+|cursor.close()    |是|
+|cursor.isClosed()|        是|
 |cursor.collation()|    否|
-|cursor.comment()   |是|
-|cursor.count() |是|
-|cursor.explain()|  否|
-|cursor.forEach()   |是|
-|cursor.hasNext()   |是|
-|cursor.hint()  |是|
-|cursor.isExhausted()|  是|
-|cursor.itcount()   |是|
-|cursor.limit() |是|
-|cursor.map()   |是|
-|cursor.maxScan()   |是|
+|cursor.comment()    |是|
+|cursor.count()    |是|
+|cursor.explain()|    否|
+|cursor.forEach()    |是|
+|cursor.hasNext()    |是|
+|cursor.hint()    |是|
+|cursor.isExhausted()|    是|
+|cursor.itcount()    |是|
+|cursor.limit()    |是|
+|cursor.map()    |是|
+|cursor.maxScan()    |是|
 |cursor.maxTimeMS()|    是|
-|cursor.max()   |是|
-|cursor.min()   |是|
-|cursor.next()| 是|
-|cursor.noCursorTimeout()   |否|
-|cursor.objsLeftInBatch()   |是|
-|cursor.pretty()|   是|
-|cursor.readConcern()|  是|
-|cursor.readPref()      |是|
-|cursor.returnKey() |否|
-|cursor.showRecordId()| 否|
-|cursor.size()  |Nes|
-|cursor.skip()  |是|
-|cursor.sort()  |   是|
-|cursor.tailable()| 否|
-|cursor.toArray()   |是|
+|cursor.max()    |是|
+|cursor.min()    |是|
+|cursor.next()|    是|
+|cursor.noCursorTimeout()    |否|
+|cursor.objsLeftInBatch()    |是|
+|cursor.pretty()|    是|
+|cursor.readConcern()|    是|
+|cursor.readPref()        |是|
+|cursor.returnKey()    |否|
+|cursor.showRecordId()|    否|
+|cursor.size()    |是|
+|cursor.skip()    |是|
+|cursor.sort()    |    是|
+|cursor.tailable()|    否|
+|cursor.toArray()    |是|
 
 ## <a name="sort-operations"></a>排序作業
 
@@ -542,7 +542,7 @@ $polygon |  是 |
 
 ## <a name="unique-indexes"></a>唯一索引
 
-唯一索引可確保集合中所有文件的特定欄位沒有重複值，類似於預設 "_id" 索引鍵上會保留唯一性的方式。 您可以使用 createIndex 命令 (包括 'unique’ 限制式) 在 Cosmos DB 中建立自訂索引。
+唯一索引可確保集合中所有文件的特定欄位沒有重複值，類似於預設 "_id" 索引鍵上會保留唯一性的方式。 您可以使用 createIndex 命令 (包括 'unique'限制式) 在 Cosmos DB 中建立自訂索引。
 
 ## <a name="time-to-live-ttl"></a>存留時間 (TTL)
 

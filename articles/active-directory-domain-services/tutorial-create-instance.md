@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223075"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474209"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立並設定 Azure Active Directory Domain Services 執行個體
 
@@ -89,7 +89,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 1. 輸入受控網域的 **DNS 網域名稱**，並將前面幾項列入考慮。
 1. 選擇應該在其中建立受控網域的 Azure**位置**。 如果您選擇支援可用性區域的區域，Azure AD DS 資源會跨區域分散，以供額外的備援。
 
-    「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，在所有已啟用的地區中都至少要有三個個別的區域。
+    「可用性區域」是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原，所有已啟用的地區中至少要有三個不同的區域。
 
     您不需要針對要跨區域分散的 Azure AD DS 進行設定。 Azure 平台會自動處理在區域之間分散資源。 如需詳細資訊及查看區域可用性，請參閱[什麼是 Azure 中的可用性區域？][availability-zones]
 
@@ -104,8 +104,8 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 若要快速建立 Azure AD DS 受控網域，您可以選取 [檢閱 + 建立]  ，以接受其他預設的設定選項。 當您選擇此建立選項時，系統會設定下列預設值：
 
-* 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-vnet  的虛擬網路。
-* 建立使用 10.0.1.0/24  IP 位址範圍且名為 aadds-subnet  的子網路。
+* 建立使用 10.0.2.0/24  IP 位址範圍且名為 aadds-vnet  的虛擬網路。
+* 建立使用 10.0.2.0/24  IP 位址範圍且名為 aadds-subnet  的子網路。
 * 將 Azure AD 中的「所有」  使用者同步到 Azure AD DS 受控網域。
 
 選取 [檢閱 + 建立]  以接受這些預設的設定選項。
@@ -136,7 +136,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 1. 受控網域的 [概觀]  索引標籤會顯示一些**必要的設定步驟**。 第一個設定步驟是更新虛擬網路的 DNS 伺服器設定。 正確設定 DNS 的設定之後，就不會再顯示此步驟。
 
-    列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是 *10.0.1.4* 和 *10.0.1.5*。 您稍後可以在 [屬性]  索引標籤上找到這些 IP 位址。
+    列出的位址是要在虛擬網路中使用的網域控制站。 在此範例中，這些位址是 *10.0.2.4* 和 *10.0.2.5*。 您稍後可以在 [屬性]  索引標籤上找到這些 IP 位址。
 
     ![使用 Azure AD Domain Services IP 位址來設定虛擬網路的 DNS 設定](./media/tutorial-create-instance/configure-dns.png)
 

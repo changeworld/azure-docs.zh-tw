@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74157693"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548137"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入門：從主控台應用程式廣播即時訊息
 
@@ -131,10 +131,17 @@ API | `1.0-preview` | `1.0`
 [廣播到所有目標](#broadcast) | **&#x2713;** | **&#x2713;**
 [廣播到群組](#broadcast-group) | **&#x2713;** | **&#x2713;**
 廣播到部分群組 | **&#x2713;** (已取代) | `N / A`
-[傳送給特定使用者](#send-user) | **&#x2713;** | **&#x2713;**
+[傳送給使用者](#send-user) | **&#x2713;** | **&#x2713;**
 傳送給部分使用者 | **&#x2713;** (已取代) | `N / A`
 [將使用者新增至群組](#add-user-to-group) | `N / A` | **&#x2713;**
 [從群組中移除使用者](#remove-user-from-group) | `N / A` | **&#x2713;**
+[檢查使用者是否存在](#check-user-existence) | `N / A` | **&#x2713;**
+[從所有群組中移除使用者](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[傳送至連線](#send-connection) | `N / A` | **&#x2713;**
+[將連線新增至群組](#add-connection-to-group) | `N / A` | **&#x2713;**
+[從群組移除連線](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[關閉用戶端連線](#close-connection) | `N / A` | **&#x2713;**
+[服務健康狀態](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>廣播給所有人
@@ -153,7 +160,7 @@ API | `1.0-preview` | `1.0`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | 同上
 
 <a name="send-user"> </a>
-### <a name="sending-to-specific-users"></a>傳送給特定使用者
+### <a name="sending-to-a-user"></a>傳送給使用者
 
 版本 | API HTTP 方法 | 要求 URL | Request body
 --- | --- | --- | ---
@@ -165,14 +172,77 @@ API | `1.0-preview` | `1.0`
 
 版本 | API HTTP 方法 | 要求 URL
 --- | --- | ---
-`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>從群組中移除使用者
 
 版本 | API HTTP 方法 | 要求 URL
 --- | --- | ---
-`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
+
+<a name="check-user-existence"> </a>
+### <a name="check-user-existence-in-a-group"></a>檢查群組中是否存在使用者
+
+API 版本 | API HTTP 方法 | 要求 URL
+---|---|---
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
+
+回應狀態碼 | 描述
+---|---
+`200` | 已有此使用者
+`404` | 沒有此使用者
+
+<a name="remove-user-from-all-groups"> </a>
+### <a name="remove-a-user-from-all-groups"></a>從所有群組中移除使用者
+
+API 版本 | API HTTP 方法 | 要求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
+
+<a name="send-connection"> </a>
+### <a name="send-message-to-a-connection"></a>將訊息傳送至連線
+
+API 版本 | API HTTP 方法 | 要求 URL | 要求本文
+---|---|---|---
+`1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
+
+<a name="add-connection-to-group"> </a>
+### <a name="add-a-connection-to-a-group"></a>將連線新增至群組
+
+API 版本 | API HTTP 方法 | 要求 URL
+---|---|---
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="remove-connection-from-group"> </a>
+### <a name="remove-a-connection-from-a-group"></a>從群組移除連線
+
+API 版本 | API HTTP 方法 | 要求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="close-connection"> </a>
+### <a name="close-a-client-connection"></a>關閉用戶端連線
+
+API 版本 | API HTTP 方法 | 要求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
+
+<a name="service-health"> </a>
+### <a name="service-health"></a>服務健康情況
+
+API 版本 | API HTTP 方法 | 要求 URL
+---|---|---                             
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
+
+回應狀態碼 | 描述
+---|---
+`200` | 服務狀態良好
+`503` | 服務無法使用
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

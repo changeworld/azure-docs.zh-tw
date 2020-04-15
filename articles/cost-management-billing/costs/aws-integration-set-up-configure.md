@@ -3,22 +3,26 @@ title: 設定 AWS 與 Azure 成本管理的整合
 description: 本文會逐步引導您設定 AWS 成本和使用量報告與 Azure 成本管理的整合。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203078"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878981"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>設定 AWS 成本和使用量報告的整合
 
 透過 Amazon Web Services (AWS) 成本和使用量報告 (CUR) 的整合，您可以在 Azure 成本管理中監視並控制 AWS 支出。 此整合可讓您在 Azure 入口網站的單一位置，同時監視和控制 Azure 與 AWS 的費用。 本文會說明如何設定整合，以便您可以使用 Azure 成本管理功能來分析成本及檢閱預算。
 
 成本管理會使用 AWS 存取認證來取得報告定義和下載報告 GZIP CSV 檔案，以處理儲存在 S3 貯體中的 AWS 成本和使用量報告。
+
+觀看影片[如何在成本管理中設定適用於 AWS 的連接器](https://www.youtube.com/watch?v=Jg5KC1cx5cA)，以深入了解如何設定 AWS 報告整合。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>在 AWS 中建立成本和使用量報告
 

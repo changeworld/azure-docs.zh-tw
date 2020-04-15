@@ -1,19 +1,19 @@
 ---
-title: 利用範本參考
-description: 利用 Azure Resource Manager 範本參考來建立範本。
+title: 使用範本參考
+description: 使用 Azure Resource Manager 範本參考來建立範本。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373174"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878477"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>教學課程：利用 ARM 範本參考
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教學課程：利用 Resource Manager 範本參考
 
 了解如何尋找範本結構描述資訊，以及使用此資訊來建立 Azure Resource Manager (ARM) 範本。
 
@@ -65,9 +65,13 @@ ms.locfileid: "80373174"
     * **resources**：指定在資源群組中部署或更新的資源類型。
     * **outputs**：指定部署後傳回的值。
 
-1. 擴充**資源**。 已定義 `Microsoft.Storage/storageAccounts` 資源。
+1. 擴充**資源**。 已定義 `Microsoft.Storage/storageAccounts` 資源。 SKU 名稱會使用參數值。  參數名為 **storageAccountType**。
 
     ![Resource Manager 範本儲存體帳戶定義](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. 展開**參數** 以查看如何定義 **storageAccountType**。 參數有四個允許的值。 您會找到其他允許的值，然後修改參數定義。
+
+    ![Resource Manager 範本儲存體帳戶資源 SKU](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>尋找範本參考
 
@@ -84,7 +88,7 @@ ms.locfileid: "80373174"
 
     ![Resource Manager 範本參考儲存體帳戶類型版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. 選取 **storageAccount** 資源類型的最新版本。  撰寫本文時的最新版本是 **2019-06-01**。
+1. 選取 **storageAccount** 資源類型的最新版本。 撰寫本文時的最新版本是 **2019-06-01**。 請確定此版本符合在範本中用於儲存體帳戶資源的版本。 如果您更新 API 版本，請確認資源定義符合範本參考。
 
 1. 此頁面會列出 storageAccount 資源類型的詳細資料。  例如，其會列出 **Sku** 物件的允許值。 SKU 數量比您稍早開啟的快速入門範本中所列的 SKU 還要多。 您可以自訂快速入門範本，以包含所有可用的儲存體類型。
 
@@ -98,7 +102,21 @@ ms.locfileid: "80373174"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-請參閱 Visual Studio Code 快速入門中的[部署範本](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)一節，以取得部署程序。 當您部署範本時，請使用新增的值來指定 **storageAccountType** 參數，例如 **Premium_ZRS**。 如果您使用原始快速入門範本，部署將會失敗，因為 **Premium_ZRS** 不是允許的值。
+請參閱 Visual Studio Code 快速入門中的[部署範本](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)一節，以取得部署程序。 當您部署範本時，請使用新增的值來指定 **storageAccountType** 參數，例如 **Premium_ZRS**。 如果您使用原始快速入門範本，部署將會失敗，因為 **Premium_ZRS** 不是允許的值。  若要傳遞參數值，請將下列切換新增至部署命令：
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>清除資源
 

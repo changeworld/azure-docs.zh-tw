@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74559191"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585777"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教學課程：回應安全性事件
 資訊安全中心會使用進階的分析和威脅情報，持續分析混合式雲端工作負載，提醒您發生惡意活動。 此外，您可以將警示從其他的安全性產品和服務整合到資訊安全中心，並以您自己的指標或情報來源作為基礎建立自訂警示。 一旦有警示產生，您便需要迅速採取行動來進行調查並加以修復。 在本教學課程中，您將學會如何：
@@ -29,7 +29,7 @@ ms.locfileid: "74559191"
 > * 進一步調查，以判斷安全性事件的根本原因及範圍
 > * 搜尋安全性資料以協助調查
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 若要逐步執行本教學課程中涵蓋的功能，您必須是在資訊安全中心的標準定價層。 您可以免費試用資訊安全中心標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 [將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)快速入門會為您逐步解說如何升級至「標準」定價層。
@@ -114,7 +114,7 @@ Sam 是安全性分析師，他們的職責包括︰
 4. 選取 [儲存]  。
 
 >[!NOTE]
-> 停用自動佈建不會從已佈建代理程式的 Azure VM 移除 Microsoft Monitoring Agent。 停用自動佈建會限制對資源的安全性監視。
+> 停用自動佈建不會從已佈建代理程式的 Azure VM 移除 Log Analytics 代理程式。 停用自動佈建會限制對資源的安全性監視。
 >
 
 ## <a name="next-steps"></a>後續步驟
@@ -124,8 +124,3 @@ Sam 是安全性分析師，他們的職責包括︰
 > * 安全性事件，此為資源相關警示的彙總
 > * 調查地圖，此地圖會以圖形來表示連線到安全性警示或事件的實體
 > * 搜尋功能，用以尋找更多關於遭入侵系統的證據
-
-若要深入了解資訊安全中心的調查功能，請參閱：
-
-> [!div class="nextstepaction"]
-> [調查事件及警示](security-center-investigation.md)

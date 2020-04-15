@@ -1,22 +1,14 @@
 ---
 title: 教學課程：使用機器學習實體擷取結構化資料 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 使用機器學習實體從語句中擷取結構化資料。 若要提高擷取的精確度，請新增具有描述項和限制式的子元件。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/01/2020
+ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75381761"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545846"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
@@ -44,19 +36,19 @@ ms.locfileid: "75381761"
 
 本教學課程會新增機器學習實體，以從語句中擷取資料。
 
-實體的用途是定義要擷取的資料。 這包括為資料提供名稱、類型 (如果可能的話)、任何資料解析 (如果有所混淆)，以及組成資料的確切文字。
+實體會定義要從語句中擷取的資料。 這包括為資料提供名稱、類型 (如果可能的話)、任何資料解析 (如果有所混淆)，以及組成資料的確切文字。
 
-若要定義實體，您必須建立實體，然後在範例語句中為代表實體的文字加上標籤。 這些加上標籤的範例會向 LUIS 指出什麼是實體，以及可在語句中哪個位置找到實體。
+若要定義實體，您必須建立實體，然後在所有意圖的範例語句中為代表實體的文字加上標籤。 這些加上標籤的範例會向 LUIS 指出什麼是實體，以及可在語句中哪個位置找到實體。
 
 ## <a name="entity-decomposability-is-important"></a>實體的可分解性是很重要的
 
-對於意圖預測和資料擷取，實體的可分解性都是很重要的。
+對於macOS意圖預測和資料擷取，實體的可分解性都是很重要的。
 
 請從機器學習實體開始著手，這是資料擷取的開端和最上層實體。 然後，將實體分解成用戶端應用程式所需的組件。
 
 雖然您在開始執行應用程式時可能還不確定所需的詳細程度，但最佳做法是從機器學習實體開始著手，然後在您的應用程式成熟時，使用子元件進行分解。
 
-實際上，您將建立機器學習實體來代表比薩應用程式的訂單。 此訂單應具備履行訂單所需的所有組件。 首先，實體會擷取與訂單相關的文字，並取出大小和數量。
+您可在此建立機器學習實體來代表比薩應用程式的訂單。 此訂單應具備履行訂單所需的所有組件。 首先，實體會擷取與訂單相關的文字，並取出大小和數量。
 
 `Please deliver one large cheese pizza to me` 的語句應將 `one large cheese pizza` 擷取為訂單，然後也應擷取 `1` 和 `large`。
 
@@ -92,7 +84,7 @@ ms.locfileid: "75381761"
     ![將結構新增至實體](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. 在 [建立機器學習實體]  方塊中，在 [結構]  方塊內新增 `Size`，然後選取 [輸入]。
-1. 若要新增**描述項**，請在 [大小的描述項]  區域中選取 `+`，然後選取 [建立新的片語清單]  。
+1. 若要新增**描述項**，請在 [描述項]  區域中選取 `+`，然後選取 [建立新的片語清單]  。
 
 1. 在 [建立新的片語清單描述項]  方塊中輸入名稱 `SizeDescriptor`，然後依序輸入 `small`、`medium` 和 `large` 的值。 在填入 [建議]  方塊後，選取 `extra large` 和 `xl`。 選取 [完成]  以建立新的片語清單。
 
@@ -108,7 +100,7 @@ ms.locfileid: "75381761"
 
     ![在語句中為文字的大小實體加上標籤。](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    由於您已明確為文字加上標籤，標籤與預測均相符，因此文字底下會顯示實線。
+    由於您已_明確_為文字加上標籤，標籤與預測均相符，因此文字底下會顯示實線。
 
 1. 為其餘語句中的 `Order` 實體和大小實體加上標籤。 文字中的方括弧分別表示加上標籤的 `Order` 實體及其中的 `Size` 實體。
 
@@ -132,7 +124,7 @@ ms.locfileid: "75381761"
     |--|
     |`pickup XL meat lovers pizza`|
 
-    整體而言的最高實體 `Order` 會加上標籤，而 `Size` 子元件也會以虛線標示。 這是成功的預測。
+    整體而言的最高實體 `Order` 會加上標籤，而 `Size` 子元件也會以虛線標示。
 
     ![使用實體預測的新範例語句](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
@@ -160,20 +152,20 @@ ms.locfileid: "75381761"
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>建立具有限制式的子元件實體以利擷取資料
 
-`Order` 實體應具有 `Quantity` 子元件，用以判斷訂單中某個項目的數量。 數量應限定為數值，以便用戶端應用程式可立即使用擷取的資料。
+`Order` 實體應具有 `Quantity` 子元件，用以判斷訂單中某個項目的數量。 數量應限定為數值，以便用戶端應用程式可立即依名稱使用擷取的資料。
 
 限制式會套用作為文字比對項目；包括經由完全相符比對 (例如清單實體)，或透過規則運算式 (例如規則運算式實體或預建的實體)。
 
 使用限制式後，系統只會擷取符合限制式的文字。
 
 1. 選取 [實體]  ，然後選取 `Order` 實體。
-1. 選取 [+ 新增元件]  並輸入名稱 `Quantity`，然後選取 [輸入] 將新的實體新增至應用程式。
-1. 在出現成功通知後，選取 `Quantity` 子元件，然後選取 [限制式] 鉛筆圖示。
+1. 選取 [+ 新增元件]  並輸入名稱 `Quantity`，然後選取 [輸入] 將新的子元件新增至 `Order` 實體。
+1. 在出現成功通知後，在 [進階選項]  中選取 [限制式] 鉛筆圖示。
 1. 在下拉式清單中，選取預建的數值。
 
     ![以預建的數值作為限制式，建立數量實體。](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    只有在找到符合預建數值實體的文字時，才會套用 `Quantity` 實體。
+    當文字符合預先建立的數子實體時，就會套用 `Quantity` 實體。
 
     具有限制式的實體已建立，但尚未套用至範例語句。
 
@@ -182,7 +174,7 @@ ms.locfileid: "75381761"
 
 ## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>標記範例語句，以告知 LUIS 有關實體的資訊
 
-1. 從左側導覽中選取 [意圖]  ，然後選取 [OrderPizza]  意圖。 下列語句中的三個數值會加上標籤，但會顯示在 `Order` 實體行下方。 這種較低的層級，表示已找到實體，但未將其視為 `Order` 實體以外的實體。
+1. 從左側導覽中選取 [意圖]  ，然後選取 [OrderPizza]  意圖。 下列語句中的三個數值會加上標籤，但會顯示在 `Order` 實體行下方。 這種較低的層級表示已找到實體，但未將其視為 `Order` 實體以外的實體。
 
     ![已找到預建的數值，但尚未將其視為訂單實體以外的實體。](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
 
@@ -192,7 +184,7 @@ ms.locfileid: "75381761"
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>為應用程式定型以將實體變更套用至應用程式
 
-選取 [定型]  ，以使用這些新的語句為應用程式定型。
+選取 [定型]  ，以使用這些新的語句為應用程式定型。 訓練之後，`Order` 元件會正確預測出 `Quantity` 子元件。 這種正確的預測會以實線表示。
 
 ![為應用程式定型，然後檢閱範例語句。](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
@@ -213,7 +205,7 @@ ms.locfileid: "75381761"
 
     大小已正確識別。 請記住，`OrderPizza` 意圖中的範例語句並不會以 `medium` 的範例作為大小，但會使用包含中尺寸的 `SizeDescriptor` 片語清單的描述項。
 
-    數量未正確預測。 若要修正此問題，您可以使用該字新增更多範例語句以指出數量，並將該字標示為 `Quantity` 實體。
+    數量未正確預測。 如果 LUIS 預測中沒有傳回大小，您可以在用戶端應用程式中修正此問題，方法是將大小預設為 1。
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>發佈應用程式以便從 HTTP 端點加以存取
 
@@ -223,7 +215,7 @@ ms.locfileid: "75381761"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 移至位址中的 URL 結尾處，然後輸入您在互動式測試面板中輸入的相同查詢。
+1. 移至網址列中的 URL 結尾處，然後以您在互動式測試面板中輸入的相同查詢取代 _YOUR_QUERY_HERE_。
 
     `deliver a medium veggie pizza`
 

@@ -1,22 +1,15 @@
 ---
 title: 教學課程：檢閱端點語句 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTP 端點所收到的語句來改善應用程式的預測。 有些語句可能會針對意圖進行驗證，而其他語句則可能需要針對實體進行驗證。
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76843968"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548730"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教學課程：檢閱端點語句以修正不確定的預測
 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTPS 端點所收到的語句來改善應用程式的預測。 您應該在排定的 LUIS 維護中定期檢閱端點語句。
@@ -46,15 +39,11 @@ ms.locfileid: "76843968"
 
 1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
 
-1. 在 [預覽 LUIS 入口網站](https://preview.luis.ai)上，將 .json 檔案匯入到新的應用程式中。
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. 從 [管理]  區段的 [版本]  索引標籤上，複製版本並將它命名為 `review`。
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>為應用程式定型以將實體變更套用至應用程式
 
-    > [!TIP]
-    > 在修改應用程式之前，複製到新版本是最佳做法。 完成一個版本之後，請將版本匯出為 .json 或 .lu 檔案，然後將該檔案簽入您的原始檔控制系統中。
-
-
-1. 若要將應用程式定型，請選取 [定型]  。
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>發佈應用程式以便從 HTTP 端點加以存取
 
@@ -66,7 +55,7 @@ ms.locfileid: "76843968"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 使用端點來新增下列語句。
+1. 移至網址列中的 URL 尾端，並以下列資料表中的語句取代 _YOUR_QUERY_HERE_。 針對每個語句提交語句，並取得結果。 然後以下一個語句取代結尾的語句。
 
     |端點語句|對齊的意圖|
     |--|--|
@@ -110,9 +99,9 @@ ms.locfileid: "76843968"
 
 若要確認正確對齊的語句範例是否已改善應用程式的預測，請嘗試使用接近更正後語句的語句。
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 移至位址中的 URL 結尾並輸入 `Are there any natural language processing jobs in my department right now?`。 最後一個 querystring 參數是 `q`，也就是 **query** 語句。
+1. 移至網址列中的 URL 尾端，並以 `Are there any natural language processing jobs in my department right now?` 取代 _YOUR_QUERY_HERE_。
 
    ```json
     {

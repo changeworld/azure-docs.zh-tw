@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500491"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802599"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="general"></a>一般
+- [Azure 監視器概觀](overview.md) - 新增 Azure 監視器概觀影片。
+- [Azure 監視器客戶管理的金鑰組態](platform/customer-managed-keys.md) - 一般更新。
+- [Azure 監視器資料參考](/azure/azure-monitor/reference) - 新增網站。
+
+### <a name="alerts"></a>警示
+
+- [在 Azure 監視器中建立、檢視和管理活動記錄警示](platform/alerts-activity-log.md) - Resource Manager 範本的其他說明。
+- [了解計量警示在 Azure 監視器中的運作方式。](platform/alerts-metric-overview.md) - 已更新以提供政府支援。
+- [Azure 監視器警示和通知的疑難排解](platform/alerts-troubleshoot.md) - 新文章
+
+### <a name="application-insights"></a>Application Insights
+- [使用 PowerShell 將 Azure Application Insights 自動化](app/powershell.md) - 新增了 ARMClient 範例。
+- [從 Application Insights 連續匯出遙測](app/export-telemetry.md) - 新增包含匯出結構詳細資料的資料表。
+- [在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具](app/snapshot-debugger-appservice.md) - 新增了 Resource Manager 範本範例。
+- [管理 Azure Application Insights 的使用量和成本](app/pricing.md) - 新增了資料容量警示的資訊。
+- [使用 Azure 監視器 (預覽) 來監視 Python 應用程式](app/opencensus-python.md) - 新增了標準計量。
+- [JavaScript 應用程式的來源對應支援 - Azure 監視器 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support) - 新文章。
+
+
+### <a name="containers"></a>容器
+- [Azure 監視器常見問題集](faq.md) - 適用於容器的 Azure 監視器更新。
+- [使用適用於容器的 Azure 監視器來設定 GPU 監視](insights/container-insights-gpu-monitoring.md) - 新文章
+
+### <a name="insights"></a>深入解析
+- [Azure 中的 Office 365 管理解決方案](insights/solution-office-365.md) - 淘汰日期更新。
+
+### <a name="logs"></a>記錄
+- [將 Azure 監視器中的記錄查詢最佳化](log-query/query-optimization.md) - 新增了 XML 和 JSON 剖析的 CPU 條件。
+- [刪除和復原 Azure Log Analytics 工作區](platform/delete-workspace.md) - 新增了疑難排解方法。
+- [搭配 Azure Logic Apps 和 Power Automate 使用 Azure 監視器記錄](platform/logicapp-flow-connector.md) - 針對新的 Azure 監視器連接器更新。
+
+### <a name="metrics"></a>計量
+- [Azure 入口網站中的磁碟計量淘汰](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation) - 新文章。
+- [教學課程 - 在 Azure 監視器中建立計量圖表](learn/tutorial-metrics-explorer.md) - 新增了影片。
+
+### <a name="platform-logs"></a>平台記錄
+- [在 Azure 監視器中收集並分析 Azure 活動記錄](platform/activity-log-collect.md) - 內容重寫，更完整的說明如何使用診斷設定收集活動記錄。
+
+### <a name="virtual-machines"></a>虛擬機器
+- [使用 Azure 監視器監視 Azure 虛擬機器](insights/monitor-vm-azure.md) - 新文章。
+- [快速入門：使用 Azure 監視器來監視 Azure 虛擬機器](learn/quick-monitor-azure-vm.md) - 更新內容以新增適用於 VM 的 Azure 監視器。
+- [來自適用於 VM 的 Azure 監視器的警示](insights/vminsights-alerts.md) - 新文章
+- [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md) - 更新了代理程式下載連結。
+
+
+適用於 VM 的 Azure 監視器正式發行的一般更新
+- [什麼是適用於 VM 的 Azure 監視器？](insights/vminsights-overview.md)
+- [適用於 VM 的 Azure 監視器 (GA) 常見問題集](insights/vminsights-ga-release-faq.md) 
+- [使用 Azure 原則啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-policy.md) 
+- [如何使用適用於 VM 的 Azure 監視器來繪製效能圖表](insights/vminsights-performance.md)
+- [如何從適用於 VM 的 Azure 監視器查詢記錄](insights/vminsights-log-search.md)
+- [使用適用於 VM 的 Azure 監視器檢視應用程式相依性](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>視覺效果
+- [從 Azure 監視器將資料視覺化](visualizations.md) - 更新說明檢視設計工具的淘汰規劃。
+
+
+
+
 
 ## <a name="february-2020"></a>2020 年 2 月
 
@@ -53,7 +117,7 @@ ms.locfileid: "79500491"
 - [將 Azure 監視器中的記錄查詢最佳化](log-query/query-optimization.md) - 新文章。
 - [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 改善的範例查詢，協助您了解使用量。
 
-### <a name="metrics"></a>度量
+### <a name="metrics"></a>計量
 - [可透過診斷設定匯出 Azure 監視器平台計量](platform/metrics-supported-export-diagnostic-settings.md) - 新增了 Null 和零值的行為變更一節。
 
 
@@ -175,7 +239,7 @@ ms.locfileid: "79500491"
 - [刪除和復原 Azure Log Analytics 工作區](platform/delete-workspace.md) - 已新增 PowerShell 方法。
 - [設計您的 Azure 監視器記錄部署](platform/design-logs-deployment.md) - 已提高工作區的擷取率。
 
-### <a name="metrics"></a>度量
+### <a name="metrics"></a>計量
 - [可透過診斷設定匯出的 Azure 監視器平台計量](platform/metrics-supported-export-diagnostic-settings.md) - 新文章。
 
 ### <a name="platform-logs"></a>平台記錄

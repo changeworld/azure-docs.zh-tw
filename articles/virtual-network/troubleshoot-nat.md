@@ -1,6 +1,6 @@
 ---
-title: 針對 Azure 虛擬網路 NAT 連線問題進行疑難排解
-titleSuffix: Azure Virtual Network NAT troubleshooting
+title: 針對 Azure 虛擬網路 NAT 連線進行疑難排解
+titleSuffix: Azure Virtual Network
 description: 針對虛擬網路 NAT 的問題進行疑難排解。
 services: virtual-network
 documentationcenter: na
@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674318"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396098"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>針對 Azure 虛擬網路 NAT 連線問題進行疑難排解
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>針對 Azure 虛擬網路 NAT 連線進行疑難排解
 
 本文可協助系統管理員診斷及解決使用虛擬網路 NAT 時的連線問題。
-
->[!NOTE] 
->虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](nat-overview.md#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="problems"></a>問題
 
@@ -43,27 +40,39 @@ ms.locfileid: "78674318"
 
 單一 [NAT 閘道資源](nat-gateway-resource.md)支援 64,000 到 1 百萬個並行流程。  每個 IP 位址都會將 64,000 個 SNAT 連接埠提供給可用的清查。 每個 NAT 閘道資源最多可以使用 16 個 IP 位址。  [這裡](nat-gateway-resource.md#source-network-address-translation)有 SNAT 機制的詳細說明。
 
-SNAT 耗盡的根本原因通常是如何建立和管理輸出連線能力的反模式。  請仔細檢閱這一節。
+SNAT 耗盡的根本原因通常是一種反模式，說明如何建立、管理或設定計時器從其預設值變更。  請仔細檢閱這一節。
 
 #### <a name="steps"></a>步驟
 
-1. 調查您的應用程式如何建立輸出連線 (例如，程式碼檢閱或封包擷取)。 
-2. 判斷此活動是否為預期的行為，或應用程式是否運作不正常。  使用 Azure 監視器中的[計量](nat-metrics.md)來證實您的發現。 針對 SNAT 連線計量，使用「失敗」類別。
-3. 評估是否遵循適當的模式。
-4. 評估是否能使用指派給 NAT 閘道資源的其他 IP 位址，減輕 SNAT 連接埠耗盡。
+1. 檢查您是否已將預設的閒置逾時時間修改為大於 4 分鐘的值。
+2. 調查您的應用程式如何建立輸出連線 (例如，程式碼檢閱或封包擷取)。 
+3. 判斷此活動是否為預期的行為，或應用程式是否運作不正常。  使用 Azure 監視器中的[計量](nat-metrics.md)來證實您的發現。 針對 SNAT 連線計量，使用「失敗」類別。
+4. 評估是否遵循適當的模式。
+5. 評估是否能使用指派給 NAT 閘道資源的其他 IP 位址，減輕 SNAT 連接埠耗盡。
 
 #### <a name="design-patterns"></a>設計模式
 
-可能的話，一律利用連線重複使用和連線共用。  這些模式會立即避免發生資源耗盡問題，並導致可預測、可靠且可調整的行為。 您可以在許多開發程式庫和架構中找到這些模式的基元。
+可能的話，一律利用連線重複使用和連線共用。  這些模式會避免發生資源耗盡問題，並產生可預測的行為。 您可以在許多開發程式庫和架構中找到這些模式的基元。
 
-_**解決方案：**_ 使用適當的模式
+_**解決方案：**_ 使用適當的模式和最佳做法
 
+- NAT 閘道資源的預設 TCP 閒置逾時為 4 分鐘。  如果將此設定變更為較高的值，NAT 將會維持較長時間的流量，並可能造成 [SNAT 連接埠清查的不必要壓力](nat-gateway-resource.md#timers)。
+- 不可部分完成的要求 (每個連線一個要求) 是不良的設計選擇。 這種反向模式會限制規模調整、降低效能，並降低可靠性。 相反地，應重複使用 HTTP/S 連線以減少連線數目和關聯的 SNAT 連接埠。 使用 TLS 時會減少交握、額外負荷和密碼編譯作業成本，因此應用程式規模會增加並提升效能。
+- 如果用戶端未快取 DNS 解析程式結果，DNS 就可以在磁碟區引進許多個別流程。 使用快取。
+- UDP 流程 (例如 DNS 查閱) 會在閒置逾時期間配置 SNAT 連接埠。 閒置的逾時時間愈長，SNAT 連接埠上的壓力愈高。 使用較短的閒置時間 (例如4分鐘)。
+- 使用連接集區來塑造您的連線磁碟區。
+- 永遠不要以無訊息方式放棄 TCP 流程，並依賴 TCP 計時器來清除流程。 如果您未讓 TCP 明確關閉連線，則狀態會保持分配於中繼系統和端點，並讓 SNAT 連接埠無法供其他連線使用。 這可能會觸發應用程式失敗和 SNAT 耗盡的問題。 
+- 在沒有從專業角度了解可能產生的影響時，請勿變更 作業系統層級 TCP 關閉相關的計時器值。 雖然 TCP 堆疊會復原，但當連線端點的表現不如預期時，您的應用程式效能可能會受到負面影響。 變更計時器的需求通常是基礎設計出現問題的信號。 請檢閱下列建議。
+
+SNAT 耗盡通常也會隨著基礎應用程式中的其他反向模式而增加。 請參閱這些額外的模式和最佳做法，以改善服務的規模調整和可靠性。
+
+- 探索減少 [TCP 閒置逾時](nat-gateway-resource.md#timers)的影響，以降低包括稍早要釋放 SNAT 連接埠清單的 4 分鐘預設閒置逾時。
 - 請考慮針對長時間執行的作業使用[非同步輪詢模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，以釋出連線資源給其他作業使用。
-- 長時間存留的流程 (例如，重複使用的 TCP 連線) 應該使用 TCP Keepalive 或應用程式層 Keepalive 來避免中繼系統逾時。
+- 長時間存留的流程 (例如，重複使用的 TCP 連線) 應該使用 TCP Keepalive 或應用程式層 Keepalive 來避免中繼系統逾時。增加閒置逾時的時間是最後手段，而且可能無法解決根本原因。 長時間逾時會在逾時時間到期時導致低速率失敗，並引來延遲和不必要的失敗。
 - 正常的[重試模式](https://docs.microsoft.com/azure/architecture/patterns/retry)應該在暫時性失敗或失敗復原期間用來避免積極重試/高載。
 為每個 HTTP 作業 (也稱為「不可部分完成的連線」) 建立新的 TCP 連線是一種反模式。  不可部分完成的連線會讓您的應用程式無法良好調整而浪費資源。  一律會透過管線將多個作業連至相同連線。  您的應用程式將受益於交易速度和資源成本。  當您的應用程式使用傳輸層加密 (例如 TLS) 時，處理新連線會產生相當大的成本。  如需其他最佳作法模式，請參閱 [Azure 雲端設計模式](https://docs.microsoft.com/azure/architecture/patterns/)。
 
-#### <a name="possible-mitigations"></a>可能的緩和措施
+#### <a name="additional-possible-mitigations"></a>其他可能的因應措施
 
 _**解決方案：**_ 調整輸出連線，如下所示：
 
@@ -110,7 +119,7 @@ _**解決方案：**_ 相反地，請使用 TCP 連線測試 (例如「TCP Ping�
 
 #### <a name="azure-infrastructure"></a>Azure 基礎結構
 
-雖然 Azure 會非常小心地監視並操作其基礎結構，但因為無法保證不會遺失傳輸，因此還是可能會發生暫時性失敗。  使用可讓 TCP 應用程式進行 SYN 重新傳輸的設計模式。 使用夠長的連線逾時來允許 TCP SYN 重新傳輸，以減少因 SYN 封包遺失而造成的暫時性影響。
+Azure 會非常小心地監視並操作其基礎結構。 可能會發生暫時性失敗，而且不保證傳輸不失真。  使用可讓 TCP 應用程式進行 SYN 重新傳輸的設計模式。 使用夠長的連線逾時來允許 TCP SYN 重新傳輸，以減少因 SYN 封包遺失而造成的暫時性影響。
 
 _**解決方案：**_
 
@@ -128,7 +137,7 @@ _**解決方案：**_
 
 #### <a name="internet-endpoint"></a>網際網路端點
 
-除了與您的通訊所建立之網際網路端點相關的考量以外，前述章節也適用。 可能會影響連線成功的其他因素如下：
+適用先前的章節，以及與之建立通訊的網際網路端點。 可能會影響連線成功的其他因素如下：
 
 * 目的地端的流量管理，包括
 - 目的地端加諸的 API 速率限制
@@ -147,9 +156,11 @@ _**解決方案：**_
 
 #### <a name="tcp-resets-received"></a>已接收的 TCP 重設
 
-如果您觀察到來源 VM 上收到了 TCP 重設 (TCP RST 封包)，則可能是由私人端的 NAT 閘道針對無法辨識為進行中的流程而產生。  其中一個可能的原因是 TCP 連線閒置時間已逾時。您可以將閒置逾時時間從 4 分鐘調整為最多 120 分鐘。
+NAT 閘道會針對無法辨識為進行中的流量，在來源 VM 上產生 TCP 重設。
 
-NAT 閘道資源的公用端不會產生 TCP 重設。 如果您在目的地端收到 TCP 重設，則是由來源 VM 的堆疊產生，而不是由 NAT 閘道資源產生。
+其中一個可能的原因是 TCP 連線閒置時間已逾時。您可以將閒置逾時時間從 4 分鐘調整為最多 120 分鐘。
+
+NAT 閘道資源的公用端不會產生 TCP 重設。 目的地端上的 TCP 重設是由來源 VM 所產生，而不是 NAT 閘道資源。
 
 _**解決方案：**_
 

@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409553"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879423"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像
 
-當您的專案系統管理員在 Azure Machine Learning 中[建立標籤專案](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)之後，您就可以使用標籤工具快速準備機器學習專案的資料。 本文章說明：
+當您的專案系統管理員在 Azure Machine Learning 中[建立標籤專案](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)之後，您就可以使用標籤工具 (公開預覽) 快速準備機器學習專案的資料。 本文章說明：
 
 > [!div class="checklist"]
 > * 如何存取您的標籤專案
@@ -45,7 +45,9 @@ ms.locfileid: "79409553"
 
 在所有的影像標籤工作中，您都必須從專案系統管理員所指定的集合中選擇適當的一或多個標籤。 您可以使用鍵盤上的數字鍵來選取前九個標籤。  
 
-在影像分類工作中，您可以選擇同時檢視多個影像。 使用影像區域上方的圖示來選取版面配置。 若要同時選取所有顯示的影像，請使用 [全選]  。 若要選取個別影像，請使用影像右上角的圓形選取按鈕。 您至少須選取一個影像來套用標籤。 如果您選取多個影像，您選取的任何標籤都會套用到所有選取的影像。
+在影像分類工作中，您可以選擇同時檢視多個影像。 使用影像區域上方的圖示來選取版面配置。 
+
+若要同時選取所有顯示的影像，請使用 [全選]  。 若要選取個別影像，請使用影像右上角的圓形選取按鈕。 您至少須選取一個影像來套用標籤。 如果您選取多個影像，您選取的任何標籤都會套用到所有選取的影像。
 
 在此，我們選擇了 2x2 版面配置，且要將「哺乳類動物」標籤套用至熊和虎鯨的影像。 鯊魚的影像已標記為「軟骨魚類」，而鬣蜥尚未標記。
 

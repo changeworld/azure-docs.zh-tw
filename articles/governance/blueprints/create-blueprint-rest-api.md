@@ -3,12 +3,12 @@ title: 快速入門：使用 REST API 建立藍圖
 description: 在本快速入門中，您將在 REST API 中使用 Azure 藍圖建立、定義和部署成品。
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290366"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676574"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入門：使用 REST API 定義和指派 Azure 藍圖
 
@@ -25,7 +25,7 @@ ms.locfileid: "79290366"
 
 如果您不熟悉 REST API，請先詳閱 [Azure REST API 參考](/rest/api/azure/)，以對 REST API 有一般的了解，特別是要求 URI 和要求本文。 本文使用這些概念提供使用 Azure 藍圖的方向，而且假設您已具備其使用知識。 [ARMClient](https://github.com/projectkudu/ARMClient) 這類工具及其他元件可自動處理授權，建議初學者使用它們。
 
-如需藍圖規格，請參閱 [Azure 藍圖 REST API](/rest/api/blueprints/)。
+如需 Azure 藍圖規格，請參閱 [Azure 藍圖 REST API](/rest/api/blueprints/)。
 
 ### <a name="rest-api-and-powershell"></a>REST API 和 PowerShell
 
@@ -406,7 +406,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      **使用者指派的受控識別**可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
 
      > [!IMPORTANT]
-     > 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。
+     > Azure 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。
 
 ## <a name="clean-up-resources"></a>清除資源
 

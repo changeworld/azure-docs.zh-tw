@@ -1,22 +1,14 @@
 ---
 title: 教學課程：角色的內容相關資料 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 根據內容尋找相關的資料。 例如，從一個建築物和辦公室移到另一個建築物和辦公室的實體移動原點和目的地位置會相關。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 03/30/2020
+ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75447929"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475816"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教學課程：從語句擷取內容相關的資料
 
@@ -49,24 +41,26 @@ ms.locfileid: "75447929"
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
-1. 使用 [https://preview.luis.ai](https://preview.luis.ai) 的 URL 登入預覽 LUIS 入口網站。
+1. 登入 [LUIS **預覽版**入口網站](https://preview.luis.ai)。
 
-1. 選取 [建立新的應用程式]  ，輸入名稱 `HumanResources`，並保留預設文化特性 [英文]  。 讓描述保留空白。
-
-1. 選取 [完成]  。
+1. 選取 [+新增對話應用程式]  ，輸入名稱 `HumanResources`，並保留預設文化特性 - **英文**。 將描述和預測資源保留空白。 選取 [完成]  。
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>建議意圖來在城市之間移動員工
 
+意圖可用來根據使用者的意圖 (從自然語言文字判斷) 對使用者語句進行分類。
+
+若要將語句分類，意圖需要應歸類為此意圖的使用者語句範例。
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. 選取 [Create new intent] \(建立新意圖\)  。
+1. 選取 [+ 建立]  。
 
 1. 在快顯對話方塊方塊中輸入 `MoveEmployeeToCity`，然後選取 [完成]  。
 
     > [!div class="mx-imgBorder"]
     > ![建立新意圖對話方塊的螢幕擷取畫面](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. 將語句範例新增至意圖。
+1. 將您預期使用者會要求的數個範例語句新增至此意圖。
 
     |範例語句|
     |--|
@@ -85,24 +79,29 @@ ms.locfileid: "75447929"
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>新增預先建置的實體 geographyV2
 
-預先建置實體 geographyV2 擷取位置資訊，包括縣/市名稱。 由於表達有兩個縣/市名稱，在內容中彼此相關，因此使用角色來擷取該內容。
+預先建置實體 **geographyV2** 擷取位置資訊，包括縣/市名稱。 由於表達有兩個縣/市名稱，在內容中彼此相關，因此使用角色來擷取該內容。
 
 1. 從左側瀏覽列中，選取 [實體]  。
 
-1. 選取 [加入預先建置的實體]  ，然後在搜尋列中選取 `geo` 以篩選預先建置的實體。
+1. 選取 [+新增預先建置的實體]  ，然後在搜尋列中輸入 `geo` 以篩選預先建置的實體。
 
     > [!div class="mx-imgBorder"]
     > ![將 geographyV2 預先建置的實體新增至應用程式](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
 1. 選取此核取方塊，然後選取 [完成]  。
+
+## <a name="add-roles-to-prebuilt-entity"></a>將角色新增至預先建置的實體
+
 1. 在 [實體]  清單中，選取 [geographyV2]  開啟新的實體。
-1. 新增兩個角色，`Origin` 和 `Destination`。
+1. 若要新增角色，請選取 **+** 並新增下列兩個角色： `Origin` 和 `Destination`。
 
     > [!div class="mx-imgBorder"]
     > ![將角色新增至預先建置的實體](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+## <a name="label-entity-roles-in-example-utterances"></a>標記範例語句中的實體角色
+
 1. 從左側導覽中選取 [意圖]  ，然後選取 [MoveEmployeeToCity]  意圖。 請注意，縣/市名稱會加上預先建置的實體 **geographyV2**。
-1. 在操作工具列中，選取 [實體選擇區]  。
+1. 在內容工具列中，選取 [實體選擇區]  的_鉛筆圖示_。
 
     > [!div class="mx-imgBorder"]
     > ![從內容工具列中選取實體選擇區](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
@@ -122,18 +121,21 @@ ms.locfileid: "75447929"
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>訓練應用程式，因此可以測試意圖的變更
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+若要將應用程式定型，請選取 [定型]  。 在定型後，會將變更 (例如新的實體和加上標籤的語句) 套用至使用中模型。
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>發佈應用程式，因此可以從端點查詢已定型的模型
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>發佈應用程式以便從 HTTP 端點加以存取
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>從端點取得意圖和實體預測
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. 移至位址中的 URL 尾端並輸入 `Please move Carl Chamerlin from Tampa to Portland`。 最後一個 querystring 參數是 `q`，也就是 **query** 語句。 此語句與任何標示的語句都不同，因此這是很好的測試，且應該傳回 `MoveEmployee` 意圖及所擷取的實體。
+1. 移至網址列中的 URL 尾端，並以 `Please move Carl Chamerlin from Tampa to Portland` 取代 _YOUR_QUERY_HERE_。
+
+此語句與任何標示的語句都不同，因此這是很好的測試，且應該傳回 `MoveEmployee` 意圖及所擷取的實體。
 
     ```json
     {
@@ -171,11 +173,9 @@ ms.locfileid: "75447929"
     }
     ```
 
-    已預測正確的意圖，而且實體陣列在對應的 **entity** 屬性中具有出發地和目的地角色。
+    The correct intent is predicted and the entities array has both the origin and destination roles in the corresponding **entities** property.
 
-## <a name="clean-up-resources"></a>清除資源
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>相關資訊
 

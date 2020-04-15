@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: c754740369da6d0a8084b9b60ef178fb28e32f1b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d94ad56508d5e5f1e28a24e82460a68ffce5592f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75445676"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666892"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教學課程：將您的資料遷移至 Azure Cosmos DB 中的 Cassandra API 帳戶
 
@@ -33,7 +33,7 @@ ms.locfileid: "75445676"
 
 ## <a name="prerequisites-for-migration"></a>進行移轉的必要條件
 
-* **預估輸送量需求：** 將資料遷移至 Azure Cosmos DB 中的 Cassandra API 帳戶之前，您應該預估工作負載的輸送量需求。 一般而言，建議您從 CRUD 作業所需的平均輸送量開始著手，然後再納入「擷取、轉換、載入」(ETL) 或棘手作業所需的額外輸送量。 您需要有下列詳細資料，才能為移轉進行規劃： 
+* **估計輸送量需求：** 將資料遷移至 Azure Cosmos DB 中的 Cassandra API 帳戶之前，您應該預估工作負載的輸送量需求。 一般而言，建議您從 CRUD 作業所需的平均輸送量開始著手，然後再納入「擷取、轉換、載入」(ETL) 或棘手作業所需的額外輸送量。 您需要有下列詳細資料，才能為移轉進行規劃： 
 
   * **現有資料大小或預估資料大小：** 定義最基本的資料庫大小和輸送量需求。 如果您要為新應用程式預估資料大小，您可以假設資料平均分散至所有資料列，然後藉由乘以資料大小來預估值。 
 
@@ -63,11 +63,11 @@ ms.locfileid: "75445676"
 
 * **配置所需的輸送量：** Azure Cosmos DB 可以依據您的需求成長，自動調整儲存體和輸送量。 您可以使用 [Azure Cosmos DB 要求單位計算機](https://www.documentdb.com/capacityplanner)來評估您的輸送量需求。 
 
-* **在 Cassandra API 帳戶中建立資料表：** 在您開始遷移資料之前，請先從 Azure 入口網站或從 cqlsh 預先建立所有資料表。 如果您要遷移至具有資料庫層級輸送量的 Azure Cosmos 帳戶，請務必在建立 Azure Cosmos 容器時提供分割區索引鍵。
+* **在 Cassandra API 帳戶中建立資料表：** 開始遷移資料之前，請先從 Azure 入口網站或從 cqlsh 預先建立所有資料表。 如果您要遷移至具有資料庫層級輸送量的 Azure Cosmos 帳戶，請務必在建立 Azure Cosmos 容器時提供分割區索引鍵。
 
-* **增加輸送量︰** 資料移轉持續時間取決於您為 Azure Cosmos DB 中資料表佈建的輸送量多寡。 請針對移轉持續時間增加輸送量。 藉由較高的輸送量，您可以避免速率限制，並花費較少的時間進行移轉。 完成移轉之後，再降低輸送量以節省成本。 此外，也建議您使用相同區域中的 Azure Cosmos 帳戶作為來源資料庫。 
+* **增加輸送量：** 資料移轉持續時間取決於您為 Azure Cosmos DB 中資料表佈建的輸送量多寡。 請針對移轉持續時間增加輸送量。 藉由較高的輸送量，您可以避免速率限制，並花費較少的時間進行移轉。 完成移轉之後，再降低輸送量以節省成本。 此外，也建議您使用相同區域中的 Azure Cosmos 帳戶作為來源資料庫。 
 
-* **啟用 SSL：** Azure Cosmos DB 具有嚴格的安全性需求和標準。 與您的帳戶互動時，請務必啟用 SSL。 當您透過 SSH 使用 CQL 時，會有選項要您提供 SSL 資訊。
+* **啟用 TLS：** Azure Cosmos DB 有嚴格的安全性需求和標準。 與您的帳戶互動時，請務必啟用 TLS。 當您透過 SSH 使用 CQL 時，會有選項要您提供 TLS 資訊。
 
 ## <a name="options-to-migrate-data"></a>移轉資料的選項
 

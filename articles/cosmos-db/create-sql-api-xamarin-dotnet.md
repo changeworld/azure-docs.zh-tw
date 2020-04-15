@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 125cc2516fbd694bbe62545e85d4e14225fb2a6a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77586762"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756425"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶透過 Xamarin 建置待辦事項應用程式
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 > [!NOTE]
 > 在 GitHub 上 ([這裡](https://github.com/xamarinhq/app-geocontacts)) 可找到整個標準範例 Xamarin 應用程式的範例程式碼，該範例程式碼會展示多個 Azure 供應項目 (包括 CosmosDB)。 此應用程式會示範如何檢視分散各地的連絡人，並且讓這些連絡人更新其位置。
 
-此快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、文件資料庫和容器。 接著，您會建置並部署以 [SQL .NET API](sql-api-sdk-dotnet.md) 和採用 [Xamarin.Forms](https://docs.microsoft.com/xamarin/) 與 [MVVM 架構模式](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)的 [Xamarin](https://docs.microsoft.com/xamarin/) 為基礎的待辦事項清單 Web 應用程式。
+此快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、文件資料庫和容器。 接著，您會建置並部署以 [SQL .NET API](sql-api-sdk-dotnet.md) 和採用 [Xamarin.Forms](https://docs.microsoft.com/xamarin/) 與 [MVVM 架構模式](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)的 [Xamarin](https://docs.microsoft.com/xamarin/) 為基礎的待辦事項清單行動應用程式。
 
 ![在 iOS 上執行的 Xamarin 待辦事項應用程式](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 
@@ -91,15 +91,15 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     ![在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. 在 Visual Studio 2019 或 Visual Studio for Mac 中，開啟位於 azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers 資料夾中的 APIKeys.cs 檔案。
+2. 在 Visual Studio 2019 或 Visual Studio for Mac 中，開啟位於 azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers 資料夾中的 APIKeys.cs 檔案。
 
 3. 從入口網站複製您的 URI 值 (使用 [複製] 按鈕)，並使它成為 APIKeys.cs 中的 `CosmosEndpointUrl` 變數值。
 
-    `public static readonly string CosmosEndpointUrl = "{Azure Cosmos DB account URL}";`
+    `public static readonly string CosmosEndpointUrl = "";`
 
 4. 然後，從入口網站複製您的主要金鑰值，並使它成為 APIKeys.cs 中的 `Cosmos Auth Key` 值。
 
-    `public static readonly string CosmosAuthKey = "{Azure Cosmos DB secret}";`
+    `public static readonly string CosmosAuthKey = "";`
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 

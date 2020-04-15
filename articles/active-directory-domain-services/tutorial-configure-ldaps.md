@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481529"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475912"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定安全 LDAP
 
@@ -114,13 +114,13 @@ Thumbprint                                Subject
 
 若要搭配 Azure AD DS 受控網域使用上一個步驟中建立的數位憑證，您必須先將憑證匯出至包含私密金鑰的 .PFX  憑證檔案。
 
-1. 若要開啟 [執行]  對話方塊，請選取 [Windows]  和 [R]  鍵。
+1. 若要開啟 [執行]  對話方塊，請選取 [Windows]   + **R** 鍵。
 1. 在 [執行] 對話方塊中輸入 **mmc**  並選取 [確定]  ，以開啟 Microsoft Management Console (MMC)。
-1. 在 [使用者帳戶控制]  提示字元處按一下 [是]  ，以系統管理員身分啟動 MMC。
-1. 在 [檔案]  功能表上，按一下 [新增/移除嵌入式管理單元...] 
+1. 在 [使用者帳戶控制]  提示字元選取 [是]  ，以系統管理員身分啟動 MMC。
+1. 從 [檔案]  功能表中，選取 [新增/移除嵌入式...] 
 1. 在 [憑證嵌入式管理單元]  精靈中，選擇 [電腦帳戶]  並選取 [下一步]  。
 1. 在 [選取電腦]  頁面上，選擇 [本機電腦: (執行這個主控台的電腦)]  並選取 [完成]  。
-1. 在 [新增或移除嵌入式管理單元]  對話方塊中，按一下 [確定]  以在 MMC 中新增憑證嵌入式管理單元。
+1. 在 [新增或移除嵌入式管理單元]  對話方塊中，選取 [確定]  以在 MMC 中新增憑證嵌入式管理單元。
 1. 在 MMC 視窗中，展開 [主控台根目錄]  。 選取 [憑證 (本機電腦)]  ，然後按依序展開 [個人]  節點和 [憑證]  節點。
 
     ![在 Microsoft Management Console 中開啟個人憑證存放區](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 建立及匯出包含私密金鑰的數位憑證，並將用戶端電腦設定為信任連線之後，您現在可以在 Azure AD DS 受控網域上啟用安全 LDAP。 若要在 Azure AD DS 受控網域上啟用安全 LDAP，請執行下列設定步驟：
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的 [搜尋資源]  方塊中輸入「網域服務」  。 從搜尋結果選取 [Azure AD Domain Services]  。
-
-    ![在 Azure 入口網站中搜尋並選取您的 Azure AD DS 受控網域](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. 選擇您的受控網域，例如 aaddscontoso.com  。
 1. 在 [Azure AD DS] 視窗的左側，選擇 [安全 LDAP]  。
 1. 根據預設，已停用受控網域的安全 LDAP 存取。 將 [安全 LDAP]  切換至 [啟用]  。
@@ -235,10 +232,10 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 
 設定外部 DNS 提供者，以建立主機記錄 (例如 ldaps  ) 來解析為此外部 IP 位址。 若要先在機器上進行本機測試，您可以在 Windows 的 hosts 檔案中建立項目。 若要成功編輯本機電腦上的 hosts 檔案，請以系統管理員身分開啟 [記事本]  ，然後開啟 *C:\Windows\System32\drivers\etc* 檔案
 
-下列 DNS 項目範例 (搭配外部 DNS 提供者或在本機 hosts 檔案中) 會將 ldaps.aaddscontoso.com  的流量解析為 40.121.19.239  的外部 IP 位址：
+下列 DNS 項目範例 (搭配外部 DNS 提供者或在本機 hosts 檔案中) 會將 ldaps.aaddscontoso.com  的流量解析為 168.62.205.103  的外部 IP 位址：
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>測試受控網域的查詢
@@ -261,7 +258,7 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 1. 選取 [檢視]  功能表選項，然後選擇 [樹狀]  。
 1. 將 [BaseDN]  欄位保留空白，然後選取 [確定]  。
 1. 選擇容器，例如 AADDC Users  ，然後以滑鼠右鍵選取容器並選擇 [搜尋]  。
-1. 保留已預先填入的欄位集，然後選取 [執行]  。 查詢結果會顯示在右邊的視窗中。
+1. 保留已預先填入的欄位集，然後選取 [執行]  。 查詢的結果會顯示在右側視窗中，如下列範例輸出所示：
 
     ![使用 LDP.exe 搜尋 Azure AD DS 受控網域中的物件](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ CER  憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須
 
 1. 在您的本機電腦上，以系統管理員身分開啟 [記事本] 
 1. 流覽至 C:\Windows\System32\drivers\etc  並將其開啟
-1. 刪除您所新增的記錄行，例如 `40.121.19.239    ldaps.aaddscontoso.com`
+1. 刪除您所新增的記錄行，例如 `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>後續步驟
 

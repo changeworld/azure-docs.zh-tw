@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350097"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633026"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL 集區的原始檔控制整合
 
-本教學課程概述如何將您的 SQL Server Data Tools (SSDT) 資料庫專案與原始檔控制整合。  原始檔控制整合是在 Azure Synapse Analytics 中為 SQL 集區資源建置持續整合和部署管線的第一個步驟。 
+本教學課程概述如何將您的 SQL Server Data Tools (SSDT) 資料庫專案與原始檔控制整合。  原始檔控制整合是在 Azure Synapse Analytics 中為 SQL 集區資源建置持續整合和部署管線的第一個步驟。
 
 ## <a name="before-you-begin"></a>開始之前
 
 - 註冊 [Azure DevOps 組織](https://azure.microsoft.com/services/devops/)
-- 完成[建立和連線](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)教學課程
--  [安裝 Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- 完成[建立和連線](create-data-warehouse-portal.md)教學課程
+- [安裝 Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>設定及連線至 Azure DevOps
 
@@ -33,7 +33,7 @@ ms.locfileid: "80350097"
 
    ![建立專案](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "建立專案")
 
-2. 選取 [管理連線]，以開啟 Visual Studio 並連線到步驟 1 中的 Azure DevOps 組織和專案
+2. 選取「管理連線」以開啟 Visual Studio 並連線到步驟 1 中的 Azure DevOps 組織和專案
 
    ![管理連線](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理連線")
 
@@ -53,7 +53,7 @@ ms.locfileid: "80350097"
 
    ![匯入專案](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "匯入專案")  
 
-3. 在 Visual Studio 的 Team Explorer 中，將您的所有變更認可至本機 Git 存放庫 
+3. 在 Visual Studio 的 Team Explorer 中，將您的所有變更認可至本機 Git 存放庫
 
    ![認可](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 

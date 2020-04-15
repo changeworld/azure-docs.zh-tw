@@ -2,19 +2,19 @@
 title: 教學課程 - 將輸出新增至範本
 description: 將輸出新增至 Azure Resource Manager 範本，以簡化語法。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765740"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743542"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>教學課程：將輸出新增至 Resource Manager 範本
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>教學課程：將輸出新增至 ARM 範本
 
-在此教學課程中，您將了解如何從範本傳回值。 當您需要所部署資源的值時，可以使用輸出。 完成此教學課程需要 **7 分鐘**。
+在本教學課程中，您將了解如何從 Azure Resource Manager (ARM) 範本傳回值。 當您需要所部署資源的值時，可以使用輸出。 完成此教學課程需要 **7 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "76765740"
 
 如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -63,10 +63,12 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要執行此部署命令，您必須擁有[最新版](/cli/azure/install-azure-cli)的 Azure CLI。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addoutputs \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -75,7 +77,7 @@ az group deployment create \
 
 ---
 
-在部署命令的輸出中，您將看到類似下列內容的物件：
+在部署命令的輸出中，只有在輸出是 JSON 格式時，才會看到類似下列範例的物件：
 
 ```json
 {
@@ -87,6 +89,9 @@ az group deployment create \
     "file": "https://storeluktbfkpjjrkm.file.core.windows.net/"
 }
 ```
+
+> [!NOTE]
+> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
 
 ## <a name="review-your-work"></a>檢閱工作
 

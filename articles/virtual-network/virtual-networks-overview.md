@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290196"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879355"
 ---
 # <a name="what-is-azure-virtual-network"></a>什麼是 Azure 虛擬網路？
 
@@ -76,6 +76,15 @@ Azure 依預設會路由子網路、連線的虛擬網路、內部部署網路�
 
 - **路由資料表︰** 你可以自訂路由表，設定傳送路線用來控制傳送到每個子網路的流量 深入了解[路由表](virtual-networks-udr-overview.md#user-defined)。
 - **邊界閘道協定 (BGP) 路由：** 如果您使用 Azure VPN 閘道或 ExpressRoute 連線將虛擬網路連線至內部部署網路，則可將您的內部部署 BGP 路由傳播至虛擬網路。 深入了解如何透過 [Azure VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) 使用 BGP。
+
+## <a name="virtual-network-integration-for-azure-services"></a>Azure 服務的虛擬網路整合
+
+透過將 Azure 服務整合到 Azure 虛擬網路，可以啟用從虛擬機器或虛擬網路中的計算資源對服務進行私下存取。
+您可以使用下列選項，在虛擬網路中整合 Azure 服務：
+- 將服務的[專用執行個體](virtual-network-for-azure-services.md)部署至虛擬網路。 然後，在虛擬網路和內部部署網路中，可以私下存取這些服務。
+- 使用 [Private Link](../private-link/private-link-overview.md)，從您的虛擬網路和內部部署網路私下存取特定的服務執行個體。
+- 您也可以使用公用端點來存取服務，方法是透過[服務端點](virtual-network-service-endpoints-overview.md)，將虛擬網路擴充至服務。 服務端點可保障虛擬網路一定可以使用服務資源。
+ 
 
 ## <a name="azure-vnet-limits"></a>Azure VNet 的限制
 

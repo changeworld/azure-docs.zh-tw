@@ -3,18 +3,18 @@ title: 教學課程：新環境的藍圖範例
 description: 在本教學課程中，您將使用藍圖範例建立藍圖定義，以設定兩個資源群組及其各自的角色指派。
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282013"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677082"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教學課程：從藍圖範例建立環境
 
 藍圖範例會舉例說明可使用 Azure 藍圖來完成的工作。 這些範例各自都有特定目的或用途，但其本身並無法建立完整的環境。 其目的是作為起點，以探索如何使用由所含成品、設計和參數所組合而成的各種 Azure 藍圖。
 
-下列教學課程會使用**具有 RBAC 的資源群組**藍圖範例，來展示藍圖服務的不同層面。 本文涵蓋下列步驟：
+下列教學課程會使用**具有 RBAC 的資源群組**藍圖範例，來展示 Azure 藍圖服務的不同層面。 本文涵蓋下列步驟：
 
 > [!div class="checklist"]
 > - 從範例建立新的藍圖定義

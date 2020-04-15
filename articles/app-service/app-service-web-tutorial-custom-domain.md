@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047220"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811778"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -151,7 +151,7 @@ ms.locfileid: "80047220"
 ![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> 自訂網域的**不安全**標籤表示其尚未繫結到 SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 SSL 繫結，請參閱[在 Azure App Service 中使用 SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
+> 自訂網域的**不安全**標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
 
 如果稍早錯過某個步驟，或在某處打錯字，您在頁面底部會看到驗證錯誤。
 
@@ -235,7 +235,7 @@ ms.locfileid: "80047220"
 ![A 記錄已新增](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> 自訂網域的**不安全**標籤表示其尚未繫結到 SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 SSL 繫結，請參閱[在 Azure App Service 中使用 SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
+> 自訂網域的**不安全**標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
 
 如果稍早錯過某個步驟，或在某處打錯字，您在頁面底部會看到驗證錯誤。
 
@@ -290,7 +290,7 @@ ms.locfileid: "80047220"
 ![CNAME 記錄已新增](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> 自訂網域的**不安全**標籤表示其尚未繫結到 SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 SSL 繫結，請參閱[在 Azure App Service 中使用 SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
+> 自訂網域的**不安全**標籤表示其尚未繫結到 TLS/SSL 憑證，任何從瀏覽器傳送至您自訂網域的 HTTPS 要求將會收到錯誤或警告 (視瀏覽器而定)。 若要新增 TLS 繫結，請參閱[在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
 
 ## <a name="test-in-browser"></a>在瀏覽器中測試
 
@@ -366,7 +366,7 @@ Set-AzWebApp `
 > * 將預設 URL 重新導向至自訂目錄
 > * 使用指令碼來自動對應網域
 
-前進到下一個教學課程，以了解如何將自訂 SSL 憑證繫結至 Web 應用程式。
+前進到下一個教學課程，以了解如何將自訂 TLS/SSL 憑證繫結至 Web 應用程式。
 
 > [!div class="nextstepaction"]
-> [在 Azure App Service 中使用 SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)
+> [在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)

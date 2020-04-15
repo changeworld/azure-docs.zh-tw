@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471824"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878029"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
@@ -37,7 +37,7 @@ ms.locfileid: "79471824"
 > [!div class="checklist"]
 > - 在您的自訂網域上啟用 HTTPS 通訊協定。
 > - 使用 AFD 受控憑證 
-> - 使用您自己的憑證，即自訂 SSL 憑證
+> - 使用您自己的憑證，即自訂 TLS/SSL 憑證
 > - 驗證網域
 > - 在您的自訂網域上停用 HTTPS 通訊協定
 
@@ -48,9 +48,9 @@ ms.locfileid: "79471824"
 
 您必須先建立 Front Door 和至少一個已上架的自訂網域，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[教學課程：將自訂網域新增到您的 Front Door](front-door-custom-domain.md)。
 
-## <a name="ssl-certificates"></a>SSL 憑證
+## <a name="tlsssl-certificates"></a>TLS/SSL 憑證
 
-若要啟用 HTTPS 通訊協定以在 Front Door 自訂網域上安全地傳遞內容，您必須使用 SSL 憑證。 您可以選擇使用 Azure Front Door 所管理的憑證，或使用您自己的憑證。
+若要啟用 HTTPS 通訊協定以在 Front Door 自訂網域上安全地傳遞內容，您必須使用 TLS/SSL 憑證。 您可以選擇使用 Azure Front Door 所管理的憑證，或使用您自己的憑證。
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>選項 1 (預設值)：使用 Front Door 所管理的憑證
@@ -72,7 +72,7 @@ ms.locfileid: "79471824"
 
 ### <a name="option-2-use-your-own-certificate"></a>選項 2：使用您自己的憑證
 
-您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure Front Door 使用此安全機制來取得您的憑證，為此您需要執行一些額外步驟。 當您建立 SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure Front Door 上啟用自訂 HTTPS 的允許憑證授權單位](front-door-troubleshoot-allowed-ca.md)。
+您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure Front Door 使用此安全機制來取得您的憑證，為此您需要執行一些額外步驟。 當您建立 TLS/SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure Front Door 上啟用自訂 HTTPS 的允許憑證授權單位](front-door-troubleshoot-allowed-ca.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>準備您的 Azure Key Vault 帳戶和憑證
  
@@ -84,7 +84,7 @@ ms.locfileid: "79471824"
 2. Azure Key Vault 憑證：如果您已擁有憑證，您可以將它直接上傳至您的 Azure Key Vault 帳戶，也可以從與 Azure Key Vault 整合的其中一個合作夥伴 CA 透過 Azure Key Vault 建立新憑證。 將您的憑證上傳為**憑證**物件，而不是**祕密**。
 
 > [!NOTE]
-> 對於您自己的 SSL 憑證，Front Door 不支援採用 EC 加密演算法的憑證。
+> 對於您自己的 TLS/SSL 憑證，Front Door 不支援採用 EC 加密演算法的憑證。
 
 #### <a name="register-azure-front-door"></a>註冊 Azure Front Door
 
@@ -260,7 +260,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. *SAN 憑證的安全性是否比專用憑證來得低？*
     
-    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 SSL 憑證都使用 SHA-256 來加強伺服器安全性。
+    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 TLS/SSL 憑證都使用 SHA-256 來加強伺服器安全性。
 
 5. *是否需要我的 DNS 提供者的憑證授權單位授權記錄？*
 

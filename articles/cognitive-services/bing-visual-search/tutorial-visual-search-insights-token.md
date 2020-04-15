@@ -1,25 +1,25 @@
 ---
-title: 使用 ImageInsightsToken 尋找先前搜尋中的類似影像 - Bing 圖像式搜尋
+title: 使用影像深入解析權杖和 Bing 圖像式搜尋 API 尋找先前搜尋中的類似影像
 titleSuffix: Azure Cognitive Services
-description: 使用 Bing 圖像式搜尋 SDK 來取得 ImageInsightsToken 所指定影像的 URL。
+description: 使用 Bing 圖像式搜尋用戶端程式庫，從先前的搜尋中取得影像的 URL。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: dff96b19f40c2d897b6a018a4c46cec60f8aa201
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74689313"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477914"
 ---
-# <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>使用 ImageInsightsToken 尋找先前搜尋中的類似影像
+# <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>教學課程：使用影像深入解析權杖尋找先前搜尋中的類似影像
 
-圖像式搜尋 SDK 可讓您從先前傳回 `ImageInsightsToken` 的搜尋中，線上尋找影像。 此應用程式可取得 `ImageInsightsToken`，並在後續搜尋中使用權杖。 然後會將 `ImageInsightsToken` 傳送到 Bing 並傳回結果，結果中包含 Bing 搜尋 URL 和線上所找到類似影像的 URL。
+圖像式搜尋用戶端程式庫可讓您從先前傳回 `ImageInsightsToken` 的搜尋中，線上尋找影像。 此應用程式可取得 `ImageInsightsToken`，並在後續搜尋中使用權杖。 然後會將 `ImageInsightsToken` 傳送到 Bing 並傳回結果，結果中包含 Bing 搜尋 URL 和線上所找到類似影像的 URL。
 
 在 [Github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs) 上可找到此教學課程的完整原始程式碼，其中含有其他錯誤處理和註釋。
 
@@ -36,9 +36,9 @@ ms.locfileid: "74689313"
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>從 Bing 影像搜尋 SDK 取得 ImageInsightsToken
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>從 Bing 影像搜尋用戶端程式庫取得 ImageInsightsToken
 
-此應用程式會使用透過 `ImageInsightsToken`Bing 影像搜尋 SDK[ 所取得的 ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
+此應用程式會使用透過 [Bing 影像搜尋用戶端程式庫](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)所取得的 `ImageInsightsToken`。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -85,7 +85,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ## <a name="iterate-through-the-visual-search-results"></a>逐一查看圖像式搜尋結果
 
-圖像式搜尋的結果為 `ImageTag` 物件。 每個標記都包含 `ImageAction` 物件清單。 每個 `ImageAction` 都包含 `Data` 欄位，這是會取決於動作類型的值清單。 例如，您可以逐一查看 `ImageTag` 中的 `visualSearchResults.Tags` 物件，並從中取得 `ImageAction` 標記。 下列範例會列印 `PagesIncluding` 動作的詳細資料：
+圖像式搜尋的結果為 `ImageTag` 物件。 每個標記都包含 `ImageAction` 物件清單。 每個 `ImageAction` 都包含 `Data` 欄位，這是會取決於動作類型的值清單。 例如，您可以逐一查看 `visualSearchResults.Tags` 中的 `ImageTag` 物件，並從中取得 `ImageAction` 標記。 下列範例會列印 `PagesIncluding` 動作的詳細資料：
 
 ```csharp
 if (visualSearchResults.Tags.Count > 0)

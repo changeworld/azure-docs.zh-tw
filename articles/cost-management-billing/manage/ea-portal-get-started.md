@@ -3,16 +3,16 @@ title: 開始使用 Azure 企業版入口網站
 description: 本文說明 Azure Enterprise 合約 (Azure EA) 客戶如何使用 Azure 企業版入口網站。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5b84cbf4ae7065f13442852cfbf646aa49771e1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da63960b312bde6ae8aafb659ef08ef2f52600cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272417"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586292"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -111,7 +111,7 @@ Azure 企業版入口網站階層包含：
 
 若要啟動您的服務，最初的企業系統管理員需從邀請電子郵件開啟 [Azure 企業版入口網站](https://ea.azure.com)，並使用電子郵件地址登入。
 
-如果您已設定為企業系統管理員，則不需要接收啟用電子郵件。 移至 [Azure 企業版入口網站](https://ea.azure.com)，然後使用您的公司、學校或 Microsoft 帳戶電子郵件地址和密碼登入。
+如果您已設定為企業管理員，則不需要接收啟用電子郵件。 移至 [Azure 企業版入口網站](https://ea.azure.com)，然後使用您的公司、學校或 Microsoft 帳戶電子郵件地址和密碼登入。
 
 如果您有多個註冊，請選擇一個進行啟用。 預設只會顯示作用中的註冊。 若要檢視註冊記錄，請清除 Azure 企業版入口網站右上方的 [作用中]  選項。
 

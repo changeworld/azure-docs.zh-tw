@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77495521"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758397"
 ---
 這個以 cURL 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
@@ -34,13 +34,13 @@ ms.locfileid: "77495521"
 使用先前的知識庫來根據中繼資料快速查詢答案。
 
 1. 從知識庫的 [設定]  頁面，選取 [CURL]  索引標籤來查看用來從知識庫產生答案的 cURL 命令範例。
-1. 將命令複製到可編輯的環境 (例如文字檔) 以便編輯命令。 如下所示編輯問題值，以將 `service:qna_maker` 的中繼資料作為 QnA 集合的篩選條件。
+1. 將命令複製到可編輯的環境 (例如文字檔) 以便編輯命令。 如下所示編輯問題值，以將 `service:qna_maker` 的中繼資料作為 QnA 配對的篩選條件。
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    此問題就只有一個字 `size`，其可以傳回兩個 QnA 集合的其中一個。 `strictFilters` 陣列會辨別回應，而將回應減少到只剩 `qna_maker` 答案。
+    此問題就只有一個字 `size`，其可以傳回兩個 QnA 配對的其中一個。 `strictFilters` 陣列會辨別回應，而將回應減少到只剩 `qna_maker` 答案。
 
 1. 回應只會包含符合篩選準則的答案。 下列 cURL 回應已經過格式化，以方便您閱讀：
 

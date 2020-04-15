@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149927"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985434"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>教學課程：設定別名記錄以參照 Azure 公用 IP 位址 
 
@@ -20,8 +20,8 @@ ms.locfileid: "77149927"
 
 > [!div class="checklist"]
 > * 建立網路基礎結構。
-> * 建立 Web 伺服器虛擬機器。
-> * 建立別名記錄。
+> * 使用公用 IP 建立 Web 伺服器虛擬機器。
+> * 建立一個指向公用 IP 的別名記錄。
 > * 測試別名記錄。
 
 
@@ -48,7 +48,7 @@ ms.locfileid: "77149927"
 4. 針對 [設定]  ，選取 [VNet-Servers]  虛擬網路和 [SN-Web]  子網路。 針對公用輸入連接埠，選取 [HTTP]   > [HTTPS]   > [RDP (3389)]  ，然後選取 [確定]  。
 5. 在 [摘要]  頁面上，選取 [建立]  。
 
-完成此程序需要數分鐘的時間。
+完成此程序需要數分鐘的時間。 虛擬機器將會有一個連結的 NIC，其會有一個名為 Web-01-ip 的基本動態公用 IP。 每次將虛擬機器重新開機時，公用 IP 就會變更。
 
 ### <a name="install-iis"></a>安裝 IIS
 

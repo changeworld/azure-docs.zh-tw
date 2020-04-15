@@ -1,15 +1,15 @@
 ---
 title: 建立 Azure 區塊鏈服務成員 - Azure CLI
 description: 使用 Azure CLI 建立區塊鏈聯盟的 Azure 區塊鏈服務成員。
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214742"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529628"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員
 
@@ -58,7 +58,7 @@ az resource create \
 | **password** | 成員預設交易節點的密碼。 連線至區塊鏈成員的預設交易節點公用端點時，請使用此密碼進行基本驗證。
 | **consortium** | 要加入或建立的聯盟名稱。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
 | **consortiumAccountPassword** | 聯盟帳戶密碼也稱為成員帳戶密碼。 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
-| **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。
+| **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。 如果您使用區塊鏈資料管理員或傳送大量的私人交易，也應該使用*標準*層。 不支援在建立成員之後變更基本和標準間的定價層。
 
 建立區塊鏈成員和支援的資源需要約 10 分鐘的時間。
 

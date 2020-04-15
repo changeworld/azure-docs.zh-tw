@@ -2,19 +2,19 @@
 title: 教學課程 - 使用參數檔案來部署範本
 description: 使用包含用來部署 Azure Resource Manager 範本之值的參數檔。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773156"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411512"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教學課程：使用參數檔案來部署 Resource Manager 範本
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>教學課程：使用參數檔案部署您的 ARM 範本
 
-在此教學課程中，您將了解如何使用[參數檔案](parameter-files.md)來儲存您在部署期間傳入的值。 在先前的教學課程中，您已將內嵌參數與部署命令搭配使用。 這種方法適用於測試範本，但在將部署自動化時，可以更輕鬆地為您的環境傳遞一組值。 參數檔案可讓您更輕鬆地為特定環境封裝參數值。 在此教學課程中，您將建立適用於開發和實際執行環境的參數檔案。 完成此教學課程大約需要 **12 分鐘**。
+在此教學課程中，您將了解如何使用[參數檔案](parameter-files.md)來儲存您在部署期間傳入的值。 在先前的教學課程中，您已將內嵌參數與部署命令搭配使用。 這種方法可用來測試 Azure Resource Manager (ARM) 範本，但在將部署自動化時，可以更輕易地為您的環境傳遞一組值。 參數檔案可讓您更輕鬆地為特定環境封裝參數值。 在此教學課程中，您將建立適用於開發和實際執行環境的參數檔案。 完成此教學課程大約需要 **12 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -54,10 +54,10 @@ ms.locfileid: "76773156"
 
 首先，我們將部署至開發環境。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$templateFile = "{provide-the-path-to-the-template-file}"
+$templateFile = "{path-to-the-template-file}"
 $parameterFile="{path-to-azuredeploy.parameters.dev.json}"
 New-AzResourceGroup `
   -Name myResourceGroupDev `
@@ -69,25 +69,28 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要執行此部署命令，您必須擁有[最新版本](/cli/azure/install-azure-cli)的 Azure CLI。
 
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{path-to-the-template-file}"
+devParameterFile="{path-to-azuredeploy.parameters.dev.json}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.dev.json
+  --parameters $devParameterFile
 ```
 
 ---
 
 現在，我們將部署至實際執行環境。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -101,20 +104,24 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
+prodParameterFile="{path-to-azuredeploy.parameters.prod.json}"
 az group create \
   --name myResourceGroupProd \
   --location "West US"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.prod.json
+  --parameters $prodParameterFile
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
 
 ## <a name="verify-deployment"></a>驗證部署
 
@@ -136,7 +143,7 @@ az group deployment create \
 
 恭喜，您已完成這個將範本部署至 Azure 的簡介。 如果您對於意見反應區段有任何意見和建議，請讓我們知道。 感謝您！
 
-您已經準備好深入了解更進階的範本相關概念。 下一個教學課程將更詳細地說明如何使用範本參考文件來協助定義要部署的資源。
+下一個教學課程系列將詳細說明如何部署範本。
 
 > [!div class="nextstepaction"]
-> [利用範本參考](template-tutorial-create-encrypted-storage-accounts.md)
+> [部署本機範本](./deployment-tutorial-local-template.md)

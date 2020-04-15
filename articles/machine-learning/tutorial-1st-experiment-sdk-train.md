@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222365"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546032"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教學課程：定型第一個 ML 模型
 
@@ -28,7 +28,7 @@ ms.locfileid: "79222365"
 > [!div class="checklist"]
 > * 連結您的工作區並建立實驗
 > * 載入資料並定型 Scikit-learn 模型
-> * 在入口網站中查看定型結果
+> * 在工作室中查看訓練結果
 > * 擷取最佳模型
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -124,32 +124,33 @@ for alpha in alphas:
 
 1. 針對 `alphas` 陣列中的每個 Alpha 超參數值，在實驗中建立新的執行。 系統會記錄 Alpha 值，以區別每項執行。
 1. 在每項執行中，Ridge 模型都會進行具現化、定型，以及用來執行預測。 並針對實際值與預測值計算均方根誤差，然後記錄到執行中。 此時，執行會針對 Alpha 值和 RMSE 精確度附加中繼資料。
-1. 接下來，每個執行的模型會進行序列化並上傳至執行。 這可讓您從入口網站中的執行中下載模型檔案。
+1. 接下來，每個執行的模型會進行序列化並上傳至執行。 這可讓您從工作室中的執行中下載模型檔案。
 1. 在每個反覆項目結束時，藉由呼叫 `run.complete()` 來完成執行。
 
-訓練完成之後，呼叫 `experiment` 變數可提取入口網站中實驗的連結。
+訓練完成之後，呼叫 `experiment` 變數可擷取入口網站中實驗的連結。
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>名稱</th><th>工作區</th><th>報表頁面</th><th>文件頁面</th></tr><tr><td>diabetes-experiment</td><td>your-workspace-name</td><td>Azure 入口網站的連結</td><td>文件的連結</td></tr></table>
+<table style="width:100%"><tr><th>名稱</th><th>工作區</th><th>報表頁面</th><th>文件頁面</th></tr><tr><td>diabetes-experiment</td><td>your-workspace-name</td><td>Azure Machine Learning 工作室的連結</td><td>文件的連結</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>在入口網站中查看定型結果
+## <a name="view-training-results-in-studio"></a>在工作室中檢視訓練結果
 
-遵循 **Azure 入口網站的連結**，即可前往主要實驗頁面。 在這裡，您會看到實驗中的所有個別執行。 任何自訂記錄的值 (在此案例中為 `alpha_value` 和 `rmse`) 都會變成每項執行的欄位，而且也會提供給實驗頁面頂端的圖表和圖格使用。 若要將記錄的計量新增至圖表或圖格，請將滑鼠停留在其上方，按一下 [編輯] 按鈕，然後尋找您的自訂記錄計量。
+遵循 **Azure Machine Learning 工作室的連結**，即可前往主要實驗頁面。 在這裡，您會看到實驗中的所有個別執行。 任何自訂記錄的值 (在此案例中為 `alpha_value` 和 `rmse`) 都會變成每項執行的欄位，而且也會提供給實驗頁面頂端的圖表和圖格使用。 若要將記錄的計量新增至圖表或圖格，請將滑鼠停留在其上方，按一下 [編輯] 按鈕，然後尋找您的自訂記錄計量。
 
 當您針對數百個或數千個不同的執行來訓練模型時，此頁面可讓您輕鬆查看所定型的每個模型，特別是定型方式，以及您獨特的計量如何隨著時間變更。
 
-![入口網站中的主要實驗頁面](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="工作室中的主要實驗頁面。":::
 
-按一下 `RUN NUMBER` 資料行中的執行編號連結，即可前往每個個別執行的頁面。 預設的 [詳細資料]  索引標籤會顯示每項執行的詳細資訊。 流覽至 [輸出]  索引標籤，您會看到每次訓練反覆項目時，針對模型上傳至執行的 `.pkl` 檔案。 您可以在這裡下載模型檔案，而不必以手動方式重新進行定型。
 
-![入口網站中的執行詳細資料頁面](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+選取 `RUN NUMBER` 資料行中的執行編號連結，以查看個別執行的頁面。 預設的 [詳細資料]  索引標籤會顯示每項執行的詳細資訊。 瀏覽至 [輸出+記錄]  索引標籤，您會看到每次訓練反覆項目時，針對模型上傳至執行的 `.pkl` 檔案。 您可以在這裡下載模型檔案，而不必以手動方式重新進行定型。
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="在工作室中執行詳細資料頁面。":::
 
 ## <a name="get-the-best-model"></a>取得最佳模型
 
-除了能夠在入口網站下載實驗中的模型檔案之外，您也能夠以程式設計方式下載這些檔案。 下列程式碼會逐一查看實驗中的每項執行，並存取記錄的執行計量和執行詳細資料 (其中包含 run_id)。 這會持續追蹤最佳執行，也就是此案例中均方根誤差最小的執行。
+除了能夠在工作室下載實驗中的模型檔案之外，您也能夠以程式設計方式下載這些檔案。 下列程式碼會逐一查看實驗中的每項執行，並存取記錄的執行計量和執行詳細資料 (其中包含 run_id)。 這會持續追蹤最佳執行，也就是此案例中均方根誤差最小的執行。
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 > [!div class="checklist"]
 > * 連結您的工作區並建立實驗
 > * 載入資料並定型 Scikit-learn 模型
-> * 在入口網站中查看定型結果並擷取模型
+> * 在工作室中查看定型結果並擷取模型
 
 使用 Azure Machine Learning [部署模型](tutorial-deploy-models-with-aml.md)。
 了解如何開發[自動化機器學習](tutorial-auto-train-models.md)實驗。

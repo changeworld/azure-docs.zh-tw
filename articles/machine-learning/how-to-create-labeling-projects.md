@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296943"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873883"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296943"
 
 為機器學習專案中的大量資料加上標籤，常是一項麻煩的工作。 具有電腦視覺元件 (例如影像分類或物體偵測) 的專案，通常需要數千個影像的標籤。
  
-[Azure Machine Learning](https://ml.azure.com/) 可讓您在集中的位置建立、管理及監視標籤專案。 您可以用它來協調資料、標籤和小組成員，以有效管理標籤工作。 機器學習服務支援影像分類 (多標籤或多類別)，以及搭配使用週框方塊的物體識別。
+[Azure Machine Learning](https://ml.azure.com/) 可讓您在集中的位置建立、管理及監視標籤專案 (公開預覽)。 您可以用它來協調資料、標籤和小組成員，以有效管理標籤工作。 機器學習服務支援影像分類 (多標籤或多類別)，以及搭配使用週框方塊的物體識別。
 
 Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 標籤者不需要擁有 Azure 帳戶就能參與工作。 在使用您的 Microsoft 帳戶或 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 加以驗證後，標籤者即可在時間允許的範圍內加上相應數量的標籤。
 
 您可以啟動和停止專案、新增和移除標籤者和小組，以及監視標記進度。 您可以匯出已加上標籤的資料，無論是以 COCO 格式或 Azure ML 資料集的形式均可。
 
 > [!Important]
-> 目前僅支援影像分類和物件識別標記專案。 此外，資料影像必須可於 Azure Blob 資料存放區中取得。 (如果您沒有現有的資料存放區，則可以在建立專案期間上傳影像)。 
+> 目前僅支援影像分類和物件識別標記專案。 此外，資料影像必須可於 Azure Blob 資料存放區中取得。 (如果您沒有現有的資料存放區，則可以在建立專案期間上傳影像)。
 
 在本文中，您將學會如何：
 
@@ -41,6 +41,7 @@ Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 �
 
 ## <a name="prerequisites"></a>Prerequisites
 
+
 * 您要加上標籤的資料，無論是在本機檔案中還是在 Azure Blob 儲存體中。
 * 您要套用的標籤集合。
 * 加上標籤的指示。
@@ -51,11 +52,12 @@ Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 �
 
 標籤專案可從 Azure Machine Learning 進行管理。 您可以使用 [標籤專案]  頁面來管理專案和人員。 專案中會指派一或多個小組，而小組中會指派一或多個人員。
 
-如果您的資料已儲存在 Azure Blob 儲存體中，您應先使其成為可用的資料存放區，然後才建立標籤專案。 如需詳細資訊，請參閱[建立和註冊資料存放區](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)。
+如果您的資料已儲存在 Azure Blob 儲存體中，您應先使其成為可用的資料存放區，然後才建立標籤專案。 如需使用資料存放區的範例，請參閱[教學課程：建立您的第一個影像分類標籤專案](tutorial-labeling.md)。
 
 若要建立專案，請選取 [新增專案]  。 請為專案指定適當名稱，然後選取 [標籤工作類型]  。
 
 ![加上標籤專案建立精靈](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * 如果只要對影像套用某組類別中的「單一類別」  ，請為專案選擇 [影像分類多重類別]  。
 * 如果要對影像套用某組類別中的「一或多個」  標籤，請為專案選擇 [影像分類多重標籤]  。 例如，狗狗的相片可同時加上「狗」  和「白天」  標籤。
@@ -168,9 +170,9 @@ Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 �
 
 ## <a name="manage-teams-and-people"></a>管理小組和人員
 
-根據預設，您所建立的每個標籤專案都會有將您納入為成員的新小組。 但小組也可在專案之間共用。 而且，專案可能會有多個小組。 若要建立小組，請在 [小組]  頁面上選取 [新增小組]  。
+根據預設，您所建立的每個標籤專案都會有將您納入為成員的新小組。 但小組也可在專案之間共用。 而且，專案可能會有多個小組。 若要建立小組，請在 [小組]  頁面上選取 [新增小組]  。 
 
-您可以在 [人員]  頁面上管理人員。 您可以透過電子郵件地址來新增和移除人員。 如果您使用 Microsoft 帳戶或 Azure Active Directory，則每個標籤者都必須透過該途徑進行驗證。  
+您可以在 [標籤者]  頁面上管理人員。 您可以透過電子郵件地址來新增和移除人員。 如果您使用 Microsoft 帳戶或 Azure Active Directory，則每個標籤者都必須透過該途徑進行驗證。  
 
 新增人員後，您可以將其指派給一或多個小組：移至 [小組]  頁面，選取小組，然後選取 [指派人員]  或 [移除人員]  。
 
@@ -216,5 +218,6 @@ COCO 檔案會建立在 Azure Machine Learning 工作區的預設 Blob 存放區
 
 ## <a name="next-steps"></a>後續步驟
 
+* [教學課程：建立您的第一個影像分類標籤專案](tutorial-labeling.md)。
 * 為影像加上標籤以進行[影像分類或物體偵測](how-to-label-images.md)
 * 深入了解 [Azure Machine Learning 和 Machine Learning Studio (傳統)](compare-azure-ml-to-studio-classic.md)

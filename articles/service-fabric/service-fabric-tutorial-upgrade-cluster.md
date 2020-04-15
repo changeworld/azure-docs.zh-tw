@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 PowerShell 來升�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252742"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756067"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中升級 Service Fabric 叢集的執行階段
 
@@ -75,7 +75,7 @@ Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 
 ## <a name="upgrade-the-runtime"></a>升級執行階段
 
-以 **Cmdlet 使用來自上一節的**ClusterCodeVersion`Get-ServiceFabricRuntimeUpgradeVersion` 值，探索可以升級到哪些版本。 此 Cmdlet 只能在可連線到網際網路的電腦上執行。 例如，若您想要查看可以從 `5.7.198.9494` 版升級到哪些執行階段版本，請使用下列命令：
+以 `Get-ServiceFabricRuntimeUpgradeVersion` Cmdlet 使用來自上一節的 **ClusterCodeVersion** 值，探索可以升級到哪些版本。 此 Cmdlet 只能在可連線到網際網路的電腦上執行。 例如，若您想要查看可以從 `5.7.198.9494` 版升級到哪些執行階段版本，請使用下列命令：
 
 ```powershell
 Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
@@ -95,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 可以使用 PowerShell 或 Azure Service Fabric CLI (sfctl) 來監視升級狀態。
 
-首先請以本教學課程第一個部分中所建立的 SSL 憑證連線到叢集。 請使用 `Connect-ServiceFabricCluster` Cmdlet 或 `sfctl cluster upgrade-status`。
+首先請以本教學課程第一個部分中所建立的 TLS/SSL 憑證連線到叢集。 請使用 `Connect-ServiceFabricCluster` Cmdlet 或 `sfctl cluster upgrade-status`。
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"

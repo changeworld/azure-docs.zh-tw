@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471638"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879117"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
 Azure Front Door 可讓您針對最佳效能和立即全域容錯移轉以獲得高可用性最佳化，定義、管理及監視網路流量的全域路由。 透過 Front Door，您可以將全球 (多區域) 消費者和企業應用程式轉換成健全、高效能的個人化新式應用程式、API，以及觸及 Azure 全球對象的內容。
@@ -51,12 +51,12 @@ URL 路徑型路由可讓您根據要求的 URL 路徑，將流量路由傳送�
 ## <a name="session-affinity"></a>工作階段親和性
 當您想要在同一個應用程式後端保留使用者工作階段時，以 Cookie 為基礎的工作階段親和性非常有用。 使用受 Front Door 管理的 Cookie，即可將來自使用者工作階段的後續流量導向至相同應用程式後端進行處理。 當使用者工作階段的工作階段狀態是儲存在後端本機上時，這項功能很重要。
 
-## <a name="secure-sockets-layer-ssl-termination"></a>安全通訊端層 (SSL) 終止
-Front Door 在邊緣支援 SSL 終止，也就是個別使用者可以設定與 Front Door 環境的 SSL 連線，而不是透過與應用程式後端的持久連線來建立連線。 此外，Front Door 支援 Front Door 環境與您後端之間的 HTTP 和 HTTPS 連線。 因此，您也可以設定端對端 SSL 加密。 比方說，如果您應用程式工作負載的 Front Door 在一分鐘內收到超過 5000 個要求，但由於重複使用暖連線，所以對作用中服務，它只會與應用程式後端建立大約 500 次連線，因而降低來自後端的大量負載。
+## <a name="tls-termination"></a>TLS 終止
+Front Door 在邊緣支援 TLS 終止，也就是個別使用者可以設定與 Front Door 環境的 TLS 連線，而不是透過與應用程式後端的持久連線來建立連線。 此外，Front Door 支援 Front Door 環境與您後端之間的 HTTP 和 HTTPS 連線。 因此，您也可以設定端對端 TLS 加密。 比方說，如果您應用程式工作負載的 Front Door 在一分鐘內收到超過 5000 個要求，但由於重複使用暖連線，所以對作用中服務，它只會與應用程式後端建立大約 500 次連線，因而降低來自後端的大量負載。
 
 ## <a name="custom-domains-and-certificate-management"></a>自訂網域和憑證管理
 使用 Front Door 來傳遞內容時，如果您想要在 Front Door URL 中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。
-Front Door 也支援自訂網域名稱使用 HTTPS。 針對您的流量選擇受 Front Door 管理的憑證，或上傳您自己的自訂 SSL 憑證，即可使用此功能。
+Front Door 也支援自訂網域名稱使用 HTTPS。 針對您的流量選擇受 Front Door 管理的憑證，或上傳您自己的自訂 TLS/SSL 憑證，即可使用此功能。
 
 ## <a name="application-layer-security"></a>應用程式層安全性
 Azure Front Door 可讓您撰寫自訂 Web 應用程式防火牆 (WAF) 規則進行存取控制，以保護您的 HTTP/HTTPS 工作負載，免於遭受以用戶端 IP 位址、國家/地區代碼及 http 參數為基礎的攻擊。 此外，Front Door 也可讓您建立速率限制規則來對抗惡意 Bot 流量。 如需有關 Web 應用程式防火牆的詳細資訊，請參閱[什麼是 Azure Web 應用程式防火牆？](../web-application-firewall/overview.md)

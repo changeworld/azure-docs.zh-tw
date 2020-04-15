@@ -9,7 +9,7 @@ ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419251"
+ms.locfileid: "80419103"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他語言和平台支援
 

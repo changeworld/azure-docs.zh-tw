@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77109003"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756708"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入門：使用批次問題和預期答案來測試知識庫
 
@@ -149,7 +149,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
     |為 Surface Pro 4 充電|
     |檢查電池電量|
 
-    兩個 QnA 集合已設定了中繼資料。
+    兩個 QnA 配對已設定了中繼資料。
 
     > [!TIP]
     > 為了查看每個集合的中繼資料和 QnA 識別碼，請匯出知識庫。 選取 [設定]  頁面，然後選取 [匯出]  為 `.xls` 檔案。 尋找所下載的這個檔案，並以 Excel 開啟來檢閱中繼資料和識別碼。
@@ -169,7 +169,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 下列程序假設此案例是要處理聊天記錄
 
-1. 建立新的批次測試檔案以包含選擇性資料 `batch-test-data-2.tsv`。 從原始的批次測試輸入檔案新增 6 個資料列，然後為每個資料列新增中繼資料、top 和 QnA 集合識別碼。
+1. 建立新的批次測試檔案以包含選擇性資料 `batch-test-data-2.tsv`。 從原始的批次測試輸入檔案新增 6 個資料列，然後為每個資料列新增中繼資料、top 和 QnA 配對識別碼。
 
     為了模擬針對知識庫來自動檢查聊天記錄中新文字的程序，請將每個資料行的中繼資料設定為相同值：`topic:power`。
 

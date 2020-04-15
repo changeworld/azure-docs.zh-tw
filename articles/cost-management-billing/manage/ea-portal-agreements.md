@@ -3,16 +3,16 @@ title: Azure EA 合約和修訂文件
 description: 本文將說明 Azure EA 合約和修訂文件如何影響您使用 Azure EA 入口網站的方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b007e98f37246d17679761fd601ed76fd9fb875
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78301415"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586235"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 合約和修訂文件
 
@@ -190,7 +190,7 @@ Operations Management Suite (OMS) 訂用帳戶就是其中一個範例。 OMS �
 1. 在左側導覽列中按一下 [報告]  。
 1. 按一下 [價位表]  索引標籤。
 1. 按一下右上角的 [下載] 圖示。
-1. 利用 [內含數量] 資料行上的篩選條件來尋找對應的方案 SKU 組件號碼，然後選取大於 "0" 的值。
+1. 利用「內含數量」資料行上的篩選條件來尋找對應的方案 SKU 組件號碼，然後選取大於「0」的值。
 
 ### <a name="provision-the-plan-skus"></a>佈建方案 SKU
 
@@ -248,13 +248,13 @@ Operations Management Suite (OMS) 訂用帳戶就是其中一個範例。 OMS �
 
 **以擱置狀態顯示的帳戶擁有者**
 
-當新的帳戶擁有者 (AO) 第一次新增至 Azure EA 註冊時，其狀態一律會顯示為 [擱置]。 當 AO 收到用於啟用的歡迎電子郵件時，即可登入來啟用其帳戶。 這個啟用動作會將帳戶狀態從 [擱置] 更新為 [作用中]。
+當新的帳戶擁有者 (AO) 第一次新增至 Azure EA 註冊時，其狀態一律會顯示為「擱置」。 當 AO 收到用於啟用的歡迎電子郵件時，即可登入來啟用其帳戶。 這個啟用動作會將帳戶狀態從「擱置」更新為「作用中」。
 
 **在購買方案 SKU 之後計費的使用量**
 
 當客戶以錯誤的註冊號碼來部署服務，或選取了錯誤的服務時，就會發生這種情況。
 
-若要驗證您是否要在正確的註冊下進行部署，您可以透過價位表來檢查內含單位資訊。 請以企業系統管理員身分登入，然後按一下左側導覽列上的 [報告]  ，然後選取 [價位表]  索引標籤。按一下右上角的 [下載] 圖示，並利用 [內含數量] 資料行上的篩選條件來尋找對應的方案 SKU 組件號碼，然後選取大於 "0" 的值。
+若要驗證您是否要在正確的註冊下進行部署，您可以透過價位表來檢查內含單位資訊。 請以企業系統管理員身分登入，然後按一下左側導覽列上的 [報告]  ，然後選取 [價位表]  索引標籤。按一下右上角的下載圖示，並利用「內含數量」資料行上的篩選條件來尋找對應的方案 SKU 組件號碼，然後選取大於「0」的值。
 
 確定您的 OMS 方案顯示在價位表的 [內含單位] 底下。 如果您的註冊上沒有 OMS 方案的內含單位，您的 OMS 方案可能是在另一個註冊之下。 請連絡 Azure 企業版入口網站支援 ([https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport))。
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112326"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758766"
 ---
 這個以 Postman 為基礎的快速入門會逐步引導您從知識庫取得答案。
 
@@ -49,7 +49,7 @@ ms.locfileid: "77112326"
 
 ## <a name="use-metadata-to-filter-answer"></a>使用中繼資料來篩選答案
 
-先前的快速入門已將中繼資料新增至兩個 QnA 集合，以區別兩個不同的問題。 將中繼資料新增至查詢，從而將篩選條件限制為只有相關的 QnA 集合。
+先前的快速入門已將中繼資料新增至兩個 QnA 配對，以區別兩個不同的問題。 將中繼資料新增至查詢，從而將篩選條件限制為只有相關的 QnA 配對。
 
 1. 在 Postman 中，藉由使用 `service:qna_maker` 的名稱/值組來新增 `strictFilters` 屬性，從而只變更查詢 JSON。 主體 JSON 應該是：
 

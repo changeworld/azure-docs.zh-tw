@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172639"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474396"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>教學課程：為 Azure Active Directory Domain Services 執行個體設定虛擬網路
 
@@ -72,18 +72,18 @@ ms.locfileid: "73172639"
 若要建立 VM 和應用程式工作負載的虛擬網路子網路，請完成下列步驟：
 
 1. 在 Azure 入口網站中，選取 Azure AD DS 受控網域的資源群組，例如 *myResourceGroup*。 從資源清單中選擇預設的虛擬網路，例如 *aadds-vnet*。
-1. 在虛擬網路視窗的左側功能表中，選取 [位址空間]  。 建立虛擬網路時，會使用預設子網路所使用的單一位址空間 *10.0.1.0/24*。
+1. 在虛擬網路視窗的左側功能表中，選取 [位址空間]  。 建立虛擬網路時，會使用預設子網路所使用的單一位址空間 *10.0.2.0/24*。
 
     將額外的 IP 位址範圍新增至虛擬網路。 此位址範圍的大小以及要使用的實際 IP 位址範圍，取決於已部署的其他網路資源。 IP 位址範圍不應與您 Azure 或內部部署環境中任何現有的位址範圍重疊。 請確定您的 IP 位址範圍大小足以容納預期要部署到子網路中的 VM 數目。
 
-    在下列範例中，會新增額外的 IP 位址範圍 *10.0.2.0/24*。 在準備就緒時，選取 [儲存]  。
+    在下列範例中，會新增額外的 IP 位址範圍 *10.0.3.0/24*。 在準備就緒時，選取 [儲存]  。
 
     ![在 Azure 入口網站中新增額外的虛擬網路 IP 位址範圍](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. 接下來，在虛擬網路視窗的左側功能表中選取 [子網路]  ，然後選擇 [+ 子網路]  以新增子網路。
 1. 輸入子網路的名稱，例如 *workloads*。 如果您想要在先前的步驟中使用為虛擬網路設定的 IP 位址範圍子集，請視需要更新**位址範圍**。 目前，請暫且將網路安全性群組、路由表、服務端點等選項保留為預設值。
 
-    在下列範例中，會建立名為 *workloads* 的子網路，並使用 *10.0.2.0/24* IP 位址範圍：
+    在下列範例中，會建立名為 *workloads* 的子網路，並使用 *10.0.3.0/24* IP 位址範圍：
 
     ![在 Azure 入口網站中新增額外的虛擬網路子網路](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "73172639"
 
 1. 在 Azure 入口網站中，選取對等互連虛擬網路的資源群組，例如 *myResourceGroup*。 從資源清單中選擇對等互連的的虛擬網路，例如 *myVnet*。
 1. 在虛擬網路視窗的左側功能表中，選取 [DNS 伺服器]  。
-1. 根據預設，虛擬網路會使用 Azure 提供的內建 DNS 伺服器。 請選擇使用**自訂** DNS 伺服器。 輸入 Azure AD DS 網域控制站的 IP 位址，通常為 *10.0.1.4* 和 *10.0.1.5*。 請在入口網站中，從您 Azure AD DS 受控網域的 [概觀]  視窗上確認這些 IP 位址。
+1. 根據預設，虛擬網路會使用 Azure 提供的內建 DNS 伺服器。 請選擇使用**自訂** DNS 伺服器。 輸入 Azure AD DS 網域控制站的 IP 位址，通常為 *10.0.2.4* 和 *10.0.2.5*。 請在入口網站中，從您 Azure AD DS 受控網域的 [概觀]  視窗上確認這些 IP 位址。
 
     ![設定虛擬網路 DNS 伺服器，以使用 Azure AD DS 網域控制站](./media/tutorial-configure-networking/custom-dns.png)
 

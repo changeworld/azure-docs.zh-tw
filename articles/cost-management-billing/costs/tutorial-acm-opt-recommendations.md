@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155914"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878454"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教學課程：透過建議最佳化成本
 
 Azure 成本管理可搭配 Azure Advisor，提供成本最佳化建議。 Azure Advisor 可協助您透過識別閒置及使用量過低的資源來最佳化及改善效率。 本教學課程會引導您完成範例，識別使用量過低的 Azure 資源，並讓您採取動作以降低成本。
 
-觀看[在 Azure 成本管理中最佳化雲端投資](https://www.youtube.com/watch?v=cSNPoAb-TNc)影片，深入了解如何使用 Advisor 將您的成本最佳化。
+觀看[在 Azure 成本管理中最佳化雲端投資](https://www.youtube.com/watch?v=cSNPoAb-TNc)影片，深入了解如何使用 Advisor 將您的成本最佳化。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

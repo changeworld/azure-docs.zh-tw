@@ -2,20 +2,19 @@
 title: 使用 Azure Migrate 準備 Hyper-V VM 以進行評量/移轉
 description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/移轉。
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77031215"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436209"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>準備 Hyper-V VM 的評量並將其移轉至 Azure
 
-本文將說明如何使用 [Azure Migrate](migrate-services-overview.md) 來準備內部部署的 Hyper-V VM 評量並將其移轉至 Azure。
+本文說明如何使用 Azure Migrate：伺服器評量 (migrate-services-overview.md#azure-migrate-server-assessment-tool) 來準備內部部署 Hyper-V VM 的評量，並透過 [Azure Migrate：伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)來遷移 Hyper-V VM。
 
-[Azure Migrate](migrate-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。
 
 本教學課程是一個系列中的第一篇，說明如何評估 Hyper-V VM 並將其遷移至 Azure。 在本教學課程中，您會了解如何：
 
@@ -39,10 +38,11 @@ ms.locfileid: "77031215"
 
 您需要 Azure Migrate 部署的設定權限。
 
-**Task** | **權限**
---- | ---
-**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要可建立專案的權限。
-**註冊 Azure Migrate 設備** | Azure Migrate 會使用輕量的 Azure Migrate 設備搭配 Azure Migrate 伺服器評量，來探索和評估 Hyper-V VM。 此設備會探索 VM，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。<br/><br/>在設備註冊期間，下列資源提供者會使用設備中選擇的訂用帳戶進行註冊 - Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 若要註冊資源提供者，您必須具有訂用帳戶的「參與者」或「擁有者」角色。<br/><br/> 在上線期間，Azure Migrate 會建立一個 Azure Active Directory (Azure AD) 應用程式：<br/> AAD 應用程式可供在設備上執行的代理程式與其在 Azure 上執行的各項服務之間進行通訊 (驗證和授權)。 此應用程式沒有在任何資源上進行 ARM 呼叫或 RBAC 存取的權限。
+**Task** | **詳細資料** 
+--- | --- 
+**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能建立專案。 | 
+**註冊資源提供者** | Azure Migrate 會使用輕量的 Azure Migrate 設備搭配 Azure Migrate 伺服器評量，來探索和評估 Hyper-V VM。<br/><br/> 在設備註冊期間，資源提供者會使用設備中選擇的訂用帳戶進行註冊。 [深入了解](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 若要註冊資源提供者，您必須具有訂用帳戶的「參與者」或「擁有者」角色。
+**建立 Azure AD 應用程式** | 註冊設備時，Azure Migrate 會建立一個 Azure Active Directory (Azure AD) 應用程式，用於溝通設備上執行的代理程式，使其各自的服務能在 Azure 上執行。 [深入了解](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 您需要建立 Azure AD 應用程式 (可在應用程式開發人員中取得) 角色的權限。
 
 
 
@@ -79,25 +79,25 @@ ms.locfileid: "77031215"
     ![Azure AD 權限](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> 這是一個不敏感的預設設定。 [詳細資訊](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> 這是一個不敏感的預設設定。 [深入了解](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 
 
 #### <a name="assign-application-developer-role"></a>指派應用程式開發人員角色
 
-租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [詳細資訊](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+租用戶/全域管理員可為帳戶指派應用程式開發人員角色。 [深入了解](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
 ## <a name="prepare-hyper-v-for-assessment"></a>準備 Hyper-V以進行評量
 
-您可以透過手動方式或使用設定指令碼來準備 Hyper-V 以進行 VM 評量。 以下是需要準備的內容 (不論是使用指令碼或透過[手動方式](#prepare-hyper-v-manually))。
-
+您可以透過手動方式或使用設定指令碼來準備 Hyper-V 以進行 VM 評量。 準備步驟如下所示：
 - [驗證](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements)Hyper-V 主機設定，並確定已在 Hyper-V 主機上開啟[所需的連接埠](migrate-support-matrix-hyper-v.md#port-access)。
 - 在每部主機上設定 PowerShell 遠端功能，讓 Azure Migrate 設備可以透過 WinRM 連線在主機上執行 PowerShell 命令。
 - 如果 VM 磁碟位於遠端 SMB 共用上，則委派認證。
 - 設定帳戶，以便設備用來探索 Hyper-V 主機上的 VM。
-- 在您想要探索和評估的每部 VM 上設定 Hyper-V Integration Services。
+- 在您想要探索和評估的每部 VM 上設定 Hyper-V Integration Services。 當您啟用 Integration Services 時，預設設定就足以供 Azure Migrate 使用。
 
+    ![啟用 Integration Services](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>準備指令碼
@@ -130,7 +130,7 @@ ms.locfileid: "77031215"
     SHA256
     ```
 
-4.  驗證指令碼完整性之後，請使用此 PowerShell 命令在每部 Hyper-V 主機上執行指令碼：
+4.    驗證指令碼完整性之後，請使用此 PowerShell 命令在每部 Hyper-V 主機上執行指令碼：
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -145,7 +145,7 @@ ms.locfileid: "77031215"
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 
-## <a name="prepare-hyper-v-manually"></a>以手動方式準備 Hyper-V 主機
+## <a name="prepare-manually"></a>手動準備
 
 遵循本節中的程序，以手動方式準備 Hyper-V (不是使用指令碼)。
 

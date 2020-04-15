@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977914"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>教學課程：Azure Active Directory 單一登入與 Citrix NetScaler (Kerberos 型驗證) 整合
 
@@ -31,7 +30,7 @@ ms.locfileid: "75977914"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Citrix NetScaler。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -51,6 +50,8 @@ ms.locfileid: "75977914"
 * [Citrix NetScaler 的 Kerberos 型驗證](#publish-the-web-server)
 
 * [Citrix NetScaler 的標頭型驗證](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+
+* 設定 Citrix NetScaler 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>從資源庫新增 Citrix NetScaler
 
@@ -102,7 +103,7 @@ ms.locfileid: "75977914"
 
     1. 在 [識別碼]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>`
 
-    1. 在 [回覆 URL]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. 在 [回覆 URL]  文字方塊中，輸入具有下列模式的 URL：`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
 1. 若要以 **SP 起始**模式設定應用程式，請選取 [設定其他 URL]  ，然後完成下列步驟：
 
@@ -218,7 +219,7 @@ ms.locfileid: "75977914"
 
 ### <a name="bind-the-certificate"></a>繫結憑證
 
-若要將此服務發佈為 SSL，請繫結伺服器憑證，然後測試您的應用程式：
+若要將此服務發佈為 TLS，請繫結伺服器憑證，然後測試您的應用程式：
 
 1. 在 [憑證]  底下選取 [無伺服器憑證]  。
 
@@ -456,10 +457,14 @@ ms.locfileid: "75977914"
 
 - [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Citrix NetScaler](https://aad.portal.azure.com/)
 
 - [設定 Citrix NetScaler 單一登入以進行標頭型驗證](header-citrix-netscaler-tutorial.md)
+
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何使用進階可見性和控制項保護 Citrix NetScaler](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

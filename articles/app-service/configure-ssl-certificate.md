@@ -1,19 +1,19 @@
 ---
-title: 新增和管理 SSL 憑證
+title: 新增和管理 TLS/SSL 憑證
 description: 在 Azure App Service 中建立免費憑證、匯入 App Service 憑證、匯入 Key Vault 憑證，或購買 App Service 憑證。
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223915"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810600"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 SSL 憑證
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本文說明如何將私人憑證或公開憑證建立、上傳或匯入到 App Service。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "79223915"
 * 包含長度至少為 2048 位元的私密金鑰
 * 包含憑證鏈結中的所有中繼憑證
 
-若要保護 SSL 繫結中的自訂網域，則憑證有額外的需求：
+若要保護 TLS 繫結中的自訂網域，則憑證有額外的需求：
 
 * 包含伺服器驗證的[擴充金鑰使用方法](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) (OID = 1.3.6.1.5.5.7.3.1)
 * 由受信任的憑證授權單位簽署
@@ -59,7 +59,7 @@ ms.locfileid: "79223915"
 
 ## <a name="create-a-free-certificate-preview"></a>建立免費憑證 (預覽)
 
-免費 App Service 受控憑證是現成的解決方案，可在 App Service 中保護您的自訂 DNS 名稱。 它是一個功能完整的 SSL 憑證，由 App Service 管理且會自動更新。 此免費憑證有下列限制：
+免費 App Service 受控憑證是現成的解決方案，可在 App Service 中保護您的自訂 DNS 名稱。 它是一個功能完整的 TLS/SSL 憑證，由 App Service 管理且會自動更新。 此免費憑證有下列限制：
 
 - 不支援萬用字元憑證。
 - 不支援裸網域。
@@ -237,7 +237,7 @@ ms.locfileid: "79223915"
 
 ### <a name="export-certificate-to-pfx"></a>將憑證匯出為 PFX
 
-使用與憑證要求共同產生的私密金鑰，將您合併的 SSL 憑證匯出。
+使用與憑證要求共同產生的私密金鑰，將您合併的 TLS/SSL 憑證匯出。
 
 如果您是使用 OpenSSL 產生憑證要求，則已建立私密金鑰檔案。 若要將您的憑證匯出為 PFX，請執行下列命令。 將預留位置 _&lt;private-key-file>_ 和 _&lt;merged-certificate-file>_ 以您的私密金鑰與合併的憑證檔案的路徑取代。
 
@@ -245,7 +245,7 @@ ms.locfileid: "79223915"
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-請在出現提示時定義一個匯出密碼。 您之後將 SSL 憑證上傳至 App Service 時，將會用到這組密碼。
+請在出現提示時定義一個匯出密碼。 您之後將 TLS/SSL 憑證上傳至 App Service 時，將會用到這組密碼。
 
 如果您使用 IIS 或 _Certreq.exe_ 產生憑證要求，請將憑證安裝至本機電腦，然後[將憑證匯出為 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
 
@@ -363,16 +363,16 @@ az keyvault secret download \
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>其他資源
 
-* [使用 SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)
+* [在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)
 * [強制使用 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [強制使用 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [在應用程式程式碼中使用 SSL 憑證](configure-ssl-certificate-in-code.md)
+* [在 Azure App Service 的程式碼中使用 TLS/SSL 憑證](configure-ssl-certificate-in-code.md)
 * [常見問題集：App Service 憑證](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

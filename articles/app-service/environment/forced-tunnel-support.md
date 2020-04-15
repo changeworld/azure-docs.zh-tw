@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 3e0c56ed669ecda5a130dcf9df103bc8a19faf06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057437"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983905"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>設定 App Service Environment 搭配強制通道
 
@@ -60,7 +60,7 @@ ASE 有一些外部相依性，[App Service 環境網路架構][network]文件�
 若要將您的 ASE 子網路設定為略過 BGP 路由：
 
 * 如果您還沒有 UDR，請加以建立並將它指派給您的 ASE 子網路。
-* 在 Azure 入口網站中，開啟指派給 ASE 子網路的路由表 UI。  選取組態。  將 BCP 路由傳播設定為 [停用]。  按一下 [儲存]。 關閉該功能的相關資訊位於[建立路由表][routetable]文件中。
+* 在 Azure 入口網站中，開啟指派給 ASE 子網路的路由表 UI。  選取組態。  將虛擬網路閘道路由傳播設為「停用」。  按一下 [儲存]。 關閉該功能的相關資訊位於[建立路由表][routetable]文件中。
 
 將 ASE 子網路設定為忽略所有 BGP 路由之後，您的應用程式便無法再觸達內部部署環境。 若要讓您的應用程式能夠存取內部部署資源，請編輯指派給 ASE 子網路的 UDR，並新增內部部署位址範圍的路由。 下一個躍點類型應該設定為虛擬網路閘道。 
 

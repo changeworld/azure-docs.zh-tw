@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664292"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435792"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入門：將 Azure 訂用帳戶上架到資訊安全中心的標準層
 Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和威脅防護。 免費層只為 Azure 資源提供有限的安全性，而標準層會將這些功能延伸至內部部署與其他雲端。 資訊安全中心的標準層可協助您尋找和修正安全性弱點、套用存取和應用程式控制項以封鎖惡意活動、使用分析和情報來偵測威脅，以及在遭受攻擊時迅速回應。 您可以免費試用資訊安全中心標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-在本文中，您可升級到標準層以取得額外的安全性，並且在您的虛擬機器上安裝 Microsoft Monitoring Agent 以監視安全性弱點和威脅。
+在本文中，您可升級到標準層以取得額外的安全性，並且在您的虛擬機器上安裝 Log Analytics 代理程式以監視安全性弱點和威脅。
 
 ## <a name="prerequisites"></a>Prerequisites
 若要開始使用資訊安全中心，您必須有 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
@@ -47,7 +47,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 - 改善 Azure 訂用帳戶安全性的 [建議]  。 按一下 [建議]  圖格會啟動已設定優先順序的清單。
 - 資訊安全中心正在評估的 [計算和應用程式]  、[網路]  、[資料安全性]  和 [身分識別與存取權]  資源的詳細目錄，以及每項資源的安全性狀態。
 
-若要充分利用資訊安全中心，您需要完成下列步驟，才能升級到標準層並安裝 Microsoft Monitoring Agent。
+若要充分利用資訊安全中心，您需要完成下列步驟，才能升級到標準層並安裝 Log Analytics 代理程式。
 
 ## <a name="upgrade-to-the-standard-tier"></a>升級至標準層
 基於資訊安全中心快速入門和教學課程的目的，您必須升級至標準層。 資訊安全中心標準層有免費試用。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。 
@@ -66,11 +66,11 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
   ![安全性警示][9]
 
 ## <a name="automate-data-collection"></a>自動收集資料
-資訊安全中心會從您的 Azure 虛擬機器和非 Azure 電腦收集資料，以監視安全性漏洞與威脅。 資料是使用 Microsoft Monitoring Agent 收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 根據預設，資訊安全中心會為您建立新的工作區。
+資訊安全中心會從您的 Azure 虛擬機器和非 Azure 電腦收集資料，以監視安全性漏洞與威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 根據預設，資訊安全中心會為您建立新的工作區。
 
-啟用自動佈建時，資訊安全中心會在所有支援的 Azure 虛擬機器和任何新建立的虛擬機器上安裝 Microsoft Monitoring Agent。 強烈建議使用自動佈建。
+啟用自動佈建時，資訊安全中心會在所有支援的 Azure 虛擬機器和任何新建立的虛擬機器上安裝 Log Analytics 代理程式。 強烈建議使用自動佈建。
 
-若要啟用 Microsoft Monitoring Agent 的自動佈建：
+啟用 Log Analytics 代理程式的自動佈建：
 
 1. 在 [資訊安全中心] 主功能表下，選取 [定價和設定]  。
 2. 在訂用帳戶的資料列上，按一下您想要變更設定的訂用帳戶。
@@ -99,11 +99,11 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 4. 選取 [儲存]  。
 
 >[!NOTE]
-> 停用自動佈建不會從已佈建代理程式的 Azure VM 移除 Microsoft Monitoring Agent。 停用自動佈建會限制對資源的安全性監視。
+> 停用自動佈建不會從已佈建代理程式的 Azure VM 移除 Log Analytics 代理程式。 停用自動佈建會限制對資源的安全性監視。
 >
 
 ## <a name="next-steps"></a>後續步驟
-在本快速入門中，您已升級到標準層並且佈建 Microsoft Monitoring Agent，可取得各項混合式雲端工作負載的整合式安全性管理和威脅防護。 若要深入了解如何使用資訊安全中心，請繼續進行將內部部署和其他雲端中的 Windows 電腦上架的快速入門。
+在本快速入門中，您已升級到標準層並且佈建 Log Analytics 代理程式，可取得各項混合式雲端工作負載的整合式安全性管理和威脅防護。 若要深入了解如何使用資訊安全中心，請繼續進行將內部部署和其他雲端中的 Windows 電腦上架的快速入門。
 
 > [!div class="nextstepaction"]
 > [快速入門：將 Windows 電腦上架到 Azure 資訊安全中心](quick-onboard-windows-computer.md)

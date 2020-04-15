@@ -1,21 +1,21 @@
 ---
-title: 教學課程：如何上傳影像 - Bing 圖像式搜尋
+title: 教學課程：如何使用 Bing 圖像式搜尋 API 上傳影像
 titleSuffix: Azure Cognitive Services
-description: 分析將影像上傳到 Bing 的程序以取得深入見解，然後剖析並顯示回應。
+description: 了解如何將影像上傳至 Bing、取得深入解析並顯示回應。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689184"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477927"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>教學課程：將影像上傳至 Bing 圖像式搜尋 API
 

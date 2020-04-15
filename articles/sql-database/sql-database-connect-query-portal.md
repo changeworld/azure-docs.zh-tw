@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209588"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985672"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>快速入門：使用 Azure 入口網站的查詢編輯器來查詢 SQL 資料庫
 
@@ -175,7 +175,7 @@ ms.locfileid: "79209588"
 
 * 查詢編輯器會使用連接埠 443 和 1443 來進行通訊。 請確定您已在這些連接埠上啟用輸出 HTTPS 流量。 您也必須將輸出 IP 位址新增至伺服器的允許防火牆規則，以存取您的資料庫和資料倉儲。
 
-* 查詢編輯器可與 Private Link 搭配運作，而不需要將用戶端 IP 位址新增至 SQL Database 防火牆
+* 如果您具有 Private Link 連線，則不需要將用戶端 IP 位址新增至 SQL Database 防火牆，查詢編輯器即可運作
 
 * 按下 **F5** 可重新整理查詢編輯器頁面，而且任何正在進行的查詢都會遺失。
 

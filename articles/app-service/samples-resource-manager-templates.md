@@ -6,13 +6,13 @@ tags: azure-service-management
 ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
-ms.custom: mvc
-ms.openlocfilehash: b1d5f20ccd2f2c637d7db668af10ef331947d018
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, fasttrack-edit
+ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971191"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637913"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager 的 App Service 範本
 
@@ -28,11 +28,12 @@ ms.locfileid: "74971191"
 | [連結至 GitHub 存放庫的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy) \(英文\)| 部署可從 GitHub 提取程式碼的 App Service 應用程式。 |
 | [具有自訂部署位置的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots) \(英文\)| 部署具有自訂部署位置/環境的 App Service 應用程式。 |
 |**設定應用程式**||
-| [來自金鑰保存庫的應用程式憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault) \(英文\)| 部署來自 Azure Key Vault 祕密的 App Service 應用程式憑證，並使用它來進行 SSL 繫結。 |
+| [來自金鑰保存庫的應用程式憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault) \(英文\)| 部署來自 Azure Key Vault 祕密的 App Service 應用程式憑證，並使用它來進行 TLS/SSL 繫結。 |
 | [具有自訂網域的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain) \(英文\)| 部署具有自訂主機名稱的 App Service 應用程式。 |
-| [具有自訂網域和 SSL 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl) \(英文\)| 部署具有自訂主機名稱的 App Service 應用程式，並從 Key Vault 取得應用程式憑證來進行 SSL 繫結。 |
+| [具有自訂網域和 SSL 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl) \(英文\)| 部署具有自訂主機名稱的 App Service 應用程式，並從 Key Vault 取得應用程式憑證來進行 TLS/SSL 繫結。 |
 | [具有 GoLang 延伸模組的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang) \(英文\)| 部署具有 Golang 網站延伸模組的 App Service 應用程式。 然後，您可以在 Azure 上執行以 Golang 開發的 Web 應用程式。 |
 | [採用 Java 8 和 Tomcat 8 的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat) \(英文\)| 部署已啟用 Java 8 和 Tomcat 8 的 App Service 應用程式。 然後，您可以在 Azure 中執行 Java 應用程式。 |
+| [應用程式與區域 VNet 整合](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-service-regional-vnet-integration)| 部署已啟用區域 VNet 整合的 App Service 應用程式。 |
 |**保護應用程式**||
 | [與 Azure 應用程式閘道整合的應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| 部署 App Service 應用程式和應用程式閘道，並使用服務端點和存取限制來隔離流量。 |
 |**具有已連線資源的 Linux 應用程式**||
@@ -47,5 +48,5 @@ ms.locfileid: "74971191"
 |**App Service 環境**||
 | [建立 App Service Environment v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | 在虛擬網路中建立 App Service Environment v2。 |
 | [建立具有 ILB 位址的 App Service Environment v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | 在虛擬網路中建立具有私人內部負載平衡位址的 App Service Environment v2。 |
-| [設定 ILB App Service Environment 或 ILB App Service Environment v2 的預設 SSL 憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | 設定 ILB App Service Environment 或 ILB App Service Environment v2 的預設 SSL 憑證。 |
+| [設定 ILB App Service Environment 或 ILB App Service Environment v2 的預設 SSL 憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | 設定 ILB App Service Environment 或 ILB App Service Environment v2 的預設 TLS/SSL 憑證。 |
 | | |

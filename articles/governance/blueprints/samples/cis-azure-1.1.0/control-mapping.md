@@ -3,12 +3,12 @@ title: CIS Microsoft Azure 基礎基準測試藍圖範例控制項
 description: CI Microsoft Azure 基礎基準測試藍圖範例與 Azure 原則的建議對應。
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707417"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656958"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CI Microsoft Azure 基礎基準測試藍圖範例的建議對應。
 
@@ -245,7 +245,7 @@ ms.locfileid: "74707417"
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 確定會為 MySQL 資料庫伺服器將 [強制執行 SSL 連線] 設定為 [已啟用]
 
-此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 MySQL 資料庫伺服器會強制執行 SSL 連線。
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 MySQL 資料庫伺服器會強制執行 TLS/SSL 連線。
 
 - 應為 MySQL 資料庫伺服器啟用 [強制執行 SSL 連線]
 
@@ -257,7 +257,7 @@ ms.locfileid: "74707417"
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 確定會為 PostgreSQL 資料庫伺服器將 [強制執行 SSL 連線] 設定為 [已啟用]
 
-此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 PostgreSQL 資料庫伺服器會強制執行 SSL 連線。
+此藍圖會指派 [Azure 原則](../../../policy/overview.md)定義，以協助您確定 PostgreSQL 資料庫伺服器會強制執行 TLS/SSL 連線。
 
 - 應為 PostgreSQL 資料庫伺服器啟用 [強制執行 SSL 連線]
 

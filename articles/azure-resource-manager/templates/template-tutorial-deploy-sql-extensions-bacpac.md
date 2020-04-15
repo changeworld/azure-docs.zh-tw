@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239284"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754320"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案
 
-了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager (ARM) 範本匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。 
+了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager (ARM) 範本匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。
 
 在本教學課程中，您將建立一個範本來部署 Azure SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 如需如何使用 ARM 範本部署 Azure 虛擬機器擴充功能的相關資訊，請參閱[教學課程：使用 ARM 範本部署虛擬機器擴充功能](./template-tutorial-deploy-vm-extensions.md)。
 
@@ -255,7 +255,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已部署 SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 BACPAC 檔案會儲存在 Azure 儲存體帳戶中。 任何具有 URL 的人員都可以存取該檔案。 若要了解如何保護 BACPAC 檔案 (成品)，請參閱：
+在本教學課程中，您已部署 SQL 伺服器和 SQL 資料庫並匯入 BACPAC 檔案。 若要了解如何針對範本部署進行疑難排解，請參閱：
 
 > [!div class="nextstepaction"]
-> [保護成品](./template-tutorial-secure-artifacts.md)
+> [對 ARM 範本部署進行疑難排解](./template-tutorial-troubleshoot.md)

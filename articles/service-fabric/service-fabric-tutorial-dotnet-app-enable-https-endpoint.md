@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Kestrel 將 HTTPS 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222725"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756091"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教學課程：使用 Kestrel 將 HTTPS 端點新增至 ASP.NET Core Web API 前端服務
 
@@ -20,7 +20,7 @@ ms.locfileid: "79222725"
 > [!div class="checklist"]
 > * 在服務中定義 HTTPS 端點
 > * 將 Kestrel 設定為使用 HTTPS
-> * 在遠端叢集節點上安裝 SSL 憑證
+> * 在遠端叢集節點上安裝 TLS/SSL 憑證
 > * 將憑證的私密金鑰存取權給予網路服務
 > * 在 Azure Load Balancer 中開啟連接埠 443
 > * 將應用程式部署到遠端叢集
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>將憑證的私密金鑰存取權給予網路服務
 
-在上一個步驟中，您已將憑證匯入到開發電腦上的 `Cert:\LocalMachine\My` 存放區中。  現在，將憑證的私密金鑰存取權明確地授與執行服務 (預設為「網路服務」) 的帳戶。 您可以手動執行此步驟 (使用 certlm.msc 工具)，但是最好在服務資訊清單的 [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) 中 **設定啟動指令碼**，以便自動執行 PowerShell 指令碼。
+在上一個步驟中，您已將憑證匯入到開發電腦上的 `Cert:\LocalMachine\My` 存放區中。  現在，將憑證的私密金鑰存取權明確地授與執行服務 (預設為「網路服務」) 的帳戶。 您可以手動執行此步驟 (使用 certlm.msc 工具)，但是最好在服務資訊清單的 **SetupEntryPoint** 中 [設定啟動指令碼](service-fabric-run-script-at-service-startup.md)，以便自動執行 PowerShell 指令碼。
 
 ### <a name="configure-the-service-setup-entry-point"></a>設定服務安裝程式進入點
 
@@ -396,7 +396,7 @@ $slb | Set-AzLoadBalancer
 > [!div class="checklist"]
 > * 在服務中定義 HTTPS 端點
 > * 將 Kestrel 設定為使用 HTTPS
-> * 在遠端叢集節點上安裝 SSL 憑證
+> * 在遠端叢集節點上安裝 TLS/SSL 憑證
 > * 將憑證的私密金鑰存取權給予網路服務
 > * 在 Azure Load Balancer 中開啟連接埠 443
 > * 將應用程式部署到遠端叢集

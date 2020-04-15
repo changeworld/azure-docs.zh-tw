@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372249"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398115"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中樞 — 巨量資料串流平台和事件擷取服務
 Azure 事件中樞是巨量資料串流平台和事件擷取服務。 其每秒可接收和處理數百萬個事件。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。
@@ -61,20 +61,27 @@ Azure 事件中樞也整合了 [Azure Functions](/azure/azure-functions/) 來達
 
 [Apache Kafka 生態系統的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)可讓 [Apache Kafka (1.0 版和更新版本)](https://kafka.apache.org/) 用戶端和應用程式與事件中樞通訊。 您不需要設定、配置及管理您自己的 Kafka 叢集。
 
-透過適用於各種[語言 (.NET、Java、Python、Go、JavaScript)](https://github.com/Azure/azure-event-hubs) 的廣大生態系統，您可以輕鬆地開始處理來自事件中樞的串流。 所有支援的用戶端語言皆提供低階整合。 生態系統也可讓您緊密整合 Azure 串流分析和 Azure Functions 等 Azure 服務，進而讓您建置無伺服器的架構。
+透過適用於各種語言 [.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/) 的廣大生態系統，您可以輕鬆地開始處理來自事件中樞的串流。 所有支援的用戶端語言皆提供低階整合。 生態系統也可讓您緊密整合 Azure 串流分析和 Azure Functions 等 Azure 服務，進而讓您建置無伺服器的架構。
 
 ## <a name="key-architecture-components"></a>重要架構元件
 事件中樞包含下列[重要元件](event-hubs-features.md)：
 
-- **事件產生者**：任何將資料傳送至事件中樞的實體。 事件發佈者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka (1.0 版或更新版本) 發佈事件
+- **事件產生者**：將資料傳送至事件中樞的任何實體。 事件發佈者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka (1.0 版或更新版本) 發佈事件
 - **分割區**：每一個取用者只會讀取訊息資料流的特定子集或分割區。
 - **取用者群組**：檢視整個事件中樞 (狀態、位置或位移) 的窗口。 取用者群組能讓取用應用程式各自擁有獨立的事件串流檢視。 取用應用程式會依自己的步調以及自己的位移獨立讀取串流。
 - **輸送量單位**：預先購買的容量單位，可控制事件中樞的輸送量容量。
-- **事件接收者**：任何從事件中樞讀取事件資料的實體。 所有事件中樞取用者均透過 AMQP 1.0 工作階段來連線。 事件中樞服務會透過工作階段傳遞可用的事件。 所有 Kafka 取用者都是透過 Kafka 通訊協定 1.0 和更新版本連線。
+- **事件接收者**：從事件中樞讀取事件資料的任何實體。 所有事件中樞取用者均透過 AMQP 1.0 工作階段來連線。 事件中樞服務會透過工作階段傳遞可用的事件。 所有 Kafka 取用者都是透過 Kafka 通訊協定 1.0 和更新版本連線。
 
 下圖顯示事件中樞串流處理架構︰
 
 ![事件中樞](./media/event-hubs-about/event_hubs_architecture.png)
+
+## <a name="event-hubs-on-azure-stack-hub"></a>Azure Stack Hub 上的事件中樞
+Azure Stack Hub 上的事件中樞可讓您實現混合式雲端情況。 針對內部部署和 Azure 雲端處理，支援串流和事件型解決方案。 無論是混合式 (已連線) 或已中斷連線，您的解決方案都可以支援大規模的事件/資料流處理。 您的情況只會受到事件中樞叢集大小的限制，此限制可以根據自己的需求佈建。 
+
+事件中樞版本 (位於 Azure Stack Hub 和 Azure 上) 提供高度功能同位。 此同位表示 SDK、範例、PowerShell、CLI 和入口網站提供類似的體驗，但有一些差異。 
+
+在公開預覽期間，堆疊上的事件中樞可免費使用。 如需詳細資訊，請參閱 [Azure Stack Hub 上的事件中樞概觀](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,22 +1,14 @@
 ---
 title: 教學課程：發佈設定 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您將變更發佈設定以取得改善的預測。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/13/2019
-ms.author: diberry
-ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/01/2020
+ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75890378"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545782"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>教學課程：新增情感分析作為發佈設定
 
@@ -67,11 +59,11 @@ ms.locfileid: "75890378"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 移至位址中的 URL 結尾並輸入以下語句：
+1. 移至網址列中的 URL 尾端，並以下列項目取代 _YOUR_QUERY_HERE_：
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    最後一個 querystring 參數是 `query`，也就是 **query** 語句。 此語句與任何標示的語句都不同，因此這是很好的測試，且應該傳回具有所擷取情感分析的 `OrderPizza` 意圖。
+    此語句與任何標示的語句都不同，因此這是很好的測試，且應該傳回具有所擷取情感分析的 `OrderPizza` 意圖。
 
     ```json
     {
@@ -122,9 +114,7 @@ ms.locfileid: "75890378"
 
     情感分析為正面，分數為 86%。
 
-## <a name="clean-up-resources"></a>清除資源
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>相關資訊
 

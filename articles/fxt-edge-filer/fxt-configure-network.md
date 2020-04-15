@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223965"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754686"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>教學課程：設定叢集的網路設定
 
@@ -76,7 +76,7 @@ FXT Edge Filer 叢集會使用 X.509 憑證來進行下列功能：
 
 如果您需要將憑證上傳至叢集，請使用 [叢集]   > [憑證]  設定頁面。 詳細資料位於《叢集設定指南》的 [[叢集] > [憑證]](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) 頁面。
 
-若要加密叢集管理通訊，請使用 [叢集]   > [一般設定]  設定頁面來選取要用於系統管理 SSL 的憑證。
+若要加密叢集管理通訊，請使用 [叢集]   > [一般設定]  設定頁面來選取要用於系統管理 TLS 的憑證。
 
 > [!Note] 
 > 雲端服務的存取金鑰會使用 [雲端認證]  設定頁面來儲存。 前述的[新增核心檔案管理工具](fxt-add-storage.md#add-a-core-filer)一節會顯示範例；如需詳細資訊，請閱讀《叢集設定指南》的[雲端認證](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html)一節。 

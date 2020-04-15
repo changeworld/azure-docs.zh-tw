@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77109940"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756695"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入門：使用 QnA Maker 入口網站新增問題和答案
 
@@ -27,7 +27,7 @@ ms.locfileid: "77109940"
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-將中繼資料新增至 QnA 集合之後，用戶端應用程式可以：
+將中繼資料新增至 QnA 配對之後，用戶端應用程式可以：
 
 * 要求僅符合特定中繼資料的答案。
 * 接收所有答案，但根據每個答案的中繼資料來對答案進行後置處理。
@@ -45,7 +45,7 @@ ms.locfileid: "77109940"
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>新增其他採用不同說法的問題
 
-目前的知識庫具有 QnA Maker 疑難排解 QnA 集合。 在建立程序進行期間將 URL 新增至知識庫時，便已建立這些問答集。
+目前的知識庫具有 QnA Maker 疑難排解 QnA 配對。 在建立程序進行期間將 URL 新增至知識庫時，便已建立這些問答集。
 
 匯入此 URL 時，只會建立一個有單一答案的問題。 在此程序中，請新增其他問題。
 
@@ -82,7 +82,7 @@ ms.locfileid: "77109940"
 
 1. 選取 [檢視選項]  ，然後選取 [顯示中繼資料]  。
 
-1. 針對您剛才新增的 QnA 集合，選取 [新增中繼資料標籤]  ，然後新增 `service` 的名稱和 `search` 的值。 其看起來像這樣：`service:search`。
+1. 針對您剛才新增的 QnA 配對，選取 [新增中繼資料標籤]  ，然後新增 `service` 的名稱和 `search` 的值。 其看起來像這樣：`service:search`。
 
 1. 使用 `link_in_answer` 的名稱和 `false` 的值新增其他中繼資料標籤。 其看起來像這樣：`link_in_answer:false`。
 

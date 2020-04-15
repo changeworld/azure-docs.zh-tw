@@ -4,12 +4,12 @@ description: 了解如何部署連結的範本
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081797"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672927"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>教學課程：部署連結的範本
 
@@ -90,6 +90,9 @@ Write-Host "Press [ENTER] to continue ..."
 若要在儲存體帳戶中部署私人範本，請產生 SAS Token 並將它包含在範本的 URI 中。 設定到期時間，以允許足夠的時間來完成部署。 僅有帳戶擁有者可以存取包含範本的 Blob。 不過，當您建立 Blob 的 SAS Token 時，具備該 URI 的任何人都可以存取該 Blob。 如果另一位使用者攔截了 URI，該使用者也能存取範本。 SAS Token 是限制存取範本的好方法，但您不應該將機密資料 (如密碼) 直接包含在範本中。
 
 如果您尚未建立資源群組，請參閱[建立資源群組](./deployment-tutorial-local-template.md#create-resource-group)。
+
+> [!NOTE]
+> 在下列 Azure CLI 程式碼中，資料參數 -d 會是 macOS 中無效的引數。 因此若 macOS 的使用者，要在 macOS 上的終端機新增 2 小時到目前的時間，應該使用 -v+2H。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

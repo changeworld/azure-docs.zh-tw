@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969710"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Paylocity 整合
 
@@ -45,6 +44,8 @@ ms.locfileid: "72969710"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Paylocity 支援由 **SP 和 IDP** 起始的 SSO
+
+* SNAT 耗盡的根本原因通常是一種反模式，說明如何建立、管理或設定計時器從其預設值變更。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)。
 
 ## <a name="adding-paylocity-from-the-gallery"></a>從資源庫新增 Paylocity
 
@@ -82,8 +83,6 @@ ms.locfileid: "72969710"
 
 1. 在 [基本 SAML 組態]  區段中，使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合。
 
-    ![Paylocity 網域及 URL 單一登入資訊](common/preintegrated.png)
-
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://access.paylocity.com/`
@@ -98,13 +97,24 @@ ms.locfileid: "72969710"
 
     | 名稱 |  來源屬性|
     | ---------------| --------------- |
-    | PartnerID | <"PartnerID"> |
-    | PaylocityUser | <"PaylocityUser"> |
-    | PaylocityEntity | <"PaylocityEntity"> |
+    | PartnerID | `P8000010` |
+    | PaylocityUser | `user.mail`|
+    | PaylocityEntity | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > PaylocityEntity 是 Paylocity Company 識別碼。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
+
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，按一下**編輯圖示**。
+
+    ![SAML 簽署憑證編輯](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. 針對 [簽署選項]  選取 [簽署 SAML 回應及判斷提示]  ，然後按一下 [儲存]  。
+
+    ![SAML 簽署憑證編輯](./media/paylocity-tutorial/saml-assertion.png)
 
 1. 在 [設定 Paylocity]  區段上，依據您的需求複製適當的 URL。
 
@@ -163,3 +173,7 @@ ms.locfileid: "72969710"
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [嘗試搭配 Azure AD 使用 Paylocity](https://aad.portal.azure.com/)
+
+* [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [如何使用進階可見性和控制項保護 Paylocity](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074074"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478860"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>教學課程：整合 MyWorkDrive 與 Azure Active Directory
 
@@ -92,7 +92,7 @@ ms.locfileid: "74074074"
     > 
     > 登入 URL：`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > 如果您不確定如何針對這些值設定自己的主機名稱和 SSL 憑證，請連絡 [MyWorkDrive 支援小組](mailto:support@myworkdrive.com)。
+    > 如果您不確定如何針對這些值設定自己的主機名稱和 TLS/SSL 憑證，請連絡 [MyWorkDrive 支援小組](mailto:support@myworkdrive.com)。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以將 [應用程式同盟中繼資料 URL]  複製到剪貼簿。
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526804"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618395"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教學課程：設定 Azure 時間序列深入解析預覽版環境
 
@@ -30,7 +30,6 @@ ms.locfileid: "77526804"
 > * 執行解決方案加速器範例，以將資料串流處理至「Azure 時間序列深入解析預覽版」環境。
 > * 在資料上執行基本的分析。
 > * 定義「時間序列模型」類型和階層，並將其與您的執行個體建立關聯。
-> * 使用 Power BI 連接器，並使用 Power BI 將資料視覺化。
 
 >[!TIP]
 > [IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators)提供預先設定的企業級解決方案，可讓您用來加快自訂 IoT 解決方案的開發速度。
@@ -359,3 +358,8 @@ ms.locfileid: "77526804"
 
 > [!div class="nextstepaction"]
 > [Azure 時間序列深入解析預覽版資料模型化](./time-series-insights-update-tsm.md)
+
+深入了解將環境連線至 Power BI
+
+> [!div class="nextstepaction"]
+> [在 Power BI 中從時間序列深入解析將資料視覺化](./how-to-connect-power-bi.md)

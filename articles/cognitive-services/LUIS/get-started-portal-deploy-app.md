@@ -1,21 +1,14 @@
 ---
 title: 快速入門：使用 LUIS 入口網站部署應用程式
-titleSuffix: Azure Cognitive Services
 description: 此快速入門說明如何藉由建立預測端點資源、指派資源、訓練及發佈應用程式來部署應用程式。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79221183"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756299"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中部署應用程式
 
@@ -29,35 +22,13 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 * 完成[先前的入口網站快速入門](get-started-portal-build-app.md)，或[下載並匯入應用程式](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。
 * 如果您的應用程式版本早於 Azure 資源驗證，請[遷移至 Azure 資源](luis-migration-authoring.md)。 當電子郵件驗證生效時，某些入口網站頁面的外觀會有所不同。
 
-## <a name="create-the-endpoint-resource"></a>建立端點資源
+<a name="create-the-endpoint-resource"></a>
 
-您將在 Azure 入口網站中建立預測端點資源。 此資源僅適用於端點預測查詢。 請勿使用此資源撰寫應用程式的變更。
-
-1. 在 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)中登入和建立資源。
-
-1. 使用下列設定來設定訂用帳戶：
-
-   |設定|值|目的|
-   |--|--|--|
-   |名稱|`my-luis-resource`|Azure 資源的名稱。 當您將資源指派給 LUIS 入口網站中的應用程式時，會需要此名稱。|
-   |訂用帳戶|您的訂用帳戶|選取其中一個與您的帳戶相關聯的訂用帳戶。|
-   |資源群組|`my-resource-group`|為所有認知服務資源，建立新的資源群組。 當您完成使用資源後，可以刪除資源群組來清除您的訂用帳戶。 |
-   |製作位置|美國西部 |可供製作的 Azure 區域。|
-   |製作定價層|**F0**|可供製作的預設定價層。|
-   |執行階段位置|美國西部 |適用於預測端點查詢的 Azure 區域。|
-   |執行階段定價層|**S0**|此定價層提供高流量網站。|
-   | | | |
-
-
-   ![Azure API 選擇](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. 選取 [建立]  以建立 Azure 資源。
-
-   在下一節中，您將了解如何將這個新資源連線至 LUIS 入口網站中的 LUIS 應用程式。
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>將資源金鑰指派給 LUIS 入口網站中的 LUIS 應用程式
 
-每當您為 LUIS 建立新資源時，都需要將資源指派給 LUIS 應用程式。 指派之後，除非您建立新的資源，否則不需要再次執行此步驟。 您可以建立新的資源，以擴充您的應用程式區域，或支援更多預測查詢數目。
+每當您為 LUIS 建立新製作或查詢預測資源時，都需要將資源指派給 LUIS 應用程式。 指派之後，除非您建立新的資源，否則不需要再次執行此步驟。 您可以建立新的資源，以擴充您的應用程式區域，或支援更多預測查詢數目。
 
 1. 登入[預覽 LUIS 入口網站](https://preview.luis.ai)，從應用程式清單中選擇 **myEnglishApp** 應用程式。
 

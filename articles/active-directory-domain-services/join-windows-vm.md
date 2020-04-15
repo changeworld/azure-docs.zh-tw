@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481580"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476215"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>教學課程：將 Windows Server 虛擬機器加入受控網域
 
@@ -76,8 +76,6 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
     RDP 應該只在必要時啟用，而且僅限於一組已授權的 IP 範圍。 此設定可協助改善 VM 的安全性，並減少潛在攻擊的範圍。 或者，請建立和使用只允許透過 TLS 從 Azure 入口網站存取的 Azure Bastion 主機。 在此教學課程的下一個步驟中，您需要使用 Azure Bastion 主機安全地連線到 VM。
 
-    目前請先停用對於 VM 的直接 RDP 連線。
-
     在 [公用輸入連接埠]  底下，選取 [無]  。
 
 1. 完成時，請選取 [下一步:  磁碟]。
@@ -96,22 +94,23 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
     ![選擇以在 Azure 入口網站中管理子網路設定](./media/join-windows-vm/manage-subnet.png)
 
-1. 在虛擬網路視窗的左側功能表中，選取 [位址空間]  。 建立虛擬網路時，會使用預設子網路所使用的單一位址空間 *10.0.1.0/24*。
+1. 在虛擬網路視窗的左側功能表中，選取 [位址空間]  。 建立虛擬網路時，會使用預設子網路所使用的單一位址空間 *10.0.2.0/24*。 其他適用於*工作負載*或 Azure Bastion 等的子網路也可能已經存在。
 
     將額外的 IP 位址範圍新增至虛擬網路。 此位址範圍的大小以及要使用的實際 IP 位址範圍，取決於已部署的其他網路資源。 IP 位址範圍不應與您 Azure 或內部部署環境中任何現有的位址範圍重疊。 請確定您的 IP 位址範圍大小足以容納預期要部署到子網路中的 VM 數目。
 
-    在下列範例中，會新增額外的 IP 位址範圍 *10.0.2.0/24*。 在準備就緒時，選取 [儲存]  。
+    在下列範例中，會新增額外的 IP 位址範圍 *10.0.5.0/24*。 在準備就緒時，選取 [儲存]  。
 
-    ![在 Azure 入口網站中新增額外的虛擬網路 IP 位址範圍](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![在 Azure 入口網站中新增額外的虛擬網路 IP 位址範圍](./media/join-windows-vm/add-vnet-address-range.png)
 
 1. 接下來，在虛擬網路視窗的左側功能表中選取 [子網路]  ，然後選擇 [+ 子網路]  以新增子網路。
 
-1. 選取 [+ 子網路]  ，然後輸入子網路的名稱，例如 *management*。 提供 [位址範圍 (CIDR 區塊)]  ，例如 *10.0.2.0/24*。 請確定此 IP 位址範圍不會與任何其他現有的 Azure 或內部部署位址範圍重疊。 保留其他選項的預設值，然後選取 [確定]  。
+1. 選取 [+ 子網路]  ，然後輸入子網路的名稱，例如 *management*。 提供 [位址範圍 (CIDR 區塊)]  ，例如 *10.0.5.0/24*。 請確定此 IP 位址範圍不會與任何其他現有的 Azure 或內部部署位址範圍重疊。 保留其他選項的預設值，然後選取 [確定]  。
 
     ![在 Azure 入口網站中建立子網路設定](./media/join-windows-vm/create-subnet.png)
 
 1. 建立子網路需要幾秒鐘的時間。 建立之後，請選取 [X]  以關閉子網路視窗。
 1. 回到 [網路]  窗格以建立 VM，從下拉式功能表中選擇您建立的子網路，例如 *management*。 再次強調，請務必選擇正確的子網路，而且不要將 VM 部署在與 Azure AD DS 受控網域相同的子網路中。
+1. 對於**公用 IP**，請從下拉式功能表中選取 [無]  ；因為您使用 Azure Bastion 連線到管理，因此不需要指派公用 IP 位址。
 1. 將其他選項保留為預設值，然後選取 [管理]  。
 1. 將 [開機診斷]  設定為 [關閉]  。 將其他選項保留為預設值，然後選取 [檢閱 + 建立]  。
 1. 檢閱 VM 設定，然後選取 [建立]  。

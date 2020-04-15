@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80052081"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520984"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
@@ -59,7 +59,7 @@ Azure 個人化工具是雲端式 API 服務，可協助您的用戶端應用程
 
 個人化工具的**排名** [API](https://go.microsoft.com/fwlink/?linkid=2092082) 會在您「每次」  即時呈現內容時呼叫。 這也稱為**事件**，並以「事件識別碼」  加以註記。
 
-個人化工具的**獎勵** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可即時呼叫，或延遲以更加符合您的基礎結構。 您可以根據您的業務需求判斷獎勵分數。 這可以是單一值，例如 1 表示良好，0 表示不良，或由您建立的演算法所產生的數字，其會考慮您的業務目標和計量。
+個人化工具的**獎勵** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 可即時呼叫，或延遲以更加符合您的基礎結構。 您可以根據您的業務需求判斷獎勵分數。 獎勵分數介於 0 到 1 之間。 這可以是單一值，例如 1 表示良好，0 表示不良，或由您建立的演算法所產生的數字，其會考慮您的業務目標和計量。
 
 ## <a name="personalizer-content-requirements"></a>個人化工具內容需求
 

@@ -2,15 +2,15 @@
 title: 教學課程 - 從 Azure 入口網站匯出範本
 description: 了解如何使用匯出的範本來完成範本開發。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79368888"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408555"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教學課程：從 Azure 入口網站使用匯出的範本
 
@@ -34,7 +34,7 @@ ms.locfileid: "79368888"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取 [建立資源]  。
-1. 在 [搜尋 Marketplace]  中，輸入 **App Service 方案**，然後選取 [App Service 方案]  。  不要選取 [App Service 方案 (傳統)]  。
+1. 在 [搜尋 Marketplace]  中，輸入 **App Service 方案**，然後選取 [App Service 方案]  。  不要選取 [App Service 方案 (傳統)] 
 1. 選取 [建立]  。
 1. 輸入：
 
@@ -97,6 +97,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要執行此部署命令，您必須擁有[最新版](/cli/azure/install-azure-cli)的 Azure CLI。
+
 ```azurecli
 az deployment group create \
   --name addappserviceplan \
@@ -106,6 +108,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
 
 ## <a name="verify-deployment"></a>驗證部署
 

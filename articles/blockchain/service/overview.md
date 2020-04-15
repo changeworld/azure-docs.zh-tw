@@ -1,15 +1,15 @@
 ---
 title: Azure 區塊鏈服務概觀
 description: Azure 區塊鏈服務的概觀
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205076"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529148"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什麼是 Azure 區塊鏈服務？
 
@@ -19,7 +19,7 @@ Azure 區塊鏈服務是完全受控的總帳服務，讓使用者能夠在 Azur
 * 內建的聯盟管理
 * 使用熟悉的開發工具來開發智慧型合約
 
-Azure 區塊鏈服務旨在支援多個總帳通訊協定。 目前使用 [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) \(英文\) 共識機制來提供對 Ethereum [Quorum](https://www.goquorum.com/) \(英文\) 總帳的支援。
+Azure 區塊鏈服務旨在支援多個總帳通訊協定。 目前使用 [Istanbul Byzantine 容錯 (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) 共識機制來提供對 Ethereum [Quorum](https://www.goquorum.com/) 總帳的支援。
 
 這些功能幾乎不需要管理，而且免費提供。 您可以專注於應用程式開發和商務邏輯，而非分配時間和資源來管理虛擬機器和基礎結構。 此外，您可以繼續使用所選擇的開放原始碼工具及平台，來開發應用程式以傳遞您的解決方案，而不需學習新技能。
 
@@ -33,7 +33,7 @@ Azure 區塊鏈服務提供兩個服務層級：「基本」  和「標準」  �
 
 ![定價層](./media/overview/pricing-tiers.png)
 
-除了提供兩個驗證程式節點，「標準」  層可為每個交易和驗證程式節點提供 2 個「虛擬核心」  ，而「基本」層可提供 1 個虛擬核心設定。  藉由為交易和驗證程式節點提供 2 個虛擬核心，即可將 1 個虛擬核心專用於 Quorum 總帳，而剩餘的 1 個虛擬核心可用於其他基礎結構相關服務，以確保會針對生產區塊鏈工作負載取得最佳效能。 如需價格詳細資料的詳細資訊，請參閱 [Azure 區塊鏈服務價格](https://azure.microsoft.com/pricing/details/blockchain-service)。
+除了提供兩個驗證程式節點，「標準」  層可為每個交易和驗證程式節點提供兩個「虛擬核心」  ，而「基本」  層可提供 1 個虛擬核心設定。  藉由為交易和驗證程式節點提供 2 個虛擬核心，即可將 1 個虛擬核心專用於 Quorum 總帳，而剩餘的 1 個虛擬核心可用於其他基礎結構相關服務，以確保會針對生產區塊鏈工作負載取得最佳效能。 如需價格詳細資料的詳細資訊，請參閱 [Azure 區塊鏈服務價格](https://azure.microsoft.com/pricing/details/blockchain-service)。
 
 ### <a name="security-and-maintenance"></a>安全性和維護
 

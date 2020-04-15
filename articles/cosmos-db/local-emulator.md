@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222125"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618739"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > 如果您使用 /Key 選項來啟動模擬器，則使用產生的金鑰，而非 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。 如需 /Key 選項的詳細資訊，請參閱[命令列工具參考](#command-line)。
 
-就像 Azure Cosmos DB 一樣，Azure Cosmos 模擬器僅支援透過 SSL 的安全通訊。
+就像 Azure Cosmos DB 一樣，Azure Cosmos 模擬器僅支援透過 TLS 的安全通訊。
 
 ## <a name="running-on-a-local-network"></a>在區域網路上執行
 
@@ -183,7 +183,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 * [安裝 apache-tinkerpop-gremlin-console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4)。
 
-* 在模擬器的 [資料總管] 中，建立資料庫 "db1" 和集合 "coll1"；針對分割區索引鍵，選擇 "/name"
+* 在模擬器的資料總管中，建立資料庫 "db1" 和集合 "coll1"；針對分割區索引鍵，選擇 "/name"
 
 * 在一般命令提示字元視窗中，執行下列命令：
 
@@ -215,17 +215,17 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>匯出 SSL 憑證
+## <a name="export-the-tlsssl-certificate"></a>匯出 TLS/SSL 憑證
 
 .NET 語言和執行階段使用 Windows 憑證存放區來安全地連線到 Azure Cosmos DB 本機模擬器。 其他語言則有自己管理和使用憑證的方法。 Java 使用自己的[憑證存放區](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)，而 Python 使用[通訊端包裝函式](https://docs.python.org/2/library/ssl.html)。
 
 若要取得憑證來搭配未整合 Windows 憑證存放區的語言和執行階段使用，您必須使用 Windows 憑證管理員將它匯出。 您可以執行 certlm.msc 或依照[匯出 Azure Cosmos 模擬器憑證](./local-emulator-export-ssl-certificates.md)中的逐步指示來啟動它。 憑證管理員執行之後時，開啟 [個人憑證] \(如下所示)，並將有 "DocumentDBEmulatorCertificate" 易記名稱的憑證匯出為 BASE-64 編碼的 X.509 (.cer) 檔案。
 
-![Azure Cosmos DB 本機模擬器的 SSL 憑證](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Azure Cosmos DB 本機模擬器的 TLS/SSL 憑證](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 遵循[新增憑證至 Java CA 憑證存放區](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的指示，X.509 憑證就可以匯入 Java 憑證存放區。 將憑證匯入至憑證存放區之後，SQL 和適用於 MongoDB 的 Azure Cosmos DB API 的用戶端就可以連線到 Azure Cosmos 模擬器。
 
-從 Python 和 Node.js SDK 連接到模擬器時，會停用 SSL 驗證。
+從 Python 和 Node.js SDK 連接到模擬器時，會停用 TLS 驗證。
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>命令列工具參考
 您可以從安裝位置使用命令列來啟動和停止模擬器、設定選項，以及執行其他作業。
@@ -260,8 +260,8 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 | StopTraces     | 使用 LOGMAN 停止收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  使用 Windows 效能記錄工具開始收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | 使用 Windows 效能記錄工具停止收集偵錯追蹤記錄。 | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailOnSslCertificateNameMismatch | 根據預設，如果憑證的 SAN 不包含模擬器主機的網域名稱、本機 IPv4 位址、'localhost' 及 '127.0.0.1'，模擬器就會重新產生其自我簽署的 SSL 憑證。 使用此選項，模擬器反而將在啟動時失敗。 您接著應該使用 /GenCert 選項，來建立並安裝新的自我簽署 SSL 憑證。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 產生並安裝新的自我簽署 SSL 憑證。 選擇性地包括其他 DNS 名稱的逗號分隔清單，以透過網路來存取模擬器。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>:其他 dns 名稱的選擇性逗號分隔清單  |
+|FailOnSslCertificateNameMismatch | 根據預設，如果憑證的 SAN 不包含模擬器主機的網域名稱、本機 IPv4 位址、'localhost' 及 '127.0.0.1'，模擬器就會重新產生其自我簽署的 TLS/SSL 憑證。 使用此選項，模擬器反而將在啟動時失敗。 您接著應該使用 /GenCert 選項，來建立並安裝新的自我簽署 TLS/SSL 憑證。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | 產生並安裝新的自我簽署 TLS/SSL 憑證。 選擇性地包括其他 DNS 名稱的逗號分隔清單，以透過網路來存取模擬器。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>:其他 dns 名稱的選擇性逗號分隔清單  |
 | DirectPorts |指定要用於直接連線的連接埠。 預設值為 10251、10252、10253、10254。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗號分隔的 4 個連接埠清單 |
 | Key |模擬器的授權金鑰。 金鑰必須是 64 位元組向量的 base-64 編碼方式。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<金鑰\>：金鑰必須是 64 位元組向量的 base-64 編碼方式|
 | EnableRateLimiting | 指定要啟用要求率限制行為。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-現在，在您的用戶端使用回應中的端點和主要金鑰，並將 SSL 憑證匯入您的主機。 若要匯入 SSL 憑證，請從系統管理員命令提示字元中執行下列命令︰
+現在，在您的用戶端使用回應中的端點和主要金鑰，並將 TLS/SSL 憑證匯入您的主機。 若要匯入 TLS/SSL 憑證，請從系統管理員命令提示字元中執行下列命令︰
 
 從命令列執行：
 
@@ -445,7 +445,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 如果您使用 Linux，則 .NET 會在 OpenSSL 上轉送以執行驗證：
 
-1. [以 PFX 格式匯出憑證](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (選擇匯出私密金鑰時，可以使用 PFX)。 
+1. [以 PFX 格式匯出憑證](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (選擇匯出私密金鑰時，可以使用 PFX)。 
 
 1. 將該 PFX 檔案複製到您的 Linux 環境中。
 
@@ -471,7 +471,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 如果您使用的是 Mac，請執行下列步驟：
 
-1. [以 PFX 格式匯出憑證](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (選擇匯出私密金鑰時，可以使用 PFX)。
+1. [以 PFX 格式匯出憑證](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (選擇匯出私密金鑰時，可以使用 PFX)。
 
 1. 將該 PFX 檔案複製到您的 Mac 環境中。
 
@@ -527,7 +527,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您學習到如何使用免費的本機模擬器在本機開發。 現在您可以繼續進行下一個教學課程，了解如何匯出模擬器 SSL 憑證。
+在本教學課程中，您學習到如何使用免費的本機模擬器在本機開發。 現在您可以繼續進行下一個教學課程，了解如何匯出模擬器 TLS/SSL 憑證。
 
 > [!div class="nextstepaction"]
 > [匯出 Azure Cosmos 模擬器憑證](local-emulator-export-ssl-certificates.md)

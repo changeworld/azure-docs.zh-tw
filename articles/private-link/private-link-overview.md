@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1bef4e5f4129ddc8300d61d609392ce0b07b74b8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063089"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656242"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -47,7 +47,7 @@ Azure Private Link 提供下列優點：
 |  | Azure Data Lake Storage Gen2        |  所有公用區域      | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL Database         | 所有公用區域      |   GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |  |Azure Synapse Analytics (SQL 資料倉儲)| 所有公用區域 |GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  美國東部、東部美國 2、美國西部、美國西部 2、美國中部、美國中南部、美國中西部、美國中北部、北歐、西歐  |GA <br/> [深入了解](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |Azure Cosmos DB|  所有公用區域 |GA <br/> [深入了解](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  |  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域      |   GA <br/> [深入了解](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  |  適用於 MySQL 的 Azure 資料庫         | 所有公用區域      |   GA <br/> [深入了解](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  |  適用於 MariaDB 的 Azure 資料庫         | 所有公用區域      |   GA <br/> [深入了解](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
@@ -60,8 +60,9 @@ Azure Private Link 提供下列優點：
 |  |Azure 事件中樞 | 所有公用區域      |   預覽    |
 |  |Azure 服務匯流排 | 所有公用區域      |   預覽   |
 |  |Azure 轉送 | 所有公用區域      |   預覽   |
-|  |Azure Event Grid| 所有公用區域      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Event Grid| 美國東部、美國西部 2、美國中南部      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/event-grid/network-security)   |
 |  |Azure Web Apps | 美國東部、美國西部 2、美國中南部      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Machine Learning | 美國東部、美國西部 2、美國中南部      |   預覽   <br/> [深入了解](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 
 如需最新通知，請查看 [Azure 虛擬網路更新頁面](https://azure.microsoft.com/updates/?product=virtual-network)。
 

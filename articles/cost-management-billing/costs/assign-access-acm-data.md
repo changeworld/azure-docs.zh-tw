@@ -3,17 +3,17 @@ title: 指派對 Azure 成本管理資料的存取權
 description: 本文逐步引導您針對不同存取範圍，指派對 Azure 成本管理資料的權限。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065811"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879100"
 ---
 # <a name="assign-access-to-cost-management-data"></a>指派成本管理資料的存取權
 
@@ -21,9 +21,9 @@ ms.locfileid: "80065811"
 
 使用者選取的範圍使用於成本管理，以提供資料彙總及控制對成本資訊的存取權。 使用範圍時，使用者不能多重選取範圍。 相反地，他們是選取子範圍彙總至的較大範圍，然後再篩選出想要檢視的部分。 請務必了解資料彙總，因為有些人員不應存取子範圍所彙總至的父範圍。
 
-觀看[如何使用 Azure 成本管理來指派存取權](https://www.youtube.com/watch?v=J997ckmwTa8)影片，以了解如何使用 Azure 角色型存取控制來指派檢視成本和費用的存取權。
+觀看[成本管理控制存取](https://www.youtube.com/watch?v=_uQzQ9puPyM)影片，了解如何使用 Azure 角色型存取控制來指派檢視成本和費用的存取權。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>成本管理範圍
 

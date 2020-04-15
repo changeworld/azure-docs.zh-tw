@@ -1,21 +1,15 @@
 ---
-title: 快速入門：從麥克風辨識語音 - 語音服務
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/20/2019
-ms.author: erhopf
-ms.openlocfilehash: ab51fe0323ea23c16cb52aa7a0570f8d51d40b2f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/02/2020
+ms.author: dapine
+ms.openlocfilehash: 3775690802c89805ccf9df1ee6d6717a8818213f
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75467777"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658513"
 ---
 在本快速入門中，您會使用[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，以互動方式辨識來自麥克風輸入的語音，以及從擷取的音訊取得文字轉譯。 您可以輕鬆地將此功能整合到您的應用程式或裝置中，以便進行一般辨識工作，例如轉譯交談。 此功能也可用來進行更複雜的整合，例如使用 Bot Framework 搭配語音 SDK 來建置語音助理。
 

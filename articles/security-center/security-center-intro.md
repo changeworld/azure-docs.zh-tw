@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918752"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879542"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -49,7 +49,7 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 因為資訊安全中心原生為 Azure 的一部分，完全不需要部署，Azure 中的 PaaS 服務 (包括 Service Fabric、SQL 資料庫及儲存體帳戶) 即可由資訊安全中心監視和保護。
 
-此外，在 Windows 和 Linux 伺服器上安裝 Microsoft Monitoring Agent，資訊安全中心即可保護雲端中或內部部署上的非 Azure 伺服器和虛擬機器。 Azure 虛擬機器會自動佈建在資訊安全中心。
+此外，在 Windows 和 Linux 伺服器上安裝 Log Analytics 代理程式，資訊安全中心即可保護雲端中或內部部署上的非 Azure 伺服器和虛擬機器。 Azure 虛擬機器會自動佈建在資訊安全中心。
 
 從代理程式和從 Azure 收集的事件會在安全性分析引擎中相互關聯，為您提供可據以確保工作負載安全的個人化建議 (強化工作)，以及安全性警示。 您應該儘速調查這類警示，確保您的工作負載並未遭受惡意攻擊。
 
@@ -146,5 +146,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 ## <a name="next-steps"></a>後續步驟
 
 - 若要開始使用資訊安全中心，您需要 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/free/)。
-- 您的 Azure 訂用帳戶已啟用資訊安全中心的定價層。 若要利用進階安全性管理和威脅防護功能，您必須升級為標準定價層。 標準層可以免費試用 30 天。 如需詳細資訊，請參閱[資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+
+- 第一次在 Azure 入口網站中造訪 Azure 資訊安全中心儀表板，或是以程式設計方式透過 API 啟用時，就會在所有目前的 Azure 訂用帳戶上啟用資訊安全中心的免費定價層。 若要利用進階安全性管理和威脅偵測功能，您必須升級為標準定價層。 標準層可以免費試用 30 天。 如需詳細資訊，請參閱[資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+
 - 如果您已準備好要立即啟用資訊安全中心標準，[快速入門：將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)將引導您逐步完成相關步驟。

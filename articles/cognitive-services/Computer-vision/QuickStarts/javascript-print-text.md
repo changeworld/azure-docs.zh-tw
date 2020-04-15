@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3f8ddb566801e758d3cbec9412c685f376af1165
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 63680178c42854d9cb3b4b42d004da471f839c97
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74974558"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656075"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>快速入門：使用電腦視覺 REST API 和 JavaScript 擷取印刷文字 (OCR)
 
@@ -29,18 +29,18 @@ ms.locfileid: "74974558"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 然後，分別為名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。 將您的訂用帳戶金鑰和端點 URL 儲存至暫存位置。
 
 ## <a name="create-and-run-the-sample"></a>建立並執行範例
 
 若要建立並執行範例，請執行下列步驟：
 
-1. 將下列程式碼複製到文字編輯器。
+1. 建立名為  get-printed-text.html 的檔案，並在文字編輯器中開啟，然後將下列程式碼複製到其中。
 1. (選擇性) 將 `inputImage` 控制項的 `value` 屬性值取代為您要分析之不同影像的 URL。
-1. 將程式碼儲存為副檔名為 `.html` 的檔案。 例如： `get-printed-text.html` 。
 1. 開啟瀏覽器視窗。
 1. 在瀏覽器中，將檔案拖放到瀏覽器視窗中。
-1. 當瀏覽器中顯示該網頁時，選擇 [讀取影像]  按鈕。
+1. 當網頁顯示在瀏覽器中時，將您的訂用帳戶金鑰和端點 URL 貼入適當的輸入方塊中。
+1. 選取 [讀取影像]  按鈕。
 
 ```html
 <!DOCTYPE html>
@@ -57,9 +57,8 @@ ms.locfileid: "74974558"
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/ocr";
 
@@ -110,6 +109,13 @@ ms.locfileid: "74974558"
 <h1>Optical Character Recognition (OCR):</h1>
 Enter the URL to an image of printed text, then
 click the <strong>Read image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage" 

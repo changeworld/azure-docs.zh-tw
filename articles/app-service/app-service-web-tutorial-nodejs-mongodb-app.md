@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5c37d92504af78cb62cfa17057e089128ca8ad35
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 947bfe88443489084a20653d835ab849087ac92d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80046864"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810575"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式
 
@@ -198,7 +198,7 @@ module.exports = {
 };
 ```
 
-需要 `ssl=true` 選項，因為 [Cosmos DB 需要 SSL](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)。 
+`ssl=true` 選項是必要的，因為 [連接字串需要此項目](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)。 
 
 儲存您的變更。
 

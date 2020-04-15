@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272190"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586162"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>在您 Microsoft 客戶合約的計費帳戶中完成 Enterprise 合約工作
 
@@ -28,7 +28,7 @@ ms.locfileid: "78272190"
 |------------------------|--------------------------------------------------------|
 | 申請            | 您可以使用帳單設定檔來管理組織的帳單，如同使用您的 Enterprise 合約註冊。 企業系統管理員會成為帳單設定檔的擁有者。 若要深入了解帳單設定檔，請參閱[了解帳單設定檔](../understand/mca-overview.md#billing-profiles)。
 | department            | 您可以使用發票區段來彙整成本，如同使用 Enterprise 合約註冊中的部門。 部門會成為發票區段，而部門系統管理員會成為個別發票區段的擁有者。 若要深入了解發票區段，請參閱[了解發票區段](../understand/mca-overview.md#invoice-sections)。 |
-| 帳戶               | 新的計費帳戶不支援在您的 Enterprise 合約中建立的帳戶。 帳戶的訂用帳戶屬於其部門的個別發票區段。 帳戶擁有者可建立及管理其發票區段的訂用帳戶。 |
+| 帳戶               | 新的計費帳戶不支援在您 Enterprise 合約中建立的帳戶。 帳戶的訂用帳戶屬於其部門的個別發票區段。 帳戶擁有者可建立及管理其發票區段的訂用帳戶。 |
 
 ## <a name="changes-for-enterprise-administrators"></a>企業系統管理員的變更
 

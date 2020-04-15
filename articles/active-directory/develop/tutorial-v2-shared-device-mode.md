@@ -2,25 +2,22 @@
 title: 搭配 MSAL Android 使用共用裝置模式 | Azure
 description: 了解如何準備可在共用模式中執行的 Android 裝置，並執行第一線工作角色應用程式。
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086055"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886427"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教學課程：在 Android 應用程式中使用共用裝置模式
 
@@ -96,9 +93,9 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,7 +106,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>偵測單一與多個帳戶模式
@@ -134,7 +131,7 @@ private IPublicClientApplication mApplication;
 
 `loadAccount` 方法會擷取登入使用者的帳戶。 `onAccountChanged` 方法會判斷登入的使用者是否已變更，如果是，則執行清除作業：
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +154,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>全域登入使用者
@@ -233,7 +230,7 @@ private void onSignOutClicked()
 ![Authenticator 的新增帳戶畫面](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  使用右側功能表列移至 [設定]  窗格。 選取 [公司與學校帳戶]  底下的 [裝置註冊]  。
- 
+
  ![Authenticator 的新增帳戶畫面](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
  當您按一下此按鈕時，系統會要求您授與裝置連絡人的存取權。 這是因為要整合裝置上的 Android 帳戶。 請選擇 [允許]  。
@@ -266,4 +263,4 @@ private void onSignOutClicked()
 
 ## <a name="next-steps"></a>後續步驟
 
-在[適用於 Android 裝置的共用裝置模式](shared-device-mode.md)中深入了解共用模式
+在[適用於 Android 裝置的共用裝置模式](msal-android-shared-devices.md)中深入了解共用模式

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664487"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435967"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入門：將 Linux 電腦上架到 Azure 資訊安全中心
-將 Azure 訂用帳戶上架之後，您可以透過佈建代理程式，為在 Azure 外 (例如，內部部署或其他雲端服務) 執行的 Linux 資源啟用資訊安全中心。 代理程式的名稱為 Microsoft Monitoring Agent (MMA)，但其另稱為「OMS 代理程式」。
+將 Azure 訂用帳戶上架之後，您可以透過佈建代理程式，為在 Azure 外 (例如，內部部署或其他雲端服務) 執行的 Linux 資源啟用資訊安全中心。 代理程式的名稱為 Log Analytics 代理程式，但其另稱為「OMS 代理程式」。
 
 本快速入門說明如何在 Linux 電腦上安裝代理程式。
 

@@ -2,19 +2,19 @@
 title: 教學課程 - 將標記新增至範本中的資源
 description: 將標記新增至您在 Azure Resource Manager 範本中部署的資源。 標記可讓您以邏輯方式組織資源。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3e0deb53e57cd29cbfce4c37f2d6c6729f15bebd
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773185"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411710"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>教學課程：在 Resource Manager 範本中新增標記
+# <a name="tutorial-add-tags-in-your-arm-template"></a>教學課程：在 ARM 範本中新增標記
 
-在此教學課程中，您會了解如何將標記新增至範本中的資源。 [標記](../management/tag-resources.md)可協助您以邏輯方式組織資源。 標記值會顯示在成本報告中。 完成此教學課程需要 **8 分鐘**。
+在本教學課程中，您將了解如何將標記新增至 Azure Resource Manager (ARM) 範本中的資源。 [標記](../management/tag-resources.md)可協助您以邏輯方式組織資源。 標記值會顯示在成本報告中。 完成此教學課程需要 **8 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -44,7 +44,7 @@ ms.locfileid: "76773185"
 
 如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -56,10 +56,12 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要執行此部署命令，您必須擁有[最新版](/cli/azure/install-azure-cli)的 Azure CLI。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addtags \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -67,6 +69,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
 
 ## <a name="verify-deployment"></a>驗證部署
 

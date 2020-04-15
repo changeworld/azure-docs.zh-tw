@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422663"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410579"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教學課程：在 Azure AD 權利管理中建立您的第一個存取套件
 
@@ -84,79 +84,83 @@ ms.locfileid: "75422663"
 
 1. 在 Azure 入口網站的左側瀏覽窗格中，按一下 [Azure Active Directory]  。
 
-1. 在左側功能表中，按一下 [身分識別治理] 
+2. 在左側功能表中，按一下 [身分識別治理] 
 
-1. 在左側功能表中，按一下 [存取套件]  。  如果您看到「拒絕存取」  ，請確定該目錄中有 Azure AD Premium P2 授權。
+3. 在左側功能表中，按一下 [存取套件]  。  如果您看到「拒絕存取」  ，請確定該目錄中有 Azure AD Premium P2 授權。
 
-1. 按一下 [新增存取套件]  。
+4. 按一下 [新增存取套件]  。
 
     ![Azure 入口網站中的權利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-1. 在 [基本]  索引標籤上，輸入名稱為**行銷活動**的存取套件和**活動資源的存取權**這項描述。
+5. 在 [基本]  索引標籤上，輸入名稱為**行銷活動**的存取套件和**活動資源的存取權**這項描述。
 
-1. 讓 [目錄]  下拉式清單設為 [一般]  。
+6. 讓 [目錄]  下拉式清單設為 [一般]  。
 
     ![新增存取套件 - [基本] 索引標籤](./media/entitlement-management-access-package-first/basics.png)
 
-1. 按 [下一步]  以開啟 [資源角色]  索引標籤。
+7. 按 [下一步]  以開啟 [資源角色]  索引標籤。
 
     在此索引標籤上，您可以選取要包含在存取套件中的資源和資源角色。
 
-1. 按一下 [群組與小組]  。
+8. 按一下 [群組與小組]  。
 
-1. 在 [選取群組] 窗格中，尋找並選取您先前建立的**行銷資源**群組。
+9. 在 [選取群組] 窗格中，尋找並選取您先前建立的**行銷資源**群組。
 
     根據預設，您會看到 [一般]  目錄內部和外部的群組。 當您選取 [一般]  目錄外部的群組時，該群組將會新增至 [一般]  目錄。
 
     ![新增存取套件 - [資源角色] 索引標籤](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. 按一下 [選取]  將群組新增至清單。
+10. 按一下 [選取]  將群組新增至清單。
 
-1. 在 [角色]  下拉式清單中，選取 [成員]  。
+11. 在 [角色]  下拉式清單中，選取 [成員]  。
 
     ![新增存取套件 - [資源角色] 索引標籤](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. 按 [下一步]  以開啟 [要求]  索引標籤。
+    >[!NOTE]
+    > 使用[動態群組](../users-groups-roles/groups-create-rule.md)時，您不會看到擁有者以外的其他任何可用角色。 這是原廠設定。
+    > ![案例概觀](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. 按 [下一步]  以開啟 [要求]  索引標籤。
 
     在此索引標籤上，您會建立要求原則。 *原則*會定義存取套件的存取規則或準則。 您會建立允許資源目錄中的特定使用者要求此存取套件的原則。
 
-1. 在 [可要求存取的使用者]  區段中，按一下 [您目錄中的使用者]  ，然後按一下 [特定使用者和群組]  。
+13. 在 [可要求存取的使用者]  區段中，按一下 [您目錄中的使用者]  ，然後按一下 [特定使用者和群組]  。
 
     ![新增存取套件 - [要求] 索引標籤](./media/entitlement-management-access-package-first/requests.png)
 
-1. 按一下 [新增使用者和群組]  。
+14. 按一下 [新增使用者和群組]  。
 
-1. 在 [選取使用者和群組] 窗格中，選取您先前建立的使用者 **Requestor1**。
+15. 在 [選取使用者和群組] 窗格中，選取您先前建立的使用者 **Requestor1**。
 
     ![新增存取套件 - [要求] 索引標籤 - 選取使用者和群組](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. 按一下 [選取]。 
+16. 按一下 [選取]。 
 
-1. 向下捲動至 [核准]  和 [啟用要求]  區段。
+17. 向下捲動至 [核准]  和 [啟用要求]  區段。
 
-1. 保留 [需要核准]  設定為 [否]  。
+18. 保留 [需要核准]  設定為 [否]  。
 
-1. 在 [啟用要求]  按一下 [是]  ，以便在建立此存取套件時立即予以要求。
+19. 在 [啟用要求]  按一下 [是]  ，以便在建立此存取套件時立即予以要求。
 
     ![新增存取套件 - [要求] 索引標籤 - 核准和啟用要求](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. 按 [下一步]  以開啟 [生命週期]  索引標籤。
+20. 按 [下一步]  以開啟 [生命週期]  索引標籤。
 
-1. 在 [期限]  區段中，將 [存取套件指派到期]  設為 [天數]  。
+21. 在 [期限]  區段中，將 [存取套件指派到期]  設為 [天數]  。
 
-1. 將 [指派到期時間]  設定為 **30** 天。
+22. 將 [指派到期時間]  設定為 **30** 天。
 
     ![新增存取套件 - [生命週期] 索引標籤](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. 按 下一步  以開啟 檢閱 + 建立  索引標籤。
+23. 按 下一步  以開啟 檢閱 + 建立  索引標籤。
 
     ![新增存取套件 - [檢閱 + 建立] 索引標籤](./media/entitlement-management-access-package-first/review-create.png)
 
     幾分鐘後，您應該會看到已成功建立存取套件的通知。
 
-1. 在行銷活動存取套件的左側功能表中，按一下 [概觀]  。
+24. 在行銷活動存取套件的左側功能表中，按一下 [概觀]  。
 
-1. 複製**我的存取權入口網站連結**。
+25. 複製**我的存取權入口網站連結**。
 
     您將在下一個步驟使用此連結。
 

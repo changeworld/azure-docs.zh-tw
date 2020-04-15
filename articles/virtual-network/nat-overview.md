@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409893"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548395"
 ---
 # <a name="what-is-virtual-network-nat"></a>什麼是虛擬網路 NAT？
 
@@ -40,11 +40,11 @@ ms.locfileid: "79409893"
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>僅限輸出的靜態 IP 位址
 
-您可以使用 NAT 為每個子網路定義輸出連線能力。  相同虛擬網路內的多個子網路可以有不同的 NAT。 藉由指定要使用哪個 [NAT 閘道資源](./nat-gateway-resource.md) 來設定子網路。 來自任何虛擬機器執行個體的所有 UDP 和 TCP 輸出流量都會使用 NAT。 
+您可以使用 NAT 為每個子網路定義輸出連線能力。  相同虛擬網路內的多個子網路可以有不同的 NAT。 藉由指定要使用哪個 NAT 閘道資源來設定子網路。 來自任何虛擬機器執行個體的所有 UDP 和 TCP 輸出流量都會使用 NAT。 
 
-NAT 與標準 SKU [公用 IP 位址資源](./virtual-network-ip-addresses-overview-arm.md#standard)、[公用 IP 前置詞資源](./public-ip-address-prefix.md)或兩者的組合相容。  您可以直接使用公用 IP 前置詞，或將前置詞的公用 IP 位址散發到多個 NAT 閘道資源。 NAT 會將所有流量清理到前置詞的 IP 位址範圍。  現在很容易就能為您的部署建立任何 IP 允許清單。
+NAT 與標準 SKU 公用 IP 位址資源、公用 IP 前置詞資源或兩者的組合相容。  您可以直接使用公用 IP 前置詞，或將前置詞的公用 IP 位址散發到多個 NAT 閘道資源。 NAT 會將所有流量清理到前置詞的 IP 位址範圍。  現在很容易就能為您的部署建立任何 IP 允許清單。
 
-子網路的所有輸出流量都是由 NAT 自動處理，而不需要任何客戶設定。  不需要使用者定義的路由。 NAT 優先於其他[輸出案例](../load-balancer/load-balancer-outbound-connections.md)，並可取代子網路的預設網際網路目的地。
+子網路的所有輸出流量都是由 NAT 自動處理，而不需要任何客戶設定。  不需要使用者定義的路由。 NAT 優先於其他輸出案例，並可取代子網路的預設網際網路目的地。
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>具有多個 IP 位址可供調整的隨選 SNAT
 
@@ -60,9 +60,9 @@ NAT 可讓您建立從虛擬網路到網際網路的流量。 只有在回應作
 
 NAT 與下列標準 SKU 資源相容：
 
-- [負載平衡器](../load-balancer/load-balancer-overview.md)
-- [公用 IP 位址](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [公用 IP 前置詞](../virtual-network/public-ip-address-prefix.md)
+- 負載平衡器
+- 公用 IP 位址
+- 公用 IP 首碼
 
 搭配 NAT 使用時，這些資源會提供連到子網路的輸入網際網路連線能力。 NAT 會提供從子網路連出的輸出網際網路連線能力。
 

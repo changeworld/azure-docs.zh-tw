@@ -1,22 +1,14 @@
 ---
 title: 教學課程：規則運算式實體 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 使用規則運算式實體從語句擷取格式一致的資料。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/01/2020
+ms.openlocfilehash: 5b585ee52880c474d3f2736b34a267012b390aad
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75381507"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545826"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>教學課程：從語句取得格式正確的資料
 在本教學課程中，您將建立規則運算式實體從語句中擷取格式一致的資料。
@@ -100,11 +92,9 @@ ms.locfileid: "75381507"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. 移至位址中的 URL 結尾並輸入以下語句：
+1. 移至網址列中的 URL 尾端，並以下列項目取代 _YOUR_QUERY_HERE_：
 
     `Text my pizza delivery to x23456 x234567 x12345`
-
-    最後一個 querystring 參數是 `query`，也就是 **query** 語句。
 
     ```json
     {

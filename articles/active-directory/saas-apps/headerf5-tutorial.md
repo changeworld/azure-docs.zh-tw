@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77048071"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478045"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
 
@@ -281,7 +281,7 @@ ms.locfileid: "77048071"
 
 ## <a name="advanced-configuration"></a>進階設定
 
-如果您無法使用引導式設定，或想要新增/修改其他參數，您可以參考本節。 您將需要應用程式主機名稱的 SSL 憑證。
+如果您無法使用引導式設定，或想要新增/修改其他參數，您可以參考本節。 您將需要應用程式主機名稱的 TLS/SSL 憑證。
 
 1. 瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]  。 從右下角選取 [匯入]  。 [匯入類型]  將是 [PKCS 12(IIS)]  。 指定 [金鑰名稱]  (稍後將在設定中參考)，並指定 PFX 檔案。 指定 PFX 的 [密碼]  。 按一下 [匯入]  。
 
@@ -298,7 +298,7 @@ ms.locfileid: "77048071"
  
     ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure18.png)
 
-1. 在此案例中，我們會在外部將 HeaderApp2 發佈為 HTTPS，而在 [BIG-IP 系統如何處理 SSL 流量？]  中，我們指定 [從用戶端終止 SSL，以純文字傳送到伺服器 (SSL 卸載)]  。 在 [您要使用哪個 SSL 憑證？] 和 [您要使用哪個 SSL 私密金鑰？]  底下，指定您的憑證和金鑰。 在 [您要將哪個 IP 位址用於虛擬伺服器？]  底下，指定虛擬伺服器 IP。 
+1. 在此案例中，我們會在外部將 HeaderApp2 發佈為 HTTPS，而在 [BIG-IP 系統如何處理 SSL 流量？]  中，我們指定 [從用戶端終止 SSL，以純文字傳送到伺服器 (SSL 卸載)]  。 在**您要使用哪個 SSL 憑證？** 和**您要使用哪個 SSL 私密金鑰？** 下，指定您的憑證和金鑰。 在 [您要將哪個 IP 位址用於虛擬伺服器？]  底下，指定虛擬伺服器 IP。 
 
     * **指定其他詳細資料**
 

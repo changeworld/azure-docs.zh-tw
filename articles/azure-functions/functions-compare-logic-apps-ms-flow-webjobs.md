@@ -1,25 +1,21 @@
 ---
 title: Azure 中的整合和自動化平台選項
-description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Microsoft Flow、Logic Apps、Azure Functions 和 WebJobs。
+description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Power Automate、Logic Apps、Functions 和 WebJobs。
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290046"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878131"
 ---
-> [!NOTE]
-> Microsoft Flow 現已改為 Power Automate。 如需詳細資訊，請參閱此[部落格](https://aka.ms/flow-now-pa)。
-> 
-> 此內容將會更新以反映未來的品牌變更。
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
 本文會比較下列 Microsoft 雲端服務：
 
-* [Microsoft Flow](https://flow.microsoft.com/)
+* [Microsoft Power Automate](https://flow.microsoft.com/) (先前稱為 Microsoft Flow)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure App Service WebJobs](../app-service/webjobs-create.md)
@@ -28,23 +24,23 @@ ms.locfileid: "79290046"
 
 如果您要了解 Azure Functions 和其他 Azure 計算選項之間較常見的比較，請參閱[選擇 Azure 計算服務的準則](/azure/architecture/guide/technology-choices/compute-comparison)和[選擇適用於微服務的 Azure 計算選項](/azure/architecture/microservices/design/compute-options)。
 
-## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>比較 Microsoft Flow 和 Azure Logic Apps
+## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>比較 Microsoft Power Automate 和 Azure Logic Apps
 
-Microsoft Flow 和 Logic Apps 都是可建立工作流程的「Designer First (設計工具優先)」  整合服務。 這兩個服務皆可與各種 SaaS 和企業應用程式整合。 
+Power Automate 和 Logic Apps 都是可建立工作流程的「設計工具優先」  整合服務。 這兩個服務皆可與各種 SaaS 和企業應用程式整合。 
 
-Microsoft Flow 是以 Logic Apps 為基礎所建置。 它們共用相同的工作流程設計工具和相同的[連接器](../connectors/apis-list.md)。 
+Power Automate 是以 Logic Apps 為基礎所建置。 它們共用相同的工作流程設計工具和相同的[連接器](../connectors/apis-list.md)。 
 
-Microsoft Flow 可讓任何辦公室工作人員有能力執行簡單的整合 (例如，SharePoint 文件庫中的核准程序)，而不必透過開發人員或 IT。 Logic Apps 也可以實現需要企業級 Azure DevOps 和安全性做法的進階整合 (例如 B2B 處理程序)。 一般來說，商務工作流程會隨著時間而趨於複雜。 因此，一開始您可以先從流程著手，然後再視需要將它轉換為邏輯應用程式。
+Power Automate 可讓任何辦公室工作人員有能力執行簡單的整合 (例如，SharePoint 文件庫中的核准程序)，而不必透過開發人員或 IT。 Logic Apps 也可以實現需要企業級 Azure DevOps 和安全性做法的進階整合 (例如 B2B 處理程序)。 一般來說，商務工作流程會隨著時間而趨於複雜。 因此，一開始您可以先從流程著手，然後再視需要將它轉換為邏輯應用程式。
 
-下表可協助您判斷最適合特定整合的是 Microsoft Flow 還是 Logic Apps：
+下表可協助您判斷最適合特定整合的是 Power Automate 還是 Logic Apps：
 
-|  | Microsoft Flow | Logic Apps |
+|  | Power Automate | Logic Apps |
 | --- | --- | --- |
 | **使用者** |辦公室員工、商務使用者、SharePoint 系統管理員 |專業的整合人員和開發人員，IT 專業人員 |
 | **案例** |自助服務 |進階整合 |
 | **設計工具** |瀏覽器內及行動裝置應用程式，僅限 UI |有瀏覽器內和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[程式碼檢視](../logic-apps/logic-apps-author-definitions.md)可用 |
 | **應用程式生命週期管理 (ALM)** |在非生產環境中設計及測試，在就緒時升級到生產環境 |Azure DevOps：在 [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) 中的原始檔控制、測試支援、自動化及管理性 |
-| **管理員體驗** |管理 Microsoft Flow 環境和資料外洩防護 (DLP) 原則，追蹤授權：[Microsoft Flow 管理中心](https://admin.flow.microsoft.com) |管理資源群組、連線、存取管理和記錄：[Azure 入口網站](https://portal.azure.com) |
+| **管理員體驗** |管理 Power Automate 環境和資料外洩防護 (DLP) 原則，追蹤授權：[管理中心](https://admin.flow.microsoft.com) |管理資源群組、連線、存取管理和記錄：[Azure 入口網站](https://portal.azure.com) |
 | **安全性** |Office 365 安全性與相容性稽核記錄、DLP、敏感性資料[靜止時加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全性保證︰[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)、[稽核記錄](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比較 Azure Functions 和 Azure Logic Apps
@@ -107,25 +103,25 @@ Azure Functions 能提供比 Azure App Service WebJobs 還高的生產力。 其
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>在 Microsoft Flow、Logic Apps、Functions 和 WebJobs 之間做選擇
+## <a name="power-automate-logic-apps-functions-and-webjobs-together"></a>Power Automate、Logic Apps、Functions 和 WebJobs 一起
 
 您不必只選擇其中一項服務。 這些服務可彼此整合，如同與外部服務搭配使用時一樣。
 
 流程可呼叫邏輯應用程式。 邏輯應用程式可呼叫函式，而函式可呼叫邏輯應用程式。 如需範例，可參閱[建立與 Azure Logic Apps 整合的函式](functions-twitter-email.md)。
 
-Microsoft Flow、Logic Apps 和 Functions 之間的整合會隨時間持續改進。 您可以在某項服務中建置某物並用於其他服務。
+Power Automate、Logic Apps 和 Functions 之間的整合會隨時間持續改進。 您可以在某項服務中建置某物並用於其他服務。
 
 您可以使用下列連結取得有關整合服務的詳細資訊︰
 
 * [利用 Azure Functions 和 Azure App Service 來進行整合案例 - 主講人：Christopher Anderson](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [整合變得簡單，主講人：Charles Lamanna](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps 即時網路廣播](https://aka.ms/logicappslive)
-* [Microsoft Flow 常見問題集](/power-automate/frequently-asked-questions)
+* [ 常見問題集](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>後續步驟
 
 開始建立您的第一個資料流程、邏輯應用程式或函式應用程式。 選取下列任何連結︰
 
-* [開始使用 Microsoft Flow](/power-automate/getting-started)
+* [開始使用 Power Automate](/power-automate/getting-started)
 * [建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [建立您的第一個 Azure 函式](functions-create-first-azure-function.md)

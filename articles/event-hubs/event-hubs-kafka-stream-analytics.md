@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969364"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632794"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教學課程：使用串流分析處理適用於事件中樞的 Apache Kafka 
-本文說明如何將資料串流至啟用的 Kafka 事件中樞，以及使用 Azure 串流分析處理該資料。 本文將逐步引導您完成下列步驟： 
+本文說明如何將資料串流至事件中樞，以及使用 Azure 串流分析處理該資料。 本文將逐步引導您完成下列步驟： 
 
-1. 建立已啟用 Kafka 的事件中樞命名空間。
+1. 建立事件中樞命名空間。
 2. 建立 Kafka 用戶端，以將訊息傳送到事件中樞。
 3. 建立 Stream Analytics 作業，以將事件中樞的資料複製到 Azure blob 儲存體。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "78969364"
 * **Azure 儲存體帳戶**。 如果您沒有 Azure 儲存體帳戶，請先[建立一個](../storage/common/storage-account-create.md)，再繼續執行。 本逐步解說中的作業作業會在 Azure blob 儲存體中儲存輸出資料。 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>建立已啟用 Kafka 的事件中樞命名空間
+## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 當您建立**標準**層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 遵循[使用 Azure 入口網站建立事件中樞](event-hubs-create.md)中的逐步指示來建立**標準**層事件中樞命名空間。 
 
 > [!NOTE]
@@ -73,7 +73,7 @@ ms.locfileid: "78969364"
     ```
 
     此程式碼會以 **JSON** 格式傳送事件資料。 當您設定串流分析作業的輸入時，您可指定 JSON 作為輸入資料的格式。 
-7. **執行產生器**並串流至已啟用 Kafka 的事件中樞。 在 Windows 電腦上，使用 **Node.js 命令提示字元**時，先切換至 `azure-event-hubs-for-kafka/quickstart/java/producer` 資料夾，再執行這些命令。 
+7. **執行產生器**並串流至事件中樞。 在 Windows 電腦上，使用 **Node.js 命令提示字元**時，先切換至 `azure-event-hubs-for-kafka/quickstart/java/producer` 資料夾，再執行這些命令。 
    
     ```shell
     mvn clean package
@@ -181,15 +181,4 @@ ms.locfileid: "78969364"
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已了解如何串流至已啟用 Kafka 的事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列主題：  
-
-- [了解事件中樞](event-hubs-what-is-event-hubs.md)
-- [適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何建立已啟用 Kafka 的事件中樞](event-hubs-create-kafka-enabled.md)
-- [從您的 Kafka 應用程式串流到事件中樞](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [在已啟用 Kafka 的事件中樞中鏡射 Kafka 訊息代理程式](event-hubs-kafka-mirror-maker-tutorial.md)
-- [將 Apache Spark 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-spark-tutorial.md)
-- [將 Apache Flink 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-flink-tutorial.md)
-- [整合 Kafka Connect 與已啟用 Kafka 的事件中樞](event-hubs-kafka-connect-tutorial.md)
-- [將 Akka Streams 連線到已啟用 Kafka 的事件中樞](event-hubs-kafka-akka-streams-tutorial.md)
-- [在 GitHub 上探索範例](https://github.com/Azure/azure-event-hubs-for-kafka) \(英文\) 
+在本文中，您已了解如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解適用於 Apache Kafka 的事件中樞，請參閱 [適用於 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)。 

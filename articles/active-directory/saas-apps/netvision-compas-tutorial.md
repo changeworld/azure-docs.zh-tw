@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12a83c6381d3f068eecc2dda4838b981a8b59ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135777"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Netvision Compas 整合
 
@@ -69,7 +69,7 @@ ms.locfileid: "80135777"
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
     1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
 1. **[設定 Netvision Compas SSO](#configure-netvision-compas-sso)** - 在應用程式端設定單一登入設定。
-    1. **[建立 Netvision Compas 測試使用者](#create-netvision-compas-test-user)** - 使 Netvision Compas 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
+    1. **[設定 Netvision Compas 測試使用者](#configure-netvision-compas-test-user)** - 使 Netvision Compas 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
 1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -95,13 +95,11 @@ ms.locfileid: "80135777"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Netvision Compas 用戶端支援小組](mailto:contact@net.vision)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載中繼資料檔案，並將其儲存在電腦上。
 
-    ![憑證下載連結](common/certificatebase64.png)
+    ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Netvision Compas]  區段上，根據您的需求複製適當的 URL。
 
-    ![複製組態 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -135,17 +133,58 @@ ms.locfileid: "80135777"
 
 ## <a name="configure-netvision-compas-sso"></a>設定 Netvision Compas SSO
 
-若要在 **Netvision Compas** 端設定單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 [Netvision Compas 支援小組](mailto:contact@net.vision)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+在本節中，您會在 **Netvision Compas** 中啟用 SAML SSO。
+1. 使用系統管理帳戶登入 **Netvision Compas**，並存取管理區域。
 
-### <a name="create-netvision-compas-test-user"></a>建立 Netvision Compas 測試使用者
+    ![管理區域](media/netvision-compas-tutorial/admin.png)
 
-在本節中，您會在 Netvision Compas 中建立名為 B.Simon 的使用者。 請與 [Netvision Compas 支援小組](mailto:contact@net.vision)合作，在 Netvision Compas 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+1. 找出**系統**區域，然後選取 [識別提供者]  。
+
+    ![管理 IDP](media/netvision-compas-tutorial/admin-idps.png)
+
+1. 選取 [新增]  動作，以將 Azure AD 註冊為新的 IDP。
+
+    ![新增 IDP](media/netvision-compas-tutorial/idps-add.png)
+
+1. 針對 [提供者類型]  ，選取 [SAML]  。
+1. 針對 [顯示名稱]  和 [描述]  欄位輸入有意義的值。
+1. 從 [可用的使用者]  清單中選取，然後選取 [新增選取項目]  按鈕，將 **Netvision Compas** 使用者指派給 IDP。 您也可以在佈建程序之後，將使用者指派給 IDP。
+1. 在 [中繼資料]  SAML 選項中，按一下 [選擇檔案]  按鈕，然後選取先前儲存在電腦上的中繼資料檔案。
+1. 按一下 [檔案]  。
+
+    ![編輯 IDP](media/netvision-compas-tutorial/idp-edit.png)
+
+
+### <a name="configure-netvision-compas-test-user"></a>設定 Netvision Compas 測試使用者
+
+在本節中，您會將 **Netvision Compas** 中的現有使用者設定為使用 SSO 的 Azure AD。
+1. 依照貴公司所定義的 **Netvision Compas** 使用者佈建程序，或編輯現有的使用者帳戶。
+1. 定義使用者的設定檔時，請確定使用者的 **電子郵件 (個人)** 位址符合 Azure AD 使用者名稱：username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+
+    ![編輯使用者](media/netvision-compas-tutorial/user-config.png)
+
+您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
+在本節中，您會測試您的 Azure AD 單一登入設定。
+
+### <a name="using-the-access-panel-idp-initiated"></a>使用存取面板 (IDP 起始)。
 
 當您在存取面板中按一下 [Netvision Compas] 圖格時，應該會自動登入您已設定 SSO 的 Netvision Compas。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+### <a name="directly-accessing-netvision-compas-sp-initiated"></a>直接存取 Netvision Compas (SP 起始)。
+
+1. 存取 **Netvision Compas** URL。 例如： `https://tenant.compas.cloud` 。
+1. 輸入 **Netvision Compas** 使用者名稱，然後選取 [下一步]  。
+
+    ![登入使用者](media/netvision-compas-tutorial/login-user.png)
+
+1. **(選用)** 如果使用者在 **Netvision Compas** 內獲指派多個 IDP，則會顯示可用的 IDP 清單。 選取先前在 **Netvision Compas** 中設定的 Azure AD IDP。
+
+    ![登入選擇](media/netvision-compas-tutorial/login-choose.png)
+
+1. 系統會將您重新導向至 Azure AD 以執行驗證。 成功驗證之後，您應該會自動登入已設定 SSO 的 **Netvision Compas**。
 
 ## <a name="additional-resources"></a>其他資源
 

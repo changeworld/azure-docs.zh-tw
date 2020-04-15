@@ -6,12 +6,12 @@ ms.date: 04/04/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: a2d15dd520db16012f530d2ac6188a4642c89795
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 92b49197cc18133c9b67222a90546776f050163b
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421649"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437917"
 ---
 # <a name="create-an-azure-automation-account"></a>建立 Azure 自動化帳戶
 
@@ -21,7 +21,7 @@ ms.locfileid: "75421649"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 https://portal.azure.com 登入 Azure
+[登入 Azure](https://portal.azure.com)
 
 ## <a name="create-automation-account"></a>建立自動化帳戶
 

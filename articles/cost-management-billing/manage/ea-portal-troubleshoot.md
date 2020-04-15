@@ -3,16 +3,16 @@ title: 針對 Azure EA 入口網站存取進行疑難排解
 description: 本文將說明 Azure EA 入口網站中可能發生的一些 Azure Enterprise 合約 (EA) 常見問題。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411558"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586193"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>針對 Azure EA 入口網站存取進行疑難排解
 
@@ -112,7 +112,7 @@ EA 註冊可以有多個 EA 系統管理員，您可與另一個 EA 系統管理
 
 ### <a name="why-is-my-account-stuck-in-pending-status"></a>為何我的帳戶卡在擱置狀態？
 
-當新的帳戶擁有者 (AO) 第一次新增至 Azure EA 註冊時，其狀態一律會顯示為 [擱置]。 當 AO 收到用於啟用的歡迎電子郵件時，即可登入來啟用其帳戶。 登入會將帳戶狀態從 [擱置] 更新為 [作用中]。
+當新的帳戶擁有者 (AO) 第一次新增至 Azure EA 註冊時，其狀態一律會顯示為「擱置」。 當 AO 收到用於啟用的歡迎電子郵件時，即可登入來啟用其帳戶。 登入會將帳戶狀態從「擱置」更新為「作用中」。
 
 ### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>我在登入 Azure EA 入口網站時收到錯誤
 
@@ -122,10 +122,10 @@ EA 註冊可以有多個 EA 系統管理員，您可與另一個 EA 系統管理
  1. 判斷您是否已將 Azure EA 入口網站的存取權新增為公司或學校帳戶或 Microsoft 帳戶。 如果您使用的是公司帳戶，請輸入您的公司電子郵件和公司密碼。 如果您使用 Microsoft Live ID，請輸入您的 Live ID 電子郵件和 Microsoft Live ID 密碼。 如果您忘了 Microsoft Live ID 密碼，請在 [https://account.live.com/password/reset](https://account.live.com/password/reset) 重設。
  1. 建議您使用私人瀏覽器進行登入，才不會保留先前/現有工作階段的任何 cookie 或快取。 清除 [快取]，然後使用私人瀏覽模式/incognito 視窗開啟 [https://ea.azure.com](https://ea.azure.com)。
  1. 如果您在使用 Microsoft 帳戶時收到「無效使用者」錯誤，可能是因為您有多個 Microsoft 帳戶，而您嘗試用來登入的帳戶不是主要別名。 若要檢查主要別名，請移至 account.live.com：
-    - 移至 [您的資訊] > [管理您的登入電子郵件或電話號碼]。
+    - 移至「您的資訊」>「管理您的登入電子郵件或電話號碼」。
     - 遵循畫面上的提示以確認替代電子郵件地址，並取得代碼來存取機密資訊。
     - 輸入安全性驗證碼。
-    - 如果您想要稍後設定雙步驟驗證，請選取 [稍後設定]。
+    - 如果您想要稍後設定雙步驟驗證，請選取「稍後設定」。
     - 您會進入 [管理您的帳號別名] 頁面，您會在其中看到您具有的帳戶別名。 再次檢查主要別名是否為您用來登入 Azure EA 入口網站的別名。 如果不是，您可以將其設為您的主要別名，也可以改為使用 Azure EA 入口網站的主要別名。
 
 如果上述疑難排解步驟失敗，請在 [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) 提交要求，其中包含下列資訊：
@@ -161,7 +161,7 @@ EA 註冊可以有多個 EA 系統管理員，您可與另一個 EA 系統管理
 
 ### <a name="i-have-a-valid-work-or-school-account-but-i-cant-add-it-to-the-ea-portal"></a>我有有效的公司或學校帳戶，但無法將其新增至 EA 入口網站
 
-如果您在不同的租用戶下有公司或學校帳戶，請將註冊詳細資料頁面下的授權層級變更為 [跨租用戶的公司或學校帳戶]，您就能夠新增帳戶。
+如果您在不同的租用戶下有公司或學校帳戶，請將註冊詳細資料頁面下的授權層級變更為「跨租用戶的公司或學校帳戶」，您就能夠新增帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 

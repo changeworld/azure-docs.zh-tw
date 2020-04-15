@@ -3,16 +3,16 @@ title: Azure 企業版註冊發票
 description: 本文將說明如何管理 Azure 企業發票，並採取相關行動。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037260"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743884"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 
@@ -494,6 +494,12 @@ Azure 預付金是針對 Azure 服務預付的金額。 使用服務時就會用
 - Visual Studio Enterprise (每年)
 - Visual Studio Professional (每月)
 - Visual Studio Professional (每年)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>變更通道合作夥伴後的預期事項
+
+如果通道合作夥伴 (COCP) 的變更發生在當月月中，客戶會收到上一個相關聯合作夥伴使用量的發票，以及另一張新合作夥伴的發票。
+
+發票會在計費週期結束後的下個月發出。 如果計費頻率是每月，則 9 月份的發票將於 10 月發行出，這兩個合作夥伴皆是如此。 如果計費週期為每季或每年，客戶會收到先前相關聯之合作夥伴在其期間內使用量的發票，其他使用量將會根據計費幅度向新的合作夥伴收取費用。
 
 ## <a name="azure-marketplace-for-ea-customers"></a>適用於 EA 客戶的 Azure Marketplace
 

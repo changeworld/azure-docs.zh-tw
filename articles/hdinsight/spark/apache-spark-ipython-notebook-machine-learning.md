@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,mvc
+ms.date: 04/07/2020
+ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494567"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878437"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中建置 Apache Spark 機器學習應用程式
 
-在本教學課程中，您將了解如何使用 [Jupyter Notebook](https://jupyter.org/) 為 Azure HDInsight 建置 [Apache Spark](https://spark.apache.org/) 機器學習應用程式。
+在本教學課程中，您將了解如何使用 [Jupyter Notebook](https://jupyter.org/) 為 Azure HDInsight 建置 [Apache Spark](./apache-spark-overview.md) 機器學習應用程式。
 
-[MLib](https://spark.apache.org/docs/latest/ml-guide.html) 是 Spark 的可調整機器學習程式庫，由常見的學習演算法和公用程式 (包括分類、迴歸、群集、協同篩選、維度縮減，以及基礎最佳化基本項目) 所組成。
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) 是 Spark 的可調整機器學習程式庫，由常見的學習演算法和公用程式所組成 (包括分類、迴歸、群集、共同作業篩選和維度縮減。 同時也是基礎最佳化的基礎)。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -33,13 +33,13 @@ ms.locfileid: "73494567"
 
 ## <a name="understand-the-data-set"></a>了解資料集
 
-應用程式會使用所有叢集預設提供的範例 **HVAC.csv** 資料。 檔案位於 `\HdiSamples\HdiSamples\SensorSampleData\hvac`。 這項資料會顯示某些已安裝 HVAC 系統之建築物的目標溫度和實際溫度。 [System]  資料行代表系統識別碼，而 [SystemAge]  資料行代表 HVAC 系統安裝在建築物中的年數。 在指定系統識別碼和系統年期的情況下，您可以使用這項資料來預測建築物的溫度會比目標溫度高或低。
+應用程式會使用所有叢集預設提供的範例 **HVAC.csv** 資料。 檔案位於 `\HdiSamples\HdiSamples\SensorSampleData\hvac`。 這項資料會顯示某些已安裝 HVAC 系統之建築物的目標溫度和實際溫度。 [System]  資料行代表系統識別碼，而 [SystemAge]  資料行代表 HVAC 系統安裝在建築物中的年數。 在指定系統識別碼和系統年期的情況下，您可以預測建築物的溫度會比目標溫度高或低。
 
 ![用於 Spark 機器學習服務的資料快照集範例](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "用於 Spark 機器學習服務的資料快照集範例")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>使用 Spark MLlib 開發 Spark 機器學習應用程式
 
-在此應用程式中，您可以使用 Spark [ML 管線](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)來執行文件分類。 ML 管線會提供一組以資料框架為基礎的統一高階 API，以協助使用者建立及微調實際的機器學習管線。 在管線中，您要將文件分割成單字、將單字轉換成數值特性向量，最後再使用特性向量和標籤建立預測模型。 執行下列步驟以建立應用程式。
+此應用程式會使用 Spark [ML 管線](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)來執行文件分類。 ML 管線提供一組以 DataFrames 為基礎的相同高階 API。 DataFrame 可協助使用者建立及調整實用的機器學習服務管線。 在管線中，您要將文件分割成單字、將單字轉換成數值特性向量，最後再使用特性向量和標籤建立預測模型。 執行下列步驟以建立應用程式。
 
 1. 使用 PySpark 核心建立 Jupyter Notebook。 如需指示，請參閱[建立 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
 
@@ -143,9 +143,9 @@ ms.locfileid: "73494567"
 
     ![用於 Spark 機器學習服務的輸出資料快照集範例](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "用於 Spark 機器學習服務的輸出資料快照集範例")
 
-    請注意，實際溫度比目標溫度低的情況代表建築物處於低溫狀態。 因此在訓練輸出中，第一個資料列的 [label]  值為 [0.0]  ，這代表建築物不是熱的。
+    請注意，實際溫度比目標溫度低的情況代表建築物處於低溫狀態。 第一個資料列的 [標籤]  值為 [0.0]  ，這代表建築物溫度不高。
 
-1. 準備要做為定型模型之執行依據的資料集。 方法是傳遞系統識別碼和系統年期 (在訓練輸出中以 **SystemInfo** 來代表)，然後模型會預測該系統識別碼和系統年期所屬的建築物溫度會較熱 (以 1.0 表示) 或較冷 (以 0.0 表示)。
+1. 準備要做為定型模型之執行依據的資料集。 若要這麼做，您可以傳遞系統識別碼和系統年齡 (在定型輸出中以 **SystemInfo** 表示)。 此模型會預測具有該系統識別碼和系統年齡的建築物溫度會變得較高 (以 1.0 表示) 或較低 (以0.0 表示)。
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -180,7 +180,7 @@ ms.locfileid: "73494567"
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   從預測的第一個資料列可看出，對於識別碼為 20 且年期為 25 年的 HVAC 系統而言，建築物會是熱的 (**prediction=1.0**)。 DenseVector (0.49999) 的第一個值對應到預測 0.0，而第二個值 (0.5001) 對應到預測 1.0。 在輸出中，即使第二個值只是稍微高一點，模型仍舊顯示 **prediction=1.0**。
+   觀察預測中的第一個資料列。 對於識別碼為 20 且系統年齡為 25 年的 HVAC 系統而言，建築物溫度較高 (**prediction=1.0**)。 DenseVector (0.49999) 的第一個值對應到預測 0.0，而第二個值 (0.5001) 對應到預測 1.0。 在輸出中，即使第二個值只是稍微高一點，模型仍舊顯示 **prediction=1.0**。
 
 1. 關閉 Notebook 來釋放資源。 若要這麼做，請從 Notebook 的 [檔案]  功能表中，選取 [關閉並終止]  。 此動作會關機並且關閉 Notebook。
 

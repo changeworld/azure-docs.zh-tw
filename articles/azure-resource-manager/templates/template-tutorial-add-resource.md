@@ -2,17 +2,17 @@
 title: 教學課程 - 將資源新增至範本
 description: 描述建立第一個 Azure Resource Manager 範本的步驟。 您將了解範本檔案語法及部署儲存體帳戶的方式。
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586677"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411740"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教學課程：將資源新增至 Resource Manager 範本
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>教學課程：將資源新增至 ARM 範本
 
 在[上一個教學課程](template-tutorial-create-first-template.md)中，您已了解如何建立空白範本並加以部署。 您現在已準備好要部署實際的資源。 在此教學課程中，您會新增儲存體帳戶。 完成此教學課程大約需要 **9 分鐘**。
 
@@ -26,7 +26,7 @@ ms.locfileid: "77586677"
 
 若要將儲存體帳戶定義新增至現有範本，查看下列範例中反白顯示的 JSON。 請複製整個檔案，並以其內容取代您的範本，而不要嘗試複製範本的區段。
 
-以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** 。
+以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** (包括大括弧)。
 
 > [!IMPORTANT]
 > 儲存體帳戶名稱必須是 Azure 中是獨一無二的。 名稱必須只有小寫字母或數字。 名稱長度不得超過 24 個字元。 您可以嘗試使用 **store1** 作為前置詞，然後加上您的姓名縮寫和今天日期之類的命名模式。 例如，您使用的名稱看起來可能像 **store1abc09092019**。
@@ -37,7 +37,7 @@ ms.locfileid: "77586677"
 
 ## <a name="resource-properties"></a>資源屬性
 
-您可能想知道如何尋找要用於每個資源類型的屬性。 您可以使用 [Resource Manager 範本參考](/azure/templates/)來尋找想要部署的資源類型。
+您可能想知道如何尋找要用於每個資源類型的屬性。 您可以使用 [ARM 範本參考](/azure/templates/)來尋找您要部署的資源類型。
 
 您部署的每個資源至少都有下列三個屬性：
 
@@ -72,14 +72,19 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要執行此部署命令，您必須擁有[最新版](/cli/azure/install-azure-cli)的 Azure CLI。
+
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addstorage \
   --resource-group myResourceGroup \
   --template-file $templateFile
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
 
 您可能遇到的兩個可能部署失敗：
 

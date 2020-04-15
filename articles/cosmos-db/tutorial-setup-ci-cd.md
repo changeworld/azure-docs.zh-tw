@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77561897"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410958"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>使用 Azure Cosmos DB 模擬器建置工作在 Azure DevOps 中設定 CI/CD 管線
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
 ## <a name="install-the-emulator-build-task"></a>安裝模擬器建置工作
 
-若要使用建置工作，首先我們需要將它安裝到 Azure DevOps 組織。 在 **Marketplace** (英文) 中尋找 [Azure Cosmos DB 模擬器](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)擴充功能，然後按一下 [免費取得]  。
+若要使用建置工作，首先我們需要將它安裝到 Azure DevOps 組織。 在 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) (英文) 中尋找 **Azure Cosmos DB 模擬器**擴充功能，然後按一下 [免費取得]  。
 
 ![在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並安裝](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
@@ -178,4 +178,4 @@ namespace todo.Tests
 
 若要深入了解使用模擬器來進行本機開發和測試，請參閱[使用 Azure Cosmos DB 模擬器進行本機開發和測試](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。
 
-若要匯出模擬器 SSL 憑證，請參閱[匯出 Azure Cosmos DB 模擬器憑證，以便與 Java、Python 和 Node.js 搭配使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+若要匯出模擬器 TLS/SSL 憑證，請參閱[匯出 Azure Cosmos DB 模擬器憑證，以便與 Java、Python 和 Node.js 搭配使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
