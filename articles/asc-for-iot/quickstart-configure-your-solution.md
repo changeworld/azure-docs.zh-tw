@@ -1,5 +1,5 @@
 ---
-title: 快速入門：設定適用於 IoT 的 Azure 資訊安全中心解決方案
+title: 快速入門：設定您的解決方案
 description: 在本快速入門中，您將了解如何使用適用於 IoT 的 Azure 資訊安全中心來設定端對端 IoT 解決方案。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73904143"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310846"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入門：設定 IoT 解決方案
 
-本文說明如何使用適用於 IoT 的 Azure 資訊安全中心來執行 IoT 安全性解決方案的初始設定。 
+本文說明如何使用適用於 IoT 的 Azure 資訊安全中心來執行 IoT 安全性解決方案的初始設定。
 
 ## <a name="azure-security-center-for-iot"></a>IoT 的 Azure 資訊安全中心
 
@@ -34,20 +34,20 @@ ms.locfileid: "73904143"
 
 在 IoT 中樞上啟用後，適用於 IoT 的 Azure 資訊安全中心就會自動識別其他同樣連線至 IoT 中樞，並與 IoT 解決方案相關的 Azure 服務。
 
-除了自動偵測關聯性外，您還可以挑出並選擇要將哪些其他 Azure 資源群組標記為 IoT 解決方案的一部分。 
+除了自動偵測關聯性外，您還可以挑出並選擇要將哪些其他 Azure 資源群組標記為 IoT 解決方案的一部分。
 
-您所做的選擇會讓您可以新增整個訂用帳戶、資源群組或單一資源。 
+您所做的選擇會讓您可以新增整個訂用帳戶、資源群組或單一資源。
 
 在定義所有資源關聯性後，適用於 IoT 的 Azure 資訊安全中心便會利用 Azure 資訊安全中心來為這些資源提供安全性建議和警示。
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>將 Azure 資源新增至 IoT 解決方案
 
-若要將新的資源新增至 IoT 解決方案，請執行下列步驟： 
+若要將新的資源新增至 IoT 解決方案，請執行下列步驟：
 
-1. 在 Azure 入口網站中開啟您的 **IoT 中樞**。 
-1. 從左側功能表中選取並開啟 [安全性]  之下的 [資源]  。 
+1. 在 Azure 入口網站中開啟您的 **IoT 中樞**。
+1. 從左側功能表中選取並開啟 [安全性]  之下的 [資源]  。
 1. 選取 [編輯]  ，然後選擇屬於您 IoT 解決方案的資源群組。
-1. 按一下 [新增]  。 
+1. 按一下 [新增]  。
 
 恭喜！ 您已將新的資源群組新增至 IoT 解決方案。
 

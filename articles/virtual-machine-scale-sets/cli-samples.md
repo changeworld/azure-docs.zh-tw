@@ -1,20 +1,20 @@
 ---
 title: Azure CLI 範例
 description: 此資料表包含使用 Azure CLI 建立的範例 bash 指令碼的連結，例如建立和管理擴展集。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: ca1c85224959840e4137eab68e3d089283827bb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df0a57e0db239cbd7ad7d66c3fad484ec771f882
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76275152"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010982"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure CLI 範例
 

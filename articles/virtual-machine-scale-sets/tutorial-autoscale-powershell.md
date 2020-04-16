@@ -1,19 +1,19 @@
 ---
 title: 教學課程 - 使用 Azure PowerShell 自動調整擴展集
 description: 了解如何使用 Azure PowerShell 範本隨著 CPU 需求的增加和減少自動調整虛擬機器擴展集
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278417"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008993"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 自動調整虛擬機器擴展集
 
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>監視作用中的自動調整規則
-若要監視擴展集中的 VM 執行個體數目，請使用 **while**。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **CPUStress* 對每個 VM 執行個體產生的 CPU 負載：
+若要監視擴展集中的 VM 執行個體數目，請使用 **while**。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **CPUStress** 對每個 VM 執行個體產生的 CPU 負載：
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

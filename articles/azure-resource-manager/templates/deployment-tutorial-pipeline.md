@@ -4,12 +4,12 @@ description: 了解如何持續建置、測試及部署 Azure Resource Manager �
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 303edac9221b2a58986129388e33c84c3817d96e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369368"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255068"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
 
@@ -44,7 +44,7 @@ Azure DevOps 提供開發人員服務，以支援小組規劃工作、共同作�
 
 ## <a name="prepare-a-github-repository"></a>準備 GitHub 存放庫
 
-GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 對於其他支援的存放庫，請參閱[Azure DevOps 支援的存放庫](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)。
+GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 對於其他支援的存放庫，請參閱[Azure DevOps 支援的存放庫](/azure/devops/pipelines/repos/?view=azure-devops)。
 
 ### <a name="create-a-github-repository"></a>建立 GitHub 存放庫
 

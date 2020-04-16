@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 239bb1e43b6a89ed1e8a18d544cf646b5f2de9b9
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6f501ffd7bd9405fb5818c4af06156912021c6e4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671699"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275273"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -82,7 +82,7 @@ python quickstart.py
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>另請參閱
 

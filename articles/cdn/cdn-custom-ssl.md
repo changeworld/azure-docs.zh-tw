@@ -3,7 +3,7 @@ title: 教學課程 - 在 Azure CDN 自訂網域上設定 HTTPS | Microsoft Docs
 description: 在本教學課程中，您將了解如何在 Azure CDN 端點自訂網域上啟用和停用 HTTPS。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/1/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222425"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253997"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教學課程：在 Azure CDN 自訂網域上設定 HTTPS
 
@@ -58,8 +58,8 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 ---
 
-## <a name="ssl-certificates"></a>SSL 憑證
-若要啟用 HTTPS 通訊協定以在 Azure CDN 自訂網域上安全地傳遞內容，您必須使用 SSL 憑證。 您可以選擇使用 Azure CDN 所管理的憑證，或使用您自己的憑證。
+## <a name="tlsssl-certificates"></a>TLS/SSL 憑證
+若要啟用 HTTPS 通訊協定以在 Azure CDN 自訂網域上安全地傳遞內容，您必須使用 TLS/SSL 憑證。 您可以選擇使用 Azure CDN 所管理的憑證，或使用您自己的憑證。
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[選項 1 (預設值)：使用 CDN 管理的憑證啟用 HTTPS](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 > 此選項僅適用於**來自 Microsoft 的 Azure CDN** 和**來自 Verizon 的 Azure CDN** 設定檔。 
 >
  
-您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure CDN 使用此安全機制來取得您的憑證，為此您需要執行一些額外的步驟。 當您建立 SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure CDN 上啟用自訂 HTTPS 的允許憑證授權單位](cdn-troubleshoot-allowed-ca.md)。若為**來自 Verizon 的 Azure CDN**，則可接受任何有效的 CA。 
+您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure CDN 使用此安全機制來取得您的憑證，為此您需要執行一些額外的步驟。 當您建立 TLS/SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure CDN 上啟用自訂 HTTPS 的允許憑證授權單位](cdn-troubleshoot-allowed-ca.md)。若為**來自 Verizon 的 Azure CDN**，則可接受任何有效的 CA。 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>準備您的 Azure Key Vault 帳戶和憑證
  
@@ -308,7 +308,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. *SAN 憑證的安全性是否比專用憑證來得低？*
     
-    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 SSL 憑證都使用 SHA-256 來加強伺服器安全性。
+    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 TLS/SSL 憑證都使用 SHA-256 來加強伺服器安全性。
 
 5. *是否需要我的 DNS 提供者的憑證授權單位授權記錄？*
 
@@ -320,7 +320,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 7. 若使用您自己的憑證，該如何更新憑證？ 
 
-    若要確保較新的憑證能部署到 PoP 基礎結構，只需將新憑證上傳至 Azure KeyVault，並在 Azure CDN 的 SSL 設定中選擇最新的憑證版本，然後點擊 [儲存]。 Azure CDN 接著會傳播已更新的憑證。 
+    若要確保較新的憑證能部署到 PoP 基礎結構，只需將新憑證上傳至 Azure KeyVault，並在 Azure CDN 的 TLS 設定中選擇最新的憑證版本，然後點擊 [儲存]。 Azure CDN 接著會傳播已更新的憑證。 
 
 ## <a name="next-steps"></a>後續步驟
 

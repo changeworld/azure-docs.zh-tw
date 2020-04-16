@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67656685"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261188"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教學課程：Azure Active Directory 與 ITRP 整合
 
@@ -113,7 +113,7 @@ ms.locfileid: "67656685"
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [ITRP 支援小組](https://www.itrp.com/support)以取得這些值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  對話方塊所顯示的模式。
+    > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [ITRP 支援小組](https://www.4me.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  對話方塊所顯示的模式。
 
 5. 在 [SAML 簽署憑證]  區段中，選取 [編輯]  圖示以開啟 [SAML 簽署憑證]  對話方塊：
 

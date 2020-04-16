@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 6dd31cb3a9b6c2382664650e3cff04b386cb8a19
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c6de20645bde257a2ad64aa75e691f8ee5485ddf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671617"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274946"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -70,4 +70,4 @@ ms.locfileid: "80671617"
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

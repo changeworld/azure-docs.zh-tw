@@ -1,19 +1,19 @@
 ---
 title: 教學課程 - 使用 Azure CLI 自動調整擴展集
 description: 了解如何使用 Azure CLI 隨著 CPU 需求的增加和減少自動調整虛擬機器擴展集
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 0506c7fcb4e3734414fdc3b868aca84450ad8d07
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 711553fd0a71103f340137755ef51264e3883c25
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067036"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010370"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：如何使用 Azure CLI 自動調整虛擬機器擴展集
 

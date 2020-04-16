@@ -1,19 +1,19 @@
 ---
 title: Azure 虛擬機器擴展集概觀
 description: 了解 Azure 虛擬機器擴展集以及如何自動調整應用程式
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
-ms.author: manayar
-ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: mimckitt
+ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76273698"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272537"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什麼是虛擬機器擴展集？
 Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的相同 VM。 VM 執行個體的數目可以自動增加或減少，以因應需求或已定義的排程。 擴展集可為您的應用程式提供高可用性，並且可讓您集中管理、設定和更新大量的 VM。 透過虛擬機器擴展集，您將可針對計算、巨量資料和容器工作負載等領域建立大規模的服務。
@@ -27,7 +27,7 @@ Azure 虛擬機器擴展集可提供對跨 VM 執行的應用程式進行管理�
 - **易於建立和管理多個 VM**
     - 如果您有許多 VM 會執行您的應用程式，則務必要在您的環境間維護一致的組態。 您的應用程式若要有穩定的效能，所有 VM 之間的 VM 大小、磁碟組態和應用程式安裝都必須要一致。
     - 透過擴展集，所有 VM 執行個體都會從相同的基礎 OS 映像和組態建立。 此方法可讓您輕鬆地管理數百個 VM，而不需要執行額外的組態工作或網路管理。
-    - 擴展集支援使用 [Azure 負載平衡器](../load-balancer/load-balancer-overview.md)以進行基本的第 4 層流量分配，並可使用 [Azure 應用程式閘道](../application-gateway/application-gateway-introduction.md)以進行進階的第 7 層流量分配和 SSL 終止。
+    - 擴展集支援使用 [Azure 負載平衡器](../load-balancer/load-balancer-overview.md)以進行基本的第 4 層流量分配，並可使用 [Azure 應用程式閘道](../application-gateway/application-gateway-introduction.md)以進行進階的第 7 層流量分配和 TLS 終止。
 
 - **提供高可用性和應用程式恢復能力**
     - 擴展集可用來執行多個應用程式執行個體。 如果其中一個 VM 執行個體發生問題時，客戶將可在盡可能不中斷的情況下，透過其他 VM 執行個體繼續存取您的應用程式。

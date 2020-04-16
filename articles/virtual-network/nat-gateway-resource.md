@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2020
+ms.date: 04/09/2020
 ms.author: allensu
-ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359098"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011713"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 閘道資源設計虛擬網路 (公開預覽版)
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 閘道資源設計虛擬網路
 
 NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛擬網路的一或多個子網提供輸出網際網路連線能力。 虛擬網路的子網路會指出將使用哪個 NAT 閘道。 NAT 會為子網路提供來源網路位址轉譯 (SNAT)。  NAT 閘道資源會指定虛擬機器在建立輸出流量時所使用的靜態 IP 位址。 靜態 IP 位址來自公用 IP 位址資源、公用 IP 前置詞資源或兩者。 NAT 閘道資源最多可以使用來自任一資源的 16 個靜態 IP 位址。
 
@@ -32,10 +32,6 @@ NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛�
 
 *圖：可供輸出到網際網路的虛擬網路 NAT*
 
-
->[!NOTE] 
->虛擬網路 NAT 目前可作為公開預覽版提供。 其目前僅適用於一組有限的[區域](nat-overview.md#region-availability)。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
-
 ## <a name="how-to-deploy-nat"></a>如何部署 NAT
 
 已刻意簡化 NAT 閘道的設定和使用：  
@@ -43,7 +39,7 @@ NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛�
 NAT 閘道資源：
 - 建立地區性或區域性 (區域隔離) NAT 閘道資源，
 - 指派 IP 位址，
-- 修改閒置逾時 (選擇性)。
+- 若需要，修改 TCP 閒置逾時 (選用)。  在變更預設值<ins>之前</ins>，請先檢閱[計時器](#timers)。
 
 虛擬網路：
 - 設定要使用 NAT 閘道的虛擬網路子網路。
@@ -66,75 +62,30 @@ NAT 閘道資源：
 
 您可以從標準負載平衡器案例 (包括[輸出規則](../load-balancer/load-balancer-outbound-rules-overview.md)) 遷移到 NAT 閘道。 若要遷移，請將公用 IP 和公用 IP 前置詞資源從負載平衡器前端移到 NAT 閘道。 不需要 NAT 閘道的新 IP 位址。 只要總計不超過 16 個 IP 位址，就可以重複使用標準公用 IP 和前置詞。 在轉換期間，請針對已考量服務中斷情形的移轉進行規劃。  您可藉由程序自動化將中斷情形降至最低。 先在預備環境中測試移轉。  在轉換期間，源自的輸入流量不受影響。
 
-下列範例會建立一個名為 myNATGateway  的 NAT 閘道資源，其建立於「美國東部 2，AZ 1」  地區，且閒置逾時為「4 分鐘」  。 提供的輸出 IP 位址如下：
-- 一組公用 IP 位址資源 _myIP1_ 和 _myIP2_，以及 
-- 一組公用 IP 前置詞資源 _myPrefix1_ 和 _myPrefix2_。 
+下列範例是來自 Azure Resource Manager 範本的程式碼片段。  此範本會部署數個資源，包括 NAT 閘道。  此範本在此範例中具有下列參數：
 
-所有四個 IP 位址資源所提供的 IP 位址總數不能超過 16 個 IP 位址總計。 允許的 IP 位址數目介於 1 到 16 之間。
+- **natgatewayname** - NAT 閘道的名稱。
+- **位置** - 資源所在的 Azure 區域。
+- **publicipname** - 與 NAT 閘道相關聯的輸出公用 IP 名稱。
+- **vnetname** - 虛擬網路的名稱。
+- **subnetname** - 與 NAT 閘道相關聯的子網路名稱。
 
-```json
-{
-"name": "myNATGateway",
-   "type": "Microsoft.Network/natGateways",
-   "apiVersion": "2018-11-01",
-   "location": "East US 2",
-   "sku": { "name": "Standard" },
-   "zones": [ "1" ],
-   "properties": {
-      "idleTimeoutInMinutes": 4, 
-      "publicIPPrefixes": [
-         {
-            "id": "ref to myPrefix1"
-         },
-         {
-            "id": "ref to myPrefix2"
-         }
-      ],
-      "publicIPAddresses": [
-         {
-            "id": "ref to myIP1"
-         },
-         {
-            "id": "ref to myIP2"
-         }
-      ]
-   }
-}
-```
+所有 IP 位址資源和首碼資源所提供的 IP 位址總數不能超過 16 個 IP 位址總計。 允許的 IP 位址數目介於 1 到 16 之間。
+
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 建立 NAT 閘道資源後，即可將其使用於虛擬網路的一或多個子網路。 指定哪些子網路使用此 NAT 閘道資源。 NAT 閘道無法跨越一個以上的虛擬網路。 不需要將相同的 NAT 閘道指派給虛擬網路的所有子網路。 可以設定具有不同 NAT 閘道資源的個別子網路。
 
 未使用可用性區域的案例會是地區性 (未指定區域)。 如果您使用可用性區域，則可指定區域以將 NAT 隔離到特定區域。 不支援區域備援。 檢閱 NAT [可用性區域](#availability-zones)。
 
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
-```json
-{
-   "name": "myVNet",
-   "apiVersion": "2018-11-01",
-   "type": "Microsoft.Network/virtualNetworks",
-   "location": "myRegion", 
-   "properties": {
-      "addressSpace": {
-          "addressPrefixes": [
-           "192.168.0.0/16"
-          ]
-      },
-      "subnets": [
-         {
-            "name": "mySubnet1",
-            "properties": {
-               "addressPrefix": "192.168.0.0/24",
-               "natGateway": {
-                  "id": "ref to myNATGateway"
-               }
-            }
-         } 
-      ]
-   }
-}
-```
-NAT 閘道是以虛擬網路內子網路上的屬性來定義。 虛擬機器在虛擬網路 myVNet  的子網路 mySubnet1  上建立的流量將會使用 NAT 閘道。 所有輸出連線都會使用與 myNatGateway  相關聯的 IP 位址作為來源 IP 位址。
+NAT 閘道是以虛擬網路內子網路上的屬性來定義。 虛擬機器在虛擬網路**vnetname**的子網路 **subnetname** 上建立的流量將會使用 NAT 閘道。 所有輸出連線都會使用與 **natgatewayname** 相關聯的 IP 位址作為來源 IP 位址。
 
+如需此範例中使用的 Azure Resource Manager 範本詳細資訊，請參閱：
+
+- [快速入門：建立 NAT 閘道 - Resource Manager 範本](quickstart-create-nat-gateway-template.md)
+- [虛擬網路 NAT](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm/)
 
 ## <a name="design-guidance"></a>設計指導
 
@@ -147,7 +98,7 @@ NAT 閘道是以虛擬網路內子網路上的屬性來定義。 虛擬機器在
 
 ### <a name="cost-optimization"></a>成本最佳化
 
-[服務端點](virtual-network-service-endpoints-overview.md)和[私人連結](../private-link/private-link-overview.md)是在不需要 NAT 的情況下，將成本最佳化所要考慮的兩個選項。  虛擬網路的 NAT 不會處理任何導向服務端點或私人連結的流量。  
+[服務端點](virtual-network-service-endpoints-overview.md)和[私人連結](../private-link/private-link-overview.md)是將成本最佳化所要考慮的選項。 這些服務不需要 NAT。 虛擬網路的 NAT 不會處理導向服務端點或私人連結的流量。  
 
 服務端點會將 Azure 服務資源繫結至您的虛擬網路，並控制對您 Azure 服務資源的存取。 例如，當您存取 Azure 儲存體時，請使用儲存體的服務端點來避免已資料處理的 NAT 費用。 服務端點是免費的。
 
@@ -226,27 +177,50 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 
 ### <a name="availability-zones"></a>可用性區域
 
-即使沒有可用性區域，NAT 也具有復原性，且可能在多個基礎結構元件失敗中倖存。 當可用性區域屬於您的案例時，您應該為特定區域設定 NAT。  控制平面作業和資料平面會受限於指定的區域。 不是您的案例所在區域中的失敗，應該不會對 NAT 造成影響。 因為區域隔離，來自相同區域中虛擬機器的輸出流量將會失敗。
+#### <a name="zone-isolation-with-zonal-stacks"></a>使用區域性堆疊的區域隔離
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="具有可用性區域的虛擬網路 NAT">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="虛擬網路 NAT 與區域隔離，建立多個 "zonal stacks"">
 </p>
 
-*圖：具有可用性區域的虛擬網路 NAT*
+*圖：* 虛擬網路 NAT 與區域隔離，建立多個「區域堆疊」
 
-區域隔離的 NAT 閘道會要求 IP 位址符合 NAT 閘道的區域。 不支援 IP 位址來自不同區域或沒有區域的 NAT 閘道資源。
+即使沒有可用性區域，NAT 也具有復原性，且可能在多個基礎結構元件失敗中倖存。  可用性區域是以此復原為依據，並具有 NAT 的區域隔離案例。
 
-虛擬網路和子網路是地區性，而不是區域性對齊。 VM 必須位於與 NAT 閘道相同的區域，以達成輸出連線的區域性承諾。 為每個可用性區域建立區域性「堆疊」，進而建立區域隔離。 跨區域性 NAT 閘道的區域，或使用地區性 NAT 閘道搭配區域性 VM 時，不會有區域性承諾。
+虛擬網路及其子網路是區域結構。  子網路不限於區域。
 
-當您部署要搭配 NAT 使用的虛擬機器擴展集時，您會在其自己的子網路上部署區域性擴展集，並將相符的區域 NAT 閘道連結至該子網路。 如果您使用跨區域的擴展集 (兩個或多個區域中的擴展集)，NAT 將不會提供區域性承諾。  NAT 不支援區域備援。  僅支援地區性或區域隔離。
+使用 NAT 閘道資源的虛擬機器執行個體位於與 NAT 閘道資源和其公用 IP 位址相同的區域時，就會有區域隔離的區域性承諾。 您要為區域隔離使用的模式是為每個可用性區域建立區域性「堆疊」。  此「區域堆疊」包含子網路上的虛擬機器執行個體、NAT 閘道資源、公用 IP 位址及/或前置詞資源，並假設為僅服務相同的區域。   控制平面作業和資料平面則會因此受限於指定的區域。 
+
+不是您的案例所在區域中的失敗，應該不會對 NAT 造成影響。 因為區域隔離，來自相同區域中虛擬機器的輸出流量將會失敗。  
+
+#### <a name="integrating-inbound-endpoints"></a>整合輸入端點
+
+如果您的案例需要輸入端點，有兩個選項可選擇：
+
+| 選項 | 模式 | 範例 | 優點 | 缺點 |
+|---|---|---|---|---|
+| (1) | 以您要為輸出建立的個別**區域堆疊**將輸入端點**對齊**。 | 建立具有區域前端的標準負載平衡器。 | 輸入和輸出的健康情況模型和失敗模式相同。 操作較為簡單。 | 每個區域的個別 IP 位址可能需要以一般 DNS 名稱遮罩。 |
+| (2) | 使用**跨區域**輸入端點將區域性堆疊**重疊**。 | 建立具有區域備援前端的標準負載平衡器。 | 輸入端點的單一 IP 位址。 | 輸入和輸出的健康情況模型和失敗模式不同。  操作較為複雜。 |
+
+>[!NOTE]
+> 區域隔離的 NAT 閘道會要求 IP 位址符合 NAT 閘道的區域。 不允許 IP 位址來自不同區域或沒有區域的 NAT 閘道資源。
+
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>不支援跨區域輸出案例
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="跨區域虛擬網路 NAT">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="虛擬網路 NAT 與區域跨區域子網路不相容">
 </p>
 
-*圖：跨區域虛擬網路 NAT*
+*圖：虛擬網路 NAT 與區域跨區域子網路不相容*
 
-區域屬性不可變。  使用預定地區性或區域喜好設定來重新部署 NAT 閘道資源。
+當虛擬機器執行個體部署在相同子網路內的多個區域時，您無法達到 NAT 閘道資源的區域性承諾。   而且即使有多個區域性 NAT 閘道連結至子網路，虛擬機器執行個體也不會知道要選取哪個 NAT 閘道資源。
+
+當 a) 虛擬機器執行個體的區域和區域性 NAT 閘道的區域未對齊，或 b) 區域 NAT 閘道資源與區域性虛擬機器執行個體搭配使用時，區域性承諾就不會存在。
+
+雖然此案例看似正常運作，但其健康情況模型和失敗模式並未以可用性區域的觀點加以定義。 請考慮改用區域性堆疊或所有地區。
+
+>[!NOTE]
+>NAT 閘道資源的區域屬性不是可變的。  使用預定地區性或區域喜好設定來重新部署 NAT 閘道資源。
 
 >[!NOTE] 
 >如果未指定任何區域，IP 位址本身不支援區域備援。  如果未在特定區域中建立 IP 位址，則[標準負載平衡器的前端支援區域備援](../load-balancer/load-balancer-standard-availability-zones.md#frontend)。  這不適用於 NAT。  僅支援地區性或區域隔離。
@@ -303,11 +277,9 @@ SNAT 連接埠一旦發行，即可供透過 NAT 設定的子網路上的任何�
 
 ### <a name="scaling"></a>調整大小
 
-NAT 對於完整輸出案例需要足夠的 SNAT 連接埠庫存。 調整 NAT 主要是一項管理共用、可用 SNAT 連接埠庫存的功能。 必須要有足夠的庫存，才能解決連結到 NAT 閘道資源的所有子網路尖峰輸出流量。
+調整 NAT 主要是一項管理共用、可用 SNAT 連接埠庫存的功能。 NAT 必須要有足夠的 SNAT 連接埠庫存，才能解決連結到 NAT 閘道資源的所有子網路尖峰輸出流量。  您可以使用公用 IP 位址資源、公用 IP 前置詞資源或兩者來建立 SNAT 連接埠庫存。
 
-SNAT 會將多個私人位址對應到一個公用位址，並使用多個公用 IP 進行調整。
-
-NAT 閘道資源將使用公用 IP 位址的 64000 個連接埠 (SNAT 連接埠)。  這些 SNAT 連接埠會成為私人到公用流量對應的可用庫存。 新增更多公用 IP 位址會增加可用的庫存 SNAT 連接埠。 NAT 閘道資源可以擴大至 16 個 IP 位址和 1 百萬個 SNAT 連接埠。  TCP 和 UDP 是不同的 SNAT 連接埠清查而且不相關。
+SNAT 會將私人位址對應至一或多個公用 IP 位址，並重寫流程中的來源位址和來源連接埠。 NAT 閘道資源會針對此轉譯，針對每個設定的公用 IP 位址使用 64,000 個連接埠 (SNAT 連接埠)。 NAT 閘道資源可以擴大至 16 個 IP 位址和 1 百萬個 SNAT 連接埠。 如果提供了公用 IP 前置詞資源，則前置詞中的每個 IP 位址都會提供 SNAT 連接埠庫存。 新增更多公用 IP 位址會增加可用的庫存 SNAT 連接埠。 TCP 和 UDP 是不同的 SNAT 連接埠清查而且不相關。
 
 NAT 閘道資源會伺機重複使用來源連接埠。 基於調整目的，您應該假設每個流量都需要新的 SNAT 連接埠，並調整輸出流量的可用 IP 位址總數。
 
@@ -317,7 +289,10 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
 
 ### <a name="timers"></a>計時器
 
-所有流量的閒置逾時可以從 4 分鐘 (預設值) 調整為 120 分鐘 (2 小時)。  此外，您可以使用流量來重設閒置計時器。  重新整理長時間閒置連線和端點活躍度偵測的建議模式為 TCP Keepalive。  TCP Keepalive 會顯示為端點的重複 ACK、低負擔，且對應用程式層而言不可見。
+>[!IMPORTANT]
+>長期閒置計時器可能會不必要地增加 SNAT 耗盡的可能性。 您指定的計時器時間越長，SNAT 連接埠上的 NAT 保留時間就會越長，直到最終閒置逾時為止。 如果您的流程處於閒置逾時狀態，則流程最終會失敗，且不必要地耗用 SNAT 連接埠庫存。  在 2 小時失敗的流程也會在預設的 4 分鐘內失敗。 增加閒置逾時是不得已而為之的最後手段，應謹慎使用。 如果流程永遠不會閒置，就不會受到閒置計時器的影響。
+
+所有流量的 TCP 閒置逾時可以從 4 分鐘 (預設值) 調整為 120 分鐘 (2 小時)。  此外，您可以使用流量來重設閒置計時器。  重新整理長時間閒置連線和端點活躍度偵測的建議模式為 TCP Keepalive。  TCP Keepalive 會顯示為端點的重複 ACK、低負擔，且對應用程式層而言不可見。
 
 下列計時器用於 SNAT 連接埠版本：
 
@@ -339,35 +314,32 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
 - 使用 NAT 時，不支援 NSG 流量記錄。
 - NAT 無法跨越多個虛擬網路。
 
-## <a name="preview-participation"></a>預覽參與
-
-依照[指示，啟用您的訂用帳戶](nat-overview.md#public-preview-participation)。
 
 ## <a name="feedback"></a>意見反應
 
-我們想要知道如何改善服務。 與我們分享您對[公開預覽版的意見反應](https://aka.ms/natfeedback)。  您也可針對我們接下來應在[適用於 NAT 的 UserVoice](https://aka.ms/natuservoice) 建置的項目，提出建議和投票。
+我們想要知道如何改善服務。 缺少任何功能嗎？ 請在 [適用於 NAT 的 UserVoice](https://aka.ms/natuservoice) 中提出接下來希望建置的項目建議。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解[虛擬網路 NAT](nat-overview.md)。
 * 了解 [NAT 閘道資源的計量和警示](nat-metrics.md)。
 * 了解[針對 NAT 閘道資源進行疑難排解](troubleshoot-nat.md)。
-* [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
-* [提供有關公開預覽版的意見反應](https://aka.ms/natfeedback)。
 * 驗證 NAT 閘道的教學課程
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)，
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)，
-  - [入口網站](tutorial-create-validate-nat-gateway-cli.md)
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
+  - [入口網站](tutorial-create-validate-nat-gateway-portal.md)
 * 部署 NAT 閘道資源的快速入門
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)，
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)，
-  - [入口網站](./quickstart-create-nat-gateway-portal.md)。
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [入口網站](./quickstart-create-nat-gateway-portal.md)
+  - [範本](./quickstart-create-nat-gateway-template.md)
 * 了解 NAT 閘道資源 API
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)，
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)，
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)。
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * 了解[可用性區域](../availability-zones/az-overview.md)。
 * 了解[標準負載平衡器](../load-balancer/load-balancer-standard-overview.md)。
 * 了解[可用性區域和標準負載平衡器](../load-balancer/load-balancer-standard-availability-zones.md)。
+* [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
 
 

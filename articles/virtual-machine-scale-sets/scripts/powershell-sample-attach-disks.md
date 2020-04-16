@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell 範例 - 連結及使用資料磁碟
 description: 此指令碼會使用 PowerShell 建立 Azure 虛擬機器擴展集，以及連結和準備資料磁碟。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: ea18b6d2271d56d9a2287b92678ef8bfcab891a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bff0bb0673862d614aac5bb783bc501516871b29
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76279136"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010376"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 連結及使用虛擬機器擴展集所適用的資料磁碟
 此指令碼會建立虛擬機器擴展集，以及連結和準備資料磁碟。

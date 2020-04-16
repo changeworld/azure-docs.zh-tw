@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell 範例 - 建立基本虛擬機器擴展集
 description: 此指令碼會建立執行 Windows Server 2016 的 Azure 虛擬機器擴展集，您可透過 RDP 進行存取。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 123ba8ef931113b2c822fb1d02fa51e1d085c90e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380b3d25bdcd5df5f095b2d87e832bf73422759e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276585"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011475"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 建立基本虛擬機器擴展集
 此指令碼會建立執行 Windows Server 2016 的虛擬機器擴展集。 執行指令碼之後，您可以透過 RDP 存取 VM 執行個體。

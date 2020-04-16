@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453641"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115051"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用匯入的資料來評估伺服器
 
@@ -126,22 +126,8 @@ ms.locfileid: "79453641"
 **網路輸入輸送量** | 否 | 伺服器接收到的資料量 (以每秒 MB 數為單位)。
 **網路輸出輸送量** | 否 | 伺服器傳輸的資料量 (以每秒 MB 數為單位)。
 **韌體類型** | 否 | 伺服器韌體。 值可以是 "BIOS" 或 "UEFI"。
-**伺服器類型** | 否 | 值可以是「實體」或「虛擬」。
-**Hypervisor** | 否 | 機器執行所在的 Hypervisor。 <br/> 值可以是 "VMware"、"Hyper-V"、"Xen"、"AWS"、"GCP" 或「其他」。
-**Hypervisor 版本號碼** | 否 | Hypervisor 版本。
-**虛擬機器識別碼** | 否 | VM 識別碼。 這是 VMware vCenter VM 的 **InstanceUUid** 值，或 Hyper-V 的 **Hyper-V VM 識別碼**。
-**Virtual Machine Manager 識別碼** | 否 | 這是 VMware vCenter 的 **InstanceUUid** 值。 Hyper-V 不需要此項目。
 **MAC 位址**| 否 | 伺服器 MAC 位址。
-**BIOS 識別碼** | 否 | 伺服器 BIOS 識別碼。
-**自訂伺服器識別碼** | 否 | 本機唯一的內部部署伺服器識別碼。 <br/> 可用來依本機識別碼追蹤匯入的伺服器。
-**應用程式 1 名稱** | 否 | 在伺服器上執行的工作負載名稱。<br/>您可以藉由在範本中[新增資料行](#add-multiple-applications)，來新增更多應用程式的詳細資料。 您最多可以新增五個應用程式。
-**應用程式 1 類型** | 否 | 在伺服器上執行的工作負載類型
-**應用程式 1 版本** | 否 | 在伺服器上執行的工作負載版本。
-**應用程式 1 授權到期日** | 否 | 工作負載的授權到期日 (如果適用)。
-**業務單位** | 否 | 伺服器所屬的業務單位。
-**公司擁有者** | 否 | 業務單位擁有者。
-**商務應用程式名稱** | 否 | 應用程式所屬的應用程式名稱。
-**位置** | 否 | 伺服器所在的資料中心。
+
 
 ### <a name="add-operating-systems"></a>新增作業系統
 
@@ -159,19 +145,6 @@ ms.locfileid: "79453641"
 - 磁碟 2 讀取輸送量
 - 磁碟 2 寫入輸送量
 
-### <a name="add-multiple-applications"></a>新增多個應用程式
-
-範本會提供單一應用程式的欄位。 您最多可為五個應用程式新增類似的資料行。  
-
-例如，若要指定第二個應用程式的所有欄位，請新增下列資料行：
-
-- 應用程式 2 名稱
-- 應用程式 2 類型
-- 應用程式 2 版本
-- 應用程式 2 授權到期日
-
-> [!NOTE]
-> 當您評估內部部署環境是否可進行移轉時，應用程式資訊會很有用處。 不過，Azure Migrate 伺服器評量目前不會執行應用層級評量，或是在建立評量時將應用程式納入考量。
 
 ## <a name="import-the-server-information"></a>匯入伺服器資訊
 

@@ -3,7 +3,7 @@ title: 教學課程 - 將自訂網域新增至 Azure CDN 端點 | Microsoft Docs
 description: 在本教學課程中，您會將 Azure CDN 端點對應至自訂網域。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/11/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222405"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260576"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教學課程：將自訂網域新增至 Azure CDN 端點
 本教學課程說明如何將自訂網域新增至 Azure 內容傳遞網路 (CDN) 端點。 使用 CDN 端點來傳遞內容時，如果您想要在 CDN URL 中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。 
@@ -50,7 +50,7 @@ ms.locfileid: "79222405"
 自訂網域及其子網域一次只能與單一端點相關聯。 不過，您可以使用多個 CNAME 記錄，將來自相同自訂網域的不同子網域用於不同的 Azure 服務端點。 您也可以將具有不同子網域的自訂網域對應至相同的 CDN 端點。
 
 > [!NOTE]
-> 如果您使用 Azure DNS 作為網域提供者，則可將任何別名記錄類型用於自訂網域。 本逐步解說會使用 CNAME 記錄類型。 如果您使用 A 或 AAAA 記錄類型，請遵循以下相同步驟並以您選擇的記錄類型取代 CNAME。 如果您使用別名記錄來新增根網域作為自訂網域，並且想要啟用 SSL，則必須使用手動驗證，如[本文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 如需詳細資訊，請參閱[將區域 Apex 指向 Azure CDN 端點](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
+> 如果您使用 Azure DNS 作為網域提供者，則可將任何別名記錄類型用於自訂網域。 本逐步解說會使用 CNAME 記錄類型。 如果您使用 A 或 AAAA 記錄類型，請遵循以下相同步驟並以您選擇的記錄類型取代 CNAME。 如果您使用別名記錄來新增根網域作為自訂網域，並且想要啟用 TLS，則必須使用手動驗證，如[本文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 如需詳細資訊，請參閱[將區域 Apex 指向 Azure CDN 端點](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>對應暫時 cdnverify 子網域
 

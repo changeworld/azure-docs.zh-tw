@@ -1,5 +1,5 @@
 ---
-title: 快速入門：為適用於 IoT 的 Azure 資訊安全中心建立自訂警示
+title: 快速入門：建立自訂警示
 description: 了解、建立及指派適用於 IoT 的 Azure 資訊安全中心安全性服務的自訂裝置警示。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78303523"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310840"
 ---
 # <a name="quickstart-create-custom-alerts"></a>快速入門：建立自訂警示
 
+使用自訂的安全性群組和警示，利用端對端安全性資訊和類別裝置知識，來確保您的 IoT 解決方案有更健全的安全性。
 
-使用自訂的安全性群組和警示，利用端對端安全性資訊和類別裝置知識，來確保您的 IoT 解決方案有更健全的安全性。 
-
-## <a name="why-use-custom-alerts"></a>為何要使用自訂警示？ 
+## <a name="why-use-custom-alerts"></a>為何要使用自訂警示？
 
 您最了解您自己的 IoT 裝置。
 
@@ -40,7 +39,7 @@ ms.locfileid: "78303523"
 這些群組可以代表配備了特定硬體的裝置、部署在特定位置的裝置，或任何其他適用於特定需求的群組。
 
 安全性群組可透過名為 **SecurityGroup** 的裝置對應項標籤屬性加以定義。 根據預設，IoT 中樞上的每個 IoT 解決方案都會有一個名為 **default** 的安全性群組。 變更 **SecurityGroup**屬性的值，就能變更裝置的安全性群組。
- 
+
 例如：
 
 ```
@@ -61,26 +60,24 @@ ms.locfileid: "78303523"
   "version": 4,
   "tags": {
     "SecurityGroup": "default"
-  }, 
+  },
 ```
 
-請使用安全性群組來將裝置分組到不同的邏輯類別。 在建立群組後，請將其指派至您所選擇的自訂警示，以獲得最有效的端對端 IoT 安全性解決方案。 
+請使用安全性群組來將裝置分組到不同的邏輯類別。 在建立群組後，請將其指派至您所選擇的自訂警示，以獲得最有效的端對端 IoT 安全性解決方案。
 
 ## <a name="customize-an-alert"></a>自訂警示
 
-1. 開啟 IoT 中樞。 
-2. 按一下 [安全性]  區段中的 [自訂警示]  。 
-3. 選擇要作為自訂內容套用對象的安全性群組。 
-4. 按一下 [新增自訂警示]  。
-5. 從下拉式清單中選取自訂警示。 
-6. 編輯所需屬性，按一下 [確定]  。
-7. 請務必按一下 [儲存]  。 若未儲存新的警示，該警示會在您下一次關閉 IoT 中樞時遭到刪除。
+1. 開啟 IoT 中樞。
+1. 按一下 [安全性]  區段中的 [自訂警示]  。
+1. 選擇要作為自訂內容套用對象的安全性群組。
+1. 按一下 [新增自訂警示]  。
+1. 從下拉式清單中選取自訂警示。
+1. 編輯所需屬性，按一下 [確定]  。
+1. 請務必按一下 [儲存]  。 若未儲存新的警示，該警示會在您下一次關閉 IoT 中樞時遭到刪除。
 
- 
 ## <a name="alerts-available-for-customization"></a>可供自訂的警示
 
-適用於 IoT 的 Azure 資訊安全中心提供了大量警示，您可以根據本身的特定需求加以自訂。 請檢閱[可自訂的警示資料表](concept-customizable-security-alerts.md)，以了解警示嚴重性、資料來源、描述，以及您在收到每個警示時可參考的建議補救步驟。 
-
+適用於 IoT 的 Azure 資訊安全中心提供了大量警示，您可以根據本身的特定需求加以自訂。 請檢閱[可自訂的警示資料表](concept-customizable-security-alerts.md)，以了解警示嚴重性、資料來源、描述，以及您在收到每個警示時可參考的建議補救步驟。
 
 ## <a name="next-steps"></a>後續步驟
 
