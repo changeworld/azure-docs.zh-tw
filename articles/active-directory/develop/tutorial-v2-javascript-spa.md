@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 307490837b2963b3a1272eaafde63431de6645aa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984345"
+ms.locfileid: "80990951"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
@@ -283,8 +283,8 @@ ms.locfileid: "80984345"
 >
 > 若要在應用程式註冊資訊中設定重新導向 URL，請切換回 [應用程式註冊]  窗格，並且執行下列其中一項作業：
 >
-> - 將 `http://localhost:3000/`  設定為 [重新導向 URL]  。
-> - 如果您使用自訂 TCP 連接埠，請使用 `http://localhost:<port>/`  (其中 \<port>  是自訂 TCP 連接埠號碼)。
+> - 將 `http://localhost:3000/` 設定為 [重新導向 URL]  。
+> - 如果您使用自訂 TCP 連接埠，請使用 `http://localhost:<port>/` (其中 \<port>  是自訂 TCP 連接埠號碼)。
 >   1. 複製 [URL]  值。
 >   1. 切換回 [應用程式註冊]  窗格，並貼上複製的值作為 [重新導向 URL]  。
 >
@@ -519,8 +519,3 @@ Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。
 <!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-協助我們改善 Microsoft 身分識別平台。 完成問卷調查簡短的兩個問題，告訴我們您的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 身分識別平台問卷調查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

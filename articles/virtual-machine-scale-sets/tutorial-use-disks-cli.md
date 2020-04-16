@@ -1,19 +1,19 @@
 ---
 title: 教學課程 - 使用 Azure CLI 建立及使用擴展集所適用的磁碟
 description: 了解如何使用 Azure CLI 來建立及使用虛擬機器擴展集所適用的受控磁碟，包括如何新增、準備、列出及中斷連結磁碟。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067049"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008823"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集所適用的磁碟
 虛擬機器擴展集會使用磁碟來儲存 VM 執行個體的作業系統、應用程式和資料。 當您建立及管理擴展集時，請務必選擇預期的工作負載所適用的磁碟大小和組態。 本教學課程將說明如何建立及管理 VM 磁碟。 在本教學課程中，您將了解如何：
@@ -51,18 +51,7 @@ ms.locfileid: "80067049"
 
 
 ## <a name="azure-data-disks"></a>Azure 資料磁碟
-如果您需要安裝應用程式和儲存資料，您可以新增額外的資料磁碟。 資料磁碟應使用於任何需要持久且有回應之資料儲存體的情況。 每個資料磁碟皆具有 4 TB 的最大容量。 VM 執行個體的大小會決定可連結的資料磁碟數目。 每個 VM vCPU 可以連結兩個資料磁碟。
-
-### <a name="max-data-disks-per-vm"></a>每部 VM 的資料磁碟上限
-| 類型 | 一般大小 | 每部 VM 的資料磁碟上限 |
-|----|----|----|
-| [一般用途](../virtual-machines/linux/sizes-general.md) | A、B 和 D 系列 | 64 |
-| [計算最佳化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 64 |
-| [記憶體最佳化](../virtual-machines/linux/sizes-memory.md) | D、E、G 和 M 系列 | 64 |
-| [儲存體最佳化](../virtual-machines/linux/sizes-storage.md) | L 系列 | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 64 |
-| [高效能](../virtual-machines/linux/sizes-hpc.md) | A 和 H 系列 | 64 |
-
+如果您需要安裝應用程式和儲存資料，您可以新增額外的資料磁碟。 資料磁碟應使用於任何需要持久且有回應之資料儲存體的情況。 每個資料磁碟皆具有 4 TB 的最大容量。 VM 執行個體的大小會決定可連結的資料磁碟數目。 針對每個 VM 虛擬 CPU，每個虛擬機器最多可以將兩個資料磁碟連結到 64 個磁碟。
 
 ## <a name="vm-disk-types"></a>VM 磁碟類型
 Azure 提供兩種類型的磁碟。

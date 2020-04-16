@@ -1,20 +1,20 @@
 ---
 title: Azure CLI 範例 - 啟用主機型自動調整
 description: 此指令碼會建立執行 Ubuntu 的虛擬機器擴展集，並在 CPU 負載變更時，使用主機型計量來進行自動調整。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 3a0656d64e6f3a2205f184643266ba6b500acc95
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b934e327a4c1ed18c682f909b2d82e85d61125f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278793"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008381"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>如何使用 Azure CLI 自動調整虛擬機器擴展集
 此指令碼會建立執行 Ubuntu 的虛擬機器擴展集，並在 CPU 負載變更時，使用主機型計量來進行自動調整。

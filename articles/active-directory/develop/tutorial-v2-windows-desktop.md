@@ -1,26 +1,22 @@
 ---
-title: 開始使用 Microsoft 身分識別平台 Windows 桌面 | Microsoft Docs
+title: 開始使用 Microsoft 身分識別平台 Windows 桌面
 description: Windows Desktop .NET (XAML) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台保護的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129918"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990934"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
@@ -162,7 +158,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 本節會說明應用程式如何查詢受保護的後端伺服器 (例如 Microsoft Graph)。 
 
-系統應會自動建立 MainWindow.xaml  檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 *Grid>\<* 節點取代為下列程式碼：
+系統應會自動建立 MainWindow.xaml  檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 \<Grid>  節點取代為下列程式碼：
 
 ```xml
 <Grid>
@@ -379,8 +375,3 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 <!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
-
-協助我們改善 Microsoft 身分識別平台。 完成問卷調查簡短的兩個問題，告訴我們您的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 身分識別平台問卷調查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

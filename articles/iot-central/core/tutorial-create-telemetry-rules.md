@@ -3,23 +3,23 @@ title: 教學課程 - 在 Azure IoT Central 應用程式中建立和管理規則
 description: 本教學課程說明 Azure IoT Central 規則如何讓您近乎即時地監視裝置，以及在觸發規則時自動叫用動作，例如傳送電子郵件。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77167464"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999048"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教學課程：在 Azure IoT Central 應用程式中建立規則和設定通知
 
 *本文適用於操作員、建置員及系統管理員。*
 
-您可以使用 Azure IoT Central 來遠端監視連線的裝置。 Azure IoT Central 規則可讓您近乎即時地監視裝置，以及自動叫用動作，例如傳送電子郵件。 只要按幾下，就可以定義條件來監視裝置的遙測資料以及設定對應的動作。 本文將說明如何建立規則來監視裝置所傳送的遙測。
+您可以使用 Azure IoT Central 來遠端監視連線的裝置。 Azure IoT Central 規則可讓您近乎即時地監視裝置，以及自動叫用動作，例如傳送電子郵件。 本文將說明如何建立規則來監視裝置所傳送的遙測。
 
 裝置可以使用遙測資料，從裝置傳送數值資料。 當所選裝置的遙測資料超出指定閾值時，便會觸發規則。
 
@@ -34,11 +34,11 @@ ms.locfileid: "77167464"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md) (英文) 的快速入門，以便建立要使用的 **MXChip IoT DevKit** 裝置範本。
+開始之前，請先完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md) (英文) 和[將模擬裝置新增至 IoT Central 應用程式](./quick-create-simulated-device.md) (英文) 的快速入門，以便建立要使用的 **MXChip IoT DevKit** 裝置範本。
 
 ## <a name="create-a-rule"></a>建立規則
 
-若要建立遙測規則，裝置範本必須至少定義一個遙測量測。 本教學課程中，使用的是會傳送溫度和濕度遙測資料的環境感應器裝置。 在[將模擬裝置新增至 IoT Central 應用程式](./quick-create-pnp-device.md)快速入門中，會新增此裝置範本，並建立模擬裝置。 此規則會監視裝置所報告的遙測，並在裝置溫度超過 70 度時傳送電子郵件。
+若要建立遙測規則，裝置範本必須至少包含一個遙測值。 本教學課程會使用模擬的 **MXChip IoT DevKit** 裝置來傳送溫度和濕度遙測。 在[將模擬裝置新增至 IoT Central 應用程式](./quick-create-simulated-device.md)快速入門中，會新增此裝置範本，並建立模擬裝置。 此規則會監視裝置所報告的遙測，並在裝置溫度超過 70 度時傳送電子郵件。
 
 1. 在左側窗格中，選取 [規則]  。
 
@@ -66,8 +66,8 @@ ms.locfileid: "77167464"
 
 1. 或者也可以設定**時間彙總**。 選取時間彙總時，也必須從 [彙總] 下拉式功能表選取彙總類型，例如平均或總和。
 
-    * 如果沒有彙總，規則就會在每個遙測資料點符合條件時觸發。 例如，如果將規則設定為在溫度超過 70 時觸發，則此規則幾乎會在裝置報告溫度 > 70 時立即觸發。
-    * 使用彙總時，如果時間範圍內遙測資料點的彙總值符合條件，此規則就會觸發。 例如，如果規則是設定為在當溫度高於 70 觸發，而時間彙總設為 10 分鐘、彙總類型設為平均，該規則就會在裝置回報平均溫度 > 70 時觸發 (以 10 分鐘間隔計算)。
+    * 如果沒有彙總，規則就會在每個遙測資料點符合條件時觸發。 例如，如果將規則設定為在溫度超過 70 時觸發，則此規則幾乎會在裝置溫度超過此值時立即觸發。
+    * 使用彙總時，如果時間範圍內遙測資料點的彙總值符合條件，此規則就會觸發。 例如，如果規則是設定為在當溫度高於 70 觸發，而時間彙總設為 10 分鐘，該規則就會在裝置回報平均溫度高於 70 時觸發 (以 10 分鐘間隔計算)。
 
      ![彙總條件](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
@@ -100,11 +100,11 @@ ms.locfileid: "77167464"
 
 ## <a name="enable-or-disable-a-rule"></a>啟用或停用規則
 
-選擇您要啟用或停用的規則。 切換規則中的 [啟用]  或 [停用]  按鈕，即可啟用或停用規則範圍內所有裝置的該項規則。
+選擇您要啟用或停用的規則。 切換規則中的 [啟用/停用]  按鈕，即可啟用或停用規則範圍內所有裝置的該項規則。
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>啟用或停用裝置的規則
+## <a name="enable-or-disable-a-rule-for-specific-devices"></a>啟用或停用特定裝置的規則
 
-選擇您要啟用或停用的規則。 在 [範圍]  區段中新增篩選，即可納入或排除裝置範本中的特定裝置。
+選擇您要自訂的規則。 使用 [目標裝置]  區段中的一或多個篩選條件，將規則的範圍縮小至您要監視的裝置。
 
 ## <a name="next-steps"></a>後續步驟
 

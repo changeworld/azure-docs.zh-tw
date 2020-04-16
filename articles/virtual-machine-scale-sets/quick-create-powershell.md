@@ -1,19 +1,19 @@
 ---
 title: 快速入門 - 使用 Azure PowerShell 建立虛擬機器擴展集
 description: 藉由了解如何使用 Azure PowerShell 快速建立虛擬機器擴展集，開始使用您的部署。
-author: cynthn
+author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
-ms.author: cynthn
-ms.openlocfilehash: b3454291a40a1d39b281e28b7d1ebdbcac4020b4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: ab5efc84ed88ef5ef245bfead2cc709405dc79ea
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270901"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008602"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立虛擬機器擴展集
 

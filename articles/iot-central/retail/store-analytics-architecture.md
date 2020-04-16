@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022115"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999011"
 ---
 # <a name="in-store-analytics-architecture"></a>店內分析架構
 
@@ -51,7 +51,7 @@ Azure IoT Central 也為店員提供量身打造的體驗，讓他們能夠從�
 解決方案內的 Azure IoT Central 應用程式可設定為將原始或彙總的見解匯出至一組 Azure PaaS (平台即服務) 服務，這些服務可以執行資料操作，並且在將這些見解登陸到企業應用程式之前加以擴充。 
 
 ## <a name="business-application"></a>商務應用程式
-IoT 資料可用來為零售環境內部署的不同類型商務應用程式提供強大的功能。 零售商店經理或員工成員可以使用這些應用程式來將商業見解視覺化，並即時採取有意義的動作。 若要了解如何為零售小組建置即時 Power BI 儀表板，請遵循此[教學課程](./tutorial-in-store-analytics-create-app-pnp.md)。
+IoT 資料可用來為零售環境內部署的不同類型商務應用程式提供強大的功能。 零售商店經理或員工成員可以使用這些應用程式來將商業見解視覺化，並即時採取有意義的動作。 若要了解如何為零售小組建置即時 Power BI 儀表板，請遵循此[教學課程](./tutorial-in-store-analytics-create-app.md)。
 
 ## <a name="next-steps"></a>後續步驟
 * 開始使用[店內分析簽出](https://aka.ms/checkouttemplate)和[店內分析狀況監視](https://aka.ms/conditiontemplate)應用程式範本。 
