@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: 18a2e5118ab8ab30de5cc4dbf75342cc5275256c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: trbye
+ms.openlocfilehash: 57de7f1e7c37fec66cda666d3f144e52849a026f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656733"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399886"
 ---
 在為 macOS 開發時,有三個語音 SDK 可用。
 

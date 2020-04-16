@@ -3,21 +3,21 @@ title: 為自訂語音 - 語音服務準備資料
 titleSuffix: Azure Cognitive Services
 description: 在測試 Microsoft 語音辨識的準確性或訓練自訂模型時,您需要音訊和文字數據。 在此頁上,我們將介紹數據類型、如何使用和管理它們。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: d6e377ca4f33c0160267b23daaaaef5e07c271bb
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398750"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402133"
 ---
-# <a name="prepare-data-for-custom-speech"></a>為自訂語音準備資料
+# <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
 在測試 Microsoft 語音辨識的準確性或訓練自訂模型時,您需要音訊和文字數據。 在此頁上,我們將介紹數據類型、如何使用和管理它們。
 
@@ -182,5 +182,5 @@ ms.locfileid: "80398750"
 
 * [檢查資料](how-to-custom-speech-inspect-data.md)
 * [評估您的資料](how-to-custom-speech-evaluate-data.md)
-* [定型模型](how-to-custom-speech-train-model.md)
+* [定型您的模型](how-to-custom-speech-train-model.md)
 * [部署模型](how-to-custom-speech-deploy-model.md)

@@ -2,21 +2,21 @@
 title: 語音助理文件
 summary: 使用語音服務的語音助理使開發人員能夠為其應用程式和體驗創建自然、類似人類的對話介面。
 metadata:
-  title: 語音助理文檔 - 教程，API 參考 - Azure 認知服務 |微軟文檔
+  title: 語音助理文檔 - 教程,API 參考 - Azure 認知服務 |微軟文件
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: dapine
-  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.author: trbye
+  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415150"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401443"
 landingContent:
 - title: 關於語音助理
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: 什麼是語音助理？
       url: voice-assistants.md
-    - text: 什麼是自訂命令應用？
+    - text: 什麼是自定義命令應用?
       url: custom-commands.md
     - text: 什麼是 Direct Line Speech？
       url: direct-line-speech.md
@@ -34,29 +34,29 @@ landingContent:
       url: faq-voice-assistants.md
     - text: 語音助理定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-- title: 使用自訂命令進行開發
+- title: 使用自訂指令進行開發
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 創建自訂命令應用
+    - text: 建立自訂命令應用程式
       url: quickstart-custom-speech-commands-create-new.md
-    - text: 使用參數創建自訂命令
+    - text: 使用參數建立自訂命令
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: 將自訂命令與自訂語音一起使用
+    - text: 使用自訂命令搭配自訂語音
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: 將自訂命令與語音 SDK 一起使用
+    - text: 使用自訂命令搭配語音 SDK
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
     - text: 從用戶端執行命令
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: 添加參數驗證
+    - text: 新增參數驗證
       url: how-to-custom-speech-commands-validations.md
-    - text: 添加確認
+    - text: 新增確認
       url: how-to-custom-speech-commands-confirmations.md
-    - text: 添加一步校正
+    - text: 新增單一步驟的更正
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: 使用直線語音進行開發
+- title: 使用直線語音開發
   linkLists:
   - linkListType: quickstart
     links:
@@ -74,7 +74,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 創建自訂關鍵字
+    - text: 建立自訂關鍵字
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:

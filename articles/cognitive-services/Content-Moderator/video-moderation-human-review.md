@@ -1,25 +1,25 @@
 ---
 title: 使用人工審核進行影片仲裁 - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 使用電腦輔助影片審核和人力審查工具來審核不當的內容
+description: 使用機器輔助視訊稽核和審閱工具來緩和不適當的內容
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72754164"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404243"
 ---
 # <a name="video-moderation-with-human-review"></a>使用人工審核進行影片仲裁
 
-使用內容管理員的機器輔助[視頻審核](video-moderation-api.md)和[人工審閱工具](Review-Tool-User-Guide/human-in-the-loop.md)，對成人（顯式）和淫穢（暗示性）內容的視頻和腳本進行適度，以獲得最適合您業務的效果。
+使用內容審閱者的計算機輔助[視頻審核](video-moderation-api.md)和[審閱工具](Review-Tool-User-Guide/human-in-the-loop.md),對成人(顯式)和淫穢(暗示性)內容的視頻和腳本進行適度調整,以獲得最適合您業務的效果。
 
 ## <a name="video-trained-classifier-preview"></a>經過影片訓練的分類器 (預覽)
 

@@ -3,19 +3,19 @@ title: 將文字轉換為語音，Python - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本文中,您將學習如何使用 Python 和文字到語音 REST API 將文字轉換為語音。 本指南中所包含的範例文字已建構為語音合成標記語言 (SSML)。 這可讓您選擇語音回應的語音和語言。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
-ms.author: dapine
-ms.openlocfilehash: 6ea3f63bea0701dcd0f4b38f6584816d9a1bfbc7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: trbye
+ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258421"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400824"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 將文字轉換為語音
 

@@ -740,6 +740,8 @@
           href: insights/containers.md
     - name: 監視其他資源
       items:
+        - name: Key Vault
+          href: insights/key-vault-insights-overview.md
         - name: 儲存體
           items:
             - name: 適用於儲存體的 Azure 監視器

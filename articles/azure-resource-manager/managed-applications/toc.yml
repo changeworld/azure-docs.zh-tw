@@ -8,13 +8,11 @@
   expanded: true
   items:
     - name: 發佈應用程式定義
-      href: publish-managed-app-definition-quickstart.md
+      href: publish-service-catalog-app.md
     - name: 部署服務目錄應用程式
       href: deploy-service-catalog-quickstart.md
 - name: 教學課程
   items:
-    - name: 建立定義檔案
-      href: publish-service-catalog-app.md
     - name: 發佈市集應用程式
       href: publish-marketplace-app.md
     - name: 使用自訂提供者建立受控應用程式
@@ -130,7 +128,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

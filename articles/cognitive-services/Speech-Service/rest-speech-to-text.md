@@ -1,44 +1,44 @@
 ---
-title: 語音到文本 API 引用 （REST） - 語音服務
+title: 語音到文字 API 引用 (REST) - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何使用語音到文本 REST API。 在本文中，您會了解到授權選項、查詢選項，以及如何建構要求與接收回應。
+description: 瞭解如何使用語音到文字 REST API。 在本文中，您會了解到授權選項、查詢選項，以及如何建構要求與接收回應。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: 759ea697e4093da5bfc1c082c886c6dfda636f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: fbb4d114d1fee21d7950e53b06fc16c96b5c930b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474793"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400189"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
-作為[語音 SDK](speech-sdk.md)的替代方法，語音服務允許您使用 REST API 將語音轉換為文本。 每個可存取的端點皆與區域相關聯。 您的應用程式需要您打算使用之端點的訂用帳戶金鑰。 REST API 非常有限，只有在[語音 SDK](speech-sdk.md)不能的情況下才應使用它。
+為[語音 SDK](speech-sdk.md)的替代方法,語音服務允許您使用 REST API 將語音轉換為文字。 每個可存取的端點皆與區域相關聯。 您的應用程式需要您打算使用之端點的訂用帳戶金鑰。 REST API 非常有限,只有在[語音 SDK](speech-sdk.md)不能的情況下才應使用它。
 
-在使用語音到文本 REST API 之前，請瞭解：
+在使用語音到文字 REST API 之前,請瞭解:
 
 * 使用 REST API 並直接傳輸音訊的請求只能包含長達 60 秒的音訊。
 * 語音轉文字 REST API 只會傳回最終結果， 不提供部分的結果。
 
-如果發送較長的音訊是應用程式的要求，請考慮使用[語音 SDK](speech-sdk.md)或基於檔的 REST API，如[批次處理轉錄](batch-transcription.md)。
+如果傳送較長的音效是應用程式的要求,請考慮使用[語音 SDK](speech-sdk.md)或基於檔案的 REST API,如[批次處理轉錄](batch-transcription.md)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
 ## <a name="regions-and-endpoints"></a>區域與端點
 
-REST API 的終結點具有以下格式：
+REST API 的終結點具有以下格式:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-替換`<REGION_IDENTIFIER>`與匹配此表中訂閱區域的識別碼：
+取代`<REGION_IDENTIFIER>`與符合此表中訂閱區域的識別碼:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -51,10 +51,10 @@ REST 要求的查詢字串中可能包括這些參數。
 
 | 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
-| `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要 |
+| `language` | 識別正在辨識的口說語言。 請參考[支援的語言](language-support.md#speech-to-text)。 | 必要 |
 | `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選用 |
-| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值是`masked`，用 星號替換褻瀆，`removed`從結果中刪除所有褻瀆， 或`raw`， 包括結果中的褻瀆。 預設值是 `masked`。 | 選用 |
-| `cid` | 使用[自訂語音門戶](how-to-custom-speech.md)創建自訂模型時，可以通過 **"部署"** 頁上的**終結點 ID**使用自訂模型。 使用**終結點 ID**作為查詢字串參數`cid`的參數。 | 選用 |
+| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值是`masked`,用 星號替換褻`removed`瀆, 從結果中刪除所有褻`raw`瀆, 或 , 包括結果中的褻瀆。 預設值是 `masked`。 | 選用 |
+| `cid` | 使用[自訂語音門戶](how-to-custom-speech.md)創建自定義模型時,可以通過 **「部署」** 頁上的**終結點 ID**使用自訂模型。 使用**終結點 ID**作為查詢字`cid`串參數 的參數。 | 選用 |
 
 ## <a name="request-headers"></a>要求標頭
 
@@ -79,7 +79,7 @@ REST 要求的查詢字串中可能包括這些參數。
 | OGG    | OPUS  | 16 位元  | 16 kHz，單聲道 |
 
 >[!NOTE]
->上述格式通過語音服務中的 REST API 和 WebSocket 支援。 [語音 SDK](speech-sdk.md)目前支援帶有 PCM 編解碼器[以及其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
+>上述格式透過語音服務中的 REST API 和 WebSocket 支援。 [語音 SDK](speech-sdk.md)目前支援帶有 PCM 編解碼器[以及其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
 
 ## <a name="sample-request"></a>範例要求
 
@@ -101,15 +101,15 @@ Expect: 100-continue
 
 | HTTP 狀態碼 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| `100` | Continue | 已接受初始要求。 繼續傳送其餘的資料。 （與塊傳輸一起使用） |
+| `100` | Continue | 已接受初始要求。 繼續傳送其餘的資料。 ( 與區塊傳輸一起使用) |
 | `200` | [確定] | 要求成功；回應主體是 JSON 物件。 |
-| `400` | 不正確的要求 | 未提供語言代碼，不支援的語言、不正確音訊檔等。 |
+| `400` | 不正確的要求 | 未提供語言代碼,不支援的語言、無效的音訊檔等。 |
 | `401` | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
 | `403` | 禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
 
 ## <a name="chunked-transfer"></a>區塊傳輸
 
-塊狀傳輸`Transfer-Encoding: chunked`（ ） 有助於減少識別延遲。 它允許語音服務在傳輸音訊檔時開始處理該檔。 REST API 不會提供部分或中間的結果。
+區塊狀`Transfer-Encoding: chunked`傳輸( ) 有助於減少辨識延遲。 它允許語音服務在傳輸音訊檔時開始處理該檔。 REST API 不會提供部分或中間的結果。
 
 此程式碼範例說明如何以區塊傳送音訊。 只有第一個區塊應該包含音訊檔案的標頭。 `request`是`HttpWebRequest`連接到相應 REST 終結點的物件。 `audioFile` 是音訊檔案在磁碟上的路徑。
 
@@ -150,7 +150,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | 參數 | 描述  |
 |-----------|--------------|
 |`RecognitionStatus`|狀態，例如 `Success` 代表辨識成功。 請參閱下一個表格。|
-|`DisplayText`|大寫後識別的文本，標點符號，反文本正常化（將口語文本轉換為較短的形式，如200表示"200"或"史密斯博士"為"史密斯醫生"），以及褻瀆性掩蓋。 只會在成功時呈現。|
+|`DisplayText`|大寫后識別的文本,標點符號,反文本規範化(將口語文本轉換為較短的形式,如200表示"200"或"史密斯博士"為"史密斯醫生"),以及褻瀆性掩蓋。 只會在成功時呈現。|
 |`Offset`|辨識的語音在音訊資料流中開始的時間 (以 100 奈秒為單位)。|
 |`Duration`|辨識的語音在音訊資料流中的持續時間 (以 100 奈秒為單位)。|
 
@@ -167,7 +167,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音訊只包含不雅內容，而且 `profanity` 查詢參數設為 `remove`，則服務不會傳回語音結果。
 
-格式`detailed`包括與`simple`格式相同的資料，以及`NBest`同一識別結果的替代解釋清單。 這些結果的排名從最不可能到最不可能。 第一個項目與主要辨識結果相同。  使用 `detailed` 格式時，系統會提供 `DisplayText` 作為 `NBest` 清單中每個結果的 `Display`。
+格式`detailed`包括`simple`與 格式相同的數據`NBest`,以及同一識別結果的替代解釋清單。 這些結果的排名從最不可能到最不可能。 第一個項目與主要辨識結果相同。  使用 `detailed` 格式時，系統會提供 `DisplayText` 作為 `NBest` 清單中每個結果的 `Display`。
 
 `NBest` 清單中的每個物件包括：
 
@@ -181,7 +181,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="sample-responses"></a>回應範例
 
-`simple`識別的典型回應：
+`simple`識別的典型回應:
 
 ```json
 {
@@ -192,7 +192,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-`detailed`識別的典型回應：
+`detailed`識別的典型回應:
 
 ```json
 {

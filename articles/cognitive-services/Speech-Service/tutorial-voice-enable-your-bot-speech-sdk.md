@@ -3,19 +3,19 @@ title: 教學:語音使用語音 SDK 開啟您的自動程式 - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本教學中,您將使用 Microsoft 機器人架構創建 Echo Bot,將其部署到 Azure,並將其註冊到機器人框架直接行語音通道。 然後,您將為 Windows 配置一個範例用戶端應用,該應用允許您與機器人通話,並聽到它回應您。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397888"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399466"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學:使用語音 SDK 啟用自動程式
 
@@ -56,7 +56,7 @@ ms.locfileid: "80397888"
 
 - 帶有工作麥克風和揚聲器(或耳機)的 Windows 10 電腦
 - [視覺工作室 2017](https://visualstudio.microsoft.com/downloads/)或更高版本
-- [.NET 核心 SDK](https://dotnet.microsoft.com/download)版本 2.1 或更高版本
+- [.NET 框架執行時 4.6.1](https://dotnet.microsoft.com/download)或更高版本
 - 一個 Azure 帳戶。 [免費註冊](https://azure.microsoft.com/free/ai/)。
 - [GitHub](https://github.com/)帳號
 - [將視窗的 Git](https://git-scm.com/download/win)
@@ -196,7 +196,7 @@ ms.locfileid: "80397888"
    * 對於**資源組**,選擇**語音回聲機器人教程-資源組**
    * 對於**託管計劃**,選擇**語音EchoBot教程-應用程式服務計劃**
    * 對於**應用程式見解**,請保留為 **"無"**
-1. 按下 **"創建"**
+1. 按一下 [建立] 
 1. 您應該在 Visual Studio 中看到一條如下所示的成功消息:
 
    ```
@@ -221,7 +221,7 @@ ms.locfileid: "80397888"
 2. 在**Azure 服務**導航中,在 **「設定」** 下單擊「**配置**」 。
 3. 選擇「**常規設定」** 選項卡。
 4. 找到**Web 套接字的**切換,並將其設置為 **「打開**」 。
-5. 按一下 [儲存]****。
+5. 按一下 [檔案]  。
 
 > [!TIP]
 > 您可以使用 Azure 應用服務頁頂部的控制項停止或重新啟動服務。 在故障排除時,這可能派上用場。
@@ -267,28 +267,32 @@ ms.locfileid: "80397888"
    * 尋找**更多頻道**,找到並按下 **「直線語音**」。。
    * 查看標題為 **「設定直線語音**」的頁面上的文本,然後展開標記為「認知服務帳戶」的下拉菜單。
    * 從選單中選擇您之前創建的語音資源(例如,**語音EchoBotTutorial-語音**),將自動程式與語音訂閱鍵相關聯。
-   * 按一下 [儲存]****。
+   * 按一下 [檔案]  。
 
 1. 在**機器人管理**「導航中,按下」**設定**。
    * 選中標記為啟用**流式處理終結點**的框。 這是必需的,以啟用在自動程式與直線語音通道之間的 Web 套接字上構建的通信協定。
-   * 按一下 [儲存]****。
+   * 按一下 [檔案]  。
 
 > [!TIP]
 > 如果您想瞭解更多資訊,請參閱[將自動程式連接到直線語音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此頁包括其他資訊和已知問題。
 
-## <a name="build-the-windows-voice-assistant-client"></a>建構 Windows 語音助理用戶端
+## <a name="run-the-windows-voice-assistant-client"></a>執行 Windows 語音助理用戶端
 
-在此步驟中,您將構建 Windows 語音助理用戶端。 用戶端是 C# 中的 Windows 演示文稿基礎 (WPF) 應用,它使用[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)使用直接線路語音頻道管理與機器人的通信。 在編寫自定義客戶端應用之前,使用它與機器人進行交互並測試。
+在此步驟中,您將運行 Windows 語音助理用戶端。 用戶端是 C# 中的 Windows 演示文稿基礎 (WPF) 應用,它使用[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk)使用直接線路語音頻道管理與機器人的通信。 在編寫自定義客戶端應用之前,使用它與機器人進行交互並測試。 它是開源的,因此您可以下載可執行檔並運行它,也可以自己構建它。
 
 Windows 語音助理用戶端具有一個簡單的 UI,允許您設定與自動程式的連接、查看文本對話、以 JSON 格式查看 Bot-Framework 活動以及顯示自適應卡。 它還支援使用自定義關鍵字。 您將使用此用戶端與您的機器人對話並接收語音回應。
 
 在我們繼續之前,請確保您的麥克風和揚聲器已啟用並正常工作。
 
 1. 導航到[Windows 語音助理用戶端](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md)的 GitHub 儲存庫。
-2. 按照提供的指令複製儲存庫、生成專案、配置用戶端和啟動用戶端。
-3. 點選 **「重新連線**」並確保看到訊息 **「按麥克風」按鈕,或鍵入以開始與機器人對話**。
-4. 讓我們測試一下。按下麥克風按鈕,用英語說幾句話。 您說話時將顯示識別的文字。 當你說完之後,機器人會用自己的聲音回答,說"回聲",然後是識別的單詞。
-5. 您還可以使用文本與機器人通信。 只需在底部欄中鍵入文本。 
+1. 按照提供的說明,要麼
+   * 下載包含要執行的執行檔的 ZIP 套件或
+   * 通過克隆存儲庫和生成專案,自行構建可執行檔。
+
+1. 啟動用戶端應用程式並對其進行配置。
+1. 點選 **「重新連線**」並確保看到訊息 **「按麥克風」按鈕,或鍵入以開始與機器人對話**。
+1. 讓我們測試一下。按下麥克風按鈕,用英語說幾句話。 您說話時將顯示識別的文字。 當你說完之後,機器人會用自己的聲音回答,說"回聲",然後是識別的單詞。
+1. 您還可以使用文本與機器人通信。 只需在底部欄中鍵入文本。 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>解決 Windows 語音助理用戶端中的錯誤
 
@@ -425,7 +429,7 @@ Windows 語音助理用戶端使用 NuGet 包[Microsoft.認知服務.語音](htt
 2. 以前的部署配置已載入為預設值。 只需按下**Publish****EchoBot20190805125647 旁邊發布 - Web 部署**。
 3. **"發佈成功'** 訊息將顯示在 Visual Studio 輸出視窗中,並且將啟動一個網頁,其中將顯示"您的自動程式已準備就緒!
 4. 打開 Windows 語音助理用戶端應用,按一下設置按鈕(右上角的齒輪圖示),並確保`de-de`您仍然位於 「語言」欄位中。
-5. 按照[「構建 Windows 語音助理用戶端](#build-the-windows-voice-assistant-client)」中的說明重新連接到新部署的自動程式,使用新語言說話,並聽到使用新語音用該語言進行自動回復。
+5. 按照運行 Windows[語音助理用戶端](#run-the-windows-voice-assistant-client)中的說明重新連接到新部署的自動程式,使用新語言說話,並聽到使用新語音用該語言進行自動回復。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -433,7 +437,7 @@ Windows 語音助理用戶端使用 NuGet 包[Microsoft.認知服務.語音](htt
 
 1. 從[Azure 門戶](https://portal.azure.com)中,按下 Azure**服務**瀏覽中的**資源群組**。
 2. 尋找名為「**語音回聲機器人教程-資源群組」 的資源群組**。 單擊三個點 (...)。
-3. 選取 [刪除資源群組]****。
+3. 選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 
