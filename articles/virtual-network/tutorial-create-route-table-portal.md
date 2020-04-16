@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066279"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314294"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以路由表路由傳送網路流量
 
@@ -208,7 +208,7 @@ ms.locfileid: "80066279"
 | 基本概念 | 資源群組 | **myResourceGroup** |
 | | 虛擬機器名稱 | *myVmPublic* |
 | | 公用輸入連接埠 | **允許選取的連接埠** |
-| | 選取輸入連接埠 | **HTTP** 和 **RDP** |
+| | 選取輸入連接埠 | **RDP** |
 | 網路功能 | 虛擬網路 | **myVirtualNetwork** |
 | | 子網路 | **公用 (10.0.0.0/24)** |
 | | 公用 IP 位址 | 預設值 |
@@ -221,7 +221,7 @@ ms.locfileid: "80066279"
 | 基本概念 | 資源群組 | **myResourceGroup** |
 | | 虛擬機器名稱 | *myVmPrivate* |
 | | 公用輸入連接埠 | **允許選取的連接埠** |
-| | 選取輸入連接埠 | **HTTP** 和 **RDP** |
+| | 選取輸入連接埠 | **RDP** |
 | 網路功能 | 虛擬網路 | **myVirtualNetwork** |
 | | 子網路 | **私人 (10.0.1.0/24)** |
 | | 公用 IP 位址 | 預設值 |

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 5ac36e47efd2e121126cd740dba0818feb39f5fb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76165823"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402890"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入門：適用於 Python 的臉部用戶端程式庫
 
@@ -40,12 +40,9 @@ ms.locfileid: "76165823"
 
 ### <a name="create-a-face-azure-resource"></a>建立臉部 Azure 資源
 
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立臉部資源。 您也可以：
+Azure 認知服務會由您訂閱的 Azure 資源呈現。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立臉部資源。 您也可以取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。  
 
-* 取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。  
-* 在 [Azure 入口網站](https://portal.azure.com/)上檢視您的資源
-
-從試用版訂用帳戶或資源取得金鑰後，請為名為 `FACE_SUBSCRIPTION_KEY` 的金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+從試用版訂用帳戶或資源取得金鑰後，請為名稱分別是 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
  
 ### <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
@@ -53,7 +50,7 @@ Azure 認知服務會由您訂閱的 Azure 資源呈現。 使用 [Azure 入口�
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
-然後，為資源的 Azure 端點和金鑰建立變數。 您可能需要變更端點的第一個部分 (`westus`) 以符合您的訂用帳戶。
+然後，為資源的 Azure 端點和金鑰建立變數。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 

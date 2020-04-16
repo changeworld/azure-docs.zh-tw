@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 4ef0420eab8064343b54f2c0bf15a692b8bc038c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886512"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382821"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -67,7 +67,7 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 - [Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md)
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
-- [資料總管](../../data-explorer/pricing-reserved-capacity.md)
+- [資料總管](/azure/data-explorer/pricing-reserved-capacity)
 - [磁碟儲存體](../../virtual-machines/linux/disks-reserved-capacity.md)
 - [專用主機](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [軟體方案](../../virtual-machines/linux/prepay-suse-software-charges.md)

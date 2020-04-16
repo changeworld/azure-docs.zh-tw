@@ -3,20 +3,20 @@ title: 快速入門：將語音合成至喇叭 - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您將使用語音 SDK，將文字轉換為合成語音並且透過喇叭播放輸出。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 95cf6ea645e4a9a769e95692e1116ec2f1ac8c61
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: e624c6c291dcd3ac17571cd93d67ac909d04f3d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77119419"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400410"
 ---
 # <a name="quickstart-synthesize-speech-to-a-speaker"></a>快速入門：將語音合成至喇叭
 

@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/20/2020
-ms.author: dapine
-ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: trbye
+ms.openlocfilehash: 10a11168b8046dbcc877f45141571fccdca879f0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80117103"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400298"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -18,7 +18,7 @@ ms.locfileid: "80117103"
 * Python 語音 SDK 套件適用於下列作業系統：
     * Windows：x64 和 x86。
     * Mac：macOS X 10.12 版或更新版本。
-    * Linux：x64 上的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8 和 CentOS 8。
+    * Linux：x64 上的 Ubuntu 16.04/18.04、Debian 9、RHEL 7/8 和 CentOS 7/8。
 * 在 Linux 上，執行下列命令以安裝必要的套件：
 
 # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
@@ -43,7 +43,7 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
+> 在 RHEL/CentOS 7/8 上，依照[如何設定適用於 Linux 的 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的指示進行。
 
 ---
 
@@ -148,7 +148,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>另請參閱
 

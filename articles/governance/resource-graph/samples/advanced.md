@@ -3,16 +3,16 @@ title: 進階查詢範例
 description: 使用 Azure Resource Graph 執行某些進階查詢，包括使用資料行、列出使用的標籤，以及使用規則運算式比對資源。
 ms.date: 03/20/2020
 ms.topic: sample
-ms.openlocfilehash: 98e80d0977ec23cba8b8c497373b6e89b52d430e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d0e7a9be37f9baf471584ee3fe26c52d13b3084
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130516"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381512"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>進階 Resource Graph 查詢範例
 
-透過 Azure Resource Graph 了解查詢的第一個步驟是對[查詢語言](../concepts/query-language.md)進行基本的認識。 如果您還不熟悉 [Azure 資料總管](../../../data-explorer/data-explorer-overview.md)，建議檢閱基本概念，以了解如何撰寫所需資源的要求。
+透過 Azure Resource Graph 了解查詢的第一個步驟是對[查詢語言](../concepts/query-language.md)進行基本的認識。 如果您還不熟悉 [Azure 資料總管](/azure/data-explorer/data-explorer-overview)，建議檢閱基本概念，以了解如何撰寫所需資源的要求。
 
 我們將逐步解說下列進階查詢︰
 

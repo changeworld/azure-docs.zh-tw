@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1c3a73cba6a2ece0c9c7459b3515f053a648d683
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79202173"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408618"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure 虛擬網路 NAT 計量
 
-Azure 虛擬網路 NAT 閘道資源可提供多維度計量。 您可以使用這些計量來觀察作業，以供進行[疑難排解](nat-metrics.md)。  您可以針對重大問題 (例如 SNAT 耗盡) 設定警示。
+Azure 虛擬網路 NAT 閘道資源可提供多維度計量。 您可以使用這些計量來觀察作業，以供進行[疑難排解](troubleshoot-nat.md)。  您可以針對重大問題 (例如 SNAT 耗盡) 設定警示。
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" width="256" title="可供輸出到網際網路的虛擬網路 NAT">

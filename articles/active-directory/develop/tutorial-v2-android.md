@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5c8bd5accefceee042601c3cf7d71f5e9131e04e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880817"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380066"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph 
 
@@ -91,7 +91,7 @@ ms.locfileid: "80880817"
 
 1. 在 Android Studio 的專案窗格中，瀏覽至 **app\src\main\res**。
 2. 以滑鼠右鍵按一下 [res]  ，然後選擇 [新增]   > [目錄]  。 輸入 `raw` 作為新的目錄名稱，然後按一下 [確定]  。
-3. 在 app   > src   > main   > res   > raw  中，建立名為 `auth_configbn_single_account.json` 的新 JSON 檔案，並貼上您先前儲存的 MSAL 設定。 
+3. 在 app   > src   > main   > res   > raw  中，建立名為 `auth_config_single_account.json` 的新 JSON 檔案，並貼上您先前儲存的 MSAL 設定。 
 
     在 [重新導向 URI] 下方，貼上： 
     ```json
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>具現化 PublicClientApplication
 #### <a name="initialize-variables"></a>初始化變數 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -583,8 +583,3 @@ private void performOperationOnSignOut() {
 ## <a name="get-help"></a>取得說明
 
 對於本教學課程或 Microsoft 身分識別平台若有任何問題，請瀏覽[說明與支援](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)。
-
-協助我們改善 Microsoft 身分識別平台。 完成問卷調查簡短的兩個問題，告訴我們您的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 身分識別平台問卷調查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

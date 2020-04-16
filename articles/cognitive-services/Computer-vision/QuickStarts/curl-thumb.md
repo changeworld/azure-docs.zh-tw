@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74977296"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405051"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>快速入門：使用電腦視覺 REST API 和 cURL 產生縮圖
 
@@ -28,23 +28,6 @@ ms.locfileid: "74977296"
 
 - 您必須擁有 [cURL](https://curl.haxx.se/windows)。
 - 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。
-
-## <a name="get-thumbnail-request"></a>Get Thumbnail 要求
-
-您可以使用 [Get Thumbnail 方法](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) (英文)，產生影像的縮圖。
-
-若要執行範例，請執行下列步驟：
-
-1. 請將下列程式碼複製到編輯器中。
-1. 將 `<Subscription Key>` 換成您的有效訂用帳戶金鑰。
-1. 以要用來儲存縮圖的路徑和檔案名稱取代 `<File>`。
-1. 必要時，請將要求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) 變更為使用您取得訂用帳戶金鑰的位置。
-1. (選擇性) 變更要分析的影像 (`{\"url\":\"...`)。
-1. 在已安裝 cURL 的電腦上開啟命令視窗。
-1. 將程式碼貼入視窗中，然後執行命令。
-
->[!NOTE]
->您必須在 REST 呼叫中使用與用來取得訂用帳戶金鑰相同的位置。 例如，如果您已從 westus 取得訂用帳戶金鑰，請將下列 URL 中的 "westcentralus" 取代為 "westus"。
 
 ## <a name="create-and-run-the-sample-command"></a>建立和執行範例命令
 

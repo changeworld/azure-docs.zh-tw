@@ -1,53 +1,49 @@
 ---
-author: erhopf
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/02/2020
+ms.author: trbye
+ms.openlocfilehash: c2b844b3b1aa7a848e2668b3dca5a1cac5b5baaf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925229"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400804"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">建立 Azure 語音資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 > * 確定您可以存取麥克風以擷取音訊
 
-## <a name="add-sample-code"></a>新增範例程式碼
+## <a name="source-code"></a>原始程式碼
 
-1. 若要將新的空白類別新增到您的 Java 專案，請選取 [檔案]   > [新增]   > [類別]  。
+若要將新的空白類別新增到您的 Java 專案，請選取 [檔案]   > [新增]   > [類別]  。 在 [新增 Java 類別]  視窗中，於 [套件]  欄位中輸入 **speechsdk.quickstart**，並在 [名稱]  欄位中輸入 **Main**。
 
-1. 在 [新增 Java 類別]  視窗中，於 [套件]  欄位中輸入 **speechsdk.quickstart**，並在 [名稱]  欄位中輸入 **Main**。
+![[新增 Java 類別] 視窗的螢幕擷取畫面](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
-   ![[新增 Java 類別] 視窗的螢幕擷取畫面](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
+下列程式碼片段取代 *Main.java* 檔案的內容：
 
-1. 使用下列程式碼片段來取代 `Main.java` 中的所有程式碼：
+[!code-java[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/src/speechsdk/quickstart/Main.java#code)]
 
-   [!code-java[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/src/speechsdk/quickstart/Main.java#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 將字串 `YourSubscriptionKey` 取代為您的訂用帳戶金鑰。
+## <a name="code-explanation"></a>程式碼說明
 
-1. 將 `YourServiceRegion` 字串取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的 [區域識別碼]  (例如，免費試用訂用帳戶的區域是 `westus`)。
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. 儲存專案的變更。
+## <a name="build-and-run-app"></a>建置並執行應用程式
 
-> [!NOTE]
-> 語音 SDK 會預設為使用 en-us 來辨識語言，如需選擇來源語言的詳細資訊，請參閱[指定語音轉換文字的來源語言](../../../../how-to-specify-source-language.md)。
-
-## <a name="build-and-run-the-app"></a>建置並執行應用程式
-
-按 F11 鍵，或選取 [執行]   > [偵錯]  。
+按 <kbd>F11</kbd> 鍵，或選取 [執行]   > [偵錯]  。
 系統將會辨識接下來 15 秒來自您麥克風的語音輸入，並記錄在主控台視窗中。
 
 ![成功辨識後主控台輸出的螢幕擷取畫面](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-07-console-output.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199325"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383117"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解保留折扣如何套用至 Azure 資料總管
 
@@ -65,7 +65,7 @@ ms.locfileid: "77199325"
 
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-* [使用 Azure 資料總管保留容量預付 Azure 資料總管計算資源](../../data-explorer/pricing-reserved-capacity.md)  
+* [使用 Azure 資料總管保留容量預付 Azure 資料總管計算資源](/azure/data-explorer/pricing-reserved-capacity)  
 * [什麼是 Azure 的保留](save-compute-costs-reservations.md)  
 * [管理 Azure 保留](manage-reserved-vm-instance.md)  
 * [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)

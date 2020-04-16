@@ -1,42 +1,36 @@
 ---
-title: 快速入門：從麥克風辨識語音，C++ (Linux) - 語音服務
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 1ba1f2a61a293880e81dde0ce1f93460a555fa62
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: 57c66cb3597d8811be3caef74fa36af193b93be7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78925298"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400789"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](../../../../get-started.md)
-> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">建立 Azure 語音資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
 > * 確定您可以存取麥克風以擷取音訊
 
-## <a name="add-sample-code"></a>新增範例程式碼
+## <a name="source-code"></a>原始程式碼
 
-1. 建立名為 `helloworld.cpp` 的 C++ 原始程式檔，然後在其中貼上下列程式碼。
+建立名為 *helloworld.cpp* 的 C++ 原始程式檔，然後在其中貼上下列程式碼。
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/from-microphone/helloworld.cpp#code)]
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/from-microphone/helloworld.cpp#code)]
 
-1. 在這個新檔案中，以您的語音服務訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 將 `YourServiceRegion` 字串取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的 [區域識別碼]  (例如，免費試用訂用帳戶的區域是 `westus`)。
+## <a name="code-explanation"></a>程式碼說明
 
-> [!NOTE]
-> 語音 SDK 會預設為使用 en-us 來辨識語言，如需選擇來源語言的詳細資訊，請參閱[指定語音轉換文字的來源語言](../../../../how-to-specify-source-language.md)。
+[!INCLUDE [code explanation](../code-explanation.md)]
 
 ## <a name="build-the-app"></a>建置應用程式
 
@@ -98,4 +92,5 @@ ms.locfileid: "78925298"
 
 ## <a name="next-steps"></a>後續步驟
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

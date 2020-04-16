@@ -3,20 +3,20 @@ title: 快速入門：將語音合成至音訊檔案 - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您會使用語音 SDK，將文字轉換為音訊檔案中的合成語音。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d5df28728c2e911537d67b9276157dc94b080e23
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: b02b43b0f10e1a120ac7e2e3e763aa1e918075b1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77119421"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400299"
 ---
 # <a name="quickstart-synthesize-speech-into-an-audio-file"></a>快速入門：將語音合成至音訊檔案
 

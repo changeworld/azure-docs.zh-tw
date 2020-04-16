@@ -3,19 +3,19 @@ title: 快速入門：建立 LUIS 金鑰
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您將了解如何建立 LUIS 應用程式並取得金鑰。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.author: dapine
-ms.openlocfilehash: 5b1a5ac4867379457d161d07f4f4f2fc2d8ee6c3
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.author: trbye
+ms.openlocfilehash: df12b51020083489d431d0ebcd7eb506ef97caa2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77119590"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400842"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入門：取得 LUIS 端點金鑰
 

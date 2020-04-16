@@ -3,12 +3,12 @@ title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214766"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381525"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -50,7 +50,7 @@ Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準�
 
 現在您已更加了解 Azure Resource Graph，讓我們繼續深入了解如何建構查詢。
 
-請務必了解，Azure Resource Graph 的查詢語言是以 Azure 資料總管所使用的 [Kusto 查詢語言](../../data-explorer/data-explorer-overview.md)為基礎的。
+請務必了解，Azure Resource Graph 的查詢語言是以 Azure 資料總管所使用的 [Kusto 查詢語言](/azure/data-explorer/data-explorer-overview)為基礎的。
 
 首先，如需可搭配 Azure Resource Graph 使用的作業及函式詳細資料，請參閱 [Resource Graph 查詢語言](./concepts/query-language.md)。
 若要瀏覽資源，請參閱[探索資源](./concepts/explore-resources.md)。

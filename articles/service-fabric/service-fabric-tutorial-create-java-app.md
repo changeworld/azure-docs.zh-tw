@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 019e50057497c9f98d303a93dfa3f905226fa246
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cf1ede2db8dbdc7557775cf7b22dde53b69280da
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75465460"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314228"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>教學課程：在 Azure Service Fabric 上使用 Java API 前端服務和具狀態後端服務建立應用程式
 
@@ -889,7 +889,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     如果您使用 Mac，請利用下列命令執行本機叢集：使用您自有工作區的路徑取代傳入 **-v** 參數的命令。
 
     ```bash
-    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
     ```
     請參閱 [OS X 安裝指南](service-fabric-get-started-mac.md)中的詳細指示。
 

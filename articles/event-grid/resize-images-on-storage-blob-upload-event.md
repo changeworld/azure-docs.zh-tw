@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 868c7e3956f20837b3774c0958842a7835579a04
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: fc5e379aae7d8ff0d7cb685b0dd7e7e0a46bb677
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607508"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393298"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教學課程：使用 Event Grid 自動調整已上傳映像的大小
 
@@ -161,12 +161,12 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-範例 Node.js 大小調整函式可從 [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) 取得。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令，將此函式程式碼專案部署至函式應用程式。
+範例 Node.js 大小調整函式可從 [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) 取得。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令，將此函式程式碼專案部署至函式應用程式。
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 ---
 

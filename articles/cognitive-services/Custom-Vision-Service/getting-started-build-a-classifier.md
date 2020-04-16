@@ -3,19 +3,19 @@ title: 快速入門：建置分類器 - 自訂視覺服務
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您將了解如何使用自訂視覺網站建置影像分類模型。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.author: anroth
-ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 56bdaa324420bf274e7cda8ac1c6506e4bc9ad21
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76170018"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404062"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入門：如何使用自訂視覺建置分類器
 

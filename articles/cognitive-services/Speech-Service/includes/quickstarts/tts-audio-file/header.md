@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/31/2020
-ms.author: dapine
-ms.openlocfilehash: cd8da5eb9313685361ca56b56c024c2dfb37276e
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.author: trbye
+ms.openlocfilehash: 870dce55e79bf0169f19d31dfec6689c65fce9cd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76961535"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400276"
 ---
 在本快速入門中，您將使用[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，將文字轉換為音訊檔案中的合成語音。 在[文字轉換語音語言支援](../../../language-support.md#text-to-speech)底下，文字轉換語音服務提供了許多合成語音的選項。 在滿足幾個必要條件之後，將語音合成為檔案只需要採取五個步驟：
 > [!div class="checklist"]

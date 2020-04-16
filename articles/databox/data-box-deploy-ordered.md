@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "65604082"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398688"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -33,21 +33,13 @@ Azure 資料箱是一項混合式解決方案，可讓您以快速、簡便而�
 
 ### <a name="for-service"></a>針對服務
 
-在您開始前，請確定：
-- 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
-- 請確定您用於資料箱服務的訂用帳戶是下列其中一種類型：
-    - Microsoft Enterprise 合約 (EA)。 深入了解 [EA 訂用帳戶](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 雲端解決方案提供者 (CSP)。 深入了解 [Azure CSP 方案](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
-    - Microsoft Azure 贊助。 深入了解 [Azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-
-- 請確定您有訂用帳戶的擁有者或參與者存取權，才能建立資料箱訂單。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>針對裝置
 
 在您開始前，請確定：
 - 您已將主機電腦連線到資料中心網路。 資料箱會從這部電腦複製資料。 您的主機電腦必須執行支援的作業系統，如 [Azure 資料箱系統需求](data-box-system-requirements.md)中所述。
 - 您的資料中心必須有高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，也可以使用 1 GbE 資料連結，但是複製速度會受到影響。
-
 
 ## <a name="order-data-box"></a>訂購資料箱
 

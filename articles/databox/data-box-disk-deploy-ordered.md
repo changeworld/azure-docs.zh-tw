@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70012934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398710"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教學課程：訂購 Azure 資料箱磁碟
 
@@ -33,12 +33,7 @@ Azure 資料箱磁碟是一項混合式雲端解決方案，可讓您以快速�
 
 ### <a name="for-service"></a>針對服務
 
-在您開始前，請確定：
-- 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
-- 請確定您用於資料箱服務的訂用帳戶是下列其中一種類型：
-    - Microsoft Enterprise 合約 (EA)。 深入了解 [EA 訂用帳戶](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 雲端解決方案提供者 (CSP)。 深入了解 [Azure CSP 方案](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
-- 請確定您有訂用帳戶的擁有者或參與者存取權，才能建立資料箱訂單。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>針對裝置
 

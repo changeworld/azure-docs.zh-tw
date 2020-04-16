@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514403"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410901"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ ms.locfileid: "76514403"
 
 ### <a name="for-service"></a>針對服務
 
-在您開始前，請確定：
-
-- 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
-- 您用於資料箱服務的訂用帳戶為 [Microsoft Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)、[雲端解決方案提供者 (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) 或 [Microsoft Azure 贊助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-- 您有訂用帳戶的擁有者或參與者存取權可建立 Data Box Heavy 訂單。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>針對裝置
 
@@ -57,7 +53,6 @@ ms.locfileid: "76514403"
     - 若使用 40-Gbps 的纜線，纜線的裝置端必須是 QSFP+。
     - 若使用 10-G 的纜線，您需要將 SFP+ 纜線插入其中一端上的 10-Gbps 交換器，並在插入裝置的一端使用 QSFP+ 對 SFP+ 的配接器 (或是 QSA 配接器)。
 - 電源線已放入裝置背面的線槽中。
-
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

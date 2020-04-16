@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473025"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391570"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 受控應用程式概觀
 
@@ -84,4 +84,4 @@ Azure 中的所有資料提供者目前都不支援限制存取[資料作業](..
 在本文中，您會了解使用受控應用程式的優點。 移至下一篇文章以建立受控應用程式定義。
 
 > [!div class="nextstepaction"]
-> [快速入門：發佈 Azure 受控應用程式定義](publish-managed-app-definition-quickstart.md)
+> [快速入門：發佈 Azure 受控應用程式定義](publish-service-catalog-app.md)
