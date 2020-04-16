@@ -2,16 +2,16 @@
 title: 快速入門：建立 Linux Python 應用程式
 description: 藉由將您的第一個 Python 應用程式部署至 App Service 中的 Linux 容器，在 Azure App Service 上開始使用 Linux 應用程式。
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045659"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811150"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "80045659"
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (也支援 Python 3.6)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本。 執行 `az --version` 來檢查您的版本。
 
 ## <a name="download-the-sample"></a>下載範例
 
@@ -98,39 +98,44 @@ az login
 
 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令會在 App Service 上建立 Web 應用程式並部署您的程式碼。
 
-在包含範例程式碼的 *python-docs-hello-world* 資料夾中，執行下列 `az webapp up` 命令。 將 `<app-name>` 取代為全域唯一的應用程式名稱 (有效字元為 `a-z`、`0-9` 和 `-`  )。 同時將 `<location-name>` 取代為 Azure 區域，例如 **centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** 等等。 (您可藉由執行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令，擷取 Azure 帳戶的允許區域清單。)
+在包含範例程式碼的 *python-docs-hello-world* 資料夾中，執行下列 `az webapp up` 命令。 將 `<app-name>` 取代為全域唯一的應用程式名稱 (有效字元為 `a-z`、`0-9` 和 `-` )。
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-此命令可能需要數分鐘才能完成執行。 執行上述命令時，會顯示類似下列範例的資訊：
+`--sku F1` 引數會在免費定價層上建立 Web 應用程式。 您可以省略這個引數，改為使用進階層，如此會產生每小時成本。
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+您也可以選擇納入引數，其中 `-l <location-name>`centralus`<location_name>` 是 Azure 區域，例如 **centralus**, **eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** 等等。 您可執行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令，擷取 Azure 帳戶的允許區域清單。
+
+`az webapp up` 命令可能需要數分鐘才能完成執行。 執行上述命令時，系統會顯示類似下列範例的資訊，其中 `<app_name>` 會是您稍早提供的名稱：
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ Python 範例程式碼目前使用內建映像在 App Service 中執行 Linux �
 
 ## <a name="redeploy-updates"></a>重新部署更新
 
-在您慣用的程式碼編輯器中，開啟 *application.py* 並且變更最後一行上的 `return` 陳述式，以符合下列程式碼。 這裡包含 `print` 陳述式，以產生您在下一節中使用的記錄輸出。 
+在您偏好的程式碼編輯器中，開啟 application.py  並更新 `hello` 函式，如下所示。 這項變更會新增 `print` 陳述式，以產生您在下一節中使用的記錄輸出。 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 儲存您的變更並結束編輯器。 
 
-使用下列 `az webapp up` 命令來重新部署應用程式，使用您第一次用來部署應用程式的相同命令，以您之前使用的相同名稱取代 `<app-name>` 和 `<location-name>`。 
+再次使用 `az webapp up` 命令重新部署應用程式：
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+此命令會使用在 .azure/config  檔案中快取的值，包括應用程式名稱、資源群組和 App Service 方案。
 
 完成部署後，切換回開啟至 `http://<app-name>.azurewebsites.net` 的瀏覽器視窗並重新整理頁面，這應會顯示修改過的訊息：
 
@@ -172,24 +180,18 @@ az webapp up --sku F1 -n <app-name> -l <location-name>
 
 您可以存取從應用程式及其執行所在的容器產生的主控台記錄。 記錄包含使用 `print` 陳述式產生的任何輸出。
 
-首先，在終端機中執行下列命令來開啟容器記錄功能，將 `<app-name>` 取代為您的應用程式名稱，並將 `<resource-group-name>`取代為您所用 `az webapp up` 命令的輸出中所顯示的資源群組名稱 (例如 "appsvc_rg_Linux_centralus")：
+若要串流記錄，請執行下列命令：
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-開啟容器記錄後，請執行下列命令來顯示記錄資料流：
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 在瀏覽器中重新整理應用程式以產生主控台記錄，其中應包含類似以下文字的文字行。 如果您沒有立即看到輸出，請在 30 秒後再試一次。
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 您也可以在瀏覽器中的 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 檢查記錄檔。
 
@@ -213,7 +215,7 @@ App Service 功能表提供不同的頁面來設定您的應用程式。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在前述步驟中，您在資源群組中建立了 Azure 資源。 視您的位置而定，資源群組的名稱類似於 "appsvc_rg_Linux_CentralUS"。 如果您使用免費 F1 層以外的 App Service SKU，這些資源會產生持續成本。
+在前述步驟中，您在資源群組中建立了 Azure 資源。 視您的位置而定，資源群組的名稱類似於 "appsvc_rg_Linux_CentralUS"。 如果您使用免費 F1 層以外的 App Service SKU，這些資源會產生持續成本 (請參閱 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/linux/))。
 
 如果您未來不需要這些資源，請執行下列命令來刪除資源群組，並將 `<resource-group-name>` 取代為 `az webapp up` 命令輸出中所顯示的資源群組，例如 "appsvc_rg_Linux_centralus"。 此命令可能需要一分鐘才能完成。
 
