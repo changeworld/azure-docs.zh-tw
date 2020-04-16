@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: 02227a0d4b9bf436632c5179696228ae865ff866
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: trbye
+ms.openlocfilehash: b565bf3bae61cf92133b957bb75fdae9545c030e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409614"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422295"
 ---
 要以壓縮音訊格式串流式傳輸到語音服務,請`PullAudioInputStream`建立`PushAudioInputStream`或 。 然後,從流`AudioConfig`類的實例創建一個,指定流的壓縮格式。
 
