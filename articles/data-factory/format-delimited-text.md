@@ -9,14 +9,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 47d26ad452b8494e591ee919076e5ade8bf19cd7
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 696c175f55ecdb09b1b88f9766c4c678afe2c4ec
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011390"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417096"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 資料工廠中分隔的文字格式
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**解析分隔的文本檔或將資料寫入分隔的文本格式**,請按照本文操作。 
 

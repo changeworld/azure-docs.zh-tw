@@ -11,26 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0552cdc50e2b760600ad8c58bd3d1cd4d2dc50a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930984"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416625"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure Data Factory 從 Sybase 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-onprem-sybase-connector.md)
-> * [當前版本](connector-sybase.md)
+> * [目前版本](connector-sybase.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Sybase 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-以下活動支援此 Sybase 連接器：
+以下活動支援此 Sybase 連接器:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 您可以將資料從 Sybase 資料庫複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -43,7 +44,7 @@ ms.locfileid: "74930984"
 
 若要使用這個 Sybase 連接器，您必須：
 
-- 設定一個「自我裝載 Integration Runtime」。 有關詳細資訊[，請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
+- 設定一個「自我裝載 Integration Runtime」。 有關詳細資訊[,請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
 - 在 Integration Runtime 電腦上安裝 [Sybase iAnywhere.Data.SQLAnywhere 的資料提供者](https://go.microsoft.com/fwlink/?linkid=324846) 16 版或更新版本。
 
 ## <a name="getting-started"></a>開始使用
@@ -66,7 +67,7 @@ ms.locfileid: "74930984"
 | 密碼 | 指定您為使用者名稱所指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -93,13 +94,13 @@ ms.locfileid: "74930984"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Sybase 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Sybase 資料集所支援的屬性清單。
 
-要從 Sybase 複製資料，請支援以下屬性：
+要從 Sybase 複製資料,請支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設置為 **：SybaseTable** | 是 |
+| type | 資料集的類型屬性必須設定為 **:SybaseTable** | 是 |
 | tableName | Sybase 資料庫中的資料表名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
@@ -119,7 +120,7 @@ ms.locfileid: "74930984"
 }
 ```
 
-如果使用`RelationalTable`類型化資料集，則仍支援該資料集，同時建議您今後使用新資料集。
+如果使用`RelationalTable`類型化數據集,則仍支援該數據集,同時建議您今後使用新數據集。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -127,14 +128,14 @@ ms.locfileid: "74930984"
 
 ### <a name="sybase-as-source"></a>Sybase 作為來源
 
-要從 Sybase 複製資料，複製活動**源**部分中支援以下屬性：
+要從 Sybase 複製資料,複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須將複製活動源的類型屬性設置為 **：SybaseSource** | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如：`"SELECT * FROM MyTable"`。 | 否 (如果已指定資料集中的 "tableName") |
+| type | 必須複製活動來源類型屬性設定為 **:SybaseSource** | 是 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -166,7 +167,7 @@ ms.locfileid: "74930984"
 ]
 ```
 
-如果使用`RelationalSource`類型化源，它仍然支援按"當前"，同時建議您今後使用新的源。
+如果使用`RelationalSource`類型化源,它仍然支援按"當前",同時建議您今後使用新的源。
 
 ## <a name="data-type-mapping-for-sybase"></a>Sybase 的資料類型對應
 
@@ -174,9 +175,9 @@ ms.locfileid: "74930984"
 
 Sybase 支援 T-SQL 類型。 如需從 SQL 類型對應到 Azure Data Factory 過渡期資料類型的對應表，請參閱 [Azure SQL Database 連接器 - 資料類型對應](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)一節。
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 
 

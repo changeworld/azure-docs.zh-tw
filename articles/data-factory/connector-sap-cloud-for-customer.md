@@ -12,26 +12,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: 0b0352632491dbfc46ed4819653c6cb902eee4ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923726"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418043"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Cloud for Customer (C4C) 複製資料
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Cloud for Customer (C4C) 來回複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->要瞭解 ADF 對 SAP 資料整合方案的總體支援，請參閱[使用 Azure 資料工廠白皮書進行 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，並詳細說明介紹、比較和指導。
+>要瞭解 ADF 對 SAP 資料整合方案的總體支援,請參閱[使用 Azure 數據工廠白皮書進行 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf),並詳細說明介紹、比較和指導。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 SAP 雲面向客戶連接器支援以下活動：
+此 SAP 雲端針對客戶連線器支援以下活動:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 您可以將資料從 SAP Cloud for Customer 複製到任何支援的接收資料存放區，或將資料從任何支援的來源資料存放區複製到 SAP Cloud for Customer。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -58,7 +59,7 @@ ms.locfileid: "74923726"
 >[!IMPORTANT]
 >若要將資料複製到 SAP Cloud for Customer，請以您 SAP Cloud for Customer 附近的位置明確[建立 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，並在已連結的服務中產生關聯，如下列範例所示：
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -83,7 +84,7 @@ ms.locfileid: "74923726"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP Cloud for Customer 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP Cloud for Customer 資料集所支援的屬性清單。
 
 若要從 SAP Cloud for Customer 複製資料，請將資料集的 type 屬性設定為 **SapCloudForCustomerResource**。 以下是支援的屬性：
 
@@ -92,7 +93,7 @@ ms.locfileid: "74923726"
 | type | 資料集的 type 屬性必須設定為：**SapCloudForCustomerResource** |是 |
 | path | 指定 SAP C4C OData 實體的路徑。 |是 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -117,7 +118,7 @@ ms.locfileid: "74923726"
 
 ### <a name="sap-c4c-as-source"></a>將 SAP C4C 作為來源
 
-若要從 SAP Cloud for Customer 複製資料，請將複製活動中的來源類型設定為 **SapCloudForCustomerSource**。 複製活動**源**部分支援以下屬性：
+若要從 SAP Cloud for Customer 複製資料，請將複製活動中的來源類型設定為 **SapCloudForCustomerSource**。 複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -126,7 +127,7 @@ ms.locfileid: "74923726"
 
 取得特定日之資料的範例查詢：`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -160,7 +161,7 @@ ms.locfileid: "74923726"
 
 ### <a name="sap-c4c-as-sink"></a>將 SAP C4C 作為接收器
 
-若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動**接收器**部分支援以下屬性：
+若要將資料複製到 SAP Cloud for Customer，請將複製活動中的接收類型設定為 **SapCloudForCustomerSink**。 複製活動**接收器**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -168,7 +169,7 @@ ms.locfileid: "74923726"
 | writeBehavior | 作業的寫入行為。 可能是 “Insert”、“Update”。 | 否。 預設值為 “Insert”。 |
 | writeBatchSize | 寫入作業的批次大小。 要取得最佳效能的批次大小可能會隨著資料表或伺服器而有所不同。 | 否。 預設值為 10。 |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -230,9 +231,9 @@ ms.locfileid: "74923726"
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

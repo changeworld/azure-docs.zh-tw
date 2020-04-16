@@ -1,5 +1,5 @@
 ---
-title: 使用資料磚筆記本轉換資料
+title: 使用資料磚筆記轉換資料
 description: 了解如何藉由執行 Databricks Notebook 來處理或轉換資料。
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,17 @@ manager: shwang
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c7a2aec35511ef066033c3d6462143ac31660e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923049"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419012"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>執行 Databricks Notebook 來轉換資料
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[資料工廠管道](concepts-pipelines-activities.md)中的 Azure 資料磚塊筆記本活動在 Azure 資料磚塊工作區中運行資料磚塊筆記本。 本文以 [資料轉換活動](transform-data.md) 一文為基礎，其中概述了資料轉換和支援的轉換活動。Azure Databricks 是用於執行 Apache Spark 的受控平台。
+[數據工廠管道](concepts-pipelines-activities.md)中的 Azure 數據磚區列活動在 Azure 資料磚塊工作區中執行數據磚塊筆記本。 本文以 [資料轉換活動](transform-data.md) 一文為基礎,其中概述了數據轉換和支援的轉換活動。Azure Databricks 是用於執行 Apache Spark 的受控平台。
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook 活動定義
 
@@ -61,7 +62,7 @@ ms.locfileid: "74923049"
 |NAME|管線中的活動名稱。|是|
 |description|說明活動用途的文字。|否|
 |type|若是 Databricks Notebook 活動，則活動類型是 DatabricksNotebook。|是|
-|linkedServiceName|Databricks Notebook 執行所在之 Databricks 連結服務的名稱。 要瞭解此連結服務，請參閱 [計算連結服務](compute-linked-services.md) 一文。|是|
+|linkedServiceName|Databricks Notebook 執行所在之 Databricks 連結服務的名稱。 要瞭解此連結服務,請參閱 [計算連結服務](compute-linked-services.md) 一文。|是|
 |notebookPath|要在 Databricks 工作區中執行之 Notebook 的絕對路徑。 此路徑必須以斜線開頭。|是|
 |baseParameters|機碼值組的陣列。 基礎映像參數可以用於每個活動執行。 如果 Notebook 採用未指定的參數，則系統會使用 Notebook 的預設值。 在 [Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair) 中尋找更多參數的相關資料。|否|
 |程式庫|要在負責執行工作的叢集上，即將安裝的程式庫清單。 可以是 \<字串, 物件> 陣列。|否|
@@ -69,7 +70,7 @@ ms.locfileid: "74923049"
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks 活動支援的程式庫
 
-在上述資料磚塊活動定義中，您可以指定這些庫類型：*罐子*、*雞蛋*、whl、maven、pypi、cran。 *whl* *maven* *pypi* *cran*
+在上述資料磚塊活動定義中,您可以指定這些庫類型:*罐子*、*雞蛋*、whl、maven、pypi、cran。 *whl* *maven* *pypi* *cran*
 
 ```json
 {
@@ -113,16 +114,16 @@ ms.locfileid: "74923049"
 
 ## <a name="passing-parameters-between-notebooks-and-data-factory"></a>筆記本和資料工廠之間的傳遞參數
 
-您可以使用資料磚塊活動中*的基參數*屬性將資料出廠參數傳遞給筆記本。 
+您可以使用數據磚塊活動中*的基參數*屬性將數據出廠參數傳遞給筆記本。 
 
-在某些情況下，您可能需要將某些值從筆記本傳回資料工廠，這些值可用於資料工廠中的控制流（條件檢查），或由下游活動使用（大小限制為 2MB）。 
+在某些情況下,您可能需要將某些值從筆記本傳回數據工廠,這些值可用於數據工廠中的控制流(條件檢查),或由下游活動使用(大小限制為 2MB)。 
 
-1. 在筆記本中，您可以調用[dbutils.notebook.exit（"返回價值"），](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit)相應的"傳回值"將返回到資料工廠。
+1. 在筆記本中,您可以調用[dbutils.notebook.exit("傳回價值"),](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit)相應的"返回值"將返回到資料工廠。
 
-2. 可以使用 運算式（如`'@activity('databricks notebook activity name').output.runOutput'`） 使用資料工廠中的輸出。 
+2. 可以使用 運算式(`'@activity('databricks notebook activity name').output.runOutput'`如) 使用數據工廠中的輸出。 
 
    > [!IMPORTANT]
-   > 如果要傳遞 JSON 物件，可以通過附加屬性名稱來檢索值。 範例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要傳遞 JSON 物件,可以通過附加屬性名稱來檢索值。 範例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何在 Databricks 中上傳程式庫
 

@@ -1,5 +1,5 @@
 ---
-title: 為 Azure-SSIS 集成運行時配置性能
+title: 為 Azure-SSIS 整合執行時設定效能
 description: 了解如何設定 Azure-SSIS Integration Runtime 的屬性，以獲得高效能
 services: data-factory
 ms.date: 01/10/2018
@@ -10,14 +10,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930551"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418281"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>設定 Azure-SSIS Integration Runtime 以獲得高效能
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文說明如何設定 Azure-SSIS Integration Runtime (IR) 以獲得高效能。 Azure-SSIS IR 可讓您在 Azure 中部署及執行 SQL Server Integration Services (SSIS) 套件。 如需 Azure-SSIS IR 的詳細資訊，請參閱[整合執行階段](concepts-integration-runtime.md#azure-ssis-integration-runtime)一文。 如需在 Azure 上部署及執行 SSIS 套件的相關資訊，請參閱[將 SQL Server Integration Services 工作負載隨即轉移至雲端](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)。
 
@@ -91,15 +94,15 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 
 在由 SSIS 工程團隊進行的非官方內部測試中，D 系列似乎比 A 系列更適合 SSIS 套件執行。
 
--   D系列的性能/價格比高於A系列，v3系列的性能/價格比高於v2系列。
--   D 系列的輸送量以相同的價格高於 A 系列，v3 系列的輸送量以相同的價格高於 v2 系列。
--   Azure-SSIS IR 的 v2 系列節點不適合自訂設置，因此請改用 v3 系列節點。 如果您已經使用 v2 系列節點，請儘快切換以使用 v3 系列節點。
--   E 系列是記憶體優化的 VM 大小，可提供比其他電腦更高的記憶體 CPU 比。如果您的包需要大量的記憶體，您可以考慮選擇 E 系列 VM。
+-   D系列的性能/價格比高於A系列,v3系列的性能/價格比高於v2系列。
+-   D 系列的輸送量以相同的價格高於 A 系列,v3 系列的輸送量以相同的價格高於 v2 系列。
+-   Azure-SSIS IR 的 v2 系列節點不適合自訂設置,因此請改用 v3 系列節點。 如果您已經使用 v2 系列節點,請儘快切換以使用 v3 系列節點。
+-   E 系列是記憶體優化的 VM 大小,可提供比其他電腦更高的記憶體 CPU 比。如果您的包需要大量的記憶體,您可以考慮選擇 E 系列 VM。
 
 ### <a name="configure-for-execution-speed"></a>針對執行速度進行設定
 如果您不需要執行許多套件，且希望套件可以快速執行，請使用下列圖表中的資訊，以選擇適合您案例的虛擬機器類型。
 
-此資料表示單一背景工作節點上的單一套件執行。 該包載入 300 萬條記錄，這些記錄具有 Azure Blob 存儲中的名字和姓氏列，生成全名列，並將全名超過 20 個字元的記錄寫入 Azure Blob 存儲。
+此資料表示單一背景工作節點上的單一套件執行。 該包載入 300 萬條記錄,這些記錄具有 Azure Blob 儲存中的名字和姓氏列,生成全名列,並將全名超過 20 個字元的記錄寫入 Azure Blob 儲存。
 
 ![SSIS Integration Runtime 套件執行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
@@ -115,7 +118,7 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 針對 Standard_D1_v2 節點，可支援每個節點有 1-4 個平行執行。 對於所有其他類型的節點，每個節點支援 1-max（2 x 內核數，8） 並存執行。 如果希望**AzureSSISMaxParallel 執行PerNode**超出我們支援的最大值，可以打開支援票證，我們可以為您增加最大值，之後您需要使用 Azure 電源外殼更新**AzureSSSISMax 並存執行PerNode**。
+當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 針對 Standard_D1_v2 節點，可支援每個節點有 1-4 個平行執行。 對於所有其他類型的節點,每個節點支援 1-max(2 x 內核數,8) 並行執行。 如果希望**AzureSSISMaxParallel 執行PerNode**超出我們支援的最大值,可以打開支援票證,我們可以為您增加最大值,之後您需要使用 Azure 電源外殼更新**AzureSSSISMax 並行執行PerNode**。
 您可以根據套件的成本和背景工作角色節點的下列設定，評估適當的值。 如需詳細資訊，請參閱[一般用途的虛擬機器大小](../virtual-machines/windows/sizes-general.md)。
 
 | 大小             | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大資料磁碟 / 輸送量︰IOPS | 最大 NIC/預期的網路效能 (Mbps) |
@@ -153,7 +156,7 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 
 -   如果背景工作計數超過 8 個或核心計數超過 50 個，則請選擇比「基本」更強大的資料庫。 否則，資料庫會變成整合執行階段執行個體的瓶頸，而且會嚴重影響整體效能。
 
--   如果日誌記錄級別設置為詳細，請選擇更強大的資料庫，如 s3。 根據我們的非官方內部測試，s3 定價層可以使用 2 個節點、128 個並行計數和詳細的日誌記錄級別支援 SSIS 包執行。
+-   如果日誌記錄級別設置為詳細,請選擇更強大的資料庫,如 s3。 根據我們的非官方內部測試,s3 定價層可以使用 2 個節點、128 個並行計數和詳細的日誌記錄級別支援 SSIS 包執行。
 
 您也可以根據 Azure 入口網站上提供的[資料庫交易單位](../sql-database/sql-database-what-is-a-dtu.md) (DTU) 使用量資訊，調整資料庫定價層。
 

@@ -12,29 +12,30 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 0c37d77ca73ddbe8b79351f90275a1d639757633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923729"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418060"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business Warehouse 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
-> * [當前版本](connector-sap-business-warehouse.md)
+> * [目前版本](connector-sap-business-warehouse.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP Business Warehouse (BW) 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->要瞭解 ADF 對 SAP 資料整合方案的總體支援，請參閱[使用 Azure 資料工廠白皮書進行 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，並詳細說明介紹、比較和指導。
+>要瞭解 ADF 對 SAP 資料整合方案的總體支援,請參閱[使用 Azure 數據工廠白皮書進行 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf),並詳細說明介紹、比較和指導。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 SAP 業務倉庫連接器支援用於以下活動：
+此 SAP 商務主目錄連線器支援用於以下活動:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 您可以將資料從 SAP Business Warehouse 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -48,8 +49,8 @@ ms.locfileid: "74923729"
 
 若要使用這個 SAP Business Warehouse 連接器，您必須：
 
-- 設定一個「自我裝載 Integration Runtime」。 有關詳細資訊[，請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
-- 在 Integration Runtime 電腦上安裝 **SAP NetWeaver 程式庫**。 您可以從 SAP 系統管理員那裡取得 SAP Netweaver 程式庫，或直接從 [SAP 軟體下載中心](https://support.sap.com/swdc)取得。 搜尋 **SAP 附註 #1025361** 以取得最新版本的下載位置。 請確保選擇與您的集成運行時安裝匹配的**64 位**SAP NetWeaver 庫。 然後根據 SAP 附註，安裝 SAP NetWeaver RFC SDK 中包含的所有檔案。 SAP NetWeaver 程式庫也隨附於 SAP 用戶端工具安裝。
+- 設定一個「自我裝載 Integration Runtime」。 有關詳細資訊[,請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
+- 在 Integration Runtime 電腦上安裝 **SAP NetWeaver 程式庫**。 您可以從 SAP 系統管理員那裡取得 SAP Netweaver 程式庫，或直接從 [SAP 軟體下載中心](https://support.sap.com/swdc)取得。 搜尋 **SAP 附註 #1025361** 以取得最新版本的下載位置。 請確保選擇與您的整合式執行時安裝匹配的**64 位**元 SAP NetWeaver 庫。 然後根據 SAP 附註，安裝 SAP NetWeaver RFC SDK 中包含的所有檔案。 SAP NetWeaver 程式庫也隨附於 SAP 用戶端工具安裝。
 
 >[!TIP]
 >若要對 SAP BW 的連線問題進行疑難排解，請確定：
@@ -76,7 +77,7 @@ ms.locfileid: "74923729"
 | 密碼 | 使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -103,11 +104,11 @@ ms.locfileid: "74923729"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP BW 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 SAP BW 資料集所支援的屬性清單。
 
-要從 SAP BW 複製資料，請將資料集的類型屬性設置為**SapBwCube**。 針對 RelationalTable 類型的 SAP BW 資料集，不支援任何類型特定的屬性。
+要從 SAP BW 複製資料,請將資料集的類型屬性設定為**SapBwCube**。 針對 RelationalTable 類型的 SAP BW 資料集，不支援任何類型特定的屬性。
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -124,7 +125,7 @@ ms.locfileid: "74923729"
 }
 ```
 
-如果使用`RelationalTable`類型化資料集，則仍支援該資料集，同時建議您今後使用新資料集。
+如果使用`RelationalTable`類型化數據集,則仍支援該數據集,同時建議您今後使用新數據集。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -132,14 +133,14 @@ ms.locfileid: "74923729"
 
 ### <a name="sap-bw-as-source"></a>SAP BW 作為來源
 
-要從 SAP BW 複製資料，複製活動**源**部分中支援以下屬性：
+要從 SAP BW 複製資料,複製活動**來源**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須將複製活動源的類型屬性設置為 **：SapBwSource** | 是 |
+| type | 必須複製活動來源類型屬性設定為 **:SapBwSource** | 是 |
 | 查詢 | 指定 MDX 查詢從 SAP BW 執行個體讀取資料。 | 是 |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -171,7 +172,7 @@ ms.locfileid: "74923729"
 ]
 ```
 
-如果使用`RelationalSource`類型化源，它仍然支援按"當前"，同時建議您今後使用新的源。
+如果使用`RelationalSource`類型化源,它仍然支援按"當前",同時建議您今後使用新的源。
 
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW 的資料類型對應
 
@@ -203,9 +204,9 @@ ms.locfileid: "74923729"
 | TIMS | String |
 
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 
 ## <a name="next-steps"></a>後續步驟

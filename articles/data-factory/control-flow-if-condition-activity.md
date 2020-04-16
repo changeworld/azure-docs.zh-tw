@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238706"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417159"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory 中的 If Condition 活動
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。 
 
 ## <a name="syntax"></a>語法
@@ -288,8 +290,8 @@ $result.Error -join "`r`n"
 ## <a name="next-steps"></a>後續步驟
 請參閱 Data Factory 支援的其他控制流程活動： 
 
-- [執行管道活動](control-flow-execute-pipeline-activity.md)
-- [對於每個活動](control-flow-for-each-activity.md)
-- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
+- [執行管線活動](control-flow-execute-pipeline-activity.md)
+- [For Each 活動](control-flow-for-each-activity.md)
+- [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [Web 活動](control-flow-web-activity.md)
+- [網路活動](control-flow-web-activity.md)

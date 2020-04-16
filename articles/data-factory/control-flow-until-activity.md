@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440363"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417941"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Until 活動
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Until 活動所提供的功能，與 do-until 迴圈結構在程式設計語言中提供的功能相同。 它會以迴圈的方式執行一系列活動，直到與該活動相關聯的條件評估為 true 為止。 您可以在 Data Factory 中針對 until 活動指定逾時的值。 
 
 ## <a name="syntax"></a>語法
@@ -289,8 +291,8 @@ while ($True) {
 請參閱 Data Factory 支援的其他控制流程活動： 
 
 - [If 條件活動](control-flow-if-condition-activity.md)
-- [執行管道活動](control-flow-execute-pipeline-activity.md)
-- [對於每個活動](control-flow-for-each-activity.md)
-- [獲取中繼資料活動](control-flow-get-metadata-activity.md)
+- [執行管線活動](control-flow-execute-pipeline-activity.md)
+- [For Each 活動](control-flow-for-each-activity.md)
+- [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [Web 活動](control-flow-web-activity.md)
+- [網路活動](control-flow-web-activity.md)

@@ -1,22 +1,22 @@
 ---
-title: 如何在合作夥伴中心管理商業市場帳戶
-description: 瞭解如何在合作夥伴中心管理商業市場帳戶。
+title: 如何在 Microsoft 合作夥伴中心管理商業市場帳戶
+description: 瞭解如何在Microsoft合作夥伴中心管理商業市場帳戶。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 256ea1a03cd22df443362623177f91893f28b664
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262922"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419148"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何在合作夥伴中心管理您的商業市場帳戶
+# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市場帳戶
 
-[創建合作夥伴中心帳戶](./create-account.md)後,您可以使用[商業市場儀錶板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)管理您的帳戶和優惠。
+[創建合作夥伴中心帳戶](./create-account.md)後,可以使用[商業市場儀錶板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)來管理您的帳戶和優惠。
 
 在本文中,我們將深入探討如何管理合作夥伴中心帳戶,包括:
 
@@ -35,12 +35,12 @@ ms.locfileid: "81262922"
 
 如果您尚未這樣做,您(或您的組織的管理員)應存取合作夥伴中心帳戶的[帳戶設定](https://partner.microsoft.com/dashboard/account/management),以便:
 - 檢查您的帳戶驗證狀態
-- 確認您的賽門鐵克 ID、賣家 ID、MPN ID、發行者 ID 和聯絡資訊,包括公司審批人和賣家聯繫人
+- 確認您的賽門鐵克 ID、賣家 ID、Microsoft 合作夥伴網路 (MPN) ID、發佈者 ID 和聯絡資訊,包括公司審批人和賣家聯繫人
 - 為將在合作夥伴中心使用您業務帳戶的任何人建立使用者帳戶
 
 ### <a name="open-developer-settings"></a>開啟開發人員設定
 
-帳戶設置位於合作夥伴中心[商業市場儀錶板](https://partner.microsoft.com/dashboard/commercial-marketplace)的右上角。 選擇齒輪圖示(靠近儀錶板右上角),然後選擇 **「開發人員」設定**。
+**帳戶設置**位於合作夥伴中心[商業市場儀錶板](https://partner.microsoft.com/dashboard/commercial-marketplace)的右上角。 選擇齒輪圖示(靠近儀錶板右上角),然後選擇 **「開發人員」設定**。
 
 ![合作夥伴中心中的帳戶設定選單](./media/dashboard-developer-settings.png)
 
@@ -66,11 +66,11 @@ ms.locfileid: "81262922"
 
 付款帳戶是從銷售中匯到收益的銀行帳戶。 此銀行帳戶必須位於您註冊合作夥伴中心帳戶的同一國家/地區。
 
-要設定您的支出帳戶,您需要**關聯您的 Microsoft 帳號**:
+要設定支出帳戶,您需要**關聯您的 Microsoft 帳號**:
 1. 跳到合作夥伴中心[中的商業市場概述頁面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
 2. 在「設定檔」部分下,選擇 **「關聯您的 Microsoft 帳戶**」 。。
 3. 出現提示後,請使用 Microsoft 帳戶 (MSA) 登錄。 此帳戶不能已與其他合作夥伴中心帳戶關聯。
-4. 要完成支出帳戶的設置,請完全註銷合作夥伴中心,然後使用 Microsoft 帳戶(而不是您的工作帳戶)重新登錄。
+4. 要完成支出帳戶的設置,請註銷合作夥伴中心,然後使用 Microsoft 帳戶(而不是您的工作帳戶)重新登錄。
 
 現在,您的 Microsoft 帳戶已關聯,要添加支出帳戶,您需要:
 - **選擇付款條件**:銀行帳戶或PayPal
@@ -91,7 +91,7 @@ ms.locfileid: "81262922"
 
 您可以在合作夥伴中心以電子方式填寫和提交您的納稅申報表;在大多數情況下,您不需要列印和郵寄任何表單。
 
-不同國家和地區的稅金要求不同。 您必須在納稅中支付的確切金額取決於您銷售優惠的國家和地區。 在某些國家/地區,Microsoft 代表您徵收銷售和使用稅。 這些國家/地區將在列出您的報價的過程中被識別。 在其他國家/地區,根據您註冊的地點,您可能需要將銷售匯出,並將銷售用稅直接匯給當地稅務機關。 此外,您收到的銷售收入可能作為收入納稅。 我們強烈建議您聯繫您所在國家或地區的有關當局,以便最好地説明您確定適用於 Microsoft 銷售交易的稅務資訊。
+不同國家和地區的稅金要求不同。 您必須在納稅中支付的確切金額取決於您銷售優惠的國家和地區。 在某些國家/地區,Microsoft 代表您徵收銷售和使用稅款。 這些國家/地區將在列出您的報價的過程中被識別。 在其他國家/地區,根據您註冊的地點,您可能需要將銷售匯出,並將銷售用稅直接匯給當地稅務機關。 此外,您收到的銷售收入可能作為收入納稅。 我們強烈建議您聯繫您所在國家或地區的有關當局,以便最好地説明您確定適用於 Microsoft 銷售交易的稅務資訊。
 
 ##### <a name="withholding-rates"></a>扣繳率
 您在納稅申報表中送出的資訊將決定適當的稅金扣繳率。 扣繳率只適用於您在美國完成的銷售；非美國地區的銷售不適用扣繳率。 扣繳率視情況而有不同，但對於在美國以外地區註冊的大多數開發人員而言，預設扣繳率為 30%。 如果您的國家/地區和美國已簽訂所得稅協定，您可以選擇降低此扣繳率。
@@ -124,7 +124,7 @@ ms.locfileid: "81262922"
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
-若您使用範本部署產品，且該產品在 Azure Marketplace 與 GitHub 上都有提供，您必須建立並註冊 2 個相異的 GUID：
+如果使用範本部署產品,並且該產品在 Azure 應用商店和 GitHub 上都可用,則可以創建和註冊兩個不同的 GUIDS:
 
 *    Azure Marketplace 中的產品 A
 *    GitHub 上的產品 A
@@ -145,23 +145,20 @@ ms.locfileid: "81262922"
 
 ## <a name="manage-users"></a>管理使用者
 
-合作夥伴中心**的使用者**部分(在**帳戶設置**)下,讓我們使用 Azure AD 來管理有權訪問合作夥伴中心帳戶的使用者、組和 Azure AD 應用程式。 為了管理使用者,您必須使用[工作帳戶](./company-work-accounts.md)(關聯的 Azure AD 租戶)登錄。 要管理其他工作帳戶/租戶中的使用者,您需要登出,然後以具有該工作帳戶/租戶的**Manager**許可權的使用者身份重新登錄。
+合作夥伴中心**的使用者部分(** 在**帳戶設定**)中允許您使用 Azure AD 來管理有權存取合作夥伴中心帳戶的使用者、組和 Azure AD 應用程式。 您的帳戶必須具有要在其中添加或編輯使用者[的工作帳戶(Azure AD 租戶)](./company-work-accounts.md)[**的管理器級**](#define-user-roles-and-permissions)許可權。 要管理其他工作帳戶/租戶中的使用者,您需要登出,然後以具有該工作帳戶/租戶的**Manager**許可權的使用者身份重新登錄。
 
 使用工作帳戶(Azure AD 租戶)登錄后,可以:
-- [新增或移除使用者](#add-or-remove-users)
+
+- [新增或移除使用者](#add-existing-users)
 - [變更使用者密碼。](#change-a-user-password)
-- [新增或移除群組](#add-or-remove-users)
+- [新增或移除群組](#manage-groups)
 - [新增或移除 Azure AD 應用程式](#add-new-azure-ad-applications)
 - [管理 Azure AD 應用程式的金鑰](#manage-keys-for-an-azure-ad-application)
 - [定義使用者角色和權限](#define-user-roles-and-permissions)
 
 請記住,所有合作夥伴中心使用者(包括組和 Azure AD 應用程式)都必須在與合作夥伴中心帳戶關聯的[Azure AD 租戶](#manage-tenants)中具有活動工作帳戶。
 
-### <a name="add-or-remove-users"></a>新增或移除使用者
-
-您的帳戶必須具有要在其中添加或編輯使用者[的工作帳戶(Azure AD 租戶)](./company-work-accounts.md)[**的管理器級**](#define-user-roles-and-permissions)許可權。
-
-#### <a name="add-existing-users"></a>新增現有使用者
+### <a name="add-existing-users"></a>新增現有使用者
 
 要將使用者新增到公司[工作帳戶(Azure AD 租戶)](./company-work-accounts.md)中已存在的合作夥伴中心帳戶:
 
@@ -172,7 +169,7 @@ ms.locfileid: "81262922"
 4. 在 **\[角色\]** 區段中，指定所選使用者的角色或自訂權限。
 5. 選取 [儲存]  。
 
-#### <a name="create-new-users"></a>建立新的使用者
+### <a name="create-new-users"></a>建立新的使用者
 
 要創建新使用者帳戶,您必須具有具有[**全域管理員**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)許可權的帳戶。 
 
@@ -186,7 +183,7 @@ ms.locfileid: "81262922"
 
 在合作夥伴中心創建新使用者還將在您登錄的工作帳戶(Azure AD 租戶)中為該用戶創建一個帳戶。 更改合作夥伴中心中的使用者名將在組織的工作帳戶(Azure AD 租戶)中進行相同的更改。
 
-#### <a name="invite-new-users-by-email"></a>透過電子郵件邀請新使用者
+### <a name="invite-new-users-by-email"></a>透過電子郵件邀請新使用者
 
 要透過電子郵件邀請當前不是公司工作帳戶(Azure AD 租戶)一部分的使用者,您必須具有具有[**全域管理員**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)許可權的帳戶。
 
@@ -202,11 +199,11 @@ ms.locfileid: "81262922"
 > [!NOTE]
 > 如果組織使用[目錄整合](https://go.microsoft.com/fwlink/p/?LinkID=724033)將本地目錄服務與 Azure AD 同步,則無法在合作夥伴中心創建新使用者、組或 Azure AD 應用程式。 您需要(或本地目錄中的另一個管理員)需要在本地目錄中直接創建它們,然後才能在合作夥伴中心中查看和添加它們。
 
-#### <a name="remove-a-user"></a>移除使用者
+### <a name="remove-a-user"></a>移除使用者
 
 要從工作帳戶(Azure AD 租戶)中刪除使用者,請轉到 **「使用者**」(在 **「帳戶設置**」下),使用最右側列中的複選框選擇要刪除的使用者,然後從可用操作中選擇 **「刪除**」。。 將顯示一個彈出視窗,以確認要刪除選定的使用者。
 
-#### <a name="change-a-user-password"></a>變更使用者密碼。
+### <a name="change-a-user-password"></a>變更使用者密碼。
 
 如果您的一個使用者需要更改其密碼,如果您在創建使用者帳戶時提供了**密碼恢復電子郵件**,他們可以自己更改密碼。 您也可以依照下列步驟來更新使用者的密碼。 要更改公司工作帳戶(Azure AD 租戶)中的用戶密碼,必須在具有[**全域管理員**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)許可權的帳戶上登錄。 請注意,這將更改 Azure AD 租戶中的用戶的密碼以及他們用於訪問合作夥伴中心的密碼。
 
@@ -218,7 +215,7 @@ ms.locfileid: "81262922"
 
 組允許您一起控制多個使用者角色和許可權。
 
-#### <a name="add-an-existing-group"></a>新增現有群組
+### <a name="add-an-existing-group"></a>新增現有群組
 
 要將組織工作帳戶(Azure AD 租戶)中已存在的組添加到合作夥伴中心帳戶:請執行:
 
@@ -231,7 +228,7 @@ ms.locfileid: "81262922"
 
 添加現有組時,該組成員的每個使用者將能夠訪問您的合作夥伴中心帳戶,並具有與該組分配的角色關聯的許可權。
 
-#### <a name="add-a-new-group"></a>新增群組
+### <a name="add-a-new-group"></a>新增群組
 
 要向合作夥伴中心帳戶添加全新組,請:
 
@@ -245,7 +242,7 @@ ms.locfileid: "81262922"
 
 請注意,此新組也將在組織的工作帳戶(Azure AD 租戶)中創建,而不僅僅是在合作夥伴中心帳戶中。
 
-#### <a name="remove-a-group"></a>移除群組
+### <a name="remove-a-group"></a>移除群組
 
 要從工作帳戶(Azure AD 租戶)中刪除組,請轉到 **「使用者**」(在 **「帳戶設定」** 下),使用最右側列中的複選框選擇要刪除的組,然後從可用操作中選擇 **「刪除**」。。 將顯示一個彈出視窗,以確認要刪除選定的組。
 
@@ -253,7 +250,7 @@ ms.locfileid: "81262922"
 
 您可以允許屬於公司 Azure AD 的應用程式或服務訪問合作夥伴中心帳戶。
 
-#### <a name="add-existing-azure-ad-applications"></a>新增現有的 Azure AD 應用程式
+### <a name="add-existing-azure-ad-applications"></a>新增現有的 Azure AD 應用程式
 
 要新增公司 Azure 活動目錄中已存在的應用程式,請執行:
 
@@ -263,7 +260,7 @@ ms.locfileid: "81262922"
 4. 在 **\[角色\]** 區段中，指定所選 Azure AD 應用程式的角色或自訂權限。
 5. 選取 [儲存]  。
 
-#### <a name="add-new-azure-ad-applications"></a>新增 Azure AD 應用程式
+### <a name="add-new-azure-ad-applications"></a>新增 Azure AD 應用程式
 
 如果要授予合作夥伴中心對全新 Azure AD 應用程式帳戶的訪問權限,可以在 **「使用者」** 部分創建一個。 請注意,這將在公司工作帳戶(Azure AD 租戶)中創建新帳戶,而不僅僅是在合作夥伴中心帳戶中。 如果您主要使用此 Azure AD 應用程式進行合作夥伴中心身份驗證,並且不需要使用者直接存取它,則可以為**回覆 URL** **和應用 ID URI**輸入任何有效位址,只要這些值不由目錄中的任何其他 Azure AD 應用程式使用。
 
@@ -276,11 +273,11 @@ ms.locfileid: "81262922"
 
 新增或建立 Azure AD 應用程式之後，您可以返回 **\[使用者\]** 區段，然後選取應用程式名稱以檢閱應用程式的設定，包括租用戶識別碼、用戶端識別碼、回覆 URL，以及 App 識別碼 URI。
 
-#### <a name="remove-an-application"></a>移除應用程式
+### <a name="remove-an-azure-ad-application"></a>移除 Azure AD 應用程式
 
 要從工作帳戶(Azure AD 租戶)中刪除應用程式,請轉到 **「使用者**」(在 **「帳戶設定」** 下),使用最右側列中的複選框選擇要刪除的應用程式,然後從可用操作中選擇 **「刪除**」。。 將顯示一個彈出視窗,以確認要刪除選定的應用程式。
 
-#### <a name="manage-keys-for-an-azure-ad-application"></a>管理 Azure AD 應用程式的金鑰
+### <a name="manage-keys-for-an-azure-ad-application"></a>管理 Azure AD 應用程式的金鑰
 
 如果您的 Azure AD 應用程式會在 Microsoft Azure AD 讀取或寫入資料，則它需要金鑰。 通過在合作夥伴中心中編輯其資訊,可以為 Azure AD 應用程式創建密鑰。 您也可以移除不再需要的金鑰。
 
@@ -350,7 +347,3 @@ Azure 活動目錄 (AD) 租戶(在本文檔中也稱為"工作帳戶")是您在 
 合作夥伴中心**的協定**部分(在**帳戶設置**下)允許您查看您授權的發佈協定的清單。 這些協定按名稱和版本號列出,包括接受協定的日期和接受協定的使用者的名稱。
 
 如果需要**的操作**可能會顯示在此頁面頂部,如果有需要您注意的協定更新。 要接受更新的協定,請先閱讀連結的協定版本,然後選擇 **「接受協定**」。。
-
-## <a name="next-steps"></a>後續步驟
-
-- [建立新的 SaaS 供應項目](./create-new-saas-offer.md)

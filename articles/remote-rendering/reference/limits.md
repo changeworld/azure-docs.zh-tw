@@ -5,16 +5,16 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6e23c716a965cdf178c9f847900e66c141d5d7eb
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417686"
 ---
-# <a name="limits"></a>限制
+# <a name="limitations"></a>限制
 
-由於正在運行的系統的內部詳細資訊,許多功能具有大小或計數限制。
+許多功能具有大小、計數或其他限制。
 
 ## <a name="azure-frontend"></a>Azure 前端
 
@@ -26,7 +26,7 @@ ms.locfileid: "80680332"
 * 單個類型(實體、CutPlane元件等)的允許物件總數:16,777,215。
 * 允許的活動切割平面總數:8。
 
-## <a name="materials"></a>物料
+## <a name="materials"></a>材質
 
 * 資產中允許的材料總數:65,535。
 
@@ -40,4 +40,13 @@ ms.locfileid: "80680332"
 |溢價| 沒有限制 |
 
 
+## <a name="platform-limitations"></a>平台限制
 
+**視窗 10 桌面**
+
+* 不支援從 Unity 部署「PC 獨立」部署。 改用 UWP。
+* UWP/x86 是唯一受支援的 UWP 平臺。 不支援 UWP/x64。
+
+**霍洛倫斯 2**
+
+* 不支援[從 PV 攝影機功能的渲染](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in)。

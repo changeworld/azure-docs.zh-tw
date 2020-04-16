@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 映射轉換資料減少活動
+title: 使用 Hadoop 對應轉換資料減少活動
 description: 了解如何從 Azure Data Factory，在 Azure HDInsight 叢集上執行 Hadoop MapReduce 程式以處理資料。
 services: data-factory
 ms.service: data-factory
@@ -10,18 +10,20 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 5d38e3126442bcf34c96cead2b2ea59507b50b8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3060f7e36f9e2696194da12c3c800555103d271
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912873"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418910"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop MapReduce 活動轉換資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-map-reduce.md)
-> * [當前版本](transform-data-using-hadoop-map-reduce.md)
+> * [目前版本](transform-data-using-hadoop-map-reduce.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Data Factory [管線](concepts-pipelines-activities.md) 中的 HDInsight MapReduce 活動會在[您自己](compute-linked-services.md#azure-hdinsight-linked-service)或[隨選](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)的 HDInsight 叢集上叫用 MapReduce 程式。 本文是根據 [資料轉換活動](transform-data.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
@@ -121,5 +123,5 @@ Data Factory [管線](concepts-pipelines-activities.md) 中的 HDInsight MapRedu
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [火花活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
+* [機器學習批次處理執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

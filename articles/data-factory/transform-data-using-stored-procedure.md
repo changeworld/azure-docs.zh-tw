@@ -1,5 +1,5 @@
 ---
-title: 使用"預存程序"活動轉換資料
+title: 使用「儲存過程」活動轉換資料
 description: 說明如何使用 SQL Server 預存程序活動，以從 Data Factory 管線叫用 Azure SQL Database/資料倉儲中的預存程序。
 services: data-factory
 documentationcenter: ''
@@ -11,17 +11,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4a0709b4eaa8742069eecb4c39712e384645304b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57bf653aa3f421ae8897c4be661ceef589fcdc06
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926668"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418808"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 SQL Server 預存程序活動轉換資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-stored-proc-activity.md)
-> * [當前版本](transform-data-using-stored-procedure.md)
+> * [目前版本](transform-data-using-stored-procedure.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 您在 Data Factory [管線](concepts-pipelines-activities.md)中使用資料轉換活動，以轉換和處理您的原始資料以進行預測和深入了解。 預存程序活動是 Data Factory 支援的其中一個轉換活動。 本文是以[轉換資料](transform-data.md)一文為基礎，提供 Data Factory 中資料轉換及所支援轉換活動的一般概觀。
 
@@ -32,7 +34,7 @@ ms.locfileid: "74926668"
 
 - Azure SQL Database
 - Azure SQL 資料倉儲
-- SQL Server Database。  如果您使用 SQL Server，請在裝載資料庫的同一部電腦上或可存取資料庫的個別電腦上安裝自我裝載整合執行階段。 自我裝載整合執行階段是一套透過安全且可管理的方式，將內部部署/Azure VM 上的資料來源連結至雲端服務的元件。 有關詳細資訊[，請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
+- SQL Server Database。  如果您使用 SQL Server，請在裝載資料庫的同一部電腦上或可存取資料庫的個別電腦上安裝自我裝載整合執行階段。 自我裝載整合執行階段是一套透過安全且可管理的方式，將內部部署/Azure VM 上的資料來源連結至雲端服務的元件。 有關詳細資訊[,請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
 
 > [!IMPORTANT]
 > 將資料複製到 Azure SQL Database 或 SQL Server 時，您可以使用 **sqlWriterStoredProcedureName** 屬性在複製活動中設定 **SqlSink** 以叫用預存程序。 如需有關此屬性的詳細資料，請參閱下列連接器文章：[Azure SQL Database](connector-azure-sql-database.md)、[SQL Server](connector-sql-server.md)。 不支援在使用複製活動將資料複製到「Azure SQL 資料倉儲」時叫用預存程序。 但是，您可以使用預存程序活動來叫用「SQL 資料倉儲」中的預存程序。 
@@ -75,8 +77,8 @@ ms.locfileid: "74926668"
 | storedProcedureName       | 指定要叫用的預存程序名稱。 | 是      |
 | storedProcedureParameters | 指定預存程序參數的值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 來傳遞資料來源所支援的參數值及其類型。 如果您需要為參數傳遞 Null，請使用 `"param1": { "value": null }` (全部小寫)。 | 否       |
 
-## <a name="parameter-data-type-mapping"></a>參數資料類型映射
-為參數指定的資料類型是 Azure 資料工廠類型，該類型映射到正在使用的資料來源中的資料類型。 您可以在連接器區域中找到資料來源的資料類型映射。 一些示例是
+## <a name="parameter-data-type-mapping"></a>參數資料類型對應
+為參數指定的數據類型是 Azure 數據工廠類型,該類型映射到正在使用的數據源中的數據類型。 您可以在連接器區域中找到資料源的資料類型對應。 一些範例是
 
 | 資料來源          | 資料型別對應 |
 | ---------------------|-------------------|
@@ -96,8 +98,8 @@ ms.locfileid: "74926668"
 * [U-SQL 活動](transform-data-using-data-lake-analytics.md)
 * [蜂巢活動](transform-data-using-hadoop-hive.md)
 * [Pig 活動](transform-data-using-hadoop-pig.md)
-* [映射減少活動](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop 流活動](transform-data-using-hadoop-streaming.md)
+* [對應活動](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)

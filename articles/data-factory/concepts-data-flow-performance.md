@@ -7,14 +7,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c09a035c8994118b0fb116f357485766e05883ac
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382789"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418434"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射資料串流效能和調優指南
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure 數據工廠中映射數據流提供了一個無代碼介面,用於大規模設計、部署和協調數據轉換。 勾選此選項, 您不熟悉映射資料串流,請參考[映射資料串流 。](concepts-data-flow-overview.md)
 

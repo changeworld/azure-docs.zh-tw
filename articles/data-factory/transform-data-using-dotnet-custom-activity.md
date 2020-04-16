@@ -1,5 +1,5 @@
 ---
-title: 在管道中使用自訂活動
+title: 在導管中使用自訂活動
 description: 了解如何建立自訂活動，並在 Azure 資料處理站管線中使用這些活動。
 services: data-factory
 ms.service: data-factory
@@ -10,23 +10,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260575"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418944"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-use-custom-activities.md)
-> * [當前版本](transform-data-using-dotnet-custom-activity.md)
+> * [目前版本](transform-data-using-dotnet-custom-activity.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 您可以在 Azure Data Factory 管線中使用兩種活動。
 
 - [資料移動活動](copy-activity-overview.md)，可在[支援的來源與接收資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)之間移動資料。
-- [資料轉換活動](transform-data.md)，使用計算服務（如 Azure HDInsight、Azure 批次處理和 Azure 機器學習）轉換資料。
+- [數據轉換活動](transform-data.md),使用計算服務(如 Azure HDInsight、Azure 批次處理和 Azure 機器學習)轉換資料。
 
 若要將資料移入/移出 Data Factory 不支援的資料存放區，或者以 Data Factory 不支援的方式轉換/處理資料，您可以利用自己的資料移動或轉換邏輯建立**自訂活動**，然後在管線中使用活動。 自訂活動會在虛擬機器的 **Azure Batch** 集區上執行自訂程式碼邏輯。
 
@@ -35,8 +36,8 @@ ms.locfileid: "79260575"
 如果您不熟悉 Azure Batch 服務，請參閱下列文章：
 
 * [Azure Batch 基本知識](../batch/batch-technical-overview.md) ，以取得 Azure Batch 服務的概觀。
-* [新建-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) Cmdlet 以創建 Azure 批次處理帳戶（或[）Azure 門戶](../batch/batch-account-create-portal.md)，以便使用 Azure 門戶創建 Azure 批次處理帳戶。 如需使用此 Cmdlet 的詳細指示，請參閱[使用 PowerShell 管理 Azure Batch 帳戶](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)一文。
-* [新建 ABatchPool](/powershell/module/az.batch/New-AzBatchPool) Cmdlet 以創建 Azure 批次處理池。
+* [新建-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 以創建 Azure 批處理帳戶(或[)Azure 門戶](../batch/batch-account-create-portal.md),以便使用 Azure 門戶創建 Azure 批處理帳戶。 如需使用此 Cmdlet 的詳細指示，請參閱[使用 PowerShell 管理 Azure Batch 帳戶](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)一文。
+* [新建 ABatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以建立 Azure 批處理池。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 已連結的服務
 
@@ -110,12 +111,12 @@ ms.locfileid: "79260575"
 | folderPath            | 自訂應用程式及其所有相依項目的資料夾路徑<br/><br/>如果您將相依性儲存在子資料夾中 (也就是 folderPath** 下的階層式資料夾結構)，當您將檔案複製到 Azure Batch 時，目前的資料夾結構會遭到壓平合併。 也就是所有檔案會複製到沒有子資料夾的單一資料夾中。 若要解決這個問題行為，請考慮壓縮檔案並複製壓縮的檔案，然後在所需位置中以自訂程式碼來將其解壓縮。 | 否 &#42;       |
 | referenceObjects      | 現有已連結的服務和資料集的陣列。 參考的已連結的服務和資料集會傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考 Data Factory 的資源 | 否       |
 | extendedProperties    | 使用者定義的屬性，可以傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考其他屬性 | 否       |
-| 保留時間天數 | 為自訂活動提交的檔的保留時間。 預設值為 30 天。 | 否 |
+| 保留時間天數 | 為自定義活動提交的檔的保留時間。 默認值為 30 天。 | 否 |
 
 &#42; 必須同時指定或同時省略 `resourceLinkedService` 和 `folderPath` 屬性。
 
 > [!NOTE]
-> 如果要在自訂活動中將連結服務作為引用物件傳遞，則最好通過啟用 Azure 金鑰保存庫的連結服務（因為它不包含任何安全字串），並使用金鑰名稱直接從 Key 獲取憑據從代碼的保存庫。 您可以[在此處](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)找到一個示例，其中引用啟用了 AKV 的連結服務，從金鑰保存庫檢索憑據，然後存取碼中的存儲。
+> 如果要在自定義活動中將鏈接服務作為引用物件傳遞,則最好通過啟用 Azure 密鑰保管庫的連結服務(因為它不包含任何安全字串),並使用密鑰庫直接從代碼獲取憑據。 您可以[在此處](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)找到一個範例,其中引用啟用了 AKV 的連結服務,從密鑰保管庫檢索認證,然後存取代碼中的儲存。
 
 ## <a name="custom-activity-permissions"></a>自訂活動權限
 
@@ -300,12 +301,12 @@ Activity Error section:
 如果您想要在下游活動中取用 stdout.txt 的內容，可以在 "\@activity('MyCustomActivity').output.outputs[0]" 運算式中取得 stdout.txt 檔案的路徑。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json 和 datasets.json 會儲存在 Batch 工作的執行階段資料夾。 在此示例中，活動.json、連結服務.json 和資料集.json 存儲在路徑中`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"`。 您必須視需要個別加以清除。
+> - activity.json、linkedServices.json 和 datasets.json 會儲存在 Batch 工作的執行階段資料夾。 這個選項,活動.json、連結服務.json 和資料集.json 儲存在路徑中`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"`。 您必須視需要個別加以清除。
 > - 如果已連結的服務使用自我裝載整合執行階段，機密資訊 (例如金鑰或密碼) 就會由自我裝載整合執行階段進行加密，以確保認證會保留在客戶定義的私人網路環境中。 某些機密欄位由您的自訂應用程式以這樣的方式參考時，可能會遺失。 視需要在 extendedProperties 中使用 SecureString，而不是使用已連結的服務參考。
 
 ## <a name="pass-outputs-to-another-activity"></a>將輸出傳遞到其他活動
 
-您可以將自訂活動中程式碼的自訂值傳回到 Azure Data Factory。 您可以從應用程式中將它們寫入到 `outputs.json`執行此動作。 Data Factory 會複製 `outputs.json` 的內容，並將其附加至活動輸出以作為 `customOutput` 屬性的值 （大小限制為 2MB。如果要使用下游活動中的內容`outputs.json`，可以使用 運算式`@activity('<MyCustomActivity>').output.customOutput`獲取 值。
+您可以將自訂活動中程式碼的自訂值傳回到 Azure Data Factory。 您可以從應用程式中將它們寫入到 `outputs.json`執行此動作。 Data Factory 會複製 `outputs.json` 的內容，並將其附加至活動輸出以作為 `customOutput` 屬性的值 (大小限制為 2MB。如果要使用下游活動中的內容`outputs.json`,可以使用`@activity('<MyCustomActivity>').output.customOutput`運算式 獲取 值。
 
 ## <a name="retrieve-securestring-outputs"></a>擷取 SecureString 輸出
 
@@ -326,9 +327,9 @@ Activity Error section:
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> 比較 v2 自訂活動和第 1 版 (自訂) DotNet 活動
 
-在 Azure 資料工廠版本 1 中，通過創建具有實現`Execute``IDotNetActivity`介面方法的類的 .NET 類庫專案來實現（自訂）DotNet 活動。 (自訂) DotNet 活動之 JSON 承載中的已連結服務、資料集及擴充屬性，都會以強型別物件的形式傳遞至執行方法。 如需第 1 版行為的詳細資料，請參閱[第 1 版中的 (自訂) DotNet](v1/data-factory-use-custom-activities.md)。 由於此實現，您的版本 1 DotNet 活動代碼必須針對 .NET 框架 4.5.2。 第 1 版 DotNet 活動也必須在 Windows 型 Azure Batch 集區節點上執行。
+在 Azure 資料工廠版本 1 中,`Execute``IDotNetActivity`透過建立具有實現介面方法的類的 .NET 類庫專案來實現(自訂)DotNet 活動。 (自訂) DotNet 活動之 JSON 承載中的已連結服務、資料集及擴充屬性，都會以強型別物件的形式傳遞至執行方法。 如需第 1 版行為的詳細資料，請參閱[第 1 版中的 (自訂) DotNet](v1/data-factory-use-custom-activities.md)。 由於此實現,您的版本 1 DotNet 活動代碼必須針對 .NET 框架 4.5.2。 第 1 版 DotNet 活動也必須在 Windows 型 Azure Batch 集區節點上執行。
 
-在 Azure 資料工廠 V2 自訂活動中，不需要實現 .NET 介面。 您現在可以在將之編譯為可執行檔的情況下，直接執行命令、指令碼，以及自己的自訂程式碼。 若要設定此實作，您需要一併指定 `Command` 屬性和 `folderPath` 屬性。 自訂活動會將可執行檔及其相依性上傳至 `folderpath`，並為您執行命令。
+在 Azure 資料工廠 V2 自定義活動中,不需要實現 .NET 介面。 您現在可以在將之編譯為可執行檔的情況下，直接執行命令、指令碼，以及自己的自訂程式碼。 若要設定此實作，您需要一併指定 `Command` 屬性和 `folderPath` 屬性。 自訂活動會將可執行檔及其相依性上傳至 `folderpath`，並為您執行命令。
 
 定義於 Data Factory V2 自訂活動之 JSON 承載中的已連結服務、資料集(定義於 referenceObjects) 及擴充屬性，可以 JSON 檔案的形式由可執行檔加以存取。 您可以使用 JSON 序列化程式存取所需的屬性，如之前的 SampleApp.exe 程式碼範例中所示。
 
@@ -338,15 +339,15 @@ Activity Error section:
 
 |差異      | 自訂活動      | 第 1 版 (自訂) DotNet 活動      |
 | ---- | ---- | ---- |
-|定義自訂邏輯的方式      |提供可執行檔      |通過實現 .NET DLL      |
-|自訂邏輯的執行環境      |Windows 或 Linux      |視窗 （.NET 框架 4.5.2）      |
+|定義自訂邏輯的方式      |提供可執行檔      |透過 %.NET DLL      |
+|自訂邏輯的執行環境      |Windows 或 Linux      |視窗 (.NET 框架 4.5.2)      |
 |執行指令碼      |支援直接執行指令碼 (例如，Windows VM 上的 "cmd /c echo hello world")      |需要在 .NET DLL 中實現      |
 |需要資料集      |選用      |需要資料集來鏈結活動並傳遞資訊      |
 |將來自活動的資訊傳遞至自訂邏輯      |透過 ReferenceObjects (LinkedServices 和資料集) 和 ExtendedProperties (自訂屬性)      |透過 ExtendedProperties (自訂屬性)、輸入和輸出資料集      |
-|擷取自訂邏輯中的資訊      |剖析與可執行檔儲存於相同資料夾的 activity.json、linkedServices.json 和 datasets.json      |通過 .NET SDK （.NET 幀 4.5.2）      |
-|記錄      |直接寫入 STDOUT      |在 .NET DLL 中實現記錄器      |
+|擷取自訂邏輯中的資訊      |剖析與可執行檔儲存於相同資料夾的 activity.json、linkedServices.json 和 datasets.json      |通過 .NET SDK (.NET 幀 4.5.2)      |
+|記錄      |直接寫入 STDOUT      |在 .NET DLL 中實作記錄器      |
 
-如果為版本 1（自訂）DotNet 活動編寫了現有的 .NET 代碼，則需要修改代碼，以便它才能與自訂活動的當前版本一起工作。 遵循下列高階指導方針來更新程式碼：
+如果為版本 1(自訂)DotNet 活動編寫了現有的 .NET 代碼,則需要修改代碼,以便它才能與自定義活動的當前版本一起工作。 遵循下列高階指導方針來更新程式碼：
 
   - 將專案從 .NET 類庫更改為主控台應用。
   - 使用 `Main` 方法啟動您的應用程式。 已不再需要 `IDotNetActivity` 介面的 `Execute` 方法。
@@ -386,5 +387,5 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [MapReduce 活動](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [火花活動](transform-data-using-spark.md)
-* [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
+* [機器學習批次處理執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416387"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Delete 活動
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 您可以使用 Azure 資料工廠中的「刪除活動」從本地儲存儲存記憶體在雲端儲存記憶體中刪除檔案或資料夾。 不再需要檔案時，使用此活動來清除或封存檔案。
 
@@ -40,15 +42,15 @@ ms.locfileid: "80618274"
 
 ## <a name="supported-data-stores"></a>支援的資料存放區
 
--   [Azure Blob 儲存體](connector-azure-blob-storage.md)
+-   [Azure Blob 儲存](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure 檔案儲存](connector-azure-file-storage.md)
+-   [Azure 檔案儲存體](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>檔案系統資料存放區
 
 -   [檔案系統](connector-file-system.md)
--   [Ftp](connector-ftp.md)
+-   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)

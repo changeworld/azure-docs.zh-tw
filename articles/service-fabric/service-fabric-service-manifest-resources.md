@@ -3,24 +3,28 @@ title: 指定服務交換矩陣服務終結點
 description: 如何在服務資訊清單中描述端點資源，包括如何設定 HTTPS 端點
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282155"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417584"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
-## <a name="overview"></a>總覽
-服務資訊清單可宣告/變更服務使用的資源，且不需變更已編譯的程式碼。 Azure Service Fabric 支援針對服務的端點資源組態。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 及工具一起安裝在 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+## <a name="overview"></a>概觀
+服務清單允許在不更改編譯代碼的情況下聲明或更改服務使用的資源。 服務交換矩陣支援配置服務的終結點資源。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 及工具一起安裝在 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 ## <a name="endpoints"></a>端點
 在服務資訊清單中定義端點資源時，若沒有明確指定連接埠，Service Fabric 會從保留的應用程式連接埠範圍指派連接埠。 例如，請看本段落之後提供的資訊清單片段中所指定的端點 *ServiceEndpoint1* 。 此外，服務也可以在資源中要求特定連接埠。 不同的連接埠號碼可以指派給在不同叢集節點上執行的服務複本，而在同一節點上執行的服務複本可以共用連接埠。 然後服務複本就可以在需要時使用這些連接埠進行複寫和接聽用戶端要求。
 
+啟動指定 Htcrit 的服務後,Service Fabric 將設置埠的存取控制項目,將指定的伺服器證書綁定到埠,並授予服務作為證書私鑰的許可權執行的標識。 每次 Service Fabric 啟動時,或者通過升級更改應用程式的證書聲明時,都會調用啟動流。 還將監視終結點證書的更改/續訂,並在必要時定期重新應用許可權。
+
+服務終止後,Service Fabric 將清理終結點訪問控制條目,並刪除證書綁定。 但是,不會清除應用於證書私鑰的任何許可權。
+
 > [!WARNING] 
-> 根據設計，靜態埠不應與 ClusterManifest 中指定的應用程式埠範圍重疊。 如果指定靜態埠，請將其分配到應用程式埠範圍之外，否則將導致埠衝突。 使用版本 6.5CU2 時，我們將在檢測到此類衝突時發出**運行狀況警告**，但允許部署繼續與已發貨的 6.5 行為同步。 但是，我們可能會阻止應用程式部署從下一個主要版本。
+> 根據設計,靜態埠不應與 ClusterManifest 中指定的應用程式埠範圍重疊。 如果指定靜態埠,請將其分配到應用程式埠範圍之外,否則將導致埠衝突。 使用版本 6.5CU2 時,我們將在檢測到此類衝突時發出**運行狀況警告**,但允許部署繼續與已發貨的 6.5 行為同步。 但是,我們可能會阻止應用程式部署從下一個主要版本。
 >
-> 使用版本 7.0 時，我們將發出**運行狀況警告**，當我們檢測到應用程式埠範圍使用方式超出託管配置：：應用程式波特Exhaust閾值百分比（預設 80%）時。
+> 使用版本 7.0 時,我們將發出**運行狀況警告**,當我們檢測到應用程式埠範圍使用方式超出託管配置::應用程式波特Exhaust閾值百分比(預設 80%)時。
 >
 
 ```xml
@@ -85,6 +89,7 @@ Service Fabric 會自動將 HTTP 端點處理為 ACL。
       <Endpoint Name="ServiceEndpoint1" Protocol="http"/>
       <Endpoint Name="ServiceEndpoint2" Protocol="http" Port="80"/>
       <Endpoint Name="ServiceEndpoint3" Protocol="https"/>
+      <Endpoint Name="ServiceEndpoint4" Protocol="https" Port="14023"/>
 
       <!-- This endpoint is used by the replicator for replicating the state of your service.
            This endpoint is configured through the ReplicatorSettings config section in the Settings.xml
@@ -106,7 +111,7 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
 > 使用 HTTPS 時，請勿對部署至相同節點的不同服務執行個體 (獨立於應用程式) 使用相同連接埠和憑證。 在不同的應用程式執行個體中，使用相同連接埠來升級兩個不同的服務，將會導致升級失敗。 如需詳細資訊，請參閱[使用 HTTPS 端點來升級多個應用程式](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)。
 >
 
-以下是您必須為 HTTPS 設定的範例 ApplicationManifest。 您必須提供憑證的指紋。 EndpointRef 是在您設定 HTTPS 通訊協定的 ServiceManifest 中 EndpointResource 的參考。 您可以加入一個以上的 EndpointCertificate。  
+下面是演示 HTTPS 終結點所需的配置的應用程式清單示例。 伺服器/終結點證書可以通過指紋或主題通用名稱聲明,並且必須提供值。 終結點Ref 是服務清單中終結點資源的引用,其協議必須設置為"Hs"協定。 您可以加入一個以上的 EndpointCertificate。  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -127,7 +132,8 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
     <ServiceManifestRef ServiceManifestName="Stateful1Pkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
     <Policies>
-      <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint3"/>
+      <EndpointBindingPolicy CertificateRef="SslCertByTP" EndpointRef="ServiceEndpoint3"/>
+      <EndpointBindingPolicy CertificateRef="SslCertByCN" EndpointRef="ServiceEndpoint4"/>
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
@@ -143,7 +149,8 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
     </Service>
   </DefaultServices>
   <Certificates>
-    <EndpointCertificate Name="TestCert1" X509FindValue="FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF F0" X509StoreName="MY" />  
+    <EndpointCertificate Name="SslCertByTP" X509FindValue="FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF F0" X509StoreName="MY" />  
+    <EndpointCertificate Name="SslCertByCN" X509FindType="FindBySubjectName" X509FindValue="ServiceFabric-EndpointCertificateBinding-Test" X509StoreName="MY" />  
   </Certificates>
 </ApplicationManifest>
 ```
@@ -170,7 +177,7 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
       </Endpoints>
     </ResourceOverrides>
         <Policies>
-           <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint"/>
+           <EndpointBindingPolicy CertificateRef="SslCertByTP" EndpointRef="ServiceEndpoint"/>
         </Policies>
   </ServiceManifestImport>
 ```
@@ -209,4 +216,4 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 且應用程式參數的 Port1 和 Protocol1 值是 Null 或空白。 連接埠仍是由 ServiceFabric 決定。 且通訊協定將 tcp。
 
-假設您指定錯誤的值。 與 Port 一樣，您指定了字串值"Foo"而不是 int。 New-ServiceFabric應用程式命令將失敗，但出現錯誤："資源覆蓋"部分中名稱為"服務終結點1"屬性"Port1"的覆蓋參數無效。 指定的值是 'Foo'，而所需為 'int'。
+假設您指定錯誤的值。 與 Port 一樣,您指定了字串值「Foo」而不是 int。 New-ServiceFabric應用程式命令將失敗,但出現錯誤:"資源覆蓋"部分中名稱為"服務終結點1"屬性"Port1"的覆蓋參數無效。 指定的值是 'Foo'，而所需為 'int'。

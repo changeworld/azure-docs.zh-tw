@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743183"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417033"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能微調
 
 Synapse SQL 池中的具體化檢視為複雜的分析查詢提供了一種低維護方法,無需任何查詢更改即可獲得快速性能。 本文討論了使用具體化視圖的一般指導。
 
-Azure SQL 資料倉庫中的具體化檢視為複雜的分析查詢提供了一種低維護方法,以在沒有任何查詢更改的情況下獲得快速性能。 本文討論了使用具體化視圖的一般指導。
+SQL 池中的具體化視圖為複雜的分析查詢提供了一種低維護方法,無需任何查詢更改即可獲得快速性能。 本文討論了使用具體化視圖的一般指導。
 
 ## <a name="materialized-views-vs-standard-views"></a>具體檢視與標準檢視
 
@@ -45,7 +44,7 @@ SQL 池支持標準和具體化視圖。  兩者都是使用 SELECT 運算式創
 
 ## <a name="benefits-of-using-materialized-views"></a>使用詳細化檢視的好處
 
-設計合理的具體檢視可以提供以下好處:
+正確設計的具體化檢視提供了以下好處:
 
 - 縮短具有 JOIN 和聚合函數的複雜查詢的執行時間。 查詢越複雜,執行時間節省的可能性就越高。 當查詢的計算成本高且生成的數據集較小時,將獲得最大的好處。  
 - SQL 池中的優化程式可以自動使用已部署的實物視圖來改進查詢執行計劃。  此過程對提供更快查詢性能的使用者是透明的,並且不需要查詢直接引用具體化視圖。
@@ -118,7 +117,7 @@ JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
 
 - 刪除使用率低或不再需要的占物視圖。  禁用的具體化視圖未維護,但仍會產生存儲成本。  
 
-- 合併在同一或類似基表上創建的具體化視圖,即使它們的數據不重疊。  組合具體化視圖可能會導致大小大於單獨視圖的總和,但視圖維護成本應降低。  例如：
+- 合併在同一或類似基表上創建的具體化視圖,即使它們的數據不重疊。  合併具體化視圖可能會導致比單獨視圖的總和更大的視圖,但視圖維護成本應降低。  例如：
 
 ```sql
 

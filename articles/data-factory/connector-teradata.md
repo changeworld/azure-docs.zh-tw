@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421227"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418026"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 資料工廠從 Teradata Vantage 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 >
 > * [版本 1](v1/data-factory-onprem-teradata-connector.md)
 > * [目前版本](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 數據工廠中的複製活動從 Teradata Vantage 複製數據。 複製[活動概述](copy-activity-overview.md)。
 
@@ -256,7 +258,7 @@ Teradata 連結服務支援以下屬性:
 
 | 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 大桌子滿載。                                   | **分區選項**:哈希。 <br><br/>在執行期間,數據工廠會自動檢測 PK 列,對它應用哈希,並通過分區複製數據。 |
+| 大桌子滿載。                                   | **分區選項**:哈希。 <br><br/>在執行期間,數據工廠會自動檢測主索引列,對它應用哈希,並通過分區複製數據。 |
 | 使用自定義查詢載入大量數據。                 | **分區選項**:哈希。<br>**查詢**`SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`: .<br>**分區列**:指定用於應用哈希分區的列。 如果未指定,資料工廠將自動檢測您在 Teradata 資料集中指定的表的 PK 列。<br><br>在執行期間,數據工廠`?AdfHashPartitionCondition`將替換為哈希分區邏輯,併發送到 Teradata。 |
 | 通過使用自定義查詢載入大量數據,該查詢具有具有均勻分佈值的整數列,用於範圍分區。 | **分區選項**:動態範圍分區。<br>**查詢**`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**分割區列**:指定用於對資料進行分割區的欄位。 您可以使用整數資料類型對列進行分區。<br>**分區上限**和**分區下限**:指定是否要針對分區列進行篩選,以便僅在下部和上部範圍之間檢索數據。<br><br>在執行期間,資料工廠`?AdfRangePartitionColumnName``?AdfRangePartitionUpbound``?AdfRangePartitionLowbound`將替換和替換為每個分區的實際列名稱和值範圍,並發送到 Teradata。 <br>例如,如果分區列「ID」設置下限為 1,上限設置為 80,並行副本設置為 4,則數據工廠將數據按 4 個分區檢索數據。 他們的年號分別在[1,20]、[21、40]、[41、60]和[61、80]之間。 |
 
@@ -304,7 +306,7 @@ Teradata 連結服務支援以下屬性:
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |不支援。 在源查詢中應用顯式強制轉換。 |
-| 整數  |Int32 |
+| 整數 |Int32 |
 | Interval Day |不支援。 在源查詢中應用顯式強制轉換。 |
 | 間隔日至小時 |不支援。 在源查詢中應用顯式強制轉換。 |
 | 間隔日至分鐘 |不支援。 在源查詢中應用顯式強制轉換。 |

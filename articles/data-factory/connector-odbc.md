@@ -11,37 +11,38 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 6513cfc5432e969fc53aa72b075af194a064d178
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da5c53f8953960c382070be658add2877fff3f8c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244364"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416885"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure Data Factory 從 ODBC 資料存放區複製資料及將資料複製到處
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-odbc-connector.md)
-> * [當前版本](connector-odbc.md)
+> * [目前版本](connector-odbc.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 ODBC 資料存放區複製資料及將資料複製到該處。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 ODBC 連接器支援用於以下活動：
+此 ODBC 連線器支援用於以下活動:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
 您可以將資料從 ODBC 來源複製到任何支援的接收資料存放區，或從任何支援的來源資料存放區複製到 ODBC 接收器。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
-具體而言，這個 ODBC 連接器支援使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證，從**任何 ODBC 相容的資料存放區**複製資料或將資料複製到該處。 需要**64 位 ODBC 驅動程式**。
+具體而言，這個 ODBC 連接器支援使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證，從**任何 ODBC 相容的資料存放區**複製資料或將資料複製到該處。 需要**64 位元 ODBC 驅動程式**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要使用這個 ODBC 連接器，您必須：
 
-- 設定一個「自我裝載 Integration Runtime」。 有關詳細資訊[，請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
-- 為集成運行時電腦上的資料存儲安裝 64 位 ODBC 驅動程式。
+- 設定一個「自我裝載 Integration Runtime」。 有關詳細資訊[,請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
+- 為整合式執行時電腦上的數據儲存安裝 64 位元 ODBC 驅動程式。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -56,7 +57,7 @@ ms.locfileid: "79244364"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**Odbc** | 是 |
-| connectionString | 不包含認證部分的連接字串。 您可以用 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 模式指定連接字串，或使用您在 Integration Runtime 電腦上以 `"DSN=<name of the DSN on IR machine>;"` 設定的系統 DSN (資料來源名稱) (仍需要據此指定連結的服務中的認證部分)。<br>您還可以在 Azure 金鑰保存庫中輸入密碼， `password` 並將配置從連接字串中拔出。有關詳細資訊，請參閱 [在 Azure 金鑰保存庫中](store-credentials-in-key-vault.md) 存儲憑據。| 是 |
+| connectionString | 不包含認證部分的連接字串。 您可以用 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 模式指定連接字串，或使用您在 Integration Runtime 電腦上以 `"DSN=<name of the DSN on IR machine>;"` 設定的系統 DSN (資料來源名稱) (仍需要據此指定連結的服務中的認證部分)。<br>您還可以在 Azure 密鑰保管庫中輸入 `password` 密碼, 並將配置從連接字串中拔出。有關詳細資訊,請參閱 [在 Azure 密鑰保管庫中](store-credentials-in-key-vault.md) 儲存認證。| 是 |
 | authenticationType | 用來連接到 ODBC 資料存放區的驗證類型。<br/>允許的值為：**Basic** (基本) 和 **Anonymous** (匿名)。 | 是 |
 | userName | 如果您要使用 Basic 驗證，請指定使用者名稱。 | 否 |
 | 密碼 | 指定您為 userName 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
@@ -112,13 +113,13 @@ ms.locfileid: "79244364"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 ODBC 資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 ODBC 資料集所支援的屬性清單。
 
-要將資料從/複製到與 ODBC 相容的資料存儲，支援以下屬性：
+要將資料從/複製到與 ODBC 相容的資料儲存,支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設置為 **：OdbcTable** | 是 |
+| type | 資料集的類型屬性必須設定為 **:OdbcTable** | 是 |
 | tableName | ODBC 資料存放區中資料表的名稱。 | 就來源而言為非必要 (如果已指定活動來源中的「查詢」)；<br/>就接收器而言為必要 |
 
 **範例**
@@ -140,7 +141,7 @@ ms.locfileid: "79244364"
 }
 ```
 
-如果使用`RelationalTable`類型化資料集，則仍支援該資料集，同時建議您今後使用新資料集。
+如果使用`RelationalTable`類型化數據集,則仍支援該數據集,同時建議您今後使用新數據集。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -148,14 +149,14 @@ ms.locfileid: "79244364"
 
 ### <a name="odbc-as-source"></a>ODBC 作為來源
 
-要從與 ODBC 相容的資料存儲複製資料，複製活動**源**部分支援以下屬性：
+要從與 ODBC 相容的資料儲存複製資料,複製活動**來源**部分支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須將複製活動源的類型屬性設置為 **：OdbcSource** | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如：`"SELECT * FROM MyTable"`。 | 否 (如果已指定資料集中的 "tableName") |
+| type | 必須複製活動來源類型屬性設定為 **:OdbcSource** | 是 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -187,11 +188,11 @@ ms.locfileid: "79244364"
 ]
 ```
 
-如果使用`RelationalSource`類型化源，它仍然支援按"當前"，同時建議您今後使用新的源。
+如果使用`RelationalSource`類型化源,它仍然支援按"當前",同時建議您今後使用新的源。
 
 ### <a name="odbc-as-sink"></a>ODBC 作為接收器
 
-若要將資料複製到 ODBC 相容的資料存放區，請將複製活動中的接收器類型設定為 **OdbcSink**。 複製活動**接收器**部分支援以下屬性：
+若要將資料複製到 ODBC 相容的資料存放區，請將複製活動中的接收器類型設定為 **OdbcSink**。 複製活動**接收器**部份支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -203,7 +204,7 @@ ms.locfileid: "79244364"
 > [!NOTE]
 > 針對 "writeBatchSize"，如果未設定 (自動偵測)，複製活動會先偵測驅動程式是否支援批次作業，如果支援，就將它設定為 10000，如果不支援，則將它設定為 1。 如果您將此值明確設定為 0 以外的值，複製作業會採用該值，並於驅動程式不支援批次作業時，在執行階段發生失敗。
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -273,9 +274,9 @@ ms.locfileid: "79244364"
 
 如需在複製作業中使用 ODBC 資料存放區作為來源/接收資料存放區的詳細概觀，請從頭閱讀本文。
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 
 ## <a name="troubleshoot-connectivity-issues"></a>疑難排解連線問題

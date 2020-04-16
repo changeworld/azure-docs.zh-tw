@@ -10,14 +10,17 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75969214"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418315"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory 的角色和權限
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文說明要建立和管理 Azure Data Factory 資源所需的角色，以及這些角色所授與的權限。
 
@@ -79,9 +82,9 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
   1. 指派資料處理站層級的內建**參與者**角色。
   2. 建立具有 **Microsoft.Resources/deployments/** 權限的自訂角色。 在資源群組層級對使用者指派這個自訂角色。
 
-- 允許使用者僅能夠測試連結服務中的連接
+- 允許使用者只能測試連結服務中的連線
 
-    創建具有以下操作許可權的自訂角色角色 **：Microsoft.DataFactory/Factory/getAroleValue/read**和**Microsoft.資料工廠/工廠/getDataPlaneAccess/read**。 在資料工廠資源上為使用者分配此自訂角色。
+    建立具有以下操作權限的自定義角色角色 **:Microsoft.DataFactory/Factory/getAroleValue/read**和**Microsoft.資料工廠/工廠/getDataPlaneAccess/read**。 在數據工廠資源上為使用者分配此自定義角色。
 
 - 讓使用者從 PowerShell 或 SDK 更新資料處理站，而不是在 Azure 入口網站中進行。
 

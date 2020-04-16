@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 突觸分析構建和部署模型 - 團隊資料科學流程
-description: 使用 Azure Synapse 分析與公開可用的資料集構建和部署機器學習模型。
+title: 使用 Azure 突觸分析建構及部署模型 - 團隊資料科學流程
+description: 使用 Azure Synapse 分析與公開可用的數據集建構和部署機器學習模型。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,20 +11,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128379"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418536"
 ---
-# <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>團隊資料科學流程在操作中：使用 Azure 突觸分析
-在本教程中，我們將介紹使用 Azure 突觸分析構建和部署機器學習模型的可公開資料集[（NYC 計程車旅行](https://www.andresmh.com/nyctaxitrips/)資料集）。 構造的二進位分類模型預測小費是否為行程付費。  模型包括多類分類（無論是否有提示）和回歸（已支付小費金額的分佈）。
+# <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>團隊資料科學流程在操作中:使用 Azure 突觸分析
+在本教學中,我們將介紹使用 Azure 突觸分析構建和部署機器學習模型的可公開數據集[(NYC 計程車旅行](https://www.andresmh.com/nyctaxitrips/)數據集)。 構造的二進位分類模型預測小費是否為行程付費。  模型包括多類分類(無論是否有提示)和回歸(已支付小費金額的分佈)。
 
-此程序會遵循 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 工作流程。 我們演示如何設置資料科學環境、如何將資料載入到 Azure 同步分析中，以及如何使用 Azure 突觸分析或 IPython 筆記本來探索要建模的資料和工程師功能。 然後，我們會示範如何使用 Azure Machine Learning 建置和部署模型。
+此程序會遵循 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 工作流程。 我們演示如何設置數據科學環境、如何將數據載入到 Azure 同步分析中,以及如何使用 Azure 突觸分析或 IPython 筆記本來探索要建模的數據和工程師功能。 然後，我們會示範如何使用 Azure Machine Learning 建置和部署模型。
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 計程車車程資料集
-「NYC 計程車車程」資料是由約 20GB 的 CSV 壓縮檔 (未壓縮時可達 48GB) 所組成，裡面記錄了超過 1 億 7300 萬筆個別車程及針對每趟車程所支付的費用。 每趟車程記錄均包括上車和下車的位置與時間、匿名的計程車司機駕照號碼，以及計程車牌照 (計程車的唯一識別碼) 號碼。 資料涵蓋 2013 年的所有車程，並且每月會在下列兩個資料集中加以提供：
+「NYC 計程車車程」資料是由約 20GB 的 CSV 壓縮檔 (未壓縮時可達 48GB) 所組成，裡面記錄了超過 1 億 7300 萬筆個別車程及針對每趟車程所支付的費用。 每個行程記錄包括接送地點和時間、匿名駭客(司機)許可證號碼和獎章(計程車的唯一 ID)號碼。 資料涵蓋 2013 年的所有車程，並且每月會在下列兩個資料集中加以提供：
 
 1. **trip_data.csv** 檔案包含車程的詳細資訊，例如，乘客數、上車和下車地點、車程持續時間，以及車程長度。 以下是一些範例記錄：
 
@@ -52,7 +52,7 @@ ms.locfileid: "80128379"
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>處理三種類型的預測工作
 我們根據 *tip\_amount* 將三個預測問題公式化來說明三種類型的模型化工作：
 
-1. **二進位分類**：要預測小費是否為旅行付費，即大於 $0*的小費\_金額*是一個積極的示例，而*\_小費金額為*0 是一個負例。
+1. **二進位類別**:要預測小費是否為旅行付費,即大於 $0*的小費\_金額*是一個積極的示例,而*\_小費金額為*0 是一個負例。
 2. **多類別分類**：預測針對該車程所支付之小費的金額範圍。 我們將 tip\_amount** 分成五個分類收納組或類別：
 
         Class 0 : tip_amount = $0
@@ -60,7 +60,7 @@ ms.locfileid: "80128379"
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **回歸任務**：預測為旅行支付的小費金額。
+3. **回歸任務**:預測為旅行支付的小費金額。
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>設定適用於進階分析的 Azure 資料科學環境
 若要設定您的 Azure 資料科學環境，請遵循下列步驟。
@@ -68,26 +68,26 @@ ms.locfileid: "80128379"
 **建立自己的 Azure Blob 儲存體帳戶**
 
 * 當您在佈建自己的 Azure Blob 儲存體時，請為 Azure Blob 儲存體選擇位於或最接近「美國中南部」 **** 的地理位置 (即儲存 NYC 計程車資料的位置)。 該資料會使用 AzCopy 從公用 Blob 儲存體容器複製到您自己的儲存體帳戶中的容器。 您的 Azure Blob 儲存體越接近美國中南部，就能越快完成這項工作 (步驟 4)。
-* 要創建自己的 Azure 存儲帳戶，請按照有關 Azure[存儲帳戶](../../storage/common/storage-create-storage-account.md)中概述的步驟操作。 請務必記下下列儲存體帳戶認證的值，因為我們會在本逐步解說稍後的地方用到它們。
+* 要創建自己的 Azure 儲存帳戶,請按照有關 Azure[儲存帳戶](../../storage/common/storage-create-storage-account.md)中概述的步驟操作。 請務必記下下列儲存體帳戶認證的值，因為我們會在本逐步解說稍後的地方用到它們。
 
-  * **存儲帳戶名稱**
-  * **存儲帳戶金鑰**
+  * **儲存帳號名稱**
+  * **儲存帳戶金鑰**
   * **容器名稱** (您想要在 Azure Blob 儲存體中用來儲存資料的容器)
 
 **預配 Azure 同步分析實例。**
-按照 Azure[門戶中創建和查詢 Azure SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的文檔來預配 Azure 突觸分析實例。 請確保在以下 Azure 同步分析憑據上做出符號，這些憑據將在後續步驟中使用。
+按照 Azure[門戶中創建和查詢 Azure SQL 資料倉庫](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的文檔來預配 Azure 突觸分析實例。 請確保在以下 Azure 同步分析認證上做出符號,這些憑據將在後續步驟中使用。
 
-* **伺服器名稱** \<： 伺服器名稱>.database.windows.net
+* **伺服器名稱**\<: 伺服器名稱>.database.windows.net
 * **SQLDW (資料庫) 名稱**
-* **使用者**
+* **使用者名稱**
 * **密碼**
 
-**安裝 Visual Studio 和 SQL Server Data Tools。** 有關說明，請參閱[從 Visual Studio 2019 開始獲取 SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安裝 Visual Studio 和 SQL Server Data Tools。** 有關說明,請參閱[從 Visual Studio 2019 開始取得 SQL 資料主目錄](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
-**使用視覺化工作室連接到 Azure 同步分析。** 有關說明，請參閱連接 Azure SQL[資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步驟 1 & 2。
+**使用視覺化工作室連接到 Azure 同步分析。** 有關說明,請參閱[Azure SynapsE 分析 中連接 SQL 分析中](../../synapse-analytics/sql/connect-overview.md)的步驟 1 & 2。
 
 > [!NOTE]
-> 在 Azure 同步分析中創建的資料庫（而不是連接主題步驟 3 中提供的查詢）上運行以下 SQL 查詢，以創建**主金鑰**。
+> 在 Azure 同步分析中建立的資料庫(而不是連線主題步驟 3 中提供的查詢)上執行以下 SQL 查詢,以建立**主金鑰**。
 >
 >
 
@@ -101,8 +101,8 @@ ms.locfileid: "80128379"
 
 **在 Azure 訂用帳戶下建立 Azure Machine Learning 工作區。** 如需指示，請參閱 [建立 Azure Machine Learning 工作區](../studio/create-workspace.md)中概述的步驟。
 
-## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>將資料載入到 Azure 突觸分析中
-開啟 Windows PowerShell 命令主控台。 運行以下 PowerShell 命令，以將我們在 GitHub 上與您共用的示例 SQL 指令檔下載到您使用參數 *-DestDir*指定的本地目錄。 您可以將 *-DestDir* 參數的值變更為任何本機目錄。 如果 *-DestDir* 不存在，PowerShell 指令碼會加以建立。
+## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>將資料載入 Azure 突觸分析中
+開啟 Windows PowerShell 命令主控台。 執行以下 PowerShell 命令,以將我們在 GitHub 上與您共用的範例 SQL 文稿檔下載到您使用參數 *-DestDir*指定的本地目錄。 您可以將 *-DestDir* 參數的值變更為任何本機目錄。 如果 *-DestDir* 不存在，PowerShell 指令碼會加以建立。
 
 > [!NOTE]
 > 如果需要系統管理員權限才能建立或寫入 **DestDir** 目錄，您可能需要在執行下列 PowerShell 指令碼時 *以系統管理員身分執行* 。
@@ -123,10 +123,10 @@ ms.locfileid: "80128379"
 
     ./SQLDW_Data_Import.ps1
 
-首次運行 PowerShell 腳本時，系統將要求您從 Azure 同步分析和 Azure Blob 存儲帳戶輸入資訊。 當這個 PowerShell 指令碼完成第一次執行時，您所輸入的認證即已寫入現在的工作目錄中的組態檔 SQLDW.conf。 日後再次執行這個 PowerShell 指令碼檔案時，就會有從這個組態檔讀取所有所需參數的選項。 如果您需要變更一些參數，您可以選擇在提示時於畫面上輸入參數 (方法是刪除此組態檔，並依提示輸入參數值)，或是變更參數值 (方法是編輯 *-DestDir* 目錄中的 SQLDW.conf 檔案)。
+首次執行 PowerShell 腳本時,系統將要求您從 Azure 同步分析和 Azure Blob 儲存帳戶輸入資訊。 當這個 PowerShell 指令碼完成第一次執行時，您所輸入的認證即已寫入現在的工作目錄中的組態檔 SQLDW.conf。 日後再次執行這個 PowerShell 指令碼檔案時，就會有從這個組態檔讀取所有所需參數的選項。 如果您需要變更一些參數，您可以選擇在提示時於畫面上輸入參數 (方法是刪除此組態檔，並依提示輸入參數值)，或是變更參數值 (方法是編輯 *-DestDir* 目錄中的 SQLDW.conf 檔案)。
 
 > [!NOTE]
-> 為了避免架構名稱與 Azure Synapse 分析中已經存在的架構名稱衝突，當直接從 SQLDW.conf 檔中讀取參數時，將從 SQLDW.conf 檔中向架構名稱添加一個 3 位亂數作為預設架構架構名稱添加到每次運行的名稱。 PowerShell 指令碼可能會提示您輸入結構描述名稱：使用者可自行指定此名稱。
+> 為了避免架構名稱與 Azure Synapse 分析中已經存在的架構名稱衝突,當直接從 SQLDW.conf 檔案讀取參數時,將從 SQLDW.conf 檔中向架構名稱添加一個 3 位元隨機數,作為每次運行的預設架構名稱。 PowerShell 指令碼可能會提示您輸入結構描述名稱：使用者可自行指定此名稱。
 >
 >
 
@@ -163,7 +163,7 @@ ms.locfileid: "80128379"
         $total_seconds = [math]::Round($time_span.TotalSeconds,2)
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
-* **使用 Polybase（通過執行 LoadDataToSQLDW.sql）將資料**從專用 Blob 存儲帳戶中載入到 Azure 同步分析，並具有以下命令。
+* **使用 Polybase(透過執行 LoadDataToSQLDW.sql)將資料**從專用 Blob 儲存帳戶中載入 Azure 同步分析,並具有以下命令。
 
   * 建立結構描述
 
@@ -173,7 +173,7 @@ ms.locfileid: "80128379"
           CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
           WITH IDENTITY = ''asbkey'' ,
           Secret = ''{StorageAccountKey}''
-  * 為 Azure 存儲 Blob 創建外部資料源
+  * 為 Azure 儲存檢視器建立外部資料來源
 
           CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
           WITH
@@ -254,7 +254,7 @@ ms.locfileid: "80128379"
                 REJECT_VALUE = 12
             )
 
-    - 將資料從 Azure Blob 存儲中的外部表載入到 Azure 同步分析
+    - 將資料從 Azure Blob 儲存中的外部表載入到 Azure 同步分析
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
@@ -278,7 +278,7 @@ ms.locfileid: "80128379"
             FROM   {external_nyctaxi_trip}
             ;
 
-    - 建立範例資料的資料表 (NYCTaxi_Sample)，並透過選取 trip 和 fare 資料表上的 SQL 查詢對範例資料表插入資料。 （本演練的某些步驟需要使用此示例表。
+    - 建立範例資料的資料表 (NYCTaxi_Sample)，並透過選取 trip 和 fare 資料表上的 SQL 查詢對範例資料表插入資料。 (本演練的某些步驟需要使用此範例表。
 
             CREATE TABLE {schemaname}.{nyctaxi_sample}
             WITH
@@ -310,7 +310,7 @@ ms.locfileid: "80128379"
 儲存體帳戶的地理位置會影響載入時間。
 
 > [!NOTE]
-> 根據專用 Blob 存儲帳戶的地理位置，將資料從公共 Blob 複製到專用存儲帳戶的過程可能需要大約 15 分鐘甚至更長時間，以及將資料從存儲帳戶載入到 Azure 的過程Azure 同步分析可能需要 20 分鐘或更長時間。
+> 根據專用 Blob 儲存帳戶的地理位置,將數據從公共 Blob 複製到專用存儲帳戶的過程可能需要大約 15 分鐘甚至更長時間,將數據從儲存帳戶載入到 Azure Synapse 分析的過程可能需要 20 分鐘或更長時間。
 >
 >
 
@@ -326,27 +326,27 @@ ms.locfileid: "80128379"
 您可以使用自己的資料。 如果資料位於內部部署電腦的現實應用程式中，您仍可以使用 AzCopy 將內部部署資料上傳至私人 Azure Blob 儲存體。 您只需要在 AzCopy 命令中，將 PowerShell 指令碼檔案中的 **Source** 位置 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) 變更為包含您的資料的本機目錄。
 
 > [!TIP]
-> 如果資料已在實際應用程式中的專用 Azure Blob 存儲中，則可以跳過 PowerShell 腳本中的 AzCopy 步驟，並將資料直接上載到 Azure 同步分析。 這將需要另外編輯指令碼，使它符合您的資料格式。
+> 如果數據已在實際應用程式中的專用 Azure Blob 儲存中,則可以跳過 PowerShell 腳本中的 AzCopy 步驟,並將數據直接上傳到 Azure 同步分析。 這將需要另外編輯指令碼，使它符合您的資料格式。
 >
 >
 
-此 PowerShell 腳本還將 Azure Synapse 分析資訊插入資料探索示例檔 SQLDW_Explorations.sql、SQLDW_Explorations.ipynb 和 SQLDW_Explorations_Scripts.py，以便這三個檔可以試用在 PowerShell 腳本完成後立即完成。
+此 PowerShell 文本還將 Azure Synapse 分析資訊插入資料探索範例檔案 SQLDW_Explorations.sql、SQLDW_Explorations.ipynb 和 SQLDW_Explorations_Scripts.py,以便這三個檔在 PowerShell 腳本完成後立即試用。
 
 成功執行之後，您會看到如下畫面：
 
 ![成功的指令碼執行輸出][20]
 
-## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Azure 突觸分析中的資料探索和功能工程
-在本節中，我們通過使用**視覺化工作室資料工具**直接針對 Azure 突觸分析運行 SQL 查詢來執行資料探索和功能生成。 本節中使用的所有 SQL 查詢都能在名為 *SQLDW_Explorations.sql* 的範例指令碼中找到。 PowerShell 指令碼已將此檔案下載到您的本機目錄。 您也可以從[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)檢索它。 但是 GitHub 中的檔沒有插入 Azure 同步分析資訊。
+## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Azure 突觸分析中的數據探索和功能工程
+在本節中,我們通過使用**可視化工作室數據工具**直接針對 Azure 突觸分析運行 SQL 查詢來執行數據探索和功能生成。 本節中使用的所有 SQL 查詢都能在名為 *SQLDW_Explorations.sql* 的範例指令碼中找到。 PowerShell 指令碼已將此檔案下載到您的本機目錄。 您也可以從[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)檢索它。 但是 GitHub 中的檔沒有插入 Azure 同步分析資訊。
 
-使用具有 Azure Synapse 分析登錄名和密碼的視覺化工作室連接到 Azure 同步分析，並打開**SQL 物件資源管理器**以確認已導入資料庫和表。 擷取 *SQLDW_Explorations.sql* 檔案。
+使用具有 Azure Synapse 分析登錄名和密碼的可視化工作室連接到 Azure 同步分析,並打開**SQL 物件資源管理器**以確認已導入資料庫和表。 擷取 *SQLDW_Explorations.sql* 檔案。
 
 > [!NOTE]
 > 若要開啟 Parallel Data Warehouse (PDW) 查詢編輯器，請於在 [SQL 物件總管]**** 中選取 PDW 時使用「新增查詢」**** 命令。 PDW 不支援標準的 SQL 查詢編輯器。
 >
 >
 
-以下是本節中執行的資料探索和功能生成任務的類型：
+以下是本節中執行的數據探索和功能產生任務的類型:
 
 * 在變動的時間範圍中探索數個欄位的資料分佈。
 * 調查經度和緯度欄位的資料品質。
@@ -374,7 +374,7 @@ ms.locfileid: "80128379"
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**輸出：** 查詢應返回一個表格，其中行指定 13，369 枚獎章（計程車）和 2013 年完成的行程次數。 最後一個資料行包含所完成之車程數的計數。
+**輸出:** 查詢應返回一個表格,其中行指定 13,369 枚獎章(計程車)和 2013 年完成的行程次數。 最後一個資料行包含所完成之車程數的計數。
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>探索：依據 medallion 和 hack_license 的車程分佈
 此範例可找出在指定期間內完成超過 100 趟車程的圓形徽章 (計程車號碼) 和計程車駕照號碼 (司機)。
@@ -531,7 +531,7 @@ ms.locfileid: "80128379"
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**輸出：** 此查詢會產生包含上下車的經緯度及所對應之直接距離 (英里)的資料表 (包含 2,803,538 個資料列) 。 以下是前三行的結果：
+**輸出：** 此查詢會產生包含上下車的經緯度及所對應之直接距離 (英里)的資料表 (包含 2,803,538 個資料列) 。 以下是前三行的結果:
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -540,7 +540,7 @@ ms.locfileid: "80128379"
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>準備資料以進行模型建置
-下列查詢可聯結 **nyctaxi\_trip** 和 **nyctaxi\_fare** 資料表、產生二進位分類標籤 **tipped**、多類別分類標籤 **tip\_class**，以及從完整聯結的資料集中擷取樣本。 根據上車時間擷取車程子集即可完成取樣。  可以複製此查詢，然後直接粘貼到[Azure 機器學習工作室（經典）](https://studio.azureml.net)[導入資料][導入資料]模組中，以便直接從 Azure 中的 SQL 資料庫實例引入資料。 查詢會排除含有不正確 (0, 0) 座標的記錄。
+下列查詢可聯結 **nyctaxi\_trip** 和 **nyctaxi\_fare** 資料表、產生二進位分類標籤 **tipped**、多類別分類標籤 **tip\_class**，以及從完整聯結的資料集中擷取樣本。 根據上車時間擷取車程子集即可完成取樣。  可以複製此查詢,然後直接粘貼到[Azure 機器學習工作室(經典)](https://studio.azureml.net)[導入數據][匯入數據]模組中,以便直接從 Azure 中的 SQL 資料庫實例引入數據。 查詢會排除含有不正確 (0, 0) 座標的記錄。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -559,20 +559,20 @@ ms.locfileid: "80128379"
 
 當您準備好繼續進行 Azure Machine Learning，您可以：
 
-1. 保存最後 SQL 查詢以提取和採樣資料，並將查詢直接複製到 Azure 機器學習中的[導入資料* 導入資料]模組中，或
-2. 在新的 Azure Synapse 分析表中保留計畫用於模型構建的採樣和工程資料，並在 Azure 機器學習中的[導入資料][導入資料]模組中使用新表。 前面步驟中的 PowerShell 腳本已為您完成此任務。 您可以在「匯入資料」模組中直接讀取此資料表。
+1. 儲存最後 SQL 查詢以擷取與取樣資料,並將查詢直接複製到 Azure 機器學習中的[匯入資料* 匯入資料]模組中,或
+2. 在新的 Azure Synapse 分析表中保留計畫用於模型建構的取樣和工程資料,並在 Azure 機器學習中的[導入資料][匯入資料]模組中使用新表。 前面步驟中的 PowerShell 文稿已為您完成此任務。 您可以在「匯入資料」模組中直接讀取此資料表。
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook 中的資料探索和特徵工程設計
-在本節中，我們將使用 Python 和 SQL 查詢執行資料探索和功能生成，並針對前面創建的 Azure 突觸分析。 名為 **SQLDW_Explorations.ipynb** 的 IPython Notebook 範例和 Python 指令碼檔案 **SQLDW_Explorations_Scripts.py** 已下載到您的本機目錄中。 您也可以在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)上取得這兩個檔案。 在 Python 指令碼中，這兩個檔案是相同的。 我們會提供 Python 指令碼檔案給您，以免您沒有 IPython Notebook 伺服器。 這兩個範例 Python 檔案是以 **Python 2.7**設計。
+在本節中,我們將使用 Python 和 SQL 查詢執行數據探索和功能生成,並針對前面創建的 Azure 突觸分析。 名為 **SQLDW_Explorations.ipynb** 的 IPython Notebook 範例和 Python 指令碼檔案 **SQLDW_Explorations_Scripts.py** 已下載到您的本機目錄中。 您也可以在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)上取得這兩個檔案。 在 Python 指令碼中，這兩個檔案是相同的。 我們會提供 Python 指令碼檔案給您，以免您沒有 IPython Notebook 伺服器。 這兩個範例 Python 檔案是以 **Python 2.7**設計。
 
-示例 IPython 筆記本中所需的 Azure 同步分析資訊以及下載到本地電腦的 Python 指令檔以前已由 PowerShell 腳本插入。 因此，不必進行任何修改就可以執行。
+示例 IPython 筆記本中所需的 Azure 同步分析資訊以及下載到本地電腦的 Python 文本檔以前已由 PowerShell 文稿插入。 因此，不必進行任何修改就可以執行。
 
-如果已設置 Azure 機器學習工作區，則可以將示例 IPython 筆記本直接上載到 AzureML IPython 筆記本服務並開始運行它。 以下是上載到 AzureML IPython 筆記本服務的步驟：
+如果已設置 Azure 機器學習工作區,則可以將示例 IPython 筆記本直接上傳到 AzureML IPython 筆記服務並開始執行它。 以下是上載到 AzureML IPython 筆記本服務的步驟:
 
-1. 登錄到 Azure 機器學習工作區，按一下頂部的 **"工作室"，** 然後按一下網頁左側的 **"筆記本**"。
+1. 登錄到 Azure 機器學習工作區,按一下頂部的 **「工作室」,** 然後單擊網頁左側的 **「筆記本**」。。
 
     ![依序按一下 [Studio] 和 [NOTEBOOK]][22]
-2. 按一下網頁左下角的 **"新建**"，然後選擇**Python 2**。 然後，提供 Notebook 的名稱，並按一下核取記號以建立新的空白 IPython Notebook。
+2. 點選網頁左下角的 **'新增**',然後選擇**Python 2**。 然後，提供 Notebook 的名稱，並按一下核取記號以建立新的空白 IPython Notebook。
 
     ![按一下 [新增]，然後選取 [Python 2]][23]
 3. 按一下新 IPython 筆記本左頂角的**Jupyter**符號。
@@ -590,12 +590,12 @@ ms.locfileid: "80128379"
 - pyodbc
 - PyTables
 
-使用大資料在 Azure 機器學習上構建高級分析解決方案時，建議的順序：
+使用大數據在 Azure 機器學習上構建進階分析解決方案時,建議的順序:
 
 * 將小型資料取樣讀取至記憶體中的資料框架。
 * 使用取樣的資料來執行一些視覺化操作和探索。
 * 使用取樣的資料來試驗功能工程。
-* 要進行更大的資料探索、資料操作和功能工程，請使用 Python 直接針對 Azure 同步分析發出 SQL 查詢。
+* 要進行更大的資料探索、資料操作和功能工程,請使用 Python 直接針對 Azure 同步分析發出 SQL 查詢。
 * 決定適合用於 Azure Machine Learning 模型建置的取樣大小。
 
 以下是數個資料探索、資料視覺化及功能工程範例。 您可以在範例 IPython Notebook 和範例 Python 指令碼檔案中找到更多資料探索。
@@ -651,7 +651,7 @@ ms.locfileid: "80128379"
 * 資料列總數 = 173179759
 * 資料行總數 = 11
 
-### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>從 Azure 突觸分析資料庫讀取小資料示例
+### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>從 Azure 突觸分析資料庫讀取小資料範例
     t0 = time.time()
 
     query = '''
@@ -731,7 +731,7 @@ ms.locfileid: "80128379"
 ![代碼和距離之間關聯性的散佈圖輸出][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查詢對取樣資料進行資料探索
-在本節中，我們使用上面創建的新表中保留的採樣資料來探討資料分佈。 可以使用原始表執行類似的探索。
+在本節中,我們使用上面創建的新錶中保留的採樣數據來探討數據分佈。 可以使用原始表執行類似的探索。
 
 #### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>探索：報告取樣資料表中資料列和資料行的數目
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
@@ -803,43 +803,43 @@ ms.locfileid: "80128379"
     pd.read_sql(query,conn)
 
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>在 Azure Machine Learning 中建置模型
-現在，我們已準備好在[Azure 機器學習](https://studio.azureml.net)中進行模型構建和模型部署。 資料已經準備好用於稍早所識別的任何預測問題，也就是：
+現在,我們已準備好在[Azure 機器學習](https://studio.azureml.net)中進行模型構建和模型部署。 資料已經準備好用於稍早所識別的任何預測問題，也就是：
 
-1. **二進位分類**：預測是否為旅行支付了小費。
-2. **多類分類**：根據先前定義的類預測已支付的小費範圍。
-3. **回歸任務**：預測為旅行支付的小費金額。
+1. **二進位類別**:預測是否為旅行支付了小費。
+2. **多類分類**:根據先前定義的類預測已支付的小費範圍。
+3. **回歸任務**:預測為旅行支付的小費金額。
 
-要開始建模練習，請登錄到 Azure**機器學習（經典）** 工作區。 如果尚未創建機器學習工作區，請參閱[創建 Azure 機器學習工作室（經典）工作區](../studio/create-workspace.md)。
+要開始建模練習,請登錄到 Azure**機器學習(經典)** 工作區。 如果尚未創建機器學習工作區,請參閱[創建 Azure 機器學習工作室(經典)工作區](../studio/create-workspace.md)。
 
-1. 要開始使用 Azure 機器學習，請參閱[什麼是 Azure 機器學習工作室（經典）？](../studio/what-is-ml-studio.md)
-2. 登錄到[Azure 機器學習工作室（經典）。](https://studio.azureml.net)
-3. 機器學習工作室（經典）主頁提供了豐富的資訊、視頻、教程、指向模組參考的連結和其他資源。 有關 Azure 機器學習的詳細資訊，請參閱[Azure 機器學習文件中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
+1. 要開始使用 Azure 機器學習,請參閱[什麼是 Azure 機器學習工作室(經典)?](../studio/what-is-ml-studio.md)
+2. 登錄到[Azure 機器學習工作室(經典)。](https://studio.azureml.net)
+3. 機器學習工作室(經典)主頁提供了豐富的資訊、視頻、教程、指向模組參考的連結和其他資源。 有關 Azure 機器學習的詳細資訊,請參閱[Azure 機器學習文件中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 典型的訓練實驗包含下列步驟：
 
 1. 創建 **_NEW**實驗。
-2. 將資料獲取到 Azure 機器學習工作室（經典）。
-3. 根據需要預處理、轉換和運算元據。
+2. 將數據獲取到 Azure 機器學習工作室(經典)。
+3. 根據需要預處理、轉換和操作數據。
 4. 視需要產生功能。
 5. 將資料分割為訓練/驗證/測試資料集 (或讓每一個擁有個別的資料集)。
-6. 根據要解決的學習問題，選取一或多個機器學習服務演算法。 例如，二進位分類、多類分類、回歸。
+6. 根據要解決的學習問題，選取一或多個機器學習服務演算法。 例如,二進位分類、多類分類、回歸。
 7. 使用訓練資料集來訓練一或多個模型。
 8. 使用訓練的模型，為驗證資料集計分。
 9. 評估模型來計算適用於學習問題的相關度量。
 10. 調整模型並選擇要部署的最佳模型。
 
-在本練習中，我們已經在 Azure 突觸分析中探索和設計了資料，並決定在 Azure 機器學習工作室（經典）中攝取的示例大小。 以下是建置一或多個預測模型的程序：
+在本練習中,我們已經在 Azure 突觸分析中探索和設計了數據,並決定在 Azure 機器學習工作室(經典)中攝取的示例大小。 以下是建置一或多個預測模型的程序：
 
-1. 使用["導入資料][導入資料]"模組將資料放入 Azure 機器學習工作室（經典版），在 **"資料輸入和輸出**"部分提供。 如需詳細資訊，請參閱[匯入資料][import-data]模組參考頁面。
+1. 使用[「導入資料][匯入資料]」模組將資料放入 Azure 機器學習工作室(經典版),在 **「資料輸入和輸出**」部分提供。 如需詳細資訊，請參閱[匯入資料][import-data]模組參考頁面。
 
     ![Azure ML 匯入資料][17]
 2. 在 [屬性]**** 面板中，選取 [Azure SQL Database]**** 做為 [資料來源]****。
 3. 在 [ **資料庫伺服器名稱** ] 欄位中輸入資料庫的 DNS 名稱。 格式： `tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在對應欄位中輸入 **資料庫名稱** 。
 5. 在 [伺服器使用者帳戶名稱]**** 中輸入「SQL 使用者名稱」**，並在 [伺服器使用者帳戶密碼]**** 中輸入「密碼」**。
-7. 在 **"資料庫"查詢**編輯文本區域中，粘貼提取必要的資料庫欄位（包括任何計算欄位（如標籤）的查詢，並將資料採樣到所需的樣本大小。
+7. 在 **「資料庫」查詢**編輯文本區域中,貼上提取必要的資料庫欄位(包括任何計算欄位(如標籤)的查詢,並將資料採樣到所需的樣本大小。
 
-下圖中列出了直接從 Azure Synapse Analytics 資料庫讀取資料的二進位分類實驗示例（請記住，請替換nyctaxi_trip的表名稱，然後nyctaxi_fare架構名稱和在演練）。 您可以針對多類別分類和迴歸問題建構類似的實驗。
+下圖中是直接從 Azure Synapse 分析資料庫讀取數據的二進位類別實驗範例(請記住,請nyctaxi_trip替換表名,然後nyctaxi_fare架構名稱和演練中使用的表名)。 您可以針對多類別分類和迴歸問題建構類似的實驗。
 
 ![Azure ML 訓練][10]
 
@@ -868,21 +868,21 @@ Azure Machine Learning 將根據訓練實驗的元件來建立計分實驗。 �
 2. 識別邏輯 **輸入連接埠** ，表示預期的輸入資料結構描述。
 3. 識別邏輯 **輸出連接埠** ，表示預期的 Web 服務輸出結構描述。
 
-創建評分實驗時，查看結果並根據需要進行調整。 典型的調整是將輸入資料集或查詢替換為排除標籤欄位的資料集或查詢，因為這些標籤欄位在調用服務時不會映射到架構。 最好將輸入資料集和/或查詢的大小減小到幾個記錄，足以指示輸入架構。 針對輸出連接埠，通常會使用[選取資料集中的資料行][select-columns]模組，在輸出中排除所有輸入欄位，只包含 [評分標籤]**** 和 [評分機率]****。
+創建評分實驗時,查看結果並根據需要進行調整。 典型的調整是將輸入數據集或查詢替換為排除標籤欄位的數據集或查詢,因為這些標籤欄位在調用服務時不會映射到架構。 最好將輸入數據集和/或查詢的大小減小到幾個記錄,足以指示輸入架構。 針對輸出連接埠，通常會使用[選取資料集中的資料行][select-columns]模組，在輸出中排除所有輸入欄位，只包含 [評分標籤]**** 和 [評分機率]****。
 
 下圖提供評分實驗範例。 準備部署時，請按下方動作列中的 [發佈 Web 服務] **** 按鈕。
 
 ![Azure ML 發佈][11]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 讓我們回顧一下已在此逐步解說教學課程中完成的工作，您已經建立 Azure 資料科學環境、使用大型公用資料集，並在 Team Data Science Process 的整個過程中使用它，而您在這個過程中擷取資料、進行模型定型，然後部署 Azure Machine Learning Web 服務。
 
 ### <a name="license-information"></a>授權資訊
-此逐步解說範例及其隨附的指令碼和 IPython Notebook 是在 MIT 授權下由 Microsoft 所共用。 有關詳細資訊，請查看 GitHub 上示例代碼目錄中的 LICENSE.txt 檔。
+此逐步解說範例及其隨附的指令碼和 IPython Notebook 是在 MIT 授權下由 Microsoft 所共用。 有關詳細資訊,請查看 GitHub 上範例代碼目錄中的 LICENSE.txt 檔。
 
 ## <a name="references"></a>參考
 - [安德列斯·蒙羅伊紐約計程車旅行下載頁面](https://www.andresmh.com/nyctaxitrips/)
-- [FOILing 紐約計程車旅行資料由克裡斯·W](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [FOILing 紐約計程車旅行數據由克裡斯·W](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [紐約計程車和豪華轎車委員會研究和統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png

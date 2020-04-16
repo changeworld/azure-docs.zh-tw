@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804838"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417185"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 中的 ForEach 活動
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ForEach 活動定義管線中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
 
 ## <a name="syntax"></a>語法
@@ -490,7 +492,7 @@ batchCount | 批次計數，用於控制平行執行的數目 (當 isSequential 
 ## <a name="next-steps"></a>後續步驟
 請參閱 Data Factory 支援的其他控制流程活動： 
 
-- [執行導管活動](control-flow-execute-pipeline-activity.md)
+- [執行管線活動](control-flow-execute-pipeline-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)
-- [Web 活動](control-flow-web-activity.md)
+- [網路活動](control-flow-web-activity.md)

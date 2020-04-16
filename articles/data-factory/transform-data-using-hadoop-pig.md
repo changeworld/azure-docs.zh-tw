@@ -11,18 +11,20 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 4064d62a6dc826b23ff1f51e9f61e48d362ae695
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73ce8c670940a31af6a88f98bfd5880ede259e01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418893"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop Pig 活動轉換資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-pig-activity.md)
-> * [當前版本](transform-data-using-hadoop-pig.md)
+> * [目前版本](transform-data-using-hadoop-pig.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Pig 活動會在您[自己](compute-linked-services.md#azure-hdinsight-linked-service)或[隨選](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)的 HDInsight 叢集上執行 Pig 查詢。 本文是根據 [資料轉換活動](transform-data.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
@@ -78,5 +80,5 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Pig 活�
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [火花活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
+* [機器學習批次處理執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

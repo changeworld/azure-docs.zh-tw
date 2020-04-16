@@ -3,12 +3,12 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418504"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -25,11 +25,7 @@ Azure Active Directory (Azure AD) 租用戶是組織的代表。 它是組織會
 
 透過使用 Azure 委派的資源管理，上線程序會在服務提供者的租用戶中指定能存取並管理客戶租用戶中的訂用帳戶、資源群組與資源的使用者。 這些使用者接著便可以使用自己的認證登入 Azure 入口網站。 在 Azure 入口網站內，他們可以管理屬於所有客戶，且其具有存取權的資源。 若要這樣做，請瀏覽 Azure 入口網站中的[我的客戶](../how-to/view-manage-customers.md)頁面，或是在 Azure 入口網站中或透過 API 直接在該客戶的訂用帳戶內容中工作。
 
-Azure 委派的資源管理能為管理多個客戶的資源提供更具彈性的方式，使您不需要在不同的租用戶中登入不同的帳戶。 例如，某個服務提供者可能有三個客戶，並針對他們都具有不同的責任和存取層級，如這裡所示：
-
-![顯示服務提供者責任的三個客戶租用戶](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-使用 Azure 委派的資源管理,授權使用者可以登錄到服務提供者的租戶以訪問這些資源,如下所示:
+Azure 委派的資源管理能為管理多個客戶的資源提供更具彈性的方式，使您不需要在不同的租用戶中登入不同的帳戶。 例如,服務提供者可能有兩個客戶具有不同的責任和訪問級別。 使用 Azure 委派的資源管理,授權使用者可以登錄到服務提供者的租戶以訪問這些資源。
 
 ![透過其中一個服務提供者租用戶進行管理的客戶資源](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -88,7 +84,7 @@ Azure PowerShell [Get-Az訂閱 cmdlet](https://docs.microsoft.com/powershell/mod
 
 - 現在會在傳回的查詢結果中包含租用戶識別碼，以讓您識別某個訂用帳戶是否屬於客戶租用戶或服務提供者租用戶
 
-[Azure 資訊安全中心](../../security-center/index.yml)：
+[Azure 安全中心](../../security-center/index.yml):
 
 - 跨租用戶可見性
   - 監控安全策略的合規性,並確保所有租戶資源的安全覆蓋

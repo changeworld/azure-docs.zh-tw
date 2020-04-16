@@ -1,6 +1,6 @@
 ---
-title: 映射資料流程視窗轉換
-description: Azure 資料工廠映射資料流程視窗轉換
+title: 映射資料流程轉換
+description: Azure 資料工廠映射資料串流視窗轉換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: fa34def67d91332a00bf0ee92b365957a47f9616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67e966e3b3dd274e993797ed37e17c5490d632c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931472"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416478"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure 資料工廠視窗轉換
 
-
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 視窗轉換可供您定義資料流資料行的視窗型彙總。 在運算式產生器中，您可以定義以資料或時間視窗 (SQL OVER 子句) 為基礎的各種彙總，例如 LEAD、LAG、NTILE、CUMEDIST、RANK 等等。 包含這些彙總的輸出中，將產生新的欄位。 您也可以包含選擇性的群組依據欄位。
 
@@ -49,4 +49,4 @@ Over 子句的另一個部分是設定 ```Order By```。 這會設定資料排�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果要查找簡單的按組聚合，請使用[聚合轉換](data-flow-aggregate.md)
+如果要尋找簡單的的群組集合,請使用[聚合轉換](data-flow-aggregate.md)

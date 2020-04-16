@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 流活動轉換資料
+title: 使用 Hadoop 串流活動轉換資料
 description: 說明如何使用 Azure Data Factory 中的 Hadoop 資料流活動，藉由在 Hadoop 叢集上執行 Hadoop 資料流程式來轉換資料。
 author: nabhishek
 ms.author: abnarain
@@ -10,17 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 1c12a10dfdf8e69cf05ab30d0e6aa48fea5803a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1bba6903fe1cb8cc5bae9a12153553594180b43
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912905"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418876"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop 資料流活動轉換資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-hadoop-streaming-activity.md)
-> * [當前版本](transform-data-using-hadoop-streaming.md)
+> * [目前版本](transform-data-using-hadoop-streaming.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight 資料流活動會在您[自己](compute-linked-services.md#azure-hdinsight-linked-service)或[隨選](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 叢集上執行 Hadoop 資料流程式。 本文是根據 [資料轉換活動](transform-data.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
@@ -93,5 +95,5 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight 資料�
 * [MapReduce 活動](transform-data-using-hadoop-map-reduce.md)
 * [火花活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
+* [機器學習批次處理執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

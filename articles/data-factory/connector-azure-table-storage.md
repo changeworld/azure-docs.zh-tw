@@ -1,5 +1,5 @@
 ---
-title: 將資料複製到 Azure 表存儲中
+title: 將資料複製到 Azure 儲存中
 description: 了解如何使用 Data Factory 將資料從支援的來源存放區複製到「Azure 資料表儲存體」，或從「資料表儲存體」複製到支援的接收存放區。
 services: data-factory
 ms.author: jingwang
@@ -11,31 +11,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460700"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417487"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 資料表儲存體或從該處複製資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-azure-table-connector.md)
-> * [當前版本](connector-azure-table-storage.md)
+> * [目前版本](connector-azure-table-storage.md)
 
-本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料複製到「Azure 資料表」儲存體及從該處複製資料。 它基於["複製活動概述](copy-activity-overview.md)"一文，其仲介紹了複製活動的一般概述。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料複製到「Azure 資料表」儲存體及從該處複製資料。 它基於[複製活動概述](copy-activity-overview.md)「一文,其中介紹了複製活動的一般概述。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-以下活動支援此 Azure 表存儲連接器：
+以下活動支援此 Azure 儲存連線器:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
 
-您可以將資料從支援的來源資料存放區複製到資料表儲存體。 您也可以將資料從資料表儲存體複製到任何支援的接收資料存放區。 有關複製活動支援為源或接收器的資料存儲的清單，請參閱[支援資料存儲](copy-activity-overview.md#supported-data-stores-and-formats)表。
+您可以將資料從支援的來源資料存放區複製到資料表儲存體。 您也可以將資料從資料表儲存體複製到任何支援的接收資料存放區。 有關複製活動支援為源或接收體的清單,請參閱[支援資料儲存](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具體而言，這個「Azure 資料表」連接器支援使用帳戶金鑰和服務共用存取簽章驗證來複製資料。
 
@@ -55,12 +57,12 @@ ms.locfileid: "77460700"
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為 **AzureTableStorage**。 |是 |
 | connectionString | 針對 connectionString 屬性指定連線到儲存體所需的資訊。 <br/>您也可以將帳戶金鑰放在 Azure Key Vault 並從連接字串中提取 `accountKey` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 |是 |
-| connectVia | 用於連接到資料存儲的[集成運行時](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或自我裝載整合執行階段 (如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 連線到資料儲存的[整合時](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或自我裝載整合執行階段 (如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
 >如果您使用 "AzureStorage" 類型連結服務，它仍會如現狀般受到支援，但建議您從現在開始使用這個新的 "AzureTableStorage" 連結服務類型。
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -111,7 +113,7 @@ ms.locfileid: "77460700"
 共用存取簽章可提供您儲存體帳戶中資源的委派存取。 您可以使用它來將儲存體帳戶中物件的有限權限授與用戶端，讓該用戶端可以在一段指定時間內使用一組指定的權限進行存取。 您不需要共用您的帳戶存取金鑰。 共用存取簽章是一種 URI，此 URI 會在其查詢參數中包含對儲存體資源進行驗證式存取所需的一切資訊。 若要使用共用存取簽章存取儲存體資源，用戶端只需在適當的建構函式或方法中傳入共用存取簽章即可。 如需共用存取簽章的詳細資訊，請參閱[共用存取簽章：了解共用存取簽章模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 > [!NOTE]
-> Data Factory 現已支援**服務共用存取簽章**和**帳戶共用存取簽章**。 有關共用訪問簽名的詳細資訊，請參閱[使用共用訪問簽名 （SAS） 授予對 Azure 存儲資源的有限存取權限](../storage/common/storage-sas-overview.md)。 
+> Data Factory 現已支援**服務共用存取簽章**和**帳戶共用存取簽章**。 有關共享存取簽章的詳細資訊,請參閱[使用共享存取簽章 (SAS) 授予對 Azure 資源的有限存取權限](../storage/common/storage-sas-overview.md)。 
 
 > [!TIP]
 > 若要為儲存體帳戶產生服務共用存取簽章，您可以執行下列 PowerShell 命令。 取代預留位置，並授與所需的權限。
@@ -123,13 +125,13 @@ ms.locfileid: "77460700"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為 **AzureTableStorage**。 |是 |
-| sasUri | 將共用存取簽章 URI 的 SAS URI 指定至資料表。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您還可以在 Azure 金鑰保存庫中放置 SAS 權杖，以利用自動旋轉並刪除權杖部分。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
-| connectVia | 用於連接到資料存儲的[集成運行時](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或自我裝載 Integration Runtime (如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| sasUri | 將共用存取簽章 URI 的 SAS URI 指定至資料表。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您還可以在 Azure 密鑰保管庫中放置 SAS 令牌,以利用自動旋轉並刪除權杖部分。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
+| connectVia | 連線到資料儲存的[整合時](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或自我裝載 Integration Runtime (如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
 >如果您使用 "AzureStorage" 類型連結服務，它仍會如現狀般受到支援，但建議您從現在開始使用這個新的 "AzureTableStorage" 連結服務類型。
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -193,10 +195,10 @@ ms.locfileid: "77460700"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設置為**AzureTable**。 |是 |
+| type | 資料集的類型屬性必須設定為**AzureTable**。 |是 |
 | tableName |資料表儲存體資料庫執行個體中連結服務所參照的資料表名稱。 |是 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -220,8 +222,8 @@ ms.locfileid: "77460700"
 
 針對無結構描述的資料存放區 (如 Azure 資料表)，Data Factory 會以下列一種方式推斷結構描述：
 
-* 如果在複製活動中指定列映射，資料工廠將使用源端列清單來檢索資料。 在此情況下，如果資料列的資料行沒有值，系統就會為它提供 null 值。
-* 如果在複製活動中未指定列映射，則資料工廠將使用資料中的第一行推斷架構。 在這種情況下，如果第一行不包含完整的架構（例如，某些列具有 null 值），則複製操作的結果會丟失某些列。
+* 如果在複製活動中指定列映射,數據工廠將使用源端列清單來檢索數據。 在此情況下，如果資料列的資料行沒有值，系統就會為它提供 null 值。
+* 如果在複製活動中未指定列映射,則數據工廠將使用數據中的第一行推斷架構。 在這種情況下,如果第一行不包含完整的架構(例如,某些列具有null值),則複製操作的結果會丟失某些列。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -233,22 +235,22 @@ ms.locfileid: "77460700"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須將複製活動源的類型屬性設置為**AzureTableSource**。 |是 |
+| type | 必須複製活動來源的類型屬性設定為**AzureTableSource**。 |是 |
 | AzureTableSourceQuery |使用自訂的資料表儲存體查詢來讀取資料。 請參閱下一節中的範例。 |否 |
 | azureTableSourceIgnoreTableNotFound |指出是否讓資料表例外狀況不存在。<br/>允許的值為 **True** 和 **False** (預設值)。 |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 範例
 
 >[!NOTE]
->Azure 表查詢操作在 30 秒內超時，由[Azure 表服務強制執行](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)。 瞭解如何從["設計"中優化查詢](../storage/tables/table-storage-design-for-query.md)文章。
+>Azure 表查詢操作在 30 秒內超時,由[Azure 表服務強制執行](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)。 瞭解如何從[「設計」中優化查詢](../storage/tables/table-storage-design-for-query.md)文章。
 
-在 Azure 資料工廠中，如果要根據日期時間類型列篩選資料，請參閱以下示例：
+在 Azure 資料工廠中,如果要根據日期時間類型列篩選資料,請參閱以下範例:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-如果要根據字串類型列篩選資料，請參閱以下示例：
+如果要根據字串型態列篩選資料,請參閱以下範例:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
@@ -266,11 +268,11 @@ ms.locfileid: "77460700"
 | azureTableDefaultPartitionKeyValue |可供接收使用的預設資料分割索引鍵值。 |否 |
 | azureTablePartitionKeyName |指定其值用來作為分割區索引鍵的資料行名稱。 如果未指定，則會使用 "AzureTableDefaultPartitionKeyValue" 作為分割區索引鍵。 |否 |
 | azureTableRowKeyName |指定其值用來作為資料列索引鍵的資料行名稱。 如果未指定，則會針對每個資料列使用 GUID。 |否 |
-| azureTableInsertType |將資料插入 Azure 資料表的模式。 此屬性可控制針對輸出資料表中具有相符分割區和資料列索引鍵的現有資料列，是要取代還是合併其值。 <br/><br/>允許的值是**合併**（預設）和**替換**。 <br/><br> 這個設定會在資料列層級套用，而不是在資料表層級套用。 這兩個選項都不會刪除輸出資料表中不存在於輸入的資料列。 若要了解合併和取代設定的運作方式，請參閱[插入或合併實體](https://msdn.microsoft.com/library/azure/hh452241.aspx)和[插入或取代實體](https://msdn.microsoft.com/library/azure/hh452242.aspx)。 |否 |
+| azureTableInsertType |將資料插入 Azure 資料表的模式。 此屬性可控制針對輸出資料表中具有相符分割區和資料列索引鍵的現有資料列，是要取代還是合併其值。 <br/><br/>允許的值是**合併**(預設)和**取代**。 <br/><br> 這個設定會在資料列層級套用，而不是在資料表層級套用。 這兩個選項都不會刪除輸出資料表中不存在於輸入的資料列。 若要了解合併和取代設定的運作方式，請參閱[插入或合併實體](https://msdn.microsoft.com/library/azure/hh452241.aspx)和[插入或取代實體](https://msdn.microsoft.com/library/azure/hh452242.aspx)。 |否 |
 | writeBatchSize |在達到 WriteBatchSize 或 writeBatchTimeout 時將資料插入 Azure 資料表中。<br/>允許的值為整數 (資料列數目)。 |否 (預設值為 10000) |
 | writeBatchTimeout |在達到 WriteBatchSize 或 writeBatchTimeout 時將資料插入 Azure 資料表中。<br/>允許的值為時間範圍。 範例是 "00:20:00" (20 分鐘)。 |否 (預設值為 90 秒，儲存體用戶端的預設逾時) |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -342,9 +344,9 @@ ms.locfileid: "77460700"
 | Edm.Int64 |Int64 |64 位元的整數。 |
 | Edm.String |String |UTF 16 編碼值。 字串值最大可達 64 KB。 |
 
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 ## <a name="next-steps"></a>後續步驟
 如需 Data Factory 中的複製活動所支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: e4b076d96cad280c4da6c2424f056c2216c47602
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 050fcc33f0e3d65ca8e94b3be143c5b1ae77608d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408857"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416546"
 ---
-# <a name="aggregate-transformation-in-mapping-data-flow"></a>對應資料串流的集合轉換 
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>對應資料串流的集合轉換
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 聚合轉換定義數據流中列的聚合。 使用運算式生成器,可以定義不同類型的聚合,如 SUM、MIN、MAX 和 COUNT,按現有列或計算列分組。
 

@@ -11,16 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 6ad5bb26959916f60973a8c0274e17eee03aa7a1
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a588a0977a4c6dcefaaefcfdcc542fee8b15466b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991461"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419063"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>將本地 SSIS 工作負載到 ADF 中的 SSIS
 
-## <a name="overview"></a>總覽
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+## <a name="overview"></a>概觀
 
 當您將資料庫工作負荷從本地 SQL Server 遷移到 Azure 資料庫服務(即 Azure SQL 資料庫或 Azure SQL 資料庫託管實例)時,還需要遷移 SQL Server 整合服務 (SSIS) 上的 ETL 工作負荷作為主要增值服務之一。
 

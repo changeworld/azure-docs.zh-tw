@@ -11,18 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422172"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417569"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 資料工廠複製並轉換 Azure 突觸分析(以前的 Azure SQL 資料倉儲)中的數據 
 
 > [!div class="op_single_selector" title1="選擇您正在使用的資料工廠服務版本:"]
 > * [版本1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [目前版本](connector-azure-sql-data-warehouse.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文概述了如何使用 Azure 資料工廠中的複製活動從 Azure 同步分析複製數據,以及使用資料流轉換 Azure 資料湖儲存 Gen2 中的數據。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文概述了如何使用 Azure 資料工廠中的複製活動將數據從 Azure SQL 資料套件複製到 Azure SQL 資料倉庫,並使用資料流轉換 Azure 資料湖儲存 Gen2 中的數據。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
 
 本文概述了如何使用 Azure 資料工廠中的複製活動從 Azure 同步分析複製數據,以及使用資料流轉換 Azure 資料湖儲存 Gen2 中的數據。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
 
@@ -372,7 +381,7 @@ Azure 資料工廠支援將數據載入到 SQL 資料倉庫的三種方法。
 | 允許複製命令 | 指示是否使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽)將數據載入到 SQL 資料倉儲中。 `allowCopyCommand`不能`allowPolyBase`兩者都是真的。 <br/><br/>有關約束和詳細資訊[,請參閱使用 COPY 語句將數據載入到 Azure SQL 資料倉庫](#use-copy-statement)部分。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用 COPY 時應用。 |
 | 複製命令設定 | 一組屬性,在屬性設置為`allowCopyCommand`TRUE 時可以指定。 | 否。<br/>使用 COPY 時應用。 |
 | writeBatchSize    | **要插入到每個批次處理**SQL 表中的行數。<br/><br/>允許的值為**整數** (資料列數目)。 默認情況下,數據工廠會根據行大小動態確定適當的批處理大小。 | 否。<br/>使用散裝插入時應用。     |
-| writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值是**時間跨度**。 範例：“00:30:00” (30 分鐘)。 | 否。<br/>使用散裝插入時應用。        |
+| writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值是**時間跨度**。 範例："00:30:00" (30 分鐘)。 | 否。<br/>使用散裝插入時應用。        |
 | preCopyScript     | 指定一個供「複製活動」在每次執行時將資料寫入到「Azure SQL 資料倉儲」前執行的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | 表選項 | 指定是否根據源架構自動建立接收器表(如果不存在)。 在複製活動中配置暫存副本時,不支援自動表創建。 允許的值是:(`none`預設),。 `autoCreate` |否 |
 | 禁用"指標收集" | 數據工廠收集 SQL 資料倉庫 DWU 等指標,以便進行複製性能優化和建議。 如果您關注此行為,請指定`true`將其關閉。 | 否 (預設值為 `false`) |
@@ -407,7 +416,7 @@ Azure 資料工廠支援將數據載入到 SQL 資料倉庫的三種方法。
 
 | 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)的＜引數＞一節中，深入了解 PolyBase 的拒絕選項。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | 否                                            |
+| rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在[創建外部表(轉接-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)的參數部分中瞭解有關 PolyBase 拒絕選項的詳細資訊。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 選項為常值或百分比。<br/><br/>允許的值是**值**(預設)和**百分比**。 | 否                                            |
 | rejectSampleValue | 決定在 PolyBase 重新計算已拒絕的資料列百分比之前，所要擷取的資料列數目。<br/><br/>允許的值為 1、2 等其他值。 | 是，如果 **rejectType** 是**百分比**。 |
 | useTypeDefault    | 指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。<br/><br/>從 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 的＜引數＞一節深入了解這個屬性。<br/><br/>允許的值為 **True** 和 **False** (預設值)。<br><br> | 否                                            |
@@ -531,7 +540,7 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob、Azure 資料湖儲存第 1 �
 
 ### <a name="best-practices-for-using-polybase"></a>使用 PolyBase 的最佳做法
 
-以下各節除了[Azure Synapse 分析的最佳實踐](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)中提及的最佳實踐外,還提供了最佳實踐。
+以下各節除了[Azure Synapse 分析的最佳實踐](../synapse-analytics/sql/best-practices-sql-pool.md)中提及的最佳實踐外,還提供了最佳實踐。
 
 #### <a name="required-database-permission"></a>必要的資料庫權限
 
@@ -740,7 +749,7 @@ SQL 資料主目錄[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements
 從 Azure 同步分析複製資料或複製到 Azure 同步分析時,將使用以下映射,從 Azure 同步分析數據類型到 Azure 資料工廠臨時數據類型。 請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)，以了解複製活動如何將來源結構描述和資料類型對應至接收。
 
 >[!TIP]
->請參閱[Azure Synapse 分析一文中的表數據類型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md),介紹 SQL DW 支援的數據類型以及不支援的數據類型的解決方法。
+>請參閱[Azure Synapse 分析一文中的表數據類型](../synapse-analytics/sql/develop-tables-data-types.md),介紹 SQL DW 支援的數據類型以及不支援的數據類型的解決方法。
 
 | Azure 同步分析資料型態    | Data Factory 過渡期資料類型 |
 | :------------------------------------ | :----------------------------- |

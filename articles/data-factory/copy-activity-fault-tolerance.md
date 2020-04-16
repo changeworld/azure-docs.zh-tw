@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 766520fe44047eee76029adf8ee1683c7b8008a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75708897"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417856"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory 中複製活動的容錯
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-copy-activity-fault-tolerance.md)
-> * [當前版本](copy-activity-fault-tolerance.md)
+> * [目前版本](copy-activity-fault-tolerance.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory 中的複製活動可在來源和接收資料存放區之間複製資料時，提供您兩個方式來處理不相容的資料列：
 
@@ -31,13 +33,13 @@ Azure Data Factory 中的複製活動可在來源和接收資料存放區之間�
 ## <a name="supported-scenarios"></a>支援的案例
 複製活動支援三種情節，以偵測、跳過並記錄不相容的資料：
 
-- **源資料類型和接收器本機類型之間的不相容**。 
+- **來源資料型態與接收器本機類型之間的不相容**。 
 
     例如：使用包含三種 INT 類型資料行的結構描述定義，從 Blob 儲存體中的 CSV 檔案將資料複製到 SQL 資料庫。 包含數值資料的 CSV 檔案資料列 (例如 123,456,789) 會成功複製到接收存放區。 不過，包含非數值的資料列 (例如 123,456, abc) 會偵測為不相容並加以跳過。
 
-- **源和接收器之間的列數不匹配**。
+- **來源與接收器之間的欄數不匹配**。
 
-    例如：使用包含六個資料行的結構描述定義，從 Blob 儲存體中的 CSV 檔案將資料複製到 SQL 資料庫。 包含六個資料行的 CSV 檔案資料列會成功複製到接收存放區。 包含六列以上的 CSV 檔行將檢測為不相容，並跳過。
+    例如：使用包含六個資料行的結構描述定義，從 Blob 儲存體中的 CSV 檔案將資料複製到 SQL 資料庫。 包含六個資料行的 CSV 檔案資料列會成功複製到接收存放區。 包含六列以上的 CSV 檔行將檢測為不相容,並跳過。
 
 - **寫入 SQL 伺服器/Azure SQL 資料庫/Azure 宇宙資料庫 時的主要金鑰衝突**。
 
@@ -46,7 +48,7 @@ Azure Data Factory 中的複製活動可在來源和接收資料存放區之間�
 >[!NOTE]
 >- 如需使用 PolyBase 將資料載入到 SQL 資料倉儲，請透過複製活動中的 "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" 來指定拒絕原則，以設定 PolyBase 的原生容錯設定。 如往常，您仍然可以啟用將 PolyBase 不相容的資料列重新導向到 Blob 或 ADLS 的功能，如下所示。
 >- 當複製活動設定為叫用 [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)時，不會套用此功能。
->- 當複製活動配置為[從 SQL 接收器調用預存程序時，](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)此功能不適用。
+>- 當複製活動設定為[從 SQL 接收器呼叫儲存過程時,](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)此功能不適用。
 
 ## <a name="configuration"></a>組態
 下列範例提供的 JSON 定義，可設定在複製活動中跳過不相容資料列：

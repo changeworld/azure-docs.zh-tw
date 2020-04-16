@@ -1,6 +1,6 @@
 ---
-title: 連接架構
-description: 本文檔介紹 Azure 內部或 Azure 外部的資料庫連接的 Azure SQL 連接體系結構。
+title: 連線架構
+description: 本文件介紹 Azure 內部或 Azure 外部的資料庫連接的 Azure SQL 連接體系結構。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,21 +12,21 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256415"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419258"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 連線架構
 > [!NOTE]
 > 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
 
 > [!IMPORTANT]
-> 本文「不」** 適用於 **Azure SQL Database 受控執行個體**。 請參閱[託管實例的連接體系結構](sql-database-managed-instance-connectivity-architecture.md)。
+> 本文「不」** 適用於 **Azure SQL Database 受控執行個體**。 請參考[託管實體的連線架構結構](sql-database-managed-instance-connectivity-architecture.md)。
 
-本文介紹將網路流量定向到 Azure SQL 資料庫或 SQL 資料倉儲的各種元件的體系結構。 它還解釋了不同的連接策略，以及它如何影響從 Azure 內部連接的用戶端和從 Azure 外部連接的用戶端。 
+本文介紹將網路流量定向到 Azure SQL 資料庫或 SQL 數據倉庫的各種元件的體系結構。 它還解釋了不同的連接策略,以及它如何影響從 Azure 內部連接的用戶端和從 Azure 外部連接的用戶端。 
 
 ## <a name="connectivity-architecture"></a>連線架構
 
@@ -44,15 +44,15 @@ ms.locfileid: "79256415"
 
 Azure SQL Database 支援下列三個 SQL Database 伺服器連線原則設定選項：
 
-- **重定向（推薦）：** 用戶端直接建立與託管資料庫的節點的連接，從而降低延遲並提高輸送量。 要使用此模式的連接，用戶端需要：
-   - 允許從用戶端向區域中所有 Azure IP 位址進行 11000 11999 範圍內的所有 Azure IP 位址的通信。 使用 SQL 的服務標記使其更易於管理。  
-   - 允許從用戶端到埠 1433 上的 Azure SQL 資料庫閘道 IP 位址的出站通信。
+- **重定向(推薦):** 用戶端直接建立與託管資料庫的節點的連接,從而降低延遲並提高輸送量。 要使用此模式的連線,用戶端需要:
+   - 允許從用戶端向區域中所有 Azure SQL IP 位址進行 11000 11999 範圍內的所有 Azure SQL IP 位址通訊。 使用 SQL 的服務標記使其更易於管理。  
+   - 允許從用戶端到埠 1433 上的 Azure SQL 資料庫閘道 IP 位址的出站通訊。
 
-- **代理：** 在此模式下，所有連接都通過 Azure SQL 資料庫閘道進行接近，從而導致延遲增加和輸送量降低。 要使用此模式的連接，用戶端需要允許從用戶端到埠 1433 上的 Azure SQL 資料庫閘道 IP 位址的出站通信。
+- **代理:** 在此模式下,所有連接都通過 Azure SQL 資料庫閘道進行接近,從而導致延遲增加和輸送量降低。 要使用此模式的連接,用戶端需要允許從用戶端到埠 1433 上的 Azure SQL 資料庫閘道 IP 位址的出站通信。
 
-- **預設值：** 這是創建後對所有伺服器上有效的連接策略，除非您顯式將連接策略更改為 或`Proxy``Redirect`。 預設策略適用于`Redirect`源自 Azure 內部的所有用戶端連接（例如，來自 Azure 虛擬機器）和`Proxy`源自外部的所有用戶端連接（例如，來自本地工作站的連接）。
+- **預設值:** 這是建立後對所有伺服器上有效的連線策略,除非您顯式將連線策略更改為或`Proxy``Redirect`。 預設策略適用於`Redirect`源自 Azure 內部的所有用戶端連接(例如,來自 Azure`Proxy`虛擬機器)和源自外部的所有用戶端連接(例如,來自本地工作站的連接)。
 
- 我們強烈建議通過`Redirect``Proxy`連接策略對連接策略進行連接策略，以提供最低延遲和最高輸送量。但是，您需要滿足上述允許網路流量的其他要求。 如果用戶端是 Azure 虛擬機器，則可以使用具有[服務標記](../virtual-network/security-overview.md#service-tags)的網路安全性群組 （NSG） 完成此目的。 如果用戶端正在本地工作站進行連接，則可能需要與網路系統管理員合作，允許網路流量通過公司防火牆。
+ 我們強烈建議通過`Redirect``Proxy`連接策略對連接策略進行連接策略,以提供最低延遲和最高輸送量。但是,您需要滿足上述允許網路流量的其他要求。 如果用戶端是 Azure 虛擬機器,則可以使用具有[服務標記](../virtual-network/security-overview.md#service-tags)的網路安全組 (NSG) 完成此目的。 如果用戶端正在本地工作站進行連接,則可能需要與網路管理員合作,允許網路流量通過公司防火牆。
 
 ## <a name="connectivity-from-within-azure"></a>從 Azure 內部連線
 
@@ -67,14 +67,14 @@ Azure SQL Database 支援下列三個 SQL Database 伺服器連線原則設定�
 ![架構概觀](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> 此外，打開端口 14000-14999，啟用[與 DAC 的連接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 此外,打開連接埠 14000-14999,啟用[與 DAC 的連線](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database 閘道 IP 位址
 
-下表按區域列出了閘道的 IP 位址。 要連接到 Azure SQL 資料庫，需要允許網路流量從該區域**的所有**閘道&。
+下表按區域列出了閘道的 IP 位址。 要連接到 Azure SQL 資料庫,需要允許網路流量從該區域**的所有**閘道&。
 
-有關如何將流量遷移到特定區域中的新閘道的詳細資訊，請于以下文章[：Azure SQL 資料庫流量遷移到較新的閘道](sql-database-gateway-migration.md)
+有關如何將流量遷移到特定區域中的新閘道的詳細資訊,請於以下文章[:Azure SQL 資料庫流量遷移到較新的閘道](sql-database-gateway-migration.md)
 
 
 | 區域名稱          | 閘道 IP 位址 |

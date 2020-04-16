@@ -1,5 +1,5 @@
 ---
-title: 使用 U-SQL 腳本轉換資料
+title: 使用 U-SQL 文稿轉換資料
 description: 了解如何在 Azure Data Lake Analytics 計算服務上執行 U-SQL 指令碼來處理或轉換資料。
 services: data-factory
 documentationcenter: ''
@@ -12,17 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: 257c71f7994b889540ec8cc5d0f384f3f8894f4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427b7fff7b8f76412d7bd9d63aeb64583637779c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74913282"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418961"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 上執行 U-SQL 指令碼來轉換資料 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-usql-activity.md)
-> * [當前版本](transform-data-using-data-lake-analytics.md)
+> * [目前版本](transform-data-using-data-lake-analytics.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory 中的「管線」會使用連結的計算服務，來處理連結的儲存體服務中的資料。 它包含一系列活動，其中每個活動都會執行特定的處理作業。 本文將說明 **Data Lake Analytics U-SQL 活動**，它在 **Azure Data Lake Analytics** 計算連結的服務上執行 **U-SQL** 指令碼。 
 
@@ -37,10 +39,10 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 | 屬性                 | 描述                              | 必要                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **型別**                 | type 屬性應設為： **AzureDataLakeAnalytics**。 | 是                                      |
-| **帳戶名稱**          | Azure Data Lake Analytics 帳戶名稱。  | 是                                      |
+| **帳號名稱**          | Azure Data Lake Analytics 帳戶名稱。  | 是                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | 否                                       |
 | **訂閱 Id**       | Azure 訂用帳戶識別碼                    | 否                                       |
-| **資源組名稱**    | Azure 資源群組名稱                | 否                                       |
+| **資源群組名稱**    | Azure 資源群組名稱                | 否                                       |
 
 ### <a name="service-principal-authentication"></a>服務主體驗證
 Azure Data Lake Analytics 已連結的服務需要服務主體驗證，才能連接到 Azure Data Lake Analytics 服務。 若要使用服務主體驗證，請在 Azure Active Directory (Azure AD) 中註冊應用程式實體，並授與其使用之 Data Lake Analytics 和 Data Lake Store 存取權。 如需詳細的步驟，請參閱[服務對服務驗證](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 請記下以下的值，您可以使用這些值來定義連結服務：
@@ -57,7 +59,7 @@ Azure Data Lake Analytics 已連結的服務需要服務主體驗證，才能連
 | :---------------------- | :--------------------------------------- | :------- |
 | **服務主體Id**  | 指定應用程式的用戶端識別碼。     | 是      |
 | **servicePrincipalKey** | 指定應用程式的金鑰。           | 是      |
-| **tenant**              | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是      |
+| **租戶**              | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是      |
 
 **範例：服務主體驗證**
 ```json
@@ -162,7 +164,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-在上面的腳本示例中，腳本的輸入和輸出**\@在參數****\@中**定義。 U-SQL 腳本中**\@輸入**和**\@出**參數的值由資料工廠使用"參數"部分動態傳遞。 
+在上面的腳本示例中,腳本的輸入和輸出**\@在參數****\@中**定義。 U-SQL 文本**\@** 中 輸入和**\@出**參數的值由數據工廠使用"參數"部分動態傳遞。 
 
 您也可以在管線定義中，針對在 Azure Data Lake Analytics 服務上執行的作業，指定其他屬性 (例如 degreeOfParallelism 和 priority)。
 
@@ -196,5 +198,5 @@ OUTPUT @rs1
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
 * [火花活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
+* [機器學習批次處理執行活動](transform-data-using-machine-learning.md)
 * [預存程序活動](transform-data-using-stored-procedure.md)

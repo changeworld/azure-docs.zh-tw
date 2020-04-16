@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416475"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>在 Azure Data Factory 中資料移動的安全性考量
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 >
 > * [版本 1](v1/data-factory-data-movement-security-considerations.md)
-> * [當前版本](data-movement-security-considerations.md)
+> * [目前版本](data-movement-security-considerations.md)
+
+ [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文說明 Azure Data Factory 中資料移動服務用來協助保護您資料的基本安全性基礎結構。 Data Factory 管理資源建置在 Azure 安全性基礎結構上，並使用 Azure 提供的所有可能安全性措施。
 
@@ -36,9 +38,9 @@ Data Factory 已通過下列各項規範的認證：
 
 | **[CSA STAR Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
-| **[ISO 20000-1：2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
+| **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
 | **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
-| **[ISO 27001：2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
+| **[ISO 27001:2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
 | **[ISO 27017:2015](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)** |
 | **[ISO 27018:2014](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)** |
 | **[ISO 9001:2015](https://www.microsoft.com/trustcenter/compliance/iso-9001)** |
@@ -59,13 +61,13 @@ Data Factory 已通過下列各項規範的認證：
 ### <a name="securing-data-store-credentials"></a>保護資料存放區認證
 
 - **在 Azure Data Factory 受控存放區中儲存加密的認證**。 Data Factory 可透過使用受 Microsoft 管理的憑證來加密資料存放區認證，為這些認證提供保護。 這些憑證每隔兩年會輪替一次 (包括憑證更新和憑證移轉)。 如需有關「Azure 儲存體」安全性的詳細資訊，請參閱 [Azure 儲存體安全性概觀](../security/fundamentals/storage-overview.md)。
-- **在 Azure 金鑰保存庫中存儲憑據**。 您也可以在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中儲存資料存放區的認證。 Data Factory 會在活動執行期間擷取認證。 如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。
+- **在 Azure 金鑰保存的憑證中儲存認證**。 您也可以在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中儲存資料存放區的認證。 Data Factory 會在活動執行期間擷取認證。 如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。
 
 ### <a name="data-encryption-in-transit"></a>傳輸中資料加密
 如果雲端資料存放區支援 HTTPS 或 TLS，則 Data Factory 中資料移動服務與雲端資料存放區之間的所有資料傳輸，都會透過安全通道 HTTPS 或 TLS。
 
 > [!NOTE]
-> 所有連到 Azure SQL Database 和「Azure SQL 資料倉儲」的連線在資料透過傳輸進出資料庫時，需要加密 (SSL/TLS)。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 **true**。 對於 Azure 存儲，可以在連接字串中使用**HTTPS。**
+> 所有連到 Azure SQL Database 和「Azure SQL 資料倉儲」的連線在資料透過傳輸進出資料庫時，需要加密 (SSL/TLS)。 當您使用 JSON 編輯器來編寫管線時，在連接字串中新增 encryption 屬性，並將它設定為 **true**。 對於 Azure 儲存,可以在連接字串中使用**HTTPS。**
 
 > [!NOTE]
 > 若要在從 Oracle 移動資料時啟用傳輸中加密，請遵循下列其中一個選項：
@@ -107,19 +109,19 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件和�
 命令通道可允許 Data Factory 中的資料移動服務與自我裝載整合執行階段之間進行通訊。 此通訊包含活動的相關資訊。 資料通道會用來在內部部署資料存放區與雲端資料存放區之間傳輸資料。    
 
 ### <a name="on-premises-data-store-credentials"></a>內部部署資料存放區認證
-憑據可以存儲在資料工廠中，也可以在 Azure 金鑰保存庫的運行時[由資料工廠引用](store-credentials-in-key-vault.md)。 如果在資料工廠中存儲憑據，則始終在自託管的集成運行時加密存儲憑據。 
+認證可以儲存在資料工廠中,也可以在 Azure 金鑰保管庫的執行時[由資料工廠參考](store-credentials-in-key-vault.md)。 如果在數據工廠中存儲憑據,則始終在自託管的集成運行時加密存儲憑據。 
  
-- **在本機儲存認證**。 如果您直接使用**集-AzDataFactoryV2LinkService** Cmdlet 與 JSON 中內聯的連接字串和憑據，則連結服務將被加密並存儲在自託管集成運行時。  在這種情況下，憑據會通過 Azure 後端服務（非常安全）流向自託管集成電腦，最終對其進行加密和存儲。 自我裝載整合執行階段會使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 加密機密資料和認證資訊。
+- **在本機儲存認證**。 如果您直接使用**集-AzDataFactoryV2LinkService** cmdlet 與 JSON 中內聯的連接字串和憑據,則連結服務將被加密並存儲在自託管集成運行時。  在這種情況下,憑據會通過 Azure 後端服務(非常安全)流向自託管集成計算機,最終對其進行加密和存儲。 自我裝載整合執行階段會使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 加密機密資料和認證資訊。
 
-- **在 Azure 金鑰保存庫中存儲憑據**。 您也可以在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中儲存資料存放區的認證。 Data Factory 會在活動執行期間擷取認證。 如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。
+- **在 Azure 金鑰保存的憑證中儲存認證**。 您也可以在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中儲存資料存放區的認證。 Data Factory 會在活動執行期間擷取認證。 如需詳細資訊，請參閱 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。
 
-- **在本機存放區憑據，而不將憑據通過 Azure 後端流向自託管的集成運行時**。 如果要在自託管的集成運行時本地加密和存儲憑據，而無需通過資料工廠後端流憑據，請按照[Azure 資料工廠 中本地資料存儲的加密憑據](encrypt-credentials-self-hosted-integration-runtime.md)中的步驟操作。 所有連接器皆支援此選項。 自我裝載整合執行階段會使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 加密機密資料和認證資訊。 
+- **在本地儲存認證,而不將認證透過 Azure 後端流向自託管的整合時**。 如果要在自託管的集成運行時本地加密和存儲憑據,而無需通過數據工廠後端流憑據,請按照[Azure 數據工廠 中本地數據存儲的加密憑據](encrypt-credentials-self-hosted-integration-runtime.md)中的步驟操作。 所有連接器皆支援此選項。 自我裝載整合執行階段會使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 加密機密資料和認證資訊。 
 
-   使用**New-AzDataFactoryV2LinkServiceEncrypt 憑據**Cmdlet 加密連結服務憑據和連結服務中的敏感詳細資訊。 然後，可以使用返回的 JSON（連接字串中的**加密憑據**元素）使用**Set-AzDataFactoryV2LinkService** Cmdlet 創建連結服務。  
+   使用**New-AzDataFactoryV2LinkServiceEncrypt 認證**連結服務認證和連結服務中的敏感詳細資訊。 然後,可以使用返回的 JSON(連接字串中的**加密認證認證認證**)使用**Set-AzDataFactoryV2LinkService** cmdlet 創建連結服務。  
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>在自我裝載整合執行階段上加密連結服務時所使用的連接埠
-預設情況下，PowerShell 在電腦上使用埠 8060，具有自託管集成運行時，用於安全通信。 您可以視需要變更此連接埠。  
+默認情況下,PowerShell 在電腦上使用埠 8060,具有自託管整合時,用於安全通信。 您可以視需要變更此連接埠。  
 
 ![閘道的 HTTPS 連接埠](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -137,13 +139,13 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 | 來源      | Destination                              | 網路組態                    | 整合執行階段設定                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| 內部部署 | 部署在虛擬網路中的虛擬機器和雲端服務 | IPSec VPN (點對站或站台對站台) | 自託管的集成運行時應安裝在虛擬網路中的 Azure 虛擬機器上。  |
-| 內部部署 | 部署在虛擬網路中的虛擬機器和雲端服務 | ExpressRoute (私用對等互連)           | 自託管的集成運行時應安裝在虛擬網路中的 Azure 虛擬機器上。  |
-| 內部部署 | 具有公用端點的 Azure 型服務 | 快速路由（微軟對等）            | 可本地或 Azure 虛擬機器上安裝自託管集成運行時。 |
+| 內部部署 | 部署在虛擬網路中的虛擬機器和雲端服務 | IPSec VPN (點對站或站台對站台) | 自託管的整合執行時應安裝在虛擬網路中的 Azure 虛擬機器上。  |
+| 內部部署 | 部署在虛擬網路中的虛擬機器和雲端服務 | ExpressRoute (私用對等互連)           | 自託管的整合執行時應安裝在虛擬網路中的 Azure 虛擬機器上。  |
+| 內部部署 | 具有公用端點的 Azure 型服務 | 快速路由(微軟對等)            | 可本地或 Azure 虛擬機器上安裝自託管整合時。 |
 
 下列各圖說明在使用自我裝載整合執行階段的情況下，利用 ExpressRoute 和 IPSec VPN (搭配 Azure 虛擬網路)，在內部部署資料庫與 Azure 服務之間移動資料：
 
-**快速路線**
+**ExpressRoute**
 
 ![搭配使用 ExpressRoute 與閘道](media/data-movement-security-considerations/express-route-for-gateway.png) 
 
@@ -151,7 +153,7 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 ![IPSec VPN 搭配閘道](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>防火牆配置並允許為 IP 位址設置清單
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>防火牆設定並允許 IP 位址設定清單
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>內部部署/私人網路的防火牆需求    
 在企業中，公司防火牆會在組織的中央路由器上執行。 Windows 防火牆則是在安裝自我裝載整合執行階段的本機電腦上以精靈的形式執行。 
@@ -161,26 +163,26 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> 您可能需要按照相關資料來源的要求，管理埠或設置公司防火牆級別的域的允許清單。 此表格僅使用 Azure SQL Database、Azure SQL 資料倉儲和 Azure Data Lake Store 作為範例。   
+> 您可能需要按照相關數據源的要求,管理埠或設置公司防火牆級別的域的允許清單。 此表格僅使用 Azure SQL Database、Azure SQL 資料倉儲和 Azure Data Lake Store 作為範例。   
 
 下表提供 Windows 防火牆的輸入連接埠需求：
 
 | 輸入連接埠 | 描述                              |
 | ------------- | ---------------------------------------- |
-| 8060 （TCP）    | PowerShell 加密 Cmdlet (如[在 Azure Data Factory 中加密內部部署資料存放區的認證](encrypt-credentials-self-hosted-integration-runtime.md)中所述) 和認證管理員應用程式皆需要此連接埠，以便為自我裝載整合執行階段的內部部署資料存放區安全地設定認證。 |
+| 8060 (TCP)    | PowerShell 加密 Cmdlet (如[在 Azure Data Factory 中加密內部部署資料存放區的認證](encrypt-credentials-self-hosted-integration-runtime.md)中所述) 和認證管理員應用程式皆需要此連接埠，以便為自我裝載整合執行階段的內部部署資料存放區安全地設定認證。 |
 
 ![閘道連接埠需求](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>IP 配置並允許在資料存儲中設置清單
-雲中的某些資料存儲還要求允許訪問存儲的電腦的 IP 位址。 確保允許或正確配置防火牆中自託管集成運行時電腦的 IP 位址。
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>IP 設定並允許在資料儲存中設定清單
+雲中的某些資料儲存還要求允許存取儲存的電腦的 IP 位址。 確保允許或正確配置防火牆中自託管整合時電腦的 IP 位址。
 
-以下雲資料存儲要求您允許自託管集成運行時電腦的 IP 位址。 預設情況下，其中一些資料存儲可能不需要允許清單。 
+以下雲資料儲存要求您允許自託管整合時電腦的 IP 位址。 默認情況下,其中一些數據存儲可能不需要允許清單。 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 資料倉儲](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure 資料湖存儲](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure 宇宙資料庫](../cosmos-db/firewall-support.md)
-- [亞馬遜紅移](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Azure 資料湖儲存](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure Cosmos DB](../cosmos-db/firewall-support.md)
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -190,7 +192,7 @@ Azure 虛擬網路是您網路在雲端的邏輯呈現方式。 您可以透過�
 
 **自我裝載整合執行階段需要什麼連接埠才能運作？**
 
-自我裝載整合執行階段會建立 HTTP 型連線來存取網際網路。 必須開啟輸出連接埠 443，自我裝載整合執行階段才能建立此連線。 僅在認證管理員應用程式的機器級別（而不是公司防火牆級別）打開入站埠 8060。 如果使用 Azure SQL Database 或 Azure SQL 資料倉儲作為來源或目的地，則也需要開啟連接埠 1433。 有關詳細資訊，請參閱[防火牆配置並允許設置 IP 位址清單](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
+自我裝載整合執行階段會建立 HTTP 型連線來存取網際網路。 必須開啟輸出連接埠 443，自我裝載整合執行階段才能建立此連線。 僅在憑據管理器應用程式的機器級別(而不是公司防火牆級別)打開入站埠 8060。 如果使用 Azure SQL Database 或 Azure SQL 資料倉儲作為來源或目的地，則也需要開啟連接埠 1433。 有關詳細資訊,請參閱[防火牆配置並允許設置 IP 位址清單](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>後續步驟

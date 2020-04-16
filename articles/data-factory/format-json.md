@@ -9,14 +9,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: b63dcfd6ed293cab9d0107a8b6a35c7ce358d429
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: c18d767afd3721bd6f6250058b9fbe66990133e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011679"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417737"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 資料工廠中的 JSON 格式
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 當您要**解析 JSON 檔或將資料寫入 JSON 格式時,** 請按照本文操作。 
 

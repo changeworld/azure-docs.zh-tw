@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583863"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417048"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>透過已排序的叢集資料行存放區索引進行效能微調  
 
@@ -28,7 +28,7 @@ ms.locfileid: "80583863"
 
 創建有序 CCI 時,Synapse SQL 引擎在索引生成器將現有數據壓縮到索引段之前,通過訂單鍵對記憶體中的現有數據進行排序。  使用已排序的數據,段重疊會減少,從而允許查詢進行更高效的段消除,從而更快地消除性能,因為從磁碟讀取的段數較小。  如果所有數據可以一次在記憶體中排序,則可以避免段重疊。  由於數據倉庫中的大型表,這種情況不經常發生。  
 
-要檢查欄的區段範圍,請使用表名與欄名稱執行此指令:
+要檢查欄的區段範圍,請使用表名與欄名稱執行以下命令:
 
 ```sql
 SELECT o.name, pnp.index_id, 

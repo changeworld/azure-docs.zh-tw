@@ -11,14 +11,15 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e736cc95628bd0e15bdb7ffd425608278788c353
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879255"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417975"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>在 Azure 資料工廠中設定變數活動
+# <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory 中的設定變數活動
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用「設定變數」活動，為定義於 Data Factory 管線中的「字串」、「布林」或「陣列」類型設定現有變數值。
 

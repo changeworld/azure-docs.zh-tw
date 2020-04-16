@@ -1,5 +1,5 @@
 ---
-title: 創建預測資料管道
+title: 建立預測資料導管
 description: 了解如何在 Azure Data Factory 中使用 Azure Machine Learning - 批次執行活動建立預測管線。
 author: nabhishek
 ms.author: abnarain
@@ -10,33 +10,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 44371c78a4d02588eef21aae5a4bba3d033763d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76030001"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418859"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure Machine Learning 和 Azure Data Factory 來建立預測管線
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [版本 1](v1/data-factory-azure-ml-batch-execution-activity.md)
-> * [當前版本](transform-data-using-machine-learning.md)
+> * [目前版本](transform-data-using-machine-learning.md)
 
-[Azure 機器學習](https://azure.microsoft.com/documentation/services/machine-learning/)使您能夠構建、測試和部署預測分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-1. **創建一個訓練實驗**。 通過使用 Azure 機器學習工作室（經典）執行此步驟。 Azure 機器學習工作室（經典版）是一個協作式視覺化開發環境，用於使用訓練資料訓練和測試預測分析模型。
+[Azure 機器學習](https://azure.microsoft.com/documentation/services/machine-learning/)使您能夠建構、測試和部署預測分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
+
+1. **建立訓練實驗**。 通過使用 Azure 機器學習工作室(經典)執行此步驟。 Azure 機器學習工作室(經典版)是一個協作式可視化開發環境,用於使用訓練數據訓練和測試預測分析模型。
 2. **將其轉換為評分實驗**。 一旦您的模型已使用現有資料訓練，並做好使用該模型為新資料評分的準備之後，您準備並簡化用於評分實驗。
 3. **將其部署為 Web 服務**。 只要按一下，您就可以將評分實驗當做 Azure Web 服務發佈。 您可以透過此 Web 服務端點將資料傳送給您的模型，並從模型接收結果預測。
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory 和 Machine Learning 一起合作
-Azure 資料工廠使您能夠輕鬆創建使用已發佈的[Azure 機器學習](https://azure.microsoft.com/documentation/services/machine-learning)Web 服務進行預測分析的管道。 使用 Azure 資料工廠管道中的**批次處理執行活動**，可以調用 Azure 機器學習工作室（經典）Web 服務對批次處理中的資料進行預測。
+Azure 資料工廠使您能夠輕鬆建立使用已發布[的 Azure 機器學習](https://azure.microsoft.com/documentation/services/machine-learning)Web 服務進行預測分析的管道。 使用 Azure 資料工廠管道中的**批次處理執行活動**,可以調用 Azure 機器學習工作室(經典)Web 服務對批處理中的數據進行預測。
 
-隨著時間的推移，需要使用新的輸入資料集重新訓練 Azure 機器學習工作室（經典）評分實驗中的預測模型。 您可以透過執行下列步驟，從 Data Factory 管線重新訓練模型：
+隨著時間的推移,需要使用新的輸入數據集重新訓練 Azure 機器學習工作室(經典)評分實驗中的預測模型。 您可以透過執行下列步驟，從 Data Factory 管線重新訓練模型：
 
-1. 將訓練實驗 (而非預設實驗) 發佈為 Web 服務。 在 Azure 機器學習工作室（經典）中執行此步驟，就像在前面的方案中將預測實驗公開為 Web 服務一樣。
-2. 使用 Azure 機器學習工作室（經典）批次處理執行活動為訓練實驗調用 Web 服務。 基本上，您可以使用 Azure 機器學習工作室（經典）批次處理執行活動來調用培訓 Web 服務和評分 Web 服務。
+1. 將訓練實驗 (而非預設實驗) 發佈為 Web 服務。 在 Azure 機器學習工作室(經典)中執行此步驟,就像在前面的方案中將預測實驗公開為 Web 服務一樣。
+2. 使用 Azure 機器學習工作室(經典)批次處理執行活動為訓練實驗調用 Web 服務。 基本上,您可以使用 Azure 機器學習工作室(經典)批次處理執行活動來調用培訓 Web 服務和評分 Web 服務。
 
-完成再培訓後，使用**Azure 機器學習工作室（經典）更新資源活動**，使用新培訓的模型更新評分 Web 服務（作為 Web 服務公開的預測實驗）。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
+完成再培訓后,使用**Azure 機器學習工作室(經典)更新資源活動**,使用新培訓的模型更新評分 Web 服務(作為 Web 服務公開的預測實驗)。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning 連結服務
 
@@ -127,18 +129,18 @@ Azure Machine Learning 支援傳統 Web 服務和新 Web 服務，以用於您�
 | :---------------- | :--------------------------------------- | :------- |
 | NAME              | 管線中的活動名稱     | 是      |
 | description       | 說明活動用途的文字。  | 否       |
-| type              | 對於資料湖分析 U-SQL 活動，活動類型為**AzureMLBatch 執行**。 | 是      |
+| type              | 對於資料湖分析 U-SQL 活動,活動類型為**AzureMLBatch 執行**。 | 是      |
 | linkedServiceName | 將服務連結至 Azure Machine Learning 連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
 | webServiceInputs  | 對應 Azure Machine Learning Web 服務輸入之名稱的索引鍵/值組。 索引鍵必須符合已發佈 Azure Machine Learning Web 服務中定義的輸入參數。 值是指定輸入 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | 否       |
 | webServiceOutputs | 對應 Azure Machine Learning Web 服務輸出之名稱的索引鍵/值組。 索引鍵必須符合已發佈 Azure Machine Learning Web 服務中定義的輸出參數。 值是指定輸出 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | 否       |
-| globalParameters  | 鍵，要傳遞給 Azure 機器學習工作室（經典）批次處理執行服務終結點的值對。 金鑰必須與已發佈的 Azure 機器學習工作室（經典）Web 服務中定義的 Web 服務參數的名稱匹配。 值在 Azure 機器學習工作室（經典）批次處理執行請求的全域參數屬性中傳遞 | 否       |
+| globalParameters  | 鍵,要傳遞給 Azure 機器學習工作室(經典)批處理執行服務終結點的值對。 密鑰必須與已發佈的 Azure 機器學習工作室(經典)Web 服務中定義的 Web 服務參數的名稱匹配。 值在 Azure 機器學習工作室(經典)批次處理執行請求的全域參數屬性中傳遞 | 否       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>案例 1：使用 Web 服務輸入/輸出 (參考 Azure Blob 儲存體中的資料) 的實驗
 
-在此案例中，Azure Machine Learning Web 服務會使用 Azure Blob 儲存體中的檔案資料執行預測，並將預測結果儲存在 Blob 儲存體中。 下列 JSON 使用 AzureMLBatchExecution 活動定義 Data Factory 管線。 Azure 部落格儲存體中的輸入和輸出資料使用 LinkedName 和 FilePath 來引用。 在輸入和輸出的"連結服務"示例中，您可以對資料工廠的每個輸入/輸出使用不同的連結服務，以便能夠選取正確的檔併發送到 Azure 機器學習工作室（經典）Web 服務。
+在此案例中，Azure Machine Learning Web 服務會使用 Azure Blob 儲存體中的檔案資料執行預測，並將預測結果儲存在 Blob 儲存體中。 下列 JSON 使用 AzureMLBatchExecution 活動定義 Data Factory 管線。 Azure 部落格儲存體中的輸入和輸出資料使用 LinkedName 和 FilePath 來引用。 在輸入和輸出的「連結服務」範例中,您可以對資料工廠的每個輸入/輸出使用不同的連結服務,以便能夠選取正確的檔並發送到 Azure 機器學習工作室(經典)Web 服務。
 
 > [!IMPORTANT]
-> 在 Azure 機器學習工作室（經典）實驗中，Web 服務輸入和輸出埠以及全域參數具有可自訂的預設名稱（"input1"，"input2"）。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以在 Azure 機器學習工作室（經典）終結點的批次處理執行説明頁上查看示例請求有效負載，以驗證預期的映射。
+> 在 Azure 機器學習工作室(經典)實驗中,Web 服務輸入和輸出埠以及全域參數具有可自定義的預設名稱("input1","input2")。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以在 Azure 機器學習工作室(經典)終結點的批處理執行幫助頁上查看範例請求有效負載,以驗證預期的映射。
 >
 >
 
@@ -188,12 +190,12 @@ Azure Machine Learning 支援傳統 Web 服務和新 Web 服務，以用於您�
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>案例 2：使用讀取器/寫入器模組參考各種儲存體資料的實驗
-創建 Azure 機器學習工作室（經典）實驗時的另一個常見方案是使用導入資料和輸出資料模組。 「匯入資料」模組是用來將資料載入實驗，而「輸出資料」模組則是用於儲存您的實驗資料。 如需「匯入資料」和「輸出資料」模組的詳細資料，請參閱 MSDN 文件庫上的[匯入資料](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[輸出資料](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
+創建 Azure 機器學習工作室(經典)實驗時的另一個常見方案是使用導入數據和輸出數據模組。 「匯入資料」模組是用來將資料載入實驗，而「輸出資料」模組則是用於儲存您的實驗資料。 如需「匯入資料」和「輸出資料」模組的詳細資料，請參閱 MSDN 文件庫上的[匯入資料](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[輸出資料](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
 
 使用「匯入資料」和「輸出資料」模組時，較好的做法是針對這些模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，您可以透過使用 Azure SQL Database：XXX.database.windows.net 的「匯入資料」模組，建立實驗。 部署 Web 服務之後，您需要啟用 Web 服務的取用者，藉此指定另一個稱為 `YYY.database.windows.net` 的 Azure SQL Server。 您可以使用 Web 服務參數來設定此值。
 
 > [!NOTE]
-> Web 服務的輸入和輸出與 Web 服務參數不同。 在第一個方案中，您已經瞭解了如何為 Azure 機器學習工作室（經典）Web 服務指定輸入和輸出。 在此案例中，您會傳遞 Web 服務的參數，以對應至「匯入資料」/「輸出資料」模組的屬性。
+> Web 服務的輸入和輸出與 Web 服務參數不同。 在第一個方案中,您已經瞭解了如何為 Azure 機器學習工作室(經典)Web 服務指定輸入和輸出。 在此案例中，您會傳遞 Web 服務的參數，以對應至「匯入資料」/「輸出資料」模組的屬性。
 >
 >
 
@@ -214,7 +216,7 @@ Azure Machine Learning 支援傳統 Web 服務和新 Web 服務，以用於您�
 > Web 服務參數區分大小寫，因此，請確定您在活動 JSON 中所指定的名稱符合 Web 服務所公開的名稱。
 >
 
-完成再培訓後，使用**Azure 機器學習工作室（經典）更新資源活動**，使用新培訓的模型更新評分 Web 服務（作為 Web 服務公開的預測實驗）。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
+完成再培訓后,使用**Azure 機器學習工作室(經典)更新資源活動**,使用新培訓的模型更新評分 Web 服務(作為 Web 服務公開的預測實驗)。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，其說明如何以其他方式轉換資料：

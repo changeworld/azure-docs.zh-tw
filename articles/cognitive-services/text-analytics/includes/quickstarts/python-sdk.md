@@ -2,14 +2,14 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/24/2020
+ms.date: 04/13/2020
 ms.author: aahi
-ms.openlocfilehash: 988de8da839a677b47d679e7bd44059c7477a517
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d58f294195efc393c07ecc3886c29e33dba02e6d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986709"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81422098"
 ---
 <a name="HOLTop"></a>
 
@@ -27,7 +27,7 @@ ms.locfileid: "80986709"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank"><span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]  。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]  。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
@@ -40,7 +40,7 @@ ms.locfileid: "80986709"
 #### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 ```console
-pip install azure-ai-textanalytics==1.0.0b3
+pip install azure-ai-textanalytics
 ```
 
 > [!TIP]
@@ -105,10 +105,11 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 使用上方建立的 `key` 和 `endpoint` 來建立可具現化 `TextAnalyticsClient` 物件的函式。 然後，建立新的用戶端。 
 
 ```python
-from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
+from azure.core.credentials import AzureKeyCredential
 
 def authenticate_client():
-    ta_credential = TextAnalyticsApiKeyCredential(key)
+    ta_credential = AzureKeyCredential(key)
     text_analytics_client = TextAnalyticsClient(
             endpoint=endpoint, credential=ta_credential)
     return text_analytics_client
@@ -136,8 +137,8 @@ client = authenticate_client()
 ```python
 def sentiment_analysis_example(client):
 
-    document = ["I had the best day of my life. I wish you were there with me."]
-    response = client.analyze_sentiment(inputs=document)[0]
+    documents = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(documents = documents)[0]
     print("Document Sentiment: {}".format(response.sentiment))
     print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
         response.confidence_scores.positive,
@@ -152,8 +153,7 @@ def sentiment_analysis_example(client):
             sentence.confidence_scores.neutral,
             sentence.confidence_scores.negative,
         ))
-
-            
+          
 sentiment_analysis_example(client)
 ```
 
@@ -161,7 +161,7 @@ sentiment_analysis_example(client)
 
 ```console
 Document Sentiment: positive
-Overall scores: positive=1.00; neutral=0.00; negative=0.00
+Overall scores: positive=1.00; neutral=0.00; negative=0.00 
 
 [Length: 30]
 Sentence 1 sentiment: positive
@@ -207,8 +207,8 @@ Document ID: 4 , Sentiment Score: 1.00
 ```python
 def language_detection_example(client):
     try:
-        document = ["Ce document est rédigé en Français."]
-        response = client.detect_language(inputs = document, country_hint = 'us')[0]
+        documents = ["Ce document est rédigé en Français."]
+        response = client.detect_language(documents = documents, country_hint = 'us')[0]
         print("Language: ", response.primary_language.name)
 
     except Exception as err:
@@ -245,8 +245,7 @@ Document ID: 3 , Language: Chinese_Simplified
 #### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 > [!NOTE]
-> 在 `3.0-preview` 版中：
-> * NER 包含各種用於偵測個人資訊的方法。 
+> 在 `3.0-preview` 版中： 
 > * 實體連結是不同於 NER 的要求。
 
 建立名為 `entity_recognition_example` 的新函式，此函式會將用戶端作為引數，然後呼叫 `recognize_entities()` 函式並逐一查看結果。 如果成功，傳回的回應物件會在 `entity` 中包含所偵測到實體的清單，若未能成功，則會包含 `error`。 針對每個偵測到的實體，列印其類別目錄和子類別 (如果有的話)。
@@ -255,13 +254,13 @@ Document ID: 3 , Language: Chinese_Simplified
 def entity_recognition_example(client):
 
     try:
-        document = ["I had a wonderful trip to Seattle last week."]
-        result = client.recognize_entities(inputs= document)[0]
+        documents = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(documents = documents)[0]
 
         print("Named Entities:\n")
         for entity in result.entities:
             print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
-                    "\n\tLength: \t", entity.grapheme_length, "\tConfidence Score: \t", round(entity.score, 2), "\n")
+                    "\n\tLength: \t", entity.grapheme_length, "\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -280,35 +279,6 @@ Named Entities:
     Length:          9      Confidence Score:        0.8
 ```
 
-## <a name="using-ner-to-detect-personal-information"></a>使用 NER 來偵測個人資訊
-
-建立名為 `entity_pii_example()` 的新函式，此函式會將用戶端作為引數，然後呼叫 `recognize_pii_entities()` 函式並取得結果。 接著逐一查看結果，並印出實體。
-
-```python
-def entity_pii_example(client):
-
-        document = ["Insurance policy for SSN on file 123-12-1234 is here by approved."]
-
-
-        result = client.recognize_pii_entities(inputs= document)[0]
-        
-        print("Personally Identifiable Information Entities: ")
-        for entity in result.entities:
-            print("\tText: ",entity.text,"\tCategory: ", entity.category,"\tSubCategory: ", entity.subcategory)
-            print("\t\tLength: ", entity.grapheme_length, "\tScore: {0:.2f}".format(entity.score), "\n")
-        
-entity_pii_example(client)
-```
-
-### <a name="output"></a>輸出
-
-```console
-Personally Identifiable Information Entities:
-    Text:  123-12-1234      Category:  U.S. Social Security Number (SSN)    SubCategory:  None
-        Length:  11     Score: 0.85
-```
-
-
 ## <a name="entity-linking"></a>實體連結
 
 建立名為 `entity_linking_example()` 的新函式，此函式會將用戶端作為引數，然後呼叫 `recognize_linked_entities()` 函式並逐一查看結果。 如果成功，傳回的回應物件會在 `entities` 中包含所偵測到實體的清單，若未能成功，則會包含 `error`。 因為連結的實體已識別為是唯一的，所以相同實體再次出現的話，就會群組到 `entity` 物件底下作為 `match` 物件的清單。
@@ -317,12 +287,12 @@ Personally Identifiable Information Entities:
 def entity_linking_example(client):
 
     try:
-        document = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
+        documents = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
         to develop and sell BASIC interpreters for the Altair 8800. 
         During his career at Microsoft, Gates held the positions of chairman,
         chief executive officer, president and chief software architect, 
         while also being the largest individual shareholder until May 2014."""]
-        result = client.recognize_linked_entities(inputs= document)[0]
+        result = client.recognize_linked_entities(documents = documents)[0]
 
         print("Linked Entities:\n")
         for entity in result.entities:
@@ -331,7 +301,7 @@ def entity_linking_example(client):
             print("\tMatches:")
             for match in entity.matches:
                 print("\t\tText:", match.text)
-                print("\t\tScore: {0:.2f}".format(match.score), "\tLength: {}\n".format(match.grapheme_length))
+                print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score), "\tLength: {}\n".format(match.grapheme_length))
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -343,48 +313,47 @@ entity_linking_example(client)
 ```console
 Linked Entities:
 
-    Name:  Altair 8800      Id:  Altair 8800        Url:  https://en.wikipedia.org/wiki/Altair_8800
+    Name:  Altair 8800     Id:  Altair 8800     Url:  https://en.wikipedia.org/wiki/Altair_8800 
     Data Source:  Wikipedia
     Matches:
         Text: Altair 8800
-        Score: 0.78     Length: 11
+        Confidence Score: 0.00     Length: 11
 
-    Name:  Bill Gates       Id:  Bill Gates         Url:  https://en.wikipedia.org/wiki/Bill_Gates
+    Name:  Bill Gates     Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
     Data Source:  Wikipedia
     Matches:
         Text: Bill Gates
-        Score: 0.55     Length: 10
+        Confidence Score: 0.00     Length: 10
 
         Text: Gates
-        Score: 0.55     Length: 5
+        Confidence Score: 0.00     Length: 5
 
-    Name:  Paul Allen       Id:  Paul Allen         Url:  https://en.wikipedia.org/wiki/Paul_Allen
+    Name:  Paul Allen     Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
     Data Source:  Wikipedia
     Matches:
         Text: Paul Allen
-        Score: 0.53     Length: 10
+        Confidence Score: 0.00     Length: 10
 
-    Name:  Microsoft        Id:  Microsoft  Url:  https://en.wikipedia.org/wiki/Microsoft
+    Name:  Microsoft     Id:  Microsoft     Url:  https://en.wikipedia.org/wiki/Microsoft 
     Data Source:  Wikipedia
     Matches:
         Text: Microsoft
-        Score: 0.47     Length: 9
+        Confidence Score: 0.00     Length: 9
 
         Text: Microsoft
-        Score: 0.47     Length: 9
+        Confidence Score: 0.00     Length: 9
 
-    Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4
+    Name:  April 4     Id:  April 4     Url:  https://en.wikipedia.org/wiki/April_4 
     Data Source:  Wikipedia
     Matches:
         Text: April 4
-        Score: 0.25     Length: 7
+        Confidence Score: 0.00     Length: 7
 
-    Name:  BASIC    Id:  BASIC      Url:  https://en.wikipedia.org/wiki/BASIC
+    Name:  BASIC     Id:  BASIC     Url:  https://en.wikipedia.org/wiki/BASIC 
     Data Source:  Wikipedia
     Matches:
         Text: BASIC
-        Score: 0.28     Length: 5
-
+        Confidence Score: 0.00     Length: 5
 ```
 
 #### <a name="version-21"></a>[2.1 版](#tab/version-2)
@@ -448,9 +417,9 @@ Document ID: 2
 def key_phrase_extraction_example(client):
 
     try:
-        document = ["My cat might need to see a veterinarian."]
+        documents = ["My cat might need to see a veterinarian."]
 
-        response = client.extract_key_phrases(inputs= document)[0]
+        response = client.extract_key_phrases(documents = documents)[0]
 
         if not response.is_error:
             print("\tKey Phrases:")

@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: db55e685fb50c89eb850e1b9ee9dcf13d20fb614
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011696"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417547"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 資料工廠複製並轉換 Azure SQL 資料庫中的資料
 
 > [!div class="op_single_selector" title1="選擇使用的 Azure 資料工廠版本:"]
 > * [版本 1](v1/data-factory-azure-sql-connector.md)
 > * [目前版本](connector-azure-sql-database.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 資料工廠中的複製活動從 Azure SQL 資料庫複製數據,以及使用資料流轉換 Azure SQL 資料庫中的數據。 若要了解 Azure Data Factory，請閱讀[簡介文章](introduction.md)。
 
