@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: c41efc1cbccf546d803e1131405907bf37dcf00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 91962b578f9620384af86d25a33ba35830abb285
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75496565"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418621"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中佈建 Azure-SSIS 整合執行階段
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本教學課程提供使用 Azure 入口網站在 Azure Data Factory 中佈建 Azure-SQL Server Integration Services (SSIS) 整合執行階段 (IR) 的步驟。 Azure-SSIS IR 可支援：
 

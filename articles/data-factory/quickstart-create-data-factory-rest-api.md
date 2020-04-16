@@ -13,18 +13,20 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: fbfd3e2577655e8cfccd84fffe2971ff509bd2f4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215786"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419097"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入門：使用 REST API 建立 Azure 資料處理站和管線
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [目前的版本](quickstart-create-data-factory-rest-api.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory 是雲端式資料整合服務，可讓您在雲端建立資料驅動工作流程，以便協調及自動進行資料移動和資料轉換。 使用 Azure Data Factory，您可以建立和排程資料驅動工作流程 (稱為管線)，這類工作流程可以從不同資料存放區內嵌資料，使用計算服務 (例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure Machine Learning) 來處理/轉換資料，以及將輸出資料發佈至資料存放區 (例如 Azure SQL 資料倉儲)，以供商業智慧 (BI) 應用程式使用。
 

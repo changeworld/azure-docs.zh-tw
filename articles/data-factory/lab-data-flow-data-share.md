@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156721"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415931"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure Data Factory 和 Azure Data Share 進行資料整合
 
-客戶在採用現代化資料倉儲和分析專案的過程中，不僅需要更多的資料，也必須更深入了解其資料資產中的資料。 此研討會將探討如何經由 Azure Data Factory 和 Azure Data Share 的改良來簡化 Azure 中的資料整合與管理。 從啟用無程式碼的 ETL/ELT，乃至於對您的資料建立完整的檢視，Azure Data Factory 的改良都可讓資料工程師安心地為您的企業導入更多資料，進而提升價值。 Azure Data Share 可讓您以受到控管的方式進行企業對企業共用。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+客戶在採用現代化資料倉儲和分析專案的過程中，不僅需要更多的資料，也必須更深入了解其資料資產中的資料。 此研討會將探討如何經由 Azure Data Factory 和 Azure Data Share 的改良來簡化 Azure 中的資料整合與管理。 
+
+從啟用無程式碼的 ETL/ELT，乃至於對您的資料建立完整的檢視，Azure Data Factory 的改良都可讓資料工程師安心地為您的企業導入更多資料，進而提升價值。 Azure Data Share 可讓您以受到控管的方式進行企業對企業共用。
 
 在此研討會中，您將使用 Azure Data Factory (ADF)，將 Azure SQL 資料庫 (SQL DB) 中的資料內嵌至 Azure Data Lake Storage Gen2 (ADLS Gen2)。 在您將資料放入 Lake 之後，您會透過對應資料流程 (資料處理站的原生轉換服務) 進行資料轉換，並將其接收至 Azure Synapse Analytics (先前為 SQL DW) 中。 然後，您將會使用 Azure Data Share 與已轉換的資料和一些額外資料共用資料表。 
 

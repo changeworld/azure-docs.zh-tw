@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f7a70454e395f5f9d39266e0777749e1fcbef68e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215766"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419352"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [目前的版本](quickstart-create-data-factory-portal.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本快速入門說明如何使用 Azure Data Factory UI 建立及監視資料處理站。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾「複製」  到其他資料夾。 如需如何使用 Azure Data Factory 「轉換」  資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](tutorial-transform-data-spark-portal.md)。
 

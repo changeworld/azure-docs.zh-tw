@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977393"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418723"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教學課程中，您會建立 Data Factory 管線來展示部分控制流程功能。 此管線會從 Azure Blob 儲存體中的一個容器複製到相同儲存體帳戶中的另一個容器。 如果複製活動成功，管線會在電子郵件中傳送成功複製作業的詳細資料。 該資訊可能包含寫入的資料量。 如果複製活動失敗，則管線會在電子郵件中傳送複製失敗的詳細資料，例如錯誤訊息。 在整個教學課程中，您會看到如何傳遞參數。
 

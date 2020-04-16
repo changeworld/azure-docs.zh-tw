@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: 1d8c68550d294534178fd6094b71fd6a7f1d1c46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6b4df324fec38d08355754146d8be76d225e6cb7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977367"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418587"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用複製資料工具將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [目前的版本](tutorial-hybrid-copy-data-tool.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在這個教學課程中，您會使用 Azure 入口網站來建立資料處理站。 接著，您會使用複製資料工具建立管線，以將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體。
 

@@ -13,18 +13,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419369"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入門：使用 .NET SDK 建立資料處理站和管線
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [目前的版本](quickstart-create-data-factory-dot-net.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本快速入門說明如何使用 .NET SDK 來建立 Azure 資料處理站。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](tutorial-transform-data-spark-portal.md)。
 

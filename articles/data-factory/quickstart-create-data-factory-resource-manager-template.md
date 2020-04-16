@@ -10,18 +10,20 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215746"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419114"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本建立 Azure Data Factory
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [目前的版本](quickstart-create-data-factory-resource-manager-template.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本快速入門說明如何使用 Azure Resource Manager 範本建立 Azure Data Factory。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
 
@@ -636,7 +638,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
 
 #### <a name="trigger"></a>觸發程序
 
-定義一小時執行一次管線的觸發程序。 部署的觸發程序處於已停止狀態。 使用 **Start-AzDataFactoryV2Trigger** Cmdlet 啟動觸發程序。 如需觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#triggers)一文。
+定義一小時執行一次管線的觸發程序。 部署的觸發程序處於已停止狀態。 使用 **Start-AzDataFactoryV2Trigger** Cmdlet 啟動觸發程序。 如需觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#trigger-execution)一文。
 
 ```json
 {  

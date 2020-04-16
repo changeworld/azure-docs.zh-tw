@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70241397"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415152"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教學課程：訂購 Azure Data Box Heavy
 
@@ -41,17 +41,9 @@ Azure Data Box Heavy 是一項混合式解決方案，可讓您以快速、簡�
 - 如果打算將裝置安裝在一樓以外的樓層，必須透過電梯或坡道搬運裝置。 裝置的重量約為 500 磅。
 - 確定您的資料中心有平坦的區域，且靠近可用的網路連線，以容納具有此磁碟使用量的裝置。
 
-
 ### <a name="for-service"></a>針對服務
 
-在您開始前，請確定：
-- 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
-- 請確定您用於資料箱服務的訂用帳戶是下列其中一種類型：
-    - Microsoft Enterprise 合約 (EA)。 深入了解 [EA 訂用帳戶](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 雲端解決方案提供者 (CSP)。 深入了解 [Azure CSP 方案](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
-    - Microsoft Azure 贊助。 深入了解 [Azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-
-- 確定您有訂用帳戶的擁有者或參與者存取權，才能建立 Data Box Heavy 訂單。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>針對裝置
 

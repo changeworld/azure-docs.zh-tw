@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977320"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418689"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 複製到 Azure SQL Database
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教學課程中，您會建立 Data Factory 管道，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 

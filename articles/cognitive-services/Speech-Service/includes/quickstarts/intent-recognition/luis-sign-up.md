@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: dapine
-ms.openlocfilehash: 58122066e65fbcb02b6b4333985785b219d3dbbd
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.author: trbye
+ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76900467"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421959"
 ---
 若要完成意圖辨識快速入門，您必須使用 LUIS 預覽入口網站建立 LUIS 帳戶和專案。 本快速入門只需要 LUIS 訂用帳戶。 「不需要」  語音服務訂用帳戶。
 

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 29101d0277ff0fb392917f722bcaec3b7e5983b5
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 824244c0c3247e5a218c1551dd95de6e1d6e1007
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478262"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419216"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 將事件傳送至 Azure 事件中樞或從中接收事件 (azure-messaging-eventhubs)
 本快速入門說明如何使用 **azure-messaging-eventhubs** Java 套件，來傳送事件至事件中樞和從事件中樞接收事件。
@@ -48,7 +48,7 @@ ms.locfileid: "80478262"
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>撰寫程式碼以將訊息傳送到事件中樞
 
-針對下列範例，在您最喜愛的 Java 開發環境中，先為主控台/殼層應用程式建立新的 Maven 專案。 新增名為 `SimpleSend` 的類別，並在此類別中新增下列程式碼：
+針對下列範例，在您最喜愛的 Java 開發環境中，先為主控台/殼層應用程式建立新的 Maven 專案。 新增名為 `Sender` 的類別，並在此類別中新增下列程式碼：
 
 ```java
 import com.azure.messaging.eventhubs.*;

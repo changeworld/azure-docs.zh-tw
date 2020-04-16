@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 4ab467c0dc5014ec6c8a543fe7e8ecc136dfa02d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223995"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418748"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure Data Factory 大量複製多個資料表
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本教學課程示範**從 Azure SQL Database 複製一些資料表到 Azure SQL 資料倉儲**。 您也可以在其他複製案例中套用相同模式。 例如，將資料表從 SQL Server/Oracle 複製到 Azure SQL Database/資料倉儲/Azure Blob，將不同的路徑從 Blob 複製到 Azure SQL Database 資料表。
 

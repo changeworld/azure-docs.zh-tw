@@ -10,14 +10,17 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74924812"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415559"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>比較 Azure Data Factory 與 Data Factory 第 1 版
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文將比較 Data Factory 與 Data Factory 第 1 版。 如需 Data Factory 的指示，請參閱 [Data Factory 簡介](introduction.md)。如需 Data Factory 第 1 版的指示，請參閱 [Azure Data Factory 簡介](v1/data-factory-introduction.md)。 
 
 ## <a name="feature-comparison"></a>功能比較
@@ -25,7 +28,7 @@ ms.locfileid: "74924812"
 
 | 功能 | 第 1 版 | 目前版本 | 
 | ------- | --------- | --------- | 
-| 資料集 | 一個具名的資料檢視，參考您想要在活動中用來作為輸入或輸出的資料。 資料集可識別資料表、檔案、資料夾和文件等各種資料存放區中的資料。 例如，Blob 資料集會指定活動應從中讀取資料之 Blob 儲存體中的 Blob 容器和資料夾。<br/><br/>**可用性**定義資料集的處理時段切割模型 (例如每小時或每天等)。 | 目前版本中的資料集是相同的。 不過，您不需要定義資料集的**可用性**排程。 您可以定義觸發程序資源，以排程時鐘排程器範例中的管線。 如需詳細資訊，請參閱[觸發程序](concepts-pipeline-execution-triggers.md#triggers)和[資料集](concepts-datasets-linked-services.md)。 | 
+| 資料集 | 一個具名的資料檢視，參考您想要在活動中用來作為輸入或輸出的資料。 資料集可識別資料表、檔案、資料夾和文件等各種資料存放區中的資料。 例如，Blob 資料集會指定活動應從中讀取資料之 Blob 儲存體中的 Blob 容器和資料夾。<br/><br/>**可用性**定義資料集的處理時段切割模型 (例如每小時或每天等)。 | 目前版本中的資料集是相同的。 不過，您不需要定義資料集的**可用性**排程。 您可以定義觸發程序資源，以排程時鐘排程器範例中的管線。 如需詳細資訊，請參閱[觸發程序](concepts-pipeline-execution-triggers.md#trigger-execution)和[資料集](concepts-datasets-linked-services.md)。 | 
 | 連結的服務 | 連結的服務非常類似連接字串，可定義 Data Factory 連線到外部資源所需的連線資訊。 | 連結服務與 Data Factory V1 中的相同，但具有新的 **connectVia** 屬性，可使用現行 Data Factory 版本的 Integration Runtime 計算環境。 如需詳細資訊，請參閱 [Azure Data Factory 中的整合執行階段](concepts-integration-runtime.md)和 [Azure Blob 儲存體連結的服務屬性](connector-azure-blob-storage.md#linked-service-properties)。 |
 | 管線 | 資料處理站可以有一或多個管線。 管線是一起執行某個工作的活動所組成的邏輯群組。 您可以使用 startTime、endTime 和 isPaused 來排程及執行管線。 | 管線是要對資料執行的活動群組。 不過，管線中活動的排程已分隔成新的觸發程序資源。 您可以將現行 Data Factory 版本 中的管線視為您透過觸發程序個別排程的「工作流程單位」。 <br/><br/>在現行 Data Factory 版本中的管線沒有時間執行「視窗」。 startTime、endTime 及 isPaused 的 Data Factory V1 概念已不存在於目前的 Data Factory 版本中。 如需詳細資訊，請參閱[管道執行和觸發程序](concepts-pipeline-execution-triggers.md)和[管線和活動](concepts-pipelines-activities.md)。 |
 | 活動 | 活動會定義要在管線中資料上執行的動作。 支援資料移動 (複製活動) 和資料轉換活動 (例如 Hive、Pig 和 MapReduce)。 | 在目前的 Data Factory 版本中，活動仍是管線內定義的動作。 目前的 Data Factory 版本引進了新的[控制流程活動](concepts-pipelines-activities.md#control-flow-activities)。 您可以在控制流程 (迴圈和分支) 中使用這些活動。 目前的版本可支援 V1 中支援的資料移動和資料轉換活動。 您可以定義轉換活動，而不需使用目前版本中的資料集。 |

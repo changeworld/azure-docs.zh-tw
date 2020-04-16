@@ -11,14 +11,17 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: c073d3e51234e0ed8e524c2ae557d4158ad9e7d7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7e222762c8bfa7218fd27e15b97de7b1166d749d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065052"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418570"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 來建立資料處理站管線，以將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體。 您要建立及使用自我裝載的整合執行階段，其會在內部部署與雲端資料存放區之間移動資料。
 
 > [!NOTE]

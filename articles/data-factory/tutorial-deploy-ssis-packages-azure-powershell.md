@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336138"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418638"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure Data Factory 中設定 Azure SSIS IR
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本教學課程會說明如何在 Azure Data Factory 中設定 Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR)。 Azure-SSIS IR 支援執行已部署至下列項目的套件：
 * SSIS 目錄 (SSISDB)，由 Azure SQL Database 伺服器執行個體或受控執行個體 (專案部署模型) 裝載。
