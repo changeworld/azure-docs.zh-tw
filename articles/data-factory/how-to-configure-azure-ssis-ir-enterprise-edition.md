@@ -10,14 +10,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0bedde8431ce713f0cc7185d0ec607d49b48ef1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922654"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414962"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>佈建 Azure-SSIS 整合執行階段的企業版
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure-SSIS 整合執行階段的企業版可讓您使用下列進階功能：
 -   異動資料擷取 (CDC) 元件

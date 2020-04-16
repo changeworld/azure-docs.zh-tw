@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583520"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414010"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure 突觸分析(以前 SQL DW)容量限制
 
@@ -42,7 +42,7 @@ Azure 突觸的各種元件允許的最大值。
 | Table |大小上限 |列儲存表的大小不受限制。 <br>60 TB 用於磁碟上壓縮的行存儲表。 |
 | Table |每個資料庫的資料表數 | 100,000 |
 | Table |資料表的資料行數 |1024 個資料行 |
-| Table |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 對於字元數據類型,MAX Limit 可在頁外存儲(行溢出)存儲多達 2 GB。  數據頁中的數據頁中,字元或 varchar 限制等非 Unicode 字元為 8000,數據頁中的 Unicode 字元(nchar 或 nvarchar 限制)為 4000。  使用數據頁存儲大小來提高性能。 |
+| Table |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 char 資料類型的限制為 8000、nvarchar 為 4000 或 MAX 資料類型為 2 GB。 |
 | Table |每個資料列的位元組，已定義的大小 |8060 個位元組<br/><br/>每個資料列的位元組數目計算方式和使用頁面壓縮的 SQL Server 所使用的方式相同。 與 SQL Server 一樣,支援行溢出存儲,這允許**將可變長度列**推離行。 可變長度的資料列會發送至超出資料列，只有 24 位元組的根會儲存在主要記錄中。 如需詳細資訊，請參閱[超過 8-KB 的資料列溢位資料](https://msdn.microsoft.com/library/ms186981.aspx)。 |
 | Table |每個資料表的資料分割 |15,000<br/><br/>為了獲得高效能，建議在仍能支援業務需求的情況下，將您需要的資料分割數目降至最低。 隨著資料分割數目增加，資料定義語言 (DDL) 和資料操作語言 (DML) 作業的負荷會加重，導致效能變慢。 |
 | Table |每個資料分割界限值的字元。 |4000 |

@@ -1,36 +1,35 @@
 ---
 title: 設定 Spark 設定 - Azure HDInsight
-description: 如何查看和配置 Azure HDInsight 群集的 Apache Spark 設置
+description: 如何檢視並設定 Azure HDInsight 叢集的 Apache Spark 設定
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/15/2020
+ms.openlocfilehash: e13390067f8767e8c07b9c189264444e6d999a7a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272015"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411307"
 ---
 # <a name="configure-apache-spark-settings"></a>設定 Apache Spark 設定
 
-HDInsight Spark 叢集包含 [Apache Spark](https://spark.apache.org/) 程式庫的安裝。  每個 HDInsight 叢集都包含其所有已安裝服務的預設組態參數，包括 Spark。  管理 HDInsight Apache Hadoop 叢集的重要環節之一，是要監視工作負載 (包括 Spark 作業)，以確定作業以可預測的方式執行。 若要以最佳方式執行 Spark 作業，在決定如何最佳化叢集的邏輯組態時，請考慮使用實體叢集組態。
+HDInsight Spark 叢集包含 [Apache Spark](https://spark.apache.org/) 程式庫的安裝。  每個 HDInsight 叢集都包含其所有已安裝服務的預設組態參數，包括 Spark。  管理 HDInsight Apache Hadoop 群集的一個關鍵方面是監視工作負載,包括 Spark 作業。 為了最好地運行 Spark 作業,在確定群集的邏輯配置時,請考慮物理群集配置。
 
 預設 HDInsight Apache Spark 叢集包含下列節點：三個 [Apache ZooKeeper](https://zookeeper.apache.org/) 節點、兩個前端節點，以及一或多個背景工作節點：
 
 ![Spark HDInsight 架構](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-HDInsight 叢集中各個節點的虛擬機器數目和大小也可能對您的 Spark 組態產生影響。 非預設 HDInsight 組態值通常需要非預設 Spark 組態值。 在建立 HDInsight Spark 叢集時，您會看到系統針對每個元件建議的虛擬機器大小。 目前，Azure 的[記憶體最佳化 Linux 虛擬機器大小](../../virtual-machines/linux/sizes-memory.md)是 D12 v2 或更高。
+HDInsight 群集中節點的 VM 數量和 VM 大小可能會影響 Spark 配置。 非預設 HDInsight 組態值通常需要非預設 Spark 組態值。 創建 HDInsight Spark 群集時,將顯示每個元件的建議 VM 大小。 目前，Azure 的[記憶體最佳化 Linux 虛擬機器大小](../../virtual-machines/linux/sizes-memory.md)是 D12 v2 或更高。
 
 ## <a name="apache-spark-versions"></a>Apache Spark 版本
 
 使用最適合您的叢集的 Spark 版本。  HDInsight 服務包含數種版本的 Spark 和 HDInsight。  每個版本的 Spark 都包含一組預設叢集設定。  
 
-在您建立新的叢集時，有多個 Spark 版本可供選擇。 若要查看完整清單，請參閱 [HDInsight 元件和版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
-
+在您建立新的叢集時，有多個 Spark 版本可供選擇。 要檢視完整清單[,HDInsight 元件和版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。
 
 > [!NOTE]  
 > HDInsight 服務中的預設 Apache Spark 版本可能會變更，且不另行通知。 如需依存於某個版本，Microsoft 建議您在使用 .NET SDK、Azure PowerShell 與 Azure 傳統 CLI 建立叢集時指定該特定版本。
@@ -51,21 +50,21 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-上方顯示的範例會覆寫五個 Spark 設定參數的數個預設值。  它們分別是壓縮轉碼器、Apache Hadoop MapReduce 分割大小下限和 parquet 區塊大小，以及 Spar SQL 分割區和開啟檔案大小的預設值。  之所以會選擇這些設定變更，是因為相關聯的資料和作業 (在此範例中為基因組資料) 具有特定特性，而在使用這些自訂組態設定時會有較好的執行效能。
+上方顯示的範例會覆寫五個 Spark 設定參數的數個預設值。  這些值是壓縮編解碼器、Apache Hadoop Map 減少分割最小大小和鑲木地板塊大小。 此外,Spar SQL 分區和打開的檔案大小預設值。  選擇這些配置更改是因為關聯的數據和作業(在此範例中為基因組資料)具有特殊的特徵。 使用這些自定義配置設置,這些特性將效果更好。
 
 ---
 
 ## <a name="view-cluster-configuration-settings"></a>檢視叢集組態設定
 
-在叢集上執行效能最佳化之前，請先確認目前的 HDInsight 叢集組態設定。 按一下 Spark 叢集窗格上的 [儀表板]**** 連結，從 Azure 入口網站啟動 HDInsight 儀表板。 使用群集管理員的使用者名和密碼登錄。
+在群集上執行性能優化之前,請驗證當前的 HDInsight 叢集配置設置。 按一下 Spark 叢集窗格上的 [儀表板]**** 連結，從 Azure 入口網站啟動 HDInsight 儀表板。 使用群集管理員的使用者名和密碼登錄。
 
-Apache Ambari Web UI 隨即出現，並顯示主要叢集資源使用率計量的儀表板檢視。  Ambari 儀表板會顯示 Apache Spark 組態，和其他您已安裝的服務。 儀表板會包含 [設定歷程記錄]**** 索引標籤，您可以在其中檢視所有已安裝的服務 (包括 Spark) 設定資訊。
+出現 Apache Ambari Web UI,並帶有關鍵群集資源使用指標的儀表板。  Ambari 儀表板顯示 Apache Spark 配置和其他已安裝的服務。 儀表板包括 **「設定歷史記錄」** 選項卡,您可以在其中查看已安裝服務(包括 Spark)的資訊。
 
 若要檢視 Apache Spark 的設定值，請選取 [設定歷程記錄]****，然後選取 [Spark2]****。  選取 [設定]**** 索引標籤，然後選取服務清單中的 `Spark` (或 `Spark2`，視您的版本而定) 連結。  您會看到叢集的設定值清單：
 
 ![Spark 設定](./media/apache-spark-settings/spark-configurations.png)
 
-若要檢視及變更個別的 Spark 設定值，請在連結標題中選取任何含有 "spark" 這個字的連結。  Spark 的設定同時包含下列類別的自訂和進階設定值：
+要查看和更改單個 Spark 配置值,請選擇標題中帶有"Spark"的任何連結。  Spark 的設定同時包含下列類別的自訂和進階設定值：
 
 * 自訂 Spark2-defaults
 * 自訂 Spark2-metrics-properties
@@ -73,7 +72,7 @@ Apache Ambari Web UI 隨即出現，並顯示主要叢集資源使用率計量�
 * 進階 Spark2-env
 * 進階 spark2-hive-site-override
 
-如果您建立一組非預設的設定值，則也會看到設定更新的歷程記錄。  此設定歷程記錄有助於查看哪一個非預設設定具有最佳效能。
+如果創建一組非預設的配置值,則更新歷史記錄是可見的。  此設定歷程記錄有助於查看哪一個非預設設定具有最佳效能。
 
 > [!NOTE]  
 > 若要檢視 (但不變更) 一般 Spark 叢集組態設定，請選取最上層 [Spark 作業 UI]**** 介面上的 [環境]**** 索引標籤。
@@ -86,22 +85,24 @@ Apache Ambari Web UI 隨即出現，並顯示主要叢集資源使用率計量�
 
 Spark 作業會使用背景工作角色資源 (尤其是記憶體)，因此，調整背景工作角色節點「執行程式」的 Spark 設定值，是很常見的動作。
 
-為了微調 Spark 設定以改善應用程式需求而常會調整的三個主要參數為 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 執行程式是針對 Spark 應用程式啟動的程序。 執行程式會在背景工作角色節點上執行，並負責處理應用程式的工作。 每個叢集的預設執行程式數目和執行程式大小，是根據背景工作角色節點數目和背景工作角色節點大小計算的。 它們儲存在叢集前端節點上的 `spark-defaults.conf` 。  您可以選取 Ambari Web UI 中的 [自訂 spark-defaults]**** 連結，在執行中的叢集中編輯這些值。  在您進行變更後，UI 會提示您**重新啟動**所有受影響的服務。
+為了微調 Spark 設定以改善應用程式需求而常會調整的三個主要參數為 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 執行程式是針對 Spark 應用程式啟動的程序。 執行程式會在背景工作角色節點上執行，並負責處理應用程式的工作。 輔助節點數和輔助節點大小確定執行器數和執行器大小。 這些值存儲在群集頭`spark-defaults.conf`節點上。  通過在 Ambari Web UI 中選擇**自訂火花預設值**,可以在正在運行的群集中編輯這些值。  在您進行變更後，UI 會提示您**重新啟動**所有受影響的服務。
 
 > [!NOTE]  
 > 這三個設定參數可以在叢集層級設定 (適用於在叢集執行的所有應用程式)，也可以對個別的應用程式指定。
 
-Spark 執行程式所使用之資源的另一個相關資訊來源，是 Spark 應用程式 UI。  在 Spark UI 中，選擇 **"執行器**"選項卡以顯示執行器使用的配置和資源的摘要和詳細資訊視圖。  這些檢視可協助您判斷是要對整個叢集變更 Spark 執行程式的預設值，還是對特定的一組作業執行進行變更。
+有關 Spark 執行器使用的資源的另一個資訊來源是 Spark 應用程式 UI。  在 UI 中,**執行器**顯示配置和消耗資源的摘要和詳細資訊檢視。  確定是更改整個群集或特定作業執行集的執行者值。
 
 ![Spark 執行程式](./media/apache-spark-settings/apache-spark-executors.png)
 
-或者，您可以使用 Ambari REST API，以程式設計方式驗證 HDInsight 和 Spark 叢集組態設定。  您可以在 [GitHub 上的 Apache Ambari API 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)取得詳細資訊。
+或者,您可以使用 Ambari REST API 以程式設計方式驗證 HDInsight 和 Spark 叢集配置設置。  您可以在 [GitHub 上的 Apache Ambari API 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)取得詳細資訊。
 
-根據您的 Spark 叢集工作負載，您可能會判定非預設 Spark 設定可提供最佳化程度較高的 Spark 作業執行。  您應使用範例工作負載執行基準測試，來驗證任何非預設叢集設定。  您可以考慮調整某些通用參數：
+根據您的 Spark 叢集工作負載，您可能會判定非預設 Spark 設定可提供最佳化程度較高的 Spark 作業執行。  使用範例工作負載進行基準測試,以驗證任何非預設群集配置。  您可以考慮調整某些通用參數：
 
-* `--num-executors` 設定執行程式數目。
-* `--executor-cores` 設定每個執行程式的核心數目。 建議您使用中型執行程式，因為其他程序也會耗用部分的可用記憶體。
-* `--executor-memory` 會控制 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 上每個執行程式的記憶體大小 (堆積大小)，且您將必須為執行的額外負荷保留一些記憶體。
+|參數 |描述|
+|---|---|
+|--執行者|設置執行者的數量。|
+|--執行者核心|設置每個執行器的內核數。 建議您使用中型執行程式，因為其他程序也會耗用部分的可用記憶體。|
+|--執行器記憶體|控制[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)上每個執行器的記憶體大小(堆大小),您需要留下一些記憶體作為執行開銷。|
 
 下列範例說明兩個使用不同設定值的背景工作角色節點：
 
@@ -109,10 +110,12 @@ Spark 執行程式所使用之資源的另一個相關資訊來源，是 Spark �
 
 下列清單顯示主要 Spark 執行程式記憶體參數。
 
-* `spark.executor.memory` 會定義執行程式可用的記憶體總數量。
-* `spark.storage.memoryFraction` (預設值 ~60%) 會定義可用來儲存永續性 RDD 的記憶體數量。
-* `spark.shuffle.memoryFraction` (預設值 ~20%) 會定義為隨機作業保留的記憶體數量。
-* `spark.storage.unrollFraction` 和 `spark.storage.safetyFraction` (總計為 ~30% 的總記憶體數量) - 這些值供 Spark 內部使用，且不應變更。
+|參數 |描述|
+|---|---|
+|spark.executor.memory|定義執行器可用的記憶體總量。|
+|火花.存儲.記憶體分數| (預設值 ~60%) 會定義可用來儲存永續性 RDD 的記憶體數量。|
+|火花.隨機播放.記憶體分數| (預設值 ~20%) 會定義為隨機作業保留的記憶體數量。|
+|火花.存儲.無滾動折射和火花.存儲.安全分數|(總計 +30% 的總記憶體) - 這些值由 Spark 內部使用,不應更改。|
 
 YARN 會控制每個 Spark 節點上所有容器所使用的記憶體最大總和。 下圖顯示每個節點中，YARN 設定物件與 Spark 物件之間的關聯性。
 
@@ -122,13 +125,15 @@ YARN 會控制每個 Spark 節點上所有容器所使用的記憶體最大總�
 
 根據預設，HDInsight 中的 Spark 叢集會包含許多元件。 這些元件都包含可視需要覆寫的預設設定值。
 
-* Spark Core：Spark Core、Spark SQL、Spark 串流 API、GraphX 和 Apache Spark MLlib。
-* Anaconda：Python 套件管理員。
-* [Apache Livy](https://livy.incubator.apache.org/) - Apache Spark REST API，用於將遠端作業提交到 HDInsight Spark 群集。
-* [Jupyter](https://jupyter.org/)和[Apache Zepelin](https://zeppelin.apache.org/)筆記本 - 互動式基於瀏覽器的 UI，用於與 Spark 群集進行交互。
-* ODBC 驅動程式：將 HDInsight 中的 Spark 叢集連線至商業智慧 (BI) 工具，例如 Microsoft Power BI 和 Tableau。
+|元件 |描述|
+|---|---|
+|火花芯|火花核心、火花 SQL、火花流 API、GraphX 和 Apache Spark MLlib。|
+|Anaconda|python 套件管理員。|
+|[Apache Livy](https://livy.incubator.apache.org/)|Apache Spark REST API,用於將遠端作業提交到 HDInsight Spark 群集。|
+|[朱彼特](https://jupyter.org/)和[阿帕奇·澤佩林](https://zeppelin.apache.org/)筆記本|互動式基於瀏覽器的 UI,用於與 Spark 群集進行互動。|
+|ODBC 驅動程式|將 HDInsight 中的 Spark 群集連接到商業智慧 (BI) 工具,如 Microsoft Power BI 和 Tableau。|
 
-對於在 Jupyter Notebook 中執行的應用程式，請使用 `%%configure` 命令從 Notebook 本身進行設定變更。 這些設定變更將會套用至從您 Notebook 執行個體執行的 Spark 作業。 您應先在開始使用應用程式時進行此類變更，再執行您的第一個程式碼單元。 變更的設定會在 Livy 工作階段建立時套用至其中。
+對於在 Jupyter Notebook 中執行的應用程式，請使用 `%%configure` 命令從 Notebook 本身進行設定變更。 這些設定變更將會套用至從您 Notebook 執行個體執行的 Spark 作業。 在運行第一個代碼單元之前,在應用程式開頭進行此類更改。 變更的設定會在 Livy 工作階段建立時套用至其中。
 
 > [!NOTE]  
 > 若要變更應用程式後續階段的設定，請使用 `-f` (force) 參數。 不過，應用程式中的所有進度都將遺失。
@@ -142,7 +147,7 @@ YARN 會控制每個 Spark 節點上所有容器所使用的記憶體最大總�
 
 ## <a name="conclusion"></a>結論
 
-為了確保 Spark 作業能夠以可預測且有效的方式執行，您必須監視及調整多項核心組態設定。 這些設定有助於您決定特定工作負載最適用的 Spark 叢集設定。  您也必須監視長時間執行和 (或) 耗用資源的 Spark 作業執行。  最常見的挑戰與記憶體壓力有關，源自於不正確的設定(特別是規模不當的執行程式)、長時間執行的作業，以及導致笛卡兒 (Cartesian) 作業的工作。
+監視核心配置設置,以確保 Spark 作業以可預測且性能優異的方式運行。 這些設定有助於您決定特定工作負載最適用的 Spark 叢集設定。  您還需要監視長時間運行的 Spark 作業執行的執行。  最常見的挑戰集中在不當配置(如執行器大小不正確)造成的記憶體壓力上。 此外,長時間運行的操作和任務,導致笛卡爾操作。
 
 ## <a name="next-steps"></a>後續步驟
 

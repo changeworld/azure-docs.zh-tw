@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668859"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415814"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Data Lake Storage Gen1 複製到 Gen2
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure 資料湖儲存 Gen2 是一組專用於大數據分析的功能,內置於[Azure Blob 儲存](../storage/blobs/storage-blobs-introduction.md)中。 您可以使用檔案系統和物件儲存範例與資料進行介面。
 
@@ -80,7 +82,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
    a. 選取 [Data Lake Storage Gen1] 作為帳戶名稱，並指定或驗證 [租用戶]****。
   
-   b. 選擇 **「測試連接**」以驗證設定。 然後選取 [完成]****。
+   b. 選擇 **「測試連接**」以驗證設定。 然後選取 [完成]  。
   
    c. 您將看到已建立新連接。 選取 [下一步]  。
    
@@ -105,7 +107,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
    a. 從**儲存帳戶名稱**「下拉清單中選擇支援資料存儲湖存儲Gen2的帳戶。
    
-   b. 選取 [完成]**** 以建立連線。 然後選擇 **「下一步**」。
+   b. 選取 [完成]**** 以建立連線。 然後選取 [下一步]  。
    
    ![指定 Azure Data Lake Storage Gen2 帳戶](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 

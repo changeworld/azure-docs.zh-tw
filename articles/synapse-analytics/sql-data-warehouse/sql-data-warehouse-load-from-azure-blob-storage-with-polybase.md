@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633281"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416135"
 ---
-# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>將 Contoso 零售資料載入到 Synapse SQL 資料倉儲
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>將 Contoso 零售資料載入到同步 SQL 
 
 在本教學中,您將學習使用 PolyBase 和 T-SQL 命令將 Contoso 零售資料的兩個表載入 Synapse SQL 資料主目錄中。
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>將資料載入新資料表
 
-要將資料從 Azure Blob 儲存載入資料主目錄表中,請使用[「創建表作為選擇」(執行-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md)載入利用您建立的強類型外部表。 要將數據載入到新表中,請使用每個表的一個 CTAS 語句。
+要將資料從 Azure Blob 儲存載入資料主目錄表中,請使用[「創建表作為選擇」(執行-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)載入利用您建立的強類型外部表。 要將數據載入到新表中,請使用每個表的一個 CTAS 語句。
 
 CTAS 建立新的資料表，並將選取陳述式的結果填入該資料表。 CTAS 定義新資料表，以使它擁有和選取陳述式之結果相同的資料行和資料類型。 如果您選取外部資料表上的所有資料行，則新資料表將會是外部資料表中資料行和資料類型的複本。
 

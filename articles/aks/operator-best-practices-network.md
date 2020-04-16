@@ -5,12 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668215"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392720"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路連線和安全性最佳做法
 
@@ -43,7 +43,7 @@ ms.locfileid: "80668215"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。
+如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。 您還可以使用分配給託管標識的系統來訪問許可權,而不是服務主體。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。
 
 當每個節點和 Pod 收到自己的 IP 位址時，請規劃 AKS 子網路的位址範圍。 子網路必須夠大，才能為您部署的每個節點、Pod 和網路資源提供 IP 位址。 每個 AKS 叢集必須放在自己的子網路中。 若要在 Azure 中允許對內部部署或對等互連網路進行連線，請不要使用與現有網路資源重疊的 IP 位址範圍。 Kubenet 和 Azure CNI 網路功能都有預設每個節點可執行的 Pod 數目限制。 要處理橫向擴展事件或群集升級,還需要其他 IP 位址,以便在分配的子網中使用。 如果您使用 Windows Server 容器(目前在 AKS 中預覽),此附加位址空間尤其重要,因為這些節點池需要升級才能應用最新的安全修補程式。 有關 Windows 伺服器節點的詳細資訊,請參閱[升級 AKS 中的節點池][nodepool-upgrade]。
 

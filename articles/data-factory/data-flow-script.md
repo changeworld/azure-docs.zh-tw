@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
-ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313920"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413435"
 ---
 # <a name="data-flow-script-dfs"></a>資料串流文稿 (DFS)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 數據流文本 (DFS) 是基礎元數據,類似於編碼語言,用於執行映射資料流中包含的轉換。 每個轉換都由一系列屬性表示,這些屬性提供了正確運行作業的必要資訊。 通過按一下瀏覽器 UI 頂部功能區上的「文稿」按鈕,該文本可以從 ADF 可見和編輯。
 

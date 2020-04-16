@@ -1,36 +1,37 @@
 ---
-title: Azure 事件網格 Azure 信號R 事件架構
-description: 描述為 Azure 事件網格為 Azure SignalR 事件提供的屬性
+title: Azure 唱歌器作為事件網格源
+description: 描述為 Azure 事件格格為 Azure SignalR 事件提供的屬性
 services: event-grid
-author: chenyl
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 06/11/2019
-ms.author: chenyl
-ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67789068"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393401"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>用於 SignalR 服務的 Azure 事件網格事件架構
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服務的 Azure 事件網格事件架構
 
-本文提供了 SignalR 服務事件的屬性和架構。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供了 SignalR 服務事件的屬性和架構。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它還為您提供了使用 Azure SignalR 作為事件來源的快速啟動和教學的清單。
 
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
-## <a name="available-event-types"></a>可用的事件類型
+### <a name="available-event-types"></a>可用的事件類型
 
-SignalR 服務發出以下事件種類：
+SignalR 服務發出以下事件類型:
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
 | 微軟.SignalR服務.用戶端連接連接 | 連接用戶端連接時引發。 |
-| 微軟.SignalR服務.用戶端連接斷開連接 | 用戶端連接斷開連接時引發。 |
+| 微軟.SignalR服務.用戶端連接斷線連線 | 用戶端連接斷開連接時引發。 |
 
-## <a name="example-event"></a>事件範例
+### <a name="example-event"></a>事件範例
 
-下面的示例顯示了用戶端連接事件的架構： 
+下面的範例顯示客戶端連線事件的架構: 
 
 ```json
 [{
@@ -50,7 +51,7 @@ SignalR 服務發出以下事件種類：
 }]
 ```
 
-用戶端連接斷開連接事件的架構類似： 
+用戶端連線斷線連線事件的架構類似: 
 
 ```json
 [{
@@ -71,7 +72,7 @@ SignalR 服務發出以下事件種類：
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -82,7 +83,7 @@ SignalR 服務發出以下事件種類：
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 (object) | 信號R服務事件資料。 |
+| data | 物件 (object) | 信號R服務事件數據。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
@@ -92,9 +93,15 @@ SignalR 服務發出以下事件種類：
 | -------- | ---- | ----------- |
 | timestamp | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | hubName | 字串 | 用戶端連接所屬的集線器。 |
-| connectionId | 字串 | 用戶端連接的唯一識別碼。 |
-| userId | 字串 | 聲明中定義的使用者識別碼。 |
+| connectionId | 字串 | 用戶端連接的唯一標識碼。 |
+| userId | 字串 | 聲明中定義的用戶識別碼。 |
 | errorMessage | 字串 | 導致連接斷開連接的錯誤。 |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title | 描述 |
+|---------|---------|
+| [使用事件網格回應 Azure SignalR 服務事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 將 Azure SignalR 服務與事件網格整合的概述。 |
+| [如何向事件網格傳送 Azure SignalR 服務事件](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何通過事件網格向應用程式發送 Azure SignalR 服務事件。 |
 
 ## <a name="next-steps"></a>後續步驟
 

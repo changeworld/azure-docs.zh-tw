@@ -1,27 +1,29 @@
 ---
-title: Azure Event Grid 的 Container Registry 事件結構描述
+title: Azure 容器註冊表作為事件網格源
 description: 描述為具有 Azure 事件網格的容器註冊表事件提供的屬性
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345459"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393353"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 的 Azure Event Grid 事件結構描述
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure 容器註冊表作為事件網格源
 
 本文提供 Container Registry 事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
-## <a name="available-event-types"></a>可用的事件類型
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
-Azure 容器註冊表發出以下事件種類：
+### <a name="available-event-types"></a>可用的事件類型
+
+Azure 容器註冊表發出以下事件類型:
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
@@ -30,7 +32,7 @@ Azure 容器註冊表發出以下事件種類：
 | 微軟.集裝箱註冊.圖表推送 | 在推送赫爾姆圖時引發。 |
 | 微軟.集裝箱註冊.圖表刪除 | 刪除 Helm 圖表時引發。 |
 
-## <a name="example-event"></a>事件範例
+### <a name="example-event"></a>事件範例
 
 下列範例顯示映像推送事件的結構描述： 
 
@@ -95,7 +97,7 @@ Azure 容器註冊表發出以下事件種類：
 }]
 ```
 
-圖表推送事件的架構與圖像推送事件的架構類似，但它不包括請求物件：
+圖表推送事件的架構與影像推送事件的架構類似,但它不包括請求物件:
 
 ```json
 [{
@@ -123,7 +125,7 @@ Azure 容器註冊表發出以下事件種類：
 }]
 ```
 
-圖表刪除事件的架構與已映射刪除事件的架構類似，但它不包括請求物件：
+圖表刪除事件的架構與已映射刪除事件的架構類似,但它不包括請求物件:
 
 ```json
 [{
@@ -151,7 +153,7 @@ Azure 容器註冊表發出以下事件種類：
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -198,6 +200,12 @@ request 物件具有下列屬性：
 | 主機 | 字串 | 登錄執行個體的外部可存取主機名稱，如內送要求上的 http 主機標頭所指定。 |
 | method | 字串 | 產生事件的要求方法。 |
 | userAgent | 字串 | 要求的使用者代理程式標頭。 |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title |描述  |
+|---------|---------|
+| [快速入門：傳送容器登錄事件](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 傳送 Container Registry 事件。 |
+
 
 ## <a name="next-steps"></a>後續步驟
 

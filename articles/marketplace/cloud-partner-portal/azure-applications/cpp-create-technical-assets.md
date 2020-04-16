@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285260"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393527"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>準備 Azure 應用程式技術資產
 
@@ -32,7 +32,7 @@ ms.locfileid: "80285260"
 
   - [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)
   - [GitHub Azure 快速入門範例](https://github.com/azure/azure-quickstart-templates) \(英文\)
-  - [發佈應用程式定義](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+  - [發佈應用程式定義](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [部署服務目錄應用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
   
@@ -44,7 +44,7 @@ ms.locfileid: "80285260"
   - 範例：
 
     - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure 電源外殼](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     - [受控應用程式解決方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ## <a name="fundamental-technical-knowledge"></a>基本技術知識
@@ -55,7 +55,7 @@ ms.locfileid: "80285260"
 
 - 對於 [Azure 服務](https://azure.microsoft.com/services/)的基本了解
 - 如何[設計和架構 Azure 應用程式](https://azure.microsoft.com/solutions/architecture/)
-- [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)[、Azure 存儲](https://azure.microsoft.com/services/?filter=storage)和 Azure[網路](https://azure.microsoft.com/services/?filter=networking)的工作知識
+- [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)[、Azure 儲存](https://azure.microsoft.com/services/?filter=storage)和 Azure[網路](https://azure.microsoft.com/services/?filter=networking)的工作知識
 - 具備 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) 的運用知識
 - [JSON](https://www.json.org/)的工作知識
 
@@ -63,12 +63,12 @@ ms.locfileid: "80285260"
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理 Azure 應用程式：
 
-- [Azure 電源外殼](https://docs.microsoft.com/powershell/azure/overview)
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 建議您將下列工具新增至開發環境：
 
-- [Azure 存儲資源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - 具有下列擴充功能的 [Visual Studio Code](https://code.visualstudio.com/) \(英文\)：
 
   - 延伸模組：[Azure Resource Manager 工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)

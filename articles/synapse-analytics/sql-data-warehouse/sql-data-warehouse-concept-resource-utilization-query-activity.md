@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011101"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416206"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure 突觸分析中的資源利用率與查詢活動
 
@@ -56,14 +56,14 @@ Azure Synapse 分析在 Azure 門戶中提供了豐富的監視體驗,以顯示�
 
 對於透過 T-SQL 監視 SQL 分析的程式設計體驗,該服務提供了一組動態管理視圖 (DMV)。 若要對您的工作負載進行主動式疑難排解和識別效能瓶頸時，這些檢視十分實用。
 
-要檢視 SQL Analytics 提供的 DMV 清單,請參考[文件](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)。
+要檢視適用於 Synapse SQL 的 DMV 清單,請參考[此文件](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)。 
 
-## <a name="metrics-and-diagnostics-logging"></a>計量和診斷記錄
+## <a name="metrics-and-diagnostics-logging"></a>計量和診斷記錄 
 
 指標和日誌都可以匯出到 Azure 監視器,特別是 Azure[監視器紀錄](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)元件,並且可以透過[日誌查詢](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)以程式設計方式存取 。 SQL 分析的日誌延遲約為 10-15 分鐘。 有關影響延遲的因素的更多詳細資訊,請訪問以下文檔。
 
 ## <a name="next-steps"></a>後續步驟
 
-下列使用說明指南會說明監視和管理資料倉儲時的常見案例及使用案例：
+以下操作指南描述了監視和管理資料主目錄時的常見方案和用例:
 
 - [使用 DMV 監視您的資料倉儲工作負載](sql-data-warehouse-manage-monitor.md)

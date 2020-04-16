@@ -11,16 +11,18 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
-ms.openlocfilehash: be2e389a0f103983a566a3f74d201e5589d84586
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e102b14d8471a19564f66edc27cc328c2a789c98
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926727"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414604"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>在 Azure Databricks 中執行 Python 活動來轉換資料
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory 管線](concepts-pipelines-activities.md)中的 Azure Databricks Python 活動會在 Azure Databricks 叢集中執行 Python 檔案。 本文以 [資料轉換活動](transform-data.md) 一文為基礎，其中概述了資料轉換和支援的轉換活動。Azure Databricks 是用於執行 Apache Spark 的受控平台。
+
+[Data Factory 管線](concepts-pipelines-activities.md)中的 Azure Databricks Python 活動會在 Azure Databricks 叢集中執行 Python 檔案。 本文以 [資料轉換活動](transform-data.md) 一文為基礎,其中概述了數據轉換和支援的轉換活動。Azure Databricks 是用於執行 Apache Spark 的受控平台。
 
 如需此功能的簡介與示範，請觀看下列 11 分鐘長的影片：
 
@@ -66,7 +68,7 @@ ms.locfileid: "74926727"
 |NAME|管線中的活動名稱。|是|
 |description|說明活動用途的文字。|否|
 |type|若是 Databricks Python 活動，則活動類型是 DatabricksSparkPython。|是|
-|linkedServiceName|Python 活動執行所在之 Databricks 連結服務的名稱。 要瞭解此連結服務，請參閱 [計算連結服務](compute-linked-services.md) 一文。|是|
+|linkedServiceName|Python 活動執行所在之 Databricks 連結服務的名稱。 要瞭解此連結服務,請參閱 [計算連結服務](compute-linked-services.md) 一文。|是|
 |pythonFile|要執行之 Python 檔案的 URI。 只支援 DBFS 路徑。|是|
 |參數|將傳遞至 Python 檔案的命令列參數。 這是字串陣列。|否|
 |程式庫|要在負責執行工作的叢集上，即將安裝的程式庫清單。 可以是 < 字串, 物件 > 陣列|否|
@@ -115,7 +117,7 @@ ms.locfileid: "74926727"
 
 若要取得利用 UI 新增之程式庫的 dbfs 路徑，您可以使用 [Databricks CLI (安裝)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) \(英文\)。 
 
-使用 UI 時，Jar 程式庫通常會儲存在 dbfs: FileStore/jar。 您可以通過 CLI 列出所有：*資料磚塊 fs ls dbfs：/FileStore/jars* 
+使用 UI 時，Jar 程式庫通常會儲存在 dbfs: FileStore/jar。 您可以透過 CLI 列出所有:*資料磚塊 fs ls dbfs:/FileStore/jars* 
 
 
 

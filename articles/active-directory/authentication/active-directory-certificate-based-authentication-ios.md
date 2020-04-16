@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a042897ecbe35935c1832a53f523eb0597ebafc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654252"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407274"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上的 Azure Active Directory 憑證式驗證
 
@@ -27,7 +27,7 @@ ms.locfileid: "80654252"
 
 設定這項功能之後，就不需要在行動裝置上的特定郵件和 Microsoft Office 應用程式中，輸入使用者名稱和密碼的組合。
 
-本主題針對 Office 365 企業版、商務版、教育版、美國政府機關、中國和德國方案的租用戶使用者，提供在 iOS (Android) 裝置上設定 CBA 的需求和支援案例。
+本主題為您提供了在 iOS 設備上為 Office 365 企業、商業、教育、美國政府、中國和德國計劃中租戶使用者配置 CBA 的要求和支援的方案。
 
 在 Office 365 US Government Defense 和 Federal 方案中，這項功能處於預覽版。
 

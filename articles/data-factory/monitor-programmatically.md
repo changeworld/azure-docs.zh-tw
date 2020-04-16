@@ -10,14 +10,17 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 43a31d588ff6616d7200d9773883ce5da570b100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927365"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398795"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以程式設計方式監視 Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文說明如何使用不同的軟體開發套件 (SDK) 來監視資料處理站中的管線。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

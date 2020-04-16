@@ -2,13 +2,13 @@
 title: 可靠收集指南
 description: 在 Azure 服務結構應用程式中使用服務結構可靠集合的指南和建議。
 ms.topic: conceptual
-ms.date: 12/10/2017
-ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398533"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collection 的指導方針與建議
 本節提供使用 Reliable State Manager 和 Reliable Collection 的指導方針。 目標是要協助使用者避開常見的陷阱。
@@ -20,7 +20,7 @@ ms.locfileid: "75645475"
 * 請不要針對逾時使用 `TimeSpan.MaxValue` 。 逾時應該用來偵測死結。
 * 在認可、中止或處置交易之後，請勿使用該交易。
 * 請不要在其所建立的交易範圍之外使用列舉。
-* 請不要在另一個交易的 `using` 陳述式內建立交易，因為它會造成死結。
+* 不要在另一個事務的`using`語句中創建事務,因為它可能會導致死鎖。
 * 不要在同一事務中使用和使用`IReliableStateManager.GetOrAddAsync`可靠狀態創建可靠的狀態。 這將導致無效操作異常。
 * 務必確保 `IComparable<TKey>` 實作是正確的。 系統會對 `IComparable<TKey>` 採取相依性以合併檢查點與資料列。
 * 請不要在讀取需更新的項目時使用更新鎖定，以避免發生特定類別的死結。
@@ -41,7 +41,19 @@ ms.locfileid: "75645475"
   從主要複本讀取一定最穩定︰進度一定不會有誤。
 * 應用程式保存在可靠集合中的資料會有何種安全性/隱私權將由您決定，且會受到儲存體管理的保護；也就是說， 作業系統磁碟加密可用來保護待用資料。  
 
-### <a name="next-steps"></a>後續步驟
+## <a name="volatile-reliable-collections"></a>易失性可靠集合
+在決定使用易失性可靠集合時,請考慮以下事項:
+
+* ```ReliableDictionary```確實有不穩定的支援
+* ```ReliableQueue```確實有不穩定的支援
+* ```ReliableConcurrentQueue```沒有不穩定的支援
+* 持久化服務不能變得不穩定。 變更旗```HasPersistedState```標```false```需要 從頭開始重新建立整個服務
+* 無法持久化可變服務。 變更旗```HasPersistedState```標```true```需要 從頭開始重新建立整個服務
+* ```HasPersistedState```是服務級別配置。這意味著**所有**集合都將持久或不穩定。 不能混合易失性和持久化集合
+* 變數的仲裁遺失導致完全資料遺失
+* 備份和還原不適用於易失性服務
+
+## <a name="next-steps"></a>後續步驟
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
 * [事務和鎖](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理資料
@@ -50,5 +62,5 @@ ms.locfileid: "75645475"
   * [序列化與升級](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
 * 其他
-  * [可靠的服務快速啟動](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
   * [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -2,13 +2,13 @@
 title: 進階應用程式升級主題
 description: 本文章涵蓋升級 Service Fabric 應用程式相關的一些進階主題。
 ms.topic: conceptual
-ms.date: 1/28/2020
-ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422815"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414491"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>服務結構應用程式升級:進階主題
 
@@ -18,7 +18,7 @@ ms.locfileid: "80422815"
 
 同樣地，服務類型也可以從應用程式移除，作為升級的一部分。 不過，即將移除服務類型的所有服務執行個體都必須移除，才能繼續執行升級 (請參閱 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps))。
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>避免在無狀態服務計劃停機期間連接中斷(預覽)
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在無狀態服務計劃停機期間連接中斷
 
 對於計劃無狀態的實例停機時間(如應用程式/群集升級或節點停用),由於實例關閉后關閉公開的終結點,連接可能會被刪除,從而導致強制連接關閉。
 

@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271109"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405380"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -28,7 +28,7 @@ ms.locfileid: "81271109"
 
 [多重步驟 Web 測試](../../azure-monitor/app/availability-multistep.md)會產生額外費用。 多重步驟 Web 測試係指執行一系列動作的 Web 測試。 單一頁面的「Ping 測試」** 不另外收費。 針對來自 Ping 測試和多重步驟測試的遙測，收費方式與來自您應用程式的其他遙測一樣。
 
-[啟用自訂指標維度警報](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的應用程式見解選項也會產生額外的成本,因為這可能導致創建其他預聚合指標。 [瞭解更多]有關應用程式見解中的基於日誌和預聚合指標以及 Azure 監視器自訂指標的[定價](https://azure.microsoft.com/pricing/details/monitor/)。
+[啟用自訂指標維度警報](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的應用程式見解選項也會產生額外的成本,因為這可能導致創建其他預聚合指標。 [詳細瞭解](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)應用程式見解中的基於紀錄和預聚合指標以及 Azure 監視器自訂指標的[定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算管理應用程式的成本
 
@@ -218,7 +218,9 @@ Azure 在[Azure 成本管理和計費](https://docs.microsoft.com/azure/cost-man
 
 ![調整每日遙測資料量上限](./media/pricing/pricing-005.png)
 
-也可以`retentionInDays`[使用 參數以程式設計方式設置](powershell.md#set-the-data-retention)保留。 降低保留率後,刪除最舊數據之前有幾天寬限期。 如果將數據保留設置為 30 天,則`immediatePurgeDataOn30Days`可以使用 參數立即觸發舊數據清除,這對於與合規性相關的方案可能很有用。 此清除功能僅通過 Azure 資源管理器公開,應格外小心使用。 可以使用 Azure 資源管理器配置資料卷上限的每日重置`dailyQuotaResetTime`時間以 設置參數。
+降低保留率後,刪除最舊數據之前有幾天寬限期。
+
+也可以`retentionInDays`[使用 參數以程式設計方式設置](powershell.md#set-the-data-retention)保留。 如果將數據保留設置為 30 天,則`immediatePurgeDataOn30Days`可以使用 參數立即觸發舊數據清除,這對於與合規性相關的方案可能很有用。 此清除功能僅通過 Azure 資源管理器公開,應格外小心使用。 可以使用 Azure 資源管理器配置資料卷上限的每日重置`dailyQuotaResetTime`時間以 設置參數。
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用應用程式見解的資料傳輸費用
 

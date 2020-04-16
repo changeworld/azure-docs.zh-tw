@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d9578653ff8074fee8336df447caf119f79febe0
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745264"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416138"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>在 Synapse SQL 池中使用事務
 
@@ -45,7 +44,7 @@ SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提�
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -66,7 +65,7 @@ SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提�
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](sql-data-warehouse-overview-what-is.md) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |

@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421044"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414132"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排除複製活動效能的故障
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何在 Azure 數據工廠中解決複製活動性能問題。 
 
@@ -54,7 +56,7 @@ ms.locfileid: "80421044"
 | --------------- | ------------------------------------------------------------ |
 | 佇列           | 在整合式執行時實際啟動複製活動之前已過的時間。 |
 | 預拷貝腳本 | 從 IR 開始開始複製活動到在接收器資料儲存中完成執行預複製文本的複製活動之間的運行時間。 在為資料庫接收器配置預複製腳本時應用,例如將數據寫入 Azure SQL 資料庫時,在複製新數據之前請清理。 |
-| 傳輸        | 上一步驟結束和紅外從源傳輸到接收器之間的運行時間。 "傳輸"下的子步驟並行運行。<br><br>- **第一個字節的時間:** 從上一步驟的結束到 IR 從來源資料儲存接收第一個字節的時間之間的時間。 應用於非基於檔的源。<br>- **清單來源:** 枚舉源文件或數據分區所花費的時間量。 當您為資料庫源配置分區選項時,例如從 Oracle/SAP HANA/Teradata/Netezza/等資料庫複製數據時,則適用後者。<br/>-**從來源讀取:** 從源數據存儲檢索數據所花費的時間量。<br/>- **寫入接收者:** 用於將數據寫入接收體資料儲存所花費的時間。 |
+| 傳送        | 上一步驟結束和紅外從源傳輸到接收器之間的運行時間。 "傳輸"下的子步驟並行運行。<br><br>- **第一個字節的時間:** 從上一步驟的結束到 IR 從來源資料儲存接收第一個字節的時間之間的時間。 應用於非基於檔的源。<br>- **清單來源:** 枚舉源文件或數據分區所花費的時間量。 當您為資料庫源配置分區選項時,例如從 Oracle/SAP HANA/Teradata/Netezza/等資料庫複製數據時,則適用後者。<br/>-**從來源讀取:** 從源數據存儲檢索數據所花費的時間量。<br/>- **寫入接收者:** 用於將數據寫入接收體資料儲存所花費的時間。 |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>在 Azure IR 上排除複製活動故障
 

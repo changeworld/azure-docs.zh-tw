@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414228"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>在 Azure 資料工廠複製活動
 
 > [!div class="op_single_selector" title1="選擇您正在使用的資料工廠版本:"]
 > * [版本 1](v1/data-factory-data-movement-activities.md)
 > * [目前版本](copy-activity-overview.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 Azure 資料工廠中,可以使用"複製"活動在位於本地和雲端資料儲存之間複製數據。 複製數據后,可以使用其他活動進一步轉換和分析數據。 您還可以使用 Copy 活動發布轉換和分析結果,用於商業智慧 (BI) 和應用程式使用。
 

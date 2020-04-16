@@ -4,14 +4,14 @@ description: 了解在 Azure 中開發函式所需的 Azure Functions 概念與�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276617"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405346"
 ---
-# <a name="azure-functions-developers-guide"></a>Azure Functions 開發人員指南
+# <a name="azure-functions-developer-guide"></a>Azure Functions 開發人員指南
 在 Azure Functions 中，不論您使用何種語言或繫結，特定函式都會共用一些核心技術概念和元件。 閱讀指定語言或繫結特有的詳細資料之前，請務必詳閱這份適用於所有語言或繫結的概觀。
 
 本文假設您已閱讀過 [Azure Functions 開發人員概觀](functions-overview.md)。
@@ -36,7 +36,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 }
 ```
 
-有關詳細資訊，請參閱[Azure 函數觸發器和綁定概念](functions-triggers-bindings.md)。
+有關詳細資訊,請參閱[Azure 函數觸發器和綁定概念](functions-triggers-bindings.md)。
 
 `bindings` 屬性可讓您設定觸發程序和繫結。 每個繫結都共用一些共用設定，以及特定類別的繫結特有的一些設定。 每個繫結都需要下列設定︰
 
@@ -47,7 +47,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 | `name` |字串 |用於函式中所繫結資料的名稱。 在 C# 中，這是引數名稱；在 JavaScript 中，這是索引鍵/值清單中的索引鍵。 |
 
 ## <a name="function-app"></a>函式應用程式
-函數應用程式在 Azure 中提供您的函式可在其中執行的執行內容。 因此，它是您的職能的部署和管理單位。 函式應用程式是由一或多個個別函式所組成，這些函式可一起管理、部署與調整。 函數應用中的所有函數共用相同的定價計畫、部署方法和執行階段版本。 請將函式應用程式視為用來組織及集體管理函式的方式。 要瞭解更多資訊，請參閱[如何管理函數應用](functions-how-to-use-azure-function-app-settings.md)。 
+函數應用程式在 Azure 中提供您的函式可在其中執行的執行內容。 因此,它是您的職能的部署和管理單位。 函式應用程式是由一或多個個別函式所組成，這些函式可一起管理、部署與調整。 函數應用中的所有函數共用相同的定價計劃、部署方法和運行時版本。 請將函式應用程式視為用來組織及集體管理函式的方式。 要瞭解更多資訊,請參閱[如何管理函數應用](functions-how-to-use-azure-function-app-settings.md)。 
 
 > [!NOTE]
 > 函式應用程式中的所有函式都必須以相同的語言撰寫。 在[舊版](functions-versions.md)的 Azure Functions 執行階段中，這不是必要的。
@@ -73,7 +73,7 @@ Azure 入口網站內建的函式編輯器可讓您更新您直接內嵌的程�
 
 ## <a name="functions-runtime-versioning"></a>Functions 執行階段版本設定
 
-您可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定來設定 Functions 執行階段的版本。 例如，值"+3"表示函數應用將使用 3.x 作為其主要版本。 函數應用程式會在發行時升級為每個新的次要版本。 如需詳細資訊 (包括如何檢視函式應用程式的完全版本)，請參閱[如何設定 Azure Functions 的執行階段目標版本](set-runtime-version.md)。
+您可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定來設定 Functions 執行階段的版本。 例如,值"+3"表示函數應用將使用 3.x 作為其主要版本。 函數應用程式會在發行時升級為每個新的次要版本。 如需詳細資訊 (包括如何檢視函式應用程式的完全版本)，請參閱[如何設定 Azure Functions 的執行階段目標版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>儲存機制
 Azure Functions 的程式碼是開放原始碼，儲存於 GitHub 儲存機制中︰
@@ -98,7 +98,7 @@ Azure Functions 的程式碼是開放原始碼，儲存於 GitHub 儲存機制�
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱下列資源：
 
-* [Azure 函數觸發器和綁定](functions-triggers-bindings.md)
+* [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)
 * [撰寫 Azure Functions 並在本機進行測試](./functions-develop-local.md)
 * [Azure 函數的最佳做法](functions-best-practices.md)
 * [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)

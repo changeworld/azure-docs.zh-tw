@@ -1,18 +1,18 @@
 ---
-title: 整合一個元件與元件
+title: Unity 遊戲物件和元件
 description: 描述用於遠端渲染實體和元件的 Unity 特定方法。
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 872f0e60943a674e5febf269dcb5b09fd08d77c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681151"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409863"
 ---
-# <a name="interact-with-unity-game-objects-and-components"></a>與 Unity 遊戲物件與元件互動
+# <a name="interact-with-unity-game-objects-and-components"></a>與 Unity 遊戲物件和元件互動
 
 Azure 遠端呈現 (ARR) 針對大量物件進行了優化(請參閱[限制](../../reference/limits.md))。 雖然可以在主機上管理大型和複雜的層次結構,但在低功率設備上在 Unity 中複製它們是不可行的。
 
@@ -121,5 +121,5 @@ if (cutplane != null)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [為統一設定遠端的成像](unity-setup.md)
-* [教學:在 Unity 中使用遠端實體](../../tutorials/unity/working-with-remote-entities.md)
+* [設定 Unity 的遠端轉譯](unity-setup.md)
+* [教學課程：在 Unity 中使用遠端實體](../../tutorials/unity/working-with-remote-entities.md)

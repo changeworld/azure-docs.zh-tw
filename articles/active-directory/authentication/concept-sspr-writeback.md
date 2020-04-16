@@ -1,67 +1,43 @@
 ---
-title: 與 Azure AD SSPR 的本地密碼寫回集成 - Azure 活動目錄
-description: 將雲密碼寫回本地 AD 基礎結構
+title: 使用自助服務密碼重置的本地密碼寫回 - Azure 活動目錄
+description: 瞭解如何將 Azure 活動目錄中的密碼變更或重置事件寫回本地目錄環境
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 04/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fe58ae95c8d9c6b93c7e92e093541af009781ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787c15c11c995c7eb30662131302658175c7f877
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454426"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393013"
 ---
-# <a name="what-is-password-writeback"></a>什麼是密碼回寫？
+# <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助服務密碼重置回寫在 Azure 活動目錄中如何工作?
 
-能擁有雲端式密碼重設公用程式很棒，但大部分公司仍有供其使用者使用的內部部署目錄。 Microsoft 支援要如何讓傳統的內部部署 Active Directory (AD) 與雲端中的密碼變更保持同步？ 密碼回寫是透過 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 所實現的功能，可將雲端中的密碼變更即時回寫至現有內部部署目錄。
+Azure 活動目錄 (Azure AD) 自助服務密碼重置 (SSPR) 允許使用者在雲端中重置其密碼,但大多數公司也有其使用者所在的本地活動目錄域服務 (AD DS) 環境。 密碼回寫是透過 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 所實現的功能，可將雲端中的密碼變更即時回寫至現有內部部署目錄。 在這裡設定中,當使用者在雲端中使用 SSPR 變更或重置其密碼時,更新的密碼也會寫回本地 AD DS 環境
 
-使用下列項目的環境可支援密碼回寫：
+使用以下混合識別模型的環境中支援密碼寫回:
 
+* [密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [傳遞驗證](../hybrid/how-to-connect-pta.md)
 * [活動目錄聯合服務](../hybrid/how-to-connect-fed-management.md)
-* [密碼雜湊同步](../hybrid/how-to-connect-password-hash-synchronization.md)
-* [直通身份驗證](../hybrid/how-to-connect-pta.md)
 
-> [!WARNING]
-> 在 [Azure 存取控制服務 (ACS) 於 2018 年 11 月 7 日淘汰](../azuread-dev/active-directory-acs-migration.md)後，使用 Azure AD Connect 1.0.8641.0 版和更舊版本的使用者將無法進行密碼回寫。 屆時，Azure AD Connect 1.0.8641.0 版和更舊版本將不再允許進行密碼回寫，因為它們倚賴 ACS 來進行該功能。
->
-> 若要避免服務中斷，請從舊版 Azure AD Connect 升級至新版，請參閱 [Azure AD Connect：從舊版升級到最新版本](../hybrid/how-to-upgrade-previous-version.md)
->
+密碼回寫提供下列功能：
 
-密碼回寫提供：
-
-* **強制執行內部部署 Active Directory 密碼原則**：當使用者重設其密碼時，系統會進行檢查以確保此動作符合內部部署 Active Directory 原則，然後才將此動作認可至該目錄。 這項檢閱包括檢查歷程記錄、複雜度、有效期、密碼篩選，以及您在本機 Active Directory 中已定義的任何其他密碼限制。
-* **零延遲的意見反應**：密碼回寫是一項同步作業。 如果使用者的密碼不符合原則，或因為任何原因而無法重設或變更，他們會立即收到通知。
-* **支援從存取面板和 Office 365 變更密碼**：當已同盟的或已同步處理密碼雜湊的使用者變更其已過期或尚未過期的密碼時，系統會將這些密碼回寫到本機 Active Directory 環境。
-* **支援在管理員從 Azure 入口網站重設密碼時將密碼回寫**：每當管理員在 [Azure 入口網站](https://portal.azure.com)中重設使用者密碼時，如果該使用者為已同盟的或已同步處理密碼雜湊的使用者，系統就會將密碼回寫至內部部署環境。 Office 管理入口網站目前不支援此功能。
-* **不需要任何輸入防火牆規則**：密碼回寫會使用「Azure 服務匯流排」轉送作為基礎通訊通道。 所有通訊都會透過連接埠 443 來輸出。
+* **實施本地活動目錄域服務 (AD DS) 密碼原則**:當使用者重置其密碼時,將檢查它以確保在將其提交到該目錄之前符合本地 AD DS 策略。 此審核包括檢查歷史記錄、複雜性、年齡、密碼篩選器以及您在 ADDS 中定義的任何其他密碼限制。
+* **零延遲的意見反應**：密碼回寫是一項同步作業。 如果使用者的密碼不符合策略,或者由於任何原因無法重置或更改,則會立即通知使用者。
+* **支援從存取面板和Office 365更改密碼**:當聯合或密碼哈希同步使用者來更改其過期或未過期的密碼時,這些密碼將寫回AD DS。
+* **支援管理員從 Azure 門戶重置密碼時返回密碼**:當管理員在[Azure 門戶](https://portal.azure.com)中重置使用者的密碼時,如果該使用者是聯合的或密碼哈希同步的,則密碼將寫回本地。 Office 管理入口網站目前不支援此功能。
+* **不需要任何入站防火牆規則**:密碼寫回使用 Azure 服務總線中繼作為基礎通信通道。 所有通訊都會透過連接埠 443 來輸出。
 
 > [!NOTE]
-> 內部部署 AD 中的受保護群組所包含的系統管理員帳戶無法用於密碼回寫。 管理員可以在雲中更改其密碼，但不能使用密碼重設來重置忘記的密碼。 如需受保護群組的詳細資訊，請參閱 [Active Directory 中的受保護帳戶和群組](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
-
-## <a name="licensing-requirements-for-password-writeback"></a>密碼回寫的授權需求
-
-**自助式密碼重設/變更/使用內部部署回寫來解除鎖定是 Azure AD 的進階功能**。 如需授權的詳細資訊，請參閱 [Azure Active Directory 價格網站](https://azure.microsoft.com/pricing/details/active-directory/)。
-
-若要使用密碼回寫，您的租用戶中必須已指派下列其中一項授權：
-
-* Azure AD Premium P1
-* Azure AD Premium P2
-* Enterprise Mobility + Security E3 或 A3
-* Enterprise Mobility + Security E5 或 A5
-* Microsoft 365 E3 或 A3
-* Microsoft 365 E5 或 A5
-* Microsoft 365 F1
-* Microsoft 365 商務版
-
-> [!WARNING]
-> 獨立的 Office 365 授權方案不支援「自助式密碼重設/變更/使用內部部署回寫來解鎖」**，而且需要您具備上述其中一個方案，這項功能才能運作。
+> 內部部署 AD 中的受保護群組所包含的系統管理員帳戶無法用於密碼回寫。 管理員可以在雲中更改其密碼,但不能使用密碼重置來重置忘記的密碼。 如需受保護群組的詳細資訊，請參閱 [Active Directory 中的受保護帳戶和群組](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
 
 ## <a name="how-password-writeback-works"></a>密碼回寫的運作方式
 
@@ -75,38 +51,39 @@ ms.locfileid: "79454426"
 1. 當使用者選取 [送出]**** 時，系統會以在回寫設定程序期間所建立的對稱金鑰加密純文字密碼。
 1. 經過加密的密碼會放入承載中，透過 HTTPS 通道傳送到租用戶特定的服務匯流排轉送 (會在回寫設定程序期間為您設定此轉送)。 此轉送受到只有您的內部部署安裝才會知道的隨機產生密碼所保護。
 1. 在訊息抵達服務匯流排之後，密碼重設端點會自動甦醒，並看到有擱置中的重設要求。
-1. 服務會接著使用雲端錨點屬性來尋找使用者。 若要讓此查閱成功︰
+1. 服務會接著使用雲端錨點屬性來尋找使用者。 要成功此尋找,必須滿足以下條件:
 
    * 使用者物件必須存在於 Active Directory 連接器空間中。
    * 使用者物件必須連結至對應的 Metaverse (MV) 物件。
    * 使用者物件必須連結至對應的 Azure Active Directory 連接器物件。
    * 從 Active Directory 連接器物件到 MV 的連結上必須有同步處理規則 `Microsoft.InfromADUserAccountEnabled.xxx`。
-   
+
    從雲端傳來呼叫時，同步處理引擎會使用 **cloudAnchor** 屬性來查閱 Azure Active Directory 連接器空間物件。 接著，它會依循連結回到 MV 物件，然後再依循連結回到 Active Directory 物件。 因為相同使用者可能會有多個 Active Directory 物件 (多樹系)，所以同步處理引擎需倚賴 `Microsoft.InfromADUserAccountEnabled.xxx` 連結來選出正確的物件。
 
 1. 找到使用者帳戶之後，系統會嘗試在適當的 Active Directory 樹系中直接重設密碼。
 1. 如果密碼設定作業成功，系統會告訴使用者其密碼已變更。
-   > [!NOTE]
-   > 如果將使用者的密碼雜湊同步處理至 Azure AD 時使用的是密碼雜湊同步處理，內部部署密碼原則就有可能比雲端密碼原則弱。 在此情況下，系統會強制執行內部部署原則。 此原則可確保不論您是使用密碼雜湊同步處理還是同盟來提供單一登入，都會在雲端強制執行內部部署原則。
 
-1. 如果密碼設定作業失敗，系統會顯示錯誤以提示使用者再試一次。 作業可能會因下列原因而失敗：
+   > [!NOTE]
+   > 如果使用者的密碼哈希通過使用密碼哈希同步同步到 Azure AD,則本地密碼策略可能比雲端密碼策略弱。 在此情況下，系統會強制執行內部部署原則。 此原則可確保不論您是使用密碼雜湊同步處理還是同盟來提供單一登入，都會在雲端強制執行內部部署原則。
+
+1. 如果密碼設定作業失敗，系統會顯示錯誤以提示使用者再試一次。 操作可能會失敗,原因如下:
     * 服務已停止運作。
-    * 他們所選的密碼不符合組織原則。
+    * 他們選擇的密碼不符合組織的策略。
     * 無法在本機 Active Directory 中找到使用者。
 
-      錯誤訊息會對使用者提供指引，讓他們可以嘗試自行解決而不需要系統管理員介入。
+   錯誤訊息會對使用者提供指引，讓他們可以嘗試自行解決而不需要系統管理員介入。
 
 ## <a name="password-writeback-security"></a>密碼回寫安全性
 
-密碼回寫是一項極為安全的服務。 為了確保資訊會受到保護，系統會啟用四層式安全性模型，如下所述：
+密碼回寫是一項極為安全的服務。 為確保資訊受到保護,啟用了四層安全模型,如下所示:
 
 * **租用戶特定的服務匯流排轉送**
    * 當您設定服務時，便會設定一個以隨機產生強式密碼保護的租用戶特定服務匯流排轉送，且 Microsoft 永遠無法得知該密碼。
 * **受到鎖定的密碼編譯強式密碼加密金鑰**
-   * 建立服務匯流排轉送之後，便會建立強式對稱金鑰，以在透過線路傳送密碼時予以加密。 此金鑰只會存在於您公司的雲端密碼存放區中，並受到嚴密鎖定和稽核，就像目錄中的任何其他密碼一樣。
+   * 創建服務總線中繼後,將創建一個強對稱密鑰,用於在密碼通過導線時加密密碼。 此金鑰只會存在於您公司的雲端密碼存放區中，並受到嚴密鎖定和稽核，就像目錄中的任何其他密碼一樣。
 * **業界標準傳輸層安全性 (TLS)**
    1. 當雲端上發生密碼重設或變更作業時，系統便會以公開金鑰將純文字密碼加密。
-   1. 加密的密碼被放入 HTTPS 消息中，該消息通過使用 Microsoft TLS/SSL 憑證發送到您的服務匯流排中繼，通過加密通道發送。
+   1. 加密的密碼被放入通過加密通道發送到服務總線中繼的 HTTPS 消息中。
    1. 在訊息抵達服務匯流排之後，您的內部部署代理程式會喚醒服務匯流排，並使用先前產生的強式密碼向其進行驗證。
    1. 內部部署代理程式會拾取加密訊息，然後使用私密金鑰進行解密。
    1. 內部部署代理程式會嘗試透過 AD DS SetPassword API 來設定密碼。 這個步驟可讓您在雲端強制執行 Active Directory 內部部署密碼原則 (例如複雜度、有效期、歷程記錄、篩選等)。
@@ -117,10 +94,10 @@ ms.locfileid: "79454426"
 
 在使用者提交密碼重設之後，重設要求會先經過數個加密步驟，然後才抵達您的內部部署環境。 這些加密步驟可確保提供最高的服務可靠性和安全性。 這些步驟的說明如下：
 
-* **步驟 1：採用 2048 位元 RSA 金鑰的密碼加密**在使用者提交要寫回到內部部署環境的密碼之後，所提交的密碼本身會以 2048 位元 RSA 金鑰加密。
-* **步驟 2：採用 AES-GCM 的套件層級加密**：整個套件 (密碼 + 必要的中繼資料) 會以 AES-GCM 加密。 這個加密可防止任何可直接存取基礎 ServiceBus 通道的人員檢視或竄改內容。
-* **步驟 3：所有通訊都會透過 TLS/SSL 進行**：與 ServiceBus 的所有通訊都會在 SSL/TLS 通道中進行。 這個加密可保護內容，免於遭到未經授權的第三方存取。
-* **每 6 個月自動變換金鑰**：所有金鑰會每 6 個月變換一次，或在每一次於 Azure AD Connect 上停用再重新啟用密碼回寫時進行變換，以確保最高的服務安全性。
+1. **密碼加密與2048位RSA密鑰**:使用者提交密碼以寫回本地後,提交的密碼本身使用2048位RSA密鑰加密。
+1. **使用 AES-GCM 進行包級加密:使用 AES-GCM**加密整個包、密碼以及所需的中繼資料。 這個加密可防止任何可直接存取基礎 ServiceBus 通道的人員檢視或竄改內容。
+1. **所有通訊都透過 TLS/SSL 進行**:與 ServiceBus 的所有通訊都發生在 SSL/TLS 通道中。 這個加密可保護內容，免於遭到未經授權的第三方存取。
+1. **每 6 個月自動變換金鑰**：所有金鑰會每 6 個月變換一次，或在每一次於 Azure AD Connect 上停用再重新啟用密碼回寫時進行變換，以確保最高的服務安全性。
 
 ### <a name="password-writeback-bandwidth-usage"></a>密碼回寫頻寬使用量
 
@@ -144,28 +121,32 @@ ms.locfileid: "79454426"
 下列所有情況都會回寫密碼︰
 
 * **支援的使用者作業**
-   * 任何使用者自助式自願變更密碼作業
-   * 任何使用者自助式強制變更密碼作業 (例如密碼到期)
-   * 任何源自[密碼重設入口網站](https://passwordreset.microsoftonline.com)的使用者自助式密碼重設
+   * 任何最終使用者自助服務自願更改密碼操作。
+   * 任何最終使用者自助服務強制更改密碼操作,例如密碼過期。
+   * 任何來自[密碼重置門戶](https://passwordreset.microsoftonline.com)的最終使用者自助服務密碼重置。
+
 * **支援的系統管理員作業**
-   * 任何系統管理員自助式自願變更密碼作業
-   * 任何系統管理員自助式強制變更密碼作業 (例如密碼到期)
-   * 任何源自[密碼重設入口網站](https://passwordreset.microsoftonline.com)的系統管理員自助式密碼重設
-   * 從[Azure 門戶](https://portal.azure.com)重置任何管理員啟動的最終使用者密碼
+   * 任何管理員自助服務自願更改密碼操作。
+   * 任何管理員自助服務強制更改密碼操作,例如密碼過期。
+   * 任何源自[密碼重置門戶](https://passwordreset.microsoftonline.com)的管理員自助服務密碼重置。
+   * 任何管理員啟動的最終使用者密碼重置從 Azure[門戶](https://portal.azure.com)。
 
 ## <a name="unsupported-writeback-operations"></a>不支援的回寫作業
 
-密碼*不會在*以下任何情況下寫回：
+密碼不會在以下任何情況下寫回:
 
 * **不支援的使用者作業**
-   * 使用 PowerShell 版本 1、版本 2 或 Microsoft 圖形 API 重置自己的密碼的任何最終使用者
+   * 任何最終使用者使用 PowerShell 版本 1、版本 2 或 Microsoft 圖形 API 重置自己的密碼。
 * **不支援的管理員操作**
-   * 任何管理員啟動的最終使用者密碼重設從 PowerShell 版本 1、版本 2 或 Microsoft 圖形 API
-   * 任何管理員啟動的最終使用者密碼重設從 Microsoft [365 管理中心](https://admin.microsoft.com)
+   * 任何管理員啟動的最終使用者密碼重置從 PowerShell 版本 1、版本 2 或 Microsoft 圖形 API。
+   * 任何管理員啟動的最終使用者密碼重置從[微軟365管理中心](https://admin.microsoft.com)。
 
 > [!WARNING]
-> 在本地活動目錄使用者和電腦或活動目錄管理中心等本地活動目錄管理工具中使用"使用者必須在下次登錄時更改密碼"核取方塊，作為 Azure AD 連接的預覽功能支援使用。 有關詳細資訊，請參閱文章，[實現密碼雜湊同步與 Azure AD 連接同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
+> 在本地 AD DS 管理工具(如活動目錄使用者和電腦)或活動目錄管理中心作為 Azure AD 連接的預覽功能支援使用複選框「使用者必須在下次登錄時更改密碼」。 如需詳細資訊，請參閱[使用 Azure AD Connect 同步實作密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-使用下列教學課程啟用密碼回寫：[啟用密碼回寫](tutorial-enable-writeback.md)
+要開始使用 SSPR 回寫,請完成以下教學:
+
+> [!div class="nextstepaction"]
+> [教學:啟用自助服務密碼重置 (SSPR) 寫回](tutorial-enable-writeback.md)

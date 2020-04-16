@@ -1,5 +1,5 @@
 ---
-title: Azure AD 應用程式代理中的萬用字元應用程式
+title: Azure AD 應用程式代理中的通配子應用程式
 description: 了解如何在 Azure Active Directory 應用程式 Proxy 中使用萬用字元應用程式。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481240"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406720"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 應用程式 Proxy 中的萬用字元應用程式
 
@@ -45,7 +45,7 @@ ms.locfileid: "79481240"
 
 > http(s)://*.\<domain\>
 
-例如：`http(s)://*.adventure-works.com`。
+例如： `http(s)://*.adventure-works.com` 。
 
 雖然內部和外部 URL 可以使用不同網域，讓它們使用相同網域是最佳做法。 發行應用程式時，如果其中一個 URL 沒有萬用字元，您會看到錯誤。
 
@@ -55,14 +55,14 @@ ms.locfileid: "79481240"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-要開始，請確保您已滿足這些要求。
+要開始,請確保您已滿足這些要求。
 
 ### <a name="custom-domains"></a>自訂網域
 
 雖然[自訂網域](application-proxy-configure-custom-domain.md)對於所有其他應用程式是選擇性的，它們是萬用字元應用程式的必要條件。 建立自訂網域需要您：
 
 1. 在 Azure 中創建已驗證的域。
-1. 以 PFX 格式將 TLS/SSL 憑證上載到應用程式代理。
+1. 以 PFX 格式將 TLS/SSL 證書上傳到應用程式代理。
 
 您應該考慮使用萬用字元憑證，以符合您打算建立的應用程式。 或者，您也可以使用僅列出特定應用程式的憑證。 在此情況下，只有憑證中列出的應用程式可透過此萬用字元應用程式存取。
 
@@ -78,17 +78,17 @@ ms.locfileid: "79481240"
 
 ## <a name="considerations"></a>考量
 
-以下是萬用字元應用程式的一些注意事項。
+以下是通配符應用程式的一些注意事項。
 
 ### <a name="accepted-formats"></a>接受的格式
 
 針對萬用字元應用程式，**內部 URL** 必須格式化為 `http(s)://*.<domain>`。
 
-![對於內部 URL，請使用格式 HTTP（s）：//*。\<域>](./media/application-proxy-wildcard/22.png)
+![對於內部 URL,請使用格式 HTTP(s)://*。\<域>](./media/application-proxy-wildcard/22.png)
 
 在設定**外部 URL** 時，您必須使用下列格式：`https://*.<custom domain>`
 
-![對於外部 URL，請使用HTTPs://*格式。\<自訂域>](./media/application-proxy-wildcard/21.png)
+![對於外部 URL,請使用HTTPs://*格式。\<自訂網域>](./media/application-proxy-wildcard/21.png)
 
 其他位置的萬用字元、多個萬用字元或其他 regex 字串不受支援，而且會導致錯誤。
 
@@ -105,7 +105,7 @@ ms.locfileid: "79481240"
 
 如果您使用此選項，您也需要另一個 CNAME 項目值 `AppId.domain`，例如 `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`，也指向相同的位置。 您可以在萬用字元應用程式的應用程式屬性分頁上找到 **AppId**：
 
-![在應用的屬性頁上查找應用程式 ID](./media/application-proxy-wildcard/01.png)
+![在應用程式的屬性頁上尋找應用程式識別碼](./media/application-proxy-wildcard/01.png)
 
 ### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>設定 MyApps 面板的首頁 URL
 
@@ -116,7 +116,7 @@ ms.locfileid: "79481240"
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos 限制委派
 
-對於使用 [kerberos 限制委派 (KCD) 作為 SSO 方法](application-proxy-configure-single-sign-on-with-kcd.md)的應用程式，針對 SSO 方法列出的 SPN 可能也需要萬用字元。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 您仍然需要在後端伺服器上設定個別 SPN (例如，`http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`)。
+對於使用 [kerberos 限制委派 (KCD) 作為 SSO 方法](application-proxy-configure-single-sign-on-with-kcd.md)的應用程式，針對 SSO 方法列出的 SPN 可能也需要萬用字元。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 您仍然需要在後端伺服器上設定個別 SPN (例如，`HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`)。
 
 ## <a name="scenario-1-general-wildcard-application"></a>案例 1：一般萬用字元應用程式
 
@@ -142,21 +142,21 @@ ms.locfileid: "79481240"
 
 - 內部 URL：
 
-    ![示例：內部 URL 中的萬用字元](./media/application-proxy-wildcard/42.png)
+    ![範例:內部網址的通配子](./media/application-proxy-wildcard/42.png)
 
 - 外部 URL：
 
-    ![示例：外部 URL 中的萬用字元](./media/application-proxy-wildcard/43.png)
+    ![範例:外部網址的通配子](./media/application-proxy-wildcard/43.png)
 
 - 內部應用程式 SPN：
 
-    ![示例：SPN 配置中的萬用字元](./media/application-proxy-wildcard/44.png)
+    ![範例:SPN 設定中的通配子](./media/application-proxy-wildcard/44.png)
 
 藉由發行萬用字元應用程式，您現在可以透過瀏覽至您使用的 URL 來存取三個應用程式 (例如，`travel.adventure-works.com`)。
 
 設定會實作下列結構：
 
-![顯示示例配置實現的結構](./media/application-proxy-wildcard/05.png)
+![顯示範例設定的結構](./media/application-proxy-wildcard/05.png)
 
 | Color | 描述 |
 | ---   | ---         |
@@ -173,19 +173,19 @@ ms.locfileid: "79481240"
 
 - 在 [內部 URL]**** 中，您設定 **finance** 而不是萬用字元。
 
-    ![示例：在內部 URL 中設置財務而不是萬用字元](./media/application-proxy-wildcard/52.png)
+    ![範例:在內部網址中設定財務而不是通配子](./media/application-proxy-wildcard/52.png)
 
 - 在 [外部 URL]**** 中，您設定 **finance** 而不是萬用字元。
 
-    ![示例：在外部 URL 中設置財務而不是萬用字元](./media/application-proxy-wildcard/53.png)
+    ![範例:在外部網址中設定財務而不是通配子](./media/application-proxy-wildcard/53.png)
 
 - 在內部應用程式 SPN中，您設定 **finance** 而不是萬用字元。
 
-    ![示例：在 SPN 配置中設置財務而不是萬用字元](./media/application-proxy-wildcard/54.png)
+    ![範例:在 SPN 設定中設定財務而不是通配子](./media/application-proxy-wildcard/54.png)
 
 設定會實作下列案例：
 
-![顯示示例方案實現的配置](./media/application-proxy-wildcard/09.png)
+![顯示範例方案實現的設定](./media/application-proxy-wildcard/09.png)
 
 因為 `finance.adventure-works.com` 是比 `*.adventure-works.com` 更特定的 URL，所以優先順序較高。 瀏覽至 `finance.adventure-works.com` 的使用者具有在「財務資源」應用程式中指定的體驗。 在此情況下，只有財務員工可以存取 `finance.adventure-works.com`。
 
@@ -193,5 +193,5 @@ ms.locfileid: "79481240"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要瞭解有關**自訂域**的更多資訊，請參閱[在 Azure AD 應用程式代理中使用自訂域](application-proxy-configure-custom-domain.md)。
-- 要瞭解有關**發佈應用程式**的更多資訊，請參閱[使用 Azure AD 應用程式代理髮布應用程式](application-proxy-add-on-premises-application.md)
+- 要瞭解有關**自訂網域**的更多資訊,請參閱[在 Azure AD 應用程式代理中使用自訂網域](application-proxy-configure-custom-domain.md)。
+- 要瞭解有關**發佈應用程式**的更多資訊,請參閱[使用 Azure AD 應用程式代理發佈應用程式](application-proxy-add-on-premises-application.md)

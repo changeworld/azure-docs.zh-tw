@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382754"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410770"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 資料工廠將資料複製到或從 Azure 資料資源管理員複製資料
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介紹如何使用 Azure 資料工廠中的複製活動將資料複製到 Azure 資料資源管理員或從[Azure 資料資源管理員複製](/azure/data-explorer/data-explorer-overview)。 它基於[複製活動概述](copy-activity-overview.md)文章,其中提供了複製活動的一般概述。
 
@@ -153,7 +155,7 @@ Azure 資料資源管理員連結服務支援以下屬性:
 >[!NOTE]
 >默認情況下,Azure 資料資源管理器來源的大小限制為 500,000 條記錄或 64 MB。 若要檢索所有記錄而不進行截斷,可以在查詢的開頭`set notruncation;`指定。 有關詳細資訊,請參閱[查詢限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。
 
-**範例：**
+**範例:**
 
 ```json
 "activities":[
@@ -196,7 +198,7 @@ Azure 資料資源管理員連結服務支援以下屬性:
 | ingestionMappingName | 庫斯托表上預先創建的[映射](/azure/kusto/management/mappings#csv-mapping)的名稱。 要將列從源映射到 Azure 資料資源管理員(適用於[所有受支援的來源儲存和格式](copy-activity-overview.md#supported-data-stores-and-formats)(包括 CSV/JSON/Avro 格式),可以使用複製活動[列映射](copy-activity-schema-and-type-mapping.md)(隱式名稱或顯式表示為配置)和/或 Azure 資料資源管理器映射。 | 否 |
 | 其他屬性 | 屬性包,可用於指定 Azure 資料資源管理員接收器尚未設置的任何引入屬性。 具體來說,它可用於指定引入標記。 從[Azure 數據流覽數據引入文檔](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)中瞭解更多資訊。 | 否 |
 
-**範例：**
+**範例:**
 
 ```json
 "activities":[

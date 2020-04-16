@@ -11,12 +11,12 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: aeaa95090dc40c6e161f0c336c43032a50e5aad0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9713d73ee132f743ceea98cbaca6a83f36fd3a45
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983563"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416103"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>載入 Azure 資料儲存中的資料來進行 SQL 分析
 
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>建立外部資料來源
 
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令以儲存資料的位置。 如果使用 AAD 直通進行身份驗證,則不需要「憑據」參數。 如果要對服務終結點使用託管標識進行身份驗證,請按照[本文檔](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#azure-sql-data-warehouse-polybase)設置外部數據源。 
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令以儲存資料的位置。 如果使用 AAD 直通進行身份驗證,則不需要「憑據」參數。 如果要對服務終結點使用託管標識進行身份驗證,請按照[本文檔](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-sql-data-warehouse-polybase)設置外部數據源。
 
 ```sql
 -- C (for Gen1): Create an external data source

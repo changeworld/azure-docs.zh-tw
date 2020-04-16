@@ -1,6 +1,6 @@
 ---
 title: Azure Integration Runtime IP 位址
-description: 瞭解必須允許入站流量的 IP 位址，以便正確配置防火牆以保護對資料存儲的網路訪問。
+description: 瞭解必須允許入站流量的 IP 位址,以便正確配置防火牆以保護對數據存儲的網路訪問。
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -11,25 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 598876e12fe04129692d0c9a842f4edb2ec00768
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0ba47ff28208bce1a6fa6ec300a261d788167de
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086801"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415605"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 位址
 
-Azure 集成運行時使用的 IP 位址取決於 Azure 集成運行時所在的區域。 *全部*位於同一區域中的 Azure 集成運行時使用相同的 IP 位址範圍。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Azure 整合時使用的 IP 位址取決於 Azure 整合執行時所在的區域。 *全部*位於同一區域中的 Azure 整合執行時使用相同的 IP 位址範圍。
 
 > [!IMPORTANT]  
-> 資料流程當前不使用這些 IP。 
+> 數據流當前不使用這些 IP。 
 >
-> 您可以使用這些 IP 範圍執行資料移動、管道和外部活動。 這些 IP 範圍可用於在資料存儲/網路安全性群組 （NSG）/ 防火牆中白名單，以便從 Azure 集成運行時進行入站訪問。 
+> 您可以使用這些 IP 範圍執行資料移動、管道和外部活動。 這些 IP 範圍可用於在資料儲存/ 網路安全群組 (NSG) , 防火牆中白名單,以便從 Azure 整合執行時進行入站存取。 
 
-## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure 集成運行時 IP 位址：特定區域
+## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure 整合時 IP 位址:特定區域
 
-允許來自資源所在的特定 Azure 區域中為 Azure 集成運行時列出的 IP 位址的流量：
+允許來自資源所在的特定 Azure 區域中為 Azure 整合執行時列出的 IP 位址的流量:
 
 |                | 區域              | IP 位址                                                 |
 | -------------- | ------------------- | ------------------------------------------------------------ |
@@ -59,11 +61,11 @@ Azure 集成運行時使用的 IP 位址取決於 Azure 集成運行時所在的
 |                | 美國西部 2            | 20.42.132.0/23,</br>20.42.129.64/26,</br>13.66.143.128/28    |
 |                | US Gov 維吉尼亞州     | 52.127.45.96/28,</br>52.127.48.128/25,</br>52.127.49.0/26    |
 
-## <a name="known-issue-with-azure-storage"></a>Azure 存儲的已知問題
+## <a name="known-issue-with-azure-storage"></a>Azure 儲存的已知問題
 
-* 連接到 Azure 存儲帳戶時，IP 網路規則對來自與存儲帳戶位於同一區域的 Azure 集成運行時的請求沒有任何影響。 有關詳細資訊，[請參閱本文](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)。 
+* 連接到 Azure 儲存帳戶時,IP 網路規則對來自與儲存帳戶位於同一區域的 Azure 整合時的請求沒有任何影響。 有關詳細資訊,[請參考了一個本文](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)。 
 
-  相反，我們建議[在連接到 Azure 存儲 時使用受信任的服務](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)。 
+  相反,我們建議[在連線到 Azure 儲存 時使用受信任的服務](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)。 
 
 ## <a name="next-steps"></a>後續步驟
 

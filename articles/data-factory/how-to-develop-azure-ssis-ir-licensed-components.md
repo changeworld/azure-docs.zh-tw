@@ -1,5 +1,5 @@
 ---
-title: 為 Azure-SSIS 集成運行時安裝許可元件
+title: 為 Azure-SSIS 整合執行時安裝授權元件
 description: 了解 ISV 如何開發及安裝 Azure SSIS 整合執行階段的付費或授權自訂元件
 services: data-factory
 ms.service: data-factory
@@ -11,14 +11,16 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 599b54f8a5d97ee5ed29ce4df16980f456ffb919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a4c1f8b95c66c26944d455a2ab6163d1da72731
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74914590"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414347"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>安裝 Azure-SSIS 整合執行階段的付費或授權自訂元件
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文說明 ISV 如何為 Azure SSIS 整合執行階段中在 Azure 執行的 SQL Server Integration Services (SSIS) 套件開發及安裝付費或授權自訂元件。
 

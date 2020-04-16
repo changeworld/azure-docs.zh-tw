@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e0b874e0ce56d7b4ed9fce15b2d88503d6c49b7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: aeffa0bb736f03403bf483b22775ef468bbcb2bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309135"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405473"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>解決 Azure 自動化狀態配置 (DSC) 的問題
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-此問題是由證書損壞或過期引起的。  有關詳細資訊,請參閱[憑證過期和重新註冊](../automation-dsc-onboarding.md#re-registering-a-node)。
+此問題是由證書損壞或過期引起的。  有關詳細資訊,請參閱[憑證過期和重新註冊](../automation-dsc-onboarding.md#re-register-a-node)。
 
 此問題也可能由不允許訪問 ***.azure-automation.net**的代理配置引起。 有關詳細資訊,請參閱[專用網路的設定](../automation-dsc-overview.md#network-planning)。 
 
@@ -279,8 +279,8 @@ One or more errors occurred.
 
 按照以下步驟註冊節點。
 
-* Windows -[本地或 Azure/AWS 以外的雲端/虛擬 Windows 電腦](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)。
-* Linux -[本地或 Azure 以外的雲端或虛擬 Linux 電腦](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
+* Windows -[本地或 Azure/AWS 以外的雲端/虛擬 Windows 電腦](../automation-dsc-onboarding.md#onboard-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)。
+* Linux -[本地或 Azure 以外的雲端或虛擬 Linux 電腦](../automation-dsc-onboarding.md#onboard-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
 
 ### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>方案:錯誤消息 - "預配失敗"
 

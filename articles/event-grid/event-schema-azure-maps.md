@@ -1,24 +1,26 @@
 ---
-title: Azure 事件方格 Azure 地圖服務事件結構描述
+title: Azure 對應為事件網格源
 description: 描述使用 Azure 事件方格提供給 Azure 地圖服務事件的屬性和結構描述
 services: event-grid
-author: femila
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 02/08/2019
-ms.author: femila
-ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77486354"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393408"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure 地圖服務的 Azure 事件方格事件結構描述
+# <a name="azure-maps-as-an-event-grid-source"></a>Azure 對應為事件網格源
 
-本文提供 Azure 地圖服務事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema)。
+本文提供 Azure 地圖服務事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema)。 它還為您提供了使用 Azure 映射作為事件來源的快速開始和教程的清單。
 
-## <a name="available-event-types"></a>可用的事件類型
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
+
+### <a name="available-event-types"></a>可用的事件類型
 
 Azure 地圖服務帳戶會發出下列事件類型：
 
@@ -28,7 +30,7 @@ Azure 地圖服務帳戶會發出下列事件類型：
 | Microsoft.Maps.GeofenceExited | 會在接收到的座標已從指定的地理柵欄內移至柵欄外時引發 |
 | Microsoft.Maps.GeofenceResult | 會在每次地理柵欄查詢傳回結果時引發，無論狀態為何 |
 
-## <a name="event-examples"></a>事件範例
+### <a name="event-examples"></a>事件範例
 
 下列範例顯示 **GeofenceEntered** 事件的結構描述
 
@@ -98,7 +100,7 @@ Azure 地圖服務帳戶會發出下列事件類型：
 }
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -162,6 +164,12 @@ InnerError 是物件，其中包含有關錯誤的服務特定資訊。 InnerErr
 | geometries | geometries[] |列出包含該座標位置或在該位置與 searchBuffer 周圍重疊的柵欄幾何。 |
 | invalidPeriodGeofenceGeometryId | string[]  | 地理柵欄的幾何識別碼清單，其中的識別碼相對於要求中的使用者時間處於無效期間。 |
 | isEventPublished | boolean | 如果至少有一個事件發佈到 Azure 地圖服務事件訂閱者，則為 True。如果沒有事件發佈到 Azure 地圖服務事件訂閱者，則為 False。 |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title  |描述  |
+|---------|---------|
+| [使用事件方格來回應 Azure 地圖服務事件](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 整合「Azure 地圖服務」與「事件方格」的概觀。 |
+| [教學:設定地理圍列](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教學課程會逐步引導您完成使用「Azure 地圖服務」來設定地理柵欄的基本步驟。 您會使用「Azure 事件方格」來串流處理地理柵欄結果，並根據地理柵欄結果設定通知。 |
 
 ## <a name="next-steps"></a>後續步驟
 

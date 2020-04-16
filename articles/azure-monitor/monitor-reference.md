@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255323"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405188"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文介紹了 Azure 監視器監視的不同應用程式和服務。 
@@ -26,7 +26,7 @@ ms.locfileid: "81255323"
 | 見解 | 描述 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可擴充應用程式效能管理 (APM) 服務,用於在任何平台上監視即時 Web 應用程式。 |
-| [容器的 Azure 監視器](insights/container-insights-overview.md) | 監視部署到 Azure 容器實例或託管在 Azure 庫伯奈斯服務 (AKS) 上託管的託管庫伯奈斯群集的容器工作負載的性能。 |
+| [適用於容器的 Azure 監視器](insights/container-insights-overview.md) | 監視部署到 Azure 容器實例或託管在 Azure 庫伯奈斯服務 (AKS) 上託管的託管庫伯奈斯群集的容器工作負載的性能。 |
 | [用於宇宙資料庫的 Azure 監視器(預覽)](insights/cosmosdb-insights-overview.md) | 在統一的互動式體驗中提供所有 Azure Cosmos DB 資源的總體性能、故障、容量和操作運行狀況視圖。 |
 | [網路 Azure 監視器(預覽版)](insights/network-insights-overview.md) | 為所有網路資源提供運行狀況和指標的全面視圖。 高級搜索功能可説明您識別資源依賴項,通過搜索網站名稱,啟用標識託管網站的資源等方案。 |
 [資源群組的 Azure 監視器(預覽)](insights/resource-group-insights.md) |  對單個資源遇到的任何問題進行會審和診斷,同時提供資源組整體運行狀況和性能的上下文。 |
@@ -205,7 +205,6 @@ ms.locfileid: "81255323"
 | [依需評估](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | 評估和優化本地、混合和雲端Microsoft技術環境的可用性、安全性和性能。 |
 | [SQL 執行狀況檢查](insights/sql-assessment.md) | 評估 SQL Server 環境的風險和運行狀況。  |
 | [連線資料](insights/wire-data.md) | 使用日誌分析代理從 Windows 連接和 Linux 連接的電腦收集的整合網路和性能數據。 |
-
 
 ## <a name="third-party-integration"></a>第三方整合
 

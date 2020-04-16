@@ -11,16 +11,17 @@ ms.author: abnarain
 author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
-ms.openlocfilehash: 20858069b745beeaf64951c4ef23c2eb85251985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929120"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414618"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>在 Azure Databricks 中執行 Jar 活動來轉換資料
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Data Factory 管線](concepts-pipelines-activities.md)中的 Azure Databricks Jar 活動會在 Azure Databricks 叢集中執行 Spark Jar 檔案。 本文以 [資料轉換活動](transform-data.md) 一文為基礎，其中概述了資料轉換和支援的轉換活動。Azure Databricks 是用於執行 Apache Spark 的受控平台。
+[Data Factory 管線](concepts-pipelines-activities.md)中的 Azure Databricks Jar 活動會在 Azure Databricks 叢集中執行 Spark Jar 檔案。 本文以 [資料轉換活動](transform-data.md) 一文為基礎,其中概述了數據轉換和支援的轉換活動。Azure Databricks 是用於執行 Apache Spark 的受控平台。
 
 如需此功能的簡介與示範，請觀看下列 11 分鐘長的影片：
 
@@ -60,13 +61,13 @@ ms.locfileid: "74929120"
 |NAME|管線中的活動名稱。|是|
 |description|說明活動用途的文字。|否|
 |type|若是 Databricks Jar 活動，則活動類型是 DatabricksSparkJar。|是|
-|linkedServiceName|Jar 活動執行所在之 Databricks 連結服務的名稱。 要瞭解此連結服務，請參閱 [計算連結服務](compute-linked-services.md) 一文。|是|
+|linkedServiceName|Jar 活動執行所在之 Databricks 連結服務的名稱。 要瞭解此連結服務,請參閱 [計算連結服務](compute-linked-services.md) 一文。|是|
 |mainClassName|類別的完整名稱，該類別包含要執行的 main 方法。 這個類別必須包含在提供做為程式庫的 JAR 中。|是|
 |參數|將傳遞至 main 方法的參數。  這是字串陣列。|否|
 |程式庫|要在負責執行工作的叢集上，即將安裝的程式庫清單。 可以是 < 字串, 物件 > 陣列|是 (至少有一個包含 mainClassName 方法)|
 
 > [!NOTE]
-> **已知問題**- 當使用相同的[互動式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks)運行併發 Databricks Jar 活動（不重新開機群集）時，Databricks 中存在一個已知問題，其中第一個活動的參數也將由以下活動使用。 因此，導致不正確的參數傳遞給後續作業。 要緩解這種情況，請使用[作業群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks)。 
+> **已知問題**- 當使用相同的[互動式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks)運行併發 Databricks Jar 活動(不重新啟動群集)時,Databricks 中存在一個已知問題,其中第一個活動的參數也將由以下活動使用。 因此,導致不正確的參數傳遞給後續作業。 要緩解這種情況,請使用[工作群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks)。 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks 活動支援的程式庫
 

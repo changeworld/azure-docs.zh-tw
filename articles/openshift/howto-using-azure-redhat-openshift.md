@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, 開移, 阿茲阿羅, 紅帽子, cli
-ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f909c5870be6e394e457ad8f44ea5a253054ffe6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998804"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398882"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>建立、存取及管理 Azure 紅帽 OpenShift 4.3 叢集
 
@@ -68,7 +68,19 @@ ms.locfileid: "80998804"
    aro                                0.3.0
    ...
    ```
-  
+
+### <a name="get-a-red-hat-pull-secret-optional"></a>取得紅帽拉取機密(可選)
+
+紅帽拉取金鑰使群集可以訪問紅帽容器註冊表和其他內容。 使用拉取密鑰是可選的,但建議使用。
+
+要取得您的拉取秘密:
+
+1. 移至 https://cloud.redhat.com/openshift/install/azure/aro-provisioned 。
+1. 登錄到您的紅帽帳戶,或使用您的業務電子郵件創建新的紅帽帳戶;接受條款和條件。
+1. 選擇 **「下載拉取」機密**。
+
+將*拉-機密.txt*檔保存在安全的地方;每次創建群集時,都將使用該檔。
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>建立包含兩個空子網路的虛擬網路
 
 按照以下步驟創建包含兩個空子網的虛擬網路。
@@ -79,15 +91,7 @@ ms.locfileid: "80998804"
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
-   PULL_SECRET="<optional-pull-secret>"
    ```
-   >[!NOTE]
-   > 可選的拉取密鑰使群集能夠訪問紅帽容器註冊表以及其他內容。
-   >
-   > 通過導航和按下https://cloud.redhat.com/openshift/install/azure/installer-provisioned *「複製拉取秘密*」來訪問您的拉取密鑰。
-   >
-   > 您需要登錄到您的紅帽帳戶,或使用您的業務電子郵件創建新的紅帽帳戶並接受條款和條件。
- 
 
 2. 為群集創建資源組。
 
@@ -143,7 +147,7 @@ az aro create \
   --worker-subnet "$CLUSTER-worker" \
   --cluster-resource-group "aro-$CLUSTER" \
   --domain "$CLUSTER" \
-  --pull-secret "$PULL_SECRET"
+  --pull-secret @pull-secret.txt
 ```
 
 >[!NOTE]

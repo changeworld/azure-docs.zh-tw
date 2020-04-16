@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878236"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405494"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure 函數 2.x 及更高版本的 host.json 引用 
 
@@ -141,7 +141,7 @@ ms.locfileid: "80878236"
 有關完整的 JSON 結構,請參閱前面的[範例 host.json 檔](#sample-hostjson-file)。
 
 > [!NOTE]
-> 記錄取樣可能會造成一些執行不會顯示在 Application Insights 監視器刀鋒視窗。 為了避免日誌採樣,請添加到`samplingExcludedTypes: "Request"``applicationInsights`值。
+> 記錄取樣可能會造成一些執行不會顯示在 Application Insights 監視器刀鋒視窗。 為了避免日誌採樣,請添加到`excludedTypes: "Request"``samplingSettings`值。
 
 | 屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
@@ -166,8 +166,8 @@ ms.locfileid: "80878236"
 | 最小取樣百分比 | 0.1 | 由於採樣百分比不同,此屬性確定允許的最小採樣百分比。 |
 | 最大採樣百分比 | 0.1 | 由於採樣百分比不同,此屬性確定允許的最大採樣百分比。 |
 | 移動平均比率 | 1.0 | 在計算移動平均時，指派給最新的值的權數。 使用等於或小於 1 的值。 較小的值會讓演算法不易受突然的變更影響。 |
-| 排除類型 | null | 不希望採樣類型的分號分隔清單。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 傳輸指定類型的所有實例;對未指定的類型進行採樣。 |
-| 包括類型 | null | 要採樣的類型的分號分隔清單;空清單表示所有類型的。 此處列出的覆蓋`excludedTypes`類型中列出的類型。 可辨識的類型為：相依性、事件、例外狀況、頁面檢視、要求、追蹤。 傳輸指定類型的所有實例;對未指定的類型進行採樣。 |
+| 排除類型 | null | 不希望採樣類型的分號分隔清單。 識別型態是: `Dependency` `Event` `Exception``PageView``Request`、、、、、`Trace`和 。 傳輸指定類型的所有實例;對未指定的類型進行採樣。 |
+| 包括類型 | null | 要採樣的類型的分號分隔清單;空清單表示所有類型的。 此處列出的覆蓋`excludedTypes`類型中列出的類型。 識別型態是: `Dependency` `Event` `Exception``PageView``Request`、、、、、`Trace`和 。 對指定類型的實例進行採樣;未指定或隱含的類型在沒有採樣的情況下傳輸。 |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>應用程式見解.HTTP自動收集選項
 

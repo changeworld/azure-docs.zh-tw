@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae3ace24d6f33702c15a364b913f841d90fd8872
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654185"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407167"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密碼管理常見問題集
 
@@ -235,7 +235,7 @@ ms.locfileid: "80654185"
   >
 * **問:是否有 API 可以訪問密碼重置或註冊報告數據?**
 
-  > **答:** 是的。 若要了解如何存取密碼重設報告資料流，請參閱[了解如何以程式設計方式存取密碼重設報告事件](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) \(英文\)。
+  > **答:** 是的。 要瞭解如何存取密碼重置報告資料,請參閱[Azure 紀錄分析 REST API 參考](/rest/api/loganalytics/)。
   >
   >
 

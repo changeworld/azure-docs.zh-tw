@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259054"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414521"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>在 Service Fabric 應用程式中管理已加密的祕密
 本指南將逐步引導您完成管理 Service Fabric 應用程式中密碼的步驟。 密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。
@@ -47,7 +47,7 @@ ms.locfileid: "79259054"
 </CodePackage>
 ```
 
-通過在應用程式清單中指定證書，還應將機密包含在 Service Fabric 應用程式中。 向**應用程式清單.xml**添加**機密證書**元素，並包含所需的證書的指紋。
+通過在應用程式清單中指定證書,還應將機密包含在 Service Fabric 應用程式中。 向**應用程式清單.xml**添加**機密證書**元素,並包含所需的證書的指紋。
 
 ```xml
 <ApplicationManifest … >
@@ -57,6 +57,11 @@ ms.locfileid: "79259054"
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> 啟動指定機密證書的應用程式後,Service Fabric 將查找匹配的證書,並將應用程式在證書私鑰完全許可權下運行的標識授予。 Service Fabric 還將監視證書的更改,並相應地重新應用許可權。 要檢測由通用名稱聲明的證書的更改,Service Fabric 會運行一個定期任務,該任務查找所有匹配的證書,並將其與緩存的指紋清單進行比較。 檢測到新的指紋時,這意味著該主題的證書已續訂。 任務每分鐘在群集的每個節點上運行一次。
+>
+> 雖然機密證書確實允許基於主題的聲明,但請注意,加密的設置綁定到用於加密用戶端上的設置的密鑰對。 必須確保原始加密證書(或等效證書)與基於主題的聲明匹配,並確保在可以承載應用程式的群集的每個節點上安裝該證書(包括相應的私鑰)。 與基於主題的聲明匹配且從與原始加密證書相同的密鑰對構建的所有時間有效證書都被視為等效證書。
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>將應用程式密碼插入應用程式執行個體內
 在理想情況下，部署至不同的環境應儘可能自動化。 這可以藉由在建置環境中執行密碼加密，並在建立應用程式執行個體時提供加密的密碼做為參數來實現。
@@ -138,7 +143,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 服務結構[機密存儲](service-fabric-application-secret-store.md) 
+* 服務結構[機密儲存](service-fabric-application-secret-store.md) 
 * 深入了解[應用程式及服務安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->

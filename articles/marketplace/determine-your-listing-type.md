@@ -1,19 +1,18 @@
 ---
-title: 確定您在商業市場中的發表選項
-description: 本文介紹了試圖瞭解如何將應用發佈到商業市場的資格標準和發佈要求合作夥伴。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: 在 Microsoft 商業市場網店中確定發佈選項
+description: 本文介紹試圖瞭解如何將應用發佈到 Microsoft AppSource 和 Azure 應用商店的合作夥伴的資格條件和發佈要求。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261681"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415730"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
@@ -21,32 +20,47 @@ ms.locfileid: "81261681"
 
 要配置產品/服務,您需要瞭解以下關鍵的商業市場概念:發佈選項、產品類型和配置,以及控制產品/服務在商業市場網店中呈現的方式和位置的操作要求。
 
-![微軟商業市場店面和出版選項](./media/marketplace-publishers-guide/storefronts_options_table.png)
-
 在本文中，您將了解：
 
 - 如何為解決方案決定適當的店面
 - 每個店面中有哪些發佈選項和呼籲行動可用
 - 每個發佈選項有哪些供應項目類型可用
 
-## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>為您的解決方案選取店面、發佈選項和供應項目類型
+## <a name="commercial-marketplace-publishing-options"></a>商業市場發佈選項
 
-在選擇發佈選項之前,瞭解商業市場解決方案、應用和服務的網店資格要求非常重要:
+下表顯示了 Microsoft AppSource 和 Azure 應用商店中產品/服務類型的發佈選項。
+
+|   | **清單(連絡人)**  | **清單(試用)**  | **免費** | **BYOL** | **交易**|
+| :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
+| **虛擬機器** |  |  |  | Azure Marketplace |  Azure Marketplace |
+| **Azure 應用(多 VM)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
+| **容器映射** |  |  | Azure Marketplace | Azure Marketplace |   |
+| **IoT Edge 模組** |  |  | Azure Marketplace | Azure Marketplace |   |
+| **託管服務** |  |  |  | Azure Marketplace |   |
+| **諮詢服務** | 兩個店面 |  |  |  |   |
+| **SaaS 應用程式** | 兩個店面 | 兩個店面 | 兩個店面 |  | 兩個店面* |
+| **微軟365應用程式** | AppSource | AppSource |  |  | 應用程式來源*  |
+| **動態 365 外接器** |  AppSource | AppSource |  |  |   |
+| **電源應用** | AppSource |AppSource  |  |  |   |
+
+&#42; SaaS 應用程式 Transact 在微軟 AppSource 中提供目前只有信用卡。
+
+&#42;&#42; Microsoft 365 產品/服務可免費安裝,可通過 SaaS 優惠作為許可服務獲利。 有關詳細資訊,請參閱通過[Microsoft 商業市場將 Office 365 外接程式貨幣化](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
+
+## <a name="selecting-a-storefront"></a>選擇網店
+
+在選擇發佈選項之前,瞭解商業市場解決方案、應用和服務的網店資格要求非常重要。 每個網店都服務於獨特的客戶需求,並針對特定受眾群體。 您的產品/服務類型、交易功能以及類別或行業將決定您的產品/服務發佈位置。
 
 **Microsoft AppSource**應用程式是可內置 Azure 或為"動態 365"、Office 365、Power BI 或 Power Apps 構建的業務線解決方案。 AppSource 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Dynamics 365 和 Power BI。
 
 **Azure 應用商店**應用程式是為 Azure 構建或構建的技術"構建基塊"解決方案,面向 IT 或開發人員受眾。 Azure Marketplace 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Azure。
 
-## <a name="understand-storefront-selection"></a>了解店面選取範圍
-
-每個店面都滿足獨特的客戶需求。 發佈優惠的店面將由優惠類型、提供交易功能、類別和/或行業選擇確定,以特定受眾為目標。 
-
 >[!Note]
->"交叉清單"(僅適用於 SaaS Apps):當列表或試用產品/服務符合技術和業務使用者受眾的標準時,您的產品/服務將在兩個網店中列出。 在下方深入了解發佈選項。
+>交叉清單(僅適用於 SaaS Apps):當清單或試用產品/服務符合技術和業務使用者受眾的標準時,您的產品/服務將在兩個網店中列出。 在下方深入了解發佈選項。
 
 ## <a name="choose-a-publishing-option"></a>選擇發佈選項
 
-可用的發表選項提供差異化的客戶參與度,同時讓您獲得潛在客戶分享[和商業市場優勢](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。  請注意與發佈選項對應的呼籲行動：
+可用的發表選項提供差異化的客戶參與度,同時讓您獲得潛在客戶分享[和商業市場優勢](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。 請注意與發佈選項對應的呼籲行動：
 
 | **發佈選項**    | **說明**  |
 | :------------------- | :-------------------|
@@ -55,8 +69,8 @@ ms.locfileid: "81261681"
 | **BYOL** | 使用商業市場增強解決方案的可發現性和自動化配置,並單獨完成金融交易。 BYOL 產品類型是本地遷移到雲遷移的理想選擇。 行動號召就是**立即得到它**。
 | **交易** | 交易報價通過商業市場出售。 微軟負責計費和收款。 行動號召就是**立即得到它**。|
 
->[!Note]
->當使用交易發佈選項時，請務必了解定價、計費、發票處理和付款考量，然後再選取供應項目類型與建立供應項目。 檢閱[市集計費與商業考量文章以深入了解](./marketplace-commercial-transaction-capabilities-and-considerations.md)。
+> [!Note]
+> 當使用交易發佈選項時，請務必了解定價、計費、發票處理和付款考量，然後再選取供應項目類型與建立供應項目。 要瞭解更多資訊,請查看文章[商業市場交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 17e474de9c221126d67cc2982ba11c6ff75e7aa3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668501"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392820"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure 庫伯奈斯服務 (AKS) 中使用標準 SKU 負載均衡器
 
@@ -32,7 +32,7 @@ Azure Load Balancer 有兩種 SKU -「基本」** 和「標準」**。 默認情
 
 本文假定您具有具有*標準*SKU Azure 負載均衡器的 AKS 群集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-如果使用現有子網或資源組,AKS 群集服務主體還需要管理網路資源的許可權。 通常,在委派的資源上將*網路參與者*角色分配給您的服務主體。 有關權限的詳細資訊,請參閱將[AKS 存取委託給其他 Azure 資源][aks-sp]。
+如果使用現有子網或資源組,AKS 群集服務主體還需要管理網路資源的許可權。 通常,在委派的資源上將*網路參與者*角色分配給您的服務主體。 您還可以使用分配給託管標識的系統來訪問許可權,而不是服務主體。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。 有關權限的詳細資訊,請參閱將[AKS 存取委託給其他 Azure 資源][aks-sp]。
 
 ### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>從基本 SKU 負載均衡器遷移到標準 SKU
 

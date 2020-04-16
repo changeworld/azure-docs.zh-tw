@@ -11,14 +11,15 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927334"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414741"
 ---
 # <a name="templates"></a>範本
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 範本為預先定義的 Azure Data Factory 管線，可讓您迅速開始使用 Data Factory。 範本很適合在您不熟悉 Data Factory 且想要快速開始使用的情況下使用。 這些範本會減少建置資料整合專案的開發時間，並進一步改善開發人員生產力。
 
@@ -30,7 +31,7 @@ ms.locfileid: "74927334"
 
     ![從 [概觀] 頁面開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在"資源資源管理器"中的"作者"**+** 選項卡上，選擇"**從範本中獲取管道**以打開範本庫"。
+1.  在「資源資源管理器」中的「作者」**+** 選項卡上,選擇「**從範本中獲取管道**以打開範本庫」。
 
     ![從 [撰寫] 索引標籤開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -40,11 +41,11 @@ ms.locfileid: "74927334"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>立即可用的 Data Factory 範本
 
-Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 您可以在正式的[Azure 資料工廠 GitHub 存儲庫](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中查看所有資源管理器範本以及用於開箱即用資料工廠範本的清單檔。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
+Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 您可以在正式的[Azure 資料工廠 GitHub 儲存庫](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中查看所有資源管理器範本以及用於開箱即用數據工廠範本的清單檔。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
 
 -   複製範本：
 
-    -   [從資料庫批量複製](solution-template-bulk-copy-with-control-table.md)
+    -   [從資料庫批次複製](solution-template-bulk-copy-with-control-table.md)
     
     -   [依 LastModifiedDate 複製新檔案](solution-template-copy-new-files-lastmodifieddate.md)
 
@@ -52,7 +53,7 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
     -   [移動檔案](solution-template-move-files.md)
 
-    -   [來自資料庫的增量副本](solution-template-delta-copy-with-control-table.md)
+    -   [資料庫的增量複本](solution-template-delta-copy-with-control-table.md)
 
     -   從 \<來源\> 複製到 \<目的地\>
 

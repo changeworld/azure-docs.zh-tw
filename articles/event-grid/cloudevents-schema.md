@@ -1,26 +1,25 @@
 ---
 title: 將 Azure 事件方格用於 CloudEvents 結構描述中的事件
-description: 介紹如何使用雲事件架構執行 Azure 事件網格中的事件。 該服務支援雲事件的 JSON 實現中的事件。
+description: 介紹如何使用雲端事件架構執行 Azure 事件網格中的事件。 該服務支援雲事件的 JSON 實現中的事件。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372457"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393483"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>將雲事件 v1.0 架構與事件網格一起使用
-
-除了[預設事件架構](event-schema.md)外，Azure 事件網格本機支援[雲事件 v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和[HTTP 協定綁定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的 JSON 實現中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
+除了[預設事件架構](event-schema.md)外,Azure 事件網格本機支援[雲事件 v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和[HTTP 協定綁定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的 JSON 實現中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
 CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描述，可簡化互通性。 此結構描述可支援統一的工具、路由和處理事件的標準方式，以及將外部事件結構描述還原序列化的通用方式。 透過通用結構描述，您將可更輕鬆地跨平台整合工作。
 
-目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 它當前可作為版本 1.0 提供。
+目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 它當前可作為版本1.0提供。
 
 本文說明如何透過事件方格使用 CloudEvents 結構描述。
 
@@ -136,17 +135,17 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- 目前，當事件是在 CloudEvents 結構描述中傳遞時，您無法針對 Azure Functions 應用程式使用事件方格觸發程序。 使用 HTTP 觸發程序。 有關實現在雲事件架構中接收事件的 HTTP 觸發器的示例，請參閱使用[Azure 函數使用雲事件](#azure-functions)。
+ 目前，當事件是在 CloudEvents 結構描述中傳遞時，您無法針對 Azure Functions 應用程式使用事件方格觸發程序。 使用 HTTP 觸發程序。 有關實現在雲端事件架構中接收事件的 HTTP 觸發器的範例,請參閱使用[Azure 函數使用雲端事件](#azure-functions)。
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用雲事件 v1.0 的終結點驗證
 
-如果您已經熟悉事件網格，您可能知道事件網格的終結點驗證握手，以防止濫用。 CloudEvents v1.0 使用 HTTP OPTIONS 方法實現自己的[濫用保護語義](security-authentication.md#webhook-event-delivery)。 你可以[在這裡](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)閱讀更多關於它。 使用 CloudEvents 架構進行輸出時，事件網格使用 CloudEvents v1.0 濫用保護代替事件網格驗證事件機制。
+如果您已經熟悉事件網格,您可能知道事件網格的終結點驗證握手,以防止濫用。 CloudEvents v1.0 使用 HTTP OPTIONS 方法實現自己的[濫用保護語義](security-authentication.md#webhook-event-delivery)。 你可以[在這裡](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)閱讀更多關於它。 使用 CloudEvents 架構進行輸出時,事件網格使用 CloudEvents v1.0 濫用保護代替事件網格驗證事件機制。
 
 <a name="azure-functions"></a>
 
 ## <a name="use-with-azure-functions"></a>與 Azure 函數一起使用
 
-[Azure 函數事件網格綁定](../azure-functions/functions-bindings-event-grid.md)本機不支援雲事件，因此 HTTP 觸發的功能用於讀取 CloudEvents 消息。 使用 HTTP 觸發器讀取雲事件時，必須為事件網格觸發器自動執行的代碼：
+[Azure 函數事件網格綁定](../azure-functions/functions-bindings-event-grid.md)本機不支援雲事件,因此 HTTP 觸發的功能用於讀取 CloudEvents 消息。 使用 HTTP 觸發器讀取雲事件時,必須為事件網格觸發器自動執行的代碼:
 
 * 將驗證回應傳送給[訂用帳戶驗證要求](../event-grid/security-authentication.md#webhook-event-delivery)。
 * 為要求本文中包含的每個事件陣列元素分別叫用一次函式。

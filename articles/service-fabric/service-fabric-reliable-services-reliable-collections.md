@@ -2,13 +2,13 @@
 title: 可靠館藏簡介
 description: Service Fabric 具狀態服務提供可靠的集合，可讓您撰寫高度可用、可調整且低延遲的雲端應用程式。
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609718"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398439"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 具狀態服務中可靠的集合簡介
 
@@ -24,10 +24,9 @@ ms.locfileid: "75609718"
 我們可將可靠的集合視為 **System.Collections** 類別的自然進化：它們是一組新的集合，專為雲端和多電腦應用程式量身設計，且不會對開發人員提高複雜度。 因此，可靠的集合是：
 
 * 可複寫：進行狀態變更複寫以確保高可用性。
-* 可保存：資料會保存至磁碟，可在發生大規模中斷 (例如，資料中心停電) 時保障持續性。
-* 因為已保存和複寫寫入，所以您無法建立僅在記憶體中保存資料的揮發性 ReliableDictionary、ReliableQueue 或其他可靠集合。
 * 非同步：API 是非同步的，可確保在產生 IO 時不會封鎖執行緒。
 * 交易式：API 會利用交易的抽象方法，讓您能夠輕鬆管理服務內多個可靠的集合。
+* 持久或易失性:數據可以保存到磁碟,以抵禦大規模中斷(例如,數據中心斷電)的持久性。 某些可靠集合還支援一種易失性模式(帶[警告),](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)其中所有數據都保存在記憶體中,例如複製的記憶體緩存。
 
 Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論應用程式的狀態。
 增強式一致性的實現方式是藉由確保僅有在整個交易已記錄到複本多數仲裁之後 (包括主要複本)，才認可交易。
@@ -36,7 +35,7 @@ Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論
 可靠的集合 API 是並行集合 API (位於 **System.Collections.Concurrent** 命名空間) 的一種演化：
 
 * 非同步：會傳回工作；不同於並行集合，其作業會受到複寫及保存。
-* 無出參數：用於`ConditionalValue<T>`返回 和`bool`值而不是 out 參數。 `ConditionalValue<T>` 就像 `Nullable<T>`，但不需要 T 就可以成為結構。
+* 無出參數:用於`ConditionalValue<T>`返回`bool`和值而不是 out 參數。 `ConditionalValue<T>` 就像 `Nullable<T>`，但不需要 T 就可以成為結構。
 * 交易：使用交易物件，讓使用者可在交易中的多個可靠的集合上群組動作。
 
 現在，Microsoft.ServiceFabric.Data.Collections**** 包含三個集合：
@@ -53,9 +52,9 @@ Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論
 * 管理資料
   * [備份和還原](service-fabric-reliable-services-backup-restore.md)
   * [通知](service-fabric-reliable-services-notifications.md)
-  * [可靠的集合序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
+  * [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [序列化與升級](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
 * 其他
-  * [可靠的服務快速啟動](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
   * [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

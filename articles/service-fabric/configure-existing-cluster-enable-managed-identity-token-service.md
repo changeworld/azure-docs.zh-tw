@@ -2,16 +2,16 @@
 title: 在現有服務結構叢集配置託管識別支援
 description: 下面瞭解如何在現有 Azure 服務結構群集中啟用託管標識支援
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983801"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415678"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>在現有服務交換矩陣群集中配置託管識別支援(預覽)
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在現有服務結構叢集配置託管識別支援
 
 要在 Service Fabric 應用程式中[對 Azure 資源使用託管識別](../active-directory/managed-identities-azure-resources/overview.md),請首先在群集上啟用*託管標識權杖服務*。 此服務負責使用其託管標識對 Service Fabric 應用程式進行身份驗證,並代表它們獲取訪問權杖。 啟用服務後,您可以在左側窗格中的 **「系統**」部分下的「服務結構資源管理器」中看到它,該功能在名稱**結構:/系統/託管身份權杖服務**下運行。
 

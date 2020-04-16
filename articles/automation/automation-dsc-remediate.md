@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383146"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406073"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>修復不合規的 DSC 伺服器
 
@@ -37,7 +37,8 @@ Update-DscConfiguration -Wait -Verbose
 
 類似的功能目前不適用於 Linux 伺服器。
 唯一的選擇是重複註冊過程。
-對於 Azure 節點,可以更正從 Azure 門戶或使用 Az 模組 cmdlet 的漂移。 有關此過程的詳細資訊記錄在[載入電腦中,供 Azure 自動化狀態設定進行管理](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal)。
+
+對於 Azure 節點,可以更正從 Azure 門戶或使用 Az 模組 cmdlet 的漂移。 有關此過程的詳細資訊記錄在[載入電腦中,供 Azure 自動化狀態設定進行管理](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal)。
 對於混合節點,您可以使用包含的 Python 文稿更正漂移。
 有關[Linux 回購,請參閱 PowerShell DSC。](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)
 

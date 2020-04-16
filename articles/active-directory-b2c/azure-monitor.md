@@ -11,83 +11,83 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190053"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392882"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure 監視器監視 Azure AD B2C
 
-使用 Azure 監視器將 Azure 活動目錄 B2C （Azure AD B2C） 登錄日誌和[審核](view-audit-logs.md)日誌路由到不同的監視解決方案。 您可以保留日誌以長期使用，或與協力廠商安全資訊和事件管理 （SIEM） 工具集成，從而深入瞭解您的環境。
+使用 Azure 監視器將 Azure 活動目錄 B2C (Azure AD B2C) 登入日誌和[審核](view-audit-logs.md)日誌路由到不同的監視解決方案。 您可以保留日誌以長期使用,或與第三方安全資訊和事件管理 (SIEM) 工具集成,從而深入瞭解您的環境。
 
-您可以將日誌事件路由到：
+您可以將紀錄事件路由到:
 
-* Azure[存儲帳戶](../storage/blobs/storage-blobs-introduction.md)。
-* Azure[事件中心](../event-hubs/event-hubs-about.md)（並與 Splunk 和相撲邏輯實例集成）。
-* [日誌分析工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)（用於分析資料、創建儀表板和警報特定事件）。
+* Azure[儲存帳戶](../storage/blobs/storage-blobs-introduction.md)。
+* Azure[事件中心](../event-hubs/event-hubs-about.md)(並與 Splunk 和相撲邏輯實例集成)。
+* [日誌分析工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)(用於分析數據、創建儀錶板和警報特定事件)。
 
 ![Azure 監視器](./media/azure-monitor/azure-monitor-flow.png)
 
 ## <a name="prerequisites"></a>Prerequisites
 
-要完成本文中的步驟，請使用 Azure PowerShell 模組部署 Azure 資源管理器範本。
+要完成本文中的步驟,請使用 Azure PowerShell 模組部署 Azure 資源管理器範本。
 
 * [Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 6.13.1 或更高版本
 
-您還可以使用[Azure 雲外殼](https://shell.azure.com)，其中包括最新版本的 Azure PowerShell 模組。
+您還可以使用[Azure 雲外殼](https://shell.azure.com),其中包括最新版本的 Azure PowerShell 模組。
 
 ## <a name="delegated-resource-management"></a>委派資源管理
 
-Azure AD B2C 利用[Azure 活動目錄監視](../active-directory/reports-monitoring/overview-monitoring.md)。 要在 Azure AD B2C 租戶中的 Azure 活動目錄中啟用*診斷設置*，請使用[委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
+Azure AD B2C 利用[Azure 的目錄監視](../active-directory/reports-monitoring/overview-monitoring.md)器 。 在 Azure AD B2C 租戶中的 Azure 活動目錄中啟用*診斷設定*,請使用[委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
 
-您可以授權 Azure AD B2C 目錄（**服務提供者**）中的使用者或組配置包含 Azure 訂閱（**客戶**）的租戶中的 Azure 監視器實例。 要創建授權，請將 Azure[資源管理器](../azure-resource-manager/index.yml)範本部署到包含訂閱的 Azure AD 租戶。 以下各節將引導您完成此過程。
+您可以授權 Azure AD B2C 目錄(**服務提供者**)中的使用者或組組設定包含 Azure 訂閱(**客戶**)的租戶中的 Azure 監視器實例。 要建立授權,請將 Azure[資源管理器](../azure-resource-manager/index.yml)範本部署到包含訂閱的 Azure AD 租戶。 以下各節將引導您完成此過程。
 
-## <a name="create-or-choose-resource-group"></a>創建或選擇資源組
+## <a name="create-or-choose-resource-group"></a>建立或選擇資源群組
 
-這是包含目標 Azure 存儲帳戶、事件中心或日誌分析工作區的資源組，用於從 Azure 監視器接收資料。 在部署 Azure 資源管理器範本時指定資源組名稱。
+這是包含目標 Azure 儲存帳戶、事件中心或日誌分析工作區的資源組,用於從 Azure 監視器接收數據。 在部署 Azure 資源管理器樣本時指定資源組名稱。
 
-在 Azure 活動目錄 （Azure AD） 租戶中[創建資源組](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)或選擇包含 Azure 訂閱的現有資源組，*而不是*包含 Azure AD B2C 租戶的目錄。
+在 Azure 活動目錄 (Azure AD) 租戶中[創建資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)或選擇包含 Azure 訂閱的現有資源群組,*而不是*包含 Azure AD B2C 租戶的目錄。
 
-本示例*使用位於美國中部*區域的資源組，名為*azure ad-b2c 監視器*。
+此範例*使用位於美國中部*區域的資源組,名為*azure ad-b2c 監視器*。
 
 ## <a name="delegate-resource-management"></a>委託資源管理
 
-接下來，收集以下資訊：
+接下來,收集以下資訊:
 
-Azure AD B2C 目錄（也稱為租戶 ID）的**目錄 ID。**
+Azure AD B2C 目錄(也稱為租戶 ID)的**目錄 ID。**
 
-1. 使用*使用者管理員*角色（或更高版本）以使用者身份登錄到[Azure 門戶](https://portal.azure.com/)。
-1. 在門戶工具列中選擇**目錄 + 訂閱**圖示，然後選擇包含 Azure AD B2C 租戶的目錄。
-1. 選擇**Azure 活動目錄**，選擇**屬性**。
-1. 記錄**目錄 ID**。
+1. 使用*使用者管理員*角色(或更高版本)以使用者身份登入[Azure 門戶](https://portal.azure.com/)。
+1. 在門戶工具列中選擇**目錄 + 訂閱**圖示,然後選擇包含 Azure AD B2C 租戶的目錄。
+1. 選擇**Azure 的項目目錄**,選擇**屬性**。
+1. 記錄**目錄代碼**。
 
-要向前面在包含訂閱的目錄中創建的資源組授予*參與者*許可權的 Azure AD B2C 組或使用者**的物件識別碼。**
+要向前面在包含訂閱的目錄中創建的資源組授予*參與者*許可權的 Azure AD B2C 組或使用者**的物件 ID。**
 
-為了簡化管理，我們建議為每個角色使用 Azure AD 使用者*組*，允許您向該組添加或刪除單個使用者，而不是直接向該使用者分配許可權。 在本演練中，您將添加一個使用者。
+為了簡化管理,我們建議為每個角色使用 Azure AD 使用者*組*,允許您向該組添加或刪除單個使用者,而不是直接向該使用者分配許可權。 在本演練中,您將添加一個使用者。
 
-1. 在 Azure 門戶中仍選中**Azure 活動目錄**時，請選擇 **"使用者**"，然後選擇使用者。
-1. 記錄使用者**的物件識別碼**。
+1. 在 Azure 門戶中仍選中**Azure 活動目錄**時,請選擇 **「使用者**」,然後選擇使用者。
+1. 紀錄使用者**的物件代碼**。
 
 ### <a name="create-an-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
 
-要將 Azure AD 租戶（**客戶**）上載，請使用以下資訊為產品/服務創建[Azure 資源管理器範本](../lighthouse/how-to/onboard-customer.md)。 當您`mspOfferName`在`mspOfferDescription`Azure 門戶的["服務提供者"頁](../lighthouse/how-to/view-manage-service-providers.md)中查看產品/服務詳細資訊時，和值可見。
+要將 Azure AD 租戶(**客戶**)上載,請使用以下資訊為產品/服務建立[Azure 資源管理員樣本](../lighthouse/how-to/onboard-customer.md)。 當您`mspOfferName``mspOfferDescription`在 Azure 門戶的[「服務提供者」頁](../lighthouse/how-to/view-manage-service-providers.md)中查看產品/服務詳細資訊時,和值可見。
 
 | 欄位   | 定義 |
 |---------|------------|
-| `mspOfferName`                     | 說明此定義的名稱。 例如 *，Azure AD B2C 託管服務*。 此值會以供應項目標題的形式向客戶顯示。 |
-| `mspOfferDescription`              | 您的報價的簡要說明。 例如，*在 Azure AD B2C 中啟用 Azure 監視器*。|
-| `rgName`                           | 在 Azure AD 租戶中較早之前創建的資源組的名稱。 例如 *，azure ad-b2c 監視器*。 |
-| `managedByTenantId`                | Azure AD B2C 租戶（也稱為租戶 ID）的**目錄 ID。** |
-| `authorizations.value.principalId` | B2C 組或使用者**的物件識別碼，** 這些使用者將有權訪問此 Azure 訂閱中的資源。 在本演練中，指定前面記錄的使用者物件識別碼。 |
+| `mspOfferName`                     | 說明此定義的名稱。 例如 *,Azure AD B2C 託管服務*。 此值會以供應項目標題的形式向客戶顯示。 |
+| `mspOfferDescription`              | 您的報價的簡要說明。 例如,*在 Azure AD B2C 中啟用 Azure 監視器*。|
+| `rgName`                           | 在 Azure AD 租戶中較早之前創建的資源組的名稱。 例如 *,azure ad-b2c 監視器*。 |
+| `managedByTenantId`                | Azure AD B2C 租戶(也稱為租戶 ID)的**目錄 ID。** |
+| `authorizations.value.principalId` | B2C 組或使用者**的物件 ID,** 這些使用者將有權訪問此 Azure 訂閱中的資源。 在本演練中,指定前面記錄的使用者物件 ID。 |
 
-下載 Azure 資源管理器範本和參數檔：
+下載 Azure 資源管理員樣本與參數檔:
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-接下來，使用前面記錄的值更新參數檔。 以下 JSON 程式碼片段顯示了 Azure 資源管理器範本參數檔的示例。 對於`authorizations.value.roleDefinitionId`，使用 *"參與者"角色的*`b24988ac-6180-42a0-ab88-20f7382dd24c`[內置角色](../role-based-access-control/built-in-roles.md)值 。
+接下來,使用前面記錄的值更新參數檔。 以下 JSON 代碼段顯示了 Azure 資源管理器範本參數檔的範例。 對於`authorizations.value.roleDefinitionId`,使用 *「參與者」角色的*`b24988ac-6180-42a0-ab88-20f7382dd24c`[內建角色](../role-based-access-control/built-in-roles.md)值 。
 
 ```JSON
 {
@@ -121,7 +121,7 @@ Azure AD B2C 目錄（也稱為租戶 ID）的**目錄 ID。**
 
 ### <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure Resource Manager 範本
 
-更新參數檔後，將 Azure 資源管理器範本作為訂閱級部署部署到 Azure 租戶中。 這是訂用帳戶層級部署，因此無法在 Azure 入口網站中起始。 可以使用 Azure PowerShell 模組或 Azure CLI 進行部署。 Azure PowerShell 方法如下所示。
+更新參數檔後,將 Azure 資源管理器範本作為訂閱級部署部署到 Azure 租戶中。 這是訂用帳戶層級部署，因此無法在 Azure 入口網站中起始。 可以使用 Azure PowerShell 模組或 Azure CLI 進行部署。 Azure PowerShell 方法如下所示。
 
 使用[Connect-AzAccount](/powershell/azure/authenticate-azureps)登錄到包含訂閱的目錄。 使用標誌`-tenant`強制對正確的目錄進行身份驗證。
 
@@ -129,19 +129,19 @@ Azure AD B2C 目錄（也稱為租戶 ID）的**目錄 ID。**
 Connect-AzAccount -tenant contoso.onmicrosoft.com
 ```
 
-使用[獲取-Az訂閱](/powershell/module/az.accounts/get-azsubscription)Cmdlet 列出當前帳戶在 Azure AD 租戶下可以訪問的訂閱。 記錄要投影到 Azure AD B2C 租戶中的訂閱的 ID。
+使用[獲取-Az訂閱](/powershell/module/az.accounts/get-azsubscription)cmdlet 列出當前帳戶在 Azure AD 租戶下可以存取的訂閱。 記錄要投影到 Azure AD B2C 租戶中的訂閱的 ID。
 
 ```PowerShell
 Get-AzSubscription
 ```
 
-接下來，切換到要投影到 Azure AD B2C 租戶的訂閱：
+接下來,切換到要投影到 Azure AD B2C 租戶的訂閱:
 
 ``` PowerShell
 Select-AzSubscription <subscription ID>
 ```
 
-最後，部署之前下載和更新的 Azure 資源管理器範本和參數檔。 相應地替換`Location``TemplateFile`和`TemplateParameterFile`值。
+最後,部署之前下載和更新的 Azure 資源管理器範本和參數檔。 相應地替換`Location``TemplateFile`和`TemplateParameterFile`值。
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -151,7 +151,7 @@ New-AzDeployment -Name "AzureADB2C" `
                  -Verbose
 ```
 
-成功部署範本可生成類似于以下內容的輸出（輸出為簡潔而截斷）：
+成功部署樣本可生成類似於以下內容的輸出(輸出為簡潔而截斷):
 
 ```Console
 PS /usr/csuser/clouddrive> New-AzDeployment -Name "AzureADB2C" `
@@ -191,60 +191,60 @@ Parameters              :
 ...
 ```
 
-部署範本後，可能需要幾分鐘才能完成資源投影。 您可能需要等待幾分鐘（通常不超過五個），然後進入下一節才能選擇訂閱。
+部署範本後,可能需要幾分鐘才能完成資源投影。 您可能需要等待幾分鐘(通常不超過五個),然後進入下一節才能選擇訂閱。
 
 ## <a name="select-your-subscription"></a>選取您的訂用帳戶
 
-部署範本並等待幾分鐘後資源投影完成後，將訂閱與 Azure AD B2C 目錄相關聯，並執行以下步驟。
+部署範本並等待幾分鐘後資源投影完成後,將訂閱與 Azure AD B2C 目錄相關聯,並執行以下步驟。
 
-1. 如果您當前已登錄，請**登出**Azure 門戶。 執行此步驟和以下步驟，以在門戶會話中刷新憑據。
-1. 使用 Azure AD B2C 管理帳戶登錄到[Azure 門戶](https://portal.azure.com)。
-1. 在門戶工具列中選擇 **"目錄 + 訂閱**"圖示。
+1. 如果您目前已登錄,請**註銷**Azure 門戶。 執行此步驟和以下步驟,以在門戶會話中刷新憑據。
+1. 使用 Azure AD B2C 管理帳戶登入[Azure 門戶](https://portal.azure.com)。
+1. 在門戶工具列中選擇 **「目錄 + 訂閱**」圖示。
 1. 選擇包含訂閱的目錄。
 
     ![切換目錄](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
-1. 驗證您選擇了正確的目錄和訂閱。 在此示例中，將選擇所有目錄和訂閱。
+1. 驗證您選擇了正確的目錄和訂閱。 在此示例中,將選擇所有目錄和訂閱。
 
     ![在目錄&訂閱篩選器中選擇的所有目錄](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
 
 ## <a name="configure-diagnostic-settings"></a>設定診斷設定
 
-診斷設置定義應發送資源的日誌和指標的位置。 可能的目的地是：
+診斷設置定義應發送資源的日誌和指標的位置。 可能的目的地是:
 
-- [Azure 存儲帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Azure 儲存帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)解決方案。
-- [日誌分析工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
-如果尚未，請在[Azure 資源管理器範本](#create-an-azure-resource-manager-template)中指定的資源組中創建所選目標型別的實例。
+如果尚未,請在[Azure 資源管理器樣本](#create-an-azure-resource-manager-template)中指定的資源組中創建所選目標類型的實例。
 
-### <a name="create-diagnostic-settings"></a>創建診斷設置
+### <a name="create-diagnostic-settings"></a>建立診斷設定
 
-您已準備好在 Azure 門戶中[創建診斷設置](../active-directory/reports-monitoring/overview-monitoring.md)。
+您已準備好在 Azure 門戶中[建立診斷設定](../active-directory/reports-monitoring/overview-monitoring.md)。
 
-要配置 Azure AD B2C 活動日誌的監視設置，請執行以下操作：
+要設定 Azure AD B2C 活動紀錄的監視設定,請執行以下操作:
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-1. 在門戶工具列中選擇**目錄 + 訂閱**圖示，然後選擇包含 Azure AD B2C 租戶的目錄。
-1. 選擇**Azure 活動目錄**
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 在門戶工具列中選擇**目錄 + 訂閱**圖示,然後選擇包含 Azure AD B2C 租戶的目錄。
+1. 選擇**Azure 的項目目錄**
 1. 在 [監視]**** 下方，選取 [診斷設定]****。
-1. 如果資源上有現有設置，您將看到已配置的設置清單。 選擇 **"添加診斷設置**以添加新設置"，或**選擇"編輯**"設置以編輯現有設置。 每個設置只能具有每個目標型別的一個。
+1. 若資源上有現有設定,您將看到已設定的設定清單。 選擇 **「新增診斷設定**以新增新設定」,或**選擇「編輯**」設定以編輯現有設定。 每個設置只能具有每個目標類型的一個。
 
-    ![Azure 門戶中的診斷設置窗格](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
+    ![Azure 門戶中的診斷設定窗格](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
-1. 如果設置尚未具有名稱，請為設置指定名稱。
-1. 選中每個目標發送日誌的核取方塊。 選擇 **"配置**"以按下表中所述指定其設置。
+1. 如果設置尚未具有名稱,請為設置指定名稱。
+1. 選中每個目標發送日誌的複選框。 選擇 **「設定**」以按下表中所述指定其設置。
 
     | 設定 | 描述 |
     |:---|:---|
     | 封存至儲存體帳戶 | 存儲帳戶的名稱。 |
-    | 串流至事件中樞 | 創建事件中心（如果這是您第一次資料流日誌）或資料流到的命名空間（如果有資源正在資料流到此命名空間）。
+    | 串流至事件中樞 | 創建事件中心(如果這是您第一次流式傳輸日誌)或流式傳輸到的命名空間(如果有資源正在流式傳輸到此命名空間)。
     | 傳送至 Log Analytics | 工作區的名稱。 |
 
-1. 選擇**稽核記錄**和**登錄日誌**。
-1. 選取 [儲存]****。
+1. 選擇**稽核紀錄**與**登入紀錄**。
+1. 選取 [儲存]  。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關在 Azure 監視器中添加和配置診斷設置的詳細資訊，請參閱[教程：從 Azure 資源收集和分析資源日誌](../azure-monitor/insights/monitor-azure-resource.md)。
+有關在 Azure 監視器中新增與設定診斷設定的詳細資訊,請參閱[教學:從 Azure 資源收集和分析資源紀錄](../azure-monitor/insights/monitor-azure-resource.md)。
 
-有關將 Azure AD 日誌資料流到事件中心的資訊，請參閱[教程：將 Azure 活動目錄日誌資料流到 Azure 事件中心](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
+有關將 Azure AD 紀錄串流式傳輸到事件中心的資訊,請參閱[教學:將 Azure 活動目錄紀錄串流式傳輸到 Azure 事件中心](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。

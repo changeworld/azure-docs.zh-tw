@@ -1,14 +1,14 @@
 ---
 title: 受支援的資源管理員資源類型
 description: 提供 Azure 資源圖和更改歷史記錄支援的資源管理員資源類型的清單。
-ms.date: 04/06/2020
+ms.date: 04/15/2020
 ms.topic: reference
-ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677058"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415147"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 資源圖表和資源類型引用
 
@@ -392,7 +392,6 @@ Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/man
 - 微軟儲存同步/儲存同步服務
 - 微軟.storsimple/經理
 - 微軟.流分析/流式處理
-- 微軟支援/支援票
 - 微軟.synapse/工作區
 - 微軟.synapse/工作區/大數據池
 - 微軟.synapse/工作區/sqlpools

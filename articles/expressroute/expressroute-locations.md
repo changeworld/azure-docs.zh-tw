@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/25/2020
+ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 913bc16f7408acebb0e65359e8845ce0f6a3a2f4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314261"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390256"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -81,7 +81,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **[AIS](https://business.ais.co.th/solution/en/azure-expressroute.html)** | 支援 | 支援 | 曼谷 |
 | **[Aryaka Networks](https://www.aryaka.com/)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、香港特別行政區、聖保羅、西雅圖、矽谷、新加坡、東京、華盛頓特區 |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |支援 |支援 |聖保羅 |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、倫敦、矽谷、新加坡、雪梨、東京、多倫多、華盛頓特區 |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、法蘭克福、倫敦、矽谷、新加坡、悉尼、東京、多倫多、華盛頓特區 |
 | **[在東京](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | 支援 | 支援 | 東京2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支援 | 支援 | 東京 |
 | **[BCX](https://www.bcx.co.za/solutions)** |支援 |支援 |開普敦|
@@ -138,7 +138,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **[橙色](https://www.orange-business.com/en/products/business-vpn-galerie)** |支援 |支援 |阿姆斯特丹,阿姆斯特丹2,迪拜2,法蘭克福,香港特別行政區,約翰尼斯堡,倫敦,巴黎,聖保羅,矽谷,新加坡,悉尼,東京,華盛頓特區 |
 | **[奧裡克斯科姆](https://www.orixcom.com/cloud-solutions/)** | 支援 | 支援 | 迪拜2 |
 | **[封包交換](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |支援 |支援 |芝加哥、矽谷、華盛頓特區 |
-| **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |支援 |支援 |芝加哥, 香港特別行政區, 倫敦 |
+| **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |支援 |支援 |芝加哥, 香港特別行政區, 倫敦, 新加坡2 |
 | **[世宗電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |支援 |支援 |首爾 |
 | **[SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | 支援 |支援 | 華盛頓 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支援 |支援 |辰內、孟買 2 |

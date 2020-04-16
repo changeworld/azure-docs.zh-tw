@@ -4,12 +4,12 @@ description: 瞭解如何快速創建 Kubernetes 群集,使用 Azure CLI 在 Azu
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 8d2a91f63815e7ba4bcbe4084b80a06fa7779099
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2aecebcc45cb24c9ab3a594aa4d74b1584c7ffa7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886716"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392667"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>預覽 - 使用 Azure CLI 在 Azure 庫伯奈斯服務 (AKS) 叢集上建立 Windows 伺服器容器
 
@@ -302,7 +302,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱[AKS 服務主體的考量和刪除][sp-delete]。
+> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。 如果使用託管標識,則標識由平臺管理,不需要刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -311,7 +311,7 @@ az group delete --name myResourceGroup --yes --no-wait
 若要深入了解 AKS，並逐步完成部署範例的完整程式碼，請繼續 Kubernetes 叢集教學課程。
 
 > [!div class="nextstepaction"]
-> [AKS 教程][aks-tutorial]
+> [AKS 教學課程][aks-tutorial]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

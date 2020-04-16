@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383259"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392077"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>在 Azure 自動化狀態設定中編譯 DSC 設定
 
@@ -36,7 +36,7 @@ ms.locfileid: "81383259"
 
 ### <a name="portal"></a>入口網站
 
-1. 從您的自動化帳戶，按一下 [State Configuration (DSC)]****。
+1. 在自動化帳戶中,單擊**狀態配置 (DSC)。**
 1. 按一下 [組態]**** 索引標籤，然後按一下要編譯的組態名稱。
 1. 按一下 [編譯] ****。
 1. 如果設定沒有參數,系統將提示您確認是否要編譯該配置。 如果配置具有參數,則將打開 **「編譯配置」** 邊欄選項卡,以便提供參數值。
@@ -130,12 +130,12 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>在 Azure 自動化中編譯設定時管理設定資料
 
-**ConfigurationData** 可讓您在使用 PowerShell DSC 時，將結構化設定與任何環境特定設定進行區隔。 有關詳細資訊,請參閱在[PowerShell DSC 中將「什麼」與「地點」分開](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)。
+`ConfigurationData`是一個內建的 DSC 參數,允許您在使用 PowerShell DSC 時將結構配置與任何特定於環境的配置分開。 有關詳細資訊,請參閱在[PowerShell DSC 中將「什麼」與「地點」分開](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)。
 
 > [!NOTE]
-> 在 Azure 自動化狀態設定中編譯時,可以在 Azure PowerShell 中使用設定資料,但不能在 Azure 門戶中使用**設定資料**。
+> 在 Azure 自動化狀態配置中編譯時`ConfigurationData`,可以在 Azure PowerShell 中使用,但不能在 Azure 門戶中使用。
 
-下面的範例 DSC 設定`$ConfigurationData``$AllNodes`透過與關鍵字型態**資料**。 對於此範例,您還需要[xWeb 管理模組](https://www.powershellgallery.com/packages/xWebAdministration/)。
+下面的範例 DSC`ConfigurationData``$ConfigurationData`設定`$AllNodes`透過和關鍵字使用。 對於此範例,您還需要[xWeb 管理模組](https://www.powershellgallery.com/packages/xWebAdministration/)。
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -198,7 +198,7 @@ Azure 自動化中的 DSC 組態可以使用 `Get-AutomationPSCredential` Cmdlet
 
 要在節點組態 (MOF 組態文件) 中保持認證的安全性，需要在節點組態 MOF 檔案中為認證加密。 目前,您必須授予 PowerShell DSC 在節點配置 MOF 生成期間以純文本輸出認證的許可權。 PowerShell DSC 不知道 Azure 自動化在生成整個 MOF 檔後通過編譯作業對其進行加密。
 
-您可以告訴 PowerShell DSC,可以使用配置數據在生成的節點配置 MOF 中以純文字輸出認證。 您應該`PSDscAllowPlainTextPassword = $true`透過**設定資料來**傳遞 DSC 設定中顯示的每個節點塊名稱並使用認證。
+您可以告訴 PowerShell DSC,可以使用配置數據在生成的節點配置 MOF 中以純文字輸出認證。 您應該透過`PSDscAllowPlainTextPassword = $true``ConfigurationData`DSC 設定中顯示的每個節點塊名稱並使用認證。
 
 下列範例說明使用自動化認證資產的 DSC 組態。
 
@@ -262,9 +262,9 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>匯入節點設定
 
-1. 從您的自動化帳戶，按一下 [組態管理]**** 下方的 [State configuration (DSC)]****。
+1. 在自動化帳戶中,單擊**配置管理**下的 **「狀態配置 」DSC」。。**
 1. 在「狀態配置 (DSC)」頁上,按下「**設定」** 選項卡,然後按下「**添加**」。
-1. 在「導入」頁上,按下 **「節點設定檔」** 文字框旁邊的資料夾圖示,以瀏覽本地電腦上的節點設定檔 (MOF)。
+1. 在「導入」頁上,按下 **「節點設定檔」** 欄位旁邊的資料夾圖示,以瀏覽本地電腦上的節點配置 MOF 檔。
 
    ![瀏覽本機檔案](./media/automation-dsc-compile/import-browse.png)
 

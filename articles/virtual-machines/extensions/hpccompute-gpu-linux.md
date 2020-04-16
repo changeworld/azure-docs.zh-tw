@@ -1,5 +1,5 @@
 ---
-title: NVIDIA GPU 驅動程式擴展 - Azure Linux VM
+title: NVIDIA GPU 驅動程式擴充 - Azure Linux VM
 description: 用於在執行 Linux 的 N 系列計算虛擬機器上安裝 NVIDIA GPU 驅動程式的 Microsoft Azure 擴充功能。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250565"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415795"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>適用於 Linux 的 NVIDIA GPU 驅動程式擴充功能
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 這個擴充功能可在 Linux N 系列虛擬機器上安裝 NVIDIA GPU 驅動程式。 視虛擬機器系列而定，擴充功能會安裝 CUDA 或 GRID 驅動程式。 若您使用此擴充功能安裝 NVIDIA 驅動程式，即表示您接受並同意 [NVIDIA End-User License Agreement](https://go.microsoft.com/fwlink/?linkid=874330) (NVIDIA 使用者授權合約) 的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
-有關驅動程式和當前支援版本的手動安裝的說明[，可在此處獲取](
+有關驅動程式與目前支援版本的手動安裝的說明[,可在此處取得](
 https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)。
 也可使用擴充功能在 [Windows N 系列虛擬機器](hpccompute-gpu-windows.md)上安裝 NVIDIA GPU 驅動程式。
 
@@ -86,7 +86,7 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 | 名稱 | 描述 | 預設值 | 有效的值 | 資料類型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | 即使驅動程式安裝不需要，也會更新核心 | false | true、false | boolean |
-| driverVersion | NV：GRID 驅動程式版本<br> NC/ND：CUDA 工具組版本。 系統會自動安裝所選 CUDA 的最新驅動程式。 | 最新 | 網格："430.30"，"418.70"，"410.92"，"410.71"，"390.75"，"390.57"，"390.42"<br> CUDA："10.0.130"、"9.2.88"、"9.1.85" | 字串 |
+| driverVersion | NV：GRID 驅動程式版本<br> NC/ND：CUDA 工具組版本。 系統會自動安裝所選 CUDA 的最新驅動程式。 | 最新 | 網格:"430.30","418.70","410.92","410.71","390.75","390.57","390.42"<br> CUDA："10.0.130"、"9.2.88"、"9.1.85" | 字串 |
 | installCUDA | 安裝 CUDA 工具組。 只與 NC/ND 系列 VM 相關。 | true | true、false | boolean |
 
 
@@ -141,15 +141,15 @@ Set-AzVMExtension
 下列範例反映上述 Azure Resource Manager 和 PowerShell 範例，而且還新增自訂設定作為非預設驅動程式安裝的範例。 具體來說，它會更新 OS 核心並安裝特定 CUDA 工具組版的驅動程式。
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.2 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "9.1.85", \
   }'
 ```
 
@@ -188,7 +188,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支援
 
-如果本文中的任何一點都需要更多説明，則可以在[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/community/)上聯繫 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇"獲取支援"。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一點都需要更多説明,則可以在[MSDN Azure 和堆疊溢出論壇](https://azure.microsoft.com/support/community/)上聯繫 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇「獲取支援」。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
 如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Linux 功能](features-linux.md)。

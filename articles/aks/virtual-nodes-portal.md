@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 入口網站建立使用虛擬節點執行
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259114"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392585"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>在 Azure 入口網站中建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerInstance
 
 在 Azure 門戶的左上角,選擇 **"創建資源** > **庫伯奈斯服務**"。
 
-在 [基本資料]**** 頁面上設定下列選項：
+在 [基本資料]  頁面上設定下列選項：
 
-- 專案詳細資料**：選取 Azure 訂用帳戶，然後選取或建立 Azure 資源群組，例如 myResourceGroup**。 輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster**。
+- *此專案詳細資訊*:選擇 Azure 訂閱,然後選擇或建立 Azure 資源群組,如*我的資源群組*。 輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster**。
 - 叢集詳細資料**：選取 AKS 叢集的地區、Kubernetes 版本及 DNS 名稱前置詞。
 - *主節點:* 為 AKS 節點選擇 VM 大小。 VM 大小**無法**在 AKS 叢集部署完畢後變更。
      - 選取要部署到叢集的節點數目。 本文將 [節點計數]**** 設為 1**。 節點計數**可以**在叢集部署完畢後調整。
@@ -89,7 +89,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 ![建立 AKS 叢集並啟用虛擬節點](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-根據預設，系統會建立 Azure Active Directory 服務主體。 此服務主體會用於叢集通訊，以及與其他 Azure 服務整合。
+根據預設，系統會建立 Azure Active Directory 服務主體。 此服務主體會用於叢集通訊，以及與其他 Azure 服務整合。 或者,您可以將託管標識用於許可權,而不是服務主體。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。
 
 叢集也會針對進階網路功能進行設定。 虛擬節點會設定為使用自己的 Azure 虛擬網路子網路。 此子網路具有委派的權限，可連線 AKS 叢集之間的 Azure 資源。 如果您還沒有委派的子網路，Azure 入口網站會建立並設定 Azure 虛擬網路和子網路，以搭配虛擬節點使用。
 
@@ -101,9 +101,9 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 若要管理 Kubernetes 叢集，請使用 Kubernetes 命令列用戶端：[kubectl][kubectl]。 `kubectl` 用戶端會預先安裝在 Azure Cloud Shell 中。
 
-若要開啟 Cloud Shell，請選取程式碼區塊右上角的 [試試看]****。 您還可以通過訪問[https://shell.azure.com/bash](https://shell.azure.com/bash)在單獨的瀏覽器選項卡中啟動雲外殼。 選擇**複製程式**以複製代碼塊,將其貼到雲外殼中,然後按 Enter 以執行它。
+若要開啟 Cloud Shell，請選取程式碼區塊右上角的 [試試看]****。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
-若要設定  來連線到 Kubernetes 叢集，請使用 [az aks get-credentials`kubectl`][az-aks-get-credentials] 命令。 下列範例會針對 myResourceGroup** 資源群組中的叢集名稱 myAKSCluster** 取得認證：
+若要設定  來連線到 Kubernetes 叢集，請使用 [az aks get-credentials`kubectl`][az-aks-get-credentials] 命令。 下列範例會針對 myResourceGroup  資源群組中的叢集名稱 myAKSCluster  取得認證：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632476"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408035"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的暫存表
 本文包含使用暫存資料表的基本指引，並強調說明工作階段層級暫存資料表的原則。 
@@ -30,7 +29,14 @@ ms.locfileid: "80632476"
 
 暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是它的效能優點。
 
-## <a name="create-a-temporary-table"></a>建立暫存資料表
+臨時表在處理數據時很有用,尤其是在轉換期間,中間結果是暫時的。 使用 SQL 分析,臨時表存在於會話級別。  它們僅在創建它們的會話中可見。 因此,當會話註銷時,它們會自動丟棄。 
+
+## <a name="temporary-tables-in-sql-pool"></a>SQL 池中的暫時
+
+在 SQL 池資源中,臨時表提供性能優勢,因為它們的結果寫入本地存儲而不是遠端存儲。
+
+### <a name="create-a-temporary-table"></a>建立暫存資料表
+
 建立暫存資料表時會在資料表名稱前面加上 `#`。  例如：
 
 ```sql
@@ -89,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS` 是一個強大的命令，可有效率地使用交易記錄空間是它額外的好處。 
@@ -226,5 +232,6 @@ DROP TABLE #stats_ddl;
 此外,無法在臨時表上創建檢視。  只能使用哈希或迴圈分佈創建臨時表。  不支援複製的臨時表分發。 
 
 ## <a name="next-steps"></a>後續步驟
-若要深入了解如何開發資料表，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)。
+
+要瞭解有關開發表的更多資訊,請參閱使用[SQL Analytics 資源設計表](sql-data-warehouse-tables-overview.md)一文。
 

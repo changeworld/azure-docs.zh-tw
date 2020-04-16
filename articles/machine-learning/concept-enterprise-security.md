@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756561"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414635"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 機器學習的企業安全性
 
@@ -243,9 +243,9 @@ Azure 資料塊可用於 Azure 機器學習管道。 預設情況下,Azure 資�
 
 ### <a name="encryption-in-transit"></a>傳輸中加密
 
-可以使用 TLS 來保護 Azure 機器學習微服務之間的內部通信,並保護對評分終結點的外部調用。 所有 Azure 儲存存取也透過安全通道進行。
+Azure 機器學習使用 TLS 來保護各種 Azure 機器學習微服務之間的內部通信。 所有 Azure 儲存存取也透過安全通道進行。
 
-有關詳細資訊,請參閱使用[TLS 透過 Azure 機器學習來保護 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
+要保護對評分終結點的外部調用,Azure 機器學習使用 TLS。 有關詳細資訊,請參閱使用[TLS 透過 Azure 機器學習來保護 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

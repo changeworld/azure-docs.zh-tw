@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262259"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390354"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -58,7 +58,7 @@ Azure[應用商店的視訊建構解決方案範本和託管應用程式](https:
 
     * [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure 快速入門範例](https://github.com/azure/azure-quickstart-templates) \(英文\)
-    * [發佈應用程式定義](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [發佈應用程式定義](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [部署服務目錄應用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * 教學課程：
@@ -172,7 +172,7 @@ Azure[應用商店的視訊建構解決方案範本和託管應用程式](https:
 
 您在此處輸入的名稱將作為產品/服務列表的標題顯示給客戶。 此欄位預填充了創建產品/服務時為 **「產品/服務」別名**輸入的文本,但您可以更改此值。 此名稱可以註冊商標(您可以包括商標或版權符號)。 名稱不能超過 50 個字元,不能包含任何表情符號。
 
-### <a name="summary"></a>總結
+### <a name="summary"></a>摘要
 
 提供產品/服務的簡短說明(最多 100 個字元),可在市場搜尋結果中使用。
 
@@ -312,7 +312,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據,例如 Fed
 
 根據創建計畫時分配的計畫的名稱進行預填充。  此名稱將顯示為市場上顯示的此「軟體計劃」 的標題。  可能最多包含 100 個字元。
 
-### <a name="summary"></a>總結
+### <a name="summary"></a>摘要
 
 提供軟體計劃的簡短摘要。  可能最多包含 100 個字元。
 

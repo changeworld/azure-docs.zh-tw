@@ -5,12 +5,12 @@ description: 瞭解如何使用 Azure Kubernetes 服務 (AKS) 中的庫伯內斯
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886682"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392619"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用網路原則來保護 Pod 之間的流量
 
@@ -82,6 +82,8 @@ Azure 提供了兩種實現網路策略的方法。 創建 AKS 群集時,請選�
 * 針對虛擬網路上的 AKS 叢集服務主體指派「參與者」** 權限。
 * 在定義的虛擬網路中創建 AKS 群集,並啟用網路策略。
     * 使用*azure*網路策略選項。 要使用 Calico 作為網路策略選項,`--network-policy calico`請使用 參數。 注意:Calico 可以與`--network-plugin azure``--network-plugin kubenet`或 一起使用。
+
+請注意,可以使用託管標識的許可權,而不是使用服務主體。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。
 
 提供您自己的安全 *SP_PASSWORD*。 您可以取代*RESOURCE_GROUP_NAME*變數和*CLUSTER_NAME*變數:
 

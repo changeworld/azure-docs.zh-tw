@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927486"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414091"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory 中的複製資料工具
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程序 (通常是端對端資料整合案例中的第一步) 簡化並最佳化。  它可節省時間，尤其是當您第一次使用 Azure Data Factory 從資料來源內嵌資料的時候。 使用此工具的一些優點包括：
 
 - 使用 Azure Data Factory「複製資料」工具時，您不需要了解已連結的服務、資料集、管線、活動及觸發程序的 Data Factory 定義。 

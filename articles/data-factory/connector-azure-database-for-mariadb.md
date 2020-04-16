@@ -11,23 +11,25 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 20e84b584fa4d654500efc47786fa8db0cd9c238
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c433fc5d919a57476097257cac1b7176a9da598d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440793"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410699"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>使用 Azure Data Factory 從適用於 MariaDB 的 Azure 資料庫複製資料 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從適用於 MariaDB 的 Azure 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-以下活動支援 MariaDB 連接器的此 Azure 資料庫：
+以下活動支援 MariaDB 連接器的此 Azure 資料庫:
 
-- 使用[支援的源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [查找活動](control-flow-lookup-activity.md)
+- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
+- [尋找活動](control-flow-lookup-activity.md)
  
 您可以將資料從適用於 MariaDB 的 Azure 資料庫複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -45,11 +47,11 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設置為 **：Azure MariaDB** | 是 |
+| type | 類型屬性必須設定**為 :Azure MariaDB** | 是 |
 | connectionString | 連接字串，用於連線到適用於 MariaDB 的 Azure 資料庫。 您可以從 Azure 入口網站 -> 適用於 MariaDB 的 Azure 資料庫 -> 連接字串 -> ADO.NET 中找到它。 <br/> 您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `pwd` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**例子：**
+**範例:**
 
 ```json
 {
@@ -95,13 +97,13 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義資料集的節和屬性的完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供適用於 MariaDB 的 Azure 資料庫資料集所支援的屬性清單。
+有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供適用於 MariaDB 的 Azure 資料庫資料集所支援的屬性清單。
 
-要從 MariaDB 的 Azure 資料庫複製資料，支援以下屬性：
+要從 MariaDB 的 Azure 資料庫複製資料,支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設置為 **：AzureMariaDBTable** | 是 |
+| type | 資料集的類型屬性必須設定為 **:AzureMariaDBTable** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
@@ -127,14 +129,14 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ### <a name="azure-database-for-mariadb-as-source"></a>以適用於 MariaDB 的 Azure 資料庫作為來源
 
-要從 MariaDB 的 Azure 資料庫複製資料，複製活動**源**部分支援以下屬性：
+要從 MariaDB 的 Azure 資料庫複製資料,複製活動**來源**部分支援以下屬性:
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須將複製活動源的類型屬性設置為 **：AzureMariaDBSource** | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如：`"SELECT * FROM MyTable"`。 | 否 (如果已指定資料集中的 "tableName") |
+| type | 必須複製活動來源類型屬性設定為 **:AzureMariaDBSource** | 是 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**例子：**
+**範例:**
 
 ```json
 "activities":[
@@ -165,9 +167,9 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
     }
 ]
 ```
-## <a name="lookup-activity-properties"></a>查找活動屬性
+## <a name="lookup-activity-properties"></a>尋找活動屬性
 
-要瞭解有關屬性的詳細資訊，請檢查[查找活動](control-flow-lookup-activity.md)。
+要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

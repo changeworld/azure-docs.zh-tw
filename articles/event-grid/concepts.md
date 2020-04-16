@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265060"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393469"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid 中的概念
 
@@ -22,7 +22,7 @@ ms.locfileid: "79265060"
 
 事件是完整說明系統中發生內容的最小量資訊。 每個事件都有一般資訊，例如：事件來源、事件發生的時間，以及唯一識別碼。 每個事件也有只與特定事件類型相關的特定資訊。 例如，在 Azure 儲存體中建立新檔案的相關事件含有該檔案的相關詳細資料，例如 `lastTimeModified` 值。 或者，事件中樞事件含有「擷取」檔案的 URL。 
 
-通用可用性 （GA） 服務等級協定 （SLA） 涵蓋大小高達 64 KB 的事件。 當前預覽了對大小為 1 MB 的事件的支援。 超過 64 KB 的事件以 64 KB 的增量收費。 
+通用可用性 (GA) 服務等級協定 (SLA) 涵蓋大小高達 64 KB 的事件。 當前預覽了對大小為 1 MB 的事件的支援。 超過64 KB的事件以64 KB的增量收費。 
 
 
 關於事件中傳送的屬性，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "79265060"
 
 事件來源是事件發生的地點。 每個事件來源都與一或多個事件類型相關。 例如，Azure 儲存體是 Blob 建立事件的事件來源。 IoT 中樞是裝置建立事件的事件來源。 您的應用程式是您定義之自訂事件本身的事件來源。 事件來源負責將事件傳送至 Event Grid。
 
-如需與實作任何支援的事件方格來源有關的資訊，請參閱 [Azure 事件方格中的事件來源](event-sources.md)。
+如需與實作任何支援的事件方格來源有關的資訊，請參閱 [Azure 事件方格中的事件來源](overview.md#event-sources)。
 
 ## <a name="topics"></a>主題
 
@@ -80,12 +80,12 @@ Event Grid 提供訂閱主題和發佈主題的安全性。 訂閱時，您必�
 
 ## <a name="batching"></a>批次處理
 
-在使用自訂主題時，事件必須一律發佈在陣列中。 在低輸送量的案例中，這可以是單一批次，但在大量使用案例中，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件仍不應大於 64 KB（常規可用性）或 1 MB（預覽）。
+在使用自訂主題時，事件必須一律發佈在陣列中。 在低輸送量的案例中，這可以是單一批次，但在大量使用案例中，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件仍不應大於 64 KB(常規可用性)或 1 MB(預覽)。
 
 > [!NOTE]
-> 通用可用性 （GA） 服務等級協定 （SLA） 涵蓋大小高達 64 KB 的事件。 當前預覽了對大小為 1 MB 的事件的支援。 超過 64 KB 的事件以 64 KB 的增量收費。 
+> 通用可用性 (GA) 服務等級協定 (SLA) 涵蓋大小高達 64 KB 的事件。 當前預覽了對大小為 1 MB 的事件的支援。 超過64 KB的事件以64 KB的增量收費。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關事件網格的簡介，請參閱[有關事件網格](overview.md)。
+* 有關事件網格的簡介,請參閱[有關事件網格](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

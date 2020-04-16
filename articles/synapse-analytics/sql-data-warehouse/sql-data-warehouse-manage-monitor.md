@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: cf6f25e8839ead5738eb7259cc4fccb674a4adea
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633181"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416090"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>使用 DMV 監視 Azure 同步分析 SQL 池工作負荷
 
@@ -309,4 +309,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 DMV 的詳細資訊，請參閱[系統檢視](sql-data-warehouse-reference-tsql-system-views.md)。
+如需 DMV 的詳細資訊，請參閱[系統檢視](../sql/reference-tsql-system-views.md)。

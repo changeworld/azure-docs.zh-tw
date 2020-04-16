@@ -1,24 +1,24 @@
 ---
 title: 非同步重新整理 Azure Analysis Services 模型 | Microsoft Docs
-description: 描述如何使用 Azure 分析服務 REST API 編寫模型資料的非同步刷新代碼。
+description: 描述如何使用 Azure 分析服務 REST API 編寫模型數據的非同步刷新程式碼。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273710"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406277"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 進行非同步重新整理
 
-使用任何支援 REST 呼叫的程式設計語言，您可以對 Azure Analysis Services 表格式模型執行非同步的資料重新整理作業。 這包括相應放大查詢的唯讀複本同步處理。 
+通過使用支援 REST 調用的任何程式設計語言,可以在 Azure 分析服務表格模型上執行非同步資料刷新操作。 這包括相應放大查詢的唯讀複本同步處理。 
 
-資料刷新操作可能需要一些時間，具體取決於許多因素，包括資料量、使用分區的優化級別等。這些操作傳統上是使用現有方法調用的，例如使用[TOM（](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)表格物件模型[）、PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) Cmdlet 或[TMSL（](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)表格模型指令碼語言）。 不過，這些方法可能需要通常不太可靠的長時間執行 HTTP 連線。
+數據刷新操作可能需要一些時間,具體取決於許多因素,包括數據量、使用分區的優化級別等。這些操作傳統上是使用現有方法呼叫的,例如使用[TOM(](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)表格物件模型[)、PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet 或[TMSL(](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)表格模型文本語言)。 不過，這些方法可能需要通常不太可靠的長時間執行 HTTP 連線。
 
 Azure Analysis Services 的 REST API 可讓資料重新整理作業以非同步方式進行。 使用 REST API，便不需要來自用戶端應用程式的長時間執行 HTTP 連線。 針對可靠性還有其他內建的功能，例如自動重試次數、批次認可。
 
@@ -30,7 +30,7 @@ Azure Analysis Services 的 REST API 可讓資料重新整理作業以非同步�
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，請考慮位於美國西部 Azure 區域的名為`myserver`的伺服器上名為"AdventureWorks"的模型。 伺服器名稱是：
+例如,請考慮位於美國西部 Azure 區域`myserver`的名為的伺服器上名為「AdventureWorks」的模型。 伺服器名稱是：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -123,7 +123,7 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-若要檢查重新整理作業的狀態，請對重新整理識別碼使用 GET 動詞命令。 以下是回應主體的範例。 如果操作正在進行，`inProgress`則返回狀態。
+若要檢查重新整理作業的狀態，請對重新整理識別碼使用 GET 動詞命令。 以下是回應主體的範例。 如果操作正在進行,`inProgress`則返回狀態。
 
 ```
 {
@@ -177,7 +177,7 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 
 ## <a name="post-sync"></a>POST /sync
 
-執行刷新操作後，可能需要將新資料與查詢橫向擴展的副本同步。要對模型執行同步操作，請使用 /sync 函數上的 POST 謂詞。 回應中的位置標頭 (Location) 包含重新整理作業的識別碼。
+執行刷新操作後,可能需要將新數據與查詢橫向擴展的副本同步。要對模型執行同步操作,請使用 /sync 函數上的 POST 謂詞。 回應中的位置標頭 (Location) 包含重新整理作業的識別碼。
 
 ## <a name="get-sync-status"></a>GET /sync status
 
@@ -208,8 +208,8 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 
 ### <a name="to-use-the-code-sample"></a>使用程式碼範例
 
-1.  複製或下載存放庫。 開啟 RestApiSample 解決方案。
-2.  找到 **client.BaseAddress = …** 這一行 並提供您的[基底 URL](#base-url)。
+1.    複製或下載存放庫。 開啟 RestApiSample 解決方案。
+2.    找到 **client.BaseAddress = …** 這一行 並提供您的[基底 URL](#base-url)。
 
 代碼示例使用[服務主體](#service-principal)身份驗證。
 
@@ -217,9 +217,9 @@ CommitMode 等於 partialBatch。 當進行大型資料集的初始載入需要�
 
 如需關於如何在 Azure 中設定服務主體及指派必要權限的詳細資訊，請參閱[建立服務主體 - Azure 入口網站](../active-directory/develop/howto-create-service-principal-portal.md)和[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)。 完成這些步驟後，請完成下列額外步驟：
 
-1.  在程式碼範例中，找到 **string authority = …**，將 **common** 取代為貴組織的租用戶識別碼。
-2.  註解/取消註解，以便使用 ClientCredential 類別來具現化認證物件。 請確定目前存取 \<App ID> 和 \<App Key> 值的方式很安全，或為服務主體使用憑證型驗證。
-3.  執行範例。
+1.    在程式碼範例中,尋找**字串權限 = ...** **common**
+2.    註解/取消註解，以便使用 ClientCredential 類別來具現化認證物件。 請確定目前存取 \<App ID> 和 \<App Key> 值的方式很安全，或為服務主體使用憑證型驗證。
+3.    執行範例。
 
 
 ## <a name="see-also"></a>另請參閱

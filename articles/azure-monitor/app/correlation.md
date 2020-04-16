@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991223"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405258"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -314,7 +314,7 @@ logger.warning('After the span')
 
 但是這些方法沒有啟用自動分散式跟蹤支援。 `DiagnosticSource`支援自動跨機關聯。 .NET 函`DiagnosticSource`式庫支援並允許透過傳輸(如 HTTP)自動跨電腦傳播相關上下文。
 
-`DiagnosticSource`中的[「活動使用者指南」](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解釋了追蹤活動的基礎知識。
+`DiagnosticSource`中的[「活動使用者指南」](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解釋了追蹤活動的基礎知識。
 
 ASP.NET Core 2.0 支援提取 HTTP 標頭並啟動新活動。
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4f39ff5726c23db32c7b039335f406641ee090cb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754253"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411190"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>為 Azure 機器學習工作區設定 Azure 專用連結(預覽)
 
@@ -47,8 +47,7 @@ Azure 專用連結使您能夠使用專用終結點連接到工作區。 專用�
 * 工作區版本(基本版或企業版)
 * 開啟工作區的高機密性設定
 * 如果啟用具有客戶託管金鑰的工作區的加密,並且應啟用金鑰的關聯值
-* 虛擬網路名稱與子網路
-* 子網路名稱
+* 虛擬網路和子網名稱,樣本將建立新的虛擬網路和子網路
 
 提交樣本並完成預配後,包含工作區的資源組將包含與專用連結相關的三個新項目類型:
 

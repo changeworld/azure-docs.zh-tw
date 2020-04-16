@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/06/2020
-ms.openlocfilehash: a35f34ed27299077dca78630511ea3c291caff60
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/13/2020
+ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804971"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416002"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>在 Azure 門戶管理邏輯應用
 
@@ -177,6 +177,46 @@ ms.locfileid: "80804971"
    ![確認刪除邏輯應用](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Azure 門戶在主 Azure 工具列上顯示一條通知,用於確認操作是成功還是失敗。
+
+<a name="manage-logic-app-versions"></a>
+
+## <a name="manage-logic-app-versions"></a>管理邏輯應用版本
+
+可以使用 Azure 門戶對邏輯應用進行版本控制。 您可以找到邏輯應用的版本歷史記錄,並升級以前的版本。
+
+<a name="find-version-history"></a>
+
+### <a name="find-and-view-previous-versions"></a>尋找及檢視早期版本
+
+1. 在 Azure 門戶中,[找到要管理的邏輯應用](#find-logic-app)。
+
+1. 在邏輯應用的功能表中,在**開發工具**下,選擇 **「版本」。**
+
+   ![在邏輯應用的功能表上,選擇"開發工具"下的"版本"](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+
+1. 從清單中選擇要管理的邏輯應用**的版本**。 您可以在搜尋列中輸入 **「版本**」識別碼以篩選清單。
+
+1. 在**歷史記錄版本**頁上,您將在唯讀模式下看到以前版本的詳細資訊。 您可以在邏輯應用**設計器**和**代碼檢視**模式之間進行選擇。
+
+   ![具有代碼檢視和邏輯應用設計器檢視的邏輯應用的歷史紀錄版本頁](./media/manage-logic-apps-with-azure-portal/history-version.png)
+
+<a name="promote-previous-versions"></a>
+
+### <a name="promote-previous-versions"></a>升級早期版本
+
+1. 在邏輯應用的版本紀錄中,[尋找並選擇要升級的版本](#find-version-history)。
+
+1. 在**歷史記錄版本**「頁上,選擇 **」升級**」。
+
+   ![在邏輯應用的版本歷史紀錄中推廣按鈕](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+
+1. 在打開**的邏輯應用設計器**頁面上,根據需要編輯要升級的版本。 您可以在**設計器**和**代碼檢視**模式之間切換。 您可以更新**參數**、**樣本**與**連接器**。
+
+   ![用於推廣早期版本的邏輯應用設計器頁面](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+
+1. 要保存任何更新並完成升級以前的版本,請選擇"**儲存**" (或者,要取消更改,請選擇 **"丟棄**") 
+
+   當您再次[查看邏輯應用的版本歷史記錄](#find-version-history)時,升級的版本將顯示在列表頂部,並具有新的標識碼。
 
 ## <a name="next-steps"></a>後續步驟
 

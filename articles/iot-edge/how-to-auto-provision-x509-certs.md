@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 03/06/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d5e968e578428a16a0005149a409986015a1fc5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668622"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393745"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 憑證建立與預先使用 IoT 邊緣裝置
 
@@ -44,6 +44,12 @@ ms.locfileid: "80668622"
 設備識別證書僅用於預配 IoT 邊緣設備和使用 Azure IoT 中心對設備進行身份驗證。 它們不是證書簽名,這與 IoT Edge 設備向模組或葉設備提供用於驗證的 CA 憑證不同。 有關詳細資訊,請參閱[Azure IoT 邊緣憑證使用方式詳細資訊](iot-edge-certs.md)。
 
 創建設備識別證書後,應具有兩個檔:包含證書公共部分的 .cer 或 .pem 檔案,以及包含證書私鑰的 .cer 或 .pem 檔。 如果計劃在 DPS 中使用組註冊,則還需要同一證書信任鏈中中間或根 CA 證書的公共部分。
+
+您需要以下檔案才能使用 X.509 設定自動預先:
+
+* 設備標識證書及其私鑰證書。 如果創建單個註冊,設備標識證書將上載到 DPS。 私鑰將傳遞到IoT邊緣運行時。
+* 完整的鏈證書,它至少應該包含設備標識和中間證書。 完整的鏈證書將傳遞到IoT邊緣運行時。
+* 信任證書鏈的中間或根 CA 證書。 如果創建組註冊,此證書將上傳到 DPS。
 
 ### <a name="use-test-certificates"></a>使用測試憑證
 
@@ -86,7 +92,7 @@ Windows：
 
    * **主證書 .pem 或 .cer 檔案**:從設備識別證書上載公共檔。 如果使用文稿產生測試憑證,請選擇以下檔案:
 
-      `<WRKDIR>/certs/iot-edge-device-identity-<name>-full-chain.cert.pem`
+      `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
    * **IoT 中心裝置 ID**:如果您願意,請提供設備的 ID。 您可以使用裝置識別碼，將個別裝置設為模組部署的目標。 如果不提供設備 ID,則使用 X.509 證書中的通用名稱 (CN)。
 
@@ -205,7 +211,7 @@ X.509 與 DPS 的預配僅在 IoT 邊緣版本 1.0.9 或更高版本中支援。
 預配裝置時,您需要以下資訊:
 
 * DPS **ID 範圍**值。 可以從 Azure 門戶中的 DPS 實例的概述頁檢索此值。
-* 設備上的設備標識證書檔。
+* 設備上的設備標識證書鏈檔。
 * 設備上的設備識別金鑰檔。
 * 可選的註冊 ID(如果未提供,則從設備標識證書中的公用名稱提取)。
 
@@ -217,7 +223,7 @@ X.509 與 DPS 的預配僅在 IoT 邊緣版本 1.0.9 或更高版本中支援。
 
 將 X.509 憑證和密鑰資訊添加到 config.yaml 檔時,路徑應作為檔案 URI 提供。 例如：
 
-* `file:///<path>/identity_certificate.pem`
+* `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
 X.509 自動預配的設定檔中的部分如下所示:
@@ -235,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-將`scope_id``identity_cert`的占位符`identity_pk`值 替換為 DPS 實例中的範圍 ID,將 URI 替換為設備上的證書和密鑰檔位置。 如果需要,`registration_id`請為設備提供 a,或保留此行註釋,以便使用標識證書的 CN 名稱註冊設備。
+將`scope_id``identity_cert`的占位符`identity_pk`值 替換為 DPS 實例中的範圍 ID,將 URI 替換為設備上的證書鏈和密鑰檔位置。 如果需要,`registration_id`請為設備提供 a,或保留此行註釋,以便使用標識證書的 CN 名稱註冊設備。
 
 更新 config.yaml 檔後,始終重新啟動安全守護程式。
 
@@ -245,7 +251,7 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Windows 裝置
 
-在為其生成標識證書和標識密鑰的設備上安裝 IoT Edge 運行時。 您將為自動(而不是手動)預配配置 IoT Edge 執行時。
+在為其生成標識證書鏈和標識密鑰的設備上安裝 IoT Edge 運行時。 您將為自動(而不是手動)預配配置 IoT Edge 執行時。
 
 有關在 Windows 上安裝 IoT Edge 的詳細資訊,包括管理容器和更新 IoT Edge 等工作的先決條件和說明,請參閱[在 Windows 上安裝 Azure IoT 邊緣執行時](how-to-install-iot-edge-windows.md)。
 
@@ -262,11 +268,11 @@ sudo systemctl restart iotedge
 
 1. **Initialize-IoTEdge** 命令會設定機器的 IoT Edge 執行階段。 這個指令預設為手動預配,`-Dps`除非您使用標誌使用自動預配。
 
-   將`{scope_id}`的占位符值`{identity cert path}`替換`{identity key path}`為 中的占位符值,並將 DPS 實例中的相應值和設備上的檔路徑替換。 如果要指定註冊 ID,請也`-RegistrationId {registration_id}`包括 ,請酌情替換占位符。
+   將`{scope_id}`的占位符值`{identity cert chain path}`替換`{identity key path}`為 中的占位符值,並將 DPS 實例中的相應值和設備上的檔路徑替換。 如果要指定註冊 ID,請也`-RegistrationId {registration_id}`包括 ,請酌情替換占位符。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

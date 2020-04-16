@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4840b135587ae776cfb80258ce513a48a79efa43
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383341"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392384"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自動化中的連接資產
 
@@ -89,7 +89,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-您可以使用該文本創建連接資產,因為當您創建自動化帳戶時,預設情況下它會自動包含多個全域模組以及創建`AzureServicePrincipal``AzureRunAsConnection`連接資產的連接類型。 這很重要要牢記在心，因為如果您嘗試建立新的連接資產來連接到採用不同驗證方法的服務或應用程式，它會失敗，因為在您的自動化帳戶未定義該連接類型。 有關如何從[PowerShell 函式庫](https://www.powershellgallery.com)為自訂或模組建立自己的連線類型的詳細資訊,請參閱[整合模組](automation-integration-modules.md)
+您可以使用該文本創建連接資產,因為當您創建自動化帳戶時,預設情況下它會自動包含多個全域模組以及創建`AzureServicePrincipal``AzureRunAsConnection`連接資產的連接類型。 這很重要要牢記在心，因為如果您嘗試建立新的連接資產來連接到採用不同驗證方法的服務或應用程式，它會失敗，因為在您的自動化帳戶未定義該連接類型。 有關如何從[PowerShell 函式庫](https://www.powershellgallery.com)為自訂或模組建立自己的連線類型的詳細資訊,請參考[整合模組](automation-integration-modules.md)。
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>在 Runbook 或 DSC 設定中使用連接
 
@@ -113,7 +113,7 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 
 ![加入至畫布](media/automation-connections/connection-add-canvas.png)
 
-下圖顯示在圖形化 Runbook 中使用連接的範例。 這是如上所述，使用執行身分帳戶與文字 Runbook 進行驗證的相同範例。 本示例使用`Constant value`使用連接物件進行身份`Get RunAs Connection`驗證 的活動的數據集。 此處使用[管道連結](automation-graphical-authoring-intro.md#links-and-workflow),`ServicePrincipalCertificate`因為參數集需要單個物件。
+下圖顯示在圖形化 Runbook 中使用連接的範例。 這與上面所示使用帶有文本 Runbook 的「運行作為」帳戶進行身份驗證的範例相同。 本示例使用`Constant value`使用連接物件進行身份`Get RunAs Connection`驗證 的活動的數據集。 此處使用[管道連結](automation-graphical-authoring-intro.md#links-and-workflow),`ServicePrincipalCertificate`因為參數集需要單個物件。
 
 ![取得連線](media/automation-connections/automation-get-connection-object.png)
 

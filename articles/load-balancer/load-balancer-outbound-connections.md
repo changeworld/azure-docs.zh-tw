@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886971"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393112"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的輸出連線
 
@@ -168,7 +168,7 @@ Azure 會將 SNAT 連接埠預先配置到每個 VM 之 NIC 的 IP 設定。 當
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> 使用 Standard Load Balancer 與[多個前端](load-balancer-multivip-overview.md)時，每個前端 IP 位址就要乘以可用 SNAT 連接埠的數目，這些數目如以上表格所述。 例如，50 個 VM 的後端集區具有 2 個負載平衡規則 (分別具有個別前端 IP 位址)，則在每個 IP 組態中會使用 2048 (2x 1024) 個 SNAT 連接埠。 查看[多個前端](#multife)的詳細資料。
+> 使用 Standard Load Balancer 與[多個前端](load-balancer-multivip-overview.md)時，每個前端 IP 位址就要乘以可用 SNAT 連接埠的數目，這些數目如以上表格所述。 例如,具有 2 個負載平衡規則的 50 個 VM 的後端池(每個規則都有單獨的前端 IP 位址)將每個規則使用 2048 (2x 1024) SNAT 連接埠。 查看[多個前端](#multife)的詳細資料。
 
 請記住，可用的 SNAT 連接埠數目不會直接轉譯成流程數目。 單一 SNAT 連接埠可以重複使用於多個唯一目的地。 只有在必須使用連接埠來讓流程具有唯一性的情況下，才會取用連接埠。 如需有關設計和降低風險措施的指引，請參閱[如何管理這個可耗盡的資源](#snatexhaust)，以及描述 [PAT](#pat) 的小節。
 
@@ -227,7 +227,7 @@ SNAT 連接埠配置為 IP 傳輸通訊協定專屬 (TCP 和 UDP 會個別維護
 >[!NOTE]
 >在大部分情況下，SNAT 連接埠耗盡是設計不良的徵兆。  請確定您了解為什麼您在使用更多前端以新增 SNAT 連接埠之前耗盡連接埠。  您有可能會掩蓋之後會導致失敗的問題。
 
-#### <a name="scale-out"></a><a name="scaleout"></a>相應放大
+#### <a name="scale-out"></a><a name="scaleout"></a>橫向擴展
 
 [預先配置的連接埠](#preallocatedports)會根據後端集區大小進行指派並分組到各層中，以在某些連接埠必須重新配置以便容納下一個較大後端集區大小層時，將中斷時間降至最低。  您可以選擇將後端集區調整到指定層適用的大小上限，以增加指定前端之 SNAT 連接埠使用率的強度。  這需要有效率地將應用程式相應放大。
 

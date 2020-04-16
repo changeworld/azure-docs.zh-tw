@@ -5,18 +5,20 @@ description: 瞭解如何更新或重置 Azure 庫伯奈斯服務 (AKS) 叢集�
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886750"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392622"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪換 Azure 庫伯內斯服務 (AKS) 的認證
 
 根據預設，建立 AKS 叢集時包含的服務主體到期時間為期一年。 當到期日接近時，您可以重設認證，將服務主體再延長一段時間。 您可能也想為已定義的安全性原則更新或輪替認證。 本文詳述如何更新 AKS 叢集的認證。
 
-您可能還必須將[AKS 群集與 Azure 活動目錄整合][aad-integration],並將其用作群集的身份驗證提供者。 在這種情況下,您將為群集、AAD 伺服器應用和 AAD 用戶端應用再創建 2 個標識,您也可以重置這些認證。 
+您可能還必須將[AKS 群集與 Azure 活動目錄整合][aad-integration],並將其用作群集的身份驗證提供者。 在這種情況下,您將為群集、AAD 伺服器應用和 AAD 用戶端應用再創建 2 個標識,您也可以重置這些認證。
+
+或者,您可以將託管標識用於許可權,而不是服務主體。 託管標識比服務主體更易於管理,不需要更新或輪換。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 

@@ -3,14 +3,14 @@ title: 設定 Azure AD 驗證
 description: 瞭解如何將 Azure 活動目錄身份驗證配置為應用服務或 Azure 功能應用的標識提供者。
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632577"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392568"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>套用服務或 Azure 功能應用設定為使用 Azure AD 登入名稱
 
@@ -19,8 +19,7 @@ ms.locfileid: "80632577"
 本文介紹如何配置 Azure 應用服務或 Azure 函數,以便使用 Azure 活動目錄 (Azure AD) 作為身份驗證提供者。
 
 > [!NOTE]
-> 此時,Azure 應用服務和 Azure 函數不支援[Azure 活動目錄 v2.0(](../active-directory/develop/v2-overview.md)包括[MSAL)。](../active-directory/develop/msal-overview.md) 請回來查看更新。
->
+> 快速設置流設置 AAD V1 應用程式註冊。 如果要使用 Azure[的目錄 v2.0(](../active-directory/develop/v2-overview.md)包括[MSAL),](../active-directory/develop/msal-overview.md)請依照[進階設定說明操作](#advanced)。
 
 設定應用和身份驗證時遵循以下最佳實務:
 
@@ -101,7 +100,7 @@ ms.locfileid: "80632577"
     |欄位|描述|
     |-|-|
     |用戶端識別碼| 使用應用註冊**的應用程式(用戶端)ID。** |
-    |發行者網址| 使用`https://login.microsoftonline.com/<tenant-id>`,並將*\<租戶 id>* 替換為應用註冊的**目錄(租戶)ID。** 此值用於將使用者重定向到正確的 Azure AD 租戶,以及下載相應的元數據以確定適當的權杖簽名金鑰和權杖頒發者聲明值。 |
+    |發行者網址| 使用`https://login.microsoftonline.com/<tenant-id>/v2.0`,並將*\<租戶 id>* 替換為應用註冊的**目錄(租戶)ID。** 此值用於將使用者重定向到正確的 Azure AD 租戶,以及下載相應的元數據以確定適當的權杖簽名金鑰和權杖頒發者聲明值。 對於`/v2.0`使用 AAD v1 的應用程式,可以省略該部分。 |
     |用戶端金鑰(選擇性的)| 使用在應用註冊中生成的用戶端密鑰。|
     |允許的權杖存取群體| 如果這是雲端或伺服器應用,並且希望允許來自 Web 應用程式驗證權杖,請在此處添加 Web 應用程式**ID URI。** 配置的**用戶端ID***始終*隱式被視為允許的訪問群體。 |
 

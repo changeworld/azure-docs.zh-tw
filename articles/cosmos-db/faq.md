@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672453"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414240"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
 
@@ -404,7 +404,7 @@ Azure Cosmos DB 會在當地區域持久認可資料，並在幾毫秒內立即�
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>是否已啟用「資料表 API」的備份功能？
 
-是，資料表 API 會利用 Azure Cosmos DB 的平台來進行備份。 備份會自動執行。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 進行線上備份及還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。
+是，資料表 API 會利用 Azure Cosmos DB 的平台來進行備份。 備份會自動執行。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 進行線上備份及還原](online-backup-and-restore.md)。
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>資料表 API 預設會為實體的所有屬性編製索引嗎？
 
@@ -761,7 +761,7 @@ Azure Cosmos DB 是一種平台服務，可協助您提高產能，而不必擔�
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API 是否會提供完整備份？
 
 Azure Cosmos DB 會提供兩個免費的完整備份，並於當天以四個小時為間隔針對所有 API 來擷取。 這可確保您不需要設定備份排程和其他項目。
-如果要修改保留率和頻率,請發送電子郵件或[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)引發支援案例。 [使用 Azure Cosmos DB 進行自動線上備份及還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)一文會提供備份功能的相關資訊。
+如果要修改保留率和頻率,請發送電子郵件或[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)引發支援案例。 [使用 Azure Cosmos DB 進行自動線上備份及還原](online-backup-and-restore.md)一文會提供備份功能的相關資訊。
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>當區域發生服務中斷時，Cassandra API 帳戶如何處理容錯移轉？
 

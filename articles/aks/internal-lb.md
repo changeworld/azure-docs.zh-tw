@@ -5,12 +5,12 @@ description: 了解如何建立和使用內部負載平衡器，透過 Azure Kub
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668418"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392780"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>搭配 Azure Kubernetes Service (AKS) 使用內部負載平衡器
 
@@ -25,7 +25,7 @@ ms.locfileid: "80668418"
 
 您還需要 Azure CLI 版本 2.0.59 或更高版本安裝和配置。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-如果使用現有子網或資源組,AKS 群集服務主體需要許可權來管理網路資源。 通常,在委派的資源上將*網路參與者*角色分配給您的服務主體。 有關權限的詳細資訊,請參閱將[AKS 存取委託給其他 Azure 資源][aks-sp]。
+如果使用現有子網或資源組,AKS 群集服務主體需要許可權來管理網路資源。 通常,在委派的資源上將*網路參與者*角色分配給您的服務主體。 您可以使用分配給託管標識的系統來訪問許可權,而不是服務主體。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。 有關權限的詳細資訊,請參閱將[AKS 存取委託給其他 Azure 資源][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>建立內部負載平衡器
 

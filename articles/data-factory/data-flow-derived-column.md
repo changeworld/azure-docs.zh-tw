@@ -1,42 +1,44 @@
 ---
-title: 映射資料流程中的派生列轉換
-description: 瞭解如何使用映射資料流程派生列轉換在 Azure 資料工廠中大規模轉換資料。
+title: 映射資料串流中的衍生器轉換
+description: 瞭解如何使用對應資料流派生列轉換在 Azure 資料工廠中大規模轉換數據。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06cb868071612ae2825e86cac32734dcd279c99f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048742"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413855"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>映射資料流程中的派生列轉換
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>映射資料串流中的衍生器轉換
 
-使用派生的列轉換在資料流程中生成新列或修改現有欄位。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-## <a name="derived-column-settings"></a>派生列設置
+使用派生的列轉換在資料流中生成新列或修改現有欄位。
 
-要覆蓋現有列，請通過列下拉清單選擇它。 否則，將列選擇欄位用作文字方塊，並在新列的名稱中鍵入。 要生成派生列的運算式，請按一下"輸入運算式"框以打開["資料流程運算式產生器](concepts-data-flow-expression-builder.md)"。
+## <a name="derived-column-settings"></a>衍生欄位設定
 
-![派生列設置](media/data-flow/dc1.png "派生列設置")
+要覆蓋現有列,請通過列下拉清單選擇它。 否則,將列選擇欄位用作文本框,並在新列的名稱中鍵入。 要生成派生列的運算式,請單擊"輸入運算式"框以打開[「資料流運算式產生器](concepts-data-flow-expression-builder.md)」。
 
-要添加其他派生列，請將滑鼠懸停在現有派生列上，然後按一下加號圖示。 選擇 **"添加列**"或 **"添加列"模式**。 如果列名稱從源中可變，則列模式可能會派上用場。 有關詳細資訊，請參閱[列模式](concepts-data-flow-column-pattern.md)。
+![衍生欄位設定](media/data-flow/dc1.png "衍生欄位設定")
 
-![新派生列選擇](media/data-flow/columnpattern.png "新派生列選擇")
+要添加其他派生列,請將滑鼠懸停在現有派生列上,然後單擊加號圖示。 選擇 **'c'** 或 **'新增欄'模式**。 如果列名稱從源中可變,則列模式可能會派上用場。 有關詳細資訊,請參閱[列模式](concepts-data-flow-column-pattern.md)。
 
-## <a name="build-schemas-in-output-schema-pane"></a>在輸出架構窗格中生成架構
+![新派生欄選擇](media/data-flow/columnpattern.png "新派生欄選擇")
 
-要修改並添加到架構中的列列將列在"輸出架構"窗格中。 您可以在此處以對話模式構建簡單而複雜的資料結構。 要添加其他欄位，請選擇"**添加列**"。 要生成層次結構，請選擇"**添加子列**"。
+## <a name="build-schemas-in-output-schema-pane"></a>在輸出架構窗格中產生架構
 
-![添加子列](media/data-flow/addsubcolumn.png "添加子列")
+要修改並添加到架構中的列列將列在「輸出架構」窗格中。 您可以在此處以交互方式構建簡單而複雜的數據結構。 要添加其他欄位,請選擇「**新增欄**」。 要生成層次結構,請選擇「**添加子列**」。
 
-有關處理資料流程中複雜類型的詳細資訊，請參閱[映射資料流程的 JSON 處理](format-json.md#mapping-data-flow-properties)。
+![新增子欄](media/data-flow/addsubcolumn.png "新增子欄")
 
-![添加複雜列](media/data-flow/complexcolumn.png "新增資料行")
+有關處理資料串流中複雜類型的詳細資訊,請參閱[映射資料串流的 JSON 處理](format-json.md#mapping-data-flow-properties)。
+
+![新增複雜欄位](media/data-flow/complexcolumn.png "新增資料行")
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -57,13 +59,13 @@ ms.locfileid: "77048742"
 
 ### <a name="example"></a>範例
 
-下面的示例是名為的`CleanData`派生列，該列獲取傳入流`MoviesYear`並創建兩個派生列。 第一個派生列將列`Rating`替換為評級的值作為整數類型。 第二個派生列是匹配名稱以"電影"開頭的每個列的模式。 對於每個匹配列，它創建一個`movie`列，該列等於以"movie_"為預綴的匹配列的值。 
+下面的示例是名為的`CleanData`派生列,該列獲取傳入`MoviesYear`流 並創建兩個派生列。 第一個派生列將列`Rating`替換為評級的值作為整數類型。 第二個派生列是匹配名稱以「電影」開頭的每個列的模式。 對於每個匹配列,它創建一個`movie`列,該列等於以"movie_"為預綴的匹配列的值。 
 
-在資料工廠 UX 中，此轉換類似于下圖：
+在資料工廠的一個數字的數字, 此轉換類似於下圖:
 
-![派生示例](media/data-flow/derive-script1.png "派生示例")
+![衍生範例](media/data-flow/derive-script1.png "衍生範例")
 
-此轉換的資料流程腳本位於下面的程式碼片段中：
+此轉換的資料串流文稿位於下面的代碼段中:
 
 ```
 MoviesYear derive(
@@ -77,4 +79,4 @@ MoviesYear derive(
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解有關[映射資料流程運算式語言](data-flow-expression-functions.md)的更多資訊。
+- 瞭解有關[映射數據流表達式語言](data-flow-expression-functions.md)的更多資訊。

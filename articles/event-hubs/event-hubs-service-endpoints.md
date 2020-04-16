@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313802"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390276"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>將虛擬網路服務端點搭配 Azure 事件中樞使用
 
@@ -32,6 +32,7 @@ ms.locfileid: "81313802"
 > 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
 >
 > 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
+> - Azure 監視器(診斷設定)
 > - Azure 串流分析
 > - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由

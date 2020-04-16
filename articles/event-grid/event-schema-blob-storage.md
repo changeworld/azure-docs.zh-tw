@@ -1,29 +1,30 @@
 ---
-title: Azure Event Grid blob 儲存體事件結構描述
+title: Azure Blob 儲存為事件網格來源
 description: 描述 Azure Event Grid blob 儲存體事件的屬性
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756015"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393380"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>blob 儲存體的 Azure Event Grid 事件結構描述
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob 儲存為事件網格來源
 
-本文提供 blob 儲存體事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供 blob 儲存體事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它還為您提供了使用 Azure Blob 儲存作為事件來源的快速啟動和教學的清單。
 
-如需範例指令碼和教學課程的清單，請參閱[儲存體事件來源](event-sources.md#storage)。
 
 >[!NOTE]
 > 只有儲存**V2(通用 v2)、****區塊 Blob 儲存**和 Blob**儲存**的儲存帳戶支援事件整合。 **儲存體 (一般用途 v1)** 不** 支援與事件方格整合。
 
-## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件清單
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
+
+### <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件清單
 
 當客戶端透過呼叫 Blob REST API 建立、替換或刪除 Blob 時,將觸發這些事件。
 
@@ -35,7 +36,7 @@ ms.locfileid: "80756015"
 > [!NOTE]
 > 如果要確保僅在完全提交塊 Blob 時觸發**Microsoft.Storage.Blob**創建`CopyBlob``PutBlob`事件`PutBlockList`,請篩選 、 和 REST API 呼叫的事件。 這些 API 調用僅在資料完全提交到塊 Blob 後觸發**Microsoft.Storage.Blob 創建**事件。 要瞭解如何建立篩選器,請參閱[事件格格的篩選事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure 資料儲存第 2 代 REST API 的事件清單
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure 資料儲存第 2 代 REST API 的事件清單
 
 如果在儲存帳戶上啟用分層命名空間,並且用戶端調用 Azure 資料湖存儲 Gen2 REST API,則觸發這些事件。 有關詳細資訊,請參閱[Azure 資料儲存湖儲存第 2 代](../storage/blobs/data-lake-storage-introduction.md)。
 
@@ -53,7 +54,7 @@ ms.locfileid: "80756015"
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>事件回應的內容
+### <a name="the-contents-of-an-event-response"></a>事件回應的內容
 
 觸發事件時,事件網格服務會將有關該事件的數據發送到訂閱終結點。
 
@@ -288,7 +289,7 @@ ms.locfileid: "80756015"
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -321,6 +322,17 @@ ms.locfileid: "80756015"
 | 遞迴 | 字串 | `True`對所有子目錄執行操作;否則`False`。 <br>僅出現在具有分層命名空間的 Blob 儲存帳戶上觸發的事件。 |
 | 排序器 | 字串 | 不透明的字串值表示任何特定 Blob 名稱之事件的邏輯順序。  使用者可使用標準字串比較，以了解 Blob 名稱相同之兩個事件的相對順序。 |
 | storageDiagnostics | 物件 (object) | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title  |描述  |
+|---------|---------|
+| [快速入門：使用 Azure CLI 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 將 Blob 儲存體事件傳送至 WebHook。 |
+| [快速入門：使用 PowerShell 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure PowerShell 將 Blob 儲存體事件傳送至 WebHook。 |
+| [快速入門：使用 Azure 入口網站建立和路由傳送 Blob 儲存體事件](blob-event-quickstart-portal.md) | 示範如何使用入口網站將 Blob 儲存體事件傳送至 WebHook。 |
+| [Azure CLI：訂閱 Blob 儲存體帳戶的事件](./scripts/event-grid-cli-blob.md) | 訂閱 Blob 儲存體帳戶事件的範例指令碼。 它會將事件傳送至 WebHook。 |
+| [PowerShell：訂閱 Blob 儲存體帳戶的事件](./scripts/event-grid-powershell-blob.md) | 訂閱 Blob 儲存體帳戶事件的範例指令碼。 它會將事件傳送至 WebHook。 |
+| [Resource Manager 範本：建立 Blob 儲存體和訂用帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | 部署 Azure Blob 儲存體帳戶及訂閱該儲存體帳戶的事件。 它會將事件傳送到 WebHook。 |
+| [概觀：回應 Blob 儲存體事件](../storage/blobs/storage-blob-event-overview.md) | 整合 Blob 儲存體與事件方格的概觀。 |
 
 ## <a name="next-steps"></a>後續步驟
 

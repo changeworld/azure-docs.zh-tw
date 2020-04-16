@@ -1,18 +1,18 @@
 ---
 title: 透過入口網站的 Azure 事件方格訂閱
-description: 本文介紹如何使用 Azure 門戶為受支援的源（如 Azure Blob 存儲）創建事件網格訂閱。
+description: 本文介紹如何使用 Azure 門戶為受支援的源(如 Azure Blob 儲存)創建事件網格訂閱。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721501"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393167"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
 
@@ -20,9 +20,9 @@ ms.locfileid: "76721501"
 
 ## <a name="create-event-subscriptions"></a>建立事件訂閱
 
-若要針對任何一個支援的[事件來源](event-sources.md)建立事件方格訂閱，請使用下列步驟。 本文示範如何建立適用於 Azure 訂用帳戶的事件方格訂閱。
+若要針對任何一個支援的[事件來源](overview.md#event-sources)建立事件方格訂閱，請使用下列步驟。 本文示範如何建立適用於 Azure 訂用帳戶的事件方格訂閱。
 
-1. 選擇**所有服務**。
+1. 選取 [所有服務]  。
 
    ![選取 [所有服務]](./media/subscribe-through-portal/select-all-services.png)
 
@@ -67,5 +67,5 @@ ms.locfileid: "76721501"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 有關事件網格的簡介，請參閱[有關事件網格](overview.md)。
+* 有關事件網格的簡介,請參閱[有關事件網格](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

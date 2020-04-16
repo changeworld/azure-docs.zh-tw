@@ -1,27 +1,26 @@
 ---
-title: Azure Event Grid 服務匯流排事件結構描述
+title: Azure 服務匯流作事件網格源
 description: 描述 Azure Event Grid 中服務匯流排事件的屬性
 services: event-grid
 author: banisadr
-manager: darosa
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: babanisa
-ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561756"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393248"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>服務匯流排的 Azure Event Grid 事件結構描述
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Azure 服務匯流作事件網格源
 
 本文提供服務匯流排事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
-如需範例指令碼和教學課程的清單，請參閱[服務匯流排事件來源](event-sources.md#service-bus)。
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
-## <a name="available-event-types"></a>可用的事件類型
+### <a name="available-event-types"></a>可用的事件類型
 
 服務匯流排會發出下列事件類型：
 
@@ -30,7 +29,7 @@ ms.locfileid: "60561756"
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | 當佇列或訂用帳戶有作用中的訊息但沒有接聽的接收者時，就會引發。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 當無效信件佇列中有作用中訊息但沒有作用中的接聽程式時，就會引發。 |
 
-## <a name="example-event"></a>事件範例
+### <a name="example-event"></a>事件範例
 
 下列範例會顯示不包含接聽程式事件的作用中訊息結構描述：
 
@@ -76,7 +75,7 @@ ms.locfileid: "60561756"
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -101,6 +100,12 @@ ms.locfileid: "60561756"
 | queueName | 字串 | 如果訂閱佇列則為作用中訊息佇列。 如果使用主題 / 訂用帳戶則為 null 值。 |
 | topicName | 字串 | 包含作用中訊息所屬之服務匯流排訂用帳戶的主題。 如果使用佇列則為 null 值。 |
 | subscriptionName | 字串 | 具有作用中訊息的服務匯流排訂用帳戶。 如果使用佇列則為 null 值。 |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title  |描述  |
+|---------|---------|
+| [教學課程：Azure 服務匯流排與 Azure 事件方格的整合範例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件方格會從服務匯流排主題傳送訊息至函式應用程式和邏輯應用程式。 |
+| [Azure 服務匯流排到事件網格整合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 整合服務匯流排與事件方格的概觀。 |
 
 ## <a name="next-steps"></a>後續步驟
 

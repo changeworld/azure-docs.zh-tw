@@ -5,17 +5,17 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: c239f7062dc39492a0cf63ac3aadbaf94acbf032
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411137"
 ---
 # <a name="system-requirements"></a>系統需求
 
 > [!IMPORTANT]
-> **Azure 遠端呈現**當前處於公共預覽版中。
+> **Azure 遠端轉譯**目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本章列出了使用*Azure 遠端呈現*(ARR) 的最低系統要求。
@@ -45,7 +45,7 @@ ms.locfileid: "80680436"
 
 ## <a name="devices"></a>裝置
 
-Azure 遠端呈現目前僅支援**HoloLens 2**和 Windows 桌面 UWP 作為目標設備。
+Azure 遠端呈現目前僅支援**HoloLens 2**和 Windows 桌面作為目標設備。 請參閱[平臺限制](../reference/limits.md#platform-limitations)部分。
 
 使用最新的 HEVC 編解碼器非常重要,因為較新版本的延遲有顯著改善。 要檢查裝置上安裝了哪個版本:
 
@@ -66,7 +66,7 @@ Azure 遠端呈現目前僅支援**HoloLens 2**和 Windows 桌面 UWP 作為目�
 
 ## <a name="software"></a>軟體
 
-必須安裝以下軟體:
+必須安裝下列軟體：
 
 * 最新版本的**可視化工作室 2019** [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)
 * **Windows SDK 10.0.18362.0(**[下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
@@ -78,10 +78,10 @@ Azure 遠端呈現目前僅支援**HoloLens 2**和 Windows 桌面 UWP 作為目�
 對使用 Unity 開發,請安裝
 
 * Unity 2019.3.1 [(下載)](https://unity3d.com/get-unity/download)
-* 在 Unity 中安裝這些模組:
-  * **UWP** - 一般 Windows 平台建構支援
-  * **IL2CPP** - Windows 建構支援 (IL2CPP)
+* 在 Unity 中安裝下列模組：
+  * **UWP** - 通用 Windows 平台建置支援
+  * **IL2CPP** - Windows 建置支援 (IL2CPP)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門:使用 Unity 渲染模型](../quickstarts/render-model.md)
+* [快速入門：使用 Unity 轉譯模型](../quickstarts/render-model.md)

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0133322eab9a554cf28c0a90fbadf9afe6fbcd64
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 3b45c20e2d3e8829913c9e566516f85866ee80d4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314274"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390308"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -95,7 +95,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **迪拜** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | 阿拉伯聯合大公國北部 | n/a | 埃泰薩爾特 阿聯酋 |
 | **迪拜2** | [杜德梅納](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯聯合大公國北部 | n/a | 杜戈梅納, 兆港, 奧蘭治, 奧裡克斯康 |
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北歐 | 10G, 100G | 科爾特, eir, Equinix, euNetworks, 互通, 兆連接埠 |
-| **法蘭克福** | [錫龍 FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德國中西部 | 10G, 100G | 世紀鏈接雲連線, 科爾特, DE-CIX, Equinix, GEANT, 互連, 兆港, 橙色, 泰利亞運營商 |
+| **法蘭克福** | [錫龍 FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德國中西部 | 10G, 100G | AT&T NetBond、世紀連結雲連接、科爾特、DE-CIX、Equinix、GEANT、Interxion、Megaport、奧蘭治、泰利亞運營商 |
 | **日內瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G, 100G | Equinix、Megaport |
 | **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東亞 | n/a | 亞里卡網路、英國電信、世紀通雲連接、首席電信、中國電信全球、Equinix、InterCloud、Megaport、NTT通信、奧蘭治、電訊盈科全球有限公司、塔塔通信、泰利亞運營商、Verizon |
 | **香港2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | n/a | 10G | |
@@ -128,7 +128,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **矽谷** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | 美國西部 | 10G, 100G | Aryaka網路, AT&T NetBond, 英國電信, 世紀連結雲連接, 科爾特, 康卡斯特, 核心網站, Equinix, InterCloud, 互聯網2, IX 覆蓋, 數據包, 資料包Fabric, 3級通信, 兆埠, 橙色, 衝刺, 塔塔通信, 泰利亞運營商, Verizon, Zayo |
 | **矽谷2** | [核心網站 SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | 美國西部 | 10G, 100G | 科爾特, 核心網站 | 
 | **新加坡** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | 東南亞 | 10G, 100G | 阿裡亞卡網路、美國電話電報公司&T NetBond、英國電信、中國移動國際、愛普西隆全球通信、Equinix、InterCloud、3級通信、兆豐、NTT通信、奧蘭治、新加坡電信、塔塔通信、電信公司、Verizon、沃達豐 |
-| **新加坡 2** | [全球開關泰森](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 東南亞 | 10G, 100G | 中國聯通全球、科爾特、愛普西隆全球通信、兆港、新加坡電信 |
+| **新加坡 2** | [全球開關泰森](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 東南亞 | 10G, 100G | 中國聯通全球、科爾特、愛普西隆全球通信、兆港、電訊盈科全球有限公司、新加坡電信 |
 | **斯塔萬格** | [綠山DC1](https://greenmountain.no/dc1-stavanger/) | 1 | 挪威西部 | 10G, 100G | |
 | **斯德哥爾摩** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | n/a | 10G | 埃奎尼克斯, 泰利亞航空公司 |
 | **雪梨** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | 澳大利亞東部 | 10G, 100G | AARNet、 AT&T NetBond, 英國電信、 德沃利、 Equinix、 科爾迪亞、 兆港、 NEXTDC, NTT 通訊、 Optus、 奧蘭治、 Spark NZ、 Telstra 公司, TPG 電信、 Verizon, Vocus Group NZ |

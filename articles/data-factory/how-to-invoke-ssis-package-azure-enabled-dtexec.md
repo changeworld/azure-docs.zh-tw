@@ -11,14 +11,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261921"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414333"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用開啟 Azure 的 dtexec 執行程式執行 SQL 伺服器整合服務套件
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介紹啟用 Azure 的 dtexec (AzureDTExec) 命令提示實用程式。 它用於在 Azure 資料工廠中的 Azure-SSIS 整合執行時 (IR) 上執行 SQL 伺服器整合服務 (SSIS) 套件。
 
 傳統的 dtexec 實用程式附帶 SQL Server。 有關詳細資訊,請參閱[dtexec 實用程式](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)。 它通常由第三方協調程式或計劃程式(如 ActiveBatch 和控制-M)調用,用於在本地運行 SSIS 包。 

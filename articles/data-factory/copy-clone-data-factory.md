@@ -11,14 +11,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: bafe70655f05b5dda32f51393591f82b4b5625f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e44bda8648fbf26487b04cf36a8fd0ec085c411
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73678120"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414097"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>如何複製或重製 Azure Data Factory 中的資料處理站
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 此文章說明如何複製或重製 Azure Data Factory 中的資料處理站。
 
@@ -36,7 +38,7 @@ ms.locfileid: "73678120"
 
 1. 前提是您必須從 Azure 入口網站建立您的目標資料處理站。
 
-1. 如果在源工廠中具有自託管集成運行時，則需要在目標工廠中以相同名稱預創建它。 如果要在不同的工廠之間共用自託管的 I，則可以使用[此處](source-control.md#best-practices-for-git-integration)發佈的模式。
+1. 如果在源工廠中具有自託管集成運行時,則需要在目標工廠中以相同名稱預創建它。 如果要在不同的工廠之間共用自託管的 I,則可以使用[此處](source-control.md#best-practices-for-git-integration)發佈的模式。
 
 1. 若您處於 GIT 模式，每次您從入口網站發行時，處理站的 Resource Manager 範本都會儲存到 GIT 中 (存放庫的 adf_publish 分支)。
 

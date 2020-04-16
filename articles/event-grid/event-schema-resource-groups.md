@@ -1,20 +1,20 @@
 ---
-title: Azure Event Grid 資源群組事件結構描述
+title: Azure 資源群組作為事件網格源
 description: 描述 Azure Event Grid 中資源群組事件的屬性
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561688"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393255"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid 資源群組事件結構描述
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Azure 資源群組作為事件網格源
 
 本文提供資源群組事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
@@ -28,9 +28,10 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 
 事件主旨是資源的資源識別碼，而該資源為作業目標。 若要篩選資源的事件，請在建立事件訂用帳戶時提供該資源識別碼。  若要依資源類型進行篩選，請使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-如需範例指令碼和教學課程的清單，請參閱[資源群組事件來源](event-sources.md#resource-groups)。
 
-## <a name="available-event-types"></a>可用的事件類型
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
+
+### <a name="available-event-types"></a>可用的事件類型
 
 資源群組從 Azure Resource Manager 發出管理事件，像是在虛擬機器建立時或儲存體帳戶刪除時皆可使用此功能。
 
@@ -46,7 +47,7 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 | Microsoft.Resources.ResourceWriteFailure | 建立或更新作業失敗時引發。 |
 | Microsoft.Resources.ResourceWriteSuccess | 建立或更新作業成功時引發。 |
 
-## <a name="example-event"></a>事件範例
+### <a name="example-event"></a>事件範例
 
 下列範例顯示 **ResourceWriteSuccess** 事件的結構描述。 具有不同 `eventType` 值的 **ResourceWriteFailure** 和 **ResourceWriteCancel** 事件使用相同的結構描述。
 
@@ -230,7 +231,7 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -259,6 +260,16 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 | status | 字串 | 作業狀態。 |
 | subscriptionId | 字串 | 資源的訂用帳戶識別碼。 |
 | tenantId | 字串 | 資源的租用戶識別碼。 |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title  |描述  |
+|---------|---------|
+| [教學:使用 Azure 事件格格和邏輯應用監視虛擬機器更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 邏輯應用程式會監視虛擬機器的變更，並傳送有關這些變更的電子郵件。 |
+| [Azure CLI：訂閱資源群組的事件](./scripts/event-grid-cli-resource-group.md)| 訂閱資源群組事件的範例指令碼。 它會將事件傳送到 WebHook。 |
+| [Azure CLI：訂閱資源群組的事件和篩選資源](./scripts/event-grid-cli-resource-group-filter.md) | 訂閱資源群組事件以及為資源篩選事件的範例指令碼。 |
+| [PowerShell：訂閱資源群組的事件](./scripts/event-grid-powershell-resource-group.md) | 訂閱資源群組事件的範例指令碼。 它會將事件傳送到 WebHook。 |
+| [PowerShell：訂閱資源群組的事件和篩選資源](./scripts/event-grid-powershell-resource-group-filter.md) | 訂閱資源群組事件以及為資源篩選事件的範例指令碼。 |
+| [Resource Manager 範本：資源訂用帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | 訂閱 Azure 訂用帳戶或資源群組的事件。 它會將事件傳送到 WebHook。 |
 
 ## <a name="next-steps"></a>後續步驟
 

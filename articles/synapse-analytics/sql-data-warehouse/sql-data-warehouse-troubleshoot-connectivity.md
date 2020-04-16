@@ -11,25 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742587"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408162"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>對連線問題進行疑難排解
 
 本文列出了有關連接到 SQL 分析資料庫的常見故障排除技術。
-
-- [檢查服務可用性](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [檢查已暫停或正在調整的作業](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [檢查防火牆設定](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [檢查 VNet/服務端點設定](sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [檢查最新的驅動程式](sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [檢查連接字串](sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [間歇性連線問題](sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
-- [常見的錯誤訊息](sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>檢查服務可用性
 

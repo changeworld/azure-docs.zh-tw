@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742549"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408057"
 ---
 # <a name="data-warehouse-units-dwus"></a>資料倉儲單位
 
@@ -32,7 +32,7 @@ ms.locfileid: "80742549"
 
 為了獲得更高的性能,可以增加數據倉庫單位的數量。 為了降低性能,請減少數據倉庫單位。 儲存體和計算成本會分別計費，因此，變更資料倉儲單位不會影響儲存體成本。
 
-資料倉儲單位的效能:
+資料倉儲單位的效能是以這些資料倉儲工作負載計量為根據：
 
 - 標準 SQL 池查詢可以掃描大量行,然後執行複雜的聚合的速度。 這個作業是 I/O 和 CPU 密集型作業。
 - SQL 池從 Azure 存儲 Blob 或 Azure 數據湖中引入數據的速度有多快。 這個作業是網路和 CPU 密集型作業。
@@ -46,21 +46,37 @@ ms.locfileid: "80742549"
 
 ## <a name="service-level-objective"></a>服務等級目標
 
+服務等級目標 (SLO) 是決定您資料倉儲之成本和效能層級的延展性設定。 Gen2 的服務等級會以計算資料倉儲單位 (cDWU) 來測量，例如 DW2000c。 Gen1 服務等級則會以 DWU 來測量，例如 DW2000。
+
 服務等級目標 (SLO) 是確定 SQL 池的成本和性能級別的可伸縮性設置。 Gen2 SQL 池的服務級別以數據倉庫單元 (DWU)(例如 DW2000c)來衡量。
 
-在 T-SQL 中,SERVICE_OBJECTIVE設置確定 SQL 池的服務級別。
+> [!NOTE]
+> Azure SQL 資料倉儲 Gen2 最近新增了其他調整規模功能，以支援最低 100 計算資料倉儲單位的計算層。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+
+在 T-SQL 中,SERVICE_OBJECTIVE設置確定 SQL 池的服務級別和性能層。
 
 ```sql
 CREATE DATABASE mySQLDW
-( EDITION = 'Datawarehouse'
+(Edition = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="capacity-limits"></a>容量限制
+## <a name="performance-tiers-and-data-warehouse-units"></a>效能層級和資料倉儲單位
+
+每一個效能層級都會使用與其資料倉儲單位稍有不同的測量單位。 這項差異會在縮放單位直接轉換為帳單時反映於發票上。
+
+- Gen1 資料倉儲會以資料倉儲單位 (DWU) 來測量。
+- Gen2 資料倉儲則會以計算的資料倉儲單位 (cDWU) 來測量。
+
+DWU 和 cDWU 均支援將計算相應增加或減少，並且在您不需使用資料倉儲時暫停計算。 這些作業全都依需求指定。 Gen2 會使用計算節點上的本機磁碟型快取來改善效能。 當您調整或暫停系統時，快取就會失效，因此，需要一段快取準備時間，才能達到最佳效能。  
 
 每部 SQL 伺服器 (例如 myserver.database.windows.net) 都有[資料庫交易單位 (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配額，允許有特定數目的資料倉儲單位。 如需詳細資訊，請參閱[工作負載管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
+
+## <a name="capacity-limits"></a>容量限制
+
+每部 SQL 伺服器 (例如 myserver.database.windows.net) 都有[資料庫交易單位 (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 配額，允許有特定數目的資料倉儲單位。 如需詳細資訊，請參閱[工作負載管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)。
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少個資料倉儲單位
 
@@ -115,17 +131,17 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是]**** 以確認或 [否]**** 以取消。
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-要更改 DWU,請使用[集-AzSql 資料庫](/powershell/module/az.sql/set-azsqldatabase)PowerShell cmdlet。 以下範例將託管在伺服器上的 MySQLDW 資料庫的服務層級目標設定為 DW1000c。
+要更改 DWU,請使用[集-AzSql 資料庫](/powershell/module/az.sql/set-azsqldatabase)PowerShell cmdlet。 下列範例會將裝載在 MyServer 伺服器上的資料庫 MySQLDW 的服務等級目標設定為 DW1000。
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-如需詳細資訊，請參閱 [SQL 資料倉儲的 PowerShell Cmdlet](sql-data-warehouse-reference-powershell-cmdlets.md)
+如需詳細資訊，請參閱 [SQL 資料倉儲的 PowerShell Cmdlet](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -152,12 +168,12 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000c
+        "requestedServiceObjectiveName": DW1000
     }
 }
 ```
 
-如需更多 REST API 範例，請參閱 [SQL 資料倉儲的 REST API](sql-data-warehouse-manage-compute-rest-api.md)。
+如需更多 REST API 範例，請參閱 [SQL 資料倉儲的 REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="check-status-of-dwu-changes"></a>檢查 DWU 變更的狀態
 
@@ -170,14 +186,13 @@ DWU 變更可能需要幾分鐘的時間才能完成。 如果正在進行自動
 檢查 DWU 變更的狀態：
 
 1. 連接到與您的邏輯 SQL Database 伺服器相關聯的 master 資料庫。
+2. 提交下列查詢以檢查資料庫狀態。
 
-1. 提交下列查詢以檢查資料庫狀態。
-
-    ```sql
-    SELECT    *
-    FROM      sys.databases
-    ;
-    ```
+```sql
+SELECT    *
+FROM      sys.databases
+;
+```
 
 1. 提交下列查詢以檢查作業的狀態
 

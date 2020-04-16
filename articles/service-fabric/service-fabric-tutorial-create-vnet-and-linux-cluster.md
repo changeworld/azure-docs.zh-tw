@@ -1,15 +1,15 @@
 ---
-title: 在 Azure 中創建 Linux 服務結構群集
+title: 在 Azure 建立 Linux 服務結構叢集
 description: 了解如何使用 Azure CLI 將 Linux Service Fabric 叢集部署到現有的 Azure 虛擬網路。
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251775"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411016"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>將 Linux Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -19,7 +19,7 @@ ms.locfileid: "78251775"
 
 開始之前：
 
-* 如果沒有 Azure 訂閱，請創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * 安裝[維修結構 CLI](service-fabric-cli.md)
 * 安裝[Azure CLI](/cli/azure/install-azure-cli)
 * 若要學習叢集的主要概念，請閱讀 [Azure 叢集概觀](service-fabric-azure-clusters-overview.md)
@@ -31,10 +31,19 @@ ms.locfileid: "78251775"
 
 下載下列 Resource Manager 範本檔案：
 
+對於 Ubuntu 16.04 LTS:
+
 * [AzureDeploy.json][template]
 * [Azure 部署.參數.json][parameters]
 
-此範本會將一個由七部虛擬機器和三個節點類型組成的安全叢集部署到虛擬網路中。  您可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到其他範例範本。 [AzureDeploy.json][template]部署一些資源，包括以下內容。
+對於 Ubuntu 18.04 LTS:
+
+* [AzureDeploy.json][template2]
+* [Azure 部署.參數.json][parameters2]
+
+兩個範本之間的區別是**vmImageSku**屬性設置為"18.04-LTS",每個節點的類型**處理程式版本**設置為 1.1。
+
+此範本會將一個由七部虛擬機器和三個節點類型組成的安全叢集部署到虛擬網路中。  您可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到其他範例範本。 [AzureDeploy.json][template]部署一些資源,包括以下內容。
 
 ### <a name="service-fabric-cluster"></a>Service Fabric 叢集
 
@@ -42,11 +51,11 @@ ms.locfileid: "78251775"
 
 * 三個節點類型
 * 主要節點類型中的 五個節點 (可在範本參數中設定)，其他節點類型各有一個節點
-* 作業系統：Ubuntu 16.04 LTS (可在範本參數中設定)
+* 操作系統:(Ubuntu 16.04 LTS / Ubuntu 18.04 LTS)(可設定在範本參數中)
 * 受保護的憑證 (可在範本參數中設定)
-* [DNS 服務](service-fabric-dnsservice.md)已啟用
-* 青銅的[持久性級別](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可配置在範本參數中）
-* 銀的可靠性[級別](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可配置在範本參數中）
+* [DNS 服務](service-fabric-dnsservice.md)已開啟
+* 青銅的[持久性等級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)(可設定在範本參數中)
+* 銀的可靠性[等級](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)(可設定在範本參數中)
 * 用戶端連線端點：19000 (可在範本參數中設定)
 * HTTP 閘道端點：19080 (可在範本參數中設定)
 
@@ -70,7 +79,7 @@ ms.locfileid: "78251775"
 
 ## <a name="set-template-parameters"></a>設定範本參數
 
-[AzureDeploy.Parameters][parameters] 參數檔案會宣告多個用來部署叢集和相關聯資源的值。 您可能需要為自己的部署修改某些參數：
+**AzureDeploy.parameters**檔聲明用於部署群集和相關資源的許多值。 您可能需要為自己的部署修改某些參數：
 
 |參數|範例值|注意|
 |---|---||
@@ -86,9 +95,9 @@ ms.locfileid: "78251775"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>部署虛擬網路和叢集
 
-接下來，請設定網路拓撲並部署 Service Fabric 叢集。 [AzureDeploy.json][template] Resource Manager 範本會建立虛擬網路 (VNET) 及適用於 Service Fabric 的子網路。 範本也會部署啟用憑證安全性的叢集。  對於生產叢集，請使用憑證授權單位 (CA) 提供的憑證作為叢集憑證。 自我簽署憑證可用來保護測試叢集。
+接下來，請設定網路拓撲並部署 Service Fabric 叢集。 **AzureDeploy.json** Resource Manager 範本會建立虛擬網路 (VNET) 及適用於 Service Fabric 的子網路。 範本也會部署啟用憑證安全性的叢集。  對於生產叢集，請使用憑證授權單位 (CA) 提供的憑證作為叢集憑證。 自我簽署憑證可用來保護測試叢集。
 
-此文章中的範本會部署使用憑證指紋來識別叢集憑證的叢集。  憑證的指紋皆不相同，因而使憑證管理更為困難。 將使用憑證指紋的已部署叢集切換為使用憑證通用名稱，有助於大幅簡化憑證管理作業。  要瞭解如何更新群集，將證書通用名稱用於證書管理，請閱讀[更改群集到證書通用名稱管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
+此文章中的範本會部署使用憑證指紋來識別叢集憑證的叢集。  憑證的指紋皆不相同，因而使憑證管理更為困難。 將使用憑證指紋的已部署叢集切換為使用憑證通用名稱，有助於大幅簡化憑證管理作業。  要瞭解如何更新群組,將憑證通用名稱用於憑證管理,請閱讀[變更叢集到憑證通用名稱管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>使用現有的憑證建立叢集
 
@@ -153,13 +162,15 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您沒有立即繼續下一篇文章，則可能需要[刪除群集](service-fabric-cluster-delete.md)以避免產生費用。
+如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](service-fabric-cluster-delete.md)以避免產生費用。
 
 ## <a name="next-steps"></a>後續步驟
 
 了解如何[調整叢集規模](service-fabric-tutorial-scale-cluster.md)。
 
-此文章中的範本會部署使用憑證指紋來識別叢集憑證的叢集。  憑證的指紋皆不相同，因而使憑證管理更為困難。 將使用憑證指紋的已部署叢集切換為使用憑證通用名稱，有助於大幅簡化憑證管理作業。  要瞭解如何更新群集，將證書通用名稱用於證書管理，請閱讀[更改群集到證書通用名稱管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
+此文章中的範本會部署使用憑證指紋來識別叢集憑證的叢集。  憑證的指紋皆不相同，因而使憑證管理更為困難。 將使用憑證指紋的已部署叢集切換為使用憑證通用名稱，有助於大幅簡化憑證管理作業。  要瞭解如何更新群組,將憑證通用名稱用於憑證管理,請閱讀[變更叢集到憑證通用名稱管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

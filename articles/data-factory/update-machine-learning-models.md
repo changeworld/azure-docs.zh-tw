@@ -11,17 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73683235"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409080"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning 模型
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文補充主要 Azure Data Factory - Azure Machine Learning 整合文件︰[使用 Azure Machine Learning 和 Azure Data Factory 建立預測管線](transform-data-using-machine-learning.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 進行 Azure Machine Learning 模型的實作程序時，需要定型並儲存您的模型。 接著，使用它來建立預測性 Web 服務。 接著才能在網站、儀表板及行動應用程式取用 Web 服務。
 
 您使用 Machine Learning 建立的模型通常不是靜態。 因為當有新資料或 API 取用者有自己的資料時，模型就必須重新定型。 如需如何在 Azure Machine Learning 中重新定型模型的詳細資料，請參閱[重新定型 Machine Learning 模型](../machine-learning/machine-learning-retrain-machine-learning-model.md)。
@@ -70,7 +73,7 @@ ms.locfileid: "73683235"
 
 實作重新定型模組和更新預測 Web 服務的整個程序會叫用下列步驟：
 
-- 使用**批次執行活動**叫用**定型 Web 服務**。 叫用定型 Web 服務與[使用 Azure Machine Learning 和 Data Factory 批次執行活動建立預測管線](transform-data-using-machine-learning.md)中說明的叫用預測 Web 服務相同。 培訓 Web 服務的輸出是一個 iLearner 檔，可用於更新預測 Web 服務。
+- 使用**批次執行活動**叫用**定型 Web 服務**。 叫用定型 Web 服務與[使用 Azure Machine Learning 和 Data Factory 批次執行活動建立預測管線](transform-data-using-machine-learning.md)中說明的叫用預測 Web 服務相同。 培訓 Web 服務的輸出是 iLearner 檔,可用於更新預測 Web 服務。
 - 您可以使用 [更新資源活動]**** 來叫用**預測 Web 服務**的**更新資源端點**，以將 Web 服務更新為新定型的模型。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning 連結服務

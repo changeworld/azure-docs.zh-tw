@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743011"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416079"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure 突觸分析(以前為 SQL DW) 常見問題
 
@@ -92,7 +92,7 @@ A. 是。 大多數可用於 SQL 資料庫的 REST 功能也可用於 Synapse SQ
 
 Q. 支援哪些用戶端驅動程式？
 
-A. 在[連接字串](sql-data-warehouse-connection-strings.md)頁面上找到對 Synapse SQL 池的驅動程式支援
+A. 在[連接字串](../sql/connection-strings.md)頁面上找到對 Synapse SQL 池的驅動程式支援
 
 問:PolyBase 支援哪些檔案格式?
 

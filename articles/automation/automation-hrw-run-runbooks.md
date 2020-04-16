@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 902734ddc7195d643c3aedb4054f57723d1a51c2
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: b65c72e0c65cf9aa84cb614478fbdf78258f3054
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632128"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405833"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上執行 Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "80632128"
 
 ### <a name="runbook-authentication"></a>Runbook 驗證
 
-默認情況下,運行簿在本地電腦上運行。 對於 Windows,它們在本地系統帳戶的上下文中運行。 對於 Linux,它們在特殊使用者帳戶**nx 自動化**的上下文中運行。 在這兩種情況下,Runbook 都必須向它們訪問的資源提供自己的身份驗證。
+默認情況下,運行簿在本地電腦上運行。 對於 Windows,它們在本地**系統**帳戶的上下文中運行。 對於 Linux,它們在特殊使用者帳戶**nx 自動化**的上下文中運行。 在這兩種情況下,Runbook 都必須向它們訪問的資源提供自己的身份驗證。
 
 您可以在 Runbook 中使用[認證](automation-credentials.md)和[憑證](automation-certificates.md)資產,其中可以使用 cmdlet,以便 runbook 可以對不同的資源進行身份驗證。 下列範例顯示會重新啟動電腦的 Runbook 的一部分。 它將從憑據資產檢索憑據和計算機名稱從變數資產中檢索,然後將這些值與`Restart-Computer`cmdlet 一起使用。
 
@@ -84,7 +84,7 @@ Azure 虛擬機上的混合 Runbook 工作人員可以使用 Azure 資源的託�
 ```
 
 > [!NOTE]
-> `Connect-AzAccount -Identity`使用系統分配的標識和單個使用者分配的標識為混合 Runbook 工作線程工作。 如果在混合 Runbook 工作線程上使用多個使用者分配標識,則 Runbook 必須指定*帳戶 Id*`Connect-AzAccount`參數才能選擇特定的使用者分配標識。
+> `Connect-AzAccount -Identity`使用系統分配的標識和單個使用者分配的標識為混合 Runbook 工作線程工作。 如果在混合 Runbook 工作線程上使用多個使用者分配標識,則 Runbook 必須指定`AccountId`用於`Connect-AzAccount`選擇特定使用者分配的標識的參數。
 
 ### <a name="automation-run-as-account"></a><a name="runas-script"></a>自動化執行身分帳戶
 
@@ -166,7 +166,7 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 
 1. 使用 **.ps1**擴展將**匯出運行憑證儲存到混合輔助程式**執行簿到您的電腦。
 2. 將其導入您的自動化帳戶。
-3. 編輯 Runbook,`Password`更改 變數 o 自己的密碼的值。 
+3. 編輯 Runbook,`Password`將 變數的值更改為您自己的密碼。 
 4. 發佈 Runbook。
 5. 運行 Runbook,以使用「運行即」帳戶運行和驗證 Runbook 的混合 Runbook 工作組為目標。 
 6. 檢查作業流以查看它報告嘗試將證書導入本地電腦存儲,並遵循多行。 此行為取決於您在訂閱中定義的自動化帳戶數以及身份驗證的成功程度。
@@ -185,14 +185,14 @@ Azure 自動化處理混合 Runbook 工作簿上的作業與 Azure 沙箱中運�
 
 在 Azure 門戶中啟動 Runbook 時,會顯示 **「 在上執行**」選項,並為此選擇**Azure**或**混合輔助角色**。 如果選擇**混合輔助角色**,則可以從下拉清單中選擇混合 Runbook 工作群體。
 
-將`RunOn`參數`Start-AzureAutomationRunbook`與 cmdlet 一起使用。 下面的範例使用 Windows PowerShell 在名為 MyHybridGroup 的混合 Runbook 工作組上啟動名為 **「測試執行簿」的 Runbook。**
+將`RunOn`參數與[「開始-阿茲自動化 Runbook」cmdlet](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0)一起使用。 下面的範例使用 Windows PowerShell 在名為 MyHybridGroup 的混合 Runbook 工作組上啟動名為 **「測試執行簿」的 Runbook。**
 
 ```azurepowershell-interactive
-Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 > [!NOTE]
-> 該`RunOn`參數已添加`Start-AzureAutomationRunbook`到 Microsoft Azure PowerShell 版本 0.9.1 中。 如果您安裝較早的版本，您應該 [下載最新版本](https://azure.microsoft.com/downloads/) 。 僅在從 PowerShell 啟動 Runbook 的工作站上安裝此版本。 除非打算從該計算機開始運行手冊,否則無需將其安裝在混合 Runbook 輔助電腦電腦上。
+> 如果您安裝了較早的版本[,則應下載最新的 PowerShell 版本](https://azure.microsoft.com/downloads/)。 僅在從 PowerShell 啟動 Runbook 的工作站上安裝此版本。 除非打算從該計算機開始運行手冊,否則無需將其安裝在混合 Runbook 輔助電腦電腦上。
 
 ## <a name="working-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>在 Windows 混合 Runbook 工作線程式上使用簽名的 Runbook
 
@@ -307,7 +307,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 gpg –-clear-sign <runbook name>
 ```
 
-已簽署的 Runbook`<runbook name>.asc`是稱為 。
+簽章的執行手冊稱為**<runbook name>.asc**。
 
 現在,您可以將簽名的 Runbook 上傳到 Azure 自動化,並像一般 Runbook 一樣執行它。
 
@@ -317,3 +317,5 @@ gpg –-clear-sign <runbook name>
 * 要瞭解如何使用文字編輯器在 Azure 自動化中使用 PowerShell Runbook,請參閱在[Azure 自動化中編輯 Runbook](automation-edit-textual-runbook.md)。
 * 如果 Runbook 未成功完成,請查看[Runbook 執行失敗的](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)故障排除指南。
 * 有關 PowerShell 的更多資訊(包括語言參考和學習模組),請參閱[PowerShell 文件](https://docs.microsoft.com/powershell/scripting/overview)。
+* 有關 PowerShell cmdlet 引用,請參閱[Az.自動化](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)。

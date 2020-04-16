@@ -5,14 +5,14 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: b1e5ad60041e9d3b902a06a4875206fa061c73e6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269902"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393779"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虛擬機器擴展集的 OS 映像自動升級
 
@@ -109,7 +109,7 @@ GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 註冊訂閱功能后,通過向計算資源提供程序傳播更改來完成加入加入過程。
 
 ```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -168,7 +168,7 @@ az provider register --namespace Microsoft.Compute
 下列範例說明如何設定擴展集模型上的 OS 自動升級：
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
 ```
 
 ```json
@@ -247,7 +247,7 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 下面的範例使用[REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory)檢查名為 myScaleSet 的資源群組中名為*myScaleSet*的規模集的狀態 *:*
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
 ```
 
 GET 呼叫會傳回類似下列範例輸出的內容：
@@ -307,7 +307,7 @@ az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSe
 
 ### <a name="rest-api"></a>REST API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -332,7 +332,7 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 使用[「啟動 OS 升級](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade)API」調用啟動滾動升級,將所有虛擬機縮放集實例移動到最新的可用映射作業系統版本。 已運行最新可用操作系統版本的實例不受影響。 以下範例詳細介紹了如何在名為 myScaleSet 的資源群組中名為*myScaleSet*的規模集中啟動滾動作業系統*升級*:
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell

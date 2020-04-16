@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271296"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390406"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排除 Azure 到 Azure VM 複製錯誤
 
@@ -404,21 +404,20 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 ### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>問題 1:VM 連接到已映射到目標網路的網路
 
-如果源 VM 是虛擬網路的一部分,並且來自同一虛擬網路的另一個 VM 已與目標資源組中的網路映射,則默認情況下網路選擇下拉列表框不可用(顯示為灰色)。
+在災難復原配置期間,如果源 VM 是虛擬網路的一部分,並且來自同一虛擬網路的另一個 VM 已與目標資源組中的網路映射,則默認情況下網路選擇下拉清單框不可用(顯示為灰色)。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="網路選擇清單不可用。":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>問題 2:您以前保護 VM,然後關閉複製
 
-關閉 VM 複製不會刪除網路映射。 必須從保護 VM 的恢復服務保管庫中刪除映射。 跳到**修復服務保存庫** > **站台修復基礎結構** > **網路映射**。
+關閉 VM 複製不會刪除網路映射。 必須從保護 VM 的恢復服務保管庫中刪除映射。 選擇**回復服務保管庫**,然後轉到**為** > **Azure 虛擬機器** > **映射**管理**站點恢復基礎結構** > 。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="刪除網路映射。":::
 
-在災難復原設定期間設定的目標網路可以在初始設定後以及 VM 保護後更改:
+在災難復原設定期間配置的目標網路可以在初始設置後以及 VM 保護後更改。 要**變更網路映射**,請選擇網路名稱:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="修改網路映射。":::
 
-更改網路映射會影響使用同一網路映射的所有受保護 VM。
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ 或 VSS(錯誤代碼 151025)
 

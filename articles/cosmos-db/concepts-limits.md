@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415700"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure 宇宙資料庫服務配額
 
@@ -70,7 +70,7 @@ Cosmos DB 支援透過 SDK 或門戶對每個容器或資料庫的輸送量 (R) 
 > [!NOTE]
 > 區域故障轉移僅適用於單個區域寫入帳戶。 多區域寫入帳戶不需要或對更改寫入區域沒有任何限制。
 
-Cosmos DB 可定期自動備份數據。 有關備份保留間隔和視窗的詳細資訊,請參閱[Azure Cosmos DB 中的連線備份和按需資料還原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。
+Cosmos DB 可定期自動備份數據。 有關備份保留間隔和視窗的詳細資訊,請參閱[Azure Cosmos DB 中的連線備份和按需資料還原](online-backup-and-restore.md)。
 
 ## <a name="per-account-limits"></a>每個帳戶限制
 
@@ -214,4 +214,4 @@ Cosmos DB 支援 MongoDB 有線協定,用於針對 MongoDB 編寫的應用程式
 * [開始使用 Azure Cosmos DB 資料表 API](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
-> [免費試用 Azure 宇宙 DB](https://azure.microsoft.com/try/cosmosdb/)
+> [免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 資料工廠中創建計畫觸發器
+title: 在 Azure 資料工廠建立計畫觸發器
 description: 了解如何在 Azure Data Factory 中建立依排程執行管線的處發程序。
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673777"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414477"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>建立依排程執行管線的觸發程序
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文提供有關排程觸發程序的資訊，以及建立、啟動和監視排程觸發程序的步驟。 如需了解其他類型的觸發程序，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md)。
 
 建立排程觸發程序時，您需為觸發程序指定排程 (開始日期、週期、結束日期等)，然後與管線建立關聯。 管道和觸發程序具有多對多關聯性。 多個觸發程序可以啟動單一管道。 單一觸發程序可以啟動多個管道。
@@ -110,31 +112,31 @@ ms.locfileid: "73673777"
     - 此觸發程序與 **Adfv2QuickStartPipeline** 管線關聯。 若要將多個管線與觸發程序建立關聯，請新增更多個 **pipelineReference** 區段。
     - 快速入門中的管線會採用兩個**參數**值：**inputPath** 和 **outputPath**。 因此，您將從觸發程序傳遞這些參數的值。
 
-2. 使用**Set-AzDataFactoryV2Trigger** Cmdlet 創建觸發器：
+2. 使用**Set-AzDataFactoryV2Trigger** cmdlet 建立觸發器:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. 使用**Get-AzDataFactoryV2Trigger** Cmdlet 確認觸發器的狀態**已停止**：
+3. 使用**Get-AzDataFactoryV2Trigger** cmdlet 確認觸發器的狀態**已停止**:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用**啟動-AzDataFactoryV2觸發器**Cmdlet 啟動觸發器：
+4. 使用**啟動-AzDataFactoryV2觸發器**cmdlet 啟動觸發器:
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 使用**Get-AzDataFactoryV2Trigger** Cmdlet 確認觸發器的狀態已**啟動**：
+5. 使用**Get-AzDataFactoryV2Trigger** cmdlet 確認觸發器的狀態已**啟動**:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  使用**Get-AzDataFactoryV2TriggerRun** Cmdlet 獲取在 Azure PowerShell 中運行的觸發器。 若要取得有關觸發程序回合的資訊，請定期執行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 的值，以符合您的觸發程序定義中的值：
+6.  使用**Get-AzDataFactoryV2TriggerRun** cmdlet 獲取在 Azure PowerShell 中運行的觸發器。 若要取得有關觸發程序回合的資訊，請定期執行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 的值，以符合您的觸發程序定義中的值：
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -338,7 +340,7 @@ ms.locfileid: "73673777"
 | 開始時間已過去 | 計算開始時間之後的第一個未來執行時間，並在該時間執行。<br/><br/>根據從上次執行時間算出的時間來執行後續的執行作業。<br/><br/>請參閱本表後面的範例。 | 觸發器在指定的開始時間_不早_開始。 第一次執行是根據從開始時間算出的排程。<br/><br/>根據週期排程執行後續的執行作業。 |
 | 開始時間在未來或現在 | 在指定的開始時間執行一次。<br/><br/>根據從上次執行時間算出的時間來執行後續的執行作業。 | 觸發程序會在「到了」__ 指定的開始時間才啟動。 第一次執行是根據從開始時間算出的排程。<br/><br/>根據週期排程執行後續的執行作業。 |
 
-我們來看看一個範例：當開始時間在過去、具有週期性但無排程時，會發生什麼情況。 假設目前時間是 `2017-04-08 13:00`，開始時間是 `2017-04-07 14:00`，而週期是每隔兩天。 （通過將**頻率**屬性設置為"天"和**間隔**屬性設置為 2 來定義**定期**值。請注意 **，startTime**值已過去，併發生在目前時間之前。
+我們來看看一個範例：當開始時間在過去、具有週期性但無排程時，會發生什麼情況。 假設目前時間是 `2017-04-08 13:00`，開始時間是 `2017-04-07 14:00`，而週期是每隔兩天。 (通過將**頻率**屬性設置為"天"和**間隔**屬性設置為 2 來定義**定期**值。請注意 **,startTime**值已過去,並發生在當前時間之前。
 
 根據這些條件，第一次執行是在 `2017-04-09 at 14:00`。 排程器引擎會從開始時間計算執行週期。 過去的任何執行個體都會遭到捨棄。 引擎會使用下一個在未來發生的執行個體。 在此案例中，開始時間是 `2017-04-07 at 2:00pm`，因此下一個執行個體是在該時間的兩天後，亦即 `2017-04-09 at 2:00pm`。
 
@@ -358,8 +360,8 @@ ms.locfileid: "73673777"
 
 | JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
-| **分鐘** | 一小時內觸發程序執行的分鐘數。 | <ul><li>整數 </li><li>一連串整數</li></ul>
-| **小時** | 一天內觸發程序執行的小時數。 | <ul><li>整數 </li><li>一連串整數</li></ul> |
+| **分鐘** | 一小時內觸發程序執行的分鐘數。 | <ul><li>整數</li><li>一連串整數</li></ul>
+| **小時** | 一天內觸發程序執行的小時數。 | <ul><li>整數</li><li>一連串整數</li></ul> |
 | **平日** | 觸發程序在一週中的執行日。 此值只能與 weekly 頻率搭配指定。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>日期值陣列 (最大陣列大小為 7)</li><li>日值不區分大小寫</li></ul> |
 | **monthlyOccurrences** | 觸發程序在一個月中的執行日。 此值只能與 monthly 頻率搭配指定。 | <ul><li>**monthlyOccurrence** 物件的陣列︰`{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 屬性是觸發程序在一週中的執行日。 例如，**day** 值為 `{Sunday}` 的 **monthlyOccurrences** 屬性意謂著月份中的每個星期日。 **day** 屬性為必要屬性。</li><li>**occurrence** 屬性係指所指定的 **day** 在月份中出現的位置。 例如，**day** 和 **occurrence** 值為 `{Sunday, -1}` 的 **monthlyOccurrences** 屬性意謂著月份中的最後一個星期日。 **occurrence** 屬性為選用屬性。</li></ul> |
 | **monthDays** | 觸發程序在一個月中的執行日。 此值只能與 monthly 頻率搭配指定。 | <ul><li><= -1 和 >= -31 的任何值</li><li>>= 1 和 <= 31 任何值</li><li>值的陣列</li></ul> |
@@ -401,4 +403,4 @@ ms.locfileid: "73673777"
 
 
 ## <a name="next-steps"></a>後續步驟
-如需有關觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#triggers)。
+如需有關觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#trigger-execution)。

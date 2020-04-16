@@ -1,24 +1,26 @@
 ---
-title: Azure 金鑰保管庫的 Azure 事件網格事件架構
+title: Azure 金鑰保管庫作為事件網格源
 description: 使用 Azure 事件格格描述為 Azure 金鑰保管庫事件提供的屬性和架構
 services: event-grid
-author: msmbaldwin
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/25/2019
-ms.author: mbaldwin
-ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010506"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393303"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)
+# <a name="azure-key-vault-as-event-grid-source"></a>Azure 金鑰保管庫作為事件網格源
 
 本文提供[Azure 金鑰保管庫中](../key-vault/index.yml)的事件的屬性和架構,當前處於預覽狀態。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
-## <a name="available-event-types"></a>可用的事件類型
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
+
+### <a name="available-event-types"></a>可用的事件類型
 
 Azure 金鑰保管庫帳戶產生以下事件類型:
 
@@ -34,7 +36,7 @@ Azure 金鑰保管庫帳戶產生以下事件類型:
 | 微軟.KeyVault.秘密近視 | 秘密接近過期 | 當前版本的機密即將過期時觸發。 (事件在到期日期前 30 天觸發。 |
 | 微軟.KeyVault.秘密過期 | 秘密過期 | 當機密過期時觸發。 |
 
-## <a name="event-examples"></a>事件範例
+### <a name="event-examples"></a>事件範例
 
 下面的範例顯示**Microsoft.KeyVault.秘密新版本建立的**架構 :
 
@@ -61,7 +63,7 @@ Azure 金鑰保管庫帳戶產生以下事件類型:
 ]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
@@ -74,6 +76,12 @@ Azure 金鑰保管庫帳戶產生以下事件類型:
 | version | 字串 | 觸發此事件的物件的版本 |
 | nbf | number | 觸發此事件的物件的未早於日期(以秒為單位) |
 | exp | number | 觸發此事件的物件的到期日期(以秒為單位) |
+
+## <a name="tutorials-and-how-tos"></a>教學和如何
+|Title  |描述  |
+|---------|---------|
+| [使用 Azure 事件網格監視金鑰保管庫事件](../key-vault/event-grid-overview.md) | 將密鑰保管庫與事件網格集成的概述。 |
+| [教學:使用事件網格建立及監視金鑰保管庫事件](../key-vault/event-grid-tutorial.md) | 瞭解如何為金鑰保管庫設置事件網格通知。 |
 
 
 ## <a name="next-steps"></a>後續步驟

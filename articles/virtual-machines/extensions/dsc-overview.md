@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: dcb63031e6c033ce2372dc05e588b0f54cb1609f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c61ba0840b75bff10af1d802a9b90c922ef1f12f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294807"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415876"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure 預期狀態設定延伸模組處理常式簡介
 
 「Azure VM 代理程式」和相關的延伸模組是 Microsoft Azure 基礎結構服務的一部分。 VM 延伸模組是可延伸 VM 功能及簡化各種 VM 管理作業的軟體元件。
 
-Azure 所需狀態配置 （DSC） 擴展的主要用例是引導 VM 到 Azure[自動化狀態配置 （DSC） 服務](../../automation/automation-dsc-overview.md)。
-該服務提供了[一些好處](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service)，包括持續管理 VM 配置並與其他操作工具（如 Azure 監視）集成。
-使用擴展將 VM 註冊到服務提供了一個靈活的解決方案，甚至可以跨 Azure 訂閱工作。
+Azure 需要狀態設定 (DSC) 延伸的主要用例是引開 VM 到 Azure[自動化狀態設定 (DSC) 服務](../../automation/automation-dsc-overview.md)。
+該服務提供了[一些好處](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service),包括持續管理 VM 配置並與其他操作工具(如 Azure 監視)集成。
+使用擴展將 VM 註冊到服務提供了一個靈活的解決方案,甚至可以跨 Azure 訂閱工作。
 
 您可以脫離 Automation DSC 服務來單獨使用 DSC 延伸模組。
-但是，這只會將配置推送到 VM。
-除了在 VM 中的本地之外，沒有可用的正在進行的報告。
+但是,這隻會將配置推送到 VM。
+除了在 VM 中的本地之外,沒有可用的正在進行的報告。
 
 本文提供兩種案例的相關資訊：使用 DSC 延伸模組來進行「自動化」上線，以及藉由使用 Azure SDK 來使用 DSC 延伸模組作為工具，以將設定指派給 VM。
 
@@ -46,7 +46,7 @@ Azure 所需狀態配置 （DSC） 擴展的主要用例是引導 VM 到 Azure[�
 本指南假設您已熟悉下列概念︰
 
 - **設定**：DSC 設定文件。
-- **節點**：DSC 設定的目標。 在本文檔中，*節點*始終引用 Azure VM。
+- **節點**：DSC 設定的目標。 在本文件中,*節點*始終引用 Azure VM。
 - **設定資料**：具有設定之環境資料的 .psd1 檔案。
 
 ## <a name="architecture"></a>架構
@@ -59,30 +59,30 @@ Azure DSC 延伸模組會使用「Azure VM 代理程式」架構來傳遞、套�
 - 如果已指定 **wmfVersion** 屬性，就會安裝該版本的 WMF，除非該版本與 VM 的 OS 不相容。
 - 如果未指定任何 **wmfVersion** 屬性，則會安裝 WMF 的最新適用版本。
 
-安裝 WMF 需要重新啟動。 重新啟動之後，延伸模組會下載 **modulesUrl** 屬性 (如有提供) 中所指定的 .zip 檔案。 如果此位置在 Azure Blob 儲存體中，您可以在 **sasToken** 屬性中指定 SAS 權杖來存取檔案。 下載並解壓縮 .zip 後，**配置函數**中定義的配置函數將運行以生成 .mof（[管理物件格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)）檔。 接著，擴充功能就會使用產生的 .mof 檔來執行 `Start-DscConfiguration -Force`。 延伸模組會擷取輸出並將其寫入至 Azure 狀態通道。
+安裝 WMF 需要重新啟動。 重新啟動之後，延伸模組會下載 **modulesUrl** 屬性 (如有提供) 中所指定的 .zip 檔案。 如果此位置在 Azure Blob 儲存體中，您可以在 **sasToken** 屬性中指定 SAS 權杖來存取檔案。 下載並解壓縮 .zip 後,**設定函數**中定義的配置函數將執行以生成 .mof([託管物件格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-))檔。 接著，擴充功能就會使用產生的 .mof 檔來執行 `Start-DscConfiguration -Force`。 延伸模組會擷取輸出並將其寫入至 Azure 狀態通道。
 
 ### <a name="default-configuration-script"></a>預設設定指令碼
 
 Azure DSC 延伸模組包含預設設定指令碼，可在將 VM 上線至 Azure Automation DSC 服務時使用。 指令碼參數會對齊[本機設定管理員](/powershell/scripting/dsc/managing-nodes/metaConfig)的可設定屬性。 如需了解指令碼參數，請參閱[採用 Azure Resource Manager 範本的預期狀態設定延伸模組](dsc-template.md)中的[預設設定指令碼](dsc-template.md#default-configuration-script)。 如需完整的指令碼，請參閱 [GitHub 中的 Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
 
-## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>註冊 Azure 自動化狀態配置 （DSC） 服務的資訊
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>註冊 Azure 自動化狀態設定 (DSC) 服務的資訊
 
-當使用 DSC 擴展將節點註冊到狀態佈建服務時，需要提供三個值。
+當使用 DSC 擴展將節點註冊到狀態配置服務時,需要提供三個值。
 
-- 註冊Url - Azure 自動化帳戶的 HTTPs 位址
-- 註冊金鑰 - 用於向服務註冊節點的共用金鑰
-- 節點配置名稱 - 要從服務中提取的節點配置 （MOF） 的名稱以配置伺服器角色
+- 註冊網址 - Azure 自動化帳戶的 https 位址
+- 註冊金鑰 - 用於向服務註冊節點的分享金鑰
+- 節點設定名稱 - 要從服務中提取的節點設定 (MOF) 的名稱以設定伺服器角色
 
-此資訊可以在[Azure 門戶](../../automation/automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal)中看到，也可以使用 PowerShell。
+此資訊可以在[Azure 門戶](../../automation/automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal)中看到,也可以使用 PowerShell。
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-對於節點配置名稱，請確保節點配置存在於 Azure 狀態配置中。  否則，擴展部署將返回故障。  還要確保您使用的是*節點配置*的名稱，而不是配置的名稱。
-配置在用於[編譯節點配置 （MOF 檔案） 的](https://docs.microsoft.com/azure/automation/automation-dsc-compile)腳本中定義。
-名稱將始終為"配置"，後跟一`.`個句`localhost`點，或者特定電腦名稱稱。
+對於節點配置名稱,請確保節點配置存在於 Azure 狀態配置中。  否則,擴展部署將返回故障。  還要確保您使用的是*節點配置*的名稱,而不是配置的名稱。
+設定在用於[編譯節點配置 (MOF 檔) 的](https://docs.microsoft.com/azure/automation/automation-dsc-compile)文稿中定義。
+名稱將始終為"配置",後跟一`.`個`localhost`句點,或者特定計算機名稱。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager 範本中的 DSC 延伸模組
 
@@ -115,7 +115,7 @@ Resource Manager DSC 延伸模組 Cmdlet 相關的重要資訊：
 
 Azure DSC 延伸模組可以使用 DSC 設定文件，在部署期間直接設定 Azure VM。 此步驟不會向「自動化」註冊節點。 該節點「不會」** 受到集中管理。
 
-下列範例說明一個簡單的設定範例。 將配置保存在本地，作為 iisInstall.ps1。
+下列範例說明一個簡單的設定範例。 將配置保存在本地,作為 iisInstall.ps1。
 
 ```powershell
 configuration IISInstall
@@ -147,7 +147,7 @@ Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $
 
 Azure CLI 可用於將 DSC 擴展部署到現有虛擬機器。
 
-對於運行 Windows 的虛擬機器：
+對於執行 Windows 的虛擬機器:
 
 ```azurecli
 az vm extension set \
@@ -159,7 +159,7 @@ az vm extension set \
   --settings '{}'
 ```
 
-對於運行 Linux 的虛擬機器：
+對執行 Linux 的虛擬機器:
 
 ```azurecli
 az vm extension set \
@@ -184,7 +184,7 @@ az vm extension set \
 
 - **設定模組或指令碼**：此為必要欄位 (此表單尚未針對[預設設定指令碼](#default-configuration-script)進行更新)。 設定模組和指令碼需要一個包含設定指令碼的 .ps1 檔案，或一個 .ps1 設定指令碼位於根目錄的 .zip 檔案。 如果您使用 .zip 檔案，所有相依資源都必須包含在該 .zip 檔案的模組資料夾中。 您可以使用 Azure PowerShell SDK 所包含的 **Publish-AzureVMDscConfiguration -OutputArchivePath** Cmdlet 來建立 .zip 檔案。 此 .zip 檔案會上傳到您的使用者 Blob 儲存體並受到 SAS 權杖保護。
 
-- **模組限定的配置名稱**：您可以在 .ps1 檔中包含多個配置函數。 請輸入設定 .ps1 指令碼的名稱，後面跟著 \\ 和設定函式的名稱。 例如，如果 .ps1 指令碼的名稱為 configuration.ps1，而設定為 **IisInstall**，則請輸入 **configuration.ps1\IisInstall**。
+- **模組限定的設定名稱**:您可以在 .ps1 檔中包含多個配置函數。 請輸入設定 .ps1 指令碼的名稱，後面跟著 \\ 和設定函式的名稱。 例如，如果 .ps1 指令碼的名稱為 configuration.ps1，而設定為 **IisInstall**，則請輸入 **configuration.ps1\IisInstall**。
 
 - **設定引數**︰如果設定函式接受引數，請以 **argumentName1=value1,argumentName2=value2** 格式在這裡輸入引數。 此格式與 PowerShell Cmdlet 或 Resource Manager 範本中接受設定引數時所採用的格式不同。
 

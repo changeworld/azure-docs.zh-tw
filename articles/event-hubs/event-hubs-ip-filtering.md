@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: e0116c1cfe61b49f2d5aff46fab9cadc0e423ecc
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310165"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393132"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>為 Azure 事件中心命名空間設定 IP 防火牆規則
 默認情況下,只要請求附帶有效的身份驗證和授權,事件中心命名空間即可從 Internet 訪問。 使用 IP 防火牆,您可以進一步將其限制為[CIDR(無類域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的一組 IPv4 位址或 IPv4 位址範圍。
@@ -29,6 +29,7 @@ ms.locfileid: "81310165"
 > 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
 >
 > 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
+> - Azure 監視器(診斷設定)
 > - Azure 串流分析
 > - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由

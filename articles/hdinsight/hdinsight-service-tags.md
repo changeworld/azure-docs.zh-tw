@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/10/2020
-ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437681"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410860"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服務標記
 
-用於網路安全組 (NSG) 的 Azure HDInsight 服務標記是運行狀況和管理服務的 IP 位址組。 這些組有助於將安全規則創建的複雜性降至最低。 [服務標記](../virtual-network/security-overview.md#service-tags)提供一種替代方法,用於允許來自特定 IP 位址的入站流量,而無需輸入 NSG 中的每個[管理 IP 位址](hdinsight-management-ip-addresses.md)。
+用於網路安全組 (NSG) 的 Azure HDInsight 服務標記是運行狀況和管理服務的 IP 位址組。 這些組有助於將安全規則創建的複雜性降至最低。 [服務標記](../virtual-network/security-overview.md#service-tags)允許來自特定 IP 的入站流量,而無需輸入 NSG 中的每個[管理 IP 位址](hdinsight-management-ip-addresses.md)。
 
 HDInsight 服務管理這些服務標記。 不能創建自己的服務標記或修改現有標記。 Microsoft 管理與服務標記匹配的位址首碼,並在位址更改時自動更新服務標記。
 
@@ -46,13 +46,13 @@ HDInsight 服務管理這些服務標記。 不能創建自己的服務標記或
 
 ## <a name="use-regional-hdinsight-service-tags"></a>使用區域 HDInsight 服務標籤
 
-如果全域標記選項由於需要更嚴格的許可權而不起作用,則只能允許適用於您所在地區的服務標記。 可能有一個、兩個或三個適用的服務標記,具體取決於創建群集的區域。
+如果全域標記選項由於需要更嚴格的許可權而不起作用,則只能允許適用於您所在地區的服務標記。 可能有多個服務標記,具體取決於創建群集的區域。
 
 要瞭解要為區域添加的服務標記,請閱讀本文的以下部分。
 
 ### <a name="use-a-single-regional-service-tag"></a>使用單一區域服務標記
 
-如果您更喜歡使用區域服務標記,並且群集位於此表中列出的區域之一,則只需向網路安全組添加單個區域服務標記。
+如果您的群集位於此表中列出的區域中,則只需向 NSG 添加單個區域服務標記。
 
 | Country | 區域 | 服務標籤 |
 | ---- | ---- | ---- |
@@ -80,13 +80,13 @@ HDInsight 服務管理這些服務標記。 不能創建自己的服務標記或
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多個區域服務標記
 
-如果您更喜歡使用區域服務標記,但創建群集的區域未列在上表中,則需要允許多個區域服務標記。 需要使用一個以上是由於各區域的資源提供者的安排不同。
+如果創建群集的區域未列在上表中,則需要允許多個區域服務標記。 需要使用多個,是因為各區域的資源提供者的安排不同。
 
 其餘區域根據其使用的區域服務標記分為多個組。
 
 #### <a name="group-1"></a>群組 1
 
-如果您的群集是在下表中的一個區域中創建的,則允許服務標記`HDInsight.WestUS``HDInsight.EastUS`以及 列出的區域服務標記。 本節中的區域需要三個服務標記。
+如果群集是在下表中的一個區域中建立的,請允許服務標記`HDInsight.WestUS``HDInsight.EastUS`和 。 此外,還列出了區域服務標記。 本節中的區域需要三個服務標記。
 
 例如,如果群集是在`East US 2`該區域中創建的,則需要向網路安全組添加以下服務標記:
 

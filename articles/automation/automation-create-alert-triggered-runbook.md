@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e8ddcaf6a5c9ab51147e540e2426ef8c4a1fdd3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383330"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392379"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警示來觸發 Azure 自動化 Runbook
 
@@ -35,8 +35,8 @@ ms.locfileid: "81383330"
 |警示  |描述|承載結構描述  |
 |---------|---------|---------|
 |[常見警報](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|當前在 Azure 中標準化警報通知的消耗體驗的通用警報架構。|常見警示有效負載架構|
-|[活動記錄警示](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |當 Azure 活動記錄中的任何新事件符合特定條件時，便傳送通知。 例如，當 **myProductionResourceGroup** 中發生 `Delete VM` 作業時，或出現狀態為 [作用中]**** 的新「Azure 服務健康狀態」事件時。| [活動記錄警示承載結構描述](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[近乎即時計量警示](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |當一或多個平台層級的計量符合指定的條件時，便以比計量警示快的速度傳送通知。 例如，當在過去 5 分鐘 VM 上 [CPU %]**** 的值大於 **90**，且 [網路輸入]**** 的值大於 **500 MB** 時。| [近乎即時計量警示承載結構描述](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[活動記錄警示](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |當 Azure 活動記錄中的任何新事件符合特定條件時，便傳送通知。 例如，當 **myProductionResourceGroup** 中發生 `Delete VM` 作業時，或出現狀態為 [作用中] 的新「Azure 服務健康狀態」事件時。| [活動記錄警示承載結構描述](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[近乎即時計量警示](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |當一或多個平台層級的計量符合指定的條件時，便以比計量警示快的速度傳送通知。 例如,當 VM 上的**CPU %** 值大於 90,並且過去 5 分鐘**網路登錄**的值大於 500 MB 時。| [近乎即時計量警示承載結構描述](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 由於每種類型的警示所提供的資料不同，因此每種警示類型的處理方式也不同。 在下一節中，您將了解如何建立 Runbook 來處理不同類型的警示。
 
@@ -44,11 +44,11 @@ ms.locfileid: "81383330"
 
 若要搭配警示使用「自動化」，您需要具有邏輯的 Runbook，此邏輯會管理傳遞給 Runbook 的警示 JSON 承載。 下列範例 Runbook 必須從 Azure 警示呼叫。
 
-如上一節所述，每種類型的警示都有不同的結構描述。 指令碼會從警示採用 `WebhookData` Runbook 輸入參數中的 Webhook 資料。 接著，指令碼會評估 JSON 承載，以判斷使用的是哪種警示類型。
+如上一節所述，每種類型的警示都有不同的結構描述。 文本從`WebhookData`Runbook 輸入參數中的警報獲取 Webhook 資料。 然後,腳本評估 JSON 負載以確定正在使用的警報類型。
 
-此範例使用來自 VM 的警示。 它會從承載擷取 VM 資料，然後使用該資訊來停止 VM。 您必須在執行 Runbook 的「自動化」帳戶中設定連線。 使用警示來觸發 Runbook 時，請務必檢查所觸發 Runbook 中的警示狀態。 每一次警示變更狀態時，Runbook 都會觸發。 警示有多個狀態，最常見的兩個狀態為 `Activated` 和 `Resolved`。 在 Runbook 邏輯中檢查這個狀態，以確保 Runbook 不會執行多次。 本文中的範例只會示範如何尋找 `Activated` 警示。
+此範例使用來自 VM 的警示。 它會從承載擷取 VM 資料，然後使用該資訊來停止 VM。 您必須在執行 Runbook 的「自動化」帳戶中設定連線。 使用警報觸發 Runbook 時,請務必檢查觸發的 Runbook 中的警報狀態。 每次警報更改狀態時,Runbook 都會觸發。 警報具有多個狀態,其中兩個最常見的狀態是啟動和已解決。 檢查 Runbook 邏輯中的狀態,以確保 Runbook 不會運行多次。 本文中的範例演示如何查找狀態僅啟動的警報。
 
-Runbook`AzureRunAsConnection`使用[「執行為「帳戶](automation-create-runas-account.md)使用 Azure 進行身份驗證,以便對 VM 執行管理操作。
+Runbook 使用連接`AzureRunAsConnection`資產[「作為「帳戶](automation-create-runas-account.md)進行身份驗證,以便對 VM 執行管理操作。
 
 請使用此範例來建立名為 **Stop-AzureVmInResponsetoVMAlert** 的 Runbook。 您可以修改 PowerShell 指令碼，然後將它與許多不同的資源搭配使用。
 
@@ -178,7 +178,7 @@ Runbook`AzureRunAsConnection`使用[「執行為「帳戶](automation-create-run
 1. 按下 **「在****資源**下選擇」。 在「**選擇資源**」頁上,選擇 VM 以發出警報,然後單擊「**完成**」。
 1. 按下「**在條件**下**新增條件**」 選擇要使用的信號,例如**CPU 百分比**,然後單擊 **"完成**"。
 1. 在 **「設定訊號邏輯**」頁上,在 **「警報」邏輯**下輸入**閾值**,然後按下 **「完成**」 。
-1. 在 **'操作群組**'下,選擇 **'新建**"。
+1. 在 [動作群組]  底下，選取 [新建]  。
 1. 在「**添加操作組」** 頁上,為操作組指定名稱和短名稱。
 1. 為操作指定名稱。 對於操作類型,選擇 **「自動化 Runbook」。。**
 1. 選擇 **「編輯詳細資訊**」 。 在 [設定 Runbook]**** 頁面上的 [Runbook 來源]**** 底下，選取 [使用者]****。  
