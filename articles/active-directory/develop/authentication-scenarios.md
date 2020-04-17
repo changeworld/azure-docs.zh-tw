@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5252fdbbaf425662fc9725e618f8fc450b435722
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885560"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534647"
 ---
 # <a name="authentication-basics"></a>驗證基本概念
 
@@ -80,16 +80,16 @@ Azure AD 還提供 Azure 活動目錄 B2C,以便組織可以使用 Google 帳戶
 
 根據用戶端的建構方式,它可以使用 Azure AD 支援的身份驗證流的一個(或多個)。 這些流可以生成各種權杖(id_tokens、刷新權杖、存取權杖)以及授權代碼,並且需要不同的權杖才能使其正常工作。 此圖表提供概述:
 
-|Flow | 需要 | id_token | 存取權杖 | 重新載入權杖 | 授權碼 | 
+|Flow | 需要 | id_token | 存取權杖 | 重新載入權杖 | 授權碼 |
 |-----|----------|----------|--------------|---------------|--------------------|
-|[授權代碼流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[授權代碼流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[隱含流程](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[混合 OIDC 串流](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[刷新權杖兌換](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 重新載入權杖 | x | x | x| |
 |[代理者流程](v2-oauth2-on-behalf-of-flow.md) | 存取權杖| x| x| x| |
 |[用戶端認證](v2-oauth2-client-creds-grant-flow.md) | | | x(僅限套用)| | |
 
-通過隱式模式發出的權杖由於透過 URL(`response_mode``query``fragment`或) 傳回瀏覽器,因此存在長度限制。  某些瀏覽器對 URL 的大小有限制,可以放入瀏覽器列中,如果時間過長,則失敗。  因此,這些令牌沒有`groups`或`wids`聲明。 
+通過隱式模式發出的權杖由於透過 URL(`response_mode``query``fragment`或) 傳回瀏覽器,因此存在長度限制。  某些瀏覽器對 URL 的大小有限制,可以放入瀏覽器列中,如果時間過長,則失敗。  因此,這些令牌沒有`groups`或`wids`聲明。
 
 現在,您已經瞭解了基礎知識,請繼續閱讀以了解標識應用模型和 API,瞭解預配在 Azure AD 中的工作原理,並獲取有關 Azure AD 支援的常見方案的詳細資訊的連結。
 
@@ -126,7 +126,7 @@ Microsoft 識別平臺使用滿足兩個主要功能的模型表示應用程式:
 
 在 Microsoft 識別平臺中,[應用程式物件](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object)描述應用程式。 在部署時,Microsoft 標識平臺使用應用程式物件作為藍圖來創建[服務主體](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object),它表示目錄或租戶中應用程式的具體實例。 服務主體定義應用在特定目標目錄中的實際可以執行哪些操作、誰可以使用它、它有權訪問哪些資源,等等。 Microsoft 標識平台通過**同意**從應用程式物件創建服務主體。
 
-下圖顯示由同意驅動的簡化 Microsoft 身分識別平台佈建流程。 它顯示兩個租戶:A 和B. 租戶A擁有應用程式。 租戶 B 正在通過服務主體實例化應用程式。  
+下圖顯示由同意驅動的簡化 Microsoft 身分識別平台佈建流程。 它顯示兩個租戶:A 和B. 租戶A擁有應用程式。 租戶 B 正在通過服務主體實例化應用程式。
 
 ![由同意驅動的簡化佈建流程](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -160,7 +160,7 @@ Microsoft 識別平臺使用滿足兩個主要功能的模型表示應用程式:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Web 應用程式如何確定使用者是否經過認證
 
-Web 應用開發人員可以指示所有頁面或僅需要身份驗證。 例如,在ASP.NET/ASP.NET核心中,這是通過將`[Authorize]`屬性添加到控制器操作來實現的。 
+Web 應用開發人員可以指示所有頁面或僅需要身份驗證。 例如,在ASP.NET/ASP.NET核心中,這是通過將`[Authorize]`屬性添加到控制器操作來實現的。
 
 此屬性導致ASP.NET檢查是否存在包含用戶標識的會話 Cookie。 如果 Cookie 不存在,ASP.NET 將身份驗證重定向到指定的標識提供者。 如果識別提供者是 Azure AD,則 Web`https://login.microsoftonline.com`應用程式會將驗證重定向到,該身份驗證將顯示登入對話框。
 

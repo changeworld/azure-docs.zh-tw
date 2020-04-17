@@ -3,12 +3,12 @@ title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585870"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536942"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -107,7 +107,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，「自訂事件」** 是您可以在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)顯示為彙總計數，以及在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
+在 Application Insights 中，「自訂事件」** 是您可以在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)顯示為彙總計數，以及在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
 
 在您的程式碼中插入 `TrackEvent` 呼叫，以計算各種事件。 使用者選擇特定功能的頻率、達成特定目標的頻率，或他們犯特定類型錯誤的頻率。
 
@@ -443,7 +443,7 @@ requests
 
 傳送例外狀況至 Application Insights︰
 
-* 以[計算數目](../../azure-monitor/app/metrics-explorer.md)，來指出問題的頻率。
+* 以[計算數目](../../azure-monitor/platform/metrics-charts.md)，來指出問題的頻率。
 * 以[檢查個別出現次數](../../azure-monitor/app/diagnostic-search.md)。
 
 報告包含堆疊追蹤。
@@ -774,7 +774,7 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中，您可建立可計算 [已驗證的使用者]**** 和 [使用者帳戶]**** 的圖表。
+在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中，您可建立可計算 [已驗證的使用者]**** 和 [使用者帳戶]**** 的圖表。
 
 您也可以[搜尋](../../azure-monitor/app/diagnostic-search.md)具有特定使用者名稱和帳戶的用戶端資料點。
 

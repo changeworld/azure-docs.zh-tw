@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ab342dba5c8be2ff3793c0eb36926969b3e364e5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655651"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537282"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 快取的先決條件
 
@@ -20,9 +20,6 @@ ms.locfileid: "80655651"
 ## <a name="azure-subscription"></a>Azure 訂用帳戶
 
 建議付費訂閱。
-
-> [!NOTE]
-> 在 GA 發表的頭幾個月中,Azure HPC 緩存團隊必須將訂閱添加到訪問清單中,然後才能用於創建緩存實例。 此過程有助於確保每個客戶從他們的緩存中獲得高品質的回應。 填寫[此表單](https://aka.ms/onboard-hpc-cache)以請求訪問。
 
 ## <a name="network-infrastructure"></a>網路基礎結構
 
@@ -84,11 +81,11 @@ Azure HPC 快取需要具有以下特性的專用子網:
 * 存取層(預設):**熱**
 
 最好使用與緩存位於同一位置的存儲帳戶。
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 您還必須向快取應用程式授予對 Azure 儲存帳戶的訪問許可權,如上文[的許可權](#permissions)中所述。 按照[「添加存儲目標」](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的過程為緩存提供所需的訪問角色。 如果您不是存儲帳戶擁有者,則讓所有者執行此步驟。
 
 ### <a name="nfs-storage-requirements"></a>NFS 儲存要求
+<!-- linked from configuration.md -->
 
 如果使用 NFS 儲存系統(例如,本地硬體 NAS 系統),請確保它滿足這些要求。 您可能需要與儲存系統(或資料中心)的網路管理員或防火牆管理員合作,以驗證這些設置。
 

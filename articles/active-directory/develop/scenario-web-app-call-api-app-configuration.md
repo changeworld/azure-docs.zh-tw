@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0f60e13ca4bc5115f9a49885c3c659ad1147fcc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f05d33b43df85c49a0c92b60157e2a6448325ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881888"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537129"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>呼叫 Web API 的 Web 應用:程式碼設定
 
@@ -253,7 +253,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>權杖取得.產生機密客戶端應用程式方法
 
-在 ASP.NET 核心中,建構機密客戶端應用程式`HttpContext`將使用中的資訊 。 使用`HttpContext``CurrentHttpContext`屬性訪問與請求關聯的關聯。 `HttpContext`包含有關 Web 應用的 URL 和登錄`ClaimsPrincipal`使用者的資訊(在中)。 
+在 ASP.NET 核心中,建構機密客戶端應用程式`HttpContext`將使用中的資訊 。 使用`HttpContext``CurrentHttpContext`屬性訪問與請求關聯的關聯。 `HttpContext`包含有關 Web 應用的 URL 和登錄`ClaimsPrincipal`使用者的資訊(在中)。
 
 該方法`BuildConfidentialClientApplication`還使用ASP.NET核心配置。 設定具有「AzureAD」部分,並且還綁定到以下兩個元素:
 

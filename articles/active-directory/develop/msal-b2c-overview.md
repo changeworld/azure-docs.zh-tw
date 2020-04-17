@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dc8a330bc09f37f7941534ed7c17d1ffd14d08c5
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875957"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534477"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>使用 JavaScript 的 Microsoft 驗證函式庫使用 Azure 活動目錄 B2C
 
@@ -44,7 +44,7 @@ Azure AD B2C 還使您能夠在身份驗證過程中對應用程式的 UI 進行
 
 以下步驟演示了 Web **API**如何使用 Azure AD B2C 來保護自己並將選定的作用域公開給用戶端應用程式。
 
-### <a name="step-1-register-your-application"></a>步驟 1：註冊您的應用程式
+### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
 要使用 Azure AD B2C 保護 Web API,首先需要註冊它。 請參閱[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) \(英文\) 以取得詳細步驟。
 
@@ -63,7 +63,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 2. 使用之前註冊應用程式時獲得的應用程式憑據配置範例。 通過將值替換為客戶端 ID、主機、租戶 Id 和策略名稱的名稱來更改以下代碼行。
 
 ```JavaScript
-const clientID = "<Application ID for your Node.js Web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
+const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
 const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
 const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
@@ -77,7 +77,7 @@ const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsig
 
 以下步驟演示**了單頁應用程式**如何使用 Azure AD B2C 註冊、登錄和調用受保護的 Web API。
 
-### <a name="step-1-register-your-application"></a>步驟 1：註冊您的應用程式
+### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
 若要實作驗證，您必須先註冊您的應用程式。 請參閱[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) \(英文\) 以取得詳細步驟。
 
@@ -104,7 +104,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     // The current application coordinates were pre-registered in a B2C tenant.
     const apiConfig = {
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"], //API scopes you exposed during api registration
-        webApi: "https://fabrikamb2chello.azurewebsites.net/hello" 
+        webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
     };
    ```
 

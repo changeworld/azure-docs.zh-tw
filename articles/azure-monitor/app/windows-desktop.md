@@ -3,12 +3,12 @@ title: 監視 Windows 傳統型應用程式的使用情況和效能
 description: 使用 Application Insights 分析 Windows 傳統型應用程式的使用情况和效能。
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670826"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537384"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
 
@@ -28,9 +28,9 @@ ms.locfileid: "77670826"
    
     如果使用 ApplicationInsights.config，請確定其在方案總管中的屬性已設定為 [建置動作] = [內容]、[複製到輸出目錄] = [複製] ****。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 傳送遙測。
-6. 運行應用，並在 Azure 門戶中創建的資源中查看遙測資料。
+6. 運行應用,並在 Azure 門戶中創建的資源中查看遙測數據。
 
-## <a name="example-code"></a><a name="telemetry"></a>示例代碼
+## <a name="example-code"></a><a name="telemetry"></a>範例代碼
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>覆蓋電腦名稱稱的存儲
+## <a name="override-storage-of-computer-name"></a>覆寫電腦名稱的儲存
 
-預設情況下，此 SDK 將收集和存儲發出遙測的系統的電腦名稱稱。 要覆蓋集合，您需要使用遙測初始化器：
+默認情況下,此 SDK 將收集和儲存發出遙測的系統的計算機名稱。 要覆寫集合,您需要使用遙測初始化器:
 
-**編寫如下自訂遙測初始化程式。**
+**編寫如下自定義遙測初始化程式。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-在下面設置檢測鍵`Program.cs``Main()`的方法中具現化初始化器：
+在下面設定偵測`Program.cs``Main()`鍵 的方法中實體化初始化器:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -108,7 +108,7 @@ namespace CustomInitializer.Telemetry
 
 ## <a name="next-steps"></a>後續步驟
 * [建立儀表板](../../azure-monitor/app/overview-dashboard.md)
-* [診斷搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探索度量](../../azure-monitor/app/metrics-explorer.md)
+* [診斷搜尋](../../azure-monitor/app/diagnostic-search.md)
+* [探索度量](../../azure-monitor/platform/metrics-charts.md)
 * [撰寫分析查詢](../../azure-monitor/app/analytics.md)
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383793"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536653"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>建立 Azure 虛擬機器產品/服務
 
@@ -296,7 +296,7 @@ ms.locfileid: "81383793"
 
 ## <a name="plan-overview"></a>排程概述
 
-您可以在合作夥伴中心的同一優惠中提供不同的計畫選項。 這些計劃以前稱為 SKU。 產品/服務至少需要一個計劃,在貨幣化受眾、Azure 雲、功能或 VM 映射方面可能有所不同。
+您可以在合作夥伴中心的同一優惠中提供不同的計畫選項。 這些計劃以前稱為 SKU。 產品/服務至少需要一個計劃,在貨幣化受眾、Azure 區域、功能或VM映射方面可能有所不同。
 
 建立計劃後,「**計畫概觀**」選項卡顯示:
 
@@ -326,7 +326,7 @@ ms.locfileid: "81383793"
 
 ### <a name="plan-setup"></a>計畫設定
 
-設置計劃類型的高級配置、是否重用其他計劃的技術配置以及計劃應可用的雲端。 此處的選擇確定同一計劃的其他選項卡上顯示哪些欄位。
+設置計劃類型的高級配置,它是否重用其他計劃的技術配置,以及計劃應在哪些區域可用。 此處的選擇確定同一計劃的其他選項卡上顯示哪些欄位。
 
 #### <a name="reuse-technical-configuration"></a>重用技術設定
 
@@ -335,24 +335,24 @@ ms.locfileid: "81383793"
 > [!NOTE]
 > 當您從另一個計劃重用技術配置時,整個**技術配置**選項卡將從這個計劃中消失。 其他計劃中的技術配置詳細資訊(包括您將來進行的任何更新)也將用於此計劃。 此計劃發佈後,無法更改此設置。
 
-#### <a name="cloud-availability"></a>雲可用性
+#### <a name="azure-regions"></a>Azure 區域
 
-您的計劃必須至少在一個雲中提供。
+您的計劃必須至少在一個 Azure 區域中可用。
 
-選擇**Azure 全域**選項,使計畫可供具有商業市場整合的所有公共 Azure 區域的客戶使用。 有關詳細資訊,請參閱[地理可用性和貨幣支援](https://aka.ms/AzureGovCurrencies)。
+選擇**Azure 全域**選項,使計畫可供具有商業市場整合的所有公共 Azure 區域的客戶使用。 有關詳細資訊,請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
 
-選擇**Azure 政府雲**選項以使計畫在 Azure[政府雲](https://aka.ms/WhatIsAzureGovernment)中可用。 這是一個政府社區雲,由來自美國聯邦、州、地方或部落機構的客戶以及有資格為這些實體提供服務的合作夥伴進行受控訪問。 作為發佈者,您負責為此雲社區提供服務的任何合規性控制、安全措施和最佳實踐。 Azure 政府使用物理隔離的數據中心和網路(僅適用於美國)。
+選擇**Azure 政府**選項以使計畫在 Azure[政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)區域中可用。 此區域為美國聯邦、州、地方或部落實體的客戶以及有資格為其提供服務的合作夥伴提供受控訪問。 作為發佈者,您負責任何合規性控制、安全措施和最佳實踐。 Azure 政府使用物理隔離的數據中心和網路(僅適用於美國)。
 
-在發佈到[Azure 政府](https://aka.ms/azuregovpublish)之前,在環境中測試和驗證計劃,因為某些終結點可能有所不同。 要設置和測試計畫,請從 Microsoft Azure[政府試用版](https://aka.ms/AzureGovernmentTrial)請求試用帳戶。
+在發佈到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前,在環境中測試和驗證計劃,因為某些終結點可能有所不同。 要設置和測試計畫,請從 Microsoft Azure[政府試用版](https://azure.microsoft.com/global-infrastructure/government/request/)請求試用帳戶。
 
 > [!NOTE]
-> 計劃發佈並在特定雲中可用后,無法刪除該雲。
+> 計劃發佈並在特定 Azure 區域中可用後,無法刪除該區域。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure 政府雲認證
+#### <a name="azure-government-certifications"></a>Azure 政府認證
 
-僅當在**雲可用性**下選擇**Azure 政府雲**時,此選項才可見。
+僅當在**Azure 區域**下選擇**Azure 政府**時,此選項才可見。
 
-Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 為了提高您對這些計劃的認證的認識,您最多可以提供 100 個描述它們的連結。 這些可以是直接指向您在程式上列表的連結,也可以是指向您自己網站上遵守這些清單的連結。 這些連結僅對 Azure 政府雲客戶可見。
+Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 為了提高您對這些計劃的認證的認識,您最多可以提供 100 個描述它們的連結。 這些可以是直接指向您在程式上列表的連結,也可以是指向您自己網站上遵守這些清單的連結。 這些連結僅對 Azure 政府客戶可見。
 
 選擇 **"保存"草稿**,然後再繼續。
 
@@ -384,7 +384,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 #### <a name="markets"></a>市場
 
-每個計劃必須至少在一個市場可用。 選擇此計劃可供購買的每個市場位置的複選框(這些市場中的使用者仍可以將產品/服務部署到所選雲的所有 Azure 區域)。 **"稅務匯入**"按鈕顯示 Microsoft 代表您匯入銷售和使用稅款的國家/地區。 發佈到中國僅限於**免費**或**自帶許可證**(BYOL) 的計劃。
+每個計劃必須至少在一個市場可用。 選擇此計劃可供購買的每個市場位置的複選框(這些市場中的使用者仍然可以將產品/服務部署到**[計劃設置](#plan-setup)** 中選擇的所有 Azure 區域)。 **"稅務匯入**"按鈕顯示 Microsoft 代表您匯入銷售和使用稅款的國家/地區。 發佈到中國僅限於**免費**或**自帶許可證**(BYOL) 的計劃。
 
 如果您已為計劃設定價格(美元),並添加其他市場位置,則新市場的價格將根據當前匯率計算。 在出版之前,務必查看每個市場的價格。 儲存變更後,使用 **「匯出價格 (xlsx)」** 連結查看價格。
 

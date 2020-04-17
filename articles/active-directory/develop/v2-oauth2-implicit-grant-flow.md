@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0a884850d57418e9daafba980d0a08dc86fc0974
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535837"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>微軟識別平台和隱式授予流
 
@@ -38,16 +38,16 @@ ms.locfileid: "81309383"
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 隱含授與的適用案例
 
-OAuth2 規格聲明設計出隱含授與是為了實現使用者代理程式應用程式，也就是在瀏覽器內執行的 JavaScript 應用程式。 這類應用程式的鮮明特徵是，JavaScript 程式碼可用於存取伺服器資源 (通常是 Web API)，並據以更新應用程式使用者體驗。 請想想 Gmail 或 Outlook Web Access 之類的應用程式︰當您選取收件匣中的訊息時，只有訊息視覺化面板會變更以顯示新的選取內容，該頁面的其餘部分則維持不變。 這個特徵明顯不同於傳統的重新導向型 Web 應用程式，在後者中，每個使用者互動都會造成整頁回傳，並針對整頁轉譯做出新的伺服器回應。
+OAuth2 規格聲明設計出隱含授與是為了實現使用者代理程式應用程式，也就是在瀏覽器內執行的 JavaScript 應用程式。 此類應用程式的定義特徵是 JAVAScript 代碼用於存取伺服器資源(通常是 Web API)並相應地更新應用程式用戶體驗。 請想想 Gmail 或 Outlook Web Access 之類的應用程式︰當您選取收件匣中的訊息時，只有訊息視覺化面板會變更以顯示新的選取內容，該頁面的其餘部分則維持不變。 這個特徵明顯不同於傳統的重新導向型 Web 應用程式，在後者中，每個使用者互動都會造成整頁回傳，並針對整頁轉譯做出新的伺服器回應。
 
-採用極端 JavaScript 型方法的應用程式稱為單一頁面應用程式，或 SPA。 其概念是，這些應用程式只會提供初始的 HTML 網頁和相關聯的 JavaScript，至於所有後續的互動，則由透過 JavaScript 所執行的 Web API 呼叫來推動。 不過，應用程式大多是由回傳所驅動，但偶爾會執行 JS 呼叫的混合式方法也並非罕見；關於隱含流程使用的討論也與這些方法有關。
+採用極端 JavaScript 型方法的應用程式稱為單一頁面應用程式，或 SPA。 其理念是,這些應用程式僅提供初始 HTML 頁和關聯的 JavaScript,所有後續互動都由透過 JavaScript 執行的 Web API 呼叫驅動。 不過，應用程式大多是由回傳所驅動，但偶爾會執行 JS 呼叫的混合式方法也並非罕見；關於隱含流程使用的討論也與這些方法有關。
 
-重新導向型應用程式通常會透過 Cookie 來保護其要求，不過，這種方法並非也適用於 JavaScript 應用程式。 Cookie 只會針對其產生網域發生作用，但 JavaScript 呼叫卻可能導向到其他網域。 事實上，情況往往是如此︰請想想叫用 Microsoft Graph API、Office API、Azure API 的應用程式，這些應用程式全都位於提供應用程式的網域之外。 JavaScript 應用程式的發展趨勢是完全沒有後端，全部依靠協力廠商 Web API 來實作其商務功能。
+重新導向型應用程式通常會透過 Cookie 來保護其要求，不過，這種方法並非也適用於 JavaScript 應用程式。 Cookie 只會針對其產生網域發生作用，但 JavaScript 呼叫卻可能導向到其他網域。 事實上，情況往往是如此︰請想想叫用 Microsoft Graph API、Office API、Azure API 的應用程式，這些應用程式全都位於提供應用程式的網域之外。 JavaScript 應用程式的一個增長趨勢是根本沒有後端,100% 依靠第三方 Web API 來實現其業務功能。
 
-目前，保護 Web API 呼叫的慣用方法是使用 OAuth2 持有人權杖方法，在此方法中，每個呼叫都會伴隨一個 OAuth2 存取權杖。 Web API 會檢查傳入的存取權杖，而且如果它在權杖中找到所需的範圍，便會授與所要求作業的存取權。 隱含流程提供了方便的機制供 JavaScript 應用程式取得 Web API 的存取權杖，並提供很多關於 Cookie 的優點︰
+目前,保護對 Web API 的調用的首選方法是使用 OAuth2 承載權杖方法,其中每個調用都伴隨著 OAuth2 訪問權杖。 Web API 檢查傳入訪問權杖,如果發現傳入訪問權杖中的必要作用域,它將授予對請求的操作的訪問許可權。 隱式流為 JavaScript 應用程式提供了一種獲取 Web API 訪問權杖的便捷機制,在 Cookie 方面提供了許多優勢:
 
 * 可以可靠地取得權杖而不需要跨原始來源呼叫 – 強制註冊權杖要傳回到的重新導向 URI 可保證權杖不會移到其他位置
-* JavaScript 應用程式可以針對任意數量的鎖定 Web API 取得所需數量的存取權杖 – 不限網域
+* JavaScript 應用程式可以根據需要取得盡可能多的存取權杖,因為它們所針對的 Web API 也多一些 ,對網域沒有限制
 * 工作階段或本機儲存體等 HTML5 功能可授與權杖快取和存留期管理的完全控制權，但是應用程式則無法處理 Cookie 管理
 * 存取權杖不受跨網站要求偽造 (CSRF) 攻擊的影響
 
@@ -59,7 +59,7 @@ OAuth2 規格聲明設計出隱含授與是為了實現使用者代理程式應�
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>我的應用程式適用隱含授與嗎？
 
-隱含授與比其他授與帶來更多風險，您需要注意的區域已有詳細記錄 (例如，[在隱含流程中誤用存取權杖來模擬資源擁有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威脅模型和安全性考量][OAuth2-Threat-Model-And-Security-Implications])。 不過，風險概況之所以較高，主要是因為它要啟用執行作用中程式碼的應用程式，並由遠端資源提供給瀏覽器。 如果您正在規劃 SPA 架構，沒有後端元件或想要透過 JavaScript 叫用 Web API，則建議使用隱含流程來取得權杖。
+隱含授與比其他授與帶來更多風險，您需要注意的區域已有詳細記錄 (例如，[在隱含流程中誤用存取權杖來模擬資源擁有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威脅模型和安全性考量][OAuth2-Threat-Model-And-Security-Implications])。 不過，風險概況之所以較高，主要是因為它要啟用執行作用中程式碼的應用程式，並由遠端資源提供給瀏覽器。 如果您正在規劃 SPA 體系結構、沒有後端元件或打算透過 JavaScript 呼叫 Web API,建議使用隱式流進行權杖獲取。
 
 如果應用程式是本機用戶端,則隱式流不太合適。 原生用戶端環境中沒有Azure AD 工作階段 Cookie，將會讓應用程式沒有辦法維持長時間執行的工作階段。 這表示應用程式在取得新資源的存取權杖時會重複提示使用者。
 

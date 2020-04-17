@@ -1,26 +1,31 @@
 ---
 title: SSPR 與 MFA 的合併註冊 - Azure Active Directory
-description: Azure AD 多重身份驗證和自助服務密碼重置註冊(預覽版)
+description: Azure AD 多重身份驗證和自助服務密碼重置註冊
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 48350bf8f0ffb8681d95f6f42f9aa93256395f9a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309922"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534681"
 ---
-# <a name="combined-security-information-registration-preview"></a>組合安全資訊註冊(預覽)
+# <a name="combined-security-information-registration-overview"></a>組合安全資訊註冊概述
 
 在合併註冊之前,用戶分別註冊了 Azure 多重身份驗證和自助服務密碼重置 (SSPR) 的身份驗證方法。 人們感到困惑的是,類似的方法被用於多重身份驗證和SSPR,但他們必須註冊這兩個功能。 現在,通過合併註冊,用戶可以註冊一次,並獲得多重身份驗證和 SSPR 的優勢。
+
+本文概述了安全註冊的組合。 要開始使用組合安全註冊,請參閱以下文章:
+
+> [!div class="nextstepaction"]
+> [開啟群組安全註冊](howto-registration-mfa-sspr-combined.md)
 
 ![顯示使用者已註冊安全資訊的我的個人資料](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,16 +33,10 @@ ms.locfileid: "81309922"
 
 Azure AD 組合安全資訊註冊目前不適用於 Azure 美國政府、Azure 德國或 Azure 中國 21Vianet 等國家雲。
 
-|     |
-| --- |
-| 多重身份驗證和 Azure 活動目錄 (Azure AD) 自助服務密碼重置的組合安全資訊註冊是 Azure AD 的公共預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
-
 > [!IMPORTANT]
 > 啟用原始預覽和增強組合註冊體驗的使用者將看到新行為。 啟用兩種體驗的使用者將僅看到新的"我的配置檔"體驗。 新的"我的個人資料"與合併註冊的外觀保持一致,為使用者提供無縫體驗。 使用者可以通過[https://myprofile.microsoft.com](https://myprofile.microsoft.com)訪問 查看我的個人資料。
-
-> [!NOTE] 
-> 在嘗試存取安全資訊選項時,可能會遇到錯誤消息。 例如,"對不起,我們無法登錄"。 在這種情況下,請確認您沒有任何阻止 Web 瀏覽器上第三方 Cookie 的配置或組策略物件。 
+>
+> 在嘗試存取安全資訊選項時,可能會遇到錯誤消息。 例如,"對不起,我們無法登錄"。 在這種情況下,請確認您沒有任何阻止 Web 瀏覽器上第三方 Cookie 的配置或組策略物件。
 
 我的"設定檔"頁面根據存取該頁面的計算機的語言設置進行當地語系化。 Microsoft 儲存瀏覽器緩存中使用的最新語言,因此後續訪問頁面的嘗試將繼續以使用的最後一種語言呈現。 如果清除緩存,頁面將重新呈現。 如果要強制特定語言,可以添加到`?lng=<language>`URL 的末尾,其中要呈現的語言的`<language>`代碼。
 
@@ -77,7 +76,6 @@ Azure AD 組合安全資訊註冊目前不適用於 Azure 美國政府、Azure �
 合併註冊有兩種模式:中斷和管理。
 
 - **中斷模式**是類似於嚮導的體驗,在用戶註冊或刷新登錄時呈現給使用者。
-
 - **管理模式**是使用者配置檔的一部分,允許使用者管理其安全資訊。
 
 對於這兩種模式,以前註冊了可用於多重身份驗證的方法的使用者在訪問其安全資訊之前需要執行多重身份驗證。
@@ -139,14 +137,8 @@ Azure AD 組合安全資訊註冊目前不適用於 Azure 美國政府、Azure �
 
 ## <a name="next-steps"></a>後續步驟
 
-[強制使用者重新註冊身份驗證方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+要開始,請參閱[啟用自助服務密碼重置](tutorial-enable-sspr.md)和[啟用 Azure 多重身份驗證 的](tutorial-enable-azure-mfa.md)教程。
 
-[在租戶中啟用合併註冊](howto-registration-mfa-sspr-combined.md)
+瞭解如何[在租戶中啟用合併註冊](howto-registration-mfa-sspr-combined.md)或[強制使用者重新註冊身份驗證方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
-[SSPR 與 MFA 使用與見解報告](howto-authentication-methods-usage-insights.md)
-
-[多因素身份驗證與 SSPR 的可用方法](concept-authentication-methods.md)
-
-[設定自助服務密碼重置](howto-sspr-deployment.md)
-
-[設定 Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+您可以檢視 Azure[多重身份認證與 SSPR 可用方法](concept-authentication-methods.md)。

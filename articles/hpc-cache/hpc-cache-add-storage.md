@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657411"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537996"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
@@ -117,8 +117,6 @@ NFS 儲存目標可以有多個虛擬路徑,只要每個路徑表示同一存儲
 為每個命名空間路徑填寫這些值:
 
 * **虛擬命名空間路徑**- 為此儲存目標設置面向用戶端的檔案路徑。 閱讀[配置聚合命名空間](hpc-cache-namespace.md)以瞭解有關虛擬命名空間功能的更多內容。
-
-<!--  The virtual path should start with a slash ``/``. -->
 
 * **NFS 匯出路徑**- 輸入 NFS 匯出的路徑。
 

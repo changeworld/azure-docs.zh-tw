@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5241089ff3cc7826216fcadd6fd94116ee4a2c89
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309444"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535871"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>微軟識別平台和 OAuth 2.0 授權代碼串流
 
@@ -219,7 +219,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ## <a name="use-the-access-token"></a>使用存取權杖
 
-既然您已經成功取得 `access_token`，您就可以透過在 `Authorization` 標頭中包含權杖，在 Web API 的要求中使用權杖：
+現在,您已成功獲取`access_token`了 ,您`Authorization`可以通過在標頭中包含權杖來在 Web API 請求使用權杖:
 
 > [!TIP]
 > 在 Postman 中執行這項要求！ (先更換`Authorization`頭)[試著在郵遞員中執行此![要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
@@ -232,11 +232,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>重新整理存取權杖
 
-Access_token 有效期很短，且您必須在其到期後重新整理，才能繼續存取資源。 方法是：向 `/token` 端點送出另一個 `POST` 要求，這次提供 `refresh_token`，而不提供 `code`。  重新整理權杖對用戶端已同意的所有權限都有效，因此，對 `scope=mail.read` 要求所發出的重新整理權杖可用於向 `scope=api://contoso.com/api/UseResource` 要求新的存取權杖。  
+Access_token 有效期很短，且您必須在其到期後重新整理，才能繼續存取資源。 方法是：向 `/token` 端點送出另一個 `POST` 要求，這次提供 `refresh_token`，而不提供 `code`。  重新整理權杖對用戶端已同意的所有權限都有效，因此，對 `scope=mail.read` 要求所發出的重新整理權杖可用於向 `scope=api://contoso.com/api/UseResource` 要求新的存取權杖。
 
-重新整理權杖並沒有指定的存留期。 一般而言，重新整理權杖的存留期相當長。 不過，在某些情況下，重新整理權杖會過期、遭到撤銷或對要執行的動作缺乏足夠的權限。 您的應用程式需要正確預期與處理[權杖頒發終結點傳回的錯誤](#error-codes-for-token-endpoint-errors)。 
+重新整理權杖並沒有指定的存留期。 一般而言，重新整理權杖的存留期相當長。 不過，在某些情況下，重新整理權杖會過期、遭到撤銷或對要執行的動作缺乏足夠的權限。 您的應用程式需要正確預期與處理[權杖頒發終結點傳回的錯誤](#error-codes-for-token-endpoint-errors)。
 
-儘管刷新權杖在用於獲取新訪問權杖時不會吊銷,但您需要放棄舊的刷新權杖。 [OAuth 2.0 規範](https://tools.ietf.org/html/rfc6749#section-6)表示:「授權伺服器可能會頒發新的刷新權杖,在這種情況下,客戶端必須放棄舊的刷新權杖並將其替換為新的刷新權杖。 授權伺服器可能會在向用戶端發出新的刷新權杖後復原舊的刷新權杖。  
+儘管刷新權杖在用於獲取新訪問權杖時不會吊銷,但您需要放棄舊的刷新權杖。 [OAuth 2.0 規範](https://tools.ietf.org/html/rfc6749#section-6)表示:「授權伺服器可能會頒發新的刷新權杖,在這種情況下,客戶端必須放棄舊的刷新權杖並將其替換為新的刷新權杖。 授權伺服器可能會在向用戶端發出新的刷新權杖後復原舊的刷新權杖。
 
 ```
 // Line breaks for legibility only
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > 嘗試在 Postman 中執行這項要求！ (不要忘記更換`refresh_token`)[試著在郵遞員中執行此![要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-> 
+>
 
 | 參數     |                | 描述        |
 |---------------|----------------|--------------------|

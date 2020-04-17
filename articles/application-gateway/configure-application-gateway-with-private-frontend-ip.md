@@ -6,14 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312359"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535582"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用內部負載均衡器 (ILB) 終結點設定應用程式閘道
 
@@ -89,14 +89,14 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您�
 
 ### <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-1. 選擇 **「創建資源**」。
+1. 選取 [建立資源]  。
 2. 選擇 **「計算**」,然後選擇**虛擬機器**。
 4. 依虛擬機器輸入這些值：
    - 為**資源組**選擇 *"我的資源組"*
    - *myVM* - 用於**虛擬機器名稱**。
    - 選擇**Windows 伺服器 2019 資料中心****的影像**。
-   - *azureadmin* - 用於**使用者名稱**。
-   - *Azure123456!* 密碼 **。**
+   - 有效的**使用者名稱**。
+   - 有效的**密碼**。
 5. 接受剩餘的預設值,然後選擇 **「下一步:磁碟**」。
 6. 接受預設值並選擇 **「下一步:網路**」。
 7. 確定您已選取 [myVNet]**** 作為虛擬網路，而且子網路是 [myBackendSubnet]****。

@@ -1,5 +1,5 @@
 ---
-title: 託管實例連接應用程式
+title: 託管實式軟體
 description: 本文討論如何將您的應用程式連線到 Azure SQL Database 受控執行個體。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823390"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538081"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>將您的應用程式連線到 Azure SQL Database 受控執行個體
 
@@ -44,7 +44,7 @@ ms.locfileid: "73823390"
 對等互連選項是偏好選項，因為對等互連使用 Microsoft 骨幹網路，所以從連線的觀點來看，對等互連 VNet 與相同 VNet 中虛擬機器之間的延遲沒有明顯差異。 VNet 對等互連受限於相同區域中的網路。  
 
 > [!IMPORTANT]
-> 由於[全域虛擬網路對等互連的條件約束](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，受控執行個體的 VNet 對等互連案例會受限於相同區域中的網路。 有關詳細資訊，請參閱[Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)文章的相關部分。 
+> 由於[全域虛擬網路對等互連的條件約束](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，受控執行個體的 VNet 對等互連案例會受限於相同區域中的網路。 有關詳細資訊,請參閱[Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)文章的相關部分。 
 
 ## <a name="connect-an-on-premises-application"></a>連線內部部署應用程式
 
@@ -55,7 +55,7 @@ ms.locfileid: "73823390"
 - 站對站 VPN 連線 ([Azure 入口網站](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [ExpressRoute](../expressroute/expressroute-introduction.md) 連線  
 
-如果已在本地成功建立了 Azure 連接，並且無法建立與託管實例的連接，請檢查防火牆在 SQL 埠 1433 上是否打開了出站連接，以及 11000-11999 埠範圍，以便重定向。
+如果已在本地成功建立了 Azure 連接,並且無法建立與託管實例的連接,請檢查防火牆在 SQL 埠 1433 上是否打開了出站連接,以及 11000-11999 連接埠範圍,以便重定向。
 
 ## <a name="connect-an-application-on-the-developers-box"></a>連線開發人員方塊上的應用程式
 
@@ -95,7 +95,7 @@ ms.locfileid: "73823390"
 
 若要對連線問題進行疑難排解，請檢閱以下幾點︰
 
-- 如果無法從同一 VNet 但不同子網中的 Azure 虛擬機器連接到託管實例，請檢查 VM 子網上是否設置了可能阻止訪問的網路安全性群組。此外，您需要在 SQL 埠 1433 上打開出站連接，並在範圍 11000-11999 中打開端口，因為通過 Azure 邊界內的重定向進行連接需要這些埠。
+- 如果無法從同一 VNet 但不同子網中的 Azure 虛擬機連接到託管實例,請檢查 VM 子網上是否設置了可能阻止存取的網路安全組。此外,您需要在 SQL 埠 1433 上打開出站連接,並在範圍 11000-11999 中打開埠,因為透過 Azure 邊界內的重定向進行連接需要這些埠。
 - 確定已針對與 VNet 相關聯的路由表將 BGP 傳播設定為 [已啟用]****。
 - 如果使用 P2S VPN，請檢查 Azure 入口網站中的組態，以確認您是否看到**輸入/輸出**數值。 非零的數值表示 Azure 會將流量路由至內部部署，或從中輸出流量。
 
@@ -133,6 +133,8 @@ ms.locfileid: "73823390"
 
 - 如果使用 VNet 對等互連，請確定您已依照[允許閘道傳輸和使用遠端閘道](#connect-from-on-premises-with-vnet-peering)的設定指示操作。
 
+- 如果使用 VNet 對等互連連接 Azure 應用服務託管應用程式,並且託管實例 VNet 具有公共 IP 位址範圍,請確保託管應用程式設定允許將出站流量路由到公共 IP 網路。 按照[區域 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)中的說明進行操作。
+
 ## <a name="required-versions-of-drivers-and-tools"></a>所需的驅動程式和工具版本
 
 如果您想要連線到受控執行個體，建議您至少使用下列版本的工具和驅動程式：
@@ -146,7 +148,7 @@ ms.locfileid: "73823390"
 |Node.js 驅動程式| 2.1.1 |
 |OLEDB 驅動程式| 18.0.2.0 |
 |SSMS| 18.0[或更高](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[Smo](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects)或更高 |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects)或更高 |
 
 ## <a name="next-steps"></a>後續步驟
 

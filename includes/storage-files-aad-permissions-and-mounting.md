@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383854"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536519"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向識別分配存取權限
 
@@ -31,7 +31,7 @@ ms.locfileid: "81383854"
 可以使用 Azure 門戶、PowerShell 或 Azure CLI 將內建角色分配給使用者的 Azure AD 標識,以便授予共用級別許可權。
 
 > [!NOTE]
-> 如果計劃使用 AD 進行身份驗證,請記住將 AD 認證同步到 Azure AD。 從 AD 到 Azure AD 的密碼哈希同步是可選的。 共用等級權限將授予從 AD 同步的 Azure AD 標識。
+> 如果計劃使用本地 AD DS 進行身份驗證,請記住將[AD DS 認證同步到 Azure AD。](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) 從 AD DS 到 Azure AD 的密碼哈希同步是可選的。 共用等級權限將授予從本地 ADDS 同步的 Azure AD 標識。
 
 一般建議是,對表示一組使用者和身份的 AD 組使用高級別訪問管理共用級別許可權,然後利用 NTFS 許可權在目錄/檔級別進行精細存取控制。 
 
@@ -73,7 +73,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 ## <a name="3-configure-ntfs-permissions-over-smb"></a>3. 透過 SMB 設定 NTFS 權限 
 使用 RBAC 指派共用層級權限之後，必須在根、目錄或檔案層級指派適當的 NTFS 權限。 將共用級別許可權視為高級網守,用於確定使用者是否可以訪問共用。 而 NTFS 許可權在更精細的級別執行,以確定用戶可以在目錄或檔級別執行哪些操作。
 
-Azure 檔案支援全套 NTFS 基本和進階權限。 您可以透過安裝共享,然後使用 Windows 檔案資源管理員或執行 Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl)命令來查看和設定 Azure 檔案共享中的目錄和檔案的 NTFS 許可權。 
+Azure 檔案支援全套 NTFS 基本和進階權限。 您可以透過安裝共享,然後使用 Windows 檔案資源管理員或執行 Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl)命令來查看和設定 Azure 檔案共享中的目錄和檔案的 NTFS 許可權。 
 
 要配置具有超級使用者許可權的 NTFS,您必須使用域加入的 VM 中的儲存帳戶金鑰來裝載共用。 按照下一節中的說明從命令提示符裝載 Azure 檔共享,並相應地配置 NTFS 許可權。
 
@@ -101,29 +101,29 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 使用 Windows **net use** 命令以裝載 Azure 檔案共用。 請記住,將以下範例中的占位符值替換為您自己的值。 有關安裝檔案分享的詳細資訊,請參閱使用[Windows 檔案分享](../articles/storage/files/storage-how-to-use-files-windows.md)。 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>使用 Windows 檔案資源管理員設定 NTFS 權限
 使用 Windows 檔案資源管理員向檔案共用下的所有目錄和檔(包括根目錄)授予完全許可權。
 
-1. 開啟 Windows 檔案資源管理員並右鍵按下檔案/目錄並選擇**屬性**
-2. 點選「**安全**」選項卡
-3. 按下**編輯.**. .按鈕以變更權限
-4. 您可以變更現有使用者的權限,或按下「**新增」 (** 請新增權限 」
-5. 在新增新使用者的提示視窗中,在 **「輸入要選擇物件名稱**」框中輸入要授予權限的目標使用者名,然後按下 **「選中名稱」** 以查找目標使用者的完整 UPN 名稱。
-7.  單擊 **"確定"**
-8.  在「安全」選項卡中,選擇要授予新添加的使用者的所有許可權
-9.  按一下 [套用]****
+1. 開啟 Windows 檔案資源管理員並右鍵按下檔案/目錄並選擇**屬性**。
+2. 選取 [安全性]**** 索引標籤。
+3. 選擇 **「編輯」。** 更改許可權。
+4. 您可以更改現有使用者的許可權或選擇 **「添加..."** 以向新使用者授予許可權。
+5. 在新增新使用者的提示視窗中,在 **「輸入要選擇物件名稱**」框中輸入要授予權限的目標使用者名,然後選擇 **「選中名稱」** 以查找目標使用者的完整 UPN 名稱。
+7.    選取 [確定]  。
+8.    在「**安全」** 選項卡中,選擇要授予新使用者的擁有許可權。
+9.    選取 [套用]  。
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. 從加入網域的 VM 載入檔案分享
 
 以下過程驗證檔共享和訪問許可權設置是否正確,以及可以從加入網域的 VM 訪問 Azure 檔共用。 請注意,共用級別 RBAC 角色分配可能需要一些時間才能生效。 
 
-使用已授予許可權的 Azure AD 標識登錄到 VM,如下圖所示。 如果已為 Azure 檔啟用 AD 身份驗證,請使用 AD 認證。 對於 Azure AD DS 身份驗證,請使用 Azure AD 認證登錄。
+使用已授予許可權的 Azure AD 標識登錄到 VM,如下圖所示。 如果已為 Azure 檔啟用本地 ADDS 身份驗證,請使用 AD DS 認證。 對於 Azure AD DS 身份驗證,請使用 Azure AD 認證登錄。
 
 ![螢幕擷取畫面顯示使用者驗證的 Azure AD 登入畫面](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-使用以下命令裝載 Azure 文件共用。 請記得以您自己的值取代預留位置值。 由於已過身份驗證,因此無需提供存儲帳戶密鑰、AD 認證或 Azure AD 認證。 支援使用 AD 或 Azure AD DS 進行身份驗證的單一登錄體驗。 如果在使用 AD 認證時遇到問題,請檢查[Windows 中的「解決 Azure 檔案問題」 程式,](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以便進行自我診斷指導。
+使用以下命令裝載 Azure 文件共用。 請記得以您自己的值取代預留位置值。 由於已過身份驗證,因此無需提供存儲帳戶密鑰、本地 AD DS 認證或 Azure AD DS 認證。 支援使用本地 AD DS 或 Azure AD DS 進行身份驗證的單一登入體驗。 如果遇到 AD DS 認證問題,請參閱[Windows 中的「解決 Azure 檔案問題」](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以獲得指導。
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

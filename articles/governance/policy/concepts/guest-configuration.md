@@ -3,12 +3,12 @@ title: 學習稽核虛擬機器的內容
 description: 瞭解 Azure 策略如何使用來賓配置代理審核虛擬機器內的設置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113421"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538030"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -59,7 +59,7 @@ ms.locfileid: "81113421"
 |Microsoft|Windows Server|2012 資料中心, 2012 R2 資料中心, 2016 資料中心, 2019 資料中心|
 |Microsoft|Windows 用戶端|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
 |Suse|SLES|12 SP3|
 
 ### <a name="unsupported-client-types"></a>不支援的用戶端類型

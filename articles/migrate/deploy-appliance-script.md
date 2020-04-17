@@ -1,93 +1,176 @@
 ---
-title: 使用腳本設置 Azure 遷移設備
-description: 瞭解如何使用腳本設置 Azure 遷移設備
+title: 使用文稿設定 Azure 移轉裝置
+description: 瞭解如何使用文稿設定 Azure 移轉裝置
 ms.topic: article
-ms.date: 03/23/2020
-ms.openlocfilehash: bf8d7148f685d4ac6a5f33603020a0503b0c62e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: faed7f96ea8c1850af5523d35f9f891011a48df8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337684"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537707"
 ---
-# <a name="set-up-an-appliance-with-a-script"></a>使用腳本設置設備
+# <a name="set-up-an-appliance-with-a-script"></a>使用文稿設定裝置
 
-本文介紹如何使用 PowerShell 安裝程式腳本設置[Azure 遷移設備](deploy-appliance.md)。
+本文介紹如何使用 PowerShell 安裝程式文稿(VMware VM 和超 VM)設定[Azure 移轉裝置](deploy-appliance.md)。 如果要為實體伺服器設定裝置,[請檢視本文](how-to-set-up-appliance-physical.md)。
 
-該腳本提供：
-- 使用 OVA 範本設置設備，用於 VMware VM 的評估和無代理遷移。
-- 使用 VHD 範本設置設備，用於評估和遷移超 VM 的替代方法。
-- 為了評估物理伺服器（或要作為物理伺服器遷移的 VM），腳本是設置設備的唯一方法。
+
+可以使用以下幾種方法部署裝置:
+
+
+- 使用 VMware VM (OVA) 或超 V VM (VHD) 的範本。
+- 使用腳本。 這是本文中描述的方法。 該文稿提供:
+    - 使用 OVA 範本設定設備,用於 VMware VM 的評估和無代理遷移。
+    - 使用 VHD 範本設置設備,用於評估和遷移超 VM 的替代方法。
+    - 為了評估物理伺服器(或要作為物理伺服器遷移的 VM),腳本是設置設備的唯一方法。
+    - 在 Azure 政府中部署設備的方法。
+
+
+創建設備後,可以驗證是否可以連接到 Azure 遷移。 然後,首次配置設備,並將其註冊到 Azure 遷移專案。
+
 
 ## <a name="prerequisites"></a>Prerequisites
 
-該腳本在現有物理電腦或 VM 上設置 Azure 遷移設備。
+該文本在現有物理電腦或 VM 上設置 Azure 遷移設備。
 
-- 充當設備的電腦必須運行 Windows Server 2016，記憶體為 32 GB，具有 8 個 vCPU、大約 80 GB 的磁片存儲和外部虛擬交換器。 它需要靜態或動態 IP 位址，並訪問互聯網。
-- 在部署設備之前，請查看[VMware VM、](migrate-appliance.md#appliance---vmware)[超 VM](migrate-appliance.md#appliance---hyper-v)和[物理伺服器](migrate-appliance.md#appliance---physical)的詳細設備要求。
+- 充當設備的計算機必須運行 Windows Server 2016,記憶體為 32 GB,具有 8 個 vCPU、大約 80 GB 的磁碟存儲和外部虛擬交換機。 它需要靜態或動態 IP 位址,並訪問互聯網。
+- 在部署裝置之前,請查看[VMware VM、](migrate-appliance.md#appliance---vmware)[超 VM](migrate-appliance.md#appliance---hyper-v)和[實體伺服器](migrate-appliance.md#appliance---physical)的詳細設備要求。
 - 不要在現有的 Azure 遷移設備上運行腳本。
 
+## <a name="set-up-the-appliance-for-vmware"></a>為 VMware 設定產品
 
-## <a name="download-the-script"></a>下載腳本
+要為 VMware 設置設備,請從 Azure 門戶下載壓縮檔案,並提取內容。 運行 PowerShell 文稿以啟動設備 Web 應用。 設置設備並首次對其進行配置。 然後,將設備註冊到 Azure 遷移專案。
 
-1. 找到將充當 Azure 遷移設備的電腦/VM。
-2. 在機器上，執行以下操作：
+### <a name="download-the-script"></a>下載文稿
 
-    - 要將設備與 VMware VM 或超 V VM 一起使用，[請下載](https://go.microsoft.com/fwlink/?linkid=2105112)包含安裝程式腳本和 MSIs 的壓縮資料夾。
-    - 要將設備與物理伺服器一起使用，請從 Azure 遷移門戶下載腳本，如[本教程](tutorial-assess-physical.md#set-up-the-appliance)中所述。
+1.  在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
+2.  在 [探索機器]   > [機器是否已虛擬化?]  中，選取 [是，使用 VMWare vSphere Hypervisor]  。
+3.  按下 **「下載**」,下載壓縮檔。 
 
-## <a name="verify-file-security"></a>驗證檔安全性
+
+### <a name="verify-file-security"></a>驗證檔案安全性
 
 請先確認 ZIP 檔案安全無虞再進行部署。
 
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用方式範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 公共雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 政府雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip```
 
-3. 驗證生成的雜湊值是否與這些設置匹配（對於最新版本）：
+3. 驗證產生的哈希值:
 
-    **演算法** | **雜湊值**
-      --- | ---
-      MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-      SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    - 對於公共雲(對於最新版本):
 
-## <a name="run-the-script"></a>執行指令碼
+        **演算法** | **雜湊值**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-下面是腳本的作用：
+    - 對於 Azure 政府(對於最新的裝置版本):
+
+        **演算法** | **雜湊值**
+          --- | ---
+          MD5 | 6316bcc8bc932204295bfe33f4be3949
+          
+
+### <a name="run-the-script"></a>執行指令碼
+
+下面是腳稿的作用:
 
 - 安裝代理和 Web 應用程式。
-- 安裝 Windows 角色，包括 Windows 啟動服務、IIS 和 PowerShell ISE。
+- 安裝 Windows 角色,包括 Windows 啟動服務、IIS 和 PowerShell ISE。
 - 下載並安裝 IIS 可重寫模組。 [深入了解](https://www.microsoft.com/download/details.aspx?id=7435)。
-- 更新登錄機碼 （HKLM），具有 Azure 遷移的持久設置。
-- 創建日誌和設定檔，如下所示：
+- 更新註冊表項 (HKLM),具有 Azure 遷移的持久設置。
+- 建立紀錄和設定檔,如下所示:
     - **組態檔**: %ProgramData%\Microsoft Azure\Config
     - **記錄檔**: %ProgramData%\Microsoft Azure\Logs
 
 執行指令碼：
 
-1. 將壓縮檔提取到將承載設備的電腦上的資料夾。
-2. 使用管理員（提升）許可權在電腦上啟動 PowerShell。
-3. 將 PowerShell 目錄更改為包含從下載的壓縮檔中提取的內容的資料夾。
-4. 運行腳本**AzureMigrate 安裝程式.ps1**如下：
+1. 將壓縮檔案提取到將承載設備的電腦上的資料夾。 確保沒有在現有 Azure 遷移設備上的電腦上運行文稿。
+2. 使用管理員(提升)許可權在計算機上啟動 PowerShell。
+3. 將 PowerShell 目錄更改為包含從下載的壓縮檔案中提取的內容的資料夾。
+4. 執行文稿**AzureMigrate 安裝程式.ps1,** 如下所示:
+    - 對於公共雲:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
+    - 對於 Azure 政府:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+   
+5. 文稿成功執行後,它會啟動設備 Web 應用程式,以便您可以設置設備。 如果遇到任何問題,請查看 C:_程序數據\微軟 Azure_Logs_AzureMigrateScenarioInstaller_<em>時間戳</em>.log 上的腳本日誌。
 
-    - 對於 VMware： 
-        ```
-        PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware
-        ```
-    - 對於 Hyper-V：
-        ```
-        PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv
-        ```
-    - 對於物理伺服器：
-        ```
-        PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-        ```      
-5. 腳本成功運行後，它會啟動設備 Web 應用程式，以便您可以設置設備。 如果遇到任何問題，可以在 C：_程式資料\微軟 Azure_logs_AzureMigrateScenarioInstaller_<em>時間戳記</em>.log 上查看腳本日誌。
+### <a name="verify-access"></a>驗證存取權限
+
+確保設備可以連接到[用於公共](migrate-appliance.md#public-cloud-urls)和 [政府雲]的 Azure URL(遷移設備.md_政府雲 url)。
+
+
+## <a name="set-up-the-appliance-for-hyper-v"></a>為 Hyper-V 設定產品
+
+要為 Hyper-V 設定設備,請從 Azure 門戶下載壓縮檔案,並提取內容。 運行 PowerShell 文稿以啟動設備 Web 應用。 設置設備並首次對其進行配置。 然後,將設備註冊到 Azure 遷移專案。
+
+### <a name="download-the-script"></a>下載文稿
+
+1.  在 [移轉目標]   > [伺服器]   >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]  。
+2.  在 [探索機器]   > [機器是否已虛擬化?]  中，選取 [是，使用 Hyper-V]  。
+3.  按下 **「下載**」,下載壓縮檔。 
+
+
+### <a name="verify-file-security"></a>驗證檔案安全性
+
+請先確認 ZIP 檔案安全無虞再進行部署。
+
+1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
+2. 執行下列命令以產生 ZIP 檔案的雜湊
+    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    - 公共雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 政府雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+
+3. 驗證產生的哈希值:
+
+    - 對於公共雲(對於最新版本):
+
+        **演算法** | **雜湊值**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+
+    - 對於 Azure 政府(對於最新的裝置版本):
+
+        **演算法** | **雜湊值**
+          --- | ---
+          MD5 | 717f8b9185f565006b5aff0215ecadac
+          
+
+### <a name="run-the-script"></a>執行指令碼
+
+下面是腳稿的作用:
+
+- 安裝代理和 Web 應用程式。
+- 安裝 Windows 角色,包括 Windows 啟動服務、IIS 和 PowerShell ISE。
+- 下載並安裝 IIS 可重寫模組。 [深入了解](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 更新註冊表項 (HKLM),具有 Azure 遷移的持久設置。
+- 建立紀錄和設定檔,如下所示:
+    - **組態檔**: %ProgramData%\Microsoft Azure\Config
+    - **記錄檔**: %ProgramData%\Microsoft Azure\Logs
+
+執行指令碼：
+
+1. 將壓縮檔案提取到將承載設備的電腦上的資料夾。 確保沒有在現有 Azure 遷移設備上的電腦上運行文稿。
+2. 使用管理員(提升)許可權在計算機上啟動 PowerShell。
+3. 將 PowerShell 目錄更改為包含從下載的壓縮檔案中提取的內容的資料夾。
+4. 執行文稿**AzureMigrate 安裝程式.ps1,** 如下所示:
+    - 對於公共雲:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
+    - 對於 Azure 政府:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ```
+   
+5. 文稿成功執行後,它會啟動設備 Web 應用程式,以便您可以設置設備。 如果遇到任何問題,請查看 C:_程序數據\微軟 Azure_Logs_AzureMigrateScenarioInstaller_<em>時間戳</em>.log 上的腳本日誌。
+
+### <a name="verify-access"></a>驗證存取權限
+
+確保設備可以連接到[用於公共](migrate-appliance.md#public-cloud-urls)和 [政府雲]的 Azure URL(遷移設備.md_政府雲 url)。
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
-使用腳本設置設備後，請按照以下說明操作：
+要瞭解有關使用範本或實體伺服器設定裝置的更多資訊,請查看以下文章:
 
 - 為[VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance)設置產品。
 - 為[Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)設置產品。

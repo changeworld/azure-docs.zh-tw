@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 997dd98d35b74effe5d195f9a781fa0935286ee9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882381"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537214"
 ---
 # <a name="protected-web-api-app-registration"></a>受保護的 Web API:應用程式註冊
 
@@ -82,7 +82,7 @@ Web API 不需要註冊重定向 URI,因為沒有使用者以交互方式登錄�
     - 選擇 **「範圍」 名稱**並輸入**access_as_user**。
     - 選擇 **「誰」 可以同意**「 並確保選擇**管理員和使用者**。
     - 選擇 **「管理員同意」 顯示名稱**,然後**以使用者身份輸入存取 TodoList 服務**。
-    - 選擇**管理員同意說明**,然後**輸入存取 TodoList 服務 Web API 作為使用者**。
+    - 選擇**管理員同意說明**,並輸入**存取 TodoList 服務 Web API 作為使用者**。
     - 選擇 **「使用者同意」 顯示名稱**,然後**以使用者身份輸入存取 TodoList 服務**。
     - 選擇**使用者同意說明**,然後**輸入「存取 TodoList 服務 Web API" 作為使用者**。
     - 將**狀態**值設定為 **「已啟用**」。

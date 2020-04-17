@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c6113490cf7d754a9e45638e4a0bfa588f1942ca
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309424"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535854"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>微軟識別平臺和 OAuth 2.0 客戶端認證串流
 
@@ -70,7 +70,7 @@ OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (機密用戶端) 在�
 
 
 > [!NOTE]
-> 當作為應用程式進行身份驗證時,而不是使用使用者時,不能使用"委派許可權"(由使用者授予的範圍)。  您必須使用"應用程式許可權",也稱為"角色",這些許可權由管理員授予應用程式(或通過 Web API 的預授權)。    
+> 當作為應用程式進行身份驗證時,而不是使用使用者時,不能使用"委派許可權"(由使用者授予的範圍)。  您必須使用"應用程式許可權",也稱為"角色",這些許可權由管理員授予應用程式(或通過 Web API 的預授權)。
 
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>在應用程式註冊入口網站中要求權限
@@ -169,7 +169,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-// Replace {tenant} with your tenant! 
+// Replace {tenant} with your tenant!
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
@@ -220,7 +220,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | 參數 | 描述 |
 | --- | --- |
-| `access_token` | 所要求的存取權杖。 應用程式可以使用這個權杖向受保護的資源 (例如 Web API) 進行驗證。 |
+| `access_token` | 所要求的存取權杖。 應用可以使用此令牌對安全資源(如 Web API)進行身份驗證。 |
 | `token_type` | 表示權杖類型值。 Microsoft 識別平台支援的唯一類型`bearer`是 。 |
 | `expires_in` | 存取權杖的有效時間長度 (以秒為單位)。 |
 

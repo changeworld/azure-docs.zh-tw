@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886138"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535769"
 ---
 # <a name="supported-account-types"></a>支援的帳戶類型
 
 本文介紹了應用程式中支援哪些帳戶類型(有時稱為訪問群體)。
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Microsoft 身分識別平台應用程式中支援的帳戶類型
 
@@ -44,7 +44,7 @@ ms.locfileid: "80886138"
 
 某些帳戶類型不能搭配特定驗證流程使用。 例如，在桌面、UWP 應用程式或精靈應用程式中：
 
-- 精靈應用程式只能搭配 Azure Active Directory 組織使用。 嘗試使用精靈應用程式來操作 Microsoft 個人帳戶並無意義 (一律不會授與管理員同意)。  
+- 精靈應用程式只能搭配 Azure Active Directory 組織使用。 嘗試使用精靈應用程式來操作 Microsoft 個人帳戶並無意義 (一律不會授與管理員同意)。
 - 您只能搭配公司或學校帳戶使用整合式 Windows 驗證流程 (在您的組織或任何組織中)。 事實上，整合式 Windows 驗證會搭配網域帳戶運作，而且需要機器加入網域或加入 Azure AD。 此流程對個人 Microsoft 帳戶而言沒有任何意義。
 - [資源擁有者的密碼授與](./v2-oauth-ropc.md) (使用者名稱/密碼)，不能搭配個人 Microsoft 帳戶使用。 事實上，在每個登入工作階段上，個人 Microsoft 帳戶需要可存取個人資源的使用者同意。 這就是為何此行為與非互動式流程不相容。
 - 裝置程式碼流程尚不適用於個人 Microsoft 帳戶。

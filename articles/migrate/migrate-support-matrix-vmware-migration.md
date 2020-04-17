@@ -2,13 +2,13 @@
 title: 支援 Azure 移轉中的 VMware 移轉
 description: 瞭解在 Azure 遷移中對 VMware VM 遷移的支援。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314002"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538132"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移轉支援矩陣
 
@@ -64,14 +64,16 @@ ms.locfileid: "81314002"
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>無代理-Azure 移轉裝置 
-無代理遷移使用部署在 VMware VM 上的 Azure 遷移設備。
+
+沒有代理移至[Azure 移轉裝置](migrate-appliance.md)。 您可以使用 OVA 樣本、導入到 vCenter 伺服器或使用[PowerShell 文稿](deploy-appliance-script.md)將設備部署為 VMWare VM。
 
 - 瞭解 VMware[的裝置要求](migrate-appliance.md#appliance---vmware)。
-- 瞭解設備需要訪問的[URL。](migrate-appliance.md#url-access)
+- 了解產品[在公共和政府雲](migrate-appliance.md#public-cloud-urls)中需要訪問的[government](migrate-appliance.md#government-cloud-urls)URL。
+- 在 Azure 政府中,必須使用腳本部署設備。
 
 ## <a name="agentless-ports"></a>沒有代理埠
 
-**裝置** | **連線**
+**裝置** | **Connection**
 --- | ---
 Appliance (設備) | 埠 443 上的出站連接,用於將複製的資料上載到 Azure,並與 Azure 遷移服務進行協調複製和遷移。
 vCenter 伺服器 | 連接埠 443 上的入站連線,讓裝置協調複製- 建立快照、複製資料、發佈快照
@@ -123,11 +125,12 @@ vSphere/EXSI 主機 | 在 TCP 埠 902 上入站,用於設備從快照複製數�
 
 - 瞭解 VMware 的[複製裝置要求](migrate-replication-appliance.md#appliance-requirements)。
 - 必須在設備上安裝 MySQL。 瞭解[安裝選項](migrate-replication-appliance.md#mysql-installation)。
-- 瞭解複製裝置需要存取的[網址](migrate-replication-appliance.md#url-access)與[連接埠](migrate-replication-appliance.md#port-access)。
+- 瞭解複製設備需要[在公共](migrate-replication-appliance.md#url-access)[和政府雲](migrate-replication-appliance.md#azure-government-url-access)中訪問的 URL。
+- 檢視裝置需要存取的[連接埠](migrate-replication-appliance.md#port-access)。
 
 ## <a name="agent-based-ports"></a>代理的連接埠
 
-**裝置** | **連線**
+**裝置** | **Connection**
 --- | ---
 VM | 在 VM 上運行的行動服務與埠 HTTPS 443 入站上的本地複製設備(配置伺服器)進行通訊,以便進行複製管理。<br/><br/> VM 會透過輸入連接埠 HTTPS 9443 將複寫資料傳送至處理伺服器 (在設定伺服器電腦上執行)。 您可以修改此連接埠。
 複製裝置 | 複製設備透過連接埠 HTTPS 443 出站協調使用 Azure 進行複製。

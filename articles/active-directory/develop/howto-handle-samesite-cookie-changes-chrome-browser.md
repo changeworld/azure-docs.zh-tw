@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e414e5cb7ad9097eb815240f83d9f529f839b6b4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883996"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534596"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>處理 Chrome 瀏覽器中的 SameSite Cookie 變更
 

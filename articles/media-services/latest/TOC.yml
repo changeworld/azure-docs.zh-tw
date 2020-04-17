@@ -98,6 +98,7 @@
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: 測試的內部部署即時編碼器
+          displayName: recommended
           href: recommended-on-premises-live-encoders.md
         - name: 時間轉移和即時 VOD
           displayName: 'archive, dvr'

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273217"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534800"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 託管與執行 SAP 工作負載方案
 
@@ -110,6 +110,8 @@ SAP HANA Azure 的獨特性是使 Azure 與眾不同的一個產品/ 為了啟�
 
 
 ## <a name="change-log"></a>變更記錄檔
+
+- 04/16/2020:在文章[「Azure 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)支援 SAP 軟體」以及[Microsoft Azure 上執行的 SAP 認證和配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)中,添加了 SAP HANA 作為 SAP(Hybris) 商務平台支援的 DBMS
 - 04/13/2020:正確精確到[SAP ASE Azure 虛擬機器 DBMS 部署中用於 SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)的 SAP ASE 版本號
 - 04/07/2020:在[Azure 中的 SLES 上設定起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以澄清雲網配置-azure 指令的更改
 - 04/06/2020: [SAP HANA 橫向擴展與 Azure VM 上的備用節點與 Azure NetApp 檔在 SLES 上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)和 SAP [HANA 橫向擴展與 Azure VM 上的備用節點與 AZURE NetApp 檔案在 RHEL 上](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)刪除對 NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf)的引用 (替換為[TR-4746)](https://www.netapp.com/us/media/tr-4746.pdf)

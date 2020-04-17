@@ -3,15 +3,15 @@ title: 限制和設定
 description: Azure 邏輯應用的服務限制(如持續時間、輸送量和容量)以及設定值(如允許的 IP 位址)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/17/2020
+ms.openlocfilehash: 40950be2e5caeb17d20086720a7b65c15147c2f5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257448"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535106"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -112,7 +112,7 @@ ms.locfileid: "81257448"
 
 ### <a name="integration-service-environment-ise"></a>整合服務環境 (ISE)
 
-以下是高級 SKU 的輸送量限制:
+以下是[高級 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)的輸送量限制:
 
 | 名稱 | 限制 | 注意 |
 |------|-------|-------|
@@ -124,8 +124,7 @@ ms.locfileid: "81257448"
 若要在正常處理中超出這些限制，或執行可能超出這些限制的負載測試，請[與 Logic Apps 小組連絡](mailto://logicappsemail@microsoft.com)來協助處理您的需求。
 
 > [!NOTE]
-> [開發人員 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)沒有已發布的限制,因為此 SKU 沒有任何服務級別協定 (SLA) 或擴展功能。
-> 僅使用此 SKU 進行試驗、開發和測試,而不是生產或效能測試。
+> [開發人員 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)沒有已發布的限制,沒有擴充功能,也沒有服務層級協定 (SLA)。 僅使用此 SKU 進行試驗、開發和測試,而不是生產或效能測試。
 
 <a name="gateway-limits"></a>
 
@@ -214,7 +213,7 @@ Azure 邏輯應用支援通過閘道執行寫入操作,包括插入和更新。 
 
   | ISE SKU | 整合帳戶限制 |
   |---------|----------------------------|
-  | **溢價** | 5 個總計 - 僅限[標準](../logic-apps/logic-apps-pricing.md#integration-accounts)帳戶,包括一個免費標準帳戶。 不允許使用免費或基本帳戶。 |
+  | **Premium** | 5 個總計 - 僅限[標準](../logic-apps/logic-apps-pricing.md#integration-accounts)帳戶,包括一個免費標準帳戶。 不允許使用免費或基本帳戶。 |
   | **開發人員** | 5 個總計 -[免費](../logic-apps/logic-apps-pricing.md#integration-accounts)(僅限於 1 個帳戶)和[標準](../logic-apps/logic-apps-pricing.md#integration-accounts)帳戶,或所有標準帳戶。 不允許使用基本帳戶。 使用[開發人員 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)進行試驗、開發和測試,但不適用於生產或效能測試。 |
   |||
 
@@ -281,12 +280,9 @@ Azure 邏輯應用支援通過閘道執行寫入操作,包括插入和更新。 
 
 ## <a name="disabling-or-deleting-logic-apps"></a>停用或刪除邏輯應用程式
 
-當您停用邏輯應用程式後，就不會具現化新的執行。
-所有正在進行的和掛起的運行都一直持續到完成,這可能需要時間才能完成。
+當您停用邏輯應用程式後，就不會具現化新的執行。 所有正在進行的和掛起的運行都一直持續到完成,這可能需要時間才能完成。
 
-當您刪除邏輯應用程式後，就不會具現化新的執行。
-所有進行中和擱置的執行都會取消。
-如果您有數千個執行，加以取消可能需要很長的時間。
+當您刪除邏輯應用程式後，就不會具現化新的執行。 所有進行中和擱置的執行都會取消。 如果您有數千個執行，加以取消可能需要很長的時間。
 
 <a name="configuration"></a>
 
@@ -300,17 +296,17 @@ Azure 邏輯應用用於傳入和傳出調用的 IP 位址取決於邏輯應用�
 > * **邏輯應用管理**:表示邏輯應用服務的入站 IP 位址前綴。
 > * **邏輯應用**:表示邏輯應用服務的出站 IP 位址前綴。
 
+* 對於[Azure 中國 21Vianet,](https://docs.microsoft.com/azure/china/)[自定義連接器](../logic-apps/custom-connector-overview.md)和[託管連接器](../connectors/apis-list.md#managed-api-connectors)(例如 Azure 儲存、SQL Server、Office 365 Outlook 等)不能使用固定或保留的 IP 位址。
+
 * 要支援邏輯應用直接使用[HTTP](../connectors/connectors-native-http.md) [、HTTP + Swagger](../connectors/connectors-native-http-swagger.md)和其他 HTTP 請求進行的調用,請根據邏輯應用所在的區域設置防火牆,並設置邏輯應用服務使用的所有[入站](#inbound)*和*[出站](#outbound)IP 位址。 這些位址會出現在本節中的**輸入**和**輸出**標題底下，並且依照區域排序。
 
-* 若要支援 [Microsoft 管理的連接器](../connectors/apis-list.md)所進行的呼叫，請根據您邏輯應用程式的所在區域，使用這些連接器使用的「所有」**[輸出](#outbound) IP 位址設定您的防火牆。 這些位址會出現在本節中的**輸出**標題底下，並且依照區域排序。
+* 要支援[託管連接器](../connectors/apis-list.md#managed-api-connectors)發出的呼叫,請根據邏輯應用所在的區域,使用這些連接器使用*的所有*[出站](#outbound)IP位址設置防火牆。 這些位址會出現在本節中的**輸出**標題底下，並且依照區域排序。
 
 * 要啟用在整合式服務環境 (ISE) 執行的邏輯應用的通訊,請確保[開啟這些連接埠](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)。
 
 * 如果邏輯應用在存取使用[防火牆和防火牆規則的](../storage/common/storage-network-security.md)Azure 儲存帳戶時遇到問題,則有多種[選項可以啟用存取](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
   例如,邏輯應用不能直接存取使用防火牆規則並存在於同一區域的存儲帳戶。 但是,如果允許[區域中託管連接器的出站 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound),則邏輯應用可以存取位於其他區域中的儲存帳戶,但使用 Azure 表儲存或 Azure 佇列儲存連接器時除外。 要存取表儲存或佇列存儲,可以使用 HTTP 觸發器和操作。 有關其他選項,請參閱[存取防火牆後面的儲存帳戶](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
-
-* 對於自定義連接器[、Azure政府](../azure-government/documentation-government-overview.md)和[Azure 中國 21Vianet,](https://docs.microsoft.com/azure/china/)固定或保留的 IP 位址不可用。
 
 <a name="inbound"></a>
 

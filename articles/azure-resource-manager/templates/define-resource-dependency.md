@@ -1,24 +1,24 @@
 ---
-title: 設置資源的部署順序
+title: 設定資源的部署順序
 description: 說明如何在部署期間，將某個資源設定為相依於另一個資源，確保以正確的順序部署資源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535463"
 ---
-# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定義在 ARM 範本中部署資源的順序
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定義在 ARM 樣本中部署資源的順序
 
-部署資源時，可能需要確保在部署資源之前存在其他資源。 例如，在部署 SQL 資料庫之前需要 SQL 伺服器。 您可以將一個資源標示為相依於其他資源，來定義此關聯性。 您可以使用 **dependsOn** 元素或使用 **reference** 函式定義相依性。
+部署資源時,可能需要確保在部署資源之前存在其他資源。 例如,在部署 SQL 資料庫之前需要 SQL 伺服器。 您可以將一個資源標示為相依於其他資源，來定義此關聯性。 您可以使用 **dependsOn** 元素或使用 **reference** 函式定義相依性。
 
 資源管理員會評估資源之間的相依性，並依其相依順序進行部署。 如果資源並未彼此相依，Resource Manager 就會平行部署資源。 您只需要針對部署在相同範本中的資源定義相依性。
 
 ## <a name="dependson"></a>dependsOn
 
-在您的範本內，dependsOn 元素可讓您定義一個資源作為一或多個資源的相依項目。 其值是資源名稱的逗號分隔清單。 該清單可以包括[有條件部署](conditional-resource-deployment.md)的資源。 未部署條件資源時，Azure 資源管理器會自動將其從所需的依賴項中刪除。
+在您的範本內，dependsOn 元素可讓您定義一個資源作為一或多個資源的相依項目。 其值是字串的 JSON 陣列,每個字串都是資源名稱。 陣列可以包括[有條件部署](conditional-resource-deployment.md)的資源。 未部署條件資源時,Azure 資源管理員會自動將其從所需的依賴項中刪除。
 
 下列範例示範一個虛擬機器擴展集，此擴展集依存於負載平衡器、虛擬網路，以及會建立多個儲存體帳戶的迴圈。 這些其他資源不會顯示在下列範例中，但是必須存在於範本中其他的位置。
 
@@ -55,7 +55,7 @@ ms.locfileid: "80153279"
 
 ## <a name="child-resources"></a>子資源
 
-resources 屬性可讓您指定與所定義的資源相關的子資源。 定義子資源時，深度只能有 5 層。 請務必注意，未在子資源和父資源之間創建隱式部署依賴項。 如果您需要在父資源之後部署子資源，您必須使用 dependsOn 屬性明確地敘述該相依性。
+resources 屬性可讓您指定與所定義的資源相關的子資源。 定義子資源時，深度只能有 5 層。 請務必注意,未在子資源和父資源之間創建隱式部署依賴項。 如果您需要在父資源之後部署子資源，您必須使用 dependsOn 屬性明確地敘述該相依性。
 
 每個父資源只接受特定的資源類型做為子資源。 可接受的資源類型是在父資源的 [範本結構描述](https://github.com/Azure/azure-resource-manager-schemas) 中指定。 子資源類型的名稱包含父資源類型的名稱，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 兩者皆為 **Microsoft.Web/sites** 的子資源。
 

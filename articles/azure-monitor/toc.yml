@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: 記錄型計量定義
               href: platform/app-insights-metrics.md
-            - name: 傳統計量瀏覽器
-              href: app/metrics-explorer.md
         - name: 搜尋
           href: app/diagnostic-search.md
         - name: 分析工具

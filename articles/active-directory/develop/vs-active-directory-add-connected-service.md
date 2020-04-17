@@ -10,16 +10,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886155"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535820"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在視覺化工作室中使用連線的服務加入 Azure 活動目錄
 
-藉由使用 Azure Active Directory (Azure AD)，您便可以針對 ASP.NET MVC Web 應用程式支援「單一登入」(SSO)，或在 Web API 服務中支援「Active Directory 驗證」。 在使用 Azure AD 驗證的情況下，您的使用者可以從 Azure Active Directory 使用其帳戶來連線到您的 Web 應用程式。 透過 Web API 的 Azure AD 驗證優點包括從 Web 應用程式公開 API 時的資料安全性會增強。 有了 Azure AD，您不必以各自的帳戶和使用者管理作業來管理個別的驗證系統。
+通過使用 Azure 活動目錄 (Azure AD),可以支援 ASP.NET MVC Web 應用程式的單一登錄 (SSO) 或 Web API 服務中的活動目錄身份驗證。 在使用 Azure AD 驗證的情況下，您的使用者可以從 Azure Active Directory 使用其帳戶來連線到您的 Web 應用程式。 使用 Web API 進行 Azure AD 認證的優點包括從 Web 應用程式公開 API 時增強的數據安全性。 有了 Azure AD，您不必以各自的帳戶和使用者管理作業來管理個別的驗證系統。
 
 這篇文章和其附屬文件提供使用適用於 Active Directory 之 Visual Studio 連線服務的詳細資料。 此功能在 Visual Studio 2015 及更高版本提供。
 

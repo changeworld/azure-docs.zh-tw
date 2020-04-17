@@ -3,17 +3,17 @@ title: Azure Application Insights 資料模型 | Microsoft Docs
 description: 描述從 JSON 中的連續匯出匯出的屬性，並做為篩選器。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663870"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536840"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 匯出資料模型
 此表列出從 [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 傳送至入口網站的遙測屬性。
 您會在 [連續匯出](export-telemetry.md)的資料輸出中看到這些屬性。
-它們也會出現在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)和[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)的屬性篩選中。
+它們也會出現在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)和[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)的屬性篩選中。
 
 注意事項：
 
@@ -127,16 +127,16 @@ ms.locfileid: "77663870"
 | context.device.roleName |字串 | |
 | context.device.screenResolution |字串 | |
 | context.device.type |字串 |PC, Browser, ... |
-| context.location |物件 (object) |衍生自 clientip。 |
-| context.location.city |字串 |衍生自 clientip (如果已知) |
+| context.location |物件 (object) |衍生自 `clientip`。 |
+| context.location.city |字串 |派生自`clientip`,如果已知 |
 | context.location.clientip |字串 |最後一個八邊形匿名設定為 0。 |
 | context.location.continent |字串 | |
 | context.location.country |字串 | |
 | context.location.province |字串 |州或省 |
-| context.operation.id |字串 |具有相同作業識別碼的項目會在入口網站中顯示為相關項目。 通常為要求 id。 |
+| context.operation.id |字串 |具有相同`operation id`項的專案與門戶中的"相關專案"一樣顯示。 通常為`request id`。 |
 | context.operation.name |字串 |url 或要求名稱 |
 | context.operation.parentId |字串 |允許巢狀的相關項目。 |
-| context.session.id |字串 |來自相同來源的作業群組識別碼。 在 30 分鐘期間沒有發出工作階段結束訊號的作業。 |
+| context.session.id |字串 |`Id`來自同一源的一組操作。 在 30 分鐘期間沒有發出工作階段結束訊號的作業。 |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |字串 | |
 | context.user.accountId |字串 | |
@@ -147,7 +147,7 @@ ms.locfileid: "77663870"
 | context.user.isAuthenticated |boolean | |
 | context.user.storeRegion |字串 | |
 | internal.data.documentVersion |字串 | |
-| internal.data.id |字串 | 項目內嵌至 Application Insights 時所指派的的唯一識別碼 |
+| internal.data.id |字串 | `Unique id`當將專案引入到應用程式來設定 |
 
 ## <a name="events"></a>事件
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)產生的自訂事件。
@@ -173,7 +173,7 @@ ms.locfileid: "77663870"
 | basicException [0] failedUserCodeAssembly |字串 | |
 | basicException [0] handledAt |字串 | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0] id |字串 | |
+| 基本例外 [0]`id` |字串 | |
 | basicException [0] 方法 |字串 | |
 | basicException [0] 訊息 |字串 |例外狀況訊息。 最大長度 10k。 |
 | basicException [0] outerExceptionMessage |字串 | |
@@ -210,7 +210,7 @@ ms.locfileid: "77663870"
 | remoteDependency [0] 計數 |integer |100/([取樣](../../azure-monitor/app/sampling.md) 率)。 例如 4 =&gt; 25%。 |
 | remoteDependency [0] dependencyTypeName |字串 |HTTP、SQL、... |
 | remoteDependency [0] durationMetric.value |number |從根據相依性呼叫回應完成開始計算的時間 |
-| remoteDependency [0] id |字串 | |
+| 遠端依賴 [0]`id` |字串 | |
 | remoteDependency [0] 名稱 |字串 |Url。 最大長度 250。 |
 | remoteDependency [0] resultCode |字串 |從 HTTP 相依性 |
 | remoteDependency [0] 成功 |boolean | |
@@ -227,7 +227,7 @@ ms.locfileid: "77663870"
 | --- | --- | --- |
 | 要求 [0] 計數 |integer |100/([取樣](../../azure-monitor/app/sampling.md) 率)。 例如：4 =&gt; 25%。 |
 | 要求 [0] durationMetric.value |number |從要求抵達到回應的時間。 1e7 == 1s |
-| 要求 [0] id |字串 |作業 id |
+| 要求 {0}`id` |字串 |`Operation id` |
 | 要求 [0] 名稱 |字串 |GET/POST + url 基底。  最大長度 250 |
 | 要求 [0] responseCode |integer |傳送至用戶端的 HTTP 回應 |
 | 要求 [0] 成功 |boolean |預設值 == (responseCode &lt; 400) |

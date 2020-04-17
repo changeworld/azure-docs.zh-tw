@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 196d941c5c3b18b737f7a11c25ebbb9eab91be1e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 1069b4288f8253ccb9a7774b3144d10d85dcdd36
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885033"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537095"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 Web API 的 Web 應用:抓取應用的權杖
 
@@ -63,7 +63,7 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-要更好地瞭解此方案所需的代碼,請參閱[ms-身份-aspnetcore-webapp 教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)的第 2 階段[(2-1-Web 應用程式調用 Microsoft 圖形](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph))步驟。
+要更好地瞭解此方案所需的代碼,請參閱[ms-身份-aspnetcore-webapp 教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)的第 2 階段[(2-1-Web 應用調用 Microsoft 圖形](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph))步驟。
 
 還有其他複雜的變化,例如:
 

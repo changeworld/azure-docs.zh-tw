@@ -3,12 +3,12 @@ title: Azure 雲端服務的 Application Insight | Microsoft Docs
 description: 使用 Application Insights 有效地監視您的 Web 和背景工作角色
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537588"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
@@ -31,7 +31,7 @@ ms.locfileid: "79276188"
 
 如果此選項就是您所需的一切，您就已大功告成。 
 
-後續步驟是[查看應用的指標](../../azure-monitor/app/metrics-explorer.md)，[使用 Analytics （Analytics） 查詢資料](../../azure-monitor/app/analytics.md)。 
+後續步驟是[檢視應用的指標](../../azure-monitor/platform/metrics-charts.md),[使用 Analytics (Analytics) 查詢資料](../../azure-monitor/app/analytics.md)。 
 
 若要在瀏覽器中監視效能，您可以設定[可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)及[在網頁中新增程式碼](../../azure-monitor/app/javascript.md)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79276188"
 ## <a name="plan-resources-and-resource-groups"></a>規劃資源和資源群組
 來自您應用程式的遙測將會在 Application Insights 類型的 Azure 資源中儲存、分析及顯示。 
 
-每個資源只屬於一個資源群組。 資源群組用來在經過協調的單一交易中管理成本、將存取權授與小組成員，以及部署更新項目。 例如，可以[編寫腳本來在](../../azure-resource-manager/templates/deploy-powershell.md)一個操作中部署 Azure 雲服務及其應用程式見解監視資源。
+每個資源只屬於一個資源群組。 資源群組用來在經過協調的單一交易中管理成本、將存取權授與小組成員，以及部署更新項目。 例如,可以[編寫腳本來在](../../azure-resource-manager/templates/deploy-powershell.md)一個操作中部署 Azure 雲服務及其應用程式見解監視資源。
 
 ### <a name="resources-for-components"></a>元件的資源
 我們建議您建立為您應用程式的每個元件建立不同的資源。 也就是為每個 Web 角色和背景工作角色建立資源。 您可以個別分析每個元件，但建立一個[儀表板](../../azure-monitor/app/overview-dashboard.md)來彙總所有元件的重要圖表，讓您能夠在單一檢視中一起比較和監視這些圖表。 
@@ -82,7 +82,7 @@ ms.locfileid: "79276188"
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>設定每個角色的 Azure 診斷
 設定此選項即可使用 Application Insights 來監視您的應用程式。 針對 Web 角色，此選項提供效能監視、警示、診斷及使用狀況分析。 針對其他角色，您可以搜尋和監視 Azure 診斷，例如重新啟動、效能計數器及對 System.Diagnostics.Trace 的呼叫。 
 
-1. 在視覺化工作室解決方案資源管理器中，在**\<"雲服務>** > **角色**"下，打開每個角色的屬性。
+1. 在可視化工作室解決方案資源管理器中,在**\<「雲服務>** > **角色**」下,打開每個角色的屬性。
 
 1. 在 [組態]**** 中選取 [傳送診斷資料至 Application Insights]**** 核取方塊，然後選取您先前建立的 Application Insights 資源。
 
@@ -90,7 +90,7 @@ ms.locfileid: "79276188"
 
 ![設定 Application Insights](./media/cloudservices/configure-azure-diagnostics.png)
 
-這會將您的 Application insights 檢測金鑰插入名為 *ServiceConfiguration.\*.cscfg* 的檔案中。 下面是[示例代碼](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)。
+這會將您的 Application insights 檢測金鑰插入名為 *ServiceConfiguration.\*.cscfg* 的檔案中。 下面是[範例代碼](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)。
 
 如果您想要變更傳送到 Application Insights 的診斷資訊層級，[做法是直接編輯 *.cscfg* 檔案](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "79276188"
 
 1. 若要設定 SDK 以將資料傳送給 Application Insights 資源：
 
-    a. 在合適的啟動函數中，從 *.cscfg*檔中的配置設置設置檢測金鑰：
+    a. 在合適的啟動函數中,從 *.cscfg*檔中的設定設定設定偵測金鑰:
  
     ```csharp
    
@@ -124,15 +124,15 @@ ms.locfileid: "79276188"
     * [輔助角色](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [對於網頁](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. 將*應用程式 Insights.config*檔設置為始終複製到輸出目錄。
+1. 將*應用程式 Insights.config*檔設定為始終複製到輸出目錄。
 
    *.config* 檔案中的訊息會要求您將檢測金鑰放置在此處。 不過針對雲端應用程式，最好是從 *.cscfg* 檔案中設定。 此方法可確保角色會在入口網站中正確識別。
 
-## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>設置狀態監視器以收集完整的 SQL 查詢（可選）
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>設定狀態監視器以收集完整的 SQL 查詢(可選)
 
-僅當要在 .NET 框架上捕獲完整的 SQL 查詢時，才需要此步驟。 
+僅當要在 .NET 框架上捕獲完整的 SQL 查詢時,才需要此步驟。 
 
-1. 在`\*.csdef`檔 中，為每個角色添加啟動[任務](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)，類似于 
+1. 在`\*.csdef`檔案中, 為每個角色新增啟動[工作](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks),類似於 
 
     ```xml
     <Startup>
@@ -147,9 +147,9 @@ ms.locfileid: "79276188"
     </Startup>
     ```
     
-2. 下載[安裝代理.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat)和[InstallAgent.ps1，](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)將它們放入`AppInsightsAgent`每個角色專案的資料夾中。 請確保通過 Visual Studio 檔案屬性或生成腳本將它們複製到輸出目錄。
+2. 下載[安裝代理.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat)和[InstallAgent.ps1,](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)將它們放入`AppInsightsAgent`每個角色專案的資料夾中。 請確保透過 Visual Studio 檔屬性或生成文稿將它們複製到輸出目錄。
 
-3. 在所有輔助角色上，添加環境變數： 
+3. 在所有輔助角色上,添加環境變數: 
 
     ```xml
       <Environment>
@@ -165,7 +165,7 @@ ms.locfileid: "79276188"
 
 1. 開啟您建立的 Application Insights 資源。
 
-   個別資料點會顯示在[搜尋][diagnostic]中，彙總的資料則會顯示在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中。
+   個別資料點會顯示在[搜尋][diagnostic]中，彙總的資料則會顯示在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中。
 
 1. 新增更多遙測 (請參閱以下章節)，然後再發佈應用程式以取得即時診斷和使用方式的意見反應。 
 
@@ -184,7 +184,7 @@ ms.locfileid: "79276188"
 * Windows 事件記錄顯示為追蹤和自訂事件。
 * 應用程式記錄、ETW 記錄和任何診斷基礎結構記錄顯示為追蹤。
 
-若要查看效能計數器和事件計數，請開啟[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md) 並新增下列圖表：
+若要查看效能計數器和事件計數，請開啟[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md) 並新增下列圖表：
 
 ![Azure 診斷資料](./media/cloudservices/23-wad.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "79276188"
 ## <a name="performance-counters"></a>效能計數器
 根據預設會收集下列計數器：
 
-* *進程（？？APP_WIN32_PROC？）\%處理器時間
+* *進程(??APP_WIN32_PROC?)\%處理器時間
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes

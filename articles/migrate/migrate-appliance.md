@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和遷移中使用的 Azure 遷移設備的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437596"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538217"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -25,11 +25,22 @@ Azure 遷移設備用於以下方案。
 **超 V VM 評估** | Azure 移轉:伺服器評估 | 發現超虛擬機器<br/><br/> 收集機器元數據和性能元數據進行評估。
 **實體機器評估** |  Azure 移轉:伺服器評估 |  發現物理伺服器(或您視為物理伺服器的 VM)。<br/><br/> 收集機器元數據和性能元數據進行評估。
 
+## <a name="deployment-methods"></a>部署方法
+
+可以使用以下幾種方法部署裝置:
+
+- 可以使用 VMware VM 和超 VM 的範本(VMware 的 OVA 範本或用於 Hyper-V 的 VHD)部署設備。
+- 如果不想使用範本,可以使用 PowerShell 文本為 VMware 或 Hyper-V 部署設備。
+- 在 Azure 政府中,應使用腳本部署設備。
+- 對於物理伺服器,您始終使用腳本部署設備。
+- 下載連結可在下表中提供。
+
+
 ## <a name="appliance---vmware"></a>裝置 - VMware 
 
 下表總結了 VMware 的 Azure 遷移設備要求。
 
-**要求** | **Vmware** 
+**需求** | **VMware** 
 --- | ---
 **裝置元件** | 產品具有以下元件:<br/><br/> - **管理應用**:這是一個 Web 應用程式,用於在設備部署期間使用者輸入。 用於評估電腦以遷移到 Azure 時使用。<br/> - **發現代理**:代理收集計算機配置數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **評估代理**:代理收集性能數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **自動更新服務**:更新設備元件(每 24 小時運行一次)。<br/>- **DRA 代理**:協調 VM 複製,並協調複製的計算機和 Azure 之間的通訊。 僅在使用無代理遷移將 VMware VM 複製到 Azure 時使用。<br/>- **閘道**:向 Azure 傳送複製的資料。 僅在使用無代理遷移將 VMware VM 複製到 Azure 時使用。
 **支援部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝文稿部署為 VMware VM 或物理電腦。
@@ -48,7 +59,7 @@ Azure 遷移設備用於以下方案。
 
 ## <a name="appliance---hyper-v"></a>裝置 - 超 V
 
-**要求** | **Hyper-V** 
+**需求** | **Hyper-V** 
 --- | ---
 **裝置元件** | 產品具有以下元件:<br/><br/>- **管理應用**:這是一個 Web 應用程式,用於在設備部署期間使用者輸入。 用於評估電腦以遷移到 Azure 時使用。<br/> - **發現代理**:代理收集計算機配置數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **評估代理**:代理收集性能數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **自動更新服務**:更新設備元件(每 24 小時運行一次)。
 **支援部署** | 使用 VHD 範本部署為 Hyper-V VM。<br/><br/> 使用 PowerShell 安裝文稿部署為 Hyper-V VM 或物理電腦。
@@ -64,10 +75,10 @@ Azure 遷移設備用於以下方案。
 
 ## <a name="appliance---physical"></a>裝置 - 物理
 
-**要求** | **實體** 
+**需求** | **實體** 
 --- | ---
 **裝置元件** | 產品具有以下元件: <br/><br/> - **管理應用**:這是一個 Web 應用程式,用於在設備部署期間使用者輸入。 用於評估電腦以遷移到 Azure 時使用。<br/> - **發現代理**:代理收集計算機配置數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **評估代理**:代理收集性能數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **自動更新服務**:更新設備元件(每 24 小時運行一次)。
-**支援部署** | 使用 PowerShell 安裝文稿部署為專用物理電腦或 VM。
+**支援部署** | 使用 PowerShell 安裝文稿部署為專用物理電腦或 VM。 該腳本可從門戶下載。
 **專案支援** |  設備可以與單個項目關聯。 <br/> 任意數量的設備都可以與單個項目關聯。<br/> 
 **發現限制** | 設備可以發現多達 250 台物理伺服器。
 **電源外殼文稿** | 從門戶將腳本 (AzureMigrate 安裝程式.ps1) 下載到壓縮資料夾中。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者,[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 59.7 MB。
@@ -78,8 +89,10 @@ Azure 遷移設備用於以下方案。
 
 Azure 遷移設備需要連接到 Internet。
 
-- 部署設備時,Azure 遷移對下表中總結的 URL 執行連接檢查。
+- 部署設備時,Azure 遷移會對所需的 URL 執行連接檢查。
 - 如果您使用的是基於 URL 的代理連接到網路,則需要允許存取這些網址,確保代理解析在查找 URL 時收到的任何 CNAME 記錄。
+
+### <a name="public-cloud-urls"></a>公開雲 URL
 
 **URL** | **詳細資料**  
 --- | --- |
@@ -95,6 +108,25 @@ download.microsoft.com/download | 允許從微軟下載下載。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 連接到 Azure 遷移服務 URL。
 *.hypervrecoverymanager.windowsazure.com | **無 VMware 無代理遷移**<br/><br/> 連接到 Azure 遷移服務 URL。
 *.blob.core.windows.net |  **無 VMware 無代理遷移**<br/><br/>將數據上載到存儲以進行遷移。
+
+### <a name="government-cloud-urls"></a>政府雲 URL
+
+**URL** | **詳細資料**  
+--- | --- |
+*.portal.azure.us  | 瀏覽至 Azure 入口網站。
+graph.windows.net | 登入您的 Azure 訂用帳戶。
+login.microsoftonline.us  | 為設備創建 Azure 活動目錄 (AD) 應用,以便與 Azure 遷移進行通信。
+management.usgovcloudapi.net | 為設備創建 Azure AD 應用,以便與 Azure 遷移服務進行通信。
+dc.services.visualstudio.com | 上傳用於內部監視的應用日誌。
+*.vault.usgovcloudapi.net | 在 Azure 金鑰保管庫中管理機密。
+aka.ms/* | 允許訪問也稱為連結。 用於 Azure 遷移設備更新。
+download.microsoft.com/download | 允許從微軟下載下載。
+*.servicebus.usgovcloudapi.net  | 設備和 Azure 遷移服務之間的通信。
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | 連接到 Azure 遷移服務 URL。
+*.hypervrecoverymanager.windowsazure.us | **無 VMware 無代理遷移**<br/><br/> 連接到 Azure 遷移服務 URL。
+*.blob.core.usgovcloudapi.net  |  **無 VMware 無代理遷移**<br/><br/>將數據上載到存儲以進行遷移。
+*.applicationinsights.us | 由設備上的閘道代理用於造訪應用程式見解終結點以進行診斷監視。
+
 
 
 
@@ -159,7 +191,7 @@ IPv6 位址 | vm.Guest.Net
 
 以下是設備收集和發送到 Azure 的 VMware VM 性能數據。
 
-**資料** | **計數器** | **評定影響**
+**Data** | **計數器** | **評定影響**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建議的 VM 大小/成本
 記憶體使用量 | mem.usage.average | 建議的 VM 大小/成本
@@ -178,7 +210,7 @@ NIC 寫入輸送量(MB/秒) | net.transmitted.average  |計算 VM 大小
 
 以下是設備從啟用用於無代理依賴項分析的每個 VM 中收集的連接數據。 此數據將發送到 Azure。
 
-**資料** | **使用的指令** 
+**Data** | **使用的指令** 
 --- | --- 
 本機連接埠 | netstat
 本機 IP 位址 | netstat
@@ -191,7 +223,7 @@ TCP 連線狀態 | netstat
 #### <a name="process-data"></a>處理資料
 以下是設備從啟用的無代理依賴項分析的每個 VM 收集的進程數據。 此數據將發送到 Azure。
 
-**資料** | **WMI 類別** | **WMI 類別屬性**
+**Data** | **WMI 類別** | **WMI 類別屬性**
 --- | --- | ---
 程序名稱 | Win32_Process | 執行路徑
 行程參數 | Win32_Process | CommandLine
@@ -201,7 +233,7 @@ TCP 連線狀態 | netstat
 
 以下是設備從啟用的無代理依賴項分析的每個 Linux VM 中收集的連接和處理數據。 此數據將發送到 Azure。
 
-**資料** | **使用的指令** 
+**Data** | **使用的指令** 
 --- | ---
 本機連接埠 | netstat 
 本機 IP 位址 | netstat 

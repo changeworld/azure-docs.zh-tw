@@ -22,6 +22,7 @@
   expanded: true
   items:
     - name: 應用程式閘道
+      expanded: true
       items:
         - name: 部署 WAF v2 - ARM 範本
           displayName: Resource Manager

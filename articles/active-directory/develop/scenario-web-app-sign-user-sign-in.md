@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881310"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537061"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式:登入和登出
 
@@ -205,7 +205,7 @@ def _get_token_from_cache(scope=None):
 ## <a name="sign-out"></a>登出
 
 從 Web 應用登出不僅僅涉及從 Web 應用的狀態中刪除有關登錄帳戶的資訊。
-Web 應用還必須將使用者重定向到 Microsoft`logout`標識平台 終結點才能登出。 
+Web 應用還必須將使用者重定向到 Microsoft`logout`標識平台 終結點才能登出。
 
 當 Web 應用將使用者重定向到終結`logout`點時 ,此終結點將從瀏覽器清除使用者的作業階段。 如果應用未轉到`logout`終結點,使用者將重新驗證你的應用,而無需再次輸入其憑據。 原因是他們將與 Microsoft 標識平台終結點具有有效的單一登錄會話。
 
@@ -306,7 +306,7 @@ else
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

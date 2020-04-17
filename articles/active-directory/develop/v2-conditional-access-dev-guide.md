@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886342"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535888"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure 活動目錄條件存取的開發人員指南
 
@@ -59,12 +59,12 @@ Azure 活動目錄 (Azure AD) 中的條件存取功能提供了可用於保護�
 
 某些方案需要代碼更改來處理條件訪問,而其他方案則以現在的工作方式工作。 下面是一些使用條件訪問進行多重身份驗證的方案,這些身份驗證提供了對差異的一些瞭解。
 
-* 您正在建構單租戶 iOS 應用並應用條件存取策略。 應用程式會將使用者登入，且不會要求存取 API。 當使用者登入時，會自動叫用原則，而使用者必須執行多重要素驗證 (MFA)。 
+* 您正在建構單租戶 iOS 應用並應用條件存取策略。 應用程式會將使用者登入，且不會要求存取 API。 當使用者登入時，會自動叫用原則，而使用者必須執行多重要素驗證 (MFA)。
 * 您正在建置一個會使用中介層服務來存取下游 API 的原生應用程式。 公司中使用此應用程式的企業客戶會將原則套用至下游 API。 當使用者登入時，原生應用程式會要求存取中介層並傳送權杖。 中介層會執行代理者流程來要求存取下游 API。 此時，宣告「挑戰」會呈現至中介層。 中間層將質詢發送回本機應用,該應用需要遵守條件訪問策略。
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-在條件訪問環境中構建應用時,Microsoft 圖形具有特殊注意事項。 通常,條件存取機制執行相同的行為,但使用者看到的策略將基於應用從圖形請求的基礎數據。 
+在條件訪問環境中構建應用時,Microsoft 圖形具有特殊注意事項。 通常,條件存取機制執行相同的行為,但使用者看到的策略將基於應用從圖形請求的基礎數據。
 
 具體而言,所有 Microsoft 圖形作用域表示可以單獨應用策略的某些數據集。 由於為條件存取策略分配了特定的數據集,Azure AD將基於圖形背後的數據強制實施條件存取策略,而不是圖形本身。
 
@@ -74,13 +74,13 @@ Azure 活動目錄 (Azure AD) 中的條件存取功能提供了可用於保護�
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-應用可以期望其使用者完成在預訂和交換上設置的所有策略。 如果某些作用域授予訪問許可權,則可能會映射到多個數據集。 
+應用可以期望其使用者完成在預訂和交換上設置的所有策略。 如果某些作用域授予訪問許可權,則可能會映射到多個數據集。
 
 ### <a name="complying-with-a-conditional-access-policy"></a>遵守條件存取原則
 
 對於多個不同的應用拓撲,在建立會話時評估條件訪問策略。 當條件訪問策略根據應用和服務的粒度進行操作時,調用它時,很大程度上取決於您嘗試完成的方案。
 
-當應用嘗試使用條件訪問策略訪問服務時,它可能會遇到條件訪問挑戰。 此質詢在 Azure`claims`AD 回應中的參數中編碼。 以下是這項挑戰參數的範例： 
+當應用嘗試使用條件訪問策略訪問服務時,它可能會遇到條件訪問挑戰。 此質詢在 Azure`claims`AD 回應中的參數中編碼。 以下是這項挑戰參數的範例：
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ Azure AD 條件存取是[Azure AD 高級版](https://docs.microsoft.com/azure/ac
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>情節：執行代理者流程的應用程式
 
-在此情節中，我們會逐步解說原生應用程式呼叫 web 服務/API 的案例。 接著，此服務會執行「代理者」流程來呼叫下游服務。 在我們的案例中,我們已經將條件訪問策略應用於下游服務(Web API 2),並使用本機應用而不是伺服器/守護進程應用。 
+在此情節中，我們會逐步解說原生應用程式呼叫 web 服務/API 的案例。 接著，此服務會執行「代理者」流程來呼叫下游服務。 在我們的案例中,我們已經將條件訪問策略應用於下游服務(Web API 2),並使用本機應用而不是伺服器/守護進程應用。
 
 ![執行代理者流程圖的應用程式](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -159,7 +159,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 * 接著可以使用 `acquireTokenSilent(…)`，以無訊息方式取得存取權杖，這表示它在任何情況下都不會顯示 UI。
 * `acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)` 都是用來以互動方式要求資源的權杖，這表示它們一律會顯示登入 UI。
 
-當應用程式需要存取權杖來呼叫 Web API 時，它會嘗試 `acquireTokenSilent(…)`。 如果權杖作業階段已過期,或者我們需要遵守條件存取策略,則*accessToken*函數將失敗`acquireTokenPopup()`,`acquireTokenRedirect()`應用使用或 。
+當套用需要存取權碼來呼叫 Web API`acquireTokenSilent(…)`時,它會嘗試 。 如果權杖作業階段已過期,或者我們需要遵守條件存取策略,則*accessToken*函數將失敗`acquireTokenPopup()`,`acquireTokenRedirect()`應用使用或 。
 
 ![使用 MSAL 流程圖的單頁應用](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
@@ -175,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 我們的應用程式必須攔截 `error=interaction_required`。 應用程式就可以在相同的資源上使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。 系統會強制使用者執行多重要素驗證。 使用者完成多重要素驗證之後，就會發出新的存取權杖給應用程式，以取得要求的資源。
 
-若要試用此情節，請參閱我們的 [JS SPA 代理者程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)。 此代碼示例使用之前在 JS SPA 中註冊的條件存取策略和 Web API 來演示此方案。 它會示範如何正確處理宣告挑戰，並取得可用於您 Web API 的存取權杖。 或者，查看一般 [Angular.js 程式碼範例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，以取得 Angular SPA 的指引
+若要試用此情節，請參閱我們的 [JS SPA 代理者程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)。 此代碼示例使用之前在 JS SPA 中註冊的條件存取策略和 Web API 來演示此方案。 它演示如何正確處理聲明質詢並獲得可用於 Web API 的訪問權杖。 或者，查看一般 [Angular.js 程式碼範例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，以取得 Angular SPA 的指引
 
 ## <a name="see-also"></a>另請參閱
 

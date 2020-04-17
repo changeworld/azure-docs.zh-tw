@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 中的串流分析匯出 | Microsoft Do
 description: 串流分析可以持續轉換、篩選和路由傳送您從 Application Insights 匯出的資料。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664009"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536874"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)是處理[從 Application Insights 匯出](export-telemetry.md)之資料的理想工具。 串流分析可以從各種來源提取資料。 它可以轉換和篩選資料，然後將它路由傳送至各種接收。
@@ -55,7 +55,7 @@ ms.locfileid: "77664009"
 
     ![選擇事件類型](./media/export-stream-analytics/080.png)
 
-1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
+1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
    
     此外，資料會匯出至您的儲存體。 
 2. 檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]****，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
@@ -89,7 +89,7 @@ ms.locfileid: "77664009"
 
 ### <a name="set-path-prefix-pattern"></a>設定路徑前置詞模式
 
-**請務必將日期格式設置為 YYYY-MM-DD（帶破折號）。**
+**請務必將日期格式設置為 YYYY-MM-DD(帶破折號)。**
 
 路徑前置詞模式會指定串流分析在存放區中尋找輸入檔案的位置。 您需要將它設定為與連續匯出儲存資料的方式相對應。 請設定如下：
 
@@ -107,7 +107,7 @@ ms.locfileid: "77664009"
 > 
 
 ## <a name="add-new-output"></a>新增輸出
-現在選擇作業>**輸出** > **添加**。
+現在選擇工作>**輸出** > **新增**。
 
 ![](./media/export-stream-analytics/SA006.png)
 

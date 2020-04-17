@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885230"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教程:Azure 活動目錄與亞馬遜 Web 服務 (AWS) 整合(舊教程)
 
@@ -37,7 +37,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 ![結果清單中的 Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> 請注意，將一個 AWS 應用程式連線到您所有的 AWS 帳戶並不是我們建議的方法。 取而代之的是，建議您使用[這個](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)方法在 Azure AD 中將多個 AWS 帳戶執行個體設定為多個 AWS 應用程式的執行個體。 只使用 AWS 帳號與角色數量非常少時,才應使用[此方法](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)。 隨著 AWS 帳戶和這些帳戶內角色的增加,[此](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)模型無法擴展。 此外[,此方法](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)不使用使用 Azure AD 使用者預配的 AWS 角色導入功能,因此您必須手動添加/更新/刪除角色。 有關[此方法](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)的其他限制,請參閱以下詳細資訊。
+> 請注意，將一個 AWS 應用程式連線到您所有的 AWS 帳戶並不是我們建議的方法。 取而代之的是，建議您使用[這個](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)方法在 Azure AD 中將多個 AWS 帳戶執行個體設定為多個 AWS 應用程式的執行個體。 僅當 AWS 帳戶和角色數量非常少時,才應使用此方法,此模型不會隨著這些帳戶中的 AWS 帳戶和角色的增長而擴展。 此外,此方法不使用使用 Azure AD 使用者預配的 AWS 角色導入功能,因此您必須手動添加/更新/刪除角色。 有關此方法的其他限制,請參閱以下詳細資訊。
 
 **請注意，我們不建議使用此方法，原因如下：**
 

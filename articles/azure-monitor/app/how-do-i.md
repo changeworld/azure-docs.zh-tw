@@ -3,12 +3,12 @@ title: 我如何在 Azure Application Insights 中... | Microsoft Docs
 description: Application Insights 中的常見問題集。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663852"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536857"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
 ## <a name="get-an-email-when-"></a>... 時收到電子郵件
@@ -45,7 +45,7 @@ ms.locfileid: "77663852"
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-在 [計量總管](../../azure-monitor/app/metrics-explorer.md) 中建立圖表來查看您的警示：
+在 [計量總管](../../azure-monitor/platform/metrics-charts.md) 中建立圖表來查看您的警示：
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -73,8 +73,8 @@ ms.locfileid: "77663852"
 
 ## <a name="separate-telemetry-from-different-versions"></a>區分不同版本的遙測
 
-* 應用中的多個角色：使用單個應用程式見解資源，並在[cloud_Rolename](../../azure-monitor/app/app-map.md)上進行篩選。
-* 區分開發、測試和發行版本︰使用不同的 Application Insights 資源。 從 Web.config 拾取檢測金鑰。[瞭解更多](../../azure-monitor/app/separate-resources.md)
+* 應用中的多個角色:使用單個應用程式見解資源,並在[cloud_Rolename](../../azure-monitor/app/app-map.md)上進行篩選。
+* 區分開發、測試和發行版本︰使用不同的 Application Insights 資源。 從 Web.config 拾取檢測密鑰。[瞭解更多](../../azure-monitor/app/separate-resources.md)
 * 報告組建版本︰使用遙測初始設定式新增屬性。 [深入了解](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>監視後端伺服器與桌面應用程式
@@ -82,7 +82,7 @@ ms.locfileid: "77663852"
 
 ## <a name="visualize-data"></a>顯現資料
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>具有來自多個 App 之計量的儀表板
-* 在 [計量總管](../../azure-monitor/app/metrics-explorer.md)中，自訂圖表並將它儲存為我的最愛。 將它釘選到 Azure 儀表板。
+* 在 [計量總管](../../azure-monitor/platform/metrics-charts.md)中，自訂圖表並將它儲存為我的最愛。 將它釘選到 Azure 儀表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>資料來自其他來源和 Application Insights 的儀表板
 * [將遙測匯出至 Power Bi](../../azure-monitor/app/export-power-bi.md )。
@@ -94,11 +94,11 @@ Or
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>篩選出匿名或已驗證的使用者
-如果使用者登錄，則可以設置[經過身份驗證的使用者 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 (它不會自動重新整理)。
+如果使用者登入,則可以設定[經過身份驗證的使用者代碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 (它不會自動重新整理)。
 
 您可以：
 
-* 搜索特定使用者專用的 I
+* 搜尋特定使用者專用的 I
 
 ![](./media/how-do-i/110-search.png)
 
@@ -107,15 +107,15 @@ Or
 ![](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>修改屬性名稱或值
-創建[篩選器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 這可讓您先修改或篩選遙測，然後再將它從您的應用程式傳送至 Application Insights。
+建立[篩選器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 這可讓您先修改或篩選遙測，然後再將它從您的應用程式傳送至 Application Insights。
 
 ## <a name="list-specific-users-and-their-usage"></a>列出特定使用者和其使用方式
-如果只想[搜索特定使用者](#search-specific-users)，可以設置[經過身份驗證的使用者 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
+如果只想[搜尋特定使用者](#search-specific-users),可以設定[經過身份驗證的使用者 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
 
 如果您想要使用者清單以及像是他們查看過哪些頁面或登入頻率等資料，則有兩個選項：
 
-* [設置經過身份驗證的使用者 ID，](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)[匯出到資料庫，](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)並使用適當的工具分析那裡的使用者資料。
-* 如果使用者數量不多，請發送自訂事件或指標，使用感興趣的資料作為指標值或事件名稱，並將使用者 ID 設置為屬性。 若要分析頁面檢視，可取代標準的 JavaScript trackPageView 呼叫。 要分析伺服器端遙測，請使用遙測初始化程式將使用者 ID 添加到所有伺服器遙測。 然後，您可以篩選和細分指標，並在使用者 ID 上搜索。
+* [設定經過身份驗證的使用者 ID,](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)[匯出到資料庫,](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)並使用適當的工具分析那裡的用戶數據。
+* 如果用戶數量不多,請發送自定義事件或指標,使用感興趣的數據作為指標值或事件名稱,並將使用者 ID 設置為屬性。 若要分析頁面檢視，可取代標準的 JavaScript trackPageView 呼叫。 要分析伺服器端遙測,請使用遙測初始化程式將使用者 ID 添加到所有伺服器遙測。 然後,您可以篩選和細分指標,並在使用者 ID 上搜索。
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>降低從我的 App 到 Application Insights 的流量
 * 在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中，停用任何您不需要的模組，例如效能計數器收集器。
@@ -137,16 +137,16 @@ Or
 ```
 
 ### <a name="other-applications"></a>其他應用程式
-不建議在主控台或`TelemetryConfiguration.Active`ASP.NET核心應用程式上使用單例。
-如果您自己創建了`TelemetryConfiguration`實例 -`DisableTelemetry`設置為`true`。
+不建議在主控台`TelemetryConfiguration.Active`或 ASP.NET核心應用程式上使用單例。
+如果您自己建立了`TelemetryConfiguration`實體`DisableTelemetry`─`true`設定為 。
 
-對於ASP.NET核心應用程式，您可以使用`TelemetryConfiguration`[ASP.NET核心依賴項注入](/aspnet/core/fundamentals/dependency-injection/)訪問實例。 請在["應用程式洞察ASP.NET核心應用程式](../../azure-monitor/app/asp-net-core.md)"一文中找到更多詳細資訊。
+對於ASP.NET核心應用程式,您可以使用`TelemetryConfiguration`[ASP.NET核心依賴項注入](/aspnet/core/fundamentals/dependency-injection/)存取實例。 請在[「應用程式洞察ASP.NET核心應用程式](../../azure-monitor/app/asp-net-core.md)」一文中找到更多詳細資訊。
 
-## <a name="disable-selected-standard-collectors"></a>禁用選定的標準收集器
-您可以禁用標準收集器（例如，效能計數器、HTTP 要求或依賴項）
+## <a name="disable-selected-standard-collectors"></a>關閉選取的標準收集器
+您可以關閉標準收集器(例如,效能計數器、HTTP 請求或相依項)
 
-* **ASP.NET應用程式**- 刪除或注釋[應用程式見解中的](../../azure-monitor/app/configuration-with-applicationinsights-config.md)相關行。
-* **ASP.NET核心應用程式**- 遵循[應用見解ASP.NET核心](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)中的遙測模組配置選項
+* **ASP.NET應用程式**- 刪除或註釋[應用程式見解中的](../../azure-monitor/app/configuration-with-applicationinsights-config.md)相關行。
+* **ASP.NET核心應用程式**- 遵循[應用程式的設定組態設定](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>檢視系統效能計數器
 您可以在計量總管中顯示的計量資訊是一組系統效能計數器。 有一個預先定義且標題為 **伺服器** 的刀鋒視窗會顯示它們其中幾個。
@@ -159,5 +159,5 @@ Or
 * **Unix 伺服器** - [安裝收集](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>顯示更多效能計數器
-* 首先，[新增圖表](../../azure-monitor/app/metrics-explorer.md) ，並查看計數器是否位於我們提供的基本組合中。
+* 首先，[新增圖表](../../azure-monitor/platform/metrics-charts.md) ，並查看計數器是否位於我們提供的基本組合中。
 * 如果沒有，請[將計數器加入效能計數器模組所收集的組合中](../../azure-monitor/app/performance-counters.md)。

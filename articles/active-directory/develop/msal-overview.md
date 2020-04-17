@@ -1,7 +1,7 @@
 ---
 title: 瞭解 MSAL |蔚藍
 titleSuffix: Microsoft identity platform
-description: Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員取得權杖以呼叫受保護的 Web API。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或您自己的 Web API。 MSAL 支援多種應用程式架構和平台。
+description: Microsoft 身份驗證庫 (MSAL) 使應用程式開發人員能夠獲取權杖,以便呼叫安全的 Web API。 這些 Web API 可以是 Microsoft 圖形、其他 Microsoft API、第三方 Web API 或您自己的 Web API。 MSAL 支援多種應用程式架構和平台。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c5117e59f7856c3bd572bbea297a836b5ad589
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085731"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536211"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 驗證程式庫 (MSAL) 概觀
-Microsoft 身份驗證庫 （MSAL） 使開發人員能夠從 Microsoft 標識平臺終結點獲取[權杖](developer-glossary.md#security-token)，以便訪問安全的 Web API。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或您自己的 Web API。 MSAL 適用於 .NET、JavaScript、Android 和 iOS，可支援多種不同的應用程式架構和平台。
+Microsoft 身份驗證庫 (MSAL) 使開發人員能夠從 Microsoft 識別平台終結點獲取[令牌](developer-glossary.md#security-token),以便存取安全的 Web API。 這些 Web API 可以是 Microsoft 圖形、其他 Microsoft API、第三方 Web API 或您自己的 Web API。 MSAL 適用於 .NET、JavaScript、Android 和 iOS，可支援多種不同的應用程式架構和平台。
 
 MSAL 可讓您透過多種平台通用的 API，以不同的方式取得權杖。 使用 MSAL 有下列優點：
 
@@ -37,13 +37,13 @@ MSAL 可讓您透過多種平台通用的 API，以不同的方式取得權杖�
 
 MSAL 可用於許多應用程式案例，包括：
 
-* [單頁應用程式（JavaScript）](scenario-spa-overview.md)
+* [單頁應用程式 (JavaScript)](scenario-spa-overview.md)
 * [登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)
 * [登入使用者並代表使用者呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md)
 * [保護 Web API，使其僅可供已驗證的使用者存取](scenario-protected-web-api-overview.md)
 * [代表登入的使用者呼叫另一個下游 Web API 的 Web API](scenario-web-api-call-api-overview.md)
-* [代表登錄使用者調用 Web API 的桌面應用程式](scenario-desktop-overview.md)
-* [移動應用程式代表以對話模式登錄的使用者調用 Web API。](scenario-mobile-overview.md)
+* [代表登入使用者呼叫 Web API 的桌面應用程式](scenario-desktop-overview.md)
+* [移動應用程式代表以互動方式登入的使用者呼叫 Web API。](scenario-mobile-overview.md)
 * [代表本身呼叫 Web API 的桌面/服務精靈應用程式](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>語言和架構
@@ -54,8 +54,8 @@ MSAL 可用於許多應用程式案例，包括：
 | [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript 架構，例如 AngularJS、Ember.js、Durandal.js|
 | [適用於 Android 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [適用於 iOS 和 macOS 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS 和 macOS|
-| [MSAL JAVA（預覽）](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
-| [MSAL Python（預覽版）](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
+| [MSAL Java(預覽)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL Python(預覽版)](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL 與 MSAL 的差異
 

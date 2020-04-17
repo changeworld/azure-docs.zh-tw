@@ -3,12 +3,12 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878947"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537316"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -43,7 +43,7 @@ Azure 備份使用恢復服務保管庫來協調和管理備份。 它還使用�
 
 如果要備份本地電腦,支援的內容:
 
-**機器** | **備份的內容** | **位置** | **特性**
+**機器** | **備份的內容** | **位置** | **特徵**
 --- | --- | --- | ---
 **透過 MARS 代理程式直接備份 Windows 機器** | 檔案、資料夾、系統狀態 | 備份到恢復服務保管庫。 | 每天備份三次<br/><br/> 沒有應用程式感知備份<br/><br/> 回復檔案、資料夾、卷
 **透過 MARS 代理程式直接備份 Linux 機器** | 不支援備份
@@ -63,7 +63,7 @@ Azure 備份使用恢復服務保管庫來協調和管理備份。 它還使用�
 
 如果要備份 Azure VM,則支援這些功能:
 
-**機器** | **備份的內容** | **位置** | **特性**
+**機器** | **備份的內容** | **位置** | **特徵**
 --- | --- | --- | ---
 **使用 VM 擴充進行 Azure VM 備份** | 整個 VM | 備份到保管庫。 | 當您為 VM 啟用備份時安裝的延伸模組。<br/><br/> 每天備份一次。<br/><br/> 適用於 Windows VM 的應用感知備份;適用於 Linux VM 的檔一致性備份。 您可以使用自訂文本為 Linux 電腦配置應用一致性。<br/><br/> 還原 VM 或磁碟。<br/><br/> 無法將 Azure VM 備份到本地位置。
 **使用 MARS 代理程式進行 Azure VM 備份** | 檔案、資料夾、系統狀態 | 備份到保管庫。 | 每天備份三次。<br/><br/> 如果要備份特定檔或資料夾,而不是整個 VM,MARS 代理可以與 VM 擴展名一起運行。
@@ -90,7 +90,7 @@ Azure 備份不支援 Azure VM 備份的夏令時自動時鐘調整。 它不會
 
 磁碟重複資料刪除支援如下︰
 
-- 當您使用 DPM 或 MAB 備份執行 Windows 的超 VM 時,磁碟重複數據消除在本地支援。 Windows Server 在作為備份儲存連接到 VM 的虛擬硬碟 (VHD) 上執行資料重複資料重複資料(在主機等級)。
+- 當您使用 DPM 或 MABS 備份執行 Windows 的超 V VM 時,磁碟重複數據消除在本地支援。 Windows Server 在作為備份儲存連接到 VM 的虛擬硬碟 (VHD) 上執行資料重複資料重複資料(在主機等級)。
 - 在 Azure 中不支援對任何備份元件進行重複資料刪除。 在 Azure 中部署 DPM 和 MABS 時,無法對連接到 VM 的儲存磁碟進行重複複製。
 
 ## <a name="security-and-encryption-support"></a>安全性與加密支援

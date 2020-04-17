@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 2929b94a2cb624b96649292714fe93dea09a2085
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7ba845e79074313f0ccf2c066ba016bd72d46efe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534562"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java ADAL 到 MSAL 移植指南
 
@@ -82,7 +82,7 @@ Java 的 MSAL 添加了[權杖快取](msal-acquire-cache-tokens.md),透過盡可
 
 v1.0 端點 (由 ADAL 使用) 只會發出 v1.0 權杖。
 
-v2.0 終結點(MSAL 使用)可以發出 v1.0 和 v2.0 權杖。 Web API 的應用程式資訊清單屬性可讓開發人員選擇要接受哪個版本的權杖。 請參閱`accessTokenAcceptedVersion`[應用程式清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)參考文檔。
+v2.0 終結點(MSAL 使用)可以發出 v1.0 和 v2.0 權杖。 Web API 應用程式清單的屬性使開發人員能夠選擇接受哪個版本的權杖。 請參閱`accessTokenAcceptedVersion`[應用程式清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)參考文檔。
 
 有關 v1.0 和 v2.0 權杖的詳細資訊,請參閱[Azure 活動目錄存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
 
@@ -109,7 +109,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-返回`IAuthenticationResult`訪問權杖和 ID 權杖,而新的刷新權杖儲存在快取中。 該應用程式現在還將包含 IAccount:
+返回`IAuthenticationResult`訪問權杖和 ID 權杖,而新的刷新權杖儲存在快取中。
+該應用程式現在還將包含 IAccount:
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -118,6 +119,6 @@ Set<IAccount> accounts =  app.getAccounts().join();
 要使用目前快取中的權杖,請呼叫:
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```

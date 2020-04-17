@@ -1,5 +1,5 @@
 ---
-title: 故障排除載入 Azure 自動化管理解決方案
+title: 容錯排除載入 Azure 自動化管理解決方案
 description: 了解如何針對將更新管理、變更追蹤和清查解決方案上線時的錯誤進行疑難排解
 services: automation
 author: mgoedtel
@@ -8,43 +8,43 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae359e5210a9a11c33dd3ff9b474e28aa2548c57
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75889340"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536959"
 ---
-# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>在載入更新管理、更改跟蹤和庫存時排除錯誤
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>在載入更新管理、變更追蹤並排除錯誤
 
 當您將更新管理或變更追蹤和清查等解決方案上線時，可能會發生錯誤。 本文描述可能發生的各種錯誤及解決方法。
 
 ## <a name="known-issues"></a>已知問題
 
-### <a name="scenario-renaming-a-registered-node-requires-unregister--register-again"></a><a name="node-rename"></a>方案：重命名註冊節點需要重新取消註冊/註冊
+### <a name="scenario-renaming-a-registered-node-requires-unregister--register-again"></a><a name="node-rename"></a>方案:重新取消註冊/註冊
 
 #### <a name="issue"></a>問題
 
-節點註冊到 Azure 自動化，然後更改作業系統電腦名稱稱。  來自節點的報告繼續以原始名稱顯示。
+節點註冊到 Azure 自動化,然後更改作業系統電腦名稱。  來自節點的報告繼續以原始名稱顯示。
 
 #### <a name="cause"></a>原因
 
-重命名註冊節點不會更新 Azure 自動化中的節點名稱。
+重新命名註冊節點不會更新 Azure 自動化中的節點名稱。
 
 #### <a name="resolution"></a>解決方案
 
-從 Azure 自動化狀態配置中取消註冊節點，然後再次註冊。  在此之前發佈到服務的報告將不再可用。
+從 Azure 自動化狀態配置中取消註冊節點,然後再次註冊。  在此之前發佈到服務的報告將不再可用。
 
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>方案：不支援通過 HTTPs 代理重新簽章憑證
+### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>專案:不支援透過 Htcrics 代理重新簽署憑證
 
 #### <a name="issue"></a>問題
 
-客戶報告說，當通過終止 HTTPs 流量的代理解決方案進行連接，然後使用新證書重新加密流量時，該服務不允許連接。
+客戶報告說,當通過終止 HTHT 的代理解決方案進行連接,然後使用新證書重新加密流量時,該服務不允許連接。
 
 #### <a name="cause"></a>原因
 
-Azure 自動化不支援重新簽名用於加密流量的證書。
+Azure 自動化不支援重新簽署用於加密流量的證書。
 
 #### <a name="resolution"></a>解決方案
 
@@ -52,11 +52,11 @@ Azure 自動化不支援重新簽名用於加密流量的證書。
 
 ## <a name="general-errors"></a>一般錯誤
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>方案：在消息中加入失敗 - 無法啟用解決方案
+### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>機制:在訊息中加入失敗 ─ 無法啟用解決方案
 
 #### <a name="issue"></a>問題
 
-當您嘗試將虛擬機器登機到解決方案時，您會收到以下消息之一：
+當您嘗試將虛擬機器登機到解決方案時,您會收到以下訊息之一:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -68,13 +68,13 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="cause"></a>原因
 
-此錯誤是由虛擬機器、工作區或使用者的許可權不正確或缺少引起的。
+此錯誤是由虛擬機、工作區或用戶的許可權不正確或缺少引起的。
 
 #### <a name="resolution"></a>解決方案
 
-確定您有正確的權限可讓虛擬機器上線。 檢閱[讓機器上線所需的權限](../automation-role-based-access-control.md#onboarding)，嘗試讓解決方案再次上線。 如果收到錯誤`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，請確保具有查找 VM`Microsoft.OperationalInsights/workspaces/read`是否已連接到工作區的許可權。
+確定您有正確的權限可讓虛擬機器上線。 檢閱[讓機器上線所需的權限](../automation-role-based-access-control.md#onboarding-permissions)，嘗試讓解決方案再次上線。 如果收到錯誤`The solution cannot be enabled on this VM because the permission to read the workspace is missing`,請確保具有尋找 VM`Microsoft.OperationalInsights/workspaces/read`是否已連接到工作區的許可權。
 
-### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>方案：在消息中登錄失敗 - 無法配置診斷日誌記錄的自動化帳戶
+### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>機制:在訊息登入失敗 ─ 無法設定診斷紀錄記錄的自動化帳戶
 
 #### <a name="issue"></a>問題
 
@@ -86,11 +86,11 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-如果定價層與訂閱的計費模型不匹配，則可能導致此錯誤。 有關詳細資訊，請參閱[Azure 監視器 中的監視使用方式和估計成本](https://aka.ms/PricingTierWarning)。
+如果定價層與訂閱的計費模型不匹配,則可能導致此錯誤。 有關詳細資訊,請參閱[Azure 監視器 中的監視使用方式和估計成本](https://aka.ms/PricingTierWarning)。
 
 #### <a name="resolution"></a>解決方案
 
-手動創建日誌分析工作區，並重覆載入過程以選擇創建的工作區。
+手動創建日誌分析工作區,並重複載入過程以選擇創建的工作區。
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>案例：ComputerGroupQueryFormatError
 
@@ -126,13 +126,13 @@ Failed to configure automation account for diagnostic logging
   * 將原則的目標重新設定為特定資源 (例如設定為特定的自動化帳戶)。
   * 對於原則已設定為拒絕的資源集合進行修改。
 
-檢查 Azure 門戶右上角的通知，或導航到包含自動化帳戶的資源組，並在 **"設置"** 下選擇 **"部署**"以查看失敗的部署。 若要深入了解 Azure 原則，請造訪：[Azure 原則的概觀](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+檢查 Azure 門戶右上角的通知,或導航到包含自動化帳戶的資源組,並在 **「設定」** 下選擇 **「部署**」以查看失敗的部署。 若要深入了解 Azure 原則，請造訪：[Azure 原則的概觀](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
-### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>方案：嘗試取消連結工作區的錯誤
+### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>方案:嘗試取消連結工作區的錯誤
 
 #### <a name="issue"></a>問題
 
-嘗試取消連結工作區時，您會收到以下錯誤：
+嘗試取消連結工作區時,您會收到以下錯誤:
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -140,29 +140,29 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>原因
 
-當您的日誌分析工作區中仍有依賴于您的自動化帳戶和日誌分析工作區連結的解決方案處於活動狀態時，將發生此錯誤。
+當您的日誌分析工作區中仍有依賴於您的自動化帳戶和日誌分析工作區連結的解決方案處於活動狀態時,將發生此錯誤。
 
 ### <a name="resolution"></a>解決方案
 
-要解決此問題，您需要從工作區中刪除以下解決方案（如果您正在使用）：
+要解決此問題,您需要從工作區中刪除以下解決方案(如果您正在使用):
 
 * 更新管理
 * 變更追蹤
 * 於下班時間開始/停止 VM
 
-刪除解決方案後，可以取消連結工作區。 從工作區和自動化帳戶中清理這些解決方案中的任何現有專案也很重要。  
+刪除解決方案後,可以取消連結工作區。 從工作區和自動化帳戶中清理這些解決方案中的任何現有專案也很重要。  
 
 * 更新管理
-  * 從自動化帳戶中刪除更新部署（計畫）
+  * 從自動化帳戶中移除更新部署(計畫)
 * 於下班時間開始/停止 VM
   * 在**設置** > **鎖**下刪除自動化帳戶中解決方案元件上的任何鎖。
-  * 有關在非工作時間解決方案期間刪除開始/停止 VM 的其他步驟，請參閱[在非工作時間解決方案期間刪除"開始/停止"VM。](../automation-solution-vm-management.md#remove-the-solution)
+  * 有關在非工作時間解決方案期間刪除開始/停止 VM 的其他步驟,請參閱[在非工作時間解決方案期間刪除"開始/停止"VM。](../automation-solution-vm-management.md#remove-the-solution)
 
 ## <a name="mma-extension-failures"></a><a name="mma-extension-failures"></a>MMA 延伸模組失敗
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-部署解決方案時，會部署各種相關的資源。 其中一個資源是「Microsoft Monitoring Agent 延伸模組」或「適用於 Linux 的 Log Analytics 代理程式」。 這些是虛擬機器的來賓代理安裝的虛擬機器擴展，負責與配置的日誌分析工作區通信，以便以後協調二進位檔案和其他檔的下載。一旦開始執行，您所加入的解決方案就取決於它。
+部署解決方案時，會部署各種相關的資源。 其中一個資源是「Microsoft Monitoring Agent 延伸模組」或「適用於 Linux 的 Log Analytics 代理程式」。 這些是虛擬機的來賓代理安裝的虛擬機器擴展,負責與配置的日誌分析工作區通訊,以便以後協調下載要載入的解決方案在開始執行後所依賴的二進位檔案和其他檔的下載。
 您通常最先從出現在「通知中樞」中的通知察覺 MMA 或「適用於 Linux 的 Log Analytics 代理程式」安裝失敗。 按一下通知可提供特定失敗的進一步資訊。 巡覽至資源群組資源，再到其中的部署項目，也會提供所發生部署失敗的詳細資料。
 MMA 或「適用於 Linux 的 Log Analytics 代理程式」可能因各種原因而安裝失敗，解決這些失敗所需採取的步驟會因問題而有所不同。 以下是特定疑難排解步驟。
 
@@ -196,9 +196,9 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 確定您已開啟適當的連接埠和位址進行通訊。 如需連接埠和位址清單，請參閱[規劃您的網路](../automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>方案：由於暫時性環境問題，安裝失敗
+### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>方案:由於暫時性環境問題,安裝失敗
 
-由於其他安裝或操作阻止安裝，部署期間安裝 Microsoft 監視代理擴展失敗
+由於其他安裝或操作封鎖安裝,部署期間安裝 Microsoft 監視代理擴展失敗
 
 #### <a name="issue"></a>問題
 
@@ -221,7 +221,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 此錯誤的一些可能原因包括：
 
 * 其他安裝正在進行
-* 系統在範本部署期間觸發以重新開機
+* 系統在樣本部署期間觸發以重新啟動
 
 #### <a name="resolution"></a>解決方案
 
@@ -229,11 +229,11 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 ### <a name="scenario-installation-timeout"></a><a name="installation-timeout"></a>案例：安裝逾時
 
-由於超時，MMA 擴展的安裝未完成。
+由於超時,MMA 擴展的安裝未完成。
 
 #### <a name="issue"></a>問題
 
-以下示例是可能返回的錯誤訊息：
+以下範例是可能傳回的錯誤訊息:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -241,7 +241,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>原因
 
-出現此錯誤的原因是虛擬機器在安裝過程中負載很大。
+出現此錯誤的原因是虛擬機在安裝過程中負載很大。
 
 ### <a name="resolution"></a>解決方案
 
@@ -252,5 +252,5 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
 * 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答
-* 與[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帳戶連接，通過將 Azure 社區連接到正確的資源（答案、支援和專家），從而改善客戶體驗。
-* 如果需要更多協助，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+* 與[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帳戶連接,通過將 Azure 社區連接到正確的資源(答案、支援和專家),從而改善客戶體驗。
+* 如果需要更多協助，您可以提出 Azure 支援事件。 跳到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **「取得支援**」。
