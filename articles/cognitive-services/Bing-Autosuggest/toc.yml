@@ -79,7 +79,7 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: 試試看！
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: Bing 自動建議 API 的分析
       maintainContext: true

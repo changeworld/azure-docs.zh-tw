@@ -91,11 +91,11 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
     - name: Bing Web 搜尋端點
       href: web-search-endpoints.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: Bing Web 搜尋 API 的分析
       href: bing-web-stats.md

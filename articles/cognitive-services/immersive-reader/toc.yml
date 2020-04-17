@@ -42,6 +42,6 @@
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 語言支援
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

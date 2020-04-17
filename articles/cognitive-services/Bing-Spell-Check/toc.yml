@@ -72,9 +72,9 @@
     - name: Bing 拼字檢查 API 的分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'

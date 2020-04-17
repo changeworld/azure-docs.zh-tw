@@ -89,7 +89,7 @@
   items:
     - name: 常見問題集
       href: bing-image-search-resource-faq.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
@@ -107,7 +107,7 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: Bing 影像搜尋端點
       href: image-search-endpoint.md
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: Bing 影像搜尋 API 的分析
       maintainContext: true

@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 2d6b5f07cdefe874a8c25338e5c31664fccb8055
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79415734"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81529787"
 landingContent:
 - title: 轉譯程式
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: translator-info-overview.md
     - text: 自訂翻譯工具
       url: translator-info-overview.md
-    - text: 價格
+    - text: 定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
     - text: 法規遵循
       url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
@@ -64,7 +64,7 @@ landingContent:
       url: reference/v3-0-reference.md
     - text: 要求限制
       url: request-limits.md
-    - text: 語言與區域支援
+    - text: 語言支援
       url: language-support.md
 - title: 自訂翻譯工具
   linkLists:

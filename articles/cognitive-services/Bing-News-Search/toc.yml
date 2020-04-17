@@ -97,7 +97,7 @@
       href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
     - name: Bing 新聞搜尋端點
       href: endpoint-news.md
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: Bing 新聞搜尋 API 的分析
       href: bing-news-stats.md

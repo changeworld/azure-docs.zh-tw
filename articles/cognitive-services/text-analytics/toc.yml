@@ -48,7 +48,7 @@
   items:
     - name: 具名實體類型
       href: named-entity-types.md
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: 文字位移
       href: concepts/text-offsets.md
@@ -116,7 +116,7 @@
       href: text-analytics-resource-external-community.md
     - name: 常見問題集
       href: text-analytics-resource-faq.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
