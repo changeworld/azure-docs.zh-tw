@@ -1,0 +1,68 @@
+- name: 憑證
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於憑證
+      href: about-certificates.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: 入口網站
+      href: quick-create-portal.md
+    - name: Python
+      href: quick-create-python.md
+- name: 教學課程
+  items:
+    - name: 匯入憑證
+      href: tutorial-import-certificate.md
+- name: 概念
+  items:
+    - name: 開始使用 Key Vault 憑證
+      href: certificate-scenarios.md
+    - name: 監視和管理憑證建立
+      href: create-certificate-scenarios.md
+    - name: 憑證建立方式
+      href: create-certificate.md
+- name: 參考
+  items:
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager 範本
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: 資源
+  items:
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: /learn/browse/?products=azure-key-vault
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: 服務等級協定 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: 服務限制
+      href: ../general/service-limits.md
+    - name: 服務狀態
+      href: 'https://azure.microsoft.com/status/'
+    - name: 服務更新
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: 部落格
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 產品意見反應
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

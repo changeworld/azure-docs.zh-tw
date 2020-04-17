@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: Azure Key Vault 文件
+summary: 了解如何使用金鑰保存庫來建立及維護金鑰，以便存取和加密您的雲端資源、應用程式和解決方案。 教學課程、API 參考等等。
+metadata:
+  title: Azure Key Vault 文件
+  description: 了解如何使用金鑰保存庫來建立及維護金鑰，以便存取和加密您的雲端資源、應用程式和解決方案。 教學課程、API 參考等等。
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81422399"
+landingContent:
+- title: 關於 Azure Key Vault
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 何謂 Azure Key Vault？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 基本概念
+      url: basic-concepts.md
+    - text: 虛刪除
+      url: overview-soft-delete.md
+    - text: 節流
+      url: overview-throttling.md
+- title: 教學課程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 從 Web 應用程式使用 Key Vault
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: 搭配使用 Key Vault 與 Azure Windows 虛擬機器
+      url: tutorial-net-windows-virtual-machine.md
+    - text: 搭配使用 Key Vault 與 Python - Windows
+      url: tutorial-python-windows-virtual-machine.md
+- title: 安全性
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 保護您的 Key Vault
+      url: secure-your-key-vault.md
+    - text: 安全性建議
+      url: security-recommendations.md
+    - text: 安全性基準
+      url: security-baseline.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Private Link
+      url: private-link-service.md
+    - text: 建立受控識別
+      url: managed-identity.md
+    - text: 使用存取原則
+      url: group-permissions-for-apps.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 使用 Azure Key Vault 在您的伺服器應用程式中管理祕密
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

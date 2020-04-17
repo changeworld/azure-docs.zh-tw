@@ -50,6 +50,8 @@
           href: class-type-jupyter-notebook.md
         - name: 使用 Android Studio 進行行動應用程式開發
           href: class-type-mobile-dev-android-studio.md
+        - name: 巨量資料分析
+          href: class-type-big-data-analytics.md
     - name: 建立及設定實驗室帳戶 (實驗室帳戶擁有者)
       items:
         - name: 建立及管理實驗室帳戶

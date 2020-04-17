@@ -36,6 +36,8 @@
       href: hpc-cache-mount.md
     - name: 管理快取
       href: hpc-cache-manage.md
+    - name: 設定選擇性設定
+      href: configuration.md
 - name: 資源
   items:
     - name: 開啟支援票證
@@ -46,5 +48,7 @@
       href: troubleshoot-nas.md
     - name: 從區域性中斷復原
       href: hpc-region-recovery.md
+    - name: 使用由客戶管理的加密金鑰
+      href: customer-keys.md
     - name: 使用 Azure NetApp Files 搭配 Azure HPC Cache
       href: hpc-cache-netapp.md

@@ -1,5 +1,7 @@
 - name: 切割平面
   href: cut-planes.md
+- name: 偵錯轉譯
+  href: debug-rendering.md
 - name: 階層式狀態覆寫
   href: override-hierarchical-state.md
 - name: 延遲階段重新投影

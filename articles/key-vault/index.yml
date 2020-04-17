@@ -1,96 +1,102 @@
-### YamlMime:Landing
-title: Azure Key Vault 文件
+### YamlMime:Hub
+title: Azure 金鑰保存庫
 summary: 了解如何使用金鑰保存庫來建立及維護金鑰，以便存取和加密您的雲端資源、應用程式和解決方案。 教學課程、API 參考等等。
+brand: azure
 metadata:
   title: Azure Key Vault 文件
   description: 了解如何使用金鑰保存庫來建立及維護金鑰，以便存取和加密您的雲端資源、應用程式和解決方案。 教學課程、API 參考等等。
   services: key-vault
   ms.service: key-vault
-  ms.topic: landing-page
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
   author: msmbaldwin
   ms.author: mbaldwin
-  manager: rkarlin
-  ms.date: 09/19/2019
-  ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.date: 04/07/2020
+  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "71299779"
-landingContent:
-- title: 關於 Azure Key Vault
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81536262"
+highlightedContent:
+  items:
+  - title: Azure Key Vault 簡介
+    itemType: overview
+    url: ./general/overview.md
+  - title: 基本概念
+    itemType: overview
+    url: ./general/basic-concepts.md
+  - title: 虛刪除
+    itemType: overview
+    url: ./general/overview-soft-delete.md
+  - title: 記錄
+    itemType: overview
+    url: ./general/logging.md
+  - title: 節流
+    itemType: overview
+    url: ./general/overview-throttling.md
+  - title: 安全性建議
+    itemType: overview
+    url: ./general/security-recommendations.md
+conceptualContent:
+  items:
+  - title: 憑證
     links:
-    - text: 何謂 Azure Key Vault？
-      url: key-vault-overview.md
-  - linkListType: concept
+    - url: ./certificates/about-certificates.md
+      itemType: overview
+      text: 關於憑證
+    - url: ./certificates/quick-create-portal.md
+      itemType: quickstart
+      text: 使用 Azure 入口網站從 Azure Key Vault 設定及擷取憑證
+    - url: ./certificates/certificate-scenarios.md
+      itemType: overview
+      text: 開始使用 Key Vault 憑證
+    - url: ./certificates/create-certificate-scenarios.md
+      itemType: overview
+      text: 監視和管理憑證建立
+    footerLink:
+      url: ./certificates/index.yml
+      text: 查看更多
+  - title: 索引鍵
     links:
-    - text: 基本概念
-      url: basic-concepts.md
-    - text: 虛刪除
-      url: key-vault-ovw-soft-delete.md
-    - text: 節流
-      url: key-vault-ovw-throttling.md
-- title: 開始使用
-  linkLists:
-  - linkListType: quickstart
+    - url: ./keys/about-keys.md
+      itemType: overview
+      text: 關於金鑰
+    - url: ./keys/quick-create-portal.md
+      itemType: quickstart
+      text: 使用 Azure 入口網站從 Azure Key Vault 設定及擷取金鑰
+    - url: ./keys/hsm-protected-keys.md
+      itemType: tutorial
+      text: 將受 HSM 保護的金鑰匯入 Key Vault
+    - url: ./keys/hsm-protected-keys-vendor-agnostic-byok.md
+      itemType: overview
+      text: 匯入不限廠商且受 HSM 保護的金鑰
+    footerLink:
+      url: ./keys/index.yml
+      text: 查看更多
+  - title: 密碼
     links:
-    - text: Azure CLI
-      url: quick-create-cli.md
-    - text: Azure PowerShell
-      url: quick-create-powershell.md
-    - text: 入口網站
-      url: quick-create-portal.md
-    - text: .NET
-      url: quick-create-net.md
-    - text: Node.js
-      url: quick-create-node.md
-- title: 教學課程
-  linkLists:
-  - linkListType: tutorial
+    - url: ./secrets/about-secrets.md
+      itemType: overview
+      text: 關於祕密
+    - url: ./secrets/quick-create-portal.md
+      itemType: quickstart
+      text: 使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密
+    - url: ./secrets/tutorial-rotation.md
+      itemType: tutorial
+      text: 為單一使用者資源輪換秘密
+    footerLink:
+      url: ./secrets/index.yml
+      text: 查看更多
+  - title: 管理儲存體金鑰
     links:
-    - text: 從 Web 應用程式使用 Key Vault
-      url: tutorial-net-create-vault-azure-web-app.md
-    - text: 搭配使用 Key Vault 與 Azure Linux 虛擬機器
-      url: tutorial-net-linux-virtual-machine.md
-    - text: 搭配使用 Key Vault 與 Azure Windows 虛擬機器
-      url: tutorial-net-windows-virtual-machine.md
-    - text: 搭配使用 Key Vault 與 Python - Linux
-      url: tutorial-python-linux-virtual-machine.md
-    - text: 搭配使用 Key Vault 與 Python - Windows
-      url: tutorial-python-windows-virtual-machine.md
-- title: Key Vault 和儲存體金鑰
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 Azure CLI 管理儲存體金鑰
-      url: key-vault-ovw-storage-keys.md
-    - text: 使用 Azure PowerShell 管理儲存體金鑰
-      url: key-vault-overview-storage-keys-powershell.md
-    - text: 在程式碼中擷取 SAS 權杖
-      url: storage-keys-sas-tokens-code.md
-- title: Key Vault 應用程式整合
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 開發人員的指南
-      url: key-vault-developers-guide.md
-    - text: 使用受控識別存取 Key Vault
-      url: managed-identity.md
-  - linkListType: tutorial
-    links:
-    - text: 在 .NET Azure Web 應用程式中使用 Key Vault
-      url: tutorial-net-create-vault-azure-web-app.md
-  - linkListType: reference
-    links:
-    - text: 驗證、要求和回應
-      url: authentication-requests-and-responses.md
-    - text: Key Vault REST API 參考
-      url: /rest/api/keyvault/
-- title: Microsoft Learn
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 使用 Azure Key Vault 在您的伺服器應用程式中管理祕密
-      url: /learn/modules/manage-secrets-with-azure-key-vault/
+    - url: ./secrets/overview-storage-keys.md
+      itemType: overview
+      text: 儲存體金鑰 - CLI
+    - url: ./secrets/overview-storage-keys-powershell.md
+      itemType: overview
+      text: 儲存體金鑰 - PowerShell
+    - url: ./secrets/storage-keys-sas-tokens-code.md
+      itemType: overview
+      text: 在程式碼中擷取 SAS 權杖

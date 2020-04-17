@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: 定型異常偵測模型
       href: train-anomaly-detection-model.md
+- name: Web 服務
+  items:
+    - name: Web 服務輸入/輸出
+      href: web-service-input-output.md
 - name: 模組錯誤與疑難排解
   href: designer-error-codes.md

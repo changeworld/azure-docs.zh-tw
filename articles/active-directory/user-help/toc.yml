@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: 重設密碼
       href: active-directory-passwords-update-your-own-password.md
+- name: 我的員工入口網站說明
+  items:
+    - name: 我的員工使用者管理
+      href: my-staff-team-manager.md
 - name: Microsoft Authenticator 應用程式說明
   items:
     - name: 什麼是 Microsoft Authenticator 應用程式？

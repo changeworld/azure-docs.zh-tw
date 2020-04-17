@@ -199,6 +199,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
     - name: Visual Studio Code
       items:
+        - name: 使用 IntelliSense 完成程式碼
+          href: vs-code-intellisense.md
         - name: 使用範例資料在本機測試
           href: visual-studio-code-local-run.md
         - name: 使用即時資料在本機測試

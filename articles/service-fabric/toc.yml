@@ -133,6 +133,8 @@
           href: service-fabric-cluster-security.md
         - name: 內建安全性控制
           href: service-fabric-security-controls.md
+        - name: Service Fabric 中的憑證型驗證
+          href: cluster-security-certificates.md
     - name: 詞彙
       href: service-fabric-technical-overview.md
     - name: 建置應用程式
@@ -145,6 +147,8 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (預覽)
               href: service-fabric-docker-compose.md
+            - name: 探查
+              href: probes-codepackage.md
         - name: Reliable Services
           items:
             - name: Reliable Services 概觀
@@ -264,6 +268,10 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: 磁碟分割隨選備份
               href: service-fabric-backup-restore-service-ondemand-backup.md
+        - name: 初始設定式 Codepackage
+          href: initializer-codepackages.md
+        - name: RunToCompletion
+          href: run-to-completion.md
     - name: 叢集
       items:
         - name: 叢集概觀
@@ -316,6 +324,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: 平衡叢集
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: 子叢集
+              href: cluster-resource-manager-subclustering.md
             - name: 節流
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服務動作
@@ -354,7 +364,7 @@
       href: service-fabric-api-management-overview.md
     - name: 應用程式資源模型
       href: service-fabric-concept-resource-model.md
-    - name: 受控識別 (預覽)
+    - name: 受控識別
       href: concepts-managed-identity.md
     - name: 設定容器存放庫認證
       href: configure-container-repository-credentials.md
@@ -751,7 +761,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: 針對本機叢集進行疑難排解
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: 使用 Service Fabric 應用程式的受控識別 (預覽)
+    - name: 使用 Service Fabric 應用程式的受控識別
       items:
         - name: 叢集設定
           items:

@@ -22,22 +22,16 @@
   items:
     - name: 驗證方法
       href: concept-authentication-methods.md
-    - name: 無密碼驗證
-      href: concept-authentication-passwordless.md
-    - name: 安全性資訊註冊
-      href: concept-registration-mfa-sspr-combined.md
-    - name: 密碼重設
+    - name: 自助式密碼重設
       items:
         - name: 密碼重設如何運作
           href: concept-sspr-howitworks.md
-        - name: 密碼重設選項
-          href: concept-sspr-customization.md
-        - name: 密碼重設原則
-          href: concept-sspr-policy.md
-        - name: 我需要哪些授權？
-          href: concept-sspr-licensing.md
         - name: 內部部署整合
           href: concept-sspr-writeback.md
+        - name: 原則
+          href: concept-sspr-policy.md
+        - name: 授權
+          href: concept-sspr-licensing.md
     - name: Multi-Factor Authentication
       items:
         - name: MFA 的運作方式
@@ -50,12 +44,16 @@
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: 常見問題集
           href: multi-factor-authentication-faq.md
-    - name: Azure AD 密碼保護
+    - name: 無密碼驗證
+      href: concept-authentication-passwordless.md
+    - name: 密碼保護
       items:
         - name: 避免在雲端使用弱式密碼
           href: concept-password-ban-bad.md
         - name: 避免在內部部署時使用弱式密碼
           href: concept-password-ban-bad-on-premises.md
+    - name: 安全性資訊註冊
+      href: concept-registration-mfa-sspr-combined.md
     - name: 復原性存取控制
       href: concept-resilient-controls.md
 - name: 操作指南
@@ -64,6 +62,8 @@
       items:
         - name: 部署指南
           href: howto-sspr-deployment.md
+        - name: 使用者自訂選項
+          href: howto-sspr-customization.md
         - name: 預先登錄驗證資料
           href: howto-sspr-authenticationdata.md
         - name: 適用於 Windows 用戶端的 SSPR
@@ -100,28 +100,6 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: 安全性資訊註冊
-      items:
-        - name: 啟用合併的註冊
-          href: howto-registration-mfa-sspr-combined.md
-        - name: 針對合併的註冊進行疑難排解
-          href: howto-registration-mfa-sspr-combined-troubleshoot.md
-    - name: Azure AD 密碼保護
-      items:
-        - name: 規劃和部署內部部署
-          href: howto-password-ban-bad-on-premises-deploy.md
-        - name: 啟用及設定內部部署
-          href: howto-password-ban-bad-on-premises-operations.md
-        - name: 監視內部部署
-          href: howto-password-ban-bad-on-premises-monitor.md
-        - name: 針對內部部署進行疑難排解
-          href: howto-password-ban-bad-on-premises-troubleshoot.md
-        - name: 內部部署常見問題集
-          href: howto-password-ban-bad-on-premises-faq.md
-        - name: 內部部署代理程式版本記錄
-          href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Azure AD 智慧鎖定
-      href: howto-password-smart-lockout.md
     - name: 無密碼
       items:
         - name: 無密碼部署
@@ -138,16 +116,38 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello 企業版
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: 安全性資訊註冊
+      items:
+        - name: 啟用合併的註冊
+          href: howto-registration-mfa-sspr-combined.md
+        - name: 針對合併的註冊進行疑難排解
+          href: howto-registration-mfa-sspr-combined-troubleshoot.md
+    - name: 內部部署密碼保護
+      items:
+        - name: 規劃和部署
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: 啟用及設定
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: 監視
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: 疑難排解
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: 常見問題集
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: 代理程式版本的記錄
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: 使用 SMS 式驗證 (預覽)
       href: howto-authentication-sms-signin.md
+    - name: Azure AD 智慧鎖定
+      href: howto-password-smart-lockout.md
     - name: 憑證式驗證
       items:
         - name: 開始使用憑證驗證
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: Android 裝置上的 CBA
+            - name: 在 Android 裝置上使用
               href: active-directory-certificate-based-authentication-android.md
-            - name: iOS 裝置上的 CBA
+            - name: 在 iOS 裝置上使用
               href: active-directory-certificate-based-authentication-ios.md
     - name: 報告
       items:
