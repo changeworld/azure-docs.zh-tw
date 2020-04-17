@@ -1,5 +1,5 @@
 ---
-title: 加密 Azure 自動化中的安全資產
+title: 將 Azure 自動化中的安全資產加密
 description: Azure 自動化使用多級加密保護安全資產。 默認情況下,加密使用Microsoft管理的金鑰完成。 客戶可以將其自動化帳戶配置為使用客戶管理的密鑰進行加密。 本文介紹了兩種加密模式的詳細資訊以及如何在兩種模式之間切換。
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547763"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457479"
 ---
-# <a name="encrypt-secure-assets-in-azure-automation"></a>加密 Azure 自動化中的安全資產
+# <a name="encrypt-secure-assets-in-azure-automation"></a>將 Azure 自動化中的安全資產加密
 
 Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產在 Azure 自動化中使用多級別的加密進行保護。 基於加密的頂級金鑰,有兩種加密模型:
 -    使用 Microsoft 管理的金鑰
@@ -32,7 +32,7 @@ Azure 自動化中的安全資產包括認證、憑證、連接和加密的變�
 
 您可以使用自己的密鑰管理自動化帳戶的安全資產加密。 在自動化帳戶級別指定客戶管理的密鑰時,該密鑰用於保護和控制對自動化帳戶帳戶帳戶帳戶加密金鑰的訪問。 這反過來又用於加密和解密所有安全資產。 客戶管理的密鑰提供了創建、旋轉、禁用和撤銷存取控制的更大靈活性。 您還可以審核用於保護安全資產的加密密鑰。
 
-使用 Azure 金鑰保管庫儲存客戶管理的密鑰。 您可以建立自己的密鑰並將其存儲在密鑰保管庫中,也可以使用 Azure 金鑰保管庫 API 產生金鑰。  有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../key-vault/key-vault-overview.md)
+使用 Azure 金鑰保管庫儲存客戶管理的密鑰。 您可以建立自己的密鑰並將其存儲在密鑰保管庫中,也可以使用 Azure 金鑰保管庫 API 產生金鑰。  有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>為自動化帳戶啟用客戶管理的金鑰
 
@@ -192,7 +192,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 
 ## <a name="next-steps"></a>後續步驟
 
-- [何謂 Azure Key Vault？](../key-vault/key-vault-overview.md)
+- [何謂 Azure Key Vault？](../key-vault/general/overview.md)
 
 - [Azure 自動化中的憑證資產](shared-resources/certificates.md)
 

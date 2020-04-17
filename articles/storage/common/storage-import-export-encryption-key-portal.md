@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456493"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在 Azure 金鑰保存庫中使用客戶管理的金鑰以匯入/匯出服務
 
 Azure 匯入/匯出保護用於透過加密金鑰鎖定驅動器的 BitLocker 金鑰。 默認情況下,BitLocker 金鑰使用 Microsoft 管理的密鑰進行加密。 為了對加密金鑰進行其他控制,您還可以提供客戶管理的密鑰。
 
-客戶管理的金鑰必須建立並存儲在 Azure 密鑰保管庫中。 有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../../key-vault/key-vault-overview.md)
+客戶管理的金鑰必須建立並存儲在 Azure 密鑰保管庫中。 有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../../key-vault/general/overview.md)
 
 本文演示如何在[Azure 門戶](https://portal.azure.com/)中使用客戶管理的密鑰以及導入/匯出服務。
 
@@ -33,12 +33,12 @@ Azure 匯入/匯出保護用於透過加密金鑰鎖定驅動器的 BitLocker �
     - [建立檔案建立到工作](storage-import-export-data-to-files.md)。
     - [以 Blob 建立匯出工作](storage-import-export-data-from-blobs.md)
 
-2. 您有一個現有的 Azure 密鑰保管庫,其中有一個密鑰,可用於保護 BitLocker 密鑰。 若要瞭解如何使用 Azure 門戶建立金鑰保管庫,請參閱[快速入門:使用 Azure 門戶從 Azure 金鑰保管庫設定和檢索機密](../../key-vault/quick-create-portal.md)。
+2. 您有一個現有的 Azure 密鑰保管庫,其中有一個密鑰,可用於保護 BitLocker 密鑰。 若要瞭解如何使用 Azure 門戶建立金鑰保管庫,請參閱[快速入門:使用 Azure 門戶從 Azure 金鑰保管庫設定和檢索機密](../../key-vault/secrets/quick-create-portal.md)。
 
     - **軟刪除**和 **「不清除**」設定在現有的密鑰保管庫上。 默認情況下,這些屬性未啟用。 要啟用這些屬性,請參閱以下文章中標題為 **「啟用軟刪除**與**開啟清除保護**」的部分:
 
-        - [如何使用軟刪除與PowerShell。](../../key-vault/key-vault-soft-delete-powershell.md)
-        - [如何使用軟刪除與CLI。](../../key-vault/key-vault-soft-delete-cli.md)
+        - [如何使用軟刪除與PowerShell。](../../key-vault/general/soft-delete-powershell.md)
+        - [如何使用軟刪除與CLI。](../../key-vault/general/soft-delete-cli.md)
     - 現有金鑰保管庫應具有 2048 大小或以上的 RSA 密鑰。 關於金鑰的詳細資訊,請參考[「關於 Azure 金鑰保管庫金鑰、機密和憑證」](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)的**金鑰保管庫金鑰**。
     - 密鑰保管庫必須與數據的存儲帳戶位於同一區域。  
     - 如果沒有現有的 Azure 密鑰保管庫,也可以按照以下部分所述內聯創建它。
@@ -64,7 +64,7 @@ Azure 匯入/匯出保護用於透過加密金鑰鎖定驅動器的 BitLocker �
 
     ![選擇或建立 Azure 金鑰保存庫](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. 您還可以選擇 **「新建**」以創建新的密鑰保管庫。 在 **「創建金鑰保管庫」邊欄選項卡**中,輸入資源群組和密鑰保管庫名稱。 接受所有其他預設值。 選擇 **「檢視 」 建立**。
+6. 您還可以選擇 **「新建**」以創建新的密鑰保管庫。 在 **「創建金鑰保管庫」邊欄選項卡**中,輸入資源群組和密鑰保管庫名稱。 接受所有其他預設值。 選取 [檢閱 + 建立]  。
 
     ![建立新的 Azure 金鑰保存庫](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 

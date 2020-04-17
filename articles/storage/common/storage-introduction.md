@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1cc047ee60cf8287f32a42b878371c5fc9680b7a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985740"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456340"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存服務簡介
 
@@ -21,7 +21,7 @@ Azure 儲存平臺是Microsoft用於現代資料存儲方案的雲端儲存解�
 
 - **持久與高可用性。** 備援功能可在發生暫時性硬體失敗時，確保您的資料安全無虞。 您也可以選擇在資料中心或地理區域間複寫資料，以便在發生地方性災難或天然災害時獲得額外保護。 以此方式複寫資料，可在發生未預期的中斷事件時保持高可用性。
 - **安全。** 寫入 Azure 儲存帳戶的所有數據都由服務加密。 Azure 儲存體在存取您資料的人員控管上，提供更細微的控制。
-- **可調整。** Azure 儲存體設計為可大幅調整，以符合現今應用程式的資料儲存和效能需求。
+- **可伸縮。** Azure 儲存體設計為可大幅調整，以符合現今應用程式的資料儲存和效能需求。
 - **受控。** Azure 可為您處理硬體維護、更新和關鍵問題。
 - **可存取。** 您可以從世界各地透過 HTTP 或 HTTPS 存取 Azure 儲存體中的資料。 Microsoft 以多種語言為 Azure 儲存提供用戶端庫,包括 .NET、Java、Node.js、Python、PHP、Ruby、Go 等,以及成熟的 REST API。 Azure 儲存體支援在 Azure PowerShell 或 Azure CLI 中使用指令碼。 而且在使用資料方面，Azure 入口網站和 Azure 儲存體總管提供簡易的視覺式解決方案。  
 
@@ -131,7 +131,7 @@ Azure 儲存用戶端庫提供在通過網路發送數據並解密回應之前�
 
 ## <a name="redundancy"></a>備援性
 
-為確保數據持久,Azure 存儲存儲數據的多個副本。 當您設定儲存體帳戶時，您可選取備援選項。 如需詳細資訊，請參閱 [Azure 儲存體備援](/storage-redundancy?toc=/azure/storage/blobs/toc.json) \(部分機器翻譯\)。
+為確保數據持久,Azure 存儲存儲數據的多個副本。 當您設定儲存體帳戶時，您可選取備援選項。 如需詳細資訊，請參閱 [Azure 儲存體備援](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json) \(部分機器翻譯\)。
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>將資料傳輸到 Azure 儲存中
 

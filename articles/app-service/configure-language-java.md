@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475205"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453552"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>為 Azure 應用服務設定 Windows Java 應用
 
@@ -187,7 +187,7 @@ public int getServerPort()
 
 ### <a name="use-keyvault-references"></a>使用金鑰庫參考
 
-[Azure KeyVault](../key-vault/key-vault-overview.md)提供具有存取策略和審核歷史記錄的集中式密鑰管理。 您可以在 KeyVault 中儲存機密(如密碼或連接字串),並透過環境變數在應用程式中訪問這些機密。
+[Azure KeyVault](../key-vault/general/overview.md)提供具有存取策略和審核歷史記錄的集中式密鑰管理。 您可以在 KeyVault 中儲存機密(如密碼或連接字串),並透過環境變數在應用程式中訪問這些機密。
 
 首先,按照有關[授予應用對金鑰保管庫存取權限](app-service-key-vault-references.md#granting-your-app-access-to-key-vault)的說明,並在[應用程式設定中對您的機密進行 KeyVault 參考](app-service-key-vault-references.md#reference-syntax)。 通過列印環境變數以遠端訪問應用服務終端,可以驗證引用是否已解析為機密。
 

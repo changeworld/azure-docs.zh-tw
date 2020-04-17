@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 68341de82ae15df91477947664c500caaa96a09a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754308"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452718"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 託管磁碟的伺服器端加密
 
@@ -34,7 +34,7 @@ ms.locfileid: "80754308"
 
 ## <a name="customer-managed-keys"></a>客戶管理的金鑰
 
-您可以選擇使用自己的金鑰在每個託管磁碟級別管理加密。 使用客戶託管金鑰的託管磁碟的伺服器端加密提供了 Azure 密鑰保管庫的整合體驗。 您可以將[RSA 金鑰](../../key-vault/key-vault-hsm-protected-keys.md)匯入金鑰保管庫,或在 Azure 密鑰保管庫生成新的 RSA 金鑰。 
+您可以選擇使用自己的金鑰在每個託管磁碟級別管理加密。 使用客戶託管金鑰的託管磁碟的伺服器端加密提供了 Azure 密鑰保管庫的整合體驗。 您可以將[RSA 金鑰](../../key-vault/keys/hsm-protected-keys.md)匯入金鑰保管庫,或在 Azure 密鑰保管庫生成新的 RSA 金鑰。 
 
 Azure 託管磁碟使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式處理加密和解密。 它使用基於[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的資料加密金鑰 (DEK) 加密數據,而密鑰又使用金鑰進行保護。 儲存服務生成資料加密金鑰,並使用 RSA 加密使用客戶管理的密鑰對其進行加密。 信封加密允許您根據合規性策略定期輪換(更改)密鑰,而不會影響 VM。 旋轉金鑰時,儲存服務使用新的客戶管理密鑰重新加密數據加密密鑰。 
 
@@ -238,7 +238,7 @@ az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] 
 ## <a name="next-steps"></a>後續步驟
 
 - [瀏覽 Azure 資源管理員樣本,以便使用客戶管理的金鑰建立加密磁碟](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [何謂 Azure Key Vault？](../../key-vault/key-vault-overview.md)
+- [何謂 Azure Key Vault？](../../key-vault/general/overview.md)
 - [使用啟用客戶管理的金鑰磁碟複製電腦](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [使用 PowerShell 設定 VMware VM 至 Azure 的災害復原](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [針對 Hyper-V VM，使用 PowerShell 和 Azure Resource Manager 設定至 Azure 的災害復原](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

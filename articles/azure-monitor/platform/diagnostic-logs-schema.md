@@ -4,12 +4,12 @@ description: 瞭解 Azure 資源日誌的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380512"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457241"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 資源紀錄受支援的服務、架構和類別
 
@@ -66,7 +66,7 @@ ms.locfileid: "81380512"
 | ExpressRoute | 無法使用結構描述。 |
 | Azure 防火牆 | 無法使用結構描述。 |
 | IoT 中樞 | [IoT 中樞作業](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure 金鑰保管庫紀錄記錄](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Azure 金鑰保管庫紀錄記錄](../../key-vault/general/logging.md) |
 | Kubernetes 服務 |[Azure 庫伯內斯日誌記錄](../../aks/view-master-logs.md#log-event-schema) |
 | 負載平衡器 |[Azure 負載平衡器的記錄檔分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B 自訂追蹤結構描述](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

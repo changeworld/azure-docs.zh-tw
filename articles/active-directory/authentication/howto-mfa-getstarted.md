@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667351"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451120"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>規劃 Azure 多重身份驗證部署
 
@@ -144,7 +144,7 @@ Azure 活動目錄標識保護檢測到的某些風險檢測是即時進行的,�
 
 ## <a name="plan-registration-policy"></a>計劃註冊政策
 
-管理員必須確定使用者如何註冊其方法。 組織應啟用 Azure MFA 與自助服務密碼重置 (SSPR)[的新組合註冊體驗](howto-registration-mfa-sspr-combined.md)。 SSPR 允許使用者使用與用於多重身份驗證的相同方法以安全方式重置密碼。 我們建議此組合註冊(當前在公共預覽版中),因為它對用戶來說是一種很好的體驗,能夠為這兩種服務註冊一次。 為 SSPR 和 Azure MFA 啟用相同的方法將允許註冊使用者使用這兩種功能。
+管理員必須確定使用者如何註冊其方法。 組織應啟用 Azure MFA 與自助服務密碼重置 (SSPR)[的新組合註冊體驗](howto-registration-mfa-sspr-combined.md)。 SSPR 允許使用者使用與用於多重身份驗證的相同方法以安全方式重置密碼。 我們建議此合併註冊,因為它對用戶來說是一種出色的體驗,能夠為這兩種服務註冊一次。 為 SSPR 和 Azure MFA 啟用相同的方法將允許註冊使用者使用這兩種功能。
 
 ### <a name="registration-with-identity-protection"></a>身份保護註冊
 
@@ -235,16 +235,16 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 1. 在 [使用者和群組]**** 底下：
    * 在 [包含]**** 索引標籤上，選取 [所有使用者]**** 選項按鈕
    * 在 **"排除**"選項卡上,選中 **"使用者和組**"複選框,然後選擇緊急存取帳戶。
-   * 按一下 [完成]****。
+   * 按一下 [完成]  。
 1. 在 [雲端應用程式]**** 下方，選取 [所有雲端應用程式]**** 選項按鈕。
    * 選擇性：在 [排除]**** 索引標籤上，選擇組織不要要求使用 MFA 的雲端應用程式。
-   * 按一下 [完成]****。
+   * 按一下 [完成]  。
 1. 在 [條件]**** 區段底下：
    * 選擇性：如果您已啟用 Azure Identity Protection，您可以選擇要在原則中評估登入風險。
    * 選擇性：如果您已設定信任的位置或具名位置，您可以指定要在原則中包含或排除這些位置。
 1. 在 **「授予**」下,請確保選擇**了 「授予訪問**」單選按鈕。
     * 核取 [需要多重要素驗證]**** 的方塊。
-    * 按下 **「選擇**」。
+    * 按一下 [選取]。 
 1. 略過 [工作階段]**** 區段。
 1. 將**啟用策略**切換設定為 **「打開**」 。
 1. 按一下頁面底部的 [新增]  。

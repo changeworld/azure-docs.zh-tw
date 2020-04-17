@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410870"
+ms.locfileid: "81457411"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>使用 ID 代理(預覽)進行認證管理
 
@@ -56,7 +56,7 @@ HDInsight [IntelliJ 外掛程式](https://docs.microsoft.com/azure/hdinsight/spa
 
 SSH 身份驗證要求哈希在 Azure AD DS 中可用。 如果只想將 SSH 用於管理方案,則可以創建一個僅雲帳戶,並將其用於群集的 SSH。 其他使用者仍可以使用 Ambari 或 HDInsight 工具(如 IntelliJ 外掛程式),而無需在 Azure AD DS 中提供密碼哈希。
 
-## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>使用 OAuth 連線到具有 ID 代理設定的 HDInsight 閘道的 Clinets
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>使用 OAuth 連線到 HDInsight 閘道的客戶端設定 ID 代理
 
 在 ID 代理設定中,可以更新連接到閘道的自訂應用和用戶端,以便首先獲取所需的 OAuth 權杖。 您可以從[這個文件](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)中的步驟取得具有以下資訊的權杖:
 

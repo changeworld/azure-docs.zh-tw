@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521282"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454657"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理預存帳戶存取金鑰
 
@@ -31,8 +31,8 @@ Microsoft 建議使用 Azure 密鑰保管庫來管理訪問密鑰,並定期輪�
 
 Microsoft 建議使用 Azure 密鑰保管庫來管理和旋轉訪問密鑰。 應用程式可以在密鑰保管庫中安全地訪問密鑰,以便避免將密鑰與應用程式代碼一起存儲。 有關將金鑰保管庫用於金鑰管理的詳細資訊,請參閱以下文章:
 
-- [使用 Azure 金鑰保存庫和 PowerShell 管理儲存帳戶金鑰](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [使用 Azure 金鑰保存管理和 Azure CLI 管理儲存帳戶金鑰](../../key-vault/key-vault-ovw-storage-keys.md)
+- [使用 Azure 金鑰保存庫和 PowerShell 管理儲存帳戶金鑰](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [使用 Azure 金鑰保存管理和 Azure CLI 管理儲存帳戶金鑰](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>手動旋轉存取鍵
 

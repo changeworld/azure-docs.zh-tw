@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f2584a8d4e68b7c16b3acdc29f64f0a19d83d735
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405618"
+ms.locfileid: "81457666"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合式 Runbook 背景工作角色
 
@@ -76,7 +76,7 @@ Linux 混合式 Runbook 背景工作角色的最低需求如下：
 
 1. 使用下列其中一個方法，在 Azure 中啟用 [自動化混合式背景工作角色] 解決方案：
 
-   * 使用"[將 Azure 監視器日誌解決方案添加到工作區](../log-analytics/log-analytics-add-solutions.md)「中的過程,將自動化混合輔助角色解決方案添加到訂閱中。
+   * 使用"[將 Azure 監視器日誌解決方案添加到工作區](../log-analytics/log-analytics-add-solutions.md)「的過程,將自動化混合輔助角色解決方案添加到訂閱中。
    * 執行下列 Cmdlet：
 
         ```azurepowershell-interactive

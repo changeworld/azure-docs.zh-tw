@@ -10,18 +10,18 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478231"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456476"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>使用 Azure 金鑰保存式庫組態客戶管理的金鑰
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文演示如何使用[Azure 門戶](https://portal.azure.com/)使用客戶管理的密鑰配置 Azure 密鑰保管庫。 若要瞭解如何使用 Azure 門戶建立金鑰保管庫,請參閱[快速入門:使用 Azure 門戶從 Azure 金鑰保管庫設定和檢索機密](../../key-vault/quick-create-portal.md)。
+本文演示如何使用[Azure 門戶](https://portal.azure.com/)使用客戶管理的密鑰配置 Azure 密鑰保管庫。 若要瞭解如何使用 Azure 門戶建立金鑰保管庫,請參閱[快速入門:使用 Azure 門戶從 Azure 金鑰保管庫設定和檢索機密](../../key-vault/secrets/quick-create-portal.md)。
 
 ## <a name="configure-azure-key-vault"></a>設定 Azure Key Vault
 
@@ -29,8 +29,8 @@ ms.locfileid: "80478231"
 
 要瞭解如何在現有金鑰保管庫中啟用這些屬性,請參閱以下文章中標題為 **「啟用軟刪除**和**啟用清除保護**」的部分:
 
-- [如何使用軟刪除與PowerShell。](../../key-vault/key-vault-soft-delete-powershell.md)
-- [如何使用軟刪除與CLI。](../../key-vault/key-vault-soft-delete-cli.md)
+- [如何使用軟刪除與PowerShell。](../../key-vault/general/soft-delete-powershell.md)
+- [如何使用軟刪除與CLI。](../../key-vault/general/soft-delete-cli.md)
 
 Azure 儲存加密僅支援 2048 位 RSA 和 RSA-HSM 密鑰。 關於金鑰的詳細資訊,請參考[「關於 Azure 金鑰保管庫金鑰、機密和憑證」](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)的**金鑰保管庫金鑰**。
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653945"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450916"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>開啟無密碼安全金鑰登入(預覽)
 
@@ -48,7 +48,7 @@ ms.locfileid: "80653945"
 
 ### <a name="enable-the-combined-registration-experience"></a>開啟組合註冊體驗
 
-無密碼身份驗證方法的註冊功能依賴於組合的註冊預覽。 按照文章"[啟用組合安全資訊註冊(預覽)中的](howto-registration-mfa-sspr-combined.md)步驟啟用合併註冊預覽。
+無密碼身份驗證方法的註冊功能依賴於組合註冊功能。 按照文章中的步驟[啟用組合安全資訊註冊(預覽),](howto-registration-mfa-sspr-combined.md)以啟用合併註冊。
 
 ### <a name="enable-fido2-security-key-method"></a>開啟 FIDO2 安全金鑰方法
 

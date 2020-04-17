@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: a95c4d654650276c815c5b23fb2c6f8a6d06bc2e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 3af7515995a305f41fb9b9f85deb9107de51c622
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383458"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453484"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>使用 Azure HDInsight 解決叢集建立失敗
 
@@ -29,7 +29,7 @@ ms.locfileid: "81383458"
 
 ## <a name="permissions-issues"></a>權限問題
 
-如果使用 Azure 資料湖```AmbariClusterCreationFailedErrorCode```儲存 Gen2,並且```Internal server error occurred while processing the request. Please retry the request or contact support.```收到 錯誤, 請打開 Azure 門戶,轉到儲存帳戶,並在存取控制 (IAM) 下,確保**儲存 Blob 資料參與者**或儲存 Blob**資料擁有者**角色已分配了對**訂閱的使用者分配的託管標識**的訪問許可權。 如需詳細指示，請參閱[在 Data Lake Storage Gen2 帳戶上設定受控識別的權限](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
+如果使用 Azure 資料湖儲存 Gen2,並且`AmbariClusterCreationFailedErrorCode`收到錯誤:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::::"", 請打開 Azure 門戶,轉到儲存帳戶,並在存取控制 (IAM) 下,確保儲存 Blob**資料參與者**或**儲存 Blob 資料擁有者**角色已分配了對**訂閱使用者分配的託管標識**的訪問許可權。 如需詳細指示，請參閱[在 Data Lake Storage Gen2 帳戶上設定受控識別的權限](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)。
 
 如果使用 Azure 資料儲存第 1 代,請參閱[此處](../hdinsight-hadoop-use-data-lake-store.md)的設置和配置說明。 HBase 群集不支援資料儲存庫 Gen1,HDInsight 版本 4.0 不支援數據存儲存儲 Gen1。
 

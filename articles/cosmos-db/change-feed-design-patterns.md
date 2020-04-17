@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986300"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450346"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 的來源設計模式
 
@@ -99,7 +99,7 @@ Azure Cosmos DB 是事件源模式中僅集中追加的持久數據存儲,因為
 
 1. 客戶將專案 A 新增到購物車
 2. 客戶將專案 B 新增到購物車
-3. 客戶新增從購物車中移除專案 A
+3. 客戶從購物車中移除專案 A
 4. 客戶簽出和購物車內容已發貨
 
 為每個客戶維護當前購物車內容的物化視圖。 此應用程式必須確保按這些事件發生的順序處理這些事件。 例如,如果在專案 A 刪除之前處理購物車結帳,則客戶很可能已裝運專案 A,而不是所需的專案 B。為了保證這四個事件按其發生順序進行處理,它們應屬於相同的分區鍵值。 如果選擇**使用者名**(每個客戶都有唯一的使用者名)作為分區鍵,則可以保證這些事件以寫入 Azure Cosmos DB 的相同順序顯示在更改源中。

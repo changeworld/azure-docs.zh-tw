@@ -1,20 +1,20 @@
 ---
-title: 部署託管應用時使用金鑰保存庫
+title: 部署託管應用時使用金鑰保管庫
 description: 說明在部署受控應用程式時如何使用 Azure Key Vault 中的存取祕密
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248433"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458278"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>在部署 Azure 受控應用程式時存取 Key Vault 秘密
 
-當您需要在部署期間，傳送安全值 (例如密碼) 做為參數時，您可以從 [Azure Key Vault](../../key-vault/key-vault-overview.md) 擷取值。 若要在部署受控應用程式時存取 Key Vault，您必須授與**設備資源提供者**服務主體的存取權。 受控應用程式服務會使用這個身分識別來執行作業。 若要在部署期間成功地從 Key Vault 擷取值，服務主體必須要能夠存取 Key Vault。
+當您需要在部署期間，傳送安全值 (例如密碼) 做為參數時，您可以從 [Azure Key Vault](../../key-vault/general/overview.md) 擷取值。 若要在部署受控應用程式時存取 Key Vault，您必須授與**設備資源提供者**服務主體的存取權。 受控應用程式服務會使用這個身分識別來執行作業。 若要在部署期間成功地從 Key Vault 擷取值，服務主體必須要能夠存取 Key Vault。
 
 本文說明如何設定與受控應用程式搭配使用的 Key Vault。
 
@@ -22,7 +22,7 @@ ms.locfileid: "79248433"
 
 1. 在入口網站中，選取您的 Key Vault。
 
-1. 選擇**訪問策略**。   
+1. 選擇**存取原則**。   
 
    ![選取存取原則](./media/key-vault-access/select-access-policies.png)
 
@@ -30,17 +30,17 @@ ms.locfileid: "79248433"
 
    ![顯示進階存取原則](./media/key-vault-access/advanced.png)
 
-1. 選取 [為範本部署啟用對 Azure Resource Manager 的存取]****。 然後，選擇 **"保存**"。
+1. 選取 [為範本部署啟用對 Azure Resource Manager 的存取]****。 然後,選擇 **"保存**"。
 
    ![啟用範本部署](./media/key-vault-access/enable-template.png)
 
 ## <a name="add-service-as-contributor"></a>將服務新增為參與者
 
-1. 選擇**存取控制 （IAM）。**
+1. 選擇**訪問控制 (IAM)。**
 
    ![選取存取控制](./media/key-vault-access/access-control.png)
 
-1. 選擇 **"添加角色指派**"。
+1. 選擇 **「添加角色分配**」。
 
    ![選取 [新增]](./media/key-vault-access/add-access-control.png)
 
@@ -48,11 +48,11 @@ ms.locfileid: "79248433"
 
    ![搜尋提供者](./media/key-vault-access/search-provider.png)
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 ## <a name="reference-key-vault-secret"></a>參考 Key Vault 祕密
 
-要將金鑰保存庫的機密傳遞到託管應用程式中的範本，必須使用[連結或嵌套範本](../templates/linked-templates.md)，並在連結或嵌套範本的參數中引用金鑰保存庫。 請提供 Key Vault 的資源識別碼和秘密的名稱。
+要將密鑰保管庫的機密傳遞到託管應用程式中的範本,必須使用[連結或嵌套範本](../templates/linked-templates.md),並在連結或嵌套範本的參數中引用密鑰保管庫。 請提供 Key Vault 的資源識別碼和秘密的名稱。
 
 ```json
 {

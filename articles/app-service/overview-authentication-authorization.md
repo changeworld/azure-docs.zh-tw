@@ -3,23 +3,20 @@ title: 驗證和授權
 description: 瞭解 Azure 應用服務和 Azure 函數中的內建身份驗證和授權支援,以及它如何説明保護應用免受未經授權的訪問。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/15/2020
 ms.reviewer: mahender
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520686"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457853"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 應用程式服務和 Azure 函數中的身份驗證和授權
 
-> [!NOTE]
-> 此時,Azure 應用服務和 Azure 函數不支援[Azure 活動目錄 v2.0(](../active-directory/develop/v2-overview.md)包括[MSAL)。](../active-directory/develop/msal-overview.md) 請回來查看更新。
->
 > [!NOTE]
 > 此時,ASP.NET核心當前不支援使用身份驗證/授權功能填充當前使用者。
 >
@@ -85,7 +82,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
 | [Microsoft 帳戶](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
-| [谷歌](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
+| [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
 當您利用上述其中一個提供者啟用驗證和授權時，其登入端點即可用來驗證使用者，以及用來驗證提供者的驗證權杖。 您可以輕鬆地為使用者提供任何數目的上述登入選項。 您也可以整合其他識別提供者或[您自己的自訂身分識別解決方案][custom-auth]。

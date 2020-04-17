@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618636"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456766"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>使用 Azure CLI 使用 Azure 金鑰保管庫設定客戶管理的金鑰
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文展示如何使用 Azure CLI 使用客戶管理的密鑰配置 Azure 密鑰保管庫。 若要瞭解如何使用 Azure CLI 建立金鑰保管庫,請參閱[快速入門:使用 Azure CLI 從 Azure 金鑰保存庫設定與檢索機密](../../key-vault/quick-create-cli.md)。
+本文展示如何使用 Azure CLI 使用客戶管理的密鑰配置 Azure 密鑰保管庫。 若要瞭解如何使用 Azure CLI 建立金鑰保管庫,請參閱[快速入門:使用 Azure CLI 從 Azure 金鑰保存庫設定與檢索機密](../../key-vault/secrets/quick-create-cli.md)。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>將識別配置給儲存帳戶
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-要瞭解如何使用 Azure CLI 在現有金鑰保存式庫中啟用 **「軟刪除****」與「不清除」** 請參考標題為 **「啟用軟刪除**與**開啟清除保護**」的部分,瞭解如何[使用 CLI 使用軟刪除](../../key-vault/key-vault-soft-delete-cli.md)。
+要瞭解如何使用 Azure CLI 在現有金鑰保存式庫中啟用 **「軟刪除****」與「不清除」** 請參考標題為 **「啟用軟刪除**與**開啟清除保護**」的部分,瞭解如何[使用 CLI 使用軟刪除](../../key-vault/general/soft-delete-cli.md)。
 
 ## <a name="configure-the-key-vault-access-policy"></a>設定金鑰保存庫存取原則
 

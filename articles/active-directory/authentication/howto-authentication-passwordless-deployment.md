@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582481"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451426"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure 活動目錄中規劃無密碼身份驗證部署
 
@@ -67,7 +67,7 @@ Microsoft 提供了三個無密碼身份驗證選項,涵蓋許多方案。 這�
 
 | 必要條件 | 驗證器應用程式 | FIDO2 安全金鑰 |
 | --- | --- | --- |
-| 開啟[Azure 多重身份驗證與自助服務密碼重置 (SSPR) 的組合註冊](howto-registration-mfa-sspr-combined.md)(預覽功能) | √ | √ |
+| 開啟[Azure 多重身份驗證與自助服務密碼重置 (SSPR) 的組合註冊](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [使用者可以執行 Azure 多重身份驗證](howto-mfa-getstarted.md) | √ | √ |
 | [使用者已註冊 Azure 多重身份驗證與 SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [使用者已將行動裝置註冊到 Azure 的動作目錄](../devices/overview.md) | √ |   |

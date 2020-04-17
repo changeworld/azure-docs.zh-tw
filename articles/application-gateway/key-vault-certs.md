@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312079"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457819"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用金鑰保存憑證的 TLS 終止
 
-[Azure 密鑰保管庫](../key-vault/key-vault-overview.md)是一個平臺管理的秘密存儲,可用於保護機密、密鑰和 TLS/SSL 證書。 Azure 應用程式閘道支援與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。 此支援僅限於應用程式閘道的 v2 SKU。
+[Azure 密鑰保管庫](../key-vault/general/overview.md)是一個平臺管理的秘密存儲,可用於保護機密、密鑰和 TLS/SSL 證書。 Azure 應用程式閘道支援與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。 此支援僅限於應用程式閘道的 v2 SKU。
 
 金鑰保管庫集成為 TLS 端接提供了兩種模型:
 

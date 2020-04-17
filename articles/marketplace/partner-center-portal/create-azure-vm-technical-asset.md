@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eb885d0e965579b1ab2d66395f9f96eab0845bae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266496"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457394"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>建立 Azure 虛擬機器技術資產
 
@@ -129,7 +129,7 @@ Azure 開始預配指定的虛擬機器。 您可以通過選擇左側的 **「�
 要連接到基於 Linux 的 VM,您需要一個安全的 shell 協定 (SSH) 用戶端。 以下步驟使用免費[的 PuTTY](https://www.ssh.com/ssh/putty/) SHH 端子。
 
 1. 移至 [Azure 入口網站](https://ms.portal.azure.com/)。
-2. 搜尋並選擇**虛擬機器**。
+2. 搜尋並選取 [虛擬機器]  。
 3. 選擇要連接到的 VM。
 4. 如果 VM 尚未運行,則啟動它。
 5. 選擇 VM 的名稱以打開其 **「概述」** 頁。
@@ -281,8 +281,8 @@ Windoes 作業系統磁碟是使用 [sysprep 工具](https://docs.microsoft.com/
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在建立以 Azure 為基礎的新 VHD 時遇到困難，請參閱 [VHD 建立期間的常見問題](https://aka.ms/AzureVM_VHDCreationFAQ)。
+如果您在建立以 Azure 為基礎的新 VHD 時遇到困難，請參閱 [VHD 建立期間的常見問題](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)。
 
 否則就是：
 
-* [驗證 VM 映像](https://aks.ms/CertifyVMimage)說明如何測試和提交 VM 映射以進行 Azure 應用商店認證,包括獲取*Azure 認證工具的認證測試工具*的位置以及如何使用它來驗證 VM 映射。
+* [驗證 VM 映像](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri)說明如何測試和提交 VM 映射以進行 Azure 應用商店認證,包括獲取*Azure 認證工具的認證測試工具*的位置以及如何使用它來驗證 VM 映射。

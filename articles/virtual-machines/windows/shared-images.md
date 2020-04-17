@@ -1,11 +1,10 @@
 ---
-title: 使用 Azure PowerShell 創建共用的 VM 映射
+title: 使用 Azure PowerShell 建立分享的 VM 映像
 description: 了解如何使用 Azure PowerShell 在 Azure 中建立共用虛擬機器映像
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfaf545ad2388688666a04076559ff82b7a5d120
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74066244"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458057"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 建立共用映像資源庫 
 
@@ -34,16 +33,16 @@ ms.locfileid: "74066244"
 
 | 資源 | 描述|
 |----------|------------|
-| **託管映射** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **圖像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
+| **託管映像** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
+| **影像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像會在資源庫內定義，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
-對於同時創建的 20 個 VM，我們建議您保留一個副本。 例如，如果您在區域中同時使用同一映射創建 120 個 VM，我們建議您保留至少 6 個映射副本。 有關詳細資訊，請參閱[縮放](/azure/virtual-machines/windows/shared-image-galleries#scaling)。
+對於同時創建的 20 個 VM,我們建議您保留一個副本。 例如,如果您在區域中同時使用同一映射創建 120 個 VM,我們建議您保留至少 6 個映射副本。 有關詳細資訊,請參閱[縮放](/azure/virtual-machines/windows/shared-image-galleries#scaling)。
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文中的範例，您必須具有現有的受控映像。 您可以按照[教程操作：使用 Azure PowerShell 創建 Azure VM 的自訂映射](tutorial-custom-images.md)，以便在需要時創建一個映射。 如果託管映射包含資料磁片，則資料磁片大小不能超過 1 TB。
+若要完成本文中的範例，您必須具有現有的受控映像。 您可以按照[教學操作:使用 Azure PowerShell 建立 Azure VM 的自訂映射](tutorial-custom-images.md),以便在需要時創建一個映射。 如果託管映射包含資料磁碟,則數據磁碟大小不能超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
@@ -52,7 +51,7 @@ ms.locfileid: "74066244"
  
 ## <a name="create-vms-from-an-image"></a>從映像建立 VM
 
-映像版本完成之後，您可以建立一或多個新的 VM。 使用[新 AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 
+映像版本完成之後，您可以建立一或多個新的 VM。 使用[新 AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
 
 本示例*在美國中南部*資料中心*的 myResourceGroup*中創建名為*myVMfromImage*的 VM。
 
@@ -97,7 +96,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>後續步驟
-[Azure 映射產生器（預覽）](image-builder-overview.md)可以説明自動創建映射版本，您甚至可以使用它[從現有映射版本更新和創建新映射版本](image-builder-gallery-update-image-version.md)。 
+[Azure 映像產生器(預覽)](image-builder-overview.md)可以協助自動建立映像版本,您甚至可以使用它[從現有映像版本更新和建立新映像版本](image-builder-gallery-update-image-version.md)。 
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 

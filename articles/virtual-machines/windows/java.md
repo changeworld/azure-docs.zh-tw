@@ -1,11 +1,10 @@
 ---
-title: 使用 JAVA 創建和管理 Azure 虛擬機器
+title: 使用 Java 建立及管理 Azure 虛擬機器
 description: 使用 JAVA 和 Azure Resource Manager 來部署虛擬機器及其所有支援的資源。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86b9943a22e63e4e00b19632477e1ed5496b7d1c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944491"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451749"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>在 Azure 中使用 JAVA 建立並管理 Windows VM
 
@@ -133,7 +132,7 @@ ms.locfileid: "78944491"
     graphURL=https://graph.microsoft.com/
     ```
 
-    將**&lt;訂閱 ID&gt;** 替換為訂閱識別碼，**&lt;將應用程式&gt;ID**替換為 Active Directory 應用程式識別碼，**&lt;使用應用程式金鑰進行身份驗證金鑰&gt;**，將**&lt;租戶 ID&gt;** 替換為租戶識別碼。
+    將**&lt;訂閱&gt;ID**取代為訂閱識別碼,**&lt;將應用程式&gt;ID**取代為 Active Directory 應用程式識別碼,**&lt;&gt;使用應用程式金鑰進行身份驗證金鑰**,將**&lt;租戶 ID&gt;** 替換為租戶識別符。
 
 2. 儲存檔案。
 3. 使用驗證檔案的完整路徑，在殼層中設定名稱為 AZURE_AUTH_LOCATION 的環境變數。
@@ -188,7 +187,7 @@ ms.locfileid: "78944491"
 
 ### <a name="create-the-resource-group"></a>建立資源群組
 
-所有資源都必須包含在[資源組中](../../azure-resource-manager/management/overview.md)。
+所有資源都必須包含在[資源群組中](../../azure-resource-manager/management/overview.md)。
 
 若要指定應用程式的值並建立資源群組，請將以下程式碼新增到 Main 方法中的 try 區塊：
 
@@ -217,7 +216,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>建立公用 IP 位址
 
-需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通信。
+需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通訊。
 
 若要為虛擬機器建立公用 IP 位址，請將以下程式碼新增到 Main 方法中的 try 區塊：
 

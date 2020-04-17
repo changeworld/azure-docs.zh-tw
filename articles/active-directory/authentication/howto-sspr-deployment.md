@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676732"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450984"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure 活動目錄自助密碼重置部署
 
@@ -115,7 +115,7 @@ Azure 活動目錄是每個使用者的許可,這意味著每個使用者都需�
 
 Microsoft 建議組織啟用 SSPR 和多重身份驗證的組合註冊體驗。 啟用此合併註冊體驗時,使用者只需選擇一次註冊資訊,即啟用這兩種功能。
 
-組合註冊體驗不需要組織同時啟用 SSPR 和 Azure 多重身份驗證。 合併註冊為組織提供更好的用戶體驗。 有關詳細資訊,請參閱[組合安全資訊註冊(預覽)](concept-registration-mfa-sspr-combined.md)
+組合註冊體驗不需要組織同時啟用 SSPR 和 Azure 多重身份驗證。 合併註冊為組織提供更好的用戶體驗。 有關詳細資訊,請參閱[組合安全信息註冊](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>規劃部署項目
 

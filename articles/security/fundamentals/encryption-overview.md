@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 7ac657e6627aff4eb588506118e5eeeaef70efba
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548617"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454640"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -61,7 +61,7 @@ Azure 支援各種加密模型，包括使用下列方式進行的伺服器端�
 
 您可以使用 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)來保護 Windows 和 Linux 虛擬機器，其會使用 [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) \(英文\) 技術和 Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) \(英文\)，透過完整磁碟區加密來保護作業系統磁碟和資料磁碟。
 
-加密金鑰和祕密會在您的 [Azure Key Vault 訂用帳戶](../../key-vault/key-vault-overview.md)中受到保護。 使用 Azure 備份服務，您可以備份及還原使用金鑰加密金鑰 (KEK) 設定的已加密虛擬機器 (VM)。
+加密金鑰和祕密會在您的 [Azure Key Vault 訂用帳戶](../../key-vault/general/overview.md)中受到保護。 使用 Azure 備份服務，您可以備份及還原使用金鑰加密金鑰 (KEK) 設定的已加密虛擬機器 (VM)。
 
 ### <a name="azure-storage-service-encryption"></a>Azure 儲存體服務加密
 

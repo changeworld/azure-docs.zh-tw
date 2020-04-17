@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e904f650c9fc11aab2dcb002ac68a9f19287940e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414240"
+ms.locfileid: "81449947"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 不需要結構描述的索引引擎能夠自動建立所內嵌�
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>我可以使用多個 API 來訪問我的數據嗎?
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 當多模型意味著 Azure Cosmos DB 支援多個 API 和多個數據模型時,不同的 API 使用不同的數據格式進行存儲和有線協定。 例如,SQL使用JSON,蒙哥DB使用BSON,表使用EDM,卡桑德拉使用CQL,格雷姆林使用圖形SON。 因此,我們建議對給定帳戶中的資料的所有訪問使用相同的 API。
+Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 當多模型意味著 Azure Cosmos DB 支援多個 API 和多個數據模型時,不同的 API 使用不同的數據格式進行存儲和有線協定。 例如,SQL使用JSON,蒙哥DB使用BSON,表使用EDM,卡桑德拉使用CQL,格雷姆林使用JSON格式。 因此,我們建議對給定帳戶中的資料的所有訪問使用相同的 API。
 
 每個 API 獨立運行,但 Gremlin 和 SQL API 除外,它們是可互通的。
 
@@ -234,7 +234,7 @@ Azure Cosmos DB 會強制執行嚴格的安全性需求和標準。 Azure Cosmos
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Simba 驅動程式是否支援與適用於 MongoDB 的 Azure Cosmos DB API 搭配使用？
 
-是的，您可以使用 Simba 的 Mongo ODBC 驅動程式搭配適用於 MongoDB 的 Azure Cosmos DB API
+是的,您可以將辛巴的蒙戈 ODBC 驅動程式與 Azure Cosmos DB 的蒙戈DB API 一起使用
 
 ## <a name="table-api"></a><a id="table"></a>資料表 API
 
@@ -523,7 +523,7 @@ Azure Cosmos DB Gremlin API 利用開放原始碼驅動程式作為服務的主�
 
 RU 計費是根據周遊的運作資料庫計算，並不是根據結果集計算。 比方說，若查詢的目標是要獲得單一頂點作為結果，但需要同時周遊其他多個物件，則會依計算單一結果頂點所需的所有圖形物件來計算成本。
 
-### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 中圖形資料庫所能容納的級別上限為何？
+### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>圖形資料庫在 Azure Cosmos DB Gremlin API 中的最大比例是多少?
 
 Azure Cosmos DB 使用[水平資料分割](partition-data.md)，自動處理儲存體和輸送量需要增加的問題。 工作負載的最大輸送量和存儲容量由與給定容器關聯的分區數決定。 但是,Gremlin API 容器具有一組特定的準則,以確保大規模獲得適當的性能體驗。 如需有關分割的詳細資訊及最佳做法，請參閱[在 Azure Cosmos DB 中進行資料分割](partition-data.md)一文。
 
@@ -531,13 +531,13 @@ Azure Cosmos DB 使用[水平資料分割](partition-data.md)，自動處理儲�
 
 大多數本機 Apache Tinkerpop Gremlin 驅動程式允許提供用於查詢執行的參數位典。 這裡提供使用 [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 和 [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) 兩種方法的執行範例。
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>為什麼我會收到「Gremlin 查詢編譯錯誤：找不到任何方法」錯誤？
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>為什麼我收到「格林林查詢編譯錯誤:找不到任何方法」錯誤?
 
 Azure Cosmos DB Gremlin API 會實作一個在 Gremlin 介面區定義的功能子集。 如需支援的步驟和詳細資訊，請參閱 [Gremlin 支援](gremlin-support.md)一文。
 
 最好的解決方法，是以支援的功能重新寫入必要的 Gremlin 步驟，因為 Azure Cosmos DB 支援所有必要的 Gremlin 步驟。
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>為什麼我會收到「WebSocketException：伺服器在預期傳回狀態碼 ’101’ 的情況下傳回了狀態碼 '200'」錯誤？
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>為什麼收到「WebSocket 異常:當狀態代碼」101「錯誤時伺服器返回狀態代碼」200"?
 
 系統會在使用了錯誤的端點時擲回此錯誤。 產生此錯誤的端點模式如下：
 
@@ -547,7 +547,7 @@ Azure Cosmos DB Gremlin API 會實作一個在 Gremlin 介面區定義的功能�
 
 `https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
 
-### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>為什麼我會收到「RequestRateIsTooLarge」錯誤？
+### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>為什麼我收到「請求率太大」錯誤?
 
 此錯誤表示，已配置的每秒要求單位不足以提供查詢之所用。 通常您會在執行會獲得所有頂點的查詢時看到此錯誤：
 
@@ -562,7 +562,7 @@ g.V()
 
 Gremlin 連線是透過 WebSocket 連線而產生的。 雖然 WebSocket 連線並沒有特定的存留時間，Azure Cosmos DB Gremlin API 仍然會在 30 分鐘的非使用狀態之後終止閒置的連線。
 
-### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>為什麼不能在原生 Gremlin 驅動程式中使用 Fluent API 呼叫？
+### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>為什麼我不能在本機 Gremlin 驅動程式中使用流暢的 API 調用?
 
 Azure Cosmos DB Gremlin API 尚未支援 Fluent API 呼叫。 Fluent API 呼叫需要稱為位元組程式碼支援的內部格式化功能，目前 Azure Cosmos DB Gremlin API 不支援此功能。 由於相同的原因，最新的 Gremlin-JavaScript 驅動程式目前也不受支援。
 

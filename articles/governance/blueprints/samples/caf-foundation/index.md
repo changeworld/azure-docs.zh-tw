@@ -3,12 +3,12 @@ title: CAF 基礎藍圖範例概觀
 description: 適用於 Azure Foundation藍圖範本之雲端採用架構 (CAF) 的概觀和結構
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: a5616667ae909b63f406e399a23bdf568089bf52
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383580"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458466"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構基礎藍圖範例的概觀
 
@@ -22,7 +22,7 @@ CAF 基礎藍圖範例會在 Azure 中部署建議的基礎結構資源，供組
 
 此實作會結合數個 Azure 服務，用來提供完全受到監視的企業級安全基礎。 此環境包含：
 
-- [Azure Key Vault](../../../../key-vault/key-vault-overview.md) 執行個體，用來裝載共用服務環境中已部署 VM 所使用的祕密
+- [Azure Key Vault](../../../../key-vault/general/overview.md) 執行個體，用來裝載共用服務環境中已部署 VM 所使用的祕密
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以確保當您開始對[儲存體帳戶](../../../../storage/common/storage-introduction.md)進行安全部署以取得診斷記錄時，所有動作和服務皆會記錄到中央位置
 - 部署 [Azure資訊安全中心](../../../../security-center/security-center-intro.md) (標準版)，為您遷移的工作負載提供威脅防護
 - 藍圖也會定義和部署 [Azure 原則](../../../policy/overview.md)，以用於 

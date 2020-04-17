@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399053"
+ms.locfileid: "81458193"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 機器學習設計器的演演演算法&模組參考(預覽)
 
@@ -59,6 +59,10 @@ ms.locfileid: "81399053"
 | 建議 | 生成推薦模型。 | [評估推薦](evaluate-recommender.md) <br/> [評分 SVD 推薦](score-svd-recommender.md) <br/> [訓練 SVD 推薦](train-SVD-recommender.md) |
 | 異常偵測 | 構建異常檢測模型。 | [基於 PCA 的例外偵測](pca-based-anomaly-detection.md) <br/> [定型異常偵測模型](train-anomaly-detection-model.md) |
 
+
+## <a name="web-service"></a>Web 服務
+
+瞭解 Azure 機器學習設計器中即時推理所必需的[Web 服務模組](web-service-input-output.md)。
 
 ## <a name="error-messages"></a>錯誤訊息
 

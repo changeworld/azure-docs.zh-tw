@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312220"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457836"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 使用金鑰保管庫憑證設定 TLS 終止
 
-[Azure 密鑰保管庫](../key-vault/key-vault-overview.md)是一個平臺管理的秘密存儲,可用於保護機密、密鑰和 TLS/SSL 證書。 Azure 應用程式閘道支援與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。 此支援僅限於應用程式閘道 v2 SKU。
+[Azure 密鑰保管庫](../key-vault/general/overview.md)是一個平臺管理的秘密存儲,可用於保護機密、密鑰和 TLS/SSL 證書。 Azure 應用程式閘道支援與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。 此支援僅限於應用程式閘道 v2 SKU。
 
 關於詳細資訊,請參閱[使用金鑰保管庫憑證的 TLS 終止](key-vault-certs.md)。
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> -啟用SoftDelete 標誌必須用於TLS終止才能正常運行。 如果要[通過門戶配置密鑰保管庫軟刪除](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior),則保留期必須保持在預設值 90 天。 應用程式閘道還不支援不同的保留期。 
+> -啟用SoftDelete 標誌必須用於TLS終止才能正常運行。 如果要[通過門戶配置密鑰保管庫軟刪除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior),則保留期必須保持在預設值 90 天。 應用程式閘道還不支援不同的保留期。 
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 

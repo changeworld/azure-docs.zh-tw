@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411154"
+ms.locfileid: "81450027"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure 金鑰保存庫為 Azure Cosmos 帳戶設定客戶管理金鑰
 
@@ -23,7 +23,7 @@ ms.locfileid: "81411154"
 
 ![以客戶資料的加密層](./media/how-to-setup-cmk/cmk-intro.png)
 
-必須在[Azure 金鑰保存式庫中](../key-vault/key-vault-overview.md)儲存客戶管理的金鑰,並為使用客戶管理的金鑰啟用的每個 Azure Cosmos 帳戶提供金鑰。 此密鑰用於加密該帳戶中存儲的所有數據。
+必須在[Azure 金鑰保存式庫中](../key-vault/general/overview.md)儲存客戶管理的金鑰,並為使用客戶管理的金鑰啟用的每個 Azure Cosmos 帳戶提供金鑰。 此密鑰用於加密該帳戶中存儲的所有數據。
 
 > [!NOTE]
 > 目前,客戶管理的金鑰僅適用於新的 Azure Cosmos 帳戶。 應在帳戶創建期間配置它們。
@@ -44,8 +44,8 @@ ms.locfileid: "81411154"
 
 要瞭解如何在現有 Azure 金鑰保管庫實例上啟用這些屬性,請參閱以下文章中的「啟用軟刪除」和「啟用清除保護」部分:
 
-- [如何使用電源Shell軟移除](../key-vault/key-vault-soft-delete-powershell.md)
-- [如何使用 Azure CLI 軟刪除](../key-vault/key-vault-soft-delete-cli.md)
+- [如何使用電源Shell軟移除](../key-vault/general/soft-delete-powershell.md)
+- [如何使用 Azure CLI 軟刪除](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>加入 Azure 金鑰保存庫實例
 

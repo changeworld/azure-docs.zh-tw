@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6b5712094b9821dfa041cd5ba8617e86f7231bde
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478015"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456816"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>使用具有 Azure 金鑰保存庫的客戶管理金鑰來管理 Azure 儲存加密
 
 您可以使用自己的加密金鑰來保護儲存帳戶中的資料。 指定客戶管理的金鑰時,該金鑰用於保護和控制對加密數據的密鑰的訪問。 客戶管理的密鑰為管理存取控制提供了更大的靈活性。
 
-您必須使用 Azure 金鑰保存庫來儲存客戶管理的金鑰。 您可以建立自己的密鑰並將其存儲在密鑰保管庫中,也可以使用 Azure 金鑰保管庫 API 產生金鑰。 存儲帳戶和密鑰保管庫必須位於同一區域和同一 Azure 活動目錄 (Azure AD) 租戶中,但它們可以位於不同的訂閱中。 有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../../key-vault/key-vault-overview.md)
+您必須使用 Azure 金鑰保存庫來儲存客戶管理的金鑰。 您可以建立自己的密鑰並將其存儲在密鑰保管庫中,也可以使用 Azure 金鑰保管庫 API 產生金鑰。 存儲帳戶和密鑰保管庫必須位於同一區域和同一 Azure 活動目錄 (Azure AD) 租戶中,但它們可以位於不同的訂閱中。 有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../../key-vault/general/overview.md)
 
 ## <a name="about-customer-managed-keys"></a>關於客戶管理的金鑰
 

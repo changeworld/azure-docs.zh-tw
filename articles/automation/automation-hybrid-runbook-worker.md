@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405793"
+ms.locfileid: "81457700"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合式 Runbook 背景工作角色將資料中心內或雲端的資源自動化
 
@@ -68,7 +68,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> 此代碼不會從電腦中刪除 Microsoft 監視代理。 它僅刪除混合 Runbook 輔助角色的功能和配置。
+> 此代碼不會從電腦中刪除 Linux 的日誌分析代理。 它僅刪除混合 Runbook 輔助角色的功能和配置。
 
 ## <a name="remove-a-hybrid-worker-group"></a>移除混合式背景工作角色群組
 
@@ -89,7 +89,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>混合式背景工作角色
 
-對於要連接到 Azure 自動化並註冊混合 Runbook 工作線程,它必須有權訪問本節中描述的埠號和 URL。 此存取位於 Microsoft 監視代理連接到 Azure 監視器日誌[所需的連接埠和 URL](../azure-monitor/platform/agent-windows.md)之上。
+對於要連接到 Azure 自動化並註冊混合 Runbook 工作線程,它必須有權訪問本節中描述的埠號和 URL。 此訪問位於日誌分析代理連接到 Azure 監視器日誌[所需的連接埠和網址](../azure-monitor/platform/agent-windows.md)的頂部。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

@@ -3,12 +3,12 @@ title: 使用參數建立動態藍圖
 description: 瞭解靜態和動態參數以及如何使用它們創建安全和動態藍圖。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383605"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458483"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>透過參數建立動態藍圖
 
@@ -41,7 +41,7 @@ ms.locfileid: "81383605"
 > [!IMPORTANT]
 > 在這兩種情況下,金鑰保管庫都必須具有「**存取策略**」 頁上設定**的樣本部署的 Azure 資源管理員存取權限**。 如需如何啟用此功能的相關指示，請參閱 [Key Vault - 啟用範本部署](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)。
 
-如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 概觀](../../../key-vault/key-vault-overview.md)。
+如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 概觀](../../../key-vault/general/overview.md)。
 
 ## <a name="parameter-types"></a>參數類型
 
@@ -234,8 +234,8 @@ ms.locfileid: "81383605"
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱[藍圖函數](../reference/blueprint-functions.md)清單。
-- 瞭解[藍圖生命週期](lifecycle.md)。
+- 了解[藍圖生命週期](lifecycle.md)。
 - 了解如何自訂[藍圖排序順序](sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](resource-locking.md)。
-- 瞭解如何[更新現有工作](../how-to/update-existing-assignments.md)。
-- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。
+- 了解如何[更新現有的指派](../how-to/update-existing-assignments.md)。
+- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。

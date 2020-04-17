@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853e7143834a340b870b71ef1a287dab136e2783
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654061"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450967"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft 身份驗證器應用程式啟用無密碼登入(預覽版)
 
@@ -41,7 +41,7 @@ Microsoft Authenticator 應用程式可用來登入任何 Azure AD 帳戶 (而�
 
 ### <a name="enable-the-combined-registration-experience"></a>開啟組合註冊體驗
 
-無密碼身份驗證方法的註冊功能依賴於組合的註冊預覽。 按照文章"[啟用組合安全資訊註冊(預覽)中的](howto-registration-mfa-sspr-combined.md)步驟啟用合併註冊預覽。
+無密碼身份驗證方法的註冊功能依賴於組合註冊功能。 按照文章中的步驟[啟用組合安全信息註冊](howto-registration-mfa-sspr-combined.md),以啟用合併註冊。
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>開啟無密碼電話登入認證方法
 

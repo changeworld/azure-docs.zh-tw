@@ -1,44 +1,44 @@
 ---
-title: 從 Azure 容器註冊表部署容器映射
+title: 從 Azure 容器註冊表部署容器映像
 description: 瞭解如何通過從 Azure 容器註冊表中拉出容器映射在 Azure 容器實例中部署容器。
 services: container-instances
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252146"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453518"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文介紹在部署到 Azure 容器實例時，如何提取存儲在 Azure 容器註冊表中的容器映射。 配置註冊表訪問的推薦方法是創建 Azure 活動目錄服務主體和密碼，並將登錄憑據存儲在 Azure 金鑰保存庫中。
+[Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文介紹在部署到 Azure 容器實例時,如何提取存儲在 Azure 容器註冊表中的容器映射。 配置註冊表訪問的推薦方法是創建 Azure 活動目錄服務主體和密碼,並將登錄認證儲存在 Azure 金鑰保管庫中。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-**Azure 容器註冊表**：您需要一個 Azure 容器註冊表，並且註冊表中至少有一個容器映射來完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
+**Azure 容器註冊表**:您需要一個 Azure 容器註冊表,並且註冊表中至少有一個容器映射來完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
 
 **Azure CLI**：本文中的命令列範例使用 [Azure CLI](/cli/azure/)，並使用 Bash 殼層適用的格式。 您可以在本機[安裝 Azure CLI](/cli/azure/install-azure-cli)，或使用 [Azure Cloud Shell][cloud-shell-bash]。
 
 ## <a name="configure-registry-authentication"></a>設定登錄驗證
 
-在提供對"無頭"服務和應用程式的訪問的生產方案中，建議使用[服務主體](../container-registry/container-registry-auth-service-principal.md)配置註冊表訪問。 服務主體允許您向容器映射提供[基於角色的存取控制](../container-registry/container-registry-roles.md)。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
+在提供對"無頭"服務和應用程式的訪問的生產方案中,建議使用[服務主體](../container-registry/container-registry-auth-service-principal.md)配置註冊表訪問。 服務主體允許您向容器映像提供[基於角色的存取控制](../container-registry/container-registry-roles.md)。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
 
-Azure 容器註冊表提供了其他[身份驗證選項](../container-registry/container-registry-authentication.md)。
+Azure 容器註冊表提供其他[認證選項](../container-registry/container-registry-authentication.md)。
 
 > [!NOTE]
-> 不能通過使用相同的容器組中配置的[託管標識](container-instances-managed-identity.md)，向 Azure 容器註冊表進行身份驗證以在容器組部署期間提取映射。
+> 不能透過使用相同的容器組中配置的[託管標識](container-instances-managed-identity.md),向 Azure 容器註冊表進行身份驗證以在容器組部署期間提取映射。
 
 在下一節中，您會建立 Azure 金鑰保存庫和服務主體，並將服務主體的認證儲存在保存庫中。 
 
 ### <a name="create-key-vault"></a>建立金鑰保存庫
 
-如果您在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
+如果您在 [Azure Key Vault](../key-vault/general/overview.md) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
 
-將 `RES_GROUP` 變數更新為您將在其中建立金鑰保存庫之現有資源群組的名稱，將 `ACR_NAME` 更新為容器登錄的名稱。 為簡潔起見，本文中的命令假定註冊表、金鑰保存庫和容器實例都在同一資源組中創建。
+將 `RES_GROUP` 變數更新為您將在其中建立金鑰保存庫之現有資源群組的名稱，將 `ACR_NAME` 更新為容器登錄的名稱。 為簡潔起見,本文中的命令假定註冊表、密鑰保管庫和容器實例都在同一資源組中創建。
 
  在 `AKV_NAME` 指定新金鑰保存庫的名稱。 保存庫名稱在 Azure 內必須是唯一的，長度介於 3 到 24 個英數字元之間，以字母開頭、以字母或數字作為結尾，且不可包含連續的連字號。
 
@@ -52,7 +52,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>建立服務主體並儲存認證
 
-現在創建服務主體並將其憑據存儲在金鑰保存庫中。
+現在創建服務主體並將其憑據存儲在密鑰保管庫中。
 
 下列命令使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 建立服務主體，以及使用 [az keyvault secret set][az-keyvault-secret-set] 將服務主體的**密碼**儲存在保存庫中。
 
@@ -71,7 +71,7 @@ az keyvault secret set \
 
 在前面的命令中，`--role` 引數設定服務主體具有 acrpull** 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush**。
 
-接下來，將服務主體的*appId*存儲在保存庫中，這是您傳遞給 Azure 容器註冊表進行身份驗證的**使用者名**。
+接下來,將服務主體的*appId*儲存在保管庫中,這是您傳遞給 Azure 容器註冊表進行身份驗證的**使用者名稱**。
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -122,7 +122,7 @@ az container create \
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本進行部署
 
-通過在容器組定義中包括該屬性，`imageRegistryCredentials`可以在 Azure 資源管理器範本中指定 Azure 容器註冊表的屬性。 例如，您可以直接指定註冊表憑據：
+透過在容器組定義中包括該屬性,`imageRegistryCredentials`可以在 Azure 資源管理器樣本中指定 Azure 容器註冊表的屬性。 例如,您可以直接指定註冊表認證:
 
 ```JSON
 [...]
@@ -136,7 +136,7 @@ az container create \
 [...]
 ```
 
-有關完整的容器組設置，請參閱[資源管理器範本引用](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)。    
+有關完整的容器組設定,請參閱[資源管理員樣本參考](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)。    
 
 如需參考 Resource Manager 範本中 Azure Key Vault 祕密的詳細資訊，請參閱[在部署期間使用 Azure Key Vault 傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。
 

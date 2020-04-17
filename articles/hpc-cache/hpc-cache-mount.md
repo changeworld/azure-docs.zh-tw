@@ -4,14 +4,14 @@ description: 如何將客戶端連接到 Azure HPC 快取服務
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: f176e30cfaf9a52e4f58091b7fc76098a4c88a48
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657372"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458339"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>掛接 Azure HPC Cache
 
@@ -45,51 +45,65 @@ ms.locfileid: "80657372"
 
 ### <a name="create-a-local-path"></a>建立本地端路徑
 
-在每個用戶端上創建本地目錄路徑以連接到快取。 為要裝載的每個存儲目標創建路徑。
+在每個用戶端上創建本地目錄路徑以連接到快取。 為要裝載的每個命名空間路徑創建路徑。
 
 範例： `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
+Azure 門戶中的[「裝載說明」](#use-the-mount-instructions-utility)頁包含可以複製的原型命令。
+
+將用戶端電腦連接到緩存時,將此路徑與表示存儲目標導出的虛擬命名空間路徑相關聯。 為用戶端將使用的每個虛擬命名空間路徑創建目錄。
+
 ## <a name="use-the-mount-instructions-utility"></a>使用載入說明實用程式
 
-從 Azure 門戶中的緩存檢視的 **「設定**」部分打開 **「載入說明」** 頁。
+可以使用 Azure 門戶中的 **「裝載指令」** 頁創建可複製裝載命令。 從門戶中緩存檢視的 **「設定**」部分打開頁面。
+
+在用戶端上使用 命令之前,請確保客戶端滿足先決條件,並具有使用`mount`NFS 命令所需的軟體,如上述在[「準備用戶端](#prepare-clients)」中所述。
 
 ![門戶中的 Azure HPC 緩存實例的螢幕截圖,載入了「設定>裝載指令頁](media/mount-instructions.png)
 
-裝載命令頁包括有關用戶端裝載過程和先決條件的資訊,以及可用於創建可複製裝載命令的欄位。
+按照此過程創建裝載命令。
 
-要使用此頁面,請按照以下步驟操作:
+1. 自訂**用戶端路徑**欄位。 此欄位提供一個範例命令,可用於在用戶端上創建本地路徑。 用戶端在此目錄中本地訪問 Azure HPC 快取中的內容。
 
-<!--1.  In step one of **Mounting your file system**, enter the path that the client will use to access the Azure HPC Cache storage target.
+   按一下該欄位並編輯該指令以包含所需的目錄名稱。 這個名稱顯示在字串的末尾`sudo mkdir -p`
 
-   * This path is local to the client.
-   * After you provide the directory name, the field populates with a command you can copy. Use this command on the client directly or in a setup script to create the directory path on the client VM. -->
+   ![用戶端路徑欄位的螢幕截圖,游標位於末尾](media/mount-edit-client.png)
 
-1. 查看用戶端先決條件並安裝使用 NFS`mount`命令所需的實用程式,如上述[在「準備用戶端](#prepare-clients)」中所述。
+   完成編輯欄位後,頁面底部的裝載命令將更新新用戶端路徑。
 
-1. **安裝檔案系統**的步驟一<!-- label will change --> 給出了在用戶端上創建本地路徑的範例命令。 這是用戶端將用於從 Azure HPC 快取內容的路徑。
+1. 從清單中選擇**快取載入位址**。 此選單列的快取所有[客戶端載入點](#find-mount-command-components)。
 
-   請注意路徑名稱,以便在需要時可以在命令中對其進行修改。
+   平衡所有可用裝載位址的客戶端負載,以更好的緩存性能。
 
-1. 在步驟 2 中,選擇其中一個可用的 IP 位址。 這裡列出快取所有[客戶端載入點](#find-mount-command-components)。 確保您有一個系統來平衡所有 IP 位址之間的負載。
+   ![快取載入位址欄位的螢幕擷取,選擇器顯示三個 IP 位址可供選擇](media/mount-select-ip.png)
 
-1. 步驟三中的欄位自動填充原型裝載命令。 按下欄位右側的複製符號,自動將其複製到剪貼簿。
+1. 選擇要用於客戶端的**虛擬命名空間路徑**。 這些路徑連結到後端存儲系統上的匯出。
 
-   > [!NOTE]
-   > 在使用複製命令之前,請檢查該命令。 您可能需要自定義用戶端裝載路徑和儲存目標虛擬命名空間路徑,這些路徑在此介面中尚未選擇。 您還應更新載入指令選項以反映以下[建議的選項](#mount-command-options)。 閱讀[「瞭解裝載」命令語法](#understand-mount-command-syntax)以尋求説明。
+   ![命名空間路徑欄位的螢幕截圖,選擇器開啟](media/mount-select-target.png)
 
-1. 在用戶端電腦上使用複製的裝載命令(如果需要進行編輯)將其連接到 Azure HPC 緩存上的存儲目標。 可以直接從用戶端命令行發出該命令,或在用戶端設置腳本或範本中包括裝載命令。
+   您可以在「存儲目標」 門戶頁上查看和更改虛擬命名空間路徑。 閱讀[添加存儲目標](hpc-cache-add-storage.md)以查看如何。
+
+   要瞭解有關 Azure HPC 快取集合的總命名空間功能的詳細資訊,請閱讀[規劃聚合命名空間](hpc-cache-namespace.md)。
+
+1. 步驟三中的 **「裝載」命令**欄位使用自訂裝載命令自動填充,該命令使用在前面的欄位中設置的裝載位址、虛擬命名空間路徑和用戶端路徑。
+
+   按下欄位右側的複製符號,自動將其複製到剪貼簿。
+
+   ![命名空間路徑欄位的螢幕截圖,選擇器開啟](media/mount-command-copy.png)
+
+1. 使用用戶端電腦上的複製載入命令將其連接到 Azure HPC 快取。 可以直接從用戶端命令行發出該命令,或在用戶端設置腳本或範本中包括裝載命令。
 
 ## <a name="understand-mount-command-syntax"></a>瞭解載入命令語法
 
 載入指令的以下形式:
 
-> 蘇多安裝*cache_mount_address*:/*namespace_pathlocal_path* *local_path* [*選項*]
+> sudo 安裝 [*選項*] *cache_mount_address*:/*namespace_pathlocal_path* *local_path*
 
 範例：
 
 ```bash
 root@test-client:/tmp# mkdir hpccache
-root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -o hard,proto=tcp,mountproto=tcp,retry=30
+root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0.0.28:/blob-demo-0722 hpccache
 root@test-client:/tmp#
 ```
 
@@ -117,9 +131,9 @@ root@test-client:/tmp#
 > [!NOTE]
 > 快取載入位址對應於緩存子網中的網路介面。 在資源組中,這些 NIC 列出的名稱以`-cluster-nic-`結尾 ,以數位結尾。 不要更改或刪除這些介面,否則緩存將不可用。
 
-虛擬命名空間路徑顯示在**儲存目標頁面**中。 單擊單個儲存目標名稱以查看其詳細資訊,包括與其關聯的聚合命名空間路徑。
+虛擬命名空間路徑顯示在每個儲存目標的詳細資訊頁上。 單擊單個儲存目標名稱以查看其詳細資訊,包括與其關聯的聚合命名空間路徑。
 
-![快取儲存目標面板的螢幕截圖,在表的 Path 列中條目周圍有一個突出顯示框](media/hpc-cache-view-namespace-paths.png)
+![儲存目標詳細資訊頁面的螢幕截圖(標題"更新存儲目標")。 表的虛擬命名空間路徑列中項目周圍有一個突出顯示框](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>後續步驟
 
