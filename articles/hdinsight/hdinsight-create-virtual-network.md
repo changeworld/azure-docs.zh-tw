@@ -1,41 +1,41 @@
 ---
-title: 為 Azure HDInsight 群集創建虛擬網路
-description: 瞭解如何創建 Azure 虛擬網路，將 HDInsight 連接到其他雲資源或資料中心中的資源。
+title: 為 Azure HDInsight 叢集建立虛擬網路
+description: 瞭解如何創建 Azure 虛擬網路,將 HDInsight 連接到其他雲端或資料中心中的資源。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272535"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531011"
 ---
-# <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>為 Azure HDInsight 群集創建虛擬網路
+# <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>為 Azure HDInsight 叢集建立虛擬網路
 
-本文提供了用於創建和配置[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的示例和代碼示例，以便與 Azure HDInsight 群集一起使用。 介紹了創建網路安全性群組 （NSG） 和配置 DNS 的詳細示例。 
+本文提供了用於創建和配置[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的範例和代碼範例。 與 Azure HDInsight 群集一起使用。 介紹了創建網路安全組 (NSG) 和配置 DNS 的詳細範例。
 
-有關將虛擬網路與 Azure HDInsight 一起使用的背景資訊，請參閱[為 Azure HDInsight 規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
+有關將虛擬網路與 Azure HDInsight 一起使用的背景資訊,請參閱[為 Azure HDInsight 規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
 
-## <a name="prerequisites-for-code-samples-and-examples"></a>代碼示例和示例的先決條件
+## <a name="prerequisites-for-code-samples-and-examples"></a>程式碼範例與範例的先決條件
 
-在執行本文中的任何代碼示例之前，您應該瞭解 TCP/IP 網路。 如果您不熟悉 TCP/IP 網路，請在修改生產網路之前諮詢正在修改的人員。
+在執行本文中的任何代碼範例之前,請瞭解 TCP/IP 網路。 如果您不熟悉 TCP/IP 網路,請在修改生產網路之前諮詢某人。
 
-本文中示例的其他先決條件包括：
+本文中範例的其他先決條件包括以下項:
 
-* 如果您使用的是 PowerShell，則需要安裝[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。
-* 如果要使用 Azure CLI 但尚未安裝 Azure [CLI，請參閱安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果您使用的是 PowerShell,則需要安裝[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果要使用 Azure CLI 但尚未安裝 Azure [CLI,請參考安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
 > 如果您要尋找使用 Azure 虛擬網路將 HDInsight 連線到內部部署網路的逐步指引，請參閱[將 HDInsight 連線至內部部署網路](connect-on-premises-network.md)文件。
 
 ## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>範例：網路安全性群組與 HDInsight
 
-本節中的範例會示範如何建立網路安全性群組規則，以允許 HDInsight 與 Azure 管理服務進行通訊。 使用範例之前，請調整 IP 位址以符合您要使用之 Azure 區域的 IP 位址。 您可以在[HDInsight 管理 IP 位址中找到](hdinsight-management-ip-addresses.md)此資訊。
+本節中的示例演示如何創建網路安全組規則。 這些規則允許 HDInsight 與 Azure 管理服務通訊。 在使用範例之前,請調整 IP 位址以符合正在使用的 Azure 區域的位址。 您可以在[HDInsight 管理 IP 位址中找到](hdinsight-management-ip-addresses.md)此資訊。
 
 ### <a name="azure-resource-management-template"></a>Azure 資源管理範本
 
@@ -48,7 +48,7 @@ ms.locfileid: "79272535"
 使用下列 PowerShell 指令碼建立限制輸入流量的虛擬網路，並允許來自北歐區域之 IP 位址的流量。
 
 > [!IMPORTANT]  
-> 更改 此示例`hdirule2`中的 和`hdirule1`的 IP 位址，以匹配正在使用的 Azure 區域。 你可以找到此資訊[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)。
+> 更改 此範`hdirule2`例中的`hdirule1`和的 IP 位址,以符合正在使用的 Azure 區域。 你可以找到此資訊[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)。
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
@@ -151,7 +151,7 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-此範例示範如何新增規則，以允許所需 IP 位址上的輸入流量。 它不會包含可限制其他來源之輸入存取的規則。 以下代碼演示如何啟用從 Internet 訪問的 SSH：
+此範例示範如何新增規則，以允許所需 IP 位址上的輸入流量。 它不包含限制從其他源的入站訪問的規則。 以下代碼展示如何開啟從 Internet 存取的 SSH:
 
 ```powershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
@@ -162,7 +162,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 使用下列步驟建立限制輸入流量的虛擬網路，但允許來自 HDInsight 所需 IP 位址的流量。
 
-1. 使用下列命令來建立名為 `hdisecure`的新網路安全性群組。 替換為`RESOURCEGROUP`包含 Azure 虛擬網路的資源組。 替換為`LOCATION`組在中創建的位置（區域）。
+1. 使用下列命令來建立名為 `hdisecure`的新網路安全性群組。 替換為`RESOURCEGROUP`包含 Azure 虛擬網路的資源組。 替換為`LOCATION`組在中創建的位置(區域)。
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -173,7 +173,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 2. 使用下列將規則新增至新的網路安全性群組，這些規則允許從 Azure HDInsight 健康狀態和管理服務透過連接埠 443 的輸入通訊。 替換為`RESOURCEGROUP`包含 Azure 虛擬網路的資源組的名稱。
 
     > [!IMPORTANT]  
-    > 更改 此示例`hdirule2`中的 和`hdirule1`的 IP 位址，以匹配正在使用的 Azure 區域。 您可以在[HDInsight 管理 IP 位址中找到](hdinsight-management-ip-addresses.md)此資訊。
+    > 更改 此範`hdirule2`例中的`hdirule1`和的 IP 位址,以符合正在使用的 Azure 區域。 您可以在[HDInsight 管理 IP 位址中找到](hdinsight-management-ip-addresses.md)此資訊。
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -202,10 +202,9 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     此命令完成之後，您可以將 HDInsight 安裝至虛擬網路。
 
-
 這些步驟只會開啟 Azure 雲端上 HDInsight 健康狀態和管理服務的存取權。 任何其他來自虛擬網路外部之對 HDInsight 叢集的存取都會遭到封鎖。 若要允許從外部虛擬網路存取，您必須新增額外的網路安全性群組規則。
 
-以下代碼演示如何啟用從 Internet 訪問的 SSH：
+以下代碼展示如何開啟從 Internet 存取的 SSH:
 
 ```azurecli
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
@@ -227,7 +226,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 1. 若要尋找虛擬網路的 DNS 尾碼，請使用 Azure PowerShell 或 Azure CLI：
 
-    替換為`RESOURCEGROUP`包含虛擬網路的資源組的名稱，然後輸入命令：
+    取代為`RESOURCEGROUP`包含虛擬網路的資源群組的名稱,然後輸入命令:
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -238,7 +237,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. 在虛擬網路的自訂 DNS 伺服器上，使用下列文字作為 `/etc/bind/named.conf.local` 檔案的內容：
+1. 在虛擬網路的自訂 DNS 伺服器上，使用下列文字作為 `/etc/bind/named.conf.local` 檔案的內容：
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -252,7 +251,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     此設定會將虛擬網路 DNS 尾碼的所有 DNS 要求都路由傳送至 Azure 遞迴解析程式。
 
-2. 在虛擬網路的自訂 DNS 伺服器上，使用下列文字作為 `/etc/bind/named.conf.options` 檔案的內容：
+1. 在虛擬網路的自訂 DNS 伺服器上，使用下列文字作為 `/etc/bind/named.conf.options` 檔案的內容：
 
     ```
     // Clients to accept requests from
@@ -288,9 +287,9 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 將 `192.168.0.1` 值取代為內部部署 DNS 伺服器的 IP 位址。 此項目會將所有其他 DNS 要求路由傳送至內部部署 DNS 伺服器。
 
-3. 若要使用設定，請重新啟動 Bind。 例如： `sudo service bind9 restart` 。
+1. 若要使用設定，請重新啟動 Bind。 例如： `sudo service bind9 restart` 。
 
-4. 將條件式轉寄站新增至內部部署 DNS 伺服器。 設定條件式轉寄站，以將步驟 1 中之 DNS 尾碼的要求傳送至自訂 DNS 伺服器。
+1. 將條件式轉寄站新增至內部部署 DNS 伺服器。 設定條件式轉寄站，以將步驟 1 中之 DNS 尾碼的要求傳送至自訂 DNS 伺服器。
 
     > [!NOTE]  
     > 如需如何新增條件式轉寄站的詳細資訊，請參閱 DNS 軟體的文件。
@@ -309,7 +308,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 1. 若要尋找這兩個虛擬網路的 DNS 尾碼，請使用 Azure PowerShell 或 Azure CLI：
 
-    替換為`RESOURCEGROUP`包含虛擬網路的資源組的名稱，然後輸入命令：
+    取代為`RESOURCEGROUP`包含虛擬網路的資源群組的名稱,然後輸入命令:
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -351,7 +350,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
             allow-query { goodclients; };
 
             forwarders {
-            168.63.129.16;   # Azure recursive resolver         
+            168.63.129.16;   # Azure recursive resolver
             };
 
             dnssec-validation auto;
@@ -360,10 +359,10 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
             listen-on { any; };
     };
     ```
-    
+
    將 `10.0.0.0/16` 和 `10.1.0.0/16` 值取代為虛擬網路的 IP 位址範圍。 此項目允許每個網路中的資源對 DNS 伺服器提出要求。
 
-    不適用於虛擬網路 DNS 尾碼 (例如，microsoft.com) 的任何要求都是透過 Azure 遞迴解析程式所處理。
+    任何不是虛擬網路的 DNS 後綴的請求(例如,microsoft.com)都由 Azure 遞迴解析程式處理。
 
 4. 若要使用設定，請重新啟動 Bind。 例如，兩部 DNS 伺服器上的 `sudo service bind9 restart`。
 
@@ -371,11 +370,11 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需設定 HDInsight 連線至內部部署網路的端對端範例，請參閱[將 HDInsight 連線至內部部署網路](./connect-on-premises-network.md)。
-* 有關在 Azure 虛擬網路中配置 Apache HBase 群集，請參閱[在 Azure 虛擬網路中的 HDInsight 上創建 Apache HBase 群集](hbase/apache-hbase-provision-vnet.md)。
+* 有關設定 HDInsight 以連接到本地網路的完整範例,請參考[將 HDInsight 連接到本地網路](./connect-on-premises-network.md)。
+* 有關在 Azure 虛擬網路中設定 Apache HBase 叢集,請參閱[在 Azure 虛擬網路中的 HDInsight 建立 Apache HBase 叢集](hbase/apache-hbase-provision-vnet.md)。
 * 如需設定 Apache HBase 異地複寫，請參閱[設定 Azure 虛擬網路中的 Apache HBase 叢集複寫](hbase/apache-hbase-replication.md)。
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
 
 * 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 
-* 有關使用者定義的路由的詳細資訊，請參閱[使用者定義的路由和 IP 轉發](../virtual-network/virtual-networks-udr-overview.md)。
+* 有關使用者定義的路由的詳細資訊,請參閱[使用者定義的路由和 IP 轉寄](../virtual-network/virtual-networks-udr-overview.md)。

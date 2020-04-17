@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384915"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461882"
 ---
 當您建立 Azure 虛擬機器 (VM) 時，您必須建立[虛擬網路](../articles/virtual-network/virtual-networks-overview.md) (VNet)，或使用現有的 VNet。 您也需要決定如何在 VNet 上存取您的 VM。 請務必[在建立資源前進行規劃](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)，並確定您已了解[網路資源的限制](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
@@ -148,24 +148,7 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 
 ### <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
 
-使用虛擬機秤集和負載均衡器時,應考慮以下事項:
-
-* **多個虛擬機器規模集不能使用相同的負載均衡器**。
-* **連接埠轉寄與輸入的站 NAT 規則**:
-  * 每個虛擬機規模集必須具有入站 NAT 規則。
-  * 當在負載均衡器的後端池中使用虛擬機器比例設置時,將自動創建預設入站 NAT 規則,這是設計。
-* **負載平衡規則**：
-  * 當在負載均衡器的後端池中使用虛擬機比例設置時,將自動創建預設負載平衡規則,這是設計。
-* **出站規則**:
-  *  要為負載平衡規則已引用的後端池建立出站規則,您需要在創建入站負載平衡規則時,首先在門戶中將 **「創建隱式出站規則」** 標記為 **「否**」 。
-
-  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="負載平衡規則建立" border="true":::
-
-以下方法可用於部署具有現有 Azure 負載均衡器的虛擬機規模集。
-
-* [使用 Azure 門戶使用現有 Azure 負載均衡器設定虛擬機器規模集](../articles/load-balancer/configure-vm-scale-set-portal.md)。
-* [使用 Azure PowerShell 使用現有的 Azure 負載均衡器設定虛擬機器規模集](../articles/load-balancer/configure-vm-scale-set-powershell.md)。
-* [使用 Azure CLI 設定具有現有 Azure 負載均衡器的虛擬機器規模集](../articles/load-balancer/configure-vm-scale-set-cli.md)。
+有關負載均衡器和虛擬機器縮放集的詳細資訊,請參閱 Azure[虛擬機器縮放集的網路](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)。
 
 ## <a name="vms"></a>VM
 

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418417"
+ms.locfileid: "81461288"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射資料串流中的架構漂移
 
@@ -30,6 +30,10 @@ ms.locfileid: "81418417"
 Azure 資料工廠本機支援從執行更改為執行的靈活架構,以便無需重新編譯資料流即可構建通用資料轉換邏輯。
 
 您需要在資料流程中做出架構決策，才能接受整個流程的結構描述漂移。 當您這樣做時，您可以抵抗來自來源的結構描述變更。 但是,您將在整個資料流中丟失列和類型的早期綁定。 Azure 數據工廠將架構漂移流視為後期綁定流,因此,在生成轉換時,漂移列名稱將在整個流的架構視圖中不可用。
+
+本視頻介紹了一些複雜的解決方案,您可以使用數據流的架構漂移功能在 ADF 中輕鬆建構這些解決方案。 此範例中,我們基於靈活的資料庫架構建構可重用的模式:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>架構漂移來源
 

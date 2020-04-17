@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549237"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461645"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署應用程式很快速、輕鬆且符合成本效益。 將您的雲端應用程式部署至生產環境之前，請檢閱重要和建議最佳做法，以在應用程式中實作安全叢集。
@@ -155,7 +155,7 @@ Service Fabric 會使用憑證來提供驗證與加密，以保護叢集和其�
 
 Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的安全性功能。 您可以使用 Azure Key Vault 來[管理 Azure 中 Service Fabric 叢集的憑證](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)。 建立叢集的 Azure 資源提供者會從 Key Vault 提取憑證。 接著，當您在 Azure 上部署叢集時，提供者會在 VM 上安裝憑證。
 
-[Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)、Service Fabric 叢集以及使用憑證的資源提供者之間有憑證關聯性。 建立叢集時，憑證關聯性的相關資訊會儲存在 Key Vault 中。
+[Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)、Service Fabric 叢集以及使用憑證的資源提供者之間有憑證關聯性。 建立叢集時，憑證關聯性的相關資訊會儲存在 Key Vault 中。
 
 設定 Key Vault 有兩個基本步驟：
 1. 特別針對 Key Vault 建立資源群組。
@@ -166,7 +166,7 @@ Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的�
 
     部署時，必須啟用 Key Vault。 接著，計算資源提供者可以從保存庫中取得憑證，並加以安裝在 VM 執行個體上。
 
-若要深入了解如何設定金鑰保存庫，請參閱[什麼是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
+若要深入了解如何設定金鑰保存庫，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 ## <a name="assign-users-to-roles"></a>將使用者指派給角色
 創建表示群集的應用程式後,將使用者分配給 Service Fabric 支援的角色:唯讀和管理員。可以使用 Azure 門戶分配這些角色。

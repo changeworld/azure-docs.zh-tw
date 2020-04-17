@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545979"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461679"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
 ## <a name="overview"></a>概觀
@@ -295,7 +295,7 @@ Microsoft [Azure 流量管理員](../../traffic-manager/traffic-manager-overview
 運用 Azure IaaS，您可以使用來自安全性廠商 (例如 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky) 的反惡意程式碼軟體，以保護您的虛擬機器來抵禦惡意檔案、廣告軟體和其他威脅。 適用於 Azure 雲端服務和虛擬機器的 [Microsoft Antimalware](antimalware.md) 是一項保護功能，有助於識別和移除病毒、間諜軟體和其他惡意軟體。 Microsoft Antimalware 會提供可設定的警示，在已知的惡意或垃圾軟體嘗試自行安裝或在您的 Azure 系統上執行時發出警示。 您也可以使用 Azure 資訊安全中心來部署 Microsoft Antimalware。
 
 ### <a name="hardware-security-module"></a>硬體安全性模型
-加密和驗證不會改善安全性，除非金鑰本身也受到保護。 通過將關鍵機密和密鑰存儲在[Azure 密鑰保管庫中](../../key-vault/key-vault-overview.md),可以簡化關鍵機密和密鑰的管理和安全。 Key Vault 讓您能選擇將金鑰存放在通過 FIPS 140-2 Level 2 標準認證的硬體安全性模組 (HSM) 中。 備份或 [透明資料加密](https://msdn.microsoft.com/library/bb934049.aspx) 的 SQL Server 加密金鑰都能與應用程式的任何金鑰或密碼一起存放在金鑰保存庫中。 這些受保護項目的權限和存取權是透過 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)來管理。
+加密和驗證不會改善安全性，除非金鑰本身也受到保護。 通過將關鍵機密和密鑰存儲在[Azure 密鑰保管庫中](../../key-vault/general/overview.md),可以簡化關鍵機密和密鑰的管理和安全。 Key Vault 讓您能選擇將金鑰存放在通過 FIPS 140-2 Level 2 標準認證的硬體安全性模組 (HSM) 中。 備份或 [透明資料加密](https://msdn.microsoft.com/library/bb934049.aspx) 的 SQL Server 加密金鑰都能與應用程式的任何金鑰或密碼一起存放在金鑰保存庫中。 這些受保護項目的權限和存取權是透過 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)來管理。
 
 ### <a name="virtual-machine-backup"></a>虛擬機器備份
 [Azure 備份](../../backup/backup-overview.md)是一種解決方案，可以不需成本地保護您的應用程式資料，以及將操作成本降到最低。 應用程式錯誤可能導致資料損毀，而人為錯誤可能會將 Bug 導入應用程式，因而引發安全性問題。 使用 Azure 備份，您執行 Windows 與 Linux 的虛擬機器會受到保護。

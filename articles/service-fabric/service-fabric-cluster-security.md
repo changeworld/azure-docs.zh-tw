@@ -4,12 +4,12 @@ description: 深入了解 Azure Service Fabric 叢集的安全性情節，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753791"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461577"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 叢集安全性案例
 
@@ -90,7 +90,7 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 憑證和 Service Fabric
 
-X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加密及數位簽署訊息。 Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的安全性功能。 如需關於 X.509 數位憑證的詳細資訊，請參閱[使用憑證](https://msdn.microsoft.com/library/ms731899.aspx)。 您可以使用 [Key Vault](../key-vault/key-vault-overview.md) 來管理 Azure 中 Service Fabric 叢集的憑證。
+X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加密及數位簽署訊息。 Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的安全性功能。 如需關於 X.509 數位憑證的詳細資訊，請參閱[使用憑證](https://msdn.microsoft.com/library/ms731899.aspx)。 您可以使用 [Key Vault](../key-vault/general/overview.md) 來管理 Azure 中 Service Fabric 叢集的憑證。
 
 一些需要考量的重要事項︰
 

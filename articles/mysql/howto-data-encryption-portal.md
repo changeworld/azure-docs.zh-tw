@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: acf3e6273f98d98d5da55cfb5b044677116c44dc
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9d1e89919647d9d94b287618da2f9a77278425a5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520815"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459078"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>通過使用 Azure 門戶,MySQL Azure 資料庫的資料加密
 
@@ -22,13 +22,13 @@ ms.locfileid: "80520815"
 * 您必須具有 Azure 訂用帳戶，並且是該訂用帳戶的系統管理員。
 * 在 Azure 金鑰保管庫中,創建用於客戶管理的密鑰的密鑰保管庫和密鑰。
 * 金鑰保存庫必須具有以下屬性才能用作客戶管理的金鑰:
-  * [軟刪除](../key-vault/key-vault-ovw-soft-delete.md)
+  * [軟刪除](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [清除受保護](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [清除受保護](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

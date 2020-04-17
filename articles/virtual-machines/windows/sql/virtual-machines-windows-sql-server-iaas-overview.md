@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75374285"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482165"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虛擬機器上的 SQL Server 是什麼？ (Windows)
 
@@ -27,7 +27,7 @@ ms.locfileid: "75374285"
 > * [Windows](virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 
-[Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)使您能夠在雲中使用完整版本的 SQL Server，而無需管理任何本地硬體。 當您使用隨用隨付方案時，SQL Server VM 也會簡化授權成本。
+[Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)讓您能夠在雲端中使用完整版本的 SQL Server,而無需管理任何本地硬體。 當您使用隨用隨付方案時，SQL Server VM 也會簡化授權成本。
 
 Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.microsoft.com/regions/)中執行。 此外，也提供各種[機器大小](../sizes.md)。 虛擬機器映像庫可讓您使用正確的版本、版次及作業系統建立 SQL Server VM。 這可讓虛擬機器成為許多不同 SQL Server 工作負載的適合選項。
 
@@ -38,6 +38,9 @@ SQL Server Azure VM 可以使用 [自動修補](virtual-machines-windows-sql-aut
 ## <a name="automated-backups"></a>自動備份
 
 SQL Server Azure VM 可以利用 [自動備份](virtual-machines-windows-sql-automated-backup-v2.md)，以定期建立資料庫的備份至 Blob 儲存體。 您也可以手動使用此技術。 如需詳細資訊，請參閱 [使用 Azure 儲存體進行 SQL Server 備份與還原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)。
+
+Azure 還為在 Azure VM 中運行的 SQL Server 提供了企業級備份解決方案。 它是一個完全管理的備份解決方案,它支援始終打開可用性組、長期保留、時間點恢復以及集中管理和監視。 有關詳細資訊,請參閱[Azure VM 中的 SQL Server Azure 備份](https://docs.microsoft.com/azure/backup/backup-azure-sql-database)。
+  
 
 ## <a name="high-availability"></a>高可用性
 
@@ -59,8 +62,8 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 
 | 版本 | 作業系統 | 版本 |
 | --- | --- | --- |
-| **SQL Server 2019** | Windows Server 2019 | [企業](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise)，[標準](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard)，[網路](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web)，[開發者](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
-| **SQL 伺服器 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
+| **SQL Server 2019** | Windows Server 2019 | [企業](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise),[標準](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard),[網路](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web),[開發者](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
+| **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
 | **SQL 伺服器 2012 SP4** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4ExpressWindowsServer2012R2) |
@@ -69,7 +72,7 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 若要查看可用的 Linux SQL Server 虛擬機器映像，請參閱 [Azure 虛擬機器 (Linux) 上的 SQL Server 概觀](../../linux/sql/sql-server-linux-virtual-machines-overview.md)。
 
 > [!NOTE]
-> 現在已可將 SQL Server VM 的依使用量付費授權模式變更成使用自己的授權。 有關詳細資訊，請參閱[如何更改 SQL VM 的許可模型](virtual-machines-windows-sql-ahb.md)。 
+> 現在已可將 SQL Server VM 的依使用量付費授權模式變更成使用自己的授權。 有關詳細資訊,請參閱[如何更改 SQL VM 的授權模型](virtual-machines-windows-sql-ahb.md)。 
 
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> 自備授權
 您也可以自備授權 (BYOL)。 在此案例中，您只需支付 VM 費用，而 SQL Server 授權不需任何額外的費用。  長期下來，自備授權可以讓您節省連續生產工作負載的成本。 如需使用此選項的相關需求，請參閱 [SQL Server Azure VM 的價格指引](virtual-machines-windows-sql-server-pricing-guidance.md#byol)。
@@ -78,11 +81,11 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 
 | 版本 | 作業系統 | 版本 |
 | --- | --- | --- |
-| **SQL Server 2019** | Windows Server 2019 | [企業 BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise)，[標準 BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
-| **SQL 伺服器 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
+| **SQL Server 2019** | Windows Server 2019 | [企業 BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise),[標準 BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
+| **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
-| **SQL 伺服器 2012 SP4** |Windows Server 2012 R2 |[企業 BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)，[標準 BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
+| **SQL 伺服器 2012 SP4** |Windows Server 2012 R2 |[企業 BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2),[標準 BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
 可以使用 PowerShell 部署 Azure 門戶中不可用的舊 SQL Server 映射。 若要使用 Powershell 檢視所有可用的映像，請使用下列命令：
 
@@ -99,22 +102,22 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 ### <a name="migrate-your-data"></a>遷移資料
 如果您有現有的資料庫，您會想要將該資料庫移到新佈建的 SQL VM。 如需移轉選項的清單和指引，請參閱 [將資料庫移轉至 Azure VM 上的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 
-## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>使用 Azure 門戶創建和管理 Azure SQL 資源
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>使用 Azure 門戶建立與管理 Azure SQL 資源
 
-Azure 門戶提供一個頁面，您可以在其中管理[所有 Azure SQL 資源](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql)，包括 SQL 虛擬機器。
+Azure 門戶提供一個頁面,您可以在其中管理[所有 Azure SQL 資源](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql),包括 SQL 虛擬機器。
 
-要訪問**Azure SQL 資源**頁，請在 Azure 門戶功能表中選擇**Azure SQL，** 或從任何頁面搜索和選擇**Azure SQL。**
+要造**訪 Azure SQL 資源**頁,請在 Azure 門戶選單中選擇**Azure SQL,** 或從任何頁面搜尋和選擇**Azure SQL。**
 
-![搜索 Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
+![搜尋 Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
-> **Azure SQL**提供了一種快速簡便的方法來訪問所有 SQL 資料庫、彈性池、資料庫伺服器、SQL 託管實例和 SQL 虛擬機器。 Azure SQL 不是服務或資源。 
+> **Azure SQL**提供了一種快速簡便的方法來造訪所有 SQL 資料庫、彈性池、資料庫伺服器、SQL 託管實例和 SQL 虛擬機器。 Azure SQL 不是服務或資源。 
 
-要管理現有資源，請在清單中選擇所需的項。 要創建新的 Azure SQL 資源，請選擇 **" 添加**"。 
+要管理現有資源,請在清單中選擇所需的項。 要建立新的 Azure SQL 資源,請選擇 **「添加**」 。 
 
-![創建 Azure SQL 資源](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
+![建立 Azure SQL 資源](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
-選擇 **+ 添加**後，通過選擇"在任何磁貼上**顯示詳細資訊**"來查看有關不同選項的其他資訊。
+選擇 **+ 添加**後,通過選擇"在任何磁貼上**顯示詳細資訊**「來查看有關不同選項的其他資訊。
 
 ![資料庫磁貼詳細資訊](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
 
@@ -123,7 +126,7 @@ Azure 門戶提供一個頁面，您可以在其中管理[所有 Azure SQL 資�
 - [建立單一資料庫](../../../sql-database/sql-database-single-database-get-started.md)
 - [建立彈性集區](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
 - [建立受控執行個體](../../../sql-database/sql-database-managed-instance-get-started.md)
-- [創建 SQL 虛擬機器](quickstart-sql-vm-create-portal.md)
+- [建立 SQL 虛擬機器](quickstart-sql-vm-create-portal.md)
 
 ## <a name="sql-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL VM 映像重新整理原則
 Azure 只會針對每個支援的作業系統、版本和版次組合，維護一個虛擬機器映像。 這表示經過一段時間會重新整理映像，而且會移除舊的映像。 如需詳細資訊，請參閱 [SQL Server VM 常見問題集](virtual-machines-windows-sql-server-iaas-faq.md#images)的「映像」**** 一節。
@@ -135,10 +138,10 @@ Azure 只會針對每個支援的作業系統、版本和版次組合，維護�
 ### <a name="windows-virtual-machines"></a>Windows 虛擬機器
 * [虛擬機器概觀](../overview.md)
 
-### <a name="storage"></a>存放裝置
-* [微軟 Azure 存儲簡介](../../../storage/common/storage-introduction.md)
+### <a name="storage"></a>儲存體
+* [微軟 Azure 儲存簡介](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 * [虛擬網路概觀](../../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 位址](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [在 Azure 入口網站中建立完整格式的網域名稱](../portal-create-fqdn.md)
@@ -157,7 +160,7 @@ Azure 只會針對每個支援的作業系統、版本和版次組合，維護�
 
 * [Azure 虛擬機器上的 SQL Server 常見問題集](virtual-machines-windows-sql-server-iaas-faq.md)
 
-查看在 IaaS 中的 SQL Server 上運行 N 層應用程式的參考體系結構
+檢視在 IaaS 中的 SQL Server 執行 N 層應用程式的參考架構結構
 
 * [Azure 上具有 SQL Server 的 Windows 多層式架構 (N-tier) 應用程式](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
 * [在多個 Azure 區域中執行多層式架構 (N-Tier) 應用程式以獲得高可用性](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

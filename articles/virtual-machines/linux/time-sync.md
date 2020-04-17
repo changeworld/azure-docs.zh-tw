@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c3571d9ba94e1803259457d473ed3f1669ea67ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330589"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460897"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中的 Linux VM 時間同步
 
@@ -31,7 +30,7 @@ Azure 受到執行 Windows Server 2016 之基礎結構的支援。 Windows Serve
 >
 > 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 電腦時鐘精確度的衡量方式，是依據電腦時鐘與國際標準時間 (UTC) 時間標準的接近程度。 UTC 是由多國的精準原子鐘樣本所定義；原子鐘在 300 年內只會誤差一秒。 但是直接讀取 UTC 需使用專用的硬體。 替代方式為系統將時間伺服器同步為 UTC，並從其他電腦存取以提供延展性和強固性。 每部電腦都有持續運作的時間同步服務，知道需使用哪些時間伺服器，且會定期檢查電腦時鐘是否需要修正，並視需要調整時間。 
 
@@ -71,7 +70,7 @@ Azure 主機會與內部 Microsoft 時間伺服器同步，這些時間伺服器
 
 ### <a name="host-only"></a>僅限主機 
 
-由於 NTP 伺服器 (例如 time.windows.com 和 ntp.ubuntu.com) 為公用，與其同步時間需透過網際網路傳送流量。 不同的資料包延遲會對時間同步的品質產生負面影響。通過切換到僅主機同步來刪除 NTP 有時會提高時間同步結果。
+由於 NTP 伺服器 (例如 time.windows.com 和 ntp.ubuntu.com) 為公用，與其同步時間需透過網際網路傳送流量。 不同的數據包延遲會對時間同步的質量產生負面影響。通過切換到僅主機同步來刪除 NTP 有時會提高時間同步結果。
 
 如果在使用預設設定時發生時間同步問題，切換為僅限主機時間同步為合理的解決方式。 嘗試使用僅限主機同步，確認是否可改善您 VM 上的時間同步結果。 
 
@@ -133,27 +132,27 @@ cat /sys/class/ptp/ptp0/clock_name
 
 ### <a name="chrony"></a>chrony
 
-在 Ubuntu 19.10 和更高版本紅帽企業 Linux 和 CentOS 7.x 上，[計時](https://chrony.tuxfamily.org/)配置為使用 PTP 源時鐘。 較舊的 Linux 版本使用不支援 PTP 源的網路時間協定守護進程 （ntpd），而不是計時版本。 要在這些版本中啟用 PTP，必須使用以下代碼手動安裝和配置 chrony（在 chrony.conf 中）：
+在 Ubuntu 19.10 和更高版本紅帽企業 Linux 和 CentOS 7.x 上,[計時](https://chrony.tuxfamily.org/)配置為使用 PTP 源時鐘。 較舊的 Linux 版本使用不支援 PTP 源的網路時間協定守護程式 (ntpd),而不是計時版本。 在這些版本中啟用 PTP,必須使用以下代碼手動安裝和設定 chrony(在 chrony.conf 中):
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-有關 Ubuntu 和 NTP 的詳細資訊，請參閱[時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。
+有關 Ubuntu 與 NTP 的詳細資訊,請參閱[時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。
 
-有關紅帽和 NTP 的詳細資訊，請參閱[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)。 
+有關紅帽和 NTP 的詳細資訊,請參閱[設定 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)。 
 
-有關計時的詳細資訊，請參閱[使用計時](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
+有關計時的詳細資訊,請參閱[使用計時](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
 
-如果同時啟用了 chrony 和 TimeSync 源，則可以將一個源標記為**首選**，這將另一個源集為備份。 由於 NTP 服務不會更新時鐘的大幅誤差 (除非經過很長的一段時間)，因此 VMICTimeSync 從暫停的 VM 事件復原時鐘的速度會比 NTP 工具更快。
+如果同時啟用了 chrony 和 TimeSync 源,則可以將一個源標記為**首選**,這將另一個源集為備份。 由於 NTP 服務不會更新時鐘的大幅誤差 (除非經過很長的一段時間)，因此 VMICTimeSync 從暫停的 VM 事件復原時鐘的速度會比 NTP 工具更快。
 
-預設情況下，計時加速或減慢系統時鐘以修復任何時間漂移。 如果漂移變得太大，色度無法修復漂移。 為了克服這種情況，可以`makestep`更改 **/etc/chrony.conf**中的參數，以強制時間同步（如果漂移超過指定的閾值）。
+默認情況下,計時加速或減慢系統時鐘以修復任何時間漂移。 如果漂移變得太大,色度無法修復漂移。 為了克服這種情況,可以`makestep`更改 **/etc/chrony.conf**中的參數,以強制時間同步(如果漂移超過指定的閾值)。
 
  ```bash
 makestep 1.0 -1
 ```
 
-在這裡，如果漂移大於 1 秒，計時將強制時間更新。 要應用更改，請重新開機計時服務：
+在這裡,如果漂移大於 1 秒,計時將強制時間更新。 要套用變更,請重新啟動計時服務:
 
 ```bash
 systemctl restart chronyd
@@ -161,7 +160,7 @@ systemctl restart chronyd
 
 ### <a name="systemd"></a>systemd 
 
-在 19.10 之前的 SUSE 和 Ubuntu 版本中，使用[系統組態](https://www.freedesktop.org/wiki/Software/systemd/)時間同步。 有關 Ubuntu 的詳細資訊，請參閱[時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有關 SUSE 的詳細資訊，請參閱[SUSE Linux 企業伺服器 12 SP3 版本資訊](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 節。
+在 19.10 之前的 SUSE 和 Ubuntu 版本中,使用[系統配置](https://www.freedesktop.org/wiki/Software/systemd/)時間同步。 有關 Ubuntu 的詳細資訊,請參閱[時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有關 SUSE 的詳細資訊,請參閱[SUSE Linux 企業伺服器 12 SP3 發行說明](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 節。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: CAF 移轉登陸區域藍圖範例概觀
 description: 適用於 Azure 移轉登陸區域藍圖範例之雲端採用架構 (CAF) 的概觀和結構
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: d0328a590d86677e098504a7498a696697fc38c8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383536"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459860"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構，移轉登陸區域藍圖範例的概觀
 
@@ -24,7 +24,7 @@ CAF 移轉登陸區域藍圖範例會在 Azure 中部署基礎結構資源，供
 
 此環境包含數個 Azure 服務，用來提供完全受到監視的企業級安全治理。 此環境包含：
 
-- [Azure Key Vault](../../../../key-vault/key-vault-overview.md) 執行個體，用來裝載共用服務環境中已部署憑證、金鑰和秘密所使用的祕密
+- [Azure Key Vault](../../../../key-vault/general/overview.md) 執行個體，用來裝載共用服務環境中已部署憑證、金鑰和秘密所使用的祕密
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以確保當您開始進行安全部署時，所有動作和服務皆會記錄到中央位置
 - 部署 [Azure資訊安全中心](../../../../security-center/security-center-intro.md) (標準版)，為您遷移的工作負載提供威脅防護。
 - 部署 [Azure 虛擬網路](../../../../virtual-network/virtual-networks-overview.md)，為您的虛擬機器提供隔離的網路和子網路。

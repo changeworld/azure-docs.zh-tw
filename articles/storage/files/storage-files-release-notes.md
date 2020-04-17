@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113282"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460659"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -63,9 +63,6 @@ Azure 檔案同步代理程式支援下列版本：
 - 支援儲存同步服務與/或儲存帳戶移到其他 Azure 的目錄 (AAD) 租戶
     - Azure 檔案同步現在支援將儲存同步服務和/或儲存帳戶移動到其他資源組、訂閱或 Azure AD 租戶。
     
-- 評估工具目前識別以句點結尾的檔案或目錄
-    - [評估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)已更新,以標識以句點結尾的檔或目錄。 Azure 檔案同步目前不支援以句點結尾的檔案或目錄。要使用[評估工具](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)的更新版本,請安裝[Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)的最新版本。
- 
 - 各種效能與可靠性改進
     - 如果在儲存帳戶上配置了虛擬網路 (VNET) 和防火牆規則,則 Azure 檔共用上的更改檢測可能會失敗。
     - 減少與召回相關的記憶體消耗。 

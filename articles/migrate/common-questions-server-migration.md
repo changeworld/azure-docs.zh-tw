@@ -3,12 +3,12 @@ title: Azure 移轉伺服器移轉常見問題解答
 description: 獲取有關使用 Azure 遷移伺服器遷移遷移電腦的常見問題的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: bf33c276c721f3be16d75b964c2b223e90c2a560
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393803"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529789"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure 遷移伺服器遷移:常見問題
 
@@ -18,6 +18,10 @@ ms.locfileid: "81393803"
 - 有關[Azure 移轉裝置的問題](common-questions-appliance.md)
 - 有關[發現、評估和依賴項可視化](common-questions-discovery-assessment.md)的問題
 - 在[Azure 遷移論壇](https://aka.ms/AzureMigrateForum)中回答問題
+
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>使用 Azure 遷移支援遷移哪些地理位置?
+
+查看[公共](migrate-support-matrix.md#supported-geographies-public-cloud)和政府[雲](migrate-support-matrix.md#supported-geographies-azure-government)的支援地理位置。
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>無代理 VMware 複製如何工作?
 

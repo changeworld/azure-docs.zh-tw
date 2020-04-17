@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c61ba0840b75bff10af1d802a9b90c922ef1f12f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: adb36e14bb7b772d3e28361bdc48d248bd84f41f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415876"
+ms.locfileid: "81458959"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure 預期狀態設定延伸模組處理常式簡介
 
@@ -73,7 +73,7 @@ Azure DSC 延伸模組包含預設設定指令碼，可在將 VM 上線至 Azure
 - 註冊金鑰 - 用於向服務註冊節點的分享金鑰
 - 節點設定名稱 - 要從服務中提取的節點設定 (MOF) 的名稱以設定伺服器角色
 
-此資訊可以在[Azure 門戶](../../automation/automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal)中看到,也可以使用 PowerShell。
+此資訊可以在 Azure 門戶中看到,也可以使用 PowerShell。
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint

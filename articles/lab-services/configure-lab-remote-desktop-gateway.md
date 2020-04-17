@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529413"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460982"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>在 Azure 開發人員測試實驗室中設定實驗室以使用遠端桌面閘道
 在 Azure DevTest 實驗室中,可以為實驗室配置遠端桌面閘道,以確保安全訪問實驗室虛擬機器 (VM),而無需公開 RDP 埠。 該實驗室為您的實驗室使用者提供了一個中心位置,以便查看和連接到他們有權訪問的所有虛擬機。 **"虛擬機**"頁上的 **"連接**"按鈕將建立一個特定於電腦的 RDP 檔案,您可以打開該檔以連接到電腦。 通過將實驗室連接到遠端桌面閘道,您可以進一步自訂 RDP 連接並保護 RDP 連接。 
@@ -64,7 +64,7 @@ Azure 函數處理具有`https://{function-app-uri}/app/host/{lab-machine-name}/
 ## <a name="configure-the-lab-to-use-token-authentication"></a>將實驗室設定為使用權杖認證 
 本節演示如何將實驗室配置為使用支援權杖身份驗證的遠端桌面閘道。 本節不介紹如何設置遠端桌面閘道伺服器場本身。 有關此資訊,請參閱本文末尾的範例[以創建遠端桌面閘道](#sample-to-create-a-remote-desktop-gateway)部分。 
 
-在更新實驗設置之前,請存儲成功執行函數以在實驗室密鑰保管庫中返回身份驗證令牌所需的密鑰。 您可以在 Azure 門戶中的函數**的「管理**」頁中獲取函數鍵值。 有關如何在金鑰保管庫中儲存機密的詳細資訊,請參閱[向金鑰保管庫添加機密](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)。 保存機密的名稱以供以後使用。
+在更新實驗設置之前,請存儲成功執行函數以在實驗室密鑰保管庫中返回身份驗證令牌所需的密鑰。 您可以在 Azure 門戶中的函數**的「管理**」頁中獲取函數鍵值。 有關如何在金鑰保管庫中儲存機密的詳細資訊,請參閱[向金鑰保管庫添加機密](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。 保存機密的名稱以供以後使用。
 
 要查找實驗室金鑰保管庫的 ID,執行以下 Azure CLI 命令: 
 

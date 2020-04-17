@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460642"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array 的最佳作法
 
@@ -199,7 +199,7 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 ### <a name="data-security-and-encryption"></a>資料安全性與加密
 StorSimple Virtual Array 擁有資料安全性和加密功能，可確保資料的機密性和完整性。 在使用這些功能時，建議您遵循下列最佳作法︰ 
 
-* 先定義用來產生 AES-256 加密的雲端儲存體加密金鑰，再將資料從虛擬陣列傳送至雲端。 如果資料一開始就已加密，則不需要此金鑰。 使用金鑰管理系統 (例如 [Azure 金鑰保存庫](../key-vault/key-vault-overview.md)) 即可產生並妥善保存金鑰。
+* 先定義用來產生 AES-256 加密的雲端儲存體加密金鑰，再將資料從虛擬陣列傳送至雲端。 如果資料一開始就已加密，則不需要此金鑰。 使用金鑰管理系統 (例如 [Azure 金鑰保存庫](../key-vault/general/overview.md)) 即可產生並妥善保存金鑰。
 * 通過 StorSimple Manager 服務配置儲存帳戶時,請確保啟用 TLS 模式,以便在 StorSimple 設備和雲端之間創建用於網路通訊的安全通道。
 * 定期重新產生儲存體帳戶的金鑰 (藉由存取 Azure 儲存體服務)，以說明因為系統管理員清單變更而造成的存取權變更。
 * 虛擬陣列上的資料會先壓縮並進行重複資料刪除，再傳送至 Azure。 Windows Server 主機上不建議使用「重複資料刪除」角色服務。

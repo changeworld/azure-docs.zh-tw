@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: genlin
 manager: dcscontentpm
-editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: cce248e2906f4a36737388e8cc7124b1bb19fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058666"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459146"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>檢視與修改主機名稱
 若要允許主機名稱參考您的角色執行個體，您必須在各個角色的服務組態檔中設定主機名稱的值。 請將所需的主機名稱加入至 [角色]**** 元素的 [vmName]**** 屬性。 [vmName]**** 屬性的值可做為每個角色執行個體的主機名稱基底。 例如，如果 [vmName]**** 是 [webrole]**，而該角色有三個執行個體，執行個體的主機名稱會是 *webrole0*、*webrole1* 和 *webrole2*。 您不需要指定組態檔中虛擬機器的主機名稱，因為虛擬機器的主機名稱會根據虛擬機器名稱填入。 如需設定 Microsoft Azure 服務的詳細資訊，請參閱 [Azure 服務組態結構描述 (.cscfg 檔)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -42,7 +41,7 @@ ms.locfileid: "71058666"
 
 1. 確定您有連線到 Azure 入口網站的用戶端憑證 若要取得用戶端憑證，請遵循[做法：下載與匯入發行設定與訂用帳戶資訊](https://msdn.microsoft.com/library/dn385850.aspx)中的步驟。 
 2. 設定名稱為 x-ms-version，值為 2013-11-01 的標頭項目。
-3. 以以下格式發送請求\/：HTTPs： /management.core.windows.net/\<子 id\>/服務/託管服務/\<服務名稱\>？嵌入詳細資訊_true
+3. 以以下格式傳送\/要求 :H/.\<h\>management.core.windows.net//服務/託管服務\</\>服務名稱 ?嵌入詳細資訊_true
 4. 尋找 每個 **RoleInstance** 元素的 **HostName** 元素。
 
 > [!WARNING]

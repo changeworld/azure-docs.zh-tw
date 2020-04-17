@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/22/2018
-ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/16/2020
+ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415897"
+ms.locfileid: "81461044"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure SQL 資料倉儲中
 
@@ -49,13 +49,9 @@ Azure Data Factory 可針對將資料載入 Azure SQL 資料倉儲的作業提�
 
 1. 在左邊選單上,選擇 **「建立資源** > **資料 + 分析** > **資料工廠**」 :
 
-   ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+2. 在 **'新增資料工廠'** 頁上,為以下項目提供值:
 
-2. 在 [新增資料處理站]**** 頁面中，為下圖所示的欄位提供值：
-
-   ![新增資料處理站頁面](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
-
-    * **名稱**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「資料處理站名稱 \"LoadSQLDWDemo\" 無法使用」的錯誤，請為資料處理站輸入其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    * **名稱**: 輸入*LoadSQLDWDemo*的名稱。 數據工廠的名稱必須為 [全域唯一]。 如果收到錯誤「數據工廠名稱」LoadSQLDWDemo"不可用",請輸入數據工廠的其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
     * **訂用帳戶**：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
     * **資源群組**：從下拉式清單中選取現有資源群組，或選取 [新建]**** 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
     * **版本**：選取 [V2]****。
@@ -64,58 +60,57 @@ Azure Data Factory 可針對將資料載入 Azure SQL 資料倉儲的作業提�
 3. 選取 [建立]  。
 4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory]**** 首頁：
 
-   ![Data Factory 首頁](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
+   ![Data Factory 首頁](./media/doc-common-process/data-factory-home-page.png)
 
    選取 [編寫與監視]**** 圖格，以在另一個索引標籤中啟動資料整合應用程式。
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>將資料載入 Azure SQL 資料倉儲
 
-1. 在 [開始使用]**** 頁面中，選取 [複製資料]**** 圖格以啟動複製資料工具：
+1. 在「**開始」** 頁中,選擇 **「複製資料**」磁貼以啟動「複製資料」工具。
 
-   ![複製資料工具圖格](./media/load-azure-sql-data-warehouse/copy-data-tool-tile.png)
-1. 在 [屬性]**** 頁面中，對 [工作名稱]**** 欄位指定 [CopyFromSQLToSQLDW]****，然後選取 [下一步]****：
+1. 在 **「屬性」** 頁中,為**工作名稱欄位**指定**CopyFromSQLToSQLDW,** 然後選擇 **「下一步**」 。
 
     ![屬性頁面](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
 1. 在 [來源資料存放區]**** 頁面中，完成下列步驟：
+    >[!TIP]
+    >在本教學中,您將*SQL 身份驗證*用作源資料儲存的身份驗證類型,但您可以選擇其他受支援的身份驗證方法:*服務主體*和*託管標識*(如果需要)。 有關詳細資訊,請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)中的相應部分。
+    >要安全地儲存數據儲存的機密,還建議使用 Azure 密鑰保管庫。 有關詳細插圖,請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
-    a. 按一下 [+ 建立新連線]****：
-
-    ![來源資料存放區頁面](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
+    a. 按下 **= 建立新連線**。
 
     b. 從資源庫選取 [Azure SQL Database]****，然後選取 [繼續]****。 您可以在搜尋方塊中輸入 "SQL"，以篩選連接器。
 
     ![選取 Azure SQL DB](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. 在 **「新建連結服務」** 頁中,從下拉清單中選擇伺服器名稱和資料庫名稱,並指定使用者名和密碼。 按一下 [測試連線]**** 以驗證設定，然後選取 [完成]****。
+    c. 在 **「新建連結服務」** 頁中,從下拉清單中選擇伺服器名稱和資料庫名稱,並指定使用者名和密碼。 按下 **「測試連線**」以驗證設定,然後選擇 **「創建**」 。
 
     ![設定 Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. 選取新建立的連結服務作為來源，然後按 [下一步]****。
 
-    ![選取來源連結服務](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
-
-1. 在 [選取要從中複製資料的資料表或使用自訂查詢]**** 頁面中，輸入 **SalesLT** 以篩選資料表。 選擇 [(全選)]**** 方塊以讓所有資料表都用於複製，然後選取 [下一步]****：
+1. 在 [選取要從中複製資料的資料表或使用自訂查詢]**** 頁面中，輸入 **SalesLT** 以篩選資料表。 選擇 **(選擇所有)** 方塊以使用複本的所有表,然後選擇 **「下一步**」 。
 
     ![選取來源資料表](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
+1. 在 **「應用篩選器」** 頁中,指定設定或選擇 **「下一步**」 。
+
 1. 在 [目的地資料存放區]**** 頁面中，完成下列步驟：
+    >[!TIP]
+    >在本教學中,您將*SQL 身份驗證*用作目標資料儲存的身份驗證類型,但您可以選擇其他受支援的身份驗證方法:*服務主體*和*託管標識*(如果需要)。 有關詳細資訊,請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties)中的相應部分。
+    >要安全地儲存數據儲存的機密,還建議使用 Azure 密鑰保管庫。 有關詳細插圖,請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
     a. 按一下 [+ 建立新連線]**** 以新增連線
 
-    ![接收資料存放區頁面](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
-
-    b. 從資源庫選取 [Azure SQL 資料倉儲]****，然後選取 [下一步]****。
+    b. 從庫中選擇**Azure 同步分析(以前的 SQL DW),** 然後選擇「**繼續**」。 您可以在搜尋方塊中輸入 "SQL"，以篩選連接器。
 
     ![選取 Azure SQL 資料倉儲](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. 在 **「新建連結服務」** 頁中,從下拉清單中選擇伺服器名稱和資料庫名稱,並指定使用者名和密碼。 按一下 [測試連線]**** 以驗證設定，然後選取 [完成]****。
+    c. 在 **「新建連結服務」** 頁中,從下拉清單中選擇伺服器名稱和資料庫名稱,並指定使用者名和密碼。 按下 **「測試連線**」以驗證設定,然後選擇 **「創建**」 。
 
     ![設定 Azure SQL 資料倉儲](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. 選取新建立的連結服務作為接收端，然後按 [下一步]****。
-
-    ![選取接收連結服務](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
 1. 在 [資料表對應]**** 頁面上檢閱內容，然後選取 [下一步]****。 隨即會顯示智慧型資料表對應。 來源資料表會根據資料表名稱來對應至目的地資料表。 如果有某個來源資料表未存在於目的地中，Azure Data Factory 預設會建立具有相同名稱的目的地資料表。 您也可以將來源資料表對應至現有的目的地資料表。
 
@@ -124,40 +119,36 @@ Azure Data Factory 可針對將資料載入 Azure SQL 資料倉儲的作業提�
 
    ![資料表對應頁面](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. 在 [結構描述對應]**** 頁面上檢閱內容，然後選取 [下一步]****。 系統會根據資料行名稱來進行智慧型資料表對應。 如果您讓 Data Factory 自動建立資料表，而來源和目的地存放區之間有不相容的問題時，系統便會轉換資料類型。 如果來源和目的地資料行之間有不支援的資料類型轉換，您就會在對應的資料表旁看到一則錯誤訊息。
+1. 在 **「列」映射**頁中,查看內容,然後選擇 **「下一步**」。 系統會根據資料行名稱來進行智慧型資料表對應。 如果您讓 Data Factory 自動建立資料表，而來源和目的地存放區之間有不相容的問題時，系統便會轉換資料類型。 如果來源和目的地資料行之間有不支援的資料類型轉換，您就會在對應的資料表旁看到一則錯誤訊息。
 
-    ![結構描述對應頁面](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    ![列對應頁](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
 1. 在 [設定]**** 頁面中，完成下列步驟：
 
-    a. 在 [暫存設定]**** 區段中，按一下 [+ 新增]**** 以新增暫存儲存體。 此儲存體可用來暫存資料，之後再使用 PolyBase 將資料載入到 SQL 資料倉儲。 複製完成後，系統會自動清除 Azure 儲存體中的暫存資料。
+    a. 在 [暫存設定]**** 區段中，按一下 [+ 新增]**** 以新增暫存儲存體。 此儲存體可用來暫存資料，之後再使用 PolyBase 將資料載入到 SQL 資料倉儲。 複製完成後,Azure Blob 儲存中的臨時數據將自動清理。
 
-    ![設定暫存](./media/load-azure-sql-data-warehouse/configure-staging.png)
-
-    b. 在 [新增連結服務]**** 頁面中，選取您的儲存體帳戶，然後選取 [完成]****。
-
-    ![設定 Azure 儲存體](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+    b. 在 **"新建連結服務"** 頁中,選擇儲存帳戶,然後選擇 **"創建"** 以部署連結的服務。
 
     c. 在 [進階設定]**** 區段中，取消選取 [使用類型預設值]**** 選項，然後選取 [下一步]****。
 
     ![設定 PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-1. 在 [摘要]**** 頁面中檢閱設定，然後選取 [下一步]****：
+1. 在**摘要頁面**中,查看設置,然後選擇 **「下一步**」 。
 
     ![摘要頁面](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. 在**部署頁面**上選取 [監視]**** 來監視管線 (工作)：
+1. 在 **「部署」頁**中,選擇 **「監視器」** 以監視管道(任務)。
 
-    ![部署頁面](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 **' 操作'** 列包含用於檢視活動執行詳細資訊與重新執行導管的連結:
+1. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 管管執行成功完成後,選擇**PIPELINE NAME**列下的**CopyFromSQLSQLDW**連結以檢視活動執行詳細資訊並重新執行管道。
 
-    ![監視管線回合](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. 若要檢視與此管線執行相關聯的活動執行，請選取 [動作]**** 資料行中的 [檢視活動執行]**** 連結。 若要切換回 [管線執行] 檢視，請選取頂端的 [管線]**** 連結。 選取 [重新整理]**** 可重新整理清單。
+    [![監視管線回合](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+1. 要切換回管道運行檢視,請選擇頂部的 **「所有管道運行**連結」。 選取 [重新整理]**** 可重新整理清單。
 
     ![監視活動回合](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-1. 若要監視每個複製活動的執行詳細資料，請選取活動監控檢視中 [動作]**** 底下的 [詳細資料]**** 連結。 您可以監視的詳細資料包括從來源複製到接收的資料量、資料輸送量、執行步驟與對應的持續期間，以及所使用的設定：
+1. 要監視每個複製活動的執行詳細資訊,請在活動運行檢視中的活動**名稱**下選擇 **「詳細資訊**」連結(眼鏡圖示)。 您可以監視詳細資訊,例如從源複製到接收器的數據量、數據輸送量、具有相應持續時間的執行步驟以及使用的配置。
+    ![監視活動執行詳細資料](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
-    ![監視活動執行詳細資料](./media/load-azure-sql-data-warehouse/monitor-activity-run-details.png)
+    ![監視活動執行詳細資料](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
 ## <a name="next-steps"></a>後續步驟
 

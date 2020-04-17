@@ -4,12 +4,12 @@ description: 瞭解如何將託管標識用於 Azure 與服務結構。
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415105"
+ms.locfileid: "81461441"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>使用具有服務結構的 Azure 託管識別
 
@@ -57,7 +57,7 @@ Azure 的託管標識基於幾個關鍵概念:
 
 - 刪除或更改分配給應用程式的身份;如果必須進行更改,請提交單獨的部署以先添加新標識分配,然後刪除以前分配的標識分配。 從現有應用程式中刪除標識可能會產生不良影響,包括使應用程式處於不可升級的狀態。 如果需要刪除標識,可以安全地完全刪除應用程式;請注意,這將刪除與應用程式關聯的系統分配標識(如果已定義),並將刪除與分配給應用程式的使用者分配標識的任何關聯。
 
-- 此選項沒有將託管識別的服務交換矩陣支援整合[到 Azure ServiceToken 提供者 。](../key-vault/service-to-service-authentication.md)
+- 此選項沒有將託管識別的服務交換矩陣支援整合[到 Azure ServiceToken 提供者 。](../key-vault/general/service-to-service-authentication.md)
 
 ## <a name="next-steps"></a>後續步驟
 

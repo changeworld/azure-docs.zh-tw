@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 14ff86bc47ab6de55d840c4b986c99caf2d4e99c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545648"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482018"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -55,7 +55,7 @@ ms.locfileid: "80545648"
 > | [DNS 區域參與者](#dns-zone-contributor) | 可讓您管理 Azure DNS 中的 DNS 區域與記錄集，但無法讓您控制誰可存取它們。 | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [網路參與者](#network-contributor) | 可讓您管理網路，但無法存取它們。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [流量管理員參與者](#traffic-manager-contributor) | 可讓您管理「流量管理員」設定檔，但無法控制誰可以存取它們。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **儲存空間** |  |  |
+> | **Storage** |  |  |
 > | [阿維爾貢獻者](#avere-contributor) | 可以創建和管理 Avere vFXT 群集。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere 運算子](#avere-operator) | Avere vFXT 群集用於管理群集 | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [備份參與者](#backup-contributor) | 允許您管理備份服務,但不能建立保管庫並授予其他人存取權限 | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -139,7 +139,7 @@ ms.locfileid: "80545648"
 > | [Intelligent Systems 帳戶參與者](#intelligent-systems-account-contributor) | 可讓您管理「智慧型系統」帳戶，但無法存取它們。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [邏輯應用參與者](#logic-app-contributor) | 允許您管理邏輯應用,但不更改對它們的訪問。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [邏輯應用運算子](#logic-app-operator) | 允許您讀取、啟用和禁用邏輯應用,但不能編輯或更新它們。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
-> | **身分識別** |  |  |
+> | **身份** |  |  |
 > | [受控身分識別參與者](#managed-identity-contributor) | 建立、讀取、更新及刪除使用者指派的身分識別 | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [受控身分識別操作員](#managed-identity-operator) | 讀取及指派使用者指派的身分識別 | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **安全性** |  |  |
@@ -2071,6 +2071,7 @@ Avere vFXT 群集用於管理群集
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 刪除 Blob。 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 Blob 或 blob 清單。 |
+> | 微軟.儲存/儲存帳戶/blob服務/容器/blob/移動/操作 | 將 Blob 從路徑移至另一個路徑 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 寫入 Blob。 |
 > | **NotDataActions** |  |
 > | *無* |  |
@@ -2095,6 +2096,7 @@ Avere vFXT 群集用於管理群集
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -4099,6 +4101,7 @@ ACR 隔離資料寫入者
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
+> | 微軟.混合計算/機器/擴展/寫入 | 安裝或更新 Azure 電弧延伸 |
 > | Microsoft.Insights/alertRules/* | 建立和管理 Insights 警示規則 |
 > | Microsoft.Insights/diagnosticSettings/* | 建立、更新或讀取 Analysis Server 的診斷設定 |
 > | Microsoft.OperationalInsights/* |  |
@@ -4130,6 +4133,7 @@ ACR 隔離資料寫入者
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -5515,6 +5519,7 @@ Azure 哨兵讀取器
 > | --- | --- |
 > | **動作** |  |
 > | 微軟.安全見解/*/閱讀 |  |
+> | 微軟.安全洞察/數據連接器檢查要求/操作 | 檢查使用者授權與授權 |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
 > | Microsoft.OperationalInsights/workspaces/*/read | 檢視紀錄分析資料 |
 > | 微軟.運營洞察/工作空間/連結服務/閱讀 | 取得指定工作區下已連結的服務。 |
@@ -5548,6 +5553,7 @@ Azure 哨兵讀取器
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5589,7 @@ Azure 哨兵回應器
 > | --- | --- |
 > | **動作** |  |
 > | 微軟.安全見解/*/閱讀 |  |
+> | 微軟.安全洞察/數據連接器檢查要求/操作 | 檢查使用者授權與授權 |
 > | 微軟.安全見解/案例/* |  |
 > | 微軟.安全見解/事件/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
@@ -5618,6 +5625,7 @@ Azure 哨兵回應器
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",

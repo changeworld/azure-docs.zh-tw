@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b2fe7e4fbe4830567533053580880315ceface5d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546330"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458874"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>適用於 Windows VM 的 Azure 磁碟加密 
 
@@ -54,7 +54,7 @@ Azure 磁碟加密在第[2 代 VM](generation-2.md#generation-1-vs-generation-2-
   - 要取得權杖以連接到金鑰保管庫,Windows VM 必須能夠連接到 Azure 活動目錄終結點,login.microsoftonline.com \[ \]。
   - 要將加密密鑰寫入密鑰保管庫,Windows VM 必須能夠連接到密鑰保管庫終結點。
   - Windows VM 必須能夠連接到承載 Azure 延伸儲存庫的 Azure 儲存終結點和承載 VHD 檔的 Azure 儲存帳戶。
-  -  如果您的安全性原則會限制從 Azure VM 至網際網路的存取，您可以解析前述的 URI，並設定特定的規則以允許和這些 IP 的輸出連線。 如需詳細資訊，請參閱[防火牆後方的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。    
+  -  如果您的安全性原則會限制從 Azure VM 至網際網路的存取，您可以解析前述的 URI，並設定特定的規則以允許和這些 IP 的輸出連線。 如需詳細資訊，請參閱[防火牆後方的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。    
 
 
 ## <a name="group-policy-requirements"></a>群組原則要求

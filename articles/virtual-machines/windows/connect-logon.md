@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ef62b02e-bf35-468d-b4c3-71b63fe7f409
 ms.service: virtual-machines-windows
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 152df830f11cd5a73235559c5c5d65ced44f22fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4f5df4a76792c64ab92bbe8d6e4b84080fbd8fe
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266763"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459180"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何連接和登入執行 Windows 的 Azure 虛擬機器
 您會使用 Azure 入口網站中的 [連線]**** 按鈕，從 Windows 桌面啟動遠端桌面 (RDP) 工作階段。 首先您必須連線到虛擬機器，然後登入。
@@ -27,10 +26,10 @@ ms.locfileid: "79266763"
 若要從 Mac 連線到 Windows VM，您需要安裝適用於 Mac 的 RDP 用戶端，例如 [Microsoft 遠端桌面](https://aka.ms/rdmac)。
 
 ## <a name="connect-to-the-virtual-machine"></a>連接至虛擬機器
-1. 轉到[Azure 門戶](https://portal.azure.com/)以連接到 VM。 搜索並選擇**虛擬機器**。
+1. 轉到[Azure 門戶](https://portal.azure.com/)以連接到 VM。 搜尋並選取 [虛擬機器]  。
 2. 然後從清單中選取虛擬機器。
-3. 在虛擬機器頁面的開頭，選擇 **"連接**"。
-4. 在 **"連接到虛擬機器"** 頁上，選擇**RDP，** 然後選擇相應的**IP 位址**和**埠號**。 在大部分情況下，就應該使用預設 IP 位址和連接埠。 選擇**下載 RDP 檔**。 如果 VM 已設定 Just-In-Time 原則，您必須先選取 [要求存取]**** 按鈕來要求存取，才能下載 RDP 檔案。 如需 Just-In-Time 原則的詳細資訊，請參閱[使用 Just-In-Time 原則管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。
+3. 在虛擬機頁面的開頭,選擇 **「連接**」。
+4. 在 **'連線到虛擬機器'** 頁上,選擇**RDP,** 然後選擇相關的**IP 位址**與**連接埠號**。 在大部分情況下，就應該使用預設 IP 位址和連接埠。 選取 [下載 RDP 檔案]  。 如果 VM 已設定 Just-In-Time 原則，您必須先選取 [要求存取]**** 按鈕來要求存取，才能下載 RDP 檔案。 如需 Just-In-Time 原則的詳細資訊，請參閱[使用 Just-In-Time 原則管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。
 5. 開啟下載的 RDP 檔案，然後在出現提示時選取 [連線]****。 您會收到警告，表示 `.rdp` 檔案來自未知的發行者。 這是預期行為。 在 [遠端桌面連線]**** 視窗中，選取 [連線]**** 以繼續。
    
     ![未知發行者相關警告的螢幕擷取畫面。](./media/connect-logon/rdp-warn.png)
@@ -55,7 +54,7 @@ ms.locfileid: "79266763"
 
  
 
-如果您正在使用 PowerShell 並安裝了 Azure PowerShell 模組，也可以使用`Get-AzRemoteDesktopFile`Cmdlet 進行連接，如下所示。
+如果您正在使用 PowerShell 並安裝了 Azure PowerShell`Get-AzRemoteDesktopFile`模組,也可以使用 cmdlet 進行連接,如下所示。
 
 此範例會立即啟動 RDP 連線，帶您進行類似上面的提示。
 

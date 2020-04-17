@@ -1,11 +1,10 @@
 ---
-title: 解決 Azure 中共用映射的問題
+title: 解決 Azure 中共用映像的問題
 description: 了解如何針對共用映像資源庫的問題進行疑難排解。
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8ca47912a73a9d6e0502bd7847720154775c631f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 525da84458c889bc2885bc2b07249455b7a6c97a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034664"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460914"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>針對共用映像資源庫進行疑難排解
 

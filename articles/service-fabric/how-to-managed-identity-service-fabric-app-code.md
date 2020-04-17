@@ -3,12 +3,12 @@ title: 將託管識別與應用程式一起使用
 description: 如何在 Azure 服務結構應用程式代碼中使用託管標識來造訪 Azure 服務。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415624"
+ms.locfileid: "81461560"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用服務結構應用程式的託管識別存取 Azure 服務
 
@@ -41,10 +41,6 @@ ms.locfileid: "81415624"
 成功的回應將包含表示結果訪問令牌的 JSON 負載,以及描述它的元數據。 失敗的回應還包括對失敗的解釋。 有關錯誤處理的其他詳細資訊,請參閱下文。
 
 訪問權杖將由 Service Fabric 快取到各個等級(節點、叢集、資源提供程式服務),因此成功的回應並不一定意味著權杖是直接針對使用者應用程式的請求發出的。 令牌的緩存時間將小於其生存期,因此保證應用程式接收有效的權杖。 建議應用程式代碼自行緩存它獲取的任何訪問權杖;緩存鍵應包括(派生)訪問群體。 
-
-
-> [!NOTE]
-> 目前唯一`2019-07-01-preview`接受的 API 版本,可能會更改。
 
 範例要求：
 ```http

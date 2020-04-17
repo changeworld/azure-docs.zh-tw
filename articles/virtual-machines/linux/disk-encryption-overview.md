@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548444"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459775"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -105,7 +105,7 @@ Azure 磁碟加密要求系統上存在 dm-crypt 和 vfat 模組。 從預設映
   - 要取得權杖以連接到金鑰保管庫,Linux VM 必須能夠連接到 Azure 活動目錄終結點,login.microsoftonline.com \[ \]。
   - 要將加密金鑰寫入密鑰保管庫,Linux VM 必須能夠連接到密鑰保管庫終結點。
   - Linux VM 必須能夠連接到承載 Azure 延伸儲存庫的 Azure 儲存終結點和承載 VHD 檔的 Azure 儲存帳戶。
-  -  如果您的安全性原則會限制從 Azure VM 至網際網路的存取，您可以解析前述的 URI，並設定特定的規則以允許和這些 IP 的輸出連線。 如需詳細資訊，請參閱[防火牆後方的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。  
+  -  如果您的安全性原則會限制從 Azure VM 至網際網路的存取，您可以解析前述的 URI，並設定特定的規則以允許和這些 IP 的輸出連線。 如需詳細資訊，請參閱[防火牆後方的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。  
 
 ## <a name="encryption-key-storage-requirements"></a>加密金鑰儲存要求  
 

@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用策略定義為組織中的 Azure 資源建立約定。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314008"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460999"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -89,7 +89,7 @@ Azure 策略為資源建立約定。 策略定義描述資源合規性[條件](#
 - `Microsoft.ContainerService.Data`用於管理[Azure 庫伯內斯服務](../../../aks/intro-kubernetes.md)上的入場控制器規則。 使用此資源提供程式模式的策略**必須**使用[強制重新策略](./effects.md#enforceregopolicy)效果。
 - `Microsoft.Kubernetes.Data`用於在 Azure 上管理自管理的 AKS 引擎庫伯奈斯群集。
   使用此資源提供程式模式的策略**必須**使用[強制OPA約束](./effects.md#enforceopaconstraint)效果。
-- `Microsoft.KeyVault.Data`用於在[Azure 金鑰保管庫](../../../key-vault/key-vault-overview.md)中管理保管庫和證書。
+- `Microsoft.KeyVault.Data`用於在[Azure 金鑰保管庫](../../../key-vault/general/overview.md)中管理保管庫和證書。
 
 > [!NOTE]
 > 資源提供程式模式僅支援內建策略定義,並且在預覽版中不支援計劃。

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459163"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 機器學習發行說明
 
@@ -721,10 +721,10 @@ Azure 機器學習現在是事件網格的資源提供程式,您可以通過 Azu
       + 通過輸入特定的start_time和/或end_time,將僅返回計劃運行的結果;
       + 參數"daily_latest_only"被棄用。
     + 支持檢索基於數據集的數據漂移輸出。
-  + **[azureml 解釋模型](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml 解釋模型**
     + 將 AzureML 解釋模型包重命名為 AzureML 解釋,保持舊包的向後相容性。
     + 修復了 AutoML Bug,原始說明設置為分類任務,默認情況下從解釋用戶端下載時返回。
-    + 新增對直接使用[模擬包裝器](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper)建立[評分說明](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py)器的支援
+    + 新增對直接使用模擬包裝[器建立評分說明](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py)器的支援
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + 提高了大型管道創建的性能。
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
@@ -798,7 +798,7 @@ Azure 機器學習現在是事件網格的資源提供程式,您可以通過 Azu
     + 將[supported_vmsizes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)功能新增了其他 VM 大小欄位(OS 磁碟、GPU 數)
     + 向[list_nodes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--)函數添加了其他欄位,以顯示運行、私有和公共 IP、埠等。
     + 能夠在群集[預配](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)`--remotelogin_port_public_access`期間指定可設置為啟用或禁用的新欄位,具體取決於在創建群集時是保持 SSH 埠打開還是關閉。 如果不指定它,該服務將智慧地打開或關閉埠,具體取決於您是否在 VNet 中部署群集。
-  + **[azureml 解釋模型](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml 解釋模型**
     + 改進了分類方案中解釋輸出的文檔。
     + 添加了在評估示例的解釋上上傳預測 y 值的能力。 解鎖更有用的可視化效果。
     + 向「模擬包裝器」添加了解釋器屬性,以啟用獲取基礎的「模擬解釋器」。

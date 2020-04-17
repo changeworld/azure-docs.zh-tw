@@ -1,51 +1,52 @@
 ---
 title: 在 HDInsight 上使用 Spark MLlib 建立機器學習的範例 - Azure
 description: 了解如何使用 Spark MLlib 建立一個透過羅吉斯迴歸使用分類來分析資料集的機器學習應用程式。
-keywords: spark 機器學習, spark 機器學習範例
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/16/2020
+ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73494088"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531128"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 建置機器學習應用程式及分析資料集
 
-了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 建立機器學習應用程式，以在開啟的資料集上進行簡單的預測性分析。 從 Spark 的內建機器學習程式庫，此範例會透過羅吉斯迴歸使用「分類」**。 
+瞭解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/)創建機器學習應用程式。 應用程式將對打開的數據集進行預測分析。 從 Spark 的內建機器學習程式庫，此範例會透過羅吉斯迴歸使用「分類」**。
 
-MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作的公用程式，包括具有下列用途的公用程式：
+MLlib 是一個核心 Spark 庫,它提供了許多可用於機器學習任務的實用程式,例如:
 
 * 分類
 * 迴歸
 * 叢集
-* 主題模型化
+* 模型化
 * 奇異值分解 (SVD) 和主體元件分析 (PCA)
 * 假設測試和計算範例統計資料
 
 ## <a name="understand-classification-and-logistic-regression"></a>了解分類和羅吉斯迴歸
-分類** 是常見的機器學習工作，是指將輸入資料依類別排序的程序。 它是以分類演算法指出如何為您所提供的輸入資料指派「標籤」的作業。 例如，試想某個機器學習演算法以股市資訊作為輸入，並且將股票分成兩個類別：該賣的股票和該留的股票。
+
+分類** 是常見的機器學習工作，是指將輸入資料依類別排序的程序。 分類演演演算法的工作是找出如何為提供的輸入數據分配" 例如,您可以想到一種機器學習演演演算法,該演演演算法接受庫存資訊作為輸入。 然後把股票分為兩類:你應該賣出的股票和你應該保留的股票。
 
 羅吉斯迴歸是您用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於*二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-總之，羅吉斯迴歸的程序會產生一個*羅吉斯函數* ，此函數可用來預測輸入向量可能屬於哪一個群組的機率。  
+總之,邏輯回歸過程產生*物流功能*。 使用函數預測輸入向量屬於一個組或另一個組的概率。  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品檢查資料的預測分析範例
-在此範例中，您將使用 Spark 對透過[芝加哥市資料入口網站](https://data.cityofchicago.org/) \(英文\) 取得的食品檢查資料 (**Food_Inspections1.csv**) 執行某項預測分析。 此資料集包含在芝加哥進行餐飲業檢查的相關資訊，其中包括每個受檢餐飲業者、發現的違規情事 (如果有的話) 和檢查結果的相關資訊。 與叢集相關聯的儲存體帳戶已有 CSV 資料檔，此叢集位於 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**。
+
+在此示例中,您可以使用 Spark 對食品檢驗數據 **(Food_Inspections1.csv**) 進行一些預測性分析。 透過[芝加哥市資料門戶取得的資料](https://data.cityofchicago.org/)。 此數據集包含有關在芝加哥進行的食品機構檢查的資訊。 包括有關每個機構的資訊、發現的違規行為(如果有)和檢查結果。 與叢集相關聯的儲存體帳戶已有 CSV 資料檔，此叢集位於 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**。
 
 在下列步驟中，您會開發一個模型來觀察能否通過食品檢查的標準為何。
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>建立 Apache Spark MLlib 機器學習應用程式
 
-1. 使用 PySpark 核心建立 Jupyter Notebook。 有關說明，請參閱[創建聚居筆記本](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
+1. 使用 PySpark 核心建立 Jupyter Notebook。 如需指示，請參閱[建立 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
 
-2. 匯入此應用程式所需的類型。 複製以下代碼並將其粘貼到空儲存格中，然後按**SHIFT = ENTER**。
+2. 匯入此應用程式所需的類型。 複製以下代碼並將其貼上至空單中,然後按**SHIFT = ENTER**。
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -55,11 +56,12 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
     from pyspark.sql.functions import UserDefinedFunction
     from pyspark.sql.types import *
     ```
-    由於使用 PySpark 核心，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 和 Hive 內容。 
+
+    由於 PySpark 內核,因此無需顯式創建任何上下文。 當您運行第一個代碼單元時,將自動創建 Spark 和 Hive 上下文。
 
 ## <a name="construct-the-input-dataframe"></a>建構輸入資料框架
 
-由於未經處理資料採用 CSV 格式，因此您可以使用 Spark 內容，將檔案以非結構化文字的形式提取至記憶體中，然後再使用 Python 的 CSV 程式庫剖析每一行資料。
+使用 Spark 上下文將原始 CSV 資料作為非結構化文本放入記憶體。 然後使用 Python 的 CSV 函式庫分析資料的每一行。
 
 1. 請執行下列幾行，透過匯入和剖析輸入資料來建立具有恢復功能的分散式資料集 (RDD)。
 
@@ -71,7 +73,7 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
         value = csv.reader(sio).next()
         sio.close()
         return value
-    
+
     inspections = sc.textFile('/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                     .map(csvParse)
     ```
@@ -104,9 +106,9 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    輸出可讓您了解輸入檔案的結構描述。 它包括每個餐飲業者的名稱、類型，地址，檢查資料和位置等等。 
+    輸出可讓您了解輸入檔案的結構描述。 它包括每個機構的名稱和建立的類型。 此外,地址、檢查數據以及地點等。
 
-3. 執行下列程式碼來建立資料框架 (df**) 和暫存資料表 (CountResults**)，其中具有一些可用於預測分析的資料行。 您可以使用 `sqlContext` 對結構化資料執行轉換。 
+3. 執行下列程式碼來建立資料框架 (df**) 和暫存資料表 (CountResults**)，其中具有一些可用於預測分析的資料行。 `sqlContext`用於對結構化數據進行轉換。
 
     ```PySpark
     schema = StructType([
@@ -114,12 +116,12 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
     StructField("name", StringType(), False),
     StructField("results", StringType(), False),
     StructField("violations", StringType(), True)])
-    
+
     df = spark.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
     df.registerTempTable('CountResults')
     ```
 
-    資料框架中的四個相關資料行為 **id**、**name**、**results** 與 **violations**。
+    資料盒中感興趣的四列是**ID、****名稱**,**結果**與**違規**。
 
 4. 執行下列程式碼，可取得一小部分的資料範例：
 
@@ -178,8 +180,7 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
 
     ![SQL 查詢輸出](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL 查詢輸出")
 
-
-3. 您還可以使用[Matplotlib，](https://en.wikipedia.org/wiki/Matplotlib)一個用於構造資料視覺化的庫，來創建一個繪圖。 因為必須從保存在本機上的 **countResultsdf** 資料框架建立繪圖，所以程式碼片段的開頭必須為 `%%local` magic。 這可確保程式碼是在 Jupyter 伺服器的本機上執行。
+3. 您還可以使用[Matplotlib,](https://en.wikipedia.org/wiki/Matplotlib)一個用於建構數據可視化的庫,來創建一個繪圖。 因為必須從保存在本機上的 **countResultsdf** 資料框架建立繪圖，所以程式碼片段的開頭必須為 `%%local` magic。 此操作可確保代碼在 Jupyter 伺服器上本機執行。
 
     ```PySpark
     %%local
@@ -193,10 +194,6 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
     plt.axis('equal')
     ```
 
-    輸出如下：
-
-    ![火花機器學習應用輸出 - 圓形圖，具有五個不同的檢測結果](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "火花機器學習結果輸出")
-
     若要預測食物檢查結果，您需要根據違規事項來開發模型。 由於羅吉斯迴歸是一種二元分類方法，因此將結果資料分成兩個類別，是很合理的：**不合格**和**通過**：
 
    - 通過
@@ -208,9 +205,9 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
        - 找不到該業者
        - 已結束營業
 
-     其他結果的資料 (「找不到該業者」或「已結束營業」) 並不是很有用處，而且這些資料在結果中所佔的比例非常小。
+     具有其他結果("業務未定位"或"業務外")的數據沒有用處,它們無論如何在結果中占很小的百分比。
 
-4. 執行下列程式碼，可將現有資料框架 (`df`) 轉換為新的資料框架，其中每項檢查都以一組「標籤-違規」來表示。 在此案例中，標籤 `0.0` 代表失敗，標籤 `1.0` 代表成功，標籤 `-1.0` 代表此二者以外的某種結果。 
+4. 執行下列程式碼，可將現有資料框架 (`df`) 轉換為新的資料框架，其中每項檢查都以一組「標籤-違規」來表示。 在這種情況下,表示`0.0`失敗的標籤,`1.0`表示 成功的標籤,`-1.0`以及表示 除這兩個結果之外的某些結果的標籤。
 
     ```PySpark
     def labelForResults(s):
@@ -238,11 +235,11 @@ MLlib 是核心 Spark 程式庫之一，提供許多可用於機器學習工作�
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>從輸入資料框架建立羅吉斯迴歸模型
 
-最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯迴歸演算法的輸入必須是一組「標籤-特性向量配對」**，其中「特性向量」是代表輸入點的數字向量。 因此，您需要將半結構化且包含許多自然語言註解的「違規情事」資料行，轉換成機器可輕易辨識的實數陣列。
+最後的任務是轉換標記的數據。 將資料轉換為可以通過邏輯回歸進行分析的格式。 邏輯回歸演算法的輸入需要一組*標籤特徵向量對*。 其中「要素向量」是表示輸入點的數位向量。 因此,您需要轉換「違規」列,該列是半結構化的,包含許多自由文本註釋。 將列轉換為計算機可以輕鬆理解的實數陣列。
 
-可用來處理自然語言的標準機器學習方法之一，是為每個不同的字指派一個「索引」，然後將向量傳至機器學習演算法，使每個索引的值包含該字在文字字串中出現的相對頻率。
+處理自然語言的標準機器學習方法是為每個不同的單詞指定一個"索引"。 然後將向量傳遞給機器學習演演演算法。 因此,每個索引的值在文本字串中包含該單詞的相對頻率。
 
-MLlib 可提供簡單的方法來執行此作業。 首先，將每個違規情事字串語彙基元化，以取得字串中的個別字。 然後，使用 `HashingTF` 將每組語彙基元轉換為特性向量，接著可以將它傳遞給羅吉斯迴歸演算法以構建模型。 您將使用「管線」循序執行上述所有步驟。
+MLlib 提供了一種簡單的操作方法。 首先，將每個違規情事字串語彙基元化，以取得字串中的個別字。 然後，使用 `HashingTF` 將每組語彙基元轉換為特性向量，接著可以將它傳遞給羅吉斯迴歸演算法以構建模型。 您將使用「管線」循序執行上述所有步驟。
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -255,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>使用另一個資料集來評估模型
 
-您可以使用先前建立的模型，根據所觀察的違規情事，*預測*新的檢查會有何種結果。 您已在資料集 **Food_Inspections1.csv** 上訓練此模型。 您可以使用第二個資料集 **Food_Inspections2.csv**，評估** 此模型對於新資料的強度。 第二個資料集 (**Food_Inspections2.csv**) 在與叢集相關聯的預設儲存體容器中。
+您可以使用之前創建的模型*來預測*新檢查的結果。 預測基於觀察到的違規行為。 您已在資料集 **Food_Inspections1.csv** 上訓練此模型。 您可以使用第二個資料集 **Food_Inspections2.csv**，評估** 此模型對於新資料的強度。 第二個資料集 (**Food_Inspections2.csv**) 在與叢集相關聯的預設儲存體容器中。
 
 1. 執行下列程式碼，可建立新的資料框架 **predictionsDf**，其中包含模型所產生的預測。 該程式碼片段也會根據資料框架，建立暫存資料表 **Predictions**。
 
@@ -269,7 +266,7 @@ model = pipeline.fit(labeledData)
     predictionsDf.columns
     ```
 
-    您應該會看到如下的輸出：
+    您應該會看到如下所示的輸出:
 
     ```
     ['id',
@@ -289,8 +286,9 @@ model = pipeline.fit(labeledData)
     predictionsDf.take(1)
     ```
 
-   針對測試資料集中的第一個項目有一個預測。
-1. `model.transform()` 方法會將相同的轉換套用至具有相同結構描述的任何新資料，並做出關於如何分類資料的預測。 您可以做一些簡單的統計，了解一下預測精準度如何：
+   對測試數據集中的第一個條目進行了預測。
+
+1. `model.transform()` 方法會將相同的轉換套用至具有相同結構描述的任何新資料，並做出關於如何分類資料的預測。 您可以執行一些統計資訊來瞭解預測:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -302,16 +300,17 @@ model = pipeline.fit(labeledData)
     print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
     ```
 
-    輸出顯示如下：
+    輸出看起來會像下列文字：
 
     ```
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
 
-    透過 Spark 使用羅吉斯迴歸，您找出了英文版的違規情事說明與指定企業是否能通過食品檢查之間的關聯性，而建立了兩者關聯性的精確模型。
+    使用 Spark 使用邏輯回歸可以建模英語中違規描述之間的關係。 以及某一企業是否會通過或未能通過食品檢驗。
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>建立預測的視覺表示法
+
 您現在可以建構最終的視覺效果，以利研判此測試的結果。
 
 1. 您可以從擷取稍早建立的 **Predictions** 暫存資料表中不同的預測和結果開始。 下列查詢會將輸出分隔為 *true_positive*、*false_positive*、*true_negative* 和 *false_negative*。 在下面的查詢中，可以使用 `-q` 關閉視覺效果，並 (使用 `-o`) 將輸出儲存為可和 `%%local` magic 搭配使用的資料框架。
@@ -352,26 +351,31 @@ model = pipeline.fit(labeledData)
 
     您應該會看見下列輸出：
 
-    ![火花機器學習應用輸出 - 圓形圖失敗食品檢查的百分比。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "火花機器學習結果輸出")
+    ![火花機器學習應用輸出 - 餅圖失敗食品檢查的百分比。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "火花機器學習結果輸出")
 
     在此圖中，「肯定」結果是指未通過的食品檢查，否定結果則是指通過的檢查。
 
 ## <a name="shut-down-the-notebook"></a>關閉 Notebook
-應用程式執行完畢之後，您應該關閉 Notebook 以釋放資源。 若要這麼做，請從 Notebook 的 [檔案]**** 功能表中，選取 [關閉並終止]****。 這樣會關機並關閉 Notebook。
 
-## <a name="see-also"></a><a name="seealso"></a>另請參閱
+應用程式執行完畢之後，您應該關閉 Notebook 以釋放資源。 若要這麼做，請從 Notebook 的 [檔案]  功能表中，選取 [關閉並終止]  。 此動作會關機並且關閉 Notebook。
+
+## <a name="next-steps"></a>後續步驟
+
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>案例
-* [Apache Spark 和 BI：在 HDInsight 中搭配 BI 工具使用 Spark 執行互動式資料分析](apache-spark-use-bi-tools.md)
+
+* [帶 BI 的 Apache Spark:使用 HDInsight 中的 Spark 與 BI 工具進行互動式資料分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和機器學習服務：使用 HDInsight 中的 Spark，使用 HVAC 資料來分析建築物溫度](apache-spark-ipython-notebook-machine-learning.md)
 * [在 HDInsight 中使用 Apache Spark 進行網站記錄分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>建立及執行應用程式
+
 * [使用 Scala 建立獨立應用程式](apache-spark-create-standalone-application.md)
 * [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和擴充功能
+
 * [使用 IntelliJ IDEA 的 HDInsight Tools 外掛程式來建立和提交 Spark Scala 應用程式](apache-spark-intellij-tool-plugin.md)
 * [使用適用於 IntelliJ IDEA 的 HDInsight 工具外掛程式遠端偵錯 Apache Spark 應用程式](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](apache-spark-zeppelin-notebook.md)
@@ -380,5 +384,6 @@ model = pipeline.fit(labeledData)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理資源
+
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](apache-spark-resource-manager.md)
 * [追蹤和偵錯在 HDInsight 中的 Apache Spark 叢集上執行的作業](apache-spark-job-debugging.md)

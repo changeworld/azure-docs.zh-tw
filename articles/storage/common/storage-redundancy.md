@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379948"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481947"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -160,7 +160,7 @@ Microsoft 繼續在其他 Azure 區域中啟用 GZRS 和 RA-GZRS。 定期查看
 
 <sup>2</sup>有關儲存帳戶類型的資訊,請參閱[儲存帳戶概述](storage-account-overview.md)。
 
-根據存儲帳戶的冗餘選項複製所有類型的存儲帳戶的所有數據。 將複製物件,包括塊 Blob、追加 Blob、頁面 Blob、佇列、表和檔。
+根據存儲帳戶的冗餘選項複製所有類型的存儲帳戶[和所有層(包括存檔)](../blobs/storage-blob-storage-tiers.md)的所有數據。 將複製物件,包括塊 Blob、追加 Blob、頁面 Blob、佇列、表和檔。
 
 有關每個冗餘選項的定價資訊,請參閱[Azure 儲存定價](https://azure.microsoft.com/pricing/details/storage/)。
 

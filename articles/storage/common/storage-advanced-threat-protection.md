@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251685"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482102"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>為 Azure 儲存設定進階威脅保護
 
@@ -27,9 +27,7 @@ Azure 儲存的先進威脅保護提供額外的安全智慧式,用於偵測存�
 
 ## <a name="availability"></a>可用性
 
-Azure 儲存的進階威脅保護目前僅適用於 Blob[儲存](https://azure.microsoft.com/services/storage/blobs/)。 
-
-此服務在所有公共雲和美國政府雲中都可用,但沒有其他主權或 Azure 政府雲區域。
+Azure 儲存的進階威脅保護目前僅適用於 Blob[儲存](https://azure.microsoft.com/services/storage/blobs/)。 支援進階威脅保護的帳戶類型包括通用 v2、塊 Blob 和 Blob 儲存帳戶。 高級威脅防護在所有公共雲和美國政府雲中都可用,但在其他主權或 Azure 政府雲區域中不可用。
 
 有關定價詳細資訊(包括 30 天免費試用版),請參閱[Azure 安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
