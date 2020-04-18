@@ -9,41 +9,33 @@
       href: whats-new.md
 - name: 快速入門
   items:
-    - name: 使用 Web 入口網站
+    - name: 建置分類器
       items:
-        - name: 建置分類器
+        - name: 使用 Web 入口網站
           href: getting-started-build-a-classifier.md
-        - name: 建置物件偵測器
-          href: get-started-build-detector.md
-    - name: 使用 .NET SDK
-      items:
-        - name: 影像分類
+        - name: 使用 .NET SDK
           href: csharp-tutorial.md
-        - name: 物件偵測
-          href: csharp-tutorial-od.md
-    - name: 使用 Python SDK
-      items:
-        - name: 影像分類
+        - name: 使用 Python SDK
           href: python-tutorial.md
-        - name: 物件偵測
-          href: python-tutorial-od.md
-    - name: 使用 Java SDK
-      items:
-        - name: 影像分類
+        - name: 使用 Java SDK
           href: java-tutorial.md
-        - name: 物件偵測
-          href: java-tutorial-od.md
-    - name: 使用 Node.js SDK
-      items:
-        - name: 影像分類
+        - name: 使用 Node.js SDK
           href: node-tutorial.md
-        - name: 物件偵測
-          href: node-tutorial-object-detection.md
-    - name: 使用 Go SDK
-      items:
-        - name: 影像分類
+        - name: 使用 Go SDK
           href: go-tutorial.md
-        - name: 物件偵測
+    - name: 建置物件偵測器
+      items:
+        - name: 使用 Web 入口網站
+          href: get-started-build-detector.md
+        - name: 使用 .NET SDK
+          href: csharp-tutorial-od.md
+        - name: 使用 Python SDK
+          href: python-tutorial-od.md
+        - name: 使用 Java SDK
+          href: java-tutorial-od.md
+        - name: 使用 Node.js SDK
+          href: node-tutorial-object-detection.md
+        - name: 使用 Go SDK
           href: go-tutorial-object-detection.md
 - name: 教學課程
   items:
