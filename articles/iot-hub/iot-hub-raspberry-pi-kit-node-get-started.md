@@ -1,6 +1,6 @@
 ---
-title: 將樹莓派連接到雲中的 Azure IoT 中心（Node.js）
-description: 瞭解如何在本教程中設置和連接樹莓派到樹莓派的 Azure IoT 中心，將資料發送到 Azure 雲平臺。
+title: 將樹莓派連接到雲中的 Azure IoT 中心(Node.js)
+description: 瞭解如何在本教程中設置和連接樹莓派到樹莓派的 Azure IoT 中心,將數據發送到 Azure 雲平臺。
 author: wesmc7777
 manager: eliotgra
 keywords: azure iot raspberry pi, raspberry pi iot 中樞, raspberry pi 將資料傳送至雲端, raspberry pi 至 cloud
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371491"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640522"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 連接至 Azure IoT Hub (Node.js)
 
@@ -94,7 +94,7 @@ ms.locfileid: "79371491"
 
 1. 下載 Raspbian。
 
-   a. [帶桌面的拉斯普比布斯特](https://www.raspberrypi.org/downloads/raspbian/)（.zip檔）。
+   a. [帶桌面的拉斯普比布斯特](https://www.raspberrypi.org/downloads/raspbian/)(.zip檔)。
 
    b. 將 Raspbian 映像解壓縮到您電腦上的資料夾。
 
@@ -116,9 +116,9 @@ ms.locfileid: "79371491"
 
 1. 將 Pi 連接至監視器、鍵盤及滑鼠。
 
-2. 啟動 Pi，然後使用`pi`使用者名和`raspberry`密碼登錄 Raspbian。
+2. 啟動 Pi,然後`pi`使用 使用者`raspberry`名稱和密碼登錄 Raspbian。
 
-3. 點擊樹莓圖示>**偏好** > **樹莓派配置**。
+3. 點擊樹莓圖示>**偏好** > **樹莓派設定**。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "79371491"
 
 ### <a name="connect-the-sensor-to-pi"></a>將感應器連接至 Pi
 
-使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果沒有感應器，[請跳過此部分](#connect-pi-to-the-network)。
+使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果沒有感應器,[請跳過此部份](#connect-pi-to-the-network)。
 
 ![Raspberry Pi 和感應器連接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
@@ -148,7 +148,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 | LED VDD (針腳 18F)        | GPIO 24 (針腳 18)       | 白色纜線   |
 | LED GND (針腳 17F)        | GND (針腳 20)           | 黑色纜線   |
 
-按一下以查看[樹莓派 2 & 3 針映射](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi)，供參考。
+按下以查看[樹莓派 2 & 3 針映射](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi),供參考。
 
 將 BME280 成功連接至 Raspberry Pi 之後，應該如下圖所示。
 
@@ -156,7 +156,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
 ### <a name="connect-pi-to-the-network"></a>將 Pi 連線到網路
 
-透過 micro USB 纜線和電源供應器來開啟 Pi。 使用乙太網路纜線將 Pi 連接到有線網路，或遵循來自 Raspberry Pi Foundation 的[指示](https://www.raspberrypi.org/learning/software-guide/wifi/)，將 Pi 連接到無線網路。 在 Pi 成功連線到網路之後，您需要記下 [Pi 的 IP 位址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
+透過 micro USB 纜線和電源供應器來開啟 Pi。 使用乙太網路纜線將 Pi 連接到有線網路，或遵循來自 Raspberry Pi Foundation 的[指示](https://www.raspberrypi.org/documentation/configuration/wireless/)，將 Pi 連接到無線網路。 在 Pi 成功連線到網路之後，您需要記下 [Pi 的 IP 位址](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)。
 
 ![已連接到有線網路](./media/iot-hub-raspberry-pi-kit-node-get-started/5-power-on-pi.png)
 
@@ -192,7 +192,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
    node -v
    ```
 
-   如果版本低於 10.x，或者 Pi 上沒有 Node.js，請安裝最新版本。
+   如果版本低於 10.x,或者 Pi 上沒有 Node.js,請安裝最新版本。
 
    ```bash
    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
@@ -229,7 +229,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
    如果**沒有感應器**，請將 `simulatedData` 值設定為 `true`，使範例應用程式建立和使用模擬感應器資料。
 
-   *注意：預設情況下，本教程中使用的 i2c 位址為 0x77。根據您的配置，它也可能為 0x76：如果您遇到 i2c 錯誤，請嘗試將值更改為 118，並查看該值是否效果更好。要查看感應器使用的位址，請以樹莓派上的`sudo i2cdetect -y 1`外殼運行*
+   *注意:默認情況下,本教程中使用的 i2c 位址為 0x77。根據您的配置,它也可能為 0x76:如果您遇到 i2c 錯誤,請嘗試將值更改為 118,並查看該值是否效果更好。要檢視感測器使用的位址,請以樹莓派上的`sudo i2cdetect -y 1`外殼運行*
 
 2. 輸入 Control-O > 按 Enter 鍵 > Control-X 來儲存並結束。
 
@@ -250,12 +250,12 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
 ## <a name="read-the-messages-received-by-your-hub"></a>閱讀中心收到的消息
 
-監視 IoT 中心從設備接收的消息的一種方法是使用 Azure IoT 工具進行視覺化工作室代碼。 要瞭解更多資訊，請參閱[使用 Azure IoT 工具進行視覺化工作室代碼，在設備和 IoT 中心之間發送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+監視 IoT 中心從設備接收的消息的一種方法是使用 Azure IoT 工具進行可視化工作室代碼。 要瞭解更多資訊,請參閱[使用 Azure IoT 工具進行視覺化工作室碼,在裝置和 IoT 中心之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有關處理設備發送資料的更多方法，請繼續執行下一節。
+有關處理設備發送數據的更多方法,請繼續執行下一節。
 
 ## <a name="next-steps"></a>後續步驟
 
-您已運行一個應用程式範例來收集感應器資料並將其發送到 IoT 中心。
+您已執行一個範例應用程式來收集感測器資料並將其發送到IoT中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

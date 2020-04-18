@@ -1,35 +1,32 @@
 ---
 title: iOS 上的驗證憑證的認證 ─ Azure 的動作目錄
-description: 了解在有 iOS 裝置的解決方案中，設定憑證式驗證的支援案例和需求
+description: 瞭解受支援的專案以及使用 iOS 裝置的解決方案中設定 Azure 活動目錄的驗證要求
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 76c5e18a0bf84e96476eafd7ff35398049f1a492
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407274"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639621"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上的 Azure Active Directory 憑證式驗證
 
-在連線至下列項目時，iOS 裝置可以使用憑證式驗證 (CBA) 向 Azure Active Directory 進行驗證 (透過其裝置上的用戶端憑證)：
+為了提高安全性,iOS 設備在連接到以下應用程式或服務時,可以使用基於證書的身份驗證 (CBA) 使用其設備上的用戶端證書對 Azure 活動目錄 (Azure AD) 進行身份驗證:
 
 * Office 行動應用程式，例如 Microsoft Outlook 與 Microsoft Word
 * Exchange ActiveSync (EAS) 用戶端
 
-設定這項功能之後，就不需要在行動裝置上的特定郵件和 Microsoft Office 應用程式中，輸入使用者名稱和密碼的組合。
+使用證書無需在行動裝置上的某些郵件和Microsoft Office應用程式中輸入使用者名和密碼組合。
 
-本主題為您提供了在 iOS 設備上為 Office 365 企業、商業、教育、美國政府、中國和德國計劃中租戶使用者配置 CBA 的要求和支援的方案。
-
-在 Office 365 US Government Defense 和 Federal 方案中，這項功能處於預覽版。
+本文詳細介紹了在 iOS 設備上配置 CBA 的要求和支援的方案。 適用於 iOS 的 CBA 可在 Azure 公共雲、微軟政府雲、微軟雲德國和微軟 Azure 中國 21Vianet 之間使用。
 
 ## <a name="microsoft-mobile-applications-support"></a>Microsoft 行動應用程式支援
 
@@ -48,38 +45,48 @@ ms.locfileid: "81407274"
 
 ## <a name="requirements"></a>需求
 
-裝置作業系統版本必須是 iOS 9 和更新版本
+要將 CBA 與 iOS 一起使用,請執行以下要求和注意事項:
 
-必須設定同盟伺服器。
+* 設備作業系統版本必須為 iOS 9 或以上。
+* iOS 上的 Office 應用程式都需要 Microsoft Authenticator。
+* 必須在包含 ADFS 伺服器身份驗證 URL 的 macOS 鑰匙串中創建標識首選項。 關於詳細資訊,請參閱在[Mac 上的鑰匙串存取建立識別首選項](https://support.apple.com/guide/keychain-access/create-an-identity-preference-kyca6343b6c9/mac)。
 
-iOS 上的 Office 應用程式都需要 Microsoft Authenticator。
+以下活動目錄來聯合服務 (ADFS) 要求與注意事項適用:
 
-ADFS 權杖必須要有下列宣告，Azure Active Directory 才能撤銷用戶端憑證︰
+* 必須啟用 ADFS 伺服器進行憑證身份驗證並使用聯合身份驗證。
+* 憑證必須使用增強金鑰使用 (EKU) 並在*主題替代名稱 (NT 主體名稱)* 中包含使用者的 UPN。
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (用戶端憑證的序號)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (用戶端憑證的簽發者字串)
+## <a name="configure-adfs"></a>設定 ADFS
 
-如果 ADFS 權杖 (或任何其他 SAML 權杖) 中有上述宣告，Azure Active Directory 就會將這些宣告新增至重新整理權杖。 當需要驗證重新整理權杖時，這項資訊會用於檢查撤銷。
+對於 Azure AD 以撤銷用戶端證書,ADFS 權杖必須具有以下聲明。 Azure AD 如果這些聲明在 ADFS 權杖(或任何其他 SAML 權杖)中可用,則它們將這些聲明添加到刷新權杖中。 當需要驗證刷新權杖時,此資訊用於檢查吊銷:
 
-最佳做法是應該以下列資訊來更新組織的 ADFS 錯誤頁面︰
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`- 新增客戶端憑證的序列號
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`- 新增客戶端憑證簽發者字串
 
-* 在 iOS 上安裝 Microsoft Authenticator 的需求
+最佳做法是,您還應使用以下資訊更新組織的 ADFS 錯誤頁:
+
+* 在 iOS 上安裝 Microsoft 身份驗證器的要求。
 * 如何取得使用者憑證的指示。
 
-如需詳細資訊，請參閱[自訂 AD FS 登入頁面](https://technet.microsoft.com/library/dn280950.aspx)。
+有關詳細資訊,請參閱自訂[AD FS 登入頁](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 應用(啟用了現代身份驗證)在其請求中向 Azure AD 發送「*提示」登錄*」。。 預設情況下,Azure AD 在請求 ADFS 時將「*提示=登入*」轉換為「*哇*」(要求 ADFS 執行 U/P Auth)和 *「wfresh_0」(* 要求 ADFS 忽略 SSO 狀態並進行新的身份驗證)。 如果您想要啟用這些應用程式的憑證型驗證，您必須修改預設的 Azure AD 行為。 只需將聯合域設置中的「*提示登錄行為*」設置為「*已禁用*」。
-您可以使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) Cmdlet 來執行這項工作︰
+## <a name="use-modern-authentication-with-office-apps"></a>將現代身份驗證與 Office 應用一起使用
 
-`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+啟用了新身份驗證的某些`prompt=login`Office 應用在其請求中發送到 Azure AD。 預設情況下,Azure AD`prompt=login`將 請求中轉換為`wauth=usernamepassworduri`ADFS( 要求 ADFS 執行`wfresh=0`U/P Auth)和 (要求 ADFS 忽略 SSO 狀態並執行新的身份驗證)。 如果要為這些應用啟用基於證書的身份驗證,請修改預設的 Azure AD 行為。
 
-## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync 用戶端支援
+要更新預設行為,請將聯合域設置中的「*提示登錄行為*」設置為 *「已禁用*」。。 您可以使用[MSOLDomain 聯邦設定](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)cmdlet 執行此工作,如以下範例所示:
 
-iOS 9 或更新版本支援原生 iOS 郵件用戶端。 針對其他所有 Exchange ActiveSync 應用程式，若要判斷這項功能是否受支援，請連絡您的應用程式開發人員。
+```powershell
+Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled
+```
+
+## <a name="support-for-exchange-activesync-clients"></a>支援 Exchange ActiveSync 用戶端
+
+iOS 9 或更新版本支援原生 iOS 郵件用戶端。 要確定所有其他 Exchange ActiveSync 應用程式是否支援此功能,請與應用程式開發人員聯繫。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您想要在環境中設定憑證式驗證，相關指示請參閱[在 Android 上開始使用憑證式驗證](../authentication/active-directory-certificate-based-authentication-get-started.md)。
+要在環境中配置基於證書的身份驗證,請參閱[開始使用基於證書的身份驗證](active-directory-certificate-based-authentication-get-started.md)獲取說明。
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

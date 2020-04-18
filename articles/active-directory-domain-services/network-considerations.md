@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408823"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639984"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 網域服務的虛擬網路設計注意事項和設定選項
 
@@ -109,10 +109,11 @@ Azure AD DS 需要以下網路安全組規則才能提供身份驗證和管理�
 | 443         | TCP      | Azure ActiveDirectory 網域服務 | 任意         | Allow  | 是      | 與 Azure AD 租戶同步。 |
 | 3389        | TCP      | 公司網路鋸                         | 任意         | Allow  | 是      | 管理您的域。 |
 | 5986        | TCP      | Azure ActiveDirectory 網域服務 | 任意         | Allow  | 是      | 管理您的域。 |
-| 636         | TCP      | 任意                                | 任意         | Allow  | 否       | 僅在配置安全 LDAP (LDAPS) 時啟用。 |
 
 > [!WARNING]
 > 不要手動編輯這些網路資源和配置。 將配置錯誤的網路安全組或使用者定義的路由表與部署 Azure AD DS 的子網相關聯時,可能會中斷 Microsoft 的服務和管理域的能力。 Azure AD 租戶和 Azure AD DS 託管域之間的同步也會中斷。
+>
+> 如果使用安全 LDAP,則可以添加所需的 TCP 埠 636 規則,以根據需要允許外部流量。 添加此規則不會將網路安全組規則置於不受支援的狀態。 有關詳細資訊,請參閱[鎖定網路上的安全 LDAP 訪問](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
 > 網路安全組還存在 *「允許VnetInBound」、「**允許Azure載入平衡」、**拒絕「已綁定*」、「*允許VnetOut」、**允許網路出界*和 *「拒絕全部出界」* 的預設規則。 不要編輯或刪除這些預設規則。
 >

@@ -1,5 +1,5 @@
 ---
-title: 管理使用者分配的託管標識 - Azure CLI - Azure AD
+title: 管理使用者配置的託管識別 - Azure CLI - Azure AD
 description: 如何使用 Azure CLI 建立、列出和刪除使用者指派之受控識別的逐步說明。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266581"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639766"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 建立、列出和刪除使用者指派的受控識別
 
@@ -37,6 +37,12 @@ ms.locfileid: "79266581"
     - 從 Azure 入口網站使用 [Azure Cloud Shell](../../cloud-shell/overview.md) (請參閱下一節)。
     - 請透過每個程式碼區塊右上角的 [立即試用] 按鈕，使用內嵌的 Azure Cloud Shell。
     - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 或更新版本)。 使用 `az login` 登入 Azure，使用與 Azure 訂用帳戶相關聯的帳戶，而您要以此帳戶部署使用者指派受控識別。
+
+
+> [!NOTE]
+> 為了在使用 CLI 使用應用 servivce 主體時修改使用者許可權,您必須在 Azure AD 圖形 API 中提供服務主體附加許可權,因為 CLI 的一部分對圖形 API 執行 GET 請求。 否則,您可能會最終收到"完成操作的許可權不足"消息。 為此,您需要進入 Azure 活動目錄中的應用註冊,選擇應用、按一下 API 許可權、向下滾動並選擇 Azure 活動目錄圖。 在此處選擇應用程式許可權,然後添加相應的許可權。 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

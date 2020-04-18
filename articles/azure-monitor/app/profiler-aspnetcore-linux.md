@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671710"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640963"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
@@ -47,7 +47,7 @@ ms.locfileid: "77671710"
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. 在Program.cs中啟用應用程式見解：
+1. 在Program.cs中啟用應用程式的解解:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -56,7 +56,7 @@ ms.locfileid: "77671710"
             .UseStartup<Startup>();
     ```
     
-1. Startup.cs啟用探測器：
+1. Startup.cs啟用探查器:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -150,7 +150,7 @@ ms.locfileid: "77671710"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>新增 Application Insights 以監視您的 Web 應用程式
 
-1. [創建應用程式見解資源](./../../azure-monitor/app/create-new-resource.md )。
+1. [建立應用程式的解取資源](./../../azure-monitor/app/create-new-resource.md )。
 
 2. 複製 Application Insights 資源的 **iKey** 值，並在您的 Web 應用程式中進行下列設定：
 
@@ -168,10 +168,6 @@ ms.locfileid: "77671710"
 
     ![檢視分析工具追蹤](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>已知問題
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>現在設定檔按鈕對 Linux 探測器不起作用
-Linux 版本的應用見解探測器還不支援使用"立即設定檔"按鈕進行按需分析。
 
 
 ## <a name="next-steps"></a>後續步驟

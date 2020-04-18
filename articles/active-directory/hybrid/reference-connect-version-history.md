@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/03/2020
+ms.date: 04/17/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998755"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639637"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -55,6 +55,15 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 
 ### <a name="fixed-issues"></a>已修正的問題
 如果啟用了組篩選功能並使用 mS-DS-一致性 Guid 作為源錨點,則此修補程式生成修復了內部版本 1.5.18.0 的問題。
+
+> [!IMPORTANT]
+> 如果使用 mS-DS-一致性 Guid 作為源錨點,並且已**克隆了 AD - 組加入**同步規則並計劃升級,則作為升級的一部分完成以下步驟:
+> 1. 在升級期間,取消選中選項 **「在設定完成時啟動同步過程**」。。
+> 2. 編輯複製的檔案同步規則並新增以下兩個轉換:
+>     - 將直接流`objectGUID`設定`sourceAnchorBinary`為 。
+>     - 將表示式流`ConvertToBase64([objectGUID])`設定`sourceAnchor`為 。     
+> 3. 使用`Set-ADSyncScheduler -SyncCycleEnabled $true`啟用計畫程式。
+
 
 ## <a name="15180"></a>1.5.18.0
 
@@ -1057,7 +1066,7 @@ AD FS 管理
 ## <a name="113800"></a>1.1.380.0
 發行日期︰2016 年 12 月
 
-**修正的問題︰**
+**已修復問題:**
 
 * 修正此組建中遺漏 Active Directory Federation Services (AD FS) 之 issuerid 宣告規則的問題。
 
@@ -1071,7 +1080,7 @@ AD FS 管理
 
 * 此組建中遺漏 ADFS 的 issuerid 宣告規則。 如果您要讓多個網域與 Azure Active Directory (Azure AD) 同盟，就必須要有此 issuerid 宣告規則。 如果您使用 Azure AD Connect 來管理您的內部部署 ADFS 部署，則升級至此組建將會從 ADFS 組態中移除現有的 issuerid 宣告規則。 您可以在安裝/升級之後新增 issuerid 宣告規則來解決此問題。 如需有關新增 issuerid 宣告規則的詳細資料，請參閱[與 Azure AD 同盟的多網域支援](how-to-connect-install-multiple-domains.md)上的此文章。
 
-**修正的問題︰**
+**已修復問題:**
 
 * 如果未開啟連接埠 9090 供輸出連線，Azure AD Connect 安裝或升級就會失敗。
 

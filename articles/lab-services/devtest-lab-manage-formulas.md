@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 4f8c8d4ff0a8014fe0b9a6ae4aead35ec7df4bf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce980167cd88adfada1aa294aafa885184565799
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501959"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641152"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure DevTest Labs 公式
 
@@ -38,18 +38,18 @@ ms.locfileid: "79501959"
 ### <a name="create-a-formula-from-a-base"></a>從基底建立公式
 下列步驟會引導您完成從自訂映像、Marketplace 映像或其他公式建立公式的程序。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 
 3. 從實驗室清單中，選取所需的實驗室。  
 
-4. 在實驗室的頁面上，選擇左側功能表上的**公式（可重用基礎）。**
+4. 在實驗室的頁面上,選擇左側功能表上的**公式(可重用基礎)。**
 5. 在 [公式]**** 頁面上，選取 [+新增]****。
    
     ![加入公式](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. 在 **"選擇基本**頁"中，選擇要從中創建公式的基礎（自訂圖像或應用商店映射）。
+6. 在 **「選擇基本**頁」中,選擇要從中創建公式的基礎(自定義圖像或應用商店映射)。
 7. 在 [建立公式]**** 頁面的 [基本設定]**** 索引標籤上，指定下列值：
    
     * **公式名稱** - 輸入公式的名稱。 當您建立 VM 時，這個值會在顯示在基本映像清單中。 輸入名稱時會立即驗證，如果無效，則會出現訊息指出有效名稱的需求。
@@ -57,12 +57,12 @@ ms.locfileid: "79501959"
     * **使用者名稱** - 輸入被授與系統管理員權限的使用者名稱。
     * **密碼** - 從下拉式清單中輸入或選取一個值，該值與您想用於指定使用者的密碼相關聯。 若要深入了解如何在金鑰保存庫中儲存祕密以及在建立實驗室資源時使用它們，請參閱[在 Azure Key Vault 中儲存祕密](devtest-lab-store-secrets-in-key-vault.md)。
 
-        如果要使用 Azure 金鑰保存庫中的秘密而不是使用密碼，請選擇 **"使用已保存的金鑰**"。 
-    * **虛擬機器大小**- 選擇 **"更改大小"** 以更改 VM 的大小。 
-    - **OS 磁片類型**- 選擇要使用的磁片類型（標準硬碟、標準 SSD 或高級 SSD）。
+        如果要使用 Azure 金鑰保管庫中的秘密而不是使用密碼,請選擇 **「使用已儲存的密鑰**」。 
+    * **虛擬機器大小**-選擇 **"更改大小"** 以更改 VM 的大小。 
+    - **OS 磁碟型態**-選擇要使用的磁碟類型(標準硬碟、標準 SSD 或進階 SSD)。
     * **成品** - 選取 [新增或移除成品]**** 頁面，在其中選取並設定您想要新增到基底映像中的成品。 如需構件的詳細資訊，請參閱[建立 Azure DevTest Labs 虛擬機器的自訂構件](devtest-lab-artifact-author.md)。
 
-        ![基本設置頁面](./media/devtest-lab-create-formulas/basic-settings.png)
+        ![基本設定頁面](./media/devtest-lab-create-formulas/basic-settings.png)
 8. 切換 [進階設定]**** 索引標籤，然後指定下列值：
     - **虛擬網路** - 若要變更虛擬網路，請選取 [變更 Vnet]****。 
     - **子網路** - 若要變更子網路，請選取 [變更子網路]****。 
@@ -70,7 +70,7 @@ ms.locfileid: "79501959"
     - **到期日期和時間**- 無法編輯此欄位。 
     - **允許宣告此機器** -「允許宣告」機器表示建立機器時不會指派擁有權。 取而代之的是，實驗室使用者將能夠在實驗室的頁面中，取得 (認領) 機器的擁有權。  
 
-        ![基本設置頁面](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![基本設定頁面](./media/devtest-lab-create-formulas/advanced-settings.png)
 8. 選取 [提交]**** 以建立公式。
 
 9. 公式在建立之後會顯示在 [公式]**** 頁面的清單中。
@@ -83,7 +83,7 @@ ms.locfileid: "79501959"
 > 
 > 
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 3. 從實驗室清單中，選取所需的實驗室。  
 4. 在實驗室的 [概觀] **** 頁面上，選取您想要從中建立公式的 VM。
@@ -100,7 +100,7 @@ ms.locfileid: "79501959"
 ## <a name="modify-a-formula"></a>修改公式
 若要修改公式，請遵循下列步驟︰
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 3. 從實驗室清單中，選取所需的實驗室。  
 4. 在實驗室的頁面上，選取 [公式 (可重複使用的基底)] ****。
@@ -112,7 +112,7 @@ ms.locfileid: "79501959"
 ## <a name="delete-a-formula"></a>刪除公式
 若要刪除公式，請遵循下列步驟︰
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 3. 從實驗室清單中，選取所需的實驗室。  
 4. 在實驗室的 [設定]**** 頁面上，選取 [公式]****。
@@ -129,7 +129,7 @@ ms.locfileid: "79501959"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>相關部落格文章
-* [自訂映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+* [自訂映像或公式？](devtest-lab-faq.md#what-is-the-difference-between-a-custom-image-and-a-formula)
 
 ## <a name="next-steps"></a>後續步驟
 建立要在建立 VM 時使用的公式之後，下一個步驟就是[將 VM 新增實驗室](devtest-lab-add-vm.md)。

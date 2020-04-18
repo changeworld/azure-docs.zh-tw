@@ -1,5 +1,5 @@
 ---
-title: 如何擴展環境 - Azure 時間序列見解*微軟文檔
+title: 如何擴充環境 - Azure 時間序列的解*微軟文件
 description: 瞭解如何使用 Azure 門戶縮放 Azure 時間序列見解環境。
 ms.service: time-series-insights
 services: time-series-insights
@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 23efda2793ef5d323089ee5b72fb1ea873de6b20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9604f0c6eeb9d0ac4b7d07f1ab1ba03285fd60fe
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310980"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640072"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何調整您的 Time Series Insights 環境規模
 
@@ -34,13 +34,13 @@ ms.locfileid: "76310980"
 
 1. 在 Azure 入口網站中，找到並選取您的時間序列深入解析環境。
 
-1. 在時間序列見解環境的功能表中，選擇 **"存儲配置**"。
+1. 在時間序列見解環境的功能表中,選擇 **「儲存設定**」 。
 
-   [![配置時間序列洞察容量](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![設定時間序列洞察容量](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. 調整 [容量]**** 滑桿來選取符合您所需輸入速率和儲存容量的容量。 請注意，**輸入速率**、**儲存容量**和**估計成本**會動態更新，以顯示變更的影響。
 
-   [![使用容量滑塊配置環境](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
+   [![使用容量滑動器設定環境](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    或者，您可以在滑桿右邊的文字方塊中，輸入容量乘數的數值。
 
@@ -52,6 +52,6 @@ ms.locfileid: "76310980"
 
 - 如需詳細資訊，請檢閱[了解時間序列深入解析中的保留期](time-series-insights-concepts-retention.md)。
 
-- 瞭解如何[在 Azure 時間序列見解中配置資料保留](time-series-insights-how-to-configure-retention.md)。
+- 瞭解如何[在 Azure 時間序列的解中設定資料保留](time-series-insights-how-to-configure-retention.md)。
 
 - 瞭解如何[規劃您的環境](time-series-insights-environment-planning.md)。

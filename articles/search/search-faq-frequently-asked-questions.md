@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262446"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618036"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 認知搜尋 ─ 常見問題 (FAQ)
 
@@ -82,6 +82,14 @@ Azure 門戶中當前沒有內置索引提取、快照或備份還原功能。 �
 根據預設，搜尋結果會根據[相符字詞的統計屬性](search-lucene-query-architecture.md#stage-4-scoring)進行評分，並在結果集中由高排到低。 不過，某些查詢類型 (萬用字元、前置詞、Regex) 一律會對文件的整體分數提供常數分數。 這是設計的行為。 Azure 認知搜索強制施加一個常數分數,以允許在不影響排名的情況下將通過查詢擴展找到的匹配項包含在結果中。
 
 例如,假設通配符搜索中的"tour+"輸入在"旅遊"、"旅遊"和"Tourmaline"上生成匹配項。 考慮到這些結果的本質，便無法合理推斷哪些詞彙較其他詞彙更有價值。 基於這個理由，當評分導致萬用字元、前置詞和 Regex 的查詢類型時，我們會忽略字詞頻率。 依據部分輸入的搜尋結果會得到一個常數分數，以避免可能無法預期的相符項目偏差。
+
+## <a name="skillset-operations"></a>技能組作業
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>是否有任何提示或技巧來降低認知服務費用的攝入?
+
+您可以理解的是,您不想執行比絕對必要的更多內置技能或自定義技能,尤其是在處理要處理的數百萬個文檔時。 考慮到這一點,我們添加了"增量擴充"功能,以進行技能集執行。 從本質上講,您可以提供一個緩存位置(Blob 儲存連接字串),用於存儲"中間"擴充步驟的輸出。  這允許濃縮管道是智慧的,並且僅應用修改技能集時所需的擴充。 這自然會節省索引時間,因為管道效率會更高。
+
+瞭解有關[增量擴充](cognitive-search-incremental-indexing-conceptual.md)的更多
 
 ## <a name="design-patterns"></a>設計模式
 
