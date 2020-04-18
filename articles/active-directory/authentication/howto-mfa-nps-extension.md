@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393062"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617667"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>將現有的 NPS 基礎結構與 Azure Multi-Factor Authentication 整合
 
@@ -142,6 +142,14 @@ NPS 伺服器會連線到 Azure Active Directory，並驗證 MFA 要求。 為�
 1. [https://aka.ms/mfasetup](https://aka.ms/mfasetup)使用測試帳戶登錄。
 2. 遵循提示來設定驗證方法。
 3. [創建條件訪問策略](howto-mfa-getstarted.md#create-conditional-access-policy)以要求測試帳戶的多重身份驗證。
+
+> [!IMPORTANT]
+>
+> 確保使用者已成功註冊 Azure 多重身份驗證。 如果使用者以前只註冊了自助服務密碼重置 (SSPR),則為其帳戶啟用*了強身份驗證方法*。 配置*強身份驗證方法*時,即使使用者僅註冊了 SSPR,Azure 多重身份驗證也會強制執行。
+>
+> 可以同時啟用配置 SSPR 和 Azure 多重身份驗證的組合安全註冊。 有關詳細資訊,請參閱在[Azure 活動目錄中啟用組合安全資訊註冊](howto-registration-mfa-sspr-combined.md)。
+>
+> 如果使用者以前僅啟用 SSPR,還可以[強制使用者重新註冊身份驗證方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
 ## <a name="install-the-nps-extension"></a>安裝 NPS 擴充功能
 

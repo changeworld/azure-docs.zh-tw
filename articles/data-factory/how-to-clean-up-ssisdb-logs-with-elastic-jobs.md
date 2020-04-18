@@ -10,16 +10,16 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 9d509a40c129cab0f5d2f614c6989f81a928a254
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 02952c3baea5d9089061b10f2429be57a9322398
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81412923"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606183"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 彈性資料庫作業清除 SSISDB 記錄
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文將說明如何使用 Azure 彈性資料庫作業來觸發預存程序，以清除 SQL Server Integration Services 目錄資料庫 (`SSISDB`) 的記錄。
 

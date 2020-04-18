@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: af356641b4588529aea25826ff180707ff1ef4e2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: daebd6a4a00d82706ceda68f94736f21b8fe5a84
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413611"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606400"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>建立新分支
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 添加新分支,以便針對同一數據流執行多組操作和轉換。 如果要將同一源用於多個接收器或將數據合併在一起,則添加新分支非常有用。
 

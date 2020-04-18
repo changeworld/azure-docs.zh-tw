@@ -9,16 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: a728ec6f261b82d563aeb4a8f5c98bbd546f4400
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413220"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605973"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料串流的接收器轉換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 轉換數據后,可以將數據沉入目標數據集。 每個資料流至少需要一個接收器轉換,但您可以根據需要寫入盡可能多的接收器來完成轉換流。 要寫入其他接收器,請通過新分支和條件拆分創建新流。
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262481"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604604"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的工作中樞
 
@@ -29,15 +29,21 @@ ms.locfileid: "76262481"
 * 一個記錄資料表。
 * 一個執行個體資料表。
 * 一個儲存體容器，含有一或多個租用 blob。
-* 包含大型消息負載的存儲容器（如果適用）。
+* 包含大型消息負載的儲存容器(如果適用)。
 
-當協調器、實體或活動功能運行或計畫運行時，所有這些資源都會在預設 Azure 存儲帳戶中自動創建。 [效能和延展性](durable-functions-perf-and-scale.md)一文說明如何使用這些資源。
+當協調器、實體或活動功能運行或計劃運行時,所有這些資源都會在預設 Azure 儲存帳戶中自動創建。 [效能和延展性](durable-functions-perf-and-scale.md)一文說明如何使用這些資源。
 
 ## <a name="task-hub-names"></a>工作中樞名稱
 
-工作中樞可透過 host.json** 檔案中所宣告的名稱來加以識別，如下列範例所示：
+工作中心由符合以下規則的名稱識別:
 
-### <a name="hostjson-functions-20"></a>主機.json （功能 2.0）
+* 只有字母數字字元
+* 以字母開頭
+* 最小長度為 3 個字元,最大長度為 45 個字元
+
+工作中心名稱在*host.json*檔中聲明,如以下範例所示:
+
+### <a name="hostjson-functions-20"></a>主機.json (功能 2.0)
 
 ```json
 {
@@ -60,9 +66,9 @@ ms.locfileid: "76262481"
 }
 ```
 
-任務集線器也可以使用應用設置進行配置，如以下`host.json`示例檔所示：
+工作集線器也可以使用應用設定進行配置,如以下`host.json`範例檔所示:
 
-### <a name="hostjson-functions-10"></a>主機.json （函數 1.0）
+### <a name="hostjson-functions-10"></a>主機.json (函數 1.0)
 
 ```json
 {
@@ -72,7 +78,7 @@ ms.locfileid: "76262481"
 }
 ```
 
-### <a name="hostjson-functions-20"></a>主機.json （功能 2.0）
+### <a name="hostjson-functions-20"></a>主機.json (功能 2.0)
 
 ```json
 {
@@ -96,7 +102,7 @@ ms.locfileid: "76262481"
 }
 ```
 
-以下代碼演示如何編寫使用[業務流程用戶端綁定](durable-functions-bindings.md#orchestration-client)處理配置為應用設置的任務中心的功能：
+以下代碼展示如何編寫使用[業務流程客戶端繫結](durable-functions-bindings.md#orchestration-client)處理設定為應用程式設定的任務中心的功能:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -119,9 +125,9 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 前面的 C# 範例適用於持久函數 2.x。 對持久函數 1.x,必須`DurableOrchestrationContext`使用`IDurableOrchestrationContext`而不是 。 有關不同版本之間的差異的詳細資訊,請參閱[持久函數版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `function.json` 檔案中的工作中樞屬性會透過應用程式設定來設定：
 
@@ -136,17 +142,17 @@ public static async Task<HttpResponseMessage> Run(
 
 ---
 
-工作中樞名稱必須以字母開頭，且只包含字母和數字。 如果未指定，將使用預設任務中心名稱，如下表所示：
+工作中樞名稱必須以字母開頭，且只包含字母和數字。 如果未指定,將使用預設任務中心名稱,如下表所示:
 
-| 耐用的擴展版本 | 預設任務中心名稱 |
+| 耐用的延伸版本 | 預設工作中心名稱 |
 | - | - |
-| 2.x | 在 Azure 中部署時，任務中心名稱派生自_函數應用_的名稱。 在 Azure 之外運行時，預設任務中心名稱為`TestHubName`。 |
-| 1.x | 所有環境的預設任務中心名稱為`DurableFunctionsHub`。 |
+| 2.x | 在 Azure 中部署時,任務中心名稱派生自_函數應用_的名稱。 在 Azure 之外執行時,預設工作中心`TestHubName`名稱為 。 |
+| 1.x | 所有環境的預設工作中心名稱稱為`DurableFunctionsHub`。 |
 
-有關擴展版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+有關擴展版本之間的差異的詳細資訊,請參閱[持久函數版本](durable-functions-versions.md)一文。
 
 > [!NOTE]
-> 當共用儲存體帳戶中有多個工作中樞時，可透過名稱來區分各個工作中樞。 如果您有多個函式應用程式共用了共用儲存體帳戶，您必須明確地在 host.json** 檔案中為每個工作中樞設定不同的名稱。 否則，多個函數應用將相互競爭消息，這可能導致未定義的行為，包括業務流程意外"卡住"在`Pending`或`Running`狀態中。
+> 當共用儲存體帳戶中有多個工作中樞時，可透過名稱來區分各個工作中樞。 如果您有多個函式應用程式共用了共用儲存體帳戶，您必須明確地在 host.json** 檔案中為每個工作中樞設定不同的名稱。 否則,多個函數應用將相互競爭消息,這可能導致未定義的行為,包括業務流程意外"卡住"在`Pending`或`Running`狀態中。
 
 ## <a name="next-steps"></a>後續步驟
 

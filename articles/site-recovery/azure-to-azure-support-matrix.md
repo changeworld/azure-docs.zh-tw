@@ -4,12 +4,12 @@ description: 將 Azure VM 災難恢復的支援匯總到具有 Azure 網站恢�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e66d71011937c3e22c6f1537bcd448d4aa3bbf3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673795"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605511"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure VM 災難復原在 Azure 區域之間的支援矩陣
 
@@ -114,7 +114,7 @@ Oracle Linux | 6.4、 6.5、 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 Ubuntu 核心版本
 
-**釋放** | **行動服務版本** | **核心版本** |
+**版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
 14.04 LTS | 9.32| 3.13.0-24 泛型到 3.13.0-170 泛型,<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21 泛型到 4.4.0-148 泛型,<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
 14.04 LTS | 9.31 | 3.13.0-24 泛型到 3.13.0-170 泛型,<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21 泛型到 4.4.0-148 泛型,<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
@@ -134,7 +134,7 @@ Oracle Linux | 6.4、 6.5、 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 Debian 核心版本
 
-**釋放** | **行動服務版本** | **核心版本** |
+**版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
 Debian 7 | 9.28,9.29,9.30,9.31 | 3.2.0-4-amd64 至 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
@@ -143,7 +143,7 @@ Debian 8 | 9.28 | 3.16.0-4-amd64 至 3.16.0-10-amd64,4.9.0-0.bpo.4-amd64 到 4.9
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 虛擬機器支援的 SUSE Linux Enterprise Server 12 核心版本
 
-**釋放** | **行動服務版本** | **核心版本** |
+**版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
 SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | 9.32 | 支援所有[庫存 SUSE 12 SP1、SP2、SP3、SP4 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure,</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  |
 SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | 9.31 | 支援所有[庫存 SUSE 12 SP1、SP2、SP3、SP4 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure,</br>4.12.14-6.3-azure 至 4.12.14-6.29-azure  |
@@ -152,9 +152,9 @@ SUSE Linux 企業伺服器 12 (SP1,SP2,SP3,SP4) | 9.29 | 支援所有[庫存 SUS
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>支援的 SUSE Linux 企業伺服器 15 個適用於 Azure 虛擬機器的核心版本
 
-**釋放** | **行動服務版本** | **核心版本** |
+**版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux 企業伺服器 15 和 15 SP1 | 9.32 | 支援所有[股票 SUSE 15 與 15 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
+SUSE Linux 企業伺服器 15 和 15 SP1 | 9.32 | 支援所有股票 SUSE 15 和 15 內核。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>複寫機器 - Linux 檔案系統/客體儲存體
 

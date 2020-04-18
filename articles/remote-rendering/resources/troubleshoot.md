@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679981"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617866"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -38,7 +38,7 @@ ms.locfileid: "80679981"
 
 首先,請確保安裝系統要求[的軟體](../overview/system-requirements.md#software)部分中提到的**HEVC 視訊擴展**。
 
-如果仍然遇到問題,請確保您的顯卡支援 H265,並且安裝了最新的圖形驅動程式。 有關供應商特定資訊,請參閱系統要求的[「開發 PC」](../overview/system-requirements.md#development-pc)部分。
+如果仍然遇到問題,請確保您的顯卡支援 H265 並安裝了最新的圖形驅動程式。 有關特定於供應商的資訊,請參閱系統要求的[「開發 PC」](../overview/system-requirements.md#development-pc)部分。
 
 **已安裝編解碼器,但無法使用:**
 
@@ -76,6 +76,14 @@ ms.locfileid: "80679981"
 
 * 請參閱[識別網路問題](#unstable-holograms)的步驟。
 * 請參考安裝最新圖形驅動程式[的系統要求](../overview/system-requirements.md#development-pc)。
+
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>使用 MRC 錄製的影片不反映即時體驗的品質
+
+視頻可以通過[混合現實捕獲 (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)在霍洛倫斯上錄製。 但是,生成的視頻的品質比現場體驗差,原因有二:
+* 視頻幀速率上限為 30 Hz,而不是 60 Hz。
+* 視頻圖像不會經過[後期重新投影](../overview/features/late-stage-reprojection.md)處理步驟,因此視頻看起來是斬波的。
+
+兩者都是錄音技術的內在局限性。
 
 ## <a name="black-screen-after-successful-model-loading"></a>成功載入模型後黑屏
 
@@ -117,4 +125,4 @@ Azure 遠端渲染將掛到 Unity 渲染管道中,以便使用視頻執行幀合
 ## <a name="next-steps"></a>後續步驟
 
 * [系統需求](../overview/system-requirements.md)
-* [網路要求](../reference/network-requirements.md)
+* [網路需求](../reference/network-requirements.md)

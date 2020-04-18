@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c28305cc55fcc561863670a15480782ce63e75b4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415523"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605368"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在映射資料流程產生式運算式
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在映射數據流時,許多轉換屬性作為表達式輸入。 這些運算式由列值、參數、函數、運算符和文本組成,這些列值在運行時計算為 Spark 數據類型。
 

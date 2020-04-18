@@ -5,12 +5,12 @@ description: 了解叢集運算子在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668368"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617521"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中進階排程器功能的最佳做法
 
@@ -134,7 +134,7 @@ spec:
 
 節點選取器是將 pod 指派給指定節點的基本方法。 使用*節點親和性*可以獲得更多的彈性。 使用節點親和性，您可以定義如果pod無法與節點匹配會發生什麼事。 您可以*要求* Kubernetes 排程器與加上標籤的主機的 pod 相符。 或者，您可以*偏好*相符項目，但如果沒有相符項目，則允許在其他主機上排程 pod。
 
-下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution*。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 若要允許在其他節點上排程 pod，您可以將值設定為 *preferredDuringScheduledIgnoreDuringExecution*：
+下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution*。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 要允許將 pod 排程在不同的節點上,可以改為將該值設定為*首選在「計畫期間忽略」執行 :*
 
 ```yaml
 kind: Pod

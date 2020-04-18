@@ -10,17 +10,55 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/3/2020
+ms.date: 04/17/2020
 ms.author: raiye
-ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656359"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617694"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
+
+## <a name="april-2020-guest-os"></a>2020 年 4 月來賓作業系統
+
+>[!NOTE]
+>4 月來賓作業系統當前正在推出到雲端服務 VM,這些 VM 已配置為自動更新。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 以下修補程式包含在 4 月來賓作業系統中。 此清單會隨時變動。
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-04  |  [4550965]  |  Windows 安全性  | 2.97 | 2020年4月14日 |
+|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2.97, 3.84, 4.77 | 2020年4月14日 |
+|  Rel 20-04  |  [4550971]  |  Windows 安全性  | 3.84 | 2020年4月14日 |
+|  Rel 20-04  |  [4550970]  |  Windows 安全性  | 4.77 | 2020年4月14日 |
+|  Rel 20-04  |  [4550929]  |  最新累積更新 (LCU)  | 5.42 | 2020年4月14日 |
+|  Rel 20-04  |  [4549949]  |  最新累積更新 (LCU)  | 6.18 | 2020年4月14日 |
+|  Rel 20-04  |  [4540688]  |  每月匯總  | 2.97 | 2020年3月10日 |
+|  Rel 20-04  |  [4550735]  |  服務堆疊更新  | 2.97 | 2020年3月10日 |
+|  Rel 20-04  |  [4540726]  |  服務堆疊更新  | 3.84 | 2020年3月10日 |
+|  Rel 20-04  |  [4541510]  |  每月匯總  | 3.84 | 2020年3月10日 |
+|  Rel 20-04  |  [4541509]  |  每月匯總  | 4.77 | 2020年3月10日 |
+|  Rel 20-04  |  [4540725]  |  服務堆疊更新  | 4.77 | 2020年3月10日 |
+|  Rel 20-04  |  [4540723]  |  服務堆疊更新  | 5.42 | 2020年3月10日 |
+|  Rel 20-04  |  [4539571]  |  服務堆疊更新  | 6.18 | 2020年3月10日 |
+
+[4550965]: https://support.microsoft.com/kb/4550965
+[4550905]: https://support.microsoft.com/kb/4550905
+[4550971]: https://support.microsoft.com/kb/4550971
+[4550970]: https://support.microsoft.com/kb/4550970
+[4550929]: https://support.microsoft.com/kb/4550929
+[4549949]: https://support.microsoft.com/kb/4549949
+[4540688]: https://support.microsoft.com/kb/4540688
+[4550735]: https://support.microsoft.com/kb/4550735
+[4540726]: https://support.microsoft.com/kb/4540726
+[4541510]: https://support.microsoft.com/kb/4541510
+[4541509]: https://support.microsoft.com/kb/4541509
+[4540725]: https://support.microsoft.com/kb/4540725
+[4540723]: https://support.microsoft.com/kb/4540723
+[4539571]: https://support.microsoft.com/kb/4539571
+
 
 ## <a name="march-2020-guest-os"></a>2020 年 3 月來賓作業系統
 

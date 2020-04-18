@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 虛刪除 | Microsoft Docs
+title: Azure 金鑰保管庫軟刪除 |微軟文件
 description: Azure 金鑰保管庫中的軟刪除允許您恢復已刪除的密鑰保管庫和密鑰保管庫物件,如金鑰、機密和證書。
 ms.service: key-vault
 ms.subservice: general
@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 6185f0d84f27b6be89e797fc7cfb22940d8c6401
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: be4f124863da39cc9f6a61ebe054d451b438e8c3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432095"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617751"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 虛刪除概觀
 
-Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物件，也稱為「虛刪除」。 具體而言，我們會說明下列案例：
+金鑰保管庫的軟刪除功能允許恢復已刪除的保管庫和保管庫物件,稱為軟刪除。 具體而言，我們會說明下列案例：
 
 - 可復原的 Key Vault 刪除支援
 - 可復原的 Key Vault 物件刪除支援 (物件的範例如： 金鑰、密碼和憑證)
@@ -38,7 +38,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 啟用軟刪除後,標記為已刪除資源的資源將保留指定時間段(預設情況下為 90 天)。 此服務進一步提供復原已刪除物件的機制 (基本上是復原刪除作業)。
 
-建立新密鑰保管庫時,軟刪除預設處於打開狀態。 您可以通過[Azure CLI](soft-delete-cli.md)或[Azure Powershell](soft-delete-powershell.md)建立金鑰保管庫,而無需軟刪除。 在金鑰保存庫中開啟軟刪除後,無法關閉
+建立新密鑰保管庫時,軟刪除預設處於打開狀態。 您可以通過[Azure CLI](soft-delete-cli.md)或[Azure PowerShell](soft-delete-powershell.md)建立金鑰保管庫,而無需軟刪除。 在金鑰保存庫中開啟軟刪除後,無法關閉
 
 默認保留期為 90 天,但在創建密鑰保管庫期間,可以通過 Azure 門戶將保留策略間隔設置為 7 到 90 天的值。 清除保護保留策略使用相同的間隔。 設置後,無法更改保留策略間隔。
 
@@ -46,7 +46,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 ### <a name="purge-protection"></a>淨化保護 
 
-清除保護是選擇的金鑰保存,**預設的功能會不會開啟**。 它可以通過[CLI](soft-delete-cli.md#enabling-purge-protection)或[Powershell](soft-delete-powershell.md#enabling-purge-protection)打開。
+清除保護是選擇的金鑰保存,**預設的功能會不會開啟**。 它可以通過[CLI](soft-delete-cli.md#enabling-purge-protection)或[PowerShell](soft-delete-powershell.md#enabling-purge-protection)打開。
 
 啟用清除保護時,在保留期結束之前,無法清除處於已刪除狀態的保管庫或物件。 軟刪除的保管庫和物件仍然可以恢復,確保遵循保留策略。 
 
@@ -58,7 +58,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 例外情況包括:
 - 當 Azure 訂閱標記為*無法刪除時*。 在此情況下，只有此服務可接著執行實際的刪除作業，而且會以排程的程序執行。 
-- 在保管庫本身上啟用啟用 -啟用-清除保護標誌時。 在此情況下，Key Vault 會從原始祕密物件標示為要刪除的那天算起，等待 90 天後才永久刪除該物件。
+- 在保管`--enable-purge-protection flag`庫本身上啟用 時。 在此情況下，Key Vault 會從原始祕密物件標示為要刪除的那天算起，等待 90 天後才永久刪除該物件。
 
 ### <a name="key-vault-recovery"></a>Key Vault 復原
 
@@ -72,7 +72,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的追蹤資源。 Azure Res
 
 ### <a name="soft-delete-retention-period"></a>虛刪除保留期限
 
-虛刪除的資源預設會保留 90 天的時間。 在虛刪除保留間隔期限內，下列說明是成立的：
+軟刪除資源將保留一段設定的時間段,即90天。 在虛刪除保留間隔期限內，下列說明是成立的：
 
 - 您可以列出您的訂用帳戶下狀態是虛刪除的所有 Key Vault 和 Key Vault 物件，也能存取與它們相關的刪除和復原資訊。
     - 只有具備特殊權限的使用者可以列出已刪除的保存庫。 我們建議使用者建立具有這些特殊權限的自訂角色，以處理刪除的保存庫。

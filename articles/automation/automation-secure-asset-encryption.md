@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457479"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604823"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>將 Azure 自動化中的安全資產加密
 
@@ -58,7 +58,7 @@ Azure 自動化中的安全資產包括認證、憑證、連接和加密的變�
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>將識別配置給自動化帳戶
 
-要將客戶管理的密鑰與自動化帳戶一起使用,自動化帳戶需要針對存儲客戶管理的密鑰的密鑰保管庫進行身份驗證。 Azure 自動化使用系統分配的託管標識使用 Azure 密鑰保管庫對帳戶進行身份驗證。 如需受控識別的詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+要將客戶管理的密鑰與自動化帳戶一起使用,自動化帳戶需要針對存儲客戶管理的密鑰的密鑰保管庫進行身份驗證。 Azure 自動化使用系統分配的託管標識使用 Azure 密鑰保管庫對帳戶進行身份驗證。 有關託管標識的詳細資訊,請參閱 Azure[資源的託管標識是什麼?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
 使用以下 REST API 呼叫將託管識別分配給自動化帳戶的系統:
 
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>變更自動化帳戶的設定以使用客戶管理的金鑰
 
-最後,您可以使用以下 REST API 呼叫將自動化帳戶從 Microsft 管理的金鑰切換到客戶管理的金鑰:
+最後,您可以使用以下 REST API 呼叫將自動化帳戶從 Microsoft 管理的金鑰切換到客戶管理的金鑰:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -193,9 +193,6 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 ## <a name="next-steps"></a>後續步驟
 
 - [何謂 Azure Key Vault？](../key-vault/general/overview.md)
-
 - [Azure 自動化中的憑證資產](shared-resources/certificates.md)
-
 - [Azure 自動化中的認證資產](shared-resources/credentials.md)
-
 - [Azure 自動化中的變數資產](shared-resources/variables.md)

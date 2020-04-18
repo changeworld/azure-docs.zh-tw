@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 0c0e35f7f06afd0cafa4a1e353b7eda84ed226f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5c388dd2b3e4f40fbf2ed75cf3f1b8ab31aee394
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413659"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606411"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>加入映射資料串流加入轉換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用聯接轉換將來自映射數據流中的兩個源或流的數據合併。 輸出流將包括來自兩個源的所有列,這些列基於聯接條件進行匹配。 
 

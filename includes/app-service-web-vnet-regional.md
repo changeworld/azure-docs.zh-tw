@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312838"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604890"
 ---
 使用區域 VNet 整合使用套用的應用程式可以存取:
 
@@ -19,7 +19,7 @@ ms.locfileid: "81312838"
 * 跨 Azure 快速路由連接的資源。
 * 您要整合的 VNet 中的資源。
 * 跨對等連接的資源,其中包括 Azure 快速路由連接。
-* 專用終結點 - 注意:DNS 必須單獨管理,而不是使用 Azure DNS 專用區域。
+* 專用終結點 
 
 在同一區域中使用 VNet 整合時,可以使用以下 Azure 網路功能:
 
@@ -50,7 +50,7 @@ ms.locfileid: "81312838"
 * 您只能與 VNet 整合在與應用相同的訂閱中。
 * 每個應用服務計畫只能有一個區域 VNet 整合。 同一應用服務計劃中的多個應用可以使用相同的 VNet。
 * 當有一個應用使用區域 VNet 整合時,不能更改應用或計劃的訂閱。
-* 你的應用無法解決 Azure DNS 專用區域中的位址。
+* 如果不進行設定更改,你的應用程式無法解決 Azure DNS 專用區域中的位址
 
 每個計劃實例使用一個位址。 如果將應用縮放為五個實例,則使用五個位址。 由於子網大小在分配后無法更改,因此必須使用足夠大的子網,以適應應用可能達到的任何比例。 建議的尺寸是帶 64 個位址的 /26。 帶 64 個位址的 /26 適合包含 30 個實例的高級計劃。 向上或向下擴展計劃時,需要在短時間內使用兩倍的位址。
 
@@ -83,9 +83,22 @@ ms.locfileid: "81312838"
 
 邊境閘道協定 (BGP) 路由也會影響應用流量。 如果您有來自快速路由閘道等內容的 BGP 路由,則應用出站流量將受到影響。 默認情況下,BGP 路由僅影響您的 RFC1918 目標流量。 如果WEBSITE_VNET_ROUTE_ALL設置為 1,則所有出站流量都可能受 BGP 路由的影響。
 
+### <a name="azure-dns-private-zones"></a>Azure DNS 專用區域 
+
+應用與 VNet 整合後,它將使用 VNet 配置的相同 DNS 伺服器。 默認情況下,你的應用將不能與 Azure DNS 專用區域配合使用。 要使用 Azure DNS 專用區域,您需要新增以下應用設定:
+
+1. 值 168.63.129.16 的WEBSITE_DNS_SERVER 
+1. 值 1 的WEBSITE_VNET_ROUTE_ALL
+
+除了使應用能夠使用 Azure DNS 專用區域外,這些設置還將將應用的所有出站呼叫發送到 VNet。
+
+### <a name="private-endpoints"></a>專用終結點
+
+如果要對[專用終結點][privateendpoints]進行調用,則需要與 Azure DNS 專用區域集成,或者管理應用使用的 DNS 伺服器中的專用終結點。 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
 [VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

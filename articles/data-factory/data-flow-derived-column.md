@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: 06cb868071612ae2825e86cac32734dcd279c99f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413855"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606493"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>映射資料串流中的衍生器轉換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用派生的列轉換在資料流中生成新列或修改現有欄位。
 

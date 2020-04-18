@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/17/2020
+ms.openlocfilehash: 10e53b6b7b79e7d4581a1843b70b3d02778e8df5
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383565"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617796"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>使用 Apache Beeline 用戶端搭配 Apache Hive
 
@@ -40,7 +40,8 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>替換為`<headnode-FQDN>`群集頭節點的完全限定的功能變數名稱。 若要找出前端節點的完整網域名稱，請利用[使用 Apache Ambari REST API 管理 HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) 文件中的資訊。
+替換為`<headnode-FQDN>`群集頭節點的完全限定的功能變數名稱。 若要找出前端節點的完整網域名稱，請利用[使用 Apache Ambari REST API 管理 HDInsight](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) 文件中的資訊。
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>使用 Kerberos 向 HDInsight 企業安全套件 (ESP) 叢集
@@ -84,11 +85,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ### <a name="use-beeline-with-apache-spark"></a>使用 Beeline 搭配 Apache Spark
 
-Apache Spark 提供自己的 HiveServer2 (有時稱為 Spark Thrift 伺服器) 實作。 此服務會使用 Spark SQL 來解析查詢而不是 Hive，並可能提供更佳的效能 (視您的查詢而定)。
+Apache Spark 提供自己的 HiveServer2 (有時稱為 Spark Thrift 伺服器) 實作。 此服務使用Spark SQL來解決查詢,而不是Hive。 根據您的查詢,可能會提供更好的性能。
 
 #### <a name="through-public-or-private-endpoints"></a>通過公共或專用終結點
 
-使用的連接字串略有不同。 而不是包含`httpPath=/hive2`它`httpPath/sparkhive2`。 將 `clustername` 替換為 HDInsight 叢集的名稱。 將 `admin` 取代為叢集的叢集登入帳戶。 對於 ESP 群集,請使用完整的 UPN(例如user@domain.com, 將 `password` 取代為叢集登入帳戶的密碼。
+使用的連接字串略有不同。 而不是包含`httpPath=/hive2`它使用`httpPath/sparkhive2`。 將 `clustername` 替換為 HDInsight 叢集的名稱。 將 `admin` 取代為叢集的叢集登入帳戶。 對於 ESP 群集,請使用完整的 UPN(例如user@domain.com, 將 `password` 取代為叢集登入帳戶的密碼。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -118,7 +119,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * HDInsight 上的 Hadoop 群集。 請參閱[在 Linux 上開始使用 HDInsight。](./apache-hadoop-linux-tutorial-get-started.md)
 
-* 請注意叢集家儲存的[URI 專案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 例如,`wasb://`對於 Azure 儲存`abfs://`、Azure`adl://`資料湖儲存第 2 代或 Azure 數據湖儲存第 1 代。 如果為 Azure 儲存啟用了安全傳輸`wasbs://`,則 URI 為 。 有關詳細資訊,請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+* 請注意群集主存儲的URI方案。 例如,`wasb://`對於 Azure 儲存`abfs://`、Azure`adl://`資料湖儲存第 2 代或 Azure 數據湖儲存第 1 代。 如果為 Azure 儲存啟用了安全傳輸`wasbs://`,則 URI 為 。 有關詳細資訊,請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 * 選項 1:SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 此文件中的大多數步驟假定您使用的是從 SSH 會話到群集的 Beeline。
 
@@ -177,7 +178,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     此資訊描述資料表中的資料行。
 
-5. 輸入以下語句,使用 HDInsight 群集提供的範例資料創建名為**log4jLogs**的表:(根據需要根據[URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)進行修訂。
+5. 輸入以下語句,使用 HDInsight 群集提供的範例資料創建名為**log4jLogs**的表:(根據需要根據 URI 方案進行修訂。
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -244,7 +245,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="run-a-hiveql-file"></a>執行 HiveQL 檔案
 
-這是上一個示例的延續。 使用下列步驟建立檔案，然後利用執行該檔案。
+此示例是上一個示例的延續。 使用下列步驟建立檔案，然後利用執行該檔案。
 
 1. 使用以下命令，建立名為 **query.hql** 的檔案：
 
@@ -300,7 +301,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="install-beeline-client"></a>安裝蜂線客戶端
 
-儘管 Beeline 包含在 HDInsight 群集的頭部節點上,但您可能希望將其安裝在本地電腦上。  下面在本地電腦上安裝 Beeline 的步驟基於[Linux 的 Windows 子系統](https://docs.microsoft.com/windows/wsl/install-win10)。
+儘管 Beeline 包含在頭節點上,但您可能希望在本地安裝它。  本地電腦的安裝步驟基於 Linux 的[Windows 子系統](https://docs.microsoft.com/windows/wsl/install-win10)。
 
 1. 更新包清單。 在 bash shell 中輸入以下指令:
 

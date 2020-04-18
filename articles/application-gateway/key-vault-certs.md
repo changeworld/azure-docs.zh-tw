@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457819"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617501"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用金鑰保存憑證的 TLS 終止
 
@@ -47,7 +47,10 @@ ms.locfileid: "81457819"
 
 1. **設定金鑰保存庫**
 
-   然後,導入現有證書或在密鑰保管庫中創建新證書。 證書將由通過應用程式閘道運行的應用程式使用。 在此步驟中,您還可以使用密鑰保管庫密鑰保管庫密鑰,該密鑰保管庫密鑰金鑰存儲為無密碼、基於 64 編碼的 PFX 檔。 我們建議使用證書類型,因為密鑰保管庫中的證書類型物件可以使用自動續訂功能。 創建證書或機密後,在密鑰保管庫中定義訪問策略,以允許授予標識*以訪問*該機密。
+   然後,導入現有證書或在密鑰保管庫中創建新證書。 證書將由通過應用程式閘道運行的應用程式使用。 在此步驟中,您還可以使用密鑰保管庫密鑰庫密鑰,該密鑰保管庫密鑰作為無密碼、base-64 編碼的 PFX 檔案存儲。 我們建議使用證書類型,因為密鑰保管庫中的證書類型物件可以使用自動續訂功能。 創建證書或機密後,在密鑰保管庫中定義訪問策略,以允許授予標識*以訪問*該機密。
+   
+   > [!NOTE]
+   > 如果透過 ARM 樣本(透過使用 Azure CLI 或 PowerShell)或透過從 Azure 門戶部署的 Azure 應用程式部署應用程式閘道,則作為基 64 編碼 PFX 檔案儲存在金鑰保管庫中的 SSL 憑證**必須無密碼**。 此外,還必須完成使用 Azure[金鑰保管庫中的步驟,以在部署期間傳遞安全參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 設定`enabledForTemplateDeployment`這一點尤為`true`重要 。
 
 1. **設定應用程式閘道**
 

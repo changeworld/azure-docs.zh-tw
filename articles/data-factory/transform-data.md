@@ -10,16 +10,14 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 024d61c5bcc38c78dc5a2bd5e01cba43d7b5267e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418825"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606618"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [對應資料串流](data-flow-create.md)
@@ -35,7 +33,9 @@ ms.locfileid: "81418825"
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET 自訂](transform-data-using-dotnet-custom-activity.md)
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ## <a name="overview"></a>概觀
 本文介紹 Azure 數據工廠中的數據轉換活動,可用於大規模將原始數據轉換為預測和見解。 轉換活動在計算環境中執行,如 Azure 資料塊或 Azure HDInsight。 它會提供每個轉換活動的詳細資訊文章連結。
 

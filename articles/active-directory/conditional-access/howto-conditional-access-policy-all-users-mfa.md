@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3e7b1a656c92e37a709b57dae463f6644003e42
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755199"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617630"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>條件存取:要求所有使用者使用 MFA
 
@@ -41,7 +41,7 @@ ms.locfileid: "80755199"
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
-以下步驟將幫助創建條件訪問策略,以要求分配的管理角色執行多重身份驗證。
+以下步驟將有助於創建條件訪問策略,以要求所有使用者執行多重身份驗證。
 
 1. 以全域管理員、安全管理員或條件存取管理員的身份登入**Azure 門戶**。
 1. 瀏覽到**Azure 的目錄** > **安全** > **條件存取**。

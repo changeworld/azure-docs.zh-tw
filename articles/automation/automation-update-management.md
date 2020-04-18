@@ -5,31 +5,31 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535497"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617411"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解決方案
 
-可以使用 Azure 自動化中的更新管理解決方案管理 Azure 中的 Windows 和 Linux 電腦的作業系統更新、本地環境和其他雲端環境中的作業系統更新。 您可以快速評估所有代理電腦上可用更新的狀態,並管理安裝伺服器所需更新的過程。
+可以使用 Azure 自動化中的**更新管理解決方案**管理 Azure 中的 Windows 和 Linux 電腦的作業系統更新、本地環境和其他雲端環境中的作業系統更新。 您可以快速評估所有代理電腦上可用更新的狀態,並管理安裝伺服器所需更新的過程。
 
 您可以使用以下方法為虛擬機器 (VM) 啟用更新管理:
 
 - 從[Azure 自動化帳戶](automation-onboard-solutions-from-automation-account.md)中考慮一個或多個 Azure 電腦,並手動為非 Azure 電腦。
 
-- 對於 Azure 門戶中虛擬機器中的單個 Azure VM。 此方案適用於[Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management)和[Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM。
+- 對於 Azure 門戶中的虛擬機器頁面中的單個 Azure VM。 此方案適用於[Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management)和[Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM。
 
-- 通過從 Azure 門戶中的**虛擬機**頁面選擇多個[Azure VM。](manage-update-multi.md) 
+- 通過從 Azure 門戶中的虛擬機頁面選擇多個[Azure VM。](manage-update-multi.md) 
 
 > [!NOTE]
-> 更新管理解決方案需要將日誌分析工作區連結到您的自動化帳戶。 有關受支援區域的最終清單,請參閱[Azure 工作區映射](./how-to/region-mappings.md)。 區域映射不會影響在獨立於自動化帳戶的單獨區域中管理 VM 的能力。
+> 更新**管理解決方案**需要將日誌分析工作區連結到您的自動化帳戶。 有關受支援區域的最終清單,請參閱[Azure 工作區映射](./how-to/region-mappings.md)。 區域映射不會影響在獨立於自動化帳戶的單獨區域中管理 VM 的能力。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Azure[資源管理器範本](automation-update-management-deploy-template.md)可用於將更新管理解決方案部署到訂閱中的新或現有自動化帳戶和日誌分析工作區。
+Azure[資源管理員範本](automation-update-management-deploy-template.md)可説明您將**更新管理解決方案**部署到訂閱中的新或現有自動化帳戶和日誌分析工作區。
 
 ## <a name="solution-overview"></a>解決方案概觀
 
@@ -137,7 +137,7 @@ Azure[資源管理器範本](automation-update-management-deploy-template.md)可
 
 啟用此解決方案後,直接連接到日誌分析工作區的任何 Windows 電腦將自動配置為混合 Runbook 輔助角色,以支援此解決方案中包含的 Runbook。
 
-由解決方案管理的每個 Windows 計算機都作為自動化帳戶**的系統混合輔助角色組**列在 **「混合輔助角色群組**」窗格中。 解決方案使用*主機名FQDN_GUID*命名約定。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果嘗試,嘗試失敗。 這些組旨在僅支援此管理解決方案。
+由解決方案管理的每個 Windows 計算機都作為自動化帳戶的系統混合輔助角色組列在「混合輔助角色群組」 面板中。 解決方案使用`Hostname FQDN_GUID`命名約定。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果嘗試,嘗試失敗。 這些組旨在僅支援此管理解決方案。
 
 如果對解決方案和混合 Runbook 輔助角色組成員身份使用相同的帳戶,則可以將 Windows 電腦添加到自動化帳戶中的「混合 Runbook 輔助角色」組,以支援自動化 Runbook。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
 
@@ -150,12 +150,12 @@ Azure[資源管理器範本](automation-update-management-deploy-template.md)可
 * 更新部署 MP
 
 > [!NOTE]
-> 如果操作管理器 1807 或 2019 管理組連接到日誌分析工作區,管理組中配置了代理以收集日誌數據,則需要重寫以下規則,以便使用更新管理對其進行管理:在**Microsoft.IntelligencePack.AzureAutomation.HybridAgent.Init**規則中重寫**參數 IsAuto 登記啟用**並設置為**True。**
+> 如果操作管理器 1807 或 2019 管理組連接到日誌分析工作區,管理組中配置了代理以收集日誌數據`IsAutoRegistrationEnabled`,則需要在**Microsoft.IntelligencePack.Azure自動化.HybridAgent.Init**規則中重寫該參數並將其設置為 True。
 
 有關如何更新解決方案管理包的詳細資訊,請參閱[將作業管理員連接到 Azure 監視器紀錄](../azure-monitor/platform/om-agents.md)。
 
 > [!NOTE]
-> 對於具有操作管理器代理的電腦,要由更新管理完全管理,必須將代理更新為 Windows 或 Linux 的日誌分析代理。 若要深入了解如何更新代理程式，請參閱[如何升級 Operations Manager 代理程式](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。 在使用操作管理員的環境中,必須運行系統中心操作管理器 2012 R2 UR 14 或更高版本。
+> 對於具有操作管理器代理的電腦,必須由更新管理完全管理,必須將代理更新為 Windows 的日誌分析代理或 Linux 的日誌分析代理。 若要深入了解如何更新代理程式，請參閱[如何升級 Operations Manager 代理程式](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。 在使用操作管理員的環境中,必須運行系統中心操作管理器 2012 R2 UR 14 或更高版本。
 
 ## <a name="data-collection"></a>資料收集
 
@@ -249,13 +249,9 @@ sudo yum -q --security check-update
 要開始更新系統,您需要啟用更新管理解決方案。 以下是用來加入解決方案的建議與支援的方法:
 
 - [從虛擬機器](automation-onboard-solutions-from-vm.md)
-
 - [從瀏覽多部電腦](automation-onboard-solutions-from-browse.md)
-
 - [從自動化帳戶](automation-onboard-solutions-from-automation-account.md)
-
 - [使用 Azure 自動化 Runbook](automation-onboard-solutions.md)
-
 - [使用 Azure 資源管理員樣本](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>後續步驟

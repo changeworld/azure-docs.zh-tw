@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4538afcef85c4a6eaef4213133963ecab9987e1f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876212"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603357"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
 是否尋找有關部署 Azure 活動目錄 (Azure AD) 功能的端到端指導? Azure AD 部署計畫將引導您完成成功部署常見 Azure AD 功能所需的業務價值、規劃注意事項和操作過程。
@@ -63,7 +63,7 @@ Pilot 允許您在為所有人打開功能之前,先使用一小群進行測試�
 | -| -|
 | [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 使用管理員批准的身份驗證方法,Azure MFA 可幫助保護對數據和應用程式的訪問,同時滿足對簡單登錄過程的需求。 |
 | [條件式存取](../conditional-access/plan-conditional-access.md)| 借助條件訪問,您可以根據條件為誰可以訪問雲應用實施自動存取控制決策。 |
-| [自助服務密碼重置](../authentication/howto-sspr-deployment.md)| 自助服務密碼重置可幫助使用者重置密碼,而無需管理員干預,何時何地需要。 |
+| [自助式密碼重設](../authentication/howto-sspr-deployment.md)| 自助服務密碼重置可幫助使用者重置密碼,而無需管理員干預,何時何地需要。 |
 | [無密碼](../authentication/howto-authentication-passwordless-deployment.md) | 使用組織中的 Microsoft 認證器應用或 FIDO2 安全金鑰實現無密碼身分驗證 |
 
 ## <a name="deploy-application-management"></a>部署應用程式管理
@@ -80,7 +80,7 @@ Pilot 允許您在為所有人打開功能之前,先使用一小群進行測試�
 | -| -|
 | [以 ADFS 進行密碼雜湊同步處理](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 使用密碼哈希同步,使用者密碼哈希從本地活動目錄同步到 Azure AD,允許 Azure AD 對使用者進行身份驗證,而無需與本地活動目錄互動 |
 | [以 ADFS 通過驗證](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD 直通身份驗證可説明使用者使用相同的密碼登錄到本地和基於雲端的應用程式。 此功能為使用者提供了更好的體驗 (少記住一個密碼)並降低了 IT 説明台成本,因為使用者不太可能忘記如何登錄。 當使用者使用 Azure AD 登入時，此功能會向您的內部部署 Active Directory 直接驗證使用者的密碼。 |
-| [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan.md) |現今的員工想要隨時隨地都能在任何裝置發揮生產力。 他們需要存取雲中的 SaaS 應用和本地的企業應用。 Azure AD 應用程式代理支援這種強大的訪問,而無需昂貴和複雜的虛擬專用網路 (VPN) 或非軍事區域 (DMZ)。 |
+| [Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |現今的員工想要隨時隨地都能在任何裝置發揮生產力。 他們需要存取雲中的 SaaS 應用和本地的企業應用。 Azure AD 應用程式代理支援這種強大的訪問,而無需昂貴和複雜的虛擬專用網路 (VPN) 或非軍事區域 (DMZ)。 |
 | [無縫 SSO](../hybrid/how-to-connect-sso-quick-start.md)| 使用者位於連線到公司網路的公司裝置時，Azure Active Directory 無縫單一登入 (Azure AD 無縫 SSO) 就會自動將他們登入。 使用此功能,使用者無需鍵入密碼才能登錄到 Azure AD,也通常需要輸入其使用者名。 此功能使授權用戶能夠輕鬆存取基於雲端應用程式,而無需任何其他本地元件。 |
 
 ## <a name="deploy-user-provisioning"></a>部署使用者預先

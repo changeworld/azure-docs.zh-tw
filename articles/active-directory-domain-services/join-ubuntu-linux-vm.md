@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655125"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617559"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>將 Ubuntu Linux 虛擬機器加入 Azure AD 網域服務託管域
 
@@ -29,12 +29,12 @@ ms.locfileid: "80655125"
 若要完成此教學課程，您需要下列資源和權限：
 
 * 有效的 Azure 訂用帳戶。
-    * 如果沒有 Azure 訂閱,[請建立帳號](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
     * 如有需要，第一個教學課程會引導您[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
-* 屬於 Azure AD DS 託管域的使用者帳戶。
+* 屬於 Azure AD DS 受控網域一部分的使用者帳戶。
 
 ## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>建立並連接到 Ubuntu Linux VM
 
@@ -154,6 +154,12 @@ Successfully enrolled machine in realm
 ```
 
 如果 VM 無法成功完成域加入過程,請確保 VM 的網路安全組允許在 TCP + UDP 連接埠 464 上向 Azure AD DS 託管域的虛擬網路子網進行出站 Kerberos 流量。
+
+如果收到錯誤*未指定的 GSS 失敗。 次要代碼可能會提供更多資訊(Kerberos 資料庫中找不到伺服器),* 開啟檔案 */etc/krb5.conf*並在`[libdefaults]`節中添加以下代碼,然後重試:
+
+```console
+rdns=false
+```
 
 ## <a name="update-the-sssd-configuration"></a>更新 SSSD 設定
 

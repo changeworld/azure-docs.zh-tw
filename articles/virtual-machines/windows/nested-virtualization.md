@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 7858bd467c6e3fd82fcb3803a98e96b265f17d23
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437298"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605261"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中啟用巢狀虛擬化
 
@@ -42,7 +42,7 @@ ms.locfileid: "80437298"
 
 1. 按一下虛擬機器屬性上的 [連線]**** 按鈕。 隨即建立並下載遠端桌面通訊協定檔案 (.rdp 檔案)。
 
-2. 若要連線至您的 VM，請開啟下載的 RDP 檔案。 出現提示時，按一下 [連線]****。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+2. 若要連線至您的 VM，請開啟下載的 RDP 檔案。 出現提示時，按一下 [連線]****。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
 3. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後按一下 [確定]****。
 
@@ -98,7 +98,7 @@ ms.locfileid: "80437298"
 4. 建立 NAT 閘道的 IP 位址。
     
 若要設定閘道，您會需要一些您網路的相關資訊：    
-  * IPAddress - NAT 閘道 IP 會指定 IPv4 或 IPv6 位址，當作虛擬網路子網路的預設閘道位址使用。 一般形式是 a.b.c.1 (例如，"192.168.0.1")。 雖然最後一個位置不一定要是 .1，但通常是如此 (根據首碼長度)。 通常您應該使用 RFC 1918 私人網路位址空間。 
+  * IPAddress - NAT 閘道 IP 會指定 IPv4 或 IPv6 位址，當作虛擬網路子網路的預設閘道位址使用。 一般形式是 a.b.c.1 (例如，"192.168.0.1")。 雖然最終位置不一定是 .1,但它通常是 (基於首碼長度)。 通常您應該使用 RFC 1918 私人網路位址空間。 
   * PrefixLength - 子網路首碼長度會定義本機子網路大小 (子網路遮罩)。 子網路首碼長度將是一個介於 0 到 32 之間的整數值。 0 會對應整個網際網路，32 則只允許一個對應的 IP。 常見的值範圍從 24 到 12，視必須附加至 NAT 的 IP 數量而定。 常見的 PrefixLength 是 24，表示子網路遮罩為 255.255.255.0。
   * InterfaceIndex：**ifIndex** 是上一個步驟中建立之虛擬交換器的介面索引。 
 
@@ -149,7 +149,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 3. 按一下以選取 [DHCP 伺服器]**** 核取方塊、按一下 [新增功能]****，然後按一下 [下一步]****，直到完成精靈為止。
   
-4. 按一下 **[安裝]**。
+4. 按一下 [Install]  。
 
 #### <a name="configure-a-new-dhcp-scope"></a>設定新的 DHCP 範圍
 

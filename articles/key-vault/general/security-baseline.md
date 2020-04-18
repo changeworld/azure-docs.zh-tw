@@ -1,20 +1,20 @@
 ---
-title: 金鑰保管庫的 Azure 安全基線
-description: 金鑰保管庫的 Azure 安全基線
+title: 適用於 Key Vault 的 Azure 安全性基準
+description: 適用於 Key Vault 的 Azure 安全性基準
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb908c4b105324e0866d53463ecd3a8a59e7e651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429885"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616888"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>金鑰保管庫的 Azure 安全基線
+# <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 
 金鑰保管庫的 Azure 安全基線包含可説明您改進部署安全狀態的建議。
 

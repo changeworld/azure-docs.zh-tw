@@ -11,16 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: cf13dbe17738ca1ae658c73bb0092a219b4823d1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c899d3b4d132ee51679f8c7b4fd1c578417500db
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415911"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605276"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 Azure 資料工廠中使用 SQL 伺服器整合服務 (SSIS) 時,應在以下方案中將 Azure-SSIS 整合執行時 (IR) 加入 Azure 虛擬網路:
 

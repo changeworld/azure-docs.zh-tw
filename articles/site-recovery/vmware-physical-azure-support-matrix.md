@@ -3,12 +3,12 @@ title: Azure 網站恢復中 VMware/物理災難恢復的支援矩陣
 description: 使用 Azure 網站恢復匯總對 VMware VM 和物理伺服器的災難恢復的支援。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 02448754abd92eab9e095a5eaff10861f8b5e5e4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672445"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606040"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -117,7 +117,7 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 至 3.16.0-10-amd64,4.9.0-0.bpo.4-am
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 支援的核心版本
 
-**釋放** | **行動服務版本** | **核心版本** |
+**版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
 SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.28][9.28 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-預設為 3.12.74-60.64.118 預設值</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73 預設為 4.4.121-92.117 預設值</br></br>SP3 4.4.73-5 預設為 4.4.180-94.100 預設值</br></br>SP3 4.4.138-4.7-azure 至 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41 預設為 4.12.14-95.29 默認值</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.23-azure |
 SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-default 至 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-預設值為 3.12.74-60.64.115 預設值</br></br> SP2 4.4.21-69-default 至 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73 預設為 4.4.121-92.114 預設值</br></br>SP3 4.4.73-5 預設為 4.4.180-94.97 預設值</br></br>SP3 4.4.138-4.7-azure 至 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41 預設為 4.12.14-95.19 默認值</br>SP4 4.12.14-6.3-azure 至 4.12.14-6.15-azure |
@@ -126,9 +126,9 @@ SUSE Linux 企業伺服器 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux 企業伺服器 15 支援核心版本
 
-**釋放** | **行動服務版本** | **核心版本** |
+**版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux 企業伺服器 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支援所有[股票 SUSE 15 與 15 內核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
+SUSE Linux 企業伺服器 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支援所有股票 SUSE 15 和 15 內核。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 檔案系統/客體儲存體
 

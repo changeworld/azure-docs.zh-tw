@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbcd4ea174d4b6a2a45495c32f178ed1bd01bbe0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261341"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604716"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中,在非工作時間解決方案期間啟動/停止 VM
 
@@ -225,11 +225,11 @@ Azure CSP 訂閱僅支援 Azure 資源管理器模型。 非 Azure 資源管理�
 
 1. 搜尋並選擇**紀錄分析工作區**。
 
-2. 在**日誌分析工作區**頁面上,選擇工作區。
+2. 在日誌分析工作區頁面上,選擇工作區。
 
 3. 在工作區 [設定] 頁面的功能表中選取 [刪除]****。
 
-4. 如果不想保留 Azure 自動化帳戶元件,可以手動刪除每個元件。 請參考[解決方案元件](#solution-components)。
+4. 如果不想保留 Azure 自動化帳戶[解決方案元件](#solution-components),可以手動刪除每個元件。
 
 ## <a name="next-steps"></a>後續步驟
 

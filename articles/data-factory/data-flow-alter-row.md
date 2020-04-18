@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 2923e087426ee04c74da629f4e2d2d49a06eb1ef
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 77c58bb8dfa7d21b108d2aa63e90142f66877fb7
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416540"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606515"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>在映射資料串流中改變行轉換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用"更改列"轉換對行設置插入、刪除、更新和更新策略。 您可以將一對多條件添加為表達式。 這些條件應按優先順序順序指定,因為每行都將用與第一個匹配表達式對應的策略進行標記。 每個條件都可能導致插入、更新、刪除或向上更新行(或行)。 更改行可以針對資料庫生成 DDL & DML 操作。
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538064"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603672"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器縮放集的自動實體修復
 
@@ -90,6 +90,8 @@ ms.locfileid: "81538064"
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>建立新比例集時開啟自動修復原則
 
 您可以在建立新比例集時開啟自動修復政策,請確保滿足選擇加入此功能的所有[要求](#requirements-for-using-automatic-instance-repairs)。 應正確配置應用程式終結點以用於縮放集實例,以避免在配置終結點時觸發意外修復。 對於新創建的縮放集,任何實例修復僅在等待寬限期後執行。 要在比例集中啟用自動實例修復,請使用虛擬機縮放集模型中的*自動修復策略*物件。
+
+您還可以使用此[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe)部署虛擬機規模集,其中啟用了負載均衡器運行狀況探測和自動實例修復,寬限期為 30 分鐘。
 
 ### <a name="azure-portal"></a>Azure 入口網站
  

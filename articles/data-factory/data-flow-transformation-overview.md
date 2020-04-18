@@ -7,16 +7,16 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81412973"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606276"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>對應資料流程轉換概述
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
 下面是映射數據流中當前支援的轉換的清單。 按一下每個轉換以瞭解其配置詳細資訊。
 
@@ -30,14 +30,14 @@ ms.locfileid: "81412973"
 | [Filter](data-flow-filter.md) | 列變更器 | 根據條件篩選行。 |
 | [扁平化](data-flow-flatten.md) | 架構修改器 |  在分層結構(如 JSON)中獲取陣列值,並將其展開到單獨的行中。 |
 | [加入](data-flow-join.md) | 多個輸入/輸出 |  合併來自兩個源或流的數據。 |
-| [尋找](data-flow-lookup.md) | 多個輸入/輸出 | 來自另一個源的引用數據。 |
+| [查閱](data-flow-lookup.md) | 多個輸入/輸出 | 來自另一個源的引用數據。 |
 | [新增分支](data-flow-new-branch.md) | 多個輸入/輸出 | 針對同一數據流應用多組操作和轉換。 |
 | [樞紐](data-flow-pivot.md) | 架構修改器 | 一個或多個分組列具有將其不同行值轉換為單個列的聚合。 |
 | [選取](data-flow-select.md) | 架構修改器 | 別名列與串流名稱,以及刪除或重新排序列 |
 | [接收](data-flow-sink.md) | - | 資料的最終目的地 |
-| [排序](data-flow-sort.md) | 列變更器 | 在目前資料串流的傳入列排序 |
+| [Sort](data-flow-sort.md) | 列變更器 | 在目前資料串流的傳入列排序 |
 | [來源](data-flow-source.md) | - | 資料流程資料來源 |
 | [代理鍵](data-flow-surrogate-key.md) | 架構修改器 | 新增遞增的非業務的按鍵值 |
-| [聯盟](data-flow-union.md) | 多個輸入/輸出 | 垂直組合多個資料串流 |
+| [Union](data-flow-union.md) | 多個輸入/輸出 | 垂直組合多個資料串流 |
 | [取消樞紐](data-flow-unpivot.md) | 架構修改器 | 將列透視到行值 |
 | [視窗](data-flow-window.md) | 架構修改器 |  定義數據流中列的基於視窗的聚合。 |

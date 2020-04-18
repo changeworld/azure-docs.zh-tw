@@ -1,5 +1,5 @@
 ---
-title: Azure 金鑰保管庫的安全建議
+title: Azure Key Vault 的安全性建議
 description: Azure 密鑰保管庫的安全建議。 實施本指南將説明您履行我們共同責任模型中所述的安全義務
 services: key-vault
 author: msmbaldwin
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b7bd85508851df7c7a664862b02141bf4d3bea1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429846"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616491"
 ---
-# <a name="security-recommendations-for-azure-key-vault"></a>Azure 金鑰保管庫的安全建議
+# <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 的安全性建議
 
 本文包含 Azure 密鑰保管庫的安全建議。 實施這些建議將説明您履行我們共同責任模型中所述的安全義務。 有關 Microsoft 如何履行服務提供者職責的詳細資訊,請閱讀[雲計算的共享責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
 

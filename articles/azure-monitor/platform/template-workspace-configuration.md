@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 81e46f53c0afc69c927918daa0488c4835d60805
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477976"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605026"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 資源管理員樣本管理紀錄分析工作區
 
@@ -153,7 +153,7 @@ ms.locfileid: "80477976"
    >* "名稱":"容量保留",
    >* '容量保留等級": 100
 
-2. 編輯範本以符合您的需求。 請考慮創建[資源管理器參數檔](../../azure-resource-manager/templates/parameter-files.md),而不是將參數作為內聯值傳遞。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)參考，以了解支援哪些屬性和值。 
+2. 編輯範本以符合您的需求。 請考慮創建[資源管理器參數檔](../../azure-resource-manager/templates/parameter-files.md),而不是將參數作為內聯值傳遞。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)參考，以了解支援哪些屬性和值。 
 
 3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json****。
 

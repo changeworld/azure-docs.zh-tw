@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 73bbfad4c0535fa00b1aa53764eb52acb83124f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680371"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617887"
 ---
 # <a name="network-requirements"></a>網路需求
 
@@ -27,6 +27,9 @@ ms.locfileid: "80680371"
 * 避免在同一 Wi-Fi 網路上**出現爭用頻寬密集流量**(如視頻或遊戲流)。
 * **良好的 Wi-Fi 信號強度**至關重要。 如果可能,請靠近 Wi-Fi 接入點,避免用戶端設備和接入點之間的障礙物。
 * 請確定永遠連接到[區域](regions.md)最近的 Azure**資料中心**。 數據中心越近,網路延遲越低,對全息圖穩定性的影響很大。
+
+> [!NOTE]
+> 下游頻寬主要由視頻流消耗,而視頻流又在顏色和深度資訊(60 Hz,立體聲)之間分裂。
 
 ## <a name="network-performance-tests"></a>網路效能測試
 
@@ -48,4 +51,4 @@ ms.locfileid: "80680371"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門:使用 Unity 渲染模型](../quickstarts/render-model.md)
+* [快速入門：使用 Unity 轉譯模型](../quickstarts/render-model.md)

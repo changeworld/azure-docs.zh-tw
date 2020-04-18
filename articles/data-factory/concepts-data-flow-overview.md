@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
-ms.openlocfilehash: 39d1f15b771168b618bfbc4951f2036a8b95b027
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8420cba043e7fc9285b473b877f0ff10212e9fda
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418451"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605321"
 ---
 # <a name="what-are-mapping-data-flows"></a>什麼是對應資料流程？
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 映射資料流是在 Azure 數據工廠中直觀地設計的數據轉換。 數據流允許數據工程師無需編寫代碼即可開發圖形數據轉換邏輯。 生成的數據流作為使用橫向擴展的 Apache Spark 群集的 Azure 數據工廠管道中的活動執行。 數據流活動可以通過現有的數據工廠調度、控制、流和監視功能進行。
 

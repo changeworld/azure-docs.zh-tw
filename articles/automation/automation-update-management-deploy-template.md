@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 03/30/2020
-ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 81f9d242d93ffe513c0c3733ceb9d38ca9cadc1c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411463"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617452"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>使用 Azure 資源管理員樣本的板載更新管理解決方案
 
@@ -20,16 +20,19 @@ ms.locfileid: "80411463"
 
 * 創建 Azure 監視器日誌分析工作區。
 * 創建 Azure 自動化帳戶。
-* 如果尚未連結,則將自動化帳戶連結到日誌分析工作區。
-* Azure 自動化更新管理解決方案
+* 將自動化帳戶連結到日誌分析工作區(如果尚未連結)。
+* 加入 Azure 自動化更新管理解決方案。
 
 該範本不自動載入一個或多個 Azure 或非 Azure VM。
 
-如果已在訂閱中受支援的區域部署了日誌分析工作區和自動化帳戶,則它們未連結,並且工作區尚未部署更新管理解決方案,使用此範本成功創建連結並部署更新管理解決方案。 
+如果您已在訂閱中受支援的區域部署了日誌分析工作區和自動化帳戶,則它們不會連結。 工作區尚未部署更新管理解決方案。 使用此範本成功創建連結並部署更新管理解決方案。 
+
+>[!NOTE]
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
 
 ## <a name="api-versions"></a>API 版本
 
-下表列出此範例中使用的資源 API 版本。
+下表列出了此範本中使用的資源的 API 版本。
 
 | 資源 | 資源類型 | API 版本 |
 |:---|:---|:---|
@@ -39,18 +42,18 @@ ms.locfileid: "80411463"
 
 ## <a name="before-using-the-template"></a>在使用樣本之前
 
-如果選擇在本地安裝和使用 PowerShell,本文需要 Azure PowerShell Az 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。 使用 Azure PowerShell,部署使用[新阿茲資源群組部署](/powershell/module/az.resources/new-azresourcegroupdeployment)。
+如果選擇在本地安裝和使用 PowerShell,本文需要 Azure PowerShell Az 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果在本地運行 PowerShell,則還需要運行[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0)以建立與 Azure 的連接。 使用 Azure PowerShell,部署使用[新阿茲資源群組部署](/powershell/module/az.resources/new-azresourcegroupdeployment)。
 
-如果選擇在本地安裝和使用 CLI,則本文要求您運行 Azure CLI 版本 2.1.0 或更高版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級,請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 使用 Azure CLI,這個部署使用[az 群組部署建立](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)。 
+如果選擇在本地安裝和使用 CLI,則本文要求您運行 Azure CLI 版本 2.1.0 或更高版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 使用 Azure CLI,這個部署使用[az 群組部署建立](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)。 
 
 JSON 樣本設定為提示您:
 
 * 工作區的名稱
-* 在建立工作區的區域
+* 在其中建立工作區的區域
 * 自動化帳戶名稱
-* 在建立帳號的區域
+* 要在其中建立帳戶的區域
 
-JSON 範本為可能用作環境中標準配置的其他參數指定預設值。 您可以將範本儲存在 Azure 儲存帳戶中,以便組織中共享存取。 有關使用樣本的詳細資訊,請參考[使用資源管理員樣本和 Azure CLI 部署資源](../azure-resource-manager/templates/deploy-cli.md)。
+JSON 範本為可能用於環境中標準配置的其他參數指定預設值。 您可以將範本儲存在 Azure 儲存帳戶中,以便組織中共享存取。 有關使用樣本的詳細資訊,請參考[使用資源管理員樣本和 Azure CLI 部署資源](../azure-resource-manager/templates/deploy-cli.md)。
 
 樣本中的以下參數使用紀錄分析工作區的預設值設定:
 
@@ -59,11 +62,11 @@ JSON 範本為可能用作環境中標準配置的其他參數指定預設值。
 * 容量預留 - 預設值為 100 GB
 
 >[!WARNING]
->如果在已選擇加入 2018 年 4 月全新定價模型的訂用帳戶中建立或設定 Log Analytics 工作區，則唯一有效的 Log Analytics 定價層是 **PerGB2018**。
+>如果在已選擇加入 2018 年 4 月定價模型的訂閱中創建或設定日誌分析工作區,則唯一有效的日誌分析定價層是**PerGB2018**。
 >
 
 >[!NOTE]
->在使用此範本之前,請查看[其他詳細資訊](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以完全瞭解工作區配置選項,如存取控制模式、定價層、保留和容量預留級別。 如果您是 Azure 監視器日誌的新增功能,並且尚未部署工作區,則應查看[工作區設計](../azure-monitor/platform/design-logs-deployment.md)指南以瞭解存取控制,並瞭解我們建議組織的設計實現策略。
+>在使用此範本之前,請查看[其他詳細資訊](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以完全瞭解工作區配置選項,如存取控制模式、定價層、保留和容量預留級別。 如果您是 Azure 監視器日誌的新增功能,並且尚未部署工作區,則應查看[工作區設計](../azure-monitor/platform/design-logs-deployment.md)指南以瞭解存取控制,並瞭解我們為組織推薦的設計實現策略。
 
 ## <a name="deploy-template"></a>部署範本
 
@@ -235,7 +238,7 @@ JSON 範本為可能用作環境中標準配置的其他參數指定預設值。
 
 2. 編輯範本以符合您的需求。 請考慮創建[資源管理器參數檔](../azure-resource-manager/templates/parameter-files.md),而不是將參數作為內聯值傳遞。
 
-3. 將此檔保存為「部署UMSolutiontemplate.json」到本地資料夾。
+3. 將此檔案儲存到本地資料夾,作為**部署UMSolutiontemplate.json**。
 
 4. 您已準備好部署此範本。 可以使用 PowerShell 或 Azure CLI。 當您提示您創建工作區和自動化帳戶名稱時,請提供在所有 Azure 訂閱中全域唯一的名稱。
 

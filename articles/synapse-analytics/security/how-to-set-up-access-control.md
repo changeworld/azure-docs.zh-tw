@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94699f2153fa8d1df3ab85c184f32792c7ae0b59
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428871"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606014"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區(預覽版)
 
@@ -51,8 +51,8 @@ ms.locfileid: "81428871"
 - **WS1\_WSAdmins** – 適用於需要完全控制工作區的使用者
 - **WS1\_SparkAdmins** – 適用於需要完全控制工作區 Spark 方面的使用者
 - **WS1\_SQLAdmins** – 適用於需要完全控制工作區 SQL 方面的使用者
-- 將**\_WS1 管理員**加入**\_WS1 SQLAdmin**
-- 將**\_WS1 管理員**加入**\_WS1 SparkAdmin**
+- 將**WS1\_WSAdmin 新增到** **WS1\_SQLAdmin**
+- 將**WS1\_WSAdmin 新增到** **WS1\_SparkAdmin**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>第二步:準備您的資料儲存第 2 代帳戶
 
@@ -89,7 +89,7 @@ Synapse 工作區需要訪問 STG1 和 CNT1,以便它可以運行管道並執行
 - 開啟 Azure 入口網站
 - 找到 STG1
 - 導航到 CNT1
-- 確保 WS1 的 MSI 已分配給 CNT1 上的**Azure Blob 資料參與者**角色
+- 確保 WS1 的 MSI(託管服務識別)分配給 CNT1 上的**Azure Blob 資料參與者**角色
   - 如果未看到它分配,請分配它。
   - MSI 的名稱與工作區相同。 在這種情況下,它將是&quot;WS1&quot;。
 

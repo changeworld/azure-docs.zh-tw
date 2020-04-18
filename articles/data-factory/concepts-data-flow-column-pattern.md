@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 5e1c0eb1c4f1fc74e56db8f83f1bab6406ec5306
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415558"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606125"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>在映射資料串態使用欄模式
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 多個映射資料流轉換允許您基於模式引用範本列,而不是硬編碼的列名稱。 此符合稱為*欄模式*。 您可以根據名稱、資料類型、流或位置定義模式以匹配列,而不是要求確切的欄位名稱。 有兩種情況的列模式很有用:
 

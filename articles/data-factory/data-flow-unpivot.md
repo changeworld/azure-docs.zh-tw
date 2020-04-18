@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: f42b44fdab28cb60ff903a048d9162115bf67d9c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417754"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606252"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure 資料工廠取消透視轉換
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 ADF 映射資料流中使用 Unpivot,通過將單個記錄中的多個列的值擴展到單列中具有相同值的多個記錄,將未規範化資料集轉換為更規範化的版本。
 

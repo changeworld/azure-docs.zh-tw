@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461288"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606106"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射資料串流中的架構漂移
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 架構漂移是源經常更改元數據的情況。 欄位、列和 類型可以動態添加、刪除或更改。 如果不處理架構漂移,數據流就容易受到上游數據源更改的影響。 當傳入列和欄位發生更改時,典型的 ETL 模式將失敗,因為它們往往綁定到這些源名稱。
 

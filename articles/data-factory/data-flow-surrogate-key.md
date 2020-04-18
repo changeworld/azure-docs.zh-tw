@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 6f0310f13ab23b5b3d4fba649d0faf0da4dad5b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413150"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606302"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>對應資料串流的代理金鑰轉換 
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用代理項金鑰轉換向每行資料添加遞增鍵值。 這在星形架構分析數據模型中設計維度表時非常有用。 在星形架構中,維度表中的每個成員都需要一個非業務密鑰的唯一密鑰。
 

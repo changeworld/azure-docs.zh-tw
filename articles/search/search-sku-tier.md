@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547030"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617715"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>為 Azure 認知搜尋選擇定價層
 
@@ -89,6 +89,8 @@ ms.locfileid: "80547030"
 | 文件開裂、影像擷取 | 根據從文檔中提取的圖像數量計費。 在[索引器配置](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)中 **,imageAction**是觸發圖像提取的參數。 如果**imageAction**設置為「無」(預設值),則不會向您收取影像提取費用。 圖像提取速率記錄在 Azure 認知搜索的[定價詳細資訊](https://azure.microsoft.com/pricing/details/search/)頁上。|
 | [內建認知技能](cognitive-search-predefined-skills.md) | 計費費率與直接使用認知服務執行任務的比率相同。 |
 | 自訂技能 | 自定義技能是您提供的功能。 使用自定義技能的成本完全取決於自定義代碼是否調用其他按流量計費的服務。 |
+
+[增量擴充(預覽)](cognitive-search-incremental-indexing-conceptual.md)功能允許您提供緩存,使索引器能夠更高效地運行將來修改技能集時所需的認知技能,從而節省時間和金錢。
 
 <a name="search-units"></a>
 
