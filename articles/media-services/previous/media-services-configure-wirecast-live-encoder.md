@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 1d9d63aa6b3da1b8d8389722bd5af0eeed585d03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77134966"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641651"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 編碼器來傳送單一位元速率的即時串流 
 > [!div class="op_single_selector"]
 > * [有線廣播](media-services-configure-wirecast-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
->
 >
 
 本文示範如何設定 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 即時編碼器，藉此將單一位元速率的即時串流傳送到已啟用即時編碼的 AMS 通道。 如需詳細資訊，請參閱 [使用啟用的通道以 Azure 媒體服務執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)。
@@ -34,7 +32,7 @@ ms.locfileid: "77134966"
 本教學課程示範如何使用 Azure 媒體服務總管 (AMSE) 工具管理 Azure 媒體服務 (AMS)。 此工具只會在 Windows 電腦上執行。 如果您是用 Mac 或 Linux，請使用 Azure 入口網站建立[通道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[程式](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
 > [!NOTE]
-> 使用 RTMPS 協定時，編碼器必須支援 TLS 1.2。 由於 TLS 1.2 要求，請使用有線廣播版本 13.0.2 或更高版本。
+> 使用 RTMPS 協定時,編碼器必須支援 TLS 1.2。 由於 TLS 1.2 要求,請使用有線廣播版本 13.0.2 或更高版本。
 
 ## <a name="prerequisites"></a>Prerequisites
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
@@ -65,7 +63,7 @@ ms.locfileid: "77134966"
 >
 >
 
-當通道啟動時，您可以[配置編碼器](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)。
+當頻道啟動時,您可以[設定編碼器](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)。
 
 > [!IMPORTANT]
 > 只要通道進入就緒狀態，就會開始計費。 如需詳細資訊，請參閱 [通道的狀態](media-services-manage-live-encoder-enabled-channels.md#states)。
@@ -75,7 +73,7 @@ ms.locfileid: "77134966"
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />設定 Telestream Wirecast 編碼器
 在本教學課程中，我們會使用下列輸出設定。 本章節的其餘部分將詳細說明組態步驟。
 
-**視頻**：
+**影像**:
 
 * 轉碼器：H.264
 * 設定檔：高 (層級 4.0)
@@ -83,7 +81,7 @@ ms.locfileid: "77134966"
 * 主要畫面格：2 秒 (60 秒)
 * 畫面播放速率：30
 
-**音訊**：
+**音訊**:
 
 * 轉碼器：AAC (LC)
 * 位元速率：192 kbps
@@ -94,7 +92,7 @@ ms.locfileid: "77134966"
 2. 瀏覽至 [輸出]**** 索引標籤，並選取 [輸出設定...]**** 以設定輸出。
 
     請確定 [輸出目的地]**** 已設為 [RTMP Server]****。
-3. 按一下 [確定]****。
+3. 按一下 [確定]  。
 4. 在 [設定] 頁面上，將 [目的地]**** 欄位設為 [Azure 媒體服務]****。
 
     編碼設定檔已預先選取為 [Azure H.264 720p 16:9 (1280x720)] ****。 若要自訂這些設定，請選取下拉式清單右邊的齒輪圖示，然後選擇 [新增預設]****。
@@ -104,7 +102,7 @@ ms.locfileid: "77134966"
 
     為預設命名，並檢查下列建議的設定：
 
-    **視頻**
+    **視訊**
 
    * 編碼器：MainConcept H.264
    * 每秒畫面格數：30
@@ -134,7 +132,7 @@ ms.locfileid: "77134966"
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. 選取 [確定]****。
+1. 選取 [確定]  。
 2. 在 **Wirecast** 主畫面上，確認視訊和音訊的輸入來源已就緒，然後按下左上角的 [資料流]****。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)

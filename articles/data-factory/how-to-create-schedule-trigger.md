@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414477"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641596"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>建立依排程執行管線的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ ms.locfileid: "81414477"
 您可以建立**排程觸發程序**，將管線排定為定期執行 (每小時、每天等)。 
 
 > [!NOTE]
-> 如需有關建立管線和排程觸發程序、將觸發程序與管線建立關聯以及執行和監視管線的完整逐步解說，請參閱[快速入門：使用 Data Factory UI 來建立資料處理站](quickstart-create-data-factory-portal.md)。
+> 有關創建管道和計劃觸發器的完整演練,這將觸發器與管道關聯,並運行並監視管道,請參閱[快速入門:使用資料工廠 UI 創建資料工廠](quickstart-create-data-factory-portal.md)。
 
-1. 切換至 [編輯]**** 索引標籤。 
+1. 切換到「**編輯」** 選項卡,該選項卡帶有鉛筆符號。 
 
     ![切換至 [編輯] 索引標籤](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. 按一下功能表上的 [觸發程序]****，然後按一下 [新增/編輯]****。 
+
+1. 在選單上選擇 **「觸發器**」,然後選擇 **「新建/編輯**」 。 
 
     ![新增觸發程序功能表](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. 在 [新增觸發程序]**** 頁面上按一下 [選擇觸發程序...]****，然後按一下 [新增]****。 
+
+1. 在「**添加觸發器」** 頁上,**選擇「選擇觸發器...",** 然後選擇 **」新建**」。。 
 
     ![新增觸發程序 - 新增觸發程序](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. 在 [新增觸發程序]**** 頁面中，執行下列步驟： 
+
+1. 在 **"新建觸發器"** 頁上,執行以下步驟: 
 
     1. 確認已針對 [類型]**** 選取 [排程]****。 
-    2. 針對 [開始日期 (UTC)]**** 指定觸發程序的開始日期時間。 預設會設定為目前的日期時間。 
-    3. 指定觸發程序的 [週期]****。 請從下拉式清單 (每分鐘、每小時、每天、每週及每月) 中選取其中一個值。 在文字方塊中輸入乘數。 例如，如果您想要讓觸發程序每隔 15 分鐘執行一次，您可以選取 [每分鐘]****，然後在文字方塊中輸入 **15**。 
-    4. 針對 [結束]**** 欄位，如果您不想要為觸發程序指定結束日期時間，請選取 [沒有指定結束日期]****。 若要指定結束日期時間，請選取 [日期]**** 並指定結束日期時間，然後按一下 [套用]****。 每次執行管線都會產生相關成本。 如果您是在進行測試，您可能會想要確保只觸發管線幾次。 不過，請確定發佈時間與結束時間之間有足夠的時間可供管線執行。 在您將方案發佈至 Data Factory 之後，觸發程序才會生效，而不是在您將觸發程序儲存在 UI 時生效。
+    1. 針對 [開始日期 (UTC)]**** 指定觸發程序的開始日期時間。 預設會設定為目前的日期時間。 
+    1. 指定觸發程序的 [週期]****。 請從下拉式清單 (每分鐘、每小時、每天、每週及每月) 中選取其中一個值。 在文字方塊中輸入乘數。 例如，如果您想要讓觸發程序每隔 15 分鐘執行一次，您可以選取 [每分鐘]****，然後在文字方塊中輸入 **15**。 
+    1. 針對 [結束]**** 欄位，如果您不想要為觸發程序指定結束日期時間，請選取 [沒有指定結束日期]****。 要指定結束日期時間,請選擇 **「日期」** 並指定結束日期時間,然後選擇 **"確定**"。 每次執行管線都會產生相關成本。 如果您是在進行測試，您可能會想要確保只觸發管線幾次。 不過，請確定發佈時間與結束時間之間有足夠的時間可供管線執行。 在您將方案發佈至 Data Factory 之後，觸發程序才會生效，而不是在您將觸發程序儲存在 UI 時生效。
 
         ![觸發程序設定](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. 在 [新增觸發程序]**** 視窗中，選取 [已啟用]**** 選項，然後按 [下一步]****。 您可以稍後使用此核取方塊來停用觸發程序。 
+
+1. 在 **'新建觸發器'** 視窗中,在 **"已啟動'** 選項中選擇 **"是**",然後選擇 **"確定**"。 您可以稍後使用此核取方塊來停用觸發程序。 
 
     ![觸發程序設定 - 下一步按鈕](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. 在 [新增觸發程序]**** 頁面中檢閱警告訊息，然後按一下 [完成]****。
+
+1. 在 **「新建觸發器」** 視窗中,查看警告消息,然後選擇 **「確定**」 。
 
     ![觸發程序設定 - 完成按鈕](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. 按一下 [發佈]****，將變更發佈至 Data Factory。 必須等到您發佈對 Data Factory 所做的變更之後，觸發程序才會開始觸發管線回合。 
+
+1. 選擇 **「發布所有內容**」 以將更改發表到資料工廠。 在將更改發佈到數據工廠之前,觸發器不會開始觸發管道運行。 
 
     ![發佈按鈕](./media/how-to-create-schedule-trigger/publish-2.png)
-8. 切換至左側的 [監視]**** 索引標籤。 按一下 [重新整理]**** 即可重新整理清單。 您會看到所排定之觸發程序所觸發的管線回合。 請留意 [觸發方式]**** 資料行中的值。 如果您使用 [立即觸發]**** 選項，就會在清單中看到手動觸發程序回合。 
+
+1. 切換到左側**的「管道執行」** 選項卡,然後選擇 **「刷新」** 以刷新清單。 您將看到由計劃觸發器觸發的管道運行。 請留意 [觸發方式]**** 資料行中的值。 如果使用「**立即觸發」** 選項,您將在清單中看到手動觸發器執行。 
 
     ![監視已觸發的執行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. 按一下 [管線執行]**** 旁的向下箭號，切換至 [觸發程序執行]**** 檢視。 
+
+1. 切換至 [觸發程序執行]**** 檢視。 
 
     ![監視觸發程序執行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ ms.locfileid: "81414477"
     - 此觸發程序與 **Adfv2QuickStartPipeline** 管線關聯。 若要將多個管線與觸發程序建立關聯，請新增更多個 **pipelineReference** 區段。
     - 快速入門中的管線會採用兩個**參數**值：**inputPath** 和 **outputPath**。 因此，您將從觸發程序傳遞這些參數的值。
 
-2. 使用**Set-AzDataFactoryV2Trigger** cmdlet 建立觸發器:
+1. 使用**Set-AzDataFactoryV2Trigger** cmdlet 建立觸發器:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. 使用**Get-AzDataFactoryV2Trigger** cmdlet 確認觸發器的狀態**已停止**:
+1. 使用**Get-AzDataFactoryV2Trigger** cmdlet 確認觸發器的狀態**已停止**:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用**啟動-AzDataFactoryV2觸發器**cmdlet 啟動觸發器:
+1. 使用**啟動-AzDataFactoryV2觸發器**cmdlet 啟動觸發器:
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 使用**Get-AzDataFactoryV2Trigger** cmdlet 確認觸發器的狀態已**啟動**:
+1. 使用**Get-AzDataFactoryV2Trigger** cmdlet 確認觸發器的狀態已**啟動**:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  使用**Get-AzDataFactoryV2TriggerRun** cmdlet 獲取在 Azure PowerShell 中運行的觸發器。 若要取得有關觸發程序回合的資訊，請定期執行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 的值，以符合您的觸發程序定義中的值：
+1.  使用**Get-AzDataFactoryV2TriggerRun** cmdlet 獲取在 Azure PowerShell 中運行的觸發器。 若要取得有關觸發程序回合的資訊，請定期執行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 的值，以符合您的觸發程序定義中的值：
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"

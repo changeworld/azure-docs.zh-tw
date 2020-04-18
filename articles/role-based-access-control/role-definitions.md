@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: e4e4ac1b0a867130dd7b9e276db52e1ca1e72976
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062138"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641387"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解適用於 Azure 資源的角色定義
 
 如果您想要嘗試了解角色的運作方式，或是想要自行建立[適用於 Azure 資源的自訂角色](custom-roles.md)，了解角色的定義方式將會很有幫助。 本文詳細描述角色定義並提供一些範例。
 
-## <a name="role-definition-structure"></a>角色定義結構
+## <a name="role-definition"></a>角色定義
 
-「角色定義」** 是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 也可能列出無法執行的作業或與基礎資料相關的作業。 角色定義的結構如下：
+「角色定義」** 是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 也可能列出無法執行的作業或與基礎資料相關的作業。 角色定義具有以下屬性:
 
 ```
 Name
@@ -42,6 +42,20 @@ NotDataActions []
 AssignableScopes []
 ```
 
+| 屬性 | 描述 |
+| --- | --- |
+| `Name` | 角色的顯示名稱。 |
+| `Id` | 角色的唯一識別碼。 |
+| `IsCustom` | 表示這是否為自訂角色。 若為自訂角色，請設定為 `true`。 |
+| `Description` | 角色的說明。 |
+| `Actions` | 字串陣列，指定角色允許執行的管理作業。 |
+| `NotActions` | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 |
+| `DataActions` | 字串陣列，指定角色允許對物件內資料執行的管理作業。 |
+| `NotDataActions` | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 |
+| `AssignableScopes` | 指定角色可用於分配的範圍的字串陣列。 |
+
+### <a name="operations-format"></a>操作格式
+
 用來指定作業的字串具有下列格式：
 
 - `{Company}.{ProviderName}/{resourceType}/{action}`
@@ -52,9 +66,11 @@ AssignableScopes []
 | ------------------- | ------------------- |
 | `*` | 此萬用字元會授與所有符合字串之作業的存取權。 |
 | `read` | 啟用讀取作業 (GET)。 |
-| `write` | 啟用寫入操作（PUT 或 PATCH）。 |
-| `action` | 啟用重新開機虛擬機器 （POST） 等自訂操作。 |
+| `write` | 啟用寫入操作(PUT 或 PATCH)。 |
+| `action` | 啟用重新啟動虛擬機器 (POST) 等自訂操作。 |
 | `delete` | 啟用刪除作業 (DELETE)。 |
+
+### <a name="role-definition-example"></a>角色定義範例
 
 以下是 JSON 格式的[參與者](built-in-roles.md#contributor)角色定義。 `Actions` 下的萬用字元 (`*`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 如果是[參與者](built-in-roles.md#contributor)角色，`NotActions` 會移除此角色管理資源存取權及指派資源存取權的功能。
 
@@ -88,17 +104,17 @@ AssignableScopes []
 - 建立、更新或刪除 Blob 容器
 - 刪除資源群組及其所有資源
 
-如果容器身份驗證方法設置為"Azure AD 使用者帳戶"而不是"訪問金鑰"，則不會將管理存取權限繼承到您的資料。 此隔離可防止具有萬用字元 (`*`) 的角色不受限地存取您的資料。 例如，如果使用者具有訂用帳戶的[讀取者](built-in-roles.md#reader)角色，則可以檢視儲存體帳戶，但預設為無法檢視基礎資料。
+如果容器身份驗證方法設置為「Azure AD 使用者帳戶」而不是「訪問金鑰」,則不會將管理存取許可權繼承到您的資料。 此隔離可防止具有萬用字元 (`*`) 的角色不受限地存取您的資料。 例如，如果使用者具有訂用帳戶的[讀取者](built-in-roles.md#reader)角色，則可以檢視儲存體帳戶，但預設為無法檢視基礎資料。
 
 在此之前，資料作業不可使用角色型存取控制。 資料作業的授權會因為資源提供者不同而有差異。 用於管理操作的相同基於角色的存取控制授權模型已擴展到資料操作。
 
-為支援資料作業，已新增資料屬性到角色定義結構中。 資料作業會在 `DataActions` 和 `NotDataActions` 屬性中指定。 藉由新增這些資料屬性，可繼續維持管理和資料之間的分隔。 這可避免目前具有萬用字元 (`*`) 的角色指派突然存取資料。 以下是可在 `DataActions` 和 `NotDataActions`中指定的一些資料作業：
+為了支援數據操作,新的資料屬性已添加到角色定義中。 資料作業會在 `DataActions` 和 `NotDataActions` 屬性中指定。 藉由新增這些資料屬性，可繼續維持管理和資料之間的分隔。 這可避免目前具有萬用字元 (`*`) 的角色指派突然存取資料。 以下是可在 `DataActions` 和 `NotDataActions`中指定的一些資料作業：
 
 - 讀取容器中的 Blob 清單
 - 將儲存體 Blob 寫入容器中
 - 刪除佇列中的訊息
 
-下面是[存儲 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader)角色定義，其中包括 和`Actions``DataActions`屬性中的操作。 此角色可讓您讀取 Blob 容器和基礎 Blob 資料。
+下面是[儲存 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader)角色定義`Actions``DataActions`,其中包括和 屬性中的操作。 此角色可讓您讀取 Blob 容器和基礎 Blob 資料。
 
 ```json
 {
@@ -126,11 +142,11 @@ AssignableScopes []
 
 ### <a name="data-operations-example"></a>資料作業範例
 
-若要進一步了解管理和資料作業如何運作，我們來看特定範例。 Alice 已在訂用帳戶範圍上獲得[擁有者](built-in-roles.md#owner)角色的指派。 Bob 已在存儲帳戶作用域中分配了[存儲 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色。 此範例如下圖所示。
+若要進一步了解管理和資料作業如何運作，我們來看特定範例。 Alice 已在訂用帳戶範圍上獲得[擁有者](built-in-roles.md#owner)角色的指派。 Bob 已在儲存帳戶作用域中分配了[存儲 Blob 數據參與者](built-in-roles.md#storage-blob-data-contributor)角色。 此範例如下圖所示。
 
 ![角色型存取控制已延伸為可支援管理和資料作業](./media/role-definitions/rbac-management-data.png)
 
-Alice[的擁有者](built-in-roles.md#owner)角色和 Bob 的[存儲 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色具有以下操作：
+Alice[的擁有者](built-in-roles.md#owner)角色和 Bob 的[儲存 Blob 資料參與者](built-in-roles.md#storage-blob-data-contributor)角色具有以下操作:
 
 擁有者
 
@@ -148,9 +164,9 @@ Alice[的擁有者](built-in-roles.md#owner)角色和 Bob 的[存儲 Blob 資料
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-由於 Alice 在訂閱作用域`*`中具有萬用字元 （ ） 操作，因此其許可權將繼承下來，以使他們能夠執行所有管理操作。 Alice 可以讀取、寫入和刪除容器。 不過，Alice 無法在未採取額外步驟的情況下執行資料作業。 例如，根據預設，Alice 無法讀取容器內的 Blob。 若要讀取 Blob，Alice 必須擷取儲存體存取金鑰，並使用它們來存取 Blob。
+由於 Alice 在訂閱`*`作用域 中具有通配符 ( ) 操作,因此其許可權將繼承下來,以使他們能夠執行所有管理操作。 Alice 可以讀取、寫入和刪除容器。 不過，Alice 無法在未採取額外步驟的情況下執行資料作業。 例如，根據預設，Alice 無法讀取容器內的 Blob。 若要讀取 Blob，Alice 必須擷取儲存體存取金鑰，並使用它們來存取 Blob。
 
-Bob 的許可權僅限於 在`Actions`["存儲 Blob 資料參與者"](built-in-roles.md#storage-blob-data-contributor)角色中指定的 和`DataActions`。 以此角色為基礎，Bob 可以執行管理和資料作業。 例如，Bob 可以讀取、寫入和刪除指定存儲帳戶中的容器，還可以讀取、寫入和刪除 blob。
+Bob 的權限只限`Actions`於在[「儲存 Blob 資料參與者」](built-in-roles.md#storage-blob-data-contributor)角色中指定的與`DataActions`。 以此角色為基礎，Bob 可以執行管理和資料作業。 例如,Bob 可以讀取、寫入和刪除指定存儲帳戶中的容器,還可以讀取、寫入和刪除 blob。
 
 如需適用於儲存體之管理及資料平面安全性的詳細資訊，請參閱 [Azure 儲存體安全性指南](../storage/blobs/security-recommendations.md)。
 
@@ -160,7 +176,7 @@ Bob 的許可權僅限於 在`Actions`["存儲 Blob 資料參與者"](built-in-r
 
 | 工具  | 版本  |
 |---------|---------|
-| [Azure 電源外殼](/powershell/azure/install-az-ps) | 1.1.0 或更新版本 |
+| [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 或更新版本 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 或更新版本 |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0-預覽或更新版本 |
 | [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 或更新版本 |
@@ -215,7 +231,7 @@ Bob 的許可權僅限於 在`Actions`["存儲 Blob 資料參與者"](built-in-r
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-該`AssignableScopes`屬性指定具有此角色定義的範圍（管理組、訂閱或資源組）。 您只能使角色可用於需要該角色的管理組、訂閱或資源組中的分配。 您必須至少使用一個管理組、訂閱或資源組。
+該`AssignableScopes`屬性指定具有此角色定義的範圍(管理組、訂閱或資源組)。 您只能使角色可用於需要該角色的管理組、訂閱或資源組中的分配。 您必須至少使用一個管理組、訂閱或資源組。
 
 內建角色的 `AssignableScopes` 設定為根目錄範圍 (`"/"`)。 根目錄範圍表示角色可指派給所有範圍。 有效的可指派範圍範例包括：
 
@@ -225,9 +241,9 @@ Bob 的許可權僅限於 在`Actions`["存儲 Blob 資料參與者"](built-in-r
 > | 一個訂用帳戶 | `"/subscriptions/{subscriptionId1}"` |
 > | 兩個訂閱 | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
 > | 網路資源群組 | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
-> | 一個管理組 | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
-> | 管理組和訂閱 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
-> | 所有作用域（僅適用于內置角色） | `"/"` |
+> | 管理群組 | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+> | 管理群組和訂閱 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+> | 所有作用網域(僅適用於內建角色) | `"/"` |
 
 如需適用於自訂角色之 `AssignableScopes` 的相關資訊，請參閱[適用於 Azure 資源的自訂角色](custom-roles.md)。
 
@@ -235,4 +251,4 @@ Bob 的許可權僅限於 在`Actions`["存儲 Blob 資料參與者"](built-in-r
 
 * [適用於 Azure 資源的內建角色](built-in-roles.md)
 * [適用於 Azure 資源的自訂角色](custom-roles.md)
-* [Azure 資源管理器資源管理器提供程式操作](resource-provider-operations.md)
+* [Azure 資源管理員資源管理員提供者操作](resource-provider-operations.md)

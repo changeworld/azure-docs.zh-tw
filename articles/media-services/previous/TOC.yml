@@ -257,8 +257,6 @@
           items:
             - name: Haivision KB 編碼器
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster 編碼器
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast 編碼器
               href: media-services-configure-wirecast-live-encoder.md
         - name: 處理長時間執行的作業
@@ -469,7 +467,7 @@
       href: media-services-community.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
