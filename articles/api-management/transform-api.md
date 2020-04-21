@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067459"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258740"
 ---
 # <a name="transform-and-protect-your-api"></a>轉換及保護您的 API
 
@@ -112,7 +112,7 @@ ms.locfileid: "70067459"
 2.  選取 [所有作業]  。
 3.  選取畫面頂端的 [設計]  索引標籤。
 4.  在 [輸出處理]  區段中，按一下 **</>** 圖示。
-5.  將游標放在 **&lt;outbound&gt;** 元素內部。
+5.  將游標放在 **&lt;輸出&gt;** 元素中，然後按一下右上角的 [插入原則]  按鈕。
 6.  在右側視窗的 [轉換原則]  下方，按一下 [+ 尋找並取代主體中的字串]  。
 7.  修改您的 **find-and-replace** 程式碼 (位於 **\<outbound\>** 元素中)，並用來取代 URL，以符合您的 APIM 閘道。 例如：
 

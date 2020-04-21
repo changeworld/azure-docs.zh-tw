@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 72d7d3b8a4dc2831f397326d54560358c19b9b92
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616801"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392702"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教學課程：部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -33,7 +33,7 @@ Kubernetes 會提供容器化應用程式的分散式平台。 透過 AKS，您�
 
 AKS 叢集可使用 Kubernetes 角色型存取控制 (RBAC)。 這些控制可讓您根據指派給使用者的角色，來定義資源的存取權。 如果為使用者指派了多個角色，即會合併權限，而且可將權限的範圍設定為單一命名空間或整個叢集。 根據預設，Azure CLI 會在您建立 AKS 叢集時自動啟用 RBAC。
 
-使用 [az aks create][] 建立 AKS 叢集。 下列範例會在名為 myResourceGroup  的資源群組中建立名為 myAKSCluster  的叢集。 我們已在[先前的教學課程][aks-tutorial-prepare-acr]中建立此資源群組。 為了允許 AKS 叢集與其他 Azure 資源互動，系統會自動建立 Azure Active Directory 服務主體，因為您未指定服務主體。 在這裡，此服務主體已[獲得提取映像的權限][container-registry-integration]，可從先前教學課程中建立的 Azure Container Registry (ACR) 執行個體中提取映像。
+使用 [az aks create][] 建立 AKS 叢集。 下列範例會在名為 myResourceGroup  的資源群組中建立名為 myAKSCluster  的叢集。 我們已在[先前的教學課程][aks-tutorial-prepare-acr]中建立此資源群組。 為了允許 AKS 叢集與其他 Azure 資源互動，系統會自動建立 Azure Active Directory 服務主體，因為您未指定服務主體。 在這裡，此服務主體已[獲得提取映像的權限][container-registry-integration]，可從先前教學課程中建立的 Azure Container Registry (ACR) 執行個體中提取映像。 請注意，您可以使用[受控識別](use-managed-identity.md)而不是服務主體，以方便管理。
 
 ```azurecli
 az aks create \

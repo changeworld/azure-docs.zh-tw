@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475271"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262076"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>使用 Azure 計費與成本管理避免非預期的費用
 
@@ -193,6 +193,17 @@ SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 S
 根據您所要分析帳單上顯示的 _MeterName_ 篩選使用量 CSV 檔案，以查看適用於計量表的所有明細項目。 明細項目的 _InstanceID_ 會對應到產生費用的實際 Azure 資源。
 
 當您識別出有問題的資源時，可以在 Azure 成本管理中使用成本分析，進一步分析資源的相關成本。 若要深入了解如何使用成本分析，請參閱[開始分析成本](../costs/quick-acm-cost-analysis.md)。
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>檢閱成本分析中的發票費用
+
+若要在 Azure 入口網站中檢視發票詳細資料，請瀏覽至與您正在分析之發票相關聯範圍的「成本分析」。 選取 [發票詳細資料]  檢視。 發票詳細資料會顯示發票上顯示的費用。
+
+[![顯示發票詳細資料的範例](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+若要檢視發票詳細資料，您可以識別具有非預期成本的服務，並在成本分析中判斷哪些資源會直接與資源相關聯。 例如，如果想分析虛擬機器服務的費用，請瀏覽至**累計成本**檢視。 然後，將細微性設定為**每日**，並篩選**服務名稱：虛擬機器**的費用，並依**資源**將費用分組。
+
+[![顯示虛擬機器累計成本的範例](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>識別一段時間的成本尖峰
 

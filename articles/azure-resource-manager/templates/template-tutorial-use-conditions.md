@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239198"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260617"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教學課程：使用 ARM 範本中的條件
 
@@ -55,23 +55,25 @@ ms.locfileid: "80239198"
 Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本教學課程中使用的範本名為[部署簡單的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，選取 [檔案]  >[開啟檔案]  。
-2. 在 [檔案名稱]  中，貼上下列 URL：
+1. 在 [檔案名稱]  中，貼上下列 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. 選取 [開啟]  以開啟檔案。
-4. 範本中定義了五項資源：
+1. 選取 [開啟]  以開啟檔案。
+1. 範本中定義了六項資源：
 
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Storage/storageAccounts`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Network/publicIPAddresses`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Network/virtualNetworks`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Network/networkInterfaces`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Compute/virtualMachines`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     自訂範本之前，最好能初步了解範本。
-5. 選取 [檔案]  >[另存新檔]  ，以名稱 **azuredeploy.json** 將檔案的複本儲存至您的本機電腦。
+    在自訂範本之前，建議您先檢閱範本參考。
+
+1. 選取 [檔案]  >[另存新檔]  ，以名稱 **azuredeploy.json** 將檔案的複本儲存至您的本機電腦。
 
 ## <a name="modify-the-template"></a>修改範本
 
@@ -83,12 +85,12 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 進行變更的程序如下：
 
 1. 在 Visual Studio Code 中，開啟 **azuredeploy.json**。
-2. 在整個範本中以 **parameters('storageAccountName')** 來取代三個 **variables('storageAccountName')** 。
-3. 移除下列變數定義：
+1. 在整個範本中以 **parameters('storageAccountName')** 來取代三個 **variables('storageAccountName')** 。
+1. 移除下列變數定義：
 
     ![Resource Manager 範本使用條件圖](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. 將以下兩個參數新增至範本：
+1. 將下列兩個參數新增至參數區段的開頭：
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     },
     ```
 
+    按 **[ALT]+[SHIFT]+F** 在 Visual Studio Code 中格式化範本。
+
     已更新的參數定義看起來如下：
 
     ![Resource Manager 使用條件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. 將下列行新增至儲存體帳戶定義的開頭。
+1. 將下列行新增至儲存體帳戶定義的開頭。
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     已更新的儲存體帳戶定義看起來如下：
 
     ![Resource Manager 使用條件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. 使用下列值更新虛擬機器資源定義的 **storageUri** 屬性：
+1. 使用下列值更新虛擬機器資源定義的 **storageUri** 屬性：
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
     如果您要使用不同資源群組下的現有儲存體帳戶，就必須進行此變更。
 
-7. 儲存變更。
+1. 儲存變更。
 
 ## <a name="deploy-the-template"></a>部署範本
 
 請遵循[部署範本](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)中的指示，來開啟 Cloud Shell 並上傳修改過的範本，然後執行下列 PowerShell 指令碼來部署範本。
 
+> [!IMPORTANT]
+> 儲存體帳戶名稱必須是 Azure 中是獨一無二的。 名稱必須只有小寫字母或數字。 名稱長度不得超過 24 個字元。 儲存體帳戶名稱是附加 "store" 的專案名稱。 請確定專案名稱和所產生的儲存體帳戶名稱符合儲存體帳戶名稱需求。
+
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -162,8 +173,12 @@ New-AzResourceGroupDeployment `
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。 若要刪除資源群組，請選取 [試試看]  來開啟 Cloud Shell。 若要貼上 PowerShell 指令碼，請以滑鼠右鍵按一下 Shell 窗格，然後選取 [貼上]  。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>後續步驟

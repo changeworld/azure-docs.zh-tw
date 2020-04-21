@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: ffb12af93e249b0b9bb510d3507a30e67d6cd19f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 2654b61ac4489d8257020923a77800745027f303
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76169135"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403472"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>快速入門：使用自訂視覺 Python SDK 建立影像分類專案
 
@@ -177,7 +177,7 @@ Done!
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已經知道如何在程式碼中完成影像分類程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。
+現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)

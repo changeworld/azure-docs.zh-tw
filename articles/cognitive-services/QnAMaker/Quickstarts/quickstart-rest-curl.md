@@ -1,16 +1,16 @@
 ---
 title: 快速入門：使用 cURL 和 REST 來管理知識庫 - QnA Maker
 description: 本快速入門說明如何使用 REST API 來建立、發佈和查詢知識庫。
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78851199"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261698"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>快速入門：使用 cURL 和 REST 來管理知識庫
 
@@ -21,9 +21,9 @@ ms.locfileid: "78851199"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 最新版的 [cURL](https://curl.haxx.se/)。 快速入門會使用數個命令列參數，其記載於 [cURL 文件](https://curl.haxx.se/docs/manpage.html)中。
-* 您必須有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中針對您的資源選取 [快速入門]  。 資源名稱是端點 URL 的一部分：
+* 您必須擁有 [QnA Maker 資源](../How-To/set-up-qnamaker-service-azure.md)，才能使用金鑰和資源名稱。 您已在資源建立期間輸入資源**名稱**，接下來系統會為您建立金鑰。 資源名稱會用來作為端點的子網域。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中針對您的資源選取 [快速入門]  。 資源名稱是端點 URL 的第一個子網域：
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > 下列 BASH 範例會使用 `\` 行接續字元。 如果您的主控台或終端機使用不同的行接續字元，請使用此字元。

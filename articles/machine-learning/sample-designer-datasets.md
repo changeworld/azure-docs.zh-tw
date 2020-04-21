@@ -1,7 +1,7 @@
 ---
-title: 在 Azure Machine Learning 設計工具中使用範例資料集
+title: 設計工具的範例資料
 titleSuffix: Azure Machine Learning
-description: 深入司解 Azure Machine Learning 設計工具中包含的範例資料集。
+description: 深入了解 Azure Machine Learning 設計工具中可用的範例資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b19c1ed5aa556a2cfb633ac6fbc0cf9f95d0337f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037313"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256972"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中使用範例資料集 (預覽)
+# <a name="sample-datasets-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具中的範例資料集 (預覽)
 
 在 Azure Machine Learning 設計工具 (預覽) 中建立新的管線時，預設會包含一些範例資料集。 這些範例資料集是由設計工具首頁中的範例管線所使用。 
 

@@ -6,21 +6,21 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471841"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381905"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
 ![ICSA 認證](media/overview/icsa-cert-firewall-small.png)
 
-Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端可擴縮性。
+Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端延展性。
 
 ![防火牆概觀](media/overview/firewall-threat.png)
 
@@ -47,13 +47,13 @@ Azure 防火牆可用性區域可用於支援可用性區域的區域中。 如�
 
 如需可用性區域的詳細資訊，請參閱[什麼是 Azure 中的可用性區域？](../availability-zones/az-overview.md)
 
-## <a name="unrestricted-cloud-scalability"></a>不受限制的雲端可擴縮性
+## <a name="unrestricted-cloud-scalability"></a>不受限制的雲端延展性
 
 Azure 防火牆可以隨著您的需求擴大，以容納多變的網路流量，因此您不需要為尖峰流量編列預算。
 
 ## <a name="application-fqdn-filtering-rules"></a>應用程式 FQDN 篩選規則
 
-您可以將輸出 HTTP/S 流量或 Azure SQL 流量 (預覽) 限制為包含萬用字元的特殊完整網域名稱 (FQDN) 清單。 這項功能不需要 SSL 終止。
+您可以將輸出 HTTP/S 流量或 Azure SQL 流量 (預覽) 限制為包含萬用字元的特殊完整網域名稱 (FQDN) 清單。 這項功能不需要 TLS 終止。
 
 ## <a name="network-traffic-filtering-rules"></a>網路流量篩選規則
 
@@ -116,9 +116,13 @@ Azure 防火牆有下列已知問題：
 |可用性區域只能在部署期間進行設定。|可用性區域只能在部署期間進行設定。 在部署防火牆之後，您無法設定可用性區域。|這是原廠設定。|
 |輸入連線上的 SNAT|除了 DNAT，透過防火牆公用 IP 位址 (輸入) 的連線已對其中一個防火牆私人 IP 進行 SNAT 轉譯。 這項需求現在也適用於主動/主動 NVA 以確保對稱式路由。|若要保留 HTTP/S 的原始來源，請考慮使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 標題。 例如，在防火牆前使用 [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) 或 [Azure 應用程式閘道](../application-gateway/rewrite-http-headers.md)等服務。 您也可以將 WAF 新增為 Azure Front Door 的一部分和防火牆鏈結。
 |SQL FQDN 篩選支援僅限於 Proxy 模式 (連接埠 1433)|針對 Azure SQL Database、Azure SQL 資料倉儲和 Azure SQL 受控執行個體：<br><br>在預覽期間，只有 Proxy 模式可支援 SQL FQDN 篩選 (連接埠 1433)。<br><br>針對 Azure SQL IaaS：<br><br>如果您使用非標準連接埠，您可以在應用程式規則中指定這些連接埠。|在重新導向模式中使用 SQL 時 (這是從 Azure 內連線時的預設值)，您可以改為使用 SQL 服務標籤作為 Azure 防火牆網路規則的一部分來篩選存取。
-|不允許 TCP 連接埠 25 上的輸出流量| 使用 TCP 連接埠 25 的輸出 SMTP 連線會遭到封鎖。 連接埠 25 主要用於未經驗證的電子郵件傳遞。 這是虛擬機器的預設平台行為。 如需詳細資訊，請參閱[針對 Azure 中的輸出 SMTP 連線能力問題進行疑難排解](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。 不過，與虛擬機器不同的是，目前無法在 Azure 防火牆上啟用此功能。|依照 SMTP 疑難排解文章中所述的建議方式來傳送電子郵件。 或者，從預設傳送至防火牆的路由中排除需要輸出 SMTP 存取的虛擬機器，並將輸出存取改為直接以網際網路為目標。
+|不允許 TCP 連接埠 25 上的輸出流量| 使用 TCP 連接埠 25 的輸出 SMTP 連線會遭到封鎖。 連接埠 25 主要用於未經驗證的電子郵件傳遞。 這是虛擬機器的預設平台行為。 如需詳細資訊，請參閱[針對 Azure 中的輸出 SMTP 連線能力問題進行疑難排解](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。 不過，與虛擬機器不同的是，目前無法在 Azure 防火牆上啟用此功能。 注意：若要允許經過驗證的 SMTP (連接埠 587)，或允許 SMTP 通過連接埠 25 以外的連接埠，請確定您已設定網路規則，而不是應用程式規則，因為系統目前不支援 SMTP 檢查。|依照 SMTP 疑難排解文章中所述的建議方式來傳送電子郵件。 或者，從預設傳送至防火牆的路由中排除需要輸出 SMTP 存取的虛擬機器， 並將輸出存取改為直接以網際網路為目標。
 |不支援主動式 FTP|Azure 防火牆上的主動式 FTP 已停用，以防禦使用 FTP PORT 命令進行 FTP 彈跳式攻擊。|您可以改用被動式 FTP。 您仍然必須在防火牆上明確開啟 TCP 連接埠 20 和 21。
-|SNAT 連接埠使用率記量顯示 0%|即使已使用 SNAT 連接埠，Azure 防火牆 SNAT 連接埠使用率計量仍可能會顯示 0%。 在此情況下，若使用計量作為防火牆健康情況計量的一部分，則會提供不正確的結果。|此問題已修正，而正式推出日期訂於 2020 年 5 月。 在某些情況下，防火牆重新部署會解決此問題，但並不會一直都是如此。 作為中繼因應措施，請只使用防火牆健全狀態來尋找 status=degraded  ，而不是 status=unhealthy  。 連接埠耗盡時會顯示為 degraded (已降級)  。 Not healthy (狀態不良)  會保留，以在日後有更多計量影響防火牆健康情況時使用。 
+|SNAT 連接埠使用率記量顯示 0%|即使已使用 SNAT 連接埠，Azure 防火牆 SNAT 連接埠使用率計量仍可能會顯示 0%。 在此情況下，若使用計量作為防火牆健康情況計量的一部分，則會提供不正確的結果。|此問題已修正，而正式推出日期訂於 2020 年 5 月。 在某些情況下，防火牆重新部署會解決此問題，但並不會一直都是如此。 作為中繼因應措施，請只使用防火牆健全狀態來尋找 status=degraded  ，而不是 status=unhealthy  。 連接埠耗盡時會顯示為 degraded (已降級)  。 Not healthy (狀態不良)  會保留，以在日後有更多計量影響防火牆健康情況時使用。
+|啟用強制通道時不支援 DNAT|因為非對稱式路由，部署了強制通道的防火牆無法支援來自網際網路的輸入存取。|這是因為非對稱式路由的設計。 輸入連線的傳回路徑會透過內部部署防火牆進行，而此防火牆並未顯示已建立的連線。
+|輸出被動 FTP 不適用於具有多個公用 IP 位址的防火牆。|被動 FTP 會針對控制和資料通道建立不同的連線。 當具有多個公用 IP 位址的防火牆傳送輸出資料時，會為來源 IP 位址隨機選取其中一個公用 IP 位址。 當資料和控制通道使用不同的來源 IP 位址時，FTP 會失敗。|已規劃了明確的 SNAT 組態。 在這種情況下，也請考慮使用單一 IP 位址。|
+|NetworkRuleHit 計量缺少通訊協定維度|ApplicationRuleHit 計量允許篩選型的通訊協定，但對應的 NetworkRuleHit 計量中缺少這項功能。|我們正在調查提供修正程式的可能性。|
+|組態更新平均可能需要 5 分鐘。|Azure 防火牆組態更新平均可能需要三到五分鐘，而且不支援平行更新。|我們正在調查提供修正程式的可能性。
 
 ## <a name="next-steps"></a>後續步驟
 

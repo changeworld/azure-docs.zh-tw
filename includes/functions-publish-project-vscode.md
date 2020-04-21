@@ -4,16 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77029234"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112850"
 ---
 ## <a name="publish-the-project-to-azure"></a>將專案發佈到 Azure
 
 在這一節中，您會在 Azure 訂用帳戶中建立函式應用程式和相關資源，然後部署程式碼。 
+
+> [!IMPORTANT]
+> 發佈至現有的函式應用程式會覆寫該應用程式在 Azure 中的內容。 
+
 
 1. 選擇活動列中的 Azure 圖示，然後在 [Azure：  函式] 區域中，選擇 [部署至函式應用程式...]  按鈕。
 
@@ -23,11 +27,8 @@ ms.locfileid: "77029234"
 
     + **選取訂用帳戶**：選擇要使用的訂用帳戶。 如果您只有一個訂用帳戶，就不會看見此選項。
 
-    + **在 Azure 中選取函式應用程式**：選擇 `+ Create new Function App` (而非 `Advanced`)。 本文不支援[進階發佈流程](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)。 
-    
-    >[!IMPORTANT]
-    > 發佈至現有的函式應用程式會覆寫該應用程式在 Azure 中的內容。 
-    
+    + **在 Azure 中選取函式應用程式**：選擇 `+ Create new Function App`。 (請勿選擇本文中未涵蓋的 `Advanced` 選項)。
+      
     + **輸入函式應用程式的全域唯一名稱**：輸入在 URL 路徑中有效的名稱。 您輸入的名稱會進行驗證，以確定該名稱在 Azure Functions 中是唯一的。 
     
     ::: zone pivot="programming-language-python"
@@ -40,13 +41,13 @@ ms.locfileid: "77029234"
 
     + **選取新資源的位置**：若要獲得較佳的效能，請選擇您附近的[區域](https://azure.microsoft.com/regions/)。 
     
-1.  完成時，您的訂用帳戶中會建立下列 Azure 資源：
-
-    + **[資源群組](../articles/azure-resource-manager/management/overview.md)** ：包含所有已建立的 Azure 資源。 該名稱是以您的函數應用程式名稱為根據。
-    + **[儲存體帳戶](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** ：使用以您的函數應用程式名稱為根據的唯一名稱建立標準儲存體帳戶。
-    + **[主控方案](../articles/azure-functions/functions-scale.md)** ：在美國西部區域建立一個取用方案，來裝載您的無伺服器函數應用程式。
-    + **函數應用程式**：您的專案已部署到此新函數應用程式，並在其中執行。
-    + **Application Insights**：系統會根據您的函式名稱建立連線至函式應用程式的執行個體。
+1.  完成時，系統會依您的函式應用程式名稱，在訂用帳戶中建立下列 Azure 資源：
+    
+    + 資源群組，這是相關資源的邏輯容器。
+    + 標準 Azure 儲存體帳戶，其可維護專案的狀態和其他資訊。
+    + 耗用量方案，定義無伺服器函式應用程式的基礎主機。 
+    + 函式應用程式，可提供用來執行函式程式碼的環境。 函式應用程式可讓您將多個函式群組為邏輯單位，以方便您管理、部署，並在相同主控方案中共用資源。
+    + 連線至函式應用程式的 Application Insights 執行個體，可追蹤無伺服器函式的使用量。
 
     建立函式應用程式並套用部署套件之後，即會顯示通知。 
     

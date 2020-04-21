@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77118358"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399412"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>快速入門：適用於 .NET 的表單辨識器用戶端程式庫
 
@@ -42,7 +42,7 @@ ms.locfileid: "77118358"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-從試用版訂用帳戶或資源取得金鑰後，請為名稱分別是 `FORM_RECOGNIZER_KEY` 和 `FORM_RECOGNIZER_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+取得金鑰和端點後，請為名稱分別是 `FORM_RECOGNIZER_KEY` 和 `FORM_RECOGNIZER_ENDPOINT` 的金鑰及端點[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
@@ -99,12 +99,6 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 |[ExtractedPage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| 此類別代表從單一表單文件擷取的所有資料。|
 
 ## <a name="code-examples"></a>程式碼範例
-
-<!--
-    Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
-
-    Include links to the service's reference content when introducing a class for the first time
--->
 
 這些程式碼片段會示範如何使用適用於 .NET 的表單辨識器用戶端程式庫來執行下列工作：
 
@@ -193,7 +187,7 @@ dotnet run
 在本快速入門中，您已使用表單辨識器的 .NET 用戶端程式庫來定型自訂模型和分析表單。 接下來，您將了解建立更好的訓練資料集有何秘訣，然後產生更精確的模型。
 
 > [!div class="nextstepaction"]
->[建置訓練資料集](../build-training-data-set.md)
+> [建置訓練資料集](../build-training-data-set.md)
 
 * [什麼是表單辨識器？](../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer) 上找到。

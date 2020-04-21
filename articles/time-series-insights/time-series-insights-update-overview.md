@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014414"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271058"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什麼是 Azure 時間序列深入解析預覽版？
 
@@ -55,8 +55,8 @@ Azure 時間序列深入解析藉由提供一套全包式的端對端 IoT 分析
 
 * 支援線上和離線分析的多層式儲存解決方案，可讓客戶選擇在線上和離線資料之間路由傳送資料，以便透過線上資料以及營運情報，對數十個歷史資料進行互動式分析。 
 
-    *   高度互動式線上分析解決方案，可針對較短的時間範圍資料執行頻繁且大量的查詢 
-    *   可調整、高效能且成本經過最佳化的時間序列資料湖以 Azure 儲存體為基礎，可讓客戶在幾秒內完成多年時間序列資料的趨勢。 
+    *    高度互動式線上分析解決方案，可針對較短的時間範圍資料執行頻繁且大量的查詢 
+    *    可調整、高效能且成本經過最佳化的時間序列資料湖以 Azure 儲存體為基礎，可讓客戶在幾秒內完成多年時間序列資料的趨勢。 
 
 * 語意模型支援，用於描述與衍生和原始訊號 (來自資產和裝置) 相關聯的網域和中繼資料。
 
@@ -64,7 +64,7 @@ Azure 時間序列深入解析藉由提供一套全包式的端對端 IoT 分析
 
 * 豐富的分析功能加上增強的查詢 API 和使用者經驗，可結合以資產為基礎的資料深入解析，以及豐富的即時資料分析功能，並支援插補、純量和彙總函式、類別變數、散佈圖和時間變動時間序列訊號，以進行深入分析。
 
-*   企業級平台，可支援企業 IoT 客戶的規模、效能、安全性和可靠性需求。
+*    企業級平台，可支援企業 IoT 客戶的規模、效能、安全性和可靠性需求。
 
 * 端對端分析的擴充性和整合支援。 時間序列深入解析為各種資料案例提供可擴充的分析平台。 時間序列深入解析 Power BI 連接器可讓客戶將他們在時間序列深入解析中所進行的查詢直接帶入 Power BI 中，以便在單一窗口中獲得其 BI 和時間序列分析的統一觀點。
 

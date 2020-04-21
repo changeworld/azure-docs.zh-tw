@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 899d7780265366698feb35f2a890a51f61536a80
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: bcde9778ec030d040704ae9fcbf8f733e45c153a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74978061"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405091"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>快速入門：使用電腦視覺 REST API 與 cURL 分析遠端影像
 

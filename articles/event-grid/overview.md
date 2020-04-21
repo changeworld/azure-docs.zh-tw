@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77505917"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393193"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -32,22 +32,21 @@ Azure 事件方格的部署方式是以原生方式分散到每個區域中中�
 
 ## <a name="event-sources"></a>事件來源
 
-如需各個來源的功能以及相關文件的完整資料，請參閱[事件來源](event-sources.md)。 目前支援將事件傳送到事件格線的 Azure 服務如下：
+目前支援將事件傳送到事件格線的 Azure 服務如下：
 
-* [Azure 訂用帳戶 (管理作業)](event-sources.md#azure-subscriptions)
-* [容器登錄](event-sources.md#container-registry)
-* [自訂主題](event-sources.md#custom-topics)
-* [事件中樞](event-sources.md#event-hubs)
-* [IoT 中心](event-sources.md#iot-hub)
-* [Key Vault (預覽)](event-sources.md#key-vault-preview)
-* [媒體服務](event-sources.md#media-services)
-* [資源群組 (管理作業)](event-sources.md#resource-groups)
-* [服務匯流排](event-sources.md#service-bus)
-* [儲存體 Blob](event-sources.md#storage)
-* [Azure 地圖服務](event-sources.md#maps)
-* [應用程式組態](event-sources.md#app-configuration)
-* [Signal R](event-sources.md#azure-signalr)
-* [機器學習服務](event-sources.md#azure-machine-learning)
+- [Azure 應用程式組態](event-schema-app-configuration.md)
+- [Azure Blob 儲存體](event-schema-blob-storage.md)
+- [Azure Container Registry](event-schema-container-registry.md)
+- [Azure 事件中樞](event-schema-event-hubs.md)
+- [Azure IoT 中心](event-schema-iot-hub.md)
+- [Azure 金鑰保存庫](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure 地圖服務](event-schema-azure-maps.md)
+- [Azure 媒體服務](event-schema-media-services.md)
+- [Azure 資源群組](event-schema-resource-groups.md)
+- [Azure 服務匯流排](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure 訂用帳戶](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>事件處理常式
 

@@ -1,14 +1,14 @@
 ---
 title: 模式：原則定義中的邏輯運算子
 description: 此 Azure 原則模式提供如何在原則定義中使用邏輯運算子的範例。
-ms.date: 01/31/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 8e57efaea81848c6b2d0188dbf3f91e06ed74c67
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170236"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272503"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure 原則模式：邏輯運算子
 
@@ -38,6 +38,18 @@ ms.locfileid: "77170236"
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
 此 **policyRule.if** 區塊也包含單一 **allOf**，但每個條件都會以 **not** 邏輯運算子來包裝。 **not** 邏輯運算子內的條件會先進行評估，然後再評估 **not** 來判斷整個子句為 true 或 false。 如果 **not** 邏輯運算子評估為 true，則會觸發原則效果。
+
+## <a name="sample-3-combining-logical-operators"></a>範例 3：結合邏輯運算子
+
+此原則定義會評估 Java Spring 帳戶，以查看是否未啟用任何追蹤，或追蹤是否處於成功狀態。
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
+
+### <a name="sample-3-explanation"></a>範例 3：說明
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
+
+此 **policyRule.if** 區塊同時包含 **allOf** 和 **anyOf** 邏輯運算子。 只要其中一個包含的條件為 True，**anyOf** 邏輯運算子就會評估為 True。 當「類型」  是 **allOf** 的核心時，則一律會評估為 True。 如果「類型」  和 **anyOf** 中的其中一個條件為 True，則會觸發原則效果。
 
 ## <a name="next-steps"></a>後續步驟
 

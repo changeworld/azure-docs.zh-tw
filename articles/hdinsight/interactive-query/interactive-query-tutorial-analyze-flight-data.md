@@ -1,23 +1,23 @@
 ---
 title: 教學課程：使用互動式查詢的 ETL 作業 - Azure HDInsight
-description: 教學課程 - 了解如何從原始 CSV 資料集擷取資料、使用 HDInsight 上的互動式查詢加以轉換，然後使用 Apache Sqoop 將已轉換的資料載入 Azure SQL 資料庫中。
+description: 教學課程 - 了解如何從原始 CSV 資料集擷取資料。 使用 HDInsight 上的互動式查詢加以轉換。 然後使用 Apache Sqoop 將已轉換的資料載入 Azure SQL 資料庫。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494149"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313751"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 上的互動式查詢來擷取、轉換和載入資料
 
-在本教學課程中，您將取用公開航班資料的原始 CSV 資料檔案、將其匯入 HDInsight 叢集儲存體中，然後使用 Azure HDInsight 中的互動式查詢來轉換資料。 資料轉換後，您會使用 [Apache Sqoop](https://sqoop.apache.org/) 將該資料載入 Azure SQL 資料庫中。
+在本教學課程中，您會下載可公開取得之航班資料的原始 CSV 資料檔案。 將其匯入 HDInsight 叢集儲存體，然後在 Azure HDInsight 中使用互動式查詢來轉換資料。 資料轉換後，您會使用 [Apache Sqoop](https://sqoop.apache.org/) 將該資料載入 Azure SQL 資料庫中。
 
 本教學課程涵蓋下列工作：
 
@@ -46,7 +46,7 @@ ms.locfileid: "73494149"
    | --- | --- |
    | 篩選年份 |2019 |
    | 篩選期間 |一月 |
-   | 欄位 |Year、FlightDate、Reporting_Airline、DOT_ID_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   | 欄位 |第 1 課：建立 Windows Azure 儲存體物件`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`。 |
 
 3. 選取 [下載]  。 您會取得含有您所選資料欄位的 .zip 檔案。
 
@@ -60,7 +60,7 @@ ms.locfileid: "73494149"
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    如果系統要求您輸入 yes 或 no 以便繼續，請在命令提示字元中輸入 yes，然後按 Enter 鍵。 在輸入文字時，視窗中不會顯示出來。
+    輸入是或否，以在出現提示時繼續。 在輸入文字時，視窗中不會顯示出來。
 
 2. 完成上傳之後，使用 SSH 連線至叢集。 將 `CLUSTERNAME` 取代為 HDInsight 叢集的名稱，以編輯下列命令。 然後，輸入下列命令：
 
@@ -283,13 +283,13 @@ ms.locfileid: "73494149"
     GO
     ```
 
-    您應會看到資料表中的資料清單。 此資料表包含城市名稱以及該城市的平均航班延誤時間。 
+    您應會看到資料表中的資料清單。 此資料表包含城市名稱以及該城市的平均航班延誤時間。
 
     輸入 `exit` 以結束 tsql 公用程式。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-完成本教學課程之後，您可以刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地進行刪除。 您也需支付 HDInsight 叢集的費用 (即使未使用)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。
+完成本教學課程之後，您可以刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地刪除該叢集。 您也需支付 HDInsight 叢集的費用 (即使未使用該叢集)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。
 
 若要刪除叢集，請參閱[使用您的瀏覽器、PowerShell 或 Azure CLI 刪除 HDInsight 叢集](../hdinsight-delete-cluster.md)。
 
@@ -298,4 +298,4 @@ ms.locfileid: "73494149"
 在本教學課程中，您已取用原始 CSV 資料檔、將其匯入 HDInsight 叢集儲存體中，然後使用 Azure HDInsight 上的互動式查詢轉換了資料。  請前進到下一個教學課程，以了解 Apache Hive Warehouse Connector。
 
 > [!div class="nextstepaction"]
->[整合 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector](./apache-hive-warehouse-connector.md)
+> [整合 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector](./apache-hive-warehouse-connector.md)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee1ea7d2623d6315007257218ddfc4e6ce445e65
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5abc1e093dc7d4e8da823227dc3e3caa556e37e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80669024"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406856"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 FCM HUB 整合
 
@@ -92,7 +92,16 @@ ms.locfileid: "80669024"
     > [!NOTE]
     > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡已指派給您的帳戶管理員或連絡 [FCM HUB 用戶端支援小組](mailto:fcmssoadmin@us.fcm.travel)，以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 按一下 [檔案]  。
+1. 選取 [儲存]  。
+
+1. 在 [管理宣告]  頁面上的 [使用者屬性與宣告]  區段中，新增下列自訂屬性：
+   - **Name**：PortalID
+   - **來源**：屬性
+   - **來源屬性**：PortalID，FCM 所提供的值
+
+1. 在 [SAML 簽署憑證]  區段中，使用編輯選項來選取或輸入下列設定，然後選取 [儲存]  ：
+   - **簽署選項**：簽署 SAML 回應
+   - **簽署演算法**：SHA-256
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

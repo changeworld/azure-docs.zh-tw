@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74977908"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403225"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>快速入門：使用 Face REST API 和 Python 偵測影像中的臉部
 

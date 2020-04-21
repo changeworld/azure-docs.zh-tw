@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202908"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383175"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>適用於企業客戶的報告 API 概觀
 報告 API 可讓企業 Azure 客戶以程式設計方式提取使用情況和帳單資料，以使用慣用的資料分析工具進行分析。 企業客戶已經與 Azure 簽署一份 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以便進行綁約金協商，並獲得 Azure 資源的自訂價格。
@@ -41,7 +41,7 @@ API 所需的所有日期和時間參數都必須以混合的國際標準時間 
 * **保留執行個體詳細資料** - [保留執行個體使用量 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) 會傳回所購買保留執行個體的使用量。 [保留執行個體費用 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) 會顯示所進行的計費交易。
 
 ## <a name="data-freshness"></a>資料有效期限
-系統會傳回 Etag 以回應上述所有 API。 Etag 的變更表示資料已重新整理。  在使用相同參數對相同 API 進行的後續呼叫中，傳遞所擷取的 Etag，在其中的 http 要求標頭中包含索引鍵 “If-None-Match”。 如果資料未進一步重新整理且未傳回任何資料，則回應狀態碼會是 "NotModified"。 每當 etag 有變更時，API 就會針對所需期間傳回完整的資料集。
+系統會傳回 Etag 以回應上述所有 API。 Etag 的變更表示資料已重新整理。  在使用相同參數對相同 API 進行的後續呼叫中，傳遞所擷取的 Etag，在其中的 http 要求標頭中包含索引鍵 "If-None-Match"。 如果資料未進一步重新整理且未傳回任何資料，則回應狀態碼會是 "NotModified"。 每當 etag 有變更時，API 就會針對所需期間傳回完整的資料集。
 
 ## <a name="helper-apis"></a>協助程式 API
  **列出計費週期** - [計費週期 API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) 會傳回計費週期清單，其中包含所指定註冊的使用情況資料 (以反向時間順序排列)。 每個週期包含指向四組資料 (BalanceSummary、UsageDetails、Marketplace 費用和價位表) 之 API 路由的屬性。
@@ -51,7 +51,9 @@ API 所需的所有日期和時間參數都必須以混合的國際標準時間 
 |回應狀態碼|訊息|描述|
 |-|-|-|
 |200| [確定]|沒有錯誤|
+|400| 不正確的要求| 無效的參數 - 資料範圍、EA 編號等。|
 |401| 未經授權| API 金鑰找不到、無效或過期等。|
 |404| 無法使用| 找不到報告端點|
-|400| 不正確的要求| 無效的參數 - 資料範圍、EA 編號等。|
+|429 | TooManyRequests | 要求已節流處理。 請在等候 <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> 標頭中指定的時間之後重試。|
 |500| 伺服器錯誤| 處理要求時發生未預期的錯誤|
+| 503 | ServiceUnavailable | 這項服務暫時無法使用。 請在等候 <code>Retry-After</code> 標頭中指定的時間之後重試。|

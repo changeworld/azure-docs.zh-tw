@@ -9,13 +9,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/14/2020
+ms.openlocfilehash: 4ab1515c2f724d80b7c1f3b5f7869e85da431c26
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76170137"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403999"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>快速入門：使用自訂視覺 Go SDK 建立物件偵測專案
 
@@ -285,7 +285,7 @@ go run sample.go
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。 下列指南會處理影像分類，但其原則類似於物件偵測。
+現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。 下列訓練指南會處理影像分類，但其原則類似於物件偵測。
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)

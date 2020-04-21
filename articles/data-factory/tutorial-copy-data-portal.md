@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站建立資料處理站管線
-description: 本教學課程提供逐步指示，說明如何使用 Azure 入口網站建立具有管線的資料處理站。 管線會使用複製活動將資料從 Azure Blob 儲存體複製到 SQL 資料庫。
+description: 本教學課程提供逐步指示，說明如何使用 Azure 入口網站建立具有管線的資料處理站。 管線會使用複製活動將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,17 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 06/21/2018
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 135a18f275137e72b5ff4d79f6a32bd39bd9c00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 655a98ef1b6b8b2d4086b472ee7ce4d67346e5ca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418703"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 儲存體複製到 SQL 資料庫
-在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 此資料處理站中的管線會將資料從 Azure Blob 儲存體複製到 SQL 資料庫。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 此資料處理站中的管線會將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 > [!NOTE]
 > - 如果您不熟悉 Data Factory，請參閱 [Data Factory 簡介](introduction.md)。
@@ -38,7 +41,7 @@ ms.locfileid: "75977395"
 ## <a name="prerequisites"></a>Prerequisites
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為*來源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)，按照步驟建立此帳戶。
-* **Azure SQL Database**。 您會使用資料庫作為*接收*資料存放區。 如果您沒有 SQL 資料庫，請參閱[建立 SQL 資料庫](../sql-database/sql-database-get-started-portal.md)，按照步驟建立此資料庫。
+* **Azure SQL Database**。 您會使用資料庫作為*接收*資料存放區。 如果您沒有 Azure SQL 資料庫，請參閱[建立 SQL 資料庫](../sql-database/sql-database-get-started-portal.md)，按照步驟來建立 SQL 資料庫。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 
@@ -49,6 +52,7 @@ ms.locfileid: "75977395"
 1. 啟動 [記事本]。 複製下列文字，並在磁碟上將其儲存為 **emp.txt** 檔案：
 
     ```
+    FirstName,LastName
     John,Doe
     Jane,Doe
     ```
@@ -77,10 +81,7 @@ ms.locfileid: "75977395"
 在此步驟中，您可以建立資料處理站，並啟動 Data Factory 使用者介面，在資料處理站中建立管線。
 
 1. 開啟 **Microsoft Edge** 或 **Google Chrome**。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
-2. 在左側功能表上，選取 [建立資源]   > [分析]   > [資料處理站]  ：
-
-   ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
-
+2. 在左側功能表上，選取 [建立資源]   > [分析]   > [資料處理站]  。
 3. 在 [新增資料處理站]  頁面的 [名稱]  下，輸入 **ADFTutorialDataFactory**。
 
    Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
@@ -121,33 +122,38 @@ ms.locfileid: "75977395"
 
 ### <a name="configure-source"></a>設定來源
 
+>[!TIP]
+>在本教學課程中，您會使用「帳戶金鑰」  作為來源資料存放區的驗證類型，但可以選擇其他支援的驗證方法：SAS URI  、服務主體  ，以及受控識別  (如有需要)。 如需詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)的對應章節。
+>若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+
 1. 移至 [來源]  索引標籤。選取 [+ 新增]  以建立來源資料集。
 
 1. 在 [新增資料集]  對話方塊中，選取 [Azure Blob 儲存體]  ，然後選取 [繼續]  。 來源資料位於 Blob 儲存體中，因此您選取 [Azure Blob 儲存體]  作為來源資料集。
 
 1. 在 [選取格式]  對話方塊中，選擇您資料的格式類型，然後選取 [繼續]  。
 
-    ![資料格式類型](./media/doc-common-process/select-data-format.png)
+1. 在 [設定屬性]  對話方塊中，輸入 **SourceBlobDataset** 作為 [名稱]。 選取**第一個資料列做為標頭**的核取方塊。 在 [已連結的服務]  文字方塊下，選取 [+ 新增]  。
 
-1. 在 [設定屬性]  對話方塊中，輸入 **SourceBlobDataset** 作為 [名稱]。 在 [連結服務]  文字方塊旁，選取 [+ 新增]  。
-
-1. 在 [新增連結服務 (Azure Blob 儲存體)]  對話方塊中輸入 **AzureStorageLinkedService** 作為名稱，然後從 [儲存體帳戶名稱]  清單中選取您的儲存體帳戶。 測試連線，然後選取 [完成]  以部署連結服務。
+1. 在 [新增連結服務 (Azure Blob 儲存體)]  對話方塊中輸入 **AzureStorageLinkedService** 作為名稱，然後從 [儲存體帳戶名稱]  清單中選取您的儲存體帳戶。 測試連線，選取 [建立]  以部署連結服務。
 
 1. 建立連結服務之後，系統會將您導回 [設定屬性]  頁面。 在 [檔案路徑]  旁，選取 [瀏覽]  。
 
-1. 瀏覽至 **adftutorial/input** 資料夾，選取 **emp.txt** 檔案，然後選取 [完成]  。
+1. 瀏覽至 **adftutorial/input** 資料夾，選取 **emp.txt** 檔案，然後選取 [確定]  。
 
-1. 系統會自動導覽至管線頁面。 在 [來源]  索引標籤中，確認已選取 [SourceBlobDataset]  。 若要預覽此頁面上的資料，請選取 [預覽資料]  。
+1. 選取 [確定]  。 系統會自動導覽至管線頁面。 在 [來源]  索引標籤中，確認已選取 [SourceBlobDataset]  。 若要預覽此頁面上的資料，請選取 [預覽資料]  。
 
     ![來源資料集](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
 ### <a name="configure-sink"></a>設定接收
+>[!TIP]
+>在本教學課程中，您會使用「SQL 驗證」  作為接收資料存放區的驗證類型，但可以選擇其他支援的驗證方法：服務主體  和受控識別  (如有需要)。 如需詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)的對應章節。
+>若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
 1. 移至 [接收]  索引標籤，然後選取 [+ 新增]  以建立接收資料集。
 
 1. 在 [新增資料集]  對話方塊中，於搜尋方塊中輸入 "SQL" 以篩選連接器，並選取 [Azure SQL Database]  ，然後選取 [繼續]  。 在本教學課程中，您會將資料複製到 SQL 資料庫。
 
-1. 在 [設定屬性]  對話方塊中，輸入 **OutputSqlDataset** 作為 [名稱]。 在 [連結服務]  文字方塊旁，選取 [+ 新增]  。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
+1. 在 [設定屬性]  對話方塊中，輸入 **OutputSqlDataset** 作為 [名稱]。 從 [已連結的服務]  下拉式清單中，選取 [+ 新增]  。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
 
 1. 在 [新增連結服務 (Azure SQL Database)]  對話方塊中，執行下列步驟：
 
@@ -163,17 +169,17 @@ ms.locfileid: "75977395"
 
     f. 選取 [測試連線]  以測試連線。
 
-    g. 選取 [完成]  以部署連結服務。
+    g. 選取 [建立]  以部署已連結的服務。
 
     ![儲存新的連結服務](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 這會自動導覽至 [設定屬性]  對話方塊。 在 [資料表]  中，選取 **[dbo].[emp]** 。 然後選取 [完成]  。
+1. 這會自動導覽至 [設定屬性]  對話方塊。 在 [資料表]  中，選取 **[dbo].[emp]** 。 然後選取 [確定]  。
 
 1. 移至含有管線的索引標籤，然後在 [接收資料集]  中確認已選取 **OutputSqlDataset**。
 
     ![管線索引標籤](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
 
-您可以藉由遵循[複製活動中的結構描述對應](copy-activity-schema-and-type-mapping.md)，選擇性地將來源的結構描述對應至目的地的相對應結構描述
+您可以藉由遵循[複製活動中的結構描述對應](copy-activity-schema-and-type-mapping.md)，選擇性地將來源的結構描述對應至目的地的相對應結構描述。
 
 ## <a name="validate-the-pipeline"></a>驗證管線
 若要驗證管線，請從工具列中選取 [驗證]  。
@@ -192,15 +198,15 @@ ms.locfileid: "75977395"
 ## <a name="trigger-the-pipeline-manually"></a>手動觸發管線
 在此步驟中，您會手動觸發您在上一個步驟中發佈的管線。
 
-1. 選取工具列上的 [新增觸發程序]  ，然後選取 [立即觸發]  。 在 [管線執行]  頁面上，選取 [完成]  。  
+1. 選取工具列上的 [觸發程序]  ，然後選取 [立即觸發]  。 在 [管線執行]  頁面上，選取 [確定]  。  
 
-1. 移至左側的 [監視]  索引標籤。 您會看到手動觸發程序所觸發的管線執行。 您可以使用 [動作]  資料行中的連結來檢視活動詳細資料，以及重新執行管線。
+1. 移至左側的 [監視]  索引標籤。 您會看到手動觸發程序所觸發的管線執行。 您可以使用 [管線名稱]  資料行下的連結來檢視活動詳細資料，以及重新執行管線。
 
-    ![監視管線回合](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![監視管線執行](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
-1. 若要檢視與此管線執行相關聯的活動執行，請選取 [動作]  資料行中的 [檢視活動執行]  連結。 此範例中只有一個活動，因此您在清單中只會看到一個項目。 如需關於複製作業的詳細資料，請選取 [動作]  資料行中的 [詳細資料]  連結 (眼鏡圖示)。 選取頂端的 [管線執行]  可回到 [管線執行] 檢視。 若要重新整理檢視，請選取 [重新整理]  。
+1. 若要查看與管線執行相關聯的活動執行，請選取 [管線名稱]  資料行下的 [CopyPipeline]  連結。 此範例中只有一個活動，因此您在清單中只會看到一個項目。 如需有關複製作業的詳細資料，請選取 [活動名稱]  資料行下的 [詳細資料]  連結 (眼鏡圖示)。 選取頂端的 [所有管線執行]  以回到管線執行檢視。 若要重新整理檢視，請選取 [重新整理]  。
 
-    ![監視活動回合](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![監視活動執行](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. 確認有兩個以上的資料列新增至 SQL 資料庫中的 **emp** 資料表。
 
@@ -209,7 +215,7 @@ ms.locfileid: "75977395"
 
 1. 移至左側位於監視索引標籤上方的 [作者]  索引標籤。
 
-1. 移至您的管線，按一下工具列上的 [新增觸發程序]  ，然後選取 [新增/編輯]  。
+1. 移至您的管線，按一下工具列上的 [觸發程序]  ，然後選取 [新增/編輯]  。
 
 1. 在 [新增觸發程序]  對話方塊中，針對 [選擇觸發程序]  區域選取 [新增]  。
 
@@ -225,25 +231,24 @@ ms.locfileid: "75977395"
 
     e. 將**結束時間**部分更新為當天日期時間的數分鐘之後。 在您發佈變更之後，才會啟動觸發程序。 如果您將其設為短短幾分鐘之後，且您未在那之前發佈變更，則不會看到觸發程序執行。
 
-    f. 選取 [套用]  。
+    f. 選取 [確定]  。
 
     g. 針對 [已啟用]  選項，選取 [是]  。
 
-    h. 選取 [下一步]  。
-
-    ![已啟動按鈕](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
+    h. 選取 [確定]  。
 
     > [!IMPORTANT]
     > 每次執行管線都會產生相關成本，因此請適當設定結束日期。
-1. 在 [觸發程序執行參數]  頁面上檢閱警告，然後選取 [完成]  。 此範例中的管線未使用任何參數。
+
+1. 在 [編輯觸發程序]  頁面上檢閱警告，然後選取 [儲存]  。 此範例中的管線未使用任何參數。
 
 1. 按一下 [全部發佈]  以發佈變更。
 
 1. 移至左側的 [監視]  索引標籤，以檢視已觸發的管線執行。
 
-    ![已觸發的管線執行](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![已觸發的管線執行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
-1. 若要從 [管線執行]  檢視切換至 [觸發程序執行]  檢視，請在視窗上方選取 [觸發程序執行]  。
+1. 若要從 [管線執行]  檢視切換至 [觸發程序執行]  檢視，請在視窗左側選取 [觸發程序執行]  。
 
 1. 您可以在清單中檢視觸發程序執行。
 

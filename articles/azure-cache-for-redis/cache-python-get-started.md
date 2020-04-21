@@ -10,12 +10,12 @@ ms.custom:
 - mvc
 - seo-python-october2019
 ms.date: 11/05/2019
-ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433476"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010846"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入門：建立可使用 Azure Cache for Redis 的 Python 應用程式
 
@@ -54,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> 如果是 Azure Cache for Redis 3.0 版或更新版本，即會強制執行 SSL 憑證檢查。 連線至 Azure Cache for Redis 時，必須明確設定 ssl_ca_certs。 如果是 RH Linux，則可於 */etc/pki/tls/certs/ca-bundle.crt* 憑證模組中找到 ssl_ca_certs。
+> 如果是 Azure Cache for Redis 3.0 版或更新版本，即會強制執行 TLS/SSL 憑證檢查。 連線至 Azure Cache for Redis 時，必須明確設定 ssl_ca_certs。 如果是 RH Linux，則可於 */etc/pki/tls/certs/ca-bundle.crt* 憑證模組中找到 ssl_ca_certs。
 
 ## <a name="create-a-python-sample-app"></a>建立 Python 範例應用程式
 

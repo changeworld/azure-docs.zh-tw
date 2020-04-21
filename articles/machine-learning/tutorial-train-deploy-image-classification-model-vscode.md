@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224085"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272743"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>使用 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類 TensorFlow 模型
 
@@ -99,71 +99,33 @@ ms.locfileid: "79224085"
 1. 選擇 VM 大小。 從選項清單中選取 **Standard_F2s_v2**。 您的 VM 大小會影響定型模型所需的時間量。 如需 VM 大小的詳細資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
 1. 將您的計算命名為 "TeamWkspc-com"，然後按 **Enter** 來建立計算。
 
-幾分鐘後，新的計算目標就會出現在工作區的 [Compute]  節點中。
-
-## <a name="create-a-run-configuration"></a>建立回合組態
-
-當您將訓練回合提交至計算目標時，您也會提交執行訓練作業所需的組態。 例如，包含定型程式碼的指令碼，以及其執行所需的 Python 相依性。
-
-若要建立回合組態：
-
-1. 在 Visual Studio Code 活動列上，選取 **Azure** 圖示。 Azure Machine Learning 檢視隨即出現。 
-1. 展開您的訂用帳戶節點。 
-1. 展開 [TeamWorkspace]  節點。 
-1. 在工作區節點下方，以滑鼠右鍵按一下 [TeamWkspc-com]  計算節點，然後選擇 [建立回合組態]  。
-
-    > [!div class="mx-imgBorder"]
-    > ![建立回合組態](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
-
-1. 將您的回合組態命名為 "MNIST-rc"，然後按 **Enter** 來建立回合組態。
-1. 然後，選取 [TensorFlow 單一節點訓練]  作為訓練作業類型。
-1. 按 **Enter**，以瀏覽要在計算節點上執行的指令檔檔案。 在此情況下，用來定型模型的指令碼是 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目錄內的 `train.py` 檔案。
-1. 在輸入方塊中輸入下列資訊，以指定所需的套件。
-    
-    ```text
-    pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-    ```
-    
-    名為 `MNIST-rc.runconfig` 的檔案會出現在具有類似以下內容的 VS Code 中：
+    檔案會出現在具有類似以下內容的 VS Code 中：
 
     ```json
     {
-        "script": "train.py",
-        "framework": "Python",
-        "communicator": "None",
-        "target": "TeamWkspc-com",
-        "environment": {
-            "python": {
-                "userManagedDependencies": false,
-                "condaDependencies": {
-                    "dependencies": [
-                        "python=3.6.2",
-                        "tensorflow=1.15.0",
-                        {
-                            "pip": [
-                                "azureml-defaults"
-                            ]
-                        }
-                    ]
-                }
-            },
-            "docker": {
-                "baseImage": "mcr.microsoft.com/azureml/base:0.2.4",
-                "enabled": true,
-                "baseImageRegistry": {
-                    "address": null,
-                    "username": null,
-                    "password": null
-                }
+        "location": "westus2",
+        "tags": {},
+        "properties": {
+            "computeType": "AmlCompute",
+            "description": "",
+            "properties": {
+                "vmSize": "Standard_F2s_v2",
+                "vmPriority": "dedicated",
+                "scaleSettings": {
+                    "maxNodeCount": 4,
+                    "minNodeCount": 0,
+                    "nodeIdleTimeBeforeScaleDown": 120
+                },
+                "userAccountCredentials": {
+                    "adminUserName": "",
+                    "adminUserPassword": "",
+                    "adminUserSshPublicKey": ""
+                },
+                "subnetName": "",
+                "vnetName": "",
+                "vnetResourceGroupName": "",
+                "remoteLoginPortPublicAccess": ""
             }
-        },
-        "nodeCount": 1,
-        "history": {
-            "outputCollection": true,
-            "snapshotProject": false,
-            "directoriesToWatch": [
-                "logs"
-            ]
         }
     }
     ```
@@ -175,7 +137,152 @@ ms.locfileid: "79224085"
     Azure ML: Save and Continue
     ```
 
-`MNIST-rc` 回合組態會新增在 [TeamWkspc-com]  計算節點之下。
+幾分鐘後，新的計算目標就會出現在工作區的 [Compute]  節點中。
+
+## <a name="create-a-run-configuration"></a>建立回合組態
+
+當您將訓練回合提交至計算目標時，您也會提交執行訓練作業所需的組態。 例如，包含定型程式碼的指令碼，以及其執行所需的 Python 相依性。
+
+若要建立回合組態：
+
+1. 在 Visual Studio Code 活動列上，選取 **Azure** 圖示。 Azure Machine Learning 檢視隨即出現。 
+1. 展開您的訂用帳戶節點。 
+1. 展開 **TeamWorkspace > 計算**節點。 
+1. 在計算節點下方，以滑鼠右鍵按一下 [TeamWkspc-com]  計算節點，然後選擇 [建立回合組態]  。
+
+    > [!div class="mx-imgBorder"]
+    > ![建立回合組態](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
+
+1. 將您的回合組態命名為 "MNIST-rc"，然後按 **Enter** 來建立回合組態。
+1. 然後，選取 [建立新的 Azure ML 環境]  。 環境會定義執行指令碼所需的相依性。
+1. 將您的環境命名為 "MNIST-env"，然後按 [輸入]  。
+1. 從清單中選取 [Conda 相依性檔案]  。
+1. 按 [輸入]  以瀏覽 Conda 相依性檔案。 在此情況下，相依性檔案是位於 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目錄中的 `env.yml` 檔案。
+
+    檔案會出現在具有類似以下內容的 VS Code 中：
+
+    ```json
+    {
+        "name": "MNIST-env",
+        "version": "1",
+        "python": {
+            "interpreterPath": "python",
+            "userManagedDependencies": false,
+            "condaDependencies": {
+                "name": "vs-code-azure-ml-tutorial",
+                "channels": [
+                    "defaults"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip",
+                    {
+                        "pip": [
+                            "azureml-defaults"
+                        ]
+                    }
+                ]
+            },
+            "baseCondaEnvironment": null
+        },
+        "environmentVariables": {},
+        "docker": {
+            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseDockerfile": null,
+            "baseImageRegistry": {
+                "address": null,
+                "username": null,
+                "password": null
+            },
+            "enabled": false,
+            "arguments": []
+        },
+        "spark": {
+            "repositories": [],
+            "packages": [],
+            "precachePackages": true
+        },
+        "inferencingStackVersion": null
+    }
+    ```
+
+1. 當您對組態感到滿意後，請開啟命令選擇區並輸入下列命令，以儲存您的組態：
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+1. 按 **Enter**，以瀏覽要在計算節點上執行的指令檔檔案。 在此情況下，用來定型模型的指令碼是 `vscode-tools-for-ai/mnist-vscode-docs-sample` 目錄內的 `train.py` 檔案。
+
+    名為 `MNIST-rc.runconfig` 的檔案會出現在具有類似以下內容的 VS Code 中：
+
+    ```json
+    {
+        "script": "train.py",
+        "framework": "Python",
+        "communicator": "None",
+        "target": "TeamWkspc-com",
+        "environment": {
+            "name": "MNIST-env",
+            "version": "1",
+            "python": {
+                "interpreterPath": "python",
+                "userManagedDependencies": false,
+                "condaDependencies": {
+                    "name": "vs-code-azure-ml-tutorial",
+                    "channels": [
+                        "defaults"
+                    ],
+                    "dependencies": [
+                        "python=3.6.2",
+                        "tensorflow=1.15.0",
+                        "pip",
+                        {
+                            "pip": [
+                                "azureml-defaults"
+                            ]
+                        }
+                    ]
+                },
+                "baseCondaEnvironment": null
+            },
+            "environmentVariables": {},
+            "docker": {
+                "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+                "baseDockerfile": null,
+                "baseImageRegistry": {
+                    "address": null,
+                    "username": null,
+                    "password": null
+                },
+                "enabled": false,
+                "arguments": []
+            },
+            "spark": {
+                "repositories": [],
+                "packages": [],
+                "precachePackages": true
+            },
+            "inferencingStackVersion": null
+        },
+        "history": {
+            "outputCollection": true,
+            "snapshotProject": false,
+            "directoriesToWatch": [
+                "logs"
+            ]
+        }
+    }
+    ```
+
+1. 當您對組態感到滿意後，請開啟命令選擇區並輸入下列命令，以儲存您的組態：
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+`MNIST-rc`回合組態新增至 TeamWkspc-com  計算節點下，而 `MNIST-env` 環境組態會新增至「環境」  節點下。
 
 ## <a name="train-the-model"></a>將模型定型
 
@@ -264,7 +371,7 @@ ms.locfileid: "79224085"
 1. 以滑鼠右鍵按一下 [MNIST-TensorFlow-model]  ，然後選取 [從已註冊的模型部署服務]  。
 
     > [!div class="mx-imgBorder"]
-    > ![部署模型](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
+    > ![部署模型](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
 1. 選取 **Azure 容器執行個體**。
 1. 將服務命名為 "mnist-tensorflow-svc"，然後按 **Enter**。
@@ -300,6 +407,7 @@ ms.locfileid: "79224085"
         ]
     }
     ```
+
 1. 當您對組態感到滿意後，請開啟命令選擇區並輸入下列命令，以儲存您的組態：
 
     ```text

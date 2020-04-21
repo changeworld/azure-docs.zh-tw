@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604854"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272899"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>設定 Azure Machine Learning Visual Studio Code 擴充功能
 
@@ -70,36 +70,36 @@ ms.locfileid: "77604854"
 1. 當命令選擇區展開時，請遵循提示。
 
     1. 選取 Azure 訂用帳戶。
-    1. 選取 [建立新的 Azure ML 工作區]  。
-    1. 選取 [TensorFlow 單一節點訓練]  作業類型。
-    1. 輸入 `train.py` 作為要訓練的指令碼。 這個檔案包含機器學習模型的程式碼，可用於將手寫數字的影像分類。
-    1. 將下列套件指定為要執行的需求。
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. 從環境清單中選取 [Conda 相依性檔案]  。
+    1. 按 [輸入]  以瀏覽 Conda 相依性檔案。 此檔案包含執行指令碼所需的相依性。 在此情況下，相依性檔案是 `mnist-vscode-docs-sample` 目錄中的 `env.yml` 檔案。
+    1. 按 [輸入]  以瀏覽訓練指令檔。 這個檔案包含機器學習模型的程式碼，可用於將手寫數字的影像分類。 在此情況下，用來定型模型的指令碼是 `mnist-vscode-docs-sample` 目錄內的 `train.py` 檔案。
 
 1. 此時，文字編輯器中會顯示類似下面的組態檔。 組態包含執行訓練作業所需的資訊，例如檔案，其中包含用來定型模型的程式碼，以及在上一個步驟中指定的任何 Python 相依性。
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

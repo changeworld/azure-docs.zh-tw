@@ -3,12 +3,12 @@ title: 快速入門：在入口網站中建立藍圖
 description: 在本快速入門中，您將在 Azure 入口網站中使用 Azure 藍圖建立、定義和部署成品。
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282047"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381897"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入門：在入口網站中定義和指派藍圖
 
@@ -28,7 +28,7 @@ ms.locfileid: "80282047"
 
    或者，在 [開始使用]  頁面中選取 [建立]  ，以直接建立藍圖。
 
-   ![在 [藍圖定義] 頁面中建立藍圖](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="在藍圖定義頁面中建立藍圖" border="false":::
 
 1. 從內建藍圖清單頂端的卡片中，選取 [從空白藍圖開始]  。
 
@@ -48,10 +48,10 @@ ms.locfileid: "80282047"
 
    1. 選取 [新增]  以將此成品新增至藍圖。
 
-   ![藍圖成品的角色指派](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="藍圖成品的角色指派" border="false":::
 
    > [!NOTE]
-   > 大部分的成品均支援參數。 在藍圖建立期間獲得指派值的參數，是*靜態參數*。 如果是在藍圖指派期間受指派的參數，則為*動態參數*。 如需詳細資訊，請參閱[藍圖參數](./concepts/parameters.md)。
+   > 大部分的成品均支援參數。 在藍圖建立期間獲得指派值的參數，是_靜態參數_。 如果是在藍圖指派期間受指派的參數，則為_動態參數_。 如需詳細資訊，請參閱[藍圖參數](./concepts/parameters.md)。
 
 1. 新增訂用帳戶層級的原則指派：
 
@@ -144,11 +144,11 @@ ms.locfileid: "80282047"
 
    1. 選取 [新增]  以將此成品新增至藍圖。
 
-   ![藍圖成品的 Resource Manager 範本](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="藍圖成品的 Resource Manager 範本" border="false":::
 
 1. 完成的藍圖應該如下所示： 請注意，每個成品的 [參數]  資料行中都會出現**已填入 _x_ 個參數，共 _y_ 個**。 在每次指派藍圖時都會設定動態參數。
 
-   ![已完成的藍圖定義](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="已完成的藍圖定義 #2" border="false":::
 
 1. 新增所有規劃的成品之後，請選取頁面底部的 [儲存草稿]  。
 
@@ -174,13 +174,13 @@ ms.locfileid: "80282047"
 
    1. 搜尋並選取要新增的使用者、應用程式或群組。 此成品會在每次指派此藍圖時使用設定相同的靜態參數。
 
-   e. 選取 [新增]  以將此成品新增至藍圖。
+   1. 選取 [新增]  以將此成品新增至藍圖。
 
-   ![藍圖成品的第二個角色指派](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="藍圖成品的第二個角色指派" border="false":::
 
 1. 完成的藍圖應該如下所示： 請注意，新增的角色指派會顯示**已填入 1 個參數，共 1 個**。 這表示它是靜態參數。
 
-   ![已完成藍圖的第二個定義](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="已完成藍圖的第二個定義" border="false":::
 
 1. 完成更新後，請選取 [儲存草稿]  。
 
@@ -219,10 +219,10 @@ ms.locfileid: "80282047"
 
    1. 選取頁面底部的 [建立]  。
 
-   ![建立訂用帳戶作為藍圖指派訂用帳戶](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="建立訂用帳戶作為藍圖指派訂用帳戶" border="false":::
 
-   > [!IMPORTANT]
-   > 選取 [建立]  後，會立即建立新的訂用帳戶。
+      > [!IMPORTANT]
+      > 選取 [建立]  後，會立即建立新的訂用帳戶。
 
    > [!NOTE]
    > 您選取的每個訂用帳戶均會建立指派。 您可在稍後變更單一訂用帳戶的指派，而不需強制變更其餘選取的訂用帳戶。
@@ -235,7 +235,7 @@ ms.locfileid: "80282047"
 
 1. [鎖定指派]  請保留 [不要鎖定]  的預設值。 如需詳細資訊，請參閱[藍圖資源鎖定](./concepts/resource-locking.md)。
 
-   ![指派的鎖定和受控識別](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="指派的鎖定和受控識別" border="false":::
 
 1. 在 [受控識別]  下，[系統指派]  保留預設值。
 
@@ -266,7 +266,7 @@ ms.locfileid: "80282047"
 
 1. 在藍圖清單中，以滑鼠右鍵按一下您先前指派的藍圖，然後選取 [檢視指派詳細資料]  。
 
-   ![從 [已指派的藍圖] 頁面中檢視指派詳細資料](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="從 [已指派的藍圖] 頁面中檢視指派詳細資料" border="false":::
 
 1. 在 [藍圖指派]  頁面上，驗證已成功部署所有成品，且部署期間並未出現任何錯誤。 如果發生錯誤，請參閱[疑難排解藍圖](./troubleshoot/general.md)的步驟，判斷發生錯誤的原因。
 

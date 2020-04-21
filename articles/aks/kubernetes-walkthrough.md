@@ -11,12 +11,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 0317be6652ff5f03c4c095788ecdde7cba3d1d98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 369e0da49064197524ee20bb8a0050c00c242260
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215346"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392767"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入門：使用 Azure CLI 部署 Azure Kubernetes Service 叢集
 
@@ -249,7 +249,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。
+> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。 如果您使用受控識別，則身分識別會由平台負責管理，您不需要刪除。
 
 ## <a name="get-the-code"></a>取得程式碼
 

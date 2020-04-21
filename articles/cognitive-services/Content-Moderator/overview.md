@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80053881"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404289"
 ---
 # <a name="what-is-azure-content-moderator"></a>什麼是 Azure Content Moderator？
 
@@ -38,7 +38,7 @@ Azure Content Moderator 是一項認知服務，可檢查文字、影像和視�
 
 ## <a name="what-it-includes"></a>包含內容
 
-Content Moderator 服務由數個可透過 REST 呼叫和 .NET SDK 使用的 Web 服務 API 所組成。 此外也包含人工審核工具，可讓人工審核者輔助服務，以及改善或微調其仲裁功能。
+Content Moderator 服務由數個可透過 REST 呼叫和 .NET SDK 使用的 Web 服務 API 所組成。 此外也包含審核工具，可讓人工審核者輔助服務，以及改善或微調其仲裁功能。
 
 ## <a name="moderation-apis"></a>仲裁 API
 
@@ -58,18 +58,18 @@ Content Moderator 服務包含仲裁 API，可用來檢查可能不適當或令�
 
 ## <a name="review-apis"></a>檢閱 API
 
-檢閱 API 可讓您整合仲裁管線與人工審核。 使用[作業](review-api.md#jobs)、[審核](review-api.md#reviews)與[工作流程](review-api.md#workflows)作業來建立及自動化[審核工具](#the-review-tool)的人機互動工作流程 (如下所示)。
+檢閱 API 可讓您整合仲裁管線與人工審核。 使用[作業](review-api.md#jobs)、[審核](review-api.md#reviews)與[工作流程](review-api.md#workflows)作業來建立及自動化[審核工具](#review-tool)的人機互動工作流程 (如下所示)。
 
 > [!NOTE]
 > 工作流程 API 尚無法用於 .NET SDK，但是可以搭配 REST 端點使用。
 
 ![Content Moderator 審核 API 的區塊圖](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>審查工具
+## <a name="review-tool"></a>檢閱工具
 
 Content Moderator 服務也包含以 Web 為基礎的[審核工具](Review-Tool-User-Guide/human-in-the-loop.md)，此工具會裝載內容審核以供人力審核者處理。 人工輸入不會訓練服務，但在服務與人工審核小組的搭配運作下，開發人員將可在效率和精確度之間取得適當的平衡。 審核工具也針對數種 Content Moderator 資源提供方便使用的前端。
 
-![Content Moderator 的人工審核工具首頁](images/homepage.PNG)
+![Content Moderator 審核工具首頁](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>資料隱私權和安全性
 

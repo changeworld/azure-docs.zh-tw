@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 93ec25123f60083d4b31cf54592b1a1c0dacab69
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677643"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415713"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>快速入門：將 Unity 範例部署到桌面
 
@@ -58,6 +58,9 @@ ms.locfileid: "80677643"
 1. 將偵錯工具模式切換到 [本機電腦]  。
   ![解決方案設定](./media/unity-deploy-config-pc.png)
 1. 建置解決方案 (F7)。
+
+> [!WARNING]
+> 請務必選取 **x86**。 系統目前不支援 **x64**，請參閱[平台限制](../reference/limits.md#platform-limitations)。
 
 ## <a name="launch-the-sample-project"></a>啟動範例專案
 

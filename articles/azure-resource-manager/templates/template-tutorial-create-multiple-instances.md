@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/08/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70c86c82cb28bf767da50cca20f7c1d052d4bf01
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 83afff3aa15caa1743f66eea9eaee541492b8d1c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982528"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260831"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>教學課程：使用 ARM 範本建立多個資源執行個體
 
@@ -124,7 +124,8 @@ ms.locfileid: "80982528"
 echo "Enter a project name that is used to generate resource group name:" &&
 read projectName &&
 resourceGroupName="${projectName}rg" &&
-az storage account list --resource-group $resourceGroupName
+az storage account list --resource-group $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -133,6 +134,7 @@ az storage account list --resource-group $resourceGroupName
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
 $resourceGroupName = "${projectName}rg"
 Get-AzStorageAccount -ResourceGroupName $resourceGroupName
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ---
@@ -145,7 +147,7 @@ Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 
 1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
 2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
-3. 選取資源群組名稱。  您在資源群組中應該會看到共計六個資源。
+3. 選取資源群組名稱。  您在資源群組中應該會看到共計三個資源。
 4. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟

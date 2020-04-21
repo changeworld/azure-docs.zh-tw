@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290126"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308777"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)
 
@@ -54,7 +54,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 - CentOS Linux 7
 - SUSE Linux Enterprise Server (SLES) 15
 - Red Hat Enterprise Linux (RHEL) 7
-- Amazon Linux 7
+- Amazon Linux 2
 
 >[!NOTE]
 >此適用於 Windows 的 Connected Machine 代理程式預覽版本僅支援設定為使用英文語言的 Windows Server。
@@ -143,11 +143,11 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 >[!NOTE]
 >在此預覽期間，只發行了一個套件，其適用於 Ubuntu 16.04 或 18.04。
 
-您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。 若使用 Windows，可以使用 Windows Update 自動完成代理程式更新；若使用 Ubuntu，則請使用 [apt](https://help.ubuntu.com/lts/serverguide/apt.html) 命令列工具。
+您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。 如需詳細資訊，請參閱[這裡](manage-agent.md)。
 
 ### <a name="agent-status"></a>代理程式狀態
 
-Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果 15 分鐘未收到訊息，則系統會將機器視為離線，且入口網站中的狀態會自動變更為**中斷連線**。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為**連線**。
+Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果服務停止接收來自機器的這些活動訊號訊息，系統會將該機器視為離線，且入口網站中的狀態會在 15 到 30 分鐘內自動變更為**中斷連線**。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為**連線**。
 
 ## <a name="install-and-configure-agent"></a>安裝及設定代理程式
 
@@ -157,6 +157,7 @@ Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳�
 |--------|-------------|
 | 以互動方式 | 若要在一部或少數機器上手動安裝代理程式，請遵循[從 Azure 入口網站連線機器](onboard-portal.md)中的步驟。<br> 您可以在 Azure 入口網站中產生指令碼並在機器上執行該指令碼，以自動化代理程式的安裝和設定步驟。|
 | 大規模 | 若要為多部機器安裝及設定代理程式，請遵循[使用服務主體連線機器](onboard-service-principal.md)。<br> 此方法會建立服務主體，以透過非互動的方式與機器連線。|
+| 大規模 | 依照[使用 Windows PowerShell DSC](onboard-dsc.md) 中的方法，為多部機器安裝及設定代理程式。<br> 此方法會透過 PowerShell DSC，以非互動方式使用服務主體來與機器連線。 |
 
 ## <a name="next-steps"></a>後續步驟
 

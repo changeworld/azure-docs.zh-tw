@@ -2,13 +2,13 @@
 title: 快速入門：在 LUIS 入口網站中建立新的應用程式
 description: 在本快速入門中，您會建立應用程式、意圖和實體的基本部分，以及在 LUIS 入口網站中使用範例語句進行測試。
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244609"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382575"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中建立新的應用程式
 
@@ -88,11 +88,10 @@ ms.locfileid: "80244609"
 依據設計，這些範例語句有下列方面的不同：
 
 * 語句長度
-* 標點符號
+* [標點符號](luis-reference-application-settings.md#punctuation-normalization)
 * 用字
 * 動詞時態
 * 文字順序
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>建立規則運算式實體

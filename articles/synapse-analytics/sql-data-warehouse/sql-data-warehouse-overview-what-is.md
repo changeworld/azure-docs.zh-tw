@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 397eb6fbfea88b0eab0648275fc59764505f7d42
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633096"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416034"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什麼是 Azure Synapse Analytics (先前為 SQL DW)？
 
-Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 Azure Synapse 會將這兩個世界結合在一起，透過整合的經驗擷取、準備、管理和處理資料，以滿足立即的 BI 和機器學習需求
+Azure Synapse 是一種分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。 Azure Synapse 會將這兩個世界結合在一起，透過整合的經驗擷取、準備、管理和處理資料，以滿足立即的 BI 和機器學習需求。
 
 Azure Synapse 有四個元件：
 
@@ -27,11 +27,13 @@ Azure Synapse 有四個元件：
   - SQL 集區 (依據佈建的 DWU 付費)
   - SQL 隨選 (依據處理的 TB 量付費) – (預覽)
 - Spark：深入整合的 Apache Spark (預覽)
-- 資料整合：混合式資料整合 (預覽)
+- Synapse Pipelines：混合式資料整合 (預覽)
 - Studio：整合的使用者體驗。  (預覽)
 
 > [!NOTE]
 > 若要存取 Azure Synapse 的預覽功能，請[在此](https://aka.ms/synapsepreview)要求存取權。 Microsoft 會將所有要求分級，並儘快回應您。
+>
+> 檢視 [Azure Synapse 預覽文件](../overview-what-is.md)。
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse 中的 Synapse SQL 集區
 

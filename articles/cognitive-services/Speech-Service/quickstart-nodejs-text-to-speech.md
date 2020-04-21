@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: b120acd25874585a744fb774aafe15d32d7baf08
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 8cf9641a1b7a5d1aada13522d612458d5032f883
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74976497"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258679"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入門：使用 Node.js 將文字轉換為語音
 
@@ -27,8 +27,8 @@ ms.locfileid: "74976497"
 
 本快速入門需要：
 
-* [Node 8.12.x 或更新版本](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)，或您最愛的文字編輯器
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 或更新版本<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio  <span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a>，或您最愛的文字編輯器
 * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰!](get-started.md)
 
 ## <a name="create-a-project-and-require-dependencies"></a>建立專案並要求相依性

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 271f80785d9db84b9184f9f3c6ede2725d4607dc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77616336"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403708"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>快速入門：使用適用於 Java 的自訂視覺 SDK 建立影像分類專案
 
@@ -137,7 +137,7 @@ Done!
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已經知道如何在程式碼中完成影像分類程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。
+現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)

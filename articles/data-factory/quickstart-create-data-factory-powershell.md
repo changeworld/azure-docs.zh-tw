@@ -11,20 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75440089"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419335"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入門：使用 PowerShell 建立 Azure 資料處理站
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [目前的版本](quickstart-create-data-factory-powershell.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本快速入門說明如何使用 PowerShell 來建立 Azure 資料處理站。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
 
@@ -111,6 +113,10 @@ ms.locfileid: "75440089"
 ## <a name="create-a-linked-service"></a>建立連結的服務
 
 在資料處理站中建立的連結服務，會將您的資料存放區和計算服務連結到資料處理站。 在本快速入門中，您要建立連結 Azure 儲存體的服務，可用來作為來源和接收的存放區。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
+
+>[!TIP]
+>在本快速入門中，您會使用「帳戶金鑰」  作為資料存放區的驗證類型，但可以選擇其他支援的驗證方法：SAS URI  、服務主體  ，以及受控識別  (如有需要)。 如需詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)的對應章節。
+>若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
 
 1. 在 **C:\ADFv2QuickStartPSH** 資料夾中，使用以下內容建立名為 **AzureStorageLinkedService.json** 的 JSON 檔案：(如果 ADFv2QuickStartPSH 資料夾尚未存在，請加以建立)。
 

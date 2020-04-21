@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74978027"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403729"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教學課程：搭配 IoT 裝置使用自訂視覺來回報視覺狀態。
 
-此範例應用程式會說明如何使用自訂視覺來將具有相機的裝置定型以使偵測視覺狀態。 您可以使用從自訂視覺服務匯出的 ONNX 模型來在 IoT 裝置上執行此偵測案例。
+此範例應用程式會說明如何使用自訂視覺來將具有相機的裝置定型以使偵測視覺狀態。 您可以使用匯出的 ONNX 模型在 IoT 裝置上執行此偵測案例。
 
-視覺狀態會描述影像的內容：空的房間或是有人的房間、空的車道或是停著卡車的車道等等。 在下列影像中，您可以看到應用程式會在相機前放置香蕉或蘋果時做出正確偵測。
+視覺狀態會描述影像的內容：空的房間或是有人的房間、停著卡車的空車道等等。 在下列影像中，您可以看到應用程式會在相機前放置香蕉或蘋果時做出正確偵測。
 
 ![標記相機前方水果之 UI 的動畫](./media/iot-visual-alerts-tutorial/scoring.gif)
 
@@ -92,7 +92,7 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 * 如果您是在電腦上執行應用程式，請使用 UI 右上角的按鈕。
 * 如果您是在 IoT 裝置上執行應用程式，請透過 IoT 中樞在裝置上呼叫 `EnterLearningMode` 方法。 您可以透過 Azure 入口網站上 IoT 中樞功能表中的裝置項目，或是使用類似 [IoT 中樞 Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) \(英文\) 的工具來呼叫它。
  
-當應用程式進入 **Capturing Training Images** \(擷取定型影像\) 狀態時，它每秒將會擷取約兩個影像，直到抵達目標影像數目為止。 根據預設，這會是 30 個影像，但您可以將所需數目以引數的方式傳遞至 `EnterLearningMode` IoT 中樞方法來設定此參數。 
+當應用程式進入 **Capturing Training Images** \(擷取定型影像\) 狀態時，它每秒將會擷取約兩個影像，直到抵達目標影像數目為止。 根據預設，目標是 30 個影像，但您可以將所需數目以引數的方式傳遞至 `EnterLearningMode` IoT 中樞方法來設定此參數。 
 
 在應用程式正在擷取影像時，您必須以相機拍攝您想要偵測的視覺狀態類型 (例如，空的房間、有人的房間、空的桌子、有玩具卡車的桌子等等)。
 

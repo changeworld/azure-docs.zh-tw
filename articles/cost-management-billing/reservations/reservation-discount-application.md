@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135482"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380642"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>保留折扣的套用方式
 
@@ -39,7 +39,7 @@ ms.locfileid: "80135482"
 服務方案：
 
 - 保留的 VM 執行個體：當您購買保留並選取 [針對執行個體大小彈性最佳化]  時，折扣涵蓋範圍會取決於您選取的 VM 大小。 此保留可適用於相同大小系列群組中的虛擬機器 (VM) 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
-- Azure 儲存體保留容量：您可以為標準 Azure 儲存體帳戶購買保留容量 (以每個月 100 TiB 或 1 PiB 為單位)。 Azure 儲存體保留容量適用於所有區域中的任何存取層 (經常性、非經常性或封存) 和任何複寫選項 (LRS、GRS 或 ZRS)。
+- Azure 儲存體保留容量：您可以為標準 Azure 儲存體帳戶購買保留容量 (以每個月 100 TiB 或 1 PiB 為單位)。 如需哪些區域支援 Azure 儲存體保留容量的相關資訊，請參閱[區塊 Blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)。 Azure 儲存體保留容量適用於所有存取層 (經常性、非經常性或封存) 和任何複寫組態 (LRS、GRS 或 ZRS)。
 - SQL Database 保留容量：折扣涵蓋範圍取決於您挑選的效能層級。 如需詳細資訊，請參閱[了解如何套用 Azure 保留折扣](understand-reservation-charges.md)。
 - Azure Cosmos DB 保留容量：折扣涵蓋範圍取決於所佈建的輸送量。 如需詳細資訊，請參閱[了解如何套用 Azure Cosmos DB 保留折扣](understand-cosmosdb-reservation-charges.md)。
 

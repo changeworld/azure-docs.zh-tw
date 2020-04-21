@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76169748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403356"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>快速入門：使用 REST API 和 PHP 偵測影像中的人臉
 

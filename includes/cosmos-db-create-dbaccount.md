@@ -6,20 +6,27 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/08/2019
+ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81274959"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81422320"
 ---
-1. 移至 [Azure 入口網站](https://portal.azure.com/)來建立 Azure Cosmos DB 帳戶。 搜尋並選取 [Azure Cosmos DB]  。
+1. 移至 [Azure 入口網站](https://portal.azure.com/)來建立 Azure Cosmos DB 帳戶。 在您的首頁上，從 **Azure 服務**面板中選擇 [建立資源]  。
 
-   ![Azure 入口網站資料庫窗格](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+   ![建立資源](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
 
-1. 選取 [新增]  。
+1. 搜尋並選取 [Azure Cosmos DB]  。
+
+   ![Azure 入口網站資源下拉式清單](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
+
+1. 選取 [建立]  。
+
+   ![建立 Azure Cosmos DB 資源](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+
 1. 在 [建立 Azure Cosmos DB 帳戶]  頁面上，輸入新 Azure Cosmos 帳戶的基本設定。 
 
     |設定|值|描述 |
@@ -31,6 +38,7 @@ ms.locfileid: "81274959"
     |申請免費層折扣|適用或不適用|使用 Azure Cosmos DB 免費層，您將可在帳戶中免費取得前 400 RU/秒和 5 GB 的儲存體。 深入了解[免費層](https://azure.microsoft.com/pricing/details/cosmos-db/)。|
     |Location|最接近使用者的區域|選取用來裝載 Azure Cosmos DB 帳戶的地理位置。 使用最接近使用者的位置，讓他們能以最快速度存取資料。|
     |帳戶類型|生產或非生產|如果帳戶將用於生產工作負載，請選取 [生產]  。 如果帳戶將用於非生產工作負載 (例如開發、測試、QA 或預備)，請選取 [非生產]  。 這是一種 Azure 資源標記設定，可調整入口網站體驗，但不會影響基礎 Azure Cosmos DB 帳戶。 您可以隨時變更此值。|
+
 
     > [!NOTE]
     > 每個 Azure 訂用帳戶最多可以有一個免費層的 Azure Cosmos DB 帳戶，而且必須在建立帳戶時選擇加入。 如果您看不到套用免費層折扣的選項，這表示訂用帳戶中的另一個帳戶已透過免費層啟用。

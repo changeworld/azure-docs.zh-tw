@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 22aad0e601c600e582cbea0cea82dd67a20a2c06
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77622035"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392683"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中升級 Kubernetes
 
@@ -114,7 +114,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。
+> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。 如果您使用受控識別，則身分識別會由平台負責管理，因此您不需要佈建或輪替任何密碼。
 
 ## <a name="next-steps"></a>後續步驟
 

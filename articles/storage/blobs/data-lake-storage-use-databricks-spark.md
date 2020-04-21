@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303234"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312902"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教學課程：Azure Data Lake Storage Gen2、Azure Databricks 和 Spark
 
@@ -47,7 +47,7 @@ ms.locfileid: "78303234"
   > [!IMPORTANT]
   > 請務必在 Data Lake Storage Gen2 儲存體帳戶的範圍中指派該角色。 您可以將角色指派給父資源群組或訂用帳戶，但在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
 
-  :heavy_check_mark:在執行該文章的[取得值以便登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和密碼值貼到文字檔中。 您很快就會用到這些資料。
+  :heavy_check_mark:在執行該文章的[取得值以便登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將租用戶識別碼、應用程式識別碼和用戶端密碼值貼到文字檔中。 您很快就會用到這些資料。
 
 ### <a name="download-the-flight-data"></a>下載航班資料
 
@@ -151,7 +151,7 @@ ms.locfileid: "78303234"
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
@@ -161,7 +161,7 @@ ms.locfileid: "78303234"
     extra_configs = configs)
     ```
 
-18. 在此程式碼區塊中，請將此程式碼區塊中的 `appId`、`password`、`tenant` 和 `storage-account-name` 預留位置值取代為您在執行本教學課程的必要條件時所收集到的值。 使用容器名稱取代 `container-name` 預留位置值。
+18. 在此程式碼區塊中，請將此程式碼區塊中的 `appId`、`clientSecret`、`tenant` 和 `storage-account-name` 預留位置值取代為您在執行本教學課程的必要條件時所收集到的值。 使用容器名稱取代 `container-name` 預留位置值。
 
 19. 按 **SHIFT + ENTER** 鍵以執行此區塊中的程式碼。
 

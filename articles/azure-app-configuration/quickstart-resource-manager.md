@@ -3,18 +3,18 @@ title: 使用 Azure 應用程式組態進行自動化 VM 部署快速入門
 description: 本快速入門示範如何使用 Azure PowerShell 模組和 Azure Resource Manager 範本來部署 Azure 應用程式組態存放區。 然後使用存放區中的值來部署 VM。
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126375"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309101"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>快速入門：使用應用程式組態和 Resource Manager 範本進行自動化 VM 部署
 
@@ -152,6 +152,9 @@ New-AzResourceGroup `
 ## <a name="deploy-vm-using-stored-key-values"></a>使用儲存的索引鍵/值部署 VM
 
 您現已將索引鍵/值新增至存放區，就可以使用 Azure Resource Manager 範本來部署 VM。 此範本會參考您所建立的 **windowsOsVersion** 和 **diskSizeGB** 金鑰。
+
+> [!WARNING]
+> ARM 範本無法參考已啟用 Private Link 的應用程式組態存放區中的金鑰。
 
 1. 複製下列 json 程式碼並貼到名為 *azuredeploy.json* 的新檔案中，或從 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)下載檔案。
 
@@ -423,13 +426,13 @@ New-AzResourceGroup `
    |storageAccountName|與 VM 相關聯的儲存體帳戶唯一名稱。|
    |domainNameLabel|唯一的網域名稱。|
 
-1. 在您的 PowerShell 視窗中，執行下列命令以部署 Azure 應用程式組態存放區。 別忘了取代資源群組名稱、範本檔案路徑和範本參數檔案路徑。
+1. 在您的 PowerShell 視窗中，執行下列命令以部署 VM。 別忘了取代資源群組名稱、範本檔案路徑和範本參數檔案路徑。
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 恭喜！ 您已使用 Azure 應用程式組態中儲存的組態來部署 VM。

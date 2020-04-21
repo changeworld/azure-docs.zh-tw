@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0be98ac60e11b3e21a864aa4ca18fcac2c7f014c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80053394"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403416"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
@@ -39,7 +39,7 @@ ms.locfileid: "80053394"
 
 ### <a name="include-namespaces"></a>包含命名空間
 
-在 `using`Program.cs*檔案的頂端新增下列* 陳述式。
+在 *Program.cs* 檔案的頂端新增下列 `using` 陳述式。
 
 ```csharp
 using System;

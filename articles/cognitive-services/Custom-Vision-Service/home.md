@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: bdb2b31ee3abb30e6e7339f641b778ff5dc522b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80053646"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403799"
 ---
 # <a name="what-is-custom-vision"></a>什麼是自訂視覺服務？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-自訂視覺是一個認知服務，可讓您建置、部署和改善自己的影像分類器。 影像分類器是一項 AI 服務，可根據影像的視覺特性對影像套用標籤 (代表_類別_)。 不同於[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服務，自訂視覺可讓您決定所要套用的標籤。
+Azure 自訂視覺是一項認知服務，可讓您建置、部署和改善自己的影像分類器。 影像分類器是一項 AI 服務，可根據影像的視覺特性對影像套用標籤 (代表_類別_)。 不同於[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服務，自訂視覺可讓您指定所要套用的標籤。
 
 ## <a name="what-it-does"></a>作用
 

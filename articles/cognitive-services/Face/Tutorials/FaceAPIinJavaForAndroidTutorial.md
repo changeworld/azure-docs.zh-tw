@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用 Android SDK 偵測並框出影像中的人臉
+title: 教學課程：使用 Android SDK 偵測並框出影像中的臉部
 titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您會建立簡單的 Android 應用程式，以使用臉部辨識服務來偵測並框出影像中的臉部。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: dd986a7557f468b939aefe1da825c9834618047f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76165973"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402927"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>教學課程：建立 Android 應用程式來偵測並框出影像中的臉部
 
@@ -37,9 +37,9 @@ GitHub 上的[認知服務臉部 Android](https://github.com/Azure-Samples/cogni
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。 然後，分別為名為 [ 和 ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) 的金鑰和服務端點字串`FACE_SUBSCRIPTION_KEY`建立環境變數`FACE_ENDPOINT`。
+- 臉部訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部辨識服務並取得金鑰。 然後，分別為名為 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT` 的金鑰和服務端點字串[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 - 任何 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 版本。
-- [Android Studio](https://developer.android.com/studio/)，API 層級為 22 以上 (臉部用戶端程式庫所需)。
+- API 層級 22或更新版本的 [Android Studio](https://developer.android.com/studio/)。
 
 ## <a name="create-the-android-studio-project"></a>建立 Android Studio 專案
 
@@ -123,7 +123,7 @@ GitHub 上的[認知服務臉部 Android](https://github.com/Azure-Samples/cogni
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解臉部 Java SDK 的基本使用程序，並建立了應用程式來偵測並框出影像中的臉部。 接下來，請深入了解臉部偵測的詳細資料。
+在本教學課程中，您已了解如何臉部 Java SDK 建立應用程式來偵測並框出影像中的臉部。 接下來，請深入了解臉部偵測的詳細資料。
 
 > [!div class="nextstepaction"]
 > [如何偵測影像中的人臉](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

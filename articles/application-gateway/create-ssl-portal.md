@@ -1,22 +1,22 @@
 ---
-title: 教學課程：在入口網站中設定 SSL 終止 - Azure 應用程式閘道
-description: 在此教學課程中，您將了解如何使用 Azure 入口網站設定應用程式閘道，並新增 SSL 終止的憑證。
+title: 教學課程：在入口網站中設定 TLS 終止 - Azure 應用程式閘道
+description: 在此教學課程中，您將了解如何使用 Azure 入口網站設定應用程式閘道，並新增 TLS 終止的憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012315"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312383"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 SSL 終止的應用程式閘道
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 TLS 終止的應用程式閘道
 
-您可以使用 Azure 入口網站來設定[應用程式閘道](overview.md)，當中包含使用虛擬機器作為後端伺服器的 SSL 終止憑證。
+您可以使用 Azure 入口網站來設定[應用程式閘道](overview.md)，當中包含使用虛擬機器作為後端伺服器的 TLS 終止憑證。
 
 在本教學課程中，您會了解如何：
 
@@ -265,4 +265,4 @@ Export-PfxCertificate `
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [深入了解應用程式閘道 SSL 支援](ssl-overview.md)
+> [深入了解應用程式閘道 TLS 支援](ssl-overview.md)

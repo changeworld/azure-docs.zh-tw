@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 68d63fbc71ea2dcd07522c6ba42808f88966cd7b
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: e527f81ad01cc9c06773fbfd4f76c1630ffa21aa
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76166600"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403591"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入門：使用自訂視覺 Python SDK 建立物件偵測專案
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入門：使用適用於自訂視覺 Python SDK 建立物件偵測專案
 
 本文說明如何開始搭配使用自訂視覺 SDK 與 Python 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Python 應用程式。
 
@@ -230,7 +230,7 @@ python sample.py
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。 下列指南會處理影像分類，但其原則類似於物件偵測。
+現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。 下列訓練指南會處理影像分類，但其原則類似於物件偵測。
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)

@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132527"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255510"
 ---
 # <a name="what-is-azure-databricks"></a>何謂 Azure Databricks？
 
@@ -85,6 +85,11 @@ Azure Databricks 可提供企業級的 Azure 安全性，包括 Azure Active Dir
 * 與 Azure Active Directory 整合可讓您使用 Azure Databricks 執行完整的 Azure 型解決方案。
 * Azure Databricks 的角色型存取可讓您針對 Notebook、叢集、作業和資料提供更細緻的使用者權限。
 * 企業級 SLA。 
+
+> [!IMPORTANT]
+>
+> Azure Databricks 是部署在全域 Azure 公用雲端基礎結構上的 Microsoft Azure 第一方服務。 服務元件之間的所有通訊 (包括控制平面和客戶資料平面中公用 IP 間的通訊) 都會保留在 Microsoft Azure 網路骨幹內。 另請參閱 [Microsoft 全域網路](https://docs.microsoft.com/azure/networking/microsoft-global-network)。
+
 
 ## <a name="integration-with-azure-services"></a>Azure 服務整合
 

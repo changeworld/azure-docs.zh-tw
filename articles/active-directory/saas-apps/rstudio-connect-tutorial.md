@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a9b49f75ad377a9377a2311ed16c17ca3d749e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>教學課程：Azure Active Directory 與 RStudio Connect 整合
 
@@ -158,9 +158,9 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-將您的**伺服器位址** 儲存在 `Server.Address` 值中，然後將 [應用程式同盟中繼資料 URL]  儲存在 `SAML.IdPMetaData` 值中。
+將您的**伺服器位址** 儲存在 `Server.Address` 值中，然後將 [應用程式同盟中繼資料 URL]  儲存在 `SAML.IdPMetaData` 值中。 請注意，此範例組態會使用未加密的 HTTP 連線，而 Azure AD 需要使用加密的 HTTPS 連線。 您可以使用 RStudio Connect 前面的[反向 Proxy](https://docs.rstudio.com/connect/admin/proxy/)，或將 RStudio Connect 設定為[直接使用 HTTPS](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)。 
 
-如果您遇到設定上的問題，請參閱 [RStudio Connect 系統管理指南](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml) \(英文\) 或傳送電子郵件給 [RStudio 支援小組](mailto:support@rstudio.com)以取得協助。
+如果您遇到設定上的問題，請參閱 [RStudio Connect 系統管理指南](https://docs.rstudio.com/connect/admin/authentication/saml/) \(英文\) 或傳送電子郵件給 [RStudio 支援小組](mailto:support@rstudio.com)以取得協助。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 

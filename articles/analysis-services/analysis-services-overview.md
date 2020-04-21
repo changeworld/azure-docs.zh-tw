@@ -4,31 +4,31 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 350fd9c7057df96a4ad1abc0d9c8b5ec3871ef38
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215546"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271653"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services 是完全受控的平台即服務 (PaaS)，可在雲端提供企業級資料模型。 使用進階的混搭與模型化功能，以結合來自多個資料來源的資料、定義計量，以及在單一受信任的表格式語意資料模型中保護您的資料。 資料模型可讓使用者更輕鬆快速地瀏覽要用於臨機操作資料分析的大量資料。
+Azure Analysis Services 是完全受控的平台即服務 (PaaS)，可在雲端提供企業級資料模型。 使用進階的混搭與模型化功能，以結合來自多個資料來源的資料、定義計量，以及在單一受信任的表格式語意資料模型中保護您的資料。 資料模型可讓使用者更輕鬆快速地使用 Power BI 和 Excel 等工具執行臨機操作資料分析。
 
 ![資料來源](./media/analysis-services-overview/aas-overview-overall.png)
 
-**影片：** 請觀看 [Azure Analysis Services 概觀](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)，以了解 Azure Analysis Services 有多麼適合 Microsoft 的整體 BI 功能。
+**影片：** 請觀看 [Azure Analysis Services 概觀](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) \(英文\)，以了解 Azure Analysis Services 有多麼適合 Microsoft 的整體 BI 功能。
 
 ## <a name="get-up-and-running-quickly"></a>快速啟動並執行
 
 您可以在短短幾分鐘內，於 Azure 入口網站中[建立伺服器](analysis-services-create-server.md)。 此外，若是使用 Azure Resource Manager [範本](../azure-resource-manager/resource-manager-create-first-template.md)和 PowerShell，您可以使用宣告式範本來建立伺服器。 在單一範本中，您可以部署伺服器資源以及其他 Azure 元件 (例如儲存體帳戶和 Azure Functions)。 
 
-**影片：** 請觀看[讓部署自動進行](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)，以深入了解如何使用 Azure 自動化來加快伺服器建立速度。
+**影片：** 請觀看[讓部署自動進行](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) \(英文\)，以深入了解如何使用 Azure 自動化來加快伺服器建立速度。
 
 Azure Analysis Services 與許多 Azure 服務整合，讓您能建置複雜的分析解決方案。 與 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 整合可對重要資料提供安全的角色型存取。 納入可將資料載入模型中的活動，進而與 [Azure Data Factory](../data-factory/introduction.md) 管線整合。 [Azure 自動化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 可用於使用自訂程式碼之模型的輕量型協調流程。 
 
@@ -38,7 +38,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ### <a name="developer-tier"></a>開發人員層
 
-建議將此層用於評估、開發及測試案例。 單一方案包含與標準層相同的功能，但其處理能力、QPU 及記憶體大小有限。 此層無法使用  查詢複本擴增功能。 此層不提供 SLA。
+建議將此層用於評估、開發及測試案例。 單一方案包含與標準層相同的功能，但其處理能力、QPU 及記憶體大小有限。 此層「無法使用」  查詢複本相應放大功能。 此層不提供 SLA。
 
 |計畫  |QPU  |記憶體 (GB)  |
 |---------|---------|---------|
@@ -64,12 +64,14 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-|S8v2*    |    640     |    200     |
-|S9v2*    |    1280    |    400     |
+|S8 <sup>[1](#depr)</sup>，<sup>[2](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>，<sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
 
-\* 並非所有區域都有提供。  
+<a name="depr">1</a> - 並非所有區域都有提供。   
+<a name="rec">2</a> - 此方案已淘汰。 建議使用 v2。
+
 
 ## <a name="availability-by-region"></a>依區域的可用性
 
@@ -83,15 +85,15 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |加拿大中部    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |美國東部     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |美國東部 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|美國東部 2     |     S8、S9、S8v2、S9v2   |    1    |
+|美國東部 2     |     S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    1    |
 |美國中北部     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中南部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中西部   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |美國西部     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|美國西部     |    S8、S9、S8v2、S9v2   |    2  |
+|美國西部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    2  |
 |美國西部 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|美國西部 2    |    S8、S9、S8v2、S9v2  |    1     |
+|美國西部 2    |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>歐洲
 
@@ -101,17 +103,17 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |北歐     |    S8v2、S9v2      |    3     |
 |英國南部     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |西歐     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|西歐    |   S8、S9、S8v2、S9v2  |  1  |
+|西歐    |   S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>亞太地區 
 
 |區域  | 支援的方案 | 查詢複本 (僅限標準方案) |
 |---------|---------|:---------:|
 |澳大利亞東部     |    B1, B2, S0, S1, S2, S4     |    3     |
-|澳大利亞東部     |    S8、S9、S8v2、S9v2    |    1     |
+|澳大利亞東部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2    |    1     |
 |澳大利亞東南部     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |日本東部     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|東南亞     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
+|東南亞     |     B1、B2、S0、S1、S2、S4、S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2、D1     |   1      |
 |印度西部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>調整您的需求
@@ -128,7 +130,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 如同變更層級，您也可以根據您的需求將查詢複本擴增。 在入口網站或使用 REST API 來設定擴增。 若要深入了解，請參閱 [Azure Analysis Services 擴增](analysis-services-scale-out.md)。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 總成本取決於許多因素；例如，您所選擇的區域、服務層、查詢複本和暫停/繼續。 請使用 [Azure Analysis Services 定價](https://azure.microsoft.com/pricing/details/analysis-services/)計算機來判斷您所在區域的一般定價。 此工具會計算單一區域單一伺服器執行個體的定價。 請記住，查詢複本會以相同的伺服器費率計費。 
 
@@ -208,13 +210,17 @@ Microsoft Analysis Services 專案會以免費的可安裝 VSIX 套件來提供�
 
 使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 來管理伺服器及建立資料庫模型。 連線到您在雲端中的伺服器。 從 XMLA 查詢視窗執行 TMSL 指令碼，並使用 TMSL 指令碼和 PowerShell 自動執行工作。 快速提供新特性與功能 - 每個月更新 SSMS。
 
+### <a name="open-source-tools"></a>開放原始碼工具
+
+Analysis Services 為建立工具的開發人員建立了活躍的社群。 請務必查看[表格式編輯器](https://tabulareditor.github.io/)，這是一個開放原始碼工具，可讓您使用直覺化的輕量編輯器來建立、維護及管理表格式模型。 [DAX Studio](https://daxstudio.org/) 是絕佳的開放原始碼工具，可用於 DAX 製作、診斷、效能微調和分析。
+
 ### <a name="powershell"></a>PowerShell
 
 建立伺服器資源、暫停或繼續伺服器作業或變更服務層級 (層) 的伺服器資源管理工作會使用 Azure PowerShell Cmdlet。 其他用於管理資料庫的工作 (例如新增或移除角色成員、處理或執行 TMSL 指令碼) 會使用 SqlServer 模組中的 Cmdlet。 若要深入了解，請參閱[使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)。
 
 ### <a name="object-model-and-scripting"></a>物件模型和編寫指令碼
 
-表格式模型可供快速進行開發，並可高度自訂。 表格式模型包含可說明模型物件的[表格式物件模型](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM)。 TOM 會經由 [Microsoft.AnalysisServices.Tabular](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) 命名空間透過[表格式模型指令碼語言 (TMSL)](/dotnet/api/microsoft.analysisservices.tabular)和 AMO 資料定義語言以 JSON 公開。 
+表格式模型可供快速進行開發，並可高度自訂。 表格式模型包含可說明模型物件的[表格式物件模型](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM)。 TOM 會經由 [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) 命名空間透過[表格式模型指令碼語言 (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)和 AMO 資料定義語言以 JSON 公開。 
 
 ## <a name="supports-the-latest-client-tools"></a>支援最新的用戶端工具
 
@@ -232,19 +238,15 @@ Azure Analysis Services 也支援使用[動態管理檢視 (DMV)](https://docs.m
 
 這裡會有 Azure Analysis Services 專屬文件。 請使用瀏覽器畫面左側的目錄來尋找文章。 
 
-由於 Azure Analysis Services 表格式模型與 SQL Server Analysis Services 中的表格式模型極為類似，因此 [SQL Server Analysis Services 文件](https://docs.microsoft.com/analysis-services/analysis-services-overview)中收納了共用資料模型教學課程、概念、程序、開發人員和參考文章的廣泛文件庫。 SQL Server Analysis Services 文件中的文章，會透過標題下方的「適用於」橫幅顯示其是否也適用於 Azure Analysis Services。
+由於 Azure Analysis Services 中的表格式模型與 SQL Server Analysis Services 和 Power BI 進階資料集中的表格式模型極為類似，因此 [Analysis Services 文件](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current)中收納了共用資料模型教學課程、概念、程序、開發人員和參考文章的廣泛文件庫。 共用 Analysis Services 文件中的文章，會透過標題下方的「適用於」橫幅顯示其是否也適用於 Azure Analysis Services。 您也可以使用目錄上方的版本選取器，只查看適用於您所使用之平台的文章。
 
 ![共用文件](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>參與！
 
-Analysis Services 文件 (如本文) 屬開放式來源。 如果您有 GitHub 帳戶，則可按一下瀏覽器畫面右上角的 [編輯] (鉛筆) 來編輯文章。 使用瀏覽器內編輯器，然後按一下 [建議檔案變更]。 
+Analysis Services 文件 (如本文) 屬開放式來源。 若要深入了解您可以參與的方式，請參閱[文件參與者指南](https://docs.microsoft.com/contribute/)。 
 
-![共用文件](./media/analysis-services-overview/aas-overview-edit.png)
-
-文件小組會檢閱您的參與，一經核准，您的 GitHub 帳戶名稱將會顯示為參與者。 若要深入了解，請參閱[文件參與者指南](https://docs.microsoft.com/contribute/)。
-
-Azure Analysis Services 文件也會使用 [GitHub 問題](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 您可以提供有關產品或文件的意見反應。 請使用文章底部的 [意見反應]  。 SQL Server Analysis Services 文件還未啟用「GitHub 問題」。 
+Azure Analysis Services 文件也會使用 [GitHub 問題](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 您可以提供有關產品或文件的意見反應。 請使用文章底部的 [意見反應]  。 共用 Analysis Services 文件還未啟用「GitHub 問題」。 
 
 ## <a name="blogs"></a>部落格
 

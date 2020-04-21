@@ -1,5 +1,5 @@
 ---
-title: 根據效能資料或排程自動調整 Azure 資源規模
+title: 根據資料或排程自動調整 Azure 資源規模
 description: 使用計量資料與排程為應用程式服務方案建立自動調整規模設定
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4502a9ec7866d9b1ecb0f2aa2257e759fd417c8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77661647"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114683"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>根據效能資料或排程建立自動調整 Azure 資源規模設定
 

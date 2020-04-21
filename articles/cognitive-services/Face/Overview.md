@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80053588"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403460"
 ---
 # <a name="what-is-the-azure-face-service"></a>什麼是 Azure 臉部辨識服務？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 認知服務的臉部辨識服務會提供相關的演算法，用以偵測、辨識和分析影像中的人臉。 處理人臉資訊在許多不同的軟體案例中都是重要的能力。 舉例來說，這些案例包括安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
+Azure 認知服務的臉部辨識服務會提供相關的演算法，以偵測、辨識和分析影像中的人臉。 處理人臉資訊在許多不同的軟體案例中都是重要的能力。 舉例來說，這些案例包括安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
 
-臉部辨識服務提供了幾項不同的功能。 以下幾節會有各項功能的相關概述。 請繼續閱讀以深入了解各項功能。
+臉部服務提供了幾個不同的功能，下列各節會有相關概述。
 
 ## <a name="face-detection"></a>臉部偵測
 
@@ -69,7 +69,7 @@ Azure 認知服務的臉部辨識服務會提供相關的演算法，用以偵�
 
 如需人員識別的詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[識別 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) 參考文件。
 
-## <a name="use-containers"></a>使用容器
+## <a name="containers"></a>容器
 
 藉由在更接近資料的位置安裝標準化的 Docker 容器，從而[使用臉部容器](face-how-to-install-containers.md)來偵測、辨識和識別臉部。
 

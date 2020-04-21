@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80244676"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404355"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>快速入門：使用電腦視覺 REST API 和 Python 產生縮圖
 
@@ -93,7 +93,9 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，請深入了解縮圖產生功能的詳細資訊。
+接下來，探索使用「電腦視覺」在影像中執行光學字元辨識 (OCR)、建立智慧型裁剪縮圖以及偵測、分類、標記和描述視覺特徵的 Python 應用程式。
 
 > [!div class="nextstepaction"]
-> [產生縮圖](../concept-generating-thumbnails.md)
+> [電腦視覺 API Python 教學課程](../Tutorials/PythonTutorial.md)
+
+* 若要快速地試驗電腦視覺 API，請嘗試 [Open API 測試主控台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。

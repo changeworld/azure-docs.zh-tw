@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74384119"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314347"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure 應用程式閘道上的 Web 應用程式防火牆
 
@@ -28,9 +28,9 @@ Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 
 
 ![應用程式閘道 WAF 圖表](../media/ag-overview/waf1.png)
 
-應用程式閘道會以應用程式傳遞控制站 (ADC) 的形式運作。 其提供安全通訊端層 (SSL) 終止、Cookie 型工作階段同質、循環配置資源負載分配、內容型路由，以及裝載多個網站和安全性增強功能的能力。
+應用程式閘道會以應用程式傳遞控制站 (ADC) 的形式運作。 其提供前稱為安全通訊端層 (SSL) 的傳輸層安全性 (TLS)、終止、Cookie 型工作階段同質、循環配置資源負載分配、內容型路由，以及裝載多個網站和安全性增強功能的能力。
 
-應用程式閘道的安全性增強功能包括 SSL 原則管理和端對端 SSL 支援。 WAF 與應用程式閘道的整合加強了應用程式安全性。 這種組合可讓 Web 應用程式免於遭受常見的弱點威脅。 並且提供容易設定的中央位置來進行管理。
+應用程式閘道的安全性增強功能包括 TLS 原則管理和端對端 TLS 支援。 WAF 與應用程式閘道的整合加強了應用程式安全性。 這種組合可讓 Web 應用程式免於遭受常見的弱點威脅。 並且提供容易設定的中央位置來進行管理。
 
 ## <a name="benefits"></a>優點
 

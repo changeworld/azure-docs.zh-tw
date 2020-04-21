@@ -1,20 +1,19 @@
 ---
 title: 教學課程 - 使用 Azure HDInsight 中的 Apache HBase
 description: 遵循此 Apache HBase 教學課程，開始在 HDInsight 上使用 Hadoop。 使用 Hive 從 HBase Shell 建立資料表並加以查詢。
-keywords: hbasecommand,hbase 範例
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
-ms.date: 06/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/14/2020
+ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71077145"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390267"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 中的 Apache HBase
 
@@ -37,13 +36,13 @@ ms.locfileid: "71077145"
 
 ## <a name="create-apache-hbase-cluster"></a>建立 Apache HBase 叢集
 
-下列程序會使用 Azure Resource Manager 範本建立 HBase 叢集和相依的預設 Azure 儲存體帳戶。 若要了解此程序與其他叢集建立方法中使用的參數，請參閱 [在 HDInsight 中建立以 Linux 為基礎的 Hadoop 叢集](../hdinsight-hadoop-provision-linux-clusters.md)。
+下列程序使用 Azure Resource Manager 範本來建立 HBase 叢集。 此範本也會建立相依的預設 Azure 儲存體帳戶。 若要了解此程序與其他叢集建立方法中使用的參數，請參閱 [在 HDInsight 中建立以 Linux 為基礎的 Hadoop 叢集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
 1. 選取以下影像，在 Azure 入口網站中開啟範本。 範本位在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. 從 [自訂部署]  刀鋒視窗，輸入下列值：
+2. 從 [自訂部署]  對話方塊中，輸入下列值：
 
     |屬性 |描述 |
     |---|---|
@@ -56,7 +55,7 @@ ms.locfileid: "71077145"
 
     其他參數都是選擇性的。  
 
-    每個叢集都具備 Azure 儲存體帳戶相依性。 刪除叢集之後，資料會保留在儲存體帳戶中。 叢集預設儲存體帳戶名稱是附加 "store" 的叢集名稱。 它會硬式編碼在範本變數區段中。
+    每個叢集都具備 Azure 儲存體帳戶相依性。 刪除叢集之後，資料會留在儲存體帳戶中。 叢集預設儲存體帳戶名稱是附加 "store" 的叢集名稱。 其會硬式編碼在範本變數區段中。
 
 3. 選取 [我同意上方所述的條款及條件]  ，然後選取 [購買]  。 大約需要 20 分鐘的時間來建立叢集。
 
@@ -203,7 +202,7 @@ HBase 包含數個將資料載入資料表的方法。  如需詳細資訊，請
 
 透過 [基本驗證](https://en.wikipedia.org/wiki/Basic_access_authentication)來保護 REST API 的安全。 您應該一律使用安全 HTTP (HTTPS) 提出要求，確保認證安全地傳送至伺服器。
 
-1. 起始方便使用的環境變數。 將 `MYPASSWORD` 取代為叢集登入密碼，以編輯命令。 將 `MYCLUSTERNAME` 取代為您的 HBase 叢集名稱。 然後輸入命令。
+1. 設定方便使用的環境變數。 將 `MYPASSWORD` 取代為叢集登入密碼，以編輯命令。 將 `MYCLUSTERNAME` 取代為您的 HBase 叢集名稱。 然後輸入命令。
 
     ```bash
     export password='MYPASSWORD'
@@ -240,10 +239,10 @@ HBase 包含數個將資料載入資料表的方法。  如需詳細資訊，請
     -v
     ```
 
-    您必須使用 base64 編碼 -d 參數中指定的值。 在範例中︰
+    Base64 編碼 -d 參數中指定的值。 在範例中︰
 
    * MTAwMA==:1000
-   * UGVyc29uYWw6TmFtZQ==:Personal:Name
+   * UGVyc29uYWw6TmFtZQ==:Personal:名稱
    * Sm9obiBEb2xl:John Dole
 
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) 可讓您插入多個 (批次) 值。
@@ -306,7 +305,7 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立 Apache HBase 叢集，以及如何建立資料表，並從 HBase 殼層檢視這些資料表中的資料。 您同時也了解到如何使用 Hive 查詢 HBase 資料表中的資料，以及如何使用 HBase C# REST API 建立 HBase 資料表，並擷取其資料表中的資料。 若要深入了解，請參閱：
+在本教學課程中，您已了解如何建立 Apache HBase 叢集。 以及如何建立資料表，並從 HBase 殼層檢視這些資料表中的資料。 您也已了解如何對 HBase 資料表中的資料使用 Hive 查詢， 並明白如何使用 HBase C# REST API 建立 HBase 資料表，並擷取其資料表中的資料。 若要深入了解，請參閱：
 
 > [!div class="nextstepaction"]
 > [HDInsight HBase 概觀](./apache-hbase-overview.md)

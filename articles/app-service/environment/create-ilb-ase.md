@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057405"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114625"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>建立及使用內部負載平衡器 App Service 環境 
 
@@ -60,6 +60,9 @@ Azure App Service 環境 (ASE) 是將 Azure App Service 部署到客戶 Azure �
 
     ![ASE 建立](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> App Service 環境名稱不能超過 37 個字元。
+
 6. 選取網路
 
 7. 選取或建立虛擬網路。 如果您在此建立新的 VNet，將會以 192.168.250.0/23 的位址範圍定義。 若要建立具有不同位址範圍的 VNet，或在與 ASE 不同的資源群組中建立 VNet，請使用 Azure 虛擬網路建立入口網站。 
@@ -69,6 +72,7 @@ Azure App Service 環境 (ASE) 是將 Azure App Service 部署到客戶 Azure �
     ![ASE 網路][1]
 
 7. 選取 [檢閱並建立]  ，然後選取 [建立]  。
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>在 ILB ASE 中建立應用程式： ##
 

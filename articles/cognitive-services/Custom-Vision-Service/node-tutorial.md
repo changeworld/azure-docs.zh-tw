@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 2a7da34238af6d1936c680cd5a063e9ad49ee889
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366621"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403608"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>快速入門：使用自訂視覺 Node.js SDK 建立影像分類專案
 
@@ -176,7 +176,7 @@ Results:
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已經知道如何在程式碼中完成影像分類程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。
+現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)

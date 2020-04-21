@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7897c1602a8b9ed6a1fea68e80d57cd5bae1c004
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: b88959d1dd936df0315d7365513ab0c0c5b7df17
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76165957"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402929"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入門：使用 Face REST API 和 Node.js 偵測影像中的臉部
 

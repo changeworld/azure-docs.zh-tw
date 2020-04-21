@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 72488ba339399c526e882ffd11c41410a0b011ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159073"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256479"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教學課程：使用 R 建立機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,7 +98,24 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 * 建立要用於定型的遠端計算目標
 
 ### <a name="install-required-packages"></a>安裝必要的套件
-本教學課程假設您已安裝 Azure ML SDK。 繼續操作並匯入 **azuremlsdk** 套件。
+
+ * 從 CRAN 安裝最新版本。
+
+    ```R
+    # install the latest version from CRAN
+    install.packages("azuremlsdk")
+    azuremlsdk::install_azureml(envname = 'r-reticulate')
+    ```
+    
+* 或從 GitHub 安裝開發版本。
+
+    ```R
+    # or install the development version from GitHub
+    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+    azuremlsdk::install_azureml(envname = 'r-reticulate')
+    ```
+
+現在繼續操作並匯入 **azuremlsdk** 套件。
 
 ```R
 library(azuremlsdk)

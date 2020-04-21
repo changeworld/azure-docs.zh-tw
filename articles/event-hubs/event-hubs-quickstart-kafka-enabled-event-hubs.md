@@ -8,15 +8,15 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 18976a29a716a0e5a627747d98edc0d3e1bf71e9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 67ee882acab22d977f08124591289e9cfc7cded1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587136"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261817"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>快速入門：透過使用 Kafka 通訊協定的事件中樞串流資料 | Microsoft Docs
-本快速入門說明如何串流至已啟用 Kafka 的事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 您將了解如何僅在應用程式中變更設定，就能讓產生者和取用者與已啟用 Kafka 的事件中樞交談。 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
+本快速入門說明如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 您將了解如何僅在應用程式中變更設定，就能讓產生者和取用者與事件中樞交談。 Azure 事件中樞支援 [Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)。
 
 > [!NOTE]
 > 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) 上取得此範例
@@ -32,7 +32,7 @@ ms.locfileid: "77587136"
 * [Git](https://www.git-scm.com/)
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>建立已啟用 Kafka 的事件中樞命名空間
+## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 當您建立**標準**層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 遵循[使用 Azure 入口網站建立事件中樞](event-hubs-create.md)中的逐步指示來建立**標準**層事件中樞命名空間。 
 
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "77587136"
 
 3. 在 `src/main/resources/producer.config` 中更新產生者的組態詳細資料，如下所示：
 
-    **SSL：**
+    **TLS/SSL：**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -65,7 +65,7 @@ ms.locfileid: "77587136"
     ```    
 
     您可以在 GitHub 的[此處](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java)，找到範例處理常式類別 CustomAuthenticateCallbackHandler 的原始程式碼。
-4. 執行產生者程式碼，並將事件串流至已啟用 Kafka 的事件中樞：
+4. 執行產生者程式碼，並將事件串流至事件中樞：
    
     ```shell
     mvn clean package
@@ -76,7 +76,7 @@ ms.locfileid: "77587136"
 
 6. 在 `src/main/resources/consumer.config` 中更新取用者的組態詳細資料，如下所示：
    
-    **SSL：**
+    **TLS/SSL：**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -98,7 +98,7 @@ ms.locfileid: "77587136"
     您可以在 GitHub 的[此處](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)，找到範例處理常式類別 CustomAuthenticateCallbackHandler 的原始程式碼。
 
     您可以在[這裡](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)找到適用於 Kafka 事件中樞的所有 OAuth 範例。
-7. 執行取用者程式碼，並使用 Kafka 用戶端從已啟用 Kafka 的事件中樞進行處理：
+7. 執行取用者程式碼，並使用 Kafka 用戶端從事件中樞處理事件：
 
     ```java
     mvn clean package
@@ -108,10 +108,4 @@ ms.locfileid: "77587136"
 如果事件中樞 Kafka 叢集包含事件，您現在應該會開始從取用者接收到這些事件。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已了解如何串流至已啟用 Kafka 的事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 如需詳細資訊，請參閱下列文章和範例：
-
-- [了解適用於 Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
-- [GitHub 上的 Kafka 事件中樞快速入門](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
-- [GitHub 上的 Kafka 事件中樞教學課程](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
-- 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)，[將事件從 Kafka 內部部署串流至雲端上已啟用 Kafka 的事件中樞](event-hubs-kafka-mirror-maker-tutorial.md)。
-- 了解如何使用 [Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 串流至已啟用 Kafka 的事件中樞。
+在本文中，您已了解如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解，請參閱[適用於 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)。 

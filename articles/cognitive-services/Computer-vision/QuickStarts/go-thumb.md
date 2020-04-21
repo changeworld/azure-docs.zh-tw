@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: deb7ef0d087bc33c9e59ecd95973bc55a5ab6521
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 122a505773eb36263f83294c6792922b47ca33b2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74961517"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405019"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>快速入門：使用電腦視覺 REST API 與 Go 產生縮圖
 

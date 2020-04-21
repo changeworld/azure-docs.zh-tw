@@ -1,26 +1,18 @@
 ---
 title: 教學課程：模式 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您將可以在提供較少語句範例的情況下，使用模式來提高意圖和實體預測準確度。 此模式是以範本語句範例的方式來提供，其中包含用來識別實體及可忽略文字的語法。
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 69894dfc6bcbe9eb56451524c78e82da2745aa52
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75979773"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380776"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>教學課程：新增通用模式範本語句格式以改善預測
 
-在本教學課程中，使用模式來提高意圖和實體預測準確度，其可讓您提供較少的範例語句。 此模式是指派給意圖的範本語句，其中包含可識別實體和可忽略文字的語法。
+在本教學課程中，使用模式來提高意圖和實體預測準確度，其可讓您提供較少的範例語句。 此模式是指派給意圖的範本語句，包含可識別實體和可忽略文字的語法。
 
 **在本教學課程中，您將了解如何：**
 
@@ -41,7 +33,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 以模式新增範本語句，可讓您針對意圖提供較少的範例語句。
 
-模式會以運算式比對與機器學習的組合套用。  範本語句以及範例語句，可讓 LUIS 更容易理解哪些語句符合意圖。
+模式會以文字比對與機器學習的組合套用。  模式中的範例語句以及意圖中的範例語句，可讓 LUIS 更容易理解哪些語句符合意圖。
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>匯入範例應用程式並複製到新版本
 
@@ -49,11 +41,13 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)。
 
-1. 將 JSON 匯入[預覽 LUIS 入口網站](https://preview.luis.ai)中的新應用程式。
+1. 將 JSON 匯入[預覽 LUIS 入口網站](https://preview.luis.ai)中的新應用程式。 在 [我的應用程式]  頁面中，選取 [+ 新增對話應用程式]  ，然後選取 [匯入為 JSON]  。 選取您在上個步驟中下載的檔案。
 
-1. 從 [管理]  區段的 [版本]  索引標籤上，複製版本並將它命名為 `patterns`。 複製是一個既可測試各種 LUIS 功能又不影響原始版本的絕佳方式。 因為版本名稱會作為 URL 路由的一部分，所以此名稱不能包含任何在 URL 中無效的字元。
+1. 從 [管理]  區段的 [版本]  索引標籤上選取使用中的版本，然後選取 [複製]  。 將複製的版本命名為 `patterns`。 複製是一個既可測試各種 LUIS 功能又不影響原始版本的絕佳方式。 因為版本名稱會作為 URL 路由的一部分，所以此名稱不能包含任何在 URL 中無效的字元。
 
 ## <a name="create-new-intents-and-their-utterances"></a>建立新意圖及其語句
+
+這兩個意圖會根據語句文字來尋找管理員或管理員的直屬報告。 困難之處在於這兩個意圖_表示_不同的專案，但大部分的單字都相同。 只有單字順序不同。 為了正確預測意圖，必須有許多範例。
 
 1. 從導覽列中選取 [建置]  。
 
@@ -105,7 +99,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 移至位址中的 URL 結尾並輸入 `Who is the boss of Jill Jones?`。 最後一個查詢字串參數是語句 `query`。
+1. 移至網址列中的 URL 尾端，並以 `Who is the boss of Jill Jones?` 取代 _YOUR_QUERY_HERE_。
 
     ```json
     {
@@ -195,16 +189,16 @@ LUIS 應用程式中儲存了兩種類型的語句：
     }
     ```
 
-這個查詢成功了嗎？ 對於此定型週期而言並未成功。 兩個熱門意圖的分數已接近，但最高意圖並沒有明顯很高 (超過 60%)，且未遠遠超過下一個意圖的分數。
+兩個熱門意圖的分數已接近，但最高意圖並沒有明顯很高 (超過 60%)，且未遠遠超過下一個意圖的分數。
 
-因為 LUIS 定型每次都不會完全一樣，會有一些變化，所以，這兩個分數可能會在下一個定型週期中反轉。 結果可能會傳回錯誤的意圖。
+因為 LUIS 定型每次都不會完全一樣，會有一些變化，所以，因此前兩個分數可能會在下一個定型週期中反轉。 結果可能會傳回錯誤的意圖。
 
 使用模式來讓正確意圖的分數大幅提高 (以百分比表示)，並拉大與下一個最高分數的差距。
 
 讓這裡的第二個瀏覽器視窗保持開啟。 您稍後會在本教學課程中使用到它。
 
 ## <a name="template-utterances"></a>範本語句
-由於人力資源定義域的本質，因此有一些常見的方式來詢問組織中的員工關係。 例如：
+由於人力資源主指網域的本質，因此會有一些常見的方式來詢問組織中的員工關係。 例如：
 
 |表達方式|
 |--|
@@ -220,11 +214,11 @@ LUIS 應用程式中儲存了兩種類型的語句：
 |`Who does {Employee} report to[?]`|可交換 `{Employee}`<br>忽略 `[?]`|
 |`Who reports to {Employee}[?]`|可交換 `{Employee}`<br>忽略 `[?]`|
 
-`{Employee}` 語法不僅會標示是哪一個實體，也會標示實體在範本語句內的位置。 選擇性的語法 `[?]` 會標記選擇性的單字或標點符號。 LUIS 會比對語句，並略過括號內的選擇性文字。
+`{Employee}` 語法不僅會標示是哪一個實體，也會標示實體在範本語句內的位置。 選擇性的語法 `[?]` 會標記選擇性的單字或[標點符號](luis-reference-application-settings.md#punctuation-normalization)。 LUIS 會比對語句，並略過括號內的選擇性文字。
 
 雖然語法看起來像是規則運算式，但它不是規則運算式。 只支援大括號 `{}` 和方括號 `[]` 語法。 它們的巢狀結構最多可以有兩個層級。
 
-為了讓模式與語句進行比對，語句內的實體必須先比對範本語句中的實體。 這表示在具有實體的模式成功之前，實體必須在範例語句中有足夠的範例並具有高程度的預測。 不過，此範本無助於預測實體，只適用於意圖。
+為了讓模式與語句進行比對，語句內的實體必須_先_比對範本語句中的實體。 這表示在具有實體的模式成功之前，實體必須在範例語句中有足夠的範例並具有高程度的預測。 不過，此範本無助於預測實體，只適用於意圖。
 
 **當模式可讓您提供較少的範例語句時，如果偵測不到實體，模式就不會進行比對。**
 
@@ -245,6 +239,8 @@ LUIS 應用程式中儲存了兩種類型的語句：
     |`Who is {Employee}['s] supervisor[?]`|
     |`Who is the boss of {Employee}[?]`|
 
+    這些範本語句包括具有大括弧標記法的 **Employee** 實體。
+
 1. 同樣在 [模式] 頁面上，選取 [OrgChart-Reports]  意圖，然後輸入下列範本語句：
 
     |範本語句|
@@ -264,7 +260,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 1. 發佈完成後，將瀏覽器索引標籤切換回 [端點 URL] 索引標籤。
 
-1. 移至位址中的 URL 結尾並輸入 `Who is the boss of Jill Jones?` 作為語句。 最後一個查詢字串參數是 `query`。
+1. 移至網址列中的 URL 尾端，並以 `Who is the boss of Jill Jones?` 取代 _YOUR_QUERY_HERE_
 
     ```json
     {
@@ -375,7 +371,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 |Intent|包含選用文字和預先建置實體的語句範例|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
 
 
@@ -389,14 +385,6 @@ LUIS 應用程式中儲存了兩種類型的語句：
 **問題：為什麼剖析 `Who will {Employee}['s] manager be on March 3?` 之類的語句時，效果很差。** 文法上，不同動詞時態必須是新的範本語句 (例如此處的 `will` 和 `be` 是分開的)。 現有範本語句並不符合此原則。 雖然語句的意圖沒有變更，但字組在語句中的位置已變更。 此變更會影響 LUIS 中的預測。 您可以使用 [group 和 or ](#use-the-or-operator-and-groups) 處理動詞時態，以結合這些語句。
 
 **請記住：系統會先找出實體，然後比對模式。**
-
-### <a name="edit-the-existing-pattern-template-utterance"></a>編輯現有的模式範本語句
-
-1. 在預覽 LUIS 入口網站中，選取頂端功能表中的 [建置]  ，然後在左側功能表中選取 [模式]  。
-
-1. 搜尋現有範本語句 `Who is {Employee}['s] manager[?]`，選取右側的省略符號 (...)，然後從快顯功能表中選取 [編輯]  。
-
-1. 將範本語句變更為：`who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ### <a name="add-new-pattern-template-utterances"></a>新增模式範本語句
 
@@ -472,7 +460,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
-使用更多模式語法，您可減少您必須在應用程式中維護的範本語句數目，同時仍有高預測分數。
+使用更多模式語法，您可減少必須在應用程式中維護的範本語句數目，同時仍有高預測分數。
 
 ### <a name="use-the-utterance-beginning-and-ending-anchors"></a>使用語句開頭和結尾錨點
 
@@ -514,7 +502,7 @@ Pattern.any 實體可讓您尋找自由格式的資料，其中實體的用字�
 
 1. 從意圖清單中選取 [FindForm]  。
 
-1. 新增一些範例語句：
+1. 新增一些範例語句。 應預測為 Pattern.any 的文字均為**粗體文字**。 在語句中很難判斷表單名稱周圍的其他單字。 Pattern.any 可作出實體界限，因此大有幫助。
 
     |範例語句|表單名稱|
     |--|--|

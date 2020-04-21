@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270922"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404232"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教學課程：影片及文字記錄仲裁
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9a1a0b37b0fae52677ad989d85e947e0148ac0a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80153211"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254592"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教學課程：使用 .NET API 透過 Azure Batch 執行平行工作負載
 
@@ -198,9 +198,10 @@ List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
 
 使用已定義的常數可設定節點數目和 VM 大小。 Batch 支援專用節點和[低優先順序節點](batch-low-pri-vms.md)，而您可以在集區中使用其中一種或同時使用兩種。 專用節點會保留給您的集區使用。 低優先順序節點則會以較低的價格從 Azure 中的剩餘容量提供。 如果 Azure 沒有足夠的容量，便無法使用低優先順序節點。 此範例預設建立的集區只包含 5 個大小為 Standard_A1_v2  的低優先順序節點。
 
->[注意] 請務必檢查您的節點配額。 如需如何建立配額要求的指示，請參閱 [Batch 服務配額和限制](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0)。
+>[!Note]
+>請務必檢查您的節點配額。 如需如何建立配額要求的指示，請參閱 [Batch 服務配額和限制](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0)。
 
-將 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) 新增到集區設定，ffmpeg 應用程式便會部署至計算節點。 若要確保[應用程式啟用](https://docs.microsoft.com/cli/azure/batch/application/package?view=azure-cli-latest#az-batch-application-package-activate)。
+將 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) 新增到集區設定，ffmpeg 應用程式便會部署至計算節點。
 
 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 方法會將集區提交至 Batch 服務。
 

@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668444"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392795"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -52,6 +52,8 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 5. 在 [驗證]  頁面上，設定下列選項：
     - 讓 [服務主體]  欄位保留 **(新的) 預設服務主體**，以建立新的服務主體。 您也可以選擇 [設定服務主體]  以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
     - 啟用 Kubernetes 角色型存取控制 (RBAC) 的選項。 這會針對 AKS 叢集中部署的 Kubernetes 資源提供更細部的存取控管。
+
+    您也可以使用受控識別而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
 根據預設，會使用「基本」  網路，並啟用適用於容器的 Azure 監視器。 按一下 [檢閱 + 建立]  ，然後在驗證完成時按一下 [建立]  。
 
@@ -250,7 +252,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
 > [!NOTE]
-> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。
+> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。 如果您使用受控識別，則身分識別會由平台負責管理，您不需要刪除。
 
 ## <a name="get-the-code"></a>取得程式碼
 
