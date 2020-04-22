@@ -3,12 +3,13 @@ title: 監視 Azure 應用程式服務效能 | Microsoft Docs
 description: Azure 應用程式服務的應用程式效能監視。 圖表載入和回應時間、依賴項資訊以及設置性能警報。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437212"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729798"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -55,15 +56,16 @@ ms.locfileid: "80437212"
 2. 在指定要使用的資源之後，您可以選擇要如何讓 Application Insights 收集每個應用程式平台的資料。 ASP.NET應用監視是預設的,具有兩個不同的集合級別。
 
     ![選擇每個平台的選項](./media/azure-web-apps/choose-options-new.png)
-
-   * .NET**基本集合**級別提供基本的單實例 APM 功能。
-
-   * .NET **建議收集**層級：
-       * 新增 CPU、記憶體和 I/O 使用趨勢。
-       * 將不同要求/相依性界限間的微服務相互關聯。
-       * 收集使用趨勢，並啟用從可用性結果到交易的相互關聯。
-       * 收集主機程序未處理的例外狀況。
-       * 在使用取樣時，改善 APM 計量在負載下的精確度。
+ 
+ 以下是為每個路由收集的數據摘要:
+        
+|  | .NET 基本集合 | .NET 推薦集合 |
+| --- | --- | --- |
+| 新增 CPU、記憶體和 I/O 使用趨勢 |是 |是 |
+| 收集使用趨勢，並啟用從可用性結果到交易的相互關聯 | 是 |是 |
+| 收集主機程序未處理的例外狀況 | 是 |是 |
+| 在使用取樣時，改善 APM 計量在負載下的精確度 | 是 |是 |
+| 將不同要求/相依性界限間的微服務相互關聯 | 否(僅限單實例 APM 功能) |是 |
 
 3. 要配置採樣等設置,以前可以通過應用程式 insights.config 檔控制這些設置,您現在可以通過具有相應前綴的應用程式設置與這些相同的設置進行交互。 
 

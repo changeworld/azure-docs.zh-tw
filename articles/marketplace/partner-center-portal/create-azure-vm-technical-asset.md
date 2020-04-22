@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457394"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730726"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>建立 Azure 虛擬機器技術資產
 
@@ -109,7 +109,7 @@ Azure 提供了一系列已批准的 Linux 發行版。 如需目前的清單，
 
 Azure 開始預配指定的虛擬機器。 您可以通過選擇左側的 **「虛擬機器」** 選項卡來追蹤其進度。 建立後,狀態將更改為 **「正在運行**」。
 
-如果在創建新基於 Azure 的 VHD 時遇到困難,請參閱[VHD 創建期間的常見問題 (FAQ)。](https://aka.ms/VHDcreationIssues)
+如果在創建新基於 Azure 的 VHD 時遇到困難,請參閱[VHD 創建期間的常見問題 (FAQ)。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)
 
 ### <a name="connect-to-your-azure-vm"></a>連線至您的 Azure VM
 

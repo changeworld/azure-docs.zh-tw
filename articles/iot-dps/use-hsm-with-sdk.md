@@ -1,19 +1,21 @@
 ---
-title: 使用 Azure IoT 中心設備預配服務用戶端 SDK 的不同認證機制
-description: Azure 如何 - 如何在 Azure 中使用不同的認證機制與設備預配服務 （DPS） 用戶端 SDK
+title: 使用 Azure IoT 中心裝置預先服務用戶端 SDK 的不同認證機制
+description: Azure 如何 - 如何在 Azure 中使用不同的認證機制與裝置預配服務 (DPS) 用戶端 SDK
 author: robinsh
 ms.author: robinsh
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: c85d958074ea5d41d32f71350164c3c983e372a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- mvc
+- amqp
+ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976650"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687215"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何使用不同證明機制搭配適用於 C 的裝置佈建服務用戶端 SDK
 
@@ -39,7 +41,7 @@ SDK 驗證模式 (X.509 或 TPM) 必須針對實體裝置或模擬器啟用後�
 
 ### <a name="use-x509-with-simulator"></a>使用 X.509 搭配模擬器
 
-預配服務附帶一個設備標識組成引擎 （DICE） 模擬器，該模擬程式生成**X.509**證書以驗證設備。 要啟用**X.509**身份驗證，運行以下命令： 
+預配服務附帶一個設備識別組成引擎 (DICE) 模擬器,該模擬程式生成**X.509**證書以驗證設備。 要啟用**X.509**認證,執行以下指令: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -84,7 +86,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
     cmake -DCMAKE_BUILD_TYPE=Debug ..
     ```
 
-- 有許多用於構建 SDK 的[CMake 配置選項](https://cmake.org/cmake/help/v3.6/manual/cmake.1.html)。 例如，您可以停用其中一個可用的通訊協定堆疊，方法是將引數新增至 CMake 專案產生命令：
+- 有許多用於建構 SDK 的[CMake 設定選項](https://cmake.org/cmake/help/v3.6/manual/cmake.1.html)。 例如，您可以停用其中一個可用的通訊協定堆疊，方法是將引數新增至 CMake 專案產生命令：
     ```
     cmake -Duse_amqp=OFF ..
     ```
@@ -148,8 +150,8 @@ cmake -Ddps_auth_type=tpm_simulator ..
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源]**** 按鈕，然後開啟您的裝置佈建服務。
-   - **X.509 個人註冊**：在預配服務摘要邊欄選項卡上，選擇 **"管理註冊**"。 選擇 **"個人註冊"** 選項卡，然後按一下頂部的 **"添加**"按鈕。 選擇**X.509**作為標識證明*機制*，按照刀片要求上載葉證書。 完成後，按一下 [儲存]**** 按鈕。 
-   - **X.509 組註冊**：在預配服務摘要邊欄選項卡上，選擇 **"管理註冊**"。 選取 [群組註冊]**** 索引標籤，然後按一下頂端的 [新增]**** 按鈕。 選擇**X.509**作為身份證明*機制*，輸入組名稱和認證名稱，按照邊欄選項卡的要求上傳 CA/中繼憑證。 完成後，按一下 [儲存]**** 按鈕。 
+   - **X.509 個人註冊**:在預配服務摘要邊欄選項卡上,選擇 **「管理註冊**」。 選擇 **「個人註冊」** 選項卡,然後按一下頂部的 **「添加**」按鈕。 選擇**X.509**作為標識證明*機制*,按照刀片要求上載葉證書。 完成後，按一下 [儲存]**** 按鈕。 
+   - **X.509 組註冊**:在預配服務摘要邊欄選項卡上,選擇 **「管理註冊**」。 選取 [群組註冊]**** 索引標籤，然後按一下頂端的 [新增]**** 按鈕。 選擇**X.509**作為身份證明*機制*,輸入組名稱和認證名稱,按照邊欄選項卡的要求上傳 CA/中間證書。 完成後，按一下 [儲存]**** 按鈕。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>針對使用自訂證明機制的裝置啟用驗證 (選擇性)
 
@@ -181,7 +183,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>佈建之後連線到 IoT 中樞
 
-使用預配服務預配設備後，此 API 將使用指定的身份驗證模式 **（X.509**或 TPM） 與 IoT 中心連接： 
+使用預先用服務預配裝置後,此 API 將使用指定的身份驗證模式 **(X.509**或 TPM) 與 IoT 中心連線: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

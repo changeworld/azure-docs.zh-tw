@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: dea0f9a038958ea747147a179020545f2f6922a2
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/17/2020
+ms.openlocfilehash: 18099e853aa44e4434a14d7ea913f968593021ec
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605350"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687904"
 ---
 # <a name="monitor-data-flows"></a>監視資料流程
 
@@ -32,6 +32,10 @@ ms.locfileid: "81605350"
 當您在圖形化節點監視檢視時，您會看到經過簡化的僅供檢視資料流程圖版本。
 
 ![資料流程監控](media/data-flow/mon003.png "資料流程監視")
+
+以下是 ADF 監控螢幕中資料串流的監視效能的影片概述:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u4mH]
 
 ## <a name="view-data-flow-execution-plans"></a>檢視資料流程執行計劃
 

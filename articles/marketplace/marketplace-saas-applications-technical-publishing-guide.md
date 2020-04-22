@@ -1,19 +1,19 @@
 ---
-title: Azure Marketplace SaaS 應用程式技術發行指南
+title: Azure 應用商店 SaaS 應用程式發佈指南
 description: 將 SaaS 應用程式發行至 Azure Marketplace 的逐步指南與發行檢查清單
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544289"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687547"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 應用程式供應項目發行指南
 
@@ -110,8 +110,8 @@ Microsoft 使用 Azure AD 對所有應用商店使用者進行身份驗證,因�
 **對於多租戶應用程式:**  
 
 如果您已支援 Azure AD，請執行下列動作：
-1.  在 Azure 入口網站註冊您的應用程式
-2.  在 Azure AD 中啟用多租用戶支援功能，以獲得「單鍵」試用體驗。 您可以在[此處](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)找到更多特定資訊。  
+1.    在 Azure 入口網站註冊您的應用程式
+2.    在 Azure AD 中啟用多租用戶支援功能，以獲得「單鍵」試用體驗。 您可以在[此處](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)找到更多特定資訊。  
 
 如果您剛剛接觸 Azure AD 同盟 SSO，請執行下列動作： 
 1.  在 Azure 入口網站註冊您的應用程式
@@ -144,9 +144,9 @@ Microsoft 主控商務交易。 Microsoft 代表您向客戶收費。 要提供 
 ## <a name="next-steps"></a>後續步驟
 如果您還沒有這麼做，請
 
-- 在市集中[註冊](https://azuremarketplace.microsoft.com/sell)。
+* [了解](https://azuremarketplace.microsoft.com/sell)市場。
 
-如果您已註冊，且要建立新供應項目或使用現有供應項目，請
+要在合作夥伴中心註冊,請開始創建新產品/服務或處理現有產品/服務:
 
-- [登入 Cloud Partner 入口網站](https://cloudpartner.azure.com)以建立或完成您的供應項目。
-- 如需詳細資訊，請參閱 [Azure SaaS 應用程式供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)。
+* [登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的優惠。
+* 有關詳細資訊[,請參閱建立 SaaS 應用程式產品/服務](./partner-center-portal/create-new-saas-offer.md)。

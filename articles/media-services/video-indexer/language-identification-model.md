@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272945"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687131"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>使用語言識別模型自動識別口語
 
 視頻索引器支援自動語言識別 (LID),這是從音訊自動辨識口語內容以及發送媒體檔以主要標識語言轉錄的過程。 
 
-目前,LID 支援:英語、西班牙文、法語、德語、義大利語、普通話、日語、俄語和葡萄牙文(巴西)。 
+目前LID支援:英語、西班牙文、法語、德語、義大利語、普通話、日語、俄語和葡萄牙文(巴西)。 
 
 請務必查看下面的[「指南和限制」](#guidelines-and-limitations)部分。
 

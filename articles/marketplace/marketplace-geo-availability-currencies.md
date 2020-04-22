@@ -1,5 +1,5 @@
 ---
-title: 地理可用性和貨幣支援 |蔚藍
+title: 商業市場的地理可用性和貨幣支援 |Azure 應用商店
 description: 商業市場的地理可用性
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262004"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687593"
 ---
-# <a name="geographic-availability-and-currency-support"></a>地理可用性和貨幣支援
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市場的地理可用性和貨幣支援
 
 商業市場產品可以在 141 個地理位置購買,由客戶的帳單位址定義,交易可以以 17 種貨幣完成。 下表列出了每個支援的地理位置[、ISO 3166 兩位數位 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的貨幣。
 

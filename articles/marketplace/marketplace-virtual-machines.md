@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288711"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687505"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>虛擬機器供應項目發佈指南
 
@@ -53,18 +53,18 @@ ms.locfileid: "80288711"
 | 需求 | 詳細資料 |  
 |:--- |:--- | 
 | 計費和計量 | 您的 VM 必須支援 BYOL 或每月計費「隨用隨付」。 |  
-| Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 <ul> <li>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>如需建立 Windows VHD 的詳細資訊，請參閱[建立與 Azure 相容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
+| Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 <ul> <li>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>如需建立 Windows VHD 的詳細資訊，請參閱[建立與 Azure 相容的 VHD](./partner-center-portal/azure-vm-create-offer.md)。</li> </ul> |  
 
 >[!Note]
->雲解決方案供應商 （CSP） 合作夥伴管道加入宣告現已可用。  有關通過 Microsoft CSP 合作夥伴管道行銷產品/服務的更多資訊[，請參閱雲解決方案供應商](./cloud-solution-providers.md)。
+>雲端解決方案供應商 (CSP) 合作夥伴通路選擇加入現已可用。  有關透過 Microsoft CSP 合作夥伴通路行銷產品/服務的更多資訊[,請參閱雲解決方案供應商](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您還沒有這麼做，請 
 
-- 在市集中[註冊](https://azuremarketplace.microsoft.com/sell)。
+- [了解](https://azuremarketplace.microsoft.com/sell)市場。
 
 如果您已註冊，且要建立新供應項目或使用現有供應項目，請
 
-- [登入 Cloud Partner 入口網站](https://cloudpartner.azure.com)以建立或完成您的供應項目。
-- 如需詳細資訊，請參閱[虛擬機器供應項目](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer)。
+- [登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的優惠。
+- 有關詳細資訊[,請參閱創建虛擬機器產品/服務](./partner-center-portal/azure-vm-create-offer.md)。

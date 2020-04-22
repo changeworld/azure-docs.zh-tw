@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: ccb840caea5d28975daaf8cbf6f0d4985bdf006d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499136"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730180"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中樞的身分識別登錄
 
@@ -79,7 +82,7 @@ IoT 方案通常具有不同的方案專屬存放區，其中包含應用程式�
 
 如需有關匯入和匯出 API 的詳細資訊，請參閱 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource)。 若要深入了解如何執行匯入和匯出作業，請參閱[大量管理 IoT 中樞的裝置身分識別](iot-hub-bulk-identity-mgmt.md)。
 
-設備標識也可以通過[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)或 IoT 中心服務 SDK 之一通過服務 API 從 IoT 中心中心匯出和[導入](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)。
+裝置識別也可以透過[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)或 IoT 中心服務 SDK 之一透過服務 API 從 IoT 中心中心匯[出及匯入](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)。
 
 ## <a name="device-provisioning"></a>裝置佈建
 
@@ -183,11 +186,11 @@ iothub-message-schema | moduleLifecycleNotification |
 
 裝置身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項。 | 描述 |
+| 屬性 | 選項 | 描述 |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
-| etag |必要，唯讀 |表示設備標識的弱 ETag 的字串，如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
+| etag |必要，唯讀 |表示設備識別的弱 ETag 的字串,如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
 | auth.symkey |選用 |包含主要和次要金鑰 (以 base64 格式儲存) 的複合物件。 |
 | status |required |存取指示器。 可以是 [已啟用]**** 或 [已停用]****。 如果為 [已啟用] ****，則允許連接裝置。 如果為 [已停用] ****，此裝置無法存取任何裝置面向的端點。 |
@@ -207,12 +210,12 @@ iothub-message-schema | moduleLifecycleNotification |
 
 模組身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項。 | 描述 |
+| 屬性 | 選項 | 描述 |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
 | moduleId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
-| etag |必要，唯讀 |表示設備標識的弱 ETag 的字串，如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
+| etag |必要，唯讀 |表示設備識別的弱 ETag 的字串,如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
 | auth.symkey |選用 |包含主要和次要金鑰 (以 base64 格式儲存) 的複合物件。 |
 | status |required |存取指示器。 可以是 [已啟用]**** 或 [已停用]****。 如果為 [已啟用] ****，則允許連接裝置。 如果為 [已停用] ****，此裝置無法存取任何裝置面向的端點。 |

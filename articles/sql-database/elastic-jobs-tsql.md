@@ -1,5 +1,5 @@
 ---
-title: 使用交易 SQL （T-SQL） 創建和管理彈性資料庫作業
+title: 使用交易 SQL (T-SQL) 建立與管理彈性資料庫作業
 description: 使用 Transact-SQL (T-SQL) 透過彈性資料庫作業代理程式跨多個資料庫執行指令碼。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 740a42dc94cdfa8d5c5a91b32b58cbff4c1bcda0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087357"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687775"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 建立及管理彈性資料庫作業
 
@@ -189,13 +189,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 下列範例會建立從多個資料庫收集效能資料的新作業。
 
-預設情況下，作業代理將創建輸出表以存儲返回的結果。 因此，與`CREATE TABLE`輸出憑據關聯的資料庫主體必須至少具有以下許可權：在資料庫`ALTER`、、、、、、、、`SELECT``INSERT``DELETE`[索引目錄檢視](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)`SELECT`上。
+默認情況下,作業代理將創建輸出表以存儲返回的結果。 因此,與`CREATE TABLE`輸出認證的資料庫主體必須至少具有以下許可權:在資料庫`ALTER`、、、、、、、、`SELECT``INSERT``DELETE`[索引目錄視圖](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)`SELECT`上。
 
 如果您想要事先手動建立資料表，則必須具有下列屬性：
 1. 結果集使用正確名稱和資料類型的資料行。
 2. internal_execution_id 的其他資料行 (資料類型為 uniqueidentifier)。
 3. 在internal_execution_id列上命名的`IX_<TableName>_Internal_Execution_ID`非群集索引。
-4. 除資料庫許可權外，`CREATE TABLE`上述擁有權限。
+4. 除資料庫權限外`CREATE TABLE`, 上述所有權限。
 
 連線至[*作業資料庫*](sql-database-job-automation-overview.md#job-database)，然後執行下列命令：
 
@@ -286,7 +286,7 @@ select * from jobs.jobsteps
 ```
 
 
-## <a name="begin-ad-hoc-execution-of-a-job"></a>開始臨時執行作業
+## <a name="begin-ad-hoc-execution-of-a-job"></a>開始暫存工作
 
 下列範例說明如何立即啟動作業。  
 連線至[*作業資料庫*](sql-database-job-automation-overview.md#job-database)，然後執行下列命令：
@@ -435,7 +435,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 #### <a name="syntax"></a>語法  
   
 
-```sql
+```syntaxsql
 [jobs].sp_add_job [ @job_name = ] 'job_name'  
     [ , [ @description = ] 'description' ]   
     [ , [ @enabled = ] enabled ]
@@ -452,10 +452,10 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 [ ** \@job_name ]**"job_name"  
 作業的名稱。 名稱必須是唯一的，且不可包含百分比 (%) 字元。 job_name 是 nvarchar(128)，沒有預設值。
 
-[**\@描述 ]**"描述"  
+【**\@描述 】**"描述"  
 這是作業的描述。 description 是 nvarchar (512)，預設值為 NULL。 如果省略 description，則會使用空字串。
 
-[**\@已啟用 ] 已**啟用  
+【**\@已開啟 】 已**開啟  
 指定是否啟用作業的排程。 Enabled 是位元，預設值是 0 (停用)。 如果為 0，則不會啟用作業，且不會依據排程執行作業；但您可以手動執行作業。 如果為 1，則會依據排程執行作業，且您可以手動執行作業。
 
 [ ** \@schedule_interval_type ] schedule_interval_type**  
@@ -500,7 +500,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 
 #### <a name="syntax"></a>語法
 
-```sql
+```syntaxsql
 [jobs].sp_update_job [ @job_name = ] 'job_name'  
     [ , [ @new_name = ] 'new_name' ]
     [ , [ @description = ] 'description' ]   
@@ -518,10 +518,10 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 [ ** \@new_name ]**'new_name'  
 作業的新名稱。 new_name 是 nvarchar(128)。
 
-[**\@描述 ]**"描述"  
+【**\@描述 】**"描述"  
 這是作業的描述。 description 是 nvarchar(512)。
 
-[**\@已啟用 ] 已**啟用  
+【**\@已開啟 】 已**開啟  
 指定要啟用 (1) 還是不啟用 (0) 作業的排程。 Enabled 是位元。
 
 [ ** \@schedule_interval_type] [ schedule_interval_type]**  
@@ -563,7 +563,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 
 #### <a name="syntax"></a>語法
 
-```sql
+```syntaxsql
 [jobs].sp_delete_job [ @job_name = ] 'job_name'
     [ , [ @force = ] force ]
 ```
@@ -596,7 +596,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_add_jobstep [ @job_name = ] 'job_name'   
      [ , [ @step_id = ] step_id ]   
      [ , [ @step_name = ] step_name ]   
@@ -643,7 +643,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 
 如果指定，則值必須是內嵌。
 
-[**\@命令 ]**"命令"  
+【**\@命令 】**"命令"  
 command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執行。 command 是 nvarchar(max)，預設值為 NULL。
 
 [ ** \@credential_name ]**"credential_name"  
@@ -693,10 +693,10 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 [ ** \@output_table_name ]**"output_table_name"  
 如果不是 Null，則為命令的第一個結果集將會寫入的目標資料表名稱。 如果資料表尚不存在，則會根據傳回的結果集所具備的結構描述建立資料表。 如果 output_type 是 SqlDatabase，則必須指定。 output_table_name 是 nvarchar(128)，預設值為 NULL。
 
-[ ** \@job_version ] [** ] job_version輸出  
+【 ** \@job_version 】 [** ] job_version輸出  
 將會被指派新的作業版本號碼的輸出參數。 job_version 是 int。
 
-[ ** \@max_parallelism ] [** max_parallelism 輸出  
+[ ** \@max_parallelism 】 [** max_parallelism 輸出  
 每個彈性集區的平行處理原則最大層級。 如果設定，則作業步驟將會限定為最多僅為每個彈性集區執行該數量的資料庫。 此項目會套用至直接包含在目標群組中的每個彈性集區，或目標群組所含伺服器內的每個彈性集區。 max_parallelism 是 int。
 
 
@@ -721,7 +721,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 
 #### <a name="syntax"></a>語法
 
-```sql
+```syntaxsql
 [jobs].sp_update_jobstep [ @job_name = ] 'job_name'   
      [ , [ @step_id = ] step_id ]   
      [ , [ @step_name = ] 'step_name' ]   
@@ -773,7 +773,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 
 如果指定，則值必須是內嵌。
 
-[**\@命令 ]**"命令"  
+【**\@命令 】**"命令"  
 command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執行。 command 是 nvarchar(max)，預設值為 NULL。
 
 [ ** \@credential_name ]**"credential_name"  
@@ -817,10 +817,10 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 [ ** \@output_table_name ]**"output_table_name"  
 如果不是 Null，則為命令的第一個結果集將會寫入的目標資料表名稱。 如果資料表尚不存在，則會根據傳回的結果集所具備的結構描述建立資料表。 如果 output_type 是 SqlDatabase，則必須指定。 若要將 output_server_name 的值重設為 NULL，請將此參數的值設為 '' (空字串)。 output_table_name 是 nvarchar(128)，預設值為 NULL。
 
-[ ** \@job_version ] [** ] job_version輸出  
+【 ** \@job_version 】 [** ] job_version輸出  
 將會被指派新的作業版本號碼的輸出參數。 job_version 是 int。
 
-[ ** \@max_parallelism ] [** max_parallelism 輸出  
+[ ** \@max_parallelism 】 [** max_parallelism 輸出  
 每個彈性集區的平行處理原則最大層級。 如果設定，則作業步驟將會限定為最多僅為每個彈性集區執行該數量的資料庫。 此項目會套用至直接包含在目標群組中的每個彈性集區，或目標群組所含伺服器內的每個彈性集區。 若要將 max_parallelism 的值重設為 Null，請將此參數的值設為 -1。 max_parallelism 是 int。
 
 
@@ -847,7 +847,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_delete_jobstep [ @job_name = ] 'job_name'   
      [ , [ @step_id = ] step_id ]
      [ , [ @step_name = ] 'step_name' ]   
@@ -864,7 +864,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 [ ** \@step_name ]**'step_name'  
 要刪除的步驟名稱。 必須指定 step_id 或 step_name。 step_name 是 nvarchar(128)。
 
-[ ** \@job_version ] [** ] job_version輸出  
+【 ** \@job_version 】 [** ] job_version輸出  
 將會被指派新的作業版本號碼的輸出參數。 job_version 是 int。
 
 #### <a name="return-code-values"></a>傳回碼值
@@ -893,7 +893,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_start_job [ @job_name = ] 'job_name'   
      [ , [ @job_execution_id = ] job_execution_id OUTPUT ]   
 ```
@@ -902,7 +902,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 [ ** \@job_name ]**"job_name"  
 將從中移除步驟之作業的名稱。 job_name 是 nvarchar(128)，沒有預設值。
 
-[ ** \@job_execution_id ] [** job_execution_id輸出  
+【 ** \@job_execution_id 】 [** job_execution_id輸出  
 將會被指派作業執行識別碼的輸出參數。job_version 是 uniqueidentifier。
 
 #### <a name="return-code-values"></a>傳回碼值
@@ -924,7 +924,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_stop_job [ @job_execution_id = ] ' job_execution_id '
 ```
 
@@ -953,7 +953,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_add_target_group [ @target_group_name = ] 'target_group_name'   
      [ , [ @target_group_id = ] target_group_id OUTPUT ]
 ```
@@ -963,7 +963,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 [ ** \@target_group_name ]**"target_group_name"  
 要建立的目標群組名稱。 target_group_name 是 nvarchar(128)，沒有預設值。
 
-[ ** \@target_group_id =** = target_group_id輸出 如果成功創建，則分配給作業的目標群組標識號。 target_group_id 是 uniqueidentifier 類型的輸出變數，預設值為 NULL。
+[ ** \@target_group_id =** = target_group_id輸出 如果成功創建,則分配給作業的目標組標識號。 target_group_id 是 uniqueidentifier 類型的輸出變數，預設值為 NULL。
 
 #### <a name="return-code-values"></a>傳回碼值
 0 (成功) 或 1 (失敗)
@@ -984,7 +984,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_delete_target_group [ @target_group_name = ] 'target_group_name'
 ```
 
@@ -1011,7 +1011,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 
 #### <a name="syntax"></a>語法
 
-```sql
+```syntaxsql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
          [ @membership_type = ] 'membership_type' ]   
         [ , [ @target_type = ] 'target_type' ]   
@@ -1048,7 +1048,7 @@ SQL Database 伺服器的名稱。 refresh_credential_name 是 nvarchar(128)，�
 [ ** \@shard_map_name ]**"shard_map_name"  
 應新增至指定目標群組的分區對應集區名稱。 當 target_type 為 ‘SqlSqlShardMap’ 時，即應指定 elastic_pool_name。 shard_map_name 是 nvarchar(128)，沒有預設值。
 
-[ ** \@target_id ] [** target_group_id輸出  
+[ ** \@target_id 】 [** target_group_id輸出  
 在目標群組成員新增至目標群組時指派給該成員的目標識別碼。 target_id 是 uniqueidentifier 類型的輸出變數，預設值為 NULL。
 傳回碼值 0 (成功) 或 1 (失敗)
 
@@ -1101,7 +1101,7 @@ GO
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
         [ , [ @target_id = ] 'target_id']
 ```
@@ -1152,7 +1152,7 @@ GO
 #### <a name="syntax"></a>語法
 
 
-```sql
+```syntaxsql
 [jobs].sp_purge_jobhistory [ @job_name = ] 'job_name'   
       [ , [ @job_id = ] job_id ]
       [ , [ @oldest_date = ] oldest_date []
@@ -1206,7 +1206,7 @@ GO
 |[target_group_members](#target_group_members-view)     |   顯示所有目標群組的所有成員。      |
 
 
-### <a name="job_executions-view"></a><a name="job_executions-view"></a>job_executions視圖
+### <a name="job_executions-view"></a><a name="job_executions-view"></a>job_executions檢視
 
 [工作]。[job_executions]
 
@@ -1221,7 +1221,7 @@ GO
 |**job_version**    |int    |作業的版本 (每次修改作業時，都會自動更新)。
 |**step_id**    |int|   步驟的唯一 (針對這項作業) 識別碼。 NULL 表示這是父作業執行。
 |**is_active**| bit |表示資訊是使用中還是非使用中。 1 表示使用中的作業，0 表示非使用中。
-|**生命 週期**| nvarchar(50)|表示作業狀態的值：‘Created’、‘In Progress’、‘Failed’、‘Succeeded’、‘Skipped’、'SucceededWithSkipped’|
+|**生命週期**| nvarchar(50)|表示作業狀態的值：‘Created’、‘In Progress’、‘Failed’、‘Succeeded’、‘Skipped’、'SucceededWithSkipped’|
 |**create_time**|   datetime2(7)|   建立作業的日期和時間。
 |**start_time** |datetime2(7)|  作業開始執行的日期和時間。 如果作業尚未執行，則為 NULL。
 |**end_time**|  datetime2(7)    |作業執行完成的日期和時間。 如果作業尚未執行或尚未完成執行，則為 NULL。
@@ -1318,7 +1318,7 @@ GO
 |**target_group_name**| nvarchar(128)   |要刪除的目標群組 (資料庫集合) 的名稱。 
 |**target_group_id**    |UNIQUEIDENTIFIER   |目標群組的唯一識別碼。
 
-### <a name="target_group_members-view"></a><a name="target_group_members-view"></a>target_group_members視圖
+### <a name="target_group_members-view"></a><a name="target_group_members-view"></a>target_group_members檢視
 
 [工作]。[target_group_members]
 
@@ -1347,5 +1347,5 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 PowerShell 創建和管理彈性作業](elastic-jobs-powershell.md)
+- [使用 PowerShell 建立及管理彈性工作](elastic-jobs-powershell.md)
 - [SQL Server 中的授權和權限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

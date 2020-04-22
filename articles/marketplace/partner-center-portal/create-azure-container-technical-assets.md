@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383734"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730630"
 ---
 # <a name="create-an-azure-vm-technical-asset"></a>建立 Azure VM 技術資產
 
@@ -46,7 +46,7 @@ ms.locfileid: "81383734"
 
 我們建議將這些工具加入式開發環境中:
 
-- [Azure 儲存體總管](https://aka.ms/GetStartedWithStorageExplorer)
+- [Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 延伸模組：[Azure Resource Manager 工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 延伸模組：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

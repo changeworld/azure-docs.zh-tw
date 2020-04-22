@@ -1,16 +1,16 @@
 ---
-title: 設置 Windows 開發環境
+title: 設定 Windows 開發環境
 description: 安裝執行階段、SDK 和工具，並建立本機開發叢集。 完成此設定之後，您就可以開始在 Windows 上建置應用程式。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/20/2020
 ms.custom: sfrev
-ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252776"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731762"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上準備您的開發環境
 
@@ -21,7 +21,7 @@ ms.locfileid: "78252776"
 >
 >
 
-若要在您的 Windows 開發機器上建置並執行 [Azure Service Fabric 應用程式][1]，請安裝 Service Fabric 執行階段、SDK 和工具。 您還需要啟用 SDK 中包含的[Windows PowerShell 腳本的執行](#enable-powershell-script-execution)。
+若要在您的 Windows 開發機器上建置並執行 [Azure Service Fabric 應用程式][1]，請安裝 Service Fabric 執行階段、SDK 和工具。 您必須啟用 SDK 中包含的[Windows PowerShell 文稿的執行](#enable-powershell-script-execution)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -68,8 +68,8 @@ Web Platform Installer (WebPI) 是安裝 SDK 和工具的建議方式。 如果�
 
 目前的版本如下︰
 
-* 服務結構 SDK 和工具 4.0.470
-* 服務交換矩陣運行時 7.0.470
+* 服務結構 SDK 和工具 4.1.409
+* 服務交換矩陣運行時 7.1.409
 
 如需支援版本的清單，請參閱[Service Fabric 版本](service-fabric-versions.md)
 

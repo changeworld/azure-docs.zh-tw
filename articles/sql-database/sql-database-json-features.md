@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-ms.date: 01/15/2019
-ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819931"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687747"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>開始使用 Azure SQL Database 中的 JSON 功能
 Azure SQL Database 可讓您剖析及查詢以「JavaScript 物件標記法」 [(JSON)](https://www.json.org/) 格式表示的資料，然後將您的關聯式資料匯出成 JSON 文字。 Azure SQL 資料庫中可用的 JSON 案例如下：
@@ -30,7 +30,7 @@ Azure SQL Database 可讓您剖析及查詢以「JavaScript 物件標記法」 [
 
 在下列範例中，會透過使用 FOR JSON 子句，將來自 Sales.Customer 資料表的資料列格式化為 JSON：
 
-```
+```sql
 select CustomerName, PhoneNumber, FaxNumber
 from Sales.Customers
 FOR JSON PATH
@@ -38,7 +38,7 @@ FOR JSON PATH
 
 FOR JSON PATH 子句會將查詢的結果格式化為 JSON 文字。 資料行名稱會作為索引鍵，而儲存格值則會以 JSON 值的形式產生︰
 
-```
+```json
 [
 {"CustomerName":"Eric Torres","PhoneNumber":"(307) 555-0100","FaxNumber":"(307) 555-0101"},
 {"CustomerName":"Cosmina Vlad","PhoneNumber":"(505) 555-0100","FaxNumber":"(505) 555-0101"},
@@ -50,7 +50,7 @@ FOR JSON PATH 子句會將查詢的結果格式化為 JSON 文字。 資料行�
 
 PATH 表示您可以在資料行別名中使用點標記法來自訂 JSON 結果的輸出格式。 下列查詢會變更輸出 JSON 格式中 "CustomerName" 索引鍵的名稱 ，並將電話及傳真號碼放入 "Contact" 子物件中︰
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
 from Sales.Customers
 where CustomerID = 931
@@ -59,7 +59,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 此查詢的輸出看起來會像這樣：
 
-```
+```json
 {
     "Name":"Nada Jovanovic",
     "Contact":{
@@ -69,11 +69,11 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 }
 ```
 
-在此示例中，我們通過指定[WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx)選項返回單個 JSON 物件而不是陣列。 如果您知道您要傳回單一物件來作為查詢結果，就可以使用此選項。
+在此示例中,我們通過指定[WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx)選項返回單個 JSON 物件而不是數位。 如果您知道您要傳回單一物件來作為查詢結果，就可以使用此選項。
 
 FOR JSON 子句的主要價值在於，它可讓您從資料庫傳回格式化為巢狀 JSON 物件或陣列的複雜階層式資料。 下列範例說明如何將屬於 `Customer` 之 `Orders` 資料表中的資料列包含為 `Orders` 的巢狀陣列：
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
         Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
@@ -81,12 +81,11 @@ from Sales.Customers Customer
         on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
-
 ```
 
 您可以不傳送個別查詢來取得 Customer 資料，然後再擷取相關 Orders 清單，而是透過單一查詢來取得所有必要的資料，如下列範例輸出所示：
 
-```
+```json
 {
   "Name":"Nada Jovanovic",
   "Phone":"(215) 555-0100",
@@ -95,7 +94,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
     {"OrderID":382,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":395,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":1657,"OrderDate":"2013-01-31","ExpectedDeliveryDate":"2013-02-01"}
-]
+  ]
 }
 ```
 
@@ -104,7 +103,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 JSON 是一種文字格式，您可以在 Azure SQL Database 中使用它，就像使用任何其他字串類型一樣。 您可以用標準 NVARCHAR 形式來傳送或儲存 JSON 資料：
 
-```
+```sql
 CREATE TABLE Products (
   Id int identity primary key,
   Title nvarchar(200),
@@ -120,7 +119,7 @@ END
 
 在此範例中，是透過使用 NVARCHAR(MAX) 類型來表現所使用的 JSON 資料。 您可以使用標準 Transact-SQL 語法，將 JSON 插入此資料表中或提供來作為預存程序的引數，如下列範例所示：
 
-```
+```sql
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
@@ -131,7 +130,7 @@ EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","childr
 
 Azure SQL 資料庫中可用的 JSON 函數可讓您將格式化為 JSON 的資料視為任何其他 SQL 資料類型。 您可以輕鬆地從 JSON 文字中擷取值，然後在任何查詢中使用 JSON 資料︰
 
-```
+```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
 from Products
 where JSON_VALUE(Data, '$.Color') = 'White'
@@ -149,7 +148,7 @@ JSON_MODIFY 函數可讓您指定 JSON 文字中應更新的值路徑，以及�
 
 由於 JSON 是以標準文字儲存，因此無法保證儲存在文字資料行中的值格式會正確。 您可以使用標準的 Azure SQL Database 檢查條件約束和 ISJSON 函數，來確認儲存在 JSON 資料行中的文字是否格式正確︰
 
-```
+```sql
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
         CHECK (ISJSON(Data) > 0)
@@ -168,7 +167,7 @@ OPENJSON 是一個資料表值函數，可剖析 JSON 文字、找出 JSON 物�
 
 我們可以將 @orders 變數中的 JSON 陣列轉換成一組資料列、分析此結果集，或將資料列插入標準資料表中︰
 
-```
+```sql
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
@@ -181,9 +180,9 @@ AS BEGIN
             Customer varchar(200),
             Quantity int
      )
-
 END
 ```
+
 我們可以剖析採用 JSON 陣列格式並作為參數提供給預存程序的訂單集合，然後將它插入 Orders 資料表中。
 
 ## <a name="next-steps"></a>後續步驟

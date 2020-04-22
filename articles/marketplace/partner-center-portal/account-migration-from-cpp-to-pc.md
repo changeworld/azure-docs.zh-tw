@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262293"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730497"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>將帳戶從 Cloud Partner 入口網站移轉到合作夥伴中心
 
@@ -47,7 +47,7 @@ ms.locfileid: "81262293"
 
 希望與 Microsoft 合作的公司必須加入 Microsoft 合作夥伴網路 (MPN) 並獲得 MPN ID。 如果您已經是 Microsoft 合作夥伴網路的成員,並且具有 MPN ID,請保持資訊方便,因為在帳戶啟動過程中需要這些資訊。  
 
-如果您不是 Microsoft 合作夥伴網路的成員,則可以[在此處加入](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)以獲得 MPN ID。 記下您的 MPN ID,因為您需要在帳戶啟動過程中輸入該 ID。
+如果您不是 Microsoft 合作夥伴網路的成員,則可以[在此處加入](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)以獲得 MPN ID。 記下您的 MPN ID,因為您需要在帳戶啟動過程中輸入該 ID。
 
 要瞭解有關 Microsoft 合作夥伴網路的更多資訊,請參閱[在合作夥伴網站上加入 Microsoft 合作夥伴網路](https://partner.microsoft.com/en-US/membership)。 要瞭解有關 Microsoft 合作夥伴網路中 ISV 優勢的更多資訊,請參閱[ISV 資源中心](https://partner.microsoft.com/isv-resource-hub)。  
 
@@ -61,7 +61,7 @@ ms.locfileid: "81262293"
 > 這不適用於 Dynamics 365 商業中心優惠。  
 
 1. 如果您的 MPN 會員帳戶最初是在合作夥伴會員中心 (PMC) 中創建的,請登入到[合作夥伴中心](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)以確認您的帳戶已遷移。 如果您看到帶有 MPN ID 的配置檔螢幕,則可以繼續。 如果沒有,則需要按照[合作夥伴成員中心](https://partners.microsoft.com/partnerprogram/Welcome.aspx)中的提示開始帳戶遷移。 如果您需要說明,請存[取支援](https://partner.microsoft.com/support?issueid=100-0077)。
-2. 跳到[合作夥伴中心中的商業市場概述頁面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。 如果您在左側導航窗格中看到"商業市場",則已註冊,並應繼續執行下一步。 如果沒有,現在[就進入商業市場](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)。
+2. 跳到[合作夥伴中心中的商業市場概述頁面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。 如果您在左側導航窗格中看到"商業市場",則已註冊,並應繼續執行下一步。 如果沒有,現在[就進入商業市場](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)。
 3. 通過[搜索您的優惠](https://appsource.microsoft.com/),確認您的優惠在 AppSource 中。 如果您的優惠已在 AppSource 中,請繼續執行下一步。 對於不在 AppSource 中的任何產品/服務,請[創建新的 Dynamics 365 客戶參與產品/服務](create-new-customer-engagement-offer.md)或[新的 Dynamics 365 營運產品/](create-new-operations-offer.md)
 4. 在合作夥伴中心[的協定頁面上](https://partner.microsoft.com/dashboard/account/agreements),請確保您已審閱並接受**業務應用程式 ISV 附錄**。
 5. 在合作夥伴中心的[帳戶設置](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)中,請確保您的帳單資訊已完成。
@@ -73,10 +73,10 @@ ms.locfileid: "81262293"
 
 ## <a name="additional-resources"></a>其他資源
 
-加入每周[動態 ISV 社區呼叫](https://aka.ms/DynamicsISV-CommunityCall)支援和更新。
+在[Microsoft 動態 CRM](https://community.dynamics.com/crm?wa=wsignin1.0)中從專家和同行那裡獲得説明,並發現部落格、網路研討會、視頻、活動等。
 
-如果您需要發佈、認證或管理市場優惠的說明,[請提交支援票證](https://aka.ms/MarketplacePublisherSupport)。
+如果您需要發佈、認證或管理市場優惠的說明,[請提交支援票證](https://partner.microsoft.com/support/v2/?stage=1)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-step"></a>後續步驟
 
 - [在合作夥伴中心管理您的商業市場帳戶](./manage-account.md)

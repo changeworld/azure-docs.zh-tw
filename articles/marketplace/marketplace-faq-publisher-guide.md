@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262021"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687595"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商業市集的常見問題集
 
@@ -46,7 +46,7 @@ Azure Marketplace 提供來自 Microsoft 與合作夥伴的技術解決方案和
 
 **如何開始使用 Azure Marketplace？**
 
-您可以前往 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps)，尋找經過認證及最佳化可在 Azure 上執行的各種企業應用程式和解決方案。 [**創建資源**](https://portal.azure.com/#create/hub)時,還可以通過[Azure 門戶]訪問 Azure 應用商店。
+您可以前往 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps)，尋找經過認證及最佳化可在 Azure 上執行的各種企業應用程式和解決方案。 [**創建資源**](https://portal.azure.com/#create/hub)時,還可以通過 [Azure 門戶] 訪問 Azure 應用商店。
 
 **Azure Marketplace 的主要優點為何？**
 
@@ -127,7 +127,7 @@ Azure 訂閱包含在發佈者的獨立軟體供應商 (ISV) 解決方案定價�
 
 + *每個使用者:* SaaS 訂閱可以按使用者按月或按年計費定價。 
 
-特定於優惠的定價詳細資訊可在 Azure 門戶上或[https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/)Azure[門戶]中的解決方案詳細資訊頁面上找到。
+特定於優惠的定價詳細資訊可在 [Azure 門戶[https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/)] 上 或 [Azure 門戶] 上或內部的解決方案詳細資訊頁面上找到。
 
 > [!Note]
 > 除了月費外，所有定價模式都還會收取 Azure 使用費用 (除非另有指定)。
@@ -180,9 +180,9 @@ Azure 訂閱包含在發佈者的獨立軟體供應商 (ISV) 解決方案定價�
 
 **我可以在哪裡檢視 Azure Marketplace 訂閱詳細資料和帳單資訊？**
 
-MOSP -[微軟線上訂閱計劃](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)(Web 直接)客戶可以在[Azure 門戶]的成本管理和計費部分的「發票」選項卡中查看應用商店購買詳細資訊。
+MOSP - [Microsoft 線上訂閱計劃](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)(Web 直接)客戶可以在 [Azure 門戶] 的成本管理 + 計費部分的"發票"選項卡中查看應用商店購買詳細資訊。
 
-企業協定 (EA) 客戶可以在[Azure 門戶]的成本管理 + 計費部分的「發票」選項卡中查看應用商店採購詳細資訊。
+企業協定 (EA) 客戶可以在 [Azure 門戶] 的成本管理 + 計費部分的「發票」選項卡中查看應用商店採購詳細資訊。
 
 雲解決方案供應商 (CSP) 合作夥伴可以在「訂單歷史記錄」選項卡中選擇公司後,在「訂單歷史記錄」選項卡中查看合作夥伴中心中每個客戶的應用商店購買詳細資訊。
 
@@ -208,7 +208,7 @@ MOSP - [Microsoft 線上訂閱計劃](https://azure.microsoft.com/support/legal/
 
 **如何得知我已經使用多少 Azure Marketplace 購買？**
 
-在[Azure 門戶]中可以找到估計的使用資訊。 此預估使用量資訊可能不含最近的活動，且可能以過去的使用量所推估的預測為準。 在公開預覽期間，此功能可能無法用於所有購買，且可能依產品類型而不同。
+在 [Azure 門戶] 中找到估計使用方式資訊。 此預估使用量資訊可能不含最近的活動，且可能以過去的使用量所推估的預測為準。 在公開預覽期間，此功能可能無法用於所有購買，且可能依產品類型而不同。
 
 ### <a name="customer-support"></a>客戶支援
 
@@ -307,7 +307,7 @@ Microsoft 提供了兩個不同的雲市場網店 - Azure 應用商店和 AppSou
 
 **透過 Azure Marketplace 購買商品是否需要任何交易費用？**
 
-透過 Azure Marketplace 購買解決方案授權時，軟體授權收益由發行者與 Microsoft 拆分。  收益拆分方式以 [Marketplace 發行者合約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)中的條款和條件為依據。 此外，BYOL (自備授權) 的發行者解決方案不會產生任何交易費用。
+透過 Azure Marketplace 購買解決方案授權時，軟體授權收益由發行者與 Microsoft 拆分。  收益拆分方式以 [Marketplace 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)中的條款和條件為依據。 此外，BYOL (自備授權) 的發行者解決方案不會產生任何交易費用。
 
 **什麼是標準合同?**
 
@@ -335,7 +335,7 @@ Microsoft 會使用 AAD 來驗證所有 Marketplace 使用者。  您可以直�
 
 **可以在哪裡取得設定我潛在客戶目的地的說明？**
 
-在[合作夥伴中心獲取客戶線索](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)文檔中瞭解更多資訊,或通過選擇產品/服務類型[https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)和潛在 顧客管理提交支援票證。
+在[合作夥伴中心獲取客戶線索](./partner-center-portal/commercial-marketplace-get-customer-leads.md)文檔中瞭解更多資訊,或通過選擇產品/服務類型[https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)和潛在 顧客管理提交支援票證。
 
 **我是否必須設定潛在客戶目的地，才能在 Marketplace 上發佈供應項目？**
 
@@ -343,7 +343,7 @@ Microsoft 會使用 AAD 來驗證所有 Marketplace 使用者。  您可以直�
 
 **如何確認潛在客戶設定是否正確？**
 
-完成報價並設置潛在顧客目的地後,可以在[合作夥伴中心](https://cloudpartner.azure.com/)正確發佈清單。 陳列商品上架之前，您可以驗證潛在客戶組態設定是否正確運作。  請將測試潛在客戶傳送至您在供應項目中設定的潛在客戶目的地。
+完成報價並設置潛在顧客目的地後,可以在[合作夥伴中心](https://partner.microsoft.com/)正確發佈清單。 陳列商品上架之前，您可以驗證潛在客戶組態設定是否正確運作。  請將測試潛在客戶傳送至您在供應項目中設定的潛在客戶目的地。
 
 **Azure Marketplace 中有哪些國家/地區可讓發行者銷售產品？**
 
@@ -353,13 +353,13 @@ Microsoft 會使用 AAD 來驗證所有 Marketplace 使用者。  您可以直�
 
 *虛擬機器& Azure 應用:*
 
-1. 登入[合作夥伴中心](https://cloudpartner.azure.com/)。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/)。
 1. 從「**所有優惠**」選項卡中選擇優惠。
 1. 在螢幕左側的窗格中,選擇**SKU**選項卡。
 1. 選擇要刪除的 SKU,然後單擊該 SKU 的**刪除**按鈕。
 1. 將供應項目[重新發佈至](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) Azure Marketplace。
 
-如需詳細資訊，請參閱[刪除供應項目](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)。
+有關詳細資訊,請參閱[更新產品/服務](./partner-center-portal/update-existing-offer.md)。
 
 *Web 應用(SaaS 應用、載入項)&咨询服务:*
 
@@ -392,7 +392,7 @@ Azure Marketplace 是與 Microsoft 共同舉辦 Go-To-Market 活動的起始點�
 
 **Azure Marketplace 解決方案會在 Microsoft 網頁內容的何處進行促銷？**
 
-Azure 應用商店解決方案可在Microsoft [Azure門戶]和[Azure應用商店網站](https://azuremarketplace.microsoft.com/marketplace/)中提供。 使用 Azure 的雲端開發人員和 IT 專業人員每次登入時都會看到合作夥伴解決方案。 [Azure Marketplace 首頁](https://azuremarketplace.microsoft.com/marketplace)和 [Azure 解決方案頁面](https://azure.microsoft.com/solutions/)上也會輪流展示一部分的合作夥伴解決方案。
+Azure 應用商店解決方案在 Microsoft [Azure 門戶] 和[Azure 應用商店網站](https://azuremarketplace.microsoft.com/marketplace/)中可用。 使用 Azure 的雲端開發人員和 IT 專業人員每次登入時都會看到合作夥伴解決方案。 [Azure Marketplace 首頁](https://azuremarketplace.microsoft.com/marketplace)和 [Azure 解決方案頁面](https://azure.microsoft.com/solutions/)上也會輪流展示一部分的合作夥伴解決方案。
 
 ### <a name="billing-and-payments"></a>帳單及付款
 
@@ -474,6 +474,3 @@ Azure 應用商店支援由客戶的帳單位址定義的 141 個從購買地。
 ## <a name="next-steps"></a>後續步驟
 
 訪問[商業市場發佈者指南](/azure/marketplace/marketplace-publishers-guide)頁面。
-
-
-[Azure 入口網站]: https://portal.azure.com

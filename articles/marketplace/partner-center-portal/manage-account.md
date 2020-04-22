@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 256ea1a03cd22df443362623177f91893f28b664
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2e057ca16e2e4f7fcb16ee39d090be853639fc12
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419148"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731452"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市場帳戶
 
@@ -120,11 +120,11 @@ ms.locfileid: "81419148"
 
 全域唯一標識碼 (GUID) 是唯一的參考編號(具有 32 個十六進位數位),可用於追蹤 Azure 使用方式。 
 
-若要建立 GUID 來進行追蹤，您應該使用 GUID 產生器。 Azure 儲存體小組已建立 [GUID 產生器表單](https://aka.ms/StoragePartners)，其會透過電子郵件傳送正確格式的 GUID 給您，且可跨不同追蹤系統重複使用。
+若要建立 GUID 來進行追蹤，您應該使用 GUID 產生器。 Azure 儲存體小組已建立 [GUID 產生器表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu)，其會透過電子郵件傳送正確格式的 GUID 給您，且可跨不同追蹤系統重複使用。
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
-如果使用範本部署產品,並且該產品在 Azure 應用商店和 GitHub 上都可用,則可以創建和註冊兩個不同的 GUIDS:
+如果使用範本部署產品,並且該產品在 Azure 應用商店和 GitHub 上都可用,則可以創建和註冊兩個不同的 GUID:
 
 *    Azure Marketplace 中的產品 A
 *    GitHub 上的產品 A

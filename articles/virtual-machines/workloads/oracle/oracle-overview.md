@@ -3,8 +3,7 @@ title: Microsoft Azure 上的 Oracle 解決方案 | Microsoft Docs
 description: 瞭解在 Microsoft Azure 上部署 Oracle 應用程式和解決方案的選項,包括完全在 Azure 基礎結構上運行或使用與 Oracle 雲端基礎結構 (OCI) 的跨雲端連線。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
-manager: gwallace
+author: BorisB2015
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: mimckitt
-ms.openlocfilehash: 8c266986ac795be48f3a8439afc5ae4752ff3ed7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: e6a2e7c646782f5ad874124e4a86809ed1d79eea
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263245"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687406"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 應用程式和解決方案概述
 

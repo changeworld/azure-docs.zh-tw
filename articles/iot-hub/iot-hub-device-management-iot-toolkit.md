@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75911925"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688087"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來管理 Azure IoT 中樞裝置
 
@@ -47,8 +47,8 @@ ms.locfileid: "75911925"
 
 * 有效的 Azure 訂用帳戶。
 * 位於您訂用帳戶中的 Azure IoT 中樞。
-* [視覺工作室代碼](https://code.visualstudio.com/)
-* [用於 VS 代碼的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或在[視覺化工作室代碼 中打開此連結](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [以 VS 代碼的 Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)`vscode:extension/vsciot-vscode.azure-iot-tools`工具 或複製此網址 並將其貼上到瀏覽器視窗中: 。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登入以存取 IoT 中樞
 
@@ -63,7 +63,7 @@ ms.locfileid: "75911925"
 5. 在幾秒鐘的時間內，裝置清單會顯示在 [Azure IoT Hub Devices]**** \(Azure IoT 中樞裝置\) 索引標籤中。
 
    > [!Note]
-   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在快顯視窗中輸入 IoT 設備連接到的 IoT 中心的**iothubowner**策略連接字串。
+   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在彈出視窗中輸入 IoT 裝置連接到的 IoT 中心的**iothubowner**策略連接字串。
 
 ## <a name="direct-methods"></a>直接方法
 
@@ -71,7 +71,7 @@ ms.locfileid: "75911925"
 
 2. 在輸入方塊中輸入方法名稱和承載。
 
-3. 結果將顯示在**輸出** > **Azure IoT 中心**視圖中。
+3. 結果將顯示在**輸出** > **Azure IoT 中心**檢視中。
 
 ## <a name="read-device-twin"></a>讀取裝置對應項
 
@@ -95,7 +95,7 @@ ms.locfileid: "75911925"
 
 2. 在輸入方塊中輸入訊息。
 
-3. 結果將顯示在**輸出** > **Azure IoT 中心**視圖中。
+3. 結果將顯示在**輸出** > **Azure IoT 中心**檢視中。
 
 ## <a name="next-steps"></a>後續步驟
 

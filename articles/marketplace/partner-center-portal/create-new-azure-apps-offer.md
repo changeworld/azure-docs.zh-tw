@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390354"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730609"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -59,7 +59,7 @@ Azure[應用商店的視訊建構解決方案範本和託管應用程式](https:
     * [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure 快速入門範例](https://github.com/azure/azure-quickstart-templates) \(英文\)
     * [發佈應用程式定義](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-    * [部署服務目錄應用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
+    * [部署服務目錄應用程式](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * 教學課程：
 
@@ -293,7 +293,7 @@ Azure[應用商店的視訊建構解決方案範本和託管應用程式](https:
 
 選擇 **「公共 Azure」** 選項可使解決方案部署到具有應用商店整合的所有公共 Azure 區域的客戶。  瞭解有關[地理可用性](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)的更多資訊。
 
-選擇**Azure 政府雲**選項可使解決方案在 Azure[政府雲](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)中部署,這是一種政府社區雲,對有資格為這些實體提供服務的來自美國聯邦、州、本地或部落的客戶以及合作夥伴具有受控訪問許可權。  作為發佈者,您負責為此雲社區提供服務的任何合規性控制、安全措施和最佳實踐。  Azure 政府使用物理隔離的數據中心和網路(僅位於美國)。  在發佈到[Azure 政府](https://aka.ms/azuregovpublish)之前,Microsoft 建議您在環境中測試和驗證解決方案,因為某些終結點可能有所不同。 要暫示和測試您的解決方案,請從此[連結](https://azure.microsoft.com/global-infrastructure/government/request/)請求試用帳戶。
+選擇**Azure 政府雲**選項可使解決方案在 Azure[政府雲](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)中部署,這是一種政府社區雲,對有資格為這些實體提供服務的來自美國聯邦、州、本地或部落的客戶以及合作夥伴具有受控訪問許可權。  作為發佈者,您負責為此雲社區提供服務的任何合規性控制、安全措施和最佳實踐。  Azure 政府使用物理隔離的數據中心和網路(僅位於美國)。  在發佈到[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前,Microsoft 建議您在環境中測試和驗證解決方案,因為某些終結點可能有所不同。 要暫示和測試您的解決方案,請從此[連結](https://azure.microsoft.com/global-infrastructure/government/request/)請求試用帳戶。
 
 >[!Note]
 >在特定雲中發佈計劃后,無法刪除該雲。
@@ -497,7 +497,7 @@ Azure 應用程式本質上使用 Azure 資源管理員測試驅動器類型。 
 
 完成這些欄位後選擇 **「保存**」。
 
-## <a name="publish"></a>發佈
+## <a name="publish"></a>發行
 
 ### <a name="submit-offer-to-preview"></a>提交優惠以預覽
 

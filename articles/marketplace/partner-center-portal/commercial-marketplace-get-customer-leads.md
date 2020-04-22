@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252596"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731148"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>來自您的市集供應項目的潛在客戶
 
@@ -96,7 +96,7 @@ ms.locfileid: "81252596"
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>可以在哪裡取得設定我潛在客戶目的地的說明？
 
-您可以[在此處](#connect-to-your-crm-system)查找文檔或通過aka.ms/marketplacepublishersupport提交支援票證,然後選擇 **"產品/服務創建"** •**您的產品/服務類型**+ **"潛在客戶管理配置"。**
+您可以[在此處](#connect-to-your-crm-system)尋找文件或https://partner.microsoft.com/support/v2/?stage=1透過選擇 **「產品/服務建立」** 或 **「****潛在客戶管理設定」** 來查找文件或提交支援票證。
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>我是否需要配置潛在顧客目標才能在市場上發佈產品/服務?
 
@@ -133,7 +133,7 @@ Azure Blob 潛在顧客目標不再受支援,因此您缺少產品/服務生成�
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>我已從 Marketplace 收到一封電子郵件，為什麼在我的 CRM 中找不到潛在客戶？
 
-終端使用者的電子郵件網域可能來自 .edu。 出於隱私原因,我們不會從 .edu 域傳遞私人身份資訊。 通過aka.ms/marketplacepublishersupport提交支援票證。
+終端使用者的電子郵件網域可能來自 .edu。 出於隱私原因,我們不會從 .edu 域傳遞私人身份資訊。 通過https://partner.microsoft.com/support/v2/?stage=1提交支援票證。
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我已經將 Azure 表配置為我的潛在顧客目標,如何查看潛在顧客?
 

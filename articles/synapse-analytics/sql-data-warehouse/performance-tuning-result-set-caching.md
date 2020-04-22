@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273404"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730593"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
 
@@ -42,10 +42,11 @@ ms.locfileid: "81273404"
 - 使用使用者定義函式的查詢
 - 使用具有列層安全性或列級安全性的表格查詢
 - 傳回資料的資料列大小超過 64KB 的查詢
+- 返回大數據大小的查詢(>10GB) 
 
 > [!IMPORTANT]
 > 創建結果集緩存並從緩存中檢索數據的操作發生在 Synapse SQL 池實例的控制節點上。
-> 當結果集快取開啟時，執行傳回大型結果集的查詢 (例如，> 1 百萬個資料列) 可能會導致控制節點上的 CPU 使用率過高，並使執行個體的整體查詢回應變慢。  這些查詢通常會在資料探索或 ETL 作業期間使用。 若要避免對控制節點造成壓力並導致效能問題，使用者應該先關閉資料庫的結果集快取，再執行這些類型的查詢。  
+> 啟用結果集緩存後,運行返回大型結果集(例如,>1GB)的查詢可能會導致控制節點上出現高限制,並減慢實例上的總體查詢回應。  這些查詢通常會在資料探索或 ETL 作業期間使用。 若要避免對控制節點造成壓力並導致效能問題，使用者應該先關閉資料庫的結果集快取，再執行這些類型的查詢。  
 
 執行此查詢的結果集快取操作所佔用的時間:
 
@@ -71,7 +72,7 @@ WHERE request_id  = <'request_id'>;
 - 新查詢與產生結果集快取的上一個查詢完全相符。
 - 產生快取結果集的來源資料表中沒有資料或結構描述變更。
 
-執行此命令來檢查所執行查詢的結果快取是否有命中。 result_cache_hit列返回 1 表示緩存命中,0 返回緩存未命中,負值返回,以說明未使用結果集緩存的原因。 有關詳細資訊[,請查看 sys.dm_pdw_exec_requests。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+執行此命令來檢查所執行查詢的結果快取是否有命中。 result_cache_hit列返回 1 表示緩存命中,0 返回緩存未命中,負值返回,以說明未使用結果集緩存的原因。 檢查 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 以取得詳細資料。
 
 ```sql
 SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests

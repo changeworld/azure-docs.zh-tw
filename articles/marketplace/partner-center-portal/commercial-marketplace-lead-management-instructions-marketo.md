@@ -2,17 +2,17 @@
 title: 在 Marketo 中設定潛在客戶管理 |Azure 應用商店
 description: 為 Azure 市場客戶配置 Marketo 的潛在客戶管理。
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252417"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731105"
 ---
 # <a name="configure-lead-management-in-marketo"></a>在 Marketo 中設定潛在客戶管理
 
@@ -21,16 +21,21 @@ ms.locfileid: "81252417"
 ## <a name="set-up-your-marketo-crm-system"></a>設定市場 CRM 系統
 
 1. 登入 Marketo。
+
 2. 選取 [Design Studio]**** \(設計工作室\)。
+
     ![Marketo [Design Studio] \(設計工作室\)](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  選取 [New Form]**** \(新增表單\)。
+
     ![Marketo [New Form] \(新增表單\)](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  填入 [New Form] \(新增表單\) 中的必要欄位，然後選取 [Create]**** \(建立\)。
+
     ![Marketo 建立新表單](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  在 [Field Details] \(欄位詳細資料\) 上，選取 [Finish]**** \(完成\)。
+
     ![Marketo 完成表單](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  核准並關閉。
@@ -41,7 +46,7 @@ ms.locfileid: "81252417"
 
 8. Marketo [Embed Code] \(內嵌程式碼\) 會顯示類似下列範例的程式碼。
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
@@ -63,6 +68,7 @@ ms.locfileid: "81252417"
 準備好在發佈門戶中配置產品/服務的首席管理資訊時,請按照以下步驟操作: 
 
 1. 導航到產品 **/服務"產品/服務"設置**頁面。
+
 1. 在「潛在顧客管理」部分下選擇 **「連接**」。 
 
     ![鉛管理 - 連線](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
@@ -73,12 +79,13 @@ ms.locfileid: "81252417"
 
 4. 提供**伺服器 ID,****蒙奇帳戶 ID**與**表單**。
 
-    >[!Note]
-    >您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。 
+    > [!Note]
+    > 您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。 
 
 5. **聯繫電子郵件**- 為公司中應接收新潛在顧客的電子郵件通知的人員提供電子郵件。 您可以通過用分號分隔它們來提供多封電子郵件。
+
 6. 選取 [確定]  。
 
-要確保已成功連接到潛在顧客目標,請單擊驗證按鈕。 如果成功,您將在潛在顧客目標中具有測試潛在顧客。
+   要確保已成功連接到潛在顧客目標,請單擊驗證按鈕。 如果成功,您將在潛在顧客目標中具有測試潛在顧客。
 
-![連線詳細資料](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![連線詳細資料](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

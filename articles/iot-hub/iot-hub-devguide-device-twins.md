@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: mqtt
+ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81482081"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731473"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解和使用 Azure IoT 中樞的裝置對應項
 
@@ -198,7 +199,7 @@ ms.locfileid: "81482081"
 
   - body
         
-    本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如，
+    本節包含所有對應項變更 (JSON 格式)。 它使用與修補程式相同的格式,其區別之處在於它可以包含所有孿生部分:標記、屬性.報告、屬性.希望,並且它包含"$metadata"元素。 例如，
 
     ```json
     {

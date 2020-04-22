@@ -4,12 +4,12 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671727"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687706"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
@@ -49,7 +49,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 ## <a name="configure-email-notifications"></a>設定電子郵件通知
 
-預設情況下，智慧檢測通知將啟用，併發送給具有[監視讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)訪問應用程式見解資源所在的訂閱的使用者。 若要變更這種情況，請按一下電子郵件通知中的 [設定]****，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
+默認情況下,智慧檢測通知將啟用,併發送給具有[監視讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)訪問應用程式見解資源所在的訂閱的使用者。 若要變更這種情況，請按一下電子郵件通知中的 [設定]****，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
   
   ![智慧型偵測設定](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -70,12 +70,12 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 * 我可以建立自己的異常偵測規則或自訂現有的規則嗎？**
 
   * 還不行，但是您可以︰
-    * [設置警報](../../azure-monitor/app/alerts.md)，告訴指標何時超過閾值。
-    * [將遙測匯出](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[至 PowerBI](../../azure-monitor/app/export-power-bi.md )，以自行分析它。
+    * [設置警報](../../azure-monitor/app/alerts.md),告訴指標何時超過閾值。
+    * [將遙測資料匯出](../../azure-monitor/app/export-telemetry.md)到[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[Power BI,](../../azure-monitor/app/export-power-bi.md )您可以在其中自行分析它。
 * *執行分析的頻率為何？*
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
-* *那麼，這是否取代了[指標警報](../../azure-monitor/app/alerts.md)？*
+* *那麼,這是否取代了[指標警報](../../azure-monitor/app/alerts.md)?*
   * 否。  我們不保證能偵測到您可能認為異常的每項行為。
 
 
@@ -125,11 +125,11 @@ Web 上有改善您的伺服器回應和頁面載入時間的完整建議，因�
   * 分析工具追蹤可協助您檢視作業花費時間之處 (如果在偵測期間收集到這項作業的分析工具追蹤範例，則可使用連結)。 
   * 您可以在計量瀏覽器中的效能報告將這項作業的時間範圍/篩選條件進行交叉分析。
   * 搜尋此呼叫可檢視特定的呼叫屬性。
-  * 報告失敗 - 如果計數 > 1，表示這項作業中的失敗可能造成效能降低。
+  * 故障報告 - 如果計數> 1,這意味著此操作中存在可能導致性能下降的失敗。
 
 ## <a name="dependency-duration-degradation"></a>相依性持續時間降低
 
-現代化應用程式採用越來越多微服務設計的方法，在許多情況下，會造成外部服務的重度可靠性。 例如，如果您的應用程式需仰賴某些資料平台，或即使您建立自己的 Bot 服務，可能還是需要一些認知服務提供者，才能讓您的 Bot 以更人性化的方式進行互動，且 Bot 也需要一些可提取回答的資料存放服務。  
+現代應用越來越採用微服務設計方法,在許多情況下,這種方法會導致外部服務的可靠性。 例如，如果您的應用程式需仰賴某些資料平台，或即使您建立自己的 Bot 服務，可能還是需要一些認知服務提供者，才能讓您的 Bot 以更人性化的方式進行互動，且 Bot 也需要一些可提取回答的資料存放服務。  
 
 範例相依性降低通知︰
 
@@ -160,7 +160,7 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 ![按一下電子郵件警示中的連結，可在 Azure 中開啟診斷報告](./media/proactive-performance-diagnostics/03.png)
 
 * **時間**顯示偵測到問題的時間。
-* **描述內容**：
+* **描述內容**:
 
   * 偵測到的問題；
   * 我們發現的事件集的特性顯示了問題行為。
@@ -173,8 +173,8 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 ## <a name="next-steps"></a>後續步驟
 這些診斷工具可協助您檢查來自您的應用程式的遙測︰
 
-* [分析器](profiler.md) 
-* [快照調試器](../../azure-monitor/app/snapshot-debugger.md)
+* [分析工具](profiler.md) 
+* [快照除錯器](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
 * [分析智慧型診斷](../../azure-monitor/app/analytics.md)
 

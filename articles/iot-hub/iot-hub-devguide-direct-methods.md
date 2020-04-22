@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: d4040a4d0cf3fadf7a6e07c0e03e105975d17040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499258"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730393"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -36,7 +39,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 > 當您在裝置上叫用直接方法時，屬性名稱和值只能包含 US-ASCII 可列印英數字元，下列集合中的任何字元除外︰``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``。
 > 
 
-直接方法是同步的，在超時期間後成功或失敗（預設值：30 秒，可設置在 5 到 300 秒之間）。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
+直接方法是同步的,在超時期間后成功或失敗(預設值:30 秒,可設置在 5 到 300 秒之間)。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
 
 直接方法從雲端來說，僅限使用 HTTPS，從裝置端來說，則使用 MQTT 或 AMQP。
 
@@ -73,9 +76,9 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
     }
     ```
 
-請求`responseTimeoutInSeconds`中提供的值是 IoT 中心服務在設備上等待完成直接方法執行的時間量。 將此超時設置為至少與設備直接方法的預期執行時間一樣長。 如果未提供超時，則使用預設值 30 秒。 的`responseTimeoutInSeconds`最小值和最大值分別為 5 和 300 秒。
+請求`responseTimeoutInSeconds`中提供的值是 IoT 中心服務在設備上等待完成直接方法執行的時間量。 將此超時設置為至少與設備直接方法的預期執行時間一樣長。 如果未提供超時,則使用預設值 30 秒。 的`responseTimeoutInSeconds`最小值和最大值分別為 5 和 300 秒。
 
-請求`connectTimeoutInSeconds`中提供的值是調用直接方法時的時間量，IoT 中心服務必須等待斷開連接的設備連線。 預設值為 0，這意味著設備在調用直接方法時必須已連線。 的`connectTimeoutInSeconds`最大值為 300 秒。
+請求`connectTimeoutInSeconds`中提供的值是調用直接方法時的時間量,IoT 中心服務必須等待斷開連接的設備連線。 默認值為 0,這意味著設備在調用直接方法時必須已連線。 的`connectTimeoutInSeconds`最大值為 300 秒。
 
 
 #### <a name="example"></a>範例
@@ -101,10 +104,10 @@ curl -X POST \
 
 後端應用程式會接收由下列項目組成的回應：
 
-* *HTTP 狀態碼*：
+* *HTTP 狀態代碼*:
   * 200 表示直接方法的成功執行;
-  * 404 指示任一裝置識別碼 無效，或者設備在調用直接方法`connectTimeoutInSeconds`後未連線（使用附帶的錯誤訊息來瞭解根本原因）;
-  * 504 表示閘道超時是由於設備未回應 中的`responseTimeoutInSeconds`直接方法調用而導致的。
+  * 404 指示任一設備 ID 無效,或者設備在調`connectTimeoutInSeconds`用直接方法 后未連線(使用附帶的錯誤訊息來瞭解根本原因);
+  * 504 表示閘道超時是由於設備未回應`responseTimeoutInSeconds`中的直接方法調用而導致的。
 
 * 標頭**，包含 ETag、要求識別碼、內容類型及內容編碼。
 
@@ -178,9 +181,9 @@ AMQP 訊息會送達代表方法要求的接收連結。 它包含下列區段�
 
 裝置會建立傳送連結，以在 `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` 位址上傳回方法回應。
 
-該方法的回應在發送連結上返回，其結構如下：
+該方法的回應在發送連結上返回,其結構如下:
 
-* 相關 ID 屬性，其中包含在方法的請求消息中傳遞的請求 ID。
+* 相關 ID 屬性,其中包含在方法的請求消息中傳遞的請求 ID。
 
 * 名為 `IoThub-status` 的應用程式屬性，內含使用者提供的方法狀態。
 

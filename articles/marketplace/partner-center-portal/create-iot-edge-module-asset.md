@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e83c70424c131e5324192b07e65321d63bf06e2e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674211"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730705"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
@@ -25,8 +25,8 @@ ms.locfileid: "80674211"
 
 IoT Edge 模組是在IoT邊緣裝置上運行的與Docker相容的容器。
 
-- 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](https://aka.ms/UnderstandAzureIoTEdgemodules)。
-- 要開始開發 IoT 邊緣模組,請參閱[開發您自己的 IoT 邊緣模組](https://aka.ms/DevelopyourownIoTEdgemodules)。
+- 若要深入了解 IoT Edge 模組，請參閱[了解 Azure IoT Edge 模組](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)。
+- 要開始開發 IoT 邊緣模組,請參閱[開發您自己的 IoT 邊緣模組](https://docs.microsoft.com/azure/iot-edge/module-development)。
 
 ## <a name="technical-requirements"></a>技術需求
 
@@ -38,15 +38,15 @@ IoT Edge 模組必須支援以下平台選項之一:
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支援的層級 1 平台
 
-您的模組必須支援 IoT 邊緣支援的所有第 1 層平臺(如[Azure IoT 邊緣支援](https://aka.ms/AzureIoTEdgesupport)中記錄)。 由於這個選項能提供更好的客戶體驗，建議採用。 將展示符合此標準的模組。 使用此平台選項的模組必須：
+您的模組必須支援 IoT 邊緣支援的所有第 1 層平臺(如[Azure IoT 邊緣支援](https://docs.microsoft.com/azure/iot-edge/support)中記錄)。 由於這個選項能提供更好的客戶體驗，建議採用。 將展示符合此標準的模組。 使用此平台選項的模組必須：
 
-- 提供使用[GitHub 清單工具](https://aka.ms/GitHubmanifest-tool)構建的清單標記的最新標記和版本標記(例如 1.0.1)。
+- 提供使用[GitHub 清單工具](https://github.com/estesp/manifest-tool)構建的清單標記的最新標記和版本標記(例如 1.0.1)。
 
-- 使用[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)中的產品/服務列表選項卡在 **「有用連結**」部分下向[Azure IoT 邊緣認證設備目錄](https://catalog.azureiotsolutions.com/)添加連結。 可以使用解析為[Azure IoT 邊緣設備目錄](https://catalog.azureiotsolutions.com/)的重定https://aka.ms/iot-edge-certified向連結。
+- 使用[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)中的產品/服務列表選項卡在 **「有用連結**」部分下向[Azure IoT 邊緣認證設備目錄](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/)添加連結。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支援的層級 1 平台子集
 
-您的模組必須支援 IoT Edge 支援的第 1 層平臺的子集(至少一個)(如[Azure IoT Edge 支援](https://aka.ms/AzureIoTEdgesupport)中所記錄)。 使用此平台選項的模組必須：
+您的模組必須支援 IoT Edge 支援的第 1 層平臺的子集(至少一個)(如[Azure IoT Edge 支援](https://docs.microsoft.com/azure/iot-edge/support)中所記錄)。 使用此平台選項的模組必須：
 
 - 提供最新的標記和版本標記(例如,1.0.1),這些標記是使用 GitHub[清單工具](https://github.com/estesp/manifest-tool)構建的清單標記(如果支援多個平臺)。 僅在支援一個平台時方可選用資訊清單標籤。
 - 使用[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)中的產品/服務列表選項卡將 **「有用連結**」部分下的連結添加到[Azure IoT 邊緣認證裝置目錄中](https://catalog.azureiotsolutions.com/)的至少一個 IoT Edge 裝置。
@@ -67,7 +67,7 @@ IoT Edge 模組必須支援以下平台選項之一:
 <p><u>Minimum hardware requirements:</u> Linux x64 and arm32 OS, 1GB of RAM, 500 Mb of storage</p>
 ```
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 您的模組必須包含預設配置設置,以使部署到 IoT Edge 設備盡可能簡單。 此資訊可在[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)中的計畫**技術配置**「頁中提供。 容器還可以包括 IoT 邊緣模組 SDK,以便與邊緣集線器和 IoT 中心進行通信。
 
@@ -146,4 +146,4 @@ IoT 邊緣模組必須避免[特權模組](https://docs.docker.com/engine/refere
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立 IoT Edge 模組供應項目](https://aka.ms/AzureCreateIoT) (英文)
+- [建立 IoT Edge 模組供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)

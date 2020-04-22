@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 0c4a31d6273a7d440340fc1f907f287201134244
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 5c59ddf046e7ffe936b097878d5d049b43ea8aec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258400"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729017"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中樞術語詞彙
 
@@ -91,7 +94,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 意指從 IoT 中樞傳送到連線裝置的訊息。 這些訊息通常是指示裝置採取行動的命令。 如需詳細資訊，請參閱[使用 IoT 中樞傳送及接收訊息](iot-hub-devguide-messaging.md)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 在[自動裝置設定](iot-hub-auto-device-config.md)的內容中，IoT 中樞內的設定會為一組裝置對應項定義所需的設定，並提供一組計量來報告狀態與進度。
 

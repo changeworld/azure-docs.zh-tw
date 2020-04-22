@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536653"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731255"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>建立 Azure 虛擬機器產品/服務
 
@@ -34,19 +34,19 @@ ms.locfileid: "81536653"
 
 ### <a name="before-you-begin"></a>開始之前
 
-如果尚未這樣做,請查看[虛擬機器提供發佈指南](https://aka.ms/Virtualmachineofferpublishingguide)和此 Azure 虛擬機器材料:
+如果尚未這樣做,請查看[虛擬機器提供發佈指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和此 Azure 虛擬機器材料:
 
 - 快速入門指南
   - [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure 快速入門範例](https://github.com/azure/azure-quickstart-templates) \(英文\)
 - 教學課程
-  - [Linux VM](https://aka.ms/LinuxVMtutorial)
-  - [Windows VM](https://aka.ms/windowsvms)
+  - [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - 範例
-  - [Linux VM 的 Azure CLI 範例](https://aka.ms/linuxclisamples)
-  - [適用於 Linux VM 的 Azure 電源外殼](https://aka.ms/linuxpowershellsamples)
-  - [適用於 Windows VM 的 Azure CLI 範例](https://aka.ms/windowsclisamples)
-  - [適用於 Windows VM 的 Azure 電源外殼](https://aka.ms/windowspowershellvmsamples)
+  - [Linux VM 的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [適用於 Linux VM 的 Azure 電源外殼](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [適用於 Windows VM 的 Azure CLI 範例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [適用於 Windows VM 的 Azure 電源外殼](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>技術知識基礎知識
 
@@ -66,7 +66,7 @@ ms.locfileid: "81536653"
 2. 在左導航欄中,選擇**商業市場**,然後 **「概述**」。
 3. 在 **「概述」** 頁上,選擇 **+新產品/服務**,然後選擇**Azure 虛擬機器**。 將顯示 **「新建產品/服務**」對話框。
 
-![使用「新建產品/服務」按鈕和 Azure 虛擬機器產品/服務(已選擇)在合作夥伴中心中示範「概述」頁面。](media/avm-create7.png)
+    ![使用「新建產品/服務」按鈕和 Azure 虛擬機器產品/服務(已選擇)在合作夥伴中心中示範「概述」頁面。](media/avm-create7.png)
 
 ## <a name="offer-id-and-alias"></a>優惠識別碼與別名
 
@@ -91,7 +91,7 @@ ms.locfileid: "81536653"
 其他試駕資源:
 
 - [技術最佳實踐](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [行銷最佳做法](https://aka.ms/TestDriveMarketingBestPractices)
+- [行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [測試磁碟式概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF(確保彈出視窗阻止程式已關閉)。
 
 ### <a name="lead-management"></a>潛在客戶管理
@@ -99,12 +99,12 @@ ms.locfileid: "81536653"
 使用合作夥伴中心將產品/服務發佈到商業市場時,請將其連接到您的客戶關係管理 (CRM) 系統。 這樣,一旦有人對您的產品表示興趣或使用,您就可以立即接收客戶聯繫資訊。 如果要啟用 **「測試驅動器**」(請參閱上一節),則需要連接到 CRM,否則它是可選的。
 
 1. 選取您要我們傳送潛在客戶至其中的潛在客戶目的地。 合作夥伴中心支援以下 CRM 系統:
-    - [動態 365](https://aka.ms/Dyn365LeadMgmt)用於客戶互動
-    - [Marketo](https://aka.ms/LeadMgmtMarketo)
-    - [Salesforce](https://aka.ms/LeadMgmtSalesforce)
+    - [動態 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)用於客戶互動
+    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > 如果上面未列出 CRM 系統,請使用[Azure 表](https://aka.ms/AzureTableLeadMgmt)或[Hs 終結點](https://aka.ms/LeadMgmtHTTPS)來儲存客戶潛在顧客數據。 然後將數據匯出到 CRM 系統。
+    > 如果上面未列出 CRM 系統,請使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Hs 終結點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在顧客數據。 然後將數據匯出到 CRM 系統。
 
 2. 在合作夥伴中心發佈時,請將您的產品/服務連接到潛在顧客目標。
 3. 確認與潛在顧客目標的連接配置正確。 在合作夥伴中心發佈後,我們將驗證連接並向您發送測試線索。 在產品/服務上線之前預覽產品/服務時,還可以嘗試在預覽環境中自行部署產品/服務,以測試潛在顧客連接。
@@ -274,7 +274,7 @@ ms.locfileid: "81536653"
 
 最多添加五個視頻,演示您的優惠。 這些視頻應託管在外部視頻服務上。 輸入每個視頻的名稱、網址和視頻的縮略圖 PNG 圖像,大小為 1280 x 720 圖元。
 
-有關其他市場清單資源,請參閱[市場產品/服務清單的最佳做法](https://aka.ms/LdMgmtOfferListingBestPractices)。
+有關其他市場清單資源,請參閱[市場產品/服務清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
 
 選擇 **"保存"草稿**,然後再繼續。
 
@@ -554,4 +554,4 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 ## <a name="next-step"></a>後續步驟
 
-- [更新商業市場中的現有產品/服務](https://aka.ms/UpdateOfferCM)
+- [更新商業市場中的現有產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

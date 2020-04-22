@@ -8,12 +8,12 @@ ms.author: spelluru
 ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: d90bf8efab28624672dcedb5bf53d45052dd9123
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605113"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729633"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure 活動中心 Apache Kafka 開發人員指南
 本文提供了描述如何將 Apache Kafka 應用程式與 Azure 事件中心集成的文章的連結。 
@@ -39,7 +39,7 @@ ms.locfileid: "81605113"
 | [卡夫卡特](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafkacat) | kafkacat 是一種非 JVM 命令行消費者和生產商,基於利布卡夫卡,因其速度和佔地面積小而廣受歡迎。 此快速入門包含範例配置和幾個簡單示例 kakacat 命令。 | 
  
 ### <a name="quickstarts-in-docs"></a>DOCS 中快速入門
-請參閱快速入門:使用此內容集中的[Kafka 協定使用事件中心進行數據流,該協定](event-hubs-quickstart-kafka-enabled-event-hubs.md)提供有關如何流式傳輸到事件中心的分步說明。 您學習如何使用生產者和消費者與事件中心交談,只需在應用程式中更改配置。 
+請參閱快速入門:使用此內容集中的[Kafka 協定使用事件中心進行數據流,該協定](event-hubs-quickstart-kafka-enabled-event-hubs.md)提供有關如何流式傳輸到事件中心的分步說明。 您將了解如何僅在應用程式中變更設定，就能讓產生者和取用者與事件中樞交談。 
 
 
 ## <a name="tutorials"></a>教學課程 
@@ -58,7 +58,7 @@ ms.locfileid: "81605113"
 | [Logstash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | 本教學將引導您使用 Logstash Kafka 輸入/輸出外掛程式將 Logstash 與啟用卡夫卡的事件中心整合。 | 
 | [鏡像製造商](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | 本教程演示如何通過鏡像事件中心服務中的 Kafka 輸入流,將現有的 Kafka 管道集成到 Azure 中。 |
 | [NiFi](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/nifi) | 本教學將演示如何將 Apache NiFi 連接到事件中心命名空間。 | 
-| [OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) | 快速入門向您展示如何使用使用 Go 和 Java 程式設計語言編寫的範例生產者和使用者創建和連接到事件中心 Kafka 終結點。 |
+| [Oauth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) | 快速入門向您展示如何使用使用 Go 和 Java 程式設計語言編寫的範例生產者和使用者創建和連接到事件中心 Kafka 終結點。 |
 | [匯能的架構註冊表](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/schema-registry) | 本教學將引導您完成 Kafka 的架構註冊表和事件中心集成。 | 
 | [Spark](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark) | 本教學將演示如何在不更改協定用戶端或運行自己的 Kafka 群集的情況下將 Spark 應用程式連接到事件中心。 | 
 
@@ -75,7 +75,7 @@ ms.locfileid: "81605113"
 | [將 Apache Flink 連線到事件中樞](event-hubs-kafka-flink-tutorial.md) | 演示如何在不更改協定客戶端或運行自己的群集的情況下將 Apache Flink 連接到事件中心。 |
 | [將阿帕契卡夫卡連接與事件中心(預覽)](event-hubs-kafka-connect-tutorial.md) | 引導您完成將 Kafka Connect 與事件中心整合,並部署基本的 FileStreamSource 和 FileStreamSink 連接器。 |
 | [將 Akka 串流連線到事件中樞](event-hubs-kafka-akka-streams-tutorial.md) | 演示如何在不更改協定客戶端或運行自己的群集的情況下將 Akka 流連接到事件中心。 |
-| [使用具有 Azure 活動中心的 Apache Kafka 的彈簧啟動器](/azure/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | 演示如何配置使用 Spring Boot 初始化器建立的基於 Java 的春雲流綁定器,以便將 Apache Kafka 與 Azure 事件中心一起使用。 |
+| [使用具有 Azure 活動中心的 Apache Kafka 的彈簧啟動器](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | 演示如何配置使用 Spring Boot 初始化器建立的基於 Java 的春雲流綁定器,以便將 Apache Kafka 與 Azure 事件中心一起使用。 |
 
 ## <a name="next-steps"></a>後續步驟
 在快速入門和教程資料夾中查看 GitHub 儲存庫[Azure 事件中心(用於 kafka)](https://github.com/Azure/azure-event-hubs-for-kafka)中的範例。

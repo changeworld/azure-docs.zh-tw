@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269936"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687106"
 ---
 # <a name="what-is-video-indexer"></a>什麼是影片索引子？
 
@@ -70,8 +70,8 @@ ms.locfileid: "81269936"
 
 ### <a name="audio-insights"></a>音訊見解
 
-* **音訊轉錄**:以 12 種語言將語音轉換為文本並允許擴展。 支援的語言包括英語、西班牙文、法語、德語、義大利語、漢語、日語、阿拉伯文、俄語、巴西葡萄牙文、印地語和韓語。
-* **自動語言偵測**：自動識別主要語言。 支援的語言包括英語、西班牙文、法語、德語、義大利語、漢語、日語、俄語和巴西葡萄牙文。 如果無法自信地識別語言,視頻索引器假定口語為英語。 有關詳細資訊,請參閱[語言識別模型](language-identification-model.md)。
+* **音訊轉錄**:以 12 種語言將語音轉換為文本並允許擴展。 支援的語言包括英語、西班牙文、法語、德語、義大利語、普通話、日語、阿拉伯文、俄語、巴西葡萄牙文、印地語和韓語。
+* **自動語言偵測**：自動識別主要語言。 支援的語言包括英語、西班牙文、法語、德語、義大利語、普通話、日語、俄語和巴西葡萄牙文。 如果無法自信地識別語言,視頻索引器假定口語為英語。 有關詳細資訊,請參閱[語言識別模型](language-identification-model.md)。
 * **多語言語音辨識和轉錄**(預覽):自動識別音訊不同段中的口語。 它將要轉錄的每個介質檔段,然後將轉錄合併回一個統一轉錄。 有關詳細資訊,請參閱[自動辨識和轉錄多語言內容](multi-language-identification-transcription.md)。
 * **隱藏式輔助字幕**：建立三種格式的隱藏式輔助字幕：VTT、TTML、SRT。
 * **兩個通道處理**:自動檢測單獨的腳本並合併到單個時間線。

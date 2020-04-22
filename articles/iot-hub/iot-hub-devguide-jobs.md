@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65409040"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730112"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>排程多個裝置上的作業
 
@@ -68,7 +69,7 @@ Content-Type: application/json; charset=utf-8
 
 [IoT 中樞查詢語言](iot-hub-devguide-query-language.md)涵蓋了IoT 中樞查詢語言的其他詳細資料。
 
-以下程式碼片段顯示計畫調用 contoso-hub-1 上所有設備上名為 testMethod 的直接方法的作業的請求和回應：
+以下代碼段顯示計劃呼叫 contoso-hub-1 上所有裝置上名為 testMethod 的直接方法的作業的請求和回應:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -121,9 +122,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *updateTwin*屬性需要有效的 etag 匹配;例如， `etag="*"`.
+> *updateTwin*屬性需要有效的 etag 匹配;例如, `etag="*"`.
 
-以下程式碼片段顯示計畫更新 contoso-hub-1 上測試設備的設備孿生屬性的作業的請求和回應：
+以下代碼段顯示計劃更新 contoso-hub-1 上測試設備的設備孿生屬性的作業的請求和回應:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -182,9 +183,9 @@ ContinuationToken 會從回應來提供。
 | **工作Id** |應用程式所提供的作業識別碼。 |
 | **開始時間** |應用程式所提供的作業開始時間 (ISO-8601)。 |
 | **結束時間** |IoT 中樞所提供的作業完成日期 (ISO-8601)。 在作業到達「已完成」狀態後才有效。 |
-| **型別** |作業類型： |
-| | **計畫更新孿生**：用於更新一組所需屬性或標記的作業。 |
-| | **計畫DeviceMethod：** 用於調用一組設備孿生上的設備方法的作業。 |
+| **type** |作業類型： |
+| | **計劃更新孿生**:用於更新一組所需屬性或標記的作業。 |
+| | **計劃DeviceMethod:** 用於調用一組設備孿生上的設備方法的作業。 |
 | **狀態** |作業的目前狀態。 狀態的可能值︰ |
 | | **pending**︰已排定並等候作業服務執行。 |
 | | **scheduled**︰已排定未來時間。 |
@@ -193,7 +194,7 @@ ContinuationToken 會從回應來提供。
 | | **failed**：作業失敗。 |
 | | **completed**作業完成。 |
 | **deviceJobStatistics** |作業執行的相關統計資料。 |
-| | **設備作業統計資訊**屬性： |
+| | **裝置作業統計資訊**屬性: |
 | | **deviceJobStatistics.deviceCount**：作業中的裝置數目。 |
 | | **deviceJobStatistics.failedCount**：作業失敗的裝置數目。 |
 | | **deviceJobStatistics.succeededCount**：作業成功的裝置數目。 |
