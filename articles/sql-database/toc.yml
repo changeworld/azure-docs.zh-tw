@@ -119,7 +119,11 @@
             - name: 資料探索與分類
               href: sql-database-data-discovery-and-classification.md
             - name: 弱點評估
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: 弱點評估
+                  href: sql-vulnerability-assessment.md
+                - name: 在防火牆和 VNet 後方儲存 VA 掃描
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: 進階威脅防護
               href: sql-database-threat-detection-overview.md
             - name: 安全性屬性
@@ -843,7 +847,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: 疑難排解
       items:

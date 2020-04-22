@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: 傳遞驗證常見問題集
           href: how-to-connect-pta-faq.md
+        - name: '使用 Azure AD Connect [請勿設定] 來停用 PTA'
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: 管理同盟服務
       items:
         - name: 使用 Azure AD Connect 管理同盟

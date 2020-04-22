@@ -87,7 +87,7 @@
             - name: CEF 型解決方案
               href: connect-common-event-format.md
               items:
-                - name: 步驟 1 部署代理程式
+                - name: 步驟 1 部署記錄轉寄站
                   href: connect-cef-agent.md
                 - name: 步驟 2 設定您的安全性解決方案
                   href: connect-cef-solution-config.md

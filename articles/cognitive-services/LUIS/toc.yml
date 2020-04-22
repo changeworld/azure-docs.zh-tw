@@ -156,8 +156,6 @@
         - name: 新增描述項
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: 遷移至 V3 撰寫
-          href: luis-migration-authoring-entities.md
         - name: 使用 REST API
           items:
             - name: 使用 Node.js 以程式設計方式建置應用程式
@@ -193,6 +191,8 @@
           displayName: 'import, export'
     - name: 發佈
       href: luis-how-to-publish-app.md
+    - name: 查詢預測執行階段
+      href: luis-get-started-get-intent-from-browser.md
     - name: 管理應用程式
       items:
         - name: Azure 資源
@@ -216,11 +216,10 @@
       items:
         - name: 開發人員
           href: developer-reference-resource.md
-        - name: 編寫 API
-          href: luis-migration-api-authoring.md
-        - name: 遷移至 V3 API
+        - name: 遷移至 V3 撰寫 API
+          href: luis-migration-authoring-entities.md
+        - name: 遷移至 V3 預測 API
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: 移轉至 V2 API
           href: luis-migration-api-v1-to-v2.md
     - name: 使用容器
@@ -412,7 +411,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密
       href: luis-encryption-of-data-at-rest.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2092090'

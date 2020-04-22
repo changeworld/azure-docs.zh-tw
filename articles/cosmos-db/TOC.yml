@@ -39,7 +39,7 @@
               href: sql-api-java-get-started.md
             - name: 非同步 Java
               href: sql-api-async-java-get-started.md
-            - name: 非同步 Java 端對端範例應用程式
+            - name: 具有變更摘要的非同步 Java 範例
               href: create-sql-api-java-changefeed.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
@@ -599,6 +599,8 @@
               href: cassandra-import-data.md
         - name: 概念
           items:
+            - name: 常見問題集
+              href: cassandra-faq.md
             - name: 彈性擴縮
               href: manage-scale-cassandra.md
             - name: 次要索引
@@ -608,7 +610,7 @@
             - name: 變更摘要
               href: cassandra-change-feed.md
             - name: 儲存和管理 Spring 資料
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra 和 Spark
               items:
                 - name: 簡介
@@ -719,7 +721,7 @@
             - name: 管理資料索引
               href: mongodb-indexing.md
             - name: 儲存和管理 Spring 資料
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB 擴充功能命令
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -778,7 +780,7 @@
             - name: 圖表資料視覺化
               href: graph-visualization.md
             - name: 儲存和管理 Spring 資料
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: 使用 Resource Manager 範本進行管理
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -1092,9 +1094,9 @@
         - name: Azure 事件中樞與 Azure 儲存體
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: 使用 Spring Boot Starter
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Spring Data 開發人員指南
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC 驅動程式
           href: odbc-driver.md
     - name: 將資料遷移到 Cosmos DB

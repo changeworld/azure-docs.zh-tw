@@ -10,12 +10,8 @@
   items:
     - name: 用戶端程式庫
       items:
-        - name: '使用 C#'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: 使用 Python
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: 使用 Node.js
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: Anomaly Detector 用戶端程式庫
+          href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
         - name: '使用 C#'
@@ -82,7 +78,7 @@
       items:
         - name: 取得支援
           href: 'https://aka.ms/adsupport'
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://aka.ms/adso'
         - name: MSDN
           href: 'https://aka.ms/admsdn'

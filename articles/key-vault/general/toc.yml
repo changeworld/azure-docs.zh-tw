@@ -2,8 +2,10 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 何謂 Azure Key Vault？
+    - name: 關於 Azure Key Vault
       href: overview.md
+    - name: 關於金鑰、祕密與憑證
+      href: about-keys-secrets-certificates.md
 - name: 教學課程
   items:
     - name: Azure 虛擬機器
@@ -68,6 +70,8 @@
           href: vs-key-vault-add-connected-service.md
     - name: 監視及管理
       items:
+        - name: 設定 Azure Key Vault 的監視和警示
+          href: alert.md
         - name: 整合 Azure Key Vault 與 Azure 原則
           href: azure-policy.md
         - name: Azure Key Vault 記錄

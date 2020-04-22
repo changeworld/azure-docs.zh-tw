@@ -13,6 +13,9 @@
     - name: 入口網站和 Wirecast 的即時活動
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
+    - name: 入口網站和 OBS 的即時活動
+      displayName: 'live, event, portal, obs'
+      href: live-events-obs-quickstart.md
 - name: 教學課程
   items:
     - name: 編碼遠端檔案和串流影片
@@ -406,3 +409,5 @@
       href: limits-quotas-constraints.md
     - name: Azure 雲端和區域
       href: azure-clouds-regions.md
+    - name: 文件更新
+      href: docs-release-notes.md
