@@ -1,14 +1,14 @@
 ---
-title: 創建資源運行狀況警報的範本
+title: 建立資源執行狀況警示的樣本
 description: 以程式設計方式建立警示，在您的 Azure 資源變成無法使用時通知您。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062903"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759011"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用 Resource Manager 範本設定資源健康狀態警示
 
@@ -73,7 +73,7 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 
 請注意，如果您打算將此程序完全自動化，只需編輯 Resource Manager 範本，使其不提示您輸入步驟 5 中的值。
 
-## <a name="resource-manager-template-options-for-resource-health-alerts"></a>資源運行狀況警報的資源管理器範本選項
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>資源執行狀況警示的資源管理員樣本選項
 
 您可以使用這個基底範本，做為建立資源健康狀態警示的起點。 此範本將如撰寫般運作，而且會將您註冊，以便在訂用帳戶中的所有資源上接收所有新啟動資源健康狀態事件的警示。
 
@@ -229,6 +229,9 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 
 如果您想要收到所有四個階段之健康情況事件的通知，您可以一併移除此條件，不論 `status` 屬性為何，警示都將通知您。
 
+> [!NOTE]
+> 每個"任意"部分應僅包含一個字段類型值。
+
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>調整資源健康狀態警示以避免「未知」事件
 
 Azure 資源健康狀態可以使用測試執行器持續監視資源，以向您報告資源的最新健康情況。 相關報告的健康狀態是：「可用」、「無法使用」和「已降級」。 不過，在執行器和 Azure 資源無法通訊的情況下，會針對資源報告「未知」的健康狀態，並將其視為「作用中」的健康情況事件。
@@ -283,7 +286,7 @@ Azure 資源健康狀態可以使用測試執行器持續監視資源，以向�
 
 在此範例中，我們只會通知目前和先前健康狀態沒有「未知」的事件。 如果您的警示會直接傳送到您的行動電話或電子郵件，則此變更可能是很有用的新增項目。 
 
-請注意，在某些事件中，當前"運行狀況狀態"和以前的 HealthStatus 屬性可能為空。 例如，當發生"更新"事件時，資源的狀態可能自上次報告以來沒有更改，只有其他事件資訊可用（例如原因）。 因此，使用上述子句可能會導致某些警報未觸發，因為屬性.當前 HealthStatus 和屬性.以前的 HealthStatus 值將設置為 null。
+請注意,在某些事件中,當前「運行狀況狀態」和以前的 HealthStatus 屬性可能為空。 例如,當發生"更新"事件時,資源的狀態可能自上次報告以來沒有更改,只有其他事件資訊可用(例如原因)。 因此,使用上述子句可能會導致某些警報未觸發,因為屬性.當前 HealthStatus 和屬性.以前的 HealthStatus 值將設置為 null。
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>調整警示以避免由使用者初始化的事件
 
@@ -303,11 +306,11 @@ Azure 資源健康狀態可以使用測試執行器持續監視資源，以向�
     ]
 }
 ```
-請注意，在某些事件中，原因欄位可能為空。 也就是說，將發生運行狀況轉換（例如不可用），並立即記錄事件以防止通知延遲。 因此，使用上述子句可能會導致未觸發警報，因為屬性.clause 屬性值將設置為 null。
+請注意,在某些事件中,原因欄位可能為空。 也就是說,將發生運行狀況轉換(例如不可用),並立即記錄事件以防止通知延遲。 因此,使用上述子句可能會導致未觸發警報,因為屬性.clause 屬性值將設置為null。
 
-## <a name="complete-resource-health-alert-template"></a>完整的資源運行狀況警報範本
+## <a name="complete-resource-health-alert-template"></a>完整的資源執行狀況警示樣本
 
-使用上一節中描述的不同調整，下面是一個示例範本，該範本配置為最大化信噪比。 請記住上面提到的注意事項，其中當前運行狀況狀態、以前的 HealthStatus 和導致屬性值在某些事件中可能為空。
+使用上一節中描述的不同調整,下面是一個示例範本,該範本配置為最大化信噪比。 請記住上面提到的注意事項,其中當前運行狀況狀態、以前的 HealthStatus 和導致屬性值在某些事件中可能為空。
 
 ```json
 {
@@ -436,8 +439,8 @@ Azure 資源健康狀態可以使用測試執行器持續監視資源，以向�
 ## <a name="next-steps"></a>後續步驟
 
 深入了解資源健康狀態：
--  [Azure 資源運行狀況概述](Resource-health-overview.md)
--  [可通過 Azure 資源運行狀況提供的資源類型和運行狀況檢查](resource-health-checks-resource-types.md)
+-  [Azure 資源執行狀況概述](Resource-health-overview.md)
+-  [可透過 Azure 資源執行狀況提供的資源類型和執行狀況檢查](resource-health-checks-resource-types.md)
 
 
 建立服務健康狀態警示：

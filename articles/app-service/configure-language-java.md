@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453552"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733037"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>為 Azure 應用服務設定 Windows Java 應用
 
@@ -318,7 +318,7 @@ Azure 支援的 Java Development Kit (JDK) 是透過 [Azul Systems](https://www.
 
 主要版本更新將透過 Windows Azure 應用服務中的新運行時選項提供。 客戶會更新為設定其 App Service 部署的這些新版 Java，以及負責測試並確定主要更新符合其需求。
 
-每年 1 月、4 月、7 月和 10 月都會以季為單位自動修補支援的 JDK。 有關 Azure 上的 Java 的詳細資訊,請參閱[此支援文件](https://docs.microsoft.com/azure/java/jdk/)。
+每年 1 月、4 月、7 月和 10 月都會以季為單位自動修補支援的 JDK。 有關 Azure 上的 Java 的詳細資訊,請參閱[此支援文件](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 ### <a name="security-updates"></a>安全性更新
 

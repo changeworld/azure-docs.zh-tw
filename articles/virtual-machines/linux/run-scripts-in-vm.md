@@ -2,18 +2,17 @@
 title: 在 Azure Linux 虛擬機器中執行指令碼
 description: 本主題說明如何執行虛擬機器內的指令碼
 services: automation
-ms.service: automation
+ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67477026"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758592"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux 虛擬機器中執行指令碼
 
@@ -68,7 +67,7 @@ ms.locfileid: "67477026"
 
 深入了解可在虛擬機器中執行指令碼和命令的不同功能。
 
-* [自訂腳本擴展](../extensions/custom-script-linux.md)
+* [自訂指令碼延伸模組](../extensions/custom-script-linux.md)
 * [執行命令](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [串列主控台](serial-console.md)
+* [序列主控台](serial-console.md)

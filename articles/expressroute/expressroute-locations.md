@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: b825ed513f530733d7552e32206c12422a956b14
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390256"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81766934"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -84,7 +84,7 @@ ExpressRoute 位置(有時稱為對等位置或 Meet-me 位置)是 Microsoft 企
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、法蘭克福、倫敦、矽谷、新加坡、悉尼、東京、多倫多、華盛頓特區 |
 | **[在東京](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | 支援 | 支援 | 東京2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支援 | 支援 | 東京 |
-| **[BCX](https://www.bcx.co.za/solutions)** |支援 |支援 |開普敦|
+| **[BCX](https://www.bcx.co.za/solutions)** |支援 |支援 |開普敦、約翰尼斯堡|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支援 |支援 |蒙特婁、多倫多、魁北克市 |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支援 |支援 |阿姆斯特丹、香港特別行政區、約翰尼斯堡、倫敦、紐波特(威爾士)、聖保羅、矽谷、新加坡、悉尼、東京、華盛頓特區 |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |支援 |支援 |邁阿密 |
@@ -279,7 +279,7 @@ Azure 國家雲彼此隔離,與全域商業 Azure 隔離。 一個 Azure 雲的 
 | **[RETN](https://retn.net/services/cloud-connect/)** | Equinix | 阿姆斯特丹 |
 | **Rogers** | Cologix、Equinix | 蒙特婁、多倫多 |
 | **[頻譜企業](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | 芝加哥、達拉斯、洛杉磯、紐約、矽谷 | 
-| **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | London | 
+| **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | London | 
 | **[TDC Erhverv](https://tdc.dk/Produkter/cloudaccessplus)** | Equinix | 阿姆斯特丹 | 
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | 阿姆斯特丹 |
 | **[德國電信有限公司](https://cloud.telekom.de/de/infrastruktur/managed-it-services/managed-hybrid-infrastructure-mit-microsoft-azure)** | Interxion | 阿姆斯特丹、法蘭克福 |

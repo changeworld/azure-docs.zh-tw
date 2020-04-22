@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: robinsh
-ms.openlocfilehash: 0c3b35eeed85dd3a1c44dea6ec46203eb812e1e8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom: mqtt
+ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257811"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759737"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中樞傳送雲端到裝置訊息 (Python)
 

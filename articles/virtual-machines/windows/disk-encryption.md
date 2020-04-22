@@ -2,17 +2,17 @@
 title: Azure 託管磁碟的伺服器端加密 - PowerShell
 description: Azure 儲存通過在靜態加密數據之前對其進行靜態加密來保護數據,然後再將其保存到存儲群集。 您可以依賴 Microsoft 管理的密鑰來加密託管磁碟,也可以使用客戶管理的密鑰使用您自己的密鑰管理加密。
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 85fc6412a12963bb01782becf639f7acfc31fbe5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3f6039382b970ca3b0d77042c60cb720f96466d2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452073"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759208"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 託管磁碟的伺服器端加密
 
@@ -72,7 +72,7 @@ Azure 託管磁碟使用[信封加密](../../storage/common/storage-client-side-
 
 - 如果為磁碟啟用了此功能,則無法禁用它。
     如果需要解決此問題,則必須[將所有數據複製到](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)不使用客戶託管密鑰的完全不同的託管磁碟。
-- 僅支援大小為 2080 的[「軟」和「硬」RSA 密鑰](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types),沒有其他鍵或大小。
+- 僅支援大小為 2080 的[「軟」和「硬」RSA 密鑰](../../key-vault/keys/about-keys.md),沒有其他鍵或大小。
 - 使用伺服器端加密和客戶管理的密鑰加密的自定義映射創建的磁碟必須使用相同的客戶管理密鑰進行加密,並且必須在同一訂閱中。
 - 使用伺服器端加密和客戶管理的密鑰加密的磁碟創建的快照必須使用相同的客戶管理金鑰進行加密。
 - 在共享映射庫中,無法使用使用伺服器端加密和客戶管理密鑰加密的自定義映射。

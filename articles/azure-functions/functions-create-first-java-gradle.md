@@ -5,19 +5,19 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886597"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732716"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 與 Gradle 建立函數並將其發表到 Azure
 
 本文介紹如何使用 Gradle 命令列工具將 Java 函數專案構建併發佈到 Azure 函數。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。 
 
 > [!NOTE]
-> 如果Gradle不是您喜歡的開發工具,請查看我們類似的教程,使用[Maven,IntelliJIDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions)和[VS代碼](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)JAvadever。 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)
+> 如果Gradle不是您喜歡的開發工具,請查看我們類似的教程,為Java開發人員使用[Maven,IntelliJIDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)[VS代碼](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -113,7 +113,7 @@ az login
 > [!TIP]
 > 如果您的帳戶可以存取多個訂用帳戶，請使用 [az account set](/cli/azure/account#az-account-set) 來設定此工作階段的預設訂用帳戶。 
 
-使用以下命令將專案部署到新的函數應用。 
+使用下列命令，將您的專案部署至新的函式應用程式。 
 
 ```bash
 gradle azureFunctionsDeploy
@@ -173,4 +173,4 @@ Hello AzureFunctions!
 
 
 [Azure CLI]: /cli/azure
-[Azure 門戶]: https://portal.azure.com
+[Azure 入口網站]: https://portal.azure.com

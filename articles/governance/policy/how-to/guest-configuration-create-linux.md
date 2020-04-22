@@ -3,12 +3,12 @@ title: 如何為 Linux 建立來賓設定原則
 description: 瞭解如何為 Linux 創建 Azure 策略來賓配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617925"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758956"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何為 Linux 建立來賓設定原則
 
@@ -24,6 +24,11 @@ ms.locfileid: "81617925"
 
 > [!IMPORTANT]
 > 具有來賓配置的自定義策略是預覽功能。
+>
+> 在 Azure 虛擬機器中執行審核需要來賓配置擴展。
+> 要大規模部署延伸,請配置以下策略定義:
+>   - 部署必要條件，以在 Windows VM 上啟用客體設定原則。
+>   - 部署必要條件，以在 Linux VM 上啟用客體設定原則。
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 
@@ -101,7 +106,7 @@ end
 
 將具有名稱`linux-path.rb`的檔案儲存在`controls``linux-path`目錄中命名的新資料夾中。
 
-最後,創建配置、導入**來賓配置**資源`ChefInSpecResource`模組, 並使用該資源設置 InSpec 設定檔的名稱。
+最後,創建配置、導入**PS 希望狀態配置**資源模組並編譯配置。
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +124,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+將此檔與名稱`config.ps1`儲存在項目資料夾中。 通過在終端中執行`./config.ps1`在 PowerShell 中運行它。 將創建新的 mof 檔案。
+
 該`Node AuditFilePathExists`命令在技術上不是必需的,但它生成`AuditFilePathExists.mof`名為 而不是預設值的`localhost.mof`檔。 使 .mof 檔名遵循配置,因此在大規模運行時很容易組織許多檔。
+
+
 
 現在,您應該有如下項目結構:
 
@@ -150,8 +160,8 @@ cmdlet`New-GuestConfigurationPackage`建立套件。 建立 Linux`New-GuestConfi
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
 創建配置包後,但在將其發佈到 Azure 之前,可以從工作站或 CI/CD 環境中測試該包。 Guest 配置 cmdlet`Test-GuestConfigurationPackage`在開發環境中包括與 Azure 計算機中使用的代理相同的代理。 使用此解決方案,您可以在本地執行集成測試,然後再發佈到計費的雲端環境。
@@ -168,7 +178,7 @@ cmdlet`Test-GuestConfigurationPackage`的參數:
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 cmdlet 還支援從 PowerShell 管道輸入。 將 cmdlet`New-GuestConfigurationPackage`的`Test-GuestConfigurationPackage`輸出輸送到 cmdlet。

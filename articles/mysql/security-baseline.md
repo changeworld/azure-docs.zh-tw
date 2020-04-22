@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3e79d6efcbb72b73dedb5b8dfdf965736e7de3e4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261953"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757208"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>MySQL Azure 資料庫的 Azure 安全基線
 
@@ -650,7 +650,7 @@ Azure 安全中心 Azure PaaS 服務的功能覆蓋範圍:https://docs.microsoft
 
 **指南**:使用 Azure 資源圖查詢和發現訂閱中的所有資源(包括 MySQL 實例的 Azure 資料庫)。 確保租戶中具有適當的(讀取)許可權,並能夠枚舉訂閱中的所有 Azure 訂閱和資源。
 
-如何使用 Azure 圖形建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure 資源圖建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 如何檢視 Azure 訂閱:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

@@ -1,25 +1,20 @@
 ---
 title: 在 Azure 先決條件中開啟 Shift 容器平臺 3.11
 description: 在 Azure 中部署 OpenShift 容器平臺 3.11 的先決條件。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409126"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759500"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺 3.11 的常見先決條件
 
@@ -49,7 +44,7 @@ OpenShift 安裝是使用 Ansible 腳本。 Ansible 使用安全殼層 (SSH) 連
 > * 建立金鑰保存庫來管理 OpenShift 叢集的 SSH 金鑰。
 > * 建立可供 Azure 雲端提供者使用的服務主體。
 
-如果沒有 Azure 訂閱,請先創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure 
 使用 [az login](/cli/azure/reference-index) 命令來登入 Azure 訂用帳戶並遵循畫面上的指示進行，或按一下 [試用]**** 來使用 Cloud Shell。

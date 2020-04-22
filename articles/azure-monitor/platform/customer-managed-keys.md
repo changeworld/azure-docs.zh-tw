@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260851"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758815"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 監視器客戶管理的關鍵設定 
 
@@ -281,7 +281,7 @@ Authorization: Bearer <token>
 
 **更新**
 
-此資源管理員請求是非同步操作。
+此資源管理員請求在更新密鑰標識符詳細資訊時是非同步操作,而更新容量值時它是同步的。
 
 > [!Warning]
 > 您必須在*群組*資源更新中提供完整的正文,其中包括*識別**、sKU、KeyVault**屬性*和*位置*。 找不到*KeyVault 屬性*詳細資訊會移除金*鑰*的金鑰識別碼,並造成[金鑰撤銷](#cmk-kek-revocation)。
@@ -314,7 +314,7 @@ Content-type: application/json
 **回應**
 
 200 確定和標頭。
-完成密鑰標識符的傳播需要幾分鐘時間。 您可以通過兩種方式檢查預先狀態:
+完成密鑰標識符的傳播需要幾分鐘時間。 您可以通過兩種方式檢查更新狀態:
 1. 從回應複製 Azure-Async 操作網址,然後按照[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
 2. 在*群組資源*上送出 GET 要求,並檢視*KeyVault 屬性屬性*。 最近更新的密鑰標識符詳細資訊應在回應中返回。
 
@@ -436,13 +436,13 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 
 - 每個訂閱的最大*叢集*資源數限制為 2
 
-- 只有在驗證 ADX 群集預配已完成後,才應對工作區進行*群集*資源關聯。 在此預配之前發送的數據將被刪除,並且無法恢復。
+- 只有在驗證 ADX 群集預配完成後,才應攜帶*群集*資源關聯到工作區。 在預配完成之前發送到工作區的數據將被刪除,並且無法恢復。
 
 - CMK 加密適用於 CMK 配置後新引入的數據。 在 CMK 設定之前引入的數據,仍使用 Microsoft 金鑰進行加密。 您可以無縫查詢在 CMK 配置之前和之後引入的數據。
 
-- 工作區與*群集*資源關聯后,無法與*群集*資源取消關聯,因為數據使用密鑰加密,如果沒有 Azure 密鑰保管庫中的 KEK,則無法訪問。
+- 在決定特定工作區不需要 CMK 時,可以從*群集*資源取消關聯工作區。 取消關聯操作后的新引入數據存儲在共用日誌分析存儲中,就像與*群集*資源關聯之前一樣。 如果*群集*資源預配並配置了有效的密鑰保管庫密鑰,則可以無縫查詢取消關聯前後引入的數據。
 
-- Azure 密鑰保管庫必須配置為可恢復。 預設情況下,這些屬性未啟用,應使用 CLI 和 PowerShell 進行設定:
+- Azure 密鑰保管庫必須配置為可恢復。 預設情況下,這些屬性未啟用,應使用 CLI 或 PowerShell 進行設定:
 
   - [必須開啟軟刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
   - [應開啟清除保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection),以防止強制刪除機密/保管庫,即使在軟刪除後
@@ -470,6 +470,8 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 
 - 如果嘗試刪除與工作區關聯的*群集*資源,則刪除操作將失敗。
 
+- 如果在創建*群集*資源時出現衝突錯誤, 則可能是您在過去 14 天內刪除了*群集*資源,並且該資源處於軟刪除期間。 叢集*資源*名稱在軟刪除期間保持保留狀態,無法建立具有該名稱的新群集。 當*群集*資源被永久刪除時,該名稱在軟刪除期后釋放。
+
 - 取得資源群組的所有*群組*資源:
 
   ```rst
@@ -488,6 +490,11 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
   **回應**
     
   與「資源組的*群集*資源」相同的回應,但在訂閱範圍內。
-    
-- 刪除*群集*資源 -- 執行軟刪除操作,以便在 14 天內恢復群集資源、數據和相關工作區,無論刪除是意外的還是有意的。 叢集*資源*名稱在軟刪除期間保持保留狀態,無法建立具有該名稱的新群集。 在軟刪除期間之後 *,群集資源和*資料不可恢復。 關聯的工作區從*群集*資源取消關聯,新數據被引入到共用存儲和使用 Microsoft 密鑰進行加密。
+
+- 在*叢集*資源中更新*容量預留*- 當關聯工作區的資料量發生更改,並且您想要更新容量預留級別以進行計費考慮時,請遵循[更新*群集*資源](#update-cluster-resource-with-key-identifier-details)並提供新的容量值。 容量預留級別可能位於每天 1,000 到 2,000 GB 之間,步長為 100。 對於每天超過 2,000 GB 的級別,請聯絡 Microsoft 聯繫人啟用它。
+
+- 刪除*群集*資源 -- 執行軟刪除操作,以便在 14 天內恢復*群集*資源(包括其數據),無論刪除是意外的還是有意的。 叢集*資源*名稱在軟刪除期間保持保留狀態,無法建立具有該名稱的新群集。 軟刪除期間後 *,群集資源*名稱將被釋放,*群集*資源和數據將被永久刪除,並且不可恢復。 刪除操作時,任何關聯的工作區都將從*群集*資源取消關聯。 新的引入資料存儲在共用的日誌分析存儲中,並且使用 Microsoft 金鑰進行加密。 取消關聯的工作區操作是非同步的。
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ CMK 的輪換需要使用 Azure 密鑰保管庫中的新密鑰版本顯式更新
 
   200 確定
 
-- 復原*叢集*資源和資料 -- 在軟刪除期間,創建具有相同名稱且位於同一訂閱、資源組和區域中的*叢集*資源。 按照**創建*群集*資源**步驟恢復*群集*資源。
-
+- 復原*叢集*資源和資料 -- 過去 14 天內刪除的*群集*資源處於軟刪除狀態,可以恢復。 這由當前產品組手動執行。 使用 Microsoft 通道進行恢復請求。
 
 ## <a name="appendix"></a>附錄
 

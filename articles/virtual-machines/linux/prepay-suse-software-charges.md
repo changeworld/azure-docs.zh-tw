@@ -3,18 +3,17 @@ title: 軟體計劃的預付款 ─ Azure 預訂
 description: 瞭解如何為軟體計劃預付費用,以節省您即用即付成本的費用。
 author: bandersmsft
 manager: yashesvi
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757224"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759279"
 ---
 # <a name="prepay-for-azure-software-plans"></a>預付 Azure 軟體方案
 
@@ -63,7 +62,7 @@ RedHat 計劃折扣僅適用於您在購買時選擇的 VM 大小。 RHEL 計劃
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
-如果您有疑問或需要說明,[請建立支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果您有問題或需要協助，請[建立支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -71,7 +70,7 @@ RedHat 計劃折扣僅適用於您在購買時選擇的 VM 大小。 RHEL 計劃
 
 如需詳細資訊，請參閱下列文章：
 
-- [什麼是 Azure 預留?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [什麼是 Azure 保留項目？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [管理 Azure 中預留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [了解 SUSE 保留折扣的套用方式](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [了解隨用隨付訂用帳戶的保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)

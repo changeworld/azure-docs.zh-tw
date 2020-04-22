@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310223"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756661"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 監視裝置連線能力
 
-*本主題適用於建置員和系統管理員。*
+*本主題適用於設備開發人員和解決方案生成器。*
 
 使用 Azure CLI IoT 擴展可查看設備發送到 IoT 中心的消息,並觀察設備孿生中的更改。 您可以使用此工具來調試和觀察設備連接,並診斷未到達雲端的設備訊息或未回應孿生更改的設備的問題。
 
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已經學會了如何使用 IoT 中央資源管理員,建議的下一步是探索[管理設備 IoT 中央](howto-manage-devices.md)。
+如果您是設備開發人員,建議的下一步是閱讀[Azure IoT 中央 中有關設備連接](./concepts-get-connected.md)的資訊。

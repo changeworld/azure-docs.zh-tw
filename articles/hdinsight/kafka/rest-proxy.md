@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 265e15713f8159e370ef22a197ffe931200a88f7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667792"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758991"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST 代理與 Azure HDInsight 中的 Apache Kafka 叢集互動
 
@@ -74,7 +74,7 @@ Kafka REST 代理使您能夠通過 REST API 通過 HTTP 與卡夫卡群集進�
 您可以使用下面的 python 代碼與 Kafka 群集上的 REST 代理進行互動。 要使用代碼範例,請按照以下步驟操作:
 
 1. 在安裝了 Python 的電腦上保存範例代碼。
-1. 通過`pip3 install adal`執行`pip install msrestazure`和安裝所需的 python 依賴項。
+1. 通過 執行安裝所需的 python`pip3 install msal`依賴項。
 1. 變更代碼部分**設定這些屬性**並更新環境的以下屬性:
 
     |屬性 |描述 |
@@ -84,7 +84,7 @@ Kafka REST 代理使您能夠通過 REST API 通過 HTTP 與卡夫卡群集進�
     |用戶端密碼|您在安全組中註冊的應用程式的機密。|
     |Kafkarest_endpoint|從群集概述中的 **「屬性」** 選項卡獲取此值,如[部署部分](#create-a-kafka-cluster-with-rest-proxy-enabled)所述。 它應採用以下格式 |`https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. 從命令列中,透過執行 python 檔來執行 python 檔案`python <filename.py>`
+1. 從命令列中,透過執行 python 檔來執行 python 檔案`sudo python3 <filename.py>`
 
 此程式碼執行以下操作:
 
@@ -95,13 +95,9 @@ Kafka REST 代理使您能夠通過 REST API 通過 HTTP 與卡夫卡群集進�
 
 ```python
 #Required python packages
-#pip3 install adal
-#pip install msrestazure
+#pip3 install msal
 
-import adal
-from msrestazure.azure_active_directory import AdalAuthentication
-from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD
-import requests
+import msal
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -114,19 +110,24 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
-#getting token
-login_endpoint = AZURE_PUBLIC_CLOUD.endpoints.active_directory
-resource = "https://hib.azurehdinsight.net"
-context = adal.AuthenticationContext(login_endpoint + '/' + tenant_id)
+# Scope
+scope = 'https://hib.azurehdinsight.net/.default'
+#Authority
+authority = 'https://login.microsoftonline.com/' + tenant_id
 
-token = context.acquire_token_with_client_credentials(
-    resource,
-    client_id,
-    client_secret)
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    client_id , client_secret, authority,
+    #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
+    )
 
-accessToken = 'Bearer ' + token['accessToken']
+# The pattern to acquire a token looks like this.
+result = None
 
-print(accessToken)
+result = app.acquire_token_for_client(scopes=[scope])
+
+print(result)
+accessToken = result['access_token']
 
 # relative url
 getstatus = "/v1/metadata/topics"
@@ -137,10 +138,10 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-下面查找有關如何使用 curl 命令從 AZURE 獲取 REST 代理權杖的另一個範例。 請注意,我們需要在`resource=https://hib.azurehdinsight.net`獲取令牌時指定。
+下面查找有關如何使用 curl 命令從 AZURE 獲取 REST 代理權杖的另一個範例。 **請注意,我們需要在`scope=https://hib.azurehdinsight.net/.default`獲取令牌時指定。**
 
 ```cmd
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
 ## <a name="next-steps"></a>後續步驟

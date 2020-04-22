@@ -3,12 +3,12 @@ title: 學習稽核虛擬機器的內容
 description: 瞭解 Azure 策略如何使用來賓配置代理審核虛擬機器內的設置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538030"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759089"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -20,19 +20,25 @@ ms.locfileid: "81538030"
 
 此時,大多數 Azure 策略來賓配置策略僅審核計算機內的設置。 它們不應用配置。 例外情況是[下面引用](#applying-configurations-using-guest-configuration)的一個內置策略。
 
+## <a name="resource-provider"></a>資源提供者
+
+您必須先註冊資源提供者，才能使用「來賓設定」。 如果通過門戶分配來賓配置策略,則會自動註冊資源提供程式。 您可以通過[門戶](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)Azure [PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)或[Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)手動註冊。
+
 ## <a name="extension-and-client"></a>延伸模組和用戶端
 
 要稽核電腦內的設定,將啟用[虛擬機器延伸](../../../virtual-machines/extensions/overview.md)。 延伸模組會下載適用的原則指派及相對應的設定定義。
+
+> [!Important]
+> 在 Azure 虛擬機器中執行審核需要來賓配置擴展。
+> 要大規模部署延伸,請配置以下策略定義:
+>   - 部署必要條件，以在 Windows VM 上啟用客體設定原則。
+>   - 部署必要條件，以在 Linux VM 上啟用客體設定原則。
 
 ### <a name="limits-set-on-the-extension"></a>在延伸上設定的限制
 
 為了限制擴展影響在計算機內運行的應用程式,不允許來賓配置超過 CPU 的 5%。 對於內置定義和自定義定義,都存在此限制。
 
-## <a name="register-guest-configuration-resource-provider"></a>註冊來賓設定資源提供者
-
-您必須先註冊資源提供者，才能使用「來賓設定」。 您可以通過[門戶](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)或 Azure [CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)進行註冊。 如果通過門戶分配來賓配置策略,則會自動註冊資源提供程式。
-
-## <a name="validation-tools"></a>驗證工具
+### <a name="validation-tools"></a>驗證工具
 
 在計算機內部,來賓配置用戶端使用本地工具運行審核。
 
@@ -50,17 +56,17 @@ ms.locfileid: "81538030"
 
 ## <a name="supported-client-types"></a>支援的用戶端類型
 
-下表顯示 Azure 映像上的支援作業系統清單：
+來賓配置策略包括新版本。 如果來賓配置代理不相容,則排除 Azure 應用商店中可用的舊版本的作業系統。 下表顯示 Azure 映像上受支援的作業系統的清單:
 
 |發行者|名稱|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04、16.04、18.04|
-|Credativ|Debian|8、9|
-|Microsoft|Windows Server|2012 資料中心, 2012 R2 資料中心, 2016 資料中心, 2019 資料中心|
+|Canonical|Ubuntu Server|14.04 及更高版本|
+|Credativ|Debian|8 及更高版本|
+|Microsoft|Windows Server|2012年及以後|
 |Microsoft|Windows 用戶端|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
-|Suse|SLES|12 SP3|
+|OpenLogic|CentOS|7.3 及更高版本|
+|Red Hat|Red Hat Enterprise Linux|7.4 及更高版本|
+|Suse|SLES|12 SP3 及更高版本|
 
 ### <a name="unsupported-client-types"></a>不支援的用戶端類型
 

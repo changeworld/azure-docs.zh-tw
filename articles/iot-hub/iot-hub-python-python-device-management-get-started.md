@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 6d6a50db42924d868b57cacc415246ee6990859c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110469"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759766"
 ---
 # <a name="get-started-with-device-management-python"></a>開始使用裝置管理 (Python)
 
@@ -39,7 +40,7 @@ ms.locfileid: "77110469"
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定，該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定,該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -59,13 +60,13 @@ ms.locfileid: "77110469"
 
 * 使用報告屬性來啟用裝置對應項查詢，以識別裝置及其上次重新啟動時間
 
-1. 在命令提示符下，運行以下命令以安裝**azure-iot 設備**包：
+1. 在指令提示符下,執行以下指令以安裝**azure-iot 裝置**套件:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-2. 使用文字編輯器，在工作目錄中創建名為**dmpatterns_getstarted_device.py**的檔。
+2. 使用文字編輯器,在工作目錄中創建名為**dmpatterns_getstarted_device.py**的檔案。
 
 3. 在 **dmpatterns_getstarted_device.py** 檔案的開頭新增下列 `import` 陳述式。
 
@@ -76,7 +77,7 @@ ms.locfileid: "77110469"
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. 添加**CONNECTION_STRING**變數。 將`{deviceConnectionString}`預留位置值替換為設備連接字串。 之前在[IoT 中心中註冊新設備中](#register-a-new-device-in-the-iot-hub)複製了此連接字串。  
+4. 添加**CONNECTION_STRING**變數。 將`{deviceConnectionString}`占位符值替換為設備連接字串。 之前在[IoT 中心中註冊新設備中](#register-a-new-device-in-the-iot-hub)複製了此連接字串。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -142,7 +143,7 @@ ms.locfileid: "77110469"
 > [!NOTE]
 > 為了簡單起見，本教學課程不會實作任何重試原則。 在生產環境程式碼中，您應該如[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)一文中所建議，實作重試原則 (例如指數型輪詢)。
 
-## <a name="get-the-iot-hub-connection-string"></a>獲取 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
@@ -152,13 +153,13 @@ ms.locfileid: "77110469"
 
 在本節中，您會建立 Python 主控台應用程式，此應用程式會使用直接方法起始遠端重新開機。 應用程式使用裝置對應項查詢來探索該裝置的上次重新開機時間。
 
-1. 在命令提示符下，運行以下命令以安裝**azure-iot 集線器**包：
+1. 在指令提示符下,執行以下指令以安裝**azure-iot 集線器**套件:
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-2. 使用文字編輯器，在工作目錄中創建名為**dmpatterns_getstarted_service.py**的檔。
+2. 使用文字編輯器,在工作目錄中創建名為**dmpatterns_getstarted_service.py**的檔案。
 
 3. 在 **dmpatterns_getstarted_service.py** 檔案的開頭新增下列 `import` 陳述式。
 
@@ -169,7 +170,7 @@ ms.locfileid: "77110469"
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. 新增下列變數宣告。 將`{IoTHubConnectionString}`預留位置值替換為以前在[獲取 IoT 中心連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中心連接字串。 將`{deviceId}`預留位置值替換為您在[在 IoT 中心註冊新設備中](#register-a-new-device-in-the-iot-hub)註冊的裝置識別碼。
+4. 新增下列變數宣告。 將`{IoTHubConnectionString}`占位符值替換為以前在[獲取 IoT 中心連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中心連接字串。 將`{deviceId}`佔位符值替換為您在[在 IoT 中心註冊新設備中](#register-a-new-device-in-the-iot-hub)註冊的設備 ID。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -238,7 +239,7 @@ ms.locfileid: "77110469"
 
 ## <a name="run-the-apps"></a>執行應用程式
 
-現在，您可以運行這些應用。
+現在,您可以運行這些應用。
 
 1. 在命令提示字元中，執行下列命令來開始接聽重新啟動直接方法。
 
@@ -254,12 +255,12 @@ ms.locfileid: "77110469"
 
 3. 您會在主控台中看到直接方法的裝置回應。
 
-   下面顯示了對重新開機直接方法的設備回應：
+   下面顯示了對重新啟動直接方法的裝置回應:
 
-   ![類比設備應用輸出](./media/iot-hub-python-python-device-management-get-started/device.png)
+   ![模擬裝置應用輸出](./media/iot-hub-python-python-device-management-get-started/device.png)
 
-   下面顯示了調用重新開機直接方法的服務，並輪詢設備孿生的狀態：
+   下面顯示了調用重新啟動直接方法的服務,並輪詢設備孿生的狀態:
 
-   ![觸發重新開機服務輸出](./media/iot-hub-python-python-device-management-get-started/service.png)
+   ![觸發重新啟動服務輸出](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

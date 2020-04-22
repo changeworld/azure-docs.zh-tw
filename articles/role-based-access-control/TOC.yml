@@ -28,8 +28,8 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
-    - name: 適用於 Azure 資源的 PIM
-      href: pim-azure-resource.md
+    - name: 最佳作法
+      href: best-practices.md
     - name: Azure 管理的條件式存取
       href: conditional-access-azure-management.md
 - name: 操作指南

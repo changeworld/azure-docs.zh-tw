@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1d8085c6056cb0d2541999c3e9c249cde3da8834
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641261"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758118"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將客戶端應用程式加入自動完成與建議
 
@@ -22,7 +22,7 @@ ms.locfileid: "81641261"
 在 Azure 認知搜尋中實現這些體驗,您需要:
 
 + 後端介面的*推薦器*。
-+ 指定自動完成或建議 API*查詢*。
++ 指定[自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)或[建議](https://docs.microsoft.com/rest/api/searchservice/suggestions)API*查詢*。
 + 處理客戶端使用的搜尋類型互動的*UI 控制檔*。 為此,我們建議使用現有的 JavaScript 庫。
 
 在 Azure 認知搜尋中,自動完成的查詢和建議的結果將從已向建議程式註冊的選定欄位從搜索索引中檢索。 建議器是索引的一部分,它指定哪些欄位將提供完成查詢、建議結果或同時執行兩者的內容。 創建和載入索引時,將在內部創建建議器資料結構,以存儲用於在部分查詢上匹配的前置碼。 對於建議,選擇唯一或至少不重複的合適欄位對於體驗至關重要。 有關詳細資訊,請參閱[建立建議器](index-add-suggesters.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "81641261"
 
 ## <a name="set-up-a-request"></a>設定要求
 
-請求的元素包括 API([自動完成 REST](https://docs.microsoft.com/rest/api/searchservice/autocomplete)或[建議 REST)、](https://docs.microsoft.com/rest/api/searchservice/suggestions)部分查詢和建議程式。
+請求的元素包括一種即用即用搜索 API、部分查詢和建議程式。 以下文稿使用自動完成 REST API 作為範例,演示了請求的元件。
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -49,7 +49,7 @@ API 不對部分查詢施加最小長度要求;因此,API 不會對部分查詢�
 
 匹配位於輸入字串中任意位置的術語的開頭。 給定"快速棕色狐狸",自動完成和建議將匹配部分版本的"","快速","棕色",或"狐狸",但不是部分固定術語,如"rown"或"牛"。 此外,每個匹配設置下游擴展的範圍。 部分查詢「快速br」將在「快速棕色」或「快速麵包」上匹配,但「棕色」或「麵包」本身與「快速」或「麵包」不匹配,除非「快速」在它們前面。
 
-### <a name="apis"></a>API
+### <a name="apis-for-search-as-you-type"></a>以依類型搜尋的 API
 
 依以下連結進行 REST 和 .NET SDK 參考頁:
 
@@ -64,12 +64,13 @@ API 不對部分查詢施加最小長度要求;因此,API 不會對部分查詢�
 
 回應由請求上的參數形狀。 對於自動完成,設置[**自動完成模式**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes)以確定文本完成是否發生在一個或兩個術語上。 對於"建議",您選擇的欄位將確定回應的內容。
 
-要進一步優化回應,請對請求包含更多參數。 以下參數適用於自動完成和建議。
+有關建議,應進一步優化回應,以避免重複或看似不相關的結果。 要控制結果,請在請求上包含更多參數。 以下參數適用於自動完成和建議,但可能更需要建議,尤其是當建議器包含多個字段時。
 
 | 參數 | 使用量 |
 |-----------|-------|
-| **$select** | 如果有多個**源欄位**,請使用 **$select**選擇哪個欄位貢獻`$select=GameTitle`值 ()。 |
-| **$filter** | 在結果集上套用符合`$filter=ActionAdventure`條件 ( 。 |
+| **$select** | 如果建議器中有多個**源欄位**,請使用 **$select**選擇哪個欄`$select=GameTitle`位貢獻值 ( 。 |
+| **searchFields** | 將查詢約束到特定欄位。 |
+| **$filter** | 在結果集上套用符合`$filter=Category eq 'ActionAdventure'`條件 ( 。 |
 | **$top** | 將結果限制為特定數位 ()。`$top=5`|
 
 ## <a name="add-user-interaction-code"></a>新增使用者互動碼
@@ -149,6 +150,8 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
     // Call suggest API and return results
     SuggestParameters sp = new SuggestParameters()
     {
+        Select = HotelName,
+        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
         Top = 5
     };

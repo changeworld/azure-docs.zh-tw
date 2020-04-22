@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心操作監視（已棄用） |微軟文檔
+title: Azure IoT 中心操作監視(已棄用) |微軟文件
 description: 如何使用 Azure IoT 中樞作業監視來即時監視 IoT 中樞上的作業狀態。
 author: nberdy
 manager: briz
@@ -8,19 +8,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345675"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732226"
 ---
-# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作監視（已棄用）
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作監控(已棄用)
 
 IoT 中樞的作業監視可讓您即時監視其 IoT 中樞上的作業狀態。 IoT 中樞可追蹤橫跨數個作業類別的事件。 您可以選擇將一或多個類別的事件傳送至 IoT 中樞的端點進行處理。 您可以監視資料中是否有錯誤，或根據資料模式設定更複雜的處理行為。
 
 >[!NOTE]
->IoT 中心**操作監視已棄用，已于 2019 年 3 月 10 日從 IoT 中心中刪除**。 如需監視 IoT 中樞的作業及健康情況，請參閱[監視 Azure IoT 中樞的健康情況並快速診斷問題](iot-hub-monitor-resource-health.md)。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
+>IoT 中心**操作監視已棄用,已於 2019 年 3 月 10 日從 IoT 中心中刪除**。 如需監視 IoT 中樞的作業及健康情況，請參閱[監視 Azure IoT 中樞的健康情況並快速診斷問題](iot-hub-monitor-resource-health.md)。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
 
 IoT 中樞會監視六個類別的事件：
 

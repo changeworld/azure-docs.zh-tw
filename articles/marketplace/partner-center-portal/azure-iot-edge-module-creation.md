@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6b56b748ef31bcfd33893e55d3ea5f8d9851a3ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: c4eddf68e964b412e7270319630f41fc4d802241
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674471"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733152"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -322,9 +322,9 @@ IoT Edge 模組產品必須在說明底部包含最低硬體要求段落。 例�
 
 使用 Azure IoT 中心,您的計畫必須在至少一個雲端中可用。
 
-選擇**Azure 全域**選項,以便使用市場的所有全域 Azure 區域的客戶可以使用計畫。 有關詳細資訊,請參閱[地理可用性和貨幣支援](https://aka.ms/AzureGovCurrencies)。
+選擇**Azure 全域**選項,以便使用市場的所有全域 Azure 區域的客戶可以使用計畫。 有關詳細資訊,請參閱[地理可用性和貨幣支援](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
 
-選擇[Azure 政府雲](https://aka.ms/WhatIsAzureGovernment)選項以使解決方案在此處顯示。 這是一個政府社區雲,由來自美國聯邦、州、地方或部落政府機構的客戶以及有資格為其提供服務的合作夥伴進行受控訪問。 作為發佈者,您負責此雲社區的任何合規性控制、安全措施和最佳實踐。 Azure 政府使用物理隔離的數據中心和網路(僅適用於美國)。 在[發佈到](https://aka.ms/azuregovpublish)Azure 政府之前,請測試並確認解決方案,因為結果可能會有所不同。 要暫示和測試解決方案,請從 Microsoft [Azure 政府試用版](https://aka.ms/AzureGovernmentTrial)請求試用帳戶。
+選擇[Azure 政府雲](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)選項以使解決方案在此處顯示。 這是一個政府社區雲,由來自美國聯邦、州、地方或部落政府機構的客戶以及有資格為其提供服務的合作夥伴進行受控訪問。 作為發佈者,您負責此雲社區的任何合規性控制、安全措施和最佳實踐。 Azure 政府使用物理隔離的數據中心和網路(僅適用於美國)。 在[發佈到](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)Azure 政府之前,請測試並確認解決方案,因為結果可能會有所不同。 要暫示和測試解決方案,請從 Microsoft [Azure 政府試用版](https://azure.microsoft.com/global-infrastructure/government/request/)請求試用帳戶。
 
 > [!NOTE]
 > 計劃發佈並在特定雲中可用后,無法刪除該雲。
@@ -378,11 +378,11 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 ## <a name="technical-configuration"></a>技術設定
 
-**IoT Edge 模組**提供類型是在 IoT Edge 裝置上運行的特定類型的容器。 在 **「技術設定**」選項卡上,您將在[Azure 容器註冊表](https://aka.ms/ContainerRegistry)內為容器映像儲存庫提供參考資訊,以及允許客戶輕鬆使用模組的配置設定。
+**IoT Edge 模組**提供類型是在 IoT Edge 裝置上運行的特定類型的容器。 在 **「技術設定**」選項卡上,您將在[Azure 容器註冊表](https://azure.microsoft.com/services/container-registry/)內為容器映像儲存庫提供參考資訊,以及允許客戶輕鬆使用模組的配置設定。
 
 發佈產品/服務後,IoT Edge 容器映像將複製到特定公共容器註冊表中的 Azure 應用商店。 Azure 使用者使用模組的所有請求都來自 Azure 應用商店公共容器註冊表,而不是專用容器註冊表。
 
-您可以使用標記定位多個平臺並提供多個版本的模組容器映射。 要瞭解有關標記和版本控制的更多資訊,請參閱[準備 IoT Edge 模組技術資產](https://aka.ms/AzureIoTTechAsset)。
+您可以使用標記定位多個平臺並提供多個版本的模組容器映射。 要瞭解有關標記和版本控制的更多資訊,請參閱[準備 IoT Edge 模組技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)。
 
 ### <a name="image-repository-details"></a>影像儲存函式庫詳細資訊
 
@@ -392,25 +392,25 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 **Azure 訂閱 ID**:提供訂閱 ID,其中報告資源使用方式,並為包含容器映射的 Azure 容器註冊表計費服務。 您可以在 Azure 門戶中的[「訂閱」 頁上](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)找到此 ID。
 
-**Azure 資源組名稱**:提供包含容器映射的 Azure 容器註冊表[的資源組](https://aka.ms/ResourceManagerAzurePortal)名稱。 必須在訂閱 ID(上圖)中訪問資源組。 您可以在 Azure 門戶中的[「資源組」](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)頁上找到該名稱。
+**Azure 資源組名稱**:提供包含容器映射的 Azure 容器註冊表[的資源組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)名稱。 必須在訂閱 ID(上圖)中訪問資源組。 您可以在 Azure 門戶中的[「資源組」](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)頁上找到該名稱。
 
-**Azure 容器註冊表名稱**:提供具有容器映射的[Azure 容器註冊表](https://aka.ms/DockerContainerRegistriesAzure)的名稱。 容器註冊表必須存在於您之前提供的 Azure 資源組中。 僅提供註冊表項名稱,不提供完整的登錄伺服器名稱。 請務必省略名稱**中azurecr.io。** 您可以在 Azure 門戶中的[容器註冊表頁上](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)找到註冊表項。
+**Azure 容器註冊表名稱**:提供具有容器映射的[Azure 容器註冊表](https://docs.microsoft.com/azure/container-registry/container-registry-intro)的名稱。 容器註冊表必須存在於您之前提供的 Azure 資源組中。 僅提供註冊表項名稱,不提供完整的登錄伺服器名稱。 請務必省略名稱**中azurecr.io。** 您可以在 Azure 門戶中的[容器註冊表頁上](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)找到註冊表項。
 
-**Azure 容器註冊表的管理員使用者名稱**:提供與具有容器映像的 Azure 容器註冊表關聯的[管理員使用者名稱](https://aka.ms/AdminAccountContainerRegistry)。 需要使用者名和密碼來確保您的公司有權訪問註冊表。 要取得管理員使用者名稱和密碼,請使用 Azure 命令列介面 (CLI) 將**啟用管理員**的屬性設定為**True。** 可以選擇管理**員使用者**設定為 Azure 門戶中**啟用**。
+**Azure 容器註冊表的管理員使用者名稱**:提供與具有容器映像的 Azure 容器註冊表關聯的[管理員使用者名稱](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)。 需要使用者名和密碼來確保您的公司有權訪問註冊表。 要取得管理員使用者名稱和密碼,請使用 Azure 命令列介面 (CLI) 將**啟用管理員**的屬性設定為**True。** 可以選擇管理**員使用者**設定為 Azure 門戶中**啟用**。
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="演示更新容器註冊表"對話框。":::
+:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="演示"更新容器註冊表"對話框。":::
 
-**Azure 容器註冊表的密碼**:為與 Azure 容器註冊表關聯的管理員使用者名提供密碼,並具有容器映射。 需要使用者名和密碼來確保您的公司有權訪問註冊表。 您可以通過使用[show 命令](https://aka.ms/azacrcredentialshow)存取**容器註冊表** > **存取金鑰**或使用 Azure CLI 從 Azure 門戶獲取密碼。
+**Azure 容器註冊表的密碼**:為與 Azure 容器註冊表關聯的管理員使用者名提供密碼,並具有容器映射。 需要使用者名和密碼來確保您的公司有權訪問註冊表。 您可以通過使用[show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)存取**容器註冊表** > **存取金鑰**或使用 Azure CLI 從 Azure 門戶獲取密碼。
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="說明 Azure 門戶中的訪問鍵螢幕。":::
 
-**Azure 容器註冊表中的儲存函式庫名稱**。 提供具有映射的 Azure 容器註冊表儲存庫的名稱。 將映射推送到註冊表時,可以指定存儲庫的名稱。 您可以通過存[取 容器註冊表](https://aka.ms/ContainerRegistry) > **儲存庫頁**來查找儲存庫的名稱。 有關詳細資訊,請參閱在[Azure 門戶中檢視容器註冊表儲存庫](https://aka.ms/ContainerRegistryRepositoriesAzure)。 請注意,設置名稱后,無法更改它。 對帳戶中的每個產品/服務使用唯一名稱。
+**Azure 容器註冊表中的儲存函式庫名稱**。 提供具有映射的 Azure 容器註冊表儲存庫的名稱。 將映射推送到註冊表時,可以指定存儲庫的名稱。 您可以通過存[取 容器註冊表](https://azure.microsoft.com/services/container-registry/) > **儲存庫頁**來查找儲存庫的名稱。 有關詳細資訊,請參閱在[Azure 門戶中檢視容器註冊表儲存庫](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)。 請注意,設置名稱后,無法更改它。 對帳戶中的每個產品/服務使用唯一名稱。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>產品/服務新版本的影像標籤
 
 發佈更新時,客戶必須能夠自動從 Azure 應用商店獲取更新。 如果他們不想更新,他們必須能夠保留您的映射的特定版本。 通過在每次更新圖像時添加新圖像標記來執行此操作。
 
-**影像標籤**。 此欄位必須包含指向所有受支援平臺上映像的最新版本**的最新**標記。 它還必須包含一個版本標記(例如,從xx.xx.xx 開始,其中xx是數位)。 客戶應使用[清單標記](https://aka.ms/GitHubmanifest-tool)來定位多個平臺。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 所有清單標記(最新標記除外)必須以 X.Y 或 X.Y.Z- 開頭,其中 X、Y 和 Z 是整數。 例如,如果最新的標記指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32,則需要將這六個標記添加到此字段中。 有關標記和版本控制的詳細資訊,請參閱[準備 IoT Edge 模組技術資產。](https://aka.ms/PrepareIoTEdgeModTechAssets)
+**影像標籤**。 此欄位必須包含指向所有受支援平臺上映像的最新版本**的最新**標記。 它還必須包含一個版本標記(例如,從xx.xx.xx 開始,其中xx是數位)。 客戶應使用[清單標記](https://github.com/estesp/manifest-tool)來定位多個平臺。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 所有清單標記(最新標記除外)必須以 X.Y 或 X.Y.Z- 開頭,其中 X、Y 和 Z 是整數。 例如,如果最新的標記指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32,則需要將這六個標記添加到此字段中。 有關標記和版本控制的詳細資訊,請參閱[準備 IoT Edge 模組技術資產。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)
 
 ### <a name="default-deployment-settings-optional"></a>預設部署設定 (選擇性的)
 
@@ -418,7 +418,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 
 **預設路由**。 IoT 邊緣中心管理模組、IoT 中心和設備之間的通信。 您可以在模組和 IoT 中心之間設定數據輸入和輸出的路由,從而使您能夠靈活地在需要的消息位置發送消息,而無需其他服務來處理消息或編寫其他代碼。 路由使用名稱/值對構造。 您最多可以定義五個預設路由名稱,每個路由名稱最多為 512 個字元。
 
-請務必在路由值中使用正確的[路由語法](https://aka.ms/DeclareRoutesAzureIoT)(通常定義為 FROM/消息/* into $upstream)。 這意味著任何模組發送的任何消息都發送到 IoT 中心。 要參考您的模組,請使用其預設模組名稱,該名稱將是您的**優惠名稱**,沒有空格或特殊字元。 要參考其他尚不為人所知的模組,請使用<FROM_MODULE_NAME>約定,讓您的客戶知道他們需要更新此資訊。 有關 IoT 邊緣路由的詳細資訊,請參閱[宣告路由](https://aka.ms/DeclareRoutesAzureIoT)。
+請務必在路由值中使用正確的[路由語法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)(通常定義為 FROM/消息/* into $upstream)。 這意味著任何模組發送的任何消息都發送到 IoT 中心。 要參考您的模組,請使用其預設模組名稱,該名稱將是您的**優惠名稱**,沒有空格或特殊字元。 要參考其他尚不為人所知的模組,請使用<FROM_MODULE_NAME>約定,讓您的客戶知道他們需要更新此資訊。 有關 IoT 邊緣路由的詳細資訊,請參閱[宣告路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。
 
 例如,如果模組 ContosoModule 偵聽 ContosoInput 上的輸入和 ContosoOutput 的輸出資料,則定義以下兩個預設路由是有意義的:
 
@@ -427,7 +427,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 - 名稱#2:從康托索模組到雲
 - 值#2:從 /消息/模組/Contonso 模組/輸出/contoso 輸出到$upstream
 
-**預設模組孿生所需屬性**。 模組孿生是 IoT 中心中的 JSON 文檔,用於儲存模組實例的狀態資訊,包括所需的屬性。 所需屬性與報告的屬性一起使用,以同步模組配置或條件。 解決方案後端可設定所需的屬性,模組可以讀取它們。 模組還可以接收所需屬性中的更改通知。 使用最多五個名稱/值對創建所需的屬性,每個預設值必須小於 512 個字元。 您最多可以定義五個名稱/值孿生所需屬性。 雙所需屬性的值必須為有效的 JSON,非轉義,沒有最大嵌套層次結構為四個級別的陣列。 在預設值所需的參數沒有意義(例如,客戶伺服器的 IP 位址)的情況下,可以添加參數作為預設值。 要瞭解有關雙所需屬性的詳細資訊,請參閱[定義或更新所需屬性](https://aka.ms/DefineUpdateProperties)。
+**預設模組孿生所需屬性**。 模組孿生是 IoT 中心中的 JSON 文檔,用於儲存模組實例的狀態資訊,包括所需的屬性。 所需屬性與報告的屬性一起使用,以同步模組配置或條件。 解決方案後端可設定所需的屬性,模組可以讀取它們。 模組還可以接收所需屬性中的更改通知。 使用最多五個名稱/值對創建所需的屬性,每個預設值必須小於 512 個字元。 您最多可以定義五個名稱/值孿生所需屬性。 雙所需屬性的值必須為有效的 JSON,非轉義,沒有最大嵌套層次結構為四個級別的陣列。 在預設值所需的參數沒有意義(例如,客戶伺服器的 IP 位址)的情況下,可以添加參數作為預設值。 要瞭解有關雙所需屬性的詳細資訊,請參閱[定義或更新所需屬性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。
 
 例如,如果模組使用雙所需屬性支援動態可配置的刷新率,則定義以下預設孿生所需屬性是有意義的:
 
@@ -441,7 +441,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據。 例如,
 - 名稱#1:ACCEPT_EULA
 - 值#1:Y
 
-**預設容器建立選項**。 容器建立選項直接用於創建 IoT 邊緣模組 Docker 容器。 IoT 邊緣支援 Docker 引擎 API 創建容器選項。 查看[List 容器](https://aka.ms/ContainerList)中的所有選項。 創建選項欄位必須有效 JSON、非轉義字元和少於 512 個字元。
+**預設容器建立選項**。 容器建立選項直接用於創建 IoT 邊緣模組 Docker 容器。 IoT 邊緣支援 Docker 引擎 API 創建容器選項。 查看[List 容器](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)中的所有選項。 創建選項欄位必須有效 JSON、非轉義字元和少於 512 個字元。
 
 例如,如果模組需要連接埠,請定義以下建立選項:
 

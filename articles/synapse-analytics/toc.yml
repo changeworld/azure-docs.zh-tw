@@ -370,24 +370,20 @@
       items:
         - name: 匯入資料倉儲
           items:
-            - name: T-SQL
+            - name: SQL
               items:
+                - name: Azure Data Lake 儲存體
+                  href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Data Factory
+                  href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Azure Databricks
+                  href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: SSIS
+                  href: /sql/integration-services/load-data-to-sql-data-warehouse
                 - name: 紐約計程車資料
                   href: ./sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Contoso 公用資料
                   href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Azure Data Lake 儲存體
-                  href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Azure Databricks
-                  href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Data Factory
-                  items:
-                    - name: SQL 集區
-                      href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: SSIS
-                  items:
-                    - name: SQL 集區
-                      href: /sql/integration-services/load-data-to-sql-data-warehouse
                 - name: 載入 WideWorldImporters
                   href: ./sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 使用複製活動
@@ -870,7 +866,7 @@
       href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-sqldw/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

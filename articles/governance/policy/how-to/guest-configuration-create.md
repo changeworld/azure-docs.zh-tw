@@ -3,12 +3,12 @@ title: 如何建立 Windows 建立賓設定策略
 description: 瞭解如何為 Windows 創建 Azure 策略來賓配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313989"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757408"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 建立賓設定策略
 
@@ -25,6 +25,11 @@ ms.locfileid: "81313989"
 
 > [!IMPORTANT]
 > 具有來賓配置的自定義策略是預覽功能。
+>
+> 在 Azure 虛擬機器中執行審核需要來賓配置擴展。
+> 要大規模部署延伸,請配置以下策略定義:
+>   - 部署必要條件，以在 Windows VM 上啟用客體設定原則。
+>   - 部署必要條件，以在 Linux VM 上啟用客體設定原則。
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 
@@ -176,8 +181,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+將此檔與名稱`config.ps1`儲存在項目資料夾中。 通過在終端中執行`./config.ps1`在 PowerShell 中運行它。 將創建新的 mof 檔案。
 
 該`Node AuditBitlocker`命令在技術上不是必需的,但它生成`AuditBitlocker.mof`名為 而不是預設值的`localhost.mof`檔。 使 .mof 檔名遵循配置,因此在大規模運行時很容易組織許多檔。
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c348a172b16e12334d33cf2718609694147fdce3
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674523"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732668"
 ---
 # <a name="power-bi-app-creation-overview"></a>電源 BI 應用建立概述
 
@@ -69,7 +69,7 @@ ms.locfileid: "80674523"
 2. 在 Power BI 中創建和測試應用。
 3. 收到應用安裝 Web 位址後,將其添加到合作夥伴中心**的技術配置**頁面。
 
-在 Power BI 中建立與測試應用後,請儲存應用程式安裝 Web 位址,因為您需要它才能[創建 Power BI 應用產品/](https://aka.ms/AzureCreatePBIServiceApp)
+在 Power BI 中建立與測試應用後,請儲存應用程式安裝 Web 位址,因為您需要它才能[創建 Power BI 應用產品/](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
 
 ### <a name="business-requirements"></a>商業需求
 
@@ -81,4 +81,4 @@ ms.locfileid: "80674523"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在合作夥伴中心創建 Power BI 應用產品/服務](https://aka.ms/AzureCreatePBIServiceApp)
+- [在合作夥伴中心創建 Power BI 應用產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

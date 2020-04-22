@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396076"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756618"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
@@ -90,7 +90,14 @@ Azure 活動目錄 B2C (Azure AD B2C)[自訂策略](custom-policy-overview.md)�
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
 | [上下文:KMSI] | 指示是否選中[「保持我登錄](custom-policy-keep-me-signed-in.md)」複選框。 |  true |
 
-### <a name="non-protocol-parameters"></a>非通訊協定參數
+### <a name="claims"></a>Claims 
+
+| 宣告 | 描述 | 範例 |
+| ----- | ----------- | --------|
+| [索賠:聲明類型] | 策略檔或父策略檔中的「聲明架構」部分中已定義的聲明類型的標識符。  例如:`{Claim:displayName}``{Claim:objectId}`或 。 | 聲明類型值。|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2 鍵值參數
 
 OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者旅程圖中的宣告。 例如，來自應用程式的要求可能包含名稱為 `app_session`、`loyalty_number` 或任何自訂查詢字串的查詢字串參數。
 
@@ -118,6 +125,7 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 | [SAML:允許建立] | 屬性`AllowCreate`值,來自 SAML`NameIDPolicy`請求的元素。 | True |
 | [薩姆·斯圖爾:強制奧特恩] | 屬性`ForceAuthN`值,來自 SAML`AuthnRequest`請求的元素。 | True |
 | [SAML:供應商名稱] | 屬性`ProviderName`值,來自 SAML`AuthnRequest`請求的元素。| Contoso.com |
+| [SAML:中繼狀態] | `RelayState` 查詢字串參數。| 
 
 ## <a name="using-claim-resolvers"></a>使用宣告解析器
 

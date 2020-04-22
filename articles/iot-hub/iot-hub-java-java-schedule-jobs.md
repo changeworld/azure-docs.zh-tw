@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 9227192b2f7c554943fb3716ba1d1066f814c447
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 5e3f4f4aedb0bc3fb1f8ea11001b08daa57aafc1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110331"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732492"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>排定及廣播作業 (Java)
 
@@ -46,20 +47,20 @@ ms.locfileid: "77110331"
 
 **simulated-device** 會連線至 IoT 中樞，實作 **lockDoor** 直接方法，並處理所需的屬性變更。
 
-**計畫作業**，使用作業調用**lockDoor**直接方法，並在多個設備上更新設備孿生所需屬性。
+**計劃作業**,使用作業調用**lockDoor**直接方法,並在多個設備上更新設備孿生所需屬性。
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文提供可用來建置裝置和後端應用程式之 Azure IoT SDK 的相關資訊。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [JAVA SE 開發工具組 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). 請務必選取 [長期支援]**** 下的 [Java 8]****，以取得 JDK 8 的下載。
+* [Java SE 開發工具套件 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). 請務必選取 [長期支援]**** 下的 [Java 8]****，以取得 JDK 8 的下載。
 
 * [馬文 3](https://maven.apache.org/download.cgi)
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定，該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定,該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -71,7 +72,7 @@ ms.locfileid: "77110331"
 
 您也可以使用[適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\) 工具將裝置新增至 IoT 中樞。
 
-## <a name="get-the-iot-hub-connection-string"></a>獲取 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
 
 [!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
@@ -87,17 +88,17 @@ ms.locfileid: "77110331"
 
 若要建立應用程式：
 
-1. 在開發電腦上，創建一個稱為**iot-java-計畫作業的**空資料夾。
+1. 在開發電腦上,創建一個稱為**iot-java-計劃作業的**空資料夾。
 
-2. 在**iot-java-計畫作業**資料夾中，使用命令提示符處的以下命令創建稱為**計畫作業**的 Maven 專案。 注意，這是一個單一且非常長的命令：
+2. 在**iot-java-計畫作業**資料夾中,使用命令提示符處的以下命令創建稱為**計畫作業**的 Maven 專案。 注意，這是一個單一且非常長的命令：
 
    ```cmd/sh
    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=schedule-jobs -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-3. 在命令提示符下，導航到**計畫作業**資料夾。
+3. 在命令提示符下,導航到**計畫作業**資料夾。
 
-4. 使用文字編輯器，在**計畫作業**資料夾中打開**pom.xml**檔，並將以下依賴項添加到**依賴項**節點。 此依賴項使您能夠在應用中使用**iot 服務用戶端**包與 IoT 中心進行通信：
+4. 使用文字編輯器,在**計畫作業**文件中打開**pom.xml**檔,並將以下依賴項添加到**依賴項**節點。 此相依項讓您能夠在應用程式中使用**iot 服務客戶端**套件與 IoT 中心進行通訊:
 
     ```xml
     <dependency>
@@ -129,9 +130,9 @@ ms.locfileid: "77110331"
     </build>
     ```
 
-6. 保存並關閉**pom.xml**檔。
+6. 保存並關閉**pom.xml**檔案。
 
-7. 使用文字編輯器，打開**計畫作業\src_main_java_com_mycompany_App.java**檔。
+7. 使用文字編輯器,打開**計畫作業\src_main_java_com_mycompany_App.java**檔。
 
 8. 在此檔案中新增下列 **import** 陳述式：
 
@@ -151,7 +152,7 @@ ms.locfileid: "77110331"
     import java.util.UUID;
     ```
 
-9. 將以下類級變數添加到**App**類。 替換為`{youriothubconnectionstring}`以前在[獲取 IoT 中心連接字串中複製的 IoT 中心連接字串](#get-the-iot-hub-connection-string)：
+9. 將以下類級變數添加到**App**類。 取代為`{youriothubconnectionstring}`以前在[取得 IoT 中心連接字串中複製的 IoT 中心連接字串](#get-the-iot-hub-connection-string):
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -266,7 +267,7 @@ ms.locfileid: "77110331"
     public static void main( String[] args ) throws Exception
     ```
 
-15. 要按順序運行和監視兩個作業，請將**主**方法中的代碼替換為以下代碼：
+15. 要依順序執行與監視兩個作業,請將**主**方法中的代碼取代為以下代碼:
 
     ```java
     // Record the start time
@@ -293,9 +294,9 @@ ms.locfileid: "77110331"
     System.out.println("Shutting down schedule-jobs app");
     ```
 
-16. 保存並關閉**計畫作業\src\main_java_com_mycompany_App.java**檔
+16. 儲存並關閉**計畫工作\src\main_java_com_mycompany_App.java**檔案
 
-17. 建置 **schedule-jobs** 應用程式，並更正所有錯誤。 在命令提示符下，導航到**計畫作業**資料夾並運行以下命令：
+17. 建置 **schedule-jobs** 應用程式，並更正所有錯誤。 在指令提示符下,導覽到**專案工作**資料夾並執行以下指令:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -305,15 +306,15 @@ ms.locfileid: "77110331"
 
 在本節中，您會建立 Java 主控台應用程式來處理從 IoT 中樞傳送的所需屬性，以及實作直接方法呼叫。
 
-1. 在**iot-java-計畫作業**資料夾中，使用命令提示符處的以下命令創建稱為**類比設備的**Maven 專案。 注意，這是一個單一且非常長的命令：
+1. 在**iot-java-計畫作業**資料夾中,使用命令提示符處的以下命令創建稱為**模擬設備的**Maven 專案。 注意，這是一個單一且非常長的命令：
 
    ```cmd/sh
    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-2. 在命令提示符下，導航到**類比設備**資料夾。
+2. 在命令提示符下,導航到**模擬設備**資料夾。
 
-3. 使用文字編輯器，在**類比設備**資料夾中打開**pom.xml**檔，並將以下依賴項添加到**依賴項**節點。 此依賴項使您能夠在應用中使用**iot 設備用戶端**包與 IoT 中心進行通信：
+3. 使用文字編輯器,在**模擬設備**資料夾中打開**pom.xml**檔,並將以下依賴項添加到**依賴項**節點。 此相依項讓您能夠在應用程式使用**iot 裝置客戶端**套件與 IoT 中心進行通訊:
 
     ```xml
     <dependency>
@@ -326,7 +327,7 @@ ms.locfileid: "77110331"
     > [!NOTE]
     > 您可以使用 [Maven 搜尋](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)來檢查最新版的 **iot-device-client**。
 
-4. 將以下依賴項添加到**依賴項**節點。 此依賴項為 Apache [SLF4J](https://www.slf4j.org/)日誌記錄外觀配置 NOP，設備用戶端 SDK 用於實現日誌記錄。 此配置是可選的，但如果省略它，則在運行應用時，在主控台中可能會看到警告。 有關在設備用戶端 SDK 中登錄的詳細資訊，請參閱[在](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)JAVA 讀取檔的*Azure IoT 設備 SDK 的示例中*登錄。
+4. 將以下依賴項添加到**依賴項**節點。 此依賴項為 Apache [SLF4J](https://www.slf4j.org/)日誌記錄外觀配置 NOP,設備用戶端 SDK 用於實現日誌記錄。 此配置是可選的,但如果省略它,則在運行應用時,在控制台中可能會看到警告。 有關在設備用戶端 SDK 中登錄的詳細資訊,請參閱[在](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)Java 讀取檔的*Azure IoT 設備 SDK 的範例中*登入。
 
     ```xml
     <dependency>
@@ -354,9 +355,9 @@ ms.locfileid: "77110331"
     </build>
     ```
 
-6. 保存並關閉**pom.xml**檔。
+6. 保存並關閉**pom.xml**檔案。
 
-7. 使用文字編輯器打開**類比設備\src_main_java_com_mycompany_App.java**檔。
+7. 使用文字編輯器打開**模擬設備\src_main_java_com_mycompany_App.java**檔。
 
 8. 在此檔案中新增下列 **import** 陳述式：
 
@@ -369,7 +370,7 @@ ms.locfileid: "77110331"
     import java.util.Scanner;
     ```
 
-9. 將以下類級變數添加到**App**類。 替換為`{yourdeviceconnectionstring}`以前在[IoT 中心部分中註冊新設備中](#register-a-new-device-in-the-iot-hub)複製的設備連接字串：
+9. 將以下類級變數添加到**App**類。 取代為`{yourdeviceconnectionstring}`以前在[IoT 中心部分中註冊新裝置中](#register-a-new-device-in-the-iot-hub)複製的裝置連接字串:
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -433,7 +434,7 @@ ms.locfileid: "77110331"
     public static void main( String[] args ) throws IOException, URISyntaxException
     ```
 
-14. 將**主**方法中的代碼替換為以下代碼，以便：
+14. 將**主**方法中的代碼取代為以下代碼,以便:
     * 建立與 IoT 中樞通訊的裝置用戶端。
     * 建立**裝置**物件以儲存裝置對應項屬性。
 
@@ -481,9 +482,9 @@ ms.locfileid: "77110331"
     scanner.close();
     ```
 
-17. 保存並關閉**類比設備\src\main_java_com_mycompany_App.java**檔。
+17. 保存並關閉**模擬設備\src\main_java_com_mycompany_App.java**檔。
 
-18. 建置 **simulated-device** 應用程式，並更正所有錯誤。 在命令提示符下，導航到**類比設備**資料夾並運行以下命令：
+18. 建置 **simulated-device** 應用程式，並更正所有錯誤。 在指令提示符下,導航到**模擬裝置**資料夾並執行以下指令:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -493,7 +494,7 @@ ms.locfileid: "77110331"
 
 您現在已經準備好執行主控台應用程式。
 
-1. 在**類比設備**資料夾中的命令提示符下，運行以下命令以啟動設備應用以偵聽所需的屬性更改和直接方法調用：
+1. 在**模擬裝置**資料夾中的指令提示符下,執行以下指令以啟動裝置應用以偵聽所需的屬性更改和直接方法呼叫:
 
    ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
@@ -519,6 +520,6 @@ ms.locfileid: "77110331"
 
 使用下列資源來了解如何：
 
-* 使用[IoT 中心](quickstart-send-telemetry-java.md)教程從設備發送遙測資料。
+* 使用[IoT 中心](quickstart-send-telemetry-java.md)教程從設備發送遙測數據。
 
 * 以互動方式控制裝置 (例如，從使用者控制的應用程式開啟風扇)，請參閱[使用直接方法](quickstart-control-device-java.md)教學課程

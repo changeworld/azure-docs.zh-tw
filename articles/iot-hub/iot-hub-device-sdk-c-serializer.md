@@ -8,16 +8,17 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
-ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75429374"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767021"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>適用於 C 的 Azure IoT 裝置 SDK - 深入了解序列化程式
 
-本系列的第一篇文章介紹了[C 的 Azure IoT 設備 SDK 簡介](iot-hub-device-sdk-c-intro.md)。下一篇文章提供了[C -- IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)的 Azure IoT 設備 SDK 的更詳細說明。 本文將提供「序列化程式」 **** 程式庫這個最後元件的更詳細描述，來完成 SDK 的涵蓋範圍。
+這個系列的第一篇文章介紹了[C 的 Azure IoT 裝置 SDK 簡介](iot-hub-device-sdk-c-intro.md)。下一篇文章提供了[C -- IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)的 Azure IoT 設備 SDK 的更詳細說明。 本文將提供「序列化程式」 **** 程式庫這個最後元件的更詳細描述，來完成 SDK 的涵蓋範圍。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -53,7 +54,7 @@ END_NAMESPACE(WeatherStation);
 
 模型除了包含您可以從「IoT 中樞」接收的訊息 (動作**) 之外，也包含您可以輸入到「IoT 中樞」(資料**) 之事件的定義。 如同您在範例中看到的，事件具有類型和名稱。動作會有一個名稱和選擇性的參數 (各有其類型)。
 
-此範例中並未示範 SDK 支援的其他資料類型。 我們將在稍後討論。
+此示例中未演示的是 SDK 支援的其他數據類型。 我們將在稍後討論。
 
 > [!NOTE]
 > 「IoT 中樞」會將裝置傳送給它的資料視為「事件」**，而模型化語言則是會將它視為「資料」**(使用 **WITH_DATA** 來定義)。 同樣地，「IoT 中樞」會將您傳送給裝置的資料視為「訊息」**，而模型化語言則是會將它視為「動作」**(使用 **WITH_ACTION** 來定義)。 請注意，在本文中可能會交替使用這些詞彙。
@@ -70,8 +71,8 @@ END_NAMESPACE(WeatherStation);
 | int |32 位元整數 |
 | FLOAT |單精確度浮點數 |
 | long |長整數 |
-| int8\_t |8 位整數 |
-| int16\_t |16 位整數 |
+| int8\_t |8 位元整數 |
+| int16\_t |16 位元整數 |
 | int32\_t |32 位元整數 |
 | int64\_t |64 位元整數 |
 | bool |boolean |
@@ -81,7 +82,7 @@ END_NAMESPACE(WeatherStation);
 | EDM\_BINARY |BINARY |
 | DECLARE\_STRUCT |複雜資料類型 |
 
-我們先從最後一個資料類型開始討論。 **DECLARE\_STRUCT** 可讓您定義複雜的資料類型，也就是其他基本類型的群組。 這些群組可讓我們定義看起來像這樣的模型：
+讓我們從最後一個數據類型開始。 **DECLARE\_STRUCT** 可讓您定義複雜的資料類型，也就是其他基本類型的群組。 這些群組可讓我們定義看起來像這樣的模型：
 
 ```C
 DECLARE_STRUCT(TestType,
@@ -139,7 +140,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-基本上，我們是將值指派給 **Test** 結構的每個成員，然後呼叫 **SendAsync** 將 **Test** 資料事件傳送到雲端。 **SendAsync** 是將單一資料事件傳送到 IoT 中樞的協助程式函式：
+基本上,我們將為**測試**結構的每個成員分配一個值,然後調用**SendAsync**將**測試**數據事件發送到雲。 **SendAsync** 是將單一資料事件傳送到 IoT 中樞的協助程式函式：
 
 ```C
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -251,7 +252,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-在範例程式碼中，我們將針對溫度和溼度使用硬式編碼值，但請想像成我們實際上是從控溫器上對應的感應器取樣來擷取這些值。
+我們將在示例代碼中使用硬編碼值的溫度和濕度,但假設我們實際上是通過採樣恒溫器上的相應感測器來檢索這些值。
 
 上述程式碼使用先前介紹的協助程式 **GetDateTimeOffset** 。 此程式碼會將序列化與傳送事件的工作明確分隔，原因在稍後會漸趨明朗。 先前的程式碼會將溫度事件以序列化方式傳送至緩衝區。 然後，**sendMessage** 則是一個協助程式函式 (包含在 **simplesample\_amqp** 中)，會將事件傳送到「IoT 中樞」：
 
@@ -270,7 +271,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-此程式碼是前一節所述之 **SendAsync** 協助程式的子集，所以我們不會在此贅述。
+此代碼是上一節中描述的**SendAsync**幫助器的子集,因此我們不會再在此處介紹它。
 
 我們執行先前的程式碼以傳送溫度事件時，事件的序列化形式會傳送到 IoT 中樞：
 
@@ -278,7 +279,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-我們發送的溫度，這是**類型溫度事件**，並且結構包含**溫度**和**時間**成員。 這會直接反映在序列化資料中。
+我們發送的溫度,這是**類型溫度事件**,並且結構包含**溫度**和**時間**成員。 這會直接反映在序列化資料中。
 
 同樣地，我們可以利用此程式碼來傳送溼度事件：
 
@@ -291,7 +292,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-傳送到 IoT 中樞的序列化的形式如下所示：
+傳送到 IoT 中心的序列化表單所示:
 
 ```C
 {"Humidity":45, "Time":"2015-09-17T18:45:56Z"}
@@ -301,7 +302,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 
 您可以使用此模型來想像如何輕鬆地加入其他事件。 您會使用 **DECLARE\_STRUCT** 來定義更多結構，並使用 **WITH\_DATA** 將相對應的事件包含在模型中。
 
-現在，我們要修改模型，讓它包含相同的資料，但具有不同的結構。
+現在,讓我們修改模型,使其包含相同的數據,但結構不同。
 
 ### <a name="model-2"></a>模型 2
 
@@ -315,9 +316,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-在這種情況下，我們已消除**DECLARE\_STRUCT**宏，並且只是使用建模語言中的簡單類型從方案中定義資料項目。
+在這種情況下,我們已消除**DECLARE\_STRUCT**宏,並且只是使用建模語言中的簡單類型從方案中定義數據項。
 
-現在請忽略**時間**事件。 忽略該事件之後，以下是要輸入 **溫度**的程式碼：
+現在請忽略**時間**事件。 除此之外,下面是進入**溫度**的代碼:
 
 ```C
 time_t now;
@@ -369,7 +370,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 
 [ {"Temperature":75}, {"Humidity":45} ]
 
-換句話說，您可以預期此程式碼與分別傳送 **Temperature** 和 **Humidity** 一樣。 這樣就可以方便將兩個事件在相同的呼叫中傳遞到 **SERIALIZE** 。 不過，事實並非如此。 上述程式碼會改為將這個單一資料事件傳送到 IoT 中樞：
+換句話說，您可以預期此程式碼與分別傳送 **Temperature** 和 **Humidity** 一樣。 在同一調用中將兩個事件傳遞給**SERIALIZE**只是一種便利性。 然而,事實並非如此。 上述程式碼會改為將這個單一資料事件傳送到 IoT 中樞：
 
 {"Temperature":75, "Humidity":45}
 
@@ -383,7 +384,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-此外，我們沒有將 **Temperature** 和 **Humidity** 位於相同結構中的這些事件模型化：
+更重要的是,我們沒有對**溫度**和**濕度**位於同一結構中的這些事件進行建模:
 
 ```C
 DECLARE_STRUCT(TemperatureAndHumidityEvent,
@@ -398,7 +399,7 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 
 如果我們使用了這個模型，就會更容易了解如何在相同的序列化訊息中傳送 **Temperature** 和 **Humidity**。 不過，如果您是使用模型 2 將兩個資料事件都傳遞至 **SERIALIZE** ，可能就無法突顯它以該方式運作的原因。
 
-如果您知道 **序列化程式** 程式庫所做的假設，您可以更容易了解這種行為。 為了理解這一點，讓我們回到我們的模型：
+如果您知道 **序列化程式** 程式庫所做的假設，您可以更容易了解這種行為。 為了理解這一點,讓我們回到我們的模型:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -408,7 +409,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-請以物件導向的觀點思考此模型。 在這種情況下，我們正在對物理設備（恒溫器）進行建模，該設備包括**溫度**和**濕度**等屬性。
+請以物件導向的觀點思考此模型。 在這種情況下,我們正在對物理設備(恒溫器)進行建模,該設備包括**溫度**和**濕度**等屬性。
 
 我們可以利用類似以下的程式碼來傳送模型的整個狀態：
 
@@ -425,31 +426,31 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-有時，您可能只想將模型的「部分」 ** 屬性傳送到雲端 (尤其是當您的模型包含大量資料事件的時候)。 這時，只傳送資料事件的子集會相當有用，就像我們先前的範例一樣：
+有時，您可能只想將模型的「部分」 ** 屬性傳送到雲端 (尤其是當您的模型包含大量資料事件的時候)。 只送出資料事件的子集很有用,例如在前面的範例中:
 
 ```C
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-這會產生如同我們使用 **Temperature** 和 **Time** 成員來定義 **TemperatureEvent** 一樣的完全相同 (就像我們在模型 1 所做的一樣) 序列化事件。 在這種情況下，我們能夠使用不同的模型（模型 2）生成完全相同的序列化事件，因為我們以不同的方式調用**SERIALIZE。**
+這會產生如同我們使用 **Temperature** 和 **Time** 成員來定義 **TemperatureEvent** 一樣的完全相同 (就像我們在模型 1 所做的一樣) 序列化事件。 在這種情況下,我們能夠使用不同的模型(模型 2)生成完全相同的序列化事件,因為我們以不同的方式調用**SERIALIZE。**
 
 重點是，如果您將多個資料事件傳送給 **SERIALIZE** ，則它會假設每個事件都是單一 JSON 物件中的一個屬性。
 
-最佳方法取決於您及您對模型的思考方式。 如果您要將「事件」傳送至雲端，且每個事件都包含一組已定義的屬性，則第一種方法較為適合。 在該情況下，您會使用 **DECLARE\_STRUCT** 來定義每個事件的結構，然後利用 **WITH\_DATA** 巨集將它們包含在模型中。 然後您會依照我們在上述第一個範例中使用的方法來傳送每個事件。 在此方法中，您只會將單個資料事件傳遞給**SERIALIZER。**
+最佳方法取決於您及您對模型的思考方式。 如果要向雲發送"事件",並且每個事件都包含一組定義的屬性,則第一種方法很有意義。 在該情況下，您會使用 **DECLARE\_STRUCT** 來定義每個事件的結構，然後利用 **WITH\_DATA** 巨集將它們包含在模型中。 然後您會依照我們在上述第一個範例中使用的方法來傳送每個事件。 在此方法中,您只會將單個數據事件傳遞給**SERIALIZER。**
 
-如果您以物件導向的方式思考模型，則第二種方法可能比較適合您。 在此情況下，使用 **WITH\_DATA** 來定義的元素是您物件的「屬性」。 您可以依據想要傳送至雲端的「物件」狀態詳細程度而定，隨意傳遞事件的任何子集給 **SERIALIZE** 。
+如果您以物件導向的方式思考模型，則第二種方法可能比較適合您。 在此情況下，使用 **WITH\_DATA** 來定義的元素是您物件的「屬性」。 您可以將任何事件子集傳遞給喜歡的**SERIALIZE,** 具體取決於要發送到雲端的「物件」 狀態。
 
 沒有絕對正確或錯誤的方法。 請務必了解 **序列化程式** 程式庫的運作方式，並挑選最適合您需求的模型化方法。
 
 ## <a name="message-handling"></a>訊息處理
 
-到目前為止，本文只討論傳送事件到 IoT 中樞，尚未處理接收訊息。 原因是，關於接收消息我們需要瞭解的內容在 C 的[Azure IoT 設備 SDK](iot-hub-device-sdk-c-intro.md)中已基本涵蓋。從該文章中回顧，您通過註冊消息回呼函數來處理郵件：
+到目前為止，本文只討論傳送事件到 IoT 中樞，尚未處理接收訊息。 原因是,關於接收消息我們需要了解的內容在 C 的[Azure IoT 設備 SDK](iot-hub-device-sdk-c-intro.md)中已基本涵蓋。從該文章中回顧,您通過註冊訊息回檔函數來處理郵件:
 
 ```C
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
 ```
 
-然後撰寫在接收訊息時所叫用的回呼函式：
+然後編寫收到訊息時呼叫的回檔函數:
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -535,9 +536,9 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 ## <a name="macro-configuration"></a>巨集組態
 
-如果您使用 **序列化程式** 程式庫，需注意的 SDK 重點位於 azure-c-shared-utility 程式庫中。
+如果使用**序列化器**庫,則 AZURE-c 共用實用程式庫中可以找到要注意的 SDK 的重要組成部分。
 
-如果從 GitHub 克隆了 Azure-iot-sdk-c 存儲庫併發布了`git submodule update --init`該命令，那麼您將在此處找到此共用實用程式庫：
+如果從 GitHub 克隆了 Azure-iot-sdk-c`git submodule update --init`儲存庫並發布了 該命令,那麼您將在此處找到此共享實用程式庫:
 
 ```C
 .\\c-utility
@@ -555,9 +556,9 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
   ![Visual Studio 解決方案 maco_utils_h_generator 的螢幕擷取畫面](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-此方案中的程式會產生 **macro\_utils.h** 檔案。 SDK 有一個隨附的預設 macro\_utils.h 檔案。 這個解決方案可讓您修改部分參數，然後根據這些參數重新建立標頭檔。
+此方案中的程式會產生 **macro\_utils.h** 檔案。 SDK 中包含預設\_巨集utils.h 檔。 這個解決方案可讓您修改部分參數，然後根據這些參數重新建立標頭檔。
 
-要關注的兩個關鍵參數是**n算術**參數和**nMacro 參數**，它們在宏\_utils.tt中的這兩行中定義：
+要關注的兩個關鍵參數是**n算術**參數和**nMacro**參數\_,它們在宏 utils.tt 中的這兩行中定義:
 
 ```C
 <#int nArithmetic=1024;#>
@@ -653,7 +654,7 @@ serializer_init(NULL);
 
 此動作必須正好在呼叫 **IoTHubClient\_CreateFromConnectionString** 之前執行。
 
-同樣地，當您使用完該程式庫時，最後呼叫的對象會是 **serializer\_deinit**：
+同樣,當您使用完庫後,您最後一次呼叫是**序列化\_器 deinit:**
 
 ```C
 serializer_deinit();
@@ -663,9 +664,9 @@ serializer_deinit();
 
 ## <a name="next-steps"></a>後續步驟
 
-本文詳細介紹了**Azure IoT 設備 SDK 中包含的序列****化器**庫的獨特方面。通過提供的資訊，您應該能夠很好地瞭解如何使用模型發送事件和接收來自 IoT 中心的消息。
+本文詳細介紹了**Azure IoT 設備 SDK 中包含的序列****化器**庫的獨特方面。通過提供的資訊,您應該能夠很好地瞭解如何使用模型發送事件和接收來自IoT中心的消息。
 
-本文還總結了有關如何使用**Azure IoT 設備 SDK 為 C**開發應用程式的三部分系列。這應該足夠獲得足夠的資訊，不僅説明您入門，而且讓您全面瞭解 API 的工作原理。 如需其他資訊，還有一些 SDK 中的範例未涵蓋在本文中。 除此之外，[Azure IoT SDK 文件](https://github.com/Azure/azure-iot-sdk-c) \(英文\) 也是取得其他資訊的絕佳資源。
+本文還總結了有關如何使用**Azure IoT 設備 SDK 為 C**開發應用程式的三部分系列。這應該足夠獲得足夠的資訊,不僅説明您入門,而且讓您全面瞭解 API 的工作原理。 如需其他資訊，還有一些 SDK 中的範例未涵蓋在本文中。 除此之外，[Azure IoT SDK 文件](https://github.com/Azure/azure-iot-sdk-c) \(英文\) 也是取得其他資訊的絕佳資源。
 
 若要深入了解如何開發 IoT 中樞，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 

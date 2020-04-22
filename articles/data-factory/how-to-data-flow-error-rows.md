@@ -6,14 +6,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414363"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732693"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>處理資料工廠映射資料串流中的 SQL 截斷錯誤列
 
@@ -30,6 +30,9 @@ ms.locfileid: "81414363"
     ![影片資料流程 1](media/data-flow/error4.png)
     
 3. 問題是,影片標題不能全部適合只能容納 5 個字元的接收器列。 執行此資料串流時,您將收到以下的錯誤:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+
+本視訊介紹資料串流中設定錯誤行處理邏輯的範例:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
 ## <a name="how-to-design-around-this-condition"></a>如何圍繞此條件進行設計
 

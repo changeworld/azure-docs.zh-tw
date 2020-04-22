@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4a2102f442fc176762b7d5d69f7b367a94633ef5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383450"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758785"
 ---
 # <a name="connect-to-azure-storage-services"></a>連接到 Azure 儲存服務
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,7 +99,7 @@ ms.locfileid: "81383450"
 * 對於服務主體專案(如租戶ID和用戶端ID),請轉到**應用註冊**並選擇要使用的應用。 其相應的 **「概述」** 頁將包含這些專案。
 
 > [!IMPORTANT]
-> 如果您的儲存帳戶位於虛擬網路中,則僅支援**透過 SDK**創建 Blob、檔案共用、ADLS 第 1 代和 ADLS 第 2 代資料儲存。 要設定工作區存取儲存帳號的存取權限,請`grant_workspace_access`將參數`True`設定為 。
+> 如果您的儲存帳戶位於虛擬網路中,則僅支援**透過 SDK**創建資料儲存。
 
 以下範例展示如何將 Azure Blob 容器、Azure 檔共享和 Azure 資料儲存第 2 代作為資料儲存註冊。 有關其他儲存服務,請參閱[適用`register_azure_*`方法的參考文件](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)。
 
@@ -121,6 +121,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
+如果 Blob 容器位於虛擬網路中,`skip_validation=True`[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)請使用設定。
 
 #### <a name="file-share"></a>檔案共用
 
@@ -140,6 +141,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      account_name=account_name,
                                                      account_key=account_key)
 ```
+如果文件共用在虛擬網路中,請使用`skip_validation=True`[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)設定。 
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure 資料儲存第 2 代
 
@@ -176,7 +178,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
 1. 在 **'管理**' 的欄位中, 將選擇左邊窗格上的**資料儲存**。
-1. 選擇 **= 新的資料儲存**。
+1. 選取 [+ 新增資料存放區]  。
 1. 填寫新數據存儲的表單。 表單根據 Azure 儲存類型和身份驗證類型的選擇自行更新。
   
 您可以在[Azure 門戶](https://portal.azure.com)上找到填充窗體所需的資訊。 選擇左側窗格中的**存儲帳戶**,然後選擇要註冊的存儲帳戶。 **"概述"** 頁提供帳戶名稱、容器和檔共用名稱等資訊。 

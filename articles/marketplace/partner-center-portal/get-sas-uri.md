@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 50bda733b0bb8b0c98eb69a15ab3000ad278031c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265703"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732646"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>取得 VM 映像的共用存取簽章 URI
 
@@ -127,6 +127,6 @@ ms.locfileid: "81265703"
 
 ## <a name="next-step"></a>後續步驟
 
-如果您在建立 SAS URI 時遇到困難,請參閱[常見的 SAS URL 問題](https://aka.ms/AzureSAS_URI_FAQ)。 否則，請將 SAS URI 儲存到安全的位置以供稍後使用。 您需要它在合作夥伴中心發佈 VM 產品/服務。
+如果您在建立 SAS URI 時遇到困難,請參閱[常見的 SAS URL 問題](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)。 否則，請將 SAS URI 儲存到安全的位置以供稍後使用。 您需要它在合作夥伴中心發佈 VM 產品/服務。
 
-* [建立 Azure 虛擬機器產品/服務](https://aka.ms/Create_AzureVMoffer)
+* [建立 Azure 虛擬機器供應項目](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)

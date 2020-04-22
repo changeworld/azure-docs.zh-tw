@@ -85,8 +85,6 @@
           href: batch-aad-auth-management.md
         - name: 使用 Batch 安全地存取 Key Vault
           href: credential-access-key-vault.md
-    - name: 使用應用程式封裝
-      href: batch-application-packages.md
     - name: 將檔案和應用程式複製到集區節點
       items:
         - name: 將應用程式和資料複製到集區節點
@@ -259,7 +257,7 @@
       href: /azure/templates/microsoft.batch/batchaccounts
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-batch'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

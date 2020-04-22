@@ -1,40 +1,40 @@
 ---
-title: 用於自訂策略的 JSON 聲明轉換示例
+title: 用於自訂策略的 JSON 宣告檔範例
 titleSuffix: Azure AD B2C
-description: JSON 聲明 Azure 活動目錄 B2C 的標識體驗框架 （IEF） 架構的轉換示例。
+description: JSON 聲明 Azure 活動目錄 B2C 的標識體驗框架 (IEF) 架構的轉換示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187588"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756749"
 ---
 # <a name="json-claims-transformations"></a>JSON 宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了在 Azure 活動目錄 B2C（Azure AD B2C） 中使用標識體驗框架架構架構的 JSON 聲明轉換的示例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure 活動目錄 B2C(Azure AD B2C) 中使用標識體驗框架架構架構的 JSON 聲明轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
-## <a name="generatejson"></a>生成 Json
+## <a name="generatejson"></a>產生 Json
 
-使用聲明值或常量生成 JSON 字串。 點標記法之後的路徑字串用於指示將資料插入到 JSON 字串的位置。 按點拆分後，任何整數都被解釋為 JSON 陣列的索引，非整數被解釋為 JSON 物件的索引。
+使用聲明值或常量生成 JSON 字串。 點表示法之後的路徑字串用於指示將數據插入到 JSON 字串的位置。 按點拆分后,任何整數都被解釋為 JSON 陣列的索引,非整數被解釋為 JSON 物件的索引。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 點標記法之後的任何字串 | 字串 | 將聲明值插入到 JSON 的 JsonPath。 |
-| InputParameter | 點標記法之後的任何字串 | 字串 | 將不斷值字串值插入到 JSON 的 JsonPath。 |
+| InputClaim | 點表示法之後的任何字串 | 字串 | 將聲明值插入到 JSON 的 JsonPath。 |
+| InputParameter | 點表示法之後的任何字串 | 字串 | 將不斷值字串值插入到 JSON 的 JsonPath。 |
 | OutputClaim | outputClaim | 字串 | 生成的 JSON 字串。 |
 
-下面的示例基於"電子郵件"和"otp"以及常量字串的聲明值生成 JSON 字串。
+下面的範例基於「電子郵件」和「otp」以及常量字串的聲明值生成 JSON 字串。
 
 ```XML
 <ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
@@ -55,17 +55,17 @@ ms.locfileid: "78187588"
 
 ### <a name="example"></a>範例
 
-以下聲明轉換輸出 JSON 字串聲明，該聲明將成為發送到 SendGrid（協力廠商電子郵件供應商）的請求的主體。 JSON 物件的結構由輸入參數的點符號中的指示和輸入聲明的轉換聲明類型定義。 點標記法中的數位表示陣列。 這些值來自輸入要求的值和輸入參數的"值"屬性。
+以下聲明轉換輸出 JSON 字串聲明,該聲明將成為發送到 SendGrid(第三方電子郵件供應商)的請求的主體。 JSON 物件的結構由輸入參數的點符號中的指示和輸入聲明的轉換聲明類型定義。 點表示法中的數位表示陣列。 這些值來自輸入要求的值和輸入參數的"值"屬性。
 
-- 輸入聲明 ：
-  - **電子郵件**， 轉換聲明類型**個人化.0.到.0.電子郵件**：" "someone@example.com
-  - **otp**， 轉換聲明類型**個人化.0.dynamic_template_data.otp** "346349"
+- 輸入宣告 :
+  - **電子郵件**, 轉換聲明類型**個人化.0.到.0.電子郵件**:" "someone@example.com
+  - **otp**, 轉換聲明類型**個人化.0.dynamic_template_data.otp** "346349"
 - 輸入參數：
-  - **template_id**："d-4c56ffb40fa648b1aa682283df94f60"
-  - **從.email**："service@contoso.com"
+  - **template_id**:"d-4c56ffb40fa648b1aa682283df94f60"
+  - **從.email**service@contoso.com:" "
   - **個人化.0.主題**"Contoso 帳戶電子郵件驗證碼"
 - 輸出宣告：
-  - **請求正文**： JSON 值
+  - **要求正文**: JSON 值
 
 ```JSON
 {
@@ -123,7 +123,7 @@ ms.locfileid: "78187588"
 - 輸入參數：
     - **claimToExtract**：emailAddress
 - 輸出宣告：
-  - **提取索賠**：someone@example.com
+  - **擷取索賠**:someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -174,7 +174,7 @@ ms.locfileid: "78187588"
     - **jsonSourceKeyName**：key
     - **jsonSourceValueName**：value
 - 輸出宣告：
-  - **電子郵件**："someone@example.com"
+  - **電子郵件**someone@example.com:" "
   - **displayName**："Someone"
   - **membershipNum**：6353399
   - **active**：true
@@ -223,6 +223,39 @@ ms.locfileid: "78187588"
 - 輸出宣告：
     - **extractedClaim**：6353399
 
+## <a name="getsingleitemfromjson"></a>從Json取得單物專案
+
+從 JSON 數據獲取第一個元素。
+
+| Item | TransformationClaimType | 資料類型 | 注意 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputJson | 字串 | 聲明轉換用於從 JSON 數據獲取項的聲明類型。 |
+| OutputClaim | 索引鍵 | 字串 | JSON 中的第一個元素鍵。 |
+| OutputClaim | value | 字串 | JSON 中的第一個元素值。 |
+
+在下面的示例中,聲明轉換從 JSON 數據中提取第一個元素(給定名稱)。
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>範例
+
+- 輸入宣告：
+  - **輸入Json:**{"指定名稱":"埃米爾","姓氏":"史密斯"*
+- 輸出宣告：
+  - **鍵**: 給定名稱
+  - **值**: 埃米爾
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 從 JSON 資料陣列中取得第一個元素。
@@ -248,9 +281,9 @@ ms.locfileid: "78187588"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **輸入JonClaim：**["，"someone@example.com某人"，6353399]
+  - **輸入JonClaim:**[","someone@example.com某人",6353399]
 - 輸出宣告：
-  - **提取索賠**：someone@example.com
+  - **擷取索賠**:someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
@@ -294,3 +327,5 @@ ms.locfileid: "78187588"
   }
 }
 ```
+
+

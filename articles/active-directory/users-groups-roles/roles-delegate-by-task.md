@@ -1,5 +1,5 @@
 ---
-title: 按管理員任務委派角色 - Azure 活動目錄 |微軟文檔
+title: 依管理員任務委派角色 - Azure 活動目錄 |微軟文件
 description: 在 Azure Active Directory 中針對身分識別工作委派的角色
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284869"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755407"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中依管理工作區分的系統管理員角色
 
@@ -45,8 +45,8 @@ Task | 最低特殊權限角色 | 其他角色
 建立 Azure AD B2C 目錄 | 所有非來賓使用者 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 建立 B2C 應用程式 | 全域管理員 | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式系統管理員
-建立、讀取、更新及刪除 B2C 原則 | B2C IEF 策略管理員 | 
-建立、讀取、更新及刪除識別提供者 | 外部標識提供程式管理員 | 
+建立、讀取、更新及刪除 B2C 原則 | B2C IEF 政策管理員 | 
+建立、讀取、更新及刪除識別提供者 | 外部識別提供者管理員 | 
 建立、讀取、更新及刪除密碼重設使用者流程 | B2C 使用者流管理員 | 
 建立、讀取、更新及刪除設定檔編輯使用者流程 | B2C 使用者流管理員 | 
 建立、讀取、更新及刪除登入使用者流程 | B2C 使用者流管理員 | 
@@ -54,10 +54,10 @@ Task | 最低特殊權限角色 | 其他角色
 建立、讀取、更新及刪除使用者屬性 | B2C 使用者流屬性管理員 | 
 建立、讀取、更新及刪除使用者 | 使用者管理員
 讀取所有設定 | 全球讀者 | 
-讀取 B2C 稽核記錄 | 全球讀者 （[參見文檔](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
+讀取 B2C 稽核記錄 | 全球讀者 ([參見文件](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
 > [!NOTE]
-> Azure AD B2C 全域讀取器具有與 Azure AD 全域管理員相同的許可權。 如果您有 Azure AD B2C 全域管理員許可權，請確保您位於 Azure AD B2C 目錄中，而不是 Azure AD 目錄中。
+> Azure AD B2C 全域讀取器具有與 Azure AD 全域管理員相同的許可權。 如果您有 Azure AD B2C 全域管理員權限,請確保您位於 Azure AD B2C 目錄中,而不是 Azure AD 目錄中。
 
 ## <a name="company-branding"></a>公司商標
 
@@ -76,9 +76,9 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-傳遞驗證 | 全域管理員 | 
-讀取所有設定 | 全球讀者 | 
-無縫單一登入 | 全域管理員 | 
+傳遞驗證 | 混合識別管理員 | 
+讀取所有設定 | 全球讀者 | 混合識別管理員 |
+無縫單一登入 | 混合識別管理員 | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -126,8 +126,8 @@ Task | 最低特殊權限角色 | 其他角色
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委派的權限 | 雲端應用程式系統管理員 | 應用程式管理員
-同意應用程式許可權不包括 Microsoft 圖形 | 雲端應用程式系統管理員 | 應用程式管理員
-同意對微軟圖形的應用程式許可權 | 特殊權限角色管理員 | 
+同意應用程式權限不包括 Microsoft 圖形 | 雲端應用程式系統管理員 | 應用程式管理員
+同意對微軟圖形的應用程式權限 | 特殊權限角色管理員 | 
 同意應用程式存取自己的資料 | 預設使用者角色 ([請參閱文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 建立企業應用程式 | 雲端應用程式系統管理員 | 應用程式管理員
 管理應用程式 Proxy | 應用程式管理員 | 
@@ -144,8 +144,8 @@ Task | 最低特殊權限角色 | 其他角色
 ## <a name="entitlement-management"></a>權利管理
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-將資源添加到目錄 | 使用者管理員 | 使用授權管理，您可以將此任務委派給目錄擁有者（[請參閱文檔](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)）
-將 SharePoint 線上網站添加到目錄 | 全域管理員
+新增資源到目錄 | 使用者管理員 | 使用授權管理,您可以將此工作委派給目錄擁有者([請參考文件](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners))
+將 SharePoint 線上網站到目錄 | 全域管理員
 
 
 ## <a name="groups"></a>群組
@@ -174,10 +174,10 @@ Task | 最低特殊權限角色 | 其他角色
 設定和啟用或停用登入風險原則| 安全性系統管理員 | 
 設定和啟用或停用使用者風險原則 | 安全性系統管理員 | 
 設定每週摘要 | 安全性系統管理員| 
-關閉所有風險檢測 | 安全性系統管理員 | 
+關閉所有風險偵測 | 安全性系統管理員 | 
 修正或關閉弱點 | 安全性系統管理員 | 
 讀取所有設定 | 安全性讀取者 | 
-讀取所有風險檢測 | 安全性讀取者 | 
+讀取所有風險偵測 | 安全性讀取者 | 
 讀取弱點 | 安全性讀取者 | 
 
 ## <a name="licenses"></a>授權
@@ -234,7 +234,7 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-管理識別提供者 | 外部標識提供程式管理員 | 
+管理識別提供者 | 外部識別提供者管理員 | 
 管理設定 | 全域管理員 | 
 管理使用規定 | 全域管理員 | 
 讀取所有設定 | 全球讀者 | 
@@ -275,7 +275,7 @@ Task | 最低特殊權限角色 | 其他角色
 設定驗證方法 | 全域管理員 | 
 讀取所有設定 | 全球讀者 | 
 
-## <a name="security---conditional-access"></a>安全性 - 條件訪問
+## <a name="security---conditional-access"></a>安全性 - 條件存取
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -293,7 +293,7 @@ Task | 最低特殊權限角色 | 其他角色
 管理具名位置 | 條件式存取系統管理員 | 安全性系統管理員
 管理使用規定 | 條件式存取系統管理員 | 安全性系統管理員
 讀取所有設定 | 安全性讀取者 | 安全性系統管理員
-讀取具名位置 | 安全性讀取者 | 條件訪問管理員、安全管理員
+讀取具名位置 | 安全性讀取者 | 條件存取管理員、安全管理員
 
 ## <a name="security---identity-security-score"></a>安全性 - 身分識別安全性分數
 
@@ -330,11 +330,11 @@ Task | 最低特殊權限角色 | 其他角色
 刪除使用者 | 使用者管理員 | 
 使受限制管理員的重新整理權杖失效 (請參閱文件) | 使用者管理員 | 
 使非管理員的重新整理權杖失效 (請參閱文件) | 密碼管理員 | 使用者管理員
-使具特殊權限管理員的重新整理權杖失效 (請參閱文件) | 特權身份驗證管理員 | 
-讀取基本設定 | 預設使用者角色（[請參閱文檔](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
+使具特殊權限管理員的重新整理權杖失效 (請參閱文件) | 特權識別管理員 | 
+讀取基本設定 | 預設使用者角色([請參考文件](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
 為受限制的管理員重設密碼 (請參閱文件) | 使用者管理員 | 
 為非管理員重設密碼 (請參閱文件) | 密碼管理員 | 使用者管理員
-為具特殊權限的管理員重設密碼 | 特權身份驗證管理員 | 
+為具特殊權限的管理員重設密碼 | 特權識別管理員 | 
 撤銷授權 | 授權管理員 | 使用者管理員
 更新使用者主體名稱以外的所有屬性 | 使用者管理員 | 
 更新適用於受限制管理員的使用者主體名稱 (請參閱文件) | 使用者管理員 | 
@@ -346,9 +346,9 @@ Task | 最低特殊權限角色 | 其他角色
 
 Task | 最低特殊權限角色 | 其他角色
 ---- | --------------------- | ----------------
-提交支援票證 | 服務管理員 | 應用程式管理員、Azure 資訊保護管理員、計費管理員、雲應用程式管理員、合規性管理員、動態 365 管理員、桌面分析管理員、交換管理員、密碼管理員、Intune 管理員、業務管理員 Skype、電源 BI 管理員、特權身份驗證管理員、SharePoint 管理員、團隊通信管理員、團隊管理員、使用者管理員、工作場所分析管理員
+提交支援票證 | 服務管理員 | 應用程式管理員、Azure 資訊保護管理員、計費管理員、雲應用程式管理員、合規性管理員、動態 365 管理員、桌面分析管理員、交換管理員、密碼管理員、Intune 管理員、Skype 業務管理員、Power BI 管理員、特權身份驗證管理員、SharePoint 管理員、團隊通信管理員、團隊管理員、使用者管理員、工作區分析管理員
 
 ## <a name="next-steps"></a>後續步驟
 
-* [如何分配或刪除 Azure AD 管理員角色](directory-manage-roles-portal.md)
+* [如何配置或移除 Azure AD 管理員角色](directory-manage-roles-portal.md)
 * [Azure AD 系統管理員角色參考](directory-assign-admin-roles.md)

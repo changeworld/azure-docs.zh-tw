@@ -1,25 +1,20 @@
 ---
-title: 在 Linux VM 上設置 PostgreSQL
+title: Linux VM 上設定 PostgreSQL
 description: 了解如何在 Azure 中的 Linux 虛擬機器上安裝和設定 PostgreSQL
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75747792"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759342"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>安裝和設定 Azure 上的 PostgreSQL
 PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它包含企業用功能，例如完整的 ACID 的相容性、可靠的交易式程序，以及多版本的並行控制。 它也支援標準，例如 ANSI SQL 和 SQL/MED (包括 Oracle、MySQL、MongoDB 和許多其他項目的外部資料包裝函式)。 其高度可擴充性支援超過 12 種程序性語言、GIN 和 GiST 索引、空間資料支援和多個類似 NoSQL 的功能，適用於 JSON 或以索引鍵-值為基礎的應用程式。
@@ -63,7 +58,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果要構建可以構建的所有內容，包括文檔（HTML 和人頁）和其他模組 （），`contrib`請改為運行以下命令：
+5. 如果要建譯可以建構所有內容,包括文件(HTML 和人頁)和其他模組`contrib`(), 請改為執行以下指令:
    
         # gmake install-world
    
@@ -230,7 +225,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新資料表中的資料
-使用下列命令更新資料表中的資料。 對於這一個，桑迪已經確認他們參加，所以我們將RSVP從"N"更改為"Y"：
+使用下列命令更新資料表中的資料。 對於這一個,桑迪已經確認他們參加,所以我們將RSVP從「N」更改為「Y」:
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

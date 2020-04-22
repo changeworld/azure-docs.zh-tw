@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549037"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758310"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>事件中心的 Azure 安全基線
 
@@ -335,7 +335,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: 使用 Azure 的目錄的單一登入 (SSO)
 
-**指南**:Microsoft Azure 基於 Azure 活動目錄 (AD) 為資源和應用程式提供整合的存取控制管理。 將 Azure AD 與 Azure 事件中心一起使用的一個關鍵優點是,您不再需要在代碼中儲存認證。 相反,您可以從 Microsoft 標識平臺請求 OAuth 2.0 訪問權杖。 要求權杖的資源名稱稱為https://eventhubs.azure.net/。 Azure AD 對執行應用程式的安全主體(使用者、組或服務主體)進行身份驗證。 如果身份驗證成功,Azure AD 會向應用程式返回訪問權杖,然後應用程式可以使用存取權杖授權對 Azure 事件中心資源的請求。
+**指南**:Microsoft Azure 基於 Azure 活動目錄 (AD) 為資源和應用程式提供整合的存取控制管理。 將 Azure AD 與 Azure 事件中心一起使用的一個關鍵優點是,您不再需要在代碼中儲存認證。 相反,您可以從 Microsoft 標識平臺請求 OAuth 2.0 訪問權杖。 請求權杖的資源名稱是 Htt:https:\//eventhubs.azure.net/。 Azure AD 對執行應用程式的安全主體(使用者、組或服務主體)進行身份驗證。 如果身份驗證成功,Azure AD 會向應用程式返回訪問權杖,然後應用程式可以使用存取權杖授權對 Azure 事件中心資源的請求。
 
 如何使用 Azure AD 對應用程式進行身份驗證以存取事件中心資源:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -631,7 +631,7 @@ Microsoft 管理事件中心的基礎基礎結構,並實施了嚴格的控制,�
 
 **指南**:使用 Azure 資源圖查詢和發現訂閱中的所有資源(包括 Azure 事件中心命名空間)。 確保租戶中具有適當的(讀取)許可權,並能夠枚舉訂閱中的所有 Azure 訂閱和資源。
 
-如何使用 Azure 圖形建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure 資源圖建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 如何檢視 Azure 訂閱:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

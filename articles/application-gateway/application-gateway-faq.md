@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312475"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758920"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有關應用程式閘道的常見問題
 
@@ -72,7 +72,7 @@ Azure 應用程式閘道提供應用程式提供控制器 (ADC) 作為服務。 
 
 *保持活動超時*控制應用程式閘道在重用或關閉之前等待客戶端在持久連接上發送另一個 HTTP 請求的時間。 *TCP 空閒超時*控制 TCP 連接保持打開狀態的時間,以防無活動。 
 
-應用程式閘道 v1 SKU 中的*保持活動超時*為 120 秒,在 v2 SKU 中為 75 秒。 對於應用程式閘道的 v1 和 v2 SKU 的前端虛擬 IP (VIP), *TCP 空閒超時*是 4 分鐘的預設值。 
+應用程式閘道 v1 SKU 中的*保持活動超時*為 120 秒,在 v2 SKU 中為 75 秒。 對於應用程式閘道的 v1 和 v2 SKU 的前端虛擬 IP (VIP), *TCP 空閒超時*是 4 分鐘的預設值。 不能更改這些值。
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>IP 或 DNS 名稱是否會在應用程式閘道的生存期內更改?
 
@@ -150,7 +150,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 是。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>應用程式閘道一律部署在虛擬網路中？
 

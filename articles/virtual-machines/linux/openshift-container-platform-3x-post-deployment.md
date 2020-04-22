@@ -1,32 +1,27 @@
 ---
-title: 在 Azure 部署後任務中打開Shift容器平臺 3.11
+title: 在 Azure 部署後工作中開啟Shift容器平臺 3.11
 description: 已部署 OpenShift 容器平臺 3.11 群集後的其他任務。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1635589b282dc33f6a1e9c2552dc8a73c67b9004
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294735"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759527"
 ---
 # <a name="post-deployment-tasks"></a>部署後工作
 
 部署 OpenShift 叢集之後，您可以設定其他項目。 本文將說明：
 
 - 如何使用 Azure Active Directory (Azure AD) 設定單一登入
-- 如何配置 Azure 監視器日誌以監視打開 Shift
+- 如何設定 Azure 監視器紀錄以監視開啟 Shift
 - 如何設定計量與記錄
 - 如何安裝 Open Service Broker for Azure (OSBA)
 
@@ -39,9 +34,9 @@ ms.locfileid: "80294735"
 這些步驟使用 Azure CLI 建立應用程式註冊，以及使用 GUI (入口網站) 設定權限。 若要建立應用程式註冊，您需要下列五項資訊：
 
 - 顯示名稱：應用程式註冊名稱 (例如 OCPAzureAD)
-- 主頁：打開Shift主控台 URL（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console`）
-- 識別碼 URI：打開Shift主控台 URL（例如`https://masterdns343khhde.westus.cloudapp.azure.com/console`，
-- 回復 URL：主公共 URL 和應用註冊名稱（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`）
+- 主頁:打開Shift控制台 網址(`https://masterdns343khhde.westus.cloudapp.azure.com/console`例如, )
+- 識別符 URI:打開Shift主控台網`https://masterdns343khhde.westus.cloudapp.azure.com/console`址(例如 ,
+- 回覆網址:主公共網址和應用程式名稱(`https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`例如, )
 - 密碼：安全密碼 (使用強式密碼)
 
 下列範例將會使用上述資訊建立應用程式註冊：
@@ -74,7 +69,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 入口網站中：
 
-1. 選擇**Azure 活動目錄** > **應用註冊**。
+1. 選擇**Azure 的動作目錄** > **套用註冊**。
 2. 搜尋您的應用程式註冊 (例如 OCPAzureAD)。
 3. 在結果中，按一下 [應用程式註冊]。
 4. 在 [設定]**** 下，選取 [必要權限]****。
@@ -90,7 +85,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
    ![應用程式註冊存取](media/openshift-post-deployment/app-registration-access.png)
 
-8. 選擇 **"完成**"。
+8. 選取 [完成]  。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>設定 OpenShift 進行 Azure AD 驗證
 
@@ -157,14 +152,14 @@ sudo /usr/local/bin/master-restart controllers
 
 在 OpenShift 主控台中，您現在會看到兩個用於驗證的選項：htpasswd_auth 和 [應用程式註冊]。
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>使用 Azure 監視器日誌監視打開 Shift
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>使用 Azure 監視器紀錄監視器已開啟 Shift
 
 有三種方式可將 Log Analytics 代理程式新增至 OpenShift。
 - 直接在每個 OpenShift 節點上安裝適用於 Linux 的 Log Analytics 代理程式
-- 在每個 OpenShift 節點上啟用 Azure 監視器 VM 擴展
-- 將日誌分析代理安裝為 OpenShift 守護進程集
+- 在每個 OpenShift 節點開啟 Azure 監視器 VM 擴充
+- 將紀錄分析代理安裝為 OpenShift 守護程式集
 
-有關詳細資訊，請閱讀完整[說明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
+有關詳細資訊,請閱讀完整[說明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
 
 ## <a name="configure-metrics-and-logging"></a>設定計量與記錄
 
@@ -204,8 +199,8 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 若要在 OpenShift 上安裝 OSBA，請遵循此處的指示：https://github.com/Azure/open-service-broker-azure#openshift-project-template。 
 > [!NOTE]
-> 僅完成 OpenShift 專案範本部分中的步驟，而不是整個安裝部分。
+> 僅完成 OpenShift 專案樣本部分中的步驟,而不是整個安裝部分。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 OpenShift 容器平臺入門](https://docs.openshift.com)
+- [使用 OpenShift 容器平台入門](https://docs.openshift.com)

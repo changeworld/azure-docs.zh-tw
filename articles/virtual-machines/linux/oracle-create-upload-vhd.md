@@ -1,24 +1,18 @@
 ---
 title: 建立與上傳 Oracle Linux VHD
 description: 了解如何建立及上傳包含 Oracle Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
-services: virtual-machines-linux
-documentationcenter: ''
 author: gbowerman
-manager: gwallace
-tags: azure-service-management,azure-resource-manager
-ms.assetid: dd96f771-26eb-4391-9a89-8c8b6d691822
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
-ms.openlocfilehash: 6d1e0eacb3d0a2327b8b26ca480b80f957838543
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459758"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759382"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>準備用於 Azure 的 Oracle Linux 虛擬機器
 

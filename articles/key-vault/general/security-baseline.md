@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 6e660c1244dd5566fbfb45a6da37d39294354ccb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616888"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756998"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 

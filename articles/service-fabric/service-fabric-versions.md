@@ -2,13 +2,13 @@
 title: Azure 服務結構中受支援的叢集版本
 description: 瞭解 Azure 服務結構中的群集版本,包括服務結構團隊部落格中指向最新版本的連結。
 ms.topic: troubleshooting
-ms.date: 03/02/2020
-ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460523"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732885"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
@@ -41,6 +41,7 @@ ms.locfileid: "81460523"
 | 7.0.466.* | 6.5.* |小於或等於版本 4.0|2020年8月1日 |
 | 7.0.470.* | 7.0.466.* |小於或等於版本 4.0 |2020年8月1日  |
 | 7.1.409.* | 7.0.466.* |小於或等於版本 4.0 |目前版本,因此沒有結束日期 |
+
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
 下表列出了支援的 Service Fabric 版本的受支援作業系統。
@@ -106,3 +107,4 @@ ms.locfileid: "81460523"
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

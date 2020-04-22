@@ -1,26 +1,19 @@
 ---
 title: 在 Azure 上最佳化 Linux VM
 description: 了解一些最佳化提示，確保 Azure 上的 Linux VM 設定可獲得最佳效能。
-keywords: linux 虛擬機器,虛擬機器 linux,ubuntu 虛擬機器
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 0ff901e7d53e0814ab064867be6185709e9b6a20
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452344"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757096"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上最佳化 Linux VM
 您可以從命令列或入口網站，輕鬆建立 Linux 虛擬機器 (VM)。 本教學課程示範如何在 Microsoft Azure 平台上設定，以確保將其效能最佳化。 本主題會使用 Ubuntu Server VM，但您也可以使用 [自己的映像做為範本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)來建立 Linux 虛擬機器。  

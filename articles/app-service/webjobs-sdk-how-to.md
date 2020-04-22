@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535593"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758902"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -125,7 +125,7 @@ static void Main()
 
 在版本 2 中。*x*,您可以使用[ServicePointManager.默認連接限制](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit)API 來控制與主機的併發連接數。 在 2 中。*x*,在啟動 Web 作業主機之前,應從預設值 2 中增加此值。
 
-使用`HttpClient`流流`ServicePointManager`從函數發出的所有傳出 HTTP 請求。 到達`DefaultConnectionLimit`中 設定的值`ServicePointManager`後, 在發送請求之前開始排隊。 假設您的 `DefaultConnectionLimit` 設為 2，且您的程式碼會發出 1,000 個 HTTP 要求。 一開始，只允許兩個要求傳至作業系統。 其他的 998 個要求會排入佇列，直到有足夠的空間給它們。 這意味著您可能`HttpClient`超時,因為它似乎已經發出請求,但請求從未由作業系統發送到目標伺服器。 因此，您可能會看到一個似乎不合理的行為：您的本機 `HttpClient` 花費 10 秒完成要求，但您的服務正以 200 毫秒的時間傳回每個要求。 
+使用`HttpClient`流流`ServicePointManager`從函數發出的所有傳出 HTTP 請求。 到達`DefaultConnectionLimit`中 設定的值`ServicePointManager`後, 在發送請求之前開始排隊。 假設您的 `DefaultConnectionLimit` 設為 2，且您的程式碼會發出 1,000 個 HTTP 要求。 一開始，只允許兩個要求傳至作業系統。 其他998人排隊,直到有空間供他們使用。 這意味著您可能`HttpClient`超時,因為它似乎已經發出請求,但請求從未由作業系統發送到目標伺服器。 因此，您可能會看到一個似乎不合理的行為：您的本機 `HttpClient` 花費 10 秒完成要求，但您的服務正以 200 毫秒的時間傳回每個要求。 
 
 ASP.NET應用程式的預設值為`Int32.MaxValue`,這可能適用於在基本或更高應用服務計畫中運行的 Web 作業。 Web 作業通常需要「始終打開」設置,並且僅支援基本和更高的應用服務計劃。
 
@@ -279,7 +279,7 @@ static async Task Main()
 
 * Blob 儲存體
 * 佇列儲存體
-* 表格儲存體
+* 資料表儲存體
 
 若要使用其他觸發程序與繫結型別，請安裝包含它們的 NuGet 封裝，並在 `JobHostConfiguration` 物件上呼叫 `Use<binding>` 方法。 例如,如果要使用計時器觸發器,請在方法中安裝`Microsoft.Azure.WebJobs.Extensions`和呼`UseTimers`叫`Main`, 如下所示:
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-有關詳細資訊,請參閱[事件中心綁定](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)文章。
+有關詳細資訊,請參閱[事件中心綁定](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)文章。
 
 ### <a name="queue-storage-trigger-configuration"></a>區列儲存觸發器設定
 
@@ -809,7 +809,7 @@ WebJobs SDK 使用 [Azure 二進位大型物件租用](../storage/common/storage
 
 如果要確保即使主機 Web 應用有多個實例,也只能運行一個函數實例,則可以[`Singleton`](#singleton-attribute)使用 該 屬性。
 
-## <a name="filters"></a>篩選器
+## <a name="filters"></a>篩選條件
 
 函式篩選條件 (預覽) 讓您能夠使用自己的邏輯自訂 WebJobs 執行管線。 篩選器類似於[ASP.NET 核心篩選器](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)。 您可以將它們實現為應用於函數或類的聲明性屬性。 如需詳細資訊，請參閱[函式篩選條件](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters) (英文)。
 

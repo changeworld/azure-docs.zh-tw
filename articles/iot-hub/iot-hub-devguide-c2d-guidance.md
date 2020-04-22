@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77591263"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733232"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Cloud-to-device communications guidance
 
@@ -42,5 +45,5 @@ IoT 中樞提供三個選項以便裝置應用程式對後端應用程式公開�
 在下列教學課程中，了解如何使用直接方法、所需屬性和雲端到裝置訊息︰
 
 * [使用直接方法](quickstart-control-device-node.md)
-* [使用所需屬性配置設備](tutorial-device-twins.md) 
-* [傳送雲端到裝置的訊息](iot-hub-node-node-c2d.md)
+* [使用所需屬性設定裝置](tutorial-device-twins.md) 
+* [傳送雲端到裝置訊息](iot-hub-node-node-c2d.md)

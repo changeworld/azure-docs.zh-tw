@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bca9c0e4c0695b6180775051d8b018930f8b808f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9df0de443e28e0eea3224e42178eddd46108ea64
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256462"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759169"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB Azure 資料庫的 Azure 安全基線
 
@@ -620,7 +620,7 @@ Microsoft 管理 MariaDB 的基礎基礎結構,並實施了嚴格的控制,以�
 
 **指南**:使用 Azure 資源圖查詢和發現訂閱中的所有資源(包括 MariaDB 伺服器的 Azure 資料庫)。 確保租戶中具有適當的(讀取)許可權,並能夠枚舉訂閱中的所有 Azure 訂閱和資源。
 
-如何使用 Azure 圖形建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure 資源圖建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 如何檢視 Azure 訂閱:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 

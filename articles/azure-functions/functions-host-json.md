@@ -3,17 +3,17 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405494"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758846"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure 函數 2.x 及更高版本的 host.json 引用 
 
 > [!div class="op_single_selector" title1="選擇正在使用的 Azure 函數執行時的版本: "]
-> * [版本 1](functions-host-json-v1.md)
+> * [第 1 版](functions-host-json-v1.md)
 > * [版本 2*](functions-host-json.md)
 
 *host.json* 中繼資料檔案所包含的全域設定選項會影響函式應用程式的所有函式。 本文列出了從 Azure 函數運行時的版本 2.x 開始的可用設置。  
@@ -216,7 +216,7 @@ ms.locfileid: "81405494"
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中樞觸發程序和繫結](functions-bindings-event-hubs-output.md#host-json)中找到組態設定。 
+可在[事件中樞觸發程序和繫結](functions-bindings-event-hubs-trigger.md#host-json)中找到組態設定。 
 
 ## <a name="extensions"></a>擴充功能
 

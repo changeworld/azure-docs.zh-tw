@@ -595,6 +595,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: 啟用適用於 Azure-SSIS IR 的 Azure AD 驗證
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: 使用 Windows 驗證連線到資料
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: 儲存檔案及連線到檔案共用
+          href: ssis-azure-files-file-shares.md
         - name: 佈建適用於 Azure-SSIS IR 的 Enterprise Edition
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: 適用於 Azure-SSIS IR 的自訂設定

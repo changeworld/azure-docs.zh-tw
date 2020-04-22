@@ -1,26 +1,19 @@
 ---
 title: 使用內部 DNS 解決與 Azure CLI 的 VM 名稱解析
-description: 如何搭配 Azure CLI 在 Azure 上建立虛擬網路介面卡並使用內部 DNS 進行 VM 名稱解析
-services: virtual-machines-linux
-documentationcenter: ''
+description: 如何創建虛擬網路介面卡,並使用內部 DNS 在 Azure 上使用 Azure CLI 進行 VM 名稱解析。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: networking
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: acfdfd4edf90b90998a913fa0c6479bedf0028b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07a78e4987a844627824ac5034046cf6a393ad8d
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034736"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757837"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>在 Azure 上建立虛擬網路介面卡並使用內部 DNS 進行 VM 名稱解析
 
@@ -49,7 +42,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>部署 VM 並連接 vNic
-創建具有[az vm 的](/cli/azure/vm)VM。 在部署至 Azure 的期間，`--nics` 旗標會將 vNic 連接到 VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
+使用 [az vm create](/cli/azure/vm) 建立 VM。 在部署至 Azure 的期間，`--nics` 旗標會將 vNic 連接到 VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -149,7 +142,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>將 VM 部署至虛擬網路基礎結構
 我們現在有一個虛擬網路和子網路、一個作為防火牆而會封鎖所有輸入流量 (用於 SSH 的連接埠 22 除外) 來保護子網路的「網路安全性群組」，以及一個 vNic。 您現在可以在這個現有的網路基礎結構內部署 VM。
 
-創建具有[az vm 的](/cli/azure/vm)VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
+使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會使用「Azure 受控磁碟」建立名為 `myVM` 的 VM，然後連結上一步驟中名為 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -165,4 +158,4 @@ az vm create \
 
 ## <a name="next-steps"></a>後續步驟
 * [直接使用 Azure CLI 命令，建立自訂的 Linux VM 環境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用範本在 Azure 上創建 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用樣本在 Azure 建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

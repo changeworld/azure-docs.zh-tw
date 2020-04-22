@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
-ms.openlocfilehash: c1db7f1a891646ad29f6cae95ddb7e2cf3a42bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 0bb1371de827fbb68afd5d114f49afa4acec0deb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409697"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759729"
 ---
 # <a name="get-started-with-device-twins-python"></a>開始使用裝置對應項 (Python)
 
@@ -31,7 +32,7 @@ ms.locfileid: "79409697"
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定，該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定,該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -41,7 +42,7 @@ ms.locfileid: "79409697"
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>獲取 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
@@ -49,9 +50,9 @@ ms.locfileid: "79409697"
 
 ## <a name="create-the-service-app"></a>建立服務應用程式
 
-在本節中，您將創建一個 Python 主控台應用，將位置中繼資料添加到與 **[裝置識別碼]** 關聯的設備孿生。 接著，它會選取位於 Redmond 的裝置來查詢儲存在 IoT 中樞的裝置對應項，再查詢會報告行動電話連線的對應項。
+在本節中,您將創建一個 Python 控制台應用,將位置元數據添加到與 **[設備 ID]** 關聯的設備孿生。 接著，它會選取位於 Redmond 的裝置來查詢儲存在 IoT 中樞的裝置對應項，再查詢會報告行動電話連線的對應項。
 
-1. 在工作目錄中，打開命令提示符並安裝 Python 的**Azure IoT 中心服務 SDK。**
+1. 在工作目錄中,打開命令提示符並安裝 Python 的**Azure IoT 中心服務 SDK。**
 
    ```cmd/sh
    pip install azure-iot-hub
@@ -68,7 +69,7 @@ ms.locfileid: "79409697"
    from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
-4. 加入下列程式碼。 替換為`[IoTHub Connection String]`在[獲取 IoT 中心連接字串中複製的 IoT 中心連接字串](#get-the-iot-hub-connection-string)。 替換為`[Device Id]`在[IoT 中心註冊新設備](#register-a-new-device-in-the-iot-hub)中註冊的裝置識別碼。
+4. 加入下列程式碼。 取代為`[IoTHub Connection String]`在[取得 IoT 中心連接字串中複製的 IoT 中心連接字串](#get-the-iot-hub-connection-string)。 替換為`[Device Id]`在[IoT 中心註冊新設備](#register-a-new-device-in-the-iot-hub)中註冊的設備 ID。
   
     ```python
     IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"
@@ -113,7 +114,7 @@ ms.locfileid: "79409697"
             print("IoT Hub Device Twin service sample stopped")
     ```
 
-    **IoTHubRegistryManager**物件公開了與服務中的設備孿生交互所需的所有方法。 代碼首先初始化**IoTHubRegistryManager**物件，然後更新**DEVICE_ID**的設備孿生，最後運行兩個查詢。 第一個僅選擇位於**Redmond43**工廠中的設備的設備孿生，第二個優化查詢以僅選擇也通過蜂窩網路連接的設備。
+    **IoTHubRegistryManager**物件公開了與服務中的設備孿生交互所需的所有方法。 代碼首先初始化**IoTHubRegistryManager**物件,然後更新**DEVICE_ID**的設備孿生,最後運行兩個查詢。 第一個僅選擇位於**Redmond43**工廠中的設備的設備孿生,第二個優化查詢以僅選擇也通過蜂窩網路連接的設備。
 
 6. 在 **AddTagsAndQuery.py** 結尾處新增下列程式碼來實作 **iothub_service_sample_run** 函式：
 
@@ -133,15 +134,15 @@ ms.locfileid: "79409697"
 
     如果是查詢所有位於 **Redmond43** 中的裝置，您在結果中會看到一個裝置，而如果查詢將結果限於使用行動電話網路的裝置，則您不會看到任何裝置。
 
-    ![顯示雷德蒙德所有設備的第一個查詢](./media/iot-hub-python-twin-getstarted/service-1.png)
+    ![顯示雷德蒙德所有裝置的第一個查詢](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 在下一節，您將建立一個裝置應用程式，以報告連線資訊並變更上一節的查詢結果。
 
 ## <a name="create-the-device-app"></a>建立裝置應用程式
 
-在本節中，您將創建一個 Python 主控台應用，該應用將作為 **[裝置識別碼]** 連接到集線器，然後更新其設備孿生的報告屬性以包含使用蜂窩網路連接的資訊。
+在本節中,您將創建一個 Python 主控台應用,該應用將作為 **[設備 ID]** 連接到集線器,然後更新其設備孿生的報告屬性以包含使用蜂巢網路連接的資訊。
 
-1. 從工作目錄中的命令提示符，安裝 Python 的**Azure IoT 中心設備 SDK**：
+1. 從工作目錄中的指令提示,安裝 Python 的**Azure IoT 中心裝置 SDK**:
 
     ```cmd/sh
     pip install azure-iot-device
@@ -157,7 +158,7 @@ ms.locfileid: "79409697"
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. 加入下列程式碼。 將`[IoTHub Device Connection String]`預留位置值替換為在["在 IoT 中心註冊新設備](#register-a-new-device-in-the-iot-hub)"中複製的設備連接字串。
+4. 加入下列程式碼。 將`[IoTHub Device Connection String]`占位符值替換為在[「在 IoT 中心註冊新裝置](#register-a-new-device-in-the-iot-hub)」中複製的設備連接字串。
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -196,7 +197,7 @@ ms.locfileid: "79409697"
             print ( "IoT Hub Device Twin device sample stopped" )
     ```
 
-    **IoTHubModuleClient**物件公開與設備中的設備孿生交互所需的所有方法。 前面的代碼在初始化**IoTHubModuleClient**物件後，會檢索設備的孿生，並更新其報告的屬性與連接資訊。
+    **IoTHubModuleClient**物件公開與設備中的設備孿生交互所需的所有方法。 前面的代碼在初始化**IoTHubModuleClient**物件後,會檢索設備的孿生,並更新其報告的屬性與連接資訊。
 
 6. 在 **ReportConnectivity.py** 結尾處新增下列程式碼來實作 **iothub_client_sample_run** 函式：
 
@@ -216,7 +217,7 @@ ms.locfileid: "79409697"
 
     您應該會看到確認設備孿生報告的屬性已更新。
 
-    ![從設備應用更新報告的屬性](./media/iot-hub-python-twin-getstarted/device-1.png)
+    ![從裝置應用更新報告的屬性](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. 現在，裝置已回報其連線資訊，它應該會出現在這兩個查詢中。 請返回並再次執行查詢：
 
@@ -224,13 +225,13 @@ ms.locfileid: "79409697"
     python AddTagsAndQuery.py
     ```
 
-    這一次 **，您的 [裝置識別碼]** 應出現在兩個查詢結果中。
+    這一次 **,您的 [設備 ID]** 應出現在兩個查詢結果中。
 
     ![服務應用的第二個查詢](./media/iot-hub-python-twin-getstarted/service-2.png)
 
-    在設備應用中，您將看到服務應用發送的所需屬性孿生修補程式已收到確認。
+    在設備應用中,您將看到服務應用發送的所需屬性孿生修補程式已收到確認。
 
-    ![在設備應用上接收所需的屬性](./media/iot-hub-python-twin-getstarted/device-2.png)
+    ![在裝置應用上接收所需的屬性](./media/iot-hub-python-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -238,8 +239,8 @@ ms.locfileid: "79409697"
 
 使用下列資源來了解如何：
 
-* 使用[IoT 中心](quickstart-send-telemetry-python.md)教程從設備發送遙測資料。
+* 使用[IoT 中心](quickstart-send-telemetry-python.md)教程從設備發送遙測數據。
 
-* 使用設備孿生所需的屬性使用["使用所需屬性"配置設備，以配置設備](tutorial-device-twins.md)教程。
+* 使用設備孿生所需的屬性使用["使用所需屬性"配置設備,以配置設備](tutorial-device-twins.md)教程。
 
-* 使用["使用直接方法"](quickstart-control-device-python.md)教程，以對話模式控制設備（例如從使用者控制的應用程式打開風扇）。
+* 使用["使用直接方法'](quickstart-control-device-python.md)教程,以交互方式控制設備(例如從使用者控制的應用程式打開風扇)。

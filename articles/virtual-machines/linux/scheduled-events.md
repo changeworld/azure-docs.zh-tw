@@ -1,25 +1,18 @@
 ---
 title: Azure 中 Linux VM 的計畫事件
 description: 針對您的 Linux 虛擬機器，使用 Azure 中繼資料服務來排定事件。
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b3b9914d0e5162f8f8f41b929d7bdfef68f85ad9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ee600d7524af27a0e9e2ce0176e7bd4d1f60bc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263313"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758550"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 中繼資料服務：Linux VM 的已排定事件
 

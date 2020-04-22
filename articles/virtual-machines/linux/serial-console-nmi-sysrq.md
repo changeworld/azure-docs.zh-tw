@@ -1,29 +1,23 @@
 ---
-title: 用於 SysRq 和 NMI 調用的 Azure 串列主控台
+title: SysRq 與 NMI 呼叫的 Azure 串列主控台
 description: 在 Azure 虛擬機器中使用適用於 SysRq 和 NMI 呼叫的序列主控台。
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5eba50e7cfc00c081622972ca09f305b34c19c47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034987"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758495"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用適用於 SysRq 和 NMI 呼叫的序列主控台
 
 ## <a name="system-request-sysrq"></a>系統要求 (SysRq)
-SysRq 是可讓 Linux 作業系統核心理解的按鍵序列，可觸發一組預先定義的動作。 當虛擬機器故障排除或恢復無法通過傳統管理執行（例如，如果 VM 未回應）時，通常使用這些命令。 使用 Azure 序列主控台的 SysRq 功能，就像按下 SysRq 鍵及在實體鍵盤上輸入的字元。
+SysRq 是可讓 Linux 作業系統核心理解的按鍵序列，可觸發一組預先定義的動作。 當虛擬機故障排除或恢復無法通過傳統管理執行(例如,如果 VM 未回應)時,通常使用這些命令。 使用 Azure 序列主控台的 SysRq 功能，就像按下 SysRq 鍵及在實體鍵盤上輸入的字元。
 
 SysRq 序列傳遞出去後，核心組態將會控制系統的回應方式。 如需啟用和停用 SysRq 的資訊，請參閱＜SysRq 系統管理指南＞** [文字](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。  
 
@@ -85,7 +79,7 @@ echo "1" >/proc/sys/kernel/sysrq
 如需散發版本特有的 SysRq 相關文件，以及在 Linux 收到 SysRq 的「損毀」命令時，可建立損毀傾印的設定步驟，請參閱下列連結：
 
 #### <a name="ubuntu"></a>Ubuntu ####
- - [內核崩潰轉儲](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [內核崩潰傾印](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 #### <a name="red-hat"></a>Red Hat ####
 - [什麼是 SysRq 設施？該如何使用？](https://access.redhat.com/articles/231663)
@@ -98,7 +92,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集損毀記錄](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>非遮罩式插斷 (NMI) 
-非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。  如今，程式師和系統管理員通常使用 NMI 作為調試或排除未回應的系統的機制。
+非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。  如今,程式師和系統管理員通常使用 NMI 作為調試或排除未回應的系統的機制。
 
 使用序列主控台命令列中的鍵盤圖示，即可將 NMI 傳送至 Azure 虛擬機器，如下所示。 NMI 序列傳遞出去後，虛擬機器組態將會控制系統的回應方式。  Linux 作業系統可以設定為損毀，並在作業系統收到 NMI 時，建立記憶體傾印。
 
@@ -113,7 +107,7 @@ echo "1" >/proc/sys/kernel/sysrq
 如需有關 Linux 核心組態的資訊 (包括 `unknown_nmi_panic`、`panic_on_io_nmi` 和 `panic_on_unrecovered_nmi`)，請參閱：[/proc/sys/kernel/* 的文件](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)。 如需散發版本特有的 NMI 相關文件，以及在 Linux 收到 NMI 時，可建立損毀傾印的設定步驟，請參閱下列連結：
  
 ### <a name="ubuntu"></a>Ubuntu 
- - [內核崩潰轉儲](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [內核崩潰傾印](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 ### <a name="red-hat"></a>Red Hat 
  - [什麼是 NMI？該如何使用？](https://access.redhat.com/solutions/4127)

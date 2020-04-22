@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/21/2020
+ms.openlocfilehash: 4db9624fbc71e48fcc10ae1d9a1d700d301248a2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415132"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759542"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 認知搜尋中的安全性和資料隱私
 
@@ -40,7 +40,7 @@ Azure 認知搜索已通過以下標準認證[,2018 年 6 月宣佈:](https://az
 
 | 安全性階層 | 描述 |
 |----------------|-------------|
-| 傳輸中加密 <br>(HTTPS/SSL/TLS) | Azure 認知搜索偵聽 HTTPS 埠 443。 在整個平台上，連至 Azure 服務的連線都會受到加密。 <br/><br/>所有用戶端到服務的 Azure 認知搜索交互都支援 SSL/TLS 1.2。  請務必對服務的 SSL 連線使用 TLSv1.2。|
+| 傳輸中加密 <br>(HTTPS/SSL/TLS) | Azure 認知搜索偵聽 HTTPS 埠 443。 在整個平台上，連至 Azure 服務的連線都會受到加密。 <br/><br/>所有用戶端到服務的 Azure 認知搜尋互動都使用 SSL/TLS 1.2 加密。 不支援早期版本(1.0 或 1.1)。|
 | 待用加密 <br>Microstt | 加密會完全在索引編製程序內進行，對索引編製完成時間或索引大小沒有任何重大的影響。 它會自動針對所有索引編製程序進行，包括針對未完全加密 (建立時間在 2018 年 1 月以前) 之索引的增量更新進行。<br><br>就內部而言，加密會根據 [Azure 儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) \(機器翻譯\)，使用的是 256 位元的 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) \(英文\)。<br><br> 加密是 Azure 認知搜尋的內部,證書和加密密鑰由 Microsoft 內部管理,並普遍應用。 您無法在入口網站中或透過程式設計方式，開啟或關閉加密、管理或替代自己的金鑰，或是檢視加密設定。<br><br>靜態加密於 2018 年 1 月 24 日宣佈,適用於所有區域的所有服務層,包括免費層。 若要達到完整加密的目的，針對在該日期之前建立的索引，您必須先捨棄再重新建置，才能進行加密。 否則，系統只會加密 1 月 24 日之後新增的新資料。|
 | 待用加密 <br>客戶管理的金鑰 | 使用客戶託管金鑰進行加密現在通常可用於 2019 年 1 月或之後創建的搜尋服務。 免費(共用)服務不支援它。<br><br>Azure 認知搜索索引和同義詞映射現在可以使用 Azure 密鑰保管庫中的客戶託管密鑰進行靜態加密。 要瞭解更多資訊,請參閱[在 Azure 認知搜尋 中管理加密金鑰](search-security-manage-encryption-keys.md)。<br><br>此功能不會替換靜態的默認加密,而是除它之外應用。<br><br>啟用此功能將增加索引大小並降低查詢性能。 根據迄今為止的觀察結果,您預期查詢時間將增加 30%-60%,儘管實際性能會因索引定義和查詢類型而異。 由於這種性能影響,我們建議您僅在真正需要此功能的索引上啟用此功能。
 

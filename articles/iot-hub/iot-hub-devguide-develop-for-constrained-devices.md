@@ -1,5 +1,5 @@
 ---
-title: 使用 IoT 中心 C SDK 為受限設備開發 Azure IoT 中心
+title: 使用 IoT 中心 C SDK 為受限裝置開發 Azure IoT 中心
 description: 開發人員指南 - 有關如何使用 Azure IoT SDK 開發受限裝置的指引。
 author: robinsh
 ms.service: iot-hub
@@ -7,18 +7,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954706"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733193"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 開發受限裝置
 
 Azure IoT 中樞 C SDK 是以 ANSI C (C99) 撰寫，非常適合於操作具有少量磁碟和記憶體使用量的各種平台。 建議的 RAM 至少為 64 KB，但確切的記憶體使用量取決於所用的通訊協定、開啟的連線數目，以及設為目標的平台。
 > [!NOTE]
-> * Azure IoT C SDK 定期發佈資源消耗資訊以説明開發。  請訪問我們的[GitHub 存儲庫](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)並查看最新的基準。
+> * Azure IoT C SDK 定期發佈資源消耗資訊以幫助開發。  請造訪我們的[GitHub 儲存庫](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)並查看最新的基準。
 >
 
 C SDK 是以 apt-get、NuGet 和 MBED 的套件形式提供。 若要以受限裝置為目標，您可以在本機為您的目標平台建置 SDK。 本文件會示範如何使用 [cmake](https://cmake.org/) 來移除特定功能，以縮減 C SDK 的使用量。 此外，本文件會討論適用於受限裝置的最佳做法程式設計模型。
@@ -71,7 +74,7 @@ strip -s <Path_to_executable>
 
 ### <a name="avoid-using-the-serializer"></a>避免使用序列化程式
 
-C SDK 具有選用 [C SDK 序列化程式](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，可讓您使用宣告式對應資料表來定義方法和裝置對應項屬性。 此序列化程式設計用來簡化開發作業，但是會增加額外負荷，所以不是受限裝置的最佳選擇。 在這種情況下，請考慮使用基元用戶端 API 並使用羽量級解析器（如[parson）](https://github.com/kgabis/parson)解析 JSON。
+C SDK 具有選用 [C SDK 序列化程式](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，可讓您使用宣告式對應資料表來定義方法和裝置對應項屬性。 此序列化程式設計用來簡化開發作業，但是會增加額外負荷，所以不是受限裝置的最佳選擇。 在這種情況下,請考慮使用基元用戶端 API 並使用輕量級解析器(如[parson)](https://github.com/kgabis/parson)解析 JSON。
 
 ### <a name="use-the-lower-layer-_ll_"></a>使用較低層級 (_LL_)
 
@@ -82,5 +85,5 @@ C SDK 支援兩種程式設計模型。 一組具有 _LL_ 中置詞 (代表較�
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure IoT C SDK 架構：
--   [Azure IoT C SDK 原始程式碼](https://github.com/Azure/azure-iot-sdk-c/)
--   [C 適用的 Azure IoT 裝置 SDK 簡介](iot-hub-device-sdk-c-intro.md)
+-    [Azure IoT C SDK 原始程式碼](https://github.com/Azure/azure-iot-sdk-c/)
+-    [C 適用的 Azure IoT 裝置 SDK 簡介](iot-hub-device-sdk-c-intro.md)

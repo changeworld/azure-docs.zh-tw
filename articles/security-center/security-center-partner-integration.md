@@ -11,20 +11,17 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435755"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758078"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
-
-> [!NOTE]
-> 2019 年 7 月 31 日,安全解決方案子集已停用。 有關詳細資訊和替代服務,請參閱[安全中心停用功能(2019年7月)。](security-center-features-retirement-july2019.md#menu_solutions)
 
 ## <a name="integrated-azure-security-solutions"></a>整合式 Azure 安全性解決方案
 資訊安全中心可以使得在 Azure 中啟用整合式安全性解決方案變得簡單。 優點包括：
@@ -37,52 +34,57 @@ ms.locfileid: "80435755"
 
 > [!NOTE]
 > 安全中心不會在合作夥伴虛擬設備上安裝日誌分析代理,因為大多數安全供應商禁止在其設備上運行外部代理。
->
->
+
+要瞭解有關從 Qualys 整合漏洞掃描工具(包括可供標準層客戶使用的內建掃描器)的更多詳細資訊,請參閱: 
+
+- [虛擬機器的整合漏洞掃描器](built-in-vulnerability-assessment.md)。
+- [部署合作夥伴漏洞掃描解決方案](partner-vulnerability-assessment.md)。
+
+安全中心還為您的:
+
+* SQL 資料庫 ─請參閱[漏洞評估儀表板中流覽漏洞評估報告](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* Azure 容器註冊表映像 ─ 請參考[Azure 容器註冊表與安全中心整合(預覽)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全性解決方案如何整合
 從資訊安全中心部署的 Azure 安全性解決方案會自動連線。 您還可以連接其他安全數據來源,包括本地或其他雲端中執行的電腦。
 
-![夥伴解決方案整合](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+[![夥伴解決方案整合](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理整合式 Azure 安全性解決方案和其他資料來源
 
-1. 登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)。
+1. 從[Azure 門戶](https://azure.microsoft.com/features/azure-portal/)開啟**安全中心**。
 
-2. 在 [Microsoft Azure]**** 功能表中，選取 [資訊安全中心]****。 [資訊安全中心 - 概觀]**** 隨即開啟。
+1. 從安全中心的選單中,選擇**安全解決方案**。
 
-3. 在 [資訊安全中心] 功能表下，選取 [安全性解決方案]****。
-
-   ![資訊安全中心概觀](./media/security-center-partner-integration/overview.png)
-
-在**安全解決方案**中,您可以看到集成 Azure 安全解決方案的運行狀況並運行基本管理任務。
+在 **「安全解決方案**」頁中,您可以看到整合 Azure 安全解決方案的運行狀況並執行基本管理任務。
 
 ### <a name="connected-solutions"></a>連線的解決方案
 
 **「已連接的解決方案**」部分包括當前連接到安全中心的安全解決方案。 它還顯示每個解決方案的運行狀況。  
 
-![連線的解決方案](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+![連線的解決方案](./media/security-center-partner-integration/connected-solutions.png)
 
 合作夥伴解決方案的狀態可以是︰
 
-* 健康(綠色) - 沒有健康問題。
-* 不健康(紅色) - 有一個健康問題,需要立即關注。
-* 健康情況問題 (橘色) - 解決方案已停止報告其健康情況。
-* 未報告(灰色) - 解決方案尚未報告任何內容,並且沒有可用的健康資料。 如果解決方案最近連接且仍在部署,則其狀態可能未報告。
+* **健康**(綠色) - 沒有健康問題。
+* **不健康**(紅色) - 有一個健康問題,需要立即關注。
+* **停止報告**(橙色) - 解決方案已停止報告其運行狀況。
+* **未報告**(灰色) - 解決方案尚未報告任何內容,並且沒有可用的健康資料。 如果解決方案最近連接且仍在部署,則其狀態可能未報告。
 
 > [!NOTE]
 > 如果健康情況狀態資料無法使用，資訊安全中心就會顯示最後收到之事件的日期和時間，以指出解決方案是否進行報告。 如果沒有可用的運行狀況數據,並且在過去 14 天內未收到警報,則安全中心指示解決方案不正常或不報告。
 >
 >
 
-1. 選擇 **「檢視」** 以取得其他資訊和選項,例如:
+選擇 **「檢視」** 以取得其他資訊和選項,例如:
 
-   - **解決方案主控台**。 開啟這個解決方案的管理體驗。
-   - **連結 VM**。 打開連結應用程序頁面。 您可以在這裡將資源連接到合作夥伴解決方案。
-   - **移除解決方案**。
-   - **設定**。
+   - **解決方案主控台**- 打開此解決方案的管理經驗。
+   - **連結 VM** - 打開連結應用程式頁面。 您可以在這裡將資源連接到合作夥伴解決方案。
+   - **移除解決方案**
+   - **設定**
 
-   ![合作夥伴解決方案詳細資料](./media/security-center-partner-solutions/partner-solutions-detail.png)
+   ![合作夥伴解決方案詳細資料](./media/security-center-partner-integration/partner-solutions-detail.png)
+
 
 ### <a name="discovered-solutions"></a>探索到的解決方案
 
@@ -91,7 +93,6 @@ ms.locfileid: "80435755"
 > [!NOTE]
 > 已探索解決方案功能的訂用帳戶層級需要資訊安全中心的標準層。 請參閱[定價](security-center-pricing.md)以瞭解有關定價層的更多情況。
 >
->
 
 選擇解決方案下的**CONNECT**以與安全中心集成,並通知安全警報。
 
@@ -99,57 +100,13 @@ ms.locfileid: "80435755"
 
 [新增資料來源]**** 區段包含可以連線的其他可用資料來源。 如需從這些來源新增資料的指示，請按一下 [新增]****。
 
-![資料來源](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
+![資料來源](./media/security-center-partner-integration/add-data-sources.png)
 
-## <a name="exporting-data-to-a-siem"></a>將資料匯出至 SIEM
-
-> [!NOTE]
-> 有關將數據匯出到 SIEM 的更簡單方法(目前處於預覽版)的詳細資訊,請參閱[匯出安全警報和建議(預覽)。](continuous-export.md) 新方法不使用活動日誌作為仲介,允許從安全中心直接匯出到事件中心(然後匯出到您的 SIEM),它還支援安全建議的出口。
-
-
-您可以配置 SIEM 或其他監視工具以接收 Azure 安全中心事件。
-
-Azure 安全中心的所有事件都發布到 Azure 監視器的 Azure[活動紀錄](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。 Azure 監視器使用[整合管道](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)將資料流式傳輸到事件中心,然後將其拉入監視工具。
-
-以下幾節說明如何設定資料以串流到事件中樞。 這些步驟假設您已經在 Azure 訂用帳戶中設定 Azure 資訊安全中心。
-
-### <a name="high-level-overview"></a>高階概述
-
-![高階概述](media/security-center-export-data-to-siem/overview.png)
-
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>公開至 SIEM 的 Azure 安全性資料為何？
-
-在此版本中,我們公開[安全警報。](../security-center/security-center-managing-and-responding-alerts.md) 在即將發行版本中，我們將使用安全性建議來擴充此資料集。
-
-### <a name="how-to-set-up-the-pipeline"></a>如何設定導管
-
-#### <a name="create-an-event-hub"></a>建立事件中心
-
-開始之前,[請建立事件中心命名空間](../event-hubs/event-hubs-create.md)- 所有監視資料的目標。
-
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>將 Azure 活動記錄檔串流至事件中樞
-
-請參考以下文章[串流活動紀錄到事件中心](../azure-monitor/platform/activity-logs-stream-event-hubs.md)。
-
-#### <a name="install-a-partner-siem-connector"></a>安裝合作夥伴 SIEM 連接器 
-
-使用 Azure 監視器將監視資料路由傳送到事件中樞，可讓您輕鬆地與合作夥伴 SIEM 和監視工具整合。
-
-有關[受支援的 SIEM](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)的清單,請參閱以下文章。
-
-### <a name="example-for-querying-data"></a>查詢資料範例 
-
-下面是一些可用於提取警報資料的 Splunk 查詢:
-
-| **查詢描述** | **查詢** |
-|----|----|
-| 所有警示| index=main Microsoft.Security/locations/alerts|
-| 依作業名稱對作業計數進行總結| index=main sourcetype="amal:security" \| table operationName \| stats count by operationName|
-| 取得警示資訊：時間、名稱、狀態、識別碼和訂用帳戶 | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何在資訊安全中心中整合夥伴解決方案。 如要深入了解資訊安全中心，請參閱下列文章：
+在本文中，您已了解如何在資訊安全中心中整合夥伴解決方案。 有關相關信息,請參閱以下文章:
 
+* [匯出安全警報與建議](continuous-export.md)。 瞭解如何設置與 Azure Sentinel 或任何其他 SIEM 的整合。
 * [資訊安全中心的安全性健康情況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。

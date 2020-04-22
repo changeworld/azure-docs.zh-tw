@@ -1,25 +1,20 @@
 ---
-title: 在 Azure 中創建 VHD 的快照
+title: 在 Azure 中建立 VHD 的快照
 description: 了解如何在 Azure 中建立 VHD 的複本，以作為備份，或用來針對問題進行疑難排解。
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 15696469ca3861586617e9f418f8a55a7ea90467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d905d041198bd35c4657052bf18d981904dc44
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034787"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758378"
 ---
 # <a name="create-a-snapshot"></a>建立快照集 
 
@@ -63,14 +58,14 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站 
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 從左上方開始，按一下 [建立資源]**** 並搜尋**快照集**。 從搜尋結果中選取 [快照集]****。
 3. 在 [快照集]**** 刀鋒視窗中，按一下 [建立]****。
 4. 輸入快照集的 [名稱]****。
 5. 選取現有的資源群組，或輸入新群組的名稱。 
 7. 在 [來源磁碟]**** 中，選取要建立快照集的受控磁碟。
 8. 選取用來儲存快照集的 [帳戶類型]****。 除非需要存放在高效能的 SSD 上，否則請使用 [標準 HDD]****。
-9. 按一下 **[建立]**。
+9. 按一下頁面底部的 [新增]  。
 
 
 ## <a name="next-steps"></a>後續步驟

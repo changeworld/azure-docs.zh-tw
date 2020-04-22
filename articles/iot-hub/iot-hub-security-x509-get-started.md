@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: amqp
+ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985655"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759644"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在您的 Azure IoT 中樞中設定 X.509 安全性
 
@@ -82,7 +83,7 @@ ms.locfileid: "80985655"
 
 ## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>使用 X.509 憑證驗證您的 X.509 裝置
 
-若要驗證您的 X.509 裝置，您必須先使用 CA 憑證簽署裝置。 分葉裝置的簽章通常會在製造工廠完成，並在此據以啟用製造工具。 因為裝置會從一個製造商送至另一個製造商，每個製造商的簽署動作都會擷取作為鏈結內的中繼憑證。 結果是從 CA 證書到設備的葉證書的證書鏈。 [管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟 4 會產生裝置憑證。
+若要驗證您的 X.509 裝置，您必須先使用 CA 憑證簽署裝置。 分葉裝置的簽章通常會在製造工廠完成，並在此據以啟用製造工具。 當設備從一個製造商到另一個製造商時,每個製造商的簽名操作將作為鏈中的中間證書捕獲。 結果是從 CA 證書到設備的葉證書的證書鏈。 [管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟 4 會產生裝置憑證。
 
 接下來，我們將示範如何建立 C# 應用程式來模擬為您 IoT 中樞註冊的 X.509 裝置。 我們會將氣溫和溼度值從模擬裝置傳送至您的中樞。 在本教程中,我們將只創建設備應用程式。 它會保留給讀者作為練習建立 IoT 中樞服務應用程式，將回應傳送給此模擬裝置所傳送的事件。 C# 應用程式假設您已依照[管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟操作。
 
@@ -100,7 +101,7 @@ ms.locfileid: "80985655"
 
     此步驟下載、安裝並添加對 Azure IoT 設備 SDK NuGet 包及其依賴項的引用。
 
-1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+1. 在**Program.cs**Program.cs`using`檔案 的頂部加入以下語句:
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 0c7566df870b3c41b1f1dd7d4a4129ff9d9d9407
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: mqtt
+ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481729"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733587"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>將 IoT DevKit AZ3166 連線至 Azure IoT 中樞
 
@@ -175,7 +176,7 @@ DevKit 連接到IoT中心上的特定於設備的終結點,並發送溫度和濕
 
     ![安裝 Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    或使用此直接網址:`vscode:extension/vsciot-vscode.azure-iot-tools`
+    或將此網址複製並貼上到瀏覽器視窗中:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Azure IoT 工具擴展包包含[Azure IoT 設備工作台](https://aka.ms/iot-workbench),用於在各種 IoT 開發基設備上開發和調試。 [Azure IoT 中心擴展](https://aka.ms/iot-toolkit)包也包含在 Azure IoT 工具擴展套件中,用於管理和與 Azure IoT 中心進行交互。
