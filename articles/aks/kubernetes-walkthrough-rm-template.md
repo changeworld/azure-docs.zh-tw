@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bbe5d9ac21ae9e03d629a1667567a915c8653a8a
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80129461"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602635"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要使用 Resource Manager 範本建立 AKS 叢集，您必須提供 SSH 公開金鑰與 Azure Active Directory 服務主體。 如果您需要其中一個資源，請參閱下一節；否則請跳至[建立 AKS 叢集](#create-an-aks-cluster)一節。
+若要使用 Resource Manager 範本建立 AKS 叢集，您必須提供 SSH 公開金鑰與 Azure Active Directory 服務主體。  您也可以使用[受控識別](use-managed-identity.md)而不是服務主體的權限。 如果您需要其中一個資源，請參閱下一節；否則請跳至[建立 AKS 叢集](#create-an-aks-cluster)一節。
 
 ### <a name="create-an-ssh-key-pair"></a>建立 SSH 金鑰組
 
@@ -48,7 +48,7 @@ ssh-keygen -t rsa -b 2048
 
 ### <a name="create-a-service-principal"></a>建立服務主體
 
-為了允許 AKS 叢集與其他 Azure 資源互動，則會使用 Azure Active Directory 服務主體。 使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令建立服務主體。 `--skip-assignment` 參數會限制指派任何其他權限。 根據預設，此服務主體的有效期限為一年。
+為了允許 AKS 叢集與其他 Azure 資源互動，則會使用 Azure Active Directory 服務主體。 使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令建立服務主體。 `--skip-assignment` 參數會限制指派任何其他權限。 根據預設，此服務主體的有效期限為一年。 請注意，您也可以使用受控識別而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -82,7 +82,7 @@ az ad sp create-for-rbac --skip-assignment
 
 1. 選取以下影像來登入 Azure 並開啟範本。
 
-    [![部署至 Azure](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
+    [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 2. 選取或輸入下列值。
 
@@ -281,7 +281,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。
+> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。 如果您使用受控識別，則身分識別會由平台負責管理，您不需要刪除。
 
 ## <a name="get-the-code"></a>取得程式碼
 
