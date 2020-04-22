@@ -7,16 +7,16 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392642"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767588"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure 庫伯奈斯服務中使用託管標識
 
-目前,Azure Kubernetes 服務 (AKS) 群集(特別是 Kubernetes 雲端提供者)需要和標識才能在 Azure 中創建負載均衡器和託管磁碟等其他資源,此標識可以是*託管標識*或*服務主體*。 如果使用[服務主體](kubernetes-service-principal.md),則必須提供一個或 AKS 代表您創建一個。 如果您使用託管標識,AKS 將自動為您創建此標識。 使用服務主體的群集最終達到必須續訂服務主體以保持群集工作的狀態。 管理服務主體會增加複雜性,這就是為什麼它更容易使用託管標識。 相同的許可權要求適用於服務主體和託管標識。
+目前,Azure Kubernetes 服務 (AKS) 群集(特別是 Kubernetes 雲提供程式)需要一個標識來創建其他資源,如 Azure 中的負載均衡器和託管磁碟,此標識可以是*託管標識*或*服務主體*。 如果使用[服務主體](kubernetes-service-principal.md),則必須提供一個或 AKS 代表您創建一個。 如果您使用託管標識,AKS 將自動為您創建此標識。 使用服務主體的群集最終達到必須續訂服務主體以保持群集工作的狀態。 管理服務主體會增加複雜性,這就是為什麼它更容易使用託管標識。 相同的許可權要求適用於服務主體和託管標識。
 
 *託管標識*本質上是圍繞服務主體的包裝,並簡化其管理。 要瞭解更多資訊,請閱讀[Azure 資源的託管識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 

@@ -1,41 +1,41 @@
 ---
-title: 配置 SSL - MySQL 的 Azure 資料庫
+title: 設定 SSL - MySQL 的 Azure 資料庫
 description: 有關如何適當設定「適用於 MySQL 的 Azure 資料庫」及相關聯應用程式以適當使用 SSL 連線的指示
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 557986560eb27beddf939bcab7f4d72a66781e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: a68b63fa190aa67125b2bf8c09ae7f31aedc3905
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062442"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770272"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫
 適用於 MySQL 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MySQL 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="step-1-obtain-ssl-certificate"></a>步驟 1：取得 SSL 憑證
-從下載通過 SSL 與 MySQL 伺服器的 Azure 資料庫[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)通信所需的證書，並將證書檔保存到本地磁碟機（例如，本教程使用 c：\ssl）。
+從下載透過 SSL 與 MySQL 伺服器的[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)Azure 資料庫通訊所需的憑證,並將憑證檔儲存到本地驅動器(例如,本教程使用 c:\ssl)。
 **針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="step-2-bind-ssl"></a>步驟 2：繫結 SSL
 
-有關特定的程式設計語言連接字串，請參閱下面的[示例代碼](howto-configure-ssl.md#sample-code)。
+有關特定的程式設計語言連接字串,請參閱下面的[範例代碼](howto-configure-ssl.md#sample-code)。
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>通過 SSL 使用 MySQL 工作臺連接到伺服器
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>透過 SSL 使用 MySQL 工作台連線到伺服器
 設定使 MySQL Workbench 安全地透過 SSL 連線。 
 
 1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL]**** 索引標籤。 
 
-1. 將**使用 SSL**欄位更新為"需要"。
+1. 將**使用 SSL**欄位更新為" 需要"
 
 1. 在 [SSL CA 檔案:]**** 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。 
     
-    ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+    ![儲存 SSL 設定](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-對於現有連接，您可以通過按右鍵連接圖示並選擇編輯來綁定 SSL。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
+對於現有連接,您可以通過右鍵按一下連接圖示並選擇編輯來綁定 SSL。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 透過 SSL 連線至伺服器
 有另一個繫結 SSL 憑證的方法，就是藉由執行下列命令來使用 MySQL 命令列介面。 
@@ -79,7 +79,7 @@ if (mysqli_connect_errno($conn)) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
-### <a name="php-using-pdo"></a>PHP（使用PDO）
+### <a name="php-using-pdo"></a>PHP(使用PDO)
 ```phppdo
 $options = array(
     PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
@@ -104,10 +104,10 @@ conn = pymysql.connect(user='myadmin@mydemoserver',
                        password='yourpassword',
                        database='quickstartdb',
                        host='mydemoserver.mysql.database.azure.com',
-                       ssl={'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
+                       ssl={'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
 
-### <a name="django-pymysql"></a>Django （PyMySQL）
+### <a name="django-pymysql"></a>Django (PyMySQL)
 ```python
 DATABASES = {
     'default': {
@@ -118,7 +118,7 @@ DATABASES = {
         'HOST': 'mydemoserver.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {
-            'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
+            'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
         }
     }
 }
@@ -147,7 +147,7 @@ var connectionString string
 connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
 db, _ := sql.Open("mysql", connectionString)
 ```
-### <a name="java-mysql-connector-for-java"></a>JAVA（JAVA的MySQL連接器）
+### <a name="java-mysql-connector-for-java"></a>Java (Java 的MySQL連接器)
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -174,7 +174,7 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
-### <a name="java-mariadb-connector-for-java"></a>JAVA（用於JAVA的 MariaDB 連接器）
+### <a name="java-mariadb-connector-for-java"></a>Java(用於 Java 的 MariaDB 連接器)
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -202,7 +202,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 
-### <a name="net-mysqlconnector"></a>.NET （MySqlConnector）
+### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {

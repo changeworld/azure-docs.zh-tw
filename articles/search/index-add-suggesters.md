@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 04/21/2020
+ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641333"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770091"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議程式以在查詢中開啟自動完成與建議的結果
 
-在 Azure 認知搜尋中,透過添加到[搜尋索引](search-what-is-an-index.md)**的建議器**建構啟用「按類型搜尋」。 建議者支援兩個體驗:*自動完成*,它完成術語或短語,以及傳回符合文件的簡短清單*的建議*。  
+在 Azure 認知搜尋中,透過添加到[搜尋索引](search-what-is-an-index.md)**的建議器**建構啟用「按類型搜尋」。 建議器支援兩種體驗:*自動完成*,完成整個術語查詢的部分輸入,以及邀請單擊到特定符合*項目的建議*。 自動完成生成查詢。 建議生成匹配的文檔。
 
 以下螢幕截圖在[C# 中創建第一個應用](tutorial-csharp-type-ahead-and-suggestions.md)說明了這兩個範例。 自動完成預期一個潛在的術語,用"in"完成"tw"。 建議是迷你搜尋結果,其中像酒店名稱這樣的欄位表示索引中的匹配酒店搜索文檔。 有關建議,可以顯示任何提供描述性資訊的欄位。
 
@@ -33,27 +33,36 @@ ms.locfileid: "81641333"
 
 ## <a name="what-is-a-suggester"></a>什麼是建議者?
 
-建議程式是一種數據結構,通過存儲用於在部分查詢上匹配的首碼,支援按類型搜索行為。 與標記化術語類似,首碼儲存在倒置索引中,對於建議器欄位集合中指定的每個字段一個。
-
-創建首碼時,建議器有自己的分析鏈,類似於用於全文搜索的分析鏈。 但是,與全文搜索中的分析不同,建議器只能在使用標準 Lucene 分析器(預設)或[語言分析器](index-add-language-analyzers.md)的欄位上運行。 使用[自定義分析器](index-add-custom-analyzers.md)或[預先定義分析儀](index-add-custom-analyzers.md#predefined-analyzers-reference)(標準 Lucene 除外)的欄位明確不允許防止不良結果。
-
-> [!NOTE]
-> 如果需要解決分析器約束,請使用兩個單獨的欄位來訪問同一內容。 這將允許其中一個字段具有建議程式,而另一個字段可以使用自定義分析器配置進行設置。
+建議程式是一種內部數據結構,通過存儲用於在部分查詢上匹配的首碼,支援按類型搜索行為。 與標記化術語一樣,首碼儲存在倒置索引中,每個欄位都存儲在建議器欄位集合中。
 
 ## <a name="define-a-suggester"></a>定義建議者
 
-要建立建議程式,請向[索引架構](https://docs.microsoft.com/rest/api/searchservice/create-index)添加一個,並[設定每個屬性](#property-reference)。 在索引中,可以有一個建議器(具體來說,建議者集合中有一個建議器)。 創建建議器的最佳時間是定義將使用它的欄位。
+要建立建議程式,請向[索引架構](https://docs.microsoft.com/rest/api/searchservice/create-index)添加一個,並[設定每個屬性](#property-reference)。 創建建議器的最佳時間是定義將使用它的欄位。
+
++ 只使用字串欄位
+
++ 在現場使用預設標準 Lucene`"analyzer": null`分析器 ( ) 或`"analyzer": "en.Microsoft"`[語言分析器](index-add-language-analyzers.md)(例如 ),
 
 ### <a name="choose-fields"></a>選擇欄位
 
-儘管建議者具有多個屬性,但它主要是啟用搜索即用式體驗的欄位的集合。 對於建議,請選擇最能表示單個結果的欄位。 區分多個匹配項的名稱、標題或其他唯一欄位最符合最佳功能。 如果欄位由重複值組成,則建議由相同的結果組成,使用者不知道要單擊哪個欄位。
+儘管建議器具有多個屬性,但它主要是字串欄位的集合,您為其啟用搜索即用式體驗。 每個索引都有一個建議器,因此建議者列表必須包含所有為建議和自動完成貢獻內容的欄位。
 
-確保每個欄位使用在索引期間執行詞法分析的分析器。 您可以使用預設標準 Lucene 分析`"analyzer": null`器 ( ) 或`"analyzer": "en.Microsoft"`[語言分析器](index-add-language-analyzers.md)(例如 。 
+自動完成從更大的欄位池中獲益,因為附加內容具有更大的期限完成潛力。
 
-您選擇的分析器決定了欄位如何標記並隨後預定。 例如,對於連字元字串(如"上下文敏感"),使用語言分析器將導致這些令牌組合:「上下文」、"敏感"、"上下文敏感"。 如果使用標準 Lucene 分析器,則連字元字串將不存在。
+另一方面,當字段選擇是選擇性的時,建議會產生更好的結果。 請記住,該建議是搜索文檔的代理,因此您需要最能表示單個結果的欄位。 區分多個匹配項的名稱、標題或其他唯一欄位最符合最佳功能。 如果欄位由重複值組成,則建議由相同的結果組成,使用者不知道要單擊哪個欄位。
 
-> [!TIP]
-> 請考慮使用[分析文本 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)來深入瞭解術語如何標記並隨後預綴。 生成索引後,可以在字串上嘗試各種分析器以查看它發出的權杖。
+為了滿足"即搜索即用"體驗,添加自動完成所需的所有欄位,然後使用 **$select、$top、$filter**和**搜索欄位**來 **$select**控制 建議 **$filter**的結果。
+
+### <a name="choose-analyzers"></a>選擇分析儀
+
+您選擇的分析器決定了欄位如何標記並隨後預定。 例如,對於連字元字串(如"上下文敏感"),使用語言分析器將導致這些令牌組合:「上下文」、"敏感"、"上下文敏感"。 如果使用標準 Lucene 分析器,則連字元字串將不存在。 
+
+在評估分析器時,請考慮使用[分析文本 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)來深入瞭解術語如何標記並隨後預綴。 生成索引後,可以在字串上嘗試各種分析器以查看令牌輸出。
+
+使用[自定義分析器](index-add-custom-analyzers.md)或[預先定義分析儀](index-add-custom-analyzers.md#predefined-analyzers-reference)(標準 Lucene 除外)的欄位明確不允許防止不良結果。
+
+> [!NOTE]
+> 如果需要解決分析器約束,例如,如果需要關鍵字或 ngram 分析器用於某些查詢方案,則應對同一內容使用兩個單獨的欄位。 這將允許其中一個字段具有建議程式,而另一個字段可以使用自定義分析器配置進行設置。
 
 ### <a name="when-to-create-a-suggester"></a>何時建立建議器
 
@@ -161,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>後續步驟
 
-我們建議使用以下示例來瞭解如何制定請求。
+我們建議使用以下文章來詳細瞭解請求的表述方式。
 
 > [!div class="nextstepaction"]
 > [新增客戶端碼加入自動完成與建議](search-autocomplete-tutorial.md) 

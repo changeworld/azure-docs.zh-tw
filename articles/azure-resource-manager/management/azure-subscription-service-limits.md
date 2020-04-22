@@ -2,13 +2,13 @@
 title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含有關如何增加限制和最大值的資訊。
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: 4200784e3018ec80d9fbbbc0d3680b6b0e6d2cb3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/21/2020
+ms.openlocfilehash: 00bd85febe34a7bd9b4e993d5697fa810347711b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656178"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768762"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 

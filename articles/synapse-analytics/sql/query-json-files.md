@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1054328216d0517b3f450ba4fe08f3bef32d68f7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431718"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770816"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure 同步分析中使用 SQL 按需(預覽)查詢 JSON 檔案
 
@@ -24,7 +24,7 @@ ms.locfileid: "81431718"
 
 在閱讀本文的其餘部分之前,請查看以下文章:
 
-- [首次設定](query-data-storage.md#first-time-setup)
+- [第一次設定](query-data-storage.md#first-time-setup)
 - [先決條件](query-data-storage.md#prerequisites)
 
 ## <a name="sample-json-files"></a>範例 JSON 檔
@@ -145,4 +145,4 @@ WHERE
 本系列的下一篇文章將展示如何:
 
 - [查詢資料夾與多個檔案](query-folders-multiple-csv-files.md)
-- [建立與使用檢視](create-use-views.md)。
+- [建立和使用檢視](create-use-views.md)

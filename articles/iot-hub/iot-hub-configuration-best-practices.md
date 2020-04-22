@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中樞的裝置設定最佳做法 | Microsoft Docs
-description: 瞭解使用自動裝置管理以儘量減少大規模管理 IoT 設備所涉及的重複和複雜任務的最佳做法。
-author: chrisgre
-ms.author: chrisgre
+description: 瞭解使用自動設備管理以盡量減少大規模管理 IoT 設備所涉及的重複和複雜任務的最佳做法。
+author: Philmea
+ms.author: philmea
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a3b70af71c2ce19835ac2ef8fc8ceed79ca5fe1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99a9a2161cff4805d3181e54b88926d2d9b8daa6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889521"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770768"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解決方案內的裝置設定最佳做法
 
@@ -20,13 +20,13 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **IoT 硬體製造商/整合者**：IoT 硬體的製造商、組裝不同廠牌硬體的整合者，或針對 IoT 部署提供硬體 (由其他供應商製造或整合) 的供應商。 參與韌體、內嵌的作業系統和內嵌軟體的開發和整合。
 
-* **IoT 解決方案開發人員：** IoT 解決方案的開發通常由解決方案開發人員完成。 此開發人員可能是內部團隊的成員，或是專精於此活動的系統整合者。 IoT 解決方案開發人員可從頭開始開發 IoT 解決方案的各種元件、整合各種標準或開放原始碼元件，或自訂 [IoT 解決方案加速器](/azure/iot-accelerators/)。
+* **IoT 解決方案開發人員:** IoT 解決方案的開發通常由解決方案開發人員完成。 此開發人員可能是內部團隊的成員，或是專精於此活動的系統整合者。 IoT 解決方案開發人員可從頭開始開發 IoT 解決方案的各種元件、整合各種標準或開放原始碼元件，或自訂 [IoT 解決方案加速器](/azure/iot-accelerators/)。
 
-* **IoT 解決方案操作員：** 部署 IoT 解決方案後，它需要長期操作、監視、升級和維護。 這些工作都可由內部團隊來完成，而內部團隊是由資訊技術專家、硬體作業及維護團隊，以及負責監督整體 IoT 基礎結構是否正確運作的網域專家所組成。
+* **IoT 解決方案管理員:** 部署IoT解決方案後,它需要長期操作、監視、升級和維護。 這些工作都可由內部團隊來完成，而內部團隊是由資訊技術專家、硬體作業及維護團隊，以及負責監督整體 IoT 基礎結構是否正確運作的網域專家所組成。
 
 ## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>了解大規模設定 IoT 裝置所適用的自動裝置管理
 
-自動裝置管理具有[裝置對應項](iot-hub-devguide-device-twins.md)和[模組對應項](iot-hub-devguide-module-twins.md)方面的多項優點，可雲端與裝置之間同步處理所需和報告的狀態。 [自動設備配置](iot-hub-auto-device-config.md)會自動更新大組孿生，並匯總進度和合規性。 下列主要步驟說明如何開發和使用自動裝置管理：
+自動裝置管理具有[裝置對應項](iot-hub-devguide-device-twins.md)和[模組對應項](iot-hub-devguide-module-twins.md)方面的多項優點，可雲端與裝置之間同步處理所需和報告的狀態。 [自動設備配置](iot-hub-auto-device-config.md)會自動更新大組孿生,並匯總進度和合規性。 下列主要步驟說明如何開發和使用自動裝置管理：
 
 * **IoT 硬體製造商/整合者**使用[裝置對應項](iot-hub-devguide-device-twins.md)在內嵌的應用程式中實作裝置管理功能。 這些功能可包括韌體更新、軟體安裝與更新，以及設定管理。
 
@@ -66,9 +66,9 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **實作[自動裝置設定](iot-hub-auto-device-config.md)：** 自動裝置設定可透過裝置對應項來部署和監視大量 IoT 裝置的組態變更。
 
-   自動裝置設定可透過**目標條件** (這是對裝置對應項標記或報告屬性的查詢) 將多組裝置對應項設為目標。 **目標內容**是將在目標裝置對應項內設定的一組所需屬性。 目標內容應與 IoT 硬體製造商/整合者所定義的裝置對應項結構相一致。 **指標**是設備孿生報告屬性的查詢，還應與 IoT 硬體製造商/集成器定義的設備孿生結構保持一致。
+   自動裝置設定可透過**目標條件** (這是對裝置對應項標記或報告屬性的查詢) 將多組裝置對應項設為目標。 **目標內容**是將在目標裝置對應項內設定的一組所需屬性。 目標內容應與 IoT 硬體製造商/整合者所定義的裝置對應項結構相一致。 **指標**是設備孿生報告屬性的查詢,還應與IoT硬體製造商/整合器定義的設備孿生結構保持一致。
 
-   自動設備配置在創建配置後不久首次運行，然後每隔五分鐘運行一次。 他們還受益于 IoT 中心執行設備孿生操作的速率，該速率永遠不會超過設備孿生讀取和更新[的限制](iot-hub-devguide-quotas-throttling.md)限制。
+   自動設備配置在創建配置后不久首次運行,然後每隔五分鐘運行一次。 他們還受益於 IoT 中心執行設備孿生操作的速率,該速率永遠不會超過設備孿生讀取和更新[的限制](iot-hub-devguide-quotas-throttling.md)限制。
 
 * **使用[裝置佈建服務](../iot-dps/how-to-manage-enrollments.md)：** 解決方案開發人員應使用裝置佈建服務將裝置對應項標記指派給新的裝置，讓以具有該標記的對應項為目標的**自動裝置設定**能夠自動設定這些裝置。 
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406720"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770291"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 應用程式 Proxy 中的萬用字元應用程式
 
@@ -48,8 +48,6 @@ ms.locfileid: "81406720"
 例如： `http(s)://*.adventure-works.com` 。
 
 雖然內部和外部 URL 可以使用不同網域，讓它們使用相同網域是最佳做法。 發行應用程式時，如果其中一個 URL 沒有萬用字元，您會看到錯誤。
-
-如果您有其他應用程式使用不同組態設定，您必須將這些例外狀況發行為個別應用程式，以覆寫萬用字元的預設設定。 不含萬用字元的應用程式不一定優先於萬用字元應用程式。 從設定觀點來看，這些「只是」一般應用程式。
 
 建立萬用字元應用程式是根據可用於所有其他應用程式的相同[應用程式發行流程](application-proxy-add-on-premises-application.md)。 唯一的差別是您在 URL (也可能在 SSO 設定) 中包含萬用字元。
 

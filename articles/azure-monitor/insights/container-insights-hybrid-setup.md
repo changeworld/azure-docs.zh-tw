@@ -3,12 +3,12 @@ title: 使用 Azure 監視器設定用於容器的混合庫伯奈斯群集 |微�
 description: 本文介紹如何為容器配置 Azure 監視器,以監視託管在 Azure 堆疊或其他環境中的 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255425"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769038"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用 Azure 監視器為容器配置混合庫伯奈斯群集
 
@@ -240,6 +240,9 @@ ms.locfileid: "81255425"
        啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的健康情況計量。
 
 ## <a name="install-the-chart"></a>安裝圖表
+
+>[!NOTE]
+>以下命令僅適用於 Helm 版本 2。 --name 參數的使用不適用於 Helm 版本 3。
 
 要啟用 HELM 圖表,可以執行以下操作:
 

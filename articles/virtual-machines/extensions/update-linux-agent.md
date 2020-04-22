@@ -1,5 +1,5 @@
 ---
-title: 從 GitHub 更新 Azure Linux 代理
+title: 從 GitHub 更新 Azure Linux 代理程式
 description: 了解如何更新 Azure 中 Linux VM 的 Azure Linux 代理程式
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3b2819b33feba52c3b02f0e2104d4106bd04cbb
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251712"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770065"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新虛擬機器上的 Azure Linux 代理程式
 
@@ -29,6 +29,8 @@ ms.locfileid: "78251712"
 - 對該 Linux VM 的 SSH 連線。
 
 需一律先檢查 Linux 散發版本儲存機制中的封裝。 可用的封裝有可能不是最新的版本，啟用自動更新可確保 Linux 代理程式一律更新為最新版本。 如果使用封裝管理員安裝時碰到問題，請向散發版本廠商尋求支援。
+
+> ![注意]有關詳細資訊,請參閱[Azure 上支援的 Linux 發行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>在 Azure 中支援的最小虛擬機器代理程式
 在繼續之前，確認[在 Azure 中針對虛擬機器代理程式的最小版本支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
@@ -394,7 +396,7 @@ sudo yum update WALinuxAgent
 
 在命令列輸入 `sudo yum install wget` 來安裝 wget (有一些發行版本預設為不安裝，例如 Red Hat、CentOS、Oracle Linux 6.4 和 6.5 版)。
 
-### <a name="1-download-the-latest-version"></a>1. 下載最新版本
+### <a name="1-download-the-latest-version"></a>1. 下載版本
 在網頁中開啟 [Github 中的 Azure Linux 代理程式版本](https://github.com/Azure/WALinuxAgent/releases) ，然後查明最新的版本號碼。 (您可以輸入 `waagent --version`，即可找到目前的版本 )。
 
 #### <a name="for-version-22x-or-later-type"></a>針對 2.2.x 版本或較新版本，請輸入：
@@ -442,7 +444,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. 重新開機網外服務
+### <a name="3-restart-the-waagent-service"></a>3. 重新啟動網外服務
 針對大多數的 Linux 散發版本：
 
 ```bash
@@ -461,7 +463,7 @@ sudo service walinuxagent restart
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. 確認 Azure Linux 代理版本
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. 確認 Azure Linux 代理程式
     
 ```bash
 waagent -version

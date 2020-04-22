@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0ecb7ee7f5c7c0ebaa87eb6b32eee1926d9e294d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547372"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768949"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -70,7 +70,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
     > [!IMPORTANT]
     > 將 Azure API 管理執行個體部署至 Resource Manager VNET 時，服務必須在除了 Azure API 管理執行個體之外不包含其他資源的專用子網路中。 如果嘗試將 Azure API 管理執行個體部署到含有其他資源的 Resource Manager VNET 子網路，則部署將會失敗。
 
-    然後，選取 [套用]****。 API 管理實體的**虛擬網路**頁面將隨新的虛擬網路和子網選項進行更新。
+    然後，選取 [套用]  。 API 管理實體的**虛擬網路**頁面將隨新的虛擬網路和子網選項進行更新。
 
     ![選取 VPN][api-management-setup-vpn-select]
 
@@ -108,7 +108,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 <a name="required-ports"> </a>當 API 管理服務實例託管在 VNET 中時,將使用下表中的埠。
 
-| 來源 / 目的地連接埠 | 方向          | 傳輸通訊協定 |   [服務標籤](../virtual-network/security-overview.md#service-tags) <br> 來源 / 目的地   | 目的 (*)                                                 | 虛擬網路類型 |
+| 來源 / 目的地連接埠 | 方向          | 傳輸通訊協定 |   [服務標籤](../virtual-network/security-overview.md#service-tags) <br> 來源 / 目的地   | 目標\*( )                                                 | 虛擬網路類型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | 輸入            | TCP                | INTERNET / VIRTUAL_NETWORK            | 與 API 管理的用戶端通訊                      | 外部             |
 | * / 3443                     | 輸入            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 入口網站和 PowerShell 的管理端點         | 外部和內部  |
@@ -132,9 +132,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 + **DNS 存取**：需要有連接埠 53 的輸出存取，才能與 DNS 伺服器通訊。 如果 VPN 閘道的另一端有自訂 DNS 伺服器存在，則必須可從裝載 API 管理的子網路連接該 DNS 伺服器。
 
-+ **計量和健康情況監視**︰對 Azure 監視端點 (解析為屬於下列網域) 的輸出網路連線能力︰
-
-+ **區域服務標記**「:允許向外站連接到存儲、SQL 和 EventHubs 服務標記的 NSG 規則可以使用與包含 API 管理實例的區域(例如,美國西部區域 API 管理實例的 Storage.WestUS)對應的區域版本。 在多區域部署中,每個區域中的 NSG 應允許對該區域的服務標記的流量。
++ **指標和運行狀況監視**:與 Azure 監視終結點的出站網路連接,這些終結點在以下域下解析。 如表所示,這些 URL 表示在 AzureMonitor 服務標記下,以便與網路安全組一起使用。
 
     | Azure 環境 | 端點                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,8 +140,10 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com(**新**)</li><li>shoebox2.metrics.nsatc.net(**被棄用**)</li><li>prod3.metrics.microsoftmetrics.com(**新**)</li><li>prod3.metrics.nsatc.net(**被棄用**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
     | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com(**新**)</li><li>shoebox2.metrics.nsatc.net(**被棄用**)</li><li>prod3.metrics.microsoftmetrics.com(**新**)</li><li>prod3.metrics.nsatc.net(**被棄用**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
->[!IMPORTANT]
-> 上面帶有 dns 區域 **.nsatc.net**的群集更改為 **.microsoftmetrics.com**的群集主要是 DNS 更改。 叢集的 IP 位址不會更改。
+  >[!IMPORTANT]
+  > 上面帶有 dns 區域 **.nsatc.net**的群集更改為 **.microsoftmetrics.com**的群集主要是 DNS 更改。 叢集的 IP 位址不會更改。
+
++ **區域服務標記**:允許向外站連接到存儲、SQL 和事件中心服務標記的 NSG 規則可以使用與包含 API 管理實例的區域對應的標記的區域版本(例如,美國西部區域 API 管理實例的 Storage.WestUS)。 在多區域部署中,每個區域中的 NSG 應允許對該區域和主要區域的服務標記進行流量。
 
 + **SMTP 中繼**`smtpi-co1.msn.com`:SMTP 中繼的出站網路連接,在主`smtpi-ch1.msn.com`機下`smtpi-db3.msn.com``smtpi-sin.msn.com`解析 , 和`ies.global.microsoft.com`
 
@@ -151,7 +151,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 + **Azure 入口網站診斷**：從虛擬網路內部使用 API 管理延伸模組時，若要從 Azure 入口網站啟用診斷記錄的流程，則需要在連接埠 443 上有 `dc.services.visualstudio.com` 的輸出存取權。 這有助於針對您在使用延伸模組時所可能面臨的問題進行疑難排解。
 
-+ **使用快速路由或網路虛擬設備強制將流量隧道到預處理防火牆**:常見的客戶配置是定義自己的預設路由 (0.0.0.0/0),該路由強制 API 管理委派子網中的所有流量流經本地防火牆或網路虛擬設備。 此流量流程一定會中斷與 Azure API 管理的連線，因為已在內部部署封鎖輸出流量，或者 NAT 至無法再使用各種 Azure 端點的一組無法辨識位址。 該解決方案要求您執行以下幾項操作:
++ **使用快速路由或網路虛擬設備強制將流量隧道到本地防火牆**:常見的客戶配置是定義自己的預設路由 (0.0.0.0/0),該路由強制 API 管理委派子網的所有流量流經本地防火牆或網路虛擬設備。 此流量流程一定會中斷與 Azure API 管理的連線，因為已在內部部署封鎖輸出流量，或者 NAT 至無法再使用各種 Azure 端點的一組無法辨識位址。 該解決方案要求您執行以下幾項操作:
 
   * 在部署 API 管理服務的子網上啟用服務終結點。 需要為 Azure Sql、Azure 儲存、Azure 事件 Hub 和 Azure 服務總線啟用[服務終結點][ServiceEndpoints]。 將終結點直接從 API 管理委派子網委派到這些服務,使他們能夠使用 Microsoft Azure 骨幹網,為服務流量提供最佳路由。 如果將服務終結點與強制隧道 Api 管理一起使用,則上述 Azure 服務流量不會強制隧道化。 其他 API 管理服務依賴項流量被強制隧道化,不能丟失或 API 管理服務無法正常運行。
     

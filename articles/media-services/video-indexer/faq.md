@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421391"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767208"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>視訊索引器常見問題
 
@@ -43,7 +43,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>如何開始使用影片索引器？
 
-影片索引器包含免費的試用供應項目，可在 Web 型介面中提供 600 分鐘的試用時間，透過 API 則可取得 2,400 分鐘的試用時間。 您可以[登入影片索引器 Web 型介面](https://www.videoindexer.ai/) \(英文\)，並使用任何 Web 身分識別來試用它，而不需要設定 Azure 訂用帳戶。 
+影片索引器包含免費的試用供應項目，可在 Web 型介面中提供 600 分鐘的試用時間，透過 API 則可取得 2,400 分鐘的試用時間。 您可以[登入影片索引器 Web 型介面](https://www.videoindexer.ai/) \(英文\)，並使用任何 Web 身分識別來試用它，而不需要設定 Azure 訂用帳戶。 請遵循[此簡單的介紹實驗室](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md),更好地瞭解如何使用視頻索引器。
 
 若要大規模編製視訊和音訊檔的索引，您可以將影片索引器連接至付費的 Microsoft Azure 訂用帳戶。 您可以在[定價](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)頁面上找到定價的詳細資訊。
 
@@ -61,9 +61,18 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 影片索引器支援最常見的媒體格式。 如需詳細資料，請參閱 [Azure 媒體編碼器的標準格式](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)清單。
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>如何將媒體上傳到影片索引器？
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>如何將媒體檔上傳到影片索引器,有哪些限制?
 
-在影片索引器 Web 入口網站中，您可以使用 [檔案上傳] 對話方塊來上傳媒體檔案，或透過指向直接裝載來源檔案的 URL 來上傳 (請參閱[範例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4))。 所有使用 iFrame 或內嵌程式碼裝載媒體內容的 URL 都將無法運作 (請參閱[範例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) \(英文\))。 影片索引器 API 會要求您透過 URL 或位元組陣列指定輸入檔。 使用 API 透過 URL 上傳的限制為 10 GB，但沒有持續時間限制。 如需詳細資訊，請參閱此[操作指南](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)。
+在影片索引器 Web 入口網站中，您可以使用 [檔案上傳] 對話方塊來上傳媒體檔案，或透過指向直接裝載來源檔案的 URL 來上傳 (請參閱[範例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4))。 所有使用 iFrame 或內嵌程式碼裝載媒體內容的 URL 都將無法運作 (請參閱[範例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) \(英文\))。 
+
+如需詳細資訊，請參閱此[操作指南](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)。
+
+#### <a name="limitations"></a>限制
+
+* 視頻名稱不能超過 80 個字元。
+* 如果使用位元組上傳影片,則視訊大小限制為 2GB(使用 URL 時為 30GB)。 
+
+有關綜合清單,請參閱[上載注意事項和限制](upload-index-videos.md#uploading-considerations-and-limitations)。
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>影片索引器從媒體擷取見解需要多長的時間？
 
@@ -71,7 +80,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以建立自訂工作流程以將影片索引器的程序自動化？
 
-是，您可以將影片索引器整合到無伺服器技術之中，例如 Logic Apps、Flow，以及 [Azure Functions](https://azure.microsoft.com/services/functions/)。 您可以在[這裡](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 找到適用於影片索引器的 [Logic App](https://azure.microsoft.com/services/logic-apps/) 和 [Flow](https://flow.microsoft.com/en-us/) 連接器的詳細資料。 
+是，您可以將影片索引器整合到無伺服器技術之中，例如 Logic Apps、Flow，以及 [Azure Functions](https://azure.microsoft.com/services/functions/)。 您可以在[這裡](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 找到適用於影片索引器的 [Logic App](https://azure.microsoft.com/services/logic-apps/) 和 [Flow](https://flow.microsoft.com/en-us/) 連接器的詳細資料。 您可以在[視頻索引器範例](https://github.com/Azure-Samples/media-services-video-indexer)回購中看到合作夥伴執行的一些自動化專案。
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>哪些 Azure 區域提供影片索引器？
 
@@ -84,6 +93,12 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 例如,我們的 Person 模型支援開箱即用的 1,000,000 張名人識別人臉,但您也可以訓練它識別該資料庫中不的其他人臉。 
 
 有關詳細資訊,請參閱有關自定義[人員](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[語言](customize-language-model-overview.md)模型的文章。 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>我可以編輯庫中的視頻嗎?
+
+是。 依函式庫顯示螢幕中的**編輯影片**按鈕或播放器顯示螢幕**中的「打開編輯器」** 按鈕以進入「**項目」** 選項卡。您可以創建新專案並從庫中添加更多視頻以一起編輯它們,完成後,您可以渲染視頻和下載視頻。 
+
+如果要獲取新視頻的見解,請使用視頻索引器進行索引,並將其隨其見解顯示在庫中。
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>影片索引器的 SLA 為何？
 

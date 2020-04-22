@@ -1,20 +1,20 @@
 ---
-title: 瞬態連接錯誤 - MySQL 的 Azure 資料庫
+title: 瞬態連線錯誤 ─MySQL 的 Azure 資料庫
 description: 瞭解如何處理瞬態連接錯誤並有效地連接到 MySQL 的 Azure 資料庫。
-keywords: mysql 連接、連接字串、連接問題、瞬態錯誤、連接錯誤、高效連接
-author: jan-eng
-ms.author: janeng
+keywords: mysql 連線、連接字串、連接問題、暫態錯誤、連接錯誤、高效連線
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 79c5c7e485cc9cb03757b8a981cef92d79b81c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f9101b4108f5512ee9779f4633845b34fdfad5a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537171"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767872"
 ---
-# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>處理瞬態錯誤並有效地連接到 MySQL 的 Azure 資料庫
+# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>處理暫態錯誤並有效地連接到 MySQL 的 Azure 資料庫
 
 本文介紹如何處理暫時性錯誤並有效地連接到 MySQL 的 Azure 資料庫。
 
@@ -36,42 +36,42 @@ ms.locfileid: "79537171"
 * 針對接下來的每次重試，依指數遞增等候時間，最多可達 60 秒。
 * 設定應用程式將作業視為失敗的重試次數上限。
 
-當具有作用中交易的連線失敗時，比較難正確地處理復原。 有兩種情況：如果交易本質上是唯讀的，您可以放心地重新開啟連線並重試交易。 但是，如果事務也寫入資料庫，則必須確定事務是回滾，還是在瞬態錯誤發生之前成功。 在這種情況下，您可能尚未收到來自資料庫伺服器的提交確認。
+當具有作用中交易的連線失敗時，比較難正確地處理復原。 有兩種情況：如果交易本質上是唯讀的，您可以放心地重新開啟連線並重試交易。 但是,如果事務也寫入資料庫,則必須確定事務是回滾,還是在瞬態錯誤發生之前成功。 在這種情況下,您可能尚未收到來自資料庫伺服器的提交確認。
 
-其中一種做法是，在用戶端上產生一個用於所有重試的唯一識別碼。 您需將這個唯一識別碼隨著交易一起傳遞給伺服器，並將它與一個唯一條件約束一起儲存在資料行中。 如此一來，您便可以放心地重試交易。 如果回滾了以前的事務，並且系統中尚未存在用戶端生成的唯一 ID，則它將成功。 如果因先前的交易已順利完成而使得先前已儲存唯一識別碼，交易便會因發生重複索引鍵違規而失敗。
+其中一種做法是，在用戶端上產生一個用於所有重試的唯一識別碼。 您需將這個唯一識別碼隨著交易一起傳遞給伺服器，並將它與一個唯一條件約束一起儲存在資料行中。 如此一來，您便可以放心地重試交易。 如果回滾了以前的事務,並且系統中尚未存在用戶端生成的唯一 ID,則它將成功。 如果因先前的交易已順利完成而使得先前已儲存唯一識別碼，交易便會因發生重複索引鍵違規而失敗。
 
 當您的程式透過第三方中介軟體與「適用於 MySQL 的 Azure 資料庫」進行通訊時，請詢問廠商中介軟體是否包含暫時性錯誤的重試邏輯。
 
-請務必測試您的重試邏輯。 例如，嘗試在向上或向下擴展 MySQL 伺服器 Azure 資料庫的計算資源時執行代碼。 您的應用程式應該要能夠毫無問題地處理在此作業期間發生的短暫停機情況。
+請務必測試您的重試邏輯。 例如,嘗試在向上或向下擴展 MySQL 伺服器 Azure 資料庫的計算資源時執行代碼。 您的應用程式應該要能夠毫無問題地處理在此作業期間發生的短暫停機情況。
 
-## <a name="connect-efficiently-to-azure-database-for-mysql"></a>高效連接到 MySQL 的 Azure 資料庫
+## <a name="connect-efficiently-to-azure-database-for-mysql"></a>高效連線到 MySQL 的 Azure 資料庫
 
-資料庫連接是一種有限的資源，因此有效利用連接池訪問 Azure 資料庫以進行 MySQL 會優化性能。 以下部分介紹如何使用連接池或持久連接更有效地訪問 MySQL 的 Azure 資料庫。
+資料庫連接是一種有限的資源,因此有效利用連接池訪問 Azure 資料庫以進行 MySQL 會優化性能。 以下部分介紹如何使用連接池或持久連接更有效地訪問 MySQL 的 Azure 資料庫。
 
-## <a name="access-databases-by-using-connection-pooling-recommended"></a>使用連接池訪問資料庫（建議）
+## <a name="access-databases-by-using-connection-pooling-recommended"></a>使用連接池存取資料庫(建議)
 
-管理資料庫連接會對整個應用程式的性能產生重大影響。 為了優化應用程式的性能，目標應該是減少建立連接的次數和在金鑰代碼路徑中建立連接的時間。 我們強烈建議使用資料庫連接池或持久連接連接到 MySQL 的 Azure 資料庫。 資料庫連接池處理資料庫連接的創建、管理和分配。 當程式請求資料庫連接時，它優先分配現有空閒資料庫連接，而不是創建新連接。 程式完成使用資料庫連接後，將恢復連接，準備進一步使用，而不是簡單地關閉。
+管理資料庫連接會對整個應用程式的性能產生重大影響。 為了優化應用程式的性能,目標應該是減少建立連接的次數和在密鑰代碼路徑中建立連接的時間。 我們強烈建議使用資料庫連接池或持久連接連接到 MySQL 的 Azure 資料庫。 資料庫連接池處理資料庫連接的創建、管理和分配。 當程式請求資料庫連接時,它優先分配現有空閒資料庫連接,而不是創建新連接。 程式完成使用資料庫連接後,將恢復連接,準備進一步使用,而不是簡單地關閉。
 
-為了更好地說明，本文提供了[一個示例代碼](./sample-scripts-java-connection-pooling.md)，該代碼使用 JAVA 作為示例。 有關詳細資訊，請參閱[Apache 通用 DBCP](https://commons.apache.org/proper/commons-dbcp/)。
+為了更好地說明,本文提供了[一個範例代碼](./sample-scripts-java-connection-pooling.md),該代碼使用 JAVA 作為示例。 有關詳細資訊,請參閱[Apache 通用 DBCP](https://commons.apache.org/proper/commons-dbcp/)。
 
 > [!NOTE]
-> 伺服器配置超時機制以關閉處於空閒狀態一段時間的連接以釋放資源。 請務必設置驗證系統，以確保在使用它們時持久連接的有效性。 有關詳細資訊，請參閱[在用戶端配置驗證系統，以確保持久連接的有效性](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)。
+> 伺服器配置超時機制以關閉處於空閒狀態一段時間的連接以釋放資源。 請務必設置驗證系統,以確保在使用它們時持久連接的有效性。 有關詳細資訊,請參閱[在用戶端設定驗證系統,以確保持久連接的有效性](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)。
 
-## <a name="access-databases-by-using-persistent-connections-recommended"></a>使用持久連接訪問資料庫（建議）
+## <a name="access-databases-by-using-persistent-connections-recommended"></a>使用持久連線存取資料庫(建議)
 
-持久連接的概念類似于連接池的概念。 使用持久連接替換短連接只需要對代碼進行細微更改，但它對提高許多典型應用程式方案中的性能有重大影響。
+持久連接的概念類似於連接池的概念。 使用持久連接替換短連接只需要對代碼進行細微更改,但它對提高許多典型應用程式方案中的性能有重大影響。
 
-## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>使用連接短的等待和重試機制訪問資料庫
+## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>使用連線短的等待與重試機制存取資料庫
 
-如果您有資源限制，我們強烈建議您使用資料庫池或持久連接來訪問資料庫。 如果應用程式使用短連接，並且在接近併發連接數的上限時遇到連接失敗，則可以嘗試等待和重試機制。 您可以設置適當的等待時間，在第一次嘗試後縮短等待時間。 此後，您可以嘗試多次等待事件。
+如果您有資源限制,我們強烈建議您使用資料庫池或持久連接來訪問資料庫。 如果應用程式使用短連接,並且在接近併發連接數的上限時遇到連接失敗,則可以嘗試等待和重試機制。 您可以設置適當的等待時間,在第一次嘗試后縮短等待時間。 此後,您可以嘗試多次等待事件。
 
-## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>在用戶端中配置驗證機制，以確認持久連接的有效性
+## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>在用戶端中設定驗證機制,以確認持久連接的有效性
 
-伺服器配置超時機制以關閉處於空閒狀態一段時間的連接以釋放資源。 當用戶端再次訪問資料庫時，它等效于在用戶端和伺服器之間創建新的連接請求。 為了確保連接在使用過程中的有效性，請在用戶端上配置驗證機制。 如以下示例所示，您可以使用 Tomcat JDBC 連接池來配置此驗證機制。
+伺服器配置超時機制以關閉處於空閒狀態一段時間的連接以釋放資源。 當用戶端再次訪問資料庫時,它等效於在用戶端和伺服器之間創建新的連接請求。 為了確保連接在使用過程中的有效性,請在用戶端上配置驗證機制。 如以下範例所示,您可以使用 Tomcat JDBC 連接池來配置此驗證機制。
 
-通過設置 TestOnBorrow 參數，當有新請求時，連接池會自動驗證任何可用空閒連接的有效性。 如果此類連接有效，則直接返回其連接池將撤回連接。 然後，連接池創建新的有效連接並返回它。 此過程可確保有效地訪問資料庫。 
+通過設置 TestOnBorrow 參數,當有新請求時,連接池會自動驗證任何可用空閒連接的有效性。 如果此類連接有效,則直接返回其連接池將撤回連接。 然後,連接池創建新的有效連接並返回它。 此過程可確保有效地訪問資料庫。 
 
-有關特定設置的資訊，請參閱[JDBC 連接池官方介紹文檔](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)。 您主要需要設置以下三個參數：TestOnBorrow（設置為 true）、驗證查詢（設置為 SELECT 1）和驗證查詢超時（設置為 1）。 具體示例代碼如下所示：
+有關特定設定的資訊,請參閱[JDBC 連接池官方介紹文件](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)。 您主要需要設置以下三個參數:TestOnBorrow(設置為 true)、驗證查詢(設置為 SELECT 1)和驗證查詢超時(設置為 1)。 具體範例代碼如下所示:
 
 ```java
 public class SimpleTestOnBorrowExample {

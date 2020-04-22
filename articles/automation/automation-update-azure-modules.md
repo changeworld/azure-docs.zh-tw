@@ -1,18 +1,18 @@
 ---
-title: 更新 Azure 自動化中的 Azure 模組
+title: 更新 Azure 自動化中的 Azure 電源外殼模組
 description: 本文說明現在要如何更新 Azure 自動化中預設提供的通用 Azure PowerShell 模組。
 services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba926ccbb069c8620259514e0a64c56957529a0f
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: bb73b3d644e96f9596f887faaf62eb15f01956ab
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617475"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769658"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>如何更新 Azure 自動化中的 Azure PowerShell 模組
+# <a name="update-azure-powershell-modules-in-azure-automation"></a>更新 Azure 自動化中的 Azure 電源外殼模組
 
 要更新自動化帳戶中的 Azure 模組,需要使用可作為開源的[「更新 Azure 模組 runbook」。。](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) 若要開始使用 **Update-AutomationAzureModulesForAccount** Runbook 來更新 Azure 模組，請從 GitHub 上的[更新 Azure 模組 Runbook 存放庫](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) \(英文\) 下載它。 然後,您可以將它導入自動化帳戶,或將其作為腳本運行。 要瞭解如何在自動化帳戶中匯入 Runbook,請參閱導入[Runbook](manage-runbooks.md#importing-a-runbook)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "81617475"
 
 以下是使用本文更新 Azure 模組時需要考慮的一些注意事項:
 
-* 本文中描述的 Runbook 預設支援更新 Azure、AzureRM 和 Az 模組。 有關使用此 Runbook 更新 Az.自動化模組的詳細資訊,請查看[更新 Azure 模組 RUNbook README。](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) 在使用自動化帳戶中的 Az 模組時,需要考慮其他重要因素。 要瞭解更多資訊,請參閱[在自動化帳戶中使用 Az 模組](az-modules.md)。
+* 本文中描述的 Runbook 預設支援更新 Azure、AzureRM 和 Az 模組。 有關使用此 Runbook 更新 Az.自動化模組的詳細資訊,請查看[更新 Azure 模組 RUNbook README。](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) 在使用自動化帳戶中的 Az 模組時,需要考慮其他重要因素。 要瞭解更多資訊,請參閱[在 Azure 自動化 中管理模組](shared-resources/modules.md)。
 
 * 在啟動此 Runbook 之前，請確定您的自動化帳戶已建立 [Azure 執行身分帳戶認證](manage-runas-account.md)。
 

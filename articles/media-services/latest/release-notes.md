@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582789"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769758"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -35,7 +35,13 @@ ms.locfileid: "80582789"
 > 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [即時活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md)、取得存取 API的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 如需詳細資訊，請參閱[從媒體服務 v2 移至 v3 的移轉指導](migrate-from-v2-to-v3.md#known-issues)。
- 
+
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="improvements-in-documentation"></a>文件的改進
+
+Azure 媒體播放器文件已移到[Azure 文件](../azure-media-player/azure-media-player-overview.md)。
+
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>媒體處理器的改進
@@ -361,4 +367,5 @@ Azure CLI 2.0 模組即將推出，內含所有功能的操作 (包括即時、�
 ## <a name="next-steps"></a>後續步驟
 
 - [概觀](media-services-overview.md)
+- [媒體服務 v3 文件更新](docs-release-notes.md)
 - [媒體服務 v2 發行說明](../previous/media-services-release-notes.md)

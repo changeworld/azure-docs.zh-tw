@@ -1,5 +1,5 @@
 ---
-title: 解釋機器學習模型和預測
+title: 解釋&解釋 Python 中的 ML 模型
 titleSuffix: Azure Machine Learning
 description: 瞭解如何獲取有關機器學習模型如何確定功能重要性的說明,並在使用 Azure 機器學習 SDK 時進行預測。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257193"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769812"
 ---
-# <a name="explain-machine-learning-models-and-predictions"></a>解釋機器學習模型和預測
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用可解釋性包解釋 Python 中&預測的 ML 模型
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -41,10 +41,10 @@ ms.locfileid: "81257193"
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在個人電腦產生功能重要性值 
 下面的示例演示如何在不聯繫 Azure 服務的情況下在個人計算機上使用可解釋性包。
 
-1. 安裝`azureml-interpret`和`azureml-interpret-contrib`打包。
+1. 安裝`azureml-interpret`和`azureml-contrib-interpret`打包。
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 
 2. 在本地聚居器筆記本中訓練示例模型。

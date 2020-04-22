@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b199854867c48906061cff65bad21e514456c911
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81378700"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770558"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure 的目錄設定與開啟使用者進行基於 SMS 的身份驗證(預覽)
 
@@ -34,13 +34,14 @@ ms.locfileid: "81378700"
 要完成本文,您需要以下資源和特權:
 
 * 有效的 Azure 訂用帳戶。
-    * 如果沒有 Azure 訂閱,[請建立帳號](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與訂閱關聯的 Azure 活動目錄租戶。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 需要在 Azure AD 租戶中具有*全域管理員*許可權才能啟用基於 SMS 的身份驗證。
 * 在文本消息身份驗證方法策略中啟用的每個用戶都必須獲得許可,即使他們不使用它。 每個啟用的使用者必須具有以下 Azure AD 或 Microsoft 365 許可證之一:
     * [Azure AD Premium P1 或 P2][azuread-licensing]
-    * [微軟 365 F1 或 F3][m365-firstline-workers-licensing]
+    * [微軟 365 (M365) F1 或 F3][m365-firstline-workers-licensing]
+    * [企業移動性 + 安全 (EMS) E3 或 E5][ems-licensing]或[Microsoft 365 (M365) E3 或 E5][m365-licensing]
 
 ## <a name="limitations"></a>限制
 
@@ -63,7 +64,7 @@ ms.locfileid: "81378700"
 首先,讓我們為 Azure AD 租戶啟用基於 SMS 的身份驗證。
 
 1. 以*全域管理員*身份登入[Azure 門戶][azure-portal]。
-1. 搜尋並選取 [Azure Active Directory]****。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 從 Azure 活動目錄視窗左側的導航功能表中,選擇 **「安全>身份驗證方法>身份驗證方法策略(預覽)。**
 
     [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
@@ -94,7 +95,7 @@ ms.locfileid: "81378700"
 
 當為 SMS 簽名設定電話號碼時,它也可以與[Azure 多重身份驗證][tutorial-azure-mfa]和[自助服務密碼重置][tutorial-sspr]一起使用。
 
-1. 搜尋並選取 [Azure Active Directory]****。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 從 Azure 活動目錄視窗左側的導航功能表中,選擇 **「使用者**」 。。
 1. 在上一個項目(如*Contoso User)* 選擇開啟 SMS 的身分驗證的使用者,然後選擇**認證方法**。
 1. 輸入使用者的電話號碼,包括國家/地區代碼,如 *#1 xxxxxxxxx*。 Azure 門戶驗證電話號碼的格式正確。
@@ -161,3 +162,5 @@ ms.locfileid: "81378700"
 [office]: https://www.office.com
 [m365-firstline-workers-licensing]: https://www.microsoft.com/licensing/news/m365-firstline-workers
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
+[ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
+[m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans

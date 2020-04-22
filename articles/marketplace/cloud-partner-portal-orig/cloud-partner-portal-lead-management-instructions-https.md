@@ -1,45 +1,46 @@
 ---
-title: HTTPS 端點 |Azure 應用商店
-description: 設定 HTTPS 端點的潛在客戶管理。
+title: 使用 HTTPS 終結點設定潛在顧客管理 |Azure 應用商店
+description: 瞭解如何使用 HTTP 終結點來處理 Microsoft AppSource 和 Azure 應用商店潛在顧客。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 04/21/2020
 ms.author: dsindona
-ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288592"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770205"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 端點設定潛在客戶管理
 
-您可以使用 HTTPS 端點處理 Azure Marketplace 和 AppSource 潛在客戶。 這些潛在客戶可以寫入客戶關係管理 (CRM) 系統或以電子郵件通知形式傳送出去。 本文介紹如何使用[Microsoft Flow](https://powerapps.microsoft.com/automate-processes/)自動化服務配置潛在客戶管理。
+您可以使用 HTTPS 終結點來處理 Microsoft AppSource 和 Azure 應用商店潛在顧客。 這些潛在顧客可以寫入客戶關係管理 (CRM) 系統,也可以作為電子郵件通知發送。 本文介紹如何使用[Microsoft 電源自動化](https://powerapps.microsoft.com/automate-processes/)自動化服務來配置潛在顧客管理。
 
-## <a name="create-a-flow-using-microsoft-flow"></a>使用 Microsoft Flow 建立流程
+## <a name="create-a-flow-using-microsoft-power-automate"></a>使用微軟電源自動功能建立串流
 
-1. 開啟 [Flow](https://flow.microsoft.com/) 網頁。 選取 [登入]**** 或選取 [免費註冊]**** 以建立免費的 Flow 帳戶。
+1. 打開[電源自動功能](https://flow.microsoft.com/)網頁。 選取 [登入]**** 或選取 [免費註冊]**** 以建立免費的 Flow 帳戶。
 
-2. 登入並選取功能表列上的 [我的流程]****。
+1. 登入並選取功能表列上的 [我的流程]****。
+    > [!div class="mx-imgBorder"]
+    > ![我的流程](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![我的流程](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. 在 **( 新增**) 選擇 =**即時的名稱 。**
+    > [!div class="mx-imgBorder"]
+    > ![從空白建立](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. 選取 [+從空白建立]****。
+1. 命名您的流,然後在 **「選擇如何觸發此流**」下,選擇 **「何時收到 HTTP 請求**」。。
 
-    ![從空白建立](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![選取 HTTP 要求接收觸發程序](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. 選取 [從空白建立]****。
+1. 單擊流步驟以展開它。
 
-    ![從空白建立](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![展開流步驟](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. 在 [搜尋連接器與觸發程序]**** 欄位中，輸入「要求」以尋找要求連接器。
-6. 在 [觸發程序]**** 底下，選取 [收到 HTTP 要求時]****。 
-
-    ![選取 HTTP 要求接收觸發程序](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. 使用下列其中一個步驟來設定**要求本文 JSON 結構描述**：
+1. 使用以下方法之一設定**要求正文 JSON 架構**:
 
    - 將此文章結尾的 [JSON 結構描述](#json-schema)複製到**要求本文 JSON 結構描述**文字方塊。
    - 選取 [使用範例承載來產生結構描述]****。 在 [輸入或貼上範例 JSON 承載]**** 文字方塊中，貼上 [JSON 範例](#json-example)。 選取 [完成]**** 以建立結構描述。
@@ -90,17 +91,18 @@ ms.locfileid: "80288592"
    ![新增電子郵件動作](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. 選取 [儲存]**** 完成流程。
+
 6. 在要求中便會建立一個 HTTP POST URL。 複製這個 URL，並使用它作為 HTTPS 端點。
 
     ![HTTP Post URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>設定您的供應項目，以便將潛在客戶傳送至 HTTPS 端點
 
-為產品/服務配置潛在客戶管理資訊時，為**潛在客戶目標**選擇**HTTPS 終結點**，並粘貼到上一步中複製的 HTTP POST URL 中。  
+為產品/服務配置潛在顧客管理資訊時,為**潛在顧客目標**選擇**HTTPS 終結點**,並貼上一步中複製的 HTTP POST URL 中。  
 
 ![新增動態內容](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-產生潛在客戶時，Microsoft 會將潛在客戶傳送至 Flow；如此一來，這些資訊就會路由傳送至您所設定的 CRM 系統或電子郵件地址。
+生成潛在顧客時,Microsoft 會將潛在顧客發送到您的 Power 自動流,該流將路由到您配置的 CRM 系統或電子郵寄地址。
 
 ## <a name="json-schema-and-example"></a>JSON 結構描述和範例
 
@@ -124,6 +126,10 @@ JSON 測試範例會使用下列結構描述：
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -165,23 +171,25 @@ JSON 測試範例會使用下列結構描述：
 }
 ```
 
-您可以複製和編輯下列 JSON 範例，作為 MS Flow 中的測試。
+您可以複製和編輯以下 JSON 範例,以用作流中的測試。
 
 ### <a name="json-example"></a>JSON 範例
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 

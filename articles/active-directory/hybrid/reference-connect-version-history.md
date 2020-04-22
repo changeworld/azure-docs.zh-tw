@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 04/21/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 3a03a03557fbb2e71ff79ff42fd9d9c72cd5907c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639637"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770495"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -48,6 +48,14 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >
 >請參閱[本文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version),詳細瞭解如何將 Azure AD 連接到最新版本。
 
+## <a name="15220"></a>1.5.22.0
+
+### <a name="release-status"></a>發行狀態
+04/20/2020: 發佈供下載
+
+### <a name="fixed-issues"></a>已修正的問題
+如果從 AD 克隆了**In - 組聯接**規則,並且尚未**從 AD - 組通用**規則克隆 In,則此修補程式生成修復了內部版本 1.5.20.0 中的問題。
+
 ## <a name="15200"></a>1.5.20.0
 
 ### <a name="release-status"></a>發行狀態
@@ -57,12 +65,13 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 如果啟用了組篩選功能並使用 mS-DS-一致性 Guid 作為源錨點,則此修補程式生成修復了內部版本 1.5.18.0 的問題。
 
 > [!IMPORTANT]
-> 如果使用 mS-DS-一致性 Guid 作為源錨點,並且已**克隆了 AD - 組加入**同步規則並計劃升級,則作為升級的一部分完成以下步驟:
+> 如果您從 AD 複製了**In - 群組加入**同步規則,並且尚未從 AD 複製**的通用**同步規則並排程升級,則作為升級的一部分完成以下步驟:
 > 1. 在升級期間,取消選中選項 **「在設定完成時啟動同步過程**」。。
 > 2. 編輯複製的檔案同步規則並新增以下兩個轉換:
 >     - 將直接流`objectGUID`設定`sourceAnchorBinary`為 。
 >     - 將表示式流`ConvertToBase64([objectGUID])`設定`sourceAnchor`為 。     
 > 3. 使用`Set-ADSyncScheduler -SyncCycleEnabled $true`啟用計畫程式。
+
 
 
 ## <a name="15180"></a>1.5.18.0

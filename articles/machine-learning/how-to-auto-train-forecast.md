@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f80156f61ad82e5563f1c38764c81297f5979f2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605880"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767310"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自動訓練時間序列預測模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,9 +40,9 @@ ms.locfileid: "81605880"
 
 
 自動 ML 為使用者提供本機時間序列和深度學習模型,作為推薦系統的一部分。 這些學員包括:
-+ 先知
-+ 自動 ARIMA
-+ 預測TCN
++ 先知(預覽)
++ 自動 ARIMA(預覽版)
++ 預測TCN(預覽版)
 
 自動 ML 的深入學習允許預測單變數和多變數時間序列數據。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81605880"
 1. 它們支援多個輸入及輸出
 1. 他們可以自動擷取跨越長序列的輸入資料中的模式
 
-給定更大的數據,深度學習模型(如 Microsoft 的預測 TCN)可以提高結果模型的分數。 
+給定更大的數據,深度學習模型(如 Microsoft 的預測 TCN)可以提高結果模型的分數。 瞭解如何[為深度學習設定實驗](#configure-a-dnn-enable-forecasting-experiment)。
 
 本機時間序列學員也作為自動 ML 的一部分提供。 先知最適合具有強烈季節性效果和幾個季節的歷史數據的時間序列。 先知是準確的&快速,強健的離群值,缺少的數據,和戲劇性的變化,在你的時間序列。 
 
@@ -181,6 +181,17 @@ best_run, fitted_model = local_run.get_output()
 > 對自動機器學習中預測的 DNN 支援處於預覽狀態,不支援本地運行。
 
 為了利用 DN 進行預測,您需要將自動MLConfig`enable_dnn`中的參數設定為 true。 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+瞭解有關[自動MLConfig](#configure-and-run-experiment)的更多。
+
+或者,您也可以在`Enable deep learning`工作室中選擇該選項。
+![替代文字](./media/how-to-auto-train-forecast/enable_dnn.png)
 
 我們建議使用具有 GPU SKU 和至少兩個節點的 AML 計算群集作為計算目標。 為了留出足夠的時間完成 DNN 培訓,我們建議將實驗超時設置為至少幾個小時。
 有關包括 GPU 的 AML 計算和 VM 大小的詳細資訊,請參閱[AML 計算文件](how-to-set-up-training-targets.md#amlcompute)與[GPU 最佳化的虛擬機器大小文件](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。

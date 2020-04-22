@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272520"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769992"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>在 Azure App Service 中針對應用程式啟用診斷記錄
 ## <a name="overview"></a>概觀
@@ -39,6 +39,9 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 ## <a name="enable-application-logging-windows"></a>開啟應用程式紀錄記錄(Windows)
 
+> [!NOTE]
+> Blob 儲存的應用程式紀錄紀錄只能使用與應用程式服務位於同一區域中的儲存帳戶
+
 在[Azure 門戶](https://portal.azure.com)中為 Windows 應用程式啟用應用程式紀錄記錄,請瀏覽到應用程式並選擇**套用服務紀錄**。
 
 為**應用程式記錄(檔案系統)** 或**應用程式記錄(Blob)** 或兩者選擇 **「打開**」。 
@@ -59,7 +62,7 @@ Azure 提供內建診斷功能，可協助對 [App Service 應用程式](overvie
 
 | 層級 | 包括類別 |
 |-|-|
-|**已停用** | None |
+|**Disabled** | None |
 |**錯誤** | 錯誤、嚴重 |
 |**警告** | 警告、錯誤、嚴重|
 |**資訊** | 資訊、警告、錯誤、嚴重|

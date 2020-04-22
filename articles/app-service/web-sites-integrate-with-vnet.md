@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4866397af244ffb3c6aa9c7547b0a9413b10ccfd
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604871"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770846"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>套用與 Azure 虛擬網路整合
 
@@ -23,6 +23,10 @@ Azure 應用服務有兩種變體:
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>開啟 VNet 整合
+
+> [!NOTE]
+> 如果在 Linux 應用的功能表中禁用「網路」邊欄選項卡(灰顯),則表示該功能當前不可用。
+>
 
 1. 轉到應用服務門戶中的**網路**UI。 在**VNet 整合**下,選擇 **「按一次設定」。**
 

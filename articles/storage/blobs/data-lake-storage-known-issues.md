@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115335"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767970"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -62,14 +62,11 @@ Blob API 和資料存儲第 2 代 API 可以對相同的資料進行操作。
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>SDK 中的檔案系統支援
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、電源外殼和 Azure CLI 中的檔案系統支援
 
-獲取和設置 ACL 操作當前不是遞迴的。
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>PowerShell 與 Azure CLI 中的檔案系統支援
-
-- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)和[Azure CLI](data-lake-storage-directory-file-acl-cli.md)支援處於公共預覽版中。
 - 獲取和設置 ACL 操作當前不是遞迴的。
+- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)支援處於公共預覽版。
+
 
 ## <a name="lifecycle-management-policies"></a>生命週期管理原則
 

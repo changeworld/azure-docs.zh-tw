@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537418"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770955"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>為本地伺服器部署 Azure 監視器應用程式見解代理
 
@@ -36,14 +36,14 @@ ms.locfileid: "81537418"
 - 有關如何入門的深入瞭解[,請參閱詳細說明](status-monitor-v2-detailed-instructions.md)。
 
 ## <a name="powershell-api-reference"></a>電源殼 API 參考
-- [關閉應用程式的程式見解監控](status-monitor-v2-api-disable-monitoring.md)
-- [關閉偵測引擎](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [開啟應用程式洞察監控](status-monitor-v2-api-enable-monitoring.md)
-- [開啟偵測引擎](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [取得應用程式洞察監控組態](status-monitor-v2-api-get-config.md)
-- [取得應用程式的監控狀態](status-monitor-v2-api-get-status.md)
-- [設定應用程式洞察監控設定](status-monitor-v2-api-set-config.md)
-- [啟動-應用程式洞察監控追蹤](status-monitor-v2-api-start-trace.md)
+- [關閉應用程式的程式見解監控](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [關閉偵測引擎](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [開啟應用程式洞察監控](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [開啟偵測引擎](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [取得應用程式洞察監控組態](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [取得應用程式的監控狀態](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [設定應用程式洞察監控設定](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [啟動-應用程式洞察監控追蹤](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>疑難排解
 - [疑難排解](status-monitor-v2-troubleshoot.md)
@@ -54,7 +54,7 @@ ms.locfileid: "81537418"
 
 - 應用程式見解代理是否支援代理安裝?
 
-  *是的*。 下載應用程式見解代理有多種方法。 如果您的電腦具有 Internet 訪問許可權,則`-Proxy`可以使用 參數將板載到 PowerShell 庫。
+  *是*。 下載應用程式見解代理有多種方法。 如果您的電腦具有 Internet 訪問許可權,則`-Proxy`可以使用 參數將板載到 PowerShell 庫。
 您還可以手動下載模組,並將其安裝到您的電腦上或直接使用它。
 這些選項中每一個[您可以詳細說明中描述](status-monitor-v2-detailed-instructions.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "81537418"
 
 - 如何驗證啟用是否成功?
 
-  - [獲取應用程式見解監視狀態](status-monitor-v2-api-get-status.md)cmdlet 可用於驗證啟用是否成功。
+  - [獲取應用程式見解監視狀態](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)cmdlet 可用於驗證啟用是否成功。
   - 我們建議您使用[即時指標](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)快速確定應用是否正在發送遙測數據。
 
   - 您還可以使用[紀錄分析](../log-query/get-started-portal.md)列出目前傳送遙測的所有雲角色:

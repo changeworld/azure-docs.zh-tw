@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313815"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770902"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站在 HDInsight 中建立 Linux 型叢集
 
@@ -94,7 +94,7 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 |屬性 |描述 |
 |---|---|
 |企業安全性套件|可選:選擇使用**企業安全包**的複選框。 有關詳細資訊,請參閱使用[Azure 活動目錄域服務使用企業安全包配置 HDInsight 叢集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。|
-|TLS|可選:從下拉清單中選擇 TLS 版本。 有關詳細資訊,請參閱[傳輸層安全](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)。|
+|TLS|可選:從下拉清單中選擇 TLS 版本。 有關詳細資訊,請參閱[傳輸層安全](./transport-layer-security.md)。|
 |虛擬網路|可選:從下拉清單中選擇現有虛擬網路和子網。 有關詳細資訊,請參閱[規劃 Azure HDInsight 叢集的虛擬網路部署](hdinsight-plan-virtual-network-deployment.md)。 此文章包含虛擬網路的特定設定需求。|
 |磁碟加密設定|可選:選擇使用加密的複選框。 關於詳細資訊,請參考[客戶管理金鑰磁碟加密](./disk-encryption.md)。|
 |Kafka REST Proxy|此設置僅適用於群集類型 Kafka。 有關詳細資訊,請參閱使用[REST 代理](./kafka/rest-proxy.md)程式 。|
