@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a1229ee389b41625554fb2869089b08a3cb9cb6d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617133"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676503"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>管理 Azure 自動化中的 Runbook
 
@@ -46,13 +46,13 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 您可以通過匯入 PowerShell 文稿或 PowerShell 工作流 **(.ps1)、** 匯出的圖形執行**簿 (.graphrunbook)** 或 Python2 腳本 **(.py)** 在 Azure 自動化中創建新的 Runbook。  您必須指定匯入期間建立的 [Runbook 類型](automation-runbook-types.md)，並考量下列事項。
 
-* 不包含工作流的 **.ps1**檔可以導入到[PowerShell 執行簿](automation-runbook-types.md#powershell-runbooks)或[PowerShell 工作流執行簿](automation-runbook-types.md#powershell-workflow-runbooks)中。 如果將其導入 PowerShell 工作流執行簿,則將其轉換為工作流。 在這種情況下,註釋包含在 Runbook 中,以描述已進行的更改。
+* 您可以將不包含工作串流的 **.ps1**檔案匯入[PowerShell 執行簿](automation-runbook-types.md#powershell-runbooks)或[PowerShell 工作流執行簿](automation-runbook-types.md#powershell-workflow-runbooks)。 如果將其導入 PowerShell 工作流執行簿,則將其轉換為工作流。 在這種情況下,註釋包含在 Runbook 中,以描述已進行的更改。
 
-* 包含 PowerShell 工作流的 **.ps1**檔只能導入到[PowerShell 工作流執行簿](automation-runbook-types.md#powershell-workflow-runbooks)中。 如果檔包含多個 PowerShell 工作流,則導入將失敗。 您必須將每個工作流程儲存到它們各自的檔案，並且個別匯入。
+* 您只能包含 PowerShell 工作流的 **.ps1**檔案匯入[PowerShell 工作流程執行簿](automation-runbook-types.md#powershell-workflow-runbooks)。 如果檔包含多個 PowerShell 工作流,則導入將失敗。 您必須將每個工作流程儲存到它們各自的檔案，並且個別匯入。
 
-* 包含 PowerShell 工作流的 **.ps1**檔不應導入[到 PowerShell 執行簿](automation-runbook-types.md#powershell-runbooks)中,因為 PowerShell 腳本引擎無法識別它。
+* 不要將包含 PowerShell 工作流的 **.ps1**檔導入[PowerShell 執行簿](automation-runbook-types.md#powershell-runbooks),因為 PowerShell 文本引擎無法識別該檔。
 
-* **.graphrunbook**檔只能匯入到新的[圖形運行簿](automation-runbook-types.md#graphical-runbooks)中。 請注意,您只能從 **.graphrunbook**檔案建立圖形運行簿。
+* 您只能將 **.graphrunbook**檔案匯入到新的[圖形執行簿](automation-runbook-types.md#graphical-runbooks)中。 請注意,您只能從 **.graphrunbook**檔案建立圖形運行簿。
 
 ### <a name="import-a-runbook-from-a-file-with-the-azure-portal"></a>使用 Azure 門戶從檔案匯入 Runbook
 

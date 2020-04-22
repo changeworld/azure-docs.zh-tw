@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277301"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684314"
 ---
 # <a name="containers-offer-publishing-guide"></a>容器供應項目發佈指南
 
@@ -41,9 +41,9 @@ Microsoft 目前支援免費和自備授權 (BYOL) 授權模型。
 
 如果您還沒有這麼做，請 
 
-- 在市集中[註冊](https://azuremarketplace.microsoft.com/sell)。
+- [了解](https://azuremarketplace.microsoft.com/sell)市場。
 
-如果您已註冊，且要建立新供應項目或使用現有供應項目，請
+要在合作夥伴中心註冊,請開始創建新產品/服務或處理現有產品/服務:
 
-- [登入 Cloud Partner 入口網站](https://cloudpartner.azure.com)以建立或完成您的供應項目。
-- 如需詳細資訊，請參閱[容器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)。
+- [登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的優惠。
+- 有關詳細資訊[,請參閱建立 Azure 容器產品/服務](./partner-center-portal/create-azure-container-offer.md)。

@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 配置每個網站的 WAF 策略
+title: 使用 PowerShell 設定每個網站的 WAF 政策
 titleSuffix: Azure Web Application Firewall
 description: 瞭解如何使用 Azure PowerShell 在應用程式閘道上配置每個網站的 Web 應用程式防火牆策略。
 services: web-application-firewall
@@ -8,20 +8,20 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a04b850857b6abd81934430a05086477acd058d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444689"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682489"
 ---
-# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每個網站 WAF 策略
+# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 設定每個站台 WAF 政策
 
-Web 應用程式防火牆 （WAF） 設置包含在 WAF 策略中，要更改 WAF 配置，請修改 WAF 策略。
+Web 應用程式防火牆 (WAF) 設定包含在 WAF 策略中,要更改 WAF 配置,請修改 WAF 策略。
 
-與應用程式閘道關聯時，策略和所有設置將全域反映。 因此，如果您的 WAF 後面有五個網站，則所有五個網站都受同一 WAF 策略的保護。 如果您需要每個網站的相同安全設置，這很棒。 但是，您也可以將 WAF 策略應用於單個攔截器，以允許特定于網站的 WAF 配置。
+與應用程式閘道關聯時,策略和所有設置將全域反映。 因此,如果您的 WAF 後面有五個網站,則所有五個網站都受同一 WAF 策略的保護。 如果您需要每個網站的相同安全設置,這很棒。 但是,您也可以將 WAF 策略應用於單個偵聽器,以允許特定於網站的 WAF 配置。
 
-通過將 WAF 策略應用於攔截器，可以為各個網站配置 WAF 設置，而無需更改影響每個網站。 最具體的政策是先例。 如果存在全域原則和每個網站策略（與攔截器關聯的 WAF 策略），則每個網站策略將覆蓋該攔截器的全域 WAF 策略。 沒有自己策略的其他攔截器將僅受全域 WAF 策略的影響。
+通過將 WAF 策略應用於偵聽器,可以為各個網站配置 WAF 設置,而無需更改影響每個網站。 最具體的政策是先例。 如果存在全域策略和每個網站策略(與偵聽器關聯的 WAF 策略),則每個網站策略將覆蓋該偵聽器的全域 WAF 策略。 沒有自己策略的其他偵聽器將僅受全域 WAF 策略的影響。
 
 在本文中，您將學會如何：
 
@@ -29,7 +29,7 @@ Web 應用程式防火牆 （WAF） 設置包含在 WAF 策略中，要更改 WA
 > * 設定網路
 > * 建立 WAF 原則
 > * 建立已啟用 WAF 的應用程式閘道
-> * 全域、每個網站和每個 URI 應用 WAF 策略
+> * 全域、每個站台和每個 URI 應用 WAF 政策
 > * 建立虛擬機器擴展集
 > * 建立儲存體帳戶並設定診斷
 > * 測試應用程式閘道
@@ -132,9 +132,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-two-waf-policies"></a>創建兩個 WAF 策略
+### <a name="create-two-waf-policies"></a>建立兩個 WAF 政策
 
-創建兩個 WAF 策略，每個網站一個全域原則和一個策略，並添加自訂規則。 
+創建兩個 WAF 策略,每個網站一個全域策略和一個策略,並添加自訂規則。 
 
 每個網站的策略將檔上載限制限制限制為 5 MB。 其他一切都是一樣的。
 
@@ -250,9 +250,9 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>應用每個 URI 策略
+### <a name="apply-a-per-uri-policy"></a>套用每個 URI 政策
 
-要應用每個 URI 策略，只需創建新策略並將其應用於路徑規則配置即可。 
+要應用每個 URI 策略,只需創建新策略並將其應用於路徑規則配置即可。 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -284,7 +284,7 @@ $PathRuleConfig1 = New-AzApplicationGatewayPathRuleConfig `
 $URLPathMap = New-AzApplicationGatewayUrlPathMapConfig -Name "PathMap" `
   -PathRules $PathRuleConfig, $PathRuleConfig1 `
   -DefaultBackendAddressPoolId $defaultPool.Id `
-  -DefaultBackendHttpSettingsId poolSettings.Id
+  -DefaultBackendHttpSettingsId $poolSettings.Id
 
 Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw `
   -Name "RequestRoutingRule" `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 
-您可使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 來取得應用程式閘道的公用 IP 位址。 然後使用此 IP 位址捲曲（替換如下所示的 1.1.1.1）。 
+您可使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 來取得應用程式閘道的公用 IP 位址。 然後使用此 IP 位址捲曲(替換如下所示的 1.1.1.1)。 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

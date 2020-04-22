@@ -1,6 +1,6 @@
 ---
-title: 託管實例的連接體系結構
-description: 瞭解 Azure SQL 資料庫託管實例通信和連接體系結構，以及元件如何將流量定向到託管實例。
+title: 託管實例的連線架構結構
+description: 瞭解 Azure SQL 資料庫託管實例通信和連接體系結構,以及元件如何將流量定向到託管實例。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,98 +11,98 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481094"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677160"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 資料庫中託管實例的連接體系結構
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 資料庫中託管實例的連線結構
 
 本文介紹 Azure SQL 資料庫託管實例中的通信。 它還描述了連接體系結構以及元件如何將流量定向到託管實例。  
 
-SQL 資料庫託管實例放置在 Azure 虛擬網路和專用於託管實例的子網中。 此部署提供：
+SQL 資料庫託管實例放置在 Azure 虛擬網路和專用於託管實例的子網中。 此外, 這個部署提供:
 
-- 安全的私人 IP 位址。
+- 安全的專用 IP 位址。
 - 將本地網路連接到託管實例的能力。
 - 將託管實例連接到連結的伺服器或其他本地資料存儲的功能。
 - 將託管實例連接到 Azure 資源的能力。
 
 ## <a name="communication-overview"></a>通訊概觀
 
-下圖顯示了連接到託管實例的實體。 它還顯示需要與託管實例通信的資源。 關係圖底部的通信過程表示作為資料來源連接到託管實例的客戶應用程式和工具。  
+下圖顯示了連接到託管實例的實體。 它還顯示需要與託管實例通信的資源。 關係圖底部的通信過程表示作為數據源連接到託管實例的客戶應用程式和工具。  
 
-![連接體系結構中的實體](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
+![連線架構結構中的實體](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
 
-託管實例是一個平臺即服務 （PaaS） 產品。 Microsoft 使用自動代理（管理、部署和維護）基於遙測資料流程管理此服務。 由於 Microsoft 負責管理，因此客戶無法通過遠端桌面協定 （RDP） 訪問託管實例虛擬叢集電腦。
+託管實例是一個平臺即服務 (PaaS) 產品。 Microsoft 使用自動代理(管理、部署和維護)基於遙測數據流管理此服務。 由於 Microsoft 負責管理,因此客戶無法透過遠端桌面協定 (RDP) 訪問託管實例虛擬群集電腦。
 
-最終使用者或應用程式啟動的某些 SQL Server 操作可能需要託管實例與平臺進行交互。 一種情況是創建託管實例資料庫。 此資源通過 Azure 門戶、PowerShell、Azure CLI 和 REST API 公開。
+最終使用者或應用程式啟動的某些 SQL Server 操作可能需要託管實例與平台進行交互。 一種情況是創建託管實例資料庫。 此資源透過 Azure 門戶、PowerShell、Azure CLI 和 REST API 公開。
 
-託管實例依賴于 Azure 服務，如用於備份的 Azure 存儲、用於遙測的 Azure 事件中心、用於身份驗證的 Azure 活動目錄、用於透明資料加密的 Azure 金鑰保存庫 （TDE） 以及提供的幾個 Azure 平臺服務安全性和可支援性功能。 託管實例與這些服務建立連接。
+託管實例依賴於 Azure 服務,如用於備份的 Azure 儲存、用於遙測的 Azure 事件中心、用於身份驗證的 Azure 活動目錄、用於透明數據加密的 Azure 密鑰保管庫 (TDE) 以及提供安全性和可支援性功能的一些 Azure 平台服務。 託管實例與這些服務建立連接。
 
-所有通信都使用證書進行加密和簽名。 為了檢查通信方的可信度，託管實例會通過憑證撤銷清單不斷驗證這些證書。 如果吊銷證書，託管實例將關閉連接以保護資料。
+所有通訊都使用證書進行加密和簽名。 為了檢查通信方的可信度,託管實例會通過證書吊銷清單不斷驗證這些證書。 如果吊銷證書,託管實例將關閉連接以保護數據。
 
 ## <a name="high-level-connectivity-architecture"></a>高層級連線架構
 
-在高級級別上，託管實例是一組服務元件。 這些元件託管在一組專用的隔離虛擬機器上，這些虛擬機器在客戶的虛擬網路子網內運行。 這些電腦構成一個虛擬叢集。
+在高級級別上,託管實例是一組服務元件。 這些元件託管在一組專用的隔離虛擬機器上,這些虛擬機器在客戶的虛擬網路子網內運行。 這些計算機構成一個虛擬群集。
 
-虛擬叢集可以承載多個託管實例。 如果需要，當客戶更改子網中的預配實例數時，群集會自動擴展或收縮。
+虛擬群集可以承載多個託管實例。 如果需要,當客戶更改子網中的預配實例數時,群集會自動擴展或收縮。
 
-客戶應用程式可以連接到託管實例，並可以查詢和更新虛擬網路、對等虛擬網路或由 VPN 或 Azure ExpressRoute 連接的網路內的資料庫。 此網路必須使用終結點和私人 IP 位址。  
+客戶應用程式可以連接到託管實例,並可以查詢和更新虛擬網路、對等虛擬網路或由 VPN 或 Azure ExpressRoute 連接的網路內的資料庫。 此網路必須使用終結點和專用 IP 位址。  
 
-![連接體系結構圖](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
+![連線結構圖](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
-Microsoft 管理和部署服務在虛擬網路之外運行。 託管實例和 Microsoft 服務通過具有公共 IP 位址的終結點進行連接。 當託管實例創建出站連接時，在接收端網路位址轉譯 （NAT） 時，使連接看起來像是來自此公共 IP 位址。
+Microsoft 管理和部署服務在虛擬網路之外運行。 託管實例和 Microsoft 服務透過具有公共 IP 位址的終結點進行連接。 當託管實例建立出站連接時,在接收端網路位址轉換 (NAT) 時,使連接看起來像是來自此公共 IP 位址。
 
-管理流量流經客戶的虛擬網路。 這意味著虛擬網路基礎結構的元素可能會使實例失敗並成為不可用，從而損害管理流量。
+管理流量流經客戶的虛擬網路。 這意味著虛擬網路基礎結構的元素可能會使實例失敗並成為不可用,從而損害管理流量。
 
 > [!IMPORTANT]
-> 為了提高客戶體驗和服務可用性，Microsoft 對 Azure 虛擬網路基礎結構元素應用網路意圖策略。 該策略可能會影響託管實例的工作方式。 此平臺機制透明地向使用者傳達網路要求。 該策略的主要目標是防止網路設定錯誤，並確保正常的託管實例操作。 刪除託管實例時，網路意圖策略也會被刪除。
+> 為了提高客戶體驗和服務可用性,Microsoft 對 Azure 虛擬網路基礎結構元素應用網路意圖策略。 該策略可能會影響託管實例的工作方式。 此平台機制透明地向使用者傳達網路要求。 該策略的主要目標是防止網路配置錯誤,並確保正常的託管實例操作。 刪除託管實例時,網路意圖策略也會被刪除。
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>虛擬叢集連線架構
 
 讓我們深入探討託管實例的連接體系結構。 下圖顯示虛擬叢集的概念性配置。
 
-![虛擬叢集的連接體系結構](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
+![虛擬叢集的連線架構結構](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-用戶端使用具有表單`<mi_name>.<dns_zone>.database.windows.net`的主機名稱連接到託管實例。 此主機名稱解析為私人 IP 位址，儘管它已在公共網域名稱系統 （DNS） 區域註冊，並且可公開解析。 在`zone-id`創建群集時自動生成 。 如果新創建的群集承載輔助託管實例，它將將其區域 ID 與主群集共用。 有關詳細資訊，請參閱[使用自動容錯移轉組來啟用多個資料庫的透明和協調容錯移轉](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)。
+用戶端使用具有窗體`<mi_name>.<dns_zone>.database.windows.net`的主機名連接到託管實例。 此主機名解析為專用 IP 位址,儘管它已在公共域名系統 (DNS) 區域註冊,並且可公開解析。 建立`zone-id`群組時自動產生 。 如果新創建的群集承載輔助託管實例,它將將其區域 ID 與主群集共用。 有關詳細資訊,請參閱[使用自動故障轉移群組來啟用多個資料庫的透明和協調故障轉移](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)。
 
-此私人 IP 位址屬於託管實例的內部負載等化器。 負載等化器將流量定向到託管實例的閘道。 由於多個託管實例可以在同一群集內運行，因此閘道使用託管實例的主機名稱將流量重定向到正確的 SQL 引擎服務。
+此專用 IP 位址屬於託管實例的內部負載均衡器。 負載均衡器將流量定向到託管實例的閘道。 由於多個託管實例可以在同一群集內運行,因此閘道使用託管實例的主機名將流量重定向到正確的 SQL 引擎服務。
 
-管理和部署服務通過使用映射到外部負載等化器[的管理終結點](#management-endpoint)連接到託管實例。 僅當流量在僅託管實例的管理元件使用的預定義的埠集上接收時，才會路由到節點。 節點上的內置防火牆設置為僅允許來自 Microsoft IP 範圍的流量。 證書對管理元件和管理平面之間的所有通信進行相互身份驗證。
+管理和部署服務通過使用映射到外部負載均衡器[的管理終結點](#management-endpoint)連接到託管實例。 僅當流量在僅託管實例的管理元件使用的預定義的埠集上接收時,才會路由到節點。 節點上的內建防火牆設置為僅允許來自 Microsoft IP 範圍的流量。 證書對管理元件和管理平面之間的所有通訊進行相互身份驗證。
 
 ## <a name="management-endpoint"></a>管理端點
 
-Microsoft 使用管理終結點管理託管實例。 此終結點位於實例的虛擬叢集中。 管理終結點由網路級別的內置防火牆保護。 在應用程式級別上，它受相互證書驗證的保護。 要查找終結點的 IP 位址，請參閱[確定管理終結點的 IP 位址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+Microsoft 使用管理終結點管理託管實例。 此終結點位於實例的虛擬群集中。 管理終結點由網路級別的內置防火牆保護。 在應用程式級別上,它受相互證書驗證的保護。 要尋找終結點的 IP 位址,請參考[確定管理的 IP 位址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 
-當連接在託管實例內啟動時（與備份和稽核記錄一樣），流量似乎從管理終結點的公共 IP 位址開始。 通過設置防火牆規則以僅允許託管實例的 IP 位址，可以限制對託管實例的公共服務的訪問。 有關詳細資訊，請參閱[驗證託管實例的內置防火牆](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
+當連接在託管實例內啟動時(與備份和審核日誌一樣),流量似乎從管理終結點的公共 IP 位址開始。 通過設置防火牆規則以僅允許託管實例的 IP 位址,可以限制對託管實例的公共服務的訪問。 有關詳細資訊,請參閱[驗證託管實例的內建防火牆](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
 
 > [!NOTE]
-> 流向託管實例區域內的 Azure 服務的流量已過優化，因此無法 NATed 到託管實例管理終結點公共 IP 位址。 因此，如果您需要使用基於 IP 的防火牆規則（通常對於存儲，服務需要位於與託管實例不同的區域）。
+> 流向託管實例區域內的 Azure 服務的流量已過優化,因此無法 NATed 到託管實例管理終結點公共 IP 位址。 因此,如果您需要使用基於 IP 的防火牆規則(通常對於存儲,服務需要位於與託管實例不同的區域)。
 
-## <a name="service-aided-subnet-configuration"></a>服務輔助子網配置
+## <a name="service-aided-subnet-configuration"></a>服務輔助的子網路組態
 
-為了滿足客戶安全性和可管理性要求，託管實例正在從手動到服務輔助子網配置過渡。
+為了滿足客戶安全性和可管理性要求,託管實例正在從手動到服務輔助子網配置過渡。
 
-通過服務輔助子網配置，使用者完全控制資料 （TDS） 流量，而託管實例則負責確保管理流量的不間斷流動，以實現 SLA。
+通過服務輔助子網配置,使用者完全控制數據 (TDS) 流量,而託管實例則負責確保管理流量的不間斷流動,以實現 SLA。
 
-服務輔助子網配置基於虛擬網路[子網委派](../virtual-network/subnet-delegation-overview.md)功能構建，可提供自動網路設定管理並啟用服務終結點。 服務終結點可用於在存儲帳戶上配置虛擬網路防火牆規則，這些帳戶保留備份/稽核記錄。
+服務輔助子網配置基於虛擬網路[子網委派](../virtual-network/subnet-delegation-overview.md)功能構建,可提供自動網路配置管理並啟用服務終結點。 服務終結點可用於在存儲帳戶上配置虛擬網路防火牆規則,這些帳戶保留備份/審核日誌。
 
 ### <a name="network-requirements"></a>網路需求 
 
-在虛擬網路中的專用子網中部署託管實例。 子網必須具有以下特徵：
+在虛擬網路中的專用子網中部署託管實例。 子網必須具有以下特徵:
 
-- **專用子網：** 託管實例的子網不能包含與其關聯的任何其他雲服務，也不能是閘道子網。 子網不能包含任何資源，但託管實例，並且以後不能在子網中添加其他類型的資源。
-- **子網委派：** 託管實例的子網需要委派給`Microsoft.Sql/managedInstances`資來源提供者。
-- **網路安全性群組：：** NSG 需要與託管實例的子閘道聯。 當託管實例配置為重定向連接時，可以使用 NSG 通過篩選埠 1433 和埠 11000-11999 上的流量來控制對託管實例資料終結點的訪問。 服務將自動預配並保留所需的當前[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，以便不間斷地流管理流量。
-- **使用者定義的路由 （UDR） 表：** UDR 表需要與託管實例的子閘道聯。 您可以將條目添加到路由表，以便通過虛擬網路閘道或虛擬網路設備 （NVA） 將本地專用 IP 範圍作為目標的流量路由。 服務將自動預配並保留所需的當前[條目](#user-defined-routes-with-service-aided-subnet-configuration)，以便不間斷地流管理流量。
-- **足夠的 IP 位址：** 託管實例子網必須至少具有 16 個 IP 位址。 建議的最小值為 32 個 IP 位址。 有關詳細資訊，請參閱[確定託管實例的子網的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 在配置託管實例以滿足[託管實例的網路要求](#network-requirements)後[，可以在現有網路中](sql-database-managed-instance-configure-vnet-subnet.md)部署託管實例。 否則，創建新[網路和子網](sql-database-managed-instance-create-vnet-subnet.md)。
+- **專用子網:** 託管實例的子網不能包含與其關聯的任何其他雲服務,也不能是網關子網。 子網不能包含任何資源,但託管實例,並且以後不能在子網中添加其他類型的資源。
+- **子網委派:** 託管實例的子網需要委派給`Microsoft.Sql/managedInstances`資源提供程式。
+- **網路安全組::** NSG 需要與託管實例的子網關聯。 當託管實例配置為重定向連接時,可以使用 NSG 通過篩選埠 1433 和埠 11000-11999 上的流量來控制對託管實例數據終結點的訪問。 服務將自動預配並保留所需的當前[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration),以便不間斷地流管理流量。
+- **使用者定義的路由 (UDR) 表:** UDR 表需要與託管實例的子網關聯。 您可以將項目加入到路由表,以便透過虛擬網路閘道或虛擬網路裝置 (NVA) 將本地專用 IP 範圍作為目標的流量路由。 服務將自動預配並保留所需的當前[條目](#user-defined-routes-with-service-aided-subnet-configuration),以便不間斷地流管理流量。
+- **足夠的 IP 位址:** 託管實例子網必須至少具有 16 個 IP 位址。 建議的最小值為 32 個 IP 位址。 有關詳細資訊,請參閱[確定託管實例的子網路的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 在配置託管實例以滿足[託管實例的網路要求](#network-requirements)後[,可以在現有網路中](sql-database-managed-instance-configure-vnet-subnet.md)部署託管實例。 否則,建立新[網路和子網路](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
-> 創建託管實例時，將網路意圖策略應用於子網，以防止對網路設置進行不合規的更改。 從子網中刪除最後一個實例後，網路意圖策略也將被刪除。
+> 創建託管實例時,將網路意圖策略應用於子網,以防止對網路設置進行不合規的更改。 從子網中刪除最後一個實例後,網路意圖策略也將被刪除。
 
-### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服務輔助子網配置的強制性入站安全規則 
+### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服務輔助子網路設定的強制性入站安全規則 
 
 | 名稱       |連接埠                        |通訊協定|來源           |Destination|動作|
 |------------|----------------------------|--------|-----------------|-----------|------|
@@ -112,14 +112,14 @@ Microsoft 使用管理終結點管理託管實例。 此終結點位於實例的
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |Allow |
 |health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |Allow |
 
-### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服務輔助子網配置的強制出站安全規則 
+### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服務輔助子網路設定的強制出站安全規則 
 
 | 名稱       |連接埠          |通訊協定|來源           |Destination|動作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443, 12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
 
-### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服務輔助子網配置的使用者定義路由 
+### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服務輔助子網路設定的使用者定義路由 
 
 |名稱|位址首碼|下一跳|
 |----|--------------|-------|
@@ -294,31 +294,32 @@ Microsoft 使用管理終結點管理託管實例。 此終結點位於實例的
 
 \*MI SUBNET 是指表單 x.x.x.x/y 中子網的 IP 位址範圍。 您可以在 Azure 門戶、子網屬性中找到此資訊。
 
-此外，還可以向路由表添加條目，以便通過虛擬網路閘道或虛擬網路設備 （NVA） 將本地專用 IP 範圍作為目標的流量路由為目標。
+此外,還可以向路由表添加條目,以便透過虛擬網路閘道或虛擬網路設備 (NVA) 將本地專用 IP 範圍作為目標的流量路由為目標。
 
-如果虛擬網路包含自訂 DNS，則自訂 DNS 伺服器必須能夠解析公共 DNS 記錄。 使用 Azure AD 身份驗證等其他功能可能需要解析其他 FQDN。 有關詳細資訊，請參閱[設置自訂 DNS](sql-database-managed-instance-custom-dns.md)。
+如果虛擬網路包含自訂 DNS,則自訂 DNS 伺服器必須能夠解析公共 DNS 記錄。 使用 Azure AD 認證等其他功能可能需要解析其他 FQDN。 有關詳細資訊,請參閱[設定自訂 DNS](sql-database-managed-instance-custom-dns.md)。
 
-### <a name="networking-constraints"></a>網路約束
+### <a name="networking-constraints"></a>網路限制
 
-**TLS 1.2 在出站連接上強制執行**：2020 年 1 月，Microsoft 對所有 Azure 服務中的服務內流量強制實施 TLS 1.2。 對於 Azure SQL 資料庫託管實例，這導致 TLS 1.2 在用於複製的出站連接上強制執行，並將伺服器連接連結到 SQL Server。 如果您使用的 SQL Server 版本早于 2016 年託管實例，請確保已應用[TLS 1.2 特定更新](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
+**TLS 1.2 在出站連接上強制執行**:2020 年 1 月,Microsoft 對所有 Azure 服務中的服務內流量強制實施 TLS 1.2。 對於 Azure SQL 資料庫託管實例,這導致 TLS 1.2 在用於複製的出站連接上強制執行,並將伺服器連接連結到 SQL Server。 如果您使用的 SQL Server 版本早於 2016 年託管實例,請確保已應用[TLS 1.2 特定更新](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
 
-託管實例當前不支援以下虛擬網路功能：
-- **微軟對等**：啟用 Microsoft 對[等互連](../expressroute/expressroute-faqs.md#microsoft-peering)路由電路，直接或與虛擬網路進行對等，其中託管實例駐留影響虛擬網路中託管實例元件與它所依賴的服務之間的流量流，具體取決於導致可用性問題。 已啟用 Microsoft 對等互連的託管實例部署到虛擬網路預期將失敗。
-- **全域虛擬網路對等互連**：由於[記錄的負載等化器約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)，跨 Azure 區域的[虛擬網路對等](../virtual-network/virtual-network-peering-overview.md)互連對託管實例不起作用。
-- **AzurePlatformDNS**： 使用 AzurePlatformDNS[服務標記](../virtual-network/service-tags-overview.md)來阻止平臺 DNS 解析將使託管實例不可用。 儘管託管實例支援客戶定義的 DNS，用於引擎內的 DNS 解析，但平臺操作依賴于平臺 DNS。
+託管實例目前不支援以下虛擬網路功能:
+- **微軟對等**:啟用 Microsoft 對[等互連](../expressroute/expressroute-faqs.md#microsoft-peering)路由電路,直接或與虛擬網路進行對等,其中託管實例駐留影響虛擬網路中託管實例元件與它所依賴的服務之間的流量流,具體取決於導致可用性問題。 已啟用 Microsoft 對等互連的託管實例部署到虛擬網路預期將失敗。
+- **全域虛擬網路對等互連**:由於[記錄的負載均衡器約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers),跨 Azure 區域的[虛擬網路對等](../virtual-network/virtual-network-peering-overview.md)互連對託管實例不起作用。
+- **AzurePlatformDNS**: 使用 AzurePlatformDNS[服務標記](../virtual-network/service-tags-overview.md)來阻止平臺 DNS 解析將使託管實例不可用。 儘管託管實例支援客戶定義的 DNS,用於引擎內的 DNS 解析,但平臺操作依賴於平臺 DNS。
+- **NAT 閘道**:使用[虛擬網路 NAT](../virtual-network/nat-overview.md)控制具有特定公共 IP 位址的出站連接將使託管實例不可用。 託管實例服務目前僅限於使用基本負載均衡器,該平衡器不提供與虛擬網路 NAT 的入站和出站流共存。
 
-### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[已棄用]沒有服務輔助子網配置的網路要求
+### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>【 已棄用】沒有服務輔助子網路設定的網路要求
 
-在虛擬網路中的專用子網中部署託管實例。 子網必須具有以下特徵：
+在虛擬網路中的專用子網中部署託管實例。 子網必須具有以下特徵:
 
-- **專用子網：** 託管實例的子網不能包含與其關聯的任何其他雲服務，也不能是閘道子網。 子網不能包含任何資源，但託管實例，並且以後不能在子網中添加其他類型的資源。
-- **網路安全性群組：：** 與虛擬網路關聯的 NSG 必須在任何其他規則之前定義[入站安全規則](#mandatory-inbound-security-rules)和[出站安全規則](#mandatory-outbound-security-rules)。 當託管實例配置為重定向連接時，可以使用 NSG 通過篩選埠 1433 和埠 11000-11999 上的流量來控制對託管實例資料終結點的訪問。
-- **使用者定義的路由 （UDR） 表：** 與虛擬網路關聯的 UDR 表必須包含特定的[條目](#user-defined-routes)。
-- **無服務終結點：** 不應將任何服務終結點與託管實例的子閘道聯。 創建虛擬網路時，請確保禁用服務終結點選項。
-- **足夠的 IP 位址：** 託管實例子網必須至少具有 16 個 IP 位址。 建議的最小值為 32 個 IP 位址。 有關詳細資訊，請參閱[確定託管實例的子網的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 在配置託管實例以滿足[託管實例的網路要求](#network-requirements)後[，可以在現有網路中](sql-database-managed-instance-configure-vnet-subnet.md)部署託管實例。 否則，創建新[網路和子網](sql-database-managed-instance-create-vnet-subnet.md)。
+- **專用子網:** 託管實例的子網不能包含與其關聯的任何其他雲服務,也不能是網關子網。 子網不能包含任何資源,但託管實例,並且以後不能在子網中添加其他類型的資源。
+- **網路安全組::** 與虛擬網路關聯的 NSG 必須在任何其他規則之前定義[入站安全規則](#mandatory-inbound-security-rules)和[出站安全規則](#mandatory-outbound-security-rules)。 當託管實例配置為重定向連接時,可以使用 NSG 通過篩選埠 1433 和埠 11000-11999 上的流量來控制對託管實例數據終結點的訪問。
+- **使用者定義的路由 (UDR) 表:** 與虛擬網路關聯的 UDR 表必須包含特定的[項目](#user-defined-routes)。
+- **無服務終結點:** 不應將任何服務終結點與託管實例的子網關聯。 創建虛擬網路時,請確保禁用服務終結點選項。
+- **足夠的 IP 位址:** 託管實例子網必須至少具有 16 個 IP 位址。 建議的最小值為 32 個 IP 位址。 有關詳細資訊,請參閱[確定託管實例的子網路的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 在配置託管實例以滿足[託管實例的網路要求](#network-requirements)後[,可以在現有網路中](sql-database-managed-instance-configure-vnet-subnet.md)部署託管實例。 否則,建立新[網路和子網路](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
-> 如果目標子網缺少這些特徵，則無法部署新的託管實例。 創建託管實例時，將網路意圖策略應用於子網，以防止對網路設置進行不合規的更改。 從子網中刪除最後一個實例後，網路意圖策略也將被刪除。
+> 如果目標子網缺少這些特徵,則無法部署新的託管實例。 創建託管實例時,將網路意圖策略應用於子網,以防止對網路設置進行不合規的更改。 從子網中刪除最後一個實例後,網路意圖策略也將被刪除。
 
 ### <a name="mandatory-inbound-security-rules"></a>必要輸入安全性規則
 
@@ -336,15 +337,15 @@ Microsoft 使用管理終結點管理託管實例。 此終結點位於實例的
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
 
 > [!IMPORTANT]
-> 確保埠 9000、9003、1438、1440、1452 和埠 443、12000 只有一個出站規則。 如果為每個埠單獨配置入站和出站規則，則通過 Azure 資源管理器部署的託管實例預配將失敗。 如果這些埠處於單獨的規則中，則部署將失敗，並且使用錯誤代碼`VnetSubnetConflictWithIntendedPolicy`
+> 確保埠 9000、9003、1438、1440、1452 和埠 443、12000 只有一個出站規則。 如果為每個埠單獨配置入站和出站規則,則通過 Azure 資源管理器部署的託管實例預配將失敗。 如果這些埠處於單獨的規則中,則部署將失敗,並且使用錯誤代碼`VnetSubnetConflictWithIntendedPolicy`
 
 \*MI SUBNET 是指表單 x.x.x.x/y 中子網的 IP 位址範圍。 您可以在 Azure 門戶、子網屬性中找到此資訊。
 
 > [!IMPORTANT]
-> 儘管所需的入站安全規則允許來自埠 9000、9003、1438、1440 和 1452 上的_任何_源的流量，但這些埠受內置防火牆的保護。 有關詳細資訊，請參閱[確定管理終結點位址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+> 儘管所需的入站安全規則允許來自埠 9000、9003、1438、1440 和 1452 上的_任何_源的流量,但這些埠受內置防火牆的保護。 有關詳細資訊,請參閱[確定管理終結點位址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 
 > [!NOTE]
-> 如果在託管實例中使用異動複寫，並且將任何實例資料庫用作發行者或分發伺服器，則在子網的安全規則中打開端口 445 （TCP 出站）。 此埠將允許訪問 Azure 檔共用。
+> 如果在託管實例中使用事務複製,並且將任何實例資料庫用作發佈者或分發伺服器,則在子網的安全規則中打開埠 445 (TCP 出站)。 此埠將允許訪問 Azure 文件共用。
 
 ### <a name="user-defined-routes"></a>使用者定義的路由
 
@@ -521,11 +522,11 @@ Microsoft 使用管理終結點管理託管實例。 此終結點位於實例的
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關概述，請參閱 [SQL 資料庫高級資料安全性](sql-database-managed-instance.md)。
-- 瞭解如何[設置新的 Azure 虛擬網路](sql-database-managed-instance-create-vnet-subnet.md)或[現有的 Azure 虛擬網路](sql-database-managed-instance-configure-vnet-subnet.md)，您可以在其中部署託管實例。
-- 計算要部署託管實例的[子網的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。
-- 瞭解如何創建託管實例：
+- 有關概述,請參閱 [SQL 資料庫進階資料安全性](sql-database-managed-instance.md)。
+- 瞭解如何[設定新的 Azure 虛擬網路](sql-database-managed-instance-create-vnet-subnet.md)或[現有的 Azure 虛擬網路](sql-database-managed-instance-configure-vnet-subnet.md),您可以在其中部署託管實例。
+- 計算要部署託管實體的[子網路的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。
+- 瞭解如何建立託管實例:
   - 從[Azure 門戶](sql-database-managed-instance-get-started.md)。
-  - 通過使用[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
-  - 通過使用[Azure 資源管理器範本](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
-  - 通過使用[Azure 資源管理器範本（使用 JumpBox，包含 SSMS）](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 
+  - 透過[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
+  - 透過[Azure 資源管理員樣本](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
+  - 使用[Azure 資源管理員樣本(使用 JumpBox,包含 SSMS)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 

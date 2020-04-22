@@ -1,6 +1,6 @@
 ---
 title: 新增和刪除管理單位(預覽) - Azure 活動目錄 |微軟文件
-description: 使用管理單位限制 Azure 活動目錄中的角色權限範圍
+description: 使用管理單位限制 Azure 活動目錄中的角色許可權範圍。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,55 +14,55 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 351cbee9cbc7cc02c7f20553b6fc8c3f861541df
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428156"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684905"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>管理 Azure 活動目錄中的管理單位
 
-要在 Azure 活動目錄 (Azure AD) 中進行更精細的管理控制,可以將使用者分配給範圍僅限於一個或多個管理單位 (A) 的 Azure AD 角色。
+要在 Azure 活動目錄 (Azure AD) 中進行更精細的管理控制,可以將使用者分配給範圍為一個或多個管理單位 (A) 的 Azure AD 角色。
 
-## <a name="getting-started"></a>開始使用
+## <a name="get-started"></a>開始使用
 
-1. 要透過[圖形資源管理員](https://aka.ms/ge)從以下說明執行查詢,請確保執行以下操作:
+1. 要透過[圖形資源管理員](https://aka.ms/ge)從以下說明執行查詢,執行以下操作:
 
-    1. 轉到門戶中的 Azure AD,然後在應用程式中選擇圖形資源管理器,並提供圖形資源管理員的管理員同意。
+    a. 在 Azure 入口網站中，移至 Azure AD。 在應用程式清單中,選擇**圖形資源管理員**,然後選擇**授予管理員同意圖形資源管理員**。
 
-        ![選擇圖形資源管理員並在此頁面上提供管理員同意](./media/roles-admin-units-manage/select-graph-explorer.png)
+    ![顯示指向「授予管理員同意」連結的螢幕截圖](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    1. 在圖形資源管理器中,請確保選擇測試版。
+    b. 在圖形資源管理員中,選擇**測試版**。
 
-        ![在 POST 操作之前選擇測試版](./media/roles-admin-units-manage/select-beta-version.png)
+    ![顯示選取的測試版的螢幕擷圖](./media/roles-admin-units-manage/select-beta-version.png)
 
-1. 請使用 Azure AD 電源外殼的預覽版本。 詳細說明在這裡。
+1. 使用 Azure AD 電源外殼的預覽版本。
 
 ## <a name="add-an-administrative-unit"></a>新增管理單位
 
-### <a name="azure-portal"></a>Azure 入口網站
+### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 轉到門戶中的"活動目錄",然後選擇左側面板中的"管理單位"。
+1. 在 Azure 門戶中,轉到 Azure AD,然後在左側窗格中選擇 **「管理單位**」。。
 
-    ![瀏覽到 Azure 活動目錄中的管理單位](./media/roles-admin-units-manage/nav-to-admin-units.png)
+    ![Azure AD 中管理單元(預覽)連結的螢幕截圖](./media/roles-admin-units-manage/nav-to-admin-units.png)
 
-1. 選擇 **「新增**」 並提供管理單位的名稱,可以選擇為管理單位添加說明。
+1. 選擇 **'添加**",然後輸入管理單位的名稱。 或者,添加管理單位的說明。
 
-    ![選擇「新增」,然後輸入管理單位的名稱](./media/roles-admin-units-manage/add-new-admin-unit.png)
+    ![輸入管理單位名稱的「新增」按鈕與文字框的螢幕截圖](./media/roles-admin-units-manage/add-new-admin-unit.png)
 
 1. 選擇 **「新增」** 以最終確定管理單元。
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>使用 PowerShell
 
-在試著執行以下操作之前,請安裝 Azure AD 電源外殼(預覽版本):
+在試著執行以下指令之前,請安裝 Azure AD 電源外殼(預覽):
 
     Connect-AzureAD
     New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 
-可以根據需要修改上面突出顯示的值。
+您可以根據需要修改引號中包含的值。
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>使用微軟圖形
 
     Http Request
     POST /administrativeUnits
@@ -74,22 +74,24 @@ ms.locfileid: "81428156"
 
 ## <a name="remove-an-administrative-unit"></a>移除管理單位
 
-在 Azure 活動目錄 (Azure AD) 中,可以刪除不再需要作為管理角色範圍單元的管理員單元。
+在 Azure AD 中,可以刪除不再需要作為管理角色範圍單元的管理單位。
 
-### <a name="azure-portal"></a>Azure 入口網站
+### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-跳到**Azure AD >门户中的管理单位**。 選擇要刪除的管理單位,然後選擇 **「刪除**」。。 確認**為「是」** 後,行政單位將被刪除。
+1. 在 Azure 門戶中,轉到**Azure AD** > **管理單位**。 
+1. 選擇要刪除的管理單位,然後選擇 **「刪除**」。。 
+1. 要確認要刪除管理單位,請選擇"**是**"。 行政單位將被刪除。
 
-![選擇要移除的管理單位](./media/roles-admin-units-manage/select-admin-unit-to-delete.png)
+![管理單位移除按鈕與確認視窗的螢幕擷取](./media/roles-admin-units-manage/select-admin-unit-to-delete.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>使用 PowerShell
 
     $delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
     Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
 
-突出顯示的部分可以根據需要更改特定環境。
+您可以根據需要修改引號中包含的值。
 
-### <a name="graph-api"></a>圖形 API
+### <a name="use-the-graph-api"></a>使用圖形 API
 
     HTTP request
     DELETE /administrativeUnits/{Admin id}
@@ -98,5 +100,5 @@ ms.locfileid: "81428156"
 
 ## <a name="next-steps"></a>後續步驟
 
-[管理行政單位](roles-admin-units-add-manage-users.md)
-[管理群組](roles-admin-units-add-manage-groups.md)中的使用者
+* [管理管理儲存的使用者](roles-admin-units-add-manage-users.md)
+* [管理管理儲存中](roles-admin-units-add-manage-groups.md)

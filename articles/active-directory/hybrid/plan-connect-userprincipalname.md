@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60382064"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680031"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填入
 
@@ -52,7 +52,7 @@ Azure AD Connect 會同步處理屬性。  在安裝期間，您可以檢視已�
 
 替代登入識別碼可讓您設定登入體驗，讓使用者可以透過其 UPN 以外的屬性 (例如 mail) 來登入。
 
-若要在 Azure AD 啟用替代登入識別碼，且您使用的是 Azure AD Connect，則不需要進行額外的設定步驟。 您可以直接從精靈設定替代識別碼。 請參閱"同步"部分下使用者的 Azure AD 登錄配置。在 **"使用者主體名稱**"下拉清單下，選擇備用登入識別碼 的屬性。
+若要在 Azure AD 啟用替代登入識別碼，且您使用的是 Azure AD Connect，則不需要進行額外的設定步驟。 您可以直接從精靈設定替代識別碼。 請參閱"同步"部分下使用者的 Azure AD 登錄配置。在 **「用戶主體名稱**」下拉清單下,選擇備用登錄 ID 的屬性。
 
 ![未驗證的網域](./media/plan-connect-userprincipalname/altloginid.png)  
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681190"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687073"
 ---
 # <a name="get-service-access-tokens"></a>取得服務存取權杖
 
@@ -24,7 +24,7 @@ ms.locfileid: "80681190"
 
 ## <a name="token-service-rest-api"></a>權杖服務 REST API
 
-要建立存取權杖,*安全權碼服務*提供單個 REST API。 ARR STS 服務[https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com)的網址為 。
+要建立存取權杖,*安全權碼服務*提供單個 REST API。 ARR STS 服務的 URL\/是 HRSTS 服務的網址是 HR: /sts.mixedreality.azure.com。
 
 ### <a name="get-token-request"></a>「取得權杖」要求
 
@@ -67,6 +67,6 @@ Write-Output "Token: $($response.AccessToken)"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [電源外殼文稿範例](../samples/powershell-example-scripts.md)
+* [PowerShell 指令碼範例](../samples/powershell-example-scripts.md)
 * [Azure 前端 API](../how-tos/frontend-apis.md)
 * [工作階段管理 REST API](../how-tos/session-rest-api.md)

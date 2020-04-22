@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 1ff6e34936234d6636fabc6c5e17dd32416b4ac2
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: c9936e9c406e262c06d9016b88f8999e46dcb917
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387847"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684352"
 ---
 # <a name="requirements-by-listing-type"></a>依清單類型別需求  
 技術與行銷內容需求會因店面、供應項目類型和清單類型而異。 請檢閱以下規格，檢查您的合規性。  
@@ -27,13 +27,13 @@ ms.locfileid: "80387847"
 
 | 需求 | 詳細資料 | 必要或建議 |  
 |:--- |:--- |:--- |  
-| ***Azure 活動目錄（Azure AD）*** | 您的應用程式必須允許 Azure Active Directory 同盟單一登入 (Azure AD 同盟 SSO) 並同意啟用。<ul> <li>如需有關啟用 Azure AD 同盟 SSO 的詳細資訊，請瀏覽 [設定不在 Azure Active Directory 應用程式庫中的應用程式的單一登入] 網頁：[docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)。</li> </ul> | 必要 |   
+| ***Azure Active Directory (Azure AD)*** | 您的應用程式必須允許 Azure Active Directory 同盟單一登入 (Azure AD 同盟 SSO) 並同意啟用。<ul> <li>如需有關啟用 Azure AD 同盟 SSO 的詳細資訊，請瀏覽 [設定不在 Azure Active Directory 應用程式庫中的應用程式的單一登入] 網頁：[docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)。</li> </ul> | 必要 |   
 | ***與 Microsoft Cloud 服務整合*** | 您的應用程式應與 Microsoft Power BI、Cortana Intelligence、Microsoft Azure 服務等其他 Microsoft Cloud 服務整合。<ul> <li>Microsoft 雲端服務的範例為物聯網。</li> </ul> | 建議 |  
 | ***觀眾*** | 您的應用程式必須以企業營運使用者與企業擁有者為目標。 | 必要 | 
 | ***商用軟體即服務 (SaaS) 應用程式*** | 您的應用程式必須符合下列需求。<ul> <li>企業營運 SaaS 應用程式</li> <li>著重於業務流程</li> <li>以商務客戶為目標</li> <li>讓使用者能夠透過其公司認證 (使用者名稱與密碼) 登入</li> </ul> | 必要 |  
 | ***免費試用期與試用版體驗*** | 您的應用程式必須包含下列其中一個選項，客戶才能在一段有限時間內免費使用您的應用程式。<ul> <li>提供 `try` 方法，客戶才能在 AppSource 內啟動您應用程式的試用版</li> <li>在 AppSource 提供 `request trial` 選項，客戶才能要求使用您應用程式的試用版</li> </ul>您提供的免費試用版必須讓客戶能在預先設定的期間內試用應用程式，無須支付額外費用。 | 必要 |  
 | ***輕鬆設定、立即可用的解決方案*** | 應用程式的安裝與設定必須簡單快速而且無須自訂。 | 必要 |  
-| ***鉛管理*** | 您必須先啟用 CRM 以接受潛在客戶資料，方可獲得來自店面的潛在客戶。<ul> <li>CRM 的範例包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必要 |  
+| ***潛在客戶管理*** | 您必須先啟用 CRM 以接受潛在客戶資料，方可獲得來自店面的潛在客戶。<ul> <li>CRM 的範例包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必要 |  
 | ***隱私政策和使用條款*** | 您的應用程式必須提供公用 URL，連結至您的隱私權原則網頁。 您的使用條款必須在發行期間以文字形式提供。 | 必要 |  
 | ***支援*** | 您的應用程式必須使用公用 URL，提供前往您的客戶支援網頁的連結。 如果您的應用程式是試用版，您必須在試用期間提供支援，而且不收取額外費用。 | 必要 |  
 
@@ -45,7 +45,7 @@ ms.locfileid: "80387847"
 | ***參與政策*** | 您的應用程式必須遵守 Azure Marketplace 參與原則。<ul> <li>如需參與原則的相關詳細資訊，請參閱 Azure Marketplace 參與原則網頁：[azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)。</li></ul> | list<br />交易<br />試用版 |  
 | ***與 Microsoft 整合*** | 您的供應項目應使用或擴充 Microsoft Azure 服務類型，例如計算、網路或儲存體。 您的供應項目也應符合現有的 Azure Marketplace 類別，例如資料庫、安全性或網路功能。<ul> <li>如需 Marketplace 供應項目的詳細資訊，請瀏覽 Marketplace 應用程式網頁：[azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps)。</li> </ul> | list<br />交易<br />試用版 |  
 | ***觀眾*** | 您的供應項目必須專為 IT 專業人員、雲端開發人員或其他技術客戶角色提供。 | list<br />交易<br />試用版 |  
-| ***鉛管理*** | 獲得來自店面的潛在客戶之前，必須啟用 CRM (Marketo、Microsoft Dynamics 或 Salesforce)，以接受潛在客戶資料。 | list<br />交易<br />試用版 |  
+| ***潛在客戶管理*** | 獲得來自店面的潛在客戶之前，必須啟用 CRM (Marketo、Microsoft Dynamics 或 Salesforce)，以接受潛在客戶資料。 | list<br />交易<br />試用版 |  
 | ***隱私政策和使用條款*** | 您的應用程式必須提供公用 URL，連結至您的隱私權原則網頁。 您的使用條款必須在發行期間以文字形式提供。 | list<br />交易<br />試用版 |  
 | ***支援*** | 您的供應項目必須提供公用 URL，連結至您的客戶支援網頁。 如果您的供應項目是試用版，您必須在試用期間提供支援，且不收取額外費用。 | 交易<br />試用版 |    
 
@@ -67,7 +67,7 @@ ms.locfileid: "80387847"
 | 需求 | 詳細資料 |  
 |:--- |:--- |  
 | 服務供應項目特性 | 您的諮詢服務必須符合下列準則。<ul> <li>以固定範圍、固定期間、固定價格 (或免費) 的形式提供。</li> <li>主要為售前導向。</li> <li>以單一客戶為限。</li> <li>在現場進行。</li> </ul> |  
-| 諮詢服務的合作夥伴需求 | 您的服務符合相關領域的準則。<table><tr><th>解決方案領域</th><th>準則</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>具備銀級或金級「雲端客戶關係管理」專長認證。</td></tr><tr><td>Dynamics 365 for Finance and Operations，Enterprise edition</td><td>具備銀級或金級「企業資源規劃」專長認證，且過去 12 個月的雲端作業收益達 $25,000 以上。</td></tr><tr><td>Dynamics 365 for Finance and Operations，Business edition</td><td>以「雲端服務提供者」(CSP) 或「數位記錄合作夥伴」(DPOR) 的身分為一或多位客戶提供服務。</td></tr><tr><td>Power BI</td><td>符合「解決方案合作夥伴」準則。</td></tr><tr><td>PowerApps</td><td>具有「合作夥伴展示工具」解決方案。</td></tr></table><ul> <li>如需有關客戶關係管理的詳細資訊，請瀏覽「雲端客戶關係管理」頁面：[partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)。</li> <li>如需有關資源規劃的詳細資訊，請瀏覽「企業資源規劃」頁面：[partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)。</li> <li>如需有關 CSP 的詳細資訊，請瀏覽「雲端服務提供者」頁面：[partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider)。</li> <li>如需有關 DPOR 的詳細資訊，請瀏覽「數位記錄合作夥伴和合作夥伴關聯」頁面：[partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record)。</li> <li>如需有關解決方案合作夥伴準則的詳細資訊，請瀏覽「解決方案合作夥伴概觀和獎勵」文件：[www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf) \(英文\)。</li> <li>如需有關合作夥伴展示工具的詳細資訊，請瀏覽「合作夥伴展示工具」頁面：[powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase)。</li> </ul> |  
+| 諮詢服務的合作夥伴需求 | 您的服務符合相關領域的準則。<table><tr><th>解決方案領域</th><th>準則</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>具備銀級或金級「雲端客戶關係管理」專長認證。</td></tr><tr><td>Dynamics 365 for Finance and Operations，Enterprise edition</td><td>具備銀級或金級「企業資源規劃」專長認證，且過去 12 個月的雲端作業收益達 $25,000 以上。</td></tr><tr><td>Dynamics 365 for Finance and Operations，Business edition</td><td>以「雲端服務提供者」(CSP) 或「數位記錄合作夥伴」(DPOR) 的身分為一或多位客戶提供服務。</td></tr><tr><td>Power BI</td><td>符合「解決方案合作夥伴」準則。</td></tr><tr><td>PowerApps</td><td>具有「合作夥伴展示工具」解決方案。</td></tr></table><ul> <li>如需有關客戶關係管理的詳細資訊，請瀏覽「雲端客戶關係管理」頁面：[partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)。</li> <li>如需有關資源規劃的詳細資訊，請瀏覽「企業資源規劃」頁面：[partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)。</li> <li>如需有關 CSP 的詳細資訊，請瀏覽「雲端服務提供者」頁面：[partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider)。</li> <li>如需有關 DPOR 的詳細資訊，請瀏覽「數位記錄合作夥伴和合作夥伴關聯」頁面：[partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record)。</li> <li>有關解決方案合作夥伴條件的詳細資訊,請造訪[https://partner.microsoft.com/en-us/membership/partner-incentives](https://partner.microsoft.com/en-us/membership/partner-incentives)位於的解決方案合作夥伴概述和獎勵文檔。</li> <li>如需有關合作夥伴展示工具的詳細資訊，請瀏覽「合作夥伴展示工具」頁面：[powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase)。</li> </ul> |  
 
 #### <a name="requirements-azure-marketplace-list-consulting-service"></a>需求：Azure Marketplace：清單：諮詢服務  
 
@@ -95,7 +95,7 @@ ms.locfileid: "80387847"
 
 | 需求 | 詳細資料 |  
 |:--- |:--- |  
-| 免費試用期與試用版體驗 | 客戶可以在限時內免費使用您的應用程式。<br /><br />客戶不需要支付任何供應項目或應用程式的授權或訂閱費用。 客戶不需要支付基本 Microsoft 第一方產品或服務的費用。 所有試用版選項都會部署到您的 Azure 訂用帳戶。 您可完全控制成本最佳化和管理。<br /><br />您可以選擇免費試用、互動式示範或試用產品。 無論您的選擇為何，免費試用版都必須讓客戶能在預先設定的期間內試用應用程式，無須支付額外費用。<ul> <li>要開始創建試駕的過程，請發送電子郵件到[amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com)。</li> </ul>注意：Azure Marketplace SaaS 試用版體驗必須允許客戶以其工作認證來登入。<ul> <li>如需詳細資訊，請瀏覽＜AppSource 試用體驗＞一節：[docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。</li> </ul> |  
+| 免費試用期與試用版體驗 | 客戶可以在限時內免費使用您的應用程式。<br /><br />客戶不需要支付任何供應項目或應用程式的授權或訂閱費用。 客戶不需要支付基本 Microsoft 第一方產品或服務的費用。 所有試用版選項都會部署到您的 Azure 訂用帳戶。 您可完全控制成本最佳化和管理。<br /><br />您可以選擇免費試用、互動式示範或試用產品。 無論您的選擇為何，免費試用版都必須讓客戶能在預先設定的期間內試用應用程式，無須支付額外費用。<ul> <li>要開始建立試駕的過程,請寄送電子郵件[amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com)到 。</li> </ul>注意：Azure Marketplace SaaS 試用版體驗必須允許客戶以其工作認證來登入。<ul> <li>如需詳細資訊，請瀏覽＜AppSource 試用體驗＞一節：[docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。</li> </ul> |  
 | 輕鬆設定、立即可用的解決方案 | 應用程式的設定和安全必須既簡單又快速。 |  
 | 可用性 / 執行時間 | SaaS 應用程式或平台的執行時間必須至少達到 99.9%。 |  
 | Azure Active Directory | 您的供應項目必須允許 Azure Active Directory (Azure AD) 同盟單一登入 (SSO) (Azure AD 同盟 SSO) 並啟用同意功能。 |  

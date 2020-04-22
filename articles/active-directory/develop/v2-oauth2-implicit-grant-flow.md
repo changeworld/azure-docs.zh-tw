@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535837"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677749"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>微軟識別平台和隱式授予流
 
@@ -32,9 +32,6 @@ ms.locfileid: "81535837"
 本文介紹如何直接針對應用程式中的協議進行程式設計。  如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
 
 但如果您不想在單頁應用程式中使用程式庫，也不想自行傳送通訊協定訊息，請遵循下列一般步驟。
-
-> [!NOTE]
-> 並非所有 Azure 活動目錄 (Azure AD) 方案和功能都由 Microsoft 標識平台終結點提供支援。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 隱含授與的適用案例
 

@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure 自動化檢視檔案內容變更
-description: 使用 [變更追蹤] 的檔案內容變更功能檢視已變更的檔案。
+description: 使用"更改追蹤"的檔案內容更改功能查看已更改的文件的內容。
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57c3c2c7a0c923921c727ccea7839940457bc1ee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418819"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682987"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>檢視正在使用 [變更追蹤] 追蹤的檔案內容
 
@@ -18,11 +18,11 @@ ms.locfileid: "75418819"
 
 ## <a name="requirements"></a>需求
 
-* 儲存檔案內容需要有使用 Resource Manager 部署模型的標準儲存體帳戶。 不應該使用進階和傳統的部署模型儲存體帳戶。 有關存儲帳戶的詳細資訊，請參閱有關[Azure 存儲帳戶的資訊](../storage/common/storage-create-storage-account.md)
+* 儲存檔案內容需要有使用 Resource Manager 部署模型的標準儲存體帳戶。 不應該使用進階和傳統的部署模型儲存體帳戶。 有關存儲帳戶的詳細資訊,請參閱有關[Azure 存儲帳戶的資訊](../storage/common/storage-create-storage-account.md)
 
-* 使用的儲存體帳戶只能連線 1 個自動化帳戶。
+* 使用的存儲帳戶只能連接 1 個自動化帳戶。
 
-* 您的自動化帳戶已啟用 [變更追蹤](automation-change-tracking.md)。
+* 在自動化帳戶中啟用[了變更追蹤](automation-change-tracking.md)。
 
 ## <a name="enable-file-content-tracking"></a>啓用檔案內容追蹤
 
@@ -44,19 +44,19 @@ ms.locfileid: "75418819"
 
 下列步驟會引導您完成開啟檔案的 [變更追蹤]：
 
-1. 在 [變更追蹤]**** 的 [編輯設定]**** 頁面中，選取 [Windows 檔案]**** 或 [Linux 檔案]**** 索引標籤，然後按一下 [新增]****
+1. 在 **"更改追蹤**的編輯設定"頁上,選擇 **"Windows 檔**"或 **"Linux 檔案**"選項卡,然後單擊"**添加"**
 
-1. 填寫檔案路徑的資訊，然後選取 [上傳所有設定的檔案內容]**** 下的 [True]****。 此設定只會啓用該檔案路徑的檔案內容追蹤。
+1. 填寫檔案路徑的資訊，然後選取 [上傳所有設定的檔案內容]**** 下的 [True]。 此設定只會啓用該檔案路徑的檔案內容追蹤。
 
    ![新增 Linux 檔案](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>檢視追蹤的檔案內容
 
-1. 一旦偵測到檔案或路徑中檔案的變更，就會顯示在入口網站中。 從變更清單中選取檔案變更。 [變更詳細資料]**** 窗格隨即顯示。
+1. 一旦偵測到檔案或路徑中檔案的變更，就會顯示在入口網站中。 從變更清單中選取檔案變更。 [變更詳細資料] 窗格隨即顯示。
 
    ![列出變更](./media/change-tracking-file-contents/change-list.png)
 
-1. 在 [變更詳細資料]**** 頁面上，您會看到檔案資訊前後的標準，按一下左上方的 [View File Content Changes] \(檢視檔案內容變更\)**** 可查看檔案的內容。
+1. 在「更改詳細資訊」窗格中,您可以看到檔資訊前後的標準資訊。 選擇 **「檢視檔案內容更改**」 以檢視檔的內容。
 
    ![變更詳細資料](./media/change-tracking-file-contents/change-details.png)
 
@@ -71,5 +71,5 @@ ms.locfileid: "75418819"
 > [!div class="nextstepaction"]
 > [針對您環境中的變更進行疑難排解](automation-tutorial-troubleshoot-changes.md)
 
-* 使用[Azure 監視器日誌中的日誌搜索](../log-analytics/log-analytics-log-searches.md)查看詳細的更改跟蹤資料。
+* 使用[Azure 監視器日誌中的日誌搜尋](../log-analytics/log-analytics-log-searches.md)查看詳細的更改跟蹤數據。
 

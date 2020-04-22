@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: feaa0c22ec98d170a65e5c9bee119ba3904a95cf
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673733"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682778"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure 機器學習資料集
 
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 在表格資料集中,可以從資料中的欄或路徑模式資料儲存位置指定時間戳,以啟用時間序列特徵。 此規範允許按時間輕鬆高效地進行過濾。
 
-使用類[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)`TabularDataset`上的方法指定時間戳列,並啟用按時間進行篩選。 有關詳細資訊,請參閱帶有[NOAA 天氣資料的與 Taba 時間序列相關的 API 簡報](https://aka.ms/azureml-tsd-notebook)。
+使用類[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)`TabularDataset`上的方法指定時間戳列,並啟用按時間進行篩選。 有關詳細資訊,請參閱帶有[NOAA 天氣資料的與 Taba 時間序列相關的 API 簡報](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)。
 
 ```Python
 # create a TabularDataset with time series trait

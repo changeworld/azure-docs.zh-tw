@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f559dc0da8680a6cd3243b5ee12c3145244c9c2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535854"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677875"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>微軟識別平臺和 OAuth 2.0 客戶端認證串流
 
@@ -26,9 +26,6 @@ ms.locfileid: "81535854"
 本文介紹如何直接針對應用程式中的協議進行程式設計。 如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
 
 OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (機密用戶端) 在呼叫另一個 Web 服務時，使用它自己的認證來進行驗證，而不是模擬使用者。 在此案例中，用戶端通常是中介層 Web 服務、精靈服務或網站。 對於較高層級的保證，Microsoft 身分識別平台也可讓呼叫服務使用憑證 (而非共用密碼) 做為認證。
-
-> [!NOTE]
-> Microsoft 識別平台終結點不支援所有 Azure AD 方案和功能。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 在較為典型的「三腳 OAuth」** 中，用戶端應用程式會獲得代表特定使用者存取資源的權限。 此權限是由使用者 委派 給應用程式 (通常在 [同意](v2-permissions-and-consent.md) 過程中)。 不過，在用戶端認證 (*二方 OAuth*) 流程中，權限會直接授與應用程式本身。 當應用程式向資源出示權杖時，資源會強制要求應用程式本身具備執行動作的授權，而不是使用者。
 

@@ -1,15 +1,15 @@
 ---
 title: Microsoft Azure 備份伺服器 v3 版本資訊
-description: 本文提供有關 Microsoft Azure 備份伺服器 （MABS） v3 的已知問題和解決方法的資訊。
+description: 本文提供有關 Microsoft Azure 備份伺服器 (MABS) v3 的已知問題和解決方法的資訊。
 ms.topic: conceptual
 ms.date: 11/22/2018
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: b47d83e0e3714f3f035397acaadeac9cda39d12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03863f7598da06bb36cbb7497d7c773f811a004e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172267"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685619"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器版本資訊
 
@@ -60,7 +60,7 @@ ms.locfileid: "74172267"
 4. [安裝](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS)。
 5. 使用 [SQL 2017 的 SSRS 設定](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)中記錄的參數來設定報告。
 6. [安裝](backup-azure-microsoft-azure-backup.md) MABS V3。
-7. 使用 SSMS 以[還原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL，並執行 DPM 同步工具，如[此處](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))所述。
+7. 使用 SSMS 以[還原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL，並執行 DPM 同步工具，如[此處](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)所述。
 8. 使用下列命令，更新 dbo.tbl_DLS_GlobalSetting 表格中的 ‘DataBaseVersion’ 屬性：
 
 ```sql
@@ -73,4 +73,4 @@ ms.locfileid: "74172267"
 
 ## <a name="next-steps"></a>後續步驟
 
-[MABS V3 中的新增功能](backup-mabs-whats-new-mabs.md)
+[MABS V3 中新增功能](backup-mabs-whats-new-mabs.md)

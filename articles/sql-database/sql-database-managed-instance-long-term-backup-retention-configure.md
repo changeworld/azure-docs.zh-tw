@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/14/2020
-ms.openlocfilehash: c9edbbf54696a817d0495f6890e0d796e482231f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 04/19/2020
+ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393726"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677110"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 資料庫託管實例長期備份保留 (PowerShell)
 
@@ -36,23 +36,22 @@ ms.locfileid: "81393726"
 - 訂閱擁有者角色或
 - 託管實例參與者角色或
 - 具有以下權限的自訂角色:
-
-   ```Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read``` ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read```
-   ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read```
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read`
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
 對於**刪除 AzSqlInstance 資料庫長期保留備份**,您需要具有以下角色之一:
 
 - 訂閱擁有者角色或
 - 具有以下權限的自訂角色:
-
-   ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 > [!NOTE]
 > 託管實例參與者角色無權刪除 LTR 備份。
 
 可以在*訂閱*或*資源組*作用域中授予 RBAC 許可權。 但是,要造訪屬於丟棄實例的 LTR 備份,必須在該實例的*訂閱*範圍內授予許可權。
 
-```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
+- `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 ## <a name="create-an-ltr-policy"></a>建立 LTR 原則
 
@@ -75,7 +74,6 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
 # create LTR policy with WeeklyRetention = 12 weeks, YearlyRetention = 5 years and WeekOfYear = 16 (week of April 15). MonthlyRetention = 0 by default.
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceName `
     -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
-
 ```
 
 ## <a name="view-ltr-policies"></a>檢視 LTR 原則
@@ -86,7 +84,6 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
 # gets the current version of LTR policy for the database
 $ltrPolicies = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceName `
     -DatabaseName $dbName -ResourceGroupName $resourceGroup
-
 ```
 
 ## <a name="clear-an-ltr-policy"></a>清除 LTR 原則
@@ -118,7 +115,6 @@ $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instan
 
 # only list the latest LTR backup for each database
 $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instance.Location -InstanceName $instanceName -OnlyLatestPerDatabase
-
 ```
 
 ## <a name="delete-ltr-backups"></a>刪除 LTR 備份
@@ -142,7 +138,6 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 # restore a specific LTR backup as an P1 database on the instance $instanceName of the resource group $resourceGroup
 Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId `
    -TargetInstanceName $instanceName -TargetResourceGroupName $resourceGroup -TargetInstanceDatabaseName $dbName
-
 ```
 
 > [!IMPORTANT]

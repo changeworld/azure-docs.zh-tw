@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2739e960c4bc6d35ac9ad757e80ed620e5dc04f8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459163"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684656"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 機器學習發行說明
 
@@ -308,7 +308,7 @@ ms.locfileid: "81459163"
     + "y_query"從多米尼克的橙汁筆記本服務請求部分中刪除。
     + 修復了阻止在已部署的模型上預測的錯誤,在具有日期時間列的數據集上運行。
     + 添加了 Matthews 相關係數作為分類指標,用於二進位和多類分類。
-  + **azureml-contrib-interpret**
+  + **azureml-contrib-解釋**
     + 從 azureml-contrib 解釋中刪除的文本解釋器作為文本解釋已移動到即將發佈的解釋文本回購。
   + **azureml-core**
     + 數據集:文件數據集的用法不再依賴於要安裝在 python env 中的數位和熊貓。
@@ -825,7 +825,7 @@ Azure 機器學習現在是事件網格的資源提供程式,您可以通過 Azu
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>適用於 Python v1.0.62 的 Azure 機器學習 SDK
 
 + **新功能**
-  + 介紹了`timeseries`表格數據集上的特性。 這種特性允許對表格數據集的數據進行簡單的時間戳篩選,例如在一系列時間或最新數據之間獲取所有數據。 要瞭解 TabularDataset 上的`timeseries`功能,https://aka.ms/azureml-data請造https://aka.ms/azureml-tsd-notebook訪說明 文件或範例筆記本。
+  + 介紹了`timeseries`表格數據集上的特性。 這種特性允許對表格數據集的數據進行簡單的時間戳篩選,例如在一系列時間或最新數據之間獲取所有數據。 要瞭解 TabularDataset 上的`timeseries`功能,https://aka.ms/azureml-data請造https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb訪說明 文件或範例筆記本。
   + 啟用了具有表格數據集和文件數據集的培訓。 請訪問https://aka.ms/dataset-tutorial示例筆記本。
 
   + **azureml-train-core**
@@ -1339,7 +1339,7 @@ Azure 機器學習現在是事件網格的資源提供程式,您可以通過 Azu
 + **預覽功能**
     + 通過 azureml-mlflow 包([範例筆記本](https://aka.ms/azureml-mlflow-examples))與[MLflow](https://mlflow.org) 1.0.0 跟蹤整合。
     + 將 Jupyter 筆記本作為運行方式提交。 [API 參考文件](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + 通過 azureml-contrib-資料漂移包([範例筆記本](https://aka.ms/azureml-datadrift-example))對[資料漂移檢測器](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class))進行公共預覽。 數據漂移是模型精度隨時間而降低的主要原因之一。 當用於生產中建模的數據與訓練模型的數據不同時,就會發生這種情況。 AML 資料漂移檢測器幫助客戶監控數據漂移,並在檢測到漂移時發送警報。
+    + 通過 azureml-contrib-資料漂移包([範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift))對[資料漂移檢測器](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class))進行公共預覽。 數據漂移是模型精度隨時間而降低的主要原因之一。 當用於生產中建模的數據與訓練模型的數據不同時,就會發生這種情況。 AML 資料漂移檢測器幫助客戶監控數據漂移,並在檢測到漂移時發送警報。
 
 + **重大變更**
 

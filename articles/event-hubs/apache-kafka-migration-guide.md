@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2020
 ms.author: shvija
-ms.openlocfilehash: 806a1f16327ad72a7f3527c813b355e1ba807dda
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 32b08e565b86af8f6373c9848211646128bb346d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606752"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677360"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>遷移到阿帕奇卡夫卡生態系統的 Azure 事件中心
 Azure 事件中心公開 Apache Kafka 終結點,使您能夠使用 Kafka 協定連接到事件中心。 通過對現有 Kafka 應用程式進行最少的更改,可以連接到 Azure 事件中心並享受 Azure 生態系統的優勢。 卡夫卡的事件中心支援[阿帕奇卡夫卡版本1.0](https://kafka.apache.org/10/documentation.html)及更高版本。
@@ -71,4 +71,3 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 - [常見問題 - 阿帕奇卡夫卡事件中心](apache-kafka-frequently-asked-questions.md)
 - [Azure 活動中心 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
 - [建議的設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
-- 

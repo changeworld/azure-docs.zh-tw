@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654137"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680195"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認證方法使用&見解(預覽)
 
@@ -93,6 +93,8 @@ ms.locfileid: "80654137"
 這些報告中顯示的數據將延遲長達60分鐘。 Azure 門戶中存在"上次刷新"欄位,用於標識數據最近的情況。
 
 使用方式和見解數據不能替代 Azure 多重身份驗證活動報告或 Azure AD 登錄報表中包含的資訊。
+
+當前無法篩選報表以排除外部使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

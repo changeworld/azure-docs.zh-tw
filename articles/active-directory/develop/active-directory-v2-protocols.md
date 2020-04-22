@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309661"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680082"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0 和 Microsoft 識別平臺上的 OpenID 連線協定
 
 具有產業標準協定、OpenID 連接和 OAuth 2.0 的 Microsoft 身份平台終結點,用於身份身份作為服務。 雖然這是符合標準的服務，但這些通訊協定在任兩個實作之間仍會有些微差異。 若您想要透過直接傳送和處理 HTTP 要求，或使用第三方開放原始碼程式庫來撰寫程式碼，而非使用我們的其中一個[開放原始碼程式庫](reference-v2-libraries.md)，可以參考這裡提供的實用資訊。
-
-> [!NOTE]
-> 並非所有 Azure AD 方案和功能都由 Microsoft 標識平台終結點提供支援。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 ## <a name="the-basics"></a>基本概念
 
@@ -68,7 +65,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 若要了解如何與這些端點互動，請在[通訊協定](#protocols)區段選擇特定的應用程式類型，然後遵循連結以取得更多資訊。
 
 > [!TIP]
-> 在 Azure AD 中註冊的任何應用都可以使用 Microsoft 標識平台終結點,即使它們不登錄個人帳戶也是如此。  這樣,您可以將現有應用程式遷移到 Microsoft 標識平臺和[MSAL,](reference-v2-libraries.md)而無需重新創建應用程式。  
+> 在 Azure AD 中註冊的任何應用都可以使用 Microsoft 標識平台終結點,即使它們不登錄個人帳戶也是如此。  這樣,您可以將現有應用程式遷移到 Microsoft 標識平臺和[MSAL,](reference-v2-libraries.md)而無需重新創建應用程式。
 
 ## <a name="tokens"></a>權杖
 

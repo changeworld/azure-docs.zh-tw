@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: c18d767afd3721bd6f6250058b9fbe66990133e4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417737"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686272"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 資料工廠中的 JSON 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -288,6 +288,8 @@ File3.json
     "json": "record 3"
 }
 ```
+> [!NOTE]
+> 如果數據流在預覽 JSON 數據時引發錯誤,指出"corrupt_record",則數據可能包含 JSON 檔中的單個文檔。 設置「單個文檔」應清除該錯誤。
 
 #### <a name="unquoted-column-names"></a>未參考的欄名稱
 

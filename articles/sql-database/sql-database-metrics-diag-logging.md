@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756408"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683186"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>設定 Azure SQL 資料庫診斷遙測的串流式匯出
 
@@ -363,7 +363,7 @@ Azure SQL 分析可以使用流式傳輸到日誌分析工作區的 SQL 資料�
 
 ## <a name="stream-into-event-hubs"></a>串流至事件中樞
 
-通過使用 Azure 門戶中的內建**流到事件中心**選項,可以將 SQL 資料庫指標和資源日誌流式傳輸到事件中心。 還可以透過使用透過 PowerShell cmdlet、Azure CLI 或 Azure 監視器 REST API 的診斷設定啟用服務總線規則 ID。
+通過使用 Azure 門戶中的內建**流到事件中心**選項,可以將 SQL 資料庫指標和資源日誌流式傳輸到事件中心。 還可以透過使用透過 PowerShell cmdlet、Azure CLI 或 Azure 監視器 REST API 的診斷設定啟用服務總線規則 ID。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>如何處理事件中心的指標和資源紀錄
 
@@ -438,13 +438,13 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="basic-metrics-for-elastic-pools"></a>彈性池的基本指標
 
-|**資源**|**計量**|
+|**Resource**|**計量**|
 |---|---|
 |彈性集區|eDTU 百分比、使用的 eDTU、eDTU 限制、CPU 百分比、實體資料讀取百分比、記錄寫入百分比、工作階段百分比、背景工作百分比、儲存體、儲存體百分比、儲存體限制、XTP 儲存體百分比 |
 
 #### <a name="basic-metrics-for-single-and-pooled-databases"></a>單個資料庫和池資料庫的基本指標
 
-|**資源**|**計量**|
+|**Resource**|**計量**|
 |---|---|
 |單資料庫和池資料庫|DTU 百分比、使用的 DTU、DTU 限制、CPU 百分比、實體資料讀取百分比、記錄寫入百分比、成功/失敗/防火牆封鎖的連線、工作階段百分比、背景工作百分比、儲存體、儲存體百分比、XTP 儲存體百分比和死結 |
 

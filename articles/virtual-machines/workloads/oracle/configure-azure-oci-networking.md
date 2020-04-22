@@ -2,7 +2,7 @@
 title: 將 Azure 快速路由與 Oracle 雲端基礎架構連接 |微軟文件
 description: 將 Azure 快速路由與 Oracle 雲端基礎架構 (OCI) 快速連線連線,實現跨雲端 Oracle 應用程式解決方案
 documentationcenter: virtual-machines
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
-ms.author: mimckitt
-ms.openlocfilehash: d85c0fc8986adfa00559eab1c49a79daacdeb33f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263177"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683763"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 和 Oracle 雲端基礎結構之間的直接互連  
 

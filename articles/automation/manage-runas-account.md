@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 341db4ffa5b2e0641572f2c9dc011e91fac6a1e9
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 8d2c2f1e7ee10153108e54649ceba45b927b0cd2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617327"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676634"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自動化執行身分帳戶
 
@@ -19,7 +19,7 @@ ms.locfileid: "81617327"
 默認情況下,「作為帳戶運行」的服務主體沒有讀取 Azure AD 的許可權。 如果要添加讀取或管理 Azure AD 的許可權,則需要在**API 許可權**下授予服務主體的許可權。 要瞭解更多資訊,請參閱[新增存取 Web API 的權限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
 
 ## <a name="types-of-run-as-accounts"></a>此帳號執行的類型
 
@@ -63,12 +63,12 @@ Azure 經典運行為帳戶執行以下任務。
 
 |Task|Cmdlet  |最低權限  |設定權限的位置|
 |---|---------|---------|---|
-|建立 Azure AD 應用程式|[新阿達應用程式](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication?view=azps-3.5.0)     | 應用程式開發人員角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主頁 > Azure AD >应用注册 |
-|將認證新增至應用程式。|[新阿達帕西](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential?view=azps-3.5.0)     | 應用程式管理員或全域管理員<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主頁 > Azure AD >应用注册|
-|建立與取得 Azure AD 服務主體|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-3.5.0)</br>[取得 Aad 服務原則](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal?view=azps-3.5.0)     | 應用程式管理員或全域管理員<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主頁 > Azure AD >应用注册|
-|指派或取得指定主體的 RBAC 角色|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-3.5.0)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment?view=azps-3.5.0)      | 使用者存取管理員或擁有者,或具有以下許可權:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [訂用帳戶](../role-based-access-control/role-assignments-portal.md)</br>[首頁] > [訂用帳戶] > [\<訂用帳戶名稱\> - 存取控制 (IAM)]|
-|建立或移除自動化憑證|[新阿茲自動化證書](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.5.0)</br>[刪除-阿茲自動化證書](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate?view=azps-3.5.0)     | 資源群組的參與者         |自動化帳戶資源群組|
-|建立或移除自動化連線|[新-阿茲自動化連線](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.5.0)</br>[刪除-阿茲自動化連線](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection?view=azps-3.5.0)|資源群組的參與者 |自動化帳戶資源群組|
+|建立 Azure AD 應用程式|[新阿達應用程式](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | 應用程式開發人員角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主頁 > Azure AD >应用注册 |
+|將認證新增至應用程式。|[新阿達帕西](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | 應用程式管理員或全域管理員<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主頁 > Azure AD >应用注册|
+|建立與取得 Azure AD 服務主體|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[取得 Aad 服務原則](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | 應用程式管理員或全域管理員<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>主頁 > Azure AD >应用注册|
+|指派或取得指定主體的 RBAC 角色|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | 使用者存取管理員或擁有者,或具有以下許可權:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [訂用帳戶](../role-based-access-control/role-assignments-portal.md)</br>[首頁] > [訂用帳戶] > [\<訂用帳戶名稱\> - 存取控制 (IAM)]|
+|建立或移除自動化憑證|[新阿茲自動化證書](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[刪除-阿茲自動化證書](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | 資源群組的參與者         |自動化帳戶資源群組|
+|建立或移除自動化連線|[新-阿茲自動化連線](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[刪除-阿茲自動化連線](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|資源群組的參與者 |自動化帳戶資源群組|
 
 <sup>1</sup>如果 Azure AD 租戶的使用者可以在「使用者設定」 頁上**註冊應用程式**選項設定為 **「是**」,則 Azure AD 租戶中的 1 個非管理員使用者可以[註冊 AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。 如果應用程式註冊設置**為"否**",則執行此操作的用戶必須如此表中的定義。
 

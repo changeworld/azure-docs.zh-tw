@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 8d1e1262c592f0120b191e18a5c16b97b887a6a2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536520"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677066"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>以 SMB 為 Azure 檔案分享啟用本地端目錄網域服務身份驗證
 
@@ -68,11 +68,7 @@ ms.locfileid: "81536520"
 
 ## <a name="regional-availability"></a>區域可用性
 
-Azure 檔案身份驗證與 AD DS(預覽)在大多數[公共區域](https://azure.microsoft.com/global-infrastructure/regions/)都可用。
-
-具有本地 AD DS 的 Azure 檔身份驗證不在:
-- 美國西部
-
+所有[公共區域和 Azure Gov 區域](https://azure.microsoft.com/global-infrastructure/locations/)都提供具有 AD DS(預覽)的 Azure 檔身份驗證。
 
 ## <a name="workflow-overview"></a>工作流程概觀
 
@@ -84,13 +80,13 @@ Azure 檔案身份驗證與 AD DS(預覽)在大多數[公共區域](https://azur
 
 1. 在儲存帳戶上啟用 Azure 檔案 AD DS 身份驗證。 
 
-1. 將共用的存取許可權分配給與目標 AD 識別同步的 Azure AD 識別(使用者、組或服務主體)。 
+2. 將共用的存取許可權分配給與目標 AD 識別同步的 Azure AD 識別(使用者、組或服務主體)。 
 
-1. 通過 SMB 配置目錄和檔的 ACL。 
+3. 通過 SMB 配置目錄和檔的 ACL。 
  
-1. 將 Azure 檔案共享載入加入 AD DS 的 VM。 
+4. 將 Azure 檔案共享載入加入 AD DS 的 VM。 
 
-1. 在 AD DS 中更新儲存帳戶標識的密碼。
+5. 在 AD DS 中更新儲存帳戶標識的密碼。
 
 下圖說明了用於透過 SMB 為 Azure 檔案共享啟用 Azure AD 身份驗證的端到端工作流。 
 

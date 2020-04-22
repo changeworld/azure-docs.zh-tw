@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617866"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681863"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -101,6 +101,35 @@ ms.locfileid: "81617866"
 **模型不在檢視角度內:**
 
 在許多情況下,模型顯示正確,但位於攝像機外部。 一個常見原因是模型已匯出到離中心遠的樞軸,因此它被攝像機的遠剪平面剪切。 它有助於以程式設計方式查詢模型的邊界框,並將 Unity 作為行框可視化框,或將其值列印到調試日誌。
+
+此外,轉換過程將產生與轉換模型一起生成的[輸出 json 檔](../how-tos/conversion/get-information.md)。 要調試模型定位問題,值得查看[輸出統計部分](../how-tos/conversion/get-information.md#the-outputstatistics-section)中的`boundingBox`條目:
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+邊界框被描述為 3D`min``max`空間中的和 位置,以米為單位。 因此,座標 1000.0 表示它距離原點 1 公里。
+
+此邊界框可能有兩個問題,導致不可見的幾何體:
+* **該框可以遠離中心**,因此由於遠平面剪切,物件被完全剪切。 在這種情況下`boundingBox`,值如下所示`min = [-2000, -5,-5], max = [-1990, 5,5]`: ,使用 x 軸上的大偏移作為示例。 要解決此問題,在[模型轉換配置](../how-tos/conversion/configure-model-conversion.md)中`recenterToOrigin`啟用 選項。
+* **盒子可以居中,但數量過大**。 這意味著,儘管攝像機從模型的中心開始,但其幾何形狀被剪切到所有方向。 在這種情況下`boundingBox`,典型值如下所示`min = [-1000,-1000,-1000], max = [1000,1000,1000]`: 。 此類問題的原因通常是單位比例不匹配。 要進行補償,請在[轉換期間指定縮放值](../how-tos/conversion/configure-model-conversion.md#geometry-parameters),或使用正確的單位標記源模型。 在運行時載入模型時,也可以將縮放應用於根節點。
 
 **Unity 渲染管管不包括渲染掛鉤:**
 

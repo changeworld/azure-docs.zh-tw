@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f195a5c05c6c95dac898b2d471747952a3446d52
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271101"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681723"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(已淘汰) 使用 CoScale 監視 Azure Container Service Kubernetes 叢集
 
@@ -62,7 +62,7 @@ az acs kubernetes install-cli
 Kubernetes 使用[守護進程](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)在群集中的每個主機上運行容器的單個實例。
 它們非常適合執行監視代理程式，例如 CoScale 代理程式。
 
-登入 CoScale 之後，請移至[代理程式頁面](https://app.coscale.com/)使用 DaemonSet 在您的叢集上安裝 CoScale 代理程式。 CoScale UI 提供引導式設定步驟，讓您建立代理程式並開始監視完整的 Kubernetes 叢集。
+登入 CoScale 之後，請移至[代理程式頁面](https://developer.newrelic.com/)使用 DaemonSet 在您的叢集上安裝 CoScale 代理程式。 CoScale UI 提供引導式設定步驟，讓您建立代理程式並開始監視完整的 Kubernetes 叢集。
 
 ![CoScale 代理程式設定](./media/container-service-kubernetes-coscale/installation.png)
 
@@ -70,7 +70,7 @@ Kubernetes 使用[守護進程](https://kubernetes.io/docs/concepts/workloads/co
 
 ![啟動 CoScale 代理程式](./media/container-service-kubernetes-coscale/agent_script.png)
 
-就這麼簡單！ 當代理程式啟動並執行之後，幾分鐘之內您應該會在主控台中看到資料。 請瀏覽[代理程式頁面](https://app.coscale.com/)查看叢集摘要，執行其他設定步驟並查看儀表板，例如 **Kubernetes 叢集概觀**。
+就這麼簡單！ 當代理程式啟動並執行之後，幾分鐘之內您應該會在主控台中看到資料。 請瀏覽[代理程式頁面](https://developer.newrelic.com/)查看叢集摘要，執行其他設定步驟並查看儀表板，例如 **Kubernetes 叢集概觀**。
 
 ![Kubernetes 叢集概觀](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 

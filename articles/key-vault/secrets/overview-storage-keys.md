@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 0b855584ef6efef574e8264f3cead79000a51b13
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432004"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685425"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用金鑰保存者與 Azure CLI 管理儲存帳戶金鑰
 
@@ -71,13 +71,23 @@ az login
 使用 Azure CLI [az 角色分配創建](/cli/azure/role/assignment?view=azure-cli-latest)指令為金鑰保管庫授予存取儲存帳戶。 提供以下參數值的指令:
 
 - `--role`:傳遞"存儲帳戶金鑰操作員服務角色"RBAC 角色。 此角色限制存儲帳戶的訪問範圍。 對於經典存儲帳戶,請改為傳遞"經典存儲帳戶密鑰操作員服務角色"。
-- `--assignee-object-id`:傳遞值"93c27d83-f79b-4cb2-8dd4-4aa716542e74",這是 Azure 公共雲中密鑰保管庫的對象 ID。 (要取得 Azure 政府雲中金鑰保管庫的物件 ID,請參考[服務主體應用程式 ID](#service-principal-application-id)。
+- `--assignee`:傳遞值",https://vault.azure.net這是 Azure 公共雲中密鑰保管庫的 URL。 (對於 Azure Goverment 雲,請使用"-asingee-object-id",請參閱[服務主體應用程式 ID](#service-principal-application-id)。
 - `--scope`:傳遞您的儲存帳戶資源 ID,該`/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`ID 在窗體中。 要查找訂閱 ID,請使用 Azure CLI az 帳戶清單命令;使用 Azure CLI [az 帳戶清單](/cli/azure/account?view=azure-cli-latest#az-account-list)命令。"要查找儲存帳戶名稱和儲存帳戶資源組,請使用 Azure CLI [az 儲存帳戶清單](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
 
 ```azurecli-interactive
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>將使用者帳戶使用權限授與受控儲存體帳戶
 
+使用 Azure CLI [az 金鑰庫集策略](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)cmdlet 更新金鑰保管庫存取策略並將儲存帳戶許可權授予使用者帳戶。
+
+```azurecli-interactive
+# Give your user principal access to all storage account permissions, on your Key Vault instance
+
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
+```
+
+請注意，適用於儲存體帳戶的使用權限並不會在該儲存體於 Azure 入口網站中的 [存取原則] 頁面上提供。
 ### <a name="create-a-key-vault-managed-storage-account"></a>建立金鑰保存庫託管儲存帳戶
 
  使用 Azure CLI [az 金鑰保管庫儲存](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add)命令創建密鑰保管庫託管儲存帳戶。 將再生周期設置為 90 天。 90 天後,金鑰保存到`key1`一個動作金鑰,`key2`並`key1`從轉換到 。 `key1`然後標記為活動鍵。 提供以下參數值的指令:

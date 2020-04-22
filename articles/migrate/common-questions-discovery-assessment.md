@@ -3,12 +3,12 @@ title: 有關 Azure 遷移中的發現、評估和依賴關係分析的問題
 description: 獲取有關 Azure 遷移中發現、評估和依賴項分析的常見問題的解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529768"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681909"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>找到、評估與相依分析分析 - 常見問題
 
@@ -28,6 +28,10 @@ ms.locfileid: "81529768"
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>使用設備可以發現多少個 VM?
 
 通過使用單個設備,您可以發現多達 10,000 個 VMware VM、多達 5,000 台 Hyper-VM 和多達 250 台物理伺服器。 如果您有更多電腦,請閱讀有關縮放[Hyper-V 評估](scale-hyper-v-assessment.md)、[縮放 VMware 評估](scale-vmware-assessment.md)或[縮放實體伺服器評估](scale-physical-assessment.md)。
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>我在 Azure 政府中看不到某些 VM 類型
+
+支持評估和遷移的 VM 類型取決於 Azure 政府位置的可用性。 您可以在 Azure 政府中[查看和比較](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)VM 類型。
 
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>我的 VM 大小已更改。 我可以再次進行評估嗎?
@@ -87,7 +91,7 @@ Azure 遷移設備不斷收集有關本地環境的資訊。  評估是本地 VM
 依賴項可視化可説明您更自信地評估要遷移的 VM 組。 依賴項可視化在運行評估之前交叉檢查計算機依賴項。 它有助於確保不會留下任何內容,並且有助於避免遷移到 Azure 時意外中斷。 Azure Migrate 使用了 Azure 監視器中的 [服務對應] 解決方案來啟用相依性視覺效果。 [深入了解](concepts-dependency-visualization.md)。
 
 > [!NOTE]
-> 依賴項可視化在 Azure 政府中不可用。
+> Azure 政府中不提供基於代理的依賴項分析。 您可以使用無代理的相依項分析
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>基於代理和無代理之間的區別是什麼?
 

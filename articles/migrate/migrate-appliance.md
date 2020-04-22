@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供伺服器評估和遷移中使用的 Azure 遷移設備的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538217"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676345"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -125,7 +125,7 @@ download.microsoft.com/download | 允許從微軟下載下載。
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | 連接到 Azure 遷移服務 URL。
 *.hypervrecoverymanager.windowsazure.us | **無 VMware 無代理遷移**<br/><br/> 連接到 Azure 遷移服務 URL。
 *.blob.core.usgovcloudapi.net  |  **無 VMware 無代理遷移**<br/><br/>將數據上載到存儲以進行遷移。
-*.applicationinsights.us | 由設備上的閘道代理用於造訪應用程式見解終結點以進行診斷監視。
+*.applicationinsights.us | 上傳用於內部監視的應用日誌。
 
 
 

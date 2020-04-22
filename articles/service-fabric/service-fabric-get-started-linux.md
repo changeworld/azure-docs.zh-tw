@@ -3,12 +3,12 @@ title: 在 Linux 上設定開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309124"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682614"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 2. 要安裝服務交換矩陣外掛程式,請選擇 **「幫助** > **安裝新軟體**」。
 
-3. 在 [使用]**** 方塊中，輸入 **https://dl.microsoft.com/eclipse**。
+3. 在「**使用」** 框中, 輸入**\/Ht: /dl.microsoft.com/eclipse**。
 
 4. 選取 [新增]  。
 

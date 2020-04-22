@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632162"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682883"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>您可以在 Windows Data Science Virtual Machine 上做的十件事
 
@@ -817,7 +817,7 @@ Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它處�
 1. Azure 宇宙 DB Python SDK 已安裝在 DSVM 上。 要更新它,請```pip install pydocumentdb --upgrade```從命令提示符運行。
 2. 從[Azure 門戶](https://portal.azure.com)創建 Azure Cosmos 資料庫帳戶和資料庫。
 3. 從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53595)下載 Azure 宇宙 DB 資料遷移工具,然後提取到您選擇的目錄。
-4. 將存儲在[公共 Blob](https://cahandson.blob.core.windows.net/samples/volcano.json)中的 JSON 數據(火山資料)導入 Azure Cosmos DB,使用以下命令參數到遷移工具。 (使用安裝 Azure Cosmos DB 資料遷移工具的目錄中的 dtui.exe。使用以下參數輸入來源與目標位置:
+4. 將存儲在[公共 Blob](https://dotnet.microsoft.com/)中的 JSON 數據(火山資料)導入 Azure Cosmos DB,使用以下命令參數到遷移工具。 (使用安裝 Azure Cosmos DB 資料遷移工具的目錄中的 dtui.exe。使用以下參數輸入來源與目標位置:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

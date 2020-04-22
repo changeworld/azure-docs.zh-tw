@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: badba278e88e5065d8a4ff57ca9506fe1f9ad203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 526d8a6a103e7623bac459004bf9ac79e4927541
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774194"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686968"
 ---
 1. 查看所選直接對等互連上的連接。
     ```powershell
@@ -31,7 +31,7 @@ ms.locfileid: "75774194"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. 選擇要為對等互連服務啟用的連接。 在此示例中，我們將使用唯一可用的連接。
+1. 選擇要為對等互連服務啟用的連接。 在此示例中,我們將使用唯一可用的連接。
     ```powershell
     $directPeering.Connections[1] = $directPeering.Connections[1] | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
 
@@ -47,12 +47,12 @@ ms.locfileid: "75774194"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. 現在，使用下面的命令保存對 Direct 對等互連所做的更改。
+1. 現在,使用以下命令儲存對 Direct 對等互連所做的變更:
     ```powershell
     $directPeering | Update-AzPeering
     ```
     
-    下面是一個示例輸出：
+    下面是一個範例輸出:
     
     ```powershell
         Name                 : SeattleDirectPeering

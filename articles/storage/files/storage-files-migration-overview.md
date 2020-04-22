@@ -1,128 +1,156 @@
 ---
-title: 遷移到 Azure 檔共用
-description: 瞭解遷移到 Azure 檔共用並查找遷移指南。
+title: 遷移至 Azure 檔案共用
+description: 瞭解遷移到 Azure 檔共享並查找遷移指南。
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 903ce52120fce7c23c6a3754498b81fc6fc2430f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247311"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685979"
 ---
-# <a name="migrate-to-azure-file-shares"></a>遷移到 Azure 檔共用
+# <a name="migrate-to-azure-file-shares"></a>遷移至 Azure 檔案共用
 
 本文介紹遷移到 Azure 檔共用的基本方面。
 
-除了遷移基礎知識外，本文還包含現有個人化遷移指南的清單。 這些遷移指南可説明您將檔移動到 Azure 檔共用中，並按資料當前所在的位置以及計畫遷移到哪些部署模型（僅限雲或混合部署）進行組織。
+本文包含遷移基礎知識和遷移指南表。 這些指南可説明您將文件移動到 Azure 檔共享中。 指南根據資料所在的位置以及要移動到的部署模型(僅限雲或混合部署)進行組織。
 
 ## <a name="migration-basics"></a>遷移基礎知識
 
-Azure 中有多種不同類型的雲存儲可用。 將檔遷移到 Azure 的一個基本方面是確定哪種 Azure 存儲選項適合您的資料。
+Azure 具有多種可用類型的雲端儲存。 檔遷移到 Azure 的一個基本方面是確定哪種 Azure 儲存選項適合您的資料。
 
-Azure 檔共用非常適合通用檔資料。 確實，您使用本地 SMB 或 NFS 共用的任何內容。 使用[Azure 檔同步](storage-sync-files-planning.md)，可以選擇在本地多個 Windows 伺服器上緩存多個 Azure 檔共用的內容。
+[Azure 檔案共享](storage-files-introduction.md)適用於通用文件數據。 此資料包括您使用本地 SMB 或 NFS 共用的任何內容。 使用[Azure 檔案同步](storage-sync-files-planning.md),可以在本地運行 Windows 伺服器的伺服器上快取多個 Azure 檔案共享的內容。
 
-如果應用程式當前在本機伺服器上運行，則根據應用程式的不同，在 Azure 檔共用中存儲檔可能適合您。 可以提升應用程式以在 Azure 中運行，並使用 Azure 檔共用作為共用存儲。 您還可以考慮此方案[的 Azure 磁片](../../virtual-machines/windows/managed-disks-overview.md)。 對於不依賴于 SMB 或電腦本地訪問其資料或共用訪問的雲誕生應用程式，物件存儲（如[Azure Blob）](../blobs/storage-blobs-overview.md)通常是最佳選擇。
+對於當前在本地伺服器上運行的應用,將檔案存儲在 Azure 檔共享中可能是一個不錯的選擇。 您可以將應用移動到 Azure,並使用 Azure 檔共享作為共用存儲。 您可以考慮這個專案[的 Azure 磁碟](../../virtual-machines/windows/managed-disks-overview.md)。
 
-任何遷移的鍵是在將檔從當前存儲位置遷移到 Azure 時捕獲所有適用的檔逼真度。 選擇正確的 Azure 存儲的説明也是 Azure 存儲選項支援多少逼真度以及方案所需的逼真度方面。 通用檔資料傳統上取決於檔中繼資料。 應用程式資料可能不是。 檔有兩個基本元件：
+某些雲端應用不依賴於 SMB 或電腦本地數據訪問或共享訪問。 對於這些應用,像[Azure Blob](../blobs/storage-blobs-overview.md)這樣的物件存儲通常是最佳選擇。
 
-- **資料流程**：檔的資料流程存儲檔內容。
-- **檔中繼資料**： 檔中繼資料具有多個子元件：
-   * 檔案屬性：例如，唯讀。
-   * 檔許可權：稱為*NTFS 許可權*或*檔和資料夾 ACL。*
-   * 時間戳記：最值得注意的是*創建和**上次修改*的時間戳記。
-   * 替代資料流程：用於存儲大量非標準屬性的空間。
+任何遷移的鍵是在將檔從當前存儲位置移動到 Azure 時捕獲所有適用的檔保真度。 Azure 儲存選項支援的保真度以及方案所需的多少也可以説明您選擇正確的 Azure 儲存。 通用文件數據傳統上取決於檔元數據。 應用數據可能不是。
 
-因此，在遷移中，檔逼真度可以定義為在源上存儲所有適用檔資訊的能力、使用遷移工具傳輸它們的能力以及將它們存儲在遷移的目標存儲上的能力。
+下面是檔案的兩個基本元件:
 
-為確保遷移盡可能順利進行，請確定[適合您需求的最佳複製工具](#migration-toolbox)，並將存儲目標與源相匹配。
+- **資料流**:檔案的資料流程儲存檔案內容。
+- **檔案中繼資料**:檔中繼資料:
+   * 檔案屬性(如唯讀)
+   * 檔案權限,可以稱為*NTFS 權限*或*檔案與資料夾 ACL*
+   * 時間戳,最顯著的是創建和上次修改的時間戳
+   * 替代資料流程,用於儲存大量非標準屬性的空間
 
-考慮到前面的資訊，Azure 中通用檔的目標存儲是什麼[：Azure 檔共用](storage-files-introduction.md)。 與 Azure Blob 中的物件存儲相比，檔中繼資料可以本機存儲在 Azure 檔共用中的檔中。
+移動的檔案保存度可以定義為:
 
-Azure 檔共用還保留檔和資料夾層次結構。 此外：
-* NTFS 許可權可以存儲在檔和資料夾中，因為它們是本地的。
-* AD 使用者（或 Azure AD DS 使用者）可以本機訪問 Azure 檔共用。 
-    他們使用其當前標識，並根據共用許可權以及檔和資料夾 ACL 獲取存取權限。 當使用者連接到本地檔共用時，行為與不同。
-*  替代資料流程是檔逼真度的主要方面，當前無法存儲在 Azure 檔共用中的檔中。
-   涉及 Azure 檔同步時，它將保存在本地。
+- 將所有適用的檔案資訊存儲在源上。
+- 使用遷移工具傳輸檔。
+- 將檔案存儲在遷移的目標存儲中。
 
-* [瞭解有關 Azure 檔共用的 AD 身份驗證詳細資訊](storage-files-identity-auth-active-directory-enable.md)
-* [瞭解有關 Azure 檔共用的 Azure 活動目錄域服務 （AAD DS） 身份驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)
+為確保遷移順利進行,請確定[適合您需求的最佳複製工具](#migration-toolbox),並將存儲目標與源相匹配。
+
+考慮到前面的資訊,您可以看到 Azure 中一般檔案的目標儲存是[Azure 檔案共享](storage-files-introduction.md)。
+
+與 Azure Blob 中的物件存儲不同,Azure 檔案共用可以本機儲存檔元數據。 Azure 檔案共用還保留檔和資料夾層次結構、屬性和許可權。 NTFS 許可權可以存儲在檔和資料夾上,因為它們是本地的。
+
+Active Directory 的使用者可以本機訪問 Azure 檔共用(其本地域控制器)。 Azure 活動目錄域服務 (Azure AD DS) 的使用者也是如此。 每個使用其當前識別根據共享許可權以及文件和資料夾 ACL 訪問。 此行為類似於連接到本地檔共享的使用者。
+
+替代資料流是檔保真度的主要方面,當前無法存儲在 Azure 檔共享中的檔中。 使用 Azure 檔同步時,它將儲存在本地。
+
+詳細瞭解 Azure 檔案分享的[Azure AD 認證](storage-files-identity-auth-active-directory-enable.md)與 Azure AD [DS 認證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
 ## <a name="migration-guides"></a>移轉指南
 
 下表列出了詳細的遷移指南。
 
-通過：
-1. 查找檔當前存儲的源系統的行。
-2. 確定是針對混合部署，其中是否使用 Azure 檔同步在本機快取一個或多個 Azure 檔共用的內容，或者是否希望直接在雲中使用 Azure 檔共用。 選擇反映您的決策的目標列。
-3. 在源和目標交集中，表儲存格列出了可用的遷移方案。 選擇其中一個可直接連結到詳細的遷移指南。
+如何使用表:
 
-沒有連結的方案尚未發佈遷移指南。 偶爾檢查此表以獲取更新。 新指南將在可用時發佈。
+1. 查找檔案目前儲存的源系統的行。
 
-| 來源 | 目標： </br>混合式部署 | 目標： </br>僅限雲的部署 |
+1. 選擇以下目標之一:
+
+   - 使用 Azure 檔案同步在本地快取 Azure 檔案分享內容的混合部署
+   - 雲中的 Azure 檔案分享
+
+   選擇與您的選擇相匹配的目標列。
+
+1. 在源和目標交集中,表單元格列出了可用的遷移方案。 選擇一個可直接連結到詳細遷移指南。
+
+沒有連結的方案還沒有發佈的遷移指南。 偶爾檢查此表以獲取更新。 新指南將在可用時發佈。
+
+| 來源 | 目標： </br>混合式部署 | 目標： </br>只限雲的部署 |
 |:---|:--|:--|
-| | 工具組合：| 工具組合： |
-| Windows Server 2012 R2 和更新版本 | <ul><li>[Azure 檔案同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 檔同步 + 資料框](storage-sync-offline-data-transfer.md)</li><li>存儲遷移服務 + Azure 檔同步</li></ul> | <ul><li>Azure 檔案同步</li><li>Azure 檔同步 + 資料框</li><li>存儲遷移服務 + Azure 檔同步</li><li>RoboCopy</li></ul> |
-| Windows 伺服器 2012 及舊版 | <ul><li>Azure 檔同步 + 資料框</li><li>存儲遷移服務 + Azure 檔同步</li></ul> | <ul><li>存儲遷移服務 + Azure 檔同步</li><li>RoboCopy</li></ul> |
-| 網路附加存儲 （NAS） | <ul><li>[Azure 檔同步 + RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Linux / 桑巴 | <ul><li>[RoboCopy = Azure 檔同步](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| 斯托簡單 8100 / 8600 | <ul><li>[Azure 檔同步 = 8020 虛擬裝置](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| 斯托簡單 1200 | <ul><li>[Azure 檔案同步](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| | 工具組合:| 工具組合: |
+| Windows 伺服器 2012 R2 及更高版本 | <ul><li>[Azure 檔案同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 檔案同步與 Azure 資料框](storage-sync-offline-data-transfer.md)</li><li>Azure 檔案同步和儲存遷移服務</li></ul> | <ul><li>Azure 檔案同步</li><li>Azure 檔案同步與資料框</li><li>Azure 檔案同步和儲存遷移服務</li><li>RoboCopy</li></ul> |
+| Windows 伺服器 2012 及更早版本 | <ul><li>Azure 檔案同步與資料框</li><li>Azure 檔案同步和儲存遷移服務</li></ul> | <ul><li>Azure 檔案同步和儲存遷移服務</li><li>RoboCopy</li></ul> |
+| 網路連線儲存 (NAS) | <ul><li>[Azure 檔案同步與 RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
+| Linux 或桑巴 | <ul><li>[Azure 檔案同步與 RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
+| 微軟 Azure StorSimple 雲端設備 8100 或 StorSimple 雲端設備 8600 | <ul><li>[Azure 檔案同步和 StorSimple 雲端裝置 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple 雲設備 1200 | <ul><li>[Azure 檔案同步](storage-files-migration-storsimple-1200.md)</li></ul> | |
 | | | |
 
-## <a name="migration-toolbox"></a>遷移工具箱
+## <a name="migration-toolbox"></a>移轉工具箱
 
 ### <a name="file-copy-tools"></a>檔案複製工具
 
-有幾個微軟和非微軟檔案複製工具可用。 為了為您的遷移方案選擇正確的檔案複製工具，必須考慮三個基本問題：
+微軟和其他公司提供了多種文件複製工具。 要為您的遷移方案選擇正確的工具,必須考慮以下基本問題:
 
-* 複製工具是否支援給定檔副本的源和目標位置？ 
-    * 它是否支援您的網路路徑和/或可用協定（例如 REST/SMB/NFS）以及源和目標存儲位置？
-* 複製工具是否保留源/目標位置支援的必要檔逼真度？ 在某些情況下，目標存儲不支援與源相同的逼真度。 您已經決定目標存儲足以滿足您的需要，因此複製工具只需要匹配目的檔案逼真度功能。
-* 複製工具是否具有使其適合我的遷移策略的功能？ 
-    * 例如，考慮它是否有允許您最小化停機時間的選項。 一個很好的問題是：我可以在同一個上運行此副本多次，由使用者主動訪問的位置嗎？ 如果是這樣，您可以顯著減少停機時間。 將此與僅可在源停止更改時啟動副本的情況進行比較，以確保完整副本。
+* 該工具是否支援檔案複本的來源位置和目標位置?
 
-下表對 Microsoft 工具及其當前是否適合 Azure 檔共用進行分類：
+* 該工具是否支援來源和目標儲存位置之間的網路路徑或可用協定(如 REST、SMB 或 NFS)?
 
-| 建議 | 工具 | 支援 Azure 檔共用 | 保留檔逼真度 |
+* 該工具是否保留源和目標位置支援的必要檔保真度?
+
+    在某些情況下,目標存儲不支援與源相同的保真度。 如果目標存儲足以滿足您的需要,則該工具必須僅匹配目標的檔保真功能。
+
+* 該工具是否具有使其適合您的遷移策略的功能?
+
+    例如,請考慮該工具是否允許您將停機時間降至最低。
+    
+    當工具支援將源鏡像到目標的選項時,通常可以在源保持可訪問時在同一源和目標上運行多次。
+
+    首次運行該工具時,它會複製大部分數據。 此初始運行可能會持續一段時間。 對於業務流程,使數據源離線的時間通常比您希望的要長。
+
+    以將源鏡像到目標(如**使用 robocopy /MIR),** 可以在同一源和目標上再次執行該工具。 運行速度要快得多,因為它只需要傳輸上次運行後發生的源更改。 以這種方式重新運行複製工具可以顯著減少停機時間。
+
+下表對 Microsoft 工具及其目前是否適合 Azure 檔案分享進行分類:
+
+| 建議 | 工具 | 支援 Azure 檔案分享 | 儲存檔案保存 |
 | :-: | :-- | :---- | :---- |
-|![是，建議。](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | 支援。 Azure 檔共用可以裝載為網路磁碟機。 | 全保真* |
-|![是，建議。](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure 檔案同步 | 本機集成到 Azure 檔共用中。 | 全保真* |
-|![是，建議。](media/storage-files-migration-overview/circle-green-checkmark.png)| 存放裝置移轉服務 (SMS) | 間接支援。 Azure 檔共用可以裝載為 SMS 目標伺服器上的網路磁碟機。 | 全保真* |
-|![不完全推薦。](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure 資料箱 | 支援。 | 不復制中繼資料。 [可與 Azure 檔同步結合使用](storage-sync-offline-data-transfer.md)。 |
-|![不建議使用。](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | 支援。 | 不復制中繼資料。 |
-|![不建議使用。](media/storage-files-migration-overview/circle-red-x.png)| Azure 儲存體總管 | 支援。 | 不復制中繼資料。 |
-|![不建議使用。](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | 支援。 | 不復制中繼資料。 |
+|![是,建議](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | 支援。 Azure 檔案共用可以裝載為網路驅動器。 | 完全保真度。 |
+|![是,建議](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure 檔案同步 | 本機集成到 Azure 檔共享中。 | 完全保真度。 |
+|![是,建議](media/storage-files-migration-overview/circle-green-checkmark.png)| 存放裝置移轉服務 | 間接支援。 Azure 檔案共享可以載入為 SMS 目標伺服器上的網路驅動器。 | 完全保真度。 |
+|![不完全推薦](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| 資料箱 | 支援。 | 不複製元數據。 [資料框可與 Azure 檔案同步一起使用](storage-sync-offline-data-transfer.md)。 |
+|![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | 支援。 | 不複製元數據。 |
+|![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| Azure 儲存體總管 | 支援。 | 不複製元數據。 |
+|![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | 支援。 | 不複製元數據。 |
 |||||
 
-*\*完全逼真度：滿足或超過 Azure 檔共用功能。*
+*\*完全保真度:滿足或超過 Azure 檔共用功能。*
 
-### <a name="migration-helper-tools"></a>遷移説明工具
+### <a name="migration-helper-tools"></a>移轉說明工具
 
-本節列出了説明規劃和執行遷移的工具。
+本節介紹可説明您規劃和運行遷移的工具。
 
-* **RoboCopy，來自微軟公司**
+#### <a name="robocopy-from-microsoft-corporation"></a>微軟公司的RoboCopy
 
-    檔遷移的最適用的複製工具之一，是微軟 Windows 的一部分。 由於此工具中的許多選項，[主要 RoboCopy 文檔](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)是一個有用的來源。
+RoboCopy 是最適合檔遷移的工具之一。 它是 Windows 的一部分。 主要[RoboCopy 文件](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)是此工具的許多選項的有用資源。
 
-* **樹的大小，來自JAM軟體有限公司**
+#### <a name="treesize-from-jam-software-gmbh"></a>來自 JAM 軟體有限公司的樹大小
 
-    Azure 檔同步主要隨專案數（檔和資料夾）進行擴展，而與 TiB 總量一樣， 則較少。 該工具可用於確定 Windows Server 卷上的檔和資料夾數。 此外，它可用於在[Azure 檔同步部署](storage-sync-files-deployment-guide.md)之前創建透視圖 - 之後，當雲分層參與，您不僅希望看到專案數，還希望看到伺服器緩存使用最多的目錄。
-    此工具（經過測試的版本 4.4.1）與雲分層檔相容。 在正常操作期間，它不會導致分層檔的調用。
+Azure 檔案同步主要隨專案數(文件和資料夾)數進行縮放,而不是使用總存儲量進行縮放。 樹大小工具允許您確定 Windows 伺服器卷上的項目數。
 
+可以使用 該工具在[Azure 檔同步部署](storage-sync-files-deployment-guide.md)之前創建透視圖。 您還可以在部署後參與雲分層時使用它。 在這種情況下,您將看到專案數以及伺服器緩存最多的目錄。
+
+該工具的測試版本為版本 4.4.1。 它與雲分層文件相容。 該工具在正常操作期間不會導致分層文件的調用。
 
 ## <a name="next-steps"></a>後續步驟
 
-1. 創建計畫，為之部署 Azure 檔共用（僅限雲或混合共用）而努力。
-2. 查看可用遷移指南的清單，查找與 Azure 檔共用的源和部署相匹配的詳細指南。
+1. 創建需要部署 Azure 檔共用(僅限雲或混合)的計畫。
+1. 查看可用遷移指南的清單,查找與 Azure 檔共用的源和部署相匹配的詳細指南。
 
-本文中提及的 Azure 檔技術提供了更多資訊：
+以下是本文中提到的有關 Azure 檔技術的詳細資訊:
 
-* [Azure 檔共用概述](storage-files-introduction.md)
-* [規劃 Azure 檔同步部署](storage-sync-files-planning.md)
-* [Azure 檔同步：雲分層](storage-sync-cloud-tiering.md)
+* [Azure 檔案分享概述](storage-files-introduction.md)
+* [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
+* [Azure 檔案同步:雲分層](storage-sync-cloud-tiering.md)

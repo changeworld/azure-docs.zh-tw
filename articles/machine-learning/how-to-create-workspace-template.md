@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481997"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682750"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -81,7 +81,9 @@ ms.locfileid: "81481997"
 
 * 為工作區啟用高機密性設定
 * 將工作區開啟加密
-* 使用現有的 Azure 金鑰保管庫
+* 使用現有的 Azure 金鑰保管庫檢索客戶管理的金鑰
+
+有關詳細資訊,請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
 
 ```json
 {
@@ -121,7 +123,7 @@ ms.locfileid: "81481997"
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ ms.locfileid: "81481997"
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbiWorkspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-要取得金鑰保存的 ID 以及此樣本所需的金鑰 URI,可以使用 Azure CLI。 以下指令是使用 Azure CLI 取得金鑰保管庫資源 ID 和 URI 的範例:
+要取得金鑰保存的 ID 以及此樣本所需的金鑰 URI,可以使用 Azure CLI。 以下命令取得金鑰保存庫代碼:
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-此命令返回類似於以下文本的值。 第一個值是 ID,第二個值是 URI:
+此命令會傳回如下值：`"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`。
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+要取得客戶託管金鑰的 URI,請使用以下指令:
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+此命令會傳回如下值：`"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`。
+
+> [!IMPORTANT]
+> 建立工作區後,無法更改機密數據、加密、密鑰保管庫 ID 或密鑰標識符的設置。 要更改這些值,必須使用新值創建新工作區。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 

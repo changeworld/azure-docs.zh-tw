@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e061baa8e7eb73bae0a78f4215f0d48610e85fcb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256564"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686739"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業市場合作夥伴和客戶使用歸因
 
@@ -31,7 +31,7 @@ ms.locfileid: "81256564"
 >
 >- 客戶使用方式歸因用於新部署,不支援標記已部署的現有資源。
 >
->- 發佈到 Azure 應用商店的[Azure 應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)產品/服務需要客戶使用方式歸因。
+>- 發佈到 Azure 應用商店的[Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)產品/服務需要客戶使用方式歸因。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ GUID 必須在合作夥伴中心註冊,以啟用客戶使用方式歸因。
 > [!NOTE]
 > 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
 > * [建立並部署第一個資源管理員樣本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
->* [Azure 應用程式產品 /服務](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
+>* [Azure 應用程式產品 /服務](./partner-center-portal/create-new-azure-apps-offer.md)。
 >* 視訊:[為 Azure 應用程式的應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
 

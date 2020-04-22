@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521326"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676363"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用分享存取簽章 (SAS) 對事件中心資源進行身份驗證存取
 共用存取簽名 (SAS) 使您能夠精細地控制向具有共用存取簽名的用戶端授予的存取類型。 以下是您可以在 SAS 中設定的一些控制項: 
@@ -22,7 +22,7 @@ ms.locfileid: "80521326"
 - SAS 所授與的權限。 例如,事件中心命名空間的 SAS 可能會授予偵聽許可權,但不能授予發送許可權。
 - 只有出示有效認證的用戶端才能將資料傳送到事件中樞。
 - 用戶端無法類比其他用戶端。
-- 可以阻止 rouge 客戶端將數據發送到事件中心。
+- 可封鎖惡意用戶端，讓它無法將資料傳送到事件中樞。
 
 本文介紹使用 SAS 對事件中心資源的訪問進行身份驗證。 要瞭解如何使用 SAS**授權**存取事件中心資源,請參閱[本文](authorize-access-shared-access-signature.md)。 
 

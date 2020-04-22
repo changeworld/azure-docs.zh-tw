@@ -12,19 +12,16 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fa42bf65ea5f4469f714dda4331d3cb66156d187
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535788"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677677"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>微軟身份平台和OpenID連線協定
 
 OpenID Connect 在 OAuth 2.0 上建置的驗證通訊協定，可用來讓使用者安全地登入 Web 應用程式。 使用 Microsoft 識別平台終結點實現 OpenID Connect 時,可以將登錄和 API 存取許可權添加到基於 Web 的應用。 本文說明如何不受語言限制地執行此工作，並說明如何在不使用任何 Microsoft 開放原始碼程式庫的情況下，傳送和接收 HTTP 訊息。
-
-> [!NOTE]
-> Microsoft 識別平台終結點不支援所有 Azure 活動目錄 (Azure AD) 方案和功能。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 將 OAuth 2.0「授權」** 通訊協定延伸來當作「驗證」** 通訊協定使用，以便讓您能夠使用 OAuth 來執行單一登入。 OpenID Connect 引進了「識別碼權杖」** 的概念，這是一種安全性權杖，可讓用戶端確認使用者的身分識別。 識別碼權杖也會取得使用者的相關基本設定檔資訊。 由於 OpenID Connect 延伸了 OAuth 2.0，因此應用程式可以安全地取得「存取權杖」**，而這些權杖可用來存取受[授權伺服器](active-directory-v2-protocols.md#the-basics)保護的資源。 Microsoft 識別平台終結點還允許在 Azure AD 中註冊的第三方應用為安全資源(如 Web API)頒發訪問權杖。 有關如何設置應用程式以頒發訪問權杖的詳細資訊,請參閱[如何向 Microsoft 識別平台終結點註冊應用](quickstart-register-app.md)。 如果您要建置裝載於伺服器上且透過瀏覽器存取的 [Web 應用程式](v2-app-types.md#web-apps)，建議您使用 OpenID Connect。
 

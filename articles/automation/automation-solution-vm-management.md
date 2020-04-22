@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681301"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中,在非工作時間解決方案期間啟動/停止 VM
 
@@ -120,7 +120,7 @@ ms.locfileid: "81604716"
 下表列出在您自動化帳戶中建立的變數。 僅修改預綴在`External`的變數。 修改預先固定的`Internal`變數會導致不良效果。
 
 > [!NOTE]
-> 對 VM 名稱和資源組的限制很大程度上是可變大小造成的。
+> 對 VM 名稱和資源組的限制很大程度上是可變大小造成的。 請參考[Azure 自動化 中的變數資產](https://docs.microsoft.com/azure/automation/shared-resources/variables)。
 
 |變數 | 描述|
 |---------|------------|
@@ -159,7 +159,7 @@ ms.locfileid: "81604716"
 |Schedule_AutoStop_CreateAlert_Parent | 每 8 小時 | 每 8 小時運行**一次AutoStop_CreateAlert_Parent** runbook,這反過來`External_Start_ResourceGroupNames`又`External_Stop_ResourceGroupNames`會停止`External_ExcludeVMNames`中基於 VM 的值, 和變數。 或者,可以使用`VMList`參數指定逗號分隔的 VM 清單。|
 |Scheduled_StopVM | 使用者定義的每日 | 在指定時間運行具有每天參數`Stop`**的ScheduledStopStart_Parent** runbook。自動停止滿足變數資產定義的規則的所有 VM。啟用相關計劃**計劃-啟動VM。**|
 |Scheduled_StartVM | 使用者定義的每日 | 在指定時間運行具有`Start`每天參數值**的ScheduledStopStart_Parent** runbook。 自動啟動滿足變數資產定義的規則的所有 VM。啟用相關**計劃計劃-停止VM。**|
-|Sequenced-StopVM | 上午 1:00 (UTC)，每星期五 | 在指定時間運行參數值為每週五`Stop`的 Sequenced_Parent runbook。會以循序方式 (遞增) 停止具有由適當變數定義之 **SequenceStop** 標記的所有虛擬機器。 如需標記值和資產變數的詳細資訊，請參閱 Runbook 一節。啟用相關排程 **Sequenced-StartVM**。|
+|Sequenced-StopVM | 上午 1:00 (UTC)，每星期五 | 在指定時間運行**Sequenced_StopStop_Parent**運行簿,`Stop`其參數值為每週五。會以循序方式 (遞增) 停止具有由適當變數定義之 **SequenceStop** 標記的所有虛擬機器。 有關標記值和資產變數的詳細資訊,請參閱[Runbook](#runbooks)。啟用相關排程 **Sequenced-StartVM**。|
 |Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | **在指定**時間運行SequencedStopStart_Parent運行簿的參數值`Start`為每週一。 會以循序方式 (遞減) 啟動具有由適當變數定義之 **SequenceStart** 標記的所有虛擬機器。 有關標記值和變數資產的詳細資訊,請參閱[Runbook](#runbooks)。 啟用相關排程 **Sequenced-StopVM**。
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>將解決方案與經典 VM 一起使用

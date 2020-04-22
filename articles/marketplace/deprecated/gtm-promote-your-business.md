@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
-ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde249f22342ed2a0c50f5fdda3bde9dc2cde183
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281539"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685730"
 ---
 # <a name="promote-your-business-with-microsoft"></a>透過 Microsoft 推廣您的業務
 
@@ -36,6 +36,6 @@ Marketplace 夥伴必須是 Microsoft 合作夥伴網路 (MPN) 的一部分。 �
 
 若要深入了解 Marketplace GTM 服務，請移至 [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm)。
 
-請登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com)，以建立及設定您的供應項目。
+[登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的產品/服務。
 
 ---

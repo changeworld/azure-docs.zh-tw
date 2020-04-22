@@ -1,5 +1,5 @@
 ---
-title: 對應資料串流
+title: 對應資料串流的軸轉換
 description: 使用 Azure 資料工廠映射資料串流資料分析轉換,從行到列透視資料
 author: kromerm
 ms.author: makromer
@@ -7,73 +7,103 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 980d7c3e1b1f69e76c091e2a4a74c8e5a4d0bb64
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606368"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686459"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Azure 資料工廠資料透視轉換
+# <a name="pivot-transformation-in-mapping-data-flow"></a>對應資料串流的軸轉換
+
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用 ADF 資料流程中的樞紐做為彙總，其中一個或多個群組資料行都有個別的資料行值會轉換成相異資料列。 基本上，您可以將資料列值樞紐處理為新的資料行 (將資料轉換成中繼資料)。
+使用數據透視變換從單個列的唯一行值創建多個列。 透視是一個聚合變換,用於按列分組並使用[聚合函數](data-flow-expression-functions.md#aggregate-functions)生成數據透視列。
 
-![透視選項](media/data-flow/pivot1.png "樞軸 1")
+## <a name="configuration"></a>設定
 
-## <a name="group-by"></a>群組依據
+透視轉換需要三個不同的輸入:按列分組、透視鍵以及如何生成透視列
 
-![透視選項](media/data-flow/pivot2.png "樞軸 2")
+### <a name="group-by"></a>群組依據
 
-首先，設定您想要對於樞紐彙總分組所依據的資料行。 您可以在這裡使用資料行清單旁邊的 + 號設定 1 個以上資料行。
+![依據選項分組](media/data-flow/pivot2.png "*按選項群組")
 
-## <a name="pivot-key"></a>樞軸鍵
+選擇要聚合透視列的列。 輸出數據將按值按值將具有相同組的所有行分組到一行中。 在透視列中完成的聚合將發生在每個組中。
 
-![透視選項](media/data-flow/pivot3.png "樞軸 3")
+此為選擇性區段。 如果未按列選擇組,則將聚合整個數據流,並且將只輸出一行。
 
-樞紐索引鍵是 ADF 從資料列樞紐處理為資料行的資料行。 根據預設，此欄位的資料集之內的每個唯一值都會樞紐處理為資料行。 不過，您可以選擇從資料集輸入您想要樞紐處理為資料行值的數值。 這是確定將創建的新列的列。
+### <a name="pivot-key"></a>樞軸鍵
 
-## <a name="pivoted-columns"></a>旋轉欄位
+![樞軸鍵](media/data-flow/pivot3.png "樞軸鍵")
 
-![透視選項](media/data-flow/pivot4.png "樞軸 4")
+樞軸鍵是行值被透視到新列的列。 默認情況下,透視變換將為每個唯一行值創建新列。
 
-最後，選擇您想要對已樞紐的值所使用的彙總，以及您要如何在轉換的新輸出投影中顯示資料行。
+在標記為 **「值」** 的部分中,可以輸入要透視的特定行值。 只有在此節中輸入的行值才會旋轉。 開啟**Null 值**將為列中的空值建立一個透視列。
 
-(選擇性) 您可以設定對於每個新資料行名稱從資料列值新增前置詞、中置詞及後置詞的命名模式。
+### <a name="pivoted-columns"></a>旋轉欄位
 
-例如,將「銷售」旋轉為「區域」將導致每個銷售值產生新的列值,即「25」、「50」、」1000"等。但是,如果設置首碼值"Sales-",則每個列值將添加"Sales-"到該值的開頭。
+![旋轉欄位](media/data-flow/pivot4.png "旋轉欄位")
 
-![透視選項](media/data-flow/pivot5.png "樞軸 5")
+對於每個成為列的唯一透視鍵值,為每個組生成聚合行值。 您可以建立每個資料透視鍵的多個欄。 每個資料透視列必須至少包含一個[彙總函數](data-flow-expression-functions.md#aggregate-functions)。
 
-設定為「一般」資料行的排列方式，會使用彙總值將已樞紐的資料行分組在一起。 將資料行排列方式設定為「橫向」會在資料行和值之間交替。
+**欄位名稱模式:** 選擇如何設置每個數據透視列的欄名稱的格式。 輸出的列名稱將是透視鍵值、列首碼和可選首碼(足夠的中間字元)的組合。 
 
-### <a name="aggregation"></a>彙總
+**欄位:** 如果每個數據透視鍵生成多個透視列,請選擇您希望對列進行排序的方式。 
 
-若要對於樞紐值設定您想要使用的彙總，請按一下「已樞紐的資料行」窗格底部的欄位。 您會進入 ADF 資料流程運算式產生器，您可以在其中建立彙總運算式，並對於新的彙總值提供描述性的別名名稱。
+**列前置字串:** 如果每個數據透視鍵生成多個數據透視列,請為每個列輸入列首碼。 如果只有一個透視列,則此設置是可選的。
 
-使用 ADF 資料流程運算式語言在運算式產生器描述已樞紐的資料行轉換：https://aka.ms/dataflowexpressions。
+## <a name="help-graphic"></a>說明圖
+
+下圖顯示了不同資料透視元件如何相互互動
+
+![樞紐分析圖形](media/data-flow/pivot5.png "透視說明圖形")
 
 ## <a name="pivot-metadata"></a>樞紐分析中繼資料
 
-數據透視轉換將生成基於傳入數據的動態的新列名稱。 數據透視鍵生成每個新列名稱的值。 如果不指定單個值,並希望為數據透視鍵中的每個唯一值創建動態列名稱,則 UI 將不會在"檢查"中顯示元數據,並且不會向 Sink 轉換傳播列。 如果為數據透視鍵設置值,則 ADF 可以確定新的列名稱,這些列名稱將在「檢查和接收器」映射中可供您使用。
+如果在樞軸鍵配置中未指定值,則在運行時將動態生成透視列。 透視列數將等於唯一透視鍵值數乘以透視列數。 由於這可能是一個不斷變化的數位,UX將不會在 **「檢查」** 選項卡中顯示列元數據,也不會顯示列傳播。 要轉換這些列,請使用映射資料串流的[列模式](concepts-data-flow-column-pattern.md)功能。 
 
-### <a name="generate-a-new-model-from-dynamic-columns"></a>從動態欄產生新模型
+如果設置了特定的透視鍵值,則透視列將顯示在元數據中。 列名稱將在「檢查和接收器」映射中可供您使用。
 
-數據透視基於行值動態生成新的列名稱。 您可以將這些新列轉換為中繼資料,可在資料流中稍後引用。 為此,請單擊「數據預覽」選項卡。透視轉換生成的所有新列都顯示在表標題中,並帶有「漂移」圖示。 單擊「地圖漂移」按鈕,將這些新列轉換為元數據,使其成為數據流模型的一部分。
+### <a name="generate-metadata-from-drifted-columns"></a>從漂移列產生中繼資料
+
+數據透視基於行值動態生成新的列名稱。 您可以將這些新列添加到元資料中,這些元數據可在資料流中稍後引用。 為此,請使用數據預覽中的[地圖漂移](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action)快速操作。 
 
 ![樞紐資料行](media/data-flow/newpivot1.png "映射漂移樞軸列")
 
-### <a name="landing-new-columns-in-sink"></a>在沉陷中登陸新列
+### <a name="sinking-pivoted-columns"></a>下沉旋轉列
 
-即使使用資料透視中的動態列名稱,您仍可以將新的列名稱和值沉入目標存儲中。 只需在「接收器」設置中設置「允許架構漂移」。 您將不會在列中資料中看到新的動態名稱,但架構漂移選項將允許您登陸數據。
+儘管透視列是動態的,但它們仍然可以寫入目標數據存儲。 開啟**允許在接收器設定中漂移的架構**。 這將允許您編寫元資料中未包括的欄。 列元數據,但架構漂移選項將允許您登陸數據。
 
-### <a name="view-metadata-in-design-mode"></a>在設計模式下檢視中繼資料
+### <a name="rejoin-original-fields"></a>重新加入原始欄位
 
-如果要在"檢查"中將新列名稱視為元數據,並且希望看到列顯式傳播到「接收器」轉換,然後在「透視鍵」選項卡中設置顯式值。
+透視轉換將僅按和透視列投影組。 如果希望輸出數據包含其他輸入列,請使用[自聯接](data-flow-join.md#self-join)模式。
 
-### <a name="how-to-rejoin-original-fields"></a>如何重新加入原始欄位
-樞紐轉換只會投出使用在彙總、分組和中樞動作中的資料行。 如果要在流中包括上一步中的其他列,請使用上一步中的新分支,並使用自聯接模式將流與原始元數據連接。
+## <a name="data-flow-script"></a>資料流程指令碼
+
+### <a name="syntax"></a>語法
+
+```
+<incomingStreamName>
+    pivot(groupBy(Tm),
+        pivotBy(<pivotKeyColumn, [<specifiedColumnName1>,...,<specifiedColumnNameN>]),
+        <pivotColumnPrefix> = <pivotedColumnValue>,
+        columnNaming: '< prefix >< $N | $V ><middle >< $N | $V >< suffix >',
+        lateral: { 'true' | 'false'}
+    ) ~> <pivotTransformationName
+```
+### <a name="example"></a>範例
+
+設定部分中顯示的螢幕具有以下資料串流文稿:
+
+```
+BasketballPlayerStats pivot(groupBy(Tm),
+    pivotBy(Pos),
+    {} = count(),
+    columnNaming: '$V$N count',
+    lateral: true) ~> PivotExample
+
+```
 
 ## <a name="next-steps"></a>後續步驟
 

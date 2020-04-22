@@ -2,14 +2,14 @@
 title: Azure 移轉支援矩陣
 description: 提供 Azure 遷移服務的支援設置和限制摘要。
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535191"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680703"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure 移轉支援矩陣
 
@@ -25,6 +25,8 @@ ms.locfileid: "81535191"
 **本機評估** | 評估在 VMware VM、超 VM 和實體伺服器上運行的本地工作負載和數據。 使用 Azure 遷移伺服器評估和 Microsoft 資料遷移助理 (DMA) 以及其他工具和 ISV 產品進行評估。
 **本地移至 Azure** | 將物理伺服器、VMware VM、超 VM、物理伺服器和基於雲的 VMS 上運行的工作負載和數據遷移到 Azure。 使用 Azure 遷移伺服器評估和 Azure 資料庫遷移服務 (DMS) 以及其他工具和 ISV 產品進行遷移。
 
+> [!NOTE]
+> 目前,ISV 工具無法將數據發送到 Azure 政府中的 Azure 遷移。 您可以使用整合的 Microsoft 工具,也可以獨立使用合作夥伴工具。
 
 ## <a name="supported-tools"></a>支援工具
 
@@ -93,7 +95,7 @@ United Kingdom | 英國南部或英國西部
 **Task** | **地理位置** | **詳細資料**
 --- | --- | ---
 建立專案 | 美國 | 元數據存儲在美國亞利桑那州州長、美國弗吉尼亞州州長
-目標評估 | 美國 | 目標地區:美國亞利桑那州州長、美國弗吉尼亞州州長/德克薩斯州美國政府
+目標評估 | 美國 | 目標地區:美國亞利桑那州州長、美國弗吉尼亞州州長、德克薩斯州州長
 目標複寫 | 美國 | 目標地區:美國國防部中心、美國國防部東部、美國亞利桑那州州長、美國愛荷華州州長、美國德克薩斯州州長、美國弗吉尼亞州州長
 
 

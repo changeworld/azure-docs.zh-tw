@@ -4,15 +4,15 @@ description: 了解如何在 Azure 連線至 Analysis Services 伺服器並從�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411305"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676654"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
@@ -23,6 +23,9 @@ ms.locfileid: "80411305"
 [取得最新的用戶端程式庫](analysis-services-data-providers.md)
 
 所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 對於 SSMS、Visual Studio、Excel 2016 及更高版本以及 Power BI,將安裝或更新最新的用戶端庫,併發布月度版本。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
+
+> [!NOTE]
+> 用戶端庫無法透過需要使用者名稱和密碼的代理伺服器連接到 Azure 分析服務。 
 
 ## <a name="server-name"></a>伺服器名稱
 

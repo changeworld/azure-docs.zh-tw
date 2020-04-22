@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429833"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686184"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
@@ -88,7 +88,7 @@ ms.locfileid: "81429833"
 
 1. 登錄到 Azure 門戶 *:az 登錄*以登錄到 Azure。
 
-1. 通過輸入*az 帳戶獲取訪問權https://vault.azure.net杖 -資源來*驗證存取。 如果收到錯誤,請檢查正確安裝了正確的 Azure CLI 版本。
+1. 通過輸入*az 帳戶獲取訪問權杖 -資源 Hhhhs/vault.azure.net\/* 驗證存取。 如果收到錯誤,請檢查正確安裝了正確的 Azure CLI 版本。
 
    如果未將 Azure CLI 安裝到預設目錄,`AzureServiceTokenProvider`則可能會收到 找不到 Azure CLI 路徑的錯誤報告。 使用**AzureCLIPath**環境變數定義 Azure CLI 安裝資料夾。 必要時，`AzureServiceTokenProvider` 會將 **AzureCLIPath** 環境變數中指定的目錄新增至**路徑**環境變數。
 

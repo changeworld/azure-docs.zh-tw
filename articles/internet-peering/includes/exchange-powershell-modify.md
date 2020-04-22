@@ -8,23 +8,23 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 86e1a9cce1864ce259fe07b6949be2e32be242a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774415"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678611"
 ---
-支援對等互連進行後續修改操作
-1. 添加 Exchange 對等互連連接
-1. 刪除 Exchange 對等互連連接
-1. 在活動連接上添加 IPv4/IPv6 會話。
-1. 在活動連接上刪除 IPv4/IPv6 會話。
+Exchange 對等互連支援以下修改操作:
+* 添加 Exchange 對等互連連接。
+* 刪除 Exchange 對等互連連接。
+* 在活動連接上添加 IPv4 或 IPv6 會話。
+* 在活動連接上刪除 IPv4 或 IPv6 會話。
 
 
-### <a name="add-exchange-peering-connections"></a>添加 Exchange 對等互連連接
+### <a name="add-exchange-peering-connections"></a>新增 Exchange 對等互連連線
 
-下面的示例介紹如何向現有 Exchange 對等互連添加連接
+此示例介紹如何向現有 Exchange 對等互連添加連接。
 
 ```powershell
 
@@ -43,9 +43,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-exchange-peering-connections"></a>刪除 Exchange 對等互連連接
+### <a name="remove-exchange-peering-connections"></a>移除 Exchange 對等互連連線
 
-下面的示例介紹如何刪除與現有 Exchange 對等互連的連接
+此示例介紹如何刪除與現有 Exchange 對等互連的連接。
 
 ```powershell
 
@@ -53,7 +53,7 @@ $exchangePeering = Get-AzPeering -Name "SeattleExchangePeering" -ResourceGroupNa
 
 ```
 
-查看所有連接並選擇要刪除的連接。 
+查看所有連接,並選擇要刪除的連接。 
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-在下面的命令中，輸入要刪除的連接的索引號，而不是 0。
+在以下命令中,輸入要刪除的連接的索引號,而不是 0。
 
 ```powershell
 
@@ -85,9 +85,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>在活動連接上添加 IPv4/IPv6 會話
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>新增 IPv4 或 IPv6 工作階段
 
-下面的示例介紹如何將 IPv6 會話添加到現有交換連接。
+此示例介紹如何將 IPv6 會話添加到現有 Exchange 連接。
 
 ```powershell
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>在活動連接上刪除 IPv4/IPv6 會話
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>在作用中移除 IPv4 或 IPv6 工作階段
 
-PowerShell 目前不支援從現有連接中刪除 IPv4/IPv6 會話。 聯繫[微軟對等互連](mailto:peeringexperience@microsoft.com)。
+PowerShell 目前不支援從現有連接中刪除 IPv4 或 IPv6 工作階段。 有關詳細資訊,請與[微軟對等互連](mailto:peeringexperience@microsoft.com)。

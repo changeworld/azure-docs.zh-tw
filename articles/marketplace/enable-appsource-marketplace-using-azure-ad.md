@@ -5,18 +5,18 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286314"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684635"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 來啟用 AppSource 和 Marketplace 清單
 
- Azure Active Directory (Azure AD) 是一種雲端身分識別服務，可以 Microsoft 帳戶進行驗證。 Azure AD 使用業界標準架構。 [瞭解有關 Azure 活動目錄 的更多內容](https://azure.microsoft.com/services/active-directory)。
+ Azure Active Directory (Azure AD) 是一種雲端身分識別服務，可以 Microsoft 帳戶進行驗證。 Azure AD 使用業界標準架構。 [瞭解有關 Azure 活動目錄的更多內容](https://azure.microsoft.com/services/active-directory)。
 
 ## <a name="azure-ad-benefits"></a>Azure AD 的優點
 
@@ -87,5 +87,10 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請確定您已[在 Azure Marketplace 中註冊](https://azuremarketplace.microsoft.com/sell)。
-- 有關如何創建或完成產品/服務的詳細資訊[，請參閱如何創建合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+如果您還沒有這麼做，請 
+
+- [了解](https://azuremarketplace.microsoft.com/sell)市場。
+
+要在合作夥伴中心註冊,請開始創建新產品/服務或處理現有產品/服務:
+
+- [登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的優惠。

@@ -12,21 +12,18 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535871"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677935"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>微軟識別平台和 OAuth 2.0 授權代碼串流
 
 OAuth 2.0 授權碼授與可用於裝置上所安裝的應用程式中，以存取受保護的資源，例如 Web API。 使用 OAuth 2.0 的 Microsoft 識別平台實現,您可以將登錄和 API 訪問許可權添加到行動和桌面應用。 本指南不限於特定語言，其中說明如何在不使用任何 [Azure 開放原始碼驗證程式庫](reference-v2-libraries.md)的情況下，傳送和接收 HTTP 訊息。
 
 本文介紹如何直接針對應用程式中的協議進行程式設計。  如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
-
-> [!NOTE]
-> 並非所有 Azure 活動目錄方案&功能都由 Microsoft 標識平台終結點提供支援。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 如需 OAuth 2.0 授權碼流程的說明，請參閱 [OAuth 2.0 規格的 4.1 節](https://tools.ietf.org/html/rfc6749)。 它用於在大多數應用類型(包括[Web 應用](v2-app-types.md#web-apps)和[本機安裝的應用](v2-app-types.md#mobile-and-native-apps))中執行身份驗證和授權。 該流使應用能夠安全地獲取可用於訪問 Microsoft 標識平台終結點保護的資源access_tokens。
 

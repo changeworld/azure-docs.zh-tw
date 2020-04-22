@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411855"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685191"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL 稽核
 
@@ -111,9 +111,6 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
 ### <a name=""></a><a id="audit-log-analytics-destination">稽核至紀錄分析目標</a>
   
 若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]****，然後開啟 [Log Analytics 詳細資料]****。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]****。
-    
-  > [!WARNING]
-   > 啟用對日誌分析的審核將產生基於引入率的成本。 請注意使用[此選項](https://azure.microsoft.com/pricing/details/monitor/)的相關成本,或者考慮將審核日誌存儲在 Azure 儲存帳戶中。
    
    ![紀錄分析工作區](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 

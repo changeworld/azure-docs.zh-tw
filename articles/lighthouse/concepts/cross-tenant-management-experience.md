@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 04/06/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 107350cdab90751e918d4c7845776464b43abbdd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418504"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682821"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -72,6 +72,14 @@ Azure PowerShell [Get-Az訂閱 cmdlet](https://docs.microsoft.com/powershell/mod
 - 紀錄分析:查詢來自多個租戶中的遠端客戶工作區的數據
 - 在客戶租用戶中建立警示，以透過 Webhook 在服務提供者租用戶中觸發自動化 (例如 Azure 自動化 Runbook 或 Azure Functions)
 
+[Azure 網路](../../networking/networking-overview.md):
+
+- 在客戶租戶中部署與管理[Azure 虛擬網路 (VNet)](../../virtual-network/index.yml)和虛擬網路介面卡 (vNIC)
+- 部署並設定[Azure 防火牆](../../firewall/overview.md)以保護客戶的虛擬網路資源
+- 為客戶管理連線服務,如[Azure 虛擬廣域網路](../../virtual-wan/virtual-wan-about.md)、[快速路由](../../expressroute/expressroute-introduction.md)和[VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- 使用 Azure 燈塔支援 Azure 網路[MSP 計劃](../../networking/networking-partners-msp.md)的關鍵方案
+
+
 [Azure 政策](../../governance/policy/index.yml):
 
 - 顯示委派之訂用帳戶內的已指派原則詳細資料的合規性快照集
@@ -121,10 +129,6 @@ Azure PowerShell [Get-Az訂閱 cmdlet](https://docs.microsoft.com/powershell/mod
 - 使用開機診斷來針對客戶租用戶中的 Azure VM 進行疑難排解
 - 透過客戶租用戶中的序列主控台來存取 VM
 - 請注意，您無法使用 Azure Active Directory 來從遠端登入 VM，且您無法將 VM 與 Key Vault 整合以取得用於磁碟加密的密碼、祕密或密碼編譯金鑰
-
-[Azure 虛擬網路](../../virtual-network/index.yml):
-
-- 部署及管理客戶租用戶內的虛擬網路與虛擬網路介面卡 (vNIC)
 
 支援要求：
 

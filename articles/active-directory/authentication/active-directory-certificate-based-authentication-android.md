@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654388"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680200"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上的 Azure Active Directory 憑證式驗證
 
@@ -27,7 +27,7 @@ ms.locfileid: "80654388"
 
 設定這項功能之後，就不需要在行動裝置上的特定郵件和 Microsoft Office 應用程式中，輸入使用者名稱和密碼的組合。
 
-本主題針對 Office 365 企業版、商務版、教育版、美國政府機關、中國和德國方案的租用戶使用者，提供在 iOS (Android) 裝置上設定 CBA 的需求和支援案例。
+本主題為您提供了在 Android 設備上為 Office 365 企業、商業、教育、美國政府、中國和德國計劃中租戶使用者配置 CBA 的要求和支援的方案。
 
 在 Office 365 US Government Defense 和 Federal 方案中，這項功能處於預覽版。
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a0f0b96f8140118f1c74ecbd4368aac49d7ece6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415265"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684301"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市場交易能力
 
@@ -202,11 +202,11 @@ Microsoft 使客戶能夠訂購、許可和使用發佈商軟體,但須遵守 Mi
 * 客戶通常會使用 Enterprise 合約或以信用卡付款的隨用隨付合約來購買。 合約類型會決定計費、發票開立、收帳和付款時間。
 
 >[!NOTE]
->交易發佈選項的所有報告和見解均可通過合作夥伴中心的雲合作夥伴門戶或分析部分的「見解」部分獲得。
+>交易發佈選項的所有報告和見解均可通過合作夥伴中心的"分析"部分獲得。
 
 #### <a name="billing-questions-and-support"></a>計費問題和支援
 
-如需詳細資訊和法律原則，請參閱可在 Cloud Partner 入口網站取得的[發行者合約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) \(英文\)。
+有關詳細資訊和法律政策,請參閱[發佈商協定](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)(在合作夥伴中心提供)。
 
 要取得有關計費問題,請聯絡[商業市場發佈商支援](https://aka.ms/marketplacepublishersupport)。
 

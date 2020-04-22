@@ -12,19 +12,16 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 55055f65e1b725e079b60e960837e05558ef08d6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 26bfbcb4762d889b2c56276e66e4bf8e0acb64b2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886206"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677697"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
 與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 授權模型的實現已在 Microsoft 標識平台終結點上更新,並改變了應用必須與 Microsoft 標識平臺互動的方式。 本文涵蓋此授權模型的基本概念，包括範圍、權限及同意。
-
-> [!NOTE]
-> Microsoft 標識平台終結點不支援所有方案和功能。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 ## <a name="scopes-and-permissions"></a>範圍和權限
 
@@ -66,8 +63,8 @@ _有效權限_ 是應用程式向目標資源提出要求時所將具備的權�
 - 就委派權限來說，應用程式的 _有效權限_ 是應用程式 (透過同意) 所獲得授與的委派權限和目前已登入使用者的權限二者的最小權限交集。 應用程式絕對不會擁有已登入使用者權限以外的權限。 在組織內，已登入使用者的權限會由原則或是一或多個系統管理員角色的成員資格決定。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
 
    例如，假設已經對您的應用程式授與 _User.ReadWrite.All_ 委派權限。 此權限名義上會對應用程式授與讀取及更新組織中每個使用者設定檔的權限。 如果已登入使用者是全域管理員，應用程式便能夠更新組織中每個使用者的設定檔。 但是,如果登錄使用者不在管理員角色中,則你的應用將只能更新登錄使用者的配置檔。 應用程式有權代表其行事的使用者沒有這些權限，因此應用程式無法更新組織中其他使用者的設定檔。
-  
-- 就應用程式權限來說，應用程式的 _有效權限_ 將是權限所隱含的完整層級權限。 例如，具有 _User.ReadWrite.All_ 應用程式權限的應用程式可以更新組織中每個使用者的設定檔。 
+
+- 就應用程式權限來說，應用程式的 _有效權限_ 將是權限所隱含的完整層級權限。 例如，具有 _User.ReadWrite.All_ 應用程式權限的應用程式可以更新組織中每個使用者的設定檔。
 
 ## <a name="openid-connect-scopes"></a>OpenId Connect 範圍
 
@@ -92,7 +89,7 @@ OpenID Connect 的 Microsoft 識別平台實現具有一些定義良好的作用
 > [!NOTE]
 > 此許可權今天出現在所有同意螢幕上,即使對於不提供刷新令牌([隱式流](v2-oauth2-implicit-grant-flow.md))的流也是如此。  這是用於涵蓋客戶端可以在隱式流中開始,然後移動到預期刷新令牌的代碼流中的情況。
 
-在 Microsoft 標識平臺上(向 v2.0 終結點發出的請求),你的應用`offline_access`必須顯式請求 作用域才能接收刷新令牌。 這意謂著當您在 [OAuth 2.0 授權碼流程](active-directory-v2-protocols.md)中兌換授權碼時，您只會從 `/token` 端點收到存取權杖。 存取權杖的有效期短。 存取權杖的有效期通常在一小時內。 屆時，您的應用程式將必須把使用者重新導向回 `/authorize` 端點，以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者可能需要重新輸入其認證或重新同意權限。 
+在 Microsoft 標識平臺上(向 v2.0 終結點發出的請求),你的應用`offline_access`必須顯式請求 作用域才能接收刷新令牌。 這意謂著當您在 [OAuth 2.0 授權碼流程](active-directory-v2-protocols.md)中兌換授權碼時，您只會從 `/token` 端點收到存取權杖。 存取權杖的有效期短。 存取權杖的有效期通常在一小時內。 屆時，您的應用程式將必須把使用者重新導向回 `/authorize` 端點，以擷取新的授權碼。 在此重新導向期間，視應用程式的類型而定，使用者可能需要重新輸入其認證或重新同意權限。
 
 有關如何獲取和使用刷新權杖的詳細資訊,請參閱[Microsoft 識別平台協定引用](active-directory-v2-protocols.md)。
 
@@ -117,7 +114,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 使用者輸入其憑據后,Microsoft 標識平台終結點將檢查*使用者同意*的匹配記錄。 如果用戶過去未同意任何請求的許可權,也未代表整個組織同意管理員使用這些許可權,Microsoft 標識平臺終結點將要求使用者授予請求的許可權。
 
 > [!NOTE]
->此時，`offline_access` (「維持存取您可存取的資料」) 和 `user.read` (「將您登入並讀取您的設定檔」) 權限會自動包含在應用程式的初始同意中。  通常需要這些權限，才能獲得適當的應用程式功能 - `offline_access` 可供應用程式存取重新整理權杖 (對原生和 Web 應用程式都很重要)，而 `user.read` 可供存取 `sub` 宣告，讓用戶端或應用程式能正確地隨著時間識別使用者及存取基本使用者資訊。  
+>此時，`offline_access` (「維持存取您可存取的資料」) 和 `user.read` (「將您登入並讀取您的設定檔」) 權限會自動包含在應用程式的初始同意中。  通常需要這些權限，才能獲得適當的應用程式功能 - `offline_access` 可供應用程式存取重新整理權杖 (對原生和 Web 應用程式都很重要)，而 `user.read` 可供存取 `sub` 宣告，讓用戶端或應用程式能正確地隨著時間識別使用者及存取基本使用者資訊。
 
 ![顯示工作帳戶同意的範例螢幕擷取](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -149,8 +146,8 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 
 ## <a name="using-the-admin-consent-endpoint"></a>使用系統管理員同意端點
 
-> [!NOTE] 
-> 請注意,在使用管理員同意終結點授予管理員同意后,您已完成授予管理員同意,使用者無需執行任何其他操作。 授予管理員同意后,使用者可以通過典型的身份驗證流獲取訪問權杖,並且生成的訪問權杖將具有同意的許可權。 
+> [!NOTE]
+> 請注意,在使用管理員同意終結點授予管理員同意后,您已完成授予管理員同意,使用者無需執行任何其他操作。 授予管理員同意后,使用者可以通過典型的身份驗證流獲取訪問權杖,並且生成的訪問權杖將具有同意的許可權。
 
 如果公司的系統管理員在使用您的應用程式時被導向至授權端點，Microsoft 身分識別平台將會偵測使用者的角色，並詢問他們是否要代表整個租用戶同意您所要求的權限。 不過，還有如果您想要主動要求由系統管理員代表整個租用戶授與權限，您也可以使用專用的管理員同意端點。 使用此終結點對於請求應用程式許可權(無法使用授權終結點請求)也是必需的。
 
@@ -189,7 +186,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
   &scope=
-  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/calendars.read
   https://graph.microsoft.com/mail.send
 ```
 
@@ -200,7 +197,7 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 | `client_id` | 必要 | [Azure 門戶和應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗**的應用程式(用戶端)ID**分配給應用。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope`        | 必要        | 定義應用程式請求的許可權集。 這可以是靜態(使用[`/.default`](#the-default-scope))或動態作用域。  這可以包括 OIDC`openid`範圍`profile``email`(、 與 % 。 如果需要應用程式許可權,則必須使用`/.default`請求靜態配置的許可權清單。  | 
+|`scope`        | 必要        | 定義應用程式請求的許可權集。 這可以是靜態(使用[`/.default`](#the-default-scope))或動態作用域。  這可以包括 OIDC`openid`範圍`profile``email`(、 與 % 。 如果需要應用程式許可權,則必須使用`/.default`請求靜態配置的許可權清單。  |
 
 
 此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 要求管理員批准您在`scope`參數中請求的所有許可權。  如果您使用了靜態(`/.default`) 值,它將像 v1.0 管理員同意終結點一樣運行,並請求對應用所需許可權中找到的所有作用域進行同意。
@@ -253,7 +250,7 @@ Content-Type: application/json
 }
 ```
 
-您可以在對資源提出的 HTTP 要求中使用產生的存取權杖。 它會可靠地向資源指出您的應用程式具有可執行特定工作的適當權限。 
+您可以在對資源提出的 HTTP 要求中使用產生的存取權杖。 它會可靠地向資源指出您的應用程式具有可執行特定工作的適當權限。
 
 有關 OAuth 2.0 協定以及如何取得存取權杖的詳細資訊,請參閱[Microsoft 識別平台終結點協定引用](active-directory-v2-protocols.md)。
 
@@ -261,7 +258,7 @@ Content-Type: application/json
 
 可以使用作用域`/.default`幫助將應用從 v1.0 終結點遷移到 Microsoft 標識平台終結點。 這是每個應用程式的內建範圍，其參考在應用程式註冊時設定的靜態權限清單。 `scope` 值為 `https://graph.microsoft.com/.default` 在功能上與 v1.0 端點 `resource=https://graph.microsoft.com` 相同 - 也就是說，它會對應用程式已在 Azure 入口網站中註冊的 Microsoft Graph 範圍要求權杖。  它使用資源 URI`/.default`* 建構(例如,如果`https://contosoApp.com`資源 URI 為`https://contosoApp.com/.default`,則請求的範圍為 )。  有關必須包含第二個斜杠才能正確請求權杖的情況,請參閱[尾隨斜杠部分](#trailing-slash-and-default)。
 
-/.default 作用功能可用於任何 OAuth 2.0 流,但在[代表流](v2-oauth2-on-behalf-of-flow.md)和[用戶端憑據流](v2-oauth2-client-creds-grant-flow.md)中使用,以及使用 v2 管理員同意終結點請求應用程式許可權時是必需的。  
+/.default 作用功能可用於任何 OAuth 2.0 流,但在[代表流](v2-oauth2-on-behalf-of-flow.md)和[用戶端憑據流](v2-oauth2-client-creds-grant-flow.md)中使用,以及使用 v2 管理員同意終結點請求應用程式許可權時是必需的。
 
 > [!NOTE]
 > 用戶端不能在單個請求中組合`/.default`靜態 ( ) 和動態同意。 因此，`scope=https://graph.microsoft.com/.default+mail.read` 會因為範圍類型的組合而導致錯誤。
@@ -301,13 +298,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-這會對所有已註冊的權限產生同意畫面 (根據上述的同意和 `/.default` 描述，如果適用的話)，然後傳回 id_token，而不是存取權杖。  此行為存在於從 ADAL 移動到 MSAL 的某些舊用戶端,**並且不應**由針對 Microsoft 識別平臺終結點的新用戶端使用。  
+這會對所有已註冊的權限產生同意畫面 (根據上述的同意和 `/.default` 描述，如果適用的話)，然後傳回 id_token，而不是存取權杖。  此行為存在於從 ADAL 移動到 MSAL 的某些舊用戶端,**並且不應**由針對 Microsoft 識別平臺終結點的新用戶端使用。
 
 ### <a name="trailing-slash-and-default"></a>尾隨斜線與 /.預設值
 
-某些資源URI具有尾隨斜杠`https://contoso.com/`(`https://contoso.com`而不是 ),這可能會導致令牌驗證出現問題。  這主要發生在為 Azure 資源管理`https://management.azure.com/`() 請求權杖時,該令牌在其資源 URI 上具有尾隨斜杠,並且要求在請求權杖時存在該標記。  因此,當請求權杖`https://management.azure.com/`和使用`/.default`時,您必須請求`https://management.azure.com//.default`- 注意雙斜杠! 
+某些資源URI具有尾隨斜杠`https://contoso.com/`(`https://contoso.com`而不是 ),這可能會導致令牌驗證出現問題。  這主要發生在為 Azure 資源管理`https://management.azure.com/`() 請求權杖時,該令牌在其資源 URI 上具有尾隨斜杠,並且要求在請求權杖時存在該標記。  因此,當請求權杖`https://management.azure.com/`和使用`/.default`時,您必須請求`https://management.azure.com//.default`- 注意雙斜杠!
 
-通常 - 如果您已驗證正在頒發權杖,並且權杖被應接受它的 API 拒絕,請考慮添加第二個斜杠,然後重試。 這是因為登入伺服器發出`scope`與 參數中URI匹配的受眾的權杖 -`/.default`從末尾刪除。  如果刪除尾隨斜杠,登錄伺服器仍會處理請求並針對資源 URI 對其進行驗證,即使它們不再匹配 - 這是非標準,應用程式不應依賴。  
+通常 - 如果您已驗證正在頒發權杖,並且權杖被應接受它的 API 拒絕,請考慮添加第二個斜杠,然後重試。 這是因為登入伺服器發出`scope`與 參數中URI匹配的受眾的權杖 -`/.default`從末尾刪除。  如果刪除尾隨斜杠,登錄伺服器仍會處理請求並針對資源 URI 對其進行驗證,即使它們不再匹配 - 這是非標準,應用程式不應依賴。
 
 ## <a name="troubleshooting-permissions-and-consent"></a>針對權限和同意進行疑難排解
 

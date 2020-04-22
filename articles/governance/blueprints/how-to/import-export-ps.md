@@ -3,12 +3,12 @@ title: 使用 PowerShell 匯入及匯出藍圖
 description: 瞭解如何將藍圖定義用作代碼。 使用匯出和導入命令共用、原始程式碼管理並管理它們。
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677145"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686844"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 匯入及匯出藍圖定義
 
@@ -88,7 +88,7 @@ Azure 藍圖可以通過 Azure 門戶完全管理。 隨著組織在 Azure 藍�
 
 在[所需的資料夾結構](#folder-structure-of-a-blueprint-definition)中具有[匯出的藍圖定義](#export-your-blueprint-definition)或手動創建的藍圖定義後,可以將該藍圖定義導入到不同的管理組或訂閱。
 
-有關內建藍圖定義的範例,請參閱 Azure 藍圖[GitHub 儲存函式庫](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)。
+有關內建藍圖定義的範例,請參閱 Azure 藍圖[GitHub 儲存函式庫](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)。
 
 - **名稱**[必需]
   - 指定新藍圖定義的名稱
@@ -121,8 +121,8 @@ Azure 藍圖可以通過 Azure 門戶完全管理。 隨著組織在 Azure 藍�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[藍圖生命週期](../concepts/lifecycle.md)。
+- 了解[藍圖生命週期](../concepts/lifecycle.md)。
 - 了解如何使用[靜態與動態參數](../concepts/parameters.md)。
 - 了解如何自訂[藍圖排序順序](../concepts/sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](../concepts/resource-locking.md)。
-- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。
+- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。

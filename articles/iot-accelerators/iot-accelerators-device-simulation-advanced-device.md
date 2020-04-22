@@ -6,15 +6,18 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61448979"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683834"
 ---
 # <a name="create-an-advanced-device-model"></a>建立進階裝置型號
 
@@ -163,7 +166,7 @@ IoT 裝置可以使用不同的通訊協定來連線。 模擬可讓您使用 **
 * 二進位 - 使用 base64 序列化
 * Text
 * Boolean
-* 整數 
+* 整數
 * Double
 * Datetime
 
@@ -255,8 +258,8 @@ JavaScript 檔案必須要有 **elevation** 函式，接受以下兩個參數：
 
 * **context** 物件，其包含下列三個屬性：
     * **currentTime**，其為 **yyyy-MM-dd'T'HH:mm:sszzz** 格式的字串。
-    * **設備 Id**. 例如，**Simulated.Elevator.123**。
-    * **設備模型**. 例如，**電梯**。
+    * **裝置代碼**. 例如，**Simulated.Elevator.123**。
+    * **裝置模型**. 例如，**電梯**。
 * **state** 物件，其為先前呼叫中的函式所傳回的值。 模擬服務會維護此裝置狀態，並用來產生遙測訊息。
 
 **main** 函式傳回新的裝置狀態。 例如：

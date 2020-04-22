@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7a91f61302b5944e69f71c3cfee2f41cd87b809f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 947286a7238e3ddf2aebe66c6ea87e0e1cf8a853
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309367"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677721"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>微軟身份平臺和 OAuth 2.0 代表流
 
@@ -27,9 +27,7 @@ OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web
 本文介紹如何直接針對應用程式中的協議進行程式設計。  如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
 
 > [!NOTE]
->
-> - Microsoft 標識平台終結點不支援所有方案和功能。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。 
-> - 從 2018 年 5 月起，部分隱含流程衍生 `id_token` 無法用於 OBO 流程。 單頁應用程式 (SPA) 應該將**存取**權杖傳遞至中介層機密用戶端，才能改為執行 OBO 流程。 若要進一步了解哪些用戶端可執行 OBO 呼叫，請參閱[限制](#client-limitations)。
+> 從 2018 年 5 月起，部分隱含流程衍生 `id_token` 無法用於 OBO 流程。 單頁應用程式 (SPA) 應該將**存取**權杖傳遞至中介層機密用戶端，才能改為執行 OBO 流程。 若要進一步了解哪些用戶端可執行 OBO 呼叫，請參閱[限制](#client-limitations)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
@@ -186,10 +184,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>取得中介層應用程式的同意
 
-根據應用程式的體系結構或使用方式,您可以考慮不同的策略來確保 OBO 流成功。 在所有情況下,最終目標是確保給予適當的同意,以便用戶端應用可以調用中間層應用,並且中間層應用有權調用後端資源。 
+根據應用程式的體系結構或使用方式,您可以考慮不同的策略來確保 OBO 流成功。 在所有情況下,最終目標是確保給予適當的同意,以便用戶端應用可以調用中間層應用,並且中間層應用有權調用後端資源。
 
 > [!NOTE]
-> 以前,Microsoft 帳戶系統(個人帳戶)不支援"已知用戶端應用程式"欄位,也不能顯示合併同意。  已添加此內容,Microsoft 標識平臺中的所有應用都可以使用已知的用戶端應用程式方法獲得 OBO 調用的同意。 
+> 以前,Microsoft 帳戶系統(個人帳戶)不支援"已知用戶端應用程式"欄位,也不能顯示合併同意。  已添加此內容,Microsoft 標識平臺中的所有應用都可以使用已知的用戶端應用程式方法獲得 OBO 調用的同意。
 
 ### <a name="default-and-combined-consent"></a>/.預設和合併的同意
 

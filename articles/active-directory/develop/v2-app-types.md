@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535905"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677994"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>微軟識別平台的應用程式類型
 
 Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構的驗證，它們全都以產業標準通訊協定 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md) 為基礎。 本文介紹可以使用 Microsoft 標識平台構建的應用類型,而不管您的首選語言或平臺如何。 這些資訊旨在説明您在[開始使用代碼](v2-overview.md#getting-started)之前瞭解進階方案。
-
-> [!NOTE]
-> Microsoft 識別平台終結點不支援所有 Azure 活動目錄 (Azure AD) 方案和功能。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 ## <a name="the-basics"></a>基本概念
 

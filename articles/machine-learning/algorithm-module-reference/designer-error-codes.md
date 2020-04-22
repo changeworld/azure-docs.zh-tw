@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481676"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684687"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>設計器的例外和錯誤代碼(預覽)
 
@@ -145,6 +145,7 @@ ms.locfileid: "81481676"
 |參數"{arg_name}"值應小於或等於參數"{upper_boundary_parameter_name}"值。|
 |參數"{arg_name}"的值"{actual_value}"應小於或等於 {upper_boundary}。|
 |參數"arg_name"值 {actual_value}應小於或等於參數"upper_boundary_parameter_name"值 [upper_boundary]。|
+|參數"{arg_name}"值 {actual_value}應小於或等於 {upper_boundary_meaning} 值 {upper_boundary}。|
 
 
 ## <a name="error-0008"></a>錯誤 0008  
@@ -253,8 +254,8 @@ Azure 機器學習不支援某些較新的帳戶類型。 例如,新的"熱"或"
 
 |模型類型|培訓模組| 評分模組|
 |----|----|----|
-|任何分類器|[火車模型](train-model.md) |[計分模型](score-model.md)|
-|任何回歸模型|[火車模型](train-model.md) |[計分模型](score-model.md)|
+|任何分類器|[定型模型](train-model.md) |[計分模型](score-model.md)|
+|任何回歸模型|[定型模型](train-model.md) |[計分模型](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -271,6 +272,7 @@ Azure 機器學習不支援某些較新的帳戶類型。 例如,新的"熱"或"
 |傳遞的學習類型無效。|
 |學員"{arg_name}"的類型無效。|
 |學員"{arg_name}"的類型無效,類型為"{learner_type}"。|
+|傳遞的學習類型無效。 例外訊息: {exception_message}|
 
 
 ## <a name="error-0014"></a>錯誤 0014  
@@ -393,6 +395,7 @@ Azure 機器學習不支援某些較新的帳戶類型。 例如,新的"熱"或"
 |資料行中的值未排序。|
 |列"{col_index}"中的值未排序。|
 |數據集"[資料集]的列"{col_index}"中的值未排序。|
+|參數"{arg_name}"中的值未按"{sorting_order}"順序排序。|
 
 
 ## <a name="error-0020"></a>錯誤 0002  
@@ -633,6 +636,7 @@ Azure 機器學習不支援某些較新的帳戶類型。 例如,新的"熱"或"
 |------------------------|
 |參數必須是有限的。|
 |"{arg_name}"不是有限的。|
+|列"{column_name}"包含無限值。|
 
 
 ## <a name="error-0034"></a>錯誤 0034  
@@ -738,7 +742,7 @@ For general information about how the Matchbox recommendation algorithm works, a
     + 檢查文字列的非單碼字元、選項卡字元或控制項字元
     + 日期時間數據應一致,以避免建模錯誤,但由於多種格式,清理可能很複雜。 考慮使用 <!--the [Execute R Script](execute-r-script.md) or -->[執行 Python 文本](execute-python-script.md)模組以執行清理。  
 + 如有必要,修改輸入數據集中的值,以便可以成功轉換列。 修改可能包括分箱、截斷或舍入操作、消除異常值或歸因缺失值。 有關機器學習中的一些常見數據轉換方案,請參閱以下文章:
-    + [清除遺失的資料](clean-missing-data.md)
+    + [清除遺漏的資料](clean-missing-data.md)
     + [將資料標準化](normalize-data.md)
 <!--+ [Clip Values](clip-values.md) 
     + [Group Data Into Bins](group-data-into-bins.md)
@@ -1492,6 +1496,18 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------------------------------------------|
 |給定轉換目錄無效。|
 |轉換目錄"{arg_name}"無效。 原因: [原因]。 請重新運行生成轉換檔的訓練實驗。 如果已刪除訓練實驗,請重新建立並儲存轉換檔。|
+|轉換目錄"{arg_name}"無效。 原因: [原因]。 [troubleshoot_hint]|
+
+
+## <a name="error-0159"></a>錯誤 0159
+ 如果傳遞到模組模型目錄無效,則會發生異常。 
+
+|例外狀況訊息|
+|------------------------------------------------------------|
+|給定的 ModelDirectory 無效。|
+|模型目錄"{arg_name}"無效。|
+|模型目錄"{arg_name}"無效。 原因: [原因]。|
+|模型目錄"{arg_name}"無效。 原因: [原因]。 [troubleshoot_hint]|
 
 
 ## <a name="error-1000"></a>錯誤 1000  

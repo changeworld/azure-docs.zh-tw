@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309415"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677842"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>微軟身份平台和 OAuth 2.0 裝置授權授予流
 
-Microsoft 標識平台支援[設備授權授予](https://tools.ietf.org/html/rfc8628),它允許使用者登錄到受輸入約束的設備,如智慧電視、IoT 設備或印表機。  若要啟用此流程，裝置會讓使用者在其他裝置的瀏覽器中瀏覽網頁，以執行登入程序。  使用者登入後，裝置可取得所需的存取權杖和重新整理權杖。  
+Microsoft 標識平台支援[設備授權授予](https://tools.ietf.org/html/rfc8628),它允許使用者登錄到受輸入約束的設備,如智慧電視、IoT 設備或印表機。  若要啟用此流程，裝置會讓使用者在其他裝置的瀏覽器中瀏覽網頁，以執行登入程序。  使用者登入後，裝置可取得所需的存取權杖和重新整理權杖。
 
 本文介紹如何直接針對應用程式中的協議進行程式設計。  如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
-
-> [!NOTE]
-> Microsoft 識別平台終結點不支援所有 Azure 活動目錄方案和功能。 要確定是否應使用 Microsoft 識別平台終結點,請閱讀有關[Microsoft 識別平臺限制](active-directory-v2-limitations.md)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
@@ -62,7 +59,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>裝置授權回應
 
-成功的回應會是一個 JSON 物件，其中包含允許使用者登入的所需資訊。  
+成功的回應會是一個 JSON 物件，其中包含允許使用者登入的所需資訊。
 
 | 參數 | [格式] | 描述 |
 | ---              | --- | --- |
@@ -80,11 +77,11 @@ scope=user.read%20openid%20profile
 
 收到`user_code``verification_uri`和 後,用戶端向用戶顯示這些,指示他們使用行動電話或PC瀏覽器登錄。
 
-如果使用者使用個人帳戶(在 /common 或 /消費者上)進行身份驗證,系統將要求他們重新登錄,以便將身份驗證狀態傳輸到設備。  他們也將被要求提供同意,以確保他們知道被授予的許可權。  這不適用於用於進行身份驗證的工作或學校帳戶。 
+如果使用者使用個人帳戶(在 /common 或 /消費者上)進行身份驗證,系統將要求他們重新登錄,以便將身份驗證狀態傳輸到設備。  他們也將被要求提供同意,以確保他們知道被授予的許可權。  這不適用於用於進行身份驗證的工作或學校帳戶。
 
 使用者在 `verification_uri`進行驗證時，用戶端應使用 `device_code` 輪詢 `/token` 端點，以取得要求的權杖。
 
-``` 
+```
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -95,21 +92,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | 參數 | 必要 | 描述|
 | -------- | -------- | ---------- |
-| `tenant`  | 必要 | 初始請求中使用的同一租戶或租戶別名。 | 
+| `tenant`  | 必要 | 初始請求中使用的同一租戶或租戶別名。 |
 | `grant_type` | 必要 | 必須是 `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | 必要 | 必須符合初始要求中使用的 `client_id`。 |
 | `device_code`| 必要 | 裝置授權要求傳回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>預期的錯誤
 
-設備代碼流是輪詢協定,因此客戶端必須在使用者完成身份驗證之前收到錯誤。  
+設備代碼流是輪詢協定,因此客戶端必須在使用者完成身份驗證之前收到錯誤。
 
 | 錯誤 | 描述 | 用戶端動作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 使用者尚未完成身份驗證,但尚未取消流。 | 經過至少 `interval` 秒後，重複要求流程。 |
 | `authorization_declined` | 終端使用者拒絕了授權要求。| 停止輪詢，並還原到未驗證的狀態。  |
 | `bad_verification_code`| `device_code`發送到終結點`/token`的未識別。 | 確認用戶端是否在要求中傳送正確的 `device_code`。 |
-| `expired_token` | 已經過了至少 `expires_in` 秒，`device_code` 也無法再進行驗證。 | 停止輪詢並恢復到未身份驗證的狀態。 |   
+| `expired_token` | 已經過了至少 `expires_in` 秒，`device_code` 也無法再進行驗證。 | 停止輪詢並恢復到未身份驗證的狀態。 |
 
 ### <a name="successful-authentication-response"></a>成功驗證回應
 
@@ -135,4 +132,4 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `id_token`   | JWT | 原始 `scope` 參數包含 `openid` 範圍時發出。  |
 | `refresh_token` | 不透明字串 | 原始 `scope` 參數包含 `offline_access` 時發出。  |
 
-您可以使用刷新權杖使用[OAuth 代碼串流文件中](v2-oauth2-auth-code-flow.md#refresh-the-access-token)記錄的相同流獲取新的存取權杖和刷新權杖。  
+您可以使用刷新權杖使用[OAuth 代碼串流文件中](v2-oauth2-auth-code-flow.md#refresh-the-access-token)記錄的相同流獲取新的存取權杖和刷新權杖。

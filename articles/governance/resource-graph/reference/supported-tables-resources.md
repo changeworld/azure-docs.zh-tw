@@ -1,14 +1,14 @@
 ---
 title: 受支援的資源管理員資源類型
 description: 提供 Azure 資源圖和更改歷史記錄支援的資源管理員資源類型的清單。
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.topic: reference
-ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415147"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685470"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 資源圖表和資源類型引用
 
@@ -50,7 +50,11 @@ Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/man
 - 直播/服務
 - 郵件jet.電子郵件/服務
 - 微軟.aad/域服務
+- 微軟.aadiam/私人連結福拉達
 - microsoft.aadiam/tenants
+- 微軟.ai超級計算機/帳戶
+- 微軟.ai超級計算機/帳戶/工作組
+- 微軟.ai超級計算機/帳戶/工作組/工作
 - microsoft.警報管理/操作規則
 - 微軟.警報管理/智慧探測器警報規則
 - 微軟.分析服務/伺服器
@@ -63,6 +67,7 @@ Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/man
 - 微軟.自動化/自動化帳戶/執行簿
 - 微軟.azconfig/配置商店
 - microsoft.azure 活動目錄/b2c 目錄
+- 微軟.azure資料/資料控制器
 - 微軟.azure數據/混合資料管理員
 - 微軟.azure數據/後實例
 - 微軟.azure數據/sqlbigdata集群
@@ -351,6 +356,7 @@ Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/man
 - 微軟.遠端應用程式/集合
 - 微軟.資源圖/查詢
 - microsoft.資源/部署文稿
+- 微軟.資源/範本
 - 微軟.saas/應用程式
 - 微軟.計劃/作業集合
 - 微軟.搜尋/搜尋服務
@@ -405,6 +411,7 @@ Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/man
 - 微軟.視覺工作室/帳戶
 - 微軟.視覺工作室/帳戶/擴展
 - 微軟.視覺工作室/帳戶/專案
+- 微軟.vmware/弧帶
 - 微軟.vmwarecloud簡單/專用雲節點
 - microsoft.vmwarecloud 簡單/專用雲服務
 - 微軟.vmwarecloud簡單/虛擬機器
@@ -454,7 +461,6 @@ Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/man
 
 ## <a name="securityresources"></a>安全資源
 
-- 評估中繼資料
 - 微軟.安全/評估
 - 微軟.安全/評估/子評估
 - 微軟.安全/定價

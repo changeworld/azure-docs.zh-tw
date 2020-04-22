@@ -3,7 +3,7 @@ title: 在 Azure VM 中建立 Oracle 資料庫 | Microsoft Docs
 description: 在您的 Azure 環境中快速啟動並執行 Oracle Database 12c 資料庫。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: mimckitt
+author: BorisB2015
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: mimckitt
-ms.openlocfilehash: 901a6ed9075f7e368c0706ac6ba5fc2900bea9a8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: borisb
+ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262123"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683648"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -33,7 +33,7 @@ ms.locfileid: "81262123"
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下面的範例在*東部*位置創建名為*myResourceGroup*的資源組。
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

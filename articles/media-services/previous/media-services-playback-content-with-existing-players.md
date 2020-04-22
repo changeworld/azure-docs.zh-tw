@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565820"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686915"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用現有播放器來播放您的內容
 Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、HTTP 即時資料流和 MPEG-Dash。 本主題會指引您可用來測試串流的現有播放程式。
@@ -45,10 +45,6 @@ Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、
 * Progressive MP4
 
 ### <a name="flash-player"></a>Flash Player
-
-#### <a name="aes-encrypted-with-token"></a>AES 加密與權杖
-
-[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
 #### <a name="playready-with-token"></a>PlayReady 與權杖
 

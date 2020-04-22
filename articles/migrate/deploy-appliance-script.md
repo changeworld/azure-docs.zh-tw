@@ -3,31 +3,22 @@ title: 使用文稿設定 Azure 移轉裝置
 description: 瞭解如何使用文稿設定 Azure 移轉裝置
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: faed7f96ea8c1850af5523d35f9f891011a48df8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0c4d85909bbfa623b5ad8590e973250474d9d95a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537707"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676305"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用文稿設定裝置
 
-本文介紹如何使用 PowerShell 安裝程式文稿(VMware VM 和超 VM)設定[Azure 移轉裝置](deploy-appliance.md)。 如果要為實體伺服器設定裝置,[請檢視本文](how-to-set-up-appliance-physical.md)。
+請按照本文創建[Azure 遷移設備](deploy-appliance.md),用於 VMware VM 和超 VM 的評估/遷移。 執行文稿以建立設備,並驗證是否可以連接到 Azure。 
 
+您可以使用腳本或使用從 Azure 入口下載的樣本為 VMware 和超 V VM 部署設備。 如果您無法使用下載的範本創建 VM,則使用腳本非常有用。
 
-可以使用以下幾種方法部署裝置:
-
-
-- 使用 VMware VM (OVA) 或超 V VM (VHD) 的範本。
-- 使用腳本。 這是本文中描述的方法。 該文稿提供:
-    - 使用 OVA 範本設定設備,用於 VMware VM 的評估和無代理遷移。
-    - 使用 VHD 範本設置設備,用於評估和遷移超 VM 的替代方法。
-    - 為了評估物理伺服器(或要作為物理伺服器遷移的 VM),腳本是設置設備的唯一方法。
-    - 在 Azure 政府中部署設備的方法。
-
-
-創建設備後,可以驗證是否可以連接到 Azure 遷移。 然後,首次配置設備,並將其註冊到 Azure 遷移專案。
-
+- 要使用範本,請按照[VMware](tutorial-prepare-vmware.md)或[Hyper-V 的](tutorial-prepare-hyper-v.md)教程進行操作。
+- 要為物理伺服器設置設備,只能使用腳本。 請按照[本文進行](how-to-set-up-appliance-physical.md)操作。
+- 要在 Azure 政府雲中設定裝置,請按照[本文操作](deploy-appliance-script-government.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -55,24 +46,15 @@ ms.locfileid: "81537707"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 公共雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-    - 政府雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+3. 驗證生成的哈希值。 對於最新版本:
 
-3. 驗證產生的哈希值:
+    **演算法** | **雜湊值**
+    --- | ---
+    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-    - 對於公共雲(對於最新版本):
 
-        **演算法** | **雜湊值**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-
-    - 對於 Azure 政府(對於最新的裝置版本):
-
-        **演算法** | **雜湊值**
-          --- | ---
-          MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
 
 ### <a name="run-the-script"></a>執行指令碼
 
@@ -92,15 +74,14 @@ ms.locfileid: "81537707"
 2. 使用管理員(提升)許可權在計算機上啟動 PowerShell。
 3. 將 PowerShell 目錄更改為包含從下載的壓縮檔案中提取的內容的資料夾。
 4. 執行文稿**AzureMigrate 安裝程式.ps1,** 如下所示:
-    - 對於公共雲:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
-    - 對於 Azure 政府:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
    
 5. 文稿成功執行後,它會啟動設備 Web 應用程式,以便您可以設置設備。 如果遇到任何問題,請查看 C:_程序數據\微軟 Azure_Logs_AzureMigrateScenarioInstaller_<em>時間戳</em>.log 上的腳本日誌。
 
 ### <a name="verify-access"></a>驗證存取權限
 
-確保設備可以連接到[用於公共](migrate-appliance.md#public-cloud-urls)和 [政府雲]的 Azure URL(遷移設備.md_政府雲 url)。
-
+確保設備可以連接到[公共](migrate-appliance.md#public-cloud-urls)雲的 Azure URL。
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>為 Hyper-V 設定產品
 
@@ -120,24 +101,14 @@ ms.locfileid: "81537707"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 ZIP 檔案的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 公共雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-    - 政府雲的範例使用方式:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - 範例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
-3. 驗證產生的哈希值:
+3. 驗證生成的哈希值。 對於最新版本:
 
-    - 對於公共雲(對於最新版本):
-
-        **演算法** | **雜湊值**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-
-    - 對於 Azure 政府(對於最新的裝置版本):
-
-        **演算法** | **雜湊值**
-          --- | ---
-          MD5 | 717f8b9185f565006b5aff0215ecadac
-          
+    **演算法** | **雜湊值**
+    --- | ---
+    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
 ### <a name="run-the-script"></a>執行指令碼
 
@@ -156,22 +127,17 @@ ms.locfileid: "81537707"
 1. 將壓縮檔案提取到將承載設備的電腦上的資料夾。 確保沒有在現有 Azure 遷移設備上的電腦上運行文稿。
 2. 使用管理員(提升)許可權在計算機上啟動 PowerShell。
 3. 將 PowerShell 目錄更改為包含從下載的壓縮檔案中提取的內容的資料夾。
-4. 執行文稿**AzureMigrate 安裝程式.ps1,** 如下所示:
-    - 對於公共雲:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
-    - 對於 Azure 政府:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ```
+4. 執行文稿**AzureMigrate 安裝程式.ps1,** 如下所示:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
 5. 文稿成功執行後,它會啟動設備 Web 應用程式,以便您可以設置設備。 如果遇到任何問題,請查看 C:_程序數據\微軟 Azure_Logs_AzureMigrateScenarioInstaller_<em>時間戳</em>.log 上的腳本日誌。
 
 ### <a name="verify-access"></a>驗證存取權限
 
-確保設備可以連接到[用於公共](migrate-appliance.md#public-cloud-urls)和 [政府雲]的 Azure URL(遷移設備.md_政府雲 url)。
-
-
+確保設備可以連接到[公共](migrate-appliance.md#public-cloud-urls)雲的 Azure URL。
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關使用範本或實體伺服器設定裝置的更多資訊,請查看以下文章:
+部署設備後,需要首次對其進行配置,並將其註冊到 Azure 遷移專案。
 
 - 為[VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance)設置產品。
 - 為[Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)設置產品。
-- 為[物理伺服器](how-to-set-up-appliance-physical.md)設置設備。

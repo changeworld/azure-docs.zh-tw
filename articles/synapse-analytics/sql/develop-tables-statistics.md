@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 798fec4dacb33a9f16de319062baf12adaffdbd0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428741"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676944"
 ---
 # <a name="statistics-in-synapse-sql"></a>SynapsE SQL 中的統計資訊
 
@@ -163,13 +163,15 @@ WHERE
 此語法會使用所有預設選項。 默認情況下,SQL 池在創建統計資訊時對表的**20% 進行**採樣。
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name]);
 ```
 
 例如：
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1);
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1);
 ```
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>檢查每個資料列以建立單一資料行統計資料
@@ -177,13 +179,17 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 20% 的預設取樣率足以應付大部分的情況。 不過，您可以調整取樣率。 若要取樣整個資料表，請使用此語法：
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name])
+    WITH FULLSCAN;
 ```
 
 例如：
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH FULLSCAN;
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>指定取樣大小以建立單一資料行統計資料
@@ -191,7 +197,9 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 另一個選項是指定樣本大小為百分比:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>只對某些資料列建立單一資料行統計資料
@@ -203,7 +211,9 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 這個範例會建立某個值範圍的統計資料。 您可以輕鬆地定義這些值以符合分割中的值範圍。
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
+CREATE STATISTICS stats_col1
+    ON table1(col1)
+    WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
@@ -214,7 +224,10 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 您也可以將選項結合在一起。 以下範例會使用自訂樣本大小建立篩選的統計資料物件：
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_col1
+    ON table1 (col1)
+    WHERE col1 > '2000101' AND col1 < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 如需完整參考，請參閱 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
@@ -229,7 +242,10 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 在此範例中，長條圖位於 *product\_category*。 跨欄統計資訊根據*\_產品類別*和*產品\_sub_category*計算:
 
 ```sql
-CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_2cols
+    ON table1 (product_category, product_sub_category)
+    WHERE product_category > '2000101' AND product_category < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 由於*產品\_類別*和*\_產品子\_類別*之間存在關聯,因此,如果同時訪問這些列,則多列統計資訊物件可能很有用。
@@ -263,7 +279,7 @@ SQL 池沒有等效於 SQL Server 中sp_create_stats的系統存儲過程。 此
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
-(   @create_type    tinyint -- 1 default 2 Fullscan 3 Sample
+(   @create_type    tinyint -- 1 default, 2 Fullscan, 3 Sample
 ,   @sample_pct     tinyint
 )
 AS
@@ -470,8 +486,8 @@ JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
 JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
                             AND         sc.[object_id]      = co.[object_id]
 JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
-JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
-JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
 WHERE   1=1
 AND     st.[user_created] = 1
 ;
@@ -506,18 +522,20 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 如果您只想要檢視特定部分，請使用 `WITH` 子句並指定您要查看哪些部分：
 
 ```sql
-DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
+DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
+    WITH stat_header, histogram, density_vector
 ```
 
 例如：
 
 ```sql
-DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
+DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
+    WITH histogram, density_vector
 ```
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差異
 
-與 SQL Server 相比,DBCC SHOW_STATISTICS() 在 SQL 池中實現更加嚴格:
+`DBCC SHOW_STATISTICS()`與 SQL Server 相比,在 SQL 池中更嚴格地實現:
 
 - 不支援未記錄的功能。
 - 不能使用Stats_stream。
@@ -602,7 +620,7 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 參數: @stmt [ ] n'statement_text' - 指定一個 Transact-SQL 語句,該語句將返回用於統計的列值。 您可以使用 TABLESAMPLE 指定要使用的資料樣本。 如果未指定 TABLESAMPLE,將使用 FULLSCAN。
 
-```sql
+```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
 ```
 
@@ -744,14 +762,18 @@ SAMPLE 不能和 FULLSCAN 選項一起使用。
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>檢查每個資料列以建立單一資料行統計資料
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>指定取樣大小以建立單一資料行統計資料
 
 ```sql
 -- following sample creates statistics with sampling 20%
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH SAMPLE 5 percent, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH SAMPLE 5 percent, NORECOMPUTE
 ```
 
 ### <a name="examples-update-statistics"></a>範例：更新統計資料
@@ -765,7 +787,9 @@ DROP STATISTICS census_external_table.sState
 並建立統計資訊:
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,20 +1,21 @@
 ---
-title: 支援商業市場 |蔚藍
+title: 支援商業市場 |Azure 應用商店
 description: Azure Marketplace 和 AppSource 的支援資訊和連結
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 3/19/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252229"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681373"
 ---
-# <a name="support-for-the-marketplace"></a>Marketplace 的支援  
+# <a name="support-for-the-marketplace"></a>Marketplace 的支援
+
 以下是 Marketplace 的支援選項清單。  
 
 此外，您可以在 [C + AI 社群論壇的 Marketplace 頻道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)取得許多問題的解答。  
@@ -23,11 +24,11 @@ ms.locfileid: "81252229"
 
 在 Microsoft[市場發布者的支援下](https://aka.ms/marketplacepublishersupport),針對載入和入門問題打開票證。
 
-## <a name="partner-center-or-cloud-partner-portal"></a>合作夥伴中心或雲端合作夥伴門戶  
+## <a name="partner-center"></a>合作夥伴中心   
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://aka.ms/marketplacepublishersupport) \(英文\) 的「建立事件」頁面</li> </ul> | 支援合作夥伴中心或雲合作夥伴門戶。 | 支援全天候提供。 |  
+| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://aka.ms/marketplacepublishersupport) \(英文\) 的「建立事件」頁面</li> </ul> | 支援合作夥伴中心。 | 支援全天候提供。 |  
 
 ## <a name="technical"></a>技術需求  
 
