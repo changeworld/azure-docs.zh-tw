@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 4332755c1ee47cd648f048768307846f02503e20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407048"
+ms.locfileid: "81536075"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
@@ -50,7 +50,7 @@ ms.locfileid: "81407048"
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 > 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
 > 1. 選取 [新增註冊]  。
-> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊。 
+> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊。
 > 1. 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，`Daemon-console`)，然後選取 [註冊]  以建立應用程式。
 > 1. 註冊之後，請選取 [憑證和祕密]  功能表。
 > 1. 在 [用戶端密碼]  底下，選取 [+ 新增用戶端密碼]  。 為其提供名稱，然後選取 [新增]  。 將祕密複製到安全的位置。 程式碼會需要用到它。
@@ -60,7 +60,7 @@ ms.locfileid: "81407048"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下載並設定您的快速入門應用程式
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
 > 若要讓本快速入門中的程式碼範例能夠運作，您需要建立用戶端密碼，並新增 Graph API 的 **User.Read.All** 應用程式權限。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,14 +82,14 @@ ms.locfileid: "81407048"
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-    
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
-> 
+>
 > 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
 > 1. 在 Visual Studio 中開啟解決方案 - **1-Call-MSGraph\daemon-console.sln** (選擇性)。
 > 1. 編輯 **appsettings.json**，並將欄位 `ClientId`、`Tenant` 和 `ClientSecret` 的值取代為下列值：
-> 
+>
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
 >    "ClientId": "Enter_the_Application_Id_Here",
@@ -217,7 +217,7 @@ result = await app.AcquireTokenForClient(scopes)
 
 > |其中：| |
 > |---------|---------|
-> | `scopes` | 包含所要求的範圍。 針對機密用戶端，這應該使用類似 `{Application ID URI}/.default` 的格式，以指出所要求的範圍是 Azure 入口網站中所設定應用程式物件中以靜態方式定義的範圍 (若為 Microsoft Graph，`{Application ID URI}` 會指向 `https://graph.microsoft.com`)。 若為自訂 Web API，`{Application ID URI}` 會定義在 Azure 入口網站「應用程式註冊 (預覽)」中的 [公開 API]  區段底下。 |
+> | `scopes` | 包含所要求的範圍。 針對機密用戶端，這應該使用類似 `{Application ID URI}/.default` 的格式，以指出所要求的範圍是 Azure 入口網站中所設定應用程式物件中以靜態方式定義的範圍 (若為 Microsoft Graph，`{Application ID URI}` 會指向 `https://graph.microsoft.com`)。 若為自訂 Web API，在 Azure 入口網站「應用程式註冊 (預覽)」中的 [公開 API]  區段底下會定義 `{Application ID URI}`。 |
 
 如需詳細資訊，請參閱[下列項目的參考文件：`AcquireTokenForClient`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
 

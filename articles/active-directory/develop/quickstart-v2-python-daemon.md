@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991053"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536041"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
@@ -55,7 +55,7 @@ ms.locfileid: "80991053"
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 > 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
 > 1. 選取 [新增註冊]  。
-> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊。 
+> 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊。
 > 1. 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，`Daemon-console`)，然後選取 [註冊]  以建立應用程式。
 > 1. 註冊之後，請選取 [憑證和祕密]  功能表。
 > 1. 在 [用戶端密碼]  底下，選取 [+ 新增用戶端密碼]  。 為其提供名稱，然後選取 [新增]  。 將祕密複製到安全的位置。 程式碼會需要用到它。
@@ -65,7 +65,7 @@ ms.locfileid: "80991053"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下載並設定您的快速入門應用程式
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
 > 若要讓本快速入門中的程式碼範例能夠運作，您需要建立用戶端密碼，並新增 Graph API 的 **User.Read.All** 應用程式權限。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -89,7 +89,7 @@ ms.locfileid: "80991053"
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-python-project"></a>步驟 3：設定您的 Python 專案
-> 
+>
 > 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
 > 1. 瀏覽至子資料夾 **1-Call-MsGraph-WithSecret"** 。
 > 1. 編輯 **parameters.json**，並將欄位 `authority`、`client_id` 和 `secret` 的值取代為下列程式碼片段：
@@ -106,7 +106,7 @@ ms.locfileid: "80991053"
 >
 > > [!TIP]
 > > 若要尋找 [應用程式 (用戶端) 識別碼]  、[目錄 (租用戶) 識別碼]  的值，請在 Azure 入口網站中移至應用程式的 [概觀]  頁面。 若要產生新的金鑰，請移至 [憑證和祕密]  頁面。
-    
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>步驟 3：系統管理員同意
 
@@ -212,7 +212,7 @@ if not result:
 
 > |其中：| |
 > |---------|---------|
-> | `config["scope"]` | 包含所要求的範圍。 針對機密用戶端，這應該使用類似 `{Application ID URI}/.default` 的格式，以指出所要求的範圍是 Azure 入口網站中所設定應用程式物件中以靜態方式定義的範圍 (若為 Microsoft Graph，`{Application ID URI}` 會指向 `https://graph.microsoft.com`)。 若為自訂 Web API，`{Application ID URI}` 會定義在 Azure 入口網站「應用程式註冊 (預覽)」中的 [公開 API]  區段底下。 |
+> | `config["scope"]` | 包含所要求的範圍。 針對機密用戶端，這應該使用類似 `{Application ID URI}/.default` 的格式，以指出所要求的範圍是 Azure 入口網站中所設定應用程式物件中以靜態方式定義的範圍 (若為 Microsoft Graph，`{Application ID URI}` 會指向 `https://graph.microsoft.com`)。 若為自訂 Web API，在 Azure 入口網站「應用程式註冊 (預覽)」中的 [公開 API]  區段底下會定義 `{Application ID URI}`。 |
 
 如需詳細資訊，請參閱[下列項目的參考文件：`AcquireTokenForClient`](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client)
 

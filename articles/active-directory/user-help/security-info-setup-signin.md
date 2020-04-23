@@ -1,24 +1,24 @@
 ---
-title: 經由登入提示設定安全性資訊 (預覽) - Azure AD
-description: 當您在組織的登入頁面中看見提示時，如何設定公司或學校帳戶的安全性資訊 (預覽)。
+title: 經由登入提示設定安全性資訊 - Azure AD
+description: 當您在組織的登入頁面中看見提示時，如何設定公司或學校帳戶的安全性資訊。
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063980"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454390"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>經由登入提示設定安全性資訊 (預覽)
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>經由登入提示設定安全性資訊
 
 如果您在登入公司或學校帳戶後隨即看見設定安全性資訊的提示，您可以依照下列步驟進行設定。
 
@@ -122,7 +122,7 @@ ms.locfileid: "77063980"
 某些應用程式 (例如 Outlook 2010) 不支援雙步驟驗證。 缺乏支援的意思就是，如果您在組織中使用雙步驟驗證，應用程式會無法運作。 若要解決此問題，您可以建立自動產生的密碼來與每個非瀏覽器應用程式搭配使用，此密碼與您的一般密碼不同。
 
 >[!Note]
->如果您在精靈中看不到此選項，表示您的系統管理員尚未設定此選項。 如果未設定，但您知道您需要使用應用程式密碼，則可以遵循[從安全性資訊設定應用程式密碼 (預覽) 頁面](security-info-app-passwords.md)中的步驟。
+>如果您在精靈中看不到此選項，表示您的系統管理員尚未設定此選項。 如果未設定，但您知道您需要使用應用程式密碼，則可以遵循[從安全性資訊頁面設定應用程式密碼](security-info-app-passwords.md)中的步驟。
 
 使用應用程式密碼時，請務必記住：
 

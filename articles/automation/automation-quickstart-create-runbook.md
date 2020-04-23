@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75421677"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536993"
 ---
 # <a name="create-an-azure-automation-runbook"></a>建立 Azure 自動化 Runbook
 
@@ -21,9 +21,9 @@ ms.locfileid: "75421677"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 https://portal.azure.com 登入 Azure
+在 https://portal.azure.com 登入 Azure。
 
-## <a name="create-runbook"></a>建立 Runbook
+## <a name="create-the-runbook"></a>建立 runbook
 
 首先，建立 Runbook。 依預設，本快速入門中建立的範例 Runbook 會輸出 `Hello World`。
 
@@ -31,17 +31,17 @@ ms.locfileid: "75421677"
 
 1. 按一下 [程序自動化]  下的 [Runbook]  。 隨即顯示 Runbook 的清單。
 
-1. 按一下清單頂端的 [建立 Runbook]  按鈕
+1. 按一下清單頂端的 [建立 Runbook]  。
 
-1. 針對 Runbook [名稱]  輸入 "Hello-World"，然後針對 [Runbook 類型]  選取 [PowerShell]  。 按一下頁面底部的 [新增]  。
+1. 在 [名稱]  欄位中輸入 Runbook 的名稱 `Hello-World`，然後在 [ Runbook 類型]  欄位選取 [PowerShell]  。 
 
    ![在頁面中輸入您自動化 Runbook 的相關資訊](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. 隨即建立 Runbook，並隨即開啟 [編輯 PowerShell Runbook]  頁面。
+1. 按一下頁面底部的 [新增]  。 隨即建立 Runbook，並隨即開啟 [編輯 PowerShell Runbook] 頁面。
 
     ![在 Runbook 編輯器中撰寫 PowerShell 指令碼](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. 輸入或複製以下程式碼並貼到編輯窗格中。 它會建立稱為「名稱」的選擇性輸入參數，並包含預設值 "World"，並輸出使用此輸入值的字串：
+1. 輸入或複製以下程式碼並貼到編輯窗格中。 其會建立稱為 `Name`的選擇性輸入參數，並包含預設值 `World`，並輸出使用此輸入值的字串：
 
    ```powershell-interactive
    param
@@ -59,17 +59,17 @@ ms.locfileid: "75421677"
 
 ## <a name="test-the-runbook"></a>測試 Runbook
 
-一旦建立 Runbook 之後，您要測試 Runbook 來驗證它是否可運作。
+建立 Runbook 之後，您必須測試 Runbook 來驗證其是否可運作。
 
-1. 按一下 [測試窗格]  來開啟 [測試]  頁面。
+1. 按一下 [測試窗格]  來開啟 [測試] 窗格。
 
 1. 輸入一個 [名稱]  的值，然後按一下 [啟動]  。 隨即啟動測試作業，並顯示作業狀態和輸出。
 
     ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. 按一下右上角的 **X**，可關閉 [測試]  頁面。 在隨即出現的快顯視窗中選取 [確定]  。
+1. 按一下右上角的 **X** 可關閉 [測試] 頁面。 在隨即出現的快顯視窗中選取 [確定]  。
 
-1. 在 [編輯 PowerShell Runbook]  頁面上，按一下 [發佈]  ，可在帳戶中發佈 Runbook 作為官方版本的 Runbook。
+1. 在 [編輯 PowerShell Runbook] 頁面上，按一下 [發佈]  ，可在帳戶中發佈 Runbook 作為官方版本的 Runbook。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "75421677"
 
 一旦 Runbook 發佈之後，隨即顯示 [概觀] 頁面。
 
-1. 在 Runbook [概觀] 頁面中，按一下 [啟動]  可開啟這個 Runbook 的 [啟動 Runbook]  設定頁面。
+1. 在 Runbook [概觀] 頁面中，按一下 [啟動]  可開啟這個 Runbook 的 [啟動 Runbook] 設定頁面。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "75421677"
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. 當 [作業狀態]  為 [執行]  或 [已完成]  時，按一下 [輸出]  可開啟 [輸出]  窗格並檢視 Runbook 輸出。
+1. 當作業狀態為 `Running` 或 `Completed` 時，按一下 [輸出]  可開啟 [輸出] 窗格並檢視 Runbook 輸出。
 
    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

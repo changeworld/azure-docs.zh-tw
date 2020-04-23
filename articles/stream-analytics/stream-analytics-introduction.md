@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80235749"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459843"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure 串流分析是什麼？
 
@@ -49,9 +49,9 @@ Azure 串流分析的設計訴求是方便使用、具靈活性、可靠，以�
 
 ## <a name="ease-of-getting-started"></a>輕鬆開始使用
 
-您可以輕鬆地開始使用 Azure 串流分析。 只要按幾下就能連線到多個來源與接收，建立端對端管線。 串流分析可以連線到 [Azure 事件中樞](/azure/event-hubs/)和 [Azure IoT 中樞](/azure/iot-hub/)進行串流資料擷取，以及連線到 [Azure Blob 儲存體](/azure/storage/storage-introduction)以取得歷史資料。 作業輸入也可以包含來自 Azure Blob 儲存體或 [SQL 資料庫](stream-analytics-use-reference-data.md#azure-sql-database)的靜態或變更緩慢的參考資料，您可以將參考資料加入到串流資料，以執行查閱作業。
+您可以輕鬆地開始使用 Azure 串流分析。 只要按幾下就能連線到多個來源與接收，建立端對端管線。 串流分析可以連線到 [Azure 事件中樞](/azure/event-hubs/)和 [Azure IoT 中樞](/azure/iot-hub/)進行串流資料擷取，以及連線到 [Azure Blob 儲存體](/azure/storage/common/storage-introduction)以取得歷史資料。 作業輸入也可以包含來自 Azure Blob 儲存體或 [SQL 資料庫](stream-analytics-use-reference-data.md#azure-sql-database)的靜態或變更緩慢的參考資料，您可以將參考資料加入到串流資料，以執行查閱作業。
 
-串流分析可將作業輸出路由至許多儲存體系統，例如 [Azure Blob 儲存體](/azure/storage/storage-introduction)、[Azure SQL Database](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/) 和 [Azure CosmosDB](/azure/cosmos-db/introduction)。 您可以使用 Azure HDInsight 對儲存的輸出執行批次分析，也可以將輸出傳送至另一個服務 (例如事件中樞) 以供取用，或用於即時呈現視覺效果的 [Power BI](https://docs.microsoft.com/power-bi/)。
+串流分析可將作業輸出路由至許多儲存體系統，例如 [Azure Blob 儲存體](/azure/storage/common/storage-introduction)、[Azure SQL Database](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/) 和 [Azure CosmosDB](/azure/cosmos-db/introduction)。 您可以使用 Azure HDInsight 對儲存的輸出執行批次分析，也可以將輸出傳送至另一個服務 (例如事件中樞) 以供取用，或用於即時呈現視覺效果的 [Power BI](https://docs.microsoft.com/power-bi/)。
 
 如需串流分析輸出的完整清單，請參閱[了解來自 Azure 串流分析的輸出](stream-analytics-define-outputs.md)。
 

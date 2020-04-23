@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 2b30c176cf3c9dd31ae3efa85d308b3f89bd4dbe
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386124"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81734688"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -131,6 +131,8 @@ ms.locfileid: "80386124"
 
 * 如果由於 ExpressRoute 線路連線到虛擬中樞，而擁有 ExpressRoute 閘道，則您需要支付縮放單位的費用。 ER 中的每個縮放單位均為 2 Gbps，每個連線單位的費用與 VPN 連線單位相同。
 
+* 如果您已將 Spoke VNET 連線到中樞，則仍需對 Spoke VNET 的對等互連計費。 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>未列在產品發佈合作夥伴清單中的新合作夥伴要如何上線？
 
 所有虛擬 WAN API 都是開放 API。 您可以查看說明文件以評估技術可行性。 如果有任何問題，請傳送電子郵件至 azurevirtualwan@microsoft.com。 理想的合作夥伴是有裝置可用來佈建 IKEv1 或 IKEv2 IPSec 連線的合作夥伴。
@@ -206,6 +208,13 @@ Azure 虛擬 WAN 中樞最多可同時支援 1,000 個 S2S 連線、10,000 個 P
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>如何在連線 (VPN、ExpressRoute 或虛擬網路) 中啟用預設路由 (0.0.0.0/0)：
 
 如果連線上的旗標為「啟用」，則虛擬中樞可以將學習到的預設路由傳播到虛擬網路/站對站 VPN/ExpressRoute 連線。 當使用者編輯虛擬網路連線、VPN 連線或 ExpressRoute 連線時，此旗標為可見。 根據預設，當網站或 ExpressRoute 線路連線至中樞時，會停用此旗標。 新增虛擬網路連線以將 VNet 連線到虛擬中樞時，依預設會啟用旗標。 預設路由不是源自於虛擬 WAN 中樞；如果虛擬 WAN 中樞由於在中樞內部署防火牆而學習預設路由，或其他連線的網站已啟用強制通道，則會傳播預設路由。
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虛擬 WAN 中的虛擬中樞如何從多個中樞選取路由的最佳路徑
+
+如果虛擬中樞從多個遠端中樞學習相同的路由，其所決定的順序如下所示
+1) 路由來源 a) 網路路由 - 從虛擬中樞閘道所直接學到的 VNET 前置碼 b) 中樞 RouteTable (靜態設定的路由) c) BGP d) InterHub 路由
+2)  路由計量：虛擬 WAN 偏好透過 VPN 的 ExpressRoute。 相較於 VPN 同儕節點，ExpressRoute 同儕節點具有更高的權重
+3)  AS 路徑長度
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虛擬 WAN 類型 (基本和標準) 之間有何差異？
 

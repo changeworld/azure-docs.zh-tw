@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536058"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "77160443"
 
 * [Microsoft 帳戶](https://www.outlook.com)或 [Office 365 開發人員計劃](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>註冊您的應用程式 
+## <a name="register-your-application"></a>註冊您的應用程式
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 如果您的帳戶出現在多個 Azure AD 租用戶中：
     - 從頁面右上角的功能表中選取您的設定檔，然後**切換目錄**。
@@ -78,7 +78,7 @@ ms.locfileid: "77160443"
 
 從專案根目錄中，執行命令：
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>設定應用程式
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: f3ede3ef0557c5ca425901e7404746b4e85aefcb
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991121"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536109"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
@@ -91,9 +91,9 @@ ms.locfileid: "80991121"
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   將產生的金鑰儲存區檔案放在「資源」資料夾中。
@@ -130,9 +130,9 @@ ms.locfileid: "80991121"
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   將產生的金鑰儲存區檔案放在「資源」資料夾中。

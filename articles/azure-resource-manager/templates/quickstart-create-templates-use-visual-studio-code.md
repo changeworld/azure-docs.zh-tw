@@ -1,213 +1,158 @@
 ---
 title: 建立範本 - Visual Studio Code
 description: 利用 Visual Studio Code 和 Azure Resource Manager Tools 擴充功能來使用 Resource Manager 範本。
-author: mumian
-ms.date: 03/04/2019
+author: neilpeterson
+ms.date: 04/17/2020
 ms.topic: quickstart
-ms.author: jgao
-ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.author: nepeters
+ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984447"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686621"
 ---
-# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 建立 ARM 範本
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本
 
-了解如何使用 Visual Studio Code 和 Azure Resource Manager Tools 擴充功能來建立及編輯 Azure Resource Manager (ARM) 範本。 不需使用擴充功能，即可在 Visual Studio Code 中建立 ARM 範本，但擴充功能會提供可簡化範本開發的自動完成選項。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
+適用於 Visual Studio Code 的 Azure Resource Manager 工具可提供語言支援、資原始程式碼段和資源自動完成。 這些工具可協助建立和驗證 Azure Resource Manager 範本。 在本快速入門中，您將使用擴充功能從頭開始建立 Azure Resource Manager 範本。 執行此作業時，您會用到 ARM 範本程式碼片段、驗證、完成和參數檔案支援等擴充功能。
 
-在此快速入門中，您會部署儲存體帳戶：
-
-![Resource Manager 範本快速入門的 Visual Studio 程式碼圖表](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+若要完成本快速入門，您需要已安裝 [Azure Resource Manager 工具擴充功能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)的 [Visual Studio Code](https://code.visualstudio.com/)。 您也需要安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 或 [Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0)，並且通過驗證。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="create-an-arm-template"></a>建立 ARM 範本
 
-若要完成本文，您需要：
+使用 Visual Studio Code 建立並開啟名為 azuredeploy.json  的新檔案。 在程式碼編輯器中輸入 `arm`，以起始用於建立 ARM 範本 Scaffolding 的 Azure Resource Manager 程式碼片段。
 
-- [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
-- Resource Manager Tools 擴充功能。 若要安裝，請使用下列步驟：
+選取 `arm!` 以建立 Azure 資源群組部署範圍內的範本。
 
-    1. 開啟 Visual Studio Code。
-    2. 按 **CTRL+SHIFT+X** 以開啟 [擴充功能] 窗格
-    3. 搜尋 [Azure Resource Manager Tools]  ，然後選取 [安裝]  。
-    4. 選取 [重新載入]  以完成擴充功能安裝。
+![顯示 Azure Resource Manager Scaffolding 的影像](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-## <a name="open-a-quickstart-template"></a>開啟快速入門範本
+此程式碼片段會建立 ARM 範本的基本構成要素。
 
-您可以從 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)開啟範本，而無須從頭建立範本。 Azure 快速入門範本是 ARM 範本的存放庫。
+![顯示完整 ARM 範本 Scaffolding 的影像](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-本快速入門中使用的範本名為[建立標準儲存體帳戶](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 此範本會定義 Azure 儲存體帳戶資源。
+請注意，Visual Studio Code 語言模式已從 JSON  變更為 Azure Resource Manager 範本  。 擴充功能包含 ARM 範本特有的語言伺服器，可提供專屬於 ARM 範本的驗證、完成和其他語言服務。
 
-1. 在 Visual Studio Code 中，選取 [檔案]  >[開啟檔案]  。
-2. 在 [檔案名稱]  中，貼上下列 URL：
+![以 Visual Studio Code 語言模式顯示 Azure Resource Manager 的影像](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-    ```
+## <a name="add-an-azure-resource"></a>新增 Azure 資源
 
-3. 選取 [開啟]  以開啟檔案。
-4. 選取 [檔案]  >[另存新檔]  ，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
+擴充功能包含許多適用於 Azure 資源的程式碼片段。 這些程式碼片段可讓您輕鬆地將資源新增至範本部署。
 
-## <a name="edit-the-template"></a>編輯範本
+將游標放在範本的 **resources** 區塊中，輸入 `storage`，然後選取 [arm-storage]  程式碼片段。
 
-若要體驗如何使用 Visual Studio Code 編輯範本，您可以在 `outputs` 區段中再新增一個元素，以顯示儲存體 URI。
+![顯示將資源新增至 ARM 範本的影像](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-1. 將多一個輸出新增至已匯出的範本：
+此動作會將儲存體資源新增至範本。
 
-    ```json
-    "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-    }
-    ```
+![顯示 ARM 範本中有 Azure 儲存體資源的影像](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-    完成作業時，[輸出] 區段會顯示如下：
+您可以使用 **tab** 鍵來瀏覽儲存體帳戶上可設定的屬性。
 
-    ```json
-    "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[variables('storageAccountName')]"
-      },
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-      }
-    }
-    ```
+![顯示如何使用 tab 鍵來瀏覽資源設定的影像](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
-    如果您複製並貼上 Visual Studio Code 中的程式碼，請嘗試重新輸入**值**元素，以體驗 Resource Manager Tools 擴充功能的 IntelliSense 功能。
+## <a name="completion-and-validation"></a>完成和驗證
 
-    ![Resource Manager 範本的 Visual Studio 程式碼 IntelliSense](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+擴充功能最強大的功能之一，就是與 Azure 結構描述整合。 Azure 結構描述提供具有驗證和資源感知完成功能的擴充功能。 讓我們修改儲存體帳戶，以查看驗證和完成如何進行。 
 
-2. 選取 [檔案]  >[儲存]  ，以儲存檔案。
+首先，將儲存體帳戶種類更新為不正確的值，例如 `megaStorage`。 請注意，此動作會產生一則警告，指出 `megaStorage` 不是有效的值。
+
+![顯示無效儲存體設定的影像](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+
+若要使用完成功能，請移除 `megaStorage`，將游標放在雙引號內，然後按 `ctrl` + `space`。 此動作會顯示有效值的自動完成清單。
+
+![顯示擴充功能自動完成的影像](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+
+## <a name="add-template-parameters"></a>新增範本參數
+
+現在，請建立並使用參數來指定儲存體帳戶名稱。
+
+將游標放在參數區塊中，新增一個歸位字元，輸入 `par`，然後選取 `arm-param-value` 程式碼片段。 此動作會將泛型參數新增至範本。
+
+![顯示參數新增至 ARM 範本的影像](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+
+將參數的名稱更新為 `storageAccountName`，並將描述更新為 `Storage Account Name`。
+
+![顯示 ARM 範本中已完成參數的影像](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+
+Azure 儲存體帳戶名稱最少為 3 個字元長，最多為 24 個字元長。 將 `minLength` 和 `maxLength` 新增至參數，並提供適當的值。
+
+![顯示 minLength 和 maxLength 新增至 ARM 範本參數的影像](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+
+現在，在儲存體資源上，將 name 屬性更新為使用該參數。 若要這麼做，請移除目前的名稱。 輸入雙引號和左方括弧 `[`，這會產生 ARM 範本函式的清單。 從清單中選取 parameters  。 
+
+![在 ARM 範本資源中使用參數時顯示自動完成的影像](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+
+在括弧內輸入單引號 `'` 會產生範本中定義的所有參數清單，在此案例中為 storageAccountName  。 選取參數。
+
+![在 ARM 範本資源中顯示已完成參數的影像](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+
+## <a name="create-a-parameter-file"></a>建立參數檔案
+
+ARM 範本參數檔案可讓您儲存環境特有的參數值，並在部署階段以群組的形式傳遞這些值。 例如，您可能有一個包含測試環境特有值的參數檔案，以及另一個用於生產環境的參數檔案。
+
+擴充功能可讓您輕鬆地從現有範本建立參數檔案。 若要這麼做，請在程式碼編輯器中的範本上按一下滑鼠右鍵，然後選取 [`Select/Create Parameter File`]。
+
+![顯示透過滑鼠右鍵從 ARM 範本建立參數檔案的影像](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+
+選取 [`New`]  >  [`All Parameters`] > 選取參數檔案的名稱和位置。
+
+![顯示從 ARM 範本建立參數檔案時，[名稱] 和 [儲存檔案] 對話方塊的影像](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+
+此動作會建立新的參數檔案，並將其與建立該檔案的範本對應。 選取範本時，您可以在 Visual Studio Code 狀態列中查看和修改目前的範本/參數檔案對應。
+
+![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+
+現在，參數檔案已對應至範本，接著擴充功能會同時驗證範本和參數檔案。 若要查看此驗證實務，請將兩個字元的值新增至參數檔案中的 `storageAccountName` 參數，並儲存檔案。
+
+![因參數檔案問題而顯示無效範本的影像](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+
+瀏覽回 ARM 範本，您會看到指出值不符合參數準則的錯誤。
+
+![顯示有效 ARM 範本的影像](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+
+將值更新為適當的內容，儲存檔案，然後瀏覽回範本。 您會發現參數上的錯誤已解決。
 
 ## <a name="deploy-the-template"></a>部署範本
 
-有許多方法可用來部署範本。 本快速入門會使用 Azure Cloud Shell。 Cloud Shell 支援 Azure CLI 和 Azure PowerShell。 使用索引標籤選取器來選擇 CLI 或 PowerShell。
+使用 `ctrl` + ```` ` ```` 按鍵組合開啟整合式 Visual Studio Code 終端，並使用 Azure CLI 或 Azure PowerShell 模組來部署範本。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+# <a name="cli"></a>[CLI](#tab/CLI)
 
-1. 登入 [Azure Cloud Shell](https://shell.azure.com)
+```azurecli
+az group create --name arm-vscode --location eastus
 
-2. 藉由選取左上角的 **PowerShell** 或 **Bash** (CLI) 來選擇您慣用的環境。  切換時必須重新啟動殼層。
+az deployment group create --resource-group arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure 入口網站的 Cloud Shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+```azurepowershell
+New-AzResourceGroup -Name arm-vscode -Location eastus
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure 入口網站的 Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
-
-    ---
-
-3. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-
-    ---
-
-    選取您在前一節中儲存的檔案。 預設名稱為 **azuredeploy.json**。 範本檔案必須能夠從殼層中存取。
-
-    您可以選擇性地使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure 入口網站的 Cloud Shell 列出檔案](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure 入口網站的 Cloud Shell 列出檔案](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-
-    ---
-4. 從 Cloud Shell 執行下列命令。 選取要顯示 PowerShell 程式碼或 CLI 程式碼的索引標籤。
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter a project name that is used to generate resource group name:" &&
-    read projectName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    resourceGroupName="${projectName}rg" &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    ```
-
-    ---
-
-    如果您將檔案儲存為 **azuredeploy.json** 以外的名稱，請更新範本檔名。
-
-    下列螢幕擷取畫面顯示範例部署：
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure 入口網站的 Cloud Shell 部署範本](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure 入口網站的 Cloud Shell 部署範本](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-
-    ---
-
-    outputs 區段中的儲存體帳戶名稱和儲存體 URL 會在螢幕擷取畫面上醒目提示。 您在下一個步驟中需要此儲存體帳戶名稱。
-
-5. 執行下列 CLI 或 PowerShell 命令，以列出新建立的儲存體帳戶：
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the Storage Account name:" &&
-    read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
-    Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    ```
-
-    ---
-
-若要深入了解使用 Azure 儲存體帳戶的相關資訊，請參閱[快速入門：使用 Azure 入口網站上傳、下載及列出 Blob](../../storage/blobs/storage-quickstart-blobs-portal.md)。
+New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azuredeploy.json -TemplateParameterFile ./azuredeploy.parameters.json
+```
+---
 
 ## <a name="clean-up-resources"></a>清除資源
 
-不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
+如果不再需要 Azure 資源，請使用 Azure CLI 或 Azure PowerShell 模組來刪除快速入門資源群組。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
-3. 選取資源群組名稱。  您在資源群組中應該會看到共計六個資源。
-4. 從頂端功能表中選取 [刪除資源群組]  。
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name arm-vscode
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name arm-vscode
+```
+---
 
 ## <a name="next-steps"></a>後續步驟
-
-此快速入門的重點，是說明如何使用 Visual Studio Code 編輯來自 Azure 快速入門範本的現有範本。 您也已了解如何從 Azure Cloud Shell 使用 CLI 或 PowerShell 來部署範本。 Azure 快速入門範本中的範本可能無法提供您所需的一切。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 
 > [!div class="nextstepaction"]
 > [初學者教學課程](./template-tutorial-create-first-template.md)

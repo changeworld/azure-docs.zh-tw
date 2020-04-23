@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061384"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535159"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站上傳、下載及列出 Blob
 
@@ -39,27 +39,25 @@ ms.locfileid: "80061384"
 
 ## <a name="upload-a-block-blob"></a>上傳區塊 Blob
 
-區塊 Blob 是由組合以成為 Blob 的資料區塊所組成。 使用 Blob 儲存體的大部分案例會採用區塊 Blob。 區塊 Blob 十分適用於在雲端中儲存文字和二進位資料，例如檔案、映像和影片。 本快速入門示範如何使用區塊 Blob。 
+區塊 Blob 是由組合以成為 Blob 的資料區塊所組成。 使用 Blob 儲存體的大部分案例會採用區塊 Blob。 區塊 Blob 十分適用於在雲端中儲存文字和二進位資料，例如檔案、映像和影片。 本快速入門示範如何使用區塊 Blob。
 
 若要將區塊 Blob 上傳到 Azure 入口網站中的新容器，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至您在上一節中建立的容器。
-2. 選取容器以顯示它所包含的 Blob 清單。 此容器是新的，因此尚未包含任何 Blob。
-3. 選取 [上傳]  按鈕以開啟 [上傳] 刀鋒視窗
-4. 瀏覽您本機檔案系統，以找出要上傳為區塊 Blob 的檔案
-     
+1. 選取容器以顯示它所包含的 Blob 清單。 此容器是新的，因此尚未包含任何 Blob。
+1. 選取 [上傳]  按鈕以開啟 [上傳] 刀鋒視窗，然後瀏覽您的本機檔案系統，尋找要上傳做為區塊 blob 的檔案。 您可以選擇性地展開進階區段，進行上傳作業的其他設定。
+
     ![顯示如何從本機磁碟機上傳 Blob 的螢幕擷取畫面](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. (選擇性) 展開 [進階] 區段以定義其他設定，例如驗證類型、存取層或虛擬資料夾路徑。
-6. 選取 [上傳]  按鈕以認可上傳
-7. 用這種方式上傳任意數量的 Blob。 您會看到新的 Blob 現在列在容器內。
+1. 選取 [上傳]  按鈕上傳 Blob。
+1. 用這種方式上傳任意數量的 Blob。 您會看到新的 Blob 現在列在容器內。
 
 ## <a name="download-a-block-blob"></a>下載區塊 Blob
 
 您可以下載區塊 Blob，以在瀏覽器中顯示或儲存到本機檔案系統。 若要下載區塊 Blob，請遵循下列步驟：
 
-1. 瀏覽至您在上一節中上傳的 Blob 清單。 
-2. 以滑鼠右鍵按一下您要下載的 Blob，然後選取 [下載]  。 
+1. 瀏覽至您在上一節中上傳的 Blob 清單。
+1. 以滑鼠右鍵按一下您要下載的 Blob，然後選取 [下載]  。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -68,9 +66,9 @@ ms.locfileid: "80061384"
 若要刪除容器：
 
 1. 在 Azure 入口網站中，瀏覽至儲存體帳戶中的容器清單。
-2. 選取要刪除的容器。
-3. 選取 [更多]  按鈕 ( **...** )，然後選取 [刪除]  。
-4. 確認您要刪除容器。
+1. 選取要刪除的容器。
+1. 選取 [更多]  按鈕 ( **...** )，然後選取 [刪除]  。
+1. 確認您要刪除容器。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -78,4 +76,3 @@ ms.locfileid: "80061384"
 
 > [!div class="nextstepaction"]
 > [Blob 儲存體作業操作說明](storage-dotnet-how-to-use-blobs.md)
-

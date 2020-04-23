@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6a127510b454244b32ad481cdb32c5d2e8faf9a0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991172"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536126"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "80991172"
 > [!NOTE]
 > **先決條件**
 > * XCode 10+
-> * iOS 10+ 
+> * iOS 10+
 > * macOS 10.12+
 
 > [!div renderon="docs"]
@@ -83,7 +83,7 @@ ms.locfileid: "80991172"
 #### <a name="step-4-configure-your-project"></a>步驟 4：設定您的專案
 
 > [!div renderon="docs"]
-> 如果您已選取上面的選項 1，則可以略過這些步驟。 
+> 如果您已選取上面的選項 1，則可以略過這些步驟。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. 將 ZIP 檔案解壓縮並在 XCode 中開啟專案。
@@ -149,9 +149,9 @@ ms.locfileid: "80991172"
 >          </array>
 >       </dict>
 >    </array>
-> 
+>
 >    ```
-> 1. 建置並執行應用程式！ 
+> 1. 建置並執行應用程式！
 
 ## <a name="more-information"></a>相關資訊
 
@@ -192,7 +192,7 @@ import MSAL
 
 ```swift
 let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
-            
+
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
@@ -209,7 +209,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+
         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
     }
 
@@ -221,21 +221,21 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
  ```swift
  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
+
         guard let urlContext = URLContexts.first else {
             return
         }
-        
+
         let url = urlContext.url
         let sourceApp = urlContext.options.sourceApplication
-        
+
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
  ```
 
-最後，您的應用程式在 ***Info.plist*** 中的 `CFBundleURLTypes` 旁邊必須有 `LSApplicationQueriesSchemes` 項目。 此範例會包含此項目。 
+最後，您的應用程式在 ***Info.plist*** 中的 `CFBundleURLTypes` 旁邊必須有 `LSApplicationQueriesSchemes` 項目。 此範例會包含此項目。
 
-   ```xml 
+   ```xml
    <key>LSApplicationQueriesSchemes</key>
    <array>
       <string>msauthv2</string>
@@ -249,10 +249,10 @@ MSAL 有兩種取得權杖的方法：`acquireToken` 與 `acquireTokenSilent`。
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken：以互動方式取得權杖
 
-某些情況需要使用者與 Microsoft 身分識別平台互動。 在這些情況下，終端使用者可能需要選取自己的帳戶、輸入認證，或同意您應用程式的權限。 例如， 
+某些情況需要使用者與 Microsoft 身分識別平台互動。 在這些情況下，終端使用者可能需要選取自己的帳戶、輸入認證，或同意您應用程式的權限。 例如，
 
 * 使用者首次登入應用程式
-* 如果使用者重設自己的密碼，就必須輸入自己的認證 
+* 如果使用者重設自己的密碼，就必須輸入自己的認證
 * 您的應用程式第一次要求存取資源時
 * 需要 MFA 或其他條件式存取原則時
 
@@ -263,19 +263,19 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |其中：||
 > |---------|---------|
-> | `scopes` | 包含所要求的範圍 (即適用於 Microsoft Graph 的 `[ "user.read" ]` 或適用於自訂 Web API 的 `[ "<Application ID URL>/scope" ]` (`api://<Application ID>/access_as_user`) |
+> | `scopes` | 包含所要求的範圍，即適用於 Microsoft Graph 的 `[ "user.read" ]` 或適用於自訂 Web API 的 `[ "<Application ID URL>/scope" ]` (`api://<Application ID>/access_as_user`) |
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent：以無訊息方式取得存取權杖
 
-應用程式應該不需要使用者在每次要求權杖時都必須登入。 如果使用者已經登入，這個方法可允許應用程式以無訊息方式要求權杖。 
+應用程式應該不需要使用者在每次要求權杖時都必須登入。 如果使用者已經登入，這個方法可允許應用程式以無訊息方式要求權杖。
 
 ```swift
 self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previousAccount, error) in
-            
+
    guard let account = currentAccount else {
       return
    }
-            
+
    let silentParams = MSALSilentTokenParameters(scopes: self.kScopes, account: account)
    self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 }

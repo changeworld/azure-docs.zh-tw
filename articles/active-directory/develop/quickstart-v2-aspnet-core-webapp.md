@@ -1,6 +1,6 @@
 ---
 title: 將使用 Microsoft 的登入新增至 ASP.NET Core Web 應用程式 - Microsoft 身分識別平台 | Azure
-description: 深入了解如何使用 OpenID Connect，在 ASP.NET Core Web 應用程式上實作 Microsoft 登入
+description: 深入了解如何使用 OpenID Connect 在 ASP.NET Core Web 應用程式上實作 Microsoft 登入
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407144"
+ms.locfileid: "81536160"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 在本快速入門中，您將利用程式碼範例了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
@@ -71,15 +71,15 @@ ms.locfileid: "81407144"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
-> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。 
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>步驟 3：執行 Visual Studio 專案
 > 1. 將 ZIP 檔案解壓縮至根資料夾內的本機資料夾 - 例如 **C:\Azure-Samples**
-> 1. 在 Visual Studio 中開啟解決方案 
-> 1. 編輯 **appsettings.json** 檔案。 找出 `ClientId`，並將 `ClientId` 的值更新為已註冊應用程式的 [應用程式 (用戶端) 識別碼]  值。 
+> 1. 在 Visual Studio 中開啟解決方案
+> 1. 編輯 **appsettings.json** 檔案。 找出 `ClientId`，並將 `ClientId` 的值更新為已註冊應用程式的 [應用程式 (用戶端) 識別碼]  值。
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`AddAuthentication` 方法會將服務設定為可新增 Cookie 型驗證 (用於瀏覽器案例)，以及可對 OpenID Connect 設定挑戰。 
+`AddAuthentication` 方法會將服務設定為可新增 Cookie 型驗證 (用於瀏覽器案例)，以及可對 OpenID Connect 設定挑戰。
 
 包含 `.AddAzureAd` 的程式碼行會將 Microsoft 身分識別驗證新增至您的應用程式。 然後設定為使用 Microsoft 身分識別平台端點登入。
 

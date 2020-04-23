@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768520"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456986"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>快速入門：使用 R 搭配機器學習服務來查詢 Azure SQL 資料庫 (預覽)
 
@@ -30,14 +31,11 @@ ms.locfileid: "76768520"
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Azure SQL 資料庫](sql-database-single-database-get-started.md)
-- 已啟用 R 的[機器學習服務](sql-database-machine-learning-services-overview.md)。 [註冊預覽版](sql-database-machine-learning-services-overview.md#signup)。
+- 已啟用 R 的[機器學習服務](sql-database-machine-learning-services-overview.md)。
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > 本文中已撰寫的指令碼會使用 **Adventure Works** 資料庫。
-
-> [!NOTE]
-> 在公開預覽期間，Microsoft 會將您加入並為您現有或新的資料庫啟用機器學習，不過目前不支援受控執行個體部署選項。
 
 搭配 R 的機器學習服務是 Azure SQL 資料庫的功能，用來執行資料庫內 R 指令碼。 如需詳細資訊，請參閱 [R 專案](https://www.r-project.org/)。
 

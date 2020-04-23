@@ -5,18 +5,18 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045176"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535633"
 ---
 # <a name="app-service-overview"></a>App Service 概觀
 
 *Azure App Service* 是 HTTP 型服務，用來裝載 Web 應用程式、REST API 和行動後端。 您可以使用您慣用的語言進行開發，不管是 .NET、.NET Core、Java、Ruby、Node.js、PHP 還是 Python 都可以。 應用程式在 Windows 和 Linux 環境中都可輕易執行及調整。 若是 Linux 環境，請參閱 [Linux 上的 App Service](containers/app-service-linux-intro.md)。 
 
-App Service 不只能將 Microsoft Azure 的功能新增到您的應用程式，例如安全性、負載平衡、自動調整和自動化管理。 您也可以利用它的 DevOps 功能，例如從 Azure DevOps、GitHub、Docker Hub 和其他來源進行持續部署、套件管理、預備環境、自訂網域和 SSL 憑證。 
+App Service 不只能將 Microsoft Azure 的功能新增到您的應用程式，例如安全性、負載平衡、自動調整和自動化管理。 您也可以利用其 DevOps 功能，例如從 Azure DevOps、GitHub、Docker Hub 和其他來源進行持續部署、套件管理、預備環境、自訂網域和 TLS/SSL 憑證。 
 
 在使用 App Service 時，您只需就您所使用的 Azure 計算資源支付費用。 您所使用的計算資源取決於您用來執行應用程式的 _App Service 方案_。 如需詳細資訊，請參閱 [Azure App Service 方案概觀](overview-hosting-plans.md)。
 
