@@ -1,26 +1,26 @@
 ---
-title: 處理暫態連線錯誤 - Azure 資料庫,用於 PostgreSQL - 單一伺服器
-description: 瞭解如何處理 PostgreSQL - 單伺服器 Azure 資料庫的瞬態連接錯誤。
+title: 處理暫時性連接錯誤-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 瞭解如何處理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的暫時性連線錯誤。
 keywords: postgresql 連線, 連接字串, 連線問題, 暫時性錯誤, 連線錯誤
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 8138512dfc893f3523c5ad78a93aef1bcdedfe70
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 026a0edf24d349c4b445d6229d3b1ad73decf87d
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768031"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097824"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>處理適用於 PostgreSQL 的 Azure 資料庫的暫時性連線錯誤 - 單一伺服器
 
-本文介紹如何處理連接到 Azure 資料庫的 PostgreSQL 瞬態錯誤。
+本文說明如何處理連接到適用於 PostgreSQL 的 Azure 資料庫的暫時性錯誤。
 
 ## <a name="transient-errors"></a>暫時性錯誤
 
-暫時性錯誤 (也稱為暫時性故障) 係指會自行解決的錯誤。 這些錯誤最常顯現在與正在卸除之資料庫伺服器的連線。 此外，與伺服器的新連線也無法開啟。 舉例來說，當發生硬體或網路故障時，就可能發生暫時性錯誤。 另一個原因可能是正在推出的 PaaS 服務的新版本。系統可在 60 秒內自動緩解大多數這些事件。 設計及開發雲端應用程式時，最佳做法是將暫時性錯誤納入考量。 假設這些錯誤可能隨時在任何元件發生，並備妥適當的邏輯來處理這些情況。
+暫時性錯誤 (也稱為暫時性故障) 係指會自行解決的錯誤。 這些錯誤最常顯現在與正在卸除之資料庫伺服器的連線。 此外，與伺服器的新連線也無法開啟。 舉例來說，當發生硬體或網路故障時，就可能發生暫時性錯誤。 另一個原因可能是即將推出的新版本 PaaS 服務。系統會在不到60秒的時間內自動減輕這些事件。 設計及開發雲端應用程式時，最佳做法是將暫時性錯誤納入考量。 假設這些錯誤可能隨時在任何元件發生，並備妥適當的邏輯來處理這些情況。
 
 ## <a name="handling-transient-errors"></a>處理暫時性錯誤
 
@@ -36,7 +36,7 @@ ms.locfileid: "81768031"
 * 針對接下來的每次重試，依指數遞增等候時間，最多可達 60 秒。
 * 設定應用程式將作業視為失敗的重試次數上限。
 
-當具有作用中交易的連線失敗時，比較難正確地處理復原。 有兩種情況：如果交易本質上是唯讀的，您可以放心地重新開啟連線並重試交易。 不過，如果交易也對資料庫進行寫入，則必須判斷該交易是已被復原，還是在發生暫時性錯誤之前即已成功。 在該情況下，您可能只是尚未收到來自資料庫伺服器的認可收條。
+當具有作用中交易的連線失敗時，比較難正確地處理復原。 有兩種情況：如果交易本質上是唯讀的，您可以放心地重新開啟連線並重試交易。 不過，如果交易也對資料庫進行寫入，則必須判斷該交易是已被復原，還是在發生暫時性錯誤之前即已成功。 在此情況下，您可能只會收到來自資料庫伺服器的認可通知。
 
 其中一種做法是，在用戶端上產生一個用於所有重試的唯一識別碼。 您需將這個唯一識別碼隨著交易一起傳遞給伺服器，並將它與一個唯一條件約束一起儲存在資料行中。 如此一來，您便可以放心地重試交易。 如果先前的交易已復原，且用戶端產生的唯一識別碼尚未存在於系統中，交易便會成功。 如果因先前的交易已順利完成而使得先前已儲存唯一識別碼，交易便會因發生重複索引鍵違規而失敗。
 

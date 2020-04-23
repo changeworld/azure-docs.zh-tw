@@ -1,24 +1,18 @@
 ---
-title: 使用 Python 在 Azure 建立與管理 Windows VM
+title: 使用 Python 在 Azure 中建立和管理 Windows VM
 description: 了解如何在 Azure 中使用 Python 建立並管理 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 670c369e25639c859f6a8d8b3c65e329b5cf7f04
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458176"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098063"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 建立並管理 Windows VM
 
@@ -38,8 +32,8 @@ ms.locfileid: "81458176"
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
 1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]****，然後按一下 [安裝]****。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)**。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
-2. 安裝並啟動視覺化工作室後,按一下 **「檔** > **新專案** > **」。**
-3. 按下**樣本** > **Python Python** > **應用程式**,輸入*myPythonProject*以取得專案名稱,選擇專案的位置,然後按下「**確定**」。
+2. 安裝和啟動 Visual Studio 之後，請**按一下** > [檔案] [**新增** > ] [**專案**]。
+3. 按一下 [**範本** > ] [**python** > **python 應用程式**]，輸入*myPythonProject*做為專案的名稱，選取專案的位置，然後按一下 **[確定]**。
 
 ## <a name="install-packages"></a>安裝套件
 
@@ -124,7 +118,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>建立 VM 和支援的資源
 
-所有資源都必須包含在[資源群組中](../../azure-resource-manager/management/overview.md)。
+所有資源都必須包含在[資源群組](../../azure-resource-manager/management/overview.md)中。
 
 1. 若要建立資源群組，請在 .py 檔案的變數之後新增此函式：
 
@@ -170,7 +164,7 @@ compute_client = ComputeManagementClient(
     input('Availability set created. Press enter to continue...')
     ```
 
-需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通訊。
+需要[公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通訊。
 
 1. 若要建立虛擬機器的公用 IP 位址，請在 .py 檔案的變數之後新增此函式：
 
@@ -571,6 +565,6 @@ compute_client = ComputeManagementClient(
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果部署出現問題,下一步是[使用 Azure 門戶查看故障排除資源組部署](../../resource-manager-troubleshoot-deployments-portal.md)
+- 如果部署有問題，下一個步驟就是查看[使用 Azure 入口網站疑難排解資源群組部署](../../resource-manager-troubleshoot-deployments-portal.md)
 - 深入了解 [Azure Python 程式庫](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
 

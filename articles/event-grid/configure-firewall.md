@@ -1,101 +1,180 @@
 ---
-title: 為 Azure 事件網格主題或域配置 IP 防火牆（預覽）
-description: 本文介紹如何為事件網格主題或域配置防火牆設置。
+title: 為 Azure 事件方格主題或網域設定 IP 防火牆（預覽）
+description: 本文說明如何設定事件方格主題或網域的防火牆設定。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299864"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100986"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>為 Azure 事件網格主題或域配置 IP 防火牆（預覽）
-預設情況下，只要請求附帶有效的身份驗證和授權，主題和域都可以從 Internet 訪問。 使用 IP 防火牆，您可以進一步將其限制為[CIDR（無類域間路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)標記法中的一組 IPv4 位址或 IPv4 位址範圍。 來自任何其他 IP 位址的發行者將被拒絕，並將收到 403（禁止）回應。 有關事件網格支援的網路安全功能的詳細資訊，請參閱[事件網格的網路安全](network-security.md)。
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>為 Azure 事件方格主題或網域設定 IP 防火牆（預覽）
+根據預設，只要要求隨附有效的驗證和授權，就可以從網際網路存取主題和網域。 使用 IP 防火牆，您可以將它進一步限制為[CIDR （無類別網域間路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)標記法中的一組 ipv4 位址或 ipv4 位址範圍。 源自任何其他 IP 位址的發行者將會遭到拒絕，並會收到403（禁止）回應。 如需事件方格所支援之網路安全性功能的詳細資訊，請參閱[事件方格的網路安全性](network-security.md)。
 
-本文介紹如何為 Azure 事件網格主題或域配置 IP 防火牆設置。
+本文說明如何設定 Azure 事件方格主題或網域的 IP 防火牆設定。
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
-本節介紹如何使用 Azure 門戶創建入站 IP 防火牆規則。 本節中顯示的步驟適用于主題。 您可以使用類似的步驟為**域**創建入站 IP 規則。 
+本節說明如何使用 Azure 入口網站來建立輸入 IP 防火牆規則。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立**網域**的輸入 IP 規則。 
 
-1. 在[Azure 門戶](https://portal.azure.com)中，導航到事件網格主題或域，然後切換到 **"網路**"選項卡。
-2. 選擇**公共網路**以允許所有網路（包括互聯網）訪問資源。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的事件方格主題或網域，並切換至 [**網路**功能] 索引標籤。
+2. 選取 [**公用網路**] 以允許所有網路（包括網際網路）存取資源。 
 
-    您可以使用基於 IP 的防火牆規則限制流量。 在無類域間路由 （CIDR） 標記法中指定單個 IPv4 位址或一系列 IP 位址。 
+    您可以使用以 IP 為基礎的防火牆規則來限制流量。 以無類別網域間路由（CIDR）標記法指定單一 IPv4 位址或 IP 位址範圍。 
 
-    ![公共網路頁面](./media/configure-firewall/public-networks-page.png)
-3. 僅選擇**專用終結點**，以便僅允許專用終結點連接訪問此資源。 使用此頁上的 **"專用終結點連接**"選項卡來管理連接。 
+    ![[公用網路] 頁面](./media/configure-firewall/public-networks-page.png)
+3. 選取 [**僅限私人端點**] 僅允許私人端點連線存取此資源。 使用此頁面上的 [**私人端點連接**] 索引標籤來管理連接。 
 
-    ![公共網路頁面](./media/configure-firewall/private-endpoints-page.png)
-4. 在工具列上選取 [儲存]****。 
+    ![[公用網路] 頁面](./media/configure-firewall/private-endpoints-page.png)
+4. 在工具列上選取 [儲存]  。 
 
 
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-本節介紹如何使用 Azure CLI 命令使用入站 IP 規則創建主題。 本節中顯示的步驟適用于主題。 您可以使用類似的步驟為**域**創建入站 IP 規則。 
+本節說明如何使用 Azure CLI 命令來建立具有輸入 IP 規則的主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立**網域**的輸入 IP 規則。 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>為現有主題啟用公共網路訪問
-預設情況下，為主題和域啟用公共網路訪問。 您可以通過配置入站 IP 防火牆規則來限制流量。 
-
-```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
-```
-
-### <a name="disable-public-network-access-for-an-existing-topic"></a>禁用現有主題的公共網路訪問
-當禁用主題或域的公共網路訪問時，不允許通過公共 Internet 進行流量訪問。 只允許專用終結點連接訪問這些資源。 
+### <a name="prerequisites"></a>Prerequisites
+執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>使用入站 IP 規則創建主題
-以下示例 CLI 命令在一個步驟中創建具有入站 IP 規則的事件網格主題。 
+如果未安裝延伸模組，請執行下列命令來安裝它： 
 
 ```azurecli-interactive
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+az extension add -n eventgrid
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>先創建主題，然後添加入站 IP 規則
-本示例首先創建事件網格主題，然後在單獨的命令中為該主題添加入站 IP 規則。 它還更新在第二個命令中設置的入站 IP 規則。 
+### <a name="enable-or-disable-public-network-access"></a>啟用或停用公用網路存取
+根據預設，會啟用主題和網域的公用網路存取。 您也可以明確地加以啟用或停用它。 您可以藉由設定輸入 IP 防火牆規則來限制流量。 
+
+#### <a name="enable-public-network-access-while-creating-a-topic"></a>建立主題時啟用公用網路存取
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled
+```
+
+
+#### <a name="disable-public-network-access-while-creating-a-topic"></a>建立主題時停用公用網路存取
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access disabled
+```
+
+> [!NOTE]
+> 停用主題或網域的公用網路存取時，不允許透過公用網際網路的流量。 只有私人端點連線才會允許存取這些資源。 
+
+
+#### <a name="enable-public-network-access-for-an-existing-topic"></a>針對現有主題啟用公用網路存取
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled 
+```
+
+#### <a name="disable-public-network-access-for-an-existing-topic"></a>停用現有主題的公用網路存取 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access disabled
+```
+
+### <a name="create-a-topic-with-single-inbound-ip-rule"></a>建立具有單一輸入 ip 規則的主題
+下列範例 CLI 命令會使用輸入 IP 規則來建立事件方格主題。 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow 
+```
+
+### <a name="create-a-topic-with-multiple-inbound-ip-rules"></a>建立具有多個輸入 ip 規則的主題
+
+下列範例 CLI 命令會在一個步驟中建立一個事件方格主題兩個輸入 IP 規則： 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="update-an-existing-topic-to-add-inbound-ip-rules"></a>更新現有的主題以新增輸入 IP 規則
+這個範例會先建立事件方格主題，然後將主題的輸入 IP 規則新增至個別的命令。 它也會更新第二個命令中設定的輸入 IP 規則。 
 
 ```azurecli-interactive
 
 # create the event grid topic first
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\""}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location
 
-# add inbound IP rules
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# add inbound IP rules to an existing topic
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow
 
-# later, update topic with additional ip rules or remove them. 
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""}, {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# later, update topic with additional ip rules
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="remove-an-inbound-ip-rule"></a>移除輸入 IP 規則
+下列命令會在更新設定時只指定第一個規則，以移除您在上一個步驟中建立的第二個規則。 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow
 ```
 
 
 ## <a name="use-powershell"></a>使用 PowerShell
-本節介紹如何使用 Azure PowerShell 命令使用入站 IP 防火牆規則創建 Azure 事件網格主題。 本節中顯示的步驟適用于主題。 您可以使用類似的步驟為**域**創建入站 IP 規則。 
+本節說明如何使用 Azure PowerShell 命令來建立具有輸入 IP 防火牆規則的 Azure 事件方格主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立**網域**的輸入 IP 規則。 
 
-### <a name="prerequisite"></a>必要條件
-按照["如何操作"中的說明：使用門戶創建 Azure AD 應用程式和服務主體，該應用程式和服務主體可以訪問資源](../active-directory/develop/howto-create-service-principal-portal.md)以創建 Azure 活動目錄應用程式，並記下以下值：
+### <a name="prerequisites"></a>Prerequisites
+依照[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)中的指示，以建立 Azure Active Directory 應用程式，並記下下列值：
 
 - 目錄 (租用戶) 識別碼
-- 應用程式（用戶端）ID
-- 應用程式（用戶端）機密
+- 應用程式（用戶端）識別碼
+- 應用程式（用戶端）密碼
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>為 REST API 呼叫準備權杖和標頭 
-運行以下先決條件命令，獲取用於 REST API 呼叫的身份驗證權杖以及授權和其他標頭資訊。 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>準備 REST API 呼叫的權杖和標頭 
+執行下列必要條件命令，以取得用於 REST API 呼叫的驗證權杖，以及授權和其他標頭資訊。 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,8 +192,8 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>為現有主題啟用公共網路訪問
-預設情況下，為主題和域啟用公共網路訪問。 您可以通過配置入站 IP 防火牆規則來限制流量。 
+### <a name="enable-public-network-access-for-an-existing-topic"></a>針對現有主題啟用公用網路存取
+根據預設，會啟用主題和網域的公用網路存取。 您可以藉由設定輸入 IP 防火牆規則來限制流量。 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
@@ -126,8 +205,8 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>禁用現有主題的公共網路訪問
-當禁用主題或域的公共網路訪問時，不允許通過公共 Internet 進行流量訪問。 只允許專用終結點連接訪問這些資源。 
+### <a name="disable-public-network-access-for-an-existing-topic"></a>停用現有主題的公用網路存取
+停用主題或網域的公用網路存取時，不允許透過公用網際網路的流量。 只有私人端點連線才會允許存取這些資源。 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
@@ -139,12 +218,12 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>在一個步驟中創建包含入站規則的事件網格主題
+### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>在一個步驟中建立包含輸入規則的事件方格主題
 
 ```azurepowershell-interactive
 
 # prepare the body for the REST PUT method. Notice that inbound IP rules are included. 
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -160,7 +239,7 @@ Invoke-RestMethod -Method 'Get' `
 ```
 
 
-### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>先創建事件網格主題，然後添加入站 IP 規則
+### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>先建立事件方格主題，然後再新增輸入 ip 規則
 
 ```azurepowershell-interactive
 
@@ -180,7 +259,7 @@ Invoke-RestMethod -Method 'Get' `
     | ConvertTo-Json -Depth 5
 
 # prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature available in both basic and premium tiers.
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"}, @{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"}, @{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `

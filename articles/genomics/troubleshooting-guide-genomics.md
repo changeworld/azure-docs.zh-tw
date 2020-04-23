@@ -1,22 +1,21 @@
 ---
 title: 疑難排解指南
 titleSuffix: Microsoft Genomics
-description: 瞭解使用 Microsoft 基因組學的故障排除策略，包括錯誤訊息以及如何解決這些問題。
+description: 瞭解使用 Microsoft Genomics 的疑難排解策略，包括錯誤訊息和解決方法。
 keywords: 疑難排解, 錯誤, 偵錯
 services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73486008"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100901"
 ---
 # <a name="troubleshooting-guide"></a>疑難排解指南
 
@@ -82,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查標準輸出的內容.txt 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查 standardoutput 的內容 
 找出有問題之工作流程的輸出容器。 MSGEN 會在每個工作流程執行之後建立 `[workflowfilename].logs.zip` 資料夾。 將資料夾解壓縮以檢視其內容：
 
 * outputFileList.txt - 工作流程期間所產生輸出檔案的清單

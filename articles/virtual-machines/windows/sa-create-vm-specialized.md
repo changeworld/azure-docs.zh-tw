@@ -1,26 +1,20 @@
 ---
-title: 從 Azure 中的專用磁片創建 VM
+title: 在 Azure 中從特製化磁片建立 VM
 description: 藉由連結特製化非受控磁碟，在 Resource Manager 部署模型中建立新的 VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: storage-accounts
+ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073356"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099643"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>從儲存體帳戶中的特製化 VHD 建立 VM
 
@@ -40,7 +34,7 @@ ms.locfileid: "74073356"
 ### <a name="prepare-the-vm"></a>準備 VM
 您可以上傳使用內部部署 VM 建立的特製化 VHD，或上傳從另一個雲端匯出的 VHD。 特製化的 VHD 會從原始的 VM 維護使用者帳戶、應用程式和其他狀態資料。 如果您想要使用 VHD 現狀建立新的 VM，請確定完成下列步驟。 
   
-  * [準備要上載到 Azure 的 Windows VHD。](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) **不要**使用 Sysprep 一般化 VM。
+  * [準備要上傳至 Azure 的 WINDOWS VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 一般化 VM。
   * 移除任何 VM 上 (也就是 VMware 工具) 已安裝的來賓虛擬化工具和代理程式。
   * 確認已透過 DHCP 設定 VM 提取其 IP 位址和 DNS 設定。 這可確保伺服器在啟動時取得 VNet 內的 IP 位址。 
 
@@ -119,7 +113,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 解除配置 VM，這會釋出要複製的 VHD。 
 
 * **入口網站**︰ 按一下 [虛擬機器]**** >  [myVM]**** > [停止]
-* **電源shell**： 使用[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)停止（解分配）資源組中**名為 myVM** **的**VM。
+* **Powershell**：使用[update-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)來停止（解除配置）資源群組**myResourceGroup**中名為**myVM**的 VM。
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -133,7 +127,7 @@ Azure 入口網站中 VM 的 [狀態]**** 會從 [已停止]**** 變更為 [已�
 您可以使用 Azure 入口網站或 Azure PowerShell 來取得 URL：
 
 * **入口網站**︰按一下 **>**[所有服務]**** > [儲存體帳戶]**** > *儲存體帳戶* > [Blob]****，而您的來源 VHD 檔可能在 **vhds** 容器中。 按一下容器的 [屬性]****，複製標示為[URL]**** 的文字。 您會需要來源和目的地容器的 URL。 
-* **電源shell**： 使用[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)在資源組**myResourceGroup**中獲取名為**myVM**的 VM 的資訊。 在結果中，查看 [儲存體設定檔]**** 區段的 [VHD URI]****。 URI 的第一個部分是容器的 URL，最後一個部分是 VM 的作業系統 VHD 名稱。
+* **Powershell**：使用[update-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)來取得資源群組**myResourceGroup**中名為**myVM**之 VM 的資訊。 在結果中，查看 [儲存體設定檔]**** 區段的 [VHD URI]****。 URI 的第一個部分是容器的 URL，最後一個部分是 VM 的作業系統 VHD 名稱。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -143,7 +137,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 找出來源和目的地儲存體帳戶的存取金鑰。 如需存取金鑰的詳細資訊，請參閱 [關於 Azure 儲存體帳戶](../../storage/common/storage-create-storage-account.md)。
 
 * **入口網站**︰按一下 [所有服務]**** > [儲存體帳戶]**** > [儲存體帳戶]** > [存取金鑰]****。 複製標示為 [金鑰1]**** 的金鑰。
-* **電源shell**： 使用[Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey)獲取資源組**myResourceGroup**中的**存儲帳戶我的存儲帳戶的存儲**金鑰。 複製標示 [金鑰1]**** 的金鑰。
+* **Powershell**：使用[AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey)來取得資源群組**myResourceGroup**中**mystorageaccount**儲存體帳戶的儲存體金鑰。 複製標示 [金鑰1]**** 的金鑰。
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -270,7 +264,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. 新增 OS 磁碟。 在此示例中，創建 OS 磁片時，術語"osDisk"將追加到 VM 名稱以創建 OS 磁片名稱。 這個範例也指定這個以 Windows 為基礎的 VHD，應該附加至 VM 作為 OS 磁碟。
+2. 新增 OS 磁碟。 在此範例中，建立 OS 磁片時，會將 "osDisk" 一詞附加至 VM 名稱，以建立 OS 磁片名稱。 這個範例也指定這個以 Windows 為基礎的 VHD，應該附加至 VM 作為 OS 磁碟。
     
     ```powershell
     $osDiskName = $vmName + "osDisk"

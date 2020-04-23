@@ -1,101 +1,99 @@
 ---
-title: 優化 Azure Lsv2 系列虛擬機器的性能 - 存儲
-description: 瞭解如何在 Lsv2 系列虛擬機器上優化解決方案的性能。
-services: virtual-machines-windows
+title: 將 Azure Lsv2 系列虛擬機器上的效能優化-儲存體
+description: 瞭解如何在 Lsv2 系列的虛擬機器上將解決方案的效能優化。
 author: sasha-melamed
-manager: gwallace
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 57b248908a02327f2521be05920259681a26817a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920224"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100544"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>優化 Lsv2 系列虛擬機器的性能
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>將 Lsv2 系列虛擬機器上的效能優化
 
-Lsv2 系列虛擬機器支援各種工作負載，這些工作負載需要跨各種應用程式和行業的本機存放區實現高 I/O 和輸送量。  Lsv2 系列是大資料、SQL、NoSQL 資料庫、資料倉儲和大型事務資料庫（包括卡珊多拉、蒙戈DB、Cloudera 和 Redis）的理想選擇。
+Lsv2 系列虛擬機器支援各種不同的工作負載，其在各種應用程式和產業的本機儲存體上需要高 i/o 和輸送量。  Lsv2 系列適用于大型資料、SQL、NoSQL 資料庫、資料倉儲和大型交易式資料庫，包括 Cassandra、MongoDB、Cloudera 和 Redis。
 
-Lsv2 系列虛擬機器 （VM） 的設計使 AMD EPYC™ 7551 處理器最大化，從而在處理器、記憶體、NVMe 設備和 VM 之間提供最佳性能。 除了最大化硬體性能外，Lsv2 系列 VM 還旨在滿足 Windows 和 Linux 作業系統的需求，從而在硬體和軟體方面實現更好的性能。
+Lsv2 系列虛擬機器（Vm）的設計可將 AMD EPYC™7551處理器最大化，以提供處理器、記憶體、NVMe 裝置和 Vm 之間的最佳效能。 除了最大化硬體效能，Lsv2 系列 Vm 的設計可與 Windows 和 Linux 作業系統的需求搭配使用，以獲得更佳的硬體和軟體效能。
 
-調整軟體和硬體後[，Windows Server 2019 資料中心](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)的優化版本于 2018 年 12 月初發佈給 Azure 應用商店，支援 Lsv2 系列 VM 中的 NVMe 設備的最大性能。
+調整軟體和硬體會導致[Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)的優化版本，在12月2018日之前發行至 Azure Marketplace，這可支援 Lsv2 系列 Vm 中 NVMe 裝置上的最大效能。
 
-本文提供提示和建議，以確保工作負載和應用程式實現在 VM 中設計的最大性能。 隨著更多 Lsv2 優化映射添加到 Azure 應用商店，此頁面上的資訊將不斷更新。
+本文提供秘訣和建議，以確保您的工作負載和應用程式能夠達到最高的效能，並將其設計到 Vm 中。 此頁面上的資訊將會持續更新，因為已將更 Lsv2 的優化影像新增至 Azure Marketplace。
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™晶片組架構
+## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™晶片架構
 
-Lsv2 系列 VM 使用基於 Zen 微架構的 AMD EYPC ™伺服器處理器。 AMD 為 EYPC 開發了無限交換矩陣 （IF™ 作為其 NUMA 型號的可擴展互連，可用於模上、封裝和多包通信。 與英特爾現代單片式處理器中使用的 QPI（快速路徑互連）和 UPI（超路徑互連）相比，AMD 的多 NUMA 小片式架構既可能帶來性能優勢，也可能帶來挑戰。 記憶體頻寬和延遲限制的實際影響可能因運行的工作負載類型而異。
+Lsv2 系列 Vm 會使用以 Zen 微架構為基礎的 AMD EYPC™伺服器處理器。 AMD 針對 EYPC™開發了無限大網狀架構（如果）做為其 NUMA 模型的可擴充互連，可用於內部、套件內部和多套件通訊。 相較于 Intel 現代化整合型骰子處理器所使用的 QPI （快速路徑互連）和 UPI （Ultra 路徑互連），AMD 的多 NUMA 小型片架構可能會帶來效能優勢和挑戰。 記憶體頻寬和延遲條件約束的實際影響可能會根據執行的工作負載類型而有所不同。
 
-## <a name="tips-for-maximizing-performance"></a>最大化性能的提示
+## <a name="tips-for-maximizing-performance"></a>最大化效能的秘訣
 
-* 為 Lsv2 系列 VM 供電的硬體使用具有八個 I/O 佇列對 （QP） 的 NVMe 設備。 每個 NVMe 設備 I/O 佇列實際上是一對：提交佇列和完成佇列。 NVMe 驅動程式通過迴圈計畫中分發 I/O 來優化這八個 I/O 季度的利用率。 為了獲得最大性能，每個設備運行八個作業以匹配。
+* 為 Lsv2 系列 Vm 提供動力的硬體，會利用具有8個 i/o 佇列配對（QP）的 NVMe 裝置。 每個 NVMe 裝置 i/o 佇列實際上都是成對的：提交佇列和完成佇列。 NVMe 驅動程式已設定為藉由將 i/o 分散到迴圈配置資源排程，來優化這八個 i/o QPs 的使用率。 若要取得最大效能，請在每部裝置上執行八個工作以進行比對。
 
-* 避免在活動工作負載期間將 NVMe 管理命令（例如，NVMe SMART 資訊查詢等）與 NVMe I/O 命令混合。 Lsv2 NVMe 設備由 Hyper-V NVMe 直接技術支援，該技術在任何 NVMe 管理命令掛起時都會切換到"慢速模式"。 如果發生這種情況，Lsv2 使用者可能會看到 NVMe I/O 性能的顯著性能下降。
+* 避免在使用中的工作負載期間，混用 nvme 管理命令（例如 NVMe 智慧型資訊查詢等）與 NVMe 的 i/o 命令。 Lsv2 NVMe 裝置是由 Hyper-v NVMe Direct 技術支援，每當有任何 NVMe 的管理命令暫止時，就會切換為「慢速模式」。 如果發生這種情況，Lsv2 使用者可能會在 NVMe i/o 效能中看到顯著的效能下降。
 
-* Lsv2 使用者不應依賴從 VM 中報告的設備 NUMA 資訊（所有 0）來處理資料磁碟機，以決定其應用的 NUMA 相關性。 如果可能，建議用於提高性能的方法是跨 CPU 擴展工作負載。 
+* Lsv2 使用者不應依賴從 VM 內部回報的裝置 NUMA 資訊（全部0）來決定其應用程式的 NUMA 親和性。 建議的最佳效能方式是盡可能將工作負載分散到多個 Cpu。 
 
-* Lsv2 VM NVMe 設備每個 I/O 佇列對受支援的最大佇列深度為 1024（與 Amazon i3 QD 32 限制）。 Lsv2 使用者應將其（綜合）基準工作負荷限制為佇列深度 1024 或更低，以避免觸發佇列完全條件，這可能會降低性能。
+* Lsv2 VM NVMe 裝置的每個 i/o 佇列對支援的佇列深度上限為1024（相對於 Amazon i3 QD 32 限制）。 Lsv2 使用者應該將其（綜合）基準工作負載限制為佇列深度1024或更低，以避免觸發佇列的完整狀況，這可能會降低效能。
 
-## <a name="utilizing-local-nvme-storage"></a>利用本地 NVMe 存儲
+## <a name="utilizing-local-nvme-storage"></a>利用本機 NVMe 儲存體
 
-所有 Lsv2 VM 上的 1.92 TB NVMe 磁片上的本機存放區是短暫的。 在 VM 成功標準重新開機期間，本地 NVMe 磁片上的資料將保持不變。 如果重新部署、取消分配或刪除 VM，則該資料將不會保留在 NVMe 上。 如果另一個問題導致 VM 或正在運行的硬體不正常，則資料不會持久化。 發生這種情況時，舊主機上的所有資料將安全地擦除。
+所有 Lsv2 Vm 上 1.92 TB NVMe 磁片上的本機存放裝置是暫時的。 在 VM 的成功標準重新開機期間，本機 NVMe 磁片上的資料將會保存。 如果重新部署、解除配置或刪除 VM，資料不會保存在 NVMe 上。 如果另一個問題造成 VM 或其執行的硬體變成狀況不良，則資料不會保存。 發生這種情況時，會安全地清除舊主機上的所有資料。
 
-有時，VM 需要移動到其他主機，例如，在計畫維護操作期間。 計畫中的維護操作和一些硬體故障可以預期與[計畫事件](scheduled-events.md)。 應使用計畫事件來更新任何預測的維護和恢復操作。
+在某些情況下，VM 必須移至不同的主機電腦，例如在規劃的維護作業期間。 已規劃的維護作業和一些硬體故障可能會在[Scheduled Events](scheduled-events.md)中預期。 Scheduled Events 應該用來隨時更新任何預測的維護和復原作業。
 
-如果計畫中的維護事件要求在具有空本地磁片的新主機上重新創建 VM，則需要重新同步資料（同樣，舊主機上的任何資料都將安全擦除）。 這是因為 Lsv2 系列 VM 當前不支援本地 NVMe 磁片上的即時移轉。
+如果預定的維護事件需要在具有空白本機磁片的新主機上重新建立 VM，則必須重新同步處理資料（同樣地，舊主機上的所有資料都要安全地清除）。 這是因為 Lsv2 系列 Vm 目前不支援在本機 NVMe 磁片上進行即時移轉。
 
-有兩種模式用於計畫維護。
+有兩種模式可進行預定的維護。
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>標準 VM 客戶控制維護
+### <a name="standard-vm-customer-controlled-maintenance"></a>標準 VM 客戶控制的維護
 
-- 在 30 天的時段內，VM 將移動到更新的主機。
-- Lsv2 本機存放區資料可能會丟失，因此建議在事件發生之前備份資料。
+- 在30天的時間範圍內，VM 會移至更新的主機。
+- Lsv2 本機儲存體資料可能會遺失，因此建議您在進行事件之前的備份資料。
 
 ### <a name="automatic-maintenance"></a>自動維護
 
-- 如果客戶不執行客戶控制的維護，或者在發生緊急程式（如安全零日事件）時發生。
-- 旨在保留客戶資料，但存在 VM 凍結或重新開機的小風險。
-- Lsv2 本機存放區資料可能會丟失，因此建議在事件發生之前備份資料。
+- 當客戶未執行客戶控制的維護，或發生緊急程式（例如「安全性零日」事件）時發生。
+- 其目的是要保留客戶資料，但 VM 凍結或重新開機的風險很小。
+- Lsv2 本機儲存體資料可能會遺失，因此建議您在進行事件之前的備份資料。
 
-對於任何即將發生的服務事件，請使用受控維護過程選擇最方便的時間進行更新。 在活動之前，您可以將資料備份到高級存儲中。 維護事件完成後，您可以將資料返回到刷新的 Lsv2 VR 本地 NVMe 存儲。
+針對任何即將推出的服務事件，請使用受控制的維護程式來選取最方便您進行更新的時間。 在事件之前，您可以備份 premium 儲存體中的資料。 維護事件完成之後，您可以將資料傳回至重新整理的 Lsv2 Vm 本機 NVMe 儲存體。
 
-維護本地 NVMe 磁片上資料的方案包括：
+在本機 NVMe 磁片上維護資料的案例包括：
 
-- VM 正在運行且正常。
-- VM 已就地重新開機（由您或 Azure 重新開機）。
-- VM 已暫停（未取消分配而停止）。
-- 大多數計畫的維護維修操作。
+- VM 正在執行且狀況良好。
+- VM 會就地重新開機（由您或 Azure）。
+- VM 已暫停（未解除配置即停止）。
+- 大部分預定的維護服務作業。
 
-安全擦除資料以保護客戶的方案包括：
+安全地清除資料以保護客戶的案例包括：
 
-- VM 被重新部署、停止（取消分配）或刪除（由您刪除）。
-- VM 變得不正常，由於硬體問題，必須將服務修復到另一個節點。
-- 少數計畫維護服務操作，這些操作要求將 VM 重新分配到另一個主機進行維修。
+- VM 會重新部署、停止（解除配置）或刪除（由您執行）。
+- VM 會變得狀況不良，而且由於硬體問題而必須對另一個節點進行服務修復。
+- 需要將 VM 重新配置給另一部主機進行服務的少數預定維護服務作業。
 
-要瞭解有關在本機存放區中備份資料的選項的詳細資訊，請參閱[Azure IaaS 磁片的備份和災害復原](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
+若要深入瞭解在本機儲存體中備份資料的選項，請參閱[Azure IaaS 磁片的備份和](backup-and-disaster-recovery-for-azure-iaas-disks.md)嚴重損壞修復。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-* **如何開始部署 Lsv2 系列 VM？**  
-   與任何其他 VM 一樣，請使用[門戶](quick-create-portal.md) [、Azure CLI](quick-create-cli.md)或[PowerShell](quick-create-powershell.md)創建 VM。
+* **如何? 開始部署 Lsv2 系列 Vm 嗎？**  
+   與任何其他 VM 很類似，請使用[入口網站](quick-create-portal.md)、 [Azure CLI](quick-create-cli.md)或[PowerShell](quick-create-powershell.md)來建立 VM。
 
-* **單個 NVMe 磁片故障是否會導致主機上的所有 VM 失敗？**  
-   如果在硬體節點上檢測到磁片故障，則硬體處於故障狀態。 發生這種情況時，節點上的所有 VM 將自動取消分配並移動到正常節點。 對於 Lsv2 系列 VM，這意味著客戶在故障節點上的資料也會被安全地擦除，並且需要客戶在新節點上重新創建。 如前所述，在 Lsv2 上提供即時移轉之前，故障節點上的資料將在 VM 傳輸到另一個節點時主動移動。
+* **單一 NVMe 磁片失敗會導致主機上的所有 Vm 失敗嗎？**  
+   如果在硬體節點上偵測到磁片失敗，則硬體處於 [失敗] 狀態。 發生這種情況時，節點上的所有 Vm 都會自動解除配置，並移至狀況良好的節點。 對於 Lsv2 系列 Vm，這表示客戶在失敗節點上的資料也會安全地清除，而且必須由客戶在新節點上重新建立。 如先前所述，在 Lsv2 上推出「即時移轉」之前，失敗節點上的資料會在 Vm 傳輸至另一個節點時，主動隨之移動。
 
-* **我是否需要在 Windows 伺服器 2012 或 Windows 伺服器 2016 中的 Windows 中進行輪詢調整？**  
-   NVMe 輪詢僅在 Azure 上的 Windows Server 2019 上可用。  
+* **我是否需要在 windows Server 2012 或 Windows Server 2016 的 Windows 中進行輪詢調整？**  
+   NVMe 輪詢僅適用于 Azure 上的 Windows Server 2019。  
 
-* **我可以切換回傳統的插斷服務常式 （ISR） 模型嗎？**  
-   Lsv2 系列 VM 針對 NVMe 輪詢進行了優化。 不斷提供更新以提高輪詢性能。
+* **我可以切換回傳統的插斷服務常式（ISR）模型嗎？**  
+   Lsv2 系列 Vm 已針對 NVMe 輪詢進行優化。 持續提供更新以改善輪詢效能。
 
-* **我可以調整 Windows Server 2019 中的輪詢設置嗎？**  
-   輪詢設置不可使用者調整。
+* **我可以調整 Windows Server 2019 中的輪詢設定嗎？**  
+   輪詢設定不是使用者可調整的。
    
 ## <a name="next-steps"></a>後續步驟
 
-* 查看針對 Azure 上的[存儲性能優化](sizes-storage.md)的所有 VM 的規範
+* 請參閱針對 Azure 上[的儲存體效能優化的所有 vm](sizes-storage.md)規格

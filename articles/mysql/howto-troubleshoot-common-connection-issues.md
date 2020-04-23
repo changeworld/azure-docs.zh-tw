@@ -1,18 +1,18 @@
 ---
-title: 解決連線問題 ─ MySQL 的 Azure 資料庫
-description: 瞭解如何解決 MySQL 與 Azure 資料庫的連接問題,包括需要重試的暫時性錯誤、防火牆問題和中斷。
+title: 疑難排解連接問題-適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何對適用於 MySQL 的 Azure 資料庫的連線問題進行疑難排解，包括需要重試、防火牆問題和中斷的暫時性錯誤。
 keywords: mysql 連線, 連接字串, 連線問題, 暫時性錯誤, 連線錯誤
-author: jasonwhowell
-ms.author: jasonh
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b22d47d177c4606396b0c8b2279301121c905ca2
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768268"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100884"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫的連線問題進行疑難排解
 
@@ -46,16 +46,16 @@ ms.locfileid: "81768268"
 
 如果應用程式持續無法連線到「適用於 MySQL 的 Azure 資料庫」，通常表示是下列其中一項發生問題︰
 
-* 伺服器防火牆配置:確保 MySQL 伺服器防火牆的 Azure 資料庫配置為允許來自用戶端的連接,包括代理伺服器和閘道。
-* 用戶端防火牆配置:用戶端上的防火牆必須允許連接到資料庫伺服器。 也必須允許您無法連到的伺服器 IP 位址和連接埠，在某些防火牆中，還要允許應用程式名稱，例如 MySQL。
-* 使用者錯誤:可能鍵入了錯誤的連接參數,例如連接字串中的伺服器名稱或使用者名中缺少*\@的伺服器名稱*後綴。
+* 伺服器防火牆設定：確定已將適用於 MySQL 的 Azure 資料庫伺服器防火牆設為允許來自用戶端的連線，包括 proxy 伺服器和閘道。
+* 用戶端防火牆設定：用戶端上的防火牆必須允許連接到您的資料庫伺服器。 也必須允許您無法連到的伺服器 IP 位址和連接埠，在某些防火牆中，還要允許應用程式名稱，例如 MySQL。
+* 使用者錯誤：您可能輸入錯誤的連接參數，例如連接字串中的伺服器名稱，或使用者名稱* \@* 中遺漏的 servername 尾碼。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解決永久性連線問題的步驟
 
 1. 設定[防火牆規則](howto-manage-firewall-using-portal.md)以允許用戶端 IP 位址。 (僅適用於臨時性的測試目的) 請使用 0.0.0.0 作為起始 IP 位址並使用 255.255.255.255 作為結束 IP 位址來設定防火牆規則。 這樣會開放伺服器供所有 IP 位址存取。 若這樣可解決您的連線問題，請移除此規則並針對已適當限制的 IP 位址或位址範圍建立防火牆規則。
 2. 在用戶端與網際網路之間的所有防火牆上，確定開放連接埠 3306 供輸出連線使用。
 3. 請確認您的連接字串和其他連線設定。 請檢閱[如何將應用程式連線至適用於 MySQL 的 Azure 資料庫](howto-connection-string.md)。
-4. 檢查儀表板中的服務健康情況。 如果認為存在區域中斷,請參閱[MySQL Azure 資料庫的業務連續性概述](concepts-business-continuity.md),瞭解恢復到新區域的步驟。
+4. 檢查儀表板中的服務健康情況。 如果您認為有區域性中斷，請參閱[使用適用於 MySQL 的 Azure 資料庫的商務持續性總覽](concepts-business-continuity.md)，以瞭解復原到新區域的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

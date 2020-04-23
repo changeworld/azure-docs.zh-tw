@@ -1,50 +1,50 @@
 ---
-title: 非工作時間解決方案期間啟動/ 停止 VM
-description: 此 VM 管理解決方案按計劃啟動和停止 Azure 虛擬機器,並從 Azure 監視器日誌主動監視。
+title: 在下班時間解決方案中啟動/停止 Vm
+description: 此 VM 管理解決方案會依排程啟動和停止您的 Azure 虛擬機器，並從 Azure 監視器記錄中主動進行監視。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681301"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096911"
 ---
-# <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中,在非工作時間解決方案期間啟動/停止 VM
+# <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中的離峰時間啟動/停止 Vm 解決方案
 
-**在非工作時間解決方案啟動/停止 VM**啟動或停止 Azure 虛擬機器。 它根據使用者定義的計劃啟動或停止計算機,通過 Azure 監視器日誌提供見解,並使用[操作組](../azure-monitor/platform/action-groups.md)發送可選電子郵件。 對於大多數方案,該解決方案同時支援 Azure 資源管理器和經典 VM。 
+[**在離峰期間啟動/停止 vm** ] 解決方案會啟動或停止您的 Azure 虛擬機器。 它會以使用者定義的排程啟動或停止機器、提供 Azure 監視器記錄的深入解析，並使用[動作群組](../azure-monitor/platform/action-groups.md)來傳送選用的電子郵件。 在大部分的情況下，此解決方案都支援 Azure Resource Manager 和傳統 Vm。 
 
 此解決方案可針對想要將 VM 成本最佳化的使用者，提供非集中式的低成本自動化選項。 使用此解決方案，您可以：
 
-- [計畫 VM 啟動與停止](automation-solution-vm-management-config.md#schedule)。
-- 使用[Azure 標記](automation-solution-vm-management-config.md#tags)(經典 VM 不支援)計劃 VM 以升序啟動和停止。
-- 基於[低 CPU 使用率](automation-solution-vm-management-config.md#cpuutil)的自動停止 VM。
+- [排程要啟動和停止的 vm](automation-solution-vm-management-config.md#schedule)。
+- [使用 Azure 標記](automation-solution-vm-management-config.md#tags)（不支援傳統 vm），以遞增順序將 vm 排程為啟動和停止。
+- 根據[低 CPU 使用量](automation-solution-vm-management-config.md#cpuutil)來 Autostop vm。
 
 > [!NOTE]
-> **已更新非工作時間解決方案期間的啟動/停止 VM,** 以支援可用的 Azure 模組的最新版本。
+> [**在離峰期間啟動/停止 vm** ] 解決方案已更新，可支援可用的最新 Azure 模組版本。
 
-以下是目前解決方案的限制:
+下列是目前解決方案的限制：
 
-- 它管理任何區域中的 VM,但只能在與 Azure 自動化帳戶相同的訂閱中使用。
-- 它在 Azure 和 Azure 政府中可用於支援日誌分析工作區、Azure 自動化帳戶和警報的任何區域。 Azure 政府區域當前不支援電子郵件功能。
+- 它會管理任何區域中的 Vm，但只能在與您 Azure 自動化帳戶相同的訂用帳戶中使用。
+- 可在 Azure 中使用，並 Azure Government 至任何支援 Log Analytics 工作區、Azure 自動化帳戶和警示的區域。 Azure Government 區域目前不支援電子郵件功能。
 
-## <a name="solution-prerequisites"></a>解決方案先決條件
+## <a name="solution-prerequisites"></a>解決方案必要條件
 
-此解決方案的 Runbook 會使用 [Azure 執行身分帳戶](automation-create-runas-account.md)。 運行 As 帳戶是首選身份驗證方法,因為它使用證書身份驗證而不是可能經常過期或更改的密碼。
+此解決方案的 Runbook 會使用 [Azure 執行身分帳戶](automation-create-runas-account.md)。 執行身分帳戶是慣用的驗證方法，因為它使用憑證驗證，而不是可能過期或經常變更的密碼。
 
-我們建議您在**非工作時間解決方案期間為開始/停止 VM**使用單獨的自動化帳戶。 Azure 模組版本經常升級,其參數可能會更改。 解決方案不會以相同的節奏進行升級,並且可能無法與它使用的較新版本的cmdlet一起使用。 建議您在生產自動化帳戶中導入模組更新之前,先在測試自動化帳戶中測試這些更新。
+我們建議您在離峰時段使用個別的自動化帳戶來**啟動/停止 vm**解決方案。 Azure 模組版本經常升級，且其參數可能會變更。 此解決方案不會以相同的步調升級，而且可能無法與它所使用的較新版本 Cmdlet 搭配使用。 建議您先在測試自動化帳戶中測試模組更新，再將它們匯入您的生產自動化帳戶中。
 
-## <a name="solution-permissions"></a>解決方案權限
+## <a name="solution-permissions"></a>解決方案許可權
 
-您必須具有某些許可權才能**在非工作時間解決方案期間部署開始/停止 VM。** 如果解決方案使用預先創建的自動化帳戶和日誌分析工作區,則許可權因解決方案在部署期間創建新帳戶和工作區所需的許可權而異。 
+您必須具有特定許可權，才能在**下班時間解決方案中部署啟動/停止 vm** 。 如果解決方案在部署期間建立新的帳戶和工作區，則當解決方案使用預先建立的自動化帳戶和 Log Analytics 工作區時，這些許可權會有所不同。 
 
-如果您是訂閱的參與者,並且是 Azure 活動目錄租戶中的全域管理員,則無需配置許可權。 如果您沒有這些許可權或需要配置自定義角色,請確保具有下面描述的許可權。
+如果您是訂用帳戶的參與者，以及 Azure Active Directory 租使用者中的全域管理員，則不需要設定許可權。 如果您沒有這些許可權，或需要設定自訂角色，請確定您具有下面所述的許可權。
 
-### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>預先存在的自動化帳戶和日誌分析工作區的許可權
+### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>預先存在的自動化帳戶和 Log Analytics 工作區的許可權
 
-要**將非工作時間解決方案的啟動/停止 VM**部署到現有的自動化帳戶和日誌分析工作區,部署該解決方案的使用者需要資源組作用域的以下許可權。 要瞭解有關角色的更多資訊,請參閱[Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
+若要在**離峰期間將啟動/停止 vm**解決方案部署至現有的自動化帳戶和 Log Analytics 工作區，部署解決方案的使用者需要資源群組範圍的下列許可權。 若要深入瞭解角色，請參閱[Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
 
 | 權限 | 影響範圍|
 | --- | --- |
@@ -56,30 +56,30 @@ ms.locfileid: "81681301"
 | Microsoft.Automation/automationAccounts/certificates/write | 資源群組 |
 | Microsoft.Automation/automationAccounts/modules/write | 資源群組 |
 | Microsoft.Automation/automationAccounts/modules/read | 資源群組 |
-| 微軟.自動化/自動化會計/作業計劃/寫入 | 資源群組 |
+| AutomationAccounts/jobSchedules/write | 資源群組 |
 | Microsoft.Automation/automationAccounts/jobs/write | 資源群組 |
 | Microsoft.Automation/automationAccounts/jobs/read | 資源群組 |
 | Microsoft.OperationsManagement/solutions/write | 資源群組 |
-| 微軟.操作見解/工作空間/* | 資源群組 |
-| 微軟.見解/診斷設置/寫入 | 資源群組 |
+| Microsoft.operationalinsights/工作區/* | 資源群組 |
+| Microsoft Insights/diagnosticSettings/write | 資源群組 |
 | Microsoft.Insights/ActionGroups/Write | 資源群組 |
-| 微軟.見解/行動組/閱讀 | 資源群組 |
+| Microsoft Insights/ActionGroups/read | 資源群組 |
 | Microsoft.Resources/subscriptions/resourceGroups/read | 資源群組 |
 | Microsoft.Resources/deployments/* | 資源群組 |
 
-### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>新自動化帳戶和新的紀錄分析工作區的權限
+### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>新的自動化帳戶和新的 Log Analytics 工作區的許可權
 
-您可以將**非工作時間解決方案的「開始/停止 VM」** 部署到新的自動化帳戶和日誌分析工作區。 在這種情況下,部署解決方案的使用者需要上一節中定義的許可權以及本節中定義的許可權。 
+您可以在**離峰時間將啟動/停止 vm**解決方案部署至新的自動化帳戶和 Log Analytics 工作區。 在此情況下，部署解決方案的使用者需要在上一節中定義的許可權，以及本節中定義的許可權。 
 
-部署解決方案的使用者需要以下角色:
+部署解決方案的使用者需要下列角色：
 
-- 訂閱時是共同管理員。 如果要管理經典 VM,則需要此角色來創建"經典運行即用"帳戶。 [默認情況下不再創建經典"運行帳戶"](automation-create-standalone-account.md#create-a-classic-run-as-account)
-- [Azure 活動目錄](../active-directory/users-groups-roles/directory-assign-admin-roles.md)應用程式開發人員角色的成員身份。 有關設定「以帳戶身份執行」的詳細資訊,請參閱[設定「以帳戶身份執行」的權限](manage-runas-account.md#permissions)。
-- 訂閱或以下許可權上的參與者。
+- 訂用帳戶上的共同管理員。 如果您要管理傳統 Vm，必須要有此角色才能建立傳統執行身分帳戶。 預設不會再建立[傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)應用程式開發人員角色的成員資格。 如需設定執行身分帳戶的詳細資訊，請參閱[設定執行身分帳戶的許可權](manage-runas-account.md#permissions)。
+- 訂用帳戶的參與者或下列許可權。
 
 | 權限 |影響範圍|
 | --- | --- |
-| 微軟.授權/操作/讀取 | 訂用帳戶|
+| Microsoft。授權/作業/讀取 | 訂用帳戶|
 | Microsoft.Authorization/permissions/read |訂用帳戶|
 | Microsoft.Authorization/roleAssignments/read | 訂用帳戶 |
 | Microsoft.Authorization/roleAssignments/write | 訂用帳戶 |
@@ -91,146 +91,146 @@ ms.locfileid: "81681301"
 
 ## <a name="solution-components"></a>方案元件
 
-**非工作時間解決方案的啟動/停止 VM**包括預先設定的 Runbook、計畫和與 Azure 監視器日誌的整合。 您可以使用這些元素來客製化 VM 的啟動和關閉,以滿足您的業務需求。
+在**離峰期間啟動/停止 vm 解決方案**包含預先設定的 runbook、排程，以及與 Azure 監視器記錄的整合。 您可以使用這些元素來量身打造 Vm 的啟動和關閉，以符合您的商務需求。
 
 ### <a name="runbooks"></a>Runbook
 
-下表列出了解決方案部署到自動化帳戶的 Runbook。 不要更改 Runbook 代碼。 相反地，為新功能撰寫自己的 Runbook。
+下表列出解決方案部署至您的自動化帳戶的 runbook。 請勿對 runbook 程式碼進行變更。 相反地，為新功能撰寫自己的 Runbook。
 
 > [!IMPORTANT]
-> 不要直接運行任何附加其名稱**的子**簿。
+> 請勿直接執行任何**子**附加至其名稱的 runbook。
 
-所有父運行簿都包含`WhatIf`參數。 當設置為 True 時,參數支援詳細說明 Runbook 在沒有參數的情況下運行時所採取的確切行為,並驗證是否將正確的 VM 作為目標。 Runbook 僅`WhatIf`在 參數設置為 False 時執行其定義的操作。
+所有的`WhatIf`父 runbook 都包含參數。 當設定為 True 時，參數會支援在沒有參數的情況下執行時，runbook 所採取的確切行為，並驗證是否以正確的 Vm 為目標。 當`WhatIf`參數設定為 False 時，runbook 只會執行其定義的動作。
 
 |Runbook | 參數 | 描述|
 | --- | --- | ---|
-|AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 此 Runbook 基於每個資源為自動停止方案創建警報。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是 VM 的逗號分隔清單。 例如： `vm1, vm2, vm3` 。<br> `WhatIf`支援在不執行的情況下驗證 Runbook 邏輯。|
-|AutoStop_Disable | None | 禁用自動停止警報和默認計劃。|
-|AutoStop_VM_Child | WebHookData | 從父系 Runbook 呼叫。 警報規則調用此 Runbook 以停止經典 VM。|
-|AutoStop_VM_Child_ARM | WebHookData |從父系 Runbook 呼叫。 警報規則調用此 Runbook 以停止 VM。  |
-|ScheduledStartStop_Base_Classic | CloudServiceName<br> 動作：啟動或停止<br> VMList  | 按雲端服務在經典 VM 組中執行操作啟動或停止。 |
+|AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 此 runbook 會針對自動停止案例，以每個資源為基礎建立警示。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單。 例如： `vm1, vm2, vm3` 。<br> `WhatIf`啟用 runbook 邏輯的驗證，而不執行。|
+|AutoStop_Disable | None | 停用自動停止警示和預設排程。|
+|AutoStop_VM_Child | WebHookData | 從父系 Runbook 呼叫。 警示規則會呼叫此 runbook 以停止傳統 VM。|
+|AutoStop_VM_Child_ARM | WebHookData |從父系 Runbook 呼叫。 警示規則會呼叫此 runbook 來停止 VM。  |
+|ScheduledStartStop_Base_Classic | CloudServiceName<br> 動作：啟動或停止<br> VMList  | 藉由雲端服務，在傳統 VM 群組中執行動作開始或停止。 |
 |ScheduledStartStop_Child | VMName <br> 動作：啟動或停止 <br> resourceGroupName | 從父系 Runbook 呼叫。 針對排程的停止執行啟動或停止動作。|
-|ScheduledStartStop_Child_Classic | VMName<br> 動作：啟動或停止<br> resourceGroupName | 從父系 Runbook 呼叫。 為經典 VM 的計劃停止執行開始或停止操作。 |
-|ScheduledStartStop_Parent | 動作：啟動或停止 <br>VMList <br> WhatIf：True 或 False | 啟動或停止訂閱中的所有 VM。 編輯變數`External_Start_ResourceGroupNames`,僅`External_Stop_ResourceGroupNames`在這些目標資源組上執行。 還可以通過更新`External_ExcludeVMNames`變數來排除特定的 VM。|
-|SequencedStartStop_Parent | 動作：啟動或停止 <br> WhatIf：True 或 False<br>VMList| 在要為其排序開始/停止活動的每個 VM 上創建名為**序列啟動**和**序列停止**的標記。 這些標記名稱會區分大小寫。 標記值應為正整數 (1, 2, 3)，對應至您要啟動或停止的順序。 <br>**注意**:VM 必須`External_Start_ResourceGroupNames``External_Stop_ResourceGroupNames`位於 在 中定義`External_ExcludeVMNames`的資源組中 , 和變數中。 虛擬機器必須具有適當的標記以使動作生效。|
+|ScheduledStartStop_Child_Classic | VMName<br> 動作：啟動或停止<br> resourceGroupName | 從父系 Runbook 呼叫。 針對傳統 Vm 的排程停止執行啟動或停止動作。 |
+|ScheduledStartStop_Parent | 動作：啟動或停止 <br>VMList <br> WhatIf：True 或 False | 啟動或停止訂用帳戶中的所有 Vm。 編輯變數`External_Start_ResourceGroupNames` ，並`External_Stop_ResourceGroupNames`只在這些目標資源群組上執行。 您也可以藉由更新`External_ExcludeVMNames`變數來排除特定的 vm。|
+|SequencedStartStop_Parent | 動作：啟動或停止 <br> WhatIf：True 或 False<br>VMList| 在您要排序開始/停止活動的每個 VM 上，建立名為**sequencestart**和**sequencestop**的標記。 這些標記名稱會區分大小寫。 標記值應為正整數 (1, 2, 3)，對應至您要啟動或停止的順序。 <br>**注意**： vm 必須位於、 `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames`和`External_ExcludeVMNames`變數中定義的資源群組內。 虛擬機器必須具有適當的標記以使動作生效。|
 
 ### <a name="variables"></a>變數
 
-下表列出在您自動化帳戶中建立的變數。 僅修改預綴在`External`的變數。 修改預先固定的`Internal`變數會導致不良效果。
+下表列出在您自動化帳戶中建立的變數。 只修改前面加上`External`的變數。 修改前面加上`Internal`的變數會造成不想要的效果。
 
 > [!NOTE]
-> 對 VM 名稱和資源組的限制很大程度上是可變大小造成的。 請參考[Azure 自動化 中的變數資產](https://docs.microsoft.com/azure/automation/shared-resources/variables)。
+> VM 名稱和資源群組的限制主要是變數大小的結果。 請參閱[Azure 自動化中的變數資產](https://docs.microsoft.com/azure/automation/shared-resources/variables)。
 
 |變數 | 描述|
 |---------|------------|
-|External_AutoStop_Condition | 設定觸發警示之條件所需的條件運算子。 可接受的值是`GreaterThan``GreaterThanOrEqual``LessThan`,`LessThanOrEqual`與 。|
+|External_AutoStop_Condition | 設定觸發警示之條件所需的條件運算子。 可接受的`GreaterThan`值`GreaterThanOrEqual`為`LessThan`、、 `LessThanOrEqual`和。|
 |External_AutoStop_Description | 在 CPU 百分比超出閾值的情況下停止虛擬機器的警示。|
 |External_AutoStop_Frequency | 規則的評估頻率。 此參數接受時間範圍格式的輸入。 可能的值為 5 分鐘到 6 小時。 |
 |External_AutoStop_MetricName | 要設定 Azure 警示規則的效能計量名稱。|
-|External_AutoStop_Severity | 指標警報的嚴重性,範圍從 0 到 4。 |
-|External_AutoStop_Threshold | 變數`External_AutoStop_MetricName`中指定的 Azure 警報規則的閾值。 百分比值範圍從 1 到 100。|
-|External_AutoStop_TimeAggregationOperator | 應用於所選視窗大小的時間聚合運算符用於評估條件。 可接受的值是`Average``Minimum``Maximum`、、`Total``Last`與 。|
-|External_AutoStop_TimeWindow | Azure 分析用於觸發警報的選定指標的視窗的大小。 此參數接受時間範圍格式的輸入。 可能的值為 5 分鐘到 6 小時。|
-|External_EnableClassicVMs| 指定解決方案是否針對經典 VM 的值。 預設值為 true。 為 Azure 雲端解決方案提供者 (CSP) 訂閱將此變數設定為 False。 傳統 VM 需要[經典執行為帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。|
-|External_ExcludeVMNames | 要排除的 VM 名稱的 Comma 分隔清單,限制為 140 個 VM。 如果將超過 140 個 VM 添加到清單中,則設置為排除的 VM 可能會無意中啟動或停止。|
-|External_Start_ResourceGroupNames | 針對啟動操作的一個或多個資源組的 Comma 分隔清單。|
-|External_Stop_ResourceGroupNames | 一個或多個資源組的 Comma 分隔清單,這些資源組針對停止操作。|
-|External_WaitTimeForVMRetrySeconds |在**SequencedStartStop_Parent** runbook 的 VM 上執行操作的等待時間(以秒為單位)。 此變數允許 Runbook 等待子操作指定秒數,然後再繼續執行下一個操作。 最長等待時間為 10800 或 3 小時。 默認值為 2100 秒。|
+|External_AutoStop_Severity | 計量警示的嚴重性，範圍可以從0到4。 |
+|External_AutoStop_Threshold | 變數`External_AutoStop_MetricName`中指定的 Azure 警示規則的閾值。 百分比值的範圍是從1到100。|
+|External_AutoStop_TimeAggregationOperator | 時間匯總運算子會套用至選取的視窗大小，以評估條件。 可接受的`Average`值`Minimum`為`Maximum`、 `Total`、、 `Last`和。|
+|External_AutoStop_TimeWindow | Azure 分析所選計量以觸發警示的時間範圍大小。 此參數接受時間範圍格式的輸入。 可能的值為 5 分鐘到 6 小時。|
+|External_EnableClassicVMs| 指定傳統 Vm 是否為解決方案目標的值。 預設值為 true。 針對 Azure 雲端解決方案提供者（CSP）訂用帳戶，將此變數設定為 False。 傳統 Vm 需要[傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。|
+|External_ExcludeVMNames | 要排除的 VM 名稱清單（以逗號分隔），限制為140個 Vm。 如果您將超過140個 Vm 新增至清單，則設定為 [已排除] 的 Vm 可能會不慎啟動或停止。|
+|External_Start_ResourceGroupNames | 以逗號分隔的清單，其中列出一個或多個以開始動作為目標的資源群組。|
+|External_Stop_ResourceGroupNames | 一或多個以停止動作為目標之資源群組的逗號分隔清單。|
+|External_WaitTimeForVMRetrySeconds |在 Vm 上針對**SequencedStartStop_Parent** runbook 執行動作所需的等候時間（以秒為單位）。 此變數可讓 runbook 在指定的秒數內等候子作業，再繼續進行下一個動作。 最長等候時間是10800或三小時。 預設值為2100秒。|
 |Internal_AutomationAccountName | 指定自動化帳戶的名稱。|
-|Internal_AutoSnooze_ARM_WebhookURI | Webhook URI 要求 VM 的自動停止方案。|
-|Internal_AutoSnooze_WebhookUri | Webhook URI 要求為經典 VM 提供自動停止方案。|
+|Internal_AutoSnooze_ARM_WebhookURI | 針對 Vm 的 AutoStop 案例呼叫的 webhook URI。|
+|Internal_AutoSnooze_WebhookUri | 針對傳統 Vm 的 AutoStop 案例呼叫的 webhook URI。|
 |Internal_AzureSubscriptionId | Azure 訂用帳戶識別碼。|
-|Internal_ResourceGroupName | 自動化帳戶資源組名稱。|
+|Internal_ResourceGroupName | 自動化帳戶資源組名。|
 
 >[!NOTE]
->對於變數`External_WaitTimeForVMRetryInSeconds`,預設值從 600 更新到 2100。 
+>若為變數`External_WaitTimeForVMRetryInSeconds`，預設值已從600更新為2100。 
 
-在所有方案中,`External_Start_ResourceGroupNames`變數和`External_Stop_ResourceGroupNames``External_ExcludeVMNames`是目標 VM 所必需的,但**AutoStop_CreateAlert_Parent、SequencedStartStop_Parent**和**ScheduledStartStop_Parent** **SequencedStartStop_Parent**runbook 的逗號分隔 VM 清單除外。 也就是說,VM 必須屬於目標資源組,才能啟動和停止執行操作。 此邏輯的運作方式類似 Azure 原則，其中您可以將訂用帳戶或資源群組設為目標，並讓新建立的 VM 繼承動作。 此方法可免去針對每部虛擬機器維護個別排程的必要，並可大規模地管理啟動和停止。
+在所有案例中，除了`External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` **AutoStop_CreateAlert_Parent**、 **SequencedStartStop_Parent**和**ScheduledStartStop_Parent** runbook 的以逗號分隔的 vm 清單以外，所有的變數、和`External_ExcludeVMNames`都是目標 vm 所需的。 也就是說，您的 Vm 必須屬於目標資源群組，才會發生啟動和停止動作。 此邏輯的運作方式類似 Azure 原則，其中您可以將訂用帳戶或資源群組設為目標，並讓新建立的 VM 繼承動作。 此方法可免去針對每部虛擬機器維護個別排程的必要，並可大規模地管理啟動和停止。
 
 ### <a name="schedules"></a>排程
 
-下表列出在您的自動化帳戶中建立的各個預設排程。您可以修改它們，或建立自己的自訂排程。默認情況下,除**Scheduled_StartVM**和**Scheduled_StopVM**計畫外,所有計劃都已禁用。
+下表列出在您的自動化帳戶中建立的各個預設排程。您可以修改它們，或建立自己的自訂排程。預設會停用所有排程，但**Scheduled_StartVM**和**Scheduled_StopVM**排程除外。
 
-不要啟用所有計劃,因為這樣做可能會創建重疊的計劃操作。 最好確定要執行哪些優化並相應地修改它們。 如需進一步說明，請參閱＜概觀＞一節中的範例案例。
+請勿啟用所有排程，因為這麼做可能會建立重迭的排程動作。 最好是判斷您想要執行的優化，並據以修改。 如需進一步說明，請參閱＜概觀＞一節中的範例案例。
 
 |排程名稱 | 頻率 | 描述|
 |--- | --- | ---|
-|Schedule_AutoStop_CreateAlert_Parent | 每 8 小時 | 每 8 小時運行**一次AutoStop_CreateAlert_Parent** runbook,這反過來`External_Start_ResourceGroupNames`又`External_Stop_ResourceGroupNames`會停止`External_ExcludeVMNames`中基於 VM 的值, 和變數。 或者,可以使用`VMList`參數指定逗號分隔的 VM 清單。|
-|Scheduled_StopVM | 使用者定義的每日 | 在指定時間運行具有每天參數`Stop`**的ScheduledStopStart_Parent** runbook。自動停止滿足變數資產定義的規則的所有 VM。啟用相關計劃**計劃-啟動VM。**|
-|Scheduled_StartVM | 使用者定義的每日 | 在指定時間運行具有`Start`每天參數值**的ScheduledStopStart_Parent** runbook。 自動啟動滿足變數資產定義的規則的所有 VM。啟用相關**計劃計劃-停止VM。**|
-|Sequenced-StopVM | 上午 1:00 (UTC)，每星期五 | 在指定時間運行**Sequenced_StopStop_Parent**運行簿,`Stop`其參數值為每週五。會以循序方式 (遞增) 停止具有由適當變數定義之 **SequenceStop** 標記的所有虛擬機器。 有關標記值和資產變數的詳細資訊,請參閱[Runbook](#runbooks)。啟用相關排程 **Sequenced-StartVM**。|
-|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | **在指定**時間運行SequencedStopStart_Parent運行簿的參數值`Start`為每週一。 會以循序方式 (遞減) 啟動具有由適當變數定義之 **SequenceStart** 標記的所有虛擬機器。 有關標記值和變數資產的詳細資訊,請參閱[Runbook](#runbooks)。 啟用相關排程 **Sequenced-StopVM**。
+|Schedule_AutoStop_CreateAlert_Parent | 每 8 小時 | 每隔8小時執行**AutoStop_CreateAlert_Parent** runbook，這會在`External_Start_ResourceGroupNames`、 `External_Stop_ResourceGroupNames`和`External_ExcludeVMNames`變數中停止以 VM 為基礎的值。 或者，您也可以使用`VMList`參數來指定以逗號分隔的 vm 清單。|
+|Scheduled_StopVM | 使用者定義，每日 | 在指定**ScheduledStopStart_Parent**的時間，以`Stop`每日的參數執行 ScheduledStopStart_Parent runbook。自動停止符合變數資產所定義之規則的所有 Vm。啟用 [已排程的相關排程 **-StartVM**]。|
+|Scheduled_StartVM | 使用者定義，每日 | 在指定**ScheduledStopStart_Parent**的時間執行`Start`每日參數值為的 ScheduledStopStart_Parent runbook。 會自動啟動所有符合變數資產所定義之規則的 Vm。啟用 [已排程的相關排程 **-scheduled-stopvm**]。|
+|Sequenced-StopVM | 上午 1:00 (UTC)，每星期五 | 在指定**Sequenced_StopStop_Parent**的時間執行具有每個星期五`Stop`之參數值的 Sequenced_StopStop_Parent runbook。會以循序方式 (遞增) 停止具有由適當變數定義之 **SequenceStop** 標記的所有虛擬機器。 如需標記值和資產變數的詳細資訊，請參閱[runbook](#runbooks)。啟用相關排程 **Sequenced-StartVM**。|
+|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 在指定**SequencedStopStart_Parent**的時間，以`Start`每個星期一的參數值執行 SequencedStopStart_Parent runbook。 會以循序方式 (遞減) 啟動具有由適當變數定義之 **SequenceStart** 標記的所有虛擬機器。 如需標記值和變數資產的詳細資訊，請參閱[runbook](#runbooks)。 啟用相關排程 **Sequenced-StopVM**。
 
-## <a name="use-of-the-solution-with-classic-vms"></a>將解決方案與經典 VM 一起使用
+## <a name="use-of-the-solution-with-classic-vms"></a>搭配傳統 Vm 使用解決方案
 
-如果您在**非工作時間使用針對經典 VM 的啟動/停止 VM**解決方案,則自動化將按每個雲端服務順序處理所有 VM。 VM 仍在不同的雲端服務中並行處理。 
+如果您在傳統 Vm 的離峰時間使用 [**啟動/停止 vm** ] 解決方案，則自動化會依照每個雲端服務連續處理所有 vm。 Vm 仍會在不同的雲端服務之間平行處理。 
 
-要將解決方案與經典 VM 一起使用,您需要一個經典運行作為帳戶,預設情況下不創建該帳戶。 有關創建經典"作為"帳戶的說明,請參閱[創建經典運行作為帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+若要搭配傳統 Vm 使用解決方案，您需要傳統的執行身分帳戶，預設不會建立。 如需建立傳統執行身分帳戶的指示，請參閱[建立傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
 
-如果每個雲服務有超過 20 個 VM,以下是一些建議:
+如果您的每個雲端服務有20部以上的 Vm，以下是一些建議：
 
-* 使用父 runbook 創建多個計畫**ScheduledStartStop_Parent**並為每個計畫指定 20 個 VM。 
-* 在計劃屬性中,使用`VMList`參數將 VM 名稱指定為逗號分隔清單。 
+* 建立多個具有父 runbook **ScheduledStartStop_Parent**的排程，並指定每個排程20個 vm。 
+* 在 [排程] 屬性中， `VMList`使用參數將 VM 名稱指定為逗號分隔清單。 
 
-否則,如果此解決方案的自動化作業運行超過三個小時,則根據[公平共用](automation-runbook-execution.md#fair-share)限制暫時卸載或停止該作業。
+否則，如果此解決方案的自動化作業執行超過三個小時，則會根據[公平共用](automation-runbook-execution.md#fair-share)限制暫時卸載或停止該工作。
 
-Azure CSP 訂閱僅支援 Azure 資源管理器模型。 非 Azure 資源管理員服務在程式中不可用。 當**非工作時間解決方案執行時啟動/停止 VM**執行時,您可能會收到錯誤,因為它具有管理經典資源的 cmdlet。 若要深入了解 CSP，請參閱 [CSP 訂用帳戶中可用的服務](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果使用 CSP 訂閱,則應在部署後將[External_EnableClassicVMs](#variables)變數設置為 False。
+Azure CSP 訂用帳戶僅支援 Azure Resource Manager 模型。 程式中無法使用非 Azure Resource Manager 的服務。 當在**離峰時間執行「啟動/停止 Vm」解決方案**時，您可能會收到錯誤，因為它有管理傳統資源的 Cmdlet。 若要深入了解 CSP，請參閱 [CSP 訂用帳戶中可用的服務](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果您使用 CSP 訂用帳戶，您應該在部署之後，將[External_EnableClassicVMs](#variables)變數設為 False。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="enable-the-solution"></a>啟用解決方案
 
-要開始使用該解決方案,請按照[啟用開始/停止 VM 解決方案](automation-solution-vm-management-enable.md)中的步驟操作。
+若要開始使用解決方案，請遵循[啟用啟動/停止 vm 解決方案](automation-solution-vm-management-enable.md)中的步驟。
 
 ## <a name="view-the-solution"></a>檢視解決方案
 
-啟用解決方案後,請使用以下機制之一存取解決方案:
+當您啟用解決方案之後，請使用下列其中一種機制來存取它：
 
-* 從自動化帳戶中,選擇 **「相關資源**」下的 **「開始/停止 VM」。。** 在"開始/停止 VM"頁上,選擇"從頁面右側**管理解決方案**",在 **"管理開始/停止 VM 解決方案**"下。
+* 從您的自動化帳戶中，選取 [**相關資源**] 底下的 [**啟動/停止 VM** ]。 在 [啟動/停止 VM] 頁面的 [管理] [**啟動/停止 Vm 解決方案**] 底下，選取頁面右側的 [**管理解決方案**]。
 
-* 導航到連結到自動化帳戶的日誌分析工作區。 選擇工作區后,從左側窗格中選擇 **"解決方案**"。 在「解決方案」頁上,從清單中選擇 **「開始-停止-VM_工作區]** 解決方案。  
+* 流覽至與您的自動化帳戶連結的 Log Analytics 工作區。 選取工作區之後，請從左窗格中選擇 [**方案**]。 在 [解決方案] 頁面上，從清單中選取 **[啟動-停止 VM [工作區]]** 解決方案。  
 
-選取該解決方案會顯示 [Start-Stop-VM[工作區]]**** 解決方案頁面。 在這裡,您可以查看重要詳細資訊,例如**StartStopVM**磁貼中的資訊。 如同在 Log Analytics 工作區中，此圖格會顯示解決方案中已啟動並已順利完成的 Runbook 作業計數和圖形表示。
+選取該解決方案會顯示 [Start-Stop-VM[工作區]]**** 解決方案頁面。 您可以在這裡查看重要的詳細資料，例如 [ **StartStopVM** ] 磚中的資訊。 如同在 Log Analytics 工作區中，此圖格會顯示解決方案中已啟動並已順利完成的 Runbook 作業計數和圖形表示。
 
 ![自動化更新管理解決方案頁面](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-您可以通過單擊圓環磁貼對作業記錄執行進一步分析。 解決方案儀錶板顯示作業歷史記錄和預定義的日誌搜索查詢。 切換到日誌分析高級門戶,以便根據您的搜索查詢進行搜索。
+您可以藉由按一下環圈圖格，來執行作業記錄的進一步分析。 解決方案儀表板會顯示作業歷程記錄和預先定義的記錄搜尋查詢。 切換至 log analytics advanced portal 以根據您的搜尋查詢進行搜尋。
 
 ## <a name="update-the-solution"></a>更新解決方案
 
-如果您已部署此解決方案的早期版本,請將其從帳戶中刪除,然後再部署更新的版本。 依步驟[刪除解決方案,](#remove-the-solution)然後按照步驟[部署解決方案](automation-solution-vm-management-enable.md)。
+如果您已部署此解決方案的先前版本，請先從帳戶中刪除它，再部署更新的版本。 遵循步驟來[移除解決方案](#remove-the-solution)，然後遵循步驟來[部署解決方案](automation-solution-vm-management-enable.md)。
 
 ## <a name="remove-the-solution"></a>移除解決方案
 
-如果不再需要使用解決方案,可以從自動化帳戶中刪除它。 刪除解決方案只會移除 Runbook。 不會刪除新增解決方案時所建立的排程或變數。 如果不將這些資產與其他 Runbook 一起使用,請手動刪除這些資產。
+如果您不再需要使用解決方案，您可以從自動化帳戶中刪除它。 刪除解決方案只會移除 Runbook。 不會刪除新增解決方案時所建立的排程或變數。 如果您不使用其他 runbook，請手動移除這些資產。
 
-要移除解決方案:
+若要刪除解決方案：
 
-1. 從自動化帳戶中,在 **「相關資源**」下選擇 **「連結工作區**」。。
+1. 從您的自動化帳戶，選取 [**相關資源**] 底下的 [**連結的工作區**]。
 
-2. 選擇 **「轉到工作區**」。
+2. 選取 [**移至工作區**]。
 
-3. 點選 **「一般**」**的解決方案**。 
+3. 按一下 **[一般**] 下的 [**方案**]。 
 
 4. 在 [解決方案] 頁面上，選取 [Start-Stop-VM[工作區]]**** 解決方案。 
 
-5. 在**VM 管理解決方案[工作區]** 頁上,選擇"從功能表**中刪除**"。<br><br> ![刪除 VM 管理解決方案](media/automation-solution-vm-management/vm-management-solution-delete.png)
+5. 在 **[VMManagementSolution [工作區]]** 頁面上，從功能表中選取 [**刪除**]。<br><br> ![刪除 VM 管理解決方案](media/automation-solution-vm-management/vm-management-solution-delete.png)
 
-6. 在 **「刪除解決方案」** 視窗中,確認要刪除解決方案。
+6. 在 [**刪除解決方案**] 視窗中，確認您想要刪除解決方案。
 
-7. 當資訊被驗證並刪除解決方案時,您可以在從功能表中選擇**的「通知**」下追蹤進度。 刪除解決方案的過程開始後,您將返回到"解決方案"頁。
+7. 在驗證資訊並刪除解決方案時，您可以在 [**通知**] 底下追蹤從功能表中選擇的進度。 在移除解決方案的程式啟動之後，您就會返回 [方案] 頁面。
 
-此程序並不會刪除自動化帳戶和 Log Analytics 工作區。 如果不想保留日誌分析工作區,則必須手動將其從 Azure 門戶中刪除:
+此程序並不會刪除自動化帳戶和 Log Analytics 工作區。 如果您不想保留 Log Analytics 工作區，您必須從 Azure 入口網站手動將它刪除：
 
-1. 搜尋並選擇**紀錄分析工作區**。
+1. 搜尋並選取 [ **Log Analytics 工作區**]。
 
-2. 在日誌分析工作區頁面上,選擇工作區。
+2. 在 [Log Analytics 工作區] 頁面上，選取工作區。
 
 3. 在工作區 [設定] 頁面的功能表中選取 [刪除]****。
 
-4. 如果不想保留 Azure 自動化帳戶[解決方案元件](#solution-components),可以手動刪除每個元件。
+4. 如果您不想保留 Azure 自動化帳戶[解決方案元件](#solution-components)，可以手動刪除每個元件。
 
 ## <a name="next-steps"></a>後續步驟
 
-為 Azure VM[在](automation-solution-vm-management-enable.md)**非工作時間解決方案啟用開始/停止 VM。**
+針對您的 Azure Vm[啟用](automation-solution-vm-management-enable.md)[**在離峰期間啟動/停止 vm** ] 解決方案。

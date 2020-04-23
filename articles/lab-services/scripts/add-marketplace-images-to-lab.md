@@ -1,5 +1,5 @@
 ---
-title: PowerShell - 將市場映射添加到 Azure 開發人員測試實驗室中的實驗室
+title: PowerShell-在 Azure DevTest Labs 中將 marketplace 映射新增至實驗室
 description: 這個 PowerShell 指令碼會將市集映像新增至 Azure DevTest Labs 的實驗室中。
 services: lab-services
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 3d699a22ed06022c6d9df12ade7f202fb304648c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f5d6b6b9500ccd90630e8920c09340658fb76f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76166438"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100173"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 將市集映像新增至 Azure DevTest Labs 的實驗室中
 
@@ -40,7 +40,7 @@ ms.locfileid: "76166438"
 
 | Command | 注意 |
 |---|---|
-| 查找-阿茲資源 | 根據指定的參數搜尋資源。 |
+| 尋找-Get-azresource | 根據指定的參數搜尋資源。 |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 取得資源。 |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | 修改資源。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | 建立資源。 |

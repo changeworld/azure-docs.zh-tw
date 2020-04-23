@@ -1,35 +1,33 @@
 ---
-title: 在 Azure 中的租戶之間共用庫圖像
-description: 瞭解如何使用共用映射庫跨 Azure 租戶共用 VM 映射。
-services: virtual-machines-windows
+title: 在 Azure 中跨租使用者共用資源庫映射
+description: 瞭解如何使用共用映射資源庫跨 Azure 租使用者共用 VM 映射。
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c35799147d276bf4b6f07893b7cd975c5c5823c
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74065507"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101190"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租戶共用庫 VM 映射
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
 
-共用圖像庫允許您使用 RBAC 共用圖像。 您可以使用 RBAC 在租戶中共用圖像，甚至共用租戶外部的個人。 有關此簡單共用選項的詳細資訊，請參閱[共用庫](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)。
+共用映射資源庫可讓您使用 RBAC 共用影像。 您可以使用 RBAC，在租使用者中共用映射，甚至是租使用者外部的個人。 如需這個簡單共用選項的詳細資訊，請參閱[共用資源庫](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> 不能使用門戶從另一個 Azure 租戶中的映射部署 VM。 要從租戶之間共用的映射創建 VM，必須使用[Azure CLI](../linux/share-images-across-tenants.md)或 Powershell。
+> 您無法使用入口網站，從另一個 azure 租使用者中的映射部署 VM。 若要從租使用者之間共用的映射建立 VM，您必須使用[Azure CLI](../linux/share-images-across-tenants.md)或 Powershell。
 
 ## <a name="create-a-vm-using-powershell"></a>使用 PowerShell 建立 VM
 
-使用應用程式 ID、機密 ID 和租戶 ID 登錄到兩個租戶。 
+使用應用程式識別碼、秘密和租使用者識別碼登入這兩個租使用者。 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -42,7 +40,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-在資源組中創建對應用註冊具有許可權的 VM。 將此示例中的資訊替換為您自己的資訊。
+在具有應用程式註冊許可權的資源群組中建立 VM。 將此範例中的資訊取代為您自己的。
 
 
 
@@ -86,4 +84,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>後續步驟
 
-您還可以使用[Azure 門戶](shared-images-portal.md)創建共用圖像庫資源。
+您也可以使用[Azure 入口網站](shared-images-portal.md)建立共用映射庫資源。

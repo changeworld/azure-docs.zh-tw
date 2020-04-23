@@ -1,101 +1,101 @@
 ---
-title: 更新 Azure 事件網格主題或域的定價層
-description: 本文介紹如何使用 Azure 門戶、Azure CLI 和 Azure PowerShell 更新 Azure 事件網格主題或域（基本到高級、基本溢價）的定價層。
+title: 更新 Azure 事件方格主題或網域的定價層
+description: 本文說明如何使用 Azure 入口網站、Azure CLI 和 Azure PowerShell，將 Azure 事件方格主題或網域的定價層（基本到高階，premium 到基本）更新。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 1e92a9f0b9ba007b289c634995b04f4f1575310a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caea8d515964510fce432eb0497e3af19ecc1369
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79300137"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101632"
 ---
 # <a name="update-pricing-tier"></a>更新定價層 
-本文演示如何使用 Azure 門戶、Azure CLI 和 Azure PowerShell 更新 Azure 事件網格主題或域的定價層。 
+本文說明如何使用 Azure 入口網站、Azure CLI 和 Azure PowerShell 來更新 Azure 事件方格主題或網域的定價層。 
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
-本節演示如何更改 Azure 門戶中主題或域的定價層。 
+本節說明如何在 Azure 入口網站中變更主題或網域的定價層。 
 
 ### <a name="overview-page"></a>概觀分頁
-您可以在 **"概述"** 頁上更改主題或域的定價層。 下面的示例演示如何將主題從基本層升級到高級層。 從高級層降級到基本層的步驟類似。
+您可以在 [**總覽**] 頁面上變更主題或網域的定價層。 下列範例顯示如何將主題從基本層升級至進階層。 從高階層降級至基本層的步驟很類似。
 
-1. 在[Azure 門戶](https://portal.azure.com)中，導航到主題或域頁。 
-2. 在 **"概述"** 頁上，選擇當前定價層（在下面的示例中，它是**基本**.）
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [主題] 或 [網域] 頁面。 
+2. 在 [**總覽**] 頁面上，選取目前的定價層（在下列範例中為 [**基本**]）。
     
-    ![選擇當前定價層](./media/update-tier/select-tier.png)
-3. 在 **"定價層"** 頁上，更改層，然後選擇 **"確定**"。 
+    ![選取目前的定價層](./media/update-tier/select-tier.png)
+3. 在 [**定價層**] 頁面上，變更層級，然後選取 **[確定]**。 
 
     ![更新定價層](./media/update-tier/change-tier.png)
-4. 檢查 **"通知"** 頁中操作的狀態。
+4. 在 [**通知**] 頁面中，檢查作業的狀態。
 
     ![更新狀態](./media/update-tier/status.png)    
-5. 確認在 **"概述"** 頁上看到更新的層。 
+5. 確認您在 [**總覽**] 頁面上看到 [已更新] 層。 
 
     ![更新狀態](./media/update-tier/changed-tier.png)
 
 ### <a name="networking-page"></a>網路功能頁面
-您可以在 **"網路"** 頁上從基本層**升級到**高級層。 但是，您無法將從高級層降級到此頁面上的基本層。 
+您可以從基本層**升級**至 [**網路**功能] 頁面上的 [進階層]。 不過，您無法從進階層降級到此頁面上的基本層。 
 
-1. 在[Azure 門戶](https://portal.azure.com)中，導航到主題或域頁。 
-2. 在 **"網路"** 頁上，切換到 **"專用終結點連接（預覽）"** 選項卡。 
-3. 如果當前定價層是**基本**，您將看到以下消息。 請選取它。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [主題] 或 [網域] 頁面。 
+2. 在 [**網路**功能] 頁面上，切換至 [**私人端點連接（預覽）** ] 索引標籤。 
+3. 如果目前的定價層是「**基本**」，您會看到下列訊息。 請選取它。 
 
-    ![更新專用終結點連接頁上的層](./media/update-tier/private-endpoint-connections-page.png)
-4. 在 **"更新到高級定價層"層**頁上，選擇 **"是**"。 
+    ![[私人端點連接] 頁面上的 [更新層]](./media/update-tier/private-endpoint-connections-page.png)
+4. 在 [**更新為 premium 定價層**] 頁面上，選取 **[是]**。 
     
     ![確認升級](./media/update-tier/message-private-endpoint-connection.png)
-5. 檢查 **"通知"** 頁中操作的狀態。
+5. 在 [**通知**] 頁面中，檢查作業的狀態。
 
     ![更新狀態](./media/update-tier/status.png)
 
 
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-本節介紹如何使用 Azure CLI 命令更改主題或域的定價層。 
+本節說明如何使用 Azure CLI 命令來變更主題的定價層。 若要更新網域的定價層，請以`az eventgrid domain update`類似的方式使用命令。
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>將主題從基本升級到高級
-
-```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""premium\""}}"
-```
-
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>將主題從高級降級為基本
+### <a name="prerequisites"></a>Prerequisites
+執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""basic\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>將域從基本域升級到高級域
+如果未安裝延伸模組，請執行下列命令來安裝它： 
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/domains/<EVENT GRID DOMAIN NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""premium\""}}"
+az extension add -n eventgrid
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>將域從高級降級為基本域
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>將主題從基本升級至 premium
 
 ```azurecli-interactive
-az rest --method patch \
-        --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/domains/<EVENT GRID DOMAIN NAME>?api-version=2020-04-01-preview" \
-        --body "{\""sku\"": {\""name\"": \""basic\""}}"
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Premium" 
 ```
 
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>將主題從 premium 降級為基本
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Basic" 
+```
 
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-本節介紹如何使用 PowerShell 命令更改主題或域的定價層。 
+本節說明如何使用 PowerShell 命令來變更主題或網域的定價層。 
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>為 REST API 呼叫準備權杖和標頭 
-運行以下先決條件命令，獲取用於 REST API 呼叫的身份驗證權杖以及授權和其他標頭資訊。 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>準備 REST API 呼叫的權杖和標頭 
+執行下列必要條件命令，以取得用於 REST API 呼叫的驗證權杖，以及授權和其他標頭資訊。 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,7 +113,7 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>將主題從基本升級到高級
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>將主題從基本升級至 premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -125,7 +125,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>將主題從高級降級為基本
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>將主題從 premium 降級為基本
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -137,7 +137,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>將域從基本域升級到高級域
+### <a name="upgrade-a-domain-from-basic-to-premium"></a>將網域從基本升級至 premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -149,7 +149,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>將域從高級降級為基本域
+### <a name="downgrade-a-domain-from-premium-to-basic"></a>將網域從 premium 降級為基本
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -162,4 +162,4 @@ Invoke-RestMethod -Method 'Patch' `
 ```
 
 ## <a name="next-steps"></a>後續步驟
-對於高級層主題和域，您可以配置專用終結點以僅限制從選定的虛擬網路進行訪問。 有關分步說明，請參閱[配置專用終結點](configure-private-endpoints.md)。
+針對高階層主題和網域，您可以設定私人端點，以限制只能從選取的虛擬網路存取。 如需逐步指示，請參閱[設定私人端點](configure-private-endpoints.md)。

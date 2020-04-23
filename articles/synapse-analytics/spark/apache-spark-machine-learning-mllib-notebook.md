@@ -1,6 +1,6 @@
 ---
-title: 使用 Apache Spark MLlib 和 Azure 突觸分析建構機器學習應用
-description: 瞭解如何使用 Apache Spark MLlib 創建機器學習應用,該應用程式使用邏輯回歸的分類分析數據集。
+title: 使用 Apache Spark MLlib 和 Azure Synapse 分析來建立機器學習應用程式
+description: 瞭解如何使用 Apache Spark MLlib 來建立機器學習應用程式，以透過羅吉斯回歸使用分類來分析資料集。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -8,18 +8,18 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 9dc4047b9e95b088bb614858091f43286cefe361
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430002"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096294"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure 突觸分析建構機器學習應用
+# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse 分析來建立機器學習應用程式
 
-在本文中,您將瞭解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/)創建機器學習應用程式,該應用程式在 Azure 打開的數據集上執行簡單的預測分析。 Spark 提供內建機器學習庫。 此範例使用邏輯來歸*類別*。
+在本文中，您將瞭解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/)來建立機器學習應用程式，以對 Azure 開放資料集執行簡單的預測性分析。 Spark 提供內建的機器學習程式庫。 這個範例會透過羅吉斯回歸來使用*分類*。
 
-MLlib 是一個核心 Spark 庫,它提供了許多可用於機器學習任務的實用程式,包括適用於以下功能的實用程式:
+MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公用程式，包括適用于的公用程式：
 
 - 分類
 - 迴歸
@@ -30,25 +30,25 @@ MLlib 是一個核心 Spark 庫,它提供了許多可用於機器學習任務的
 
 ## <a name="understand-classification-and-logistic-regression"></a>了解分類和羅吉斯迴歸
 
-分類** 是常見的機器學習工作，是指將輸入資料依類別排序的程序。 分類演演算法的工作是找出如何為提供的輸入資料分配*標籤*。 例如,您可以想到機器學習演演演算法,該演演演算法接受股票資訊作為輸入,並將股票分為兩類:您應該出售的股票和應保留的股票。
+分類** 是常見的機器學習工作，是指將輸入資料依類別排序的程序。 分類演算法的工作是要找出如何將*標籤*指派給您所提供的輸入資料。 例如，您可以將機器學習演算法視為接受庫存資訊做為輸入，並將股票分成兩個類別：您應該銷售的股票和您應該保留的股票。
 
-*邏輯回歸*是可用於分類的演演演算法。 Spark 的羅吉斯迴歸 API 可用於*二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
+*羅吉斯回歸*是一種可用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於*二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
 
 總之，羅吉斯迴歸的程序會產生一個*羅吉斯函數* ，此函數可用來預測輸入向量可能屬於哪一個群組的機率。
 
-## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>紐約市計程車數據預測分析示例
+## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>NYC 計程車資料的預測性分析範例
 
-在此示例中,您可以使用 Spark 對來自紐約的計程車行程提示數據執行一些預測性分析。 資料可透過 Azure[開放資料集 。](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 數據集的此子集包含有關黃色計程車行程的資訊,包括有關每次行程、開始和結束時間和地點、成本和其他有趣屬性的資訊。
+在此範例中，您會使用 Spark 對紐約的計程車行程秘訣資料執行一些預測性分析。 資料可透過[Azure 開放資料集](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)取得。 此資料集的子集包含黃色計程車行程的相關資訊，包括每個行程的相關資訊、開始和結束時間和位置、成本和其他有趣的屬性。
 
 > [!IMPORTANT]
-> 從存儲位置提取此數據可能會收取額外費用。
+> 從儲存位置提取此資料可能會產生額外費用。
 
-在以下步驟中,您將開發一個模型來預測特定行程是否包含提示。
+在下列步驟中，您會開發模型來預測特定旅程是否包含提示。
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>建立 Apache Spark MLlib 機器學習應用程式
 
-1. 使用 PySpark 內核創建筆記本。 有關說明,請參閱[創建筆記本](./apache-spark-notebook-create-spark-use-sql.md#create-a-notebook)。
-2. 匯入此應用程式所需的類型。 複製以下代碼並將其貼上到空單元格中,然後按**SHIFT + ENTER**,或使用代碼左側的藍色播放圖示運行單元格。
+1. 使用 PySpark 核心建立筆記本。 如需指示，請參閱[建立筆記本](../quickstart-apache-spark-notebook.md#create-a-notebook)。
+2. 匯入此應用程式所需的類型。 複製下列程式碼並貼到空白儲存格中，然後按**SHIFT + enter**鍵，或使用程式碼左邊的藍色播放圖示來執行儲存格。
 
     ```python
     import matplotlib.pyplot as plt
@@ -64,13 +64,13 @@ MLlib 是一個核心 Spark 庫,它提供了許多可用於機器學習任務的
     from pyspark.ml.evaluation import BinaryClassificationEvaluator
     ```
 
-    由於使用 PySpark 核心，因此不需要明確建立任何內容。 當您運行第一個代碼單元時,將自動為您創建 Spark 上下文。
+    由於使用 PySpark 核心，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 內容。
 
 ## <a name="construct-the-input-dataframe"></a>建構輸入資料框架
 
-由於原始數據採用 Parquet 格式,因此可以使用 Spark 上下文將檔直接作為數據幀放入記憶體。 雖然下面的代碼使用默認選項,但如果需要,可以強制映射數據類型和其他架構屬性。
+因為原始資料採用 Parquet 格式，所以您可以使用 Spark 內容直接將檔案以資料框架的形式提取至記憶體中。 雖然下列程式碼使用預設選項，但您可以視需要強制對應資料類型和其他架構屬性。
 
-1. 通過將代碼粘貼到新單元格中,運行以下行以創建 Spark 數據幀。 第一節將 Azure 儲存存取資訊分配給變數。 第二部分允許 Spark 從 Blob 存儲遠端讀取。 最後一行代碼讀取鑲木地板,但此時未載入任何數據。
+1. 執行下列幾行，將程式碼貼入新的儲存格來建立 Spark 資料框架。 第一個區段會將 Azure 儲存體存取訊號指派給變數。 第二個區段允許 Spark 從遠端讀取 blob 儲存體。 最後一行程式碼會讀取 parquet，但此時不會載入任何資料。
 
     ```python
     # Azure storage access info
@@ -87,7 +87,7 @@ MLlib 是一個核心 Spark 庫,它提供了許多可用於機器學習任務的
     df = spark.read.parquet(wasbs_path)
     ```
 
-2. 拉動所有這些數據會產生大約 15 億行。 根據 Spark 池(預覽)的大小,原始數據可能太大或操作時間過長。 您可以將此資料篩選為更小的數據。 如果需要,添加以下行以將數據篩選到大約 200 萬行,以便獲得回應更靈敏的體驗。 使用這些參數提取一周的數據。
+2. 提取所有這項資料會產生大約1500000000個數據列。 根據您的 Spark 集區大小（預覽），原始資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的專案。 如有需要，請新增下列幾行，將資料篩選到大約2000000個數據列，以獲得更快的回應體驗。 使用這些參數來提取一周的資料。
 
     ```python
     # Create an ingestion filter
@@ -97,29 +97,29 @@ MLlib 是一個核心 Spark 庫,它提供了許多可用於機器學習任務的
     filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
     ```
 
-3. 簡單篩選的缺點是,從統計角度來看,它可能會引入數據偏差。 另一種方法是使用Spark中內置的採樣。 如果在上面的代碼之後應用,以下代碼可將數據集減少到大約 2000 行。 此採樣步驟可以代替簡單篩選器使用,也可以與簡單篩選器結合使用。
+3. 簡單篩選的缺點是，從統計觀點來看，它可能會導致資料偏差。 另一種方法是使用 Spark 內建的取樣。 如果在上述程式碼之後套用，下列程式碼會將資料集縮減為大約2000個數據列。 此取樣步驟可以用來取代簡單的篩選器，或與簡單的篩選準則搭配使用。
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. 現在可以查看數據以查看已讀取的內容。 通常最好使用子集而不是完整集查看數據,具體取決於數據集的大小。 以下代碼提供了兩種查看數據的方法:前者是基本數據,後者是基本代碼,後者提供了更豐富的網格體驗,以及以圖形方式可視化數據的能力。
+4. 您現在可以查看資料，以查看已讀取的內容。 根據資料集的大小而定，通常最好是使用子集來檢查資料，而不是完整的集合。 下列程式碼提供兩種方式來查看資料：前者是基本的，後者提供更豐富的方格體驗，以及以圖形方式視覺化資料的功能。
 
     ```python
     sampled_taxi_df.show(5)
     display(sampled_taxi_df.show(5))
     ```
 
-5. 根據生成的數據集大小的大小以及多次試驗或運行筆記本的需要,最好在工作區中本地緩存數據集。 執行顯式緩存有三種方法:
+5. 根據所產生的資料集大小，以及您需要實驗或執行筆記本的需求而定，建議您在工作區中的本機快取資料集。 有三種方式可執行明確的快取：
 
-   - 儲存資料盒儲存為檔案
-   - 將資料盒另存為暫存表或檢視
-   - 將資料盒另存為永久表
+   - 以檔案的形式將資料框架儲存在本機
+   - 將資料框架儲存為臨時表或視圖
+   - 將資料框架儲存為永久資料表
 
-這些方法的前 2 個包含在以下代碼示例中。
+下列程式碼範例包含這些方法的前兩個。
 
-創建臨時表或視圖提供對數據的不同訪問路徑,但僅在Spark實例會話的持續期間持續。
+建立臨時表或 view 會提供不同的資料存取路徑，但只會持續在 Spark 實例會話的持續時間內。
 
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
@@ -127,7 +127,7 @@ sampled_taxi_df.createOrReplaceTempView("nytaxi")
 
 ## <a name="understand-the-data"></a>了解資料
 
-通常,此時您將經歷*一個探索性數據分析*(EDA) 階段,以了解數據。 以下代碼顯示了與提示相關的三種不同的數據可視化效果,這些提示導致對數據的狀態和品質下結論。
+一般來說，您會經歷*探索資料分析*（EDA）的階段，以瞭解資料。 下列程式碼顯示的三種不同的資料視覺效果，會導致資料狀態和品質的相關結論。
 
 ```python
 # The charting package needs a Pandas dataframe or numpy array do the conversion
@@ -159,20 +159,20 @@ plt.suptitle('')
 plt.show()
 ```
 
-![直方圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![框 Whisker](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![繪圖散射圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
+![長條圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
+![方塊框](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
+![圖散佈圖](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="preparing-the-data"></a>準備資料
 
-原始形式的數據通常不適合直接傳遞到模型。 必須對數據執行一系列操作,才能使其進入模型可以使用它的狀態。
+原始格式的資料通常不適合直接傳遞至模型。 您必須對資料執行一系列的動作，才能使其進入模型可以取用它的狀態。
 
-在下面的代碼中,將執行四類操作:
+下列四個作業類別的程式碼會執行：
 
-- 通過篩選刪除異常值/不正確的值。
-- 刪除不需要的列。
-- 創建從原始數據派生的新列,使模型更有效地工作,有時稱為"壯舉"。
-- 標籤,因為您正在進行二進位分類(是否會在給定行程中有提示或沒有),因此需要將小費金額轉換為 0 或 1 值。
+- 透過篩選移除極端值/不正確的值。
+- 移除不需要的資料行。
+- 建立衍生自原始資料的新資料行，讓模型更有效率地運作，有時又稱為特徵化。
+- 加上標籤，因為您正在進行二元分類（在指定的旅程上將會有提示，而不會有任何秘訣），因此需要將 tip 量轉換成0或1的值。
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -192,7 +192,7 @@ taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paym
                                 )
 ```
 
-然後通過數據進行第二次傳遞以添加最終要素。
+接著會對資料進行第二次傳遞，以加入最終功能。
 
 ```Python
 taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'passengerCount'\
@@ -208,7 +208,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>建立羅吉斯迴歸模型
 
-最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 邏輯回歸演演演算法的輸入需要是一組*標籤特徵向量對*,其中*特徵向量*是表示輸入點的數位向量。 因此,我們需要將分類列轉換為數位。 和`trafficTimeBins``weekdayString`列需要轉換為整數表示形式。 執行轉換的方法有多種,但本示例中採用的方法是*OneHotEncode,* 這是一種常見的方法。
+最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯回歸演算法的輸入必須是一組*標籤-特性向量配對*，其中*特徵向量*是代表輸入點的數位向量。 因此，我們需要將類別資料行轉換成數位。 `trafficTimeBins`和`weekdayString`資料行必須轉換成整數表示。 有多種方法可以執行轉換，不過在此範例中採取的方法是*OneHotEncoding*，這是一種常見的方法。
 
 ```python
 # The sample uses an algorithm that only works with numeric features convert them so they can be consumed
@@ -221,11 +221,11 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-這將導致一個新的數據框,所有列都採用正確的格式來訓練模型。
+這會產生新的資料框架，其中包含正確格式的所有資料行來定型模型。
 
-## <a name="train-a-logistic-regression-model"></a>訓練邏輯回歸模型
+## <a name="train-a-logistic-regression-model"></a>定型羅吉斯回歸模型
 
-第一個任務是將數據集拆分為訓練集和測試或驗證集。 此處的拆分是任意的,您應該使用不同的拆分設置來四處播放,以查看它們是否影響模型。
+第一個工作是將資料集分割成定型集和測試或驗證集。 這裡的分割是任意的，您應該使用不同的分割設定來查看它們是否會影響模型。
 
 ```python
 #Decide on the split between training and testing data from the dataframe
@@ -237,7 +237,7 @@ seed = 1234
 train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, testingFraction], seed=seed)
 ```
 
-現在有兩個 DataFrame,下一個任務是創建模型公式,並針對訓練數據幀運行它,然後根據測試 DataFrame 進行驗證。 您應該嘗試模型公式的不同版本,以查看不同組合的影響。
+現在有兩個數據框架，下一個工作是建立模型公式並對定型資料框架執行，然後針對 [測試] 資料框架進行驗證。 您應該使用不同的模型公式版本來進行實驗，以查看不同組合的影響。
 
 ```python
 ## Create a new LR object for the model
@@ -262,7 +262,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-從此儲存格的輸出是
+此資料格的輸出為
 
 ```shell
 Area under ROC = 0.9779470729751403
@@ -270,7 +270,7 @@ Area under ROC = 0.9779470729751403
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>建立預測的視覺表示法
 
-您現在可以建構最終的視覺效果，以利研判此測試的結果。 [ROC 曲線](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)是查看結果的一種方式。
+您現在可以建構最終的視覺效果，以利研判此測試的結果。 [ROC 曲線](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)是檢查結果的一種方式。
 
 ```python
 ## Plot the ROC curve, no need for pandas as this uses the modelSummary object
@@ -284,21 +284,21 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![邏輯回歸提示模型的 ROC 曲線](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "邏輯回歸提示模型的 ROC 曲線")
+![羅吉斯回歸秘訣模型的 ROC 曲線](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "羅吉斯回歸秘訣模型的 ROC 曲線")
 
-## <a name="shut-down-the-spark-instance"></a>關閉 Spark 實體
+## <a name="shut-down-the-spark-instance"></a>關閉 Spark 實例
 
-運行完應用程式後,關閉筆記本以釋放資源,關閉選項卡或從筆記本底部的狀態面板中選擇 **「結束會話**」。。
+當您完成執行應用程式後，請關閉此筆記本以釋放資源，方法是關閉索引標籤，或從筆記本底部的狀態面板中選取 [**結束會話**]。
 
 ## <a name="see-also"></a>另請參閱
 
-- [概述:Azure 突觸分析上的 Apache 火花](apache-spark-overview.md)
+- [總覽： Azure Synapse 分析的 Apache Spark](apache-spark-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [阿帕奇火花文檔的 .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [適用於 Apache Spark 的 .NET 文件](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [阿帕契火花官方檔](https://spark.apache.org/docs/latest/)
+- [Apache Spark 官方文件](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> 某些官方的 Apache Spark 文件依賴於使用 Spark 控制台,這在 Azure 同步 Spark 上不可用。 改用[筆記本](../spark/apache-spark-notebook-create-spark-use-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)或[IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)體驗。
+> 某些 Apache Spark 官方文件會依賴使用 Spark 主控台，但 Azure Synapse Spark 不提供這項功能。 請改用 [Notebook](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 或 [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 體驗。

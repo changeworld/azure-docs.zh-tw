@@ -1,69 +1,68 @@
 ---
-title: Azure Windows 虛擬機器的安全控制
-description: 以評估 Azure Windows 虛擬機器的安全控制清單
-services: virtual-machines
+title: Azure Windows 虛擬機器的安全性控制
+description: 評估 Azure Windows 虛擬機器的安全性控制清單
 ms.service: virtual-machines
-documentationcenter: ''
+ms.subservice: security
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 569c989e8876bb7213d1469c7a70da99aa0b1e9c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455337"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101581"
 ---
-# <a name="security-controls-for-windows-virtual-machines"></a>Windows 虛擬機器的安全控制
+# <a name="security-controls-for-windows-virtual-machines"></a>Windows 虛擬機器的安全性控制項
 
-本文記錄 Windows 虛擬機器中內置的安全控制項。
+本文記載內建在 Windows 虛擬機器中的安全性控制項。
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>網路
 
-| 安全控制 | 是/否 | 注意 |
+| 安全性控制 | 是/否 | 注意 |
 |---|---|--|
-| 服務終結點支援| 是 | |
-| VNet 注射支援| 是 | |
+| 服務端點支援| 是 | |
+| VNet 插入支援| 是 | |
 | 網路隔離和防火牆支援| 是 |  |
-| 強制隧道支援| 是 | 請參考[Azure 資源管理員部署模型設定強制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)。 |
+| 強制通道支援| 是 | 請參閱[使用 Azure Resource Manager 部署模型設定強制通道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)。 |
 
-## <a name="monitoring--logging"></a>監視&日誌記錄
+## <a name="monitoring--logging"></a>監視 & 記錄
 
-| 安全控制 | 是/否 | 注意|
+| 安全性控制 | 是/否 | 注意|
 |---|---|--|
-| Azure 監視支援(紀錄分析、應用見解等)| 是 | [監視並更新 Azure 中的 Windows 虛擬機器](tutorial-monitoring.md)。 |
-| 控制並管理平面紀錄記錄和稽核| 是 |  |
-| 資料平面紀錄記錄和稽核 | 否 |  |
+| Azure 監視支援（Log analytics、App insights 等）| 是 | [在 Azure 中監視和更新 Windows 虛擬機器](tutorial-monitoring.md)。 |
+| 控制和管理平面記錄和審核| 是 |  |
+| 資料平面記錄和審核 | 否 |  |
 
 ## <a name="identity"></a>身分識別
 
-| 安全控制 | 是/否 | 注意|
+| 安全性控制 | 是/否 | 注意|
 |---|---|--|
 | 驗證| 是 |  |
 | 授權| 是 |  |
 
 ## <a name="data-protection"></a>資料保護
 
-| 安全控制 | 是/否 | 注意 |
+| 安全性控制 | 是/否 | 注意 |
 |---|---|--|
-| 伺服器端靜態加密:微軟管理的金鑰 | 是 | 請參考[在 Windows VM 上加密虛擬磁碟](/azure/virtual-machines/windows/disk-encryption-overview)。 |
-| 傳輸中的加密(如 ExpressRoute 加密、VNet 加密和 VNet-VNet 加密)| 是 | Azure 虛擬機器支援[ExpressRoute](/azure/expressroute)和 VNet 加密。 請參考[VM 中的傳輸加密](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
-| 伺服器端靜態加密:客戶管理的金鑰 (BYOK) | 是 | 客戶管理的密鑰是受支援的 Azure 加密方案;因此,這些密鑰受支援。請參考[Azure 加密概述](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
-| 欄位編碼(Azure 資料服務)| N/A | |
-| API 呼叫加密| 是 | 通過 HTTPS 和 TLS。 |
+| 待用的伺服器端加密： Microsoft 管理的金鑰 | 是 | 請參閱[加密 WINDOWS VM 上的虛擬磁片](/azure/virtual-machines/windows/disk-encryption-overview)。 |
+| 傳輸中的加密（例如 ExpressRoute 加密、VNet 加密中和 VNet VNet 加密）| 是 | Azure 虛擬機器支援[ExpressRoute](/azure/expressroute)和 VNet 加密。 請參閱[Vm 中的傳輸中加密](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
+| 待用的伺服器端加密：客戶管理的金鑰（BYOK） | 是 | 客戶管理的金鑰是支援的 Azure 加密案例;請參閱[Azure 加密總覽](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
+| 資料行層級加密（Azure 資料服務）| N/A | |
+| API 呼叫加密| 是 | 透過 HTTPS 和 TLS。 |
 
 
 
 ## <a name="configuration-management"></a>設定管理
 
-| 安全控制 | 是/否 | 注意|
+| 安全性控制 | 是/否 | 注意|
 |---|---|--|
-| 設定管理支援(設定版本控制等)| 是 |  | 
+| 設定管理支援（設定的版本設定等）| 是 |  | 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 詳細瞭解 Azure[服務中內建安全控制器](../../security/fundamentals/security-controls.md)。
+- 深入瞭解[跨 Azure 服務的內建安全性控制](../../security/fundamentals/security-controls.md)。

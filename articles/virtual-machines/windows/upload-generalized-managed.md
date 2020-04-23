@@ -1,20 +1,18 @@
 ---
-title: 從上傳的通用 VHD 創建 VM
+title: 從已上傳的一般化 VHD 建立 VM
 description: 在 Resource Manager 部署模型中，將一般化 VHD 上傳至 Azure 並使用它來建立新 VM。
-services: virtual-machines-windows
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c482caf2407c89ffdb6c55c9184c31e2e3197c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0947d1cc4e53763c0f31444b8f3d27ba45b19a4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464945"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096402"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM
 
@@ -30,7 +28,7 @@ ms.locfileid: "75464945"
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>使用 Sysprep 將來源 VM 一般化
 
-如果尚未將 VHD 上載到 Azure 之前，需要先對 VM 進行系統設置。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+如果您還沒有這麼做，您必須先 Sysprep VM，再將 VHD 上傳至 Azure。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
 請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
@@ -43,7 +41,7 @@ ms.locfileid: "75464945"
 2. 以系統管理員身分開啟 [命令提示字元] 視窗。 將目錄變更到 %windir%\system32\sysprep，然後執行 `sysprep.exe`。
 3. 在 [系統準備工具]**** 對話方塊中，選取 [進入系統全新體驗 (OOBE)]****，並確認已啟用 [一般化]**** 核取方塊。
 4. 針對 [關機選項]****，選取 [關機]****。
-5. 選取 [確定]****。
+5. 選取 [確定]  。
    
     ![啟動 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 完成時，會關閉虛擬機器。 不要重新啟動 VM。
@@ -51,20 +49,20 @@ ms.locfileid: "75464945"
 
 ## <a name="upload-the-vhd"></a>上傳 VHD 
 
-您現在可以將 VHD 直接上載到託管磁片。 有關說明，請參閱[使用 Azure PowerShell 將 VHD 上載到 Azure。](disks-upload-vhd-to-managed-disk-powershell.md)
+您現在可以將 VHD 直接上傳至受控磁片。 如需指示，請參閱[使用 Azure PowerShell 將 VHD 上傳至 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
 
 
-將 VHD 上載到託管磁片後，需要使用[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)獲取託管磁片。
+將 VHD 上傳至受控磁片之後，您必須使用[new-azdisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)來取得受控磁片。
 
 ```azurepowershell-interactive
 $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
 ## <a name="create-the-image"></a>建立映像
-從通用作業系統託管磁片創建託管映射。 使用您自己的資訊取代下列值。
+從一般化 OS 受控磁片建立受控映射。 使用您自己的資訊取代下列值。
 
-首先，設置一些變數：
+首先，設定一些變數：
 
 ```powershell
 $location = 'East US'
@@ -72,7 +70,7 @@ $imageName = 'myImage'
 $rgName = 'myResourceGroup'
 ```
 
-使用託管磁片創建映射。
+使用您的受控磁片建立映射。
 
 ```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `

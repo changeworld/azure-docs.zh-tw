@@ -1,26 +1,19 @@
 ---
 title: 了解 Azure 虛擬機器使用情況
 description: 了解虛擬機器使用情況詳細資料
-services: virtual-machines
-documentationcenter: ''
 author: mmccrory
-manager: gwallace
-editor: ''
 tags: azure-virtual-machine
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: ''
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0caa028c8352f8dd1b3be4a843b9b49128b2c382
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982267"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101564"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虛擬機器使用情況
 分析您的 Azure 使用情況資料，可以深入了解使用量，以在整個組織內實現更妥善的成本管理與配置。 本文件會針對您的 Azure 計算使用量詳細資料，提供深入探討。 如需有關一般 Azure 使用情況的詳細資訊，請瀏覽至[了解您的帳單](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -117,7 +110,7 @@ ms.locfileid: "75982267"
 VM 取得 VM 本身、在 VM 上執行的任何進階軟體、與 VM 相關聯的儲存體帳戶\受控磁碟，以及從 VM 的網路頻寬傳輸等費用。
 ### <a name="how-can-i-tell-if-a-vm-is-using-azure-hybrid-benefit-in-the-usage-csv"></a>如何判斷 VM 是否使用使用情況 CSV 中的 Azure Hybrid Benefit？
 如果您使用 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 進行部署，系統會以非 Windows VM 費率向您收取費用，因為您會將自己的授權帶至雲端。 在您的帳單中，您可以分辨哪些 Resource Manager VM 執行的是 Azure Hybrid Benefit，因為它們在 ImageType 欄中會標示「Windows\_Server BYOL」或「Windows\_用戶端 BYOL」。
-### <a name="how-are-basic-vs-standard-vm-types-differentiated-in-the-usage-csv"></a>基本 VM 類型與標準 VM 類型在使用方式 CSV 中是如何區分的？
+### <a name="how-are-basic-vs-standard-vm-types-differentiated-in-the-usage-csv"></a>「基本」與「標準」 VM 類型在使用量 CSV 中有何差異？
 系統會同時提供基本 VM 和標準 A 系列 VM。 如果您部署的是基本 VM，則在 [計量表子類別] 中會有「基本」字串。 如果您部署的是標準 A 系列 VM，則 VM 大小會顯示為 “A1 VM”，因為「標準」是預設值。 若要深入了解基本和標準之間的差異，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/virtual-machines/)。
 ### <a name="what-are-extrasmall-small-medium-large-and-extralarge-sizes"></a>什麼是 ExtraSmall、Small、Medium、Large 和 ExtraLarge 大小？
 ExtraSmall - ExtraLarge 是標準\_A0 – 標準\_A4 的舊版名稱。 在傳統 VM 使用情況記錄中，如果您已部署這些大小，可能就會看到這個慣例的使用。

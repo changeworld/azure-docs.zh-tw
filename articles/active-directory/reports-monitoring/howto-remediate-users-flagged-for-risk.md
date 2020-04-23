@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 活動目錄門戶中標記為風險的使用者 |微軟文檔
+title: 在 Azure Active Directory 入口網站中標示有風險的使用者 |Microsoft Docs
 description: 了解 Azure Active Directory 入口網站中標幟為有風險的使用者安全性報告
 services: active-directory
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68989704"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100782"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
 
@@ -32,7 +32,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>存取標幟為有風險的使用者報告
 
-您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果沒有 Azure AD，則可以在[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)上免費註冊。 
+您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果您沒有 Azure AD，可以在[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)免費註冊。 
 
 從標幟為有風險的使用者報告，您可以為每位使用者採取下列動作：
 
@@ -46,7 +46,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 您也可以使用 Office 365 認證來存取 **Azure 系統管理中心**。 在您啟動 Azure AD 存取後，您就會重新導向至 Azure AD 入口網站。 在基本訂閱等級，報告中提供的詳細資料數量有限。 其他資料和分析資料則適用於 Azure 進階訂閱者。
 
-要訪問在 Microsoft 365 管理中心**中標記為風險報告的使用者**，：
+若要存取 Microsoft 365 系統管理中心內**標示為有風險的使用者**報告：
 
 1.  從左側的導覽功能表中，選取 [系統管理中心]****。 
 2.  選取 [Azure AD]****。
@@ -87,7 +87,6 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 - 讀取及實作這個[關於處理異常活動的指引](https://aka.ms/fixaccount)。 
 - [啟用稽核管線](https://aka.ms/improvesecurity)可協助您分析租用戶中的活動。 完成後，您的稽核存放區會開始填入活動記錄。 此時，您也能夠運用[安全性和規範中心的搜尋與調查資源](https://aka.ms/sccsearch)。 
-- 使用此[指令碼來為所有帳戶啟用信箱稽核](https://aka.ms/mailboxaudit1)。 
 - 檢閱您所有信箱的委派權限和郵件轉寄規則。 您可以使用此 [PowerShell 指令碼](https://aka.ms/delegateforwardrules)來執行此工作。 
 
 ## <a name="next-steps"></a>後續步驟

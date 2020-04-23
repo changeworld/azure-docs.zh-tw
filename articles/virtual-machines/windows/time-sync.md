@@ -1,23 +1,18 @@
 ---
 title: Azure 中 Windows VM 的時間同步
 description: Windows 虛擬機器的時間同步。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 33c8d58877a73c1ea3055fe52ef8470d8775b6e3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458023"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100493"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的時間同步
 
@@ -31,7 +26,7 @@ Azure 現在支援採用 Windows Server 2016 的基礎結構。 Windows Server 2
 >
 > 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 電腦時鐘精確度的衡量方式，是依據電腦時鐘與國際標準時間 (UTC) 時間標準的接近程度。 UTC 是由多國的精準原子鐘樣本所定義；原子鐘在 300 年內只會誤差一秒。 但是直接讀取 UTC 需使用專用的硬體。 替代方式為系統將時間伺服器同步為 UTC，並從其他電腦存取以提供延展性和強固性。 每部電腦都有持續運作的時間同步服務，知道需使用哪些時間伺服器，且會定期檢查電腦時鐘是否需要修正，並視需要調整時間。 
 
@@ -72,7 +67,7 @@ w32time 會依照以下優先順序決定偏好的時間提供者：組織層層
 
 ### <a name="host-only"></a>僅限主機 
 
-由於time.windows.com是公共 NTP 伺服器,因此與其同步的時間需要通過互聯網發送流量,因此不同的數據包延遲可能會對時間同步的質量產生負面影響。通過切換到僅主機同步來刪除time.windows.com有時會提高時間同步結果。
+因為 time.windows.com 是公用 NTP 伺服器，所以同步處理時間需要透過網際網路傳送流量，而不同的封包延遲可能會對時間同步的品質造成負面影響。藉由切換至僅限主機同步來移除 time.windows.com，有時可以改善時間同步結果。
 
 如果在使用預設設定時發生時間同步問題，切換為僅限主機時間同步為合理的解決方式。 嘗試使用僅限主機同步，確認是否可改善 VM 上的時間同步結果。 
 
@@ -152,7 +147,7 @@ net stop w32time && net start w32time
 
 ## <a name="windows-server-2012-and-r2-vms"></a>Windows Server 2012 與 R2 VM 
 
-Windows 伺服器 2012 和 Windows 伺服器 2012 R2 具有不同的預設設置的時間同步。默認情況下,w32time 的配置方式比精確時間更喜歡低管理開銷。 
+Windows Server 2012 和 Windows Server 2012 R2 的時間同步有不同的預設設定。根據預設，w32time 的設定方式是讓服務的低負荷更精確。 
 
 如果您想讓 Windows Server 2012 和 2012 R2 部署改為使用偏好精確時間的較新預設值，您可以套用下列設定。
 

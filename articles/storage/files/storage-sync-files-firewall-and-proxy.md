@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7f398012edc25ba6a04e230fa8049e7264f857bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5fc469c3db7da45f818230909026cedf6c71a4c
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294514"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101734"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 檔案同步 Proxy 和防火牆設定
 Azure 檔案同步會將您的內部部署伺服器連線到 Azure 檔案服務，以啟用多網站同步處理和雲端層功能。 因此，內部部署伺服器必須連線到網際網路。 IT 系統管理員必須決定進入 Azure 雲端服務之伺服器的最佳路徑。
@@ -89,13 +89,14 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 下表描述通訊所需的網域：
 
-| 服務 | 公共雲終結點 | Azure Government 端點 | 使用量 |
+| 服務 | 公用雲端端點 | Azure Government 端點 | 使用量 |
 |---------|----------------|---------------|------------------------------|
-| **Azure 資源管理器** | `https://management.azure.com` | https://management.usgovcloudapi.net | 任何使用者呼叫 (例如 PowerShell) 都會通過這個 URL，包括初始伺服器註冊呼叫。 |
+| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | 任何使用者呼叫 (例如 PowerShell) 都會通過這個 URL，包括初始伺服器註冊呼叫。 |
 | **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Resource Manager 呼叫必須由已驗證的使用者進行。 為了獲致成功，此 URL 用於進行使用者驗證。 |
 | **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | 在部署 Azure 檔案同步時，將會在訂用帳戶的 Azure Active Directory 中建立服務主體。 針對該目的使用此 URL。 此主體用於將最小權限集合委派給 Azure 檔案同步服務。 執行 Azure 檔案同步之初始設定的使用者，必須是具有訂用帳戶擁有者權限的已驗證使用者。 |
-| **Azure 存儲** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | 當伺服器下載檔案時，如果伺服器可以直接與儲存體帳戶中的 Azure 檔案共用通話，就可以更有效率地執行資料移動。 伺服器具有只允許存取目標檔案共用的 SAS 金鑰。 |
-| **Azure 檔案同步** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | 初始伺服器註冊之後，伺服器會收到該區域中 Azure 檔案同步服務執行個體的區域 URL。 伺服器可以使用 URL 直接且有效率地與處理其同步的執行個體進行通訊。 |
+| **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | 使用公用端點 URL。 | 此 URL 是由 Azure 檔案同步伺服器註冊 UI 用來登入系統管理員的 Active Directory 驗證程式庫所存取。 |
+| **Azure 儲存體** | &ast;.core.windows.net | &ast;. core.usgovcloudapi.net | 當伺服器下載檔案時，如果伺服器可以直接與儲存體帳戶中的 Azure 檔案共用通話，就可以更有效率地執行資料移動。 伺服器具有只允許存取目標檔案共用的 SAS 金鑰。 |
+| **Azure 檔案同步** | &ast;.one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | 初始伺服器註冊之後，伺服器會收到該區域中 Azure 檔案同步服務執行個體的區域 URL。 伺服器可以使用 URL 直接且有效率地與處理其同步的執行個體進行通訊。 |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | 一旦安裝了 Azure 檔案同步代理程式，系統就會使用 PKI URL 來下載與 Azure 檔案同步服務和 Azure 檔案共用通訊時所需的中繼憑證。 OCSP URL 是用來檢查憑證的狀態。 |
 
 > [!Important]
@@ -103,9 +104,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 如果 &ast;.one.microsoft.com 太廣泛，您可只允許對 Azure 檔案同步服務的明確區域執行個體進行通訊，藉此限制伺服器的通訊。 要選擇哪個執行個體，取決於您將伺服器部署及註冊到哪個儲存體同步服務區域。 在下表中，該區域稱為「主要端點 URL」。
 
-基於商務持續性和災害復原 (BCDR) 的理由，您可能已在異地備援 (GRS) 儲存體帳戶中指定 Azure 檔案共用。 如果情況確實如此，則在發生持久的區域中斷時，Azure 檔案共用會容錯移轉至配對的區域。 Azure 檔案同步會使用相同的區域配對作為儲存體。 因此，如果使用 GRS 存儲帳戶，則需要啟用其他 URL，以允許伺服器與 Azure 檔同步的配對區域對話。下表稱之為"配對區域"。 此外，也必須啟用流量管理員設定檔 URL。 這可確保在發生容錯移轉時，網路流量會順暢地重新路由傳送至配對的區域，這個行為在下表中稱為「探索 URL」。
+基於商務持續性和災害復原 (BCDR) 的理由，您可能已在異地備援 (GRS) 儲存體帳戶中指定 Azure 檔案共用。 如果情況確實如此，則在發生持久的區域中斷時，Azure 檔案共用會容錯移轉至配對的區域。 Azure 檔案同步會使用相同的區域配對作為儲存體。 因此，如果您使用 GRS 儲存體帳戶，您必須啟用其他 Url，讓您的伺服器可以與配對的區域交談，以進行 Azure 檔案同步。下表會呼叫這個「配對區域」。 此外，也必須啟用流量管理員設定檔 URL。 這可確保在發生容錯移轉時，網路流量會順暢地重新路由傳送至配對的區域，這個行為在下表中稱為「探索 URL」。
 
-| Cloud  | 區域 | 主要端點 URL | 配對的區域 | 探索 URL |
+| 雲端  | 區域 | 主要端點 URL | 配對的區域 | 探索 URL |
 |--------|--------|----------------------|---------------|---------------|
 | 公開 |澳大利亞東部 | HTTPs：\//kailani-aue.one.microsoft.com | 澳大利亞東南部 | HTTPs：\//tm-kailani-aue.one.microsoft.com |
 | 公開 |澳大利亞東南部 | HTTPs：\//kailani-aus.one.microsoft.com | 澳大利亞東部 | HTTPs：\//tm-kailani-aus.one.microsoft.com |
@@ -141,28 +142,28 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **範例：** 您在 `"West US"` 部署儲存體同步服務，並向其註冊伺服器。 在此案例中，要允許伺服器與之通訊的 URL 是：
 
-> - HTTPs：\//kailani.one.microsoft.com （主終結點： 美國西部）
-> - HTTPs：\//kailani1.one.microsoft.com （配對容錯移轉區域： 美國東部）
-> - HTTPs：\//tm-kailani.one.microsoft.com（主區域的發現 URL）
+> - HTTPs：\//kailani.one.microsoft.com （主要端點：美國西部）
+> - HTTPs：\//kailani1.one.microsoft.com （配對故障的區域：美國東部）
+> - HTTPs：\//tm-kailani.one.microsoft.com （主要區域的探索 URL）
 
-### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>允許 Azure 檔同步 IP 位址清單
-Azure 檔同步支援使用[服務標記](../../virtual-network/service-tags-overview.md)，它表示給定 Azure 服務的一組 IP 位址首碼。 可以使用服務標記創建防火牆規則，以啟用與 Azure 檔同步服務的通信。 Azure 檔同步的服務標記為`StorageSyncService`。
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>允許 Azure 檔案同步 IP 位址的清單
+Azure 檔案同步支援使用服務標籤，此[標記](../../virtual-network/service-tags-overview.md)代表指定 Azure 服務的一組 IP 位址首碼。 您可以使用服務標記來建立防火牆規則，以啟用與 Azure 檔案同步服務的通訊。 Azure 檔案同步的服務標記是`StorageSyncService`。
 
-如果在 Azure 中使用 Azure 檔同步，則可以直接在網路安全性群組中使用服務標記的名稱來允許流量。 要瞭解有關如何執行此操作的更多資訊，請參閱[網路安全性群組](../../virtual-network/security-overview.md)。
+如果您在 Azure 中使用 Azure 檔案同步，您可以直接在網路安全性群組中使用服務標籤的名稱，以允許流量。 若要深入瞭解如何執行此操作，請參閱[網路安全性群組](../../virtual-network/security-overview.md)。
 
-如果在本地使用 Azure 檔同步，則可以使用服務標記 API 獲取防火牆允許清單的特定 IP 位址範圍。 有兩種方法可以獲取此資訊：
+如果您使用 Azure 檔案同步內部部署，您可以使用服務標籤 API 來取得防火牆允許清單的特定 IP 位址範圍。 有兩種方法可以取得這份資訊：
 
-- 支援服務標記的所有 Azure 服務標記的當前 IP 位址範圍清單每週以 JSON 文檔的形式在 Microsoft 下載中心發佈。 每個 Azure 雲都有自己的 JSON 文檔，其 IP 位址範圍與該雲相關：
+- 所有支援服務標籤之 Azure 服務的目前 IP 位址範圍清單會以 JSON 檔的形式，每週在 Microsoft 下載中心發佈。 每個 Azure 雲端都有自己的 JSON 檔，其中包含與該雲端相關的 IP 位址範圍：
     - [Azure 公用](https://www.microsoft.com/download/details.aspx?id=56519)
     - [Azure 美國政府](https://www.microsoft.com/download/details.aspx?id=57063)
     - [Azure 中國](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
-- 服務標記發現 API（預覽）允許以程式設計方式檢索當前服務標記清單。 在預覽中，服務標記發現 API 可能會返回比從 Microsoft 下載中心上發佈的 JSON 文檔返回的資訊更最新的資訊。 您可以根據您的自動化首選項使用 API 曲面：
+- 服務標記探索 API （預覽）可讓您以程式設計方式抓取目前的服務標籤清單。 在預覽中，服務標籤探索 API 可能會傳回的資訊，不如 Microsoft 下載中心上發佈的 JSON 檔所傳回的資訊。 您可以根據您的自動化喜好設定來使用 API 介面：
     - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure 電源外殼](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
     - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
 
-由於服務標記發現 API 的更新頻率不如發佈到 Microsoft 下載中心的 JSON 文檔，因此建議使用 JSON 文檔更新本地防火牆的允許清單。 以下步驟可以達到此目的：
+因為服務標籤探索 API 不會經常更新為發行至 Microsoft 下載中心的 JSON 檔，所以我們建議使用 JSON 檔來更新內部部署防火牆的允許清單。 以下步驟可以達到此目的：
 
 ```PowerShell
 # The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
@@ -259,12 +260,12 @@ if ($found) {
 }
 ```
 
-然後，您可以使用 中的`$ipAddressRanges`IP 位址範圍來更新防火牆。 有關如何更新防火牆的資訊，請查看防火牆/網路設備的網站。
+接著，您可以使用中`$ipAddressRanges`的 IP 位址範圍來更新您的防火牆。 如需如何更新防火牆的相關資訊，請參閱防火牆/網路應用裝置的網站。
 
-## <a name="test-network-connectivity-to-service-endpoints"></a>測試與服務終結點的網路連接
-一旦伺服器註冊到 Azure 檔同步服務，測試存儲同步連接 Cmdlet 和伺服器註冊.exe 可用於測試與特定于此伺服器的所有終結點 （URL） 的通信。 當通信不完整阻止伺服器完全使用 Azure 檔同步並且可用於微調代理和防火牆配置時，此 Cmdlet 可説明進行故障排除。
+## <a name="test-network-connectivity-to-service-endpoints"></a>測試與服務端點的網路連線能力
+一旦向 Azure 檔案同步服務註冊伺服器，就可以使用 StorageSyncNetworkConnectivity Cmdlet 和 Serverregistration.exe 來測試與此伺服器特定的所有端點（Url）的通訊。 此 Cmdlet 有助於疑難排解未完成的通訊，以防止伺服器完全使用 Azure 檔案同步，而且可以用來微調 proxy 和防火牆設定。
 
-要運行網路連接測試，請安裝 Azure 檔同步代理版本 9.1 或更高版本，並運行以下 PowerShell 命令：
+若要執行網路連線測試，請安裝 Azure 檔案同步代理程式9.1 版或更新版本，並執行下列 PowerShell 命令：
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity
@@ -276,6 +277,6 @@ Test-StorageSyncNetworkConnectivity
 設定網域限制防火牆規則可以提高安全性。 如果使用這些防火牆組態，則必須記住 URL 會新增並甚至可能隨著時間而改變。 請定期查看此文章。
 
 ## <a name="next-steps"></a>後續步驟
-- [規劃 Azure 檔同步部署](storage-sync-files-planning.md)
+- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
 - [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

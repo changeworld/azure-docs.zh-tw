@@ -1,25 +1,19 @@
 ---
 title: Azure 的 vCPU 配額
-description: 了解 Azure 的 vCPU 配額。
-keywords: ''
-services: virtual-machines-windows
-documentationcenter: ''
+description: 瞭解 Azure 虛擬機器的 vCPU 配額。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 20017f42031e126bbdae40f66bf4c36efd12f17c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13d9153d1bf6776b7d3d71c4a85c18d8529188b3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893456"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097875"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虛擬機器 vCPU 配額
 

@@ -1,27 +1,21 @@
 ---
-title: 使用門戶建立 Azure 分享映像庫
-description: 瞭解如何使用 Azure 門戶創建和共用虛擬機器映射。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 使用入口網站建立 Azure 共用映射資源庫
+description: 瞭解如何使用 Azure 入口網站來建立及共用虛擬機器映射。
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: imaging
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 83cdae95d43884647e257cbf1808222a542a212e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1560a67d73b712ba1f295992fce4f7f1a2ae75bd
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458091"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100697"
 ---
-# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用門戶建立 Azure 分享映像庫
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用入口網站建立 Azure 共用映射資源庫
 
 [共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動部署工作，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
 
@@ -33,24 +27,24 @@ ms.locfileid: "81458091"
 
 | 資源 | 描述|
 |----------|------------|
-| **託管映像** | 可單獨使用或用於在圖像庫中創建**圖像版本**的基本映射。 託管映像是從[通用](shared-image-galleries.md#generalized-and-specialized-images)VM 創建的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **快照式** | 可用於製作**圖像版本的**VHD 的副本。 快照可以從[專用](shared-image-galleries.md#generalized-and-specialized-images)VM(尚未通用的 VM)中拍攝,然後單獨使用或與數據磁碟的快照一起使用,以創建專用映射版本。
-| **影像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
-| **映像定義** | 圖像在庫中定義,並包含有關圖像的資訊以及組織內使用它的要求。 您可以包括映像是通用化還是專用化、操作系統、最小和最大記憶體要求以及發行說明等資訊。 這是映像類型的定義。 |
+| **受控映射** | 可以單獨使用或用來在映射庫中建立**映射版本**的基本映射。 系統會從[一般化](shared-image-galleries.md#generalized-and-specialized-images)vm 建立受控映射。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
+| **快照式** | 可以用來建立**映射版本**的 VHD 複本。 您可以從[特製](shared-image-galleries.md#generalized-and-specialized-images)化 VM （尚未一般化的虛擬機器）取得快照集，然後單獨使用或搭配資料磁片的快照集，以建立特製化的映射版本。
+| **映射庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
+| **映像定義** | 映射會定義于資源庫中，並包含影像的相關資訊，以及在您的組織內使用它的需求。 您可以包含類似映射是一般化或特製化、作業系統、最小和最大記憶體需求，以及版本資訊等資訊。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
 <br>
 
 
 > [!IMPORTANT]
-> 專用圖像當前處於公共預覽中。
+> 特製化映射目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> **已知的預覽限制**VM 只能使用門戶或 API 從專用映射創建。 不支援 CLI 或 PowerShell 預覽。
+> **已知的預覽限制**只能使用入口網站或 API，從特製化映射建立 Vm。 不是預覽版的 CLI 或 PowerShell 支援。
 
 ## <a name="before-you-begin"></a>開始之前
 
-要完成本文中的範例,您必須具有通用 VM 的現有託管映射或專用 VM 的快照。 可以依照[教學操作:使用 Azure PowerShell 建立 Azure VM 的自訂映像](tutorial-custom-images.md)以建立託管映像,或為專用 VM[建立快照](snapshot-copy-managed-disk.md)。 對於託管映射和快照,資料磁碟大小不能超過 1 TB。
+若要完成本文中的範例，您必須擁有一般化 VM 的現有受控映射，或特製化 VM 的快照集。 您可以遵循[教學課程：使用 Azure PowerShell 建立 AZURE VM 的自訂映射](tutorial-custom-images.md)來建立受控映射，或建立特製化 VM 的[快照](snapshot-copy-managed-disk.md)集。 對於受控映射和快照集，資料磁片大小不能超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
@@ -59,27 +53,27 @@ ms.locfileid: "81458091"
  
 ## <a name="create-vms"></a>建立 VM
 
-現在,您可以創建一個或多個新 VM。 本示例*在美東*資料中心*的 myResourceGroup*中創建名為*myVM*的 VM。
+現在您可以建立一或多個新的 Vm。 這個範例會在*美國東部*資料中心的*myResourceGroup*中建立名為*myVM*的 VM。
 
-1. 轉到圖像定義。 您可以使用資源篩選器顯示所有可用的圖像定義。
-1. 在圖像定義的頁面上,從頁面頂部的功能表中選擇 **「創建 VM」。。**
-1. 對於**資源組**,選擇 **"創建新"** 並鍵入*名稱的"我的資源組*"。
-1. 在**虛擬機器名稱**中,鍵入*myVM*。
+1. 移至您的映射定義。 您可以使用資源篩選器來顯示所有可用的映射定義。
+1. 在映射定義的頁面上，從頁面頂端的功能表中選取 [**建立 VM** ]。
+1. 針對 [**資源群組**]，選取 [**建立新**的]，然後在 [名稱] 中輸入*myResourceGroup* 。
+1. 在 [**虛擬機器名稱**] 中，輸入*myVM*。
 1. 在 [區域]**** 中，選取 [美國東部]**。
-1. 對於**可用性選項**,保留不需要*的基礎結構冗餘*的預設值。
-1. 如果從影像定義的頁面開始,**則圖像**的值將自動填`latest`充 圖像版本。
-1. 您**可以在大小**,從可用大小清單中選擇 VM 大小,然後選擇**選擇**。
-1. 在**管理員帳戶**下,如果映射已通用,則需要提供使用者名,如*azureuser*和密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果映像是專用的,則使用者名和密碼欄位將灰顯,因為使用了源 VM 的使用者名和密碼。
-1. 如果要允許遠端存取 VM,請在 **「公共入站埠**」下,選擇 **「允許選定的連接埠**」,然後從下拉清單中選擇**RDP (3389)。** 如果不想允許遠端訪問 VM,請為**公共入站埠**保留 **「無**選擇」。
-1. 完成後,選擇頁面底部的 **「審閱 + 創建**」按鈕。
-1. VM 通過驗證後,選擇在頁面底部**創建**以啟動部署。
+1. 針對 [**可用性選項**]，保留 [*不需要基礎結構冗余*] 的預設值。
+1. 如果您從**Image**影像定義的頁面啟動， `latest`影像的值會自動填入映射版本。
+1. 針對 [**大小**]，從可用的大小清單中選擇 VM 大小，然後選擇 [**選取**]。
+1. 在 [**系統管理員帳戶**] 下，如果映射已一般化，您需要提供使用者名稱，例如*azureuser*和密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果您的映射是特製化的，[使用者名稱] 和 [密碼] 欄位會呈現灰色，因為會使用來源 VM 的使用者名稱和密碼。
+1. 如果您想要允許遠端存取 VM，請在 [**公用輸入埠**] 底下，選擇 [**允許選取的埠**]，然後從下拉式選單中選取 [ **RDP （3389）** ]。 如果您不想要允許對 VM 的遠端存取，請將 [**公用輸入埠**] 選取為 [**無**]。
+1. 當您完成時，請選取頁面底部的 [**審查 + 建立**] 按鈕。
+1. 在 VM 通過驗證之後，請選取頁面底部的 [**建立**] 以開始部署。
 
 
 ## <a name="clean-up-resources"></a>清除資源
 
 若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這樣做，請選取虛擬機器的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱。
 
-如果要刪除單個資源,則需要以相反的順序刪除它們。 例如,要刪除圖像定義,您需要刪除從該映射創建的所有圖像版本。
+如果您想要刪除個別的資源，您必須以相反順序刪除它們。 例如，若要刪除映射定義，您必須刪除所有從該映射建立的映射版本。
 
 ## <a name="next-steps"></a>後續步驟
 
