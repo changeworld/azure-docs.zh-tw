@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618889"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456884"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教學課程 - 使用 Azure Key Vault 加密及解密 Blob
 
@@ -23,7 +23,7 @@ ms.locfileid: "80618889"
 
 **預估完成時間：** 20 分鐘
 
-如需 Azure 金鑰保存庫的概觀資訊，請參閱[什麼是 Azure 金鑰保存庫？](../../key-vault/key-vault-overview.md)。
+如需 Azure 金鑰保存庫的概觀資訊，請參閱[什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)。
 
 如需 Azure 儲存體用戶端加密的概觀資訊，請參閱 [Microsoft Azure 儲存體用戶端加密和 Azure 金鑰保存庫](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80618889"
 
 ## <a name="set-up-your-azure-key-vault"></a>設定 Azure 金鑰保存庫
 
-若要繼續進行本教學課程，您必須執行下列步驟，這些步驟包含在[教學課程：使用 .NET Web 應用程式從 Azure Key Vault 設定及擷取祕密](../../key-vault/quick-create-net.md)中：
+若要繼續進行本教學課程，您必須執行下列步驟，這些步驟包含在[教學課程：使用 .NET Web 應用程式從 Azure Key Vault 設定及擷取祕密](../../key-vault/secrets/quick-create-net.md)中：
 
 * 建立金鑰保存庫。
 * 新增金鑰或密碼至金鑰保存庫。

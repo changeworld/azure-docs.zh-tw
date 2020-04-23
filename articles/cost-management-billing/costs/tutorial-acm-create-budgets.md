@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 655194a1335ae258e27dff2c75a370578253794a
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874274"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605878"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -185,7 +185,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 
 選取以下影像來登入 Azure 入口網站並開啟範本：
 
-[![將建立預算範本部署至 Azure](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+[![將建立預算範本部署至 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
 
 若要檢視所有範本參數的清單及其描述，請參閱 [建立預算](https://azure.microsoft.com/resources/templates/create-budget/)範本。
 

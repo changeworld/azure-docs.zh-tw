@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure 儲存體中儲存 Terraform 狀態
 description: 在 Azure 儲存體中儲存 Terraform 狀態的簡介。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708419"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459010"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>教學課程：在 Azure 儲存體中儲存 Terraform 狀態
 
@@ -67,7 +67,7 @@ echo "access_key: $ACCOUNT_KEY"
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-若要進一步保護 Azure 儲存體帳戶存取金鑰，請將它儲存在 Azure Key Vault 中。 接著便可使用類似下列的命令來設定環境變數。 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 文件](../key-vault/quick-create-cli.md)。
+若要進一步保護 Azure 儲存體帳戶存取金鑰，請將它儲存在 Azure Key Vault 中。 接著便可使用類似下列的命令來設定環境變數。 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 文件](../key-vault/secrets/quick-create-cli.md)。
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066485"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460065"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教學課程：在 Azure 中備份和還原 Linux 虛擬機器的檔案
 
@@ -94,8 +93,8 @@ Azure 備份服務開始備份時，會觸發備份擴充功能以建立時間�
 7. 從清單中選取 VM。
 8. 在 VM 刀鋒視窗的 [設定]  區段中，按一下 [備份]  。 [備份]  刀鋒視窗隨即開啟。 
 9. 在刀鋒視窗頂端的功能表中，選取 [檔案復原]  。 [檔案復原]  刀鋒視窗隨即開啟。
-10. 在 [步驟 1︰選取復原點]  中，從下拉式清單選取復原點。
-11. 在 [步驟 2：下載指令碼以瀏覽及復原檔案]  中，按一下 [下載執行檔]  按鈕。 將下載的檔案儲存到您的本機電腦。
+10. 在 [步驟 1：選取復原點]  中，從下拉式清單選取復原點。
+11. 在**步驟 2：下載指令碼以瀏覽及復原檔案**中，按一下 [下載可執行檔]  按鈕。 將下載的檔案儲存到您的本機電腦。
 7. 按一下 [下載指令碼]  將指令碼檔案下載至本機。
 8. 開啟 Bash 提示字元並輸入下列命令，將其中的 Linux_myVM_05-05-2017.sh  取代為您下載之指令碼的正確路徑和檔名，將 azureuser  取代為 VM 的使用者名稱，將 13.69.75.209  取代為您的 VM 公用 IP 位址。
     
@@ -156,7 +155,7 @@ Azure 備份服務開始備份時，會觸發備份擴充功能以建立時間�
 
     ![預設的 nginx 網頁](./media/tutorial-backup-vms/nginx-working.png)
 
-18. 在您的本機電腦上，回到 Azure 入口網站的瀏覽器索引標籤，並在 [步驟 3︰在復原後取消掛接磁碟]  按一下 [取消掛接磁碟]  按鈕。 如果您忘記執行此步驟，與此掛接點的連線會在 12 小時後自動關閉。 在這 12 小時後，您必須下載新的指令碼來建立新的掛接點。
+18. 在您的本機電腦上，回到 Azure 入口網站的瀏覽器索引標籤，並在 [步驟 3︰在復原後取消掛接磁碟]  中按一下 [取消掛接磁碟]  按鈕。 如果您忘記執行此步驟，與此掛接點的連線會在 12 小時後自動關閉。 在這 12 小時後，您必須下載新的指令碼來建立新的掛接點。
 
 
 ## <a name="next-steps"></a>後續步驟

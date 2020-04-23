@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880868"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533712"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 
@@ -30,7 +30,7 @@ ms.locfileid: "80880868"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-此應用程式會建置為 ASP.NET MVC 應用程式。 其使用 OWIN OpenID Connect 中介軟體來讓使用者登入。  
+此應用程式會建置為 ASP.NET MVC 應用程式。 其使用 OWIN OpenID Connect 中介軟體來讓使用者登入。
 
 此範例中的「精靈」元件是一個 API 控制器 (`SyncController.cs`)。 控制器收到呼叫時會從 Microsoft Graph 提取客戶的 Azure Active Directory (Azure AD) 租用戶使用者清單。 `SyncController.cs` 會由 Web 應用程式中的 AJAX 呼叫加以觸發。 其會使用[適用於 .NET 的 Microsoft 驗證程式庫 (MSAL)](msal-overview.md) 來取得 Microsoft Graph 的存取權杖。
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    - 在 [重新導向 URI (選用)]  區段中，選取下拉式方塊中的 [Web]  ，然後輸入下列重新導向 URI：
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
-          
+
      如果有超過兩個的重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證]  索引標籤新增這些 URI。
 1. 選取 [註冊]  以建立應用程式。
 1. 在應用程式的 [概觀]  頁面上，尋找 [應用程式 (用戶端) 識別碼]  值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
@@ -121,7 +121,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
    1. 輸入金鑰描述 (例如，**應用程式祕密**)。
    1. 選取金鑰持續時間，此值可為 [1 年]  、[2 年]  或 [永不過期]  。
-   1. 選取 [新增]  按鈕。 
+   1. 選取 [新增]  按鈕。
    1. 金鑰值出現時，將其複製並儲存到安全的位置。 稍後您將需要用此金鑰在 Visual Studio 中設定專案。 金鑰值不會再次顯示，也無法透過任何其他方式來取得。
 1. 在應用程式頁面清單中，選取 [API 權限]  。 然後：
    1. 選取 [新增權限]  按鈕。
@@ -174,21 +174,21 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ## <a name="re-create-the-sample-app"></a>重新建立應用程式範例
 
-1. 在 Visual Studio 中，建立新的 **Visual C#** **ASP.NET Web 應用程式 (.NET Framework)** 專案。 
+1. 在 Visual Studio 中，建立新的 **Visual C#** **ASP.NET Web 應用程式 (.NET Framework)** 專案。
 1. 在下一個畫面中，選擇 **MVC** 專案範本。 此外，也請為 **Web API** 新增資料夾和核心參考，因為稍後會新增 Web API 控制器。 將專案選擇的驗證模式保留為預設值：**沒有驗證**。
-1. 在 [方案總管]  視窗中選取專案，然後選取 **F4** 鍵。 
+1. 在 [方案總管]  視窗中選取專案，然後選取 **F4** 鍵。
 1. 在 [專案屬性] 中，將 [已啟用 SSL]  設定為 **True**。 請記下 **SSL URL** 中的資訊。 在 Azure 入口網站中設定此應用程式的註冊時，將會用到這項資料。
-1. 新增下列 ASP.NET OWIN 中介軟體 NuGet 套件： 
+1. 新增下列 ASP.NET OWIN 中介軟體 NuGet 套件：
    - Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
    - Microsoft.Owin.Host.SystemWeb
    - Microsoft.IdentityModel.Protocol.Extensions
    - Microsoft.Owin.Security.OpenIdConnect
-   - Microsoft.Identity.Client 
+   - Microsoft.Identity.Client
 1. 在 **App_Start** 資料夾中：
-   1. 建立名為 **Startup.Auth.cs** 的類別。 
-   1. 從命名空間名稱中移除 **.App_Start**。 
-   1. 將**啟動**類別的程式碼取代為應用程式範例相同檔案內的程式碼。       
+   1. 建立名為 **Startup.Auth.cs** 的類別。
+   1. 從命名空間名稱中移除 **.App_Start**。
+   1. 將**啟動**類別的程式碼取代為應用程式範例相同檔案內的程式碼。
    請務必採用整個類別定義。 定義會從**公用類別啟動**變更為**公用部分類別啟動**。
 1. 在 **Startup.Auth.cs** 中，藉由新增 Visual Studio IntelliSense 所建議的 **using** 陳述式來解析遺漏的參考。
 1. 以滑鼠右鍵按一下專案，選取 [新增]  ，然後選取 [類別]  。
@@ -220,12 +220,12 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 網站建立好之後，請在 [儀表板]  中找到網站，然後加以選取以開啟 App Service 的 [概觀]  畫面。
 1. 從 App Service 的 [概觀]  索引標籤中，選取 [取得發行設定檔]  連結以下載發行設定檔，並加以儲存。 您可以使用其他部署機制，例如從原始檔控制進行部署。
 1. 切換至 Visual Studio，然後：
-   1. 移至 **dotnet-web-daemon-v2** 專案。 
+   1. 移至 **dotnet-web-daemon-v2** 專案。
    1. 在 [方案總管] 中以滑鼠右鍵按一下專案，然後選取 [發佈]  。
    1. 選取底部列上的 [匯入設定檔]  ，然後匯入您先前下載的發行設定檔。
 1. 選取 [設定]  。
 1. 在 [連線]  索引標籤上，更新目的地 URL 使其使用 "https"。 例如，使用 [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)。 選取 [下一步]  。
-1. 在 [設定]  索引標籤上，確定已清除 [啟用組織驗證]  。  
+1. 在 [設定]  索引標籤上，確定已清除 [啟用組織驗證]  。
 1. 選取 [儲存]  。 選取主畫面上的 [發佈]  。
 
 Visual Studio 會發佈專案，並自動開啟瀏覽器並導向至專案的 URL。 如果您看到專案的預設網頁，表示發佈成功。
