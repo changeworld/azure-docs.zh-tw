@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: c4c8f21234cfbf040d57c0e1c8dbecbb698d7d50
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 9da8b6d8e5151bd6487d68c2796c261f19c11b55
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685915"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086550"
 ---
 # <a name="cloud-solution-providers"></a>雲端解決方案提供者
 
@@ -195,4 +195,4 @@ CSP 計劃選擇加入設置在合作夥伴中心或雲端合作夥伴門戶提�
 
 要瞭解有關市場 GTM 服務的資訊,請參閱[上市服務](https://partner.microsoft.com/reach-customers/gtm)。
 
-登錄到[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)或[雲合作夥伴門戶](https://cloudpartner.azure.com/)以創建和配置您的產品/服務。
+登錄到[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以創建和配置您的產品/服務。

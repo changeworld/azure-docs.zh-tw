@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: HT
+ms.openlocfilehash: 53806a1a627c7ae6bc3470aa387be0982df914fa
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869631"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082253"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支援 Azure 上第 2 代 VM
 
@@ -28,7 +28,7 @@ ms.locfileid: "81869631"
 Azure 中的所有 VM 大小都支援第 1 代 VM(Mv2 系列 VM 除外)。 Azure 現在為以下選定的 VM 系列提供第 2 代支援:
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC 系列](../dcv2-series.md)
+* [DCv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)與[Dsv3 系列](../dv3-dsv3-series.md)
 * [達斯夫4系列](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3 系列](../ev3-esv3-series.md)

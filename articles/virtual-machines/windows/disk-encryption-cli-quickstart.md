@@ -3,15 +3,16 @@ title: 使用 Azure CLI 建立和加密 Windows 虛擬機器
 description: 在本快速入門中，您將了解如何使用 Azure CLI 建立和加密 Windows 虛擬機器
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 786a906241b355cdae403c6ed08b60eb27045d6f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: aa0dd0bf55d51800d6a9b4283aa9e653887bf2f1
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385243"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082793"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立和加密 Windows 虛擬機器
 

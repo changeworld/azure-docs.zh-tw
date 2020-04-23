@@ -1,25 +1,20 @@
 ---
-title: '使 D：VM 磁碟機成為資料磁片 '
+title: '使用 D:VM 驅動程式成為資料磁碟 '
 description: '說明如何為 Windows VM 變更磁碟機代號，讓您能夠使用 D: 磁碟機做為資料磁碟機。'
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 491e7b7be084017cc370fe431c3175ac5b2673f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033659"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083417"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 磁碟機作為 Windows VM 上的資料磁碟機
 如果您的應用程式需要使用 D 磁碟機來儲存資料，請遵循下列指示，使用不同的磁碟機代號來代表暫存磁碟。 切勿使用暫存磁碟儲存需要保留的資料。
@@ -52,16 +47,16 @@ ms.locfileid: "74033659"
 6. 在 [磁碟機代號] 下方，選取磁碟機 **D**，然後按一下 [確定]****。 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>將 pagefile.sys 移回暫存磁碟機
-1. 按右鍵 **"開始"** 功能表並選擇 **"系統"**
+1. 右鍵按兩下 **"開始"** 功能表並選擇 **"系統"**
 2. 在左側功能表中，選取 [進階系統設定] ****。
 3. 在 [效能]**** 區段中，選取 [設定]****。
 4. 選取 [進階] **** 索引標籤。
 5. 在 [虛擬記憶體]**** 區段中，選取 [變更]****。
 6. 選取作業系統磁碟機 **C**，然後依序按一下 [沒有分頁檔]**** 和 [設定]****。
 7. 選取暫存磁碟機 **T**，然後依序按一下 [系統管理大小]**** 和 [設定]****。
-8. 按一下 [套用]****。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
+8. 按一下 [套用]  。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
 9. 重新啟動虛擬機器。
 
 ## <a name="next-steps"></a>後續步驟
-* 您可以通過[附加資料磁片](attach-managed-disk-portal.md)來增加虛擬機器可用的存儲。
+* 您可以透過[額外資料磁碟](attach-managed-disk-portal.md)來增加虛擬機器可用的儲存。
 

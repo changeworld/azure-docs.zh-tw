@@ -1,21 +1,19 @@
 ---
-title: 從 Windows VM 分離資料磁片 - Azure
+title: 從 Windows VM 分離資料磁碟 - Azure
 description: 使用 Resource Manger 部署模型，將資料磁碟與 Azure 中的虛擬機器中斷連結。
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 301f3abd26f702f3f29c8833c835ba7d0e41bcaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c93bb5fd3e92c6a947fe997b58207b87b2717fd5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834613"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082759"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何從 Windows 虛擬機器卸離資料磁碟
 
@@ -50,14 +48,14 @@ Update-AzVM `
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用入口網站來中斷資料磁碟連結
 
-您可以*熱火刪除*資料磁片，但在將其從 VM 分離之前，請確保沒有主動使用該磁片。
+您可以*熱火刪除*資料磁碟,但在將其從 VM 分離之前,請確保沒有主動使用該磁碟。
 
 1. 在左窗格中，選取 [虛擬機器]****。
-1. 選擇具有要分離的資料磁片的虛擬機器。
+1. 選擇具有要分離的數據磁碟的虛擬機器。
 1. 在 [設定]**** 底下，選取 [磁碟]****。
 1. 在 [磁碟]**** 窗格頂端，選取 [編輯]****。
-1. 在要分離的資料磁片的最右側的 **"磁片**"窗格中，選擇 **"分離**"。
-1. 選擇 **"在**頁面頂部保存"以保存更改。
+1. 在要分離的資料磁碟的最右側的 **「磁碟**」窗格中,選擇 **「分離**」 。
+1. 選擇 **「在**頁面頂部保存」 以儲存更改。
 
 磁碟仍留在儲存體中，但不再連結至虛擬機器。
 

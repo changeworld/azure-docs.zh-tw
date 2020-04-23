@@ -2,13 +2,13 @@
 title: 樣本函數 - 日期
 description: 描述要在 Azure 資源管理器樣本中使用用於日期的函數。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986274"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084782"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 範本日期函數
 
@@ -21,7 +21,7 @@ ms.locfileid: "80986274"
 
 `dateTimeAdd(base, duration, [format])`
 
-將持續時間添加到基本日期時間值。
+將持續時間添加到基值。 預期 ISO 8601 格式。
 
 ### <a name="parameters"></a>參數
 

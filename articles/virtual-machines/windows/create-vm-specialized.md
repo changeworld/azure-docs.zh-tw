@@ -1,24 +1,18 @@
 ---
-title: 從 Azure 中的專用 VHD 創建 Windows VM
+title: 從 Azure 中的專用 VHD 建立 Windows VM
 description: 使用 Resource Manager 部署模型，藉由連結特製化受控磁碟作為 OS 磁碟，建立新的 Windows VM。
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243363"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086397"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 從特製化磁碟建立 Windows VM
 
@@ -33,7 +27,7 @@ ms.locfileid: "79243363"
 
 您也可以使用 Azure 入口網站，[從特定的 VHD 建立新的虛擬機器](create-vm-specialized-portal.md)。
 
-本文說明如何使用受控磁碟。 如果您有需要使用存儲帳戶的舊部署，請參閱[在存儲帳戶中從專用 VHD 創建 VM。](sa-create-vm-specialized.md)
+本文說明如何使用受控磁碟。 如果您有需要使用存儲帳戶的舊部署,請參閱[在存儲帳戶中從專用 VHD 創建 VM。](sa-create-vm-specialized.md)
 
 我們建議您將單個 VHD 或快照的併發部署數限制為 20 個 VM。 
 
@@ -64,13 +58,13 @@ $osDisk = Get-AzDisk `
 
 ### <a name="upload-the-vhd"></a>上傳 VHD
 
-您現在可以將 VHD 直接上載到託管磁片。 有關說明，請參閱[使用 Azure PowerShell 將 VHD 上載到 Azure。](disks-upload-vhd-to-managed-disk-powershell.md)
+您現在可以將 VHD 直接上傳到託管磁碟。 有關說明,請參閱[使用 Azure PowerShell 將 VHD 上傳到 Azure。](disks-upload-vhd-to-managed-disk-powershell.md)
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>選項 3：複製現有的 Azure 虛擬機器
 
 您可以藉由建立 VM 的快照集，然後使用該快照集來建立新的受控磁碟和新的 VM，建立使用受控磁碟的 VM 複本。
 
-如果要將現有 VM 複製到其他區域，可能需要使用 azcopy[在另一個區域中創建磁片的副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
+如果要將現有 VM 複製到其他區域,可能需要使用 azcopy[在另一個區域中建立磁碟的複本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>製作 OS 磁碟的快照集
 
@@ -118,7 +112,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-要使用此快照創建需要高性能的 VM，請將參數`-AccountType Premium_LRS`添加到 New-AzSnapshot Config 命令。 此參數建立的快照集會儲存為「進階受控磁碟」。 「進階受控磁碟」比「標準磁碟」費用高，因此請先確定您需要「進階磁碟」，再使用此參數。
+要使用此快照創建需要高性能的 VM,請將`-AccountType Premium_LRS`參數 添加到 New-AzSnapshot Config 命令。 此參數建立的快照集會儲存為「進階受控磁碟」。 「進階受控磁碟」比「標準磁碟」費用高，因此請先確定您需要「進階磁碟」，再使用此參數。
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>從快照集建立新的磁碟
 
@@ -267,7 +261,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>確認已建立 VM
-您應該在 **"流覽** > **虛擬機器**"下的 Azure[門戶](https://portal.azure.com)中看到新創建的 VM，或者使用以下 PowerShell 命令。
+您應該在 **「瀏覽** > **」下**的 Azure[門戶](https://portal.azure.com)中看到新創建的 VM,或者使用以下 PowerShell 命令。
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

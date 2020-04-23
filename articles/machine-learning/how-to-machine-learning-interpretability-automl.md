@@ -1,5 +1,5 @@
 ---
-title: 自動化機器學習中的可規劃性
+title: 自動 ML 中的可解釋性
 titleSuffix: Azure Machine Learning
 description: 瞭解如何獲取有關自動 ML 模型如何確定功能重要性的說明,並在使用 Azure 機器學習 SDK 時進行預測。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257159"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086414"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>可解釋性:自動化機器學習中的模型說明
 

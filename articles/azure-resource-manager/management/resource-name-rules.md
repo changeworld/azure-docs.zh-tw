@@ -2,13 +2,13 @@
 title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981523"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086380"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
@@ -534,6 +534,13 @@ ms.locfileid: "80981523"
 > | --- | --- | --- | --- |
 > | clusters | 資源群組 | 4-63 | 字母數位和連字元。<br><br>以字母數字開始和結束。 |
 > | workspaces | 資源群組 | 4-63 | 字母數位和連字元。<br><br>以字母數字開始和結束。 |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | 單位 | 影響範圍 | 長度 | 有效字元 |
+> | --- | --- | --- | --- |
+> | solutions | 工作區 | N/A | 對於由 Microsoft 創作的解決方案,名稱必須位於模式中:<br>`SolutionType(WorkspaceName)`<br><br>對於由第三方建立的解決方案,名稱必須位於模式中:<br>`SolutionType[WorkspaceName]`<br><br>例如,有效名稱為:<br>`AntiMalware(contoso-IT)`<br><br>解決方案類型區分大小寫。 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 

@@ -1,39 +1,33 @@
 ---
-title: 從 Azure 中的託管映射創建 VM
-description: 在 Resource Manager 部署模型中使用 Azure PowerShell 或 Azure 入口網站，從一般化受控映像建立 Windows 虛擬機器。
-services: virtual-machines-windows
-documentationcenter: ''
+title: 從 Azure 中的託管映像建立 VM
+description: 使用 Azure PowerShell 或門戶從通用託管映射創建 Windows 虛擬機器。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74841926"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086312"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>從受控映像建立 VM
 
 您可以使用 Azure 入口網站或 PowerShell，從 Azure 受控 VM 映像建立多部虛擬機器 (VM)。 受控 VM 映像包含建立 VM 所需的資訊，包括 OS 和資料磁碟。 組成映像的虛擬硬碟 (VHD) (包括 OS 磁碟和任何資料磁碟) 會儲存為受控磁碟。 
 
-在創建新 VM 之前，您需要[創建一個託管 VM 映射](capture-image-resource.md)，用作源映射，並將映射上的讀取存取許可權授予應有權訪問映射的任何使用者。 
+在建立新 VM 之前,您需要[創建一個託管 VM 映射](capture-image-resource.md),用作來源映射,並將映射上的讀取存取許可權授予應有權存取映射的任何使用者。 
 
 
 ## <a name="use-the-portal"></a>使用入口網站
 
-1. 轉到[Azure 門戶](https://portal.azure.com)以查找託管映射。 搜索並選擇**圖像**。
+1. 轉到[Azure 門戶](https://portal.azure.com)以查找託管映射。 搜尋並選擇**影像**。
 3. 從清單選取您要使用的映像。 映像的 [概觀]**** 頁面隨即開啟。
 4. 從功能表選取 [建立 VM]****。
 5. 輸入虛擬機器資訊。 在此輸入的使用者名稱和密碼將用於登入虛擬機器。 完成時選取 [確定]****。 您可以在現有資源群組中建立新的 VM，或選擇 [建立新項目]**** 來建立用於儲存 VM 的新資源群組。
-6. 選取 VM 的大小。 要查看更多大小，請選擇 **"查看所有"** 或更改**受支援的磁片類型**篩選器。 
+6. 選取 VM 的大小。 要查看更多大小,請選擇 **「查看所有」** 或更改**受支援的磁碟類型**篩選器。 
 7. 在 [設定]**** 下，視需要變更，然後選取 [確定]****。 
 8. 在摘要頁面上，您應該會看到您的映像名稱列出為**私人映像**。 選取 [確定]**** 以開始虛擬機器部署。
 
@@ -65,5 +59,5 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure PowerShell 模組創建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[使用 Azure PowerShell 模組建立與管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

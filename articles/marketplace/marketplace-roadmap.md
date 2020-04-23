@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261970"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084901"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>微軟商業市場路線圖
 
@@ -33,7 +33,7 @@ ms.locfileid: "81261970"
 * [標準合約](https://aka.ms/standardcontract)
 * [SaaS 執行 API](https://aka.ms/saasapiv2)
 * [市場地理和貨幣](https://aka.ms/marketplacegeos)
-* [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Seller Insights](./partner-center-portal/analytics.md)
 * [微軟建立市場博客](https://aka.ms/marketplacebuildblog)
 * [市場可能更新部落格](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * 合作夥伴中心:[建立](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / 來自 CPP 的[帳戶管理帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [遷移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)

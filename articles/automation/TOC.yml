@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: 組態管理
       items:
-        - name: 管理狀態設定 (DSC)
+        - name: 狀態組態 (DSC)
           items:
             - name: 概觀
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: 針對 DSC 的問題進行疑難排解
               href: troubleshoot/desired-state-configuration.md
-        - name: 管理變更追蹤和清查
+        - name: 變更追蹤與詳細目錄
           items:
             - name: 概觀
               href: change-tracking.md
@@ -182,7 +182,7 @@
                   href: troubleshoot/onboarding.md
                 - name: 使用變更追蹤和清查
                   href: troubleshoot/change-tracking.md
-    - name: 於下班時間啟動/停止虛擬機器
+    - name: 於下班時間開始/停止 VM
       items:
         - name: 概觀
           href: automation-solution-vm-management.md

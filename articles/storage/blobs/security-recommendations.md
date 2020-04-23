@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 0ceef2561d84a1fa491ab9577e1eac789b62bef7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 0b32f7e8fa2ec0d1d28f2fd42147e140d2d03341
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454623"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086108"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存的安全建議
 
@@ -57,6 +57,7 @@ Azure 安全中心定期分析 Azure 資源的安全狀態,以識別潛在的安
 | 開啟防火牆規則 | 配置防火牆規則,將儲存帳戶的訪問限制為源自指定 IP 位址或範圍的請求,或來自 Azure 虛擬網路 (VNet) 中的子網清單的請求。 有關設定防火牆規則的詳細資訊,請參閱 Azure[檔同步代理和防火牆設定](../files/storage-sync-files-firewall-and-proxy.md)。 | - |
 | 允許受信任的 Microsoft 服務存取儲存帳戶 | 預設情況下,打開儲存帳戶的防火牆規則會阻止傳入的數據請求,除非請求來自在 Azure 虛擬網路 (VNet) 中運行的服務或來自允許的公共 IP 位址。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 可以通過添加異常來允許來自其他 Azure 服務的請求,以允許受信任的 Microsoft 服務存取儲存帳戶。 有關為受信任的 Microsoft 服務添加例外的詳細資訊,請參閱[Azure 檔同步代理和防火牆設定](../files/storage-sync-files-firewall-and-proxy.md)。| - |
 | 使用私人端點 | 專用終結點從 Azure 虛擬網路 (VNet) 向儲存帳戶分配專用 IP 位址。 它通過專用鏈路保護 VNet 和存儲帳戶之間的所有流量。 有關專用終結點的詳細資訊,請參閱[使用 Azure 專用終結點 將私人連接到儲存帳戶](../../private-link/create-private-endpoint-storage-portal.md)。 | - |
+| 使用 VNet 服務標記 | 服務標記表示給定 Azure 服務的一組 IP 位址前綴。 Microsoft 管理服務標記包含的位址首碼,並在位址更改時自動更新服務標記。 有關 Azure 儲存支援的服務標記的詳細資訊,請參閱[Azure 服務標記概述](../../virtual-network/service-tags-overview.md)。 有關示範如何使用服務標記建立出站網路規則的教學,請參閱[限制對 PaaS 資源的存取](../../virtual-network/tutorial-restrict-network-access-to-resources.md)。 | - |
 | 限制對特定網路的網路存取 | 限制對需要訪問的託管用戶端的網路的網路的訪問,可以減少資源受到網路攻擊的風險。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>記錄記錄/監視

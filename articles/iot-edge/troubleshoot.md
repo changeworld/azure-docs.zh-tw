@@ -4,19 +4,19 @@ description: 使用本文以了解 Azure IoT Edge 的標準診斷技巧，例如
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729278"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086516"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常見問題和解決方案
 
@@ -40,20 +40,19 @@ ms.locfileid: "81729278"
   iotedge check
   ```
 
-該工具執行的檢查類型可以分為:
+容毀錯誤的檢查工具,這些檢查被分類到以下三個類別中:
 
 * 配置檢查:檢查可能阻止 Edge 設備連接到雲端的詳細資訊,包括*config.yaml*和容器引擎的問題。
 * 連接檢查:驗證 IoT Edge 執行時可以存取主機裝置上的連接埠,並且所有 IoT Edge 元件都可以連接到 IoT 中心。
 * 生產就緒性檢查:查找推薦的生產最佳實踐,例如設備證書頒發機構 (CA) 證書的狀態和模組日誌檔配置。
 
-有關診斷檢查的完整清單,請參閱[內置故障排除功能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
+有關此工具執行的每個診斷檢查的資訊,包括收到錯誤或警告時該怎麼做,請參閱[IoT Edge 疑難排解檢查](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
 ## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>使用 iotedge 支援捆綁「命令收集除錯資訊
 
 當您需要從 IoT Edge 設備收集日誌時,最方便的方法`support-bundle`是使用該 命令。 默認情況下,此命令收集模組、IoT Edge 安全管理器和容器引擎日誌、「iotedge 檢查」JSON 輸出和其他有用的調試資訊。 它將它們壓縮到單個檔中,以便輕鬆共用。 該`support-bundle`命令在版本[1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9)及更高版本中可用。
 
 使用`--since``support-bundle`標誌 運行該命令,以指定要獲取日誌的過去多長時間。 例如`6h`,將獲取自過去 6`6d`小時以來 的日`6m`誌,因為過去 6 天,最近 6 分鐘,等等。 包括標誌`--help`以查看完整的選項清單。
-
 
 * 在 Linux 上：
 

@@ -1,42 +1,42 @@
 ---
-title: Azure 函數的 Azure Blob 存儲觸發器
-description: 瞭解如何在 Azure Blob 存儲資料更改時運行 Azure 函數。
+title: Azure 函數的 Azure Blob 儲存觸發器
+description: 瞭解如何在 Azure Blob 儲存數據更改時運行 Azure 函數。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348963"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084952"
 ---
-# <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure 函數的 Azure Blob 存儲觸發器
+# <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure 函數的 Azure Blob 儲存觸發器
 
 偵測到新的或已更新的 Blob 時，Blob 儲存體觸發程序會啟動函式。 blob 內容作為輸入提供給[函數](./functions-bindings-storage-blob-input.md)。
 
-Azure Blob 存儲觸發器需要通用存儲帳戶。 要使用僅 Blob 帳戶，或者應用程式有專門需要，請查看使用此觸發器的替代方法。
+Azure Blob 儲存觸發器需要通用存儲帳戶。 要使用僅 Blob 帳戶,或者應用程式有專門需要,請查看使用此觸發器的替代方法。
 
-有關設置和配置詳細資訊的資訊，請參閱[概述](./functions-bindings-storage-blob.md)。
+有關設定與設定詳細資訊的資訊,請參考[概述](./functions-bindings-storage-blob.md)。
 
 ## <a name="alternatives"></a>替代方案
 
-### <a name="event-grid-trigger"></a>事件網格觸發器
+### <a name="event-grid-trigger"></a>事件格線觸發器
 
 [事件網格觸發器](functions-bindings-event-grid.md)還內置了對[blob 事件](../storage/blobs/storage-blob-event-overview.md)的支援。 請使用 Event Grid 來因應以下情節的需求，避免使用 Blob 儲存體觸發程序：
 
-- **僅限 Blob 的存儲帳戶**：[僅 Blob 存儲帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)支援 Blob 輸入和輸出綁定，但不支援 Blob 觸發器。
+- **僅限 Blob 的儲存帳戶**:[僅 Blob 儲存帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)支援 Blob 輸入和輸出綁定,但不支援 Blob 觸發器。
 
-- **高比例**：可鬆散地定義為包含 100，000 個以上 blob 的容器或每秒具有 100 個以上 blob 更新的存儲帳戶。
+- **高比例**:可鬆散地定義為包含 100,000 個以上 blob 的容器或每秒具有 100 個以上 blob 更新的存儲帳戶。
 
-- **最小化延遲**：如果函數應用位於消耗計畫上，則如果函數應用已空閒，則處理新 Blob 的延遲可能長達 10 分鐘。 若要避免這類延遲，可以切換到 App Service 方案並啟用 Always On。 您也可以透過 Blob 儲存體帳戶使用 [Event Grid 觸發程序](functions-bindings-event-grid.md)。 如需範例，請參閱[ Event Grid 教學課程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
+- **最小化延遲**:如果函數應用位於消耗計劃上,則如果函數應用已空閒,則處理新 Blob 的延遲可能長達 10 分鐘。 若要避免這類延遲，可以切換到 App Service 方案並啟用 Always On。 您也可以透過 Blob 儲存體帳戶使用 [Event Grid 觸發程序](functions-bindings-event-grid.md)。 如需範例，請參閱[ Event Grid 教學課程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
 
-請參閱[事件網格示例的事件網格教程的圖像調整大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
+請參考[事件格線範例的事件格線的影像調整大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
 
 ### <a name="queue-storage-trigger"></a>佇列儲存體觸發程序
 
-處理 Blob 的另一種方法是編寫與正在創建或修改的 Blob 對應的佇列消息，然後使用[佇列存儲觸發器](./functions-bindings-storage-queue.md)開始處理。
+處理 Blob 的另一種方法是編寫與正在創建或修改的 Blob 對應的佇列消息,然後使用[佇列儲存觸發器](./functions-bindings-storage-queue.md)開始處理。
 
 ## <a name="example"></a>範例
 
@@ -54,11 +54,11 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 Blob 觸發程序路徑 `samples-workitems/{name}` 中的字串 `{name}` 會建立[繫結運算式](./functions-bindings-expressions-patterns.md)，您可以在函式程式碼中用來存取觸發 Blob 的檔案名稱。 如需詳細資訊，請參閱本文稍後的 [Blob 名稱模式](#blob-name-patterns)。
 
-有關屬性的詳細資訊，`BlobTrigger`請參閱[屬性和注釋](#attributes-and-annotations)。
+關於屬性的詳細資訊,`BlobTrigger`請參考[屬性與註解](#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
 
-下面的示例顯示了*函數.json*檔中的 blob 觸發器綁定和使用綁定的代碼。 當在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 時，函數將寫入日誌。
+下面的範例顯示了*函數.json*檔中的 blob 觸發器綁定和使用綁定的代碼。 當在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 時,函數將寫入日誌。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -103,7 +103,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例所示範的是使用繫結之 *function.json* 檔案和 [JavaScript 程式碼](functions-reference-node.md)中的 Blob 觸發程序繫結。 在 `samples-workitems` 容器中新增或更新 Blob 時，函數會寫入記錄。
 
@@ -139,7 +139,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例示範的是使用繫結的 *function.json* 檔案和 [Python 程式碼](functions-reference-python.md)中的 Blob 觸發程序繫結。 當在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 時，函數將寫入日誌。
+下列範例示範的是使用繫結的 *function.json* 檔案和 [Python 程式碼](functions-reference-python.md)中的 Blob 觸發程序繫結。 當在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 時,函數將寫入日誌。
 
 以下是 *function.json* 檔案：
 
@@ -174,9 +174,9 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-當在容器中添加或更新 Blob 時，`myblob`此函數將寫入日誌。
+當在容器中添加或更新 Blob`myblob`時, 此函數將寫入日誌。
 
 ```java
 @FunctionName("blobprocessor")
@@ -194,7 +194,7 @@ public void run(
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性和注釋
+## <a name="attributes-and-annotations"></a>屬性與註解
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -226,7 +226,7 @@ public void run(
   }
    ```
 
-  有關完整示例，請參閱[觸發器示例](#example)。
+  有關完整範例,請參閱[觸發器範例](#example)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -252,11 +252,11 @@ public void run(
 * `StorageAccount` 屬性套用至該類別。
 * 函數應用程式 (「AzureWebJobsStorage」應用程式設定) 的預設儲存體帳戶。
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
 
-C# 腳本不支援屬性。
+C# 文稿不支援屬性。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
@@ -264,23 +264,23 @@ JavaScript 不支援屬性。
 
 Python 不支援屬性。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-該`@BlobTrigger`屬性用於授予您對觸發函數的 blob 的存取權限。 有關詳細資訊，請參閱[觸發器示例](#example)。
+該`@BlobTrigger`屬性用於授予您對觸發函數的 blob 的訪問許可權。 有關詳細資訊,請參閱[觸發器範例](#example)。
 
 ---
 
 ## <a name="configuration"></a>組態
 
-下表介紹了您在*函數.json*檔和`BlobTrigger`屬性中設置的綁定配置屬性。
+下表介紹了您在*函數.json*`BlobTrigger`檔和 屬性中設置的綁定配置屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** | n/a | 必須設為 `blobTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
-|**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
-|**名稱** | n/a | 表示函式程式碼中 Blob 的變數名稱。 |
-|**路徑** | **BlobPath** |要監視的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可能是 [Blob 名稱模式](#blob-name-patterns)。 |
-|**連接** | **連接** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須是用於一般用途的儲存體帳戶，而不是[Blob 儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**type** | n/a | 必須設為 `blobTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
+|**方向** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
+|**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。 |
+|**path** | **BlobPath** |要監視的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可能是 [Blob 名稱模式](#blob-name-patterns)。 |
+|**連線** | **Connection** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須是用於一般用途的儲存體帳戶，而不是[Blob 儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -290,21 +290,21 @@ Python 不支援屬性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<NAME>`與`<NAME>`*函數.json*中定義的值匹配的位置訪問 blob 資料。
+使用`context.bindings.<NAME>`與`<NAME>`*函數.json*中定義的值匹配的位置訪問 blob 數據。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通過鍵入為[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數訪問 blob 資料。 有關詳細資訊，請參閱[觸發器示例](#example)。
+通過鍵入為[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數存取 blob 資料。 有關詳細資訊,請參閱[觸發器範例](#example)。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-該`@BlobTrigger`屬性用於授予您對觸發函數的 blob 的存取權限。 有關詳細資訊，請參閱[觸發器示例](#example)。
+該`@BlobTrigger`屬性用於授予您對觸發函數的 blob 的訪問許可權。 有關詳細資訊,請參閱[觸發器範例](#example)。
 
 ---
 
@@ -348,7 +348,7 @@ Python 不支援屬性。
 "path": "images/{{20140101}}-{name}",
 ```
 
-如果 blob 名為*{20140101}-soundfile.mp3，* 則函數代碼中的`name`變數值為*soundfile.mp3*。
+如果 blob 名為`name`*{20140101}-soundfile.mp3,* 則函數程式碼中的變數值為*soundfile.mp3*。
 
 ## <a name="metadata"></a>中繼資料
 
@@ -356,11 +356,11 @@ Python 不支援屬性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -371,11 +371,11 @@ module.exports = function (context, myBlob) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-中繼資料在 Python 中不可用。
+元數據在 Python 中不可用。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-中繼資料在 JAVA 中不可用。
+元數據在 JAVA 中不可用。
 
 ---
 
@@ -385,13 +385,13 @@ Azure Functions 執行階段可確保不會針對一樣新或更新的 blob 多�
 
 Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsStorage` 應用程式設定所定義) 的 Azure 儲存體帳戶中名為 *azure-webjobs-hosts*的容器中。 Blob 回條具有下列資訊：
 
-* 觸發的函數（"*&lt;函數應用名稱>*。功能。函數名稱>"，例如："My功能應用程式.函數.CopyBlob"） * &lt; *
+* 觸發的函數("*&lt;函數應用名稱>*。功能。函數名稱>",例如:"My功能應用程式.函數.CopyBlob") * &lt; *
 * 容器名稱
 * Blob 類型 ("BlockBlob" 或 "PageBlob")
 * Blob 名稱
 * ETag (Blob 版本識別碼，例如："0x8D1DC6E70A277EF")
 
-要強制重新處理某個 Blob，可以從 *azure-webjobs-hosts* 容器中手動刪除該 Blob 的 Blob 回條。 雖然後處理可能不會立即發生，但保證在以後的時間點發生。
+要強制重新處理某個 Blob，可以從 *azure-webjobs-hosts* 容器中手動刪除該 Blob 的 Blob 回條。 雖然後處理可能不會立即發生,但保證在以後的時間點發生。 要立即重新處理,可以更新*azure web 作業-主機/blobcaninfo*中的*掃描資訊*blob。 屬性之後`LatestScan`具有最後一個修改時間戳的任何 blob 都將再次掃描。
 
 ## <a name="poison-blobs"></a>毒物斑點
 
@@ -399,7 +399,7 @@ Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsS
 
 如果 5 次嘗試全都失敗，Azure Functions 會將訊息新增至名為 *webjobs-blobtrigger-poison* 的儲存體佇列。 您可以設定重試次數上限。 相同的 MaxDequeueCount 設定可用於處理有害的 Blob 和處理有害的佇列訊息。 適用於有害 Blob 的佇列訊息是一個 JSON 物件，其中包含下列屬性：
 
-* 函數 Id（在格式*&lt;函數應用名稱>。* 功能。函數名稱>） * &lt; *
+* 函數 Id(在格式*&lt;函數應用名稱>。* 功能。函數名稱>* &lt; * )
 * BlobType ("BlockBlob" 或 "PageBlob")
 * ContainerName
 * BlobName
@@ -409,13 +409,13 @@ Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsS
 
 Blob 觸發程序會在內部使用佇列，因此並行函式叫用數上限由 [host.json 中的佇列組態](functions-host-json.md#queues)所控制。 預設設定會將並行存取限制為 24 個叫用。 這項限制會個別套用至使用 Blob 觸發程序的每個函式。
 
-[消耗計畫](functions-scale.md#how-the-consumption-and-premium-plans-work)將一個虛擬機器 （VM） 上的功能應用限制為 1.5 GB 記憶體。 每個並行執行的函式執行個體和函式執行階段本身都會使用記憶體。 如果 Blob 觸發的函式將整個 Blob 載入記憶體中，則該函式用於 Blob 的記憶體上限為 24 * Blob 大小上限。 例如，若某個函式應用程式有三個 Blob 觸發的函式，則預設的每一 VM 並行存取上限將是 3 * 24 = 72 個函式叫用。
+[消耗計劃](functions-scale.md#how-the-consumption-and-premium-plans-work)將一個虛擬機器 (VM) 上的功能應用限制為 1.5 GB 記憶體。 每個並行執行的函式執行個體和函式執行階段本身都會使用記憶體。 如果 Blob 觸發的函式將整個 Blob 載入記憶體中，則該函式用於 Blob 的記憶體上限為 24 * Blob 大小上限。 例如，若某個函式應用程式有三個 Blob 觸發的函式，則預設的每一 VM 並行存取上限將是 3 * 24 = 72 個函式叫用。
 
 JavaScript 和 Java 函式會將整個 Blob 載入記憶體中，而 C# 函式則會在您繫結至 `string`、`Byte[]` 或 POCO 時有此行為。
 
 ## <a name="polling"></a>輪詢
 
-輪詢在檢查日誌和運行定期容器掃描之間作為混合方式。 Blob 一次以 10，000 個組進行掃描，並在間隔之間使用延續權杖。
+輪詢在檢查日誌和運行定期容器掃描之間作為混合方式。 Blob 一次以 10,000 個組進行掃描,並在間隔之間使用延續權杖。
 
 > [!WARNING]
 > 此外，[會以「最大努力」建立儲存體記錄](/rest/api/storageservices/About-Storage-Analytics-Logging)。 並不保證會擷取所有事件。 在某些情況下可能會遺失記錄。
@@ -425,5 +425,5 @@ JavaScript 和 Java 函式會將整個 Blob 載入記憶體中，而 C# 函式�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [運行函數時讀取 Blob 存儲資料](./functions-bindings-storage-blob-input.md)
-- [從函數寫入 blob 存儲資料](./functions-bindings-storage-blob-output.md)
+- [執行函數時讀取 Blob 儲存資料](./functions-bindings-storage-blob-input.md)
+- [從函數寫入 blob 儲存資料](./functions-bindings-storage-blob-output.md)

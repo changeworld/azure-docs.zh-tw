@@ -1,24 +1,18 @@
 ---
 title: 從 Azure 門戶中的專用 VHD 創建 Windows VM
 description: 在 Azure 入口網站中從 VHD 建立新的 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 587acd37f465dda7e514b595f8451afe3d259dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d360ac5a57fe72b092a6694721905c066527bba3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74039135"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086448"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 入口網站從 VHD 建立 VM
 
@@ -30,7 +24,7 @@ ms.locfileid: "74039135"
 
 - 採用傳統 VM 並使用 VHD 建立使用 Resource Manager 部署模型和受控磁碟的新 VM。 為了獲得最佳結果，請先在 Azure 入口網站**停止**傳統 VM 再建立快照集。
  
-- 上傳內部部署 VHD 並將它連結至新的 VM，即可從內部部署 VHD 建立 Azure VM。 您可使用 PowerShell 或其他工具，將 VHD 上傳至儲存體帳戶，然後從 VHD 建立受控磁碟。 有關詳細資訊，請參閱[上傳專用 VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)。 
+- 上傳內部部署 VHD 並將它連結至新的 VM，即可從內部部署 VHD 建立 Azure VM。 您可使用 PowerShell 或其他工具，將 VHD 上傳至儲存體帳戶，然後從 VHD 建立受控磁碟。 有關詳細資訊,請參閱[上傳專用 VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)。 
 
 如果您想要建立多部 VM，請勿使用特製化磁碟。 然而，對於較大型的部署，請[建立映像](capture-image-resource.md)，然後[使用該映像來建立多個 VM](create-vm-generalized-managed.md)。
 

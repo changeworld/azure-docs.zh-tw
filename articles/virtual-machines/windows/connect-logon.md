@@ -1,24 +1,18 @@
 ---
 title: 連接到 Windows 伺服器 VM
 description: 了解如何使用 Azure 入口網站和 Resource Manager 部署模型來連接和登入 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ef62b02e-bf35-468d-b4c3-71b63fe7f409
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: c4f5df4a76792c64ab92bbe8d6e4b84080fbd8fe
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459180"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086210"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何連接和登入執行 Windows 的 Azure 虛擬機器
 您會使用 Azure 入口網站中的 [連線]**** 按鈕，從 Windows 桌面啟動遠端桌面 (RDP) 工作階段。 首先您必須連線到虛擬機器，然後登入。
@@ -33,7 +27,7 @@ ms.locfileid: "81459180"
 5. 開啟下載的 RDP 檔案，然後在出現提示時選取 [連線]****。 您會收到警告，表示 `.rdp` 檔案來自未知的發行者。 這是預期行為。 在 [遠端桌面連線]**** 視窗中，選取 [連線]**** 以繼續。
    
     ![未知發行者相關警告的螢幕擷取畫面。](./media/connect-logon/rdp-warn.png)
-3. 在 [Windows 安全性]**** 視窗中，選取 [更多選擇]****，然後選取 [使用不同的帳戶]****。 輸入虛擬機器上帳戶的認證，然後選取 [確定]****。
+3. 在 [Windows 安全性]  視窗中，選取 [更多選擇]  ，然後選取 [使用不同的帳戶]  。 輸入虛擬機器上帳戶的認證，然後選取 [確定]****。
    
      **本機帳戶**：這通常是您在建立虛擬機器時所指定的本機帳戶使用者名稱與密碼。 在此案例中，虛擬機器的名稱是網域，而它的輸入格式為 *vmname*&#92;*username*。  
    

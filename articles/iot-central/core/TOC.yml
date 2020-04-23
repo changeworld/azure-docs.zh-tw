@@ -132,7 +132,7 @@
     - name: 業界應用程式範本
       items:
         - name: 零售
-          href: ../retail/overview-iot-central-retail-pnp.md
+          href: ../retail/overview-iot-central-retail.md
         - name: 能源
           href: ../energy/overview-iot-central-energy.md
         - name: 政府

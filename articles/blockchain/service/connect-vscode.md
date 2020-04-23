@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 連線至 Azure 區塊鏈服務
 description: 在 Visual Studio Code 中使用適用於 Ethereum 的 Azure 區塊鏈開發套件擴充功能連線到 Azure 區塊鏈服務聯盟網路
-ms.date: 03/26/2020
+ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348589"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084833"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>快速入門：使用 Visual Studio Code 連線至 Azure 區塊鏈服務聯盟網路
 
@@ -34,7 +34,7 @@ ms.locfileid: "80348589"
 * 如果已安裝 Visual Studio 2019，請設定 npm 的 MSBuild 工具路徑。 例如， `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * 否則，請在提升權限的「以系統管理員身分執行」  命令殼層中，使用 `npm install --global windows-build-tools` 來安裝獨立的 VS Build 工具。
 
-如需 node-gyp 的詳細資訊，請參閱 [GitHub 上的 node-gyp 存放庫](https://github.com/node-gyp)。
+如需 node-gyp 的詳細資訊，請參閱 [GitHub 上的 node-gyp 存放庫](https://github.com/nodejs/node-gyp)。
 
 ### <a name="verify-azure-blockchain-development-kit-environment"></a>確認 Azure 區塊鏈服務開發套件環境
 

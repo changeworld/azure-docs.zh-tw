@@ -2,23 +2,20 @@
 title: Azure 受限 vCPU 大小 - 視窗
 description: 列出具有受限 vCPU 計數的 VM 大小。
 services: virtual-machines-windows
-documentationcenter: ''
 author: joelpelley
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: 4121da405c2700e09bf22d1e7b42fbdc5cdc35a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeb43247253386d6dd58a4c35ef0cba15a991b9e
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77912829"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086193"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>具有受限 vCPU 的 VM 大小
 
@@ -28,7 +25,7 @@ ms.locfileid: "77912829"
 
 ## <a name="other-sizes"></a>其他大小
 - [計算最佳化](../windows/sizes-compute.md)
-- [記憶體優化](sizes-memory.md)
+- [記憶體最佳化](sizes-memory.md)
 - [儲存體最佳化](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)

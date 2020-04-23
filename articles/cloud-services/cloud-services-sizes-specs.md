@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247471"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086244"
 ---
 # <a name="sizes-for-cloud-services"></a>雲端服務的大小
 本主題描述雲端服務角色執行個體 (Web 角色和背景工作角色)的可用大小和選項。 同時也提供計劃使用這些資源時，需注意的部署考量。 每種大小都有一個識別碼，可讓您放入[服務定義檔](cloud-services-model-and-package.md#csdef)。 每種大小的價格可以在[雲端服務價格](https://azure.microsoft.com/pricing/details/cloud-services/)頁面上取得。
@@ -147,6 +147,7 @@ ms.locfileid: "79247471"
 | Standard_D8_v3  | 8         | 32            | 200                  | 4 / 高 |
 | Standard_D16_v3 | 16        | 64            | 400                  | 8 / 極高 |
 | Standard_D32_v3 | 32        | 128           | 800                  | 8 / 極高 |
+| Standard_D48_v3 | 48        | 192           | 1200                 | 8 / 極高 |
 | Standard_D64_v3 | 64        | 256           | 1600                 | 8 / 極高 |
 
 ## <a name="ev3-series"></a>Ev3 系列
@@ -158,6 +159,7 @@ ms.locfileid: "79247471"
 | Standard_E8_v3  | 8         | 64            | 200                  | 4 / 高 |
 | Standard_E16_v3 | 16        | 128           | 400                  | 8 / 極高 |
 | Standard_E32_v3 | 32        | 256           | 800                  | 8 / 極高 |
+| Standard_E48_v3 | 48        | 384           | 1200                 | 8 / 極高 |
 | Standard_E64_v3 | 64        | 432           | 1600                 | 8 / 極高 |
 
 
@@ -214,7 +216,7 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解[Azure 訂閱和服務限制、配額和約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+* 瞭解[Azure 訂閱與服務限制、配額和約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 * 進一步了解 HPC 工作負載的[有關高效能計算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 

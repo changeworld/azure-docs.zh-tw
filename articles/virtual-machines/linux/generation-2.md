@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273523"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084272"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支援 Azure 上第 2 代 VM
 
@@ -27,7 +27,7 @@ ms.locfileid: "81273523"
 Azure 中的所有 VM 大小都支援第 1 代 VM(Mv2 系列 VM 除外)。 Azure 現在為以下選定的 VM 系列提供第 2 代支援:
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC 系列](../dcv2-series.md)
+* [DCv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)與[Dsv3 系列](../dv3-dsv3-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
 * [Fsv2 系列](../fsv2-series.md)
@@ -68,7 +68,7 @@ Azure 目前不支援本地 Hyper-V 支援第 2 代 VM 的某些功能。
 | 虛擬化安全性 (VBS) | :heavy_check_mark:  | :x:   |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
 
-## <a name="features-and-capabilities"></a>功能
+## <a name="features-and-capabilities"></a>特色與功能
 
 ### <a name="generation-1-vs-generation-2-features"></a>第一代與第 2 代功能
 
@@ -101,7 +101,7 @@ Azure 目前不支援本地 Hyper-V 支援第 2 代 VM 的某些功能。
 以下是在 Azure 門戶中創建第 2 代 (Gen2) VM 的步驟。
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 選擇 **「創建資源**」。
+1. 選取 [建立資源]  。
 1. 按一下左側 Azure 應用商店中的所有 **「查看」。**
 1. 選擇支援 Gen 2 的圖像。
 1. 按一下頁面底部的 [新增]  。

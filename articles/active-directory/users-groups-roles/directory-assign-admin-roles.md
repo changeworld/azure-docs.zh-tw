@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406470"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082997"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -52,17 +52,18 @@ ms.locfileid: "81406470"
 此角色中的使用者可以建立和管理企業應用程式、應用程式註冊和應用程式 Proxy 設定的所有層面。 請注意,在創建新的應用程式註冊或企業應用程式時,分配給此角色的使用者不會添加為擁有者。
 
 應用程式管理員可以管理應用程式認證,以允許他們類比應用程式。 因此,分配給此角色的使用者可以僅管理未分配給任何 Azure AD 角色的應用程式或僅分配給以下管理員角色的應用程式的應用程式認證:
+
 * 應用程式系統管理員
 * 應用程式開發人員
 * 雲端應用程式系統管理員
 * 目錄讀取器
 
-如果應用程式分配給上述未提及的任何其他角色,則應用程式管理員無法管理該應用程式的憑據。 
- 
+如果應用程式分配給上述未提及的任何其他角色,則應用程式管理員無法管理該應用程式的憑據。
+
 此角色還授予_同意_委派許可權和應用程式許可權的許可權的許可權,但 Microsoft 圖形 API 上的許可權除外。
 
 > [!IMPORTANT]
-> 此例外情況意味著您仍然可以同意_其他_應用(例如已註冊的第三方應用或應用)的許可權,但不能同意對 Azure AD 本身的許可權。 您仍然可以在應用註冊時_請求_這些許可權,但_授予_(即同意)這些許可權需要 Azure AD 管理員。這意味著惡意用戶無法輕鬆提升其許可權,例如,通過創建和同意可以寫入整個目錄的應用,並通過該應用的許可權提升自己,成為全域管理員。
+> 此例外情況意味著您仍然可以同意_其他_應用的許可權(例如,已註冊的非 Microsoft 應用或應用),但不能同意對 Azure AD 本身的許可權。 您仍然可以在應用註冊時_請求_這些許可權,但_授予_(即同意)這些許可權需要 Azure AD 管理員。這意味著惡意用戶無法輕鬆提升其許可權,例如,通過創建和同意可以寫入整個目錄的應用,並通過該應用的許可權提升自己,成為全域管理員。
 
 ### <a name="application-developer"></a>[應用程式開發人員](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ ms.locfileid: "81406470"
 
 ### <a name="authentication-administrator"></a>[驗證管理員](#authentication-administrator-permissions)
 
-身份驗證管理員角色當前處於公共預覽版中。 具有此角色的用戶可以設置或重置非密碼認證,並可以更新所有使用者的密碼。 認證管理員可以要求使用者根據現有非密碼認證(例如 MFA 或 FIDO)重新註冊,並撤銷**裝置上的記住 MFA,** 這將提示非管理員或僅分配以下角色的使用者的下一次登入時輸入 MFA:
+具有此角色的使用者可以為某些使用者設置或重置非密碼認證,並可以更新所有使用者的密碼。 認證管理員可以要求非管理員或分配給某些角色的使用者根據現有非密碼認證(例如 MFA 或 FIDO)重新註冊,還可以撤銷**裝置上的記住 MFA,** 這提示在下一個登入時輸入 MFA。 這些操作僅適用於非管理員或分配了以下一個或多個角色的使用者:
 
 * 驗證系統管理員
 * 目錄讀取器
 * 來賓邀請者
 * 訊息中心讀取者
 * 報告讀者
+
+[特權身份驗證管理員](#privileged-authentication-administrator)角色具有許可權,可以強制所有用戶重新註冊和多重身份驗證。
 
 > [!IMPORTANT]
 > 對於可存取機密或私人資訊或 Azure Active Directory 內外重要組態的人員，具備此角色的使用者可以變更認證。 變更使用者的認證表示可承擔該使用者身分識別和權限。 例如：
@@ -128,6 +131,7 @@ ms.locfileid: "81406470"
 此角色中的使用者具有與應用程式系統管理員角色相同的權限，但不包括管理應用程式 Proxy 的能力。 此角色會授與能力來建立和管理企業應用程式和應用程式註冊的所有層面。 此角色還授予同意委派許可權的許可權的許可權以及不包括 Microsoft 圖形 API 的應用程式許可權。 創建新應用程式註冊或企業應用程式時,分配給此角色的使用者不會添加為擁有者。
 
 雲應用程式管理員可以管理應用程式認證,允許他們類比應用程式。 因此,分配給此角色的使用者可以僅管理未分配給任何 Azure AD 角色的應用程式或僅分配給以下管理員角色的應用程式的應用程式認證:
+
 * 應用程式開發人員
 * 雲端應用程式系統管理員
 * 目錄讀取器
@@ -350,7 +354,13 @@ ms.locfileid: "81406470"
 
 ### <a name="privileged-authentication-administrator"></a>[特權識別管理員](#privileged-authentication-administrator-permissions)
 
-具有此角色的使用者可以為所有使用者(包括全域管理員)設置或重置非密碼認證,並可以更新所有使用者的密碼。 特權身份驗證管理員可以強制使用者根據現有非密碼認證(例如 MFA、FIDO)重新註冊,並撤銷「記住裝置上的 MFA」,從而在所有使用者的下一次登錄時提示 MFA。
+具有此角色的使用者可以為所有使用者(包括全域管理員)設置或重置非密碼認證,並可以更新所有使用者的密碼。 特權身份驗證管理員可以強制使用者根據現有非密碼認證(如MFA或 FIDO)重新註冊,並撤銷「記住裝置上的 MFA」,從而在所有使用者的下一次登錄時提示 MFA。 [認證管理員](#authentication-administrator)角色可以強制僅對分配給以下 Azure AD 角色的非管理員和使用者重新註冊和 MFA:
+
+* 驗證系統管理員
+* 目錄讀取器
+* 來賓邀請者
+* 訊息中心讀取者
+* 報告讀者
 
 ### <a name="privileged-role-administrator"></a>[特殊權限角色管理員](#privileged-role-administrator-permissions)
 

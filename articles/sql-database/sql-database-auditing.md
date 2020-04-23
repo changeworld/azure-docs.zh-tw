@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 48cdbc8188604ce1992a1cb15289576ba92902a3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685191"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086142"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL 稽核
 
@@ -89,7 +89,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
   
    ![儲存體選項](./media/sql-database-auditing-get-started/auditing-select-destination.png)
    
-### <a name=""></a><a id="audit-storage-destination">稽核到儲存目標</a>
+### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>稽核到儲存目標
 
 若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]****，然後開啟 [儲存體詳細資料]****。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 **[確定]**。 超過保留期日誌的日誌將被刪除。
 
@@ -108,13 +108,13 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
 - 使用 AAD 驗證時，失敗的登入記錄「不會」** 顯示在 SQL 稽核記錄中。 若要檢視失敗的登入稽核記錄，您需要瀏覽 [Azure Active Directory 入口網站]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，其中會記錄這些事件的詳細資料。
 - 將自動啟用對[唯讀副本的](sql-database-read-scale-out.md)審核。 有關儲存資料夾的層次結構、命名約定和日誌格式的詳細資訊,請參閱[SQL 資料庫稽核紀錄格式](sql-database-audit-log-format.md)。 
 
-### <a name=""></a><a id="audit-log-analytics-destination">稽核至紀錄分析目標</a>
+### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>稽核至紀錄分析目標
   
 若要設定將稽核記錄寫入至 Log Analytics 工作區，請選取 [Log Analytics (預覽)]****，然後開啟 [Log Analytics 詳細資料]****。 選取或建立將寫入記錄的 Log Analytics 工作區，然後按一下 [確定]****。
    
    ![紀錄分析工作區](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-### <a name=""></a><a id="audit-event-hub-destination">稽核到事件中心目標</a>
+### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>稽核到事件中心目標
 
 > [!WARNING]
 > 在伺服器上啟用具有 SQL 池的審核**會導致 SQL 池恢復並重新暫停**,這可能會產生計費費用。
@@ -199,7 +199,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
 
 <!--The description in this section refers to preceding screen captures.-->
 
-#### <a name="auditing-geo-replicated-databases"></a>稽核異地複寫資料庫
+### <a name="auditing-geo-replicated-databases"></a>稽核異地複寫資料庫
 
 使用異地複寫資料庫，當您在主要資料庫啟用稽核，次要資料庫會有相同的稽核原則。 也可以在**次要伺服器**上啟用稽核，設定次要資料庫稽核，和主要資料庫分開。
 
@@ -211,7 +211,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
     >[!IMPORTANT]
     >使用資料庫層級稽核時，次要資料庫的儲存體設定將會和主要資料庫上的設定完全相同，這會導致跨地區流量。 建議您只啟用伺服器層級稽核，並讓所有資料庫的資料庫層級稽核保留在停用狀態。
 
-#### <a name="storage-key-regeneration"></a>儲存體金鑰重新產生
+### <a name="storage-key-regeneration"></a>儲存體金鑰重新產生
 
 在生產中，您可能會定期重新整理儲存體金鑰。 當您將稽核記錄寫入至 Azure 儲存體時，您需要在重新整理金鑰期間重新儲存稽核原則。 此程序如下：
 
@@ -226,7 +226,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
 
 ## <a name="manage-azure-sql-server-and-database-auditing"></a><a id="manage-auditing"></a>管理 Azure SQL 伺服器和資料庫稽核
 
-#### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
 **PowerShell Cmdlet (包含其他篩選的 WHERE 子句支援)**：
 
@@ -239,7 +239,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
 
 如需指令碼範例，請參閱[使用 PowerShell 設定稽核與威脅偵測](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
-#### <a name="using-rest-api"></a>使用 REST API
+### <a name="using-rest-api"></a>使用 REST API
 
 **REST API**:
 
@@ -255,7 +255,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
 - [取得資料庫*延伸稽核*原則](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [取得伺服器*延伸稽核*原則](/rest/api/sql/server%20auditing%20settings/get)
 
-#### <a name="using-azure-resource-manager-templates"></a>使用 Azure 資源管理員範本
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 資源管理員範本
 
 您可以使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 範本來管 Azure SQL 資料庫，如下列範例所示：
 

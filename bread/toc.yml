@@ -586,6 +586,9 @@
         - name: 影片索引子
           tocHref: /azure/media-services/video-indexer/
           topicHref: /azure/media-services/video-indexer/
+        - name: Azure 媒體播放器
+          tocHref: /azure/media-services/azure-media-player/
+          topicHref: /azure/media-services/azure-media-player/
     - name: 訊息服務
       tocHref: /azure/messaging-services/
       topicHref: /azure/messaging-services/

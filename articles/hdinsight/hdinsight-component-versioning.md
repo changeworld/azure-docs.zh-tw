@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
-ms.openlocfilehash: 2321918e9eae63a71d136753657bd7259862c2d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 337d36d8f5e7a7b69b98de2f68ff372d4914f905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272652"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084765"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>可以搭配 HDInsight 使用的 Apache Hadoop 元件和版本有哪些？
 
-了解 Microsoft Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 生態系統元件和版本，以及企業安全性套件。 此外，了解如何檢查 HDInsight 中的 Hadoop 元件版本。
+瞭解 Microsoft Azure HDInsight 中的[Apache Hadoop](https://hadoop.apache.org/)環境元件和版本以及企業安全包。 此外，了解如何檢查 HDInsight 中的 Hadoop 元件版本。
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>可以搭配不同 HDInsight 版本使用的 Apache Hadoop 元件
 
-Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 截至 2017 年 4 月 4 日，Azure HDInsight 使用的預設群集版本為 3.6。
+Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 2017 年 4 月 4 日,Azure HDInsight 使用的預設群集版本為 3.6。
 
 下表列出與 HDInsight 叢集版本相關聯的元件版本：
 
@@ -33,7 +33,7 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 截至 201
 | Apache Hadoop 和 YARN | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
 | Apache Pig             | 0.16.0        | 0.16.0                      |
-| Apache Hive            | 3.1.0         | 2.1.0（非ESP群集），1.2.1（ESP群集）                |
+| Apache Hive            | 3.1.0         | 2.1.0(非ESP群集),1.2.1(ESP群集)                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
 | Apache HBase (英文)           | 2.0.2         | 1.1.2                       |
@@ -55,7 +55,7 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 截至 201
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>檢查目前的 Hadoop 元件版本資訊
 
-在 HDInsight 的更新中，可能會變更與 HDInsight 叢集版本相關聯的 Hadoop 生態系統元件版本。 若要檢查 Hadoop 元件和驗證叢集所使用的版本，請使用 Ambari REST API。 **GetComponentInformation** 命令會擷取服務元件的相關資訊。 如需詳細資訊，請參閱 [Apache Ambari 文件](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
+與 HDInsight 群集版本關聯的 Hadoop 環境元件版本可能會隨著 HDInsight 的更新而更改。 若要檢查 Hadoop 元件和驗證叢集所使用的版本，請使用 Ambari REST API。 **GetComponentInformation** 命令會擷取服務元件的相關資訊。 如需詳細資訊，請參閱 [Apache Ambari 文件](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
 
 ### <a name="release-notes"></a>版本資訊
 
@@ -65,29 +65,29 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 截至 201
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>支援 HDInsight 版本的過期和停用
 
-**支援過期**意味著 Microsoft 將不再為指定的 HDInsight 版本提供支援，並且不再可以通過 Azure 門戶進行群集創建。 但是，這些版本仍可以使用 Azure CLI 或各種 SDK 創建。 
+**支援過期**意味著 Microsoft 將不再為指定的 HDInsight 版本提供支援。 並且它將不再可以通過 Azure 門戶進行群集創建。 但是,這些版本仍可以使用 Azure CLI 或各種 SDK 創建。
 
-**停用**HDInsight 版本意味著現有群集將繼續以現有方式運行。 但是，不能通過任何方式（包括 CLI 和 SDK）創建此版本的新群集。 其他控制平面功能（如手動縮放和自動縮放）在版本停用後也可能無法正常工作。 支援不適用於已停用的版本。
+**停用**HDInsight 版本意味著現有群集將繼續以現有方式運行。 但是,無法通過任何方法(包括 CLI 和 SDK)創建此版本的新群集。 其他控制平面功能(如手動縮放和自動縮放)在版本停用后也可能無法正常工作。 支援不適用於已停用的版本。
 
 下表列出 HDInsight 的版本。 如果已知支援到期日與停用日期，也會一併提供。
 
 ### <a name="available-versions"></a>可用的版本
 
-下表列出 Azure 入口網站中可用的 HDInsight 版本，以及諸如 PowerShell 和 .NET SDK 等其他部署方法。
+下表列出了 Azure 門戶中可用的 HDInsight 版本以及其他部署方法(如 PowerShell 和 .NET SDK)。
 
 | HDInsight 版本 | VM OS | 發行日期 | 支援到期日 | 停用日期 | 高可用性 |  Azure 門戶中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
 | HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020年12月31日 |2020年12月31日 |是 |是 |
 
-Spark 2.1，2.2 &卡夫卡 1.0 支援將于 2020 年 6 月 30 日到期。
+Spark 2.1,2.2 &卡夫卡 1.0 支援將於 2020 年 6 月 30 日到期。
 
 > [!NOTE]  
 > 當版本的支援到期之後，可能就無法透過 Microsoft Azure 入口網站取得它。 不過，您可透過 Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 命令中的 `Version` 參數和 .NET SDK 持續取得叢集版本，直到版本停用日期為止。
 
 ### <a name="retired-versions"></a>已淘汰的版本
 
-下表列出**不**可在 Azure 入口網站中取得的 HDInsight 版本。
+下表列出了 Azure 門戶中**不可用的**HDInsight 版本。
 
 | HDInsight 版本 | HDP 版本 | VM OS | 發行日期 | 支援到期日 | 停用日期 | 高可用性 |  Azure 入口網站上的可用性 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -110,7 +110,7 @@ Spark 2.1，2.2 &卡夫卡 1.0 支援將于 2020 年 6 月 30 日到期。
 
 - 與 Active Directory 整合以進行驗證。
 
-    在過去，您只能使用本機系統管理員使用者和本機 SSH 使用者來建立 HDInsight 叢集。 本機系統管理員使用者可以存取所有的檔案、資料夾、資料表和資料行。  您可以利用企業安全性套件來啟用角色型存取控制，方法是將 HDInsight 叢集與您自己的 Active Directory 整合，叢集中會包含 IaaS 虛擬機器上的內部部署 Active Directory、Azure Active Directory Domain Services 或 Active Directory。 叢集上的網域系統管理員可以授與使用者使用自己公司 (網域) 的使用者名稱和密碼來存取叢集。
+    過去,您使用本地管理員使用者和本地 SSH 使用者創建了 HDInsight 群集。 本機系統管理員使用者可以存取所有的檔案、資料夾、資料表和資料行。  借助企業安全包,您可以通過將 HDInsight 與活動目錄集成,實現基於角色的訪問控制。 其中包括本地活動目錄、Azure 活動目錄域服務。 或 IaaS 虛擬機器上的活動目錄。 群集上的域管理員可以授予使用者使用自己的公司(域)使用者名和密碼。
 
     如需詳細資訊，請參閱
 
@@ -144,55 +144,25 @@ Spark 2.1，2.2 &卡夫卡 1.0 支援將于 2020 年 6 月 30 日到期。
 
 企業安全性套件支援使用 Azure Data Lake Storage 同時作為主要儲存體和附加元件儲存體。
 
-### <a name="pricing-and-service-level-agreement"></a>定價和服務等級協定
+### <a name="pricing-and-service-level-agreement-sla"></a>定價和服務等級協定 (SLA)
 
 如需企業安全性套件之定價和 SLA 的詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight 叢集版本的服務等級協定
 
-服務等級協定 (SLA) 是根據「支援期間」__ 來定義。 支援期間是 Microsoft 客戶服務與支援中心支援 HDInsight 叢集版本的一段時間。 如果已超過版本的「支援到期日」__，則表示該 HDInsight 叢集不在支援期間內。 特定 HDInsight 版本 X (在較新的 X+1 版本推出後) 的支援到期日計算方式會以下列較晚的時間為準：  
+服務等級協定 (SLA) 定義為_支援視窗_。 支援視窗是 HDInsight`Microsoft Customer Service and Support`版本受 支持的時間段。 如果版本已通過_支援到期日期_,則 HDInsight 群集位於支援視窗之外。 支援 HDInsight 版本 X(在較新的 X+1 版本可用後)支援過期,其後一版為:  
 
 - 公式 1：將 HDInsight 叢集版本 X 的發行日期加上 180 天。
 - 公式 2：將 Azure 入口網站中推出 HDInsight 叢集版本 X+1 的日期加上 90 天。
 
-_停用日期_是無法在 HDInsight 上創建群集版本的日期。 從 2017 年 7 月 31 日起，您無法在 HDInsight 群集的停用日期後調整其大小。
-
-## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>與 HDInsight 版本相關聯的 Hortonworks 版本資訊
-
-本節提供 Hortonworks Data Platform 發佈的版本資訊，以及與 HDInsight 搭配使用的 Apache 元件。
-* HDInsight 叢集 4.0 版採用以 [Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) 為基礎的 Hadoop 散發
-* HDInsight 叢集 3.6 版採用以 [Hortonworks Data Platform 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) 為基礎的 Hadoop 散發套件。
-* HDInsight 叢集 3.5 版採用以 [Hortonworks Data Platform 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html) 為基礎的 Hadoop 散發套件。 HDInsight 叢集版本 3.5 是在 Azure 入口網站中建立的「預設」__ Hadoop 叢集。
-* HDInsight 叢集 3.4 版採用以 [Hortonworks Data Platform 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)為基礎的 Hadoop 散發套件。
-* HDInsight 叢集 3.3 版採用以 [Hortonworks Data Platform 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)為基礎的 Hadoop 散發。
-
-  * [Apache Storm 版本資訊](https://storm.apache.org/2015/11/05/storm0100-released.html) \(英文\) 可從 Apache 網站上取得。
-  * [Apache Hive 版本資訊](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) \(英文\) 可從 Apache 網站上取得。
-* HDInsight 叢集 3.2 版採用以 [Hortonworks Data Platform 2.2][hdp-2-2] 為基礎的 Hadoop 散發套件。
-
-  * 特定 Apache 元件的可用版本資訊如下：[Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112) 及 [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
-* HDInsight 叢集版本 3.1 使用以 [Hortonworks Data Platform 2.1.7][hdp-2-1-7] 為基礎的 Hadoop 散發套件。 在 2014 年 11 月 7 日之前建立的 HDInsight 3.1 叢集是以 [Hortonworks Data Platform 2.1.1][hdp-2-1-1] 為基礎。
-* HDInsight 叢集 3.0 版採用以 [Hortonworks Data Platform 2.0][hdp-2-0-8] 為基礎的 Hadoop 散發套件。
-* HDInsight 叢集 2.1 版採用以 [Hortonworks Data Platform 1.3][hdp-1-3-0] 為基礎的 Hadoop 散發套件。
-* HDInsight 叢集 1.6 版採用以 [Hortonworks Data Platform 1.1][hdp-1-1-0] 為基礎的 Hadoop 散發套件。
+_停用日期_是無法在 HDInsight 上創建群集版本的日期。 從 2017 年 7 月 31 日起,您無法在 HDInsight 群集的停用日期後調整其大小。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>適用於叢集的預設節點設定和虛擬機器大小
 
-有關為群集選擇哪個虛擬機器 SKU 的詳細資訊，請參閱 Azure [HDInsight 群集配置詳細資訊](hdinsight-supported-node-configuration.md)。
+有關為群組選擇哪個虛擬機器 SKU 的詳細資訊,請參閱 Azure [HDInsight 叢集設定詳細資訊](hdinsight-supported-node-configuration.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Hadoop、Spark 及 Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)
 - [從 Windows PC 在 HDInsight 上的 Hadoop 生態系統中作業](hdinsight-hadoop-windows-tools.md)
-
-[hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
-
-[hdp-2-1-7]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
-
-[hdp-2-1-1]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
-
-[hdp-2-0-8]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
-
-[hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
-
-[hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
+- [霍頓工程發行筆記與 Azure HDInsight 版本關聯](./hortonworks-release-notes.md)

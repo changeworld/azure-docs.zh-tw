@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: c19471fee9235faffba12a12d9f92de77f60fd4d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770528"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084816"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>於 Microsoft Azure 上執行的 SAP 認證和設定
 
@@ -65,7 +65,7 @@ Microsoft Azure 已獲認證可用於下列 SAP 產品，因此具備 Microsoft 
 | SAP BPC 10.01 MS SP08 | Windows 與 Linux | | 所有 NetWeaver 認證的 VM 類型<br /> SAP 附註編號 2451795 |
 | SAP Business Objects BI 平台 | Windows 與 Linux | | SAP 附註編號 2145537 |
 | SAP Data Services 4.2 | | | SAP 附註編號 2288344 |
-| SAP Hybris 商務平臺  | Windows | SQL Server，Oracle | 所有 NetWeaver 認證的 VM 類型 <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
-| SAP Hybris 商務平臺  | SLES 12 或更多最新 | SAP HANA | 所有 NetWeaver 認證的 VM 類型 <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
-| SAP Hybris 商務平臺  | RHEL 7 或更多最新 | SAP HANA | 所有 NetWeaver 認證的 VM 類型 <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris 商務平臺  | Windows | SQL Server，Oracle | 所有 NetWeaver 認證的 VM 類型 <br /> [海布裡斯文件](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris 商務平臺  | SLES 12 或更多最新 | SAP HANA | 所有 NetWeaver 認證的 VM 類型 <br /> [海布裡斯文件](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris 商務平臺  | RHEL 7 或更多最新 | SAP HANA | 所有 NetWeaver 認證的 VM 類型 <br /> [海布裡斯文檔]https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
 | SAP(Hybris) 商務平臺 1811 及更高版本  | 視窗、SLES 或 RHEL | SQL Azure 資料庫 | 所有 NetWeaver 認證的 VM 類型 <br /> [海布裡斯文件](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) |

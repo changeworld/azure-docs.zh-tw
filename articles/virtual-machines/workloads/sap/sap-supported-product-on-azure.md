@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768455"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086125"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支援哪些 SAP 軟體
 本文介紹如何瞭解 Azure 部署支援哪些 SAP 軟體,以及什麼是必要的作業系統版本或 DBMS 版本。
@@ -135,7 +135,7 @@ Azure 庫伯奈斯服務 (AKS) 中的 SAP Datahub/Vora 支援在[SAP 支援說�
 
 [SAP 支援說明](https://launchpad.support.sap.com/#/notes/2451795)#2451795介绍了对 SAP BPC 10.1 SP08 的支援
 
-[在 Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud)中詳細介紹了對 Azure 上的 SAP Hybris 商務平台的支援。 作為 SAP Hybris 商務平台支援的 DBMS,它列出了如下:
+[在 Hybris 文件中](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)詳細介紹了對 Azure 上的 SAP Hybris 商務平台的支援。 作為 SAP Hybris 商務平台支援的 DBMS,它列出了如下:
 
 - Windows 作業系統平臺上的 SQL Server 和 Oracle。 與 SAP NetWeaver 相同的最小版本適用。 有關詳細資訊,請參閱[SAP 支持說明#1928533](https://launchpad.support.sap.com/#/notes/1928533)
 - 在紅帽和SUSE Linux上的SAP HANA。 SAP HANA 認證的 VM 類型是必要的,[這個文件前面的述](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)。 SAP(Hybris) 商務平台被視為 OLTP 工作負載

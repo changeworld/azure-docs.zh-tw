@@ -1,24 +1,19 @@
 ---
-title: 在 Azure 中使用 Windows 用戶端映射
+title: 在 Azure 中使用 Windows 用戶端映像
 description: 如何使用 Visual Studio 訂用帳戶權益，在 Azure 中部署 Windows 7、Windows 8 或 Windows 10，以進行開發/測試案例
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
+ms.subservice: imaging
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74039507"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083269"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 用戶端進行開發/測試案例
 假設您有適當的 Visual Studio (先前稱為 MSDN) 訂閱，您可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企業版(x64) 進行開發/測試案例。 這篇文章概述在 Azure 中執行 Windows 7、Windows 8.1、Windows 10 企業版和使用下列「Azure 資源庫」映像的資格需求。
@@ -26,8 +21,8 @@ ms.locfileid: "74039507"
 ![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 有關 Azure 庫中的 Windows 10 專業版和 Windows 10 專業版 N 映射，請參閱[如何在 Azure 上部署 Windows 10，以及](windows-desktop-multitenant-hosting-deployment.md)
->![Azure 門戶中的多租戶託管許可權專業映射詳細資訊](./media/client-images/windows-client-pro-images.png) 
+> 有關 Azure 函式庫中的 Windows 10 專業版和 Windows 10 專業版 N 映像,請參閱[如何在 Azure 上部署 Windows 10,以及](windows-desktop-multitenant-hosting-deployment.md)
+>![Azure 門戶中的多租戶託管權限專業映像詳細資訊](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>訂用帳戶資格

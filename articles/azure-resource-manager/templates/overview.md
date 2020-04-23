@@ -3,12 +3,12 @@ title: 範本概觀
 description: 描述使用 Azure 資源管理器範本部署資源的好處。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885730"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086329"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -50,7 +50,7 @@ ms.locfileid: "80885730"
 
 * **部署藍圖**:您可以利用 Microsoft 提供的[藍圖](../../governance/blueprints/overview.md)來滿足法規和合規性標準。 這些藍圖包括各種體繫結構的預建構範本。
 
-* **CI/CD 整合**:您可以將範本整合到持續整合和持續部署 (CI/CD) 工具中,這些工具可以自動執行發佈管道,實現快速可靠的應用程式和基礎結構更新。 通過使用 Azure DevOps 和資源管理器範本任務,可以使用 Azure 管道持續生成和部署 ARM 範本專案。 要瞭解更多資訊,請參閱[具有導管](add-template-to-azure-pipelines.md)的 VS 專案[,以及與 Azure 管道的持續整合](template-tutorial-use-azure-pipelines.md)。
+* **CI/CD 整合**:您可以將範本整合到持續整合和持續部署 (CI/CD) 工具中,這些工具可以自動執行發佈管道,實現快速可靠的應用程式和基礎結構更新。 通過使用 Azure DevOps 和資源管理器範本任務,可以使用 Azure 管道持續生成和部署 ARM 範本專案。 要瞭解更多資訊,請參閱[包含導管](add-template-to-azure-pipelines.md)與教學的 VS 專案[:Azure 資源管理員樣本與 Azure 管道的持續整合](./deployment-tutorial-pipeline.md)。
 
 * **可匯出代碼**:您可以通過匯出資源組的當前狀態或查看用於特定部署的範本來獲取現有資源組的範本。 查看[導出的範本](export-template-portal.md)是瞭解範本語法的有用方法。
 
