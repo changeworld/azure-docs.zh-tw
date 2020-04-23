@@ -36,7 +36,7 @@ PowerShell 特有體驗 (如 `tab-completing` Cmdlet 名稱、參數和值) 則�
 
 ## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell 別名與 Linux 公用程式
 
-Some existing PowerShell aliases have the same names as built-in Linux commands, such as `cat`,`ls`, `sort`, `sleep`, etc.在 PowerShell Core 6 中，與內置 Linux 命令衝突的別名已被刪除。
+某些現有的 PowerShell 別名與內建的 Linux 命令具有相同的名稱，例如`cat`、`ls`、 `sort`、 `sleep`等。在 PowerShell Core 6 中，已移除與內建 Linux 命令衝突的別名。
 以下是已移除的常見別名以及對等的命令：  
 
 |已移除的別名   |對等命令   |

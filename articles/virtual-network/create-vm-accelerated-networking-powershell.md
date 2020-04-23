@@ -1,5 +1,5 @@
 ---
-title: 使用加速網路創建 Azure VM - Azure 電源外殼
+title: 建立具有加速網路功能的 Azure VM-Azure PowerShell
 description: 了解如何使用加速網路建立 Linux 虛擬機器。
 services: virtual-network
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3807c1434e3758eafe299da7b30769b41d3ede87
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245053"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106299"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 創建具有加速網路功能的 Windows 虛擬機器
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 建立具有加速網路的 Windows 虛擬機器
 
 在本教學課程中，您將了解如何使用加速網路來建立 Windows 虛擬機器 (VM)。 若要建立使用加速網路的 Linux VM，請參閱[建立使用加速網路的 Linux VM](create-vm-accelerated-networking-cli.md)。 加速網路可以對 VM 啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升其網路效能。 這個高效能路徑會略過資料路徑的主機，進而減少延遲、抖動和 CPU 使用率，供支援的 VM 類型中最嚴苛的網路工作負載使用。 下圖顯示兩部 VM 之間的通訊，一部具備加速網路而另一步沒有︰
 
 ![比較](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-如果沒有加速網路，進出 VM 的所有網路流量都必須周遊主機和虛擬交換器。 虛擬交換器對網路流量提供所有原則強制執行，例如網路安全性群組、存取控制清單、隔離性以及其他網路虛擬化服務。 要瞭解有關虛擬交換器的更多資訊，請參閱[Hyper-V 網路虛擬化和虛擬交換器](https://technet.microsoft.com/library/jj945275.aspx)。
+如果沒有加速網路，進出 VM 的所有網路流量都必須周遊主機和虛擬交換器。 虛擬交換器對網路流量提供所有原則強制執行，例如網路安全性群組、存取控制清單、隔離性以及其他網路虛擬化服務。 若要深入瞭解虛擬交換器，請參閱[hyper-v 網路虛擬化和虛擬交換器](https://technet.microsoft.com/library/jj945275.aspx)。
 
 如果使用加速網路，網路流量就會先送達 VM 的網路介面 (NIC)，然後轉送到 VM。 虛擬交換器套用的所有網路原則現在皆已卸載，並在硬體中套用。 在硬體中套用原則會讓 NIC 略過主機和虛擬交換器，同時在主機中維護套用的所有原則，直接將網路流量轉送到 VM。
 
@@ -49,7 +49,7 @@ ms.locfileid: "79245053"
 ### <a name="supported-vm-instances"></a>支援的 VM 執行個體
 大多數一般用途和具有 2 個以上 vCPU 的計算最佳化執行個體大小，皆支援加速網路。  這些支援的系列為：D/DSv2 和 F/Fs
 
-在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列包括：D/Dsv3、E/Esv3、Fsv2、Lsv2、Ms/Mmss 和 Ms/Mmsv2。
+在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為： D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
 如需 VM 執行個體的詳細資訊，請參閱 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -64,19 +64,19 @@ ms.locfileid: "79245053"
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>建立使用加速網路的 Azure Windows VM
 ## <a name="portal-creation"></a>建立入口網站
-儘管本文提供了使用 Azure Powershell 創建具有加速網路的虛擬機器的步驟，但您也可以[使用 Azure 門戶創建具有加速網路的虛擬機器](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在門戶中創建虛擬機器時，在"**創建虛擬機器"** 邊欄選項卡中，選擇 **"網路**"選項卡。 在此選項卡中，有一個**用於加速網路**的選項。  如果已選擇[受支援的作業系統](#supported-operating-systems)和[VM 大小](#supported-vm-instances)，此選項將自動填滿為"On"。  如果沒有，它將填充加速網路的"關閉"選項，並為使用者提供未啟用該選項的原因。   
-* *注：* 只能通過門戶啟用受支援的作業系統。  如果您使用的是自訂映射，並且您的映射支援加速網路，請使用 CLI 或 Powershell 創建 VM。 
+雖然本文提供使用 Azure Powershell 建立具有加速網路之虛擬機器的步驟，但您也可以[使用 Azure 入口網站來建立具有加速網路](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能的虛擬機器。 在入口網站中建立虛擬機器時，請在 [**建立虛擬機器**] 分頁中，選擇 [**網路**] 索引標籤。 在此索引標籤中，有**加速網路**的選項。  如果您已選擇[支援的作業系統](#supported-operating-systems)和[VM 大小](#supported-vm-instances)，此選項將會自動填入 [開啟]。  如果不是，它會在加速網路的 [關閉] 選項中填入，並提供使用者無法啟用的原因。   
+* *注意：* 只有支援的作業系統可以透過入口網站啟用。  如果您使用自訂映射，而且您的映射支援加速網路，請使用 CLI 或 Powershell 來建立 VM。 
 
-創建虛擬機器後，您可以按照"確認已啟用加速網路"中的說明確認已啟用加速網路。
+建立虛擬機器之後，您可以遵循確認已啟用加速網路中的指示，確認已啟用加速網路。
 
-## <a name="powershell-creation"></a>電源殼創建
+## <a name="powershell-creation"></a>建立 Powershell
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-安裝[Azure PowerShell](/powershell/azure/install-az-ps)版本 1.0.0 或更高版本。 若要尋找您目前安裝的版本，請執行 `Get-Module -ListAvailable Az`。 如果需要安裝或升級，請從[PowerShell 庫](https://www.powershellgallery.com/packages/Az)安裝最新版本的 Az 模組。 在 PowerShell 會話中，使用[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)登錄到 Azure 帳戶。
+安裝[Azure PowerShell](/powershell/azure/install-az-ps) 1.0.0 版或更新版本。 若要尋找您目前安裝的版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要安裝或升級，請從[PowerShell 資源庫](https://www.powershellgallery.com/packages/Az)安裝最新版本的 Az 模組。 在 PowerShell 會話中，使用[[Disconnect-azaccount]](/powershell/module/az.accounts/connect-azaccount)登入 Azure 帳戶。
 
-在下列範例中，請以您自己的值取代範例參數名稱。 示例參數名稱包括*我的資源組**、myNic*和*myVM*。
+在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含*myResourceGroup*、 *myNic*和*myVM*。
 
 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 來建立資源群組。 下列範例會在 *centralus* 位置建立名為 *myResourceGroup* 的資源群組：
 
@@ -84,7 +84,7 @@ ms.locfileid: "79245053"
 New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
 ```
 
-首先，使用[New-Az 虛擬網路子網配置創建子網配置](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig)。 下列範例會建立名為 mySubnet** 的子網路：
+首先，使用[new-azvirtualnetworksubnetconfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig)建立子網設定。 下列範例會建立名為 mySubnet** 的子網路：
 
 ```powershell
 $subnet = New-AzVirtualNetworkSubnetConfig `
@@ -92,7 +92,7 @@ $subnet = New-AzVirtualNetworkSubnetConfig `
     -AddressPrefix "192.168.1.0/24"
 ```
 
-使用*我的子網*子網創建具有[新阿茲虛擬網路](/powershell/module/az.Network/New-azVirtualNetwork)的虛擬網路。
+使用[new-azvirtualnetwork](/powershell/module/az.Network/New-azVirtualNetwork)建立具有*mySubnet*子網的虛擬網路。
 
 ```powershell
 $vnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
@@ -104,7 +104,7 @@ $vnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
 
-首先，使用[New-AzNetworkSecurityRule Config 創建](/powershell/module/az.Network/New-azNetworkSecurityRuleConfig)網路安全性群組規則。
+首先，使用[new-aznetworksecurityruleconfig](/powershell/module/az.Network/New-azNetworkSecurityRuleConfig)建立網路安全性群組規則。
 
 ```powershell
 $rdp = New-AzNetworkSecurityRuleConfig `
@@ -120,7 +120,7 @@ $rdp = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 3389
 ```
 
-使用[New-AzNetworkSecurityGroup](/powershell/module/az.Network/New-azNetworkSecurityGroup)創建網路安全性群組，並將其分配*允許-RDP-All*安全規則。 除了 *Allow-RDP-All* 規則之外，網路安全性群組還包含數個預設規則。 一個預設規則會停用來自網際網路的所有輸入存取，這也是將 *Allow-RDP-All* 指派給網路安全性原則的原因，讓您在建立虛擬機器之後，能夠從遠端連線。
+使用[new-aznetworksecuritygroup](/powershell/module/az.Network/New-azNetworkSecurityGroup)建立網路安全性群組，並將 [*允許-RDP-所有*安全性] 規則指派給它。 除了 *Allow-RDP-All* 規則之外，網路安全性群組還包含數個預設規則。 一個預設規則會停用來自網際網路的所有輸入存取，這也是將 *Allow-RDP-All* 指派給網路安全性原則的原因，讓您在建立虛擬機器之後，能夠從遠端連線。
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -130,7 +130,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $rdp
 ```
 
-將網路安全性群組與"[設置-Az虛擬網路子網"](/powershell/module/az.Network/Set-azVirtualNetworkSubnetConfig)關聯到*我的子*網子網。 網路安全性群組中的規則適用於子網路中部署的所有資源。
+將網路安全性群組與*mySubnet*子網建立關聯性[new-azvirtualnetworksubnetconfig](/powershell/module/az.Network/Set-azVirtualNetworkSubnetConfig)。 網路安全性群組中的規則適用於子網路中部署的所有資源。
 
 ```powershell
 Set-AzVirtualNetworkSubnetConfig `
@@ -151,7 +151,7 @@ $publicIp = New-AzPublicIpAddress `
     -AllocationMethod Dynamic
 ```
 
-使用啟用加速網路的[New-AzNetwork 介面](/powershell/module/az.Network/New-azNetworkInterface)創建網路介面，並將公共 IP 位址分配給網路介面。 下列範例會在 *myVnet* 虛擬網路的 *mySubnet*子網路中建立名為 *myNic* 的網路介面，並指派*myPublicIp* 公用 IP 位址給它：
+使用已啟用加速網路的[new-aznetworkinterface](/powershell/module/az.Network/New-azNetworkInterface)建立網路介面，並將公用 IP 位址指派給網路介面。 下列範例會在 *myVnet* 虛擬網路的 *mySubnet*子網路中建立名為 *myNic* 的網路介面，並指派*myPublicIp* 公用 IP 位址給它：
 
 ```powershell
 $nic = New-AzNetworkInterface `
@@ -171,7 +171,7 @@ $nic = New-AzNetworkInterface `
 $cred = Get-Credential
 ```
 
-首先，使用[New-AzVMConfig 定義](/powershell/module/az.compute/new-azvmconfig)VM。 下列範例會使用支援加速網路的 VM 大小來定義名為 *myVM* 的 VM (*Standard_DS4_v2*)：
+首先，使用[new-azvmconfig](/powershell/module/az.compute/new-azvmconfig)定義您的 VM。 下列範例會使用支援加速網路的 VM 大小來定義名為 *myVM* 的 VM (*Standard_DS4_v2*)：
 
 ```powershell
 $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
@@ -195,13 +195,13 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig `
     -Version "latest"
 ```
 
-附加以前使用[Add-AzVM 網路介面](/powershell/module/az.compute/add-azvmnetworkinterface)創建的網路介面 ：
+附加您先前使用[add-azvmnetworkinterface](/powershell/module/az.compute/add-azvmnetworkinterface)建立的網路介面：
 
 ```powershell
 $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
 
-最後，使用[新 AzVM](/powershell/module/az.compute/new-azvm)創建 VM ：
+最後，使用[update-azvm](/powershell/module/az.compute/new-azvm)建立您的 VM：
 
 ```powershell
 New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus"
@@ -211,8 +211,8 @@ New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus
 
 一旦您在 Azure 中建立 VM，請與 VM 連線，然後確認驅動程式已安裝在 Windows 中。
 
-1. 從 Internet 瀏覽器打開 Azure[門戶](https://portal.azure.com)並使用 Azure 帳戶登錄。
-2. 在 Azure 門戶頂部包含文本*搜索資源的*框中，鍵入*myVm*。 當**myVm**出現在搜尋結果中時，按一下它。 如果在 [連線]**** 按鈕底下看到 [建立中]****，則表示 Azure 還未建立好 VM。 請在 [連線]**** 按鈕底下已沒有 [建立中]**** 字樣時，才按下概觀左上角的 [連線]****。
+1. 在網際網路瀏覽器中，開啟 Azure[入口網站](https://portal.azure.com)，並使用您的 Azure 帳戶登入。
+2. 在 [Azure 入口網站頂端包含文字*搜尋資源*的方塊中，輸入*myVm*。 當**myVm**出現在搜尋結果中時，按一下它。 如果在 [連線]**** 按鈕底下看到 [建立中]****，則表示 Azure 還未建立好 VM。 請在 [連線]**** 按鈕底下已沒有 [建立中]**** 字樣時，才按下概觀左上角的 [連線]****。
 3. 輸入您在[建立虛擬機器](#create-the-virtual-machine)中所輸入的使用者名稱和密碼。 如果您從未連線到 Azure 中的 Windows VM，請參閱[連線至虛擬機器](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)。
 4. 以滑鼠右鍵按一下 Windows 的 [開始] 按鈕，然後按一下 [裝置管理員]****。 展開 [網路介面卡]**** 節點。 確認 **Mellanox ConnectX-3 Virtual Function Ethernet Adapter** 有出現，如下圖所示︰
 
@@ -248,7 +248,7 @@ $nic.EnableAcceleratedNetworking = $true
 $nic | Set-AzNetworkInterface
 ```
 
-重新開機 VM，或者，如果在可用性集中，則重新開機集中的所有 VM，並確認已啟用加速網路：
+重新開機您的 VM，如果在可用性設定組中，則為集合中的所有 Vm，並確認已啟用加速網路：
 
 ```azurepowershell
 Start-AzVM -ResourceGroup "myResourceGroup" `

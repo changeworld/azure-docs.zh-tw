@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604284"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106690"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
 了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
@@ -37,15 +37,47 @@ ms.locfileid: "77604284"
 > [!NOTE]
 > 檔案完整性監視 (FIM) 功能適用於 Windows 和 Linux 電腦及 VM，並可在資訊安全中心的標準層使用。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。 FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。
 
-FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔完整性監視後，您具有類型 **"解決方案**"的**更改跟蹤**資源。 有關資料收集頻率詳細資訊，請參閱[Azure 更改跟蹤的更改跟蹤資料收集詳細資訊](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
+FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個類型為 [**方案**] 的**變更追蹤**資源。 如需資料收集頻率的詳細資訊，請參閱 Azure 變更追蹤的[變更追蹤資料收集詳細資料](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
 > [!NOTE]
-> 如果刪除 **"更改跟蹤"** 資源，還將禁用安全中心中的檔完整性監視功能。
+> 如果您移除**變更追蹤**資源，您也會在資訊安全中心中停用檔案完整性監視功能。
 
 ## <a name="which-files-should-i-monitor"></a>我應該監視哪些檔案？
 選擇要監視的檔案時，您應該考慮對系統和應用程式重要的檔案。 請考慮選擇不會未經計劃就變更的檔案。 選擇應用程式或作業系統經常變更的檔案 (例如記錄檔和文字檔) 會造成許多干擾而難以識別攻擊。
 
-資訊安全中心會根據已知的攻擊模式 (包括檔案和登錄變更)，建議預設應該監視的檔案。
+資訊安全中心提供下列建議專案清單，以根據已知的攻擊模式進行監視。 這些包括檔案和 Windows 登錄機碼。 所有索引鍵都在 HKEY_LOCAL_MACHINE （資料表中的 "HKLM" 之下）。
+
+|**Linux 檔案**|**Windows 檔案**|**Windows 登錄機碼**|
+|:----|:----|:----|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/*. 會議|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
+|/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows|
+|/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
+|/bin|C:\Windows\regedit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell 資料夾|
+|/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell 資料夾|
+|/boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
+|/usr/local/bin|C:\Program Files\Microsoft Security Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
+|/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
+|/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
+|/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
+|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|linux/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
+|/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows|
+|/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
+|/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell 資料夾|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell 資料夾|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnce|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnceEx|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunServices|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunServicesOnce|
+|||HKLM\SYSTEM\CurrentControlSet\Control\hivelist|
+|||HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 ## <a name="using-file-integrity-monitoring"></a>使用檔案完整性監視
 1. 開啟 [資訊安全中心]**** 儀表板。
@@ -85,15 +117,14 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 > [!NOTE]
 > 您可以隨時變更設定。 請參閱下面的＜編輯受監視的實體＞以深入了解。
->
->
+
 
 ## <a name="view-the-fim-dashboard"></a>檢視 FIM 儀表板
 啟用 FIM 的工作區會顯示 [檔案完整性監視]**** 儀表板。 當您啟用工作區上的 FIM 之後，或在 [檔案完整性監視]**** 視窗中選取已啟用 FIM 的工作區時，FIM 儀表板會隨即開啟。
 
 ![[檔案完整性監視] 儀表板][6]
 
-工作區的 FIM 儀表板顯示以下詳細資訊：
+工作區的 FIM 儀表板會顯示下列詳細資料：
 
 - 連線到工作區的電腦總數
 - 所選時段內發生的變更總數
@@ -109,7 +140,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 - 所選時段內發生的變更總計
 - 檔案變更或登錄變更時的變更總計細目
 
-當您在搜索欄位中輸入電腦名稱稱或選擇"電腦"選項卡下列出的電腦時，將打開 **"日誌搜索**"，日誌搜索將顯示電腦在選定時間段內所做的所有更改。 您可以展開某項變更，以取得詳細資訊。
+當您在搜尋欄位中輸入電腦名稱稱，或選取 [電腦] 索引標籤底下所列的電腦時，就會開啟 [**記錄搜尋**]。 [記錄搜尋] 會顯示電腦所選時段內所做的所有變更。 您可以展開某項變更，以取得詳細資訊。
 
 ![記錄搜尋][8]
 
@@ -136,7 +167,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![工作區設定][12]
 
-2. 選擇標識保護。 在此範例中，已選取 [Windows 登錄] 下的項目。 [Edit for Change Tracking] \(編輯變更追蹤項目\)**** 會隨即開啟。
+2. 選取 [身分識別保護]。 在此範例中，已選取 [Windows 登錄] 下的項目。 [Edit for Change Tracking] \(編輯變更追蹤項目\)**** 會隨即開啟。
 
    ![編輯或變更追蹤][13]
 
@@ -153,7 +184,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![新增要監視的項目][14]
 
-3. 選取 [加入]****。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
+3. 選取 [新增]  。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
 
    ![輸入所要求的資訊][15]
 
@@ -177,7 +208,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![將 [已啟用] 設定為 False][19]
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]  。
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>使用萬用字元監視資料夾與路徑
 
@@ -199,13 +230,10 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 4. 選取 [移除]**** 以停用。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您學習了在安全中心使用檔完整性監視 （FIM）。 要瞭解有關安全中心的資訊，請參閱以下頁面：
+在本文中，您已瞭解如何使用資訊安全中心中的檔案完整性監視（FIM）。 若要深入瞭解資訊安全中心，請參閱下列頁面：
 
-* [設置安全性原則](tutorial-security-policy.md)-- 瞭解如何為 Azure 訂閱和資源組配置安全性原則。
+* [設定安全性原則](tutorial-security-policy.md)-瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 * [管理安全性建議](security-center-recommendations.md) - 了解建議如何協助保護您的 Azure 資源。
-* [安全性健康狀態監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健康清況。
-* [管理及回應安全性警訊](security-center-managing-and-responding-alerts.md) - 了解如何管理及回應安全性警訊。
-* [監控合作夥伴解決方案](security-center-partner-solutions.md)-- 瞭解如何監控合作夥伴解決方案的運行狀況。
 * [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)-- 取得最新的 Azure 安全性新聞和資訊。
 
 <!--Image references-->

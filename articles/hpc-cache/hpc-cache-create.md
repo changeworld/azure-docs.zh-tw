@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: befbe2435a518b82cf5a3ab12e6129aa3ce5c22b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537964"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106486"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -23,7 +23,7 @@ ms.locfileid: "81537964"
 
 ![Azure 入口網站中專案詳細資料頁面的螢幕擷取畫面](media/hpc-cache-create-basics.png)
 
-在 [專案詳細資料]**** 中，選取將要裝載快取的訂用帳戶和資源群組。
+在 [專案詳細資料]**** 中，選取將要裝載快取的訂用帳戶和資源群組。 請確定訂用帳戶位於[存取](hpc-cache-prereqs.md#azure-subscription)清單上。
 
 在 [服務詳細資料]**** 中，設定快取名稱和其他屬性：
 
@@ -51,27 +51,27 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ![快取大小頁面的螢幕擷取畫面](media/hpc-cache-create-capacity.png)
 
-## <a name="enable-azure-key-vault-encryption-optional"></a>開啟 Azure 金鑰保存庫加密(可選)
+## <a name="enable-azure-key-vault-encryption-optional"></a>啟用 Azure Key Vault 加密（選擇性）
 
-如果您的快取位於支援客戶管理的加密金鑰的區域,**則「磁碟加密金鑰」** 頁將顯示在 **「快取**」和 **「標記」** 選項卡之間。 截至發佈時,此選項在美國東部、美國中南部和美國西部2中支援。
+如果您的快取位於支援客戶管理的加密金鑰的區域中，[**磁片加密金鑰**] 頁面會**出現在 [** 快取] 和 [**標記**] 索引標籤之間。 在發行時，美國東部、美國中南部和美國西部2都支援此選項。
 
-如果要管理與快取儲存一起使用的加密密鑰,請在 **「磁碟加密金鑰」** 頁上提供 Azure 金鑰保管庫資訊。 密鑰保管庫必須位於與緩存相同的區域和訂閱中。
+如果您想要管理用於快取儲存體的加密金鑰，請在 [**磁片加密金鑰**] 頁面上提供您的 Azure Key Vault 資訊。 金鑰保存庫必須位於與快取相同的區域和相同的訂用帳戶中。
 
-如果您不需要客戶管理的金鑰,則可以跳過此部分。 默認情況下,Azure 使用Microsoft管理的密鑰加密數據。 閱讀[Azure 儲存加密](../storage/common/storage-service-encryption.md)以瞭解更多資訊。
+如果您不需要客戶管理的金鑰，您可以略過本節。 Azure 預設會使用 Microsoft 管理的金鑰來加密資料。 若要深入瞭解，請參閱[Azure 儲存體加密](../storage/common/storage-service-encryption.md)。
 
 > [!NOTE]
 >
-> * 建立快取後,無法在 Microsoft 管理的金鑰和客戶管理的密鑰之間進行更改。
-> * 建立快取後,必須授權它存取金鑰保管庫。 按下快取 **「概述」** 頁中的 **「啟用加密**」按鈕以打開加密。 在創建緩存后的 90 分鐘內執行此步驟。
-> * 緩存磁碟是在此授權後創建的。 這意味著初始快取創建時間較短,但在您授權訪問後,緩存將無法使用 10 分鐘或更長時間。
+> * 建立快取之後，您就無法在 Microsoft 管理的金鑰與客戶管理的金鑰之間變更。
+> * 建立快取之後，您必須授權它存取金鑰保存庫。 按一下快取的 **[總覽**] 頁面中的 [**啟用加密**] 按鈕，以開啟加密。 在建立快取的90分鐘內進行此步驟。
+> * 在此授權之後，會建立快取磁片。 這表示初始快取建立時間很短，但在您授權存取之後，快取將不會準備好使用十分鐘或更久。
 
-關於客戶管理金鑰加密過程的完整說明,請改為[使用 Azure HPC 快取的客戶託管加密金鑰](customer-keys.md)。
+如需客戶管理的金鑰加密程式的完整說明，請參閱[針對 AZURE HPC 快取使用客戶管理的加密金鑰](customer-keys.md)。
 
-![加密金鑰頁的螢幕截圖,其中選擇了「客戶託管」,並顯示金鑰保管庫欄位](media/create-encryption.png)
+![[加密金鑰] 頁面的螢幕擷取畫面，其中已選取 [客戶管理]，並顯示 key vault 欄位](media/create-encryption.png)
 
-選擇**客戶管理以**選擇客戶管理金鑰加密。 將顯示金鑰保管庫規範欄位。 選擇要使用的 Azure 金鑰保管庫,然後選擇要用於此快取的金鑰和版本。 金鑰必須為 2048 位 RSA 密鑰。 可以從此頁面創建新的金鑰保管庫、金鑰或密鑰版本。
+選取 [**客戶管理**] 以選擇客戶管理的金鑰加密。 [金鑰保存庫規格] 欄位隨即出現。 選取要使用的 Azure Key Vault，然後選取要用於此快取的金鑰和版本。 金鑰必須是2048位的 RSA 金鑰。 您可以從這個頁面建立新的金鑰保存庫、金鑰或金鑰版本。
 
-建立快取後,必須授權它使用金鑰保管庫服務。 請從[快取中讀取授權 Azure 金鑰保管庫加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache),瞭解詳細資訊。
+建立快取之後，您必須授權它使用金鑰保存庫服務。 如需詳細資訊，請參閱從快取[授權 Azure Key Vault 加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)。
 
 ## <a name="add-resource-tags-optional"></a>新增資源標記 (選擇性)
 
@@ -79,7 +79,7 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ## <a name="finish-creating-the-cache"></a>完成建立快取
 
-設定新快取後,按下「審閱 **+ 創建**」選項卡。門戶驗證您的選擇,並允許您查看您的選擇。 如果所有設定都正確，請按一下 [建立]****。
+設定新的快取之後，請按一下 [**審查 + 建立**] 索引標籤。入口網站會驗證您的選擇，並讓您查看您的選擇。 如果所有設定都正確，請按一下 [建立]****。
 
 建立快取需要大約 10 分鐘。 您可以在 Azure 入口網站的通知面板中追蹤進度。
 
@@ -90,11 +90,11 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 ![Azure 入口網站中 Azure HPC Cache 執行個體的螢幕擷取畫面](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> 如果快取使用客戶管理的加密金鑰,則在部署狀態更改完成之前,快取可能會顯示在資源清單中。 一旦快取的狀態等待**金鑰,** 您可以[授權它](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)使用金鑰保管庫。
+> 如果您的快取使用客戶管理的加密金鑰，則快取可能會出現在 [資源] 清單中，且部署狀態會變更為 [完成]。 一旦快取的狀態為 [**正在等候金鑰**]，您就可以[授權它](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)使用金鑰保存庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-快取顯示在 **「資源」** 清單中後,可以移動到下一步。
+當您的快取出現在**資源清單**之後，您就可以移至下一個步驟。
 
-* [定義存儲目標](hpc-cache-add-storage.md),以便授予快取對資料來源的存取權限。
-* 如果使用客戶管理的加密密鑰,則需要從快取的概述頁[授權 Azure 金鑰保管庫加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)以完成緩存設置。 必須先執行此步驟,然後才能添加存儲。 閱讀[使用客戶管理的加密密鑰](customer-keys.md)瞭解詳細資訊。
+* [定義儲存體目標](hpc-cache-add-storage.md)，為您的資料來源提供快取存取權。
+* 如果您使用客戶管理的加密金鑰，您必須從快取的 [總覽] 頁面[授權 Azure Key Vault 加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)，才能完成您的快取設定。 您必須先執行此步驟，才能新增儲存體。 如需詳細資訊，[請參閱使用客戶管理的加密金鑰](customer-keys.md)。

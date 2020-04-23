@@ -1,6 +1,6 @@
 ---
-title: 使用登錄名和使用者帳戶授權伺服器和資料庫訪問
-description: 瞭解 Azure SQL 資料庫和 Azure 突觸分析如何使用登錄名和使用者帳戶對使用者進行訪問進行身份驗證。 還瞭解如何資料庫角色和明確權限來授權登錄和使用者執行操作和查詢資料。
+title: 使用登入和使用者帳戶來授權伺服器和資料庫存取
+description: 深入瞭解 Azure SQL Database 和 Azure Synapse 分析如何使用登入和使用者帳戶來驗證使用者的存取權。 同時瞭解如何將登入和使用者授與資料庫角色和明確許可權，以執行動作和查詢資料。
 keywords: sql 資料庫安全性, 資料庫安全性管理, 登入安全性, 資料庫安全性, 資料庫存取權
 services: sql-database
 ms.service: sql-database
@@ -12,153 +12,153 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 98c15fe11b64e8c177e60a2ea1eb7c50eaf69353
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1611e6d3524cc78fc20fed9d1aac6f3fd453fa
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124782"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106435"
 ---
-# <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>使用登錄名和使用者帳戶授權經過身份驗證的使用者訪問 SQL 資料庫和 Azure 同步分析
+# <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>授權使用登入和使用者帳戶，將資料庫存取權授與已驗證的使用者以 SQL Database 和 Azure Synapse 分析
 
 在本文中，您將瞭解：
 
-- 用於配置 Azure SQL 資料庫和 Azure 突觸分析（以前的 Azure SQL 資料倉儲）的選項，使使用者能夠執行管理工作並訪問存儲在這些資料庫中的資料。
-- 最初創建新 Azure SQL 資料庫後的訪問和授權配置
-- 如何在主資料庫和使用者帳戶中添加登錄名和使用者帳戶，然後授予這些帳戶管理許可權
-- 如何添加使用者資料庫中的使用者帳戶（與登錄關聯或作為包含的使用者帳戶）
-- 使用資料庫角色和明確權限配置具有使用者資料庫中許可權的使用者帳戶
+- 用於設定 Azure SQL Database 和 Azure Synapse Analytics （先前稱為 Azure SQL 資料倉儲）的選項，可讓使用者執行系統管理工作，以及存取儲存在這些資料庫中的資料。
+- 一開始建立新 Azure SQL Database 之後的存取和授權設定
+- 如何在 master 資料庫和使用者帳戶中新增登入和使用者帳戶，然後授與這些帳戶系統管理許可權
+- 如何在使用者資料庫中新增使用者帳戶，其與登入相關聯或作為包含的使用者帳戶
+- 使用資料庫角色和明確許可權，在使用者資料庫中設定具有許可權的使用者帳戶
 
 > [!IMPORTANT]
-> 在本文的其餘部分中，Azure SQL 資料庫和 Azure 突觸分析（以前的 Azure SQL 資料倉儲）中的資料庫統稱為資料庫或 Azure SQL（為了簡單起見）。
+> Azure SQL Database 和 Azure Synapse Analytics （先前稱為 Azure SQL 資料倉儲）中的資料庫在本文其餘部分統稱為資料庫或 Azure SQL （為了簡單起見）。
 
-## <a name="authentication-and-authorization"></a>驗證和授權
+## <a name="authentication-and-authorization"></a>驗證與授權
 
-[**身份驗證**](sql-database-security-overview.md#authentication)是證明使用者是他們聲稱是誰的過程。 使用者使用使用者帳戶連接到資料庫。
-當使用者嘗試連接到資料庫時，他們提供使用者帳戶和身份驗證資訊。 使用以下兩種身份驗證方法之一對使用者進行身份驗證：
+[**驗證**](sql-database-security-overview.md#authentication)是證明使用者是誰宣稱的程式。 使用者使用使用者帳戶連接到資料庫。
+當使用者嘗試連接到資料庫時，他們會提供使用者帳戶和驗證資訊。 使用者會使用下列兩種驗證方法的其中一種來進行驗證：
 
-- [SQL 身份驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
+- [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
 
-  使用此身份驗證方法，使用者提交使用者帳戶名稱和相關密碼以建立連接。 此密碼存儲在主資料庫中，用於連結到登錄名或存儲在資料庫中的使用者帳戶，其中包含未連結到登錄的使用者帳戶的使用者帳戶。
+  使用此驗證方法時，使用者會提交使用者帳戶名稱和相關聯的密碼以建立連接。 此密碼會儲存在 master 資料庫中，用於連結至登入的使用者帳戶，或儲存在包含*未*連結至登入之使用者帳戶的資料庫中。
 - [Azure Active Directory 驗證](sql-database-aad-authentication.md)
 
-  使用此身份驗證方法，使用者提交使用者帳戶名稱，並要求服務使用存儲在 Azure 活動目錄中的憑據資訊。
+  使用此驗證方法時，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory 中的認證資訊。
 
-**登錄和使用者**：在 Azure SQL 中，資料庫中的使用者帳戶可以與存儲在主資料庫中的登錄名相關聯，也可以是存儲在單個資料庫中的使用者名。
+登入**和使用者**：在 Azure SQL 中，資料庫中的使用者帳戶可以與儲存在 master 資料庫中的登入相關聯，或者可以是儲存在個別資料庫中的使用者名稱。
 
-- **登錄**名是主資料庫中的單個帳戶，可以連結到一個或多個資料庫中的使用者帳戶。 使用登錄名，使用者帳戶的憑據資訊將隨登錄一起存儲。
-- **使用者帳戶**是任何資料庫中可能但不必連結到登錄的單個帳戶。 對於未連結到登錄的使用者帳戶，憑據資訊將隨使用者帳戶一起存儲。
+- **登**入是 master 資料庫中的個別帳戶，其中一個或多個資料庫中的使用者帳戶可以連結到該帳戶。 使用登入，使用者帳戶的認證資訊會與登入一起儲存。
+- **使用者帳戶**是任何資料庫中的個別帳戶，但不需要連結到登入。 使用未連結至登入的使用者帳戶時，認證資訊會與使用者帳戶一起儲存。
 
-[**Authorization**](sql-database-security-overview.md#authorization)使用資料庫角色和明確權限管理訪問資料和執行各種操作的授權。 授權是指分配給使用者的許可權，並確定允許使用者做什麼。 授權由使用者帳戶的資料庫[角色成員身份](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)和[物件級許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)控制。 最好的作法是，您應該授與使用者所需的最低權限。
+存取資料及執行各種動作的[**授權**](sql-database-security-overview.md#authorization)，是使用資料庫角色和明確許可權來管理。 授權是指指派給使用者的許可權，並決定該使用者允許執行的動作。 授權是由使用者帳戶的資料庫[角色成員資格](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)和[物件層級許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)所控制。 最好的作法是，您應該授與使用者所需的最低權限。
 
-## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>創建新資料庫後的現有登錄名和使用者帳戶
+## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>建立新資料庫後的現有登入和使用者帳戶
 
-創建第一個 Azure SQL 部署時，會為該登錄名指定管理員登錄名和關聯的密碼。 此管理帳戶稱為**伺服器管理員**。在部署期間，主資料庫和使用者資料庫中的登錄名和使用者進行以下配置：
+當您建立第一個 Azure SQL 部署時，您可以指定系統管理員登入和該登入的相關聯密碼。 此系統管理帳戶稱為**伺服器管理員**。主要和使用者資料庫中的登入和使用者的下列設定會在部署期間發生：
 
-- 使用指定的登錄名創建具有管理許可權的 SQL 登錄名。 [登錄](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)名是登錄到 SQL 資料庫的單個使用者帳戶。
-- 此登錄作為[伺服器級主體](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)被授予所有資料庫的完整管理許可權。 此登錄具有 SQL 資料庫中的所有可用許可權，並且不能受到限制。 在託管實例中，此登錄將添加到[sysadmin 固定伺服器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)（單個或池資料庫不存在此角色）。
-- 為每個[user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)使用者資料庫中的`dbo`此登錄創建調用的使用者帳戶。 [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)使用者具有資料庫中的所有資料庫許可權，並映射到`db_owner`固定資料庫角色。 本文稍後將討論其他固定資料庫角色。
+- 具有系統管理許可權的 SQL 登入，會使用您指定的登入名稱來建立。 [登](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)入是用來登入 SQL Database 的個別使用者帳戶。
+- 此登入會被授與所有資料庫的完整系統管理許可權，做為[伺服器層級的主體](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)。 此登入具有 SQL Database 內的所有可用許可權，因此無法加以限制。 在受控實例中，會將此登入加入至[系統管理員（sysadmin）固定伺服器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)（此角色不存在於單一或集區資料庫中）。
+- 會針對每個`dbo`使用者資料庫中的這個登入建立名為的[使用者帳戶](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)。 [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)使用者擁有資料庫中的所有資料庫許可權，而且會對應至`db_owner`固定資料庫角色。 本文稍後將討論其他固定資料庫角色。
 
-要標識資料庫的管理員帳戶，請打開 Azure 門戶，然後導航到伺服器或託管實例的 **"屬性**"選項卡。
+若要識別資料庫的系統管理員帳戶，請開啟 Azure 入口網站，然後流覽至您伺服器或受控實例的 [**屬性**] 索引標籤。
 
 ![SQL Server 系統管理員](media/sql-database-manage-logins/sql-admins.png)
 
 ![SQL Server 系統管理員](media/sql-database-manage-logins/sql-admins2.png)
 
 > [!IMPORTANT]
-> 創建管理員登錄名後無法更改。 要重置邏輯伺服器管理員的密碼，請轉到 Azure[門戶](https://portal.azure.com)，按一下**SQL 伺服器**，從清單中選擇伺服器，然後按一下"**重置密碼**"。 要重置託管實例伺服器的密碼，請轉到 Azure 門戶，按一下實例，然後按一下 **"重置密碼**"。 您還可以使用 PowerShell 或 Azure CLI。
+> 系統管理員登入名稱在建立後即無法變更。 若要重設邏輯伺服器管理員的密碼，請移至[Azure 入口網站](https://portal.azure.com)，按一下 [ **SQL server**]，從清單中選取伺服器，然後按一下 [**重設密碼**]。 若要重設受控實例伺服器的密碼，請移至 Azure 入口網站，按一下實例，然後按一下 [**重設密碼**]。 您也可以使用 PowerShell 或 Azure CLI。
 
-## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>創建其他登錄名和具有管理許可權的使用者
+## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>建立具有系統管理許可權的其他登入和使用者
 
-此時，Azure SQL 實例僅配置為使用單個 SQL 登錄名和使用者帳戶進行訪問。 要創建具有完全或部分管理許可權的其他登錄名，請提供以下選項（具體取決於部署模式）：
+此時，您的 Azure SQL 實例只會設定為使用單一 SQL 登入和使用者帳戶進行存取。 若要建立具有完整或部分系統管理許可權的其他登入，您有下列選項（視您的部署模式而定）：
 
-- **創建具有完全管理許可權的 Azure 活動目錄管理員帳戶**
+- **建立具有完整管理許可權的 Azure Active Directory 系統管理員帳戶**
 
-  啟用 Azure 活動目錄身份驗證並創建 Azure AD 管理員登錄名。 一個 Azure 活動目錄帳戶可以配置為具有完全管理許可權的 SQL 資料庫部署的管理員。 此帳戶可以是個人或安全性群組帳戶。 如果要使用 Azure AD 帳戶連接到 SQL 資料庫，**則必須**配置 Azure AD 管理員。 有關為所有 SQL 資料庫部署類型啟用 Azure AD 身份驗證的詳細資訊，請參閱以下文章：
+  啟用 Azure Active Directory 驗證，並建立 Azure AD 的系統管理員登入。 您可以使用完整的系統管理許可權，將一個 Azure Active Directory 帳戶設定為 SQL Database 部署的管理員。 此帳戶可以是個人或安全性群組帳戶。 如果您想要使用 Azure AD 帳戶來連接 SQL Database，則**必須**設定 Azure AD 系統管理員。 如需針對所有 SQL Database 部署類型啟用 Azure AD 驗證的詳細資訊，請參閱下列文章：
 
   - [使用適用於 SQL 驗證的 Azure Active Directory Authentication](sql-database-aad-authentication.md)
   - [使用 SQL 設定及管理 Azure Active Directory 驗證](sql-database-aad-authentication-configure.md)
 
-- **在託管實例部署中，創建具有完全管理許可權的 SQL 登錄**
+- **在受控實例部署中，建立具有完整系統管理許可權的 SQL 登入**
 
-  - 在託管實例中創建其他 SQL Server 登入名
-  - 使用[ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)語句將登錄添加到[系統管理員固定伺服器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)。 此登錄將具有完全的管理許可權。
-  - 或者，使用<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">創建登錄</a>語法創建 Azure AD[登錄名](sql-database-aad-authentication-configure.md?tabs=azure-powershell#new-azure-ad-admin-functionality-for-mi)。
+  - 在受控實例中建立額外的 SQL Server 登入
+  - 使用[ALTER SERVER role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)語句，將登入加入至[系統管理員（sysadmin）固定伺服器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)。 此登入將具有完整的系統管理許可權。
+  - 或者，使用<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE login</a>語法來建立[Azure AD 登](sql-database-aad-authentication-configure.md?tabs=azure-powershell#new-azure-ad-admin-functionality-for-mi)入。
 
-- **在單個或池部署中，創建具有有限管理許可權的 SQL 登錄**
+- **在單一或集區部署中，建立具有有限系統管理許可權的 SQL 登入**
 
-  - 為單個或池資料庫部署或託管實例部署在主資料庫中創建其他 SQL 登錄
-  - 在主資料庫中創建與此新登錄關聯的使用者帳戶
-  - 使用[ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) `loginmanager`語句將使用者帳戶添加到`dbmanager`、`master`角色或資料庫中的兩者（對於 Azure Synapse 分析，請使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)語句）。
+  - 針對單一或集區資料庫部署或受控實例部署，在 master 資料庫中建立額外的 SQL 登入
+  - 在與這個新登入相關聯的 master 資料庫中建立使用者帳戶
+  - 使用[ALTER SERVER role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)語句（ `dbmanager`針對 Azure `loginmanager` Synapse 分析，使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)語句`master` ），在資料庫中將使用者帳戶新增至、角色或兩者。
 
   > [!NOTE]
-  > `dbmanager`角色`loginmanager`與託管實例部署**無關**。
+  > `dbmanager`和`loginmanager`角色**不**屬於受控實例部署。
 
-  這些用於單個或池資料庫[的特殊主資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-)的成員使使用者可以有權創建和管理資料庫或創建和管理登錄。 在由`dbmanager`作為角色成員的使用者創建的資料庫中，成員映射到`db_owner`固定資料庫角色，並可以使用`dbo`使用者帳戶登錄和管理該資料庫。 這些角色在主資料庫之外沒有明確權限。
+  適用于單一或集區資料庫之這些[特殊 master 資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-)的成員，可讓使用者擁有建立和管理資料庫，或建立和管理登入的許可權。 在屬於`dbmanager`角色成員之使用者所建立的資料庫中，該成員會對應至`db_owner`固定資料庫角色，而且可以使用`dbo`使用者帳戶來登入和管理該資料庫。 這些角色沒有 master 資料庫以外的明確許可權。
 
   > [!IMPORTANT]
-  > 您不能在單個或池資料庫中創建具有完全管理許可權的其他 SQL 登錄。
+  > 您無法在單一或集區資料庫中，建立具有完整系統管理許可權的其他 SQL 登入。
 
-## <a name="create-accounts-for-non-administrator-users"></a>為非管理員使用者創建帳戶
+## <a name="create-accounts-for-non-administrator-users"></a>為非系統管理員的使用者建立帳戶
 
-您可以使用兩種方法之一為非管理使用者創建帳戶：
+您可以使用下列兩種方法的其中一種，為非系統管理使用者建立帳戶：
 
-- **創建登錄名**
+- **建立登入**
 
-  在主資料庫中創建 SQL 登錄名。 然後在每個資料庫中創建一個使用者帳戶，該使用者需要訪問該使用者帳戶，並將使用者帳戶與該登錄名相關聯。 當使用者必須訪問多個資料庫並且您希望保持密碼同步時，此方法是首選。 但是，當與異地複製一起使用時，此方法非常複雜，因為登錄必須在主伺服器和次要伺服器上創建。 有關詳細資訊，請參閱[配置和管理 Azure SQL 資料庫安全性，以便進行異地還原或容錯移轉](sql-database-geo-replication-security-config.md)。
+  在 master 資料庫中建立 SQL 登入。 然後，在使用者需要存取的每個資料庫中建立使用者帳戶，並將使用者帳戶與該登入建立關聯。 當使用者必須存取多個資料庫，而且您想要保持密碼同步處理時，這是慣用的方法。 不過，這種方法在與異地複寫搭配使用時具有複雜性，因為必須在主伺服器和次要伺服器上建立登入。 如需詳細資訊，請參閱[設定和管理異地還原或容錯移轉的 Azure SQL Database 安全性](sql-database-geo-replication-security-config.md)。
 - **建立使用者帳戶**
 
-  在資料庫中創建使用者需要訪問的使用者帳戶（也稱為[包含使用者](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)）。
+  在使用者需要存取權的資料庫（也稱為[包含的使用者](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)）中建立使用者帳戶。
 
-  - 使用單個或池資料庫，您始終可以創建這種類型的使用者帳戶。
-  - 使用不支援[Azure AD 伺服器主體](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)的託管實例資料庫，只能在[包含的資料庫中](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)創建這種類型的使用者帳戶。 使用支援[Azure AD 伺服器主體](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)的託管實例，您可以創建使用者帳戶以對託管實例進行身份驗證，而無需將資料庫使用者創建為包含的資料庫使用者。
+  - 使用單一或集區資料庫時，您一律可以建立這種類型的使用者帳戶。
+  - 使用不支援[伺服器主體 Azure AD](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)的受控實例資料庫，您只能在自主[資料庫](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)中建立這種類型的使用者帳戶。 在支援[Azure AD 伺服器主體](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)的受控實例中，您可以建立使用者帳戶來向受控實例進行驗證，而不需要將資料庫使用者建立為自主資料庫使用者。
 
-  使用此方法，使用者身份驗證資訊存儲在每個資料庫中，並自動複製到異地複製的資料庫。 但是，如果同一帳戶存在於多個資料庫中，並且您使用的是 SQL 身份驗證，則必須手動保持密碼同步。 此外，如果使用者在不同的資料庫中具有不同的密碼，記住這些密碼可能會成為一個問題。
+  使用此方法時，使用者驗證資訊會儲存在每個資料庫中，並自動複寫到異地複寫的資料庫。 不過，如果同一個帳戶存在於多個資料庫中，而且您使用的是 SQL 驗證，您必須手動將密碼同步。 此外，如果使用者在不同的資料庫中具有不同密碼的帳戶，請記住這些密碼可能會造成問題。
 
 > [!IMPORTANT]
-> 要創建映射到 Azure AD 標識的包含使用者，必須使用 SQL 資料庫中的管理員的 Azure AD 帳戶登錄。 在託管實例中，具有`sysadmin`許可權的 SQL 登錄名也可以創建 Azure AD 登錄名或使用者。
+> 若要建立對應至 Azure AD 身分識別的內含使用者，您必須使用 SQL Database 中系統管理員的 Azure AD 帳戶來登入。 在受控實例中，具有`sysadmin`許可權的 SQL 登入也可以建立 Azure AD 登入或使用者。
 
-有關如何創建登錄名和使用者的示例，請參閱：
+如需示範如何建立登入和使用者的範例，請參閱：
 
-- [為單個或池資料庫創建登錄名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [為託管實例資料庫創建登錄名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [為 Azure 突觸分析資料庫創建登錄名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
-- [創建使用者](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
-- [創建 Azure AD 包含的使用者](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)
+- [建立單一或集區資料庫的登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [建立受控實例資料庫的登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [建立 Azure Synapse 分析資料庫的登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [建立使用者](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [建立 Azure AD 包含的使用者](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)
 
 > [!TIP]
-> 有關安全教程，其中包括在單個或池資料庫中創建 SQL Server 包含的使用者，請參閱[教程：保護單個或池資料庫](sql-database-security-tutorial.md)。
+> 如需包含在單一或集區資料庫中建立所包含使用者 SQL Server 的安全性教學課程，請參閱[教學課程：保護單一或](sql-database-security-tutorial.md)集區資料庫。
 
 ## <a name="using-fixed-and-custom-database-roles"></a>使用固定和自訂資料庫角色
 
-在資料庫中創建使用者帳戶後（基於登錄名或作為包含使用者）後，可以授權該使用者執行各種操作並訪問特定資料庫中的資料。 您可以使用以下方法授權訪問：
+在資料庫中建立使用者帳戶之後，您可以根據登入或以包含的使用者身分，授權該使用者執行各種動作，並存取特定資料庫中的資料。 您可以使用下列方法來授權存取：
 
 - **固定資料庫角色**
 
-  將使用者帳戶添加到[固定資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)。 有 9 個固定資料庫角色，每個角色都有一組定義的許可權。 最常見的固定資料庫角色是：db_owner、db_ddladmin、db_datawriter、db_datareader、db_denydatawriter和**db_denydatawriter****db_denydatareader。** **db_owner** **db_ddladmin** **db_datawriter** **db_datareader** **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 例如 **，db_datareader**固定資料庫角色授予對資料庫中每個表的讀取存取許可權，這比絕對必要的許可權要大。
+  將使用者帳戶加入至[固定資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)。 有9個固定的資料庫角色，每個都有一組已定義的許可權。 最常見的固定資料庫角色包括： **db_owner**、 **db_ddladmin**、 **db_datawriter**、 **db_datareader**、 **db_denydatawriter**和**db_denydatareader**。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 例如， **db_datareader**固定資料庫角色會授與資料庫中每個資料表的讀取存取權，而這不是絕對必要的。
 
-  - 要將使用者添加到固定資料庫角色：
+  - 若要將使用者加入至固定資料庫角色：
 
-    - 在 Azure SQL 資料庫中，使用[ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)語句。 有關示例，請參閱[ALTER ROLE 示例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - Azure 同步分析，使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)語句。 有關示例，請參閱[sp_addrolemember示例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
+    - 在 Azure SQL Database 中，請使用[ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)語句。 如需範例，請參閱[ALTER ROLE 範例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
+    - Azure Synapse 分析，請使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)語句。 如需範例，請參閱[sp_addrolemember 範例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
 
 - **自訂資料庫角色**
 
-  使用[CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)語句創建自訂資料庫角色。 自訂角色使您能夠創建自己的使用者定義的資料庫角色，並仔細為每個角色授予業務需求所需的最少許可權。 然後，您可以將使用者添加到自訂角色。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
-- **直接授予許可權**
+  使用[CREATE role](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)語句來建立自訂資料庫角色。 自訂角色可讓您建立自己的使用者定義資料庫角色，並謹慎地授與每個角色在業務需求上所需的最小許可權。 接著，您可以將使用者新增至自訂角色。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
+- **直接授與許可權**
 
-  直接授予使用者帳戶[許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)。 有超過 100 個權限可在 SQL Database 中分別授與或拒絕。 這些權限有許多為巢狀。 例如，結構描述上的 `UPDATE` 權限包括該結構描述中每個資料表的 `UPDATE` 權限。 如同大多數的權限系統，拒絕權限會覆寫授與權限。 因為權限的巢狀本質和數目，可能需要仔細研究，設計適當的權限系統以便適當地保護您的資料庫。 請從[權限 (Database Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
+  直接授與使用者帳戶[許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)。 有超過 100 個權限可在 SQL Database 中分別授與或拒絕。 這些權限有許多為巢狀。 例如，結構描述上的 `UPDATE` 權限包括該結構描述中每個資料表的 `UPDATE` 權限。 如同大多數的權限系統，拒絕權限會覆寫授與權限。 因為權限的巢狀本質和數目，可能需要仔細研究，設計適當的權限系統以便適當地保護您的資料庫。 請從[權限 (Database Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 ## <a name="using-groups"></a>使用群組
 
-高效訪問管理使用分配給 Active Directory 安全性群組的許可權以及固定或自訂角色，而不是單個使用者。
+有效率的存取管理會使用指派給 Active Directory 安全性群組和固定或自訂角色的許可權，而不是個別使用者。
 
-- 使用 Azure 活動目錄身份驗證時，將 Azure 活動目錄使用者放入 Azure 活動目錄安全性群組。 建立群組的自主資料庫使用者。 將一個或多個資料庫使用者放入具有適合該使用者組的特定許可權的自訂資料庫角色中。
+- 使用 Azure Active Directory 驗證時，請將 Azure Active Directory 的使用者放入 Azure Active Directory 安全性群組中。 建立群組的自主資料庫使用者。 將一個或多個資料庫使用者放入自訂資料庫角色，並具有適合該使用者群組的特定許可權。
 
-- 使用 SQL 身份驗證時，在資料庫中創建包含的資料庫使用者。 將一個或多個資料庫使用者放入具有適合該使用者組的特定許可權的自訂資料庫角色中。
+- 使用 SQL 驗證時，請在資料庫中建立自主資料庫使用者。 將一個或多個資料庫使用者放入自訂資料庫角色，並具有適合該使用者群組的特定許可權。
 
   > [!NOTE]
-  > 您還可以將組用於非包含的資料庫使用者。
+  > 您也可以使用非自主資料庫使用者的群組。
 
 您應該熟悉下列功能，這些功能可用來限制或提高權限︰
 

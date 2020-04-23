@@ -5,25 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096911"
+ms.locfileid: "82106027"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中的離峰時間啟動/停止 Vm 解決方案
 
 [**在離峰期間啟動/停止 vm** ] 解決方案會啟動或停止您的 Azure 虛擬機器。 它會以使用者定義的排程啟動或停止機器、提供 Azure 監視器記錄的深入解析，並使用[動作群組](../azure-monitor/platform/action-groups.md)來傳送選用的電子郵件。 在大部分的情況下，此解決方案都支援 Azure Resource Manager 和傳統 Vm。 
 
-此解決方案可針對想要將 VM 成本最佳化的使用者，提供非集中式的低成本自動化選項。 使用此解決方案，您可以：
+此解決方案會使用[new-azurermvm](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) Cmdlet 來啟動 vm。 它會使用[停止 new-azurermvm](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0)來停止 vm。
+
+> [!NOTE]
+> [**在離峰期間啟動/停止 vm** ] 解決方案已更新，可支援可用的最新 Azure 模組版本。
+
+解決方案為想要優化其 VM 成本的使用者，提供非集中式低成本的自動化選項。 使用此解決方案，您可以：
 
 - [排程要啟動和停止的 vm](automation-solution-vm-management-config.md#schedule)。
 - [使用 Azure 標記](automation-solution-vm-management-config.md#tags)（不支援傳統 vm），以遞增順序將 vm 排程為啟動和停止。
 - 根據[低 CPU 使用量](automation-solution-vm-management-config.md#cpuutil)來 Autostop vm。
-
-> [!NOTE]
-> [**在離峰期間啟動/停止 vm** ] 解決方案已更新，可支援可用的最新 Azure 模組版本。
 
 下列是目前解決方案的限制：
 

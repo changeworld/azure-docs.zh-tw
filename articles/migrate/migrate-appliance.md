@@ -1,316 +1,382 @@
 ---
 title: Azure Migrate 設備
-description: 提供伺服器評估和遷移中使用的 Azure 遷移設備的概述。
+description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備的總覽。
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/23/2020
+ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676345"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106341"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
-本文總結了 Azure 遷移設備的先決條件和支援要求。 
+本文摘要說明 Azure Migrate 設備的必要條件和支援需求。 
 
 ## <a name="deployment-scenarios"></a>部署案例
 
-Azure 遷移設備用於以下方案。
+在下列案例中會使用 Azure Migrate 設備。
 
 **案例** | **工具** | **用於** 
 --- | --- | ---
-**VMware VM 評估** | Azure 移轉:伺服器評估 | 發現 VMware VM<br/><br/> 在電腦應用與相依性<br/><br/> 收集機器元數據和性能元數據進行評估。
-**VMware VM 無代理遷移** | Azure 移轉:伺服器移轉 | 發現 VMware VM <br/><br/> 使用無代理遷移複製 VMware VM。
-**超 V VM 評估** | Azure 移轉:伺服器評估 | 發現超虛擬機器<br/><br/> 收集機器元數據和性能元數據進行評估。
-**實體機器評估** |  Azure 移轉:伺服器評估 |  發現物理伺服器(或您視為物理伺服器的 VM)。<br/><br/> 收集機器元數據和性能元數據進行評估。
+**VMware VM 評估** | Azure Migrate：伺服器評估 | 探索 VMware Vm<br/><br/> 探索機器應用程式和相依性<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
+**VMware VM 無代理程式遷移** | Azure Migrate：伺服器遷移 | 探索 VMware Vm <br/><br/> 使用無代理程式遷移來複寫 VMware Vm。
+**Hyper-v VM 評估** | Azure Migrate：伺服器評估 | 探索 Hyper-v Vm<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
+**實體機器評估** |  Azure Migrate：伺服器評估 |  探索實體伺服器（或您視為實體伺服器的 Vm）。<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
 
 ## <a name="deployment-methods"></a>部署方法
 
-可以使用以下幾種方法部署裝置:
+您可以使用幾種方法來部署設備：
 
-- 可以使用 VMware VM 和超 VM 的範本(VMware 的 OVA 範本或用於 Hyper-V 的 VHD)部署設備。
-- 如果不想使用範本,可以使用 PowerShell 文本為 VMware 或 Hyper-V 部署設備。
-- 在 Azure 政府中,應使用腳本部署設備。
-- 對於物理伺服器,您始終使用腳本部署設備。
-- 下載連結可在下表中提供。
+- 您可以使用適用于 VMware Vm 和 Hyper-v Vm （適用于 VMware 的 OVA 範本或適用于 Hyper-v 的 VHD）的範本來部署設備。
+- 如果您不想要使用範本，您可以使用 PowerShell 腳本來部署適用于 VMware 或 Hyper-v 的應用裝置。
+- 在 Azure Government 中，您應該使用腳本來部署應用裝置。
+- 針對實體伺服器，您一律會使用腳本來部署應用裝置。
+- 下表提供下載連結。
 
 
-## <a name="appliance---vmware"></a>裝置 - VMware 
+## <a name="appliance---vmware"></a>設備-VMware 
 
-下表總結了 VMware 的 Azure 遷移設備要求。
+下表摘要說明 VMware 的 Azure Migrate 設備需求。
 
 **需求** | **VMware** 
 --- | ---
-**裝置元件** | 產品具有以下元件:<br/><br/> - **管理應用**:這是一個 Web 應用程式,用於在設備部署期間使用者輸入。 用於評估電腦以遷移到 Azure 時使用。<br/> - **發現代理**:代理收集計算機配置數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **評估代理**:代理收集性能數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **自動更新服務**:更新設備元件(每 24 小時運行一次)。<br/>- **DRA 代理**:協調 VM 複製,並協調複製的計算機和 Azure 之間的通訊。 僅在使用無代理遷移將 VMware VM 複製到 Azure 時使用。<br/>- **閘道**:向 Azure 傳送複製的資料。 僅在使用無代理遷移將 VMware VM 複製到 Azure 時使用。
-**支援部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝文稿部署為 VMware VM 或物理電腦。
-**專案支援** |  設備可以與單個項目關聯。 <br/> 任意數量的設備都可以與單個項目關聯。<br/> 
-**發現限制** | 設備可以在 vCenter 伺服器上發現多達 10,000 個 VMware VM。<br/> 設備可以連接到單個 vCenter 伺服器。
-**OVA 樣本** | 從門戶或從https://aka.ms/migrate/appliance/vmware下載。<br/><br/> 下載大小為 11.2 GB。<br/><br/> 下載的設備範本附帶 Windows Server 2016 評估許可證,有效期為 180 天。 如果評估期接近到期,我們建議您下載並部署新設備,或者激活設備 VM 的作業系統許可證。
-**電源外殼文稿** | 文稿[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
-**軟體/硬體** |  設備應在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、大約 80 GB 磁碟存儲和外部虛擬交換機的電腦上運行。<br/> 本產品需要直接或通過代理進行互聯網接入。<br/><br/> 如果在 VMware VM 上運行設備,則在 vCenter 伺服器上需要足夠的資源來分配滿足要求的 VM。<br/><br/> 如果在物理電腦上運行設備,請確保它運行 Windows Server 2016,並滿足硬體要求。 
-**VMware 要求** | 如果將設備部署為 VMware VM,則必須將其部署在運行版本 5.5 或更高版本的 ESXi 主機上。<br/><br/> vCenter 伺服器運行 5.5、6.0、6.5 或 6.7。
-**VDDK(無代理移轉)** | 如果將設備部署為 VMware VM,並且正在運行無代理遷移,則必須在設備 VM 上安裝 VMware vSphere VDDK。
-**雜湊值-OVA** | [驗證](tutorial-assess-vmware.md#verify-security)OVA 範本哈希值。
-**雜湊值-電源外殼文稿** | [驗證](deploy-appliance-script.md#verify-file-security)PowerShell 腳本哈希值。
+**設備元件** | 設備具有下列元件：<br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 web 應用程式。 用來評估要遷移至 Azure 的機器。<br/> - **探索代理程式**：代理程式會收集電腦設定資料。 用來評估要遷移至 Azure 的機器。<br/>- **評量代理程式**：代理程式會收集效能資料。 用來評估要遷移至 Azure 的機器。<br/>- **自動更新服務**：更新設備元件（每隔24小時執行一次）。<br/>- **DRA 代理程式**：協調 VM 複寫，並協調複寫機器與 Azure 之間的通訊。 只有在使用無代理程式遷移將 VMware Vm 複寫至 Azure 時才使用。<br/>- **閘道**：將複寫的資料傳送至 Azure。 只有在使用無代理程式遷移將 VMware Vm 複寫至 Azure 時才使用。
+**支援的部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝腳本，將部署為 VMware VM 或實體機器。
+**專案支援** |  應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
+**探索限制** | 設備可以在 vCenter Server 上探索最多10000個 VMware Vm。<br/> 設備可以連接到單一 vCenter Server。
+**OVA 範本** | 從入口網站或下載https://aka.ms/migrate/appliance/vmware。<br/><br/> 下載大小為 11.2 GB。<br/><br/> 下載的應用裝置範本隨附 Windows Server 2016 評估授權，其有效期為180天。 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
+**PowerShell 腳本** | 腳本[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您在 VMware VM 上執行設備，您需要 vCenter Server 的足夠資源，才能配置符合需求的 VM。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。 
+**VMware 需求** | 如果您將設備部署為 VMware VM，則必須將它部署在執行5.5 版或更新版本的 ESXi 主機上。<br/><br/> vCenter Server 執行5.5、6.0、6.5 或6.7。
+**VDDK （無代理程式遷移）** | 如果您將設備部署為 VMware VM，而且您正在執行無代理程式遷移，則必須在應用裝置 VM 上安裝 VMware vSphere VDDK。
+**雜湊值-OVA** | [確認](tutorial-assess-vmware.md#verify-security)OVA 範本雜湊值。
+**雜湊值-PowerShell 腳本** | [確認](deploy-appliance-script.md#verify-file-security)PowerShell 腳本雜湊值。
 
 
 
 
-## <a name="appliance---hyper-v"></a>裝置 - 超 V
+## <a name="appliance---hyper-v"></a>設備-Hyper-v
 
 **需求** | **Hyper-V** 
 --- | ---
-**裝置元件** | 產品具有以下元件:<br/><br/>- **管理應用**:這是一個 Web 應用程式,用於在設備部署期間使用者輸入。 用於評估電腦以遷移到 Azure 時使用。<br/> - **發現代理**:代理收集計算機配置數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **評估代理**:代理收集性能數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **自動更新服務**:更新設備元件(每 24 小時運行一次)。
-**支援部署** | 使用 VHD 範本部署為 Hyper-V VM。<br/><br/> 使用 PowerShell 安裝文稿部署為 Hyper-V VM 或物理電腦。
-**專案支援** |  設備可以與單個項目關聯。 <br/> 任意數量的設備都可以與單個項目關聯。<br/> 
-**發現限制** | 設備可以發現多達 5000 個超 V VM。<br/> 設備可連接到多達 300 台 Hyper-V 主機。
-**VHD 範本** | 壓縮資料夾,包括 VHD。 從門戶或從https://aka.ms/migrate/appliance/hyperv下載。<br/><br/> 下載大小為 10 GB。<br/><br/> 下載的設備範本附帶 Windows Server 2016 評估許可證,有效期為 180 天。 如果評估期接近到期,我們建議您下載並部署新設備,或者激活設備 VM 的作業系統許可證。
-**電源外殼文稿** | 文稿[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
-**軟體/硬體***   |  設備應在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、大約 80 GB 磁碟存儲和外部虛擬交換機的電腦上運行。<br/> 設備需要靜態或動態 IP 位址,並且需要直接或透過代理進行 Internet 存取。<br/><br/> 如果將設備作為 Hyper-V VM 運行,則 Hyper-V 主機上需要足夠的資源來分配 16 GB RAM、8 個 vCPU、大約 80 GB 的儲存空間以及設備 VM 的外部交換機。<br/><br/> 如果在物理電腦上運行設備,請確保它運行 Windows Server 2016,並滿足硬體要求。 
-**超 V 要求** | 如果使用 VHD 範本部署設備,Azure 遷移提供的設備 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主機必須運行 Windows Server 2012 R2 或更高版本。 
-**雜湊值-VHD** | [驗證](tutorial-assess-hyper-v.md#verify-security)VHD 範本哈希值。
-**雜湊值-電源外殼文稿** | [驗證](deploy-appliance-script.md#verify-file-security)PowerShell 腳本哈希值。
+**設備元件** | 設備具有下列元件：<br/><br/>- **管理應用程式**：這是在設備部署期間用於使用者輸入的 web 應用程式。 用來評估要遷移至 Azure 的機器。<br/> - **探索代理程式**：代理程式會收集電腦設定資料。 用來評估要遷移至 Azure 的機器。<br/>- **評量代理程式**：代理程式會收集效能資料。 用來評估要遷移至 Azure 的機器。<br/>- **自動更新服務**：更新設備元件（每隔24小時執行一次）。
+**支援的部署** | 使用 VHD 範本部署為 Hyper-v VM。<br/><br/> 使用 PowerShell 安裝腳本部署為 Hyper-v VM 或實體機器。
+**專案支援** |  應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
+**探索限制** | 設備可以探索最多5000部 Hyper-v Vm。<br/> 設備最多可以連線到300的 Hyper-v 主機。
+**VHD 範本** | 包含 VHD 的 ZIP 檔案夾。 從入口網站或下載https://aka.ms/migrate/appliance/hyperv。<br/><br/> 下載大小為 10 GB。<br/><br/> 下載的應用裝置範本隨附 Windows Server 2016 評估授權，其有效期為180天。 如果評估期接近到期日，建議您下載並部署新的應用裝置，或啟用設備 VM 的作業系統授權。
+**PowerShell 腳本** | 腳本[下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
+**軟體/硬體***   |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，而且必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您以 Hyper-v VM 的身分執行設備，則在 Hyper-v 主機上需要足夠的資源來配置 16 GB RAM、8個 vcpu，大約 80 GB 的儲存空間，以及適用于設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。 
+**Hyper-v 需求** | 如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-v VM 5.0 版。<br/><br/> Hyper-v 主機必須執行 Windows Server 2012 R2 或更新版本。 
+**雜湊值-VHD** | [確認](tutorial-assess-hyper-v.md#verify-security)VHD 範本的雜湊值。
+**雜湊值-PowerShell 腳本** | [確認](deploy-appliance-script.md#verify-file-security)PowerShell 腳本雜湊值。
 
 
-## <a name="appliance---physical"></a>裝置 - 物理
+## <a name="appliance---physical"></a>設備-實體
 
 **需求** | **實體** 
 --- | ---
-**裝置元件** | 產品具有以下元件: <br/><br/> - **管理應用**:這是一個 Web 應用程式,用於在設備部署期間使用者輸入。 用於評估電腦以遷移到 Azure 時使用。<br/> - **發現代理**:代理收集計算機配置數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **評估代理**:代理收集性能數據。 用於評估電腦以遷移到 Azure 時使用。<br/>- **自動更新服務**:更新設備元件(每 24 小時運行一次)。
-**支援部署** | 使用 PowerShell 安裝文稿部署為專用物理電腦或 VM。 該腳本可從門戶下載。
-**專案支援** |  設備可以與單個項目關聯。 <br/> 任意數量的設備都可以與單個項目關聯。<br/> 
-**發現限制** | 設備可以發現多達 250 台物理伺服器。
-**電源外殼文稿** | 從門戶將腳本 (AzureMigrate 安裝程式.ps1) 下載到壓縮資料夾中。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者,[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 59.7 MB。
-**軟體/硬體** |  設備應在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、大約 80 GB 磁碟存儲和外部虛擬交換機的電腦上運行。<br/> 設備需要靜態或動態 IP 位址,並且需要直接或透過代理進行 Internet 存取。<br/><br/> 如果在物理電腦上運行設備,請確保它運行 Windows Server 2016,並滿足硬體要求。 
-**雜湊值** | [驗證](deploy-appliance-script.md#verify-file-security)PowerShell 腳本哈希值。
+**設備元件** | 設備具有下列元件： <br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 web 應用程式。 用來評估要遷移至 Azure 的機器。<br/> - **探索代理程式**：代理程式會收集電腦設定資料。 用來評估要遷移至 Azure 的機器。<br/>- **評量代理程式**：代理程式會收集效能資料。 用來評估要遷移至 Azure 的機器。<br/>- **自動更新服務**：更新設備元件（每隔24小時執行一次）。
+**支援的部署** | 使用 PowerShell 安裝腳本，部署為專用的實體機器或 VM。 您可以從入口網站下載此腳本。
+**專案支援** |  應用裝置可以與單一專案相關聯。 <br/> 任何數目的設備都可以與單一專案相關聯。<br/> 
+**探索限制** | 設備可以探索最多250部實體伺服器。
+**PowerShell 腳本** | 從入口網站下載 ZIP 檔案夾中的腳本（AzureMigrateInstaller）。 [深入了解](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下載](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下載大小為 59.7 MB。
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要靜態或動態 IP 位址，而且必須直接或透過 proxy 存取網際網路。<br/><br/> 如果您在實體機器上執行設備，請確定它正在執行 Windows Server 2016，並符合硬體需求。 
+**雜湊值** | [確認](deploy-appliance-script.md#verify-file-security)PowerShell 腳本雜湊值。
 
 ## <a name="url-access"></a>URL 存取
 
-Azure 遷移設備需要連接到 Internet。
+Azure Migrate 設備需要網際網路的連線能力。
 
-- 部署設備時,Azure 遷移會對所需的 URL 執行連接檢查。
-- 如果您使用的是基於 URL 的代理連接到網路,則需要允許存取這些網址,確保代理解析在查找 URL 時收到的任何 CNAME 記錄。
+- 當您部署設備時，Azure Migrate 會對所需的 Url 進行連線檢查。
+- 如果您使用以 URL 為基礎的 proxy 來連線到網際網路，您必須允許存取這些 Url，並確定 proxy 會解析在查閱 Url 時所收到的任何 CNAME 記錄。
 
-### <a name="public-cloud-urls"></a>公開雲 URL
+### <a name="public-cloud-urls"></a>公用雲端 Url
 
 **URL** | **詳細資料**  
 --- | --- |
 *.portal.azure.com  | 瀏覽至 Azure 入口網站。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登入您的 Azure 訂用帳戶。
-*.microsoftonline.com <br/> *.microsoftonline-p.com | 為設備創建 Azure 活動目錄 (AD) 應用,以便與 Azure 遷移進行通信。
-management.azure.com | 為設備創建 Azure AD 應用,以便與 Azure 遷移服務進行通信。
-dc.services.visualstudio.com | 上傳用於內部監視的應用日誌。
-*.vault.azure.net | 在 Azure 金鑰保管庫中管理機密。
-aka.ms/* | 允許訪問也稱為連結。 用於 Azure 遷移設備更新。
-download.microsoft.com/download | 允許從微軟下載下載。
-*.servicebus.windows.net | 設備和 Azure 遷移服務之間的通信。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 連接到 Azure 遷移服務 URL。
-*.hypervrecoverymanager.windowsazure.com | **無 VMware 無代理遷移**<br/><br/> 連接到 Azure 遷移服務 URL。
-*.blob.core.windows.net |  **無 VMware 無代理遷移**<br/><br/>將數據上載到存儲以進行遷移。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 建立設備 Azure Active Directory （AD）應用程式，以與 Azure Migrate 通訊。
+management.azure.com | 建立設備 Azure AD 應用程式，以與 Azure Migrate 服務進行通訊。
+dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
+*.vault.azure.net | 管理 Azure Key Vault 中的秘密。
+aka.ms/* | 允許存取稱為的連結。 用於 Azure Migrate 設備更新。
+download.microsoft.com/download | 允許從 Microsoft 下載下載。
+*.servicebus.windows.net | 設備與 Azure Migrate 服務之間的通訊。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 連接到 Azure Migrate 服務 Url。
+*.hypervrecoverymanager.windowsazure.com | **用於 VMware 無代理程式遷移**<br/><br/> 連接到 Azure Migrate 服務 Url。
+*.blob.core.windows.net |  **用於 VMware 無代理程式遷移**<br/><br/>將資料上傳至儲存體以進行遷移。
 
-### <a name="government-cloud-urls"></a>政府雲 URL
+### <a name="government-cloud-urls"></a>政府雲端 Url
 
 **URL** | **詳細資料**  
 --- | --- |
 *.portal.azure.us  | 瀏覽至 Azure 入口網站。
 graph.windows.net | 登入您的 Azure 訂用帳戶。
-login.microsoftonline.us  | 為設備創建 Azure 活動目錄 (AD) 應用,以便與 Azure 遷移進行通信。
-management.usgovcloudapi.net | 為設備創建 Azure AD 應用,以便與 Azure 遷移服務進行通信。
-dc.services.visualstudio.com | 上傳用於內部監視的應用日誌。
-*.vault.usgovcloudapi.net | 在 Azure 金鑰保管庫中管理機密。
-aka.ms/* | 允許訪問也稱為連結。 用於 Azure 遷移設備更新。
-download.microsoft.com/download | 允許從微軟下載下載。
-*.servicebus.usgovcloudapi.net  | 設備和 Azure 遷移服務之間的通信。
-*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | 連接到 Azure 遷移服務 URL。
-*.hypervrecoverymanager.windowsazure.us | **無 VMware 無代理遷移**<br/><br/> 連接到 Azure 遷移服務 URL。
-*.blob.core.usgovcloudapi.net  |  **無 VMware 無代理遷移**<br/><br/>將數據上載到存儲以進行遷移。
-*.applicationinsights.us | 上傳用於內部監視的應用日誌。
+login.microsoftonline.us  | 建立設備 Azure Active Directory （AD）應用程式，以與 Azure Migrate 通訊。
+management.usgovcloudapi.net | 建立設備 Azure AD 應用程式，以與 Azure Migrate 服務進行通訊。
+dc.services.visualstudio.com | 上傳用於內部監視的應用程式記錄。
+*. vault.usgovcloudapi.net | 管理 Azure Key Vault 中的秘密。
+aka.ms/* | 允許存取稱為的連結。 用於 Azure Migrate 設備更新。
+download.microsoft.com/download | 允許從 Microsoft 下載下載。
+*. servicebus.usgovcloudapi.net  | 設備與 Azure Migrate 服務之間的通訊。
+*. discoverysrv.windowsazure.us <br/> *. migration.windowsazure.us | 連接到 Azure Migrate 服務 Url。
+*.hypervrecoverymanager.windowsazure.us | **用於 VMware 無代理程式遷移**<br/><br/> 連接到 Azure Migrate 服務 Url。
+*.blob.core.usgovcloudapi.net  |  **用於 VMware 無代理程式遷移**<br/><br/>將資料上傳至儲存體以進行遷移。
+*. applicationinsights.us | 上傳用於內部監視的應用程式記錄。
 
 
 
 
 
-## <a name="collected-data---vmware"></a>收集的資料 - VMware
+## <a name="collected-data---vmware"></a>收集的資料-VMware
 
-設備收集中數據、性能資料和依賴關係分析數據(如果使用無代理[依賴關係分析](concepts-dependency-visualization.md))。
+設備會收集中繼資料、效能資料和相依性分析資料（如果使用無代理程式相依性[分析](concepts-dependency-visualization.md)）。
 
 ### <a name="metadata"></a>中繼資料
 
-Azure 遷移應用發現中繼資料可協助您確定電腦和應用是否已準備好遷移到 Azure、大小合適的電腦和應用、計畫成本並分析應用程式依賴項。 Microsoft 不會在任何許可證合規性審核中使用此數據。
+Azure Migrate 設備所探索到的中繼資料，可協助您找出機器和應用程式是否已準備好遷移至 Azure、適當調整機器和應用程式的大小、規劃成本，以及分析應用程式相依性。 Microsoft 不會在任何授權合規性審查中使用此資料。
 
-下面是設備收集和發送到 Azure 的 VMware VM 中繼資料的完整清單。
+以下是設備收集並傳送至 Azure 的 VMware VM 中繼資料完整清單。
 
-**資料** | **計數器**
+**DATA** | **抵禦**
 --- | --- 
-**機器詳細資訊** | 
+**機器詳細資料** | 
 VM 識別碼 | vm.Config.InstanceUuid 
 VM 名稱 | vm.Config.Name
-vCenter Server 識別碼 | VMwareClient.實體.Uuid
+vCenter Server 識別碼 | VMwareClient. Instance. Uuid
 VM 描述 | vm.Summary.Config.Annotation
 授權產品名稱 | vm.Client.ServiceContent.About.LicenseProductName
-作業系統類型 | Vm。摘要設定.來賓全名
+作業系統類型 | 機內.SummaryConfig.GuestFullName
 開機類型 | vm.Config.Firmware
 核心數目 | vm.Config.Hardware.NumCPU
 記憶體 (MB) | vm.Config.Hardware.MemoryMB
-磁碟數量 | Vm。設定.硬體.裝置.清單。)尋找全部(x =>是虚拟磁盘)。
-磁碟大小清單 | Vm。設定.硬體.裝置.清單。)尋找所有(x =>是虚拟磁盘)
-網路介面卡清單 | Vm。設定.硬體.裝置.清單。)尋找全部(x =>是虚拟以太网)。
+磁碟數量 | 機內.ToList （）。FindAll （x => 是 VirtualDisk）。計數
+磁碟大小清單 | 機內.ToList （）。FindAll （x => 是 VirtualDisk）
+網路介面卡清單 | 機內.ToList （）。FindAll （x => 是 VirtualEthernet）。計數
 CPU 使用率 | cpu.usage.average
 記憶體使用量 |mem.usage.average
-**每個磁碟詳細資訊** | 
+**每個磁片詳細資料** | 
 磁碟機碼值 | disk.Key
-迪庫奈特編號 | disk.UnitNumber
+Dikunit 號碼 | disk.UnitNumber
 磁碟控制器機碼值 | disk.ControllerKey.Value
 已佈建的 GB 數 | virtualDisk.DeviceInfo.Summary
-磁碟名稱 | 使用磁碟生成的值。單位編號,磁碟。鑰匙,磁碟控制器鍵.VAlue
+磁碟名稱 | 使用磁片產生的值。UnitNumber，磁片。機碼，磁片。ControllerKey。值
 每秒的讀取作業數 | virtualDisk.numberReadAveraged.average
 每秒的寫入作業數 | virtualDisk.numberReadAveraged.average
-讀取輸送量(每秒 MB) | virtualDisk.read.average
-寫入輸送量(每秒 MB) | virtualDisk.write.average
-**每個 NIC 詳細資訊** | 
+讀取輸送量（每秒 MB） | virtualDisk.read.average
+寫入輸送量（每秒 MB） | virtualDisk.write.average
+**每個 NIC 詳細資料** | 
 網路介面卡名稱 | nic.Key
 MAC 位址 | ((VirtualEthernetCard)nic).MacAddress
 IPv4 位址 | vm.Guest.Net
 IPv6 位址 | vm.Guest.Net
-讀取輸送量(每秒 MB) | net.received.average
-寫入輸送量(每秒 MB) | net.transmitted.average
-**庫存路徑詳細資訊** | 
+讀取輸送量（每秒 MB） | net.received.average
+寫入輸送量（每秒 MB） | net.transmitted.average
+**清查路徑詳細資料** | 
 名稱 | container.GetType().Name
 子物件的類型 | container.ChildType
 參考詳細資料 | container.MoRef
 父系詳細資料 | Container.Parent
-每個 VM 的資料夾詳細資訊 | ((Folder)container).ChildEntity.Type
-每個 VM 資料中心詳細資訊 | ((Datacenter)container).VmFolder
-每個主機資料夾的資料中心詳細資訊 | ((Datacenter)container).HostFolder
-每個主機的叢集詳細資訊 | ((群集計算資源)容器)。主機
-每個 VM 的主機詳細資訊 | (主機系統)容器)。Vm
+每個 VM 的資料夾詳細資料 | ((Folder)container).ChildEntity.Type
+每個 VM 的資料中心詳細資料 | ((Datacenter)container).VmFolder
+每個主機資料夾的資料中心詳細資料 | ((Datacenter)container).HostFolder
+每一主機的叢集詳細資料 | （（ClusterComputeResource）容器）。設立
+每個 VM 的主機詳細資料 | （（HostSystem）容器）。機內
 
 ### <a name="performance-data"></a>效能資料
 
 
-以下是設備收集和發送到 Azure 的 VMware VM 性能數據。
+以下是設備收集並傳送至 Azure 的 VMware VM 效能資料。
 
 **Data** | **計數器** | **評定影響**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建議的 VM 大小/成本
 記憶體使用量 | mem.usage.average | 建議的 VM 大小/成本
-磁碟讀取輸送量(MB/秒) | virtualDisk.read.average | 計算磁碟大小、儲存成本、VM 大小
-磁碟寫入輸送量(MB/秒) | virtualDisk.write.average | 計算磁碟大小、儲存成本、VM 大小
-每秒磁碟讀取操作 | virtualDisk.numberReadAveraged.average | 計算磁碟大小、儲存成本、VM 大小
-每秒磁碟寫入操作 | virtualDisk.numberReadAveraged.average  | 計算磁碟大小、儲存成本、VM 大小
-NIC 讀取輸送量(MB/秒) | net.received.average | 計算 VM 大小
-NIC 寫入輸送量(MB/秒) | net.transmitted.average  |計算 VM 大小
+磁片讀取輸送量（每秒 MB） | virtualDisk.read.average | 磁片大小、儲存體成本、VM 大小的計算
+磁片寫入輸送量（每秒 MB） | virtualDisk.write.average | 磁片大小、儲存體成本、VM 大小的計算
+每秒的磁片讀取作業數 | virtualDisk.numberReadAveraged.average | 磁片大小、儲存體成本、VM 大小的計算
+每秒的磁片寫入作業數 | virtualDisk.numberReadAveraged.average  | 磁片大小、儲存體成本、VM 大小的計算
+NIC 讀取輸送量（每秒 MB） | net.received.average | VM 大小的計算
+NIC 寫入輸送量（每秒 MB） | net.transmitted.average  |VM 大小的計算
 
-### <a name="app-dependencies-metadata"></a>套用相依項目
+### <a name="app-dependencies-metadata"></a>應用程式相依性中繼資料
 
-無代理依賴項分析收集連接和處理數據。
+無代理程式相依性分析會收集連接和處理資料。
 
-#### <a name="connection-data"></a>連線資料
+#### <a name="connection-data"></a>連接資料
 
-以下是設備從啟用用於無代理依賴項分析的每個 VM 中收集的連接數據。 此數據將發送到 Azure。
+以下是設備從啟用無代理程式相依性分析的每個 VM 收集到的連線資料。 此資料會傳送至 Azure。
 
-**Data** | **使用的指令** 
+**Data** | **使用的命令** 
 --- | --- 
 本機連接埠 | netstat
 本機 IP 位址 | netstat
 遠端連接埠 | netstat
 遠端 IP 位址 | netstat
-TCP 連線狀態 | netstat
+TCP 連接狀態 | netstat
 處理序識別碼 | netstat
-否。 活動連線 | netstat
+否。 作用中連接的 | netstat
 
 #### <a name="process-data"></a>處理資料
-以下是設備從啟用的無代理依賴項分析的每個 VM 收集的進程數據。 此數據將發送到 Azure。
+以下是設備從啟用了無代理程式相依性分析的每個 VM 收集的處理資料。 此資料會傳送至 Azure。
 
 **Data** | **WMI 類別** | **WMI 類別屬性**
 --- | --- | ---
-程序名稱 | Win32_Process | 執行路徑
-行程參數 | Win32_Process | CommandLine
-應用程式名稱 | Win32_Process | 執行路徑屬性的版本資訊.產品名稱參數
+程序名稱 | Win32_Process | ExecutablePath
+進程引數 | Win32_Process | CommandLine
+應用程式名稱 | Win32_Process | ExecutablePath 屬性的 VersionInfo 參數
 
 #### <a name="linux-vm-data"></a>Linux VM 資料
 
-以下是設備從啟用的無代理依賴項分析的每個 Linux VM 中收集的連接和處理數據。 此數據將發送到 Azure。
+以下是設備從針對無代理程式相依性分析啟用的每個 Linux VM 所收集的連線和處理資料。 此資料會傳送至 Azure。
 
-**Data** | **使用的指令** 
+**Data** | **使用的命令** 
 --- | ---
 本機連接埠 | netstat 
 本機 IP 位址 | netstat 
 遠端連接埠 | netstat 
 遠端 IP 位址 | netstat 
-TCP 連線狀態 | netstat 
-否。 活動連線 | netstat
+TCP 連接狀態 | netstat 
+否。 作用中連接的 | netstat
 處理序識別碼  | netstat 
 程序名稱 | ps
-行程參數 | ps
+進程引數 | ps
 應用程式名稱 | dpkg 或 rpm
 
 
 
-## <a name="collected-data---hyper-v"></a>收集的資料 - 超 V
+## <a name="collected-data---hyper-v"></a>收集的資料-Hyper-v
 
-設備收集中數據、性能資料和依賴關係分析數據(如果使用無代理[依賴關係分析](concepts-dependency-visualization.md))。
+設備會收集中繼資料、效能資料和相依性分析資料（如果使用無代理程式相依性[分析](concepts-dependency-visualization.md)）。
 
 ### <a name="metadata"></a>中繼資料
-Azure 遷移應用發現中繼資料可協助您確定電腦和應用是否已準備好遷移到 Azure、大小合適的電腦和應用、計畫成本並分析應用程式依賴項。 Microsoft 不會在任何許可證合規性審核中使用此數據。
+Azure Migrate 設備所探索到的中繼資料，可協助您找出機器和應用程式是否已準備好遷移至 Azure、適當調整機器和應用程式的大小、規劃成本，以及分析應用程式相依性。 Microsoft 不會在任何授權合規性審查中使用此資料。
 
-下面是設備收集和發送到 Azure 的 Hyper-V VM 中繼資料的完整清單。
+以下是設備收集並傳送至 Azure 的 Hyper-v VM 中繼資料完整清單。
 
-**資料* | **WMI CLASS** | **WMI CLASS 屬性**
+**DATA* | **WMI 類別** | **WMI 類別屬性**
 --- | --- | ---
-**機器詳細資訊** | 
-BIOS 序列號 = Msvm_BIOSElement | BIOS 序列編號
-VM 類型 (第 1 代或第 2 代) | Msvm_VirtualSystemSettingData | 虛擬系統子型別
+**機器詳細資料** | 
+BIOS _ Msvm_BIOSElement 的序號 | BIOSSerialNumber
+VM 類型（Gen 1 或2） | Msvm_VirtualSystemSettingData | VirtualSystemSubType
 VM 顯示名稱 | Msvm_VirtualSystemSettingData | ElementName
-VM 版本 | Msvm_ProcessorSettingData | 虛擬數量
-記憶體(位元組) | Msvm_MemorySettingData | 虛擬數量
-VM 可使用的最大記憶體 | Msvm_MemorySettingData | 限制
-開啟動態記憶體 | Msvm_MemorySettingData | DynamicMemoryEnabled
-作業系統名稱/版本/FQDN | Msvm_KvpExchangeComponent | 來賓內部交換項目名稱資料
+VM 版本 | Msvm_ProcessorSettingData | VirtualQuantity
+記憶體（位元組） | Msvm_MemorySettingData | VirtualQuantity
+VM 可以使用的最大記憶體 | Msvm_MemorySettingData | 限制
+已啟用動態記憶體 | Msvm_MemorySettingData | DynamicMemoryEnabled
+作業系統名稱/版本/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems 名稱資料
 VM 電源狀態 | Msvm_ComputerSystem | EnabledState
-**每個磁碟詳細資訊** | 
-磁碟識別碼 | Msvm_VirtualHardDiskSettingData | 虛擬磁碟Id
-虛擬硬碟型態 | Msvm_VirtualHardDiskSettingData | 類型
-虛擬硬碟大小 | Msvm_VirtualHardDiskSettingData | 最大內部大小
-虛擬硬碟父級 | Msvm_VirtualHardDiskSettingData | 父路徑
-**每個 NIC 詳細資訊** | 
-IP 位址(合成 NIC) | Msvm_GuestNetworkAdapterConfiguration | IP 位址
-開啟 DHCP(合成 NIC) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC ID(合成 NIC) | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC 位址(合成 NIC) | Msvm_SyntheticEthernetPortSettingData | 位址
-NIC ID(舊 NIC) | Ms 模擬乙太網路埠設定資料 | InstanceID
-NIC MAC ID(舊 NIC) | Ms 模擬乙太網路埠設定資料 | 位址
+**每個磁片詳細資料** | 
+磁片識別碼 | Msvm_VirtualHardDiskSettingData | VirtualDiskId
+虛擬硬碟類型 | Msvm_VirtualHardDiskSettingData | 類型
+虛擬硬碟大小 | Msvm_VirtualHardDiskSettingData | MaxInternalSize
+虛擬硬碟父系 | Msvm_VirtualHardDiskSettingData | ParentPath
+**每個 NIC 詳細資料** | 
+IP 位址（綜合 Nic） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
+DHCP 已啟用（綜合 Nic） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+NIC 識別碼（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | InstanceID
+NIC MAC 位址（綜合 Nic） | Msvm_SyntheticEthernetPortSettingData | 位址
+NIC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | InstanceID
+NIC MAC 識別碼（舊版 Nic） | MsvmEmulatedEthernetPortSetting 資料 | 位址
 
 ### <a name="performance-data"></a>效能資料
 
-以下是設備收集和發送到 Azure 的 Hyper VM 性能數據。
+以下是設備收集並傳送至 Azure 的超級 VM 效能資料。
 
 **效能計數器類別** | **計數器** | **評定影響**
 --- | --- | ---
-超 V 虛擬機器管理程式虛擬處理器 | 百分比來賓運行時間 | 建議的 VM 大小/成本
-超 V 動態記憶體 VM | 電流壓力 (%)<br/> 訪客可見物理記憶體 (MB) | 建議的 VM 大小/成本
-超 V 虛擬存放裝置 | 讀取位元組/秒 | 計算磁碟大小、儲存成本、VM 大小
-超 V 虛擬存放裝置 | 寫入位元組/秒 | 計算磁碟大小、儲存成本、VM 大小
-Hyper-V 虛擬網路介面卡 | 接收位元組/秒 | 計算 VM 大小
-Hyper-V 虛擬網路介面卡 | 傳送位元組/秒 | 計算 VM 大小
+Hyper-v 虛擬處理器 | % Guest 執行時間 | 建議的 VM 大小/成本
+Hyper-v 動態記憶體 VM | 目前壓力（%）<br/> 來賓可見實體記憶體（MB） | 建議的 VM 大小/成本
+Hyper-v 虛擬存放裝置 | 讀取位元組/秒 | 磁片大小、儲存體成本、VM 大小的計算
+Hyper-v 虛擬存放裝置 | 寫入位元組數/秒 | 磁片大小、儲存體成本、VM 大小的計算
+Hyper-V 虛擬網路介面卡 | 接收的位元組數/秒 | VM 大小的計算
+Hyper-V 虛擬網路介面卡 | 傳送的位元組數/秒 | VM 大小的計算
 
-- CPU 利用率是連接到 VM 的所有虛擬處理器的所有使用方式的總和。
-- 記憶體利用率為(當前壓力 = 來賓可見物理記憶體)/ 100。
-- 磁碟和網路利用率值從列出的 Hyper-V 性能計數器收集。
+- CPU 使用率是所有連接至 VM 的虛擬處理器的所有使用量總和。
+- 記憶體使用率為（目前的壓力 * 來賓可見的實體記憶體）/100。
+- 磁片和網路使用值是從列出的 Hyper-v 效能計數器收集而來。
 
-## <a name="appliance-upgrades"></a>裝置升級
+## <a name="appliance-upgrades"></a>設備升級
 
-隨著在設備上運行的 Azure 遷移代理更新,設備將升級。 這是自動發生的,因為默認情況下在設備上啟用了自動更新。 您可以更改此預設設定以手動更新代理。
+設備會隨著應用裝置上執行的 Azure Migrate 代理程式更新而升級。 這會自動發生，因為預設會在設備上啟用自動更新。 您可以變更此預設設定，以手動更新應用裝置服務。
 
-- **關閉自動更新**:通過將HKEY_LOCAL_MACHINE_SOFTWARE_Microsoft_AzureAppliance"自動更新"鍵設置為 0 (DWORD)來關閉註冊表中的自動更新。 如果您決定使用手動更新,請務必同時更新設備上的所有代理,使用設備上每個過期代理的 **「更新**」按鈕。
-- **手動更新**:對於手動更新,請確保使用設備上每個過期代理的 **「更新**」按鈕更新設備上的所有代理。 您可以隨時將更新設定切換回自動更新。
+### <a name="turn-off-auto-update"></a>關閉自動更新
 
-![自動更新裝置](./media/migrate-appliance/autoupdate.png)
+1. 在執行設備的電腦上，開啟 [登錄編輯程式]。
+2. 流覽至**HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**。
+3. 若要關閉自動更新，請建立具有 DWORD 值0的登錄機碼**更新**金鑰。
+
+    ![設定登錄機碼](./media/migrate-appliance/registry-key.png)
+
+
+### <a name="turn-on-auto-update"></a>開啟自動更新
+
+您可以使用下列其中一種方法來開啟自動更新：
+
+- 從 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance. 刪除自動更新登錄機碼
+- 探索完成之後，在 [設備] Configuration Manager。
+
+若要刪除登錄機碼：
+
+1. 在執行設備的電腦上，開啟 [登錄編輯程式]。
+2. 流覽至**HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**。
+3. 刪除先前建立用來關閉自動更新的登錄機碼**更新**。
+
+若要在探索完成後從設備 Configuration Manager 開啟：
+
+1. 在設備機器上，開啟 [設備] Configuration Manager。
+2. 在 [**設備服務** > ] [**Azure Migrate 元件的自動更新已關閉**] 中，按一下以開啟 [自動更新]。
+
+    ![開啟自動更新](./media/migrate-appliance/turn-on.png)
+
+### <a name="check-the-appliance-services-version"></a>檢查設備服務版本
+
+您可以使用下列其中一種方法來檢查設備服務版本：
+
+- 在設備 Configuration Manager 中，在探索完成後。
+- 在設備電腦上的 [**控制台** > ] [**程式和功能**] 中。
+
+若要簽入設備 Configuration Manager：
+
+1. 探索完成之後，請開啟設備 Configuration Manager （在設備 web 應用程式中）。
+2. 在 [**設備服務**] 中，確認設備服務版本。
+
+    ![檢查版本](./media/migrate-appliance/version.png)
+
+若要在 [控制台] 中簽入：
+
+1. 在應用裝置上，按一下 [**開始** > **] 控制台** > 的 [**程式和功能**]
+2. 檢查清單中的設備服務版本。
+
+    ![檢查 [控制台] 中的版本](./media/migrate-appliance/programs-features.png)
+
+### <a name="manually-update-an-older-version"></a>手動更新較舊的版本
+
+如果您針對任何元件執行較舊的版本，您必須卸載服務，並手動更新為最新版本。
+
+1. 若要檢查最新的設備服務版本，請[下載](https://aka.ms/latestapplianceservices)LatestComponents 檔案。
+2.  下載之後，請在 [記事本] 中開啟 LatestComponents。
+3. 尋找檔案中最新的服務版本，以及其下載連結。 例如：
+
+    "Name"： "ASRMigrationWebApp"，"DownloadLink"： "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi"，"Version"： "6.0.211.2"，"Md5Hash"： "e00a742acc35e78a64a6a81e75469b84"
+
+4.  使用檔案中的下載連結，下載過時服務的最新版本。
+5. 下載之後，請在 [系統管理員命令] 視窗中執行下列命令，以確認所下載 MSI 的完整性。
+
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```例如： C：\>CertUtil-HASHFILE C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+
+5. 檢查命令輸出是否符合檔案中服務的雜湊值專案（例如，上述的 MD5 雜湊值）。
+6. 現在，請執行 MSI 以安裝服務。 這是無訊息安裝，而且安裝視窗會在完成後關閉。
+7. 安裝完成之後，請在 [**控制台** > ] [**程式和功能**] 中檢查服務的版本。 服務版本現在應該會升級為 json 檔案中顯示的最新。
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
-- [瞭解如何](how-to-set-up-appliance-vmware.md)為 VMware 設置設備。
-- [瞭解如何](how-to-set-up-appliance-hyper-v.md)為 Hyper-V 設置產品。
-- [瞭解如何](how-to-set-up-appliance-physical.md)為物理伺服器設置設備。
+- [瞭解如何](how-to-set-up-appliance-vmware.md)設定 VMware 的應用裝置。
+- [瞭解如何](how-to-set-up-appliance-hyper-v.md)設定 hyper-v 的應用裝置。
+- [瞭解如何](how-to-set-up-appliance-physical.md)設定實體伺服器的設備。
 

@@ -3,12 +3,12 @@ title: 備份 Azure 檔案服務常見問題集
 description: 在本文中，您可以針對如何使用 Azure 備份服務來保護 Azure 檔案共用的常見問題，找到相關解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101156"
+ms.locfileid: "82105636"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有關備份 Azure 檔案服務的問題
 
@@ -74,7 +74,7 @@ ms.locfileid: "82101156"
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>我可以存取 Azure 備份所建立的快照集並加以掛接嗎？
 
-藉由在入口網站、PowerShell 或 CLI 中查看快照集，即可存取 Azure 備份所建立的所有快照集。 若要深入了解 Azure 檔案共用快照集，請參閱 [Azure 檔案的共用快照集 (預覽) 概觀](../storage/files/storage-snapshots-files.md)。
+藉由在入口網站、PowerShell 或 CLI 中查看快照集，即可存取 Azure 備份所建立的所有快照集。 若要深入瞭解 Azure 檔案儲存體共用快照集，請參閱[Azure 檔案儲存體的共用快照集總覽](../storage/files/storage-snapshots-files.md)。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>我可以為備份設定的保留期上限為何？
 

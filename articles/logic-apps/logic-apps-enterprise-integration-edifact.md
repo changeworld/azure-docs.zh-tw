@@ -1,5 +1,5 @@
 ---
-title: 用於 B2B 集成的 EDIFACT 消息
+title: B2B 整合的 EDIFACT 訊息
 description: 在具有 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 EDIFACT 訊息 (採用 EDI 格式)
 services: logic-apps
 ms.suite: integration
@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/26/2016
-ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 8aed4f44b597235557a495a263c6a4ddf8e93ce7
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651452"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106316"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在具有 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 EDIFACT 訊息
 
@@ -36,7 +36,7 @@ ms.locfileid: "77651452"
 
 ## <a name="create-an-edifact-agreement"></a>建立 EDIFACT 合約 
 
-1. 登錄到 Azure[門戶](https://portal.azure.com "Azure 入口網站")。 
+1. 登入 [Azure 入口網站](https://portal.azure.com "Azure 入口網站")。 
 
 2. 在主要 Azure 功能表上，選取 [所有服務]****。 在搜尋方塊中輸入「整合」，然後選取 [整合帳戶]****。
 
@@ -76,6 +76,10 @@ ms.locfileid: "77651452"
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>設定合約處理所收到訊息的方式
 
 您現在已經設定合約屬性，您可以設定此合約如何識別及處理您透過此合約從夥伴接收的內送訊息。
+
+> [!IMPORTANT]
+> EDIFACT 連接器僅支援 UTF-8 字元。
+> 如果您的輸出包含未預期的字元，請檢查您的 EDIFACT 訊息是否使用 UTF-8 字元集。
 
 1. 在 [新增]**** 之下，選取 [接收設定]****。
 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
@@ -137,7 +141,7 @@ ms.locfileid: "77651452"
 | 修剪前置/尾端零 |移除前置或尾端零及空格字元。 |
 | 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]****，禁止在已接收的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選用]**** 以接受具有或不具有結尾分隔字元的交換。 <p>如果收到的交換必須具備尾端分隔符號，請選取 [強制性]****。 |
 
-### <a name="internal-settings"></a>內部設置
+### <a name="internal-settings"></a>內部設定
 
 | 屬性 | 描述 |
 | --- | --- |
@@ -247,10 +251,10 @@ ms.locfileid: "77651452"
 
 ## <a name="connector-reference"></a>連接器參考
 
-有關此連接器的更多技術詳細資訊（如連接器的 Swagger 檔所述的操作和限制），請參閱[連接器的參考頁](https://docs.microsoft.com/connectors/edifact/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/edifact/)。
 
 > [!NOTE]
-> 對於[整合服務環境 （ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用，此連接器的 ISE 標記版本使用[ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

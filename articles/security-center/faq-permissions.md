@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常見問題 - 有關許可權的問題
-description: 此常見問題解答有關 Azure 安全中心中的許可權的問題，該產品可説明您預防、檢測和回應威脅。
+title: Azure 資訊安全中心常見問題-關於許可權的問題
+description: 此常見問題會回答有關 Azure 資訊安全中心中許可權的問題，此產品可協助您預防、偵測及回應威脅。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 66a260fbb03f770ee98ec29a5f5e15e3d7dd1310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89b3233966ac53d6c384ca6bd5ac30322fbb0b02
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599388"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106588"
 ---
 # <a name="permissions"></a>權限
 
-## <a name="how-do-permissions-work-in-azure-security-center"></a>許可權在 Azure 安全中心的工作原理？
+## <a name="how-do-permissions-work-in-azure-security-center"></a>Azure 資訊安全中心中的許可權如何發揮作用？
 
 Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，以提供可在 Azure 中指派給使用者、群組與服務的[內建角色](../role-based-access-control/built-in-roles.md)。
 
@@ -34,6 +34,6 @@ Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-ac
 
 ## <a name="who-can-modify-a-security-policy"></a>誰可以修改安全性原則？
 
-若要修改安全性原則，您必須是安全性系統管理員或是訂用帳戶的擁有者或參與者。
+若要修改安全性原則，您必須是安全性系統管理員或該訂用帳戶的擁有者或參與者。
 
 若要了解如何設定安全性原則，請參閱[在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)。

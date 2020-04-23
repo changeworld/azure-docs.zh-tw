@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74790652"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106520"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 將 Azure Logic Apps 的 EDIFACT 訊息編碼
 
@@ -25,17 +25,21 @@ ms.locfileid: "74790652"
 以下是您所需的項目︰
 
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
-* 已定義並與 Azure 訂閱關聯的[集成帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 EDIFACT 訊息連接器。 
+* 已定義且與您的 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 EDIFACT 訊息連接器。 
 * 至少已經在整合帳戶中定義兩個[夥伴](logic-apps-enterprise-integration-partners.md)
 * 已經在整合帳戶中定義的 [EDIFACT 合約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>編碼 EDIFACT 訊息
 
+> [!IMPORTANT]
+> EDIFACT 連接器僅支援 UTF-8 字元。
+> 如果您的輸出包含未預期的字元，請檢查您的 EDIFACT 訊息是否使用 UTF-8 字元集。
+
 1. [建立邏輯應用程式](quickstart-create-first-logic-app-workflow.md)。
 
 2. 編碼 EDIFACT 訊息連接器沒有觸發程序，因此您必須新增觸發程序 (例如要求觸發程序) 來啟動邏輯應用程式。 在 Logic Apps 設計工具中，新增觸發程序，然後將動作新增至您的邏輯應用程式。
 
-3.  在搜尋方塊中，輸入 "EDIFACT" 做為篩選條件。 選擇**按協定名稱編碼 EDIFACT 消息**，或**按標識編碼到 EDIFACT 消息**。
+3.  在搜尋方塊中，輸入 "EDIFACT" 做為篩選條件。 選取 [**依合約名稱編碼 Edifact 訊息**] 或 [依身分識別**編碼為 edifact 訊息**]。
    
     ![搜尋 EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -92,5 +96,5 @@ ms.locfileid: "74790652"
 若要檢視 EDIFACT 連接器的 Swagger 詳細資料，請參閱 [EDIFACT](/connectors/edifact/)。
 
 ## <a name="next-steps"></a>後續步驟
-[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業集成包") 
+[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業整合套件") 
 
