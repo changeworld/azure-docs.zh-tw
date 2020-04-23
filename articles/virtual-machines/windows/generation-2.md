@@ -1,24 +1,19 @@
 ---
 title: 對第 2 代 VM 的 Azure 支援
 description: 第 2 代 VM 的 Azure 支援概述
-services: virtual-machines-windows
-documentationcenter: ''
 author: ju-shim
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 99abb6cb493cca3aa4e2ac0c42744e1fbaf84f12
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
-ms.translationtype: MT
+ms.openlocfilehash: 239e339d1870060d95d6c7e7b602be7d61af5f77
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272979"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869631"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支援 Azure 上第 2 代 VM
 
@@ -76,7 +71,7 @@ Azure 目前不支援本地 Hyper-V 支援第 2 代 VM 的某些功能。
 | 虛擬化安全性 (VBS) | :heavy_check_mark:  | :x:   |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
 
-## <a name="features-and-capabilities"></a>功能
+## <a name="features-and-capabilities"></a>特色與功能
 
 ### <a name="generation-1-vs-generation-2-features"></a>第一代與第 2 代功能
 
@@ -109,7 +104,7 @@ Azure 目前不支援本地 Hyper-V 支援第 2 代 VM 的某些功能。
 以下是在 Azure 門戶中創建第 2 代 (Gen2) VM 的步驟。
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 選擇 **「創建資源**」。
+1. 選取 [建立資源]  。
 1. 按一下左側 Azure 應用商店中的所有 **「查看」。**
 1. 選擇支援 Gen 2 的圖像。
 1. 按一下頁面底部的 [新增]  。

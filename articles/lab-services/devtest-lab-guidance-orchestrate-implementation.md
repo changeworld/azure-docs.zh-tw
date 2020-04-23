@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62127339"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024994"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>協調 Azure DevTest Labs 的實作
 此文章提供快速部署和實作 Azure DevTest Labs 的建議方法。 下圖強調作為規範性指南的整體程序，同時觀察支援各種產業需求和案例的彈性。
@@ -43,7 +43,7 @@ ms.locfileid: "62127339"
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>里程碑 2：部署試驗實驗室
 當網路拓撲就緒之後，就能採用下列步驟來建立第一個/試驗實驗室：
 
-1. 建立最初的 DevTest Labs 環境 (您可以在[此處](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)找到逐步指示)。
+1. 創建初始開發人員測試實驗室環境。
 2. 判斷允許的 VM 映像和大小，以便與實驗室搭配使用。 決定是否可將自訂映像上傳至 Azure，以便與 DevTest Labs 搭配使用。
 3. 藉由為實驗室 (實驗室擁有者和實驗室使用者) 建立初始角色型存取控制 (RBAC)，來保護對實驗室的存取。 我們建議搭配 Azure Active Directory 使用同步處理的 Active Directory 帳戶，以使用 DevTest Labs 進行身分識別。
 4. 設定 DevTest Labs 來使用原則，例如排程、成本管理、可認領 VM、自訂映像或公式。

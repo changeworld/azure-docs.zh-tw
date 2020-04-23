@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: b0efed83237c191f02bfffd9b26a0fd9cd2c871f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 6ed0d743f9b9cdc136b8f52f4d9d02583fc63eb9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606584"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870187"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>將實驗室網路與 Azure 實驗室服務中的對等虛擬網路連線
 
@@ -46,7 +46,7 @@ ms.locfileid: "81606584"
 
 ### <a name="address-range"></a>位址範圍
 
-還有一個選項可以為實驗室的虛擬機器提供**位址範圍**。 如果提供位址範圍,實驗室帳戶下的所有虛擬機都將在該地址範圍內創建。 位址範圍應以 CIDR 表示法(例如 10.20.0.0/20)表示,不得與任何現有位址範圍重疊。  提供位址範圍時,考慮將創建的*實驗室*數量並提供位址範圍以適應該範圍非常重要。 實驗室服務假定每個實驗室最多 512 個虛擬機器。  例如,具有"/23"的 ip範圍只能創建一個實驗室。  帶有"/21"的範圍將允許創建四個實驗室。
+還有一個選項可以為實驗室的虛擬機器提供**位址範圍**。  僅當為實驗室啟用**了對等虛擬網路時,「****位址範圍**」屬性才適用。  如果提供位址範圍,實驗室帳戶下的所有虛擬機都將在該地址範圍內創建。 位址範圍應以 CIDR 表示法(例如 10.20.0.0/20)表示,不得與任何現有位址範圍重疊。  提供位址範圍時,考慮將創建的*實驗室*數量並提供位址範圍以適應該範圍非常重要。 實驗室服務假定每個實驗室最多 512 個虛擬機器。  例如,具有"/23"的 ip範圍只能創建一個實驗室。  帶有"/21"的範圍將允許創建四個實驗室。
 
 如果未指定**位址範圍**,則實驗室服務將在創建要與虛擬網路對等的虛擬網路時使用 Azure 提供給它的預設位址範圍。  範圍通常類似於 10.x.0.0/16。  這可能導致 ip 範圍重疊,因此請確保在實驗室設置中指定和位址範圍,或者檢查要對等的虛擬網路的位址範圍。
 

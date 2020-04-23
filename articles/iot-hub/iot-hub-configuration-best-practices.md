@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中樞的裝置設定最佳做法 | Microsoft Docs
 description: 瞭解使用自動設備管理以盡量減少大規模管理 IoT 設備所涉及的重複和複雜任務的最佳做法。
-author: Philmea
-ms.author: philmea
+author: robinsh
+ms.author: robinsh
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 99a9a2161cff4805d3181e54b88926d2d9b8daa6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770768"
+ms.locfileid: "82024773"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解決方案內的裝置設定最佳做法
 

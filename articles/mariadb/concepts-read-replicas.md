@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770116"
+ms.locfileid: "82024620"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」中的讀取複本
 
@@ -33,9 +33,6 @@ ms.locfileid: "81770116"
 
 ## <a name="cross-region-replication"></a>跨區域複製
 您可以在與主伺服器不同的區域中建立讀取複本。 跨區域複製對於災難恢復規劃或使數據更接近使用者等方案非常有用。
-
-> [!NOTE]
-> 跨區域複製處於預覽狀態。
 
 可以在[MariaDB 區域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)的任何 Azure 資料庫中擁有主伺服器。  主伺服器可以在其配對區域或通用副本區域中具有副本。 下圖顯示了哪些副本區域可用,具體取決於您的主區域。
 

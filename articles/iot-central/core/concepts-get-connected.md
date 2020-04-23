@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759123"
+ms.locfileid: "82024688"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連接到 Azure IoT 中心
 
@@ -50,7 +50,7 @@ IoT 中心使用[Azure IoT 中心設備配置服務 (DPS)](../../iot-dps/about-i
 
 ![單個裝置的 SAS 金鑰](./media/concepts-get-connected/single-device-sas.png)
 
-要瞭解更多資訊,請參閱創建[Node.js 用戶端應用程式並將其連接到 Azure IoT 中央應用程式](./tutorial-connect-device.md)教程。
+要瞭解更多資訊,請參閱創建[Node.js 用戶端應用程式並將其連接到 Azure IoT 中央應用程式](./tutorial-connect-device-nodejs.md)教程。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>使用 SAS 大規模連線裝置
 

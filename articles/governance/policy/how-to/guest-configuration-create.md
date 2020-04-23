@@ -3,12 +3,12 @@ title: 如何建立 Windows 建立賓設定策略
 description: 瞭解如何為 Windows 創建 Azure 策略來賓配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757408"
+ms.locfileid: "82024892"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 建立賓設定策略
 
@@ -27,9 +27,8 @@ ms.locfileid: "81757408"
 > 具有來賓配置的自定義策略是預覽功能。
 >
 > 在 Azure 虛擬機器中執行審核需要來賓配置擴展。
-> 要大規模部署延伸,請配置以下策略定義:
->   - 部署必要條件，以在 Windows VM 上啟用客體設定原則。
->   - 部署必要條件，以在 Linux VM 上啟用客體設定原則。
+> 要在所有 Windows 電腦中大規模部署擴充,請配置以下策略定義:
+>   - [部署必要條件，以在 Windows VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398348"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025164"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET 核心(Microsoft.Azure.事件中心)向 Azure 事件中心傳送事件或從 Azure 事件中心接收事件
 此快速入門演示如何使用**Microsoft.Azure.EventHubs** .NET 核心庫向事件中心發送事件並從事件中心接收事件。
@@ -373,7 +373,7 @@ ms.locfileid: "80398348"
 
 - [基於角色的存取控制 (RBAC) 範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    這些示例使用舊的**Microsoft.Azure.EventHubs**庫,但可以輕鬆地將其更新為使用最新的**Azure.消息.事件中心**庫。 要將範例從使用舊函式庫移到新函式庫,請參閱[從 Microsoft.Azure.事件中心遷移到 Azure.訊息傳遞器的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+    這些示例使用舊的**Microsoft.Azure.EventHubs**庫,但可以輕鬆地將其更新為使用最新的**Azure.消息.事件中心**庫。 要將範例從使用舊函式庫移到新函式庫,請參閱[從 Microsoft.Azure.事件中心遷移到 Azure.訊息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中樞的功能與術語](event-hubs-features.md)
 - [事件中樞常見問題集](event-hubs-faq.md)

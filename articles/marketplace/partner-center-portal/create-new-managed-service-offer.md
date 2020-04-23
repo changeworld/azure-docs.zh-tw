@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c040907c6101d11ee645f9967278d3cf297bd74a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991615"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869806"
 ---
 # <a name="create-a-new-managed-service-offer"></a>建立新的託管服務產品/服務
 
@@ -63,7 +63,7 @@ ms.locfileid: "80991615"
 
 選擇至少一個且最多五個類別,這些類別將用於將您的產品/服務放入相應的市場搜索區域。 請務必在產品/服務說明中標註您的產品/服務如何支援這些類別。
 
-### <a name="terms-and-conditions"></a>條款和條件
+### <a name="terms-and-conditions"></a>條款及條件
 
 在條款與條件欄位中提供您自己的法律**條款和條件**。 您還可以提供可在其中找到您的條款和條件的 URL。 客戶在試用您的優惠之前,必須接受這些條款。
 
@@ -137,6 +137,9 @@ ms.locfileid: "80991615"
 ### <a name="marketplace-images"></a>市場映射
 
 在本節中,您可以提供向客戶展示產品/服務時將使用的徽標和圖像。 所有圖像必須採用 .png 格式。
+
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
 
 #### <a name="marketplace-logos"></a>市場徽標
 

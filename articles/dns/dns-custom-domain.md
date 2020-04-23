@@ -1,22 +1,22 @@
 ---
-title: 將 Azure DNS 與 Azure 資源集成 - Azure DNS
-description: 在本文中，瞭解如何使用 Azure DNS 為 Azure 資源提供 DNS。
+title: 將 Azure DNS 與 Azure 資源整合 - Azure DNS
+description: 在本文中,瞭解如何使用 Azure DNS 為 Azure 資源提供 DNS。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56a7680de3127da06341ac03252a9ab0cff9da7c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266230"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024943"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 為 Azure 服務提供自訂網域設定
 
-Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有完整網域名稱 (FQDN) 的 Azure 資源。 例如，您有一個 Azure Web 應用，並且希望使用者使用contoso.com或 www\.contoso.com作為 FQDN 來訪問它。 本文章會引導您使用 Azure DNS 設定您的 Azure 服務，以便使用自訂網域。
+Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有完整網域名稱 (FQDN) 的 Azure 資源。 例如,您有一個 Azure Web 應用,並且希望使用者使用contoso.com或 www\.contoso.com 作為 FQDN 來造訪它。 本文章會引導您使用 Azure DNS 設定您的 Azure 服務，以便使用自訂網域。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -54,9 +54,9 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 ## <a name="public-ip-address"></a>公用 IP 位址
 
-要為使用公共 IP 位址資源（如應用程式閘道、負載等化器、雲服務、資源管理器 VM 和經典 VM）的服務配置自訂域，請使用 A 記錄。
+要為使用公共 IP 位址資源(如應用程式閘道、負載均衡器、雲端服務、資源管理器 VM 和經典 VM)的服務配置自訂網域,請使用 A 記錄。
 
-導航到**網路** > **公共 IP 位址**，選擇公共 IP 資源並按一下"**配置**"。 記下顯示的 IP 位址。
+導航到**網路** > **公共 IP 位址**,選擇公共 IP 資源並按下設定 "。**Configuration** 記下顯示的 IP 位址。
 
 ![公用 IP 刀鋒視窗](./media/dns-custom-domain/publicip.png)
 
@@ -111,7 +111,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 若要深入了解自訂網域對應至 App Service，請造訪[將現有的自訂 DNS 名稱對應至 Azure Web Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)。
 
-要瞭解如何遷移活動 DNS 名稱，請參閱[將活動 DNS 名稱遷移到 Azure 應用服務](../app-service/manage-custom-dns-migrate-domain.md)。
+要瞭解如何移到 DNS 名稱,請參考[將活動 DNS 名稱移到 Azure 應用服務](../app-service/manage-custom-dns-migrate-domain.md)。
 
 如果您需要購買自訂網域，請造訪[購買 Azure Web Apps 的自訂網域名稱](../app-service/manage-custom-dns-buy-domain.md)，以深入了解 App Service 網域。
 
@@ -119,7 +119,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 下列步驟引導您使用 asverify 方法設定 blob 儲存體帳戶的 CNAME 記錄。 這個方法可確保沒有任何停機時間。
 
-導航到**存儲** > **存儲帳戶**，選擇您的存儲帳戶，然後按一下**自訂域**。 記下步驟 2 的 FQDN，這個值用來建立第一筆 CNAME 記錄
+導覽到**儲存** > **儲存帳戶**,選擇您的儲存帳戶,然後按下**自訂網**域 。 記下步驟 2 的 FQDN，這個值用來建立第一筆 CNAME 記錄
 
 ![Blob 儲存體自訂網域](./media/dns-custom-domain/blobcustomdomain.png)
 
@@ -134,7 +134,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 |TTL 單位     | 小時        | 使用小時作為時間量值單位         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 您正在為其建立別名的 DNS 名稱，在此範例中是 asverify.adatumfunctiona9ed.blob.core.windows.net (預設提供給儲存體帳戶的 DNS 名稱)。        |
 
-按一下"**Storage** > **存儲存儲帳戶**"，選擇存儲帳戶並按一下 **"自訂域**"，即可導航回存儲帳戶。 在文字方塊中輸入您建立的別名但不含 asverify 前置詞，核取 \*\*[使用間接 CNAME 驗證]，然後按一下 [儲存]****。 一旦完成這個步驟，返回您的 DNS 區域，建立不含 asverify 前置詞的 CNAME 記錄。  此時，您就可以放心刪除具有 cdnverify 前置詞的 CNAME 記錄。
+按下「**Storage** > **存儲儲存帳戶**」,選擇儲存帳戶並按下 **「自訂網功能**」,即可導航回儲存帳戶。 鍵入建立而不在文字框中沒有 asverify 首碼的別名,選中使用**間接 CNAME 驗證**「,然後按下」**儲存**" 。 一旦完成這個步驟，返回您的 DNS 區域，建立不含 asverify 前置詞的 CNAME 記錄。  此時，您就可以放心刪除具有 cdnverify 前置詞的 CNAME 記錄。
 
 ![Blob 儲存體自訂網域](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -146,7 +146,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 下列步驟引導您使用 asverify 方法設定 CDN 端點的 CNAME 記錄。 這個方法可確保沒有任何停機時間。
 
-導航到**網路** > **CDN 設定檔**，選擇您的 CDN 設定檔。
+瀏覽到**網頁** > **CDN 設定檔**,選擇您的 CDN 設定檔。
 
 選取您使用的端點，按一下 [+ 自訂網域]****。 請注意 [端點主機名稱]****，因為這個值是 CNAME 記錄指向的記錄。
 
@@ -162,7 +162,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 |TTL 單位     | 小時        | 使用小時作為時間量值單位         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | 您正在為其建立別名的 DNS 名稱，在此範例中是 cdnverify.adatumcdnendpoint.azureedge.net (預設提供給儲存體帳戶的 DNS 名稱)。        |
 
-通過按一下**網路** > **CDN 設定檔**（並選擇 CDN 設定檔）導航回 CDN 終結點。 按一下 [+ 自訂網域]**** 並輸入您的 CNAME 記錄別名但不含 cdnverify 前置詞，然後按一下 [新增]****。
+以按下**網路** > **CDN 設定檔**(並選擇 CDN 設定檔)導航回 CDN 終結點。 按一下 [+ 自訂網域]**** 並輸入您的 CNAME 記錄別名但不含 cdnverify 前置詞，然後按一下 [新增]****。
 
 一旦完成這個步驟，返回您的 DNS 區域，建立不含 asverify 前置詞的 CNAME 記錄。  此時，您就可以放心刪除具有 cdnverify 前置詞的 CNAME 記錄。 針對 CDN 以及如何設定自訂網域，而不經過中間註冊步驟，如需詳細資訊請造訪[將 Azure CDN 內容對應至自訂網域](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)。
 

@@ -2,17 +2,18 @@
 title: 使用 Azure AD 建立與設定 Azure 磁碟加密的金鑰保管庫(上一版本)
 description: 本文提供要對 IaaS VM 使用 Microsoft Azure 磁碟加密所需滿足的先決條件。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b80d2e5e7c9157da2a3b05a7b422f0c0a950f90c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c8610beb8903c979f0d5f5e71bd6710a3ccb49bd
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452038"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081977"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 建立與設定 Azure 磁碟加密的金鑰保管庫(上一版本)
 

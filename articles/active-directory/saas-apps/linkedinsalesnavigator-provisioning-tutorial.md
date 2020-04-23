@@ -1,5 +1,5 @@
 ---
-title: 教程：使用者預配 - LinkedIn銷售導航器，Azure AD
+title: 教學:使用者預配 - LinkedIn銷售瀏覽器,Azure AD
 description: 了解如何設定 Azure Active Directory 來自動佈建並取消佈建使用者帳戶至 LinkedIn Sales Navigator。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057374"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869732"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>教學課程︰設定 LinkedIn Sales Navigator 來自動佈建使用者
 
@@ -93,13 +93,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 9. 選取您的 LinkedIn Sales Navigator 執行個體，然後選取 [佈建]**** 索引標籤。
 
-10. 將**預配模式**設置為 **"自動**"。
+10. 將**預配模式**設定為 **「自動**」。
 
     ![LinkedIn Sales Navigator 佈建](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. 填寫 [系統管理員認證]**** 底下的下列欄位：
 
-    * 在 [租用戶 URL]**** 欄位中，輸入 https://api.linkedin.com。
+    * 在 [租用戶 URL]**** 欄位中，輸入 https://developer.linkedin.com。
 
     * 在 [祕密權杖]**** 欄位中，輸入在步驟 1 產生的存取權杖，然後按一下 [測試連線]****。
 
@@ -107,7 +107,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-13. 按一下 [儲存]****。
+13. 按一下 [檔案]  。
 
 14. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 LinkedIn Sales Navigator 的使用者和群組屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 LinkedIn Sales Navigator 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
@@ -115,7 +115,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 15. 若要啟用 LinkedIn Sales Navigator 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-16. 按一下 [儲存]****。
+16. 按一下 [檔案]  。
 
 這會啟動在 [使用者和群組] 區段中指派給 LinkedIn Sales Navigator 的任何使用者和/或群組之初始同步處理。 請注意，初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 LinkedIn Sales Navigator 應用程式上佈建服務所執行的所有動作。
 
@@ -124,4 +124,4 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 ## <a name="additional-resources"></a>其他資源
 
 * [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)

@@ -1,20 +1,20 @@
 ---
-title: 託管磁片爆發
-description: 瞭解磁片爆發及其如何適用于 Azure 高級 SSD。
+title: 託管磁碟爆發
+description: 瞭解磁碟爆發及其如何適用於 Azure 高級 SSD。
 author: roygara
 ms.author: rogarana
 ms.date: 03/28/2019
 ms.topic: conceptual
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: add6f43ff97b60b32be76fa72ddb30d0dd026991
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 1693e7f1916f6941f6aa19748a38b03bb4cec77e
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385226"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082674"
 ---
-# <a name="premium-ssd-bursting"></a>高級 SSD 爆裂
+# <a name="premium-ssd-bursting"></a>進階 SSD 爆裂
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 

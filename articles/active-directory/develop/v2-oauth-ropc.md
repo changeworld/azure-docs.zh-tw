@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309455"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868659"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>微軟識別平臺和 OAuth 2.0 資源擁有者密碼認證
 
@@ -50,8 +50,8 @@ ROPC 流是單個請求:它將客戶端標識和使用者的憑據發送到 IDP,
 > [![試著在郵遞員中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 參數 | 條件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 您想要將使用者登入的目標目錄租用戶。 這可以採用 GUID 或易記名稱格式。 此參數無法設為 `common` 或 `consumers`，但可設定為 `organizations`。 |
-| `client_id` | 必要 | Azure 門戶的應用程式(用戶端)ID - 分配給應用[的應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁。 | 
+| `client_id` | 必要 | Azure 門戶的應用程式(用戶端)ID - 分配給應用[的應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁。 |
 | `grant_type` | 必要 | 必須設為 `password`。 |
 | `username` | 必要 | 使用者的電子郵件地址。 |
 | `password` | 必要 | 使用者的密碼。 |
 | `scope` | 建議 | 以空格分隔的[範圍](v2-permissions-and-consent.md)清單或應用程式所需的權限。 在互動式流中,管理員或用戶必須提前同意這些作用域。 |
-| `client_secret`| 有時需要 | 如果應用是公共用戶端,則無法包括`client_secret``client_assertion`或。  如果應用是機密用戶端,則必須包括它。 | 
-| `client_assertion` | 有時需要 | 使用憑證產生的不同`client_secret`形式的 。  有關詳細資訊,請參閱[憑證認證](active-directory-certificate-credentials.md)。 | 
+| `client_secret`| 有時需要 | 如果應用是公共用戶端,則無法包括`client_secret``client_assertion`或。  如果應用是機密用戶端,則必須包括它。 |
+| `client_assertion` | 有時需要 | 使用憑證產生的不同`client_secret`形式的 。  有關詳細資訊,請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
 
 ### <a name="successful-authentication-response"></a>成功驗證回應
 

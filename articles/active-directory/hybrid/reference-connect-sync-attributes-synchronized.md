@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253607"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082113"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步處理：將屬性同步處理至 Azure Active Directory
 本主題列出 Azure AD Connect 同步處理所同步處理的屬性。  
@@ -256,7 +256,7 @@ ms.locfileid: "79253607"
 | userPrincipalName |X | | |UPN 是使用者的登入識別碼。 最常與 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
-## <a name="teams-and-skype-for-business-online"></a>線上業務團隊和 Skype
+## <a name="teams-and-skype-for-business-online"></a>線上商務團隊和 Skype
 | 屬性名稱 | User | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |定義是否啟用帳戶。 |
@@ -375,7 +375,7 @@ ms.locfileid: "79253607"
 * Yammer (使用的只有 User)
 * [SharePoint 等資源所提供的混合式企業對企業 (B2B) 跨組織共同作業案例](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-此群組是一組屬性，是未使用 Azure AD 目錄來支援 Office 365、Dynamics 或 Intune 時所能使用的屬性。 它包含一小組的核心屬性。
+此群組是一組屬性，是未使用 Azure AD 目錄來支援 Office 365、Dynamics 或 Intune 時所能使用的屬性。 它包含一小組的核心屬性。 請注意,單一登錄或預配到某些第三方應用程式需要配置屬性的同步,以及此處描述的屬性。 每個應用程式的[SaaS 應用教程](../saas-apps/tutorial-list.md)中介紹了應用程式要求。
 
 | 屬性名稱 | User | 連絡人 | 群組 | 註解 |
 | --- |:---:|:---:|:---:| --- |

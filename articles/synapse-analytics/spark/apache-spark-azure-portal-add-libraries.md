@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83dfd1b4df37018329b5d7a707e9b65fdf0782a6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427831"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870371"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure 突觸分析中加入及管理 Apache Spark 的庫
 
@@ -54,7 +54,17 @@ alabaster==0.7.10
 
 ![新增 Python 函式庫](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "新增 Python 函式庫")
 
+### <a name="verifying-installed-libraries"></a>驗證已安裝的庫
+
+要驗證是否安裝了正確函式庫的正確版本,請執行以下代碼
+
+```python
+import pip #needed to use the pip functions
+for i in pip.get_installed_distributions(local_only=True):
+    print(i)
+```
+
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [阿帕奇火花文檔](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark 文件](https://spark.apache.org/docs/2.4.4/)

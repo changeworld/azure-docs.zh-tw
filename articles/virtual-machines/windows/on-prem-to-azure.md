@@ -1,26 +1,21 @@
 ---
 title: 從 AWS 和其他平台移轉至 Azure 中的受控磁碟
 description: 在 Azure 中使用從其他雲端 (如 AWS) 或其他虛擬化平台上傳的 VHD 建立 VM，並充分利用 Azure 受控磁碟。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243155"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870287"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>從 Amazon Web Services (AWS) 和其他平台移轉至 Azure 中的受控磁碟
 
@@ -31,7 +26,7 @@ ms.locfileid: "79243155"
 - **特製化 VHD**：會維護來自原始 VM 的使用者帳戶、應用程式和其他狀態資料。 
 
 > [!IMPORTANT]
-> 在將任何 VHD 上載到 Azure 之前，應遵循[準備 Windows VHD 或 VHDX 以上載到 Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> 在將任何 VHD 上載到 Azure 之前,應遵循[準備 Windows VHD 或 VHDX 以上載到 Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 >
 >
 
@@ -89,7 +84,7 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 **進階受控磁碟**
 
-預設情況下，所有高級資料磁片的磁片緩存策略為*唯讀*，附加到 VM 的高級作業系統磁片的讀寫策略為"*唯讀*"。 為使應用程式的 IO 達到最佳效能，建議使用此組態設定。 對於頻繁寫入或唯寫的資料磁碟 (例如 SQL Server 記錄檔)，停用磁碟快取可獲得更佳的應用程式效能。
+預設情況下,所有進階資料磁碟的磁碟緩存策略為*唯讀*,附加到 VM 的進階作業系統磁碟的讀寫策略為「*唯讀*」 。 為使應用程式的 IO 達到最佳效能，建議使用此組態設定。 對於頻繁寫入或唯寫的資料磁碟 (例如 SQL Server 記錄檔)，停用磁碟快取可獲得更佳的應用程式效能。
 
 ### <a name="pricing"></a>定價
 
@@ -98,4 +93,4 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在將任何 VHD 上載到 Azure 之前，應遵循[準備 Windows VHD 或 VHDX 以上載到 Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- 在將任何 VHD 上載到 Azure 之前,應遵循[準備 Windows VHD 或 VHDX 以上載到 Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

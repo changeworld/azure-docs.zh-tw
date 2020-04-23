@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 活動目錄授權開發人員帳戶
+title: 使用 Azure 的活動目錄授權開發人員帳戶
 titleSuffix: Azure API Management
 description: 了解如何在 API 管理中使用 Azure Active Directory 來授權使用者。
 services: api-management
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473535"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868400"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶
 
@@ -26,19 +26,19 @@ ms.locfileid: "79473535"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
+- 完成下列快速入門：[建立 Azure APIM 執行個體](get-started-create-service-instance.md)。
 - 匯入並發佈 Azure API 管理執行個體。 如需詳細資訊，請參閱[匯入和發佈](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 來授權開發人員帳戶
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 選取 ![箭號](./media/api-management-howto-aad/arrow.png).
-3. 在搜索框中鍵入**api。**
+3. 在搜尋框中鍵入**api。**
 4. 選擇**API 管理服務**。
 5. 選取 API 管理服務執行個體。
-6. 在 **"安全"** 下，選擇**標識**。
+6. 在**開發人員門戶**下,選擇**識別**。
 7. 從頂端選取 [+新增]****。
 
     [新增識別提供者]**** 窗格隨即出現在右邊。
@@ -50,19 +50,19 @@ ms.locfileid: "79473535"
    ![在 Azure 入口網站中新增識別提供者的步驟](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. 在瀏覽器中開啟其他索引標籤。 
 11. 導航到[Azure 門戶 - 應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)以在活動目錄中註冊應用。
-12. 在 **"管理**"下，選擇**應用註冊**。
-13. 選取 [新增註冊]****。 在 **"註冊應用程式**"頁上，設置如下值：
+12. 在 [管理]  底下選取 [應用程式註冊]  。
+13. 選取 [新增註冊]  。 在 **「註冊應用程式**」頁上,設定如下值:
     
-    * 將**名稱**設置為有意義的名稱。 例如，*開發人員門戶*
-    * 僅將**受支援的帳戶類型**設置為**此組織目錄中的帳戶**。 
-    * 將**重定向 URI**設置為從步驟 9 獲得的值。 
+    * 將**名稱**設置為有意義的名稱。 例如,*開發人員門戶*
+    * 只將**受支援的帳號類型**設定為**此組織目錄中的帳戶**。 
+    * 將**重定向URI**設置為從步驟9獲得的值。 
     * 選擇**註冊**。 
 
-14.  註冊應用程式後，請從 **"概述"** 頁複製**應用程式（用戶端）ID。** 
-15. 返回 API 管理實例。 在 **"添加標識提供程式"** 視窗中，將**應用程式（用戶端）ID**值粘貼到**用戶端 ID**框中。
-16. 切換回 Azure AD 配置，在 **"管理**"下選擇**證書&機密**。 選取 [新增用戶端密碼]**** 按鈕。 在 [描述]**** 中輸入值、針對 [到期]**** 選取任意選項，然後選擇 [新增]****。 在離開頁面之前複製用戶端機密值。 您在下一個步驟將會用到這些資料。 
-17. 在 **"管理**"下，選擇 **"身份驗證**"，然後在 **"隱式授予**"下選擇**ID 權杖**
-18. 返回 API 管理實例，將機密粘貼到**用戶端金鑰**框中。
+14.  註冊應用程式後,請從 **「概述」** 頁複製**應用程式(用戶端)ID。** 
+15. 返回 API 管理實體。 在 **「添加標識提供程式」** 視窗中,將**應用程式(用戶端)ID**值貼上到**用戶端 ID**框中。
+16. 切換回 Azure AD 設定,在 **'管理**' 的憑證 **# A0 機密**。 選取 [新增用戶端密碼]**** 按鈕。 在 [描述]**** 中輸入值、針對 [到期]**** 選取任意選項，然後選擇 [新增]****。 在離開頁面之前複製客戶端機密值。 您在下一個步驟將會用到這些資料。 
+17. 在 **'管理**' 選單選擇 **「身份認證**」,然後在 **「隱式授予**」下選擇**ID 權杖**
+18. 傳回 API 管理實體,將機密貼貼到**客戶端金鑰**框中。
 
     > [!IMPORTANT]
     > 請務必在金鑰到期之前，更新 [用戶端密碼]****。 
@@ -72,9 +72,9 @@ ms.locfileid: "79473535"
 19. [新增識別提供者]**** 視窗也包含 [允許的租用戶]**** 文字方塊。 請在該處指定 Azure AD 執行個體的網域，您將會對它授與 API 管理服務執行個體的 API 存取權。 您可以使用換行符號、空格或逗號來分隔多個網域。
 
     > [!NOTE]
-    > 您可以在 [允許的租用戶]**** 區段中指定多個網域。 在使用者可透過與註冊應用程式之原始網域不同的網域登入前，不同網域的全域管理員必須授與權限，應用程式才能存取目錄資料。 要授予許可權，全域管理員應： a. 移至 `https://<URL of your developer portal>/aadadminconsent` (例如， https://contoso.portal.azure-api.net/aadadminconsent)。
+    > 您可以在 [允許的租用戶]**** 區段中指定多個網域。 在使用者可透過與註冊應用程式之原始網域不同的網域登入前，不同網域的全域管理員必須授與權限，應用程式才能存取目錄資料。 要授予權限,全域管理員應: a. 移至 `https://<URL of your developer portal>/aadadminconsent` (例如， https://contoso.portal.azure-api.net/aadadminconsent)。
     > b. 輸入想要授與存取權的 Azure AD 租用戶網域名稱。
-    > c. 選取 [提交]****。 
+    > c. 選取 [提交]  。 
 
 20.  在您指定所需的設定之後，請選取 [新增]****。
 
@@ -82,16 +82,16 @@ ms.locfileid: "79473535"
 
 ## <a name="add-an-external-azure-ad-group"></a>新增外部 Azure AD 群組
 
-為 Azure AD 租戶中的使用者啟用存取權限後，可以將 Azure AD 組添加到 API 管理中。 因此，您可以使用 Azure AD 組控制產品可見度。
+為 Azure AD 租戶中的使用者啟用訪問許可權後,可以將 Azure AD 組添加到 API 管理中。 因此,您可以使用 Azure AD 組控制產品可見性。
 
-要將外部 Azure AD 組添加到 APIM 中，必須首先完成上一節。 此外，您必須通過以下步驟授予您註冊的應用程式對 Microsoft 圖形 API`Directory.Read.All`的許可權： 
+要將外部 Azure AD 組添加到 APIM 中,必須首先完成上一節。 此外,您必須通過以下步驟授予您註冊的應用程式對 Microsoft 圖形`Directory.Read.All`API 的許可權: 
 
 1. 返回上一節中創建的應用註冊。
-2. 選擇**API 許可權**，然後按一下 **"添加許可權**"。 
-3. 在 **"請求 API 許可權"** 窗格中，選擇 **"Microsoft API"** 選項卡，然後選擇 **"Microsoft 圖形"** 磁貼。 選擇**應用程式許可權**，搜索**目錄**，然後選擇**目錄.Read.All**許可權。 
-4. 按一下窗格底部的 **"添加許可權**"，然後按一下"**授予管理員同意 [租戶名稱]，** 以便授予此目錄中所有使用者的存取權限。 
+2. 選擇**API 許可權**,然後按下 **「添加權限**」。 
+3. 在 **"請求 API 許可權"** 窗格中,選擇 **"Microsoft API"** 選項卡,然後選擇 **"Microsoft 圖形"** 磁貼。 選擇**應用程式許可權**,搜索**目錄**,然後選擇**目錄.Read.All**許可權。 
+4. 按下窗格底部的 **「添加權限**」,然後按下「**授予管理員同意 [租戶名稱],** 以便授予此目錄中所有使用者的訪問許可權。 
 
-現在，可以從 API 管理實例的 **"組"** 選項卡添加外部 Azure AD 組。
+現在,可以從 API 管理實體的 **「組」** 選項卡添加外部 Azure AD 組。
 
 1. 選取 [群組] **** 索引標籤。
 2. 選取 [新增 AAD 群組]**** 按鈕。
@@ -99,22 +99,22 @@ ms.locfileid: "79473535"
 3. 選取您想要新增的群組。
 4. 按 [選取]**** 按鈕。
 
-新增外部 Azure AD 群組之後，您就可以檢閱並設定其屬性。 從"**組"** 選項卡中選擇組的名稱。在此處，您可以編輯組**的名稱**和**說明**資訊。
+新增外部 Azure AD 群組之後，您就可以檢閱並設定其屬性。 從「**組」** 選項卡中選擇群組的名稱。在此處,您可以編輯組**的名稱**和**說明**資訊。
  
 所設定 Azure AD 執行個體的使用者現在可以登入開發人員入口網站。 這些使用者也可以檢視和訂閱所能看見的任何群組。
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/>開發人員門戶 - 添加 Azure AD 帳戶身份驗證
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/>開發人員門戶 - 加入 Azure AD 帳號身份驗證
 
-在開發人員門戶中，可以使用**登錄按鈕：OAuth**小部件使用 AAD 登錄。 該小部件已包含在預設開發人員門戶內容的登錄頁上。
+在開發人員門戶中,可以使用**登錄按鈕:OAuth**小部件使用 AAD 登錄。 該小部件已包含在默認開發人員門戶內容的登錄頁上。
 
-儘管每當新使用者使用 AAD 登錄時，都會自動創建新帳戶，但您可以考慮將同一小部件添加到註冊頁面。
+儘管每當新使用者使用 AAD 登錄時,都會自動創建新帳戶,但您可以考慮將同一小部件添加到註冊頁面。
 
-**註冊表單：OAuth**小部件表示用於與 OAuth 註冊的表單。
+**註冊表單:OAuth**小部件表示用於與 OAuth 註冊的窗體。
 
 > [!IMPORTANT]
-> 您需要[重新發佈門戶](api-management-howto-developer-portal-customize.md#publish)，以便 AAD 更改生效。
+> 您需要[重新發佈門戶](api-management-howto-developer-portal-customize.md#publish),以便 AAD 更改生效。
 
-## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>傳統開發人員門戶 - 如何使用 Azure AD 登錄
+## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>傳統開發人員門戶 ─ 如何使用 Azure AD 登入
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 

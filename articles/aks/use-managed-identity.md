@@ -7,12 +7,12 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767588"
+ms.locfileid: "82024399"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure 庫伯奈斯服務中使用託管標識
 
@@ -25,7 +25,7 @@ AKS 建立兩個託管識別:
 - **系統分配的託管標識**:Kubernetes 雲端提供程式用於代表使用者創建 Azure 資源的標識。 系統分配的標識的生命週期與群集的生命周期相關聯。 刪除群集時,標識將被刪除。
 - **使用者分配的託管標識**:用於群集中授權的標識。 例如,使用者分配的標識用於授權 AKS 使用 Azure 容器註冊表 (ACL),或授權 kubelet 從 Azure 獲取中繼資料。
 
-載入項還會使用託管標識進行身份驗證。 對於每個載入項,託管標識由 AKS 創建,並持續載入項的生命週期。 要建立和使用資源位於MC_* 資源組之外的您自己的 VNet、靜態 IP 位址或附加的 Azure 磁碟,請使用群集的主體 ID 執行角色分配。 有關角色分配的詳細資訊,請參閱[委派對其他 Azure 資源的存取許可權](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)。
+載入項還會使用託管標識進行身份驗證。 對於每個載入項,託管標識由 AKS 創建,並持續載入項的生命週期。 
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -58,6 +58,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
     "secret": null
   }
 ```
+
+> [!NOTE]
+> 要建立和使用資源位於MC_* 資源組之外的 VNet、靜態 IP 位址或附加的 Azure 磁碟,請使用群集系統分配的託管標識的主體 ID 執行角色分配。 有關角色分配的詳細資訊,請參閱[委派對其他 Azure 資源的存取許可權](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)。
 
 最後,獲取訪問群集的認證:
 

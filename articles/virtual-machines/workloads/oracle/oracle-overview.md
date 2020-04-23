@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
 ms.author: borisb
-ms.openlocfilehash: e6a2e7c646782f5ad874124e4a86809ed1d79eea
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687406"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870510"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 應用程式和解決方案概述
 
@@ -49,7 +49,7 @@ ms.locfileid: "81687406"
 
 * 使用[Azure 網站恢復](../../../site-recovery/site-recovery-overview.md)來協調和管理 Azure 中的 Oracle Linux VM 以及本地或物理伺服器的災難恢復。 
 
-* 使用[Azure VMWare 解決方案](https://docs.azure.cloudsimple.com/oracle-rac/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 Azure 中啟用 Oracle 實際應用程式群集 (RAC)。
+* 使用[Azure VMWare 解決方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 Azure 中啟用 Oracle 實際應用程式群集 (RAC)。
 
 ## <a name="backup-oracle-workloads"></a>備份 Oracle 工作負載
 

@@ -1,25 +1,19 @@
 ---
 title: 管理 Azure 中 Windows VM 可用性
 description: 了解如何使用多部虛擬機器，以確保 Azure 中 Windows 應用程式的高可用性。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 02351953-7b6a-4657-b9e1-de2ea8f6aa05
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02dec02664cc82392ece49d1c5bd08834c3b9af3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 354cd8d291f8ad5c842d33b5ac63b0deb58b7d41
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451766"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870049"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>管理 Azure 中 Windows 虛擬機器的可用性 
 

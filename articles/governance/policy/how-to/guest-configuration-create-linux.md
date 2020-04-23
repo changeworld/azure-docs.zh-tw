@@ -3,12 +3,12 @@ title: 如何為 Linux 建立來賓設定原則
 description: 瞭解如何為 Linux 創建 Azure 策略來賓配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758956"
+ms.locfileid: "82024977"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何為 Linux 建立來賓設定原則
 
@@ -26,9 +26,8 @@ ms.locfileid: "81758956"
 > 具有來賓配置的自定義策略是預覽功能。
 >
 > 在 Azure 虛擬機器中執行審核需要來賓配置擴展。
-> 要大規模部署延伸,請配置以下策略定義:
->   - 部署必要條件，以在 Windows VM 上啟用客體設定原則。
->   - 部署必要條件，以在 Linux VM 上啟用客體設定原則。
+> 要在所有 Linux 電腦中大規模部署擴充,請配置以下政策定義:
+>   - [部署必要條件，以在 Linux VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 

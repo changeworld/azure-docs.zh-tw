@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437053"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023600"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解決方案 (預覽)
 
 ![Office 365 標誌](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解決方案更新
@@ -36,8 +35,8 @@ ms.locfileid: "80437053"
 >
 > ## <a name="frequently-asked-questions"></a>常見問題集
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>問:從現在到 4 月 30 日之間是否可以在 Office 365 Azure 監視器解決方案中登載?
-> 否,Azure 監視器 Office 365 解決方案載入腳本不再可用。 解決方案將於 4 月 30 日刪除。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>問:從現在到 7 月 30 日,是否可以在 Office 365 Azure 監視器解決方案中加入?
+> 否,Azure 監視器 Office 365 解決方案載入腳本不再可用。 解決方案將於 7 月 30 日刪除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>問:表和架構是否會更改?
 > **OfficeActivity**表名稱和架構將保持不變,與當前解決方案中相同。 您可以在新解決方案中繼續使用相同的查詢,不包括引用 Azure AD 資料的查詢。
@@ -103,11 +102,11 @@ ms.locfileid: "80437053"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>問:Azure Sentinel 是否作為解決方案的一部分提供了其他連接器?
 > 是的,請參閱[Azure Sentinel 連接資料來源](../../sentinel/connect-data-sources.md)。
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>問:4月30日會發生什麼? 我需要事先離開嗎?
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>問:7月30日會發生什麼? 我需要事先離開嗎?
 > 
 > - 您將無法從**Office365**解決方案接收數據。 該解決方案將不再在應用商店中可用
 > - 對於 Azure 哨兵客戶,日誌分析工作區解決方案**Office365**將包含在 Azure 哨兵**安全見解**解決方案中。
-> - 如果您不手動關閉解決方案,您的數據將在 4 月 30 日自動斷開連接。
+> - 如果您不手動關閉解決方案,您的數據將在 7 月 30 日自動斷開連接。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>問:我的數據傳輸是否會傳輸到新解決方案?
 > 是。 從工作區中刪除**Office 365**解決方案時,由於架構被刪除,其數據將暫時不可用。 在 Sentinel 中啟用新的**Office 365**連接器時,架構將還原到工作區,並且已經收集的任何數據都將可用。 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f557753c61af1e57490ae2d10b7f42475bd7c0a6
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730518"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870240"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在 Azure 邏輯應用與電源自動化運算式中使用函數的參考指南
 
@@ -2426,9 +2426,11 @@ iterationIndexes('<loopName>')
 
 *範例* 
 
-本示例創建一個計數器變數,並在"直到"迴圈中的每個反覆運算期間將變數逐一遞增,直到計數器值達到 5。 該示例還創建一個變數,用於跟蹤每次反覆運算的當前索引。 在"直到"迴圈中,在每次反覆運算期間,示例都會遞增計數器,然後將計數器值分配給當前索引值,然後遞增計數器。 您可以隨時透過檢索目前索引值來確定當前反覆運算編號。
+本示例創建一個計數器變數,並在"直到"迴圈中的每個反覆運算期間將變數逐一遞增,直到計數器值達到 5。 該示例還創建一個變數,用於跟蹤每次反覆運算的當前索引。 在"直到"迴圈中,在每次反覆運算期間,示例都會遞增計數器,然後將計數器值分配給當前索引值,然後遞增計數器。 在循環中,此範例使用`iterationIndexes`函式引用目前反覆運算索引:
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2461,7 @@ iterationIndexes('<loopName>')
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2474,15 @@ iterationIndexes('<loopName>')
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {

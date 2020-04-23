@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731255"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869067"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>建立 Azure 虛擬機器產品/服務
 
@@ -254,6 +254,9 @@ ms.locfileid: "81731255"
 ### <a name="marketplace-media"></a>市場媒體
 
 提供徽標和圖像,以便與您的產品配合使用。 所有圖像必須採用 PNG 格式。 模糊的圖像將導致您的提交被拒絕。
+
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
 
 #### <a name="marketplace-logos"></a>市場徽標
 

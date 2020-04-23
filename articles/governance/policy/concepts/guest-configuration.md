@@ -3,12 +3,12 @@ title: 學習稽核虛擬機器的內容
 description: 瞭解 Azure 策略如何使用來賓配置代理審核虛擬機器內的設置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759089"
+ms.locfileid: "82025215"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -31,8 +31,8 @@ ms.locfileid: "81759089"
 > [!Important]
 > 在 Azure 虛擬機器中執行審核需要來賓配置擴展。
 > 要大規模部署延伸,請配置以下策略定義:
->   - 部署必要條件，以在 Windows VM 上啟用客體設定原則。
->   - 部署必要條件，以在 Linux VM 上啟用客體設定原則。
+>   - [部署必要條件，以在 Windows VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>   - [部署必要條件，以在 Linux VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>在延伸上設定的限制
 
@@ -67,6 +67,8 @@ ms.locfileid: "81759089"
 |OpenLogic|CentOS|7.3 及更高版本|
 |Red Hat|Red Hat Enterprise Linux|7.4 及更高版本|
 |Suse|SLES|12 SP3 及更高版本|
+
+來賓配置策略支援自定義虛擬機映射,只要它們是上表中的操作系統之一。
 
 ### <a name="unsupported-client-types"></a>不支援的用戶端類型
 

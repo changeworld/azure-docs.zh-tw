@@ -2,17 +2,18 @@
 title: 常見問題解答 ─ 適用於 Windows VM 的 Azure 磁碟加密
 description: 本文提供了有關 Windows IaaS VM 的 Microsoft Azure 磁碟加密的常見問題的解答。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114973"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082589"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>適用於 Windows 虛擬機器的 Azure 磁碟加密常見問題解答
 

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18ffb48b2e7978831155afaf2e675bb720e57544
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312862"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082198"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure 活動目錄傳遞認證:快速入門
 
@@ -37,6 +37,9 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 ## <a name="step-1-check-the-prerequisites"></a>步驟 1：檢查必要條件
 
 請確保已具備下列必要條件。
+
+>[!IMPORTANT]
+>從安全角度來看,管理員應該將運行 PTA 代理的伺服器視為域控制器。  PTA 代理伺服器應按照[保護域控制器免受攻擊](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)時概述的相同思路進行強化
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>於 Azure Active Directory 管理中心
 

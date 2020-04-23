@@ -9,18 +9,18 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 1593b96ae8412632120e8977635a4193996ca88d
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77587969"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025113"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>自動從 Microsoft 安全性警示建立事件
 

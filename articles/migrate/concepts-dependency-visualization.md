@@ -3,12 +3,12 @@ title: Azure 移植伺服器來依分析的相依項分析
 description: 介紹如何使用 Azure 遷移伺服器評估使用依賴項分析進行評估。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537741"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024756"
 ---
 # <a name="dependency-analysis"></a>相依性分析
 
@@ -51,7 +51,7 @@ ms.locfileid: "81537741"
 
 ### <a name="collected-data"></a>收集的資料
 
-對於基於代理的視覺化效果,將收集以下資料:
+對於基於代理的分析,將收集以下數據:
 
 - 源電腦伺服器名稱、程序、應用程式名稱。
 - 目標計算機伺服器名稱、程序、應用程式名稱和埠。

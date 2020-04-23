@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5750f4a5aa62b33c7d793b3e0c34f304ce1b187e
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a77e6c9086a745804c23f431f633d530e2655f16
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535922"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868887"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>取得呼叫 Web API 的移動應用的權杖
 
@@ -268,7 +268,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 #### <a name="get-an-authorization-code"></a>取得授權碼
 
-```Text
+```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=<CLIENT_ID>
 &response_type=code
@@ -280,7 +280,7 @@ client_id=<CLIENT_ID>
 
 #### <a name="get-access-and-refresh-the-token"></a>取得存取權限並刷新權杖
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded

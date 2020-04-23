@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 810219bca5c75e3ee7e65c6b7302531bca89788d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668124"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869953"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
 
@@ -187,7 +187,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]****。
 4. 在檔案中貼上複製的文字，然後儲存檔案。
 
-若要檢視 HAR 檔案，您可以使用 [HAR 檢視器](https://www.softwareishard.com/har/viewer/)。
+若要檢視 HAR 檔案，您可以使用 [HAR 檢視器](http://www.softwareishard.com/har/viewer/)。
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>為什麼當我嘗試將 App Service Web 應用程式連線到虛擬網路 (已連線到 ExpressRoute) 時遇到錯誤？
 
@@ -276,7 +276,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 如需 App Service 中驗證和授權的詳細文件，請參閱各種身分識別提供者登入的文件：
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
-* [谷歌](configure-authentication-provider-google.md)
+* [Google](configure-authentication-provider-google.md)
 * [Microsoft 帳戶](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 

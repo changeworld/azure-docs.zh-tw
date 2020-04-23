@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e591a7035db82425952a16f5c4c220e25d8517fe
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457173"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870548"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 邏輯應用中的安全存取和資料
 
@@ -655,7 +655,7 @@ HTTP 和 HTTPS 終結點支援各種身份驗證。 根據用於進行出站調�
 
 | 屬性(設計師) | Property (JSON) | 必要 | 值 | 描述 |
 |---------------------|-----------------|----------|-------|-------------|
-| **驗證** | `type` | 是 | **用戶端憑證** <br>或 <br>`ClientCertificate` | 用於 TLS/SSL 客戶端憑證的身份驗證類型。 雖然支援自簽名證書,但不支援 TLS/SSL 的自簽名證書。 |
+| **驗證** | `type` | 是 | **用戶端憑證** <br>或 <br>`ClientCertificate` | TLS/SSL 客戶端憑證的身份驗證類型 <p><p>**注意**:雖然支援自簽名證書,但不支援 TLS/SSL 的自簽名證書。 HTTP 連接器不支援中間 TLS/SSL 憑證。 |
 | **普夫克斯** | `pfx` | 是 | <*編碼-pfx-文件內容*> | Base64 編碼的個人資訊交換 (PFX) 檔案內容 <p><p>要將 PFX 檔轉換為基本編碼格式,可以使用 PowerShell 以下步驟: <p>1. 將憑證內容儲存到變數中: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()`使用 函數轉換憑證內容,並將該內容儲存到文字檔: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **密碼** | `password`| 否 | <*密碼換pfx檔*> | 用於存取 PFX 檔案的密碼 |
 |||||
@@ -700,7 +700,7 @@ HTTP 和 HTTPS 終結點支援各種身份驗證。 根據用於進行出站調�
 | **觀眾** | `audience` | 是 | <*資源到授權*> | 您希望用於授權的資源，例如，`https://management.core.windows.net/` |
 | **用戶端識別碼** | `clientId` | 是 | <*用戶端識別碼*> | 要求授權的應用程式用戶端識別碼 |
 | **認證類型** | `credentialType` | 是 | 憑證 <br>或 <br>祕密 | 用戶端用於請求授權的認證類型。 此屬性和值不顯示在邏輯應用的基礎定義中,但確定為所選憑據類型顯示的屬性。 |
-| **秘密** | `secret` | 是,但僅適用於「機密」憑據類型 | <*用戶端-機密*> | 要求授權用的用戶端密碼 |
+| **祕密** | `secret` | 是,但僅適用於「機密」憑據類型 | <*用戶端-機密*> | 要求授權用的用戶端密碼 |
 | **普夫克斯** | `pfx` | 是,但僅適用於"證書"認證類型 | <*編碼-pfx-文件內容*> | Base64 編碼的個人資訊交換 (PFX) 檔案內容 |
 | **密碼** | `password` | 是,但僅適用於"證書"認證類型 | <*密碼換pfx檔*> | 用於存取 PFX 檔案的密碼 |
 |||||
@@ -783,8 +783,8 @@ Authorization: OAuth realm="Photos",
 
    | 屬性(設計師) | Property (JSON) | 必要 | 值 | 描述 |
    |---------------------|-----------------|----------|-------|-------------|
-   | **驗證** | `type` | 是 | **受控識別** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份驗證類型 |
-   | **受控識別** | `identity` | 是 | * **系統配置的託管識別** <br>或 <br>`SystemAssigned` <p><p>• <*使用者配置的識別名稱*> | 要使用的託管識別 |
+   | **驗證** | `type` | 是 | **受控身分識別** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份驗證類型 |
+   | **受控身分識別** | `identity` | 是 | * **系統配置的託管識別** <br>或 <br>`SystemAssigned` <p><p>• <*使用者配置的識別名稱*> | 要使用的託管識別 |
    | **觀眾** | `audience` | 是 | <*目標資源識別碼*> | 要訪問的目標資源的資源 ID。 <p>例如,`https://storage.azure.com/`使身份驗證的存取權杖對所有儲存帳戶都有效。 但是,您還可以指定根服務 URL,`https://fabrikamstorageaccount.blob.core.windows.net`例如為特定存儲帳戶指定。 <p>**注意**: **"存取群體'** 屬性可能隱藏在某些觸發器或操作中。 要使此屬性可見,請在觸發器或操作中打開 **「添加新參數**清單」,然後選擇 **「訪問群體**」。 <p><p>**重要提示**:確保此目標資源 ID 與 Azure AD 期望的值*完全符合*,包括任何必需的尾隨斜杠。 因此,`https://storage.azure.com/`所有 Azure Blob 儲存帳戶的資源 ID 都需要尾隨斜杠。 但是,特定存儲帳戶的資源 ID 不需要尾隨斜杠。 要尋找這些資源識別,請參閱[支援 Azure AD 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 

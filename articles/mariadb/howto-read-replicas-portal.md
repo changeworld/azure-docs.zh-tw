@@ -1,34 +1,34 @@
 ---
-title: 管理讀取副本 - Azure 門戶 - MariaDB 的 Azure 資料庫
-description: 本文介紹如何使用門戶在 MariaDB 的 Azure 資料庫中設置和管理讀取副本
+title: 管理讀取複本 - Azure 門戶 - MariaDB 的 Azure 資料庫
+description: 本文介紹如何使用門戶在 MariaDB 的 Azure 資料庫中設定和管理讀取複本
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5c28697b27e9cf910302b7379e1443f7e78e96b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530609"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025079"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 門戶在 MariaDB 的 Azure 資料庫中創建和管理讀取副本
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 門戶在 MariaDB 的 Azure 資料庫建立及管理讀取複本
 
-在本文中，您將瞭解如何使用 Azure 門戶在 MariaDB 服務的 Azure 資料庫中創建和管理讀取副本。
+在本文中,您將瞭解如何使用 Azure 門戶在 MariaDB 服務的 Azure 資料庫中創建和管理讀取副本。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - 將用作主伺服器[的 MariaDB 伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)的 Azure 資料庫。
 
 > [!IMPORTANT]
-> 讀取副本功能僅適用于"通用"或"記憶體優化定價層"中 MariaDB 伺服器的 Azure 資料庫。 請確定主要伺服器處於這些定價層中。
+> 讀取副本功能僅適用於「通用」或「記憶體優化定價層」中 MariaDB 伺服器的 Azure 資料庫。 請確定主要伺服器處於這些定價層中。
 
 ## <a name="create-a-read-replica"></a>建立讀取複本
 
 您可以使用下列步驟建立讀取複本伺服器︰
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 選擇要用作主伺服器的 MariaDB 伺服器的現有 Azure 資料庫。 這個動作會開啟 [概觀]**** 頁面。
 
@@ -36,7 +36,7 @@ ms.locfileid: "79530609"
 
 4. 選取 [新增複本]****。
 
-   ![用於瑪麗亞DB的 Azure 資料庫 - 複製](./media/howto-read-replica-portal/add-replica.png)
+   ![以瑪麗亞DB的 Azure 資料庫 - 複製](./media/howto-read-replica-portal/add-replica.png)
 
 5. 輸入副本伺服器的名稱。
 
@@ -46,17 +46,14 @@ ms.locfileid: "79530609"
 
     ![MariaDB 的 Azure 資料庫 - 副本位置](./media/howto-read-replica-portal/replica-location.png)
 
-   > [!NOTE]
-   > 跨區域複製處於預覽狀態。 要詳細瞭解可以在哪些區域棄置站台，請訪問[讀取副本概念一文](concepts-read-replicas.md)。 
-
-7. 選擇 **"確定"** 以確認棄置站台。
+7. 選擇 **「確定」** 以確認建立複本。
 
 > [!NOTE]
 > 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
 
 建立複本伺服器後，可從 [複寫]**** 刀鋒視窗檢視該伺服器。
 
-   ![MariaDB 的 Azure 資料庫 - 列出副本](./media/howto-read-replica-portal/list-replica.png)
+   ![MariaDB 的 Azure 資料庫 - 列出複本](./media/howto-read-replica-portal/list-replica.png)
 
 ## <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
 
@@ -65,7 +62,7 @@ ms.locfileid: "79530609"
 
 若要從 Azure 入口網站停止主要和複本伺服器之間的複寫，請使用下列步驟：
 
-1. 在 Azure 門戶中，為 MariaDB 伺服器選擇主 Azure 資料庫。 
+1. 在 Azure 門戶中,為 MariaDB 伺服器選擇主 Azure 資料庫。 
 
 2. 選取 [設定]**** 下方功能表中的 [複寫]****。
 
@@ -85,21 +82,21 @@ ms.locfileid: "79530609"
 
 若要從 Azure 入口網站刪除讀取複本伺服器，請使用下列步驟：
 
-1. 在 Azure 門戶中，為 MariaDB 伺服器選擇主 Azure 資料庫。
+1. 在 Azure 門戶中,為 MariaDB 伺服器選擇主 Azure 資料庫。
 
 2. 選取 [設定]**** 下方功能表中的 [複寫]****。
 
 3. 選取您想要刪除的複本伺服器。
 
-   ![MariaDB 的 Azure 資料庫 - 刪除副本選擇伺服器](./media/howto-read-replica-portal/delete-replica-select.png)
+   ![MariaDB 的 Azure 資料庫 - 移除複本選擇伺服器](./media/howto-read-replica-portal/delete-replica-select.png)
 
 4. 選擇 **"刪除副本"**
 
-   ![MariaDB 的 Azure 資料庫 - 刪除副本](./media/howto-read-replica-portal/delete-replica.png)
+   ![MariaDB 的 Azure 資料庫 - 刪除複本](./media/howto-read-replica-portal/delete-replica.png)
 
 5. 輸入複本名稱，然後按一下 [刪除]**** 確認刪除複本。  
 
-   ![MariaDB 的 Azure 資料庫 - 刪除副本確認](./media/howto-read-replica-portal/delete-replica-confirm.png)
+   ![MariaDB 的 Azure 資料庫 - 刪除複本確認](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
 ## <a name="delete-a-master-server"></a>刪除主要複本
 
@@ -108,7 +105,7 @@ ms.locfileid: "79530609"
 
 若要從 Azure 入口網站刪除主要伺服器，請使用下列步驟：
 
-1. 在 Azure 門戶中，為 MariaDB 伺服器選擇主 Azure 資料庫。
+1. 在 Azure 門戶中,為 MariaDB 伺服器選擇主 Azure 資料庫。
 
 2. 從 [概觀]**** 中選取 [刪除]****。
 
@@ -120,7 +117,7 @@ ms.locfileid: "79530609"
 
 ## <a name="monitor-replication"></a>監視複寫
 
-1. 在[Azure 門戶](https://portal.azure.com/)中，選擇要監視的 MariaDB 伺服器的副本 Azure 資料庫。
+1. 在[Azure 門戶](https://portal.azure.com/)中,選擇要監視的 MariaDB 伺服器的副本 Azure 資料庫。
 
 2. 在提要欄位的 [監視]**** 區段下方，選取 [計量]****：
 

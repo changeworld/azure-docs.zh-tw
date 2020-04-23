@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 608c2619c19a2b5fa7e39c1ecb82be40ff4e83f4
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536519"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82072615"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向識別分配存取權限
 
@@ -87,15 +87,6 @@ Azure 檔案支援全套 NTFS 基本和進階權限。 您可以透過安裝共�
 - NT AUTHORITY\SYSTEM:(F)
 - CREATOR OWNER:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 設定 NTFS 權限
-使用以下 Windows 命令，授與完整權限至檔案共用下的所有目錄和檔案，包括根目錄。 請記得使用您自己的值取代預留位置值。
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-有關如何使用 Icacls 設定 NTFS 權限以及不同類型的受支援權限的詳細資訊,請參閱[icacls 的命令列參考](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)。
-
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>從命令提示字元裝載檔案共用
 
 使用 Windows **net use** 命令以裝載 Azure 檔案共用。 請記住,將以下範例中的占位符值替換為您自己的值。 有關安裝檔案分享的詳細資訊,請參閱使用[Windows 檔案分享](../articles/storage/files/storage-how-to-use-files-windows.md)。 
@@ -103,6 +94,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
+
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>使用 Windows 檔案資源管理員設定 NTFS 權限
 使用 Windows 檔案資源管理員向檔案共用下的所有目錄和檔(包括根目錄)授予完全許可權。
 
@@ -114,6 +106,15 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 7.    選取 [確定]  。
 8.    在「**安全」** 選項卡中,選擇要授予新使用者的擁有許可權。
 9.    選取 [套用]  。
+
+### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 設定 NTFS 權限
+使用以下 Windows 命令，授與完整權限至檔案共用下的所有目錄和檔案，包括根目錄。 請記得使用您自己的值取代預留位置值。
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+有關如何使用 Icacls 設定 NTFS 權限以及不同類型的受支援權限的詳細資訊,請參閱[icacls 的命令列參考](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)。
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. 從加入網域的 VM 載入檔案分享
 

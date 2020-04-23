@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881803"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868724"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>呼叫 Web API 的 Web 應用:呼叫 Web API
 
@@ -26,7 +26,7 @@ ms.locfileid: "80881803"
 
 下面是的簡化代碼。 `HomeController` 此代碼獲取一個令牌,稱為 Microsoft 圖形。 已添加代碼以展示如何將 Microsoft 圖形稱為 REST API。 Microsoft 圖形 API 的 URL 在 appsettings.json`webOptions`檔中提供,並在名為的變數中讀取:
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",

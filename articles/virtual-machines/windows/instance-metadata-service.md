@@ -1,25 +1,21 @@
 ---
 title: Azure 執行個體中繼資料服務
-description: RESTful 介面,獲取有關 Windows VM 計算、網路和即將發生的維護事件的資訊。
-services: virtual-machines-windows
-documentationcenter: ''
+description: RESTful 介面,獲取有關 VM 計算、網路和即將發生的維護事件的資訊。
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cb9453e1a25f4042c45d4e89229b555c996d4c8b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520961"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870072"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務
 
@@ -837,7 +833,7 @@ sku | VM 映像的特定 SKU,在`2019-11-01`
 > [!NOTE]
 > 公用雲端和主權雲端的憑證將會不同。
 
- Cloud | 憑證
+ 雲端 | 憑證
 ---------|-----------------
 [所有正式推出的全域 Azure 區域](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
@@ -934,7 +930,7 @@ OS 磁碟物件包含有關 VM 使用的 OS 磁碟的以下資訊:
 快取 | 快取要求
 createOption | 有關如何建立 VM 的資訊
 差異磁碟設定 | 暫存磁碟設定
-磁碟SizeGB | 磁碟大小(以 GB)表示
+diskSizeGB | 磁碟大小(以 GB)表示
 image   | 來源使用者映像虛擬硬碟
 倫     | 磁碟的邏輯單位編號
 託管磁碟 | 託管磁碟參數
@@ -949,7 +945,7 @@ vhd     | 虛擬硬碟
 快取 | 快取要求
 createOption | 有關如何建立 VM 的資訊
 差異磁碟設定 | 暫存磁碟設定
-磁碟SizeGB | 磁碟大小(以 GB)表示
+diskSizeGB | 磁碟大小(以 GB)表示
 加密設定 | 磁碟的加密設定
 image   | 來源使用者映像虛擬硬碟
 託管磁碟 | 託管磁碟參數

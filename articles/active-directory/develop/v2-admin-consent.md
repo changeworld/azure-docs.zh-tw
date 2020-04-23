@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886376"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868673"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 身份平臺上的管理員同意
 
-某些許可權需要管理員的同意,然後才能在租戶中授予它們。  您還可以使用管理員同意終結點向整個租戶授予許可權。  
+某些許可權需要管理員的同意,然後才能在租戶中授予它們。  您還可以使用管理員同意終結點向整個租戶授予許可權。
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>推薦:將使用者登錄到你的應用
 
@@ -33,15 +33,15 @@ ms.locfileid: "80886376"
 
 當您準備好向組織的管理員請求許可權時,可以將使用者重定向到 Microsoft 標識平臺*管理員同意終結點*。
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "80886376"
 | `client_id` | 必要 | [Azure 門戶和應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗**的應用程式(用戶端)ID**分配給應用。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope`        | 必要      | 定義應用程式請求的許可權集。 這可以是靜態(使用 /.default)或動態作用域。  這可以包括 OIDC`openid`範圍`profile``email`(、 與 % 。 | 
+|`scope`        | 必要      | 定義應用程式請求的許可權集。 這可以是靜態(使用 /.default)或動態作用域。  這可以包括 OIDC`openid`範圍`profile``email`(、 與 % 。 |
 
 
 此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 要求管理員批准您在`scope`參數中請求的所有許可權。  如果您使用了靜態(`/.default`) 值,它將像 v1.0 管理員同意終結點一樣運行,並請求對應用所需許可權中找到的所有作用域進行同意。

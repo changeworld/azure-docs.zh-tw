@@ -1,24 +1,19 @@
 ---
-title: 虛擬機器上的 MATLAB 群集
+title: 虛擬機器上的 MATLAB 叢集
 description: 使用 Microsoft Azure 虛擬機器建立 MATLAB Distributed Computing Server 叢集，以執行需密集計算的平行 MATLAB 工作負載。
-services: virtual-machines-windows
-documentationcenter: ''
 author: mscurrell
-manager: gwallace
-editor: ''
-ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: Windows
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038132"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869410"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>在 Azure VM 上建立 MATLAB Distributed Computing Server 叢集
 使用 Microsoft Azure 虛擬機器建立一或多個 MATLAB Distributed Computing Server 叢集，以執行需密集計算的平行 MATLAB 工作負載。 在 VM 上安裝 MATLAB Distributed Computing Server 軟體來作為基礎映像，並使用 Azure 快速入門範本或 Azure PowerShell 指令碼 (可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)上取得) 來部署和管理叢集。 在部署之後，連接到叢集以執行工作負載。
@@ -32,7 +27,7 @@ ms.locfileid: "74038132"
 * **用戶端電腦** - 您將需要以 Windows 為基礎的用戶端電腦，以便在部署之後與 Azure 和 MATLAB Distributed Computing Server 叢集通訊。
 * **Azure PowerShell** - 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) 以將其安裝在您的用戶端電腦上。
 * **Azure 訂用帳戶** - 如果您沒有訂用帳戶，只需要幾分鐘就可以建立 [免費帳戶](https://azure.microsoft.com/free/) 。 針對較大的叢集，請考慮隨用隨付訂用帳戶或其他購買選項。
-* **vCPU 配額** -您可能需要增加 vCPU 配額，以部署大型叢集或多個 MATLAB Distributed Computing Server 叢集。 要增加配額，[請免費打開線上客戶支援請求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
+* **vCPU 配額** -您可能需要增加 vCPU 配額，以部署大型叢集或多個 MATLAB Distributed Computing Server 叢集。 要增加大小,[請免費開啟線上客戶支援要求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 * **MATLAB、Parallel Computing Toolbox 和 MATLAB Distributed Computing Server 授權** - 指令碼假設所有授權皆使用 [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) 。  
 * **MATLAB Distributed Computing Server 軟體** - 將會安裝在作為叢集 VM 之基礎 VM 映像的 VM 上。
 

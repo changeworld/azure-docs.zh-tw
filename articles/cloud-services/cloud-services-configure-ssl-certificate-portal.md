@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811673"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024841"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>為 Azure 的應用程式設定 TLS
 
@@ -32,7 +32,7 @@ ms.locfileid: "80811673"
 
 憑證必須滿足 Azure 中 TLS/SSL 憑證的以下要求:
 
-* 憑證必須包含私密金鑰。
+* 證書必須包含公開金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
 * 憑證的主體名稱必須符合用來存取雲端服務的網域。 您不能從cloudapp.net網域的證書頒發機構 (CA) 獲取 TLS/SSL 證書。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如,如果您的自定義功能變數名稱**contoso.com,** 您將從 CA 請求**\.** 用於 ***.contoso.com**或 www contoso.com的證書。
 * 憑證至少必須以 2048 位元加密。

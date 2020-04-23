@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bb2cc90e586f71bb7c90efd62ba3705cd9223bc5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885492"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868977"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 Web API 的守護程式應用程式 - 程式碼設定
 
@@ -59,7 +59,7 @@ ms.locfileid: "80885492"
 
 [應用設置.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)從[.NET 核心控制台守護行程](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)範例。
 
-```JSon
+```json
 {
   "Instance": "https://login.microsoftonline.com/{0}",
   "Tenant": "[Enter here the tenantID or domain name for your Azure AD tenant]",

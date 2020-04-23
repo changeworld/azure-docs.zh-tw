@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086628"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>教學課程：Azure Active Directory 與 Workstars 整合
 
@@ -110,7 +110,7 @@ Workstars 與 Azure AD 整合有下列好處：
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Workstars 用戶端支援小組](https://support.workstars.com/)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Workstars 用戶端支援小組](http://support.workstars.com/)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -210,7 +210,7 @@ Workstars 與 Azure AD 整合有下列好處：
 
 ### <a name="create-workstars-test-user"></a>建立 Workstars 測試使用者
 
-在本節中，您會在 Workstars 中建立名為 Britta Simon 的使用者。 請與 [Workstars 支援小組](https://support.workstars.com)合作，在 Workstars 平台中新增使用者。
+在本節中，您會在 Workstars 中建立名為 Britta Simon 的使用者。 請與 [Workstars 支援小組](http://support.workstars.com)合作，在 Workstars 平台中新增使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

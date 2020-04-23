@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f625f5df4f33c6516bd5c50f97c52404d76757a0
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392568"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024450"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>套用服務或 Azure 功能應用設定為使用 Azure AD 登入名稱
 
@@ -100,7 +100,7 @@ ms.locfileid: "81392568"
     |欄位|描述|
     |-|-|
     |用戶端識別碼| 使用應用註冊**的應用程式(用戶端)ID。** |
-    |發行者網址| 使用`https://login.microsoftonline.com/<tenant-id>/v2.0`,並將*\<租戶 id>* 替換為應用註冊的**目錄(租戶)ID。** 此值用於將使用者重定向到正確的 Azure AD 租戶,以及下載相應的元數據以確定適當的權杖簽名金鑰和權杖頒發者聲明值。 對於`/v2.0`使用 AAD v1 的應用程式,可以省略該部分。 |
+    |發行者網址| 使用`<authentication-endpoint>/<tenant-id>/v2.0`並將*\<身份驗證終結點>* 替換為[雲環境的身份驗證終結點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)(例如,"全域 Azure"),https://login.microsoft.com還將*\<租戶 id>* 替換為創建應用註冊的**目錄(租戶)ID。** 此值用於將使用者重定向到正確的 Azure AD 租戶,以及下載相應的元數據以確定適當的權杖簽名金鑰和權杖頒發者聲明值。 對於`/v2.0`使用 AAD v1 的應用程式,可以省略該部分。 |
     |用戶端金鑰(選擇性的)| 使用在應用註冊中生成的用戶端密鑰。|
     |允許的權杖存取群體| 如果這是雲端或伺服器應用,並且希望允許來自 Web 應用程式驗證權杖,請在此處添加 Web 應用程式**ID URI。** 配置的**用戶端ID***始終*隱式被視為允許的訪問群體。 |
 

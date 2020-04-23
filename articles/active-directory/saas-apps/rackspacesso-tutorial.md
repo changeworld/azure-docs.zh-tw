@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093189"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870308"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教學課程：Azure Active Directory 與 Rackspace SSO 整合
 
@@ -187,7 +187,7 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>在 Rackspace 控制台中設定屬性對應
 
-Rackspace 使用**屬性對應原則**來將 Rackspace 角色和群組指派給單一登入使用者。 **屬性對應原則**會將 Azure AD SAML 宣告轉譯成 Rackspace 所需的使用者設定欄位。 您可以在 Rackspace 的[屬性對應基本概念文件](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)中找到更多文件。 一些考量事項如下：
+Rackspace 使用**屬性對應原則**來將 Rackspace 角色和群組指派給單一登入使用者。 **屬性對應原則**會將 Azure AD SAML 宣告轉譯成 Rackspace 所需的使用者設定欄位。 您可以在 Rackspace 的[屬性對應基本概念文件](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)中找到更多文件。 一些考量事項如下：
 
 * 如果您想要使用 Azure AD 群組來指派各種 Rackspace 存取層級，則必須在 Azure 的 **Rackspace SSO** 單一登入設定中啟用群組宣告。 然後，系統就會使用**屬性對應原則**來比對這些群組與所需的 Rackspace 角色和群組：
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > 在編輯原則檔時，請務必使用會驗證 YAML 語法的文字編輯器。
 
-如需更多範例，請參閱 Rackspace 的[屬性對應基本概念文件](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)。
+如需更多範例，請參閱 Rackspace 的[屬性對應基本概念文件](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 

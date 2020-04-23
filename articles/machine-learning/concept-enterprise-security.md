@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1af1a1ccd8bff8fc4b578ecdeec3ac5f7c2352b1
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414635"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082130"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 機器學習的企業安全性
 
@@ -183,7 +183,7 @@ Azure 機器學習在 Azure Cosmos DB 實體中儲存指標和中繼資料。 �
         > [!NOTE]
         > 此密鑰保管庫實例可能不同於 Azure 機器學習在預配工作區時創建的密鑰保管庫。 如果要對工作區使用相同的密鑰保管庫實例,請使用[key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)在預配工作區時傳遞相同的密鑰保管庫。 
 
-此 Cosmos DB 實例是在訂閱中的 Microsoft 託管資源組中創建的。 
+此 Cosmos DB 實例是在訂閱中的 Microsoft 託管資源組中創建的。 管理管資源群組以格式命名<AML Workspace Resource Group Name><GUID>
 
 > [!IMPORTANT]
 > * 如果需要刪除此 Cosmos DB 實例,則必須刪除使用它的 Azure 機器學習工作區。 

@@ -1,18 +1,18 @@
 ---
-title: 除錯渲染
+title: 偵錯轉譯
 description: 伺服器端除錯呈現效果概述
 author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
-ms.openlocfilehash: 675f8d988e64ed7b556f154f681ccb53ed1000c6
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394289"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868166"
 ---
-# <a name="debug-rendering"></a>除錯渲染
+# <a name="debug-rendering"></a>偵錯轉譯
 
 調試呈現 API 提供了一系列全域選項,用於使用不同的調試效果來更改伺服器端呈現。
 
@@ -22,7 +22,7 @@ ms.locfileid: "81394289"
 |---------------------------------|:-------------------------------------|
 |框架計數器                    | 將文本疊加渲染到框架的左上角。 文本顯示當前伺服器端幀 ID,該 ID 隨著呈現過程而不斷遞增。 |
 |多邊形計數                    | 將文本疊加渲染到框架的左上角。 文字顯示目前呈現的多邊形量,與[伺服器端效能查詢](performance-queries.md)查詢的值相同| 
-|線框                        | 如果啟用,則伺服器上載入的所有物件幾何體都將線上框模式下呈現。 只有多邊形的邊緣才會在此模式下進行柵格化。 |
+|線框                        | 如果啟用,則伺服器上載入的所有物件幾何體都將線上框模式下呈現。 在此模式下,只有多邊形的邊緣才會柵格。 |
 
 以下代碼支援以下調試效果:
 
@@ -56,7 +56,7 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ## <a name="performance-considerations"></a>效能考量
 
 * 啟用文本疊加會產生很少或根本沒有性能開銷。
-* 此外,啟用疊加確實會產生非同尋常的性能開銷,儘管它可能因場景而異。 對於複雜場景,此模式可能會導致幀速率下降到 60 Hz 目標以下。
+* 啟用線框模式確實會產生非同尋常的性能開銷,但可能因場景而異。 對於複雜場景,此模式可能會導致幀速率降至 60 Hz 目標以下。
 
 ## <a name="next-steps"></a>後續步驟
 

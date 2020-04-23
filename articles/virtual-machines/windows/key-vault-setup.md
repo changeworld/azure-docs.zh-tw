@@ -1,25 +1,20 @@
 ---
-title: 在 Azure 資源管理員中為 Windows VM 設定金鑰保管庫
-description: 如何設定要與 Azure Resource Manager 虛擬機器搭配使用的金鑰保存庫。
-services: virtual-machines-windows
-documentationcenter: ''
+title: 設定金鑰保存庫
+description: 如何設置密鑰保管庫,以便與虛擬機器一起使用。
 author: mimckitt
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 098d4df3938f591cb72b3bfd59b7a5549469785c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451732"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870016"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>為 Azure Resource Manager 中的虛擬機器設定金鑰保存庫
 

@@ -1,18 +1,18 @@
 ---
 title: 從雲合作夥伴門戶到合作夥伴中心的帳戶遷移 - Azure 的商業市場
-description: 如何將您的帳戶從 CPP 遷移到合作夥伴中心。 - Azure 的商業市場
+description: 如何將帳戶從 CPP 移轉到合作夥伴中心 - Azure 的商業市場
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730497"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024416"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>將帳戶從 Cloud Partner 入口網站移轉到合作夥伴中心
 
@@ -42,6 +42,16 @@ ms.locfileid: "81730497"
 2. 註冊 Microsoft 合作夥伴網路計劃
 
     如果您的 CPP 帳戶沒有 Microsoft 合作夥伴網路 ID 或 ID 無效,則需要註冊 Microsoft 合作夥伴網路計畫作為啟動過程的一部分。
+
+## <a name="publishers-moving-from-cpp"></a>從 CPP 轉移的發行者
+
+如果您的帳戶已經從[雲合作夥伴門戶 (CPP)](https://cloudpartner.azure.com)遷移,則無需創建新的合作夥伴中心帳戶。 您應該在登錄到現有 CPP 帳戶後透過電子郵件和橫幅通知中收到指向新合作夥伴中心帳戶的自訂連結。
+
+訪問此自定義鏈接啟用新合作夥伴中心帳戶後,可以通過訪問合作夥伴中心[中的商業市場儀錶板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)返回到您的帳戶。
+
+發佈協定和公司配置檔資訊將遷移到您的新合作夥伴中心帳戶,以及以前設置的任何帳戶支出配置檔資訊、使用者帳戶和許可權以及與您的 CPP 帳戶關聯的活動優惠。
+
+將您的帳戶資訊從 CPP 移動到合作夥伴中心後,您將不再使用 CPP 進行帳戶更新或管理使用者、許可權和計費。 在有限的時間內,您在合作夥伴中心進行的任何帳戶更新將自動在唯讀 CPP 帳戶中更新,直到 CPP 門戶最終被棄用為止。
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>註冊 Microsoft 合作夥伴網路計劃
 

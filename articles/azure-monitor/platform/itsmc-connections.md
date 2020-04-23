@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 9441e7bb970508df4c002897ab726d6e683fa848
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733350"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870582"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 有關 ITSMC 的詳細資訊,請參閱[概述](../../azure-monitor/platform/itsmc-overview.md)。
@@ -197,12 +197,12 @@ ms.locfileid: "81733350"
 > [!NOTE]
 > 作為「設置 OAuth」定義的一部分,我們建議:
 >
-> 1) **將刷新權杖壽命更新為90天(7,776,000 秒):** 作為階段 2[中設置 OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0)的一部分:[為用戶端創建一個終結點以訪問實例](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0)在終結點定義後,在 ServiceNow 中搜尋系統 OAuth->應用程式註冊表選擇已定義的 OAuth 的名稱,並將"刷新權杖壽命"字段更新為 7,776,000。
+> 1) **將刷新權杖壽命更新為90天(7,776,000 秒):** 作為階段 2[中設置 OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0)的一部分:[為用戶端創建一個終結點以訪問實例](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0)在終結點定義後,在 ServiceNow 邊欄選項卡中搜尋系統 OAuth 而不是選擇應用程式註冊表。 選擇已定義的 OAuth 的名稱,並將刷新權杖"壽命"欄位更新為 7,776,000(秒 90 天)。
 > 最後單擊更新。
-> 2) **我們建議建立內部程式以確保連線保持活動狀態:** 根據「刷新權杖壽命」刷新權杖。 請確保在刷新權杖預期過期時間之前執行以下操作(我們建議在"刷新權杖壽命"到期前幾天幾天):
+> 2) **我們建議建立內部程式以確保連線保持活動狀態:** 根據刷新權杖的生命週期來刷新權杖。 請確保在刷新權杖預期過期時間之前執行以下操作(我們建議在刷新權杖壽命到期前幾天):
 >
 >>  1) [完成 ITSM 連接器設定的手動同步過程](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) 出於安全原因,不建議保留到舊刷新令牌,因為出於安全原因,不建議保留舊密鑰。 在 ServiceNow 邊欄選項卡中搜索"系統 OAuth"->"管理權杖",然後根據 OAuth 名稱和到期日期從清單中選擇舊權杖。 按下「撤銷訪問」->"
+ >> 2) 出於安全原因,不建議保留到舊刷新令牌,因為出於安全原因,不建議保留舊密鑰。 在 ServiceNow 邊欄選項卡中搜尋系統 OAuth 比選擇「管理權杖」。 根據 OAuth 名稱和到期日期從清單中選取舊令牌。 按下「撤銷訪問」 和「撤銷」。
 
 - 安裝適用於 Microsoft Log Analytics 整合的使用者應用程式 (ServiceNow 應用程式)。 [深入了解](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - 為安裝的使用者應用程式建立整合使用者角色。 關於如何建立整合使用者角色的資訊在[這裡](#create-integration-user-role-in-servicenow-app)。

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f7ce5f5086bcf2d577fb998df307ee684d536c15
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733059"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870089"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務視訊索引器發佈說明
 
@@ -40,7 +40,7 @@ ms.locfileid: "81733059"
 
 有關詳細資訊,請參閱[小部件類型](video-indexer-embed-widgets.md#widget-types)部分。 
 
-## <a name="new-player-skin"></a>新玩家外觀
+### <a name="new-player-skin"></a>新玩家外觀
 
 一個新的玩家皮膚推出與更新的設計。
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a39e1e19f65722b4b5ae809ca943da719a3c6e22
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314078"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869781"
 ---
 # <a name="create-a-new-saas-offer"></a>建立新的 SaaS 供應項目
 
@@ -206,7 +206,7 @@ SaaS 根據固定費用、每個使用者或使用按流量計費服務的消耗
 - **租戶 ID(** 必需):每個自定義修訂的目標可多達 20 個租戶 ID。 如果添加自定義修訂,則必須至少提供一個租戶 ID。 租戶 ID 標識 Azure 中的客戶。 您可以向客戶詢問此 ID,並且他們可以通過導航到portal.azure.com> Azure 活動目錄>屬性來找到它。 目錄 ID 值是租戶 ID(例如,50c464d3-4930-494c-963c-1e951d15360e)。 您還可以使用我的[Microsoft Azure 和 Office 365 租戶 ID](https://www.whatismytenantid.com)上的功能變數名稱 URL 查找組織的客戶的租戶 ID。
 - **說明**(可選):可選地為租戶 ID 提供友好說明,説明您通過修訂確定目標客戶。
 
-#### <a name="terms-and-conditions"></a>條款和條件
+#### <a name="terms-and-conditions"></a>條款及條件
 
 如果要提供自己的自定義條款和條件,可以選擇在條款和條件欄位中輸入它們。 您可以在此欄位中輸入最多 10,000 個字元的文字。 如果您的條款和條件需要較長的描述,請在此欄位中輸入單個 URL 連結,其中可以找到您的條款和條件。 它將作為活動連結向客戶顯示。
 
@@ -289,6 +289,9 @@ SaaS 根據固定費用、每個使用者或使用按流量計費服務的消耗
 - **視頻**(可選):添加指向顯示您的優惠的視頻的連結。 您可以使用 YouTube 和/或 Vimeo 影片的連結，這會隨著您的供應項目顯示給客戶。 您還需要輸入視頻的縮略圖,以 PNG 格式大小為 1280 x 720 圖元。 每個產品/服務最多可以顯示四個視頻。
 
 在繼續下一節之前,請記住**儲存**。
+
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市場清單資源
 
@@ -399,7 +402,7 @@ SaaS 根據固定費用、每個使用者或使用按流量計費服務的消耗
 
 - **價格**:每月美元或美元/年
 
-以當地貨幣(美元 = 美元)設置的價格使用設置期間可用的當前匯率轉換為所有選定市場的當地貨幣。 通過匯出定價電子錶格並查看每個市場的價格,在發佈之前驗證這些價格。 如果要在單個市場設置自定義價格,請修改並導入定價電子表格。 您負責驗證此定價並擁有這些設置。
+以美元(美元 = 美元)設定的價格在保存時使用當前匯率轉換為所有選定市場的當地貨幣。 通過匯出定價電子錶格並查看每個市場的價格,在發佈之前驗證這些價格。 如果要在單個市場設置自定義價格,請修改並導入定價電子表格。 您負責驗證此定價並擁有這些設置。
 *\*您必須首先保存定價更改,以啟用定價數據的匯出。*
 
 在發佈之前,請仔細查看您的價格,因為在計劃發佈后,可能會更改哪些內容有一些限制:

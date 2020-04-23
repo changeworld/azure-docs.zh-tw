@@ -3,15 +3,16 @@ title: 使用 Azure 入口網站建立和加密 Windows VM
 description: 在本快速入門中，您會了解如何使用 Azure 入口網站來建立和加密 Windows 虛擬機器
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 2518de3ad5d0f583cd4962796e4adda5751351df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3a5fb354ab32dd560a94875dd84d891ce0b9d68c
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74151024"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081739"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和加密 Windows 虛擬機器
 
