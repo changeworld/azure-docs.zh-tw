@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) 文件
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) 服務可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
-  ms.openlocfilehash: c05d10b4b732a466ff4a6a4abe352e78e898c857
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: f1fab99692fbd02cf3a8b659aad0069ac73ce8e6
+  ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80053370"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82101666"
 landingContent:
 - title: 關於 Language Understanding (LUIS)
   linkLists:
@@ -124,7 +124,7 @@ landingContent:
     - text: 開發人員資源
       url: developer-reference-resource.md
     - text: 應用程式限制
-      url: luis-boundaries.md
+      url: luis-limits.md
     - text: 預先建置的實體
       url: luis-reference-prebuilt-entities.md
     - text: 自訂實體
