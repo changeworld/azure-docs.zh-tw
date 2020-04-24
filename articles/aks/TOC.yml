@@ -20,8 +20,8 @@
     - name: 開發應用程式
       expanded: true
       items:
-        - name: 使用草稿
-          href: kubernetes-draft.md
+        - name: 使用 Helm 開發
+          href: quickstart-helm.md
         - name: Azure 開發人員空間
           expanded: true
           items:
@@ -316,7 +316,7 @@
                 - name: 3 - 小組開發
                   href: ../dev-spaces/team-development-nodejs.md
                   maintainContext: true
-        - name: 以 Helm 執行應用程式
+        - name: 使用 Helm 安裝現有的應用程式
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
           href: openfaas.md
@@ -410,7 +410,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 提供產品意見反應
       href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

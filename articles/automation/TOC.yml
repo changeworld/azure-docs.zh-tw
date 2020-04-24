@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: 概念
   items:
+    - name: 自動化帳戶驗證總覽
+      href: automation-security-overview.md
     - name: Runbook 執行概觀
       href: automation-runbook-execution.md
     - name: 混合式 Runbook 背景工作概觀
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: 使用 Resource Manager 範本建立自動化帳戶
           href: automation-create-account-template.md
+        - name: 設定使用 Amazon Web Services 進行驗證
+          href: automation-config-aws-account.md
         - name: 管理自動化執行身分帳戶
           href: manage-runas-account.md
         - name: 管理角色權限與安全性
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: 針對 DSC 的問題進行疑難排解
               href: troubleshoot/desired-state-configuration.md
+            - name: Azure DSC 延伸模組版本歷程記錄
+              href: automation-dsc-extension-history.md
         - name: 變更追蹤與詳細目錄
           items:
             - name: 概觀
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: 管理 Office 365 服務
           href: manage-office-365.md
-        - name: 使用 Amazon Web Services 驗證 Runbook
-          href: automation-config-aws-account.md
         - name: 使用自動化 Runbook 部署 AWS 虛擬機器
           href: automation-scenario-aws-deployment.md
         - name: 使用 Runbook 部署 Resource Manager 範本

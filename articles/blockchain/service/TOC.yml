@@ -7,10 +7,12 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立成員 - 入口網站
+    - name: 使用入口網站建立成員
       href: create-member.md
-    - name: 建立成員 - CLI
+    - name: 使用 CLI 建立成員
       href: create-member-cli.md
+    - name: 使用範本建立成員
+      href: create-member-template.md
     - name: 連線至交易節點
       items:
         - name: 使用 VS Code

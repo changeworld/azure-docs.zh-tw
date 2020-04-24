@@ -232,7 +232,7 @@
           items:
             - name: 建立建議工具
               href: index-add-suggesters.md
-            - name: 新增建議或自動完成
+            - name: 新增自動完成和建議
               href: search-autocomplete-tutorial.md
         - name: 從 Power Apps 查詢
           href: search-howto-powerapps.md
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: 了解集合篩選條件
           href: search-query-understand-collection-filters.md
-        - name: 多層級 Facet 範例
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: 依語言篩選
+          href: search-filters-language.md
     - name: 結果
       items:
         - name: 處理結果
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK 檔案示範
           href: 'https://aka.ms/jfkfiles'
-        - name: NYC 作業示範
-          href: 'https://aka.ms/azjobsdemo'
-        - name: 搜尋使用案例
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: 訓練
       items:
         - name: 簡介 (Microsoft Learn)

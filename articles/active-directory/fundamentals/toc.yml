@@ -31,6 +31,8 @@
           href: concept-fundamentals-block-legacy-authentication.md
         - name: 身分識別安全分數
           href: identity-secure-score.md
+        - name: 持續存取評估
+          href: concept-fundamentals-continuous-access-evaluation.md
     - name: 群組和使用者
       items:
         - name: 群組和存取管理

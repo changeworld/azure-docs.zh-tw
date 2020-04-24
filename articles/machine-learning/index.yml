@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning 文件
-summary: 了解如何使用 Azure Machine Learning 大規模地定型、部署及管理機器學習模型和管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
+summary: 了解如何使用 Azure Machine Learning 大規模地訓練、部署及管理機器學習模型、AutoML 實驗和管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
 metadata:
   title: Azure Machine Learning 文件
-  description: 了解如何使用 Azure Machine Learning 大規模地定型、部署及管理機器學習模型和管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
+  description: 了解如何使用 Azure Machine Learning 大規模地訓練、部署及管理機器學習模型、AutoML 實驗和管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/18/2020
-  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/22/2020
+  ms.openlocfilehash: 174c5b1164505900345e35ff58d2970bf119cc82
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80063963"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084204"
 landingContent:
 - title: 開始使用機器學習
   linkLists:
@@ -27,16 +27,28 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 設計工具 (拖放)
       url: tutorial-designer-automobile-price-train-score.md
+    - text: AutoML (無程式碼/低碼)
+      url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-    - text: 自動 ML
-      url: tutorial-first-experiment-automated-ml.md
+- title: 使用 studio web 體驗
+  linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是 Azure Machine Learning？
-      url: overview-what-is-azure-ml.md
-    - text: 架構和概念
-      url: concept-azure-machine-learning-architecture.md
+    - text: 什麼是設計工具 (拖放)？
+      url: concept-designer.md
+    - text: 什麼是自動化機器學習服務？
+      url: concept-automated-ml.md
+  - linkListType: tutorial
+    links:
+    - text: AutoML：組建分類模型
+      url: tutorial-first-experiment-automated-ml.md
+    - text: AutoML：訓練 & 部署 ML 模型
+      url: how-to-use-automated-ml-for-ml-models.md
+    - text: 設計工具：預測自動價格
+      url: tutorial-designer-automobile-price-train-score.md
+    - text: 建立映像標籤專案
+      url: tutorial-labeling.md
 - title: 使用 Python SDK
   linkLists:
   - linkListType: tutorial
@@ -45,8 +57,10 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 將映像分類
       url: tutorial-train-models-with-aml.md
-    - text: 使用自動 ML 預測計程車車資
+    - text: 使用 AutoML 預測計程車車資
       url: tutorial-auto-train-models.md
+    - text: 建立 Azure ML 管線
+      url: tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: 設定您的環境
@@ -59,20 +73,8 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: 使用 Keras 定型
       url: how-to-train-keras.md
-- title: 建置 ML 管線
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 建立 ML 管線 (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-    - text: 用於預測價格的線性迴歸 (設計工具)
-      url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: overview
-    links:
     - text: 什麼是 ML 管線？
       url: concept-ml-pipelines.md
-    - text: 什麼是設計工具？
-      url: concept-designer.md
 - title: 部署和管理模型
   linkLists:
   - linkListType: how-to-guide
@@ -81,27 +83,25 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: 部署方式和位置
       url: how-to-deploy-and-where.md
-    - text: MLOps 範例
-      url: https://github.com/microsoft/MLOps
     - text: 即時預測
       url: how-to-consume-web-service.md
     - text: 批次預測
       url: how-to-use-parallel-run-step.md
-    - text: 驗證
-      url: how-to-setup-authentication.md
 - title: 移至參考文件
   linkLists:
   - linkListType: reference
     links:
     - text: 適用於 Python 的 SDK
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
-    - text: 適用於 R 的 SDK
-      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: 設計工具演算法與模組
+      url: algorithm-module-reference/module-reference.md
+    - text: MLOps 範例存放庫
+      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: 機器學習 CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: 設計工具演算法與模組
-      url: algorithm-module-reference/module-reference.md
     - text: AI 參考架構 (GitHub)
       url: https://github.com/Microsoft/AI
+    - text: 適用於 R 的 SDK
+      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html

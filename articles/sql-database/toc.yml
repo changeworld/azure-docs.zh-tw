@@ -108,7 +108,7 @@
           items:
             - name: Azure SQL 稽核
               href: sql-database-auditing.md
-            - name: VNet 或防火牆後方的儲存體
+            - name: 稽核 VNet 或防火牆後方的儲存體帳戶
               href: create-auditing-storage-account-vnet-firewall.md
             - name: 稽核記錄檔格式
               href: sql-database-audit-log-format.md

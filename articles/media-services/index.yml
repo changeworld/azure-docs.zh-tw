@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: a1c31725883204f473a46a3d20ca6fd4bbd741e8
-  ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+  ms.openlocfilehash: 2f2049f710dcdbb210594331fa69e6743f5e431e
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: zh-TW
   ms.lasthandoff: 04/22/2020
-  ms.locfileid: "81755349"
+  ms.locfileid: "81869319"
 highlightedContent:
   items:
   - title: 關於 Azure 媒體服務 v3
@@ -39,9 +39,6 @@ highlightedContent:
   - title: 將媒體服務 v2 遷移至 v3
     itemType: concept
     url: ./latest/migrate-from-v2-to-v3.md
-  - title: Azure 媒體服務規格
-    itemType: concept
-    url: media-services-specifications-live-timed-metadata.md
   - title: Azure 媒體播放器
     itemType: overview
     url: azure-media-player/azure-media-player-overview.md
@@ -55,6 +52,9 @@ conceptualContent:
     - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
       itemType: sample
       text: 程式碼範例
+    - url: ./latest/release-notes.md
+      itemType: concept
+      text: 了解媒體服務 v3 的新功能
   - title: 即時串流
     links:
     - url: ./latest/live-streaming-overview.md
@@ -99,6 +99,17 @@ conceptualContent:
     - url: ./latest/analyze-videos-tutorial-with-api.md
       itemType: tutorial
       text: 分析影片
+  - title: 了解媒體服務規格
+    links:
+    - url: media-services-specifications-live-timed-metadata.md
+      itemType: concept
+      text: 即時串流中的計時中繼資料 (RTMP & Smooth Streaming)
+    - url: media-services-specifications-ms-sstr-amendment-hevc.md
+      itemType: concept
+      text: HEVC 的 Smooth Streaming 通訊協定 (MS-SSTR) 增修條款
+    - url: media-services-fmp4-live-ingest-overview.md
+      itemType: concept
+      text: Smooth Streaming 內嵌通訊協定
 additionalContent:
   sections:
   - items:

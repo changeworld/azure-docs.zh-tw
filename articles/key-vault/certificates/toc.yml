@@ -19,6 +19,8 @@
   items:
     - name: 匯入憑證
       href: tutorial-import-certificate.md
+    - name: 設定憑證輪替
+      href: tutorial-rotate-certificates.md
 - name: 概念
   items:
     - name: 開始使用 Key Vault 憑證

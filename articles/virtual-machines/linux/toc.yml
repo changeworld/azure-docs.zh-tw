@@ -45,9 +45,13 @@
       href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b - 將 Jenkins 與 Azure DevOps 進行整合
       href: ../../jenkins/tutorial-build-deploy-jenkins.md
-    - name: 15a - Azure 上適用於 IaaS 和 PaaS 的 DevOps
+    - name: 15a - 設定滾動部署策略
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b - 具有 Azure Pipelines 的 CI/CD (YAML)
+    - name: 15b - 設定 Canary 部署策略
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c - 設定藍綠色部署策略
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d - 具有 Azure Pipelines 的 CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - 建立 LAMP 堆疊
       href: tutorial-lamp-stack.md
@@ -783,7 +787,7 @@
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'

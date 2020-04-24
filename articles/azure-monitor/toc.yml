@@ -1199,6 +1199,8 @@
           href: platform/diagnostic-logs-schema.md
         - name: 活動記錄結構描述
           href: platform/activity-log-schema.md
+    - name: Azure 監視器記錄資料表參考
+      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (預覽)

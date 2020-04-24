@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: 將外部使用者新增至實驗室
+          href: scripts/add-external-user-to-lab.md
+        - name: 將市集映像新增至實驗室
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: 從 VHD 建立自訂映像
+          href: scripts/create-custom-image-from-vhd.md
+        - name: 在實驗室中建立自訂角色
+          href: scripts/create-custom-role-in-lab.md
+        - name: 在實驗室中設定允許的 VM 大小
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell - Az.DevTestLabs2 模組
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: 建立 VM 和確認 VM 可用性
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: 啟動 VM
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: 停止和刪除 VM
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: 概念
   items:
     - name: 研發/測試實驗室概念
@@ -259,11 +277,11 @@
   items:
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'

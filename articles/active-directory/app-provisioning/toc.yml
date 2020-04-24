@@ -79,6 +79,8 @@
   items:
     - name: SCIM 2.0 通訊協定合規性
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM 和圖形案例
+      href: scim-graph-scenarios.md
     - name: 選擇佈建方法
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: 雲端 HR 佈建
@@ -99,11 +101,11 @@
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

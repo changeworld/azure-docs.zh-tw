@@ -10,6 +10,9 @@
       items:
         - name: 開始分析成本
           href: quick-acm-cost-analysis.md
+        - name: 使用範本建立預算
+          href: quick-create-budget-template.md
+          displayName: 'ARM template, resource manager template'
     - name: 教學課程
       items:
         - name: 建立及管理預算

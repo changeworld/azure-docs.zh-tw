@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: 建立集區
       items:
-        - name: 使用 Web 工具建立 Apache Spark 集區
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: 使用 Web 工具建立 Apache Spark 筆記本
+          href: quickstart-apache-spark-notebook.md
         - name: 使用 Azure 入口網站建立 Apache Spark 集區
           href: quickstart-create-apache-spark-pool.md
         - name: 建立 SQL 集區
