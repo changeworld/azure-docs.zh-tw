@@ -1,10 +1,12 @@
 - name: 版本資訊
   href: 'https://github.com/Azure/azure-remote-rendering/releases'
-- name: 工具
-  href: tools/toc.yml
 - name: 疑難排解
   href: troubleshoot.md
+- name: 支援
+  href: support.md
 - name: 提供產品意見反應
   href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'
-- name: 堆疊溢位
+- name: Stack Overflow
   href: 'https://stackoverflow.com/questions/tagged/azure-remote-rendering'
+- name: 工具
+  href: tools/toc.yml

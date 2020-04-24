@@ -1,25 +1,15 @@
 ---
-title: 開始使用 Azure CLI for Batch | Microsoft Docs
+title: 開始使用 Azure CLI 的批次
 description: 取得 Azure CLI 中 Batch 命令的快速簡介，以便管理 Azure Batch 服務資源
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020177"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117364"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
 
@@ -54,7 +44,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 mac
 
 若要搭配使用 Azure CLI 與 Batch，您需要登入和驗證。 請遵循兩個簡單的步驟︰
 
-1. **登錄到 Azure。** 登入 Azure 可讓您存取 Azure Resource Manager 命令，包括 [Batch Management 服務](batch-management-dotnet.md)命令。  
+1. **登入 Azure。** 登入 Azure 可讓您存取 Azure Resource Manager 命令，包括 [Batch Management 服務](batch-management-dotnet.md)命令。  
 2. **登入您的 Batch 帳戶。** 登入您的 Batch 帳戶即可存取 Batch 服務命令。   
 
 ### <a name="log-in-to-azure"></a>登入 Azure
@@ -83,7 +73,7 @@ az login
 
 您有兩個對 Batch 帳戶進行驗證的選項︰
 
-- **通過使用 Azure 活動目錄 （Azure AD） 身份驗證** 
+- **藉由使用 Azure Active Directory （Azure AD）驗證** 
 
     當您搭配使用 Azure CLI 與 Batch 時，使用 Azure AD 進行驗證是預設值，建議使用大部分的情況。 
     
@@ -97,7 +87,7 @@ az login
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **通過使用共用金鑰身份驗證**
+- **使用共用金鑰驗證**
 
     [共用金鑰驗證](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)會使用帳戶存取金鑰來驗證 Batch 服務的 Azure CLI 命令。
 
@@ -151,7 +141,7 @@ az batch task list --job-id job001
 
 下表描述 Batch 服務所支援的 OData 子句︰
 
-| 子句 | 描述 |
+| 子句 | 說明 |
 |---|---|
 | `--select-clause [select-clause]` | 傳回每個實體的屬性子集。 |
 | `--filter-clause [filter-clause]` | 傳回符合指定之 OData 運算式的實體。 |

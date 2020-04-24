@@ -1,19 +1,19 @@
 ---
-title: Azure 應用商店 SaaS 應用程式發佈指南
+title: Azure Marketplace SaaS 應用程式發佈指南
 description: 將 SaaS 應用程式發行至 Azure Marketplace 的逐步指南與發行檢查清單
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687547"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117228"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 應用程式供應項目發行指南
 
@@ -21,19 +21,14 @@ SaaS 應用程式可以在市集中透過三種不同的呼籲行動來發行：
 
 ## <a name="offer-overview"></a>供應項目概觀  
 
-兩個 Azure 店面皆提供 SaaS 應用程式，下表說明目前可用的選項：
-
-| 店面選項 | 列出清單 | 試用版/交易 |  
-| --- | --- | --- |  
-| AppSource | 是 | 是 |
-| Azure Marketplace | 否 | 是 |   
+SaaS 應用程式可在 Microsoft AppSource 和 Azure Marketplace 中取得。  店面支援清單、試用版和交易供應專案。
 
 **列出清單：**「列出清單」發行選項包含「與我連絡」的供應項目類型，當試用版層級或交易層級的參與方式不可行時，適用此方法。 此方法的優點是可讓發行者的解決方案上市，立即開始接收可能產生交易的潛在客戶，進而提升業績。  
 **試用版/交易：** 客戶可以選擇直接購買或要求試用您的解決方案。 提供試用版體驗會提升客戶的參與度，並可讓客戶先探索您的解決方案，再進行購買。 使用試用版體驗，較可能在店面獲得推廣機會，而且從客戶參與而來的潛在客戶也應會更多、更廣泛。 試用版必須至少包括在試用期間提供免費支援。  
 
 | SaaS 應用程式供應項目 | 商業需求 | 技術需求 |  
 | --- | --- | --- |  
-| **聯繫我們** | 是 | 否 |  
+| **聯絡我們** | 是 | 否 |  
 | **PowerBI / Dynamics** | 是 | 是 (Azure AD 整合) |  
 | **SaaS 應用程式**| 是 | 是 (Azure AD 整合) |     
 
@@ -67,11 +62,11 @@ SaaS 應用程式的技術需求很簡單。 發行者只需要與 Azure Active 
 
 您可以在下列網站取得最適合的 Azure Active Directory 文件、範例和指引： 
 
-* [Azure 活動目錄開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+* [Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
 * [與 Azure Active Directory 整合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-* [將應用程式與 Azure 活動目錄整合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+* [整合應用程式與 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 * [Azure 藍圖 - 安全性與身分識別](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -95,7 +90,7 @@ SaaS 應用程式的技術需求很簡單。 發行者只需要與 Azure Active 
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 啟用試用版  
 
-Microsoft 使用 Azure AD 對所有應用商店使用者進行身份驗證,因此,當經過身份驗證的使用者按一下應用商店中的試用版清單並重定向到試用環境時,您可以直接將使用者預配到試用版中,而無需執行額外的登錄步驟。 應用程式在驗證期間從 Azure AD 收到的權杖，包括可用以在應用程式中建立使用者帳戶的寶貴使用者資訊，讓您將佈建體驗自動化並增加轉換的可能性。 如需有關權杖的詳細資訊，請參閱[權杖範例](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+Microsoft 會使用 Azure AD 來驗證所有 Marketplace 使用者，因此當已驗證的使用者按一下 Marketplace 中的試用版清單並重新導向至您的試用版環境時，您可以將使用者直接布建到試用版，而不需要額外的登入步驟。 應用程式在驗證期間從 Azure AD 收到的權杖，包括可用以在應用程式中建立使用者帳戶的寶貴使用者資訊，讓您將佈建體驗自動化並增加轉換的可能性。 如需有關權杖的詳細資訊，請參閱[權杖範例](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
 使用 Azure AD 對應用程式或試用版啟用單鍵驗證，可達到以下效果：  
 * 簡化客戶從 Marketplace 至試用版的體驗。  
@@ -105,9 +100,9 @@ Microsoft 使用 Azure AD 對所有應用商店使用者進行身份驗證,因�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>向 Marketplace 證明您的 Azure Active Directory 整合  
 
-根據應用程式是單租戶還是多租戶,以及您是 Azure AD 聯合單一登錄 (SSO) 的新使用者,還是已經支援它,以幾種不同的方式驗證 Azure AD 集成。  
+以數種不同的方式認證您的 Azure AD 整合，視您的應用程式是單一租使用者或多租使用者，以及您是 Azure AD 同盟單一登入（SSO），還是已支援它而定。  
 
-**對於多租戶應用程式:**  
+**針對多租使用者應用程式：**  
 
 如果您已支援 Azure AD，請執行下列動作：
 1.    在 Azure 入口網站註冊您的應用程式
@@ -127,26 +122,26 @@ Microsoft 使用 Azure AD 對所有應用商店使用者進行身份驗證,因�
 ## <a name="saas-subscriptions"></a>SaaS 訂用帳戶
 
 您可以使用「SaaS 應用程式」供應項目類型，讓客戶以訂用帳戶的形式購買您的 SaaS 型技術解決方案。 您的 SaaS 應用程式必須符合下列需求：
-- 價格和賬單服務在單位(每月或每年),或按每個使用者率。
+- 以一般（每月或每年），或依每個使用者的費率來支付服務的價格和費用。
 - 提供可隨時升級或取消服務的方法。
-Microsoft 主控商務交易。 Microsoft 代表您向客戶收費。 要提供 SaaS 應用作為訂閱,您必須與 SaaS 履行 API 整合。  您的服務必須支援預配、升級和取消。
+Microsoft 主控商務交易。 Microsoft 代表您向客戶收費。 若要以訂用帳戶的形式提供 SaaS 應用程式，您必須與 SaaS 履行 Api 整合。  您的服務必須支援布建、升級和取消。
 
 | 需求 | 詳細資料 |  
 |:--- |:--- |  
-|計費和計量 | 您的優惠根據您在發佈前選擇的定價模型(統一費率或每個使用者)定價。  如果使用統一費率模型,您可以選擇包括用於向客戶收取統一費率中未包括的使用量的其他維度。 |  
+|計費和計量 | 您的供應專案是根據您在發佈之前選取的定價模型（一般費率或每位使用者）來計價。  如果使用 [一般費率] 模型，您可以選擇性地包含額外的維度，用來向客戶收取未包含在非固定費率的使用量。 |  
 |取消 | 客戶可隨時取消您的供應項目。 |  
 |交易登陸頁面 | 您裝載 Azure 共同品牌的交易登陸頁面，使用者能夠在頁面上建立並管理其 SaaS 服務帳戶。 |   
 | 訂用帳戶 API | 您公開一項服務，能與 SaaS 訂用帳戶互動，以建立、更新及刪除使用者帳戶與服務方案。 必須在 24 小時內支援重大的 API 變更。 需定期發行非重大的 API 變更。 |  
 
 >[!Note]
->雲端解決方案供應商 (CSP) 合作夥伴通路選擇加入現已可用。  有關透過 Microsoft CSP 合作夥伴通路行銷產品/服務的更多資訊[,請參閱雲解決方案供應商](./cloud-solution-providers.md)。
+>雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。  如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如果您還沒有這麼做，請
 
-* [了解](https://azuremarketplace.microsoft.com/sell)市場。
+* [瞭解](https://azuremarketplace.microsoft.com/sell)marketplace。
 
-要在合作夥伴中心註冊,請開始創建新產品/服務或處理現有產品/服務:
+若要在合作夥伴中心註冊，請開始建立新的供應專案，或使用現有的供應專案：
 
-* [登錄合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的優惠。
-* 有關詳細資訊[,請參閱建立 SaaS 應用程式產品/服務](./partner-center-portal/create-new-saas-offer.md)。
+* 登[入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以建立或完成您的供應專案。
+* 如需詳細資訊，請參閱[建立 SaaS 應用程式供應](./partner-center-portal/create-new-saas-offer.md)專案。

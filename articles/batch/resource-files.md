@@ -1,48 +1,43 @@
 ---
-title: 創建和使用資源檔 - Azure 批次處理
-description: 瞭解如何從各種輸入源創建批次處理資源檔。 本文介紹了有關如何在 VM 上創建和放置它們的幾個常見方法。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.topic: article
+title: 建立和使用資源檔
+description: 瞭解如何從各種輸入來源建立 Batch 資源檔。 本文涵蓋一些常見的方法，說明如何建立並將它們放置在 VM 上。
 ms.date: 03/18/2020
-ms.author: labrenne
-ms.openlocfilehash: 0fe859ac30e7b8050d1f4688d7cf106a465e7566
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: article
+ms.openlocfilehash: c9a2e581d0cada467e89e3da731fac7f78b22992
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531136"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117177"
 ---
-# <a name="creating-and-using-resource-files"></a>創建和使用資源檔
+# <a name="creating-and-using-resource-files"></a>建立和使用資源檔
 
-Azure 批次處理任務通常需要某種形式的資料來處理。 資源檔是通過任務向 Batch 虛擬機器 （VM） 提供此資料的方法。 所有類型的任務都支援資源檔：任務、啟動任務、作業準備任務、作業發佈任務等。本文介紹了一些有關如何創建資源檔並將其放置在 VM 上的常用方法。  
+Azure Batch 工作通常需要處理某種形式的資料。 資源檔是透過工作將這項資料提供給 Batch 虛擬機器（VM）的方式。 所有類型的工作都支援資源檔：工作、啟動工作、作業準備工作、作業釋放工作等等。本文涵蓋一些常見的方法，說明如何建立資源檔，並將它們放在 VM 上。  
 
-資源檔將資料放入批次處理中的 VM，但資料類型及其使用方式是靈活的。 但是，有一些常見的用例：
+資源檔會以批次方式將資料放入 VM，但資料的類型和使用方式是彈性的。 不過，有一些常見的使用案例：
 
-1. 使用啟動任務上的資源檔在每個 VM 上預配公共檔
-1. 預配要由任務處理的輸入資料
+1. 在啟動工作上使用資源檔在每個 VM 上布建通用檔案
+1. 布建要由工作處理的輸入資料
 
-例如，常見檔可以是用於安裝任務運行的應用程式的啟動任務上的檔。 輸入資料可以是原始圖像或視頻資料，也可以是批次處理要處理的任何資訊。
+例如，一般檔案可能是啟動工作上的檔案，用來安裝您的工作執行的應用程式。 輸入資料可能是未經處理的影像或影片資料，或任何要由批次處理的資訊。
 
-## <a name="types-of-resource-files"></a>資源檔的類型
+## <a name="types-of-resource-files"></a>資源檔案類型
 
-有幾個不同的選項可用於生成資源檔。 資源檔的創建過程因原始資料的存儲位置而異。
+有幾個不同的選項可用來產生資源檔。 資源檔的建立程式會根據原始資料的儲存位置而有所不同。
 
-用於創建資源檔的選項：
+建立資源檔的選項：
 
-- [存儲容器 URL](#storage-container-url)：從 Azure 中的任何存儲容器生成資源檔
-- [存儲容器名稱](#storage-container-name)：從連結到 Batch 的 Azure 存儲帳戶中的容器名稱生成資源檔
-- [Web 終結點](#web-endpoint)：從任何有效的 HTTP URL 生成資源檔
+- [儲存體容器 URL](#storage-container-url)：從 Azure 中的任何儲存體容器產生資源檔
+- [儲存體容器名稱](#storage-container-name)：從連結到 Batch 的 Azure 儲存體帳戶中的容器名稱產生資源檔
+- [Web 端點](#web-endpoint)：從任何有效的 HTTP URL 產生資源檔
 
-### <a name="storage-container-url"></a>存儲容器 URL
+### <a name="storage-container-url"></a>儲存體容器 URL
 
-使用存儲容器 URL 意味著，具有正確的許可權，可以訪問 Azure 中的任何存儲容器中的檔。 
+使用儲存體容器 URL 表示，透過正確的許可權，您可以存取 Azure 中任何儲存體容器中的檔案。 
 
-在此 C# 示例中，檔已上載到 Azure 存儲容器作為 blob 存儲。 要訪問創建資源檔所需的資料，我們首先需要訪問存儲容器。
+在此 c # 範例中，檔案已上傳至 Azure 儲存體容器做為 blob 儲存體。 若要存取建立資源檔所需的資料，我們必須先取得儲存體容器的存取權。
 
-創建具有訪問存儲容器的正確許可權的共用訪問簽名 （SAS） URI。 設置 SAS 的過期時間和許可權。 在這種情況下，不指定啟動時間，因此 SAS 將立即生效，並在生成後兩小時過期。
+建立具有正確許可權的共用存取簽章（SAS） URI 來存取儲存體容器。 設定 SAS 的到期時間和許可權。 在此情況下，系統不會指定開始時間，因此 SAS 會立即生效，並在產生後的兩小時後到期。
 
 ```csharp
 SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
@@ -53,9 +48,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> 對於容器訪問，您必須同時`Read`具有和`List`許可權，而使用 Blob 訪問時，只需要`Read`許可權。
+> 針對容器存取，您必須同時`Read`擁有和`List`許可權，而使用 blob 存取時，您只`Read`需要許可權。
 
-配置許可權後，創建 SAS 權杖並格式化 SAS URL 以訪問存儲容器。 使用存儲容器的格式化 SAS URL，使用 生成資源[`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)檔。
+設定許可權之後，請建立 SAS 權杖並格式化 SAS URL，以存取儲存體容器。 針對儲存體容器使用格式化的 SAS URL，以[`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)產生資源檔。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -66,25 +61,25 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-生成 SAS URL 的替代方法是在 Azure Blob 存儲中啟用對容器及其 Blob 的匿名公共讀取存取。 這樣，您可以授予對這些資源的唯讀存取權限，而無需共用帳戶金鑰，並且不需要 SAS。 公共讀取存取通常用於您希望某些 Blob 始終可用於匿名讀取存取的情況。 如果此方案適合您的解決方案，請參閱["匿名存取 Blob"](../storage/blobs/storage-manage-access-to-resources.md)一文，瞭解有關管理對 Blob 資料的訪問的更多資訊。
+產生 SAS URL 的替代方法是在 Azure Blob 儲存體中啟用對容器及其 blob 的匿名、公用讀取權限。 如此一來，您就可以授與這些資源的唯讀存取權，而不需共用您的帳戶金鑰，也不需要 SAS。 公用讀取權限通常用於您想要某些 blob 永遠可供匿名讀取存取的情況。 如果此案例適合您的解決方案，請參閱[匿名存取 blob](../storage/blobs/storage-manage-access-to-resources.md)一文，以深入瞭解如何管理 blob 資料的存取權。
 
-### <a name="storage-container-name"></a>存儲容器名稱
+### <a name="storage-container-name"></a>儲存體容器名稱
 
-您可以使用 Azure 存儲容器的名稱來訪問 Blob 資料，而不是配置和創建 SAS URL。 您使用的存儲容器必須位於連結到 Batch 帳戶的 Azure 存儲帳戶中。 該存儲帳戶稱為自動存儲帳戶。 使用自動存儲容器可以繞過配置和創建 SAS URL 來訪問存儲容器。
+您可以使用 Azure 儲存體容器的名稱來存取 blob 資料，而不需要設定和建立 SAS URL。 您所使用的儲存體容器必須位於連結至 Batch 帳戶的 Azure 儲存體帳戶中。 該儲存體帳戶稱為 autostorage-keys 帳戶。 使用 autostorage-keys 容器可讓您略過設定和建立 SAS URL，以存取儲存體容器。
 
-在此示例中，我們假定用於創建資源檔的資料已位於連結到 Batch 帳戶的 Azure 存儲帳戶中。 如果您沒有自動存儲帳戶，請參閱[創建 Batch 帳戶](batch-account-create-portal.md)中的步驟，瞭解如何創建和連結帳戶。
+在此範例中，我們假設要用於建立資源檔的資料已在連結至您 Batch 帳戶的 Azure 儲存體帳戶中。 如果您沒有 autostorage-keys 帳戶，請參閱[建立 Batch 帳戶](batch-account-create-portal.md)中的步驟，以取得如何建立和連結帳戶的詳細資料。
 
-通過使用連結的存儲帳戶，您無需創建 SAS URL 並將其配置為存儲容器。 而是提供連結存儲帳戶中的存儲容器的名稱。
+藉由使用連結的儲存體帳戶，您不需要建立和設定儲存體容器的 SAS URL。 相反地，請在您連結的儲存體帳戶中提供儲存體容器的名稱。
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 ```
 
-### <a name="web-endpoint"></a>Web 終結點
+### <a name="web-endpoint"></a>Web 端點
 
-未上載到 Azure 存儲的資料仍可用於創建資源檔。 您可以指定任何包含輸入資料的有效 HTTP URL。 URL 提供給批次處理 API，然後資料用於創建資源檔。
+尚未上傳至 Azure 儲存體的資料仍然可以用來建立資源檔。 您可以指定包含輸入資料的任何有效 HTTP URL。 URL 會提供給 Batch API，然後使用該資料來建立資源檔。
 
-在下面的 C# 示例中，輸入資料託管在虛構的 GitHub 終結點上。 API 從有效的 Web 終結點檢索該檔，並生成任務需要使用的資源檔。 此方案不需要憑據。
+在下列 c # 範例中，輸入資料裝載于虛構的 GitHub 端點。 API 會從有效的 web 端點抓取檔案，並產生您的工作所要使用的資源檔。 此案例不需要任何認證。
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt", filePath);
@@ -92,23 +87,23 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 ## <a name="tips-and-suggestions"></a>祕訣與建議
 
-每個 Azure 批次處理任務使用不同的檔，這就是為什麼 Batch 具有可用於管理工作檔的選項。 以下方案並非全面，而是涵蓋一些常見情況並提供建議。
+每個 Azure Batch 工作都會以不同的方式使用檔案，這也是為什麼 Batch 有選項可用來管理工作上的檔案。 下列案例並不是完整的，而是涵蓋一些常見的情況並提供建議。
 
 ### <a name="many-resource-files"></a>許多資源檔
 
-Batch 作業可能包含多個任務，這些任務都使用相同的常見檔。 如果公用任務檔在許多工之間共用，則使用應用程式包來包含檔而不是使用資源檔可能是一個更好的選擇。 應用程式包為下載速度提供優化。 此外，應用程式包中的資料在任務之間緩存，因此，如果任務檔不經常更改，應用程式包可能非常適合您的解決方案。 使用應用程式包時，無需手動管理多個資源檔或生成 SAS URL 來訪問 Azure 存儲中的檔。 批次處理在後臺使用 Azure 存儲來存儲應用程式包並將其部署到計算節點。
+您的批次作業可能包含數個全都使用相同通用檔案的工作。 如果在許多工作中共用一般工作檔案，使用應用程式封裝來包含檔案，而不是使用資源檔，則可能是較好的選項。 應用程式封裝提供下載速度的優化。 此外，在工作之間快取應用程式封裝中的資料，因此，如果您的工作檔案不常變更，則應用程式套件可能適合您的方案。 使用應用程式套件時，您不需要手動管理數個資源檔，或產生 SAS Url 來存取 Azure 儲存體中的檔案。 Batch 會在背景中運作，並 Azure 儲存體來儲存應用程式套件，並將其部署至計算節點。
 
-如果每個任務都有許多特定于該任務的檔，則資源檔是最佳選項，因為使用唯一檔的任務通常需要更新或替換，這與應用程式包內容不太容易。 資源檔為更新、添加或編輯單個檔提供了額外的靈活性。
+如果每個工作都有許多該工作特有的檔案，資源檔是最佳選項，因為使用唯一檔案的工作通常需要更新或取代，這與應用程式封裝內容並不容易。 資源檔可為更新、新增或編輯個別檔案提供額外的彈性。
 
-### <a name="number-of-resource-files-per-task"></a>每個任務的資源檔數
+### <a name="number-of-resource-files-per-task"></a>每項工作的資源檔數目
 
-如果任務上指定了幾百個資源檔，Batch 可能會拒絕該任務過大。 最好通過最小化任務本身上的資源檔數量來保持任務小。
+如果在工作上指定了數百個資源檔，Batch 可能會拒絕工作太大。 最好是將工作本身的資源檔數目減至最少，讓您的工作變小。
 
-如果無法最大限度地減少任務所需的檔數量，則可以通過創建引用資源檔的存儲容器的單個資源檔來優化任務。 為此，請將資源檔放入 Azure 存儲容器，並為資源檔使用不同的"容器"[方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 blob 首碼選項指定要為任務下載的檔集合。
+如果沒有任何方法可將您的工作所需的檔案數目降至最低，您可以建立單一資源檔來參考資源檔的儲存體容器，以將工作優化。 若要這麼做，請將您的資源檔放入 Azure 儲存體容器中，並對資源檔使用不同的 "container"[方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 blob 前置詞選項來指定要為您的工作下載的檔案集合。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[應用程式包](batch-application-packages.md)作為資源檔的替代方法。
-- 有關將容器用於資源檔的詳細資訊，請參閱[容器工作負載](batch-docker-container-workloads.md)。
-- 要瞭解如何從任務中收集和保存輸出資料，請參閱["持久作業和任務輸出](batch-task-output.md)"。
+- 瞭解[應用程式套件](batch-application-packages.md)做為資源檔的替代方案。
+- 如需使用資源檔容器的詳細資訊，請參閱[容器工作負載](batch-docker-container-workloads.md)。
+- 若要瞭解如何從您的工作收集並儲存輸出資料，請參閱[保存作業和工作輸出](batch-task-output.md)。
 - 了解可用來建置 Batch 解決方案的 [Batch API 和工具](batch-apis-tools.md)。

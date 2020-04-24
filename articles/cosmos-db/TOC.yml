@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: 衝突類型和解決原則
-          displayName: 'last write wins, custom'
+          displayName: 'last write wins, custom, multi master, multi-master'
           href: conflict-resolution-policies.md
         - name: 全域散發 - 運作原理
           href: global-dist-under-the-hood.md
@@ -1180,8 +1180,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
-    - name: 多重主機優點
-      href: multi-master-benefits.md
+    - name: 效能層級
+      href: performance-levels.md
     - name: 使用案例
       items:
         - name: 一般使用案例
