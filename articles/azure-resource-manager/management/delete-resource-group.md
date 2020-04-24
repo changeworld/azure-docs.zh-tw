@@ -1,21 +1,21 @@
 ---
-title: 刪除資源組和資源
-description: 描述如何刪除資源組和資源。 它描述了 Azure 資源管理器在刪除資源組時如何命令刪除資源。 其會描述回應碼和資源管理員的處理方式，以判斷刪除作業是否成功。
+title: 刪除資源群組和資源
+description: 說明如何刪除資源群組和資源。 其中說明如何 Azure Resource Manager 在刪除資源群組時，對資源的刪除進行排序。 其會描述回應碼和資源管理員的處理方式，以判斷刪除作業是否成功。
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274017"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136476"
 ---
-# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 資源管理器資源組和資源刪除
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager 資源群組和資源刪除
 
-本文演示如何刪除資源組和資源。 它描述了 Azure 資源管理器在刪除資源組時如何命令刪除資源。
+本文說明如何刪除資源群組和資源。 其中說明當您刪除資源群組時，Azure Resource Manager 如何排序資源刪除。
 
-## <a name="how-order-of-deletion-is-determined"></a>如何確定刪除順序
+## <a name="how-order-of-deletion-is-determined"></a>如何判斷刪除的順序
 
 當您刪除資源群組時，Resource Manager 會決定刪除資源的順序。 它使用下列順序：
 
@@ -54,11 +54,14 @@ Resource Manager 會在嘗試刪除的每個資源上發出 GET 呼叫。 此 GE
 
 若是其他錯誤碼，則 Resource Manager 無法刪除資源。
 
+> [!IMPORTANT]
+> 資源群組刪除無法復原。
+
 ## <a name="delete-resource-group"></a>刪除資源群組
 
-使用以下方法之一刪除資源組。
+使用下列其中一種方法來刪除資源群組。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
@@ -72,21 +75,21 @@ az group delete --name ExampleResourceGroup
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在[門戶](https://portal.azure.com)中，選擇要刪除的資源組。
+1. 在[入口網站](https://portal.azure.com)中，選取您想要刪除的資源群組。
 
-1. 選取 [刪除資源群組]****。
+1. 選取 [刪除資源群組]  。
 
    ![刪除資源群組](./media/delete-resource-group/delete-group.png)
 
-1. 要確認刪除，請鍵入資源組的名稱
+1. 若要確認刪除，請輸入資源群組的名稱
 
 ---
 
 ## <a name="delete-resource"></a>刪除資源
 
-使用以下方法之一刪除資源。
+使用下列其中一種方法來刪除資源。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -106,9 +109,9 @@ az resource delete \
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在[門戶](https://portal.azure.com)中，選擇要刪除的資源。
+1. 在[入口網站](https://portal.azure.com)中，選取您想要刪除的資源。
 
-1. 選擇 **"刪除**"。 以下螢幕截圖顯示了虛擬機器的管理選項。
+1. 選取 [刪除]  。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
 
    ![刪除資源](./media/delete-resource-group/delete-resource.png)
 

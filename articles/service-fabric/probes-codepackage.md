@@ -1,64 +1,66 @@
 ---
-title: Azure 服務結構探測器
-description: 如何使用應用程式和服務清單檔在 Azure 服務結構中建模即時探測。
+title: Azure Service Fabric 探查
+description: 如何使用應用程式和服務資訊清單檔案，在 Azure Service Fabric 中建立活動探查的模型。
 ms.topic: conceptual
+author: tugup
+ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 38f3888a29bf505b723d40bc7cd08fb0c7e29eff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431211"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137581"
 ---
-# <a name="liveness-probe"></a>活度探頭
-從 7.1 服務結構開始支援[容器化][containers-introduction-link]應用的活度探測機制。 Liveness 探測有助於宣佈容器化應用程式的真實性,當它們不及時回應時,將導致重新啟動。
-本文概述了如何通過清單檔定義動態探測。
+# <a name="liveness-probe"></a>活動探查
+從7.1 版開始，Azure Service Fabric 支援[容器][containers-introduction-link]化應用程式的活動探查機制。 活動探查有助於報告容器化應用程式的活動，如果它沒有快速回應，則會重新開機。
+本文概述如何使用資訊清單檔案定義活動探查。
 
-在繼續本文之前,我們建議熟悉[服務結構應用程式模型][application-model-link][和服務結構託管模型][hosting-model-link]。
+在您繼續進行本文之前，請先熟悉[Service Fabric 應用程式模型][application-model-link]和[Service Fabric 裝載模型][hosting-model-link]。
 
 > [!NOTE]
-> 僅在 NAT 網路模式下的容器中支援活動探測。
+> 只有 NAT 網路模式中的容器支援活動探查。
 
 ## <a name="semantics"></a>語意
-每個容器只能指定一個活動探測,並且可以使用以下欄位控制其行為:
+您只能為每個容器指定一個活動探查，並可使用下欄欄位來控制其行為：
 
-* `initialDelaySeconds`:容器啟動后,在數秒內開始執行探測的初始延遲。 支援的值為 int。預設值為 0。 最小值為 0。
+* `initialDelaySeconds`：在容器啟動之後開始執行探查的初始延遲（以秒為單位）。 支援的值為**int**。預設值為0，而最小值為0。
 
-* `timeoutSeconds`:在探測器未成功完成之後,我們將探測器視為失敗。 支援的值為 int。預設值為 1。 最小值為 1。
+* `timeoutSeconds`：我們將探查視為失敗的期間（以秒為單位），如果未順利完成。 支援的值為**int**。預設值為1，而最小值為1。
 
-* `periodSeconds`:以秒為單位,指定我們探測的頻率。 支援的值為 int。預設值為 10。 最小值為 1。
+* `periodSeconds`：指定探查頻率的期間（以秒為單位）。 支援的值為**int**。預設值為10，而最小值為1。
 
-* `failureThreshold`:一旦我們達到故障閾值,容器將重新啟動。 支援的值為 int。預設值為 3。 最小值為 1。
+* `failureThreshold`：當我們達到此值時，容器將會重新開機。 支援的值為**int**。預設值為3，而最小值為1。
 
-* `successThreshold`:在失敗時,要將探測器視為成功,必須成功執行成功閾值。 支援的值為 int。預設值為 1。 最小值為 1。
+* `successThreshold`：失敗時，若要將探查視為成功，必須成功執行此值。 支援的值為**int**。預設值為1，而最小值為1。
 
-一次最多會有 1 個探頭到容器。 如果探頭沒有在逾時中完成**秒,** 我們會一直等待並將其計入**故障閾值**。 
+在任何時候，最多可以有一個容器進行一個探查。 如果探查未在**timeoutSeconds**中設定的時間內完成，請等候並計算**failureThreshold**的時間。 
 
-此外,ServiceFabric 將在部署的服務包上引發以下探測[運行狀況報告][health-introduction-link]:
+此外，Service Fabric 將會在**DeployedServicePackage**上引發下列探查[健全狀況報告][health-introduction-link]：
 
-* `Ok`:如果探測器**成功,那麼**我們將運行狀況報告為"確定"。
+* `OK`：已在**successThreshold**中設定的值的探查成功。
 
-* `Error`:如果探測失敗Count =**失敗閾值**,則在重新啟動容器之前,我們會報告錯誤。
+* `Error`：在容器重新開機之前，探查**failureCount** ==  **failureThreshold**。
 
 * `Warning`: 
-    1. 如果探測失敗,並且故障計數<**故障閾值**,我們會報告警告。 此健康報告一直持續到失敗計數達到**失敗閾值**或**成功閾值**。
-    2. 關於成功失敗后,我們仍然報告警告,但更新的連續成功。
+    * 探查失敗並**failureCount** < **failureThreshold**。 此健康情況報告會持續，直到**failureCount**達到**failureThreshold**或**successThreshold**中設定的值為止。
+    * 在失敗後成功時，會保留警告，但更新會連續成功。
 
-## <a name="specifying-liveness-probe"></a>指定活動性探測
+## <a name="specifying-a-liveness-probe"></a>指定活動探查
 
-您可以在「服務清單匯入」下的應用程式清單.xml 中指定探測:
+您可以在**ServiceManifestImport**下的 ApplicationManifest 中指定探查。
 
-探頭可以之一:
+探查可以是下列任何一項：
 
-1. HTTP
-2. TCP
-3. Exec 
+* HTTP
+* TCP
+* Exec 
 
-## <a name="http-probe"></a>HTTP 探頭
+### <a name="http-probe"></a>HTTP 探查
 
-對於 HTTP 探測,服務交換矩陣將向指定的埠和路徑發送 HTTP 請求。 返回代碼大於或等於 200 且小於 400 表示成功。
+針對 HTTP 探查，Service Fabric 會將 HTTP 要求傳送至您指定的埠和路徑。 大於或等於200且小於400的傳回碼表示成功。
 
-下面是如何指定 HTTPGet 探測器的範例:
+以下是如何指定 HTTP 探查的範例：
 
 ```xml
   <ServiceManifestImport>
@@ -79,21 +81,21 @@ ms.locfileid: "81431211"
   </ServiceManifestImport>
 ```
 
-HTTPGet 偵測器具有您可以設定的其他屬性:
+HTTP 探查有您可以設定的其他屬性：
 
-* `path`:HTTP 請求上訪問的路徑。
+* `path`：要在 HTTP 要求中使用的路徑。
 
-* `port`:要進入探頭的埠。 範圍為 1 到 65535。 Mandatory。
+* `port`：用於探查的埠。 這個屬性是必要的。 範圍是1到65535。
 
-* `scheme`:用於連接到代碼包的方案。 如果設置為 HTTPS,將跳過憑證驗證。 預設值為 HTTP
+* `scheme`：用來連接到程式碼套件的配置。 如果此屬性設定為 HTTPS，則會略過憑證驗證。 預設設定為 HTTP。
 
-* `httpHeader`:要在請求中設置的標頭。 您可以指定其中的多個。
+* `httpHeader`：要在要求中設定的標頭。 您可以指定多個標頭。
 
-* `host`:要連接到的主機 IP。
+* `host`：要連接的主機 IP 位址。
 
-## <a name="tcp-probe"></a>TCP 探頭
+### <a name="tcp-probe"></a>TCP 探查
 
-對於 TCP 探測,Service Fabric 將嘗試打開容器上的套接字,該套接字帶有指定的埠。 如果可以建立連接,則探測器將被視為成功。 下面是如何指定使用 TCP 通訊通訊的探測的範例:
+針對 TCP 探查，Service Fabric 會嘗試使用指定的埠開啟容器上的通訊端。 如果可以建立連線，探查會被視為成功。 以下是如何指定使用 TCP 通訊端之探查的範例：
 
 ```xml
   <ServiceManifestImport>
@@ -111,13 +113,13 @@ HTTPGet 偵測器具有您可以設定的其他屬性:
   </ServiceManifestImport>
 ```
 
-## <a name="exec-probe"></a>執行探測
+### <a name="exec-probe"></a>Exec 探查
 
-此探測將發出執行器到容器中,並等待命令完成。
+此探查會在容器中發出**exec**命令，並等候命令完成。
 
 > [!NOTE]
-> Exec 命令採用逗號分隔字串。 範例中的以下指令適用於 Linux 容器。
-> 如果您正在嘗試視窗容器,請使用<Command>cmd</Command>
+> **Exec**命令接受以逗號分隔的字串。 下列範例中的命令將適用于 Linux 容器。
+> 如果您正嘗試探查 Windows 容器，請使用**cmd**。
 
 ```xml
   <ServiceManifestImport>
@@ -138,8 +140,8 @@ HTTPGet 偵測器具有您可以設定的其他屬性:
 ```
 
 ## <a name="next-steps"></a>後續步驟
-有關相關信息,請參閱以下文章。
-* [服務結構和容器。][containers-introduction-link]
+如需相關資訊，請參閱下列文章：
+* [Service Fabric 和容器][containers-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md
