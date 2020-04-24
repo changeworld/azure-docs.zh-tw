@@ -1,25 +1,15 @@
 ---
-title: 在運算節點上安裝應用程式封裝 - Azure Batch | Microsoft Docs
+title: 在計算節點上安裝應用程式套件
 description: 使用 Azure Batch 的應用程式封裝功能輕鬆地管理多個應用程式和版本，以便安裝在 Batch 計算節點。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/26/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086216"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115613"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 應用程式套件將應用程式部署至計算節點
 
@@ -82,7 +72,7 @@ Batch 中的應用程式包含一或多個應用程式封裝，並且會指定�
 
 
 
-![Azure 門戶中的"未配置存儲帳戶"警告][9]
+![Azure 入口網站中的 [未設定儲存體帳戶] 警告][9]
 
 Batch 服務會使用相關聯的儲存體帳戶來儲存應用程式套件。 在連結兩個帳戶之後，Batch 便能將儲存在連結之儲存體帳戶中的封裝自動部署到計算節點。 若要將儲存體帳戶連結至 Batch 帳戶，請按一下 [警告]**** 視窗上的 [儲存體帳戶]****，然後再次按一下 [儲存體帳戶]****。
 
@@ -92,9 +82,9 @@ Batch 服務會使用相關聯的儲存體帳戶來儲存應用程式套件。 �
 
 > [!IMPORTANT] 
 > - 您目前無法使用應用程式套件搭配使用已設定[防火牆規則](../storage/common/storage-network-security.md)的 Azure 儲存體帳戶。
-> - **將階層命名空間**設置為 **"已啟用"** 的 Azure 存儲帳戶不能用於應用程式包。
+> - 已將**階層命名空間**設定為 [**已啟用**] 的 Azure 儲存體帳戶，無法用於應用程式封裝。
 
-Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 對於塊 Blob 資料，您[按正常情況收費][storage_pricing]，並且每個包的大小不能超過最大塊 Blob 大小。 有關詳細資訊，請參閱[存儲帳戶的 Azure 存儲可伸縮性和性能目標](../storage/blobs/scalability-targets.md)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
+Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 針對區塊 blob 資料，您需[支付一般費用][storage_pricing]，而每個套件的大小不能超過區塊 blob 大小上限。 如需詳細資訊，請參閱[儲存體帳戶的 Azure 儲存體擴充性和效能目標](../storage/blobs/scalability-targets.md)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
 
 ### <a name="view-current-applications"></a>檢視目前的應用程式
 若要檢視 Batch 帳戶中的應用程式，請在檢視 [Batch 帳戶]**** 視窗時按一下左側功能表中的 [應用程式]**** 功能表項目。
@@ -109,15 +99,15 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 * **套件**：與此應用程式相關聯的版本號碼。
 * **預設版本**：如果您在指定集區的應用程式時未指定版本，系統會安裝的應用程式版本。 這個設定是選擇性的。
-* **允許更新**：此值會指定是否允許更新、刪除和新增套件。 如果此值設為 [否]****，應用程式會停用套件的更新和刪除， 而只能新增新的應用程式封裝版本。 預設值為 **"是**"。
+* **允許更新**：此值會指定是否允許更新、刪除和新增套件。 如果此值設為 [否]****，應用程式會停用套件的更新和刪除， 而只能新增新的應用程式封裝版本。 預設值為 **[是]**。
 
-如果要查看計算節點上應用程式包的檔結構，請導航到門戶中的 Batch 帳戶。 從批次處理帳戶導航到**池**。 選擇包含您感興趣的計算節點的池。
+如果您想要在計算節點上查看應用程式套件的檔案結構，請在入口網站中流覽至您的 Batch 帳戶。 從您的 Batch 帳戶，流覽至 [集區 **]。** 選取包含您感興趣之計算節點的集區。
 
-![池中的節點][13]
+![集區中的節點][13]
 
-選擇池後，導航到安裝應用程式包的計算節點。 從那裡，應用程式包的詳細資訊位於**應用程式**資料夾中。 計算節點上的其他資料夾包含其他檔，如啟動任務、輸出檔案、錯誤輸出等。
+選取集區之後，流覽至應用程式封裝安裝所在的計算節點。 應用程式封裝的詳細資料位於 [**應用程式**] 資料夾中。 計算節點上的其他資料夾包含其他檔案，例如啟動工作、輸出檔案、錯誤輸出等。
 
-![節點上的檔][14]
+![節點上的檔案][14]
 
 ### <a name="view-application-details"></a>檢視應用程式詳細資料
 若要查看應用程式的詳細資料，請在 [應用程式]**** 視窗中選取應用程式。
@@ -133,13 +123,13 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 ### <a name="add-a-new-application"></a>加入新的應用程式
 若要建立新應用程式，請新增應用程式封裝並指定新的唯一應用程式識別碼。 使用新應用程式識別碼新增的第一個應用程式套件也會建立新的應用程式。
 
-按一下 **"應用程式** > **添加**"。
+按一下 [應用程式]   > [新增]  。
 
 ![Azure 入口網站中的新增應用程式刀鋒視窗][5]
 
 [新增應用程式] **** 視窗提供以下欄位，供您指定新應用程式和應用程式套件的設定。
 
-**應用程式 ID**
+**應用程式識別碼**
 
 此欄位能指定新應用程式的識別碼，其須符合標準 Azure Batch 識別碼驗證規則的規範。 提供應用程式識別碼的規則如下所示：
 
@@ -173,7 +163,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 ![Azure 入口網站中的加入應用程式封裝刀鋒視窗][8]
 
-如您所見，欄位與 **"新建應用程式"** 視窗的欄位匹配，但禁用**了應用程式 ID**框。 依照和新增應用程式相同的方式，指定新套件的 [版本]****，瀏覽至您的**應用程式套件** .zip 檔案，然後按一下 [確定]**** 以上傳套件。
+如您所見，欄位與 [**新增應用程式**] 視窗中的欄位相符，但 [**應用程式識別碼**] 方塊已停用。 依照和新增應用程式相同的方式，指定新套件的 [版本]****，瀏覽至您的**應用程式套件** .zip 檔案，然後按一下 [確定]**** 以上傳套件。
 
 ### <a name="update-or-delete-an-application-package"></a>更新或刪除應用程式封裝
 若要更新或刪除現有的應用程式套件，請開啟應用程式的詳細資料，按一下 [套件]****，針對要修改的應用程式套件資料列，按一下**省略符號**，然後選取要執行的動作。
@@ -369,12 +359,12 @@ foreach (ApplicationSummary app in applications)
 [2]: ./media/batch-application-packages/app_pkg_02.png "Azure 入口網站中的應用程式圖格"
 [3]: ./media/batch-application-packages/app_pkg_03.png "Azure 入口網站中的應用程式刀鋒視窗"
 [4]: ./media/batch-application-packages/app_pkg_04.png "Azure 入口網站中的應用程式詳細資料刀鋒視窗"
-[5]: ./media/batch-application-packages/app_pkg_05.png "Azure 門戶中的新應用程式邊欄選項卡"
+[5]: ./media/batch-application-packages/app_pkg_05.png "Azure 入口網站中的新應用程式分頁"
 [7]: ./media/batch-application-packages/app_pkg_07.png "Azure 入口網站中的更新或刪除套件下拉式清單"
 [8]: ./media/batch-application-packages/app_pkg_08.png "Azure 入口網站中的新增應用程式套件刀鋒視窗"
 [9]: ./media/batch-application-packages/app_pkg_09.png "沒有連結的儲存體帳戶警示"
-[10]: ./media/batch-application-packages/app_pkg_10.png "在 Azure 門戶中選擇存儲帳戶邊欄選項卡"
-[11]: ./media/batch-application-packages/app_pkg_11.png "在 Azure 門戶中更新包邊欄選項卡"
+[10]: ./media/batch-application-packages/app_pkg_10.png "選擇 Azure 入口網站中的 [儲存體帳戶] 分頁"
+[11]: ./media/batch-application-packages/app_pkg_11.png "更新 Azure 入口網站中的封裝分頁"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 入口網站中的刪除套件確認對話方塊"
-[13]: ./media/batch-application-packages/package-file-structure.png "在 Azure 門戶中計算節點資訊"
-[14]: ./media/batch-application-packages/package-file-structure-node.png "Azure 門戶中顯示的計算節點上的檔"
+[13]: ./media/batch-application-packages/package-file-structure.png "計算 Azure 入口網站中的節點資訊"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "計算節點上的檔案會顯示在 Azure 入口網站"

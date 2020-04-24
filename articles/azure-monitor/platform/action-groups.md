@@ -3,66 +3,66 @@ title: 在 Azure 入口網站中建立和管理動作群組
 description: 了解如何在 Azure 入口網站中建立和管理動作群組。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 2/18/2020
+ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 339b11664308962962c59b2e9386ff122681293a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520898"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116208"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
 
-您設定了一個操作來透過電子郵件或簡訊通知某人,他們收到一個確認,指示他們已添加到操作組。
+您可以設定一個動作，透過電子郵件或 SMS 來通知某人，他們會收到確認已新增至動作群組的確認訊息。
 
 本文將說明如何在 Azure 入口網站中建立和管理動作群組。
 
 每個動作是由下列屬性所組成：
 
-* **名稱**:操作組中的唯一標識符。  
-* **操作類型**:執行的操作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
-* **詳細資訊**: 因*操作類型*而異的相應詳細資訊。
+* **名稱**：動作群組內的唯一識別碼。  
+* **動作類型**：執行的動作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
+* **詳細資料**：因*動作類型*而異的對應詳細資料。
 
 如需如何使用 Azure Resource Manager 範本設定動作群組的資訊，請參閱[動作群組 Resource Manager 範本](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 入口網站建立動作群組
 
-1. 在[Azure 門戶](https://portal.azure.com)中,搜尋 並選擇**監視器**。 「**監視器」** 窗格將所有監視設定和資料合併到一個檢視中。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [**監視**]。 [**監視**] 窗格會將您所有的監視設定和資料合併成一個視圖。
 
-1. 選取 [警示]****，然後選取 [管理動作]****。
+1. 選取 [警示]  ，然後選取 [管理動作]  。
 
-    ![管理操作按鈕](./media/action-groups/manage-action-groups.png)
+    ![[管理動作] 按鈕](./media/action-groups/manage-action-groups.png)
     
 1. 選取 [新增動作群組]****，並填寫各欄位。
 
     ![「新增動作群組」命令](./media/action-groups/add-action-group.png)
     
-1. 在 **'s''群組名稱**框中輸入名稱,並在 **「短名稱」** 框中輸入名稱。 使用這個群組傳送通知時，會使用簡短名稱來取代完整的動作群組名稱。
+1. 在 [**動作組名**] 方塊中輸入名稱，然後在 [**簡短名稱**] 方塊中輸入名稱。 使用這個群組傳送通知時，會使用簡短名稱來取代完整的動作群組名稱。
 
       ![「新增動作群組」對話方塊](./media/action-groups/action-group-define.png)
 
-1. **訂閱**框自動填充當前訂閱。 訂用帳戶是要儲存動作群組的位置。
+1. [**訂**用帳戶] 方塊會與您目前的訂用帳戶會自動填入。 訂用帳戶是要儲存動作群組的位置。
 
-1. 選擇儲存操作群組**的資源群組**。
+1. 選取要在其中儲存動作群組的**資源群組**。
 
-1. 定義操作清單。 為每個操作提供以下內容:
+1. 定義動作清單。 針對每個動作提供下列各項：
 
     1. **名稱**：輸入此動作的唯一識別碼。
 
-    1. **操作類型**: 選擇自動化 Runbook、 Azure 函數、 電子郵件 Azure 資源管理器角色、電子郵件/SMS/推送/語音、ITSM、邏輯應用、安全 Webhook、Webhook。
+    1. **動作類型**：選取 [自動化 Runbook]、[Azure 函式]、[電子郵件 Azure Resource Manager 角色]、[電子郵件/SMS/推播/語音]、[ITSM]、邏輯應用程式、安全 Webhook、
 
     1. **詳細資料**：根據動作類型，輸入電話號碼、電子郵件地址、Webhook URI、Azure 應用程式、ITSM 連線或自動化 Runbook。 針對 ITSM 動作，請額外指定 [工作項目]**** 與您 ITSM 工具所需的其他欄位。
     
-    1. **通用警報架構**:您可以選擇啟用[通用警報架構](https://aka.ms/commonAlertSchemaDocs),這提供了在 Azure 監視器中的所有警報服務中具有單個可擴展和統一的警報負載的優勢。
+    1. **一般警示架構**：您可以選擇啟用[一般警示架構](https://aka.ms/commonAlertSchemaDocs)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
 
 1. 選取 [確定]**** 來建立動作群組。
 
 ## <a name="manage-your-action-groups"></a>管理您的動作群組
 
-建立操作群組後,可以透過**在 「監視器」** 窗格中的 **「警報」** 登入頁中選擇 **「管理操作**」 來查看**操作群組**。 選取您要管理的動作群組：
+建立動作群組之後，您可以從 [**監視**] 窗格中的 [**警示**] 登陸頁面選取 [**管理動作**]，以查看**動作**群組。 選取您要管理的動作群組：
 
 * 新增、編輯或移除動作。
 * 刪除動作群組。
@@ -70,15 +70,15 @@ ms.locfileid: "80520898"
 ## <a name="action-specific-information"></a>動作特定資訊
 
 > [!NOTE]
-> 有關以下每個專案的數位限制,請參閱[訂閱服務限制。](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits)  
+> 請參閱以下各專案的[監視訂用帳戶服務限制，以監控](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits)數值限制。  
 
-### <a name="automation-runbook"></a>自動化執行簿
-有關 Runbook 有效負載的限制,請參閱[Azure 訂閱服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
+### <a name="automation-runbook"></a>自動化 Runbook
+如需 Runbook 承載的限制，請參閱[Azure 訂用帳戶服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
-操作組中的 Runbook 操作數量可能有限。 
+您在動作群組中可能會有有限數目的 Runbook 動作。 
 
-### <a name="azure-app-push-notifications"></a>Azure 應用推送通知
-操作組中的 Azure 應用操作數量可能有限。
+### <a name="azure-app-push-notifications"></a>Azure 應用程式推播通知
+您在動作群組中可能會有有限數目的 Azure 應用程式動作。
 
 ### <a name="email"></a>電子郵件
 下列電子郵件地址將寄出電子郵件。 請確定已適當設定您的電子郵件篩選
@@ -86,47 +86,47 @@ ms.locfileid: "80520898"
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-操作組中的電子郵件操作數量可能有限。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+動作群組中的電子郵件動作數目可能有限。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
-### <a name="email-azure-resource-manager-role"></a>透過電子郵件傳送 Azure 資源管理員角色
-向訂閱角色的成員發送電子郵件。 電子郵件將僅發送給角色的**Azure AD 用戶**成員。 電子郵件不會發送到 Azure AD 組或服務主體。
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager 角色的電子郵件
+傳送電子郵件給訂用帳戶角色的成員。 只會將電子郵件傳送給角色的**Azure AD 使用者**成員。 電子郵件不會傳送至 Azure AD 群組或服務主體。
 
-操作組中的電子郵件操作數量可能有限。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+動作群組中的電子郵件動作數目可能有限。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函式
-調用[Azure 函數](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中的現有 HTTP 觸發器終結點。
+在[Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中呼叫現有的 HTTP 觸發程式端點。
 
-操作組中的函數操作數量可能有限。
+動作群組中的函式動作數目可能有限。
 
 ### <a name="itsm"></a>ITSM
 ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-monitor/platform/itsmc-overview.md)。
 
-操作組中的 ITSM 操作數量可能有限。 
+您在動作群組中可能會有有限數目的 ITSM 動作。 
 
 ### <a name="logic-app"></a>邏輯應用程式
-操作組中可能具有數量有限的邏輯應用操作。
+動作群組中的邏輯應用程式動作數目可能有限。
 
-### <a name="secure-webhook"></a>安全網路鉤
-操作組 Webhook 操作使您能夠利用 Azure 活動目錄來保護操作組與受保護的 Web API(Webhook 終結點)之間的連接。 下面介紹了利用此功能的總體工作流。 有關 Azure AD 應用程式和服務主體的概述,請參閱[Microsoft 識別平臺 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
+### <a name="secure-webhook"></a>安全 Webhook
+[動作群組] [Webhook] 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API （Webhook 端點）之間的連線。 下面將說明利用這項功能的整體工作流程。 如需 Azure AD 應用程式和服務主體的總覽，請參閱[Microsoft 身分識別平臺（v2.0）總覽](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
-1. 為受保護的 Web API 創建 Azure AD 應用程式。 請參閱＜https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview＞。
-    - 將受保護的 API 配置為由守護程序應用調用。
+1. 為受保護的 Web API 建立 Azure AD 應用程式。 請參閱＜https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview＞。
+    - 將受保護的 API 設定為可由背景程式應用程式呼叫。
     
-1. 使操作組能夠使用 Azure AD 應用程式。
+1. 啟用 [動作群組] 以使用您的 Azure AD 應用程式。
 
     > [!NOTE]
-    > 您必須是 Azure AD[應用程式管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員才能執行此文稿。
+    > 您必須是[Azure AD 應用程式系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員，才能執行此腳本。
     
-    - 修改 PowerShell 文稿的連接 AzureAD 呼叫以使用 Azure AD 租戶 ID。
-    - 變更 PowerShell 文稿的變數$myAzureADApplicationObjectId以使用 Azure AD 應用程式的物件 ID
-    - 運行修改後的腳本。
+    - 修改 PowerShell 腳本的 AzureAD 呼叫，以使用您的 Azure AD 租使用者識別碼。
+    - 修改 PowerShell 腳本的變數 $myAzureADApplicationObjectId，以使用您 Azure AD 應用程式的物件識別碼
+    - 執行修改過的腳本。
     
-1. 配置操作組安全 Webhook 操作。
-    - 從文本複製值$myApp.ObjectId,並在 Webhook 操作定義中的"應用程式物件 ID"欄位中輸入該值。
+1. 設定動作群組安全 Webhook 動作。
+    - 將腳本中的值 $myApp. ObjectId，並在 Webhook 動作定義的 [應用程式物件識別碼] 欄位中輸入。
     
-    ![安全 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
+    ![安全 Webhook 動作](./media/action-groups/action-groups-secure-webhook.png)
 
-#### <a name="secure-webhook-powershell-script"></a>安全 Webhook 電源外殼文稿
+#### <a name="secure-webhook-powershell-script"></a>安全 Webhook PowerShell 腳本
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -196,17 +196,23 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>sms
-有關其他重要資訊,請參閱[速率限制資訊和](./../../azure-monitor/platform/alerts-rate-limiting.md) [SMS 警報行為](../../azure-monitor/platform/alerts-sms-behavior.md)。
+如需其他重要資訊，請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)和[SMS 警示行為](../../azure-monitor/platform/alerts-sms-behavior.md)。 
 
-操作組中的 SMS 操作數量可能有限。  
+動作群組中的 SMS 動作數目可能有限。
+
+如果 [Azure 入口網站動作群組] 使用者介面無法讓您選取您的國家/地區代碼，則您的國家/地區不支援 SMS。 支援國家/地區的價格會列在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)中。 如果您的國家/地區代碼無法使用，您可以投票，將您的國家/地區新增至[使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)。  
+
+  
 
 ### <a name="voice"></a>語音
 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
-操作組中的語音操作數量可能有限。
+動作群組中的語音動作數目可能有限。
+
+如果 [Azure 入口網站動作群組] 使用者介面無法讓您選取您的國家/地區代碼，則您的國家/地區不支援語音通話。 支援國家/地區的價格會列在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)中。 如果您的國家/地區代碼無法使用，您可以投票，將您的國家/地區新增至[使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)。  
 
 ### <a name="webhook"></a>Webhook
-使用以下規則重試 Webhook。 返回以下 HTTP 狀態代碼時,Webhook 調用最多重試 2 次:408、429、503、504 或 HTTP 終結點未回應。 第一次重試會在 10 秒後執行。 第二次重試會在 100 秒後執行。 兩次失敗后,任何操作組將不會調用終結點 30 分鐘。 
+Webhook 會使用下列規則來重試。 傳回下列 HTTP 狀態碼時，最多會重試2次 webhook 呼叫：408、429、503、504或 HTTP 端點沒有回應。 第一次重試會在 10 秒後執行。 第二次重試會在 100 秒後執行。 兩次失敗後，沒有任何動作群組會呼叫端點30分鐘。 
 
 來源 IP 位址範圍
  - 13.72.19.232
@@ -225,9 +231,9 @@ Write-Host $myApp.AppRoles
  - 51.5.148.86
  - 51.5.149.19
 
-要接收有關這些 IP 位址更改的更新,我們建議您設定服務運行狀況警報,該警報監視有關操作組服務的資訊通知。
+若要接收這些 IP 位址變更的相關更新，建議您設定服務健康狀態警示，以監視有關動作群組服務的語音總機。
 
-操作組中的 Webhook 操作數量可能有限。
+在動作群組中，您可能會有有限數目的 Webhook 動作。
 
 
 

@@ -1,18 +1,18 @@
 ---
-title: 新增功能 - 語言理解 (LUIS)
-description: 本文定期更新有關 Azure 認知服務語言理解 API 的新聞。
+title: 新功能-Language Understanding （LUIS）
+description: 本文會定期更新 Azure 認知服務 Language Understanding API 的相關新聞。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538013"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097722"
 ---
-# <a name="whats-new-in-language-understanding"></a>語言理解的新增功能
+# <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
 
-了解該服務的新功能。 這些專案包括發行說明、視頻、博客文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
+了解該服務的新功能。 這些專案包括版本資訊、影片、blog 文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
 
 ## <a name="release-notes"></a>版本資訊
 
@@ -20,59 +20,59 @@ ms.locfileid: "81538013"
 
 * 現在對於此服務的所有 HTTP 要求都會強制執行 TLS 1.2。 如需詳細資訊，請參閱 [Azure 認知服務安全性](../cognitive-services-security.md)。
 
-### <a name="november-4-2019---ignite"></a>2019年11月4日 - 點火
+### <a name="november-4-2019---ignite"></a>2019年11月4日-Ignite
 
-* 視頻 -[使用 LUIS 和 Azure 認知服務的高級自然語言理解 (NLU) 模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+* 影片-[使用 LUIS 和 Azure 認知服務進行的天然自然 Language Understanding （NLU）模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
-* 提高開發人員工作效率
-    * 預測[終結點 V3](luis-migration-api-v3.md)的一般可用性。
-    * 能夠匯入及匯出具有 .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 格式的應用程式. 這為有效的 CI/CD 進程鋪平了道路。
-* 語言延伸
-    * 在公共預覽中使用[阿拉伯文和印地語](luis-language-support.md)。
+* 提升開發人員生產力
+    * 正式推出的[預測端點 V3](luis-migration-api-v3.md)。
+    * 能夠以 lu （[LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）格式匯入和匯出應用程式。 這鋪路了有效 CI/CD 程式的方式。
+* 語言擴充
+    * [阿拉伯文和印度](luis-language-support.md)文（公開預覽）。
 * 預先建置的模型
-    * [預置網域](luis-reference-prebuilt-domains.md)現在通常可用 (GA)
-    * V3 不支援日本[預建構實體](luis-reference-prebuilt-entities.md#japanese-entity-support)- 年齡、貨幣、數位和百分比。
-    * 義大利[預建構實體](luis-reference-prebuilt-entities.md#italian-entity-support)-年齡、貨幣、維度、數位和百分比解析度從 V2 更改為。
-* [preview.luis.ai門戶](https://preview.luis.ai)中的增強用戶體驗 - 改進的標籤體驗,支援構建和調試複雜模型。 嘗試預覽門戶教程:
-    * [僅意向](tutorial-intents-only.md)
-    * [可分離機器學習實體](tutorial-machine-learned-entity.md)
-* 提高語言理解能力 - 以更少的精力[建構複雜的語言模型](luis-concept-entity-types.md)。
-* 在模型級別定義機器學習功能,並使模型能夠用作其他模型的信號,例如使用實體作為意圖和其他實體的要素。
-* 新的延伸[限制](luis-boundaries.md)- 短語清單和總短語的最大值更高,新模型作為功能限制
-* 以深層層次結構的形式從文本中提取資訊,使會話應用程式更強大。
+    * [預先](luis-reference-prebuilt-domains.md)建立的網域現已正式推出（GA）
+    * 在 V3 中不支援日文預先建立的[實體](luis-reference-prebuilt-entities.md#japanese-entity-support)-年齡、貨幣、數位和百分比。
+    * 義大利[建實體](luis-reference-prebuilt-entities.md#italian-entity-support)-從 V2 變更的年齡、貨幣、維度、數位和百分比解析。
+* [Preview.luis.ai 入口網站](https://preview.luis.ai)中增強的使用者體驗-改頭換面標記體驗，以啟用建立和調試複雜模型。 試用預覽入口網站教學課程：
+    * [僅意圖](tutorial-intents-only.md)
+    * [分解機器學習的實體](tutorial-machine-learned-entity.md)
+* 預先語言理解功能-以較少的方式[建立複雜的語言模型](luis-concept-entity-types.md)。
+* 在模型層級定義機器學習功能，並讓模型用來做為其他模型的信號，例如使用實體做為意圖和其他實體的功能。
+* 新的擴充[限制](luis-limits.md)-片語清單的最大上限和片語總計、新模型做為功能限制
+* 以深層階層結構的格式從文字中解壓縮資訊，讓對話應用程式更強大。
 
-    ![機器學習實體映像](./media/whats-new/deep-entity-extraction-example.png)
+    ![機器學習的實體映射](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>2019年9月3日
 
-* Azure 創作資源 -[立即移動](luis-migration-authoring.md)。
-    * 每個 Azure 資源有 500 個應用
-    * 每個應用 100 個版本
-* 土耳其對預建實體的支援
-* 義大利對日期時間 V2 的支援
+* Azure 撰寫資源-[立即遷移](luis-migration-authoring.md)。
+    * 500每個 Azure 資源的應用程式
+    * 100每個應用程式的版本
+* 預建實體的土耳其文支援
+* DatetimeV2 的義大利文支援
 
-### <a name="july-23-2019"></a>七月 23, 2019
+### <a name="july-23-2019"></a>2019年7月23日
 
-* 將[識別器文字](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3)更新為 1.2.3
-    * 義大利語中的年齡、溫度、尺寸和貨幣識別器。
-    * 提高英語假期識別能力,正確計算基於感恩節的日期。
-    * 改進法語日期時間以減少非日期和非時間實體的誤報。
-    * 支援日曆/學校/會計年度和英語日期範圍的首字母縮略詞。
-    * 改進了中文和日語中的電話號碼識別。
-    * 改進了對英語數位範圍的支援。
+* 將辨識器[文字](https://github.com/microsoft/Recognizers-Text/releases/tag/dotnet-v1.2.3)更新為1.2。3
+    * 義大利文中的年齡、溫度、維度和貨幣辨識器。
+    * 改善英文版的假日辨識，以正確計算感恩節日期。
+    * 改善法文 DateTime，以減少非日期和非時間實體的誤報。
+    * 支援行事曆/學校/會計年度和英文 DateRange 的縮略字。
+    * 已改善中文和日文的 PhoneNumber 辨識。
+    * 已改善英文版 NumberRange 的支援。
     * 效能改善。
 
-### <a name="june-24-2019"></a>六月 24, 2019
+### <a name="june-24-2019"></a>2019年6月24日
 
-* [OrdinalV2 預構建實體](luis-reference-prebuilt-ordinal-v2.md),以支援排序,如下一個、上一個和最後一個。 只有英國文化。
+* [OrdinalV2 預先](luis-reference-prebuilt-ordinal-v2.md)建立的實體以支援排序，例如下一個、上一個和最後一個。 僅限英文文化特性。
 
-### <a name="may-6-2019---build-conference"></a>2019 年 5 月 6 日 - //構建會議
+### <a name="may-6-2019---build-conference"></a>5月6日，2019-build 會議
 
-在 2019 年構建大會上發佈了以下功能:
+組建2019會議已發行下列功能：
 
-* [V3 API 移轉指南預覽](luis-migration-api-v3.md)
-* [改進分析儀表板](luis-how-to-use-dashboard.md)
-* [改進的預建網](luis-reference-prebuilt-domains.md)
+* [V3 API 遷移指南的預覽](luis-migration-api-v3.md)
+* [改良的分析儀表板](luis-how-to-use-dashboard.md)
+* [改良的預建網域](luis-reference-prebuilt-domains.md)
 * [動態清單實體](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部實體](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
 
@@ -80,15 +80,15 @@ ms.locfileid: "81538013"
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>影片
+## <a name="videos"></a>視訊
 
-### <a name="2019-ignite-videos"></a>2019 點火器視訊
+### <a name="2019-ignite-videos"></a>2019 Ignite 影片
 
-[使用 LUIS 和 Azure 認知服務的高級自然語言理解 (NLU) 模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+[使用 LUIS 和 Azure 認知服務的 Advanced 天然 Language Understanding （NLU）模型 |BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
-### <a name="2019-build-videos"></a>2019 建譯視訊
+### <a name="2019-build-videos"></a>2019組建影片
 
-[如何使用 Azure 對話 AI 為下一代擴充業務](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+[如何使用 Azure 對話式 AI 來調整您的企業以進行下一代](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="service-updates"></a>服務更新
 

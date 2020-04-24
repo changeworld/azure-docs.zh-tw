@@ -1,113 +1,113 @@
 ---
-title: 如何使用創作與執行時金鑰 - LUIS
-description: 首次使用語言理解 (LUIS) 時,不需要創建創作金鑰。 當您打算發佈應用時,請使用運行時終結點,需要創建運行時密鑰並將其分配給應用。
+title: 如何使用撰寫和執行時間金鑰-LUIS
+description: 當您第一次使用 Language Understanding （LUIS）時，您不需要建立撰寫金鑰。 當您想要發佈應用程式時，請使用您的執行時間端點，您必須建立執行時間金鑰，並將其指派給應用程式。
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: ea2799e7b8bb18ad4a729a70ae1477cde9f97e95
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754379"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101020"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
-創作和運行時資源為 LUIS 應用和預測終結點提供身份驗證。
+撰寫和執行時間資源可為您的 LUIS 應用程式和預測端點提供驗證。
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-當您登入 LUIS 門戶時,您可以選擇繼續:
+當您登入 LUIS 入口網站時，您可以選擇繼續進行：
 
-* 免費[試用金鑰](#trial-key)- 提供創作和幾個預測終結點查詢。
-* Azure [LUIS 創作](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)資源。
+* 免費[試用金鑰](#trial-key)-提供撰寫和一些預測端點查詢。
+* Azure [LUIS 撰寫](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)資源。
 
 <a name="starter-key"></a>
 
-## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>登入 SEis 閘戶並開始創作
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>登入 LUIS 入口網站並開始撰寫
 
-1. 登錄到[LUIS門戶](https://www.luis.ai)並同意使用條款。
-1. 通過選擇要使用的 LUIS 創作密鑰類型:免費試用密鑰或新的 Azure LUIS 創作金鑰來開始您的 LUIS 應用。
+1. 登入[LUIS 入口網站](https://www.luis.ai)並同意使用條款。
+1. 選擇您想要使用的 LUIS 撰寫金鑰類型，以開始您的 LUIS 應用程式：免費試用金鑰或新的 Azure LUIS 撰寫金鑰。
 
     ![選擇 Language Understanding 撰寫資源的類型](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-1. 完成資源選擇程序後,[建立新應用程式](luis-how-to-start-new-app.md#create-new-app-in-luis)。
+1. 當您完成資源選取程式時，請[建立新的應用程式](luis-how-to-start-new-app.md#create-new-app-in-luis)。
 
 ## <a name="trial-key"></a>試用金鑰
 
-試用(啟動器)金鑰是為您提供的。 它用作身份驗證密鑰來查詢預測終結點運行時,每月最多 1000 個查詢。
+系統會為您提供試用版（starter）金鑰。 它會用來做為您的驗證金鑰，以查詢預測端點執行時間，每個月最多1000個查詢。
 
-它在 LUIS 門戶中的 **「使用者設置」** 頁和管理 **-> Azure 資源**頁上都可見。
+它會顯示在 LUIS 入口網站中的 [**使用者設定**] 頁面和 [**管理 > 的 Azure 資源**] 頁面上。
 
-準備好發佈預測終結點時,[請建立](#create-luis-resources)和[分配](#assign-a-resource-to-an-app)創作和預測運行時鍵,以替換啟動鍵功能。
+當您準備好要發行預測端點時，請[建立](#create-luis-resources)並[指派](#assign-a-resource-to-an-app)撰寫和預測執行時間金鑰，以取代入門金鑰功能。
 
 <a name="create-resources-in-the-azure-portal"></a>
 
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-## <a name="create-resources-in-azure-cli"></a>在 Azure CLI 建立資源
+## <a name="create-resources-in-azure-cli"></a>在 Azure CLI 中建立資源
 
-使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)單獨建立每個資源。
+使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)來個別建立每個資源。
 
-資源`kind`:
+資源`kind`：
 
-* 創作:`LUIS.Authoring`
-* 預測:`LUIS`
+* 製作`LUIS.Authoring`
+* 翻`LUIS`
 
-1. 登入 Azure CLI:
+1. 登入 Azure CLI：
 
     ```azurecli
     az login
     ```
 
-    這將打開一個瀏覽器,允許您選擇正確的帳戶並提供身份驗證。
+    這會開啟瀏覽器，讓您選取正確的帳戶並提供驗證。
 
-1. 建立一個**LUIS 創作資源**`LUIS.Authoring`,`my-luis-authoring-resource`類型`westus`,在`my-resource-group`為 區域命名的_現有資源_組中命名。
+1. 在為`westus`區域命名`my-resource-group`的_現有_資源群組`LUIS.Authoring`中， `my-luis-authoring-resource`建立名為的**LUIS 撰寫資源**（種類）。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. 建立一個**LUIS 預測終結點資源**`LUIS`,類型 ,在為`my-luis-prediction-resource``westus`區域命名的`my-resource-group`_現有資源_組中命名。 如果希望吞吐量高於可用層,請改為`F0` `S0` 。 詳細瞭解[定價層和輸送量](luis-boundaries.md#key-limits)。
+1. 在為`westus`區域命名`my-resource-group`的_現有_資源群組中`LUIS`，建立`my-luis-prediction-resource`名為的**LUIS 預測端點資源**（種類）。 如果您想要比免費層更高的輸送量， `F0`請`S0`將變更為。 深入瞭解[定價層和輸送量](luis-limits.md#key-limits)。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note]
-    > 在**管理-> Azure 資源的**LUIS 門戶中分配這些密鑰之前,LUIS 門戶**不會**使用此密鑰。
+    > LUIS 入口網站**不**會使用此金鑰，除非是在 LUIS 入口網站中的**管理 > Azure 資源**上指派。
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>為所有應用在 LUIS 門戶中分配創作資源
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>在 LUIS 入口網站中為所有應用程式指派撰寫資源
 
-您可以為單個應用或 LUIS 中的所有應用分配創作資源。 以下過程將所有應用分配給單個創作資源。
+您可以針對單一應用程式或 LUIS 中的所有應用程式，指派撰寫資源。 下列程式會將所有應用程式指派給單一撰寫資源。
 
 1. 登入 [LUIS 入口網站](https://www.luis.ai)。
-1. 在頂部導航欄,在最右邊,選擇您的使用者帳戶,然後選擇 **"設置**"。
-1. 在「**使用者設定」** 頁上,選擇 **「添加創作資源」 然後**選擇現有的創作資源。 選取 [儲存]  。
+1. 在上方導覽列中，選取最右側的 [使用者帳戶]，然後選取 [**設定**]。
+1. 在 [**使用者設定**] 頁面上，選取 [**新增撰寫資源**]，然後選取現有的撰寫資源。 選取 [儲存]  。
 
-## <a name="assign-a-resource-to-an-app"></a>將資源配置給應用程式
+## <a name="assign-a-resource-to-an-app"></a>將資源指派給應用程式
 
-您可以將單個資源(創作或預測終結點運行時)分配給具有以下過程的應用。
+您可以使用下列程式，將單一資源、撰寫或預測端點執行時間指派給應用程式。
 
-1. 登錄到 LUIS[門戶](https://www.luis.ai),然後從 **"我的應用"** 清單中選擇一個應用。
-1. 導航到 **"管理-> Azure 資源**"頁。
+1. 登入[LUIS 入口網站](https://www.luis.ai)，然後從 [**我的應用程式**] 清單中選取應用程式。
+1. 流覽至 [**管理->] [Azure 資源**] 頁面。
 
-    ![選擇 LUIS 門戶中的「管理-> Azure 資源」 以將資源分配給應用。](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+    ![在 LUIS 入口網站中選取 [管理-> Azure 資源]，以將資源指派給應用程式。](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. 選擇「預測或創作資源」選項卡,然後選擇「**添加預測資源**」或 **「添加創作資源**」按鈕。
-1. 選擇表單中的欄位以尋找正確的資源,然後選擇 **「儲存**」。
+1. 選取 [預測] 或 [撰寫資源] 索引標籤，然後選取 [**新增預測資源**] 或 [**新增撰寫資源**] 按鈕。
+1. 選取表單中的欄位以尋找正確的資源，然後選取 [**儲存**]。
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>無需使用 LUIS 門戶即可分配執行時資源
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>在不使用 LUIS 入口網站的情況下指派執行時間資源
 
-出於自動化目的(如 CI/CD 管道),您可能希望自動將 LUIS 執行時資源分配給 LUIS 應用。 為此，您必須執行下列步驟：
+基於自動化目的（例如 CI/CD 管線），您可能會想要自動將 LUIS 執行時間資源指派給 LUIS 應用程式。 為此，您必須執行下列步驟：
 
 1. 從這個[網站](https://resources.azure.com/api/token?plaintext=true)取得 Azure Resource Manager 權杖。 此權杖有使用期限，因此請立即使用。 要求會傳回 Azure Resource Manager 權杖。
 
     ![要求 Azure Resource Manager 權杖和接收 Azure Resource Manager 權杖](./media/luis-manage-keys/get-arm-token.png)
 
-1. 使用令牌從使用者帳戶有權訪問的[獲取 LUIS Azure 帳戶 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)請求跨訂閱的 LUIS 運行時資源。
+1. 使用權杖，從您的使用者帳戶可存取的[GET LUIS azure 帳戶 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)，跨訂用帳戶要求 LUIS 執行時間資源。
 
     此 POST API 需要下列設定︰
 
@@ -134,21 +134,21 @@ ms.locfileid: "80754379"
 
 ## <a name="unassign-resource"></a>取消指派資源
 
-1. 登錄到 LUIS[門戶](https://www.luis.ai),然後從 **"我的應用"** 清單中選擇一個應用。
-1. 導航到 **"管理-> Azure 資源**"頁。
-1. 選擇「預測或創作資源」選項卡,然後為資源選擇 **「取消分配資源**」按鈕。
+1. 登入[LUIS 入口網站](https://www.luis.ai)，然後從 [**我的應用程式**] 清單中選取應用程式。
+1. 流覽至 [**管理->] [Azure 資源**] 頁面。
+1. 選取 [預測] 或 [撰寫資源] 索引標籤，然後選取資源的 [**取消指派資源**] 按鈕。
 
-取消分配資源時,不會從 Azure 中刪除它。 只會從 LUIS 取消連結。
+當您取消指派資源時，不會將它從 Azure 中刪除。 只會從 LUIS 取消連結。
 
 ## <a name="reset-authoring-key"></a>重設撰寫金鑰
 
-**對於[創作資源遷移](luis-migration-authoring.md)的應用**:如果創作密鑰被洩露,請重置該創作資源的 **「密鑰」** 頁上的 Azure 門戶中的密鑰。
+**針對[撰寫資源遷移](luis-migration-authoring.md)的應用程式**：如果您的撰寫金鑰遭到入侵，請在該撰寫資源的 [**金鑰**] 頁面上，重設 Azure 入口網站中的金鑰。
 
-**對於尚未遷移的應用**:在 LUIS 門戶中的所有應用上重置密鑰。 如果透過創作 API 創作應用,則需要將 Ocp-Apim-訂閱金鑰的值更改為新密鑰。
+**針對尚未遷移的應用程式**：金鑰會在 LUIS 入口網站中的所有應用程式上重設。 如果您透過撰寫 Api 來撰寫應用程式，則需要將 Apim-訂用帳戶金鑰的值變更為新的金鑰。
 
-## <a name="regenerate-azure-key"></a>重新產生 Azure 鍵
+## <a name="regenerate-azure-key"></a>重新產生 Azure 金鑰
 
-從「**密鑰」** 頁上的 Azure 門戶重新生成 Azure 鍵。
+從 [**金鑰**] 頁面上的 Azure 入口網站重新產生 Azure 金鑰。
 
 ## <a name="delete-account"></a>刪除帳戶
 
@@ -166,14 +166,14 @@ ms.locfileid: "80754379"
     ![驗證 LUIS 付款層](./media/luis-usage-tiers/updated.png)
 1. 請記得在 [發佈]**** 頁面上[指派此端點金鑰](#assign-a-resource-to-an-app)，然後將它使用於所有端點查詢。
 
-## <a name="viewing-azure-resource-metrics"></a>檢視 Azure 資源指標
+## <a name="viewing-azure-resource-metrics"></a>查看 Azure 資源計量
 
-### <a name="viewing-azure-resource-summary-usage"></a>檢視 Azure 資源摘要使用方式
+### <a name="viewing-azure-resource-summary-usage"></a>查看 Azure 資源摘要使用量
 您可以在 Azure 中檢視 LUIS 使用量資訊。 [概觀]**** 頁面會顯示近期摘要資訊，包括呼叫和錯誤。 如果您提出 LUIS 端點要求，然後立即觀看 [概觀] 頁面****，允許使用量最多在五分鐘內出現。
 
 ![檢視摘要使用量](./media/luis-usage-tiers/overview.png)
 
-### <a name="customizing-azure-resource-usage-charts"></a>自訂 Azure 資源使用方式圖表
+### <a name="customizing-azure-resource-usage-charts"></a>自訂 Azure 資源使用量圖表
 計量會提供資料的更詳細檢視。
 
 ![預設度量](./media/luis-usage-tiers/metrics-default.png)
@@ -191,7 +191,7 @@ ms.locfileid: "80754379"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何使用版本](luis-how-to-manage-versions.md)來控制應用生命週期。
-* 瞭解包括編寫[資源](luis-concept-keys.md#authoring-key)以及[該資源貢獻者在內的](luis-concept-keys.md#contributions-from-other-authors)概念。
-* [瞭解如何建立](luis-how-to-azure-subscription.md)創作與執行時資源
-* 移至新的[創作資源](luis-migration-authoring.md)
+* 瞭解[如何使用版本](luis-how-to-manage-versions.md)來控制您的應用程式生命週期。
+* 瞭解這些概念，包括該資源的[撰寫資源](luis-concept-keys.md#authoring-key)和[參與者](luis-concept-keys.md#contributions-from-other-authors)。
+* 瞭解[如何建立](luis-how-to-azure-subscription.md)撰寫和執行時間資源
+* 遷移至新的[撰寫資源](luis-migration-authoring.md)

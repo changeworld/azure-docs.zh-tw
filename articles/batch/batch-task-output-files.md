@@ -1,23 +1,15 @@
 ---
-title: 使用批次處理服務 API 將輸出資料持久化到 Azure 存儲 - Azure 批次處理
-description: 瞭解如何使用批次處理服務 API 將批次處理任務和作業輸出資料保存到 Azure 存儲。
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.service: batch
+title: 使用 Batch 服務 API 將輸出資料保存到 Azure 儲存體-Azure Batch
+description: 瞭解如何使用 Batch 服務 API 將 Batch 工作和作業輸出資料保存到 Azure 儲存體。
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 11bd8bc427dd3da35ec5aa0f728f6b04b7d4527d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fbbf75defcfe976e59d38ae76341e71feee9f53
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022846"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116463"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服務 API 將工作資料保存到 Azure 儲存體
 
@@ -71,7 +63,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 若要指定工作的輸出檔案，請建立 [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) 物件的集合，並當您建立這項工作時，將它指派給 [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) 屬性。
 
-下列 C# 程式碼範例所建立的工作，會將隨機數字寫入名為 `output.txt` 的檔案。 此範例會建立要寫入容器中的 `output.txt` 之輸出檔案。 該示例還為與檔`std*.txt`模式匹配的任何日誌檔（_例如_和`stdout.txt` `stderr.txt`）創建輸出檔案。 容器 URL 需要先前針對容器建立的 SAS。 Batch 服務會使用 SAS 來驗證容器的存取權：
+下列 C# 程式碼範例所建立的工作，會將隨機數字寫入名為 `output.txt` 的檔案。 此範例會建立要寫入容器中的 `output.txt` 之輸出檔案。 此範例`std*.txt`也會針對符合檔案模式的任何記錄檔（_例如_ `stdout.txt`和`stderr.txt`）建立輸出檔案。 容器 URL 需要先前針對容器建立的 SAS。 Batch 服務會使用 SAS 來驗證容器的存取權：
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -179,7 +171,7 @@ string containerName = job.OutputStorageContainerName();
 
 [PersistOutputs][github_persistoutputs] 範例專案是 GitHub 上的其中一個 [Azure Batch 程式碼範例][github_samples]。 此 Visual Studio 解決方案示範如何使用適用於 .NET 的 Batch 用戶端程式庫，將工作輸出保存到永久性儲存體。 若要執行範例，請遵循下列步驟：
 
-1. 在**視覺工作室打開專案2019**年。
+1. 在**Visual Studio 2019**中開啟專案。
 2. 將您 Batch 和儲存體的**帳戶認證**新增到 Microsoft.Azure.Batch.Samples.Common 專案中的 **AccountSettings.settings**。
 3. **** (但不要執行) 該解決方案。 如果出現提示，請還原任何 NuGet 封裝。
 4. 使用 Azure 入口網站來為 [PersistOutputsTask](batch-application-packages.md) 上傳 **應用程式封裝**。 將 `PersistOutputsTask.exe` 及其相依性組件包含在 .zip 封裝中，將應用程式識別碼和應用程式封裝版本分別設為 "PersistOutputsTask" 和 "1.0"。

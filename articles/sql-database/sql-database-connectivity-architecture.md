@@ -1,6 +1,6 @@
 ---
 title: 連線架構
-description: 本文件介紹 Azure 內部或 Azure 外部的資料庫連接的 Azure SQL 連接體系結構。
+description: 本檔說明 azure SQL 連線架構，用於從 Azure 內或從 Azure 外部的資料庫連線。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,21 +12,21 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b4e7d827536245a22d168c7d9923c2e5b82830b0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419258"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111788"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 連線架構
 > [!NOTE]
 > 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。
 
 > [!IMPORTANT]
-> 本文「不」** 適用於 **Azure SQL Database 受控執行個體**。 請參考[託管實體的連線架構結構](sql-database-managed-instance-connectivity-architecture.md)。
+> 本文「不」** 適用於 **Azure SQL Database 受控執行個體**。 請參閱[受控實例](sql-database-managed-instance-connectivity-architecture.md)的連線架構。
 
-本文介紹將網路流量定向到 Azure SQL 資料庫或 SQL 數據倉庫的各種元件的體系結構。 它還解釋了不同的連接策略,以及它如何影響從 Azure 內部連接的用戶端和從 Azure 外部連接的用戶端。 
+本文說明將網路流量導向至 Azure SQL Database 或 SQL 資料倉儲之各種元件的架構。 它也會說明不同的連線原則，以及它如何影響從 Azure 內部連線的用戶端，以及從 Azure 外部連線的用戶端。 
 
 ## <a name="connectivity-architecture"></a>連線架構
 
@@ -44,15 +44,15 @@ ms.locfileid: "81419258"
 
 Azure SQL Database 支援下列三個 SQL Database 伺服器連線原則設定選項：
 
-- **重定向(推薦):** 用戶端直接建立與託管資料庫的節點的連接,從而降低延遲並提高輸送量。 要使用此模式的連線,用戶端需要:
-   - 允許從用戶端向區域中所有 Azure SQL IP 位址進行 11000 11999 範圍內的所有 Azure SQL IP 位址通訊。 使用 SQL 的服務標記使其更易於管理。  
-   - 允許從用戶端到埠 1433 上的 Azure SQL 資料庫閘道 IP 位址的出站通訊。
+- 重新**導向（建議）：** 用戶端會直接與裝載資料庫的節點建立連線，進而降低延遲並改善輸送量。 若要讓連接使用此模式，用戶端必須：
+   - 允許從用戶端到位於 11000 11999 範圍中埠上所有 Azure SQL IP 位址的輸出通訊。 使用 SQL 的服務標籤可讓您更容易管理。  
+   - 允許來自用戶端的輸出通訊，以 Azure SQL Database 埠1433上的閘道 IP 位址。
 
-- **代理:** 在此模式下,所有連接都通過 Azure SQL 資料庫閘道進行接近,從而導致延遲增加和輸送量降低。 要使用此模式的連接,用戶端需要允許從用戶端到埠 1433 上的 Azure SQL 資料庫閘道 IP 位址的出站通信。
+- **Proxy：** 在此模式中，所有連線都會透過 Azure SQL Database 閘道進行 proxy，進而增加延遲和降低輸送量。 若要讓連線使用此模式，用戶端必須允許來自用戶端的輸出通訊，以在埠1433上 Azure SQL Database 閘道 IP 位址。
 
-- **預設值:** 這是建立後對所有伺服器上有效的連線策略,除非您顯式將連線策略更改為或`Proxy``Redirect`。 預設策略適用於`Redirect`源自 Azure 內部的所有用戶端連接(例如,來自 Azure`Proxy`虛擬機器)和源自外部的所有用戶端連接(例如,來自本地工作站的連接)。
+- **預設：** 這是在建立之後所有伺服器上生效的連線原則，除非您明確地將連線原則變更`Proxy`為`Redirect`或。 預設原則`Redirect`適用于來自 azure 內部的所有用戶端連線（例如，從 Azure 虛擬機器），以及`Proxy`源自外部的所有用戶端連線（例如，來自您的本機工作站的連線）。
 
- 我們強烈建議通過`Redirect``Proxy`連接策略對連接策略進行連接策略,以提供最低延遲和最高輸送量。但是,您需要滿足上述允許網路流量的其他要求。 如果用戶端是 Azure 虛擬機器,則可以使用具有[服務標記](../virtual-network/security-overview.md#service-tags)的網路安全組 (NSG) 完成此目的。 如果用戶端正在本地工作站進行連接,則可能需要與網路管理員合作,允許網路流量通過公司防火牆。
+ 我們強烈建議`Redirect` `Proxy`透過連線原則進行連線原則，以取得最低延遲和最高輸送量。不過，您必須符合如上面所述允許網路流量的額外需求。 如果用戶端是 Azure 虛擬機器，您可以使用具有[服務](../virtual-network/security-overview.md#service-tags)標籤的網路安全性群組（NSG）來完成此動作。 如果用戶端是從內部部署工作站進行連線，則您可能需要與網路系統管理員合作，以允許網路流量通過您的公司防火牆。
 
 ## <a name="connectivity-from-within-azure"></a>從 Azure 內部連線
 
@@ -67,20 +67,20 @@ Azure SQL Database 支援下列三個 SQL Database 伺服器連線原則設定�
 ![架構概觀](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> 此外,打開連接埠 14000-14999,啟用[與 DAC 的連線](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 另外開啟 TCP 埠1434和14000-14999，以啟用[與 DAC 的連接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database 閘道 IP 位址
 
-下表按區域列出了閘道的 IP 位址。 要連接到 Azure SQL 資料庫,需要允許網路流量從該區域**的所有**閘道&。
+下表依區域列出閘道的 IP 位址。 若要連線到 Azure SQL Database，您需要允許網路流量從該區域的**所有**閘道 &。
 
-有關如何將流量遷移到特定區域中的新閘道的詳細資訊,請於以下文章[:Azure SQL 資料庫流量遷移到較新的閘道](sql-database-gateway-migration.md)
+如何將流量遷移至特定區域中新閘道的詳細資料，請參閱下列文章： [Azure SQL Database 流量遷移至較新的閘道](sql-database-gateway-migration.md)
 
 
 | 區域名稱          | 閘道 IP 位址 |
 | --- | --- |
 | 澳大利亞中部    | 20.36.105.0 |
-| 澳大利亞中部2   | 20.36.113.0 |
+| 澳大利亞 Central2   | 20.36.113.0 |
 | 澳大利亞東部       | 13.75.149.87, 40.79.161.1 |
 | 澳大利亞東南部 | 191.239.192.109, 13.73.109.251 |
 | 巴西南部         | 104.41.11.5, 191.233.200.14 |

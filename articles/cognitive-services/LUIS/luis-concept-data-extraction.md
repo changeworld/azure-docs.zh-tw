@@ -1,17 +1,17 @@
 ---
-title: 資料提取 - LUIS
-description: 從具有意圖和實體的話語文本中提取資料。 瞭解可以從語言理解 （LUIS） 中提取哪些類型的資料。
+title: 資料解壓縮-LUIS
+description: 使用意圖和實體從語句文字中解壓縮資料。 瞭解哪些類型的資料可以從 Language Understanding （LUIS）中解壓縮。
 author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cea4a46564210ad8c37fdeda68e24337091d0bb
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79221527"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100289"
 ---
-# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>從具有意圖和實體的話語文本中提取資料
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖和實體從語句文字解壓縮資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。
 
 最難擷取的資料是機器學習資料，因為它不是全文相符的資料。 機器學習[實體](luis-concept-entity-types.md)的資料擷取必須是[撰寫循環](luis-concept-app-iteration.md)的一部分，直到您確信收到預期的資料為止。
@@ -31,7 +31,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 * * *
 
-當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定]**** 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-boundaries.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
+當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定]**** 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-limits.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
 
 **HTTPS 回應**包含 LUIS 可以根據目前已發佈之預備或生產環境端點模型來判斷的所有意圖和實體資訊。 端點 URL 是在 [LUIS](luis-reference-regions.md) 網站、[管理]**** 區段、[金鑰和端點]**** 頁面上找到的。
 
@@ -77,12 +77,12 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 |--|--|--|--|
 |Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
-如果您的聊天機器人或 LUIS 呼叫應用根據多個意圖分數做出決定，請返回所有意圖的分數。
+如果您的聊天機器人或 LUIS 呼叫應用程式根據一個以上的意圖分數進行決策，則會傳回所有意圖的分數。
 
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
-設置查詢字串參數`verbose=true`。 端點回應為：
+設定 querystring 參數`verbose=true`。 端點回應為：
 
 ```JSON
 {
@@ -107,7 +107,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-設置查詢字串參數`show-all-intents=true`。 端點回應為：
+設定 querystring 參數`show-all-intents=true`。 端點回應為：
 
 ```JSON
 {
@@ -135,7 +135,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 意圖會依最高分到最低分排序。
 
-|資料物件|資料類型|資料位置|值|Score|
+|資料物件|資料類型|資料位置|值|分數|
 |--|--|--|--|:--|
 |Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|String|intents[1].intent|"None"|0.0168218873|
@@ -247,7 +247,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 ## <a name="tokenized-entity-returned"></a>傳回的 Token 化實體
 
-查看 LUIS 中的[權杖支援](luis-language-support.md#tokenization)。
+請參閱 LUIS 中的[權杖支援](luis-language-support.md#tokenization)。
 
 ## <a name="simple-entity-data"></a>簡單實體資料
 
@@ -255,11 +255,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 ## <a name="composite-entity-data"></a>複合實體資料
 
-[複合實體](reference-entity-composite.md)由其他實體組成，如預構建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。
+[複合實體](reference-entity-composite.md)是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
 
 ## <a name="list-entity-data"></a>清單實體資料
 
-[清單實體](reference-entity-list.md)表示一組固定的、封閉的相關單詞及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
+[清單實體](reference-entity-list.md)代表一組固定且封閉的相關單字及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
 
 ## <a name="prebuilt-entity-data"></a>預先建置的實體資料
 探索[預先建置](luis-concept-entity-types.md)實體時，會使用開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案，根據規則運算式比對進行探索。 預先建置的實體會在實體陣列中傳回，並使用前面加上 `builtin::` 的類別名稱。 以下文字是一個範例語句，其中含有所傳回的預先建置實體：
@@ -349,7 +349,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果沒有查詢字串參數， `verbose=true`
+如果沒有 querystring 參數， `verbose=true`：
 
 ```json
 "entities": {
@@ -391,7 +391,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-使用查詢字串參數： `verbose=true`
+使用 querystring 參數， `verbose=true`：
 
 ```json
 
@@ -529,7 +529,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 * * *
 ## <a name="regular-expression-entity-data"></a>規則運算式實體資料
 
-[正則運算式實體](reference-entity-regular-expression.md)基於您提供的正則運算式模式提取實體。
+[正則運算式實體](reference-entity-regular-expression.md)會根據您所提供的正則運算式模式來解壓縮實體。
 
 ## <a name="extracting-names"></a>擷取名稱
 從語句中取得名稱相當困難，因為名稱幾乎可以是字母與單字的任何組合。 視所要擷取的名稱類型而定，您會有數個選項。 下列建議不是規定，而是指導方針。
@@ -540,17 +540,17 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 ### <a name="names-of-people"></a>人名
 
-人名可依據語言和文化特性而有些微的格式。 使用預構建的**[personName](luis-reference-prebuilt-person.md)** 實體或具有名字和姓氏[角色](luis-concept-roles.md)**[的簡單實體](luis-concept-entity-types.md#simple-entity)**。
+人名可依據語言和文化特性而有些微的格式。 請使用預先建立的**[personName](luis-reference-prebuilt-person.md)** 實體或具有名字和姓氏[角色](luis-concept-roles.md)的**[簡單實體](luis-concept-entity-types.md#simple-entity)**。
 
-如果使用簡單實體，請確保提供在話語的不同部分使用名字和姓氏的示例、不同長度的話語以及包含"無"意圖的所有意圖的話語。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
+如果您使用簡單實體，請務必提供在語句的不同部分中使用名字和姓氏的範例、語句不同的長度，以及跨所有意圖的語句，包括 None 意圖。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
 
 ### <a name="names-of-places"></a>地名
 
-位置名稱被設置和已知，如城市、縣、州、省和國家/地區。 使用預構建的實體**[地理 V2](luis-reference-prebuilt-geographyv2.md)** 提取位置資訊。
+位置名稱已設定且已知，例如城市、縣/市、州、省和國家/地區。 使用預先建立的實體**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 來解壓縮位置資訊。
 
 ### <a name="new-and-emerging-names"></a>全新和新興的名稱
 
-有些應用程式需要能夠尋找全新和新興的名稱，例如產品或公司。 這些類型的名稱是最難的資料提取類型。 從**[一個簡單的實體](luis-concept-entity-types.md#simple-entity)** 開始，然後添加[片語清單](luis-concept-feature.md)。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
+有些應用程式需要能夠尋找全新和新興的名稱，例如產品或公司。 這些類型的名稱是最棘手的資料解壓縮類型。 從**[簡單實體](luis-concept-entity-types.md#simple-entity)** 開始，並新增[片語清單](luis-concept-feature.md)。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
 
 ## <a name="pattern-roles-data"></a>模式角色資料
 角色是實體的內容相關差異。
@@ -558,7 +558,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
-機構名稱是`Location`，具有兩個角色`Origin``Destination`和 。
+機構名稱是`Location`，有兩個角色`Origin` ， `Destination`和。
 
 ```JSON
 "entities": [
@@ -591,11 +591,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-在 V3 中，**角色名稱**是物件的主名稱。
+在 V3 中，**角色名稱**是物件的主要名稱。
 
-機構名稱是`Location`，具有兩個角色`Origin``Destination`和 。
+機構名稱是`Location`，有兩個角色`Origin` ， `Destination`和。
 
-如果沒有查詢字串參數， `verbose=true`
+如果沒有 querystring 參數， `verbose=true`：
 
 ```json
 "entities": {
@@ -611,7 +611,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-使用查詢字串參數： `verbose=true`
+使用 querystring 參數， `verbose=true`：
 
 ```json
 "entities": {
@@ -679,7 +679,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 ## <a name="patternany-entity-data"></a>Pattern.any 實體資料
 
-[Pattern.any](reference-entity-pattern-any.md)是一個可變長度預留位置，僅用於模式的範本陳述中，用於標記實體的開始和結束位置。
+[Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。
 
 ## <a name="sentiment-analysis"></a>情感分析
 如果已設定情感分析，LUIS JSON 回應就會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。
@@ -748,7 +748,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-如果沒有查詢字串參數， `verbose=true`
+如果沒有 querystring 參數， `verbose=true`：
 
 ```json
 "entities": {
@@ -760,7 +760,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-使用查詢字串參數： `verbose=true`
+使用 querystring 參數， `verbose=true`：
 
 ```json
 "entities": {
@@ -820,7 +820,7 @@ LUIS 會傳回在語句中探索到的所有實體。 因此，您的 Chatbot �
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
-LUIS 終結點可以在不同的實體中發現相同的資料。
+LUIS 端點可以在不同的實體中探索相同的資料。
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
@@ -950,7 +950,7 @@ LUIS 終結點可以在不同的實體中發現相同的資料。
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-不`verbose=true`作為查詢字串參數。
+不`verbose=true`含做為 querystring 參數。
 
 ```json
 "entities": {
@@ -987,7 +987,7 @@ LUIS 終結點可以在不同的實體中發現相同的資料。
 }
 ```
 
-用作`verbose=true`查詢字串參數。
+`verbose=true`做為 querystring 參數。
 
 
 ```json
@@ -1175,7 +1175,7 @@ LUIS 終結點可以在不同的實體中發現相同的資料。
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-查詢`verbose=true`字串中無：
+在`verbose=true`查詢字串中不包含：
 
 ```JSON
 {
@@ -1205,7 +1205,7 @@ LUIS 終結點可以在不同的實體中發現相同的資料。
 ```
 
 
-在`verbose=true`查詢字串中：
+在`verbose=true`查詢字串中使用：
 
 ```JSON
 {

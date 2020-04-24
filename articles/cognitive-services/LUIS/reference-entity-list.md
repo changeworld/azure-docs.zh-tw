@@ -1,14 +1,14 @@
 ---
-title: 清單實體類型 - LUIS
+title: 列出實體類型-LUIS
 description: 清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用建議功能，以根據目前的清單查看適用於新字組的建議。
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297232"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097569"
 ---
 # <a name="list-entity"></a>清單實體
 
@@ -19,15 +19,15 @@ ms.locfileid: "79297232"
 **當文字資料有下列特性時，最適用此實體：**
 
 * 是已知的組合。
-* 不會經常改變。 如果需要經常更改清單或希望清單進行自我擴展，則使用片語清單提升的簡單實體是一個更好的選擇。
-* 此組合不會超過此實體類型的最大 LUIS [界限](luis-boundaries.md)。
-* 話語中的文本與同義字或正式名稱不區分大小寫。 LUIS 不會使用超出匹配範圍的清單。 模糊比對、詞幹、複數和其他變體不會使用清單實體解析。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
+* 不常變更。 如果您需要經常變更清單，或想要讓清單自我展開，使用片語清單提升的簡單實體是較好的選擇。
+* 此組合不會超過此實體類型的最大 LUIS [界限](luis-limits.md)。
+* 語句中的文字是與同義字或正式名稱相符的項目 (不區分大小寫)。 LUIS 不會將清單用於相符項目以外的範圍。 不會使用清單實體解析模糊比對、詞幹分析、複數和其他變化。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
 
 ![清單實體](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json-to-import-into-list-entity"></a>要導入清單實體的示例 .json
+## <a name="example-json-to-import-into-list-entity"></a>要匯入到清單實體的範例 json
 
-  您可以使用以下 .json 格式將值導入現有清單實體：
+  您可以使用下列 json 格式，將值匯入到現有的清單實體：
 
   ```JSON
   [
@@ -84,7 +84,7 @@ ms.locfileid: "79297232"
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 
-如果在`verbose=false`查詢字串中設置，則這是 JSON：
+如果`verbose=false`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ ms.locfileid: "79297232"
 }
 ```
 
-如果在`verbose=true`查詢字串中設置，則這是 JSON：
+如果`verbose=true`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -127,9 +127,9 @@ ms.locfileid: "79297232"
 
 |資料物件|實體名稱|值|
 |--|--|--|
-|清單實體|`Cities`|`paris`|
+|列出實體|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在[本教程](tutorial-list-entity.md)中，瞭解如何使用**清單實體**從已知項清單中提取文本的精確匹配。
+在本[教學](tutorial-list-entity.md)課程中，您將瞭解如何使用**清單實體**，從已知專案清單中解壓縮完全相符的文字。

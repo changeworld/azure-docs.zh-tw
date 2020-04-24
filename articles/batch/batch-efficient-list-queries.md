@@ -1,25 +1,15 @@
 ---
-title: 設計有效率的清單查詢 - Azure Batch | Microsoft Docs
+title: 設計有效率的清單查詢
 description: 藉由在要求集區、作業、工作和計算節點等 Batch 資源的資訊時篩選查詢，以提高效能。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: df923ac479ce5f5a3668c18c616b11348dc6c0b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fea8efd4e4946b67754bad98589b728e8d696425
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022234"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116106"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>建立查詢以便有效率地列出 Batch 資源
 
@@ -172,7 +162,7 @@ List<CloudPool> testPools =
 | [CloudJob][net_job] |[取得作業的相關資訊][rest_get_job] |
 | [CloudJobSchedule][net_schedule] |[取得作業排程的相關資訊][rest_get_schedule] |
 | [ComputeNode][net_node] |[取得節點的相關資訊][rest_get_node] |
-| [雲池][net_pool] |[取得集區的相關資訊][rest_get_pool] |
+| [CloudPool][net_pool] |[取得集區的相關資訊][rest_get_pool] |
 | [CloudTask][net_task] |[取得作業的相關資訊][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>範例：建構篩選字串

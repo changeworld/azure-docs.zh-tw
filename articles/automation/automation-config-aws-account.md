@@ -1,26 +1,26 @@
 ---
-title: 使用 Amazon Web 服務驗證 Azure 自動化執行簿
+title: 使用 Amazon Web Services 驗證 Azure 自動化 Runbook
 description: 本文說明如何在管理 AWS 資源的 Azure 自動化中建立和驗證 Runbook 的 AWS 認證。
 keywords: aws 驗證, 設定 aws
 services: automation
 ms.subservice: process-automation
-ms.date: 04/17/2018
+ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff9cedfbeaa36b2fafc84637ea3141b223a064
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1bf60d17af1d9866de6a62ac538fa0bd9a15ce52
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310487"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113386"
 ---
-# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>使用 Amazon Web 服務驗證 Azure 自動化執行簿
+# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 驗證 Azure 自動化 Runbook
 
 使用 Amazon Web Services (AWS) 中的資源自動執行常見工作可透過 Azure 中的自動化 Runbook 來完成。 您可以和使用 Azure 中的資源一樣，在 AWS 中使用自動化 Runbook 自動執行許多工作。 所需具備的只有兩項條件︰
 
 * AWS 訂用帳戶和一組認證。 具體而言就是您的 AWS 存取金鑰和秘密金鑰。 如需詳細資訊，請檢閱[使用 AWS 認證](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)一文。
 * Azure 訂用帳戶和自動化帳戶。
 
-若要使用 AWS 進行驗證，您必須指定一組 AWS 認證來驗證您從 Azure 自動化中執行的 Runbook。 如果您已經建立自動化帳戶，且想要使用它來向 AWS 驗證，則可以按照以下小節中的步驟操作：針對以 AWS 資源為目標的 Runbook，若要提供專用帳戶，應該先建立新的[自動化帳戶](automation-offering-get-started.md) (略過建立服務主體的選項) 並使用以下步驟：
+若要使用 AWS 進行驗證，您必須指定一組 AWS 認證來驗證您從 Azure 自動化中執行的 Runbook。 如果您已建立自動化帳戶，而且想要以該帳戶來使用 AWS 進行驗證，您可以依照下一節中的步驟來進行。 如果您想要針對以 AWS 資源為目標的 runbook 專用帳戶，您應該先建立新的[自動化帳戶](automation-create-standalone-account.md)，並略過建立執行身分帳戶的步驟。 建立帳戶之後，請遵循下列步驟來完成設定。
 
 ## <a name="configure-automation-account"></a>設定自動化帳戶
 

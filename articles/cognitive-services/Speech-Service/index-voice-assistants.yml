@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 語音助理文件
-summary: 使用語音服務的語音助理使開發人員能夠為其應用程式和體驗創建自然、類似人類的對話介面。
+summary: 語音助理使用語音服務，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。
 metadata:
-  title: 語音助理文檔 - 教程,API 參考 - Azure 認知服務 |微軟文件
+  title: 語音助理檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
+  ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401443"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82106197"
 landingContent:
 - title: 關於語音助理
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: 什麼是語音助理？
       url: voice-assistants.md
-    - text: 什麼是自定義命令應用?
+    - text: 什麼是自訂命令應用程式？
       url: custom-commands.md
     - text: 什麼是 Direct Line Speech？
       url: direct-line-speech.md
@@ -34,7 +34,11 @@ landingContent:
       url: faq-voice-assistants.md
     - text: 語音助理定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-- title: 使用自訂指令進行開發
+  - linkListType: get-started
+    links:
+    - text: 建立範例語音助理並將其部署至您的 Azure 訂用帳戶（GitHub）
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
+- title: 使用自訂命令進行開發
   linkLists:
   - linkListType: quickstart
     links:
@@ -56,7 +60,7 @@ landingContent:
       url: how-to-custom-speech-commands-confirmations.md
     - text: 新增單一步驟的更正
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: 使用直線語音開發
+- title: 使用 Direct Line Speech 進行開發
   linkLists:
   - linkListType: quickstart
     links:
@@ -78,5 +82,5 @@ landingContent:
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:
-    - text: 自訂關鍵字命名指南
+    - text: 自訂關鍵字命名指導方針
       url: speech-devices-sdk-kws-guidelines.md

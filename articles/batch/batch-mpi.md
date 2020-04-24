@@ -1,24 +1,15 @@
 ---
-title: 使用多重執行個體工作執行 MPI 應用程式 - Azure Batch | Microsoft Docs
+title: 使用多重實例工作來執行 MPI 應用程式
 description: 了解如何在 Azure Batch 中使用多重執行個體工作類來執行訊息傳遞介面 (MPI) 應用程式。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1896fea3c401299b4f77235ab3c02d85708b7041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023662"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115970"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多重執行個體工作來執行訊息傳遞介面 (MPI) 應用程式
 
@@ -104,8 +95,8 @@ await myCloudPool.CommitAsync();
   * [雲端服務的大小](../cloud-services/cloud-services-sizes-specs.md) (僅限 Windows)
 * **VirtualMachineConfiguration** 集區
 
-  * [Azure 中的虛擬機器大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
-  * [Azure 中的虛擬機器大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Azure 中的虛擬機器大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Linux）
+  * [Azure 中的虛擬機器大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（Windows）
 
 > [!NOTE]
 > 若要在 [Linux 計算節點](batch-linux-nodes.md)上利用 RDMA，您必須在節點上使用 **Intel MPI**。 
@@ -280,7 +271,7 @@ GitHub 上的 [MultiInstanceTasks][github_mpi] 程式碼範例示範如何使用
 
 ### <a name="execution"></a>執行
 1. 從 GitHub 下載 [azure-batch-samples][github_samples_zip]。
-2. 在 Visual Studio 2019 中打開多實例任務**解決方案**。 `MultiInstanceTasks.sln` 方案檔位於︰
+2. 在 Visual Studio 2019 中開啟 MultiInstanceTasks**方案**。 `MultiInstanceTasks.sln` 方案檔位於︰
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. 在 **Microsoft.Azure.Batch.Samples.Common** 專案的 `AccountSettings.settings` 中輸入 Batch 和儲存體帳戶的認證。

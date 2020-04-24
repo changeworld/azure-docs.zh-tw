@@ -1,27 +1,18 @@
 ---
-title: 自動調整 Azure Batch 集區中的計算節點 | Microsoft Docs
+title: 自動調整 Azure Batch 集區中的計算節點
 description: 在雲端集區上啟用自動調整，以動態調整集區中的計算節點數目。
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 398b6d9c3fc05a6cf164b4003f57b94ecd6c1972
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054006"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113556"
 ---
-# <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>創建用於在批次處理池中縮放計算節點的自動公式
+# <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>建立自動公式以調整 Batch 集區中的計算節點
 
 Azure Batch 可以根據您定義的參數自動調整集區。 使用自動調整，Batch 會隨著工作需求增加，動態地將節點新增至集區，以及隨著工作需求減少而移除計算節點。 自動調整 Batch 應用程式所使用的計算節點數目，可讓您節省時間與金錢。
 
@@ -59,11 +50,11 @@ $variable2 = function2($OtherServiceDefinedVariable, $variable1);
 
 目標節點數目可能會更高、更低，或與集區中該類型目前的節點數目相同。 Batch 服務會在特定間隔評估集區的自動調整公式 (請參閱[自動調整間隔](#automatic-scaling-interval))。 Batch 會將集區中每個節點類型的目標數目調整為自動調整公式在評估時指定的數目。
 
-### <a name="sample-autoscale-formulas"></a>示例自動縮放公式
+### <a name="sample-autoscale-formulas"></a>自動調整公式範例
 
-下面是兩個自動縮放公式的示例，可以調整這些公式以適用于大多數方案。 變數`startingNumberOfVMs`和`maxNumberofVMs`示例公式可以根據您的需要進行調整。
+以下是兩個自動調整公式的範例，可加以調整以適用于大部分的案例。 範例公式`startingNumberOfVMs`中`maxNumberofVMs`的變數和可以依據您的需求進行調整。
 
-#### <a name="pending-tasks"></a>掛起的任務
+#### <a name="pending-tasks"></a>暫止工作
 
 ```
 startingNumberOfVMs = 1;
@@ -78,7 +69,7 @@ $NodeDeallocationOption = taskcompletion;
 
 此公式會調整專用節點，但是可加以修改，套用來調整低優先順序節點。
 
-#### <a name="preempted-nodes"></a>搶佔節點 
+#### <a name="preempted-nodes"></a>搶先節點 
 
 ```
 maxNumberofVMs = 25;
@@ -87,7 +78,7 @@ $TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicated
 $NodeDeallocationOption = taskcompletion;
 ```
 
-本示例創建一個以 25 個低優先順序節點開頭的池。 每次搶佔低優先順序節點時，都會將其替換為專用節點。 與第一個示例一樣`maxNumberofVMs`，該變數可防止池超過 25 個 VM。 此示例可用於利用低優先順序 VM，同時確保在池的存留期內僅發生固定數量的搶佔。
+這個範例會建立一個以25個低優先順序節點開頭的集區。 每次佔用低優先順序節點時，就會將其取代為專用節點。 如同第一個範例， `maxNumberofVMs`變數會防止集區超過25部 vm。 這個範例適用于利用低優先順序的 Vm，同時也確保集區的存留期只會發生固定數目的 preemptions。
 
 ## <a name="variables"></a>變數
 
@@ -102,20 +93,20 @@ $NodeDeallocationOption = taskcompletion;
 
 您可以取得並設定這些這些服務定義的變數值，以管理集區中的計算節點：
 
-| 讀寫服務定義變數 | 描述 |
+| 讀寫服務定義變數 | 說明 |
 | --- | --- |
 | $TargetDedicatedNodes |集區之專用計算節點的目標數目。 專用節點數目被指定作為目標，因為集區不一定會達到想要的節點數目。 例如，如果在集區達到初始目標之前，自動調整評估修改目標專用節點數目，則集區可能未達到目標。 <br /><br /> 如果目標超過 Batch 帳戶節點或核心配額，以 Batch 服務設定建立之帳戶中的集區可能未達到其目標。 如果目標超過訂用帳戶的共用核心配額，以使用者訂用帳戶設定建立之帳戶中的集區可能未達到其目標。|
-| $TargetLowPriorityNodes |集區之低優先順序計算節點的目標數目。 低優先順序節點數目被指定作為目標，因為集區不一定會達到想要的節點數目。 例如，如果在集區達到初始目標之前，自動調整評估修改目標低優先順序節點數目，則集區可能未達到目標。 如果目標超過 Batch 帳戶節點或核心配額，則集區也可能未達到其目標。 <br /><br /> 有關低優先順序計算節點的詳細資訊，請參閱[使用具有批次處理的低優先順序 VM。](batch-low-pri-vms.md) |
-| $NodeDeallocationOption |計算節點從集區移除時所發生的動作。 可能的值包括：<ul><li>**重新排隊**-- 預設值。 立即終止任務，並將它們放回作業佇列，以便重新安排任務。 此操作可確保儘快到達目標節點數，但效率可能較低，因為任何正在運行的任務都將中斷，必須重新開機，從而浪費他們已完成的任何工作。 <li>**terminate**：立即終止工作，並從作業佇列移除這些工作。<li>**taskcompletion**：等待目前執行中的工作完成，然後再從集區中移除該節點。 使用此選項可避免任務被中斷和重新排隊，從而浪費任務完成的任何工作。 <li>**retaineddata**：等待所有本機工作保留在節點上的資料先清除，再從集區移除節點。</ul> |
+| $TargetLowPriorityNodes |集區之低優先順序計算節點的目標數目。 低優先順序節點數目被指定作為目標，因為集區不一定會達到想要的節點數目。 例如，如果在集區達到初始目標之前，自動調整評估修改目標低優先順序節點數目，則集區可能未達到目標。 如果目標超過 Batch 帳戶節點或核心配額，則集區也可能未達到其目標。 <br /><br /> 如需低優先順序計算節點的詳細資訊，請參閱[使用低優先順序的 vm 搭配 Batch](batch-low-pri-vms.md)。 |
+| $NodeDeallocationOption |計算節點從集區移除時所發生的動作。 可能的值包括：<ul><li>**requeue**--預設值。 立即終止工作，並將它們放回作業佇列，使其重新排程。 此動作可確保節點的目標數目儘快達到，但可能較不有效率，因為任何執行中的工作將會中斷，而且必須重新開機，因而浪費已完成的任何工作。 <li>**terminate**：立即終止工作，並從作業佇列移除這些工作。<li>**taskcompletion**：等待目前執行中的工作完成，然後再從集區中移除該節點。 使用此選項可避免工作中斷和重新排入佇列，並浪費工作已完成的任何工作。 <li>**retaineddata**：等待所有本機工作保留在節點上的資料先清除，再從集區移除節點。</ul> |
 
 > [!NOTE]
-> 也可以`$TargetDedicatedNodes`使用別名`$TargetDedicated`指定變數。 同樣，`$TargetLowPriorityNodes`可以使用別名`$TargetLowPriority`指定變數。 如果完全命名的變數及其別名都由公式設置，則分配給完全命名的變數的值將優先。
+> `$TargetDedicatedNodes`變數也可以使用別名`$TargetDedicated`來指定。 同樣地， `$TargetLowPriorityNodes`您可以使用別名`$TargetLowPriority`來指定變數。 如果完整命名的變數及其別名都是由公式所設定，則指派給完整命名變數的值將會優先。
 >
 >
 
 您可以取得這些服務定義的變數值，以根據 Batch 服務提供的計量進行調整：
 
-| 唯讀服務定義變數 | 描述 |
+| 唯讀服務定義變數 | 說明 |
 | --- | --- |
 | $CPUPercent |CPU 使用量的平均百分比。 |
 | $WallClockSeconds |已耗用的秒數。 |
@@ -128,13 +119,13 @@ $NodeDeallocationOption = taskcompletion;
 | $NetworkInBytes |輸入位元組的數目。 |
 | $NetworkOutBytes |輸出位元組的數目。 |
 | $SampleNodeCount |計算節點的計數。 |
-| $ActiveTasks |準備好執行但還未執行的工作數目。 $ActiveTasks 計數包含處於作用中狀態，而且已滿足其相依性的所有工作。 處於作用中狀態但未滿足其相依性的任何工作會從 $ActiveTasks 計數排除。 對於多實例任務，$ActiveTasks將包括在任務上設置的實例數。|
+| $ActiveTasks |準備好執行但還未執行的工作數目。 $ActiveTasks 計數包含處於作用中狀態，而且已滿足其相依性的所有工作。 處於作用中狀態但未滿足其相依性的任何工作會從 $ActiveTasks 計數排除。 若為多重實例工作，$ActiveTasks 將包含工作上設定的實例數目。|
 | $RunningTasks |處於執行中狀態的工作數目。 |
 | $PendingTasks |$ActiveTasks 和 $RunningTasks 的總和。 |
 | $SucceededTasks |已成功完成的工作數目。 |
 | $FailedTasks |失敗的工作數目。 |
 | $CurrentDedicatedNodes |目前的專用計算節點數目。 |
-| $CurrentLowPriorityNodes |當前低優先順序計算節點的數量，包括已搶佔的任何節點。 |
+| $CurrentLowPriorityNodes |低優先順序計算節點的目前數目，包括已被佔用的任何節點。 |
 | $PreemptedNodeCount | 優先佔用狀態的集區中之節點數目。 |
 
 > [!TIP]
@@ -142,7 +133,7 @@ $NodeDeallocationOption = taskcompletion;
 >
 >
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
 公式中支援以下類型：
 
@@ -172,7 +163,7 @@ $NodeDeallocationOption = taskcompletion;
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>作業
+## <a name="operations"></a>操作
 
 上一節列出的類型允許這些作業。
 
@@ -200,7 +191,7 @@ $NodeDeallocationOption = taskcompletion;
 ## <a name="functions"></a>函式
 這些預先定義的 **函式** 可供您用來定義自動調整公式。
 
-| 函式 | 傳回類型 | 描述 |
+| 函式 | 傳回類型 | 說明 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |傳回 doubleVecList 中所有值的平均值。 |
 | len(doubleVecList) |double |傳回 doubleVecList 建立的向量的長度。 |
@@ -247,7 +238,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>樣本、樣本百分比和 GetSample() ** 方法
 自動調整公式的核心是要取得工作和資源度量資料，然後根據該資料調整集區大小。 因此，請務必清楚了解自動調整公式如何與計量資料 (樣本) 互動。
 
-**樣品**
+**範例**
 
 Batch 服務會定期取得工作和資源計量的樣本，使其可供自動調整公式使用。 Batch 服務會每隔 30 秒記錄一次這些樣本。 不過，記錄樣本的時間與樣本可供自動調整公式使用 (與讀取) 的時間之間有所延遲。 此外，由於各種因素 (例如網路或其他基礎結構問題)，可能未在特定間隔內記錄樣本。
 
@@ -295,10 +286,10 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 <table>
   <tr>
     <th>計量</th>
-    <th>描述</th>
+    <th>說明</th>
   </tr>
   <tr>
-    <td><b>資源</b></td>
+    <td><b>Resource</b></td>
     <td><p>資源計量是以計算節點的 CPU、頻寬和記憶體使用量以及節點數目為基礎。</p>
         <p> 這些服務定義的變數適合用於根據節點計數進行調整：</p>
     <p><ul>
@@ -323,7 +314,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>任務</b></td>
+    <td><b>Task</b></td>
     <td><p>工作計量是根據工作的狀態，例如作用中、暫止和已完成。 下列服務定義的變數適合用於根據工作度量進行集區大小調整：</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -344,7 +335,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 1. 如果 CPU 使用率偏高，則增加集區中專用計算節點的目標數目。
 1. 如果 CPU 使用率偏低，則減少集區中專用計算節點的目標數目。
 1. 一律以 400 為專用節點的數目上限。
-1. 減少節點數量時，不要刪除正在運行的任務的節點;因此，不要刪除正在運行的節點。如有必要，請等待任務完成以刪除節點。
+1. 減少節點數目時，請勿移除正在執行工作的節點;如有必要，請等候工作完成以移除節點。
 
 為了在高 CPU 使用率期間增加節點數目，將陳述式定義為在使用者定義的變數 (`$totalDedicatedNodes`) 中填入 110% 的專用節點目前目標數目值，但僅限在過去 10 分鐘期間平均 CPU 使用率下限大於 70%。 否則，請使用專用節點目前數目值。
 
@@ -380,9 +371,9 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>使用批次處理 SDK 創建啟用自動縮放的池
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>使用 Batch Sdk 建立已啟用自動調整的集區
 
-池自動縮放可以使用任何[批次處理 SDK、](batch-apis-tools.md#azure-accounts-for-batch-development)[批次處理 REST API](https://docs.microsoft.com/rest/api/batchservice/) [批次處理電源 Shell Cmdlet](batch-powershell-cmdlets-get-started.md)和[批次處理 CLI](batch-cli-get-started.md)進行配置。 在本節中，您可以看到 .NET 和 Python 的示例。
+您可以使用任何[Batch sdk](batch-apis-tools.md#azure-accounts-for-batch-development)、 [Batch REST API](https://docs.microsoft.com/rest/api/batchservice/) [BATCH PowerShell Cmdlet](batch-powershell-cmdlets-get-started.md)和[batch CLI](batch-cli-get-started.md)來設定集區自動調整。 在本節中，您可以查看 .NET 和 Python 的範例。
 
 ### <a name="net"></a>.NET
 
@@ -428,11 +419,11 @@ await pool.CommitAsync();
 
 ### <a name="python"></a>Python
 
-同樣，您可以通過以下方式使用 Python SDK 建立啟用自動縮放的池：
+同樣地，您可以透過下列方式，使用 Python SDK 建立已啟用自動調整的集區：
 
-1. 創建池並指定其配置。
-1. 將池添加到服務用戶端。
-1. 使用編寫的公式在池上啟用自動縮放。
+1. 建立集區並指定其設定。
+1. 將集區新增至服務用戶端。
+1. 使用您所撰寫的公式在集區上啟用自動調整。
 
 ```python
 # Create a pool; specify configuration
@@ -466,7 +457,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 ```
 
 > [!TIP]
-> 更多使用 Python SDK 的示例可在 GitHub 上的[Batch Python 快速啟動存儲庫](https://github.com/Azure-Samples/batch-python-quickstart)中找到。
+> 您可以在 GitHub 上的[Batch Python 快速入門存放庫](https://github.com/Azure-Samples/batch-python-quickstart)中找到更多使用 Python SDK 的範例。
 >
 >
 
@@ -627,7 +618,7 @@ AutoScaleRun.Results:
 
 在 REST API 中，[取得集區的相關資訊](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)要求會傳回集區的相關資訊，其中包含 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) 屬性中最近執行的自動調整資訊。
 
-以下 C# 程式碼片段使用 Batch .NET 庫列印有關在池_myPool_上運行的最後一次自動縮放的資訊：
+下列 c # 程式碼片段會使用 Batch .NET 程式庫來列印有關集區_myPool_上最後一個自動調整執行的資訊：
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");
@@ -668,7 +659,7 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
-`$curTime`可以通過添加到`time()`產品和`TimeZoneInterval_Hour`UTC 偏移量來調整以反映本地時區。 例如，用於`$curTime = time() + (-6 * TimeInterval_Hour);`山區夏令時 （MDT）。 請記住，在夏令時開始和結束時（如果適用），需要調整偏移量。
+`$curTime`可以藉由將加入`time()`至的產品`TimeZoneInterval_Hour`和 UTC 時差，加以調整以反映當地時區。 例如， `$curTime = time() + (-6 * TimeInterval_Hour);`用於山區日光節約時間（MDT）。 請記住，在日光節約時間的開始和結束時，必須調整位移（如果適用）。
 
 ### <a name="example-2-task-based-adjustment"></a>範例 2：以工作為基礎的調整
 

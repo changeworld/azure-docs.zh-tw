@@ -1,22 +1,14 @@
 ---
-title: 使用 Azure Application Insights 監視 Batch | Microsoft Docs
+title: 使用 Azure 應用程式 Insights 監視 Batch
 description: 了解如何使用 Azure Application Insights 程式庫檢測 Azure Batch .NET 應用程式。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
-ms.devlang: .NET
 ms.topic: article
-ms.workload: na
 ms.date: 04/05/2018
-ms.author: labrenne
-ms.openlocfilehash: b1f4fb0207d4f659861dbd3fdfd1b2d502409935
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022455"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115460"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 監視 Azure Batch .NET 應用程式並進行偵錯
 
@@ -27,11 +19,11 @@ ms.locfileid: "77022455"
 隨附於本文的 C# 解決方案範例與程式碼可於 [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) 中取得。 此範例會將 Application Insights 檢測程式碼新增至 [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) 範例。 如果您不熟悉該範例，請先嘗試建置及執行 TopNWords。 這麼做可協助您了解在多個計算節點上平行處理一組輸入 Blob 的基本 Batch 工作流程。 
 
 > [!TIP]
-> 或者，將您的 Batch 解決方案設定為顯示 Application Insights 資料，例如 Batch Explorer 中的 VM 效能計數器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝包](https://azure.github.io/BatchExplorer/)。 如需在 Batch Explorer 中啟用 Application Insights 資料的快速步驟，請參閱 [batch-insights 存放庫](https://github.com/Azure/batch-insights)。 
+> 或者，將您的 Batch 解決方案設定為顯示 Application Insights 資料，例如 Batch Explorer 中的 VM 效能計數器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。 如需在 Batch Explorer 中啟用 Application Insights 資料的快速步驟，請參閱 [batch-insights 存放庫](https://github.com/Azure/batch-insights)。 
 >
 
 ## <a name="prerequisites"></a>Prerequisites
-* [視覺工作室 2017 或更高版本](https://www.visualstudio.com/vs)
+* [Visual Studio 2017 或更新版本](https://www.visualstudio.com/vs)
 
 * [Batch 帳戶和連結的 Azure 儲存體帳戶](batch-account-create-portal.md)
 
@@ -288,7 +280,7 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 自訂計量也是入口網站中的實用工具。 例如，您可以顯示每個計算節點下載所處理的必要文字檔案時，所花費的平均時間。
 
 建立範例圖表：
-1. 在應用程式見解資源中，按一下 **"指標資源管理器** > **添加圖表**"。
+1. 在您的 Application Insights 資源中，按一下 [**計量瀏覽器** > **新增圖表**]。
 2. 在新增的圖表上按一下 [編輯]****。
 2. 更新圖表的詳細資料，如下所示：
    * 將 [圖表類型]**** 設定為 [方格]****。

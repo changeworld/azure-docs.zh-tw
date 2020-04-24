@@ -1,6 +1,6 @@
 ---
-title: Azure AD 中連續存取評估
-description: 透過 Azure AD 中的連續存取評估更快的回應使用者狀態變更
+title: Azure AD 中的持續存取評估
+description: 使用 Azure AD 中的持續存取評估，更快地回應使用者狀態的變更
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,86 +11,88 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b70c11cd6bc24f945b437decf22586cfb97557
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873299"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112570"
 ---
 # <a name="continuous-access-evaluation"></a>連續存取評估
 
-Microsoft 服務(如 Azure 活動目錄 (Azure AD) 和 Office 365)使用開放標準和協定來最大化互操作性。 其中最關鍵的是打開 ID 連接 (OIDC)。 當 Outlook 等用戶端應用程式連接到 Exchange Online 等服務時,API 請求將使用 OAuth 2.0 訪問權杖進行授權。 默認情況下,這些訪問權杖的有效期為一小時。 當用戶端過期時,用戶端將重定向回 Azure AD 以刷新它們。 這也提供了重新評估使用者存取策略的機會 - 我們可能選擇不刷新權杖,因為條件存取策略,或者因為使用者已在目錄中禁用。 
+Microsoft 服務（如 Azure Active Directory （Azure AD）和 Office 365）使用開放式標準和通訊協定，將互通性最大化。 其中一個最重要的是 Open ID Connect （OIDC）。 當 Outlook 之類的用戶端應用程式連接到 Exchange Online 之類的服務時，API 要求會使用 OAuth 2.0 存取權杖進行授權。 根據預設，這些存取權杖的有效時間為一小時。 當它們過期時，用戶端會重新導向回到 Azure AD 以重新整理。 這也有機會重新評估使用者存取原則-我們可能因為條件式存取原則而選擇不要重新整理權杖，或因為該使用者已在目錄中停用。 
 
-我們聽到來自客戶的大量反饋:由於重新應用條件訪問策略的訪問令牌存留期導致一小時的延遲,以及使用者狀態的更改(例如:由於毛茸茸而禁用)不夠好。
+權杖到期和重新整理是產業中的標準機制。 話雖如此，客戶對於使用者的風險狀況變更（例如：從公司辦公室移到當地咖啡廳，或在黑色市場上探索到的使用者認證）之間的延遲有一些疑慮，而且可以強制執行與該變更相關的原則。 我們已經實驗了降低權杖存留期的「鈍物件」方法，但發現它們會降低使用者經驗和可靠性，而不會消除風險。
 
-作為 OpenID 基金會[共用信號和事件](https://openid.net/wg/sse/)工作組的一部分,Microsoft 已提前參加了連續訪問評估協定 (CAEP) 計劃。 標識提供者和依賴方將能夠利用工作組定義的安全事件和訊號重新授權或終止存取。 這是一個令人興奮的工作,將提高許多平台和應用程序的安全性。
+及時回應原則違規或安全性問題，確實需要權杖簽發者（例如 Azure AD）與信賴憑證者（例如 Exchange Online）之間的「交談」。 這個雙向交談提供兩個重要功能。 信賴憑證者可以注意到專案已變更，例如來自新位置的用戶端，以及告訴權杖簽發者。 它也會提供權杖簽發者一種方法，告訴信賴憑證者因帳戶遭到入侵、停用或其他考慮，而停止尊重指定使用者的權杖。 此交談的機制是持續存取評估（CAE）。
 
-由於安全優勢如此之大,我們正在推出特定於 Microsoft 的初始實現,同時我們在標準機構內繼續工作。 當我們努力跨 Microsoft 服務部署這些連續訪問評估 (CAE) 功能時,我們學到了很多東西,並且正在與標準社區共用此資訊。 我們希望我們的部署經驗能夠有助於制定更好的行業標準,並承諾一旦批准該標準,即可實施該標準,從而使所有參與服務受益。
+Microsoft 曾成為連續存取評估通訊協定（CAEP）計畫的早期參與者，做為 OpenID Foundation 的[共用信號和事件](https://openid.net/wg/sse/)工作群組的一部分。 身分識別提供者和信賴憑證者將能夠利用工作群組所定義的安全性事件和信號來重新授權或終止存取權。 這是一項令人興奮的工作，可提升許多平臺和應用程式的安全性。
 
-## <a name="how-does-cae-work-in-microsoft-services"></a>CAE 在Microsoft服務中是如何工作的?
+因為安全性優勢非常好用，所以我們會在標準內建的持續工作中，以平行方式推出 Microsoft 特有的初始實施。 當我們在 Microsoft 服務中部署這些持續存取評估（CAE）功能時，我們學到很多，而且與標準社區分享這項資訊。 我們希望我們的部署經驗可以協助通知更棒的產業標準，並承諾在核准的情況下實施該標準，讓所有參與的服務都能受益。
 
-我們正在集中對 Exchange 和團隊進行持續訪問評估的初始實施。 我們希望將來能擴大對微軟其他服務的支援。 我們將開始僅對沒有條件訪問策略的租戶啟用連續訪問評估。 我們將利用我們在此階段從 CAE 中學到的知識,為正在進行的 CAE 推出提供資訊。
+## <a name="how-does-cae-work-in-microsoft-services"></a>CAE 在 Microsoft 服務中的運作方式為何？
 
-## <a name="service-side-requirements"></a>服務方要求
+我們將焦點放在對 Exchange 和小組進行持續存取評估的初始過程中。 我們希望未來將支援擴充至其他 Microsoft 服務。 我們只會開始針對沒有條件式存取原則的租使用者啟用連續存取評估。 我們將從這個 CAE 階段使用我們的學習，以通知我們持續推出的 CAE。
 
-通過啟用服務(資源提供程式)訂閱 Azure AD 中的關鍵事件,以便可以近乎即時地評估和強制執行這些事件,從而實現連續訪問評估。 初始憑證中將強制執行以下事件:
+## <a name="service-side-requirements"></a>服務端需求
 
-- 使用者帳號被刪除或關閉
-- 變更或重置使用者的密碼
-- 管理員顯示式復原使用者的所有刷新權杖
-- Azure AD 識別保護偵測到的升高的使用者風險
+持續存取評估的實行方式是讓服務（資源提供者）訂閱 Azure AD 中的重大事件，讓這些事件可以近乎即時地進行評估和強制執行。 此初始 CAE 首度發行將會強制執行下列事件：
 
-將來,我們希望添加更多事件,包括位置和設備狀態更改等事件。 **雖然我們的目標是強制是即時的,但在某些情況下,由於事件傳播時間,可能會觀察到長達 15 分鐘的延遲**。 
+- 已刪除或停用使用者帳戶
+- 使用者的密碼已變更或重設
+- 管理員明確撤銷使用者的所有重新整理權杖
+- Azure AD Identity Protection 偵測到提高許可權的使用者風險
+
+未來，我們希望新增更多事件，包括位置和裝置狀態變更等事件。 **雖然我們的目標是要立即強制執行，但在某些情況下，可能會因為事件傳播時間而發現最多15分鐘的延遲**。 
 
 ## <a name="client-side-claim-challenge"></a>用戶端索賠挑戰
 
-在連續訪問評估之前,只要訪問權杖未過期,客戶端始終會嘗試從緩存中重播訪問權杖。 使用 CAE,我們引入了一個新案例,即資源提供程式可以拒絕令牌,即使令牌未過期也是如此。 為了通知客戶端繞過緩存,即使緩存的令牌尚未過期,我們引入了一種稱為**聲明質詢**的機制。 CAE 需要用戶端更新才能瞭解索賠挑戰。 以下支援索賠挑戰的最新版本:
+在進行連續存取評估之前，用戶端一律會嘗試從其快取中重新執行存取權杖，但前提是它未過期。 透過 CAE，我們引進了新的案例，讓資源提供者可以拒絕權杖，即使尚未過期也一樣。 為了通知用戶端即使快取的權杖尚未過期，也會略過其快取，我們引進了一項稱為「宣告**挑戰**」的機制。 CAE 需要用戶端更新以瞭解宣告挑戰。 下列應用程式的最新版本支援索賠挑戰：
 
-- 視窗展望 
+- 適用于 Windows 的 Outlook 
 - Outlook iOS 
-- 展望安卓 
-- 展望 Mac 
-- 視窗團隊
-- 團隊 iOS 
-- 團隊安卓 
-- 團隊 Mac 
+- Outlook Android 
+- Outlook Mac 
+- Windows 團隊
+- 小組 iOS 
+- Android 團隊 
+- 小組 Mac 
 
 ## <a name="token-lifetime"></a>權杖存留期
 
-由於風險和策略是即時評估的,因此協商連續訪問評估感知會話的用戶端將依賴於 CAE 而不是現有的靜態訪問令牌存留期策略,這意味著協商 CAE 感知會話的啟用 CAE 的用戶端將不再遵守可配置的權杖存留期策略。
+因為風險和原則會即時進行評估，所以協商連續存取評估感知會話的用戶端會依賴 CAE，而不是現有的靜態存取權杖存留期原則，這表示協調 CAE 感知會話的支援 CAE 的用戶端將不再接受可設定的權杖存留期原則。
 
-我們將在 CAE 會話中將訪問權杖存留期增加到 24 小時。 吊銷是由關鍵事件和策略評估驅動的,而不是任意的時間段。 此更改提高了應用程式的穩定性,而不會影響您的安全狀態。 
+在 CAE 會話中，我們會將存取權杖存留期增加為24小時。 撤銷是由重大事件和原則評估所驅動，而不是任意時間週期。 這項變更會提高應用程式的穩定性，而不會影響您的安全性狀態。 
 
-## <a name="example-flows"></a>範例流
+## <a name="example-flows"></a>範例流程
 
-### <a name="user-revocation-event-flow"></a>使用者撤銷事件串流:
+### <a name="user-revocation-event-flow"></a>使用者撤銷事件流程：
 
-![使用者撤銷事件串流](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
+![使用者撤銷事件流程](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
 
-1. 支援 CAE 的用戶端向 AAD 提供認證或刷新權杖,要求為某些資源請求存取權杖。
-1. 訪問權杖與其他專案一起返回到用戶端。
-1. 管理員顯示式[復原使用者的所有刷新權杖](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 吊銷事件將從 Azure AD 發送到資源提供程式。
-1. 向資源提供程序顯示訪問權杖。 資源提供程式評估權杖的有效性,並檢查使用者是否有任何吊銷事件。 資源提供程式使用此資訊決定是否授予對資源的訪問許可權。
-1. 在這種情況下,資源提供者拒絕存取,並將 401+ 索賠質詢傳送回用戶端
-1. 支援 CAE 的用戶端瞭解 401+ 索賠挑戰。 它繞過緩存並返回步驟 1,將其刷新令牌以及聲明質詢一起發送回 Azure AD。 然後,Azure AD 將重新評估所有條件,並提示使用者在這種情況下重新進行身份驗證。
+1. 具有 CAE 功能的用戶端會向 AAD 出示認證或重新整理權杖，以要求某些資源的存取權杖。
+1. 存取權杖會連同其他成品一起傳回給用戶端。
+1. 系統管理員明確[撤銷使用者的所有](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)重新整理權杖。 撤銷事件將會從 Azure AD 傳送給資源提供者。
+1. 存取權杖會呈現給資源提供者。 資源提供者會評估權杖的有效性，並檢查使用者是否有任何撤銷事件。 資源提供者會使用此資訊來決定是否要授與資源的存取權。
+1. 在此情況下，資源提供者會拒絕存取，並將 401 + 宣告挑戰傳送回用戶端
+1. 支援 CAE 的用戶端瞭解 401 + 宣告挑戰。 它會略過快取，並返回步驟1，將其重新整理權杖連同宣告挑戰傳回 Azure AD。 Azure AD 接著會重新評估所有條件，並在此情況下提示使用者重新驗證。
  
 ## <a name="faqs"></a>常見問題集
 
-### <a name="what-is-the-lifetime-of-my-access-token"></a>我的訪問權杖的存留期是多少?
+### <a name="what-is-the-lifetime-of-my-access-token"></a>我的存取權杖存留期為何？
 
-如果您沒有使用支援 CAE 的用戶端,則預設訪問權杖生存期仍為 1 小時,除非您已使用[可配置權杖存留期 (CTL)](../develop/active-directory-configurable-token-lifetimes.md)預覽功能設定了存取權杖存留期。
+如果您不是使用支援 CAE 的用戶端，除非您已使用可設定的[權杖存留期（CTL）](../develop/active-directory-configurable-token-lifetimes.md)預覽功能來設定存取權杖存留期，否則預設存取權杖存留期仍然會是1小時。
 
-如果您使用的是支援 CAE 的用戶端協商 CAE 感知會話,則存取權杖生存期的 CTL 設定將被覆寫,存取權杖存留期為 24 小時。
+如果您使用可支援 CAE 的用戶端來協調 CAE 感知會話，將會覆寫存取權杖存留期的 CTL 設定，而且存取權杖存留期會是24小時。
 
-### <a name="how-quick-is-enforcement"></a>執行速度有多快?
+### <a name="how-quick-is-enforcement"></a>強制執行的速度如何？
 
-雖然我們的目標是實現即時執行,但在某些情況下,由於事件傳播時間,可能會觀察到長達 15 分鐘的延遲。
+雖然我們的目標是要立即強制執行，但在某些情況下，可能會因為事件傳播時間而發現最多15分鐘的延遲。
 
-### <a name="how-will-cae-work-with-sign-in-frequency"></a>CAE 如何使用登錄頻率?
+### <a name="how-will-cae-work-with-sign-in-frequency"></a>CAE 如何使用登入頻率？
 
-登錄頻率將遵循或沒有 CAE。
+登入頻率將會接受或不含 CAE。
 
 ## <a name="next-steps"></a>後續步驟
 
-[宣佈連續存取評估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+[宣佈持續存取評估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

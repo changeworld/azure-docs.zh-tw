@@ -1,20 +1,15 @@
 ---
-title: 適用於開發人員的 API 和工具 - Azure Batch | Microsoft Docs
+title: 適用于開發人員的 Api 和工具
 description: 了解可搭配 Azure Batch 服務用來開發解決方案的 API 和工具。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 00d2a74946957f690979eec1d3a03a9b766299d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c268675a39dfd3c70b3d8d8e457a2a200d7db6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252320"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114916"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API 和工具的概觀
 
@@ -30,31 +25,31 @@ ms.locfileid: "79252320"
 ## <a name="azure-accounts-for-batch-development"></a>用於 Batch 開發的 Azure 帳戶
 當您開發 Batch 解決方案時，您將在 Azure 訂用帳戶中使用下列帳戶：
 
-* **批次處理帳戶**- Azure 批次處理資源（包括池、計算節點、作業和任務）與 Azure [Batch 帳戶](batch-api-basics.md#account)相關聯。 當您的應用程式對 Batch 服務提出要求時，可以使用 Azure Batch 帳戶名稱、帳戶的 URL 及存取金鑰或 Azure Active Directory 權杖，來驗證此要求。 您可以在 Azure 入口網站中或以程式設計方式[建立 Batch 帳戶](batch-account-create-portal.md)。
+* **Batch 帳戶**-Azure Batch 資源（包括集區、計算節點、作業和工作）都與 Azure [Batch 帳戶](batch-api-basics.md#account)相關聯。 當您的應用程式對 Batch 服務提出要求時，可以使用 Azure Batch 帳戶名稱、帳戶的 URL 及存取金鑰或 Azure Active Directory 權杖，來驗證此要求。 您可以在 Azure 入口網站中或以程式設計方式[建立 Batch 帳戶](batch-account-create-portal.md)。
 * **儲存體帳戶** - Batch 內建就支援處理 [Azure 儲存體][azure_storage]中的檔案。 幾乎每個 Batch 案例都會使用 Azure Blob 儲存體，來預備工作執行的程式及其處理的資料，以及儲存其產生的輸出資料。 如需 Batch 中的儲存體帳戶選項，請參閱 [Batch 功能概觀](batch-api-basics.md#azure-storage-account)。
 
 ## <a name="batch-service-apis"></a>Batch 服務 API
 
 應用程式和服務可以發出直接的 REST API 呼叫，或使用一或多個下列用戶端程式庫來執行和管理 Azure Batch 工作負載。
 
-| API | 應用程式開發介面參考 | 下載 | 教學課程 | 程式碼範例 | 其他資訊 |
+| API | API 參考資料 | 下載 | 教學課程 | 程式碼範例 | 其他資訊 |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com][batch_rest] |N/A |- |- | [支援的版本](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch REST** |[docs.microsoft.com][batch_rest] |不適用 |- |- | [支援的版本](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[教學課程](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [版本資訊](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[教學課程](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [讀我檔案](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
-| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[Npm][api_nodejs_npm] |[教學課程](batch-nodejs-get-started.md) |- | [讀我檔案](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[教學課程](batch-nodejs-get-started.md) |- | [讀我檔案](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[讀我檔案][api_sample_java] | [讀我檔案](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Batch 管理 API
 
 適用於 Batch 的 Azure Resource Manager API 會提供 Batch 帳戶的程式設計存取方式。 使用這些 API，您可以透過 Microsoft.Batch 提供者，以程式設計方式管理 Batch 帳戶、配額、應用程式套件及其他資雲。  
 
-| API | 應用程式開發介面參考 | 下載 | 教學課程 | 程式碼範例 |
+| API | API 參考資料 | 下載 | 教學課程 | 程式碼範例 |
 | --- | --- | --- | --- | --- |
-| **Batch 管理 REST** |[docs.microsoft.com][api_rest_mgmt] |N/A |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+| **Batch 管理 REST** |[docs.microsoft.com][api_rest_mgmt] |不適用 |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [教學課程](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Batch 管理 Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
-| **Batch 管理 Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[Npm][api_nodejs_mgmt_npm] |- |- | 
+| **Batch 管理 Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
 | **Batch 管理 Java** |- |[Maven][api_java_mgmt_jar] |- |- |
 ## <a name="batch-command-line-tools"></a>Batch 命令列工具
 
@@ -68,9 +63,9 @@ ms.locfileid: "79252320"
 以下是其他一些可能有助於建置及偵錯 Batch 應用程式和服務的工具︰
 
 * [Azure 入口網站][portal]︰您可以在 Azure 入口網站中建立、監視和刪除 Batch 集區、作業和工作。 您可以在執行作業時檢視上述和其他資源的狀態資訊，甚至從您集區中的計算節點下載檔案。 例如，您可以在進行疑難排解時下載失敗的工作 `stderr.txt`。 您也可以下載可用來登入計算節點的遠端桌面 (RDP) 檔案。
-* [Azure Batch Explorer][batch_labs]：Batch Explorer (先前稱為 BatchLabs) 是免費、功能豐富、獨立用戶端的工具，可協助您建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝包](https://azure.github.io/BatchExplorer/)。
-* [Azure 批次處理造船廠](https://github.com/Azure/batch-shipyard)：批量船廠是説明在 Azure 批次處理上預配、執行和監視基於容器的批次處理和 HPC 工作負載的工具。
-* [Azure 存儲資源管理器][storage_explorer]：雖然不是嚴格意義上的 Azure 批次處理工具，但存儲資源管理器是開發和調試 Batch 解決方案時的另一個有價值的工具。
+* [Azure Batch Explorer][batch_labs]：Batch Explorer (先前稱為 BatchLabs) 是免費、功能豐富、獨立用戶端的工具，可協助您建立、偵錯及監視 Azure Batch 應用程式。 下載適用于 Mac、Linux 或 Windows 的[安裝套件](https://azure.github.io/BatchExplorer/)。
+* [Azure Batch Shipyard](https://github.com/Azure/batch-shipyard)： Batch Shipyard 是一種工具，可協助您在 Azure Batch 上布建、執行和監視以容器為基礎的批次處理和 HPC 工作負載。
+* [Azure 儲存體總管][storage_explorer]：雖然不是嚴格的 Azure Batch 工具，但儲存體總管是您在開發和偵測 Batch 解決方案時的另一個重要工具。
 
 ## <a name="additional-resources"></a>其他資源
 

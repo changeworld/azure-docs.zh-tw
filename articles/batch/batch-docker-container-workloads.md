@@ -1,21 +1,15 @@
 ---
-title: 容器工作負載 - Azure 批次處理
-description: 瞭解如何從 Azure Batch 上的容器映射運行和縮放應用。 創建支援正在運行的容器任務的計算節點池。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+title: 容器工作負載
+description: 瞭解如何在 Azure Batch 上從容器映射執行和調整應用程式。 建立支援執行容器工作的計算節點集區。
 ms.topic: article
-ms.workload: na
 ms.date: 03/02/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 81f4e753ffbaaefd5761c9396a6533bac9f212c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27edfe67152857a89840f5cd24b06d66ae8d94c1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254846"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116123"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上執行容器應用程式
 
@@ -27,9 +21,9 @@ Azure Batch 可讓您在 Azure 上執行及縮放大量批次運算作業。 Bat
 
 使用容器可讓您輕鬆地執行 Batch 工作，無須管理環境和相依性，即可執行應用程式。 容器會將應用程式部署為輕量、可攜且自給自足的單位，以便在多種不同的環境中執行。 例如，在本機建置及測試容器，然後將容器映像上傳至 Azure 或其他位置中的登錄。 容器部署模型可確保您應用程式的執行階段環境一律會正確地安裝和設定 (無論您的應用程式裝載在何處)。 Batch 中容器型的工作也可利用非容器工作的功能，包括應用程式套件及資源檔和輸出檔案的管理。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* **SDK 版本**： 批次處理 SDK 支援容器映射，如以下版本：
+* **SDK 版本**： Batch sdk 支援下列版本的容器映射：
     * Batch REST API 2017-09-01.6.0 版
     * Batch .NET SDK 8.0.0 版
     * Batch Python SDK 4.0 版
@@ -52,33 +46,33 @@ Azure Batch 可讓您在 Azure 上執行及縮放大量批次運算作業。 Bat
 
 ### <a name="windows-support"></a>Windows 支援
 
-Batch 支援具有容器支援名稱的 Windows 伺服器映射。 通常，這些圖像 sku 名稱尾碼`-with-containers`與`-with-containers-smalldisk`或 。 此外，如果映射支援 Docker 容器，[則要在 Batch 中列出所有受支援映射](batch-linux-nodes.md#list-of-virtual-machine-images)的 API 將表示`DockerCompatible`功能。
+Batch 支援具有容器支援的 Windows server 映射。 這些映射 sku 名稱通常會以`-with-containers`或`-with-containers-smalldisk`作為尾碼。 此外，如果映射支援 Docker 容器，[則用來列出 Batch 中所有支援映射的 API](batch-linux-nodes.md#list-of-virtual-machine-images)將會代表一`DockerCompatible`項功能。
 
 您也可以從 Windows 上執行 Docker 的虛擬機器中建立自訂映像。
 
 ### <a name="linux-support"></a>Linux 支援
 
-對於 Linux 容器工作負荷，Batch 當前支援 Microsoft Azure Batch 在 Azure 應用商店中發佈的以下 Linux 映射，而無需自訂映射。
+針對 Linux 容器工作負載，Batch 目前支援 Azure Marketplace 中 Microsoft Azure Batch 所發佈的下列 Linux 映射，而不需要自訂映射。
 
 #### <a name="vm-sizes-without-rdma"></a>沒有 RDMA 的 VM 大小
 
-- 出版商：`microsoft-azure-batch`
-  - 提供：`centos-container`
-  - 提供：`ubuntu-server-container`
+- 發行者`microsoft-azure-batch`
+  - 產品`centos-container`
+  - 產品`ubuntu-server-container`
 
-#### <a name="vm-sizes-with-rdma"></a>帶 RDMA 的 VM 大小
+#### <a name="vm-sizes-with-rdma"></a>使用 RDMA 的 VM 大小
 
-- 出版商：`microsoft-azure-batch`
-  - 提供：`centos-container-rdma`
-  - 提供：`ubuntu-server-container-rdma`
+- 發行者`microsoft-azure-batch`
+  - 產品`centos-container-rdma`
+  - 產品`ubuntu-server-container-rdma`
 
-這些映射僅支援在 Azure 批次處理池中使用，並面向 Docker 容器執行。 它們具有：
+這些映射僅支援在 Azure Batch 集區中使用，並適用于 Docker 容器執行。 它們具有：
 
-* 預先安裝的與 Docker 相容[的 Moby](https://github.com/moby/moby)容器運行時
+* 預先安裝的 Docker 相容[Moby](https://github.com/moby/moby)容器執行時間
 
-* 預先安裝的 NVIDIA GPU 驅動程式和 NVIDIA 容器運行時，以簡化 Azure N 系列 VM 的部署
+* 預先安裝的 NVIDIA GPU 驅動程式和 NVIDIA 容器執行時間，以簡化 Azure N 系列 Vm 上的部署
 
-* 預先安裝/預配置映射，支援 Infiniband RDMA VM 大小，用於具有 尾碼的圖像`-rdma`。 目前，這些映射不支援 SR-IOV IB/RDMA VM 大小。
+* 預先安裝/預先設定的映射，支援不適用的 RDMA VM 大小，其後綴為的`-rdma`影像。 這些映射目前不支援 SR-IOV IB/RDMA VM 大小。
 
 您也可以從與 Batch 相容的其中一個 Linux 發佈上執行 Docker 的虛擬機器建立自訂映像。 如果您選擇提供您自己自訂的 Linux 映像，請參閱[使用受控自訂映像來建立虛擬機器的集區](batch-custom-images.md)中的指示。
 
@@ -231,7 +225,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 若要在已啟用容器的集區上執行容器工作，請指定容器專屬設定。 設定包括要使用的映像、登錄及容器執行選項。
 
-* 使用工作類別的 `ContainerSettings` 屬性來設定容器專屬設定。 這些設定會由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 類別定義。 請注意，`--rm`容器選項不需要其他`--runtime`選項，因為它由 Batch 處理。
+* 使用工作類別的 `ContainerSettings` 屬性來設定容器專屬設定。 這些設定會由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 類別定義。 請注意， `--rm` [容器] 選項不需要`--runtime`額外的選項，因為它是由批次所負責。
 
 * 如果您在容器映像上執行工作，[雲端工作](/dotnet/api/microsoft.azure.batch.cloudtask)和[作業管理員工作](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)會需要容器設定。 但是，[啟動工作](/dotnet/api/microsoft.azure.batch.starttask)、[作業準備工作](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作業解除工作](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)不需要容器設定 (也就是這些工作可以在容器內容中執行或直接在節點上執行)。
 

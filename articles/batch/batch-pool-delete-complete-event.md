@@ -1,22 +1,15 @@
 ---
-title: Azure 批次處理池刪除完整事件
+title: Azure Batch 集區刪除完成事件
 description: Batch 集區刪除完成事件的參考。 集區刪除作業完成時，就會發出此事件。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023611"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115936"
 ---
 # <a name="pool-delete-complete-event"></a>集區刪除完成事件
 
@@ -34,7 +27,7 @@ ms.locfileid: "77023611"
 
 |元素|類型|注意|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
+|`id`|String|集區的識別碼。|
 |`startTime`|Datetime|集區刪除開始時間。|
 |`endTime`|Datetime|集區刪除完成時間。|
 

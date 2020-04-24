@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 995c87ca6f091e9ccf0b82af831bbf43ff17846f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100833"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114269"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自動化中管理模組
 
@@ -22,7 +22,6 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 * [Azure PowerShell Az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
 * 適用`Orchestrator.AssetManagement.Cmdlets`于 Windows 的 Log Analytics 代理程式的內部模組
-* [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)
 * 其他 PowerShell 模組
 * 您建立的自訂模組 
 
@@ -40,7 +39,7 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 
 下表列出當您建立自動化帳戶時，預設會 Azure 自動化匯入的模組。 自動化可以匯入這些模組的較新版本。 不過，即使您刪除了較新的版本，也無法從您的自動化帳戶移除原始版本。 請注意，這些預設模組包含數個 AzureRM 模組。 
 
-在您的 runbook 和 DSC 設定中，慣用 Automation 模組。 不過，Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動化帳戶。 如需使用這些模組的詳細資訊，請參閱[遷移至 Az 模組](#migrating-to-az-modules)。
+Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動化帳戶。 如需使用這些模組的詳細資訊，請參閱[遷移至 Az 模組](#migrating-to-az-modules)。
 
 > [!NOTE]
 > 在 Azure 自動化中，我們不建議您在非[時間解決方案中包含啟動/停止 vm](../automation-solution-vm-management.md)的自動化帳戶中改變模組和 runbook。
@@ -72,6 +71,10 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
+## <a name="az-module-cmdlets"></a>Az module Cmdlet
+
+針對 Az. Automation，大部分的 Cmdlet 與 AzureRM 模組具有相同的名稱，不同之處在于 AzureRm 前置詞已變更為 Az。 如需不遵循此命名慣例的 Az 模組清單，請參閱[例外狀況清單](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
+
 ## <a name="internal-cmdlets"></a>內部 Cmdlet
 
 下表定義`Orchestrator.AssetManagement.Cmdlets`模組支援的內部 Cmdlet。 在您的 runbook 和 DSC 設定中使用這些 Cmdlet，以與自動化帳戶內的 Azure 資產進行互動。 Cmdlet 的設計是用來取代 Azure PowerShell Cmdlet，以從加密的變數、認證和加密的連線抓取秘密。 
@@ -91,41 +94,47 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 
 請注意，內部 Cmdlet 的命名方式與 Az 和 AzureRM Cmdlet 不同。 內部 Cmdlet 名稱不會在名詞中包含 "Azure" 或 "Az" 之類的文字，但請使用 "Automation" 這個字。 我們建議在 Azure 沙箱或 Windows 混合式背景工作角色的 runbook 執行期間，使用 Az 或 AzureRM Cmdlet。 它們需要較少的參數，並在您已執行的作業內容中執行。
 
-使用 Az 或 AzureRM Cmdlet 來操作 runbook 內容以外的 Azure 自動化資源。 在這些情況下，您必須在使用 Cmdlet 時以隱含方式連接到 Azure，如同使用執行身分帳戶向 Azure 進行驗證時。 
+建議您使用 Az 或 AzureRM Cmdlet 來操作 runbook 內容以外的 Azure 自動化資源。 
 
-## <a name="modules-supporting-get-automationpscredential"></a>支援 AutomationPSCredential 的模組
+## <a name="module-supporting-get-automationpscredential"></a>支援 AutomationPSCredential 的模組
 
-針對使用 Azure 自動化撰寫工具組的本機開發， `Get-AutomationPSCredential`此 Cmdlet 是元件[AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)的一部分。 針對使用自動化內容的 Azure，Cmdlet 位於`Orchestrator.AssetManagement.Cmdlets`。 若要深入瞭解在 Azure 自動化中使用認證的詳細資訊，請參閱[Azure 自動化中的認證資產](credentials.md)。
-
-請注意`Get-AutomationPsCredential` ，會`PSCredential`傳回物件，這是大部分使用認證的 PowerShell Cmdlet 所預期的。 最常見的情況是，您應該使用此 Cmdlet，而不是[AzAutomationCredential](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationcredential?view=azps-3.8.0) Cmdlet。 `Get-AzAutomationCredential`抓取包含認證相關中繼資料的[CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps)物件。 這種資訊通常無法傳遞給另一個 Cmdlet。
+此`Get-AutomationPSCredential` Cmdlet 是模組`Orchestrator.AssetManagement.Cmdlets`的一部分。 此 Cmdlet 會傳回`PSCredential`物件，這是大部分使用認證的 PowerShell Cmdlet 所預期的。 若要深入瞭解在 Azure 自動化中使用認證的詳細資訊，請參閱[Azure 自動化中的認證資產](credentials.md)。
 
 ## <a name="migrating-to-az-modules"></a>遷移至 Az 模組
 
-在 Azure 自動化中使用 Az 模組時，需要考慮幾件事：
+### <a name="migration-considerations"></a>移轉考量
 
-* 我們不建議您在相同的自動化帳戶中執行 AzureRM 模組和 Az 模組，因為它保證會造成問題。 請參閱[將 Azure PowerShell 從 AzureRM 遷移至 Az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
+本節包含在 Azure 自動化中遷移至 Az 模組時要考慮的事項。 另請參閱[將 Azure PowerShell 從 AzureRM 遷移至 Az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
 
-* 匯入 Az 模組之前，請務必謹慎地在個別的自動化帳戶中測試所有 runbook 和 DSC 設定。 
+#### <a name="use-of-azurerm-modules-and-az-modules-in-the-same-automation-account"></a>在相同的自動化帳戶中使用 AzureRM 模組和 Az 模組
 
-* 將 Az 模組匯入到您的自動化帳戶並不會自動將模組匯入 runbook 使用的 PowerShell 會話。 模組會在下列情況下匯入到 PowerShell 工作階段：
+ 我們不建議您在相同的自動化帳戶中執行 AzureRM 模組和 Az 模組。 當您確定要從 AzureRM 遷移至 Az 時，最好完全認可完整的遷移。 最重要的原因是 Azure 自動化通常會重複使用自動化帳戶內的沙箱，以節省啟動時間。 如果您未進行完整模組遷移，您可能只會使用 AzureRM 模組來啟動作業，然後只使用 Az 模組來啟動另一個工作。 沙箱很快就會當機，而且您會收到嚴重錯誤，指出模組不相容。 這種情況會導致任何指定的 runbook 或設定隨機發生損毀。 
 
-    * 當 runbook 從模組叫用 Cmdlet 時
-    * 當 runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) Cmdlet 明確匯入模組時
-    * 當 runbook 匯入另一個相依模組時
+#### <a name="import-of-az-modules-into-the-powershell-session"></a>將 Az 模組匯入 PowerShell 會話
 
-完成模組的遷移之後，請勿嘗試使用自動化帳戶上的 AzureRM 模組來啟動 runbook。 此外，也建議您不要匯入或更新帳戶上的 AzureRM 模組。 請考慮遷移至 Az. Automation 的帳戶，並只使用 Az 模組操作。
+將 Az 模組匯入到您的自動化帳戶並不會自動將模組匯入 runbook 使用的 PowerShell 會話。 模組會在下列情況下匯入到 PowerShell 工作階段：
 
->[!IMPORTANT]
->當您建立新的自動化帳戶時，Azure 自動化預設會安裝 AzureRM 模組。 您仍然可以使用 AzureRM Cmdlet 來更新教學課程 runbook。 不過，您不應該執行這些 runbook。
+* 當 runbook 從模組叫用 Cmdlet 時
+* 當 runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) Cmdlet 明確匯入模組時
+* 當 runbook 匯入另一個相依模組時
+    
+#### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>在模組遷移之前測試您的 runbook 和 DSC 設定
+
+在遷移至 Az 模組之前，請務必謹慎地在個別的自動化帳戶中測試所有 runbook 和 DSC 設定。 
+
+#### <a name="updates-for-tutorial-runbooks"></a>教學課程 runbook 的更新 
+
+當您建立新的自動化帳戶時，即使在遷移至 Az 模組之後，Azure 自動化預設會安裝 AzureRM 模組。 您仍然可以使用 AzureRM Cmdlet 來更新教學課程 runbook。 不過，您不應該執行這些 runbook。
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>停止並取消排程使用 AzureRM 模組的所有 runbook
 
-為確保您不會執行任何使用 AzureRM 模組的現有 runbook，請使用[new-azurermautomationschedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) Cmdlet 來停止和取消排程所有受影響的 runbook。 請務必個別檢查每個排程，以確保您可以視需要在 runbook 的未來重新排定。
+為確保您不會執行任何使用 AzureRM 模組的現有 runbook 或 DSC 設定，您必須停止並取消排程所有受影響的 runbook 和設定。 首先，請確定您個別檢查每個 runbook 或 DSC 設定及其排程，以確保您可以在未來視需要重新排定專案。 
 
-```powershell
-Get-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01" 
-Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
-```
+當您準備好要移除排程時，可以使用 Azure 入口網站或[new-azurermautomationschedule 指令程式](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0)。 請參閱[移除排程](schedules.md#removing-a-schedule)。
+
+### <a name="remove-the-azurerm-modules"></a>移除 AzureRM 模組
+
+匯入 Az 模組之前，可以先移除 AzureRM 模組。 不過，刪除 AzureRM 模組可能會中斷原始檔控制同步處理，並導致任何仍排定失敗的腳本。 如果您決定移除模組，請參閱[卸載 AzureRM](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
 
 ### <a name="import-the-az-modules"></a>匯入 Az 模組
 
@@ -144,17 +153,11 @@ Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Daily
 
 ### <a name="test-your-runbooks"></a>測試您的 Runbook
 
-將 Az 模組匯入到自動化帳戶之後，您就可以開始編輯您的 runbook，以使用新的模組。 大部分的 Cmdlet 與 AzureRM 模組具有相同的名稱，不同之處在于 AzureRm 前置詞已變更為 Az。 如需不遵循此命名慣例的模組清單，請參閱[例外狀況清單](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
-
-若要測試 runbook 的修改以使用新的 Cmdlet，其中一種方式是`Enable-AzureRmAlias -Scope Process`在 runbook 的開頭使用。 藉由將此命令新增至您的 runbook，腳本就可以在沒有變更的情況下執行。 
+將 Az 模組匯入到自動化帳戶之後，您就可以開始編輯您的 runbook 和 DSC 設定，以使用新的模組。 若要測試 runbook 的修改以使用新的 Cmdlet，其中一種方式是`Enable-AzureRmAlias -Scope Process`在 runbook 的開頭使用。 藉由將此命令新增至您的 runbook，腳本就可以在沒有變更的情況下執行。 
 
 ## <a name="authoring-modules"></a>撰寫模組
 
 當您撰寫 PowerShell 模組以用於 Azure 自動化時，建議您遵循本節中的考慮。
-
-### <a name="references-to-azurerm-and-az"></a>AzureRM 和 Az 的參考
-
-如果參考模組中的 Az 模組，請確定您也不會參考 AzureRM 模組。 您不能同時使用這兩組模組。 
 
 ### <a name="version-folder"></a>版本資料夾
 

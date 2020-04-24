@@ -1,25 +1,14 @@
 ---
-title: 使用 Azure 活動目錄對批次處理管理解決方案進行身份驗證
-description: 探索使用 Azure 活動目錄從使用批次處理管理 .NET 庫的應用程式進行身份驗證。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: batch
+title: 使用 Azure Active Directory 驗證 Batch 管理解決方案
+description: 探索使用 Azure Active Directory 從使用 Batch Management .NET 程式庫的應用程式進行驗證。
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/27/2017
-ms.author: labrenne
-ms.openlocfilehash: 5c217971bd213c97a2ee31a0a1f513b601d14df9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472974"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114780"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch Management 解決方案
 
@@ -131,10 +120,10 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 若要使用 Azure AD 驗證 Batch 服務應用程式，請參閱[使用 Active Directory 驗證 Batch 服務解決方案](batch-aad-auth.md)。 
 
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "什麼是 Azure 活動目錄？"
+[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "什麼是 Azure Active Directory？"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD 的身份驗證方案"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "將應用程式與 Azure 活動目錄集成"
+[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD 的驗證案例"
+[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "整合應用程式與 Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
 [resman_overview]: ../azure-resource-manager/management/overview.md

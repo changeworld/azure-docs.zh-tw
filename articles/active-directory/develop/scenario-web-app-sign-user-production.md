@@ -1,6 +1,6 @@
 ---
-title: 將使用者登錄的 Web 應用移動到生產 - 微軟身份平臺 |蔚藍
-description: 瞭解如何建構在使用者中簽名的 Web 應用程式(移至生產)
+title: 將登入使用者的 web 應用程式移至生產環境-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立可登入使用者（移至生產環境）的 web 應用程式
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,53 +11,62 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9c5fd444c55a20441325088912a07eb051219b84
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a8e275a41637950139598ac7c4f2513841bb4d0d
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881463"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112502"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>在使用者中簽名的 Web 應用:移動到生產
+# <a name="web-app-that-signs-in-users-move-to-production"></a>登入使用者的 Web 應用程式：移至生產環境
 
-現在,您已經知道如何獲取權杖來呼叫 Web API,請瞭解如何將其移動到生產。
+既然您已經知道如何取得權杖來呼叫 web Api，請瞭解如何將它移到生產環境。
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-### <a name="same-site"></a>同一網站
+### <a name="troubleshooting"></a>疑難排解
 
-確保您瞭解 Chrome 瀏覽器新版本的可能問題
+> [!NOTE]
+> 使用者第一次登入 web 應用程式時，他們將需要同意。 不過，在某些組織中，使用者可以看到如下所示的訊息：
+>
+> *AppName 需要許可權才能存取您組織中只有系統管理員可以授與的資源。請先要求系統管理員授與此應用程式的許可權，然後才能使用它。*
+>
+> 這是因為您的租使用者系統管理員已**停用**使用者同意的功能。 在這種情況下，您必須洽詢租使用者系統管理員，讓他們對應用程式所需的範圍進行管理員同意。
 
-> [!div class="nextstepaction"]
-> [如何處理 Chrome 瀏覽器中的同一網站 Cookie 更改](howto-handle-samesite-cookie-changes-chrome-browser.md)
+### <a name="same-site"></a>相同網站
 
-### <a name="scenario-for-calling-web-apis"></a>呼叫 Web API 的專案
-
-Web 應用登錄使用者後,它可以代表登錄使用者調用 Web API。 從 Web 應用呼叫 Web API 是以下機制的物件:
-
-> [!div class="nextstepaction"]
-> [呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md)
-
-## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深度潛水:ASP.NET核心網路應用程式教程
-
-瞭解使用此 ASP.NET 核心教程登錄使用者的其他方法: 
+請確定您瞭解新版本 Chrome 瀏覽器的可能問題
 
 > [!div class="nextstepaction"]
-> [使 Web 應用程式能夠登入使用者,並使用適用於開發人員的 Microsoft 識別平台呼叫 API](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [如何處理 Chrome 瀏覽器中的 SameSite cookie 變更](howto-handle-samesite-cookie-changes-chrome-browser.md)
 
-此漸進式教程具有 Web 應用的生產就緒代碼,包括如何在以下方面添加帳戶登錄:
+### <a name="scenario-for-calling-web-apis"></a>呼叫 web Api 的案例
+
+在您的 web 應用程式登入使用者之後，它可以代表登入的使用者呼叫 web Api。 從 web 應用程式呼叫 web Api 是下列案例的物件：
+
+> [!div class="nextstepaction"]
+> [可呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md)
+
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深入探討： ASP.NET Core web 應用程式教學課程
+
+深入瞭解使用此 ASP.NET Core 教學課程來登入使用者的其他方式： 
+
+> [!div class="nextstepaction"]
+> [讓您的 web 應用程式能夠使用 Microsoft 身分識別平臺來登入使用者並呼叫 Api，讓開發人員](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+
+這個漸進式教學課程包含適用于 web 應用程式的生產就緒程式碼，包括如何在中新增帳戶登入：
 
 - 您的組織
 - 多個組織
-- 工作或學校帳戶或個人 Microsoft 帳戶
+- 公司或學校帳戶，或個人 Microsoft 帳戶
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - 國家/地區雲端
 
-## <a name="sample-code-java-web-app"></a>範例代碼:Java Web 應用程式
+## <a name="sample-code-java-web-app"></a>範例程式碼： JAVA web 應用程式
 
-從 GitHub 上的此範例中瞭解有關 Java Web 應用的更多內容: 
+從 GitHub 上的此範例深入瞭解 JAVA web 應用程式： 
 
 > [!div class="nextstepaction"]
-> [使用 Microsoft 識別平台登入使用者並呼叫 Microsoft Graph 的 Java Web 應用程式](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [使用 Microsoft 身分識別平臺登入使用者並呼叫 Microsoft Graph 的 JAVA Web 應用程式](https://github.com/Azure-Samples/ms-identity-java-webapp)

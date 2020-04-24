@@ -1,22 +1,15 @@
 ---
-title: Azure 批次處理池調整啟動事件的大小
-description: Batch 集區調整大小開始事件的參考。 示例顯示池調整大小啟動事件的主體，用於使用手動調整大小將池大小從 0 調整到 2 個節點。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Azure Batch 集區調整大小開始事件
+description: Batch 集區調整大小開始事件的參考。 範例顯示集區的主體調整大小開始事件（從0到2個節點，並以手動方式調整大小）。
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: 1866e51da30fe5ed148d019c8720755e99757df7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4aa503c5dfbe00a77216277bdaf7e4c0dc3b1bd
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023577"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115868"
 ---
 # <a name="pool-resize-start-event"></a>集區調整大小開始事件
 
@@ -39,7 +32,7 @@ ms.locfileid: "77023577"
 
 |元素|類型|注意|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
+|`id`|String|集區的識別碼。|
 |`nodeDeallocationOption`|String|指定當集區大小一直減少時，會自集區中移除節點。<br /><br /> 可能的值包括：<br /><br /> **requeue** – 終止執行中工作並重新排入佇列。 當作業啟用時，工作將再次執行。 一旦工作終止，隨即移除節點。<br /><br /> **terminate** – 終止執行中工作。 工作將不會再次執行。 一旦工作終止，隨即移除節點。<br /><br /> **taskcompletion** – 允許目前執行中工作完成。 等待時不排程任何新的工作。 所有工作完成時，即移除節點。<br /><br /> **Retaineddata** - 允許目前執行中工作完成，然後等待所有工作資料保留期到期。 等待時不排程任何新的工作。 當所有工作保留期到期時即移除節點。<br /><br /> 預設值為 requeue。<br /><br /> 如果集區大小增加，則值會設定為 [無效]****。|
 |`currentDedicatedNodes`|Int32|目前指派至集區的計算節點數目。|
 |`targetDedicatedNodes`|Int32|向集區要求的計算節點數目。|

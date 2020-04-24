@@ -1,5 +1,5 @@
 ---
-title: Azure Blob 儲存為事件網格來源
+title: 做為事件方格來源 Azure Blob 儲存體
 description: 描述 Azure Event Grid blob 儲存體事件的屬性
 services: event-grid
 author: spelluru
@@ -7,60 +7,60 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393380"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115120"
 ---
-# <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob 儲存為事件網格來源
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>做為事件方格來源 Azure Blob 儲存體
 
-本文提供 blob 儲存體事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它還為您提供了使用 Azure Blob 儲存作為事件來源的快速啟動和教學的清單。
+本文提供 blob 儲存體事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 它也會提供快速入門和教學課程的清單，供您使用 Azure Blob 儲存體作為事件來源。
 
 
 >[!NOTE]
-> 只有儲存**V2(通用 v2)、****區塊 Blob 儲存**和 Blob**儲存**的儲存帳戶支援事件整合。 **儲存體 (一般用途 v1)** 不** 支援與事件方格整合。
+> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）**、 **BlockBlobStorage**和**BlobStorage**支援事件整合。 **儲存體（一般用途 v1）** 不*支援與*事件方格整合。
 
 ## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
-### <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件清單
+### <a name="list-of-events-for-blob-rest-apis"></a>Blob REST Api 的事件清單
 
-當客戶端透過呼叫 Blob REST API 建立、替換或刪除 Blob 時,將觸發這些事件。
+當用戶端藉由呼叫 Blob REST Api 來建立、取代或刪除 blob 時，就會觸發這些事件。
 
- |事件名稱 |描述|
+ |事件名稱 |說明|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** |創建或替換 Blob 時觸發。 <br>具體而言,當用戶端使用`PutBlob``PutBlockList``CopyBlob`Blob REST API 中可用的 操作時,將觸發此事件。   |
- |**Microsoft.Storage.BlobDeleted** |刪除 Blob 時觸發。 <br>具體而言,當用戶端調用 Blob `DeleteBlob` REST API 中可用的操作時,將觸發此事件。 |
+ |**Microsoft.Storage.BlobCreated** |建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用可在 Blob `PutBlob`REST API `PutBlockList`中取得`CopyBlob`的、或作業時，就會觸發此事件。   |
+ |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫`DeleteBlob` Blob REST API 中可用的作業時，就會觸發此事件。 |
 
 > [!NOTE]
-> 如果要確保僅在完全提交塊 Blob 時觸發**Microsoft.Storage.Blob**創建`CopyBlob``PutBlob`事件`PutBlockList`,請篩選 、 和 REST API 呼叫的事件。 這些 API 調用僅在資料完全提交到塊 Blob 後觸發**Microsoft.Storage.Blob 創建**事件。 要瞭解如何建立篩選器,請參閱[事件格格的篩選事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選`CopyBlob`、 `PutBlob`和`PutBlockList` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
-### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure 資料儲存第 2 代 REST API 的事件清單
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST Api 的事件清單
 
-如果在儲存帳戶上啟用分層命名空間,並且用戶端調用 Azure 資料湖存儲 Gen2 REST API,則觸發這些事件。 有關詳細資訊,請參閱[Azure 資料儲存湖儲存第 2 代](../storage/blobs/data-lake-storage-introduction.md)。
+如果您在儲存體帳戶上啟用階層式命名空間，而且用戶端呼叫 Azure Data Lake Storage Gen2 REST Api，就會觸發這些事件。 如需 bout about Azure Data Lake Storage Gen2 的詳細資訊，請參閱[Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)。
 
-|事件名稱|描述|
+|事件名稱|說明|
 |----------|-----------|
-|**Microsoft.Storage.BlobCreated** | 創建或替換 Blob 時觸發。 <br>具體而言,當用戶端使用 Azure`CreateFile``FlushWithClose`資料 湖儲存 Gen2 REST API 中可用的和操作時,將觸發此事件。 |
-|**Microsoft.Storage.BlobDeleted** |刪除 Blob 時觸發。 <br>具體而言,當用戶端調用 Azure`DeleteFile`數據湖 儲存 Gen2 REST API 中可用的操作時,也會觸發此事件。 |
-|**Micros... b- e- s- s- s- s- s- s- s- s- s**|重新命名 Blob 時觸發。 <br>具體而言,當用戶端使用 Azure`RenameFile`數據 湖儲存 Gen2 REST API 中可用的操作時,將觸發此事件。|
-|**微軟儲存目錄**|創建目錄時觸發。 <br>具體而言,當用戶端使用 Azure`CreateDirectory`數據 湖儲存 Gen2 REST API 中可用的操作時,將觸發此事件。|
-|**Microsoft.目錄重新命名**|重命名目錄時觸發。 <br>具體而言,當用戶端使用 Azure`RenameDirectory`數據 湖儲存 Gen2 REST API 中可用的操作時,將觸發此事件。|
-|**微軟儲存目錄已移除**|刪除目錄時觸發。 <br>具體而言,當用戶端使用 Azure`DeleteDirectory`數據 湖儲存 Gen2 REST API 中可用的操作時,將觸發此事件。|
+|**Microsoft.Storage.BlobCreated** | 建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用 Azure Data Lake Storage Gen2 REST API 中`CreateFile`提供`FlushWithClose`的和作業時，就會觸發此事件。 |
+|**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫`DeleteFile` Azure Data Lake Storage Gen2 REST API 中提供的作業時，也會觸發此事件。 |
+|**BlobRenamed**|在重新命名 blob 時觸發。 <br>具體而言，當用戶端使用 Azure Data Lake Storage Gen2 REST API 中`RenameFile`提供的作業時，就會觸發此事件。|
+|**DirectoryCreated**|建立目錄時觸發。 <br>具體而言，當用戶端使用 Azure Data Lake Storage Gen2 REST API 中`CreateDirectory`提供的作業時，就會觸發此事件。|
+|**DirectoryRenamed**|在目錄重新命名時觸發。 <br>具體而言，當用戶端使用 Azure Data Lake Storage Gen2 REST API 中`RenameDirectory`提供的作業時，就會觸發此事件。|
+|**DirectoryDeleted**|刪除目錄時觸發。 <br>具體而言，當用戶端使用 Azure Data Lake Storage Gen2 REST API 中`DeleteDirectory`提供的作業時，就會觸發此事件。|
 
 > [!NOTE]
-> 如果要確保**Microsoft.Storage.Blob創建**事件僅在完全提交塊 Blob 時觸`FlushWithClose`發,請篩選 REST API 呼叫的事件。 此 API 呼叫僅在資料完全提交到塊 Blob 後觸發**Microsoft.Storage.Blob 創建**事件。 要瞭解如何建立篩選器,請參閱[事件格格的篩選事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選`FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，此 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
 
 <a id="example-event" />
 
 ### <a name="the-contents-of-an-event-response"></a>事件回應的內容
 
-觸發事件時,事件網格服務會將有關該事件的數據發送到訂閱終結點。
+觸發事件時，事件方格服務會將該事件的相關資料傳送至訂閱端點。
 
-本節包含該數據在每個 Blob 存儲事件的外觀範例。
+本章節包含每個 blob 儲存體事件的資料外觀範例。
 
-### <a name="microsoftstorageblobcreated-event"></a>微軟儲存在總建立事件
+### <a name="microsoftstorageblobcreated-event"></a>Microsoft.storage.blobcreated 事件
 
 ```json
 [{
@@ -88,18 +88,18 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>微軟儲存在總存取(資料湖儲存第 2 代)
+### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Microsoft.storage.blobcreated 事件（Data Lake Storage Gen2）
 
-如果 Blob 儲存帳戶具有分層命名空間,則資料看起來與上一個範例類似,但以下變更除外:
+如果 blob 儲存體帳戶具有階層式命名空間，資料看起來會類似先前的範例，但這些變更除外：
 
-* 鍵`dataVersion`設置`2`為的值。
+* 此`dataVersion`索引鍵會設定為的`2`值。
 
-* 鍵`data.api`設定為字串`CreateFile`或`FlushWithClose`。
+* 此`data.api`索引鍵會設定為字串`CreateFile`或`FlushWithClose`。
 
-* 該`contentOffset`鍵包含在數據集中。
+* 此`contentOffset`索引鍵包含在資料集內。
 
 > [!NOTE]
-> 如果應用程式使用該`PutBlockList`操作將新 Blob 上傳到帳戶,則數據將不包含這些更改。
+> 如果應用程式使用`PutBlockList`作業將新的 blob 上傳至帳戶，資料就不會包含這些變更。
 
 ```json
 [{
@@ -128,7 +128,7 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstorageblobdeleted-event"></a>微軟儲存在總存取的事件
+### <a name="microsoftstorageblobdeleted-event"></a>BlobDeleted 事件
 
 ```json
 [{
@@ -153,18 +153,18 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>微軟儲存在總存取(D)儲存於 2 代
+### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>BlobDeleted 事件（Data Lake Storage Gen2）
 
-如果 Blob 儲存帳戶具有分層命名空間,則資料看起來與上一個範例類似,但以下變更除外:
+如果 blob 儲存體帳戶具有階層式命名空間，資料看起來會類似先前的範例，但這些變更除外：
 
-* 鍵`dataVersion`設置`2`為的值。
+* 此`dataVersion`索引鍵會設定為的`2`值。
 
-* 鍵`data.api`設定為字串`DeleteFile`。
+* 此`data.api`索引鍵會設定為字串`DeleteFile`。
 
-* 鍵`url`包含`dfs.core.windows.net`路徑 。
+* `url`金鑰包含路徑`dfs.core.windows.net`。
 
 > [!NOTE]
-> 如果應用程式使用`DeleteBlob`該操作從帳戶中刪除 Blob,則數據將不包含這些更改。
+> 如果應用程式使用`DeleteBlob`作業從帳戶中刪除 blob，則資料不會包含這些變更。
 
 ```json
 [{
@@ -190,7 +190,7 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstorageblobrenamed-event"></a>微軟儲存.Blob 重新命名事件
+### <a name="microsoftstorageblobrenamed-event"></a>BlobRenamed 事件
 
 ```json
 [{
@@ -215,7 +215,7 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstoragedirectorycreated-event"></a>微軟儲存目錄建立事件
+### <a name="microsoftstoragedirectorycreated-event"></a>DirectoryCreated 事件
 
 ```json
 [{
@@ -239,7 +239,7 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstoragedirectoryrenamed-event"></a>微軟.儲存.目錄重新命名事件
+### <a name="microsoftstoragedirectoryrenamed-event"></a>DirectoryRenamed 事件
 
 ```json
 [{
@@ -264,7 +264,7 @@ ms.locfileid: "81393380"
 }]
 ```
 
-### <a name="microsoftstoragedirectorydeleted-event"></a>微軟儲存目錄刪除事件
+### <a name="microsoftstoragedirectorydeleted-event"></a>DirectoryDeleted 事件
 
 ```json
 [{
@@ -306,24 +306,24 @@ ms.locfileid: "81393380"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | api | 字串 | 觸發事件的作業。 |
-| clientRequestId | 字串 | 存儲 API 操作的用戶端提供的請求 ID。 此 ID 可用於使用日誌中的「用戶端-請求-id」欄位與 Azure 儲存診斷日誌相關聯,並且可以使用「x-ms-用戶端-請求-id」標頭在用戶端請求中提供。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+| clientRequestId | 字串 | 用於儲存體 API 作業的用戶端提供要求識別碼。 此識別碼可用來在記錄檔中使用「用戶端要求識別碼」欄位與 Azure 儲存體診斷記錄相互關聯，並可在使用「x-ms-用戶端要求-識別碼」標頭的用戶端要求中提供。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | requestId | 字串 | 儲存體 API 作業由服務產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | etag | 字串 | 此值可讓您依條件執行作業。 |
 | ContentType | 字串 | 為 blob 指定內容類型。 |
 | contentLength | integer | Blob 大小 (以位元組為單位)。 |
 | blobType | 字串 | Blob 的類型。 有效值為 "BlockBlob" 或 "PageBlob"。 |
-| contentOffset | number | 在事件觸發應用程式完成寫入檔的點處採用寫入操作的偏移(以位元組為單位)。 <br>僅出現在具有分層命名空間的 Blob 儲存帳戶上觸發的事件。|
-| 目的地Url |字串 | 操作完成後將存在的檔案的 URL。 例如,如果重新命名了檔案,則`destinationUrl`屬性包含新檔名的 URL。 <br>僅出現在具有分層命名空間的 Blob 儲存帳戶上觸發的事件。|
-| 來源網址 |字串 | 操作之前存在的檔案的 URL。 例如,如果重新命名了檔案,則`sourceUrl`包含重新命名操作之前原始檔名的 URL。 <br>僅出現在具有分層命名空間的 Blob 儲存帳戶上觸發的事件。 |
-| url | 字串 | blob 的路徑。 <br>如果客戶端使用 Blob REST API,則網址有此結構:*\<儲存\>\<帳戶名稱 .blob.core.windows.net/容器\>/\<名稱 檔案名稱\>*。 <br>如果用戶端使用 Data Lake 儲存 REST API,則 URL 具有此結構:*\<儲存\>帳號名稱\<.dfs.core.windows.net/檔案\>/\<系統名稱 檔案名\>*。 |
-| 遞迴 | 字串 | `True`對所有子目錄執行操作;否則`False`。 <br>僅出現在具有分層命名空間的 Blob 儲存帳戶上觸發的事件。 |
+| contentOffset | number | 在事件觸發應用程式完成寫入檔案時，所採取之寫入作業的位移（以位元組為單位）。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。|
+| destinationUrl |字串 | 在作業完成之後，將會存在的檔案的 url。 例如，如果檔案已重新命名，則`destinationUrl`屬性會包含新檔案名的 url。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。|
+| sourceUrl |字串 | 作業之前存在之檔案的 url。 例如，如果檔案已重新命名，則`sourceUrl`會包含重新命名作業之前原始檔案名稱的 url。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。 |
+| url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： * \< \>blob.core.windows.net/\<容器名稱\>/\<檔案名\>*。 <br>如果用戶端使用 REST API 的 Data Lake Storage，則 url 會有下列結構： * \< \> \<dfs.core.windows.net/\>/\<\>* 檔案-name 檔案名。 |
+| 遞迴 | 字串 | `True`在所有子目錄上執行作業;否則`False`為。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。 |
 | 排序器 | 字串 | 不透明的字串值表示任何特定 Blob 名稱之事件的邏輯順序。  使用者可使用標準字串比較，以了解 Blob 名稱相同之兩個事件的相對順序。 |
 | storageDiagnostics | 物件 (object) | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
 
-## <a name="tutorials-and-how-tos"></a>教學和如何
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 |Title  |描述  |
 |---------|---------|
 | [快速入門：使用 Azure CLI 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 將 Blob 儲存體事件傳送至 WebHook。 |

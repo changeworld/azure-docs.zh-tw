@@ -3,12 +3,12 @@ title: 監視容器實例
 description: 如何在 Azure 容器執行個體中依照您的容器，監視計算資源 (例如 CPU 和記憶體) 耗用量。
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250024"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116362"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>在 Azure 容器執行個體中監視容器資源
 
@@ -17,7 +17,7 @@ ms.locfileid: "78250024"
 本文件詳述如何使用 Azure 入口網站和 Azure CLI，針對容器執行個體蒐集 Azure 監視器計量。
 
 > [!IMPORTANT]
-> Azure 容器執行個體中的 Azure 監視器計量目前為預覽狀態，而且[適用一些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]，即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> Azure 容器執行個體中的 Azure 監視器計量目前為預覽狀態，而且[適用一些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 ## <a name="preview-limitations"></a>預覽限制
 
@@ -25,13 +25,13 @@ ms.locfileid: "78250024"
 
 ## <a name="available-metrics"></a>可用的計量
 
-Azure 監視器為 [Azure 容器執行個體提供下列計量][supported-metrics]。 這些計量均適用於容器群組和個別容器。
+Azure 監視器為 [Azure 容器執行個體提供下列計量][supported-metrics]。 這些計量均適用於容器群組和個別容器。 根據預設，計量會匯總為平均值。
 
-* **CPU 使用量** - 以 **Millicore** 測量。 一個 Millicore 為一個 CPU 核心的 1/1000，因此 500 Millicore (或 500 m) 表示 CPU 核心的 50% 使用量。 彙總為所有核心的**平均使用量**。
+* **CPU 使用量** - 以 **Millicore** 測量。 一個 millicore 是 CPU 核心的 1/1000th，因此 500 millicore 代表 0.5 CPU 核心的使用量。
 
-* **記憶體使用量** - 彙總為**平均位元組數**。
+* **記憶體使用量**（以位元組為單位）。
 
-* **每秒接收的網路位元組數**和**每秒傳輸的網路位元組數** - 彙總為**每秒平均位元組數**。 
+* **每秒接收的網路位元組數**和**每秒傳輸的網路位元組**數。 
 
 ## <a name="get-metrics---azure-portal"></a>取得計量 - Azure 入口網站
 

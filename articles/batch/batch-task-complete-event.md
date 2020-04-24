@@ -1,22 +1,14 @@
 ---
-title: Azure 批次處理任務完成事件
+title: Azure Batch 任務完成事件
 description: Batch 工作完成事件的參考。 工作完成時就會發出此事件，無論結束代碼為何。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: 0fee5f071d5c7005e466bf4c3d0c1d0a7db24731
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e11eac04009def2bce4476ba2d77c798f25ca15
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022914"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116497"
 ---
 # <a name="task-complete-event"></a>工作完成事件
 
@@ -53,12 +45,12 @@ ms.locfileid: "77022914"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`jobId`|String|包含任務的作業的 ID。|
-|`id`|String|任務的 ID。|
+|`jobId`|String|包含工作之作業的識別碼。|
+|`id`|String|工作的識別碼。|
 |`taskType`|String|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。 對於作業準備工作、作業發行工作或開始工作。不會發出此事件。|
 |`systemTaskVersion`|Int32|這是作業上的內部重試計數器。 Batch 服務可在內部重試工作，以處理暫時性問題。 這些問題包含內部排程錯誤，或嘗試從不正常狀態的計算節點復原。|
 |[`nodeInfo`](#nodeInfo)|複雜類型|包含工作執行所在計算節點的相關資訊。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  有關詳細資訊[`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)，請參閱。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  如[`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)需詳細資訊，請參閱。|
 |[`constraints`](#constraints)|複雜類型|套用至此工作的執行限制。|
 |[`executionInfo`](#executionInfo)|複雜類型|包含執行工作的相關資訊。|
 
@@ -66,8 +58,8 @@ ms.locfileid: "77022914"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`poolId`|String|運行任務的池的 ID。|
-|`nodeId`|String|運行任務的節點的 ID。|
+|`poolId`|String|工作執行所在集區的識別碼。|
+|`nodeId`|String|工作執行所在節點的識別碼。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
@@ -75,13 +67,13 @@ ms.locfileid: "77022914"
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|工作需要的計算節點數目。|
 
-###  <a name="constraints"></a><a name="constraints"></a> constraints
+###  <a name="constraints"></a><a name="constraints"></a>條件
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|工作重試次數上限。 如果工作的結束代碼不是零，Batch 服務會重試工作。<br /><br /> 請注意，這個值會特別控制重試次數。 Batch 服務會嘗試工作一次，然後可一直重試直到達此限制。 例如，如果重試計數上限為 3，則 Batch 可嘗試工作最多 4 次 (一次首次嘗試，3 次重試)。<br /><br /> 如果重試計數上限為 0，則 Batch 服務不會重試工作。<br /><br /> 如果重試計數上限為 -1，則 Batch 服務會無限制地重試工作。<br /><br /> 預設值為 0 (不重試)。|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a>執行資訊
+###  <a name="executioninfo"></a><a name="executionInfo"></a>executionInfo
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|

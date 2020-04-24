@@ -1,22 +1,14 @@
 ---
-title: Azure 批次處理分析
+title: Azure Batch 分析
 description: 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: d9538461dfa48a961f9325566b2adaf265e8daeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35bf249a3ae5dd06f42b89c3d5c2773f9508603
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025957"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113063"
 ---
 # <a name="batch-analytics"></a>批次分析
 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。

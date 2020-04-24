@@ -1,482 +1,487 @@
 ---
-title: 受支援的資源管理員資源類型
-description: 提供 Azure 資源圖和更改歷史記錄支援的資源管理員資源類型的清單。
-ms.date: 04/20/2020
+title: 支援的 Resource Manager 資源類型
+description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Resource Manager 資源類型清單。
+ms.date: 04/23/2020
 ms.topic: reference
-ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 021a0d595a34bc132aa0e67f2b5485ae9c321ef3
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685470"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116633"
 ---
-# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 資源圖表和資源類型引用
+# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
-Azure 資源圖支援[Azure 資源管理員](../../../azure-resource-manager/management/overview.md)的以下**資源類型**。 每個**資源類型**都是資源圖中**表**的一部分。
+Azure Resource Graph 支援[Azure Resource Manager](../../../azure-resource-manager/management/overview.md)的下列**資源類型**。 在 Resource Graph 中，每個**資源類型**都是**資料表**的一部分。
 
-## <a name="advisorresources"></a>顧問資源
+## <a name="advisorresources"></a>advisorresources
 
-- 微軟.顧問/配置
-- 微軟.顧問/建議
-- 微軟.顧問/抑制
+- microsoft advisor/設定
+- microsoft advisor/建議
+- microsoft advisor/隱藏
 
-## <a name="alertsmanagementresources"></a>警示管理資源
+## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
-- 微軟.警報管理/警報
+- microsoft.alertsmanagement/警示
 
-## <a name="maintenanceresources"></a>維護資源
+## <a name="maintenanceresources"></a>maintenanceresources
 
-- 微軟.維護/配置配置
-- 微軟.維護/更新
+- microsoft. 維護/configurationassignments
+- microsoft. 維護/更新
 
-## <a name="resourcecontainers"></a>資源容器
+## <a name="resourcecontainers"></a>resourcecontainers
 
-- 微軟.資源/訂閱
-- microsoft.資源/訂閱/資源組
+- microsoft .resources/訂閱
+- microsoft .resources/訂用帳戶/resourcegroups
 
 ## <a name="resources"></a>resources
 
-- 84 代碼.雲amqp/伺服器
-- citrix.服務/服務
-- citrix.服務/xendesktop必需品
-- conexlink.mycloudit/帳戶
-- 加密網.資料安全/應用程式
-- 格格pro.evops/帳戶
-- 網格pro.evops/帳戶/事件規則
-- 網格pro.evops/帳戶/請求範本
-- 網格pro.evops/帳戶/視圖
-- 設定儲存表串流、服務
-- incapsula.waf/帳戶
-- 直播/服務
-- 郵件jet.電子郵件/服務
-- 微軟.aad/域服務
-- 微軟.aadiam/私人連結福拉達
+- 84codes. cloudamqp/servers
+- citrix. services/xenappessentials
+- citrix. services/xendesktopessentials
+- conexlink. mycloudit/accounts
+- crypteron. datasecurity/apps
+- gridpro. evops/accounts
+- gridpro. evops/accounts/eventrules
+- gridpro. evops/accounts/requesttemplates
+- gridpro. evops/accounts/views
+- hive. 串流處理/服務
+- incapsula. waf/accounts
+- livearena。廣播/服務
+- mailjet。電子郵件/服務
+- microsoft aad/domainservices
+- aadiam/privatelinkforazuread
 - microsoft.aadiam/tenants
-- 微軟.ai超級計算機/帳戶
-- 微軟.ai超級計算機/帳戶/工作組
-- 微軟.ai超級計算機/帳戶/工作組/工作
-- microsoft.警報管理/操作規則
-- 微軟.警報管理/智慧探測器警報規則
-- 微軟.分析服務/伺服器
-- 微軟.api管理/服務
-- 微軟.應用程式設定/配置儲存
-- 微軟.appplatform/彈簧
-- 微軟.存檔/集合
-- 微軟.自動化/自動化帳戶
-- 微軟.自動化/自動化帳戶/配置
-- 微軟.自動化/自動化帳戶/執行簿
-- 微軟.azconfig/配置商店
-- microsoft.azure 活動目錄/b2c 目錄
-- 微軟.azure資料/資料控制器
-- 微軟.azure數據/混合資料管理員
-- 微軟.azure數據/後實例
-- 微軟.azure數據/sqlbigdata集群
-- 微軟.azure數據/實例
-- microsoft.azure 資料/sqlserver 註冊
-- 微軟.azure 堆疊/註冊
-- 微軟.裸機/控制台連接
-- 微軟.裸機/克雷伺服器
-- 微軟.裸機/監控伺服器
-- 微軟.批處理/批處理帳戶
-- 微軟.batchai/集群
-- 微軟.batchai/檔案伺服器
-- 微軟.巴奇/工作
-- 微軟.batchai/工作區
-- 微軟.bingmaps/mapapis
-- 微軟.biztalk服務/比德可
-- 微軟.區塊鏈/區塊鏈成員
-- 微軟.區塊鏈/線成員
-- 微軟.區塊鏈/觀察者
-- 微軟.bot服務/機器人服務
-- 微軟.緩存/雷比斯
-- 微軟.cdn/cdnweb應用程式防火牆策略
-- 微軟.cdn/設定檔
-- 微軟.cdn/設定檔/終結點
-- 微軟.證書註冊/證書訂單
-- 微軟.經典計算/功能變數名稱
-- 微軟.經典計算/虛擬機器
-- 微軟.經典網路/網路安全組
-- 微軟.經典網路/保留
-- 微軟.經典網路/虛擬網路
-- 微軟.經典存儲/儲存帳戶
-- 微軟.雲/帳戶
-- 微軟.雲搜索/索引
-- 微軟.認知/合成帳戶
-- 微軟.認知服務/帳戶
-- microsoft.計算/可用性集
-- 微軟.計算/磁碟加密集
-- 微軟.計算/磁碟
-- 微軟.計算/畫廊
-- 微軟.計算/畫廊/應用程式
-- 微軟.計算/畫廊/應用程式/版本
-- 微軟.計算/畫廊/圖像
-- 微軟.計算/畫廊/圖像/版本
-- 微軟.計算/主機組
-- 微軟.計算/主機組/主機
-- 微軟.計算/影像
-- microsoft.計算/鄰近放置群組
-- microsoft.計算/還原點集合
-- 微軟.計算/共用vm擴展
-- microsoft.計算/共用vm擴展/版本
-- 微軟.計算/共用vm圖像
-- 微軟.計算/共用vm影像/版本
-- 微軟.計算/快照
-- 微軟.計算/sshpublickey
-- 微軟.計算/虛擬機器
-- 微軟.計算/虛擬機器/擴展
-- 微軟.計算/虛擬機器比例集
-- 微軟.容器實體/容器群組
-- 微軟.集裝箱註冊/註冊
-- 微軟.容器註冊/註冊表/代理池
-- 微軟.容器註冊/註冊表/建造任務
-- 微軟.容器註冊/註冊/複製
-- 微軟.容器註冊/註冊表/任務運行
-- 微軟.容器註冊/註冊表/任務
-- 微軟.集裝箱註冊/註冊/網鉤
-- 微軟.集裝箱服務/集裝箱服務
-- 微軟.集裝箱服務/託管集群
-- 微軟.集裝箱服務/開放式轉移管理集群
-- 微軟.contoso/員工
-- 微軟.成本管理/連接器
-- microsoft.自訂提供者/資源提供者
-- 微軟.資料框/作業
-- 微軟.資料箱邊/數據箱邊設備
-- 微軟.數據磚/工作區
-- 微軟資料目錄/目錄
-- microsoft.資料目錄/資料目錄
-- 微軟.資料工廠/資料工廠
-- 微軟.資料工廠/工廠
-- 微軟.datalake分析/帳戶
-- 微軟.datalake商店/帳戶
-- microsoft.資料遷移/服務
-- microsoft.資料遷移/服務/專案
-- microsoft.資料遷移/插槽
-- 微軟.資料保護/備份庫
-- 微軟.資料共享/帳戶
-- 微軟.dbformariadb/伺服器
-- 微軟.dbformysql/伺服器
-- microsoft.dbforpostgresql/伺服器組
-- 微軟.dbforpostgresql/伺服器
-- 微軟.dbforpostgresql/serverv2
-- 微軟.dbforpostgresql/單伺服器
-- microsoft.部署管理員/工件源
-- microsoft.部署管理員/推出
-- microsoft.部署管理器/服務拓撲
-- microsoft.部署管理員/服務/服務
-- microsoft.部署管理員/服務/服務/服務單位
-- microsoft.部署管理器/步驟
-- 微軟.桌面虛擬化/應用程式群組
-- 微軟.桌面虛擬化/主機池
-- 微軟.桌面虛擬化/工作區
-- 微軟.引爆服務/引爆實例
-- 微軟.設備/彈性池
-- 微軟.設備/彈性池/擴展租戶
-- 微軟.設備/電圖
-- 微軟.設備/預配服務
-- 微軟.devops/管道
-- 微軟.devspace/控制器
-- 微軟.德夫斯特實驗室/實驗室中心
-- 微軟.德夫斯特實驗室/實驗室
-- 微軟.德斯特實驗室/實驗室/服務運行者
-- 微軟.德斯特實驗室/實驗室/虛擬機
-- 微軟.德夫斯特實驗室/時程表
-- 微軟.數字雙胞胎/數位雙胞胎實例
-- 微軟.文件資料庫/資料庫帳戶
-- 微軟.功能變數名稱註冊/域
-- 微軟.企業知識圖/服務
-- 微軟.事件網格/域
-- 微軟.事件網格/合作夥伴命名空間
-- microsoft.eventgrid/合作夥伴註冊
-- 微軟.事件網格/合作夥伴主題
-- 微軟.事件網格/系統主題
-- 微軟.事件網格/主題
-- 微軟.eventhub/集群
-- 微軟.eventhub/命名空間
-- 微軟.實驗/實驗工作空間
-- 微軟.falcon/命名空間
-- 微軟.遊戲/標題
-- 微軟.基因組學/帳戶
-- 微軟.來賓配置/自動管理帳戶
-- 微軟.哈納納拉多/哈納實例
-- 微軟.哈農藍/samonitors
-- 微軟.硬體安全模組/專用
-- 微軟.hdinsight/集群
-- 微軟.醫療保健/服務
-- 微軟.混合計算/機器
-- 微軟.混合計算/機器/擴展
-- 微軟.混合資料/資料管理員
-- 微軟.hydra/元件
-- 微軟.hydra/網路範圍
-- 微軟.進口出口/作業
-- 微軟.見解/行動組
-- microsoft.insights/活動日誌警報
-- 微軟.insights/警報規則
-- 微軟.insights/自動縮放設定
-- 微軟.insights/元件
-- 微軟.見解/資料收集規則
-- 微軟.insights/來賓診斷設置
-- 微軟.insights/指標警報
-- 微軟.見解/通知組
-- 微軟.見解/通知規則
-- 微軟.insights/私人連結鏡
-- 微軟.insights/計劃查詢規則
-- 微軟.insights/網路測試
-- 微軟.見解/工作簿
-- 微軟.insights/工作簿範本
-- 微軟.iotcentral/iotapps
-- 微軟.iotspace/圖形
-- 微軟.keyvault/hsmpools
-- 微軟.鑰匙庫/保管庫
-- 微軟.kubernetes/連接的集群
-- 微軟.kusto/集群
-- 微軟.kusto/集群/資料庫
-- 微軟.實驗室服務/實驗室帳戶
-- 微軟.邏輯/整合帳戶
-- 微軟.邏輯/整合服務環境
-- 微軟.邏輯/整合服務環境/託管
-- 微軟.邏輯/工作流
-- 微軟.機器學習/承諾計劃
-- 微軟.機器學習/網路服務
-- 微軟.機器學習/工作空間
-- 微軟.機器學習計算/操作集群
-- 微軟.機器學習服務/工作區
-- 微軟.維護/維護配置
-- 微軟.維護/維護政策
-- 微軟.託管標識/組
-- 微軟.託管標識/使用者分配標識
-- 微軟.託管網路/託管網路組
-- 微軟.託管網路/託管網路對等策略
-- 微軟.託管網路/託管網路
-- 微軟.託管網路/託管網路/託管網路/託管網路組
-- 微軟.託管網/託管網路/託管網路對等策略
-- 微軟.地圖/帳戶
-- 微軟.地圖/帳戶/私人地圖集
-- 微軟.市場應用/經典開發服務
-- 微軟.媒體/媒體服務
-- 微軟.媒體/媒體服務/現場活動
-- 微軟.媒體/媒體服務/流端點
-- 微軟.媒體/媒體服務/轉換
-- 微軟.微服務4彈簧/應用程式集群
-- 微軟.遷移/評估專案
-- 微軟.遷移/遷移專案
-- microsoft.遷移/移動集合
-- 微軟.移轉/專案
-- 微軟.混合實境/全息圖形廣播帳戶
-- 微軟.混合現實/物件理解帳戶
-- 微軟.混合實境/遠端渲染帳戶
-- 微軟.混合現實/空間錨點帳戶
-- 微軟.混合實境/表面重建帳戶
-- 微軟.netapp/netapp帳戶
-- 微軟.netapp/netapp 帳戶/備份策略
-- 微軟.netapp/netapp 帳戶/容量池
-- 微軟.netapp/netapp 帳戶/容量池/卷
-- 微軟.netapp/netapp 帳戶/容量池/卷/裝載目標
-- microsoft.netapp/netapp 帳戶/容量池/卷/快照
-- 微軟.網路/應用程式閘道
-- 微軟.網路/應用程式閘道Web應用程式防火牆策略
-- 微軟.網路/應用程式安全組
-- 微軟.網路/azure 防火牆
-- 微軟.網路/堡壘主機
-- 微軟網路/連接
-- 微軟.網路/多斯自定義策略
-- 微軟.網路/ddos保護計劃
-- 微軟.網路/dns區域
-- 微軟.網路/快速路由電路
-- 微軟.網路/快速路由交叉連接
-- 微軟.網路/快速路由閘道
-- 微軟.網路/快速路由連接埠
-- 微軟.網路/防火牆策略
-- 微軟.網路/前門
-- 微軟.網路/前門網應用防火牆策略
-- 微軟.網路/ip分配
-- 微軟.網路/ip群組
-- 微軟.網路/負載平衡器
-- 微軟.網路/本地網路閘道
-- 微軟.網路/網路
-- 微軟網路/網路實驗配置檔
-- 微軟.網路/網路意圖策略
-- 微軟網路/網路介面
-- 微軟網路/網路管理員
-- 微軟網路/網路設定檔
-- 微軟.網路/網路安全組
-- 微軟網路/網路虛擬裝置
-- 微軟.網路/網路觀察者
-- 微軟網路/網路觀察器/連接監視器
-- 微軟.網路/網路觀察器/流量日誌
-- 微軟.網路/網路觀察器/鏡頭
-- 微軟.網路/網路觀察器/平梅什
-- 微軟.網路/p2svpn閘道
-- 微軟.網路/專用dns區
-- 微軟.網路/專用網區/虛擬網路鏈路
-- 微軟.網路/私人終結點重定向圖
-- 微軟.網路/私人端點
-- 微軟.網路/私人連結服務
-- 微軟.網路/公共位址
-- 微軟.網路/公共首碼
-- 微軟網路/路由過濾器
-- 微軟.網路/路由表
-- 微軟.網路/範例資源
-- 微軟.網路/安全合作夥伴供應商
-- 微軟.網路/服務端點策略
-- 微軟.網路/流量管理員設定檔
-- 微軟.網路/虛擬中心
-- 微軟.網路/虛擬網路閘道
-- 微軟網/虛擬網路
-- 微軟.網路/虛擬網路點擊
-- 微軟.網路/虛擬路由器
-- 微軟.網路/虛擬萬
-- 微軟.網路/vpn閘道
-- 微軟.網路/vpn伺服器配置
-- 微軟.網路/vpnsites
-- microsoft.通知中心/命名空間
-- microsoft.通知中心/命名空間/通知中心
-- microsoft.物件儲存/名稱空間
-- 微軟.offazure/超網站
-- 微軟.offazure/導入網站
-- 微軟.offazure/伺服器網站
-- 微軟.offazure/vmwaresites
-- 微軟.運營洞察/集群
-- microsoft.運營見解/工作區
-- 微軟.營運管理/解決方案
-- 微軟.運營管理/檢視
-- 微軟.對等/對等
-- 微軟.對等/對等服務
-- 微軟.門戶/儀錶板
-- 微軟.portalsdk/根資源
-- 微軟.powerbi/工作區集合
-- 微軟.電源化/容量
-- 微軟.專案/工作區
-- 微軟.專案/工作區/火花計算
-- 微軟.專案/工作區/sql計算
-- 微軟.專案巴比隆/帳戶
-- 微軟.量子/工作區
-- 微軟.恢復服務/保管庫
-- 微軟.紅帽轉移/開放式移位集群
-- 微軟.中繼/命名空間
-- 微軟.遠端應用程式/集合
-- 微軟.資源圖/查詢
-- microsoft.資源/部署文稿
-- 微軟.資源/範本
-- 微軟.saas/應用程式
-- 微軟.計劃/作業集合
-- 微軟.搜尋/搜尋服務
-- 微軟.安全/自動化
-- 微軟安全/iot安全解決方案
-- 微軟安全引爆/室
-- 微軟服務總線/命名空間
-- 微軟.服務結構/集群
-- microsoft.服務結構/容器組集
-- microsoft.Servicefabric/託管群集
-- 微軟.服務織物網格/應用程式
-- 微軟.服務結構網格/閘道
-- 微軟.服務結構網格/網路
-- 微軟.服務織物網格/秘密
-- 微軟.服務織物網格/卷
-- 微軟.信號服務/信號器
-- 微軟.解決方案/裝置定義
-- 微軟.解決方案/裝置
-- 微軟.解決方案/應用程式定義
-- 微軟.解決方案/應用程式
-- 微軟.解決方案/jit請求
-- 微軟.spool服務/滑閥
-- 微軟.sql/實例池
-- 微軟.sql/託管實例
-- 微軟.sql/託管實例/資料庫
-- 微軟.sql/伺服器
-- 微軟.sql/伺服器/資料庫
-- 微軟.sql/伺服器/彈性池
-- 微軟.sql/伺服器/作業帳戶
-- 微軟.sql/伺服器/作業代理
-- 微軟.sql/虛擬群集
-- 微軟.sql虛擬電腦/sql虛擬電腦組
-- 微軟.sql虛擬電腦/sql虛擬機器
-- 微軟.sqlvm/dwvm
-- 微軟儲存記憶體
-- 微軟.儲存快取/快取
-- 微軟儲存同步/儲存同步服務
-- 微軟儲存同步開發/儲存同步服務
-- 微軟儲存同步/儲存同步服務
-- 微軟.storsimple/經理
-- 微軟.流分析/流式處理
-- 微軟.synapse/工作區
-- 微軟.synapse/工作區/大數據池
-- 微軟.synapse/工作區/sqlpools
-- 微軟.地福莫斯/供應商註冊
-- 微軟.時間序列見解/環境
-- 微軟.時間序列見解/環境/事件來源
-- microsoft.時間序列見解/環境/參考資料集
-- 微軟.令牌/商店
-- 微軟.tokenvault/vaults
-- 微軟.虛擬機器影像/影像範本
-- 微軟.視覺工作室/帳戶
-- 微軟.視覺工作室/帳戶/擴展
-- 微軟.視覺工作室/帳戶/專案
-- 微軟.vmware/弧帶
-- 微軟.vmwarecloud簡單/專用雲節點
-- microsoft.vmwarecloud 簡單/專用雲服務
-- 微軟.vmwarecloud簡單/虛擬機器
-- 微軟.vmwareonazure/私有雲
-- 微軟.vmwarevirtustream/私有雲
-- 微軟.vnf管理員/裝置
-- 微軟.vnf經理/文夫斯
-- 微軟.vsonline/帳戶
-- 微軟.vsonline/計劃
-- 微軟.web/api管理帳戶/apis
-- 微軟.Web/憑證
-- 微軟.Web/連接閘道
+- aisupercomputer/accounts
+- aisupercomputer/accounts/jobgroups
+- aisupercomputer/accounts/jobgroups/job
+- microsoft.alertsmanagement/actionrules
+- microsoft.alertsmanagement/smartdetectoralertrules
+- microsoft.analysisservices/servers
+- apimanagement/服務
+- appconfiguration/configurationstores
+- appplatform/春季
+- microsoft. 封存/集合
+- microsoft. automation/automationaccounts
+- microsoft automation/automationaccounts/設定
+- microsoft automation/automationaccounts/runbook
+- azconfig/configurationstores
+- azureactivedirectory/b2cdirectories
+- azuredata/datacontrollers
+- azuredata/hybriddatamanagers
+- azuredata/postgresinstances
+- azuredata/sqlbigdataclusters
+- azuredata/sqlinstances
+- azuredata/sqlserverregistrations
+- azurestack/註冊
+- baremetal/consoleconnections
+- baremetal/crayservers
+- baremetal/monitoringservers
+- microsoft batch/batchaccounts
+- batchai/叢集
+- batchai/word
+- batchai/作業
+- batchai/工作區
+- bingmaps/mapapis
+- biztalkservices/biztalk
+- 區塊鏈/blockchainmembers
+- 區塊鏈/cordamembers
+- 區塊鏈/監看員
+- botservice/botservices
+- microsoft cache/redis
+- microsoft cdn/cdnwebapplicationfirewallpolicies
+- microsoft cdn/設定檔
+- microsoft. cdn/設定檔/端點
+- certificateregistration/certificateorders
+- microsoft.classiccompute/domainnames
+- microsoft.classiccompute/virtualmachines
+- microsoft.classicnetwork/networksecuritygroups
+- microsoft.classicnetwork/reservedips
+- microsoft.classicnetwork/virtualnetworks
+- microsoft.classicstorage/storageaccounts
+- microsoft.cloudes/accounts
+- cloudsearch/索引
+- 認知/syntheticsaccounts
+- cognitiveservices/accounts
+- microsoft. compute/availabilitysets
+- microsoft. compute/diskencryptionsets
+- microsoft。計算/磁片
+- microsoft. 計算/資源庫
+- microsoft。計算/資源庫/應用程式
+- microsoft. 計算/資源庫/應用程式/版本
+- microsoft。計算/資源庫/映射
+- microsoft. 計算/資源庫/映射/版本
+- microsoft. compute/hostgroups
+- microsoft。 compute/hostgroups/hosts
+- microsoft. 計算/映射
+- microsoft. compute/proximityplacementgroups
+- microsoft. compute/restorepointcollections
+- microsoft. compute/sharedvmextensions
+- microsoft。 compute/sharedvmextensions/版本
+- microsoft. compute/sharedvmimages
+- microsoft。 compute/sharedvmimages/版本
+- microsoft. 計算/快照集
+- microsoft. compute/sshpublickeys
+- microsoft. compute/virtualmachines
+- microsoft。計算/virtualmachines/延伸模組
+- microsoft. compute/virtualmachinescalesets
+- microsoft.containerinstance/containergroups
+- containerregistry/登錄
+- containerregistry/registry/agentpools
+- containerregistry/registry/buildtasks
+- containerregistry/登錄/複寫
+- containerregistry/registry/taskruns
+- containerregistry/registry/tasks
+- containerregistry/registry/webhook
+- microsoft.containerservice/containerservices
+- microsoft.containerservice/managedclusters
+- microsoft.containerservice/openshiftmanagedclusters
+- microsoft contoso/員工
+- costmanagement/連接器
+- customproviders/resourceproviders
+- databox/作業
+- databoxedge/databoxedgedevices
+- databricks/工作區
+- microsoft.datacatalog/目錄
+- microsoft.datacatalog/datacatalogs
+- datafactory/microsoft.azure.management.datafactories
+- datafactory/factory
+- datalakeanalytics/accounts
+- datalakestore/accounts
+- microsoft.datamigration/服務
+- microsoft.datamigration/services/projects
+- microsoft.datamigration/插槽
+- dataprotection/backupvaults
+- datashare/accounts
+- dbformariadb/servers
+- microsoft.dbformysql/servers
+- dbforpostgresql/servergroups
+- dbforpostgresql/servers
+- dbforpostgresql/serversv2
+- dbforpostgresql/singleservers
+- deploymentmanager/artifactsources
+- deploymentmanager/首度發行
+- deploymentmanager/servicetopologies
+- deploymentmanager/servicetopologies/services
+- deploymentmanager/servicetopologies/services/serviceunits
+- deploymentmanager/步驟
+- desktopvirtualization/applicationgroups
+- desktopvirtualization/hostpools
+- desktopvirtualization/工作區
+- detonationservice/detonationinstances
+- microsoft. devices/elasticpools
+- microsoft. devices/elasticpools/iothubtenants
+- microsoft. devices/iothubs
+- microsoft. devices/provisioningservices
+- devops/管線
+- devspaces/控制器
+- microsoft.devtestlab/labcenters
+- microsoft.devtestlab/labs
+- microsoft.devtestlab/labs/servicerunners
+- microsoft.devtestlab/labs/virtualmachines
+- microsoft.devtestlab/排程
+- 選取/digitaltwinsinstances
+- microsoft documentdb/databaseaccounts
+- domainregistration/網域
+- enterpriseknowledgegraph/服務
+- eventgrid/網域
+- eventgrid/partnernamespaces
+- eventgrid/partnerregistrations
+- eventgrid/partnertopics
+- eventgrid/systemtopics
+- eventgrid/主題
+- microsoft eventhub/叢集
+- microsoft. eventhub/命名空間
+- microsoft 測試/experimentworkspaces
+- falcon/命名空間
+- microsoft. 遊戲/標題
+- genomics/accounts
+- guestconfiguration/automanagedaccounts
+- hanaonazure/hanainstances
+- hanaonazure/sapmonitors
+- microsoft.hardwaresecuritymodules/dedicatedhsms
+- microsoft hdinsight/叢集
+- healthcareapis/服務
+- hybridcompute/機器
+- hybridcompute/機器/擴充功能
+- hybriddata/datamanagers
+- hydra 等/components
+- hydra 等/networkscopes
+- importexport/作業
+- microsoft insights/actiongroups
+- microsoft insights/activitylogalerts
+- microsoft insights/alertrules
+- microsoft insights/autoscalesettings
+- microsoft insights/元件
+- microsoft insights/datacollectionrules
+- microsoft insights/guestdiagnosticsettings
+- microsoft insights/metricalerts
+- microsoft insights/notificationgroups
+- microsoft insights/notificationrules
+- microsoft insights/privatelinkscopes
+- microsoft insights/scheduledqueryrules
+- microsoft insights/webtest
+- microsoft insights/活頁簿
+- microsoft insights/workbooktemplates
+- iotcentral/iotapps
+- microsoft.iotspaces/graph
+- keyvault/hsmpools
+- keyvault/保存庫
+- kubernetes/connectedclusters
+- kusto/叢集
+- kusto/叢集/資料庫
+- labservices/labaccounts
+- microsoft. 邏輯/integrationaccounts
+- microsoft. 邏輯/integrationserviceenvironments
+- microsoft. 邏輯/integrationserviceenvironments/managedapis
+- microsoft. 邏輯/工作流程
+- machinelearning/commitmentplans
+- machinelearning/webservices
+- machinelearning/工作區
+- machinelearningcompute/operationalizationclusters
+- microsoft.machinelearningservices/工作區
+- microsoft. 維護/maintenanceconfigurations
+- microsoft. 維護/maintenancepolicies
+- microsoft.managedidentity/groups
+- microsoft.managedidentity/userassignedidentities
+- managednetwork/managednetworkgroups
+- managednetwork/managednetworkpeeringpolicies
+- managednetwork/managednetworks
+- managednetwork/managednetworks/managednetworkgroups
+- managednetwork/managednetworks/managednetworkpeeringpolicies
+- microsoft。地圖/帳戶
+- microsoft. maps/accounts/privateatlases
+- marketplaceapps/classicdevservices
+- microsoft media/windowsazure.mediaservices.extensions
+- microsoft media/windowsazure.mediaservices.extensions/liveevent
+- microsoft media/windowsazure.mediaservices.extensions/streamingendpoint
+- microsoft media/windowsazure.mediaservices.extensions/轉換
+- microservices4spring/appclusters
+- microsoft. 遷移/assessmentprojects
+- microsoft. 遷移/migrateprojects
+- microsoft. 遷移/movecollections
+- microsoft. 遷移/專案
+- mixedreality/holographicsbroadcastaccounts
+- mixedreality/objectunderstandingaccounts
+- mixedreality/remoterenderingaccounts
+- mixedreality/spatialanchorsaccounts
+- mixedreality/surfacereconstructionaccounts
+- microsoft netapp/netappaccounts
+- microsoft netapp/netappaccounts/backuppolicies
+- microsoft netapp/netappaccounts/capacitypools
+- microsoft netapp/netappaccounts/capacitypools/磁片區
+- microsoft netapp/netappaccounts/capacitypools/磁片區/mounttargets
+- microsoft netapp/netappaccounts/capacitypools/磁片區/快照集
+- microsoft 網路/applicationgateways
+- microsoft 網路/applicationgatewaywebapplicationfirewallpolicies
+- microsoft 網路/applicationsecuritygroups
+- microsoft 網路/azurefirewalls
+- microsoft 網路/bastionhosts
+- microsoft. 網路/連線
+- microsoft 網路/ddoscustompolicies
+- microsoft 網路/ddosprotectionplans
+- microsoft 網路/dnszones
+- microsoft 網路/expressroutecircuits
+- microsoft 網路/expressroutecrossconnections
+- microsoft 網路/expressroutegateways
+- microsoft 網路/expressrouteports
+- microsoft 網路/firewallpolicies
+- microsoft 網路/frontdoors
+- microsoft 網路/frontdoorwebapplicationfirewallpolicies
+- microsoft 網路/ipallocations
+- microsoft 網路/ipgroups
+- microsoft 網路/loadbalancers
+- microsoft 網路/localnetworkgateways
+- microsoft 網路/natgateways
+- microsoft 網路/networkexperimentprofiles
+- microsoft 網路/networkintentpolicies
+- microsoft 網路/networkinterfaces
+- microsoft 網路/networkmanagers
+- microsoft 網路/networkprofiles
+- microsoft 網路/networksecuritygroups
+- microsoft 網路/networkvirtualappliances
+- microsoft 網路/networkwatchers
+- microsoft. network/networkwatchers/connectionmonitors
+- microsoft. network/networkwatchers/flowlogs
+- microsoft. network/networkwatchers/鏡頭
+- microsoft. network/networkwatchers/pingmeshes
+- microsoft 網路/p2svpngateways
+- microsoft 網路/privatednszones
+- microsoft. network/privatednszones/virtualnetworklinks
+- microsoft 網路/privateendpointredirectmaps
+- microsoft 網路/privateendpoints
+- microsoft 網路/privatelinkservices
+- microsoft 網路/publicipaddresses
+- microsoft 網路/publicipprefixes
+- microsoft 網路/routefilters
+- microsoft 網路/routetables
+- microsoft 網路/sampleresources
+- microsoft 網路/securitypartnerproviders
+- microsoft 網路/serviceendpointpolicies
+- microsoft 網路/trafficmanagerprofiles
+- microsoft 網路/virtualhubs
+- microsoft 網路/virtualnetworkgateways
+- microsoft 網路/virtualnetworks
+- microsoft 網路/virtualnetworktaps
+- microsoft 網路/virtualrouters
+- microsoft 網路/virtualwans
+- microsoft 網路/vpngateways
+- microsoft 網路/vpnserverconfigurations
+- microsoft 網路/vpnsites
+- notificationhubs/命名空間
+- notificationhubs/命名空間/notificationhubs
+- objectstore 會/osnamespaces
+- offazure/hypervsites
+- offazure/importsites
+- offazure/serversites
+- offazure/vmwaresites
+- microsoft.operationalinsights/叢集
+- microsoft.operationalinsights/工作區
+- microsoft.operationsmanagement/解決方案
+- microsoft.operationsmanagement/views
+- microsoft。對等互連/對等互連
+- microsoft。對等互連/peeringservices
+- microsoft 入口網站/儀表板
+- portalsdk/rootresources
+- microsoft powerbi/workspacecollections
+- powerbidedicated/容量
+- projectarcadia/工作區
+- projectarcadia/workspace/sparkcomputes
+- projectarcadia/workspace/sqlcomputes
+- projectbabylon/accounts
+- microsoft 量子/工作區
+- azurerm.recoveryservices/保存庫
+- redhatopenshift/openshiftclusters
+- microsoft 轉送/命名空間
+- microsoft remoteapp/集合
+- az.resourcegraph/查詢
+- microsoft .resources/deploymentscripts
+- microsoft .resources/templatespecs
+- microsoft saas/應用程式
+- microsoft. 排程器/jobcollections
+- microsoft 搜尋/searchservices
+- microsoft. security/自動化
+- microsoft. security/iotsecuritysolutions
+- securitydetonation/後母房間
+- microsoft. 匯流排/命名空間
+- servicefabric/叢集
+- servicefabric/containergroupsets
+- servicefabric/managedclusters
+- servicefabricmesh/應用程式
+- servicefabricmesh/閘道
+- servicefabricmesh/網路
+- servicefabricmesh/秘密
+- servicefabricmesh/磁片區
+- microsoft.signalrservice/signalr
+- microsoft 解決方案/appliancedefinitions
+- microsoft. 解決方案/設備
+- microsoft 解決方案/applicationdefinitions
+- microsoft. 解決方案/應用程式
+- microsoft 解決方案/jitrequest
+- spoolservice/線軸
+- microsoft .sql/instancepools
+- microsoft .sql/managedinstances
+- microsoft .sql/managedinstances/資料庫
+- microsoft .sql/伺服器
+- microsoft .sql/伺服器/資料庫
+- microsoft .sql/servers/elasticpools
+- microsoft .sql/servers/jobaccounts
+- microsoft .sql/servers/jobagents
+- microsoft .sql/virtualclusters
+- microsoft.sqlvirtualmachine/sqlvirtualmachinegroups
+- microsoft.sqlvirtualmachine/sqlvirtualmachines
+- sqlvm/dwvm
+- microsoft. storage/storageaccounts
+- storagecache/快取
+- microsoft.storagesync/storagesyncservices
+- storagesyncdev/storagesyncservices
+- storagesyncint/storagesyncservices
+- microsoft storsimple/管理員
+- mslearn-streamanalytics/streamingjobs
+- synapse/工作區
+- synapse/workspace/bigdatapools
+- synapse/workspace/sqlpools
+- terraformoss/providerregistrations
+- timeseriesinsights-environment-with-eventhub/環境
+- timeseriesinsights-environment-with-eventhub/環境/eventsources
+- timeseriesinsights-environment-with-eventhub/環境/referencedatasets
+- microsoft 權杖/商店
+- tokenvault/保存庫
+- virtualmachineimages/imagetemplates
+- visualstudio/帳戶
+- visualstudio/帳戶/擴充功能
+- visualstudio/帳戶/專案
+- microsoft vmware/arczones
+- microsoft vmware/resourcepools
+- microsoft vmware/vcenters
+- microsoft vmware/virtualmachines
+- microsoft vmware/virtualmachinetemplates
+- microsoft vmware/virtualnetworks
+- vmwarecloudsimple/dedicatedcloudnodes
+- vmwarecloudsimple/dedicatedcloudservices
+- vmwarecloudsimple/virtualmachines
+- vmwareonazure/privateclouds
+- vmwarevirtustream/privateclouds
+- vnfmanager/devices
+- vnfmanager/vnfs
+- vsonline/accounts
+- vsonline/方案
+- microsoft web/apimanagementaccounts/api
+- microsoft web/憑證
+- microsoft web/connectiongateways
 - microsoft.web/connections
-- 微軟.web/自訂
-- 微軟.web/託管環境
-- 微軟.web/kube環境
-- 微軟.web/伺服器農場
+- microsoft web/customapis
+- microsoft web/hostingenvironments
+- microsoft web/kubeenvironments
+- microsoft web/serverfarms
 - microsoft.web/sites
-- 微軟.web/網站/高級播代
+- microsoft web/sites/premieraddons
 - microsoft.web/sites/slots
-- 微軟.web/靜態網站
-- 微軟.windowsesu/多個啟動鍵
-- 微軟.視窗/裝置服務
-- myget.包管理/服務
-- paraleap.雲monix/服務
-- pokitdok.平台/服務
-- 提供者.測試/狀態引擎
-- 提供應用程式.測試/狀態資源
-- 提供者.測試/狀態資源/嵌套資源
-- 提供者.測試/無狀態資源
-- ravenhq.db/資料庫
-- 雷槍.錯誤報告/應用程式
-- 傳送格線.電子郵件/帳戶
-- 火花柱.基本/服務
-- 堆疊化.回溯/服務
-- 測試.鞋盒/測試資源
-- 測試.鞋盒/測試資源2
-- 趨勢微.深度安全/帳戶
-- u2uconsult.身份函式庫/服務
-- 萬迪斯科.融合/融合組
-- 萬迪斯科.融合/融合組/azure 區
-- 萬迪斯科.融合/融合組/azure 區域/外掛程式
-- 萬迪斯科.融合/融合組/蜂巢複製規則
-- 萬迪斯科.融合/融合組/管理前帶
-- 萬迪斯科.融合/融合組/上預帶
-- 萬迪斯科.融合/融合組/複製規則
+- microsoft web/staticsites
+- windowsesu/multipleactivationkeys
+- windowsiot/deviceservices
+- myget. packagemanagement/服務
+- paraleap. cloudmonix/services
+- pokitdok 平臺/服務
+- 提供者。 test/statefulibizaengines
+- 提供者。 test/statefulresources
+- 提供者。 test/statefulresources/nestedresources
+- 提供者。 test/statelessresources
+- 格 db/資料庫
+- raygun. crashreporting/apps
+- sendgrid。電子郵件/帳戶
+- sparkpost。基本/服務
+- stackify 的回溯/服務
+- shoebox/testresources
+- shoebox/testresources2
+- trendmicro. deepsecurity/accounts
+- u2uconsult. theidentityhub/services
+- wandisco. 融合/fusiongroups
+- wandisco. 融合/fusiongroups/azurezones
+- wandisco。融合/fusiongroups/azurezones/外掛程式
+- wandisco. 融合/fusiongroups/hivereplicationrules
+- wandisco. 融合/fusiongroups/managedonpremzones
+- wandisco. 融合/fusiongroups/onpremzones
+- wandisco. 融合/fusiongroups/replicationrules
 
-## <a name="securityresources"></a>安全資源
+## <a name="securityresources"></a>securityresources
 
-- 微軟.安全/評估
-- 微軟.安全/評估/子評估
-- 微軟.安全/定價
-- 微軟.安全/法規合規標準
-- microsoft.安全/法規合規性標準/法規遵從性控制
-- microsoft.安全/法規合規性標準/法規遵從性控制/法規合規性評估
-- 微軟安全/安全狀態
-- 微軟安全/安全狀態/容器主機
-- 微軟安全/安全狀態/內部機器
-- 微軟安全/安全狀態/伺服器
-- 微軟安全/安全狀態/子網
-- 微軟安全/安全狀態/虛擬機器
-- 微軟安全/安全狀態摘要
+- microsoft. 安全性/評量
+- microsoft. 安全性/評量/subassessments
+- microsoft. security/定價
+- microsoft. security/regulatorycompliancestandards
+- microsoft. security/regulatorycompliancestandards/regulatorycompliancecontrols
+- microsoft. security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- microsoft. security/securitystatuses
+- microsoft. security/securitystatuses/containerhosts
+- microsoft. security/securitystatuses/onpremisemachines
+- microsoft. security/securitystatuses/servers
+- microsoft. security/securitystatuses/子網
+- microsoft. security/securitystatuses/virtualmachines
+- microsoft. security/securitystatusessummaries
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解有關[查詢語言](../concepts/query-language.md)的更多詳細資訊。
+- 深入瞭解[查詢語言](../concepts/query-language.md)。
 - 深入了解如何[探索資源](../concepts/explore-resources.md)。
-- 請參考[初學者查詢的範例](../samples/starter.md)。
+- 請參閱[入門查詢](../samples/starter.md)的範例。

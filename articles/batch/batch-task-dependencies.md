@@ -1,25 +1,15 @@
 ---
-title: 創建任務依賴項以運行任務 - Azure 批次處理
+title: 建立工作相依性來執行工作-Azure Batch
 description: 建立相依於其他工作完成的工作，以便在 Azure Batch 中處理 MapReduce 樣式和類似的巨量資料工作負載。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca771117e889afc8e143c4ca4626ab2d3bb4da2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022897"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116480"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>建立工作相依性，以便執行相依於其他工作的工作
 
@@ -78,7 +68,7 @@ Azure Batch 中可使用的基本工作相依性案例有三種︰一對一、�
 |:---:| --- | --- |
 |  [一對一](#one-to-one) |「taskB」** 相依於「taskA」** <p/> 「taskB」** 要等到「taskA」** 順利完成後，才會排定執行 |![圖表︰一對一工作相依性][1] |
 |  [一對多](#one-to-many) |「taskC」** 同時相依於「taskA」** 和「taskB」** <p/> 「taskC」** 要等到「taskA」** 和「taskB」** 順利完成後，才會排定執行 |![圖表︰一對多工作相依性][2] |
-|  [工作識別碼範圍](#task-id-range) |「taskD」** 相依於某一範圍的工作 <p/> 「taskD」** 要等到識別碼「1」** 到「10」** 的工作順利完成後，才會排定執行 |![圖表：任務 ID 範圍依賴項][3] |
+|  [工作識別碼範圍](#task-id-range) |「taskD」** 相依於某一範圍的工作 <p/> 「taskD」** 要等到識別碼「1」** 到「10」** 的工作順利完成後，才會排定執行 |![圖表：工作識別碼範圍相依性][3] |
 
 > [!TIP]
 > 您可以建立**多對多**關聯性，例如工作 C、D、E 和 F 均相依於工作 A 和 B。舉例來說，在下游工作相依於多個上游工作輸出的平行前置處理案例中，這種關聯性就很有用。

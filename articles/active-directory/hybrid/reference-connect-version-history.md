@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/21/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1377023af9d4f153671f15e214516ac29536638
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100068"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112196"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -47,6 +47,14 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >如果您已啟用同步 Azure AD Connect，您很快就會開始收到健康情況通知，在您執行其中一個較舊版本時警告您即將進行的棄用功能。
 >
 >請參閱[這篇文章](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入瞭解如何將 Azure AD Connect 升級至最新版本。
+
+## <a name="15290"></a>1.5.29.0
+
+### <a name="release-status"></a>發行狀態
+04/23/2020：已發行以供下載
+
+### <a name="fixed-issues"></a>已修正的問題
+此修補程式組建修正了組建1.5.20.0 中引進的問題，其中 MFA 的租使用者系統管理員無法啟用 DSSO。
 
 ## <a name="15220"></a>1.5.22.0
 
@@ -546,12 +554,12 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 *   將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。 關於 SELF，我們需要將預設權限維持不變。
 *   指派這些特定權限：
 
-類型     | 名稱                          | 存取               | 套用至
+類型     | 名稱                          | 存取權               | 套用至
 ---------|-------------------------------|----------------------|--------------|
 Allow    | 系統                        | 完全控制         | 此物件  |
-Allow    | 企業系統管理員             | 完全控制         | 此物件  |
-Allow    | 網域管理員                 | 完全控制         | 此物件  |
-Allow    | 系統管理員                | 完全控制         | 此物件  |
+Allow    | Enterprise Admins             | 完全控制         | 此物件  |
+Allow    | Domain Admins                 | 完全控制         | 此物件  |
+Allow    | Administrators                | 完全控制         | 此物件  |
 Allow    | 企業網域控制站 | 清單內容        | 此物件  |
 Allow    | 企業網域控制站 | 讀取所有屬性  | 此物件  |
 Allow    | 企業網域控制站 | 讀取權限     | 此物件  |
@@ -571,7 +579,7 @@ Allow    | 驗證的使用者           | 讀取權限     | 此物件  |
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Where 
+其中 
 
 **$ObjectDN** = 必須加強權限的 Active Directory 帳戶。
 
@@ -890,7 +898,7 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|選取|
-    |CertKeyAlgorithmParams|CertHashString|Where|
+    |CertKeyAlgorithmParams|CertHashString|其中|
     |||含有|
 
 * 已引進下列結構描述變更，以允許客戶建立自訂的同步處理規則來流動群組物件的 sAMAccountName、domainNetBios 和 domainFQDN，以及使用者物件的 distinguishedName：
