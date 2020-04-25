@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 04/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe7b375ebafb1e8194b29061430d956e48f2c441
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: bf8c797edec143d09739272917b5781a239280ba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100749"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147735"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -111,6 +111,7 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。 變�
 
 ## <a name="change-log"></a>變更記錄
 
+- 04/24/2020：在具有[及 ON sles](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)的 azure vm 上具有待命節點的 SAP Hana 向外延展的變更，SAP Hana 位於具有[及 on rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)的 azure vm 上使用待命節點的相應放大、[高可用性適用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)于在 rhel 上的 Azure vm 上搭配及和[高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)（含 NetWeaver 的 azure vm 上的 sap 及），以新增說明及磁片區的 IP 位址已自動指派
 - 04/22/2020：在[SLES 上的 Azure vm 上 SAP Hana 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)變更，以從`is-managed`指示中移除中繼屬性，因為它與將叢集置於或離開維護模式相衝突
 - 04/21/2020：已將 SQL Azure DB 新增為 SAP （Hybris） Commerce Platform 1811 的支援 DBMS，並在文章中加入[了哪些 sap 軟體支援用於 Azure 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)，以及在[Microsoft Azure 上執行的 sap 認證和](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)設定
 - 04/16/2020：已將 SAP Hana 新增為 SAP （Hybris）商務平臺的支援 DBMS，文章中的[Azure 部署支援的 sap 軟體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)，以及[Microsoft Azure 上執行的 sap 認證和](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)設定

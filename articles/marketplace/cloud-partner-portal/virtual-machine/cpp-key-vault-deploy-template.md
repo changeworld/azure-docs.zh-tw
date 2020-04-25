@@ -1,5 +1,5 @@
 ---
-title: Azure 密鑰保管庫部署範本 |Azure 應用商店
+title: Azure Key Vault 部署範本 |Azure Marketplace
 description: 列出部署新的 Azure Key Vault 執行個體所需的 Azure Resource Manager 範本。
 author: dsindona
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a6e7260bb761db5cfa6884baf29317a004ab1452
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273829"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147034"
 ---
 # <a name="key-vault-deployment-template"></a>金鑰保存庫部署範本
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Azure VM 映像認證](https://aks.ms/CertifyVMimage)中的說明來管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將 Azure 虛擬機器供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請遵循[AZURE VM 映射認證](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的指示來管理您遷移的供應專案。
 
-下列 Azure Resource Manager 範本定義新的 Azure Key Vault 執行個體。  它用於[建立金鑰保存庫憑證](cpp-create-key-vault-cert.md)一文中。 
+下列 Azure Resource Manager 範本定義新的 Azure Key Vault 執行個體。  它用於[建立金鑰保存庫憑證](cpp-create-key-vault-cert.md)一文中。
 
 ```json
 {

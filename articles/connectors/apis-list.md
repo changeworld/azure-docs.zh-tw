@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 9723fc3ab68785c6e444647f427fcf9788792cea
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 27f86a3fa34f8029e59d11066de9ea5a25a8c5ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115681"
+ms.locfileid: "82147986"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -48,9 +48,6 @@ ms.locfileid: "82115681"
 
   連接器會分類為 [標準] 或 [企業]。 [企業連接器](#enterprise-connectors)可讓您存取企業系統，例如 SAP、ibm MQ 和 ibm 3270，以取得額外費用。 若要判斷連接器是否為標準或企業，請參閱[連接器總覽](https://docs.microsoft.com/connectors)底下每個連接器的參考頁面中的技術詳細資料。
 
-  > [!IMPORTANT]
-  > 自**2020 年5月1日**起，Google 對其[資料安全性和隱私權原則](https://www.blog.google/technology/safety-security/project-strobe/)所做的變更可能會影響使用[Gmail 連接器](https://docs.microsoft.com/connectors/gmail/)的邏輯應用程式。 如果您的邏輯應用程式使用 Gmail 連接器搭配 Gmail 取用者帳戶（以@gmail.com或@googlemail.com結尾的電子郵件地址），則您的邏輯應用程式只能使用 Google 核准的觸發程式、動作和連接器。 自**2020 年6月15日**起，將會停用任何不符合規範的工作流程。 如需詳細資訊，請參閱[Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
-
   您也可以使用這些類別來識別連接器，雖然某些連接器可以跨多個類別。 例如，SAP 是企業連接器和內部部署連接器：
 
   |   |   |
@@ -59,6 +56,9 @@ ms.locfileid: "82115681"
   | [**內部部署連接器**](#on-premises-connectors) | 在您安裝並設定[內部部署資料閘道][gateway-doc]之後，這些連接器可協助您的邏輯應用程式存取內部部署系統，例如 SQL Server、SharePoint Server、Oracle DB、檔案共用及其他系統。 |
   | [**整合帳戶連接器**](#integration-account-connectors) | 當您建立並支付整合帳戶時，這些連接器會轉換和驗證 XML、進行一般檔案的編碼和解碼，以及透過 AS2、EDIFACT 和 X12 通訊協定處理企業對企業 (B2B) 訊息。 |
   |||
+
+  > [!IMPORTANT]
+  > 如果您想要使用 Gmail 連接器，只有 G Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)用來搭配您的 Gmail 連接器進行驗證。 如需詳細資訊，請參閱[Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 <a name="integration-service-environment"></a>
 

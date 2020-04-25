@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虛擬機器建立後配置 WinRM |Azure 應用商店
+title: 在建立 Azure 虛擬機器之後設定 WinRM |Azure Marketplace
 description: 說明如何在建立 Azure 託管的虛擬機器之後，設定 Windows 遠端管理 (WinRM)。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a67371ce6f951a9e446ab639ea5b59248b79565
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273013"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144131"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>在建立虛擬機器之後設定 WinRM
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器產品/服務](https://aka.ms/CreateAzureVMoffer)中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將 Azure 虛擬機器供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 Azure 虛擬機器供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)專案中的指示來管理您的已遷移優惠。
 
 本文說明如何設定現有的 Azure 託管虛擬機器 (VM) 來啟用 WinRM over HTTPS。  此設定僅適用於 Windows 型 VM，而且需要下列雙步驟程序：
 
@@ -27,9 +27,9 @@ ms.locfileid: "81273013"
 
 ## <a name="enabling-port-traffic"></a>啟用連接埠流量
 
-WINRM 超過 HTTPS 協定使用埠 5986,預設情況下,在 Azure 應用商店上提供的預先配置的 Windows VM 上不會啟用埠 5986。 若要啟用此通訊協定，請使用下列步驟，透過 [Azure 入口網站](https://portal.azure.com)來將新規則新增至網路安全性群組 (NSG)。  如需有關 NSG 的詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)。
+WinRM over HTTPS 通訊協定使用埠5986，預設不會在 Azure Marketplace 上提供的預先設定 Windows Vm 上啟用。 若要啟用此通訊協定，請使用下列步驟，透過 [Azure 入口網站](https://portal.azure.com)來將新規則新增至網路安全性群組 (NSG)。  如需有關 NSG 的詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 
-1. 導覽到刀片**虛擬機器>**   < *vm 名稱*>  **>設定/網路**。
+1. 流覽至 [blade]**虛擬機器，>**   < *vm 名稱*>   **> 設定/網路**]。
 2. 按一下 NSG 名稱 (在此範例中為 **testvm11002**) 以顯示其屬性：
 
     ![網路安全性群組屬性](./media/nsg-properties.png)

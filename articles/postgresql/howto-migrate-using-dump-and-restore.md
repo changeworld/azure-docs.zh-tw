@@ -1,22 +1,22 @@
 ---
-title: 轉儲和還原 - 用於 PostgreSQL 的 Azure 資料庫 - 單個伺服器
-description: 描述如何將 PostgreSQL 資料庫提取到轉儲檔中，並從 pg_dump為 PostgreSQL - 單伺服器在 Azure 資料庫中創建的檔進行還原。
+title: 傾印和還原-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 描述如何將于 postgresql 資料庫解壓縮至傾印檔案，並從適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的 pg_dump 所建立的檔案還原。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770232"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146335"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用傾印和還原來移轉 PostgreSQL 資料庫
 您可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 將 PostgreSQL 資料庫擷取到傾印檔案，並使用 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 從 pg_dump 所建立的封存檔案還原 PostgreSQL 資料庫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要逐步執行本作法指南，您需要︰
 - [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)，而且防火牆規則要允許存取其中的資料庫。
 - 安裝 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 命令列公用程式
@@ -34,7 +34,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ```
 
 
-## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>使用pg_restore將資料還原到目標 Azure 資料庫，用於 PostgreSQL
+## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>使用 pg_restore 將資料還原到目標適用於 PostgreSQL 的 Azure 資料庫
 在建立目標資料庫後，您可以使用 pg_restore 命令和 -d、--dbname 參數，從傾印檔案將資料還原至目標資料庫。
 ```bash
 pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
@@ -42,7 +42,7 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 包括 --no-owner 參數會導致在還原期間建立的所有物件都由使用 --username 指定的使用者所擁有。 如需詳細資訊，請參閱 [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) 上的官方 PostgreSQL 文件。
 
 > [!NOTE]
-> 如果您的 PostgreSQL 伺服器需要 SSL 連線 (在適用於 PostgreSQL 的 Azure 資料庫中預設為開啟)，請設定環境變數 `PGSSLMODE=require`，以便 pg_restore 工具使用 SSL 連線。 若沒有 SSL，可能顯示錯誤訊息：`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> 如果您的于 postgresql 伺服器需要 TLS/SSL 連線（在適用於 PostgreSQL 的 Azure 資料庫伺服器中預設為開啟），請設定`PGSSLMODE=require`環境變數，讓 pg_restore 工具與 tls 連接。 如果沒有 TLS，可能會讀取錯誤`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
 > 在 Windows 命令列中，執行命令 `SET PGSSLMODE=require`，然後再執行 pg_restore 命令。 在 Linux 或 Bash中，執行命令 `export PGSSLMODE=require`，然後再執行 pg_restore 命令。
 >
@@ -72,7 +72,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 根據預設，這應已完成，但請開啟傾印檔案，確認 Create Index 陳述式位在插入的資料之後。 若非如此，請將 Create Index 陳述式移至插入的資料之後。
 
-- 使用開關 -Fc 和 -j*#* 進行還原以並行化還原。 *#* 是目標伺服器上的內核數。 您還可以嘗試將*#* 目標伺服器的內核數設置為兩倍，以查看影響。 例如：
+- 使用交換器-Fc 和-j *#* 進行還原，以平行處理還原。 *#* 這是目標伺服器上的核心數目。 您也可以嘗試*#* 將設為目標伺服器核心數目的兩倍，以查看影響。 例如：
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

@@ -1,23 +1,23 @@
 ---
-title: Azure 和 Dynamics 365 諮詢服務提供發佈 |Azure 應用商店
-description: 在 Azure 應用商店或 AppSource 的雲端合作夥伴門戶中發佈 Azure 或 Dynamics 365 諮詢服務產品。
+title: Azure 和 Dynamics 365 諮詢服務供應專案發行 |Azure Marketplace
+description: 在適用于 Azure Marketplace 或 AppSource 的 Cloud Partner 入口網站中發佈 Azure 或 Dynamics 365 諮詢服務供應專案。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c602bbee128c3338d841cb4564add26ba1c9e841
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985077"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146636"
 ---
 # <a name="publish-a-consulting-service-offer"></a>發佈諮詢服務供應項目
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您的諮詢服務供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 遵循[諮詢服務建立總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)中的指示，管理您的已遷移供應專案。
 
 當您完成 [供應項目設定]****、[電子店面詳細資料]**** 和 [連絡人]**** 之後，請選取 [發佈]**** 並提供電子郵件地址。 當 Microsoft 準備發佈您的供應項目時，您會收到一封電子郵件，讓您在上線之前先預覽。 您隨時可以返回入口網站來檢查供應項目的狀態。
 

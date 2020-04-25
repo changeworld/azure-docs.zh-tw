@@ -3,12 +3,12 @@ title: 服務健康狀態概觀 | Microsoft Docs
 description: 目前和未來的 Azure 服務問題和維修如何影響 Azure 應用程式的個人化資訊。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097246"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146934"
 ---
 # <a name="service-health-overview"></a>服務健康狀態總覽
 
@@ -41,6 +41,12 @@ ms.locfileid: "82097246"
 選擇 [潛在影響]**** 索引標籤，查看將受問題影響而且您擁有的資源列出的特定清單。 您可以下載這些資源的 CSV 清單，以便與小組共用。
 
 ![管理服務問題 - 影響](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能會對您的服務造成影響的新興問題
+
+在某些情況下，可能會將廣泛的服務問題張貼到[Azure 狀態頁面](https://status.azure.com)，才能將目標通訊傳送給受影響的客戶。 為了確保 Azure 服務健康狀態提供可能會影響您的問題的全面觀點，會將作用中的 Azure 狀態頁面問題呈現在服務健康狀態中，成為*新的問題*。 當活動在 [Azure 狀態] 頁面上作用時，服務健康狀態中會出現新興問題橫幅。 按一下橫幅以查看問題的完整詳細資料。
+
+![新興服務問題](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>取得連結和可下載的說明 
 

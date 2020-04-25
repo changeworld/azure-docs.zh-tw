@@ -1,27 +1,24 @@
 ---
 title: Azure 虛擬機器的多個 IP 位址 - PowerShell | Microsoft Docs
-description: 瞭解如何使用 PowerShell 將多個 IP 位址分配給虛擬機器。 |資源管理器
+description: 瞭解如何使用 PowerShell 將多個 IP 位址指派給虛擬機器。 |Resource Manager
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud
-ms.reviewer: annahar
-ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279568"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147786"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 對虛擬機器指派多個 IP 位址
 
@@ -95,9 +92,9 @@ ms.locfileid: "79279568"
     -SecurityRules $NSGRule
     ```
 
-6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果不可用，輸出將返回*False*和可用地址清單。 
+6. 定義 NIC 的主要 IP 組態。 如果您未使用先前定義的值，請將 10.0.0.4 變更成您所建立之子網路中的有效位址。 指派靜態 IP 位址之前，建議您先確認該位址尚未處於使用中。 輸入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回*False*和可用位址的清單。 
 
-    在以下命令中，**使用\<要使用的唯一 DNS 名稱替換唯一名稱>。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
+    在下列命令中，**將\<replace 取代為唯一的名稱> 並使用唯一的 DNS 名稱。** 該名稱在 Azure 區域內的所有公用 IP 位址中必須是唯一的。 這是選擇性參數。 如果您只想要使用公用 IP 位址來連接到 VM，則可以將它移除。
 
     ```powershell
     
@@ -162,7 +159,7 @@ ms.locfileid: "79279568"
    ```
 
    >[!NOTE]
-   >雖然在本文中是將所有組態都指派給一個 NIC，但您也可以指派多個 IP 組態給連結到 VM 的每個 NIC。 要瞭解如何創建具有多個 NIC 的 VM，請閱讀"[創建具有多個 NIC 的 VM"](../virtual-machines/windows/multiple-nics.md)一文。
+   >雖然在本文中是將所有組態都指派給一個 NIC，但您也可以指派多個 IP 組態給連結到 VM 的每個 NIC。 若要瞭解如何建立具有多個 Nic 的 VM，請閱讀[建立具有多個 nic 的 vm 一](../virtual-machines/windows/multiple-nics.md)文。
 
 9. 輸入下列命令來建立 VM：
 
@@ -276,7 +273,7 @@ ms.locfileid: "79279568"
    -AllocationMethod Static
    ```
 
-   要使用靜態私人 IP 位址和關聯的*myPublicIp3*公共 IP 位址資源創建新的 IP 配置，請輸入以下命令：
+   若要建立具有靜態私人 IP 位址和相關聯*myPublicIp3*公用 ip 位址資源的新 IP 設定，請輸入下列命令：
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `

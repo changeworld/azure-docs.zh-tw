@@ -1,54 +1,54 @@
 ---
-title: 電源 BI 應用程式優惠 |Azure 應用商店
-description: 如何將 Power BI 應用發表到 Microsoft AppSource 市場。
+title: Power BI 應用程式供應專案 |Azure Marketplace
+description: 如何將 Power BI 應用程式發佈至 Microsoft AppSource marketplace。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dc433fb2ee7888a20af16e01d76d4678cf12b01b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1745868085a4ca573e2d6b5f78bea5f18b9e23c2
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985570"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147704"
 ---
 # <a name="power-bi-app-offer"></a>Power BI 應用程式供應項目
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzurePBIAppCreationOverview)中的說明進行操作,以管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您 Power BI 應用程式供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 依照[Power BI 應用程式建立總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)中的指示，管理您遷移的供應專案。
 
 |              |                                |
 |--------------|--------------------------------|
-| 本文介紹如何將 Power BI 應用程式發布到 Microsoft [AppSource 市場](https://appsource.microsoft.com/)。  Power BI 應用包可自定義的 Power BI 內容,包括數據集、報表和儀錶板。 然後,您可以通過 AppSource 將應用部署到其他 Power BI 租戶,執行開發人員允許的調整和自定義,並將其連接到您自己的數據。 | ![Power BI 圖示](./media/powerbi-icon.png) |
+| 本文說明如何將 Power BI 應用程式發佈到 Microsoft [AppSource marketplace](https://appsource.microsoft.com/)。  Power BI 應用程式封裝可自訂的 Power BI 內容，包括資料集、報表和儀表板。 接著，您可以透過 AppSource 將應用程式部署至其他 Power BI 租使用者，執行開發人員所允許的調整和自訂，並將它連接到您自己的資料。 | ![Power BI 圖示](./media/powerbi-icon.png) |
 
 
-本文分為三個主要部分:
+本文分為三個主要部分：
 
--   [先決條件](./cpp-prerequisites.md)。 創建和發佈 Power BI 應用產品/服務所需的技術和業務需求。
--   [建立 Power BI 應用產品/服務](./cpp-create-offer.md)。 如何使用[雲合作夥伴門戶](https://cloudpartner.azure.com)創建PowerBI應用產品提供條目。
--   [發表 Power BI 應用產品/服務](./cpp-publish-offer.md)。 如何向 AppSource 提交新產品/服務以供發佈,以及如何更新現有產品/服務。
+-   [必要條件](./cpp-prerequisites.md)。 建立和發佈 Power BI 應用程式供應專案的技術和商務需求。
+-   [建立 Power BI 應用程式供應](./cpp-create-offer.md)專案。 如何使用[Cloud Partner 入口網站](https://cloudpartner.azure.com)建立 Power BI 應用程式供應專案。
+-   [發佈 Power BI 應用程式供應](./cpp-publish-offer.md)專案。 如何將新供應專案提交至 AppSource 以供發佈，以及如何更新現有的供應專案。
 
 
 ## <a name="publishing-steps"></a>發佈步驟
 
-以下是發佈 Power BI 應用產品/服務的進階步驟:
+以下是發佈 Power BI 應用程式供應專案的高階步驟：
 
-![Power BI 應用提供發佈步驟](media/publishing-steps.png)
+![Power BI 應用程式供應專案發佈步驟](media/publishing-steps.png)
 
-以下是 Power BI 應用程式提供的發表過程:
+以下是 Power BI 應用程式供應專案發佈流程：
 
-1. 在 Power BI 中創建範本應用程式。 此操作將生成包安裝 URL,該 URL 表示產品/服務的主要技術資產。 同時,此時,將測試包推廣到預生產。 有關詳細資訊,請參閱什麼是[Power BI 範本應用?](https://docs.microsoft.com/power-bi/service-template-apps-overview) 
-2. 收集或創建產品/服務的行銷材料,包括:官方名稱、描述、徽標等。 
-3. 收集或創建產品/服務的法律和支援文檔:*使用條款*、*隱私政策*、*支援政策*、使用者説明等。
-4. 創建產品/服務:使用雲合作夥伴門戶配置產品/服務的詳細資訊,包括產品/服務說明、行銷材料、法律資訊、支援資訊和資產規範。  完全指定報價后,提交以供發佈。
-5. 監視雲合作夥伴門戶中的發佈過程。  在此步驟中,AppSource 載入團隊測試、驗證和驗證您的應用程式。 
-6. 成功認證應用后,在測試環境中查看併發佈它。 
-7. Power BI 應用程式在 AppSource 上列出(它"上線")。
-8. 在 Power BI 中,將預生產包推廣到生產。 有關詳細資訊,請參閱[管理樣本應用版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
+1. 在 Power BI 中建立範本應用程式。 此動作會產生封裝安裝 URL，其代表供應專案的主要技術資產。 此時，請將測試套件升階至生產階段前。 如需詳細資訊，請參閱[什麼是 Power BI 範本應用程式？](https://docs.microsoft.com/power-bi/service-template-apps-overview)。 
+2. 收集或建立供應專案的行銷材料，包括官方名稱、描述、標誌等等。 
+3. 收集或建立供應專案的法律與支援檔：*使用條款*、*隱私權原則*、*支援原則*、使用者說明等等。
+4. 建立供應專案：使用 Cloud Partner 入口網站來設定供應專案的詳細資料，包括供應專案描述、行銷資料、法律資訊、支援資訊和資產規格。  完整指定供應專案之後，請將其提交以供發佈。
+5. 在 Cloud Partner 入口網站中監視發佈程式。  在此步驟中，AppSource 上架小組會測試、驗證及認證您的應用程式。 
+6. 成功認證應用程式之後，請在其測試環境中進行檢查並加以發行。 
+7. Power BI 應用程式會列在 AppSource （其「上線」）。
+8. 在 Power BI 中，將進入生產階段前套件升階至生產環境。 如需詳細資訊，請參閱[管理範本應用程式版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在建立 Power BI 應用產品/服務並將其發表到 AppSource 之前,必須滿足將 Power BI 應用發表到 AppSource[的要求](./cpp-prerequisites.md)。
+建立 Power BI 應用程式供應專案並將其發佈至 AppSource 之前，您必須符合將 Power BI 應用程式發佈至 AppSource 的[需求](./cpp-prerequisites.md)。

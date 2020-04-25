@@ -3,24 +3,24 @@ title: 使用 Azure Application Insights 設定 ASP.NET 的 Web 應用程式分�
 description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設定效能、可用性及使用者行為分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d3181c3d43f07c7cb920b9fe265a8420c1417a56
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536891"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145271"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
 此程序會設定 ASP.NET web 應用程式以將遙測傳送至 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服務。 這適用於在您擁有的內部部署 IIS 伺服器或雲端中託管的 ASP.NET 應用程式。 取得圖表和功能強大的查詢語言可幫助您了解您應用程式的效能以及人員如何使用它，再加上發生失敗或效能問題時的自動警示。 許多開發人員發現這些功能本身就很棒，但是您也可以視需要擴充和自訂遙測。
 
-在 Visual Studio 中只需按幾下滑鼠即可進行安裝。 您可以選擇限制遙測的磁碟區來避免產生費用。 此功能允許您進行試驗和調試,或監視使用者不多的網站。 當您決定要繼續監視您的生產網站時，很容易在稍後提升限制。
+在 Visual Studio 中只需按幾下滑鼠即可進行安裝。 您可以選擇限制遙測的磁碟區來避免產生費用。 此功能可讓您進行實驗和調試，或監視不是許多使用者的網站。 當您決定要繼續監視您的生產網站時，很容易在稍後提升限制。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要將 Application Insights 新增至您的 ASP.NET 網站，您必須：
 
-- [安裝 Visual Studio 2019 適用於](https://www.visualstudio.com/downloads/)具有以下工作負載的 Windows:
-    - ASP.NET與網頁開發(不要取消選擇選擇的元件)
+- 使用下列工作負載安裝[適用于 Windows 的 Visual Studio 2019](https://www.visualstudio.com/downloads/) ：
+    - ASP.NET 和 網頁程式開發（請勿取消核取選用元件）
     - Azure 開發
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
@@ -28,9 +28,9 @@ ms.locfileid: "81536891"
 ## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a>步驟 1：新增 Application Insights SDK
 
 > [!IMPORTANT]
-> 此示例中的螢幕截圖基於 Visual Studio 2017 版本 15.9.9 及更高版本。 添加應用程式見解的體驗因 Visual Studio 版本以及ASP.NET範本類型而異。 較舊版本可能具有備用文本,如"配置應用程式見解"。
+> 此範例中的螢幕擷取畫面是以 Visual Studio 2017 版15.9.9 版和更新版本為基礎。 新增 Application Insights 的體驗會因 Visual Studio 版本以及 ASP.NET 範本類型而有所不同。 較舊的版本可能會有替代文字，例如「設定 Application Insights」。
 
-在解決方案資源管理器中右鍵單擊 Web 應用名稱,然後選擇 **"添加** > **應用程式見解遙測"**
+在方案總管中，以滑鼠右鍵按一下您的 web 應用程式名稱，然後選擇 [**新增** > ]**Application Insights 遙測**
 
 ![醒目提示 [設定 Application Insights] 的 [方案總管] 螢幕擷取畫面](./media/asp-net/add-telemetry-new.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "81536891"
 
 Application Insights 設定畫面：
 
-選擇 **「開始」。**
+選取 [**開始**使用]。
 
 ![[向 Application Insights 註冊您的應用程式] 頁面的螢幕擷取畫面](./media/asp-net/00004-start-free.png)
 
@@ -50,13 +50,13 @@ Application Insights 設定畫面：
 
 ![[向 Application Insights 註冊您的應用程式] 頁面的螢幕擷取畫面](./media/asp-net/00005-register-ed.png)
 
- 選擇**專案** > **管理 NuGet** > **包包來源:nuget.org>** 確認您擁有最新的穩定應用程式見解 SDK 版本。
+ 選取 [**專案** > ] [**管理 NuGet 套件** > ] [**套件來源]： nuget.org** > 確認您有 Application Insights SDK 的最新穩定版本。
 
  在偵錯期間和您發佈應用程式之後，遙測會傳送至 [Azure 入口網站](https://portal.azure.com)。
 > [!NOTE]
 > 如果您不想在您偵錯時將遙測傳送到入口網站，而只將 Application Insights SDK 新增至您的應用程式，但不在入口網站中設定資源。 您在偵錯時可在 Visual Studio 中檢視遙測。 稍後，您可以回到此設定頁面，或等到部署您的應用程式之後，[在執行階段開啟遙測](../../azure-monitor/app/monitor-performance-live-website-now.md)。
 
-## <a name="step-2-run-your-app"></a><a name="run"></a>第二步:執行應用
+## <a name="step-2-run-your-app"></a><a name="run"></a>步驟2：執行您的應用程式
 按 F5 執行您的應用程式。 開啟不同的頁面來產生一些遙測。
 
 在 Visual Studio 中，您會看見已記錄的事件計數。
@@ -68,7 +68,7 @@ Application Insights 設定畫面：
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>在 Visual Studio 中查看遙測
 
-在 Visual Studio 中，若要檢視 Application Insights 資料：  選擇**解決方案資源管理器** > **連接服務**>右键单击**應用程式見解**,然後單擊 **「搜尋即時遙測**」。
+在 Visual Studio 中，若要檢視 Application Insights 資料：  選取 [**方案總管** > ]**已連線的服務**> 以滑鼠右鍵按一下 [ **Application Insights**]，然後按一下 [**搜尋即時遙測**]。
 
 在 Visual Studio 的 [Application Insights 搜尋] 視窗中，您可以在應用程式的資料中查看應用程式的伺服器端所產生的遙測。 試驗篩選器，然後按一下任何事件以查看更多詳細資料。
 
@@ -95,7 +95,7 @@ Application Insights 設定畫面：
 ## <a name="step-4-publish-your-app"></a>步驟 4：發佈您的應用程式
 將您的應用程式發佈至 IIS 伺服器或 Azure。 監看 [即時計量串流](../../azure-monitor/app/live-stream.md) 以確定一切順利執行。
 
-遙測資料在應用程式見解門戶中生成,您可以在其中監視指標、搜索遙測數據。 您也可以使用功能強大的 [Kusto 查詢語言](/azure/kusto/query/)，分析使用狀況和效能或尋找特定事件。
+您的遙測會在 Application Insights 入口網站中建立，您可以在其中監視計量、搜尋您的遙測。 您也可以使用功能強大的 [Kusto 查詢語言](/azure/kusto/query/)，分析使用狀況和效能或尋找特定事件。
 
 您也可以繼續在 [Visual Studio](../../azure-monitor/app/visual-studio.md) 中，以診斷搜尋和[趨勢](../../azure-monitor/app/visual-studio-trends.md)等工具來分析您的遙測。
 
@@ -104,7 +104,7 @@ Application Insights 設定畫面：
 >
 >
 
-## <a name="youre-all-set"></a><a name="land"></a>你們都定了
+## <a name="youre-all-set"></a><a name="land"></a>一切都已設定
 
 恭喜！ 您在應用程式中安裝了 Application Insights 套件，並將其設定為將遙測傳送至 Azure 上的 Application Insights 服務。
 
@@ -112,13 +112,9 @@ Application Insights 設定畫面：
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>升級至未來的 SDK 版本
-若要升級至[新版的 SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，請開啟 **NuGet 套件管理員**，並篩選已安裝的套件。 選擇**微軟.應用程式見解.Web**,然後選擇**升級**。
+若要升級至[新版的 SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，請開啟 **NuGet 套件管理員**，並篩選已安裝的套件。 選取 [ **ApplicationInsights**]，然後選擇 [**升級**]。
 
 如果您已對 ApplicationInsights.config 進行任何的自訂，請在升級前儲存複本。 然後，將您的變更合併至新版本中。
-
-## <a name="video"></a>影片
-
-* 關於如何[使用 .NET 應用程式從零開始設定 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA) 的外部逐步說明影片。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -143,7 +139,7 @@ Application Insights 設定畫面：
 
 * [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)：建立測試，以確保網路上看得見您的網站。
 * [智慧型診斷](../../azure-monitor/app/proactive-diagnostics.md)︰這些測試會自動執行，您不需要採取任何動作來設定它們。 它們會讓您知道應用程式是否有不尋常的失敗要求率。
-* [指標警報](../../azure-monitor/app/alerts.md):設置警報,以便在指標超過閾值時發出警告。 您可以在撰寫於程式碼中的自訂度量上設定它們。
+* 計量[警示](../../azure-monitor/app/alerts.md)：設定警示，在計量超出臨界值時警告您。 您可以在撰寫於程式碼中的自訂度量上設定它們。
 
 ### <a name="automation"></a>自動化
 

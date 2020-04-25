@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a38bb12577fd646b2e7abf773dbb2a3f138f58fe
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: HT
+ms.openlocfilehash: eb6fc65d15ba7262b38a48e220f01d74bfcee54a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127554"
+ms.locfileid: "82146560"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>適用于適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Azure 安全性基準
 
@@ -130,7 +130,7 @@ ms.locfileid: "82127554"
 
 - 應啟用 DDoS 保護標準
 
-- 應為 PostgreSQL 資料庫伺服器啟用 [強制執行 SSL 連線]
+- 應為于 postgresql 資料庫伺服器啟用強制 TLS 連線
 
 如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -525,7 +525,7 @@ Microsoft 會管理適用於 PostgreSQL 的 Azure 資料庫的基礎結構，並
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有機密資訊
 
-**指導**方針：適用於 PostgreSQL 的 Azure 資料庫支援使用安全通訊端層（SSL）將您的于 postgresql 伺服器連接到用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。 在 Azure 入口網站中，根據預設，請確定您的所有適用於 PostgreSQL 的 Azure 資料庫實例都已啟用 [強制執行 SSL 連線]。
+**指導**方針：適用於 PostgreSQL 的 Azure 資料庫支援使用傳輸層安全性（TLS）（先前稱為安全通訊端層（SSL））將于 postgresql 伺服器連線到用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制執行 TLS 連線，可將伺服器與應用程式之間的資料流程加密，以協助防止「中間人」攻擊。 在 Azure 入口網站中，根據預設，請確定您的所有適用於 PostgreSQL 的 Azure 資料庫實例都已啟用 [強制執行 SSL 連線]。
 
 適用於 PostgreSQL 的 Azure 資料庫目前支援的 TLS 版本為 TLS 1.0、TLS 1.1、TLS 1.2。
 
@@ -794,7 +794,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍：https://doc
 
 **指引**：使用 Azure 原則為您的適用於 PostgreSQL 的 Azure 資料庫實例定義和執行標準安全性設定。 使用 "DBforPostgreSQL" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行適用於 PostgreSQL 的 Azure 資料庫實例的網路設定。 您也可以使用與適用於 PostgreSQL 的 Azure 資料庫實例相關的內建原則定義，例如：
 
-- 應為 PostgreSQL 資料庫伺服器啟用 [強制執行 SSL 連線]
+- 應為于 postgresql 資料庫伺服器啟用強制 TLS 連線
 
 - 應為 PostgreSQL 資料庫伺服器啟用記錄連線
 

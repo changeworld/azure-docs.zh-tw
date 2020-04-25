@@ -1,23 +1,23 @@
 ---
-title: 建立諮詢服務 |Azure 應用商店
-description: 在 Azure 應用商店的雲端合作夥伴門戶中創建 Azure 或 Dynamics 365 諮詢服務產品。
+title: 建立諮詢供應專案 |Azure Marketplace
+description: 在 Azure Marketplace 的 Cloud Partner 入口網站中建立 Azure 或 Dynamics 365 諮詢服務供應專案。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a9fbf402bb8de11ae0353ef05d2a526d686c5884
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985128"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148163"
 ---
-# <a name="create-a-consulting-offer"></a>建立諮詢優惠
+# <a name="create-a-consulting-offer"></a>建立諮詢服務供應專案
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您的諮詢服務供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 遵循[諮詢服務建立總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)中的指示，管理您的已遷移供應專案。
 
 本文將說明如何建立及發佈諮詢服務供應項目。
 
@@ -37,5 +37,5 @@ ms.locfileid: "80985128"
 
 諮詢服務供應項目類型的 [新增供應項目]**** 頁面提供一組索引標籤和表單欄位，方便您建立新的供應項目。 下列文章將說明如何使用索引標籤，為您的新供應項目定義供應項目設定和電子店面詳細資料：
 
--    [定義優惠設定](./cpp-consulting-service-define-offer-settings.md)
+-    [定義供應專案設定](./cpp-consulting-service-define-offer-settings.md)
 -    [輸入電子店面詳細資料，以及是否要在 Azure Marketplace 或 AppSource 中發佈](./cpp-consulting-service-storefront-details.md)

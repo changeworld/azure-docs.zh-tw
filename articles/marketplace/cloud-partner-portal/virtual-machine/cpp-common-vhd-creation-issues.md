@@ -1,5 +1,5 @@
 ---
-title: Azure 應用商店 VHD 創建 (FAQ) 期間的常見問題
+title: Azure Marketplace VHD 建立期間的常見問題（FAQ）
 description: 建立 VHD 的常見問題與相關問題。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: df219ad7428eed5283c7a30a232308dca84fd25f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273438"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146980"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD 建立過程中的常見問題 (常見問題集)
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建 VHD 常見問題解答](https://aka.ms/VHDcreationIssues)中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將 Azure 虛擬機器供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 遵循[建立 VHD 常見問題](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)中的指示來管理您遷移的供應專案。
 
 下列常見問題 (常見問題集) 涵蓋了建立虛擬機器供應項目的虛擬硬碟 (VHD) 和虛擬機器 (VM) 時，所遇到的常見問題。 
 
@@ -52,7 +52,7 @@ Azure Marketplace 目前不支援從位於受控儲存體或 Azure 進階儲存�
 ## <a name="how-do-you-configure-a-virtual-private-network-vpn-to-work-with-my-vms"></a>如何設定搭配我的虛擬機器使用的虛擬私人網路 (VPN)？
 
 如果您使用的是 Azure Resource Manager 部署模型，則可選擇以下三種設定 VPN 的常用選項：
-- [使用 Azure 門戶建立基於路由的 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
+- [使用 Azure 入口網站建立以路由為基礎的 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
 - [使用 PowerShell 來建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
 - [使用 CLI 來建立路由型 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
 

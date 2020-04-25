@@ -1,5 +1,5 @@
 ---
-title: Azure 和動態 365 諮詢服務服務優惠 |Azure 應用商店
+title: Azure 和 Dynamics 365 諮詢服務供應專案 |Azure Marketplace
 description: 在「Cloud Partner 入口網站」中定義和發佈 Azure 或 Dynamcis 365 諮詢服務供應項目的指南。
 author: qianw211
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: bdc2537d21fd88c677d07ebdb5170cdf14c7489d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981336"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146708"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 與 Dynamcis 365 諮詢服務供應項目
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您的諮詢服務供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 遵循[諮詢服務建立總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)中的指示，管理您的已遷移供應專案。
 
-本文說明如何將諮詢服務供應項目發佈至 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> 或 <a href="https://appsource.microsoft.com">AppSource</a>。 基於微軟<a href="https://dynamics.microsoft.com">動態365、Power</a> <a href="https://powerbi.microsoft.com">BI</a>和<a href="https://powerapps.microsoft.com">電源應用</a>的解決方案可以列在AppSource上。 以其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服務</a>為基礎的其他供應項目可以在 Azure Marketplace 中列出。
+本文說明如何將諮詢服務供應項目發佈至 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> 或 <a href="https://appsource.microsoft.com">AppSource</a>。 以 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、 <a href="https://powerbi.microsoft.com">Power BI</a>和<a href="https://powerapps.microsoft.com">Power Apps</a>為基礎的解決方案可以列在 AppSource 上。 以其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服務</a>為基礎的其他供應項目可以在 Azure Marketplace 中列出。
 
 ## <a name="publishing-benefits"></a>發佈的優點
 
@@ -37,16 +37,16 @@ ms.locfileid: "80981336"
 - [諮詢服務必要條件](./cpp-consulting-service-prerequisites.md)列出發佈諮詢服務的需求，適用於：
  
     - Microsoft Azure
-    - 動態 365 客戶互動 
-    - 動態 365 財務&運營 
+    - Dynamics 365 Customer Engagement 
+    - Dynamics 365 財務 & 作業 
     - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
     - Power Apps
     - Power Automate
 - [建立新供應項目](./cpp-consulting-service-create-offer.md)，列出使用 Cloud Partner 入口網站建立諮詢服務供應項目所需的步驟：
-    - [定義優惠設定](./cpp-consulting-service-define-offer-settings.md)。
-    - [輸入網店詳細資訊以及是在 Azure 應用商店中發佈還是在 AppSource 上發佈。](./cpp-consulting-service-storefront-details.md)
+    - [定義供應專案設定](./cpp-consulting-service-define-offer-settings.md)。
+    - [輸入店面詳細資料，以及是否要在 Azure Marketplace 中或在 AppSource 上發佈。](./cpp-consulting-service-storefront-details.md)
 - [發佈您的供應項目](./cpp-consulting-service-publish-offer.md)說明如何提交供應項目進行發佈。
 
 ## <a name="next-steps"></a>後續步驟

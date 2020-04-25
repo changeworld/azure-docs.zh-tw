@@ -1,5 +1,5 @@
 ---
-title: 連接到 Oracle 資料庫
+title: 連接到 Oracle Database
 description: 使用 Oracle Database REST API 和 Azure Logic Apps 插入及管理記錄
 services: logic-apps
 ms.suite: integration
@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/29/2017
 tags: connectors
-ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789421"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147804"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>開始使用 Oracle Database 連接器
 
@@ -23,7 +23,7 @@ ms.locfileid: "74789421"
 
 本文說明如何在邏輯應用程式中使用 Oracle Database 連接器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 支援的 Oracle 版本： 
     * Oracle 9 和更新版本
@@ -47,13 +47,13 @@ ms.locfileid: "74789421"
 > [!IMPORTANT]
 > 此連接器並沒有任何觸發程序。 只有動作。 因此，當您建立邏輯應用程式時，請新增其他觸發程序以啟動您的邏輯應用程式，例如**排程 - 循環**或**要求/回應 - 回應**。 
 
-1. 在[Azure 門戶](https://portal.azure.com)中，創建一個空白邏輯應用。
+1. 在[Azure 入口網站](https://portal.azure.com)中，建立空白的邏輯應用程式。
 
 2. 在邏輯應用程式啟動時，選取**要求/回應 - 要求**觸發程序： 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 選取 [儲存]****。 當您儲存時，系統會自動生產生一個要求 URL。 
+3. 選取 [儲存]  。 當您儲存時，系統會自動生產生一個要求 URL。 
 
 4. 選取 [新增步驟]****，再選取 [新增動作]****。 輸入 `oracle` 以查看可用的動作： 
 
@@ -72,7 +72,7 @@ ms.locfileid: "74789421"
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. 在下一個步驟中，您可以使用其他任何連接器來建置您的工作流程。 若您想測試從 Oracle 取得資料，請使用其中一個寄送電子郵件連接器 (例如 Office 365 或 Gmail)，將包含 Oracle 資料的電子郵件寄給自己。 使用 Oracle 資料表中的動態權杖來建置`Subject`以及您電子郵件的 `Body`：
+7. 在下一個步驟中，您可以使用其他任何連接器來建置您的工作流程。 如果您想要測試從 Oracle 取得資料，請使用其中一個「傳送電子郵件」連接器（例如 Office 365 Outlook），將包含 Oracle 資料的電子郵件傳送給自己。 使用 Oracle 資料表中的動態權杖來建置`Subject`以及您電子郵件的 `Body`：
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "74789421"
 
 **風險降低**：確保您的閘道在安裝的內部部署機器中執行，且可連線至網際網路。我們建議不要在可能關閉或休眠的電腦上安裝閘道。您也可以重新啟動內部部署資料閘道服務 (PBIEgwService)。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**錯誤**：使用的提供者已被取代：'System.Data.OracleClient requires Oracle 用戶端軟體版本 8.1.7 或更高版本。'。 請參閱[https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376)安裝官方提供程式。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**錯誤**：使用的提供者已被取代：'System.Data.OracleClient requires Oracle 用戶端軟體版本 8.1.7 或更高版本。'。 請[https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376)參閱以安裝官方提供者。
 
 **原因**：Oracle 用戶端 SDK 並未安裝在內部部署資料閘道執行的機器上。  
 
@@ -123,7 +123,7 @@ ms.locfileid: "74789421"
 
 若要提出問題、回答問題以及查看其他 Logic Apps 使用者的做法，可以前往 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。 
 
-您可以通過在 投票和提交您的想法來説明改進邏輯應用和連接器[https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)。 
+您可以藉由投票並在上[https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)提交想法，協助改善 Logic Apps 和連接器。 
 
 
 ## <a name="next-steps"></a>後續步驟

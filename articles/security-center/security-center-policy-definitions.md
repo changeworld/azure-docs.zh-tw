@@ -1,6 +1,6 @@
 ---
-title: Azure 策略定義在 Azure 安全中心中監視 |微軟文件
-description: 本文提供了可在 Azure 安全中心中監視的 Azure 策略定義的清單。
+title: Azure 原則在 Azure 資訊安全中心中監視的定義 |Microsoft Docs
+description: 本文提供您可以在 Azure 資訊安全中心中監視的 Azure 原則定義清單。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,35 +8,35 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5550f8feb2b93537bdcc508aa0da062681fe9aab
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 00a5c8e824575b8928aed7e0b0018219e9a51039
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673845"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147093"
 ---
-# <a name="azure-security-policies-monitored-by-security-center"></a>安全中心監視的 Azure 安全原則
+# <a name="azure-security-policies-monitored-by-security-center"></a>受資訊安全中心監視的 Azure 安全性原則
 
-本文提供了可在 Azure 安全中心監視的[Azure 策略](../governance/policy/overview.md)定義和計畫的清單。 如需有關安全性原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
+本文提供您可以在 Azure 資訊安全中心中監視的[Azure 原則](../governance/policy/overview.md)定義和計畫清單。 如需有關安全性原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
 
 ## <a name="built-in-policy-definitions"></a>內建原則定義
 
-要瞭解安全中心監視的內建策略,請參閱下表:
+若要瞭解資訊安全中心所監視的內建原則，請參閱下表：
 
-[!INCLUDE [azure-policy-samples-init-asc](../../includes/azure-policy-samples-init-asc.md)]
+[!INCLUDE [azure-policy-samples-init-asc](../../includes/policy/samples/custom/init-asc.md)]
 
-## <a name="built-in-policy-initiatives"></a>內置政策舉措
+## <a name="built-in-policy-initiatives"></a>內建原則計畫
 
-要瞭解安全中心監視的內置計劃,請參閱下表:
+若要瞭解資訊安全中心所監視的內建計畫，請參閱下表：
 
-[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/azure-policy-samples-policyset-security-center.md)]
+[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中,您瞭解了安全中心中的 Azure 策略安全策略定義。 要瞭解更多資訊,請參閱以下文章。
+在本文中，您已瞭解資訊安全中心中 Azure 原則安全性原則定義。 若要深入瞭解，請參閱下列文章。
 
-* [Azure 安全中心規劃和操作指南](security-center-planning-and-operations-guide.md):瞭解如何在 Azure 安全中心中規劃和瞭解設計注意事項。
+* [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)：瞭解如何規劃及瞭解 Azure 資訊安全中心中的設計考慮。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)：了解如何監視 Azure 資源的健全狀況。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)：了解如何管理與回應安全性警示。
 * [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)：了解如何監視合作夥伴解決方案的健全狀況。
-* [Azure 策略](../governance/policy/overview.md):瞭解如何審核和管理 Azure 資源。
+* [Azure 原則](../governance/policy/overview.md)：瞭解如何審查和管理您的 Azure 資源。

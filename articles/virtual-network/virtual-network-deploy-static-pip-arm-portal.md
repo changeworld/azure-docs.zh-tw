@@ -3,24 +3,22 @@ title: 建立具有靜態公用 IP 位址的 VM - Azure 入口網站 | Microsoft
 description: 了解如何使用 Azure 入口網站建立具有靜態公用 IP 位址的 VM。
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e9546bcc-f300-428f-b94a-056c5bd29035
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
-ms.author: kumud
-ms.openlocfilehash: 66050c16f40e0a06117327ef53e3aae87d03c5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 0de28fc75d5eb1b0867e4ba6d8eda9f0f42c8498
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76043534"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148011"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站建立具有靜態公用 IP 位址的虛擬機器
 
@@ -34,7 +32,7 @@ ms.locfileid: "76043534"
 
 1. 選取 Azure 入口網站左上角的 [+ 建立資源]****。
 2. 選取 [計算]****，然後選取 [Windows Server 2016 VM]**** 或您所選的另一個作業系統。
-3. 輸入或選擇以下資訊，接受其餘設置的預設值，然後選擇 **"確定**" ：
+3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 **[確定]**：
 
     |設定|值|
     |---|---|
@@ -43,7 +41,7 @@ ms.locfileid: "76043534"
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [使用現有項目]****，然後選取 [myResourceGroup]****。|
-    |Location| 選擇**美國東部**|
+    |位置| 選取 [**美國東部**]|
 
 4. 選取 VM 的大小，然後選取 [選取]****。
 5. 在 [設定]**** 之下，選取 [公用 IP 位址]****。
@@ -58,7 +56,7 @@ ms.locfileid: "76043534"
    ![選取連接埠](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
 
 7. 接受其餘的預設設定，然後選取 [確定]****。
-8. 在 [摘要]**** 頁面上，選取 [建立]****。 部署虛擬機器需要幾分鐘的時間。
+8. 在 [摘要]  頁面上，選取 [建立]  。 部署虛擬機器需要幾分鐘的時間。
 9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress*。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
 10. 您可以檢視已指派的公用 IP 位址，並將此位址指派給 **myVM** 虛擬機器，如下圖所示：
 
@@ -78,8 +76,8 @@ ms.locfileid: "76043534"
 當不再需要資源群組時，請將資源群組及其包含的所有資源刪除：
 
 1. 在入口網站頂端的 [搜尋]**** 方塊中，輸入 myResourceGroup**。 當您在搜尋結果中看到 myResourceGroup**** 時，請加以選取。
-2. 選取 [刪除資源群組]****。
-3. 輸入 *"資源組***"以鍵入資源組名稱：** 並選擇 **"刪除**"。
+2. 選取 [刪除資源群組]  。
+3. 針對 [輸入**資源組名：** ] 輸入*myResourceGroup* ，然後選取 [**刪除**]。
 
 ## <a name="next-steps"></a>後續步驟
 

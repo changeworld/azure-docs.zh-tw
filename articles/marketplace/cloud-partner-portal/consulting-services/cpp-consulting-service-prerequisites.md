@@ -1,35 +1,35 @@
 ---
-title: Azure 和 Dynamics 365 諮詢服務提供先決條件 |Azure 應用商店
-description: 雲合作夥伴門戶中 Azure 或 Dynamics 365 諮詢服務產品的先決條件。
+title: Azure 和 Dynamics 365 諮詢服務供應專案必要條件 |Azure Marketplace
+description: Cloud Partner 入口網站中 Azure 或 Dynamics 365 諮詢服務供應專案的必要條件。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 35ef732111ff0b75bba7397f7cc22b3ff08c00d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6b5f28e5214720acd92c5e3c44411ad570272ee0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985094"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148125"
 ---
 # <a name="consulting-service-prerequisites"></a>諮詢服務必要條件
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將您的諮詢服務優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[諮詢服務創建概述](https://aka.ms/AzureCreateConsultingService)中的說明來管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您的諮詢服務供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 遵循[諮詢服務建立總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer)中的指示，管理您的已遷移供應專案。
 
-在[Azure 應用商店和 AppSource 諮詢服務](../../consulting-services.md)中查看此產品/服務類型的說明和要求。  以下特定諮詢服務類型具有其他要求:
+在[Azure Marketplace 和 AppSource 諮詢服務](../../consulting-services.md)中，檢查此供應專案類型的描述和需求。  下列特定的諮詢服務類型有額外的需求：
 
 | 供應項目類型 | 需求 |
 |---------|---------|
-| Dynamics 365 Sales <br> 動態 365 行銷 <br> 動態 365 客戶服務 <br> 動力365現場服務 <br> 動態 365 人力資源 |   必須是[雲端業務應用程式能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)中的金或銀認證,以便獲得客戶參與選項。    | 
-| 動態 365 財務 <br> 動態 365 供應鏈管理 <br> 動態 365 商務 <br> 動態 365 人力資源 <br> 動態 365 專案服務自動化 |  必須是[雲業務應用程式能力](https://partner.microsoft.com/membership/cloud-business-applications-competency)的金或銀認證,用於統一運營選項。       |
-| Dynamics 365 Customer Insights | 必須至少成功實施 1 個 Dynamics [365 客戶洞察](https://dynamics.microsoft.com/ai/customer-insights/),至少 5 個度量和 5 個市場區隔。 |
-| Dynamics 365 Business Central | 必須是[企業資源規劃能力](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)的金或銀認證,並且必須是至少 3 個業務中心客戶的雲解決方案供應商。 <br> <br> OR <br> <br> 必須在[AppSource 中發布了業務中心應用程式](https://appsource.microsoft.com/) |
-| Power BI | 必須列在[Power BI 合作夥伴展示。](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)|
-|Power Apps | 必須有資格在[PowerApps 合作夥伴計畫中](https://aka.ms/PowerAppsPartner)享受高級福利。 |
+| Dynamics 365 Sales <br> Dynamics 365 行銷 <br> Dynamics 365 客戶服務 <br> Dynamics 365 Field 服務 <br> Dynamics 365 人力資源 |   在[雲端 Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency)專長認證中，必須是客戶參與選項的金級或銀級。    | 
+| Dynamics 365 財務 <br> Dynamics 365 供應鏈管理 <br> Dynamics 365 Commerce <br> Dynamics 365 人力資源 <br> Dynamics 365 專案服務自動化 |  在整合作業選項的[雲端 Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency)專長認證中必須是金級或銀級。       |
+| Dynamics 365 Customer Insights | 至少必須具有5個量值和5個區段，才能成功地在生產環境中執行[Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) 。 |
+| Dynamics 365 Business Central | 必須是[企業資源規劃](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)專長認證的黃金或銀級，而且必須是至少3個業務中心客戶的雲端解決方案提供者。 <br> <br> 或者 <br> <br> 必須已[在 AppSource 中發佈 Business Central 應用程式](https://appsource.microsoft.com/) |
+| Power BI | 必須列在[Power BI 合作夥伴展示](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)上。|
+|Power Apps | 必須符合[PowerApps 合作計畫](https://aka.ms/PowerAppsPartner)中的先進權益資格。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-滿足上述要求後,即可[創建諮詢服務產品](./cpp-consulting-service-create-offer.md)。
+符合上述需求之後，您就可以開始[建立諮詢服務供應](./cpp-consulting-service-create-offer.md)專案。

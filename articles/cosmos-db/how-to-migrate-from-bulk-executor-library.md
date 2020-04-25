@@ -1,96 +1,100 @@
 ---
-title: 從批次執行器庫移到 Azure Cosmos DB .NET V3 SDK 中的批次支援
-description: 瞭解如何將應用程式從使用批次執行器庫移至 Azure Cosmos DB SDK V3 中的批次支援
+title: 從大量執行程式程式庫遷移至 Azure Cosmos DB .NET V3 SDK 中的大量支援
+description: 瞭解如何使用大量執行程式程式庫，將應用程式遷移至 Azure Cosmos DB SDK V3 中的大量支援
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755968"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146297"
 ---
-# <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>從批次執行器庫移到 Azure Cosmos DB .NET V3 SDK 中的批次支援
+# <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>從大量執行程式程式庫遷移至 Azure Cosmos DB .NET V3 SDK 中的大量支援
 
-本文介紹了將使用[.NET 批量執行器庫](bulk-executor-dot-net.md)的現有應用程式代碼遷移到最新版本 .NET SDK 中的[批量支援](tutorial-sql-api-dotnet-bulk-import.md)功能所需的步驟。
+本文說明將使用[.net 大量執行](bulk-executor-dot-net.md)程式程式庫之現有應用程式的程式碼，遷移到最新版 .net SDK 中的[大量支援](tutorial-sql-api-dotnet-bulk-import.md)功能時所需的步驟。
 
-## <a name="enable-bulk-support"></a>開啟批次支援
+## <a name="enable-bulk-support"></a>啟用大量支援
 
-使用`CosmosClient`[「允許批次執行」](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution)設定對實體啟用批次支援:
+透過 AllowBulkExecution 設定，在`CosmosClient`實例上啟用[AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution)大量支援：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
-## <a name="create-tasks-for-each-operation"></a>建立工作建立工作
+## <a name="create-tasks-for-each-operation"></a>建立每個作業的工作
 
-.NET SDK 中的批量支援的工作原理是利用[任務並行庫](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl)並同時發生的操作分組。 
+.NET SDK 中的大量支援可利用同時發生的工作[平行程式庫](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl)和群組作業來運作。 
 
-沒有一種方法將文檔或操作清單作為輸入參數,而是需要為要批量執行的每個操作創建一個任務。
+SDK 中沒有單一方法會將您的檔或作業清單當做輸入參數使用，但您必須針對想要大量執行的每項作業建立工作，然後只等待它們完成。
 
-例如,如果初始輸入是每個專案具有以下架構的項目清單:
+例如，如果您的初始輸入是專案清單，其中的每個專案都有下列架構：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-如果要執行批次匯入(類似於使用 BulkExecutor.BulkImportAsync),則需要對每個項目值進行併發呼叫`CreateItemAsync`。 例如：
+如果您想要執行大量匯入（類似于使用 BulkExecutor. BulkImportAsync），您必須具有對`CreateItemAsync`的並行呼叫。 例如：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-如果要執行批量*更新*(類似於使用[BulkExecutor.BulkUpdateAsync),](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)則需要在更新`ReplaceItemAsync`項值後對 方法進行併發調用。 例如：
+如果您想要進行大量*更新*（類似于使用[BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)），則在更新專案值之後， `ReplaceItemAsync`您必須具有方法的並行呼叫。 例如：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-如果要執行批次*刪除*(類似於使用[BulkExecutor.BulkDeleteAsync),](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)則需要使用`DeleteItemAsync``id`每個項目的與分割區鍵對 例如：
+而且，如果您想要執行大量*刪除*（類似于使用[BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)），您必須使用每個專案`DeleteItemAsync`的`id`和分割區索引鍵，對進行並行呼叫。 例如：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
-## <a name="capture-task-result-state"></a>擷取工作結果狀態
+## <a name="capture-task-result-state"></a>捕捉工作結果狀態
 
-在前面的代碼示例中,您已經創建了任務的併發清單,並在每個任務上調用`CaptureOperationResponse`了方法。 此方法是一個擴充,讓我們透過捕捉任何錯誤和追蹤[要求單位使用方式](request-units.md)來維護與 BulkExecutor*的回應架構*。
+在先前的程式碼範例中，我們建立了並行的工作清單，並在`CaptureOperationResponse`每個工作上呼叫方法。 這個方法是一個延伸模組，可讓我們將*類似的回應架構*維護為 BulkExecutor，方法是捕捉任何錯誤並追蹤[要求單位的使用量](request-units.md)。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
-其中聲明`OperationResponse`為:
+`OperationResponse`其中，宣告為：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="OperationResult":::
 
 ## <a name="execute-operations-concurrently"></a>同時執行作業
 
-定義任務清單後,請等待,直到它們全部完成。 您可以通過定義批次操作的範圍來追蹤工作的完成情況,如以下代碼段所示:
+為了追蹤整個工作清單的範圍，我們使用此 helper 類別：
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkOperationsHelper":::
+
+`ExecuteAsync`方法會等到所有作業都完成，而且您可以使用它，如下所示：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="WhenAll":::
 
-## <a name="capture-statistics"></a>擷取統計資訊
+## <a name="capture-statistics"></a>捕捉統計資料
 
-前面的代碼等待所有操作完成並計算所需的統計資訊。 這些統計資料與批次執行器庫的[批次匯入回應相似](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)。
+先前的程式碼會等到所有作業都完成，並計算所需的統計資料。 這些統計資料與大量執行程式程式庫的[BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)類似。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
-包含`BulkOperationResponse`:
+`BulkOperationResponse`包含：
 
-1. 通過批量支援處理操作清單所佔用的總時間。
-1. 成功操作的數量。
-1. 已使用的請求單位總數。
-1. 如果存在失敗,它將顯示包含異常的元數清單以及用於日誌記錄和標識目的的關聯項。
+1. 透過大量支援來處理作業清單所花費的總時間。
+1. 成功作業的數目。
+1. 耗用的要求單位總數。
+1. 如果發生失敗，它會顯示包含例外狀況的元組清單，以及用於記錄和識別用途的相關聯專案。
 
 ## <a name="retry-configuration"></a>重試設定
 
-批次執行器庫具有重新[試選項](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions)`0``MaxRetryWaitTimeInSeconds`設定為`MaxRetryAttemptsOnThrottledRequests`將控制項的權子派給函式庫[的指導](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)。
+大量執行程式程式庫的[指引](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) `MaxRetryWaitTimeInSeconds`會將[RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) `0`的`MaxRetryAttemptsOnThrottledRequests`和設定為，以將控制項委派給程式庫。
 
-對於 .NET SDK 中的批量支援,沒有隱藏行為。 您可以透過[宇宙用戶端選項](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests)直接配置重試[CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)選項。
+針對 .NET SDK 中的大量支援，沒有隱藏的行為。 您可以直接透過[CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests)和[CosmosClientOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)來設定重試選項。
 
 > [!NOTE]
-> 如果預配的請求單位根據數據量遠低於預期值,則可能需要考慮將這些單位設置為高值。 批量操作需要更長的時間,但由於重試度較高,因此完全成功的可能性更大。
+> 如果布建的要求單位比預期的資料量更低，您可能會想要考慮將它們設定為高值。 大量作業需要較長的時間，但因為重試次數過高，所以可能會有更高的成功。
 
 ## <a name="performance-improvements"></a>效能改善
 
-與 .NET SDK 的其他操作一樣,使用流 API 可提高性能並避免任何不必要的序列化。 
+如同使用 .NET SDK 的其他作業，使用串流 Api 會產生較佳的效能，並避免任何不必要的序列化。 
 
-僅當使用的數據的性質與位元組流(例如檔流)的性質匹配時,才可能使用流 API。 在這種情況下,使用`CreateItemStreamAsync`、`ReplaceItemStreamAsync`或`DeleteItemStreamAsync`方法以及使用`ResponseMessage`(`ItemResponse`而不是 ) 可提高可實現的輸送量。
+只有當您使用的資料本質與位元組資料流程（例如，檔案資料流程）相符時，才可以使用資料流程 Api。 在這種情況下， `CreateItemStreamAsync`使用`ReplaceItemStreamAsync`、或`DeleteItemStreamAsync`方法，並使用`ResponseMessage` （而不`ItemResponse`是）來增加可達成的輸送量。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解有關 .NET SDK 版本的更多,請參閱[Azure 宇宙 DB SDK](sql-api-sdk-dotnet.md)一文。
-* 從 GitHub 取得完整的[移植原始碼](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration)。
-* [GitHub 上的其他批次範例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)
+* 若要深入瞭解 .NET SDK 版本，請參閱[AZURE COSMOS DB SDK](sql-api-sdk-dotnet.md)文章。
+* 從 GitHub 取得完整的「[遷移」原始程式碼](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration)。
+* [GitHub 上的其他大量範例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)

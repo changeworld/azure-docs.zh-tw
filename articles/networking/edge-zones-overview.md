@@ -1,171 +1,191 @@
 ---
-title: 關於 Azure 邊緣區域 - 預覽
-description: 瞭解微軟提供的邊緣計算產品。
+title: 關於 Azure Edge 區域預覽
+description: 深入瞭解 Microsoft 的 edge 計算供應專案： Azure Edge 區域。
 services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: aaa849633591bfd34a9fca026c820ec2f9137844
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410845"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146938"
 ---
-# <a name="about-azure-edge-zones---preview"></a>關於 Azure 邊緣區域 - 預覽
+# <a name="about-azure-edge-zone-preview"></a>關於 Azure Edge 區域預覽
 
-Azure 邊緣區域是Microsoft Azure 提供的一系列產品,支援靠近用戶的數據處理。 您可以將 VM、容器和其他選定的 Azure 服務部署到邊緣區域,以滿足應用程式的低延遲和高輸送量要求。
+Azure Edge 區域是 Microsoft Azure 的供應專案系列，可讓資料處理接近使用者。 您可以將 Vm、容器和其他選取的 Azure 服務部署到邊緣區域，以解決應用程式的低延遲和高輸送量需求。
 
-邊緣區域的典型用例方案包括:
+邊緣區域的一般使用案例包括：
 
-- 機器人即時指揮與控制
-- 使用人工智慧和機器學習進行即時分析和推斷
-- 機器視覺
-- 混合實式實境和 VDI 機制的遠端
-- 沉浸式多人遊戲
-- 媒體串流和內容提供
-- 監視和安全
+- 機器人中的即時命令與控制。
+- 透過人工智慧和機器學習，進行即時分析和推斷。
+- 機器視覺。
+- 混合現實和 VDI 案例的遠端呈現。
+- 沉浸式多人遊戲。
+- 媒體串流處理和內容傳遞。
+- 監視和安全性。
 
-Azure 邊緣區域有三個離散產品:
+Azure Edge 區域有三種類型：
 
 - Azure 邊緣區域
-- 帶載波的 Azure 邊緣區域
-- Azure 專用邊緣區域
+- 具有貨運的 Azure 邊緣區域
+- Azure 私人邊緣區域
 
 ## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure 邊緣區域
 
-![邊緣區域](./media/edge-zones-overview/edge-zones.png "邊緣區域")
+![Azure 邊緣區域](./media/edge-zones-overview/edge-zones.png "Azure 邊緣區域")
 
-Azure 邊緣區域是放置在遠離 Azure 區域的人口中心中的 Azure 小範圍擴展。 Azure 邊緣區域支援 VM、容器和一組選定的 Azure 服務,這些服務允許您在接近最終使用者時運行延遲敏感和輸送量密集型應用程式。 Azure 邊緣區域是Microsoft全域網路的一部分,在靠近使用者的邊緣區域運行的應用程式與在Azure區域內運行的完整Azure服務集之間提供安全、可靠和高頻寬連接。 Azure 邊緣區域由 Microsoft 擁有和營運,允許您使用同一組 Azure 工具和門戶來管理服務並將其部署到邊緣區域。
+Azure 邊緣區域是 Azure 的小型存放區延伸模組，放在與 Azure 區域遠距離的人口中心。 Azure 邊緣區域支援 Vm、容器和一組選取的 Azure 服務，可讓您執行接近使用者的延遲敏感和高輸送量應用程式。 Azure 邊緣區域是 Microsoft 全球網路的一部分。 它們會在靠近使用者的邊緣區域執行的應用程式之間，提供安全、可靠、高頻寬的連線能力。 而且它們會提供一組完整的 azure 服務，在 Azure 區域內執行。 Azure Edge 區域由 Microsoft 所擁有及運作。 您可以使用一組相同的 Azure 工具和相同的入口網站來管理和部署服務到邊緣區域。
 
-典型用例包括:
+典型的使用案例包括：
 
-- 遊戲與遊戲串流
-- 媒體串流和內容提供
-- 使用人工智慧和機器學習進行即時分析和推斷
-- 混合實境的渲染
+- 遊戲和遊戲串流。
+- 媒體串流處理和內容傳遞。
+- 透過人工智慧和機器學習，進行即時分析和推斷。
+- 混合現實的呈現。
 
-Azure 邊緣區域將在以下城市中可用:
+Azure Edge 區域將在下列 metro 區域內上市：
 
 - 美國紐約
 - 加利福尼亞州洛杉磯
 - 佛羅里達州邁阿密
 
-[有關詳細資訊,與邊緣區域團隊](https://aka.ms/EdgeZones)聯繫。
+如需詳細資訊，[請聯絡 Edge 區域小組](https://aka.ms/EdgeZones)。
 
-## <a name="azure-edge-zones-with-carrier"></a><a name="carrier"></a>帶載波的 Azure 邊緣區域
+## <a name="azure-edge-zones-with-carrier"></a><a name="carrier"></a>具有貨運的 Azure 邊緣區域
 
-![帶載波的邊緣區域](./media/edge-zones-overview/edge-carrier.png "帶載波的邊緣區域")
+![具有貨運的邊緣區域](./media/edge-zones-overview/edge-carrier.png "具有貨運的邊緣區域")
 
-具有載波的 Azure 邊緣區域是放置在行動營運商資料中心中填充中心的 Azure 小佔用空間擴展。 具有營運商基礎結構的 Azure 邊緣區域距離行動營運商的 5G 網路一躍而過,為行動裝置的應用程式提供 10 毫秒以下的延遲。 具有營運商的 Azure 邊緣區域部署在行動營運商的資料中心中,並連接到 Microsoft 全球網路。 它們在使用者附近運行的應用程式和在 Azure 區域內運行的完整 Azure 服務集之間提供安全、可靠和高頻寬的連接。 開發人員可以使用同一組熟悉的工具在邊緣區域中構建和部署服務。
+具有電訊廠商的 azure 邊緣區域是 Azure 的小型存放區延伸模組，放在行動操作員的資料中心內。 具有承運商基礎結構的 Azure Edge 區域會放在離行動操作員的5G 網路的一個躍點。 這項放置可提供從行動裝置到應用程式少於10毫秒的延遲。
 
-典型用例包括:
+具有貨運公司的 Azure Edge 區域會部署在行動操作員的資料中心，並聯機至 Microsoft 全球網路。 它們會在接近使用者的應用程式之間，提供安全、可靠、高頻寬的連線能力。 而且它們會提供一組完整的 azure 服務，在 Azure 區域內執行。 開發人員可以使用一組相同的熟悉工具來建立服務，並將其部署到邊緣區域。
 
-- 遊戲與遊戲串流
-- 媒體串流和內容提供
-- 使用人工智慧和機器學習進行即時分析和推斷
-- 混合實境的渲染
-- 互聯汽車
-- 遠端
+典型的使用案例包括：
 
-邊緣區域將與以下營運商合作提供:
+- 遊戲和遊戲串流。
+- 媒體串流處理和內容傳遞。
+- 透過人工智慧和機器學習，進行即時分析和推斷。
+- 混合現實的呈現。
+- 已連接的汽車。
+- Telepresence-醫學。
 
-- AT&T(亞特蘭大、達拉斯和洛杉磯)
+邊緣區域將與下列操作員合作提供：
 
-## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure 專用邊緣區域
+- 在&T （亞特蘭大、達拉斯和洛杉磯）
 
-![專用邊緣區域](./media/edge-zones-overview/private-edge.png "專用邊緣區域")
+## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure 私人邊緣區域
 
-Azure 專用邊緣區域是放置在本地的 Azure 的較小佔用空間擴展。 Azure 專用邊緣區域基於[Azure 堆疊邊緣](https://azure.microsoft.com/products/azure-stack/edge/)平台,並且允許對本地部署的計算和儲存服務進行低延遲訪問。 專用邊緣區域還允許您將虛擬化網路功能 (VNF)(如行動資料套件核心、路由器、防火牆和 SD-WAN 裝置)以及 ISVS 的應用程式並行部署,以及本地虛擬機器和容器作為[Azure 託管應用程式](https://azure.microsoft.com/services/managed-applications/)。 Azure 專用邊緣區域附帶了雲原生業務流程解決方案,允許您從 Azure 門戶管理虛擬化網路功能 (VNF) 和應用程式的生命週期。
+![私人邊緣區域](./media/edge-zones-overview/private-edge.png "私人邊緣區域")
 
-Azure 專用邊緣區域允許您使用用於在 Azure 中生成和部署應用程式的相同熟悉工具在本地開發和部署應用程式。 您還可以運行專用行動網路(專用 LTE、專用 5G)、安全功能(如防火牆),並使用同一專用邊緣區域設備上的 SD-WAN 設備跨多個分支和 Azure 擴展本地網路,並從 Azure 管理它們。
+Azure 私用邊緣區域是放置於內部部署的小型 Azure 擴充功能。 Azure 私用 Edge 區域是以[Azure Stack 邊緣](https://azure.microsoft.com/products/azure-stack/edge/)平臺為基礎。 它可讓您在內部部署環境中，對計算和儲存體服務進行低延遲存取。 私用邊緣區域也可讓您將來自 Isv 和虛擬化網路功能（VNFs）的應用程式部署為[Azure 受控應用程式](https://azure.microsoft.com/services/managed-applications/)以及內部部署的虛擬機器和容器。 這些 VNFs 可以包括行動封包核心、路由器、防火牆和 SD WAN 設備。 Azure 私用 Edge 區域隨附雲端原生協調流程解決方案，可讓您從 Azure 入口網站管理 VNFs 和應用程式的生命週期。
 
-典型用例包括:
+Azure 私用 Edge 區域可讓您使用在 Azure 中建立及部署應用程式時所使用的相同熟悉工具，在內部部署環境開發和部署應用程式。 
 
-- 機器人即時指揮與控制
-- 使用人工智慧和機器學習進行即時分析和推斷
-- 機器視覺
-- 混合實式實境和 VDI 機制的遠端
-- 監視和安全
+它也可讓您： 
 
-我們擁有由 VNF 供應商、ISV 和 MSP 合作夥伴組成的豐富生態系統,能夠使用專用邊緣區域實現端到端解決方案。 [有關詳細資訊,連絡專用邊緣區團隊](https://aka.ms/EdgeZonesPartner)。
+- 執行私人行動網路（私人 LTE、私用5G）。
+- 執行防火牆之類的安全性功能。
+- 在相同的私人邊緣區域設備上使用 SD WAN 應用裝置，並從 Azure 進行管理，以跨多個分支和 Azure 延伸您的內部部署網路。
 
-## <a name="private-edge-zones---partners"></a><a name="private-edge-partners"></a>私人邊緣區域 - 合作夥伴
+典型的使用案例包括：
 
-![專用邊緣區域合作夥伴](./media/edge-zones-overview/partners.png "專用邊緣區域合作夥伴")
+- 機器人中的即時命令與控制。
+- 使用人工智慧和機器學習進行即時分析和推斷。
+- 機器視覺。
+- 混合現實和 VDI 案例的遠端呈現。
+- 監視和安全性。
 
-### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>虛擬化網路功能
+我們有豐富的 VNF 廠商、Isv 和 MSP 合作夥伴生態系統，可啟用使用私人邊緣區域的端對端解決方案。 如需詳細資訊，[請洽詢私人 Edge 區域小組](https://aka.ms/EdgeZonesPartner)。
 
-#### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>移動網路的虛擬化進化資料套件核心 (vEPC)
+### <a name="private-edge-zone-partners"></a><a name="private-edge-partners"></a>私人 Edge 區域合作夥伴
 
-- [確認網路](https://www.affirmednetworks.com/)
-- [德魯伊軟體](https://www.druidsoftware.com/)
-- [埃佩托](https://www.expeto.io/)
-- [馬韋尼爾](https://mavenir.com/)
-- [元開關](https://www.metaswitch.com/)
-- [諾基亞數位自動化雲](https://www.dac.nokia.com/)
+![私人 Edge 區域合作夥伴](./media/edge-zones-overview/partners.png "私人邊緣區域合作夥伴")
 
-#### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>行動無線電合作夥伴
+#### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>虛擬化網路功能（VNFs）
 
-- [通訊魯斯](https://support.ruckuswireless.com/)
+##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>適用于行動網路的虛擬化進化封包核心（vEPC）
 
-#### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN 供應商
+- [Affirmed 網路](https://www.affirmednetworks.com/)
+- [Druid 軟體](https://www.druidsoftware.com/)
+- [Expeto](https://www.expeto.io/)
+- [Mavenir](https://mavenir.com/)
+- [Metaswitch](https://www.metaswitch.com/)
+- [Nokia 數位自動化雲端](https://www.dac.nokia.com/)
+
+##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Mobile 收音機合作夥伴
+
+- [Commscope Ruckus](https://support.ruckuswireless.com/)
+
+##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN 廠商
 
 - [NetFoundry](https://netfoundry.io/)
-- [來自諾基亞的 Nuage 網路](https://www.nuagenetworks.net/)
-- [VMware SD-WAN 由 Velocloud](https://www.velocloud.com/)
+- [從 Nokia Nuage 網路](https://www.nuagenetworks.net/)
+- [VMware SD-依 Velocloud 的 WAN](https://www.velocloud.com/)
 
-#### <a name="router-vendors"></a><a name="router-vendors"></a>路由器供應商
+##### <a name="router-vendors"></a><a name="router-vendors"></a>路由器廠商
 
 - [Arista](https://www.arista.com/)
 
-[聯繫專用邊緣區域團隊](https://aka.ms/EdgeZonesPartner),瞭解有關如何成為合作夥伴的更多資訊。
+##### <a name="firewall-vendors"></a><a name="firewall-vendors"></a>防火牆廠商
 
-#### <a name="firewall-vendors"></a><a name="firewall-vendors"></a>防火牆供應商
+- [Palo Alto Networks](https://www.paloaltonetworks.com/)
 
-- Palo Alto Networks
+##### <a name="managed-solutions-providers-mobile-operators-and-global-system-integrators-gsis"></a><a name="msp-mobile"></a>受控解決方案提供者：行動操作員和全域系統整合商（GSIs）
 
-### <a name="managed-solutions-providers---mobile-operators-and-global-system-integrators"></a><a name="msp-mobile"></a>託管解決方案提供者 - 行動營運商和全球系統整合者
-
-| 全球 SI 和營運商 | 行動營運商 |
+| GSIs 和運算子 | 電信業者 |
 | --- | --- |
-| 阿姆多克斯                       | 埃泰薩爾特             |
-| 美國塔               | NTT Communications   |
-| 世紀連結                 | Proximus             |
-| 埃佩托                       | Rogers               |
-| 聯合無線           | SK電信           |
+| Amdocs                       | Etisalat             |
+| 美屬塔式               | NTT Communications   |
+| CenturyLink                  | Proximus             |
+| Expeto                       | Rogers               |
+| 聯盟無線           | SK 電信           |
 | Infosys                      | Telefonica           |
-| 科技馬辛德拉                | Telstra              |
-|        *                     | Vodafone             |
+| 技術 Mahindra                | Telstra              |
+|                              | Vodafone             |
 
-[聯繫專用邊緣區域團隊](https://aka.ms/EdgeZonesPartner),瞭解有關如何成為合作夥伴的更多資訊。
+如需如何成為合作夥伴的詳細資訊，[請洽詢私人 Edge 區域小組](https://aka.ms/EdgeZonesPartner)。
 
-## <a name="private-edge-zones---solutions"></a><a name="solutions-private-edge"></a>私人邊緣區域 - 解決方案
+### <a name="private-edge-zone-solutions"></a><a name="solutions-private-edge"></a>私人 Edge 區域解決方案
 
-### <a name="private-mobile-network-on-private-edge-zones"></a><a name="private-mobile-private-edge"></a>私人邊緣區域上的專用行動網路
+#### <a name="private-mobile-network-on-private-edge-zones"></a><a name="private-mobile-private-edge"></a>私人邊緣區域上的私用行動網路
 
-![私人邊緣區域上的專用行動網路](./media/edge-zones-overview/mobile-networks.png "私人邊緣區域上的專用行動網路")
+![私人邊緣區域上的私用行動網路](./media/edge-zones-overview/mobile-networks.png "私人邊緣區域上的私用行動網路")
 
-您現在可以在專用邊緣區域部署專用移動網路。 專用行動網路可實現超低延遲、高容量以及業務關鍵型應用所需的可靠和安全無線網路。 專用行動網路可以實現諸如倉庫中自動引導車輛 (AGV) 的指揮和控制、智慧工廠中的機器人與增強型房地產之間的即時通信以及虛擬實境邊緣應用等場景。
+您現在可以在私人邊緣區域上部署私人行動網路。 私人行動網路可實現非常低延遲、高容量，以及商務關鍵應用程式所需的可靠且安全的無線網路。 
 
-虛擬化進化的數據包核心(vEPC)網路功能構成了專用移動網路的大腦。 您現在可以在專用邊緣區域部署 vEPC。 有關在專用邊緣區域可用的 vEPC 合作夥伴的清單,請參閱[vEPC ISV](#vEPC)。
+私人行動網路可以啟用下列案例： 
+- 倉儲中自動化引導式車輛（AGVs）的命令與控制。 
+- 智慧型處理站中的機器人之間的即時通訊。
+- 增強的現實和虛擬實境 edge 應用程式。
 
-在專用邊緣區域部署專用行動網路解決方案需要其他元件,如行動存取點、SIM 卡和其他 VNF(如路由器)。 訪問許可或未經許可的頻譜對於設置專用移動網路至關重要。 此外,您可能需要關於射頻規劃、物理佈局、安裝和支援的説明。 有關合作夥伴清單,請參閱[行動無線電合作夥伴](#mobile-radio)。
+虛擬化進化封包核心（vEPC）網路功能是私人行動網路的大腦。 您現在可以在私人邊緣區域上部署 vEPC。 如需私人邊緣區域上可用的 vEPC 合作夥伴清單，請參閱[VEPC isv](#vEPC)。
 
-Microsoft 提供了一個合作夥伴生態系統,可説明處理此過程的所有方面 - 從規劃網路、購買所需設備、設置硬體,到從 Azure 管理配置。 通過一組與 Microsoft 緊密整合的經過驗證的合作夥伴,您可以放心,解決方案將可靠且易於使用。 您可以專注於核心方案,同時依靠 Microsoft 及其合作夥伴幫助解決其餘方案。
+在私人邊緣區域上部署私人行動網路解決方案，需要其他元件，例如行動存取點、SIM 卡和其他 VNFs （例如路由器）。 存取授權或未經授權的頻譜，對於設定私人行動網路而言至關重要。 而且您可能需要有 RF 規劃、實體版面配置、安裝和支援的協助。 如需合作夥伴清單，請參閱[Mobile 收音機合作夥伴](#mobile-radio)。
 
-### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>私有邊緣區域上的 SD-WAN
+Microsoft 提供的合作夥伴生態系統可協助處理此程式的所有層面。 合作夥伴可以協助規劃網路、購買所需的裝置、設定硬體，以及從 Azure 管理設定。 與 Microsoft 緊密整合的一組經過驗證的合作夥伴，確保您的解決方案會可靠且容易使用。 您可以專注于您的核心案例，並依賴 Microsoft 和其合作夥伴協助進行其餘工作。
 
-![私有邊緣區域上的 SD-WAN](./media/edge-zones-overview/sd-wan.png "私有邊緣區域上的 SD-WAN")
+#### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-私人邊緣區域上的 WAN
+
+![SD-私人邊緣區域上的 WAN](./media/edge-zones-overview/sd-wan.png "SD-私人邊緣區域上的 WAN")
  
-SD-WAN 作為一項技術,可讓您創建企業級廣域網路 (WAN),具有更高的頻寬、對雲的高性能訪問、服務插入、可靠性、策略管理和廣泛的網路可見性。 SD-WAN 提供由冗餘中央控制器精心編排的無縫分支機構連接,擁有成本更低。
-私有邊緣區域的 SD-WAN 允許您從以資本支出為中心的模型轉向軟體即服務 (SaaS) 模型,以減少 IT 預算。 您可以使用您選擇的 SD-WAN 合作夥伴協調器或控制器來啟用新服務並立即在整個網路中傳播它們。
+SD-WAN 可讓您建立具有下列優點的企業級廣域網路（Wan）：
+
+- 增加頻寬
+- 雲端的高效能存取
+- 服務插入
+- 可靠性
+- 原則管理
+- 廣泛的網路可見度
+    
+SD-WAN 提供順暢的分公司連線，以較低的擁有成本，從冗余的中央控制器協調。
+SD-私人邊緣區域上的 WAN 可讓您從以 capex 為中心的模型移至軟體即服務（SaaS）模型，以降低 IT 預算。 您可以使用您選擇的 SD-WAN 合作夥伴（orchestrator 或 controller）來啟用新服務，並立即將其傳播到整個網路中。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關詳細資訊,可聯繫以下團隊:
+如需詳細資訊，請洽詢下列小組：
 
-* [邊緣區域團隊](https://aka.ms/EdgeZones)
-* [私人邊緣區域團隊 - 成為合作夥伴](https://aka.ms/EdgeZonesPartner)
+* [Edge 區域小組](https://aka.ms/EdgeZones)
+* [私人 Edge 區域小組，成為合作夥伴](https://aka.ms/EdgeZonesPartner)

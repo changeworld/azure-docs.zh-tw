@@ -1,5 +1,5 @@
 ---
-title: 為 Azure 應用商店創建虛擬機產品/服務的技術資產
+title: 建立 Azure Marketplace 虛擬機器供應專案的技術資產
 description: 說明如何在 Azure Marketplace 中為虛擬機器供應項目建立技術資產。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c6ca017e18a83f0745140cba15d9c894e5a21c32
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273965"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148126"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>建立虛擬機器供應項目的技術資產
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始向合作夥伴中心移動 Azure 虛擬機器產品/ 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器技術資產](https://aka.ms/AzureVMTechAsset)中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將您的 Azure 虛擬機器供應專案移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 Azure 虛擬機器技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的指示來管理您遷移的供應專案。
 
 本節會逐步說明如何建立和設定 Azure Marketplace 虛擬機器 (VM) 供應項目的技術資產。  虛擬機器包含兩個元件：解決方案的虛擬硬碟 (VHD)，以及選擇性的關聯資料磁碟。  
 
@@ -37,7 +37,7 @@ VM 映像包含一個作業系統磁碟以及零或多個資料磁碟。 每個�
 
 ## <a name="fundamental-technical-knowledge"></a>基本技術知識
 
-設計、構建和測試這些資產需要時間,需要對 Azure 平臺和用於構建產品/服務的技術進行技術知識。 除了解決方案領域之外,您的工程團隊還應瞭解以下 Microsoft 技術: 
+設計、建立及測試這些資產需要一些時間，而且需要 Azure 平臺和用來建立供應專案之技術的技術知識。 除了您的解決方案網域以外，您的工程小組也應具備下列 Microsoft 技術的知識： 
 -    對於 [Azure 服務](https://azure.microsoft.com/services/)的基本了解 
 -    如何[設計和架構 Azure 應用程式](https://azure.microsoft.com/solutions/architecture/)
 -    具備 [Azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)、[Azure 儲存體](https://azure.microsoft.com/services/?filter=storage)和 [Azure 網路](https://azure.microsoft.com/services/?filter=networking)的運用知識

@@ -1,22 +1,22 @@
 ---
-title: 標記資源的策略
-description: 描述可以分配的 Azure 策略，以確保標記符合性。
+title: 標記資源的原則
+description: 說明您可以指派以確保標記合規性的 Azure 原則。
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e7febe4c833cefd0ee9a5c49b4b70f4901fea8d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80147014"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147858"
 ---
-# <a name="assign-policies-for-tag-compliance"></a>分配策略以符合標籤
+# <a name="assign-policies-for-tag-compliance"></a>指派標記合規性原則
 
-您可以使用[Azure 策略](../../governance/policy/overview.md)強制標記規則和約定。 通過創建策略，可以避免將資源部署到沒有組織預期標記的訂閱中。 您可以創建策略，在部署期間自動應用所需的標記，而不是手動應用標記或搜索不符合的資源。 標記現在也可以應用於具有新的["修改"](../../governance/policy/concepts/effects.md#modify)效果和[修正任務的](../../governance/policy/how-to/remediate-resources.md)現有資源。 下列區段會顯示標籤的範例原則。
+您可以使用[Azure 原則](../../governance/policy/overview.md)來強制執行標記規則和慣例。 藉由建立原則，您可以避免將資源部署到您的訂用帳戶，但您的組織沒有預期的標記。 您不需要手動套用標記或搜尋不符合規範的資源，而是建立一個原則，在部署期間自動套用所需的標記。 標籤現在也可以套用至具有新[修改](../../governance/policy/concepts/effects.md#modify)效果和[補救](../../governance/policy/how-to/remediate-resources.md)工作的現有資源。 下列區段會顯示標籤的範例原則。
 
 ## <a name="policies"></a>原則
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

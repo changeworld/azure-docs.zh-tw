@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/27/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 436e9c6b8bdff42680d7aa5b941822090f668855
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
-ms.translationtype: HT
+ms.openlocfilehash: 9cde457d36154a71970a159b1c247af7b37bae82
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82127650"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148184"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -152,7 +152,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 4. 將子網委派給 Azure NetApp files，如將[子網委派給 Azure Netapp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的指示所述。  
 
-5. 部署 Azure NetApp Files 磁片區，[並遵循指示來建立 Azure Netapp files 的磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區。 將磁片區部署在指定的 Azure NetApp Files[子網](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中。 請記住，Azure NetApp Files 資源和 Azure Vm 必須位於相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。 在此範例中，我們會使用兩個 Azure NetApp Files 磁片區： sap<b>QAS</b>和交易。裝載至對應掛接點的檔案路徑為/usrsap<b>qas</b>/sapmnt<b>qas</b>、/usrsap<b>qas</b><b>/usrsap qas sys 等等</b>。  
+5. 部署 Azure NetApp Files 磁片區，[並遵循指示來建立 Azure Netapp files 的磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區。 將磁片區部署在指定的 Azure NetApp Files[子網](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中。 系統會自動指派 Azure NetApp 磁片區的 IP 位址。 請記住，Azure NetApp Files 資源和 Azure Vm 必須位於相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。 在此範例中，我們會使用兩個 Azure NetApp Files 磁片區： sap<b>QAS</b>和交易。裝載至對應掛接點的檔案路徑為/usrsap<b>qas</b>/sapmnt<b>qas</b>、/usrsap<b>qas</b><b>/usrsap qas sys 等等</b>。  
 
    1. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/sapmnt<b>QAS</b>）
    2. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs）

@@ -1,5 +1,5 @@
 ---
-title: 從使用者 VHD 部署 Azure VM |Azure 應用商店
+title: 從使用者 VHD 部署 Azure VM |Azure Marketplace
 description: 說明如何部署使用者 VHD 映像來建立 Azure VM 執行個體。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e3bad2dc63f6a75f52c537aabfa6e85d1846ef15
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273880"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147924"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>從使用者 VHD 部署 Azure VM
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Azure VM 映像認證](https://aks.ms/CertifyVMimage)中的說明來管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將 Azure 虛擬機器供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請遵循[AZURE VM 映射認證](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification)中的指示來管理您遷移的供應專案。
 
 本文說明如何使用提供的 Azure Resource Manager 範本和 Azure PowerShell 指令碼，來部署通用的 VHD 映像以建立新的 Azure VM 資源。
 
@@ -27,14 +27,14 @@ ms.locfileid: "81273880"
 
 將適用於 [VHD 部署](cpp-deploy-json-template.md)的 Azure Resource Manager 範本複製到名為 `VHDtoImage.json` 的本機檔案。  編輯此檔案以提供下列參數值。 
 
-|  **參數**             |   **說明**                                                              |
+|  **參數**             |   **描述**                                                              |
 |  -------------             |   ---------------                                                              |
 | resourceGroupName          | 現有的 Azure 資源群組名稱。  通常會使用與您金鑰保存庫相關聯的相同 RG  |
 | TemplateFile               | 檔案 `VHDtoImage.json` 的完整路徑名稱                                    |
 | userStorageAccountName     | 儲存體帳戶的名稱                                                    |
 | sNameForPublicIP           | 公用 IP 的 DNS 名稱。 必須是小寫                                  |
 | subscriptionId             | Azure 訂用帳戶識別碼                                                  |
-| Location                   | 資源群組的標準 Azure 地理位置                       |
+| 位置                   | 資源群組的標準 Azure 地理位置                       |
 | vmName                     | 虛擬機器的名稱                                                    |
 | vaultName                  | 金鑰保存庫的名稱                                                          |
 | vaultResourceGroup         | 金鑰保存庫的資源群組

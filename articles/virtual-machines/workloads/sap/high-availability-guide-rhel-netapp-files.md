@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661272"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148227"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure 虛擬機器高可用性，適用于 Red Hat Enterprise Linux 上的 SAP NetWeaver，以及適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -32,14 +32,14 @@ ms.locfileid: "77661272"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -71,9 +71,9 @@ ms.locfileid: "77661272"
 * SAP Note [2243692] 包含 Azure 中 Linux 上的 SAP 授權相關資訊。
 * SAP Note [1999351] 包含 Azure Enhanced Monitoring Extension for SAP 的其他疑難排解資訊。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含 Linux 所需的所有 SAP Note。
-* [適用于 SAP on Linux 的 Azure 虛擬機器規劃和執行][planning-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器部署][deployment-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
+* [適用於 SAP on Linux 的 Azure 虛擬機器規劃和實作][planning-guide]
+* [在 Linux 上為 SAP 進行 Azure 虛擬機器部署][deployment-guide]
+* [適用於 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
 * [Pacemaker 叢集中的 SAP Netweaver](https://access.redhat.com/articles/3150081)
 * 一般 RHEL 文件
   * [高可用性附加元件概觀](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
@@ -86,7 +86,7 @@ ms.locfileid: "77661272"
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
 * [使用 Azure NetApp Files 在 Microsoft Azure 的 NetApp SAP 應用程式][anf-sap-applications-azure]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 SAP Netweaver 中央服務的高可用性（HA）需要共用儲存體。
 若要在 Red Hat Linux 上達到此目標，您必須建立個別的高可用性 GlusterFS 叢集。 
@@ -101,16 +101,14 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料�
 
 * 前端組態
   * IP 位址192.168.14。9
-* 後端組態
-  * 連線到應該屬於 (A)SCS/ERS 叢集一部分之所有虛擬機器的主要網路介面
 * 探查連接埠
-  * 連接埠 620<strong>&lt;nr&gt;</strong>
+  * 埠 620<strong>&lt;nr&gt;</strong>
 * 負載平衡規則
   * 如果使用 Standard Load Balancer，請選取 [ **HA 埠**]
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 32<strong>&lt;nr&gt; </strong> TCP
+  * 36<strong>&lt;nr&gt; </strong> TCP
+  * 39<strong>&lt;nr&gt; </strong> TCP
+  * 81<strong>&lt;nr&gt; </strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -119,17 +117,18 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料�
 
 * 前端組態
   * IP 位址192.168.14.10
-* 後端組態
-  * 連線到應該屬於 (A)SCS/ERS 叢集一部分之所有虛擬機器的主要網路介面
 * 探查連接埠
-  * 連接埠 621<strong>&lt;nr&gt;</strong>
+  * 埠 621<strong>&lt;nr&gt;</strong>
 * 負載平衡規則
   * 如果使用 Standard Load Balancer，請選取 [ **HA 埠**]
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 32<strong>&lt;nr&gt; </strong> TCP
+  * 33<strong>&lt;nr&gt; </strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
+
+* 後端組態
+  * 連線到應該屬於 (A)SCS/ERS 叢集一部分之所有虛擬機器的主要網路介面
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>設定 Azure NetApp Files 基礎結構 
 
@@ -147,7 +146,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 本文中所呈現的 SAP Netweaver 架構使用單一 Azure NetApp Files 容量集區 Premium SKU。 針對 Azure 上的 SAP Netweaver 應用程式工作負載，我們建議 Azure NetApp Files Premium SKU。  
 4. 將子網委派給 Azure NetApp files，如將[子網委派給 Azure Netapp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的指示所述。  
 
-5. 部署 Azure NetApp Files 磁片區，[並遵循指示來建立 Azure Netapp files 的磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區。 將磁片區部署在指定的 Azure NetApp Files[子網](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中。 請記住，Azure NetApp Files 資源和 Azure Vm 必須位於相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。 在此範例中，我們會使用兩個 Azure NetApp Files 磁片區： sap<b>QAS</b>和 transSAP。 裝載至對應掛接點的檔案路徑為/usrsap<b>qas</b>/sapmnt<b>qas</b>、/usrsap<b>qas</b><b>/usrsap qas sys 等等</b>。  
+5. 部署 Azure NetApp Files 磁片區，[並遵循指示來建立 Azure Netapp files 的磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區。 將磁片區部署在指定的 Azure NetApp Files[子網](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中。 系統會自動指派 Azure NetApp 磁片區的 IP 位址。 請記住，Azure NetApp Files 資源和 Azure Vm 必須位於相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。 在此範例中，我們會使用兩個 Azure NetApp Files 磁片區： sap<b>QAS</b>和 transSAP。 裝載至對應掛接點的檔案路徑為/usrsap<b>qas</b>/sapmnt<b>qas</b>、/usrsap<b>qas</b><b>/usrsap qas sys 等等</b>。  
 
    1. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>）
    2. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs）
@@ -159,7 +158,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
   
 在此範例中，我們使用適用于所有 SAP Netweaver 檔案系統的 Azure NetApp Files 來示範如何使用 Azure NetApp Files。 不需要透過 NFS 裝載的 SAP 檔案系統也可以部署為[Azure 磁片儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。 在此範例中， <b>a-e</b>必須位於 Azure NetApp Files，而<b>f-g</b> （也就是/usr/sap/<b>QAS</b>/d<b>02</b>，/Usr/sap/<b>QAS</b>/d<b>03</b>）可以部署為 azure 磁片儲存體。 
 
-### <a name="important-considerations"></a>重要的考量
+### <a name="important-considerations"></a>重要考量︰
 
 在針對 SUSE 高可用性架構的 SAP Netweaver 考慮 Azure NetApp Files 時，請注意下列重要考慮：
 
@@ -167,7 +166,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 - 最小磁片區為 100 GiB
 - Azure NetApp Files 和所有虛擬機器（將裝載 Azure NetApp Files 磁片區）必須位於相同的 Azure 虛擬網路或相同區域的[對等互連虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)中。 現在支援透過相同區域中的 VNET 對等互連來存取 Azure NetApp Files。 尚不支援透過全球對等互連進行 Azure NetApp 存取。
 - 選取的虛擬網路必須有委派給 Azure NetApp Files 的子網。
-- Azure NetApp Files 提供[匯出原則](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：您可以控制允許的用戶端、存取類型（讀取 & 寫入、唯讀等等）。 
+- Azure NetApp Files 提供[匯出原則](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：您可以控制允許的用戶端、存取類型（讀取&寫入、唯讀等等）。 
 - Azure NetApp Files 功能尚無法感知區域。 Azure NetApp Files 功能目前不會部署在 Azure 區域中的所有可用性區域。 請留意某些 Azure 區域中可能的延遲含意。 
 - Azure NetApp Files 磁片區可以部署為 NFSv3 或 NFSv 4.1 磁片區。 SAP 應用層（ASCS/ERS、SAP 應用程式伺服器）支援這兩種通訊協定。 
 
@@ -177,7 +176,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
-首先，您必須建立 Azure NetApp Files 磁片區。 部署 Vm。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。
+首先，您必須建立 Azure NetApp Files 磁片區。 部署 Vm。 之後，您可以建立負載平衡器，並使用後端集區中的虛擬機器。
 
 1. 建立負載平衡器（內部、標準）：  
    1. 建立前端 IP 位址
@@ -185,23 +184,22 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
          1. 輸入新前端 IP 集區的名稱（例如前端） **。QAS.ASCS**）
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址（例如**192.168.14.9**）
-         1. 按一下 [確定]。
+         1. Click OK
       1. ASCS ERS 的 IP 位址192.168.14.10
          * 在 "a" 底下重複上述步驟，以建立 ERS 的 IP 位址（例如**192.168.14.10**和前端） **。QAS.ERS**）
    1. 建立後端集區
-      1. 建立 ASCS 的後端集區
-         1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
-         1. 輸入新後端集區的名稱（例如**後端）。QAS**）
-         1. 按一下 [新增虛擬機器]。
-         1. 選取 [虛擬機器]。 
-         1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
-         1. 按一下 [新增]。
+      1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
+      1. 輸入新後端集區的名稱（例如**後端）。QAS**）
+      1. 按一下 [新增虛擬機器]。
+      1. 選取 [虛擬機器]。 
+      1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
+      1. 按一下 [新增]
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康狀態探查的名稱（例如**健全狀況）。QAS.ASCS**）
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. 按一下 [確定]。
+         1. Click OK
       1. 適用于 ASCS ERS 的埠 621**01**
             * 在 "c" 底下重複上述步驟，以建立 ERS 的健康情況探查（例如 621**01**和**健全狀況）。QAS.ERS**）
    1. 負載平衡規則
@@ -212,7 +210,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 選取**HA 埠**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. 按一下 [確定]。
+         1. Click OK
          * 重複上述步驟以建立 ERS 的負載平衡規則（例如**lb。QAS.ERS**）
 1. 或者，如果您的案例需要基本負載平衡器（內部），請遵循下列步驟：  
    1. 建立前端 IP 位址
@@ -220,23 +218,22 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
          1. 輸入新前端 IP 集區的名稱（例如前端） **。QAS.ASCS**）
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址（例如**192.168.14.9**）
-         1. 按一下 [確定]。
+         1. Click OK
       1. ASCS ERS 的 IP 位址192.168.14.10
          * 在 "a" 底下重複上述步驟，以建立 ERS 的 IP 位址（例如**192.168.14.10**和前端） **。QAS.ERS**）
    1. 建立後端集區
-      1. 建立 ASCS 的後端集區
-         1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
-         1. 輸入新後端集區的名稱（例如**後端）。QAS**）
-         1. 按一下 [新增虛擬機器]。
-         1. 選取您稍早為 ASCS 建立的可用性設定組 
-         1. 選取 (A)SCS 叢集的虛擬機器
-         1. 按一下 [確定]。
+      1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
+      1. 輸入新後端集區的名稱（例如**後端）。QAS**）
+      1. 按一下 [新增虛擬機器]。
+      1. 選取您稍早為 ASCS 建立的可用性設定組 
+      1. 選取 (A)SCS 叢集的虛擬機器
+      1. Click OK
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康狀態探查的名稱（例如**健全狀況）。QAS.ASCS**）
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. 按一下 [確定]。
+         1. Click OK
       1. 適用于 ASCS ERS 的埠 621**01**
             * 在 "c" 底下重複上述步驟，以建立 ERS 的健康情況探查（例如 621**01**和**健全狀況）。QAS.ERS**）
    1. 負載平衡規則
@@ -244,10 +241,10 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
          1. 輸入新負載平衡器規則的名稱（例如**lb。QAS.ASCS 3200**）
          1. 選取您稍早建立的 ASCS、後端集區及健康情況探查的前端 IP 位址（例如**前端）。QAS.ASCS**）
-         1. 保留通訊協定 [TCP]，輸入連接埠 **3200**
+         1. 保留通訊協定 [TCP]****，輸入連接埠 **3200**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. 按一下 [確定]。
+         1. Click OK
       1. ASCS 的其他連接埠
          * 針對 ASCS 的埠 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP，重複上述的步驟 "d"
       1. ASCS ERS 的其他連接埠
@@ -263,10 +260,10 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 本節中的指示僅適用于搭配使用 Azure NetApp Files 磁片區與 NFSv 4.1 通訊協定的情況。 在所有 Vm 上執行設定，其中會裝載 Azure NetApp Files NFSv 4.1 磁片區。  
 
-1. 確認 NFS 網域設定。 請確定已將網域設定為預設的 Azure NetApp Files 網域，也就是 **`defaultv4iddomain.com`** ，而且對應已設為 [沒有**人**]。  
+1. 確認 NFS 網域設定。 請確定已將網域設定為預設的 Azure NetApp Files 網域， **`defaultv4iddomain.com`** 也就是將對應設為 [沒有**人**]。  
 
     > [!IMPORTANT]
-    > 請務必將 VM 上 `/etc/idmapd.conf` 中的 NFS 網域設定為符合 Azure NetApp Files 上的預設網域設定： **`defaultv4iddomain.com`** 。 如果 NFS 用戶端上的網域設定（也就是 VM）和 NFS 伺服器（也就是 Azure NetApp configuration）不相符，則在 Vm 上掛接的 Azure NetApp 磁片區上的檔案許可權將會顯示為 `nobody`。  
+    > 請務必將 VM `/etc/idmapd.conf`上的 NFS 網域設定為符合 Azure NetApp Files 上的預設網域設定：。 **`defaultv4iddomain.com`** 如果 NFS 用戶端上的網域設定（也就是 VM）和 NFS 伺服器（也就是 Azure NetApp configuration）不相符，則在 Vm 上掛接的 Azure NetApp 磁片區上的檔案許可權將會顯示為`nobody`。  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -278,7 +275,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** 確認 `nfs4_disable_idmapping`。 它應該設定為**Y**。若要建立 `nfs4_disable_idmapping` 所在的目錄結構，請執行掛接命令。 您將無法在/sys/modules 下手動建立目錄，因為已為核心/驅動程式保留存取權。  
+4. **[A]** 驗證`nfs4_disable_idmapping`。 它應該設定為**Y**。若要建立所在的目錄`nfs4_disable_idmapping`結構，請執行掛接命令。 您將無法在/sys/modules 下手動建立目錄，因為已為核心/驅動程式保留存取權。  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -292,7 +289,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   如需如何變更 `nfs4_disable_idmapping` 參數的詳細資訊，請參閱 https://access.redhat.com/solutions/1749883。
+   如需如何變更`nfs4_disable_idmapping`參數的詳細資訊， https://access.redhat.com/solutions/1749883請參閱。
 
 ### <a name="create-pacemaker-cluster"></a>建立 Pacemaker 叢集
 
@@ -300,7 +297,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>準備進行 SAP NetWeaver 安裝
 
-下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
+下列專案前面會加上 **[A]** -適用于所有節點、 **[1]** -僅適用于節點1或 **[2]** -僅適用于節點2。
 
 1. **[A]** 設定主機名稱解析
 
@@ -612,7 +609,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 1. **[A]** 設定保持運作
 
-   SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 若要避免這種情況，您必須在 SAP NetWeaver ASCS/SCS 設定檔中設定參數，並變更 Linux 系統設定。 如需詳細資訊，[請參閱 SAP 附注 1410736][1410736] 。
+   SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 若要避免這種情況，您必須在 SAP NetWeaver ASCS/SCS 設定檔中設定參數，並變更 Linux 系統設定。 如需詳細資訊，請閱讀 [SAP Note 1410736][1410736]。
 
    ASCS/SCS 設定檔參數 enque/encni/set_so_keepalive 已在最後一個步驟中新增。
 
@@ -894,7 +891,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ## <a name="install-database"></a>安裝資料庫
 
-在此範例中，SAP NetWeaver 安裝在 SAP Hana 上。 您可以針對此安裝使用每個支援的資料庫。 如需有關如何在 Azure 中安裝 SAP Hana 的詳細資訊，請參閱[Red Hat Enterprise Linux. For a list of supported databases, see [SAP Note 1928533][1928533]上的 Azure vm SAP Hana 高可用性][sap-hana-ha]。
+在此範例中，SAP NetWeaver 安裝在 SAP Hana 上。 您可以針對此安裝使用每個支援的資料庫。 如需有關如何在 Azure 中安裝 SAP Hana 的詳細資訊，請參閱. For a list of supported databases, see [SAP Note 1928533][1928533] [Red Hat Enterprise Linux 上 azure vm 上 SAP Hana 的高可用性][sap-hana-ha]。
 
 1. 執行 SAP 資料庫執行個體安裝
 
@@ -1092,7 +1089,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   如果您只終止訊息伺服器一次，則會 `sapstart`重新開機它。 如果您終止伺服器的次數足夠，則 Pacemaker 最終會將 ASCS 執行個體移到另一個節點。 以 root 身份執行下列命令，以在測試之後清除 ASCS 和 ERS 執行個體的資源狀態。
+   如果您只終止訊息伺服器一次，則會由`sapstart`重新開機。 如果您終止伺服器的次數足夠，則 Pacemaker 最終會將 ASCS 執行個體移到另一個節點。 以 root 身份執行下列命令，以在測試之後清除 ASCS 和 ERS 執行個體的資源狀態。
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1186,7 +1183,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   如果您只執行一次命令，`sapstart` 將會重新開機進程。 如果您經常執行它，`sapstart` 將不會重新開機進程，而且資源會處於停止狀態。 以 root 身份執行下列命令，以在測試之後清除 ERS 執行個體的資源狀態。
+   如果您只執行一次命令， `sapstart`將會重新開機進程。 如果您經常執行它， `sapstart`就不會重新開機進程，而且資源會處於停止狀態。 以 root 身份執行下列命令，以在測試之後清除 ERS 執行個體的資源狀態。
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
@@ -1254,8 +1251,8 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 ## <a name="next-steps"></a>後續步驟
 
 * [RHEL for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
-* [適用于 SAP 的 Azure 虛擬機器規劃和執行][planning-guide]
-* [適用于 SAP 的 Azure 虛擬機器部署][deployment-guide]
-* [適用于 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性並為 Azure 上的 SAP HANA 規劃災害復原，請參閱 [Azure 上的 SAP HANA (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。
-* 若要瞭解如何建立高可用性並規劃 Azure Vm 上 SAP Hana 的嚴重損壞修復，請參閱[azure 虛擬機器（vm）上 SAP Hana 的高可用性][sap-hana-ha]
+* [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
+* [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
+* [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
+* 若要瞭解如何建立高可用性，並規劃 Azure （大型實例）上 SAP Hana 的嚴重損壞修復，請參閱[azure 上的 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)。
+* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

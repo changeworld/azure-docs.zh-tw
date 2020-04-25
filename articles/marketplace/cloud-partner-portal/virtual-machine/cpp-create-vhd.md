@@ -1,5 +1,5 @@
 ---
-title: 為 Azure 應用商店建立與 Azure 相容的 VHD
+title: 為 Azure Marketplace 建立與 Azure 相容的 VHD
 description: 說明如何在 Microsoft Azure Marketplace 中為虛擬機器供應項目建立 VHD。
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 642c6964aaad8d6e8750fca67efb11eb3feaf19d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273931"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147018"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>建立與 Azure 相容的 VHD
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始向合作夥伴中心移動 Azure 虛擬機器產品/ 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器技術資產](https://aka.ms/AzureVMTechAsset)中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將您的 Azure 虛擬機器供應專案移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 Azure 虛擬機器技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)中的指示來管理您遷移的供應專案。
 
 本文會詳細說明建立 Microsoft Azure Marketplace 中虛擬機器 (VM) 供應項目虛擬硬碟 (VHD) 的所需步驟。  本文也會涵蓋其他不同層面，例如如何使用遠端桌面通訊協定 (RDP)、選擇 VM 的大小、安裝最新的 Windows 更新以及將 VHD 映像一般化的最佳作法。  下列各節主要著重於以 Windows 為基礎的 VHD；如需更多建立以 Linux 為基礎的 VHD 的詳細資訊，請參閱[經 Azure 背書的 Linux 發佈](../../../virtual-machines/linux/endorsed-distros.md)。 
 
 > [!WARNING]
-> 強烈建議您遵循本文中的指示，使用 Azure 建立內有經過預先設定和背書之作業系統的 VM。  如果這與解決方案不相容,則可以使用經批准的作業系統創建和配置本地 VM。  接著您可以依照[準備 Windows VHD 或 VHDX 以上傳至 Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，設定並準備上傳。
+> 強烈建議您遵循本文中的指示，使用 Azure 建立內有經過預先設定和背書之作業系統的 VM。  如果這與您的解決方案不相容，則可以使用已核准的作業系統來建立及設定內部部署 VM。  接著您可以依照[準備 Windows VHD 或 VHDX 以上傳至 Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，設定並準備上傳。
 
 
 ## <a name="select-an-approved-base"></a>選擇已核准的基礎映像
@@ -30,8 +30,8 @@ VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基�
 若要開始，請從下列位於 Microsoft Azure 入口網站中的映像選擇一個建立 VM：
 
 -    Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--    [SQL 伺服器 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (企業, 標準, Web)
--    [SQL 伺服器 2012 SP2(](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)企業、標準、Web)
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （Enterprise、Standard、Web）
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) （Enterprise、Standard、Web）
 
 > [!TIP]
 > 如果您使用的是最新的 Azure 入口網站或 PowerShell，2014 年 9 月 8 日之後發行的 Windows Server 映像都會獲得核准。
@@ -52,7 +52,7 @@ VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基�
 
 5. 選取適當的虛擬映像之後，請提供下列值：
    * 在 [基本概念]**** 刀鋒視窗中，輸入虛擬機器的 [名稱]****，長度須介於 1 到 15 個英數字元間。 (此範例使用 `DemoVm009`。)
-   * 輸入要用於在 VM 上建立本機帳戶的 [使用者名稱]**** 和強度高的 [密碼]****。  (此處`adminUser`使用。 密碼必須長 8-123 個字元,並滿足以下四個複雜性要求中的三個:一個小寫字元、一個大寫字元、一個數位和一個特殊字元。 如需詳細資訊，請參閱[使用者名稱和密碼需求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
+   * 輸入要用於在 VM 上建立本機帳戶的 [使用者名稱]**** 和強度高的 [密碼]****。  （此處`adminUser`會使用）。 密碼的長度必須是8-123 個字元，且符合下列四個複雜性需求的其中三個：一個小寫字元、一個大寫字元、一個數位和一個特殊字元。 如需詳細資訊，請參閱使用者[名稱和密碼需求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
    * 選取您先前建立的資源群組 (此處為 `DemoResourceGroup`)。
    * 選取 Azure 資料中心**位置** (此處為 `West US`)。
    * 按一下 [確定]**** 儲存這些值。 
@@ -64,7 +64,7 @@ VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基�
 
    ![新 VM 的大小刀鋒視窗](./media/publishvm_015.png)
 
-7. 在 [設定]**** 刀鋒視窗中，將 [使用受控資料箱磁碟]**** 選項設定為 [否]****。  這可讓您以手動方式管理新的 VHD。 ("**設定「** 邊欄」 選項卡還允許您更改儲存和網路選項的其他更改,例如,在**磁碟類型**中選擇**進階 (SSD)。** 按下 **「確定」** 以繼續。
+7. 在 [設定]**** 刀鋒視窗中，將 [使用受控資料箱磁碟]**** 選項設定為 [否]****。  這可讓您以手動方式管理新的 VHD。 （[**設定**] 分頁也可讓您變更儲存體和網路選項的其他變更，例如，選取 [**磁片類型**] 中的 **[Premium （SSD）** ]）。 按一下 **[確定]** 以繼續。
 
     ![新 VM 的設定刀鋒視窗](./media/publishvm_016.png)
 

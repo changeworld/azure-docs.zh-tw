@@ -1,5 +1,5 @@
 ---
-title: 建立 Azure 容器映像技術資產 |Azure 應用商店
+title: 建立 Azure 容器影像技術資產 |Azure Marketplace
 description: 建立 Azure 容器的技術資產。
 author: dsindona
 ms.service: marketplace
@@ -7,21 +7,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 68db606c9a01c4b1122f9b0cce620762485ca40a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270310"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148269"
 ---
 # <a name="prepare-your-container-technical-assets"></a>準備容器技術資產
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 容器產品的管理移動到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[「準備 Azure 容器技術資產」](https://aka.ms/CreateContainerTechAssets)中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將您的 Azure 容器供應專案管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[準備 Azure 容器技術資產](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)中的指示來管理您遷移的供應專案。
 
 本文說明設定 Azure Marketplace 容器供應項目的步驟和需求。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="before-you-begin"></a>在您開始前
 
 檢閱 [Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances)文件，其中提供快速入門、教學課程和範例。
 
@@ -58,8 +58,8 @@ ms.locfileid: "81270310"
 
 如需詳細資訊，請參閱下列主題：
 
-* [教學:建立容器映像以部署到 Azure 容器實體](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-* [教學:使用 Azure 容器註冊表工作在雲端中建構及部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
+* [教學課程：建立容器映射以部署至 Azure 容器實例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [教學課程：使用 Azure Container Registry 工作在雲端中建立及部署容器映射](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>後續步驟
 
