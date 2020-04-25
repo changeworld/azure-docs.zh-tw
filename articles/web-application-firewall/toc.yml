@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: 建立原則與現有應用程式閘道的關聯
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: 診斷記錄
+        - name: 資源記錄
           href: ./ag/web-application-firewall-logs.md
         - name: 針對 WAF 進行疑難排解
           href: ./ag/web-application-firewall-troubleshoot.md

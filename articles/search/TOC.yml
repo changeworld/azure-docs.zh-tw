@@ -68,6 +68,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: 從 Power Apps 查詢
+      href: search-howto-powerapps.md
 - name: 範例
   items:
     - name: 'C# 範例'
@@ -234,8 +236,6 @@
               href: index-add-suggesters.md
             - name: 新增自動完成和建議
               href: search-autocomplete-tutorial.md
-        - name: 從 Power Apps 查詢
-          href: search-howto-powerapps.md
         - name: 語法參考
           items:
             - name: 簡單查詢語法

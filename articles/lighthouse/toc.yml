@@ -44,6 +44,9 @@
     - name: 檢視和管理客戶
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: 移除委派的存取權
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
     - name: Azure 監視器整合
       items:
         - name: 大規模使用 Azure 監視器記錄
