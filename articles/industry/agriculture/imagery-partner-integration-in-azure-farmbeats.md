@@ -1,35 +1,35 @@
 ---
 title: 影像合作夥伴整合
-description: 本文介紹影像合作夥伴集成。
+description: 本文說明影像合作夥伴整合。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52d817d1029e75837e55c1b942525661ace33f87
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77131859"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136935"
 ---
 # <a name="imagery-partner-integration"></a>影像合作夥伴整合
 
-本文介紹如何使用 Azure FarmBeats 轉換器元件將影像資料發送到 FarmBeats。 農業影像資料可以從各種來源生成，如多光譜攝像機、衛星和無人機。 農業影像合作夥伴可以與 FarmBeats 集成，為客戶提供為其農場自訂生成的地圖。
+本文說明如何使用 Azure FarmBeats Translator 元件，將影像資料傳送至 FarmBeats。 農業影像資料可以從各種來源產生，例如 multispectral 攝影機、衛星和無人機。 農業影像合作夥伴可以與 FarmBeats 整合，為客戶提供其伺服器陣列的自訂產生對應。
 
-資料一旦可用，可以通過 FarmBeats 加速器進行視覺化，並可能用於農業企業或客戶系統集成商的資料融合和機器學習/人工智慧 （ML/AI） 模型構建。
+資料一經提供，就可以透過 FarmBeats 加速器來視覺化，而且可能會用於農業企業或客戶系統整合師所建立的資料融合和機器學習/人工智慧（ML/AI）模型。
 
-FarmBeats 提供以下功能：
+FarmBeats 提供下列功能：
 
-- 使用 /擴展類型 API 定義自訂圖像類型、源和檔案格式。
-- 通過 /Scene 和 /SceneFile API 從各種來源引入影像資料。
+- 使用/ExtendedType Api 定義自訂映射類型、來源和檔案格式。
+- 透過/Scene 和/SceneFile Api，內嵌各種來源的影像資料。
 
-以下資訊側重于將任何形式的影像引入 FarmBeats 系統。
+下列資訊著重于在 FarmBeats 系統中取得任何形式的影像。
 
-選擇**無人機影像**部分時，將打開一個快顯視窗，顯示無人機正射馬賽克的高解析度圖像。 您可以訪問合作夥伴軟體，該軟體有助於規劃無人機飛行並獲得原始資料。 您將繼續使用合作夥伴的軟體進行路徑規劃和正交鑲嵌圖像拼接。
+當您選取 [**無人機影像**] 區段時，快顯視窗會隨即開啟，以顯示無人機 orthomosaic 的高解析度影像。 您可以存取合作夥伴軟體，這有助於規劃無人機航班並取得原始資料。 您將繼續使用合作夥伴的軟體進行路徑規劃和 orthomosaic 影像裝訂。
 
-無人機合作夥伴需要使客戶能夠將其客戶帳戶與其在 Azure 上的伺服器場Beats實例連結。
+無人機合作夥伴必須讓客戶將其客戶帳戶與其在 Azure 上的 FarmBeats 實例連結在一起。
 
-您必須在無人機合作夥伴軟體中使用以下憑據來連結 FarmBeats：
+您必須使用無人機合作夥伴軟體中的下列認證來連結 FarmBeats：
 
 - API 端點
 - 租用戶識別碼
@@ -38,68 +38,75 @@ FarmBeats 提供以下功能：
 
 ## <a name="api-development"></a>API 開發
 
-API 包含斯瓦格技術文檔。 有關 API 和相應請求或回應的資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+這些 Api 包含 Swagger 技術檔。 如需 Api 和對應要求或回應的相關資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 ## <a name="authentication"></a>驗證
 
-伺服器場節拍使用 Microsoft Azure[活動目錄](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)（Azure AD）。 Azure 應用服務提供內置身份驗證和授權支援。 
+FarmBeats 會使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。 Azure App Service 提供內建的驗證和授權支援。 
 
 如需 Azure AD 的詳細資訊，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
 
-FarmBeats Datahub 使用無記名身份驗證，這需要以下憑據：
+FarmBeats Datahub 會使用持有人驗證，其需要下列認證：
 
 - 用戶端識別碼
 - 用戶端密碼
 - 租用戶識別碼
 
-使用以前的憑據，調用方可以請求訪問權杖，該權杖需要在後續 API 請求中（標頭部分）中發送，如下所示：
+呼叫者可以使用先前的認證，要求在標頭區段中，于後續的 API 要求中傳送存取權杖，如下所示：
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-以下 Python 代碼示例檢索訪問權杖。 然後，您可以將權杖用於後續對 FarmBeats 的 API 呼叫。
+下列 Python 程式碼範例會抓取存取權杖。 接著，您可以使用權杖來進行後續的 API 呼叫以 FarmBeats。
 
 ```python
-from azure.common.credentials import ServicePrincipalCredentials 
-import adal 
-#FarmBeats API Endpoint 
-ENDPOINT = "https://<yourdatahub>.azurewebsites.net"   
-CLIENT_ID = "<Your Client ID>"   
-CLIENT_SECRET = "<Your Client Secret>"   
-TENANT_ID = "<Your Tenant ID>" 
-AUTHORITY_HOST = 'https://login.microsoftonline.com' 
-AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
-#Authenticating with the credentials 
-context = adal.AuthenticationContext(AUTHORITY) 
-token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
-#Should get an access token here 
-access_token = token_response.get('accessToken') 
+import requests
+import json
+import msal
+
+# Your service principal App ID
+CLIENT_ID = "<CLIENT_ID>"
+# Your service principal password
+CLIENT_SECRET = "<CLIENT_SECRET>"
+# Tenant ID for your Azure subscription
+TENANT_ID = "<TENANT_ID>"
+
+AUTHORITY_HOST = 'https://login.microsoftonline.com'
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID
+
+ENDPOINT = "https://<yourfarmbeatswebsitename-api>.azurewebsites.net"
+SCOPE = ENDPOINT + "/.default"
+
+context = msal.ConfidentialClientApplication(CLIENT_ID, authority=AUTHORITY, client_credential=CLIENT_SECRET)
+token_response = context.acquire_token_for_client(SCOPE)
+# We should get an access token here
+access_token = token_response.get('access_token')
 ```
 
 ## <a name="http-request-headers"></a>HTTP 要求標頭
 
-以下是對 FarmBeats Datahub 進行 API 呼叫時需要指定的最常見請求標頭。
+以下是您對 FarmBeats Datahub 進行 API 呼叫時，需要指定的最常見要求標頭。
 
-**頭** | **描述及範例**
+**標頭** | **描述及範例**
 --- | ---
-Content-Type  | 請求格式（內容類型：應用程式/<format>）。 對於伺服器場節拍 Datahub API，格式為 JSON。 Content-Type: application/json
-授權 | 指定進行 API 呼叫所需的訪問權杖。 授權：承載<訪問權杖>
-Accept  | 回應格式。 對於伺服器場節拍 Datahub API，格式為 JSON。 接受：應用程式/json
+Content-Type  | 要求格式（Content-type： application/<format>）。 針對 FarmBeats Datahub Api，格式為 JSON。 Content-Type: application/json
+授權 | 指定進行 API 呼叫所需的存取權杖。 授權：持有人 <存取權杖>
+Accept  | 回應格式。 針對 FarmBeats Datahub Api，格式為 JSON。 Accept： application/json
 
 
-## <a name="api-requests"></a>API 請求
+## <a name="api-requests"></a>API 要求
 
-要發出 REST API 請求，請組合：
+若要提出 REST API 要求，您可以結合：
 
-- HTTP 方法（獲取、POST 和 PUT）。
+- HTTP 方法（GET、POST 和 PUT）。
 - API 服務的 URL。
-- 資源 URI（用於查詢、提交資料、更新或刪除）。
-- 一個或多個 HTTP 要求標頭。
+- 資源 URI （用來查詢、提交資料、更新或刪除）。
+- 一或多個 HTTP 要求標頭。
 
-或者，您可以在 GET 調用上包括查詢參數，以篩選 、限制 的大小和在回應中對資料進行排序。
+（選擇性）您可以在 GET 呼叫上包含查詢參數來篩選、限制的大小，以及排序回應中的資料。
 
-以下示例請求是獲取設備清單：
+下列範例要求是取得裝置的清單：
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
@@ -107,9 +114,9 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>”
 ```
 
-大多數 GET、POST 和 PUT 呼叫都需要 JSON 請求正文。
+大部分的 GET、POST 和 PUT 呼叫都需要 JSON 要求主體。
 
-以下示例請求是創建設備。 此示例具有帶有請求正文的輸入 JSON。
+下列範例要求是建立裝置。 此範例的輸入 JSON 具有要求主體。
 
 
 ```bash
@@ -122,32 +129,32 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>資料格式
 
-JSON 是一種與語言無關的通用資料格式，它提供了任意資料結構的簡單文本表示形式。 有關詳細資訊，請參閱[JSON 組織](https://JSON.org)。
+JSON 是一種與語言無關的通用資料格式，可提供任意資料結構的簡單文字標記法。 如需詳細資訊，請參閱[JSON 組織](https://JSON.org)。
 
-## <a name="ingest-imagery-into-farmbeats"></a>將圖像引入伺服器場節拍
+## <a name="ingest-imagery-into-farmbeats"></a>將影像內嵌至 FarmBeats
 
-合作夥伴擁有連接到 FarmBeats Datahub 的憑據後，合作夥伴將執行"翻譯"元件中的以下步驟。
+當合作夥伴具有認證可連線至 FarmBeats Datahub 之後，合作夥伴會在 Translator 元件中採取下列步驟。
 
-1.  根據要上載的圖像類型，為以下欄位創建新的擴展類型：
+1.  根據要上傳的影像類型，為下欄欄位建立新的擴充類型：
 
-    - **場景源**：例如，drone_partner_name
+    - **場景來源**：例如，drone_partner_name
     - **場景類型**：例如，無人機
-    - **場景檔案類型**：例如，葉綠素索引
-    - **場景檔內容類型**：例如，圖像/圖片
+    - **場景檔案類型**：例如，chlorophyll 索引
+    - **場景檔案內容類型**：例如，影像/tiff
 
-2.  調用 /Farms API 從 Azure FarmBeats 系統獲取伺服器場清單。
-3.  為客戶提供從伺服器場清單中選擇單個伺服器場的能力。
+2.  呼叫/Farms API，以從 Azure FarmBeats 系統內取得伺服器陣列清單。
+3.  提供客戶從伺服器陣列清單中選擇單一伺服器陣列的能力。
 
-    合作夥伴系統必須在合作夥伴軟體中顯示伺服器場，以執行路徑規劃和無人機飛行和圖像收集。
+    夥伴系統必須顯示合作夥伴軟體內的伺服器陣列，才能執行路徑規劃和無人機航班和影像收集。
 
-4.  調用 /Scene API 並提供所需的詳細資訊，以創建具有唯一場景 ID 的新場景。
-5.  接收 blob SAS URL，以在伺服器場Beats系統中將所需的圖像上載到伺服器場Beats Datahub（所選伺服器場的上下文中）。
+4.  呼叫/Scene API 並提供必要的詳細資料，以建立具有唯一場景識別碼的新場景。
+5.  接收 blob SAS URL，以在 FarmBeats 系統中所選伺服器陣列的內容中，將所需的影像上傳至 FarmBeats Datahub。
 
-下面是 API 呼叫的詳細流。
+以下是 API 呼叫的詳細流程。
 
-### <a name="step-1-extendedtype"></a>第 1 步：擴展類型
+### <a name="step-1-extendedtype"></a>步驟1： ExtendedType
 
-簽入 /擴展類型 API 以查看類型和檔源在 FarmBeats 上是否可用。 為此，請調用 /擴展類型 API 上的 GET。
+簽入/ExtendedType API，以查看 FarmBeats 上是否有可用的類型和檔案來源。 若要這麼做，請在/ExtendedType API 上呼叫 GET。
 
 以下是系統定義的值：
 
@@ -331,9 +338,9 @@ JSON 是一種與語言無關的通用資料格式，它提供了任意資料結
 }
 ```
 
-此步驟是一次性設置。 此新場景類型的範圍僅限於安裝 Azure FarmBeats 的訂閱。
+此步驟只需執行一次。 此新場景類型的範圍僅限於已安裝 Azure FarmBeats 的訂用帳戶。
 
-例如，要添加 SceneSource："SlantRange"，您需要在 /擴展類型 API 的 ID 上使用鍵"SceneSource"輸入負載執行 PUT。
+例如，若要新增 SceneSource： "SlantRange"，您可以在/ExtendedType API 的識別碼上加上索引鍵 "SceneSource" 輸入裝載。
 
 ```json
 {
@@ -351,13 +358,13 @@ JSON 是一種與語言無關的通用資料格式，它提供了任意資料結
 
 ```
 
-綠色欄位是系統定義的場景源值的新添加。
+綠色的欄位是系統定義之場景來源值的新新增。
 
-### <a name="step-2-get-farm-details"></a>第 2 步：獲取伺服器場詳細資訊
+### <a name="step-2-get-farm-details"></a>步驟2：取得伺服器陣列詳細資料
 
-場景（.tiff 或 .csv 檔）位於伺服器場的上下文中。 您需要通過在 /Farm API 上執行 GET 來獲取伺服器場詳細資訊。 API 返回伺服器場節拍中可用的伺服器場清單。 您可以選擇要為其引入資料的伺服器場。
+幕後（tiff 或 .csv 檔案）位於伺服器陣列的內容中。 您需要在/Farm API 上執行 GET，以取得伺服器陣列的詳細資料。 此 API 會傳回 FarmBeats 中可用的伺服器陣列清單。 您可以選取要內嵌資料的伺服器陣列。
 
-GET /農場回應：
+取得/Farm 回應：
 
 ```json
 {
@@ -403,13 +410,13 @@ GET /農場回應：
 }
  ```
 
-### <a name="step-3-create-a-scene-id-post-call"></a>第 3 步：創建場景 ID（POST 調用）
+### <a name="step-3-create-a-scene-id-post-call"></a>步驟3：建立場景識別碼（POST 呼叫）
 
-使用給定的資訊創建新的場景（.tiff 或 .csv 檔），該資訊提供與場景關聯的日期、序列和伺服器場 ID。 與場景關聯的中繼資料可以在屬性下定義，其中包括度量值的持續時間和類型。
+使用指定的資訊建立新的場景（tiff 或 .csv 檔案），以提供與場景相關聯的日期、序列和伺服器陣列識別碼。 與場景相關聯的中繼資料可以在 [屬性] 下定義，其中包括量值的持續時間和類型。
 
-創建新場景將創建一個與伺服器場關聯的新場景 ID。 創建場景 ID 後，使用者可以使用相同的來創建新檔 （.tiff 或 .csv） 並存儲檔的內容。
+建立新場景時，會建立與伺服器陣列相關聯的新場景識別碼。 建立場景識別碼之後，使用者可以使用相同的來建立新的檔案（tiff 或 .csv），並儲存檔案的內容。
 
-在 /Scene API 上的 POST 調用的示例輸入負載：
+/Scene API 上 POST 呼叫的範例輸入承載：
 
 ```json
 {
@@ -445,13 +452,13 @@ API 回應：
 
 ```
 
-**創建場景檔**
+**建立場景檔案**
 
-步驟 3 中返回的場景 ID 是場景檔的輸入。 場景檔返回一個 SAS URL 權杖，該權杖的有效期為 24 小時。
+在步驟3中傳回的場景識別碼是場景檔案的輸入。 場景檔案會傳回 SAS URL 權杖，其有效期為24小時。
 
-如果使用者需要上傳圖像流的程式設計方法，則 Blob 存儲 SDK 可用於使用場景檔 ID、位置和 URL 定義方法。
+如果使用者需要以程式設計方式上傳影像串流，則可以使用場景檔案識別碼、位置和 URL，將 blob 儲存體 SDK 用於定義方法。
 
-在 /SceneFile API 上的 POST 調用的示例輸入負載：
+/SceneFile API 上 POST 呼叫的範例輸入承載：
 
 ```json
 {
@@ -487,9 +494,9 @@ API 回應：
 
 ```
 
-對 /SceneFile API 的 POST 調用返回 SAS 上載 URL，該 URL 可用於使用 Azure Blob 存儲用戶端或庫上載 .csv 或 .tiff 檔。
+/SceneFile API 的 POST 呼叫會傳回 SAS 上傳 URL，其可用來上傳 .csv 或 tiff 檔案，方法是使用 Azure Blob 儲存體用戶端或程式庫。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-有關基於 REST API 的集成詳細資訊的詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。
+如需以 REST API 為基礎的整合詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。

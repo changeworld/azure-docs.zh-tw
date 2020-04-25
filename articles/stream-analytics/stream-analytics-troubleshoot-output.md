@@ -8,31 +8,31 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
-ms.translationtype: MT
+ms.openlocfilehash: 5652df0cf142af2ff96590368892530abcb3d667
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409259"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133223"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
 
-本文介紹了 Azure 流分析輸出連接的常見問題、如何排除輸出問題以及如何更正問題。 許多故障排除步驟都需要為流分析作業啟用診斷日誌。 如果未啟用診斷紀錄,請參閱[使用診斷紀錄對 Azure 串流分析進行故障排除](stream-analytics-job-diagnostic-logs.md)。
+本文說明 Azure 串流分析輸出連線的常見問題、如何針對輸出問題進行疑難排解，以及如何修正這些問題。 許多疑難排解步驟都需要針對您的串流分析作業啟用資源和其他診斷記錄。 如果您沒有啟用資源記錄，請參閱[使用資源記錄針對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="output-not-produced-by-job"></a>作業未產生輸出
 
 1.  對各個輸出使用 [測試連線]**** 按鈕，驗證輸出的連線能力。
 
-2.  檢視 **「監視器」** 選項卡上的[**監視指標**](stream-analytics-monitoring.md)。由於這些值是聚合的,因此指標將延遲幾分鐘。
-   * 如果輸入事件大於 0,則作業能夠讀取輸入數據。 如果輸入事件不大於 0,則作業的輸入出現問題。 請參閱[排除輸入連接故障](stream-analytics-troubleshoot-input.md),瞭解如何排除輸入連接問題。
-   * 如果資料轉換錯誤大於 0 並爬升,請參閱[Azure 流分析數據錯誤](data-errors.md),瞭解有關資料轉換錯誤的詳細資訊。
-   * 如果運行時錯誤大於 0,則作業可以接收數據,但在處理查詢時生成錯誤。 若要找出錯誤，請前往[稽核記錄](../azure-resource-manager/management/view-activity-logs.md)，並篩選*失敗*狀態。
-   * 如果輸入事件大於 0,並且輸出事件等於 0,則以下之一為 true:
+2.  查看 [**監視**] 索引標籤上的 [[**監視計量**](stream-analytics-monitoring.md)]。因為這些值已匯總，所以計量會延遲幾分鐘的時間。
+   * 如果輸入事件大於0，作業就能夠讀取輸入資料。 如果輸入事件不大於0，則作業的輸入會有問題。 如要瞭解如何針對輸入連線問題進行疑難排解，請參閱針對[輸入連接進行疑難排解](stream-analytics-troubleshoot-input.md)。
+   * 如果資料轉換錯誤大於0且已上升，請參閱[Azure 串流分析資料錯誤](data-errors.md)，以取得有關資料轉換錯誤的詳細資訊。
+   * 如果執行階段錯誤大於0，則您的作業可以接收資料，但在處理查詢時，會產生錯誤。 若要找出錯誤，請前往[稽核記錄](../azure-resource-manager/management/view-activity-logs.md)，並篩選*失敗*狀態。
+   * 如果 InputEvents 大於0，而 OutputEvents 等於0，則下列其中一項為 true：
       * 查詢處理產生了零個輸出事件。
-      * 事件或欄位可能格式錯誤,導致查詢處理後輸出為零。
+      * 事件或欄位的格式可能不正確，因此在查詢處理後會產生零輸出。
       * 由於連線或驗證問題，作業無法將推送資料至輸出接收端。
 
-   在所有前述錯誤案例中，作業記錄訊息說明了其他詳細資料 (包括目前所發生的事)，僅有查詢邏輯篩選掉所有事件的案例除外。 如果處理多個事件生成錯誤,則每 10 分鐘聚合一次錯誤。
+   在所有前述錯誤案例中，作業記錄訊息說明了其他詳細資料 (包括目前所發生的事)，僅有查詢邏輯篩選掉所有事件的案例除外。 如果多個事件的處理產生錯誤，則會每隔10分鐘匯總一次錯誤。
 
 ## <a name="job-output-is-delayed"></a>作業輸出延遲
 
@@ -84,17 +84,17 @@ ms.locfileid: "80409259"
 
 * 因為您無法在這類索引上強制執行唯一性，所以 IGNORE_DUP_KEY 不適用於資料行存放區索引。  
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列名稱由 Azure 串流分析小寫
-使用原始相容性級別 (1.0) 時,Azure 流分析用於將列名稱更改為小寫。 此行為在以後的相容性級別中已修復。 為了保留這種情況,我們建議客戶遷移到相容性級別 1.1 及更高版本。 您可以找到有關 Azure[流分析作業的相容性級別](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)的詳細資訊。
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Azure 串流分析的資料行名稱會以小寫的方式區分大小寫
+使用原始相容性層級（1.0）時，Azure 串流分析用來將資料行名稱變更為小寫。 此行為已在較新的相容性層級中修正。 為了保留這種情況，我們建議客戶移至相容性層級1.1 和更新版本。 您可以在[Azure 串流分析作業中找到相容性層級的](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)詳細資訊。
 
 ## <a name="get-help"></a>取得說明
 
-有關進一步説明,請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試我們的[Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 串流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
 * [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

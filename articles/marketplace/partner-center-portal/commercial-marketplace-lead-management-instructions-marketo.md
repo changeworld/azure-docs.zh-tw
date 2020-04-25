@@ -1,91 +1,91 @@
 ---
-title: 在 Marketo 中設定潛在客戶管理 |Azure 應用商店
-description: 為 Azure 市場客戶配置 Marketo 的潛在客戶管理。
+title: 在 Marketo 中設定潛在客戶管理 |Azure Marketplace
+description: 為 Azure Marketplace 客戶設定適用于 Marketo 的潛在客戶管理。
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731105"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133644"
 ---
 # <a name="configure-lead-management-in-marketo"></a>在 Marketo 中設定潛在客戶管理
 
-本文介紹如何設置 Marketo CRM 系統來處理市場產品/服務的銷售線索。
+本文說明如何設定您的 Marketo CRM 系統，以處理來自您的商業 marketplace 供應專案的銷售潛在客戶。
 
-## <a name="set-up-your-marketo-crm-system"></a>設定市場 CRM 系統
+## <a name="set-up-your-marketo-crm-system"></a>設定您的 Marketo CRM 系統
 
 1. 登入 Marketo。
 
-2. 選取 [Design Studio]**** \(設計工作室\)。
+1. 選取 [Design Studio]**** \(設計工作室\)。
 
     ![Marketo [Design Studio] \(設計工作室\)](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-3.  選取 [New Form]**** \(新增表單\)。
+1.  選取 [New Form]**** \(新增表單\)。
 
-    ![Marketo [New Form] \(新增表單\)](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+    ![Marketo 新表單](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
-4.  填入 [New Form] \(新增表單\) 中的必要欄位，然後選取 [Create]**** \(建立\)。
+1.  在 [**新表單**] 對話方塊中填入必要欄位，然後選取 [**建立**]。
 
     ![Marketo 建立新表單](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-5.  在 [Field Details] \(欄位詳細資料\) 上，選取 [Finish]**** \(完成\)。
+1.  在 [**欄位詳細資料**] 頁面上，選取 **[完成]**。
 
     ![Marketo 完成表單](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
-6.  核准並關閉。
+1.  [核准] 和 [關閉]。
 
-7. 在 *「市場討論」 支援「* 選項卡上,選擇 **」嵌入代碼**。 
+1. 在 [ **MarketplaceLeadBackend** ] 索引標籤上，選取 [**內嵌程式碼**]。 
 
-    ![內嵌程式碼](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
+    ![Marketo 內嵌程式碼](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
-8. Marketo [Embed Code] \(內嵌程式碼\) 會顯示類似下列範例的程式碼。
+1. Marketo [Embed Code] \(內嵌程式碼\) 會顯示類似下列範例的程式碼。
 
     ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
 
-9. 複製嵌入程式碼窗體中顯示的以下欄位的值。 您將使用這些值將產品/服務配置為在下一步中接收潛在顧客。 使用下一個範例作為從 Marketo [Embed Code] \(內嵌程式碼\) 範例取得所需識別碼的指南。
+1. 複製 [內嵌程式碼] 表單中顯示的下欄欄位的值。 您將會使用這些值來設定您的供應專案，以便在下一個步驟中收到潛在客戶。 使用下一個範例做為指南，從 Marketo 內嵌程式碼範例取得您需要的識別碼。
 
-    - 伺服器代碼 = **ys12**
-    - 蒙奇金 ID = **123-PQR-789**
-    - 表格代碼 = **1179**
+    - 伺服器識別碼 = **ys12**
+    - Munchkin ID = **123-PQR-789**
+    - 表單識別碼 = **1179**
 
-    **找出這些值的另一種方法**
+    另一種找出這些值的方式：
 
-    - 伺服器 ID 在 Marketo 實例的`serverID.marketo.com`URL 中找到,例如 ""。
-    - 使用「蒙奇金帳戶 ID」欄位中的管理員>Munchkin 選單,或從 Marketo REST API 主機子網域的第一部分`https://{Munchkin ID}.mktorest.com`取得訂閱的蒙廷 ID: 。
-    - 表單 ID 是您在步驟 7 中創建的嵌入代碼表單的 ID,用於從我們的市場路由潛在顧客。
+    - 伺服器識別碼可在 Marketo 實例的 URL 中找到，例如`serverID.marketo.com`。
+    - 前往 [ **Munchkin 帳戶識別碼**] 欄位中的 [系統**管理** > ] [**Munchkin** ] 功能表，或從 Marketo REST API 主機子域的第一個部分，取得訂用`https://{Munchkin ID}.mktorest.com`帳戶的 Munchkin 識別碼：。
+    - [表單識別碼] 是您在步驟7中建立的內嵌程式碼表單識別碼，可從 marketplace 路由潛在客戶。
 
-## <a name="configure-your-offer-to-send-leads-to-marketo"></a>將您的優惠設定為向 Marketo 發送潛在顧客
+## <a name="configure-your-offer-to-send-leads-to-marketo"></a>設定您的供應專案以將潛在客戶傳送至 Marketo
 
-準備好在發佈門戶中配置產品/服務的首席管理資訊時,請按照以下步驟操作: 
+當您準備好在發佈入口網站中為您的供應專案設定潛在客戶管理資訊時，請遵循下列步驟。 
 
-1. 導航到產品 **/服務"產品/服務"設置**頁面。
+1. 移至供應專案的**供應專案設定**頁面。
 
-1. 在「潛在顧客管理」部分下選擇 **「連接**」。 
+1. 選取 [**潛在客戶管理**] 區段下的 **[連接]** 。 
 
-    ![鉛管理 - 連線](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    ![潛在客戶管理區段 [連線] 按鈕](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
-1. 在"連接詳細資訊"彈出視窗上,為潛在顧客目標選擇 **"市場市場**"。
+1. 在 [連線**詳細資料**] 快顯視窗中，針對 [**潛在客戶目的地**] 選取 [ **Marketo** ]。
 
-    ![選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
+    ![選擇潛在客戶目的地](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-4. 提供**伺服器 ID,****蒙奇帳戶 ID**與**表單**。
+1. 提供 [**伺服器識別碼**]、[ **Munchkin 帳戶識別碼**] 和 [**表單識別碼**]。
 
-    > [!Note]
-    > 您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。 
+    > [!NOTE]
+    > 您必須先完成供應專案的其餘部分設定並加以發佈，才能接收供應專案的潛在客戶。 
 
-5. **聯繫電子郵件**- 為公司中應接收新潛在顧客的電子郵件通知的人員提供電子郵件。 您可以通過用分號分隔它們來提供多封電子郵件。
+1. 在 [**連絡人電子郵件**] 底下，輸入公司人員在收到新的潛在客戶時應接收電子郵件通知的電子郵件地址。 您可以提供多個電子郵件地址，並以分號分隔。
 
-6. 選取 [確定]  。
+1. 選取 [確定]  。
 
-   要確保已成功連接到潛在顧客目標,請單擊驗證按鈕。 如果成功,您將在潛在顧客目標中具有測試潛在顧客。
+   若要確定您已成功連線到潛在客戶目的地，請選取 [**驗證**] 按鈕。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
 
-   ![連線詳細資料](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![[連接詳細資料] 快顯視窗](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

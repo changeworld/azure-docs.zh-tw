@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 資料湖儲存查詢加速(預覽)篩選數據 |微軟文件
-description: 使用查詢加速(預覽)從存儲帳戶檢索數據子集。
+title: 使用 Azure Data Lake Storage 查詢加速來篩選資料（預覽） |Microsoft Docs
+description: 使用查詢加速（預覽），從您的儲存體帳戶中取出資料的子集。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: ae3dfc7681ef0d8ce3fcf679bddbd0ff195f4e3b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 22776d9498676ec77cd71845ca5e39f01926259d
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771842"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137564"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure 資料湖儲存查詢加速篩選資料(預覽)
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料（預覽）
 
-本文介紹如何使用查詢加速(預覽)從存儲帳戶檢索數據子集。 
+本文說明如何使用查詢加速（預覽），從您的儲存體帳戶中取出資料的子集。 
 
-查詢加速(預覽)是 Azure 數據湖儲存的新功能,它使應用程式和分析框架能夠通過僅檢索執行給定操作所需的數據來顯著優化數據處理。 要瞭解更多資訊,請參閱[Azure 數據湖存儲查詢加速(預覽)。](data-lake-storage-query-acceleration.md)
+查詢加速（預覽）是 Azure Data Lake Storage 的新功能，可讓應用程式和分析架構藉由僅抓取執行給定作業所需的資料，大幅優化資料處理。 若要深入瞭解，請參閱[Azure Data Lake Storage 查詢加速（預覽）](data-lake-storage-query-acceleration.md)。
 
 > [!NOTE]
-> 查詢加速功能處於公共預覽版中,並且在加拿大中部和法國中部區域可用。 要查看限制,請參閱[已知問題](data-lake-storage-known-issues.md)一文。 要在預覽版中註冊,請參閱[此表單](https://aka.ms/adls/qa-preview-signup)。  
+> 查詢加速功能處於公開預覽狀態，並可在加拿大中部和法國中部區域中取得。 若要查看限制，請參閱[已知問題](data-lake-storage-known-issues.md)一文。 若要註冊預覽，請參閱[此表單](https://aka.ms/adls/qa-preview-signup)。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
-- **通用 v2**儲存帳戶。 請參考[儲存帳號](../common/storage-quickstart-create-account.md)。
+- **一般用途 v2**儲存體帳戶。 請參閱[建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
 
-- [.NET SDK](https://dotnet.microsoft.com/download). 
+- [.NET SDK](https://dotnet.microsoft.com/download)。 
 
 ### <a name="java"></a>[Java](#tab/java)
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
-- **通用 v2**儲存帳戶。 請參考[儲存帳號](../common/storage-quickstart-create-account.md)。
+- **一般用途 v2**儲存體帳戶。 請參閱[建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
 
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 第 8 版或更新版本。
 
-- [阿帕奇·馬文](https://maven.apache.org/download.cgi)。 
+- [Apache Maven](https://maven.apache.org/download.cgi)。 
 
   > [!NOTE] 
-  > 本文假定您已使用 Apache Maven 創建了 Java 專案。 有關如何使用 Apache Maven 建立項目的範例,請參考[設定](storage-quickstart-blobs-java.md#setting-up)。
+  > 本文假設您已使用 Apache Maven 建立 JAVA 專案。 如需如何使用 Apache Maven 建立專案的範例，請參閱[設定](storage-quickstart-blobs-java.md#setting-up)。
   
 ---
 
@@ -53,11 +53,11 @@ ms.locfileid: "81771842"
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. 下載查詢加速包。 您可以使用此連結包含這些套件的壓縮 .zip 檔案[https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net): 。 
+1. 下載查詢加速套件。 您可以使用下列連結，取得包含這些封裝的壓縮 .zip 檔案： [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net)。 
 
-2. 將此檔的內容提取到專案目錄中。
+2. 將此檔案的內容解壓縮至您的專案目錄。
 
-3. 在文字編輯器中打開專案檔 *(.csproj*),並在\<Project\>元素中添加這些包引用。
+3. 在文字編輯器中開啟您的專案檔（*.csproj*），並在\<專案\>元素內加入這些封裝參考。
 
    ```xml
    <ItemGroup>
@@ -67,13 +67,13 @@ ms.locfileid: "81771842"
    </ItemGroup>
    ```
 
-4. 還原預覽 SDK 包。 此示例命令使用`dotnet restore`命令 還原預覽 SDK 包。 
+4. 還原預覽 SDK 套件。 此範例命令會使用`dotnet restore`命令來還原預覽 SDK 套件。 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
    ```
 
-5. 從公共 NuGet 儲存庫還原所有其他依賴項。
+5. 從公用 NuGet 存放庫還原所有其他相依性。
 
    ```console
    dotnet restore
@@ -81,14 +81,14 @@ ms.locfileid: "81771842"
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. 在專案的根目錄中創建目錄。 根目錄是包含**pom.xml**檔的目錄。
+1. 在專案的根目錄中建立目錄。 根目錄是包含**pom .xml**檔案的目錄。
 
    > [!NOTE]
-   > 本文中的範例的目錄名稱是**lib**。
+   > 本文中的範例假設目錄的名稱為**lib**。
 
-2. 下載查詢加速包。 您可以使用此連結包含這些套件的壓縮 .zip 檔案[https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java): 。 
+2. 下載查詢加速套件。 您可以使用下列連結，取得包含這些封裝的壓縮 .zip 檔案： [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java)。 
 
-3. 將此 .zip 檔案中的檔案提取到您建立的目錄。 在我們的範例中,該目錄名為**lib**。 
+3. 將這個 .zip 檔案中的檔案解壓縮至您所建立的目錄。 在我們的範例中，該目錄名為**lib**。 
 
 4. 在文字編輯器中開啟 *pom.xml* 檔案。 將下列相依性元素新增至相依性群組。 
 
@@ -140,12 +140,12 @@ ms.locfileid: "81771842"
 
 ---
 
-## <a name="add-statements"></a>新增敘述
+## <a name="add-statements"></a>新增語句
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-將這些`using`語句添加到代碼文件的頂部。
+將這些`using`語句新增至程式碼檔案的頂端。
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -155,14 +155,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-查詢加速檢索 CSV 和 Json 格式化的數據。 因此,請確保為選擇使用的任何 CSV 或 Json 解析庫添加 using 語句。 本文中顯示的範例使用 NuGet 上可用的[CsvHelper](https://www.nuget.org/packages/CsvHelper/)函式庫解析 CSV 檔。 因此,我們將這些`using`語句添加到代碼文件的頂部。
+查詢加速會捕獲 CSV 和 Json 格式的資料。 因此，請務必為您選擇使用的任何 CSV 或 Json 剖析程式庫新增 using 語句。 本文中所顯示的範例會使用可在 NuGet 上取得的[CsvHelper](https://www.nuget.org/packages/CsvHelper/)程式庫來剖析 CSV 檔案。 因此，我們會將這些`using`語句新增至程式碼檔案的頂端。
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-要編譯本文中介紹的範例,您還需要添加這些`using`語句。
+若要編譯本文中顯示的範例，您也必須新增這些`using`語句。
 
 ```csharp
 using System.Threading.Tasks;
@@ -174,7 +174,7 @@ using System.Linq;
 
 ### <a name="java"></a>[Java](#tab/java)
 
-將這些`import`語句添加到代碼文件的頂部。
+將這些`import`語句新增至程式碼檔案的頂端。
 
 ```java
 import com.azure.storage.blob.*;
@@ -188,17 +188,17 @@ import org.apache.commons.csv.*;
 
 ---
 
-## <a name="retrieve-data-by-using-a-filter"></a>使用篩選器檢索資料
+## <a name="retrieve-data-by-using-a-filter"></a>使用篩選器來取出資料
 
-可以使用 SQL 在查詢加速請求中指定行篩選器謂詞和列投影。 以下代碼查詢儲存中的 CSV 檔,並傳回第三`Hemingway, Ernest`列與 值 匹配的所有資料行。 
+您可以使用 SQL 來指定查詢加速要求中的資料列篩選述詞和資料行投影。 下列程式碼會查詢儲存體中的 CSV 檔案，並傳回第三個數據行符合值`Hemingway, Ernest`的所有資料列。 
 
-- 在 SQL 查詢`BlobStorage`中, 關鍵字用於表示要查詢的檔。
+- 在 SQL 查詢中，關鍵字`BlobStorage`是用來表示正在查詢的檔案。
 
-- 列引用指定為`_N`第一欄的位置`_1`。 如果來源包含標題列,則可以按頭行中指定的名稱引用列。 
+- 資料行參考會指定`_N`為，其中第一個`_1`資料行是。 如果來源檔案包含標頭資料列，則您可以依據標題列中所指定的名稱來參考資料行。 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-非同步方法`BlobQuickQueryClient.QueryAsync`將查詢發送到查詢加速 API,然後將結果作為[Stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)物件流式傳輸回應用程式。
+非同步方法`BlobQuickQueryClient.QueryAsync`會將查詢傳送至查詢加速 API，然後再將結果以[資料流程](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)物件的形式串流回應用程式。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-該方法`BlobQuickQueryClient.openInputStream()`將查詢發送到查詢加速 API,然後將結果流式傳輸回應用程式,作為物件,可以像`InputStream`任何其他 InputStream 物件一樣讀取。
+方法`BlobQuickQueryClient.openInputStream()`會將查詢傳送至查詢加速 API，然後再將結果以`InputStream`物件的形式串流回應用程式，以便如同任何其他 InputStream 物件一樣讀取。
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -312,11 +312,11 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 ---
 
-## <a name="retrieve-specific-columns"></a>檢索特定欄
+## <a name="retrieve-specific-columns"></a>取出特定資料行
 
-您可以將結果範圍限定為列的子集。 這樣,您只能檢索執行給定計算所需的列。 這提高了應用程式性能並降低了成本,因為通過網路傳輸的數據更少。 
+您可以將結果的範圍設為數據行的子集。 如此一來，您只會取出執行指定計算所需的資料行。 這可改善應用程式效能並降低成本，因為網路上傳輸的資料較少。 
 
-此代碼僅檢索數據集中`PublicationYear`所有書籍的列。 它還使用源檔中的標頭行中的資訊來引用查詢中的列。
+此程式碼只會`PublicationYear`針對資料集中的所有書籍，抓取資料行。 它也會使用來源檔案中標頭資料列的資訊，來參考查詢中的資料行。
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
@@ -341,7 +341,7 @@ static void QueryPublishDates(BlobClient blobClient)
 
 ---
 
-以下代碼將行篩選和列投影合併到同一查詢中。 
+下列程式碼會將資料列篩選和資料行投影結合成相同的查詢。 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -368,6 +368,5 @@ static void QueryMysteryBooks(BlobClient blobClient)
 ## <a name="next-steps"></a>後續步驟
 
 - [查詢加速註冊表單](https://aka.ms/adls/queryaccelerationpreview)    
-- [Azure 資料湖儲存查詢加速(預覽)](data-lake-storage-query-acceleration.md)
-- [查詢加速 SQL 語言參考(預覽)](query-acceleration-sql-reference.md)
-- 查詢加速 REST API 參考
+- [Azure Data Lake Storage 查詢加速（預覽）](data-lake-storage-query-acceleration.md)
+- [查詢加速 SQL 語言參考（預覽）](query-acceleration-sql-reference.md)

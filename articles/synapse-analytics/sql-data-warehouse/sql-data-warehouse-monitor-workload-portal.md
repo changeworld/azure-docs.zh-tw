@@ -1,6 +1,6 @@
 ---
-title: 監視工作負荷 - Azure 門戶
-description: 使用 Azure 門戶監視同步 SQL
+title: 監視工作負載-Azure 入口網站
+description: 使用 Azure 入口網站監視 Synapse SQL
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0658a775e40c1fc433c7c2e1d853493544e74ee4
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 327174974affb3b2511eac60755aa1bf047b3b5e
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743210"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133457"
 ---
-# <a name="monitor-workload---azure-portal"></a>監視工作負荷 - Azure 門戶
+# <a name="monitor-workload---azure-portal"></a>監視工作負載-Azure 入口網站
 
-本文介紹如何使用 Azure 門戶監視工作負荷。 這包括設置 Azure 監視器日誌,以便使用[Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的日誌分析來調查查詢執行和工作負載趨勢。
+本文說明如何使用 Azure 入口網站來監視您的工作負載。 這包括使用適用于[SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的 log analytics，設定 Azure 監視器記錄來調查查詢執行和工作負載趨勢。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-- SQL 池:我們將為 SQL 池收集日誌。 如果沒有預配 SQL 池,請參閱[創建 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)中的說明。
+- SQL 集區：我們將會收集 SQL 集區的記錄檔。 如果您尚未布建 SQL 集區，請參閱[建立 sql 集](load-data-from-azure-blob-storage-using-polybase.md)區中的指示。
 
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 
-導覽到紀錄分析工作區的瀏覽邊欄選項卡,並建立工作區
+流覽至 Log Analytics 工作區的流覽分頁，並建立工作區
 
 ![Log Analytics 工作區](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
@@ -36,11 +36,11 @@ ms.locfileid: "80743210"
 
 ![新增分析工作區](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-關於工作區的詳細資訊,請造訪以下[文件](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
+如需工作區的詳細資訊，請流覽下列[檔](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
 
-## <a name="turn-on-diagnostic-logs"></a>開啟診斷紀錄
+## <a name="turn-on-resource-logs"></a>開啟資源記錄
 
-將診斷設置配置為從 SQL 池發出日誌。 日誌由遙測視圖組成,等效於最常用的性能故障排除 DMV。 目前支援以下檢視:
+設定診斷設定，以從您的 SQL 集區發出記錄。 記錄包含的遙測資料檢視相當於最常使用的效能疑難排解 Dmv。 目前支援下列視圖：
 
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -48,28 +48,28 @@ ms.locfileid: "80743210"
 - [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-![啟用診斷記錄](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
+![啟用資源記錄](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
-日誌可以發送到 Azure 儲存、流分析或日誌分析。 對於本教程,選擇日誌分析。
+記錄可以發出至 Azure 儲存體、串流分析或 Log Analytics。 在本教學課程中，請選取 [Log Analytics]。
 
-![指定紀錄](./media/sql-data-warehouse-monitor-workload-portal/specify_logs.png)
+![指定記錄檔](./media/sql-data-warehouse-monitor-workload-portal/specify_logs.png)
 
-## <a name="run-queries-against-log-analytics"></a>依紀錄分析執行查詢
+## <a name="run-queries-against-log-analytics"></a>對 Log Analytics 執行查詢
 
-導覽到紀錄分析工作區,您可以在其中執行以下操作:
+流覽至您的 Log Analytics 工作區，您可以在其中執行下列動作：
 
-- 使用紀錄查詢分析紀錄並儲存查詢以供重用
-- 儲存查詢以供重用
+- 使用記錄查詢分析記錄並儲存查詢以重複使用
+- 儲存查詢以重複使用
 - 建立記錄警示
-- 將查詢結果固定到儀表板
+- 將查詢結果釘選到儀表板
 
-關於紀錄查詢功能的詳細資訊,請造訪以下[文件](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+如需記錄查詢功能的詳細資訊，請流覽下列[檔](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
-![紀錄分析工作區編輯器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
+![Log Analytics 工作區編輯器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 
-![紀錄分析工作區查詢](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_queries.png)
+![Log Analytics 工作區查詢](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_queries.png)
 
-## <a name="sample-log-queries"></a>範例紀錄查詢
+## <a name="sample-log-queries"></a>範例記錄查詢
 
 ```Kusto
 //List all queries
@@ -97,4 +97,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>後續步驟
 
-現在,您已經設置並配置了 Azure 監視器日誌,[請自定義 Azure 儀表板](../../azure-portal/azure-portal-dashboards.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)以跨團隊共用。
+既然您已設定並設定 Azure 監視器記錄，請[自訂 azure 儀表板](../../azure-portal/azure-portal-dashboards.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，以便在您的小組之間共用。

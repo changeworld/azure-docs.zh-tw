@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71219480"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128724"
 ---
 # <a name="api-management-policies"></a>API 管理原則
 本節提供下列「API 管理」原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](api-management-howto-policies.md)。  
   
  原則是系統的強大功能，可讓發行者透過組態來變更 API 的行為。 原則是「陳述式」的集合，會在 API 的要求或回應上循序執行。 常見的「陳述式」包括從 XML 至 JSON 的格式轉換，以及利用呼叫速率限制來限制開發人員傳入的呼叫數量。 還有許多現成的原則可用。  
   
- 如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程](api-management-advanced-policies.md#choose)和[設定變數](api-management-advanced-policies.md#set-variable)原則。 有關詳細資訊，請參閱[高級策略](api-management-advanced-policies.md#AdvancedPolicies)[和策略運算式](api-management-policy-expressions.md)。  
+ 如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程](api-management-advanced-policies.md#choose)和[設定變數](api-management-advanced-policies.md#set-variable)原則。 如需詳細資訊，請參閱[高級原則](api-management-advanced-policies.md#AdvancedPolicies)和[原則運算式](api-management-policy-expressions.md)。  
   
-##  <a name="policies"></a><a name="ProxyPolicies"></a> 原則  
+##  <a name="policies"></a><a name="ProxyPolicies"></a>策略  
   
--   [訪問限制策略](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
+-   [存取限制原則](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
     -   [檢查 HTTP 標頭](api-management-access-restriction-policies.md#CheckHTTPHeader) - 強制必須存在和/或強制採用 HTTP 標頭的值。  
     -   [依訂閱限制呼叫率](api-management-access-restriction-policies.md#LimitCallRate) - 以訂閱為單位，限制呼叫率以避免 API 使用量暴增。  
     -   [依金鑰限制呼叫率](api-management-access-restriction-policies.md#LimitCallRateByKey) - 以金鑰為單位，限制呼叫率以避免 API 使用量暴增。  
@@ -50,12 +50,12 @@ ms.locfileid: "71219480"
     -   [設定變數](api-management-advanced-policies.md#set-variable) - 保存具名 context 變數中的值，供日後存取使用。  
     -   [設定要求方法](api-management-advanced-policies.md#SetRequestMethod) - 允許您變更要求的 HTTP 方法。  
     -   [設定狀態碼](api-management-advanced-policies.md#SetStatus) - 將 HTTP 狀態碼變更為指定的值。  
-    -   [跟蹤](api-management-advanced-policies.md#Trace)- 將自訂跟蹤添加到[API 檢查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出、應用程式見解遙測和診斷日誌中。  
-    -   [等待](api-management-advanced-policies.md#Wait)- 等待隨附的[發送請求](api-management-advanced-policies.md#SendRequest)、[從緩存獲取值](api-management-caching-policies.md#GetFromCacheByKey)，或[控制流](api-management-advanced-policies.md#choose)策略在繼續之前完成。  
--   [身份驗證策略](api-management-authentication-policies.md#AuthenticationPolicies)  
+    -   [追蹤](api-management-advanced-policies.md#Trace)-將自訂追蹤新增至[API 偵測器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出、Application Insights 遙測和資源記錄。  
+    -   [等候](api-management-advanced-policies.md#Wait)-等候括住的[傳送要求](api-management-advanced-policies.md#SendRequest)、[取得快取的值](api-management-caching-policies.md#GetFromCacheByKey)，或[控制流程](api-management-advanced-policies.md#choose)原則完成後再繼續。  
+-   [驗證原則](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [使用基本驗證進行驗證](api-management-authentication-policies.md#Basic) - 使用基本驗證來驗證後端服務。  
     -   [使用用戶端憑證進行驗證](api-management-authentication-policies.md#ClientCertificate) - 使用用戶端憑證來驗證後端服務。  
-    -   [使用託管標識進行身份驗證](api-management-authentication-policies.md#ManagedIdentity)- 使用[託管標識](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)使用後端服務進行身份驗證。  
+    -   使用[受控識別進行驗證](api-management-authentication-policies.md#ManagedIdentity)-使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)向後端服務進行驗證。  
 -   [快取原則](api-management-caching-policies.md#CachingPolicies)  
     -   [從快取中取得](api-management-caching-policies.md#GetFromCache) - 執行快取查閱並傳回有效的快取回應 (如果有的話)。  
     -   [儲存至快取](api-management-caching-policies.md#StoreToCache) - 根據指定的快取控制組態來快取回應。  

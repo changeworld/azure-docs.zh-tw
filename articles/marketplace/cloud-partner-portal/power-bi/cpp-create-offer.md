@@ -1,5 +1,5 @@
 ---
-title: 創建 Power BI 應用產品/服務 |Azure 應用商店
+title: 建立 Power BI 應用程式供應專案 |Azure Marketplace
 description: 如何建立 Microsoft AppSource Marketplace 的 Power BI 應用程式供應項目。
 author: dsindona
 ms.service: marketplace
@@ -7,26 +7,26 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c8273025b92a74286d3f918289ef9f21bd992182
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984839"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143131"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將 Power BI 應用優惠的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[Power BI 應用創建概述](https://aka.ms/AzureCreatePBIServiceApp)中的說明進行操作,以管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您 Power BI 應用程式供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 依照[Power BI 應用程式建立總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)中的指示，管理您遷移的供應專案。
 
 本文列出為 [AppSource](https://appsource.microsoft.com) 建立新的 Power BI 應用程式供應項目所需遵循的步驟。 每個供應項目都會在 AppSource 中顯示為本身的實體。 在 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)中建立新的供應項目時，您必須為供應項目提供四個資產群組。
 
 下表說明這些資產群組：
 
-|   資產群組      | 描述                                                                         |
+|   資產群組      | 說明                                                                         |
 | ----------------   | ----------------                                                                    |
 | 供應項目設定     | 供應項目的主要識別和名稱。                                      |
-| 技術資訊     | 用於在用戶端的 Power BI 工作區中安裝應用的安裝程式 URL。 如需如何產生此 URL 的詳細資訊，請參閱 [Power BI 應用程式文件](https://go.microsoft.com/fwlink/?linkid=2028636)。 |
+| 技術資訊     | 您用來在用戶端的 Power BI 工作區中安裝應用程式的安裝程式 URL。 如需如何產生此 URL 的詳細資訊，請參閱 [Power BI 應用程式文件](https://go.microsoft.com/fwlink/?linkid=2028636)。 |
 | 店面詳細資料 | 包含行銷、法律及潛在客戶管理等資產。 行銷資產包括供應項目描述和標誌。 法律資產包括隱私權原則、使用規定和其他法律文件。 潛在客戶管理原則可讓您指定如何從 AppSource 使用者入口網站處理潛在客戶。 |
 | 連絡人           | 包含支援聯絡人與原則的相關資訊。                                     |
 

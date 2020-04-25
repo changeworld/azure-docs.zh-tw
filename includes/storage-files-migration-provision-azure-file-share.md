@@ -1,40 +1,40 @@
 ---
-title: 預配 Azure 檔共用的注意事項。
-description: 預配 Azure 檔共用，以便與 Azure 檔同步一起使用。在遷移文檔之間共用的通用文字區塊。
+title: 布建 Azure 檔案共用的考慮
+description: 布建 Azure 檔案共用以與 Azure 檔案同步搭配使用。跨遷移檔共用的通用文字區塊。
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 8cb398d1b1ec14f52d9c5fa5c122dc2e4ba4376d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48baba5ee60a2bf5a4cb5e4d1ce840fce8eec43
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209424"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143598"
 ---
-Azure 檔共用存儲在 Azure 存儲帳戶中的雲中。
-這裡還有另一個級別的性能注意事項。
+Azure 檔案共用會儲存在雲端的 Azure 儲存體帳戶中。
+這裡有另一層的效能考慮。
 
-如果您有高度活躍的共用 - 許多使用者和/或應用程式使用的共用，則兩個 Azure 檔共用可能達到存儲帳戶的性能限制。
+如果您有高度作用中的共用（許多使用者和/或應用程式所使用的共用），則兩個 Azure 檔案共用可能會達到儲存體帳戶的效能限制。
 
-最佳做法是部署存儲帳戶，每個帳戶都有一個檔共用。
-您可以將多個 Azure 檔共用池到同一存儲帳戶中，以防共用具有存檔共用，或者預期它們中的日常活動較低。
+最佳做法是部署具有一個檔案共用的儲存體帳戶。
+您可以將多個 Azure 檔案共用集區在同一個儲存體帳戶中，以防您擁有封存共用，或您預期在其中有較低的每日活動。
 
-與應用於 Azure 檔同步相比，這些注意事項更多地應用於直接雲訪問（通過 Azure VM）。如果計畫在這些共用上僅使用 Azure 檔同步，則將多個帳戶分組到單個 Azure 存儲帳戶中可以。
+這些考慮適用于直接雲端存取（透過 Azure VM），而不是 Azure 檔案同步。如果您打算只在這些共用上使用 Azure 檔案同步，那麼將數個群組組成單一 Azure 儲存體帳戶就沒問題。
 
-如果您已列出共用，則應將每個共用映射到它們將駐留在的存儲帳戶。
+如果您已建立共用清單，您應該將每個共用對應至其所在的儲存體帳戶。
 
-在上一階段，您已經確定了適當的股票數量。 在此步驟中，您創建了存儲帳戶到檔共用的映射。 部署現在適當數量的 Azure 存儲帳戶，其中具有適當數量的 Azure 檔共用。
+在上一個階段中，您已決定適當的共用數目。 在此步驟中，您已建立儲存體帳戶與檔案共用的對應。 現在部署適當數目的 Azure 儲存體帳戶，其中包含適當數目的 Azure 檔案共用。
 
-確保每個存儲帳戶的區域相同，並匹配已部署的存儲同步服務資源的區域。
+請確定每個儲存體帳戶的區域都相同，而且符合您已部署的儲存體同步服務資源的區域。
 
 > [!CAUTION]
-> 如果創建 100 TiB 限制 Azure 檔共用，則該共用只能使用本地冗余存儲或區域冗余存儲冗余選項。 在使用 100 個 TiB 檔共用之前，請考慮存儲冗余需求。
+> 如果您建立的 Azure 檔案共用具有 100 TiB 的限制，該共用只能使用本機的多餘儲存體或區域冗余儲存體的重複選項。 使用 100-TiB 檔案共用之前，請考慮您的儲存體多餘需求。
 
-預設情況下，Azure 檔共用仍以 5 TiB 限制創建。 由於您要創建新的存儲帳戶，請確保按照[該指南創建允許 Azure 檔共用的存儲帳戶，限制為 100 TiB。](../articles/storage/files/storage-files-how-to-create-large-file-share.md)
+根據預設，Azure 檔案共用仍會以5個 TiB 的限制建立。 因為您正在建立新的儲存體帳戶，請務必遵循[指導方針來建立儲存體帳戶，以允許 Azure 檔案共用使用 100-TiB 限制](../articles/storage/files/storage-files-how-to-create-large-file-share.md)。
 
-部署存儲帳戶時的另一個考慮因素是 Azure 存儲的冗余。 請參閱[：Azure 存儲冗余選項](../articles/storage/common/storage-redundancy.md)。
+當您部署儲存體帳戶時，另一個考慮是 Azure 儲存體的冗余。 請參閱[Azure 儲存體的重複選項](../articles/storage/common/storage-redundancy.md)。
 
-資源的名稱也很重要。 例如，如果將 HR 部門的多個共用分組到 Azure 存儲帳戶中，則應相應地命名存儲帳戶。 同樣，在命名 Azure 檔共用時，應使用與本地對應共用類似的名稱。
+您的資源名稱也很重要。 例如，如果您將 HR 部門的多個共用群組到 Azure 儲存體帳戶中，您應該適當地命名儲存體帳戶。 同樣地，在命名 Azure 檔案共用時，您應該使用與其內部部署對應專案相似的名稱。

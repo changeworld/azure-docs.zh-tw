@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116310"
+ms.locfileid: "82127576"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
 
@@ -40,6 +40,23 @@ ms.locfileid: "82116310"
 
 ## <a name="installation-and-import"></a>安裝和匯入
 
+* **Pip 安裝：不保證相依性會與單行安裝一致**： 
+
+   這是已知的 pip 限制，因為當您將安裝為單一行時，它沒有正常運作的相依性解析程式。 第一個唯一的相依性是它所查看的唯一相依性。 
+
+   在下列程式碼`azure-ml-datadrift`中`azureml-train-automl` ，和都是使用單行 pip 安裝進行安裝。 
+     ```
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   在此範例中，假設`azure-ml-datadrift`需要版本 > 1.0，而且`azureml-train-automl`需要版本 < 1.2。 如果的最新版本`azure-ml-datadrift`是1.3，則不論舊版的`azureml-train-automl`套件需求為何，這兩個封裝都會升級至1.3。 
+
+   若要確定已為您的套件安裝適當的版本，請使用多行進行安裝，如下列程式碼所示。 此處的順序不是問題，因為 pip 會在下一行呼叫中明確降級。 因此，會套用適當的版本相依性。
+    
+     ```
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
 * **錯誤訊息：無法解除安裝 'PyYAML'**
 
     適用于 Python 的 Azure Machine Learning SDK： PyYAML `distutils`是已安裝的專案。 因此，在有部分解決安裝的情況下，我們無法精確判斷哪些檔案屬於它。 若要繼續安裝 SDK，但略過此錯誤，請使用：
@@ -83,20 +100,6 @@ ms.locfileid: "82116310"
     * 新增`azureml-dataprep` 1.1.8 或更新版本。
     * 新增`pyarrow` 0.11 版或更新版本。
     
-* **Pip 安裝：相依性不保證與單行安裝一致**：這是 Pip 的已知限制，因為當您將安裝為單行時，它沒有正常運作的相依性解析程式。 第一個唯一的相依性是它所查看的唯一相依性。 例如，如果您要安裝的 azure ml-datadrift 需要版本 > 1.0 和 azureml-automl，而這需要版本 < 1.2，而且如果最新版本為1.3，當使用者以一行安裝套件時，即使 azureml-定型-automl 套件需要較舊的版本，所有專案還是會升級到1.3。 
-
-    * 您會看到不一致的相依性與單行安裝。
-    ```python
-       pip install azure-ml-datadrift, azureml-train-automl
-     ```
-   
-    * 若要確定已為您的套件安裝適當的版本，請使用多行進行安裝，如下列程式碼所示。 這裡的順序並不重要。
-    
-     ```python
-        pip install azure-ml-datadrift
-        pip install azureml-train-automl 
-     ```
-     
 ## <a name="create-and-manage-workspaces"></a>建立及管理工作區
 
 > [!WARNING]

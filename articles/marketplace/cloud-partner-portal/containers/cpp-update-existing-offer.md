@@ -1,5 +1,5 @@
 ---
-title: 更新現有的 Azure 容器產品 /服務 |Azure 應用商店
+title: 更新現有的 Azure 容器供應專案 |Azure Marketplace
 description: 如何更新 Azure Marketplace 上的現有容器供應項目。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: cc378dcc1d5f777f4e81825e2f99dedd37a87f96
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271262"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143811"
 ---
 # <a name="update-an-existing-container-offer"></a>更新現有的容器供應項目
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 容器產品的管理移動到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[「創建 Azure 容器產品/服務](https://aka.ms/CreateContainerOffer)」中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將您的 Azure 容器供應專案管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 Azure 容器供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)專案中的指示來管理您的已遷移優惠。
 
 本文將逐步說明在 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)中更新容器供應項目的各個層面。
 
@@ -70,12 +70,12 @@ ms.locfileid: "81271262"
 
 1. 登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 2. 在 [所有供應項目]**** 下，尋找您要更新的供應項目。
-3. 跳到 **「應用商店」** 選項卡。使用[「發布」容器提供](./cpp-publish-offer.md)文章中的說明進行元數據更改。
+3. 前往 [ **Marketplace** ] 索引標籤。使用[發佈容器供應](./cpp-publish-offer.md)專案一文中的指示進行中繼資料變更。
 4. 選取 [發佈]**** 啟動工作流程，以發佈變更。
 
 ## <a name="compare-feature"></a>比較功能
 
-對已發佈的產品/服務進行更改時,可以使用 **"比較**"功能審核所做的更改。
+當您對已發佈的供應專案進行變更時，可以使用 [**比較**] 功能來審核您所做的變更。
 
 ### <a name="to-use-the-compare-feature"></a>若要使用 [比較] 功能：
 

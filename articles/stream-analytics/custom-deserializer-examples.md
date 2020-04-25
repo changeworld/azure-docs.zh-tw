@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure 流分析中的 .NET 自訂反序列化器以任何格式讀取輸入
-description: 本文介紹了為 Azure 流分析雲和邊緣作業定義自訂 .NET 反序列化的序列化格式和介面。
+title: 使用 Azure 串流分析中的 .NET 自訂還原序列化程式來讀取任何格式的輸入
+description: 本文說明序列化格式，以及定義適用于 Azure 串流分析雲端和邊緣作業之自訂 .NET 還原序列化程式的介面。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f4cc5cefe8090e9e95f80b8b74bf15591cb7887
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845270"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133080"
 ---
-# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自訂反序列化器以任何格式讀取輸入
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自訂還原序列化程式來讀取任何格式的輸入
 
-.NET 自訂反序列化器允許 Azure 流分析作業從三種[內置資料格式以外的格式讀取資料](stream-analytics-parsing-json.md)。 本文介紹了序列化格式和定義 .NET 自訂序列化的 Azure 流分析雲和邊緣作業的介面。 還有協定緩衝區和 CSV 格式的示例反序列化器。
+.NET 自訂還原序列化程式可讓您的 Azure 串流分析作業從三種內[建資料格式](stream-analytics-parsing-json.md)以外的格式讀取資料。 本文說明序列化格式，以及定義適用于 Azure 串流分析雲端和邊緣作業之 .NET 自訂還原序列化程式的介面。 另外還有通訊協定緩衝區和 CSV 格式的範例還原序列化程式。
 
-## <a name="net-custom-deserializer"></a>.NET 自訂序列化器
+## <a name="net-custom-deserializer"></a>.NET 自訂還原序列化
 
-以下代碼示例是定義自訂反序列化並實現`StreamDeserializer<T>`的介面。
+下列程式碼範例是定義自訂還原序列化和執行`StreamDeserializer<T>`的介面。
 
-`UserDefinedOperator`是所有自訂流式處理運算子的基類。 它初始化`StreamingContext`，它提供上下文，其中包括用於發佈診斷的機制，您需要為此調試反序列化程式的任何問題。
+`UserDefinedOperator`是所有自訂串流運算子的基類。 它會`StreamingContext`初始化，它會提供內容，其中包含用於發佈診斷的機制，而您需要對其進行還原序列化程式的任何問題。
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -31,21 +31,21 @@ ms.locfileid: "76845270"
     }
 ```
 
-以下程式碼片段是流資料反序列化。 
+下列程式碼片段是串流資料的還原序列化。 
 
-應使用`IStreamingDiagnostics`通過`UserDefinedOperator`'s 初始化方法傳遞可跳過的錯誤。 所有異常將被視為錯誤，並重新創建反序列化程式。 出現一定數量的錯誤後，作業將轉到失敗狀態。
+Skippable 錯誤應使用`IStreamingDiagnostics`傳遞`UserDefinedOperator`的 Initialize 方法來發出。 所有例外狀況都會被視為錯誤，而還原序列化會重新建立。 在特定數目的錯誤之後，作業將會進入失敗狀態。
 
-`StreamDeserializer<T>`將流序列化為類型`T`的物件。 必須符合下列條件：
+`StreamDeserializer<T>`將資料流程還原序列化為類型`T`的物件。 必須符合下列條件：
 
-1. T 是類或結構。
-1. T 中的所有公共欄位都是
-    1. 其中一個 [s位元組， 位元組， 短， ushort， int， uint， 長， DateTime， 字串， 浮點， 雙] 或它們可無等效項.
-    1. 遵循相同規則的另一個結構或類。
-    1. 遵循相同規則`T2`的類型陣列。
-    1. IList`T2` T2 遵循相同的規則。
+1. T 是類別或結構。
+1. T 中的所有公用欄位都是
+    1. 其中一個 [sbyte、byte、short、ushort、int、uint、long、DateTime、string、float、double] 或其可為 null 的對應專案。
+    1. 遵循相同規則的另一個結構或類別。
+    1. 遵循相同規則`T2`之類型的陣列。
+    1. IList`T2` ，其中 T2 遵循相同的規則。
     1. 沒有任何遞迴類型。
 
-參數`stream`是包含序列化物件的流。 `Deserialize`返回實例的集合`T`。
+參數`stream`是包含序列化物件的資料流程。 `Deserialize`傳回實例的`T`集合。
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +54,7 @@ ms.locfileid: "76845270"
     }
 ```
 
-`StreamingContext`提供上下文，其中包括用於發佈使用者操作員診斷的機制。
+`StreamingContext`提供內容，其中包含用於發佈使用者操作員診斷的機制。
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +63,13 @@ ms.locfileid: "76845270"
     }
 ```
 
-`StreamingDiagnostics`是使用者定義的運算子的診斷，包括序列化器、反序列化器和使用者定義的函數。
+`StreamingDiagnostics`這是使用者定義的運算子（包括序列化程式、還原序列化程式和使用者定義函數）的診斷。
 
-`WriteError`將錯誤訊息寫入診斷日誌並將錯誤發送到診斷。
+`WriteError`將錯誤訊息寫入資源記錄檔，並將錯誤傳送到診斷。
 
-`briefMessage`是一條簡短的錯誤訊息。 此消息顯示在診斷中，由產品團隊用於調試目的。 不要包含敏感資訊，並且郵件少於 200 個字元
+`briefMessage`是簡短的錯誤訊息。 此訊息會顯示在診斷中，並由產品小組用來進行偵錯工具。 請勿包含敏感性資訊，並將訊息保留少於200個字元
 
-`detailedMessage`是僅添加到存儲中的診斷日誌的詳細錯誤訊息。 此消息應小於 2000 個字元。
+`detailedMessage`是詳細的錯誤訊息，只會新增至儲存體中的資源記錄。 此訊息應小於2000個字元。
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -78,15 +78,15 @@ ms.locfileid: "76845270"
     }
 ```
 
-## <a name="deserializer-examples"></a>反序列化器示例
+## <a name="deserializer-examples"></a>還原序列化範例
 
-本節介紹如何為 Protobuf 和 CSV 編寫自訂反序列化器。 有關其他示例（如事件中心捕獲的 AVRO 格式），請訪問[GitHub 上的 Azure 流分析](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
+本節說明如何撰寫 Protobuf 和 CSV 的自訂還原序列化程式。 如需其他範例（例如事件中樞 Capture 的 AVRO 格式），請造訪[GitHub 上的 Azure 串流分析](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
 
-### <a name="protocol-buffer-protobuf-format"></a>協定緩衝區（原型）格式
+### <a name="protocol-buffer-protobuf-format"></a>通訊協定緩衝區（Protobuf）格式
 
-這是使用協定緩衝區格式的示例。
+這是使用通訊協定緩衝區格式的範例。
 
-假設以下協定緩衝區定義。
+假設下列通訊協定緩衝區定義。
 
 ```proto
 syntax = "proto3";
@@ -112,9 +112,9 @@ message MessageBodyProto {
 }
 ```
 
-從`protoc.exe` **Google.Protobuf.Tools** NuGet 運行生成帶有定義的 .cs 檔。 生成的檔不在此處顯示。
+`protoc.exe`從**Protobuf**執行 NuGet 會產生具有定義的 .cs 檔案。 產生的檔案不會顯示在這裡。
 
-以下程式碼片段是反序列化器實現，假定生成的檔包含在專案中。 此實現只是生成的檔的精簡包裝器。
+下列程式碼片段是還原序列化程式的執行，假設產生的檔案包含在專案中。 此實作為產生之檔案上的精簡型包裝函式。
 
 ```csharp
     public class MessageBodyDeserializer : StreamDeserializer<SimulatedTemperatureSensor.MessageBodyProto>
@@ -135,7 +135,7 @@ message MessageBodyProto {
 
 ### <a name="csv"></a>CSV
 
-以下程式碼片段是一個簡單的 CSV 反序列化器，它還演示傳播錯誤。
+下列程式碼片段是簡單的 CSV 還原序列化程式，也會示範如何傳播錯誤。
 
 ```csharp
 using System.Collections.Generic;
@@ -198,11 +198,11 @@ namespace ExampleCustomCode.Serialization
 
 ```
 
-## <a name="serialization-format-for-rest-apis"></a>REST API 的序列化格式
+## <a name="serialization-format-for-rest-apis"></a>REST Api 的序列化格式
 
-每個流分析輸入都有**一個序列化格式**。 有關輸入選項的詳細資訊，請參閱[輸入 REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)文檔。
+每個串流分析輸入都具有**序列化格式**。 如需輸入選項的詳細資訊，請參閱[輸入 REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)檔。
 
-使用 REST API 時，以下 JAVAscript 代碼是 .NET 反序列化序列化格式的示例：
+下列 JAVAscript 程式碼是使用 REST API 時的 .NET 還原序列化程式序列化格式的範例：
 
 ```javascript
 {    
@@ -219,11 +219,11 @@ namespace ExampleCustomCode.Serialization
 }  
 ```
 
-`serializationClassName`應該是實現`StreamDeserializer<T>`的類。 下面一節將對此進行說明。
+`serializationClassName`應該是執行的類別`StreamDeserializer<T>`。 這會在下一節中說明。
 
 ## <a name="region-support"></a>區域支援
 
-此功能在以下區域可用：
+這項功能會在下欄區域內上市：
 
 * 美國中西部
 * 北歐
@@ -232,22 +232,22 @@ namespace ExampleCustomCode.Serialization
 * 美國東部 2
 * 西歐
 
-您可以[請求支援](https://aka.ms/ccodereqregion)其他區域。
+您可以[要求](https://aka.ms/ccodereqregion)其他區域的支援。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>此功能何時在所有 Azure 區域中可用？
+### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>這項功能何時會在所有 Azure 區域中提供？
 
-此功能在 6[個區域](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)可用。 如果您有興趣在另一個區域使用此功能，則可以[提交請求](https://aka.ms/ccodereqregion)。 所有 Azure 區域的支援都在路線圖中。
+這項功能可在[6 個區域](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)中使用。 如果您有興趣在另一個區域中使用這項功能，您可以[提交要求](https://aka.ms/ccodereqregion)。 所有 Azure 區域的支援都在藍圖中。
 
-### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>我能否從類似于 GetMetadata屬性值函數的輸入訪問中繼資料屬性值？
+### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>我可以從類似 GetMetadataPropertyValue 函數的輸入存取 MetadataPropertyValue 嗎？
 
-但是，目前已不支援這項功能。 如果您需要此功能，您可以在[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese)上投票支援此請求。
+但是，目前已不支援這項功能。 如果您需要這項功能，您可以在[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese)上為此要求投票。
 
-### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>我能否與社區共用我的反序列化實現，以便其他人能夠受益？
+### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>我可以與該社區分享我的還原序列化程式，讓其他人可以受益嗎？
 
-實現反序列化後，您可以通過與社區共用來説明他人。 將代碼提交到[Azure 流分析 GitHub 存儲庫](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
+當您完成還原序列化程式之後，您可以透過與該社區共用來協助其他人。 將您的程式碼提交至[Azure 串流分析 GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)存放庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [.NET Azure 流分析雲作業的自訂序列化程式](custom-deserializer.md)
+* [適用于 Azure 串流分析雲端作業的 .NET 自訂還原序列化程式](custom-deserializer.md)

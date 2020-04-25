@@ -1,34 +1,34 @@
 ---
-title: 故障排除 - Azure Web 應用程式防火牆
-description: 本文為 Azure 應用程式閘道的 Web 應用程式防火牆 （WAF） 提供故障排除資訊
+title: 疑難排解-Azure Web 應用程式防火牆
+description: 本文提供 Azure 應用程式閘道的 Web 應用程式防火牆（WAF）的疑難排解資訊
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046200"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131260"
 ---
-# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>為 Azure 應用程式閘道解決 Web 應用程式防火牆 （WAF） 的故障
+# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>針對 Azure 應用程式閘道的 Web 應用程式防火牆（WAF）進行疑難排解
 
-如果阻止應通過 Web 應用程式防火牆 （WAF） 的請求，您可以執行一些操作。
+如果您要通過 Web 應用程式防火牆（WAF）的要求遭到封鎖，您可以執行幾項工作。
 
-首先，請確保您已閱讀 WAF[概述](ag-overview.md)和[WAF 配置](application-gateway-waf-configuration.md)文檔。 此外，請確保您已啟用 WAF[監視](../../application-gateway/application-gateway-diagnostics.md)這些文章可解釋 WAF 如何工作、WAF 規則集的工作原理以及如何訪問 WAF 日誌。
+首先，請確定您已閱讀[WAF 總覽](ag-overview.md)和[WAF](application-gateway-waf-configuration.md)設定檔。 此外，請確定您已啟用[WAF 監視](../../application-gateway/application-gateway-diagnostics.md)，這些文章會說明 WAF 的功能、WAF 規則設定的運作方式，以及如何存取 WAF 記錄。
 
-## <a name="understanding-waf-logs"></a>瞭解 WAF 日誌
+## <a name="understanding-waf-logs"></a>瞭解 WAF 記錄
 
-WAF 日誌的目的是顯示由 WAF 匹配或阻止的每個請求。 它是匹配或阻止的所有已評估請求的分類帳。 如果您注意到 WAF 阻止了它不應阻止的請求（誤報），則可以執行一些操作。 首先，縮小範圍，並找到具體請求。 查看日誌以查找請求的特定 URI、時間戳記或事務 ID。 當您找到關聯的日誌條目時，可以開始對誤報執行操作。
+WAF 記錄的目的是要顯示 WAF 所符合或封鎖的每個要求。 這是所有符合或封鎖之已評估要求的總帳。 如果您注意到 WAF 封鎖了不應該的要求（誤報），您可以執行幾件事。 首先，縮小並尋找特定的要求。 查看記錄檔，以找出要求的特定 URI、時間戳記或交易識別碼。 當您找到相關聯的記錄檔專案時，就可以開始對誤報採取動作。
 
-例如，假設您有一個包含要通過 WAF 的字串*1=1*的合法流量。 如果嘗試該請求，WAF 會阻止包含任何參數或欄位中*1+1*字串的流量。 這是通常與 SQL 注入攻擊關聯的字串。 您可以查看日誌並查看請求的時間戳記以及阻止/匹配的規則。
+例如，假設您有一個合法的流量，其中包含您想要通過 WAF 的字串*1 = 1* 。 如果您嘗試要求，WAF 會封鎖在任何參數或欄位中包含*1 = 1*字串的流量。 這是通常與 SQL 插入式攻擊相關聯的字串。 您可以查看記錄檔，並查看要求的時間戳記，以及已封鎖/符合的規則。
 
-在下面的示例中，您可以看到在同一請求期間觸發了四個規則（使用事務 Id 欄位）。 第一個說它匹配，因為使用者使用數位/IP URL 的請求，這將異常分數增加三個，因為它是一個警告。 匹配的下一個規則是 942130，這是您要查找的規則。 您可以在`details.data`欄位中看到*1=1。* 這進一步增加了異常分數三個再次，因為它也是一個警告。 通常，具有"**匹配**"操作的每個規則都會增加異常分數，此時異常分數將為 6。 有關詳細資訊，請參閱[異常評分模式](ag-overview.md#anomaly-scoring-mode)。
+在下列範例中，您可以看到在相同要求期間觸發四個規則（使用 [TransactionId] 欄位）。 第一個會指出它是相符的，因為使用者在要求中使用了數值/IP URL，這會將異常分數增加三個，因為這是一個警告。 下一個符合的規則是942130，也就是您要尋找的規則。 您可以在`details.data`欄位中看到*1 = 1* 。 這會進一步將異常分數增加三次，因為這也是一則警告。 一般而言，具有**相符**動作的每個規則都會增加異常分數，此時異常分數會是六。 如需詳細資訊，請參閱[異常評分模式](ag-overview.md#anomaly-scoring-mode)。
 
-最後兩個日誌條目顯示請求被阻止，因為異常分數足夠高。 這些條目的操作與其他兩個不同。 它們表明他們實際上*阻止了*請求。 這些規則是強制性的，不能禁用。 它們不應被視為規則，而應該更多地被視為 WAF 內部的核心基礎結構。
+最後兩個記錄專案顯示要求已遭到封鎖，因為異常分數夠高。 這些專案的動作與其他兩個不同。 它們會顯示其實際上已*封鎖*要求。 這些規則是強制性的，且無法停用。 您不應該將它們視為規則，而是做為 WAF 內部的核心基礎結構。
 
 ```json
 { 
@@ -133,56 +133,56 @@ WAF 日誌的目的是顯示由 WAF 匹配或阻止的每個請求。 它是匹�
 }
 ```
 
-## <a name="fixing-false-positives"></a>修復誤報
+## <a name="fixing-false-positives"></a>修正誤報
 
-有了這些資訊，並且知道規則 942130 是匹配*1=1*字串的，您可以執行一些操作來阻止它阻塞流量：
+透過這項資訊，以及規則942130與*1 = 1*字串相符的知識，您可以執行一些動作來阻止這種情況封鎖您的流量：
 
 - 使用排除清單
 
-   有關排除清單的詳細資訊，請參閱[WAF 配置](application-gateway-waf-configuration.md#waf-exclusion-lists)。
-- 禁用規則。
+   如需排除清單的詳細資訊，請參閱[WAF](application-gateway-waf-configuration.md#waf-exclusion-lists)設定。
+- 停用規則。
 
 ### <a name="using-an-exclusion-list"></a>使用排除清單
 
-要做出處理誤報的明智決策，請務必熟悉應用程式使用的技術。 例如，假設技術堆疊中沒有 SQL 伺服器，並且您收到與這些規則相關的誤報。 禁用這些規則並不一定會削弱您的安全性。
+若要做出有關處理誤報的明智決策，請務必熟悉您的應用程式所使用的技術。 例如，假設您的技術堆疊中沒有 SQL server，而且您得到的是與這些規則相關的誤報。 停用這些規則並不一定會降低您的安全性。
 
-使用排除清單的一個好處是僅禁用請求的特定部分。 但是，這意味著特定排除適用于通過 WAF 的所有流量，因為它是全域設置。 例如，如果*1=1*是正文中某個應用的有效請求，但對其他應用不有效請求，則這可能導致問題。 另一個好處是，您可以選擇身體、標頭和 Cookie，以便滿足特定條件，而不是排除整個請求。
+使用排除清單的其中一個優點是，只會停用要求的特定部分。 不過，這表示特定的排除適用于通過 WAF 的所有流量，因為它是全域設定。 例如，如果*1 = 1*是特定應用程式主體中的有效要求，而不是其他人，這可能會導致問題。 另一個優點是，您可以在符合特定條件時，選擇要排除的主體、標頭和 cookie，而不是排除整個要求。
 
-有時，特定參數以可能不直觀的方式傳遞到 WAF 中。 例如，使用 Azure 活動目錄進行身份驗證時，將傳遞權杖。 這個權杖 *，__RequestVerificationToken，* 通常被傳遞到作為請求Cookie。 但是，在某些情況下禁用 Cookie 時，此權杖也會作為請求屬性或"arg"傳遞。 如果發生這種情況，您需要確保 *__RequestVerificationToken*也作為**請求屬性名稱**添加到排除清單中。
+有時候，在某些情況下，特定參數會以可能不直覺的方式傳入 WAF。 例如，使用 Azure Active Directory 進行驗證時，會傳遞一個權杖。 此權杖 *__RequestVerificationToken*通常會以要求 Cookie 的形式傳入。 不過，在某些情況下會停用 cookie，此權杖也會當做 request 屬性或 "arg" 傳遞。 如果發生這種情況，您必須確定已將 *__RequestVerificationToken*新增至排除清單，做為**要求屬性名稱**。
 
 ![排除](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-在此示例中，要排除等於*text1*的**Request 屬性名稱**。 這是顯而易見的，因為您可以在防火牆日誌中看到屬性名稱：**資料：匹配資料：在 ARGS 中找到 1=1：text1：1=1**。 屬性為**text1**。 您還可以通過其他幾種方式找到此屬性名稱，請參閱[查找請求屬性名稱](#finding-request-attribute-names)。
+在此範例中，您想要排除等於*text1*的**要求屬性名稱**。 這很明顯，因為您可以在防火牆記錄檔中看到屬性名稱：**資料：符合的資料： 1 = 1 在 ARGS： text1： 1 = 1 中找到**。 屬性為**text1**。 您也可以使用一些其他方式來尋找此屬性名稱，請參閱[尋找要求屬性名稱](#finding-request-attribute-names)。
 
 ![WAF 排除清單](../media/web-application-firewall-troubleshoot/waf-config.png)
 
-### <a name="disabling-rules"></a>禁用規則
+### <a name="disabling-rules"></a>停用規則
 
-繞過誤報的另一種方法是禁用 WAF 認為是惡意的輸入上匹配的規則。 由於已解析 WAF 日誌並將規則縮小到 942130，因此可以在 Azure 門戶中禁用它。 請參閱[通過 Azure 門戶自訂 Web 應用程式防火牆規則](application-gateway-customize-waf-rules-portal.md)。
+另一種解決錯誤正面的方法，就是停用 WAF 認為是惡意的輸入所符合的規則。 由於您已剖析 WAF 記錄，並已將規則縮小至942130，因此您可以在 Azure 入口網站中將它停用。 請參閱[透過 Azure 入口網站自訂 web 應用程式防火牆規則](application-gateway-customize-waf-rules-portal.md)。
 
-禁用規則的一個好處是，如果您知道包含通常被阻止的特定條件的所有流量都是有效的流量，則可以為整個 WAF 禁用該規則。 但是，如果它只是特定用例中的有效流量，則可以通過禁用整個 WAF 的規則來打開漏洞，因為它是全域設置。
+停用規則的其中一個優點是，如果您知道包含一般會封鎖之特定條件的所有流量都是有效的流量，您可以停用整個 WAF 的該規則。 不過，如果只有特定使用案例中的有效流量，您可以停用整個 WAF 的該規則來開啟弱點，因為它是全域設定。
 
-如果要使用 Azure PowerShell，請參閱[通過 PowerShell 自訂 Web 應用程式防火牆規則](application-gateway-customize-waf-rules-powershell.md)。 如果要使用 Azure CLI，請參閱[通過 Azure CLI 自訂 Web 應用程式防火牆規則](application-gateway-customize-waf-rules-cli.md)。
+如果您想要使用 Azure PowerShell，請參閱[透過 PowerShell 自訂 web 應用程式防火牆規則](application-gateway-customize-waf-rules-powershell.md)。 如果您想要使用 Azure CLI，請參閱[透過 Azure CLI 自訂 web 應用程式防火牆規則](application-gateway-customize-waf-rules-cli.md)。
 
 ![WAF 規則](../media/web-application-firewall-troubleshoot/waf-rules.png)
 
-## <a name="finding-request-attribute-names"></a>查找請求屬性名稱
+## <a name="finding-request-attribute-names"></a>尋找要求屬性名稱
 
-在[Fiddler](https://www.telerik.com/fiddler)的説明下，您可以檢查單個請求並確定調用網頁的特定欄位。 這有助於使用排除清單從檢查中排除某些欄位。
+在[Fiddler](https://www.telerik.com/fiddler)的協助下，您會檢查個別的要求，並判斷要呼叫的網頁中有哪些特定的欄位。 這有助於使用排除清單，從檢查中排除某些欄位。
 
-在此示例中，您可以看到輸入*1=1*字串的欄位稱為**text1**。
+在此範例中，您可以看到輸入*1 = 1*字串的欄位稱為**text1**。
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
 
-這是一個可以排除的欄位。 要瞭解有關排除清單的更多內容，請參閱[Web 應用程式防火牆請求大小限制和排除清單](application-gateway-waf-configuration.md#waf-exclusion-lists)。 在這種情況下，可以通過配置以下排除項來排除評估：
+這是您可以排除的欄位。 若要深入瞭解排除清單，請參閱[Web 應用程式防火牆要求大小限制和排除清單](application-gateway-waf-configuration.md#waf-exclusion-lists)。 在此情況下，您可以藉由設定下列排除來排除評估：
 
 ![WAF 排除](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-您還可以檢查防火牆日誌以獲取資訊以查看需要添加到排除清單中的內容。 要啟用日誌記錄，請參閱[應用程式閘道的後端運行狀況、診斷日誌和指標](../../application-gateway/application-gateway-diagnostics.md)。
+您也可以檢查防火牆記錄以取得資訊，以查看您需要新增至排除清單的內容。 若要啟用記錄，請參閱[應用程式閘道的後端健康情況、資源記錄和計量](../../application-gateway/application-gateway-diagnostics.md)。
 
-檢查防火牆日誌，並查看要檢查的請求發生的小時 PT1H.json 檔。
+檢查防火牆記錄檔，並查看 PT1H 您要檢查的要求一小時內的檔案。
 
-在此示例中，您可以看到有四個具有相同事務 ID 的規則，並且它們都同時發生：
+在此範例中，您可以看到您有四個具有相同 TransactionID 的規則，而且它們全都在完全相同的時間內發生：
 
 ```json
 -   {
@@ -287,51 +287,51 @@ WAF 日誌的目的是顯示由 WAF 匹配或阻止的每個請求。 它是匹�
 -   }
 ```
 
-瞭解 CRS 規則如何工作，並且 CRS 規則集 3.0 與異常評分系統（請參閱 Azure[應用程式閘道的 Web 應用程式防火牆](ag-overview.md)）一起工作，您知道具有操作的後兩個規則 **：阻止**屬性根據總異常分數被阻止。 需要關注的規則是前兩名。
+瞭解 CRS 規則設定的運作方式，以及 CRS 規則集3.0 如何與異常計分系統搭配運作（請參閱[Azure 應用程式閘道的 Web 應用程式防火牆](ag-overview.md)）您知道具有 [**動作：封鎖**] 屬性的底部兩個規則會根據異常分數的總和來封鎖。 要專注于的規則是前兩個。
 
-記錄第一個條目是因為使用者使用數位 IP 位址導航到應用程式閘道，在這種情況下，可以忽略該閘道。
+會記錄第一個專案，因為使用者使用數位 IP 位址來流覽至應用程式閘道，這在此情況下可以忽略。
 
-第二個（規則942130）是有趣的。 您可以在詳細資訊中看到它與模式 （1=1） 匹配，並且該欄位被命名為**text1**。 按照相同的前一步來排除**等於** **1=1****的請求屬性名稱**。
+第二個（規則942130）是最有趣的一個。 您可以在詳細資料中看到它符合模式（1 = 1），而欄位的名稱為**text1**。 遵循相同的先前步驟，以排除**等於** **1 = 1**的**要求屬性名稱**。
 
-## <a name="finding-request-header-names"></a>查找請求標頭名稱
+## <a name="finding-request-header-names"></a>尋找要求標頭名稱
 
-Fiddler 是再次查找請求標頭名稱的有用工具。 在下面的螢幕截圖中，您可以看到此 GET 請求的標題，其中包括*內容類型*、*使用者代理*等。
+Fiddler 是一種很有用的工具，可再次尋找要求標頭名稱。 在下列螢幕擷取畫面中，您可以看到此 GET 要求的標頭，其中包括*內容類型*、*使用者代理程式*等等。
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-查看請求和回應標頭的另一種方法是查看 Chrome 的開發人員工具。 您可以按 F12 或按右鍵 ->**檢查** -> **開發人員工具**，然後選擇 **"網路**"選項卡。載入網頁，然後按一下要檢查的請求。
+另一個查看要求和回應標頭的方式，就是查看 Chrome 的開發人員工具。 您可以按 F12 或以滑鼠右鍵按一下 >**檢查** -> **開發人員工具**]，然後選取 [**網路**] 索引標籤。載入網頁，然後按一下您要檢查的要求。
 
-![鉻 F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
+![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 
-## <a name="finding-request-cookie-names"></a>查找請求 Cookie 名稱
+## <a name="finding-request-cookie-names"></a>尋找要求 cookie 名稱
 
-如果請求包含 Cookie，則可以選擇 **"Cookie"** 選項卡在 Fiddler 中查看它們。
+如果要求包含 cookie，則可以選取 [ **cookie** ] 索引標籤，在 Fiddler 中進行查看。
 
 ## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>限制全域參數以消除誤報
 
-- 禁用請求正文檢查
+- 停用要求主體檢查
 
-   通過將 **"檢查"請求正文**設置為"關閉"，WAF 將不會評估所有流量的請求正文。 如果您知道請求正文對應用程式不是惡意的，這可能很有用。
+   藉由將 [**檢查要求**本文] 設定為 [關閉]，您的 WAF 就不會評估所有流量的要求主體。 如果您知道要求主體不是惡意的應用程式，這可能會很有用。
 
-   通過禁用此選項，將僅檢查請求正文。 標頭和 Cookie 將繼續進行檢查，除非使用排除清單功能排除單個標頭和 Cookie。
+   藉由停用此選項，就不會檢查要求主體。 除非使用排除清單功能排除個別標頭和 cookie，否則會保持檢查。
 
 - 檔案大小限制
 
-   通過限制 WAF 的檔案大小，您可以限制 Web 服務器遭受攻擊的可能性。 通過允許上傳大型檔，後端不堪重負的風險會增加。 將檔案大小限制為應用程式的正常用例只是防止攻擊的另一種方法。
+   藉由限制 WAF 的檔案大小，您就可以限制 web 伺服器發生攻擊的可能性。 藉由允許上傳大型檔案，您的後端的風險就會增加。 將檔案大小限制為應用程式的一般使用案例，只是防止攻擊的另一種方式。
 
    > [!NOTE]
-   > 如果您知道應用將永遠不會需要任何超出給定大小的檔上載，則可以通過設置限制來限制它。
+   > 如果您知道您的應用程式不需要超過指定大小的任何檔案上傳，您可以藉由設定限制來加以限制。
 
-## <a name="firewall-metrics-waf_v1-only"></a>防火牆指標（僅限WAF_v1）
+## <a name="firewall-metrics-waf_v1-only"></a>防火牆計量（僅限 WAF_v1）
 
-對於 v1 Web 應用程式防火牆，門戶中現在提供以下指標： 
+對於 v1 Web 應用程式防火牆，下列計量現在可在入口網站中取得： 
 
-1. Web 應用程式防火牆阻止請求計數被阻止的請求數
-2. Web 應用程式防火牆阻止規則計數所有匹配**和**請求被阻止的規則
-3. Web 應用程式防火牆總規則分發評估期間匹配的所有規則
+1. Web 應用程式防火牆封鎖要求計數已封鎖的要求數
+2. Web 應用程式防火牆封鎖規則會計算符合的所有規則**並**封鎖要求
+3. Web 應用程式防火牆規則散發評估期間符合的所有規則分佈
      
-要啟用指標，請選擇門戶中的 **"指標"** 選項卡，然後選擇三個指標之一。
+若要啟用計量，請在入口網站中選取 [**計量**] 索引標籤，然後選取三個計量中的其中一個。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[如何在應用程式閘道上配置 Web 應用程式防火牆](tutorial-restrict-web-traffic-powershell.md)。
+請參閱[如何在應用程式閘道上設定 web 應用程式防火牆](tutorial-restrict-web-traffic-powershell.md)。

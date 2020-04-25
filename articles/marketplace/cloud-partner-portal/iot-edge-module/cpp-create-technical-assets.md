@@ -1,5 +1,5 @@
 ---
-title: 創建 Azure IoT 邊緣模組技術資產 |Azure 應用商店
+title: 建立 Azure IoT Edge 模組技術資產 |Azure Marketplace
 description: 建立 IoT Edge 模組的技術資產。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b36d03695c107054549fba716f4cc27ecb7bba26
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983478"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142398"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureIoTTechAsset)中的說明進行操作,以管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您的 IoT Edge 課程模組的管理工作移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 IoT Edge 模組供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)專案中的指示來管理您遷移的供應專案。
 
 本文會說明 IoT Edge 模組技術資產在發佈到 Azure Marketplace 之前，必須先達到的需求。
 
@@ -41,7 +41,7 @@ IoT Edge 模組是專門設計在 IoT Edge 裝置上執行的 Docker 相容容�
 支援 IoT Edge 支援的所有層級 1 平台 (如 [Azure IoT Edge 支援](https://docs.microsoft.com/azure/iot-edge/support)中所記錄)。 由於這個選項能提供更好的客戶體驗，建議採用。 會再提供符合此標準的模組範本。 使用此平台選項的模組必須：
 
 - 提供 `latest` 標籤與版本標籤 (例如：`1.0.1`)，後者為使用 GitHub [資訊清單工具](https://github.com/estesp/manifest-tool)建置的資訊清單標籤。
-- 使用 [Marketplace 索引標籤](./cpp-marketplace-tab.md)，新增[相容 IoT Edge 認證裝置](https://aka.ms/iot-edge-certified)的連結。 此連結會解析至 `https://aka.ms/iot-edge-certified` 網站，客戶可在其中瀏覽或搜尋通過認證的裝置。 此網站亦稱為 [Azure IoT Edge 認證](https://catalog.azureiotsolutions.com/)裝置目錄。
+- 使用 [ [Marketplace]](./cpp-marketplace-tab.md)索引標籤，將連結新增至[IoT Edge 認證](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]})的網站，客戶可以在其中流覽或搜尋認證的裝置。 此網站亦稱為 [Azure IoT Edge 認證](https://catalog.azureiotsolutions.com/)裝置目錄。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支援的層級 1 平台子集
   
@@ -70,9 +70,9 @@ IoT Edge 模組是專門設計在 IoT Edge 裝置上執行的 Docker 相容容�
 IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引標籤](./cpp-skus-tab.md)提供的預設設定。 可用的預設設定如下：
 
 - 預設**路由**
-- 預設**雙對所需屬性**
+- 預設對應項**所需屬性**
 - 預設**環境變數**
-- 預設**建立選項**
+- 預設**createOptions**
 
 在此案例中，預設值所需的參數無任何意義 (例如：客戶伺服器的 IP 位址)，您可新增參數做為預設值。 此值會以方括號括住並大寫顯示。 在此例中，請設定下列環境變數：
 
@@ -82,11 +82,11 @@ IoT Edge 模組一開始必能使用 [Cloud Partner 入口網站的 [SKU] 索引
 
 #### <a name="configuration-documentation"></a>設定文件
 
-必須清楚地記錄 IoT Edge 模組的所有配置設定(如何使用其路由、雙所需屬性、環境變數、創建選項等)。提供指向文件的連結,或者文檔必須是您的產品/sku 說明的一部分。
+IoT Edge 模組的所有設定都必須清楚記載（如何使用其路由、對應項所需屬性、環境變數、createOptions 等等）。提供檔的連結，或檔集必須是您供應專案/sku 描述的一部分。
 
 ### <a name="tags-and-versioning"></a>標籤與版本控制
 
-客戶必須能夠輕鬆部署模組並自動從市場獲取更新(在開發人員方案中)。他們還必須能夠使用和凍結他們測試的精確版本(在生產方案中)。
+客戶必須能夠輕鬆地部署模組，並自動從 marketplace 取得更新（在開發人員案例中）。它們也必須能夠使用和凍結其已測試的確切版本（在生產環境中）。
 
 為了符合客戶的上述期望並在市集中發佈，IoT Edge 模組必須符合下列需求：
 

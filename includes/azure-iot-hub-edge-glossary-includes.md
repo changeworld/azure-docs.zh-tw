@@ -4,15 +4,15 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
-ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30b8facfef6d90a444bd61d0ce041ed7dfef324e
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67174098"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82132290"
 ---
 ## <a name="automatic-device-management"></a>自動裝置管理
-Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許多重複且複雜的工作自動化，並且管理範圍橫跨裝置的完整生命週期。 使用自動裝置管理時，您可以根據其屬性以一組裝置為目標，定義所需的設定，並讓 IoT 中樞更新進入範圍的裝置。  包含[自動裝置設定](../articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自動部署](../articles/iot-edge/how-to-deploy-monitor.md)。
+Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許多重複且複雜的工作自動化，並且管理範圍橫跨裝置的完整生命週期。 使用自動裝置管理時，您可以根據其屬性以一組裝置為目標，定義所需的設定，並讓 IoT 中樞更新進入範圍的裝置。  包含[自動裝置設定](../articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自動部署](../articles/iot-edge/how-to-deploy-at-scale.md)。
 
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge 能針對內部部署裝置，實現 Azure 服務的雲端驅動部署及解決方案特定程式碼。 IoT Edge 裝置可以在其他裝置的資料被傳送至雲端之前，對這些資料進行彙總來執行計算和分析。 如需詳細資訊，請參閱 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)。
@@ -60,4 +60,4 @@ IoT Edge 執行階段包含 Microsoft 散發以安裝於 IoT Edge 裝置上的�
 複製位於單一裝置模組對應項上之 IoT Edge 資訊清單內容的作業。 基礎 API 是一般的「套用設定」，它會直接將 IoT Edge 資訊清單作為輸入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目標條件
-在 IoT Edge 部署中，目標條件是設備孿生標記上的任何布林條件，用於選擇部署的目標設備，例如**tag.環境 = prod**。持續評估目標條件，以包括任何滿足要求的新設備或刪除不再執行要求的設備。 深入了解[目標條件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
+在 IoT Edge 部署中，目標條件是裝置 twins ' 標記上的任何布林值條件，可選取部署的目標裝置，例如標籤 **。環境 = 生產**。目標條件會持續評估，以包含符合需求的任何新裝置，或移除不再執行的裝置。 深入了解[目標條件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)

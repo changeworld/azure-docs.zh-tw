@@ -4,14 +4,14 @@ description: 包含檔案
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 04/23/2020
 ms.author: dacoulte
-ms.openlocfilehash: 19b43c857058b3af50db3bc1b42ec1ae558ee884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04e607296478520298a2febab61a7edac911a59c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80272747"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131882"
 ---
 Azure 原則的每個物件類型都有最大計數。 _範圍_的項目表示訂用帳戶或[管理群組](../articles/governance/management-groups/overview.md)。
 
@@ -26,4 +26,4 @@ Azure 原則的每個物件類型都有最大計數。 _範圍_的項目表示�
 | 計畫定義 | 參數 | 100 |
 | 原則或方案指派 | 排除項目 (notScopes) | 400 |
 | 原則規則 | 巢狀的條件 | 512 |
-| 補救工作 | 資源 | 1000 |
+| 補救工作 | 資源 | 500 |

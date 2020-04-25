@@ -1,66 +1,39 @@
 ---
-title: 使用 PowerShell 的 Azure 虛擬機器的維護控制
-description: 瞭解如何使用維護控制和 PowerShell 控制何時將維護應用於 Azure VM。
+title: 使用 PowerShell 進行 Azure 虛擬機器的維護控制
+description: 瞭解如何使用維護控制和 PowerShell，控制何時將維護套用至您的 Azure Vm。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: dc47afe9cb6eca1b10f8caca7b85087023c5eadf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060126"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136527"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>預覽：使用維護控制和 Azure 電源外殼控制更新
+# <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>控制維護控制和 Azure PowerShell 的更新
 
-使用維護控制管理不需要重新開機的平臺更新。 Azure 經常更新其基礎結構以提高可靠性、性能、安全性或啟動新功能。 大多數更新對使用者都是透明的。 某些敏感工作負載（如遊戲、媒體流和金融交易）甚至無法容忍幾秒鐘的 VM 凍結或斷開連接以進行維護。 維護控制允許您選擇等待平臺更新並在 35 天滾動視窗中應用它們。 
-
-通過維護控制，您可以決定何時將更新應用於隔離的 VM。
-
-通過維護控制，您可以：
-- 批量更新到一個更新包中。
-- 最多等待 35 天才能應用更新。 
-- 使用 Azure 函數自動為維護視窗執行平臺更新。
-- 維護配置跨訂閱和資源組工作。 
-
-> [!IMPORTANT]
-> 維護控制當前處於公共預覽版中。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 
-
-## <a name="limitations"></a>限制
-
-- VM 必須位於[專用主機](./linux/dedicated-hosts.md)上，或者使用[隔離的 VM 大小](./linux/isolation.md)創建。
-- 35 天后，將自動應用更新。
-- 使用者必須具有**資源參與者**存取權限。
-
-
+維護控制可讓您決定何時要將更新套用到隔離的 Vm 和 Azure 專用主機。 本主題涵蓋維護控制的 Azure PowerShell 選項。 如需使用維護控制、其限制和其他管理選項之優點的詳細資訊，請參閱[管理具有維護控制的平臺更新](maintenance-control.md)。
+ 
 ## <a name="enable-the-powershell-module"></a>啟用 PowerShell 模組
 
-確保`PowerShellGet`是最新的。
+請確定`PowerShellGet`是最新的。
 
 ```azurepowershell-interactive
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
 ```
 
-Az.維護 PowerShell Cmdlet 處於預覽版中，因此您需要在雲殼或`AllowPrerelease`本地 PowerShell 安裝中安裝具有參數的模組。   
+如果您要在本機安裝，請務必以系統管理員身分開啟 PowerShell 提示字元。
 
-```azurepowershell-interactive
-Install-Module -Name Az.Maintenance -AllowPrerelease
-```
-
-如果要在本地安裝，請確保以管理員身份打開 PowerShell 提示。
-
-可能還會要求您確認要從*不受信任的存儲庫*進行安裝。 鍵入`Y`或選擇 **"是全部"** 以安裝模組。
+系統可能也會要求您確認是否要從*不受信任*的存放庫進行安裝。 輸入`Y`或選取 **[全部皆是]** 以安裝模組。
 
 
+## <a name="create-a-maintenance-configuration"></a>建立維護設定
 
-## <a name="create-a-maintenance-configuration"></a>創建維護配置
-
-將資源組創建為配置的容器。 在此示例中，在*Eastus*中創建了名為*myMaintenanceRG*的資源組。 如果已有要使用的資源組，則可以跳過此部分，並在其餘示例中將資源組名稱替換為您自己的資源組名稱。
+建立資源群組作為您設定的容器。 在此範例中，會在*eastus*中建立名為*myMaintenanceRG*的資源群組。 如果您已經有想要使用的資源群組，可以略過此部分，並在其餘範例中以您自己的名稱取代資源組名。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -68,7 +41,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-使用[新-Az 維護配置](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration)創建維護配置。 本示例創建名為*myConfig*的維護配置，該配置範圍為主機。 
+使用[AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration)來建立維護設定。 這個範例會建立名為*myconfig.xml*的維護設定，範圍限定于主機。 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -78,23 +51,23 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-使用`-MaintenanceScope host`可確保維護配置用於控制對主機的更新。
+使用`-MaintenanceScope host`可確保維護設定用於控制主機的更新。
 
-如果嘗試創建具有相同名稱的配置，但在不同的位置，將出現錯誤。 配置名稱必須對訂閱是唯一的。
+如果您嘗試使用相同的名稱建立設定，但在不同的位置，您會收到錯誤。 設定名稱在您的訂用帳戶中必須是唯一的。
 
-您可以使用[Get-Az 維護配置](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)查詢可用的維護配置。
+您可以使用[AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)來查詢可用的維護設定。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-## <a name="assign-the-configuration"></a>分配配置
+## <a name="assign-the-configuration"></a>指派設定
 
-使用["新配置分配"](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment)將配置分配給隔離的 VM 或 Azure 專用主機。
+使用[AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment)將設定指派給隔離的 VM 或 Azure 專用主機。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
-使用配置的 ID 將配置應用於 VM。 指定`-ResourceType VirtualMachines`和提供 的`-ResourceName`VM 的名稱 以及 的`-ResourceGroupName`VM 的資源組。 
+使用設定的識別碼，將設定套用至 VM。 指定`-ResourceType VirtualMachines`並提供 vm 的名稱`-ResourceName`，以及 vm 的資源群組。 `-ResourceGroupName` 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -109,7 +82,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>專用主機
 
-要將配置應用於專用主機，還需要包含`-ResourceType hosts``-ResourceParentName`具有主機組名稱 和`-ResourceParentType hostGroups`。 
+若要將設定套用至專用主機，您也必須包含`-ResourceType hosts`、 `-ResourceParentName`和主機群組的名稱，以及。 `-ResourceParentType hostGroups` 
 
 
 ```azurepowershell-interactive
@@ -125,11 +98,11 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-## <a name="check-for-pending-updates"></a>檢查掛起的更新
+## <a name="check-for-pending-updates"></a>檢查暫止的更新
 
-使用[獲取-Az 維護更新](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)以查看是否有掛起的更新。 如果`-subscription`VM 與登錄的訂閱不同，則用於指定 VM 的 Azure 訂閱。
+使用[AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否有擱置中的更新。 如果`-subscription` VM 的 Azure 訂用帳戶與您登入的帳戶不同，請使用來指定它。
 
-如果沒有要顯示的更新，則此命令將不返回任何內容。 否則，它將返回 PSApplyUpdate 物件：
+如果沒有要顯示的更新，此命令將不會傳回任何內容。 否則，它會傳回 PSApplyUpdate 物件：
 
 ```json
 {
@@ -145,7 +118,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
-檢查隔離 VM 的掛起更新。 在此示例中，輸出被格式化為可讀性表。
+檢查隔離 VM 的暫止更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -158,7 +131,7 @@ Get-AzMaintenanceUpdate `
 
 ### <a name="dedicated-host"></a>專用主機
 
-檢查專用主機的掛起更新。 在此示例中，輸出被格式化為可讀性表。 將資源的值替換為您自己的值。
+以檢查專用主機的暫止更新。 在此範例中，會將輸出格式化為資料表以方便閱讀。 將資源的值取代為您自己的值。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -173,11 +146,11 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>套用更新
 
-使用[New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)應用掛起的更新。
+使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)來套用擱置中的更新。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
-創建將更新應用於隔離 VM 的請求。
+建立將更新套用至隔離 VM 的要求。
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -187,11 +160,11 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-成功後，此命令將返回物件`PSApplyUpdate`。 可以使用`Get-AzApplyUpdate`命令中的 Name 屬性檢查更新狀態。 請參閱[檢查更新狀態](#check-update-status)。
+成功時，此命令會傳回`PSApplyUpdate`物件。 您可以在`Get-AzApplyUpdate`命令中使用 Name 屬性來檢查更新狀態。 請參閱[檢查更新狀態](#check-update-status)。
 
 ### <a name="dedicated-host"></a>專用主機
 
-將更新應用於專用主機。
+將更新套用至專用主機。
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -204,7 +177,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>檢查更新狀態
-使用[獲取-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate)檢查更新的狀態。 下面顯示的命令顯示了使用`default``-ApplyUpdateName`參數的最新更新的狀態。 您可以替換更新的名稱（由[New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)命令返回）來獲取特定更新的狀態。
+使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate)來檢查更新的狀態。 下面顯示的命令會使用`default`的`-ApplyUpdateName`參數來顯示最新更新的狀態。 您可以替代更新的名稱（由[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)命令傳回）來取得特定更新的狀態。
 
 ```text
 Status         : Completed
@@ -216,7 +189,7 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-上次更新時間將是更新完成的時間，由您啟動，或者由平臺啟動，以防未使用自我維護視窗。 如果從未通過維護控制應用更新，則將顯示預設值。
+LastUpdateTime 會是更新完成的時間，可能是由您或平臺在未使用自我維護視窗時所起始。 如果從未透過維護控制套用更新，它將會顯示預設值。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
@@ -233,7 +206,7 @@ Get-AzApplyUpdate `
 
 ### <a name="dedicated-host"></a>專用主機
 
-檢查對專用主機的更新。
+檢查是否有專用主機的更新。
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -246,9 +219,9 @@ Get-AzApplyUpdate `
    -ApplyUpdateName myUpdateName
 ```
 
-## <a name="remove-a-maintenance-configuration"></a>刪除維護配置
+## <a name="remove-a-maintenance-configuration"></a>移除維護設定
 
-使用["刪除-Az 維護配置"](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration)刪除維護配置。
+使用[AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration)刪除維護設定。
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `
@@ -257,4 +230,4 @@ Remove-AzMaintenanceConfiguration `
 ```
 
 ## <a name="next-steps"></a>後續步驟
-要瞭解更多資訊，請參閱[維護和更新](maintenance-and-updates.md)。
+若要深入瞭解，請參閱[維護和更新](maintenance-and-updates.md)。

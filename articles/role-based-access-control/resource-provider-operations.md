@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 61fb8b53d7d109fefc002b387702a240353f0dca
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117602"
+ms.locfileid: "82133165"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 資源提供者作業
 
@@ -4284,7 +4284,7 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > |  | **網域/privateLinkResources** |  |
 > | 動作 | EventGrid/網域/privateLinkResources/read | 取得或列出網域的 PrivateLinkResources |
 > |  | **網域/提供者/Microsoft Insights/logDefinitions** |  |
-> | 動作 | EventGrid/網域/提供者/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
+> | 動作 | EventGrid/網域/提供者/Microsoft Insights/logDefinitions/read | 允許存取資源記錄 |
 > |  | **網域/提供者/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | 取得網域的可用計量 |
 > |  | **domains/topics** |  |
@@ -4352,7 +4352,7 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/diagnosticSettings/read | 取得系統主題的診斷設定 |
 > | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新系統主題的診斷設定 |
 > |  | **systemTopics/providers/Microsoft Insights/logDefinitions** |  |
-> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
+> | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/logDefinitions/read | 允許存取資源記錄 |
 > |  | **systemTopics/providers/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | EventGrid/systemTopics/provider/Microsoft Insights/Metricdefinitions.listasync/read | 取得系統主題的可用計量 |
 > |  | **一些** |  |
@@ -4376,7 +4376,7 @@ Azure 服務：[事件方格](../event-grid/index.yml)
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | 取得主題的診斷設定 |
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | 建立或更新主題的診斷設定 |
 > |  | **主題/提供者/Microsoft Insights/logDefinitions** |  |
-> | 動作 | EventGrid/主題/提供者/Microsoft Insights/logDefinitions/read | 允許存取診斷記錄 |
+> | 動作 | EventGrid/主題/提供者/Microsoft Insights/logDefinitions/read | 允許存取資源記錄 |
 > |  | **主題/提供者/Microsoft Insights/Metricdefinitions.listasync** |  |
 > | 動作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/metricDefinitions/read | 取得主題的可用計量 |
 > |  | **topictypes** |  |

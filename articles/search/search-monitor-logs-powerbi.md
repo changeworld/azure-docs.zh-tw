@@ -1,102 +1,104 @@
 ---
-title: 使用強力 BI 視覺化 Azure 認知搜索日誌和指標
-description: 使用強力 BI 視覺化 Azure 認知搜索日誌和指標
+title: 使用 Power BI 將 Azure 認知搜尋記錄和計量視覺化
+description: 使用 Power BI 將 Azure 認知搜尋記錄和計量視覺化
 manager: eladz
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 618033e24236d26601fafaf7b0678ee83ec973e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650130"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127876"
 ---
-# <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>使用強力 BI 視覺化 Azure 認知搜索日誌和指標
-[Azure 認知搜索](https://docs.microsoft.com/azure/search/search-what-is-azure-search)允許您在 Azure 存儲帳戶中存儲有關搜索服務的動作記錄和服務指標。 本頁提供有關如何通過 Power BI 範本應用視覺化該資訊的說明。 該應用程式提供有關搜索服務的詳細見解，包括有關搜索、索引、操作和服務指標的資訊。
+# <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>使用 Power BI 將 Azure 認知搜尋記錄和計量視覺化
+[Azure 認知搜尋](https://docs.microsoft.com/azure/search/search-what-is-azure-search)可讓您將有關搜尋服務的作業記錄和服務計量儲存在 Azure 儲存體帳戶中。 本頁面提供如何透過 Power BI 範本應用程式來視覺化該資訊的指示。 應用程式會提供搜尋服務的詳細見解，包括搜尋、索引、作業和服務計量的相關資訊。
 
-您可以在[Power BI 應用市場](https://appsource.microsoft.com/marketplace/apps)找到 Power BI 範本應用**Azure 認知搜索：分析日誌和指標**。
+您可以在[Power BI Apps marketplace](https://appsource.microsoft.com/marketplace/apps)中找到 Power BI 範本應用程式**Azure 認知搜尋：分析記錄和計量**。
 
 ## <a name="how-to-get-started-with-the-app"></a>如何開始使用應用程式
-1. 為搜索服務啟用診斷日誌記錄：
-    1. 創建或標識現有的[Azure 存儲帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，您可以在其中存檔日誌
-    1. 在 Azure 門戶中導航到 Azure 認知搜索服務
-    1. 在左列的"監視"部分下，選擇 **"診斷設置"**
+
+1. 啟用搜尋服務的計量和資源記錄功能：
+
+    1. 建立或識別您可以封存記錄的現有[Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+    1. 在 Azure 入口網站中流覽至您的 Azure 認知搜尋服務
+    1. 在左側資料行的 [監視] 區段下，選取 [**診斷設定**]。
 
         ![](media/search-monitor-logs-powerbi/diagnostic-settings.png)
 
-    1. 選擇 **+ 添加診斷設置**
-    1. 檢查**存儲帳戶的存檔**，提供存儲帳戶資訊，並檢查**動作記錄****和所有指標**
+    1. 選取 [ **+ 新增診斷設定**]
+    1. 勾選 [封存**至儲存體帳戶**]，提供您的儲存體帳戶資訊，並檢查**insights-logs-operationlogs**和**AllMetrics**
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. 選擇 **"保存"**
+    1. 選取 [儲存]  。
 
-1. 啟用日誌記錄後，使用搜索服務開始生成日誌和指標。 容器最多需要一個小時才能與這些日誌一起顯示在 Blob 存儲中。 您將看到用於搜索流量**日誌的見解日誌動作記錄**容器和用於指標的**見解指標-pt1m**容器。
+1. 啟用記錄之後，請使用您的搜尋服務開始產生記錄和計量。 最多需要一小時的時間，容器才會出現在使用這些記錄的 Blob 儲存體中。 您會看到搜尋流量記錄的深入解析-**記錄-insights-logs-operationlogs**容器，以及計量的**見解-計量 pt1m**容器。
 
-1. 在[Power BI 應用市場](https://appsource.microsoft.com/marketplace/apps)中查找 Azure 認知搜索電源 BI 應用，並將其安裝到新工作區或現有工作區中。 該應用程式稱為**Azure 認知搜索：分析日誌和指標**。
+1. 在[Power BI Apps marketplace](https://appsource.microsoft.com/marketplace/apps)中尋找 Azure 認知搜尋 Power BI 應用程式，並將它安裝到新的工作區或現有的工作區。 此應用程式稱為「 **Azure 認知搜尋」：分析記錄和計量**。
 
-1. 安裝應用後，從 Power BI 中的應用清單中選擇應用。
+1. 安裝應用程式之後，請從 Power BI 的應用程式清單中選取應用程式。
 
     ![](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
 
-1. 選擇 **"連接"** 以連接資料
+1. 選取 **[** 連線] 以連接您的資料
 
     ![](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
 
-1. 輸入包含日誌和指標的存儲帳戶的名稱。 預設情況下，應用將查看最近 10 天的資料，但可以使用 **"天"** 參數更改此值。
+1. 輸入包含您記錄和計量的儲存體帳戶名稱。 根據預設，應用程式會查看過去10天的資料，但可以使用**days**參數來變更此值。
 
     ![](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
 
-1. 選擇 **"金鑰**"作為身份驗證方法並提供存儲帳戶金鑰。 選擇 **"專用**"作為隱私級別。 按一下 [登入] 開始載入程序。
+1. 選取 [**金鑰**] 作為驗證方法，並提供您的儲存體帳戶金鑰。 選取 [**私人**] 作為 [隱私權等級]。 按一下 [登入] 開始載入程序。
 
     ![](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
 
-1. 等待刷新資料。 這可能需要一些時間，具體取決於您擁有的資料量。 您可以根據以下指標查看資料是否仍在刷新。
+1. 等待資料重新整理。 視您擁有的資料量而定，這可能需要一些時間。 您可以根據下列指標查看資料是否仍會重新整理。
 
     ![](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
 
-1. 資料刷新完成後，選擇 Azure**認知搜索報表**以查看報表。
+1. 資料重新整理完成後，請選取 [ **Azure 認知搜尋報告**] 來查看報表。
 
     ![](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
 
-1. 請確保在打開報表後刷新頁面，以便該頁隨資料一起打開。
+1. 請務必在開啟報表後重新整理頁面，讓它與您的資料一起開啟。
 
     ![](media/search-monitor-logs-powerbi/powerbi-search.png)
 
-## <a name="how-to-change-the-app-parameters"></a>如何更改應用參數
-如果要視覺化來自其他存儲帳戶的資料或更改要查詢的資料天數，請按照以下步驟更改 **"天"** 和 **"存儲帳戶"** 參數。
+## <a name="how-to-change-the-app-parameters"></a>如何變更應用程式參數
+如果您想要將不同儲存體帳戶的資料視覺化，或變更要查詢的資料天數，請遵循下列步驟來變更**days**和**StorageAccount**參數。
 
-1. 導航到 Power BI 應用，查找 Azure 認知搜索應用，然後選擇 **"編輯應用**"按鈕以查看工作區。
+1. 流覽至您的 Power BI 應用程式，尋找您的 Azure 認知搜尋應用程式，然後選取 [**編輯應用程式**] 按鈕以查看工作區。
 
     ![](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
 
-1. 從"資料集"選項中選擇 **"設置**"。
+1. 從資料集選項中選取 [**設定**]。
 
     ![](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
 
-1. 在"資料集"選項卡中，更改參數值並選擇"**應用**"。 如果連接出現問題，請更新同一頁上的資料來源憑據。
+1. 在 [資料集] 索引標籤中，變更參數值，**然後選取 [** 套用]。 如果連接發生問題，請在相同的頁面上更新資料來源認證。
 
-1. 導航回工作區，然後從"資料集"選項中選擇 **"立即刷新**"。
+1. 流覽回到工作區，然後從資料集選項中選取 [**立即**重新整理]。
 
     ![](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
 
-1. 打開報表以查看更新的資料。 您可能還需要刷新報表才能查看最新資料。
+1. 開啟報表以查看更新的資料。 您可能也需要重新整理報表，以查看最新的資料。
 
 ## <a name="troubleshooting"></a>疑難排解
-如果您發現看不到資料，請按照以下故障排除步驟操作：
+如果您發現您看不到您的資料，請遵循下列疑難排解步驟：
 
-1. 打開報表並刷新頁面，以確保查看最新資料。 報表中有一個選項用於刷新資料。 選擇此選項可獲取最新資料。
+1. 開啟報表並重新整理頁面，以確定您正在查看最新的資料。 報表中有一個選項可重新整理資料。 選取此，以取得最新的資料。
 
-1. 確保您提供的存儲帳戶名稱和訪問金鑰正確無誤。 存儲帳戶名稱應對應于與搜索服務日誌一起配置的帳戶。
+1. 請確定您提供的儲存體帳戶名稱和存取金鑰正確。 儲存體帳戶名稱應該對應至您的搜尋服務記錄所設定的帳戶。
 
-1. 確認存儲帳戶包含容器**見解-日誌-動作記錄**和**見解指標-pt1m，** 每個容器都有資料。 日誌和指標將位於幾個資料夾層內。
+1. 確認您的儲存體帳戶包含容器**見解-記錄-insights-logs-operationlogs**和**深入解析-計量-pt1m** ，且每個容器都有資料。 記錄和計量會在幾層的資料夾內。
 
-1. 檢查資料集是否仍在刷新。 刷新狀態指示器顯示在上面的步驟 8 中。 如果仍處於刷新狀態，請等待刷新完成以打開並刷新報表。
+1. 請檢查資料集是否仍在重新整理中。 重新整理狀態指標會顯示在上述步驟8中。 如果仍在重新整理，請等到重新整理完成後，再開啟並重新整理報表。
 
 ## <a name="next-steps"></a>後續步驟
-[瞭解有關 Azure 認知搜索的更多資訊](https://docs.microsoft.com/azure/search/)
+[深入瞭解 Azure 認知搜尋](https://docs.microsoft.com/azure/search/)
 
 [Power BI 是什麼？](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
 

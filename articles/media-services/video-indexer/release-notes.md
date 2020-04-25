@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 07046d181e8e83e0271cb78cfb182df4e76980b5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115511"
+ms.locfileid: "82131198"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -65,7 +65,7 @@ ms.locfileid: "82115511"
     * 以指向影片索引子 widget Api 的 URL 取代 URL （例如，[深入解析 widget](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)）
     * 使用影片索引子網站來產生新的內嵌 URL：
          
-         按下 [**播放**] 以前往您的影片頁面- ** &lt;>&gt; **按一下 [內嵌 > 將 URL 複製到您的應用程式中：
+         按下 [**播放**] 以前往您的影片頁面-> 按一下 [ ** &lt; / &gt;內嵌**] 按鈕-> 將 URL 複製到您的應用程式中：
    
     區域 Url 不受支援，將在未來幾周內遭到封鎖。
 

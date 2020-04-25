@@ -1,79 +1,79 @@
 ---
-title: Azure VPN 閘道:在診斷日誌事件上設定警報
-description: 在 VPN 閘道診斷日誌事件上設定警報的步驟
+title: Azure VPN 閘道：設定診斷資源記錄檔事件的警示
+description: 在 VPN 閘道診斷資源記錄檔事件上設定警示的步驟
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 95c55242baf2ceb3620ed71026af2bad0195c22d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878896"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127969"
 ---
-# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>從 VPN 閘道設定診斷日誌事件的警報
+# <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>從 VPN 閘道設定資源記錄檔事件的警示
 
-本文可説明您使用 Azure 日誌分析根據 Azure VPN 閘道的診斷日誌事件設定警報。 
+本文可協助您使用 Azure 監視器 Log Analytics，根據 Azure VPN 閘道中的資源記錄事件來設定警示。 
 
-Azure 中提供了以下紀錄:
+以下是 Azure 中可用的資源記錄：
 
-|***名稱*** | ***說明*** |
+|***名稱*** | ***描述*** |
 |---        | ---               |
-|GatewayDiagnosticLog | 包含閘道設定事件、主要變更和維護事件的診斷日誌 |
-|TunnelDiagnosticLog | 包含隧道狀態更改事件。 隧道連線/斷線連線事件有狀態更改的匯總原因(如果適用) |
-|RouteDiagnosticLog | 紀錄閘道上發生的靜態路由與 BGP 事件的變更 |
-|IKEDiagnosticLog | 在閘道上記錄 IKE 控制訊息和事件 |
-|P2SDiagnosticLog | 在閘道上記錄點對點控制消息和事件。 只提供 IKEv2 連線提供連接來源資訊 |
+|GatewayDiagnosticLog | 包含閘道設定事件、主要變更和維護事件的資源記錄 |
+|TunnelDiagnosticLog | 包含通道狀態變更事件。 通道連接/中斷線上活動具有狀態變更的摘要原因（如果適用） |
+|RouteDiagnosticLog | 記錄在閘道上發生的靜態路由和 BGP 事件的變更 |
+|IKEDiagnosticLog | 記錄閘道上的 IKE 控制訊息和事件 |
+|P2SDiagnosticLog | 記錄閘道上的點對站控制訊息和事件。 僅提供 IKEv2 連接的連線來源資訊 |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>在 Azure 入口網站中設定警示
 
-以下範例步驟將為涉及網站到網站 VPN 隧道的斷開連接事件建立警報:
+下列範例步驟會針對包含站對站 VPN 通道的中斷線上活動建立警示：
 
 
-1. 在 Azure 門戶中,在 **「所有服務**」下搜尋**紀錄分析**,然後選擇**日誌分析工作區**。
+1. 在 Azure 入口網站中，搜尋 [**所有服務**] 底下的 [ **log analytics** ]，然後選取 [ **log analytics 工作區**]。
 
-   ![前往紀錄分析工作區的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "建立")
+   ![前往 Log Analytics 工作區的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "建立")
 
-2. 在**日誌分析**頁面上選擇 **"創建**"。
+2. 在 [ **Log Analytics** ] 頁面上選取 [**建立**]。
 
-   ![使用「建立」按鈕的紀錄分析頁面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "選取")
+   ![具有 [建立] 按鈕的 Log Analytics 頁面](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "選取")
 
-3. 選擇 **"新建"** 並填寫詳細資訊。
+3. 選取 **[新建]** 並填入詳細資料。
 
-   ![建立紀錄分析工作區的詳細資訊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "選取")
+   ![建立 Log Analytics 工作區的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "選取")
 
-4. 在 **「監視器** > **診斷設定」** 邊欄選項卡上尋找 VPN 閘道。
+4. 在 [**監視** > **診斷設定**] 分頁上尋找您的 VPN 閘道。
 
-   ![在診斷設定中尋找 VPN 閘道的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "選取")
+   ![在診斷設定中尋找 VPN 閘道的選項](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "選取")
 
-5. 要打開診斷程式,請按兩下閘道,然後選擇「**打開診斷**」。
+5. 若要開啟診斷，請按兩下閘道，然後選取 [**開啟診斷**]。
 
-   ![開啟診斷的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "選取")
+   ![開啟診斷的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "選取")
 
-6. 填寫詳細資訊,並確保選擇 **「發送到日誌分析和****隧道診斷日誌**」。。 選擇您在步驟 3 中建立的日誌分析工作區。
+6. 填入詳細資料，並確定已選取 [**傳送至 Log Analytics** ] 和 [ **TunnelDiagnosticLog** ]。 選擇您在步驟3中建立的 Log Analytics 工作區。
 
-   ![選取的選擇的欄位](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "選取")
+   ![選取的核取方塊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "選取")
 
    > [!NOTE]
-   > 數據可能需要幾個小時才能最初顯示。
+   > 一開始可能需要幾個小時的時間才會顯示資料。
 
-7. 轉到虛擬網路閘道資源的概述,並從 **「監視」** 選項卡中選擇 **「警報**」。。然後創建新的警報規則或編輯現有的警報規則。
+7. 請移至虛擬網路閘道資源的總覽，然後從 [**監視**] 索引標籤中選取 [**警示**]。然後建立新的警示規則，或編輯現有的警示規則。
 
-   ![建立新警示規則的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
+   ![建立新警示規則的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
 
-   ![點對點](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
-8. 選擇日誌分析工作區和資源。
+   ![點對站](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "選取")
+8. 選取 Log Analytics 工作區和資源。
 
-   ![工作區與資源的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "選取")
+   ![工作區和資源的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "選取")
 
-9. 選擇**自訂紀錄搜尋**作為 **「新增條件**」下的信號邏輯。
+9. 選取 [**自訂記錄搜尋**] 做為 [**新增條件**] 底下的 [信號邏輯]。
 
-   ![自訂紀錄搜尋的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "選取")
+   ![自訂記錄搜尋的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "選取")
 
-10. 在 **「搜尋」查詢**文字框中輸入以下查詢。 根據需要替換 <> 和時間生成中的值。
+10. 在 [**搜尋查詢**] 文字方塊中輸入下列查詢。 視需要取代 <> 和 TimeGenerated 中的值。
 
     ```
     AzureDiagnostics
@@ -86,23 +86,23 @@ Azure 中提供了以下紀錄:
     | sort by TimeGenerated asc
     ```
 
-    將閾值設置為 0 並選擇 **「完成**」。
+    將 [臨界值] 設定為0，然後選取 [**完成**]。
 
-    ![輸入查詢並選擇閾值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "選取")
+    ![輸入查詢並選取臨界值](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "選取")
 
-11. 在「**建立規則**」 頁上,在 **「操作群組」** 部分下選擇 **「新建**」 。 填寫詳細資訊並選擇 **「確定**」。
+11. 在 [**建立規則**] 頁面上，選取 [**動作群組**] 區段底下的 [**建立新**的]。 填入詳細資料，然後選取 **[確定]**。
 
-    ![新操作群組的詳細資訊](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "選取")
+    ![新動作群組的詳細資料](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "選取")
 
-12. 在 **"創建規則"** 頁上,填寫 **「自訂操作」** 的詳細資訊,並確保正確的名稱顯示在 **「操作組名稱」** 部分中。 選擇 **「建立警報規則**」 以建立規則。
+12. 在 [**建立規則**] 頁面上，填入**自訂動作**的詳細資料，並確定 [**動作組名**] 區段中出現正確的名稱。 選取 [**建立警示規則**] 以建立規則。
 
-    ![建立規則的選擇](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "選取")
+    ![建立規則的選取專案](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "選取")
 
 ## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>使用 PowerShell 設定警示
 
-以下示例步驟為涉及網站到網站 VPN 隧道的斷開連接事件創建警報。
+下列範例步驟會針對包含站對站 VPN 通道的中斷線上活動建立警示。
 
-1. 建立紀錄分析工作區:
+1. 建立 Log Analytics 工作區：
 
    ```powershell
    $Location           = 'westus2'
@@ -113,7 +113,7 @@ Azure 中提供了以下紀錄:
    New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku $Sku -ResourceGroupName $ResourceGroupName
    ```
 
-2. 開啟 VPN 閘道的診斷:
+2. 開啟 VPN 閘道的診斷：
 
    ```powershell
    $ResourceGroupName  = 'TestRG1'
@@ -131,9 +131,9 @@ Azure 中提供了以下紀錄:
        -Category 'TunnelDiagnosticLog'
    ```
 
-3. 創建操作組。
+3. 建立動作群組。
 
-   此代碼建立操作群組,在觸發警報時發送電子郵件通知:
+   此程式碼會建立動作群組，以便在觸發警示時傳送電子郵件通知：
 
    ```powershell
    $ActionGroupName            = 'EmailAdmins'   # Max. 60 characters long
@@ -151,7 +151,7 @@ Azure 中提供了以下紀錄:
       -Receiver @($ActionGroupReceiver)
    ```
 
-4. 以自訂紀錄搜尋建立警示規則:
+4. 根據自訂記錄檔搜尋建立警示規則：
 
    ```powershell
    $ActionGroupName    = 'EmailAdmins'
@@ -197,4 +197,4 @@ Azure 中提供了以下紀錄:
 
 ## <a name="next-steps"></a>後續步驟
 
-要設定隧道指標上的警報,請參閱在[VPN 閘道指標上設定警報](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。
+若要設定通道計量的警示，請參閱[設定 VPN 閘道計量的警示](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。

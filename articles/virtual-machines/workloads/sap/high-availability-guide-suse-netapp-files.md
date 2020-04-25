@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/27/2020
+ms.date: 03/27/2020
 ms.author: radeltch
-ms.openlocfilehash: ac8ffba279fac338f3d28cec2f0d671be740150e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.openlocfilehash: 436e9c6b8bdff42680d7aa5b941822090f668855
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164741"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82127650"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -78,15 +78,15 @@ ms.locfileid: "78164741"
 * SAP Note [2243692][2243692] 包含 Azure 中 Linux 上的 SAP 授權相關資訊。
 * SAP Note [1984787][1984787] 包含 SUSE LINUX Enterprise Server 12 的一般資訊。
 * SAP Note [1999351][1999351] 包含 Azure Enhanced Monitoring Extension for SAP 的其他疑難排解資訊。
-* SAP 社區 WIKI] （ https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含適用于 Linux 的所有必要 SAP 附注。
-* [適用于 SAP on Linux 的 Azure 虛擬機器規劃和執行][planning-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器部署][deployment-guide]
-* [適用于 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* [SUSE SAP HA 最佳做法指南][suse-ha-guide]這些指南包含設定 Netweaver HA 和內部部署 SAP Hana 系統複寫的所有必要資訊。 請使用這些指南作為一般基準。 它們提供更詳細的資訊。
-* [SUSE 高可用性擴充功能 12 SP3 版本資訊][suse-ha-12sp3-relnotes]
+* SAP 社區 WIKI] （https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)具有適用于 Linux 的所有必要 SAP 附注）。
+* [適用於 SAP on Linux 的 Azure 虛擬機器規劃和實作][planning-guide]
+* [在 Linux 上為 SAP 進行 Azure 虛擬機器部署][deployment-guide]
+* [適用於 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
+* [SUSE SAP HA 最佳做法指南][suse-ha-guide] 此指南包含設定內部部署 Netweaver HA 和 SAP HANA 系統複寫的所有必要資訊。 請使用這些指南作為一般基準。 它們提供更詳細的資訊。
+* [SUSE 高可用性擴充 12 SP3 版本資訊][suse-ha-12sp3-relnotes]
 * [使用 Azure NetApp Files 在 Microsoft Azure 的 NetApp SAP 應用程式][anf-sap-applications-azure]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 SAP Netweaver 中央服務的高可用性（HA）需要共用儲存體。
 若要在 SUSE Linux 上達到此目的，您必須建立個別的高可用性 NFS 叢集。 
@@ -94,7 +94,7 @@ SAP Netweaver 中央服務的高可用性（HA）需要共用儲存體。
 現在，您可以使用部署在 Azure NetApp Files 上的共用儲存體來達到 SAP Netweaver HA。 將 Azure NetApp Files 用於共用存放裝置，就不需要額外的[NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)叢集。 SAP Netweaver central services （ASCS/SCS）的 HA 仍然需要 Pacemaker。
 
 
-![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
+![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.png)
 
 SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上，需要有[負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)，才能使用虛擬 IP 位址。 我們建議使用[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 下列清單顯示 (A)SCS 和 ERS 負載平衡器的組態。
 
@@ -102,17 +102,15 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料�
 
 * 前端組態
   * IP 位址10.1.1.20
-* 後端組態
-  * 連線到應該屬於 (A)SCS/ERS 叢集一部分之所有虛擬機器的主要網路介面
 * 探查連接埠
-  * 連接埠 620<strong>&lt;nr&gt;</strong>
+  * 埠 620<strong>&lt;nr&gt;</strong>
 * 負載平衡規則
   * 如果使用 Standard Load Balancer，請選取 [ **HA 埠**]
   * 如果使用基本 Load Balancer，請建立下列埠的負載平衡規則
-    * 32<strong>&lt;nr&gt;</strong> TCP
-    * 36<strong>&lt;nr&gt;</strong> TCP
-    * 39<strong>&lt;nr&gt;</strong> TCP
-    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 32<strong>&lt;nr&gt; </strong> TCP
+    * 36<strong>&lt;nr&gt; </strong> TCP
+    * 39<strong>&lt;nr&gt; </strong> TCP
+    * 81<strong>&lt;nr&gt; </strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -121,18 +119,20 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP Hana 資料�
 
 * 前端組態
   * IP 位址10.1.1.21
-* 後端組態
-  * 連線到應該屬於 (A)SCS/ERS 叢集一部分之所有虛擬機器的主要網路介面
 * 探查連接埠
-  * 連接埠 621<strong>&lt;nr&gt;</strong>
+  * 埠 621<strong>&lt;nr&gt;</strong>
 * 負載平衡規則
   * 如果使用 Standard Load Balancer，請選取 [ **HA 埠**]
   * 如果使用基本 Load Balancer，請建立下列埠的負載平衡規則
-    * 32<strong>&lt;nr&gt;</strong> TCP
-    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 32<strong>&lt;nr&gt; </strong> TCP
+    * 33<strong>&lt;nr&gt; </strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
+
+* 後端組態
+  * 連線到應該屬於 (A)SCS/ERS 叢集一部分之所有虛擬機器的主要網路介面
+
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>設定 Azure NetApp Files 基礎結構 
 
@@ -152,15 +152,16 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 4. 將子網委派給 Azure NetApp files，如將[子網委派給 Azure Netapp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的指示所述。  
 
-5. 部署 Azure NetApp Files 磁片區，[並遵循指示來建立 Azure Netapp files 的磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區。 將磁片區部署在指定的 Azure NetApp Files[子網](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中。 請記住，Azure NetApp Files 資源和 Azure Vm 必須位於相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。 例如，sapmnt<b>QAS</b>、usrsap<b>QAS</b>等是磁片區名稱和 sapmnt<b>QAS</b>、Usrsap<b>QAS</b>等等，是 Azure NetApp Files 磁片區的 filepaths。  
+5. 部署 Azure NetApp Files 磁片區，[並遵循指示來建立 Azure Netapp files 的磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區。 將磁片區部署在指定的 Azure NetApp Files[子網](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)中。 請記住，Azure NetApp Files 資源和 Azure Vm 必須位於相同的 Azure 虛擬網路或對等互連 Azure 虛擬網路中。 在此範例中，我們會使用兩個 Azure NetApp Files 磁片區： sap<b>QAS</b>和交易。裝載至對應掛接點的檔案路徑為/usrsap<b>qas</b>/sapmnt<b>qas</b>、/usrsap<b>qas</b><b>/usrsap qas sys 等等</b>。  
 
-   1. volume sapmnt<b>QAS</b> （nfs://10.1.0.4/sapmnt<b>QAS</b>）
-   2. volume usrsap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>）
-   3. volume usrsap<b>QAS</b>sys （nfs://10.1.0.5/usrsap<b>QAS</b>sys）
-   4. volume usrsap<b>QAS</b>ers （nfs://10.1.0.4/usrsap<b>QAS</b>ers）
+   1. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/sapmnt<b>QAS</b>）
+   2. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs）
+   3. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys）
+   4. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ers）
    5. 磁片區交易（nfs://10.1.0.4/trans）
-   6. volume usrsap<b>QAS</b>pas （nfs://10.1.0.5/usrsap<b>QAS</b>pas）
-   7. volume usrsap<b>QAS</b>.aas （nfs://10.1.0.4/usrsap<b>QAS</b>.aas）
+   6. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas）
+   7. volume sap<b>QAS</b> （nfs://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>.aas）
+
    
 在此範例中，我們使用適用于所有 SAP Netweaver 檔案系統的 Azure NetApp Files 來示範如何使用 Azure NetApp Files。 不需要透過 NFS 裝載的 SAP 檔案系統也可以部署為[Azure 磁片儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。 在此範例中， <b>a-e</b>必須位於 Azure NetApp Files，而<b>f-g</b> （也就是/usr/sap/<b>QAS</b>/d<b>02</b>，/Usr/sap/<b>QAS</b>/d<b>03</b>）可以部署為 azure 磁片儲存體。 
 
@@ -172,7 +173,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 - 最小磁片區為 100 GiB
 - Azure NetApp Files 和所有虛擬機器（將裝載 Azure NetApp Files 磁片區）必須位於相同的 Azure 虛擬網路或相同區域的[對等互連虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)中。 現在支援透過相同區域中的 VNET 對等互連來存取 Azure NetApp Files。 尚不支援透過全球對等互連進行 Azure NetApp 存取。
 - 選取的虛擬網路必須有委派給 Azure NetApp Files 的子網。
-- Azure NetApp Files 提供[匯出原則](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：您可以控制允許的用戶端、存取類型（讀取 & 寫入、唯讀等等）。 
+- Azure NetApp Files 提供[匯出原則](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：您可以控制允許的用戶端、存取類型（讀取&寫入、唯讀等等）。 
 - Azure NetApp Files 功能尚無法感知區域。 Azure NetApp Files 功能目前不會部署在 Azure 區域中的所有可用性區域。 請留意某些 Azure 區域中可能的延遲含意。 
 - Azure NetApp Files 磁片區可以部署為 NFSv3 或 NFSv 4.1 磁片區。 SAP 應用層（ASCS/ERS、SAP 應用程式伺服器）支援這兩種通訊協定。 
 
@@ -203,10 +204,10 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 本節中的指示僅適用于搭配使用 Azure NetApp Files 磁片區與 NFSv 4.1 通訊協定的情況。 在所有 Vm 上執行設定，其中會裝載 Azure NetApp Files NFSv 4.1 磁片區。  
 
-1. 確認 NFS 網域設定。 請確定已將網域設定為預設的 Azure NetApp Files 網域，也就是 **`defaultv4iddomain.com`** ，而且對應已設為 [沒有**人**]。  
+1. 確認 NFS 網域設定。 請確定已將網域設定為預設的 Azure NetApp Files 網域， **`defaultv4iddomain.com`** 也就是將對應設為 [沒有**人**]。  
 
     > [!IMPORTANT]
-    > 請務必將 VM 上 `/etc/idmapd.conf` 中的 NFS 網域設定為符合 Azure NetApp Files 上的預設網域設定： **`defaultv4iddomain.com`** 。 如果 NFS 用戶端上的網域設定（也就是 VM）和 NFS 伺服器（也就是 Azure NetApp configuration）不相符，則在 Vm 上掛接的 Azure NetApp 磁片區上的檔案許可權將會顯示為 `nobody`。  
+    > 請務必將 VM `/etc/idmapd.conf`上的 NFS 網域設定為符合 Azure NetApp Files 上的預設網域設定：。 **`defaultv4iddomain.com`** 如果 NFS 用戶端上的網域設定（也就是 VM）和 NFS 伺服器（也就是 Azure NetApp configuration）不相符，則在 Vm 上掛接的 Azure NetApp 磁片區上的檔案許可權將會顯示為`nobody`。  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -220,7 +221,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** 確認 `nfs4_disable_idmapping`。 它應該設定為**Y**。若要建立 `nfs4_disable_idmapping` 所在的目錄結構，請執行掛接命令。 您將無法在/sys/modules 下手動建立目錄，因為已為核心/驅動程式保留存取權。  
+4. **[A]** 驗證`nfs4_disable_idmapping`。 它應該設定為**Y**。若要建立所在的目錄`nfs4_disable_idmapping`結構，請執行掛接命令。 您將無法在/sys/modules 下手動建立目錄，因為已為核心/驅動程式保留存取權。  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -241,7 +242,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ### <a name="deploy-azure-load-balancer-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Azure Load Balancer
 
-首先，您必須建立 Azure NetApp Files 磁片區。 部署 Vm。 之後，您需建立負載平衡器，然後使用後端集區中的虛擬機器。
+首先，您必須建立 Azure NetApp Files 磁片區。 部署 Vm。 之後，您可以建立負載平衡器，並使用後端集區中的虛擬機器。
 
 1. 建立負載平衡器（內部、標準）：  
    1. 建立前端 IP 位址
@@ -253,13 +254,12 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
       1. ASCS ERS 的 IP 位址10.1.1.21
          * 在 "a" 底下重複上述步驟，以建立 ERS 的 IP 位址（例如**10.1.1.21**和前端） **。QAS.ERS**）
    1. 建立後端集區
-      1. 建立 ASCS 的後端集區
-         1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
-         1. 輸入新後端集區的名稱（例如**後端）。QAS**）
-         1. 按一下 [新增虛擬機器]。
-         1. 選取虛擬機器
-         1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
-         1. 按一下 [新增]
+      1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
+      1. 輸入新後端集區的名稱（例如**後端）。QAS**）
+      1. 按一下 [新增虛擬機器]。
+      1. 選取虛擬機器
+      1. 選取（A） SCS 叢集及其 IP 位址的虛擬機器。
+      1. 按一下 [新增]
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
@@ -288,13 +288,12 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
       1. ASCS ERS 的 IP 位址10.1.1.21
          * 在 "a" 底下重複上述步驟，以建立 ERS 的 IP 位址（例如**10.1.1.21**和前端） **。QAS.ERS**）
    1. 建立後端集區
-      1. 建立 ASCS 的後端集區
-         1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
-         1. 輸入新後端集區的名稱（例如**後端）。QAS**）
-         1. 按一下 [新增虛擬機器]。
-         1. 選取您稍早為 ASCS 建立的可用性設定組 
-         1. 選取 (A)SCS 叢集的虛擬機器
-         1. Click OK
+      1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
+      1. 輸入新後端集區的名稱（例如**後端）。QAS**）
+      1. 按一下 [新增虛擬機器]。
+      1. 選取您稍早為 ASCS 建立的可用性設定組 
+      1. 選取 (A)SCS 叢集的虛擬機器
+      1. Click OK
    1. 建立健康狀態探查
       1. 針對 ASCS 是連接埠 620**00**
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
@@ -308,14 +307,14 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
          1. 輸入新負載平衡器規則的名稱（例如**lb。QAS.ASCS 3200**）
          1. 選取您稍早建立的 ASCS、後端集區及健康情況探查的前端 IP 位址（例如**前端）。QAS.ASCS**）
-         1. 保留通訊協定 [TCP]，輸入連接埠 **3200**
+         1. 保留通訊協定 [TCP]****，輸入連接埠 **3200**
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
          1. Click OK
       1. ASCS 的其他連接埠
          * 針對 ASCS 的埠 36**00**、39**00**、81**00**、5**00**13、5**00**14、5**00**16 和 TCP，重複上述的步驟 "d"
       1. ASCS ERS 的其他連接埠
-         * 針對 ASCS ERS 的埠 33**01**、5**01**13、5**01**14、5**01 16 和**TCP 的 "d" 底下重複上述步驟
+         * 針對 ASCS ERS 的埠 32**01**、33**01**、5**01**13、5**01**14、5**01 16 和**TCP，重複上述的步驟 "d"
 
       > [!Note]
       > 當沒有公用 IP 位址的 Vm 放在內部（沒有公用 IP 位址）標準 Azure 負載平衡器的後端集區中時，除非執行額外設定以允許路由傳送至公用端點，否則將不會有輸出網際網路連線能力。 如需如何達到輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
@@ -329,7 +328,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ### <a name="installation"></a>安裝
 
-下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
+下列專案前面會加上 **[A]** -適用于所有節點、 **[1]** -僅適用于節點1或 **[2]** -僅適用于節點2。
 
 1. **[A]** 安裝 SUSE 連接器
 
@@ -399,6 +398,30 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <b>10.1.1.21    anftstsapers</b>
    </code></pre>
 
+4. **[1]** 在 Azure NetApp Files 磁片區中建立 SAP 目錄。  
+   在其中一個 Vm 上暫時掛接 Azure NetApp Files 磁片區，並建立 SAP 目錄（檔案路徑）。  
+
+   ```
+    # mount temporarily the volume
+    sudo mkdir -p /saptmp
+    # If using NFSv3
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.1.0.4:/sapQAS /saptmp
+    # If using NFSv4.1
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys,tcp 10.1.0.4:/sapQAS /saptmp
+    # create the SAP directories
+    sudo cd /saptmp
+    sudo mkdir -p sapmntQAS
+    sudo mkdir -p usrsapQASascs
+    sudo mkdir -p usrsapQASers
+    sudo mkdir -p usrsapQASsys
+    sudo mkdir -p usrsapQASpas
+    sudo mkdir -p usrsapQASaas
+    # unmount the volume and delete the temporary directory
+    sudo cd ..
+    sudo umount /saptmp
+    sudo rmdir /saptmp
+    ``` 
+
 ## <a name="prepare-for-sap-netweaver-installation"></a>準備進行 SAP NetWeaver 安裝
 
 1. **[A]** 建立共用目錄
@@ -416,7 +439,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]** 設定 `autofs`
+2. **[A]** 設定`autofs`
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -429,9 +452,9 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind,sync 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    如果使用 NFSv 4.1，請使用下列方式建立檔案：
@@ -439,15 +462,15 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    > [!NOTE]
    > 裝載磁片區時，請務必符合 Azure NetApp Files 磁片區的 NFS 通訊協定版本。 如果 Azure NetApp Files 磁片區是建立為 NFSv3 磁片區，請使用對應的 NFSv3 設定。 如果 Azure NetApp Files 磁片區是建立為 NFSv 4.1 磁片區，請遵循指示來停用識別碼對應，並務必使用對應的 NFSv 4.1 設定。 在此範例中，Azure NetApp Files 磁片區已建立為 NFSv3 磁片區。  
    
-   重新開機 `autofs` 以掛接新的共用
+   重新`autofs`啟動以掛接新的共用
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -478,17 +501,22 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
    > [!IMPORTANT]
    > 最近的測試顯示的情況下，netcat 會因待處理專案而停止回應要求，而且其限制只會處理一個連接。 Netcat 資源會停止接聽 Azure 負載平衡器要求，而浮動 IP 會變成無法使用。  
-   > 針對現有的 Pacemaker 叢集，我們建議以 socat 取代 netcat，並遵循[Azure 負載平衡器偵測強化](https://www.suse.com/support/kb/doc/?id=7024128)中的指示。 請注意，變更將需要短暫的停機時間。  
+   > 針對現有的 Pacemaker 叢集，我們建議在過去將 netcat 取代為 socat。 目前，我們建議使用 azure-lb 資源代理程式，這是套件資源代理程式的一部分，並具有下列套件版本需求：
+   > - 對於 SLES 12 SP4/SP5，版本必須至少是 4.3.018. a7fb5035-3.30.1。  
+   > - SLES 15/15 SP1 的版本至少必須是資源代理程式-4.3.0184.6 ee15eb2-4.13.1。  
+   >
+   > 請注意，變更將需要短暫的停機時間。  
+   > 針對現有的 Pacemaker 叢集，如果設定已變更為使用 socat （如[Azure 負載平衡器偵測強化](https://www.suse.com/support/kb/doc/?id=7024128)中所述），則不需要立即切換至 azure-lb 資源代理程式。
 
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -497,9 +525,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
      params ip=<b>10.1.1.20</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
-     op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>QAS</b>_ASCS azure-lb port=620<b>00</b>
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
       meta resource-stickiness=3000
@@ -516,7 +542,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    #
    # Resource Group: g-QAS_ASCS
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #     nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
@@ -543,13 +569,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -558,12 +584,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
      params ip=<b>10.1.1.21</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
-    op monitor timeout=20s interval=10 depth=0
-   
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
-   # Do you still want to commit (y/n)? y
+   sudo crm configure primitive nc_<b>QAS</b>_ERS azure-lb port=621<b>01</b>
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
    </code></pre>
@@ -580,11 +601,11 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS  (ocf::heartbeat:IPaddr2):     <b>Started anftstsapcl2</b>
    </code></pre>
 
@@ -646,7 +667,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 6. **[A]** 設定保持運作
 
-   SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 為防止這個情況，您需要在 SAP NetWeaver ASCS/SCS 設定檔中設定參數，並變更 Linux 系統設定。 如需詳細資訊，[請參閱 SAP 附注 1410736][1410736] 。
+   SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 為防止這個情況，您需要在 SAP NetWeaver ASCS/SCS 設定檔中設定參數，並變更 Linux 系統設定。 如需詳細資訊，請閱讀 [SAP Note 1410736][1410736]。
 
    ASCS/SCS 設定檔參數 enque/encni/set_so_keepalive 已在最後一個步驟中新增。
 
@@ -662,7 +683,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]** 將 ASCS 和 ERS SAP 服務新增至 `sapservice` 檔案
+8. **[1]** 將 ASCS 和 ERS SAP 服務新增至`sapservice`檔案
 
    在第二個節點中新增 ASCS 服務項目，並將 ERS 服務項目複製到第一個節點。
 
@@ -738,17 +759,17 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    #      rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl2</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver 應用程式伺服器準備 
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver 應用程式伺服器準備 
 
 某些資料庫需要在應用程式伺服器上執行資料庫執行個體安裝。 準備應用程式伺服器虛擬機器，以便在這些情況下使用它們。
 
@@ -813,7 +834,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]** 在 PAS 上設定 `autofs`
+1. **[P]** 在`autofs` PAS 上設定
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -826,9 +847,9 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    如果使用 NFSv 4.1，請使用下列方式建立新的檔案：
@@ -836,19 +857,19 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
-   重新開機 `autofs` 以掛接新的共用
+   重新`autofs`啟動以掛接新的共用
 
    <pre><code>
    sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[P]** 在 .Aas 上設定 `autofs`
+1. **[P]** 在`autofs` .aas 上設定
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -861,9 +882,9 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    如果使用 NFSv 4.1，請使用下列方式建立新的檔案：
@@ -871,12 +892,12 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
-   重新開機 `autofs` 以掛接新的共用
+   重新`autofs`啟動以掛接新的共用
 
    <pre><code>
    sudo systemctl enable autofs
@@ -905,7 +926,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
 ## <a name="install-database"></a>安裝資料庫
 
-在此範例中，SAP NetWeaver 安裝在 SAP Hana 上。 您可以針對此安裝使用每個支援的資料庫。 如需有關如何在 Azure 中安裝 SAP Hana 的詳細資訊，請參閱[azure 虛擬機器（vm）上 SAP Hana 的高可用性][sap-hana-ha]。 如需支援的資料庫清單，請參閱[SAP 附注 1928533][1928533]。
+在此範例中，SAP NetWeaver 安裝在 SAP Hana 上。 您可以針對此安裝使用每個支援的資料庫。 如需如何在 Azure 中安裝 SAP Hana 的詳細資訊，請參閱 [Azure 虛擬機器 (VM) 上的 SAP Hana 高可用性][sap-hana-ha]。 如需支援的資料庫清單，請參閱[SAP 附注 1928533][1928533]。
 
 * 執行 SAP 資料庫執行個體安裝
 
@@ -1018,13 +1039,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rscsap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Starting anftstsapcl1
    </code></pre>
@@ -1047,13 +1068,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1065,13 +1086,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1094,13 +1115,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1112,13 +1133,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1138,13 +1159,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
 
@@ -1175,13 +1196,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1193,18 +1214,18 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   例如，透過編輯交易 su01 中的使用者來建立佇列鎖定。 在執行 ASCS 實例的節點上，以 < sapsid\>adm 的形式執行下列命令。 這些命令會停止 ASCS 執行個體，並重新啟動它。 如果使用佇列伺服器1架構，此測試中的佇列鎖定應該會遺失。 如果使用佇列伺服器2架構，將會保留排入佇列。 
+   例如，透過編輯交易 su01 中的使用者來建立佇列鎖定。 在 ASCS 實例執行所在的節點\>上，以 <sapsid adm 的形式執行下列命令。 這些命令會停止 ASCS 執行個體，並重新啟動它。 如果使用佇列伺服器1架構，此測試中的佇列鎖定應該會遺失。 如果使用佇列伺服器2架構，將會保留排入佇列。 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1224,13 +1245,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1242,13 +1263,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1258,7 +1279,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   如果您只終止訊息伺服器一次，則會 `sapstart`重新開機它。 如果您終止伺服器的次數足夠，則 Pacemaker 最終會將 ASCS 執行個體移到另一個節點。 以 root 身份執行下列命令，以在測試之後清除 ASCS 和 ERS 執行個體的資源狀態。
+   如果您只終止訊息伺服器一次，則會由`sapstart`重新開機。 如果您終止伺服器的次數足夠，則 Pacemaker 最終會將 ASCS 執行個體移到另一個節點。 以 root 身份執行下列命令，以在測試之後清除 ASCS 和 ERS 執行個體的資源狀態。
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00
@@ -1270,13 +1291,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1288,13 +1309,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1316,13 +1337,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1334,13 +1355,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1350,7 +1371,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   如果您只執行一次命令，`sapstart` 將會重新開機進程。 如果您經常執行它，`sapstart` 將不會重新開機進程，而且資源會處於停止狀態。 以 root 身份執行下列命令，以在測試之後清除 ERS 執行個體的資源狀態。
+   如果您只執行一次命令， `sapstart`將會重新開機進程。 如果您經常執行它， `sapstart`就不會重新開機進程，而且資源會處於停止狀態。 以 root 身份執行下列命令，以在測試之後清除 ERS 執行個體的資源狀態。
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
@@ -1360,13 +1381,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1378,13 +1399,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1403,13 +1424,13 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1417,9 +1438,7 @@ Azure NetApp files 在數個[azure 區域](https://azure.microsoft.com/global-in
 ## <a name="next-steps"></a>後續步驟
 
 * [SLES for SAP 應用程式上的 Azure Vm 上的 HA for SAP NW 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [適用于 SAP 的 Azure 虛擬機器規劃和執行][planning-guide]
-* [適用于 SAP 的 Azure 虛擬機器部署][deployment-guide]
-* [適用于 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 瞭解如何建立高可用性並規劃 SAP 的嚴重損壞修復 
-* HANA on Azure （大型實例），請參閱[azure 上的 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)。
-* 若要瞭解如何建立高可用性並規劃 Azure Vm 上 SAP Hana 的嚴重損壞修復，請參閱[azure 虛擬機器（vm）上 SAP Hana 的高可用性][sap-hana-ha]
+* [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
+* [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
+* [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
+* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

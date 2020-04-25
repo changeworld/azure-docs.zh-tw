@@ -1,5 +1,5 @@
 ---
-title: 更新 Azure 應用商店中的現有 VM 產品/服務
+title: 更新 Azure Marketplace 中的現有 VM 供應專案
 description: 說明如何更新 Azure Marketplace 中的現有虛擬機器供應項目。
 author: dsindona
 ms.service: marketplace
@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 934be24d07c01c76c8caf5e16af4b765df79c964
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273047"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142909"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure Marketplace 中的現有虛擬機器供應項目
 
 > [!IMPORTANT]
-> 從 2020 年 4 月 13 日開始,我們將開始將 Azure 虛擬機產品的管理移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照創建 Azure[虛擬機器產品/服務](https://aka.ms/CreateAzureVMoffer)中的說明進行操作,以管理遷移的優惠。
+> 從2020年4月13日開始，我們會開始將 Azure 虛擬機器供應專案的管理移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 Azure 虛擬機器供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)專案中的指示來管理您的已遷移優惠。
 
-本文將逐步說明在 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)更新虛擬機器 (VM) 供應項目並重新發佈的各個層面。 
+本文將逐步說明在 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)更新虛擬機器 (VM) 供應項目並重新發佈的各個層面。
 
 需要更新供應項目的幾個常見原因如下：
 
@@ -32,7 +32,7 @@ ms.locfileid: "81273047"
 為了協助您修改這些項目，入口網站提供了 **「比較」** 與 **「記錄」** 的功能。  
 
 >[!Note]
->雲端解決方案供應商 (CSP) 合作夥伴通路選擇加入現已可用。  有關透過 Microsoft CSP 合作夥伴通路行銷產品/服務的更多資訊[,請參閱雲解決方案供應商](../../cloud-solution-providers.md)。
+>雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。  如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](../../cloud-solution-providers.md)。
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>不允許對虛擬機器供應項目或 SKU 進行的變更
 
@@ -78,7 +78,7 @@ ms.locfileid: "81273047"
 
 1.  登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有優惠**"下找到您要更新的優惠。
+2.  在 [**所有**供應專案] 下，尋找您要更新的供應專案。
 
 3.  在 [SKU]**** 索引標籤中，按一下想要修改可用性的 SKU。
 
@@ -97,7 +97,7 @@ ms.locfileid: "81273047"
 
 1.  登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有優惠**"下找到您要更新的優惠。
+2.  在 [**所有**供應專案] 下，尋找您要更新的供應專案。
 
 3.  在 [SKU]**** 索引標籤下方，按一下 [新增 SKU]****，並在快顯視窗中提供 [SKU 識別碼]****。
 
@@ -112,7 +112,7 @@ ms.locfileid: "81273047"
 
 1.  登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 
-2.  在 **"所有優惠**"下找到您要更新的優惠。
+2.  在 [**所有**供應專案] 下，尋找您要更新的供應專案。
 
 3.  移至 [Marketplace]**** 索引標籤，然後依照[將虛擬機器發佈至 Azure Marketplace](./cpp-publish-offer.md) (英文) 一文中的說明，來變更中繼資料。
 
@@ -121,7 +121,7 @@ ms.locfileid: "81273047"
 
 ### <a name="update-pricing-on-published-offers"></a>更新已發佈供應項目的價格
 
-發佈隨用隨付的供應項目後，就無法直接提高 SKU 的價格。  (但是,您可以在同一產品/服務下創建新的 SKU,刪除舊的 SKU,然後為新客戶重新發佈產品/服務。 相反,您可以使用以下步驟降低已發佈產品/服務的價格:
+發佈隨用隨付的供應項目後，就無法直接提高 SKU 的價格。  （不過，您可以在相同的供應專案下建立新的 SKU、刪除舊的 SKU，然後重新發佈您的供應專案給新客戶）。 相反地，您可以使用下列步驟來降低已發佈供應專案的價格：
 
 1.  登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 
@@ -131,7 +131,7 @@ ms.locfileid: "81273047"
 
 4.  如果您已在 1x1 GUI 中設定價格，則可直接在 UI 中變更價格。 如果您是以匯入/匯出試算表的方式設定價格，則只能以匯入/匯出功能來降低價格。
 
-3.  按一下 [檔案]  。
+3.  按一下 **[儲存]** 。
 
 4.  按一下 [發佈]**** 啟動工作流程，以發佈您的變更。
 

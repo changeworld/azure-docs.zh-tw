@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42abeba310e7a30364f93e998f12129a2d3c1f15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114287"
+ms.locfileid: "82136680"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>管理 Azure 自動化中的認證
 
@@ -41,7 +41,7 @@ ms.locfileid: "82114287"
 
 ## <a name="activities-used-to-access-credentials"></a>用來存取認證的活動
 
-下表中的活動是用來存取 runbook 和 DSC 設定中的認證。
+下表中的活動是用來存取圖形化 runbook 和 DSC 設定中的認證。 如需使用活動的範例，請參閱[Azure 自動化中的圖形化編寫](../automation-graphical-authoring-intro.md#activities)。
 
 | 活動 | 描述 |
 |:--- |:--- |

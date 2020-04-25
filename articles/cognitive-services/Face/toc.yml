@@ -7,14 +7,8 @@
       href: Overview.md
 - name: 快速入門
   items:
-    - name: 使用用戶端 SDK
-      items:
-        - name: .NET SDK
-          href: Quickstarts/csharp-sdk.md
-        - name: Python SDK
-          href: QuickStarts/python-sdk.md
-        - name: Go SDK
-          href: QuickStarts/go-sdk.md
+    - name: 使用用戶端程式庫
+      href: Quickstarts/client-libraries.md
     - name: 使用 REST API
       items:
         - name: 偵測影像中的人臉
@@ -107,7 +101,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430315-face-api'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

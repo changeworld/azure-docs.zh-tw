@@ -1,54 +1,54 @@
 ---
-title: 開啟與使用 Azure 堡壘診斷日誌
-description: 在本文中,瞭解如何啟用和使用 Azure 堡壘診斷日誌。
+title: 啟用及使用 Azure 防禦資源記錄
+description: 在本文中，您將瞭解如何啟用及使用 Azure 防禦診斷記錄。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619271"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131281"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>開啟與使用堡壘診斷日誌
+# <a name="enable-and-work-with-bastion-resource-logs"></a>啟用和使用防禦資源記錄
 
-當使用者使用 Azure Bastion 連接到工作負荷時,Bastion 可以記錄遠端作業階段的診斷。 然後,可以使用診斷來查看哪些使用者連接到哪些工作負荷、在什麼時間、從何處以及其他此類相關日誌記錄資訊。 為了使用診斷,必須在 Azure 堡壘上啟用診斷日誌。 本文可説明您啟用診斷日誌,然後查看日誌。
+當使用者使用 Azure 防禦連線到工作負載時，防禦可以記錄遠端會話的診斷。 接著，您可以使用診斷，來查看哪些使用者連線到哪些工作負載、從何處，以及其他這類相關的記錄資訊。 若要使用診斷，您必須在 Azure 防禦上啟用診斷記錄。 本文可協助您啟用診斷記錄，然後再查看記錄。
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>開啟診斷紀錄
+## <a name="enable-the-resource-log"></a><a name="enable"></a>啟用資源記錄
 
-1. 在[Azure 門戶](https://portal.azure.com)中,導航到 Azure 堡壘資源,並從 Azure 堡壘頁中選擇 **「診斷」設定**。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的 azure 防禦資源，然後從 Azure 防禦頁面選取 [**診斷設定**]。
 
    ![診斷設定](./media/diagnostic-logs/1diagnostics-settings.png)
-2. 選擇**診斷設定**,然後選擇 **「新增診斷設置**」以添加日誌的目標。
+2. 選取 [**診斷設定**]，然後選取 [ **+ 新增診斷設定**] 以新增記錄的目的地。
 
    ![新增診斷設定](./media/diagnostic-logs/2add-diagnostic-setting.png)
-3. 在 **「診斷設定」** 頁上,選擇要用於儲存診斷日誌的儲存帳戶類型。
+3. 在 [**診斷設定**] 頁面上，選取要用來儲存診斷記錄的儲存體帳戶類型。
 
-   ![選擇儲存位置](./media/diagnostic-logs/3add-storage-account.png)
-4. 完成設定後,它將類似於此範例:
+   ![選取儲存位置](./media/diagnostic-logs/3add-storage-account.png)
+4. 當您完成設定時，它看起來會類似下列範例：
 
    ![範例設定](./media/diagnostic-logs/4example-settings.png)
 
-## <a name="view-diagnostics-log"></a><a name="view"></a>檢視診斷紀錄
+## <a name="view-diagnostics-log"></a><a name="view"></a>查看診斷記錄
 
-要訪問診斷日誌,可以直接使用啟用診斷設置時指定的存儲帳戶。
+若要存取您的診斷記錄，您可以直接使用您在啟用診斷設定時所指定的儲存體帳戶。
 
-1. 導覽到儲存帳戶資源,然後瀏覽到**容器**。 您將看到在存儲帳戶 blob 容器中創建的**見解日誌-堡壘審核日誌 blob。**
+1. 導覽至您的儲存體帳戶資源，然後流覽至 [**容器**]。 您會看到在儲存體帳戶 blob 容器中建立的**insights-logs-bastionauditlogs** blob。
 
    ![診斷設定](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. 導航到容器內部時,在博客中可以看到各種資料夾。 這些資料夾指示 Azure 堡壘資源的資源層次結構。
+2. 當您在容器內流覽至時，您會在您的 blog 中看到各種不同的資料夾。 這些資料夾會指出您的 Azure 防禦資源的資源階層。
 
    ![新增診斷設定](./media/diagnostic-logs/2-resource-h.png)
-3. 導航到要存取/查看其診斷日誌的 Azure Bastion 資源的完整層次結構。 診斷日誌的"y"、"m=""d=""h="和"m="分別指示診斷日誌的年份、月份、日、小時和分鐘。
+3. 流覽至您想要存取/查看其診斷記錄的 Azure 防禦資源的完整階層。 「Y =」、「等於」、「d =」、「h =」和「=」分別指出資源記錄的年、月、日、小時和分鐘。
 
-   ![選擇儲存位置](./media/diagnostic-logs/3-resource-location.png)
-4. 尋找 Azure Bastion 建立的 json 檔,該檔包含導航到的時間段的診斷日誌數據。
+   ![選取儲存位置](./media/diagnostic-logs/3-resource-location.png)
+4. 找出 Azure 防禦所建立的 json 檔案，其中包含所流覽之時間週期的診斷記錄資料。
 
-5. 從存儲 Blob 容器下載 json 檔案。 json 檔案的範例條目如下所示供參考:
+5. 從您的儲存體 blob 容器下載 json 檔案。 Json 檔案中的範例專案如下所示，供您參考：
 
    ```json
    { 
@@ -79,4 +79,4 @@ ms.locfileid: "80619271"
 
 ## <a name="next-steps"></a>後續步驟
 
-閱讀[的移除的裝置的錯誤 。](bastion-faq.md)
+閱讀防禦[常見問題](bastion-faq.md)。

@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099864"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143785"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用執行命令在 Windows VM 中執行 PowerShell 腳本
 
@@ -51,14 +51,14 @@ ms.locfileid: "82099864"
 The entity was not found in this Azure location
 ```
 
-|**名稱**|**說明**|
+|**名稱**|**描述**|
 |---|---|
 |**RunPowerShellScript**|執行 PowerShell 腳本。|
 |**EnableRemotePS**|設定機器啟用遠端 PowerShell。|
 |**EnableAdminAccount**|檢查是否已停用本機系統管理員帳戶，如果啟用的話。|
 |**IPConfig**| 顯示系結至 TCP/IP 之每個介面卡的 IP 位址、子網路遮罩和預設閘道的詳細資訊。|
 |**RDPSettings**|檢查登錄設定和網域原則設定。 如果電腦是網域的一部分，或將設定修改為預設值，則建議原則動作。|
-|**ResetRDPCert**|移除系結至 RDP 接聽程式的 SSL 憑證，並將 RDP 接聽程式安全性還原為預設值。 如果您發現憑證有任何問題，請使用此指令碼。|
+|**ResetRDPCert**|移除系結至 RDP 接聽程式的 TLS/SSL 憑證，並將 RDP 接聽程式安全性還原為預設值。 如果您發現憑證有任何問題，請使用此指令碼。|
 |**SetRDPPort**|設定遠端桌面連線的預設或使用者指定的通訊埠編號。 啟用防火牆規則來進行埠的輸入存取。|
 
 ## <a name="azure-cli"></a>Azure CLI

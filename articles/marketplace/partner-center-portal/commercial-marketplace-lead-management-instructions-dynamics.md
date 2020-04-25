@@ -1,201 +1,202 @@
 ---
-title: Dynamics 365 客戶參與的潛在客戶管理 |Azure 應用商店
-description: 為客戶參與度配置 Dynamics 365 的潛在客戶管理。
+title: Dynamics 365 Customer Engagement 的潛在客戶管理 |Azure Marketplace
+description: 為 Dynamics 365 Customer Engagement 設定潛在客戶管理。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252732"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131046"
 ---
-# <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>為客戶參與度設定 Dynamics 365 的潛在客戶管理
+# <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>為 Dynamics 365 Customer Engagement 設定潛在客戶管理
 
-本文介紹如何為客戶參與度設置 Dynamics 365(以前動態 CRM 在線),[在此處](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)閱讀有關處理市場產品銷售線索的更改。 
+本文說明如何設定 Dynamics 365 Customer Engagement （先前名為 Dynamics CRM Online）。 深入瞭解[使用 Customer Engagement 和 SharePoint Online 設定以伺服器為基礎的驗證](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)中的變更，以處理來自您的商業 Marketplace 供應專案的銷售潛在客戶。
 
->[!Note]
->這些說明特定於 Microsoft 託管的雲端動態 365,用於客戶參與環境。 當前不支援直接連接到 Dynamics on-prem 環境,還有其他選項可供您接收潛在顧客,例如配置[H01111點,](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 表](./commercial-marketplace-lead-management-instructions-azure-table.md)以接收潛在顧客。
+>[!NOTE]
+>這些指示專屬於適用于 Dynamics 365 Customer Engagement 的 Microsoft 託管雲端環境。 目前不支援直接連接到 Dynamics 內部部署環境。 還有其他選項可讓您接收潛在客戶，例如設定[HTTPS 端點](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 資料表](./commercial-marketplace-lead-management-instructions-azure-table.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-完成本文中的步驟需要以下使用者許可權:
+若要完成本文中的步驟，需要下列使用者權限。 您必須：
 
-* 您需要成為 Dynamics 365 客戶參與實例上的管理員,以便能夠安裝解決方案並遵循這些說明。
-* 您需要是租戶管理員,才能為用於從市場產品/服務發送潛在顧客的潛在顧客服務創建新的服務帳戶。
-* 您需要有權訪問 Office 365 管理門戶。
-* 您需要有權訪問 Azure 門戶。
+* 請是 Dynamics 365 Customer Engagement 實例上的系統管理員，才能安裝解決方案並遵循這些指示。
+* 成為租使用者系統管理員，為用來從商業 marketplace 供應專案傳送潛在客戶的潛在客戶服務建立新的服務帳戶。
+* 具有 Office 365 管理員入口網站的存取權。
+* 具有 Azure 入口網站的存取權。
 
 ## <a name="install-the-solution"></a>安裝解決方案
 
-1.  下載[Microsoft 應用商店首席編寫器解決方案](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip),並將其本地保存到您的電腦。
+1. 下載[Microsoft Marketplace 潛在客戶撰寫者解決方案](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)，並將它儲存在本機電腦上。
 
-2.  通過導航到 Dynamics 實例的`https://tenant.crm.dynamics.com`URL(如 ),為客戶參與打開動態 365。
+1. 前往 Dynamics 實例的 URL （例如），以開啟 Dynamics 365 Customer Engagement `https://tenant.crm.dynamics.com`。
 
-3.  通過選擇頂部導航列上的齒輪圖示和**高級設置**來訪問設置。
+1. 選取頂端列的齒輪圖示，然後選取 [ **Advanced Settings**]。
  
-    ![動態 - 進階設定](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
+    ![Dynamics 365 Advanced Settings 功能表項目](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
 
-4.  在"設置"頁上,從頂部導航欄訪問"設置"功能表並選擇 **"解決方案**"。
+1. 在 [**設定**] 頁面上，開啟頂端列的 [**設定**] 功能表，然後選取 [**方案**]。
 
-    >[!Note]
-    >如果在下一個螢幕截圖中看不到這些選項,則您沒有繼續所需的許可權。 聯繫 Dynamics 365 上的管理員,瞭解客戶參與度實例。
+    >[!NOTE]
+    >如果您在下列畫面中看不到選項，表示您沒有需要繼續進行的許可權。 請洽詢 Dynamics 365 Customer Engagement 實例上的系統管理員。
 
-    ![動態 365 - 解決方案](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
+    ![Dynamics 365 解決方案選項](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
-5. 在"解決方案"頁上,選擇 **「導入」** 並導航到在步驟 1 中下載的*Microsoft 應用商店首席編寫器*解決方案保存的位置。
+1. 在 [**方案**] 頁面上，選取 [匯**入**]，然後移至您在步驟1中所下載**Microsoft Marketplace 潛在客戶寫入器**解決方案的儲存位置。
 
-    ![客戶參與的動態 365 - 匯入](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
+    ![匯入按鈕](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
-6. 按照導入解決方案向導完成導入解決方案。
+1. 遵循 [匯入解決方案嚮導]，完成匯入解決方案的工作。
 
 ## <a name="configure-user-permissions"></a>設定使用者權限
 
-要將潛在顧客寫入 Dynamics 365 的客戶參與實例,您必須與我們共用服務帳戶,並配置該帳戶的許可權。
+若要將潛在客戶寫入 Dynamics 365 Customer Engagement 實例，您必須與 Microsoft 共用服務帳戶，並設定帳戶的許可權。
 
-使用下列步驟建立服務帳戶，並指派權限。 您可以使用 **Azure Active Directory** 或 **Office 365**。
+使用下列步驟建立服務帳戶，並指派權限。 您可以使用 Azure Active Directory 或 Office 365。
 
->[!Note]
->根據您選擇的身份驗證選項,您可以根據您的選擇跳到相應的說明。 請參閱[Azure 活動目錄](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory)或[Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)。
+>[!NOTE]
+>根據您選取的驗證選項，跳至對應的指示。 請參閱[Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory)或[Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-我們建議使用此選項,因為您得到了無需更新使用者名/密碼即可繼續獲取潛在顧客的額外好處。 要使用 Azure 活動目錄選項,請從活動目錄應用程式提供應用 ID、應用程式金鑰和目錄 ID。
+我們建議這個選項，因為您永遠不需要更新您的使用者名稱或密碼，就能繼續獲得潛在客戶。 若要使用 [Azure Active Directory] 選項，您可以從 Active Directory 應用程式提供應用程式識別碼、應用程式金鑰和目錄識別碼。
 
-使用以下步驟為客戶參與配置 Dynamics 365 的 Azure 活動目錄。
+若要設定 Dynamics 365 Customer Engagement 的 Azure Active Directory：
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/),然後從左側導航中選擇 Azure 活動目錄服務。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。 在左窗格中，選取 [Azure Active Directory]****。
 
-2. 從 Azure 活動目錄左側導航中選擇**屬性**,並在該頁上複製**目錄 ID**值。 保存此值,因為需要在發佈門戶中提供*目錄 ID*值,以便接收市場產品/服務的潛在顧客。
+1. 選取 [**屬性**]，然後複製 [**目錄屬性**] 頁面上的 [**目錄識別碼**] 值。 請儲存此值，因為您必須在發佈入口網站中提供它，才能接收 marketplace 供應專案的潛在客戶。
 
-    ![Azure 的活動目錄 ─ 屬性](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
+    ![Azure Active Directory 屬性功能表項目](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
 
-3. 從 Azure 活動目錄左側導航**中選擇應用註冊**,然後選擇該頁上**的新註冊**。
-4. 輸入應用程式名稱的名稱。 提供有意義的應用程式名稱。
-5. 在支援帳號型態的下,選擇**任何組織目錄中的帳戶**。
-6. 在重定向 URI 下,選擇**Web**並`https://contosoapp1/auth`提供 URI(如 )。 
-7. 選取 [註冊]  。
+1. 從 Azure Active Directory 左窗格中選取 [**應用程式註冊**]，然後在該頁面上選取 [**新增註冊**]。
+1. 為應用程式名稱輸入有意義的名稱。
+1. 在 [**支援的帳戶類型**] 底下，選取 [**任何組織目錄中的帳戶**]。
+1. 在 **[重新導向 URI （選用）**] 底下，選取 [ **Web** ] 並`https://contosoapp1/auth`輸入 URI，例如。 
+1. 選取 [註冊]  。
 
-    ![註冊應用程式](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
+    ![註冊應用程式頁面](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
-8. 註冊應用程式後,訪問應用程式的概覽頁並複製該頁上**的應用程式(用戶端)ID**值。 保存此值,因為需要在發佈門戶和 Dynamics 中提供*應用程式(用戶端)ID*值,以便接收市場產品的潛在顧客。
+1. 現在，您的應用程式已註冊，請存取應用程式的 [總覽] 頁面。 複製該頁面上的 [**應用程式（用戶端）識別碼**] 值。 請儲存此值，因為您必須在發佈入口網站和 Dynamics 365 中提供它，才能接收 marketplace 供應專案的潛在客戶。
 
-    ![應用程式 (用戶端) 識別碼](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
+    ![[應用程式（用戶端）識別碼] 方塊](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
 
-9. 從應用的左側導航中選擇**證書和機密**,然後選擇該頁上**的"新建用戶端機密**"。 輸入用戶端機密的有意義的說明,然後選擇"過期"下的 **"從不"** 選項。 選擇 **「新增」** 以建立用戶端機密。
+1. 從應用程式的左窗格中選取 [**憑證 & 秘密**]，然後選取 [**新增用戶端密碼**] 按鈕。 為用戶端密碼輸入有意義的描述，然後選取 [**到期**] 底下的 [**永不**] 選項。 選取 [**新增**] 以建立用戶端密碼。
 
-    ![應用程式 - 認證與秘密](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
+    ![憑證 & 秘密功能表項目](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
 
-10. 成功建立客戶端金鑰後,**立即複製客戶端機密值**。 導航離開頁面后,您將無法檢索該值。 保存此值,因為它是您需要在發佈門戶中提供的*用戶端機密*值,以便接收市場產品的潛在顧客。 
-11. 從應用的左側導航中選擇**API 許可權**,然後選擇 **「添加權限**」。
-12. 選擇 Microsoft API,然後選擇**動態 CRM**作為 API。
-13. 在*應用程式需要哪些類型的權限*下,請確保選擇了**委派權限**。 檢查**user_impersonation***作為組織使用者訪問公共數據服務*的許可權。 選取 [新增權限]****。
+1. 一旦成功建立用戶端密碼，請複製**用戶端密碼**值。 離開頁面之後，您將無法取得此值。 請儲存此值，因為您必須在發佈入口網站中提供它，才能接收 marketplace 供應專案的潛在客戶。 
+1. 從應用程式的左窗格中選取 [ **API 許可權**]，然後選取 [ **+ 新增許可權**]。
+1. 選取 [ **Microsoft api**]，然後選取 [ **Dynamics CRM** ] 作為 API。
+1. 在 [**您的應用程式需要何種類型的許可權？**] 下，確定已選取 [**委派的許可權**]。 
+1. 在 [**許可權**] 底下，選取 [**以組織使用者身分存取 Common Data Service**的 [ **user_impersonation** ] 核取方塊。 然後選取 [新增權限]****。
 
-    ![新增權限](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
+    ![[新增許可權] 按鈕](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. 在 Azure 門戶上完成步驟 1-13 後,通過導航`https://tenant.crm.dynamics.com`到 URL(如 ),導航到客戶參與實例的動態 365。
-15. 通過選擇齒輪圖示和頂部導航列上的 **「高級設置」** 來造訪設定。
-16. 在"設置"頁上,從頂部導航欄訪問"設置"功能表並選擇 **"安全**"。
-17. 在"安全"頁上一次,選擇 **"使用者**"。  在「使用者」 頁上,選擇「啟用使用者」下拉清單以切換到**應用程式使用者**。
-18. 選取 [新增]**** 以建立新的使用者。 
+1. 當您完成 Azure 入口網站中的步驟1到14之後，請前往 URL （例如），移至您的 Dynamics 365 Customer Engagement `https://tenant.crm.dynamics.com`實例。
+1. 選取頂端列的齒輪圖示，然後選取 [ **Advanced Settings**]。
+1. 在 [**設定**] 頁面上，開啟頂端列的 [**設定**] 功能表，然後選取 [**安全性**]。
+1. 在 [**安全性**] 頁面上，選取 [**使用者**]。 在 [**使用者**] 頁面上，選取 [**啟用的使用者**] 下拉式選單，然後選取 [**應用程式使用者**]。
+1. 選取 [新增]**** 以建立新的使用者。 
 
     ![建立新的使用者](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. 在新**使用者**中,請確保選擇了使用者:應用使用者。 為要使用此連接的使用者提供使用者名、全名和電子郵寄地址。 此外,請粘貼到步驟 8 中在 Azure 門戶中創建的應用**的應用程式 ID**中。 選擇 **「儲存」和「關閉**」 以完成使用者新增。
+1. 在 [**新增使用者**] 窗格中，確認已選取 [**使用者：應用程式使用者**]。 針對您要與此連線搭配使用的使用者，提供使用者名稱、全名和電子郵件地址。 此外，請貼上您在步驟8的 Azure 入口網站中所建立應用程式的**應用程式識別碼**。 選取 [**儲存] & [關閉**] 以完成新增使用者。
 
-    ![新增使用者](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
+    ![新增使用者窗格](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
-20. 移至此文章中的「安全性設定」以完成設定此使用者的連線。
+1. 請移至本文中的「安全性設定」一節，以完成設定此使用者的連線。
 
 ### <a name="office-365"></a>Office 365
 
-如果不想使用 Azure 活動目錄,可以在*Microsoft 365 管理中心*註冊新使用者。 您需要每 90 天更新一次使用者名稱/密碼，以繼續獲得潛在客戶。
+如果您不想要使用 Azure Active Directory，您可以在 Microsoft 365 系統管理中心註冊新的使用者。 您每隔90天就需要更新您的使用者名稱和密碼，才能繼續獲得潛在客戶。
 
-使用以下步驟為 Dynamics 365 為客戶參與配置 Office 365。
+若要設定 Office 365 以進行 Dynamics 365 Customer Engagement：
 
 1. 登入 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 
-2. 選取 [新增使用者]****。
+1. 選取 [新增使用者]****。
 
-    ![微軟365管理中心 - 新增使用者](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
+    ![Microsoft 365 系統管理中心新增使用者選項](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-4. 為潛在客戶寫入器服務建立新使用者。 設定下列設定：
+1. 為潛在客戶寫入器服務建立新使用者。 設定下列設定：
 
-    * 提供使用者名稱
-    * 提供密碼,並取消選擇"讓此使用者在首次登錄時更改其密碼"選項。
-    * 選取 [使用者 (沒有系統管理員存取權)] 作為使用者的角色。
-    * 選擇「動態 365 客戶參與計劃」作為下一個螢幕擷取中顯示的產品許可證。 您將需要支付您所選擇的授權。 
+    * 輸入使用者名稱。
+    * 輸入密碼，並清除 [**讓此使用者在第一次登入時變更密碼**] 選項。
+    * 選取 [**使用者（無系統管理員存取權）** ] 做為使用者的角色。
+    * 選取 [ **Dynamics 365 Customer Engagement 方案**] 作為 [產品授權]，如下列畫面所示。 您將需要支付您所選擇的授權。 
 
-保存這些值,因為它們是您在發佈門戶中接收市場產品的潛在顧客所需的*使用者名和密碼*值。
+儲存這些值，因為您必須在發佈入口網站中提供使用者**名稱**和**密碼**值，才能接收 marketplace 供應專案的潛在客戶。
 
-![微軟365管理中心 - 新使用者](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
+![Microsoft 365 管理中心的 [新增使用者] 窗格](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
 
 ## <a name="security-settings"></a>安全性設定
 
-最後一個步驟是讓您所建立的 [使用者] 寫入潛在客戶。
+最後一個步驟是讓您建立的使用者能夠撰寫潛在客戶。
 
-1. 通過導航到 Dynamics 實例的`https://tenant.crm.dynamics.com`URL(如 ),為客戶參與打開動態 365。
-2. 通過選擇頂部導航列上的齒輪圖示和**高級設置**來訪問設置。
-3. 在"設置"頁上,從頂部導航欄訪問"設置"功能表並選擇 **"安全**"。
-4. 在「安全」頁上,選擇 **「使用者」** 並選擇您在本文件的「設定使用者許可權」 部分中創建的使用者,然後選擇 **「管理角色**」。 
+1. 前往 Dynamics 實例的 URL （例如），以開啟 Dynamics 365 Customer Engagement `https://tenant.crm.dynamics.com`。
+1. 選取頂端列的齒輪圖示，然後選取 [ **Advanced Settings**]。
+1. 在 [**設定**] 頁面上，開啟頂端列的 [**設定**] 功能表，然後選取 [**安全性**]。
+1. 在 [**安全性**] 頁面上，選取 [**使用者**]，然後選取您在本檔的「設定使用者權限」一節中建立的使用者。 然後選取 [**管理角色**]。 
 
-    ![管理角色](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
+    ![[管理角色] 索引標籤](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
-5. 搜索角色名稱「Microsoft 市場首席編寫器」並選擇它來分配使用者的角色。
+1. 搜尋 [角色名稱] **Microsoft Marketplace [潛在客戶作者**]，然後選取它來指派角色給使用者。
 
-    ![管理使用者角色](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
+    ![[管理使用者角色] 窗格](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
-    >[!Note]
+    >[!NOTE]
     >此角色由您匯入的解決方案所建立，僅擁有寫入潛在客戶，以及追蹤解決方案版本以確保相容性的權限。
 
-6. 導覽安全頁面並選擇**安全角色**。 搜索角色「微軟市場首席編寫者」並選擇它。
+1. 返回 [**安全性**] 頁面，然後選取 [**安全性角色**]。 搜尋角色**Microsoft Marketplace 潛在客戶作者**，並加以選取。
 
-    ![安全性角色](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
+    ![[安全性角色] 窗格](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. 進入安全角色後,選擇 **「核心記錄**」選項卡。搜索「使用者實體 UI 設定」實體,並通過單擊一次到每個相應的圈子,為該實體啟用該實體的創建、讀取和寫入許可權(1/4 黃色圓圈)。
+1. 在 [安全性] 角色中，選取 [**核心記錄**] 索引標籤。搜尋 [**使用者實體 UI 設定**] 專案。 針對該實體啟用 [建立]、[讀取] 和 [寫入] 1/4 許可權，方法是在每個對應的圓形中按一下 [一次]。
 
-    ![微軟市場首席撰稿人 - 核心記錄](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
+    ![Microsoft Marketplace 潛在客戶寫入器核心記錄索引標籤](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. 現在導航到 **"自定義**"選項卡。搜索 tor"系統作業"實體,並通過按一下四次單擊每個相應圈子,為該實體啟用"讀取、寫入和追加到組織"許可權(純綠色)。
+1. 在 [**自訂**] 索引標籤上，搜尋**系統作業**專案。 針對該實體啟用 [讀取]、[寫入] 和 [AppendTo] 許可權，其方式是在每個對應的圓形中按一下四次。
 
-    ![Microsoft-S- S- S- - 自訂](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
+    ![Microsoft Marketplace 潛在客戶寫入器自訂索引標籤](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
-9. **儲存並關閉**。
+1. 選取 [**儲存並關閉**]。
 
-## <a name="configure-your-offer-to-send-leads-to-dynamics-365-for-customer-engagement"></a>將產品/服務設定為將潛在顧客傳送到 Dynamics 365 以進行客戶互動
+## <a name="configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement"></a>設定您的供應專案以將潛在客戶傳送至 Dynamics 365 Customer Engagement 
 
-準備好在發佈門戶中配置產品/服務的首席管理資訊時,請按照以下步驟操作:
+若要在發佈入口網站中為您的供應專案設定潛在客戶管理資訊：
 
-1. 導航到產品 **/服務"產品/服務"設置**頁面。
-2. 在「潛在顧客管理」部分下選擇 **「連接**」。
+1. 移至供應專案的**供應專案設定**頁面。
+1. 選取 [**潛在客戶管理**] 區段下的 **[連接]** 。
 
-    ![連線到潛在客戶管理](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    ![潛在客戶管理區段 [連線] 按鈕](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
 
-3. 在「連接詳細資訊」彈出視窗上,為潛在客戶目標**的客戶參與度選擇 Dynamics 365**
+1. 在 [連線詳細資料] 快顯視窗中，針對 [潛在客戶目的地] 選取 [ **Dynamics 365 Customer Engagement** ]。
 
-    ![連線詳細資訊 - 潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
+    ![潛在客戶目的地方塊](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. 提供**Dynamics 365 實體網址,** 如`https://contoso.crm4.dynamics.com`。
+1. 輸入 Dynamics 365 實例的**URL** ，例如`https://contoso.crm4.dynamics.com`。
 
-5. 選擇**驗證**、Azure 活動目錄或 Office 365 的方法。 
-6. 如果選擇 Azure 活動目錄,請提供**應用程式(用戶端)ID(** 例如`23456052-aaaa-bbbb-8662-1234df56788f`: ), 目錄`12345678-8af1-4asf-1234-12234d01db47`**ID(** 範例:)`1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`和**用戶端金鑰**(範例: )。
+1. 選取**驗證**方法，Azure Active Directory 或 Office 365。 
+1. 如果您選取 [ **Azure Active Directory**]，請輸入**應用程式（用戶端）識別碼**（例如`23456052-aaaa-bbbb-8662-1234df56788f`）、**目錄識別碼**（例如`12345678-8af1-4asf-1234-12234d01db47`）和**用戶端密碼**（例如`1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`）。
 
-    ![連線詳細資訊 ─ Azure 的項目](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
+    ![已選取 Azure Active Directory 的驗證](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. 如果選擇 Office 365,請提供**使用者名**(`contoso@contoso.onmicrosoft.com`範例:) 和`P@ssw0rd`密碼(範例: )。
+1. 如果您選取**了 Office 365**，請輸入**使用者名稱**（ `contoso@contoso.onmicrosoft.com`例如）和**密碼**（例如`P@ssw0rd`）。
 
-    ![連線詳細資訊 ─ 使用者名稱](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+    ![Office 365 使用者名稱方塊](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
-8. **聯繫電子郵件**- 為公司中應接收新潛在顧客的電子郵件通知的人員提供電子郵件。 您可以通過用分號分隔它們來提供多封電子郵件。
-9. 選取 [確定]  。
+1. 針對 [**連絡人電子郵件**]，輸入公司中的人員電子郵件地址，當收到新的潛在客戶時，應該會收到電子郵件通知。 您可以輸入多個電子郵件地址，並以分號分隔。
+1. 選取 [確定]  。
 
-要確保已成功連接到潛在顧客目標,請單擊驗證按鈕。 如果成功,您將在潛在顧客目標中具有測試潛在顧客。
+若要確定您已成功連線到潛在客戶目的地，請選取 [**驗證**] 按鈕。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
 
-![潛在客戶管理 - 連線詳細資訊儲存帳戶](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
+![連絡人電子郵件箱](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
->[!Note]
->您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。
+>[!NOTE]
+>您必須先完成供應專案的其餘部分設定並加以發佈，才能接收供應專案的潛在客戶。

@@ -1,47 +1,47 @@
 ---
-title: Azure 信號R 服務的診斷日誌
-description: 瞭解如何為 Azure SignalR 服務設置診斷日誌，以及如何利用它進行自故障排除。
+title: Azure SignalR Service 的資源記錄
+description: 瞭解如何設定 Azure SignalR Service 的資源記錄，以及如何利用它來自行疑難排解。
 author: wanlwanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 72f57ba4bbbbde07f6d26edc88c158f301ebe2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536729"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131002"
 ---
-# <a name="diagnostic-logs-for-azure-signalr-service"></a>Azure 信號R 服務的診斷日誌
+# <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR Service 的資源記錄
 
-本教程介紹 Azure SignalR 服務的診斷日誌，以及如何設置診斷日誌以及如何使用診斷日誌進行故障排除。
+本教學課程將討論 Azure SignalR Service 的資源記錄、設定方式，以及如何對其進行疑難排解。 
 
-## <a name="prerequisites"></a>Prerequisites
-要啟用診斷日誌，您需要在某處存儲日誌資料。 本教程使用 Azure 存儲和日誌分析。
+## <a name="prerequisites"></a>必要條件
+若要啟用資源記錄，您將需要一個位置來儲存您的記錄資料。 本教學課程使用 Azure 儲存體和 Log Analytics。
 
-* [Azure 存儲](../azure-monitor/platform/resource-logs-collect-storage.md)- 保留用於策略審核、靜態分析或備份的診斷日誌。
-* [日誌分析](../azure-monitor/platform/resource-logs-collect-workspace.md)- 一種靈活的日誌搜索和分析工具，可用於分析 Azure 資源生成的原始日誌。
+* [Azure 儲存體](../azure-monitor/platform/resource-logs-collect-storage.md)-保留原則 audit、靜態分析或備份的資源記錄。
+* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) -彈性的記錄搜尋和分析工具，可讓您分析 Azure 資源所產生的原始記錄。
 
-## <a name="set-up-diagnostic-logs-for-an-azure-signalr-service"></a>為 Azure SignalR 服務設置診斷日誌
+## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>設定 Azure SignalR Service 的資源記錄
 
-您可以查看 Azure 信號R 服務的診斷日誌。 這些日誌提供了與 Azure SignalR 服務實例連接的更豐富的視圖。 診斷日誌提供每個連接的詳細資訊。 例如，連接的基本資訊（使用者 ID、連接 ID 和傳輸類型等）和事件資訊（連接、斷開連接和中止事件等）。 診斷日誌可用於問題識別、連接跟蹤和分析。
+您可以查看 Azure SignalR Service 的資源記錄。 這些記錄可讓您更深入瞭解 Azure SignalR Service 實例的連線能力。 資源記錄會提供每個連接的詳細資訊。 例如，連線的基本資訊（使用者識別碼、連線識別碼和傳輸類型等等）以及事件資訊（連接、中斷連線和中止事件等等）。 資源記錄可用於問題識別、連接追蹤和分析。
 
-### <a name="enable-diagnostic-logs"></a>啟用診斷記錄
+### <a name="enable-resource-logs"></a>啟用資源記錄
 
-診斷記錄預設為停用。 若要啟用診斷記錄，請依照下列步驟操作：
+預設會停用資源記錄。 若要啟用資源記錄，請遵循下列步驟：
 
-1. 在[Azure 門戶](https://portal.azure.com)中，在 **"監視**"下，按一下 **"診斷設置**"。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)的 [**監視**] 底下，按一下 [**診斷設定**]。
 
-    ![窗格導航到診斷設置](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
+    ![窗格流覽至診斷設定](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
-1. 然後按一下"**添加診斷設置**"。
+1. 然後按一下 [**新增診斷設定**]。
 
-    ![添加診斷日誌](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
+    ![新增資源記錄](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
 
-1. 設置所需的存檔目標。 目前，我們支援**存檔到存儲帳戶**和**發送到日誌分析**。
+1. 設定您想要的封存目標。 目前，我們支援封存**至儲存體帳戶**並**傳送至 Log Analytics**。
 
-1. 選擇要存檔的日誌。
+1. 選取您要封存的記錄檔。
 
     ![診斷設定窗格](./media/signalr-tutorial-diagnostic-logs/diagnostics-settings-pane.png)
 
@@ -50,46 +50,46 @@ ms.locfileid: "79536729"
 
 新的設定大約會在 10 分鐘內生效。 之後，記錄就會在 [診斷記錄]**** 窗格內的已設定封存目標中顯示。
 
-如需設定診斷的詳細資訊，請參閱 [Azure 診斷記錄概觀](../azure-monitor/platform/platform-logs-overview.md)。
+如需設定診斷的詳細資訊，請參閱[Azure 資源記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
-### <a name="diagnostic-logs-categories"></a>診斷記錄類別
+### <a name="resource-logs-categories"></a>資源記錄類別
 
-Azure SignalR 服務捕獲一個類別中的診斷日誌：
+Azure SignalR Service 會在一個類別中捕捉資源記錄：
 
-* **所有日誌**：跟蹤連接到 Azure SignalR 服務的連接。 日誌提供有關連接/斷開連接、身份驗證和限制的資訊。 如需詳細資訊，請參閱下一節。
+* **所有記錄**：追蹤連接到 Azure SignalR Service 的連接。 記錄會提供有關連接/中斷連線、驗證和節流的資訊。 如需詳細資訊，請參閱下一節。
 
 ### <a name="archive-to-a-storage-account"></a>封存至儲存體帳戶
 
-日誌存儲在**診斷日誌**窗格中配置的存儲帳戶中。 將自動創建名為`insights-logs-alllogs`的容器以存儲診斷日誌。 在容器內，日誌存儲在檔中`resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/XXXX/PROVIDERS/MICROSOFT.SIGNALRSERVICE/SIGNALR/XXX/y=YYYY/m=MM/d=DD/h=HH/m=00/PT1H.json`。 基本上，路徑由`resource ID`和`Date Time`合併。 日誌檔由 拆分。 `hour` 因此，分鐘數始終為`m=00`。
+記錄會儲存在 [**診斷記錄**] 窗格中設定的儲存體帳戶中。 系統會自動`insights-logs-alllogs`建立名為的容器，以儲存資源記錄。 在容器內，記錄檔會儲存在檔案`resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/XXXX/PROVIDERS/MICROSOFT.SIGNALRSERVICE/SIGNALR/XXX/y=YYYY/m=MM/d=DD/h=HH/m=00/PT1H.json`中。 基本上，路徑是由`resource ID`和`Date Time`結合。 記錄檔的分割方式`hour`為。 因此，分鐘數一律為`m=00`。
 
 所有記錄都會以「JavaScript 物件標記法」(JSON) 格式儲存。 每個項目都具有字串欄位，這些欄位會使用下列小節所述的格式。
 
-存檔日誌 JSON 字串包括下表中列出的元素：
+封存記錄檔 JSON 字串包括下表所列的元素：
 
-**格式**
+**編排**
 
 名稱 | 描述
 ------- | -------
-time | 日誌事件時間
-層級 | 日誌事件級別
-resourceId | Azure SignalR 服務的資源識別碼
-location | Azure 信號R 服務的位置
-category | 日誌事件的類別
-operationName | 事件的操作名稱
+time | 記錄事件時間
+層級 | 記錄事件層級
+resourceId | Azure SignalR Service 的資源識別碼
+location | Azure SignalR Service 的位置
+category | 記錄事件的類別
+operationName | 事件的作業名稱
 callerIpAddress | 伺服器/用戶端的 IP 位址
-properties | 與此日誌事件相關的詳細屬性。 有關詳細資訊，請參閱下面的屬性工作表
+properties | 與此記錄事件相關的詳細屬性。 如需詳細資訊，請參閱下方的屬性工作表
 
-**屬性工作表**
+**屬性資料表**
 
 名稱 | 描述
 ------- | -------
-type | 日誌事件的類型。 目前，我們提供有關連接到 Azure SignalR 服務的資訊。 僅`ConnectivityLogs`可用類型
-collection | 日誌事件的集合。 允許的值是： `Connection` `Authorization`和`Throttling`
-connectionId | 連接的標識
-傳輸類型 | 連接的傳輸類型。 允許的值包括： `Websockets` \| `ServerSentEvents` \|`LongPolling`
+type | 記錄事件的類型。 目前，我們提供 Azure SignalR Service 連接的相關資訊。 只有`ConnectivityLogs`類型可供使用
+collection | 記錄事件的集合。 允許的值為`Connection`： `Authorization` 、和`Throttling`
+connectionId | 連接的身分識別
+transportType | 連接的傳輸類型。 允許的值為`Websockets` \| `ServerSentEvents` \| ：`LongPolling`
 connectionType | 連線的類型。 允許的值包括：`Server` \| `Client`。 `Server`：從伺服器端連接;`Client`：從用戶端連接
-userId | 使用者的身份
-message | 日誌事件的詳細消息
+userId | 使用者的身分識別
+訊息 | 記錄事件的詳細訊息
 
 下列程式碼是封存記錄 JSON 字串的範例：
 
@@ -114,86 +114,86 @@ message | 日誌事件的詳細消息
 }
 ```
 
-### <a name="archive-logs-schema-for-log-analytics"></a>日誌分析的存檔日誌架構
+### <a name="archive-logs-schema-for-log-analytics"></a>Log Analytics 的封存記錄架構
 
-要查看診斷日誌，請按照以下步驟操作：
+若要查看資源記錄，請遵循下列步驟：
 
-1. 按一下`Logs`目標日誌分析。
+1. 按一下`Logs`您的目標 Log Analytics。
 
-    ![日誌分析功能表項目](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
+    ![Log Analytics 功能表項目](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 輸入`SignalRServiceDiagnosticLogs`並選擇時間範圍以查詢診斷日誌。 有關高級查詢，請參閱[Azure 監視器中的日誌分析入門](../azure-monitor/log-query/get-started-portal.md)
+2. 輸入`SignalRServiceDiagnosticLogs`並選取 [時間範圍] 以查詢資源記錄。 如需先進查詢，請參閱[開始使用 Azure 監視器中的 Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 
-    ![日誌分析中的查詢日誌](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
+    ![Log Analytics 中的查詢記錄](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
-存檔日誌列包括下表中列出的元素：
+封存記錄資料行包含下表所列的元素：
 
 名稱 | 描述
 ------- | ------- 
-TimeGenerated | 日誌事件時間
-集合 | 日誌事件的集合。 允許的值是： `Connection` `Authorization`和`Throttling`
-OperationName | 事件的操作名稱
-Location | Azure 信號R 服務的位置
-層級 | 日誌事件級別
+TimeGenerated | 記錄事件時間
+集合 | 記錄事件的集合。 允許的值為`Connection`： `Authorization` 、和`Throttling`
+OperationName | 事件的作業名稱
+位置 | Azure SignalR Service 的位置
+層級 | 記錄事件層級
 CallerIpAddress | 伺服器/用戶端的 IP 位址
-訊息 | 日誌事件的詳細消息
-UserId | 使用者的身份
-ConnectionId | 連接的標識
+訊息 | 記錄事件的詳細訊息
+UserId | 使用者的身分識別
+ConnectionId | 連接的身分識別
 ConnectionType | 連線的類型。 允許的值包括：`Server` \| `Client`。 `Server`：從伺服器端連接;`Client`：從用戶端連接
-TransportType | 連接的傳輸類型。 允許的值包括： `Websockets` \| `ServerSentEvents` \|`LongPolling`
+TransportType | 連接的傳輸類型。 允許的值為`Websockets` \| `ServerSentEvents` \| ：`LongPolling`
 
-### <a name="troubleshooting-with-diagnostic-logs"></a>使用診斷日誌進行故障排除
+### <a name="troubleshooting-with-resource-logs"></a>使用資源記錄進行疑難排解
 
-要對 Azure SignalR 服務進行故障排除，可以啟用伺服器/用戶端日誌來捕獲故障。 目前，Azure SignalR 服務公開診斷日誌，您還可以為服務端啟用日誌。
+若要針對 Azure SignalR Service 進行疑難排解，您可以啟用伺服器/用戶端記錄來捕獲失敗。 目前，Azure SignalR Service 會公開資源記錄，您也可以啟用服務端的記錄。
 
-當遇到連接意外增長或下降的情況時，可以利用診斷日誌進行故障排除。
+遇到連線非預期的成長或中斷情況時，您可以利用資源記錄來進行疑難排解。
 
-典型的問題通常是關於連接的意外數量更改、連接達到連接限制和授權失敗的問題。 請參閱有關如何進行故障排除的後續部分。
+一般問題通常是因為連線的非預期數量變更，連線達到連接限制和授權失敗。 請參閱後續章節，以瞭解如何進行疑難排解。
 
-#### <a name="unexpected-connection-number-changes"></a>意外的連接號碼更改
+#### <a name="unexpected-connection-number-changes"></a>未預期的連接編號變更
 
-##### <a name="unexpected-connection-dropping"></a>意外的連接斷開
+##### <a name="unexpected-connection-dropping"></a>未預期的連接卸載
 
-如果遇到意外的連接丟棄，首先在服務、伺服器和用戶端啟用日誌。
+如果您遇到非預期的連接，請先啟用服務、伺服器和用戶端中的記錄。
 
-如果連接斷開連接，診斷日誌將記錄此斷開連接事件，您將看到`ConnectionAborted`或`ConnectionEnded`在`operationName`中。
+如果連線中斷，資源記錄將會記錄此中斷線上活動，您會在`ConnectionAborted`中`ConnectionEnded` `operationName`看到或。
 
-和 之間的區別`ConnectionAborted``ConnectionEnded`是，`ConnectionEnded`這是由用戶端或伺服器端觸發的預期斷開連接。 雖然`ConnectionAborted`通常是意外的連接丟棄事件，並且中止原因將在 中`message`提供。
+`ConnectionEnded`和`ConnectionEnded`之間`ConnectionAborted`的差異在於，這是用戶端或伺服器端所觸發的預期中斷連接。 雖然通常`ConnectionAborted`是非預期的連接卸載事件，但會在中`message`提供中止原因。
 
-中止原因列在下表中：
+下表列出中止的原因：
 
-原因 | 描述
+原因 | 說明
 ------- | ------- 
-連接計數達到限制 | 連接計數達到當前價格層的限制。 考慮擴大服務單位
-應用程式伺服器關閉連接 | 應用伺服器觸發流產。 它可以被認為是預期流產
-連接 ping 超時 | 通常是由網路問題引起的。 考慮從 Internet 檢查應用伺服器的可用性
-服務重新載入，重新連接 | Azure 信號R 服務正在重新載入。 Azure SignalR 支援自動重新連接，您可以等到重新連接或手動重新連接到 Azure SignalR 服務
-內部伺服器瞬態錯誤 | 瞬態錯誤發生在 Azure SignalR 服務中，應自動復原
-伺服器連接已斷開 | 伺服器連接斷開時出現未知錯誤，請考慮先使用服務/伺服器/用戶端日誌進行自故障排除。 嘗試排除基本問題（例如網路問題、應用伺服器端問題等）。 如果問題未解決，請聯繫我們尋求進一步説明。 有關詳細資訊，請參閱[獲取説明](#get-help)部分。 
+連接計數達到限制 | 連接計數達到您目前定價層的限制。 考慮相應增加服務單位
+應用程式伺服器已關閉連線 | 應用程式伺服器會觸發 abortion。 它可以視為預期的 abortion
+連接 ping 超時 | 這通常是因網路問題所造成。 請考慮從網際網路檢查您的應用程式伺服器可用性
+服務重載，重新連線 | 正在重載 Azure SignalR Service。 Azure SignalR 支援自動重新連線，您可以等候直到重新連線，或手動重新連線到 Azure SignalR Service
+內部伺服器暫時性錯誤 | Azure SignalR Service 中發生暫時性錯誤，應自動復原
+伺服器連接已中斷 | 伺服器連接卸載但發生未知的錯誤，請考慮先使用服務/伺服器/用戶端記錄檔的自我疑難排解。 嘗試排除基本問題（例如網路問題、應用程式伺服器端問題等等）。 如果問題未解決，請洽詢我們以取得進一步協助。 如需詳細資訊，請參閱[取得](#get-help)說明一節。 
 
-##### <a name="unexpected-connection-growing"></a>意外的連接增長
+##### <a name="unexpected-connection-growing"></a>非預期的連接成長
 
-要解決意外連接增長的問題，您需要做的第一件事就是篩選出額外的連接。 您可以將唯一的測試使用者 ID 添加到測試用戶端連接。 然後，使用診斷日誌進行驗證，如果您看到多個用戶端連接具有相同的測試使用者 ID 或 IP，則用戶端可能創建並建立比預期更多的連接。 檢查用戶端。
+若要疑難排解非預期的連線成長，您需要做的第一件事就是篩選掉額外的連接。 您可以將唯一的測試使用者識別碼加入至您的測試用戶端連接。 然後在資源記錄中驗證它，如果您看到一個以上的用戶端連線具有相同的測試使用者識別碼或 IP，則用戶端可能會建立並建立比預期還多的連線。 檢查您的用戶端。
 
 #### <a name="authorization-failure"></a>授權失敗
 
-如果收到 401 個未授權返回的用戶端請求，請檢查診斷日誌。 如果遇到`Failed to validate audience. Expected Audiences: <valid audience>. Actual Audiences: <actual audience>`，則表示訪問權杖中的所有訪問群體都無效。 嘗試使用日誌中建議的有效訪問群體。
+如果您收到401未經授權的用戶端要求傳回，請檢查您的資源記錄。 如果您遇到`Failed to validate audience. Expected Audiences: <valid audience>. Actual Audiences: <actual audience>`這種情況，表示您存取權杖中的所有物件都是不正確。 請嘗試使用記錄檔中建議的有效使用者。
 
 
 #### <a name="throttling"></a>節流
 
-如果發現無法建立與 Azure SignalR 服務的 SignalR 用戶端連接，請檢查診斷日誌。 如果在診斷日誌`Connection count reaches limit`中遇到，則與 SignalR 服務建立的連接過多，該連接達到連接計數限制。 請考慮擴展 SignalR 服務。 如果在診斷日誌`Message count reaches limit`中遇到，則意味著使用免費層，並且使用消息的配額。 如果要發送更多消息，請考慮將 SignalR 服務更改為標準層以發送其他消息。 有關詳細資訊，請參閱[Azure SignalR 服務定價](https://azure.microsoft.com/pricing/details/signalr-service/)。
+如果您發現無法建立 Azure SignalR Service 的 SignalR 用戶端連線，請檢查您的資源記錄。 如果您在`Connection count reaches limit`資源記錄檔中遇到，則會建立過多的連線以 SignalR Service，達到連線計數限制。 請考慮向上延展您的 SignalR Service。 如果您在`Message count reaches limit`資源記錄檔中遇到，這表示您使用免費層，而且會使用訊息的配額。 如果您想要傳送更多訊息，請考慮將您的 SignalR Service 變更為標準層，以傳送額外的訊息。 如需詳細資訊，請參閱[Azure SignalR Service 定價](https://azure.microsoft.com/pricing/details/signalr-service/)。
 
 ### <a name="get-help"></a>取得說明
 
-我們建議您先自行疑難排解。 大多數問題是由應用伺服器或網路問題引起的。 使用[診斷日誌](#troubleshooting-with-diagnostic-logs)和[基本故障拍攝指南](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md)遵循故障排除指南，查找根本原因。
-如果問題仍無法解決，請考慮在 GitHub 中打開問題或在 Azure 門戶中創建票證。
+我們建議您先自行進行疑難排解。 大部分的問題都是由應用程式伺服器或網路問題所造成。 遵循[資源記錄](#troubleshooting-with-resource-logs)檔和[基本](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md)疑難排解指南中的疑難排解指南，找出根本原因。
+如果仍然無法解決問題，請考慮在 GitHub 中開啟問題或在 Azure 入口網站中建立票證。
 提供：
-1. 出現問題時的時間範圍約為 30 分鐘
-2. Azure SignalR 服務的資源識別碼
-3. 發佈詳細資訊，盡可能具體：例如，應用程式伺服器不發送消息、用戶端連接斷開等
-4. 從伺服器/用戶端收集的日誌和其他可能有用的材料
-5. [可選]重現代碼
+1. 問題發生時大約30分鐘的時間範圍
+2. Azure SignalR Service 的資源識別碼
+3. 問題詳細資料（視情況而定）：例如，appserver 不會傳送訊息、用戶端連接中斷等等
+4. 從伺服器/用戶端收集的記錄，以及其他可能有用的資料
+5. 選擇性重現程式碼
 
 > [!NOTE]
-> 如果在 GitHub 中打開問題，請保持敏感資訊（例如資源識別碼、伺服器/用戶端日誌）的私密性，僅私下發送給 Microsoft 組織中的成員。
+> 如果您在 GitHub 中開啟問題，請將您的機密資訊（例如，資源識別碼、伺服器/用戶端記錄）保留為私人，而只會私下傳送給 Microsoft 組織中的成員。

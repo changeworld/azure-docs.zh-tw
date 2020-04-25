@@ -1,5 +1,5 @@
 ---
-title: 自訂 Azure AD 屬性映射 |微軟文件
+title: 自訂 Azure AD 屬性對應 |Microsoft Docs
 description: 了解 Azure Active Directory 中 SaaS 應用程式有哪些屬性對應，以及如何修改屬性對應來應付業務需求。
 services: active-directory
 documentationcenter: ''
@@ -14,40 +14,40 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfee19e9cfd1def71ebad82c2210ffc10146c896
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 11eddf0e5f9f950373e222a8007cabf7aa0720bb
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639751"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142276"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>為 Azure 活動目錄中的 SaaS 應用程式自訂使用者預配屬性映射
+# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
-Microsoft Azure AD 支援使用者預配到第三方 SaaS 應用程式,如 Salesforce、G Suite 等。 如果為第三方 SaaS 應用程式啟用使用者預配,Azure 門戶將通過屬性映射控制其屬性值。
+Microsoft Azure AD 提供對協力廠商 SaaS 應用程式（例如 Salesforce、G Suite 等）進行使用者布建的支援。 如果您啟用協力廠商 SaaS 應用程式的使用者布建，Azure 入口網站會透過屬性對應來控制其屬性值。
 
-Azure AD 使用者物件和每個 SaaS 應用的使用者對象之間有一組預先配置的屬性和屬性映射。 某些應用與"使用者"一起管理其他類型的物件,如"組"。
+Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和屬性對應。 有些應用程式會管理其他類型的物件以及使用者，例如群組。
 
-您可以根據您的業務需求自訂預設的屬性對應。 因此,您可以更改或刪除現有的屬性映射,或創建新的屬性映射。
+您可以根據您的業務需求自訂預設的屬性對應。 因此，您可以變更或刪除現有的屬性對應，或建立新的屬性對應。
 
 ## <a name="editing-user-attribute-mappings"></a>編輯使用者屬性對應
 
-依以下步驟存取使用者預配的**映射**功能:
+請遵循下列步驟來存取使用者布**建的對應功能：**
 
-1. 登入 Azure[的目錄門戶](https://aad.portal.azure.com)。
-1. 從左邊窗格中選擇**企業應用程式**。 將顯示所有已配置應用的清單,包括從庫中添加的應用。
-1. 選擇任何應用以載入其應用管理窗格,您可以在其中查看報表和管理應用設置。
-1. 選擇 **「預配**」以管理所選應用的使用者帳戶預配設置。
-1. 展開 對應 映**射**以查看和編輯在 Azure AD 和目標應用程式之間流淌的使用者屬性。 如果目標應用程式支援它,則此部分允許您選擇配置組和使用者帳戶的預配。
+1. 登入[Azure Active Directory 入口網站](https://aad.portal.azure.com)。
+1. 從左窗格中選取 [**企業應用程式**]。 隨即會顯示所有已設定的應用程式清單，包括從資源庫新增的應用程式。
+1. 選取 [任何應用程式] 以載入其 [應用程式管理] 窗格，您可以在其中查看報表及管理應用程式設定。
+1. 選取 [布建 **] 以管理**所選應用程式的使用者帳戶布建設定。
+1. 展開 **[** 對應] 以查看和編輯在 Azure AD 與目標應用程式之間流動的使用者屬性。 如果目標應用程式支援它，則此區段可讓您選擇性地設定群組和使用者帳戶的布建。
 
-   ![使用地圖檢視及編輯使用者屬性](./media/customize-application-attributes/21.png)
+   ![使用對應來查看和編輯使用者屬性](./media/customize-application-attributes/21.png)
 
-1. 選擇**對應**開啟相關**屬性映射**螢幕。 SaaS 應用程式需要一些屬性映射才能正常運行。 若為必要的屬性，[刪除]**** 功能就無法使用。
+1. 選取 [ **Mappings**對應] 設定，以開啟相關的 [**屬性對應**] 畫面。 SaaS 應用程式需要一些屬性對應，才能正常運作。 若為必要的屬性，[刪除]**** 功能就無法使用。
 
-   ![使用屬性對應設定應用屬性對應](./media/customize-application-attributes/22.png)
+   ![使用屬性對應來設定應用程式的屬性對應](./media/customize-application-attributes/22.png)
 
-   在此螢幕截圖中,您可以看到 Salesforce 中託管物件的**使用者名**屬性與連結的 Azure 活動目錄物件的**用戶主體名稱**值一起填充。
+   在此螢幕擷取畫面中，您可以看到 Salesforce 中受管理物件的**Username**屬性已填入已連結 Azure Active Directory 物件的**userPrincipalName**值。
 
-1. 選擇現有**屬性映射**以打開 **「編輯屬性」** 螢幕。 在這裡,您可以編輯在 Azure AD 和目標應用程式之間流動的使用者屬性。
+1. 選取現有的**屬性對應**，以開啟 [**編輯屬性**] 畫面。 在這裡，您可以編輯在 Azure AD 和目標應用程式之間流動的使用者屬性。
 
    ![使用編輯屬性編輯使用者屬性](./media/customize-application-attributes/23.png)
 
@@ -57,44 +57,44 @@ Azure AD 使用者物件和每個 SaaS 應用的使用者對象之間有一組�
 支援四種不同的對應類型：
 
 - **Directa:** el atributo de destino se rellena con el valor de un atributo del objeto vinculado en Azure AD.
-- **常量**= 目標屬性使用您指定的特定字串填充。
+- **常數**–目標屬性會填入您指定的特定字串。
 - **運算式** - 目標屬性會根據類似指令碼的運算式結果填入。
   如需詳細資訊，請參閱[在 Azure Active Directory 中撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)。
-- **Ninguno:** el atributo de destino se deja sin modificar. 但是,如果目標屬性為空,則使用指定的 Default 值填充它。
+- **Ninguno:** el atributo de destino se deja sin modificar. 不過，如果目標屬性是空的，則會以您指定的預設值填入。
 
-除了這四種基本類型外,自定義屬性映射還支援可選**默認值**賦值的概念。 如果 Azure AD 或目標物件上沒有值,則預設值賦值可確保使用值填充目標屬性。 最常見的設定是將其保留空白。
+除了這四種基本類型，自訂屬性對應還支援選擇性的**預設**值指派的概念。 如果 Azure AD 或目標物件上沒有值，則預設值指派可確保目標屬性會填入值。 最常見的設定是將其保留空白。
 
 ### <a name="understanding-attribute-mapping-properties"></a>了解屬性對應屬性
 
-在上一節中,您已引入屬性映射類型屬性。
-除了此屬性外,屬性對應支援以下屬性:
+在上一節中，您已經引進 [屬性對應類型] 屬性。
+除了這個屬性之外，屬性對應也支援下列屬性：
 
 - **來源屬性** - 來源系統的使用者屬性 (例如：Azure Active Directory)。
 - **目標屬性** – 目標系統中的使用者屬性 (例如：ServiceNow)。
-- **預設值(如果為空)** - 如果來源屬性為空,則傳遞給目標系統的值。 僅當創建使用者時,才會預配此值。 更新現有使用者時不會預配"當為空時的預設值」。 例如,如果要向目標系統中的所有現有使用者預配特定的作業標題(噹該名稱在源系統中為空時),可以使用以下[運算](../app-provisioning/functions-for-customizing-application-data.md)式 :Switch(Is存在[作業標題])、"默認值"、"真實"、"作業標題]"。 請確保在源系統中為空時,將"默認值"替換為要預配的內容。 
-- **匹配使用此屬性的物件**—是否應使用此映射來唯一標識源和目標系統之間的使用者。 它通常設置在 Azure AD 中的使用者主體名稱或郵件屬性上,該屬性通常映射到目標應用程式中的使用者名字段。
-- **比對優先順序** – 您可以設定多個比對屬性。 當有多個時,按此欄位定義的順序計算它們。 只要找到相符項目，便不會評估進一步比對屬性。
+- **如果為 null （選擇性）** ，則為預設值-如果 source 屬性為 null，將會傳遞至目標系統的值。 只有在建立使用者時，才會布建此值。 更新現有的使用者時，將不會布建「預設值為 null」。 例如，如果您想要在目標系統中布建具有特定職稱的所有現有使用者（在來源系統中為 null 時），您可以使用下列[運算式](../app-provisioning/functions-for-customizing-application-data.md)： Switch （IsPresent （[jobTitle]）、"DefaultValue"、"True"、[jobTitle]）。 請務必使用您想要在來源系統中布建的內容來取代「預設值」。 
+- **使用此屬性**比對物件–是否應該使用此對應來唯一識別來源與目標系統之間的使用者。 通常會在 Azure AD 中的 userPrincipalName 或 mail 屬性上設定，這通常會對應至目標應用程式中的使用者名稱欄位。
+- **比對優先順序** – 您可以設定多個比對屬性。 當有多個時，就會依照此欄位所定義的順序來評估它們。 只要找到相符項目，便不會評估進一步比對屬性。 雖然您可以視需要設定多個相符的屬性，但請考慮您用來做為比對屬性的屬性是否確實是唯一的，而且必須符合屬性。 客戶的設定中通常會有1或2個相符的屬性。 
 - **套用此對應**
-  - **始終**= 在使用者創建和更新操作上應用此映射。
-  - **僅在創建期間**- 僅在使用者創建操作上應用此映射。
+  - **Always** –在使用者建立和更新動作上套用此對應。
+  - **僅限建立期間**-僅適用于使用者建立動作的對應。
 
-## <a name="matching-users-in-the-source-and-target--systems"></a>在源和目標系統中符合使用者
-Azure AD 預配服務可以部署在"綠地"方案中(使用者不會在目標系統中退出)和「棕色欄位」方案(目標系統中使用者已經存在)。 為了支援這兩種情況,預配服務使用匹配屬性的概念。 匹配屬性允許您確定如何唯一標識源中的使用者並匹配目標中的使用者。 在規劃部署時,確定可用於唯一標識源和目標系統中的使用者的屬性。 需要注意的事項:
+## <a name="matching-users-in-the-source-and-target--systems"></a>對應來源和目標系統中的使用者
+Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會在目標系統中結束）和「brownfield」案例（使用者已存在於目標系統中）。 為了支援這兩種案例，布建服務會使用相符屬性的概念。 比對屬性可讓您決定如何唯一識別來源中的使用者，並符合目標中的使用者。 在規劃部署的過程中，請識別可用來唯一識別來源和目標系統中之使用者的屬性。 注意事項：
 
-- **符合屬性應是唯一的:** 客戶通常使用用戶主體名稱、郵件或對象 ID 等屬性作為匹配屬性。
-- **多屬性可用符合屬性:** 您可以定義在匹配使用者和計算使用者的順序時要計算的多個屬性(定義為 UI 中的匹配優先順序)。 例如,如果將三個屬性定義為匹配屬性,並且使用者在計算前兩個屬性后唯一匹配,則服務將不會計算第三個屬性。 該服務將按指定的順序計算匹配屬性,並在找到匹配項時停止評估。  
-- **來源與目標中的值不必完全符合:** 目標中的值可以是源中值的一些簡單函數。 因此,可以在源中具有電子郵件地址屬性,在目標中具有使用者主體名稱,並通過電子郵件地址屬性的函數進行匹配,該函數將某些字元替換為一些常量值。  
-- **不支援基於屬性組合的配配:** 大多數應用程式不支援基於兩個屬性的查詢。 因此,無法基於屬性的組合進行匹配。 可以一個接一個地計算單個屬性。
-- **所有使用者必須至少具有一個符合屬性的值:** 如果定義一個匹配屬性,則所有用戶都必須在源系統中具有該屬性的值。 例如,如果將用戶主體名稱定義為匹配屬性,則所有使用者都必須具有使用者主體名稱。 如果定義多個匹配屬性(例如擴展屬性1 和郵件),則並非所有用戶必須具有相同的匹配屬性。 一個使用者可以有一個擴展屬性1,但不能郵寄,而另一個使用者可以有郵件,但沒有擴展屬性1。 
-- **目標應用程式必須支援對符合屬性進行篩選:** 應用程式開發人員允許篩選其使用者或組 API 上的屬性子集。 對於庫中的應用程式,我們確保預設屬性映射適用於目標應用程式的 API 確實支援篩選的屬性。 更改目標應用程式的預設匹配屬性時,請檢查第三方 API 文件以確保可以篩選該屬性。  
+- **相符的屬性應該是唯一的：** 客戶通常會使用 userPrincipalName、mail 或 object ID 等屬性作為比對屬性。
+- **可以使用多個屬性做為比對屬性：** 您可以定義多個要在比對使用者時進行評估的屬性，以及評估它們的順序（定義為 UI 中的比對優先順序）。 例如，如果您將三個屬性定義為符合的屬性，而且在評估前兩個屬性之後，使用者會唯一相符，服務就不會評估第三個屬性。 服務將會依照指定的順序評估相符的屬性，並在找到相符的時停止評估。  
+- **來源和目標中的值不一定要完全相符：** 目標中的值可以是來源中值的一些簡單函數。 因此，在來源中可能有一個 emailAddress 屬性，而在目標中有 userPrincipalName，並以 emailAddress 屬性的函式比對，並以一些常數值取代部分字元。  
+- **不支援根據屬性的組合進行比對：** 大部分的應用程式不支援以兩個屬性為基礎的查詢。 因此，不可能根據屬性的組合來比對。 您可以在之後評估單一屬性。
+- **所有使用者都必須至少有一個相符屬性的值：** 如果您定義一個符合的屬性，所有使用者都必須具有來源系統中該屬性的值。 例如，如果您將 userPrincipalName 定義為比對屬性，則所有使用者都必須具有 userPrincipalName。 如果您定義多個比對屬性（例如 extensionAttribute1 和 mail），則並非所有使用者都必須具有相同的相符屬性。 一位使用者可能會有 extensionAttribute1 但無法使用郵件，而另一位使用者可能會有郵件但沒有 extensionAttribute1。 
+- **目標應用程式必須支援篩選符合的屬性：** 應用程式開發人員可以在其使用者或群組 API 上篩選屬性子集。 針對資源庫中的應用程式，我們確保預設屬性對應是針對目標應用程式的 API 支援篩選的屬性。 變更目標應用程式的預設比對屬性時，請檢查協力廠商 API 檔，以確定可以篩選屬性。  
 
 ## <a name="editing-group-attribute-mappings"></a>編輯群組屬性對應
 
-選定的許多應用程式(如 ServiceNow、Box 和 G Suite)支援預配組物件和使用者物件的能力。 組物件可以包含組屬性,如顯示名稱和電子郵件別名以及組成員。
+選取的應用程式數目（例如 ServiceNow、Box 和 G Suite）支援布建群組物件和使用者物件的能力。 群組物件可以包含群組屬性，例如顯示名稱和電子郵件別名，以及群組成員。
 
-![範例顯示服務目前與預配群組和使用者物件](./media/customize-application-attributes/24.png)
+![範例顯示具有已布建群組和使用者物件的 ServiceNow](./media/customize-application-attributes/24.png)
 
-通過選擇 **「映射**」下的組映射,並將 **「已啟用」** 設定為 **「屬性映射**」螢幕中所需的選項,可以選擇啟用或禁用組預配。
+您可以選擇性地啟用或停用群組布建，方法是選取 [對應] 底下的 [群組對應 **]，並**在 [**屬性對應**] 畫面中將 [**已啟用**] 設定為所要
 
 佈建為群組物件一部分的屬性，可依照與使用者物件相同的方式進行自訂，如前所述。 
 
@@ -103,16 +103,16 @@ Azure AD 預配服務可以部署在"綠地"方案中(使用者不會在目標�
 
 ## <a name="editing-the-list-of-supported-attributes"></a>編輯支援的屬性清單
 
-系統會預先設定支援指定應用程式的使用者屬性。 大多數應用程式的使用者管理 API 不支援架構發現。 因此,Azure AD 預配服務無法透過調用應用程式來動態生成受支援的屬性清單。
+系統會預先設定支援指定應用程式的使用者屬性。 大部分應用程式的使用者管理 Api 不支援架構探索。 因此，Azure AD 布建服務無法藉由呼叫應用程式，以動態方式產生支援的屬性清單。
 
-但是,某些應用程式支援自定義屬性,Azure AD 預配服務可以讀取和寫入自定義屬性。 要在 Azure 門戶中輸入其定義,請在 **「屬性映射」** 螢幕底部選中「**顯示進階選項**」複選框,然後為應用選擇 **「編輯屬性清單**」 。。
+不過，有些應用程式支援自訂屬性，而 Azure AD 布建服務可以讀取和寫入自訂屬性。 若要在 Azure 入口網站中輸入其定義，請選取 [**屬性對應**] 畫面底部的 [**顯示先進選項**] 核取方塊，然後選取應用程式的 [**編輯屬性清單**]。
 
 支援屬性清單自訂的應用程式和系統包括：
 
 - Salesforce
 - ServiceNow
 - Workday
-- Azure 動作目錄 (支援[Microsoft 圖像化 REST API v1.0 參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)與自訂目錄擴展)
+- Azure Active Directory （[REST API Microsoft Graph 支援1.0 版參考](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)和自訂目錄延伸模組）
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
 
 > [!NOTE]
@@ -121,38 +121,38 @@ Azure AD 預配服務可以部署在"綠地"方案中(使用者不會在目標�
 編輯支援的屬性清單時，必須提供下列屬性：
 
 - **名稱** - 屬性的系統名稱，如目標物件的結構描述所定義。
-- **類型**- 屬性儲存的資料型態,如目標物件的架構中定義,可以是以下類型之一:
+- **類型**-屬性所儲存的資料類型（如目標物件的架構中所定義），可以是下列其中一種類型：
   - *二進位* - 屬性包含二進位資料。
   - *布林值* - 屬性包含 True 或 False 值。
   - *日期時間* - 屬性包含日期字串。
   - *整數* - 屬性包含整數。
   - *參考* - 屬性包含對目標應用程式中的另一個資料表所儲存的值進行參考的識別碼。
   - *字串* - 屬性包含文字字串。
-- **主鑰匙?** - 屬性是否定義為目標物件架構中的主鍵欄位。
-- **必填?** - 是否需要在目標應用程式或系統中填充該屬性。
-- **多值?** - 屬性是否支援多個值。
-- **大小寫完全相符嗎？** - 是否以區分大小寫的方式計算屬性值。
-- **API 表示式**- 除非特定預配連接器的文件(如工作日)的文件指示不要使用。
-- **引用物件屬性**- 如果它是參考類型屬性,則此功能表允許您在目標應用程式中選擇包含與該屬性關聯的值的表和屬性。 例如，如果您有名為 "Department" 的屬性，且其儲存值參考了個別 "Departments" 資料表中的物件，則您會選取 "Departments.Name"。 給定應用程式支援的引用表和主 ID 欄位已預先配置,目前無法使用 Azure 門戶進行編輯,但可以使用[Microsoft 圖形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)進行編輯。
+- **主要金鑰？** -在目標物件的架構中，是否將屬性定義為主要索引鍵欄位。
+- **必填？** -屬性是否必須填入目標應用程式或系統中。
+- **多重值？** -屬性是否支援多個值。
+- **大小寫完全相符嗎？** -屬性值是否會以區分大小寫的方式進行評估。
+- **API 運算式**-請勿使用，除非是由特定布建連接器的檔（例如 Workday）指示。
+- 參考的**物件屬性**-如果它是參考型別屬性，則此功能表可讓您選取目標應用程式中的資料表和屬性，其中包含與屬性相關聯的值。 例如，如果您有名為 "Department" 的屬性，且其儲存值參考了個別 "Departments" 資料表中的物件，則您會選取 "Departments.Name"。 指定應用程式支援的參考資料表和主要識別碼欄位已預先設定，而且目前無法使用 Azure 入口網站進行編輯，但可以使用[MICROSOFT GRAPH API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)進行編輯。
 
-#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>將自訂延伸屬性預先設定到符合 SCIM 的應用程式
-SCIM RFC 定義了核心使用者和組架構,同時還允許擴展架構以滿足應用程式的需求。 要向 SCIM 應用程式新增自訂屬性,請執行:
-   1. 登入 Azure[活動目錄門戶](https://aad.portal.azure.com),選擇**企業應用程式**,選擇應用程式,然後選擇**預配**。
-   2. 在 **「映射」** 下,選擇要為其添加自定義屬性的物件(使用者或組)。
-   3. 在頁面底部,選擇 **「顯示高級選項**」。
-   4. 為**應用名稱選擇"編輯屬性清單**"。
-   5. 在屬性清單的底部,在提供的欄位中輸入有關自定義屬性的資訊。 然後選擇 **「添加屬性**」。
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>將自訂延伸模組屬性布建到符合 SCIM 規範的應用程式
+SCIM RFC 會定義核心使用者和群組架構，同時允許架構的延伸，以符合您應用程式的需求。 若要將自訂屬性新增至 SCIM 應用程式：
+   1. 登入[Azure Active Directory 入口網站](https://aad.portal.azure.com)，選取 [**企業應用程式**]，選取您的應用程式，然後選取 [布建 **]。**
+   2. 在 [對應]**底下，選取**您想要新增自訂屬性的物件（使用者或群組）。
+   3. 在頁面底部，選取 [**顯示先進的選項**]。
+   4. 選取 [**編輯 AppName 的屬性清單**]。
+   5. 在 [屬性] 清單的底部，在提供的欄位中輸入自訂屬性的相關資訊。 然後選取 [**新增屬性**]。
 
-對於 SCIM 應用程式,屬性名稱必須遵循下面範例中所示的模式。 「自訂副檔名稱」和「自訂屬性」可以根據應用程式的要求進行自訂,例如:  
- * urn:ietf:參數:scim:架構:擴展:自定義副檔名稱:2.0:使用者:自定義屬性 
- * urn:ietf:參數:scim:架構:擴展:2.0:自定義擴展名稱:自定義屬性  
- * urn:ietf:參數:scim:架構:擴展:自定義副檔名稱:2.0:使用者.自定義屬性名稱:值
+針對 SCIM 應用程式，屬性名稱必須遵循以下範例所示的模式。 您可以根據應用程式的需求自訂 "CustomExtensionName" 和 "System.reflection.customattribute.isdefined"，例如：  
+ * urn： ietf： params： scim：架構： extension： CustomExtensionName：2.0： User： System.reflection.customattribute.isdefined 
+ * urn： ietf： params： scim：架構：擴充功能：2.0： CustomExtensionName： System.reflection.customattribute.isdefined  
+ * urn： ietf： params： scim：架構： extension： CustomExtensionName：2.0： User. CustomAttributeName： value
 
-這些說明僅適用於支援 SCIM 的應用程式。 服務現在和 Salesforce 等應用程式不使用 SCIM 與 Azure AD 整合,因此在添加自訂屬性時不需要此特定的命名空間。
+這些指示僅適用于啟用 SCIM 的應用程式。 ServiceNow 和 Salesforce 等應用程式不會與使用 SCIM 的 Azure AD 整合，因此在新增自訂屬性時，不需要這個特定的命名空間。
 
-自定義屬性不能是引用屬性或多值屬性。 自定義多值擴展屬性目前僅支援庫中的應用程式。  
+自訂屬性不能是引用屬性或多重值屬性。 目前只有資源庫中的應用程式支援自訂多值延伸模組屬性。  
  
-**具有延伸屬性的使用者的範例表示形式:**
+**具有擴充屬性之使用者的範例標記法：**
 
 ```json
    {
@@ -193,18 +193,18 @@ SCIM RFC 定義了核心使用者和組架構,同時還允許擴展架構以滿�
 ```
 
 
-## <a name="provisioning-a-role-to-a-scim-app"></a>將角色預先用 SCIM 應用
-使用以下步驟為應用程式預配使用者的角色。 請注意,以下說明特定於自定義 SCIM 應用程式。 對於庫應用程式(如 Salesforce 和服務Now),請使用預定義的角色映射。 下面的項目符號描述如何將 AppRole 工作屬性轉換為應用程式期望的格式。
+## <a name="provisioning-a-role-to-a-scim-app"></a>將角色布建至 SCIM 應用程式
+使用下列步驟，將使用者的角色布建到您的應用程式。 請注意，下列描述是自訂 SCIM 應用程式特有的。 針對資源庫應用程式（例如 Salesforce 和 ServiceNow），請使用預先定義的角色對應。 下列專案符號說明如何將 AppRoleAssignments 屬性轉換為您的應用程式所預期的格式。
 
-- 將 Azure AD 中的 AppRoleAssignment 映射到應用程式中的角色需要使用[運算式](../app-provisioning/functions-for-customizing-application-data.md)轉換屬性。 應用RoleAssignment屬性**不應直接映射到**角色屬性,而不使用運算式來分析角色詳細資訊。 
+- 若要將 Azure AD 中的 appRoleAssignment 對應至應用程式中的角色，您需要使用[運算式](../app-provisioning/functions-for-customizing-application-data.md)來轉換屬性。 AppRoleAssignment 屬性**不應該直接對應**至 role 屬性，而不需要使用運算式來剖析角色的詳細資料。 
 
 - **SingleAppRoleAssignment** 
-  - **何時使用:** 使用 SingleAppRole 分配表達式為使用者預配單個角色並指定主要角色。 
-  - **如何設定:** 使用上述步驟導航到屬性映射頁,並使用 SingleAppRole 分配運算到角色屬性。 有三個角色屬性可供選擇:(角色[主要 eq"True")顯示、角色[主 eq"True"類型和角色[主 eq"True"\值)。 您可以選擇在映射中包括任何或所有角色屬性。 如果要包含多個映射,只需添加新映射並將其作為目標屬性。  
+  - **使用時機：** 使用 SingleAppRoleAssignment 運算式為使用者布建單一角色，並指定主要角色。 
+  - **如何設定：** 使用上述步驟導覽至 [屬性對應] 頁面，並使用 SingleAppRoleAssignment 運算式對應至 [角色] 屬性。 有三個角色屬性可供選擇：（角色 [主要 eq "True"]。顯示，角色 [主要 eq "True]. 類型，以及角色 [主要 eq" True "]。值）。 您可以選擇在對應中包含任何或所有角色屬性。 如果您想要包含一個以上的，只要加入一個新的對應，並將它納入做為目標屬性即可。  
   
-  ![新增單應用程式角色分配](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
-  - **要考慮的事項**
-    - 確保未將多個角色分配給使用者。 我們不能保證將預配哪個角色。
+  ![新增 SingleAppRoleAssignment](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **應考慮的事項**
+    - 請確定未指派多個角色給使用者。 我們無法保證將會布建哪個角色。
     
   - **範例輸出** 
 
@@ -230,18 +230,18 @@ SCIM RFC 定義了核心使用者和組架構,同時還允許擴展架構以滿�
    }
    ```
   
-- **應用程式角色分配複雜** 
-  - **何時使用:** 使用 AppRole 工作複雜表達式為使用者預配多個角色。 
-  - **如何設定:** 編輯此支援的屬性清單,以包括角色的新屬性: 
+- **AppRoleAssignmentsComplex** 
+  - **使用時機：** 使用 AppRoleAssignmentsComplex 運算式為使用者布建多個角色。 
+  - **如何設定：** 如上面所述編輯支援屬性的清單，以包含角色的新屬性： 
   
     ![新增角色](./media/customize-application-attributes/add-roles.png)<br>
 
-    然後使用 AppRole 工作複雜表示式映射到自定義角色屬性,如下圖所示:
+    然後使用 AppRoleAssignmentsComplex 運算式來對應至自訂角色屬性，如下圖所示：
 
-    ![新增應用程式角色分配複雜](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
-  - **要考慮的事項**
-    - 所有角色都將預配為主角色 = false。
-    - POST 包含角色類型。 PATCH 請求不包含類型。 我們正在努力在 POST 和 PATCH 請求中發送類型。
+    ![新增 AppRoleAssignmentsComplex](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **應考慮的事項**
+    - 所有角色都會布建為 primary = false。
+    - POST 包含角色類型。 PATCH 要求不包含類型。 我們正致力於在 POST 和 PATCH 要求中傳送類型。
     
   - **範例輸出** 
   
@@ -277,8 +277,8 @@ SCIM RFC 定義了核心使用者和組架構,同時還允許擴展架構以滿�
   
 
 
-## <a name="provisioning-a-multi-value-attribute"></a>預先多值屬性
-某些屬性(如電話數位和電子郵件)是多值屬性,您可能需要在其中指定不同類型的電話號碼或電子郵件。 對多值屬性使用下面的運算式。 它允許您指定屬性類型並將其映射到該值的相應 Azure AD 使用者屬性。 
+## <a name="provisioning-a-multi-value-attribute"></a>布建多重值屬性
+某些屬性（例如 phoneNumbers 和電子郵件）是多重值的屬性，您可能需要指定不同類型的電話號碼或電子郵件。 請使用下列運算式來執行多重值屬性。 它可讓您指定屬性類型，並對應至值的對應 Azure AD 使用者屬性。 
 
 * phoneNumbers[type eq "work"].value
 * phoneNumbers[type eq "mobile"].value
@@ -303,21 +303,23 @@ SCIM RFC 定義了核心使用者和組架構,同時還允許擴展架構以滿�
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>還原預設屬性和屬性對應
 
-如果需要重新開始並將現有映射重置回其預設狀態,可以選擇「**還原預設映射**」複選框並保存配置。 這樣做會設置所有映射和範圍篩選器,就像應用程式剛剛從應用程式庫中添加到 Azure AD 租戶一樣。
+如果您需要重新開機，並將現有的對應重設回其預設狀態，您可以選取 [**還原預設**對應] 核取方塊，並儲存設定。 這麼做會設定所有對應和範圍篩選器，如同應用程式剛從應用程式庫新增至您的 Azure AD 租使用者一樣。
 
-選擇此選項將有效地強制在預配服務運行時重新同步所有使用者。
+選取此選項將會在布建服務執行時，有效地強制重新同步處理所有使用者。
 
 > [!IMPORTANT]
-> 在調用此選項之前,我們強烈建議將**預配狀態**設置為 **"關閉**"。
+> 我們強烈建議您將布建**狀態**設定為 [**關閉**]，再叫用此選項。
 
 ## <a name="what-you-should-know"></a>您應該知道的事情
 
 - Microsoft Azure AD 提供有效率的同步處理程序實作。 在初始化環境中，同步處理期間只會處理需要更新的物件。
 - 更新屬性對應會影響同步處理期間的效能。 更新屬性對應組態需要重新評估所有受控物件。
-- 建議的最佳做法是至少將屬性映射的連續更改數保持在最小。
-- 現在不支援將要預配到應用的照片屬性添加,因為您無法指定同步照片的格式。 您可以在[使用者語音](https://feedback.azure.com/forums/169401-azure-active-directory)上要求該功能
-- 屬性 IsSoftDeleted 通常是應用程式的預設映射的一部分。 IsSoftdelete 在四種情況之一中可能為 true(使用者由於未從應用程式分配而不在範圍範圍內,使用者由於不符合範圍範圍篩選器而退出範圍,使用者已在 Azure AD 中軟刪除,或者屬性帳戶啟用設置為 false 使用者)。 
-- Azure AD 預配服務不支援預先定義的空值
+- 建議的最佳作法是將連續變更的次數至少保留給您的屬性對應。
+- 目前不支援新增要布建到應用程式的相片屬性，因為您無法指定要同步處理相片的格式。 您可以在[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)上要求此功能
+- 屬性 IsSoftDeleted 通常是應用程式預設對應的一部分。 在四個案例的其中一種情況下，IsSoftdeleted 可以是 true （使用者因為未指派應用程式而超出範圍、使用者因為不符合範圍篩選而超出範圍，使用者已在 Azure AD 中進行虛刪除，或屬性 AccountEnabled 在使用者上設定為 false）。 不建議您從屬性對應中移除 IsSoftDeleted 屬性。
+- Azure AD 布建服務不支援提供 null 值。
+- 它們的主要金鑰（通常是 "ID"）不應該包含在屬性對應中做為目標屬性。 
+- 角色屬性通常需要使用運算式來對應，而不是直接對應。 如需角色對應的詳細資訊，請參閱上一節。 
 
 ## <a name="next-steps"></a>後續步驟
 

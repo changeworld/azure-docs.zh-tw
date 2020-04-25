@@ -1,78 +1,85 @@
 ---
-title: 配置銷售隊伍的潛在客戶管理 |Azure 應用商店
-description: 為 Azure 應用商店客戶配置銷售隊伍上的潛在顧客管理。
+title: 設定 Salesforce 的潛在客戶管理 |Azure Marketplace
+description: 為 Azure Marketplace 客戶設定 Salesforce 上的潛在客戶管理。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e0fbb09370e198772b4fc485b3c0fe8a56da4226
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262982"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133641"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>針對 Salesforce 設定潛在客戶管理
 
-本文介紹如何設置 Salesforce 系統來處理來自商業市場產品/服務的銷售線索。
+本文說明如何設定您的 Salesforce 系統，以處理來自您的商業 marketplace 供應專案的銷售潛在客戶。
 
-> [!Note]
-> 應用商店不支援預填充清單,例如 **「國家/地區」** 欄位的值清單。 在繼續之前,請確保沒有設置任何清單。 或者,可以將[HTTPS 終結點](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 表](./commercial-marketplace-lead-management-instructions-azure-table.md)配置為接收潛在顧客。
+> [!NOTE]
+> Azure Marketplace 不支援預先填入的清單，例如 [**國家/地區**] 欄位的值清單。 在繼續之前，請確定未設定任何清單。 或者，您可以設定[HTTPS 端點](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 資料表](./commercial-marketplace-lead-management-instructions-azure-table.md)來接收潛在客戶。
 
-## <a name="set-up-your-salesforce-system"></a>設定銷售隊伍系統
+## <a name="set-up-your-salesforce-system"></a>設定您的 Salesforce 系統
 
 1. 登入 Salesforce。
-2. 如果您使用的是 Salesforce 照明體驗。
-    1. 從 Salesforce 主頁中選擇 **"設置**" 。
-    ![Salesforce 設定](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
+1. 如果您使用的是 Salesforce 光源體驗：
+    1. 選取 Salesforce 首頁上的 [**設定**]。
 
-    1. 從「設定」頁面,通過左側導航導航到**平臺工具->功能设置->营销->网络到潜在顾客**。
+       ![Salesforce 設定](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
+
+    1. 在 [**設定**] 頁面上，移至 [**平臺工具** > ] [**功能** > ] [**行銷** > ] [**Web 到潛在客戶**]。
 
         ![Salesforce Web 到潛在客戶](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
-3. 如果您使用的是 Salesforce 經典體驗:
-    1. 從 Salesforce 主頁中選擇 **"設置**" 。
-    ![Salesforce 經典設定](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
+1. 如果您使用的是 Salesforce 傳統體驗：
 
-    1. 從「設定」頁面,通過左側導航導航到**生成->自定义>潛在顧客>Web 到潛在顧客**。
+    1. 選取 Salesforce 首頁上的 [**設定**]。
 
-        ![Salesforce 經典 Web 到領導](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+       ![Salesforce 傳統設定](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-其餘的說明是相同的,無論您使用的 Salesforce 體驗如何。
+    1. 在 [**安裝**] 頁面上，選取 [**組建** > ] [**自訂** > **潛在** > **客戶]。**
 
-4. 在**Web 到潛在顧客設定「頁上**,選擇」**創建 Web 到潛在顧客窗體「** 按鈕。
-5. 在 [Web 到潛在客戶設定]**** 中，選取 [建立 Web 到潛在客戶表單]****。
-    ![銷售隊伍 - 網路到討論串設定](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
+        ![Salesforce 傳統的 Web 到潛在客戶](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
-6. 在 **"創建 Web 到潛在顧客表單**`the Include reCAPTCHA in HTML`'窗體上 ,請確保未選中設定,然後選擇"**生成**"。 
-    ![銷售隊伍 - 建立網路到串列表單](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+無論您使用的是哪種 Salesforce 體驗，其餘的指示都相同。
 
-7. 將顯示一些 HTML 文字。 搜尋文字"oid"並從 HTML 文本複製**oid 值**(僅在引號之間的文本),並儲存它。 您將在發佈門戶上的 **「組織識別元」** 欄位中貼上此值。
-    ![銷售隊伍 - 建立網路到串列表單](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+1. 在 [**網路到潛在客戶設定**] 頁面上，選取 [**建立 Web 到潛在客戶表單**] 按鈕。
+1. 在 [**網路對導向設定**] 上，選取 [**建立 Web 到潛在客戶表單**]。
 
-8. 選取選取**Finished**。
+    ![Salesforce 網路對潛在客戶設定](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>將產品/服務配置為向 Salesforce 傳送潛在顧客
+1. 在 [**建立 Web 到潛在客戶] 表單**上，確定`Include reCAPTCHA in HTML`已清除該設定，然後選取 [**產生**]。
 
-準備好在發佈門戶中配置產品/服務的首席管理資訊時,請按照以下步驟操作:
+    ![Salesforce 建立 Web 到潛在客戶表單窗格](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
-1. 導航到產品 **/服務"產品/服務"設置**頁面。
-1. 在「潛在顧客管理」部分下選擇 **「連接**」。
-    ![鉛管理 - 連線](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+1. 您會看到一些 HTML 文字。 搜尋「oid」文字，並從 HTML 文字複製「 **oid」值**（僅限在引號之間的文字）並加以儲存。 您會在發佈入口網站的 [**組織識別碼**] 欄位中貼上此值。
 
-1. 在"連接詳細資訊"彈出視窗上,選擇 **「潛在顧客目標****」的 Salesforce,** 然後`oid`按照前面的步驟貼到 **「組織」標識字**段,從 Web 到潛在顧客窗體。
+    ![Salesforce 建立了顯示 HTML "oid" 值的 Web 到潛在客戶表單](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
-1. **聯繫電子郵件**- 為公司中應接收新潛在顧客的電子郵件通知的人員提供電子郵件。 您可以通過用分號分隔它們來提供多封電子郵件。
+1. 選取 [完成]****。
 
-1. 選擇 **"確定**"。
+## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>設定您的供應專案以將潛在客戶傳送至 Salesforce
 
-要確保已成功連接到潛在顧客目標,請單擊驗證按鈕。 如果成功,您將在潛在顧客目標中具有測試潛在顧客。
+當您準備好在發佈入口網站中為您的供應專案設定潛在客戶管理資訊時，請遵循下列步驟。
 
->[!Note]
->您必須完成配置產品/服務的其餘部分併發佈它,然後才能收到產品/服務的潛在顧客。
+1. 移至供應專案的**供應專案設定**頁面。
+1. 選取 [**潛在客戶管理**] 區段下的 **[連接]** 。
 
-![連線詳細資訊 ─ 選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+    ![潛在客戶管理區段 [連線] 按鈕](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
-![連線詳細資訊 ─ 選擇潛在客戶目標](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
+1. 在 [連線**詳細資料**] 快顯視窗中，選取 [ **Salesforce** ] 作為 [**潛在客戶目的地**]，並將`oid`值從您建立的 Web 到潛在客戶表單貼入 [**組織識別碼**] 欄位。
+
+1. 在 [**連絡人電子郵件**] 底下，輸入公司人員在收到新的潛在客戶時應接收電子郵件通知的電子郵件地址。 您可以提供多個電子郵件，方法是以分號分隔。
+
+1. 選取 [確定]  。
+
+若要確定您已成功連線到潛在客戶目的地，請選取 [**驗證**] 按鈕。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
+
+>[!NOTE]
+>您必須先完成供應專案的其餘部分設定並加以發佈，才能接收供應專案的潛在客戶。
+
+![[連接詳細資料] 快顯視窗 [選擇潛在客戶目的地] 方塊](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![連接詳細資料快顯視窗驗證連絡人電子郵件方塊](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

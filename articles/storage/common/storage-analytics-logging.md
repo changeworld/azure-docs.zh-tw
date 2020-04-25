@@ -1,6 +1,6 @@
 ---
 title: Azure 儲存體分析記錄
-description: 瞭解如何記錄有關針對 Azure 儲存發出的請求的詳細資訊。
+description: 瞭解如何記錄對 Azure 儲存體提出之要求的詳細資料。
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 45224625cfc828227708247d082a1aab1aef8469
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637173"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142651"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 
 儲存體分析會記錄對儲存體服務之成功和失敗要求的詳細資訊。 這項資訊可用來監視個別要求，並診斷儲存體服務的問題。 系統會以最佳方式來記錄要求。
 
- 根據預設，儲存體帳戶不會啟用儲存體分析記錄功能。 您可以在 [Azure 入口網站](https://portal.azure.com/)中啟用它；如需詳細資訊，請參閱[在 Azure 入口網站中監視儲存體帳戶](/azure/storage/storage-monitor-storage-account)。 您也可以利用程式設計方式，透過 REST API 或用戶端程式庫來啟用儲存體分析。 使用[獲取 Blob 服務屬性](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)、[獲取佇列服務屬性](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)和[獲取表服務屬性](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties)操作來為每個服務啟用儲存分析。
+ 根據預設，儲存體帳戶不會啟用儲存體分析記錄功能。 您可以在 [Azure 入口網站](https://portal.azure.com/)中啟用它；如需詳細資訊，請參閱[在 Azure 入口網站中監視儲存體帳戶](/azure/storage/storage-monitor-storage-account)。 您也可以利用程式設計方式，透過 REST API 或用戶端程式庫來啟用儲存體分析。 使用 [[取得 Blob 服務屬性](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)]、[[取得佇列服務屬性](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)] 和 [[取得資料表服務屬性](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties)] 作業，為每個服務啟用儲存體分析。
 
- 只有在對服務端點提出要求時，才會建立記錄項目。 例如,如果存儲帳戶在其 Blob 終結點中具有活動,但在其表或佇列終結點中沒有活動,則僅創建與 Blob 服務相關的日誌。
+ 只有在對服務端點提出要求時，才會建立記錄項目。 例如，如果儲存體帳戶在其 Blob 端點中有活動，而不是在其資料表或佇列端點中，則只會建立與 Blob 服務相關的記錄。
 
 > [!NOTE]
 >  儲存體分析記錄目前僅適用於 Blob、佇列及表格服務， 但是不支援進階儲存體帳戶。
 
-## <a name="requests-logged-in-logging"></a>登入記錄的要求
+## <a name="requests-logged-in-logging"></a>記錄中已記錄的要求
 ### <a name="logging-authenticated-requests"></a>記錄驗證要求
 
  系統將記錄下列類型的驗證要求：
@@ -51,14 +51,14 @@ ms.locfileid: "80637173"
 
 ## <a name="how-logs-are-stored"></a>記錄的儲存方式
 
-所有記錄會儲存在容器 `$logs` 的區塊 Blob 中，此容器會在啟用儲存體帳戶的儲存體分析時自動建立。 `$logs` 容器位於儲存體帳戶的 Blob 命名空間中，例如：`http://<accountname>.blob.core.windows.net/$logs`。 一旦啟用儲存體分析之後便無法刪除此容器，不過您可以刪除其內容。 如果使用儲存瀏覽工具直接導覽到容器,您將看到包含日誌記錄資料的所有 Blob。
+所有記錄會儲存在容器 `$logs` 的區塊 Blob 中，此容器會在啟用儲存體帳戶的儲存體分析時自動建立。 `$logs` 容器位於儲存體帳戶的 Blob 命名空間中，例如：`http://<accountname>.blob.core.windows.net/$logs`。 一旦啟用儲存體分析之後便無法刪除此容器，不過您可以刪除其內容。 如果您使用儲存體流覽工具直接流覽至容器，您會看到包含記錄資料的所有 blob。
 
 > [!NOTE]
->  執行`$logs`容器清單操作(如清單容器操作)時,不會顯示容器。 您必須直接存取它。 例如,可以使用清單 Blobs 操作訪問`$logs`容器中的 Blob。
+>  執行`$logs`容器清單作業（例如列出容器作業）時，不會顯示容器。 您必須直接存取它。 例如，您可以使用清單 Blob 作業來存取`$logs`容器中的 blob。
 
-記錄要求時，儲存體分析將會以區塊形式上傳中繼結果。 儲存體分析會定期認可這些區塊，並提供它們做為 Blob。 日誌數據最多可能需要一個小時才能顯示在 **$logs**容器中的 blob 中,因為存儲服務刷新日誌編寫器的頻率。 在同一個小時內建立的記錄可能會有重複的記錄。 您可以藉由檢查 **RequestId** 和 **Operation** 數字來判斷記錄是否重複。
+記錄要求時，儲存體分析將會以區塊形式上傳中繼結果。 儲存體分析會定期認可這些區塊，並提供它們做為 Blob。 記錄資料最多可能需要一小時的時間才會出現在 **$logs**容器中的 blob，因為儲存體服務會排清記錄寫入器的頻率。 在同一個小時內建立的記錄可能會有重複的記錄。 您可以藉由檢查 **RequestId** 和 **Operation** 數字來判斷記錄是否重複。
 
-如果您每小時有大量的記錄資料 (具有多個檔案)，則可以使用 Blob 中繼資料，藉由檢查 Blob 中繼資料欄位來判斷記錄所包含的資料。 這還很有用,因為在將數據寫入日誌檔時有時會出現延遲:blob 元數據比 blob 名稱更精確地指示 blob 內容。
+如果您每小時有大量的記錄資料 (具有多個檔案)，則可以使用 Blob 中繼資料，藉由檢查 Blob 中繼資料欄位來判斷記錄所包含的資料。 這也很有用，因為在資料寫入記錄檔時，有時可能會有延遲： blob 中繼資料提供比 blob 名稱更精確的 blob 內容指示。
 
 大多數儲存體瀏覽工具可讓您檢視 Blob 的中繼資料；您可以使用 PowerShell 或以程式設計方式讀取此資訊。 下列 PowerShell 程式碼片段示範如何依名稱篩選記錄 Blob 的清單來指定時間，以及如何依中繼資料進行篩選以識別包含**寫入**作業的記錄。  
 
@@ -76,7 +76,7 @@ ms.locfileid: "80637173"
  }  
  ```  
 
-有關以程式設計方式列出 Blob 的資訊,請參閱[枚舉 Blob 資源](https://msdn.microsoft.com/library/azure/hh452233.aspx)以及為 Blob[資源設定和檢索屬性和中繼資料](https://msdn.microsoft.com/library/azure/dd179404.aspx)。  
+如需以程式設計方式列出 blob 的相關資訊，請參閱[列舉 Blob 資源](https://msdn.microsoft.com/library/azure/hh452233.aspx)和[設定和抓取 Blob 資源的屬性和中繼資料](https://msdn.microsoft.com/library/azure/dd179404.aspx)。  
 
 ### <a name="log-naming-conventions"></a>記錄檔命名慣例
 
@@ -86,15 +86,15 @@ ms.locfileid: "80637173"
 
  下表說明記錄檔名稱中的每個屬性：
 
-|屬性|描述|
+|屬性|說明|
 |---------------|-----------------|
 |`<service-name>`|儲存體服務的名稱。 例如：`blob`、`table` 或 `queue`|
-|`YYYY`|記錄檔的四位數年份。 例如： `2011`|
-|`MM`|記錄檔的兩位數月份。 例如： `07`|
-|`DD`|記錄檔的兩位數日期。 例如： `31`|
-|`hh`|記錄檔用於表示開始小時的兩位數小時，採用 24 小時 UTC 格式。 例如： `18`|
-|`mm`|記錄檔用於表示開始分鐘的兩位數。 **註:** 目前版本的儲存分析中不支援此值,其值將始終為`00`。|
-|`<counter>`|以零起始的六位數計數器，表示在一小時內針對儲存體服務產生的記錄檔 Blob 數目。 此計數器會從 `000000` 開始。 例如： `000001`|
+|`YYYY`|記錄檔的四位數年份。 例如：`2011`|
+|`MM`|記錄檔的兩位數月份。 例如：`07`|
+|`DD`|記錄檔的兩位數日期。 例如：`31`|
+|`hh`|記錄檔用於表示開始小時的兩位數小時，採用 24 小時 UTC 格式。 例如：`18`|
+|`mm`|記錄檔用於表示開始分鐘的兩位數。 **注意：** 目前版本的儲存體分析不支援此值，且其值一律為`00`。|
+|`<counter>`|以零起始的六位數計數器，表示在一小時內針對儲存體服務產生的記錄檔 Blob 數目。 此計數器會從 `000000` 開始。 例如：`000001`|
 
  以下是結合上述範例的完整範例記錄檔名稱：
 
@@ -110,11 +110,11 @@ ms.locfileid: "80637173"
 
  所有的記錄檔 Blob 都會與中繼資料一同儲存，可用來識別 Blob 包含哪些記錄資料。 下表說明每個中繼資料屬性：
 
-|屬性|描述|
+|屬性|說明|
 |---------------|-----------------|
-|`LogType`|描述記錄檔是否包含關於讀取、寫入或刪除作業的資訊。 此值可包含一個類型或是所有這三種類型的組合 (以逗號分隔)。<br /><br /> 範例 1：`write`<br /><br /> 範例 2：`read,write`<br /><br /> 範例 3:`read,write,delete`|
-|`StartTime`|記錄檔項目的最早記錄時間，格式為 `YYYY-MM-DDThh:mm:ssZ`。 例如： `2011-07-31T18:21:46Z`|
-|`EndTime`|記錄檔項目的最晚記錄時間，格式為 `YYYY-MM-DDThh:mm:ssZ`。 例如： `2011-07-31T18:22:09Z`|
+|`LogType`|描述記錄檔是否包含關於讀取、寫入或刪除作業的資訊。 此值可包含一個類型或是所有這三種類型的組合 (以逗號分隔)。<br /><br /> 範例 1：`write`<br /><br /> 範例 2：`read,write`<br /><br /> 範例3：`read,write,delete`|
+|`StartTime`|記錄檔項目的最早記錄時間，格式為 `YYYY-MM-DDThh:mm:ssZ`。 例如：`2011-07-31T18:21:46Z`|
+|`EndTime`|記錄檔項目的最晚記錄時間，格式為 `YYYY-MM-DDThh:mm:ssZ`。 例如：`2011-07-31T18:22:09Z`|
 |`LogVersion`|記錄檔格式的版本。|
 
  下列清單顯示使用上述範例的完整範例中繼資料：
@@ -124,23 +124,23 @@ ms.locfileid: "80637173"
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-## <a name="enable-storage-logging"></a>開啟儲存紀錄記錄
+## <a name="enable-storage-logging"></a>啟用儲存體記錄
 
-您可以使用 Azure 門戶、PowerShell 和儲存 SDK 啟用儲存紀錄記錄。
+您可以使用 Azure 入口網站、PowerShell 和儲存體 Sdk 來啟用儲存體記錄。
 
-### <a name="enable-storage-logging-using-the-azure-portal"></a>使用 Azure 門戶開啟儲存紀錄記錄  
+### <a name="enable-storage-logging-using-the-azure-portal"></a>使用 Azure 入口網站啟用儲存體記錄  
 
-在 Azure 門戶中,使用**診斷設置(經典)** 邊欄選項卡來控制儲存日誌記錄,可從儲存帳戶**功能表邊欄**選項卡的**監視(經典)** 部分訪問。
+在 Azure 入口網站中，使用 [**診斷設定] （傳統）** 分頁來控制存放裝置記錄，其可從儲存體帳戶**功能表**分頁的 [**監視（傳統）** ] 區段存取。
 
-您可以指定要記錄的儲存服務以及記錄數據的保留期(以天數表示)。  
+您可以指定要記錄的儲存體服務，以及記錄資料的保留期限（以天為單位）。  
 
-### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 啟用儲存紀錄記錄  
+### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 啟用儲存體記錄  
 
  您可以使用 Azure PowerShell Cmdlet **Get-AzureStorageServiceLoggingProperty** 擷取目前的設定，以及使用 Cmdlet **Set-AzureStorageServiceLoggingProperty** 變更目前的設定，在本機電腦上使用 PowerShell 來設定儲存體帳戶的「儲存體記錄」。  
 
  控制「儲存體記錄」的 Cmdlet 會使用 **LoggingOperations** 參數，該參數是一個包含要記錄之要求類型清單 (以逗號分隔) 的字串。 三個可能的要求類型包含 [讀取]****、[寫入]**** 和 [刪除]****。 若要關閉記錄功能，請將值 [無]**** 使用於 **LoggingOperations** 參數。  
 
- 以下命令將切換用於紀錄在預設儲存帳號中的佇列服務中讀取、寫入和刪除請求,保留期設定為五天:  
+ 下列命令會針對預設儲存體帳戶中的佇列服務中的讀取、寫入和刪除要求，切換記錄，並將保留設定為五天：  
 
 ```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
@@ -154,11 +154,15 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  如需如何設定 Azure PowerShell Cmdlet 以使用您的 Azure 訂用帳戶，以及如何選取要使用的預設儲存體帳戶的相關資訊，請參閱： [如何安裝和設定 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  
 
-### <a name="enable-storage-logging-programmatically"></a>以程式設計模式開啟儲存紀錄記錄  
+### <a name="enable-storage-logging-programmatically"></a>以程式設計方式啟用儲存體記錄  
 
- 除了使用 Azure 門戶或 Azure PowerShell cmdlet 來控制儲存日誌記錄外,還可以使用 Azure 儲存 API 之一。 例如，若您使用 .NET 語言，則可使用儲存體用戶端程式庫。  
+ 除了使用 Azure 入口網站或 Azure PowerShell Cmdlet 來控制儲存體記錄之外，您也可以使用其中一個 Azure 儲存體 Api。 例如，若您使用 .NET 語言，則可使用儲存體用戶端程式庫。  
 
- **CloudBlobClient**、**CloudQueueClient** 和 **CloudTableClient** 類別全都有方法，例如以 **ServiceProperties** 物件作為參數的 **SetServiceProperties** 和 **SetServicePropertiesAsync**。 您可以使用 **ServiceProperties** 物件來設定「儲存體記錄」。 例如，下列 C# 程式碼片段顯示如何變更所記錄的內容以及佇列記錄的保留期間：  
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/diagnostic-logs-classic.cs" id="snippet_EnableDiagnosticLogs":::
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -171,16 +175,19 @@ serviceProperties.Logging.RetentionDays = 2;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
- 有關使用 .NET 語言設定儲存紀錄記錄的詳細資訊,請參閱[儲存用戶端庫參考](https://msdn.microsoft.com/library/azure/dn261237.aspx)。  
+---
 
- 有關使用 REST API 設定儲存紀錄記錄的一般資訊,請參考[啟用與設定儲存分析](https://msdn.microsoft.com/library/azure/hh360996.aspx)。  
 
-## <a name="download-storage-logging-log-data"></a>下載儲存紀錄紀錄紀錄紀錄資料
+ 如需有關使用 .NET 語言來設定儲存體記錄的詳細資訊，請參閱[儲存體用戶端程式庫參考](https://msdn.microsoft.com/library/azure/dn261237.aspx)。  
 
- 若要檢視和分析記錄資料，您應將包含您有興趣之記錄資料的 Blob 下載到本機電腦。 許多儲存瀏覽工具使您能夠從存儲帳戶下載 Blob;您還可以使用 Azure 儲存團隊提供的命令列 Azure 複製工具[AzCopy](storage-use-azcopy-v10.md)來下載日誌數據。  
+ 如需使用 REST API 設定儲存體記錄的一般資訊，請參閱[啟用和設定儲存體分析](https://msdn.microsoft.com/library/azure/hh360996.aspx)。  
+
+## <a name="download-storage-logging-log-data"></a>下載儲存體記錄記錄資料
+
+ 若要檢視和分析記錄資料，您應將包含您有興趣之記錄資料的 Blob 下載到本機電腦。 許多儲存體流覽工具可讓您從儲存體帳戶下載 blob;您也可以使用 Azure 儲存體 team 提供的命令列 Azure 複製工具[AzCopy](storage-use-azcopy-v10.md)來下載您的記錄資料。  
  
 >[!NOTE]
-> 容器`$logs`未與事件網格集成,因此在寫入日誌檔時不會收到通知。 
+> `$logs`容器未與事件方格整合，因此當您寫入記錄檔時，不會收到通知。 
 
  若要確保下載有興趣的記錄資料以及避免多次下載相同的記錄資料：  
 
@@ -188,20 +195,20 @@ queueClient.SetServiceProperties(serviceProperties);
 
 -   使用包含記錄資料的 Blob 上的中繼資料來識別Blob 保留記錄資料的特定期間，進而識別您需要下載的確切 Blob。  
 
-要開始使用 AzCopy,請參閱[使用 AzCopy 入門](storage-use-azcopy-v10.md) 
+若要開始使用 AzCopy，請參閱[開始使用 AzCopy](storage-use-azcopy-v10.md) 
 
-下面的示例演示如何從 2014 年 5 月 20 日上午 9 點、上午 10 點和上午 11 點開始下載佇列服務的日誌數據。
+下列範例顯示如何下載佇列服務的記錄資料，時間從上午09、上午10點到 11 AM 2014 年5月20日。
 
 ```
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-要瞭解有關如何下載特定檔案的更多內容,請參閱[下載特定檔](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)。
+若要深入瞭解如何下載特定檔案，請參閱[下載特定](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)檔案。
 
-當您下載記錄資料後，即可檢視檔案中的記錄項目。 這些日誌檔使用許多日誌讀取工具能夠解析的分隔文本格式,包括 Microsoft 消息分析器(有關詳細資訊,請參閱指南[監視、診斷和故障排除 Microsoft Azure 儲存](storage-monitoring-diagnosing-troubleshooting.md))。 不同的工具有不同的功能可格式化、篩選、排序及搜尋記錄檔的內容。 關於儲存紀錄紀錄紀錄紀錄檔格式與內容的詳細資訊,請參考[儲存分析紀錄格式](/rest/api/storageservices/storage-analytics-log-format)與[儲存分析紀錄的操作和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
+當您下載記錄資料後，即可檢視檔案中的記錄項目。 這些記錄檔會使用分隔的文字格式，讓許多記錄讀取工具能夠進行剖析，包括 Microsoft Message Analyzer （如需詳細資訊，請參閱[監視、診斷和疑難排解 Microsoft Azure 儲存體](storage-monitoring-diagnosing-troubleshooting.md)）。 不同的工具有不同的功能可格式化、篩選、排序及搜尋記錄檔的內容。 如需有關儲存體記錄檔格式和內容的詳細資訊，請參閱[儲存體分析記錄格式](/rest/api/storageservices/storage-analytics-log-format)和[儲存體分析記錄的作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [儲存體分析記錄檔格式](/rest/api/storageservices/storage-analytics-log-format)
 * [儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
-* [儲存分析指標 (傳統)](storage-analytics-metrics.md)
+* [儲存體分析計量（傳統）](storage-analytics-metrics.md)

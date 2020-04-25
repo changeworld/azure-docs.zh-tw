@@ -8,48 +8,48 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d88123b3dd79e5707c5c19cbbae13c30cbdeb84
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 68fe7da136d744e1efa76a89061afe6995a75051
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409404"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133266"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
 
-本文介紹了 Azure 流分析輸入連接的常見問題、如何排除輸入問題以及如何更正問題。 許多故障排除步驟都需要為流分析作業啟用診斷日誌。 如果未啟用診斷紀錄,請參閱[使用診斷紀錄對 Azure 串流分析進行故障排除](stream-analytics-job-diagnostic-logs.md)。
+本文說明 Azure 串流分析輸入連線的常見問題、如何針對輸入問題進行疑難排解，以及如何修正這些問題。 許多疑難排解步驟都需要針對您的串流分析作業啟用資源記錄。 如果您沒有啟用資源記錄，請參閱[使用資源記錄針對 Azure 串流分析進行疑難排解](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="input-events-not-received-by-job"></a>作業未收到輸入事件 
 
-1.  測試輸入和輸出連接。 針對各個輸入和輸出使用 [測試連線]**** 按鈕，驗證輸入及輸出的連線能力。
+1.  測試您的輸入和輸出連線能力。 針對各個輸入和輸出使用 [測試連線]**** 按鈕，驗證輸入及輸出的連線能力。
 
 2.  檢查您的輸入資料。
 
-    1. 對每個輸入使用[**「示例數據**](stream-analytics-sample-data-input.md)」按鈕。 下載輸入範例數據。
+    1. 針對每個輸入使用 [[**範例資料**](stream-analytics-sample-data-input.md)] 按鈕。 下載輸入範例資料。
         
-    1. 檢查範例資料以瞭解架構與[資料型態](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
+    1. 檢查範例資料以瞭解架構和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
     
-    1. 檢查[事件中心指標](../event-hubs/event-hubs-metrics-azure-monitor.md)以確保發送事件。 如果事件中心正在接收消息,則消息指標應大於零。
+    1. 檢查[事件中樞計量](../event-hubs/event-hubs-metrics-azure-monitor.md)，以確保正在傳送事件。 如果事件中樞接收訊息，則訊息計量應大於零。
 
-3.  確保在輸入預覽中選擇時間範圍。 選擇 **「選擇時間範圍**」,然後在測試查詢之前輸入示例持續時間。
+3.  請確定您已在輸入預覽中選取時間範圍。 選擇 [**選取時間範圍**]，然後在測試查詢之前輸入取樣持續時間。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正確的輸入事件導致還原序列化錯誤 
 
-當串流分析作業的輸入資料流包含格式不正確的訊息時，就會導致還原序列化問題。 例如,在 JSON 物件中缺少括弧或大括弧或時間欄位中的時間戳格式不正確,可能導致格式錯誤的消息。 
+當串流分析作業的輸入資料流包含格式不正確的訊息時，就會導致還原序列化問題。 例如，格式不正確的訊息可能是在 JSON 物件中遺漏括弧或大括弧所造成，或是在時間欄位中有不正確的時間戳記格式。 
  
-當串流分析作業從輸入收到格式不正確的訊息時，會捨棄訊息並以警告通知您。 您串流分析作業的 [輸入]**** 圖格上會顯示警告符號。 只要作業處於運行狀態,以下警告符號就存在:
+當串流分析作業從輸入收到格式不正確的訊息時，會捨棄訊息並以警告通知您。 您串流分析作業的 [輸入]**** 圖格上會顯示警告符號。 只要作業處於執行中狀態，下列警告符號就會存在：
 
 ![Azure 串流分析輸入圖格](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-啟用診斷日誌以查看導致錯誤的錯誤的詳細資訊以及導致錯誤的消息(有效負載)。 發生反序列化錯誤的原因有多種。 有關特定反序列化錯誤的詳細資訊,請參閱[輸入資料錯誤](data-errors.md#input-data-errors)。 如果未啟用診斷日誌,則 Azure 門戶中將提供簡要通知。
+啟用資源記錄，以查看錯誤的詳細資料，以及導致錯誤的訊息（裝載）。 有許多原因會造成還原序列化錯誤。 如需有關特定還原序列化錯誤的詳細資訊，請參閱[輸入資料錯誤](data-errors.md#input-data-errors)。 如果未啟用資源記錄，Azure 入口網站將會提供簡短通知。
 
-![輸入詳細資訊警告通知](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+![輸入詳細資料警告通知](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
-如果消息負載大於 32 KB 或採用二進位格式,請運行[GitHub 範例儲存庫](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)中可用的 CheckMalformedEvents.cs 代碼。 此程式碼讀取分割區識別碼、位移，並列印位於該位移的資料。 
+如果訊息裝載大於 32 KB 或為二進位格式，請執行[GitHub 範例存放庫](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)中提供的 CheckMalformedEvents.cs 程式碼。 此程式碼讀取分割區識別碼、位移，並列印位於該位移的資料。 
 
-## <a name="job-exceeds-maximum-event-hub-receivers"></a>工作超過最大事件中心接收器
+## <a name="job-exceeds-maximum-event-hub-receivers"></a>作業超過事件中樞接收器的上限
 
-使用事件中心的最佳做法是使用多個消費者組來進行作業可伸縮性。 在特定輸入的串流分析作業中，其讀取器數量會影響單一取用者群組中的讀取器數量。 接收器精確數量會以相應放大拓撲邏輯的內部實作詳細資料為基礎，並且不會對外公開。 讀取器數量會在作業開始時或作業升級期間變更。
+使用事件中樞的最佳作法是使用多個取用者群組來進行作業擴充性。 在特定輸入的串流分析作業中，其讀取器數量會影響單一取用者群組中的讀取器數量。 接收器精確數量會以相應放大拓撲邏輯的內部實作詳細資料為基礎，並且不會對外公開。 讀取器數量會在作業開始時或作業升級期間變更。
 
 當接收器數目超過上限時顯示的錯誤訊息為：
 
@@ -64,7 +64,7 @@ ms.locfileid: "80409404"
 
 1. 登入 Azure 入口網站。
 
-2. 找到您的活動中心。
+2. 找出您的事件中樞。
 
 3. 選取 [實體]**** 標題下方的 [事件中樞]****。
 
@@ -76,7 +76,7 @@ ms.locfileid: "80409404"
 
    ![在事件中樞新增取用者群組](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
-7. 當您在串流分析作業中建立輸入以指向事件中樞時，您已指定取用者群組。 當未指定時,將使用 **$Default。** 一旦您建立新的取用者群組後，請在串流分析作業中編輯事件中樞輸入，並指定新取用者群組的名稱。
+7. 當您在串流分析作業中建立輸入以指向事件中樞時，您已指定取用者群組。 當未指定任何時，會使用 **$Default** 。 一旦您建立新的取用者群組後，請在串流分析作業中編輯事件中樞輸入，並指定新取用者群組的名稱。
 
 ## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>每個分割區的讀取器超過事件中樞上限
 
@@ -132,12 +132,12 @@ FROM data
 
 ## <a name="get-help"></a>取得說明
 
-有關進一步説明,請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試我們的[Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 串流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
 * [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

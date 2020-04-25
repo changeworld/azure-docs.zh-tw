@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 邊緣模組 SKU |Azure 應用商店
+title: Azure IoT Edge 模組 Sku |Azure Marketplace
 description: 建立 IoT Edge 模組的的 SKU。
 author: dsindona
 ms.service: marketplace
@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 0a394c14842fe0c4eb4baa18cbb13acb8ca3170a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983325"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142449"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模組 SKU 索引標籤
 
 >[!Important]
->從 2020 年 4 月 13 日起,我們將開始將 IoT Edge 模組產品的管理轉移到合作夥伴中心。 遷移後,您將在合作夥伴中心創建和管理您的優惠。 按照[創建IoT Edge模組產品/服務](https://aka.ms/AzureCreateIoT)中的說明進行操作,以管理遷移的優惠。
+>從2020年4月13日開始，我們會開始將您的 IoT Edge 課程模組的管理工作移至合作夥伴中心。 在遷移之後，您將在合作夥伴中心建立和管理您的供應專案。 請依照[建立 IoT Edge 模組供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)專案中的指示來管理您遷移的供應專案。
 
 可使用 [新增供應項目]**** 頁面的 [SKU]**** 索引標籤，建立一個或一個以上的 SKU，並建立 SKU 與新供應項目之間的關聯性。  可以使用不同的 SKU，依功能集、帳單模式或其他部分特性，讓解決方案彼此互有差異。
 
@@ -36,7 +36,7 @@ ms.locfileid: "80983325"
 
 [SKU]**** 索引標籤隨即會重新整理，顯示設定 SKU 的編輯欄位。 欄位名稱上附加的星號 (*) 表示此為必填欄位。
 
-|  **欄位**       |     **說明**                                                          |
+|  **欄位**       |     **描述**                                                          |
 |  ---------       |     ---------------                                                          |
 | **SKU 識別碼\***       | 此 SKU 的識別碼。 此名稱的長度上限為 50 個字元，由小寫英數字元或連字號 (-) 組成，但不能以連字號結尾。 **注意：** 發佈供應項目之後，即無法變更此名稱。 該名稱會在產品網址中公開顯示。 |
 |  |  |
@@ -44,17 +44,17 @@ ms.locfileid: "80983325"
 
 ## <a name="sku-details"></a>SKU 詳細資料
 
-設定 [SKU 詳細資料]****，定義您的 SKU 在 Azure Marketplace 和 Azure 入口網站上的顯示方式。
+設定**Sku 詳細資料**，以定義您的 sku 將如何顯示在 Azure Marketplace 和 Azure 入口網站網站上。
 
 ![IoT Edge 模組 SKU 中繼資料](media/iot-edge-module-skus-tab-metadata.png)
 
 下表說明 [SKU 詳細資料]**** 下的欄位用途、內容和格式。 必要欄位由星號 (*) 標示。
 
-|  **欄位**       |     **說明**                                                          |
+|  **欄位**       |     **描述**                                                          |
 |  ---------       |     ---------------                                                          |
-| **標題\***        | 此 SKU 的標題。 長度上限為 50 個字元。 <br/> 會顯示在 Azure 入口網站中，並在部署時做為預設的模組名稱 (不含空格和特殊字元)。 請參閱下圖，以確切了解此欄位的顯示位置。|
+| **標題\***        | 此 SKU 的標題。 長度上限為 50 個字元。 <br/> 它會顯示在 Azure 入口網站中，並在部署時用來做為預設的模組名稱（不含空格和特殊字元）。 請參閱下圖，以確切了解此欄位的顯示位置。|
 | **摘要\***      | SKU 的簡短摘要。 長度上限是 100 個字元。 **請勿**提供供應項目的摘要，僅需 SKU 的摘要即可  此摘要會顯示在 Azure Marketplace 中。 請參閱下圖，以確切了解此欄位的顯示位置。|
-| **描述\***  | 此 SKU 的簡短說明。長度上限為 3000 個字元。 請勿提供供應項目的說明，僅需 SKU 的說明即可。 說明會顯示在 Azure Marketplace 和 Azure 入口網站中。 在 Azure 門戶中,它將追加到描述應用商店選項卡中定義的產品/服務的市場描述。 它可以與 SKU 摘要相同。 請參閱下圖，以確切了解此欄位的顯示位置。|
+| **說明\***  | 此 SKU 的簡短說明。長度上限為 3000 個字元。 請勿提供供應項目的說明，僅需 SKU 的說明即可。 它會顯示在 Azure Marketplace 和 Azure 入口網站中。 在 Azure 入口網站中，它會附加至 Marketplace 描述，說明 [Marketplace] 索引標籤中定義的供應專案。 它可以與 SKU 摘要相同。 請參閱下圖，以確切了解此欄位的顯示位置。|
 | **隱藏此 SKU\*** | 請保留預設設定值，即**否**。 |
 |  |  |
 
@@ -94,7 +94,7 @@ ms.locfileid: "80983325"
 
 ## <a name="sku-content"></a>SKU 內容
 
-在**邊緣模組映射**下,提供上傳IoT邊緣模組所需的資訊。
+在 [ **Edge 模組映射**] 下，提供上傳 IoT Edge 模組所需的資訊。
 
 請讓我們得以存取您含有 IoT Edge 模組映像的 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR)，以便我們將之上傳並加以認證。 發佈後，會使用 Azure Marketplace 託管的公共容器登錄來複製和散發您的 IoT Edge 模組。
 
@@ -102,24 +102,24 @@ ms.locfileid: "80983325"
 
 ![IoT Edge 模組映像](./media/iot-edge-module-skus-tab-acr.png)
 
-下表描述了**部分圖像儲存庫詳細資訊**和**圖像版本**欄位的用途、內容和格式。  必要欄位由星號 (*) 標示。
+下表說明 [**映射存放庫詳細資料**] 和 [**映射版本**] 各節欄位的用途、內容和格式。  必要欄位由星號 (*) 標示。
 
 
-|  **欄位**       |     **說明**                                                          |
+|  **欄位**       |     **描述**                                                          |
 |  ---------       |     ---------------                                                          |
 |  |  ***映像存放庫詳細資料***    |
-| **訂閱識別碼\***        | ACR 的 Azure 訂用帳戶識別碼。|
+| **訂用帳戶識別碼\***        | ACR 的 Azure 訂用帳戶識別碼。|
 | **資源群組名稱\***      | ACR 的資源群組名稱。|
-| **登錄表格名稱\***  | 您的 ACR 登錄名稱。 只會複製登錄名稱，而不是登入伺服器名稱 (例如，不含 `azurecr.io`。) |
+| **登錄名稱\***  | 您的 ACR 登錄名稱。 只會複製登錄名稱，而不是登入伺服器名稱 (例如，不含 `azurecr.io`。) |
 | **儲存機制名稱\***  | ACR 的存放庫名稱包含您的 IoT Edge 模組。 **注意：** 設定名稱之後，即無法變更。 請使用唯一不重複的名稱，以確保您帳戶中不會有其他相同名稱的供應項目。 |
-| **使用者\*** | 與 ACR 相關聯的使用者名稱 (系統管理員使用者名稱)。 |
-| **密碼\*** | 與 ACR 相關聯的密碼。 |
-|    |  ***影像版本***   |
+| **Username\*** | 與 ACR 相關聯的使用者名稱 (系統管理員使用者名稱)。 |
+| **許可權\*** | 與 ACR 相關聯的密碼。 |
+|    |  ***映射版本***   |
 | **影像標記或摘要\*** | 其必須至少包含 `latest` 標籤和版本標籤 (例如，以 `xx.xx.xx-` 開頭，其中 xx 是數字)， 且應是[資訊清單標籤](https://github.com/estesp/manifest-tool)，以將多個平台設為目標。 也請務必新增資訊清單標籤參考的所有標籤，以便上傳。 您可以使用標籤來新增多個版本的 IoT Edge 模組。 所有資訊清單標籤 (除了 `latest` 以外) 必須以 `X.Y-` 或 `X.Y.Z-` 開頭，其中 X、Y、Z 是整數。 請至[「準備 IoT Edge 模組的技術資產」一文的標籤和版本設定段落](./cpp-create-technical-assets.md)進一步了解。 <br/> 例如，如果 `latest` 標籤指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32`，以及 `1.0.1-windows-arm32`，則需要在此處加入這 6 個標籤。 |
 |  |  |
 
 
-### <a name="help-your-customers-launch-by-using-default-settings"></a>使用預設設定協助客戶啟動
+### <a name="help-your-customers-launch-by-using-default-settings"></a>使用預設設定來協助您的客戶啟動
 
 請定義您的 IoT Edge 模組最常用的部署設定。 如此便能讓客戶立即以預設值啟動 IoT Edge 模組，以此方式使客戶的部署達到最佳化。
 
@@ -127,7 +127,7 @@ ms.locfileid: "80983325"
 
 下表說明 [預設路由]****、[預設對應項的所需屬性]****、[預設環境變數]****，以及 [預設 CreateOptions]**** 欄位的用途、內容和格式。
 
-|  **欄位**       |     **說明**                                                          |
+|  **欄位**       |     **描述**                                                          |
 |  ---------       |     ---------------                                                          |
 | **預設路由**        | 每個預設路由名稱和值必須少於 512 個字元。 最多可以定義 5 個預設路由。 請務必在您的路由值中使用正確的[路由語法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 若要參考您的模組，請使用預設模組名稱，該名稱將是您的 **SKU 標題**，不含空格和特殊字元。 若要參考尚為未知的其他模組，請使用 `<FROM_MODULE_NAME>` 慣例，讓客戶知道他們需要更新此資訊。 深入了解 [IoT Edge 路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 <br/> 例如，如果模組 `ContosoModule` 接聽 `ContosoInput` 上的輸入和 `ContosoOutput` 的輸出資料，則應該定義以下 2 個預設路由：<br/>- Name #1: `ToContosoModule`<br/>- Value #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>- Name #2: `FromContosoModuleToCloud`<br/>- Value #2: `FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
 | **預設對應項的所需屬性**      | 每個預設對應項的所需屬性名稱和值必須少於 512 個字元。 最多可以定義 5 個名稱/值對應項的所需屬性。 對應項所需屬性的值必須是有效的 JSON、非逸出、無陣列，且包含最多 4 個巢狀階層。 深入了解[對應項的所需屬性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。 <br/> 例如，如果模組透過對應項的所需屬性支援可動態設定的重新整理頻率，請定義以下預設的對應項所需屬性：<br/> - Name #1: `RefreshRate`<br/>- Value #1: `60`|
