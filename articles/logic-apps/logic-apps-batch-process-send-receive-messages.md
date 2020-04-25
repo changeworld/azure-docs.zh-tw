@@ -1,6 +1,6 @@
 ---
-title: 批次處理消息作為一個組
-description: 在 Azure 邏輯應用中使用批次處理在工作流之間以組發送和接收消息
+title: 批次處理以群組方式處理訊息
+description: 在工作流程中使用批次處理，以群組的方式傳送和接收訊息 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666749"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144346"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure Logic Apps 中傳送、接收及批次處理訊息
 
@@ -31,13 +31,15 @@ ms.locfileid: "75666749"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要遵循此範例，您需要這些項目：
-
-* Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[開始使用免費 Azure 帳戶](https://azure.microsoft.com/free/)。 或者，請[註冊隨用隨付訂用帳戶](https://azure.microsoft.com/pricing/purchase-options/)。
+* Azure 訂用帳戶。 如果您沒有訂用帳戶，您可以[開始使用免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+或者，請[註冊隨用隨付訂用帳戶](https://azure.microsoft.com/pricing/purchase-options/)。
 
 * 電子郵件帳戶與任何 [Azure Logic Apps 所支援的電子郵件提供者](../connectors/apis-list.md)
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識 
+  > [!IMPORTANT]
+  > 如果您想要使用 Gmail 連接器，只有 G Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)用來搭配您的 Gmail 連接器進行驗證。 如需詳細資訊，請參閱[Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 * 若要使用 Visual Studio 而非 Azure 入口網站，請務必[設定 Visual Studio 以便使用 Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
@@ -55,14 +57,14 @@ ms.locfileid: "75666749"
 
 3. 設定批次接收者的屬性： 
 
-   | 屬性 | 描述 | 
+   | 屬性 | 說明 | 
    |----------|-------------|
    | **批次模式** | - **內嵌**：用來定義批次觸發程序內的發行準則 <br>- **整合帳戶**：透過[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，可定義多個發行準則組態。 透過整合帳戶，您可以在同一個地方維護上述所有組態，而不是在個別的邏輯應用程式中進行維護。 | 
    | **批次名稱** | 您的批次名稱 (在此範例中為 "TestBatch")，只適用於 [內嵌]**** 批次模式 |  
-   | **發行準則** | 僅適用於 [內嵌]**** 批次模式，可選取在處理每個批次之前要先符合的準則： <p>- **基於消息計數**：根據批次處理收集的消息數釋放批次處理。 <br>- **基於大小**：根據該批次處理收集的所有郵件的總大小（以位元組為單位）釋放批次處理。 <br>- **計畫**：根據定期計畫發佈批次處理，該計畫指定間隔和頻率。 在進階選項中，您也可以選取時區並提供開始日期和時間。 <br>- **全選**：使用所有指定的準則。 | 
-   | **消息計數** | 要在批次中收集的訊息數目，例如 10 則訊息。 批次的限制為 8,000 則訊息。 | 
+   | **發行準則** | 僅適用於 [內嵌]**** 批次模式，可選取在處理每個批次之前要先符合的準則： <p>- 以**訊息計數為基礎**：根據批次所收集的訊息數目來釋放批次。 <br>- 以**大小為基礎**：根據該批次收集之所有訊息的總大小（以位元組為單位）來釋放批次。 <br>- **排程**：根據週期排程釋放批次，這會指定間隔和頻率。 在進階選項中，您也可以選取時區並提供開始日期和時間。 <br>- **全選**：使用所有指定的準則。 | 
+   | **訊息計數** | 要在批次中收集的訊息數目，例如 10 則訊息。 批次的限制為 8,000 則訊息。 | 
    | **批次大小** | 要在批次中收集的大小總計 (以位元組為單)，例如 10 MB。 批次的大小限制為 80 MB。 | 
-   | **附表** | 批次發行之間的間隔和頻率，例如 10 分鐘。 最小週期是 60 秒或 1 分鐘。 小數的分鐘會無條件進位至 1 分鐘。 若要指定時區或開始日期和時間，請選擇 [顯示進階選項]****。 | 
+   | **排程** | 批次發行之間的間隔和頻率，例如 10 分鐘。 最小週期是 60 秒或 1 分鐘。 小數的分鐘會無條件進位至 1 分鐘。 若要指定時區或開始日期和時間，請選擇 [顯示進階選項]****。 | 
    ||| 
 
    > [!NOTE]
@@ -83,9 +85,7 @@ ms.locfileid: "75666749"
    2. 在搜尋方塊中，輸入「傳送電子郵件」作為篩選條件。
    根據您的電子郵件提供者，選取電子郵件連接器。
 
-      例如，如果您有私人帳戶，例如 @outlook.com 或 @hotmail.com，請選取 Outlook.com 連接器。 
-      如果您有 Gmail 帳戶，請選取 Gmail 連接器。 
-      此範例使用 Office 365 Outlook。 
+      例如，如果您有私人帳戶，例如 @outlook.com 或 @hotmail.com，請選取 Outlook.com 連接器。 這個範例會使用 Office 365 Outlook 連接器。
 
    3. 選取此動作：**傳送電子郵件 - <電子郵件提供者**>**
 
@@ -100,7 +100,7 @@ ms.locfileid: "75666749"
    * 在 [收件者]**** 方塊中，輸入收件者的電子郵件地址。 
    為了測試用途，您可以使用自己的電子郵件地址。
 
-   * 在 **"主題"** 框中，當顯示動態內容清單時，選擇 **"分區名稱"** 欄位。
+   * **在 [主旨**] 方塊中，當動態內容清單出現時，選取 [資料**分割名稱**] 欄位。
 
      ![從動態內容清單中，選取 [分割名稱]](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "75666749"
      > [!IMPORTANT]
      > 資料分割有 5,000 則訊息或 80 MB 的限制。 如果符合任何一個條件，Logic Apps 可以發行批次，即使不符合您定義的發行條件。
 
-   * 在 **"正文"** 框中，當顯示動態內容清單時，選擇 **"消息 ID"** 欄位。 
+   * 在 [**主體**] 方塊中，當動態內容清單出現時，請選取 [**訊息識別碼**] 欄位。 
 
      Logic Apps 設計工具會自動在傳送電子郵件動作前後新增 "For each" 迴圈，因為該動作會將上一個動作的輸出視為集合，而非批次。 
 
@@ -168,7 +168,7 @@ ms.locfileid: "75666749"
 
 3. 設定批次傳送者的屬性：
 
-   | 屬性 | 描述 | 
+   | 屬性 | 說明 | 
    |----------|-------------| 
    | **批次名稱** | 接收者邏輯應用程式所定義的批次名稱，在本例中為 "TestBatch" <p>**重要**：批次名稱會在執行階段驗證，而且必須符合接收者邏輯應用程式所指定的名稱。 變更批次名稱會導致批次傳送者失敗。 | 
    | **訊息內容** | 您要傳送的訊息內容 | 
@@ -178,7 +178,7 @@ ms.locfileid: "75666749"
 
    1. 按一下 [訊息內容]**** 方塊內部。 
 
-   2. 當顯示動態內容清單時，選擇**運算式**。 
+   2. 當動態內容清單出現時，選擇 [**運算式**]。 
 
    3. 輸入運算式 `utcnow()`，然後選擇 [確定]****。 
 
@@ -186,10 +186,10 @@ ms.locfileid: "75666749"
 
 4. 現在設定批次的資料分割。 在 "BatchReceiver" 動作中，選擇 [顯示進階選項]**** 並設定下列屬性：
 
-   | 屬性 | 描述 | 
+   | 屬性 | 說明 | 
    |----------|-------------| 
    | **分割區名稱** | 選擇性的唯一分割索引鍵，可用於將目標批次分割誠邏輯子集，以及根據該索引鍵收集訊息 | 
-   | **消息 ID** | 選擇性的訊息識別碼，空白時是一個產生的 全域唯一識別碼 (GUID) | 
+   | **訊息識別碼** | 選擇性的訊息識別碼，空白時是一個產生的 全域唯一識別碼 (GUID) | 
    ||| 
 
    針對此範例，在 [分割名稱]**** 中，請新增可產生介於 1 到 5 隨機數字的運算式。 讓 [訊息識別碼]**** 方塊保持空白。
