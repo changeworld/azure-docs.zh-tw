@@ -2,16 +2,16 @@
 title: 使用 Azure Migrate 伺服器移轉將 Hyper-V VM 遷移至 Azure
 description: 了解如何使用 Azure Migrate 伺服器移轉將內部部署 Hyper-V VM 遷移至 Azure
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422689"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535344"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>將 Hyper-V VM 遷移至 Azure 
 
@@ -19,12 +19,12 @@ ms.locfileid: "80422689"
 
 [Azure Migrate](migrate-services-overview.md) 提供集中式中樞，可追蹤內部部署應用程式和工作負載及私人/公用雲端 VM 的探索、評量和移轉 (以 Azure 為目標)。 該中樞能提供 Azure Migrate 工具以進行評估和移轉，也提供協力廠商獨立軟體廠商 (ISV) 的供應項目。
 
-本教學課程是系列中的第三篇，將示範如何使用 Azure Migrate 伺服器評量和移轉來評估 Hyper-V 並將其遷移至 Azure。 在本教學課程中，您會了解如何：
+本教學課程是系列中的第三篇，將示範如何使用 Azure Migrate 伺服器評量和伺服器移轉來評估 Hyper-V 並將其遷移至 Azure。 在本教學課程中，您會了解如何：
 
 
 > [!div class="checklist"]
 > * 準備 Azure 和您的內部部署 Hyper-V 環境
-> * 設定來源環境並部署複寫設備。
+> * 設定來源環境。
 > * 設定目標環境。
 > * 啟用複寫。
 > * 執行測試移轉，確定一切都沒問題。
@@ -38,23 +38,28 @@ ms.locfileid: "80422689"
 開始進行本教學課程之前，您必須：
 
 1. [檢閱](hyper-v-migration-architecture.md) Hyper-V 移轉架構。
-2. [完成此系列的第一個教學課程](tutorial-prepare-hyper-v.md)，設定 Azure 和 Hyper-V 以進行遷移。 在第一個教學課程中，您會：
-    - [準備 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以進行移轉。
-    - [準備內部部署環境](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration)以進行移轉。
-3. 我們建議您先嘗試使用「Azure Migrate：伺服器評量」來評估 Hyper-V VM，然後再將其遷移至 Azure。 若要這麼做，[請完成本系列中的第二個教學課程](tutorial-assess-hyper-v.md)。 雖然我們建議您嘗試使用評量，但並非一定要執行評量，才能遷移 VM。
-4. 確定您的 Azure 帳戶已獲派「虛擬機器參與者」角色，讓您有權執行下列作業：
+2. [請參閱](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V 主機需求，以及 Hyper-V 主機需要存取的 Azure URL。
+3. [檢閱](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)您要遷移的 Hyper-V VM 有何需求。 Hyper-V VM 必須符合 [Azure VM 需求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
+2. 我們建議您完成本系列中的前幾個教學課程。 [第一個教學課程](tutorial-prepare-hyper-v.md)會示範如何設定 Azure 和 Hyper-V 以進行遷移。 第二個教學課程會示範如何使用「Azure Migrate：伺服器評量」，在移轉之前[評估 Hyper-V VM](tutorial-assess-hyper-v.md)。 
+    > [!NOTE]
+    > 雖然我們建議您嘗試使用評量，但並非一定要執行評量，才能遷移 VM。
+    > 若要遷移 Hyper-V Vm，Azure Migrate：伺服器移轉會在 Hyper-V 主機或叢集節點上執行軟體代理程式 (Microsoft Azure Site Recovery 提供者和 Microsoft Azure 復原服務代理程式)，以協調資料並將資料複寫至 Azure Migrate。 [Azure Migrate 設備](migrate-appliance.md)不會用於 Hyper-V 移轉。
+
+3. 確定您的 Azure 帳戶已獲派「虛擬機器參與者」角色，讓您有權執行下列作業：
 
     - 在所選的資源群組中建立 VM。
     - 在所選的虛擬網路中建立 VM。
     - 寫入至 Azure 受控磁碟。
-5. [設定 Azure 網路](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 當您遷移至 Azure 時，所建立的 Azure VM 會加入您設定移轉時指定的 Azure 網路。
+4. [設定 Azure 網路](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 當您遷移至 Azure 時，所建立的 Azure VM 會加入您設定移轉時指定的 Azure 網路。
 
+## <a name="add-the-azure-migrateserver-migration-tool"></a>新增 Azure Migrate：伺服器移轉工具
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>新增 Azure Migrate 伺服器移轉工具
+新增 Azure Migrate：伺服器移轉工具。
 
-如果您未遵循第二個教學課程來評估 Hyper-V VM，您必須[遵循這些指示](how-to-add-tool-first-time.md)來設定 Azure Migrate 專案，並將 Azure Migrate 伺服器評量工具加入專案。
+- 如果您遵循第二個教學課程來[評估 VMware VM](/tutorial-assess-hyper-v.md)，則您已經設定了 Azure Migrate 專案，而且可以立即加入工具。
+- 如果您未遵循第二個教學課程，[請遵循這些指示](how-to-add-tool-first-time.md)來設定 Azure Migrate 專案。 您會在建立專案時新增 Azure Migrate：伺服器移轉工具。
 
-如果您已遵循第二個教學課程並已有 Azure Migrate 專案，請新增 Azure Migrate：伺服器移轉工具，如下所示：
+如果您已設定專案，請新增工具，如下所示：
 
 1. 在 Azure Migrate 專案中，按一下 [概觀]  。 
 2. 在 [探索、評估和遷移伺服器]  底下，按一下 [評估和遷移伺服器]  。
@@ -66,25 +71,8 @@ ms.locfileid: "80422689"
 
     ![伺服器移轉工具](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-
-## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
-
-Azure Migrate 伺服器移轉會在 Hyper-V 主機或叢集節點上執行軟體代理程式，以協調和複寫資料至 Azure Migrate，而且不需要專用的設備來進行移轉。
-
-- Azure Migrate：伺服器評量會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至「Azure Migrate 伺服器移轉」。
-- 移轉協調流程和資料複寫會由 Microsoft Azure Site Recovery 提供者和 Microsoft Azure 復原服務代理程式來處理。
-
-設定設備：
-- 如果您已遵循第二個教學課程來評估 Hyper-V VM，您便已在該教學課程進行期間設定好設備，無須再設定一次。
-- 如果您未遵循該教學課程，則必須立即設定該設備。 若要這樣做，請： 
-
-    - 從 Azure 入口網站下載壓縮的 Hyper-V VHD。
-    - 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。 
-    - 第一次設定設備，並向 Azure Migrate 專案進行註冊。
-
-    遵循[這篇文章](how-to-set-up-appliance-hyper-v.md)中的詳細指示來設定設備。
-
 ## <a name="prepare-hyper-v-hosts"></a>準備 Hyper-V 主機
+
 
 1. 在 [Azure Migrate 專案] > [伺服器]  的 **[Azure Migrate：伺服器移轉]** 中，按一下 [探索]  。
 2. 在 [探索機器]   > [機器是否已虛擬化?]  中，選取 [是，使用 Hyper-V]  。
@@ -111,21 +99,6 @@ Azure Migrate 伺服器移轉會在 Hyper-V 主機或叢集節點上執行軟體
 
 ![探索到的伺服器](./media/tutorial-migrate-hyper-v/discovered-servers.png)
 
-### <a name="register-hyper-v-hosts"></a>註冊 Hyper-V 主機
-
-在每部相關的 Hyper-V 主機上安裝所下載的安裝程式檔案 (AzureSiteRecoveryProvider.exe)。
-
-1. 在每部主機或叢集節點上執行提供者安裝檔案。
-2. 在提供者安裝精靈 > **Microsoft Update** 中，選擇使用 Microsoft Update 來檢查提供者更新。
-3. 在 [安裝]  中，接受提供者和代理程式的預設安裝位置，然後選取 [安裝]  。
-4. 安裝之後，在 [註冊精靈] > [保存庫設定]  中選取 [瀏覽]  ，然後在 [金鑰檔案]  中選取您下載的保存庫金鑰檔案。
-5. 在 [Proxy 設定]  中，指定主機上執行的提供者連接到網際網路的方式。
-    - 如果設備位於 Proxy 伺服器後方，您必須指定 Proxy 設定。
-    - 將 Proxy 名稱指定為 **http://ip-address** 或 **http://FQDN** 。 不支援 HTTPS Proxy 伺服器。
-   
-
-6. 請確定提供者可以連線到[必要的 URL](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)。
-7. 在註冊主機之後，請於 [註冊]  中按一下 [完成]  。
 
 ## <a name="replicate-hyper-v-vms"></a>複寫 Hyper-V VM
 
