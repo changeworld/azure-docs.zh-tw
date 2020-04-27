@@ -1,6 +1,6 @@
 ---
-title: 開源技術常見問題解答
-description: 獲取有關 Azure 應用服務中開源技術的常見問題的解答。
+title: 開放原始碼技術常見問題
+description: 取得 Azure App Service 中開放原始碼技術常見問題的解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672432"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159961"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web Apps 相關開放原始碼技術常見問題集
 
@@ -26,15 +26,15 @@ ms.locfileid: "74672432"
 
 若要開啟 PHP 記錄：
 
-1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 在頂部功能表中，選擇**調試主控台** > **CMD**。
+1. 登入您的**Kudu 網站**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
+2. 在頂端功能表中，選取 [**偵錯主控台** > **CMD**]。
 3. 選取 [網站]**** 資料夾。
 4. 選取 [wwwroot]**** 資料夾。
-5. 選擇圖示**+**，然後選擇 **"新建檔**"。
+5. 選取圖示**+** ，然後選取 [**新增**檔案]。
 6. 將檔案名稱設定為 **.user.ini**。
 7. 選取 **.user.ini** 旁邊的鉛筆圖示。
 8. 在檔案中，新增下列程式碼：`log_errors=on`
-9. 選取 [儲存]****。
+9. 選取 [儲存]  。
 10. 選取 **wp-config.php** 旁邊的鉛筆圖示。
 11. 將文字變更為下列程式碼：
     ```php
@@ -56,7 +56,7 @@ ms.locfileid: "74672432"
   1. 在 Azure 入口網站中，移至您的 Web 應用程式。
   2. 在 [設定]**** 刀鋒視窗上，選取 [應用程式設定]****。
   3. 在 [應用程式設定]**** 中，您可以包含 WEBSITE_NODE_DEFAULT_VERSION 做為索引鍵，並包含所需的 Node.js 版本做為值。
-  4. 移至 [Kudu 主控台](https://*yourwebsitename*.scm.azurewebsites.net)。
+  4. 移至您的**Kudu 主控台**（`https://*yourwebsitename*.scm.azurewebsites.net`）。
   5. 若要檢查 Node.js 版本，請輸入下列命令：  
      ```
      node -v
@@ -91,7 +91,7 @@ ms.locfileid: "74672432"
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>如何對於 App Service 中裝載的 Node.js 應用程式進行偵錯？
 
-1.  移至 [Kudu 主控台](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)。
+1.  移至您的**Kudu 主控台**（`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`）。
 2.  移至應用程式記錄資料夾 (D:\home\LogFiles\Application)。
 3.  在 Logging_errors.txt 檔案中檢查內容。
 
@@ -138,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. 從 app/lib 資料夾移除 sqljdbc*.jar 檔案。
 2. 如果您使用自訂的 Tomcat 或 Azure Marketplace Tomcat Web 伺服器，請將此 .jar 檔案複製到 Tomcat lib 資料夾。
-3. 如果要從 Azure 門戶啟用 JAVA（選擇**JAVA 1.8** > **Tomcat 伺服器**），請複製與應用並行的資料夾中的 sqljdbc.* jar 檔。 然後，將下列 classpath 設定新增到 web.config 檔案：
+3. 如果您要從 Azure 入口網站啟用 java （選取 [ **JAVA 1.8** > **Tomcat 伺服器**]），請複製與您的應用程式平行的資料夾中的 sqljdbc.jar. * jar 檔案。 然後，將下列 classpath 設定新增到 web.config 檔案：
 
     ```xml
     <httpPlatform>
@@ -171,7 +171,7 @@ The process cannot access the file because it is being used by another process.
 
 對於 Marketplace 和自訂部署，記錄位於 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 資料夾。 請注意，資料夾位置取決於您使用的 Jetty 版本。 例如，此處提供的路徑是 Jetty 9.1.2 的路徑。 尋找 jetty_*YYYY_MM_DD*.stderrout.log。
 
-對於入口網站應用程式設定部署，記錄檔位於 D:\home\LogFiles。 查找*YYYY_MM_DD*.stderrout.log jetty_
+對於入口網站應用程式設定部署，記錄檔位於 D:\home\LogFiles。 尋找 jetty_ 的*YYYY_MM_DD*. .stderrout.log .log
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>我能否從 Azure Web 應用程式傳送電子郵件？
 

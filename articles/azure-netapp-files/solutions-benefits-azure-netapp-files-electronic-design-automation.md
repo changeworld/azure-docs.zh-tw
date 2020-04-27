@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 8a287ec5cd33c9f2a96af7ad8162f7c8f54df118
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134165"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160148"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>使用 Azure NetApp Files 進行電子設計自動化的優點
 
@@ -77,7 +77,7 @@ ms.locfileid: "82134165"
 
 功能階段是由初始規格和邏輯設計所組成。 當邏輯設計轉換成實體晶片時，就會發生實體階段。 在登出和磁帶輸出階段期間，最後的檢查會完成，且設計會傳遞至 foundry 進行製造。  
 
-功能階段包含連續和隨機讀取和寫入 i/o 的混合。 功能階段是需要大量中繼資料，例如檔案 stat 和存取呼叫。 雖然中繼資料作業在沒有大小的情況下有效，但是讀取和寫入作業的範圍小於 1 K 到 16 K。大部分的讀取是介於 4 K 到 16 K 之間。 大部分寫入為 4 K 或更少。  實體階段是由完全連續的讀取和寫入作業組成，混合了 32 K 和 64 K 的 OP 大小。  
+功能階段包含連續和隨機讀取和寫入 i/o 的混合。 功能性階段是需要大量中繼資料，例如檔案 stat 和存取呼叫。 雖然中繼資料作業在沒有大小的情況下有效，但是讀取和寫入作業的範圍小於 1 K 到 16 K。大部分的讀取是介於 4 K 到 16 K 之間。 大部分寫入為 4 K 或更少。 實體階段是由完全連續的讀取和寫入作業組成，混合了 32 K 和 64 K 的 OP 大小。  
 
 在上圖中，大部分的輸送量來自工作負載的連續實體階段。 I/o 來自于小型隨機和中繼資料密集的功能階段。 這兩個階段會平行發生。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b18463720b63f62a2ae4b19a3bdbae6862bc9985
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 9be6c174e30514ef81cd5fa020d50ffa238317be
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120726"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160882"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -140,7 +140,7 @@ ms.locfileid: "82120726"
 
 **指引**.. 針對控制平面的審核記錄，啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、azure 事件中樞或 azure 儲存體帳戶進行封存。 使用 Azure 活動記錄資料，您可以判斷在 Azure 資源的控制平面層級執行的任何寫入作業（PUT、POST、DELETE）的「內容、物件和時間」。
 
-此外，透過 Azure 監視器內嵌記錄，以匯總 Azure 備份所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用儲存體帳戶進行長期/封存儲存體。 或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商安全性事件和事件管理（SIEM）。 
+此外，透過 Azure 監視器內嵌記錄，以匯總 Azure 備份所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用儲存體帳戶進行長期/封存儲存體。 或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商安全性事件和事件管理（SIEM）。
 
 - [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
@@ -248,7 +248,7 @@ ms.locfileid: "82120726"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： AZURE ACTIVE DIRECTORY （AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
+**指導**方針： AZURE ACTIVE DIRECTORY （AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
 支援檔：
 
@@ -310,7 +310,7 @@ ms.locfileid: "82120726"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦（特殊許可權存取工作站）進行所有系統管理工作
 
-**指引**：搭配使用特殊許可權存取工作站（PAW）與 Azure 多重要素驗證（MFA），並將其設定為登入並設定您的 Azure 備份啟用資源。 
+**指引**：搭配使用特殊許可權存取工作站（PAW）與 Azure 多重要素驗證（MFA），並將其設定為登入並設定您的 Azure 備份啟用資源。
 
 - [特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -358,7 +358,7 @@ ms.locfileid: "82120726"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期審查並協調使用者存取
 
-**指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確保只有適當的使用者可以繼續進行存取。 
+**指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確保只有適當的使用者可以繼續進行存取。
 
 - [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -630,7 +630,7 @@ Microsoft 所掃描和修補的基礎平臺。 查看可供 Azure 備份的安�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
 
-**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。 
+**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
 
 使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。  請確定已核准環境中的所有 Azure 資源。
 
@@ -836,7 +836,7 @@ Microsoft 所掃描和修補的基礎平臺。 查看可供 Azure 備份的安�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證暴露
 
-**指導**方針：執行認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。 
+**指導**方針：執行認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
 - [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -858,11 +858,11 @@ Microsoft 所掃描和修補的基礎平臺。 查看可供 Azure 備份的安�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：在支援 Azure 服務的基礎主機（例如 Azure 備份）上啟用 Microsoft Antimalware，但不會在您的內容上執行。 
+**指引**：在支援 Azure 服務的基礎主機（例如 Azure 備份）上啟用 Microsoft Antimalware，但不會在您的內容上執行。
 
-預先掃描任何正在上傳到非計算 Azure 資源的檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。 
+預先掃描任何正在上傳到非計算 Azure 資源的檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。
 
-使用適用于資料服務的 Azure 資訊安全中心威脅偵測來偵測已上傳至儲存體帳戶的惡意程式碼。 
+使用適用于資料服務的 Azure 資訊安全中心威脅偵測來偵測已上傳至儲存體帳戶的惡意程式碼。
 
 - [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 
@@ -950,7 +950,7 @@ Microsoft 所掃描和修補的基礎平臺。 查看可供 Azure 備份的安�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程式
 
-**指導**方針：資訊安全中心指派每個警示的嚴重性，以協助您排定應先調查哪些警示。 嚴重性是根據資訊安全中心在尋找中的信心，或用於發出警示的分析，以及導致警示的活動背後有惡意意圖的信賴等級。 
+**指導**方針：資訊安全中心指派每個警示的嚴重性，以協助您排定應先調查哪些警示。 嚴重性是根據資訊安全中心在尋找中的信心，或用於發出警示的分析，以及導致警示的活動背後有惡意意圖的信賴等級。
 
 此外，請清楚地標示訂閱（例如， 生產、非生產）並建立命名系統，以清楚識別和分類 Azure 資源。
 

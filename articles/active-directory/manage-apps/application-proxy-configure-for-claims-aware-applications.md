@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68477247"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在應用程式 Proxy 中使用宣告感知應用程式
 [宣告感知應用程式](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)會執行重新導向至 Security Token Service (STS)。 STS 會向使用者要求認證以交換權杖，然後將使用者重新導向至應用程式。 有幾種方法可以讓應用程式 Proxy 進行這些重新導向。 請按照本文的說明來設定對宣告感知應用程的部署。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 確定宣告感知應用程式重新導向的 STS 可從內部部署網路外部使用。 您可以透過 Proxy 將 STS 公開或是允許外部連接，讓 STS 可供使用。 
 
 ## <a name="publish-your-application"></a>發佈您的應用程式

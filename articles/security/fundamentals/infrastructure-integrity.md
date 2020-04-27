@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: ef81e74b07a351139aa8feefbdf1b89ea7e4994f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68727196"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure 基礎結構完整性
@@ -63,7 +63,7 @@ Azure 可確保能夠透過標準的 Web 通訊協定與所部署的應用程式
 - [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
+- [Azure SQL Database 安全性功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 客戶資料保護](protection-customer-data.md)

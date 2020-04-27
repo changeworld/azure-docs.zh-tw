@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68422927"
 ---
 # <a name="what-is-azure-relay"></a>什麼是 Azure 轉送？
@@ -43,7 +43,7 @@ Azure 轉送不同於網路層級的整合技術，例如 VPN。 Azure 轉送可
 ## <a name="features"></a>特性 
 Azure 轉送有兩項功能︰
 
-- [混合連接](#hybrid-connections)- 使用啟用多平臺方案的開放標準 Web 通訊端。
+- [混合](#hybrid-connections)式連線-使用開放式標準 web 通訊端來啟用多平臺案例。
 - WCF 轉送 - 使用 Windows Communication Foundation (WCF) 來啟用遠端程序呼叫。 WCF 轉送是舊版的轉送供應項目，許多客戶已將該服務用於其 WCF 程式設計模型。
 
 ## <a name="hybrid-connections"></a>混合式連線
@@ -58,7 +58,7 @@ Azure 轉送中的混合式連線功能，是從先前存在的轉送功能演�
 ## <a name="wcf-relay"></a>WCF 轉送
 WCF 轉送適用於完整的 .NET Framework 和 WCF。 您可以在內部部署服務與使用一組 WCF「轉送」繫結的轉送服務之間建立連線。 轉送繫結會對應至新的傳輸繫結元素，其設計來建立與雲端中服務匯流排整合的 WCF 通道元件。 如需詳細資訊，請參閱[開始使用 WCF 轉送](service-bus-relay-tutorial.md)。
 
-## <a name="hybrid-connections-vs-wcf-relay"></a>混合連接與 WCF 繼電器
+## <a name="hybrid-connections-vs-wcf-relay"></a>混合式連線與 WCF 轉送
 混合式連線和 WCF 轉送都能夠對存在於網路內的資產進行安全的連線。 視您的特定需求使用其中一項功能，詳述於下表︰
 
 |  | WCF 轉送 | 混合式連線 |
@@ -67,7 +67,7 @@ WCF 轉送適用於完整的 .NET Framework 和 WCF。 您可以在內部部署�
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
 | **Java 指令碼/Node.JS** | |x |
-| **基於標準的開放式協定** | |x |
+| **以標準為基礎的開放式通訊協定** | |x |
 | **RPC 程式設計模型** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>架構：處理內送轉送要求
@@ -82,13 +82,13 @@ WCF 轉送適用於完整的 .NET Framework 和 WCF。 您可以在內部部署�
 5. 閘道會將連線要求轉送給閘道存放區中提及的正確閘道。 
 6. 閘道會將要求傳送給接聽方用戶端，讓它對最接近傳送方用戶端的閘道節點建立暫時通道。 
 7. 接聽方用戶端會建立暫時通道，並傳送回應給最接近傳送方用戶端的閘道。 現在，用戶端之間已透過閘道建立連線，用戶端可以開始互相交換訊息。 
-8. 閘道將偵聽用戶端的任何消息轉發到發送用戶端。 
+8. 閘道會將來自接聽用戶端的任何訊息轉送至傳送用戶端。 
 9. 閘道會將來自傳送方用戶端的任何訊息轉送至接聽方用戶端。  
 
 ## <a name="next-steps"></a>後續步驟
-* [開始使用 .NET WebSocket](relay-hybrid-connections-dotnet-get-started.md)
+* [開始使用 .NET Websocket](relay-hybrid-connections-dotnet-get-started.md)
 * [開始使用 .NET HTTP 要求](relay-hybrid-connections-http-requests-dotnet-get-started.md)
-* [開始使用節點 WebSocket](relay-hybrid-connections-node-get-started.md)
+* [開始使用 Node Websocket](relay-hybrid-connections-node-get-started.md)
 * [開始使用 Node HTTP 要求](relay-hybrid-connections-http-requests-node-get-started.md)
 * [轉送常見問題集](relay-faq.md)
 

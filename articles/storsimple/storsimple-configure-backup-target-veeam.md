@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67875306"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>使用 StorSimple 做為 Veeam 的備份目標
@@ -56,8 +56,8 @@ StorSimple 是不錯的備份目標選擇，因為︰
 
 StorSimple 的設計目的是針對運作定義完善的使用中資料集 (熱資料) 的應用程式提供儲存體。 在此模型中，使用中的資料集儲存在本機層，其餘非使用中/冷/封存的資料集則分層儲存到雲端。 下圖說明這個模型。 幾乎是平坦的綠線表示儲存在 StorSimple 裝置本機層的資料。 紅線則表示儲存在 StorSimple 解決方案所有各層的資料總量。 平坦綠線與呈指數形的紅色曲線之間的空間代表儲存在雲端的資料總量。
 
-**StorSimple 分層**
-![Stor 簡單分層圖](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
+**Storsimple 分層**
+![storsimple 分層圖](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
 記住此架構，您會發現 StorSimple 非常適合做為備份目標。 您可以使用 StorSimple 進行下列作業：
 
@@ -104,7 +104,7 @@ StorSimple 提供下列優點︰
 | 備份案例  | 本機儲存體容量  | 雲端儲存體容量  |
 |---|---|---|
 | 主要備份  | 最近的備份會儲存在本機儲存體供快速復原，以符合復原點目標 (RPO) | 備份歷程記錄 (RPO) 可放入雲端容量 |
-| 次要備份 | 備份資料的次要複本可儲存在雲端容量  | N/A  |
+| 次要備份 | 備份資料的次要複本可儲存在雲端容量  | 不適用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>使用 StorSimple 做為主要備份目標
 
@@ -207,7 +207,7 @@ StorSimple 提供下列優點︰
 
 根據下列幾節中的指導方針來設定您的解決方案。
 
-### <a name="operating-system-best-practices"></a>作業系統最佳作法
+### <a name="operating-system-best-practices"></a>作業系統最佳做法
 
 - 停用 NTFS 檔案系統的 Windows Server 加密和重複資料刪除。
 - 停用 StorSimple 磁碟區的 Windows Server 磁碟重組。
@@ -276,11 +276,11 @@ StorSimple 提供下列優點︰
 
     ![Veeam 管理主控台，備份儲存機制頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  在 [新增備份儲存機制]**** 對話方塊中，輸入儲存機制的名稱和描述。 選取 [下一步]****。
+2.  在 [新增備份儲存機制]**** 對話方塊中，輸入儲存機制的名稱和描述。 選取 [下一步]  。
 
     ![Veeam 管理主控台，名稱和描述頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  選取 [Microsoft Windows Server]**** 做為類型。 選取 Veeam 伺服器。 選取 [下一步]****。
+3.  選取 [Microsoft Windows Server]**** 做為類型。 選取 Veeam 伺服器。 選取 [下一步]  。
 
     ![Veeam 管理主控台，選取備份存放庫的類型](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -293,7 +293,7 @@ StorSimple 提供下列優點︰
 
     ![Veeam 管理主控台，存放裝置相容性設定](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  在 [新增備份儲存機制]**** 對話方塊中，選取 [在裝載伺服器上啟用 vPower NFS 服務 (建議)]**** 核取方塊。 選取 [下一步]****。
+6.  在 [新增備份儲存機制]**** 對話方塊中，選取 [在裝載伺服器上啟用 vPower NFS 服務 (建議)]**** 核取方塊。 選取 [下一步]  。
 
     ![Veeam 管理主控台，備份儲存機制頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -341,7 +341,7 @@ StorSimple 提供下列優點︰
 
     ![Veeam 管理主控台，新增備份作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  選取您想的 [備份 Proxy]**** 和 [備份儲存機制]**** 值。 根據本機連接儲存體上環境的 RPO 和 RTO 定義，選取 [要保留在磁碟上的還原點]**** 的值。 選取 [進階]****。
+4.  選取您想的 [備份 Proxy]**** 和 [備份儲存機制]**** 值。 根據本機連接儲存體上環境的 RPO 和 RTO 定義，選取 [要保留在磁碟上的還原點]**** 的值。 選取 [進階]  。
 
     ![Veeam 管理主控台，新增備份作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
@@ -349,7 +349,7 @@ StorSimple 提供下列優點︰
 
     ![Veeam 管理主控台，新增備份作業進階設定頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. 在 [儲存體]**** 索引標籤上，確定 [啟用內嵌重複資料刪除]**** 核取方塊。 選取 [排除分頁檔案區塊]**** 核取方塊，然後選取 [排除已刪除的檔案區塊]**** 核取方塊。 將 [壓縮層級]**** 設定為 [無]****。 若要獲得平衡的效能和重複資料刪除，請將 [儲存體最佳化]**** 設定為 [LAN 目標]****。 選取 [確定]****。
+6. 在 [儲存體]**** 索引標籤上，確定 [啟用內嵌重複資料刪除]**** 核取方塊。 選取 [排除分頁檔案區塊]**** 核取方塊，然後選取 [排除已刪除的檔案區塊]**** 核取方塊。 將 [壓縮層級]**** 設定為 [無]****。 若要獲得平衡的效能和重複資料刪除，請將 [儲存體最佳化]**** 設定為 [LAN 目標]****。 選取 [確定]  。
 
     ![Veeam 管理主控台，新增備份作業進階設定頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -468,7 +468,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>若要啟動或刪除雲端快照集
 
-1. [安裝 Azure 電源外殼](/powershell/azure/overview)。
+1. [安裝 Azure PowerShell](/powershell/azure/overview)。
 2. 下載及安裝 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 指令碼。
 3. 在執行指令碼的伺服器上，以系統管理員身分執行 PowerShell。 請確定您搭配 `-WhatIf $true` 執行指令碼，以查看指令碼會執行哪些變更。 完成驗證之後，傳遞 `-WhatIf $false`。 執行下列命令：
    ```powershell
@@ -489,7 +489,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 - 若為 [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
 - 若為 [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
 - 若為 [SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
-- 對於[共用點](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
+- For [SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
 - 若為 [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html)
 
 
@@ -500,10 +500,10 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 各種因素都可能造成災害。 下表列出常見的災害復原案例。
 
-| 狀況 | 影響 | 如何復原 | 注意 |
+| 案例 | 影響 | 如何復原 | 注意 |
 |---|---|---|---|
 | StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 索引和目錄重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
-| Veeam 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器並執行資料庫還原，如[Veeam 説明中心（技術文檔）中詳細說明的那樣](https://www.veeam.com/documentation-guides-datasheets.html)。  | 您必須在災害復原站台重建或還原 Veeam 伺服器。 將資料庫還原到最新的點。 如果還原的 Veeam 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |
+| Veeam 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並執行[Veeam 說明中心（技術檔）](https://www.veeam.com/documentation-guides-datasheets.html)中所述的資料庫還原。  | 您必須在災害復原站台重建或還原 Veeam 伺服器。 將資料庫還原到最新的點。 如果還原的 Veeam 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |
 | 站台故障造成備份伺服器和 StorSimple 都遺失 | 備份和還原作業會中斷。 | 先還原 StorSimple，然後再還原 Veeam。 | 先還原 StorSimple，然後再還原 Veeam。 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 |
 
 

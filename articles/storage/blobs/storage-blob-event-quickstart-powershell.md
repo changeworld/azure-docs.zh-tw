@@ -9,13 +9,13 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68847165"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入門：使用 PowerShell 將存儲事件路由到 Web 終結點
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入門：使用 PowerShell 將儲存體事件路由至 web 端點
 
 Azure Event Grid 是一項雲端事件服務。 在本文中，您可以使用 Azure PowerShell 來訂閱 Blob 儲存體事件、觸發事件並檢視結果。 
 
@@ -29,7 +29,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您可以使用 A
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文需要您執行最新版本的 Azure PowerShell。 如果需要安裝或升級，請參閱[安裝和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。
+本文需要您執行最新版本的 Azure PowerShell。 如果您需要安裝或升級，請參閱[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-您可以在一般用途 v2 儲存體帳戶與 Blob 儲存體帳戶中找到 Blob 儲存體事件。 **一般用途 v2** 儲存體帳戶支援所有儲存體服務 (包括 Blob、檔案、佇列和表格) 的所有功能。 **Blob 存儲帳戶**是一個專用存儲帳戶，用於將非結構化資料存儲為 Azure 存儲中的 Blob（物件）。 Blob 儲存體帳戶類似於一般用途儲存體帳戶，可共用所有強大的持續性、可用性、延展性以及您現今使用的效能功能，包括區塊 Blob 和附加 Blob 的 100% API 一致性。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
+您可以在一般用途 v2 儲存體帳戶與 Blob 儲存體帳戶中找到 Blob 儲存體事件。 **一般用途 v2** 儲存體帳戶支援所有儲存體服務 (包括 Blob、檔案、佇列和表格) 的所有功能。 **Blob 儲存體帳戶**是特殊的儲存體帳戶，可將非結構化資料儲存為 Azure 儲存體中的 blob （物件）。 Blob 儲存體帳戶類似於一般用途儲存體帳戶，可共用所有強大的持續性、可用性、延展性以及您現今使用的效能功能，包括區塊 Blob 和附加 Blob 的 100% API 一致性。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 以 LRS 複寫建立 Blob 儲存體帳戶，然後擷取儲存體帳戶內容，此內容定義要使用的儲存體帳戶。 使用儲存體帳戶時，會參考內容而非重複提供認證。 這個範例會建立名為 **gridstorage** 的儲存體帳戶，並含有本機備援儲存體 (LRS)。 
 
@@ -103,7 +103,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="subscribe-to-your-storage-account"></a>訂閱您的儲存體帳戶
 
-訂閱主題以告訴事件網格要跟蹤哪些事件。以下示例訂閱您創建的存儲帳戶，並將 Web 應用的 URL 作為事件通知的終結點傳遞。 Web 應用程式的端點必須包含的尾碼 `/api/updates/`。
+您可訂閱主題，告知 Event Grid 您想要追蹤的事件。下列範例會訂閱您所建立的儲存體帳戶，並從您的 web 應用程式傳遞 URL 作為事件通知的端點。 Web 應用程式的端點必須包含的尾碼 `/api/updates/`。
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id

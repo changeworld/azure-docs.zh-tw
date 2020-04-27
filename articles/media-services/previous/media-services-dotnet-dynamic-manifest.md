@@ -16,16 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
 ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016594"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>使用媒體服務 .NET SDK 建立篩選器 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [休息](media-services-rest-dynamic-manifest.md)
+> * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
@@ -42,7 +42,7 @@ ms.locfileid: "69016594"
 
 * **IStreamingFilter**。  此類型是基於下列的 REST API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
 * **IStreamingAssetFilter**。 此類型是基於下列的 REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **演示時間範圍**. 此類型是基於下列的 REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **PresentationTimeRange**。 此類型是基於下列的 REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
 * **FilterTrackSelectStatement** 和 **IFilterTrackPropertyCondition**。 這些類型是基於下列的 REST API [FilterTrackSelect 和 FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>建立/更新/讀取/刪除全域篩選器
@@ -124,7 +124,7 @@ ms.locfileid: "69016594"
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
-**平滑流式處理**
+**Smooth Streaming**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 

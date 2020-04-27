@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68965279"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>適用於 StorSimple 裝置的技術規格和相容性
@@ -83,7 +83,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 | 可用容量總計* |~ 15 TB |~ 38 TB |
 | 解決方案的最大容量 (含雲端) |200 TB |500 TB |
 
-<sup>* </sup>- *總可用容量包括可用於資料、中繼資料和緩衝區的容量。您可以在 8100 設備上預配本地固定卷，最多為 8100 TB，在較大的 8600 設備上預配高達 22.5 TB 的卷。有關詳細資訊，請訪問[StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
+<sup>* </sup>- *可用的容量總計包括可供資料、中繼資料和緩衝區使用的容量。您可以在8100裝置上布建固定在本機的磁片區，最高可達 8.5 TB，或在較大的8600裝置上布建到 22.5 TB如需詳細資訊，請移至[StorSimple 本機固定磁片](storsimple-8000-local-volume-faq.md)區。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>機箱尺寸和重量規格
 
@@ -175,7 +175,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 ## <a name="ac-power-cord-compliance"></a>AC 電源線相容性
 
-插頭和完整的電源線元件必須符合適用于設備使用的國家/地區的標準，並且必須具有該國家/地區可接受的安全批准。 下表列出適用於美國和歐洲的標準。
+插頭和完整電源線元件必須符合適用于使用裝置之國家/地區的標準，而且必須具有該國家/地區可接受的安全核准。 下表列出適用於美國和歐洲的標準。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC 電源線 - 美國 (必須由 NRTL 列名)
 

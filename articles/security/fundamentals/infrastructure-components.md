@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68727204"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 資訊系統元件與界限
@@ -90,14 +90,14 @@ Azure 服務的支援會由許多稱為「服務小組」的工程團隊所管�
 ## <a name="types-of-users"></a>使用者類型
 Microsoft 的員工 (或約聘人員) 都會被視為內部使用者。 其他所有使用者則會被視為外部使用者。 所有 Azure 內部使用者都有其員工狀態，該狀態是依照可定義其客戶資料存取權 (有權存取或無權存取) 的敏感度層級進行分類。 下表說明 Azure 的使用者權限 (驗證發生後的授權權限)：
 
-| 角色 | 內部或外部 | 敏感度層級 | 已獲授權的權限和執行的功能 | 存取類型
+| [角色] | 內部或外部 | 敏感度層級 | 已獲授權的權限和執行的功能 | 存取類型
 | --- | --- | --- | --- | --- |
 | Azure 資料中心工程師 | 內部 | 無權存取客戶資料 | 管理廠房的實體安全性。 進行資料中心的內外部巡邏並監視所有進入點。 針對某些在資料中心內提供一般服務 (備餐、清潔) 或 IT 工作的不明人員，執行資料中心的內外部陪同服務。 進行網路硬體的例行監視和維護。 使用各種工具執行事件管理與修復工作。 進行資料中心內實體硬體的例行監視和維護。 視需要，以財產擁有者身份存取環境。 能夠執行鑑識調查、記錄事件的報告，以及要求必要的安全性訓練和政策需求。 控管重要安全性工具 (例如掃描器和記錄收集) 的操作擁有權和維護。 | 持續存取環境。 |
 | Azure 事件分級 (快速回應工程師) | 內部 | 有權存取客戶資料 | 管理 MCIO、支援和工程小組之間的通訊。 將平台事件、部署問題和服務要求分級。 | 對環境的 Just-in-time 存取，但對非客戶系統的持續存取會受限。 |
 | Azure 部署工程師 | 內部 | 有權存取客戶資料 | 在 Azure 的支援下，部署和升級平台元件、軟體和排定的組態變更。 | 對環境的 Just-in-time 存取，但對非客戶系統的持續存取會受限。 |
 | Azure 客戶中斷支援 (租用戶) | 內部 | 有權存取客戶資料 | 偵錯和診斷個別計算租用戶和 Azure 帳戶的平台中斷和錯誤。 分析錯誤。 推動平台或客戶方面的重大修正，以及透過支援推動技術改善。 | 對環境的 Just-in-time 存取，但對非客戶系統的持續存取會受限。 |
 | Azure 即時網站工程師 (監視工程師) 和事件 | 內部 | 有權存取客戶資料 | 使用診斷工具診斷及緩和平台的健康問題。 推動磁碟區驅動程式的修正，修復中斷造成的事項，並協助中斷後的還原動作。 | 對環境的 Just-in-time 存取，但對非客戶系統的持續存取會受限。 |
-|Azure 客戶 | 外部 | N/A | N/A | N/A |
+|Azure 客戶 | 外部 | 不適用 | 不適用 | 不適用 |
 
 Azure 會使用唯一識別碼來驗證組織使用者和客戶 (或代表組織使用者採取行動的程序)。 這適用於所有屬於 Azure 環境一部分的資產和裝置。
 
@@ -125,7 +125,7 @@ Azure 作業人員必須使用安全的系統管理工作站 (SAW)。 客戶可�
 - [Azure 基礎結構可用性](infrastructure-availability.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
+- [Azure SQL Database 安全性功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106673"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160506"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商業市集的常見問題集
 
@@ -57,8 +57,9 @@ Azure Marketplace 提供來自 Microsoft 與合作夥伴的技術解決方案和
 您可以透過下列途徑購買 Azure Marketplace 供應項目：
 
 * [以 web 為基礎的店面](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure 入口網站](https://portal.azure.com) <br>
-[!Note] 需要 Azure 帳戶。 如果您沒有此帳戶，系統會將您重新導向至 [**歡迎使用 Azure** ] 頁面，以建立一個。  
+* [Azure 入口網站](https://portal.azure.com) <br> 
+>[!Note]
+>需要 Azure 帳戶。 如果您沒有此帳戶，系統會將您重新導向至 [**歡迎使用 Azure** ] 頁面，以建立一個。  
 * [Azure 命令列介面（CLI）](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -157,7 +158,7 @@ Azure 訂用帳戶隨附于發行者的獨立軟體廠商（ISV）解決方案�
 
 **我需要登記付款方式 (例如信用卡) 才能部署免費層或自備授權 (BYOL) 供應項目嗎？**
 
-否。 部署免費層或 BYOL 供應項目無需付款方式。 不過，免費試用供應項目則需要付款方式。 包含**立即取得**或是**免費試用軟體**按鈕的清單項目會部署到選取的 Azure 訂用帳戶中。  這些清單會使用所選帳戶已註冊的付款方法來計費。 Azure 使用費用會與軟體授權費用分開計費。
+不可以。 部署免費層或 BYOL 供應項目無需付款方式。 不過，免費試用供應項目則需要付款方式。 包含**立即取得**或是**免費試用軟體**按鈕的清單項目會部署到選取的 Azure 訂用帳戶中。  這些清單會使用所選帳戶已註冊的付款方法來計費。 Azure 使用費用會與軟體授權費用分開計費。
 
 **如果間接 Enterprise 合約 (EA) 客戶對於在 Azure Marketplace 上販售的供應項目有定價方面的問題，該與誰連絡？**
 
@@ -177,7 +178,7 @@ Azure 訂用帳戶隨附于發行者的獨立軟體廠商（ISV）解決方案�
 
 **大量授權折扣適用於 Azure Marketplace 購買嗎？**
 
-否。 擁有 Azure Marketplace 所列解決方案的發行者可以設定價格。  標準 Microsoft 大量授權合約折扣不適用於 Azure Marketplace 購買。
+不可以。 擁有 Azure Marketplace 所列解決方案的發行者可以設定價格。  標準 Microsoft 大量授權合約折扣不適用於 Azure Marketplace 購買。
 
 **我可以在哪裡檢視 Azure Marketplace 訂閱詳細資料和帳單資訊？**
 
@@ -336,7 +337,7 @@ Microsoft 會使用 AAD 來驗證所有 Marketplace 使用者。  您可以直�
 
 **可以在哪裡取得設定我潛在客戶目的地的說明？**
 
-若要深入瞭解，請參閱[合作夥伴中心-取得客戶領導](./partner-center-portal/commercial-marketplace-get-customer-leads.md)的檔，或[https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport)選取您的供應專案類型和潛在客戶管理以提交支援票證。
+在[合作夥伴中心深入瞭解-取得客戶領導的](./partner-center-portal/commercial-marketplace-get-customer-leads.md)檔，或選取您的供應專案類型和潛在客戶管理，以透過 [說明[及支援](https://partner.microsoft.com/support/v2/?stage=1)] 提交支援票證。
 
 **我是否必須設定潛在客戶目的地，才能在 Marketplace 上發佈供應項目？**
 

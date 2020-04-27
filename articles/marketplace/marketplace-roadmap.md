@@ -1,5 +1,5 @@
 ---
-title: Azure 應用商店和應用源路線圖
+title: Azure Marketplace 和 AppSource 藍圖
 description: 說明 Marketplace 現況的藍圖
 author: qianw211
 ms.author: dsindona
@@ -7,39 +7,39 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 0631859983944a7e33615106060d3ffb45a3c7bc
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084901"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160489"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>微軟商業市場路線圖
+# <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft 商業 marketplace 藍圖
 
-本文檔提供了Microsoft為發佈商、賣家和客戶提供商業市場下一步內容的視圖。 它捕獲了我們承諾的一些重要功能,這是一個粗略的時間框架,當您可以預期看到它們,並將每月刷新。 它不是所有新功能的完整清單,但旨在提供我們關鍵投資的可見性。 這些功能集和提供時程是暫定的，可能隨時變更。
+本檔可讓您瞭解 Microsoft 針對發行者、賣方和客戶的商業 marketplace 的下一步。 它會捕捉我們已認可的一些重要功能，這是您預期會看到並每月重新整理的粗略時間範圍。 這不是所有新功能的完整清單，而是為了讓您瞭解我們的主要投資。 這些功能集和提供時程是暫定的，可能隨時變更。
 
 歡迎您提供寶貴意見！ 請到 [Microsoft 合作夥伴社群](https://www.microsoftpartnercommunity.com/)來聊聊，了解新功能、計劃和活動的最新訊息。
 
 ## <a name="roadmap"></a>藍圖
-![2019 年 11 月市場路線圖](./media/marketplace-publishers-guide/roadmap-nov19.png)
+![2019年11月的 Marketplace 藍圖](./media/marketplace-publishers-guide/roadmap-nov19.png)
 
 ## <a name="recent-releases"></a>最新發行
 
-一旦功能處於即時,它將從路線圖中刪除它。 已添加到市場的功能可在以下文檔中找到。
+功能上線之後，就會從藍圖中移除。 您可以在下列檔中找到已新增至 marketplace 的功能。
 
-* [市場 + CSP 更新部落格](https://aka.ms/marketplacemarchupdateblog)
-* [將產品發佈到 CSP 通道 (ISV)](https://aka.ms/publishtocsp)
-* [轉售市場產品 (CSP)](https://aka.ms/marketplaceincsp)
-* [標準合約](https://aka.ms/standardcontract)
-* [SaaS 執行 API](https://aka.ms/saasapiv2)
-* [市場地理和貨幣](https://aka.ms/marketplacegeos)
-* [Seller Insights](./partner-center-portal/analytics.md)
-* [微軟建立市場博客](https://aka.ms/marketplacebuildblog)
-* [市場可能更新部落格](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* 合作夥伴中心:[建立](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / 來自 CPP 的[帳戶管理帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [遷移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* 合作夥伴中心:[建立 SaaS 產品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [/服務發佈狀態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / [更新現有產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [在合作夥伴中心獲得市場支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* [Marketplace + CSP 更新 Blog](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
+* [將供應專案發佈至 CSP 通道（ISV）](./cloud-solution-providers.md)
+* [轉售 Marketplace 供應專案（CSP）](https://docs.microsoft.com/partner-center/sell-marketplace-products)
+* [Microsoft 商業 marketplace 的標準合約](./standard-contract.md)
+* [SaaS 履行 API](./partner-center-portal/pc-saas-fulfillment-apis.md)
+* [商用 marketplace 的地理可用性和貨幣支援](./marketplace-geo-availability-currencies.md)
+* [合作夥伴中心的商業 marketplace 分析](./partner-center-portal/analytics.md)
+* [Microsoft Build Marketplace Blog](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
+* [Marketplace 可能會更新 Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* 合作夥伴中心：[從 CPP](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc) [建立帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [管理帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / 遷移
+* 合作夥伴中心：[建立 SaaS 供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / 專案[發行狀態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / [更新現有供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / 專案[供應專案分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
+* [在合作夥伴中心取得 marketplace 支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>後續步驟
 

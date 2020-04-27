@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016578"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 透過 Media Encoder Standard 為資產編碼  
@@ -30,7 +30,7 @@ ms.locfileid: "69016578"
 
 建議一律將來源檔編碼為調適性位元速率 MP4 集，然後使用[動態封裝](media-services-dynamic-packaging-overview.md)將該集合轉換為所要的格式。 
 
-如果您的輸出資產是儲存體加密，必須設定資產傳遞原則。 有關詳細資訊，請參閱[配置資產交付策略](media-services-dotnet-configure-asset-delivery-policy.md)。
+如果您的輸出資產是儲存體加密，必須設定資產傳遞原則。 如需詳細資訊，請參閱設定[資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。
 
 > [!NOTE]
 > MES 會產生一個輸出檔案，其名稱包含輸入檔案名稱的前 32 個字元。 名稱是以預設檔案中指定的名稱為基礎。 例如，"FileName": "{Basename}_{Index}{Extension}"。 {Basename} 會由輸入檔案名稱的前 32 個字元取代。
@@ -61,7 +61,7 @@ ms.locfileid: "69016578"
 
 * 建立編碼工作。
 * 取得對 Media Encoder Standard 編碼器的參考
-* 指定使用[自我調整流式處理](media-services-autogen-bitrate-ladder-with-mes.md)預設。 
+* 指定以使用彈性[資料流程](media-services-autogen-bitrate-ladder-with-mes.md)預設值。 
 * 將單一編碼工作加入工作。 
 * 指定要編碼的輸入資產。
 * 建立包含已編碼資產的輸出資產。
@@ -70,7 +70,7 @@ ms.locfileid: "69016578"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例 
 
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
-[如何使用媒體編碼器標準與 .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
-[媒體服務編碼概述](media-services-encode-asset.md)生成縮略圖
+[如何使用媒體編碼器標準搭配 .net](media-services-dotnet-generate-thumbnail-with-mes.md)
+產生縮圖[媒體服務編碼總覽](media-services-encode-asset.md)
 

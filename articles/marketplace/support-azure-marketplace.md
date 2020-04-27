@@ -1,5 +1,5 @@
 ---
-title: 支援商業市場 |Azure 應用商店
+title: 支援商用 marketplace |Azure Marketplace
 description: Azure Marketplace 和 AppSource 的支援資訊和連結
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81681373"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159910"
 ---
 # <a name="support-for-the-marketplace"></a>Marketplace 的支援
 
@@ -22,13 +22,13 @@ ms.locfileid: "81681373"
 
 ## <a name="onboarding"></a>登入
 
-在 Microsoft[市場發布者的支援下](https://aka.ms/marketplacepublishersupport),針對載入和入門問題打開票證。
+使用 Microsoft [marketplace 發行者支援](https://partner.microsoft.com/support/v2/?stage=1)開啟票證，以取得上線和開始使用的問題。
 
 ## <a name="partner-center"></a>合作夥伴中心   
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://aka.ms/marketplacepublishersupport) \(英文\) 的「建立事件」頁面</li> </ul> | 支援合作夥伴中心。 | 支援全天候提供。 |  
+| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://partner.microsoft.com/support/v2/?stage=1) \(英文\) 的「建立事件」頁面</li> </ul> | 合作夥伴中心的支援。 | 平日24小時提供支援。 |  
 
 ## <a name="technical"></a>技術需求  
 
@@ -41,14 +41,14 @@ ms.locfileid: "81681373"
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
-| 電子郵件:[cosell@microsoft.com](mailto:cosell@microsoft.com) | 支援上架程序和有關共同銷售計劃的問題。 | 以美國太平洋時區為準。 |  
-| 電子郵件:[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
-| 電子郵件:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
+| 電子郵件：[cosell@microsoft.com](mailto:cosell@microsoft.com) | 支援上架程序和有關共同銷售計劃的問題。 | 以美國太平洋時區為準。 |  
+| 電子郵件：[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
+| 電子郵件：[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 存取[商業市場出版者指南頁](https://docs.microsoft.com/azure/marketplace/)。
-* 詳細瞭解[合作夥伴中心對商業市場計劃的支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+* 請造訪[商業 marketplace 發行者指南頁面](https://docs.microsoft.com/azure/marketplace/)。
+* 深入瞭解[合作夥伴中心的商業 marketplace 方案支援](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
 
 ---

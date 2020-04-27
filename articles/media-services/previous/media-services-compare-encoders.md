@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016646"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的比較  
@@ -47,7 +47,7 @@ ms.locfileid: "69016646"
 | 媒體處理器名稱 | 適用的價格 | 注意 |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |在 ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
-| **Media Encoder Premium Workflow** |PREMIUM ENCODER |在 PREMIUM ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
+| **媒體編碼器高階工作流程** |PREMIUM ENCODER |在 PREMIUM ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
 
 ## <a name="input-containerfile-formats"></a>輸入容器/檔案格式
 | 輸入容器/檔案格式 | Media Encoder Standard | 媒體編碼器高階工作流程 |
@@ -99,9 +99,9 @@ ms.locfileid: "69016646"
 | MP3 (MPEG-1 音訊層 3) |是 |是 |
 | Windows Media 音訊 |是 |是 |
 | WAV/PCM |是 |是 |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |否 |
-| [作品](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |是 |否 |
-| [沃爾比斯](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |否 |
+| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |是 |否 |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
 
 ## <a name="output-containerfile-formats"></a>輸出容器/檔案格式
 | 輸出容器/檔案格式 | Media Encoder Standard | 媒體編碼器高階工作流程 |

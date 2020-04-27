@@ -1,5 +1,5 @@
 ---
-title: 如何使用 PHP 中的佇列存儲 - Azure 存儲
+title: 如何使用 PHP 的佇列儲存體-Azure 儲存體
 description: 了解如何使用 Azure 佇列儲存體服務來建立和刪除佇列，以及插入、取得和刪除訊息。 範例是以 PHP 撰寫的。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 692c943e48c08771b5f1c60b66412270081cf0e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72302963"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何使用 PHP 的佇列儲存體
@@ -31,7 +31,7 @@ ms.locfileid: "72302963"
 
 若要建立 PHP 應用程式並使其存取 Azure 佇列儲存體，唯一要求就是在您的程式碼中參考[適用於 PHP 的 Azure 儲存體用戶端程式庫][download]中的類別。 您可以使用任何開發工具來建立應用程式 (包括 [記事本])。
 
-在本指南中，您可以使用可在本地 PHP 應用程式中或在 Azure 中的 Web 應用程式中運行的代碼中調用的佇列存儲服務功能。
+在本指南中，您會使用可在 PHP 應用程式內本機呼叫的佇列儲存體服務功能，或在 Azure 中的 web 應用程式內執行的程式碼中。
 
 ## <a name="get-the-azure-client-libraries"></a>取得 Azure 用戶端程式庫
 
@@ -223,7 +223,7 @@ else{
 
 ## <a name="de-queue-the-next-message"></a>將下一個訊息清除佇列
 
-您的程式碼可以使用兩個步驟來將訊息從佇列中移除。 首先，您需呼叫 **QueueRestProxy->listMessages**，這會讓從佇列讀取資料的任何其他程式碼無法看見此訊息。 依預設，此訊息會維持 30 秒的不可見狀態。 （如果在此時間段內未刪除該消息，則該消息在佇列中再次變得可見。要完成從佇列中刪除郵件，必須調用**QueueRestProxy->刪除消息**。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的代碼在郵件處理後立即調用**deleteMessage。**
+您的程式碼可以使用兩個步驟來將訊息從佇列中移除。 首先，您需呼叫 **QueueRestProxy->listMessages**，這會讓從佇列讀取資料的任何其他程式碼無法看見此訊息。 依預設，此訊息會維持 30 秒的不可見狀態。 （如果未在這段期間內刪除訊息，則會再次顯示在佇列上）。若要完成從佇列中移除訊息的作業，您必須呼叫**QueueRestProxy->deleteMessage**。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼會在處理完訊息之後立即呼叫**deleteMessage** 。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -265,7 +265,7 @@ catch(ServiceException $e){
 
 ## <a name="change-the-contents-of-a-queued-message"></a>變更佇列訊息的內容
 
-透過呼叫 **QueueRestProxy->updateMessage**，您可以在佇列中就地變更訊息的內容。 如果訊息代表工作作業，則您可以使用此功能來更新工作作業的狀態。 下列程式碼將使用新的內容更新佇列訊息，並將可見度逾時設定延長 60 秒。 這可儲存與訊息相關的工作狀態，並提供用戶端多一分鐘的時間繼續處理訊息。 您可以使用此技巧來追蹤佇列訊息上的多步驟工作流程，如果因為硬體或軟體故障而導致某個處理步驟失敗，將無需從頭開始。 通常，您也會保留重試計數，如果重試該郵件超過*n*次，則將其刪除。 這麼做可防止每次處理時便觸發應用程式錯誤的訊息。
+透過呼叫 **QueueRestProxy->updateMessage**，您可以在佇列中就地變更訊息的內容。 如果訊息代表工作作業，則您可以使用此功能來更新工作作業的狀態。 下列程式碼將使用新的內容更新佇列訊息，並將可見度逾時設定延長 60 秒。 這可儲存與訊息相關的工作狀態，並提供用戶端多一分鐘的時間繼續處理訊息。 您可以使用此技巧來追蹤佇列訊息上的多步驟工作流程，如果因為硬體或軟體故障而導致某個處理步驟失敗，將無需從頭開始。 一般來說，您也會保留重試計數，如果訊息重試超過*n*次，您就會刪除它。 這麼做可防止每次處理時便觸發應用程式錯誤的訊息。
 
 ```php
 require_once 'vendor/autoload.php';

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68965125"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
@@ -95,7 +95,7 @@ StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉
 * 您可以在雲端中建立無限量的雲端設備，視需要將其開啟和關閉。
 * 可協助您模擬災害復原、開發和測試案例中的內部部署環境，並可協助從備份進行項目層級的擷取。
 
-StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 （在本地層中，Azure 高級存儲在 SSD 上存儲資料，而標準存儲存儲 HDD 上的資料。請注意，您必須具有 Azure 高級存儲帳戶才能使用高級存儲。
+StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 （在本機層中，Azure premium 儲存體會將資料儲存在 Ssd，而標準儲存體會將資料儲存在 Hdd 上）。請注意，您必須擁有 Azure premium 儲存體帳戶，才能使用 premium 儲存體。
 
 如需 StorSimple 雲端設備的詳細資訊，請移至[部署和管理 Azure 中的 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -156,7 +156,7 @@ Microsoft Azure StorSimple 包括 StorSimple Adapter for SharePoint，其為可�
 除了專用的 StorSimple 裝置、虛擬裝置和其他元件以外，Microsoft Azure StorSimple 還會使用下列軟體技術來提供資料的快速存取，並減少儲存體使用：
 
 * [自動儲存體分層](#automatic-storage-tiering) 
-* [精簡資源調配](#thin-provisioning) 
+* [精簡布建](#thin-provisioning) 
 * [重複資料刪除和壓縮](#deduplication-and-compression) 
 
 ### <a name="automatic-storage-tiering"></a>自動儲存體分層
@@ -208,7 +208,7 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作負載摘要
 下表顯示所支援 StorSimple 工作負載的摘要。
 
-| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
+| 案例 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 共同作業 |檔案共用 |是 | |所有版本 |
 | 共同作業 |分散式檔案共用 |是 | |所有版本 |
@@ -217,8 +217,8 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
-| Backup  |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
-| Backup  |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| Backup |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| Backup |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
 
 是&#42; - 應套用解決方案指導方針和限制。**
 
@@ -235,7 +235,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 
 以下是 StorSimple 支援的基礎結構元件清單。
 
-| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
+| 案例 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 一般 |ExpressRoute |是 | |所有版本 |
 | 一般 |DataCore FC |是* |使用 DataCore SANsymphony 時支援 |所有版本 |

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975188"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159398"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>DRM子系統的混合設計 
+# <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系統的混合式設計 
 
 本主題討論使用 Azure 媒體服務的 DRM 子系統混合式設計。
 
@@ -93,9 +93,9 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 
 ## <a name="scenarios-and-samples"></a>案例與範例
 
-根據上一節中的解釋，以下五種混合方案使用相應的**內容關鍵**-**資產交付策略**配置組合（上一列中提及的示例如下表）：
+根據上一節中的說明，下列五個混合式案例會使用個別的**內容金鑰**-**資產傳遞原則**設定組合（最後一個資料行中所述的範例會遵循資料表）：
 
-|**內容裝載與來源**|**DRM 加密**|**DRM 授權傳遞**|**設定內容金鑰**|**配置資產交付策略**|**樣品**|
+|**內容裝載與來源**|**DRM 加密**|**DRM 授權傳遞**|**設定內容金鑰**|**設定資產傳遞原則**|**範例**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|是|是|範例 1|
 |AMS|AMS|協力廠商|是|是|範例 2|
@@ -107,31 +107,31 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 
 ### <a name="sample-1"></a>範例 1
 
-* 來源 (基底) URL：https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady LA_URL (虛線與平滑)：https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine LA_URL (虛線)：https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
-* FairPlay LA_URL (HLS)：https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
+* 來源 (基底) URL：`https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady LA_URL (虛線與平滑)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Widevine LA_URL (虛線)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay LA_URL (HLS)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>範例 2
 
 * 來源 (基底) URL：https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL (虛線與平滑)：http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* PlayReady LA_URL (虛線與平滑)：`http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>範例 3
 
 * 來源 URL：https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (虛線與平滑)：https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* PlayReady LA_URL (虛線與平滑)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>範例 4
 
 * 來源 URL：https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (虛線與平滑)：https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* PlayReady LA_URL (虛線與平滑)：`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
 
 ## <a name="additional-notes"></a>其他注意事項
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 總而言之，Azure 媒體服務 DRM 元件富有彈性，只要如本主題所述正確設定內容金鑰與資產傳遞原則，就可以在混合式案例中使用它們。
 

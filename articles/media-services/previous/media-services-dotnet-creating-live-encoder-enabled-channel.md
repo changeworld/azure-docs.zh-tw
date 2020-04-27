@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69015511"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒體服務執行即時串流，以使用 .NET 建立多位元速率串流
@@ -29,7 +29,7 @@ ms.locfileid: "69015511"
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
 > 
 
@@ -66,7 +66,7 @@ ms.locfileid: "69015511"
 11. 藉由建立 OnDemand 定位器，發行與程式相關聯的資產。
 
     >[!NOTE]
-    >創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
+    >建立 AMS 帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
 
 12. 當您準備好開始串流和封存時，請啟動程式。
 13. 即時編碼器會收到啟動公告的信號 (選擇性)。 公告會插入輸出串流中。
@@ -87,10 +87,10 @@ ms.locfileid: "69015511"
 7. 顯示和隱藏 slate。 啟動和停止公告。 使用長時間執行的 API。
 8. 清除您的通道和所有相關聯的資源。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 需要有下列項目，才能完成教學課程。
 
-* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 您將獲得能用來試用 Azure 付費服務的額度。 即使在額度用完後，您仍可保留帳戶，並使用免費的 Azure 服務和功能，例如 Azure App Service 中的 Web Apps 功能。
+* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 您將獲得能用來試用 Azure 付費服務的額度。 即使在額度用完後，您仍可保留帳戶，並使用免費的 Azure 服務和功能，例如 Azure App Service 中的 Web Apps 功能。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱 [建立帳戶](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1 (Professional、Premium、Ultimate 或 Express) 或較新版本。
 * 您必須使用媒體服務 .NET SDK 3.2.0.0 版或更新版本。
@@ -98,7 +98,7 @@ ms.locfileid: "69015511"
 
 ## <a name="considerations"></a>考量
 * 目前，即時事件的最大建議持續時間是 8 小時。 如果您需要較長的時間來執行通道，請連絡 amshelp@microsoft.com。
-* 對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 有關詳細資訊，請參閱[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
+* 對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[這](media-services-dotnet-manage-entities.md#limit-access-policies)篇文章。
 
 ## <a name="download-sample"></a>下載範例
 
@@ -106,7 +106,7 @@ ms.locfileid: "69015511"
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>設定使用媒體服務 SDK for.NET 的開發
 
-設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="code-example"></a>程式碼範例
 

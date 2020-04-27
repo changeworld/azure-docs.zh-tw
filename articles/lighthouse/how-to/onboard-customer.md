@@ -3,12 +3,12 @@ title: 讓客戶在 Azure 委派的資源管理中上線
 description: 了解如何讓客戶在 Azure 委派的資源管理中上線，讓其資源可透過您自己的租用戶來管理。
 ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9cadab966c4d9ae3ddbc12a75f42f69e0c12f
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146323"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82161103"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>讓客戶在 Azure 委派的資源管理中上線
 
@@ -199,6 +199,8 @@ az role definition list --name "<roleName>" | grep name
 
 > [!IMPORTANT]
 > 此訂用帳戶層級的部署必須由客戶租使用者中的非來賓帳戶完成，其擁有[內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)可供上架訂閱（或包含正在上架的資源群組）。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]****，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
+>
+> 如果訂用帳戶是透過[雲端解決方案提供者（CSP）方案](../concepts/cloud-solution-provider.md)所建立，則在服務提供者租使用者中具有系統[管理員代理](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)程式角色的任何使用者，都可以執行部署。
 
 ### <a name="powershell"></a>PowerShell
 

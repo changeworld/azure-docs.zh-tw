@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69014690"
 ---
 ### <a name="media-services-v3-latest"></a>媒體服務 v3 (最新版)
@@ -23,6 +23,6 @@ ms.locfileid: "69014690"
 ### <a name="media-services-v2-legacy"></a>媒體服務 v2 (舊版)
 
 * [概觀](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
-* [創建帳戶](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
-* [按需提供](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
-* [提供即時](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)
+* [建立帳戶](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
+* [隨選交付](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
+* [即時傳遞](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

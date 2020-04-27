@@ -1,47 +1,50 @@
 ---
-title: 將 Azure VM 移至新訂閱或資源群組
-description: 使用 Azure 資源管理員將虛擬機器移動到新的資源組或訂閱。
+title: 將 Azure Vm 移至新的訂用帳戶或資源群組
+description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 144888c4a66ef68448ae8bc863f6aef0923dfb69
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478660"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160114"
 ---
-# <a name="move-guidance-for-virtual-machines"></a>移動虛擬機器指南
+# <a name="move-guidance-for-virtual-machines"></a>適用于虛擬機器的移動指引
 
-本文介紹了當前不支援的方案以及使用備份移動虛擬機的步驟。
+本文說明目前不支援的案例，以及使用備份來移動虛擬機器的步驟。
 
-## <a name="scenarios-not-supported"></a>不支援的機制
+## <a name="scenarios-not-supported"></a>不支援的案例
 
 尚未支援下列案例：
 
-* 無法將可用區域中的託管磁碟移到其他訂閱。
-* 無法移動具有標準 SKU 負載均衡器或標準 SKU 公共 IP 的虛擬機器規模集。
-* 從 Marketplace 資源建立且附加方案的虛擬機器無法在資源群組或訂用帳戶之間移動。 取消在當前訂閱中的虛擬機預配,並在新訂閱中再次部署。
-* 當您未移動虛擬網路中的所有資源時,無法將現有虛擬網路中的虛擬機器移動到新訂閱。
-* 低優先順序虛擬機和低優先順序虛擬機器規模集無法跨資源組或訂閱移動。
-* 可用性集中的虛擬機無法單獨移動。
+* 可用性區域中的受控磁碟無法移至不同的訂用帳戶。
+* 不能移動標準 SKU Load Balancer 或標準 SKU 公用 IP 的虛擬機器擴展集。
+* 從 Marketplace 資源建立且附加方案的虛擬機器無法在資源群組或訂用帳戶之間移動。 取消布建目前訂用帳戶中的虛擬機器，然後在新的訂用帳戶中再次部署。
+* 當您不移動虛擬網路中的所有資源時，無法將現有虛擬網路中的虛擬機器移至新的訂用帳戶。
+* 低優先順序的虛擬機器和低優先順序的虛擬機器擴展集無法在資源群組或訂用帳戶之間移動。
+* 無法個別移動可用性設定組中的虛擬機器。
 
-## <a name="virtual-machines-with-azure-backup"></a>具有 Azure 備份虛擬機器
+## <a name="virtual-machines-with-azure-backup"></a>具有 Azure 備份的虛擬機器
 
-要移動配置 Azure 備份的虛擬機,必須從保管庫中刪除還原點。
+若要移動以 Azure 備份設定的虛擬機器，您必須從保存庫中刪除還原點。
 
-如果為虛擬機啟用[了軟刪除](../../../backup/backup-azure-security-feature-cloud.md),則在保留這些還原點時無法移動虛擬機器。 [關閉軟刪除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)或刪除還原點後等待 14 天。
+如果您的虛擬機器已啟用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md)，則在保留這些還原點時，您無法移動虛擬機器。 刪除還原點之後，請停用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)或等待14天。
 
 ### <a name="portal"></a>入口網站
 
-1. 選擇配置為備份的虛擬機器。
+1. 暫時停止備份並保留備份資料。
+2. 若要移動以 Azure 備份設定的虛擬機器，請執行下列步驟：
 
-1. 在左側窗格中,選擇 **「備份**」。。
+   1. 尋找虛擬機器的位置。
+   2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1`。 例如， *AzureBackupRG_westus2_1*
+   3. 在 [Azure 入口網站中，勾選 [**顯示隱藏的類型**]。
+   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式`AzureBackup_<name of your VM that you're trying to move>_###########`的資源。
+   5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
+   6. 刪除作業完成之後，您就可以移動虛擬機器。
 
-1. 選擇 **「停止備份**」。
-
-1. 選擇 **「刪除回資料**」。
-
-1. 刪除完成後,您可以將保管庫和虛擬機器移動到目標訂閱。 移動後,您可以繼續備份。
+3. 將 VM 移至目標資源群組。
+4. 繼續備份。
 
 ### <a name="powershell"></a>PowerShell
 
