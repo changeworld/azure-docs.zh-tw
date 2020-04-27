@@ -39,6 +39,8 @@
       items:
         - name: HDInsight 上的 Apache Hadoop 元件
           href: ./hdinsight-component-versioning.md
+        - name: Hortonworks 版本資訊
+          href: ./hortonworks-release-notes.md
         - name: 高可用性元件
           href: ./hdinsight-high-availability-components.md
         - name: Azure HDInsight 中的 Apache Ambari
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: 高度可用性與可靠性
           href: ./hdinsight-high-availability-linux.md
-        - name: 比較儲存體選項
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: 了解受控身分識別
           href: ./hdinsight-managed-identities.md
+        - name: 比較儲存體選項
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: Azure 儲存體概觀
+              href: overview-azure-storage.md
+            - name: Azure Data Lake Storage Gen1 概觀
+              href: overview-data-lake-storage-gen1.md
+            - name: Azure Data Lake Storage Gen2 概觀
+              href: overview-data-lake-storage-gen2.md
     - name: 如何
       items:
         - name: 建立叢集
@@ -122,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: 使用 SSH 通道
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: 搭配使用 SCP 與 HDInsight
+              href: ./use-scp.md
             - name: 限制對資料的存取
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: 授權 Apache Ambari 檢視的使用者
@@ -216,6 +227,8 @@
           items:
             - name: 針對指令碼動作進行疑難排解
               href: ./troubleshoot-script-action.md
+            - name: 資源建立失敗
+              href: ./troubleshoot-resource-creation-fails.md
     - name: 參考
       items:
         - name: Azure PowerShell
