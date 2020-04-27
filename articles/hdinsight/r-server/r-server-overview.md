@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/20/2020
+ms.openlocfilehash: 76fcdb52df88be2c4033140f4bc71b28424d7f38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657025"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687786"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 ML 服務
 
@@ -23,7 +23,7 @@ HDInsight 上的 ML 服務所提供的最新功能，適用於幾乎任何大小
 
 邊緣節點提供便利的地方，以便連接到叢集並執行 R 指令碼。 邊緣節點允許跨伺服器核心執行 ScaleR 平行處理的分散式函式。 您也可以使用 ScaleR 的 Hadoop Map Reduce，跨叢集的節點來執行這些函數， 或使用 Apache Spark 計算內容。
 
-可以下載分析所產生的模型或預測，以便在內部部署使用。 您也可以在 Azure 中的其他地方使用。 特別是透過 [Azure Machine Learning Studio (傳統)](https://studio.azureml.net)，以及 [Web 服務](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)。
+可以下載分析所產生的模型或預測，以便在內部部署使用。 您也可以在 Azure 中的其他地方使用 `operationalized`。 特別是透過 [Azure Machine Learning Studio (傳統)](https://studio.azureml.net)，以及 [Web 服務](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>開始使用 HDInsight 上的 ML 服務
 
@@ -63,16 +63,16 @@ HDInsight 上的 ML 服務包含下列功能。
 | 已啟用 R | [R 套件](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) 適用於以 R 撰寫的解決方案、具有 R 的開放原始碼散佈，以及用於執行指令碼的執行階段基礎結構。 |
 | 已啟用 Python | [Python 套件](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) 適用於以 Python 撰寫的解決方案、具有 Python 的開放原始碼散佈，以及用於執行指令碼的執行階段基礎結構。
 | [預先定型的模型](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | 針對視覺化分析和文字情感分析，準備好要對您提供的資料進行評分。 |
-| [部署和取用](r-server-operationalize.md) | 讓您的伺服器能運作，並將解決方案部署為 Web 服務。 |
+| [部署和取用](r-server-operationalize.md) | 讓您的伺服器 `Operationalize`，並將解決方案部署為 Web 服務。 |
 | [遠端執行](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | 從用戶端工作站中，在您網路上的 ML 服務啟動遠端工作階段。 |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight 上適用於 ML 服務的資料儲存體選項
 
-HDFS 檔案系統的預設儲存體可以是 Azure 儲存體帳戶或 Azure Data Lake Storage。 在分析期間，會持續將資料上傳至叢集儲存體。 即使在刪除叢集之後，資料仍然可用。 各種工具都可以處理對儲存體的資料傳輸。 這些工具組括儲存體帳戶的入口網站型上傳工具，以及 [AzCopy](../../storage/common/storage-use-azcopy.md) 公用程式。
+HDFS 檔案系統的預設儲存體可以是 Azure 儲存體帳戶或 Azure Data Lake Storage。 在分析期間，會持續將資料上傳至叢集儲存體。 即使在刪除叢集之後，資料仍然可用。 各種工具都可以處理對儲存體的資料傳輸。 這些工具組括儲存體帳戶的入口網站型上傳工具，以及 AzCopy 公用程式。
 
 您可以在叢集建立期間，啟用對其他 Blob 和 Data lake 儲存的存取， 不一定要採用使用中的主要儲存體選項。  若要深入了解如何使用多個儲存體帳戶，請參閱[適用於 HDInsight 上 ML 服務的 Azure 儲存體選項](./r-server-storage.md)文章。
 
-您也可以將 [Azure 檔案](../../storage/files/storage-how-to-use-files-linux.md)作為在邊緣節點上使用的儲存體選項。 Azure 檔案儲存體可讓您將建立於 Azure 儲存體的檔案分享至 Linux 檔案系統。 如需詳細資訊，請參閱 [HDInsight 上適用於 ML 服務的 Azure 儲存體選項](r-server-storage.md)。
+您也可以將 Azure 檔案作為在邊緣節點上使用的儲存體選項。 Azure 檔案儲存體可讓您將建立於 Azure 儲存體的檔案分享至 Linux 檔案系統。 如需詳細資訊，請參閱 [HDInsight 上適用於 ML 服務的 Azure 儲存體選項](r-server-storage.md)。
 
 ## <a name="access-ml-services-edge-node"></a>存取 ML 服務邊緣節點
 
@@ -82,9 +82,9 @@ HDFS 檔案系統的預設儲存體可以是 Azure 儲存體帳戶或 Azure Data
 
 您的 R 指令碼可以使用 8000 個以上的開放原始碼 R 套件中的任何一個。 您也可以使用 ScaleR 程式庫中的平行化和分散式常式。 在邊緣節點上執行的指令碼會在該節點上的 R 解譯器內執行。 除了使用 Map 縮減Reduce (RxHadoopMR) 或 Spark (RxSpark) 計算內容呼叫 ScaleR 函式的步驟以外。 函式會以分散式方式在與資料相關聯的資料節點上執行。 如需內容選項的詳細資訊，請參閱[適用於 HDInsight 上 ML 服務的計算內容選項](r-server-compute-contexts.md)。
 
-## <a name="operationalize-a-model"></a>模型運作
+## <a name="operationalize-a-model"></a>`Operationalize` 模型
 
-完成資料模型化時，可以在 Azure 中或內部部署中運作模型，為新的資料進行預測。 這個程序稱為評分。 評分可在 HDInsight、Azure Machine Learning 或內部部署中完成。
+完成資料模型化時，可以在 Azure 中或內部部署中 `operationalize` 模型，為新的資料進行預測。 這個程序稱為評分。 評分可在 HDInsight、Azure Machine Learning 或內部部署中完成。
 
 ### <a name="score-in-hdinsight"></a>在 HDInsight 中評分
 
@@ -96,7 +96,7 @@ HDFS 檔案系統的預設儲存體可以是 Azure 儲存體帳戶或 Azure Data
 
 ### <a name="score-on-premises"></a>內部部署評分
 
-若要在建立模型之後進行內部部署評分，可以在 R 中將模型序列化、進行下載並還原序列化，然後用來進行新資料的評分。 您可以使用稍早在[在 HDInsight 中評分](#score-in-hdinsight)中所述的方法，或使用 [Web 服務](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) \(英文\) 進行新資料的評分。
+若要在建立模型之後進行內部部署評分，可以在 R 中將模型序列化、進行下載並還原序列化，然後用來進行新資料的評分。 您可以使用稍早在在 HDInsight 中評分中所述的方法，或使用 [Web 服務](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)進行新資料的評分。
 
 ## <a name="maintain-the-cluster"></a>維護叢集
 
@@ -130,7 +130,7 @@ HDFS 檔案系統的預設儲存體可以是 Azure 儲存體帳戶或 Azure Data
 
 HDInsight 叢集的 Linux 邊緣節點，是 R 型分析的登陸區域。 HDInsight 最近的幾個版本，在邊緣節點上提供 RStudio Server 的瀏覽器型 IDE。 在開發和執行方面，RStudio Server 的生產力高於 R 主控台。
 
-桌面 IDE 可以透過遠端 MapReduce 或 Spark 計算內容來存取叢集。 選項包括：Microsoft 的 [Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio 與 Walware 的 Eclipse 型 [StatET](http://www.walware.de/goto/statet)。
+桌面 IDE 可以透過遠端 MapReduce 或 Spark 計算內容來存取叢集。 選項包括：Microsoft 的 [Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio 與 Walware 的 Eclipse 型 StatET。
 
 在命令提示字元中輸入 **R**，存取邊緣節點上的 R 主控台。 使用主控台介面時，可方便地在文字編輯器中開發 R 指令碼， 然後可視需要將指令碼的區段剪下並貼到 R 主控台。
 

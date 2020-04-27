@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215966"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082317"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入門：設定用戶端應用程式以存取 Web API
 
@@ -110,7 +110,10 @@ ms.locfileid: "79215966"
    | **Web**              | 輸入應用程式的**重新導向 URI**。 |
    | **iOS / macOS**              | 輸入應用程式的 [套件組合識別碼]  ，您可以在 XCode 中的 Info.plist 或 [組建設定] 中找到此識別碼。 新增套件組合識別碼會自動建立應用程式的重新導向 URI。 |
    | **Android**          | 提供應用程式的**套件名稱**，您可以在 androidmanifest.xml 檔案中找到。<br/>產生並輸入**簽章雜湊**。 新增簽章雜湊會自動建立應用程式的重新導向 URI。  |
-   | **行動應用程式與傳統型應用程式**  | 選擇性。 如果您要建立桌面和裝置的應用程式，請選取其中一個**建議的重新導向 URI**。<br/>選擇性。 輸入**自訂重新導向 URI**，作為回應驗證要求時，Azure AD 將會重新導向使用者的位置。 例如，針對您想要進行互動的 .NET Core 應用程式，請使用 `https://localhost`。 |
+   | **行動應用程式與傳統型應用程式**  | 選擇性。 如果您要建立桌面和裝置的應用程式，請選取其中一個**建議的重新導向 URI**。<br/>選擇性。 輸入**自訂重新導向 URI**，作為回應驗證要求時，Azure AD 將會重新導向使用者的位置。 例如，針對您想要進行互動的 .NET Core 應用程式，請使用 `http://localhost`。 |
+
+   > [!NOTE]
+   > 在 Active Directory 同盟服務 (AD FS) 和 Azure AD B2C 上，您也必須指定連接埠號碼。  例如： `http://localhost:1234` 。 
 
    > [!IMPORTANT]
    > 對於未使用最新 Microsoft 驗證程式庫 (MSAL) 或未使用訊息代理程式的行動裝置應用程式，您必須在 [傳統型 + 裝置]  中設定這些應用程式的重新導向 URI。

@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 準備 VMware VM 以進行評量/移轉
 description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/移轉。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619419"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677290"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>準備 VMware VM 以進行評量並移轉至 Azure
 
@@ -123,7 +123,7 @@ Azure Migrate 需要存取 vCenter Server，才能探索用於評估和無代理
 在下一個教學課程中設定 Azure Migrate 設備並開始進行評量之前，請先準備設備部署。
 
 1. [確認](migrate-appliance.md#appliance---vmware) Azure Migrate 設備需求。
-2. [檢閱](migrate-appliance.md#url-access)設備需要存取的 Azure URL。 如果您使用以 URL 為基礎的防火牆或 Proxy，請務必允許必要 URL 的存取。
+2. 檢閱[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中設備需要存取的 Azure URL。
 3. [檢閱設備在探索和評量期間收集的資料](migrate-appliance.md#collected-data---vmware)。
 4. [注意](migrate-support-matrix-vmware.md#port-access)設備的連接埠存取需求。
 
@@ -138,7 +138,8 @@ Azure Migrate 需要存取 vCenter Server，才能探索用於評估和無代理
 2. [檢閱 Azure Migrate 存取 vCenter Server 所需的權限](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)。
 3. [檢閱](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware VM 需求。
 4. [檢閱](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) Azure Migrate 設備需求。
-5. 請留意 [URL 存取](migrate-appliance.md#url-access)和[連接埠存取](migrate-support-matrix-vmware-migration.md#agentless-ports)的需求。
+5. 請注意，[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端需要 URL 存取權。
+6. 檢閱[連接埠存取](migrate-support-matrix-vmware-migration.md#agentless-ports)需求。
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>準備代理程式型 VMware 移轉
 
@@ -150,7 +151,8 @@ Azure Migrate 需要存取 vCenter Server，才能探索用於評估和無代理
 3. 代理程式型移轉會使用複寫設備：
     - [檢閱](migrate-replication-appliance.md#appliance-requirements)複寫設備的部署需求。
     - [檢閱在設備上安裝 MySQL 的選項](migrate-replication-appliance.md#mysql-installation)。
-    - 檢閱複寫設備的 [URL](migrate-replication-appliance.md#url-access) 和[連接埠](migrate-replication-appliance.md#port-access)存取需求。
+    - 請注意，[公用](migrate-replication-appliance.md#url-access)和[政府](migrate-replication-appliance.md#azure-government-url-access)雲端需要 URL 存取權。
+    - 檢閱複寫設備的[連接埠](migrate-replication-appliance.md#port-access)存取需求。
     
 ## <a name="next-steps"></a>後續步驟
 

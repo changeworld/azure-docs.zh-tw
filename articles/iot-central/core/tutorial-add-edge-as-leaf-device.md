@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026391"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758168"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>教學課程：將 Azure IoT Edge 裝置新增至 Azure IoT Central 應用程式
+
+*本文適用於解決方案建置人員和裝置開發人員。*
 
 本教學課程說明如何在 Azure IoT Central 應用程式中設定和新增 Azure IoT Edge 裝置。 本教學課程使用來自 Azure Marketplace、已啟用 IoT Edge 的 Linux 虛擬機器 (VM) 來模擬 IoT Edge 裝置。 IoT Edge 裝置會使用可產生模擬環境遙測的模組。 請在 IoT Central 應用程式的儀表板上檢視遙測。
 
@@ -262,9 +264,9 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 您必須在裝置�
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已了解如何在 IoT Central 中管理 IoT Edge 裝置，以下是建議的後續步驟：
+身為裝置開發人員，您現在已了解如何在 IoT Central 中使用和管理 IoT Edge 裝置，建議的後續步驟是閱讀：
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [設定透明閘道](../../iot-edge/how-to-create-transparent-gateway.md)
+> [連線至 Azure IoT Central](./concepts-get-connected.md)

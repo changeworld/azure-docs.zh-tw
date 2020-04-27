@@ -2,14 +2,14 @@
 title: 使用無代理程式 Azure Migrate 伺服器移轉來遷移 VMware VM
 description: 了解如何使用 Azure Migrate 執行 VMware VM 的無代理程式移轉。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304203"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535310"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>將 VMware VM 遷移至 Azure (無代理程式)
 
@@ -55,9 +55,12 @@ ms.locfileid: "78304203"
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>新增 Azure Migrate 伺服器移轉工具
 
-如果您未遵循第二個教學課程來評估 VMware VM，則必須[遵循這些指示](how-to-add-tool-first-time.md)來設定 Azure Migrate 專案，並選取 Azure Migrate 伺服器移轉工具。 
+新增 Azure Migrate：伺服器移轉工具。
 
-如果您已遵循第二個教學課程並已設定 Azure Migrate 專案，請新增 Azure Migrate 伺服器移轉工具，如下所示：
+- 如果您遵循第二個教學課程來[評估 VMware VM](/tutorial-assess-vmware.md)，您可以繼續並新增工具。
+- 如果您未遵循第二個教學課程，[請遵循這些指示](how-to-add-tool-first-time.md)來設定 Azure Migrate 專案。  您會在建立專案時新增 Azure Migrate：伺服器移轉工具。
+
+如果您已設定專案，請新增工具，如下所示：
 
 1. 在 Azure Migrate 專案中，按一下 [概觀]  。 
 2. 在 [探索、評估和遷移伺服器]  底下，按一下 [評估和遷移伺服器]  。
@@ -74,15 +77,14 @@ ms.locfileid: "78304203"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
-Azure Migrate 伺服器移轉會執行輕量型 VMware VM 設備。 此設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至「Azure Migrate 伺服器移轉」。 Azure Migrate 伺服器評估工具也會使用相同的設備。
+Azure Migrate 伺服器移轉會執行輕量型 VMware VM 設備。 此設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至「Azure Migrate 伺服器移轉」。 Azure Migrate：伺服器評估工具也會使用相同的設備來執行 VMware VM 的無代理程式移轉。
 
-如果您已遵循第二個教學課程來評估 VMware VM，您便已在該教學課程進行期間設定好設備。 如果您未遵循該教學課程，則必須立即設定該設備。 若要這樣做，請： 
+- 如果您已遵循[教學課程來評估 VMware VM](tutorial-assess-vmware.md)，您便已在該教學課程進行期間設定好設備。
+- 如果您未遵循該教學課程，您可以使用下列其中一種方法來立即設定設備：
+    - 使用下載的 OVA 範本，在 VMware VM 上進行[設定](how-to-set-up-appliance-vmware.md)。
+    - 使用 PowerShell 安裝程式指令碼在 VMware VM 或實體機器上進行設定。 如果您無法使用 OVA 範本設定 VM，或如果您是在 Azure Government 中，則應該使用[此方法](deploy-appliance-script.md)。
 
-- 下載 OVA 範本檔案，並將其匯入 vCenter Server。
-- 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。 
-- 第一次設定設備，並向 Azure Migrate 專案進行註冊。
-
-遵循[這篇文章](how-to-set-up-appliance-vmware.md)中的指示來設定設備。
+建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
 
 
 ## <a name="prepare-vms-for-migration"></a>準備 VM 以進行移轉

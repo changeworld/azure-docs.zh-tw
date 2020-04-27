@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300352"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682672"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 InVision 整合
 
@@ -157,13 +157,15 @@ ms.locfileid: "79300352"
 
     e. 在 [SAML 憑證]  文字方塊中，將下載的**憑證 (Base64)** 以記事本開啟，並複製內容，然後將其貼至 [SAML 憑證] 文字方塊中。
 
-    f. 從 [雜湊演算法]  的下拉式清單中，選取 [SHA-256]  。
+    f. 在 [名稱識別碼格式]  文字方塊中，使用 `Unspecified` 作為 [名稱識別碼格式]  。
 
-    g. 為 [SSO 按鈕標籤]  輸入適當的名稱。
+    g. 從 [雜湊演算法]  的下拉式清單中，選取 [SHA-256]  。
 
-    h. 將 [允許 Just-in-Time 佈建]  設為 [開啟]。
+    h. 為 [SSO 按鈕標籤]  輸入適當的名稱。
 
-    i. 按一下 [更新]  。
+    i. 將 [允許 Just-in-Time 佈建]  設為 [開啟]。
+
+    j. 按一下 [更新]  。
 
 ### <a name="create-invision-test-user"></a>建立 InVision 測試使用者
 

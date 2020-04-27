@@ -7,12 +7,12 @@ keywords: 變更, 追蹤, 自動化
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420643"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604704"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>針對您環境中的變更進行疑難排解
 
@@ -46,16 +46,18 @@ ms.locfileid: "75420643"
 
 您必須先在本教學課程中啟用 VM 的變更追蹤和清查。 如果您先前已啟用 VM 的另一個自動化解決方案，就不需要此步驟。
 
-1. 在左側功能表上，選取 [虛擬機器]  ，然後從清單中選取 VM
-1. 在左側功能表的 [作業]  區段下，按一下 [清查]  。 [變更追蹤]  頁面隨即開啟。
+1. 在左側功能表上，選取 [虛擬機器]  ，然後從清單中選取 VM。
+1. 在左側功能表上，選取 [作業]  底下的 [清查]  。 [清查] 頁面隨即開啟。
 
-![啟用變更](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) [變更追蹤]  畫面隨即開啟。 設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後按一下 [啟用]  。 如果欄位呈現灰色，就表示已啟用 VM 的另一個自動化解決方案，且必須使用相同的工作區和自動化帳戶。
+![啟用變更](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
+
+設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後按一下 [啟用]  。 如果欄位呈現灰色，就表示已啟用 VM 的另一個自動化解決方案，且必須使用相同的工作區和自動化帳戶。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作區用來收集功能和服務 (例如清查) 所產生的資料。
 工作區提供單一位置來檢閱和分析來自多個來源的資料。
 
-在上線期間，會使用 Microsoft Monitoring Agent (MMA) 和混合式背景工作佈建 VM。
-此代理程式用來與 VM 通訊，並取得已安裝軟體的相關資訊。
+在上線期間，VM 的佈建會透過適用於 Windows 的 Log Analytics 代理程式和混合式 Runbook 背景工作角色來進行。
+代理程式用來與 VM 通訊，並取得已安裝軟體的相關資訊。
 
 啟用解決方案可能需要 15 分鐘。 在此期間，請勿關閉瀏覽器視窗。
 啟用解決方案之後，VM 上安裝的軟體和變更相關資訊會流向 Azure 監視器記錄。
@@ -66,8 +68,8 @@ ms.locfileid: "75420643"
 ## <a name="using-change-tracking-in-azure-monitor-logs"></a>在 Azure 監視器記錄中使用變更追蹤
 
 變更追蹤所產生的記錄資料會傳送到 Azure 監視器記錄。
-若要透過執行查詢來搜尋記錄，請選取 [變更追蹤]  視窗頂端的 [Log Analytics]  。
-變更追蹤資料會儲存在 **ConfigurationChange** 類型之下。
+若要透過執行查詢來搜尋記錄，請選取 [變更追蹤] 頁面頂端的 [Log Analytics]  。
+變更追蹤資料會儲存在 `ConfigurationChange` 類型之下。
 下列範例 Log Analytics 查詢會傳回所有已停止的 Windows 服務。
 
 ```loganalytics
@@ -81,19 +83,18 @@ ConfigurationChange
 
 變更追蹤可讓您追蹤您 VM 上的設定變更。 下列步驟說明如何設定登錄機碼和檔案的追蹤。
 
-如需選擇要收集及追蹤的檔案和登錄機碼，請選取 [變更追蹤]  頁面頂端的 [編輯設定]  。
+如需選擇要收集及追蹤的檔案和登錄機碼，請選取 [變更追蹤] 頁面頂端的 [編輯設定]  。
 
 > [!NOTE]
 > 清查和變更追蹤會使用相同的集合設定，且設定會在工作區層級進行設定。
 
-在 [工作區設定]  視窗中，新增要追蹤的 Windows 登錄機碼、Windows 檔案或 Linux 檔案，如接下來三節所述。
+在 [工作區設定] 頁面中，新增要追蹤的 Windows 登錄機碼、Windows 檔案或 Linux 檔案，如接下來三節所述。
 
 ### <a name="add-a-windows-registry-key"></a>新增 Windows 登錄機碼
 
-1. 在 [Windows 登錄]  索引標籤上，選取 [新增]  。
-    [為變更追蹤新增 Windows 登錄]  視窗隨即開啟。
+1. 在 [Windows 登錄]  索引標籤上，選取 [新增]  。 
 
-1. 在 [為變更追蹤新增 Windows 登錄]  上，輸入要追蹤的機碼資訊，然後按一下 [儲存] 
+1. 在 [為變更追蹤新增 Windows 登錄] 上，輸入要追蹤的機碼資訊，然後按一下 [儲存] 
 
 |屬性  |描述  |
 |---------|---------|
@@ -104,9 +105,9 @@ ConfigurationChange
 
 ### <a name="add-a-windows-file"></a>新增 Windows 檔案
 
-1. 在 [Windows 檔案]  索引標籤上，選取 [新增]  。 [為變更追蹤新增 Windows 檔案]  視窗隨即開啟。
+1. 在 [Windows 檔案]  索引標籤上，選取 [新增]  。 
 
-1. 在 [為變更追蹤新增 Windows 檔案]  上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存] 
+1. 在 [為變更追蹤新增 Windows 檔案] 頁面上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存] 
 
 |屬性  |描述  |
 |---------|---------|
@@ -115,13 +116,13 @@ ConfigurationChange
 |群組     | 用於將檔案以邏輯方式分組的群組名稱        |
 |輸入路徑     | 要檢查檔案的路徑，例如："c:\temp\\\*.txt"<br>您也可以使用環境變數，例如 "%winDir%\System32\\\*.*"         |
 |遞迴     | 決定在尋找所要追蹤的項目時是否使用遞迴。        |
-|上傳所有的檔案內容設定| 開啟或關閉追蹤變更上的檔案內容上傳。 可用的選項：**True** 或 **False**。|
+|上傳所有的檔案內容設定| 開啟或關閉追蹤變更上的檔案內容上傳。 可用選項：**True** 或 **False**。|
 
 ### <a name="add-a-linux-file"></a>新增 Linux 檔案
 
-1. 在 [Linux 檔案]  索引標籤上，選取 [新增]  。 [為變更追蹤新增 Linux 檔案]  視窗隨即開啟。
+1. 在 [Linux 檔案]  索引標籤上，選取 [新增]  。 
 
-1. 在 [為變更追蹤新增 Linux 檔案]  上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存] 
+1. 在 [為變更追蹤新增 Linux 檔案] 頁面上，輸入要追蹤的檔案或目錄資訊，然後按一下 [儲存]  。
 
 |屬性  |描述  |
 |---------|---------|
@@ -133,24 +134,24 @@ ConfigurationChange
 |遞迴     | 決定在尋找所要追蹤的項目時是否使用遞迴。        |
 |使用 Sudo     | 此設定會決定在檢查項目時是否使用 sudo。         |
 |連結     | 此設定會決定在周遊目錄時處理符號連結的方式。<br> **忽略** - 忽略符號連結，而不包含參考的檔案/目錄<br>**遵循** - 遵循遞迴期間的符號連結，而且包含參考的檔案/目錄<br>**管理** - 遵循符號連結並允許變更所傳回內容的處理方式      |
-|上傳所有的檔案內容設定| 開啟或關閉追蹤變更上的檔案內容上傳。 可用的選項：**True** 或 **False**。|
+|上傳所有的檔案內容設定| 開啟或關閉追蹤變更上的檔案內容上傳。 可用選項：True 或 False。|
 
    > [!NOTE]
-   > 不建議選擇「管理」連結選項。 不支援檔案內容擷取。
+   > 不建議選擇**管理連結**選項。 不支援檔案內容擷取。
 
 ## <a name="enable-activity-log-connection"></a>啟用活動記錄連線
 
-從您 VM 上的 [變更追蹤]  頁面，選取 [管理活動記錄連線]  。 此工作會開啟 [Azure 活動記錄]  頁面。 選取 [連線]  可將變更追蹤連線 VM 的 Azure 活動記錄。
+從您 VM 上的 [變更追蹤] 頁面，選取 [管理活動記錄連線]  。 此工作會開啟 [Azure 活動記錄] 頁面。 按一下 [連線]  可將變更追蹤連線至 VM 的 Azure 活動記錄。
 
-此設定啟用時，瀏覽至您 VM 的 [概觀]  頁面，並選取 [停止]  來將您的 VM 停止。 出現提示時，選取 [是]  可停止 VM。 當它解除配置時，選取 [啟動]  可將您的 VM 重新啟動。
+此設定啟用時，瀏覽至您 VM 的 [概觀] 頁面，並選取 [停止]  來將您的 VM 停止。 出現提示時，選取 [是]  可停止 VM。 當它解除配置時，選取 [啟動]  可將您的 VM 重新啟動。
 
-將 VM 記錄停止和啟動，可在其活動記錄中記錄事件。 瀏覽回 [變更追蹤]  頁面。 選取頁面底部的 [事件]  索引標籤。 一段時間之後，就會在圖表和資料表中顯示事件。 如同在先前步驟中，可以選取每一個事件來檢視關於事件的詳細資訊。
+將 VM 記錄停止和啟動，可在其活動記錄中記錄事件。 瀏覽回 [變更追蹤] 頁面。 選取頁面底部的 [事件]  索引標籤。 一段時間之後，就會在圖表和資料表中顯示事件。 如同在先前步驟中，可以選取每一個事件來檢視關於事件的詳細資訊。
 
 ![在入口網站中檢視變更詳細資料](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
 
 ## <a name="view-changes"></a>檢視變更
 
-一旦啟用變更追蹤和清查解決方案後，您就可以檢視 [變更追蹤]  頁面上的結果。
+一旦啟用變更追蹤和清查解決方案後，您就可以檢視 [變更追蹤] 頁面上的結果。
 
 從您的 VM 內，選取 [作業]  下的 [變更追蹤]  。
 
@@ -165,7 +166,7 @@ ConfigurationChange
 
 您可以在結果中看到系統已進行多次變更，包括服務和軟體的變更。 您可以使用頁面頂端的篩選條件，依 [變更類型]  或依時間範圍來篩選結果。
 
-選取 **WindowsServices** 變更，隨即開啟 [變更詳細資料]  視窗。 變更詳細資料視窗會顯示關於變更的詳細資料，以及變更之前和之後的值。 在本範例中，軟體保護服務已停止。
+選取 **WindowsServices** 的變更。 此選取動作會開啟 [變更詳細資料] 頁面，其中會顯示有關變更的詳細資料，以及變更前後的值。 在本範例中，軟體保護服務已停止。
 
 ![在入口網站中檢視變更詳細資料](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
@@ -175,11 +176,11 @@ ConfigurationChange
 
 若要在 Azure 入口網站中針對停止的服務新增警示，請移至 [監視器]  。 然後在 [共用服務]  下選取 [警示]  ，並按一下 [+ 新增警示規則] 
 
-按一下 [選取]  來選擇資源。 在 [選取資源]  頁面上，從 [依資源類型篩選]  下拉式清單中選取 [Log Analytics]  。 選取您的 Log Analytics 工作區，然後選取 [完成]  。
+按一下 [選取]  來選擇資源。 在 [選取資源] 頁面上，從 [依資源類型篩選]  下拉式功能表中選取 [Log Analytics]  。 選取您的 Log Analytics 工作區，然後選取 [完成]  。
 
 ![選取資源](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-按一下 [新增條件]  ，在 [設定訊號邏輯]  頁面的資料表中，選取 [自訂記錄搜尋]  。 在 [搜尋查詢] 文字方塊中，輸入下列查詢：
+按一下 [新增條件]  ，在 [設定訊號邏輯] 頁面的資料表中，選取 [自訂記錄搜尋]  。 在 [搜尋查詢] 文字方塊中，輸入下列查詢：
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -201,7 +202,7 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 ![新增動作群組](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
 
-在 [電子郵件/簡訊/推播/語音]  窗格中，輸入名稱。 選取 [電子郵件]  核取方塊，然後輸入有效的電子郵件地址。 在 [電子郵件/簡訊/推播/語音]  頁面上按一下 [確定]  ，然後按一下 [新增動作群組]  頁面上的 [確定]  。
+在 [電子郵件/簡訊/推播/語音] 窗格中，輸入名稱。 選取 [電子郵件]  核取方塊，然後輸入有效的電子郵件地址。 按一下窗格上的 [確定]  ，然後按一下 [新增動作群組] 頁面上的 [確定]  。
 
 若要自訂警示電子郵件的主旨，請在 [建立規則]  的 [自訂動作]  之下，選取 [電子郵件主旨]  。 當您完成時，選取 [建立警示規則]  。 警示會在更新部署成功時，告知您有哪些機器包含在該更新部署執行中。
 

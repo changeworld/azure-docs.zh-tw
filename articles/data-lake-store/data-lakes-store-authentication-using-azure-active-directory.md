@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60193589"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行驗證
@@ -37,12 +37,12 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
 |使用與此驗證選項搭配...                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
-|使用者 (沒有 MFA**)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**（已棄用）     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
-|使用者 (有 MFA)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
-|服務對服務 (使用用戶端金鑰)         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
-|服務對服務 (使用用戶端憑證) |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
+|使用者 (沒有 MFA**)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**（已淘汰）     |    **[✔ *](data-lake-store-end-user-authenticate-rest-api.md)**    |
+|使用者 (有 MFA)                           |    **[✔ *](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔ *](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔ *](data-lake-store-get-started-cli-2.0.md)**      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
+|服務對服務 (使用用戶端金鑰)         |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔ *](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔ *](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔ *](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
+|服務對服務 (使用用戶端憑證) |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>• 按一下<b>✔\*</b>符號。這是一個連結。</i><br>
+<i>* 按一下<b>✔\* </b>符號。它是一個連結。</i><br>
 <i>** MFA 是指多重要素驗證</i>
 
 如需如何使用 Azure Active Directory 進行驗證的詳細資訊，請參閱 [Azure Active Directory 的驗證案例](../active-directory/develop/authentication-scenarios.md)。
@@ -50,6 +50,6 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 ## <a name="next-steps"></a>後續步驟
 
 * [終端使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)
-* [服務到服務身份驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)
+* [服務對服務驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 
 

@@ -1,34 +1,34 @@
 ---
-title: PowerShell：上傳及繫結 SSL
-description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何將自訂 SSL 憑證繫結至應用程式。
+title: PowerShell：上傳和繫結 TLS/SSL
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何將自訂 TLS/SSL 憑證繫結至應用程式。
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8422c4ef29366888a2bdd53c18462e6cfb680c78
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5116585b701717a82b757cae70f938c321a1f7d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044554"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532478"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 將自訂 SSL 憑證繫結至 Web 應用程式
+# <a name="bind-a-custom-tlsssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 將自訂 TLS/SSL 憑證繫結至 Web 應用程式
 
-此範例指令碼會在 App Service 中建立 Web 應用程式及其相關的資源，然後將自訂網域名稱的 SSL 憑證加以繫結。 
+此範例指令碼會在 App Service 中建立 Web 應用程式及其相關的資源，然後將自訂網域名稱的 TLS/SSL 憑證加以繫結。 
 
 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 此外，請確定：
 
 - 已使用 `az login` 命令建立與 Azure 的連線。
 - 您可以存取網域註冊機構的 DNS 設定頁面。
-- 對於想要上傳並繫結的 SSL 憑證，您具備有效的 .PFX 檔案和其密碼。
+- 對於想要上傳並繫結的 TLS/SSL 憑證，您具備有效的 .PFX 檔案和其密碼。
 
 ## <a name="sample-script"></a>範例指令碼
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="clean-up-deployment"></a>清除部署 
 
@@ -49,7 +49,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 建立 Web 應用程式。 |
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | 修改 App Service 方案來變更其定價層。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | 修改 Web 應用程式的組態。 |
-| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | 建立 Web 應用程式的 SSL 憑證繫結。 |
+| [New-AzWebAppSSLBinding](/powershell/module/az.websites/new-azwebappsslbinding) | 建立 Web 應用程式的 TLS/SSL 憑證繫結。 |
 
 ## <a name="next-steps"></a>後續步驟
 

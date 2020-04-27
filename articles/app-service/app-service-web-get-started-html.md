@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 159b38962fe91cedfc8d313bef943dbc74e9974e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520241"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086057"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中建立靜態 HTML Web 應用程式
 
@@ -42,16 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
-變更為包含範例程式碼的目錄，並執行 `az webapp up` 命令。
-
-在下列範例中，使用唯一的應用程式名稱取代 <app_name>。
+變更為包含範例程式碼的目錄，並執行 `az webapp up` 命令。 在下列範例中，使用唯一的應用程式名稱取代 <app_name>。 靜態內容會以 `--html` 旗標表示。
 
 ```bash
 cd html-docs-hello-world
-```
 
-```azurecli
-az webapp up --location westeurope --name <app_name> 
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 `az webapp up` 命令會執行下列動作：
@@ -66,19 +62,19 @@ az webapp up --location westeurope --name <app_name>
 
 此命令可能會花數分鐘執行。 執行上述命令時，會顯示類似下列範例的資訊：
 
-```json
+<pre>
 {
-  "app_url": "https://<app_name>.azurewebsites.net",
+  "app_url": "https://&lt;app_name&gt;.azurewebsites.net",
   "location": "westeurope",
-  "name": "<app_name>",
+  "name": "&lt;app_name&gt;",
   "os": "Windows",
   "resourcegroup": "appsvc_rg_Windows_westeurope",
   "serverfarm": "appsvc_asp_Windows_westeurope",
   "sku": "FREE",
-  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
-  < JSON data removed for brevity. >
+  "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 記下 `resourceGroup` 的值。 您在[清除資源](#clean-up-resources)一節將會用到此值。
 
@@ -102,7 +98,7 @@ az webapp up --location westeurope --name <app_name>
 
 您現在將使用相同的 `az webapp up` 命令重新部署應用程式。
 
-```azurecli
+```bash
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -130,7 +126,7 @@ az webapp up --location westeurope --name <app_name> --html
 
 在前述步驟中，您在資源群組中建立了 Azure 資源。 如果您在未來不需要這些資源，請在 Cloud Shell 中執行下列命令，以刪除資源群組。 切記，資源群組名稱已在[建立 Web 應用程式](#create-a-web-app)步驟中自動產生。
 
-```azurecli
+```bash
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 

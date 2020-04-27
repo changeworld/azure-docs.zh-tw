@@ -4,14 +4,14 @@ description: 使用 Azure 應用程式組態將功能旗標新增至 Spring Boot
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944348"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687372"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -57,7 +57,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 1. 在文字編輯器中開啟 pom.xml  檔案，並將下列內容新增至 `<dependencies>` 的清單：
 
-### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+    **Spring Cloud 1.2.x**
 
     ```xml
     <dependency>
@@ -103,7 +103,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 1. 瀏覽至應用程式的 `resources` 目錄，然後開啟 `bootstrap.properties`。  如果該檔案不存在，請加以建立。 在檔案中新增以下一行。
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. 在組態存放區的應用程式組態入口網站中，選取提要欄位中的 `Access keys`。 選取 [唯讀金鑰] 索引標籤。複製主要連接字串的值。
@@ -283,7 +283,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
     mvn spring-boot:run
     ```
 
-1. 開啟瀏覽器視窗，並移至本機裝載之 Web 應用程式的預設 URL：`https://localhost:8080`。
+1. 開啟瀏覽器視窗並移至 URL：`http://localhost:8080/welcome`。
 
     ![快速入門應用程式啟動本機](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

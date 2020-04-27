@@ -2,15 +2,15 @@
 title: 使用範本部署 VM 擴充功能
 description: 了解如何使用 Azure Resource Manager 範本部署虛擬機器擴充功能
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 280b4a9775346c719e82d1fef4162fa6ea666798
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477585"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616871"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教學課程：使用 ARM 範本部署虛擬機器擴充功能
 
@@ -23,7 +23,6 @@ ms.locfileid: "80477585"
 > * 開啟快速入門範本
 > * 編輯範本
 > * 部署範本
-> * 驗證部署
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -42,29 +41,34 @@ ms.locfileid: "80477585"
 
 ## <a name="prepare-a-powershell-script"></a>準備 PowerShell 指令碼
 
-已在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 中分享含下列內容的 PowerShell 指令碼：
+您可以使用內嵌 PowerShell 指令碼或指令檔。  本教學課程說明如何使用指令檔。 已在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 中分享含下列內容的 PowerShell 指令碼：
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-如果您選擇將檔案發佈到自己的位置，您稍後必須在本教學課程中更新範本中的 `fileUri` 元素。
+如果您選擇將檔案發佈到自己的位置，請稍後在本教學課程中更新範本中的 `fileUri` 元素。
 
 ## <a name="open-a-quickstart-template"></a>開啟快速入門範本
 
 Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本教學課程中使用的範本名為[部署簡單的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，選取 [檔案]   > [開啟檔案]  。
-1. 在 [檔案名稱]  方塊中，貼上下列 URL： https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. 在 [檔案名稱]  方塊中，貼上下列 URL：
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. 若要開啟檔案，請選取 [開啟]  。
     範本會定義五個資源：
 
-   * **Microsoft.Storage/storageAccounts**。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-   * **Microsoft.Network/publicIPAddresses**。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-   * **Microsoft.Network/virtualNetworks**。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-   * **Microsoft.Network/networkInterfaces**。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-   * **Microsoft.Compute/virtualMachines**。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
      自訂範本之前，最好先對範本有初步了解。
 
@@ -77,7 +81,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 * **fileUris**：指令碼檔案儲存所在的位置。 如果您選擇不使用提供的位置，則必須更新值。
 * **commandToExecute**：此命令會叫用指令碼。
 
+若要使用內嵌指令碼，請移除 **fileUris**，並將 **commandToExecute** 更新為：
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+此內嵌指令碼也會更新 iisstart.htm 內容。
+
 您也必須開啟 HTTP 連接埠，讓您能夠存取網頁伺服器。
 
 1. 在範本中尋找 **securityRules**。
@@ -130,10 +142,13 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 如需部署程序，請參閱＜部署範本＞一節，其位於[教學課程：建立具有相依資源的 ARM 範本](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建議您對虛擬機器系統管理員帳戶使用所產生的密碼。 請參閱本文的[必要條件](#prerequisites)一節。
 
-## <a name="verify-the-deployment"></a>驗證部署
+從 Cloud Shell，執行下列命令來擷取 VM 的 IP 位址：
 
-1. 在 Azure 入口網站中，選取 VM。
-1. 在 VM 概觀中，藉由選取 [按一下以複製]  來複製 IP 位址，然後將其貼到瀏覽器的索引標籤中。預設的 Internet Information Services (IIS) 歡迎使用頁面隨即開啟：
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+請將 IP 位址貼在網頁瀏覽器中。 預設的 Internet Information Services (IIS) 歡迎使用頁面隨即開啟：
 
 ![Internet Information Services 歡迎使用頁面](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

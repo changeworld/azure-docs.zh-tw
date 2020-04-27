@@ -210,7 +210,7 @@
       items:
         - name: 依計量設定警示
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: 依診斷日誌建立警示
+        - name: 依資源記錄設定警示
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: 設定封包擷取
       href: packet-capture.md

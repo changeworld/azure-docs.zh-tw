@@ -7,16 +7,18 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891589"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758176"
 ---
-# <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>教學課程：建立並將 Python 用戶端應用程式連線到您的 Azure IoT Central 應用程式 (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+*本文適用於解決方案建置人員和裝置開發人員。*
 
 本教學課程說明如何以裝置開發人員身分，將 Python 用戶端應用程式與您的 Azure IoT Central 應用程式連線。 Python 應用程式會模擬環境感應器裝置的行為。 您可使用範例「裝置功能模型」  ，在 IoT Central 中建立「裝置範本」  。 您可將檢視新增至裝置範本，讓操作員能與裝置互動。
 
@@ -303,7 +305,12 @@ python3 environmental_sensor.py
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解裝置功能模型以及如何建立自己的裝置範本，請繼續參閱操作指南：
+身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
+
+- 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
+- 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
+
+如果您想要繼續進行這套 IoT Central 教學課程並深入了解如何建置 IoT Central 解決方案，請參閱：
 
 > [!div class="nextstepaction"]
-> [定義新的 IoT 裝置類型](./howto-set-up-template.md)
+> [建立閘道裝置範本](./tutorial-define-gateway-device-type.md)

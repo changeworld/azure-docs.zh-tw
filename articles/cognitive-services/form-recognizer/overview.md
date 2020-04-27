@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399458"
+ms.locfileid: "81529887"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -92,7 +92,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 接收模型的輸入需求會略有不同。
 
-* 格式必須是 JPEG、PNG、BMP、PDF (文字或掃描) 或 TIFF。
+* 格式必須為 JPEG、PNG、PDF (文字或掃描) 或 TIFF。
 * 檔案大小必須小於 20 MB。
 * 影像維度必須介於 50 x 50 像素和 10000 x 10000 像素之間。
 * PDF 維度最多必須是 17 x 17 英寸，對應 Legal 或 A3 紙張大小 (或更小尺寸)。

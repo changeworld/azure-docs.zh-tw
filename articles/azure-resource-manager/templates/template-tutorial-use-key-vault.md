@@ -2,20 +2,20 @@
 title: 使用範本中的 Azure Key Vault
 description: 了解如何使用 Azure Key Vault 在 Resource Manager 範本部署期間傳遞安全的參數值
 author: mumian
-ms.date: 05/23/2019
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 440835f50d2ef9c03dabc7a66e8f162e3fa15b2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c33ad17927dae701e4201e76b7a75690c59dc374
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260695"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536689"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教學課程：在 ARM 範本部署中整合 Azure Key Vault
 
-了解如何從 Azure 金鑰保存庫擷取祕密，並且在部署 Azure Resource Manager (ARM) 範本時傳遞祕密作為參數。 您只參考其金鑰保存庫識別碼，因此參數值絕不會公開。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
+了解如何從 Azure 金鑰保存庫擷取祕密，並且在部署 Azure Resource Manager (ARM) 範本時傳遞祕密作為參數。 您只參考其金鑰保存庫識別碼，因此參數值絕不會公開。 您可以使用靜態識別碼或動態識別碼來參考金鑰保存庫秘密。 本教學課程使用靜態識別碼。 透過靜態識別碼方法，您可參考範本參數檔案 (而非範本檔案) 中的金鑰保存庫。 如需這兩種方法的詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
 
 在[設定資源部署順序](./template-tutorial-create-templates-with-dependent-resources.md)教學課程中，您建立了虛擬機器 (VM)。 您需要提供虛擬機器系統管理員的使用者名稱和密碼。 您可以不提供密碼，而是將密碼預先儲存在 Azure 金鑰保存庫，然後自訂範本以在部署期間從金鑰保存庫擷取密碼。
 
@@ -33,8 +33,6 @@ ms.locfileid: "81260695"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要：
@@ -49,7 +47,7 @@ ms.locfileid: "81260695"
 
 ## <a name="prepare-a-key-vault"></a>準備金鑰保存庫
 
-在本節中，您會建立金鑰保存庫，並在其中新增祕密，以便可以在部署範本時擷取祕密。 有許多方式可以建立金鑰保存庫。 在本教學課程中，您會使用 Azure PowerShell 來部署 [ARM 範本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)。 此範本會執行以下動作：
+在本節中，您會建立金鑰保存庫，並在其中新增祕密，以便可以在部署範本時擷取祕密。 有許多方式可以建立金鑰保存庫。 在本教學課程中，您會使用 Azure PowerShell 來部署 [ARM 範本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)。 此範本可執行兩個動作：
 
 * 在啟用 `enabledForTemplateDeployment` 屬性的情況下建立金鑰保存庫。 此屬性必須為 *true*，範本部署程序才能存取此金鑰保存庫中定義的祕密。
 * 將秘密新增至金鑰保存庫。 此祕密會儲存虛擬機器的系統管理員密碼。
@@ -72,14 +70,16 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
 > * 資源群組名稱是專案名稱，但附加了 **rg**。 若要更輕鬆地[清除您在本教學課程中所建立的資源](#clean-up-resources)，請在[部署下一個範本](#deploy-the-template)時使用相同的專案名稱和資源群組名稱。
 > * 祕密的預設名稱是 **vmAdminPassword**。 其會硬式編碼在範本中。
-> * 若要讓範本能夠擷取祕密，您必須為金鑰保存庫啟用稱為「為範本部署啟用對 Azure Resource Manager 的存取」的存取原則。 範本中會啟用此原則。 如需此存取原則的詳細資訊，請參閱[部署金鑰保存庫和祕密](./key-vault-parameter.md#deploy-key-vaults-and-secrets)。
+> * 若要讓範本能夠擷取祕密，您必須為金鑰保存庫啟用稱為「為範本部署啟用對 Azure Resource Manager 的存取」  的存取原則。 範本中會啟用此原則。 如需此存取原則的詳細資訊，請參閱[部署金鑰保存庫和祕密](./key-vault-parameter.md#deploy-key-vaults-and-secrets)。
 
-範本有一個稱為 *keyVaultId* 的輸出值。 部署虛擬機器後，記下識別碼值以供日後使用。 資源識別碼格式為：
+範本有一個稱為 *keyVaultId* 的輸出值。 在本教學課程中，您稍後將使用此識別碼搭配秘密名稱來擷取秘密值。 資源識別碼格式為：
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -108,13 +108,14 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     ```
 
 1. 選取 [開啟]  以開啟檔案。 案例與 [ 教學課程中所用的案例相同：建立具有相依資源的 ARM 範本](./template-tutorial-create-templates-with-dependent-resources.md)。
-   範本會定義五個資源：
+   此範本會定義六個資源：
 
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Storage/storageAccounts`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Network/publicIPAddresses`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Network/virtualNetworks`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Network/networkInterfaces`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Compute/virtualMachines`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
    自訂範本之前，最好先對範本有初步了解。
 
@@ -128,7 +129,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 ## <a name="edit-the-parameters-file"></a>編輯參數檔案
 
-您完全不必對範本檔案進行任何變更。
+使用靜態識別碼方法，您完全不必對範本檔案進行任何變更。 藉由設定範本參數檔案來擷取秘密值。
 
 1. 在 Visual Studio Code 中開啟 *azuredeploy.parameters.json* (如果尚未開啟)。
 1. 將 `adminPassword` 參數更新為：
@@ -145,7 +146,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     ```
 
     > [!IMPORTANT]
-    > 使用您在前一個程序中所建立的金鑰保存庫資源 ID 來取代 **id** 值。
+    > 使用您在前一個程序中所建立的金鑰保存庫資源 ID 來取代 **id** 值。 SecretName 會硬式編碼為 **vmAdminPassword**。  請參閱[準備金鑰保存庫](#prepare-a-key-vault)。
 
     ![整合金鑰保存庫與 Resource Manager 範本虛擬機器部署參數檔案](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 

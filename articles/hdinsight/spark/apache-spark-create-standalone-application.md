@@ -1,23 +1,23 @@
 ---
 title: 教學課程：適用於 Spark & IntelliJ 的 Scala Maven 應用程式 - Azure HDInsight
-description: 教學課程 - 建立以 Scala 撰寫的 Spark 應用程式，搭配 Apache Maven 作為建置系統，以及由 IntelliJ IDEA 提供、適用於 Scala 的現有 Maven 原型。
+description: 教學課程 - 建立以 Scala 撰寫的 Spark 應用程式，並以 Apache Maven 作為組建系統。 以及 IntelliJ IDEA 為 Scala 提供的現有 Maven 原型。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 02/28/2020
-ms.openlocfilehash: aa23b61967b27fefba863255721f4a0709ec02d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/17/2020
+ms.openlocfilehash: bc6c1049fc3a8f4f4d54e405f61801c916ecab61
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78204534"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640600"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教學課程：使用 IntelliJ 為 HDInsight 中的 Apache Spark 建立 Scala Maven 應用程式
 
-在本教學課程中，您將了解如何使用 [Apache Maven](https://maven.apache.org/) 與 IntelliJ IDEA 建立以 [Scala](https://www.scala-lang.org/) 撰寫的 [Apache Spark](./apache-spark-overview.md) 應用程式。 本文以 Apache Maven 作為建置系統，並且以 IntelliJ IDEA 為 Scala 提供的現有 Maven 原型作為起始點。  要在 IntelliJ IDEA 中建立 Scala 應用程式，必須執行下列步驟：
+在本教學課程中，您將了解如何使用 Apache Maven 與 IntelliJ IDEA 建立以 Scala 撰寫的 Apache Spark 應用程式。 本文會使用 Apache Maven 作為組建系統。 並從 IntelliJ IDEA 為 Scala 提供的現有 Maven 原型開始。  要在 IntelliJ IDEA 中建立 Scala 應用程式，必須執行下列步驟：
 
 * 以 Maven 做為建置系統。
 * 更新專案物件模型 (POM) 檔案，以解析 Spark 模組相依性。
@@ -49,11 +49,11 @@ ms.locfileid: "78204534"
 
 2. 在歡迎使用畫面上，瀏覽至 [設定]   > [外掛程式]  以開啟 [外掛程式]  視窗。
 
-    ![IntelliJ IDEA 啟用 Scala 外掛程式](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
+    ![「IntelliJ IDEA 啟用 Scala 外掛程式」](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
 
 3. 針對新視窗中精選的 Scala 外掛程式，選取 [安裝]  。  
 
-    ![IntelliJ IDEA 安裝 Scala 外掛程式](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
+    ![「IntelliJ IDEA 安裝 Scala 外掛程式」](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
 
 4. 在外掛程式安裝成功後，您必須重新啟動 IDE。
 
@@ -78,8 +78,8 @@ ms.locfileid: "78204534"
   	|  屬性   | 描述   |  
   	| ----- | ----- |  
   	|專案名稱| 輸入名稱。|  
-  	|專案&nbsp;位置| 輸入所要的位置以儲存您的專案。|
-  	|專案 SDK| 您第一次使用 IDEA 時，這會是空白的。  選取 [新增...]  並瀏覽至您的 JDK。|
+  	|專案&nbsp;位置| 輸入要儲存您專案的位置。|
+  	|專案 SDK| 您第一次使用 IDEA 時，此欄位會是空白的。  選取 [新增...]  並瀏覽至您的 JDK。|
   	|Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 如果 Spark 叢集版本早於 2.0，請選取 [Spark 1.x]  。 否則，請選取 [Spark 2.x]  。 此範例使用 **Spark 2.3.0 (Scala 2.11.8)** 。|
 
     ![IntelliJ IDEA 選取 Spark SDK](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
@@ -96,9 +96,9 @@ ms.locfileid: "78204534"
 
 4. 選取 [從原型建立]  核取方塊。  
 
-5. 從原型清單中，選取 **org.scala-tools.archetypes:scala-archetype-simple**。 此 archetype 會建立正確的目錄結構，並下載撰寫 Scala 程式所需的預設相依性。
+5. 從 archetype 清單中選取 [`org.scala-tools.archetypes:scala-archetype-simple` ]。 此 archetype 會建立正確的目錄結構，並下載撰寫 Scala 程式所需的預設相依性。
 
-    ![IntelliJ IDEA 建立 Maven 專案](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![「IntelliJ IDEA 建立 Maven 專案」](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. 選取 [下一步]  。
 
@@ -107,7 +107,7 @@ ms.locfileid: "78204534"
     - **GroupId：** com.microsoft.spark.example
     - **ArtifactId：** SparkSimpleApp
 
-    ![IntelliJ IDEA 建立 Maven 專案](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![「IntelliJ IDEA 建立 Maven 專案」](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. 選取 [下一步]  。
 
@@ -117,7 +117,7 @@ ms.locfileid: "78204534"
 
 11. 匯入專案後，從左窗格瀏覽至 **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example**。  以滑鼠右鍵按一下 **MySpec**，然後選取 [刪除...]  。應用程式並不需要此檔案。  在對話方塊中選取 [確定]  。
   
-12. 在後續步驟中，您會更新 **pom.xml**，以定義 Spark Scala 應用程式的相依性。 若要自動下載並解析這些相依性，您必須據以設定 Maven。
+12. 在稍後的步驟中，您會更新 **pom.xml**，以定義 Spark Scala 應用程式的相依性。 若要自動下載並解析這些相依性，您必須設定 Maven。
 
 13. 在 [檔案]  功能表中，選取 [設定]  以開啟 [設定]  視窗。
 
@@ -131,7 +131,7 @@ ms.locfileid: "78204534"
 
 17. 從左窗格瀏覽至 **src** > **main** > **scala** > **com.microsoft.spark.example**，然後按兩下 [應用程式]  以開啟 App.scala。
 
-18. 將現有的範例程式碼取代為下列程式碼，然後儲存變更。 此程式碼會從 HVAC.csv (所有 HDInsight Spark 叢集上均有提供) 讀取資料、擷取在第六個資料行中只有個位數的資料列，並將輸出寫入到叢集預設儲存體容器下的 **/HVACOut** 。
+18. 將現有的範例程式碼取代為下列程式碼，然後儲存變更。 此程式碼會從 HVAC.csv (所有 HDInsight Spark 叢集上均有提供) 讀取資料。 擷取在第六個資料行中只有一個數字的資料列。 以即將輸出寫入叢集預設儲存體容器下的 **/HVACOut**。
 
         package com.microsoft.spark.example
    
@@ -172,19 +172,19 @@ ms.locfileid: "78204534"
 
     儲存 pom.xml 的變更。
 
-22. 建立 .jar 檔案。 IntelliJ IDEA 允許將 JAR 建立為專案的構件。 請執行下列步驟：
+22. 建立 .jar 檔案。 IntelliJ IDEA 允許將 JAR 建立為專案的構件。 請執行下列步驟。
 
     1. 從 [檔案]  功能表，選取 [專案結構...]  。
 
     2. 從 [專案結構]  視窗，瀏覽至 [成品]   > **加號 +**  > [JAR]   > [從具有相依性的模組...]  。
 
-        ![IntelliJ IDEA 專案結構新增 jar](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
+        ![「IntelliJ IDEA 專案結構新增 jar」](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
 
     3. 在 [從模組建立 JAR]  視窗中，選取 [主要類別]  文字方塊中的資料夾圖示。
 
     4. 在 [選取主要類別]  視窗中，選取依預設出現的類別，然後選取 [確定]  。
 
-        ![IntelliJ IDEA 專案結構選取類別](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
+        ![「IntelliJ IDEA 專案結構選取類別」](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
 
     5. 在 [從模組建立 JAR]  視窗中，確定已選取 [擷取至目標 JAR]  選項，然後選取 [確定]  。  此設定會建立具有所有相依性的單一 JAR。
 
@@ -192,9 +192,9 @@ ms.locfileid: "78204534"
 
     6. [輸出配置]  索引標籤會列出所有納入 Maven 專案中的 jar。 您可以選取並刪除 Scala 應用程式未直接依存的 jar。 對於您在此處建立的應用程式，您可以移除最後一個 (**SparkSimpleApp 編譯輸出**) 以外的所有項目。 選取要刪除的 jar，然後選取負號 **-** 。
 
-        ![IntelliJ IDEA 專案結構刪除輸出](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
+        ![「IntelliJ IDEA 專案結構刪除輸出」](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
-        務必選取 [包含在專案建置中]  核取方塊，以確保在每次建置或更新專案時都會建立 jar。 依序選取 [套用]  和 [確定]  。
+        確定已選取 [包含在專案組建中]  核取方塊。 此選項可確保在每次建立或更新專案時都會建立 jar。 依序選取 [套用]  和 [確定]  。
 
     7. 若要建立 jar，請瀏覽至 [建置]   > [建置成品]   > [建置]  。 專案會在大約 30 秒內編譯。  輸出 jar 會建立在 **\out\artifacts** 下。
 
@@ -204,7 +204,7 @@ ms.locfileid: "78204534"
 
 若要在叢集上執行應用程式，您可以使用下列方法：
 
-* **將應用程式 jar 複製到與叢集相關聯的 Azure 儲存體 Blob**。 您可以使用命令列公用程式 [**AzCopy**](../../storage/common/storage-use-azcopy.md) 來執行此動作。 另外也有很多用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
+* **將應用程式 jar 複製到與叢集相關聯的 Azure 儲存體 Blob**。 您可以使用命令列公用程式 **AzCopy** 來執行此動作。 另外也有很多用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
 
 * **使用 Apache Livy 從遠端提交應用程式作業至** Spark 叢集。 HDInsight 上的 Spark 叢集包含會公開 REST 端點以從遠端提交 Spark 作業的 Livy。 如需詳細資訊，請參閱 [搭配 HDInsight 上的 Spark 叢集利用 Apache Livy 遠端提交 Apache Spark 作業](apache-spark-livy-rest-interface.md)。
 
@@ -222,7 +222,7 @@ ms.locfileid: "78204534"
 
 1. 選取 [刪除]  。 選取 [是]  。
 
-![HDInsight Azure 入口網站刪除叢集](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "刪除 HDInsight 叢集")
+![「HDInsight Azure 入口網站刪除叢集」](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "刪除 HDInsight 叢集")
 
 ## <a name="next-step"></a>後續步驟
 

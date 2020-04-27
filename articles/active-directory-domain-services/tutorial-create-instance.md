@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7652bacdebec19f8a5d55874cfb903e8748cef4d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474209"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639711"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教學課程：建立並設定 Azure Active Directory Domain Services 執行個體
 
@@ -157,7 +157,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 > [!TIP]
 > 如果您的 Azure AD 租用戶同時具有僅限雲端使用者以及來自您內部部署 AD 的使用者，則需要完成這兩組步驟。
 
-對於僅限雲端的使用者帳戶，使用者必須變更其密碼，才能使用 Azure AD DS。 此密碼變更程序會在 Azure AD 中產生並儲存 Kerberos 和 NTLM 驗證的密碼雜湊。 您可以針對租用戶中所有需要使用 Azure AD DS 的使用者來使其密碼過期 (這會在下一次登入時強制變更密碼)，或者指示他們手動變更其密碼。 在本教學課程中，我們將手動變更使用者密碼。
+對於僅限雲端的使用者帳戶，使用者必須變更其密碼，才能使用 Azure AD DS。 此密碼變更程序會在 Azure AD 中產生並儲存 Kerberos 和 NTLM 驗證的密碼雜湊。 在密碼變更前，帳戶不會從 Azure AD 同步處理到 Azure AD DS。 針對租用戶中所有需要使用 Azure AD DS 的雲端使用者來使其密碼過期 (這會在下一次登入時強制變更密碼)，或者指示雲端使用者手動變更其密碼。 在本教學課程中，我們將手動變更使用者密碼。
 
 Azure AD 租用戶必須先[設定為可進行自助式密碼重設][configure-sspr]，才能讓使用者重設他們的密碼。
 

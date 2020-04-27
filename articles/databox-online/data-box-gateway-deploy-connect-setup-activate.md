@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79087946"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686870"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教學課程：連線、設定、啟動 Azure 資料箱閘道
 
@@ -41,7 +41,7 @@ ms.locfileid: "79087946"
 
 1. 開啟瀏覽器視窗，然後在以下位置存取裝置的本機 Web UI：
    
-   [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
+   https:\//ip-address-of-network-interface
    
    請使用您在上一個教學課程中記下的連線 URL。 您會看到錯誤或警告指出網站的安全性憑證有問題。
 

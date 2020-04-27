@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad06d2f695109866bab60502a67f0d2c2f425477
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4280bd1385bbf936dc9188df259ca1a4b4a62d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68480261"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870394"
 ---
 # <a name="tutorial-integrate-cognidox-with-azure-active-directory"></a>教學課程：整合 Cognidox 與 Azure Active Directory
 
@@ -103,7 +103,7 @@ ms.locfileid: "68480261"
 
     | 名稱 | 命名空間  |  轉換 | 參數 1 |
     | ---------------| --------------- | --------- |
-    | wanshort | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
+    | wanshort | http:\//appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。

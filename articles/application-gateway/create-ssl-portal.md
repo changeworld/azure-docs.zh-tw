@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312383"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024486"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 TLS 終止的應用程式閘道
 
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出：
+使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 搭配系統所傳回的指紋，以將 pfx 檔案從憑證匯出。 請確定您的密碼長度為 4-12 個字元：
 
-> [!NOTE]
-> 請勿在 .pfx 檔案密碼中使用任何特殊字元。 僅支援英數位元。
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ Export-PfxCertificate `
 
    - **PFX 憑證檔案** - 流覽至您稍早建立的 c:\appgwcert.pfx 檔案並加以選取。
    - **憑證名稱** - 輸入 mycert1*mycert1* 作為憑證的名稱。
-   - **密碼** - 針對密碼鍵入 *Azure123456*。
+   - **密碼** - 輸入您的密碼。
   
         接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
 
@@ -194,10 +192,10 @@ Export-PfxCertificate `
     - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
     - **虛擬機器名稱**：輸入 myVM  作為虛擬機器的名稱。
     - **使用者名稱**：輸入 azureuser  作為系統管理員使用者名稱。
-    - **密碼**：針對系統管理員密碼輸入 *Azure123456*。
-4. 接受其他預設值，然後選取 [下一步：  磁碟]。  
-5. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
-6. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。
+    - **密碼**：輸入系統管理員帳戶的密碼。
+1. 接受其他預設值，然後選取 [下一步：  磁碟]。  
+2. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
+3. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。
 
    「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
 1. 在 [管理]  索引標籤上，將 [開機診斷]  設為 [關閉]  。 接受其他預設值，然後選取 [檢閱 + 建立]  。

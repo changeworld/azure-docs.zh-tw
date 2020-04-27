@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: diberry
-ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: d59b7ebd1376d0bee10482cfe5faac1c53d1bde0
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76987753"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733306"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 * [JDK SE](https://aka.ms/azure-jdks) (英文) (Java 開發套件，標準版)
 * [Visual Studio Code](https://code.visualstudio.com/) 或您最愛的 IDE
-* 公用應用程式識別碼：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 
 ## <a name="create-luis-runtime-key-for-predictions"></a>建立預測的 LUIS 執行階段金鑰
 

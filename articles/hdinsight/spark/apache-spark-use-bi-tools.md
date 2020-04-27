@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/21/2020
+ms.openlocfilehash: dd0b4d1b0998bd4b13a17fb8345b87924bc27e1d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251960"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869980"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教學課程：在 HDInsight 中使用 Power BI 來分析 Apache Spark 資料
 
-在本教學課程中，了解如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 中將 Apache Spark 叢集中的資料視覺化。
+在本教學課程中，了解如何使用 Microsoft Power BI 在 Azure HDInsight 中將 Apache Spark 叢集中的資料視覺化。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -70,9 +70,6 @@ ms.locfileid: "78251960"
 ### <a name="create-a-report-in-power-bi-desktop"></a>在 Power BI Desktop 中建立報表
 
 使用 Spark 的第一步是連接到 Power BI Desktop 中的叢集，從叢集載入資料，並根據該資料建立基本視覺效果。
-
-> [!NOTE]  
-> 本文中所示範的連接器目前為預覽版本。 請透過 [Power BI 社群](https://community.powerbi.com/) \(英文\) 網站或 [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) \(英文\) 提供您的意見反應。
 
 1. 開啟 Power BI Desktop。 關閉啟動顯示畫面 (如果它已開啟)。
 
@@ -180,7 +177,7 @@ Power BI 服務可讓您跨組織共用報表和儀表板。 在本節中，您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 中將 Apache Spark 叢集中的資料視覺化。 前進到下一篇文章，以查看您如何建立機器學習應用程式。
+在本教學課程中，您已了解如何使用 Microsoft Power BI 在 Azure HDInsight 中將 Apache Spark 叢集中的資料視覺化。 前進到下一篇文章，以查看您如何建立機器學習應用程式。
 
 > [!div class="nextstepaction"]
 > [建立機器學習應用程式](./apache-spark-ipython-notebook-machine-learning.md)

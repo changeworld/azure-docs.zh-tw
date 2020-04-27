@@ -1,25 +1,25 @@
 ---
-title: CLI：將 SSL 憑證上傳和繫結至應用程式
-description: 了解如何使用 Azure CLI 將 App Service 應用程式的部署和管理自動化。 此範例說明如何將自訂 SSL 憑證繫結至應用程式。
+title: CLI：將 TLS/SSL 憑證上傳和繫結至應用程式
+description: 了解如何使用 Azure CLI 將 App Service 應用程式的部署和管理自動化。 此範例說明如何將自訂 TLS/SSL 憑證繫結至應用程式。
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d519ae31359890430c3e0f690e51d95acfacf1ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d1775f3af390bb71b6895dc6d43c5ae574371aef
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80058758"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537656"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>使用 CLI 將自訂 SSL 憑證繫結至 App Service 應用程式
+# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>使用 CLI 將自訂 TLS/SSL 憑證繫結至 App Service 應用程式
 
-此範例指令碼會在 App Service 中建立應用程式及其相關資源，然後將自訂網域名稱的 SSL 憑證與之繫結。 針對此範例，您需要：
+此範例指令碼會在 App Service 中建立應用程式及其相關資源，然後將自訂網域名稱的 TLS/SSL 憑證與之繫結。 針對此範例，您需要：
 
 * 存取網域註冊機構的 DNS 設定頁面。
-* 對於想要上傳並繫結的 SSL 憑證，您具備有效的 .PFX 檔案和其密碼。
+* 對於想要上傳並繫結的 TLS/SSL 憑證，您具備有效的 .PFX 檔案和其密碼。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "80058758"
 
 ## <a name="sample-script"></a>範例指令碼
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to an app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -43,8 +43,8 @@ ms.locfileid: "80058758"
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 建立 App Service 應用程式。 |
 | [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | 將自訂網域對應至 App Service 應用程式。 |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | 將 SSL 憑證上傳至 App Service 應用程式。 |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | 將上傳的 SSL 憑證繫結至 App Service 應用程式。 |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | 將 TLS/SSL 憑證上傳至 App Service 應用程式。 |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | 將上傳的 TLS/SSL 憑證繫結至 App Service 應用程式。 |
 
 ## <a name="next-steps"></a>後續步驟
 

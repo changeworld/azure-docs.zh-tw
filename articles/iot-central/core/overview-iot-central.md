@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80157461"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025232"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -60,7 +60,7 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 - 雲端式應用程式，可接收來您的裝置的遙測，並可讓您管理這些裝置。
 - 多個裝置，這些裝置會執行已連線到雲端式應用程式的自訂程式碼。
 
-您可以快速部署新的 IoT Central 應用程式，然後在瀏覽器中自訂它來滿足您的特定需求。 您可以從一般的「應用程式範本」  開始，或使用其中一個專注於特定業界、適用於[零售](../retail/overview-iot-central-retail-pnp.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[醫療保健](../healthcare/overview-iot-central-healthcare.md)的應用程式範本來開始。
+您可以快速部署新的 IoT Central 應用程式，然後在瀏覽器中自訂它來滿足您的特定需求。 您可以從一般的「應用程式範本」  開始，或使用其中一個專注於特定業界、適用於[零售](../retail/overview-iot-central-retail.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[醫療保健](../healthcare/overview-iot-central-healthcare.md)的應用程式範本來開始。
 
 身為解決方案建置者，您會使用 Web 型工具，為連線到您應用程式的裝置建立「裝置範本」  。 裝置範本是定義某種裝置之特性和行為的藍圖，例如：
 
@@ -197,7 +197,7 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已大致了解 IoT Central，以下是建議的後續步驟：
+既然您已大致了解 IoT Central，以下是一些建議的後續步驟：
 
 - 了解可用於[建立 IoT 解決方案的 Azure 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
 - 熟悉 [Azure IoT 中心 UI](overview-iot-central-tour.md)。
@@ -205,3 +205,5 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 - 深入了解 [IoT 隨插即用 (預覽)](../../iot-pnp/overview-iot-plug-and-play.md)。
 - 了解如何[讓 Azure IoT Edge 裝置連線](./tutorial-add-edge-as-leaf-device.md)。
 - 深入了解 [Azure IoT 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
+
+如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的下一個步驟是[建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)。

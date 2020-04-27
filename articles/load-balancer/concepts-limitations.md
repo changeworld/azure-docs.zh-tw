@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064285"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768262"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer 的元件與限制
 Azure Load Balancer 包含數個用於運作的主要元件。  您可以透過 Azure 入口網站、Azure CLI 或 Azure PowerShell，在您的訂用帳戶中設定這些元件。  
@@ -171,6 +171,8 @@ Load Balancer 為 TCP 和 UDP 應用程式提供下列基本功能：
 
 但完整的案例組態可能稍有不同，視 SKU 而定。 當文章僅適用於特定 SKU 時，負載平衡器文件才會加以標注。 若要比較並了解其中的差異，請參閱下表。 如需詳細資訊，請參閱 [Azure Standard Load Balancer 概觀](load-balancer-standard-overview.md)。
 
+若要將 Basic Load Balancer 升級為 Standard Load Balancer，請參閱[升級 Basic Load Balancer](upgrade-basic-standard.md)。
+
 >[!NOTE]
 > Microsoft 建議使用 Standard Load Balancer。
 獨立 VM、可用性設定組和虛擬機器擴展集都只能和一個 SKU 連線，永遠不能和兩者同時連線。 與公用 IP 位址搭配使用時，Load Balancer 和公用 IP 位址的 SKU 必須相符。 Load Balancer 和公用 IP 的 SKU 不可變動。
@@ -207,6 +209,7 @@ Load Balancer 為 TCP 和 UDP 應用程式提供下列基本功能：
 
 ## <a name="next-steps"></a>後續步驟
 
+- 請參閱[將 Basic Load Balancer](upgrade-basic-standard.md) 已將 Basic Load Balancer 升級為 Standard Load Balancer。
 - 請參閱[建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md)，以開始使用 Load Balancer：先建立 Load Balancer，再建立安裝好自訂 IIS 擴充功能的 VM，並對 VM 之間的 Web 應用程式進行負載平衡。
 - 深入了解 [Azure Load Balancer](load-balancer-overview.md)。
 - 了解如何使用[標準 Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。

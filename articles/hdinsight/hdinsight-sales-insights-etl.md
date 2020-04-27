@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
-ms.date: 03/24/2020
-ms.openlocfilehash: a4df99c45b27ad662133010422cae2e30e36e584
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.date: 04/15/2020
+ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80247260"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535225"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中建立端對端資料管線以衍生 Sales Insights
 
@@ -27,23 +27,28 @@ ms.locfileid: "80247260"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure CLI。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* Azure CLI - 至少為 2.2.0 版。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+
+* jq，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
 * [Azure 內建角色 - 擁有者](../role-based-access-control/built-in-roles.md)的成員。
 
-* [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331)，以在本教學課程結束時將商業深入解析視覺化。
+* 如果使用 PowerShell 來觸發 Data Factory 管線，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
+
+* [Power BI Desktop](https://aka.ms/pbiSingleInstaller)，以在本教學課程結束時將商業深入解析視覺化。
 
 ## <a name="create-resources"></a>建立資源
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>複製含有指令碼和資料的存放庫
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 Azure 訂用帳戶。 如果您打算使用 Azure Cloud Shell，則選取程式碼區塊右上角的 [試試看]  。 或者，請輸入以下命令：
 
-1. 從頂端功能表列開啟 Azure Cloud Shell。 如果 Cloud Shell 發出提示，請選取您用來建立檔案共用的訂用帳戶。
+    ```azurecli-interactive
+    az login
 
-   ![開啟 Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
-
-1. 在 [選取環境]  下拉式功能表中，選擇 [Bash]  。
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
 1. 確定您是 Azure 角色[擁有者](../role-based-access-control/built-in-roles.md)的成員。 請將 `user@contoso.com` 取代為您的帳戶，然後輸入下列命令：
 
@@ -55,29 +60,7 @@ ms.locfileid: "80247260"
 
     若未傳回任何記錄，表示您不是成員，而無法完成本教學課程。
 
-1. 輸入下列命令以列出您的訂用帳戶：
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    請記下您將用於此專案之訂用帳戶的識別碼。
-
-1. 設定您將用於此專案的訂用帳戶。 請將 `SUBSCRIPTIONID` 取代為實際值，然後輸入下列命令。
-
-    ```azurecli
-    subscriptionID="SUBSCRIPTIONID"
-    az account set --subscription $subscriptionID
-    ```
-
-1. 為專案建立新的資源群組。 將 `RESOURCEGROUP` 取代為所需的名稱，然後輸入下列命令。
-
-    ```azurecli
-    resourceGroup="RESOURCEGROUP"
-    az group create --name $resourceGroup --location westus
-    ```
-
-1. 從 [HDInsight Sales Insights ETL 存放庫](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)下載此教學課程的資料和指令碼。  輸入下列命令：
+1. 從 [HDInsight Sales Insights ETL 存放庫](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)下載此教學課程的資料和指令碼。 輸入下列命令：
 
     ```bash
     git clone https://github.com/Azure-Samples/hdinsight-sales-insights-etl.git
@@ -98,11 +81,19 @@ ms.locfileid: "80247260"
     chmod +x scripts/*.sh
     ````
 
-1. 執行指令碼。 請將 `RESOURCE_GROUP_NAME` 和 `LOCATION` 取代為相關值，然後輸入下列命令：
+1. 設定資源群組的變數。 以現有或新的資源群組名稱取代 `RESOURCE_GROUP_NAME`，然後輸入以下命令：
 
     ```bash
-    ./scripts/resources.sh RESOURCE_GROUP_NAME LOCATION
+    resourceGroup="RESOURCE_GROUP_NAME"
     ```
+
+1. 執行指令碼。 將 `LOCATION` 取代為所需的值，然後輸入以下命令：
+
+    ```bash
+    ./scripts/resources.sh $resourceGroup LOCATION
+    ```
+
+    如果您不確定要指定哪個區域，您可以使用 [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) 命令擷取訂用帳戶所支援的區域清單。
 
     此命令會部署下列資源：
 
@@ -115,49 +106,26 @@ ms.locfileid: "80247260"
 
 建立叢集可能需要約 20 分鐘的時間。
 
-`resources.sh` 指令碼包含下列命令。 如果您已執行上一個步驟中的指令碼，則不需要執行這些命令。
-
-* `az group deployment create` - 此命令會使用 Azure Resource Manager 範本 (`resourcestemplate.json`)，以所需的設定建立指定的資源。
-
-    ```azurecli
-    az group deployment create --name ResourcesDeployment \
-        --resource-group $resourceGroup \
-        --template-file resourcestemplate.json \
-        --parameters "@resourceparameters.json"
-    ```
-
-* `az storage blob upload-batch` - 此命令也會使用下列命令，將銷售資料 .csv 檔案上傳至新建立的 Blob 儲存體帳戶中：
-
-    ```azurecli
-    az storage blob upload-batch -d rawdata \
-        --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
-    ```
-
-叢集的 SSH 存取所使用的預設密碼為 `Thisisapassword1`。 如果您想要變更密碼，請移至 `resourcesparameters.json` 檔案，然後變更 `sparksshPassword`、`sparkClusterLoginPassword`、`llapClusterLoginPassword` 和 `llapsshPassword` 參數的密碼。
+叢集的 SSH 存取所使用的預設密碼為 `Thisisapassword1`。 如果您想要變更密碼，請移至 `./templates/resourcesparameters_remainder.json` 檔案，然後變更 `sparksshPassword`、`sparkClusterLoginPassword`、`llapClusterLoginPassword` 和 `llapsshPassword` 參數的密碼。
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>驗證部署並收集資源資訊
 
-1. 如果您想要檢查部署的狀態，請移至 Azure 入口網站上的資源群組。 選取 [設定]  底下的 [部署]  。 選取部署的名稱 `ResourcesDeployment`。 在此，您可以看到已成功部署的資源，以及仍在部署中的資源。
+1. 如果您想要檢查部署的狀態，請移至 Azure 入口網站上的資源群組。 在 [設定]  下，選取 [部署]  ，然後選取您的部署。 在此，您可以看到已成功部署的資源，以及仍在部署中的資源。
 
 1. 若要檢視叢集的名稱，請輸入下列命令：
 
-    ```azurecli
-    sparkCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'spark')].{clusterName:name}" -o tsv)
+    ```bash
+    sparkClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.sparkClusterName.value')
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
 
-    llapCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'llap')].{clusterName:name}" -o tsv)
-
-    echo $sparkCluster
-    echo $llapCluster
+    echo "Spark Cluster" $sparkClusterName
+    echo "LLAP cluster" $llapClusterName
     ```
 
 1. 若要檢視 Azure 儲存體帳戶和存取金鑰，請輸入下列命令：
 
     ```azurecli
-    blobStorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.blobStorageName.value')
+    blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
 
     blobKey=$(az storage account keys list \
         --account-name $blobStorageName \
@@ -171,7 +139,7 @@ ms.locfileid: "80247260"
 1. 若要檢視 Data Lake Storage Gen2 帳戶和存取金鑰，請輸入下列命令：
 
     ```azurecli
-    ADLSGen2StorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+    ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
 
     adlsKey=$(az storage account keys list \
         --account-name $ADLSGen2StorageName \
@@ -191,10 +159,13 @@ Azure Data Factory 是有助於自動執行 Azure Pipelines 的工具。 它並�
 * 第一個活動會將資料從 Azure Blob 儲存體複製到 Data Lake Storage Gen 2 儲存體帳戶，以模擬資料內嵌。
 * 第二個活動會轉換 Spark 叢集中的資料。 指令碼會移除不必要的資料行來轉換資料。 它也會附加可計算單一交易所產生之收益的新資料行。
 
-若要設定您的 Azure Data Factory 管線，請執行下列命令：
+若要設定您的 Azure Data Factory 管線，請執行以下命令。  您仍然應該位於 `hdinsight-sales-insights-etl` 目錄。
 
 ```bash
-./scripts/adf.sh
+blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
+ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+
+./scripts/adf.sh $resourceGroup $ADLSGen2StorageName $blobStorageName
 ```
 
 此指令碼會執行下列作業︰
@@ -205,33 +176,45 @@ Azure Data Factory 是有助於自動執行 Azure Pipelines 的工具。 它並�
 1. 取得 Data Lake Storage Gen2 和 Blob 儲存體帳戶的儲存體金鑰。
 1. 建立另一個資源部署，以建立 Azure Data Factory 管線及其相關聯的連結服務和活動。 它會將儲存體金鑰當作參數傳至範本檔案，讓連結的服務可正確存取儲存體帳戶。
 
-Data Factory 管線是透過下列命令部署的：
-
-```azurecli-interactive
-az group deployment create --name ADFDeployment \
-    --resource-group $resourceGroup \
-    --template-file adftemplate.json \
-    --parameters "@adfparameters.json"
-```
-
 ## <a name="run-the-data-pipeline"></a>執行資料管線
 
 ### <a name="trigger-the-data-factory-activities"></a>觸發 Data Factory 活動
 
 您在 Data Factory 管線中建立的第一個活動會將資料從 Blob 儲存體移至 Data Lake Storage Gen2。 第二個活動會在資料上套用 Spark 轉換，並將轉換後的 .csv 檔案儲存到新的位置。 整個管線可能需要幾分鐘的時間才能完成。
 
+若要擷取 Data Factory 名稱，請輸入以下命令：
+
+```azurecli
+cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
+```
+
 若要觸發管線，您可以執行下列其中一項：
 
-* 在 PowerShell 中觸發 Data Factory 管線。 請將 `DataFactoryName` 取代為實際的 Data Factory 名稱，然後執行下列命令：
+* 在 PowerShell 中觸發 Data Factory 管線。 以適當的值取代 `RESOURCEGROUP` 和 `DataFactoryName`，然後執行下列命令：
 
     ```powershell
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "CopyPipeline_k8z"
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "sparkTransformPipeline"
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+
+    $resourceGroup="RESOURCEGROUP"
+    $dataFactory="DataFactoryName"
+
+    $pipeline =Invoke-AzDataFactoryV2Pipeline `
+        -ResourceGroupName $resourceGroup `
+        -DataFactory $dataFactory `
+        -PipelineName "IngestAndTransform"
+
+    Get-AzDataFactoryV2PipelineRun `
+        -ResourceGroupName $resourceGroup  `
+        -DataFactoryName $dataFactory `
+        -PipelineRunId $pipeline
     ```
+
+    視需要重新執行 `Get-AzDataFactoryV2PipelineRun` 以監視進度。
 
     Or
 
-* 開啟 Data Factory，然後選取 [撰寫和監視]  。 從入口網站觸發複製管線和 Spark 管線。 如需有關透過入口網站觸發管線的詳細資訊，請參閱[使用 Azure Data Factory 在 HDInsight 中建立隨選 Apache Hadoop 叢集](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)。
+* 開啟 Data Factory，然後選取 [撰寫和監視]  。 從入口網站觸發 `IngestAndTransform` 管線。 如需有關透過入口網站觸發管線的詳細資訊，請參閱[使用 Azure Data Factory 在 HDInsight 中建立隨選 Apache Hadoop 叢集](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)。
 
 若要確認管線是否已執行，您可以採取下列其中一個步驟：
 
@@ -242,37 +225,48 @@ az group deployment create --name ADFDeployment \
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>在互動式查詢叢集上建立資料表，以在 Power BI 上檢視資料
 
-1. 使用 SCP 將 `query.hql` 檔案複製到 LLAP 叢集。 請將 `LLAPCLUSTERNAME` 取代為實際名稱，然後輸入下列命令：
+1. 使用 SCP 將 `query.hql` 檔案複製到 LLAP 叢集。 輸入命令：
 
     ```bash
-    scp scripts/query.hql sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
+    scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-2. 使用 SSH 存取 LLAP 叢集。 請將 `LLAPCLUSTERNAME` 取代為實際名稱，然後輸入下列命令。 如果您並未改變 `resourcesparameters.json` 檔案，則密碼為 `Thisisapassword1`。
+    提醒：預設密碼為 `Thisisapassword1`。
+
+1. 使用 SSH 存取 LLAP 叢集。 輸入命令：
 
     ```bash
-    ssh sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@$llapClusterName-ssh.azurehdinsight.net
     ```
 
-3. 使用下列命令執行指令碼：
+1. 使用下列命令執行指令碼：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f query.hql
     ```
 
-此指令碼會在互動式查詢叢集上建立受控資料表，供您從 Power BI 存取。
+    此指令碼會在互動式查詢叢集上建立受控資料表，供您從 Power BI 存取。
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>從銷售資料建立 Power BI 儀表板
 
 1. 開啟 Power BI Desktop。
-1. 選取 [取得資料]  。
-1. 搜尋 **HDInsight 互動式查詢叢集**。
-1. 在該處貼上您叢集的 URI。 其格式應該是 `https://LLAPCLUSTERNAME.azurehdinsight.net`。
 
-   為資料庫輸入 `default`。
-1. 輸入您用來存取叢集的使用者名稱和密碼。
+1. 從功能表，瀏覽至 [取得資料]   > [其他...]   > [Azure]   > [HDInsight 互動式查詢]  。
 
-資料載入後，您可以使用您想要建立的儀表板進行試驗。 請參閱下列連結，以了解如何開始使用 Power BI 儀表板：
+1. 選取 [連接]  。
+
+1. 從 [HDInsight 互動式查詢]  對話方塊：
+    1. 在 [伺服器]  文字方塊中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式輸入 LLAP 叢集的名稱。
+    1. 在 [資料庫]  文字方塊中，輸入 `default`。
+    1. 選取 [確定]  。
+
+1. 從 [AzureHive]  對話方塊：
+    1. 在 [使用者名稱]  文字方塊中，輸入 `admin`。
+    1. 在 [密碼]  文字方塊中，輸入 `Thisisapassword1`。
+    1. 選取 [連接]  。
+
+1. 從 [導覽器]  ，選取 `sales` 和/或 `sales_raw` 以預覽資料。 資料載入後，您可以使用您想要建立的儀表板進行試驗。 請參閱下列連結，以了解如何開始使用 Power BI 儀表板：
 
 * [Power BI 設計工具的儀表板簡介](https://docs.microsoft.com/power-bi/service-dashboards)
 * [教學課程：開始使用 Power BI 服務](https://docs.microsoft.com/power-bi/service-get-started)
@@ -281,9 +275,18 @@ az group deployment create --name ADFDeployment \
 
 如果您不打算繼續使用此應用程式，請使用下列命令刪除所有資源，以免產生相關費用。
 
-```azurecli-interactive
-az group delete -n $resourceGroup
-```
+1. 若要移除資源群組，請輸入以下命令：
+
+    ```azurecli
+    az group delete -n $resourceGroup
+    ```
+
+1. 若要移除服務主體，請輸入以下命令：
+
+    ```azurecli
+    servicePrincipal=$(cat serviceprincipal.json | jq -r '.name')
+    az ad sp delete --id $servicePrincipal
+    ```
 
 ## <a name="next-steps"></a>後續步驟
 

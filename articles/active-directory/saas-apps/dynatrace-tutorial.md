@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 275215a69f97d93a1b1741a8fa8f3ca752c8c9ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968713"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758975"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Dynatrace 整合
 
@@ -140,7 +140,7 @@ ms.locfileid: "72968713"
 
 ## <a name="configure-dynatrace-sso"></a>設定 Dynatrace SSO
 
-若要在 **Dynatrace** 端設定單一登入，您必須將從 Azure 入口網站下載的**同盟中繼資料 XML** 檔案和複製的適當 URL 傳送給 [Dynatrace 支援小組](https://www.dynatrace.com/services-support/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Dynatrace** 端設定單一登入，您必須將從 Azure 入口網站下載的**同盟中繼資料 XML** 檔案和複製的適當 URL 傳送給 [Dynatrace](https://www.dynatrace.com/support/help/shortlink/users-sso-hub)。 您可以遵循 Dynatrace 網站上的指示來設定兩端的 SAML SSO 連線。
 
 ### <a name="create-dynatrace-test-user"></a>建立 Dynatrace 測試使用者
 

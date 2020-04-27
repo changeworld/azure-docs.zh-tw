@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60196490"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 資料目錄中從 Azure Data Lake Storage Gen1 註冊資料
 在此文章中，您將了解如何使用 Azure 資料目錄來整合 Azure Data Lake Storage Gen1，使您的資料與資料目錄整合，讓使用者可在組織中進行搜尋。 如需編目資料的詳細資訊，請參閱 [Azure 資料目錄](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解您可以使用資料目錄的案例，請參閱 [Azure 資料目錄常見案例](../data-catalog/data-catalog-common-scenarios.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 針對 Data Lake Storage Gen1 **啟用您的 Azure 訂用帳戶**。 請參閱 [指示](data-lake-store-get-started-portal.md)。
-* **資料存儲湖存儲第 1 代帳戶**。 使用 Azure 門戶，按照[Azure 資料湖存儲第 1 代開始](data-lake-store-get-started-portal.md)的說明進行操作。 在此教學課程中，會建立名為 **datacatalogstore** 的 Data Lake Storage Gen1 帳戶。
+* **Data Lake Storage Gen1 帳戶**。 請遵循[使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)中的指示。 在此教學課程中，會建立名為 **datacatalogstore** 的 Data Lake Storage Gen1 帳戶。
 
     一旦您建立帳戶之後，請將範例資料集上傳給它。 在本教學課程中，讓我們上傳 **Azure Data Lake Git 儲存機制** 中 [AmbulanceData](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)資料夾下的所有 .csv 檔案。 您可以使用各種用戶端，例如： [Azure 儲存體總管](https://storageexplorer.com/)，將資料上傳至 Blob 容器。
 * **Azure 資料目錄**。 您的組織必須為組織建立 Azure 資料目錄。 每個組織只允許有一個目錄。
@@ -41,7 +41,7 @@ ms.locfileid: "60196490"
 
     ![註冊資料來源](./media/data-lake-store-with-data-catalog/register-data-source.png "註冊資料來源")
 1. 在下一個頁面上，按一下 [啟動應用程式] ****。 這樣會下載電腦上的應用程式資訊清單檔案。 按兩下此資訊清單檔案以啟動應用程式。
-1. 在"歡迎"頁上，按一下"**登錄**"並輸入憑據。
+1. 在 [歡迎使用] 頁面上，按一下 [登**入**]，然後輸入您的認證。
 
     ![歡迎使用畫面](./media/data-lake-store-with-data-catalog/welcome.screen.png "歡迎使用畫面")
 1. 在 [選取資料來源] 頁面上，選取 [Azure Data Lake Store]****，然後按一下 [下一步]****。
@@ -65,7 +65,7 @@ ms.locfileid: "60196490"
 
     ![檢視資料結構](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "檢視資料結構")
 
-    按一下 [註冊]****
+    按一下 [註冊]  。
 1. 下列螢幕擷取畫面表示已成功在資料目錄中註冊資料。
 
     ![註冊完成](./media/data-lake-store-with-data-catalog/registration-complete.png "檢視資料結構")

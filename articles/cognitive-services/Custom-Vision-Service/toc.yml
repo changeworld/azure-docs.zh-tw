@@ -13,30 +13,14 @@
       items:
         - name: 使用 Web 入口網站
           href: getting-started-build-a-classifier.md
-        - name: 使用 .NET SDK
-          href: csharp-tutorial.md
-        - name: 使用 Python SDK
-          href: python-tutorial.md
-        - name: 使用 Java SDK
-          href: java-tutorial.md
-        - name: 使用 Node.js SDK
-          href: node-tutorial.md
-        - name: 使用 Go SDK
-          href: go-tutorial.md
+        - name: 使用自訂視覺 SDK
+          href: quickstarts/image-classification.md
     - name: 建置物件偵測器
       items:
         - name: 使用 Web 入口網站
           href: get-started-build-detector.md
-        - name: 使用 .NET SDK
-          href: csharp-tutorial-od.md
-        - name: 使用 Python SDK
-          href: python-tutorial-od.md
-        - name: 使用 Java SDK
-          href: java-tutorial-od.md
-        - name: 使用 Node.js SDK
-          href: node-tutorial-object-detection.md
-        - name: 使用 Go SDK
-          href: go-tutorial-object-detection.md
+        - name: 使用自訂視覺 SDK
+          href: quickstarts/object-detection.md
 - name: 教學課程
   items:
     - name: 在 IoT 裝置上報告視覺狀態
@@ -97,7 +81,7 @@
       href: limits-and-quotas.md
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

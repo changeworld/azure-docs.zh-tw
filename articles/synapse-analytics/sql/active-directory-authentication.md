@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5808f892f189bd6cb2cc39bd157be1d61c966763
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421082"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086091"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>使用 Azure Active Directory 驗證向 Synapse SQL 進行驗證
 
@@ -48,26 +48,34 @@ Azure Synapse Analytics 可讓您使用 Azure Active Directory 身分識別來�
 
 下列高階圖表摘要說明搭配使用 Azure AD 驗證與 Synapse SQL 的解決方案架構。 若要支援 Azure AD 原生使用者密碼，只會考慮雲端部分和 Azure AD/Synapse Synapse SQL。 若要支援同盟驗證 (或 Windows 認證的使用者/密碼)，需要與 ADFS 區塊進行通訊。 箭頭表示通訊路徑。
 
-![aad 驗證圖表][1]
+![aad 驗證圖表](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-下圖表示允許用戶端藉由提交權杖連線到資料庫的同盟、信任和主控關聯性。 此權杖是由 Azure AD 所驗證，並受到資料庫信任。 客戶 1 可以代表具有原生使用者的 Azure AD 或具有同盟使用者的 Azure Active Directory。 客戶 2 代表包含已匯入使用者的可能解決方案；在此範例中，來自同盟 Azure Active Directory 且 ADFS 正與 Azure Active Directory 進行同步處理。 請務必了解使用 Azure AD 驗證存取資料庫的必要條件是裝載訂用帳戶要與 Azure AD 相關聯。 您必須使用相同的訂用帳戶來建立裝載 Azure SQL Database 或 SQL 集區的 SQL Server。
+下圖表示允許用戶端藉由提交權杖連線到資料庫的同盟、信任和主控關聯性。 此權杖是由 Azure AD 所驗證，並受到資料庫信任。 
 
-![訂用帳戶關聯性][2]
+客戶 1 可以代表具有原生使用者的 Azure AD 或具有同盟使用者的 Azure Active Directory。 客戶 2 代表包含已匯入使用者的可能解決方案；在此範例中，來自同盟 Azure Active Directory 且 ADFS 正與 Azure Active Directory 進行同步處理。 
+
+請務必了解使用 Azure AD 驗證存取資料庫的必要條件是裝載訂用帳戶要與 Azure AD 相關聯。 您必須使用相同的訂用帳戶來建立裝載 Azure SQL Database 或 SQL 集區的 SQL Server。
+
+![訂用帳戶關聯性](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>系統管理員結構
 
-使用 Azure AD 驗證時，Synapse SQL 會有兩個系統管理員帳戶：原始的 SQL Server 系統管理員和 Azure AD 系統管理員。 只有以 Azure AD 帳戶為基礎的系統管理員可以在使用者資料庫中建立第一個 Azure AD 自主資料庫使用者。 Azure AD 系統管理員登入可以是 Azure AD 使用者或 Azure AD 群組。 
+使用 Azure AD 驗證時，Synapse SQL 會有兩個系統管理員帳戶：原始的 SQL Server 系統管理員和 Azure AD 系統管理員。 只有以 Azure AD 帳戶為基礎的系統管理員可以在使用者資料庫中建立第一個 Azure AD 自主資料庫使用者。 
 
-當系統管理員是群組帳戶時，其可供任何群組成員使用，啟用 Synapse SQL 執行個體的多個 Azure AD 系統管理員。 以系統管理員的身分使用群組帳戶，可讓您集中新增和移除 Azure AD 中的群組成員，而不需要變更 Synapse Analytics 工作區中的使用者或權限，藉以增強管理性。 一律只能設定一個 Azure AD 系統管理員 (使用者或群組)。
+Azure AD 系統管理員登入可以是 Azure AD 使用者或 Azure AD 群組。 當系統管理員是群組帳戶時，其可供任何群組成員使用，啟用 Synapse SQL 執行個體的多個 Azure AD 系統管理員。 
 
-![系統管理員結構][3]
+以系統管理員的身分使用群組帳戶，可讓您集中新增和移除 Azure AD 中的群組成員，而不需要變更 Synapse Analytics 工作區中的使用者或權限，藉以增強管理性。 一律只能設定一個 Azure AD 系統管理員 (使用者或群組)。
+
+![系統管理員結構](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>權限
 
 若要建立新的使用者，您必須具有資料庫中的 `ALTER ANY USER` 權限。 任何資料庫使用者皆可授與 `ALTER ANY USER` 權限。 `ALTER ANY USER` 權限的擁有者還包括伺服器系統管理員帳戶、具備資料庫之 `CONTROL ON DATABASE` 或 `ALTER ON DATABASE` 權限的資料庫使用者，以及 `db_owner` 資料庫角色的成員。
 
-若要在 Synapse SQL 中建立自主資料庫使用者，您必須使用 Azure AD 身分識別來連線到資料庫或執行個體。 若要建立第一個自主資料庫使用者，您必須使用 Azure AD 系統管理員 (資料庫的擁有者) 連接到資料庫。 只有在為 Synapse SQL 建立 Azure AD 系統管理員後，才可以進行任何 Azure AD 驗證。 如果已從伺服器移除 Azure Active Directory 系統管理員，則先前在 Synapse SQL 內建立的現有 Azure Active Directory 使用者便無法再使用其 Azure Active Directory 認證連線到資料庫。
+若要在 Synapse SQL 中建立自主資料庫使用者，您必須使用 Azure AD 身分識別來連線到資料庫或執行個體。 若要建立第一個自主資料庫使用者，您必須使用 Azure AD 系統管理員 (資料庫的擁有者) 連接到資料庫。 
 
+只有在為 Synapse SQL 建立 Azure AD 系統管理員後，才可以進行任何 Azure AD 驗證。 如果已從伺服器移除 Azure Active Directory 系統管理員，則先前在 Synapse SQL 內建立的現有 Azure Active Directory 使用者便無法再使用其 Azure Active Directory 認證連線到資料庫。
+ 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD 功能和限制
 
 - 下列 Azure AD 成員可以在 Synapse SQL 中佈建：
@@ -120,21 +128,8 @@ Azure AD 伺服器主體 (登入) (**公開預覽**) 支援下列驗證方法：
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Synapse SQL 中的存取和控制概觀，請參閱 [Synapse SQL 存取控制](../sql/access-control.md)。 若要深入了解資料庫主體，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。 如需資料庫角色的其他資訊，請參閱[資料庫角色](https://msdn.microsoft.com/library/ms189121.aspx)一文。
+- 如需 Synapse SQL 中的存取和控制概觀，請參閱 [Synapse SQL 存取控制](../sql/access-control.md)。
+- 如需資料庫主體的詳細資訊，請參閱[主體](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 如需資料庫角色的詳細資訊，請參閱[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+
  
-
-<!--Image references-->
-
-[1]: ./media/aad-authentication/1-active-directory-authentication-diagram.png
-[2]: ./media/aad-authentication/2-subscription-relationship.png
-[3]: ./media/aad-authentication/3-admin-structure.png
-[4]: ./media/aad-authentication/4-select-subscription.png
-[5]: ./media/aad-authentication/5-active-directory-settings-portal.png
-[6]: ./media/aad-authentication/6-edit-directory-select.png
-[7]: ./media/aad-authentication/7-edit-directory-confirm.png
-[8]: ./media/aad-authentication/8-choose-active-directory.png
-[9]: ./media/aad-authentication/9-active-directory-settings.png
-[10]: ./media/aad-authentication/10-choose-admin.png
-[11]: ./media/aad-authentication/11-connect-using-integrated-authentication.png
-[12]: ./media/aad-authentication/12-connect-using-password-authentication.png
-[13]: ./media/aad-authentication/13-connect-to-db.png

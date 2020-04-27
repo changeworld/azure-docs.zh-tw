@@ -1,23 +1,23 @@
 ---
-title: 自動完成和建議的 C# 教學課程
+title: 自動完成和建議
 titleSuffix: Azure Cognitive Search
 description: 本教學課程示範自動完成和建議，作為向使用下拉式清單的使用者收集搜尋字詞輸入的方法。 它是以現有的飯店專案為基礎而建置的。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121542"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641081"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# 教學課程：新增自動完成和建議 - Azure 認知搜尋
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# 教學課程：新增自動完成和建議 - Azure 認知搜尋
 
-了解如何在使用者開始在搜尋方塊中輸入時實作自動完成 (預先輸入及建議)。 在此教學課程中，我們將分別顯示預先輸入結果和建議結果，並示範結合兩者以建立更豐富的使用者體驗的方法。 使用者只需要輸入兩個或三個按鍵，就可以找到可用的所有結果。 此教學課程建置於 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)教學課程。
+了解如何在使用者開始在搜尋方塊中輸入時實作自動完成 (預先輸入查詢及建議的文件)。 在本教學課程中，我們會分別示範自動完成的查詢和建議結果，然後將這兩者合併在一起。 使用者只需要輸入兩或三個字元，就可以找到可用的所有結果。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -28,23 +28,21 @@ ms.locfileid: "77121542"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+此教學課程是系列中的一部分，建置於 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)中建立的分頁專案。
 
-啟動並執行 [C# 教學課程：搜尋結果分頁 - Azure 認知搜尋](tutorial-csharp-paging.md)專案。 此專案可以是您自己在上一個教學課程中完成的版本，或從 GitHub 安裝的版本：[建立第一個應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
+或者，您可以下載並執行此特定教學課程的解決方案：[3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)。
 
 ## <a name="add-suggestions"></a>新增建議
 
 讓我們從為使用者提供替代方案的最簡單案例開始：建議的下拉式清單。
 
-1. 在 index.cshtml 檔案中，將 **TextBoxFor** 陳述式變更如下。
+1. 在 index.cshtml 檔案中，將 **TextBoxFor** 陳述式的 `@id` 變更為 **azureautosuggest**。
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    此處的重點是我們已經將搜尋方塊的識別碼設定為 **azureautosuggest**。
-
-2. 在此陳述式結尾的 **&lt;/div&gt;** 之後，輸入這個指令碼。
+2. 在此陳述式結尾的 **&lt;/div&gt;** 之後，輸入這個指令碼。 此指令碼會利用來自開放原始碼 jQuery UI 程式庫的[自動完成 widget](https://api.jqueryui.com/autocomplete/)，來呈現建議結果的下拉式清單。 
 
     ```javascript
     <script>
@@ -59,13 +57,11 @@ ms.locfileid: "77121542"
     </script>
     ```
 
-    我們已經透過相同的識別碼，將此指令碼連接到搜尋方塊中。 此外，最少需要兩個字元才能觸發搜尋，而且我們會使用兩個查詢參數，在主控制器中呼叫 **Suggest** 動作：**highlights** 和 **fuzzy**，在此案例中，這兩者均設為 false。
+    識別碼 "azureautosuggest" 會將上述指令碼連線到搜尋方塊。 widget 來源選項會設定為使用這兩個查詢參數來呼叫建議 API 的建議方法：**highlights** 和 **fuzzy**，兩者都在此實例中設定為 false。 此外，若要觸發搜尋，至少需要兩個字元。
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>將 jquery 指令碼的參考新增至檢視
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>將 jQuery 指令碼的參考新增至檢視
 
-在上述指令碼中呼叫的自動完成函式不需要我們自己編寫，因為該函式可在 jquery 程式庫中取得。 
-
-1. 若要存取 jquery 程式庫，請將檢視檔案的 &lt;head&gt; 區段變更為下列程式碼。
+1. 若要存取 jQuery 程式庫，請將檢視檔案的 &lt;head&gt; 區段變更為下列程式碼：
 
     ```cs
     <head>
@@ -80,7 +76,7 @@ ms.locfileid: "77121542"
     </head>
     ```
 
-2. 我們也需要移除或註解化 _Layout.cshtml 檔案中參考 jquery 的那一行 (在 **Views/Shared** 資料夾中)。 找出下列幾行，並註解化第一個指令碼行，如下所示。 這項變更可避免對 jquery 參考的衝突。
+2. 因為我們引進了新的 jQuery 參考，所以我們也需要在 _Layout.cshtml 檔案 (位於 **Views/Shared**資料夾) 中將預設的 jQuery 參考移除或標示為註解。 找出下列幾行，並註解化第一個指令碼行，如下所示。 這項變更可避免對 jQuery 參考的衝突。
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ ms.locfileid: "77121542"
     </environment>
     ```
 
-    現在我們可以使用預先定義的自動完成 jquery 函式。
+    現在我們可以使用預先定義的自動完成 jQuery 函式。
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>將建議動作新增至控制器
 
@@ -114,7 +110,8 @@ ms.locfileid: "77121542"
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ ms.locfileid: "77121542"
 
     **Top** 參數會指定要傳回多少結果 (如果未指定，預設值為 5)。 _建議工具_是在 Azure 索引上指定的，這會在資料設定時完成，而且不是由用戶端應用程式完成，例如此教學課程。 在此案例中，建議工具稱為 "sg"，而且它會搜尋 **HotelName** 欄位 - 沒有其他項目。 
 
-    模糊比對可在輸出中包含「接近未命中」。 如果 **highlights** 參數設為 true，則粗體顯示的 HTML 標記就會加入至輸出。 在下一節中，我們會將這兩個參數設定為 true。
+    模糊比對可在輸出中包含「接近未命中」(最多一個編輯距離)。 如果 **highlights** 參數設為 true，則粗體顯示的 HTML 標記就會加入至輸出。 在下一節中，我們會將這兩個參數設定為 true。
 
 2. 您可能會收到一些語法錯誤。 若是如此，請在檔案頂端加入下列兩個 **using** 陳述式。
 
@@ -151,7 +148,7 @@ ms.locfileid: "77121542"
 
 ## <a name="add-highlighting-to-the-suggestions"></a>在建議中加入醒目提示
 
-我們可以將 **highlights** 參數設為 true，藉此稍微改善向使用者提供之建議的外觀。 不過，首先我們需要將一些程式碼加入至檢視，以顯示粗體文字。
+我們可以將 **highlights** 參數設為 true，藉此改善向使用者提供的建議外觀。 不過，首先我們需要將一些程式碼加入至檢視，以顯示粗體文字。
 
 1. 在檢視 (index.cshtml) 中，於您上面輸入的 **azureautosuggest** 指令碼後面加入下列指令碼。
 
@@ -194,11 +191,11 @@ ms.locfileid: "77121542"
 
 4. 上述反白顯示指令碼中使用的邏輯非常簡單。 如果您輸入的詞彙在相同的名稱中出現兩次，則粗體的結果不是您想要的結果。 嘗試輸入 "mo"。
 
-    開發人員必須回答的其中一個問題是指令碼什麼時候運作得「夠好」，以及什麼時候應該處理其花體時。 此外，我們將不會在此教學課程中採取任何進一步地醒目提示，但如果要進一步地醒目提示，必須考慮尋找一個精確的演算法。
+    開發人員必須回答的其中一個問題是指令碼什麼時候運作得「夠好」，以及什麼時候應該處理其花體時。 此外，我們將不會在此教學課程中採取任何進一步地醒目提示，但如果醒目提示未對您的資料產生作用，則必須考慮尋找一個精確的演算法。 如需詳細資訊，請參閱[命中結果醒目提示](search-pagination-page-layout.md#hit-highlighting)。
 
-## <a name="add-autocompletion"></a>新增自動完成
+## <a name="add-autocomplete"></a>新增自動完成
 
-另一種與建議稍有不同的變化是自動完成功能 (有時稱為「預先輸入」)。 同樣地，我們會先從最簡單的實作開始，然後再繼續改善使用者體驗。
+另一種與建議稍有不同的變化是完成查詢字詞的自動完成功能 (有時稱為「預先輸入」)。 同樣地，我們會先從最簡單的實作開始，然後再改善使用者體驗。
 
 1. 依照您先前的指令碼，將下列指令碼輸入檢視中。
 
@@ -246,7 +243,7 @@ ms.locfileid: "77121542"
 
     請注意，我們在自動完成搜尋中使用的*建議工具*功能 (稱為 "sg") 與我們用於建議的相同 (因此我們只要嘗試自動完成旅館名稱)。
 
-    有多種 **AutocompleteMode** 設定，而我們會使用 **OneTermWithContext**。 如需此處選項範圍的描述，請參閱 [Azure 自動完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。
+    有多種 **AutocompleteMode** 設定，而我們會使用 **OneTermWithContext**。 如需其他選項的說明，請參閱[自動完成 API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。
 
 4. 執行應用程式。 請注意，下拉式清單中所顯示的選項範圍是單一文字。 請嘗試輸入開頭為 "re" 的文字。 請注意，輸入的字母越多，選項的數量越少。
 

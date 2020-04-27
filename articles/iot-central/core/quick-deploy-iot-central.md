@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0ed32a4c1272c23c9500b35e05c383eac6dea185
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998955"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758140"
 ---
 # <a name="create-an-azure-iot-central-application"></a>建立 Azure IoT Central 應用程式
 
@@ -59,7 +59,11 @@ ms.locfileid: "80998955"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立 IoT Central 應用程式。 以下是建議的後續步驟：
+在本快速入門中，您已建立 IoT Central 應用程式。 以下是繼續學習 IoT Central 的建議後續步驟：
 
 > [!div class="nextstepaction"]
 > [將模擬裝置新增至 IoT Central 應用程式](./quick-create-simulated-device.md)
+
+如果您是裝置開發人員，而且想要深入了解一些程式碼，建議的後續步驟是：
+> [!div class="nextstepaction"]
+> [建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式](./tutorial-connect-device-nodejs.md)

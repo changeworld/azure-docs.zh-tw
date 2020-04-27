@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 04/16/2020
 ms.author: alzam
-ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 11007bc39cb1112799c89afaf0ca670aa6760de6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482120"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
@@ -110,6 +110,32 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 4. 勾選 [包含點對站閘道]  核取方塊，然後挑選您想要的 [閘道縮放單位]  。
 
    ![新網站](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+
+下表顯示可用**縮放單位**的詳細資料
+
+| **縮放單位** | **輸送量** | **P2S 連線** |
+| --- | --- | --- |
+| 1| 500 Mbps | 500 |
+| 2| 1 Gbps | 500 |
+| 3| 1.5 Gbps | 500 |
+| 4| 2 Gbps | 1000 |
+| 5| 2.5 Gbps | 1000 |
+| 6| 3 Gbps | 1000 |
+| 7| 3.5 Gbps | 5000 |
+| 8| 4 Gbps | 5000 |
+| 9| 4.5 Gbps | 5000 |
+| 10| 5 Gbps | 5000 |
+| 11| 5.5 Gbps | 5000 |
+| 12| 6 Gbps | 5000 |
+| 13| 6.5 Gbps | 10000 |
+| 14| 7 Gbps | 10000 |
+| 15| 7.5 Gbps | 10000 |
+| 16| 8 Gbps | 10000 |
+| 17| 8.5 Gbps | 10000 |
+| 18| 9 Gbps | 10000 |
+| 19| 9.5 Gbps | 10000 |
+| 20| 10 Gbps | 10000 |
+
 5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]  。
 6. 按一下 [確認] 
 7. 此作業最多可能需要 30 分鐘的時間才能完成。

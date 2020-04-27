@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 來評估 Hyper-V VM 是否可移轉至 Azure | Microsoft Docs
 description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部署 Hyper-V VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336781"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535446"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 Hyper-V VM
 
@@ -49,7 +49,7 @@ ms.locfileid: "80336781"
 
 4. 在 [開始使用]  中，按一下 [新增工具]  。
 5. 在 [遷移專案]  索引標籤中，選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有資源群組的話)。
-6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的區域。 [請檢閱](migrate-support-matrix.md#supported-geographies)您可以在其中建立 Azure Migrate 專案的區域。
+6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的區域。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
     - 專案區域只會用來儲存從內部部署 VM 收集到的中繼資料。
     - 遷移 VM 時可選取不同的 Azure 目標區域。 所有 Azure 區域都支援作為移轉目標。
@@ -67,9 +67,11 @@ ms.locfileid: "80336781"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
-Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。
-- 您可以使用下載的 Hyper-V VHD，在 Hyper-V VM 上設定設備。 或者，您也可以使用 PowerShell 安裝程式指令碼，在 VM 或實體機器上設定設備。
-- 本教學課程會使用 VHD。 如果您想要使用指令碼來設定設備，請參閱[本文](deploy-appliance-script.md)。
+
+Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。 您可以透過數種方式來設定設備。
+
+- 您可以使用下載的 Hyper-V VHD，在 Hyper-V VM 上進行設定。 這是本教學課程使用的方法。
+- 使用 PowerShell 安裝程式指令碼在 Hyper-V VM 或實體機器上進行設定。 如果您無法使用 VHD 設定 VM，或如果您是在 Azure Government 中，則應該使用[此方法](deploy-appliance-script.md)。
 
 建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
 
@@ -125,9 +127,9 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 7. 在 [Hyper-V 管理員] > [虛擬機器]  中，啟動 VM。
 
 
-### <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
+## <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 
-請確定設備 VM 可以連線至 [Azure URL](migrate-appliance.md#url-access)。
+確定設備 VM 可以連線至[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure URL。
 
 ### <a name="configure-the-appliance"></a>設定設備
 

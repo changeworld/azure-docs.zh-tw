@@ -39,6 +39,8 @@
           href: azure-netapp-files-solution-architectures.md
         - name: 使用 Azure NetApp Files 搭配 Oracle Database 的優點
           href: solutions-benefits-azure-netapp-files-oracle-database.md
+        - name: 使用 Azure NetApp Files 進行電子設計自動化的優點
+          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: 關於 Azure NetApp 檔案的常見問題集
       href: azure-netapp-files-faqs.md
 - name: 操作指南

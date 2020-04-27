@@ -1,15 +1,15 @@
 ---
 title: 透過 Azure Pipelines 的持續整合
 description: 了解如何持續建置、測試及部署 Azure Resource Manager 範本。
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255068"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084323"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
 
@@ -57,11 +57,7 @@ GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 
 
 1. 選取 [新建]  (綠色按鈕)。
 1. 在 [存放庫名稱]  中輸入存放庫名稱。  例如，**AzureRmPipeline-repo**。 請記得將任何 **AzureRmPipeline** 取代為您的專案名稱。 進行此教學課程時，您可以選取 [公開]  或 [私人]  。 然後選取 [建立存放庫]  。
-1. 請將 URL 抄寫下來。 存放庫 URL 會具有以下格式：
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. 請將 URL 抄寫下來。 存放庫 URL 的格式如下： **https://github.com/ [YourAccountName]/[YourRepositoryName]** 。
 
 此存放庫稱為「遠端存放庫」  。 同一專案的每位開發人員都可以複製他/她自己的「本機存放庫」  ，並將變更合併至遠端存放庫。
 

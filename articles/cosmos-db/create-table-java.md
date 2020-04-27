@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c8427333a0a395ca4a0998662cacf13dea662e04
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e3517804cb66a9f98351e4c68f4f7c4387cee8fe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212838"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083796"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB 資料表 API 資料
 
@@ -52,7 +52,7 @@ ms.locfileid: "77212838"
 
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 
-現在，我們將從 GitHub 複製「資料表」應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。 
+現在，我們將從 GitHub 複製「資料表」應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。
 
 1. 開啟命令提示字元，建立名為 git-samples 的新資料夾，然後關閉命令提示字元。
 
@@ -71,6 +71,8 @@ ms.locfileid: "77212838"
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
+
+> ![TIP] 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-java.md)一文。 
 
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 

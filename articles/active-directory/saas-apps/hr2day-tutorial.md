@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442847"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教學課程：Azure Active Directory 與 HR2day by Merces 整合
 
@@ -163,7 +163,7 @@ HR2day by Merces 與 Azure AD 整合提供下列優點：
 若要設定 **HR2day by Merces** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 [HR2day by Merces 支援小組](mailto:servicedesk@merces.nl)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 > [!NOTE]
-> 請向 Merces 小組表明這項整合需要以下列模式設定「實體識別碼」： **https://hr2day.force.com/INSTANCENAME** 。
+> 請向 Merces 小組表明這項整合需要以下列模式設定「實體識別碼」：**https:\//hr2day.force.com/INSTANCENAME**。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 

@@ -8,13 +8,16 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: d41c4757f0b81312cefa580c3a3263f87bccffa9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: 5d52cd134c8c0f1702f57bff1f60bffa12ef6f4d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290596"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687232"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入門：使用 Azure IoT C SDK 佈建模擬 TPM 裝置
 
@@ -222,7 +225,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已在電腦上建立的 TPM 模擬裝置，並使用 IoT 中樞裝置佈建服務將它佈建到 IoT 中樞。 若要了解如何以程式設計方式註冊您的 TPM 裝置，請繼續閱讀以程式設計方式註冊 TPM 裝置的快速入門。 
+在本快速入門中，您已在電腦上建立 TPM 模擬裝置，並使用 IoT 中樞裝置佈建服務將其佈建到 IoT 中樞。 若要了解如何以程式設計方式註冊您的 TPM 裝置，請繼續閱讀以程式設計方式註冊 TPM 裝置的快速入門。 
 
 > [!div class="nextstepaction"]
 > [Azure 快速入門 - 向 Azure IoT 中樞裝置佈建服務註冊 TPM 裝置](quick-enroll-device-tpm-java.md)

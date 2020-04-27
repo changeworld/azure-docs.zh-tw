@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74899972"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867437"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什麼是 Azure AD Privileged Identity Management？
 
@@ -50,9 +50,7 @@ Privileged Identity Management 提供以時間為基礎和以核准為基礎的�
 
 ## <a name="who-can-do-what"></a>角色與角色權限為何？
 
-如果您是使用 Privileged Identity Management 的第一人，則會自動獲指派目錄中的[安全性系統管理員](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)和[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色。
-
-對於 Privileged Identity Management 中的 Azure AD 角色，只有具特殊權限角色系統管理員角色的使用者可以管理其他系統管理員的指派。 您可以[授與其他系統管理員存取權以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。 全域管理員、安全性系統管理員、全域讀者和安全性讀取者也可以在 Privileged Identity Management 中檢視 Azure AD 角色指派。
+對於 Privileged Identity Management 中的 Azure AD 角色，只有特殊權限角色管理員或全域系統管理員角色的使用者可以管理其他系統管理員的指派。 您可以[授與其他系統管理員存取權以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。 全域管理員、安全性系統管理員、全域讀者和安全性讀取者也可以在 Privileged Identity Management 中檢視 Azure AD 角色指派。
 
 對於 Privileged Identity Management 中的 Azure 資源角色，只有訂用帳戶管理員、資源擁有者、或資源使用者存取系統管理員可以管理其他系統管理員的指派。 作為特殊權限角色系統管理員、安全性系統管理員或安全性讀取者的使用者，依預設沒有存取權限可檢視 Privileged Identity Management 中的 Azure 資源角色指派。
 

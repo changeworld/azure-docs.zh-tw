@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331801"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024433"
 ---
 # <a name="what-is-a-device-identity"></a>什麼是裝置身分識別？
 
@@ -53,6 +53,9 @@ ms.locfileid: "80331801"
 
 ![[Azure AD 裝置] 刀鋒視窗中顯示的裝置](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> 混合式狀態所指的不只是裝置的狀態。 若要讓混合式狀態有效，也必須具備有效的 Azure AD 使用者。
+
 ## <a name="device-management"></a>裝置管理
 
 Azure AD 中的裝置可使用 Microsoft Intune、Microsoft Endpoint Configuration Manager、群組原則 (混合式 Azure AD Join)、行動應用程式管理 (MAM) 工具等行動裝置管理 (MDM) 工具來管理，或以其他第三方工具管理。
@@ -63,6 +66,8 @@ Azure AD 中的裝置可使用 Microsoft Intune、Microsoft Endpoint Configurati
 
 > [!NOTE]
 > 裝置型條件式存取原則需要已加入混合式 Azure AD 的裝置或符合規範且已加入 Azure AD 或已註冊 Azure AD 的裝置。
+
+主要的重新整理權杖 (PRT) 包含裝置的相關資訊，並且是 SSO 的必要條件。 如果您已在應用程式上設定裝置型條件式存取原則，但沒有 PRT，則存取會遭到拒絕。 混合條件式存取原則需要混合式狀態裝置和已登入的有效使用者。
 
 已加入 Azure AD 或混合式 Azure AD 的裝置，可以對您組織的內部部署資源和雲端資源進行 SSO。 如需詳細資訊，請參閱[內部部署資源的 SSO 如何在加入 Azure AD 的裝置上運作](azuread-join-sso.md)一文。
 

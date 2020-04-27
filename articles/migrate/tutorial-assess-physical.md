@@ -2,17 +2,17 @@
 title: 使用 Azure Migrate 伺服器評定來評定要移轉到 Azure 的實體伺服器
 description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部署實體伺服器是否可移轉到 Azure。
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76990295"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535429"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 來評定實體伺服器：伺服器評量
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用「Azure Migrate：伺服器評定」來評定實體伺服器
 
-此文章說明如何使用 Azure Migrate 來評定內部部署實體伺服器：伺服器評量工具。
+本文說明如何使用「Azure Migrate：伺服器評定」工具來評定內部部署實體伺服器。
 
 [Azure Migrate](migrate-services-overview.md) 會提供工具中樞，協助您探索和評估應用程式、基礎結構和工作負載，並且將這些項目遷移至 Microsoft Azure。 此中樞包含 Azure Migrate 工具和第三方獨立軟體廠商 (ISV) 供應項目。
 
@@ -34,8 +34,10 @@ ms.locfileid: "76990295"
 
 - [完成](tutorial-prepare-physical.md)本系列的第一個教學課程。 如果未完成，本教學課程中的指示便沒有作用。
 - 您在第一個教學課程中應該已完成下列作業：
-    - 針對 Azure Migrate [設定 Azure 權限](tutorial-prepare-physical.md#prepare-azure)。
+    - 針對 Azure Migrate [設定 Azure 權限](tutorial-prepare-physical.md)。
     - [準備實體伺服器](tutorial-prepare-physical.md#prepare-for-physical-server-assessment)進行評定。 應該驗證設備需求。 您也應該設定用於實體伺服器探索的帳戶。 必要的連接埠應可供使用，而且您應該知道存取 Azure 所需的 URL。
+
+
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>設定 Azure Migrate 專案
@@ -49,8 +51,8 @@ ms.locfileid: "76990295"
     ![探索和評估伺服器](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. 在 [開始使用]  中，按一下 [新增工具]  。
-5. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。     
-6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 支援亞洲、歐洲、英國和美國。
+5. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。  
+6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
     - 專案地理區域只會用來儲存從內部部署伺服器收集到的中繼資料。
     - 當您執行移轉時，可以選取任何目的地區域。
@@ -96,16 +98,24 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 請先確認 ZIP 檔案安全無虞再進行部署。
 
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
-2. 執行下列命令以產生 ZIP 檔案的雜湊
+2. 執行下列命令以產生 ZIP 檔案的雜湊：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用方式範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 公用雲端的使用範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - 政府雲端的使用範例：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  驗證雜湊值：
+ 
+    - 對於公用雲端 (適用於最新的設備版本)：
 
-3.  針對最新的設備版本，產生的雜湊應符合這些設定。
+        **演算法** | **雜湊值**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-  **演算法** | **雜湊值**
-  --- | ---
-  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    - 對於 Azure Government (適用於最新的設備版本)：
+
+        **演算法** | **雜湊值**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>執行 Azure Migrate 安裝程式指令碼
 
@@ -116,28 +126,26 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 - 下載並安裝 IIS 可讀寫模組。 [深入了解](https://www.microsoft.com/download/details.aspx?id=7435)。
 - 使用 Azure Migrate 的持續設定詳細資料來更新登錄機碼 (HKLM)。
 - 在路徑底下建立下列檔案：
-    - **組態檔**: %ProgramData%\Microsoft Azure\Config
-    - **記錄檔**: %ProgramData%\Microsoft Azure\Logs
+    - **組態檔**：%Programdata%\Microsoft Azure\Config
+    - **記錄檔**：%Programdata%\Microsoft Azure\Logs
 
 執行指令碼，如下所示：
 
-1. 將 ZIP 壓縮檔案解壓縮至會裝載設備之伺服器上的資料夾。
+1. 將 ZIP 壓縮檔案解壓縮至會裝載設備之伺服器上的資料夾。  請確定您未在現有 Azure Migrate 設備的電腦上執行指令碼。
 2. 在上述伺服器上，使用系統管理 (提高的) 權限來啟動 PowerShell。
 3. 將 PowerShell 目錄變更為已從下載的 ZIP 壓縮檔案解壓縮內容的資料夾。
 4. 藉由執行下列命令，以執行名為 **AzureMigrateInstaller.ps1** 的指令碼：
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-指令碼會在成功完成時啟動設備 Web 應用程式。
+
+    - 對於公用雲端：``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - 對於 Azure Government：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+
+    指令碼會在成功完成時啟動設備 Web 應用程式。
 
 如果發生任何問題，您可以存取位於 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>時間戳記</em>.log 的指令碼記錄，以進行疑難排解。
 
-> [!NOTE]
-> 請不要在現有的 Azure Migrate 設備上執行 Azure Migrate 安裝程式指令碼。
-
 ### <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 
-確定設備可以連線至 [Azure URL](migrate-appliance.md#url-access)。
+確定設備可以連線至[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure URL。
 
 
 ### <a name="configure-the-appliance"></a>設定設備
@@ -173,7 +181,7 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 現在，從設備連線至要探索的實體伺服器，然後開始探索。
 
 1. 按一下 [新增認證]  以指定設備會用來探索伺服器的帳戶認證。  
-2. 指定**作業系統**、認證的易記名稱、**使用者名稱**與**密碼**，然後按一下 [新增]  。
+2. 指定 [作業系統]  、認證的易記名稱，以及使用者名稱和密碼。 然後按一下 [ **新增**]。
 您可以新增一組適用於 Windows 與 Linux 伺服器的認證。
 4. 按一下 [新增伺服器]  ，然後指定伺服器詳細資料 - FQDN/IP 位址與認證的易記名稱 (每列一筆輸入) 以連線至伺服器。
 3. 按一下 **[驗證]** 。 驗證之後，就會顯示可探索的伺服器清單。

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Kestrel 將 HTTPS 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756091"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757170"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教學課程：使用 Kestrel 將 HTTPS 端點新增至 ASP.NET Core Web API 前端服務
 
@@ -41,7 +41,7 @@ ms.locfileid: "80756091"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安裝 Visual Studio 2019](https://www.visualstudio.com/) 15.5 版或更新版本，其中包含 **Azure 開發**及 **ASP.NET 和 Web 開發**工作負載。
+* [安裝 Visual Studio 2019](https://www.visualstudio.com/) 16.5 版或更新版本，其中包含 **Azure 開發**及 **ASP.NET 和 Web 開發**工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>取得憑證或建立自我簽署的開發憑證
@@ -156,27 +156,42 @@ serviceContext =>
 請注意，在本機部署到 `localhost` 的情況下，最好使用 "CN = localhost" 來避免驗證例外狀況。
 
 ```csharp
-private X509Certificate2 GetHttpsCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
     using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
+    {
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
         
-        if (currentCerts.Count == 0)
-                {
-                    throw new Exception("Https certificate is not found.");
-                }
-        
-        return currentCerts[0];
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>將憑證的私密金鑰存取權給予網路服務
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>將憑證的私密金鑰存取權授與網路服務
 
 在上一個步驟中，您已將憑證匯入到開發電腦上的 `Cert:\LocalMachine\My` 存放區中。  現在，將憑證的私密金鑰存取權明確地授與執行服務 (預設為「網路服務」) 的帳戶。 您可以手動執行此步驟 (使用 certlm.msc 工具)，但是最好在服務資訊清單的 **SetupEntryPoint** 中 [設定啟動指令碼](service-fabric-run-script-at-service-startup.md)，以便自動執行 PowerShell 指令碼。
+
+>[!NOTE]
+> Service Fabric 支援依指紋或主體一般名稱宣告端點憑證。 在此情況下，執行階段會設定繫結，並將憑證私密金鑰的 ACL 設為服務執行時所用的身分識別。 執行階段也會監視憑證是否有變更/續約，並據此重新對應私密金鑰的 ACL。
 
 ### <a name="configure-the-service-setup-entry-point"></a>設定服務安裝程式進入點
 
@@ -385,7 +400,7 @@ $slb | Set-AzLoadBalancer
 
 儲存所有檔案、從 [偵錯] 切換至 [發行]，然後按 F6 重建。  在 [方案總管] 中，以滑鼠右鍵按一下 [投票]  並選取 [發佈]  。 選取在[將應用程式部署到叢集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中建立之叢集的連線端點。，或選取另一個叢集。  按一下 [發佈]  ，將應用程式發佈至遠端叢集。
 
-當應用程式部署時，開啟網頁瀏覽器並巡覽至 [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) (以您叢集的連線端點更新此 URL)。 如果您使用自我簽署的憑證，您會看到您的電腦不信任此網站安全性的警告。  繼續在網頁上執行。
+當應用程式部署時，開啟網頁瀏覽器並巡覽至 `https://mycluster.region.cloudapp.azure.com:443` (以您叢集的連線端點更新此 URL)。 如果您使用自我簽署的憑證，您會看到您的電腦不信任此網站安全性的警告。  繼續在網頁上執行。
 
 ![投票應用程式][image3]
 

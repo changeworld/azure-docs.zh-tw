@@ -34,6 +34,8 @@
       href: azure-media-player-localization.md
 - name: 範例
   items:
+    - name: Azure 媒體播放器示範
+      href: demos.md
     - name: Azure 媒體播放器範例
       href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: 參考

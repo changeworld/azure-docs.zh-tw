@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: bf69d2963c74723cb3fea542e28288e4f136d5c3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345781"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458755"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：準備使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中定型預測模型所需的資料
 
@@ -41,13 +42,11 @@ ms.locfileid: "80345781"
 
 在[第三部分](sql-database-tutorial-predictive-model-deploy.md)中，您會了解如何將模型儲存在資料庫中，然後從您在第一和第二部分中開發的 R 指令碼建立預存程序。 預存程序會在 SQL 資料庫中執行，以根據新資料做出預測。
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - 如果您沒有 Azure 訂用帳戶，請在開始前[建立帳戶](https://azure.microsoft.com/free/)。
 
-* 已啟用機器學習服務的 Azure SQL Database - 在公開預覽期間，Microsoft 會將您加入，並為您現有的或新的資料庫啟用機器學習服務。 請遵循[註冊預覽版](sql-database-machine-learning-services-overview.md#signup)中的步驟。
+* 已啟用[具備機器學習服務的 Azure SQL Database (搭配 R)](sql-database-machine-learning-services-overview.md)。
 
 * RevoScaleR 套件 - 請參閱 [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) 以了解在本機安裝此套件的選項。
 

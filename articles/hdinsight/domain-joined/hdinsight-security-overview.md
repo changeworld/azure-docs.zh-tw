@@ -6,67 +6,67 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/20/2020
+ms.openlocfilehash: 797767e0c463161f29e486aef7db0ccaf459e299
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78267711"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733562"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
-Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據預設，這些解決方案大多未啟用。 此彈性可讓您選擇對您而言最重要的安全性功能，並協助您避免對不想要的功能付費。 這也表示您必須負責確保已針對您的設定和環境啟用正確的解決方案。
+Azure HDInsight 提供多種方法來滿足您的企業安全性需求。 根據預設，這些解決方案大多未啟用。 此彈性可讓您選擇對您而言最重要的安全性功能。 並協助您避免支付不想要的功能。 此彈性也表示您必須負責確保已針對您的設定和環境啟用正確的解決方案。
 
-本文依照四個傳統安全性要素來劃分安全性解決方案，藉以探討安全性解決方案：周邊安全性、驗證、授權和加密。
+本文藉由將安全性解決方案劃分為四個傳統安全性要素，來探討安全性解決方案：周邊安全性、驗證、授權和加密。
 
 本文也介紹 **Azure HDInsight 企業安全性套件 (ESP)** ，其提供以 Active Directory 為基礎的驗證、多使用者支援，以及 HDInsight 叢集的角色型存取控制。
 
 ## <a name="enterprise-security-pillars"></a>企業安全性要素
 
-探討企業安全性的其中一種方式，就是根據控制項的類型將安全性解決方案分成四個主要群組。 這些群組也稱為安全性要素，如下所示：周邊安全性、驗證、授權和加密。
+探討企業安全性的其中一種方式，就是根據控制項的類型將安全性解決方案分成四個主要群組。 這些群組也稱為安全性要素，類型如下：周邊安全性、驗證、授權和加密。
 
 ### <a name="perimeter-security"></a>周邊安全性
 
 透過[虛擬網路](../hdinsight-plan-virtual-network-deployment.md)可達成 HDInsight 中的周邊安全性。 企業系統管理員可以在虛擬網路 (VNET) 內部建立叢集，並使用網路安全性群組 (NSG) 限制對虛擬網路的存取。 只有輸入 NSG 規則中允許的 IP 位址能夠與 HDInsight 叢集通訊。 此設定可提供周邊安全性。
 
-在 VNET 中部署的所有叢集也會有一個私人端點，該端點會解析為 VNET 內的私人 IP，以便對叢集閘道進行私人 HTTP 存取。
+部署在 VNET 中的所有叢集也會有私人端點。 端點會解析為 VNET 內的私人 IP，以便對叢集閘道進行私人的 HTTP 存取。
 
 ### <a name="authentication"></a>驗證
 
-HDInsight 的[企業安全性套件](apache-domain-joined-architecture.md)提供 Active Directory 型驗證、多使用者支援和角色型存取控制。 透過使用 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) 即可達成 Active Directory 整合。 利用這些功能，您可以建立已加入受控 Active Directory 網域的 HDInsight 叢集。 接著，您可以設定企業員工清單，指出可驗證及登入叢集的員工。
+HDInsight 的[企業安全性套件](apache-domain-joined-architecture.md)提供 Active Directory 型驗證、多使用者支援和角色型存取控制。 透過使用 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) 即可達成 Active Directory 整合。 利用這些功能，您可以建立已加入 Active Directory 網域的 HDInsight 叢集。 接著，設定企業員工清單，指出可向叢集進行驗證的員工。
 
-企業員工可以藉由這項設定，便能使用其網域認證來登入叢集節點。 他們也可以使用其網域認證向其他已核准的端點 (例如 Apache Ambari 檢視、ODBC、JDBC、PowerShell 和 REST API) 進行驗證，以與叢集進行互動。
+企業員工可以藉由這項設定，便能使用其網域認證來登入叢集節點。 他們也可以使用其網域認證向其他已核准的端點進行驗證。 像是可與叢集互動的 Apache Ambari Views、ODBC、JDBC、PowerShell 和 REST API。
 
 ### <a name="authorization"></a>授權
 
-大多數企業所依循的最佳做法，就是確保並非每一位員工都能存取所有的企業資源。 同樣地，系統管理員可以針對叢集資源定義角色型存取控制原則。 這僅適用於 ESP 叢集。
+大多數企業所依循的最佳做法，就是確保並非每一位員工都能完全存取所有的企業資源。 同樣地，系統管理員可以針對叢集資源定義角色型存取控制原則。 此動作僅適用於 ESP 叢集。
 
-Hadoop 系統管理員可以設定角色型存取控制 (RBAC)，以使用 Apache Ranger 中的外掛程式來保護 [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) 和 [Kafka](apache-domain-joined-run-kafka.md)。 設定 RBAC 原則可讓您將權限與組織中的角色產生關聯。 這一層的抽象概念可讓您更輕鬆地確保人員只擁有執行其職責所需的權限。 Ranger 也可讓您稽核員工的存取資料以及對存取控制原則所做的任何變更。
+Hadoop 系統管理員可以設定角色型存取控制 (RBAC)。 這些設定會使用 Apache Range 外掛程式來保護 Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) 和 [Kafka](apache-domain-joined-run-kafka.md)。 設定 RBAC 原則可讓您將權限與組織中的角色產生關聯。 這一層的抽象概念可讓您更輕鬆地確保人員只擁有執行其職責所需的權限。 Ranger 也可讓您稽核員工的存取資料以及對存取控制原則所做的任何變更。
 
-例如，系統管理員可以設定 [Apache Ranger](https://ranger.apache.org/) 以設定 Hive 的存取控制原則。 這種功能可確保資料列層級和資料行層級的篩選 (資料遮罩)，並篩選來自未經授權使用者的敏感性資料。
+例如，系統管理員可以設定 [Apache Ranger](https://ranger.apache.org/) 以設定 Hive 的存取控制原則。 此功能可確保執行資料列層級和資料行層級的篩選 (資料遮罩)。 並且篩選未經授權使用者的敏感性資料。
 
 ### <a name="auditing"></a>稽核
 
-若要追蹤資源的未經授權存取或意外存取，就必須針對叢集資源和資料的所有存取進行稽核。 防止未經授權的使用者存取 HDInsight 叢集資源並保護資料是非常重要的。
+您需要稽核叢集資源的存取，才能追蹤未經授權或意外的資源存取。 請務必防止叢集資源遭到未經授權的存取。
 
-系統管理員可以檢視和報告所有對於 HDInsight 叢集資源和資料的存取。 針對在 Apache Ranger 支援的端點中所建立的存取控制原則，系統管理員也可以檢視和報告存取控制原則的所有變更。
+系統管理員可以檢視和報告所有對於 HDInsight 叢集資源和資料的存取。 系統管理員可檢視和報告存取控制原則的變更。
 
-若要存取 Apache Ranger 和 Ambari 稽核記錄以及 ssh 存取記錄，請啟用 [Azure 監視器](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)，並檢視提供稽核記錄的資料表。
+若要存取 Apache Ranger 和 Ambari 稽核記錄以及 ssh 存取記錄，[請啟用 Azure 監視器](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)。 並檢視提供稽核記錄的資料表。
 
 ### <a name="encryption"></a>加密
 
 若要符合組織安全性和合規性需求，保護資料就非常重要。 除了限制未經授權的員工存取資料之外，您還應該將資料加密。
 
-HDInsight 叢集的兩個資料存放區 (Azure Blob 儲存體和 Azure Data Lake Storage Gen1/Gen2) 都支援透明伺服器端的待用[資料加密](../../storage/common/storage-service-encryption.md)。 安全的 HDInsight 叢集會完美地與此伺服器端待用資料加密功能配合運作。
+Azure 儲存體和 Azure Data Lake Storage Gen1/Gen2 都支援透明伺服器端的待用[資料加密](../../storage/common/storage-service-encryption.md)。 安全的 HDInsight 叢集會完美地與伺服器端待用資料加密配合運作。
 
 ### <a name="compliance"></a>法規遵循
 
-Azure 合規性供應項目會以各種類型的保證為基礎，包括由獨立第三方稽核公司所產生的正式認證、證明、驗證、授權及評量，以及由 Microsoft 產生的契約修訂、自我評量及客戶指引文件。 如需 HDInsight 合規性資訊，請參閱 [Microsoft 信任中心](https://www.microsoft.com/trust-center)和 [Microsoft Azure 合規性的概觀](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。
+Azure 合規性供應項目是以各種類型的保證為基礎，包括正式認證。 此外也包括證明、驗證和授權。 獨立第三方稽核公司所產生的評量。 Microsoft 所產生的合約修訂、自我評量及客戶指導文件。 如需 HDInsight 合規性資訊，請參閱 [Microsoft 信任中心](https://www.microsoft.com/trust-center)和 [Microsoft Azure 合規性的概觀](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。
 
 ## <a name="shared-responsibility-model"></a>共同責任模式
 
-下圖摘要說明主要系統安全性區域，以及您可在各區域中使用的安全性解決方案。 它也強調哪些安全性區域是您身為客戶的責任，而哪些區域是服務提供者的 HDInsight 責任。
+下圖摘要說明主要系統安全性區域，以及您可在各區域中使用的安全性解決方案。 其中也會強調哪些安全性區域是您身為客戶的責任。 而哪些區域是 HDInsight 作為服務提供者的責任。
 
 ![HDInsight 共用責任圖表](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
 
@@ -77,7 +77,7 @@ Azure 合規性供應項目會以各種類型的保證為基礎，包括由獨�
 | 資料存取安全性 | 設定 Azure Data Lake Storage Gen1 和 Gen2 的[存取控制清單 (ACL)](../../storage/blobs/data-lake-storage-access-control.md)  | 客戶 |
 |  | 在儲存體帳戶上啟用 [[需要安全傳輸]](../../storage/common/storage-require-secure-transfer.md) 屬性。 | 客戶 |
 |  | 設定 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)和虛擬網路 | 客戶 |
-|  | 設定 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 的 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | 客戶 |
+|  | 設定 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 的 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | 客戶 |
 |  | 確定已針對傳輸中的資料啟用 [TLS 加密](../../storage/common/storage-security-tls.md)。 | 客戶 |
 |  | 設定[客戶管理的金鑰](../../storage/common/storage-encryption-keys-portal.md)以進行 Azure 儲存體加密 | 客戶 |
 | 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定驗證](apache-domain-joined-configure-using-azure-adds.md) | 客戶 |

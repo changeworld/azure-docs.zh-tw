@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: 8aedbba5d65281753ca61f13e7e1a28c856948ec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: 4dba719453546337f9e5657cbe56755ac1ac9149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417788"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686241"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>對應資料流程影片教學課程
 
@@ -113,6 +113,8 @@ ms.locfileid: "81417788"
 
 [在執行階段動態最佳化資料流程叢集大小](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
+[最佳化資料流程啟動時間](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
 ## <a name="mapping-data-flow-scenarios"></a>對應資料流案例
 
 [模糊查閱](http://youtu.be/7gdwExjHBbw)
@@ -156,3 +158,5 @@ ms.locfileid: "81417788"
 [有趣的字串內插補點和參數](https://youtu.be/hb3-cn2CMgM)
 
 [資料流程指令碼簡介：複製、貼上、程式碼片段](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
+
+[資料品質運算式](https://www.youtube.com/watch?v=O8gmv5-lXhs)

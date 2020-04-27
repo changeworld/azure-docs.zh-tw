@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: diberry
-ms.openlocfilehash: 4cbec342bc20de35c0c62284e4e1fe1ae8b8e8a4
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 20916ff80ae52ee9fc215d87c0987900d89e590a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76966802"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733294"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 * [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 公用應用程式識別碼：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 
 ## <a name="create-luis-runtime-key-for-predictions"></a>建立預測的 LUIS 執行階段金鑰
 

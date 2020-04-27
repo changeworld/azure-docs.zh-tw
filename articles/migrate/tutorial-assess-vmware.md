@@ -1,16 +1,17 @@
 ---
-title: 評估 VMware VM 以移轉至 Azure
+title: 使用 Azure Migrate 伺服器評估來評估 VMware VM
 description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部署 VMware VM 是否可移轉至 Azure。
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548753"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535361"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>使用 Azure Migrate 伺服器評估來評估 VMware VM
+# <a name="assess-vmware-vms-with-server-assessment"></a>透過伺服器評量評估 VMware
 
 本文說明如何使用 [Azure Migrate：伺服器評量](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具來評估內部部署 VMware 虛擬機器 (VM)。
 
@@ -48,9 +49,7 @@ ms.locfileid: "80548753"
 
 1. 在 [開始使用]  中，選取 [新增工具]  。
 1. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。     
-1. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 支援亞洲、歐洲、英國和美國。
-
-   專案地理區域只會用來儲存從內部部署 VM 收集到的中繼資料。 當您執行移轉時，可以選取任何目的地區域。
+1. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
    ![專案名稱和區域的方塊](./media/tutorial-assess-vmware/migrate-project.png)
 
@@ -65,12 +64,12 @@ ms.locfileid: "80548753"
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
-Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。
-- 您可以使用下載的 OVA 範本，在 VMware VM 上設定設備。 或者，您也可以使用 PowerShell 安裝程式指令碼，在 VM 或實體機器上設定設備。
-- 本教學課程會使用 OVA 範本。 如果您想要使用指令碼來設定設備，請參閱[本文](deploy-appliance-script.md)。
+Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 的中繼資料和效能資料傳送至 Azure Migrate。 您可以透過數種方式來設定設備。
+
+- 使用下載的 OVA 範本，在 VMware VM 上進行設定。 這是本教學課程使用的方法。
+- 使用 PowerShell 安裝程式指令碼在 VMware VM 或實體機器上進行設定。 如果您無法使用 OVA 範本設定 VM，或如果您是在 Azure Government 中，則應該使用[此方法](deploy-appliance-script.md)。
 
 建立設備之後，您會檢查其是否可以連線到 Azure Migrate：伺服器評量、進行第一次設，以及向 Azure Migrate 專案註冊設備。
-
 
 
 ### <a name="download-the-ova-template"></a>下載 OVA 範本
@@ -115,9 +114,9 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. 在 [網路對應]  中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評估。
 1. 檢閱並確認設定，然後選取 [完成]  。
 
-### <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
+## <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 
-請確定設備 VM 可以連線至 [Azure URL](migrate-appliance.md#url-access)。
+確定設備 VM 可以連線至[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure URL。
 
 ### <a name="configure-the-appliance"></a>設定設備
 
@@ -136,7 +135,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
    - **連線能力**：應用程式會確認 VM 是否能夠存取網際網路。 如果 VM 使用 Proxy：
      - 選取 [Proxy 設定]  ，然後以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定 Proxy 位址和接聽連接埠。
      - 如果 Proxy 需要驗證，請指定認證。
-     - 請注意，僅支援 HTTP Proxy。
+     - 僅支援 HTTP Proxy。
    - **時間同步**：設備上的時間應該與網際網路時間同步，探索才能正常運作。
    - **安裝更新**：設備會確保已安裝最新的更新。
    - **安裝 VDDK**：設備會檢查是否已安裝 VMWare vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置。
@@ -167,7 +166,7 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
     - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
 
 3. 選取 [驗證連線]  以確定設備可以連線到 vCenter Server。
-4. 在 [探索 VM 上的應用程式和相依性]  中，選擇性地按一下 [新增認證]  ，並指定與認證相關的作業系統，以及認證的使用者名稱和密碼。 然後按一下 [新增]  。
+4. 在 [探索 VM 上的應用程式和相依性]  中，選擇性地按一下 [新增認證]  ，並指定與認證相關的作業系統，以及認證的使用者名稱和密碼。 然後按一下 [ **新增**]。
 
     - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
     - 如果您不使用這些功能，則可以略過這項設定。

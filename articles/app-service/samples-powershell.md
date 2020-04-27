@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74687019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532420"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service 的 PowerShell 範例
 
@@ -27,7 +27,7 @@ ms.locfileid: "74687019"
 | [建立應用程式並將程式碼部署至預備環境](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立具有部署位置以用於暫存程式碼變更的 App Service 應用程式。 |
 |**設定應用程式**||
 | [將自訂網域對應至應用程式](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱與之對應。 |
-| [將自訂 SSL 憑證繫結至應用程式](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱的 SSL 憑證與之繫結。 |
+| [將自訂 TLS/SSL 憑證繫結至應用程式](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱的 TLS/SSL 憑證與之繫結。 |
 |**調整應用程式**||
 | [手動調整應用程式](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立 App Service 應用程式，並跨 2 個執行個體調整它。 |
 | [透過高可用性架構將應用程式調整為全球可用](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 在兩個不同的地理區域中建立兩個 App Service 應用程式，並使用 Azure 流量管理員讓它們可透過單一端點來使用。 |

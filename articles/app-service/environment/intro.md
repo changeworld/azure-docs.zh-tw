@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057375"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770639"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service 環境簡介 #
  
@@ -24,7 +24,7 @@ Azure App Service Environment 是 Azure App Service 的功能，可提供完全�
 * Linux Web 應用程式 
 * Docker 容器
 * 行動應用程式
-* Functions
+* 函式
 
 App Service Environment (ASE) 適合需要下列項目的應用程式工作負載：
 
@@ -34,7 +34,7 @@ App Service Environment (ASE) 適合需要下列項目的應用程式工作負�
 
 客戶可以在單一 Azure 區域中或跨多個 Azure 區域建立多個 ASE。 這種彈性讓 ASE 很適合用於水平調整無狀態應用程式層的規模，以支援高 RPS 的工作負載。
 
-ASE 已經過隔離，可執行只有單一客戶的應用程式，且一律會部署到虛擬網路。 客戶可以精確控制輸入和輸出的應用程式網路流量。 應用程式可以透過 VPN 建立內部部署公司資源的高速安全連線。
+ASE 只能裝載一個客戶的應用程式，並且會在其中一個 VNet 中執行此動作。 客戶可以精確控制輸入和輸出的應用程式網路流量。 應用程式可以透過 VPN 建立內部部署公司資源的高速安全連線。
 
 * ASE 隨附在自己的定價層中，了解[隔離式供應項目](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)如何有助於驅動超大規模作業及安全性。
 * [App Service Environment v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) 提供一個環境來保護您網路子網路中的應用程式，並可讓您擁有私人的 Azure App Service 部署。
@@ -75,7 +75,7 @@ ASE 可以是具有公用 IP 位址的網際網路對應，或只具有 Azure �
 
 ## <a name="app-service-environment-v1"></a>App Service 環境 v1 ##
 
-App Service Environment 有兩個版本：ASEv1 和 ASEv2。 前述資訊架構在 ASEv2 上。 本節說明 ASEv1 與 ASEv2 之間的差異。 
+App Service 環境有兩個版本：ASEv1 和 ASEv2。 前述資訊架構在 ASEv2 上。 本節說明 ASEv1 與 ASEv2 之間的差異。 
 
 在 ASEv1 中，您必須手動管理所有資源。 其中包括前端、背景工作角色和用於 IP 型 SSL 的 IP 位址。 首先，您必須將想要在其中裝載的背景工作角色集區擴增，才能擴增 App Service 方案。
 

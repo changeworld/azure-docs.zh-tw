@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79298830"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758122"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型
 
-本教學課程將為建置者說明如何使用閘道裝置範本，在 IoT Central 應用程式中定義閘道裝置。 接著，您可設定數個下游裝置，以透過閘道裝置連線到您的 IoT Central 應用程式。 
+*本文適用於解決方案建置人員和裝置開發人員。*
+
+本教學課程將為解決方案建置人員說明如何使用閘道裝置範本，在 IoT Central 應用程式中定義閘道裝置。 接著，您可設定數個下游裝置，以透過閘道裝置連線到您的 IoT Central 應用程式。 
 
 在本教學課程中，您會建立 [智能建築]  閘道裝置範本。 [智能建築]  閘道裝置與其他下游裝置有所關聯。
 
@@ -159,7 +161,7 @@ ms.locfileid: "79298830"
 
 1. 保留所產生的 [裝置識別碼]  和 [裝置名稱]  。 確定 [模擬]  切換開關為 [開啟]  。 選取 [建立]  。
 
-1. 在 [裝置]  頁面上，選取裝置範本清單中的 [S1 感應器]  。
+1. 在 [裝置]  頁面上，選取裝置範本清單中的 [R1 感應器]  。
 
 1. 選取 **+** 以開始新增裝置。
 
@@ -207,7 +209,7 @@ ms.locfileid: "79298830"
 > [!NOTE]
 > 在 IoT Central 中模型化的閘道裝置目前不支援以 VS Code 為基礎的程式碼產生。
 
-接著，您可以：
+接著，身為裝置開發人員，您可以了解如何：
 
 > [!div class="nextstepaction"]
-> [連接裝置](tutorial-connect-device.md)
+> [將 Azure IoT Edge 裝置新增至 Azure IoT Central 應用程式](tutorial-add-edge-as-leaf-device.md)

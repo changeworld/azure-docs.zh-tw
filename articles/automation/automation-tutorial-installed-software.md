@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b93035fc7e315f8117516771236186f9d942a0aa
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223775"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604664"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>探索您的 Azure 電腦和非 Azure 電腦上安裝了哪些軟體
 
@@ -45,7 +45,7 @@ ms.locfileid: "79223775"
 
 瀏覽至您的自動化帳戶，然後選取 [組態管理]  下的 [清查]  。
 
-選擇 Log Analytics 工作區與自動化帳戶，然後按一下 [啟用]  來啟用解決方案。 啟用解決方案最多需要 15 分鐘。
+選擇 Log Analytics 工作區與自動化帳戶，然後按一下 [啟用]  以啟用解決方案。 啟用解決方案最多需要 15 分鐘。
 
 ![清查上架設定橫幅](./media/automation-tutorial-installed-software/enableinventory.png)
 
@@ -62,13 +62,13 @@ ms.locfileid: "79223775"
 
 ## <a name="onboard-a-vm"></a>讓 VM 上架
 
-在您的自動化帳戶中，瀏覽置 [組態管理]  下的 [清查]  。
+在您的自動化帳戶中，瀏覽至 [組態管理]  下的 [清查]  。
 
-選取 [+ 新增 Azure VM]  ，這會開啟 [虛擬機器]  頁面，並可讓您從清單中選取現有的 VM。 選取您要上架的 VM。 在開啟的頁面上，按一下 [啟用]  以啟用 VM 上的解決方案。 系統會將 Microsoft Management Agent 部署至 VM，並將代理程式設定為能與啟用方案時設定的 Log Analytics 工作區通訊。 這需要數分鐘的時間來完成上架。 此時，您可以從清單中選取新的 VM，然後讓另一個 VM 上架。
+選取 [+ 新增 Azure VM]  ，這會開啟 [虛擬機器] 頁面，並可讓您從清單中選取現有的 VM。 選取您要上架的 VM。 在開啟的頁面上，按一下 [啟用]  以啟用 VM 上的解決方案。 系統會將 Microsoft Management Agent 部署至 VM，並將代理程式設定為能與啟用方案時設定的 Log Analytics 工作區通訊。 這需要數分鐘的時間來完成上架。 此時，您可以從清單中選取新的 VM，然後讓另一個 VM 上架。
 
 ## <a name="onboard-a-non-azure-machine"></a>讓非 Azure 機器上線
 
-若要新增非 Azure 機器，請安裝 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](automation-linux-hrw-install.md) 的代理程式 (視作業系統而定)。 安裝代理程式之後，瀏覽至您的自動化帳戶，然後移至 [組態管理]  下的 [清查]  。 當您按一下 [管理機器]  時，您會看到向 Log Analytics 工作區回報的機器清單，而其中並沒有啟用解決方案。 為您的環境選取適當選項。
+若要新增非 Azure 機器，請安裝[適用於 Windows 的 Log Analytics 代理程式](../azure-monitor/platform/agent-windows.md)或[適用於 Linux 的 Log Analytics 代理程式](automation-linux-hrw-install.md) (視您的作業系統而定)。 安裝代理程式之後，瀏覽至您的自動化帳戶，然後移至 [組態管理]  下的 [清查]  。 當您按一下 [管理機器]  時，您會看到向 Log Analytics 工作區回報的機器清單，而其中並沒有啟用解決方案。 為您的環境選取適當選項。
 
 * **在所有可用機器上啟用** - 此選項可在此時向您 Log Analytics 工作區回報的所有機器上，啟用解決方案。
 * **在所有可用機器和未來機器上啟用** - 此選項可在向您 Log Analytics 工作區回報的所有機器上，以及之後會新增至工作區的所有未來機器上，啟用解決方案。
@@ -78,11 +78,11 @@ ms.locfileid: "79223775"
 
 ## <a name="view-installed-software"></a>檢視已安裝的軟體
 
-一旦啟用變更追蹤和清查解決方案後，您就可以檢視 [清查]  頁面上的結果。
+一旦啟用變更追蹤和清查解決方案後，您就可以檢視 [清查] 頁面上的結果。
 
-從您的自動化帳戶中，選取 [組態管理]  下的 [清查]  。
+在您的自動化帳戶中，選取 [組態管理]  下的 [清查]  。
 
-在 [清查]  頁面上，按一下 [軟體]  索引標籤。
+在 [清查] 頁面上，按一下 [軟體]  索引標籤。
 
 在 [軟體]  索引標籤上，有一份資料表列出已找到的軟體。 軟體會依軟體名稱及版本群組。
 
@@ -95,14 +95,14 @@ ms.locfileid: "79223775"
 若要尋找特定軟體或軟體的群組，您可以在軟體清單上方的文字方塊中直接搜尋。
 篩選器可讓您以軟體名稱、版本或發行者作為基礎進行搜尋。
 
-例如，搜尋 "Contoso" 會傳回名稱、發行者或版本中包含 "Contoso" 的所有軟體。
+例如，搜尋 **Contoso** 會傳回名稱、發行者或版本中包含 **Contoso** 的所有軟體。
 
 ## <a name="search-inventory-logs-for-installed-software"></a>搜尋已安裝軟體的清查記錄
 
-清查所產生的記錄資料會傳送到 Azure 監視器記錄。 若要透過執行查詢來搜尋記錄，請選取 [清查]  視窗頂端的 [Log Analytics]  。
+清查所產生的記錄資料會傳送到 Azure 監視器記錄。 若要透過執行查詢來搜尋記錄，請選取 [清查] 頁面頂端的 [Log Analytics]  。
 
-清查資料會儲存在 **ConfigurationData** 類型之下。
-下列的 Log Analytics 查詢範例會傳回清查結果，其中「發行者」是 "Microsoft Corporation"。
+清查資料會儲存在 `ConfigurationData` 類型之下。
+下列的 Log Analytics 查詢範例會傳回清查結果，其中「發行者」是 **Microsoft Corporation**。
 
 ```loganalytics
 ConfigurationData
@@ -116,7 +116,7 @@ ConfigurationData
 ### <a name="single-machine-inventory"></a>單一電腦清查
 
 若要查看單一電腦的軟體清查，您可以從 Azure VM 資源頁面存取清查，或使用 Azure 監視器記錄來篩選到對應的機器。
-下列範例 Log Analytics 查詢會傳回名為 ContosoVM 的電腦之軟體清單。
+下列範例 Log Analytics 查詢會傳回名為 **ContosoVM** 的電腦軟體清單。
 
 ```loganalytics
 ConfigurationData

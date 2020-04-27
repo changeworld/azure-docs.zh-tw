@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 將機器視為實體伺服器遷移至 Azure。
 description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azure。
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1824fc6c7cbc0fd0390770027f4a15d9130139de
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80298008"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535378"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
@@ -22,12 +22,10 @@ ms.locfileid: "80298008"
 - 遷移在公用雲端中執行的 VM，例如 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP)。
 
 
-[Azure Migrate](migrate-services-overview.md) 提供集中式中樞，可追蹤內部部署應用程式和工作負載以及雲端 VM 執行個體的探索、評量和移轉 (以 Azure 為目標)。 該中樞能提供 Azure Migrate 工具以進行評估和移轉，也提供協力廠商獨立軟體廠商 (ISV) 的供應項目。
+此教學課程是一個系列中的第三篇，會示範如何評定實體伺服器並將其移轉到 Azure。 在本教學課程中，您會了解如何：
 
-
-在本教學課程中，您會了解如何：
 > [!div class="checklist"]
-> * 使用 Azure Migrate 伺服器移轉工具進行 Azure 的移轉準備。
+> * 準備搭配使用 Azure 與 Azure Migrate：伺服器移轉。
 > * 對您要遷移的機器檢查需求，並備妥 Azure Migrate 複寫設備的機器，用以探索機器並將其遷移至 Azure。
 > * 在 Azure Migrate 中樞新增 Azure Migrate 伺服器移轉工具。
 > * 設定複寫設備。
@@ -46,21 +44,20 @@ ms.locfileid: "80298008"
 
 開始進行本教學課程之前，您必須：
 
-1. [檢閱](migrate-architecture.md)移轉架構。
-2. 確定您的 Azure 帳戶已獲派「虛擬機器參與者」角色，讓您有權執行下列作業：
+[檢閱](migrate-architecture.md)移轉架構。
 
-    - 在所選的資源群組中建立 VM。
-    - 在所選的虛擬網路中建立 VM。
-    - 寫入至 Azure 受控磁碟。 
 
-3. [設定 Azure 網路](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 當您複寫至 Azure 時會建立 Azure VM，且此 VM 會加入您設定移轉時所指定的 Azure 網路。
 
 
 ## <a name="prepare-azure"></a>準備 Azure
 
-您必須先設定 Azure 權限，才能使用「Azure Migrate 伺服器移轉」來進行遷移。
+準備 Azure 以使用伺服器移轉進行移轉。
 
-- **建立專案**：您的 Azure 帳戶必須有建立 Azure Migrate 專案的權限。 
+**Task** | **詳細資料**
+--- | ---
+**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能建立專案。
+**驗證您 Azure 帳戶的權限** | 您的 Azure 帳戶必須有建立 VM 以及寫入至 Azure 受控磁碟的權限。
+
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
@@ -70,17 +67,32 @@ ms.locfileid: "80298008"
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
+
+### <a name="assign-azure-account-permissions"></a>指派 Azure 帳戶權限
+
+將「虛擬機器參與者」角色指派給 Azure 帳戶。 這會提供權限給：
+
+    - 在所選的資源群組中建立 VM。
+    - 在所選的虛擬網路中建立 VM。
+    - 寫入至 Azure 受控磁碟。 
+
+### <a name="create-an-azure-network"></a>建立 Azure 網路
+
+[設定](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure 虛擬網路 (VNet)。 當您複寫至 Azure 時，系統會建立 Azure VM 並將其加入至您設定移轉時所指定的 Azure VNet。
+
 ## <a name="prepare-for-migration"></a>為移轉做準備
+
+若要準備進行實體伺服器移轉，您必須驗證實體伺服器設定，並準備部署複寫設備。
 
 ### <a name="check-machine-requirements-for-migration"></a>檢查移轉的機器需求
 
 確定機器符合移轉至 Azure 的需求。 
 
 > [!NOTE]
-> 使用 Azure Migrate 伺服器移轉來進行的代理程式型移轉，具有與 Azure Site Recovery 服務的代理程式型災害復原功能相同的複寫架構，而所使用的部分元件則共用相同的程式碼基底。 某些需求可能會連結至 Site Recovery 文件。
+> 遷移實體機器時，Azure Migrate：伺服器移轉會使用與 Azure Site Recovery 服務中的代理程式型災害復原功能相同的複寫架構，而部分元件會共用相同的程式碼基底。 有些內容可能會連結至 Site Recovery 文件。
 
 1. [確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)實體伺服器需求。
-2. 確認 VM 設定。 您複寫到 Azure 的內部部署機器必須符合 [Azure VM 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+2. 確認您複寫到 Azure 的內部部署機器符合 [Azure VM 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>準備複寫設備的機器
@@ -90,12 +102,16 @@ ms.locfileid: "80298008"
 - **設定伺服器**：組態伺服器會協調內部部署與 Azure 之間的通訊，以及管理資料複寫。
 - **處理序伺服器**：處理序伺服器可作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將其傳送至 Azure 中的快取儲存體帳戶。 
 
-開始之前，您必須準備用來裝載複寫設備的 Windows Server 2016 機器。 此機器應符合[這些需求](migrate-replication-appliance.md)。 設備不應該安裝在您想要保護的來源機器上。
+準備設備部署，如下所示：
 
+- 準備裝載複寫設備的機器。 [請檢閱](migrate-replication-appliance.md#appliance-requirements)機器需求。 設備不應該安裝在您想要複寫的來源機器上。
+- 複寫設備會使用 MySQL。 檢閱在設備上安裝 MySQL 的[選項](migrate-replication-appliance.md#mysql-installation)。
+- 檢閱複寫設備存取[公用](migrate-replication-appliance.md#url-access)和[政府](migrate-replication-appliance.md#azure-government-url-access)雲端所需的 Azure URL。
+- 檢閱複寫設備的 [連接埠] (migrate-replication-appliance.md#port-access) 存取需求。
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>新增 Azure Migrate 伺服器移轉工具
+## <a name="add-the-server-migration-tool"></a>新增伺服器移轉工具
 
-設定 Azure Migrate 專案，然後新增 Azure Migrate 伺服器移轉工具。
+設定 Azure Migrate 專案，然後將伺服器移轉工具新增至其中。
 
 1. 在 Azure 入口網站 > [所有服務]  中，搜尋 **Azure Migrate**。
 2. 在 [服務]  下，選取 [Azure Migrate]  。
@@ -106,19 +122,10 @@ ms.locfileid: "80298008"
 
 5. 在 [探索、評估和遷移伺服器]  中，按一下 [新增工具]  。
 6. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
-7. 在 [專案詳細資料]  中指定專案名稱，以及您要在其中建立專案的地理位置，然後按 [下一步] 
+7. 在 [專案詳細資料]  中指定專案名稱，以及您要在其中建立專案的地理位置，然後按 [下一步]  。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
     ![建立 Azure Migrate 專案](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-    您可以在下列任何地理位置建立 Azure Migrate 專案。
-
-    **地理位置** | **區域**
-    --- | ---
-    Asia | 東南亞
-    歐洲 | 北歐或西歐
-    美國 | 美國東部或美國中西部
-
-    針對專案所指定的地理位置，僅會用於儲存從內部部署虛擬機器收集的中繼資料。 您可以選取任何目標區域以進行實際移轉。
 8. 在 [選取評量工具]  中，選取 [暫時跳過新增評量工具]   > [下一步]  。
 9. 在 [選取移轉工具]  中，選取 **[Azure Migrate：伺服器移轉]**  > [下一步]  。
 10. 在 [檢閱 + 新增工具]  中檢閱設定，然後按一下 [新增工具] 
@@ -126,7 +133,7 @@ ms.locfileid: "80298008"
 
 ## <a name="set-up-the-replication-appliance"></a>設定複寫設備
 
-移轉的第一個步驟是設定複寫設備。 您可以下載設備的安裝程式檔案，並在[您備妥的機器](#prepare-a-machine-for-the-replication-appliance)上加以執行。 安裝設備後，您可以將其註冊至「Azure Migrate 伺服器移轉」。
+移轉的第一個步驟是設定複寫設備。 若要設定設備以進行實體伺服器移轉，請下載設備的安裝程式檔案，然後在[您準備的機器](#prepare-a-machine-for-the-replication-appliance)上執行該檔案。 安裝設備後，您可以將其註冊至「Azure Migrate 伺服器移轉」。
 
 
 ### <a name="download-the-replication-appliance-installer"></a>下載複寫設備安裝程式

@@ -8,12 +8,15 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216366"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683300"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置佈建服務來佈建裝置
 Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所有的 IoT 方案需求。 IoT 中樞裝置佈建服務 (DPS) 是 IoT 中樞的一項協助程式服務，可對正確的 IoT 中樞進行自動 Just-in-Time 佈建，完全無須人為介入。 DPS 可讓您以安全且可擴充的方式佈建數百萬個裝置。

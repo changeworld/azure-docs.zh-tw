@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/22/2020
+ms.openlocfilehash: 5fa25f54faecbc7caf130ffeb0d24c3d8fef7e09
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117226"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084799"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教學課程：將 Apache Spark 結構化串流用於 HDInsight 上的 Apache Kafka
 
@@ -35,7 +35,7 @@ Spark 結構化串流是建置在 Spark SQL 上的串流處理引擎。 它允�
 
 * 熟悉如何搭配使用 [Jupyter Notebook](https://jupyter.org/) 和 HDInsight 上的 Spark。 如需詳細資訊，請參閱[使用 HDInsight 上的 Apache Spark 載入資料及執行查詢](spark/apache-spark-load-data-run-query.md)文件。
 
-* 熟悉 [Scala](https://www.scala-lang.org/) 程式設計語言。 教學課程中使用的程式碼是以 Scala 撰寫的。
+* 熟悉 Scala 程式設計語言。 教學課程中使用的程式碼是以 Scala 撰寫的。
 
 * 熟悉如何建立 Kafka 主題。 如需詳細資訊，請參閱 [HDInsight 上的 Apache Kafka 快速入門](kafka/apache-kafka-get-started.md)文件。
 
@@ -277,7 +277,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     println("Schema declared")
     ```
 
-1. 選取資料，並啟動串流。 下列命令會示範如何使用批次查詢從 kafka 擷取資料，然後將結果寫出到 Spark 叢集上的 HDFS。 在此範例中，`select` 會從 Kafka 擷取訊息 (值欄位)，並對其套用結構描述。 接著，資料會以 Parquet 格式寫入到 HDFS (WASB 或 ADL)。 在下一個 Jupyter 資料格中輸入命令。
+1. 選取資料，並啟動串流。 下列命令會示範如何使用批次查詢從 Kafka 擷取資料。 然後將結果寫出到 Spark 叢集上的 HDFS。 在此範例中，`select` 會從 Kafka 擷取訊息 (值欄位)，並對其套用結構描述。 接著，資料會以 Parquet 格式寫入到 HDFS (WASB 或 ADL)。 在下一個 Jupyter 資料格中輸入命令。
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若要清除本教學課程所建立的資源，您可以刪除資源群組。 刪除資源群組也會刪除相關聯的 HDInsight 叢集，以及與資源群組相關聯的任何其他資源。
+若要清除本教學課程所建立的資源，您可以刪除資源群組。 刪除資源群組也會刪除相關聯的 HDInsight 叢集。 以及與資源群組相關聯的任何其他資源。
 
 若要使用 Azure 入口網站移除資源群組：
 
@@ -331,7 +331,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 [Apache Spark 結構化串流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)對 HDInsight 上的 [Apache Kafka](./kafka/apache-kafka-introduction.md) 寫入及讀取資料。 請使用下列連結了解如何搭配使用 [Apache Storm](./storm/apache-storm-overview.md) 與 Kafka。
+在本教學課程中，您已了解如何使用 Apache Spark 結構化串流。 從 HDInsight 上的 Apache Kafka 寫入和讀取資料。 請使用下列連結了解如何搭配使用 Apache Storm 與 Kafka。
 
 > [!div class="nextstepaction"]
 > [使用 Apache Storm 搭配 Apache Kafka](hdinsight-apache-storm-with-kafka.md)

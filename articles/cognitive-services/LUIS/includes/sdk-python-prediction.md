@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: ff4c33aea3d3ce604f44c38e6e3856242388b0e9
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: eabec50f57785bde6760db053eb3b12f6f5b6452
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77371674"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732041"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 預測用戶端程式庫，可以：
 
@@ -28,6 +28,7 @@ ms.locfileid: "77371674"
 
 * Language Understanding (LUIS) 入口網站帳戶 - [建立免費帳戶](https://www.luis.ai)
 * [Python 3.x](https://www.python.org/)
+* LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 
 ## <a name="setting-up"></a>設定
 

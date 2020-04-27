@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345837"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452871"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：準備使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中執行群集所需的資料
 
@@ -43,13 +44,11 @@ K-Means 叢集是*非監督式學習*演算法，會根據相似性找出資料�
 
 在[第三部分](sql-database-tutorial-clustering-model-deploy.md)中，您將了解如何使用 R 在 Azure SQL 資料庫中建立可根據新資料執行群集的預存程序。
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - 如果您沒有 Azure 訂用帳戶，請在開始前[建立帳戶](https://azure.microsoft.com/free/)。
 
-* 已啟用機器學習服務的 Azure SQL Database - 在公開預覽期間，Microsoft 會將您加入，並為您現有的或新的資料庫啟用機器學習服務。 請遵循[註冊預覽版](sql-database-machine-learning-services-overview.md#signup)中的步驟。
+* 已啟用[具備機器學習服務的 Azure SQL Database (搭配 R)](sql-database-machine-learning-services-overview.md)。
 
 * RevoScaleR 套件 - 請參閱 [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) 以了解在本機安裝此套件的選項。
 

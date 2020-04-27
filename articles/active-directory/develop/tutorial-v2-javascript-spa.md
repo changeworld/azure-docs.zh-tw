@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 52b7c582848dd24f6d9963a9d37c8f12c5db6149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990951"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678017"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
 本指南將示範 JavaScript 單頁應用程式 (SPA) 如何執行下列動作：
-- 登入個人帳戶及公司和學校帳戶 
+- 登入個人帳戶及公司和學校帳戶
 - 取得存取權杖
 - 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點  中存取權杖的 API
 
@@ -48,10 +48,6 @@ ms.locfileid: "80990951"
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|適用於 JavaScript 的 Microsoft Authentication Library|
 
-> [!NOTE]
-> Msal.js  的目標是「Microsoft 身分識別平台」端點，其可讓個人帳戶、學校及公司帳戶登入和取得權杖。 Microsoft 身分識別平台端點有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
-> 若要了解 v1.0 與 v2.0 端點之間的差異，請參閱[端點比較指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
-
 <!--end-collapse-->
 
 ## <a name="set-up-your-web-server-or-project"></a>設定您的網頁伺服器或專案
@@ -68,7 +64,7 @@ ms.locfileid: "80990951"
 
 ## <a name="create-your-project"></a>建立專案
 
-請確定您已安裝 [Node.js](https://nodejs.org/en/download/)，然後建立資料夾來裝載您的應用程式。 我們會在該處實作簡單的 [Express](https://expressjs.com/) Web 伺服器來提供 `index.html` 檔案。 
+請確定您已安裝 [Node.js](https://nodejs.org/en/download/)，然後建立資料夾來裝載您的應用程式。 我們會在該處實作簡單的 [Express](https://expressjs.com/) Web 伺服器來提供 `index.html` 檔案。
 
 1. 首先，使用 Visual Studio Code 整合式終端機找出專案資料夾，然後使用 NPM 來安裝 Express。
 
@@ -170,7 +166,7 @@ ms.locfileid: "80990951"
 
        <!-- importing bootstrap.js and supporting js libraries -->
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
        <!-- importing app scripts (load order is important) -->
@@ -188,7 +184,7 @@ ms.locfileid: "80990951"
 
    > [!TIP]
    > 您可以使用 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) 下的最新發行版本取代上述指令碼中的 MSAL.js 版本。
-   
+
 2. 現在，建立名為 `ui.js` 的 .js 檔案以便存取和更新 DOM 元素，然後新增下列程式碼：
 
    ```JavaScript
@@ -304,7 +300,7 @@ ms.locfileid: "80990951"
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
   // Add here scopes for id token to be used at MS Identity Platform endpoints.
   const loginRequest = {
@@ -350,7 +346,7 @@ ms.locfileid: "80990951"
    function signOut() {
      myMSALObj.logout();
    }
-   
+
    function callMSGraph(theUrl, accessToken, callback) {
        var xmlHttp = new XMLHttpRequest();
        xmlHttp.onreadystatechange = function () {
@@ -430,7 +426,7 @@ ms.locfileid: "80990951"
 1. 應用程式也可以提供視覺指示，讓使用者知道需要透過互動方式登入，使用者就能選取正確的登入時機，或應用程式可以在之後重試 `acquireTokenSilent`。 這是相當常用的方式，因為使用者可以在不中斷的情況下使用應用程式的其他功能。 例如，應用程式中可能會有未驗證的內容。 在此情況下，使用者可以決定何時登入以存取受保護的資源，或者重新整理過期的資訊。
 
 > [!NOTE]
-> 本快速入門預設會使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果您使用 Internet Explorer 作為瀏覽器，建議您使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，這是因為有與 Internet Explorer 處理快顯視窗的方式相關的[已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 如果您想要了解如何使用 `Redirect methods` 來達到相同結果，請[參閱](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)。 
+> 本快速入門預設會使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果您使用 Internet Explorer 作為瀏覽器，建議您使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，這是因為有與 Internet Explorer 處理快顯視窗的方式相關的[已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 如果您想要了解如何使用 `Redirect methods` 來達到相同結果，請[參閱](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)。
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>使用您剛剛取得的權杖呼叫 Microsoft Graph API
@@ -462,7 +458,7 @@ ms.locfileid: "80990951"
      };
 
      console.log('request made to Graph API at: ' + new Date().toString());
-  
+
      fetch(endpoint, options)
        .then(response => response.json())
        .then(response => callback(response, endpoint))

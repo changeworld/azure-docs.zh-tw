@@ -2,18 +2,18 @@
 title: 使用 Azure Migrate 準備 Hyper-V VM 以進行評量/移轉
 description: 了解如何使用 Azure Migrate 準備進行 VMware VM 的評量/移轉。
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436209"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641642"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>準備 Hyper-V VM 的評量並將其移轉至 Azure
 
-本文說明如何使用 Azure Migrate：伺服器評量 (migrate-services-overview.md#azure-migrate-server-assessment-tool) 來準備內部部署 Hyper-V VM 的評量，並透過 [Azure Migrate：伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)來遷移 Hyper-V VM。
+本文說明如何使用 [Azure Migrate：伺服器評量](migrate-services-overview.md#azure-migrate-server-assessment-tool)來準備內部部署 Hyper-V VM 的評量，並透過 [Azure Migrate：伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)來遷移 Hyper-V VM。
 
 
 本教學課程是一個系列中的第一篇，說明如何評估 Hyper-V VM 並將其遷移至 Azure。 在本教學課程中，您會了解如何：
@@ -214,9 +214,11 @@ Azure Migrate 需要可探索內部部署 VM 的權限。
 在下一個教學課程中設定 Azure Migrate 設備並開始進行評量之前，請先準備設備部署。
 
 1. [確認](migrate-appliance.md#appliance---hyper-v)設備需求。
-2. [檢閱](migrate-appliance.md#url-access)設備需要存取的 Azure URL。
+2. 檢閱[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中設備需要存取的 Azure URL。 如果您使用以 URL 為基礎的防火牆或 Proxy，請務必允許必要 URL 的存取。
 3. 檢閱設備將在探索和評量期間收集的資料。
-4. [注意](migrate-appliance.md#collected-data---hyper-v)設備的連接埠存取需求。
+4. [檢閱](migrate-appliance.md#collected-data---hyper-v)設備的連接埠存取需求。
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>準備 Hyper-V 移轉

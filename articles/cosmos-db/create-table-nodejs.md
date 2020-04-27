@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: sngun
-ms.openlocfilehash: f317b7b5f3ab60f466054f2043027b13e8396abc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e0d2d2ea99822c95b9fab73642db37430771c583
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212803"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083759"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入門：使用 Node.js 與 Azure Cosmos DB 建置資料表 API 應用程式
 
@@ -50,7 +50,7 @@ ms.locfileid: "77212803"
 
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 
-現在，我們將從 GitHub 複製「資料表」應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。 
+現在，我們將從 GitHub 複製「資料表」應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。
 
 1. 開啟命令提示字元，建立名為 git-samples 的新資料夾，然後關閉命令提示字元。
 
@@ -69,6 +69,8 @@ ms.locfileid: "77212803"
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
+
+> ![TIP] 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-nodejs.md)一文。 
 
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 

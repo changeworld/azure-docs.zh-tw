@@ -7,16 +7,19 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313870"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767761"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業 (預覽)
 
 本快速入門說明如何使用適用於 Visual Studio Code 的 Azure 串流分析工具擴充功能建立及執行 Azure 串流分析作業。 範例作業會從 Azure IoT 中樞裝置讀取串流資料。 您會定義一項作業，用以計算溫度超過 27° 時的平均溫度，並將產生的輸出事件寫入 Blob 儲存體中的新檔案。
+
+> [!NOTE]
+> Visual Studio 和 Visual Studio Code 工具不支援中國東部、中國北部、德國中部和德國東北部區域中的作業。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -140,14 +143,6 @@ ms.locfileid: "76313870"
    FROM Input
    HAVING Temperature > 27
    ```
-
-## <a name="test-the-query-locally-with-sample-data"></a>使用範例資料在本機測試查詢
-
-在雲端中執行查詢之前，您可以使用本機範例資料檔案或從即時輸入中擷取的資料，在本機進行測試，以驗證查詢邏輯。
-
-如需詳細資訊，請依照[使用範例資料在本機測試查詢](visual-studio-code-local-run.md)中的指示操作。
-
- ![使用 Visual Studio Code 中的範例資料進行測試](./media/vscode-local-run/localrun-localinput.gif)
 
 ## <a name="define-a-live-input"></a>定義即時輸入
 
@@ -279,6 +274,8 @@ ms.locfileid: "76313870"
 在本快速入門中，您已使用 Visual Studio Code 部署了簡單的串流分析作業。 您也可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md)、[PowerShell](stream-analytics-quick-create-powershell.md) 和 [Visual Studio](stream-analytics-quick-create-vs.md) 來部署串流分析作業。
 
 若要了解適用於 Visual Studio Code 的 Azure 串流分析工具，請繼續參考下列文章：
+
+* [使用 Visual Studio Code 和範例資料在本機測試串流分析查詢](visual-studio-code-local-run.md)
 
 * [使用 Visual Studio Code 在本機對即時輸入測試 Azure 串流分析作業](visual-studio-code-local-run-live-input.md)
 

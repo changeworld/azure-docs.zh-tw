@@ -83,7 +83,7 @@
       href: traffic-manager-load-balancing-azure.md
     - name: 測量流量管理員效能
       href: traffic-manager-performance-considerations.md
-    - name: 啟用診斷記錄
+    - name: 啟用資源記錄
       href: traffic-manager-diagnostic-logs.md
     - name: 使用 Azure PowerShell 管理流量管理員
       href: traffic-manager-powershell-arm.md
@@ -127,7 +127,7 @@
       href: 'https://azure.microsoft.com/blog/topics/networking/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

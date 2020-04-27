@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: ba4afa31a1ed7b6e2ddf43787ca32a06e97455ce
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533763"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
 本指南示範原生 Windows Desktop .NET (XAML) 應用程式如何使用存取權杖以呼叫 Microsoft Graph API。 此應用程式也可以存取其他 API，其需要 Microsoft 身分識別平台針對開發人員 v2.0 端點提供的存取權杖。 此平台先前名為 Azure AD。
 
-當您完成本指南之後，您的應用程式就可以呼叫受保護的 API (使用個人帳戶，包括 outlook.com、live.com 等等)。 應用程式也可以使用任何公司或組織 (使用 Azure Active Directory) 的公司和學校帳戶。  
+當您完成本指南之後，您的應用程式就可以呼叫受保護的 API (使用個人帳戶，包括 outlook.com、live.com 等等)。 應用程式也可以使用任何公司或組織 (使用 Azure Active Directory) 的公司和學校帳戶。
 
 > [!NOTE]
 > 本指南需要 Visual Studio 2015 Update 3、Visual Studio 2017 或 Visual Studio 2019。 沒有上述任一版本嗎？ [免費下載 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
@@ -77,7 +77,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > 此命令會安裝 Microsoft 驗證程式庫。 MSAL 會處理使用者權杖的取得、快取及重新整理作業，而這些權杖用來存取受 Azure Active Directory v2.0 保護的 API。
     >
 
@@ -136,7 +136,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
                 .Build();
         }
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant by the information about the accounts allowed to sign-in in your application:
@@ -156,7 +156,7 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 ## <a name="create-the-application-ui"></a>建立應用程式 UI
 
-本節會說明應用程式如何查詢受保護的後端伺服器 (例如 Microsoft Graph)。 
+本節會說明應用程式如何查詢受保護的後端伺服器 (例如 Microsoft Graph)。
 
 系統應會自動建立 MainWindow.xaml  檔案，作為專案範本的一部分。 開啟此檔案，然後將應用程式的 \<Grid>  節點取代為下列程式碼：
 
@@ -266,9 +266,9 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 
 最後，`AcquireTokenSilent` 方法會失敗。 失敗的原因可能是使用者已經登出，或已經在其他裝置上變更其密碼。 當 MSAL 偵測到可透過要求執行互動式動作來解決問題時，就會發出一個 `MsalUiRequiredException` 例外狀況。 您的應用程式可以透過兩種方式處理此例外狀況：
 
-* 它可以立即對 `AcquireTokenInteractive` 進行呼叫。 此呼叫會促使系統提示使用者登入。 此模式通常用於沒有離線內容可供使用者使用的線上應用程式。 此引導式設定所產生的範例會遵循此模式，您可以在第一次執行範例時看到它運作。 
+* 它可以立即對 `AcquireTokenInteractive` 進行呼叫。 此呼叫會促使系統提示使用者登入。 此模式通常用於沒有離線內容可供使用者使用的線上應用程式。 此引導式設定所產生的範例會遵循此模式，您可以在第一次執行範例時看到它運作。
 
-* 因為沒有任何使用者用過該應用程式，所以 `PublicClientApp.Users.FirstOrDefault()` 會包含一個 null 值，而且會擲回 `MsalUiRequiredException` 例外狀況。 
+* 因為沒有任何使用者用過該應用程式，所以 `PublicClientApp.Users.FirstOrDefault()` 會包含一個 null 值，而且會擲回 `MsalUiRequiredException` 例外狀況。
 
 * 然後範例中的程式碼會透過呼叫 `AcquireTokenInteractive` 來處理例外狀況，進而提示使用者登入。
 
@@ -322,7 +322,7 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 /// </summary>
 private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+    var accounts = await App.PublicClientApp.GetAccountsAsync();
 
     if (accounts.Any())
     {

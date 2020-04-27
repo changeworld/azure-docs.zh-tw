@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 入口網站或 SQL Server Management Stud
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273687"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454249"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教學課程：設定伺服器管理員和使用者角色
 
@@ -67,7 +67,7 @@ ms.locfileid: "78273687"
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>將使用者帳戶新增至伺服器管理員角色
 
-在此工作中，您會將使用者或群組帳戶從您的 Azure AD 新增至伺服器管理員角色。 如果您要新增安全性群組，則必須先將 `MailEnabled` 屬性設定為 `True`。
+在此工作中，您會將使用者或群組帳戶從您的 Azure AD 新增至伺服器管理員角色。 如果指定安全性群組，請使用 `obj:groupid@tenantid`。
 
 1. 在 [物件總管]  中，以滑鼠右鍵按一下您的伺服器名稱，然後按一下 [屬性]  。 
 2. 在 [Analysis Server 屬性]  視窗中，按一下 [安全性]   > [新增]  。
@@ -143,5 +143,5 @@ ms.locfileid: "78273687"
 在本教學課程中，您已了解如何連線至 Azure AS 伺服器，並在 SSMS 中瀏覽 adventureworks 範例模型資料庫和屬性。 您也已了解如何使用 SSMS 和 TMSL 指令碼將使用者或群組新增至現有和新的角色。 現在，您已為伺服器和範例模型資料庫設定使用者權限，接下來您和其他使用者即可使用 Power BI 之類的用戶端應用程式連線至該資料庫。 若要深入了解，請繼續進行下一個教學課程。 
 
 > [!div class="nextstepaction"]
-> [教學課程 - 使用 Power BI Desktop 進行連線](analysis-services-tutorial-pbid.md)
+> [教學課程：使用 Power BI Desktop 進行連線](analysis-services-tutorial-pbid.md)
 

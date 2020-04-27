@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095918"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>教學課程：Azure Active Directory 與 Oneteam 整合
 
@@ -118,7 +118,7 @@ Oneteam 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Oneteam 客戶支援小組](https://support.one-team.com/hc/requests/new)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 Oneteam 客戶支援小組以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -136,7 +136,7 @@ Oneteam 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-oneteam-single-sign-on"></a>設定 Oneteam 單一登入
 
-若要在 **Oneteam** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Oneteam 支援小組](https://support.one-team.com/hc/requests/new)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Oneteam** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 Oneteam 支援小組。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -194,7 +194,7 @@ Oneteam 與 Azure AD 整合提供下列優點：
 本節會在 Oneteam 中建立名為 Britta Simon 的使用者。 Oneteam 支援預設會啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Oneteam 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 >[!NOTE]
->如果您需要以手動方式建立的使用者，您可以向 [Oneteam 支援小組](https://support.one-team.com/hc/requests/new)提出支援票證。
+>如果您需要以手動方式建立的使用者，您可以向 Oneteam 支援小組提出支援票證。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

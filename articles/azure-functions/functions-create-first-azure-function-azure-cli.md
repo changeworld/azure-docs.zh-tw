@@ -4,12 +4,12 @@ description: 了解如何從命令列建立函式，然後將本機專案發佈�
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1e3ce26894e9e89d196c068bd32245c8c891b2e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255544"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732816"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -21,7 +21,7 @@ ms.locfileid: "81255544"
 
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 Maven 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) 和 [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 等開發工具。
+> 如果 Maven 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 等開發工具。
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -222,9 +222,9 @@ Function.java  包含 `run` 方法，會接收 `request` 變數中的要求資�
 
 如果您尚未執行此作業，請使用 [az login](/cli/azure/reference-index#az-login) 命令登入 Azure：
 
-    ```azurecli
-    az login
-    ```
+```azurecli
+az login
+```
     
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 下列範例會在 `westeurope` 區域建立名為 `AzureFunctionsQuickstart-rg` 的資源群組。 (您通常會使用來自 `az account list-locations` 命令的可用區域，在您附近的區域中建立資源群組和資源。)
 

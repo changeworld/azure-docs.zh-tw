@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77482288"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531095"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 以標籤定型表單辨識器模型
 
@@ -40,7 +40,7 @@ ms.locfileid: "77482288"
 
 若要使用加上標籤的資料來定型模型，您需要擁有下列檔案來作為子資料夾中的輸入。 您會在下面了解如何建立這些檔案。
 
-* **來源表單** – 要從中擷取資料的表單。 支援的類型有 JPEG、PNG、BMP、PDF 或 TIFF。
+* **來源表單** – 要從中擷取資料的表單。 支援的類型有 JPEG、PNG、PDF 或 TIFF。
 * **OCR 版面配置檔案** - JSON 檔案，這些檔案會描述每個來源表單中所有可讀文字的大小和位置。 您將使用表單辨識器版面配置 API 來產生此資料。 
 * **標籤檔案** - JSON 檔案，這些檔案會描述使用者手動輸入的資料標籤。
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ print("Train operation did not complete within the allocated time.")
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

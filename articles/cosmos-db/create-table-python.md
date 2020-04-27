@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673155706c3b7d44b41562c2dc8ce24a94ac6a58
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212746"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083626"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>快速入門：使用 Python 與 Azure Cosmos DB 建置資料表 API 應用程式
 
@@ -72,6 +72,8 @@ ms.locfileid: "77212746"
     ```
 
 3. 然後在 Visual Studio 中開啟方案檔案。 
+
+> ![TIP] 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-python.md)一文。
 
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 

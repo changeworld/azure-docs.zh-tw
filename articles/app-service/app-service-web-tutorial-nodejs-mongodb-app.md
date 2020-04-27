@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 947bfe88443489084a20653d835ab849087ac92d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810575"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085583"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式
 
@@ -87,17 +87,12 @@ npm start
 
 當應用程式完全載入時，您會看到類似下列的訊息：
 
-```console
+<pre>
 --
-MEAN.JS - Development Environment
+MEAN.JS - 開發環境
 
-Environment:     development
-Server:          http://0.0.0.0:3000
-Database:        mongodb://localhost/mean-dev
-App version:     0.5.0
-MEAN.JS version: 0.5.0
---
-```
+環境：     開發伺服器：        http://0.0.0.0:3000 資料庫：        mongodb://localhost/mean-dev 應用程式版本：   0.5.0 MEAN.JS 版本：0.5.0 --
+</pre>
 
 在瀏覽器中，瀏覽至 `http://localhost:3000` 。 按一下上層功能表中的 [註冊]  ，然後建立測試使用者。 
 
@@ -142,7 +137,7 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
 
 建立 Cosmos DB 帳戶之後，Azure CLI 會顯示類似下列範例的資訊：
 
-```json
+<pre>
 {
   "consistencyPolicy":
   {
@@ -151,12 +146,12 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb_name&gt;.documents.azure.com:443/",
   "failoverPolicies": 
   ...
-  < Output truncated for readability >
+  &lt; Output truncated for readability &gt;
 }
-```
+</pre>
 
 ## <a name="connect-app-to-production-mongodb"></a>將應用程式連線至生產環境 MongoDB
 
@@ -172,14 +167,14 @@ az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 
 Azure CLI 會顯示類似下列範例的資訊：
 
-```json
+<pre>
 {
   "primaryMasterKey": "RS4CmUwzGRASJPMoc0kiEvdnKmxyRILC9BWisAYh3Hq4zBYKr0XQiSE4pqx3UchBeO4QRCzUt1i7w0rOkitoJw==",
   "primaryReadonlyMasterKey": "HvitsjIYz8TwRmIuPEUAALRwqgKOzJUjW22wPL2U8zoMVhGvregBkBk9LdMTxqBgDETSq7obbwZtdeFY7hElTg==",
   "secondaryMasterKey": "Lu9aeZTiXU4PjuuyGBbvS1N9IRG3oegIrIh95U6VOstf9bJiiIpw3IfwSUgQWSEYM3VeEyrhHJ4rn3Ci0vuFqA==",
   "secondaryReadonlyMasterKey": "LpsCicpVZqHRy7qbMgrzbRKjbYCwCKPQRl0QpgReAOxMcggTvxJFA94fTi0oQ7xtxpftTJcXkjTirQ0pT7QFrQ=="
 }
-```
+</pre>
 
 複製 `primaryMasterKey` 的值。 您需要在下一個步驟中用到此資訊。
 
@@ -225,16 +220,12 @@ node server.js
 
 載入應用程式之後，請檢查以確定它正在生產環境中執行：
 
-```console
+<pre>
 --
 MEAN.JS
 
-Environment:     production
-Server:          http://0.0.0.0:8443
-Database:        mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
-App version:     0.5.0
-MEAN.JS version: 0.5.0
-```
+環境：     實際執行伺服器：        http://0.0.0.0:8443 資料庫：        mongodb://&lt; cosmosdb_name&gt; ：&lt; primary_master_key&gt;@&lt; cosmosdb_name&gt;.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false 應用程式版本：   0.5.0 MEAN.JS 版本：0.5.0
+</pre>
 
 在瀏覽器中，瀏覽至 `http://localhost:8443` 。 按一下上層功能表中的 [註冊]  ，然後建立測試使用者。 如果您成功建立使用者並且登入，則您的應用程式正在將資料寫入 Azure 中的 Cosmos DB 資料庫。 
 
@@ -284,7 +275,7 @@ db: {
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
@@ -300,9 +291,9 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
-``` 
+</pre>
 
 您可能會注意到，部署程序會在 `npm install` 之後執行 [Gulp](https://gulpjs.com/)。 App Service 不會在部署期間執行 Gulp 或 Grunt 工作，因此，這個範例存放庫在其根目錄中有兩個其他檔案可啟用它： 
 

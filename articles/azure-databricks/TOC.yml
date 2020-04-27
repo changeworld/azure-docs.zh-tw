@@ -39,6 +39,9 @@
         - name: Python
           href: /azure/databricks/languages/python
           maintainContext: true
+        - name: Koalas
+          href: /azure/databricks/languages/koalas
+          maintainContext: true
         - name: R
           items:
             - name: R 指南
@@ -1058,6 +1061,8 @@
             - name: 祕密工作流程範例
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: GDPR 最佳做法
+          href: /azure/databricks/security/privacy/gdpr-delta
         - name: 加密叢集背景工作節點之間的流量
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: 為 Notebooks 啟用客戶管理的金鑰
@@ -1611,8 +1616,24 @@
               href: /azure/databricks/dev-tools/api/latest/examples
               maintainContext: true
             - name: 驗證
-              href: /azure/databricks/dev-tools/api/latest/authentication
-              maintainContext: true
+              items:
+                - name: 個人存取權杖
+                  href: /azure/databricks/dev-tools/api/latest/authentication
+                  maintainContext: true
+                - name: Azure Active Directory (AAD) 權杖
+                  items:
+                    - name: AAD 權杖驗證概觀
+                      href: /azure/databricks/dev-tools/api/latest/aad/index
+                      maintainContext: true
+                    - name: 使用 AAD 驗證程式庫來取得 AAD 權杖
+                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
+                      maintainContext: true
+                    - name: 使用服務主體來取得 AAD 權杖
+                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
+                      maintainContext: true
+                    - name: 針對 AAD 存取權杖進行疑難排解
+                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
+                      maintainContext: true
             - name: 叢集
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true

@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971497"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535616"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service 的 CLI 範例
 
@@ -28,7 +28,7 @@ ms.locfileid: "74971497"
 | [在 Docker 容器中建立 ASP.NET Core 應用程式](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| 在 Linux 上建立 App Service 應用程式，並從 Docker Hub 載入 Docker 映像。 |
 |**設定應用程式**||
 | [將自訂網域對應至應用程式](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱與之對應。 |
-| [將自訂 SSL 憑證繫結至應用程式](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱的 SSL 憑證與之繫結。 |
+| [將自訂 TLS/SSL 憑證繫結至應用程式](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱的 TLS/SSL 憑證與之繫結。 |
 |**調整應用程式**||
 | [手動調整應用程式](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 App Service 應用程式，並跨 2 個執行個體調整它。 |
 | [透過高可用性架構將應用程式調整為全球可用](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | 在兩個不同的地理區域中建立兩個 App Service 應用程式，並使用 Azure 流量管理員讓它們可透過單一端點來使用。 |

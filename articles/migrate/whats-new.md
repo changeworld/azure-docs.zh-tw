@@ -2,18 +2,30 @@
 title: Azure Migrate 中的新功能
 description: 了解 Azure Migrate 服務中的新功能和最新更新。
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127580"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677234"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
 [Azure Migrate](migrate-services-overview.md) 可協助您探索及評定內部部署伺服器、應用程式與資料，並將其移轉至 Microsoft Azure 雲端。 此文章摘要說明 Azure Migrate 中的新版本及新功能。
+
+
+## <a name="update-april-2020"></a>更新 (2020 年 4 月)
+
+Azure Migrate 支援 Azure Government 中的部署。 
+
+- 您可以探索及評估 VMware VM、Hyper-V VM 和實體伺服器。
+- 您可以將 VMware VM、Hyper-V VM 和實體伺服器移轉至 Azure。
+- 針對 VMware 的移轉，您可以使用無代理程式或代理程式型移轉。 [深入了解](server-migrate-overview.md)。
+- [請檢閱](migrate-support-matrix.md#supported-geographies-azure-government) Azure Government 支援的地理位置和區域。
+- Azure Government [不支援代理程式型的相依性分析](concepts-dependency-visualization.md#agent-based-analysis)。
+- Azure Government 支援功能預覽，特別是[無代理程式的相依性分析](concepts-dependency-visualization.md#agentless-analysis)及[應用程式探索](how-to-discover-applications.md)。
 
 ## <a name="update-march-2020"></a>更新 (2020 年 3 月)
 
@@ -58,7 +70,7 @@ Azure Migrate 新增了新的評量和移轉工具：
 
 ## <a name="azure-migrate-previous-version"></a>Azure Migrate 舊版本
 
-如果您使用的是舊版 Azure Migrate (僅支援內部部署 VMware VM 的評量)，您現在應該改為使用目前的版本。 在舊版中，您已無法建立新的 Azure Migrate 專案，或是執行新的探索。 您仍然可以存取現有的專案。 若要這樣做，請在 Azure 入口網站 > [所有服務]  中搜尋 **Azure Migrate**。 在 [Azure Migrate] 的通知中，會有可存取舊 Azure Migrate 專案的連結。
+如果您使用的是舊版 Azure Migrate (僅支援內部部署 VMware VM 的評量)，則您現在應該使用目前的版本。 在舊版中，您已無法建立新的 Azure Migrate 專案，或是執行新的探索。 您仍然可以存取現有的專案。 若要這樣做，請在 Azure 入口網站 > [所有服務]  中搜尋 **Azure Migrate**。 在 [Azure Migrate] 的通知中，會有可存取舊 Azure Migrate 專案的連結。
 
 
 
