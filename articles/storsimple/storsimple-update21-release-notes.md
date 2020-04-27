@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60531062"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 系列 Update 2.2 版本資訊
@@ -56,14 +56,14 @@ Update 2.2 包含以下重要的改良功能。
 | 4 |建立快照集 |在使用大型磁碟區和無資料變換最少的情況下，會發生一些與建立增量快照集有關的問題。 此版本已經修正這些問題。 |是 |是 |
 | 5 |Openstack 驗證 |使用 Openstack 做為雲端服務提供者時，使用者可能會遇到一項與驗證有關的罕見錯誤，也就是 JSON 剖析器會導致當機的錯誤。 此版本已經修正這個錯誤。 |是 |否 |
 | 6 |主機端複製 |在較早版本的軟體中，從某個磁碟區複製資料到另一個磁碟區時，會發生一個與 ODX 計時有關的罕見錯誤。 這會導致控制器容錯移轉，且系統可能會進入復原模式。 此版本已經修正這個錯誤。 |是 |否 |
-| 7 |Windows Management Instrumentation (WMI) |在以前的軟體版本中，Web 代理失敗的例子很多，但"\<管理異常>提供程式負載故障"。 這個錯誤屬於 WMI 記憶體流失錯誤，現在已經修正。 |是 |否 |
+| 7 |Windows Management Instrumentation (WMI) |在舊版的軟體中，有數個 Web Proxy 失敗的實例，但發生「\<ManagementException> 提供者載入失敗」例外。 這個錯誤屬於 WMI 記憶體流失錯誤，現在已經修正。 |是 |否 |
 | 8 |更新 |在某些罕見的情況下，使用者在較早版本的軟體中嘗試掃描或安裝更新時，會收到 "CisPowershellHcsscripterror"。 此版本已經修正這個問題。 |是 |是 |
 | 9 |支援封裝 |此版本已改善收集及上傳支援封裝的方式。 |是 |是 |
 
 ## <a name="known-issues-in-update-22"></a>Update 2.2 中的已知問題
 下表提供此版本的已知問題摘要。
 
-| 否。 | 功能 | 問題 | 註解 / 因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 不可以。 | 功能 | 問題 | 註解 / 因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁碟仲裁 |在罕見情況下，如果 8600 裝置的 EBOD 機箱中大部分的磁碟都已中斷連線，而導致沒有磁碟仲裁，那麼將會使存放集區離線。 即使已重新連接磁碟時，它依然會保持離線。 |您必須重新啟動裝置。 如果問題持續發生， 請連絡 Microsoft 支援以進行後續步驟。 |是 |否 |
 | 2 |不正確的控制器識別碼 |進行控制器更換時，控制器 0 可能顯示為控制器 1。 在控制器更換期間從對等節點載入影像時，控制器識別碼一開始可能會顯示為對等控制器的識別碼。 在罕見情況下，可能會在系統重新開機後出現這種行為。 |使用者不必採取任何動作。 控制器更換完成之後，會自行解決這種情況。 |是 |否 |

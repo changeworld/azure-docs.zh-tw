@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "62123800"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array
@@ -42,7 +42,7 @@ ms.locfileid: "62123800"
 StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連接至多個 StorSimple Virtual Array。 您可以使用在瀏覽器中執行的中央 Microsoft Azure 入口網站來管理這些裝置。 若要連接至 StorSimple 裝置管理員服務，請執行下列動作。
 
 #### <a name="to-connect-to-the-service"></a>連接至此服務
-1. 轉到[https://ms.portal.azure.com](https://ms.portal.azure.com)。
+1. 移至 [https://ms.portal.azure.com](https://ms.portal.azure.com)。
 2. 使用您的 Microsoft 帳戶認證，登入 Microsoft Azure 入口網站 (位於窗格右上角)。
 3. 在 StorSimple 裝置管理員上瀏覽至 [瀏覽] --> [篩選]，以檢視指定訂用帳戶中所有的裝置管理員。
 
@@ -62,7 +62,7 @@ StorSimple Manager 裝置管理員服務在 Microsoft Azure 中執行，並連�
 | 從備份組複製共用</br>從備份組複製磁碟區</br>項目層級復原 (僅限檔案伺服器) |[從 StorSimple Virtual Array 的備份複製](storsimple-virtual-array-clone.md) |
 | 有關儲存體帳戶</br>新增儲存體帳戶</br>編輯儲存體帳戶</br>刪除儲存體帳戶 |[管理 StorSimple Virtual Array 的儲存體帳戶](storsimple-virtual-array-manage-storage-accounts.md) |
 | 關於存取控制記錄</br>加入或修改存取控制記錄 </br>刪除存取控制記錄 |[管理 StorSimple Virtual Array 的存取控制記錄](storsimple-virtual-array-manage-acrs.md) |
-| 檢視工作詳細資料 |[管理 StorSimple Virtual Array 作業](storsimple-virtual-array-manage-jobs.md) |
+| 檢視作業詳細資料 |[管理 StorSimple Virtual Array 作業](storsimple-virtual-array-manage-jobs.md) |
 | 設定警示設定</br>接收警示通知</br>管理警示</br>檢閱警示 |[檢視和管理 StorSimple Virtual Array 的警示](storsimple-virtual-array-manage-alerts.md) |
 | 修改裝置系統管理員密碼 |[變更 StorSimple Virtual Array 裝置系統管理員密碼](storsimple-virtual-array-change-device-admin-password.md) |
 | 安裝軟體更新 |[更新您的 Virtual Array](storsimple-virtual-array-install-update.md) |

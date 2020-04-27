@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60295138"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的存取控制需求
@@ -74,7 +74,7 @@ ms.locfileid: "60295138"
   * 如果是，這些目標資源位於何處 (內部部署或雲端中)？
 
 > [!NOTE]
-> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將超越每個選項的可用選項和優點/缺點。  回答這些問題，您就能選取最適合您業務需求的選項。
+> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將會超越可用的選項，以及每個選項的優缺點。  回答這些問題，您就能選取最適合您業務需求的選項。
 > 
 > 
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60456121"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
@@ -28,7 +28,7 @@ ms.locfileid: "60456121"
 這篇文章可協助您尋找有關 Azure AD 傳遞驗證常見問題的疑難排解資訊。
 
 >[!IMPORTANT]
->如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 瞭解如何[添加僅雲全域管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
+>如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 瞭解如何[新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
 
 ## <a name="general-issues"></a>一般問題
 
@@ -44,7 +44,7 @@ ms.locfileid: "60456121"
 
 如果使用者無法登入使用傳遞驗證，他們可能會在 Azure AD 登入畫面中看到下列其中之一的使用者錯誤： 
 
-|錯誤|描述|解決方案
+|錯誤|描述|解決方法
 | --- | --- | ---
 |AADSTS80001|無法連線至 Active Directory|確定代理程式伺服器和必須驗證其密碼的使用者都是相同 AD 樹系的成員，而且都能連線到 Active Directory。  
 |AADSTS8002|連線至 Active Directory 時發生逾時|請檢查以確定 Active Directory 可用，並且會回應來自代理程式的要求。
@@ -58,9 +58,9 @@ ms.locfileid: "60456121"
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-導航到[Azure 活動目錄管理中心](https://aad.portal.azure.com/)上的**Azure 活動目錄** -> **登錄，** 然後按一下特定使用者的登錄活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+流覽至[Azure Active Directory 系統管理中心](https://aad.portal.azure.com/)的**Azure Active Directory** -> 登**入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方案
+|登入錯誤碼|登入失敗原因|解決方法
 | --- | --- | ---
 | 50144 | 使用者的 Active Directory 密碼已到期。 | 在您的內部部署 Active Directory 中重設使用者密碼。
 | 80001 | 沒有可用的驗證代理程式。 | 安裝並註冊驗證代理程式。
@@ -73,7 +73,7 @@ ms.locfileid: "60456121"
 | 80011 | 驗證代理程式無法擷取解密金鑰。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。
 
 >[!IMPORTANT]
->通過身份驗證代理通過調用[Win32 登錄使用者 API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)來驗證其針對活動目錄的使用者名和密碼，從而驗證 Azure AD 使用者。 因此，如果您在 Active Directory 中設置了"登錄到"設置以限制工作站登錄訪問，則必須將託管直通身份驗證代理的伺服器添加到"登錄到"伺服器清單中。 如果不這樣做，將阻止使用者登錄到 Azure AD。
+>傳遞驗證代理程式會藉由呼叫[Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)，針對 Active Directory 驗證其使用者名稱和密碼，藉以驗證 Azure AD 使用者。 因此，如果您已在 Active Directory 中設定 [登入] 設定以限制工作站登入存取，您就必須將裝載「傳遞驗證代理程式」的伺服器新增到「登入」伺服器的清單中。 如果無法這麼做，將會封鎖您的使用者登入 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>驗證代理程式安裝問題
 

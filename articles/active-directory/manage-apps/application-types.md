@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65781100"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>我的應用程式清單中有未預期的應用程式
@@ -30,7 +30,7 @@ ms.locfileid: "65781100"
 
 若要查看租用戶中的所有應用程式，您需要使用 [篩選]**** 控制項，以顯示 [所有應用程式]**** 清單下的 [所有應用程式]****。 請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)，以**全域管理員**或**共同管理員**身份登錄。
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -56,7 +56,7 @@ ms.locfileid: "65781100"
 
    3. **自訂開發的應用程式** – 您的組織想要在 Azure AD 應用程式開發平台上開發的應用程式，但可能尚不存在
 
-   4. **非畫廊應用程式**– 自帶應用程式！ 您想要的任何網頁連結，或任何呈現使用者名稱和密碼欄位的應用程式，都支援 SAML 或 OpenID Connect 通訊協定，或支援您想要與 Azure AD 整合以啟用單一登入的 SCIM。
+   4. **非資源庫應用程式**–攜帶您自己的應用程式！ 您想要的任何網頁連結，或任何呈現使用者名稱和密碼欄位的應用程式，都支援 SAML 或 OpenID Connect 通訊協定，或支援您想要與 Azure AD 整合以啟用單一登入的 SCIM。
 
 2. 註冊或登入與 Azure Active Directory 整合的第三方<sup></sup>應用程式時。 其中一個範例是 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "65781100"
 
 若要**刪除應用程式**，請遵循下列步驟：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)，以**全域管理員**或**共同管理員**身份登錄。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -100,7 +100,7 @@ ms.locfileid: "65781100"
 
 5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
 
-   * 如果您沒有看到要在此處顯示的應用程式，請使用 **"所有應用程式清單**"頂部的 **"篩選器"** 控制項，並將 **"顯示**"選項設置為 **"所有應用程式"。**
+   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
 
 6. 選取您要刪除的應用程式。
 
@@ -108,11 +108,11 @@ ms.locfileid: "65781100"
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我想要停用任何應用程式的所有未來使用者同意作業
 
-停用整個目錄的使用者同意會阻止使用者同意任何應用程式。 管理員仍可以代表使用者同意。 若要進一步了解應用程式同意，以及您同意與否的可能原因，請參閱[了解使用者和系統管理員同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
+停用整個目錄的使用者同意會阻止使用者同意任何應用程式。 系統管理員仍然可以代表使用者同意。 若要進一步了解應用程式同意，以及您同意與否的可能原因，請參閱[了解使用者和系統管理員同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
 
 若要**停用整個目錄中的所有未來使用者同意作業**，請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 

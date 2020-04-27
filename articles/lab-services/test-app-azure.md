@@ -13,18 +13,18 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
 ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65872446"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 測試您的應用程式 
-本文提供在 Azure 中使用 DevTest Labs 測試應用程式的步驟。 首先，您會在實驗室內設定檔案共用，並將它掛接為本機開發電腦和實驗室內 VM 上的磁碟機。 然後，使用 Visual Studio 2019 將應用部署到檔共用，以便在實驗室中的 VM 上運行應用。  
+本文提供在 Azure 中使用 DevTest Labs 測試應用程式的步驟。 首先，您會在實驗室內設定檔案共用，並將它掛接為本機開發電腦和實驗室內 VM 上的磁碟機。 然後，您會使用 Visual Studio 2019 將應用程式部署至檔案共用，以便在實驗室中的 VM 上執行應用程式。  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 1. [建立 Azure 訂用帳戶](https://azure.microsoft.com/free/) (如果您還沒有的話)，然後登入 [Azure 入口網站](https://portal.azure.com)。
 2. 遵循[這篇文章](devtest-lab-create-lab.md)中的指示，使用 Azure DevTest Labs 建立實驗室。 將實驗室釘選至儀表板，以便下次登入時可以輕鬆找到它。 Azure DevTest Labs 可讓您藉由減少浪費並控制成本，在 Azure 內快速建立資源。 若要深入了解 DevTest Labs，請參閱[概觀](devtest-lab-overview.md)。 
 3. 遵循[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)一文中的指示，在實驗室的資源群組中建立 Azure 儲存體帳戶。 在 [建立儲存體帳戶]**** 頁面上，針對 [資源群組]**** 選取 [使用現有的]****，然後選取 [實驗室的資源群組]****。 
@@ -58,22 +58,22 @@ ms.locfileid: "65872446"
 
     ![選取實驗室 VM](media/test-app-in-azure/select-lab-vm.png)
 2. 選取工具列上的 [連線]****，以連線到 VM。 
-3. [安裝 Azure 電源外殼](/powershell/azure/install-az-ps)。
+3. [安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
 4. 遵循＜掛接檔案共用＞一節中的指示。 
 
 ## <a name="publish-your-app-from-visual-studio"></a>從 Visual Studio 發佈應用程式
 在這一節中，您會將應用程式從 Visual Studio 發佈至雲端的測試 VM。
 
-1. 使用 Visual Studio 2019 創建桌面/Web 應用程式。
+1. 使用 Visual Studio 2019 建立桌面/web 應用程式。
 2. 建置您的應用程式。
 3. 若要發佈應用程式，請在 [方案總管]**** 中以滑鼠右鍵按一下您的專案，然後選取 [發佈]****。 
 4. 在 [發佈精靈]**** 中，輸入您的檔案共用所對應的**磁碟機**。
 
-    **桌面應用：**
+    **桌面應用程式：**
 
     ![傳統型應用程式](media/test-app-in-azure/desktop-app.png)
 
-    **Web 應用：**
+    **Web 應用程式：**
 
     ![Web 應用程式](media/test-app-in-azure/web-app.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "65872446"
 
 1. 瀏覽至實驗室中您的 VM 的虛擬機器頁面。 
 2. 選取工具列上的 [開始]**** 來啟動 VM (如果它處於停止狀態的話)。 您可以為 VM 設定自動啟動和自動關機原則，避免每次啟動和停止。 
-3. 選取 [連接]****。
+3. 選取 [連接]  。
 
     ![虛擬機器頁面](media/test-app-in-azure/virtual-machine-page.png)
 4. 在虛擬機器中，啟動 [檔案總管]****，然後選取 [這部電腦]**** 來尋找您的檔案共用。

@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元率 4x3 SD 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本主題概述了**H264 單位元速率 4x3 SD**任務預設。
+description: 本主題提供**H264 單一位元速率 4X3 SD**工作預設的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a1359bacdf6735ca49e22d7c7b6d0014d56f1735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61129469"
 ---
 # <a name="h264-single-bitrate-4x3-sd"></a>H264 單一位元速率 4x3 SD

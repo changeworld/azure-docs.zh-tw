@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61294211"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中啟用授權映像
@@ -28,9 +28,9 @@ ms.locfileid: "61294211"
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>判斷授權映像是否可供使用者使用
 讓使用者能夠從授權映像建立 VM 的第一步是確定已接受授權映像的條款和條件。 下列步驟顯示如何檢視授權映像的供應項目狀態，並且必要時接受當中的條款和條件。
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
+1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 
@@ -77,7 +77,7 @@ ms.locfileid: "61294211"
    >
 
 
-1. 選取 [儲存]****。 
+1. 選取 [儲存]  。 
 
     在 Marketplace 映像的清單中，該映像現在會顯示 [接受條款]****，並且可供使用者建立虛擬機器。
 

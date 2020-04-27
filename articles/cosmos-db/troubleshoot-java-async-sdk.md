@@ -10,14 +10,14 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65519988"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>針對搭配 Azure Cosmos DB SQL API 帳戶使用 Java Async SDK 時所發生的問題進行疑難排解
-本文介紹在將[JAVA Async SDK](sql-api-sdk-async-java.md)與 Azure Cosmos DB SQL API 帳戶一起使用時，常見問題、解決方法、診斷步驟和工具。
+本文涵蓋當您搭配 Azure Cosmos DB SQL API 帳戶使用[JAVA ASYNC SDK](sql-api-sdk-async-java.md)時的常見問題、因應措施、診斷步驟和工具。
 Java Async SDK 提供用戶端邏輯表示法來存取 Azure Cosmos DB SQL API。 此文章所說明的工具和方法，可以在您遇到任何問題時提供協助。
 
 從此清單開始：
@@ -58,15 +58,15 @@ ulimit -a
     啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 將子網路新增至防火牆。
 * 將公用 IP 指派給您的 Azure VM。
 
-##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>無法訪問服務 - 防火牆
-``ConnectTimeoutException``指示 SDK 無法訪問服務。
-使用直接模式時，可能會收到類似于以下內容的故障：
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>無法連線到服務-防火牆
+``ConnectTimeoutException``指出 SDK 無法連線到服務。
+使用 direct 模式時，您可能會收到與下列類似的錯誤：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-如果應用電腦上運行防火牆，則直接模式使用的打開端口範圍為 10，000 到 20，000。
-也遵循[主機上的連接限制](#connection-limit-on-host)。
+如果您的應用程式電腦上有執行防火牆，請開啟直接模式所使用的埠範圍10000到20000。
+也請遵循[主機電腦上](#connection-limit-on-host)的連線限制。
 
 #### <a name="http-proxy"></a>HTTP Proxy
 
@@ -161,23 +161,23 @@ createObservable
 
 Azure Cosmos DB 模擬器的 HTTPS 憑證是自我簽署的。 針對要與模擬器搭配運作的 SDK，將模擬器憑證匯入到 Java TrustStore。 如需詳細資訊，請參閱[匯出 Azure Cosmos DB 模擬器憑證](local-emulator-export-ssl-certificates.md)。
 
-### <a name="dependency-conflict-issues"></a>依賴項衝突問題
+### <a name="dependency-conflict-issues"></a>相依性衝突問題
 
 ```console
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述異常表明您依賴于舊版本的 RxJAVA lib（例如，1.2.2）。 我們的 SDK 依賴于 RxJAVA 1.3.8，其 API 在早期版本的 RxJAVA 中不可用。 
+上述例外狀況會建議您相依于舊版的 RxJAVA lib （例如1.2.2）。 我們的 SDK 依賴 RxJAVA 1.3.8，其具有舊版 RxJAVA 無法使用的 Api。 
 
-此類 iss 的解決方法是確定哪些其他依賴項帶來了 RxJAVA-1.2.2，並排除了對 RxJAVA-1.2.2 的傳遞依賴項，並允許 CosmosDB SDK 帶來較新版本。
+這類 issuses 的因應措施是識別 RxJAVA-1.2.2 中的其他相依性，並排除 RxJAVA-1.2.2 的可轉移相依性，並允許 CosmosDB SDK 帶入較新的版本。
 
-要確定哪個庫帶來了 RxJAVA-1.2.2 運行專案 pom.xml 檔旁邊的以下命令：
+若要識別哪一個程式庫會帶入 RxJAVA-1.2.2，請在您的專案 pom .xml 檔案旁執行下列命令：
 ```bash
 mvn dependency:tree
 ```
-有關詳細資訊，請參閱[maven 依賴項樹指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+如需詳細資訊，請參閱 maven 相依性[樹狀結構指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
-一旦您確定 RxJAVA-1.2.2 是專案的其他依賴項的傳遞依賴項，就可以修改 pom 檔中對該 lib 的依賴項，並排除 RxJAVA 傳遞依賴項：
+一旦您識別出 RxJAVA 1.2.2 是您專案其他相依性的可轉移相依性，您可以在 pom 檔案中修改該 lib 的相依性，並排除 RxJAVA 可轉移相依性：
 
 ```xml
 <dependency>
@@ -193,7 +193,7 @@ mvn dependency:tree
 </dependency>
 ```
 
-有關詳細資訊，請參閱[排除傳遞依賴項指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
+如需詳細資訊，請參閱[排除可轉移](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)的相依性指南。
 
 
 ## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>啟用用戶端 SDK 記錄
@@ -251,7 +251,7 @@ netstat -nap
  <!--Anchors-->
 [常見問題和因應措施]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
-[主機上的連接限制]: #connection-limit-on-host
-[Azure SNAT （PAT） 埠耗盡]: #snat
+[主機電腦上的連線限制]: #connection-limit-on-host
+[Azure SNAT （PAT）埠耗盡]: #snat
 
 

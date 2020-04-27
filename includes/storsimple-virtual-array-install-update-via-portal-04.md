@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6f2ad6426c2c93fa595648af374df5566c45e57f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174007"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>透過 Azure 入口網站安裝更新
@@ -33,7 +33,7 @@ ms.locfileid: "67174007"
 
     ![更新裝置](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
-5. 在 [新的更新]**** 刀鋒視窗中，於下載完成之後檢閱資訊，您必須確認安裝。 按一下 [確定]****。
+5. 在 [新的更新]**** 刀鋒視窗中，於下載完成之後檢閱資訊，您必須確認安裝。 按一下 [確定]  。
 
     ![更新裝置](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 
@@ -61,4 +61,4 @@ ms.locfileid: "67174007"
 
     ![更新裝置](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. 成功安裝更新後，在 **"設備更新"** 邊欄選項卡中會看到一條有關此效果的消息。 
+9. 成功安裝更新之後，您會在 [**裝置更新**] 分頁中看到此效果的訊息。 

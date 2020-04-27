@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61472986"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>在本機為 Azure Data Lake Analytics 程式碼偵錯
@@ -51,5 +51,5 @@ ms.locfileid: "61472986"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需更複雜查詢的範例，請參閱[使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。
-- 要查看作業詳細資訊，請參閱[使用作業瀏覽器和工作檢視進行 Azure 資料湖分析作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
-- 要使用頂點執行視圖，請參閱[在視覺化工作室使用資料湖工具中的頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+- 若要查看作業詳細資料，請參閱[使用作業瀏覽器和工作檢視進行 Azure Data Lake Analytics 作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
+- 若要使用頂點執行視圖，請參閱[在適用于 Visual Studio 的 Data Lake 工具中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。

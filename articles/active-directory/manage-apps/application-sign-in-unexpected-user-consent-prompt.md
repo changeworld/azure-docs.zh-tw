@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65781141"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>登入應用程式時看到非預期的同意提示
@@ -33,7 +33,7 @@ ms.locfileid: "65781141"
 
 還有其他提示預期會在各種案例中發生：
 
-* 應用程式所需的許可權集已更改。
+* 應用程式所需的許可權集已變更。
 
 * 原本同意應用程式的使用者不是系統管理員，且現在有不同的使用者 (非系統管理員) 正首次使用應用程式。
 

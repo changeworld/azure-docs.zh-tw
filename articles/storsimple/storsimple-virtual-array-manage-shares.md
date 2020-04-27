@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "62116861"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務管理 StorSimple Virtual Array 上的共用
@@ -88,7 +88,7 @@ StorSimple 服務摘要刀鋒視窗的 [共用]**** 功能表會顯示給定 Sto
 
    4. 在 [容量]**** 欄位中，指定共用大小。 階層式共用必須介於 500 GB 和 20 TB 之間，而固定在本機的共用必須介於 50 GB 和 2 TB 之間。
 
-   5. 在 [將預設完整權限設為]**** 欄位中，指派權限給存取此共用的使用者或群組。 以_john@contoso.com_格式指定使用者或使用者組的名稱。 我們建議您利用使用者群組 (而非單一使用者)，來授予可存取這些共用的系統管理員權限。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
+   5. 在 [將預設完整權限設為]**** 欄位中，指派權限給存取此共用的使用者或群組。 以_john@contoso.com_格式指定使用者或使用者群組的名稱。 我們建議您利用使用者群組 (而非單一使用者)，來授予可存取這些共用的系統管理員權限。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
 3. 共用設定完成之後，按一下 [建立]****。 將會使用指定的設定來建立共用，您會看到通知。 根據預設，共用會啟用備份。
 4. 若要確認已成功建立共用，請移至 [共用]**** 刀鋒視窗。 您應該會看列出共用。
    

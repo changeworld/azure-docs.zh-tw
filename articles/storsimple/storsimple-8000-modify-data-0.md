@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60631578"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>修改 StorSimple 8000 系列裝置上的 DATA 0 網路介面設定
@@ -38,7 +38,7 @@ DATA 0 介面會在初始部署 StorSimple 裝置期間，透過安裝精靈進�
 您可以連接至 StorSimple 裝置的 Windows PowerShell 介面並啟動安裝精靈工作階段以重新設定 DATA 0 網路設定。 執行下列步驟以修改 DATA 0 設定：
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>透過安裝精靈修改 DATA 0 網路設定
-1. 在序列主控台功能表中，選擇選項 1 ([以完整存取權限登入]****)。 當提示提供**裝置管理員密碼**時。 預設密碼為 `Password1`。
+1. 在序列主控台功能表中，選擇選項 1 ([以完整存取權限登入]****)。 出現提示時，提供**裝置系統管理員密碼**。 預設密碼為 `Password1`。
 2. 在命令提示字元中，輸入：
    
     `Invoke-HcsSetupWizard`

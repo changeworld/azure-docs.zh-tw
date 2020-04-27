@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64918782"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>透過強式識別解決方案規劃更高的資料安全性
@@ -80,7 +80,7 @@ ms.locfileid: "64918782"
 * 功能，可讓貴公司符合法規遵循需求？ 
 
 > [!NOTE]
-> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將超越每個選項的可用選項和優點/缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
+> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將會超越可用的選項，以及每個選項的優缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
 > 
 > 
 

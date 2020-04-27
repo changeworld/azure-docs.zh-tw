@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60580790"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>從 StorSimple Virtual Array 的備份複製
@@ -42,7 +42,7 @@ ms.locfileid: "60580790"
    
    b.    在顯示的已篩選備份清單中，選取要複製的備份。
    
-   c.    按一下 [確定]****。
+   c.    按一下 [確定]  。
    
    ![複製備份](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在 [複製]**** 刀鋒視窗中，按一下 [目標設定]****，然後執行下列動作︰
@@ -57,7 +57,7 @@ ms.locfileid: "60580790"
    
    e.    指派此共用的系統管理員。 複製完成後，您可以透過 [檔案總管] 修改共用內容。
    
-   f.    按一下 [確定]****。
+   f.    按一下 [確定]  。
    
    ![複製備份](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "60580790"
    
    b.    在顯示的已篩選備份清單中，選取要複製的備份。
    
-   c.    按一下 [確定]****。
+   c.    按一下 [確定]  。
    
    ![複製備份](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在 [複製]**** 刀鋒視窗中，按一下 [目標磁碟區設定]****，然後執行下列動作︰
@@ -96,7 +96,7 @@ ms.locfileid: "60580790"
    d. 在 [連接的主機]**** 中，按一下 [選取]****。
    
    ![複製備份](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. 在 [連接的主機]**** 刀鋒視窗中，選取現有的 ACR 或新增 ACR。 若要新增 ACR，您必須提供 ACR 名稱和主機 IQN。 按一下 **"選擇**"。
+4. 在 [連接的主機]**** 刀鋒視窗中，選取現有的 ACR 或新增 ACR。 若要新增 ACR，您必須提供 ACR 名稱和主機 IQN。 按一下 [選取]。 
    
    ![複製備份](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. 按一下 [複製]**** 啟動複製作業。

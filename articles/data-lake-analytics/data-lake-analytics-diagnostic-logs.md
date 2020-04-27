@@ -9,10 +9,10 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60616484"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>存取 Azure Data Lake Analytics 的診斷記錄
@@ -25,7 +25,7 @@ ms.locfileid: "60616484"
 
 ## <a name="enable-logging"></a>啟用記錄
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 
 2. 開啟 Data Lake Analytics 帳戶，然後從 [監視]____ 區段選取 [診斷記錄]****。 接下來，選取 [開啟診斷]____。
 
@@ -41,12 +41,12 @@ ms.locfileid: "60616484"
 
      * 選取 [串流至事件中樞]**** 可將記錄資料串流到 Azure 事件中樞。 如果您有即時分析內送記錄的下游處理管線，請使用此選項。 如果您選取此選項，必須提供要使用的 Azure 事件中樞詳細資料。
 
-     * 選擇 __"發送到日誌分析__"以將資料發送到 Azure 監視器服務。 如果要使用 Azure 監視器日誌收集和分析日誌，請使用此選項。
+     * 選取 [__傳送至 Log Analytics__ ]，以將資料傳送至 Azure 監視器服務。 如果您想要使用 Azure 監視器記錄來收集和分析記錄，請使用此選項。
    * 指定要取得稽核記錄、要求記錄或兩者。  要求記錄會擷取每個應用程式開發介面 (API) 的要求。 稽核記錄則會記錄該 API 要求觸發的所有作業。
 
    * 針對 [封存至儲存體帳戶]____，請指定要保留資料的天數。
 
-   * 按一下 [儲存]____。
+   * 按一下 __[儲存]__ 。
 
         > [!NOTE]
         > 您必須先選取 [封存至儲存體帳戶]____、[串流至事件中樞]____ 或 [傳送至 Log Analytics]____，再按一下 [儲存]____ 按鈕。
@@ -185,7 +185,7 @@ ms.locfileid: "60616484"
 | operationName |String |記錄的作業名稱。 例如，JobSubmitted。 |
 | resultType |String |作業狀態 (operationName) 的子狀態。 |
 | resultSignature |String |作業狀態 (operationName) 的其他詳細資料。 |
-| 身分識別 |String |要求作業的使用者。 例如： susan@contoso.com 。 |
+| 身分識別 |String |要求作業的使用者。 例如，susan@contoso.com。 |
 | properties |JSON |請參閱下一節 (稽核記錄檔屬性結構描述) 以取得詳細資訊 |
 
 > [!NOTE]
@@ -210,7 +210,7 @@ ms.locfileid: "60616484"
 
 ## <a name="process-the-log-data"></a>處理記錄資料
 
-Azure Data Lake Analytics 會提供有關如何處理和分析記錄資料的範例。 您可以在 中找到示例。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)
+Azure Data Lake Analytics 會提供有關如何處理和分析記錄資料的範例。 您可以在[https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)找到此範例。
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)

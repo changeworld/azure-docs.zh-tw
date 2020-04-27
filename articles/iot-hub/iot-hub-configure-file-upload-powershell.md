@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60318436"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 設定 IoT 中樞檔案上傳
@@ -25,11 +25,11 @@ ms.locfileid: "60318436"
 
 若要完成此教學課程，您需要下列項目：
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需幾分鐘即可創建[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 * [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* Azure IoT 中樞。 如果沒有 IoT 中心，則可以使用[New-AzIoTHub Cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub)創建一個，或者使用門戶[創建 IoT 中心](iot-hub-create-through-portal.md)。
+* Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用[AzIoTHub Cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub)來建立一個，或使用入口網站來[建立 iot 中樞](iot-hub-create-through-portal.md)。
 
 * 一個 Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，您可以使用 [Azure 儲存體 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.storage/) 來建立一個，或使用入口網站來[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "60318436"
 
 登入您的 Azure 帳戶並選取您的訂用帳戶。
 
-1. 在 PowerShell 提示符下，運行**連接-AzAccount** Cmdlet：
+1. 在 PowerShell 命令提示字元中，執行**disconnect-azaccount** Cmdlet：
 
     ```powershell
     Connect-AzAccount
@@ -135,6 +135,6 @@ Set-AzIotHub `
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [IoT 中心開發人員指南](iot-hub-devguide.md)
+* [IoT 中樞開發人員指南](iot-hub-devguide.md)
 * [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
 * [徹底保護您的 IoT 解決方案](../iot-fundamentals/iot-security-ground-up.md)

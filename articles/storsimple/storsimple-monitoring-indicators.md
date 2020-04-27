@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60630563"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 監視指示器來管理您的裝置
@@ -55,13 +55,13 @@ StorSimple 裝置包括發光二極體 (LED) 與警示，您可以用來監控�
 
 | 系統電源 | 模組錯誤 | 邏輯錯誤 | 警示 | 狀態 |
 | --- | --- | --- | --- | --- |
-| 紅琥珀色 |OFF |OFF |N/A |AC 電源中斷、以備用電源運作，或 AC 電源已開但已移除控制器模組。 |
-| 綠色 |開啟 |開啟 |N/A |操作面板電源開啟 (5 秒) 測試狀態 |
-| 綠色 |OFF |OFF |N/A |電源開啟、所有功能正常 |
-| 綠色 |開啟 |N/A |PCM 故障 LED、風扇故障 LED |任何 PCM 故障、 風扇故障、 溫度過高或過低 |
-| 綠色 |開啟 |N/A |I/O 模組 LED |任何控制器模組錯誤 |
-| 綠色 |開啟 |N/A |N/A |機箱邏輯錯誤 |
-| 綠色 |閃爍 |N/A |控制器模組上的模組狀態 LED。 PCM 故障 LED、風扇故障 LED |安裝的控制器模組類型不明、I2C 匯流排故障、控制器模組重要產品資料 (VPD) 組態錯誤 |
+| 紅琥珀色 |OFF |OFF |不適用 |AC 電源中斷、以備用電源運作，或 AC 電源已開但已移除控制器模組。 |
+| 綠色 |開啟 |開啟 |不適用 |操作面板電源開啟 (5 秒) 測試狀態 |
+| 綠色 |OFF |OFF |不適用 |電源開啟、所有功能正常 |
+| 綠色 |開啟 |不適用 |PCM 故障 LED、風扇故障 LED |任何 PCM 故障、 風扇故障、 溫度過高或過低 |
+| 綠色 |開啟 |不適用 |I/O 模組 LED |任何控制器模組錯誤 |
+| 綠色 |開啟 |不適用 |不適用 |機箱邏輯錯誤 |
+| 綠色 |閃爍 |不適用 |控制器模組上的模組狀態 LED。 PCM 故障 LED、風扇故障 LED |安裝的控制器模組類型不明、I2C 匯流排故障、控制器模組重要產品資料 (VPD) 組態錯誤 |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>電源冷卻模組 (PCM) LED 指示燈
 電源冷卻模組 (PCM) LED 指示燈位於每個 PCM 模組上主要機箱或 EBOD 機箱的背面。 本主題討論如何使用下列 LED 來監控 StorSimple 裝置的狀態。  
@@ -91,7 +91,7 @@ LED 面板上會指出 PCM 的狀態。 裝置 PCM LED 面板有六個 LED。 �
 | 沒有 AC 電源 (機箱) |OFF |OFF |OFF |OFF |
 | 沒有 AC 電源 (只有此 PCM) |OFF |開啟 |OFF |開啟 |
 | 有 AC 且 PCM 開啟 - 正常 |開啟 |OFF |OFF |OFF |
-| PCM 故障 (風扇故障) |OFF |OFF |開啟 |N/A |
+| PCM 故障 (風扇故障) |OFF |OFF |開啟 |不適用 |
 | PCM 故障 (安培、 電壓、電流過高) |OFF |開啟 |開啟 |開啟 |
 | PCM (風扇超出容許範圍) |開啟 |OFF |OFF |開啟 |
 | 待命模式 |不停閃爍 |OFF |OFF |OFF |
@@ -242,7 +242,7 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 | 沒有足夠的可用電源 |警告 |無 |模組錯誤 |
 
 ## <a name="next-steps"></a>後續步驟
-瞭解有關[StorSimple 硬體元件和狀態](storsimple-8000-monitor-hardware-status.md)的更多內容。
+深入瞭解[StorSimple 硬體元件和狀態](storsimple-8000-monitor-hardware-status.md)。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png

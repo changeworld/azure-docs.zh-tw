@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381190"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 參考
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-要搜索的物件的類可以是"*"（適用于任何物件類）、"使用者"、組、容器等。預設情況下，此函數將搜索"組織單位"物件類。
+要搜尋之物件的類別可以是 ' * ' （適用于任何物件類別）、' user '、' group '、' container ' 等。根據預設，此函式會搜尋 ' organizationalUnit ' 物件類別。
 
 ```yaml
 Type: String

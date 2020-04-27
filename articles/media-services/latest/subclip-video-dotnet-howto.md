@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 媒體服務進行編碼時對視頻進行子剪輯
-description: 本主題介紹如何使用 .NET SDK 使用 Azure 媒體服務進行編碼時對視頻進行子剪輯
+title: 使用 Azure 媒體服務進行編碼時子剪輯影片
+description: 本主題說明如何使用 .NET SDK 以 Azure 媒體服務編碼時子剪輯影片
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67304995"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務進行編碼時，對視頻進行子剪輯 - .NET
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務進行編碼時子剪輯影片-.NET
 
-您可以使用[作業](https://docs.microsoft.com/rest/api/media/jobs)對其進行編碼時修剪或子剪輯視頻。 此功能適用于使用[內置標準編碼預設預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)或[標準編碼預設](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)構建的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。
+使用[作業](https://docs.microsoft.com/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用于使用 [ [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ] 預設值或 [ [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) ] 預設建立的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。
 
-以下 C# 示例創建一個作業，該作業在提交編碼作業時修剪資產中的視頻。 
+下列 c # 範例會建立一個作業，在資產提交編碼工作時修剪該影片。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要完成此主題中所述的步驟，您必須：
 
 - [建立 Azure 媒體服務帳戶](create-account-cli-how-to.md)
-- 創建轉換以及輸入和輸出資產。 您可以使用 .NET 教程瞭解如何在[上傳、編碼和資料流視頻](stream-files-tutorial-with-api.md)中創建轉換和輸入和輸出資產。
-- 查看[編碼概念](encoding-concept.md)主題。
+- 建立轉換和輸入和輸出資產。 您可以在[使用 .net 的上傳、編碼和串流](stream-files-tutorial-with-api.md)影片教學課程中，瞭解如何建立轉換和輸入和輸出資產。
+- 請參閱[編碼概念](encoding-concept.md)主題。
 
 ## <a name="example"></a>範例
 

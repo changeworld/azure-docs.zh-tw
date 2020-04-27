@@ -1,5 +1,5 @@
 ---
-title: 遠端監視解決方案導入包 - Azure |微軟文檔
+title: 遠端監視解決方案匯入套件-Azure |Microsoft Docs
 description: 本文說明如何將自動裝置管理套件匯入至遠端監視解決方案加速器
 author: dominicbetts
 manager: philmea
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61443272"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>將自動裝置管理套件匯入至遠端監視解決方案加速器
@@ -30,11 +30,11 @@ ms.locfileid: "61443272"
 
 1. 在 Azure 入口網站中，瀏覽至您用來開發和測試 IoT 裝置的 IoT 中樞。 按一下 [IoT 裝置組態]****：
 
-    [![IoT 設備配置](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
+    [![IoT 裝置設定](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
 1. 按一下您想要使用的組態。 [裝置組態詳細資料]**** 頁面隨即顯示：
 
-    [![IoT 設備配置詳細資訊](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
+    [![IoT 裝置設定詳細資料](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
 1. 按一下 [下載組態檔案]****：
 
     [![下載設定檔](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)

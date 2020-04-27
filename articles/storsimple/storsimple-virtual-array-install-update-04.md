@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61436309"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>在您的 StorSimple Virtual Array 上安裝 Update 0.4
@@ -48,7 +48,7 @@ ms.locfileid: "61436309"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
-1. 啟動 Internet 資源管理器並[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)導航到 。
+1. 啟動 Internet Explorer 並流覽至[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝] **** 。
 
@@ -58,11 +58,11 @@ ms.locfileid: "61436309"
    
     ![搜尋目錄](./media/storsimple-virtual-array-install-update-04/download1.png)
 
-4. 按一下 **[新增]**。 更新便會新增到購物籃中。
+4. 按一下 **[新增]** 。 更新便會新增到購物籃中。
 
 5. 按一下 [ **檢視購物籃**]。
 
-6. 按一下 [下載]**** 指定或「瀏覽」 **** 至您想要儲存下載項目的本機位置。 更新便會下載到指定的位置，並放在與更新名稱相同的子資料夾中。 資料夾也可以複製到裝置可連線的網路共用位置。
+6. 按一下 [下載]  。 指定或「瀏覽」 **** 至您想要儲存下載項目的本機位置。 更新便會下載到指定的位置，並放在與更新名稱相同的子資料夾中。 資料夾也可以複製到裝置可連線的網路共用位置。
 
 7. 開啟已複製的資料夾，您應該會看到 Microsoft Update 獨立封裝檔案 `WindowsTH-KB3011067-x64`。 此檔案是用來安裝更新或 Hotfix。
 
@@ -74,11 +74,11 @@ ms.locfileid: "61436309"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
-1. 在本地 Web UI 中，轉到**維護** > **軟體更新**。
+1. 在本機 web UI 中，移至 [**維護** > ] [**軟體更新**]。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]****。
+2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]  。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update/update2m.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "61436309"
    
     ![更新裝置](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 要驗證設備軟體是否已更新，請轉到**維護** > **軟體更新**。 顯示的軟體版本應該是 **10.0.0.0.0.10289.0**，代表 Update 0.4。
+5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護** > ] [**軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10289.0**，代表 Update 0.4。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10289**，而相同版本在 Azure 入口網站則會回報為 **10.0.10289.0**。

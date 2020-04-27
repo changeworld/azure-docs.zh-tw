@@ -18,17 +18,17 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62095484"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步︰處理 userCertificate 屬性所造成的 LargeObject 錯誤 | Microsoft Docs
 
 Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個憑證值。 如果 Azure AD Connect 匯出至 Azure AD 的物件有 15 個以上的值，Azure AD 會傳回 **LargeObject** 錯誤，訊息為︰
 
->*預配物件太大。修剪此物件上的屬性值數。將在下一個同步週期中重試該操作..."*
+>*「布建的物件太大。修剪此物件上的屬性值數目。作業將會在下一個同步處理迴圈中重試 ...」*
 
 其他 AD 屬性也可能造成 LargeObject 錯誤。 若要確認確實是由 userCertificate 屬性所造成，您需要在內部部署 AD 或 [Synchronization Service Manager Metaverse 搜尋](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch)中驗證物件。
 
@@ -92,10 +92,10 @@ Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個
 
     | 屬性 | 值 |
     | --- | --- |
-    | 方向 |**出境** |
-    | MV 物件類型 |**人** |
+    | 方向 |**輸出** |
+    | MV 物件類型 |**個人** |
     | 連接器 |Azure AD 連接器的名稱** |
-    | 連接器物件類型 |**使用者** |
+    | 連接器物件類型 |**user** |
     | MV 屬性 |**userCertificate** |
 
 3. 如果您使用 OOB (全新) 同步規則讓 Azure AD 連接器匯出 User 物件的 userCertficiate 屬性，您應該會取回「輸出至 AAD – 使用者 ExchangeOnline」** 規則。
@@ -118,10 +118,10 @@ Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個
     | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
     | 名稱 | *提供名稱* | 例如，「輸出至 AAD – userCertificate 的自訂覆寫」** |
-    | 描述 | *提供說明* | 例如，「如果 userCertificate 屬性有 15 個以上的值，匯出 NULL」。** |
+    | 描述 | *提供描述* | 例如，「如果 userCertificate 屬性有 15 個以上的值，匯出 NULL」。** |
     | 連線系統 | 選取 Azure AD 連接器** |
-    | 連線系統物件類型 | **使用者** | |
-    | Metaverse 物件類型 | **人** | |
+    | 連線系統物件類型 | **user** | |
+    | Metaverse 物件類型 | **人員** | |
     | 連結類型 | **加入** | |
     | 優先順序 | 選擇 1-99 之間的數字** | 選擇的數字不能被任何現有的同步規則使用，而且比現有同步規則的值更小 (因此，優先順序較高)。 |
 
@@ -131,9 +131,9 @@ Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個
 
     | 屬性 | 值 |
     | --- | --- |
-    | 流程類型 |**表達** |
+    | 流程類型 |**運算式** |
     | 目標屬性 |**userCertificate** |
-    | 來源屬性 |*使用以下運算式*：`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | 來源屬性 |*使用下列運算式*：`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. 按一下 [新增]**** 按鈕建立同步規則。
 
@@ -145,7 +145,7 @@ Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個
 4. 在 [預覽] 快顯畫面中，選取 [完整同步處理]****，然後按一下 [認可預覽]****。
 5. 關閉 [預覽] 畫面和 [連接器空間物件屬性] 畫面。
 6. 移至 Synchronization Service Manager 中的 [連接器]**** 索引標籤。
-7. 按右鍵**Azure AD**連接器並選擇 **"運行..."**
+7. 以滑鼠右鍵按一下**Azure AD**連接器，然後選取 [**執行 ...** ]
 8. 在 [執行連接器] 快顯視窗中，選取 [匯出]**** 步驟，然後按一下 [確定]****。
 9. 等候「匯出至 Azure AD」完成，並確認此特定物件不再發生 LargeObject 錯誤。
 
@@ -159,7 +159,7 @@ Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個
 
 ### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>步驟 6. 確認沒有非預期的變更在等候匯出至 Azure AD
 1. 移至 Synchronization Service Manager 中的 [連接器]**** 索引標籤。
-2. 按右鍵**Azure AD**連接器並選擇**搜尋連接器空間**。
+2. 以滑鼠右鍵按一下**Azure AD**連接器，然後選取 [**搜尋連接器空間**]。
 3. 在 [搜尋連接器空間] 快顯視窗中：
     1. 將 [範圍]**** 設定為 [擱置匯出]。
     2. 將 3 個核取方塊全部勾選，包括 [新增]****、[修改]**** 和 [刪除]****。
@@ -169,7 +169,7 @@ Azure AD 會在 **userCertificate** 屬性上強制執行最大限制 **15** 個
 ### <a name="step-7-export-the-changes-to-azure-ad"></a>步驟 7： 將變更匯出至 Azure AD
 若要將變更匯出至 Azure AD：
 1. 移至 Synchronization Service Manager 中的 [連接器]**** 索引標籤。
-2. 按右鍵**Azure AD**連接器並選擇 **"運行..."**
+2. 以滑鼠右鍵按一下**Azure AD**連接器，然後選取 [**執行 ...** ]
 4. 在 [執行連接器] 快顯視窗中，選取 [匯出]**** 步驟，然後按一下 [確定]****。
 5. 等候「匯出至 Azure AD」完成，並確認不再有 LargeObject 錯誤。
 

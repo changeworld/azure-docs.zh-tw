@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66159163"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>適用於 StorSimple 的角色型存取控制
@@ -33,7 +33,7 @@ ms.locfileid: "66159163"
 
 您可以根據角色指派 RBAC。 該角色會以環境中可用的資源作為基礎來確保特定權限等級。 StorSimple 使用者可以選擇兩種角色類型：內建或自訂。
 
-* **內建角色** - 內建角包可能是擁有者、參與者、讀者或使用者存取管理員。 有關詳細資訊，請參閱[Azure 基於角色的訪問控制項的內置角色](../role-based-access-control/built-in-roles.md)。
+* **內建角色** - 內建角包可能是擁有者、參與者、讀者或使用者存取管理員。 如需詳細資訊，請參閱[Azure 角色型存取控制的內建角色](../role-based-access-control/built-in-roles.md)。
 
 * **自訂角色** - 如果內建角色不符合需求，您可以建立適用於 StorSimple 的自訂 RBAC 角色。 若要建立自訂的 RBAC 角色，請從內建角色開始，對角色加以編輯，然後將其匯入回環境中。 系統會使用 Azure PowerShell 或 Azure CLI 管理角色的上傳和下載。 如需詳細資訊，請參閱[建立角色型存取控制的自訂角色](../role-based-access-control/custom-roles.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "66159163"
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>建立適用於 StorSimple 基礎結構管理員的自訂角色
 
-以下範例會從內建角色的**讀者**開始，該角色可讓使用者檢視所有資源範圍，但無法編輯或建立新資源。 然後，我們擴展此角色以創建新的自訂角色 StorSimple 基礎結構管理員。此角色指派給可以管理 StorSimple 設備的基礎結構的使用者。
+以下範例會從內建角色的**讀者**開始，該角色可讓使用者檢視所有資源範圍，但無法編輯或建立新資源。 然後我們會擴充此角色，以建立新的自訂角色 StorSimple 基礎結構系統管理員。此角色會指派給可管理 StorSimple 裝置基礎結構的使用者。
 
 1. 以系統管理理員身分執行 Windows PowerShell。
 
@@ -183,7 +183,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 建立此角色後，您可以在 Azure 入口網站中檢視與此角色相關聯的權限。
 
-1. 要查看與此角色關聯的許可權，請訪問**存取控制 （IAM） >角色> StorSimple 基礎結構管理員**。將顯示此角色中的使用者清單。
+1. 若要查看與此角色相關聯的許可權，請移至 [**存取控制（IAM）] > [> StorSimple 基礎結構系統管理員的角色**]。隨即顯示此角色中的使用者清單。
 
 2. 選取 [StorSimple 基礎結構管理員使用者]，並按一下 [權限]****。
 

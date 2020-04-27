@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66156419"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
@@ -21,7 +21,7 @@ ms.locfileid: "66156419"
 
 本文說明如何使用 Azure PowerShell 來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -121,8 +121,8 @@ Test-AdlAnalyticsAccount -Name $adla
 ## <a name="manage-data-sources"></a>管理資料來源
 Azure Data Lake Analytics 目前支援下列資料來源：
 
-* [Azure 資料湖存儲](../data-lake-store/data-lake-store-overview.md)
-* [Azure 存儲](../storage/common/storage-introduction.md)
+* [Azure Data Lake 存放區](../data-lake-store/data-lake-store-overview.md)
+* [Azure 儲存體](../storage/common/storage-introduction.md)
 
 每個 Data Lake Analytics 帳戶都有預設 Data Lake Store 帳戶。 預設的資料湖存放區帳戶是用來儲存工作中繼資料與工作稽核記錄。 
 
@@ -243,7 +243,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 使用 `-Result` 參數來偵測已結束的工作是否順利完成。 它有下列值：
 
 * 已取消
-* 失敗
+* Failed
 * None
 * 成功
 
@@ -557,5 +557,5 @@ foreach ($sub in $subs)
 
 ## <a name="next-steps"></a>後續步驟
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
-* 使用[Azure 門戶](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md)開始使用資料湖分析
-* 使用[Azure 門戶](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure 資料湖分析 
+* 使用[Azure 入口網站](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | 開始使用 Data Lake Analytics[Azure CLI](data-lake-analytics-get-started-cli.md)
+* 使用[Azure 入口網站](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure Data Lake Analytics 

@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65603204"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的資料
 在本文中，您將了解如何使用 Power BI Desktop 分析儲存在 Azure Data Lake Storage Gen1 的資料並加以視覺化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **資料存儲湖存儲第 1 代帳戶**。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。 本文假設您已經建立稱為 **myadlsg1** 的 Data Lake Storage Gen1 帳戶，並將範例資料檔案 (**Drivers.txt**) 上載到其中。 此範例檔案可從 [Azure Data Lake Git 儲存機制](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)進行下載。
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Data Lake Storage Gen1 帳戶**。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。 本文假設您已經建立稱為 **myadlsg1** 的 Data Lake Storage Gen1 帳戶，並將範例資料檔案 (**Drivers.txt**) 上載到其中。 此範例檔案可從 [Azure Data Lake Git 儲存機制](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)進行下載。
 * **Power BI Desktop**。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/en-us/download/details.aspx?id=45331)下載此項目。 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>在 Power BI Desktop 中建立報表
@@ -37,16 +37,16 @@ ms.locfileid: "65603204"
 3. 如果您看到連接器處於開發階段的對話方塊，請選擇繼續。
 4. 在 [Azure Data Lake Store]**** 對話方塊中，提供 Data Lake Storage Gen1 帳戶的 URL，然後按一下 [確定]****。
    
-    ![資料湖存儲第 1 代的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "資料湖存儲第 1 代的 URL")
+    ![Data Lake Storage Gen1 的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 的 URL")
 5. 在下一個對話方塊中，按一下 [登入]**** 登入 Data Lake Storage Gen1 帳戶。 您將會被重新導向至組織的登入頁面。 遵循提示登入此帳戶。
    
-    ![登錄資料存儲第 1 代](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登錄資料存儲第 1 代")
+    ![登入 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登入 Data Lake Storage Gen1")
 6. 順利登入之後，請按一下 [連線] ****。
    
     ![連線至 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "連線至 Data Lake Storage Gen1")
 7. 下一個對話方塊會顯示您已上載至 Data Lake Storage Gen1 帳戶的檔案。 驗證資訊，然後按一下 [載入] ****。
    
-    ![載入來自資料存儲第 1 代的資料](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "載入來自資料存儲第 1 代的資料")
+    ![從 Data Lake Storage Gen1 載入資料](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "從 Data Lake Storage Gen1 載入資料")
 8. 順利將資料載入至 Power BI 之後，即會在 [欄位] **** 索引標籤中看到下列欄位。
    
     ![匯入的欄位](./media/data-lake-store-power-bi/imported-fields.png "匯入的欄位")
@@ -74,18 +74,18 @@ ms.locfileid: "65603204"
 14. 更新查詢之後，[欄位] **** 索引標籤將會顯示可用於視覺效果的新欄位。
     
     ![更新的欄位](./media/data-lake-store-power-bi/updated-query-fields.png "更新的欄位")
-15. 讓我們創建一個圓形圖來表示給定國家/地區的每個城市的驅動因素。 若要這麼做，請進行下列選擇。
+15. 讓我們建立圓形圖來代表指定國家/地區的每個城市中的驅動程式。 若要這麼做，請進行下列選擇。
     
     1. 從 [視覺效果] 索引標籤中，按一下圓形圖的符號。
        
         ![建立圓形圖](./media/data-lake-store-power-bi/create-pie-chart.png "建立圓形圖")
-    2. 我們將使用的列是第**4 列**（城市名稱）和**列 7（** 國家/地區的名稱）。 將這些資料行從 [欄位]**** 索引標籤拖曳到 [視覺效果]**** 索引標籤 (如下所示)。
+    2. 我們即將使用的資料行是 [資料**行 4** ] （城市名稱）和 [資料**行 7** ] （國家/地區的名稱）。 將這些資料行從 [欄位]**** 索引標籤拖曳到 [視覺效果]**** 索引標籤 (如下所示)。
        
         ![建立視覺效果](./media/data-lake-store-power-bi/create-visualizations.png "建立視覺效果")
     3. 圓形圖現在應該與下面類似。
        
         ![圓形圖](./media/data-lake-store-power-bi/pie-chart.png "建立視覺效果")
-16. 通過從頁面級別篩選器中選擇特定國家/地區，您現在可以查看所選國家/地區每個城市的驅動程式數。 例如，在 [視覺效果]**** 索引標籤的 [頁面層級篩選]**** 下，選取 [巴西]****。
+16. 藉由從頁面層級篩選中選取特定的國家/地區，您現在可以看到所選國家/地區的每個城市中的驅動程式數目。 例如，在 [視覺效果]**** 索引標籤的 [頁面層級篩選]**** 下，選取 [巴西]****。
     
     ![選取國家/地區](./media/data-lake-store-power-bi/select-country.png "選取國家/地區")
 17. 圓形圖會自動更新以顯示巴西城市中的驅動程式。

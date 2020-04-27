@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60194807"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 串流分析將來自 Azure 儲存體 Blob 的資料串流處理至 Azure Data Lake Storage Gen1
 在此文章中，您將了解如何使用 Azure Data Lake Storage Gen1 做為 Azure 串流分析作業的輸出。 此文章示範從 Azure 儲存體 Blob (輸入) 讀取資料以及將資料寫入至 Data Lake Storage Gen1 (輸出) 的簡單案例。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **Azure 存儲帳戶**。 您將使用來自此帳戶的 Blob 容器來輸入串流分析作業的資料。 本教學課程中，假設您有名為 **storageforasa** 的儲存體帳戶，並在該帳戶中建立名為 **storageforasacontainer** 的容器。 一旦您已建立容器，請將範例資料檔案上傳給容器。 
+* **Azure 儲存體帳戶**。 您將使用來自此帳戶的 Blob 容器來輸入串流分析作業的資料。 本教學課程中，假設您有名為 **storageforasa** 的儲存體帳戶，並在該帳戶中建立名為 **storageforasacontainer** 的容器。 一旦您已建立容器，請將範例資料檔案上傳給容器。 
   
-* **資料存儲湖存儲第 1 代帳戶**。 使用 Azure 門戶，按照[Azure 資料湖存儲第 1 代開始](data-lake-store-get-started-portal.md)的說明進行操作。 假設您有名為 **myadlsg1** 的 Data Lake Storage Gen1 帳戶。 
+* **Data Lake Storage Gen1 帳戶**。 請遵循[使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)中的指示。 假設您有名為 **myadlsg1** 的 Data Lake Storage Gen1 帳戶。 
 
 ## <a name="create-a-stream-analytics-job"></a>建立串流分析作業
 您可以從建立包含輸入來源和輸出目的地的串流分析作業開始。 針對此教學課程，來源是 Azure Blob 容器，而目的地則是 Data Lake Storage Gen1。
@@ -38,7 +38,7 @@ ms.locfileid: "60194807"
 
 2. 從左窗格中，按一下 [串流分析作業]****，然後按一下 [新增]****。
 
-    ![創建流分析作業](./media/data-lake-store-stream-analytics/create.job.png "建立串流分析作業")
+    ![建立串流分析作業](./media/data-lake-store-stream-analytics/create.job.png "建立串流分析作業")
 
     > [!NOTE]
     > 請確定您所建立的作業位於和儲存體帳戶相同的區域，否則在區域之間移動資料，您會需要支付額外費用。
@@ -64,7 +64,7 @@ ms.locfileid: "60194807"
    * 在 [分隔符號]**** 中，選取 [定位鍵]****。
    * 在 [編碼]**** 中，選取 [UTF-8]****。
 
-     按一下 **[建立]**。 入口網站現在會新增輸入並測試其連線。
+     按一下 [建立]  。 入口網站現在會新增輸入並測試其連線。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>建立作業的 Data Lake Storage Gen1 輸出
@@ -92,11 +92,11 @@ ms.locfileid: "60194807"
    * 在 [分隔符號]**** 中，選取 [定位鍵]****。
    * 在 [編碼]**** 中，選取 [UTF-8]****。
     
-     按一下 **[建立]**。 入口網站現在會新增輸出並測試其連線。
+     按一下 [建立]  。 入口網站現在會新增輸出並測試其連線。
     
 ## <a name="run-the-stream-analytics-job"></a>執行串流分析作業
 
-1. 要運行流分析作業，必須從 **"查詢"** 選項卡執行查詢。在本教程中，您可以通過用作業輸入和輸出別名替換預留位置來運行依例查詢，如下圖所示。
+1. 若要執行串流分析作業，您必須從 [**查詢**] 索引標籤執行查詢。在本教學課程中，您可以使用作業輸入和輸出別名來取代預留位置，以執行範例查詢，如下列螢幕擷取畫面所示。
 
     ![執行查詢](./media/data-lake-store-stream-analytics/run.query.png "執行查詢")
 

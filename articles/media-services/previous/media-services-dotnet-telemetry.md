@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61464941"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 設定 Azure 媒體服務遙測 
@@ -67,7 +67,7 @@ Or
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-1. 設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+1. 設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 2. 將下列項目新增至 app.config 檔案中定義的 **appSettings**：
 

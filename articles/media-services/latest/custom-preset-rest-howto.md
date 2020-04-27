@@ -1,6 +1,6 @@
 ---
-title: 使用媒體服務 v3 REST 對自訂轉換進行編碼 - Azure |微軟文檔
-description: 本主題演示如何使用 Azure 媒體服務 v3 使用 REST 對自訂轉換進行編碼。
+title: 使用媒體服務 v3 REST 編碼自訂轉換-Azure |Microsoft Docs
+description: 本主題說明如何使用 Azure 媒體服務 v3 來編碼使用 REST 的自訂轉換。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,33 +13,33 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65761802"
 ---
-# <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼 - REST
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼-REST
 
-使用 Azure 媒體服務進行編碼時，您可以根據行業最佳實踐快速啟動推薦的內置預設之一，如[流式處理檔](stream-files-tutorial-with-rest.md#create-a-transform)教程所示。 您還可以構建自訂預設，以定位特定方案或設備要求。
+使用 Azure 媒體服務進行編碼時，您可以根據業界最佳作法，快速開始使用其中一個建議的內建預設值，如[串流](stream-files-tutorial-with-rest.md#create-a-transform)檔案教學課程中所示。 您也可以建立自訂預設值，以特定案例或裝置需求為目標。
 
 ## <a name="considerations"></a>考量
 
-創建自訂預設時，需要考慮以下因素：
+建立自訂預設時，適用下列考慮事項：
 
-* AVC 內容上的高度和寬度的所有值必須為 4 的倍數。
-* 在 Azure 媒體服務 v3 中，所有編碼位元速率均以每秒位表示。 這與 v2 API 的預設不同，後者使用千位/秒作為單元。 例如，如果 v2 中的位元速率指定為 128 （千位/秒），則 v3 中它將設置為 128000（位/秒）。
+* AVC 內容的所有高度和寬度值都必須是4的倍數。
+* 在 Azure 媒體服務 v3 中，所有編碼位元速率都是以每秒位數為單位。 這不同于預設值和我們的 v2 Api，其使用千位/秒作為單位。 例如，如果 v2 中的位元速率指定為128（千位/秒），則在 v3 中，它會設定為128000（位/秒）。
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-- [創建媒體服務帳戶](create-account-cli-how-to.md)。 <br/>請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
+- [建立媒體服務帳戶](create-account-cli-how-to.md)。 <br/>請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
 - [設定 Postman 以進行 Azure 媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)。<br/>請務必遵循本[取得 Azure AD 權杖](media-rest-apis-with-postman.md#get-azure-ad-token)主題的最後一個步驟。 
 
-## <a name="define-a-custom-preset"></a>定義自訂預設
+## <a name="define-a-custom-preset"></a>定義自訂預設值
 
-下面的示例定義新轉換的請求正文。 我們定義一組要在使用此轉換時生成的輸出。 
+下列範例會定義新轉換的要求主體。 我們會定義一組我們想要在使用此轉換時產生的輸出。 
 
-在此示例中，我們首先為音訊編碼添加 AacAudio 圖層，為視頻編碼添加兩個 H264 視頻圖層。 在視頻圖層中，我們分配標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出還包括縮略圖。 在下面的示例中，我們指定以 PNG 格式生成的圖像，以輸入視頻的 50% 解析度生成，並在輸入視頻長度的三個時間戳記中生成圖像 - [25%、50%、75]。 最後，我們指定輸出檔案的格式 - 一個用於視頻 + 音訊，另一個用於縮略圖。 由於我們擁有多個 H264Layers，因此我們必須使用每個圖層生成唯一名稱的宏。 我們可以使用 或`{Label}``{Bitrate}`宏，示例顯示前者。
+在此範例中，我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用`{Label}`或`{Bitrate}`宏，此範例會顯示前者。
 
 ```json
 {
@@ -131,11 +131,11 @@ ms.locfileid: "65761802"
 
 ```
 
-## <a name="create-a-new-transform"></a>創建新的轉換  
+## <a name="create-a-new-transform"></a>建立新的轉換  
 
-在此示例中，我們創建一個基於我們前面定義的自訂預設的**轉換**。 創建 Transform 時，應首先使用[Get](https://docs.microsoft.com/rest/api/media/transforms/get)檢查是否存在轉換。 如果存在轉換，請重複使用它。 
+在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先使用[Get](https://docs.microsoft.com/rest/api/media/transforms/get)來檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 
 
-在下載的 Postman 集合中，選擇 **"轉換"和"作業**->**創建或更新轉換**"。
+在您下載的 Postman 集合中，選取 [**轉換和作業**->] [**建立或更新轉換**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -143,12 +143,12 @@ ms.locfileid: "65761802"
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-選擇"**正文"** 選項卡，並將正文替換為[您之前定義的](#define-a-custom-preset)json 代碼。 對於媒體服務要將轉換應用於指定的視頻或音訊，您需要根據該轉換提交作業。
+選取 [**主體**] 索引標籤，並以您稍[早定義](#define-a-custom-preset)的 json 程式碼取代本文。 若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。
 
-選擇 **"發送**"。 
+選取 [**傳送**]。 
 
-對於媒體服務要將轉換應用於指定的視頻或音訊，您需要根據該轉換提交作業。 有關演示如何在轉換下提交作業的完整示例，請參閱[教程：資料流視頻檔 - REST](stream-files-tutorial-with-rest.md)。
+若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。 如需示範如何在轉換下提交作業的完整範例，請參閱[教學課程：串流影片檔案-REST](stream-files-tutorial-with-rest.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-查看[其他 REST 操作](https://docs.microsoft.com/rest/api/media/)
+查看[其他 REST 作業](https://docs.microsoft.com/rest/api/media/)

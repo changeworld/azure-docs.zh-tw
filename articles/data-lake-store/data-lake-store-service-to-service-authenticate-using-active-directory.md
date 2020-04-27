@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66241365"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
 > [!div class="op_single_selector"]
 > * [終端使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)
-> * [服務到服務身份驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)
+> * [服務對服務驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 > 
 >  
 
@@ -43,7 +43,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
 依照上面連結中的指示進行時，請確定如以下螢幕擷取畫面所示，選取 [Web 應用程式 / API]**** 應用程式類型：
 
-![創建 Web 應用](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "建立 Web 應用程式")
+![建立 web 應用程式](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "建立 Web 應用程式")
 
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>步驟 2：取得應用程式識別碼、驗證金鑰及租用戶識別碼
 以程式設計方式登入時，您需要應用程式的識別碼。 如果應用程式是在自己的認證下執行，則您還需要一個驗證金鑰。
@@ -55,10 +55,10 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>步驟 3：將 Azure AD 應用程式指派給 Azure Data Lake Storage Gen1 帳戶檔案或資料夾
 
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 開啟要與您稍早建立的 Azure Active Directory 應用程式建立關聯的 Data Lake Storage Gen1 帳戶。
+1. 登入[Azure 入口網站](https://portal.azure.com)。 開啟要與您稍早建立的 Azure Active Directory 應用程式建立關聯的 Data Lake Storage Gen1 帳戶。
 2. 在您的 [Data Lake Storage Gen1 帳戶] 刀鋒視窗中，按一下 [資料總管]****。
    
-    ![在資料存儲湖存儲第 1 代帳戶中創建目錄](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在資料湖帳戶中建立目錄")
+    ![在 Data Lake Storage Gen1 帳戶中建立目錄](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在資料湖帳戶中建立目錄")
 3. 在 [資料總管]**** 刀鋒視窗中，按一下您要將其存取權提供給 Azure AD 應用程式的檔案或資料夾，然後按一下 [存取]****。 若要設定對檔案的存取權，您必須從 [檔案預覽]**** 刀鋒視窗按一下 [存取]****。
    
     ![設定資料湖檔案系統上的 ACL](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "設定資料湖檔案系統上的 ACL")
@@ -67,8 +67,8 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
     ![列出標準和自訂存取](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "列出標準和自訂存取")
 5. 按一下 [新增]**** 圖示，以開啟 [新增自訂存取]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，尋找您稍早建立的 Azure Active Directory 應用程式。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
-    ![添加組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "新增群組")
-6. 按一下 [選取權限]****，選取權限及權限的指派方式 (例如預設 ACL、存取 ACL 或兩者並用)。 按一下 [確定]****。
+    ![新增群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "新增群組")
+6. 按一下 [選取權限]****，選取權限及權限的指派方式 (例如預設 ACL、存取 ACL 或兩者並用)。 按一下 [確定]  。
    
     ![將權限指派至群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "將權限指派至群組")
    
@@ -93,14 +93,14 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
 3. 從 [應用程式註冊] 刀鋒視窗頂端，按一下 [端點]****。
 
-    ![OAuth 權杖終結點](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 權杖終結點")
+    ![OAuth 權杖端點](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 權杖端點")
 
 4. 從端點清單，複製 OAuth 2.0 權杖端點。
 
-    ![OAuth 權杖終結點](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 權杖終結點")   
+    ![OAuth 權杖端點](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 權杖端點")   
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您創建了 Azure AD Web 應用程式，並收集了使用 .NET SDK、JAVA、Python、REST API 等創作的用戶端應用程式中所需的資訊。現在，您可以繼續以下文章，其中討論如何使用 Azure AD 本機應用程式首先使用 Data Lake 存儲 Gen1 進行身份驗證，然後在存儲上執行其他操作。
+在本文中，您已建立一個 Azure AD web 應用程式，並在您使用 .NET SDK、JAVA、Python、REST API 等撰寫的用戶端應用程式中，收集您所需的資訊。您現在可以繼續進行下列文章，瞭解如何使用 Azure AD 原生應用程式先向 Data Lake Storage Gen1 進行驗證，然後再于存放區上執行其他作業。
 
 * [使用 Java 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-java.md)
 * [使用 .NET SDK 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-net-sdk.md)

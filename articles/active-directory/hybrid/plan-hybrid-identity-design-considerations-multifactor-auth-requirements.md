@@ -1,6 +1,6 @@
 ---
 title: 混合式身分識別設計 - 多重要素驗證需求 Azure | Microsoft Docs
-description: 使用條件訪問控制項，Azure 活動目錄會檢查在驗證使用者時和允許訪問應用程式之前選擇的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
+description: 使用條件式存取控制，Azure Active Directory 會在驗證使用者時以及允許存取應用程式之前，檢查您挑選的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67109301"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的多重要素驗證需求

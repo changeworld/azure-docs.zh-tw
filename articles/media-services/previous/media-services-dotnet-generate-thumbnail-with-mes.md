@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61244224"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何搭配 .NET 使用 Media Encoder Standard 產生縮圖 
@@ -281,7 +281,7 @@ ms.locfileid: "61244224"
 
 上述範例已討論如何提交產生影像的編碼工作，但您也可以在縮圖產生時結合視訊/音訊編碼。 下列 JSON 和 XML 預設值會告知**媒體編碼器標準**在編碼期間產生縮圖。
 
-### <a name="json-preset"></a><a id="json"></a>JSON 預設
+### <a name="json-preset"></a><a id="json"></a>JSON 預設值
 如需結構描述的資訊，請參閱[這個](https://msdn.microsoft.com/library/mt269962.aspx)文章。
 
 ```json
@@ -346,7 +346,7 @@ ms.locfileid: "61244224"
     }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML 預設
+### <a name="xml-preset"></a><a id="xml"></a>XML 預設值
 如需結構描述的資訊，請參閱[這個](https://msdn.microsoft.com/library/mt269962.aspx)文章。
 
 ```csharp

@@ -1,5 +1,5 @@
 ---
-title: HC 系列 VM 大小性能 - Azure 虛擬機器 |微軟文檔
+title: HC 系列 VM 大小效能-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中 HC 系列 VM 大小的效能測試結果。
 services: virtual-machines
 documentationcenter: ''
@@ -13,33 +13,33 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: cea772f03d5e2838b44d50f3cf5e926d740be5f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707688"
 ---
-# <a name="hc-series-virtual-machine-sizes"></a>HC 系列虛擬機器尺寸
+# <a name="hc-series-virtual-machine-sizes"></a>HC 系列虛擬機器大小
 
-已在 HC 系列大小上運行了多個效能測試。 以下是此效能測試的一些結果。
+已針對 HC 系列大小執行數個效能測試。 以下是此效能測試的部分結果。
 
 | 工作負載                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| STREAM 三合會                                    | ±190 GB/s （英特爾 MLC AVX-512）  |
-| 高性能林包 （HPL）                  | +3520 千兆（Rpeak），+2970千兆次（Rmax） |
-| RDMA 延遲&頻寬                        | 1.80 微秒，96.3 Gb/s   |
-| 本地 NVMe SSD 上的 FIO                           | ±1.3 GB/s 讀取，±900 MB/s 寫入 |  
-| 4 個 Azure 高級 SSD 上的 IOR（P30 託管磁片，RAID0）*  | ±780 MB/s 讀取，+780 MB/寫入 |
+| 資料流程三角理論                                    | ~ 190 GB/秒（Intel LIP.MLC AVX-512）  |
+| 高效能 Linpack （HPL）                  | ~ 3520 GigaFLOPS （Rpeak）、~ 2970 GigaFLOPS （Rmax） |
+| RDMA 延遲 & 頻寬                        | 1.80 微秒，96.3 Gb/秒   |
+| 本機 NVMe SSD 上的 FIO                           | ~ 1.3 GB/s 讀取，~ 900 MB/s 寫入 |  
+| IOR on 4 Azure 進階 SSD （P30 受控磁碟，RAID0） * *  | ~ 780 MB/s 讀取，~ 780 MB/寫入 |
 
-## <a name="infiniband-send-latency"></a>英菲尼班發送延遲
+## <a name="infiniband-send-latency"></a>不會傳送延遲
 
-梅拉諾克斯·佩弗斯特
+Mellanox Perftest。
 
 ```azure-cli
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
-|  #bytes         | #iterations     | t_min[微秒]     | t_max[微秒]     | t_typical [微秒] | t_avg[微秒]     | t_stdev[微秒]   |
+|  #bytes         | #iterations     | t_min [微秒]     | t_max [微秒]     | t_typical [微秒] | t_avg [微秒]     | t_stdev [微秒]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 | 2               | 1000            | 1.80            | 7.50            | 1.85            | 1.86            | 0.20            |
 | 4               | 1000            | 1.79            | 6.06            | 1.83            | 1.84            | 0.20            |
@@ -56,7 +56,7 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="osu-mpi-latency-test"></a>OSU MPI 延遲測試
 
-OSU MPI 延遲測試 v5.4.3。
+OSU MPI 延遲測試 v 5.4.3。
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
@@ -79,13 +79,13 @@ OSU MPI 延遲測試 v5.4.3。
 
 ## <a name="mpi-bandwidth"></a>MPI 頻寬
 
-OSU MPI 頻寬測試 v5.4.3。
+OSU MPI 頻寬測試 v 5.4.3。
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-| #Size   | 頻寬（MB/s） | 頻寬（Gb/s） |
+| #Size   | 頻寬（MB/秒） | 頻寬（Gb/s） |
 |---------|------------------|------------------|
 | 2       | 6.18             | 0.04944          |
 | 4       | 13.27            | 0.10616          |

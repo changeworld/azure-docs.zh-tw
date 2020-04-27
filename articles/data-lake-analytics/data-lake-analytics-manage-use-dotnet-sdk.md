@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure .NET SDK 管理 Azure Data Lake Analytics
-description: 本文介紹如何使用 Azure .NET SDK 編寫管理資料湖分析作業、資料來源&使用者的應用。
+description: 本文說明如何使用 Azure .NET SDK 來撰寫應用程式，以管理 Data Lake Analytics 作業、資料來源 & 使用者。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60617702"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>管理 Azure Data Lake Analytics .NET 應用程式
@@ -22,7 +22,7 @@ ms.locfileid: "60617702"
 
 本文說明如何使用以 Azure .NET SDK 所撰寫的應用程式，來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * **已安裝 Visual Studio 2015、Visual Studio 2013 更新 4，或具有 Visual C++ 的 Visual Studio 2012**。
 * **Microsoft Azure SDK for .NET 2.5 版或更新版本**。  使用 [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)來進行安裝。
@@ -30,7 +30,7 @@ ms.locfileid: "60617702"
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-|Package|版本|
+|套件|版本|
 |-------|-------|
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
@@ -219,7 +219,7 @@ if (adlaClient.Account.Exists(rg, adla))
 
 Data Lake Analytics 目前支援下列資料來源：
 
-* [Azure 資料湖存儲](../data-lake-store/data-lake-store-overview.md)
+* [Azure Data Lake 存放區](../data-lake-store/data-lake-store-overview.md)
 * [Azure 儲存體帳戶](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>連結至 Azure 儲存體帳戶
@@ -444,5 +444,5 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 ## <a name="next-steps"></a>後續步驟
 
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
-* [使用 Azure 門戶管理 Azure 資料湖分析](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 門戶監視 Azure 資料湖分析作業並疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
+* [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60561450"
 ---
 # <a name="about-azure-devtest-labs"></a>關於 Azure DevTest Labs
-Azure 開發人員測試實驗室使團隊中的開發人員能夠高效自管理虛擬機器 （VM） 和 PaaS 資源，而無需等待批准。
+Azure DevTest Labs 可讓小組開發人員有效率地自我管理虛擬機器（Vm）和 PaaS 資源，而不需要等待核准。
 
-DevTest 實驗室創建由預配置的基礎或 Azure 資源管理器範本組成的實驗室。 這些工具和軟體可用於創建環境。 您可以在幾分鐘內創建環境，而不是數小時或數天。
+DevTest Labs 會建立實驗室，其中包含預先設定的基底或 Azure Resource Manager 範本。 這些都具有所有必要的工具和軟體，可讓您用來建立環境。 您可以在幾分鐘內建立環境，而不是小時或數天。
 
-通過使用 DevTest Labs，您可以通過執行以下任務來測試應用程式的最新版本：
+藉由使用 DevTest Labs，您可以執行下列工作來測試應用程式的最新版本：
 
-- 使用可重用的範本和工件快速預配 Windows 和 Linux 環境。
+- 使用可重複使用的範本和構件，快速布建 Windows 和 Linux 環境。
 - 將您的部署管線與研發/測試實驗室輕鬆整合，來佈建隨選環境。
-- 通過預配多個測試代理並創建用於培訓和演示的預配置環境，從而擴展負載測試。
+- 布建多個測試代理程式，並建立預先布建的環境以進行訓練和示範，以相應增加您的負載測試。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
 ## <a name="capabilities"></a>功能
-DevTest Labs 為使用 VM 的開發人員提供以下功能：
+DevTest Labs 為使用 Vm 的開發人員提供下列功能：
 
-- 通過執行少於五個簡單步驟，快速建立 VM。
-- 從由團隊領導或中央 IT 配置、批准和授權的 VM 基礎的精選清單中選擇。
-- 從已安裝所有軟體和工具的預創建自訂映射創建 VM。 
-- 從本質上是自訂映射的公式創建 VM，這些公式與創建 VM 時安裝的軟體的最新版本相結合。 
-- 在 VM 預配後安裝部署在 VM 上的擴展專案。
-- 在 VM 上設置自動關閉和自動啟動計畫。
-- 聲明預創建的 VM 而不完成創建過程。
+- 遵循少於五個簡單的步驟，快速建立 Vm。
+- 從已設定、核准及由小組負責人或中央 IT 授權的 VM 基礎策劃清單中選擇。
+- 從預先建立的自訂映射建立已安裝所有軟體和工具的 Vm。 
+- 從基本上是自訂映射的公式建立 Vm，並結合建立 Vm 時所安裝的最新軟體組建。 
+- 安裝布建在 Vm 上的延伸模組所部署的構件。
+- 在 Vm 上設定自動關機和自動啟動排程。
+- 宣告預先建立的 VM，而不需執行建立程式。
 
-DevTest Labs 為使用 PaaS 環境的開發人員提供以下功能：
+DevTest Labs 為使用 PaaS 環境的開發人員提供下列功能：
 
-- 使用資源管理器通過執行少於三個簡單步驟來快速建立 PaaS 環境。
-- 從精心策劃的資源管理器範本清單中進行選擇，這些範本由團隊領導或中央 IT 人員配置並授權。
-- 通過使用資源管理器範本在實驗室的上下文中流覽 Azure，將空資源組（沙箱）旋轉。
+- 透過少於三個簡單的步驟，使用 Resource Manager 來快速建立 PaaS 環境。
+- 從策劃的 Resource Manager 範本清單中進行選擇，這些是由小組負責人或中央 IT 所設定和授權。
+- 使用 Resource Manager 範本來啟動空的資源群組（沙箱），以在實驗室的內容中探索 Azure。
 
-DevTest Labs 還使中央 IT 部門能夠控制浪費、優化資源成本，並通過執行以下任務保持預算範圍：  
+DevTest Labs 也可讓中央 IT 人員控制浪費、將資源的成本優化，並藉由執行下列工作，在預算內保持不變：  
 
-- 在 VM 上設置自動關閉和自動啟動計畫。
-- 設置使用者可以創建的 VM 數量的策略。
-- 設置使用者選擇的 VM 大小和庫圖像的策略。
-- 跟蹤成本並設定實驗室目標。
-- 獲得實驗室高預計成本的通知，以便您可以採取必要的行動。
+- 在 Vm 上設定自動關閉和自動啟動排程。
+- 設定使用者可以建立的 Vm 數目的原則。
+- 在使用者選擇的 Vm 大小和圖庫映射上設定原則。
+- 追蹤成本並設定實驗室的目標。
+- 取得實驗室的高預估成本通知，讓您可以採取必要的動作。
 
-DevTest Labs 在創建、配置和管理雲中的環境時提供了以下優勢。
+DevTest Labs 提供在雲端中建立、設定和管理環境的下列優點。
 
-## <a name="cost-control-and-governance"></a>成本控制和治理
-DevTest Labs 允許您執行以下任務，從而更輕鬆地控制成本：
+## <a name="cost-control-and-governance"></a>成本控制與治理
+DevTest Labs 可讓您執行下列工作，讓您更輕鬆地控制成本：
 
-- [在實驗室上設置策略](devtest-lab-get-started-with-lab-policies.md)，例如每個使用者或每個實驗室的 VM 數。 
-- 創建[策略以自動關閉](devtest-lab-set-lab-policy.md)和啟動 VM。
-- 跟蹤 VM 和 PaaS 資源的成本，在實驗室內啟動，以保持在[您的預算](devtest-lab-configure-cost-management.md)之內。
-- 保持在實驗室的上下文中，這樣您就不會在實驗室之外啟動資源。
+- [在您的實驗室上設定原則](devtest-lab-get-started-with-lab-policies.md)，例如每位使用者或每個實驗室的 vm 數目。 
+- 建立[原則以自動關閉](devtest-lab-set-lab-policy.md)和啟動 vm。
+- 追蹤 Vm 和 PaaS 資源在實驗室中的成本，以維持在[預算](devtest-lab-configure-cost-management.md)內。
+- 保持在實驗室的內容中，讓您不會在其外部啟動資源。
 
 ## <a name="quickly-get-to-ready-to-test"></a>快速做好測試的準備
-DevTest Labs 允許您創建預配置的環境，並配備您的團隊開發和測試應用程式所需的一切。 只需[聲明](devtest-lab-add-claimable-vm.md)安裝應用程式最後一個良好版本的環境並開始工作。 或使用容器創建更快、更精簡的環境。
+DevTest Labs 可讓您建立預先布建的環境，並配備小組開發和測試應用程式所需的所有專案。 只需要宣告應用程式的最後一個良好組建已安裝並開始運作[的環境](devtest-lab-add-claimable-vm.md)。 或使用容器更快速地建立更精簡環境。
 
 ## <a name="create-once-use-everywhere"></a>一次建立，隨處可用
-在團隊或組織中捕獲和共用 PaaS[環境範本](devtest-lab-create-environment-from-arm.md)和[專案](add-artifact-repository.md)（全部在原始程式碼管理中），輕鬆創建開發人員和測試環境。
+在您的小組或組織內捕捉並共用 PaaS[環境範本](devtest-lab-create-environment-from-arm.md)和成品（全都在原始檔控制中[），輕鬆](add-artifact-repository.md)建立開發人員和測試環境。
 
 ## <a name="worry-free-self-service"></a>零煩惱的自助方式
-DevTest Labs 使開發人員和測試人員能夠使用一組預配置的資源快速輕鬆地[創建 IaaS VM](devtest-lab-add-vm.md)和[PaaS 資源](devtest-lab-create-environment-from-arm.md)。
+DevTest Labs 可讓您的開發人員和測試人員使用一組預先設定的資源，快速且輕鬆地[建立 IaaS vm](devtest-lab-add-vm.md)和[PaaS 資源](devtest-lab-create-environment-from-arm.md)。
 
 ## <a name="use-iaas-and-paas-resources"></a>使用 IaaS 和 PaaS 資源 
-開發人員還可以通過使用資源管理器範本來旋轉 PaaS 資源，例如 Azure 服務結構群集、Azure 應用服務的 Web 應用功能和 SharePoint 伺服器場。 要在實驗室中開始使用 PaaS，請使用[公共環境存儲庫](devtest-lab-configure-use-public-environments.md)中的範本或[將實驗室連接到您自己的 Git 存儲庫](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories)。 您還可以跟蹤這些資源的成本，以保持在預算範圍內。
+開發人員也可以使用 Resource Manager 範本來啟動 PaaS 資源，例如 Azure Service Fabric 叢集、Azure App Service 的 Web Apps 功能，以及 SharePoint 伺服器陣列。 若要開始使用 PaaS 的實驗室，請使用[公用環境存放庫](devtest-lab-configure-use-public-environments.md)中的範本，或將[實驗室連線至您自己的 Git 存放庫](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories)。 您也可以追蹤這些資源的成本，以維持在預算內。
 
-## <a name="integrate-with-your-existing-toolchain"></a>與現有工具鏈集成
-使用預先製作的外掛程式或 API 直接從您首選[的連續集成 （CI） 工具](devtest-lab-integrate-ci-cd-vsts.md)、整合式開發環境 （IDE） 或自動發佈管道中預配開發/測試環境。 您還可以使用全面的命令列工具。
+## <a name="integrate-with-your-existing-toolchain"></a>與您現有的工具鏈整合
+使用預先製作的外掛程式或 API，直接從您偏好的[持續整合（CI）工具](devtest-lab-integrate-ci-cd-vsts.md)、整合式開發環境（IDE）或自動化的發行管線來布建開發/測試環境。 您也可以使用完整的命令列工具。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 
-- 要瞭解有關 DevTest 實驗室的更多內容，請參閱[開發人員測試實驗室概念](devtest-lab-concepts.md)。
-- 有關分步說明的演練，請參閱[教程：使用 Azure 開發人員測試實驗室設置實驗室](tutorial-create-custom-lab.md)。
+- 若要深入瞭解 DevTest Labs，請參閱[DevTest labs 概念](devtest-lab-concepts.md)。
+- 如需逐步指示的逐步解說，請參閱教學課程[：使用 Azure DevTest Labs 設定實驗室](tutorial-create-custom-lab.md)。

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
 ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61074049"
 ---
 # <a name="terminology"></a>詞彙
@@ -25,7 +25,7 @@ ms.locfileid: "61074049"
 ## <a name="term-definitions"></a>詞彙定義
 
 * **後端 API** -  實作您 API 和其作業的 HTTP 服務。 
-* **前端 API**/**APIM API** - APIM API 不承載 API，它為 API 創建外觀，以便根據您的需要自訂立面，而無需觸摸後端 API。 如需詳細資訊，請參閱[匯入和發佈 API](import-and-publish.md)。
+* **前端 API**/**APIM API** -APIM API 不會裝載 api，它會為您的 api 建立 facade，以便根據您的需求自訂外觀，而不需要觸及後端 API。 如需詳細資訊，請參閱[匯入和發佈 API](import-and-publish.md)。
 * **APIM 產品** -  產品包含一或多個 API 以及使用量配額與使用規定。 您可以包括數個 API，並透過開發人員入口網站將它們提供給開發人員。 如需詳細資訊，請參閱[建立和發佈產品](api-management-howto-add-products.md)。
 * **APIM API 作業** -  每個 APIM API 都代表可供開發人員使用的一組作業。 每個 APIM API 都包含會實作 API 之後端服務的參考，而其作業會與後端服務實作的作業相對應。 如需詳細資訊，請參閱[模擬 API 回應](mock-api-responses.md)。
 * **版本** - 有時您想要發佈新的或不同 API 功能給某些使用者，而其他人想要堅持使用目前適用的 API。 如需詳細資訊，請參閱[發佈多個 API 版本](api-management-get-started-publish-versions.md)。

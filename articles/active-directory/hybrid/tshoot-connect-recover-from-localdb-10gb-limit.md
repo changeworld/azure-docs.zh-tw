@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60386919"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何從 LocalDB 10-GB 的限制復原
 Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您可以使用 Azure AD Connect 安裝的預設 SQL Server 2012 Express LocalDB 或使用您自己的完整 SQL。 SQL Server Express 會實行 10 GB 的大小限制。 使用 LocalDB 且達到這個限制時，Azure AD Connect 同步處理服務無法再啟動或正確同步處理。 本文提供復原步驟。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 有兩個常見的徵兆︰
 
 * Azure AD Connect 同步處理服務**執行**，但無法同步處理並出現 “stopped-database-disk-full” ** 錯誤。
@@ -36,7 +36,7 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 ## <a name="short-term-recovery-steps"></a>短期復原步驟
 本節提供的步驟可收回 Azure AD Connect 同步處理服務所需的 DB 空間以繼續作業。 步驟包括：
 1. [判斷同步處理服務狀態](#determine-the-synchronization-service-status)
-2. [收縮資料庫](#shrink-the-database)
+2. [壓縮資料庫](#shrink-the-database)
 3. [刪除執行記錄資料](#delete-run-history-data)
 4. [縮短執行歷程記錄資料的保留期間](#shorten-retention-period-for-run-history-data)
 
@@ -87,7 +87,7 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 
 3. 選取 [動作]**** 下方的 [清除執行]****...
 
-4. 您可以選擇 **"清除所有運行"** 或 **"清除運行"之前...日期\<>** 選項。 建議您一開始先清除執行超過兩天的歷程記錄資料。 如果您遇到 DB 大小的問題，則選擇 [清除所有執行]**** 選項。
+4. 您可以選擇 [**清除所有執行**] 或 [**清除執行之前]日期\<>** 選項。 建議您一開始先清除執行超過兩天的歷程記錄資料。 如果您遇到 DB 大小的問題，則選擇 [清除所有執行]**** 選項。
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>縮短執行歷程記錄資料的保留期間
 此步驟是要降低在多個同步處理循環之後遇到 10 GB 限制問題的可能性。

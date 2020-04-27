@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60402938"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服務匯流排佇列的 .NET 多層應用程式
@@ -33,7 +33,7 @@ ms.locfileid: "60402938"
 
 在本教學課程中，您將在 Azure 雲端服務中建置和執行多層式應用程式。 前端為 ASP.NET MVC Web 角色，而後端為使用服務匯流排佇列的背景工作角色。 您可以建立相同的多層應用程式，並使其前端作為部署至 Azure 網站而非雲端服務的 Web 專案。 您也可以試試 [.NET 內部部署/雲端混合式應用程式](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教學課程。
 
-以下螢幕截圖顯示了已完成的應用程式。
+下列螢幕擷取畫面顯示已完成的應用程式。
 
 ![][0]
 
@@ -72,13 +72,13 @@ ms.locfileid: "60402938"
 1. 使用系統管理員權限啟動 Visual Studio：在 **Visual Studio** 程式圖示上按一下滑鼠右鍵，然後按一下 [以系統管理員身分執行]****。 這篇文章稍後討論的 Azure 計算模擬器需要 Visual Studio 以系統管理員權限啟動。
    
    在 Visual Studio 的 [檔案]**** 功能表，按一下 [新增]****，然後按一下 [專案]****。
-2. 從 [已安裝的範本]**** 的 [Visual C#]**** 下，按一下 [雲端]****，然後按一下 [Azure 雲端服務]****。 將專案命名為 **MultiTierApp**。 然後按一下 **[確定]**。
+2. 從 [已安裝的範本]**** 的 [Visual C#]**** 下，按一下 [雲端]****，然後按一下 [Azure 雲端服務]****。 將專案命名為 **MultiTierApp**。 然後按一下 [ **確定**]。
    
    ![][9]
 3. 從 [角色]**** 窗格，按兩下 [ASP.NET Web 角色]****。
    
    ![][10]
-4. 將滑鼠移至 [Azure 雲端服務解決方案]**** 下的 [WebRole1]****，按一下鉛筆圖示，將 Web 角色重新命名為 **FrontendWebRole**。 然後按一下 **[確定]**。 (請確定您輸入 "Frontend"，其中 e 為小寫，而不是 "FrontEnd"。)
+4. 將滑鼠移至 [Azure 雲端服務解決方案]**** 下的 [WebRole1]****，按一下鉛筆圖示，將 Web 角色重新命名為 **FrontendWebRole**。 然後按一下 [ **確定**]。 (請確定您輸入 "Frontend"，其中 e 為小寫，而不是 "FrontEnd"。)
    
    ![][11]
 5. 在 [新增 ASP.NET 專案]**** 對話方塊的 [選取範本]**** 清單中，按一下 [MVC]****。
@@ -177,7 +177,7 @@ ms.locfileid: "60402938"
 6. 隨即出現對話方塊，供您建立檢視。 在 [範本]**** 清單中，選擇 [建立]****。 在 [模型類別]**** 清單中，選取 [OnlineOrder]**** 類別。
    
    ![][15]
-7. 按一下 **[新增]**。
+7. 按一下 **[新增]** 。
 8. 現在，變更應用程式的顯示名稱。 在 [方案總管]**** 中，按兩下 **Views\Shared\\_Layout.cshtml** 檔案以在 Visual Studio 編輯器中開啟。
 9. 將所有出現的 [我的 ASP.NET 應用程式]**** 取代為 [Northwind Traders 產品]****。
 10. 移除 [首頁]****、[關於]**** 和 [連絡人]**** 連結。 刪除反白顯示的程式碼：

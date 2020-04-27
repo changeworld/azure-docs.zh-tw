@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66399209"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>為 DevTest Labs 虛擬機器建立自訂構件
@@ -89,8 +89,8 @@ ms.locfileid: "66399209"
 * bool (任何有效的 JSON 布林值)
 * array (任何有效的 JSON 陣列)
 
-## <a name="secrets-as-secure-strings"></a>機密作為安全字串
-將機密聲明為安全字串。 下面是在`parameters`**工件檔.json**檔部分中聲明安全字串參數的語法：
+## <a name="secrets-as-secure-strings"></a>安全字串形式的秘密
+將秘密宣告為安全字串。 以下是在`parameters` **artifactfile.json**的區段內宣告安全字串參數的語法：
 
 ```json
 
@@ -102,7 +102,7 @@ ms.locfileid: "66399209"
     },
 ```
 
-對於專案安裝命令，請運行使用 Convert 到 SecureString 命令創建的安全字串的 PowerShell 腳本。 
+針對 [成品安裝] 命令，執行 PowerShell 腳本，以使用 Convertto-html-SecureString 命令所建立的安全字串。 
 
 ```json
   "runCommand": {
@@ -110,9 +110,9 @@ ms.locfileid: "66399209"
   }
 ```
 
-有關完整的示例工件file.json 和工件.ps1（PowerShell 腳本），請參閱[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+如需完整範例 artifactfile.json 和成品 ps1 （PowerShell 腳本），請參閱[GitHub 上的此範例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
 
-需要注意的另一個重要點是，在捕獲輸出以進行使用者調試時，不要將機密記錄到主控台。 
+另一個要注意的重點是，不要將秘密記錄到主控台，因為已針對使用者的偵錯工具捕捉到輸出。 
 
 ## <a name="artifact-expressions-and-functions"></a>構件運算式和函式
 您可以使用運算式和函式來建構構件安裝命令。

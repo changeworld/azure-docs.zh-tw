@@ -16,10 +16,10 @@ ms.date: 10/17/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b69502995eff88df53af3671a8e611809f83e59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65826107"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何移除使用者的應用程式存取
@@ -38,17 +38,17 @@ ms.locfileid: "65826107"
 
 若要**刪除應用程式**，請遵循下列指示：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)，以**全域管理員**或**共同管理員**身份登錄。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory]**** 項目。
 
-4. 按一下 Azure 活動目錄左側導航功能表中的**企業應用程式**。
+4. 按一下 Azure Active Directory 左側導覽功能表中的 [**企業應用程式**]。
 
-5. 按一下 **"所有應用程式**"以查看所有應用程式的清單。
+5. 按一下 [**所有應用程式**] 以查看所有應用程式的清單。
 
-   * 如果您沒有看到要在此處顯示的應用程式，請使用 **"所有應用程式清單**"頂部的 **"篩選器"** 控制項，並將 **"顯示**"選項設置為 **"所有應用程式"。**
+   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
 
 6. 選取您要刪除的應用程式。
 
@@ -56,21 +56,21 @@ ms.locfileid: "65826107"
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我想要停用任何應用程式的所有未來使用者同意作業
 
-停用整個目錄的使用者同意會阻止使用者同意任何應用程式。 管理員仍可以代表使用者同意。 若要進一步了解應用程式同意，以及您想要或不想這樣做的原因，請參閱[了解使用者和系統管理員同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。 另請參閱[權限及同意](../develop/v2-permissions-and-consent.md)。
+停用整個目錄的使用者同意會阻止使用者同意任何應用程式。 系統管理員仍然可以代表使用者同意。 若要進一步了解應用程式同意，以及您想要或不想這樣做的原因，請參閱[了解使用者和系統管理員同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。 另請參閱[權限及同意](../develop/v2-permissions-and-consent.md)。
 
 若要**停用整個目錄中的所有未來使用者同意作業**，請遵循下列指示：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  開啟 [Azure Active Directory 擴充功能]**** 
 
 3.  按一下瀏覽功能表中的 [企業應用程式]****。
 
-5.  按一下 **"使用者設置**"。
+5.  按一下 [**使用者設定**]。
 
 6.  將 [使用者可以允許應用程式代替他們存取資料]**** 切換開關設為 [否]****，並按一下 [儲存] 按鈕。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-[管理對應用的訪問](what-is-access-management.md)
+[管理應用程式的存取權](what-is-access-management.md)

@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60531004"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的 Update 1.2 版本資訊
@@ -58,13 +58,13 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 * **Azure Government 入口網站的可用性** – Azure Government 入口網站現已提供 StorSimple。 請參閱如何 [在 Azure Government 入口網站中部署 StorSimple 裝置](storsimple-deployment-walkthrough-gov.md)。
 * **其他雲端服務提供者的支援** – 支援的其他雲端服務提供者包括 Amazon S3、含 RRS 的 Amazon S3、HP 以及 OpenStack (beta)。
 * **最新儲存 API 的更新** – StorSimple 已經透過這個版本，更新為最新的 Azure 儲存體服務 API。 執行 Update 1 前軟體版本 (發行、0.1、0.2 和 0.3 版本) 的 StorSimple 8000 系列裝置，是使用 2009 年 7 月 17 日之前的 Azure 儲存體服務 API 版本。 如更新的 [移除儲存體服務版本相關公告](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)中所述，這些 API 將於 2016 年 8 月 1 日被取代。 請務必在 2016 年 8 月 1 日之前，套用 StorSimple 8000 Series Update 1。 如果您無法執行這項操作，StorSimple 裝置將會停止正常運作。
-* **區域備援儲存體 (ZRS) 的支援** – 升級至最新版的儲存體 API 之後，StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也將支援區域備援儲存體 (ZRS)。 有關 ZRS 的詳細資訊，請參閱[有關 Azure 存儲冗余選項的這一篇文章](../storage/common/storage-redundancy.md)。
+* **區域備援儲存體 (ZRS) 的支援** – 升級至最新版的儲存體 API 之後，StorSimple 8000 系列除了本地備援儲存體 (LRS) 和異地備援儲存體 (GRS) 之外，也將支援區域備援儲存體 (ZRS)。 請參閱這[篇文章中](../storage/common/storage-redundancy.md)有關 ZRS 詳細資料的 Azure 儲存體冗余選項。
 * **增強的初始部署和更新經驗** – 在此版本中，已增強安裝和更新程序。 安裝精靈安裝已獲得改善，如果網路組態和防火牆設定不正確，可提供意見給使用者。 已提供其他診斷 Cmdlet 來協助您為裝置的網路連線進行疑難排解。 如需有關用於疑難排解的新診斷 Cmdlet 的詳細資訊，請參閱 [疑難排解部署文件](storsimple-troubleshoot-deployment.md) 。
 
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修正的問題
 下表提供 Update 1.2、1.1 及 1 中已修正問題的摘要。    
 
-| 否。 | 功能 | 問題 | 在 Update 中修正的問題 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 不可以。 | 功能 | 問題 | 在 Update 中修正的問題 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell for StorSimple |當使用者從遠端使用 Windows PowerShell for StorSimple 存取 StorSimple 裝置，然後再啟動安裝精靈時，只要輸入 Data 0 IP，就會當機。 這個 Bug 現在已在 Update 1 中修正。 |Update 1 |是 |是 |
 | 2 |恢復出廠預設值 |在某些情況下，當您要恢復出廠預設值時，StorSimple 裝置會卡住，並顯示此訊息：「正在重設為原廠預設值 (階段 8)」 ****。 如果正在進行 Cmdlet 時，按 CTRL+C，就會發生這種情況。 這個 Bug 現在已修正。 |Update 1 |是 |否 |
@@ -82,7 +82,7 @@ Update 1.2 可以套用至任何執行 Release (GA)、Update 0.1、Update 0.2 �
 ## <a name="known-issues-in-update-12"></a>Update 1.2 中的已知問題
 下表提供此版本的已知問題摘要。
 
-| 否。 | 功能 | 問題 | 註解/因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
+| 不可以。 | 功能 | 問題 | 註解/因應措施 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁碟仲裁 |在罕見情況下，如果 8600 裝置的 EBOD 機箱中大部分的磁碟都已中斷連線，而導致沒有磁碟仲裁，那麼將會使存放集區離線。 即使已重新連接磁碟時，它依然會保持離線。 |您必須重新啟動裝置。 如果問題持續發生， 請連絡 Microsoft 支援以進行後續步驟。 |是 |否 |
 | 2 |不正確的控制器識別碼 |進行控制器更換時，控制器 0 可能顯示為控制器 1。 在控制器更換期間從對等節點載入影像時，控制器識別碼一開始可能會顯示為對等控制器的識別碼。 在罕見情況下，可能會在系統重新開機後出現這種行為。 |使用者不必採取任何動作。 控制器更換完成之後，會自行解決這種情況。 |是 |否 |

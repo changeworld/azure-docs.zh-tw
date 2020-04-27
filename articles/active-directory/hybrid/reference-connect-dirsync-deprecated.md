@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381173"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升級 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
@@ -32,10 +32,10 @@ Azure AD Connect 是連接內部部署目錄與 Azure AD 和 Office 365 的最�
 最新版的 DirSync 發行於 2014 年 7 月，而最新版的 Azure AD Sync 發行於 2015 年 5 月。
 
 ## <a name="what-is-azure-ad-connect"></a>何謂 Azure AD Connect
-Azure AD 連接是 DirSync 和 Azure AD 同步的繼承者。它結合了這兩個支援的所有方案。 您可以在 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)中進一步了解。
+Azure AD Connect 是 DirSync 和 Azure AD 同步的後續版本。它會結合這兩個支援的所有案例。 您可以在 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)中進一步了解。
 
 ## <a name="deprecation-schedule"></a>淘汰排程
-| Date | 註解 |
+| 日期 | 註解 |
 | --- | --- |
 | 2016 年 4 月 13 日 |Windows Azure Active Directory Sync (“DirSync”) 和 Microsoft Azure Active Directory Sync (“Azure AD Sync”) 已宣布淘汰。 |
 | 2017 年 4 月 13 日 |支援結束。 客戶必須先升級至 Azure AD Connect 才能開啟支援案例。 |
@@ -44,7 +44,7 @@ Azure AD 連接是 DirSync 和 Azure AD 同步的繼承者。它結合了這兩�
 ## <a name="how-to-transition-to-azure-ad-connect"></a>如何轉換為 Azure AD Connect
 如果您正在執行 DirSync，有兩種方式可以升級︰就地升級和平行部署。 對大多數的客戶，以及如果您擁有最新的作業系統和少於 50,000 個物件，建議採用就地升級。 在其他情況下，建議執行平行部署，DirSync 組態會移至執行 Azure AD Connect 的新伺服器。
 
-| 解決方法 | 狀況 |
+| 解決方法 | 案例 |
 | --- | --- |
 | [從 DirSync 升級](how-to-dirsync-upgrade-get-started.md) |<li>如果您有已在執行中的現有 DirSync 伺服器。</li> |
 | [從 Azure AD Sync 升級](how-to-upgrade-previous-version.md) |<li>如果您要從 Azure AD Sync 移動。</li> |

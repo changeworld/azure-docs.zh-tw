@@ -1,6 +1,6 @@
 ---
-title: Azure 事件網格中的地理災害復原 |微軟文檔
-description: 描述 Azure 事件網格如何自動支援地理災害復原 （GeoDR）。
+title: Azure 事件方格中的異地嚴重損壞修復 |Microsoft Docs
+description: 說明 Azure 事件方格如何自動支援異地嚴重損壞修復（GeoDR）。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66307313"
 ---
-# <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件網格中的伺服器端地理災害復原
-事件網格現在不僅針對新域、所有現有域、主題和事件訂閱，還自動復原中繼資料（GeoDR）。 如果整個 Azure 區域出現故障，事件網格將已有所有與事件相關的基礎結構元資料同步到配對區域。 您的新事件將再次開始流動，而您無需干預。 
+# <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件方格中的伺服器端地理故障復原
+事件方格現在具有自動異地嚴重損壞修復（GeoDR）的中繼資料，不僅適用于新的，而是所有現有的網域、主題和事件訂閱。 如果整個 Azure 區域停止運作，事件方格就會將所有事件相關的基礎結構中繼資料，同步處理到配對的區域。 您的新事件將會開始再次流動，而您不需要介入。 
 
-通過兩個指標衡量災害復原：
+嚴重損壞修復是以兩個計量來測量：
 
-- [復原點目標 （RPO）](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective)：可能丟失的資料的分鐘數或小時數。
-- [恢復時間目標 （RTO）：](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective)服務可能關閉的小時數。
+- [復原點目標（RPO）](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective)：可能會遺失的資料分鐘數或小時數。
+- 復原[時間目標（RTO）](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective)：服務可能關閉的分鐘數。
 
-事件網格的自動容錯移轉具有不同的 RPO 和 RPO，用於中繼資料（事件訂閱等）和資料（事件）。 如果需要與以下規範不同的規範，您仍可以使用[主題運行狀況 apis 實現自己的用戶端容錯移轉](custom-disaster-recovery.md)。
+事件方格的自動容錯移轉針對您的中繼資料（事件訂閱等）和資料（事件）有不同的 Rpo 和 Rto。 如果您需要來自下列各項的不同規格，您仍然可以[使用健康情況 api 主題](custom-disaster-recovery.md)來執行您自己的用戶端故障切換。
 
 ## <a name="recovery-point-objective-rpo"></a>復原點目標 (RPO)
-- **中繼資料 RPO**：零分鐘。 每當在事件網格中創建資源時，它都會在區域之間立即複製。 發生容錯移轉時，不會丟失任何中繼資料。
-- **資料 RPO：** 如果您的系統狀況良好，並在區域容錯移轉時趕上現有流量，則事件的 RPO 約為 5 分鐘。
+- **中繼資料 RPO**：零分鐘。 每當在事件方格中建立資源時，它會立即跨區域複寫。 發生容錯移轉時，不會遺失任何中繼資料。
+- **資料 RPO**：如果您的系統狀況良好，且在區域容錯移轉時攔截到現有的流量，事件的 RPO 大約為5分鐘。
 
 ## <a name="recovery-time-objective-rto"></a>復原時間目標 (RTO)
-- **中繼資料 RTO**：雖然通常發生得更快，但在 60 分鐘內，事件網格將開始接受主題和訂閱的創建/更新/刪除調用。
-- **資料 RTO**： 與中繼資料一樣，它通常發生得更快，但在 60 分鐘內，事件網格將在區域容錯移轉後開始接受新的流量。
+- **中繼資料 RTO**：雖然通常會在60分鐘內更快速地發生，事件方格會開始接受主題和訂用帳戶的建立/更新/刪除呼叫。
+- **資料 RTO**：類似中繼資料，通常會更快速地發生，但在60分鐘內，事件方格會在區域容錯移轉後開始接受新流量。
 
 > [!NOTE]
-> 事件網格上的中繼資料 GeoDR 的成本為：$0。
+> 在事件方格上 GeoDR 中繼資料的成本為： $0。
 
 
 ## <a name="next-steps"></a>後續步驟
-如果要實現自己的用戶端容錯移轉邏輯，請參閱[# 為事件網格中的自訂主題構建您自己的災害復原](custom-disaster-recovery.md)
+如果您想要執行自己的用戶端容錯移轉邏輯，請參閱[# Build 您自己的嚴重損壞修復以取得事件方格中的自訂主題](custom-disaster-recovery.md)

@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60454654"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect：ADSyncTools PowerShell 參考
@@ -528,7 +528,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>DESCRIPTION
-函數查詢 AAD 連接執行歷程記錄並匯出報告錯誤的所有使用者："SourceAnchor 屬性已更改。
+函數查詢 AAD Connect 執行歷程記錄，並匯出報告錯誤的所有使用者：「SourceAnchor 屬性已變更」。
 
 ### <a name="examples"></a>範例
 
@@ -859,7 +859,7 @@ Accept wildcard characters: False
 ## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>概要
-（完）從證書檔案還原 AD 使用者證書屬性
+（待辦事項）從憑證檔案還原 AD UserCertificate 屬性
 
 ### <a name="syntax"></a>SYNTAX
 

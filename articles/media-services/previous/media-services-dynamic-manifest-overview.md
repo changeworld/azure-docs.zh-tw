@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69015857"
 ---
 # <a name="filters-and-dynamic-manifests"></a>篩選器與動態資訊清單
 
-> [!div class="op_single_selector" title1="選擇您正在使用的媒體服務版本："]
-> * [版本 2](media-services-dynamic-manifest-overview.md)
+> [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
+> * [第 2 版](media-services-dynamic-manifest-overview.md)
 > * [第 3 版](../latest/filters-dynamic-manifest-overview.md)
 
 從 2.17 版開始，媒體服務可讓您為資產定義篩選。 這些篩選器是伺服器端規則，可讓您的客戶選擇執行如下的動作：只播放一段視訊 (而非播放完整視訊)，或只指定您客戶裝置可以處理的一部分音訊和視訊轉譯 (而非與該資產相關的所有轉譯)。 透過在您客戶要求下建立的 **動態資訊清單**可達成對資訊進行這樣的篩選，藉此根據指定的篩選器來串流視訊。
@@ -98,7 +98,7 @@ ms.locfileid: "69015857"
 > 
 > 
 
-### <a name="filters"></a><a id="filters"></a>篩選條件
+### <a name="filters"></a><a id="filters"></a>篩選器
 資產篩選器有兩種： 
 
 * 全域篩選器 (可以套用到 Azure 媒體服務帳戶中所有的資產，擁有帳戶的存留期間) 和 
@@ -106,7 +106,7 @@ ms.locfileid: "69015857"
 
 全域和本機篩選器類型有完全相同的屬性。 這兩個的主要差異在於案例較適合哪一種篩選器。 全域篩選器通常適用於裝置設定檔 (轉譯篩選)，而本機篩選器可用於修剪特定的資產。
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>常見方案
+## <a name="common-scenarios"></a><a id="scenarios"></a>常見案例
 先前提過，將內容傳遞給客戶時 (串流即時事件或點播視訊)，您的目標是在不同的網路條件下將高品質的視訊傳遞到各種裝置。 此外，您可能會有其他對於篩選資產與使用 **動態資訊清單**相關的需求。 以下幾節提供不同篩選案例的簡短概觀。
 
 * 僅指定某些裝置可以處理的音訊和視訊轉譯子集 (而非與該資產相關聯的所有轉譯)。 
@@ -125,7 +125,7 @@ ms.locfileid: "69015857"
 ![轉譯篩選][renditions1]
 
 ## <a name="removing-language-tracks"></a>移除語言資料軌
-您的資產可能包括多種語言，如英語、西班牙文、法語等。通常，Player SDK 管理器預設了每個使用者選擇的音軌選擇和可用的音軌。 開發這類的播放程式 SDK 相當有挑戰性，因為在各個裝置特有的播放程式架構之間有不同的實作方式。 此外，在某些平臺上，Player API 是有限的，並且不包含使用者無法選擇或更改預設音軌的音訊選擇功能。使用資產篩選器，您可以通過創建僅包含所需音訊語言的篩選器來控制行為。
+您的資產可能包括多種音訊語言，例如英文、西班牙文、法文等。通常，Player SDK 管理員會預設音訊軌選取專案，以及每個使用者選取的可用音訊曲目。 開發這類的播放程式 SDK 相當有挑戰性，因為在各個裝置特有的播放程式架構之間有不同的實作方式。 此外，在某些平臺上，播放機 Api 會受到限制，且不包含音訊選取功能，使用者無法選取或變更預設的音訊播放軌。透過資產篩選器，您可以藉由建立只包含所需音訊語言的篩選來控制行為。
 
 ![語言資料軌篩選][language_filter]
 
@@ -165,7 +165,7 @@ ms.locfileid: "69015857"
 ## <a name="create-filters-programmatically"></a>以程式設計方式建立篩選器
 下列文章討論與篩選相關的媒體服務實體。 此文章也會示範如何以程式設計方式建立篩選。  
 
-[使用 REST API 創建篩選器](media-services-rest-dynamic-manifest.md)。
+[使用 REST Api 建立篩選器](media-services-rest-dynamic-manifest.md)。
 
 ## <a name="combining-multiple-filters-filter-composition"></a>結合多個篩選條件 (篩選器組合)
 您也可以將多個篩選條件結合成單一 URL。 
@@ -182,7 +182,7 @@ ms.locfileid: "69015857"
 
 您可以結合最多三個篩選。 
 
-有關詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)博客。
+如需詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)blog。
 
 ## <a name="know-issues-and-limitations"></a>已知問題與限制
 * 動態資訊清單會在 GOP 界限 (主要畫面格) 中運作，因此修剪後能夠有精確的 GOP。 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381448"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory 混合式身分識別設計考量
@@ -50,7 +50,7 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 
 本指南將提供一系列您可以依循的步驟和工作，用以設計符合組織獨特需求的混合式身分識別解決方案。 在下列步驟和工作中，本指南將提供相關的技術和功能選項，讓您能夠因應組織的功能和服務品質層級需求。
 
-**假設**：您有一些 Windows 伺服器、活動目錄域服務和 Azure 活動目錄的經驗。 在本文件中，假設您想要了解這些解決方案本身或在整合式解決方案中如何滿足您的商務需求。
+**假設**：您有 Windows Server、Active Directory Domain Services 和 Azure Active Directory 的一些經驗。 在本文件中，假設您想要了解這些解決方案本身或在整合式解決方案中如何滿足您的商務需求。
 
 ## <a name="design-considerations-overview"></a>設計考量概觀
 本文件將提供一組您可以依循的步驟和工作，用以設計最能符合您需求的混合式身分識別解決方案。 步驟會依序呈現。 不過，您在後續步驟中學習的設計考量，可能會因為設計選擇的衝突，而需要變更您在先前步驟中所做的決策。 在本文件中會持續嘗試警告您潛在的設計衝突。 
