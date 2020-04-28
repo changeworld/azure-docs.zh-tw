@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定使用者發送推送通知 |微軟文檔
+title: 使用 Azure 通知中樞將推播通知傳送給特定使用者 |Microsoft Docs
 description: 了解如何使用 Azure 通知中樞將推播通知傳送至特定的使用者。
 documentationcenter: ios
 author: sethm
@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72387464"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定使用者發送推送通知
+# <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送給特定使用者
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -56,7 +56,7 @@ ms.locfileid: "72387464"
 
 2. 在 `Main.storyboard` 檔案中，從物件程式庫新增螢幕擷取畫面中顯示的元件。
 
-    ![在 Xcode 介面產生器中編輯分鏡腳本][1]
+    ![在 Xcode interface builder 中編輯分鏡腳本][1]
 
    * **使用者名稱**：含有預留位置文字 ( *輸入使用者名稱*) 的 UITextField，位於傳送結果標籤正下方且受到左右邊界限制並位於傳送結果標籤正下方。
    * **密碼**：含有預留位置文字 ( *輸入密碼*) 的 UITextField，位於使用者名稱文字欄位正下方且受到左右邊界限制並位於使用者文字欄位正下方。 勾選 [ **傳回金鑰** ] 底下屬性偵測器中的 [ *安全文字輸入*] 選項。
@@ -485,7 +485,7 @@ ms.locfileid: "72387464"
 
     ![iOS 測試應用程式][2]
 
-3. 您應該會看到註冊成功的快顯通知。 按一下 [確定]****。
+3. 您應該會看到註冊成功的快顯通知。 按一下 [確定]  。
 
     ![顯示的 iOS 測試通知][3]
 

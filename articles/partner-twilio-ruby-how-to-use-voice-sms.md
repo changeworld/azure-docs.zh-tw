@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69637207"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何在 Ruby 中透過 Twilio 使用語音和簡訊功能
-本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 有關 Twilio 以及應用程式中使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)部分。
+本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>什麼是 Twilio？
 Twilio 是一種電話語音 Web 服務 API，能夠讓您使用現有的 Web 語言和技術建立語音和 SMS 應用程式。 Twilio 算是協力廠商服務 (並非 Azure 功能，也並非 Microsoft 產品)。
@@ -28,7 +28,7 @@ Twilio 是一種電話語音 Web 服務 API，能夠讓您使用現有的 Web �
 **Twilio 語音** 可讓應用程式撥打和接聽電話。 **Twilio SMS** 可以讓您的應用程式撰寫和接收 SMS 訊息。 **Twilio Client** 可以讓您的應用程式在現有網際網路連線 (包括行動連線) 中啟用語音通訊。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定價和特別供應項目
-[Twilio 定價][twilio_pricing] (英文) 提供 Twilio 的定價資訊。 Azure 客戶可獲得[特殊供應項目][special_offer]：免費 1000 則文字簡訊或接聽 1000 分鐘電話。 要註冊此優惠或獲取更多資訊，請訪問[https://ahoy.twilio.com/azure][special_offer]。  
+[Twilio 定價][twilio_pricing] (英文) 提供 Twilio 的定價資訊。 Azure 客戶可獲得[特殊供應項目][special_offer]：免費 1000 則文字簡訊或接聽 1000 分鐘電話。 若要註冊此供應專案或取得詳細資訊，請造訪[https://ahoy.twilio.com/azure][special_offer]。  
 
 ## <a name="concepts"></a><a id="Concepts"></a>概念
 Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。 用戶端程式庫有多種語言版本，相關清單請參閱 [Twilio API 程式庫][twilio_libraries]。
@@ -46,20 +46,20 @@ TwiML 是一組以 XML 為基礎的指令，可指示 Twilio 如何處理來電�
 所有 TwiML 文件皆會以 `<Response>` 作為其根元素。 您可以由此處使用 Twilio 動詞定義應用程式的行為。
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML 動詞
-Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如**&lt;，"Say"&gt;** 謂詞指示 Twilio 在呼叫中發出消息。 
+Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如，「 ** &lt;假設&gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。 
 
 以下是 Twilio 動詞清單。
 
-* 撥號 ：將呼叫者連接到另一個電話。 ** &lt; &gt; **
-* 收集：收集電話鍵盤上輸入的數位數位。 ** &lt; &gt; **
-* **掛斷&gt;電話：結束&lt;** 通話。
-* 播放 ：播放音訊檔。 ** &lt; &gt; **
-* 暫停：靜默等待指定秒數。 ** &lt; &gt; **
-* 錄製 ：記錄調用方的語音並返回包含錄製的檔的 URL。 ** &lt; &gt; **
-* 重定向：以不同的 URL 將呼叫或短信的控制權轉移到 TwiML。 ** &lt; &gt; **
-* 拒絕 ：拒絕您的 Twilio 號碼的來電，而不向您計費**&lt; &gt; **
-* 說：將文本轉換為在呼叫時所做的語音。 ** &lt; &gt; **
-* 短信 ：傳送簡訊。 ** &lt; &gt; **
+* 撥號：將呼叫者連接到其他電話。 ** &lt; &gt; **
+* 收集：收集電話鍵盤上輸入的數位。 ** &lt; &gt; **
+* 掛斷：結束呼叫。 ** &lt; &gt; **
+* Play：播放音訊檔案。 ** &lt; &gt; **
+* Pause：以無訊息模式等候指定的秒數。 ** &lt; &gt; **
+* 記錄：錄製來電者的語音，並傳回包含錄製之檔案的 URL。 ** &lt; &gt; **
+* **重新導向&gt;：將呼叫或 SMS 的控制權轉移至不同 URL 的&lt; **TwiML。
+* 拒絕：拒絕 Twilio 號碼的來電而不計費** &lt; &gt; **
+* 假設：將在呼叫上進行的文字轉換成語音。 ** &lt; &gt; **
+* Sms：傳送 sms 訊息。 ** &lt; &gt; **
 
 如需 Twilio 動詞、屬性和 TwiML 的詳細資訊，請參閱 [TwiML][twiml]。 如需 Twilio API 的詳細資訊，請參閱 [Twilio API][twilio_api]。
 
@@ -73,7 +73,7 @@ Twilio 動詞是指示 Twilio 應執行哪些 **動作**的 XML 標籤。 例如
 
 如需有關如何驗證電話號碼的詳細資訊，請參閱[管理電話號碼][verify_phone]。
 
-## <a name="create-a-ruby-application"></a><a id="create_app"></a>創建紅寶石應用程式
+## <a name="create-a-ruby-application"></a><a id="create_app"></a>建立 Ruby 應用程式
 使用 Twilio 服務且執行於 Azure 的 Ruby 應用程式，與其他使用 Twilio 服務的 Ruby 應用程式並無不同。 雖然 Twilio 服務是以 REST 為基礎，並且可透過數種方式從 Ruby 撥打，但本文的重點是要說明如何搭配使用 Twilio 服務與[適用於 Ruby 的 Twilio 協助程式程式庫][twilio_ruby]。
 
 首先，請[設定新的 Azure Linux VM][azure_vm_setup]，以作為新的 Ruby Web 應用程式主機。 請忽略建立 Rails 應用程式的相關步驟，直接設定 VM。 請確實建立具有外部連接埠 80 和內部連接埠 5000 的端點。

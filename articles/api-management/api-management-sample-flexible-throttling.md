@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71066759"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>以 Azure API 管理進行進階要求節流
@@ -30,7 +30,7 @@ ms.locfileid: "71066759"
 ## <a name="custom-key-based-throttling"></a>依自訂索引鍵節流
 
 > [!NOTE]
-> 和`rate-limit-by-key``quota-by-key`策略在 Azure API 管理的"使用"層中不可用。 
+> 在`rate-limit-by-key` Azure `quota-by-key` API 管理的取用層中，無法使用和原則。 
 
 新的 [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) 和 [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) 原則能提供更有彈性的流量控制解決方案。 這些新原則可讓您定義運算式，以識別要用來追蹤流量使用量的索引鍵。 其運作的方式用範例來說明最簡單。 
 
@@ -75,9 +75,9 @@ ms.locfileid: "71066759"
 
 這可讓開發人員的用戶端應用程式選擇要如何建立速率限制索引鍵。 用戶端開發人員可以透過將索引鍵組配置給使用者並輪流使用索引鍵，來建立自己的速率層。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 Azure API 管理提供速率和配額節流，不但能保護您的 API 服務，並為您的 API 服務增加價值。 新的節流原則與自訂範圍規則，可讓您更精細的控制這些原則，進而讓您的客戶建置更好的應用程式。 本文中的範例示範如何使用這些新原則，分別使用用戶端 IP 位址、使用者身分識別及用戶端產生值來製造速率限制索引鍵。 不過，訊息中還有許多其他部份可以利用，例如使用者代理程式、URL 路徑片段、訊息大小。
 
 ## <a name="next-steps"></a>後續步驟
-請向我們提供您作為本主題的 GitHub 問題的回饋。 我們很想知道其他在您的案例中是合理選擇的可能索引鍵值。
+請將您的意見反應提供給我們，做為本主題的 GitHub 問題。 我們很想知道其他在您的案例中是合理選擇的可能索引鍵值。
 

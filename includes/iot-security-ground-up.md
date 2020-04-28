@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72789738"
 ---
 物聯網 (IoT) 使得全球企業面臨獨特的安全性、隱私權及相容性挑戰。 不同於傳統網路技術 (這類問題是以軟體及其實作方式為中心)，IoT 在意的是當網路與實體世界交會時會發生什麼事。 保護 IoT 解決方案要求確保安全佈建裝置，保護這些裝置與雲端之間的連接，以及在處理和儲存期間保護雲端中資料保護的安全。 但是，會針對這類功能運作的是資源受限的裝置、根據地理位置分佈的部署，以及解決方案中的大量裝置。
@@ -31,7 +31,7 @@ ms.locfileid: "72789738"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>徹底保護基礎結構的安全
 
-[Microsoft 雲](https://azure.microsoft.com)基礎架構為 127 個國家/地區的 10 億多個客戶提供服務。 利用 Microsoft 數十年來建置企業軟體，以及在世界各地執行一些大型線上服務的經驗，相較於多數客戶可自行實現的部分，Microsoft Cloud 提供更高層級的增強安全性、隱私權、相容性及威脅減輕做法。
+[Microsoft Cloud](https://azure.microsoft.com)基礎結構支援127個國家/地區中超過1000000000個客戶。 利用 Microsoft 數十年來建置企業軟體，以及在世界各地執行一些大型線上服務的經驗，相較於多數客戶可自行實現的部分，Microsoft Cloud 提供更高層級的增強安全性、隱私權、相容性及威脅減輕做法。
 
 [安全性開發週期 (SDL)](https://www.microsoft.com/sdl/) 可提供必要的全公司開發程序，將安全性需求嵌入整個軟體週期。 為了協助確保營運活動會遵循相同層級的安全性做法，SDL 會使用 Microsoft 的營運安全性保證 (OSA) 程序中所列出的嚴謹安全性指導方針。 Microsoft 也會與第三方稽核公司合作，持續驗證其是否符合法律遵循義務，並且 Microsoft 會透過建立卓越的中心 (包括 Microsoft 數位犯罪防治中心、Microsoft 安全性回應中心及 Microsoft 惡意程式碼防護中心)，致力於產生廣泛的安全性成果。
 
@@ -107,8 +107,8 @@ IoT 基礎結構所使用的所有金鑰都會儲存於雲端的安全儲存體�
 
 * [**Azure 串流分析**](https://azure.microsoft.com/services/stream-analytics/)：雲端中處理的即時串流讓您能夠快速開發並部署低成本的分析方案，以在第一時間提供裝置、感應器、基礎結構與應用程式的深入剖析資料。 來自這個完全受控服務的資料可調整為任何數量，但仍可達到高輸送量、低遲性和恢復功能。
 
-* [**Azure 應用服務**](https://azure.microsoft.com/services/app-service/)：構建強大的 Web 和移動應用的雲平臺，可隨時隨地連接到資料;在雲或本地。 建置吸引客戶參與的 iOS、Android 和 Windows 版行動應用程式。 與軟體即服務 (SaaS) 和企業應用程式整合，讓您能夠立即連線到數十種雲端服務和企業應用程式。 使用您愛用的語言 (.NET、Node.JS、PHP、Python 或 Java) 和整合式開發環境 (IDE) 撰寫程式碼，以前所未有的速度建置 Web 應用程式和 API。
+* [**Azure App Services**](https://azure.microsoft.com/services/app-service/)：雲端平臺，可建立功能強大的 web 和行動應用程式，以連接到任何地方的資料;在雲端或內部部署中。 建置吸引客戶參與的 iOS、Android 和 Windows 版行動應用程式。 與軟體即服務 (SaaS) 和企業應用程式整合，讓您能夠立即連線到數十種雲端服務和企業應用程式。 使用您愛用的語言 (.NET、Node.JS、PHP、Python 或 Java) 和整合式開發環境 (IDE) 撰寫程式碼，以前所未有的速度建置 Web 應用程式和 API。
 
-* [**邏輯應用**](https://azure.microsoft.com/services/app-service/logic/)：Azure 應用服務的邏輯應用功能有助於將 IoT 解決方案集成到現有業務線系統，並自動執行工作流流程。 Logic Apps 可讓開發人員設計從觸發程序開始，然後執行一系列步驟的工作流程 — 使用功能強大的連接器來與您的商務程序整合的規則和動作。 Logic Apps 提供與 SaaS、雲端架構及內部部署應用程式的廣大生態系統的即時連接。
+* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/)： Azure App Service 的 Logic Apps 功能可協助您將 IoT 解決方案整合到現有的企業營運系統，並將工作流程自動化。 Logic Apps 可讓開發人員設計從觸發程序開始，然後執行一系列步驟的工作流程 — 使用功能強大的連接器來與您的商務程序整合的規則和動作。 Logic Apps 提供與 SaaS、雲端架構及內部部署應用程式的廣大生態系統的即時連接。
 
-* [**Azure Blob 存儲**](https://azure.microsoft.com/services/storage/)：設備發送到雲的資料的可靠、經濟的雲存儲。
+* [**Azure Blob 儲存體**](https://azure.microsoft.com/services/storage/)：可靠且經濟實惠的雲端儲存體，適用于您的裝置傳送至雲端的資料。

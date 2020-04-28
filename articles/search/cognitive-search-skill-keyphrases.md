@@ -120,7 +120,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 如果您的文字是空白的，則會產生警告。
 如果文字超過 50,000 個字元，則只會分析前 50,000 個字元，並且會發出警告。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

@@ -1,7 +1,7 @@
 ---
 title: 文字分割認知技能
 titleSuffix: Azure Cognitive Search
-description: 根據 Azure 認知搜索中的 AI 擴充管道中的長度將文本分成塊或文本頁。
+description: 在 Azure 認知搜尋中，根據 AI 擴充管線中的長度，將文字分割成文字的區塊或分頁。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73479660"
 ---
 # <a name="text-split-cognitive-skill"></a>文字分割認知技能
@@ -33,7 +33,7 @@ Microsoft.Skills.Text.SplitSkill
 |--------------------|-------------|
 | textSplitMode      | 「頁面」或「句子」 | 
 | maximumPageLength | 如果 textSplitMode 設為「頁面」，這是指由 `String.Length` 測量的最大頁面長度。 最小值為 100。  如果 textSplitMode 設定為 "pages"，演算法會嘗試將文字分割為大小和 "maximumPageLength" 差不多的區塊。 在這種情況下，演算法會盡量在例句邊界斷句，以讓區塊大小稍微小於 "maximumPageLength"。 | 
-| defaultLanguageCode   | (選用) 以下其中一個語言代碼：`da, de, en, es, fi, fr, it, ko, pt`。 預設值是英文 (en)。 幾點考量事項：<ul><li>如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。</li><li>如果語言不在前面的清單中，分割技能會在字元界限拆分文字。</li><li>提供語言代碼對於避免將非空白語言（如中文、日語和韓語）的單詞切成兩半非常有用。</li><li>如果您不知道該語言（即您需要將文本拆分以輸入[到語言檢測技能](cognitive-search-skill-language-detection.md)中），則英語（en）的預設值應足夠。 </li></ul>  |
+| defaultLanguageCode   | (選用) 以下其中一個語言代碼：`da, de, en, es, fi, fr, it, ko, pt`。 預設值是英文 (en)。 幾點考量事項：<ul><li>如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。</li><li>如果語言不在前面的清單中，分割技能會在字元界限拆分文字。</li><li>提供語言代碼對於避免非空白字元語言（例如中文、日文和韓文）的一半，非常有用。</li><li>如果您不知道語言（也就是您需要將輸入的文字分割成[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），則預設的英文（en）應該就已足夠。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>技能輸入
@@ -41,7 +41,7 @@ Microsoft.Skills.Text.SplitSkill
 | 參數名稱       | 描述      |
 |----------------------|------------------|
 | text  | 要分割成子字串的文字。 |
-| languageCode  | (選用) 文件的語言代碼。 如果您不知道該語言（即您需要將文本拆分以輸入[到語言檢測技能](cognitive-search-skill-language-detection.md)中），請安全地刪除此輸入。  |
+| languageCode  | (選用) 文件的語言代碼。 如果您不知道語言（也就是您需要將輸入的文字分割成[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），就可以放心地移除此輸入。  |
 
 ## <a name="skill-outputs"></a>技能輸出 
 
@@ -130,7 +130,7 @@ Microsoft.Skills.Text.SplitSkill
 ## <a name="error-cases"></a>錯誤案例
 如果不支援某語言，則會產生警告，而且會在字元界限分割文字。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

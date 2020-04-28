@@ -1,5 +1,5 @@
 ---
-title: 在 Python、R 和 C# 中運行 U-SQL 作業 - Azure 資料湖分析
+title: '在 Python、R 和 c # 中執行 U-SQL 作業-Azure Data Lake Analytics'
 description: 了解如何將程式碼後置與 Python、R 和 C# 搭配使用，以在 Azure Data Lake 中提交作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
 ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71309697"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>針對 Visual Studio Code 中的 Azure Data Lake Analytics 使用 Python、R 和 C# 開發 U-SQL
@@ -24,7 +24,7 @@ ms.locfileid: "71309697"
 ## <a name="prerequisites-for-python-and-r"></a>Python 和 R 的必要條件
 為您的 ADL 帳戶註冊 Python 和 R 擴充功能組件。 
 1. 在入口網站開啟您的帳戶。
-   - 選取 [概觀]****。 
+   - 選取 [概觀]  。 
    - 按一下 [範例指令碼]****。
 2. 按一下 [其他]****。
 3. 選取 [安裝 U-SQL 擴充功能]****。 

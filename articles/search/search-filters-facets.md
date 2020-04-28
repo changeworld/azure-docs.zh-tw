@@ -121,7 +121,7 @@ Azure 認知搜尋中的 facet 導覽的其中一項挑戰是，facet 僅存在�
 
 儘管這是一個常見使用案例，但並不是多面向導覽目前預設提供的功能。 需要靜態 Facet 的開發人員通常可藉由發出兩個篩選查詢來解決限制：一個將範圍設為結果，另一個則基於導覽目的用來建立靜態的 Facet 清單。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [Azure 認知搜尋中的篩選](search-filters.md)
 + [建立索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)

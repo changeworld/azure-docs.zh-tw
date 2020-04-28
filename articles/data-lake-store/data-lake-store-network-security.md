@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60612598"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 的虛擬網路整合
@@ -29,7 +29,7 @@ ms.locfileid: "60612598"
 Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active Directory (Azure AD) 之間使用虛擬網路服務端點安全性，以在存取權杖中產生額外的安全性宣告。 這些宣告隨後會用來對 Data Lake Storage Gen1 帳戶驗證虛擬網路並允許存取。
 
 > [!NOTE]
-> 使用這些功能不會產生額外的相關費用。 帳戶會依照 Data Lake Storage Gen1 的標準費率來計費。 有關詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable)。 至於您所使用的所有其他 Azure 服務，則請參閱[定價](https://azure.microsoft.com/pricing/#product-picker)。
+> 使用這些功能不會產生額外的相關費用。 帳戶會依照 Data Lake Storage Gen1 的標準費率來計費。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable)。 至於您所使用的所有其他 Azure 服務，則請參閱[定價](https://azure.microsoft.com/pricing/#product-picker)。
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的虛擬網路整合案例
 
@@ -81,7 +81,7 @@ Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active D
   
 - 對於已啟用虛擬網路的 Data Lake Storage Gen1 帳戶，其中的檔案和資料夾資料並無法從入口網站存取。 此限制包括從虛擬網路內的 VM 存取，以及諸如使用資料總管的活動。 帳戶管理活動會繼續運作。 對於已啟用虛擬網路的 Data Lake Storage 帳戶，其中的檔案和資料夾資料則可透過非入口網站資源來存取。 這些資源包括 SDK 存取權、PowerShell 指令碼和其他 Azure 服務，但前提是這些資源不能來自入口網站。 
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>步驟 1：將虛擬網路設定為使用 Azure AD 服務端點
 
@@ -99,7 +99,7 @@ Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active D
 
      ![選取 Microsoft.AzureActiveDirectory 服務端點](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  選取要允許連線的子網路。 選取 [加入]****。
+6.  選取要允許連線的子網路。 選取 [新增]  。
 
     ![選取子網路](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -120,15 +120,15 @@ Data Lake Storage Gen1 的虛擬網路整合會在虛擬網路與 Azure Active D
 
 3.  選取 [選取的網路]****。
  
-4.  選擇 **"添加現有虛擬網路**"。
+4.  選取 [**新增現有的虛擬網路**]。
 
     ![新增現有的虛擬網路](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  選取要允許連線的虛擬網路和子網路。 選取 [加入]****。
+5.  選取要允許連線的虛擬網路和子網路。 選取 [新增]  。
 
     ![選擇虛擬網路和子網路](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  確定虛擬網路和子網路正確顯示於清單中。 選取 [儲存]****。
+6.  確定虛擬網路和子網路正確顯示於清單中。 選取 [儲存]  。
 
     ![儲存新規則](media/data-lake-store-network-security/config-adls-4.png)
 

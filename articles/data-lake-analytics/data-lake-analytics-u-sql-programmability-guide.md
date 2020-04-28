@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73162573"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可程式性指南
@@ -133,7 +133,7 @@ U-SQL 目前使用 .Net Framework 4.5 版。 因此，請確定您自己的組�
 
 每個上傳的組件 DLL 和資源檔，例如不同的執行階段、原生組件或組態檔中，最多可達 400 MB。 已部署資源的大小總計 (透過 DEPLOY RESOURCE 或透過參考組件及其他檔案) 不能超過 3 GB。
 
-最後請注意，每一個 U-SQL 資料庫所包含的任何指定組件只能有一個版本。 例如，如果需要 NewtonSoft Json.NET庫的版本 7 和版本 8，則需要將它們註冊到兩個不同的資料庫中。 此外，每個指令碼所參考的指定組件 DLL 只能有一個版本。 在這方面，U-SQL 會遵循 C# 組件的管理和版本設定語意。
+最後請注意，每一個 U-SQL 資料庫所包含的任何指定組件只能有一個版本。 例如，如果您同時需要第7版和第8版的 NewtonSoft Json.NET 程式庫，您必須在兩個不同的資料庫中註冊它們。 此外，每個指令碼所參考的指定組件 DLL 只能有一個版本。 在這方面，U-SQL 會遵循 C# 組件的管理和版本設定語意。
 
 ## <a name="use-user-defined-functions-udf"></a>使用使用者定義函式：UDF
 U-SQL 使用者定義函數 (簡稱 UDF) 會編寫常式，以接受參數、執行動作 (例如複雜計算)，以及傳回該動作結果的值。 UDF 的傳回值只能是單一純量。 U-SQL UDF 可以和任何其他 C# 純量函式一樣，在 U-SQL 基底指令碼中進行呼叫。
@@ -914,7 +914,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 
 **SqlUserDefinedAggregate** 表示類型應該註冊為使用者定義彙總。 這個類別無法被繼承。
 
-SqlUser 定義類型屬性對於 UDAGG 定義是**可選的**。
+UDAGG 定義的 SqlUserDefinedType 屬性是**選擇性**的。
 
 
 基底類別可讓您傳遞三個抽象參數：其中兩個做為輸入參數，一個做為結果參數。 資料類型會變動，但應該會在繼承類別時進行定義。

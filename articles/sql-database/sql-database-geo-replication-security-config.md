@@ -1,5 +1,5 @@
 ---
-title: 配置災害復原的安全性
+title: 設定嚴重損壞修復的安全性
 description: 了解在資料庫還原或容錯移轉至次要伺服器之後，設定和管理安全性時的安全性考量。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73807485"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>建立和管理 Azure SQL Database 安全性以供異地還原或容錯移轉使用
@@ -48,7 +48,7 @@ ms.locfileid: "73807485"
 
 設定目標伺服器上的登入包含下列概述的三個步驟︰
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. 確定有權訪問主資料庫的登錄名
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. 判斷具有主資料庫存取權的登入
 
 程序的第一個步驟是判斷目標伺服器上必須複製哪些登入。 這是以一組 SELECT 陳述式完成，一個在來源伺服器上的邏輯 master 資料庫中，一個在主要資料庫本身。
 
@@ -64,7 +64,7 @@ ms.locfileid: "73807485"
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. 查找步驟 1 中標識的登錄名的 SID
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. 尋找在步驟1中識別的登入 SID
 
 藉由比較上一節查詢的輸出並比對 SID，您可以將伺服器登入對應到資料庫使用者。 具有資料庫使用者及相符 SID 的登入也會有該資料庫的使用者存取權做為資料庫使用者主體。
 
@@ -77,7 +77,7 @@ ms.locfileid: "73807485"
 > [!NOTE]
 > **INFORMATION_SCHEMA** 和 **sys** 使用者有「NULL」** SID，而**來賓**的 SID 是 **0x00**。 如果資料庫建立者是伺服器系統管理員，而不是 **DbManager** 的成員，**dbo** SID 可能會以 *0x01060000000001648000000000048454* 開頭。
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. 在目標伺服器上創建登錄名
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. 在目標伺服器上建立登入
 
 最後一個步驟是移至目標伺服器或伺服器，並以適當的 SID 產生登入。 基本語法如下所示。
 

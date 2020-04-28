@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173932"
 ---
 請務必了解有兩種方式可以在 Azure 中設定可用性群組接聽程式。 這些方法的差異在於您建立接聽程式時使用的 Azure Load Balancer 類型。 下表描述其差異：
 
 | 負載平衡器類型 | 實作 | 使用時機： |
 | --- | --- | --- |
-| **外部** |使用主控虛擬機器 (VM) 之雲端服務的 [公用虛擬 IP 位址]**。 |您需要從虛擬網路外部存取接聽程式，包括從網際網路。 |
+| **外設** |使用主控虛擬機器 (VM) 之雲端服務的 [公用虛擬 IP 位址]**。 |您需要從虛擬網路外部存取接聽程式，包括從網際網路。 |
 | **內部** |使用「內部負載平衡」** 搭配接聽程式的私用位址。 |您只能從相同的虛擬網路內存取接聽程式。 此存取包括混合案例中的站對站 VPN。 |
 
 > [!IMPORTANT]

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174649"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形資料集的結構定義
@@ -39,7 +39,7 @@ ms.locfileid: "67174649"
 * **結構化的資料來源** (如 SQL Server、Oracle、Azure 資料表等來源)，只有當您想要進行資料行對應將特定來源資料行對應至接收中的特定資料行且其名稱不相同時，才應該指定 “structure” 區段 (詳細資訊請參閱下文資料行對應的部份)。 
   
     如上所述，“structure” 區段中的類型資訊是選擇性的。 針對結構化的來源，類型資訊已可使用做為資料存放區中的資料集定義的一部分，因此當您包含 “structure” 區段時不應包含類型資訊。
-* **對於讀取資料來源（特別是 Azure Blob）上的架構，** 您可以選擇存儲資料，而無需隨資料存儲任何架構或類型資訊。 針對這些類型的資料來源，在以下 2 種案例中應包含 “structure”：
+* **如需讀取資料來源（尤其是 Azure blob）的架構**，您可以選擇儲存資料，而不儲存任何架構或類型資訊與資料。 針對這些類型的資料來源，在以下 2 種案例中應包含 “structure”：
   * 您想要進行對應。
   * 當資料集是「複製」活動中的來源時，您可以在 “structure” 中提供類型資訊，資料處理站轉換為原生類型以利接收時會使用此類型資訊。 如需詳細資訊請參閱 [移動資料進出 Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md) 的文章。
 

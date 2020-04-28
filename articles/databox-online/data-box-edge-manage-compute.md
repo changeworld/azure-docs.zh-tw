@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65953134"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>管理 Azure Data Box Edge 上的計算
@@ -30,8 +30,8 @@ ms.locfileid: "65953134"
 
 事件就是在雲端環境內所發生，或您想在裝置上對其採取動作之事。 例如，在共用中建立檔案時，即為事件。 觸發程序會引發事件。 對於 Data Box Edge，觸發程序可以回應檔案事件或排程。
 
-- **檔**：這些觸發器用於回應檔事件，如創建檔、修改檔。
-- **計畫**：這些觸發器回應了可以使用開始日期、開始時間和重複間隔定義的計畫。
+- 檔案 **：這些**觸發程式是為了回應檔案事件（例如，檔案的建立、檔案的修改）。
+- 已**排程**：這些觸發程式會回應您可以使用開始日期、開始時間和重複間隔來定義的排程。
 
 
 ### <a name="add-a-trigger"></a>新增觸發程序
@@ -131,4 +131,4 @@ ms.locfileid: "65953134"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何通過[Azure 門戶管理邊緣計算網路](data-box-edge-extend-compute-access-modules.md)。
+- 瞭解如何透過[Azure 入口網站來管理 Edge 計算網路](data-box-edge-extend-compute-access-modules.md)。

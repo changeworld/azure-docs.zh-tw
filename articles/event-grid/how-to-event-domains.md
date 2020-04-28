@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 事件網格發佈事件域的事件
+title: 使用 Azure 事件方格發佈事件網域的事件
 description: 顯示如何使用事件網域管理 Azure 事件方格中的大量主題集合，並將事件發佈到這些主題中。
 services: event-grid
 author: banisadr
@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72786546"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件網域管理主題並發佈事件
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershell"></a>[電源外殼](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -96,7 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershell"></a>[電源外殼](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 下列 PowerShell 命令會限制 `alice@contoso.com` 只能建立和刪除 `demotopic1` 主題的事件訂用帳戶：
 
 ```azurepowershell-interactive
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershell"></a>[電源外殼](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -146,7 +146,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>將事件發佈到事件方格網域
 
-將事件發佈到域與[發佈到自訂主題相同](./post-to-custom-topic.md)。 不過，您會所有事件發佈至網域端點，而不是發佈至自訂主題。 在 JSON 事件資料中，您可指定希望事件移至的主題。 下列事件陣列會將 `"id": "1111"` 的事件傳送到主題 `demotopic1`，同時將 `"id": "2222"` 的事件傳送到主題 `demotopic2`：
+將事件發佈至網域與[發行至自訂主題](./post-to-custom-topic.md)相同。 不過，您會所有事件發佈至網域端點，而不是發佈至自訂主題。 在 JSON 事件資料中，您可指定希望事件移至的主題。 下列事件陣列會將 `"id": "1111"` 的事件傳送到主題 `demotopic1`，同時將 `"id": "2222"` 的事件傳送到主題 `demotopic2`：
 
 ```json
 [{
@@ -192,7 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershell"></a>[電源外殼](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 若要使用 PowerShell 取得網域端點，請使用：
 
 ```azurepowershell-interactive

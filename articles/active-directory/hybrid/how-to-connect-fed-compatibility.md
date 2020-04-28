@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5090101c486562e33de56402db348c6038c8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60244749"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD 同盟相容性清單
@@ -30,7 +30,7 @@ Azure Active Directory 在不需要任何第三方解決方案的情況下，針
 如果貴組織使用第三方同盟解決方案，您可以使用 Microsoft Online Services (例如，Office 365) 為內部部署 Active Directory 使用者設定單一登入，但前提是第三方同盟解決方案可與 Azure Active Directory 相容。  如有關於相容性的問題，請連絡識別提供者。  如果您想要查看先前已通過 Microsoft 所進行的 Azure AD 相容性測試的識別提供者清單，請按一下[這裡](https://www.microsoft.com/download/details.aspx?id=56843)。 
 
 >[!NOTE]
->Microsoft 不會再對獨立識別提供者提供 Azure Active Directory 相容性驗證測試。 如果您想要測試您的產品是否具有互通性，請參閱這些[指導方針](https://www.microsoft.com/download/details.aspx?id=56843)。 
+>Microsoft 已不再針對獨立身分識別提供者提供驗證測試，以確認與 Azure Active Directory 之間的相容性。 如果您想要測試您的產品是否具有互通性，請參閱這些[指導方針](https://www.microsoft.com/download/details.aspx?id=56843)。 
 
 ## <a name="next-steps"></a>後續步驟
 

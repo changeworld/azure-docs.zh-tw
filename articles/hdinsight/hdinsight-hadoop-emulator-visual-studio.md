@@ -1,5 +1,5 @@
 ---
-title: 用於視覺工作室&霍頓作品的資料湖工具 - Azure HDInsight
+title: 適用于 Visual Studio & Hortonworks 的 Data Lake 工具-Azure HDInsight
 description: 了解如何搭配在本機 VM 中執行的 Hortonworks 沙箱使用 Azure Data Lake tools for Visual Studio。 您可以使用這些工具，在沙箱上建立和執行 Hive 和 Pig 作業，以及檢視作業輸出和歷程記錄。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73500160"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>搭配 Hortonworks 沙箱使用 Azure Data Lake tools for Visual Studio
@@ -41,17 +41,17 @@ Azure Data Lake 包含使用於一般 Apache Hadoop 叢集的工具。 針對在
 
 2. 從 [伺服器總管]****，以滑鼠右鍵按一下 [HDInsight]**** 項目，然後選取 [連線至 HDInsight Emulator]****。
 
-    ![伺服器資源管理器，突出顯示連接到 HDInsight 模擬器](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![伺服器總管，並反白顯示 [連線至 HDInsight 模擬器]](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. 從 [連線到 HDInsight 模擬器]**** 對話方塊，輸入您為 Ambari 設定的密碼。
 
-    ![對話方塊的螢幕截圖，突出顯示了 ambari 密碼文字方塊](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
+    ![對話方塊的螢幕擷取畫面，其中已反白顯示 [ambari 密碼] 文字方塊](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
     選取 [下一步]**** 以繼續操作。
 
 4. 使用 [密碼]**** 欄位來輸入您為 `root` 帳戶所設定的密碼。 讓其他欄位保持預設值。
 
-    ![對話方塊的螢幕截圖，突出顯示根密碼文字方塊](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
+    ![已反白顯示 [根密碼] 文字方塊的對話方塊螢幕擷取畫面](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
     選取 [下一步]**** 以繼續操作。
 
@@ -90,7 +90,7 @@ Hive 會提供類似 SQL 的查詢語言 (HiveQL)，以便處理結構化資料�
 
     您也可以使用 [提交]**** 旁邊的下拉式功能表來選取 [進階]****。 進階選項可讓您在提交作業時提供其他選項。
 
-    ![提交腳本對話方塊配置單元的螢幕截圖](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
+    ![提交腳本對話方塊 hive 的螢幕擷取畫面](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-hive.png)
 
 3. 提交查詢後，將會顯示作業狀態。 作業狀態會顯示 Hadoop 處理作業時的相關資訊。 [作業狀態]**** 提供作業的狀態。 狀態會定期更新，您也可以使用重新整理圖示來手動重新整理狀態。
 
@@ -112,7 +112,7 @@ Hive 會提供類似 SQL 的查詢語言 (HiveQL)，以便處理結構化資料�
     > [!NOTE]  
     > 此資訊與作業完成後可從 [作業記錄]**** 連結取得的資訊相同。
 
-    ![HiveServer2 輸出的螢幕截圖](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![HiveServer2 輸出的螢幕擷取畫面](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>建立 Hive 專案
 
@@ -122,7 +122,7 @@ Hive 會提供類似 SQL 的查詢語言 (HiveQL)，以便處理結構化資料�
 
 2. 從專案清單，展開 [範本]****，展開 [Azure Data Lake]****，然後選取 [HIVE (HDInsight)]****。 從範本清單中，選取 [Hive 範例]****。 輸入名稱和位置，然後選取 [確定]****。
 
-    ![新專案視窗，包含 Azure 資料湖、蜂巢示例和"確定"](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    ![[新增專案] 視窗，包含 Azure Data Lake、Hive 範例和 [確定]](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 [Hive 範例]**** 專案包含兩個指令碼：**WebLogAnalysis.hql** 和 **SensorDataAnalysis.hql**。 您可以使用前述視窗頂端的 [提交]**** 按鈕提交這些指令碼。
 
@@ -130,7 +130,7 @@ Hive 會提供類似 SQL 的查詢語言 (HiveQL)，以便處理結構化資料�
 
 Hive 提供類似 SQL 的語言來處理結構化的資料，Pig 的運作方式是藉由對資料執行轉換。 Pig 提供可讓您開發轉換管線的語言 (Pig Latin)。 若要搭配本機叢集使用 Pig，請依照這些步驟執行：
 
-1. 打開視覺化工作室，然後選擇 **"檔**"，**新建**，然後**選擇"專案**"。 從專案清單，展開 [範本]****、[Azure Data Lake]****，然後選取 [Pig (HDInsight)]****。 從範本清單中，選取 [Pig 應用程式]****。 輸入名稱、位置，然後選取 [確定]****。
+1. 開啟 Visual Studio，然後依**序選取 [** 檔案]、[**新增**] 和 [**專案**]。 從專案清單，展開 [範本]****、[Azure Data Lake]****，然後選取 [Pig (HDInsight)]****。 從範本清單中，選取 [Pig 應用程式]****。 輸入名稱、位置，然後選取 [確定]****。
 
     ![[新增專案] 視窗的螢幕擷取畫面，其中 [Azure Data Lake]、[Pig]、[Pig 應用程式] 與 [確定] 已反白顯示](./media/hdinsight-hadoop-emulator-visual-studio/new-apche-pig-project.png)
 
@@ -147,9 +147,9 @@ Hive 提供類似 SQL 的語言來處理結構化的資料，Pig 的運作方式
         c = GROUP b BY ip_address;
         DUMP c;
 
-    當 Pig 使用的語言與 Hive 不同時，通過 **"提交"** 按鈕，操作作業的方式在兩種語言之間是一致的。 選取 [提交]**** 旁邊的下拉式清單，即可顯示 Pig 的進階提交對話方塊。
+    雖然 Pig 使用與 Hive 不同的語言，但您在這兩種語言之間執行作業的方式，都是透過 [**提交**] 按鈕來達成。 選取 [提交]**** 旁邊的下拉式清單，即可顯示 Pig 的進階提交對話方塊。
 
-    ![提交腳本對話方塊豬的螢幕截圖](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
+    ![[提交腳本] 對話方塊的螢幕擷取畫面 pig](./media/hdinsight-hadoop-emulator-visual-studio/advanced-apache-pig1.png)
 
 3. 如同 Hive 查詢，也會顯示作業狀態和輸出。
 
@@ -179,7 +179,7 @@ Data Lake 工具也可讓您輕鬆地檢視已在 Hadoop 上執行之作業的�
 
 2. 展開資料表即可顯示該資料表的資料行。 若要快速檢視資料，請以滑鼠右鍵按一下資料表，然後選取 [檢視前 100 個資料列]****。
 
-    ![伺服器資源管理器，其中擴展了表並選擇了查看前 100 行](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![伺服器總管，並已展開資料表並查看前100個數據列](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>資料庫和資料表屬性
 

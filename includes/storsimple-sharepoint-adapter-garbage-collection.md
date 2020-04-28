@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73182187"
 ---
 在此程序中，您將會：
@@ -37,7 +37,7 @@ ms.locfileid: "73182187"
        `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
-2. 在 Web 前端伺服器上的**管理中心**下，為所需的內容資料庫編輯 **Web 應用程式一般設定**以暫時停用資源回收筒。 這個動作將同時清空任何相關網站集合的資源回收筒。 為此，請按一下**管理中心** -> **應用程式管理** -> **Web 應用程式（管理 Web 應用程式）** -> **SharePoint - 80** -> **常規應用程式設定**。 將**資源回收筒狀態**設為 **關閉**。
+2. 在 Web 前端伺服器上的**管理中心**下，為所需的內容資料庫編輯 **Web 應用程式一般設定**以暫時停用資源回收筒。 這個動作將同時清空任何相關網站集合的資源回收筒。 若要這樣做，按一下 [**管理中心** -> ] [**應用程式管理** -> ] [**Web 應用程式（管理 web 應用程式）** -> ] [**SharePoint-80** -> **一般應用程式設定** 將**資源回收筒狀態**設為 **關閉**。
    
     ![Web 應用程式一般設定](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -61,5 +61,5 @@ ms.locfileid: "73182187"
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. 在 Web 前端伺服器上的**管理中心**中，為所需的內容資料庫編輯 **Web 應用程式一般設定**以重新啟用資源回收筒。 為此，請按一下**管理中心** -> **應用程式管理** -> **Web 應用程式（管理 Web 應用程式）** -> **SharePoint - 80** -> **常規應用程式設定**。 將資源回收筒狀態設為**開啟**。
+2. 在 Web 前端伺服器上的**管理中心**中，為所需的內容資料庫編輯 **Web 應用程式一般設定**以重新啟用資源回收筒。 若要這樣做，按一下 [**管理中心** -> ] [**應用程式管理** -> ] [**Web 應用程式（管理 web 應用程式）** -> ] [**SharePoint-80** -> **一般應用程式設定** 將資源回收筒狀態設為**開啟**。
 

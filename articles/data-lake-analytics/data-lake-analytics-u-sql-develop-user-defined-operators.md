@@ -1,5 +1,5 @@
 ---
-title: 開發 U-SQL 使用者定義的運算子 - Azure 資料湖分析
+title: 開發 U-SQL 使用者定義的運算子-Azure Data Lake Analytics
 description: 了解如何開發使用者定義的運算子，以用於和重複用於 Azure Data Lake Analytics 作業中。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -10,10 +10,10 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71316547"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>開發 U-SQL 使用者定義的運算子 (UDO)
@@ -23,7 +23,7 @@ ms.locfileid: "71316547"
 **建立和提交 U-SQL 工作**
 
 1. 從 Visual Studio 中，選取 [檔案] > [新增] > [專案] > [U-SQL 專案]****。
-2. 按一下 [確定]****。 Visual Studio 會建立具有 Script.usql 檔案的解決方案。
+2. 按一下 [確定]  。 Visual Studio 會建立具有 Script.usql 檔案的解決方案。
 3. 在 [方案總管]**** 中展開 Script.usql，然後按兩下 **Script.usql.cs**。
 4. 將下列程式碼貼到檔案中：
 
@@ -115,7 +115,7 @@ ms.locfileid: "71316547"
 8. 從 [方案總管]**** 中，在 [Script.usql]**** 上按一下滑鼠右鍵，然後按一下 [建置指令碼]****。
 9. 從 [方案總管]**** 中，在 [Script.usql]**** 上按一下滑鼠右鍵，然後按一下 [提交指令碼]****。
 10. 如果您尚未連線至 Azure 訂用帳戶，系統會提示您輸入 Azure 帳戶認證。
-11. 按一下 [提交]****。 提交作業完成時，提交結果和工作連結都可以在 [結果] 視窗中取得。
+11. 按一下 [提交]  。 提交作業完成時，提交結果和工作連結都可以在 [結果] 視窗中取得。
 12. 按一下 [重新整理]**** 按鈕，以查看最新的作業狀態並重新整理畫面。
 
 **查看輸出**

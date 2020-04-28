@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173928"
 ---
 在此步驟中，您會在容錯移轉叢集管理員和 SQL Server Management Studio 中手動建立可用性群組接聽程式。
@@ -19,7 +19,7 @@ ms.locfileid: "67173928"
 
 3. 展開叢集名稱，然後按一下 [角色]****。
 
-4. 在 **"角色"** 窗格中，按右鍵可用性組名稱，然後選擇 **"添加資源** > **用戶端存取點**"。
+4. 在 [**角色**] 窗格中，以滑鼠右鍵按一下可用性組名，然後選取 [**新增資源** > ] [**用戶端存取點**]。
    
     ![新增可用性群組的用戶端存取點](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
@@ -39,7 +39,7 @@ ms.locfileid: "67173928"
  
    * 若要設定僅限 Azure 的解決方案︰
 
-        a. 按右鍵對應于 Azure 子網的 IP 位址資源，然後選擇**屬性**。
+        a. 以滑鼠右鍵按一下對應至您 Azure 子網的 IP 位址資源，然後選取 [**屬性**]。
        
        > [!NOTE]
        > 如果接聽程式稍後因為 DHCP 所選取的 IP 位址衝突而無法上線，您可以在此屬性視窗中設定有效的靜態 IP 位址。

@@ -1,5 +1,5 @@
 ---
-title: 在本地運行 U-SQL 作業 - Azure 資料湖 U-SQL SDK
+title: 在本機執行 U-SQL 作業-Azure Data Lake U-SQL SDK
 description: 了解如何使用本機工作站上的命令列及程式設計介面，在本機執行及測試 U-SQL 作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71309688"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 來執行及測試 U-SQL
@@ -23,7 +23,7 @@ ms.locfileid: "71309688"
 
 ## <a name="install-azure-data-lake-u-sql-sdk"></a>安裝 Azure Data Lake U-SQL SDK
 
-您可以在[Nuget.org在此處獲取](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)Azure 資料湖 U-SQL SDK。在使用它之前，您需要確保具有如下依賴項。
+您可以在 Nuget.org 的[這裡](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)取得 Azure Data Lake 的 U-SQL SDK。在使用之前，您必須先確定您有相依性，如下所示。
 
 ### <a name="dependencies"></a>相依性
 
@@ -36,7 +36,7 @@ Data Lake U-SQL SDK 需要下列相依性︰
 
     ![Data Lake Tools for Visual Studio 本機執行的 Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - [安裝資料湖工具視覺工作室](https://aka.ms/adltoolsvs)。 您可以在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 找到預先封裝的 Visual C++ 和 Windows SDK 檔案。 在此情況下，U-SQL 本機編譯器就無法自動找到相依性。 您必須為它指定 CppSDK 路徑。 您可以將檔案複製到另一個位置，或直接使用它。
+  - 安裝[適用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 您可以在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 找到預先封裝的 Visual C++ 和 Windows SDK 檔案。 在此情況下，U-SQL 本機編譯器就無法自動找到相依性。 您必須為它指定 CppSDK 路徑。 您可以將檔案複製到另一個位置，或直接使用它。
 
 ## <a name="understand-basic-concepts"></a>了解基本概念
 
@@ -120,7 +120,7 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
     除了設定環境變數，您可以在使用命令列時指定 **-CppSDK** 引數。 這個引數會覆寫預設的 CppSDK 環境變數。
 
-- 設置**LOCALRUN_DATAROOT**環境變數。
+- 設定**LOCALRUN_DATAROOT**環境變數。
 
     定義一個名為 **LOCALRUN_DATAROOT** 的新環境變數指向資料根目錄。
 
@@ -326,7 +326,7 @@ U-SQL 本機執行需要指定的資料根做為本機儲存體帳戶，以及�
 
 ### <a name="programming-interfaces-in-localrunhelperexe"></a>LocalRunHelper.exe 中的程式設計介面
 
-LocalRunHelper.exe 為 U-SQL 本地編譯、運行等提供了程式設計介面。介面如下所示。
+Localrunhelper.exe 提供用於 U-SQL 本機編譯、執行等的程式設計介面。介面如下所示。
 
 **建構函式**
 
@@ -386,7 +386,7 @@ E_CSC_SYSTEM_INTERNAL: 內部錯誤! 無法載入檔案或組件 'ScopeEngineMan
 ## <a name="next-steps"></a>後續步驟
 
 * 若要了解 U-SQL，請參閱 [開始使用 Azure Data Lake Analytics U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
-* 要記錄診斷資訊，請參閱[訪問 Azure 資料湖分析的診斷日誌](data-lake-analytics-diagnostic-logs.md)。
-* 要查看更複雜的查詢，請參閱[使用 Azure 資料湖分析分析網站日誌](data-lake-analytics-analyze-weblogs.md)。
-* 要查看作業詳細資訊，請參閱[使用作業瀏覽器和工作檢視進行 Azure 資料湖分析作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
-* 要使用頂點執行視圖，請參閱[在視覺化工作室使用資料湖工具中的頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+* 若要記錄診斷資訊，請參閱[存取 Azure Data Lake Analytics 的診斷記錄](data-lake-analytics-diagnostic-logs.md)。
+* 若要查看更複雜的查詢，請參閱[使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。
+* 若要查看作業詳細資料，請參閱[使用作業瀏覽器和工作檢視進行 Azure Data Lake Analytics 作業](data-lake-analytics-data-lake-tools-view-jobs.md)。
+* 若要使用頂點執行視圖，請參閱[在適用于 Visual Studio 的 Data Lake 工具中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
